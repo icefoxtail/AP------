@@ -4,6 +4,9 @@
  * 엔진 버전: v6.5.4 [IRONCLAD] (Logic-First Edition)
  */
 
+// 파일명: 24_여수고1_1학기_중간_고1.js
+window.examTitle = "24_여수고1_1학기_중간_고1";
+
 window.questionBank = [
     {
         id: 1,

@@ -4,6 +4,9 @@
  * 적용 매뉴얼: AP수학 무결성 해설 [IRONCLAD]
  */
 
+// 파일명: 19_동산중2_1학기_중간_중2.js
+window.examTitle = "19_동산중2_1학기_중간_중2";
+
 window.questionBank = [
     {
         id: 1,

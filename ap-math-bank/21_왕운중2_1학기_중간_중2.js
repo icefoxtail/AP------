@@ -5,6 +5,9 @@
  * 특이사항: 전 문항 Logic-First 해설 및 수식 매크로 적용 완료
  */
 
+// 파일명: 21_왕운중2_1학기_중간_중2.js
+window.examTitle = "21_왕운중2_1학기_중간_중2";
+
 window.questionBank = [
     {
         id: 1,

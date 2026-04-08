@@ -3,10 +3,10 @@
  * AP수학 마스터 엔진 v6.5.4 [IRONCLAD] 정밀 검증 완료
  * 특징: 2022 개정 교육과정 행렬 단원 반영 및 풀이 한글화 완수
  */
+// 파일명: 25_강남여고1_1학기_기말_고1.js
+window.examTitle = "25_강남여고1_1학기_기말_고1";
 
-const examTitle = "26_순천강남여고1_1학기_중간_고1";
-
-const questionBank = [
+window.questionBank = [
     {
         id: 1,
         level: "하",

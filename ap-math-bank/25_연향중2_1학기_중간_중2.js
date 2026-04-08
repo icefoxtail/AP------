@@ -1,4 +1,6 @@
-var questionBank = [
+// 파일명: 25_연향중2_1학기_중간_중2.js
+window.examTitle = "25_연향중2_1학기_중간_중2";
+window.questionBank = [
     {
         num: "1",
         content: "순환소수 $0.\\dot{2}\\dot{7}$을 분수로 나타낼 때 다음 중 가장 편리한 식을 고르면? (단, $x=0.\\dot{2}\\dot{7}$) [3점]",

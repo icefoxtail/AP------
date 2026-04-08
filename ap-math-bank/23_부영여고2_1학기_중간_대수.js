@@ -5,6 +5,9 @@
  * 제작자: AP수학 마스터 엔진
  */
 
+// 파일명: 23_부영여고2_1학기_중간_대수.js
+window.examTitle = "23_부영여고2_1학기_중간_대수";
+
 window.questionBank = [
     {
         id: 1,

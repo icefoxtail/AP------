@@ -5,6 +5,9 @@
  * 적용: Logic-First 해설 & tf 매크로
  */
 
+// 파일명: 21_팔마중2_1학기_중간_중2.js
+window.examTitle = "21_팔마중2_1학기_중간_중2";
+
 window.questionBank = [
     {
         id: 1,

@@ -5,6 +5,9 @@
  * 해설 스타일: Logic-First (수식 주도형 전개, Logical Anchor 적용)
  */
 
+// 파일명: 20_풍덕중2_1학기_중간_중2.js
+window.examTitle = "20_풍덕중2_1학기_중간_중2";
+
 window.questionBank = [
     {
         id: 1,

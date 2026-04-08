@@ -4,9 +4,9 @@
  * 특징: 풀이 설명 한글화 100% 및 수식 중심 확장 전개 (Visual Weight Optimized)
  */
 
-const examTitle = "24_한영고1_1학기_중간_고1";
+window.examTitle = "24_한영고1_1학기_중간_고1";
 
-const questionBank = [
+window.questionBank = [
     {
         id: 1,
         level: "하",

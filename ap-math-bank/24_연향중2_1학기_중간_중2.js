@@ -4,9 +4,10 @@
  * 특징: 풀이 설명 한글화 100% 및 수식 중심 확장 전개 (Visual Weight Optimized)
  */
 
-const examTitle = "24_연향중2_1학기_중간_중2";
+// 파일명: 24_연향중2_1학기_중간_중2.js
+window.examTitle = "24_연향중2_1학기_중간_중2";
 
-const questionBank = [
+window.questionBank = [
     {
         id: 1,
         level: "하",

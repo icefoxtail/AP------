@@ -4,9 +4,10 @@
  * 특징: 풀이 설명 한글화 100% 및 수식 중심 확장 전개 (Visual Weight Optimized)
  */
 
-const examTitle = "25_순천여고1_1학기_중간_고1";
+// 파일명: 25_순천여고1_1학기_중간_고1.js
+window.examTitle = "25_순천여고1_1학기_중간_고1";
 
-const questionBank = [
+window.questionBank = [
     {
         id: 1,
         content: "등식 $2x+a=bx+7$이 $x$에 대한 항등식이 되도록 하는 상수 $a, b$에 대하여 $a+b$의 값은? [4.0점]",

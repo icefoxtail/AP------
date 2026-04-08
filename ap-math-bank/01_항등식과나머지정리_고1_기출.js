@@ -5,6 +5,9 @@
  * 해설 스타일: Logic-First (수식 주도형 전개, Logical Anchor 적용)
  */
 
+// 파일명: 01_항등식과나머지정리_고1_기출.js
+window.examTitle = "01_항등식과나머지정리_고1_기출";
+
 window.questionBank = [
     {
         id: 1,

@@ -4,9 +4,10 @@
  * 특징: 순천매산중 기출 기반 풀이 한글화 및 수식 확장 적용
  */
 
-const examTitle = "25_순천매산중2_1학기_중간_중2";
+// 파일명: 25_매산중2_1학기_중간_중2.js
+window.examTitle = "25_매산중2_1학기_중간_중2";
 
-const questionBank = [
+window.questionBank = [
     {
         id: 1,
         category: "유리수와 순환소수",

@@ -5,6 +5,9 @@
  * 해설 스타일: Logic-First (수식 주도형 전개, 중간 과정 생략 금지)
  */
 
+// 파일명: 23_매산고1_1학기_중간_고1.js
+window.examTitle = "23_매산고1_1학기_중간_고1";
+
 window.questionBank = [
     {
         id: 1,
