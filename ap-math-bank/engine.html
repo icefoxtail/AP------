@@ -1,313 +1,216 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>AP수학 인덱스 엔진 v6.9.9 - ZERO-FAULT</title>
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff" as="font" type="font/woff2" crossorigin>
-    <script>
-        window.MathJax = {
-            tex: { inlineMath: [['$', '$']], processEscapes: true, macros: { tf: ['\\dfrac{#1}{#2}', 2] } },
-            chtml: { scale: 1.1, mtextInheritFont: true },
-            startup: { typeset: false }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
-        @page { size: A4; margin: 0; }
-        * { box-sizing: border-box; }
-        body { margin: 0; padding: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; color: #1e293b; letter-spacing: -0.5px; }
-        
-        /* [UI] 즐겨찾기 및 버튼 스타일 */
-        .fav-btn { cursor: pointer; color: #cbd5e1; font-size: 14pt; transition: 0.2s; margin-right: 8px; vertical-align: middle; user-select: none; }
-        .fav-btn.active { color: #f59e0b; }
-        
-        /* [Layout] 페이지 및 컬럼 구조 */
-        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto; background: #fff; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1e293b; margin-bottom: 5mm; padding-bottom: 2mm; font-weight: 800; font-size: 11pt; flex-shrink: 0; }
-        .content-container { display: flex; justify-content: space-between; flex: 1; overflow: hidden; }
-        body.sol-mode .content-container, body.sol-mode .col-left, body.sol-mode .col-right { overflow: visible; height: auto; }
-        .col-left, .col-right { width: 49.5%; height: 100%; overflow: hidden; }
-        .col-left { border-right: 1px solid #f1f5f9; padding-right: 6mm; }
-        .col-right { padding-left: 6mm; }
-        
-        /* [Item] 문항 스타일 */
-        .item { position: relative; padding-top: 3mm; border-bottom: 1px solid #f8fafc; break-inside: avoid; page-break-inside: avoid; }
-        body.test-mode .item { height: 130mm; overflow: hidden; }
-        body.sol-mode .item { height: auto; padding-bottom: 6mm; }
-        .num { font-weight: 900; font-size: 11pt; color: #3b82f6; }
-        .sol-box { margin-top: 8px; padding: 12px 16px; border-radius: 8px; background: #f8fafc; border-left: 4px solid #3b82f6; display: none; }
-        body.sol-mode .sol-box { display: block; }
-        
-        /* [Answer] 정답표 스타일 */
-        .answer-sheet { margin-top: 8mm; padding: 15px; border: 2px solid #3b82f6; border-radius: 10px; display: none; }
-        body.sol-mode .answer-sheet { display: block; }
-        .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px; }
-        .ans-item { font-size: 9.5pt; font-weight: 700; border-bottom: 1px solid #f1f5f9; padding: 4px; color: #1e293b; word-break: break-all; }
-        
-        /* [Control] 상단 컨트롤바 및 상태창 */
-        #mode-ctrl { position: fixed; top: 10px; right: 10px; z-index: 999; display: flex; gap: 8px; }
-        #mode-ctrl button { padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .btn-test { background: #3b82f6; color: white; }
-        .btn-sol  { background: #10b981; color: white; }
-        #status-display { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 15px; text-align: center; border: 2px solid #3b82f6; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); z-index: 1000; }
-        
-        /* [Dashboard] 최근 열람 퀵메뉴 스타일 */
-        #recent-container { max-width: 600px; margin: 60px auto; padding: 30px; background: white; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
-        .recent-item { display: inline-block; padding: 8px 16px; margin: 6px; background: #f8fafc; border-radius: 20px; cursor: pointer; font-size: 9.5pt; color: #475569; transition: 0.2s; border: 1px solid #e2e8f0; font-weight: 700; }
-        .recent-item:hover { background: #eff6ff; color: #3b82f6; border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    <meta charset="UTF-8">
+    <title>AP수학 엔진 v7.3.0</title>
+    <script>
+        window.MathJax = {
+            tex: { 
+                inlineMath: [['$', '$']], 
+                macros: { 
+                    tf: ['\\dfrac{#1}{#2}', 2],
+                    implies: '\\Rightarrow',
+                    therefore: '\\therefore'
+                } 
+            },
+            startup: { typeset: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+        @page { size: A4; margin: 0; }
+        body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; color: #1e293b; }
+        
+        /* 상단 네비게이션 */
+        #mode-ctrl { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 50px;
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 20px; box-sizing: border-box; 
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
+            z-index: 1000; border-bottom: 1px solid #e2e8f0; 
+        }
+        #mode-ctrl button { 
+            padding: 8px 18px; cursor: pointer; font-weight: bold; 
+            border-radius: 6px; border: none; font-size: 9pt; transition: 0.2s;
+        }
+        #mode-ctrl button:hover { opacity: 0.8; transform: translateY(-1px); }
 
-        /* [Print] 인쇄 시 불필요 UI 숨김 */
-        @media print { 
-            #mode-ctrl, .fav-btn, #recent-container { display: none !important; } 
-            body { background: none; } 
-            .page { margin: 0; box-shadow: none; border: none; } 
-        }
-    </style>
+        /* 페이지 시스템 */
+        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto 10mm auto; background: #fff; page-break-after: always; display: flex; flex-direction: column; position: relative; box-shadow: 0 0 10px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .content-container { display: flex; flex: 1; width: 100%; height: 100%; }
+
+        /* [시험지 모드] 4분할 격자 무결성 유지 */
+        body.test-mode .content-container { display: grid !important; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10mm; }
+        body.test-mode .item { height: 125mm !important; overflow: hidden; display: flex; flex-direction: column; border: 1px solid #f1f5f9; padding: 5mm; box-sizing: border-box; }
+        body.test-mode .sol-mode-only { display: none !important; }
+
+        /* [수정] 해설지 모드: 다단 제거 및 break-inside 강화 (방법 B 적용) */
+        body.sol-mode .content-container { display: block; } /* column-count 제거 */
+        body.sol-mode .q-box .content { display: block; margin-bottom: 5px; font-weight: bold; color: #64748b; }
+        body.sol-mode .item { 
+            page-break-inside: avoid; /* 출력 시 문항 잘림 방지 */
+            break-inside: avoid; 
+            border-bottom: 1px dashed #cbd5e1; 
+            padding-bottom: 10mm; 
+            margin-bottom: 10mm; 
+        }
+        body.sol-mode .sol-mode-only { display: block !important; }
+
+        /* 정답표 모드 */
+        body.ans-mode .item { display: none; }
+        .ans-table { width: 100%; border-collapse: collapse; margin-top: 10px; table-layout: fixed; }
+        .ans-table td { border: 1px solid #cbd5e1; padding: 10px; text-align: center; font-size: 10pt; }
+        .ans-table .idx { background: #f8fafc; font-weight: bold; width: 45px; }
+
+        /* 공통 컴포넌트 */
+        .choice-list { list-style: none; padding: 0; margin: 10px 0 0 0; }
+        .choice-item { display: flex; align-items: flex-start; margin-bottom: 4px; }
+        .choice-num { font-weight: bold; margin-right: 7px; flex-shrink: 0; }
+        .subjective-box { margin-top: auto; border: 1px solid #cbd5e1; border-radius: 4px; height: 35mm; background: #f8fafc; position: relative; }
+        .subjective-label { position: absolute; top: 8px; left: 10px; font-size: 7.5pt; color: #94a3b8; }
+
+        @media print { .no-print { display: none !important; } body { background: none; padding-top: 0; } .page { margin: 0; box-shadow: none; } }
+    </style>
 </head>
 <body class="test-mode">
-    <div id="mode-ctrl">
-        <button class="btn-test" onclick="setMode('test-mode')">시험지 모드</button>
-        <button class="btn-sol" onclick="setMode('sol-mode')">해설 모드</button>
-        <button onclick="handlePrint()" style="background:#1e293b; color:white;">PDF 출력</button>
-    </div>
-    <div id="print-area"></div>
-    <div id="item-pool" style="display:none;"></div>
-    <div id="status-display"></div>
+    <div id="mode-ctrl" class="no-print">
+        <button onclick="history.back()" style="background:#64748b; color:white;">뒤로가기</button>
+        <div style="display:flex; gap:8px;">
+            <button onclick="setMode('test-mode')" style="background:#3b82f6; color:white;">시험</button>
+            <button onclick="setMode('sol-mode')" style="background:#10b981; color:white;">해설</button>
+            <button onclick="setMode('ans-mode')" style="background:#f59e0b; color:white;">정답</button>
+        </div>
+    </div>
+    <div id="print-area"></div>
+    <div id="item-pool" style="display:none;"></div>
 
 <script>
-/* [Core] 앱 상태 관리 */
-const AppState = { 
-    title: "AP 수학학원 기출", 
-    fileKey: "", 
-    favorites: JSON.parse(localStorage.getItem('ap_favs') || '{}') 
-};
-let isPrintWarned = false;
+/* AppState 초기화: load()에서 주입받음 */
+const AppState = { title: "" };
 
-/* [Security] XSS 방어를 위한 HTML Escape */
-function escapeHtml(str) {
-    if (!str) return "";
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
-
-/* [Dashboard] 최근 열람 기록 관리 */
-function updateRecentExams(title, dataFile) {
-    let recent = JSON.parse(localStorage.getItem('ap_recent_exams') || '[]');
-    recent = recent.filter(ex => ex.data !== dataFile);
-    recent.unshift({ title, data: dataFile });
-    localStorage.setItem('ap_recent_exams', JSON.stringify(recent.slice(0, 5)));
-}
-
-function renderRecentExams() {
-    const recent = JSON.parse(localStorage.getItem('ap_recent_exams') || '[]');
-    if (recent.length === 0) return `<div id="recent-container"><p style="color:#64748b;">열람한 시험지 기록이 없습니다.</p></div>`;
-    let html = `<div id="recent-container"><p style="font-weight:800; font-size:11pt; margin-bottom:20px; color:#1e293b;">🕒 최근 열람한 시험지</p>`;
-    recent.forEach(ex => { 
-        // ex.data와 ex.title 모두 encodeURIComponent를 사용하여 URL 무결성 보장
-        const safeData = encodeURIComponent(ex.data);
-        const safeTitle = encodeURIComponent(ex.title);
-        html += `<div class="recent-item" onclick="location.href='?data=${safeData}&title=${safeTitle}'">${escapeHtml(ex.title)}</div>`; 
-    });
-    return html + '</div>';
-}
-
-/* [UI] 모드 전환 및 즐겨찾기 */
-async function setMode(mode) { 
-    if (document.body.className === mode) return;
-    document.body.className = mode; 
-    showStatus("레이아웃 재구성 중...", false);
-    await paginate(); 
-}
-
-function toggleFav(id, btn) { 
-    AppState.favorites[id] = !AppState.favorites[id]; 
-    btn.classList.toggle('active', AppState.favorites[id]); 
-    localStorage.setItem('ap_favs', JSON.stringify(AppState.favorites)); 
-}
-
-function handlePrint() {
-    if (!isPrintWarned) { 
-        alert("인쇄 설정에서 [여백: 없음] 및 [배율: 100%]로 설정되어 있는지 확인하세요."); 
-        isPrintWarned = true; 
-    }
-    window.print();
-}
-
-/* [Format] 텍스트 보안 및 수식 보호 출력 */
 function secureFormat(text) {
-    if (text === null || text === undefined) return "";
-    text = String(text);
-    const mathChunks = [];
-    const placeholder = '\x00MATH\x00';
-    const protected_ = text.replace(/\$[\s\S]*?\$/g, m => { mathChunks.push(m); return placeholder; });
-    const escaped = protected_.split(placeholder).map(part => {
-        const div = document.createElement('div');
-        div.textContent = part;
-        return div.innerHTML.replace(/&lt;br\s*\/?&gt;/gi, '<br>').replace(/&lt;b&gt;(.*?)&lt;\/b&gt;/gi, '<b>$1</b>')
-            .replace(/&lt;(span|div)\s+style="([^"]*)"&gt;/gi, (_, t, s) => `<${t} style="${s.replace(/url\s*\(|expression|javascript:/gi, '')}">`)
-            .replace(/&lt;\/(span|div)&gt;/gi, '</$1>');
-    });
-    let res = ""; escaped.forEach((p, i) => { res += p + (mathChunks[i] || ""); });
-    return res;
+    if (!text) return "";
+    const mathChunks = [];
+    const protected_ = String(text).replace(/\$[\s\S]*?\$/g, m => { mathChunks.push(m); return '\x00MATH\x00'; });
+    let escaped = protected_.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    escaped = escaped
+        .replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+        .replace(/&lt;b&gt;(.*?)&lt;\/b&gt;/gi, '<b>$1</b>')
+        .replace(/&lt;span class=&quot;(.*?)&quot;&gt;(.*?)&lt;\/span&gt;/gi, '<span class="$1">$2</span>');
+    return escaped.split('\x00MATH\x00').map((p, i) => p + (mathChunks[i] || "")).join('');
 }
 
-/* [Render] 문항 풀 생성 */
 function renderItems() {
-    const pool = document.getElementById('item-pool');
-    pool.innerHTML = '';
-    const data = window.questionBank || [];
-    data.forEach((q, i) => {
-        const qId = `${AppState.fileKey}_${i}`;
-        const isFav = AppState.favorites[qId] ? 'active' : '';
-        const item = document.createElement('div');
-        item.className = 'item';
-        item.innerHTML = `
-            <div class="q-box">
-                <span class="fav-btn ${isFav}" onclick="toggleFav('${qId}', this)">★</span>
-                <span class="num">${i + 1}</span>
-                <span class="content">${secureFormat(q.content)}</span>
-            </div>
-            <div class="sol-box">
-                <div style="font-weight:bold; color:#3b82f6; margin-bottom:4px; font-size:8.5pt;">SOLUTION</div>
-                <div style="font-size:9pt; color:#475569;">${secureFormat(q.solution)}</div>
-                <div style="color:#ef4444; font-weight:800; margin-top:8px; border-top:1px dashed #cbd5e1; padding-top:8px;">정답: ${secureFormat(q.answer)}</div>
-            </div>`;
-        pool.appendChild(item);
-    });
-    
-    // 정답표 생성
-    const ansSheet = document.createElement('div');
-    ansSheet.className = 'item answer-sheet';
-    let ansHtml = `<div style="font-weight:900; color:#3b82f6; font-size:11pt; border-bottom:2px solid #3b82f6; padding-bottom:5px;">Quick Answer Key (정답표)</div><div class="ans-grid">`;
-    data.forEach((q, i) => { ansHtml += `<div class="ans-item"><span style="color:#3b82f6;">${i + 1}.</span> ${secureFormat(q.answer)}</div>`; });
-    ansHtml += `</div>`;
-    ansSheet.innerHTML = ansHtml;
-    pool.appendChild(ansSheet);
+    const pool = document.getElementById('item-pool');
+    const CIRCLED = ['①','②','③','④','⑤'];
+
+    pool.innerHTML = (window.questionBank || []).map((q, i) => {
+        const isSubjective = !q.choices || q.choices.length < 5;
+        const choicesHtml = isSubjective
+            ? `<div class="subjective-box"><span class="subjective-label">[단답형 답안 기입란]</span></div>`
+            : `<div class="choice-list">
+                ${q.choices.map((c, ci) => `
+                    <div class="choice-item">
+                        <span class="choice-num">${CIRCLED[ci]}</span>
+                        <span>${secureFormat(c)}</span>
+                    </div>`).join('')}
+               </div>`;
+
+        return `
+        <div class="item">
+            <div style="font-size:7.5pt; color:#94a3b8; margin-bottom:3px;">[${q.level || '중'}] ${q.category || '기출'}</div>
+            <div class="q-box" style="flex:1;">
+                <b style="color:#3b82f6; font-size:10.5pt;">${i+1}.</b> 
+                <span class="content">${secureFormat(q.content)}</span>
+                ${!isSubjective ? choicesHtml : ''}
+            </div>
+            ${isSubjective ? choicesHtml : ''}
+            <div class="sol-mode-only" style="margin-top:12px; font-size:9pt; color:#475569; border-top:1px dashed #e2e8f0; padding-top:8px;">
+                <div style="font-weight:bold; color:#10b981; margin-bottom:4px;">[해설]</div>
+                <div style="line-height:1.6;">${secureFormat(q.solution)}</div>
+                <div style="text-align:right; font-weight:bold; color:#ef4444; margin-top:5px;">정답: ${q.answer}</div>
+            </div>
+        </div>`;
+    }).join('');
 }
 
-/* [Engine] 정밀 조판 시스템 */
-async function paginate() {
-    // 렌더링 안착을 위한 double rAF
-    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-    
-    const printArea = document.getElementById('print-area');
-    printArea.innerHTML = '';
-    const items = Array.from(document.getElementById('item-pool').querySelectorAll('.item'));
-    const isSolMode = document.body.classList.contains('sol-mode');
-    
-    let page, col, used = 0, colIdx = 0, COL_LIMIT = 0;
-    
-    const addPage = () => {
-        page = document.createElement('div'); 
-        page.className = 'page';
-        // 헤더 출력 시 AppState.title에 escapeHtml 적용 (XSS 방어)
-        page.innerHTML = `
-            <div class="header">
-                <span>${escapeHtml(AppState.title)}</span>
-                <span>- ${printArea.children.length + 1} -</span>
-            </div>
-            <div class="content-container">
-                <div class="col-left"></div>
-                <div class="col-right"></div>
-            </div>`;
-        printArea.appendChild(page);
-        col = page.querySelector('.col-left'); 
-        used = 0; 
-        colIdx = 0; 
-        // COL_LIMIT 측정 정밀화 (getBoundingClientRect 사용)
-        COL_LIMIT = col.getBoundingClientRect().height;
-    };
-
-    addPage();
-    items.forEach(item => {
-        if (item.classList.contains('answer-sheet') && !isSolMode) return;
-        col.appendChild(item);
-        
-        // 문항 높이 소수점 정밀 측정 및 올림 처리
-        const rectH = item.getBoundingClientRect().height;
-        const itemH = Math.ceil(rectH);
-        
-        if (used + itemH > COL_LIMIT) {
-            col.removeChild(item);
-            if (colIdx === 0) { 
-                col = page.querySelector('.col-right'); 
-                colIdx = 1; 
-                used = 0; 
-            } else { 
-                addPage(); 
-            }
-            col.appendChild(item);
-            used = Math.ceil(item.getBoundingClientRect().height);
-        } else { 
-            used += itemH; 
-        }
-    });
-    showStatus("", false); 
-}
-
-/* [Startup] 초기화 프로세스 */
 async function initRender() {
-    showStatus("데이터 분석 및 조판 중...", false);
-    renderItems();
-    if (window.MathJax) { 
-        await MathJax.startup.promise; 
-        await MathJax.typesetPromise([document.getElementById('item-pool')]); 
-    }
-    await paginate();
+    renderItems();
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        await MathJax.startup.promise;
+        await MathJax.typesetPromise();
+    }
+    paginate();
 }
 
-function showStatus(msg, isError = false) {
-    const el = document.getElementById('status-display');
-    if (!msg) { el.style.display = 'none'; return; }
-    el.style.display = 'block';
-    el.innerHTML = `
-        <h3 style="color:${isError ? '#ef4444' : '#1e293b'}">${isError ? '⚠️ 오류' : '⚙️ 처리 중'}</h3>
-        <p>${msg}</p>` + 
-        (isError ? `<button onclick="location.reload()" style="margin-top:10px; cursor:pointer;">재시도</button>` : '');
+function paginate() {
+    const printArea = document.getElementById('print-area');
+    printArea.innerHTML = '';
+    const items = Array.from(document.getElementById('item-pool').querySelectorAll('.item'));
+    const mode = document.body.className;
+    
+    const addPage = (suffix = "") => {
+        const page = document.createElement('div'); page.className = 'page';
+        page.innerHTML = `
+            <div style="border-bottom:2px solid #1e293b; padding-bottom:5px; margin-bottom:15px; font-weight:bold; display:flex; justify-content:space-between; font-size:10pt;">
+                <span>${AppState.title} ${suffix}</span><span>- ${printArea.children.length + 1} -</span>
+            </div>
+            <div class="content-container"></div>`;
+        printArea.appendChild(page);
+        return page;
+    };
+
+    if (mode === 'ans-mode') {
+        const page = addPage("[정답표]");
+        let html = `<table class="ans-table">`;
+        const bank = window.questionBank || [];
+        for(let i=0; i<bank.length; i+=5) {
+            html += `<tr>`;
+            for(let j=i; j<i+5; j++) {
+                if(bank[j]) html += `<td class="idx">${j+1}</td><td>${bank[j].answer}</td>`;
+                else html += `<td class="idx"></td><td></td>`;
+            }
+            html += `</tr>`;
+        }
+        html += `</table>`;
+        page.querySelector('.content-container').innerHTML = `<div style="width:100%;">${html}</div>`;
+        return;
+    }
+
+    let currentPage = addPage(mode === 'sol-mode' ? "[해설지]" : "");
+    let itemCount = 0;
+    items.forEach(item => {
+        if (mode === 'test-mode') {
+            if (itemCount > 0 && itemCount % 4 === 0) currentPage = addPage();
+            currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
+            itemCount++;
+        } else {
+            /* [수정] 해설지 모드: 브라우저의 자연스러운 페이지 넘김을 위해 모든 아이템을 한 컨테이너에 삽입 */
+            currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
+        }
+    });
 }
 
-/* [Controller] 데이터 로드 제어부 (IIFE) */
-(function loadControl() {
-    const params = new URLSearchParams(window.location.search);
-    const dataFile = params.get('data');
+function setMode(mode) { 
+    document.body.className = mode; 
+    initRender(); 
+}
 
-    // 1. 파라미터가 없을 때 대시보드 출력
-    if (!dataFile) {
-        document.getElementById('print-area').innerHTML = renderRecentExams();
-        document.getElementById('mode-ctrl').style.display = 'none'; // 대시보드에선 컨트롤러 숨김
-        return;
-    }
-
-    // 2. 보안 검사: 파일명 규격 확인
-    if (!dataFile.match(/^[a-zA-Z0-9가-힣_\-\.\/]+\.js$/)) {
-        showStatus("파일명에 허용되지 않는 문자가 있습니다.", true);
-        return;
-    }
-
-    // 3. 상태 설정
-    AppState.fileKey = dataFile.split('.')[0];
-    AppState.title = decodeURIComponent(params.get('title') || "AP 수학학원 기출");
-
-    // 4. 스크립트 동적 로드
-    const base = window.location.pathname.replace(/\/[^\/]*$/, '/');
-    const script = document.createElement('script');
-    script.src = base + dataFile + '?v=' + Date.now();
-    
-    script.onload = () => {
-        if (!Array.isArray(window.questionBank) || window.questionBank.length === 0) {
-            showStatus(`파일(${dataFile}) 로드 성공.<br>그러나 데이터가 올바르지 않습니다.`, true);
-            return;
-        }
-        updateRecentExams(AppState.title, dataFile);
-        // SPA 전환 시를 대비한 모드 컨트롤러 복원
-        document.getElementById('mode-ctrl').style.display = 'flex';
-        initRender();
-    };
-
-    script.onerror = () => showStatus(`파일(${dataFile}) 로드 실패.<br>경로를 확인해주세요.`, true);
-    document.body.appendChild(script);
+/* [수정] load(): URL 파라미터(title, data) 동적 바인딩 */
+(function load() {
+    const params = new URLSearchParams(window.location.search);
+    AppState.title = params.get('title') || '제목 없음';
+    const file = params.get('data');
+    
+    if (!file) {
+        document.getElementById('print-area').innerHTML = '<div style="padding:50px; text-align:center;">URL 뒤에 ?data=파일명.js&title=시험지제목 을 입력해주세요.</div>';
+        return;
+    }
+    const s = document.createElement('script');
+    s.src = file + '?v=' + Date.now();
+    s.onload = initRender;
+    document.body.appendChild(s);
 })();
 </script>
 </body>
