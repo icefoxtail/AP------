@@ -2,165 +2,128 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP수학학원 기출 저장소</title>
+    <title>시험지 통합 관리 시스템 v7.5.0</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap');
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Pretendard', sans-serif; background: #f8fafc; color: #1e293b; padding: 40px 20px; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        
-        header { text-align: center; margin-bottom: 40px; }
-        h1 { font-weight: 800; font-size: 28pt; color: #0f172a; margin-bottom: 20px; }
-        .search-bar { width: 100%; max-width: 500px; padding: 12px 20px; border-radius: 12px; border: 2px solid #e2e8f0; font-size: 11pt; transition: 0.2s; outline: none; }
-        .search-bar:focus { border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
-        
-        .filters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px; }
-        .filter-group { display: flex; gap: 8px; align-items: center; padding: 0 10px; border-right: 1px solid #e2e8f0; }
-        .filter-group:last-child { border-right: none; }
-        .filter-btn { padding: 8px 16px; border-radius: 20px; border: 1px solid #e2e8f0; background: white; cursor: pointer; font-weight: 600; font-size: 9.5pt; color: #64748b; transition: 0.2s; }
-        .filter-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; }
-        .filter-btn:hover:not(.active) { background: #f1f5f9; }
-
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .exam-card { background: white; border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0; cursor: pointer; transition: 0.3s; }
-        .exam-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border-color: #3b82f6; }
-        .exam-card h3 { margin: 0 0 12px 0; font-size: 14pt; font-weight: 800; color: #1e293b; line-height: 1.4; }
-        
-        .meta { display: flex; gap: 8px; margin-bottom: 12px; }
-        .badge { padding: 4px 10px; border-radius: 6px; font-size: 8.5pt; font-weight: 700; }
-        .badge-grade { background: #eff6ff; color: #3b82f6; }
-        .badge-type { background: #f0fdf4; color: #10b981; }
-        .badge-diff { background: #fff7ed; color: #f59e0b; }
-        
-        .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .tag { font-size: 8.5pt; color: #94a3b8; }
-        .tag::before { content: '#'; }
-        #status { text-align: center; padding: 40px; color: #64748b; font-weight: 600; }
+        body { font-family: 'Pretendard', sans-serif; padding: 20px; background: #f5f5f5; }
+        .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        select, input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+        .exam-card { background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #007bff; transition: 0.2s; cursor: pointer; }
+        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .exam-card.archive { border-left-color: #28a745; }
+        .title { font-weight: bold; font-size: 1.1em; color: #333; margin-bottom: 5px; pointer-events: none; }
+        .meta { font-size: 0.9em; color: #666; pointer-events: none; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; background: #eee; margin-right: 5px; }
+        .badge.grade { background: #fff3cd; color: #856404; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>AP수학학원 기출 저장소</h1>
-            <input type="text" id="search-input" class="search-bar" placeholder="학교명, 단원코드, 태그 검색...">
-        </header>
-
-        <div class="filters" id="filter-bar">
-            <button class="filter-btn active" data-group="all" data-value="all">전체보기</button>
-            <div class="filter-group">
-                <button class="filter-btn" data-group="grade" data-value="1">중1</button>
-                <button class="filter-btn" data-group="grade" data-value="2">중2</button>
-                <button class="filter-btn" data-group="grade" data-value="3">중3</button>
-            </div>
-            <div class="filter-group">
-                <button class="filter-btn" data-group="type" data-value="mid">중간</button>
-                <button class="filter-btn" data-group="type" data-value="final">기말</button>
-            </div>
-        </div>
-
-        <div id="exam-list" class="exam-grid"></div>
-        <div id="status">데이터를 로드하는 중...</div>
+    <div class="filter-container">
+        <input type="text" id="searchInput" placeholder="학교명 또는 과목 검색...">
+        <select id="yearFilter"><option value="all">모든 연도</option></select>
+        <select id="gradeFilter"><option value="all">모든 학년</option></select>
+        <select id="subjectFilter"><option value="all">모든 과목</option></select>
+        <select id="typeFilter">
+            <option value="all">모든 유형</option>
+            <option value="exam">학교 기출</option>
+            <option value="archive">기출 정리</option>
+        </select>
     </div>
+    <div id="examList" class="exam-grid"></div>
 
-<script>
-let examData = [];
-const filterState = { search: '', grade: 'all', type: 'all' };
-const diffMap = { easy: '입문', normal: '보통', hard: '고난도' };
+    <script>
+        let db = { exams: [] };
+        let currentFiltered = []; // [결함 7] 필터 결과 보관용 변수
 
-function escapeHtml(str) {
-    if (!str) return "";
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
+        async function init() {
+            try {
+                const res = await fetch('db.json');
+                db = await res.json();
+                setupFilters();
+                renderExams(db.exams);
+            } catch (e) { document.getElementById('examList').innerHTML = "데이터 로드 실패"; }
+        }
 
-async function loadExams() {
-    try {
-        const response = await fetch('db.json?v=' + Date.now());
-        if (!response.ok) throw new Error('db.json 파일을 찾을 수 없습니다.');
-        const data = await response.json();
-        examData = data.exams || [];
-        renderExams();
-    } catch (err) {
-        document.getElementById('status').innerHTML = `<span style="color:#ef4444;">${err.message}</span>`;
-    }
-}
+        function setupFilters() {
+            // [버그 2] DOM 변수 명시적 선언
+            const els = ['searchInput', 'yearFilter', 'gradeFilter', 'subjectFilter', 'typeFilter']
+                .map(id => document.getElementById(id));
+            
+            const years = [...new Set(db.exams.map(e => e.year))].sort((a, b) => b - a);
+            const grades = [...new Set(db.exams.map(e => e.grade))].sort();
+            const subjects = [...new Set(db.exams.map(e => e.subject))].sort();
 
-function renderExams() {
-    const list = document.getElementById('exam-list');
-    const status = document.getElementById('status');
-    
-    const filtered = examData.filter(ex => {
-        /* [수정] 검색 로직: escapeHtml 적용 전 순수 데이터로 검색 */
-        const searchTarget = `${ex.title} ${(ex.tags||[]).join(' ')} ${(ex.units||[]).join(' ')}`.toLowerCase();
-        const matchSearch = searchTarget.includes(filterState.search.toLowerCase());
-        const matchGrade = filterState.grade === 'all' || ex.grade == filterState.grade;
-        const matchType = filterState.type === 'all' || ex.examType === filterState.type;
-        return matchSearch && matchGrade && matchType;
-    });
+            populateSelect('yearFilter', years);
+            populateSelect('gradeFilter', grades);
+            populateSelect('subjectFilter', subjects);
 
-    list.innerHTML = '';
-    if (filtered.length === 0) {
-        status.innerText = "조건에 맞는 시험지가 없습니다.";
-        status.style.display = 'block';
-        return;
-    }
+            els.forEach(el => {
+                el.addEventListener('change', filterData);
+                el.addEventListener('input', filterData);
+            });
+        }
 
-    status.style.display = 'none';
-    filtered.forEach(ex => {
-        const card = document.createElement('div');
-        card.className = 'exam-card';
-        card.onclick = () => {
-            /* [수정] 엔진 연결: data와 title 모두 안전하게 인코딩 */
-            location.href = `engine.html?data=${encodeURIComponent(ex.file)}&title=${encodeURIComponent(ex.title)}`;
-        };
+        function populateSelect(id, items) {
+            const select = document.getElementById(id);
+            items.forEach(item => {
+                const opt = document.createElement('option');
+                opt.value = item; opt.textContent = item; select.appendChild(opt);
+            });
+        }
 
-        card.innerHTML = `
-            <div class="meta">
-                <span class="badge badge-grade">중${ex.grade}</span>
-                <span class="badge badge-type">${ex.examType === 'mid' ? '중간' : '기말'}</span>
-                <span class="badge badge-diff">${diffMap[ex.difficulty] || ex.difficulty}</span>
-            </div>
-            <h3>${escapeHtml(ex.title)}</h3>
-            <div class="tags">
-                ${(ex.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}
-            </div>
-        `;
-        list.appendChild(card);
-    });
-}
+        function filterData() {
+            const s = document.getElementById('searchInput').value.toLowerCase();
+            const y = document.getElementById('yearFilter').value;
+            const g = document.getElementById('gradeFilter').value;
+            const sub = document.getElementById('subjectFilter').value;
+            const t = document.getElementById('typeFilter').value;
 
-document.getElementById('search-input').addEventListener('input', (e) => {
-    filterState.search = e.target.value;
-    renderExams();
-});
+            currentFiltered = db.exams.filter(ex => {
+                const matchSearch = (ex.school.toLowerCase().includes(s) || ex.subject.toLowerCase().includes(s));
+                return matchSearch &&
+                       (y === 'all' || ex.year.toString() === y) &&
+                       (g === 'all' || ex.grade === g) &&
+                       (sub === 'all' || ex.subject === sub) &&
+                       (t === 'all' || ex.type === t);
+            });
+            renderExams(currentFiltered);
+        }
 
-/* [수정] 필터 로직: 독립적인 그룹 관리 */
-document.getElementById('filter-bar').addEventListener('click', (e) => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
+        function renderExams(data) {
+            const container = document.getElementById('examList');
+            container.innerHTML = data.map((ex, i) => {
+                const year2 = String(ex.year).slice(-2);
+                const gradeNum = ex.grade.replace(/[^0-9]/g, '');
+                const semText = ex.semester ? `${ex.semester}학기` : "";
+                const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
+                
+                // [버그 4] Archive 항목 제목 보정 및 고정 규칙 적용
+                const fullTitle = ex.title || `${year2}_${ex.school}${gradeNum}_${semText}_${typeText}_${ex.grade}`.replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
 
-    const group = btn.dataset.group;
-    const value = btn.dataset.value;
+                return `
+                    <div class="exam-card ${ex.type}" data-idx="${i}" data-title="${fullTitle}">
+                        <div class="title">${fullTitle}</div>
+                        <div class="meta">
+                            <span class="badge">${ex.type === 'exam' ? '기출' : '정리'}</span>
+                            <span class="badge grade">${ex.grade}</span>
+                            <span>📄 ${ex.file}</span>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
 
-    if (group === 'all') {
-        filterState.grade = 'all';
-        filterState.type = 'all';
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-    } else {
-        // '전체' 버튼 및 해당 그룹 active 초기화
-        document.querySelector('.filter-btn[data-group="all"]').classList.remove('active');
-        document.querySelectorAll(`.filter-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
-        
-        // 현재 버튼 활성화 및 상태 저장
-        btn.classList.add('active');
-        filterState[group] = value;
-    }
-    renderExams();
-});
+        // [결함 6] 이벤트 위임 (XSS 및 window.open 대응)
+        document.getElementById('examList').addEventListener('click', e => {
+            const card = e.target.closest('.exam-card');
+            if (!card) return;
+            const ex = currentFiltered[card.dataset.idx];
+            const title = card.dataset.title;
+            const moveUrl = `engine.html?data=exams/${encodeURIComponent(ex.file)}&title=${encodeURIComponent(title)}`;
+            // [버그 1] location.href로 동일 탭 이동 (CORS 및 로딩 무결성)
+            location.href = moveUrl;
+        });
 
-loadExams();
-</script>
+        init();
+    </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
-var questionBank = [
+window.examTitle = "2025_왕운중3_1학기_중간_중3";
+
+window.questionBank = [
     {
         num: "1",
         content: "제곱근에 대한 설명 중 옳은 것을 고르면? [3점]",
