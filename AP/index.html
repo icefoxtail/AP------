@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>시험지 통합 관리 시스템 v7.5.0</title>
+    <title>시험지 통합 관리 시스템</title>
     <style>
         body { font-family: 'Pretendard', sans-serif; padding: 20px; background: #f5f5f5; }
         .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
@@ -11,9 +11,9 @@
         .exam-card { background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #007bff; transition: 0.2s; cursor: pointer; }
         .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
         .exam-card.archive { border-left-color: #28a745; }
-        .title { font-weight: bold; font-size: 1.1em; color: #333; margin-bottom: 5px; pointer-events: none; }
-        .meta { font-size: 0.9em; color: #666; pointer-events: none; }
-        .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; background: #eee; margin-right: 5px; }
+        .title { font-weight: bold; font-size: 1.1em; color: #333; margin-bottom: 5px; }
+        .meta { font-size: 0.9em; color: #666; display: flex; align-items: center; gap: 5px; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; background: #eee; }
         .badge.grade { background: #fff3cd; color: #856404; }
     </style>
 </head>
@@ -33,39 +33,52 @@
 
     <script>
         let db = { exams: [] };
-        let currentFiltered = []; // [결함 7] 필터 결과 보관용 변수
+
+        function escapeHTML(str) {
+            if (!str) return "";
+            return String(str).replace(/[&<>"']/g, m => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[m]));
+        }
 
         async function init() {
             try {
-                const res = await fetch('db.json');
-                db = await res.json();
+                const response = await fetch('db.json');
+                if (!response.ok) throw new Error('db.json 로드 실패');
+                const rawData = await response.json();
+                
+                // [무결성 보정] 데이터 검증 레이어: 최소한 file이 있는 데이터만 살림
+                db.exams = (rawData.exams || []).filter(ex => ex && ex.file);
+                
                 setupFilters();
-                renderExams(db.exams);
-            } catch (e) { document.getElementById('examList').innerHTML = "데이터 로드 실패"; }
+                filterData(); // 초기 렌더링
+            } catch (e) {
+                document.getElementById('examList').innerHTML = `<p style="color:red; padding:20px;">⚠️ 데이터 연동 오류: ${e.message}</p>`;
+            }
         }
 
         function setupFilters() {
-            // [버그 2] DOM 변수 명시적 선언
-            const els = ['searchInput', 'yearFilter', 'gradeFilter', 'subjectFilter', 'typeFilter']
-                .map(id => document.getElementById(id));
+            // [최신순 정렬] 연도 내림차순 정렬 후 필터 구성
+            const sortedExams = [...db.exams].sort((a, b) => (b.year || 0) - (a.year || 0));
             
-            const years = [...new Set(db.exams.map(e => e.year))].sort((a, b) => b - a);
-            const grades = [...new Set(db.exams.map(e => e.grade))].sort();
-            const subjects = [...new Set(db.exams.map(e => e.subject))].sort();
+            const years = [...new Set(sortedExams.map(e => (e.year || "")))];
+            const grades = [...new Set(sortedExams.map(e => (e.grade || "")))].sort();
+            const subjects = [...new Set(sortedExams.map(e => (e.subject || "")))].sort();
 
             populateSelect('yearFilter', years);
             populateSelect('gradeFilter', grades);
             populateSelect('subjectFilter', subjects);
 
-            els.forEach(el => {
-                el.addEventListener('change', filterData);
-                el.addEventListener('input', filterData);
+            ['searchInput', 'yearFilter', 'gradeFilter', 'subjectFilter', 'typeFilter'].forEach(id => {
+                document.getElementById(id).addEventListener('input', filterData);
             });
         }
 
         function populateSelect(id, items) {
             const select = document.getElementById(id);
+            if (!select) return;
             items.forEach(item => {
+                if (!item) return;
                 const opt = document.createElement('option');
                 opt.value = item; opt.textContent = item; select.appendChild(opt);
             });
@@ -78,51 +91,60 @@
             const sub = document.getElementById('subjectFilter').value;
             const t = document.getElementById('typeFilter').value;
 
-            currentFiltered = db.exams.filter(ex => {
-                const matchSearch = (ex.school.toLowerCase().includes(s) || ex.subject.toLowerCase().includes(s));
-                return matchSearch &&
-                       (y === 'all' || ex.year.toString() === y) &&
-                       (g === 'all' || ex.grade === g) &&
-                       (sub === 'all' || ex.subject === sub) &&
-                       (t === 'all' || ex.type === t);
+            // [필터 및 정렬]
+            let filtered = db.exams.filter(ex => {
+                const school = (ex.school || "").toLowerCase();
+                const subject = (ex.subject || "").toLowerCase();
+                return (school.includes(s) || subject.includes(s)) &&
+                       (y === 'all' || (ex.year || "").toString() === y) &&
+                       (g === 'all' || (ex.grade || "").toString() === g) &&
+                       (sub === 'all' || (ex.subject || "") === sub) &&
+                       (t === 'all' || (ex.type || "exam") === t);
             });
-            renderExams(currentFiltered);
+
+            // 최신순 유지
+            filtered.sort((a, b) => (b.year || 0) - (a.year || 0));
+            renderExams(filtered);
         }
 
         function renderExams(data) {
             const container = document.getElementById('examList');
-            container.innerHTML = data.map((ex, i) => {
-                const year2 = String(ex.year).slice(-2);
-                const gradeNum = ex.grade.replace(/[^0-9]/g, '');
+            container.innerHTML = ""; // 기존 내용 비우기
+
+            if (data.length === 0) {
+                container.innerHTML = "<p style='padding:20px;'>해당하는 시험지가 없습니다.</p>";
+                return;
+            }
+
+            // [GPT 권장 수용] createElement 방식으로 전환하여 이벤트 무결성 확보
+            data.forEach(ex => {
                 const semText = ex.semester ? `${ex.semester}학기` : "";
                 const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
+                const school = escapeHTML(ex.school);
+                const grade = escapeHTML(ex.grade);
+                const subject = escapeHTML(ex.subject);
+
+                let fullTitle = `${ex.year}_${school}_${grade}_${semText}_${typeText}_${subject}`;
+                fullTitle = fullTitle.replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
+
+                const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(fullTitle)}`;
+
+                const card = document.createElement('div');
+                card.className = `exam-card ${ex.type || 'exam'}`;
+                card.innerHTML = `
+                    <div class="title">${fullTitle}</div>
+                    <div class="meta">
+                        <span class="badge">${ex.type === 'archive' ? '정리' : '기출'}</span>
+                        <span class="badge grade">${grade}</span>
+                        <span style="font-size:0.8em; color:#999; margin-left:auto;">📄 ${escapeHTML(ex.file)}</span>
+                    </div>
+                `;
                 
-                // [버그 4] Archive 항목 제목 보정 및 고정 규칙 적용
-                const fullTitle = ex.title || `${year2}_${ex.school}${gradeNum}_${semText}_${typeText}_${ex.grade}`.replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
-
-                return `
-                    <div class="exam-card ${ex.type}" data-idx="${i}" data-title="${fullTitle}">
-                        <div class="title">${fullTitle}</div>
-                        <div class="meta">
-                            <span class="badge">${ex.type === 'exam' ? '기출' : '정리'}</span>
-                            <span class="badge grade">${ex.grade}</span>
-                            <span>📄 ${ex.file}</span>
-                        </div>
-                    </div>`;
-            }).join('');
+                // 문자열 onclick 대신 안전한 이벤트 리스너 등록
+                card.onclick = () => window.open(moveUrl, '_blank');
+                container.appendChild(card);
+            });
         }
-
-        // [결함 6] 이벤트 위임 (XSS 및 window.open 대응)
-        document.getElementById('examList').addEventListener('click', e => {
-            const card = e.target.closest('.exam-card');
-            if (!card) return;
-            const ex = currentFiltered[card.dataset.idx];
-            const title = card.dataset.title;
-            const moveUrl = `engine.html?data=exams/${encodeURIComponent(ex.file)}&title=${encodeURIComponent(title)}`;
-            // [버그 1] location.href로 동일 탭 이동 (CORS 및 로딩 무결성)
-            location.href = moveUrl;
-        });
-
         init();
     </script>
 </body>
