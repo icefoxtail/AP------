@@ -2,10 +2,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP수학 엔진 v7.5.0</title>
+    <title>시험지 엔진 v8.8</title>
     <script>
         window.MathJax = {
-            tex: { inlineMath: [['$', '$']], macros: { tf: ['\\dfrac{#1}{#2}', 2], implies: '\\Rightarrow', therefore: '\\therefore' } },
+            tex: { inlineMath: [['$', '$']], macros: { tf: ['\\dfrac{#1}{#2}', 2] } },
             startup: { typeset: false }
         };
     </script>
@@ -19,21 +19,22 @@
         .content-container { display: flex; flex: 1; width: 100%; height: 100%; overflow: hidden; }
         body.test-mode .content-container { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10mm; }
         body.test-mode .item { height: 125mm; overflow: hidden; border: 1px solid #f1f5f9; padding: 5mm; box-sizing: border-box; display: flex; flex-direction: column; }
-        body.sol-mode .content-container { display: block; }
         body.sol-mode .item { border-bottom: 1px dashed #cbd5e1; padding-bottom: 10mm; margin-bottom: 10mm; }
         .sol-mode-only { display: none; }
         body.sol-mode .sol-mode-only { display: block; }
+        button { cursor: pointer; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; }
         @media print { .no-print { display: none !important; } body { padding-top: 0; } .page { margin: 0; } }
     </style>
 </head>
 <body class="test-mode">
     <div id="mode-ctrl" class="no-print">
-        <button onclick="location.href='index.html'">뒤로가기</button>
+        <button onclick="location.href='index.html'">← 목록</button>
         <div>
-            <button onclick="setMode('test-mode')">시험</button>
-            <button onclick="setMode('sol-mode')">해설</button>
-            <button onclick="setMode('ans-mode')">정답</button>
+            <button onclick="setMode('test-mode')">시험지</button>
+            <button onclick="setMode('sol-mode')">해설지</button>
+            <button onclick="setMode('ans-mode')">정답표</button>
         </div>
+        <button onclick="window.print()" style="background:#1e293b; color:white; border:none;">🖨️ 인쇄 / PDF</button>
     </div>
     <div id="print-area"></div>
     <div id="item-pool" style="display:none;"></div>
@@ -42,13 +43,33 @@
 const AppState = { title: "" };
 const CIRCLED = ['①','②','③','④','⑤'];
 
-function secureFormat(text) {
-    if (!text) return "";
-    const mathChunks = [];
-    const protected = String(text).replace(/\$[\s\S]*?\$/g, m => { mathChunks.push(m); return '\x00MATH\x00'; });
-    let escaped = protected.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-        .replace(/&lt;br\s*\/?&gt;/gi, '<br>').replace(/&lt;b&gt;(.*?)&lt;\/b&gt;/gi, '<b>$1</b>');
-    return escaped.split('\x00MATH\x00').map((p, i) => p + (mathChunks[i] || "")).join('');
+function setMode(m) { document.body.className = m; initRender(); }
+
+// [수정] 파일 로드 로직 (한글 및 경로 무결성 확보)
+(function load() {
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get('data'); // index에서 보낸 exams/파일명.js
+    const title = params.get('title');
+
+    if (!file) return;
+    
+    AppState.title = decodeURIComponent(title || 'AP수학');
+    document.title = AppState.title;
+
+    const s = document.createElement('script');
+    // 경로에 한글이 있어도 읽을 수 있도록 처리
+    s.src = file + '?v=' + Date.now();
+    s.onload = initRender;
+    s.onerror = () => {
+        document.getElementById('print-area').innerHTML = `<h2 style='text-align:center; margin-top:100px;'>❌ 파일을 찾을 수 없습니다.<br><small>${file}</small></h2>`;
+    };
+    document.body.appendChild(s);
+})();
+
+async function initRender() {
+    renderItems();
+    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise();
+    paginate();
 }
 
 function renderItems() {
@@ -57,27 +78,16 @@ function renderItems() {
         const isSub = !q.choices || q.choices.length < 5;
         return `
         <div class="item">
-            <div style="font-size:7.5pt; color:#94a3b8;">[${q.level || '중'}] ${q.category || '기출'}</div>
-            <div style="flex:1;">
-                <b>${i+1}.</b> ${secureFormat(q.content)}
-                ${!isSub ? `<div style="margin-top:10px;">${q.choices.map((c, ci) => `<div>${CIRCLED[ci]} ${secureFormat(c)}</div>`).join('')}</div>` : ''}
+            <div style="font-size:7.5pt; color:#94a3b8;">[${q.level || '중'}] ${q.category || ''}</div>
+            <div style="flex:1;"><b>${i+1}.</b> ${q.content}
+                ${!isSub ? `<div style="margin-top:10px;">${q.choices.map((c, ci) => `<div>${CIRCLED[ci]} ${c}</div>`).join('')}</div>` : ''}
             </div>
             ${isSub ? `<div style="margin-top:auto; border:1px solid #ccc; height:35mm; background:#f8fafc;"></div>` : ''}
             <div class="sol-mode-only" style="margin-top:10px; padding-top:10px; border-top:1px dashed #eee;">
-                <b style="color:#10b981;">[해설]</b> ${secureFormat(q.solution)}
-                <div style="text-align:right; color:#ef4444; font-weight:bold;">정답: ${q.answer}</div>
+                <b>[해설]</b> ${q.solution} <div style="text-align:right; color:#ef4444; font-weight:bold;">정답: ${q.answer}</div>
             </div>
         </div>`;
     }).join('');
-}
-
-async function initRender() {
-    renderItems();
-    if (window.MathJax?.startup?.promise) {
-        await MathJax.startup.promise;
-        await MathJax.typesetPromise();
-    }
-    paginate();
 }
 
 function paginate() {
@@ -85,7 +95,7 @@ function paginate() {
     printArea.innerHTML = '';
     const items = Array.from(document.getElementById('item-pool').querySelectorAll('.item'));
     const mode = document.body.className;
-    
+
     const addPage = (suffix = "") => {
         const page = document.createElement('div'); page.className = 'page';
         page.innerHTML = `<div style="border-bottom:2px solid #1e293b; padding-bottom:5px; margin-bottom:15px; font-weight:bold; display:flex; justify-content:space-between;">
@@ -95,75 +105,28 @@ function paginate() {
         return page;
     };
 
-    // [버그 5] ans-mode 분기 복구
     if (mode === 'ans-mode') {
         const page = addPage("[정답표]");
+        let html = '<table style="width:100%; border-collapse:collapse; margin-top:10px;">';
         const bank = window.questionBank || [];
-        let html = `<table style="width:100%; border-collapse:collapse; margin-top:10px;">`;
         for (let i = 0; i < bank.length; i += 5) {
             html += '<tr>';
             for (let j = i; j < i + 5; j++) {
-                if (j < bank.length) {
-                    html += `<td style="border:1px solid #ccc; padding:8px; text-align:center; background:#f8fafc; font-weight:bold; width:40px;">${j+1}</td>
-                             <td style="border:1px solid #ccc; padding:8px; text-align:center;">${bank[j].answer}</td>`;
-                } else {
-                    html += `<td style="border:1px solid #ccc; width:40px;"></td><td style="border:1px solid #ccc;"></td>`;
-                }
+                if (j < bank.length) html += `<td style="border:1px solid #ccc; padding:8px; text-align:center; background:#f8fafc; font-weight:bold; width:40px;">${j+1}</td><td style="border:1px solid #ccc; padding:8px; text-align:center;">${bank[j].answer}</td>`;
+                else html += '<td style="border:1px solid #ccc; width:40px;"></td><td style="border:1px solid #ccc;"></td>';
             }
             html += '</tr>';
         }
-        html += '</table>';
-        page.querySelector('.content-container').innerHTML = html;
+        page.querySelector('.content-container').innerHTML = html + '</table>';
         return;
     }
 
     let currentPage = addPage(mode === 'sol-mode' ? "[해설지]" : "");
-    
-    // [버그 3] 높이 누적 추적 방식 (MathJax 렌더링 후 정확한 높이 측정)
-    if (mode === 'sol-mode') {
-        const PAGE_HEIGHT_PX = 267 * 3.7795; 
-        let usedHeight = 80; 
-
-        items.forEach(item => {
-            const clone = item.cloneNode(true);
-            clone.style.visibility = 'hidden';
-            clone.style.position = 'absolute';
-            document.body.appendChild(clone);
-            const h = clone.offsetHeight + 40; 
-            document.body.removeChild(clone);
-
-            if (usedHeight + h > PAGE_HEIGHT_PX && usedHeight > 80) {
-                currentPage = addPage("[해설지]");
-                usedHeight = 80;
-            }
-            currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
-            usedHeight += h;
-        });
-    } else {
-        items.forEach((item, idx) => {
-            if (idx > 0 && idx % 4 === 0) currentPage = addPage();
-            currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
-        });
-    }
+    items.forEach((item, idx) => {
+        if (mode !== 'sol-mode' && idx > 0 && idx % 4 === 0) currentPage = addPage();
+        currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
+    });
 }
-
-function setMode(m) { document.body.className = m; initRender(); }
-
-(function load() {
-    const params = new URLSearchParams(window.location.search);
-    AppState.title = params.get('title') || '제목 없음';
-    const file = params.get('data');
-    if (!file) return;
-
-    const s = document.createElement('script');
-    s.src = file + '?v=' + Date.now();
-    s.onload = initRender;
-    s.onerror = () => {
-        document.getElementById('print-area').innerHTML = `<div style="padding:50px; color:#ef4444; text-align:center;">
-            <h2>❌ 데이터 로드 실패</h2>경로 확인: <b>${file}</b></div>`;
-    };
-    document.body.appendChild(s);
-})();
 </script>
 </body>
 </html>

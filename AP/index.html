@@ -7,14 +7,13 @@
         body { font-family: 'Pretendard', sans-serif; padding: 20px; background: #f5f5f5; }
         .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
         select, input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
-        .exam-card { background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #007bff; transition: 0.2s; cursor: pointer; }
-        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
+        .exam-card { background: white; padding: 18px; border-radius: 10px; border-left: 6px solid #007bff; transition: 0.2s; cursor: pointer; min-height: 100px; display: flex; flex-direction: column; justify-content: center; }
+        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .exam-card.archive { border-left-color: #28a745; }
-        .title { font-weight: bold; font-size: 1.1em; color: #333; margin-bottom: 5px; }
-        .meta { font-size: 0.9em; color: #666; display: flex; align-items: center; gap: 5px; }
-        .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; background: #eee; }
-        .badge.grade { background: #fff3cd; color: #856404; }
+        .title { font-weight: bold; font-size: 1.1em; color: #333; margin-bottom: 8px; word-break: keep-all; }
+        .meta { font-size: 0.85em; color: #666; display: flex; align-items: center; gap: 8px; }
+        .badge { padding: 2px 6px; border-radius: 4px; background: #eee; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -23,62 +22,38 @@
         <select id="yearFilter"><option value="all">모든 연도</option></select>
         <select id="gradeFilter"><option value="all">모든 학년</option></select>
         <select id="subjectFilter"><option value="all">모든 과목</option></select>
-        <select id="typeFilter">
-            <option value="all">모든 유형</option>
-            <option value="exam">학교 기출</option>
-            <option value="archive">기출 정리</option>
-        </select>
     </div>
     <div id="examList" class="exam-grid"></div>
 
     <script>
         let db = { exams: [] };
 
-        function escapeHTML(str) {
-            if (!str) return "";
-            return String(str).replace(/[&<>"']/g, m => ({
-                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-            }[m]));
-        }
-
         async function init() {
             try {
-                const response = await fetch('db.json');
-                if (!response.ok) throw new Error('db.json 로드 실패');
-                const rawData = await response.json();
-                
-                // [무결성 보정] 데이터 검증 레이어: 최소한 file이 있는 데이터만 살림
-                db.exams = (rawData.exams || []).filter(ex => ex && ex.file);
-                
+                const res = await fetch('db.json');
+                db = await res.json();
                 setupFilters();
-                filterData(); // 초기 렌더링
-            } catch (e) {
-                document.getElementById('examList').innerHTML = `<p style="color:red; padding:20px;">⚠️ 데이터 연동 오류: ${e.message}</p>`;
-            }
+                renderExams(db.exams);
+            } catch (e) { console.error("데이터 로드 실패"); }
         }
 
         function setupFilters() {
-            // [최신순 정렬] 연도 내림차순 정렬 후 필터 구성
-            const sortedExams = [...db.exams].sort((a, b) => (b.year || 0) - (a.year || 0));
-            
-            const years = [...new Set(sortedExams.map(e => (e.year || "")))];
-            const grades = [...new Set(sortedExams.map(e => (e.grade || "")))].sort();
-            const subjects = [...new Set(sortedExams.map(e => (e.subject || "")))].sort();
+            const exams = (db.exams || []).sort((a, b) => b.year - a.year);
+            const years = [...new Set(exams.map(e => e.year))];
+            const grades = [...new Set(exams.map(e => e.grade))].sort();
+            const subjects = [...new Set(exams.map(e => e.subject))].sort();
 
             populateSelect('yearFilter', years);
             populateSelect('gradeFilter', grades);
             populateSelect('subjectFilter', subjects);
 
-            ['searchInput', 'yearFilter', 'gradeFilter', 'subjectFilter', 'typeFilter'].forEach(id => {
-                document.getElementById(id).addEventListener('input', filterData);
-            });
+            document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', filterData));
         }
 
         function populateSelect(id, items) {
             const select = document.getElementById(id);
-            if (!select) return;
             items.forEach(item => {
-                if (!item) return;
+                if(!item) return;
                 const opt = document.createElement('option');
                 opt.value = item; opt.textContent = item; select.appendChild(opt);
             });
@@ -89,44 +64,25 @@
             const y = document.getElementById('yearFilter').value;
             const g = document.getElementById('gradeFilter').value;
             const sub = document.getElementById('subjectFilter').value;
-            const t = document.getElementById('typeFilter').value;
 
-            // [필터 및 정렬]
-            let filtered = db.exams.filter(ex => {
-                const school = (ex.school || "").toLowerCase();
-                const subject = (ex.subject || "").toLowerCase();
-                return (school.includes(s) || subject.includes(s)) &&
-                       (y === 'all' || (ex.year || "").toString() === y) &&
-                       (g === 'all' || (ex.grade || "").toString() === g) &&
-                       (sub === 'all' || (ex.subject || "") === sub) &&
-                       (t === 'all' || (ex.type || "exam") === t);
+            const filtered = db.exams.filter(ex => {
+                return ((ex.school || "").toLowerCase().includes(s) || (ex.subject || "").toLowerCase().includes(s)) &&
+                       (y === 'all' || String(ex.year) === y) &&
+                       (g === 'all' || String(ex.grade) === g) &&
+                       (sub === 'all' || ex.subject === sub);
             });
-
-            // 최신순 유지
-            filtered.sort((a, b) => (b.year || 0) - (a.year || 0));
             renderExams(filtered);
         }
 
         function renderExams(data) {
             const container = document.getElementById('examList');
-            container.innerHTML = ""; // 기존 내용 비우기
-
-            if (data.length === 0) {
-                container.innerHTML = "<p style='padding:20px;'>해당하는 시험지가 없습니다.</p>";
-                return;
-            }
-
-            // [GPT 권장 수용] createElement 방식으로 전환하여 이벤트 무결성 확보
+            container.innerHTML = "";
             data.forEach(ex => {
                 const semText = ex.semester ? `${ex.semester}학기` : "";
                 const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-                const school = escapeHTML(ex.school);
-                const grade = escapeHTML(ex.grade);
-                const subject = escapeHTML(ex.subject);
+                let fullTitle = `${ex.year}_${ex.school}_${ex.grade}_${semText}_${typeText}_${ex.subject}`.replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
 
-                let fullTitle = `${ex.year}_${school}_${grade}_${semText}_${typeText}_${subject}`;
-                fullTitle = fullTitle.replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
-
+                // [중요] exams/ 폴더명을 붙이고 전체를 인코딩해서 보냅니다.
                 const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(fullTitle)}`;
 
                 const card = document.createElement('div');
@@ -135,12 +91,10 @@
                     <div class="title">${fullTitle}</div>
                     <div class="meta">
                         <span class="badge">${ex.type === 'archive' ? '정리' : '기출'}</span>
-                        <span class="badge grade">${grade}</span>
-                        <span style="font-size:0.8em; color:#999; margin-left:auto;">📄 ${escapeHTML(ex.file)}</span>
+                        <span class="badge">${ex.grade}</span>
+                        <span style="color:#999; margin-left:auto;">📄 ${ex.file}</span>
                     </div>
                 `;
-                
-                // 문자열 onclick 대신 안전한 이벤트 리스너 등록
                 card.onclick = () => window.open(moveUrl, '_blank');
                 container.appendChild(card);
             });

@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP Math 출제 매니저 v3.4</title>
+    <title>AP Math 출제 매니저 v4.2.3</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=block');
         body { font-family: 'Nanum Myeongjo', serif; padding: 30px; background: #f1f5f9; color: #1e293b; letter-spacing: -0.5px; }
@@ -31,11 +31,11 @@
 <body>
 
 <div class="container">
-    <h1>🚀 AP Math 출제 매니저 v3.4</h1>
+    <h1>🚀 AP Math 출제 매니저 v4.2.3</h1>
     <div class="input-group">
-        <label>🔑 Gemini API Key (난독화 저장)</label>
+        <label>🔑 Gemini API Key</label>
         <div class="api-input-container">
-            <input type="password" id="apiKey" placeholder="API 키를 입력하세요" autocomplete="current-password" style="flex: 1;">
+            <input type="password" id="apiKey" placeholder="API 키를 입력하세요" style="flex: 1;">
             <button id="btnSaveKey" class="btn-save" onclick="saveApiKey()">💾 저장</button>
         </div>
     </div>
@@ -48,7 +48,7 @@
         <input type="text" id="topicInput" value="유리수와 순환소수 ~ 일차부등식 (심화 단원 결합)">
     </div>
     <div class="difficulty-table">
-        <label>📊 난이도별 문항 설정 (정확한 분포 엄수)</label>
+        <label>📊 난이도별 문항 설정</label>
         <div class="difficulty-grid">
             <div class="difficulty-item"><label>하</label><input type="number" id="count_low" value="5" min="0"></div>
             <div class="difficulty-item"><label>중</label><input type="number" id="count_mid" value="10" min="0"></div>
@@ -78,7 +78,7 @@ window.onload = () => {
     try {
         const encryptedKey = localStorage.getItem('ap_math_permanent_key');
         if (encryptedKey) document.getElementById('apiKey').value = decodeKey(encryptedKey);
-    } catch (e) { console.error("키 복구 실패", e); }
+    } catch (e) {}
     updateUIState();
 };
 
@@ -109,102 +109,105 @@ function resetBank() {
     updateUIState();
 }
 
-function buildQuestionsRows(questions, type = 'exam') {
-    const labels = ['①','②','③','④','⑤'];
-    return questions.map((q, i) => {
-        const choicesHtml = q.choices.map((c, idx) => `<span>${labels[idx]} ${c}</span>`).join('');
-        const solutionHtml = type === 'solution' ? `<div class="sol-box"><b>[해설]</b><br>${q.solution}<br><b>정답: ${q.answer}</b></div>` : '';
-        const metaHtml = type === 'solution' ? `<span style="font-size:8pt;color:#94a3b8;">[${q.score}점 / ${q.difficulty}]</span>` : '';
-        return `<div class="q-item"><span class="q-num">${i + 1}.</span> ${q.content} ${metaHtml}<div class="choices">${choicesHtml}</div>${solutionHtml}</div>`;
-    }).join('');
+async function fetchDifficultyBlock(apiKey, topic, difficulty, count, retry = 0) {
+    if (count <= 0) return [];
+    
+    const promptText = `주제: ${topic}
+난이도 [${difficulty}] 수학 객관식 ${count}문항 생성.
+반드시 JSON 배열만 출력 ($...$ LaTeX 필수).
+형식: [{"difficulty":"${difficulty}","score":${difficulty==='최상'?6:5},"content":"","choices":["","","","",""],"answer":"1","solution":""}]`;
+
+    try {
+        // [완전 교정] 가장 표준화된 API 주소 체계 적용
+        const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+        
+        const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                contents: [{ parts: [{ text: promptText }] }]
+            })
+        });
+
+        if (!response.ok) {
+            const errBody = await response.json().catch(() => ({}));
+            throw new Error(`${response.status}: ${errBody.error?.message || '주소 또는 키 오류'}`);
+        }
+        
+        const data = await response.json();
+        const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        
+        const cleaned = rawJson.replace(/```json|```/g, '').trim();
+        const match = cleaned.match(/\[\s*{[\s\S]*}\s*\]/);
+        if (!match) throw new Error(`${difficulty} JSON 파싱 실패`);
+        
+        const parsed = JSON.parse(match[0]);
+
+        parsed.forEach((q, i) => {
+            if (!q.content || !q.solution || !q.answer) throw new Error(`${difficulty} ${i+1}번 데이터 누락`);
+            if (!Array.isArray(q.choices) || q.choices.length !== 5) throw new Error(`${difficulty} ${i+1}번 보기 오류`);
+        });
+
+        return parsed;
+    } catch (e) {
+        if (retry < 2) return fetchDifficultyBlock(apiKey, topic, difficulty, count, retry + 1);
+        throw e;
+    }
 }
 
 async function generateAIProblem() {
     const apiKey = document.getElementById("apiKey").value.trim();
     const topic = document.getElementById("topicInput").value.trim();
     const counts = {
-        하: parseInt(document.getElementById('count_low').value) || 0,
-        중: parseInt(document.getElementById('count_mid').value) || 0,
-        상: parseInt(document.getElementById('count_high').value) || 0,
-        최상: parseInt(document.getElementById('count_top').value) || 0
+        '하': parseInt(document.getElementById('count_low').value) || 0,
+        '중': parseInt(document.getElementById('count_mid').value) || 0,
+        '상': parseInt(document.getElementById('count_high').value) || 0,
+        '최상': parseInt(document.getElementById('count_top').value) || 0
     };
-    const total = Object.values(counts).reduce((a, b) => a + b, 0);
-    if (!apiKey || total === 0) return alert("설정을 확인해주세요.");
+    
+    const activeTasks = Object.entries(counts).filter(([_, count]) => count > 0);
+    if (!apiKey || activeTasks.length === 0) return alert("설정을 확인해주세요.");
 
     state.isGenerating = true;
     updateUIState();
     const statusMsg = document.getElementById("statusMsg");
-    statusMsg.style.color = "#f59e0b";
+    statusMsg.style.color = "#3b82f6";
+    statusMsg.innerText = "🚀 표준 API 엔진 가동 중...";
 
-    const promptText = `
-    [수학 출제 엔진: ${topic}]
-    반드시 정확히 ${total}문항의 JSON 배열만 반환하십시오.
-    난이도 분포 엄수: 하(${counts.하}), 중(${counts.중}), 상(${counts.상}), 최상(${counts.최상})
-    
-    [JSON 형식 - 절대 준수]
-    {
-      "difficulty": "하|중|상|최상",
-      "score": number,
-      "content": "문제 내용",
-      "choices": ["보기1", "보기2", "보기3", "보기4", "보기5"],
-      "answer": "정답",
-      "solution": "해설"
-    }`;
+    try {
+        const results = await Promise.all(
+            activeTasks.map(([diff, count]) => fetchDifficultyBlock(apiKey, topic, diff, count))
+        );
 
-    let retryCount = 0;
-    const maxRetries = 2;
+        const diffOrder = { '하': 1, '중': 2, '상': 3, '최상': 4 };
+        const combined = results.flat().sort((a, b) => diffOrder[a.difficulty] - diffOrder[b.difficulty]);
 
-    while (retryCount <= maxRetries) {
-        try {
-            statusMsg.innerText = retryCount === 0 ? `⏳ 출제 시도 중...` : `🔄 오류 감지: 자동 재시도 중 (${retryCount}/${maxRetries})`;
-            
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ 
-                    contents: [{ parts: [{ text: promptText }] }], 
-                    generationConfig: { responseMimeType: "application/json", temperature: 0.2 } 
-                })
-            });
+        const symbolMap = { "1":"①", "2":"②", "3":"③", "4":"④", "5":"⑤" };
+        state.questionBank = combined.map(q => ({
+            ...q,
+            answer: symbolMap[q.answer.toString()] || q.answer
+        }));
 
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const data = await response.json();
-            const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-            const cleanJson = rawJson.replace(/```json|```/g, '').trim().match(/\[.*\]/s)?.[0];
-            const parsed = JSON.parse(cleanJson);
-
-            // [1] 필드 및 데이터 무결성 검증
-            parsed.forEach((q, i) => {
-                if (!q.content || !q.solution || !q.answer) throw new Error(`${i+1}번 문항 데이터 누락`);
-                if (!Array.isArray(q.choices) || q.choices.length !== 5) throw new Error(`${i+1}번 보기 개수 오류`);
-                if (!['하','중','상','최상'].includes(q.difficulty)) throw new Error(`${i+1}번 난이도 설정 오류`);
-            });
-
-            // [2] 난이도 분포 검증
-            const countCheck = { 하: 0, 중: 0, 상: 0, 최상: 0 };
-            parsed.forEach(q => countCheck[q.difficulty]++);
-            if (countCheck.하 !== counts.하 || countCheck.중 !== counts.중 || countCheck.상 !== counts.상 || countCheck.최상 !== counts.최상) {
-                throw new Error(`난이도 분포 불일치 (기대: ${JSON.stringify(counts)}, 결과: ${JSON.stringify(countCheck)})`);
-            }
-
-            // [3] 최종 성공 처리
-            state.questionBank = parsed;
-            document.getElementById("outputBox").innerText = `window.questionBank = ${JSON.stringify(parsed, null, 2)};`;
-            statusMsg.style.color = "#10b981";
-            statusMsg.innerText = `✅ 검증 완료! ${total}문항 출제 성공.`;
-            break; 
-
-        } catch (e) {
-            console.warn(`시도 ${retryCount + 1} 실패:`, e.message);
-            retryCount++;
-            if (retryCount > maxRetries) {
-                statusMsg.style.color = "#ef4444";
-                statusMsg.innerText = `❌ 최종 실패: ${e.message}`;
-            }
-        }
+        document.getElementById("outputBox").innerText = `window.questionBank = ${JSON.stringify(state.questionBank, null, 2)};`;
+        statusMsg.style.color = "#10b981";
+        statusMsg.innerText = `✅ 완료! ${state.questionBank.length}문항 병렬 출제 성공.`;
+    } catch (e) {
+        statusMsg.style.color = "#ef4444";
+        statusMsg.innerText = `❌ 실패: ${e.message}`;
+    } finally {
+        state.isGenerating = false;
+        updateUIState();
     }
-    state.isGenerating = false;
-    updateUIState();
+}
+
+// ... 인쇄 관련 함수 (기존과 동일) ...
+function buildQuestionsRows(questions, type = 'exam') {
+    const labels = ['①','②','③','④','⑤'];
+    return questions.map((q, i) => {
+        const choicesHtml = q.choices.map((c, idx) => `<span>${labels[idx]} ${c}</span>`).join('');
+        const solutionHtml = type === 'solution' ? `<div class="sol-box"><b>[해설]</b><br>${q.solution}<br><b>정답: ${q.answer}</b></div>` : '';
+        return `<div class="q-item"><span class="q-num">${i + 1}.</span> ${q.content} ${type === 'solution' ? `<span style="font-size:8pt;color:#94a3b8;">[${q.score}점/${q.difficulty}]</span>`:''}<div class="choices">${choicesHtml}</div>${solutionHtml}</div>`;
+    }).join('');
 }
 
 function printDoc(type) {
@@ -216,7 +219,7 @@ function printDoc(type) {
         answerTable = '<table class="ans-table"><tr>' + state.questionBank.map((q, i) => 
             `<td><b>${i + 1}</b><br>${q.answer}</td>${(i + 1) % 5 === 0 ? '</tr><tr>' : ''}`).join('') + '</tr></table>';
     }
-    const htmlContent = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title><link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=block" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script><script>window.MathJax={tex:{inlineMath:[['$','$']],macros:{tf:["\\\\tfrac{#1}{#2}",2]}},startup:{pageReady:()=>MathJax.startup.defaultPageReady().then(()=>document.fonts.ready).then(()=>window.print())}}<\/script><style>@page{size:A4;margin:15mm}body{font-family:'Nanum Myeongjo',serif;font-size:10.5pt;margin:0}.header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:20px}.container{column-count:${type === 'answer' ? 1 : 2};column-gap:30px;column-rule:0.5pt solid #eee}.q-item{break-inside:avoid;margin-bottom:5rem}.choices{display:grid;grid-template-columns:1fr;margin-top:10px;row-gap:5px}.ans-table{width:100%;border-collapse:collapse}.ans-table td{border:1px solid #000;padding:12px;text-align:center}.sol-box{background:#f8fafc;padding:12px;border-left:4px solid #3b82f6;margin-top:10px;font-size:9.5pt}</style></head><body><div class="header"><h1>${title}</h1></div><div class="container">${type === 'answer' ? answerTable : rows}</div></body></html>`;
+    const htmlContent = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title><link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=block" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script><script>window.MathJax={tex:{inlineMath:[['$','$']],macros:{tf:["\\\\tfrac{#1}{#2}",2]}},startup:{pageReady:()=>MathJax.startup.defaultPageReady().then(()=>document.fonts.ready).then(()=>window.print())}}<\/script><style>@page{size:A4;margin:15mm}body{font-family:'Nanum Myeongjo',serif;font-size:10.5pt;margin:0}.header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:20px}.container{column-count:${type === 'answer' ? 1 : 2};column-gap:30px;column-rule:0.5pt solid #eee}.q-item{break-inside:avoid;margin-bottom:3.8rem}.choices{display:grid;grid-template-columns:repeat(2, 1fr);row-gap:8px;margin-top:10px}.ans-table{width:100%;border-collapse:collapse}.ans-table td{border:1px solid #000;padding:12px;text-align:center}.sol-box{background:#f8fafc;padding:12px;border-left:4px solid #3b82f6;margin-top:10px;font-size:9.5pt}</style></head><body><div class="header"><h1>${title}</h1></div><div class="container">${type === 'answer' ? answerTable : rows}</div></body></html>`;
     const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
     window.open(URL.createObjectURL(blob), '_blank');
 }
@@ -225,8 +228,8 @@ function copyFullHtml() {
     if (state.questionBank.length === 0) return;
     const title = document.getElementById("examTitle").value;
     const questionsRows = buildQuestionsRows(state.questionBank, 'exam');
-    const fullHtml = `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>${title}</title><link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=block" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script><script>window.MathJax={tex:{inlineMath:[['$','$']],macros:{tf:["\\\\tfrac{#1}{#2}",2]}},startup:{pageReady:()=>MathJax.startup.defaultPageReady().then(()=>document.fonts.ready).then(()=>console.log("Ready"))}}<\/script><style>@page{size:A4;margin:15mm}body{font-family:'Nanum Myeongjo',serif;font-size:10.5pt;margin:0;padding:20px}.header{border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:20px}.container{column-count:2;column-gap:30px;column-rule:0.5pt solid #eee}.q-item{break-inside:avoid;margin-bottom:5.5rem}.choices{display:grid;grid-template-columns:1fr;margin-top:10px;row-gap:5px}.no-print{text-align:center;margin-bottom:20px}@media print{.no-print{display:none}}</style></head><body><div class="no-print"><button onclick="window.print()" style="padding:10px 20px;font-weight:800;cursor:pointer">🖨️ 인쇄하기</button></div><div class="header"><h1>${title}</h1></div><div class="container">${questionsRows}</div></body></html>`;
-    navigator.clipboard.writeText(fullHtml).then(() => alert("HTML 복사 완료")).catch(err => alert("복사 실패: " + err.message));
+    const fullHtml = `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>${title}</title><link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=block" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script><script>window.MathJax={tex:{inlineMath:[['$','$']]}}<\/script><style>@page{size:A4;margin:15mm}body{font-family:'Nanum Myeongjo',serif;font-size:10.5pt;margin:0;padding:20px}.header{border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:20px}.container{column-count:2;column-gap:30px;column-rule:0.5pt solid #eee}.q-item{break-inside:avoid;margin-bottom:4rem}.choices{display:grid;grid-template-columns:repeat(2, 1fr);row-gap:8px;margin-top:10px}.no-print{text-align:center;margin-bottom:20px}@media print{.no-print{display:none}}</style></head><body><div class="no-print"><button onclick="window.print()" style="padding:10px 20px;font-weight:800;cursor:pointer">🖨️ 인쇄하기</button></div><div class="header"><h1>${title}</h1></div><div class="container">${questionsRows}</div></body></html>`;
+    navigator.clipboard.writeText(fullHtml).then(() => alert("HTML 복사 완료")).catch(err => alert("복사 실패"));
 }
 </script>
 </body>
