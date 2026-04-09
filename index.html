@@ -13,7 +13,6 @@
         .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
         select, input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; }
         
-        /* [추가] QPP 선택 숫자 박스 스타일 */
         .qpp-group { display: flex; gap: 5px; margin-left: auto; align-items: center; }
         .qpp-btn { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; font-size: 13px; font-weight: bold; color: #64748b; transition: 0.2s; }
         .qpp-btn.active { background: #1e293b; color: white; border-color: #1e293b; }
@@ -50,23 +49,29 @@
 
     <script>
         let db = { exams: [] };
-        let currentQpp = 4; // [추가] 현재 선택된 문항 수
+        let currentQpp = 4;
 
         function setQpp(n, el) {
             currentQpp = n;
             document.querySelectorAll('.qpp-btn').forEach(btn => btn.classList.remove('active'));
             el.classList.add('active');
-            filterData(); // URL 갱신을 위해 필터링 재실행
+            filterData();
         }
 
-        async function init() {
-            try {
-                const res = await fetch('db.json?v=' + Date.now());
-                db = await res.json();
+        function init() {
+            const s = document.createElement('script');
+            s.src = 'db.js?v=' + Date.now();
+            s.onload = () => {
+                // [수정] 원장님 데이터 변수명 window.mainDB를 직접 참조
+                db = window.mainDB || { exams: [] }; 
                 db.exams = db.exams.filter(e => e.type !== 'hidden');
                 setupFilters();
                 renderExams(db.exams);
-            } catch (e) { console.error(e); }
+            };
+            s.onerror = () => {
+                alert('db.js 파일을 로드하지 못했습니다.');
+            };
+            document.body.appendChild(s);
         }
 
         function setupFilters() {
@@ -111,7 +116,7 @@
                 const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
                 let displayTitle = `${ex.year} ${ex.school} ${ex.grade} ${semText} ${typeText}`.replace(/\s+/g, ' ').trim();
                 
-                // [수정] URL 조립 시 qpp 파라미터 동적 추가
+                // [참고] engine.html로 데이터 전송 시 exams/ 폴더 하위 경로를 포함함
                 const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}&qpp=${currentQpp}`;
 
                 const card = document.createElement('div');
