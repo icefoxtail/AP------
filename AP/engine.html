@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>시험지 엔진 v8.8</title>
+    <title>시험지 엔진 v8.9 (Final)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], macros: { tf: ['\\dfrac{#1}{#2}', 2] } },
@@ -19,11 +19,16 @@
         .content-container { display: flex; flex: 1; width: 100%; height: 100%; overflow: hidden; }
         body.test-mode .content-container { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10mm; }
         body.test-mode .item { height: 125mm; overflow: hidden; border: 1px solid #f1f5f9; padding: 5mm; box-sizing: border-box; display: flex; flex-direction: column; }
-        body.sol-mode .item { border-bottom: 1px dashed #cbd5e1; padding-bottom: 10mm; margin-bottom: 10mm; }
+        body.sol-mode .item { border-bottom: 1px dashed #cbd5e1; padding-bottom: 8mm; margin-bottom: 8mm; }
         .sol-mode-only { display: none; }
         body.sol-mode .sol-mode-only { display: block; }
         button { cursor: pointer; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; }
         @media print { .no-print { display: none !important; } body { padding-top: 0; } .page { margin: 0; } }
+        .step-box { margin-bottom: 6px; font-size: 9pt; line-height: 1.5; color: #334155; }
+        .wrong-reason { font-size: 8pt; color: #64748b; margin-top: 8px; padding: 6px; background: #f8fafc; border-radius: 4px; border-left: 3px solid #cbd5e1; }
+        .error-check-tag { font-size: 7.5pt; color: #94a3b8; margin-top: 6px; font-family: monospace; }
+        .score-tag { color: #94a3b8; font-size: 8pt; font-weight: normal; margin-left: 4px; }
+        .multi-tag { color: #ef4444; font-size: 8.5pt; font-weight: bold; margin-left: 5px; }
     </style>
 </head>
 <body class="test-mode">
@@ -45,23 +50,18 @@ const CIRCLED = ['①','②','③','④','⑤'];
 
 function setMode(m) { document.body.className = m; initRender(); }
 
-// [수정] 파일 로드 로직 (한글 및 경로 무결성 확보)
 (function load() {
     const params = new URLSearchParams(window.location.search);
-    const file = params.get('data'); // index에서 보낸 exams/파일명.js
+    const file = params.get('data');
     const title = params.get('title');
-
     if (!file) return;
-    
     AppState.title = decodeURIComponent(title || 'AP수학');
     document.title = AppState.title;
-
     const s = document.createElement('script');
-    // 경로에 한글이 있어도 읽을 수 있도록 처리
     s.src = file + '?v=' + Date.now();
     s.onload = initRender;
     s.onerror = () => {
-        document.getElementById('print-area').innerHTML = `<h2 style='text-align:center; margin-top:100px;'>❌ 파일을 찾을 수 없습니다.<br><small>${file}</small></h2>`;
+        document.getElementById('print-area').innerHTML = `<h2 style='text-align:center; margin-top:100px;'>❌ 파일을 찾을 수 없습니다.</h2>`;
     };
     document.body.appendChild(s);
 })();
@@ -74,17 +74,43 @@ async function initRender() {
 
 function renderItems() {
     const pool = document.getElementById('item-pool');
-    pool.innerHTML = (window.questionBank || []).map((q, i) => {
-        const isSub = !q.choices || q.choices.length < 5;
+    const bank = window.questionBank || (window.problems ? window.problems : []);
+    
+    pool.innerHTML = bank.map((q, i) => {
+        const choicesArr = q.choices || [];
+        const isSub = choicesArr.length < 5;
+        const scoreTag = q.score ? `<span class="score-tag">[${q.score}점]</span>` : '';
+        const multiTag = q.answer_count > 1 ? `<span class="multi-tag">(정답 ${q.answer_count}개)</span>` : '';
+        const choicesHtml = choicesArr.map((c, ci) => {
+            const text = (typeof c === 'string') ? c : c.text;
+            const key = (typeof c === 'string') ? CIRCLED[ci] : c.key;
+            return `<div>${key} ${text}</div>`;
+        }).join('');
+
+        const solutionHtml = q.solution_steps 
+            ? q.solution_steps.map((step, si) => `<div class="step-box"><b>Step ${si+1}.</b> ${step}</div>`).join('')
+            : q.solution || '';
+
+        const wrongHtml = q.wrong_reason
+            ? `<div class="wrong-reason"><b>[오답 분석]</b> ${Object.entries(q.wrong_reason).map(([k,v]) => `<span>${k} ${v}</span>`).join(' | ')}</div>`
+            : '';
+
+        const answerText = Array.isArray(q.answer) ? q.answer.join(', ') : q.answer;
+
         return `
         <div class="item">
             <div style="font-size:7.5pt; color:#94a3b8;">[${q.level || '중'}] ${q.category || ''}</div>
-            <div style="flex:1;"><b>${i+1}.</b> ${q.content}
-                ${!isSub ? `<div style="margin-top:10px;">${q.choices.map((c, ci) => `<div>${CIRCLED[ci]} ${c}</div>`).join('')}</div>` : ''}
+            <div style="flex:1;">
+                <b>${i+1}.</b>${scoreTag} ${q.content}${multiTag}
+                ${!isSub ? `<div style="margin-top:10px;">${choicesHtml}</div>` : ''}
             </div>
             ${isSub ? `<div style="margin-top:auto; border:1px solid #ccc; height:35mm; background:#f8fafc;"></div>` : ''}
             <div class="sol-mode-only" style="margin-top:10px; padding-top:10px; border-top:1px dashed #eee;">
-                <b>[해설]</b> ${q.solution} <div style="text-align:right; color:#ef4444; font-weight:bold;">정답: ${q.answer}</div>
+                <b>[해설]</b>
+                <div style="margin-top:5px;">${solutionHtml}</div>
+                ${wrongHtml}
+                ${q.error_check ? `<div class="error-check-tag">✓ ${q.error_check}</div>` : ''}
+                <div style="text-align:right; color:#ef4444; font-weight:bold; margin-top:8px;">정답: ${answerText}</div>
             </div>
         </div>`;
     }).join('');
@@ -108,12 +134,14 @@ function paginate() {
     if (mode === 'ans-mode') {
         const page = addPage("[정답표]");
         let html = '<table style="width:100%; border-collapse:collapse; margin-top:10px;">';
-        const bank = window.questionBank || [];
+        const bank = window.questionBank || (window.problems ? window.problems : []);
         for (let i = 0; i < bank.length; i += 5) {
             html += '<tr>';
             for (let j = i; j < i + 5; j++) {
-                if (j < bank.length) html += `<td style="border:1px solid #ccc; padding:8px; text-align:center; background:#f8fafc; font-weight:bold; width:40px;">${j+1}</td><td style="border:1px solid #ccc; padding:8px; text-align:center;">${bank[j].answer}</td>`;
-                else html += '<td style="border:1px solid #ccc; width:40px;"></td><td style="border:1px solid #ccc;"></td>';
+                if (j < bank.length) {
+                    const ans = Array.isArray(bank[j].answer) ? bank[j].answer.join(', ') : bank[j].answer;
+                    html += `<td style="border:1px solid #ccc; padding:8px; text-align:center; background:#f8fafc; font-weight:bold; width:40px;">${j+1}</td><td style="border:1px solid #ccc; padding:8px; text-align:center;">${ans}</td>`;
+                } else html += '<td style="border:1px solid #ccc; width:40px;"></td><td style="border:1px solid #ccc;"></td>';
             }
             html += '</tr>';
         }
@@ -123,7 +151,11 @@ function paginate() {
 
     let currentPage = addPage(mode === 'sol-mode' ? "[해설지]" : "");
     items.forEach((item, idx) => {
-        if (mode !== 'sol-mode' && idx > 0 && idx % 4 === 0) currentPage = addPage();
+        // [클로드 피드백 반영] 해설지(sol-mode)는 한 페이지에 3개, 시험지는 4개씩 배분
+        const itemsPerPage = mode === 'sol-mode' ? 3 : 4;
+        if (idx > 0 && idx % itemsPerPage === 0) {
+            currentPage = addPage(mode === 'sol-mode' ? "[해설지]" : "");
+        }
         currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
     });
 }

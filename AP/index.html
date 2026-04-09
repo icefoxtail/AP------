@@ -2,60 +2,76 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>시험지 통합 관리 시스템</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP수학 시험지 관리 시스템</title>
     <style>
-        body { font-family: 'Pretendard', sans-serif; padding: 20px; background: #f5f5f5; }
+        body { font-family: 'Pretendard', -apple-system, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
         .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
-        select, input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        select, input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; font-size: 14px; }
+        select:focus, input:focus { border-color: #1e293b; }
         .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
-        .exam-card { background: white; padding: 18px; border-radius: 10px; border-left: 6px solid #007bff; transition: 0.2s; cursor: pointer; min-height: 100px; display: flex; flex-direction: column; justify-content: center; }
-        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .exam-card.archive { border-left-color: #28a745; }
-        .title { font-weight: bold; font-size: 1.1em; color: #333; margin-bottom: 8px; word-break: keep-all; }
-        .meta { font-size: 0.85em; color: #666; display: flex; align-items: center; gap: 8px; }
-        .badge { padding: 2px 6px; border-radius: 4px; background: #eee; font-weight: bold; }
+        .exam-card { background: white; padding: 18px; border-radius: 10px; border-left: 6px solid #1e293b; transition: 0.2s; cursor: pointer; min-height: 100px; display: flex; flex-direction: column; justify-content: center; text-decoration: none; color: inherit; }
+        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-left-color: #3b82f6; }
+        .exam-card.archive { border-left-color: #22c55e; }
+        .title { font-weight: bold; font-size: 1.1em; color: #1e293b; margin-bottom: 8px; word-break: keep-all; line-height: 1.4; }
+        .meta { font-size: 0.85em; color: #64748b; display: flex; align-items: center; gap: 8px; }
+        .badge { padding: 2px 6px; border-radius: 4px; background: #f1f5f9; font-weight: bold; color: #475569; }
+        .file-info { color: #94a3b8; margin-left: auto; font-family: monospace; font-size: 0.8em; }
     </style>
 </head>
 <body>
+
     <div class="filter-container">
-        <input type="text" id="searchInput" placeholder="학교명 또는 과목 검색...">
+        <input type="text" id="searchInput" placeholder="학교명, 과목, 단원 검색...">
         <select id="yearFilter"><option value="all">모든 연도</option></select>
         <select id="gradeFilter"><option value="all">모든 학년</option></select>
         <select id="subjectFilter"><option value="all">모든 과목</option></select>
     </div>
-    <div id="examList" class="exam-grid"></div>
+
+    <div id="examList" class="exam-grid">
+        <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #666;">데이터를 불러오는 중...</div>
+    </div>
 
     <script>
         let db = { exams: [] };
 
         async function init() {
             try {
-                const res = await fetch('db.json');
+                // 캐시 방지 및 최신 db.json 로드
+                const res = await fetch('db.json?v=' + Date.now());
+                if (!res.ok) throw new Error('Network response was not ok');
                 db = await res.json();
+                
                 setupFilters();
                 renderExams(db.exams);
-            } catch (e) { console.error("데이터 로드 실패"); }
+            } catch (e) { 
+                console.error("데이터 로드 실패:", e);
+                document.getElementById('examList').innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #ef4444; padding: 50px;">❌ db.json 로드 실패. 파일 형식이나 쉼표(,)를 확인하세요.</div>`;
+            }
         }
 
         function setupFilters() {
-            const exams = (db.exams || []).sort((a, b) => b.year - a.year);
-            const years = [...new Set(exams.map(e => e.year))];
-            const grades = [...new Set(exams.map(e => e.grade))].sort();
-            const subjects = [...new Set(exams.map(e => e.subject))].sort();
+            const exams = db.exams || [];
+            const years = [...new Set(exams.map(e => e.year))].filter(Boolean).sort((a, b) => b - a);
+            const grades = [...new Set(exams.map(e => e.grade))].filter(Boolean).sort();
+            const subjects = [...new Set(exams.map(e => e.subject))].filter(Boolean).sort();
 
             populateSelect('yearFilter', years);
             populateSelect('gradeFilter', grades);
             populateSelect('subjectFilter', subjects);
 
-            document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', filterData));
+            document.querySelectorAll('input, select').forEach(el => {
+                el.addEventListener('input', filterData);
+            });
         }
 
         function populateSelect(id, items) {
             const select = document.getElementById(id);
             items.forEach(item => {
-                if(!item) return;
                 const opt = document.createElement('option');
-                opt.value = item; opt.textContent = item; select.appendChild(opt);
+                opt.value = item; 
+                opt.textContent = item; 
+                select.appendChild(opt);
             });
         }
 
@@ -66,10 +82,13 @@
             const sub = document.getElementById('subjectFilter').value;
 
             const filtered = db.exams.filter(ex => {
-                return ((ex.school || "").toLowerCase().includes(s) || (ex.subject || "").toLowerCase().includes(s)) &&
-                       (y === 'all' || String(ex.year) === y) &&
-                       (g === 'all' || String(ex.grade) === g) &&
-                       (sub === 'all' || ex.subject === sub);
+                const matchSearch = (ex.school || "").toLowerCase().includes(s) || 
+                                    (ex.subject || "").toLowerCase().includes(s) ||
+                                    (ex.file || "").toLowerCase().includes(s);
+                const matchYear = (y === 'all' || String(ex.year) === y);
+                const matchGrade = (g === 'all' || String(ex.grade) === g);
+                const matchSubject = (sub === 'all' || ex.subject === sub);
+                return matchSearch && matchYear && matchGrade && matchSubject;
             });
             renderExams(filtered);
         }
@@ -77,29 +96,45 @@
         function renderExams(data) {
             const container = document.getElementById('examList');
             container.innerHTML = "";
+
+            if (data.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #999;">검색 결과가 없습니다.</div>`;
+                return;
+            }
+
             data.forEach(ex => {
                 const semText = ex.semester ? `${ex.semester}학기` : "";
                 const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-                let fullTitle = `${ex.year}_${ex.school}_${ex.grade}_${semText}_${typeText}_${ex.subject}`.replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
+                
+                // 형님의 타이틀 고정 규칙 적용: (연도)_(학교)(학년)_(학기)_(시험)_(대상)
+                let fullTitle = `${ex.year}_${ex.school}${ex.grade}_${semText}_${typeText}_${ex.subject}`
+                                .replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
 
-                // [중요] exams/ 폴더명을 붙이고 전체를 인코딩해서 보냅니다.
                 const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(fullTitle)}`;
 
                 const card = document.createElement('div');
-                card.className = `exam-card ${ex.type || 'exam'}`;
+                card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
                 card.innerHTML = `
                     <div class="title">${fullTitle}</div>
                     <div class="meta">
-                        <span class="badge">${ex.type === 'archive' ? '정리' : '기출'}</span>
+                        <span class="badge" style="background:${ex.type === 'archive' ? '#dcfce7' : '#f1f5f9'}; color:${ex.type === 'archive' ? '#166534' : '#475569'};">
+                            ${ex.type === 'archive' ? '정리' : '기출'}
+                        </span>
                         <span class="badge">${ex.grade}</span>
-                        <span style="color:#999; margin-left:auto;">📄 ${ex.file}</span>
+                        <span class="file-info">📄 ${ex.file}</span>
                     </div>
                 `;
-                card.onclick = () => window.open(moveUrl, '_blank');
+                
+                // 버그 해결: 특정 창 이름('ap_engine')을 지정하여 기존 탭 재사용
+                card.onclick = () => {
+                    window.open(moveUrl, 'ap_engine');
+                };
+                
                 container.appendChild(card);
             });
         }
-        init();
+
+        window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
