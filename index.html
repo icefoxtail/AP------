@@ -6,14 +6,18 @@
     <title>AP 수학학원 시험지 통합 관리</title>
     <style>
         body { font-family: 'Pretendard', -apple-system, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
-        /* 헤더 섹션 추가 */
         .header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .btn-mixer { background: #6366f1; color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.2s; }
         .btn-mixer:hover { background: #4f46e5; transform: translateY(-2px); }
         
         .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
         select, input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; }
-        select:focus, input:focus { border-color: #007bff; }
+        
+        /* [추가] QPP 선택 숫자 박스 스타일 */
+        .qpp-group { display: flex; gap: 5px; margin-left: auto; align-items: center; }
+        .qpp-btn { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; font-size: 13px; font-weight: bold; color: #64748b; transition: 0.2s; }
+        .qpp-btn.active { background: #1e293b; color: white; border-color: #1e293b; }
+
         .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
         .exam-card { background: white; padding: 18px; border-radius: 10px; border-left: 6px solid #007bff; transition: 0.2s; cursor: pointer; min-height: 100px; display: flex; flex-direction: column; justify-content: center; text-decoration: none; color: inherit; }
         .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -25,7 +29,6 @@
     </style>
 </head>
 <body>
-
     <div class="header-area">
         <h1 style="margin:0; font-size: 24px;">📚 시험지 통합 관리</h1>
         <a href="mixer.html" class="btn-mixer">🎲 시험지 믹서(조합기)</a>
@@ -36,31 +39,34 @@
         <select id="yearFilter"><option value="all">모든 연도</option></select>
         <select id="gradeFilter"><option value="all">모든 학년</option></select>
         <select id="subjectFilter"><option value="all">모든 과목</option></select>
+        
+        <div class="qpp-group">
+            <div class="qpp-btn active" onclick="setQpp(4, this)">4</div>
+            <div class="qpp-btn" onclick="setQpp(6, this)">6</div>
+        </div>
     </div>
 
-    <div id="examList" class="exam-grid">
-        <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #666;">데이터를 불러오는 중...</div>
-    </div>
+    <div id="examList" class="exam-grid"></div>
 
     <script>
         let db = { exams: [] };
+        let currentQpp = 4; // [추가] 현재 선택된 문항 수
+
+        function setQpp(n, el) {
+            currentQpp = n;
+            document.querySelectorAll('.qpp-btn').forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+            filterData(); // URL 갱신을 위해 필터링 재실행
+        }
 
         async function init() {
             try {
-                // [무결성] 캐시 방지 및 주소 체계 준수
                 const res = await fetch('db.json?v=' + Date.now());
-                if (!res.ok) throw new Error('Network response was not ok');
                 db = await res.json();
-                
-                // [무결성] hidden 데이터 필터링 (믹서용 원천 소스는 목록에서 제외)
                 db.exams = db.exams.filter(e => e.type !== 'hidden');
-
                 setupFilters();
                 renderExams(db.exams);
-            } catch (e) { 
-                console.error("데이터 로드 실패:", e);
-                document.getElementById('examList').innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: red;">❌ db.json 파일을 찾을 수 없거나 형식이 잘못되었습니다.</div>`;
-            }
+            } catch (e) { console.error(e); }
         }
 
         function setupFilters() {
@@ -68,14 +74,10 @@
             const years = [...new Set(exams.map(e => e.year))].filter(Boolean).sort((a, b) => b - a);
             const grades = [...new Set(exams.map(e => e.grade))].filter(Boolean).sort();
             const subjects = [...new Set(exams.map(e => e.subject))].filter(Boolean).sort();
-
             populateSelect('yearFilter', years);
             populateSelect('gradeFilter', grades);
             populateSelect('subjectFilter', subjects);
-
-            document.querySelectorAll('input, select').forEach(el => {
-                el.addEventListener('input', filterData);
-            });
+            document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', filterData));
         }
 
         function populateSelect(id, items) {
@@ -92,13 +94,11 @@
             const y = document.getElementById('yearFilter').value;
             const g = document.getElementById('gradeFilter').value;
             const sub = document.getElementById('subjectFilter').value;
-
             const filtered = db.exams.filter(ex => {
-                const matchSearch = (ex.school || "").toLowerCase().includes(s) || (ex.subject || "").toLowerCase().includes(s);
-                const matchYear = (y === 'all' || String(ex.year) === y);
-                const matchGrade = (g === 'all' || String(ex.grade) === g);
-                const matchSubject = (sub === 'all' || ex.subject === sub);
-                return matchSearch && matchYear && matchGrade && matchSubject;
+                return ((ex.school || "").toLowerCase().includes(s) || (ex.subject || "").toLowerCase().includes(s)) &&
+                       (y === 'all' || String(ex.year) === y) &&
+                       (g === 'all' || String(ex.grade) === g) &&
+                       (sub === 'all' || ex.subject === sub);
             });
             renderExams(filtered);
         }
@@ -106,33 +106,22 @@
         function renderExams(data) {
             const container = document.getElementById('examList');
             container.innerHTML = "";
-
-            if (data.length === 0) {
-                container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #999;">검색 결과가 없습니다.</div>`;
-                return;
-            }
-
             data.forEach(ex => {
                 const semText = ex.semester ? `${ex.semester}학기` : "";
                 const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-                
-                // 가독성을 위한 타이틀 정리
                 let displayTitle = `${ex.year} ${ex.school} ${ex.grade} ${semText} ${typeText}`.replace(/\s+/g, ' ').trim();
                 
-                // 엔진 호출 경로 설정
-                const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}`;
+                // [수정] URL 조립 시 qpp 파라미터 동적 추가
+                const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}&qpp=${currentQpp}`;
 
                 const card = document.createElement('div');
                 card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
-                card.innerHTML = `
-                    <div class="title">${displayTitle}</div>
+                card.innerHTML = `<div class="title">${displayTitle}</div>
                     <div class="meta">
                         <span class="badge" style="background:${ex.type === 'archive' ? '#dcfce7' : '#dbeafe'}">${ex.type === 'archive' ? '단원정리' : '학교기출'}</span>
                         <span class="badge">${ex.grade}</span>
                         <span class="file-info">📄 ${ex.file}</span>
-                    </div>
-                `;
-                
+                    </div>`;
                 card.onclick = () => { window.open(moveUrl, 'ap_engine'); };
                 container.appendChild(card);
             });

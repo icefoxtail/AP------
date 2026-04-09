@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>시험지 출력 엔진 v9.1 - AP수학 무결성 버전</title>
+    <title>AP 수학학원 시험지 엔진 v10.1 - 통합 무결성 버전</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], macros: { tf: ['\\dfrac{#1}{#2}', 2] } },
@@ -15,26 +15,43 @@
         @page { size: A4; margin: 0; }
         body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; }
         #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; background: white; z-index: 1000; border-bottom: 1px solid #e2e8f0; }
-        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto 10mm auto; background: #fff; page-break-after: always; display: flex; flex-direction: column; box-sizing: border-box; }
-        .content-container { width: 100%; height: 100%; overflow: hidden; }
         
-        /* 시험지 모드: 2단 레이아웃 */
-        body.test-mode .content-container { column-count: 2; column-gap: 10mm; column-rule: 1px solid #000; }
+        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto 10mm auto; background: #fff; page-break-after: always; display: flex; flex-direction: column; box-sizing: border-box; position: relative; }
         
-        /* 해설지 모드: 1단으로 가독성 확보 */
-        body.sol-mode .content-container { column-count: 1; }
+        .content-container { flex: 1; width: 100%; display: grid; position: relative; box-sizing: border-box; }
 
-        .item { break-inside: avoid; margin-bottom: 20px; padding: 2mm; box-sizing: border-box; display: flex; flex-direction: column; }
-        mjx-container { max-width: 100% !important; overflow-x: auto !important; overflow-y: hidden !important; }
-
-        .sol-mode-only { display: none; }
-        body.sol-mode .sol-mode-only { 
-            display: block; background: #f8fafc; padding: 10px; margin-top: 10px; border-radius: 4px; 
-            font-size: 9pt; line-height: 1.6; border-left: 4px solid #1e293b; 
+        /* 시험지 모드: 2*2 / 3*2 격자 및 중앙선 */
+        body.test-mode .content-container { grid-template-columns: 1fr 1fr; }
+        body.test-mode .content-container::after {
+            content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
+            width: 1px; background: #000; z-index: 1; pointer-events: none;
         }
-        .ans-box-text { text-align: right; color: #ef4444; font-weight: bold; margin-top: 8px; border-top: 1px dashed #cbd5e1; padding-top: 5px; }
 
-        button { cursor: pointer; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; }
+        /* 해설지 모드: 2단 최적화 및 균형 배치 */
+        body.sol-mode .content-container { 
+            display: block; column-count: 2; column-gap: 10mm; 
+            column-rule: 1px solid #eee; column-fill: balance;
+        }
+
+        .item { 
+            padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; 
+            break-inside: avoid; page-break-inside: avoid; 
+            border-bottom: 0.5px solid #eee; height: auto;
+        }
+
+        /* 영역 분리: 해설지에서 본문/보기 완전 제거 */
+        .test-area { flex: 1; display: flex; flex-direction: column; }
+        .sol-area { display: none; }
+        body.sol-mode .test-area { display: none; }
+        body.sol-mode .sol-area { display: block; width: 100%; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+
+        .sol-title { font-weight: 800; border-bottom: 2px solid #1e293b; padding-bottom: 3px; margin-bottom: 10px; display: inline-block; font-size: 11pt; }
+        .sol-ans-box { border: 1.5px solid #000; padding: 4px 12px; float: right; font-weight: bold; font-size: 11pt; background: #fff; margin-top: 5px; }
+        
+        .img-container svg { max-width: 100%; height: auto; }
+        .clearfix::after { content: ""; clear: both; display: table; }
+
+        mjx-container { max-width: 100% !important; overflow-x: auto !important; }
         @media print { .no-print { display: none !important; } body { padding-top: 0; } .page { margin: 0; } }
     </style>
 </head>
@@ -52,25 +69,45 @@
     <div id="item-pool" style="display:none;"></div>
 
 <script>
-const AppState = { title: "" };
+const AppState = { title: "", qpp: 4 };
 const CIRCLED = ['①','②','③','④','⑤'];
+
+/* [무결성] 데이터 정규화: Gemini 스키마 완벽 대응 */
+function normalizeQuestion(q) {
+    // choices가 객체 배열인 경우(Gemini) 텍스트 추출
+    if (Array.isArray(q.choices) && q.choices.length > 0 && typeof q.choices[0] === 'object') {
+        q.choices = q.choices.map(c => c.text || c.content || "");
+    }
+    // answer 배열 처리
+    if (Array.isArray(q.answer)) q.answer = q.answer.join(', ');
+    // solution_steps 폴백
+    if (!q.solution && Array.isArray(q.solution_steps)) {
+        q.solution = q.solution_steps.join('\n');
+    }
+    // 문항 타입 자동 매핑
+    if (!q.type) {
+        if (q.choices && q.choices.length >= 5) q.type = 'single';
+        else if (q.num?.includes('서술') || q.num?.includes('논술')) q.type = 'descriptive';
+        else q.type = 'short';
+    }
+    return q;
+}
 
 function setMode(m) { document.body.className = m; initRender(); }
 
 (function load() {
     const params = new URLSearchParams(window.location.search);
     const file = params.get('data'); 
-    const title = params.get('title');
-    if (!file) return;
-    AppState.title = decodeURIComponent(title || 'AP수학');
+    AppState.qpp = parseInt(params.get('qpp')) || 4;
+    AppState.title = decodeURIComponent(params.get('title') || 'AP수학');
     document.title = AppState.title;
 
+    if (!file) return;
     if (file === 'mixed') {
         const raw = sessionStorage.getItem('mixedQuestions');
         if (raw) { window.questionBank = JSON.parse(raw); initRender(); }
         return;
     }
-
     const s = document.createElement('script');
     s.src = file + '?v=' + Date.now();
     s.onload = initRender;
@@ -85,26 +122,36 @@ async function initRender() {
 
 function renderItems() {
     const pool = document.getElementById('item-pool');
-    let items = Array.isArray(window.questionBank) ? window.questionBank : (window.questionBank?.questions || []);
+    let bank = Array.isArray(window.questionBank) ? window.questionBank 
+             : (window.questionBank?.questions || window.questionBank?.problems || []);
+    
+    bank = bank.map(normalizeQuestion);
 
-    pool.innerHTML = items.map((q, i) => {
-        const isMultiple = q.choices && q.choices.length >= 5;
-        const hasSvg = q.content && q.content.includes('<svg');
-        const isDescriptive = q.num && (q.num.includes('서술') || q.num.includes('서논술'));
+    pool.innerHTML = bank.map((q, i) => {
+        const isMultiple = q.type === 'single';
+        const hasSvg = (q.svg && q.svg.length > 10) || (q.content && q.content.includes('<svg'));
 
         return `
-        <div class="item">
-            <div style="font-size:7pt; color:#94a3b8;">[${q.level || '중'}] ${q.category || ''}</div>
-            <div style="flex:1;">
-                <b>${q.num || i+1}.</b> ${q.content}
-                ${isMultiple ? `<div style="margin-top:10px;">${q.choices.map((c, ci) => `<div style="margin-bottom:2px;">${CIRCLED[ci]} ${c}</div>`).join('')}</div>` : ''}
+        <div class="item clearfix">
+            <div class="test-area">
+                <div style="font-size:7pt; color:#94a3b8; margin-bottom:2px;">[${q.level || '중'}] ${q.category || ''}</div>
+                <div style="flex:1;">
+                    <b>${q.num || i+1}.</b> ${q.content}
+                    ${isMultiple ? `<div style="margin-top:10px;">${q.choices.map((c, ci) => `<div style="margin-bottom:2px;">${CIRCLED[ci]} ${c}</div>`).join('')}</div>` : ''}
+                </div>
+                ${hasSvg ? `<div class="img-container" style="text-align:center; margin:10px 0;">${q.svg || ''}</div>` : ''}
+                ${(!isMultiple && q.type !== 'descriptive' && !hasSvg) ? `<div style="margin-top:10px; border:1px solid #ccc; flex:1; min-height:30mm; background:#fcfcfc;"></div>` : ''}
             </div>
-            ${hasSvg ? `<div style="margin-top:10px; text-align:center;"></div>` : ''}
-            ${(!isMultiple && !isDescriptive) ? `<div style="margin-top:10px; border:1px solid #eee; height:25mm; background:#fafafa;"></div>` : ''}
-            <div class="sol-mode-only">
-                <div style="font-weight:bold; border-bottom:1px solid #cbd5e1; margin-bottom:5px;">[해설]</div>
-                <div style="white-space: pre-wrap;">${q.solution || '해설 미입력'}</div>
-                <div class="ans-box-text">정답: ${q.answer}</div>
+
+            <div class="sol-area clearfix">
+                <span class="sol-title">[문항 ${q.num || i+1}]</span>
+                <div style="white-space: pre-wrap; line-height: 1.7; font-size: 10pt; padding: 5px 0;">
+                    ${q.solution_steps ? q.solution_steps.map((s, idx) => `<div>${idx+1}. ${s}</div>`).join('') : (q.solution || '')}
+                    ${q.wrong_reason && typeof q.wrong_reason === 'object'
+                        ? Object.entries(q.wrong_reason).map(([k,v]) => `<div style="color:#e11d48; font-size:9pt; margin-top:4px;">${k} 오답: ${v}</div>`).join('')
+                        : (q.wrong_reason ? `<div style="margin-top:8px; font-size:9pt; color:#e11d48; font-weight:bold;">⚠️ 함정 주의: ${q.wrong_reason}</div>` : '')}
+                </div>
+                <div class="sol-ans-box">정답: ${q.answer}</div>
             </div>
         </div>`;
     }).join('');
@@ -119,38 +166,41 @@ function paginate() {
 
     const addPage = (suffix = "") => {
         const page = document.createElement('div'); page.className = 'page';
+        // [무결성] grid-template-rows: initial 로 이전 모드 잔재 초기화
         page.innerHTML = `<div style="border-bottom:2.5px solid #1e293b; padding-bottom:5px; margin-bottom:15px; font-weight:bold; display:flex; justify-content:space-between; font-size:11pt;">
             <span>${AppState.title} ${suffix}</span><span>- ${printArea.children.length + 1} -</span>
-        </div><div class="content-container"></div>`;
+        </div><div class="content-container" style="grid-template-rows: initial;"></div>`;
         printArea.appendChild(page);
         return page;
     };
 
     if (mode === 'ans-mode') {
         const page = addPage("[정답표]");
-        let html = '<table style="width:100%; border-collapse:collapse; table-layout:fixed;">';
-        let bank = Array.isArray(window.questionBank) ? window.questionBank : (window.questionBank?.questions || []);
-        for (let i = 0; i < bank.length; i += 5) {
-            html += '<tr>';
-            for (let j = i; j < i + 5; j++) {
-                if (j < bank.length) {
-                    const cleanAns = bank[j].answer.replace(/\$/g, '');
-                    html += `<td style="border:1.5px solid #000; padding:8px; text-align:center; background:#f1f5f9; font-weight:bold; width:35px;">${j+1}</td><td style="border:1.5px solid #000; padding:8px; text-align:center;">${cleanAns}</td>`;
-                } else { html += '<td style="border:1.5px solid #000; width:35px;"></td><td style="border:1.5px solid #000;"></td>'; }
-            }
-            html += '</tr>';
-        }
-        page.querySelector('.content-container').innerHTML = html + '</table>';
+        let bank = (Array.isArray(window.questionBank) ? window.questionBank : (window.questionBank?.questions || window.questionBank?.problems || [])).map(normalizeQuestion);
+        const mult = bank.filter(q => q.type === 'single');
+        const shrt = bank.filter(q => q.type === 'short');
+        const desc = bank.filter(q => q.type === 'descriptive');
+        let html = '<div style="font-size:11pt; line-height:2;">';
+        if(mult.length) html += `<b>[객관식]</b><br>${mult.map(q => `${q.num}. ${q.answer}`).join('<br>')}<br><br>`;
+        if(shrt.length) html += `<b>[단답형]</b><br>${shrt.map(q => `${q.num}. ${q.answer}`).join('<br>')}<br><br>`;
+        if(desc.length) html += `<b>[서술형]</b><br>${desc.map(q => `${q.num}. ${q.answer}`).join('<br>')}`;
+        page.querySelector('.content-container').innerHTML = html + '</div>';
         return;
     }
 
-    // [핵심] 모드별 자동 페이지 분할 로직
-    const itemsPerPage = (mode === 'test-mode') ? 4 : 2; // 시험지는 4개, 해설지는 2개씩
-    let currentPage = addPage(mode === 'sol-mode' ? "[해설지]" : "");
-    
+    const isSolMode = (mode === 'sol-mode');
+    const rowCount = (AppState.qpp === 6) ? 3 : 2;
+    const itemsPerPage = isSolMode ? 6 : AppState.qpp; 
+
+    let currentPage = addPage(isSolMode ? "[해설지]" : "");
+    if (!isSolMode) {
+        currentPage.querySelector('.content-container').style.gridTemplateRows = `repeat(${rowCount}, minmax(0, 1fr))`;
+    }
+
     items.forEach((item, idx) => {
         if (idx > 0 && idx % itemsPerPage === 0) {
-            currentPage = addPage(mode === 'sol-mode' ? "[해설지]" : "");
+            currentPage = addPage(isSolMode ? "[해설지]" : "");
+            if (!isSolMode) currentPage.querySelector('.content-container').style.gridTemplateRows = `repeat(${rowCount}, minmax(0, 1fr))`;
         }
         currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
     });
