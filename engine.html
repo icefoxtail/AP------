@@ -2,12 +2,15 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP 수학학원 시험지 엔진 v10.3 - 통합 무결성 버전</title>
+    <title>AP 수학학원 시험지 엔진 v10.5 - 레이아웃 무결성 버전</title>
     <script>
         window.MathJax = {
             tex: { 
                 inlineMath: [['$', '$']], 
                 macros: { tf: ['\\dfrac{#1}{#2}', 2] } 
+            },
+            options: {
+                enableMenu: false
             },
             startup: { typeset: false }
         };
@@ -16,12 +19,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         
-        /* 프린트 규격 최적화: 용지 꽉 차게 설정 */
+        /* 프린트 규격 최적화 */
         @page { size: A4; margin: 0; }
         @media print { 
             .no-print { display: none !important; } 
             body { padding-top: 0 !important; background: #fff !important; } 
             .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: 210mm !important; height: 297mm !important; }
+            /* 해설지 출력 시 높이 유연화 적용 */
+            body.sol-mode .page { height: auto !important; min-height: 297mm !important; }
         }
 
         body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; }
@@ -31,37 +36,47 @@
         
         .content-container { flex: 1; width: 100%; display: grid; position: relative; box-sizing: border-box; overflow: hidden; }
 
-        /* 시험지 모드: 격자 배치 및 중앙 구분선 */
-        body.test-mode .content-container { grid-template-columns: 1fr 1fr; }
+        /* 시험지 모드: 격자 붕괴 및 중첩 방지 */
+        body.test-mode .content-container { 
+            grid-template-columns: 1fr 1fr; 
+            align-items: start; 
+        }
         body.test-mode .content-container::after {
             content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
             width: 1px; background: #000; z-index: 1; pointer-events: none;
         }
 
-        /* 해설지 모드: 단 넘침 방지 및 간격 최적화 */
+        /* [수정] Bug 1 해결: 해설지 단 넘김 및 높이 유연화 */
+        body.sol-mode .page { height: auto; min-height: 297mm; }
         body.sol-mode .content-container { 
-            display: block; column-count: 2; column-gap: 10mm; 
-            column-rule: 0.5px solid #eee; column-fill: auto;
+            display: block; 
+            column-count: 2; 
+            column-gap: 10mm; 
+            column-rule: 0.5px solid #eee; 
+            column-fill: balance; /* 양쪽 단 균등 배분 */
+            height: auto;
+            overflow: visible;
         }
 
+        /* [수정] Bug 2, 3 해결: 수식 보호 및 겹침 방지 */
         .item { 
             padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; 
             break-inside: avoid; page-break-inside: avoid; 
             border-bottom: 0.5px solid #eee; height: auto;
-            word-break: break-all;
+            overflow: hidden; /* 영역 밖 겹침 방지 */
+            word-break: keep-all; /* 수식 토큰 보호 */
+            overflow-wrap: break-word; /* 일반 텍스트는 자동 줄바꿈 */
         }
 
         .test-area { flex: 1; display: flex; flex-direction: column; }
         .sol-area { display: none; }
         
-        /* 해설지 밀착 레이아웃: 번호 바로 아래 해설 시작 */
         body.sol-mode .test-area { display: none; }
         body.sol-mode .sol-area { display: block; width: 100%; padding-bottom: 10px; }
 
         .sol-title { font-weight: 800; border-bottom: 2px solid #1e293b; padding-bottom: 2px; margin-bottom: 4px; display: inline-block; font-size: 10.5pt; }
         .sol-ans-box { border: 1.5px solid #000; padding: 3px 10px; float: right; font-weight: bold; font-size: 10pt; background: #fff; margin-top: 2px; }
         
-        /* 이미지 시인성: 해설지에서도 꽉 차게 확장 */
         .img-container svg, .img-container img { width: 100% !important; max-width: 100%; height: auto !important; display: block; margin: 5px auto; }
         .clearfix::after { content: ""; clear: both; display: table; }
 
@@ -85,9 +100,7 @@
 const AppState = { title: "", qpp: 4 };
 const CIRCLED = ['①','②','③','④','⑤'];
 
-/* [무결성] 데이터 정규화 및 LaTeX 수동 보정 */
 function normalizeQuestion(q) {
-    // 1. 조립제법 등 행렬식 문법 보정 (\multicolumn2r -> \multicolumn{2}{r})
     if (q.content) {
         q.content = q.content.replace(/\\multicolumn(\d+)([rlc])/g, '\\multicolumn{$1}{$2}');
         q.content = q.content.replace(/\\cline(\d+)-(\d+)/g, '\\cline{$1-$2}');
@@ -95,21 +108,13 @@ function normalizeQuestion(q) {
     if (q.solution) {
         q.solution = q.solution.replace(/\\multicolumn(\d+)([rlc])/g, '\\multicolumn{$1}{$2}');
     }
-
-    // 2. choices 객체 배열 대응
     if (Array.isArray(q.choices) && q.choices.length > 0 && typeof q.choices[0] === 'object') {
         q.choices = q.choices.map(c => c.text || c.content || "");
     }
-    
-    // 3. answer 배열/문자열 통합
     if (Array.isArray(q.answer)) q.answer = q.answer.join(', ');
-    
-    // 4. solution_steps 폴백 로직
     if (!q.solution && Array.isArray(q.solution_steps)) {
         q.solution = q.solution_steps.map((s, i) => `${i+1}. ${s}`).join('\n');
     }
-
-    // 5. 타입 자동 분류
     if (!q.type) {
         if (q.choices && q.choices.length >= 5) q.type = 'single';
         else if (q.num?.toString().includes('서술') || q.content?.includes('서술')) q.type = 'descriptive';
@@ -135,7 +140,6 @@ function setMode(m) { document.body.className = m; initRender(); }
         return;
     }
 
-    // [수정] Bug ①: 경로 이중 첩힘 해결 (index.html에서 전달한 전체 경로 사용)
     const s = document.createElement('script');
     s.src = file + '?v=' + Date.now();
     s.onload = initRender;
@@ -144,8 +148,10 @@ function setMode(m) { document.body.className = m; initRender(); }
 
 async function initRender() {
     renderItems();
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise();
-    paginate();
+    paginate(); 
+    if (window.MathJax?.typesetPromise) {
+        await MathJax.typesetPromise();
+    }
 }
 
 function renderItems() {
@@ -205,8 +211,6 @@ function paginate() {
     if (mode === 'ans-mode') {
         const page = addPage("[정답표]");
         let bank = (Array.isArray(window.questionBank) ? window.questionBank : (window.questionBank?.questions || window.questionBank?.problems || [])).map(normalizeQuestion);
-        
-        // [수정] Bug ②: 정답표 문항 번호 누락 방지 (인덱스 i 활용)
         page.querySelector('.content-container').innerHTML = `
             <div style="font-size:11pt; line-height:2.2; column-count:2; column-gap:15mm;">
                 ${bank.map((q, i) => `<b>${q.num || i+1}.</b> ${q.answer}`).join('<br>')}
