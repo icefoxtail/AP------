@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시험지 믹서</title>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$']], macros: { tf: ['\\dfrac{#1}{#2}', 2] } },
+            startup: { typeset: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f5f7fa; color: #1e293b; min-height: 100vh; }
+
+        .header { background: #1e293b; color: white; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+        .header a { color: #94a3b8; text-decoration: none; font-size: 14px; }
+        .header h1 { font-size: 18px; font-weight: 600; }
+
+        .layout { display: grid; grid-template-columns: 1fr 320px; gap: 0; height: calc(100vh - 54px); }
+
+        /* 왼쪽: 시험지 선택 */
+        .left { overflow-y: auto; padding: 20px; }
+        .section-title { font-size: 13px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+
+        .filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .filter-bar select { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px; background: white; color: #1e293b; outline: none; }
+        .filter-bar select:focus { border-color: #6366f1; }
+
+        .exam-list { display: flex; flex-direction: column; gap: 6px; }
+        .exam-item { background: white; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.15s; }
+        .exam-item:hover { border-color: #a5b4fc; background: #fafaff; }
+        .exam-item.selected { border-color: #6366f1; background: #eef2ff; }
+        .exam-item input[type=checkbox] { width: 16px; height: 16px; accent-color: #6366f1; flex-shrink: 0; cursor: pointer; }
+        .exam-item .exam-name { font-size: 14px; font-weight: 500; flex: 1; }
+        .exam-item .exam-meta { font-size: 12px; color: #94a3b8; }
+        .exam-item .q-count { font-size: 12px; color: #6366f1; font-weight: 600; background: #eef2ff; padding: 2px 8px; border-radius: 4px; }
+
+        .select-all-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 13px; color: #64748b; }
+        .select-all-bar button { font-size: 12px; padding: 3px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: white; cursor: pointer; color: #475569; }
+        .select-all-bar button:hover { background: #f1f5f9; }
+
+        /* 오른쪽: 조건 패널 */
+        .right { border-left: 1px solid #e2e8f0; background: white; display: flex; flex-direction: column; overflow-y: auto; }
+        .panel-section { padding: 20px; border-bottom: 1px solid #f1f5f9; }
+        .panel-label { font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 10px; }
+
+        .chip-group { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { padding: 5px 12px; border: 1.5px solid #e2e8f0; border-radius: 20px; font-size: 13px; cursor: pointer; background: white; color: #475569; transition: all 0.15s; }
+        .chip:hover { border-color: #a5b4fc; }
+        .chip.active { border-color: #6366f1; background: #eef2ff; color: #4338ca; font-weight: 600; }
+
+        .count-control { display: flex; align-items: center; gap: 10px; }
+        .count-control input[type=range] { flex: 1; accent-color: #6366f1; }
+        .count-display { font-size: 22px; font-weight: 700; color: #4338ca; min-width: 40px; text-align: right; }
+        .count-hint { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+        .status-box { padding: 12px 14px; background: #f8fafc; border-radius: 8px; font-size: 13px; color: #475569; line-height: 1.8; }
+        .status-box .num { font-weight: 700; color: #4338ca; }
+        .status-box .warn { color: #ef4444; font-weight: 600; }
+
+        .btn-generate { margin: 16px 20px; padding: 14px; background: #4f46e5; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+        .btn-generate:hover { background: #4338ca; }
+        .btn-generate:disabled { background: #c7d2fe; cursor: not-allowed; }
+
+        .loading-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: center; justify-content: center; flex-direction: column; gap: 16px; color: white; font-size: 16px; }
+        .loading-overlay.show { display: flex; }
+        .spinner { width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .empty-msg { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
+
+        /* 시험지 제목 입력 */
+        .title-input { width: 100%; padding: 8px 10px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 14px; outline: none; }
+        .title-input:focus { border-color: #6366f1; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html">← 목록</a>
+    <h1>🎲 시험지 믹서</h1>
+</div>
+
+<div class="layout">
+    <!-- 왼쪽: 시험지 소스 선택 -->
+    <div class="left">
+        <div class="filter-bar">
+            <select id="gradeFilter" onchange="filterExams()">
+                <option value="all">모든 학년</option>
+            </select>
+            <select id="subjectFilter" onchange="filterExams()">
+                <option value="all">모든 과목</option>
+            </select>
+            <select id="yearFilter" onchange="filterExams()">
+                <option value="all">모든 연도</option>
+            </select>
+        </div>
+        <div class="select-all-bar">
+            <button onclick="selectAll(true)">전체 선택</button>
+            <button onclick="selectAll(false)">전체 해제</button>
+            <span id="selectedCount">0개 선택됨</span>
+        </div>
+        <div id="examList" class="exam-list">
+            <div class="empty-msg">불러오는 중...</div>
+        </div>
+    </div>
+
+    <!-- 오른쪽: 출제 조건 패널 -->
+    <div class="right">
+        <div class="panel-section">
+            <div class="panel-label">시험지 제목</div>
+            <input class="title-input" id="examTitle" type="text" placeholder="예: 중2 수학 1단원 모의고사">
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-label">난이도 필터</div>
+            <div class="chip-group" id="levelChips">
+                <span class="chip active" data-val="상" onclick="toggleChip(this)">상</span>
+                <span class="chip active" data-val="중" onclick="toggleChip(this)">중</span>
+                <span class="chip active" data-val="하" onclick="toggleChip(this)">하</span>
+                <span class="chip active" data-val="미분류" onclick="toggleChip(this)">미분류</span>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-label">단원 필터</div>
+            <div class="chip-group" id="categoryChips">
+                <span style="font-size:12px; color:#94a3b8;">시험지를 선택하면 단원이 표시됩니다</span>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-label">문제 수</div>
+            <div class="count-control">
+                <input type="range" id="countSlider" min="5" max="50" value="20" step="5" oninput="updateCount()">
+                <span class="count-display" id="countDisplay">20</span>
+            </div>
+            <div class="count-hint" id="countHint">추출 가능 문제 수를 먼저 확인하세요</div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-label">출제 현황</div>
+            <div class="status-box" id="statusBox">
+                시험지를 선택하고 조건을 설정하세요.
+            </div>
+        </div>
+
+        <button class="btn-generate" id="btnGenerate" onclick="generate()" disabled>
+            🎲 시험지 생성
+        </button>
+    </div>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div id="loadingMsg">파일 불러오는 중...</div>
+</div>
+
+<script>
+let db = { exams: [] };
+let selectedFiles = new Set();
+let loadedQuestions = []; // 로드된 전체 문제 캐시
+let filteredVisible = []; // 현재 필터된 시험지 목록
+
+async function init() {
+    try {
+        const res = await fetch('db.json?v=' + Date.now());
+        db = await res.json();
+
+        // hidden 제외
+        db.exams = db.exams.filter(e => e.type !== 'hidden');
+
+        setupFilters();
+        filterExams();
+    } catch(e) {
+        document.getElementById('examList').innerHTML = '<div class="empty-msg">❌ db.json을 불러올 수 없습니다</div>';
+    }
+}
+
+function setupFilters() {
+    const exams = db.exams;
+    const grades   = [...new Set(exams.map(e => e.grade))].filter(Boolean).sort();
+    const subjects = [...new Set(exams.map(e => e.subject))].filter(Boolean).sort();
+    const years    = [...new Set(exams.map(e => e.year))].filter(Boolean).sort((a,b)=>b-a);
+    populateSelect('gradeFilter', grades);
+    populateSelect('subjectFilter', subjects);
+    populateSelect('yearFilter', years);
+}
+
+function populateSelect(id, items) {
+    const sel = document.getElementById(id);
+    while (sel.children.length > 1) sel.removeChild(sel.lastChild);
+    items.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+}
+
+function filterExams() {
+    const g   = document.getElementById('gradeFilter').value;
+    const sub = document.getElementById('subjectFilter').value;
+    const y   = document.getElementById('yearFilter').value;
+
+    filteredVisible = db.exams.filter(e =>
+        (g   === 'all' || e.grade   === g)   &&
+        (sub === 'all' || e.subject === sub) &&
+        (y   === 'all' || String(e.year) === y)
+    );
+    renderExamList();
+    updateStatus();
+}
+
+function renderExamList() {
+    const container = document.getElementById('examList');
+    if (filteredVisible.length === 0) {
+        container.innerHTML = '<div class="empty-msg">조건에 맞는 시험지가 없습니다</div>';
+        return;
+    }
+
+    container.innerHTML = filteredVisible.map(ex => {
+        const id = ex.file;
+        const checked = selectedFiles.has(id);
+        const semText = ex.semester ? `${ex.semester}학기` : '';
+        const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : ex.examType;
+        const name = `${ex.year} ${ex.school} ${ex.grade} ${semText} ${typeText}`.trim();
+        return `
+        <div class="exam-item ${checked ? 'selected' : ''}" onclick="toggleItem('${id}', this)">
+            <input type="checkbox" ${checked ? 'checked' : ''} onclick="event.stopPropagation(); toggleItem('${id}', this.closest('.exam-item'))">
+            <div style="flex:1">
+                <div class="exam-name">${name}</div>
+                <div class="exam-meta">${ex.subject} · ${ex.file}</div>
+            </div>
+        </div>`;
+    }).join('');
+    updateSelectedCount();
+}
+
+function toggleItem(file, el) {
+    if (selectedFiles.has(file)) {
+        selectedFiles.delete(file);
+        el.classList.remove('selected');
+        el.querySelector('input').checked = false;
+    } else {
+        selectedFiles.add(file);
+        el.classList.add('selected');
+        el.querySelector('input').checked = true;
+    }
+    updateSelectedCount();
+    scheduleStatusUpdate();
+}
+
+function selectAll(flag) {
+    filteredVisible.forEach(ex => {
+        if (flag) selectedFiles.add(ex.file);
+        else selectedFiles.delete(ex.file);
+    });
+    renderExamList();
+    scheduleStatusUpdate();
+}
+
+function updateSelectedCount() {
+    document.getElementById('selectedCount').textContent = `${selectedFiles.size}개 선택됨`;
+}
+
+let statusTimer = null;
+function scheduleStatusUpdate() {
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(() => loadAndAnalyze(), 300);
+}
+
+// 선택된 .js 파일들을 실제로 로드해서 분석
+async function loadAndAnalyze() {
+    if (selectedFiles.size === 0) {
+        document.getElementById('statusBox').innerHTML = '시험지를 선택하고 조건을 설정하세요.';
+        document.getElementById('btnGenerate').disabled = true;
+        document.getElementById('categoryChips').innerHTML = '<span style="font-size:12px; color:#94a3b8;">시험지를 선택하면 단원이 표시됩니다</span>';
+        return;
+    }
+
+    document.getElementById('statusBox').innerHTML = '<span style="color:#94a3b8">분석 중...</span>';
+
+    const allQ = await loadSelectedFiles();
+    loadedQuestions = allQ;
+
+    // 단원 목록 추출 → 칩 업데이트
+    const cats = [...new Set(allQ.map(q => q.category || '미분류'))].filter(Boolean).sort();
+    renderCategoryChips(cats);
+
+    updateStatus();
+}
+
+function renderCategoryChips(cats) {
+    const container = document.getElementById('categoryChips');
+    if (cats.length === 0) {
+        container.innerHTML = '<span style="font-size:12px; color:#94a3b8;">단원 정보 없음</span>';
+        return;
+    }
+    // 기존 활성 상태 유지
+    const prevActive = new Set([...container.querySelectorAll('.chip.active')].map(c => c.dataset.val));
+    container.innerHTML = cats.map(c => {
+        const isActive = prevActive.size === 0 || prevActive.has(c);
+        return `<span class="chip ${isActive ? 'active' : ''}" data-val="${c}" onclick="toggleChip(this); updateStatus()">${c}</span>`;
+    }).join('');
+}
+
+function getActiveLevels() {
+    return [...document.querySelectorAll('#levelChips .chip.active')].map(c => c.dataset.val);
+}
+function getActiveCategories() {
+    return [...document.querySelectorAll('#categoryChips .chip.active')].map(c => c.dataset.val);
+}
+
+function toggleChip(el) {
+    el.classList.toggle('active');
+    updateStatus();
+}
+
+function updateStatus() {
+    if (selectedFiles.size === 0) return;
+    const levels = getActiveLevels();
+    const cats   = getActiveCategories();
+    const count  = parseInt(document.getElementById('countSlider').value);
+
+    const filtered = loadedQuestions.filter(q => {
+        const lv  = q.level || '미분류';
+        const cat = q.category || '미분류';
+        return levels.includes(lv) && cats.includes(cat);
+    });
+
+    const avail = filtered.length;
+    const max = Math.min(avail, 50);
+    document.getElementById('countSlider').max = max || 1;
+    if (count > max) document.getElementById('countSlider').value = max;
+    updateCount();
+
+    const canMake = avail >= count;
+    document.getElementById('statusBox').innerHTML = `
+        선택 시험지: <span class="num">${selectedFiles.size}개</span><br>
+        전체 문제: <span class="num">${loadedQuestions.length}문제</span><br>
+        조건 일치: <span class="num">${avail}문제</span><br>
+        추출 예정: <span class="${canMake ? 'num' : 'warn'}">${Math.min(count, avail)}문제</span>
+        ${avail < count ? '<br><span class="warn">⚠ 조건에 맞는 문제가 부족합니다</span>' : ''}
+    `;
+    document.getElementById('btnGenerate').disabled = (avail === 0);
+}
+
+function updateCount() {
+    const v = document.getElementById('countSlider').value;
+    document.getElementById('countDisplay').textContent = v;
+    updateStatus();
+}
+
+// .js 파일을 순차 로드해서 window.questionBank 수집
+function loadSelectedFiles() {
+    return new Promise(async (resolve) => {
+        const files = [...selectedFiles];
+        const all = [];
+
+        for (const file of files) {
+            await new Promise(res => {
+                delete window.questionBank;
+                const s = document.createElement('script');
+                s.src = 'exams/' + file + '?v=' + Date.now();
+                s.onload = () => {
+                    let qs = [];
+                    if (Array.isArray(window.questionBank)) qs = window.questionBank;
+                    else if (window.questionBank?.questions) qs = window.questionBank.questions;
+                    // 출처 정보 태깅
+                    qs.forEach(q => q._source = file);
+                    all.push(...qs);
+                    res();
+                };
+                s.onerror = () => res();
+                document.body.appendChild(s);
+            });
+        }
+        resolve(all);
+    });
+}
+
+async function generate() {
+    const levels = getActiveLevels();
+    const cats   = getActiveCategories();
+    const count  = parseInt(document.getElementById('countSlider').value);
+    const title  = document.getElementById('examTitle').value.trim() || '믹스 시험지';
+
+    const filtered = loadedQuestions.filter(q => {
+        const lv  = q.level || '미분류';
+        const cat = q.category || '미분류';
+        return levels.includes(lv) && cats.includes(cat);
+    });
+
+    // 셔플 후 N개 추출
+    const shuffled = filtered.sort(() => Math.random() - 0.5);
+    const picked = shuffled.slice(0, count);
+
+    // sessionStorage에 저장
+    sessionStorage.setItem('mixedQuestions', JSON.stringify(picked));
+    sessionStorage.setItem('mixedTitle', title);
+
+    // engine.html 새 창으로 열기
+    window.open(`engine.html?data=mixed&title=${encodeURIComponent(title)}`, 'ap_engine');
+}
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

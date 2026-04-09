@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>시험지 통합 관리 시스템</title>
+    <title>AP 수학학원 시험지 통합 관리</title>
     <style>
         body { font-family: 'Pretendard', -apple-system, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
-        .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        /* 헤더 섹션 추가 */
+        .header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .btn-mixer { background: #6366f1; color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.2s; }
+        .btn-mixer:hover { background: #4f46e5; transform: translateY(-2px); }
+        
+        .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
         select, input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; }
         select:focus, input:focus { border-color: #007bff; }
         .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
@@ -20,6 +25,11 @@
     </style>
 </head>
 <body>
+
+    <div class="header-area">
+        <h1 style="margin:0; font-size: 24px;">📚 시험지 통합 관리</h1>
+        <a href="mixer.html" class="btn-mixer">🎲 시험지 믹서(조합기)</a>
+    </div>
 
     <div class="filter-container">
         <input type="text" id="searchInput" placeholder="학교명 또는 과목 검색...">
@@ -37,10 +47,14 @@
 
         async function init() {
             try {
+                // [무결성] 캐시 방지 및 주소 체계 준수
                 const res = await fetch('db.json?v=' + Date.now());
                 if (!res.ok) throw new Error('Network response was not ok');
                 db = await res.json();
                 
+                // [무결성] hidden 데이터 필터링 (믹서용 원천 소스는 목록에서 제외)
+                db.exams = db.exams.filter(e => e.type !== 'hidden');
+
                 setupFilters();
                 renderExams(db.exams);
             } catch (e) { 
@@ -101,17 +115,19 @@
             data.forEach(ex => {
                 const semText = ex.semester ? `${ex.semester}학기` : "";
                 const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-                let fullTitle = `${ex.year}_${ex.school}_${ex.grade}_${semText}_${typeText}_${ex.subject}`.replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
-
-                // [무결성 경로] 한글/공백 파일명 깨짐 방지
-                const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(fullTitle)}`;
+                
+                // 가독성을 위한 타이틀 정리
+                let displayTitle = `${ex.year} ${ex.school} ${ex.grade} ${semText} ${typeText}`.replace(/\s+/g, ' ').trim();
+                
+                // 엔진 호출 경로 설정
+                const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}`;
 
                 const card = document.createElement('div');
                 card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
                 card.innerHTML = `
-                    <div class="title">${fullTitle}</div>
+                    <div class="title">${displayTitle}</div>
                     <div class="meta">
-                        <span class="badge">${ex.type === 'archive' ? '정리' : '기출'}</span>
+                        <span class="badge" style="background:${ex.type === 'archive' ? '#dcfce7' : '#dbeafe'}">${ex.type === 'archive' ? '단원정리' : '학교기출'}</span>
                         <span class="badge">${ex.grade}</span>
                         <span class="file-info">📄 ${ex.file}</span>
                     </div>
