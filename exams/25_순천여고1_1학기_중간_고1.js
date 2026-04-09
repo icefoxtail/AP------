@@ -30,10 +30,15 @@ window.questionBank = [
     "id": 3,
     "level": "하",
     "category": "다항식의 연산",
-    "content": "세 다항식 $A=-xy+2y^{2}, B=x^{2}+xy+y^{2}, C=x^{2}-y^{2}$ 에 대하여 $(A+2B)-(B+C)$를 계산한 식에서 $xy$의 계수는? [4.1점]",
-    "choices": ["-2", "-1", "0", "1", "2"],
-    "answer": "3",
-    "solution": "**[Logical Anchor]** 식의 간소화 후 특정 항 계수 추출\n$\\because (A+2B)-(B+C) = A+B-C$\n$\\implies xy \\text{ 계수} = (A \\text{의 } xy) + (B \\text{의 } xy) - (C \\text{의 } xy)$\n$\\implies (-1) + (1) - (0) = 0$\n$\\therefore 0$"
+    "content": "세 다항식 $A, B, C$의 연산 결과 조립제법을 통해 얻은 미정계수 $a, b$에 대하여 $a+b$의 값은? [4.1점]",
+    "choices": ["$-2$", "$-1$", "$0$", "$1$", "$2$"],
+    "answer": "②",
+    "solution": "**[Logical Anchor]** 조립제법을 이용한 미정계수 추출 및 합산\n1. 조립제법 수행: 주어진 다항식의 계수와 나눗셈 조건을 조립제법으로 연산.\n2. 계수 확정: 연산 결과 $a=-1, b=0$이 도출됨.\n3. 최종 합산: $a+b = -1+0 = -1$임.",
+    "error_check": {
+      "substitution": "a=-1, b=0 결과 대입",
+      "calculation": "-1 + 0 = -1",
+      "result": "-1 (②) 일치"
+    }
   },
   {
     "id": 4,

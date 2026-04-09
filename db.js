@@ -1,4 +1,4 @@
-{
+window.mainDB = {
   "last_updated": "2026-04-09",
   "exams": [
     { "year": 2025, "school": "연향중", "grade": "중2", "level": "middle", "semester": 1, "examType": "mid", "subject": "중등수학2-1", "type": "exam", "file": "25_연향중2_1학기_중간_중2.js" },
@@ -44,4 +44,4 @@
     { "year": 2025, "school": "공통", "grade": "고1", "level": "high", "semester": 1, "examType": "mid", "subject": "공통수학", "type": "archive", "file": "01_항등식과나머지정리_고1_기출.js" },
     { "year": 2026, "school": "RPM", "grade": "중2", "level": "middle", "semester": 1, "examType": "archive", "subject": "중등수학2-1", "type": "hidden", "file": "26_RPM2_1학기_유리수와순환소수_전체.js" }
   ]
-}
+};

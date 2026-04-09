@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP 수학학원 시험지 엔진 v10.9 - 원본 베이스 안정화 버전</title>
+    <title>AP 수학학원 시험지 엔진 v10.9.2 - 레이아웃 무결성 버전</title>
     <script>
         window.MathJax = {
             tex: { 
@@ -30,7 +30,6 @@
         
         .page { width: 210mm; height: 297mm; padding: 12mm 15mm; margin: 0 auto 10mm auto; background: #fff; page-break-after: always; display: flex; flex-direction: column; box-sizing: border-box; position: relative; }
         
-        /* [UI 반영] 빈 박스가 공간을 꽉 채우도록 stretch 적용 */
         .content-container { flex: 1; width: 100%; display: grid; position: relative; box-sizing: border-box; overflow: hidden; }
         body.test-mode .content-container { grid-template-columns: 1fr 1fr; align-items: stretch; }
         body.test-mode .content-container::after {
@@ -45,30 +44,44 @@
             height: auto; overflow: visible;
         }
 
-        /* [UI 반영] item 높이를 100%로 주어 그리드 내부를 가득 채움 */
         .item { 
             padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; 
             break-inside: avoid; page-break-inside: avoid; 
             border-bottom: 0.5px solid #eee; height: 100%;
             overflow: hidden; word-break: keep-all; overflow-wrap: break-word;
         }
-        body.sol-mode .item { height: auto; }
+        body.sol-mode .item { height: auto; border-bottom: 1px solid #f1f5f9; padding: 15px 12px; }
 
-        .test-area { flex: 1; display: flex; flex-direction: column; }
+        .test-area { flex: 1; display: flex; flex-direction: column; height: 100%; }
         .sol-area { display: none; }
         
         body.sol-mode .test-area { display: none; }
-        body.sol-mode .sol-area { display: block; width: 100%; padding-bottom: 8px; }
+        body.sol-mode .sol-area { display: block; width: 100%; }
 
-        .sol-title { font-weight: 800; border-bottom: 2.5px solid #1e293b; padding-bottom: 2px; margin-bottom: 0; display: block; font-size: 10.5pt; width: 100%; }
+        /* [수정] 답안 박스: 남는 공간을 꽉 채우도록 설정 */
+        .answer-box { 
+            margin-top: auto; 
+            border: 1px dashed #cbd5e1; 
+            background: #fafafa; 
+            width: 100%; 
+            flex: 1; 
+            min-height: 35mm; 
+            position: relative;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .answer-box::after {
+            content: "[ 답안 작성란 ]";
+            position: absolute; top: 10px; left: 10px;
+            font-size: 8pt; color: #cbd5e1;
+        }
+        body.sol-mode .answer-box { display: none; }
+
+        .sol-title { font-weight: 800; border-bottom: 2px solid #1e293b; padding-bottom: 3px; margin-bottom: 5px; display: block; font-size: 10.5pt; color: #1e293b; }
         .sol-ans-text { color: #2563eb; margin-left: 10px; font-weight: 900; }
-        
-        /* [UI 반영] 해설 텍스트 강제 좌측 정렬 */
-        .sol-content { white-space: pre-wrap; line-height: 1.6; font-size: 9.5pt; margin-top: 5px; padding: 0; text-align: left; }
+        .sol-content { white-space: pre-wrap; line-height: 1.7; font-size: 9.5pt; text-align: left; }
         
         .img-container svg, .img-container img { width: 100% !important; max-width: 100%; height: auto !important; display: block; margin: 5px auto; }
-        .clearfix::after { content: ""; clear: both; display: table; }
-
         mjx-container { max-width: 100% !important; overflow-x: auto !important; margin: 5px 0 !important; }
     </style>
 </head>
@@ -92,21 +105,22 @@ const CIRCLED = ['①','②','③','④','⑤'];
 function normalizeQuestion(q) {
     if (q.solution) {
         q.solution = q.solution
+            .replace(/tf\s?([a-zA-Z0-9^]+)\s?\/\s?([a-zA-Z0-9^]+)/g, '$\\dfrac{$1}{$2}$')
+            .replace(/tf\s?([a-zA-Z0-9^]+)/g, '$\\dfrac{$1}{분모확인}$') 
             .replace(/\[Logical Anchor\]/g, '**[키포인트]**')
-            // [오류 해결] 역슬래시(\) 유무에 상관없이 영어 예약어를 안전하게 한글로 치환
             .replace(/\\?implies/gi, ' 이면 ')
             .replace(/\\?therefore/gi, ' 따라서 ')
             .replace(/\\?because/gi, ' 이므로 ')
             .replace(/here\s*fore/gi, ' 따라서 ')
-            .replace(/\\?ext(\d+)/gi, ' ($1)단계: ')
-            .replace(/\\?next(\d*)/gi, ' 다음으로 ')
+            .replace(/\\?ext[i]*[case]*(\d+)\s*\)?/gi, '\n**($1)단계:** ')
+            .replace(/\\?next(\d*)/gi, '\n**다음으로:** ')
             .replace(/i\)/g, '1)')
             .replace(/ii\)/g, '2)')
             .replace(/iii\)/g, '3)')
             .replace(/iv\)/g, '4)')
             .replace(/case\s+(\d+)\)/gi, '경우 $1)')
-            // [오류 해결] Math input error의 주범인 \text{...} 껍데기만 벗기고 괄호 안의 내용은 보존하여 에러 원천 차단
             .replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ')
+            .replace(/^\s+/, '')
             .trim();
     }
 
@@ -181,29 +195,27 @@ function renderItems() {
 
     pool.innerHTML = bank.map((q, i) => {
         const isMultiple = q.type === 'single';
+        const isDescriptive = q.type === 'descriptive';
+        const isShort = q.type === 'short';
         const hasSvg = (q.svg && q.svg.length > 10) || (q.content && q.content.includes('<svg'));
 
         return `
         <div class="item clearfix">
             <div class="test-area">
                 <div style="font-size:7.5pt; color:#64748b; margin-bottom:3px;">[난이도: ${q.level || '중'}] ${q.category || ''}</div>
-                <div style="flex:1;">
+                <div style="flex:0 0 auto; margin-bottom: 5px;">
                     <b style="font-size:10.5pt;">${q.num || i+1}.</b> ${q.content}
-                    ${isMultiple ? `<div style="margin-top:12px; line-height:1.6;">${q.choices.map((c, ci) => `<div style="margin-bottom:3px;">${CIRCLED[ci]} ${c}</div>`).join('')}</div>` : ''}
                 </div>
+                ${isMultiple ? `<div style="margin-top:12px; line-height:1.6;">${q.choices.map((c, ci) => `<div style="margin-bottom:3px;">${CIRCLED[ci]} ${c}</div>`).join('')}</div>` : ''}
+                
                 ${hasSvg ? `<div class="img-container">${q.svg || ''}</div>` : ''}
                 
-                ${(!isMultiple && q.type !== 'descriptive' && !hasSvg) ? `<div style="margin-top:10px; border:1px solid #e2e8f0; flex:1; min-height:35mm; background:#fafafa; width:100%;"></div>` : ''}
+                ${((isShort || isDescriptive) && !hasSvg) ? `<div class="answer-box"></div>` : ''}
             </div>
 
             <div class="sol-area clearfix">
                 <div class="sol-title">[문항 ${q.num || i+1}] <span class="sol-ans-text">정답: ${q.answer}</span></div>
-                <div class="sol-content">
-                    ${q.solution || ''}
-                    ${q.wrong_reason && typeof q.wrong_reason === 'object'
-                        ? Object.entries(q.wrong_reason).map(([k,v]) => `<div style="color:#e11d48; font-size:8.5pt; margin-top:4px;">• ${k} 오답: ${v}</div>`).join('')
-                        : (q.wrong_reason ? `<div style="margin-top:8px; font-size:8.5pt; color:#e11d48; font-weight:bold;">⚠️ 함정 분석: ${q.wrong_reason}</div>` : '')}
-                </div>
+                <div class="sol-content">${q.solution || ''}</div>
             </div>
         </div>`;
     }).join('');
