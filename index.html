@@ -3,70 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AP 수학학원 시험지 통합 관리</title>
+    <title>AP 수학학원 통합 출제 시스템</title>
     <style>
         body { font-family: 'Pretendard', -apple-system, sans-serif; padding: 20px; background: #f5f5f5; color: #333; }
         .header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .btn-mixer { background: #6366f1; color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.2s; }
         .btn-mixer:hover { background: #4f46e5; transform: translateY(-2px); }
         
-        .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-        select, input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; }
+        .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+        input { padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; outline: none; font-size: 14px; }
         
         .qpp-group { display: flex; gap: 5px; margin-left: auto; align-items: center; }
         .qpp-btn { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; font-size: 13px; font-weight: bold; color: #64748b; transition: 0.2s; }
         .qpp-btn.active { background: #1e293b; color: white; border-color: #1e293b; }
 
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
-        .exam-card { background: white; padding: 18px; border-radius: 10px; border-left: 6px solid #007bff; transition: 0.2s; cursor: pointer; min-height: 100px; display: flex; flex-direction: column; justify-content: center; text-decoration: none; color: inherit; }
+        /* 1/4 크기로 축소된 기출 카드 스타일 */
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+        .exam-card { background: white; padding: 12px; border-radius: 8px; border-left: 4px solid #007bff; transition: 0.2s; cursor: pointer; min-height: 80px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-decoration: none; color: inherit; }
         .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .exam-card.archive { border-left-color: #28a745; }
-        .title { font-weight: bold; font-size: 1.1em; color: #1e293b; margin-bottom: 8px; word-break: keep-all; line-height: 1.4; }
-        .meta { font-size: 0.85em; color: #64748b; display: flex; align-items: center; gap: 8px; }
+        .exam-card.archive { border-left-color: #10b981; }
+        .title { font-weight: bold; font-size: 0.9em; color: #1e293b; margin-bottom: 6px; word-break: keep-all; line-height: 1.3; }
+        .meta { font-size: 0.75em; color: #64748b; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
         .badge { padding: 2px 6px; border-radius: 4px; background: #f1f5f9; font-weight: bold; color: #475569; }
-        .file-info { color: #94a3b8; margin-left: auto; font-family: monospace; }
+        .file-info { font-size: 0.85em; margin-top: 6px; color: #94a3b8; width: 100%; text-align: right; font-family: monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* 네비게이션(Breadcrumb) 및 선택 버튼 스타일 */
+        .breadcrumb { font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #1e293b; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .breadcrumb span { cursor: pointer; color: #6366f1; transition: 0.2s; }
+        .breadcrumb span:hover { text-decoration: underline; }
+        .breadcrumb .separator { color: #94a3b8; cursor: default; text-decoration: none; }
+        
+        .choice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .choice-btn { padding: 12px; text-align: center; background: white; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .choice-btn:hover { background: #f8fafc; border-color: #6366f1; color: #6366f1; transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .section-title { font-size: 1.1em; font-weight: bold; margin: 20px 0 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; grid-column: 1 / -1; }
     </style>
 </head>
 <body>
     <div class="header-area">
-        <h1 style="margin:0; font-size: 24px;">📚 시험지 통합 관리</h1>
+        <h1 style="margin:0; font-size: 24px;">📚 AP 수학학원 통합 출제 시스템</h1>
         <a href="mixer.html" class="btn-mixer">🎲 시험지 믹서(조합기)</a>
     </div>
 
     <div class="filter-container">
-        <input type="text" id="searchInput" placeholder="학교명 또는 과목 검색...">
-        <select id="yearFilter"><option value="all">모든 연도</option></select>
-        <select id="gradeFilter"><option value="all">모든 학년</option></select>
-        <select id="subjectFilter"><option value="all">모든 과목</option></select>
-        
-        <div class="qpp-group">
-            <div class="qpp-btn active" onclick="setQpp(4, this)">4</div>
-            <div class="qpp-btn" onclick="setQpp(6, this)">6</div>
+        <div class="breadcrumb" id="breadcrumb">
+            </div>
+        <div style="display: flex; width: 100%; gap: 10px; align-items: center;">
+            <input type="text" id="searchInput" placeholder="검색 (학교명, 단원 등)..." style="flex: 1;">
+            <div class="qpp-group">
+                <div class="qpp-btn active" onclick="setQpp(4, this)">4</div>
+                <div class="qpp-btn" onclick="setQpp(6, this)">6</div>
+            </div>
         </div>
     </div>
 
+    <div id="choiceList" class="choice-grid"></div>
     <div id="examList" class="exam-grid"></div>
 
     <script>
         let db = { exams: [] };
         let currentQpp = 4;
+        let currentPath = []; // [학년, 연도, 학기, 과목]
 
         function setQpp(n, el) {
             currentQpp = n;
             document.querySelectorAll('.qpp-btn').forEach(btn => btn.classList.remove('active'));
             el.classList.add('active');
-            filterData();
         }
 
         function init() {
             const s = document.createElement('script');
             s.src = 'db.js?v=' + Date.now();
             s.onload = () => {
-                // [수정] 원장님 데이터 변수명 window.mainDB를 직접 참조
                 db = window.mainDB || { exams: [] }; 
                 db.exams = db.exams.filter(e => e.type !== 'hidden');
-                setupFilters();
-                renderExams(db.exams);
+                
+                // 데이터 정제: 학년 누락 방어 및 학기 텍스트 조합
+                db.exams.forEach(ex => {
+                    const gradeStr = ex.grade || '미분류'; 
+                    const semStr = ex.semester ? ex.semester : '1'; 
+                    ex.computedSemester = `${gradeStr}-${semStr}`; 
+                });
+                
+                renderMain();
+                document.getElementById('searchInput').addEventListener('input', handleSearch);
             };
             s.onerror = () => {
                 alert('db.js 파일을 로드하지 못했습니다.');
@@ -74,63 +94,175 @@
             document.body.appendChild(s);
         }
 
-        function setupFilters() {
-            const exams = db.exams || [];
-            const years = [...new Set(exams.map(e => e.year))].filter(Boolean).sort((a, b) => b - a);
-            const grades = [...new Set(exams.map(e => e.grade))].filter(Boolean).sort();
-            const subjects = [...new Set(exams.map(e => e.subject))].filter(Boolean).sort();
-            populateSelect('yearFilter', years);
-            populateSelect('gradeFilter', grades);
-            populateSelect('subjectFilter', subjects);
-            document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', filterData));
+        // 네비게이션 제어 로직
+        function goStep(stepIndex) {
+            currentPath = currentPath.slice(0, stepIndex);
+            renderCurrentState();
         }
 
-        function populateSelect(id, items) {
-            const select = document.getElementById(id);
-            while (select.children.length > 1) { select.removeChild(select.lastChild); }
-            items.forEach(item => {
-                const opt = document.createElement('option');
-                opt.value = item; opt.textContent = item; select.appendChild(opt);
+        function selectPath(value) {
+            currentPath.push(value);
+            renderCurrentState();
+        }
+
+        function renderCurrentState() {
+            updateBreadcrumb();
+            document.getElementById('searchInput').value = '';
+            const level = currentPath.length;
+            
+            if (level === 0) renderMain();
+            else if (level === 1) renderChoices('year');
+            else if (level === 2) renderChoices('semester');
+            else if (level === 3) renderChoices('subject');
+            else if (level === 4) renderFinalExams();
+        }
+
+        function updateBreadcrumb() {
+            const bc = document.getElementById('breadcrumb');
+            let html = `<span onclick="goStep(0)">🏠 학년선택(메인)</span>`;
+            const pathLabels = ['연도선택', '학기선택', '과목선택', '기출목록'];
+            
+            currentPath.forEach((path, idx) => {
+                html += `<span class="separator"> > </span><span onclick="goStep(${idx + 1})">${path}</span>`;
+            });
+            
+            if (currentPath.length < 4) {
+                html += `<span class="separator"> > </span><span style="color:#94a3b8; font-weight:normal;">${pathLabels[currentPath.length]}</span>`;
+            }
+            bc.innerHTML = html;
+        }
+
+        // 4단계 필터링 및 선택 버튼 렌더링 (정렬 무결성 적용)
+        function renderChoices(target) {
+            const container = document.getElementById('choiceList');
+            document.getElementById('examList').innerHTML = ''; 
+            container.innerHTML = '';
+            
+            let filtered = db.exams.filter(ex => ex.grade === currentPath[0]);
+            if (currentPath[1]) filtered = filtered.filter(ex => String(ex.year) === currentPath[1]);
+            if (currentPath[2]) filtered = filtered.filter(ex => ex.computedSemester === currentPath[2]);
+
+            let options = [];
+            if (target === 'year') {
+                options = [...new Set(filtered.map(e => String(e.year)))].filter(Boolean).sort((a,b)=>parseInt(b)-parseInt(a));
+            } else if (target === 'semester') {
+                options = [...new Set(filtered.map(e => e.computedSemester))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko', {numeric: true}));
+            } else if (target === 'subject') {
+                options = [...new Set(filtered.map(e => e.subject))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko', {numeric: true}));
+            }
+
+            options.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'choice-btn';
+                btn.textContent = opt;
+                btn.onclick = () => selectPath(opt);
+                container.appendChild(btn);
             });
         }
 
-        function filterData() {
-            const s = document.getElementById('searchInput').value.toLowerCase();
-            const y = document.getElementById('yearFilter').value;
-            const g = document.getElementById('gradeFilter').value;
-            const sub = document.getElementById('subjectFilter').value;
-            const filtered = db.exams.filter(ex => {
-                return ((ex.school || "").toLowerCase().includes(s) || (ex.subject || "").toLowerCase().includes(s)) &&
-                       (y === 'all' || String(ex.year) === y) &&
-                       (g === 'all' || String(ex.grade) === g) &&
-                       (sub === 'all' || ex.subject === sub);
+        // 메인 화면 (학년 버튼 + 학년별 최신 연도 4개 기출 선배치)
+        function renderMain() {
+            const choiceContainer = document.getElementById('choiceList');
+            const examContainer = document.getElementById('examList');
+            choiceContainer.innerHTML = ''; 
+            examContainer.innerHTML = '';
+            updateBreadcrumb();
+
+            const grades = ['중2', '중3', '고1', '고2'];
+            
+            grades.forEach(g => {
+                const btn = document.createElement('div');
+                btn.className = 'choice-btn';
+                btn.innerHTML = `<span style="color:#6366f1;">📁</span> ${g}`;
+                btn.onclick = () => selectPath(g);
+                choiceContainer.appendChild(btn);
             });
+
+            grades.forEach(grade => {
+                const gradeExams = db.exams.filter(e => e.grade === grade);
+                if(gradeExams.length === 0) return;
+                
+                const maxYear = Math.max(...gradeExams.map(e => parseInt(e.year) || 0));
+                const top4 = gradeExams.filter(e => parseInt(e.year) === maxYear).slice(0, 4);
+                
+                if(top4.length > 0) {
+                    const title = document.createElement('div');
+                    title.className = 'section-title';
+                    title.textContent = `🔥 ${grade} 최신 기출 (${maxYear}년)`;
+                    examContainer.appendChild(title);
+                    top4.forEach(ex => examContainer.appendChild(createCard(ex)));
+                }
+            });
+        }
+
+        function renderFinalExams() {
+            document.getElementById('choiceList').innerHTML = '';
+            let filtered = db.exams.filter(ex => 
+                ex.grade === currentPath[0] && 
+                String(ex.year) === currentPath[1] && 
+                ex.computedSemester === currentPath[2] && 
+                ex.subject === currentPath[3]
+            );
             renderExams(filtered);
+        }
+
+        // 검색 로직 (지역 검색 무결성 확보)
+        function handleSearch() {
+            const s = document.getElementById('searchInput').value.toLowerCase();
+            if(!s) { renderCurrentState(); return; }
+            
+            document.getElementById('choiceList').innerHTML = '';
+            
+            // 현재 진입해 있는 계층 내에서만 우선 필터링
+            let baseData = db.exams;
+            if (currentPath.length > 0) baseData = baseData.filter(ex => ex.grade === currentPath[0]);
+            if (currentPath.length > 1) baseData = baseData.filter(ex => String(ex.year) === currentPath[1]);
+            if (currentPath.length > 2) baseData = baseData.filter(ex => ex.computedSemester === currentPath[2]);
+            if (currentPath.length > 3) baseData = baseData.filter(ex => ex.subject === currentPath[3]);
+
+            // 추려진 데이터 내에서 검색어 적용
+            const filtered = baseData.filter(ex => 
+                (ex.school || "").toLowerCase().includes(s) || 
+                (ex.subject || "").toLowerCase().includes(s) || 
+                (ex.computedSemester || "").toLowerCase().includes(s) ||
+                (ex.year ? String(ex.year) : "").includes(s)
+            );
+            renderExams(filtered);
+        }
+
+        // 축소된 카드 UI 생성기
+        function createCard(ex) {
+            const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
+            let displayTitle = `${ex.year} ${ex.school || ''} ${ex.computedSemester} ${ex.subject} ${typeText}`.replace(/\s+/g, ' ').trim();
+            
+            const card = document.createElement('div');
+            card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
+            
+            const isArchive = ex.type === 'archive';
+            const badgeBg = isArchive ? '#dcfce7' : '#dbeafe';
+            const badgeColor = isArchive ? '#166534' : '#1e3a8a';
+            const badgeText = isArchive ? '단원정리' : '학교기출';
+
+            card.innerHTML = `
+                <div class="title">${displayTitle}</div>
+                <div class="meta">
+                    <span class="badge" style="background:${badgeBg}; color:${badgeColor};">${badgeText}</span>
+                    <span class="badge">${ex.grade}</span>
+                </div>
+                <div class="file-info">📄 ${ex.file}</div>
+            `;
+            
+            const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}&qpp=${currentQpp}`;
+            card.onclick = () => { window.open(moveUrl, 'ap_engine'); };
+            return card;
         }
 
         function renderExams(data) {
             const container = document.getElementById('examList');
             container.innerHTML = "";
-            data.forEach(ex => {
-                const semText = ex.semester ? `${ex.semester}학기` : "";
-                const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-                let displayTitle = `${ex.year} ${ex.school} ${ex.grade} ${semText} ${typeText}`.replace(/\s+/g, ' ').trim();
-                
-                // [참고] engine.html로 데이터 전송 시 exams/ 폴더 하위 경로를 포함함
-                const moveUrl = `engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}&qpp=${currentQpp}`;
-
-                const card = document.createElement('div');
-                card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
-                card.innerHTML = `<div class="title">${displayTitle}</div>
-                    <div class="meta">
-                        <span class="badge" style="background:${ex.type === 'archive' ? '#dcfce7' : '#dbeafe'}">${ex.type === 'archive' ? '단원정리' : '학교기출'}</span>
-                        <span class="badge">${ex.grade}</span>
-                        <span class="file-info">📄 ${ex.file}</span>
-                    </div>`;
-                card.onclick = () => { window.open(moveUrl, 'ap_engine'); };
-                container.appendChild(card);
-            });
+            data.forEach(ex => container.appendChild(createCard(ex)));
         }
+
         window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>

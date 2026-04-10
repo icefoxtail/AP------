@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시험지 믹서</title>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$']] },
+            startup: { typeset: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f5f7fa; color: #1e293b; min-height: 100vh; }
+        .header { background: #1e293b; color: white; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+        .header a { color: #94a3b8; text-decoration: none; font-size: 14px; }
+        .header h1 { font-size: 18px; font-weight: 600; }
+        .layout { display: grid; grid-template-columns: 1fr 320px; gap: 0; height: calc(100vh - 54px); }
+        .left { overflow-y: auto; padding: 20px; }
+        .filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .filter-bar select { padding: 6px 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px; background: white; outline: none; }
+        .exam-list { display: flex; flex-direction: column; gap: 6px; }
+        .exam-item { background: white; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .exam-item.selected { border-color: #6366f1; background: #eef2ff; }
+        .select-all-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 13px; color: #64748b; }
+        .select-all-bar button { font-size: 12px; padding: 3px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: white; cursor: pointer; }
+        .right { border-left: 1px solid #e2e8f0; background: white; display: flex; flex-direction: column; overflow-y: auto; }
+        .panel-section { padding: 20px; border-bottom: 1px solid #f1f5f9; }
+        .panel-label { font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 10px; }
+        .chip-group { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { padding: 5px 12px; border: 1.5px solid #e2e8f0; border-radius: 20px; font-size: 13px; cursor: pointer; background: white; color: #475569; }
+        .chip.active { border-color: #6366f1; background: #eef2ff; color: #4338ca; font-weight: 600; }
+        .qpp-selector { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
+        .qpp-btn { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-weight: bold; color: #475569; background: white; transition: 0.2s; }
+        .qpp-btn.active { border-color: #4f46e5; background: #eef2ff; color: #4338ca; }
+        .btn-generate { margin: 16px 20px; padding: 14px; background: #4f46e5; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
+        .btn-generate:disabled { background: #c7d2fe; cursor: not-allowed; }
+        .title-input { width: 100%; padding: 8px 10px; border: 1.5px solid #e2e8f0; border-radius: 6px; font-size: 14px; outline: none; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html">← 목록</a>
+    <h1>🎲 시험지 믹서</h1>
+</div>
+
+<div class="layout">
+    <div class="left">
+        <div class="filter-bar">
+            <select id="gradeFilter" onchange="filterExams()"><option value="all">모든 학년</option></select>
+            <select id="subjectFilter" onchange="filterExams()"><option value="all">모든 과목</option></select>
+            <select id="yearFilter" onchange="filterExams()"><option value="all">모든 연도</option></select>
+        </div>
+        <div class="select-all-bar">
+            <button onclick="selectAll(true)">전체 선택</button>
+            <button onclick="selectAll(false)">전체 해제</button>
+            <span id="selectedCount">0개 선택됨</span>
+        </div>
+        <div id="examList" class="exam-list"></div>
+    </div>
+
+    <div class="right">
+        <div class="panel-section">
+            <div class="panel-label">시험지 제목</div>
+            <input class="title-input" id="examTitle" type="text" placeholder="예: 중2 수학 모의고사">
+        </div>
+        <div class="panel-section">
+            <div class="panel-label">난이도 필터</div>
+            <div class="chip-group" id="levelChips">
+                <span class="chip active" data-val="상" onclick="toggleChip(this)">상</span>
+                <span class="chip active" data-val="중" onclick="toggleChip(this)">중</span>
+                <span class="chip active" data-val="하" onclick="toggleChip(this)">하</span>
+            </div>
+        </div>
+        <div class="panel-section">
+            <div class="panel-label">문제 수</div>
+            <input type="range" id="countSlider" min="5" max="50" value="20" oninput="updateCount()">
+            <span id="countDisplay">20</span>
+        </div>
+        
+        <div class="panel-section" style="border-bottom: none; padding-bottom: 10px; text-align: center;">
+            <div class="panel-label">출력 문항 수 (격자)</div>
+            <div class="qpp-selector">
+                <div class="qpp-btn active" onclick="setQpp(4, this)">4</div>
+                <div class="qpp-btn" onclick="setQpp(6, this)">6</div>
+            </div>
+        </div>
+
+        <button class="btn-generate" id="btnGenerate" onclick="generate()" disabled>🎲 시험지 생성</button>
+    </div>
+</div>
+
+<script>
+let db = { exams: [] };
+let selectedFiles = new Set();
+let loadedQuestions = [];
+let currentQpp = 4;
+
+function setQpp(n, el) {
+    currentQpp = n;
+    document.querySelectorAll('.qpp-btn').forEach(btn => btn.classList.remove('active'));
+    el.classList.add('active');
+}
+
+function updateCount() {
+    document.getElementById('countDisplay').textContent = document.getElementById('countSlider').value;
+}
+
+function toggleChip(el) {
+    el.classList.toggle('active');
+}
+
+async function init() {
+    const res = await fetch('db.json?v=' + Date.now());
+    db = await res.json();
+    db.exams = db.exams.filter(e => e.type !== 'hidden');
+    setupFilters();
+    filterExams();
+}
+
+function setupFilters() {
+    const years = [...new Set(db.exams.map(e => e.year))].filter(Boolean).sort((a,b)=>b-a);
+    const grades = [...new Set(db.exams.map(e => e.grade))].filter(Boolean).sort();
+    const subjects = [...new Set(db.exams.map(e => e.subject))].filter(Boolean).sort();
+    populateSelect('yearFilter', years);
+    populateSelect('gradeFilter', grades);
+    populateSelect('subjectFilter', subjects);
+}
+
+function populateSelect(id, items) {
+    const sel = document.getElementById(id);
+    items.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+}
+
+function filterExams() {
+    const g = document.getElementById('gradeFilter').value;
+    const sub = document.getElementById('subjectFilter').value;
+    const y = document.getElementById('yearFilter').value;
+    const filtered = db.exams.filter(e => (g === 'all' || e.grade === g) && (sub === 'all' || e.subject === sub) && (y === 'all' || String(e.year) === y));
+    renderExamList(filtered);
+}
+
+function renderExamList(filtered) {
+    const container = document.getElementById('examList');
+    container.innerHTML = filtered.map(ex => `
+        <div class="exam-item ${selectedFiles.has(ex.file) ? 'selected' : ''}" onclick="toggleItem('${ex.file}', this)">
+            <input type="checkbox" ${selectedFiles.has(ex.file) ? 'checked' : ''} onchange="event.stopPropagation(); toggleItem('${ex.file}', this.parentElement)">
+            <div class="exam-name">${ex.year} ${ex.school} ${ex.grade}</div>
+        </div>`).join('');
+    document.getElementById('selectedCount').textContent = selectedFiles.size + '개 선택됨';
+}
+
+function selectAll(bool) {
+    const g = document.getElementById('gradeFilter').value;
+    const sub = document.getElementById('subjectFilter').value;
+    const y = document.getElementById('yearFilter').value;
+    const filtered = db.exams.filter(e => (g === 'all' || e.grade === g) && (sub === 'all' || e.subject === sub) && (y === 'all' || String(e.year) === y));
+    
+    filtered.forEach(ex => {
+        if (bool) selectedFiles.add(ex.file);
+        else selectedFiles.delete(ex.file);
+    });
+    filterExams();
+    loadAndAnalyze();
+}
+
+function toggleItem(file, el) {
+    if (selectedFiles.has(file)) selectedFiles.delete(file);
+    else selectedFiles.add(file);
+    filterExams(); 
+    loadAndAnalyze();
+}
+
+async function loadAndAnalyze() {
+    const all = [];
+    document.querySelectorAll('script[data-mixer]').forEach(s => s.remove());
+    
+    for (const file of selectedFiles) {
+        await new Promise(res => {
+            delete window.questionBank;
+            const s = document.createElement('script');
+            s.dataset.mixer = '1';
+            s.src = 'exams/' + file + '?v=' + Date.now();
+            s.onload = () => {
+                let qs = Array.isArray(window.questionBank) ? window.questionBank
+                       : (window.questionBank?.questions 
+                       || window.questionBank?.problems || []);
+                qs.forEach(q => q._source = file);
+                all.push(...qs);
+                res();
+            };
+            s.onerror = () => res();
+            document.body.appendChild(s);
+        });
+    }
+    loadedQuestions = all;
+    document.getElementById('btnGenerate').disabled = (all.length === 0);
+}
+
+function generate() {
+    const count = parseInt(document.getElementById('countSlider').value);
+    const title = document.getElementById('examTitle').value || '믹스 시험지';
+    const activeLevels = [...document.querySelectorAll('#levelChips .chip.active')].map(c => c.dataset.val);
+    
+    const filtered = loadedQuestions.filter(q => activeLevels.includes(q.level || '중'));
+    
+    if (filtered.length === 0) {
+        alert("선택한 난이도 조건에 맞는 문제가 없습니다.");
+        return;
+    }
+
+    // [최종 수정] 원본 배열 보존을 위한 복사본 생성 후 셔플
+    const picked = [...filtered].sort(() => Math.random() - 0.5).slice(0, count);
+    
+    sessionStorage.setItem('mixedQuestions', JSON.stringify(picked));
+    window.open(`engine.html?data=mixed&title=${encodeURIComponent(title)}&qpp=${currentQpp}`, 'ap_engine');
+}
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
