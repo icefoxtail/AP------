@@ -2,12 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP 수학학원 시험지 엔진 v10.9.7</title>
+    <title>AP 수학학원 시험지 엔진 v10.9.9</title>
     <script>
         window.MathJax = {
             tex: { 
                 inlineMath: [['$', '$']], 
-                
             },
             options: { enableMenu: false },
             startup: { typeset: false }
@@ -100,28 +99,41 @@
 <script>
 const AppState = { title: "", qpp: 4 };
 const CIRCLED = ['①','②','③','④','⑤'];
+let normalizedBank = [];
 
 function normalizeQuestion(q) {
-    if (q.solution) {
-        q.solution = q.solution
+    const newQ = JSON.parse(JSON.stringify(q));
+    
+    const processText = (text) => {
+        if (!text) return text;
+        let t = text.replace(/\\implies/g, '이면').replace(/\\therefore/g, '따라서').replace(/\\because/g, '이므로')
+                    .replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ');
+        return (t.includes('\\') && !t.includes('$')) ? `$${t.trim()}$` : t;
+    };
+
+    if (newQ.solution) {
+        newQ.solution = processText(newQ.solution)
             .replace(/\[Logical Anchor\]/g, '**[키포인트]**')
             .replace(/\\?ext[i]*[case]*(\d+)\s*\)?/gi, '\n**($1)단계:** ')
             .replace(/\\?next(\d*)/gi, '\n**다음으로:** ')
-            .replace(/case\s+(\d+)\)/gi, '경우 $1)')
-            .replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ')
-            .trim();
+            .replace(/case\s+(\d+)\)/gi, '경우 $1)');
     }
-    if (['중상', '최상'].includes(q.level)) {
-        if (!q.tags) q.tags = [];
-        q.tags.push(q.level);
-        q.level = '상';
+    
+    if (['중상', '최상'].includes(newQ.level)) {
+        if (!newQ.tags) newQ.tags = [];
+        newQ.tags.push(newQ.level);
+        newQ.level = '상';
     }
-    if (!q.type) {
-        if (q.choices && q.choices.length >= 5) q.type = 'single';
-        else if (q.content?.includes('서술')) q.type = 'descriptive';
-        else q.type = 'short';
+
+    newQ.content = processText(newQ.content);
+    if (newQ.choices) newQ.choices = newQ.choices.map(c => processText(c));
+
+    if (!newQ.type) {
+        if (newQ.choices && newQ.choices.length > 0) newQ.type = 'single';
+        else if (newQ.content?.includes('서술')) newQ.type = 'descriptive';
+        else newQ.type = 'short';
     }
-    return q;
+    return newQ;
 }
 
 function setMode(m) { document.body.className = m; initRender(); }
@@ -134,7 +146,7 @@ function setMode(m) { document.body.className = m; initRender(); }
     if (!file) return;
 
     const s = document.createElement('script');
-    s.src = file + '?v=' + Date.now();
+    s.src = decodeURIComponent(file) + '?v=' + Date.now();
     s.onload = initRender;
     document.body.appendChild(s);
 })();
@@ -142,7 +154,10 @@ function setMode(m) { document.body.className = m; initRender(); }
 async function initRender() {
     renderItems();
     paginate(); 
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise();
+    await new Promise(r => requestAnimationFrame(r));
+    if (window.MathJax?.typesetPromise) {
+        await MathJax.typesetPromise();
+    }
 }
 
 function renderItems() {
@@ -150,8 +165,9 @@ function renderItems() {
     let bank = Array.isArray(window.questionBank) ? window.questionBank 
              : (window.questionBank?.questions || window.questionBank?.problems || []);
     
-    pool.innerHTML = bank.map((q, i) => {
-        q = normalizeQuestion(q);
+    normalizedBank = bank.map(q => normalizeQuestion(q));
+    
+    pool.innerHTML = normalizedBank.map((q, i) => {
         const isMultiple = q.type === 'single';
         const isDescriptive = q.type === 'descriptive';
         const isShort = q.type === 'short';
@@ -195,7 +211,7 @@ function paginate() {
         const page = addPage("[정답표]");
         page.querySelector('.content-container').innerHTML = `<div style="font-size:11pt; line-height:2.2; column-count:2; column-gap:15mm;">
             ${items.map((_, i) => { 
-                const q = (Array.isArray(window.questionBank) ? window.questionBank[i] : (window.questionBank.questions?.[i] || window.questionBank.problems?.[i]));
+                const q = normalizedBank[i];
                 return `<b>${q.num || i+1}.</b> ${q.answer}`;
             }).join('<br>')}
         </div>`;
