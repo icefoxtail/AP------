@@ -75,6 +75,20 @@
                 <span class="chip active" data-val="하" onclick="toggleChip(this)">하</span>
             </div>
         </div>
+        
+        <div class="panel-section">
+            <div class="panel-label">단원 필터 
+                <span style="font-size:11px; color:#94a3b8; font-weight:400;">
+                  (시험지 선택 시 자동 표시)
+                </span>
+            </div>
+            <div class="chip-group" id="categoryChips">
+                <span style="font-size:12px; color:#94a3b8;">
+                  시험지를 선택하면 단원이 표시됩니다
+                </span>
+            </div>
+        </div>
+
         <div class="panel-section">
             <div class="panel-label">문제 수</div>
             <input type="range" id="countSlider" min="5" max="50" value="20" oninput="updateCount()">
@@ -197,6 +211,20 @@ async function loadAndAnalyze() {
         });
     }
     loadedQuestions = all;
+    
+    // [신규 추가] 단원 칩 렌더
+    const cats = [...new Set(all.map(q => q.category || '미분류'))]
+                 .filter(Boolean).sort((a,b) => a.localeCompare(b, 'ko'));
+    const catContainer = document.getElementById('categoryChips');
+    if (cats.length === 0) {
+        catContainer.innerHTML = '<span style="font-size:12px; color:#94a3b8;">단원 정보 없음</span>';
+    } else {
+        catContainer.innerHTML = cats.map(c =>
+            `<span class="chip active" data-val="${c}" 
+             onclick="toggleChip(this)">${c}</span>`
+        ).join('');
+    }
+
     document.getElementById('btnGenerate').disabled = (all.length === 0);
 }
 
@@ -205,14 +233,18 @@ function generate() {
     const title = document.getElementById('examTitle').value || '믹스 시험지';
     const activeLevels = [...document.querySelectorAll('#levelChips .chip.active')].map(c => c.dataset.val);
     
-    const filtered = loadedQuestions.filter(q => activeLevels.includes(q.level || '중'));
+    // [신규 변경] 단원 필터값도 함께 체크
+    const activeCategories = [...document.querySelectorAll('#categoryChips .chip.active')].map(c => c.dataset.val);
+    const filtered = loadedQuestions.filter(q => 
+        activeLevels.includes(q.level || '중') &&
+        (activeCategories.length === 0 || activeCategories.includes(q.category || '미분류'))
+    );
     
     if (filtered.length === 0) {
-        alert("선택한 난이도 조건에 맞는 문제가 없습니다.");
+        alert("선택한 조건에 맞는 문제가 없습니다.");
         return;
     }
 
-    // [최종 수정] 원본 배열 보존을 위한 복사본 생성 후 셔플
     const picked = [...filtered].sort(() => Math.random() - 0.5).slice(0, count);
     
     sessionStorage.setItem('mixedQuestions', JSON.stringify(picked));
@@ -222,4 +254,4 @@ function generate() {
 window.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-</html>
+</html>s
