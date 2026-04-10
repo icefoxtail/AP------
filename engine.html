@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP 수학 엔진 v10.9.9</title>
+    <title>AP 수학 엔진</title>
     <script>
         // [무결성 로직] 인라인 수식 인식 및 자동 실행 제어 설정 [cite: 2026-04-10]
         window.MathJax = {
@@ -18,10 +18,9 @@
         body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; }
         #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: white; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; border-bottom: 1px solid #ddd; width: 100%; box-sizing: border-box; }
         
-        /* [2단 정렬 무결성] 14:00 원본 그리드 규격 복구 */
         .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto 10mm auto; background: white; box-sizing: border-box; display: flex; flex-direction: column; }
         .content-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0 20px; }
-        .content-container::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; pointer-events: none; }
+        .content-container::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
 
         .item { padding: 15px 10px; border-bottom: 0.5px solid #eee; break-inside: avoid; display: flex; flex-direction: column; height: 100%; }
         .answer-box { margin-top: auto; border: 1px dashed #ccc; min-height: 35mm; background: #fafafa; }
@@ -31,16 +30,15 @@
 <body class="test-mode">
     <div id="mode-ctrl" class="no-print">
         <button onclick="location.href='index.html'">← 목록</button>
-        <button onclick="window.print()" style="background:#1e293b; color:white; border:none; padding:5px 15px; border-radius:4px; cursor: pointer;">인쇄 / PDF</button>
+        <button onclick="window.print()" style="background:#1e293b; color:white; border:none; padding:5px 15px; border-radius:4px;">인쇄</button>
     </div>
     <div id="print-area"></div>
     <div id="item-pool" style="display:none;"></div>
 
 <script>
-let normalizedBank = [];
 const AppState = { title: "", qpp: 4 };
 
-// [수식 보정 무결성] LaTeX 자동 감지 및 $ 래핑 로직 통합 [cite: 2026-04-10]
+// [수식 보정 무결성] LaTeX 자동 감지 및 $ 래핑 로직 복구 (일부 파일 누락 해결) [cite: 2026-04-10]
 function normalizeQuestion(q) {
     const processText = (t) => {
         if (!t) return t;
@@ -66,13 +64,13 @@ function normalizeQuestion(q) {
     document.body.appendChild(s);
 })();
 
-// [렌더링 무결성] 데이터 로드 및 비동기 수식 확정 출력 [cite: 2026-04-10]
+// [렌더링 무결성] 비동기 대기 및 확정 렌더링 로직 적용 [cite: 2026-04-10]
 async function initRender() {
     const pool = document.getElementById('item-pool');
-    const bank = Array.isArray(window.questionBank) ? window.questionBank 
-               : (window.questionBank?.questions || window.questionBank?.problems || []);
+    const bank = window.questionBank || [];
     
-    normalizedBank = bank.map(q => normalizeQuestion(q));
+    // 데이터를 정제하여 풀에 삽입
+    const normalizedBank = bank.map(q => normalizeQuestion(q));
     
     pool.innerHTML = normalizedBank.map((q, i) => `
         <div class="item">
@@ -80,9 +78,9 @@ async function initRender() {
             ${q.choices ? `<div style="line-height:1.8;">${q.choices.map((c,ci)=>`<div>${ci+1}) ${c}</div>`).join('')}</div>` : '<div class="answer-box"></div>'}
         </div>`).join('');
 
-    paginate();
-    
-    // DOM 복제 완료 대기 및 MathJax 렌더링 동기화
+    paginate(); // 2단 분할
+
+    // DOM 복제 완료 및 MathJax 비동기 렌더링 타이밍 보정 [cite: 2026-04-10]
     await new Promise(r => requestAnimationFrame(r));
     if (window.MathJax?.typesetPromise) {
         await MathJax.typesetPromise();
