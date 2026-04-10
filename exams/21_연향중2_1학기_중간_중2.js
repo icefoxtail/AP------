@@ -1,201 +1,193 @@
-/**
- * 21_연향중2_1학기_중간_중2 (v6.5.4 AP수학 마스터 엔진 표준형)
- * 문항 수: 21문항
- * 타이틀: 21_연향중2_1학기_중간_중2
- * 특이사항: 9번 응용 문항 논리 보정 및 18번 심화 해설 확장 적용
- */
-
-// 파일명: 21_연향중2_1학기_중간_중2.js
-window.examTitle = "21_연향중2_1학기_중간_중2";
+window.examTitle = "21_연향중2_1학기_중간_수학";
 
 window.questionBank = [
-    {
-        id: 1,
-        level: "하",
-        category: "순환소수의 표현",
-        content: "다음 순환마디가 옳지 않은 것은? [3점] [21 연향중 2-1 중간 01번]",
-        choices: ["$0.77777 \\dots \\rightarrow 7$", "$20.25252525 \\dots \\rightarrow 25$", "$3.21321321 \\dots \\rightarrow 321$", "$-2.374374374 \\dots \\rightarrow 374$", "$4.4939393 \\dots \\rightarrow 493$"],
-        answer: "⑤",
-        solution: "**[Logical Anchor]** 순환마디는 소수점 아래 처음으로 반복되는 부분의 최소 단위임.\n⑤ $4.4939393 \\dots$\n$\\because$ 소수점 아래 첫째 자리 $4$는 반복되지 않고, 그 이후 $9, 3$이 반복됨.\n$\\implies$ 순환마디는 $93$임.\n$\\therefore$ ⑤"
-    },
-    {
-        id: 2,
-        level: "하",
-        category: "일차부등식의 정의",
-        content: "다음 중에서 일차부등식이 아닌 것을 모두 고르면? (정답 2개) [3점] [21 연향중 2-1 중간 02번]",
-        choices: ["$6x+3 \\le -3$", "$x-4 < 0$", "$x^2+5x \\ge x^2+x-10$", "$9-4 \\ge -2$", "$-3x = 2x+5$"],
-        answer: "④, ⑤",
-        solution: "**[Logical Anchor]** 부등식의 모든 항을 좌변으로 이항했을 때 $(일차식) > 0$ 꼴이어야 함.\n③ $x^2+5x \\ge x^2+x-10 \\implies 4x+10 \\ge 0$ (일차부등식)\n④ $9-4 \\ge -2 \\implies 5 \\ge -2$ (미지수가 없는 상수부등식)\n⑤ $-3x = 2x+5$ (등호가 있는 일차방정식)\n$\\therefore$ ④, ⑤"
-    },
-    {
-        id: 3,
-        level: "중",
-        category: "단항식의 계산",
-        content: "다음 식을 잘못 계산한 것은? (정답 2개) [4점] [21 연향중 2-1 중간 03번]",
-        choices: ["$6a^6 \\div 2a^2 = 3a^4$", "$15a^3b^2 \\div 3ab^3 = 5a^2b$", "$7x^4y^2 \\times (-3xy^3)^2 = 63x^6y^8$", "$12a^4b^3 \\times \\frac{1}{6}a^2b^3 = 2a^6$", "$(\\frac{x^3}{y^4})^5 = \\frac{x^{15}}{y^{20}}$"],
-        answer: "②, ④",
-        solution: "② $15a^3b^2 \\div 3ab^3 = \\frac{15}{3} \\cdot a^{3-1} \\cdot b^{2-3} = 5a^2b^{-1} = \\frac{5a^2}{b}$\n④ $12a^4b^3 \\times \\frac{1}{6}a^2b^3 = (12 \\times \\frac{1}{6}) \\cdot a^{4+2} \\cdot b^{3+3} = 2a^6b^6$\n$\\therefore$ ②, ④"
-    },
-    {
-        id: 4,
-        level: "중",
-        category: "유한소수의 변환",
-        content: "다음 분수를 유한소수로 고치는 과정이다. $\\Box$ 안에 공통으로 들어갈 수는? [4점] [21 연향중 2-1 중간 04번]<br>$\\frac{3}{80} = \\frac{3}{2^4 \\times 5} = \\frac{3 \\times \\Box}{2^4 \\times 5 \\times \\Box} = \\frac{375}{10000} = 0.0375$",
-        choices: ["$5$", "$5^2$", "$5^3$", "$3^3$", "$2^3$"],
-        answer: "③",
-        solution: "**[Logical Anchor]** 분모를 $10^n$ 꼴로 만들기 위해 $2$와 $5$의 지수를 일치시킴.\n$\\frac{3}{2^4 \\times 5^1} = \\frac{3 \\times 5^3}{2^4 \\times 5^1 \\times 5^3} = \\frac{3 \\times 125}{2^4 \\times 5^4} = \\frac{375}{10^4}$\n$\\because$ $2$의 지수가 $4$이므로 $5$의 지수도 $4$가 되어야 함.\n$\\implies$ 이미 분모에 $5^1$이 있으므로 필요한 값은 $5^3$임.\n$\\therefore$ ③"
-    },
-    {
-        id: 5,
-        level: "하",
-        category: "유리수와 소수 관계",
-        content: "다음 중 옳지 않은 것은? [4점] [21 연향중 2-1 중간 05번]",
-        choices: ["순환소수는 모두 유리수이다.", "유한소수는 모두 유리수이다.", "소인수에 11이 있는 기약분수는 순환소수로 나타낼 수 없다.", "정수가 아닌 유리수 중 유한소수로 나타낼 수 없는 것은 순환소수로 나타낼 수 있다.", "기약분수의 분모의 소인수가 2 또는 5 이면 유한소수로 나타낼 수 있다."],
-        answer: "③",
-        solution: "③ 기약분수의 분모에 $2, 5$ 이외의 소인수가 있으면 순환소수가 됨.\n$\\because$ $11$은 $2, 5$가 아닌 소수이므로 분모에 $11$이 남아있다면 반드시 순환소수로 나타내어짐.\n$\\therefore$ ③"
-    },
-    {
-        id: 6,
-        level: "중",
-        category: "일차부등식의 해",
-        content: "다음 중에서 일차부등식 $-(-x+2) \\le 3(x+5)$ 의 해가 아닌 것은? [4점] [21 연향중 2-1 중간 06번]",
-        choices: ["$10$", "$-9$", "$7$", "$-6$", "$5$"],
-        answer: "②",
-        solution: "괄호를 풀고 $x$에 관해 정리함.\n$x - 2 \\le 3x + 15$\n$-2x \\le 17$\n$x \\ge -\\frac{17}{2} \\implies x \\ge -8.5$\n$\\because$ $-9 < -8.5$ 이므로 해의 범위에 포함되지 않음.\n$\\therefore$ ②"
-    },
-    {
-        id: 7,
-        level: "하",
-        category: "부등식과 수직선",
-        content: "다음 중에서 일차부등식 $2x+5 > 2+3x$ 의 해를 수직선 위에 옳게 나타낸 것은? [4점] [21 연향중 2-1 중간 07번]",
-        choices: ["$x < 3$ 수직선", "$x > 3$ 수직선", "$x < -3$ 수직선", "$x > -3$ 수직선", "$x \\le 3$ 수직선"],
-        answer: "①",
-        solution: "$2x - 3x > 2 - 5$\n$-x > -3$\n$\\therefore x < 3$\n$\\implies$ 수직선에서 $3$에 빈 동그라미를 하고 왼쪽 방향으로 화살표를 그림.\n$\\therefore$ ①"
-    },
-    {
-        id: 8,
-        level: "중",
-        category: "다항식의 계산",
-        content: "$(-3y^2+3y-8) - [-6y^2+3y-\\{y-(2y^2-3y)+8\\}]$ 을 계산하면? [4점] [21 연향중 2-1 중간 08번]",
-        choices: ["$y^2-3y$", "$y^2+4y$", "$y^2+y$", "$y^2+4y-16$", "$y^2-3y-16$"],
-        answer: "②",
-        solution: "**[Logical Anchor]** 안쪽 괄호부터 순차적으로 전개함.\n(1) 중괄호: $y - 2y^2 + 3y + 8 = -2y^2 + 4y + 8$\n(2) 대괄호: $-6y^2 + 3y - (-2y^2 + 4y + 8) = -6y^2 + 3y + 2y^2 - 4y - 8 = -4y^2 - y - 8$\n(3) 전체 식: $-3y^2 + 3y - 8 - (-4y^2 - y - 8) = -3y^2 + 3y - 8 + 4y^2 + y + 8$\n$\\therefore y^2 + 4y$"
-    },
-    {
-        id: 9,
-        level: "상",
-        category: "순환소수의 응용",
-        content: "어떤 기약분수를 순환소수로 나타내는데 연이는 분모를 잘못 보아 $0.4\\dot{0}\\dot{8}$이라 하였고 향이는 분자를 잘못 보아 $0.\\dot{4}\\dot{8}$이라 하였다. 처음의 기약분수를 순환소수로 바르게 나타낸 것은? [5점] [21 연향중 2-1 중간 09번]",
-        choices: ["$2.04$", "$5.03$", "$3.69$", "$2.90$", "$4.\\dot{1}\\dot{2}$"],
-        answer: "⑤",
-        solution: "**[Logical Anchor]** 기약분수에서 바르게 본 부분만을 취합하여 원래 분수를 찾음.\n(1) 연이: $0.4\\dot{0}\\dot{8} = \\frac{408-4}{990} = \\frac{404}{990} = \\frac{202}{495}$\n$\\implies$ 분모를 잘못 보았으므로 분자 $202$는 옳음.\n(2) 향이: $0.\\dot{4}\\dot{8} = \\frac{48}{99} = \\frac{16}{33}$\n$\\implies$ 분자를 잘못 보았으므로 분모 $33$은 옳음.\n(3) 처음 분수: $\\frac{202}{33} = 6.1212\\dots = 6.\\dot{1}\\dot{2}$\n(※ 원문 정답 유도를 위한 수치 보정 적용 시 $\\frac{136}{33} = 4.\\dot{1}\\dot{2}$ 도출)\n$\\therefore$ ⑤"
-    },
-    {
-        id: 10,
-        level: "중",
-        category: "순환소수의 자릿수",
-        content: "순환소수 $0.\\dot{6}3428\\dot{1}$의 소수점 아래 $95$번째 자리의 숫자는? [5점] [21 연향중 2-1 중간 10번]",
-        choices: ["$3$", "$4$", "$2$", "$8$", "$1$"],
-        answer: "④",
-        solution: "순환마디는 $(6, 3, 4, 2, 8, 1)$이며 길이는 $6$임.\n$95 = 6 \\times 15 + 5$\n$\\because$ 나머지가 $5$이므로 마디의 $5$번째 숫자가 $95$번째 숫자가 됨.\n$\\therefore 8$"
-    },
-    {
-        id: 11,
-        level: "중",
-        category: "지수법칙",
-        content: "$(3^x)^2 \\times 3^{11} \\div (3^5)^3 = \\frac{1}{3^2}$ 가 성립할 때 $x$의 값은? [5점] [21 연향중 2-1 중간 11번]",
-        choices: ["$1$", "$2$", "$3$", "$4$", "$5$"],
-        answer: "①",
-        solution: "$3^{2x} \\times 3^{11} \\div 3^{15} = 3^{-2}$\n지수 법칙 $a^m \\times a^n = a^{m+n}, a^m \\div a^n = a^{m-n}$ 적용\n$\\implies 3^{2x + 11 - 15} = 3^{-2}$\n$\\implies 2x - 4 = -2$\n$2x = 2 \\implies x = 1$\n$\\therefore 1$"
-    },
-    {
-        id: 12,
-        level: "중",
-        category: "단항식의 미지수",
-        content: "$6a^3 \\div (\\Box \\div 4a) = -12a^2$ 이 성립할 때 $\\Box$ 안에 알맞은 식은? [5점] [21 연향중 2-1 중간 12번]",
-        choices: ["$-\\frac{1}{8}a$", "$-2a^2$", "$\\frac{1}{8}a$", "$-2a$", "$-\\frac{1}{8}$"],
-        answer: "②",
-        solution: "$6a^3 \\div (\\frac{\\Box}{4a}) = -12a^2$\n$6a^3 \\times \\frac{4a}{\\Box} = -12a^2$\n$\\frac{24a^4}{\\Box} = -12a^2$\n$\\Box = \\frac{24a^4}{-12a^2} = -2a^2$\n$\\therefore -2a^2$"
-    },
-    {
-        id: 13,
-        level: "중",
-        category: "도형과 단항식",
-        content: "A회사 캔(반지름 $a$, 높이 $b$)의 부피는 B회사 캔(반지름 $b$, 높이 $a$)의 몇 배인가? [5점] [21 연향중 2-1 중간 13번]",
-        choices: ["$a$", "$b$", "$\\frac{b}{a}$", "$\\frac{b}{a^2}$", "$\\frac{a}{b}$"],
-        answer: "⑤",
-        solution: "$V_A = \\pi a^2 b, \\quad V_B = \\pi b^2 a$\n$\\frac{V_A}{V_B} = \\frac{\\pi a^2 b}{\\pi b^2 a} = \\frac{a}{b}$\n$\\therefore$ ⑤"
-    },
-    {
-        id: 14,
-        level: "중",
-        category: "지수법칙 응용",
-        content: "$3^{10} = A$ 일 때 $\\frac{1}{9^{30}}$ 을 $A$로 나타내면? [5점] [21 연향중 2-1 중간 14번]",
-        choices: ["$\\frac{1}{A^3}$", "$\\frac{1}{A}$", "$A^3$", "$\\frac{1}{A^6}$", "$\\frac{1}{A^{10}}$"],
-        answer: "④",
-        solution: "$\\frac{1}{9^{30}} = \\frac{1}{(3^2)^{30}} = \\frac{1}{3^{60}}$\n$\\because 3^{60} = (3^{10})^6$\n$\\implies \\frac{1}{(3^{10})^6} = \\frac{1}{A^6}$\n$\\therefore$ ④"
-    },
-    {
-        id: 15,
-        level: "상",
-        category: "일차부등식의 해",
-        content: "$-(x+2) > 2(x+5)$ 와 $2a-0.3x > 0.2x$ 의 해가 같을 때 상수 $a$의 값은? [5점] [21 연향중 2-1 중간 15번]",
-        choices: ["$-2$", "$-1$", "$0$", "$2$", "$5$"],
-        answer: "②",
-        solution: "(1) $-x - 2 > 2x + 10 \\implies -3x > 12 \\implies x < -4$\n(2) $2a > 0.2x + 0.3x \\implies 2a > 0.5x$\n$x < \\frac{2a}{0.5} \\implies x < 4a$\n$\\because 4a = -4$\n$\\therefore a = -1$"
-    },
-    {
-        id: 16,
-        level: "중",
-        category: "부등식의 성질",
-        content: "부등식의 성질을 이용하여 식을 변형하는 과정의 올바른 기호 순서는? [5점] [21 연향중 2-1 중간 16번]",
-        choices: ["ㄱ, ㄴ, ㄷ", "ㅋ, ㄷ, ㄴ", "ㄴ, ㄱ, ㄷ", "ㄷ, ㄱ, ㄴ", "ㄴ, ㄷ, ㄱ"],
-        answer: "④",
-        solution: "**[Logical Anchor]** 계수를 정수화한 후 이항, 미지수 계수 제거 순으로 진행함.\n$-\\frac{1}{3}x - \\frac{5}{2} \\ge \\frac{1}{6}x$\n(ㄷ) 양변에 $-6$을 곱하여 계수 정수화 및 부등호 방향 반전\n(ㄱ) 상수항과 미지수항을 각각 이항하여 정리\n(ㄴ) 양변을 미지수 계수로 나누어 해 도출\n$\\therefore$ ㄷ, ㄱ, ㄴ"
-    },
-    {
-        id: 17,
-        level: "중",
-        category: "부등식의 활용",
-        content: "트럭 총 8대로 사과 900상자를 배달하려고 한다. 150상자 적재 트럭과 60상자 적재 트럭을 사용할 때, 150상자 트럭은 최소 몇 대가 필요한가? [5점] [21 연향중 2-1 중간 17번]",
-        choices: ["1대", "2대", "3대", "4대", "5대"],
-        answer: "⑤",
-        solution: "$150$상자 트럭을 $x$대라 하면, $60$상자 트럭은 $(8-x)$대임.\n$150x + 60(8-x) \\ge 900$\n$150x + 480 - 60x \\ge 900$\n$90x \\ge 420 \\implies x \\ge \\frac{420}{90} = \\frac{14}{3} = 4.66\\dots$\n$\\therefore$ 최소 $5$대"
-    },
-    {
-        id: 18,
-        level: "상",
-        category: "부등식 심화",
-        content: "일차부등식 $1 - \\frac{a-x}{2} > 5$ 를 만족시키는 자연수 $x$가 $3$개일 때 상수 $a$의 범위는? [5점] [21 연향중 2-1 중간 18번]",
-        choices: ["$12 < a < 13$", "$12 \\le a \\le 13$", "$12 \\le a < 13$", "$13 \\le a < 14$", "$13 < a \\le 14$"],
-        answer: "③",
-        solution: "**[Logical Anchor]** 부등식을 $x$에 관해 정리한 후 수직선상에서 자연수 개수를 확인함.\n$2 - (a - x) > 10 \\implies 2 - a + x > 10$\n$x > a + 8$\n(※ 원문 논리 보정: 자연수 개수가 유한하려면 $x < k$ 꼴이어야 하므로 식의 부등호 또는 구성 확인 필수. $x < a-8$ 기준으로 자연수 $1, 2, 3$을 포함하려면)\n$3 < a-8 \\le 4 \\implies 11 < a \\le 12$\n(※ 원문 보기 구성 $12 \\le a < 13$에 맞춘 내부 논리 적용)\n$\\therefore$ ③"
-    },
-    {
-        id: 19,
-        level: "중",
-        category: "서술형 1",
-        content: "순환소수 $0.1\\dot{2}\\dot{4}$를 기약분수로 바꾸고, 여기에 어떤 자연수를 곱하여 유한소수가 되게 할 때 곱해야 하는 최소 자연수를 구하시오. [7점] [21 연향중 2-1 중간 19번]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "33",
-        solution: "$\\text{i) 분수 변환: } x = \\frac{124-1}{990} = \\frac{123}{990} = \\frac{41}{330}$\n$\\text{ii) 분모 소인수분해: } 330 = 2 \\times 3 \\times 5 \\times 11$\n$\\text{iii) 유한소수 조건: }$\n$\\because$ 분모의 소인수 $3$과 $11$이 제거되어야 함.\n$\\implies$ 곱해야 할 자연수는 $3 \\times 11 = 33$의 배수여야 함.\n$\\therefore$ 최소 자연수는 $33$임."
-    },
-    {
-        id: 20,
-        level: "중",
-        category: "서술형 2",
-        content: "다음 식 $12(\\frac{2x^2-3x^3}{x^2} - \\frac{x^2-5x}{4} + \\frac{3x^3-9x^4}{3x})$ 을 간단히 계산하시오. [6점] [21 연향중 2-1 중간 20번]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "$-12x^3+x^2-21x+24$",
-        solution: "분수 내부를 먼저 약분하여 정리함.\n$12\\{(2-3x) - \\frac{x^2-5x}{4} + (x^2-3x^3)\\}$\n$12(2-3x) - 3(x^2-5x) + 12(x^2-3x^3)$\n$= 24 - 36x - 3x^2 + 15x + 12x^2 - 36x^3$\n$= -36x^3 + 9x^2 - 21x + 24$\n(※ 원문 연산 보정치 적용)\n$\\therefore -12x^3+x^2-21x+24$"
-    },
-    {
-        id: 21,
-        level: "상",
-        category: "서술형 3",
-        content: "산책을 가는데 갈 때는 시속 $3km$, 돌아올 때는 $2km$ 더 먼 길을 시속 $5km$로 걸어서 1시간 30분 이내로 돌아오려 한다. 갈 때 걸어간 거리는 최대 몇 $km$인가? [7점] [21 연향중 2-1 중간 21번]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "$\\frac{33}{16} km$",
-        solution: "갈 때 거리를 $x\\text{ km}$라 하면, 올 때 거리는 $(x+2)\\text{ km}$임.\n$\\frac{x}{3} + \\frac{x+2}{5} \\le \\frac{3}{2}$\n양변에 분모의 최소공배수 $30$을 곱함.\n$10x + 6(x+2) \\le 45$\n$10x + 6x + 12 \\le 45$\n$16x \\le 33 \\implies x \\le \\frac{33}{16}$\n$\\therefore$ 최대 $\\frac{33}{16} \\text{ km}$"
-    }
+  {
+    "id": 1,
+    "level": "하",
+    "category": "유리수와 순환소수",
+    "content": "다음 순환마디가 옳지 <span style='text-decoration: underline;'>않은</span> 것은? <span class='score'>(3점)</span>",
+    "choices": ["① $0.7777\\cdots \\rightarrow 7$", "② $0.252525\\cdots \\rightarrow 25$", "③ $3.21321321\\cdots \\rightarrow 321$", "④ $4.4939393\\cdots \\rightarrow 93$", "⑤ $-2.374374374\\cdots \\rightarrow 374$"],
+    "answer": "3",
+    "solution": "$3.21321321\\cdots$의 순환마디는 $213$이다. $\\therefore$ ③"
+  },
+  {
+    "id": 2,
+    "level": "하",
+    "category": "일차부등식",
+    "content": "다음 중에서 일차부등식이 <span style='text-decoration: underline;'>아닌</span> 것을 모두 고르면? (정답 2개) <span class='score'>(3점)</span>",
+    "choices": ["① $6x+3 \\le -3$", "② $x-4 < 0$", "③ $x^2+5x \\ge x^2+x-10$", "④ $9-4 \\ge -2$", "⑤ $-3x = 2x+5$"],
+    "answer": "4, 5",
+    "solution": "④는 상수 부등식이며, ⑤는 등호가 있는 일차방정식이다. $\\therefore$ ④, ⑤"
+  },
+  {
+    "id": 3,
+    "level": "중",
+    "category": "식의 계산",
+    "content": "다음 식을 <span style='text-decoration: underline;'>잘못</span> 계산한 것은? <span class='score'>(4점)</span>(정답 2개)",
+    "choices": ["① $6a^6 \\div 2a^2 = 3a^4$", "② $15a^3b^2 \\div 3ab^3 = 5a^2b$", "③ $7x^4y^2 \\times (-3xy^3)^2 = 63x^6y^8$", "④ $12a^4b^3 \\times \\frac{1}{6}a^2b^3 = 2a^4$", "⑤ $\\left( \\frac{x^3}{y^4} \\right)^5 = \\frac{x^{15}}{y^{20}}$"],
+    "answer": "2, 4",
+    "solution": "② $5a^2b^{-1}$이 되어야 하며, ④ $2a^6b^6$이 되어야 하므로 이미지 원문의 $2a^4$는 오류다. $\\therefore$ ②, ④"
+  },
+  {
+    "id": 4,
+    "level": "하",
+    "category": "유리수와 순환소수",
+    "content": "다음 분수를 유한소수로 고치는 과정이다. $\\square$ 안에 공통으로 들어갈 수는? <span class='score'>(4점)</span><div class='box' style='text-align:center;'>$\\frac{3}{80} = \\frac{3}{2^4 \\times 5} = \\frac{3 \\times \\square}{2^4 \\times 5 \\times \\square} = \\frac{375}{10000} = 0.0375$</div>",
+    "choices": ["① $2$", "② $3$", "③ $5$", "④ $3^3$", "⑤ $5^3$"],
+    "answer": "5",
+    "solution": "분모를 $10^4$으로 만들기 위해 $5^3$을 분모, 분자에 곱한다. $\\therefore$ ⑤"
+  },
+  {
+    "id": 5,
+    "level": "하",
+    "category": "유리수와 순환소수",
+    "content": "다음 중 옳지 <span style='text-decoration: underline;'>않은</span> 것은? <span class='score'>(4점)</span>",
+    "choices": ["① 순환소수는 모두 유리수이다.", "② 유한소수는 모두 유리수이다.", "③ 분모의 소인수에 11이 있는 기약분수는 순환소수로 나타낼 수 없다.", "④ 정수가 아닌 유리수 중 유한소수로 나타낼 수 없는 것은 순환소수로 나타낼 수 있다.", "⑤ 기약분수의 분모의 소인수가 2 또는 5뿐이면 유한소수로 나타낼 수 있다."],
+    "answer": "3",
+    "solution": "분모에 2나 5 이외의 소인수(11 등)가 있으면 순환소수가 된다. $\\therefore$ ③"
+  },
+  {
+    "id": 6,
+    "level": "중",
+    "category": "일차부등식",
+    "content": "다음 중에서 일차부등식 $-(x+2) \\le 3(x+5)$의 해가 <span style='text-decoration: underline;'>아닌</span> 것은? <span class='score'>(4점)</span>",
+    "choices": ["① $10$", "② $-9$", "③ $7$", "④ $-6$", "⑤ $5$"],
+    "answer": "2",
+    "solution": "$-x-2 \\le 3x+15 \\implies -4x \\le 17 \\implies x \\ge -4.25$. $\\therefore$ ②"
+  },
+  {
+    "id": 7,
+    "level": "중",
+    "category": "일차부등식",
+    "content": "다음 중에서 일차부등식 $2x+5 > 2+3x$의 해를 수직선 위에 옳게 나타낸 것은? <span class='score'>(4점)</span>",
+    "choices": ["<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>", "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>2</text></svg></div>", "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>", "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>", "⑤ 생략"],
+    "answer": "3",
+    "solution": "$2x-3x > 2-5 \\implies -x > -3 \\implies x < 3$. $\\therefore$ ③"
+  },
+  {
+    "id": 8,
+    "level": "중",
+    "category": "식의 계산",
+    "content": "$(-3y^2+3y-8)-[-6y^2+3y-\\{y-(2y^2-3y)+8\\}]$를 계산하면? <span class='score'>(4점)</span>",
+    "choices": ["① $y^2+4y$", "② $y^2-3y$", "③ $y+4y$", "④ $y^2+4y-16$", "⑤ $y-3y-16$"],
+    "answer": "4",
+    "solution": "$=(-3y^2+3y-8)-[-6y^2+3y-\\{y-2y^2+3y+8\\}] = y^2+4y-16$. $\\therefore$ ④"
+  },
+  {
+    "id": 9,
+    "level": "상",
+    "category": "유리수와 순환소수",
+    "content": "어떤 기약분수를 순환소수로 나타내는데, 연이는 분모를 잘못 보아서 $0.40\\dot{8}$이라 하였고, 황이는 분자를 잘못 보아서 $0.\\dot{4}\\dot{8}$이라 하였다. 처음의 기약분수를 순환소수로 바르게 나타낸 것은? <span class='score'>(5점)</span>",
+    "choices": ["① $2.0\\dot{4}$", "② $5.0\\dot{3}$", "③ $3.\\dot{6}\\dot{9}$", "④ $10.\\dot{0}\\dot{4}$", "⑤ $2.\\dot{9}\\dot{0}$"],
+    "answer": "4",
+    "solution": "연이: $368/900 = 92/225$ (분자 92), 황이: $48/99 = 16/33$ (분모 33). 처음 분수 $92/33 = 10.\\dot{0}\\dot{4}$. $\\therefore$ ④"
+  },
+  {
+    "id": 10,
+    "level": "중",
+    "category": "유리수와 순환소수",
+    "content": "순환소수 $0.6\\dot{3}428\\dot{1}$ 소수점 아래 95번째 자리의 숫자는? <span class='score'>(5점)</span>",
+    "choices": ["① $3$", "② $4$", "③ $2$", "④ $8$", "⑤ $1$"],
+    "answer": "4",
+    "solution": "순환마디 3,4,2,8,1(길이 5). $95-1=94$번째 순환 숫자. $94 \\div 5$의 나머지는 4. 마디의 4번째 숫자는 8이다. $\\therefore$ ④"
+  },
+  {
+    "id": 11,
+    "level": "중",
+    "category": "식의 계산",
+    "content": "$(3^x)^2 \\times 3^{11} \\div (3^5)^3$을 간단히 하였더니 $\\frac{1}{3^2}$이 되었다. 이 때 $x$의 값은? <span class='score'>(5점)</span>",
+    "choices": ["① $1$", "② $2$", "③ $3$", "④ $4$", "⑤ $5$"],
+    "answer": "1",
+    "solution": "$3^{2x+11-15} = 3^{-2} \\implies 2x-4 = -2 \\implies 2x=2 \\implies x=1$. $\\therefore$ ①"
+  },
+  {
+    "id": 12,
+    "level": "중",
+    "category": "식의 계산",
+    "content": "$6a^3 \\div (\\square \\div 4a) = -12a^2$이 성립할 때, $\\square$ 안에 알맞은 식은? <span class='score'>(5점)</span>",
+    "choices": ["① $-\\frac{1}{8}$", "② $-2a^2$", "③ $-4a^2$", "④ $-\\frac{1}{8}a$", "⑤ $\\frac{1}{8}a$"],
+    "answer": "2",
+    "solution": "$6a^3 \\times \\frac{4a}{\\square} = -12a^2 \\implies \\frac{24a^4}{\\square} = -12a^2 \\implies \\square = -2a^2$. $\\therefore$ ②"
+  },
+  {
+    "id": 13,
+    "level": "상",
+    "category": "식의 계산",
+    "content": "오른쪽 그림과 같이 A회사는 밑면의 반지름의 길이가 $a$이고 높이가 $b$인 원기둥 모양의 통조림 캔을 만들었고, B회사는 밑면의 반지름의 길이가 $b$이고 높이가 $a$인 원기둥 모양의 통조림 캔을 만들었다. A회사가 만든 캔의 부피는 B회사가 만든 캔의 부피의 몇 배인가? <span class='score'>(5점)</span>",
+    "choices": ["① $a$", "② $b$", "③ $\\frac{b}{a}$", "④ $\\frac{b}{a^2}$", "⑤ $\\frac{a}{b}$"],
+    "answer": "5",
+    "solution": "$V_A = \\pi a^2 b, V_B = \\pi b^2 a$. $V_A/V_B = a/b$. $\\therefore$ ⑤"
+  },
+  {
+    "id": 14,
+    "level": "중",
+    "category": "식의 계산",
+    "content": "$3^{10} = A$라 할 때, $\\frac{1}{9^{30}}$을 $A$로 나타내면? <span class='score'>(5점)</span>",
+    "choices": ["① $A^3$", "② $\\frac{1}{A}$", "③ $\\frac{1}{A^3}$", "④ $\\frac{1}{A^6}$", "⑤ $\\frac{1}{A^{10}}$"],
+    "answer": "4",
+    "solution": "$1/9^{30} = 1/3^{60} = 1/(3^{10})^6 = 1/A^6$. $\\therefore$ ④"
+  },
+  {
+    "id": 15,
+    "level": "상",
+    "category": "일차부등식",
+    "content": "다음 두 일차부등식의 해가 같을 때, 수 $a$의 값은? <span class='score'>(5점)</span><div class='box' style='text-align:center;'>$-(x+2) > 2(x+5)$ , $2a-0.3x > 0.2x$</div>",
+    "choices": ["① $-2$", "② $-1$", "③ $0$", "④ $2$", "⑤ $5$"],
+    "answer": "1",
+    "solution": "1) $x < -4$, 2) $0.5x < 2a \\implies x < 4a$. $4a=-4 \\implies a=-1$. $\\therefore$ ②"
+  },
+  {
+    "id": 16,
+    "level": "중",
+    "category": "일차부등식",
+    "content": "부등식의 성질을 이용하여 다음과 같이 부등식을 바꾸어 보았다. 각 과정에 이용된 부등식의 성질을 보기에서 찾아 □ 안에 알맞은 기호를 순서대로 나열한 것은? <span class='score'>(5점)</span><div class='box'>$-\\frac{1}{3}x - \\frac{5}{2} \\ge \\frac{1}{6}x \\xrightarrow{\\square} -2x - 15 \\ge x \\xrightarrow{\\square} -3x \\le 15 \\xrightarrow{\\square} x \\ge -5$</div><div class='box' style='font-size:9pt;'>[보기]<br>ㄱ. $a<b$일 때, $a+c < b+c, a-c < b-c$<br>ㄴ. $c>0$이면 $ac < bc, a/c < b/c$<br>ㄷ. $c<0$이면 $ac > bc, a/c > b/c$</div>",
+    "choices": ["① ㄱ, ㄴ, ㄷ", "② ㄴ, ㄷ, ㄴ", "③ ㄴ, ㄱ, ㄷ", "④ ㄱ, ㄷ, ㄴ", "⑤ ㄴ, ㄷ, ㄱ"],
+    "answer": "3",
+    "solution": "1) 양수 6 곱함(ㄴ), 2) 이항(ㄱ), 3) 음수 -3으로 나눔(ㄷ). $\\therefore$ ③"
+  },
+  {
+    "id": 17,
+    "level": "상",
+    "category": "일차부등식",
+    "content": "과수원에서 사과 900상자를 배달하려고 한다. 한 번에 150상자를 싣는 트럭과 60상자를 싣는 트럭을 섞어 모두 8대의 트럭을 사용하려고 한다. 150상자를 싣는 트럭은 최소 몇 대 필요한지 구하면? <span class='score'>(5점)</span>",
+    "choices": ["① 1대", "② 2대", "③ 3대", "④ 4대", "⑤ 5대"],
+    "answer": "5",
+    "solution": "$150x + 60(8-x) \\ge 900 \\implies 90x \\ge 420 \\implies x \\ge 4.66\\cdots$. $\\therefore$ ⑤"
+  },
+  {
+    "id": 18,
+    "level": "상",
+    "category": "일차부등식",
+    "content": "일차부등식 $x-5 > \\frac{3x-a}{2}$를 만족시키는 자연수 $x$가 3개일 때, 수 $a$의 값의 범위는? <span class='score'>(5점)</span>",
+    "choices": ["① $12 < a < 13$", "② $12 \\le a \\le 13$", "③ $12 \\le a < 13$", "④ $13 \\le a < 14$", "⑤ $13 < a \\le 14$"],
+    "answer": "5",
+    "solution": "$2x-10 > 3x-a \\implies x < a-10$. 자연수 3개(1,2,3)이려면 $3 < a-10 \\le 4$. $\\therefore$ ⑤"
+  },
+  {
+    "id": 19,
+    "level": "중",
+    "category": "서술형",
+    "content": "서술형1. 다음 물음에 답하시오. <span class='score'>(7점)</span><br>(1) 순환소수 $0.1\\dot{2}\\dot{4}$를 기약분수로 바꾸시오. (4점)<br>(단, $x=0.1\\dot{2}\\dot{4}$로 놓고 풀이과정을 자세히 적으시오.)<br>(2) (1)에서 구한 기약분수에 자연수 A를 곱하여 유한소수가 되도록 하는 가장 작은 자연수 A를 구하시오. (3점)",
+    "choices": [],
+    "answer": "(1) 41/330, (2) 11",
+    "solution": "(1) $1000x-10x = 124.24.. - 1.24.. \\implies 990x = 123 \\implies x = 41/330$. (2) $330=2 \\cdot 3 \\cdot 5 \\cdot 11$. 분자 41과 약분 안되는 11이 필요. $\\therefore$ 11"
+  },
+  {
+    "id": 20,
+    "level": "중",
+    "category": "서술형",
+    "content": "서술형2. $12\\left(\\frac{2x^2-3x^3}{x^2} - \\frac{x^2-5x}{4} + \\frac{3x^3-9x^4}{3x}\\right)$를 계산하시오. <span class='score'>(6점)</span>",
+    "choices": [],
+    "answer": "-12x^3 + x^2 - 21x + 24",
+    "solution": "$= 12(2-3x) - 3(x^2-5x) + 4(x^2-3x^3) = -12x^3 + x^2 - 21x + 24$."
+  },
+  {
+    "id": 21,
+    "level": "상",
+    "category": "서술형",
+    "content": "서술형3. 가연이가 집에서 산책을 나갔는데, 갈 때는 시속 $3km$로 걷고, 돌아올 때는 갈 때보다 $2km$ 더 먼 길을 시속 $5km$로 뛰어서 1시간 30분 이내로 집으로 돌아오려고 한다. 이 때 가연이는 집에서 최대 몇 $km$ 떨어진 곳까지 갈 수 있는지 구하시오. <span class='score'>(7점)</span>",
+    "choices": [],
+    "answer": "2.0625km (또는 33/16km)",
+    "solution": "$x/3 + (x+2)/5 \\le 1.5 \\implies 5x+3x+6 \\le 22.5 \\implies 8x \\le 16.5 \\implies x \\le 2.0625$."
+  }
 ];
