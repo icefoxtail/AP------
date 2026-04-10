@@ -38,7 +38,7 @@ window.mainDB = {
     { "year": 2023, "school": "여수여고", "grade": "고1", "level": "high", "semester": 1, "examType": "mid", "subject": "공통수학", "type": "exam", "file": "23_여수여고1_1학기_중간_고1.js" },
     { "year": 2023, "school": "한영고", "grade": "고1", "level": "high", "semester": 1, "examType": "mid", "subject": "공통수학", "type": "exam", "file": "23_한영고1_1학기_중간_고1.js" },
     { "year": 2023, "school": "부영여고", "grade": "고2", "level": "high", "semester": 1, "examType": "mid", "subject": "대수", "type": "exam", "file": "23_부영여고2_1학기_중간_대수.js" },
-    { "year": 2023, "school": "중앙여고", "grade": "고1", "level": "high", "semester": 1, "examType": "mid", "subject": "대수", "type": "exam", "file": "23_중앙여고1_1학기_중간_대수.js" },
+    { "year": 2023, "school": "중앙여고", "grade": "고2", "level": "high", "semester": 1, "examType": "mid", "subject": "대수", "type": "exam", "file": "23_중앙여고2_1학기_중간_대수.js" },
     { "year": 2023, "school": "한영고", "grade": "고2", "level": "high", "semester": 1, "examType": "mid", "subject": "대수", "type": "exam", "file": "23_한영고2_1학기_중간_대수.js" },
     { "year": 2025, "school": "공통", "grade": "고1", "level": "high", "semester": 1, "examType": "mid", "subject": "공통수학", "type": "archive", "file": "01_항등식과나머지정리_고1_기출.js" },
     { "year": 2026, "school": "RPM", "grade": "중2", "level": "middle", "semester": 1, "examType": "archive", "subject": "중등수학2-1", "type": "hidden", "file": "26_RPM2_1학기_유리수와순환소수_전체.js" }

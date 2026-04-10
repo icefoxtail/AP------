@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>AP 수학 엔진</title>
     <script>
-        // [무결성 로직] 인라인 수식 인식 및 자동 실행 제어 설정 [cite: 2026-04-10]
+        // [무결성 로직] 인라인 수식 인식 및 자동 실행 제어 설정
         window.MathJax = {
             tex: { inlineMath: [['$', '$']] },
             options: { enableMenu: false },
@@ -38,11 +38,13 @@
 <script>
 const AppState = { title: "", qpp: 4 };
 
-// [수식 보정 무결성] LaTeX 자동 감지 및 $ 래핑 로직 복구 (일부 파일 누락 해결) [cite: 2026-04-10]
+// [수식 보정 무결성] LaTeX 자동 감지 및 $ 래핑 로직 (백슬래시 중복 및 텍스트 혼용 처리)
 function normalizeQuestion(q) {
     const processText = (t) => {
         if (!t) return t;
+        // \text{}, \mbox{} 등의 불필요한 태그 제거 및 공백 처리
         let res = t.replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ');
+        // 수식 기호가 있으나 $로 감싸이지 않은 경우 자동 보정
         return (res.includes('\\') && !res.includes('$')) ? `$${res.trim()}$` : res;
     };
     const n = JSON.parse(JSON.stringify(q));
@@ -64,7 +66,7 @@ function normalizeQuestion(q) {
     document.body.appendChild(s);
 })();
 
-// [렌더링 무결성] 비동기 대기 및 확정 렌더링 로직 적용 [cite: 2026-04-10]
+// [렌더링 무결성] 비동기 대기 및 확정 렌더링 로직 적용
 async function initRender() {
     const pool = document.getElementById('item-pool');
     const bank = window.questionBank || [];
@@ -80,7 +82,7 @@ async function initRender() {
 
     paginate(); // 2단 분할
 
-    // DOM 복제 완료 및 MathJax 비동기 렌더링 타이밍 보정 [cite: 2026-04-10]
+    // DOM 복제 완료 및 MathJax 비동기 렌더링 타이밍 보정
     await new Promise(r => requestAnimationFrame(r));
     if (window.MathJax?.typesetPromise) {
         await MathJax.typesetPromise();
