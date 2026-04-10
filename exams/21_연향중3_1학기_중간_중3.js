@@ -69,7 +69,7 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "다음 중 옳지 않은 것은?",
-    "choices": ["$\sqrt{5}$와 $\sqrt{6}$ 사이에는 무리수가 있다.", "$\tf{1}{2}$과 $\tf{2}{3}$ 사이에는 유리수가 있다.", "2와 5 사이에는 무수히 많은 유리수가 있다.", "무리수만으로 수직선을 완전히 메울 수 있다.", "서로 다른 두 유리수 사이에는 무수히 많은 무리수가 있다."],
+    "choices": ["$\sqrt{5}$와 $\sqrt{6}$ 사이에는 무리수가 있다.", "$\frac{1}{2}$과 $\frac{2}{3}$ 사이에는 유리수가 있다.", "2와 5 사이에는 무수히 많은 유리수가 있다.", "무리수만으로 수직선을 완전히 메울 수 있다.", "서로 다른 두 유리수 사이에는 무수히 많은 무리수가 있다."],
     "answer": "4",
     "solution": "④ 수직선은 유리수와 무리수를 합친 '실수' 전체로 완전히 메워진다. 무리수만으로는 메울 수 없다."
   },
@@ -86,10 +86,10 @@ window.questionBank = [
     "id": 10,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$a=\sqrt{32}-\tf{4}{\sqrt{2}}$, $b=\tf{\sqrt{6}}{4\sqrt{3}}+\tf{1}{2\sqrt{2}}$ 일 때, $ab$의 값은?",
+    "content": "$a=\sqrt{32}-\frac{4}{\sqrt{2}}$, $b=\frac{\sqrt{6}}{4\sqrt{3}}+\frac{1}{2\sqrt{2}}$ 일 때, $ab$의 값은?",
     "choices": ["$\sqrt{2}$", "$\sqrt{3}$", "2", "4", "4\sqrt{3}"],
     "answer": "3",
-    "solution": "$a = 4\sqrt{2} - 2\sqrt{2} = 2\sqrt{2}$ \n$b = \tf{\sqrt{2}}{4} + \tf{\sqrt{2}}{4} = \tf{\sqrt{2}}{2}$ \n$ab = 2\sqrt{2} \times \tf{\sqrt{2}}{2} = 2$"
+    "solution": "$a = 4\sqrt{2} - 2\sqrt{2} = 2\sqrt{2}$ \n$b = \frac{\sqrt{2}}{4} + \frac{\sqrt{2}}{4} = \frac{\sqrt{2}}{2}$ \n$ab = 2\sqrt{2} \times \frac{\sqrt{2}}{2} = 2$"
   },
   {
     "id": 11,
@@ -113,10 +113,10 @@ window.questionBank = [
     "id": 13,
     "level": "[중]",
     "category": "다항식의 곱셈",
-    "content": "$(x+a)^{2}=x^{2}+bx+\tf{1}{16}$일 때, $b-a$의 값은? (단, $a>0$)",
-    "choices": ["$\tf{1}{8}$", "$\tf{1}{4}$", "$\tf{1}{16}$", "$\tf{1}{2}$", "1"],
+    "content": "$(x+a)^{2}=x^{2}+bx+\frac{1}{16}$일 때, $b-a$의 값은? (단, $a>0$)",
+    "choices": ["$\frac{1}{8}$", "$\frac{1}{4}$", "$\frac{1}{16}$", "$\frac{1}{2}$", "1"],
     "answer": "2",
-    "solution": "$a^{2} = \tf{1}{16} \implies a = \tf{1}{4}$. $b = 2a = \tf{1}{2}$. \n$b-a = \tf{1}{4}$."
+    "solution": "$a^{2} = \frac{1}{16} \implies a = \frac{1}{4}$. $b = 2a = \frac{1}{2}$. \n$b-a = \frac{1}{4}$."
   },
   {
     "id": 14,
@@ -187,14 +187,14 @@ window.questionBank = [
     "category": "확률",
     "content": "[서술형 1] 주사위 $a, b$에 대해 $\sqrt{48ab}$가 자연수가 될 확률을 구하시오.",
     "choices": [" ", " ", " ", " ", " "],
-    "answer": "$\tf{5}{36}$",
-    "solution": "$ab=3, 12, 27$인 경우를 구하면 총 5가지. \therefore \tf{5}{36}$"
+    "answer": "$\frac{5}{36}$",
+    "solution": "$ab=3, 12, 27$인 경우를 구하면 총 5가지. \therefore \frac{5}{36}$"
   },
   {
     "id": 22,
     "level": "[중상]",
     "category": "유리수",
-    "content": "[서술형 2] $\tf{a}{\sqrt{3}}(\sqrt{6}-5\sqrt{3})-3\sqrt{2}$가 유리수가 되도록 하는 유리수 $a$의 값은?",
+    "content": "[서술형 2] $\frac{a}{\sqrt{3}}(\sqrt{6}-5\sqrt{3})-3\sqrt{2}$가 유리수가 되도록 하는 유리수 $a$의 값은?",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "3",
     "solution": "$(a-3)\sqrt{2}-5a$에서 $a-3=0 \implies a=3$."

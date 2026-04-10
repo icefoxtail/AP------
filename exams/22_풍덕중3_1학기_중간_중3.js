@@ -15,9 +15,9 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "다음 보기의 두 수를 대소 비교하여 $\\Box$ 안에 부등호를 넣을 때, 부등호 방향이 다른 하나는?",
-    "choices": ["$\\sqrt{7} \\Box \\sqrt{8}$", "$\\sqrt{3} \\Box 4$", "$\\sqrt{\\tf{1}{2}} \\Box \\sqrt{\\tf{1}{3}}$", "$-\\sqrt{40} \\Box -6$", "$5-\\sqrt{2} \\Box -1$"],
+    "choices": ["$\\sqrt{7} \\Box \\sqrt{8}$", "$\\sqrt{3} \\Box 4$", "$\\sqrt{\\frac{1}{2}} \\Box \\sqrt{\\frac{1}{3}}$", "$-\\sqrt{40} \\Box -6$", "$5-\\sqrt{2} \\Box -1$"],
     "answer": "3",
-    "solution": "1. 7 < 8 \\implies < \\\\ 2. \\sqrt{3} < \\sqrt{16} \\implies < \\\\ 3. \\tf{1}{2} > \\tf{1}{3} \\implies > \\\\ 4. \\sqrt{40} > \\sqrt{36} \\implies -\\sqrt{40} < -6 \\implies < \\\\ 5. 5-1.414 = 3.586 > -1 \\implies > (※ 원문 부등호 방향 재확인 필요, 3번이 명확히 다름)"
+    "solution": "1. 7 < 8 \\implies < \\\\ 2. \\sqrt{3} < \\sqrt{16} \\implies < \\\\ 3. \\frac{1}{2} > \\frac{1}{3} \\implies > \\\\ 4. \\sqrt{40} > \\sqrt{36} \\implies -\\sqrt{40} < -6 \\implies < \\\\ 5. 5-1.414 = 3.586 > -1 \\implies > (※ 원문 부등호 방향 재확인 필요, 3번이 명확히 다름)"
   },
   {
     "id": 3,
@@ -77,10 +77,10 @@ window.questionBank = [
     "id": 9,
     "level": "[중상]",
     "category": "제곱근과 실수",
-    "content": "다음 수의 대소를 비교하여 크기가 작은 수부터 차례로 나열할 때, 3번째로 오는 수는?<div class='box'>$\\sqrt{2}, 1, \\tf{1}{2}, 1-\\sqrt{2}, 5-\\sqrt{2}$</div>",
-    "choices": ["$\\sqrt{2}$", "1", "$1-\\sqrt{2}$", "$\\tf{1}{2}$", "$5-\\sqrt{2}$"],
+    "content": "다음 수의 대소를 비교하여 크기가 작은 수부터 차례로 나열할 때, 3번째로 오는 수는?<div class='box'>$\\sqrt{2}, 1, \\frac{1}{2}, 1-\\sqrt{2}, 5-\\sqrt{2}$</div>",
+    "choices": ["$\\sqrt{2}$", "1", "$1-\\sqrt{2}$", "$\\frac{1}{2}$", "$5-\\sqrt{2}$"],
     "answer": "2",
-    "solution": "값 근사: \\sqrt{2} \\approx 1.414, 1, 0.5, 1-1.414 = -0.414, 5-1.414 = 3.586 \\\\ 나열: 1-\\sqrt{2} < \\tf{1}{2} < 1 < \\sqrt{2} < 5-\\sqrt{2} \\\\ \\therefore 3번째는 1"
+    "solution": "값 근사: \\sqrt{2} \\approx 1.414, 1, 0.5, 1-1.414 = -0.414, 5-1.414 = 3.586 \\\\ 나열: 1-\\sqrt{2} < \\frac{1}{2} < 1 < \\sqrt{2} < 5-\\sqrt{2} \\\\ \\therefore 3번째는 1"
   },
   {
     "id": 10,
@@ -89,7 +89,7 @@ window.questionBank = [
     "content": "다음 보기의 값 중 아래 제곱근표를 보고 구할 수 있는 값이 아닌 것은?<div class='box'>ㄱ. $\\sqrt{4.52}$ ㄴ. $\\sqrt{484}$ ㄷ. $\\sqrt{0.475}$ ㄹ. $\\sqrt{46200}$ ㅁ. $\\sqrt{0.0493}$</div>",
     "choices": ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ"],
     "answer": "3",
-    "solution": "표 범위: 4.50~4.95 \\\\ ㄱ. \\sqrt{4.52} (직접 확인 가능) \\\\ ㄴ. \\sqrt{4.84 \\times 100} = 10\\sqrt{4.84} (가능) \\\\ ㄷ. \\sqrt{0.475} = \\sqrt{\\tf{47.5}{100}} (표에 47.5 없음, 불가능) \\\\ ㄹ. \\sqrt{4.62 \\times 10000} = 100\\sqrt{4.62} (가능) \\\\ ㅁ. \\sqrt{4.93 \\div 100} = \\tf{\\sqrt{4.93}}{10} (가능) \\\\ \\therefore 3"
+    "solution": "표 범위: 4.50~4.95 \\\\ ㄱ. \\sqrt{4.52} (직접 확인 가능) \\\\ ㄴ. \\sqrt{4.84 \\times 100} = 10\\sqrt{4.84} (가능) \\\\ ㄷ. \\sqrt{0.475} = \\sqrt{\\frac{47.5}{100}} (표에 47.5 없음, 불가능) \\\\ ㄹ. \\sqrt{4.62 \\times 10000} = 100\\sqrt{4.62} (가능) \\\\ ㅁ. \\sqrt{4.93 \\div 100} = \\frac{\\sqrt{4.93}}{10} (가능) \\\\ \\therefore 3"
   }
 ];
 window.questionBank = window.questionBank.concat([
@@ -98,9 +98,9 @@ window.questionBank = window.questionBank.concat([
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$\\sqrt{1.3} \\approx a, \\sqrt{2.9} \\approx b$일 때, $\\sqrt{13000} - \\sqrt{0.29}$를 $a, b$를 사용하여 나타내면? 이때 유리수 $k$에 대하여 $k$의 값을 구하면?",
-    "choices": ["$100a - \\tf{b}{10}$", "$\\tf{a}{10} - 10b$", "$100a - \\tf{b}{100}$", "$10a - 100b$", "$10a - \\tf{b}{10}$"],
+    "choices": ["$100a - \\frac{b}{10}$", "$\\frac{a}{10} - 10b$", "$100a - \\frac{b}{100}$", "$10a - 100b$", "$10a - \\frac{b}{10}$"],
     "answer": "1",
-    "solution": "\\sqrt{13000} = \\sqrt{1.3 \\times 10000} = 100\\sqrt{1.3} = 100a \\\\ \\sqrt{0.29} = \\sqrt{\\tf{29}{100}} = \\tf{\\sqrt{29}}{10} (※\\sqrt{2.9} 활용 시 \\tf{\\sqrt{2.9}}{\\sqrt{10}} 이므로 \\tf{b}{\\sqrt{10}} 가 되나 선택지 구조상 \\tf{b}{10} 추정) \\\\ \\therefore 100a - \\tf{b}{10}"
+    "solution": "\\sqrt{13000} = \\sqrt{1.3 \\times 10000} = 100\\sqrt{1.3} = 100a \\\\ \\sqrt{0.29} = \\sqrt{\\frac{29}{100}} = \\frac{\\sqrt{29}}{10} (※\\sqrt{2.9} 활용 시 \\frac{\\sqrt{2.9}}{\\sqrt{10}} 이므로 \\frac{b}{\\sqrt{10}} 가 되나 선택지 구조상 \\frac{b}{10} 추정) \\\\ \\therefore 100a - \\frac{b}{10}"
   },
   {
     "id": 12,
@@ -116,7 +116,7 @@ window.questionBank = window.questionBank.concat([
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "다음 계산식 중 옳지 않은 것은?",
-    "choices": ["$2\\sqrt{3} \\times 3\\sqrt{3} = 18$", "$\\sqrt{12} \\div \\sqrt{3} = \\sqrt{2}$", "$(-\\sqrt{2}) \\times (-\\sqrt{5}) = \\sqrt{10}$", "$\\sqrt{2} \\div \\sqrt{\\tf{1}{5}} = \\sqrt{10}$", "$-\\sqrt{24} \\times \\sqrt{\\tf{1}{6}} = -2$"],
+    "choices": ["$2\\sqrt{3} \\times 3\\sqrt{3} = 18$", "$\\sqrt{12} \\div \\sqrt{3} = \\sqrt{2}$", "$(-\\sqrt{2}) \\times (-\\sqrt{5}) = \\sqrt{10}$", "$\\sqrt{2} \\div \\sqrt{\\frac{1}{5}} = \\sqrt{10}$", "$-\\sqrt{24} \\times \\sqrt{\\frac{1}{6}} = -2$"],
     "answer": "2",
     "solution": "2. \\sqrt{12} \\div \\sqrt{3} = \\sqrt{4} = 2 \\neq \\sqrt{2} \\\\ \\therefore 2"
   },
@@ -145,16 +145,16 @@ window.questionBank = window.questionBank.concat([
     "content": "$(x+4)(x-2)+k$가 완전제곱식이 되기 위한 양수 $k$의 값을 구하면?",
     "choices": ["1", "3", "5", "7", "9"],
     "answer": "5",
-    "solution": "x^2+2x-8+k \\implies (\\tf{2}{2})^2 = -8+k \\implies 1 = -8+k \\implies k=9 \\\\ \\therefore 5"
+    "solution": "x^2+2x-8+k \\implies (\\frac{2}{2})^2 = -8+k \\implies 1 = -8+k \\implies k=9 \\\\ \\therefore 5"
   },
   {
     "id": 17,
     "level": "[중상]",
     "category": "다항식의 곱셈",
-    "content": "$x = \\sqrt{3}-2, y = \\sqrt{3}+2$일 때, $\\tf{y}{x} + \\tf{x}{y}$의 값을 구하면?",
+    "content": "$x = \\sqrt{3}-2, y = \\sqrt{3}+2$일 때, $\\frac{y}{x} + \\frac{x}{y}$의 값을 구하면?",
     "choices": ["-14", "-11", "-7", "11", "14"],
     "answer": "1",
-    "solution": "\\tf{x^2+y^2}{xy} = \\tf{(\\sqrt{3}-2)^2 + (\\sqrt{3}+2)^2}{(\\sqrt{3}-2)(\\sqrt{3}+2)} = \\tf{(3-4\\sqrt{3}+4) + (3+4\\sqrt{3}+4)}{3-4} = \\tf{14}{-1} = -14 \\\\ \\therefore 1"
+    "solution": "\\frac{x^2+y^2}{xy} = \\frac{(\\sqrt{3}-2)^2 + (\\sqrt{3}+2)^2}{(\\sqrt{3}-2)(\\sqrt{3}+2)} = \\frac{(3-4\\sqrt{3}+4) + (3+4\\sqrt{3}+4)}{3-4} = \\frac{14}{-1} = -14 \\\\ \\therefore 1"
   },
   {
     "id": 18,
@@ -190,9 +190,9 @@ window.questionBank = window.questionBank.concat([
     "level": "[상]",
     "category": "제곱근과 실수",
     "content": "다음 그림은 수직선 위에 한 변의 길이가 2인 정사각형 $ABCD$를 그린 것이다. 점 $C$를 중심으로 하고 대각선 $AC$를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $E$라고 할 때, 색칠한 부분의 넓이를 구하면?",
-    "choices": ["$\\tf{1}{2}(\\pi-3\\sqrt{2})cm^2$", "$(\\pi-3\\sqrt{2})cm^2$", "$\\tf{1}{4}(\\pi-2\\sqrt{2})cm^2$", "$\\tf{1}{2}(\\pi-2\\sqrt{2})cm^2$", "$(\\pi-2\\sqrt{2})cm^2$"],
+    "choices": ["$\\frac{1}{2}(\\pi-3\\sqrt{2})cm^2$", "$(\\pi-3\\sqrt{2})cm^2$", "$\\frac{1}{4}(\\pi-2\\sqrt{2})cm^2$", "$\\frac{1}{2}(\\pi-2\\sqrt{2})cm^2$", "$(\\pi-2\\sqrt{2})cm^2$"],
     "answer": "4",
-    "solution": "정사각형 한 변 = 2 \\implies 대각선 AC = \\sqrt{2^2+2^2} = 2\\sqrt{2} \\\\ 부채꼴 ACE 넓이 = \\tf{1}{4} \\times \\pi \\times (2\\sqrt{2})^2 = 2\\pi \\\\ 직각삼각형 ABC 넓이 = \\tf{1}{2} \\times 2 \\times 2 = 2 \\\\ (※ 문제의 '색칠한 부분' 정의에 따라 부채꼴에서 삼각형을 제외한 활꼴 등 계산 필요, 선택지 4번 구조 추정) \\\\ \\therefore 4 \n\n [Figure] \n x축 수직선 위 정사각형 ABCD. C 중심, AC 반지름 원호가 x축과 E에서 만남. AB \\perp BC"
+    "solution": "정사각형 한 변 = 2 \\implies 대각선 AC = \\sqrt{2^2+2^2} = 2\\sqrt{2} \\\\ 부채꼴 ACE 넓이 = \\frac{1}{4} \\times \\pi \\times (2\\sqrt{2})^2 = 2\\pi \\\\ 직각삼각형 ABC 넓이 = \\frac{1}{2} \\times 2 \\times 2 = 2 \\\\ (※ 문제의 '색칠한 부분' 정의에 따라 부채꼴에서 삼각형을 제외한 활꼴 등 계산 필요, 선택지 4번 구조 추정) \\\\ \\therefore 4 \n\n [Figure] \n x축 수직선 위 정사각형 ABCD. C 중심, AC 반지름 원호가 x축과 E에서 만남. AB \\perp BC"
   },
   {
     "id": 22,
@@ -228,6 +228,6 @@ window.questionBank = window.questionBank.concat([
     "content": "[서술형 4] 반지름의 길이가 각각 $20cm, 16cm$인 원 모양의 피자를 8등분 하였다. 큰 피자 한 조각의 넓이는 작은 피자 한 조각의 넓이보다 얼마만큼 더 큰지 인수분해를 이용하여 계산하시오.",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "18\\pi cm^2",
-    "solution": "S = \\tf{1}{8} \\pi (20^2 - 16^2) = \\tf{1}{8} \\pi (20-16)(20+16) \\\\ = \\tf{1}{8} \\pi \\times 4 \\times 36 = 18\\pi \\\\ \\therefore 18\\pi cm^2"
+    "solution": "S = \\frac{1}{8} \\pi (20^2 - 16^2) = \\frac{1}{8} \\pi (20-16)(20+16) \\\\ = \\frac{1}{8} \\pi \\times 4 \\times 36 = 18\\pi \\\\ \\therefore 18\\pi cm^2"
   }
 ]);

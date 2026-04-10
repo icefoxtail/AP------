@@ -23,7 +23,7 @@ window.questionBank = [
         choices: ["2", "5", "$2\\sqrt{3}$", "$\\frac{\\sqrt{3}}{3}$", "$\\frac{7\\sqrt{5}}{5}$"],
         answer: "①",
         category: "3. 근호를 포함한 식의 곱셈과 나눗셈",
-        solution: "* $\\tf{\\sqrt{15}}{3} \\times \\tf{7}{\\sqrt{5}} \\times \\tf{\\sqrt{12}}{7}$\n* $= \\tf{\\sqrt{3} \\times \\sqrt{5}}{3} \\times \\tf{7}{\\sqrt{5}} \\times \\tf{2\\sqrt{3}}{7}$\n* $= \\tf{\\sqrt{3} \\times 2\\sqrt{3}}{3} = \\tf{6}{3} = 2$\n* 정답: ①"
+        solution: "* $\\frac{\\sqrt{15}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{\\sqrt{12}}{7}$\n* $= \\frac{\\sqrt{3} \\times \\sqrt{5}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{2\\sqrt{3}}{7}$\n* $= \\frac{\\sqrt{3} \\times 2\\sqrt{3}}{3} = \\frac{6}{3} = 2$\n* 정답: ①"
     },
     {
         num: "4",
@@ -31,7 +31,7 @@ window.questionBank = [
         choices: ["5개", "4개", "3개", "4개", "1개"],
         answer: "④",
         category: "4. 무리수와 실수",
-        solution: "* 순환소수가 아닌 무한소수 = 무리수\n* $\\sqrt{25}=5$ (유리수)\n* $2\\sqrt{81}-3 = 18-3=15$ (유리수)\n* $\\sqrt{3.7}$ (무리수)\n* $-6+\\sqrt{36}=0$ (유리수)\n* $\\sqrt{\\tf{1}{4}}=\\tf{1}{2}$ (유리수)\n* $\\sqrt{8.1}$ (무리수)\n* 무리수는 $\\sqrt{3.7}, \\sqrt{8.1}$ 로 2개입니다.\n* 정답: ④"
+        solution: "* 순환소수가 아닌 무한소수 = 무리수\n* $\\sqrt{25}=5$ (유리수)\n* $2\\sqrt{81}-3 = 18-3=15$ (유리수)\n* $\\sqrt{3.7}$ (무리수)\n* $-6+\\sqrt{36}=0$ (유리수)\n* $\\sqrt{\\frac{1}{4}}=\\frac{1}{2}$ (유리수)\n* $\\sqrt{8.1}$ (무리수)\n* 무리수는 $\\sqrt{3.7}, \\sqrt{8.1}$ 로 2개입니다.\n* 정답: ④"
     },
     {
         num: "5",
@@ -47,7 +47,7 @@ window.questionBank = [
         choices: ["2.415", "24.15", "241.5", "2415", "24150"],
         answer: "①",
         category: "6. 제곱근표의 활용",
-        solution: "* $\\sqrt{5.83} = \\sqrt{\\tf{58300}{10000}} = \\tf{\\sqrt{58300}}{100} = \\tf{241.5}{100} = 2.415$\n* 정답: ①"
+        solution: "* $\\sqrt{5.83} = \\sqrt{\\frac{58300}{10000}} = \\frac{\\sqrt{58300}}{100} = \\frac{241.5}{100} = 2.415$\n* 정답: ①"
     },
     {
         num: "7",
@@ -67,11 +67,11 @@ window.questionBank = [
     },
     {
         num: "9",
-        content: "함수 $f$가 $f(\\tf{b}{a}) = \\sqrt{(\\tf{a}{b})^{2} - 1}$ 와 같이 정의될 때, $f(\\frac{2}{3}) \\times f(\\frac{3}{5}) \\times f(\\frac{5}{7})$ 의 값을 구하면? [4점]",
+        content: "함수 $f$가 $f(\\frac{b}{a}) = \\sqrt{(\\frac{a}{b})^{2} - 1}$ 와 같이 정의될 때, $f(\\frac{2}{3}) \\times f(\\frac{3}{5}) \\times f(\\frac{5}{7})$ 의 값을 구하면? [4점]",
         choices: ["1", "$\\sqrt{27}$", "$\\frac{1}{15}\\sqrt{26}$", "15", "$\\frac{4}{15}\\sqrt{30}$"],
         answer: "⑤",
         category: "9. 복합 함수 수식 계산",
-        solution: "* $f(\\tf{b}{a}) = \\sqrt{\\tf{a^2-b^2}{b^2}}$\n* $f(\\tf{2}{3}) = \\sqrt{\\tf{3^2-2^2}{2^2}} = \\tf{\\sqrt{5}}{2}$\n* $f(\\tf{3}{5}) = \\sqrt{\\tf{5^2-3^2}{3^2}} = \\tf{4}{3}$\n* $f(\\tf{5}{7}) = \\sqrt{\\tf{7^2-5^2}{5^2}} = \\tf{\\sqrt{24}}{5} = \\tf{2\\sqrt{6}}{5}$\n* 곱: $\\tf{\\sqrt{5}}{2} \\times \\tf{4}{3} \\times \\tf{2\\sqrt{6}}{5} = \\tf{4\\sqrt{30}}{15}$\n* 정답: ⑤"
+        solution: "* $f(\\frac{b}{a}) = \\sqrt{\\frac{a^2-b^2}{b^2}}$\n* $f(\\frac{2}{3}) = \\sqrt{\\frac{3^2-2^2}{2^2}} = \\frac{\\sqrt{5}}{2}$\n* $f(\\frac{3}{5}) = \\sqrt{\\frac{5^2-3^2}{3^2}} = \\frac{4}{3}$\n* $f(\\frac{5}{7}) = \\sqrt{\\frac{7^2-5^2}{5^2}} = \\frac{\\sqrt{24}}{5} = \\frac{2\\sqrt{6}}{5}$\n* 곱: $\\frac{\\sqrt{5}}{2} \\times \\frac{4}{3} \\times \\frac{2\\sqrt{6}}{5} = \\frac{4\\sqrt{30}}{15}$\n* 정답: ⑤"
     },
     {
         num: "10",
@@ -103,7 +103,7 @@ window.questionBank = [
         choices: ["0", "$-\\frac{11}{20}$", "$\\frac{1}{10}$", "$\\frac{9}{20}$", "$\\frac{11}{20}$"],
         answer: "②",
         category: "13. 합차 공식을 이용한 식의 계산",
-        solution: "* $(\\tf{1}{2}-1)(\\tf{1}{2}+1) \\times (\\tf{1}{3}-1)(\\tf{1}{3}+1) \\dots$\n* $= (-\\tf{1}{2})(\\tf{3}{2}) \\times (-\\tf{2}{3})(\\tf{4}{3}) \\dots$\n* 9개의 음수 곱이므로 결과는 음수. 중간 항 소거 후 $-\\tf{1}{2} \\times \\tf{11}{10} = -\\tf{11}{20}$\n* 정답: ②"
+        solution: "* $(\\frac{1}{2}-1)(\\frac{1}{2}+1) \\times (\\frac{1}{3}-1)(\\frac{1}{3}+1) \\dots$\n* $= (-\\frac{1}{2})(\\frac{3}{2}) \\times (-\\frac{2}{3})(\\frac{4}{3}) \\dots$\n* 9개의 음수 곱이므로 결과는 음수. 중간 항 소거 후 $-\\frac{1}{2} \\times \\frac{11}{10} = -\\frac{11}{20}$\n* 정답: ②"
     },
     {
         num: "14",
@@ -119,7 +119,7 @@ window.questionBank = [
         choices: ["-8", "-16", "4", "8", "16"],
         answer: "②",
         category: "15. 완전제곱식이 될 조건",
-        solution: "* $x^2+2x-15-k$\n* 완전제곱식이 되려면 상수항이 $(\\tf{2}{2})^2 = 1$ 이어야 함.\n* $-15-k = 1 \\rightarrow k = -16$\n* 정답: ②"
+        solution: "* $x^2+2x-15-k$\n* 완전제곱식이 되려면 상수항이 $(\\frac{2}{2})^2 = 1$ 이어야 함.\n* $-15-k = 1 \\rightarrow k = -16$\n* 정답: ②"
     },
     {
         num: "16",
@@ -143,7 +143,7 @@ window.questionBank = [
         choices: ["$a+2$", "$3a+2$", "$5a+5$", "$7a+5$", "$11a+5$"],
         answer: "③",
         category: "18. 근호 안의 완전제곱식",
-        solution: "* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\tf{2}{7}a-\\tf{4}{7})^2} = |3a+9| - |2a-4|$\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\n* 정답: ③"
+        solution: "* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\frac{2}{7}a-\\frac{4}{7})^2} = |3a+9| - |2a-4|$\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\n* 정답: ③"
     },
     {
         num: "19",

@@ -13,10 +13,10 @@ window.questionBank = [
         id: 1,
         level: "하",
         category: "유리수의 분류",
-        content: "$\\tf{(\\text{정수})}{(\\text{0이 아닌 정수})}$의 꼴로 나타낼 수 없는 수는? (정답 2개) [4점]",
-        choices: ["$5$", "$\\pi$", "$-0.121212...$", "$1.121231234...$", "$\\tf{1}{3}$"],
+        content: "$\\frac{(\\text{정수})}{(\\text{0이 아닌 정수})}$의 꼴로 나타낼 수 없는 수는? (정답 2개) [4점]",
+        choices: ["$5$", "$\\pi$", "$-0.121212...$", "$1.121231234...$", "$\\frac{1}{3}$"],
         answer: "②, ④",
-        solution: "**[Logical Anchor]** 유리수는 분수 $\\tf{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수임.\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\n$\\therefore$ ②, ④"
+        solution: "**[Logical Anchor]** 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수임.\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\n$\\therefore$ ②, ④"
     },
     {
         id: 2,
@@ -32,18 +32,18 @@ window.questionBank = [
         level: "하",
         category: "유한소수 판별",
         content: "다음 분수 중 유한소수로 나타낼 수 없는 것은? [4점]",
-        choices: ["$\\tf{9}{6}$", "$\\tf{1}{2^3 \\times 5}$", "$\\tf{3}{25}$", "$\\tf{18}{2 \\times 3 \\times 5}$", "$\\tf{3}{2^2 \\times 5 \\times 7}$"],
+        choices: ["$\\frac{9}{6}$", "$\\frac{1}{2^3 \\times 5}$", "$\\frac{3}{25}$", "$\\frac{18}{2 \\times 3 \\times 5}$", "$\\frac{3}{2^2 \\times 5 \\times 7}$"],
         answer: "⑤",
-        solution: "기약분수의 분모 소인수가 $2, 5$뿐이어야 유한소수임.\n⑤ $\\tf{3}{2^2 \\times 5 \\times 7}$은 분모에 $7$이 남아있으므로 무한소수(순환소수)임.\n$\\therefore$ ⑤"
+        solution: "기약분수의 분모 소인수가 $2, 5$뿐이어야 유한소수임.\n⑤ $\\frac{3}{2^2 \\times 5 \\times 7}$은 분모에 $7$이 남아있으므로 무한소수(순환소수)임.\n$\\therefore$ ⑤"
     },
     {
         id: 4,
         level: "중",
         category: "유리수의 분류",
-        content: "다음을 만족시키는 분수 $x$의 개수는? [4점]<br>(가) 분모는 12이다. (나) $\\tf{1}{4} < \\tf{x}{12} < \\tf{1}{2}$ (다) 유한소수로 나타낼 수 없다.",
+        content: "다음을 만족시키는 분수 $x$의 개수는? [4점]<br>(가) 분모는 12이다. (나) $\\frac{1}{4} < \\frac{x}{12} < \\frac{1}{2}$ (다) 유한소수로 나타낼 수 없다.",
         choices: ["1개", "2개", "3개", "4개", "5개"],
         answer: "②",
-        solution: "통분: $\\tf{3}{12} < \\tf{x}{12} < \\tf{6}{12} \\implies x \\in \\{4, 5\\}$\n(1) $x=4 \\implies \\tf{4}{12} = \\tf{1}{3}$ (무한)\n(2) $x=5 \\implies \\tf{5}{12} = \\tf{5}{2^2 \\times 3}$ (무한)\n$\\because$ 두 경우 모두 분모에 $3$이 남아 유한소수가 아님.\n$\\therefore$ 2개"
+        solution: "통분: $\\frac{3}{12} < \\frac{x}{12} < \\frac{6}{12} \\implies x \\in \\{4, 5\\}$\n(1) $x=4 \\implies \\frac{4}{12} = \\frac{1}{3}$ (무한)\n(2) $x=5 \\implies \\frac{5}{12} = \\frac{5}{2^2 \\times 3}$ (무한)\n$\\because$ 두 경우 모두 분모에 $3$이 남아 유한소수가 아님.\n$\\therefore$ 2개"
     },
     {
         id: 5,
@@ -61,14 +61,14 @@ window.questionBank = [
         content: "다음 보기 중 옳지 않은 것은? [4점]",
         choices: ["유한소수는 유리수이다.", "순환소수는 무한소수이다.", "순환하지 않는 무한소수는 유리수가 아니다.", "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다.", "기약분수 분모에 2 또는 5 외 소인수 있으면 순환소수이다."],
         answer: "④",
-        solution: "④ 정수가 아닌 유리수는 유한소수 또는 순환소수(무한소수)로 나타낼 수 있음.\n$\\because$ $\\tf{1}{3}$은 유한소수로 나타낼 수 없는 유리수임.\n$\\therefore$ ④"
+        solution: "④ 정수가 아닌 유리수는 유한소수 또는 순환소수(무한소수)로 나타낼 수 있음.\n$\\because$ $\\frac{1}{3}$은 유한소수로 나타낼 수 없는 유리수임.\n$\\therefore$ ④"
     },
     {
         id: 7,
         level: "하",
         category: "지수법칙",
         content: "$a \\neq 0$이고 $m, n$이 자연수일 때 옳은 것은? [4점]",
-        choices: ["$a^m \\times a^n = a^{m \\times n}$", "$(a^m)^n = (a^n)^m$", "$m=n \\implies a^m \\div a^n = 0$", "$(ab)^n = a^n b$", "$(\\tf{b}{a})^m = \\tf{b^m}{a}$"],
+        choices: ["$a^m \\times a^n = a^{m \\times n}$", "$(a^m)^n = (a^n)^m$", "$m=n \\implies a^m \\div a^n = 0$", "$(ab)^n = a^n b$", "$(\\frac{b}{a})^m = \\frac{b^m}{a}$"],
         answer: "②",
         solution: "② $(a^m)^n = a^{mn}$, $(a^n)^m = a^{nm}$ 이므로 성립함.\n$\\therefore$ ②"
     },
@@ -85,19 +85,19 @@ window.questionBank = [
         id: 9,
         level: "중",
         category: "단항식의 계산",
-        content: "다음 보기 중 옳은 것을 모두 고르면? [4점]<br>(가) $5x^2 \\times (-6y^3) = -30x^2y^3$ (나) $-xy \\times (-2x^2y)^3 = 8x^7y^4$ (라) $(3a^2)^2 \\div (-27a^{11}) = -\\tf{1}{3a^7}$",
+        content: "다음 보기 중 옳은 것을 모두 고르면? [4점]<br>(가) $5x^2 \\times (-6y^3) = -30x^2y^3$ (나) $-xy \\times (-2x^2y)^3 = 8x^7y^4$ (라) $(3a^2)^2 \\div (-27a^{11}) = -\\frac{1}{3a^7}$",
         choices: ["(가), (나), (다)", "(가), (나), (라)", "(가), (라), (마)", "(나), (다), (라)", "(나), (라), (마)"],
         answer: "②",
-        solution: "(가) $-30x^2y^3$ (참)\n(나) $-xy \\times (-8x^6y^3) = 8x^7y^4$ (참)\n(라) $9a^4 \\div (-27a^{11}) = -\\tf{1}{3a^7}$ (참)\n$\\therefore$ ②"
+        solution: "(가) $-30x^2y^3$ (참)\n(나) $-xy \\times (-8x^6y^3) = 8x^7y^4$ (참)\n(라) $9a^4 \\div (-27a^{11}) = -\\frac{1}{3a^7}$ (참)\n$\\therefore$ ②"
     },
     {
         id: 10,
         level: "중",
         category: "단항식 활용",
-        content: "밑면이 밑변 $3x$, 높이 $\\tf{2}{3}y$인 직각삼각형인 삼각기둥 부피가 $60x^2y$일 때 높이는? [4점]",
+        content: "밑면이 밑변 $3x$, 높이 $\\frac{2}{3}y$인 직각삼각형인 삼각기둥 부피가 $60x^2y$일 때 높이는? [4점]",
         choices: ["$15xy$", "$20xy$", "$60x$", "$20x$", "$25$"],
         answer: "③",
-        solution: "밑넓이 $= \\tf{1}{2} \\times 3x \\times \\tf{2}{3}y = xy$\n부피 $= xy \\times h = 60x^2y$\n$\\therefore h = 60x$"
+        solution: "밑넓이 $= \\frac{1}{2} \\times 3x \\times \\frac{2}{3}y = xy$\n부피 $= xy \\times h = 60x^2y$\n$\\therefore h = 60x$"
     },
     {
         id: 11,
@@ -124,7 +124,7 @@ window.questionBank = [
         content: "$\\overline{AB}=\\overline{AC}, \\overline{AD} \\perp \\overline{BC}$인 $\\triangle ABC$에서 $\\overline{BC}=16cm$일 때 $\\overline{BD}$는? [3점]",
         choices: ["$5cm$", "$6cm$", "$7cm$", "$8cm$", "$9cm$"],
         answer: "④",
-        solution: "이등변삼각형의 꼭지각 이등분선(수선)은 밑변을 수직이등분함.\n$\\therefore \\overline{BD} = \\tf{1}{2} \\overline{BC} = 8cm$"
+        solution: "이등변삼각형의 꼭지각 이등분선(수선)은 밑변을 수직이등분함.\n$\\therefore \\overline{BD} = \\frac{1}{2} \\overline{BC} = 8cm$"
     },
     {
         id: 14,
@@ -133,7 +133,7 @@ window.questionBank = [
         content: "$\\overline{AB}=\\overline{AC}, \\angle A=38^\\circ$일 때, $\\angle B$ 이등분선과 $\\angle C$ 외각 이등분선 교점 $D$의 각 $\\angle BDC$는? [4점]",
         choices: ["$18^\\circ$", "$19^\\circ$", "$20^\\circ$", "$21^\\circ$", "$22^\\circ$"],
         answer: "②",
-        solution: "**[Logical Anchor]** $\\angle D = \\tf{1}{2} \\angle A$ 성질 이용.\n$\\therefore \\angle D = \\tf{38}{2} = 19^\\circ$"
+        solution: "**[Logical Anchor]** $\\angle D = \\frac{1}{2} \\angle A$ 성질 이용.\n$\\therefore \\angle D = \\frac{38}{2} = 19^\\circ$"
     },
     {
         id: 15,
@@ -160,7 +160,7 @@ window.questionBank = [
         content: "히포크라테스의 초승달 넓이 구하기 ($BC=9, AB=15$ 일 때) [4점]",
         choices: ["$36$", "$48$", "$54$", "$72$", "$108$"],
         answer: "③",
-        solution: "$AC = \\sqrt{15^2-9^2} = 12$\n넓이 $= \\tf{1}{2} \\times 9 \\times 12 = 54$\n$\\therefore$ ③"
+        solution: "$AC = \\sqrt{15^2-9^2} = 12$\n넓이 $= \\frac{1}{2} \\times 9 \\times 12 = 54$\n$\\therefore$ ③"
     },
     {
         id: 18,
@@ -169,7 +169,7 @@ window.questionBank = [
         content: "점 $I$가 $\\triangle ABC$의 내심일 때, $\\angle BIC$의 크기는? (단, $\\angle A=50^\\circ$ 기준) [4점]",
         choices: ["$100^\\circ$", "$105^\\circ$", "$110^\\circ$", "$115^\\circ$", "$120^\\circ$"],
         answer: "④",
-        solution: "$\\angle BIC = 90 + \\tf{1}{2} \\angle A = 90 + 25 = 115^\\circ$\n$\\therefore$ ④"
+        solution: "$\\angle BIC = 90 + \\frac{1}{2} \\angle A = 90 + 25 = 115^\\circ$\n$\\therefore$ ④"
     },
     {
         id: 19,
@@ -196,7 +196,7 @@ window.questionBank = [
         content: "$O$는 $\\triangle ABC$ 외심, $I$는 $\\triangle OBC$ 내심. $\\angle BIC=150^\\circ$ 일 때 $\\angle A$는? [4점]",
         choices: ["$45^\\circ$", "$50^\\circ$", "$55^\\circ$", "$60^\\circ$", "$65^\\circ$"],
         answer: "④",
-        solution: "(1) $\\angle BIC = 90 + \\tf{1}{2} \\angle BOC = 150 \\implies \\angle BOC = 120^\\circ$\n(2) $O$가 외심이므로 $\\angle BOC = 2 \\angle A = 120 \\implies \\angle A = 60^\\circ$\n$\\therefore$ 60"
+        solution: "(1) $\\angle BIC = 90 + \\frac{1}{2} \\angle BOC = 150 \\implies \\angle BOC = 120^\\circ$\n(2) $O$가 외심이므로 $\\angle BOC = 2 \\angle A = 120 \\implies \\angle A = 60^\\circ$\n$\\therefore$ 60"
     },
     {
         id: 22,
@@ -205,13 +205,13 @@ window.questionBank = [
         content: "수빈이는 분자를 잘못 봐서 $0.2\\dot{5}$, 준서는 분모를 잘못 봐서 $0.1\\dot{4}$로 나타냄. 처음 기약분수를 순환소수로? [5점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "$0.1\\dot{4}$",
-        solution: "(1) 수빈: $\\tf{23}{90} \\implies$ 분모 $90$ 채택\n(2) 준서: $\\tf{13}{90} \\implies$ 분자 $13$ 채택\n(3) 처음 분수: $\\tf{13}{90} = 0.1\\dot{4}$"
+        solution: "(1) 수빈: $\\frac{23}{90} \\implies$ 분모 $90$ 채택\n(2) 준서: $\\frac{13}{90} \\implies$ 분자 $13$ 채택\n(3) 처음 분수: $\\frac{13}{90} = 0.1\\dot{4}$"
     },
     {
         id: 23,
         level: "중",
         category: "서술형 2",
-        content: "$(\\tf{x^a}{2y^b})^3 = \\tf{x^{24}}{8y^6}$ 일 때 $a+b$의 값은? [4점]",
+        content: "$(\\frac{x^a}{2y^b})^3 = \\frac{x^{24}}{8y^6}$ 일 때 $a+b$의 값은? [4점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "10",
         solution: "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$\n$\\therefore a+b = 10$"
@@ -223,6 +223,6 @@ window.questionBank = [
         content: "직각삼각형 ABC ($BC=10, CA=24$)에서 외접원 넓이 $M$, 내접원 넓이 $N$일 때 $M-N$? [10점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "$153\\pi$",
-        solution: "(1) 빗변 $c=26 \implies R=13, M=169\\pi$\n(2) $r = \\tf{10+24-26}{2} = 4 \implies N=16\\pi$\n$\\therefore M-N = 153\\pi$"
+        solution: "(1) 빗변 $c=26 \implies R=13, M=169\\pi$\n(2) $r = \\frac{10+24-26}{2} = 4 \implies N=16\\pi$\n$\\therefore M-N = 153\\pi$"
     }
 ];

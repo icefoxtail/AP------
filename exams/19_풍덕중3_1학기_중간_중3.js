@@ -6,9 +6,9 @@ window.questionBank = [
     "level": "[하]",
     "category": "제곱근과 실수",
     "content": "다음 중 수를 근호를 사용하지 않고 나타낸 것 중 틀린 것은?",
-    "choices": ["$\sqrt{49}=7$", "$\sqrt{(-5)^2}=5$", "$\sqrt{\\tf{25}{4}}=\\tf{5}{2}$", "$-\\sqrt{0.16}=0.4$", "$-\\sqrt{(-\\tf{1}{3})^2}=-\\tf{1}{3}$"],
+    "choices": ["$\sqrt{49}=7$", "$\sqrt{(-5)^2}=5$", "$\sqrt{\\frac{25}{4}}=\\frac{5}{2}$", "$-\\sqrt{0.16}=0.4$", "$-\\sqrt{(-\\frac{1}{3})^2}=-\\frac{1}{3}$"],
     "answer": "4",
-    "solution": "① $\\sqrt{7^2}=7$ $\\implies$ 옳음\n② $\\sqrt{5^2}=5$ $\\implies$ 옳음\n③ $\\sqrt{(\\tf{5}{2})^2}=\\tf{5}{2}$ $\\implies$ 옳음\n④ $-\\sqrt{0.4^2}=-0.4$ $\\implies$ 틀림 ($0.4$로 표기됨)\n⑤ $-\\sqrt{(\\tf{1}{3})^2}=-\\tf{1}{3}$ $\\implies$ 옳음\n$\\therefore$ ④"
+    "solution": "① $\\sqrt{7^2}=7$ $\\implies$ 옳음\n② $\\sqrt{5^2}=5$ $\\implies$ 옳음\n③ $\\sqrt{(\\frac{5}{2})^2}=\\frac{5}{2}$ $\\implies$ 옳음\n④ $-\\sqrt{0.4^2}=-0.4$ $\\implies$ 틀림 ($0.4$로 표기됨)\n⑤ $-\\sqrt{(\\frac{1}{3})^2}=-\\frac{1}{3}$ $\\implies$ 옳음\n$\\therefore$ ④"
   },
   {
     "id": 2,
@@ -23,10 +23,10 @@ window.questionBank = [
     "id": 3,
     "level": "[중상]",
     "category": "제곱근과 실수",
-    "content": "$10 \\le x \\le 20$일 때, $\\sqrt{\\tf{x}{240}}$이 유리수가 되는 $x$의 값을 구하면?",
+    "content": "$10 \\le x \\le 20$일 때, $\\sqrt{\\frac{x}{240}}$이 유리수가 되는 $x$의 값을 구하면?",
     "choices": ["$11$", "$12$", "$13$", "$14$", "$15$"],
     "answer": "5",
-    "solution": "$\\sqrt{\\tf{x}{2^4 \\cdot 3 \\cdot 5}}$가 유리수가 되려면 $x = 3 \\cdot 5 \\cdot k^2 = 15k^2$ 꼴이어야 함\n$10 \\le x \\le 20$ 범위에서 $k=1$일 때 $x=15$가 유일함\n$\\therefore$ ⑤"
+    "solution": "$\\sqrt{\\frac{x}{2^4 \\cdot 3 \\cdot 5}}$가 유리수가 되려면 $x = 3 \\cdot 5 \\cdot k^2 = 15k^2$ 꼴이어야 함\n$10 \\le x \\le 20$ 범위에서 $k=1$일 때 $x=15$가 유일함\n$\\therefore$ ⑤"
   },
   {
     "id": 4,
@@ -50,10 +50,10 @@ window.questionBank = [
     "id": 6,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$ab=4$일 때, $2a\\sqrt{\\tf{b}{a}} + 3b\\sqrt{\\tf{a}{b}}$의 값을 구하면? (단, $a, b > 0$)",
+    "content": "$ab=4$일 때, $2a\\sqrt{\\frac{b}{a}} + 3b\\sqrt{\\frac{a}{b}}$의 값을 구하면? (단, $a, b > 0$)",
     "choices": ["$10$", "$12$", "$15$", "$16$", "$20$"],
     "answer": "1",
-    "solution": "$2\\sqrt{\\tf{a^2b}{a}} + 3\\sqrt{\\tf{b^2a}{b}} = 2\\sqrt{ab} + 3\\sqrt{ab} = 5\\sqrt{ab}$\n$ab=4$를 대입하면 $5\\sqrt{4} = 5 \\cdot 2 = 10$\n$\\therefore$ ①"
+    "solution": "$2\\sqrt{\\frac{a^2b}{a}} + 3\\sqrt{\\frac{b^2a}{b}} = 2\\sqrt{ab} + 3\\sqrt{ab} = 5\\sqrt{ab}$\n$ab=4$를 대입하면 $5\\sqrt{4} = 5 \\cdot 2 = 10$\n$\\therefore$ ①"
   },
   {
     "id": 7,
@@ -78,15 +78,15 @@ window.questionBank = [
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
     "content": "$\\sqrt{7}=a, \\sqrt{70}=b$일 때, $\\sqrt{175} + \\sqrt{2.8}$을 $a, b$로 나타내면?",
-    "choices": ["$a + 10b$", "$5a + \\tf{1}{10}b$", "$5a + b$", "$5a + \\tf{1}{5}b$", "$35a + 5b$"],
+    "choices": ["$a + 10b$", "$5a + \\frac{1}{10}b$", "$5a + b$", "$5a + \\frac{1}{5}b$", "$35a + 5b$"],
     "answer": "4",
-    "solution": "1) $\\sqrt{175} = 5\\sqrt{7} = 5a$\n2) $\\sqrt{2.8} = \\sqrt{\\tf{280}{100}} = \\tf{2\\sqrt{70}}{10} = \\tf{1}{5}b$\n$\\implies 5a + \\tf{1}{5}b$\n$\\therefore$ ④"
+    "solution": "1) $\\sqrt{175} = 5\\sqrt{7} = 5a$\n2) $\\sqrt{2.8} = \\sqrt{\\frac{280}{100}} = \\frac{2\\sqrt{70}}{10} = \\frac{1}{5}b$\n$\\implies 5a + \\frac{1}{5}b$\n$\\therefore$ ④"
   },
   {
     "id": 10,
     "level": "[상]",
     "category": "다항식의 곱셈",
-    "content": "$x = \\tf{2-\\sqrt{3}}{2+\\sqrt{3}}$일 때, 식 $(x^2-14x+5)(x^2-14x-5)$의 값은?",
+    "content": "$x = \\frac{2-\\sqrt{3}}{2+\\sqrt{3}}$일 때, 식 $(x^2-14x+5)(x^2-14x-5)$의 값은?",
     "choices": ["$14\\sqrt{3}$", "$-24$", "$112$", "$-112$", "$24$"],
     "answer": "2",
     "solution": "$x = 7-4\\sqrt{3} \\implies x-7 = -4\\sqrt{3} \\implies x^2-14x+49=48$\n$\\implies x^2-14x = -1$\n주어진 식: $(-1+5)(-1-5) = 4 \\cdot (-6) = -24$\n$\\therefore$ ②"
@@ -95,10 +95,10 @@ window.questionBank = [
     "id": 11,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "식 $\\sqrt{48} - \\tf{3}{4\\sqrt{3}} - 2\\sqrt{3}$을 간단히 하면?",
-    "choices": ["$\\tf{5\\sqrt{3}}{4}$", "$\\tf{7\\sqrt{3}}{4}$", "$3\\sqrt{3} - \\tf{2}{3}\\sqrt{3}$", "$2\\sqrt{3} + \\tf{1}{4}\\sqrt{3}$", "$7 - \\tf{3\\sqrt{3}}{4}$"],
+    "content": "식 $\\sqrt{48} - \\frac{3}{4\\sqrt{3}} - 2\\sqrt{3}$을 간단히 하면?",
+    "choices": ["$\\frac{5\\sqrt{3}}{4}$", "$\\frac{7\\sqrt{3}}{4}$", "$3\\sqrt{3} - \\frac{2}{3}\\sqrt{3}$", "$2\\sqrt{3} + \\frac{1}{4}\\sqrt{3}$", "$7 - \\frac{3\\sqrt{3}}{4}$"],
     "answer": "2",
-    "solution": "$4\\sqrt{3} - \\tf{\\sqrt{3}}{4} - 2\\sqrt{3} = 2\\sqrt{3} - \\tf{\\sqrt{3}}{4} = \\tf{7\\sqrt{3}}{4}$\n$\\therefore$ ②"
+    "solution": "$4\\sqrt{3} - \\frac{\\sqrt{3}}{4} - 2\\sqrt{3} = 2\\sqrt{3} - \\frac{\\sqrt{3}}{4} = \\frac{7\\sqrt{3}}{4}$\n$\\therefore$ ②"
   },
   {
     "id": 12,
@@ -113,10 +113,10 @@ window.questionBank = [
     "id": 13,
     "level": "[중]",
     "category": "인수분해",
-    "content": "다항식 $\\tf{1}{2}x^2 - 4x + k$가 완전제곱식이 되는 $k$의 값은?",
-    "choices": ["$\\tf{1}{2}$", "$2$", "$4$", "$16$", "$8$"],
+    "content": "다항식 $\\frac{1}{2}x^2 - 4x + k$가 완전제곱식이 되는 $k$의 값은?",
+    "choices": ["$\\frac{1}{2}$", "$2$", "$4$", "$16$", "$8$"],
     "answer": "5",
-    "solution": "$\\tf{1}{2}(x^2 - 8x + 2k)$에서 $2k = (-4)^2 = 16 \\implies k=8$\n$\\therefore$ ⑤"
+    "solution": "$\\frac{1}{2}(x^2 - 8x + 2k)$에서 $2k = (-4)^2 = 16 \\implies k=8$\n$\\therefore$ ⑤"
   },
   {
     "id": 14,

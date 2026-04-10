@@ -24,9 +24,9 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "다음 중 무리수인 것은? (4점)",
-    "choices": ["2.111222...", "$2-\\sqrt{49}$", "$\\sqrt{\\tf{1}{1000}}$", "$\\sqrt{25}-9$", "0.29"],
+    "choices": ["2.111222...", "$2-\\sqrt{49}$", "$\\sqrt{\\frac{1}{1000}}$", "$\\sqrt{25}-9$", "0.29"],
     "answer": "3",
-    "solution": "③ $\\sqrt{\\tf{1}{1000}} = \\tf{1}{10\\sqrt{10}}$로 근호가 제거되지 않는 무리수임."
+    "solution": "③ $\\sqrt{\\frac{1}{1000}} = \\frac{1}{10\\sqrt{10}}$로 근호가 제거되지 않는 무리수임."
   },
   {
     "id": 4,
@@ -59,7 +59,7 @@ window.questionBank = [
     "id": 7,
     "level": "[중]",
     "category": "제곱근과 실수",
-    "content": "$\\sqrt{\\tf{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
+    "content": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
     "choices": ["5", "10", "12", "14", "16"],
     "answer": "1",
     "solution": "$320 = 2^{6} \\times 5$이므로 $x=5$일 때 근호 안이 $8^2$이 되어 자연수가 됨."
@@ -68,7 +68,7 @@ window.questionBank = [
     "id": 8,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\tf{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\tf{1}{\\sqrt{10}}$을 계산하면? (4점)",
+    "content": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
     "choices": ["0", "$3\\sqrt{2}-4\\sqrt{5}$", "$-3\\sqrt{2}-4\\sqrt{5}$", "$3\\sqrt{2}+4\\sqrt{5}$", "$-3\\sqrt{2}+4\\sqrt{5}$"],
     "answer": "5",
     "solution": "$2\\sqrt{2} - (\\sqrt{50}-2\\sqrt{20}) = 2\\sqrt{2} - 5\\sqrt{2} + 4\\sqrt{5} = -3\\sqrt{2}+4\\sqrt{5}$."
@@ -131,7 +131,7 @@ window.questionBank = [
     "id": 15,
     "level": "[중상]",
     "category": "인수분해",
-    "content": "인수분해 공식을 이용하여 $\\tf{1001\\times 1002-1002}{1001^{2}-1}$를 계산하면? (4점)",
+    "content": "인수분해 공식을 이용하여 $\\frac{1001\\times 1002-1002}{1001^{2}-1}$를 계산하면? (4점)",
     "choices": ["1", "2", "5", "8", "12"],
     "answer": "1",
     "solution": "분자: $1002(1001-1)$[cite: 756]. 분모: $(1001-1)(1001+1)$[cite: 756]. 약분하면 $1$[cite: 761]. \\\\ \\therefore 1"
@@ -150,7 +150,7 @@ window.questionBank = [
     "level": "[중]",
     "category": "인수분해",
     "content": "다음 중 인수분해 한 것이 옳지 않은 것은? (4점)",
-    "choices": ["$x^{2}-4xy+4y^{2}=(x-2y)^{2}$", "$x^{2}-\\tf{2}{3}x+\\tf{1}{9}=(x-\\tf{1}{3})^{2}$", "$25x^{2}-9y^{2}=(5x+3y)(5x-3y)$", "$x^{2}-3x-4=(x+1)(x-4)$", "$2x^{2}+5x-3=(2x+1)(x-3)$"],
+    "choices": ["$x^{2}-4xy+4y^{2}=(x-2y)^{2}$", "$x^{2}-\\frac{2}{3}x+\\frac{1}{9}=(x-\\frac{1}{3})^{2}$", "$25x^{2}-9y^{2}=(5x+3y)(5x-3y)$", "$x^{2}-3x-4=(x+1)(x-4)$", "$2x^{2}+5x-3=(2x+1)(x-3)$"],
     "answer": "5",
     "solution": "⑤ $2x^2+5x-3 = (2x-1)(x+3)$이 되어야 하므로 틀림[cite: 783]. \\\\ \\therefore 5"
   },
@@ -194,16 +194,16 @@ window.questionBank = [
     "id": 22,
     "level": "[중상]",
     "category": "제곱근과 실수",
-    "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\tf{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
+    "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\frac{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
     "choices": [" ", " ", " ", " ", " "],
-    "answer": "$-\\tf{5}{2}a$",
-    "solution": "$|3a| - |-\\tf{1}{2}a| = -3a - (\\tf{1}{2}a) = -\\tf{5}{2}a$[cite: 817, 818, 819, 822]."
+    "answer": "$-\\frac{5}{2}a$",
+    "solution": "$|3a| - |-\\frac{1}{2}a| = -3a - (\\frac{1}{2}a) = -\\frac{5}{2}a$[cite: 817, 818, 819, 822]."
   },
   {
     "id": 23,
     "level": "[상]",
     "category": "다항식의 곱셈",
-    "content": "[서답형 2-2] $x = \\tf{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\tf{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
+    "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "$-40\\sqrt{6}$",
     "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$[cite: 832, 833]. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$[cite: 834, 835]."

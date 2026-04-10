@@ -7,7 +7,7 @@
         window.MathJax = {
             tex: { 
                 inlineMath: [['$', '$']], 
-                macros: { tf: ['\\dfrac{#1}{#2}', 2] } 
+                
             },
             options: { enableMenu: false },
             startup: { typeset: false }
@@ -104,12 +104,7 @@ const CIRCLED = ['①','②','③','④','⑤'];
 function normalizeQuestion(q) {
     if (q.solution) {
         q.solution = q.solution
-            .replace(/tf\s?([a-zA-Z0-9^]+)\s?\/\s?([a-zA-Z0-9^]+)/g, '$\\dfrac{$1}{$2}$')
-            .replace(/tf\s?([a-zA-Z0-9^]+)/g, '$\\dfrac{$1}{분모확인}$') 
             .replace(/\[Logical Anchor\]/g, '**[키포인트]**')
-            .replace(/\\?implies/gi, ' 이면 ')
-            .replace(/\\?therefore/gi, ' 따라서 ')
-            .replace(/\\?because/gi, ' 이므로 ')
             .replace(/\\?ext[i]*[case]*(\d+)\s*\)?/gi, '\n**($1)단계:** ')
             .replace(/\\?next(\d*)/gi, '\n**다음으로:** ')
             .replace(/case\s+(\d+)\)/gi, '경우 $1)')

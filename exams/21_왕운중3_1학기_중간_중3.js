@@ -5,10 +5,10 @@ window.questionBank = [
     "id": 1,
     "level": "[하]",
     "category": "제곱근과 실수",
-    "content": "$(-\\sqrt{5})^{2} \\times \\sqrt{\\tf{9}{25}} - (-\\sqrt{(-4)^{2}})$ 을 계산하면? [3점]",
+    "content": "$(-\\sqrt{5})^{2} \\times \\sqrt{\\frac{9}{25}} - (-\\sqrt{(-4)^{2}})$ 을 계산하면? [3점]",
     "choices": ["-7", "-6", "6", "7", "12"],
     "answer": "4",
-    "solution": "1) $(-\\sqrt{5})^{2} = 5$ 2) $\\sqrt{\\tf{9}{25}} = \\tf{3}{5}$ 3) $-\\sqrt{(-4)^{2}} = -4$ \\\\ $\\implies 5 \\times \\tf{3}{5} - (-4) = 3 + 4 = 7$ \\\\ \\therefore 7"
+    "solution": "1) $(-\\sqrt{5})^{2} = 5$ 2) $\\sqrt{\\frac{9}{25}} = \\frac{3}{5}$ 3) $-\\sqrt{(-4)^{2}} = -4$ \\\\ $\\implies 5 \\times \\frac{3}{5} - (-4) = 3 + 4 = 7$ \\\\ \\therefore 7"
   },
   {
     "id": 2,
@@ -32,10 +32,10 @@ window.questionBank = [
     "id": 4,
     "level": "[중]",
     "category": "다항식의 곱셈",
-    "content": "$(-\\tf{1}{3}x-1)^{2}$과 전개식이 같은 것은? [4점]",
-    "choices": ["\\tf{1}{9}(x+3)^{2}", "\\tf{1}{9}(x-3)^{2}", "-\\tf{1}{9}(x+3)^{2}", "-\\tf{1}{3}(x-1)^{2}", "3(x-1)^{2}"],
+    "content": "$(-\\frac{1}{3}x-1)^{2}$과 전개식이 같은 것은? [4점]",
+    "choices": ["\\frac{1}{9}(x+3)^{2}", "\\frac{1}{9}(x-3)^{2}", "-\\frac{1}{9}(x+3)^{2}", "-\\frac{1}{3}(x-1)^{2}", "3(x-1)^{2}"],
     "answer": "1",
-    "solution": "$(-\\tf{1}{3}x-1)^{2} = \\{-\\tf{1}{3}(x+3)\\}^{2} = \\tf{1}{9}(x+3)^{2}$"
+    "solution": "$(-\\frac{1}{3}x-1)^{2} = \\{-\\frac{1}{3}(x+3)\\}^{2} = \\frac{1}{9}(x+3)^{2}$"
   },
   {
     "id": 5,
@@ -68,10 +68,10 @@ window.questionBank = [
     "id": 8,
     "level": "[중]",
     "category": "제곱근과 실수",
-    "content": "다음 중에서 무리수의 개수는? [4점] <div class='box'>$-2, \\tf{3}{10}, \\sqrt{0.5}, -4+\\sqrt{0.01}, -\\tf{1}{\\sqrt{3}}, \\tf{\\pi}{5}, \\sqrt{\\tf{25}{100}}, 0.\\dot{9}, \\sqrt{\\tf{24}{81}}$</div>",
+    "content": "다음 중에서 무리수의 개수는? [4점] <div class='box'>$-2, \\frac{3}{10}, \\sqrt{0.5}, -4+\\sqrt{0.01}, -\\frac{1}{\\sqrt{3}}, \\frac{\\pi}{5}, \\sqrt{\\frac{25}{100}}, 0.\\dot{9}, \\sqrt{\\frac{24}{81}}$</div>",
     "choices": ["2개", "3개", "4개", "5개", "6개"],
     "answer": "3",
-    "solution": "무리수: $\\sqrt{0.5}, -\\tf{1}{\\sqrt{3}}, \\tf{\\pi}{5}, \\sqrt{\\tf{24}{81}}$ (4개)"
+    "solution": "무리수: $\\sqrt{0.5}, -\\frac{1}{\\sqrt{3}}, \\frac{\\pi}{5}, \\sqrt{\\frac{24}{81}}$ (4개)"
   },
   {
     "id": 9,
@@ -80,13 +80,13 @@ window.questionBank = [
     "content": "$\\sqrt{3.4}=1.844$, $\\sqrt{34}=5.831$ 일 때, 다음 중 옳은 것은? [4점]",
     "choices": ["\\sqrt{3400}=18.44", "\\sqrt{340}=58.31", "\\sqrt{0.34}=58.31", "\\sqrt{0.034}=0.5831", "\\sqrt{0.0034}=0.05831$"],
     "answer": "5",
-    "solution": "⑤ $\\sqrt{0.0034} = \\tf{\\sqrt{34}}{100} = 0.05831$"
+    "solution": "⑤ $\\sqrt{0.0034} = \\frac{\\sqrt{34}}{100} = 0.05831$"
   },
   {
     "id": 10,
     "level": "[중상]",
     "category": "제곱근과 실수",
-    "content": "부등식 $6 \\le \\tf{\\sqrt{2(n-1)}}{2} < 7$을 만족시키는 자연수 n은 모두 몇 개인가? [4점]",
+    "content": "부등식 $6 \\le \\frac{\\sqrt{2(n-1)}}{2} < 7$을 만족시키는 자연수 n은 모두 몇 개인가? [4점]",
     "choices": ["25개", "26개", "27개", "28개", "29개"],
     "answer": "2",
     "solution": "$12 \\le \\sqrt{2n-2} < 14 \\implies 144 \\le 2n-2 < 196 \\implies 73 \\le n < 99$. 개수: 26개"
@@ -104,28 +104,28 @@ window.questionBank = [
     "id": 12,
     "level": "[중]",
     "category": "제곱근과 실수",
-    "content": "다음 보기 중 무리수인 것을 모두 고른 것은? [4점]\n<div class='box'>ㄱ. 가로의 길이가 6, 세로의 길이가 8인 직사각형의 대각선의 길이 ㄴ. 반지름의 길이가 2인 원의 넓이 ㄷ. 넓이가 \\tf{9}{16}인 정사각형의 한 변의 길이 ㄹ. 한변의 길이가 6인 정삼각형의 높이</div>",
+    "content": "다음 보기 중 무리수인 것을 모두 고른 것은? [4점]\n<div class='box'>ㄱ. 가로의 길이가 6, 세로의 길이가 8인 직사각형의 대각선의 길이 ㄴ. 반지름의 길이가 2인 원의 넓이 ㄷ. 넓이가 \\frac{9}{16}인 정사각형의 한 변의 길이 ㄹ. 한변의 길이가 6인 정삼각형의 높이</div>",
     "choices": ["ㄱ, ㄴ", "ㄴ, ㄹ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄷ, ㄹ"],
     "answer": "2",
-    "solution": "ㄱ. $\\sqrt{100}=10$ (유리수) ㄴ. $4\\pi$ (무리수) ㄷ. $\\tf{3}{4}$ (유리수) ㄹ. $3\\sqrt{3}$ (무리수) \\\\ \\therefore ㄴ, ㄹ"
+    "solution": "ㄱ. $\\sqrt{100}=10$ (유리수) ㄴ. $4\\pi$ (무리수) ㄷ. $\\frac{3}{4}$ (유리수) ㄹ. $3\\sqrt{3}$ (무리수) \\\\ \\therefore ㄴ, ㄹ"
   },
   {
     "id": 13,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$-\\tf{1}{\\sqrt{5}} \\times (-\\sqrt{90}) \\div \\tf{5\\sqrt{32}}{\\sqrt{80}} = k\\sqrt{a}$ 일 때, 유리수 $k$의 값은? [4점]",
-    "choices": ["\\tf{2}{5}", "\\tf{3}{5}", "2", "3", "5"],
+    "content": "$-\\frac{1}{\\sqrt{5}} \\times (-\\sqrt{90}) \\div \\frac{5\\sqrt{32}}{\\sqrt{80}} = k\\sqrt{a}$ 일 때, 유리수 $k$의 값은? [4점]",
+    "choices": ["\\frac{2}{5}", "\\frac{3}{5}", "2", "3", "5"],
     "answer": "2",
-    "solution": "$k = \\tf{3}{5}, a=5 \\implies \\therefore 2"
+    "solution": "$k = \\frac{3}{5}, a=5 \\implies \\therefore 2"
   },
   {
     "id": 14,
     "level": "[중]",
     "category": "인수분해",
     "content": "$x^{2}+mx+n$이 완전제곱식이 되도록 하는 m, n의 값이 아닌 것은? [4점]",
-    "choices": ["m=-2, n=1", "m=10, n=25", "m=1, n=\\tf{1}{4}", "m=-\\tf{6}{5}, n=\\tf{9}{25}", "m=-\\tf{2}{3}, n=\\tf{4}{9}"],
+    "choices": ["m=-2, n=1", "m=10, n=25", "m=1, n=\\frac{1}{4}", "m=-\\frac{6}{5}, n=\\frac{9}{25}", "m=-\\frac{2}{3}, n=\\frac{4}{9}"],
     "answer": "5",
-    "solution": "⑤ $m=-\\tf{2}{3} \\implies n=\\tf{1}{9}$ 여야 함."
+    "solution": "⑤ $m=-\\frac{2}{3} \\implies n=\\frac{1}{9}$ 여야 함."
   },
   {
     "id": 15,
@@ -140,10 +140,10 @@ window.questionBank = [
     "id": 16,
     "level": "[상]",
     "category": "제곱근과 실수",
-    "content": "두 번째로 큰 수는 $a$, 세 번째로 작은 수를 $b$라 할 때 $a^{2}-b^{2}$의 값은? [5점]\n<div class='box'>\\sqrt{5}, -\\sqrt{\\tf{9}{4}}, -\\sqrt{3}, \\tf{5}{2}, -\\sqrt{\\tf{5}{2}}, \\sqrt{\\tf{13}{2}}</div>",
-    "choices": ["\\tf{17}{4}", "-\\tf{5}{2}", "4", "-2", "\\tf{11}{4}"],
+    "content": "두 번째로 큰 수는 $a$, 세 번째로 작은 수를 $b$라 할 때 $a^{2}-b^{2}$의 값은? [5점]\n<div class='box'>\\sqrt{5}, -\\sqrt{\\frac{9}{4}}, -\\sqrt{3}, \\frac{5}{2}, -\\sqrt{\\frac{5}{2}}, \\sqrt{\\frac{13}{2}}</div>",
+    "choices": ["\\frac{17}{4}", "-\\frac{5}{2}", "4", "-2", "\\frac{11}{4}"],
     "answer": "3",
-    "solution": "$a = \\tf{5}{2}, b = -\\tf{3}{2} \\implies a^2-b^2 = 6.25 - 2.25 = 4$."
+    "solution": "$a = \\frac{5}{2}, b = -\\frac{3}{2} \\implies a^2-b^2 = 6.25 - 2.25 = 4$."
   },
   {
     "id": 17,
@@ -167,10 +167,10 @@ window.questionBank = [
     "id": 19,
     "level": "[중상]",
     "category": "제곱근과 실수",
-    "content": "[단답형 1] 원기둥의 부피를 $A$, 겉넓이를 $B$라 할 때, $\\tf{B}{A} = a\\sqrt{2} + b\\sqrt{5}$이다. $a+b$를 구하시오. [4점]",
+    "content": "[단답형 1] 원기둥의 부피를 $A$, 겉넓이를 $B$라 할 때, $\\frac{B}{A} = a\\sqrt{2} + b\\sqrt{5}$이다. $a+b$를 구하시오. [4점]",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "17/15",
-    "solution": "$A = 6\\sqrt{5}\\pi, B = 4\\pi + 6\\sqrt{10}\\pi \\implies \\tf{B}{A} = \\tf{2\\sqrt{5}}{15} + \\sqrt{2} \\implies a+b = \\tf{17}{15}$"
+    "solution": "$A = 6\\sqrt{5}\\pi, B = 4\\pi + 6\\sqrt{10}\\pi \\implies \\frac{B}{A} = \\frac{2\\sqrt{5}}{15} + \\sqrt{2} \\implies a+b = \\frac{17}{15}$"
   },
   {
     "id": 20,
@@ -185,7 +185,7 @@ window.questionBank = [
     "id": 21,
     "level": "[중상]",
     "category": "인수분해",
-    "content": "[서술형 1] $A+B$의 값을 구하시오. [6점]\n$A=\\tf{998\\times996+998\\times4}{999^{2}-1}, B=\\sqrt{2022\\times2020+1}$",
+    "content": "[서술형 1] $A+B$의 값을 구하시오. [6점]\n$A=\\frac{998\\times996+998\\times4}{999^{2}-1}, B=\\sqrt{2022\\times2020+1}$",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "2022",
     "solution": "$A = 1, B = 2021 \\implies A+B = 2022$"
@@ -203,7 +203,7 @@ window.questionBank = [
     "id": 23,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "[서술형 3] $x=\\tf{2}{\\sqrt{5}+\\sqrt{3}}, y=\\tf{4}{\\sqrt{5}-\\sqrt{3}}$ 일 때, $x^{2}y-xy^{2}$의 값을 구하시오. [7점]",
+    "content": "[서술형 3] $x=\\frac{2}{\\sqrt{5}+\\sqrt{3}}, y=\\frac{4}{\\sqrt{5}-\\sqrt{3}}$ 일 때, $x^{2}y-xy^{2}$의 값을 구하시오. [7점]",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "-4\\sqrt{5}-12\\sqrt{3}",
     "solution": "$xy(x-y) = 4(-\\sqrt{5}-3\\sqrt{3}) = -4\\sqrt{5}-12\\sqrt{3}$"

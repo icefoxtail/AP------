@@ -16,16 +16,16 @@ window.questionBank = [
         content: "다음은 분수와 소수에 대해 친구들이 발표한 것이다. 친구들의 설명 중 바르지 못한 것은?",
         choices: ["다혜 : 분수는 나누는 과정에서 생겨났어요.", "주영 : 음식 레시피에서 재료의 양은 주로 소수가 쓰여요.", "은세 : 소수는 분수보다 훨씬 늦게 발명됐어요.", "승연 : 음악 시간에 박자를 나타낼 때 분수가 쓰여요.", "정식 : 내 키나 몸무게 같은 것은 소수로 표현해요."],
         answer: "②",
-        solution: "**[Logical Anchor]** 실생활에서의 수의 활용 사례를 분석함.\n② 음식 레시피에서는 주로 $\\tf{1}{2}$컵, $\\tf{2}{3}$스푼 등 분수 표현이 소수보다 더 빈번하게 사용됨.\n$\\therefore$ ②"
+        solution: "**[Logical Anchor]** 실생활에서의 수의 활용 사례를 분석함.\n② 음식 레시피에서는 주로 $\\frac{1}{2}$컵, $\\frac{2}{3}$스푼 등 분수 표현이 소수보다 더 빈번하게 사용됨.\n$\\therefore$ ②"
     },
     {
         id: 2,
         level: "하",
         category: "유한소수 판별",
         content: "다음 분수 중에서 유한소수로 나타낼 수 있는 것을 모두 고르면? (정답 2개)",
-        choices: ["$\\tf{14}{2^2 \\times 7}$", "$\\tf{1}{15}$", "$\\tf{3 \\times 7}{2 \\times 5 \\times 7^2}$", "$\\tf{6}{18}$", "$\\tf{45}{2^2 \\times 3^2 \\times 5^2}$"],
+        choices: ["$\\frac{14}{2^2 \\times 7}$", "$\\frac{1}{15}$", "$\\frac{3 \\times 7}{2 \\times 5 \\times 7^2}$", "$\\frac{6}{18}$", "$\\frac{45}{2^2 \\times 3^2 \\times 5^2}$"],
         answer: "①, ⑤",
-        solution: "**[Logical Anchor]** 기약분수 상태에서 분모의 소인수가 $2$ 또는 $5$뿐인지 확인.\n① $\\tf{14}{28} = \\tf{1}{2} \\implies$ 분모 소인수 $2$ (유한)\n② $\\tf{1}{15} = \\tf{1}{3 \\times 5} \\implies$ 분모 소인수 $3$ (순환)\n③ $\\tf{21}{490} = \\tf{3}{70} \\implies$ 분모 소인수 $7$ (순환)\n④ $\\tf{6}{18} = \\tf{1}{3} \\implies$ 분모 소인수 $3$ (순환)\n⑤ $\\tf{45}{4 \\times 9 \\times 25} = \\tf{45}{900} = \\tf{1}{20} = \\tf{1}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$ (유한)\n$\\therefore$ ①, ⑤"
+        solution: "**[Logical Anchor]** 기약분수 상태에서 분모의 소인수가 $2$ 또는 $5$뿐인지 확인.\n① $\\frac{14}{28} = \\frac{1}{2} \\implies$ 분모 소인수 $2$ (유한)\n② $\\frac{1}{15} = \\frac{1}{3 \\times 5} \\implies$ 분모 소인수 $3$ (순환)\n③ $\\frac{21}{490} = \\frac{3}{70} \\implies$ 분모 소인수 $7$ (순환)\n④ $\\frac{6}{18} = \\frac{1}{3} \\implies$ 분모 소인수 $3$ (순환)\n⑤ $\\frac{45}{4 \\times 9 \\times 25} = \\frac{45}{900} = \\frac{1}{20} = \\frac{1}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$ (유한)\n$\\therefore$ ①, ⑤"
     },
     {
         id: 3,
@@ -40,10 +40,10 @@ window.questionBank = [
         id: 4,
         level: "중",
         category: "순환소수의 자릿수",
-        content: "분수 $\\tf{5}{27}$ 을 소수로 나타낼 때, 소수점 아래 49번째 자리의 숫자를 구하면?",
+        content: "분수 $\\frac{5}{27}$ 을 소수로 나타낼 때, 소수점 아래 49번째 자리의 숫자를 구하면?",
         choices: ["1", "4", "5", "7", "8"],
         answer: "①",
-        solution: "$\\tf{5}{27} = 5 \\div 27 = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\n순환마디는 $(1, 8, 5)$이며 길이는 $3$임.\n$49 = 3 \\times 16 + 1$\n$\\because$ 나머지가 $1$이므로 순환마디의 첫 번째 숫자인 $1$임.\n$\\therefore$ 1"
+        solution: "$\\frac{5}{27} = 5 \\div 27 = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\n순환마디는 $(1, 8, 5)$이며 길이는 $3$임.\n$49 = 3 \\times 16 + 1$\n$\\because$ 나머지가 $1$이므로 순환마디의 첫 번째 숫자인 $1$임.\n$\\therefore$ 1"
     },
     {
         id: 5,
@@ -68,18 +68,18 @@ window.questionBank = [
         level: "하",
         category: "지수법칙",
         content: "다음 중에서 옳은 것은?",
-        choices: ["$a^2 \\div a^5 = a^3$", "$a^2 \\times a^3 = a^6$", "$(\\tf{b^2}{2a^3})^3 = \\tf{b^6}{6a^9}$", "$(-ab^2)^3 = -a^3b^6$", "$a^2 \\div a^2 = 0$"],
+        choices: ["$a^2 \\div a^5 = a^3$", "$a^2 \\times a^3 = a^6$", "$(\\frac{b^2}{2a^3})^3 = \\frac{b^6}{6a^9}$", "$(-ab^2)^3 = -a^3b^6$", "$a^2 \\div a^2 = 0$"],
         answer: "④",
-        solution: "④ $(-ab^2)^3 = (-1)^3 \\times a^3 \\times (b^2)^3 = -a^3b^6$ (참)\n$\\because$ ① $\\tf{1}{a^3}$, ② $a^5$, ③ $\\tf{b^6}{8a^9}$, ⑤ $1$\n$\\therefore$ ④"
+        solution: "④ $(-ab^2)^3 = (-1)^3 \\times a^3 \\times (b^2)^3 = -a^3b^6$ (참)\n$\\because$ ① $\\frac{1}{a^3}$, ② $a^5$, ③ $\\frac{b^6}{8a^9}$, ⑤ $1$\n$\\therefore$ ④"
     },
     {
         id: 8,
         level: "중",
         category: "지수법칙 응용",
-        content: "$(\\tf{x^a}{3y^{2b}})^4 = \\tf{x^8}{81y^{24}}$ 일 때, $a+b$의 값은?",
+        content: "$(\\frac{x^a}{3y^{2b}})^4 = \\frac{x^8}{81y^{24}}$ 일 때, $a+b$의 값은?",
         choices: ["5", "6", "7", "8", "9"],
         answer: "①",
-        solution: "좌변을 지수법칙으로 전개하여 우변과 비교함.\n$\\tf{x^{4a}}{3^4 y^{8b}} = \\tf{x^8}{81y^{24}}$\n(1) $4a = 8 \\implies a = 2$\n(2) $8b = 24 \\implies b = 3$\n$\\therefore a + b = 2 + 3 = 5$"
+        solution: "좌변을 지수법칙으로 전개하여 우변과 비교함.\n$\\frac{x^{4a}}{3^4 y^{8b}} = \\frac{x^8}{81y^{24}}$\n(1) $4a = 8 \\implies a = 2$\n(2) $8b = 24 \\implies b = 3$\n$\\therefore a + b = 2 + 3 = 5$"
     },
     {
         id: 9,
@@ -103,19 +103,19 @@ window.questionBank = [
         id: 11,
         level: "중상",
         category: "지수법칙 심화",
-        content: "$\\tf{36^9}{54^6} = 2^a$ 일 때, 자연수 $a$의 값은?",
+        content: "$\\frac{36^9}{54^6} = 2^a$ 일 때, 자연수 $a$의 값은?",
         choices: ["2", "4", "6", "8", "12"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 밑을 소인수분해하여 지수법칙을 적용함.\n$\\tf{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\tf{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{18-6} = 2^{12}$\n$\\therefore a = 12$"
+        solution: "**[Logical Anchor]** 밑을 소인수분해하여 지수법칙을 적용함.\n$\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{18-6} = 2^{12}$\n$\\therefore a = 12$"
     },
     {
         id: 12,
         level: "중",
         category: "단항식의 계산",
         content: "$(-2x^2)^3 \\times (-9x) \\div 12x^4$ 을 간단히 하면?",
-        choices: ["$8x^3$", "$2x^3$", "$6x^3$", "$\\tf{3x^4}{2}$", "$-6x^2$"],
+        choices: ["$8x^3$", "$2x^3$", "$6x^3$", "$\\frac{3x^4}{2}$", "$-6x^2$"],
         answer: "③",
-        solution: "$-8x^6 \\times (-9x) \\times \\tf{1}{12x^4}$\n$= 72x^7 \\times \\tf{1}{12x^4} = 6x^3$\n$\\therefore 6x^3$"
+        solution: "$-8x^6 \\times (-9x) \\times \\frac{1}{12x^4}$\n$= 72x^7 \\times \\frac{1}{12x^4} = 6x^3$\n$\\therefore 6x^3$"
     },
     {
         id: 13,
@@ -130,10 +130,10 @@ window.questionBank = [
         id: 14,
         level: "하",
         category: "다항식의 이해",
-        content: "다항식 $3x^2 + \\tf{x}{3} - 2 - 2x^2 - 1$ 에 대한 설명으로 옳은 것은?",
-        choices: ["항이 4개이다.", "$3x^2$과 $\\tf{x}{3}$은 동류항이다.", "간단히 했을 때, $x$의 계수는 $\\tf{1}{3}$이다.", "상수항은 3이다.", "이 식은 일차식이다."],
+        content: "다항식 $3x^2 + \\frac{x}{3} - 2 - 2x^2 - 1$ 에 대한 설명으로 옳은 것은?",
+        choices: ["항이 4개이다.", "$3x^2$과 $\\frac{x}{3}$은 동류항이다.", "간단히 했을 때, $x$의 계수는 $\\frac{1}{3}$이다.", "상수항은 3이다.", "이 식은 일차식이다."],
         answer: "③",
-        solution: "동류항을 정리함: $(3-2)x^2 + \\tf{1}{3}x + (-2-1) = x^2 + \\tf{1}{3}x - 3$\n③ $x$의 계수는 $\\tf{1}{3}$임. (참)\n$\\because$ ① 항은 3개, ② 차수가 다름, ④ 상수항 -3, ⑤ 이차식임.\n$\\therefore$ ③"
+        solution: "동류항을 정리함: $(3-2)x^2 + \\frac{1}{3}x + (-2-1) = x^2 + \\frac{1}{3}x - 3$\n③ $x$의 계수는 $\\frac{1}{3}$임. (참)\n$\\because$ ① 항은 3개, ② 차수가 다름, ④ 상수항 -3, ⑤ 이차식임.\n$\\therefore$ ③"
     },
     {
         id: 15,
@@ -157,10 +157,10 @@ window.questionBank = [
         id: 17,
         level: "하",
         category: "부등식의 해",
-        content: "$x=2$ 가 해가 되는 부등식을 <보기>에서 모두 고른 것은?<br>ㄱ. $2x-1 < 3$, ㄴ. $1+x \\ge 3$, ㄷ. $\\tf{1}{3}x + 3 > 1$, ㄹ. $2x \\ge x+1$",
+        content: "$x=2$ 가 해가 되는 부등식을 <보기>에서 모두 고른 것은?<br>ㄱ. $2x-1 < 3$, ㄴ. $1+x \\ge 3$, ㄷ. $\\frac{1}{3}x + 3 > 1$, ㄹ. $2x \\ge x+1$",
         choices: ["ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ", "ㄴ, ㄹ", "ㄴ, ㄷ, ㄹ", "ㄷ, ㄹ"],
         answer: "④",
-        solution: "$x=2$를 각 부등식에 대입하여 참/거짓 판별.\nㄱ. $4-1 < 3 \implies 3 < 3$ (거짓)\nㄴ. $1+2 \\ge 3 \implies 3 \\ge 3$ (참)\nㄷ. $\\tf{2}{3} + 3 > 1$ (참)\nㄹ. $4 \\ge 3$ (참)\n$\\therefore$ ㄴ, ㄷ, ㄹ"
+        solution: "$x=2$를 각 부등식에 대입하여 참/거짓 판별.\nㄱ. $4-1 < 3 \implies 3 < 3$ (거짓)\nㄴ. $1+2 \\ge 3 \implies 3 \\ge 3$ (참)\nㄷ. $\\frac{2}{3} + 3 > 1$ (참)\nㄹ. $4 \\ge 3$ (참)\n$\\therefore$ ㄴ, ㄷ, ㄹ"
     },
     {
         id: 18,
@@ -175,7 +175,7 @@ window.questionBank = [
         id: 19,
         level: "중",
         category: "서술형 1",
-        content: "분수 $\\tf{7}{30}$ 에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다. $a$가 한 자리의 자연수라고 할 때, $a$의 값을 모두 구하고 그 과정을 서술하시오.",
+        content: "분수 $\\frac{7}{30}$ 에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다. $a$가 한 자리의 자연수라고 할 때, $a$의 값을 모두 구하고 그 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
         answer: "3, 6, 9",
         solution: "**[Solution Engine]**\n(1) 분모의 소인수분해: $30 = 2 \\times 3 \\times 5$\n(2) 유한소수 조건 분석: 기약분수 분모의 소인수가 $2, 5$뿐이어야 하므로, 소인수 $3$이 제거되어야 함.\n(3) $a$의 조건 도출: $a$는 $3$의 배수여야 함.\n(4) 범위 내 값 탐색: 한 자리 자연수 중 $3$의 배수는 $3, 6, 9$임.\n$\\therefore 3, 6, 9$"
@@ -186,26 +186,26 @@ window.questionBank = [
         category: "서술형 2",
         content: "순환소수 $0.1\\dot{4}\\dot{7}$ 을 기약분수로 나타내는 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
-        answer: "$\\tf{73}{495}$",
-        solution: "**[Solution Engine]**\n(1) $x = 0.1474747\\dots$ 라 함.\n(2) $1000x = 147.4747\\dots$ (순환마디 끝까지 곱함)\n(3) $10x = 1.4747\\dots$ (순환하지 않는 부분까지 곱함)\n(4) 두 식을 뺌: $990x = 146$\n(5) $x = \\tf{146}{990} = \\tf{73}{495}$\n$\\therefore \\tf{73}{495}$"
+        answer: "$\\frac{73}{495}$",
+        solution: "**[Solution Engine]**\n(1) $x = 0.1474747\\dots$ 라 함.\n(2) $1000x = 147.4747\\dots$ (순환마디 끝까지 곱함)\n(3) $10x = 1.4747\\dots$ (순환하지 않는 부분까지 곱함)\n(4) 두 식을 뺌: $990x = 146$\n(5) $x = \\frac{146}{990} = \\frac{73}{495}$\n$\\therefore \\frac{73}{495}$"
     },
     {
         id: 21,
         level: "중상",
         category: "서술형 3",
-        content: "$x+2y - \\tf{x-3y}{2}$ 를 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하는 과정을 서술하시오.",
+        content: "$x+2y - \\frac{x-3y}{2}$ 를 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하는 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
-        answer: "$\\tf{7}{4}$",
-        solution: "**[Solution Engine]**\n(1) 통분하여 식 정리: $\\tf{2(x+2y) - (x-3y)}{2} = \\tf{2x+4y-x+3y}{2} = \\tf{x+7y}{2}$\n(2) 계수 추출: $\\tf{1}{2}x + \\tf{7}{2}y \\implies a=\\tf{1}{2}, b=\\tf{7}{2}$\n(3) 계산: $ab = \\tf{1}{2} \\times \\tf{7}{2} = \\tf{7}{4}$\n$\\therefore \\tf{7}{4}$"
+        answer: "$\\frac{7}{4}$",
+        solution: "**[Solution Engine]**\n(1) 통분하여 식 정리: $\\frac{2(x+2y) - (x-3y)}{2} = \\frac{2x+4y-x+3y}{2} = \\frac{x+7y}{2}$\n(2) 계수 추출: $\\frac{1}{2}x + \\frac{7}{2}y \\implies a=\\frac{1}{2}, b=\\frac{7}{2}$\n(3) 계산: $ab = \\frac{1}{2} \\times \\frac{7}{2} = \\frac{7}{4}$\n$\\therefore \\frac{7}{4}$"
     },
     {
         id: 22,
         level: "상",
         category: "서술형 4",
-        content: "$(6xy^2 - 8x^2y) \\div \\tf{2}{5}xy - \\tf{3xy - 9xy^2}{3xy}$ 을 계산하는 과정을 서술하시오.",
+        content: "$(6xy^2 - 8x^2y) \\div \\frac{2}{5}xy - \\frac{3xy - 9xy^2}{3xy}$ 을 계산하는 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
         answer: "$-20x+18y-1$",
-        solution: "**[Solution Engine]**\n(1) 첫 번째 항 계산: $(6xy^2 - 8x^2y) \\times \\tf{5}{2xy} = 15y - 20x$\n(2) 두 번째 항 계산: $(3xy - 9xy^2) \\div 3xy = 1 - 3y$\n(3) 전체 결합: $(15y - 20x) - (1 - 3y) = 15y - 20x - 1 + 3y = -20x + 18y - 1$\n$\\therefore -20x + 18y - 1$"
+        solution: "**[Solution Engine]**\n(1) 첫 번째 항 계산: $(6xy^2 - 8x^2y) \\times \\frac{5}{2xy} = 15y - 20x$\n(2) 두 번째 항 계산: $(3xy - 9xy^2) \\div 3xy = 1 - 3y$\n(3) 전체 결합: $(15y - 20x) - (1 - 3y) = 15y - 20x - 1 + 3y = -20x + 18y - 1$\n$\\therefore -20x + 18y - 1$"
     },
     {
         id: 23,

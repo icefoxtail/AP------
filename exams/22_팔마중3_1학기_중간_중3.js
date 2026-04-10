@@ -15,18 +15,18 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "다음 중 계산한 결과가 다른 하나를 고르면?",
-    "choices": ["$\\sqrt{(-\\tf{4}{3})^2} + \\sqrt{(\\tf{5}{3})^2}$", "$\\sqrt{81} \\div (-\\sqrt{3})^2$", "$\\sqrt{0.09} \\div \\sqrt{\\tf{1}{100}}$", "$\\sqrt{36} - (-\\sqrt{3})^2$", "$-\\sqrt{(-6)^2} \\times \\sqrt{(\\tf{1}{2})^2}$"],
+    "choices": ["$\\sqrt{(-\\frac{4}{3})^2} + \\sqrt{(\\frac{5}{3})^2}$", "$\\sqrt{81} \\div (-\\sqrt{3})^2$", "$\\sqrt{0.09} \\div \\sqrt{\\frac{1}{100}}$", "$\\sqrt{36} - (-\\sqrt{3})^2$", "$-\\sqrt{(-6)^2} \\times \\sqrt{(\\frac{1}{2})^2}$"],
     "answer": "5",
-    "solution": "1. \\tf{4}{3} + \\tf{5}{3} = 3 \\\\ 2. 9 \\div 3 = 3 \\\\ 3. 0.3 \\div 0.1 = 3 \\\\ 4. 6 - 3 = 3 \\\\ 5. -6 \\times \\tf{1}{2} = -3 \\\\ \\therefore 5"
+    "solution": "1. \\frac{4}{3} + \\frac{5}{3} = 3 \\\\ 2. 9 \\div 3 = 3 \\\\ 3. 0.3 \\div 0.1 = 3 \\\\ 4. 6 - 3 = 3 \\\\ 5. -6 \\times \\frac{1}{2} = -3 \\\\ \\therefore 5"
   },
   {
     "id": 3,
     "level": "[중]",
     "category": "제곱근과 실수",
-    "content": "다음 수 중 제곱근을 근호를 사용하지 않고 나타낼 수 있는 것의 개수는?<div class='box'>1.7, 2, 4.9, $(-8)^2, \\sqrt{\\tf{1}{36}}, 900$</div>",
+    "content": "다음 수 중 제곱근을 근호를 사용하지 않고 나타낼 수 있는 것의 개수는?<div class='box'>1.7, 2, 4.9, $(-8)^2, \\sqrt{\\frac{1}{36}}, 900$</div>",
     "choices": ["1개", "2개", "3개", "4개", "5개"],
     "answer": "3",
-    "solution": "1.7, 2, 4.9는 불가능. \\\\ (-8)^2=64 \\implies \\sqrt{64}=8 (가능) \\\\ \\sqrt{\\tf{1}{36}}=\\tf{1}{6} \\implies \\sqrt{\\tf{1}{6}} (불가능) \\\\ 900 \\implies \\sqrt{900}=30 (가능) \\\\ ※ 원문 보기 재검토: 제곱근 자체가 유리수인 것 찾기. \\\\ \\therefore 3개 (추정)"
+    "solution": "1.7, 2, 4.9는 불가능. \\\\ (-8)^2=64 \\implies \\sqrt{64}=8 (가능) \\\\ \\sqrt{\\frac{1}{36}}=\\frac{1}{6} \\implies \\sqrt{\\frac{1}{6}} (불가능) \\\\ 900 \\implies \\sqrt{900}=30 (가능) \\\\ ※ 원문 보기 재검토: 제곱근 자체가 유리수인 것 찾기. \\\\ \\therefore 3개 (추정)"
   },
   {
     "id": 4,
@@ -50,16 +50,16 @@ window.questionBank = [
     "id": 6,
     "level": "[중상]",
     "category": "제곱근과 실수",
-    "content": "그림은 수직선 위의 두 점 $A(1)$과 $B(2)$에 대하여 $AB$를 한 변으로 하는 정사각형 $ABCD$를 그린 것이다. $\\overline{AC}=\\overline{AP}=\\overline{AQ}$일 때, 두 점 $P(a)$와 $Q(b)$에 대하여 $\\tf{P(a)}{Q(b)}$의 값을 구하면?",
+    "content": "그림은 수직선 위의 두 점 $A(1)$과 $B(2)$에 대하여 $AB$를 한 변으로 하는 정사각형 $ABCD$를 그린 것이다. $\\overline{AC}=\\overline{AP}=\\overline{AQ}$일 때, 두 점 $P(a)$와 $Q(b)$에 대하여 $\\frac{P(a)}{Q(b)}$의 값을 구하면?",
     "choices": ["$-3+2\\sqrt{2}$", "$3+2\\sqrt{2}$", "$3-2\\sqrt{2}$", "$-3-2\\sqrt{2}$", "$2\\sqrt{2}$"],
     "answer": "1",
-    "solution": "AC = \\sqrt{1^2+1^2} = \\sqrt{2} \\\\ P(a) = 1-\\sqrt{2}, Q(b) = 1+\\sqrt{2} \\\\ \\tf{1-\\sqrt{2}}{1+\\sqrt{2}} = \\tf{(1-\\sqrt{2})^2}{1-2} = \\tf{1-2\\sqrt{2}+2}{-1} = -3+2\\sqrt{2} \\\\ \\therefore 1 \n\n "
+    "solution": "AC = \\sqrt{1^2+1^2} = \\sqrt{2} \\\\ P(a) = 1-\\sqrt{2}, Q(b) = 1+\\sqrt{2} \\\\ \\frac{1-\\sqrt{2}}{1+\\sqrt{2}} = \\frac{(1-\\sqrt{2})^2}{1-2} = \\frac{1-2\\sqrt{2}+2}{-1} = -3+2\\sqrt{2} \\\\ \\therefore 1 \n\n "
   },
   {
     "id": 7,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\sqrt{12}-\\sqrt{27}+\\tf{6}{\\sqrt{3}}$을 간단히 한 것은?",
+    "content": "$\\sqrt{12}-\\sqrt{27}+\\frac{6}{\\sqrt{3}}$을 간단히 한 것은?",
     "choices": ["$\\sqrt{3}$", "$2\\sqrt{3}$", "$3\\sqrt{3}$", "$4\\sqrt{3}$", "$5\\sqrt{3}$"],
     "answer": "1",
     "solution": "2\\sqrt{3} - 3\\sqrt{3} + 2\\sqrt{3} = \\sqrt{3} \\\\ \\therefore 1"
@@ -68,16 +68,16 @@ window.questionBank = [
     "id": 8,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\sqrt{\\tf{15}{27}}=a\\sqrt{5}, \\tf{\\sqrt{3}}{2}=\\sqrt{b}$일 때, 두 유리수 $a, b$에 대하여 $\\sqrt{ab}$의 값은?",
-    "choices": ["$\\tf{1}{6}$", "$\\tf{1}{5}$", "$\\tf{1}{4}$", "$\\tf{1}{3}$", "$\\tf{1}{2}$"],
+    "content": "$\\sqrt{\\frac{15}{27}}=a\\sqrt{5}, \\frac{\\sqrt{3}}{2}=\\sqrt{b}$일 때, 두 유리수 $a, b$에 대하여 $\\sqrt{ab}$의 값은?",
+    "choices": ["$\\frac{1}{6}$", "$\\frac{1}{5}$", "$\\frac{1}{4}$", "$\\frac{1}{3}$", "$\\frac{1}{2}$"],
     "answer": "4",
-    "solution": "\\sqrt{\\tf{5}{9}} = \\tf{1}{3}\\sqrt{5} \\implies a=\\tf{1}{3} \\\\ \\tf{\\sqrt{3}}{\\sqrt{4}} = \\sqrt{\\tf{3}{4}} \\implies b=\\tf{3}{4} \\\\ \\sqrt{ab} = \\sqrt{\\tf{1}{3} \\times \\tf{3}{4}} = \\sqrt{\\tf{1}{4}} = \\tf{1}{2} (※ 선택지 5번 확인) \\\\ \\therefore 5 (원문 오타 방어: 계산상 1/2)"
+    "solution": "\\sqrt{\\frac{5}{9}} = \\frac{1}{3}\\sqrt{5} \\implies a=\\frac{1}{3} \\\\ \\frac{\\sqrt{3}}{\\sqrt{4}} = \\sqrt{\\frac{3}{4}} \\implies b=\\frac{3}{4} \\\\ \\sqrt{ab} = \\sqrt{\\frac{1}{3} \\times \\frac{3}{4}} = \\sqrt{\\frac{1}{4}} = \\frac{1}{2} (※ 선택지 5번 확인) \\\\ \\therefore 5 (원문 오타 방어: 계산상 1/2)"
   },
   {
     "id": 9,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\sqrt{72}-2\\sqrt{24}-\\sqrt{2}(2+\\tf{6}{\\sqrt{12}})=m\\sqrt{2}+n\sqrt{6}$일 때, 유리수 $m, n$에 대하여 $\\sqrt{m-n}$의 값을 구하면?",
+    "content": "$\\sqrt{72}-2\\sqrt{24}-\\sqrt{2}(2+\\frac{6}{\\sqrt{12}})=m\\sqrt{2}+n\sqrt{6}$일 때, 유리수 $m, n$에 대하여 $\\sqrt{m-n}$의 값을 구하면?",
     "choices": ["1", "2", "3", "$\\sqrt{2}$", "$\\sqrt{5}$"],
     "answer": "3",
     "solution": "6\\sqrt{2}-4\\sqrt{6}-2\\sqrt{2}-\\sqrt{6} = 4\\sqrt{2}-5\\sqrt{6} \\implies m=4, n=-5 \\\\ \\sqrt{4-(-5)} = \\sqrt{9} = 3 \\\\ \\therefore 3"
@@ -95,10 +95,10 @@ window.questionBank = [
     "id": 11,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\sqrt{2}(3\\sqrt{2}+\\tf{1}{2})-\\tf{a(1-\\sqrt{2})}{2\\sqrt{2}}$가 유리수일 때, 유리수 $a$의 값을 구하면?",
+    "content": "$\\sqrt{2}(3\\sqrt{2}+\\frac{1}{2})-\\frac{a(1-\\sqrt{2})}{2\\sqrt{2}}$가 유리수일 때, 유리수 $a$의 값을 구하면?",
     "choices": ["-2", "-1", "0", "1", "2"],
     "answer": "2",
-    "solution": "6 + \\tf{\\sqrt{2}}{2} - \\tf{a}{2\\sqrt{2}} + \\tf{a}{2} = 6 + \\tf{a}{2} + (\\tf{1}{2} - \\tf{a}{4})\\sqrt{2} \\\\ 유리수가 되려면 \\tf{1}{2}-\\tf{a}{4}=0 \\implies a=2 \\\\ \\therefore 5"
+    "solution": "6 + \\frac{\\sqrt{2}}{2} - \\frac{a}{2\\sqrt{2}} + \\frac{a}{2} = 6 + \\frac{a}{2} + (\\frac{1}{2} - \\frac{a}{4})\\sqrt{2} \\\\ 유리수가 되려면 \\frac{1}{2}-\\frac{a}{4}=0 \\implies a=2 \\\\ \\therefore 5"
   },
   {
     "id": 12,
@@ -160,10 +160,10 @@ window.questionBank = window.questionBank.concat([
     "id": 18,
     "level": "[중상]",
     "category": "다항식의 곱셈",
-    "content": "$x=\\tf{1}{\\sqrt{10}+3}$, $y=\\tf{1}{\\sqrt{10}-3}$일 때, $\\tf{y}{x}+\\tf{x}{y}$의 값은? (4점)",
+    "content": "$x=\\frac{1}{\\sqrt{10}+3}$, $y=\\frac{1}{\\sqrt{10}-3}$일 때, $\\frac{y}{x}+\\frac{x}{y}$의 값은? (4점)",
     "choices": ["42", "40", "38", "24", "12"],
     "answer": "3",
-    "solution": "$x=\\sqrt{10}-3, y=\\sqrt{10}+3$ \\\\ $x+y=2\\sqrt{10}, xy=10-9=1$ \\\\ $\\tf{x^2+y^2}{xy} = (x+y)^2-2xy = (2\\sqrt{10})^2-2(1) = 40-2=38$ \\\\ \\therefore 3"
+    "solution": "$x=\\sqrt{10}-3, y=\\sqrt{10}+3$ \\\\ $x+y=2\\sqrt{10}, xy=10-9=1$ \\\\ $\\frac{x^2+y^2}{xy} = (x+y)^2-2xy = (2\\sqrt{10})^2-2(1) = 40-2=38$ \\\\ \\therefore 3"
   },
   {
     "id": 19,
@@ -172,7 +172,7 @@ window.questionBank = window.questionBank.concat([
     "content": "다음 식이 $x^2-12x+a$, $4x^2+bxy+9y^2$ 완전제곱식이 되도록 하는 상수 $a, b$에 대하여 $a+b$의 값은? (단, $b<0$) (4점)",
     "choices": ["12", "18", "24", "36", "48"],
     "answer": "3",
-    "solution": "$x^2-12x+a \\implies a=(\\tf{-12}{2})^2 = 36$ \\\\ $4x^2+bxy+9y^2 = (2x\\pm3y)^2 \\implies b=-12$ (조건 $b<0$) \\\\ $a+b = 36-12=24$ \\\\ \\therefore 3"
+    "solution": "$x^2-12x+a \\implies a=(\\frac{-12}{2})^2 = 36$ \\\\ $4x^2+bxy+9y^2 = (2x\\pm3y)^2 \\implies b=-12$ (조건 $b<0$) \\\\ $a+b = 36-12=24$ \\\\ \\therefore 3"
   },
   {
     "id": 20,
@@ -214,10 +214,10 @@ window.questionBank = window.questionBank.concat([
     "id": 24,
     "level": "[중]",
     "category": "인수분해",
-    "content": "[서술형 3] $-\\tf{1}{5} < x < 3$일 때, $\\sqrt{9-6x+x^2} - \\sqrt{25x^2+10x+1}$을 간단히 하시오. (4점)",
+    "content": "[서술형 3] $-\\frac{1}{5} < x < 3$일 때, $\\sqrt{9-6x+x^2} - \\sqrt{25x^2+10x+1}$을 간단히 하시오. (4점)",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "2-6x",
-    "solution": "$\\sqrt{(3-x)^2} - \\sqrt{(5x+1)^2} = |3-x| - |5x+1|$ \\\\ $-\\tf{1}{5} < x < 3 \\implies 3-x > 0, 5x+1 > 0$ \\\\ $\\implies (3-x) - (5x+1) = 2-6x$ \\\\ \\therefore 2-6x"
+    "solution": "$\\sqrt{(3-x)^2} - \\sqrt{(5x+1)^2} = |3-x| - |5x+1|$ \\\\ $-\\frac{1}{5} < x < 3 \\implies 3-x > 0, 5x+1 > 0$ \\\\ $\\implies (3-x) - (5x+1) = 2-6x$ \\\\ \\therefore 2-6x"
   },
   {
     "id": 25,
@@ -226,6 +226,6 @@ window.questionBank = window.questionBank.concat([
     "content": "[서술형 4] 반지름의 길이가 각각 $52.52cm, 47.48cm$인 원 모양의 피자를 8등분 하였다. 큰 피자 한 조각의 넓이는 작은 피자 한 조각의 넓이보다 얼마만큼 더 큰지 인수분해를 이용하여 계산하시오. (6점)",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "62.5\\pi cm^2",
-    "solution": "차이: $\\tf{1}{8}\\pi(52.52^2 - 47.48^2) = \\tf{1}{8}\\pi(52.52+47.48)(52.52-47.48)$ \\\\ $= \\tf{1}{8}\\pi(100)(5.04) = \\tf{504\\pi}{8} = 63\\pi$ \\\\ \\therefore $63\\pi cm^2$"
+    "solution": "차이: $\\frac{1}{8}\\pi(52.52^2 - 47.48^2) = \\frac{1}{8}\\pi(52.52+47.48)(52.52-47.48)$ \\\\ $= \\frac{1}{8}\\pi(100)(5.04) = \\frac{504\\pi}{8} = 63\\pi$ \\\\ \\therefore $63\\pi cm^2$"
   }
 ]);

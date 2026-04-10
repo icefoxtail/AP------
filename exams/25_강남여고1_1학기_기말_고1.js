@@ -44,7 +44,7 @@ window.questionBank = [
       "choices": ["21", "23", "25", "27", "30"],
       "answer": "④",
       "svg": "",
-      "solution": "조합 및 순열 계산\n$\\implies {}_{7}C_{2} = \\tf{7 \\times 6}{2 \\times 1} = 21$\n$\\implies {}_{3}P_{2} = 3 \\times 2 = 6$\n$\\therefore 21 + 6 = 27$",
+      "solution": "조합 및 순열 계산\n$\\implies {}_{7}C_{2} = \\frac{7 \\times 6}{2 \\times 1} = 21$\n$\\implies {}_{3}P_{2} = 3 \\times 2 = 6$\n$\\therefore 21 + 6 = 27$",
       "ocr_confidence": "high"
     },
     {
@@ -89,7 +89,7 @@ window.questionBank = [
       "choices": ["4개", "5개", "6개", "7개", "8개"],
       "answer": "①",
       "svg": "",
-      "solution": "절댓값 성질을 이용한 부등식 전개\n$\\implies -(x+1) < 2x-5 < x+1$\n연립부등식 분할\n1) $-x-1 < 2x-5 \\implies 4 < 3x \\implies x > \\tf{4}{3}$\n2) $2x-5 < x+1 \\implies x < 6$\n공통 범위 산출\n$\\implies \\tf{4}{3} < x < 6$\n정수 해 개수 확인\n$\\because x \\in \\{2, 3, 4, 5\\}$\n$\\therefore$ 개수는 4개",
+      "solution": "절댓값 성질을 이용한 부등식 전개\n$\\implies -(x+1) < 2x-5 < x+1$\n연립부등식 분할\n1) $-x-1 < 2x-5 \\implies 4 < 3x \\implies x > \\frac{4}{3}$\n2) $2x-5 < x+1 \\implies x < 6$\n공통 범위 산출\n$\\implies \\frac{4}{3} < x < 6$\n정수 해 개수 확인\n$\\because x \\in \\{2, 3, 4, 5\\}$\n$\\therefore$ 개수는 4개",
       "ocr_confidence": "high"
     },
     {
@@ -140,7 +140,7 @@ window.questionBank = [
       "choices": ["4", "5", "6", "7", "8"],
       "answer": "③",
       "svg": "<svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><line x1='10' y1='100' x2='150' y2='100' stroke='black'/><path d='M20 20 Q 50 160, 140 20' fill='none' stroke='blue'/><circle cx='110' cy='100' r='1.5' fill='red'/><text x='110' y='112' font-size='9'>1</text><line x1='50' y1='30' x2='50' y2='110' stroke='gray' stroke-dasharray='2'/><text x='40' y='115' font-size='9'>-2</text></svg>",
-      "solution": "축의 방정식과 한 점을 이용한 근의 도출\n$\\because$ 이차함수는 축 $x=-2$에 대하여 대칭임\n$\\implies$ 한 근이 $1$이면 다른 한 근 $\\alpha$는 $\\tf{\\alpha+1}{2} = -2$를 만족함\n$\\implies \\alpha+1 = -4 \\implies \\alpha = -5$\n두 근의 차 계산\n$\\therefore |\\alpha-\\beta| = |1 - (-5)| = 6$\n\n[Figure]\n좌표계: x축과 포물선 교점 명시\n엄밀성: 축 $x=-2$와 근 $x=1$의 대칭 관계 시각화",
+      "solution": "축의 방정식과 한 점을 이용한 근의 도출\n$\\because$ 이차함수는 축 $x=-2$에 대하여 대칭임\n$\\implies$ 한 근이 $1$이면 다른 한 근 $\\alpha$는 $\\frac{\\alpha+1}{2} = -2$를 만족함\n$\\implies \\alpha+1 = -4 \\implies \\alpha = -5$\n두 근의 차 계산\n$\\therefore |\\alpha-\\beta| = |1 - (-5)| = 6$\n\n[Figure]\n좌표계: x축과 포물선 교점 명시\n엄밀성: 축 $x=-2$와 근 $x=1$의 대칭 관계 시각화",
       "ocr_confidence": "high"
     },
     {
@@ -161,7 +161,7 @@ window.questionBank = [
       ],
       "answer": "⑤",
       "svg": "",
-      "solution": "변수 소거 및 이차방정식 유도\n$\\implies y = a-x$ 를 $x^2+y^2=8$ 에 대입\n$\\implies x^2 + (a-x)^2 = 8 \\implies 2x^2 - 2ax + a^2-8 = 0$\n중근 조건(판별식) 적용\n$\\implies \\tf{D}{4} = (-a)^2 - 2(a^2-8) = 0$\n$\\implies a^2 - 2a^2 + 16 = 0 \\implies a^2 = 16$\n$\\therefore a = \\pm 4$",
+      "solution": "변수 소거 및 이차방정식 유도\n$\\implies y = a-x$ 를 $x^2+y^2=8$ 에 대입\n$\\implies x^2 + (a-x)^2 = 8 \\implies 2x^2 - 2ax + a^2-8 = 0$\n중근 조건(판별식) 적용\n$\\implies \\frac{D}{4} = (-a)^2 - 2(a^2-8) = 0$\n$\\implies a^2 - 2a^2 + 16 = 0 \\implies a^2 = 16$\n$\\therefore a = \\pm 4$",
       "ocr_confidence": "high"
     },
     {
@@ -208,11 +208,11 @@ window.questionBank = [
       "score": 4.5,
       "category": "절댓값을 포함한 일차부등식과 이차부등식",
       "tags": [],
-      "content": "부등식 $|x+1|+|x-2| \\le 5$의 해와 이차부등식 $ax^{2}+bx+c \\le 0$의 해가 같을 때, $\\tf{bc}{a^{2}}$의 값은? (단, $a, b, c$는 상수이다.) (4.5점)",
+      "content": "부등식 $|x+1|+|x-2| \\le 5$의 해와 이차부등식 $ax^{2}+bx+c \\le 0$의 해가 같을 때, $\\frac{bc}{a^{2}}$의 값은? (단, $a, b, c$는 상수이다.) (4.5점)",
       "choices": ["6", "4", "2", "-4", "-6"],
       "answer": "①",
       "svg": "",
-      "solution": "절댓값 기호 내부를 $0$으로 만드는 $x=-1, 2$를 기준으로 구간 분할\n1) $x < -1$ 일 때: $-(x+1)-(x-2) \\le 5 \\implies -2x+1 \\le 5 \\implies x \\ge -2$\n$\\therefore -2 \\le x < -1$\n2) $-1 \\le x < 2$ 일 때: $(x+1)-(x-2) \\le 5 \\implies 3 \\le 5$ (항상 성립)\n$\\therefore -1 \\le x < 2$\n3) $x \\ge 2$ 일 때: $(x+1)+(x-2) \\le 5 \\implies 2x-1 \\le 5 \\implies x \\le 3$\n$\\therefore 2 \\le x \\le 3$\n전체 해의 범위 산출\n$\\implies -2 \\le x \\le 3$\n이차부등식과의 계수 비교\n$\\because ax^{2}+bx+c \\le 0$의 해가 $-2 \\le x \\le 3$ 이므로\n$\\implies a(x+2)(x-3) \\le 0$ (단, $a > 0$)\n$\\implies a(x^{2}-x-6) \\le 0 \\implies ax^{2}-ax-6a \\le 0$\n$\\implies b = -a, c = -6a$\n$\\therefore \\tf{bc}{a^{2}} = \\tf{(-a)(-6a)}{a^{2}} = 6$",
+      "solution": "절댓값 기호 내부를 $0$으로 만드는 $x=-1, 2$를 기준으로 구간 분할\n1) $x < -1$ 일 때: $-(x+1)-(x-2) \\le 5 \\implies -2x+1 \\le 5 \\implies x \\ge -2$\n$\\therefore -2 \\le x < -1$\n2) $-1 \\le x < 2$ 일 때: $(x+1)-(x-2) \\le 5 \\implies 3 \\le 5$ (항상 성립)\n$\\therefore -1 \\le x < 2$\n3) $x \\ge 2$ 일 때: $(x+1)+(x-2) \\le 5 \\implies 2x-1 \\le 5 \\implies x \\le 3$\n$\\therefore 2 \\le x \\le 3$\n전체 해의 범위 산출\n$\\implies -2 \\le x \\le 3$\n이차부등식과의 계수 비교\n$\\because ax^{2}+bx+c \\le 0$의 해가 $-2 \\le x \\le 3$ 이므로\n$\\implies a(x+2)(x-3) \\le 0$ (단, $a > 0$)\n$\\implies a(x^{2}-x-6) \\le 0 \\implies ax^{2}-ax-6a \\le 0$\n$\\implies b = -a, c = -6a$\n$\\therefore \\frac{bc}{a^{2}} = \\frac{(-a)(-6a)}{a^{2}} = 6$",
       "ocr_confidence": "high"
     },
     {
@@ -227,7 +227,7 @@ window.questionBank = [
       "choices": ["2", "4", "6", "8", "10"],
       "answer": "②",
       "svg": "<svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><line x1='10' y1='80' x2='150' y2='80' stroke='black'/><line x1='50' y1='10' x2='50' y2='110' stroke='black'/><path d='M25 10 Q 55 180, 115 10' fill='none' stroke='blue'/><line x1='15' y1='20' x2='120' y2='110' stroke='red'/><text x='115' y='20' font-size='8'>y=f(x)</text><text x='145' y='85' font-size='8'>x</text><text x='45' y='15' font-size='8'>y</text><text x='35' y='45' font-size='8'>A</text><text x='95' y='45' font-size='8'>C</text><text x='85' y='105' font-size='8'>B</text><text x='55' y='105' font-size='8'>D</text></svg>",
-      "solution": "두 그래프의 교점 A, B의 좌표 산출\n$\\implies x^{2}-4x = -2x+3 \\implies x^{2}-2x-3 = 0 \\implies (x-3)(x+1) = 0$\n$\\because x_{A} < x_{B}$ 이므로 $A(-1, 5), B(3, -3)$\n점 C, D의 좌표 산출 (축 $x=2$에 대한 대칭성 이용)\n$\\implies A(-1, 5)$와 $y$좌표가 같은 점 $C$: $x^{2}-4x=5 \\implies (x-5)(x+1)=0 \\implies C(5, 5)$\n$\\implies B(3, -3)$과 $y$좌표가 같은 점 $D$: $x^{2}-4x=-3 \\implies (x-3)(x-1)=0 \\implies D(1, -3)$\n삼각형의 넓이 계산\n$\\implies S(\\triangle ABD) = \\tf{1}{2} \\times |3-1| \\times |5-(-3)| = \\tf{1}{2} \\times 2 \\times 8 = 8$\n$\\implies T(\\triangle ABC) = \\tf{1}{2} \\times |5-(-1)| \\times |5-(-3)| = \\tf{1}{2} \\times 6 \\times 8 = 24$\n넓이비 결정\n$\\because S:T = 8:24 = 1:3$\n$\\therefore a=1, b=3 \\implies a+b = 4$\n\n[Figure]\n좌표계: x축, y축, 원점 O 명시 (1칸=1단위)\n엄밀성: A(-1,5), B(3,-3), C(5,5), D(1,-3) 연립방정식으로 도출\n도형 관계: AC ∥ x축, BD ∥ x축 명시",
+      "solution": "두 그래프의 교점 A, B의 좌표 산출\n$\\implies x^{2}-4x = -2x+3 \\implies x^{2}-2x-3 = 0 \\implies (x-3)(x+1) = 0$\n$\\because x_{A} < x_{B}$ 이므로 $A(-1, 5), B(3, -3)$\n점 C, D의 좌표 산출 (축 $x=2$에 대한 대칭성 이용)\n$\\implies A(-1, 5)$와 $y$좌표가 같은 점 $C$: $x^{2}-4x=5 \\implies (x-5)(x+1)=0 \\implies C(5, 5)$\n$\\implies B(3, -3)$과 $y$좌표가 같은 점 $D$: $x^{2}-4x=-3 \\implies (x-3)(x-1)=0 \\implies D(1, -3)$\n삼각형의 넓이 계산\n$\\implies S(\\triangle ABD) = \\frac{1}{2} \\times |3-1| \\times |5-(-3)| = \\frac{1}{2} \\times 2 \\times 8 = 8$\n$\\implies T(\\triangle ABC) = \\frac{1}{2} \\times |5-(-1)| \\times |5-(-3)| = \\frac{1}{2} \\times 6 \\times 8 = 24$\n넓이비 결정\n$\\because S:T = 8:24 = 1:3$\n$\\therefore a=1, b=3 \\implies a+b = 4$\n\n[Figure]\n좌표계: x축, y축, 원점 O 명시 (1칸=1단위)\n엄밀성: A(-1,5), B(3,-3), C(5,5), D(1,-3) 연립방정식으로 도출\n도형 관계: AC ∥ x축, BD ∥ x축 명시",
       "ocr_confidence": "high"
     },
     {
@@ -242,7 +242,7 @@ window.questionBank = [
       "choices": ["2", "3", "4", "5", "6"],
       "answer": "①",
       "svg": "",
-      "solution": "각 부등식의 해 도출\n1) $3x+6 > 5x \\implies 2x < 6 \\implies x < 3$\n2) $x-2 > -2x+a \\implies 3x > a+2 \\implies x > \\tf{a+2}{3}$\n공통 범위 수립\n$\\implies \\tf{a+2}{3} < x < 3$\n정수 해의 조건 분석\n$\\because x < 3$ 범위의 정수를 큰 순서대로 더함: $2 + 1 + 0 + (-1) + (-2) + (-3) = -3$\n$\\implies$ 만족하는 정수 해는 $\\{2, 1, 0, -1, -2, -3\\}$ 이어야 함\n$\\implies$ 최소 정수 $-3$은 포함되고, $-4$는 포함되지 않아야 함\n경계값 조건 수립\n$\\implies -4 \\le \\tf{a+2}{3} < -3$\n$\\implies -12 \\le a+2 < -9 \\implies -14 \\le a < -11$\n$\\therefore M = -12, m = -14 \\implies M-m = 2$",
+      "solution": "각 부등식의 해 도출\n1) $3x+6 > 5x \\implies 2x < 6 \\implies x < 3$\n2) $x-2 > -2x+a \\implies 3x > a+2 \\implies x > \\frac{a+2}{3}$\n공통 범위 수립\n$\\implies \\frac{a+2}{3} < x < 3$\n정수 해의 조건 분석\n$\\because x < 3$ 범위의 정수를 큰 순서대로 더함: $2 + 1 + 0 + (-1) + (-2) + (-3) = -3$\n$\\implies$ 만족하는 정수 해는 $\\{2, 1, 0, -1, -2, -3\\}$ 이어야 함\n$\\implies$ 최소 정수 $-3$은 포함되고, $-4$는 포함되지 않아야 함\n경계값 조건 수립\n$\\implies -4 \\le \\frac{a+2}{3} < -3$\n$\\implies -12 \\le a+2 < -9 \\implies -14 \\le a < -11$\n$\\therefore M = -12, m = -14 \\implies M-m = 2$",
       "ocr_confidence": "high"
     },
     {
@@ -253,11 +253,11 @@ window.questionBank = [
       "score": 4.8,
       "category": "이차함수의 그래프 위 점 사이의 거리 최대",
       "tags": ["중상"],
-      "content": "이차함수 $f(x)=-x^{2}+4x$의 그래프와 직선 $y=x$가 만나는 두 점 중 원점이 아닌 점을 A라 하고, 점 A의 $x$좌표를 $a$라 하자. $0 < t < a$인 실수 $t$에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프, 직선 $y=x$와 만나는 점을 각각 P, Q라 할 때, 선분 PQ의 길이는 $t=\\tf{n}{m}$일 때, 최댓값은 $\\tf{q}{p}$이다. $m+n+p+q$의 값은? (단, $p$와 $q$는 서로소인 자연수이다.) (4.8점)",
+      "content": "이차함수 $f(x)=-x^{2}+4x$의 그래프와 직선 $y=x$가 만나는 두 점 중 원점이 아닌 점을 A라 하고, 점 A의 $x$좌표를 $a$라 하자. $0 < t < a$인 실수 $t$에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프, 직선 $y=x$와 만나는 점을 각각 P, Q라 할 때, 선분 PQ의 길이는 $t=\\frac{n}{m}$일 때, 최댓값은 $\\frac{q}{p}$이다. $m+n+p+q$의 값은? (단, $p$와 $q$는 서로소인 자연수이다.) (4.8점)",
       "choices": ["12", "14", "16", "18", "21"],
       "answer": "④",
       "svg": "<svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><line x1='10' y1='100' x2='150' y2='100' stroke='black'/><line x1='30' y1='10' x2='30' y2='110' stroke='black'/><path d='M30 100 Q 75 -20, 110 115' fill='none' stroke='blue'/><line x1='10' y1='115' x2='120' y2='10' stroke='red'/><circle cx='85' cy='45' r='1.5' fill='black'/><text x='85' y='40' font-size='8'>A</text><line x1='55' y1='35' x2='55' y2='110' stroke='gray' stroke-dasharray='2'/><text x='55' y='30' font-size='8'>P</text><text x='55' y='80' font-size='8'>Q</text></svg>",
-      "solution": "점 A의 좌표 산출\n$\\implies -x^{2}+4x = x \\implies x^{2}-3x = 0 \\implies A(3, 3) \\therefore a=3$\n선분 PQ의 길이 함수 정의\n$\\because 0 < t < 3$ 범위에서 $f(t) > t$ 임\n$\\implies L(t) = (-t^{2}+4t) - t = -t^{2}+3t$\n최댓값 산출\n$\\implies L(t) = -(t^{2}-3t + \\tf{9}{4}) + \\tf{9}{4} = -(t-\\tf{3}{2})^{2} + \\tf{9}{4}$\n$\\implies t = \\tf{3}{2}$ 일 때 최댓값 $\\tf{9}{4}$ 발생\n상수 결정 및 합산\n$\\because m=2, n=3, p=4, q=9$\n$\\therefore m+n+p+q = 2+3+4+9 = 18$\n\n[Figure]\n좌표계: x축, y축, 원점 O 명시 (1칸=1단위)\n엄밀성: 점 A(3,3), P(t, -t^2+4t), Q(t, t) 좌표 정의\n도형 관계: PQ ⊥ x축 명시",
+      "solution": "점 A의 좌표 산출\n$\\implies -x^{2}+4x = x \\implies x^{2}-3x = 0 \\implies A(3, 3) \\therefore a=3$\n선분 PQ의 길이 함수 정의\n$\\because 0 < t < 3$ 범위에서 $f(t) > t$ 임\n$\\implies L(t) = (-t^{2}+4t) - t = -t^{2}+3t$\n최댓값 산출\n$\\implies L(t) = -(t^{2}-3t + \\frac{9}{4}) + \\frac{9}{4} = -(t-\\frac{3}{2})^{2} + \\frac{9}{4}$\n$\\implies t = \\frac{3}{2}$ 일 때 최댓값 $\\frac{9}{4}$ 발생\n상수 결정 및 합산\n$\\because m=2, n=3, p=4, q=9$\n$\\therefore m+n+p+q = 2+3+4+9 = 18$\n\n[Figure]\n좌표계: x축, y축, 원점 O 명시 (1칸=1단위)\n엄밀성: 점 A(3,3), P(t, -t^2+4t), Q(t, t) 좌표 정의\n도형 관계: PQ ⊥ x축 명시",
       "ocr_confidence": "high"
     },
     {
@@ -272,7 +272,7 @@ window.questionBank = [
       "choices": [],
       "answer": "p=-5, q=2, 곱: -2",
       "svg": "",
-      "solution": "나머지정리에 의하여 $f(2)=0, f(-2)=4$\n$\\implies f(2) = 8+2p+q=0 \\implies 2p+q=-8 \\cdots (1)$\n$\\implies f(-2) = -8-2p+q=4 \\implies -2p+q=12 \\cdots (2)$\n$(1), (2)$ 연립\n$\\implies 2q=4 \\implies q=2, p=-5$\n방정식 $f(x)=x^{3}-5x+2=0$에서 근과 계수의 관계 적용\n$\\therefore$ 세 근의 곱은 $-\\tf{2}{1} = -2$",
+      "solution": "나머지정리에 의하여 $f(2)=0, f(-2)=4$\n$\\implies f(2) = 8+2p+q=0 \\implies 2p+q=-8 \\cdots (1)$\n$\\implies f(-2) = -8-2p+q=4 \\implies -2p+q=12 \\cdots (2)$\n$(1), (2)$ 연립\n$\\implies 2q=4 \\implies q=2, p=-5$\n방정식 $f(x)=x^{3}-5x+2=0$에서 근과 계수의 관계 적용\n$\\therefore$ 세 근의 곱은 $-\\frac{2}{1} = -2$",
       "ocr_confidence": "high"
     },
     {
@@ -302,7 +302,7 @@ window.questionBank = [
       "choices": [],
       "answer": "16",
       "svg": "",
-      "solution": "$a$의 값 구하기\n$\\because$ 장화 4종류 중 2종류, 구두 4종류 중 2종류 선택\n$\\implies a = {}_{4}C_{2} \\times {}_{4}C_{2} = 6 \\times 6 = 36$\n$b$의 값 구하기\n$\\because$ 전체 신발 11켤레 중 5켤레(특정 운동화 1, 장화 2, 구두 2)는 이미 포함됨\n$\\implies$ 남은 6켤레 중 3켤레를 추가로 선택\n$\\implies b = {}_{6}C_{3} = \\tf{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$\n$\\therefore a-b = 36-20 = 16$",
+      "solution": "$a$의 값 구하기\n$\\because$ 장화 4종류 중 2종류, 구두 4종류 중 2종류 선택\n$\\implies a = {}_{4}C_{2} \\times {}_{4}C_{2} = 6 \\times 6 = 36$\n$b$의 값 구하기\n$\\because$ 전체 신발 11켤레 중 5켤레(특정 운동화 1, 장화 2, 구두 2)는 이미 포함됨\n$\\implies$ 남은 6켤레 중 3켤레를 추가로 선택\n$\\implies b = {}_{6}C_{3} = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$\n$\\therefore a-b = 36-20 = 16$",
       "ocr_confidence": "high"
     },
     {

@@ -174,7 +174,7 @@ window.questionBank = [
     "content": "식 $x^{2}+\\Box x+1/16$ 이 완전제곱식이 되도록 하는 $\\Box$ 안의 값은? [4점]",
     "choices": ["±1", "±2", "±1/2", "±1/4", "±1/8"],
     "answer": "3",
-    "solution": "$\\Box = \\pm 2 \\times \\sqrt{1 \\times \\tf{1}{16}} = \\pm 2 \\times \\tf{1}{4} = \\pm \\tf{1}{2}$"
+    "solution": "$\\Box = \\pm 2 \\times \\sqrt{1 \\times \\frac{1}{16}} = \\pm 2 \\times \\frac{1}{4} = \\pm \\frac{1}{2}$"
   },
   {
     "id": 20,

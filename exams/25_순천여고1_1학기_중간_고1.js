@@ -83,9 +83,9 @@ window.questionBank = window.questionBank.concat([
     "level": "하",
     "category": "곱셈 공식의 변형",
     "content": "실수 $x, y$에 대하여 $x-y=3, x^{2}+y^{2}=12$ 일 때, $xy$의 값은? [4.4점]",
-    "choices": ["1", "$\tf{3}{2}$", "2", "$\tf{5}{2}$", "3"],
+    "choices": ["1", "$\frac{3}{2}$", "2", "$\frac{5}{2}$", "3"],
     "answer": "2",
-    "solution": "**[Logical Anchor]** 곱셈 공식의 변형 $(x-y)^2$ 활용\n$\\because x^2+y^2 = (x-y)^2+2xy$\n$\\implies 12 = 3^2+2xy$\n$\\implies 2xy = 3$\n$\\therefore xy = \\tf{3}{2}$"
+    "solution": "**[Logical Anchor]** 곱셈 공식의 변형 $(x-y)^2$ 활용\n$\\because x^2+y^2 = (x-y)^2+2xy$\n$\\implies 12 = 3^2+2xy$\n$\\implies 2xy = 3$\n$\\therefore xy = \\frac{3}{2}$"
   },
   {
     "id": 9,
@@ -103,16 +103,16 @@ window.questionBank = window.questionBank.concat([
     "content": "[상] 이차방정식 $x^{2}-2(k-2)x+k^{2}-28=0$ 이 실근을 갖기 위한 양의 정수 $k$의 개수는? [4.4점]",
     "choices": ["8", "7", "6", "5", "4"],
     "answer": "1",
-    "solution": "**[Logical Anchor]** 판별식 $D \\ge 0$ 조건 활용\n$\\because \\tf{D}{4} = (k-2)^2-(k^2-28) \\ge 0$\n$\\implies k^2-4k+4-k^2+28 \\ge 0$\n$\\implies -4k+32 \\ge 0 \\implies k \\le 8$\n$\\therefore k \\in \\{1, 2, 3, 4, 5, 6, 7, 8\\} \\implies 8\\text{개}$"
+    "solution": "**[Logical Anchor]** 판별식 $D \\ge 0$ 조건 활용\n$\\because \\frac{D}{4} = (k-2)^2-(k^2-28) \\ge 0$\n$\\implies k^2-4k+4-k^2+28 \\ge 0$\n$\\implies -4k+32 \\ge 0 \\implies k \\le 8$\n$\\therefore k \\in \\{1, 2, 3, 4, 5, 6, 7, 8\\} \\implies 8\\text{개}$"
   },
   {
     "id": 11,
     "level": "하",
     "category": "복소수의 연산",
-    "content": "실수 $a, b$에 대하여 등식 $\\tf{1}{i}+\\tf{3}{i^{2}}+\\tf{5}{i^{3}}+\\tf{7}{i^{4}} = a+bi$ 가 성립할 때, $a-b$의 값은? [4.5점]",
+    "content": "실수 $a, b$에 대하여 등식 $\\frac{1}{i}+\\frac{3}{i^{2}}+\\frac{5}{i^{3}}+\\frac{7}{i^{4}} = a+bi$ 가 성립할 때, $a-b$의 값은? [4.5점]",
     "choices": ["-4", "-2", "0", "2", "4"],
     "answer": "3",
-    "solution": "**[Logical Anchor]** $i$의 주기성 및 실수화\n$\\because \\tf{1}{i}=-i, \\tf{3}{i^2}=-3, \\tf{5}{i^3}=5i, \\tf{7}{i^4}=7$\n$\\implies (-i-3+5i+7) = 4+4i$\n$\\implies a=4, b=4$\n$\\therefore a-b = 0$"
+    "solution": "**[Logical Anchor]** $i$의 주기성 및 실수화\n$\\because \\frac{1}{i}=-i, \\frac{3}{i^2}=-3, \\frac{5}{i^3}=5i, \\frac{7}{i^4}=7$\n$\\implies (-i-3+5i+7) = 4+4i$\n$\\implies a=4, b=4$\n$\\therefore a-b = 0$"
   },
   {
     "id": 12,
@@ -136,10 +136,10 @@ window.questionBank = window.questionBank.concat([
     "id": 14,
     "level": "중상",
     "category": "이차방정식의 근과 계수",
-    "content": "[중상] 이차방정식 $x^{2}-3x-2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\tf{\\alpha-1}{2}, \\tf{\\beta-1}{2}$ 을 두 근으로 하는 이차방정식 $x^{2}+ax+b=0$에 대하여 $a-b$의 값은? [4.6점]",
+    "content": "[중상] 이차방정식 $x^{2}-3x-2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\frac{\\alpha-1}{2}, \\frac{\\beta-1}{2}$ 을 두 근으로 하는 이차방정식 $x^{2}+ax+b=0$에 대하여 $a-b$의 값은? [4.6점]",
     "choices": ["0.25", "0.5", "0.75", "1.25", "1.5"],
     "answer": "2",
-    "solution": "**[Logical Anchor]** 새로운 근의 합과 곱 계산\n$\\because \\alpha+\\beta=3, \\alpha\\beta=-2$\n$\\implies \\text{합: } \\tf{\\alpha+\\beta-2}{2} = \\tf{1}{2} = -a \\implies a=-0.5$\n$\\implies \\text{곱: } \\tf{(\\alpha-1)(\\beta-1)}{4} = \\tf{\\alpha\\beta-(\\alpha+\\beta)+1}{4} = -1 = b$\n$\\therefore a-b = -0.5-(-1) = 0.5$"
+    "solution": "**[Logical Anchor]** 새로운 근의 합과 곱 계산\n$\\because \\alpha+\\beta=3, \\alpha\\beta=-2$\n$\\implies \\text{합: } \\frac{\\alpha+\\beta-2}{2} = \\frac{1}{2} = -a \\implies a=-0.5$\n$\\implies \\text{곱: } \\frac{(\\alpha-1)(\\beta-1)}{4} = \\frac{\\alpha\\beta-(\\alpha+\\beta)+1}{4} = -1 = b$\n$\\therefore a-b = -0.5-(-1) = 0.5$"
   }
 ]);
 window.questionBank = window.questionBank.concat([

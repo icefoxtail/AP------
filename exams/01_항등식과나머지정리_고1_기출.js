@@ -22,10 +22,10 @@ window.questionBank = [
         id: 2,
         level: "중",
         category: "곱셈 공식의 변형",
-        content: "$x^2 + \\tf{1}{x^2} = 7$일 때, $x^3 + \\tf{1}{x^3}$의 값을 구하시오. (단, $x > 0$) [2024 부영여고 1-1 중간 05번]",
+        content: "$x^2 + \\frac{1}{x^2} = 7$일 때, $x^3 + \\frac{1}{x^3}$의 값을 구하시오. (단, $x > 0$) [2024 부영여고 1-1 중간 05번]",
         choices: ["14", "16", "18", "20", "22"],
         answer: "③",
-        solution: "$(x + \\tf{1}{x})^2 = x^2 + \\tf{1}{x^2} + 2 = 7 + 2 = 9$\n$x > 0 \\implies x + \\tf{1}{x} = 3$\n$x^3 + \\tf{1}{x^3} = (x + \\tf{1}{x})^3 - 3(x + \\tf{1}{x})$\n$\\implies 3^3 - 3(3) = 18$\n$\\therefore 18$"
+        solution: "$(x + \\frac{1}{x})^2 = x^2 + \\frac{1}{x^2} + 2 = 7 + 2 = 9$\n$x > 0 \\implies x + \\frac{1}{x} = 3$\n$x^3 + \\frac{1}{x^3} = (x + \\frac{1}{x})^3 - 3(x + \\frac{1}{x})$\n$\\implies 3^3 - 3(3) = 18$\n$\\therefore 18$"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ window.questionBank = [
         content: "다항식 $6x^3 - x^2 - 5x + 3$을 $3x - 2$로 나누었을 때 몫을 $Q(x)$, 나머지를 $R$이라 할 때, $Q(1) + R$의 값을 구하시오. [2024 부영여고 1-1 중간 08번]",
         choices: ["1", "2", "3", "4", "5"],
         answer: "③",
-        solution: "**[Logical Anchor]** 조립제법은 $x-\\tf{2}{3}$ 기준이므로, $3x-2$의 몫은 $\\tf{1}{3}$ 보정 필수.\n$x = \\tf{2}{3}$ 조립제법 $\\implies$ 몫 계수 $6, 3, -3$, 나머지 $1$\n$6x^3 - x^2 - 5x + 3 = (x - \\tf{2}{3})(6x^2 + 3x - 3) + 1$\n$\\implies (3x - 2)(2x^2 + x - 1) + 1$\n$\\therefore Q(x) = 2x^2 + x - 1,\\ R = 1$\n$Q(1) = 2 + 1 - 1 = 2 \\implies Q(1) + R = 3$"
+        solution: "**[Logical Anchor]** 조립제법은 $x-\\frac{2}{3}$ 기준이므로, $3x-2$의 몫은 $\\frac{1}{3}$ 보정 필수.\n$x = \\frac{2}{3}$ 조립제법 $\\implies$ 몫 계수 $6, 3, -3$, 나머지 $1$\n$6x^3 - x^2 - 5x + 3 = (x - \\frac{2}{3})(6x^2 + 3x - 3) + 1$\n$\\implies (3x - 2)(2x^2 + x - 1) + 1$\n$\\therefore Q(x) = 2x^2 + x - 1,\\ R = 1$\n$Q(1) = 2 + 1 - 1 = 2 \\implies Q(1) + R = 3$"
     },
     {
         id: 4,
@@ -79,7 +79,7 @@ window.questionBank = [
         content: "두 다항식 $A, B$에 대하여 $2A + B = 3x^2 - 2xy - y^2$, $A - B = -x^2 + 4xy + 5y^2$일 때, $A + 2B = ax^2 + bxy + cy^2$이다. $a+b+c$의 값을 구하시오. [2024 한영고 1-1 중간 01번]",
         choices: ["-10", "-8", "-6", "4", "8"],
         answer: "②",
-        solution: "$(1)\\ 2A + B = 3x^2 - 2xy - y^2$\n$(2)\\ A - B = -x^2 + 4xy + 5y^2$\n$(1)+(2) \\implies 3A = 2x^2 + 2xy + 4y^2 \\implies A = \\tf{2}{3}x^2 + \\tf{2}{3}xy + \\tf{4}{3}y^2$\n$(2) \\implies B = \\tf{5}{3}x^2 - \\tf{10}{3}xy - \\tf{11}{3}y^2$\n$A + 2B = 4x^2 - 6xy - 6y^2$\n$\\implies a=4,\\ b=-6,\\ c=-6$\n$\\therefore a+b+c = -8$"
+        solution: "$(1)\\ 2A + B = 3x^2 - 2xy - y^2$\n$(2)\\ A - B = -x^2 + 4xy + 5y^2$\n$(1)+(2) \\implies 3A = 2x^2 + 2xy + 4y^2 \\implies A = \\frac{2}{3}x^2 + \\frac{2}{3}xy + \\frac{4}{3}y^2$\n$(2) \\implies B = \\frac{5}{3}x^2 - \\frac{10}{3}xy - \\frac{11}{3}y^2$\n$A + 2B = 4x^2 - 6xy - 6y^2$\n$\\implies a=4,\\ b=-6,\\ c=-6$\n$\\therefore a+b+c = -8$"
     },
     {
         id: 9,
@@ -97,7 +97,7 @@ window.questionBank = [
         content: "등식 $a(x-1)(x+1) + bx(x-1) + cx(x+1) = 2x^2 + 3x + 4$가 $x$에 대한 항등식일 때, $-a+2b+2c$의 값을 구하시오. [2024 한영고 1-1 중간 08번]",
         choices: ["12", "14", "16", "18", "20"],
         answer: "③",
-        solution: "항등식 수치대입법:\n$x=0 \\implies -a = 4 \\implies a = -4$\n$x=1 \\implies 2c = 2+3+4 \\implies c = \\tf{9}{2}$\n$x=-1 \\implies 2b = 2-3+4 \\implies b = \\tf{3}{2}$\n$\\therefore -a + 2b + 2c = -(-4) + 3 + 9 = 16$"
+        solution: "항등식 수치대입법:\n$x=0 \\implies -a = 4 \\implies a = -4$\n$x=1 \\implies 2c = 2+3+4 \\implies c = \\frac{9}{2}$\n$x=-1 \\implies 2b = 2-3+4 \\implies b = \\frac{3}{2}$\n$\\therefore -a + 2b + 2c = -(-4) + 3 + 9 = 16$"
     },
     {
         id: 11,
@@ -286,7 +286,7 @@ window.questionBank = [
         content: "삼각형의 세 변의 길이 $a, b, c$에 대하여 $a^3+b^3+c^3-3abc=0$이 성립할 때, 어떤 삼각형인가? [2023 여천고 1-1 중간 서술형 2번]",
         choices: ["정삼각형", "이등변삼각형", "직각삼각형", "직각이등변삼각형", "둔각삼각형"],
         answer: "①",
-        solution: "$a^3+b^3+c^3-3abc = \\tf{1}{2}(a+b+c)\\{(a-b)^2+(b-c)^2+(c-a)^2\\} = 0$\n$a, b, c$는 변의 길이이므로 $a+b+c \\neq 0$\n$\\implies (a-b)^2+(b-c)^2+(c-a)^2 = 0$\n$\\implies a=b=c$\n$\\therefore 정삼각형$"
+        solution: "$a^3+b^3+c^3-3abc = \\frac{1}{2}(a+b+c)\\{(a-b)^2+(b-c)^2+(c-a)^2\\} = 0$\n$a, b, c$는 변의 길이이므로 $a+b+c \\neq 0$\n$\\implies (a-b)^2+(b-c)^2+(c-a)^2 = 0$\n$\\implies a=b=c$\n$\\therefore 정삼각형$"
     },
     {
         id: 32,

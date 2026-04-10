@@ -94,10 +94,10 @@ window.questionBank = [
         id: 10,
         level: "중",
         category: "복소수의 주기성과 연산",
-        content: "등식 $\\tf{x+yi}{1-2i}=\\tf{1}{i^{15}}+\\tf{1}{i^{17}}+\\tf{1}{i^{19}}$을 만족하는 실수 $x, y$에 대하여 $x+y$의 값은? [4.6점]",
+        content: "등식 $\\frac{x+yi}{1-2i}=\\frac{1}{i^{15}}+\\frac{1}{i^{17}}+\\frac{1}{i^{19}}$을 만족하는 실수 $x, y$에 대하여 $x+y$의 값은? [4.6점]",
         choices: ["1", "2", "3", "4", "5"],
         answer: "③",
-        solution: "**[Logical Anchor]** $i$의 거듭제곱 주기성($4$주기)을 이용하여 우변을 단순화함.\n$\text{i) 우변 정리}$\n$i^{15} = (i^4)^3 \cdot i^3 = -i \implies \\tf{1}{i^{15}} = \\tf{1}{-i} = i$\n$i^{17} = (i^4)^4 \cdot i = i \implies \\tf{1}{i^{17}} = \\tf{1}{i} = -i$\n$i^{19} = (i^4)^4 \cdot i^3 = -i \implies \\tf{1}{i^{19}} = \\tf{1}{-i} = i$\n$\\text{우변} = i - i + i = i$\n$\text{ii) 식의 변형 및 실수화}$\n$\\tf{x+yi}{1-2i} = i \implies x+yi = i(1-2i) = i - 2i^2 = 2+i$\n$\because x=2, y=1$\n$\therefore x + y = 3$"
+        solution: "**[Logical Anchor]** $i$의 거듭제곱 주기성($4$주기)을 이용하여 우변을 단순화함.\n$\text{i) 우변 정리}$\n$i^{15} = (i^4)^3 \cdot i^3 = -i \implies \\frac{1}{i^{15}} = \\frac{1}{-i} = i$\n$i^{17} = (i^4)^4 \cdot i = i \implies \\frac{1}{i^{17}} = \\frac{1}{i} = -i$\n$i^{19} = (i^4)^4 \cdot i^3 = -i \implies \\frac{1}{i^{19}} = \\frac{1}{-i} = i$\n$\\text{우변} = i - i + i = i$\n$\text{ii) 식의 변형 및 실수화}$\n$\\frac{x+yi}{1-2i} = i \implies x+yi = i(1-2i) = i - 2i^2 = 2+i$\n$\because x=2, y=1$\n$\therefore x + y = 3$"
     },
     {
         id: 11,
@@ -121,10 +121,10 @@ window.questionBank = [
         id: 13,
         level: "상",
         category: "복소수의 주기성",
-        content: "$a_n = (\\tf{1+i}{1-i})^n + (\\tf{1-i}{1+i})^n$일 때, <보기> 중 옳은 것만을 있는 대로 고른 것은? [4.8점]",
+        content: "$a_n = (\\frac{1+i}{1-i})^n + (\\frac{1-i}{1+i})^n$일 때, <보기> 중 옳은 것만을 있는 대로 고른 것은? [4.8점]",
         choices: ["ㄱ, ㄴ", "ㄷ, ㄹ", "ㄱ, ㄷ, ㄹ", "ㄱ, ㄴ, ㄹ", "ㄱ, ㄴ, ㄷ, ㄹ"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 기본 복소수 단위를 실수화하여 주기적인 함숫값을 분석함.\n$\tf{1+i}{1-i} = \tf{(1+i)^2}{2} = i, \quad \tf{1-i}{1+i} = -i$\n$\implies a_n = i^n + (-i)^n$\n$n=1: i - i = 0$\n$n=2: -1 - 1 = -2$\n$n=3: -i + i = 0$\n$n=4: 1 + 1 = 2$\n$\because 4$를 주기로 반복됨.\nㄱ. $a_{10} = a_2 = -2$ (참)\nㄴ. $2n, 6n$은 주기의 정수배 차이이므로 함숫값이 같음. (참)\n(※ 상세 보기 검증 결과 모든 항목이 유효함)\n$\therefore$ ㄱ, ㄴ, ㄷ, ㄹ"
+        solution: "**[Logical Anchor]** 기본 복소수 단위를 실수화하여 주기적인 함숫값을 분석함.\n$\frac{1+i}{1-i} = \frac{(1+i)^2}{2} = i, \quad \frac{1-i}{1+i} = -i$\n$\implies a_n = i^n + (-i)^n$\n$n=1: i - i = 0$\n$n=2: -1 - 1 = -2$\n$n=3: -i + i = 0$\n$n=4: 1 + 1 = 2$\n$\because 4$를 주기로 반복됨.\nㄱ. $a_{10} = a_2 = -2$ (참)\nㄴ. $2n, 6n$은 주기의 정수배 차이이므로 함숫값이 같음. (참)\n(※ 상세 보기 검증 결과 모든 항목이 유효함)\n$\therefore$ ㄱ, ㄴ, ㄷ, ㄹ"
     },
     {
         id: 14,
@@ -178,7 +178,7 @@ window.questionBank = [
         content: "[서술형 1] $(x^2-3x+2)(x^2-7x+12)+k$가 이차식 $f(x)$의 제곱으로 인수분해 될 때, $k+f(5)$를 구하시오. [7점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "6",
-        solution: "**[Logical Anchor]** 공통부분이 생기도록 항을 재배치하여 치환함.\n$\{(x-1)(x-2)\}\{(x-3)(x-4)\} + k$\n$\implies \{(x-1)(x-4)\}\{(x-2)(x-3)\} + k$\n$\implies (x^2 - 5x + 4)(x^2 - 5x + 6) + k$\n$x^2 - 5x = t$ 로 치환 $\implies (t + 4)(t + 6) + k = t^2 + 10t + 24 + k$\n완전제곱식이 되려면 상수항이 $(\tf{10}{2})^2 = 25$ 여야 함.\n$\implies 24 + k = 25 \implies k = 1$\n$\implies (t + 5)^2 = (x^2 - 5x + 5)^2$\n$f(x) = x^2 - 5x + 5 \implies f(5) = 25 - 25 + 5 = 5$\n$\therefore k + f(5) = 1 + 5 = 6$"
+        solution: "**[Logical Anchor]** 공통부분이 생기도록 항을 재배치하여 치환함.\n$\{(x-1)(x-2)\}\{(x-3)(x-4)\} + k$\n$\implies \{(x-1)(x-4)\}\{(x-2)(x-3)\} + k$\n$\implies (x^2 - 5x + 4)(x^2 - 5x + 6) + k$\n$x^2 - 5x = t$ 로 치환 $\implies (t + 4)(t + 6) + k = t^2 + 10t + 24 + k$\n완전제곱식이 되려면 상수항이 $(\frac{10}{2})^2 = 25$ 여야 함.\n$\implies 24 + k = 25 \implies k = 1$\n$\implies (t + 5)^2 = (x^2 - 5x + 5)^2$\n$f(x) = x^2 - 5x + 5 \implies f(5) = 25 - 25 + 5 = 5$\n$\therefore k + f(5) = 1 + 5 = 6$"
     },
     {
         id: 20,
@@ -196,6 +196,6 @@ window.questionBank = [
         content: "[서술형 3] 연립부등식 해가 $6 < x \le 8$일 때, 처음 부등식을 만족시키는 $x$의 범위를 구하시오. [6점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "6 < x <= 22/3",
-        solution: "**[Logical Anchor]** 부등식의 경계값을 통해 미정계수 $a, b$를 역산함.\n$\text{i) } x > -3a, \ x \le \tf{a+2b}{2}$\n해의 범위가 $6 < x \le 8$ 이므로\n$-3a = 6 \implies a = -2$\n$\tf{-2 + 2b}{2} = 8 \implies -2 + 2b = 16 \implies b = 9$\n$\text{ii) 본래 식의 대입: } 3x \le 2b - 2a$\n$3x \le 2(9) - 2(-2) = 18 + 4 = 22$\n$\implies x \le \tf{22}{3}$\n$\therefore 6 < x \le \tf{22}{3}$"
+        solution: "**[Logical Anchor]** 부등식의 경계값을 통해 미정계수 $a, b$를 역산함.\n$\text{i) } x > -3a, \ x \le \frac{a+2b}{2}$\n해의 범위가 $6 < x \le 8$ 이므로\n$-3a = 6 \implies a = -2$\n$\frac{-2 + 2b}{2} = 8 \implies -2 + 2b = 16 \implies b = 9$\n$\text{ii) 본래 식의 대입: } 3x \le 2b - 2a$\n$3x \le 2(9) - 2(-2) = 18 + 4 = 22$\n$\implies x \le \frac{22}{3}$\n$\therefore 6 < x \le \frac{22}{3}$"
     }
 ];

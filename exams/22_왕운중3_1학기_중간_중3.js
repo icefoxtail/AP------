@@ -41,10 +41,10 @@ window.questionBank = [
     "id": 5,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\sqrt{\\tf{5}{2}} \\div \\sqrt{\\tf{10}{3}} \\times \\sqrt{\\tf{12}{3}}$을 간단히 하면? [4점]",
+    "content": "$\\sqrt{\\frac{5}{2}} \\div \\sqrt{\\frac{10}{3}} \\times \\sqrt{\\frac{12}{3}}$을 간단히 하면? [4점]",
     "choices": ["$\\sqrt{5}$", "$2\\sqrt{3}$", "$\\sqrt{3}$", "$\\sqrt{10}$", "$\\sqrt{6}$"],
     "answer": "3",
-    "solution": "$\\sqrt{\\tf{5}{2} \\times \\tf{3}{10}} \\times 2 = \\tf{\\sqrt{3}}{2} \\times 2 = \\sqrt{3}$."
+    "solution": "$\\sqrt{\\frac{5}{2} \\times \\frac{3}{10}} \\times 2 = \\frac{\\sqrt{3}}{2} \\times 2 = \\sqrt{3}$."
   },
   {
     "id": 6,
@@ -59,7 +59,7 @@ window.questionBank = [
     "id": 7,
     "level": "[중상]",
     "category": "다항식의 곱셈",
-    "content": "$x=\\tf{1}{5-2\\sqrt{6}}, y=\\tf{1}{5+2\\sqrt{6}}$일 때, $x^2-xy+y^2$의 값은? [4점]",
+    "content": "$x=\\frac{1}{5-2\\sqrt{6}}, y=\\frac{1}{5+2\\sqrt{6}}$일 때, $x^2-xy+y^2$의 값은? [4점]",
     "choices": ["250", "200", "100", "97", "95"],
     "answer": "4",
     "solution": "$(x+y)^2-3xy = 10^2-3(1) = 97$."
@@ -104,7 +104,7 @@ window.questionBank = [
     "id": 12,
     "level": "[상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\sqrt{ab}=13$일 때, $a\\sqrt{\\tf{b}{a}} + 4b\\sqrt{\\tf{a}{b}}$의 값은? [5점]",
+    "content": "$\\sqrt{ab}=13$일 때, $a\\sqrt{\\frac{b}{a}} + 4b\\sqrt{\\frac{a}{b}}$의 값은? [5점]",
     "choices": ["$3\\sqrt{13}$", "$4\\sqrt{13}$", "$5\\sqrt{13}$", "39", "65"],
     "answer": "5",
     "solution": "$5\\sqrt{ab} = 5 \\times 13 = 65$."
@@ -149,7 +149,7 @@ window.questionBank = [
     "id": 17,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$2\\sqrt{6}(\\tf{1}{\\sqrt{2}}-\\sqrt{6})-\\tf{a}{\\sqrt{3}}(2\\sqrt{3}-3)$이 유리수가 되는 $a$는? [4점]",
+    "content": "$2\\sqrt{6}(\\frac{1}{\\sqrt{2}}-\\sqrt{6})-\\frac{a}{\\sqrt{3}}(2\\sqrt{3}-3)$이 유리수가 되는 $a$는? [4점]",
     "choices": ["$a=-4$", "$a \\ne 4$", "$a=-2$", "$a=2$", "$a \\ne -2$"],
     "answer": "3",
     "solution": "$(2+a)\\sqrt{3}-12-2a$에서 $a=-2$."
@@ -203,18 +203,18 @@ window.questionBank = [
     "id": 23,
     "level": "[중상]",
     "category": "제곱근과 실수",
-    "content": "[서술형 3] $3\\sqrt{5}$ 정수 부분 $a$, 소수 부분 $b$일 때 $\\tf{a}{b+6}$은? [5점]",
+    "content": "[서술형 3] $3\\sqrt{5}$ 정수 부분 $a$, 소수 부분 $b$일 때 $\\frac{a}{b+6}$은? [5점]",
     "choices": [" ", " ", " ", " ", " "],
-    "answer": "$\\tf{2\\sqrt{5}}{5}$",
+    "answer": "$\\frac{2\\sqrt{5}}{5}$",
     "solution": "$a=6, b=3\\sqrt{5}-6$ 대입."
   },
   {
     "id": 24,
     "level": "[상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "[서술형 4] 높이가 원본의 $\\tf{1}{4}$인 사각뿔을 잘라낼 때 그 부피는? [6점]",
+    "content": "[서술형 4] 높이가 원본의 $\\frac{1}{4}$인 사각뿔을 잘라낼 때 그 부피는? [6점]",
     "choices": [" ", " ", " ", " ", " "],
-    "answer": "$\\tf{3\\sqrt{3}}{8}$",
-    "solution": "원본 부피 $24\\sqrt{3} \\times \\tf{1}{64}$."
+    "answer": "$\\frac{3\\sqrt{3}}{8}$",
+    "solution": "원본 부피 $24\\sqrt{3} \\times \\frac{1}{64}$."
   }
 ];

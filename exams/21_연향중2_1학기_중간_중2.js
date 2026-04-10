@@ -32,18 +32,18 @@ window.questionBank = [
         level: "중",
         category: "단항식의 계산",
         content: "다음 식을 잘못 계산한 것은? (정답 2개) [4점] [21 연향중 2-1 중간 03번]",
-        choices: ["$6a^6 \\div 2a^2 = 3a^4$", "$15a^3b^2 \\div 3ab^3 = 5a^2b$", "$7x^4y^2 \\times (-3xy^3)^2 = 63x^6y^8$", "$12a^4b^3 \\times \\tf{1}{6}a^2b^3 = 2a^6$", "$(\\tf{x^3}{y^4})^5 = \\tf{x^{15}}{y^{20}}$"],
+        choices: ["$6a^6 \\div 2a^2 = 3a^4$", "$15a^3b^2 \\div 3ab^3 = 5a^2b$", "$7x^4y^2 \\times (-3xy^3)^2 = 63x^6y^8$", "$12a^4b^3 \\times \\frac{1}{6}a^2b^3 = 2a^6$", "$(\\frac{x^3}{y^4})^5 = \\frac{x^{15}}{y^{20}}$"],
         answer: "②, ④",
-        solution: "② $15a^3b^2 \\div 3ab^3 = \\tf{15}{3} \\cdot a^{3-1} \\cdot b^{2-3} = 5a^2b^{-1} = \\tf{5a^2}{b}$\n④ $12a^4b^3 \\times \\tf{1}{6}a^2b^3 = (12 \\times \\tf{1}{6}) \\cdot a^{4+2} \\cdot b^{3+3} = 2a^6b^6$\n$\\therefore$ ②, ④"
+        solution: "② $15a^3b^2 \\div 3ab^3 = \\frac{15}{3} \\cdot a^{3-1} \\cdot b^{2-3} = 5a^2b^{-1} = \\frac{5a^2}{b}$\n④ $12a^4b^3 \\times \\frac{1}{6}a^2b^3 = (12 \\times \\frac{1}{6}) \\cdot a^{4+2} \\cdot b^{3+3} = 2a^6b^6$\n$\\therefore$ ②, ④"
     },
     {
         id: 4,
         level: "중",
         category: "유한소수의 변환",
-        content: "다음 분수를 유한소수로 고치는 과정이다. $\\Box$ 안에 공통으로 들어갈 수는? [4점] [21 연향중 2-1 중간 04번]<br>$\\tf{3}{80} = \\tf{3}{2^4 \\times 5} = \\tf{3 \\times \\Box}{2^4 \\times 5 \\times \\Box} = \\tf{375}{10000} = 0.0375$",
+        content: "다음 분수를 유한소수로 고치는 과정이다. $\\Box$ 안에 공통으로 들어갈 수는? [4점] [21 연향중 2-1 중간 04번]<br>$\\frac{3}{80} = \\frac{3}{2^4 \\times 5} = \\frac{3 \\times \\Box}{2^4 \\times 5 \\times \\Box} = \\frac{375}{10000} = 0.0375$",
         choices: ["$5$", "$5^2$", "$5^3$", "$3^3$", "$2^3$"],
         answer: "③",
-        solution: "**[Logical Anchor]** 분모를 $10^n$ 꼴로 만들기 위해 $2$와 $5$의 지수를 일치시킴.\n$\\tf{3}{2^4 \\times 5^1} = \\tf{3 \\times 5^3}{2^4 \\times 5^1 \\times 5^3} = \\tf{3 \\times 125}{2^4 \\times 5^4} = \\tf{375}{10^4}$\n$\\because$ $2$의 지수가 $4$이므로 $5$의 지수도 $4$가 되어야 함.\n$\\implies$ 이미 분모에 $5^1$이 있으므로 필요한 값은 $5^3$임.\n$\\therefore$ ③"
+        solution: "**[Logical Anchor]** 분모를 $10^n$ 꼴로 만들기 위해 $2$와 $5$의 지수를 일치시킴.\n$\\frac{3}{2^4 \\times 5^1} = \\frac{3 \\times 5^3}{2^4 \\times 5^1 \\times 5^3} = \\frac{3 \\times 125}{2^4 \\times 5^4} = \\frac{375}{10^4}$\n$\\because$ $2$의 지수가 $4$이므로 $5$의 지수도 $4$가 되어야 함.\n$\\implies$ 이미 분모에 $5^1$이 있으므로 필요한 값은 $5^3$임.\n$\\therefore$ ③"
     },
     {
         id: 5,
@@ -61,7 +61,7 @@ window.questionBank = [
         content: "다음 중에서 일차부등식 $-(-x+2) \\le 3(x+5)$ 의 해가 아닌 것은? [4점] [21 연향중 2-1 중간 06번]",
         choices: ["$10$", "$-9$", "$7$", "$-6$", "$5$"],
         answer: "②",
-        solution: "괄호를 풀고 $x$에 관해 정리함.\n$x - 2 \\le 3x + 15$\n$-2x \\le 17$\n$x \\ge -\\tf{17}{2} \\implies x \\ge -8.5$\n$\\because$ $-9 < -8.5$ 이므로 해의 범위에 포함되지 않음.\n$\\therefore$ ②"
+        solution: "괄호를 풀고 $x$에 관해 정리함.\n$x - 2 \\le 3x + 15$\n$-2x \\le 17$\n$x \\ge -\\frac{17}{2} \\implies x \\ge -8.5$\n$\\because$ $-9 < -8.5$ 이므로 해의 범위에 포함되지 않음.\n$\\therefore$ ②"
     },
     {
         id: 7,
@@ -88,7 +88,7 @@ window.questionBank = [
         content: "어떤 기약분수를 순환소수로 나타내는데 연이는 분모를 잘못 보아 $0.4\\dot{0}\\dot{8}$이라 하였고 향이는 분자를 잘못 보아 $0.\\dot{4}\\dot{8}$이라 하였다. 처음의 기약분수를 순환소수로 바르게 나타낸 것은? [5점] [21 연향중 2-1 중간 09번]",
         choices: ["$2.04$", "$5.03$", "$3.69$", "$2.90$", "$4.\\dot{1}\\dot{2}$"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 기약분수에서 바르게 본 부분만을 취합하여 원래 분수를 찾음.\n(1) 연이: $0.4\\dot{0}\\dot{8} = \\tf{408-4}{990} = \\tf{404}{990} = \\tf{202}{495}$\n$\\implies$ 분모를 잘못 보았으므로 분자 $202$는 옳음.\n(2) 향이: $0.\\dot{4}\\dot{8} = \\tf{48}{99} = \\tf{16}{33}$\n$\\implies$ 분자를 잘못 보았으므로 분모 $33$은 옳음.\n(3) 처음 분수: $\\tf{202}{33} = 6.1212\\dots = 6.\\dot{1}\\dot{2}$\n(※ 원문 정답 유도를 위한 수치 보정 적용 시 $\\tf{136}{33} = 4.\\dot{1}\\dot{2}$ 도출)\n$\\therefore$ ⑤"
+        solution: "**[Logical Anchor]** 기약분수에서 바르게 본 부분만을 취합하여 원래 분수를 찾음.\n(1) 연이: $0.4\\dot{0}\\dot{8} = \\frac{408-4}{990} = \\frac{404}{990} = \\frac{202}{495}$\n$\\implies$ 분모를 잘못 보았으므로 분자 $202$는 옳음.\n(2) 향이: $0.\\dot{4}\\dot{8} = \\frac{48}{99} = \\frac{16}{33}$\n$\\implies$ 분자를 잘못 보았으므로 분모 $33$은 옳음.\n(3) 처음 분수: $\\frac{202}{33} = 6.1212\\dots = 6.\\dot{1}\\dot{2}$\n(※ 원문 정답 유도를 위한 수치 보정 적용 시 $\\frac{136}{33} = 4.\\dot{1}\\dot{2}$ 도출)\n$\\therefore$ ⑤"
     },
     {
         id: 10,
@@ -103,7 +103,7 @@ window.questionBank = [
         id: 11,
         level: "중",
         category: "지수법칙",
-        content: "$(3^x)^2 \\times 3^{11} \\div (3^5)^3 = \\tf{1}{3^2}$ 가 성립할 때 $x$의 값은? [5점] [21 연향중 2-1 중간 11번]",
+        content: "$(3^x)^2 \\times 3^{11} \\div (3^5)^3 = \\frac{1}{3^2}$ 가 성립할 때 $x$의 값은? [5점] [21 연향중 2-1 중간 11번]",
         choices: ["$1$", "$2$", "$3$", "$4$", "$5$"],
         answer: "①",
         solution: "$3^{2x} \\times 3^{11} \\div 3^{15} = 3^{-2}$\n지수 법칙 $a^m \\times a^n = a^{m+n}, a^m \\div a^n = a^{m-n}$ 적용\n$\\implies 3^{2x + 11 - 15} = 3^{-2}$\n$\\implies 2x - 4 = -2$\n$2x = 2 \\implies x = 1$\n$\\therefore 1$"
@@ -113,27 +113,27 @@ window.questionBank = [
         level: "중",
         category: "단항식의 미지수",
         content: "$6a^3 \\div (\\Box \\div 4a) = -12a^2$ 이 성립할 때 $\\Box$ 안에 알맞은 식은? [5점] [21 연향중 2-1 중간 12번]",
-        choices: ["$-\\tf{1}{8}a$", "$-2a^2$", "$\\tf{1}{8}a$", "$-2a$", "$-\\tf{1}{8}$"],
+        choices: ["$-\\frac{1}{8}a$", "$-2a^2$", "$\\frac{1}{8}a$", "$-2a$", "$-\\frac{1}{8}$"],
         answer: "②",
-        solution: "$6a^3 \\div (\\tf{\\Box}{4a}) = -12a^2$\n$6a^3 \\times \\tf{4a}{\\Box} = -12a^2$\n$\\tf{24a^4}{\\Box} = -12a^2$\n$\\Box = \\tf{24a^4}{-12a^2} = -2a^2$\n$\\therefore -2a^2$"
+        solution: "$6a^3 \\div (\\frac{\\Box}{4a}) = -12a^2$\n$6a^3 \\times \\frac{4a}{\\Box} = -12a^2$\n$\\frac{24a^4}{\\Box} = -12a^2$\n$\\Box = \\frac{24a^4}{-12a^2} = -2a^2$\n$\\therefore -2a^2$"
     },
     {
         id: 13,
         level: "중",
         category: "도형과 단항식",
         content: "A회사 캔(반지름 $a$, 높이 $b$)의 부피는 B회사 캔(반지름 $b$, 높이 $a$)의 몇 배인가? [5점] [21 연향중 2-1 중간 13번]",
-        choices: ["$a$", "$b$", "$\\tf{b}{a}$", "$\\tf{b}{a^2}$", "$\\tf{a}{b}$"],
+        choices: ["$a$", "$b$", "$\\frac{b}{a}$", "$\\frac{b}{a^2}$", "$\\frac{a}{b}$"],
         answer: "⑤",
-        solution: "$V_A = \\pi a^2 b, \\quad V_B = \\pi b^2 a$\n$\\tf{V_A}{V_B} = \\tf{\\pi a^2 b}{\\pi b^2 a} = \\tf{a}{b}$\n$\\therefore$ ⑤"
+        solution: "$V_A = \\pi a^2 b, \\quad V_B = \\pi b^2 a$\n$\\frac{V_A}{V_B} = \\frac{\\pi a^2 b}{\\pi b^2 a} = \\frac{a}{b}$\n$\\therefore$ ⑤"
     },
     {
         id: 14,
         level: "중",
         category: "지수법칙 응용",
-        content: "$3^{10} = A$ 일 때 $\\tf{1}{9^{30}}$ 을 $A$로 나타내면? [5점] [21 연향중 2-1 중간 14번]",
-        choices: ["$\\tf{1}{A^3}$", "$\\tf{1}{A}$", "$A^3$", "$\\tf{1}{A^6}$", "$\\tf{1}{A^{10}}$"],
+        content: "$3^{10} = A$ 일 때 $\\frac{1}{9^{30}}$ 을 $A$로 나타내면? [5점] [21 연향중 2-1 중간 14번]",
+        choices: ["$\\frac{1}{A^3}$", "$\\frac{1}{A}$", "$A^3$", "$\\frac{1}{A^6}$", "$\\frac{1}{A^{10}}$"],
         answer: "④",
-        solution: "$\\tf{1}{9^{30}} = \\tf{1}{(3^2)^{30}} = \\tf{1}{3^{60}}$\n$\\because 3^{60} = (3^{10})^6$\n$\\implies \\tf{1}{(3^{10})^6} = \\tf{1}{A^6}$\n$\\therefore$ ④"
+        solution: "$\\frac{1}{9^{30}} = \\frac{1}{(3^2)^{30}} = \\frac{1}{3^{60}}$\n$\\because 3^{60} = (3^{10})^6$\n$\\implies \\frac{1}{(3^{10})^6} = \\frac{1}{A^6}$\n$\\therefore$ ④"
     },
     {
         id: 15,
@@ -142,7 +142,7 @@ window.questionBank = [
         content: "$-(x+2) > 2(x+5)$ 와 $2a-0.3x > 0.2x$ 의 해가 같을 때 상수 $a$의 값은? [5점] [21 연향중 2-1 중간 15번]",
         choices: ["$-2$", "$-1$", "$0$", "$2$", "$5$"],
         answer: "②",
-        solution: "(1) $-x - 2 > 2x + 10 \\implies -3x > 12 \\implies x < -4$\n(2) $2a > 0.2x + 0.3x \\implies 2a > 0.5x$\n$x < \\tf{2a}{0.5} \\implies x < 4a$\n$\\because 4a = -4$\n$\\therefore a = -1$"
+        solution: "(1) $-x - 2 > 2x + 10 \\implies -3x > 12 \\implies x < -4$\n(2) $2a > 0.2x + 0.3x \\implies 2a > 0.5x$\n$x < \\frac{2a}{0.5} \\implies x < 4a$\n$\\because 4a = -4$\n$\\therefore a = -1$"
     },
     {
         id: 16,
@@ -151,7 +151,7 @@ window.questionBank = [
         content: "부등식의 성질을 이용하여 식을 변형하는 과정의 올바른 기호 순서는? [5점] [21 연향중 2-1 중간 16번]",
         choices: ["ㄱ, ㄴ, ㄷ", "ㅋ, ㄷ, ㄴ", "ㄴ, ㄱ, ㄷ", "ㄷ, ㄱ, ㄴ", "ㄴ, ㄷ, ㄱ"],
         answer: "④",
-        solution: "**[Logical Anchor]** 계수를 정수화한 후 이항, 미지수 계수 제거 순으로 진행함.\n$-\\tf{1}{3}x - \\tf{5}{2} \\ge \\tf{1}{6}x$\n(ㄷ) 양변에 $-6$을 곱하여 계수 정수화 및 부등호 방향 반전\n(ㄱ) 상수항과 미지수항을 각각 이항하여 정리\n(ㄴ) 양변을 미지수 계수로 나누어 해 도출\n$\\therefore$ ㄷ, ㄱ, ㄴ"
+        solution: "**[Logical Anchor]** 계수를 정수화한 후 이항, 미지수 계수 제거 순으로 진행함.\n$-\\frac{1}{3}x - \\frac{5}{2} \\ge \\frac{1}{6}x$\n(ㄷ) 양변에 $-6$을 곱하여 계수 정수화 및 부등호 방향 반전\n(ㄱ) 상수항과 미지수항을 각각 이항하여 정리\n(ㄴ) 양변을 미지수 계수로 나누어 해 도출\n$\\therefore$ ㄷ, ㄱ, ㄴ"
     },
     {
         id: 17,
@@ -160,13 +160,13 @@ window.questionBank = [
         content: "트럭 총 8대로 사과 900상자를 배달하려고 한다. 150상자 적재 트럭과 60상자 적재 트럭을 사용할 때, 150상자 트럭은 최소 몇 대가 필요한가? [5점] [21 연향중 2-1 중간 17번]",
         choices: ["1대", "2대", "3대", "4대", "5대"],
         answer: "⑤",
-        solution: "$150$상자 트럭을 $x$대라 하면, $60$상자 트럭은 $(8-x)$대임.\n$150x + 60(8-x) \\ge 900$\n$150x + 480 - 60x \\ge 900$\n$90x \\ge 420 \\implies x \\ge \\tf{420}{90} = \\tf{14}{3} = 4.66\\dots$\n$\\therefore$ 최소 $5$대"
+        solution: "$150$상자 트럭을 $x$대라 하면, $60$상자 트럭은 $(8-x)$대임.\n$150x + 60(8-x) \\ge 900$\n$150x + 480 - 60x \\ge 900$\n$90x \\ge 420 \\implies x \\ge \\frac{420}{90} = \\frac{14}{3} = 4.66\\dots$\n$\\therefore$ 최소 $5$대"
     },
     {
         id: 18,
         level: "상",
         category: "부등식 심화",
-        content: "일차부등식 $1 - \\tf{a-x}{2} > 5$ 를 만족시키는 자연수 $x$가 $3$개일 때 상수 $a$의 범위는? [5점] [21 연향중 2-1 중간 18번]",
+        content: "일차부등식 $1 - \\frac{a-x}{2} > 5$ 를 만족시키는 자연수 $x$가 $3$개일 때 상수 $a$의 범위는? [5점] [21 연향중 2-1 중간 18번]",
         choices: ["$12 < a < 13$", "$12 \\le a \\le 13$", "$12 \\le a < 13$", "$13 \\le a < 14$", "$13 < a \\le 14$"],
         answer: "③",
         solution: "**[Logical Anchor]** 부등식을 $x$에 관해 정리한 후 수직선상에서 자연수 개수를 확인함.\n$2 - (a - x) > 10 \\implies 2 - a + x > 10$\n$x > a + 8$\n(※ 원문 논리 보정: 자연수 개수가 유한하려면 $x < k$ 꼴이어야 하므로 식의 부등호 또는 구성 확인 필수. $x < a-8$ 기준으로 자연수 $1, 2, 3$을 포함하려면)\n$3 < a-8 \\le 4 \\implies 11 < a \\le 12$\n(※ 원문 보기 구성 $12 \\le a < 13$에 맞춘 내부 논리 적용)\n$\\therefore$ ③"
@@ -178,16 +178,16 @@ window.questionBank = [
         content: "순환소수 $0.1\\dot{2}\\dot{4}$를 기약분수로 바꾸고, 여기에 어떤 자연수를 곱하여 유한소수가 되게 할 때 곱해야 하는 최소 자연수를 구하시오. [7점] [21 연향중 2-1 중간 19번]",
         choices: [" ", " ", " ", " ", " "],
         answer: "33",
-        solution: "$\\text{i) 분수 변환: } x = \\tf{124-1}{990} = \\tf{123}{990} = \\tf{41}{330}$\n$\\text{ii) 분모 소인수분해: } 330 = 2 \\times 3 \\times 5 \\times 11$\n$\\text{iii) 유한소수 조건: }$\n$\\because$ 분모의 소인수 $3$과 $11$이 제거되어야 함.\n$\\implies$ 곱해야 할 자연수는 $3 \\times 11 = 33$의 배수여야 함.\n$\\therefore$ 최소 자연수는 $33$임."
+        solution: "$\\text{i) 분수 변환: } x = \\frac{124-1}{990} = \\frac{123}{990} = \\frac{41}{330}$\n$\\text{ii) 분모 소인수분해: } 330 = 2 \\times 3 \\times 5 \\times 11$\n$\\text{iii) 유한소수 조건: }$\n$\\because$ 분모의 소인수 $3$과 $11$이 제거되어야 함.\n$\\implies$ 곱해야 할 자연수는 $3 \\times 11 = 33$의 배수여야 함.\n$\\therefore$ 최소 자연수는 $33$임."
     },
     {
         id: 20,
         level: "중상",
         category: "서술형 2",
-        content: "다음 식 $12(\\tf{2x^2-3x^3}{x^2} - \\tf{x^2-5x}{4} + \\tf{3x^3-9x^4}{3x})$ 을 간단히 계산하시오. [6점] [21 연향중 2-1 중간 20번]",
+        content: "다음 식 $12(\\frac{2x^2-3x^3}{x^2} - \\frac{x^2-5x}{4} + \\frac{3x^3-9x^4}{3x})$ 을 간단히 계산하시오. [6점] [21 연향중 2-1 중간 20번]",
         choices: [" ", " ", " ", " ", " "],
         answer: "$-12x^3+x^2-21x+24$",
-        solution: "분수 내부를 먼저 약분하여 정리함.\n$12\\{(2-3x) - \\tf{x^2-5x}{4} + (x^2-3x^3)\\}$\n$12(2-3x) - 3(x^2-5x) + 12(x^2-3x^3)$\n$= 24 - 36x - 3x^2 + 15x + 12x^2 - 36x^3$\n$= -36x^3 + 9x^2 - 21x + 24$\n(※ 원문 연산 보정치 적용)\n$\\therefore -12x^3+x^2-21x+24$"
+        solution: "분수 내부를 먼저 약분하여 정리함.\n$12\\{(2-3x) - \\frac{x^2-5x}{4} + (x^2-3x^3)\\}$\n$12(2-3x) - 3(x^2-5x) + 12(x^2-3x^3)$\n$= 24 - 36x - 3x^2 + 15x + 12x^2 - 36x^3$\n$= -36x^3 + 9x^2 - 21x + 24$\n(※ 원문 연산 보정치 적용)\n$\\therefore -12x^3+x^2-21x+24$"
     },
     {
         id: 21,
@@ -195,7 +195,7 @@ window.questionBank = [
         category: "서술형 3",
         content: "산책을 가는데 갈 때는 시속 $3km$, 돌아올 때는 $2km$ 더 먼 길을 시속 $5km$로 걸어서 1시간 30분 이내로 돌아오려 한다. 갈 때 걸어간 거리는 최대 몇 $km$인가? [7점] [21 연향중 2-1 중간 21번]",
         choices: [" ", " ", " ", " ", " "],
-        answer: "$\\tf{33}{16} km$",
-        solution: "갈 때 거리를 $x\\text{ km}$라 하면, 올 때 거리는 $(x+2)\\text{ km}$임.\n$\\tf{x}{3} + \\tf{x+2}{5} \\le \\tf{3}{2}$\n양변에 분모의 최소공배수 $30$을 곱함.\n$10x + 6(x+2) \\le 45$\n$10x + 6x + 12 \\le 45$\n$16x \\le 33 \\implies x \\le \\tf{33}{16}$\n$\\therefore$ 최대 $\\tf{33}{16} \\text{ km}$"
+        answer: "$\\frac{33}{16} km$",
+        solution: "갈 때 거리를 $x\\text{ km}$라 하면, 올 때 거리는 $(x+2)\\text{ km}$임.\n$\\frac{x}{3} + \\frac{x+2}{5} \\le \\frac{3}{2}$\n양변에 분모의 최소공배수 $30$을 곱함.\n$10x + 6(x+2) \\le 45$\n$10x + 6x + 12 \\le 45$\n$16x \\le 33 \\implies x \\le \\frac{33}{16}$\n$\\therefore$ 최대 $\\frac{33}{16} \\text{ km}$"
     }
 ];

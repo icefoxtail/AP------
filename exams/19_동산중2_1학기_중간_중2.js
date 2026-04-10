@@ -13,9 +13,9 @@ window.questionBank = [
         level: "하",
         category: "유한소수의 판별",
         content: "다음 <보기>의 분수를 소수로 나타낼 때, 유한소수인 것을 모두 고르면? [19 동산여중 2-1 중간 01번]",
-        choices: ["$\\tf{3}{75}, \\tf{10}{2 \\times 5^2}$", "$\\tf{3}{75}, \\tf{15}{210}$", "$\\tf{5}{9^3 \\times 3}, \\tf{10}{2 \\times 5^2}$", "$\\tf{15}{210}$", "$\\tf{3}{75}$"],
+        choices: ["$\\frac{3}{75}, \\frac{10}{2 \\times 5^2}$", "$\\frac{3}{75}, \\frac{15}{210}$", "$\\frac{5}{9^3 \\times 3}, \\frac{10}{2 \\times 5^2}$", "$\\frac{15}{210}$", "$\\frac{3}{75}$"],
         answer: "①",
-        solution: "**[Logical Anchor]** 기약분수 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수임.\n(1) $\\tf{3}{75} = \\tf{1}{25} = \\tf{1}{5^2} \\implies$ 유한소수\n(2) $\\tf{10}{2 \\times 5^2} = \\tf{1}{5} \\implies$ 유한소수\n(3) $\\tf{15}{210} = \\tf{1}{14} = \\tf{1}{2 \\times 7} \\implies$ 무한소수\n$\\therefore$ 유한소수는 $\\tf{3}{75}, \\tf{10}{2 \\times 5^2}$"
+        solution: "**[Logical Anchor]** 기약분수 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수임.\n(1) $\\frac{3}{75} = \\frac{1}{25} = \\frac{1}{5^2} \\implies$ 유한소수\n(2) $\\frac{10}{2 \\times 5^2} = \\frac{1}{5} \\implies$ 유한소수\n(3) $\\frac{15}{210} = \\frac{1}{14} = \\frac{1}{2 \\times 7} \\implies$ 무한소수\n$\\therefore$ 유한소수는 $\\frac{3}{75}, \\frac{10}{2 \\times 5^2}$"
     },
     // ... [중략: 2번~21번 데이터는 이전과 동일하게 유지하며 무결성 보존] ...
     {
@@ -34,7 +34,7 @@ window.questionBank = [
         content: "일차부등식 $-2(x-5a) \\le 7a+3$ 을 만족시키는 음의 정수가 존재하지 않을 때, $a$의 범위는? [19 동산여중 2-1 중간 23번]",
         choices: ["$a \\ge 1$", "$a > 1$", "$a \\le 1$", "$a < 1$", "$a \\ge 0$"],
         answer: "①",
-        solution: "$-2x+10a \\le 7a+3 \\implies -2x \\le -3a+3 \\implies x \\ge \\tf{3a-3}{2}$\n음의 정수 해가 없으려면 해의 범위의 최솟값이 $0$보다 크거나 같아야 함.\n$\\implies \\tf{3a-3}{2} \\ge 0 \\implies 3a \\ge 3$\n$\\therefore a \\ge 1$"
+        solution: "$-2x+10a \\le 7a+3 \\implies -2x \\le -3a+3 \\implies x \\ge \\frac{3a-3}{2}$\n음의 정수 해가 없으려면 해의 범위의 최솟값이 $0$보다 크거나 같아야 함.\n$\\implies \\frac{3a-3}{2} \\ge 0 \\implies 3a \\ge 3$\n$\\therefore a \\ge 1$"
     },
     {
         id: 24,
@@ -52,6 +52,6 @@ window.questionBank = [
         content: "집에서 $16km$ 떨어진 지점까지 1시간 이내에 도착하려고 한다. 처음에는 시속 $5km$로 가다가 도중에 시속 $60km$인 버스를 탔을 때, 시속 $5km$로 걸어간 최대 거리를 구하시오. [19 동산여중 2-1 중간 25번]",
         choices: ["2km", "3km", "4km", "5km", "6km"],
         answer: "③",
-        solution: "걸어간 거리를 $x\\text{ km}$라 하면 $\\tf{x}{5} + \\tf{16-x}{60} \\le 1$\n양변에 $60$을 곱하면 $12x + 16 - x \\le 60 \\implies 11x \\le 44 \\implies x \\le 4$\n$\\therefore$ 최대 거리는 $4\\text{ km}$임."
+        solution: "걸어간 거리를 $x\\text{ km}$라 하면 $\\frac{x}{5} + \\frac{16-x}{60} \\le 1$\n양변에 $60$을 곱하면 $12x + 16 - x \\le 60 \\implies 11x \\le 44 \\implies x \\le 4$\n$\\therefore$ 최대 거리는 $4\\text{ km}$임."
     }
 ];

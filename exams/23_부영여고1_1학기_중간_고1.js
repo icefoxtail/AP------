@@ -41,9 +41,9 @@ window.questionBank = [
         level: "중",
         category: "조립제법의 역산",
         content: "다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누는 조립제법 과정에서 $a+b+c$의 값은? [3.9점]",
-        choices: ["$\\tf{1}{3}$", "$\\tf{2}{3}$", "1", "$\\tf{3}{2}$", "2"],
+        choices: ["$\\frac{1}{3}$", "$\\frac{2}{3}$", "1", "$\\frac{3}{2}$", "2"],
         answer: "②",
-        solution: "**[Logical Anchor]** 조립제법의 빈칸을 채워 미정계수를 결정함.\n조립제법의 연산 규칙(내려오면 더하고, 오른쪽은 곱한다)을 적용함.\n(1) 일차항 계산: $-1 + (6 \times a) = 3$ 이므로 $6a = 4 \implies a = \\tf{2}{3}$\n(2) 이차항 이후 계산: $b + (3 \times a) = 3$ 임.\n$\implies b + (3 \times \\tf{2}{3}) = 3 \implies b + 2 = 3 \implies b = 1$\n(3) 나머지 계산: $-3 + (3 \times a) = c$ 임.\n$\implies -3 + (3 \times \\tf{2}{3}) = c \implies -3 + 2 = c \implies c = -1$\n최종 합 구하기: $a + b + c = \\tf{2}{3} + 1 + (-1) = \\tf{2}{3}$\n$\therefore \\tf{2}{3}$"
+        solution: "**[Logical Anchor]** 조립제법의 빈칸을 채워 미정계수를 결정함.\n조립제법의 연산 규칙(내려오면 더하고, 오른쪽은 곱한다)을 적용함.\n(1) 일차항 계산: $-1 + (6 \times a) = 3$ 이므로 $6a = 4 \implies a = \\frac{2}{3}$\n(2) 이차항 이후 계산: $b + (3 \times a) = 3$ 임.\n$\implies b + (3 \times \\frac{2}{3}) = 3 \implies b + 2 = 3 \implies b = 1$\n(3) 나머지 계산: $-3 + (3 \times a) = c$ 임.\n$\implies -3 + (3 \times \\frac{2}{3}) = c \implies -3 + 2 = c \implies c = -1$\n최종 합 구하기: $a + b + c = \\frac{2}{3} + 1 + (-1) = \\frac{2}{3}$\n$\therefore \\frac{2}{3}$"
     },
     {
         id: 5,
@@ -70,7 +70,7 @@ window.questionBank = [
         content: "이차방정식 $x^2-4x+2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\alpha^3+\\beta^3$의 값은? [4점]",
         choices: ["30", "35", "40", "45", "50"],
         answer: "③",
-        solution: "**[Logical Anchor]** 근과 계수의 관계를 통해 구한 기본 대칭식을 변형 공식에 대입함.\n이차방정식 $ax^2+bx+c=0$에서 두 근의 합과 곱을 구함.\n$\alpha + \beta = -\\tf{-4}{1} = 4, \quad \alpha\beta = \\tf{2}{1} = 2$\n세제곱의 합 공식을 전개함.\n$\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta)$\n구해놓은 수치를 대입하여 최종 값을 도출함.\n$\implies 4^3 - 3(2)(4) = 64 - 24 = 40$\n$\therefore 40$"
+        solution: "**[Logical Anchor]** 근과 계수의 관계를 통해 구한 기본 대칭식을 변형 공식에 대입함.\n이차방정식 $ax^2+bx+c=0$에서 두 근의 합과 곱을 구함.\n$\alpha + \beta = -\\frac{-4}{1} = 4, \quad \alpha\beta = \\frac{2}{1} = 2$\n세제곱의 합 공식을 전개함.\n$\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta)$\n구해놓은 수치를 대입하여 최종 값을 도출함.\n$\implies 4^3 - 3(2)(4) = 64 - 24 = 40$\n$\therefore 40$"
     },
     {
         id: 8,
@@ -131,7 +131,7 @@ window.questionBank = [
         level: "상",
         category: "이차방정식의 근의 위치(분리)",
         content: "이차방정식 $x^2-4x+3k-2=0$의 두 근이 모두 $1$보다 크도록 하는 실수 $k$의 범위가 $a < k \\le b$일 때, $a+b$의 값은? [4.8점]",
-        choices: ["8", "$\\tf{11}{3}$", "$\\tf{14}{3}$", "$\\tf{17}{3}$", "$\\tf{20}{3}$"],
+        choices: ["8", "$\\frac{11}{3}$", "$\\frac{14}{3}$", "$\\frac{17}{3}$", "$\\frac{20}{3}$"],
         answer: "②",
         solution: "**[Logical Anchor]** 판별식($D$), 축($x$), 경계($f(1)$)의 세 조건을 동시에 만족시켜야 함.\n(1) 판별식: $\\ tf{D}{4} = 4 - (3k-2) \ge 0 \implies 6 - 3k \ge 0 \implies k \le 2$\n(2) 대칭축: $x = 2$ 이므로 $1$보다 큼 (이미 만족)\n(3) 경계 함숫값: $f(1) = 1^2 - 4(1) + 3k - 2 > 0 \implies 3k > 5 \implies k > \\ tf{5}{3}$\n공통 범위: $\\ tf{5}{3} < k \le 2$\n$\\because a = \\ tf{5}{3}, b = 2$ 이므로 합을 구함.\n$a + b = \\ tf{5}{3} + \\ tf{6}{3} = \\ tf{11}{3}$\n$\therefore \\ tf{11}{3}$"
     },
@@ -151,7 +151,7 @@ window.questionBank = [
         content: "이차함수 $y=x^2$과 직선 $y=x+k$가 만나는 두 점 $A, B$를 통해 정의된 삼각형의 넓이 차 $S_1-S_2=32$일 때 양수 $k$는? [5.2점]",
         choices: ["13", "15", "17", "19", "21"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 교점의 좌표를 근과 계수의 관계로 치환하여 넓이 관계식을 유도함.\n$x^2 - x - k = 0$ 의 두 근을 $\\alpha, \\beta \\ (\\alpha < 0 < \\beta)$라 함.\n$\alpha + \beta = 1, \\ \alpha\beta = -k$\n$S_1 = \\tf{1}{2}\\beta^3, \ S_2 = -\\tf{1}{2}\\alpha^3$ (밑변이 $-\alpha$이므로)\n$S_1 - S_2 = \\tf{1}{2}(\beta^3 + \alpha^3) = 32 \implies \alpha^3 + \beta^3 = 64$\n곱셈 공식 변형 적용:\n$(\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta) = 1^3 - 3(-k)(1) = 64$\n$1 + 3k = 64 \implies 3k = 63$\n$\therefore k = 21$"
+        solution: "**[Logical Anchor]** 교점의 좌표를 근과 계수의 관계로 치환하여 넓이 관계식을 유도함.\n$x^2 - x - k = 0$ 의 두 근을 $\\alpha, \\beta \\ (\\alpha < 0 < \\beta)$라 함.\n$\alpha + \beta = 1, \\ \alpha\beta = -k$\n$S_1 = \\frac{1}{2}\\beta^3, \ S_2 = -\\frac{1}{2}\\alpha^3$ (밑변이 $-\alpha$이므로)\n$S_1 - S_2 = \\frac{1}{2}(\beta^3 + \alpha^3) = 32 \implies \alpha^3 + \beta^3 = 64$\n곱셈 공식 변형 적용:\n$(\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta) = 1^3 - 3(-k)(1) = 64$\n$1 + 3k = 64 \implies 3k = 63$\n$\therefore k = 21$"
     },
     {
         id: 17,

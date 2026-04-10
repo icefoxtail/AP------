@@ -22,16 +22,16 @@ window.questionBank = [
         id: 2,
         level: "하",
         category: "유한소수 판별",
-        content: "다음 <보기> 중 유한소수로 나타낼 수 있는 것을 모두 고른 것은? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $\\tf{1}{2^3 \\times 5}$ &nbsp; ㄴ. $\\tf{33}{2 \\times 3 \\times 5^2}$ <br> ㄷ. $\\tf{1}{2 \\times 7}$ &nbsp; ㄹ. $\\tf{21}{140}$</div>",
+        content: "다음 <보기> 중 유한소수로 나타낼 수 있는 것을 모두 고른 것은? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $\\frac{1}{2^3 \\times 5}$ &nbsp; ㄴ. $\\frac{33}{2 \\times 3 \\times 5^2}$ <br> ㄷ. $\\frac{1}{2 \\times 7}$ &nbsp; ㄹ. $\\frac{21}{140}$</div>",
         choices: ["ㄱ, ㄴ", "ㄱ, ㄹ", "ㄴ, ㄹ", "ㄱ, ㄴ, ㄹ", "ㄱ, ㄴ, ㄷ, ㄹ"],
         answer: "④",
-        solution: "ㄱ. 분모 소인수가 $2, 5$뿐임 (유한)\nㄴ. $\\tf{33}{2 \\times 3 \\times 5^2} = \\tf{11}{2 \\times 5^2}$ (유한)\nㄷ. 분모에 소인수 $7$ 존재 (무한)\nㄹ. $\\tf{21}{140} = \\tf{3}{20} = \\tf{3}{2^2 \\times 5}$ (유한)\n$\\therefore$ ㄱ, ㄴ, ㄹ"
+        solution: "ㄱ. 분모 소인수가 $2, 5$뿐임 (유한)\nㄴ. $\\frac{33}{2 \\times 3 \\times 5^2} = \\frac{11}{2 \\times 5^2}$ (유한)\nㄷ. 분모에 소인수 $7$ 존재 (무한)\nㄹ. $\\frac{21}{140} = \\frac{3}{20} = \\frac{3}{2^2 \\times 5}$ (유한)\n$\\therefore$ ㄱ, ㄴ, ㄹ"
     },
     {
         id: 3,
         level: "중",
         category: "순환소수가 되는 조건",
-        content: "분수 $\\tf{7}{5^2 \\times x}$를 순환소수로만 나타낼 수 있을 때, $10$ 이하의 자연수 $x$가 될 수 있는 모든 수들의 합을 구하면? [4점]",
+        content: "분수 $\\frac{7}{5^2 \\times x}$를 순환소수로만 나타낼 수 있을 때, $10$ 이하의 자연수 $x$가 될 수 있는 모든 수들의 합을 구하면? [4점]",
         choices: ["17", "18", "19", "20", "21"],
         answer: "②",
         solution: "**[Logical Anchor]** 순환소수가 되려면 기약분수 분모에 $2, 5$ 이외의 소인수가 있어야 함.\n$x \\in \\{1, 2, \\dots, 10\\}$ 중 후보: $3, 6, 7, 9$\n- $x=3$: 분모 소인수 $3$ (순환)\n- $x=6$: 분모 소인수 $2 \\times 3$ (순환)\n- $x=7$: 분자의 $7$과 약분됨 (유한)\n- $x=9$: 분모 소인수 $3^2$ (순환)\n$\\therefore 3+6+9 = 18$"
@@ -52,41 +52,41 @@ window.questionBank = [
         content: "다음 중 옳은 것을 모두 고르면? (정답 2개) [4점]",
         choices: ["모든 순환소수는 유리수이다.", "유한소수와 무한소수는 유리수이다.", "분수로 나타낼 수 없는 순환소수도 있다.", "모든 기약분수는 유한소수로 나타낼 수 있다.", "정수가 아닌 유리수는 유한소수 또는 순환소수로 나타낼 수 있다."],
         answer: "①, ⑤",
-        solution: "① 모든 순환소수는 분수 $\\tf{b}{a}$ 꼴로 나타낼 수 있음 (참)\n② 무한소수 중 비순환 무한소수(원주율 등)는 유리수가 아님\n④ $\\tf{1}{3}$ 등은 순환소수임\n⑤ 유리수는 유한소수 또는 순환소수로 분류됨 (참)\n$\\therefore$ ①, ⑤"
+        solution: "① 모든 순환소수는 분수 $\\frac{b}{a}$ 꼴로 나타낼 수 있음 (참)\n② 무한소수 중 비순환 무한소수(원주율 등)는 유리수가 아님\n④ $\\frac{1}{3}$ 등은 순환소수임\n⑤ 유리수는 유한소수 또는 순환소수로 분류됨 (참)\n$\\therefore$ ①, ⑤"
     },
     {
         id: 6,
         level: "중",
         category: "지수법칙",
-        content: "다음 <보기> 중 식을 간단히 한 결과가 옳은 것은 모두 몇 개인가? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $a^3 \\times a = a^4$ <br> ㄴ. $(a^3)^2 = a^6$ <br> ㄷ. $a^3 \\div a^5 = a^2$ <br> ㄹ. $(-\\tf{a^2}{b^3})^2 = \\tf{a^4}{b^6}$ <br> ㅁ. $(a^4)^2 \\times (b^2)^3 = a^{14}$</div>",
+        content: "다음 <보기> 중 식을 간단히 한 결과가 옳은 것은 모두 몇 개인가? [4점]<br><div style='border:1px solid #000; padding:5px;'>ㄱ. $a^3 \\times a = a^4$ <br> ㄴ. $(a^3)^2 = a^6$ <br> ㄷ. $a^3 \\div a^5 = a^2$ <br> ㄹ. $(-\\frac{a^2}{b^3})^2 = \\frac{a^4}{b^6}$ <br> ㅁ. $(a^4)^2 \\times (b^2)^3 = a^{14}$</div>",
         choices: ["1개", "2개", "3개", "4개", "5개"],
         answer: "③",
-        solution: "ㄱ. $a^{3+1} = a^4$ (참)\nㄴ. $a^{3 \\times 2} = a^6$ (참)\nㄷ. $a^3 \\div a^5 = \\tf{1}{a^2}$ (거짓)\nㄹ. $(-1)^2 \\tf{a^{2 \\times 2}}{b^{3 \\times 2}} = \\tf{a^4}{b^6}$ (참)\nㅁ. $a^8 \\times b^6$ (거짓)\n$\\therefore$ ㄱ, ㄴ, ㄹ로 총 3개임."
+        solution: "ㄱ. $a^{3+1} = a^4$ (참)\nㄴ. $a^{3 \\times 2} = a^6$ (참)\nㄷ. $a^3 \\div a^5 = \\frac{1}{a^2}$ (거짓)\nㄹ. $(-1)^2 \\frac{a^{2 \\times 2}}{b^{3 \\times 2}} = \\frac{a^4}{b^6}$ (참)\nㅁ. $a^8 \\times b^6$ (거짓)\n$\\therefore$ ㄱ, ㄴ, ㄹ로 총 3개임."
     },
     {
         id: 7,
         level: "중",
         category: "지수법칙 응용",
-        content: "$3^3 = A$라고 할 때, $\\tf{1}{81^3}$을 $A$를 사용하여 나타내면? [4점]",
-        choices: ["$\\tf{1}{A^3}$", "$A^3$", "$\\tf{1}{A^4}$", "$A^4$", "$\\tf{1}{A^5}$"],
+        content: "$3^3 = A$라고 할 때, $\\frac{1}{81^3}$을 $A$를 사용하여 나타내면? [4점]",
+        choices: ["$\\frac{1}{A^3}$", "$A^3$", "$\\frac{1}{A^4}$", "$A^4$", "$\\frac{1}{A^5}$"],
         answer: "③",
-        solution: "$81^3 = (3^4)^3 = 3^{12}$\n$\\because A = 3^3$ 이므로 $3^{12} = (3^3)^4 = A^4$\n$\\therefore \\tf{1}{81^3} = \\tf{1}{A^4}$"
+        solution: "$81^3 = (3^4)^3 = 3^{12}$\n$\\because A = 3^3$ 이므로 $3^{12} = (3^3)^4 = A^4$\n$\\therefore \\frac{1}{81^3} = \\frac{1}{A^4}$"
     },
     {
         id: 8,
         level: "중",
         category: "지수법칙 미지수 구하기",
-        content: "다음 조건을 모두 만족시키는 세 자연수에 대해 $a+b+c$의 값을 구하면? [4점]<br>(1) $(\\tf{2}{3^a})^5 = \\tf{2^5}{3^{20}}$ <br>(2) $(\\tf{7^a}{5^2})^4 = \\tf{7^c}{5^b}$",
+        content: "다음 조건을 모두 만족시키는 세 자연수에 대해 $a+b+c$의 값을 구하면? [4점]<br>(1) $(\\frac{2}{3^a})^5 = \\frac{2^5}{3^{20}}$ <br>(2) $(\\frac{7^a}{5^2})^4 = \\frac{7^c}{5^b}$",
         choices: ["22", "24", "26", "28", "30"],
         answer: "④",
-        solution: "(1) $\\tf{2^5}{3^{5a}} = \\tf{2^5}{3^{20}} \\implies 5a = 20 \\implies a = 4$\n(2) $(\\tf{7^4}{5^2})^4 = \\tf{7^{16}}{5^8} = \\tf{7^c}{5^b}$\n$\\implies c = 16, \\ b = 8$\n$\\therefore a+b+c = 4+8+16 = 28$"
+        solution: "(1) $\\frac{2^5}{3^{5a}} = \\frac{2^5}{3^{20}} \\implies 5a = 20 \\implies a = 4$\n(2) $(\\frac{7^4}{5^2})^4 = \\frac{7^{16}}{5^8} = \\frac{7^c}{5^b}$\n$\\implies c = 16, \\ b = 8$\n$\\therefore a+b+c = 4+8+16 = 28$"
     },
     {
         id: 9,
         level: "하",
         category: "단항식의 계산",
         content: "다음 중 계산 결과가 옳지 않은 것은? [4점]",
-        choices: ["$4x^2 \\times (-5x^3) = 20x^5$", "$3x^3 \\times (-xy^2) = -3x^4y^2$", "$(3x^2)^2 \\div (-27x^{11}) = -\\tf{1}{3x^7}$", "$12x^4 \\div \\tf{4}{3}x^3 = 9x$", "$9x^2 \\times 4x^3 \\div 6x^4 = 6x$"],
+        choices: ["$4x^2 \\times (-5x^3) = 20x^5$", "$3x^3 \\times (-xy^2) = -3x^4y^2$", "$(3x^2)^2 \\div (-27x^{11}) = -\\frac{1}{3x^7}$", "$12x^4 \\div \\frac{4}{3}x^3 = 9x$", "$9x^2 \\times 4x^3 \\div 6x^4 = 6x$"],
         answer: "①",
         solution: "① $4x^2 \\times (-5x^3) = -20x^5$\n$\\therefore$ 양수 결과로 표기된 ①번이 옳지 않음."
     },
@@ -95,9 +95,9 @@ window.questionBank = [
         level: "중",
         category: "단항식의 계산 활용",
         content: "삼각형의 넓이가 $50x^2y^8$이고 밑변의 길이가 $20x^3y$일 때, 이 삼각형의 높이를 구하면? [4점]",
-        choices: ["$4x^3y^8$", "$4x^4y^8$", "$5x^2y^2$", "$5x^3y^8$", "$\\tf{5y^7}{x}$"],
+        choices: ["$4x^3y^8$", "$4x^4y^8$", "$5x^2y^2$", "$5x^3y^8$", "$\\frac{5y^7}{x}$"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** $(\\text{넓이}) = \\tf{1}{2} \\times (\\text{밑변}) \\times (\\text{높이})$\n$50x^2y^8 = \\tf{1}{2} \\times 20x^3y \\times h$\n$50x^2y^8 = 10x^3y \\times h$\n$h = \\tf{50x^2y^8}{10x^3y} = \\tf{5y^7}{x}$\n$\\therefore \\tf{5y^7}{x}$"
+        solution: "**[Logical Anchor]** $(\\text{넓이}) = \\frac{1}{2} \\times (\\text{밑변}) \\times (\\text{높이})$\n$50x^2y^8 = \\frac{1}{2} \\times 20x^3y \\times h$\n$50x^2y^8 = 10x^3y \\times h$\n$h = \\frac{50x^2y^8}{10x^3y} = \\frac{5y^7}{x}$\n$\\therefore \\frac{5y^7}{x}$"
     },
     {
         id: 11,
@@ -115,7 +115,7 @@ window.questionBank = [
         content: "$\\overline{AB} = \\overline{AC}$인 이등변삼각형에서 $\\angle B$의 이등분선과 $\\overline{AC}$의 교점을 D라 하자. $\\angle A = 36^\\circ$일 때 다음 중 옳지 않은 것은? [4점]",
         choices: ["$\\angle ABD = 36^\\circ$", "$\\angle BDC = 72^\\circ$", "$\\angle ADB = 112^\\circ$", "$\\overline{AD} = \\overline{BD}$", "$\\overline{BD} = \\overline{BC}$"],
         answer: "③",
-        solution: "$\\angle B = \\angle C = \\tf{180-36}{2} = 72^\\circ$\n$\\angle ABD = \\angle DBC = 72 \\div 2 = 36^\\circ$\n$\\triangle ABD$에서 $\\angle A = \\angle ABD = 36^\\circ \\implies \\overline{AD} = \\overline{BD}$\n$\\triangle BCD$에서 $\\angle BDC = 180 - (36+72) = 72^\\circ \\implies \\overline{BD} = \\overline{BC}$\n$\\angle ADB = 180 - 72 = 108^\\circ$\n$\\therefore$ ③"
+        solution: "$\\angle B = \\angle C = \\frac{180-36}{2} = 72^\\circ$\n$\\angle ABD = \\angle DBC = 72 \\div 2 = 36^\\circ$\n$\\triangle ABD$에서 $\\angle A = \\angle ABD = 36^\\circ \\implies \\overline{AD} = \\overline{BD}$\n$\\triangle BCD$에서 $\\angle BDC = 180 - (36+72) = 72^\\circ \\implies \\overline{BD} = \\overline{BC}$\n$\\angle ADB = 180 - 72 = 108^\\circ$\n$\\therefore$ ③"
     },
     {
         id: 13,
@@ -151,7 +151,7 @@ window.questionBank = [
         content: "점 I는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]",
         choices: ["$37^\\circ$", "$40^\\circ$", "$45^\\circ$", "$50^\\circ$", "$55^\\circ$"],
         answer: "②",
-        solution: "**[Logical Anchor]** 내심의 각도 성질: $\\angle BIC = 90^\\circ + \\tf{1}{2}\\angle A$\n$110 = 90 + \\tf{1}{2}\\angle A$\n$20 = \\tf{1}{2}\\angle A$\n$\\therefore \\angle A = 40^\\circ$"
+        solution: "**[Logical Anchor]** 내심의 각도 성질: $\\angle BIC = 90^\\circ + \\frac{1}{2}\\angle A$\n$110 = 90 + \\frac{1}{2}\\angle A$\n$20 = \\frac{1}{2}\\angle A$\n$\\therefore \\angle A = 40^\\circ$"
     },
     {
         id: 17,
@@ -205,7 +205,7 @@ window.questionBank = [
         content: "[서술형 2] 단항식 $A$에 $2a^2b$를 나누어야 할 것을 잘못하여 곱하였더니 $16a^4b^3$이 되었다. 바르게 계산한 답을 구하시오. [6점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "$4b$",
-        solution: "$A \\times 2a^2b = 16a^4b^3$\n$A = \\tf{16a^4b^3}{2a^2b} = 8a^2b^2$\n바른 계산: $8a^2b^2 \\div 2a^2b = 4b$\n$\\therefore 4b$"
+        solution: "$A \\times 2a^2b = 16a^4b^3$\n$A = \\frac{16a^4b^3}{2a^2b} = 8a^2b^2$\n바른 계산: $8a^2b^2 \\div 2a^2b = 4b$\n$\\therefore 4b$"
     },
     {
         id: 23,
@@ -214,7 +214,7 @@ window.questionBank = [
         content: "[서술형 3] $\\angle C=90^\\circ$인 직각삼각형 ABC에서 외접원과 내접원의 반지름의 길이를 각각 구하시오. ($\\overline{AB}=20, \\overline{AC}=12, \\overline{BC}=16$) [5점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "외:10, 내:4",
-        solution: "**[Logical Anchor]** 직각삼각형의 외심은 빗변의 중점, 내심은 넓이 관계식을 이용함.\n(1) 외접원 반지름($R$): $R = \\tf{1}{2} \\times \\overline{AB} = \\tf{20}{2} = 10$\n(2) 내접원 반지름($r$): $(\\text{넓이}) = \\tf{1}{2} \\times 16 \\times 12 = 96$\n또한 $96 = \\tf{1}{2}r(20+12+16) = 24r$\n$r = \\tf{96}{24} = 4$\n$\\therefore$ 외: $10$, 내: $4$"
+        solution: "**[Logical Anchor]** 직각삼각형의 외심은 빗변의 중점, 내심은 넓이 관계식을 이용함.\n(1) 외접원 반지름($R$): $R = \\frac{1}{2} \\times \\overline{AB} = \\frac{20}{2} = 10$\n(2) 내접원 반지름($r$): $(\\text{넓이}) = \\frac{1}{2} \\times 16 \\times 12 = 96$\n또한 $96 = \\frac{1}{2}r(20+12+16) = 24r$\n$r = \\frac{96}{24} = 4$\n$\\therefore$ 외: $10$, 내: $4$"
     },
     {
         id: 24,

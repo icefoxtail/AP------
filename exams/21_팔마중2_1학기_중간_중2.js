@@ -32,9 +32,9 @@ window.questionBank = [
         level: "중",
         category: "순환소수의 분수 표현 과정",
         content: "순환소수 $0.7\\dot{2}$를 분수로 나타내는 과정이다. $x = 0.7222\\dots$ 일 때, $Ax=7.222\\dots, Bx=72.222\\dots, Cx=D$ 순서에서 옳지 않은 것은? [4점]",
-        choices: ["$A=10$", "$B=100$", "$C=99$", "$D=65$", "$E=\\tf{13}{18}$"],
+        choices: ["$A=10$", "$B=100$", "$C=99$", "$D=65$", "$E=\\frac{13}{18}$"],
         answer: "③",
-        solution: "$x = 0.7222\\dots$\n$10x = 7.222\\dots \\implies A=10$\n$100x = 72.222\\dots \\implies B=100$\n두 식을 빼면 $100x - 10x = 72 - 7$\n$90x = 65$\n$\\implies C=90, \\ D=65$\n$x = \\tf{65}{90} = \\tf{13}{18} \\implies E=\\tf{13}{18}$\n$\\therefore$ $C=90$이 되어야 하므로 ③번이 옳지 않음."
+        solution: "$x = 0.7222\\dots$\n$10x = 7.222\\dots \\implies A=10$\n$100x = 72.222\\dots \\implies B=100$\n두 식을 빼면 $100x - 10x = 72 - 7$\n$90x = 65$\n$\\implies C=90, \\ D=65$\n$x = \\frac{65}{90} = \\frac{13}{18} \\implies E=\\frac{13}{18}$\n$\\therefore$ $C=90$이 되어야 하므로 ③번이 옳지 않음."
     },
     {
         id: 4,
@@ -43,16 +43,16 @@ window.questionBank = [
         content: "다음 중 옳은 것은? [4점]",
         choices: ["순환소수는 모두 유리수이다.", "모든 무한소수는 유리수가 아니다.", "정수가 아닌 유리수는 모두 순환소수이다.", "유한소수 중에는 유리수가 아닌 것도 있다.", "순환소수는 유한소수이다."],
         answer: "①",
-        solution: "**[Logical Anchor]** 유리수는 분수 $\\tf{b}{a}$ ($a, b$는 정수, $a \\neq 0$) 꼴로 나타낼 수 있는 수임.\n① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\n② 무한소수 중 순환소수는 유리수임.\n③ 정수가 아닌 유리수는 유한소수이거나 순환소수임.\n④ 유한소수는 모두 유리수임.\n$\\therefore$ ①"
+        solution: "**[Logical Anchor]** 유리수는 분수 $\\frac{b}{a}$ ($a, b$는 정수, $a \\neq 0$) 꼴로 나타낼 수 있는 수임.\n① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\n② 무한소수 중 순환소수는 유리수임.\n③ 정수가 아닌 유리수는 유한소수이거나 순환소수임.\n④ 유한소수는 모두 유리수임.\n$\\therefore$ ①"
     },
     {
         id: 5,
         level: "중",
         category: "유한소수가 되는 조건",
-        content: "자연수 $1 \\le x \\le 100$ 에 대하여, $\\tf{x}{60}$은 유한소수이고 $\\tf{x}{30}$은 정수가 아닐 때 $x$의 개수는? [4점]",
+        content: "자연수 $1 \\le x \\le 100$ 에 대하여, $\\frac{x}{60}$은 유한소수이고 $\\frac{x}{30}$은 정수가 아닐 때 $x$의 개수는? [4점]",
         choices: ["28개", "29개", "30개", "31개", "32개"],
         answer: "③",
-        solution: "$\\tf{x}{60} = \\tf{x}{2^2 \\times 3 \\times 5}$ 가 유한소수이려면 분모의 소인수 $3$이 약분되어야 함.\n$\\implies x$는 $3$의 배수여야 함 ($100 \\div 3 = 33$개).\n$\\tf{x}{30}$이 정수가 아니어야 하므로 $x$는 $30$의 배수가 아니어야 함.\n$100$ 이하 $30$의 배수: $\{30, 60, 90\}$ (3개)\n$\\therefore 33 - 3 = 30$개"
+        solution: "$\\frac{x}{60} = \\frac{x}{2^2 \\times 3 \\times 5}$ 가 유한소수이려면 분모의 소인수 $3$이 약분되어야 함.\n$\\implies x$는 $3$의 배수여야 함 ($100 \\div 3 = 33$개).\n$\\frac{x}{30}$이 정수가 아니어야 하므로 $x$는 $30$의 배수가 아니어야 함.\n$100$ 이하 $30$의 배수: $\{30, 60, 90\}$ (3개)\n$\\therefore 33 - 3 = 30$개"
     },
     {
         id: 6,
@@ -68,7 +68,7 @@ window.questionBank = [
         level: "중",
         category: "지수법칙 미지수",
         content: "다음 $\\Box$ 안에 알맞은 수 중 나머지 넷과 다른 하나를 고르면? [4점]",
-        choices: ["$a^{\\Box} \\times a^2 \\div a^{10} = \\tf{1}{a^4}$", "$(\\tf{a^2}{b})^4 = \\tf{a^8}{b^{\\Box}}$", "$(a^2 \\cdot b)^{\\Box} = a^8 b^4$", "$a^8 \\div a^{\\Box} = a^2$", "$(a^2)^{\\Box} \\div a^4 = a^4$"],
+        choices: ["$a^{\\Box} \\times a^2 \\div a^{10} = \\frac{1}{a^4}$", "$(\\frac{a^2}{b})^4 = \\frac{a^8}{b^{\\Box}}$", "$(a^2 \\cdot b)^{\\Box} = a^8 b^4$", "$a^8 \\div a^{\\Box} = a^2$", "$(a^2)^{\\Box} \\div a^4 = a^4$"],
         answer: "④",
         solution: "① $x+2-10 = -4 \\implies x = 4$\n② $b$의 지수 $1 \\times 4 = 4 \\implies \\Box = 4$\n③ $a$의 지수 $2x=8 \\implies x = 4$\n④ $8-x=2 \\implies x = 6$\n⑤ $2x-4=4 \\implies x = 4$\n$\\therefore$ ④"
     },
@@ -88,7 +88,7 @@ window.questionBank = [
         content: "$2x^3y^3 \\div (-2xy) \\times 3y$ 를 계산하면? [4점]",
         choices: ["$-3x^2y^2$", "$-3x^2y^3$", "$3x^2y^2$", "$3x^2y^3$", "$-x^2y^3$"],
         answer: "②",
-        solution: "$2x^3y^3 \\times (-\\tf{1}{2xy}) \\times 3y = -x^2y^2 \\times 3y = -3x^2y^3$\n$\\therefore -3x^2y^3$"
+        solution: "$2x^3y^3 \\times (-\\frac{1}{2xy}) \\times 3y = -x^2y^2 \\times 3y = -3x^2y^3$\n$\\therefore -3x^2y^3$"
     },
     {
         id: 10,
@@ -121,7 +121,7 @@ window.questionBank = [
         id: 13,
         level: "중",
         category: "식의 대입",
-        content: "$x = \\tf{4}{7}, y = \\tf{1}{5}$ 일 때, $x^2 - \\{3y + (8y^3 + 4xy) \\div 4y\\} + 3$ 의 값은? [4점]",
+        content: "$x = \\frac{4}{7}, y = \\frac{1}{5}$ 일 때, $x^2 - \\{3y + (8y^3 + 4xy) \\div 4y\\} + 3$ 의 값은? [4점]",
         choices: ["1", "2", "3", "4", "5"],
         answer: "②",
         solution: "$x^2 - \{3y + 2y^2 + x\} + 3 = x^2 - x - 2y^2 - 3y + 3$\n$x, y$를 대입하여 연산 시 정수 부분으로 보정됨.\n$\\therefore 2$"
@@ -131,7 +131,7 @@ window.questionBank = [
         level: "하",
         category: "부등식의 성질",
         content: "다음 중 부등호 방향이 옳지 않은 것을 고르면? [3점]",
-        choices: ["$-a > -b$ 이면 $a < b$", "$2a < 2b$ 이면 $a - (-1) > b - (-1)$", "$\\tf{1}{3}a > \\tf{1}{3}b$ 이면 $-3 + \\tf{a}{2} > -3 + \\tf{b}{2}$", "$a < b$ 이면 $1 - (-\\tf{a}{2}) < 1 - (-\\tf{b}{2})$", "$-3+2a > -3+2b$ 이면 $-2a-1 < -2b-1$"],
+        choices: ["$-a > -b$ 이면 $a < b$", "$2a < 2b$ 이면 $a - (-1) > b - (-1)$", "$\\frac{1}{3}a > \\frac{1}{3}b$ 이면 $-3 + \\frac{a}{2} > -3 + \\frac{b}{2}$", "$a < b$ 이면 $1 - (-\\frac{a}{2}) < 1 - (-\\frac{b}{2})$", "$-3+2a > -3+2b$ 이면 $-2a-1 < -2b-1$"],
         answer: "②",
         solution: "② $2a < 2b \\implies a < b$\n양변에 같은 수 $1$을 더해도 부등호 방향은 유지되어야 함.\n$\\implies a + 1 < b + 1$\n$\\therefore$ ②번은 오답임."
     },
@@ -151,7 +151,7 @@ window.questionBank = [
         content: "$12 - 2x \\ge a$ 의 해 중 가장 큰 수가 $7$일 때, 상수 $a$의 값은? [4점]",
         choices: ["-1", "-2", "1", "2", "3"],
         answer: "②",
-        solution: "$-2x \\ge a - 12 \implies x \\le \\tf{12-a}{2}$\n해의 최댓값이 $7$이므로 $\\tf{12-a}{2} = 7$\n$12 - a = 14 \\implies a = -2$\n$\\therefore$ ②"
+        solution: "$-2x \\ge a - 12 \implies x \\le \\frac{12-a}{2}$\n해의 최댓값이 $7$이므로 $\\frac{12-a}{2} = 7$\n$12 - a = 14 \\implies a = -2$\n$\\therefore$ ②"
     },
     {
         id: 17,
@@ -169,7 +169,7 @@ window.questionBank = [
         content: "$|a| = 3$ 이고 일차부등식 $5x - 3 < a - bx$ 의 해가 $x < 1$ 일 때, $a+b$의 값은? [5점]",
         choices: ["1", "2", "3", "4", "5"],
         answer: "④",
-        solution: "$(5+b)x < a+3 \\implies x < \\tf{a+3}{5+b} = 1$\n$a-b = 2$. $a=3$이면 $b=1$, $a=-3$이면 $b=-5$ (모순).\n$\\therefore a=3, b=1 \\implies a+b=4$"
+        solution: "$(5+b)x < a+3 \\implies x < \\frac{a+3}{5+b} = 1$\n$a-b = 2$. $a=3$이면 $b=1$, $a=-3$이면 $b=-5$ (모순).\n$\\therefore a=3, b=1 \\implies a+b=4$"
     },
     {
         id: 19,
@@ -187,16 +187,16 @@ window.questionBank = [
         content: "집에서 학교까지 $2.4km$ 거리이다. 분속 $50m$로 걷다가 분속 $200m$로 뛰어서 $15$분 이내에 도착했다면, 걸어간 거리는 최대 몇 $m$인가? [5점]",
         choices: ["200m", "250m", "300m", "350m", "400m"],
         answer: "①",
-        solution: "$\\tf{x}{50} + \\tf{2400-x}{200} \\le 15$\n$4x + 2400 - x \\le 3000 \\implies 3x \\le 600 \implies x \\le 200$\n$\\therefore 200m$"
+        solution: "$\\frac{x}{50} + \\frac{2400-x}{200} \\le 15$\n$4x + 2400 - x \\le 3000 \\implies 3x \\le 600 \implies x \\le 200$\n$\\therefore 200m$"
     },
     {
         id: 21,
         level: "중상",
         category: "서술형 1",
-        content: "$\\tf{25^3+25^3+25^3+25^3+25^3}{9^2+9^2+9^2} \\times \\tf{3^5+3^5+3^5}{5^6}$ 을 간단히 계산하시오. [4점]",
+        content: "$\\frac{25^3+25^3+25^3+25^3+25^3}{9^2+9^2+9^2} \\times \\frac{3^5+3^5+3^5}{5^6}$ 을 간단히 계산하시오. [4점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "15",
-        solution: "$\\tf{5 \\times (5^2)^3}{3 \\times (3^2)^2} \\times \\tf{3 \\times 3^5}{5^6} = \\tf{5^7}{3^5} \\times \\tf{3^6}{5^6} = 5 \\times 3 = 15$\n$\\therefore 15$"
+        solution: "$\\frac{5 \\times (5^2)^3}{3 \\times (3^2)^2} \\times \\frac{3 \\times 3^5}{5^6} = \\frac{5^7}{3^5} \\times \\frac{3^6}{5^6} = 5 \\times 3 = 15$\n$\\therefore 15$"
     },
     {
         id: 22,
@@ -204,8 +204,8 @@ window.questionBank = [
         category: "서술형 2",
         content: "반지름 $a$, 높이 $3a$인 원기둥의 물을 반지름 $2a$인 원뿔에 부었을 때 가득 찼다면, 이 원뿔의 높이 $h$를 $a$에 관한 식으로 나타내시오. [6점]",
         choices: [" ", " ", " ", " ", " "],
-        answer: "$\\tf{9}{4}a$",
-        solution: "$3\\pi a^3 = \\tf{1}{3}\\pi (2a)^2 h \\implies 3\\pi a^3 = \\tf{4}{3}\\pi a^2 h$\n$h = 3a \\times \\tf{3}{4} = \\tf{9}{4}a$\n$\\therefore \\tf{9}{4}a$"
+        answer: "$\\frac{9}{4}a$",
+        solution: "$3\\pi a^3 = \\frac{1}{3}\\pi (2a)^2 h \\implies 3\\pi a^3 = \\frac{4}{3}\\pi a^2 h$\n$h = 3a \\times \\frac{3}{4} = \\frac{9}{4}a$\n$\\therefore \\frac{9}{4}a$"
     },
     {
         id: 23,

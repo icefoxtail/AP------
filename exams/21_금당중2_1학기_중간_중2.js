@@ -23,18 +23,18 @@ window.questionBank = [
         level: "하",
         category: "유한소수의 판별",
         content: "다음 분수 중 유한소수로 나타낼 수 없는 것은? [3점]",
-        choices: ["$\\tf{11}{44}$", "$\\tf{3}{5}$", "$\\tf{15}{42}$", "$\\tf{36}{120}$", "$\\tf{13}{2^3 \\times 5}$"],
+        choices: ["$\\frac{11}{44}$", "$\\frac{3}{5}$", "$\\frac{15}{42}$", "$\\frac{36}{120}$", "$\\frac{13}{2^3 \\times 5}$"],
         answer: "③",
-        solution: "**[Logical Anchor]** 기약분수 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수임.\n① $\\tf{11}{44} = \\tf{1}{4} = \\tf{1}{2^2} \\implies$ 유한\n② $\\tf{3}{5} \\implies$ 유한\n③ $\\tf{15}{42} = \\tf{5}{14} = \\tf{5}{2 \\times 7} \\implies$ 분모에 $7$ 존재\n④ $\\tf{36}{120} = \\tf{3}{10} = \\tf{3}{2 \\times 5} \\implies$ 유한\n⑤ $\\tf{13}{2^3 \\times 5} \\implies$ 유한\n$\\therefore$ ③"
+        solution: "**[Logical Anchor]** 기약분수 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수임.\n① $\\frac{11}{44} = \\frac{1}{4} = \\frac{1}{2^2} \\implies$ 유한\n② $\\frac{3}{5} \\implies$ 유한\n③ $\\frac{15}{42} = \\frac{5}{14} = \\frac{5}{2 \\times 7} \\implies$ 분모에 $7$ 존재\n④ $\\frac{36}{120} = \\frac{3}{10} = \\frac{3}{2 \\times 5} \\implies$ 유한\n⑤ $\\frac{13}{2^3 \\times 5} \\implies$ 유한\n$\\therefore$ ③"
     },
     {
         id: 3,
         level: "중",
         category: "유한소수가 되는 조건",
-        content: "두 분수 $\\tf{9}{330}, \\tf{6}{70}$에 자연수 $A$를 각각 곱하면 모두 유한소수가 될 때, $A$의 최솟값은? [4점]",
+        content: "두 분수 $\\frac{9}{330}, \\frac{6}{70}$에 자연수 $A$를 각각 곱하면 모두 유한소수가 될 때, $A$의 최솟값은? [4점]",
         choices: ["11", "21", "42", "77", "231"],
         answer: "④",
-        solution: "(1) $\\tf{9}{330} = \\tf{3}{110} = \\tf{3}{2 \\times 5 \\times 11}$\n$\\implies$ 유한소수가 되려면 $A$는 $11$의 배수여야 함.\n(2) $\\tf{6}{70} = \\tf{3}{35} = \\tf{3}{5 \\times 7}$\n$\\implies$ 유한소수가 되려면 $A$는 $7$의 배수여야 함.\n$\\implies A$는 $11$과 $7$의 공배수여야 함.\n$\\therefore$ $A$의 최솟값은 $77$임."
+        solution: "(1) $\\frac{9}{330} = \\frac{3}{110} = \\frac{3}{2 \\times 5 \\times 11}$\n$\\implies$ 유한소수가 되려면 $A$는 $11$의 배수여야 함.\n(2) $\\frac{6}{70} = \\frac{3}{35} = \\frac{3}{5 \\times 7}$\n$\\implies$ 유한소수가 되려면 $A$는 $7$의 배수여야 함.\n$\\implies A$는 $11$과 $7$의 공배수여야 함.\n$\\therefore$ $A$의 최솟값은 $77$임."
     },
     {
         id: 4,
@@ -59,9 +59,9 @@ window.questionBank = [
         level: "중",
         category: "지수법칙 응용",
         content: "$A = 3^{x+2}$일 때, $9^x$를 $A$를 사용한 식으로 나타내면? [5점]",
-        choices: ["$\\tf{A}{9}$", "$9A$", "$\\tf{A^2}{81}$", "$\\tf{A^2}{9}$", "$81A^2$"],
+        choices: ["$\\frac{A}{9}$", "$9A$", "$\\frac{A^2}{81}$", "$\\frac{A^2}{9}$", "$81A^2$"],
         answer: "③",
-        solution: "**[Logical Anchor]** 주어진 식을 $3^x$에 관해 정리한 후 대입함.\n$A = 3^x \\times 3^2 = 9 \\times 3^x$\n$\\implies 3^x = \\tf{A}{9}$\n$9^x = (3^2)^x = (3^x)^2$\n$\\implies (\\tf{A}{9})^2 = \\tf{A^2}{81}$\n$\\therefore \\tf{A^2}{81}$"
+        solution: "**[Logical Anchor]** 주어진 식을 $3^x$에 관해 정리한 후 대입함.\n$A = 3^x \\times 3^2 = 9 \\times 3^x$\n$\\implies 3^x = \\frac{A}{9}$\n$9^x = (3^2)^x = (3^x)^2$\n$\\implies (\\frac{A}{9})^2 = \\frac{A^2}{81}$\n$\\therefore \\frac{A^2}{81}$"
     },
     {
         id: 7,
@@ -76,10 +76,10 @@ window.questionBank = [
         id: 8,
         level: "하",
         category: "다항식의 계산",
-        content: "$(\\tf{1}{2}x - y) - (\\tf{1}{4}x - \\tf{1}{2}y)$를 간단히 했을 때의 계수를 구하시오. [4점]",
-        choices: ["$A=1, B=-6$", "$A=1, B=-2$", "$A=3, B=-6$", "$A=\\tf{1}{4}, B=-\\tf{3}{2}$", "$A=\\tf{1}{4}, B=-\\tf{1}{2}$"],
+        content: "$(\\frac{1}{2}x - y) - (\\frac{1}{4}x - \\frac{1}{2}y)$를 간단히 했을 때의 계수를 구하시오. [4점]",
+        choices: ["$A=1, B=-6$", "$A=1, B=-2$", "$A=3, B=-6$", "$A=\\frac{1}{4}, B=-\\frac{3}{2}$", "$A=\\frac{1}{4}, B=-\\frac{1}{2}$"],
         answer: "⑤",
-        solution: "괄호를 풀고 동류항끼리 계산함.\n$\\tf{1}{2}x - y - \\tf{1}{4}x + \\tf{1}{2}y$\n$= (\\tf{2}{4} - \\tf{1}{4})x + (-1 + \\tf{1}{2})y$\n$= \\tf{1}{4}x - \\tf{1}{2}y$\n$\\therefore A=\\tf{1}{4}, B=-\\tf{1}{2}$"
+        solution: "괄호를 풀고 동류항끼리 계산함.\n$\\frac{1}{2}x - y - \\frac{1}{4}x + \\frac{1}{2}y$\n$= (\\frac{2}{4} - \\frac{1}{4})x + (-1 + \\frac{1}{2})y$\n$= \\frac{1}{4}x - \\frac{1}{2}y$\n$\\therefore A=\\frac{1}{4}, B=-\\frac{1}{2}$"
     },
     {
         id: 9,
@@ -94,16 +94,16 @@ window.questionBank = [
         id: 10,
         level: "중",
         category: "다항식의 혼합 계산",
-        content: "다음 식 $5x(2+x) - (-2xy+6y^2) \\div \\tf{2}{3}y$를 간단히 하면? [4점]",
+        content: "다음 식 $5x(2+x) - (-2xy+6y^2) \\div \\frac{2}{3}y$를 간단히 하면? [4점]",
         choices: ["$12x+9y$", "$5x^2+7x-9y$", "$10x^2+12x+9y$", "$18x-9y$", "$5x^2+13x-9y$"],
         answer: "⑤",
-        solution: "$10x + 5x^2 - (-2xy + 6y^2) \\times \\tf{3}{2y}$\n$= 10x + 5x^2 - (-3x + 9y)$\n$= 10x + 5x^2 + 3x - 9y$\n$= 5x^2 + 13x - 9y$\n$\\therefore 5x^2 + 13x - 9y$"
+        solution: "$10x + 5x^2 - (-2xy + 6y^2) \\times \\frac{3}{2y}$\n$= 10x + 5x^2 - (-3x + 9y)$\n$= 10x + 5x^2 + 3x - 9y$\n$= 5x^2 + 13x - 9y$\n$\\therefore 5x^2 + 13x - 9y$"
     },
     {
         id: 11,
         level: "중",
         category: "도형에서의 다항식 계산",
-        content: "가로 $6x$, 세로 $7y$인 직사각형 내부의 어두운 부분의 넓이를 나타내는 식 $Axy+Bx+Cy+D$에서 $A+C+\\tf{B}{2}$의 값을 구하시오. [4점]",
+        content: "가로 $6x$, 세로 $7y$인 직사각형 내부의 어두운 부분의 넓이를 나타내는 식 $Axy+Bx+Cy+D$에서 $A+C+\\frac{B}{2}$의 값을 구하시오. [4점]",
         choices: ["0", "9", "13", "25", "37"],
         answer: "②",
         solution: "전체 직사각형 넓이 $42xy$에서 여백 삼각형들의 넓이를 제함.\n(상세 수치 적용 시) $\\implies 12xy + 6x + 2y - 1$\n$\\implies A=12, B=6, C=2, D=-1$ 등과 연계하여 계산함.\n$\\therefore 9$ (제시된 데이터 기반 결과)"
@@ -113,16 +113,16 @@ window.questionBank = [
         level: "하",
         category: "부등식의 해",
         content: "다음 중 $x=1$일 때 참인 부등식은? [3점]",
-        choices: ["$x<0$", "$x+1 \\ge 3$", "$x-1 \\le 0$", "$2x > 3$", "$\\tf{x}{2} < 0$"],
+        choices: ["$x<0$", "$x+1 \\ge 3$", "$x-1 \\le 0$", "$2x > 3$", "$\\frac{x}{2} < 0$"],
         answer: "③",
-        solution: "$x=1$을 각 식에 대입함.\n① $1 < 0$ (거짓)\n② $1+1 \\ge 3 \\implies 2 \\ge 3$ (거짓)\n③ $1-1 \\le 0 \\implies 0 \\le 0$ (참)\n④ $2(1) > 3 \\implies 2 > 3$ (거짓)\n⑤ $\\tf{1}{2} < 0$ (거짓)\n$\\therefore$ ③"
+        solution: "$x=1$을 각 식에 대입함.\n① $1 < 0$ (거짓)\n② $1+1 \\ge 3 \\implies 2 \\ge 3$ (거짓)\n③ $1-1 \\le 0 \\implies 0 \\le 0$ (참)\n④ $2(1) > 3 \\implies 2 > 3$ (거짓)\n⑤ $\\frac{1}{2} < 0$ (거짓)\n$\\therefore$ ③"
     },
     {
         id: 13,
         level: "중",
         category: "부등식의 성질",
         content: "수직선 위 네 수 $a, b, c, d$ ($a < b < 0 < c < d$)에 대해 옳지 않은 것은? [4점]",
-        choices: ["$a+c < b+c$", "$bc < cd$", "$\\tf{b}{a} > \\tf{c}{a}$", "$d-a > b-a$", "$d^2 < ad$"],
+        choices: ["$a+c < b+c$", "$bc < cd$", "$\\frac{b}{a} > \\frac{c}{a}$", "$d-a > b-a$", "$d^2 < ad$"],
         answer: "⑤",
         solution: "⑤ $d^2$은 양수, $a < 0$이고 $d > 0$이므로 $ad$는 음수임.\n$\\because$ 양수가 음수보다 작을 수 없음.\n$\\therefore$ ⑤번이 옳지 않음."
     },
@@ -130,10 +130,10 @@ window.questionBank = [
         id: 14,
         level: "중",
         category: "부등식의 범위",
-        content: "$A = \\tf{x+9}{3}$ 이고, $2 \\le A < 5$일 때 $x$ 값의 범위는? [4점]",
+        content: "$A = \\frac{x+9}{3}$ 이고, $2 \\le A < 5$일 때 $x$ 값의 범위는? [4점]",
         choices: ["$-6 < x \\le 3$", "$-3 \\le x < 6$", "$3 < x \\le 6$", "$-3 < x \\le 6$", "$3 \\le x < 6$"],
         answer: "②",
-        solution: "$2 \\le \\tf{x+9}{3} < 5$\n양변에 $3$을 곱함 $\\implies 6 \\le x+9 < 15$\n양변에서 $9$를 뺌 $\\implies -3 \\le x < 6$\n$\\therefore -3 \\le x < 6$"
+        solution: "$2 \\le \\frac{x+9}{3} < 5$\n양변에 $3$을 곱함 $\\implies 6 \\le x+9 < 15$\n양변에서 $9$를 뺌 $\\implies -3 \\le x < 6$\n$\\therefore -3 \\le x < 6$"
     },
     {
         id: 15,
@@ -160,16 +160,16 @@ window.questionBank = [
         content: "일차부등식 $x+2a \\ge 1 - (x-a)$의 해가 수직선상 $x \\ge -2$일 때 $a$의 값은? [4점]",
         choices: ["1", "2", "3", "4", "5"],
         answer: "⑤",
-        solution: "$x + 2a \\ge 1 - x + a$\n$2x \\ge 1 - a \\implies x \\ge \\tf{1-a}{2}$\n주어진 해 $x \\ge -2$와 비교함.\n$\\tf{1-a}{2} = -2 \\implies 1-a = -4$\n$\\therefore a = 5$"
+        solution: "$x + 2a \\ge 1 - x + a$\n$2x \\ge 1 - a \\implies x \\ge \\frac{1-a}{2}$\n주어진 해 $x \\ge -2$와 비교함.\n$\\frac{1-a}{2} = -2 \\implies 1-a = -4$\n$\\therefore a = 5$"
     },
     {
         id: 18,
         level: "상",
         category: "일차부등식 심화",
-        content: "$\\tf{1}{2}x+3 \\le x+a$의 해 중 가장 작은 정수가 $-3$일 때 $a$의 범위는? [5점]",
-        choices: ["$\\tf{9}{2} \\le a < 5$", "$\\tf{9}{2} < a \\le 5$", "$5 \\le a < \\tf{9}{2}$", "$-5 < a \\le \\tf{9}{2}$", "$4 < a \\le 4.5$"],
+        content: "$\\frac{1}{2}x+3 \\le x+a$의 해 중 가장 작은 정수가 $-3$일 때 $a$의 범위는? [5점]",
+        choices: ["$\\frac{9}{2} \\le a < 5$", "$\\frac{9}{2} < a \\le 5$", "$5 \\le a < \\frac{9}{2}$", "$-5 < a \\le \\frac{9}{2}$", "$4 < a \\le 4.5$"],
         answer: "⑤",
-        solution: "$\\tf{1}{2}x - x \\le a - 3 \\implies -\\tf{1}{2}x \\le a - 3$\n$x \\ge 6 - 2a$\n해 중 가장 작은 정수가 $-3$이려면\n$-3 \\le 6 - 2a < -2$\n$-9 \\le -2a < -8$\n$\\therefore 4 < a \\le 4.5$"
+        solution: "$\\frac{1}{2}x - x \\le a - 3 \\implies -\\frac{1}{2}x \\le a - 3$\n$x \\ge 6 - 2a$\n해 중 가장 작은 정수가 $-3$이려면\n$-3 \\le 6 - 2a < -2$\n$-9 \\le -2a < -8$\n$\\therefore 4 < a \\le 4.5$"
     },
     {
         id: 19,
@@ -213,8 +213,8 @@ window.questionBank = [
         category: "서술형 1",
         content: "순환소수 $2.1\\dot{6}$을 기약분수로 나타내시오. [4점]",
         choices: [" ", " ", " ", " ", " "],
-        answer: "$\\tf{13}{6}$",
-        solution: "$x = 2.1666...$\n$100x = 216.666...$\n$10x = 21.666...$\n$90x = 195$\n$x = \\tf{195}{90} = \\tf{13}{6}$\n$\\therefore \\tf{13}{6}$"
+        answer: "$\\frac{13}{6}$",
+        solution: "$x = 2.1666...$\n$100x = 216.666...$\n$10x = 21.666...$\n$90x = 195$\n$x = \\frac{195}{90} = \\frac{13}{6}$\n$\\therefore \\frac{13}{6}$"
     },
     {
         id: 24,
@@ -229,7 +229,7 @@ window.questionBank = [
         id: 25,
         level: "중",
         category: "서술형 3",
-        content: "일차부등식 $7 - \\tf{x+1}{2} > \\tf{5}{3}(4x-9)$를 푸시오. [4점]",
+        content: "일차부등식 $7 - \\frac{x+1}{2} > \\frac{5}{3}(4x-9)$를 푸시오. [4점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "$x < 3$",
         solution: "양변에 $6$을 곱함: $42 - 3(x+1) > 10(4x-9)$\n$42 - 3x - 3 > 40x - 90$\n$39 - 3x > 40x - 90$\n$129 > 43x$\n$\\therefore x < 3$"

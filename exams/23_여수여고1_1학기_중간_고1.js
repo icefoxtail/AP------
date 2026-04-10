@@ -31,19 +31,19 @@ window.questionBank = [
         id: 3,
         level: "하",
         category: "복소수의 연산",
-        content: "$(2-i)^2 - \\tf{10}{3+i} = a+bi$ 일 때, $a+b$의 값은? [3.9점]",
+        content: "$(2-i)^2 - \\frac{10}{3+i} = a+bi$ 일 때, $a+b$의 값은? [3.9점]",
         choices: ["-3", "-1", "0", "1", "3"],
         answer: "①",
-        solution: "**[Logical Anchor]** 곱셈 공식과 분모의 실수화를 단계별로 적용함.\n$\text{i) 앞부분 전개: } (2-i)^2$\n$\implies 2^2 - 2(2)(i) + i^2 = 4 - 4i - 1 = 3 - 4i$\n$\text{ii) 뒷부분 실수화: } \\tf{10}{3+i}$\n$\\tf{10(3-i)}{(3+i)(3-i)} = \\tf{10(3-i)}{9 - i^2} = \\tf{10(3-i)}{10} = 3 - i$\n$\text{iii) 식의 결합}$\n$(3 - 4i) - (3 - i) = 3 - 4i - 3 + i = -3i$\n$\because a = 0, b = -3$ 이므로\n$\therefore a + b = -3$"
+        solution: "**[Logical Anchor]** 곱셈 공식과 분모의 실수화를 단계별로 적용함.\n$\text{i) 앞부분 전개: } (2-i)^2$\n$\implies 2^2 - 2(2)(i) + i^2 = 4 - 4i - 1 = 3 - 4i$\n$\text{ii) 뒷부분 실수화: } \\frac{10}{3+i}$\n$\\frac{10(3-i)}{(3+i)(3-i)} = \\frac{10(3-i)}{9 - i^2} = \\frac{10(3-i)}{10} = 3 - i$\n$\text{iii) 식의 결합}$\n$(3 - 4i) - (3 - i) = 3 - 4i - 3 + i = -3i$\n$\because a = 0, b = -3$ 이므로\n$\therefore a + b = -3$"
     },
     {
         id: 4,
         level: "하",
         category: "근과 계수의 관계",
-        content: "이차방정식 $x^2-4x+2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\tf{\\beta}{\\alpha} + \\tf{\\alpha}{\\beta}$의 값은? [4.0점]",
+        content: "이차방정식 $x^2-4x+2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\frac{\\beta}{\\alpha} + \\frac{\\alpha}{\\beta}$의 값은? [4.0점]",
         choices: ["-6", "-3", "2", "3", "6"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 통분 후 곱셈 공식의 변형을 통해 합과 곱의 형태로 변환함.\n근과 계수의 관계에 의하여: $\alpha+\beta=4, \alpha\beta=2$\n$\text{i) 식의 통분}$\n$\\tf{\beta}{\alpha} + \\tf{\alpha}{\beta} = \\tf{\alpha^2 + \beta^2}{\alpha\beta}$\n$\text{ii) 분자의 변형}$\n$\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta = 4^2 - 2(2) = 12$\n$\text{iii) 최종 값 대입}$\n$\\tf{12}{2} = 6$\n$\therefore 6$"
+        solution: "**[Logical Anchor]** 통분 후 곱셈 공식의 변형을 통해 합과 곱의 형태로 변환함.\n근과 계수의 관계에 의하여: $\alpha+\beta=4, \alpha\beta=2$\n$\text{i) 식의 통분}$\n$\\frac{\beta}{\alpha} + \\frac{\alpha}{\beta} = \\frac{\alpha^2 + \beta^2}{\alpha\beta}$\n$\text{ii) 분자의 변형}$\n$\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta = 4^2 - 2(2) = 12$\n$\text{iii) 최종 값 대입}$\n$\\frac{12}{2} = 6$\n$\therefore 6$"
     },
     {
         id: 5,
@@ -85,10 +85,10 @@ window.questionBank = [
         id: 9,
         level: "상",
         category: "다항식의 나눗셈 변형",
-        content: "다항식 $P(x)$를 $2x-1$로 나누었을 때의 몫이 $Q(x)$, 나머지가 $R$이다. 다항식 $xP(x)$를 $x-\\tf{1}{2}$로 나누었을 때의 몫과 나머지는? [4.5점]",
+        content: "다항식 $P(x)$를 $2x-1$로 나누었을 때의 몫이 $Q(x)$, 나머지가 $R$이다. 다항식 $xP(x)$를 $x-\\frac{1}{2}$로 나누었을 때의 몫과 나머지는? [4.5점]",
         choices: ["$2xQ(x)+R, \\ tf{1}{2}R$", "$xQ(x)+R, \\ tf{1}{2}R$", "$xQ(x)+\\ tf{1}{2}R, R$", "$2xQ(x)+\\ tf{1}{2}R, \\ tf{1}{2}R$", "$2xQ(x)+R, R$"],
         answer: "①",
-        solution: "**[Logical Anchor]** 나머지의 차수 조정을 위해 1차식을 다시 1차식으로 나누는 과정이 필수임.\n$P(x) = (2x-1)Q(x) + R$\n$xP(x) = x(2x-1)Q(x) + Rx$\n$= 2x(x-\\tf{1}{2})Q(x) + Rx$\n여기서 $Rx = R(x-\\tf{1}{2}) + \\tf{1}{2}R$ 이므로 대입함.\n$= 2x(x-\\tf{1}{2})Q(x) + R(x-\\tf{1}{2}) + \\tf{1}{2}R$\n$= (x-\\tf{1}{2})\{2xQ(x) + R\} + \\tf{1}{2}R$\n$\\therefore$ 몫: $2xQ(x)+R$, 나머지: $\\tf{1}{2}R$"
+        solution: "**[Logical Anchor]** 나머지의 차수 조정을 위해 1차식을 다시 1차식으로 나누는 과정이 필수임.\n$P(x) = (2x-1)Q(x) + R$\n$xP(x) = x(2x-1)Q(x) + Rx$\n$= 2x(x-\\frac{1}{2})Q(x) + Rx$\n여기서 $Rx = R(x-\\frac{1}{2}) + \\frac{1}{2}R$ 이므로 대입함.\n$= 2x(x-\\frac{1}{2})Q(x) + R(x-\\frac{1}{2}) + \\frac{1}{2}R$\n$= (x-\\frac{1}{2})\{2xQ(x) + R\} + \\frac{1}{2}R$\n$\\therefore$ 몫: $2xQ(x)+R$, 나머지: $\\frac{1}{2}R$"
     },
     {
         id: 10,
@@ -103,10 +103,10 @@ window.questionBank = [
         id: 11,
         level: "중",
         category: "복소수의 주기성",
-        content: "복소수 $z=\\tf{1+i}{\\sqrt{2}}$에 대하여 $z^n=1$이 되도록 하는 자연수 $n$의 최솟값은? [4.6점]",
+        content: "복소수 $z=\\frac{1+i}{\\sqrt{2}}$에 대하여 $z^n=1$이 되도록 하는 자연수 $n$의 최솟값은? [4.6점]",
         choices: ["2", "4", "6", "8", "10"],
         answer: "④",
-        solution: "**[Logical Anchor]** 거듭제곱을 통해 값이 순환하는 규칙성을 찾음.\n$z^2 = (\\tf{1+i}{\\sqrt{2}})^2 = \\tf{1+2i-1}{2} = i$\n$z^4 = (z^2)^2 = i^2 = -1$\n$z^8 = (z^4)^2 = (-1)^2 = 1$\n$\\because z^n = 1$ 을 만족하는 최초의 자연수 $n$ 은 $8$임.\n$\therefore 8$"
+        solution: "**[Logical Anchor]** 거듭제곱을 통해 값이 순환하는 규칙성을 찾음.\n$z^2 = (\\frac{1+i}{\\sqrt{2}})^2 = \\frac{1+2i-1}{2} = i$\n$z^4 = (z^2)^2 = i^2 = -1$\n$z^8 = (z^4)^2 = (-1)^2 = 1$\n$\\because z^n = 1$ 을 만족하는 최초의 자연수 $n$ 은 $8$임.\n$\therefore 8$"
     },
     {
         id: 12,
@@ -193,10 +193,10 @@ window.questionBank = [
         id: 21,
         level: "상",
         category: "복소수의 성질",
-        content: "[서술형 3] 복소수 $z=a+bi (a, b \ne 0)$가 $z^2+\\bar{z}^2=0$을 만족시킬 때, $\\tf{z}{\\bar{z}} + \\tf{\\bar{z}}{z}$의 값을 구하시오. [7.0점]",
+        content: "[서술형 3] 복소수 $z=a+bi (a, b \ne 0)$가 $z^2+\\bar{z}^2=0$을 만족시킬 때, $\\frac{z}{\\bar{z}} + \\frac{\\bar{z}}{z}$의 값을 구하시오. [7.0점]",
         choices: [" "],
         answer: "0",
-        solution: "**[Logical Anchor]** 통분을 통해 주어진 조건식의 형태를 유도함.\n구하고자 하는 식: $\\tf{z^2 + \bar{z}^2}{z\bar{z}}$\n조건에서 $z^2 + \bar{z}^2 = 0$ 이라 하였으므로\n$\\tf{0}{z\bar{z}} = 0$\n$\\therefore 0$"
+        solution: "**[Logical Anchor]** 통분을 통해 주어진 조건식의 형태를 유도함.\n구하고자 하는 식: $\\frac{z^2 + \bar{z}^2}{z\bar{z}}$\n조건에서 $z^2 + \bar{z}^2 = 0$ 이라 하였으므로\n$\\frac{0}{z\bar{z}} = 0$\n$\\therefore 0$"
     },
     {
         id: 22,

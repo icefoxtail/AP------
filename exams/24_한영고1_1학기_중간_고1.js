@@ -128,10 +128,10 @@ window.questionBank = [
         id: 14,
         level: "상",
         category: "허근 오메가의 성질",
-        content: "[상] $x+\\tf{1}{x}=-1$의 한 허근을 $\\omega$라 할 때, <보기>에서 옳은 것만을 고른 것은? <div class='box'>ㄱ. $\\omega+\\bar{\\omega} = \\omega+\\omega^2$<br>ㄴ. $(\\bar{\\omega}+1)(\\bar{\\omega}^2+1)(\\bar{\\omega}^4+1)(\\bar{\\omega}^8+1)=1$ <br>ㄷ. $(\\bar{\\omega}+1)^{2n}=(\\tf{\\bar{\\omega}}{\\bar{\\omega}+\\omega})^{3n}$을 만족하는 60이하 자연수 $n$은 10개이다.</div>",
+        content: "[상] $x+\\frac{1}{x}=-1$의 한 허근을 $\\omega$라 할 때, <보기>에서 옳은 것만을 고른 것은? <div class='box'>ㄱ. $\\omega+\\bar{\\omega} = \\omega+\\omega^2$<br>ㄴ. $(\\bar{\\omega}+1)(\\bar{\\omega}^2+1)(\\bar{\\omega}^4+1)(\\bar{\\omega}^8+1)=1$ <br>ㄷ. $(\\bar{\\omega}+1)^{2n}=(\\frac{\\bar{\\omega}}{\\bar{\\omega}+\\omega})^{3n}$을 만족하는 60이하 자연수 $n$은 10개이다.</div>",
         choices: ["ㄱ", "ㄷ", "ㄱ, ㄴ", "ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 분수 방정식을 정리하여 $\\omega$의 성질을 파악한 후 각 보기에 적용함.\n양변에 $x$를 곱해 정리하면 $x^2+x+1=0$이므로 $\\omega^3=1, \\omega^2+\\omega+1=0$의 성질을 가짐.\nㄱ 검증:\n\\implies \\bar{\\omega} = \\omega^2\\text{이므로 } \\omega+\\bar{\\omega} = \\omega+\\omega^2\\text{은 성립함. (참)}\nㄴ 검증:\n\\implies (\\bar{\\omega}+1)(\\bar{\\omega}^2+1) = (-\\bar{\\omega}^2)(-\\bar{\\omega}) = \\bar{\\omega}^3 = 1\n\\implies \\text{주어진 식은 } 1 \\times 1 = 1\\text{이 됨. (참)}\nㄷ 검증:\n\\text{좌변: } (\\bar{\\omega}+1)^{2n} = (-\\bar{\\omega}^2)^{2n} = \\bar{\\omega}^{4n} = \\bar{\\omega}^n\n\\text{우변: } (\\tf{\\bar{\\omega}}{-1})^{3n} = (-1)^n (\\because \\bar{\\omega}^3=1)\n\\implies \\bar{\\omega}^n = (-1)^n\\text{을 만족하는 } n\\text{은 6의 배수일 때 성립함. 60 이하 6의 배수는 10개임. (참)}\n\\therefore \\text{ㄱ, ㄴ, ㄷ}"
+        solution: "**[Logical Anchor]** 분수 방정식을 정리하여 $\\omega$의 성질을 파악한 후 각 보기에 적용함.\n양변에 $x$를 곱해 정리하면 $x^2+x+1=0$이므로 $\\omega^3=1, \\omega^2+\\omega+1=0$의 성질을 가짐.\nㄱ 검증:\n\\implies \\bar{\\omega} = \\omega^2\\text{이므로 } \\omega+\\bar{\\omega} = \\omega+\\omega^2\\text{은 성립함. (참)}\nㄴ 검증:\n\\implies (\\bar{\\omega}+1)(\\bar{\\omega}^2+1) = (-\\bar{\\omega}^2)(-\\bar{\\omega}) = \\bar{\\omega}^3 = 1\n\\implies \\text{주어진 식은 } 1 \\times 1 = 1\\text{이 됨. (참)}\nㄷ 검증:\n\\text{좌변: } (\\bar{\\omega}+1)^{2n} = (-\\bar{\\omega}^2)^{2n} = \\bar{\\omega}^{4n} = \\bar{\\omega}^n\n\\text{우변: } (\\frac{\\bar{\\omega}}{-1})^{3n} = (-1)^n (\\because \\bar{\\omega}^3=1)\n\\implies \\bar{\\omega}^n = (-1)^n\\text{을 만족하는 } n\\text{은 6의 배수일 때 성립함. 60 이하 6의 배수는 10개임. (참)}\n\\therefore \\text{ㄱ, ㄴ, ㄷ}"
     },
     {
         id: 15,
@@ -149,7 +149,7 @@ window.questionBank = [
         content: "[단답형 2/중상] 연립부등식 $3x-2a \\ge 6x+1, 4-x < 5x-2$를 만족시키는 정수 개수가 2일 때, 모든 정수 $a$의 합은? [5.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "-11",
-        solution: "**[Logical Anchor]** 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\n각 부등식을 정리함.\n\\text{i) } 3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\tf{-2a-1}{3}\n\\text{ii) } 6x > 6 \\implies x > 1\n범위 $1 < x \\le \\tf{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\n경계값의 범위를 부등식으로 설정함.\n\\implies 3 \\le \\tf{-2a-1}{3} < 4\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\n\\implies -6.5 < a \\le -5\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\n\\implies -6 + (-5) = -11\n\\therefore -11"
+        solution: "**[Logical Anchor]** 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\n각 부등식을 정리함.\n\\text{i) } 3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\frac{-2a-1}{3}\n\\text{ii) } 6x > 6 \\implies x > 1\n범위 $1 < x \\le \\frac{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\n경계값의 범위를 부등식으로 설정함.\n\\implies 3 \\le \\frac{-2a-1}{3} < 4\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\n\\implies -6.5 < a \\le -5\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\n\\implies -6 + (-5) = -11\n\\therefore -11"
     },
     {
         id: 17,
@@ -158,7 +158,7 @@ window.questionBank = [
         content: "[단답형 3] 이차방정식 $x^2+2(1-k)x+k^2+3=0$이 실근을 갖도록 하는 실수 $k$의 범위를 구하시오. [5.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "k <= -1",
-        solution: "**[Logical Anchor]** 이차방정식이 실근을 가질 조건은 판별식이 0 이상임을 이용함.\n\\implies \\tf{D}{4} = (1-k)^2 - (k^2+3) \\ge 0\n식을 전개하여 부등식을 정리함.\n\\implies 1 - 2k + k^2 - k^2 - 3 \\ge 0\n\\implies -2k - 2 \\ge 0 \\implies -2k \\ge 2\n\\implies k \\le -1\n\\therefore k \\le -1"
+        solution: "**[Logical Anchor]** 이차방정식이 실근을 가질 조건은 판별식이 0 이상임을 이용함.\n\\implies \\frac{D}{4} = (1-k)^2 - (k^2+3) \\ge 0\n식을 전개하여 부등식을 정리함.\n\\implies 1 - 2k + k^2 - k^2 - 3 \\ge 0\n\\implies -2k - 2 \\ge 0 \\implies -2k \\ge 2\n\\implies k \\le -1\n\\therefore k \\le -1"
     },
     {
         id: 18,
@@ -173,10 +173,10 @@ window.questionBank = [
         id: 19,
         level: "중상",
         category: "음수의 제곱근",
-        content: "[서술형 1/중상] $x^2+7x+1=0$의 두 근 $\\alpha, \\beta$일 때 $k=\\sqrt{\\alpha}-\\sqrt{\\beta}+\\tf{1}{\\sqrt{\\alpha}}-\\tf{1}{\\sqrt{\\beta}}$의 값을 구하시오. [6.0점]",
+        content: "[서술형 1/중상] $x^2+7x+1=0$의 두 근 $\\alpha, \\beta$일 때 $k=\\sqrt{\\alpha}-\\sqrt{\\beta}+\\frac{1}{\\sqrt{\\alpha}}-\\frac{1}{\\sqrt{\\beta}}$의 값을 구하시오. [6.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "0",
-        solution: "**[Logical Anchor]** 근과 계수의 관계를 통해 두 근의 부호를 판별하고, 음수의 제곱근 성질을 적용함.\n$\\alpha+\\beta=-7, \\alpha\\beta=1$이므로 두 근 $\\alpha, \\beta$는 모두 음수임.\n\\implies \\sqrt{\\alpha}\\sqrt{\\beta} = -\\sqrt{\\alpha\\beta} = -1\n목표 식을 정리하여 통분함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\tf{\\sqrt{\\beta}-\\sqrt{\\alpha}}{\\sqrt{\\alpha}\\sqrt{\\beta}}\n음수의 제곱근 곱셈 결과를 대입함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\tf{-(\\sqrt{\\alpha}-\\sqrt{\\beta})}{-1} = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + (\\sqrt{\\alpha}-\\sqrt{\\beta})\n(※ 기존 풀이의 구조적 소거 논리를 따름)\n\\therefore 0"
+        solution: "**[Logical Anchor]** 근과 계수의 관계를 통해 두 근의 부호를 판별하고, 음수의 제곱근 성질을 적용함.\n$\\alpha+\\beta=-7, \\alpha\\beta=1$이므로 두 근 $\\alpha, \\beta$는 모두 음수임.\n\\implies \\sqrt{\\alpha}\\sqrt{\\beta} = -\\sqrt{\\alpha\\beta} = -1\n목표 식을 정리하여 통분함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\frac{\\sqrt{\\beta}-\\sqrt{\\alpha}}{\\sqrt{\\alpha}\\sqrt{\\beta}}\n음수의 제곱근 곱셈 결과를 대입함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\frac{-(\\sqrt{\\alpha}-\\sqrt{\\beta})}{-1} = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + (\\sqrt{\\alpha}-\\sqrt{\\beta})\n(※ 기존 풀이의 구조적 소거 논리를 따름)\n\\therefore 0"
     },
     {
         id: 20,
@@ -185,15 +185,15 @@ window.questionBank = [
         content: "[서술형 2/상] 밑변 $BC=10$, 넓이 30인 $\\triangle ABC$에 내접하는 직사각형 $PQRS$의 넓이가 최대일 때의 $RQ$ 길이와 넓이를 구하시오. [6.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "RQ=5, 넓이=15",
-        solution: "**[Logical Anchor]** 삼각형의 닮음을 이용하여 직사각형의 높이를 밑변에 대한 식으로 나타내고 이차함수의 최댓값을 구함.\n삼각형의 넓이가 $30$이고 밑변이 $10$이므로 높이 $h=6$임.\n직사각형의 가로 길이를 $RQ=x$라 하면, 삼각형의 닮음에 의해 직사각형의 높이 $y$는 다음과 같음.\n\\implies y = 6(1 - \\tf{x}{10}) = 6 - 0.6x\n직사각형의 넓이 식을 이차함수 형태로 작성함.\n\\implies S(x) = x(6 - 0.6x) = -0.6(x^2 - 10x)\n완전제곱식으로 변형하여 최댓값을 구함.\n\\implies S(x) = -0.6(x-5)^2 + 15\n\\implies x=5\\text{일 때, 최댓값 } 15\\text{를 가짐.}\n\\therefore RQ=5, 넓이=15"
+        solution: "**[Logical Anchor]** 삼각형의 닮음을 이용하여 직사각형의 높이를 밑변에 대한 식으로 나타내고 이차함수의 최댓값을 구함.\n삼각형의 넓이가 $30$이고 밑변이 $10$이므로 높이 $h=6$임.\n직사각형의 가로 길이를 $RQ=x$라 하면, 삼각형의 닮음에 의해 직사각형의 높이 $y$는 다음과 같음.\n\\implies y = 6(1 - \\frac{x}{10}) = 6 - 0.6x\n직사각형의 넓이 식을 이차함수 형태로 작성함.\n\\implies S(x) = x(6 - 0.6x) = -0.6(x^2 - 10x)\n완전제곱식으로 변형하여 최댓값을 구함.\n\\implies S(x) = -0.6(x-5)^2 + 15\n\\implies x=5\\text{일 때, 최댓값 } 15\\text{를 가짐.}\n\\therefore RQ=5, 넓이=15"
     },
     {
         id: 21,
         level: "최상",
         category: "복소수의 주기성",
-        content: "[서술형 3/최상] 복소수 $z = \\tf{1-3i}{2i}$와 자연수 $n$에 대하여 $f(k)f(k+2)=360$을 만족하는 모든 자연수 $k$의 합을 구하시오. [8.0점]",
+        content: "[서술형 3/최상] 복소수 $z = \\frac{1-3i}{2i}$와 자연수 $n$에 대하여 $f(k)f(k+2)=360$을 만족하는 모든 자연수 $k$의 합을 구하시오. [8.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "35",
-        solution: "**[Logical Anchor]** 복소수를 간단한 형태로 변형한 후 거듭제곱의 주기성을 파악하여 방정식을 만족하는 변수들을 합산함.\n복소수 $z$의 분모를 실수화하여 정리함.\n\\implies z = \\tf{(1-3i)(-i)}{2i(-i)} = \\tf{-i-3}{2} = -\\tf{3}{2} - \\tf{1}{2}i\n이 복소수는 거듭제곱에 따른 일정 주기성을 가짐.\n함숫값 $f(n)$의 규칙성을 찾아 $f(k)f(k+2)=360$ 방정식에 대입함.\n주기성에 의해 특정 조건의 $k$ 값들이 도출됨.\n모든 $k$의 합을 구함.\n\\therefore 35"
+        solution: "**[Logical Anchor]** 복소수를 간단한 형태로 변형한 후 거듭제곱의 주기성을 파악하여 방정식을 만족하는 변수들을 합산함.\n복소수 $z$의 분모를 실수화하여 정리함.\n\\implies z = \\frac{(1-3i)(-i)}{2i(-i)} = \\frac{-i-3}{2} = -\\frac{3}{2} - \\frac{1}{2}i\n이 복소수는 거듭제곱에 따른 일정 주기성을 가짐.\n함숫값 $f(n)$의 규칙성을 찾아 $f(k)f(k+2)=360$ 방정식에 대입함.\n주기성에 의해 특정 조건의 $k$ 값들이 도출됨.\n모든 $k$의 합을 구함.\n\\therefore 35"
     }
 ];

@@ -33,9 +33,9 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "두 수의 대소관계가 옳은 것은?",
-    "choices": ["$4 < \sqrt{10}$", "$\tf{1}{2} > \sqrt{\tf{1}{2}}$", "$2+\sqrt{5} > 5$", "$-3 > -\sqrt{3}$", "$5-\sqrt{3} > 3$"],
+    "choices": ["$4 < \sqrt{10}$", "$\frac{1}{2} > \sqrt{\frac{1}{2}}$", "$2+\sqrt{5} > 5$", "$-3 > -\sqrt{3}$", "$5-\sqrt{3} > 3$"],
     "answer": "5",
-    "solution": "① $4=\sqrt{16} \implies \sqrt{16} > \sqrt{10}$\n② $(\tf{1}{2})^2 = \tf{1}{4}, (\sqrt{\tf{1}{2}})^2 = \tf{1}{2} \implies \tf{1}{4} < \tf{1}{2}$\n③ $\sqrt{5} < 3 \implies 2+\sqrt{5} < 5$\n④ $3 > \sqrt{3} \implies -3 < -\sqrt{3}$\n⑤ $2 > \sqrt{3} \implies 5-\sqrt{3} > 3$ $\implies$ 옳음\n$\therefore$ ⑤"
+    "solution": "① $4=\sqrt{16} \implies \sqrt{16} > \sqrt{10}$\n② $(\frac{1}{2})^2 = \frac{1}{4}, (\sqrt{\frac{1}{2}})^2 = \frac{1}{2} \implies \frac{1}{4} < \frac{1}{2}$\n③ $\sqrt{5} < 3 \implies 2+\sqrt{5} < 5$\n④ $3 > \sqrt{3} \implies -3 < -\sqrt{3}$\n⑤ $2 > \sqrt{3} \implies 5-\sqrt{3} > 3$ $\implies$ 옳음\n$\therefore$ ⑤"
   },
   {
     "id": 5,
@@ -53,7 +53,7 @@ window.questionBank = [
     "content": "[보기]에 주어진 수에서 무리수는 모두 몇 개인가?<div class='box'>[보기]<br>$\sqrt{49}$, $0.4\dot{1}$, $-\sqrt{21}$, $\sqrt{(-3.14)^2}$, $\sqrt{2}+3$, $\pi$</div>",
     "choices": ["$1$개", "$2$개", "$3$개", "$4$개", "$5$개"],
     "answer": "3",
-    "solution": "무리수: $-\sqrt{21}, \sqrt{2}+3, \pi$ (3개)\n유리수: $\sqrt{49}=7, 0.4\dot{1}=\tf{37}{90}, \sqrt{(-3.14)^2}=3.14$\n$\therefore$ ③"
+    "solution": "무리수: $-\sqrt{21}, \sqrt{2}+3, \pi$ (3개)\n유리수: $\sqrt{49}=7, 0.4\dot{1}=\frac{37}{90}, \sqrt{(-3.14)^2}=3.14$\n$\therefore$ ③"
   },
   {
     "id": 7,
@@ -71,7 +71,7 @@ window.questionBank = [
     "content": "다음 중 옳은 것은?",
     "choices": ["무한소수는 무리수이다.", "모든 수의 제곱근은 $2$개이다.", "정수가 아닌 수는 무리수이다.", "$0$은 유리수도 무리수도 아니다.", "(유리수)+(무리수)는 항상 무리수이다."],
     "answer": "5",
-    "solution": "① 순환소수는 유리수이다.\n② $0$의 제곱근은 $1$개이다.\n③ 정수가 아닌 유리수($\tf{1}{2}$ 등)가 존재한다.\n④ $0$은 유리수이다.\n⑤ 유리수와 무리수의 합은 항상 무리수이다.\n$\therefore$ ⑤"
+    "solution": "① 순환소수는 유리수이다.\n② $0$의 제곱근은 $1$개이다.\n③ 정수가 아닌 유리수($\frac{1}{2}$ 등)가 존재한다.\n④ $0$은 유리수이다.\n⑤ 유리수와 무리수의 합은 항상 무리수이다.\n$\therefore$ ⑤"
   },
   {
     "id": 9,
@@ -95,17 +95,17 @@ window.questionBank = [
     "id": 11,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$3\sqrt{24} - \tf{2\sqrt{3}}{\sqrt{2}}$를 간단히 하면 $a\sqrt{6}$일 때 유리수 $a$의 값은?",
+    "content": "$3\sqrt{24} - \frac{2\sqrt{3}}{\sqrt{2}}$를 간단히 하면 $a\sqrt{6}$일 때 유리수 $a$의 값은?",
     "choices": ["$5$", "$6$", "$7$", "$8$", "$9$"],
     "answer": "1",
-    "solution": "$3 \cdot 2\sqrt{6} - \tf{2\sqrt{6}}{2} = 6\sqrt{6} - \sqrt{6} = 5\sqrt{6}$\n$\therefore a=5$\n$\therefore$ ①"
+    "solution": "$3 \cdot 2\sqrt{6} - \frac{2\sqrt{6}}{2} = 6\sqrt{6} - \sqrt{6} = 5\sqrt{6}$\n$\therefore a=5$\n$\therefore$ ①"
   },
   {
     "id": 12,
     "level": "[상]",
     "category": "근호를 포함한 식의 계산",
     "content": "다음 중 가장 작은 수는?",
-    "choices": ["$\sqrt{18}$", "$\tf{8-\sqrt{6}}{\sqrt{2}}$", "$\sqrt{3}+\sqrt{8}$", "$\tf{6+\sqrt{6}}{\sqrt{3}}$", "$2\sqrt{7}-\sqrt{2}$"],
+    "choices": ["$\sqrt{18}$", "$\frac{8-\sqrt{6}}{\sqrt{2}}$", "$\sqrt{3}+\sqrt{8}$", "$\frac{6+\sqrt{6}}{\sqrt{3}}$", "$2\sqrt{7}-\sqrt{2}$"],
     "answer": "2",
     "solution": "① $3\sqrt{2} \approx 4.24$, ② $4\sqrt{2}-\sqrt{3} \approx 3.92$, ③ $\sqrt{3}+2\sqrt{2} \approx 4.56$, ④ $2\sqrt{3}+\sqrt{2} \approx 4.87$, ⑤ $2\sqrt{7}-\sqrt{2} \approx 3.87$\n$\therefore$ ⑤ (문항 데이터 오기 보정 시 ⑤가 최소, 원문 배치상 ②와 경합)\n$\therefore$ ②"
   },
@@ -113,7 +113,7 @@ window.questionBank = [
     "id": 13,
     "level": "[상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "네 정사각형 $A, B, C, D$의 넓이가 각각 이전 것의 $\tf{1}{2}$배이고 $A=8$일 때, 이들을 붙여 만든 도형의 둘레는?",
+    "content": "네 정사각형 $A, B, C, D$의 넓이가 각각 이전 것의 $\frac{1}{2}$배이고 $A=8$일 때, 이들을 붙여 만든 도형의 둘레는?",
     "choices": ["$4\sqrt{2}+8$", "$6\sqrt{2}+6$", "$8\sqrt{2}+4$", "$10\sqrt{2}+6$", "$12\sqrt{2}+4$"],
     "answer": "4",
     "solution": "변의 길이: $2\sqrt{2}, 2, \sqrt{2}, 1$\n둘레 $= 2 \times (2\sqrt{2}+2+\sqrt{2}+1) + 2 \times 2\sqrt{2} = 10\sqrt{2}+6$\n[Figure] 각 변의 길이 기입.\n$\therefore$ ④"
@@ -149,10 +149,10 @@ window.questionBank = [
     "id": 17,
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\tf{3+\sqrt{6}}{3-\sqrt{6}}$을 유리화한 결과가 $a+b\sqrt{6}$일 때 $a+b$의 값은?",
+    "content": "$\frac{3+\sqrt{6}}{3-\sqrt{6}}$을 유리화한 결과가 $a+b\sqrt{6}$일 때 $a+b$의 값은?",
     "choices": ["$4$", "$5$", "$7$", "$13$", "$21$"],
     "answer": "3",
-    "solution": "$\tf{(3+\sqrt{6})^2}{9-6} = \tf{15+6\sqrt{6}}{3} = 5+2\sqrt{6} \implies a+b = 5+2=7$\n$\therefore$ ③"
+    "solution": "$\frac{(3+\sqrt{6})^2}{9-6} = \frac{15+6\sqrt{6}}{3} = 5+2\sqrt{6} \implies a+b = 5+2=7$\n$\therefore$ ③"
   },
   {
     "id": 18,
@@ -206,6 +206,6 @@ window.questionBank = [
     "content": "[서술형3] 제곱근표를 이용하여 (1) $\sqrt{5.53}$, (2) $\sqrt{0.553}$의 값을 구하시오.",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "(1) 2.352 (2) 0.7436",
-    "solution": "(1) 표 읽기 $\implies 2.352$\n(2) $\tf{\sqrt{55.3}}{10} = \tf{7.436}{10} = 0.7436$"
+    "solution": "(1) 표 읽기 $\implies 2.352$\n(2) $\frac{\sqrt{55.3}}{10} = \frac{7.436}{10} = 0.7436$"
   }
 ];

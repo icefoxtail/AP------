@@ -24,7 +24,7 @@ window.questionBank = [
         content: "이차함수 $y=x^2+2x$의 그래프와 직선 $y=k$가 만나지 않도록 하는 모든 실수 $k$의 값의 범위는? [3.5점]",
         choices: ["$k < -1$", "$k \\le -1$", "$k > -1$", "$k < 1$", "$k \\le 1$"],
         answer: "①",
-        solution: "**[Logical Anchor]** 이차함수와 수평 직선의 위치 관계는 연립방정식의 판별식으로 결정함.\n두 식을 연립하여 $x$에 대한 이차방정식을 만듦.\n$x^2 + 2x = k \implies x^2 + 2x - k = 0$\n그래프가 서로 만나지 않으려면 방정식의 실근이 존재하지 않아야 함.\n$\implies$ 판별식 $D < 0$ 조건을 사용함.\n$\\tf{D}{4} = 1^2 - 1(-k) < 0$\n$1 + k < 0 \implies k < -1$\n$\therefore k < -1$"
+        solution: "**[Logical Anchor]** 이차함수와 수평 직선의 위치 관계는 연립방정식의 판별식으로 결정함.\n두 식을 연립하여 $x$에 대한 이차방정식을 만듦.\n$x^2 + 2x = k \implies x^2 + 2x - k = 0$\n그래프가 서로 만나지 않으려면 방정식의 실근이 존재하지 않아야 함.\n$\implies$ 판별식 $D < 0$ 조건을 사용함.\n$\\frac{D}{4} = 1^2 - 1(-k) < 0$\n$1 + k < 0 \implies k < -1$\n$\therefore k < -1$"
     },
     {
         id: 3,
@@ -57,10 +57,10 @@ window.questionBank = [
         id: 6,
         level: "중",
         category: "복소수의 주기성",
-        content: "$\\left(\\tf{1+i}{\\sqrt{2}}\\right)^{18} + \\left(\\tf{1-i}{1+i}\\right)^{19}$를 간단히 하면? [3.8점]",
+        content: "$\\left(\\frac{1+i}{\\sqrt{2}}\\right)^{18} + \\left(\\frac{1-i}{1+i}\\right)^{19}$를 간단히 하면? [3.8점]",
         choices: ["-2", "$2i$", "$1-i$", "$-1+i$", "$-1-i$"],
         answer: "②",
-        solution: "**[Logical Anchor]** 기본 복소수의 거듭제곱 규칙을 찾아 차수를 낮춤.\n$\text{i) 앞 항: } (\\tf{1+i}{\\sqrt{2}})^2 = \\tf{1+2i-1}{2} = i$\n$\\implies (i)^9 = (i^4)^2 \cdot i = 1^2 \cdot i = i$\n$\text{ii) 뒤 항: } \\tf{1-i}{1+i} = \\tf{(1-i)^2}{2} = \\tf{-2i}{2} = -i$\n$\\implies (-i)^{19} = -i^{19} = -(i^4)^4 \cdot i^3 = -(1)^4 \cdot (-i) = i$\n$\text{iii) 합산: } i + i = 2i$\n$\therefore 2i$"
+        solution: "**[Logical Anchor]** 기본 복소수의 거듭제곱 규칙을 찾아 차수를 낮춤.\n$\text{i) 앞 항: } (\\frac{1+i}{\\sqrt{2}})^2 = \\frac{1+2i-1}{2} = i$\n$\\implies (i)^9 = (i^4)^2 \cdot i = 1^2 \cdot i = i$\n$\text{ii) 뒤 항: } \\frac{1-i}{1+i} = \\frac{(1-i)^2}{2} = \\frac{-2i}{2} = -i$\n$\\implies (-i)^{19} = -i^{19} = -(i^4)^4 \cdot i^3 = -(1)^4 \cdot (-i) = i$\n$\text{iii) 합산: } i + i = 2i$\n$\therefore 2i$"
     },
     {
         id: 7,
@@ -96,7 +96,7 @@ window.questionBank = [
         content: "$f(x)=x^2+2(a-2k)x+4k^2-2k+b$가 $k$에 관계없이 항상 $x$축에 접할 때 $a+b$는? [3.9점]",
         choices: ["3/4", "1", "5/4", "3/2", "2"],
         answer: "①",
-        solution: "**[Logical Anchor]** 접할 조건($D=0$)을 수립한 뒤 $k$에 관한 항등식으로 정리함.\n$\\tf{D}{4} = (a-2k)^2 - (4k^2-2k+b) = 0$\n$a^2 - 4ak + 4k^2 - 4k^2 + 2k - b = 0$\n$(2-4a)k + (a^2-b) = 0$\n$2-4a=0 \implies a = 1/2$\n$(1/2)^2 - b = 0 \implies b = 1/4$\n$\therefore a+b = 3/4$"
+        solution: "**[Logical Anchor]** 접할 조건($D=0$)을 수립한 뒤 $k$에 관한 항등식으로 정리함.\n$\\frac{D}{4} = (a-2k)^2 - (4k^2-2k+b) = 0$\n$a^2 - 4ak + 4k^2 - 4k^2 + 2k - b = 0$\n$(2-4a)k + (a^2-b) = 0$\n$2-4a=0 \implies a = 1/2$\n$(1/2)^2 - b = 0 \implies b = 1/4$\n$\therefore a+b = 3/4$"
     },
     {
         id: 11,

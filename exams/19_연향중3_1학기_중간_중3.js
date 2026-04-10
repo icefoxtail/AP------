@@ -41,7 +41,7 @@ window.questionBank = [
     "id": 5,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\tf{\\sqrt{2}}{\\sqrt{2}+1} - \\tf{3}{\\sqrt{2}-1} = a+b\\sqrt{2}$일 때, $a+b$의 값은?",
+    "content": "$\\frac{\\sqrt{2}}{\\sqrt{2}+1} - \\frac{3}{\\sqrt{2}-1} = a+b\\sqrt{2}$일 때, $a+b$의 값은?",
     "choices": ["$-5$", "$-3$", "$0$", "$1$", "$2$"],
     "answer": "1",
     "solution": "유리화: $(2-\\sqrt{2}) - (3\\sqrt{2}+3) = -1-4\\sqrt{2}$\n$a=-1, b=-4 \\implies a+b=-5$\n$\\therefore$ ①"
@@ -51,9 +51,9 @@ window.questionBank = [
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
     "content": "$\\sqrt{2}=a, \\sqrt{3}=b$일 때, $\\sqrt{96} = \\square ab, \\sqrt{0.54} = \\square ab^3$이라 하자. $\\square$ 안에 알맞은 두 수의 곱은?",
-    "choices": ["$\\tf{6}{5}$", "$\\tf{11}{5}$", "$\\tf{5}{6}$", "$2$", "$4$"],
+    "choices": ["$\\frac{6}{5}$", "$\\frac{11}{5}$", "$\\frac{5}{6}$", "$2$", "$4$"],
     "answer": "1",
-    "solution": "$\\sqrt{96} = 4ab \\implies \\square_1 = 4$\n$\\sqrt{0.54} = \\tf{3\\sqrt{2}\\sqrt{3}}{10} = \\tf{3}{10}ab$ ($b^3$ 규격에 따라 계수 보정)\n$\\implies 4 \\times \\tf{3}{10} = \\tf{6}{5}$\n$\\therefore$ ①"
+    "solution": "$\\sqrt{96} = 4ab \\implies \\square_1 = 4$\n$\\sqrt{0.54} = \\frac{3\\sqrt{2}\\sqrt{3}}{10} = \\frac{3}{10}ab$ ($b^3$ 규격에 따라 계수 보정)\n$\\implies 4 \\times \\frac{3}{10} = \\frac{6}{5}$\n$\\therefore$ ①"
   },
   {
     "id": 7,
@@ -69,9 +69,9 @@ window.questionBank = [
     "level": "[하]",
     "category": "제곱근과 실수",
     "content": "다음 중에서 옳은 것을 모두 찾으면? (정답 $2$개)",
-    "choices": ["$5\\sqrt{2} < 7$", "$-2\\sqrt{3} < -\\sqrt{14}$", "$0.6 < \\sqrt{0.6}$", "$\\sqrt{8} < 2\\sqrt{2}$", "$\\tf{1}{\\sqrt{3}} < \\tf{2}{3}$"],
+    "choices": ["$5\\sqrt{2} < 7$", "$-2\\sqrt{3} < -\\sqrt{14}$", "$0.6 < \\sqrt{0.6}$", "$\\sqrt{8} < 2\\sqrt{2}$", "$\\frac{1}{\\sqrt{3}} < \\frac{2}{3}$"],
     "answer": "3,5",
-    "solution": "③ $0.6 = \\sqrt{0.36} < \\sqrt{0.6}$ (O)\n⑤ $\\tf{\\sqrt{3}}{3} \\approx 0.577 < 0.666$ (O)\n$\\therefore$ ③, ⑤"
+    "solution": "③ $0.6 = \\sqrt{0.36} < \\sqrt{0.6}$ (O)\n⑤ $\\frac{\\sqrt{3}}{3} \\approx 0.577 < 0.666$ (O)\n$\\therefore$ ③, ⑤"
   },
   {
     "id": 9,
@@ -87,7 +87,7 @@ window.questionBank = [
     "level": "[중상]",
     "category": "근호를 포함한 식의 계산",
     "content": "두 수 $2+a\\sqrt{3}$과 $b-3\\sqrt{3}$의 합과 곱이 모두 유리수가 되도록 하는 $a-b$의 값은?",
-    "choices": ["$-3$", "$1$", "$-\\tf{2}{3}$", "$2$", "$3$"],
+    "choices": ["$-3$", "$1$", "$-\\frac{2}{3}$", "$2$", "$3$"],
     "answer": "2",
     "solution": "합 조건: $a-3=0 \\implies a=3$\n곱 조건: $(2+3\\sqrt{3})(b-3\\sqrt{3})$에서 무리수 부분 $3b-6=0 \\implies b=2$\n$a-b = 1$\n$\\therefore$ ②"
   },
@@ -168,7 +168,7 @@ window.questionBank = [
     "level": "[상]",
     "category": "다항식의 곱셈과 인수분해",
     "content": "세 원의 중심이 $\\overline{AB}$ 위에 있다. $\\overline{AD}$ 지름 원 둘레 $12\\pi$, 색칠 넓이 $36\\pi$일 때 $\\overline{CD}=a$는?",
-    "choices": ["$3$", "$\\tf{10}{3}$", "$5$", "$\\tf{21}{4}$", "$6$"],
+    "choices": ["$3$", "$\\frac{10}{3}$", "$5$", "$\\frac{21}{4}$", "$6$"],
     "answer": "5",
     "solution": "$D$가 $\\overline{BC}$ 중점이므로 연립방정식 수립 결과 $a=6$\n$\\therefore$ ⑤"
   },

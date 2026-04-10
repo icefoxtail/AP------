@@ -31,37 +31,37 @@ window.questionBank = [
         id: 3,
         level: "하",
         category: "지수함수의 최대최소",
-        content: "$3 \\le x \\le 5$ 일 때, 함수 $y = (\\tf{1}{3})^{x-5} + 3$ 의 최댓값을 $M$, 최솟값을 $m$ 이라 하자. $M-m$ 의 값은? [3.9점]",
+        content: "$3 \\le x \\le 5$ 일 때, 함수 $y = (\\frac{1}{3})^{x-5} + 3$ 의 최댓값을 $M$, 최솟값을 $m$ 이라 하자. $M-m$ 의 값은? [3.9점]",
         choices: ["2", "4", "6", "8", "10"],
         answer: "④",
-        solution: "**[Logical Anchor]** 지수함수의 밑($1/3$)이 $0 < a < 1$ 이므로 감소함수임을 이용함.\n$\\text{i) 감소함수의 성질 적용}$\n$x$ 값이 작을수록 함숫값이 커지고, $x$ 값이 클수록 함숫값이 작아짐.\n$\\text{ii) 최댓값 } M \\text{ 계산}$\n$x=3$ 일 때, $M = (\\tf{1}{3})^{3-5} + 3 = (\\tf{1}{3})^{-2} + 3 = 3^2 + 3 = 12$\n$\\text{iii) 최솟값 } m \\text{ 계산}$\n$x=5$ 일 때, $m = (\\tf{1}{3})^{5-5} + 3 = (\\tf{1}{3})^0 + 3 = 1 + 3 = 4$\n$\\therefore M - m = 12 - 4 = 8$"
+        solution: "**[Logical Anchor]** 지수함수의 밑($1/3$)이 $0 < a < 1$ 이므로 감소함수임을 이용함.\n$\\text{i) 감소함수의 성질 적용}$\n$x$ 값이 작을수록 함숫값이 커지고, $x$ 값이 클수록 함숫값이 작아짐.\n$\\text{ii) 최댓값 } M \\text{ 계산}$\n$x=3$ 일 때, $M = (\\frac{1}{3})^{3-5} + 3 = (\\frac{1}{3})^{-2} + 3 = 3^2 + 3 = 12$\n$\\text{iii) 최솟값 } m \\text{ 계산}$\n$x=5$ 일 때, $m = (\\frac{1}{3})^{5-5} + 3 = (\\frac{1}{3})^0 + 3 = 1 + 3 = 4$\n$\\therefore M - m = 12 - 4 = 8$"
     },
     {
         id: 4,
         level: "중",
         category: "지수법칙의 응용",
-        content: "실수 $x$ 에 대하여 $\\tf{2^{x}-2^{-x}}{2^{x}+2^{-x}} = \\tf{1}{2}$ 일 때, $4^{x}-4^{-x}$ 의 값은? [3.9점]",
-        choices: ["$\\tf{1}{3}$", "$\\tf{2}{3}$", "$\\tf{5}{3}$", "$\\tf{7}{3}$", "$\\tf{8}{3}$"],
+        content: "실수 $x$ 에 대하여 $\\frac{2^{x}-2^{-x}}{2^{x}+2^{-x}} = \\frac{1}{2}$ 일 때, $4^{x}-4^{-x}$ 의 값은? [3.9점]",
+        choices: ["$\\frac{1}{3}$", "$\\frac{2}{3}$", "$\\frac{5}{3}$", "$\\frac{7}{3}$", "$\\frac{8}{3}$"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 분자·분모에 $2^x$ 를 곱하여 $4^x$ 꼴로 치환 유도함.\n$\\text{i) 식의 정리}$\n$\\tf{2^x(2^x - 2^{-x})}{2^x(2^x + 2^{-x})} = \\tf{1}{2} \\implies \\tf{2^{2x} - 1}{2^{2x} + 1} = \\tf{1}{2}$\n$\\tf{4^x - 1}{4^x + 1} = \\tf{1}{2} \\implies 2(4^x - 1) = 4^x + 1$\n$2 \\cdot 4^x - 2 = 4^x + 1 \\implies 4^x = 3$\n$\\text{ii) 목표 식 계산}$\n$4^x - 4^{-x} = 3 - \\tf{1}{3} = \\tf{8}{3}$\n$\\therefore \\tf{8}{3}$"
+        solution: "**[Logical Anchor]** 분자·분모에 $2^x$ 를 곱하여 $4^x$ 꼴로 치환 유도함.\n$\\text{i) 식의 정리}$\n$\\frac{2^x(2^x - 2^{-x})}{2^x(2^x + 2^{-x})} = \\frac{1}{2} \\implies \\frac{2^{2x} - 1}{2^{2x} + 1} = \\frac{1}{2}$\n$\\frac{4^x - 1}{4^x + 1} = \\frac{1}{2} \\implies 2(4^x - 1) = 4^x + 1$\n$2 \\cdot 4^x - 2 = 4^x + 1 \\implies 4^x = 3$\n$\\text{ii) 목표 식 계산}$\n$4^x - 4^{-x} = 3 - \\frac{1}{3} = \\frac{8}{3}$\n$\\therefore \\frac{8}{3}$"
     },
     {
         id: 5,
         level: "하",
         category: "부채꼴의 성질",
-        content: "호의 길이가 $8\\pi$, 넓이가 $48\\pi$ 인 부채꼴의 반지름의 길이를 $r$, 중심각의 크기를 $\\theta$ 라 할 때, $\\tf{r\\pi}{\\theta}$ 의 값은? [4점]",
+        content: "호의 길이가 $8\\pi$, 넓이가 $48\\pi$ 인 부채꼴의 반지름의 길이를 $r$, 중심각의 크기를 $\\theta$ 라 할 때, $\\frac{r\\pi}{\\theta}$ 의 값은? [4점]",
         choices: ["9", "12", "15", "18", "21"],
         answer: "④",
-        solution: "**[Logical Anchor]** 부채꼴의 넓이 공식 $S = \\tf{1}{2}rl$ 을 이용함.\n$\\text{i) 반지름 } r \\text{ 도출}$\n$48\\pi = \\tf{1}{2} \\cdot r \\cdot 8\\pi \\implies 48 = 4r \\implies r = 12$\n$\\text{ii) 중심각 } \\theta \\text{ 도출}$\n$l = r\\theta \\implies 8\\pi = 12\\theta \\implies \\theta = \\tf{8\\pi}{12} = \\tf{2}{3}\\pi$\n$\\text{iii) 최종 계산}$\n$\\tf{12\\pi}{2\\pi/3} = 12 \\times \\tf{3}{2} = 18$\n$\\therefore 18$"
+        solution: "**[Logical Anchor]** 부채꼴의 넓이 공식 $S = \\frac{1}{2}rl$ 을 이용함.\n$\\text{i) 반지름 } r \\text{ 도출}$\n$48\\pi = \\frac{1}{2} \\cdot r \\cdot 8\\pi \\implies 48 = 4r \\implies r = 12$\n$\\text{ii) 중심각 } \\theta \\text{ 도출}$\n$l = r\\theta \\implies 8\\pi = 12\\theta \\implies \\theta = \\frac{8\\pi}{12} = \\frac{2}{3}\\pi$\n$\\text{iii) 최종 계산}$\n$\\frac{12\\pi}{2\\pi/3} = 12 \\times \\frac{3}{2} = 18$\n$\\therefore 18$"
     },
     {
         id: 6,
         level: "중",
         category: "삼각함수의 정의",
-        content: "각 $\\theta$ 가 제 3사분면의 각이고 $\\tan\\theta = \\tf{4}{3}$ 일 때, $\\sin\\theta$ 의 값은? [4점]",
-        choices: ["$-\\tf{4}{5}$", "$-\\tf{3}{4}$", "$-\\tf{3}{5}$", "$\\tf{3}{5}$", "$\\tf{4}{5}$"],
+        content: "각 $\\theta$ 가 제 3사분면의 각이고 $\\tan\\theta = \\frac{4}{3}$ 일 때, $\\sin\\theta$ 의 값은? [4점]",
+        choices: ["$-\\frac{4}{5}$", "$-\\frac{3}{4}$", "$-\\frac{3}{5}$", "$\\frac{3}{5}$", "$\\frac{4}{5}$"],
         answer: "①",
-        solution: "**[Logical Anchor]** 사분면의 위치를 통해 각 함수의 부호를 결정함.\n$\\text{i) 부호 결정}$\n제 3사분면에서는 $\\tan$ 만 양수, $\\sin$ 과 $\\cos$ 은 음수임.\n$\\text{ii) 삼각비 계산}$\n$\\tan\\theta = \\tf{y}{x} = \\tf{-4}{-3}$ 로 두면 빗변 $r = \\sqrt{(-3)^2 + (-4)^2} = 5$\n$\\sin\\theta = \\tf{y}{r} = \\tf{-4}{5}$\n$\\therefore -\\tf{4}{5}$"
+        solution: "**[Logical Anchor]** 사분면의 위치를 통해 각 함수의 부호를 결정함.\n$\\text{i) 부호 결정}$\n제 3사분면에서는 $\\tan$ 만 양수, $\\sin$ 과 $\\cos$ 은 음수임.\n$\\text{ii) 삼각비 계산}$\n$\\tan\\theta = \\frac{y}{x} = \\frac{-4}{-3}$ 로 두면 빗변 $r = \\sqrt{(-3)^2 + (-4)^2} = 5$\n$\\sin\\theta = \\frac{y}{r} = \\frac{-4}{5}$\n$\\therefore -\\frac{4}{5}$"
     },
     {
         id: 7,
@@ -76,10 +76,10 @@ window.questionBank = [
         id: 8,
         level: "상",
         category: "로그의 연산 성질",
-        content: "<보기> 중 옳은 것만을 고른 것은? (단, $x, y > 0, a > 0, a \\neq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\tf{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
+        content: "<보기> 중 옳은 것만을 고른 것은? (단, $x, y > 0, a > 0, a \\neq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\frac{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
         choices: ["ㄱ", "ㄴ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
         answer: "②",
-        solution: "**[Logical Anchor]** 로그의 기본 공식과 밑 변환 공식을 정확히 판별함.\nㄱ. $\\log_a x + \\log_a y = \\log_a (xy)$ 이므로 곱셈은 성립하지 않음. (거짓)\nㄴ. 밑 변환 공식 $\\tf{\\log_a x}{\\log_a y} = \\log_y x$ 는 참임. (참)\nㄷ. $\\log_a x - \\log_a y = \\log_a (\\tf{x}{y})$ 임. (거짓)\nㄹ. $\\log_a (x^n) = n\\log_a x$ 이나, 전체의 $n$제곱과는 다름. (거짓)\n$\\therefore$ ㄴ"
+        solution: "**[Logical Anchor]** 로그의 기본 공식과 밑 변환 공식을 정확히 판별함.\nㄱ. $\\log_a x + \\log_a y = \\log_a (xy)$ 이므로 곱셈은 성립하지 않음. (거짓)\nㄴ. 밑 변환 공식 $\\frac{\\log_a x}{\\log_a y} = \\log_y x$ 는 참임. (참)\nㄷ. $\\log_a x - \\log_a y = \\log_a (\\frac{x}{y})$ 임. (거짓)\nㄹ. $\\log_a (x^n) = n\\log_a x$ 이나, 전체의 $n$제곱과는 다름. (거짓)\n$\\therefore$ ㄴ"
     },
     {
         id: 9,
@@ -88,7 +88,7 @@ window.questionBank = [
         content: "미세 먼지 농도가 매년 7%씩 증가할 때, 현재의 2배 이상이 되는 것은 최소 몇 년 후인가? (단, $\\log 2 = 0.3010, \\log 1.07 = 0.03$)",
         choices: ["9", "10", "11", "12", "13"],
         answer: "③",
-        solution: "**[Logical Anchor]** 매년 일정한 비율로 증가하는 원리(복리)를 이용하여 식을 세움.\n$A(1 + 0.07)^n \\ge 2A \implies (1.07)^n \\ge 2$\n양변에 상용로그를 취함.\n$n \\log 1.07 \\ge \\log 2 \\implies 0.03n \\ge 0.3010$\n$n \\ge \\tf{0.3010}{0.03} = 10.033\\dots$\n$\\therefore$ 최소 11년 후"
+        solution: "**[Logical Anchor]** 매년 일정한 비율로 증가하는 원리(복리)를 이용하여 식을 세움.\n$A(1 + 0.07)^n \\ge 2A \implies (1.07)^n \\ge 2$\n양변에 상용로그를 취함.\n$n \\log 1.07 \\ge \\log 2 \\implies 0.03n \\ge 0.3010$\n$n \\ge \\frac{0.3010}{0.03} = 10.033\\dots$\n$\\therefore$ 최소 11년 후"
     },
     {
         id: 10,
@@ -115,16 +115,16 @@ window.questionBank = [
         content: "각 변환과 삼각함수의 성질을 이용하여 $a^2+b^2$ 의 값을 구하시오. [4.7점]",
         choices: ["2", "3", "4", "5", "6"],
         answer: "①",
-        solution: "**[Logical Anchor]** $\\sin(\\tf{\\pi}{2}+\\theta) = \\cos\\theta$ 등의 성질을 사용하여 식을 단순화함.\n주어진 식의 삼각함수 항들을 각 변환 공식을 통해 1차 결합함.\n계산 결과 $a=1, b=1$ (또는 합이 일정한 상수 도출)\n$\\therefore a^2 + b^2 = 2$"
+        solution: "**[Logical Anchor]** $\\sin(\\frac{\\pi}{2}+\\theta) = \\cos\\theta$ 등의 성질을 사용하여 식을 단순화함.\n주어진 식의 삼각함수 항들을 각 변환 공식을 통해 1차 결합함.\n계산 결과 $a=1, b=1$ (또는 합이 일정한 상수 도출)\n$\\therefore a^2 + b^2 = 2$"
     },
     {
         id: 13,
         level: "상",
         category: "삼각함수의 그래프",
-        content: "함수 $y = a \\cos(bx-c)$ 의 그래프가 다음과 같을 때, $\\tf{abc}{\\pi}$ 의 최솟값은? (단, $a, b, c > 0$) [4.8점]",
+        content: "함수 $y = a \\cos(bx-c)$ 의 그래프가 다음과 같을 때, $\\frac{abc}{\\pi}$ 의 최솟값은? (단, $a, b, c > 0$) [4.8점]",
         choices: ["6", "7", "8", "9", "10"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 그래프의 진폭(최대/최소), 주기, 평행이동을 순차적으로 분석함.\n$\\text{i) } a \\text{ 도출: 최댓값 } 3, \\text{ 최솟값 } -3 \\implies a = 3$\n$\\text{ii) } b \\text{ 도출: 주기가 } \\pi \\implies \\tf{2\\pi}{b} = \\pi \\implies b = 2$\n$\\text{iii) } c \\text{ 도출: } x = \\tf{5}{6}\\pi \\text{ 에서 최대 } 3 \\implies 2(\\tf{5}{6}\\pi) - c = 0 \\implies c = \\tf{5}{3}\\pi$\n$\\text{iv) 계산: } \\tf{3 \\cdot 2 \\cdot 5/3\\pi}{\\pi} = 10$\n$\\therefore 10$"
+        solution: "**[Logical Anchor]** 그래프의 진폭(최대/최소), 주기, 평행이동을 순차적으로 분석함.\n$\\text{i) } a \\text{ 도출: 최댓값 } 3, \\text{ 최솟값 } -3 \\implies a = 3$\n$\\text{ii) } b \\text{ 도출: 주기가 } \\pi \\implies \\frac{2\\pi}{b} = \\pi \\implies b = 2$\n$\\text{iii) } c \\text{ 도출: } x = \\frac{5}{6}\\pi \\text{ 에서 최대 } 3 \\implies 2(\\frac{5}{6}\\pi) - c = 0 \\implies c = \\frac{5}{3}\\pi$\n$\\text{iv) 계산: } \\frac{3 \\cdot 2 \\cdot 5/3\\pi}{\\pi} = 10$\n$\\therefore 10$"
     },
     {
         id: 14,
@@ -133,7 +133,7 @@ window.questionBank = [
         content: "1이 아닌 서로 다른 두 양수 $a, b$ 가 $\\log_a b = \\log_b a$ 를 만족시킬 때, $(a+2)(b+2)$ 의 최솟값은? [4.9점]",
         choices: ["8", "9", "10", "11", "12"],
         answer: "②",
-        solution: "**[Logical Anchor]** 로그의 상등 조건으로부터 $ab=1$ 관계를 유도함.\n$\\log_a b = \\tf{1}{\\log_a b} \\implies (\\log_a b)^2 = 1$\n$a \\ne b$ 이므로 $\\log_a b = -1 \\implies b = a^{-1} \\implies ab = 1$\n$(a+2)(b+2) = ab + 2(a+b) + 4 = 1 + 2(a+b) + 4 = 5 + 2(a+b)$\n산술·기하 평균 부등식 적용: $a+b \\ge 2\\sqrt{ab} = 2$\n최솟값 $= 5 + 2(2) = 9$\n$\\therefore 9$"
+        solution: "**[Logical Anchor]** 로그의 상등 조건으로부터 $ab=1$ 관계를 유도함.\n$\\log_a b = \\frac{1}{\\log_a b} \\implies (\\log_a b)^2 = 1$\n$a \\ne b$ 이므로 $\\log_a b = -1 \\implies b = a^{-1} \\implies ab = 1$\n$(a+2)(b+2) = ab + 2(a+b) + 4 = 1 + 2(a+b) + 4 = 5 + 2(a+b)$\n산술·기하 평균 부등식 적용: $a+b \\ge 2\\sqrt{ab} = 2$\n최솟값 $= 5 + 2(2) = 9$\n$\\therefore 9$"
     },
     {
         id: 15,
@@ -151,34 +151,34 @@ window.questionBank = [
         content: "방정식 $\\cos^{2}x - \\sin x + 1 - k = 0$ 이 서로 다른 두 실근을 갖도록 하는 실수 $k$ 의 범위가 $a \\le k \\le b$ 일 때, $b-a$ 의 값은? [4.9점]",
         choices: ["1/4", "3/4", "5/4", "7/4", "9/4"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** $\\sin$ 으로 변수를 통일하여 이차함수의 근의 분리로 해석함.\n$(1 - \\sin^2 x) - \\sin x + 1 - k = 0$\n$\\sin x = t \\ (-1 \\le t \\le 1)$ 라 치환\n$k = -t^2 - t + 2$\n이차함수 $f(t) = -(t + \\tf{1}{2})^2 + \\tf{9}{4}$ 의 범위를 분석함.\n$t = -1/2$ 일 때 최대 $9/4$, $t = 1$ 일 때 최소 $0$\n실근 범위: $0 \\le k \\le 9/4$\n$\\therefore b - a = 9/4$"
+        solution: "**[Logical Anchor]** $\\sin$ 으로 변수를 통일하여 이차함수의 근의 분리로 해석함.\n$(1 - \\sin^2 x) - \\sin x + 1 - k = 0$\n$\\sin x = t \\ (-1 \\le t \\le 1)$ 라 치환\n$k = -t^2 - t + 2$\n이차함수 $f(t) = -(t + \\frac{1}{2})^2 + \\frac{9}{4}$ 의 범위를 분석함.\n$t = -1/2$ 일 때 최대 $9/4$, $t = 1$ 일 때 최소 $0$\n실근 범위: $0 \\le k \\le 9/4$\n$\\therefore b - a = 9/4$"
     },
     {
         id: 17,
         level: "하",
         category: "이차방정식과 지수",
-        content: "이차방정식 $x^{2}-3x-5=0$ 의 두 근을 $\\alpha, \\beta$ 라 할 때, $2^{\\tf{1}{\\alpha^{2}-5}} \\times 2^{\\tf{1}{\\beta^{2}-5}}$ 의 값은? [5점]",
+        content: "이차방정식 $x^{2}-3x-5=0$ 의 두 근을 $\\alpha, \\beta$ 라 할 때, $2^{\\frac{1}{\\alpha^{2}-5}} \\times 2^{\\frac{1}{\\beta^{2}-5}}$ 의 값은? [5점]",
         choices: ["$1/\\sqrt[5]{2^2}$", "$1/\\sqrt[5]{2^3}$", "$1/\\sqrt[5]{2}$", "$2/\\sqrt[5]{2^3}$", "$5/\\sqrt[5]{2}$"],
         answer: "③",
-        solution: "**[Logical Anchor]** 근의 대입 성질 $\\alpha^2 - 3\\alpha - 5 = 0$ 을 이용함.\n$\\alpha^2 - 5 = 3\\alpha$ 이고 $\\beta^2 - 5 = 3\\beta$ 임.\n지수 법칙에 의해: $2^{\\tf{1}{3\\alpha} + \\tf{1}{3\\beta}} = 2^{\\tf{\\alpha+\\beta}{3\\alpha\\beta}}$\n근과 계수의 관계 $\\alpha+\\beta=3, \\alpha\\beta=-5$ 대입:\n$\\implies 2^{\\tf{3}{3(-5)}} = 2^{-1/5} = \\tf{1}{\\sqrt[5]{2}}$\n$\\therefore \\tf{1}{\\sqrt[5]{2}}$"
+        solution: "**[Logical Anchor]** 근의 대입 성질 $\\alpha^2 - 3\\alpha - 5 = 0$ 을 이용함.\n$\\alpha^2 - 5 = 3\\alpha$ 이고 $\\beta^2 - 5 = 3\\beta$ 임.\n지수 법칙에 의해: $2^{\\frac{1}{3\\alpha} + \\frac{1}{3\\beta}} = 2^{\\frac{\\alpha+\\beta}{3\\alpha\\beta}}$\n근과 계수의 관계 $\\alpha+\\beta=3, \\alpha\\beta=-5$ 대입:\n$\\implies 2^{\\frac{3}{3(-5)}} = 2^{-1/5} = \\frac{1}{\\sqrt[5]{2}}$\n$\\therefore \\frac{1}{\\sqrt[5]{2}}$"
     },
     {
         id: 18,
         level: "상",
         category: "삼각부등식",
-        content: "$-\\pi \\le x \\le \\pi$ 에서 부등식 $2\\sin^{2}(x-\\tf{\pi}{3}) - 3\\cos(x+\\tf{\pi}{6}) + 1 \\le 0$ 의 해가 $a\\pi \\le x \\le b\\pi$ 일 때, $b-a$ 의 값은? [5점]",
+        content: "$-\\pi \\le x \\le \\pi$ 에서 부등식 $2\\sin^{2}(x-\\frac{\pi}{3}) - 3\\cos(x+\\frac{\pi}{6}) + 1 \\le 0$ 의 해가 $a\\pi \\le x \\le b\\pi$ 일 때, $b-a$ 의 값은? [5점]",
         choices: ["1/3", "2/3", "1", "4/3", "5/4"],
         answer: "②",
-        solution: "**[Logical Anchor]** 각을 통일하기 위해 치환과 여각 공식을 활용함.\n$x - \\tf{\\pi}{3} = \\theta$ 라 하면 $x + \\tf{\\pi}{6} = \\theta + \\tf{\\pi}{2}$ 임.\n$\\cos(\\theta + \\tf{\\pi}{2}) = -\\sin\\theta$\n식 $\\implies 2\\sin^2\\theta + 3\\sin\\theta + 1 \\le 0$\n$(2\\sin\\theta + 1)(\\sin\\theta + 1) \\le 0 \\implies -1 \\le \\sin\\theta \\le -\\tf{1}{2}$\n범위 환산 후 $b-a$ 계산 시 $\\tf{2}{3}$ 도출.\n$\\therefore \\tf{2}{3}$"
+        solution: "**[Logical Anchor]** 각을 통일하기 위해 치환과 여각 공식을 활용함.\n$x - \\frac{\\pi}{3} = \\theta$ 라 하면 $x + \\frac{\\pi}{6} = \\theta + \\frac{\\pi}{2}$ 임.\n$\\cos(\\theta + \\frac{\\pi}{2}) = -\\sin\\theta$\n식 $\\implies 2\\sin^2\\theta + 3\\sin\\theta + 1 \\le 0$\n$(2\\sin\\theta + 1)(\\sin\\theta + 1) \\le 0 \\implies -1 \\le \\sin\\theta \\le -\\frac{1}{2}$\n범위 환산 후 $b-a$ 계산 시 $\\frac{2}{3}$ 도출.\n$\\therefore \\frac{2}{3}$"
     },
     {
         id: 19,
         level: "상",
         category: "주기함수와 직선 (서술형)",
-        content: "[서술형 1] 방정식 $|\\sin(\\pi x)| = \\tf{1}{4}x$ 의 서로 다른 실근의 개수를 구하시오. [6점]",
+        content: "[서술형 1] 방정식 $|\\sin(\\pi x)| = \\frac{1}{4}x$ 의 서로 다른 실근의 개수를 구하시오. [6점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "8",
-        solution: "**[Logical Anchor]** 좌변의 절댓값 사인 함수의 그래프와 우변의 직선의 교점을 추적함.\n$\\text{i) 그래프 특징: } |\\sin(\\pi x)|$ 는 주기가 $1$ 이며 $x$ 축 위로 꺾여 올라간 형태임.\n$\\text{ii) 직선 분석: } y = \\tf{1}{4}x$ 는 $(4, 1)$ 을 지남.\n$\\text{iii) 교점 카운팅: } x=0, 1, 2, 3$ 사이의 교점 개수를 면밀히 파악.\n(상세 그래프 추적 결과 교점은 8개)\n$\\therefore 8$개"
+        solution: "**[Logical Anchor]** 좌변의 절댓값 사인 함수의 그래프와 우변의 직선의 교점을 추적함.\n$\\text{i) 그래프 특징: } |\\sin(\\pi x)|$ 는 주기가 $1$ 이며 $x$ 축 위로 꺾여 올라간 형태임.\n$\\text{ii) 직선 분석: } y = \\frac{1}{4}x$ 는 $(4, 1)$ 을 지남.\n$\\text{iii) 교점 카운팅: } x=0, 1, 2, 3$ 사이의 교점 개수를 면밀히 파악.\n(상세 그래프 추적 결과 교점은 8개)\n$\\therefore 8$개"
     },
     {
         id: 20,
@@ -187,7 +187,7 @@ window.questionBank = [
         content: "[서술형 2] 네 양수 $x, y, z, a$ 에 대하여 (가) $2^{x} = 3^{y} = a^{z}$ (나) $\\log 3 + \\log xy - \\log(3x-y) = \\log z$ 일 때 $a^{3}$ 의 값을 구하시오. [6.5점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "27/2",
-        solution: "**[Logical Anchor]** 조건 (나)에서 변수 간의 역수 합 관계를 이끌어냄.\n(나) $\\log(\\tf{3xy}{3x-y}) = \\log z \\implies z = \\tf{3xy}{3x-y} \\implies \\tf{1}{z} = \\tf{3x-y}{3xy} = \\tf{1}{y} - \\tf{1}{3x}$\n(가) $2^x=3^y=a^z=K$ 라 두면 $x=\\log_2 K, y=\\log_3 K, z=\\log_a K$\n$\\tf{1}{z} = \\log_K a, \\tf{1}{y} = \\log_K 3, \\tf{1}{3x} = \\tf{1}{3}\\log_K 2 = \\log_K \\sqrt[3]{2}$\n$\\log_K a = \\log_K 3 - \\log_K \\sqrt[3]{2} = \\log_K (\\tf{3}{\\sqrt[3]{2}})$\n$a = \\tf{3}{\\sqrt[3]{2}} \\implies a^3 = \\tf{27}{2}$\n$\\therefore 27/2$"
+        solution: "**[Logical Anchor]** 조건 (나)에서 변수 간의 역수 합 관계를 이끌어냄.\n(나) $\\log(\\frac{3xy}{3x-y}) = \\log z \\implies z = \\frac{3xy}{3x-y} \\implies \\frac{1}{z} = \\frac{3x-y}{3xy} = \\frac{1}{y} - \\frac{1}{3x}$\n(가) $2^x=3^y=a^z=K$ 라 두면 $x=\\log_2 K, y=\\log_3 K, z=\\log_a K$\n$\\frac{1}{z} = \\log_K a, \\frac{1}{y} = \\log_K 3, \\frac{1}{3x} = \\frac{1}{3}\\log_K 2 = \\log_K \\sqrt[3]{2}$\n$\\log_K a = \\log_K 3 - \\log_K \\sqrt[3]{2} = \\log_K (\\frac{3}{\\sqrt[3]{2}})$\n$a = \\frac{3}{\\sqrt[3]{2}} \\implies a^3 = \\frac{27}{2}$\n$\\therefore 27/2$"
     },
     {
         id: 21,

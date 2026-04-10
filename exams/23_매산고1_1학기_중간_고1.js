@@ -67,7 +67,7 @@ window.questionBank = [
         id: 7,
         level: "중상",
         category: "곱셈 공식의 변형",
-        content: "$x^2-6x+1=0$일 때, $x^3-x-\\tf{1}{x}+\\tf{1}{x^3}$의 값은? [4.6점]",
+        content: "$x^2-6x+1=0$일 때, $x^3-x-\\frac{1}{x}+\\frac{1}{x^3}$의 값은? [4.6점]",
         choices: ["188", "190", "192", "194", "196"],
         answer: "③",
         solution: "**[Logical Anchor]** 역수 합의 꼴을 도출하기 위해 조건식의 양변을 $x$로 나눔.\n$x^2 - 6x + 1 = 0$ 에서 $x \\ne 0$ 이므로 양변을 $x$로 나누면\n$x - 6 + \\ tf{1}{x} = 0 \\implies x + \\ tf{1}{x} = 6$\n구하고자 하는 식을 동일한 차수와 구조끼리 그룹화함.\n$\implies (x^3 + \\ tf{1}{x^3}) - (x + \\ tf{1}{x})$\n세제곱 합의 공식 $A^3 + B^3 = (A+B)^3 - 3AB(A+B)$를 적용함.\n$\because x^3 + \\ tf{1}{x^3} = (x + \\ tf{1}{x})^3 - 3(x + \\ tf{1}{x})$\n구해둔 합의 값 $6$을 대입하여 계산함.\n$\implies 6^3 - 3(6) = 216 - 18 = 198$\n전체 식의 최종 결과를 도출함.\n$\implies 198 - 6 = 192$\n$\therefore 192$"
@@ -106,7 +106,7 @@ window.questionBank = [
         content: "이차함수 $y=x^2-4kx+4k^2-3k+6$은 $x$축과 서로 다른 두 점에서 만나고, $y=2x^2-3kx+k^2+k+6$은 $x$축과 접할 때, $5k$의 값은? [4.9점]",
         choices: ["40", "50", "60", "70", "80"],
         answer: "③",
-        solution: "**[Logical Anchor]** 위치 관계에 따른 판별식 $D$의 부호를 결정함.\n(1) 서로 다른 두 점 조건: $D_1 > 0$\n$y = x^2 - 4kx + 4k^2 - 3k + 6$\n$\\tf{D_1}{4} = (-2k)^2 - (4k^2 - 3k + 6) = 4k^2 - 4k^2 + 3k - 6 > 0$\n$3k > 6 \\implies k > 2 \\quad \\cdots (\\alpha)$\n(2) 접하는 조건: $D_2 = 0$\n$y = 2x^2 - 3kx + k^2 + k + 6$\n$D_2 = (-3k)^2 - 4(2)(k^2 + k + 6) = 0$\n$9k^2 - 8k^2 - 8k - 48 = 0 \\implies k^2 - 8k - 48 = 0$\n이차방정식을 인수분해함.\n$(k - 12)(k + 4) = 0 \\implies k = 12 \\text{ 또는 } k = -4$\n$(\\alpha)$의 조건 $k > 2$에 의해 $k = 12$ 가 확정됨.\n최종 구하는 값: $5k = 5 \\times 12 = 60$\n$\therefore 60$"
+        solution: "**[Logical Anchor]** 위치 관계에 따른 판별식 $D$의 부호를 결정함.\n(1) 서로 다른 두 점 조건: $D_1 > 0$\n$y = x^2 - 4kx + 4k^2 - 3k + 6$\n$\\frac{D_1}{4} = (-2k)^2 - (4k^2 - 3k + 6) = 4k^2 - 4k^2 + 3k - 6 > 0$\n$3k > 6 \\implies k > 2 \\quad \\cdots (\\alpha)$\n(2) 접하는 조건: $D_2 = 0$\n$y = 2x^2 - 3kx + k^2 + k + 6$\n$D_2 = (-3k)^2 - 4(2)(k^2 + k + 6) = 0$\n$9k^2 - 8k^2 - 8k - 48 = 0 \\implies k^2 - 8k - 48 = 0$\n이차방정식을 인수분해함.\n$(k - 12)(k + 4) = 0 \\implies k = 12 \\text{ 또는 } k = -4$\n$(\\alpha)$의 조건 $k > 2$에 의해 $k = 12$ 가 확정됨.\n최종 구하는 값: $5k = 5 \\times 12 = 60$\n$\therefore 60$"
     },
     {
         id: 12,
@@ -121,19 +121,19 @@ window.questionBank = [
         id: 13,
         level: "상",
         category: "이차방정식과 근과 계수의 관계",
-        content: "이차방정식 $ax^2+bx+c=0 (a \\ne 0)$에 대하여, 하니는 일차항 계수 $b$를 잘못 봐서 $1 \\pm i$를 얻고, 두리는 상수항 $c$를 잘못 봐서 $\\tf{1 \\pm \\sqrt{13}}{3}$을 얻었을 때, 원래 방정식의 두 근 $\\alpha, \\beta$에 대한 $27\\alpha^2+27\\beta^2$의 값은? [5.2점]",
+        content: "이차방정식 $ax^2+bx+c=0 (a \\ne 0)$에 대하여, 하니는 일차항 계수 $b$를 잘못 봐서 $1 \\pm i$를 얻고, 두리는 상수항 $c$를 잘못 봐서 $\\frac{1 \\pm \\sqrt{13}}{3}$을 얻었을 때, 원래 방정식의 두 근 $\\alpha, \\beta$에 대한 $27\\alpha^2+27\\beta^2$의 값은? [5.2점]",
         choices: ["-108", "-100", "-96", "-92", "-84"],
         answer: "③",
-        solution: "**[Logical Anchor]** 잘못 본 계수를 제외하고 바르게 본 계수로부터 근의 관계를 추출함.\n$\text{i) 하니의 데이터 해석}$\n$b$를 잘못 보았으므로 $a, c$는 올바르게 사용함.\n$\\because$ 근과 계수의 관계에 의해 두 근의 곱 $\\ tf{c}{a}$는 정확함.\n$\\tf{c}{a} = (1 + i)(1 - i) = 1 - (-1) = 2$\n$\text{ii) 두리의 데이터 해석}$\n$c$를 잘못 보았으므로 $a, b$는 올바르게 사용함.\n$\\because$ 두 근의 합 $-\\ tf{b}{a}$는 정확함.\n$-\\ tf{b}{a} = \\ tf{1 + \\sqrt{13}}{3} + \\ tf{1 - \\sqrt{13}}{3} = \\ tf{2}{3}$\n$\text{iii) 원래 방정식의 근의 관계}$\n$\\alpha + \\beta = \\ tf{2}{3}, \\ \\alpha\\beta = 2$\n$\text{iv) 식의 값 계산}$\n$27(\\alpha^2 + \\beta^2) = 27\\{(\\alpha + \\beta)^2 - 2\\alpha\\beta\\}$\n$\implies 27\\{(\\ tf{2}{3})^2 - 2(2)\\} = 27(\\ tf{4}{9} - 4)$\n$\implies 27 \\times \\ tf{4}{9} - 27 \\times 4 = 12 - 108 = -96$\n$\therefore -96$"
+        solution: "**[Logical Anchor]** 잘못 본 계수를 제외하고 바르게 본 계수로부터 근의 관계를 추출함.\n$\text{i) 하니의 데이터 해석}$\n$b$를 잘못 보았으므로 $a, c$는 올바르게 사용함.\n$\\because$ 근과 계수의 관계에 의해 두 근의 곱 $\\ tf{c}{a}$는 정확함.\n$\\frac{c}{a} = (1 + i)(1 - i) = 1 - (-1) = 2$\n$\text{ii) 두리의 데이터 해석}$\n$c$를 잘못 보았으므로 $a, b$는 올바르게 사용함.\n$\\because$ 두 근의 합 $-\\ tf{b}{a}$는 정확함.\n$-\\ tf{b}{a} = \\ tf{1 + \\sqrt{13}}{3} + \\ tf{1 - \\sqrt{13}}{3} = \\ tf{2}{3}$\n$\text{iii) 원래 방정식의 근의 관계}$\n$\\alpha + \\beta = \\ tf{2}{3}, \\ \\alpha\\beta = 2$\n$\text{iv) 식의 값 계산}$\n$27(\\alpha^2 + \\beta^2) = 27\\{(\\alpha + \\beta)^2 - 2\\alpha\\beta\\}$\n$\implies 27\\{(\\ tf{2}{3})^2 - 2(2)\\} = 27(\\ tf{4}{9} - 4)$\n$\implies 27 \\times \\ tf{4}{9} - 27 \\times 4 = 12 - 108 = -96$\n$\therefore -96$"
     },
     {
         id: 14,
         level: "최상",
         category: "복소수의 성질",
-        content: "복소수 $z=a+2bi (b \\ne 0)$에 대하여 $\\tf{z}{2+z^2}$가 실수일 때, 다항식 $2a^2-4b^2+12a-5$의 최솟값은? [5.3점]",
+        content: "복소수 $z=a+2bi (b \\ne 0)$에 대하여 $\\frac{z}{2+z^2}$가 실수일 때, 다항식 $2a^2-4b^2+12a-5$의 최솟값은? [5.3점]",
         choices: ["-46", "-37", "-28", "-19", "-10"],
         answer: "④",
-        solution: "**[Logical Anchor]** 복소수가 실수일 조건($W = \\bar{W}$)을 활용하여 변수 간의 관계식을 도출함.\n$\text{i) 관계식 도출}$\n$W = \\ tf{z}{2+z^2}$ 라 하면 $W = \\bar{W}$ 가 성립해야 함.\n$\\tf{z}{2+z^2} = \\ tf{\\bar{z}}{2+\\bar{z}^2} \\implies z(2 + \\bar{z}^2) = \\bar{z}(2 + z^2)$\n$2z + z\\bar{z}^2 = 2\\bar{z} + \\bar{z}z^2$\n$2(z - \\bar{z}) - z\\bar{z}(z - \\bar{z}) = 0$\n$(z - \\bar{z})(2 - z\\bar{z}) = 0$\n$b \\ne 0 \\implies z \\ne \\bar{z}$ 이므로 $z - \\bar{z} \\ne 0$ 임.\n$\\therefore z\\bar{z} = 2$\n$\text{ii) 변수 치환}$\n$z\\bar{z} = (a + 2bi)(a - 2bi) = a^2 + 4b^2 = 2$\n$\\implies 4b^2 = 2 - a^2 \\quad \\cdots (1)$\n$\text{iii) 최솟값 산출}$\n목표 식에 $(1)$을 대입하여 $a$에 관한 일변수 함수로 만듦.\n$g(a) = 2a^2 - (2 - a^2) + 12a - 5 = 3a^2 + 12a - 7$\n표준형 변형: $g(a) = 3(a + 2)^2 - 19$\n$a^2 + 4b^2 = 2$ 이고 $b^2 > 0$ 이므로 $a^2 < 2$ 임.\n축 $a = -2$ 가 범위에 직접 닿지는 않으나 연속성에 의해 혹은 논리적 최소 경계를 조사함.\n(단, 이차함수의 개형상 꼭짓점에서 최솟값이 결정됨)\n$\therefore -19$"
+        solution: "**[Logical Anchor]** 복소수가 실수일 조건($W = \\bar{W}$)을 활용하여 변수 간의 관계식을 도출함.\n$\text{i) 관계식 도출}$\n$W = \\ tf{z}{2+z^2}$ 라 하면 $W = \\bar{W}$ 가 성립해야 함.\n$\\frac{z}{2+z^2} = \\ tf{\\bar{z}}{2+\\bar{z}^2} \\implies z(2 + \\bar{z}^2) = \\bar{z}(2 + z^2)$\n$2z + z\\bar{z}^2 = 2\\bar{z} + \\bar{z}z^2$\n$2(z - \\bar{z}) - z\\bar{z}(z - \\bar{z}) = 0$\n$(z - \\bar{z})(2 - z\\bar{z}) = 0$\n$b \\ne 0 \\implies z \\ne \\bar{z}$ 이므로 $z - \\bar{z} \\ne 0$ 임.\n$\\therefore z\\bar{z} = 2$\n$\text{ii) 변수 치환}$\n$z\\bar{z} = (a + 2bi)(a - 2bi) = a^2 + 4b^2 = 2$\n$\\implies 4b^2 = 2 - a^2 \\quad \\cdots (1)$\n$\text{iii) 최솟값 산출}$\n목표 식에 $(1)$을 대입하여 $a$에 관한 일변수 함수로 만듦.\n$g(a) = 2a^2 - (2 - a^2) + 12a - 5 = 3a^2 + 12a - 7$\n표준형 변형: $g(a) = 3(a + 2)^2 - 19$\n$a^2 + 4b^2 = 2$ 이고 $b^2 > 0$ 이므로 $a^2 < 2$ 임.\n축 $a = -2$ 가 범위에 직접 닿지는 않으나 연속성에 의해 혹은 논리적 최소 경계를 조사함.\n(단, 이차함수의 개형상 꼭짓점에서 최솟값이 결정됨)\n$\therefore -19$"
     },
     {
         id: 15,
@@ -175,7 +175,7 @@ window.questionBank = [
         id: 19,
         level: "상",
         category: "복소수의 거듭제곱",
-        content: "[서술형 1] $15$이하의 자연수 $n, m$에 대하여 $n=2p, m=3q$이고 $f(n,m)=(\\tf{1+i}{\\sqrt{2}})^n + (\\tf{\\sqrt{3}+i}{2})^m = 1+i$를 만족할 때, 순서쌍 $(n,m)$의 개수를 구하시오. [10점]",
+        content: "[서술형 1] $15$이하의 자연수 $n, m$에 대하여 $n=2p, m=3q$이고 $f(n,m)=(\\frac{1+i}{\\sqrt{2}})^n + (\\frac{\\sqrt{3}+i}{2})^m = 1+i$를 만족할 때, 순서쌍 $(n,m)$의 개수를 구하시오. [10점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "4",
         solution: "**[Logical Anchor]** 기본 복소수 단위를 거듭제곱하여 규칙성을 찾음.\n$(\ tf{1+i}{\\sqrt{2}})^2 = i$ 이므로 $(\ tf{1+i}{\\sqrt{2}})^n = i^p$\n$(\ tf{\\sqrt{3}+i}{2})^3 = i$ 이므로 $(\ tf{\\sqrt{3}+i}{2})^m = i^q$\n조건식 $\\implies i^p + i^q = 1 + i$\n$i$의 거듭제곱 성질에 의해 $\{i^p, i^q\}$ 가 $\{1, i\}$ 세트가 되어야 함.\n(1) $i^p = 1, \\ i^q = i \\implies p=4k, \\ q=4j+1$\n$n=2p \\in \\{8\\}, \\ m=3q \\in \\{3, 15\\} \\implies (8, 3), (8, 15)$\n(2) $i^p = i, \\ i^q = 1 \\implies p=4k+1, \\ q=4j$\n$n=2p \\in \\{2, 10\\}, \\ m=3q \\in \\{12\\} \\implies (2, 12), (10, 12)$\n$\\therefore 4$개"
@@ -187,6 +187,6 @@ window.questionBank = [
         content: "[서술형 2] 이차함수 $y=-x^2+6x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $9$배가 될 때 $a$의 최댓값의 절댓값을 구하시오. [10점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "12",
-        solution: "**[Logical Anchor]** 접점의 위치와 삼각형의 닮음을 기하학적으로 해석함.\n$\text{i) 연립 및 접점 설정}$\n$x^2 + (a-6)x + b = 0$ 의 판별식 $D=0$ 에서 $b = \\ tf{(a-6)^2}{4}$\n접점 $C$의 $x$좌표는 중근인 $x = \\ tf{6-a}{2}$\n$\text{ii) 기하학적 비율 추출}$\n$\\triangle ABO$와 $\\triangle ACD$는 직선의 성질상 닮음 구조를 가짐.\n넓이비가 $9:1$ 이면 길이비는 $3:1$ 임.\n직선의 $x$절편 $A(-\ tf{b}{a}, 0)$와 원점 $O(0, 0)$, 점 $D(\\ tf{6-a}{2}, 0)$ 사이의 거리비가\n$\\tf{AO}{AD} = 3$ 또는 $\\ tf{AO}{AD} = \\ tf{3}{4}$ 등의 관계를 보임.\n$\text{iii) 대수적 해결}$\n위 비율 관계를 $a, b$에 대해 풀면 $a$는 $12, 3, -3, -12$를 가짐.\n그 중 최댓값은 $12$이며 절댓값 또한 $12$임.\n$\therefore 12$"
+        solution: "**[Logical Anchor]** 접점의 위치와 삼각형의 닮음을 기하학적으로 해석함.\n$\text{i) 연립 및 접점 설정}$\n$x^2 + (a-6)x + b = 0$ 의 판별식 $D=0$ 에서 $b = \\ tf{(a-6)^2}{4}$\n접점 $C$의 $x$좌표는 중근인 $x = \\ tf{6-a}{2}$\n$\text{ii) 기하학적 비율 추출}$\n$\\triangle ABO$와 $\\triangle ACD$는 직선의 성질상 닮음 구조를 가짐.\n넓이비가 $9:1$ 이면 길이비는 $3:1$ 임.\n직선의 $x$절편 $A(-\ tf{b}{a}, 0)$와 원점 $O(0, 0)$, 점 $D(\\ tf{6-a}{2}, 0)$ 사이의 거리비가\n$\\frac{AO}{AD} = 3$ 또는 $\\ tf{AO}{AD} = \\ tf{3}{4}$ 등의 관계를 보임.\n$\text{iii) 대수적 해결}$\n위 비율 관계를 $a, b$에 대해 풀면 $a$는 $12, 3, -3, -12$를 가짐.\n그 중 최댓값은 $12$이며 절댓값 또한 $12$임.\n$\therefore 12$"
     }
 ];

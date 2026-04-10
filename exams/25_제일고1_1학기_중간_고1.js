@@ -110,10 +110,10 @@ window.questionBank = [
     "id": 12,
     "level": "중상",
     "category": "복소수의 연산",
-    "content": "[중상] 실수 $a$에 대하여 $\\sqrt{\\tf{a+3}{a-3}}=-\\tf{\\sqrt{a+3}}{\\sqrt{a-3}}$ 을 만족하는 정수 $a$의 개수는? [4.3점]",
+    "content": "[중상] 실수 $a$에 대하여 $\\sqrt{\\frac{a+3}{a-3}}=-\\frac{\\sqrt{a+3}}{\\sqrt{a-3}}$ 을 만족하는 정수 $a$의 개수는? [4.3점]",
     "choices": ["3", "4", "5", "6", "7"],
     "answer": "④",
-    "solution": "**[Logical Anchor]** 음의 제곱근의 성질(나눗셈) 적용\n$\\because \\tf{\\sqrt{A}}{\\sqrt{B}} = -\\sqrt{\\tf{A}{B}} \\iff A \\ge 0, B < 0$\n$\\implies a+3 \\ge 0 \\text{ 이고 } a-3 < 0$\n$\\implies -3 \\le a < 3$\n$\\therefore a \\in \\{-3, -2, -1, 0, 1, 2\\} \\implies 6\\text{개}$"
+    "solution": "**[Logical Anchor]** 음의 제곱근의 성질(나눗셈) 적용\n$\\because \\frac{\\sqrt{A}}{\\sqrt{B}} = -\\sqrt{\\frac{A}{B}} \\iff A \\ge 0, B < 0$\n$\\implies a+3 \\ge 0 \\text{ 이고 } a-3 < 0$\n$\\implies -3 \\le a < 3$\n$\\therefore a \\in \\{-3, -2, -1, 0, 1, 2\\} \\implies 6\\text{개}$"
   },
   {
     "id": 13,
@@ -147,9 +147,9 @@ window.questionBank = [
     "level": "상",
     "category": "이차함수와 직선",
     "content": "[상] $x$에 대한 이차함수 $y=x^2-2kx+k^2+3k$의 그래프와 직선 $y=ax+b$가 $k$의 값에 관계없이 항상 접할 때, $a+b$의 값은? [4.6점]",
-    "choices": ["$\\tf{1}{16}$", "$\\tf{1}{8}$", "$\\tf{3}{4}$", "$\\tf{7}{8}$", "$\\tf{1}{2}$"],
+    "choices": ["$\\frac{1}{16}$", "$\\frac{1}{8}$", "$\\frac{3}{4}$", "$\\frac{7}{8}$", "$\\frac{1}{2}$"],
     "answer": "③",
-    "solution": "**[Logical Anchor]** 판별식 $D=0$이 $k$에 대한 항등식임을 이용\n$\\implies x^2-(2k+a)x+(k^2+3k-b)=0$\n$\\implies D = (2k+a)^2-4(k^2+3k-b) = 0$\n$\\implies (4a-12)k + (a^2+4b) = 0$\n$\\because 4a-12=0, a^2+4b=0 \\implies a=3, b=-\\tf{9}{4}$\n$\\therefore a+b = 3-\\tf{9}{4} = \\tf{3}{4}$"
+    "solution": "**[Logical Anchor]** 판별식 $D=0$이 $k$에 대한 항등식임을 이용\n$\\implies x^2-(2k+a)x+(k^2+3k-b)=0$\n$\\implies D = (2k+a)^2-4(k^2+3k-b) = 0$\n$\\implies (4a-12)k + (a^2+4b) = 0$\n$\\because 4a-12=0, a^2+4b=0 \\implies a=3, b=-\\frac{9}{4}$\n$\\therefore a+b = 3-\\frac{9}{4} = \\frac{3}{4}$"
   },
   {
     "id": 17,
@@ -158,7 +158,7 @@ window.questionBank = [
     "content": "[중상] 이차방정식 $x^2-2x+3=0$의 두 근 $\\alpha, \\beta$에 대하여 $f(\\alpha)=f(\\beta)=\\alpha\\beta, f(1)=2$를 만족시키는 이차식 $f(x)$에 대하여 $f(5)$의 값은? [4.7점]",
     "choices": ["-15", "-6", "8", "12", "15"],
     "answer": "②",
-    "solution": "**[Logical Anchor]** 인수정리를 활용한 이차식 $f(x)$ 구성\n$\\because \\alpha+\\beta=2, \\alpha\\beta=3$\n$\\implies f(\\alpha)=3, f(\\beta)=3 \\implies f(x)-3 = p(x-\\alpha)(x-\\beta)$\n$\\implies f(x) = p(x^2-2x+3)+3$\n$\\because f(1) = 2p+3 = 2 \\implies p = -\\tf{1}{2}$\n$\\therefore f(5) = -\\tf{1}{2}(25-10+3)+3 = -6$"
+    "solution": "**[Logical Anchor]** 인수정리를 활용한 이차식 $f(x)$ 구성\n$\\because \\alpha+\\beta=2, \\alpha\\beta=3$\n$\\implies f(\\alpha)=3, f(\\beta)=3 \\implies f(x)-3 = p(x-\\alpha)(x-\\beta)$\n$\\implies f(x) = p(x^2-2x+3)+3$\n$\\because f(1) = 2p+3 = 2 \\implies p = -\\frac{1}{2}$\n$\\therefore f(5) = -\\frac{1}{2}(25-10+3)+3 = -6$"
   },
   {
     "id": 18,
@@ -167,7 +167,7 @@ window.questionBank = [
     "content": "[상] 한 변의 길이가 8인 정사각형 $ABCD$ 내부에 $DE=4, DF=3$인 선분 $EF$ 위의 점 $P$로부터 변 $AB, BC$에 내린 수선으로 만든 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]",
     "choices": ["39", "118/3", "119/3", "40", "121/3"],
     "answer": "⑤",
-    "solution": "**[Logical Anchor]** 좌표평면 도입 및 이차함수 최대치 산출\n$\\implies D(0,0), E(3,0), F(0,4) \\text{ 로 설정 (직선 } EF: \\tf{x}{3}+\\tf{y}{4}=1)$\n$\\implies P(t, 4-\\tf{4}{3}t), \\text{ 사각형 가로 } = 8-t, \\text{ 세로 } = 4+\\tf{4}{3}t$\n$\\implies S(t) = (8-t)(4+\\tf{4}{3}t) = -\\tf{4}{3}(t-\\tf{5}{2})^2 + \\tf{121}{3}$\n$\\therefore \\text{최댓값은 } \\tf{121}{3}$"
+    "solution": "**[Logical Anchor]** 좌표평면 도입 및 이차함수 최대치 산출\n$\\implies D(0,0), E(3,0), F(0,4) \\text{ 로 설정 (직선 } EF: \\frac{x}{3}+\\frac{y}{4}=1)$\n$\\implies P(t, 4-\\frac{4}{3}t), \\text{ 사각형 가로 } = 8-t, \\text{ 세로 } = 4+\\frac{4}{3}t$\n$\\implies S(t) = (8-t)(4+\\frac{4}{3}t) = -\\frac{4}{3}(t-\\frac{5}{2})^2 + \\frac{121}{3}$\n$\\therefore \\text{최댓값은 } \\frac{121}{3}$"
   },
   {
     "id": 19,

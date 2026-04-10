@@ -14,16 +14,16 @@ window.questionBank = [
         level: "하",
         category: "유한소수의 판별",
         content: "다음 분수 중에서 소수로 나타내면 유한소수인 것을 구하면? [4점]",
-        choices: ["$\\tf{5}{14}$", "$\\tf{1}{14}$", "$\\tf{36}{2 \\times 3^2 \\times 5}$", "$\\tf{20}{28}$", "$\\tf{7}{3 \\times 5^2}$"],
+        choices: ["$\\frac{5}{14}$", "$\\frac{1}{14}$", "$\\frac{36}{2 \\times 3^2 \\times 5}$", "$\\frac{20}{28}$", "$\\frac{7}{3 \\times 5^2}$"],
         answer: "③",
-        solution: "**[Logical Anchor]** 기약분수의 분모 소인수가 $2$ 또는 $5$뿐이면 유한소수임.\n① $\\tf{5}{14} = \\tf{5}{2 \\times 7} \\implies$ 분모에 $7$ 존재\n② $\\tf{1}{14} = \\tf{1}{2 \\times 7} \\implies$ 분모에 $7$ 존재\n③ $\\tf{36}{2 \\times 3^2 \\times 5} = \\tf{36}{18 \\times 5} = \\tf{2}{5} \\implies$ 분모 소인수가 $5$뿐임\n④ $\\tf{20}{28} = \\tf{5}{7} \\implies$ 분모에 $7$ 존재\n⑤ $\\tf{7}{3 \\times 5^2} \\implies$ 분모에 $3$ 존재\n$\\therefore$ ③"
+        solution: "**[Logical Anchor]** 기약분수의 분모 소인수가 $2$ 또는 $5$뿐이면 유한소수임.\n① $\\frac{5}{14} = \\frac{5}{2 \\times 7} \\implies$ 분모에 $7$ 존재\n② $\\frac{1}{14} = \\frac{1}{2 \\times 7} \\implies$ 분모에 $7$ 존재\n③ $\\frac{36}{2 \\times 3^2 \\times 5} = \\frac{36}{18 \\times 5} = \\frac{2}{5} \\implies$ 분모 소인수가 $5$뿐임\n④ $\\frac{20}{28} = \\frac{5}{7} \\implies$ 분모에 $7$ 존재\n⑤ $\\frac{7}{3 \\times 5^2} \\implies$ 분모에 $3$ 존재\n$\\therefore$ ③"
     },
     {
         id: 2,
         level: "하",
         category: "순환소수의 이해",
         content: "순환소수 $x=0.252525\\dots$에 대한 설명 중 옳은 것을 구하면? [3점]",
-        choices: ["순환마디에 점을 찍어 나타내면 $x=0.25$이다.", "$100x-x=25$ 이다.", "순환마디는 $2525$이다.", "$x=\\tf{25}{90}$", "$x$는 유한소수이다."],
+        choices: ["순환마디에 점을 찍어 나타내면 $x=0.25$이다.", "$100x-x=25$ 이다.", "순환마디는 $2525$이다.", "$x=\\frac{25}{90}$", "$x$는 유한소수이다."],
         answer: "②",
         solution: "$x = 0.252525\\dots \\quad \\cdots (1)$\n$(1)$의 양변에 $100$을 곱함 $\\implies 100x = 25.2525\\dots \\quad \\cdots (2)$\n$(2)-(1)$을 시행함\n$\\implies 100x - x = 25.2525\\dots - 0.2525\\dots = 25$\n$\\therefore$ ②"
     },
@@ -43,16 +43,16 @@ window.questionBank = [
         content: "다음 <보기>의 대화 중 틀리게 말한 친구를 찾아보면? [4점]<br><div style='border:1px solid #000; padding:5px;'>승훈: 유한소수는 모두 유리수야.<br>준영: 순환소수는 모두 분수로 나타낼 수 있어.<br>성오: 정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있어.<br>민주: 순환소수가 아닌 무한소수는 유리수가 아니야.<br>영현: 모든 순환소수는 유리수야.</div>",
         choices: ["승훈", "준영", "성오", "민주", "영현"],
         answer: "③",
-        solution: "**[Logical Anchor]** 유리수의 분류 체계를 정확히 파악함.\n$\\because$ 정수가 아닌 유리수는 '유한소수' 또는 '순환소수'로 나타낼 수 있음.\n$\\implies$ $\\tf{1}{3}$과 같이 순환소수로만 나타낼 수 있는 유리수가 존재함.\n$\\therefore$ 성오의 말은 옳지 않음."
+        solution: "**[Logical Anchor]** 유리수의 분류 체계를 정확히 파악함.\n$\\because$ 정수가 아닌 유리수는 '유한소수' 또는 '순환소수'로 나타낼 수 있음.\n$\\implies$ $\\frac{1}{3}$과 같이 순환소수로만 나타낼 수 있는 유리수가 존재함.\n$\\therefore$ 성오의 말은 옳지 않음."
     },
     {
         id: 5,
         level: "중",
         category: "순환소수와 역수",
         content: "$[x]$를 $x$의 역수라고 할 때, $[1.\\dot{2}] + [0.2\\dot{4}]$의 값을 구하면? [4점]",
-        choices: ["$\\tf{48}{11}$", "$\\tf{42}{11}$", "$\\tf{54}{11}$", "$\\tf{50}{11}$", "$\\tf{46}{11}$"],
+        choices: ["$\\frac{48}{11}$", "$\\frac{42}{11}$", "$\\frac{54}{11}$", "$\\frac{50}{11}$", "$\\frac{46}{11}$"],
         answer: "③",
-        solution: "(1) $1.\\dot{2} = \\tf{12-1}{9} = \\tf{11}{9} \\implies$ 역수 $[1.\\dot{2}] = \\tf{9}{11}$\n(2) $0.2\\dot{4} = \\tf{24-2}{90} = \\tf{22}{90} = \\tf{11}{45} \\implies$ 역수 $[0.2\\dot{4}] = \\tf{45}{11}$\n(3) $[1.\\dot{2}] + [0.2\\dot{4}] = \\tf{9}{11} + \\tf{45}{11} = \\tf{54}{11}$\n$\\therefore$ ③"
+        solution: "(1) $1.\\dot{2} = \\frac{12-1}{9} = \\frac{11}{9} \\implies$ 역수 $[1.\\dot{2}] = \\frac{9}{11}$\n(2) $0.2\\dot{4} = \\frac{24-2}{90} = \\frac{22}{90} = \\frac{11}{45} \\implies$ 역수 $[0.2\\dot{4}] = \\frac{45}{11}$\n(3) $[1.\\dot{2}] + [0.2\\dot{4}] = \\frac{9}{11} + \\frac{45}{11} = \\frac{54}{11}$\n$\\therefore$ ③"
     },
     {
         id: 6,
@@ -67,16 +67,16 @@ window.questionBank = [
         id: 7,
         level: "상",
         category: "순환소수와 분수",
-        content: "$0.7 + \\tf{3}{5} + \\tf{3}{50} + \\tf{3}{500} + \\dots = \\tf{a}{b}$일 때 $a-b$를 구하면? [5점]",
+        content: "$0.7 + \\frac{3}{5} + \\frac{3}{50} + \\frac{3}{500} + \\dots = \\frac{a}{b}$일 때 $a-b$를 구하면? [5점]",
         choices: ["11", "20", "21", "22", "23"],
         answer: "①",
-        solution: "**[Logical Anchor]** 식을 소수의 합으로 변환하여 순환소수를 찾음.\n$\\tf{3}{5} = 0.6, \\ \\tf{3}{50} = 0.06, \\ \\tf{3}{500} = 0.006, \\ \dots$\n식 $\\implies 0.7 + (0.6 + 0.06 + 0.006 + \\dots)$\n$= 0.7 + 0.666\\dots = 0.7 + 0.\\dot{6}$\n$= \\tf{7}{10} + \\tf{6}{9} = \\tf{7}{10} + \\tf{2}{3} = \\tf{21+20}{30} = \\tf{41}{30}$\n$\\implies a=41, b=30$ 이므로 $a-b = 11$임.\n(※ 보기 오류 가능성 확인하여 정답 11로 도출)\n$\\therefore$ 11"
+        solution: "**[Logical Anchor]** 식을 소수의 합으로 변환하여 순환소수를 찾음.\n$\\frac{3}{5} = 0.6, \\ \\frac{3}{50} = 0.06, \\ \\frac{3}{500} = 0.006, \\ \dots$\n식 $\\implies 0.7 + (0.6 + 0.06 + 0.006 + \\dots)$\n$= 0.7 + 0.666\\dots = 0.7 + 0.\\dot{6}$\n$= \\frac{7}{10} + \\frac{6}{9} = \\frac{7}{10} + \\frac{2}{3} = \\frac{21+20}{30} = \\frac{41}{30}$\n$\\implies a=41, b=30$ 이므로 $a-b = 11$임.\n(※ 보기 오류 가능성 확인하여 정답 11로 도출)\n$\\therefore$ 11"
     },
     {
         id: 8,
         level: "중",
         category: "유한소수가 되는 조건",
-        content: "분수 $\\tf{A}{2^3 \\times 3 \\times 11}$가 유한소수가 될 때, $A$가 될 수 있는 두 번째로 작은 두 자리 자연수는? [4점]",
+        content: "분수 $\\frac{A}{2^3 \\times 3 \\times 11}$가 유한소수가 될 때, $A$가 될 수 있는 두 번째로 작은 두 자리 자연수는? [4점]",
         choices: ["11", "33", "66", "99", "22"],
         answer: "③",
         solution: "**[Logical Anchor]** 분모의 $3$과 $11$이 분자 $A$와 약분되어 사라져야 함.\n$\\implies A$는 $3 \\times 11 = 33$의 배수여야 함.\n$A \\in \\{33, 66, 99, 132, \\dots\\}$\n$\\implies$ 두 번째로 작은 두 자리 자연수는 $66$임.\n$\\therefore$ ③"
@@ -86,18 +86,18 @@ window.questionBank = [
         level: "하",
         category: "식의 계산 성질",
         content: "다음 중 계산 법칙이 옳은 것을 구하면? [3점]",
-        choices: ["$a \\div (b \\times c) = \\tf{ab}{c}$", "$a \\div (b \\div c) = \\tf{ac}{b}$", "$(a \\div b) \\times c = \\tf{b}{ac}$", "$a \\times (b \\div c) = \\tf{a}{bc}$", "$(a \\div b) \\div c = \\tf{ac}{b}$"],
+        choices: ["$a \\div (b \\times c) = \\frac{ab}{c}$", "$a \\div (b \\div c) = \\frac{ac}{b}$", "$(a \\div b) \\times c = \\frac{b}{ac}$", "$a \\times (b \\div c) = \\frac{a}{bc}$", "$(a \\div b) \\div c = \\frac{ac}{b}$"],
         answer: "②",
-        solution: "② $a \\div (b \\div c) = a \\div \\tf{b}{c} = a \\times \\tf{c}{b} = \\tf{ac}{b}$ (참)\n① $a \\div (bc) = \\tf{a}{bc}$\n③ $\\tf{a}{b} \\times c = \\tf{ac}{b}$\n④ $a \\times \\tf{b}{c} = \\tf{ab}{c}$\n⑤ $\\tf{a}{b} \\div c = \\tf{a}{bc}$\n$\\therefore$ ②"
+        solution: "② $a \\div (b \\div c) = a \\div \\frac{b}{c} = a \\times \\frac{c}{b} = \\frac{ac}{b}$ (참)\n① $a \\div (bc) = \\frac{a}{bc}$\n③ $\\frac{a}{b} \\times c = \\frac{ac}{b}$\n④ $a \\times \\frac{b}{c} = \\frac{ab}{c}$\n⑤ $\\frac{a}{b} \\div c = \\frac{a}{bc}$\n$\\therefore$ ②"
     },
     {
         id: 10,
         level: "하",
         category: "지수법칙",
         content: "다음 중 지수법칙을 바르게 적용한 것을 구하면? [3점]",
-        choices: ["$(a^3b)^2 = a^3b^2$", "$(-xy^3)^2 = -x^2y^6$", "$(-\\tf{y^2z^3}{x^2})^2 = \\tf{y^4z^6}{x^4}$", "$(\\tf{c}{ab^2})^3 = \\tf{c^3}{ab^6}$", "$(-\\tf{2x^2}{3y})^3 = -\\tf{8x^6}{9y^3}$"],
+        choices: ["$(a^3b)^2 = a^3b^2$", "$(-xy^3)^2 = -x^2y^6$", "$(-\\frac{y^2z^3}{x^2})^2 = \\frac{y^4z^6}{x^4}$", "$(\\frac{c}{ab^2})^3 = \\frac{c^3}{ab^6}$", "$(-\\frac{2x^2}{3y})^3 = -\\frac{8x^6}{9y^3}$"],
         answer: "③",
-        solution: "③ $(-\\tf{y^2z^3}{x^2})^2 = \\tf{(-1)^2 (y^2)^2 (z^3)^2}{(x^2)^2} = \\tf{y^4z^6}{x^4}$ (참)\n① $(a^3)^2 b^2 = a^6b^2$\n② $(-1)^2 x^2 (y^3)^2 = x^2y^6$\n④ $\\tf{c^3}{a^3 (b^2)^3} = \\tf{c^3}{a^3b^6}$\n⑤ $(-\\tf{2}{3})^3 \\tf{(x^2)^3}{y^3} = -\\tf{8x^6}{27y^3}$\n$\\therefore$ ③"
+        solution: "③ $(-\\frac{y^2z^3}{x^2})^2 = \\frac{(-1)^2 (y^2)^2 (z^3)^2}{(x^2)^2} = \\frac{y^4z^6}{x^4}$ (참)\n① $(a^3)^2 b^2 = a^6b^2$\n② $(-1)^2 x^2 (y^3)^2 = x^2y^6$\n④ $\\frac{c^3}{a^3 (b^2)^3} = \\frac{c^3}{a^3b^6}$\n⑤ $(-\\frac{2}{3})^3 \\frac{(x^2)^3}{y^3} = -\\frac{8x^6}{27y^3}$\n$\\therefore$ ③"
     },
     {
         id: 11,
@@ -122,7 +122,7 @@ window.questionBank = [
         level: "중",
         category: "지수법칙 미지수",
         content: "다음 $\\Box$ 안에 들어갈 알맞은 수 중 가장 큰 것을 구하면? [4점]",
-        choices: ["$(a^2)^3=a^\\Box$", "$(x^4)^2 \\div x^3=x^\\Box$", "$x \\times y^4 \\times (x^3)^2=x^\\Box y^4$", "$(-\\tf{b^3}{a^2})^4 = \\tf{b^{12}}{a^\\Box}$", "$(x^4)^3 \\div x^4 \\div (x^3)^3 = x^\\Box$"],
+        choices: ["$(a^2)^3=a^\\Box$", "$(x^4)^2 \\div x^3=x^\\Box$", "$x \\times y^4 \\times (x^3)^2=x^\\Box y^4$", "$(-\\frac{b^3}{a^2})^4 = \\frac{b^{12}}{a^\\Box}$", "$(x^4)^3 \\div x^4 \\div (x^3)^3 = x^\\Box$"],
         answer: "④",
         solution: "① $2 \\times 3 = 6$\n② $8 - 3 = 5$\n③ $1 + 6 = 7$\n④ $2 \\times 4 = 8$\n⑤ $12 - 4 - 9 = -1$\n$\\therefore$ 가장 큰 값은 8임."
     },
@@ -131,7 +131,7 @@ window.questionBank = [
         level: "하",
         category: "단항식의 계산",
         content: "$\\Box \\div (-3ab^2) = ab^2$ 일 때, 안에 알맞은 식을 구하면? [4점]",
-        choices: ["$-9a^{10}b^8$", "$9a^{10}b^8$", "$-\\tf{1}{9}a^{10}b^8$", "$-3a^2b^4$", "$9a^6b^{10}$"],
+        choices: ["$-9a^{10}b^8$", "$9a^{10}b^8$", "$-\\frac{1}{9}a^{10}b^8$", "$-3a^2b^4$", "$9a^6b^{10}$"],
         answer: "④",
         solution: "$\\Box = ab^2 \\times (-3ab^2)$\n$= -3 \\cdot a \\cdot a \\cdot b^2 \\cdot b^2$\n$= -3a^2b^4$\n$\\therefore$ ④"
     },
@@ -140,9 +140,9 @@ window.questionBank = [
         level: "상",
         category: "도형과 다항식",
         content: "직사각형 ABCD 내부에 삼각형 AEF의 넓이를 $a, b$에 관한 식으로 나타내면? [5점]",
-        choices: ["$\\tf{5}{2}ab + \\tf{3}{2}b^2$", "$\\tf{7}{2}ab + \\tf{1}{2}b^2$", "$\\tf{5}{2}ab + \\tf{1}{2}b^2$", "$\\tf{9}{2}ab + \\tf{3}{2}b^2$", "$\\tf{11}{2}ab + \\tf{3}{2}b^2$"],
+        choices: ["$\\frac{5}{2}ab + \\frac{3}{2}b^2$", "$\\frac{7}{2}ab + \\frac{1}{2}b^2$", "$\\frac{5}{2}ab + \\frac{1}{2}b^2$", "$\\frac{9}{2}ab + \\frac{3}{2}b^2$", "$\\frac{11}{2}ab + \\frac{3}{2}b^2$"],
         answer: "③",
-        solution: "**[Logical Anchor]** 전체 넓이에서 주변부 세 직각삼각형의 넓이를 뺌.\n(상세 수치 매핑에 따른 계산 결과) $\\implies \\tf{5}{2}ab + \\tf{1}{2}b^2$\n$\\therefore$ ③"
+        solution: "**[Logical Anchor]** 전체 넓이에서 주변부 세 직각삼각형의 넓이를 뺌.\n(상세 수치 매핑에 따른 계산 결과) $\\implies \\frac{5}{2}ab + \\frac{1}{2}b^2$\n$\\therefore$ ③"
     },
     {
         id: 16,
@@ -184,7 +184,7 @@ window.questionBank = [
         id: 20,
         level: "중",
         category: "부등식의 성질",
-        content: "$-2 \\le \\tf{x}{3} < 4$ 일 때, $2x-3$의 값 중 가장 큰 정수를 구하면? [4점]",
+        content: "$-2 \\le \\frac{x}{3} < 4$ 일 때, $2x-3$의 값 중 가장 큰 정수를 구하면? [4점]",
         choices: ["17", "18", "19", "20", "21"],
         answer: "④",
         solution: "(1) $-6 \\le x < 12$\n(2) $-12 \\le 2x < 24$\n(3) $-15 \\le 2x-3 < 21$\n$\\because$ 범위 내의 정수 중 최댓값은 $20$임.\n$\\therefore$ 20"
@@ -193,19 +193,19 @@ window.questionBank = [
         id: 21,
         level: "중상",
         category: "서술형 1",
-        content: "$\\tf{8}{15}$의 순환마디를 구하고, 순환소수 $0.2\\dot{7} = \\tf{5}{a}$ 일 때 $a$의 값을 구하시오. [4점]",
+        content: "$\\frac{8}{15}$의 순환마디를 구하고, 순환소수 $0.2\\dot{7} = \\frac{5}{a}$ 일 때 $a$의 값을 구하시오. [4점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "3, 18",
-        solution: "(1) $\\tf{8}{15} = 0.5333\\dots = 0.5\\dot{3} \\implies$ 순환마디는 $3$임.\n(2) $0.2\\dot{7} = \\tf{27-2}{90} = \\tf{25}{90} = \\tf{5}{18}$\n$\\implies a=18$\n$\\therefore$ 3, 18"
+        solution: "(1) $\\frac{8}{15} = 0.5333\\dots = 0.5\\dot{3} \\implies$ 순환마디는 $3$임.\n(2) $0.2\\dot{7} = \\frac{27-2}{90} = \\frac{25}{90} = \\frac{5}{18}$\n$\\implies a=18$\n$\\therefore$ 3, 18"
     },
     {
         id: 22,
         level: "상",
         category: "서술형 2",
-        content: "$a=168, 10 < b < 40$인 7의 배수 중 $\\tf{b}{a}$가 순환소수가 되는 $b$값의 합은? [5점]",
+        content: "$a=168, 10 < b < 40$인 7의 배수 중 $\\frac{b}{a}$가 순환소수가 되는 $b$값의 합은? [5점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "77",
-        solution: "$168 = 2^3 \\times 3 \\times 7$ 임.\n$b$는 $7$의 배수이므로 $b \\in \\{14, 21, 28, 35\\}$ 임.\n$\\tf{b}{168} = \\tf{7k}{2^3 \\times 3 \\times 7} = \\tf{k}{2^3 \\times 3}$\n순환소수가 되려면 분모의 $3$이 약분되지 않아야 함.\n$\\implies k$가 $3$의 배수가 아닌 경우\n$b=14(k=2), \\ 28(k=4), \\ 35(k=5)$ 이며 $b=21(k=3)$은 유한소수임.\n합: $14 + 28 + 35 = 77$\n$\\therefore$ 77"
+        solution: "$168 = 2^3 \\times 3 \\times 7$ 임.\n$b$는 $7$의 배수이므로 $b \\in \\{14, 21, 28, 35\\}$ 임.\n$\\frac{b}{168} = \\frac{7k}{2^3 \\times 3 \\times 7} = \\frac{k}{2^3 \\times 3}$\n순환소수가 되려면 분모의 $3$이 약분되지 않아야 함.\n$\\implies k$가 $3$의 배수가 아닌 경우\n$b=14(k=2), \\ 28(k=4), \\ 35(k=5)$ 이며 $b=21(k=3)$은 유한소수임.\n합: $14 + 28 + 35 = 77$\n$\\therefore$ 77"
     },
     {
         id: 23,
@@ -223,6 +223,6 @@ window.questionBank = [
         content: "새로운 연산 $a \\clubsuit b = a \\div b \\times (-3a)$ 일 때, $(-xy) \\clubsuit (3x^2)$ 을 계산하시오. [6점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "$-y^2$",
-        solution: "대입: $(-xy) \\div (3x^2) \\times \\{-3(-xy)\\}$\n$= (-\\tf{xy}{3x^2}) \\times (3xy)$\n$= (-\\tf{y}{3x}) \\times 3xy$\n$= -y^2$\n$\\therefore -y^2$"
+        solution: "대입: $(-xy) \\div (3x^2) \\times \\{-3(-xy)\\}$\n$= (-\\frac{xy}{3x^2}) \\times (3xy)$\n$= (-\\frac{y}{3x}) \\times 3xy$\n$= -y^2$\n$\\therefore -y^2$"
     }
 ];
