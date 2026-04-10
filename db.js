@@ -23,7 +23,6 @@ window.mainDB = {
     { "year": 2019, "school": "왕운중", "grade": "중3", "level": "middle", "semester": 1, "examType": "mid", "subject": "중등수학3-1", "type": "exam", "file": "19_왕운중3_1학기_중간_중3.js" },
     { "year": 2019, "school": "금당중", "grade": "중3", "level": "middle", "semester": 1, "examType": "mid", "subject": "중등수학3-1", "type": "exam", "file": "19_금당중3_1학기_중간_중3.js" },
     { "year": 2019, "school": "동산중", "grade": "중3", "level": "middle", "semester": 1, "examType": "mid", "subject": "중등수학3-1", "type": "exam", "file": "19_동산중3_1학기_중간_중3.js" },
-    { "year": 2024, "school": "한영중", "grade": "중3", "level": "middle", "semester": 1, "examType": "mid", "subject": "중등수학3-1", "type": "exam", "file": "24_한영중3_1학기_중간_중3.js" },
     { "year": 2024, "school": "매산중", "grade": "중3", "level": "middle", "semester": 1, "examType": "mid", "subject": "중등수학3-1", "type": "exam", "file": "24_매산중3_1학기_중간_중3.js" },
     { "year": 2024, "school": "왕운중", "grade": "중3", "level": "middle", "semester": 1, "examType": "mid", "subject": "중등수학3-1", "type": "exam", "file": "24_왕운중3_1학기_중간_중3.js" },
     { "year": 2025, "school": "강남여고", "grade": "고1", "level": "high", "semester": 1, "examType": "final", "subject": "공통수학", "type": "exam", "file": "25_강남여고1_1학기_기말_고1.js" },
