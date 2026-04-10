@@ -2,102 +2,88 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP 수학 문제 엔진</title>
+    <title>AP 수학 엔진</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        body { font-family: 'Pretendard', sans-serif; padding: 20px; line-height: 1.6; }
-        .question-box { border: 1px solid #ddd; padding: 20px; margin-bottom: 30px; border-radius: 8px; }
-        .content { margin-bottom: 15px; font-weight: 500; }
-        .choices { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 15px; }
-        .choice-item { padding: 8px 12px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 4px; cursor: pointer; }
-        .solution { background: #f0fdf4; padding: 15px; border-radius: 6px; margin-top: 10px; display: none; }
-        .box { border: 1px solid #000; padding: 10px; margin: 10px 0; background: #fff; }
-        mark { background: #fef08a; padding: 0 2px; }
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+        @page { size: A4; margin: 0; }
+        body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; }
+        #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: white; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; border-bottom: 1px solid #ddd; width: 100%; box-sizing: border-box; }
+        
+        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto 10mm auto; background: white; box-sizing: border-box; display: flex; flex-direction: column; }
+        .content-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0 20px; }
+        .content-container::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
+
+        .item { padding: 15px 10px; border-bottom: 0.5px solid #eee; break-inside: avoid; display: flex; flex-direction: column; height: 100%; }
+        .answer-box { margin-top: auto; border: 1px dashed #ccc; min-height: 35mm; background: #fafafa; }
+        @media print { .no-print { display: none; } body { padding: 0; } .page { margin: 0; border: none; } }
     </style>
 </head>
-<body>
-    <div id="displayTitle" style="font-size: 1.2em; font-weight: 800; margin-bottom: 20px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;"></div>
-    <div id="quiz-container"></div>
+<body class="test-mode">
+    <div id="mode-ctrl" class="no-print">
+        <button onclick="location.href='index.html'">← 목록</button>
+        <button onclick="window.print()" style="background:#1e293b; color:white; border:none; padding:5px 15px; border-radius:4px;">인쇄</button>
+    </div>
+    <div id="print-area"></div>
+    <div id="item-pool" style="display:none;"></div>
 
-    <script>
-        // 무결성 보정 함수 (최신 업데이트)
-        function normalizeQuestion(q) {
-            const processText = (text) => {
-                if (!text) return text;
-                // 1. 논리 기호 한글화 및 \text{} 태그 정리 (한글 누락 방지)
-                let t = text.replace(/\\implies/g, '이면').replace(/\\therefore/g, '따라서').replace(/\\because/g, '이므로')
-                            .replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ');
-                // 2. 수식 기호(\)는 있으나 $ 래핑이 없는 경우 자동 래핑 (보기 깨짐 방지)
-                if (t.includes('\\') && !t.includes('$')) {
-                    t = `$${t.trim()}$`;
-                }
-                return t;
-            };
+<script>
+const AppState = { title: "", qpp: 4 };
 
-            if (q.solution) {
-                q.solution = processText(q.solution)
-                    .replace(/\[Logical Anchor\]/g, '<strong>[키포인트]</strong>')
-                    .replace(/\\?ext[i]*[case]*(\d+)\s*\)?/gi, '<br><strong>($1)단계:</strong> ')
-                    .replace(/\\?next(\d*)/gi, '<br><strong>다음으로:</strong> ')
-                    .replace(/case\s+(\d+)\)/gi, '경우 $1)');
-            }
-            
-            q.content = processText(q.content);
-            if (q.choices) q.choices = q.choices.map(c => processText(c));
+function normalizeQuestion(q) {
+    // 2시 시점의 기본적인 텍스트 보정 로직
+    if (!q.content) return q;
+    return q;
+}
 
-            if (!q.type) {
-                // 3. 보기가 하나라도 있으면 무조건 객관식(single)으로 판별
-                if (q.choices && q.choices.length > 0) q.type = 'single';
-                else if (q.content?.includes('서술')) q.type = 'descriptive';
-                else q.type = 'short';
-            }
-            return q;
-        }
+(function load() {
+    const params = new URLSearchParams(window.location.search);
+    AppState.qpp = parseInt(params.get('qpp')) || 4;
+    AppState.title = decodeURIComponent(params.get('title') || 'AP수학');
+    const f = params.get('data');
+    if (!f) return;
+    
+    const s = document.createElement('script');
+    s.src = decodeURIComponent(f) + '?v=' + Date.now();
+    s.onload = initRender;
+    document.body.appendChild(s);
+})();
 
-        async function init() {
-            const params = new URLSearchParams(window.location.search);
-            const dataPath = params.get('data');
-            const title = params.get('title');
-            
-            if (title) document.getElementById('displayTitle').innerText = decodeURIComponent(title);
-            if (!dataPath) return;
+function initRender() {
+    const pool = document.getElementById('item-pool');
+    const bank = window.questionBank || [];
+    
+    pool.innerHTML = bank.map((q, i) => `
+        <div class="item">
+            <div style="font-size:10.5pt; margin-bottom:8px;"><b>${i+1}.</b> ${q.content}</div>
+            ${q.choices ? `<div style="line-height:1.8;">${q.choices.map((c,ci)=>`<div>${ci+1}) ${c}</div>`).join('')}</div>` : '<div class="answer-box"></div>'}
+        </div>`).join('');
 
-            const script = document.createElement('script');
-            script.src = dataPath;
-            script.onload = () => {
-                const container = document.getElementById('quiz-container');
-                const questions = window.questionBank || [];
-                
-                questions.forEach(rawQ => {
-                    const q = normalizeQuestion(rawQ);
-                    const div = document.createElement('div');
-                    div.className = 'question-box';
-                    
-                    let html = `<div class="content">${q.id}. ${q.content}</div>`;
-                    
-                    if (q.type === 'single' && q.choices) {
-                        html += `<div class="choices">`;
-                        q.choices.forEach((c, idx) => {
-                            html += `<div class="choice-item">${idx + 1}) ${c}</div>`;
-                        });
-                        html += `</div>`;
-                    } else {
-                        html += `<div style="border:1px solid #ccc; height:40px; margin:10px 0; border-radius:4px; background:#fff;"></div>`;
-                    }
-                    
-                    html += `<div class="solution" id="sol-${q.id}"><strong>[해설]</strong><br>${q.solution}<br><br><strong>정답: ${q.answer}</strong></div>`;
-                    html += `<button onclick="document.getElementById('sol-${q.id}').style.display='block'" style="font-size:11px; cursor:pointer;">해설 보기</button>`;
-                    
-                    div.innerHTML = html;
-                    container.appendChild(div);
-                });
-                if (window.MathJax) MathJax.typeset();
-            };
-            document.body.appendChild(script);
-        }
+    paginate();
+    if (window.MathJax) MathJax.typeset();
+}
 
-        window.onload = init;
-    </script>
+function paginate() {
+    const printArea = document.getElementById('print-area');
+    printArea.innerHTML = '';
+    const items = Array.from(document.getElementById('item-pool').querySelectorAll('.item'));
+    
+    const addPage = () => {
+        const p = document.createElement('div'); p.className = 'page';
+        p.innerHTML = `<div style="border-bottom:2px solid #000; padding-bottom:5px; margin-bottom:15px; display:flex; justify-content:space-between; font-weight:800;">
+            <span>${AppState.title}</span><span>- ${printArea.children.length+1} -</span>
+        </div><div class="content-container"></div>`;
+        printArea.appendChild(p);
+        return p;
+    };
+
+    let currentPage = addPage();
+    items.forEach((item, idx) => {
+        if (idx > 0 && idx % AppState.qpp === 0) currentPage = addPage();
+        currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
+    });
+}
+</script>
 </body>
 </html>
