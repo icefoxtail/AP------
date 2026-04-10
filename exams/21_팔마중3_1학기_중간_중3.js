@@ -30,7 +30,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$ab<0, a<b$일 때 다음 중 옳은 것을 모두 고르면?(2개)",
     "choices": ["$-\\sqrt{(+2a)^2}=2a$", "$-\\sqrt{4a^2}=-2a$", "$\\sqrt{(-b)^2}=-b$", "$\\sqrt{(3b)^2}=-3b$", "$-\\sqrt{(b-a)^2}=a-b$"],
@@ -102,7 +102,7 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$\\frac{a}{\\sqrt{2}}(\\sqrt{32}-2)+\\sqrt{24}(\\frac{\\sqrt{3}}{6}+\\sqrt{6})$가 유리수 일 때, 유리수 $a$의 값은?",
     "choices": ["-2", "-1", "0", "1", "2"],
@@ -158,7 +158,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 18,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$\\frac{1}{3}<x<2$일 때, $\\sqrt{9x^2-6x+1}-\\sqrt{x^2-4x+4}$를 간단히 한 것은?",
     "choices": ["$4x+1$", "$4x-3$", "$2x+1$", "-2x-3", "$-4x+1$"],
@@ -167,7 +167,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 19,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$a$와 $b$가 정수일 때, 다음 등식을 만족시키는 $p$의 최댓값은?<div class='box'>$x^2+px-12=(x+a)(x+b)$</div>",
     "choices": ["-11", "-4", "1", "4", "11"],
@@ -212,7 +212,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 24,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "[서술형3] 한 변의 길이가 각각 $x$와 $y$인 두 정사각형이 있다. 두 정사각형의 둘레의 길이의 합은 60이고, 넓이의 합은 117이다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.\n(1) 두 정사각형의 둘레의 길이의 합이 60임을 등식으로 나타내시오.\n(2) 두 정사각형의 넓이의 합이 117임을 등식으로 나타내시오.\n(3) 위 (1), (2)에서 구한 값을 이용하여 $xy$의 값을 구하시오.",
     "choices": [" ", " ", " ", " ", " "],

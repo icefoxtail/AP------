@@ -66,7 +66,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$0 < a < 3$일 때, $\\sqrt{(3-a)^2} + \\sqrt{a^2}$을 간단히 하면?",
     "choices": ["2a+3", "2a", "3", "3-a", "3-2a"],
@@ -75,7 +75,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "다음 수의 대소를 비교하여 크기가 작은 수부터 차례로 나열할 때, 3번째로 오는 수는?<div class='box'>$\\sqrt{2}, 1, \\frac{1}{2}, 1-\\sqrt{2}, 5-\\sqrt{2}$</div>",
     "choices": ["$\\sqrt{2}$", "1", "$1-\\sqrt{2}$", "$\\frac{1}{2}$", "$5-\\sqrt{2}$"],
@@ -140,7 +140,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 16,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$(x+4)(x-2)+k$가 완전제곱식이 되기 위한 양수 $k$의 값을 구하면?",
     "choices": ["1", "3", "5", "7", "9"],
@@ -149,7 +149,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 17,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$x = \\sqrt{3}-2, y = \\sqrt{3}+2$일 때, $\\frac{y}{x} + \\frac{x}{y}$의 값을 구하면?",
     "choices": ["-14", "-11", "-7", "11", "14"],
@@ -158,7 +158,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 18,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "식 $2120 \\times 2124 + 4$는 어떤 자연수의 제곱과 같다고 할 때, 이 자연수를 구하면?",
     "choices": ["1022", "2012", "2102", "2122", "2202"],
@@ -176,7 +176,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 20,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?",
     "choices": ["12", "10", "9", "8", "6"],
@@ -214,7 +214,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 24,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "[서술형 3] 주어진 식을 각각 인수분해 하시오.\n(1) $2x^2+3x-14$\n(2) $-18x^2+32y^2$",
     "choices": [" ", " ", " ", " ", " "],

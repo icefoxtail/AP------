@@ -30,7 +30,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$\\sqrt{29-x}$가 정수가 되도록 하는 자연수 $x$의 값 중에서 가장 큰 값을 $M$, 가장 작은 값을 $m$이라고 할 때, $M-m$의 값을 구하면?",
     "choices": ["24", "25", "28", "32", "35"],
@@ -48,7 +48,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "그림은 수직선 위의 두 점 $A(1)$과 $B(2)$에 대하여 $AB$를 한 변으로 하는 정사각형 $ABCD$를 그린 것이다. $\\overline{AC}=\\overline{AP}=\\overline{AQ}$일 때, 두 점 $P(a)$와 $Q(b)$에 대하여 $\\frac{P(a)}{Q(b)}$의 값을 구하면?",
     "choices": ["$-3+2\\sqrt{2}$", "$3+2\\sqrt{2}$", "$3-2\\sqrt{2}$", "$-3-2\\sqrt{2}$", "$2\\sqrt{2}$"],
@@ -75,7 +75,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$\\sqrt{72}-2\\sqrt{24}-\\sqrt{2}(2+\\frac{6}{\\sqrt{12}})=m\\sqrt{2}+n\sqrt{6}$일 때, 유리수 $m, n$에 대하여 $\\sqrt{m-n}$의 값을 구하면?",
     "choices": ["1", "2", "3", "$\\sqrt{2}$", "$\\sqrt{5}$"],
@@ -84,7 +84,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$\\sqrt{5}$의 소수 부분을 $a$라 할 때, $4-\\sqrt{5}$의 소수 부분을 $a$에 대한 식으로 나타내면?",
     "choices": ["1-a", "2-a", "a", "a-1", "a-2"],
@@ -93,7 +93,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$\\sqrt{2}(3\\sqrt{2}+\\frac{1}{2})-\\frac{a(1-\\sqrt{2})}{2\\sqrt{2}}$가 유리수일 때, 유리수 $a$의 값을 구하면?",
     "choices": ["-2", "-1", "0", "1", "2"],
@@ -131,7 +131,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 15,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "그림과 같이 넓이가 각각 $x^2$, $x$, $1$인 직사각형 6개를 빈틈없이 겹치지 않게 이어 붙여 하나의 직사각형을 만들려고 한다. 이 직사각형의 둘레의 길이는? (4점)",
     "choices": ["$2x+1$", "$3x+2$", "$4x+2$", "$6x+2$", "$6x+4$"],
@@ -158,7 +158,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 18,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$x=\\frac{1}{\\sqrt{10}+3}$, $y=\\frac{1}{\\sqrt{10}-3}$일 때, $\\frac{y}{x}+\\frac{x}{y}$의 값은? (4점)",
     "choices": ["42", "40", "38", "24", "12"],
@@ -167,7 +167,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 19,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "다음 식이 $x^2-12x+a$, $4x^2+bxy+9y^2$ 완전제곱식이 되도록 하는 상수 $a, b$에 대하여 $a+b$의 값은? (단, $b<0$) (4점)",
     "choices": ["12", "18", "24", "36", "48"],
@@ -203,7 +203,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 23,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 2] 자연수 $x$에 대하여 $\\sqrt{x}$보다 작은 자연수의 개수를 $f(x)$라 할 때, $f(1)+f(2)+f(3)+\\cdots+f(11)$의 값을 구하시오. (2점)",
     "choices": [" ", " ", " ", " ", " "],

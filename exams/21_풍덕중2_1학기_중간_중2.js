@@ -200,7 +200,7 @@ window.questionBank = [
     },
     {
         id: 22,
-        level: "중상",
+        level: "중",
         category: "서술형 1",
         content: "수빈이는 분자를 잘못 봐서 $0.2\\dot{5}$, 준서는 분모를 잘못 봐서 $0.1\\dot{4}$로 나타냄. 처음 기약분수를 순환소수로? [5점]",
         choices: [" ", " ", " ", " ", " "],

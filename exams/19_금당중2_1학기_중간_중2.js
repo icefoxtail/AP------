@@ -192,7 +192,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "중상",
+    "level": "중",
     "category": "일차부등식",
     "content": "$ax+20 < 1-(x-a)$의 해가 $x < -2$일 때, $a$의 값은? [4점]<br><svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><line x1='10' y1='80' x2='150' y2='80' stroke='black' stroke-width='1'/><polygon points='150,77 150,83 158,80' fill='black'/><circle cx='60' cy='80' r='3' stroke='black' fill='white'/><line x1='60' y1='80' x2='10' y2='80' stroke='black' stroke-width='2'/><line x1='60' y1='80' x2='60' y2='60' stroke='black' stroke-width='1'/><line x1='60' y1='60' x2='10' y2='60' stroke='black' stroke-width='2'/><text x='55' y='95' font-size='10'>-2</text><text x='110' y='95' font-size='10'>0</text></svg>",
     "choices": ["3", "5", "7", "9", "11"],

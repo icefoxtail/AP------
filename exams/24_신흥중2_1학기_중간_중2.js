@@ -92,7 +92,7 @@ window.questionBank = [
     },
     {
         id: 10,
-        level: "중상",
+        level: "중",
         category: "자릿수 결정",
         content: "$5^{10} \\times 2^{12}$은 몇 자리의 자연수인가?",
         choices: ["10", "11", "12", "13", "14"],
@@ -101,7 +101,7 @@ window.questionBank = [
     },
     {
         id: 11,
-        level: "중상",
+        level: "중",
         category: "지수법칙 심화",
         content: "$\\frac{36^9}{54^6} = 2^a$ 일 때, 자연수 $a$의 값은?",
         choices: ["2", "4", "6", "8", "12"],
@@ -191,7 +191,7 @@ window.questionBank = [
     },
     {
         id: 21,
-        level: "중상",
+        level: "중",
         category: "서술형 3",
         content: "$x+2y - \\frac{x-3y}{2}$ 를 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하는 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],

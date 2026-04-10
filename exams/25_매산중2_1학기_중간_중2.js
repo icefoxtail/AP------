@@ -191,7 +191,7 @@ window.questionBank = [
     {
         id: 21,
         category: "서답형 1",
-        level: "중상",
+        level: "중",
         content: "$\\frac{5}{7}$를 소수로 나타낼 때, 소수점 아래 100번째 자리까지의 숫자 중 4가 나오는 횟수를 구하시오. [6점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "17회",
@@ -218,7 +218,7 @@ window.questionBank = [
     {
         id: 24,
         category: "서답형 4",
-        level: "중상",
+        level: "중",
         content: "40000원 중 포장비 4000원을 제외하고 한 송이 1600원인 장미를 최대 몇 송이까지 살 수 있는지 구하시오. [5점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "22송이",

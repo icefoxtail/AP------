@@ -172,7 +172,7 @@ window.questionBank = [
     },
     {
         id: 19,
-        level: "최상",
+        level: "상",
         category: "다항식 추론",
         content: "$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어 떨어질 때 $\{P(4)\}^2$은? ($P(0)>0$) [4.8점]",
         choices: ["9", "25", "81", "225", "729"],
@@ -199,7 +199,7 @@ window.questionBank = [
     },
     {
         id: 22,
-        level: "최상",
+        level: "상",
         category: "서술형 2",
         content: "사차식 $P(x)$ 추론 과정을 통해 $P(0)$을 구하시오. [7점]",
         choices: [" "],
@@ -208,7 +208,7 @@ window.questionBank = [
     },
     {
         id: 23,
-        level: "최상",
+        level: "상",
         category: "서술형 3",
         content: "$0 \\le x \\le 2$에서 $M=2m$일 때 $2a+b$의 최댓값을 구하시오. [8점]",
         choices: [" "],

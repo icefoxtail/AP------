@@ -51,9 +51,9 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "level": "중상",
+    "level": "중",
     "category": "이차함수의 최대최소",
-    "content": "[중상] $-2 \\le x \\le 0$에서 이차함수 $y=-x^{2}+2x+3$의 최댓값과 최솟값의 합은? [4.3점]",
+    "content": "[중] $-2 \\le x \\le 0$에서 이차함수 $y=-x^{2}+2x+3$의 최댓값과 최솟값의 합은? [4.3점]",
     "choices": ["-5", "-3", "-2", "1", "3"],
     "answer": "3",
     "solution": "**[Logical Anchor]** 표준형 변환 및 제한된 범위 내 단조성 확인\n$\\because y = -(x-1)^2+4$\n$\\implies \\text{축 } x=1 \\text{ 이 범위 } [-2, 0] \\text{ 우측에 존재}$\n$\\implies x=0 \\text{ 에서 최댓값 } M = 3$\n$\\implies x=-2 \\text{ 에서 최솟값 } m = -5$\n$\\therefore M+m = 3-5 = -2$"
@@ -69,9 +69,9 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "level": "중상",
+    "level": "중",
     "category": "나머지 정리",
-    "content": "[중상] 다항식 $P(x)$를 $x-1$로 나눈 나머지는 $7$, $x-3$으로 나눈 나머지는 $-9$이다. $P(x)$를 $x^{2}-4x+3$으로 나눈 나머지 $R(x)$에 대하여 $R(5)$의 값은? [4.4점]",
+    "content": "[중] 다항식 $P(x)$를 $x-1$로 나눈 나머지는 $7$, $x-3$으로 나눈 나머지는 $-9$이다. $P(x)$를 $x^{2}-4x+3$으로 나눈 나머지 $R(x)$에 대하여 $R(5)$의 값은? [4.4점]",
     "choices": ["-35", "-25", "-15", "15", "25"],
     "answer": "2",
     "solution": "**[Logical Anchor]** 2차식 나눗셈의 나머지 $R(x)=ax+b$ 설정\n$\\because P(1)=7, P(3)=-9$\n$\\implies R(1)=a+b=7, R(3)=3a+b=-9$\n$\\implies 2a=-16 \\implies a=-8, b=15$\n$\\implies R(x) = -8x+15$\n$\\therefore R(5) = -40+15 = -25$"
@@ -89,9 +89,9 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 9,
-    "level": "중상",
+    "level": "중",
     "category": "행렬",
-    "content": "[중상] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\neq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
+    "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\neq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
     "choices": ["ㄱ", "ㄴ", "ㄱ, ㄴ", "ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     "answer": "3",
     "solution": "**[Logical Anchor]** 행렬 성분 정의에 따른 전개\n$\\because a_{11}=2, a_{12}=-1, a_{21}=3, a_{22}=5$\n$\\implies A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 5 \\end{pmatrix}$\n$\\implies \\text{ㄱ. } -1+5=4 \\text{ (참)}$\n$\\implies \\text{ㄴ. } (2, -1) \\text{ (참)}$\n$\\implies \\text{ㄷ. } -1-2(2)=-5 \\neq 3 \\text{ (거짓)}$\n$\\therefore \\text{ㄱ, ㄴ}$"
@@ -134,9 +134,9 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 14,
-    "level": "중상",
+    "level": "중",
     "category": "이차방정식의 근과 계수",
-    "content": "[중상] 이차방정식 $x^{2}-3x-2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\frac{\\alpha-1}{2}, \\frac{\\beta-1}{2}$ 을 두 근으로 하는 이차방정식 $x^{2}+ax+b=0$에 대하여 $a-b$의 값은? [4.6점]",
+    "content": "[중] 이차방정식 $x^{2}-3x-2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\frac{\\alpha-1}{2}, \\frac{\\beta-1}{2}$ 을 두 근으로 하는 이차방정식 $x^{2}+ax+b=0$에 대하여 $a-b$의 값은? [4.6점]",
     "choices": ["0.25", "0.5", "0.75", "1.25", "1.5"],
     "answer": "2",
     "solution": "**[Logical Anchor]** 새로운 근의 합과 곱 계산\n$\\because \\alpha+\\beta=3, \\alpha\\beta=-2$\n$\\implies \\text{합: } \\frac{\\alpha+\\beta-2}{2} = \\frac{1}{2} = -a \\implies a=-0.5$\n$\\implies \\text{곱: } \\frac{(\\alpha-1)(\\beta-1)}{4} = \\frac{\\alpha\\beta-(\\alpha+\\beta)+1}{4} = -1 = b$\n$\\therefore a-b = -0.5-(-1) = 0.5$"
@@ -163,18 +163,18 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 17,
-    "level": "최상",
+    "level": "상",
     "category": "행렬",
-    "content": "[최상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $x+y+p$의 최댓값은? [4.8점]",
+    "content": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $x+y+p$의 최댓값은? [4.8점]",
     "choices": ["100", "102", "104", "106", "108"],
     "answer": "4",
     "solution": "**[Logical Anchor]** 변수 간 관계식 수립 및 소수 조건 탐색\n$\\implies x+y+p = (p+1)+11+p = 2p+12$\n$\\because x \le 50 \\implies p+1 \le 50 \\implies p \le 49$\n$\\implies 49 \\text{ 이하의 최대 소수 } p=47$\n$\\therefore 2(47)+12 = 106$"
   },
   {
     "id": 18,
-    "level": "최상",
+    "level": "상",
     "category": "다항식의 인수분해",
-    "content": "[최상] 최고차항 계수 1인 이차다항식 $P(x), Q(x)$가 조건을 만족할 때, $P(x)Q(x)+k$가 이차식의 제곱으로 인수분해되기 위한 $k+a+b$의 값은? [4.9점]",
+    "content": "[상] 최고차항 계수 1인 이차다항식 $P(x), Q(x)$가 조건을 만족할 때, $P(x)Q(x)+k$가 이차식의 제곱으로 인수분해되기 위한 $k+a+b$의 값은? [4.9점]",
     "choices": ["1", "2", "3", "4", "5"],
     "answer": "1",
     "solution": "**[Logical Anchor]** 완전제곱식 구성을 위한 미정계수 결정\n$\\implies (x^2-5x+6)(x^2-5x+4)+k$\n$\\implies (t+6)(t+4)+k = t^2+10t+24+k \\quad (t=x^2-5x)$\n$\\because \\text{완전제곱식 조건: } 24+k=25 \\implies k=1$\n$\\implies (x^2-5x+5)^2 \\implies a=-5, b=5$\n$\\therefore k+a+b = 1-5+5 = 1$"
@@ -199,9 +199,9 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 21,
-    "level": "최상",
+    "level": "상",
     "category": "이차함수의 최대최소",
-    "content": "[서술형 3/최상] $0 \\le x \\le 3$에서 $y=(x^{2}-4x+6)^{2}-2a(x^{2}-4x+6)+a^{2}+1$의 최솟값이 5일 때 $a$의 값을 구하시오. [8.0점]",
+    "content": "[서술형 3/상] $0 \\le x \\le 3$에서 $y=(x^{2}-4x+6)^{2}-2a(x^{2}-4x+6)+a^{2}+1$의 최솟값이 5일 때 $a$의 값을 구하시오. [8.0점]",
     "choices": [" ", " ", " ", " ", " "],
     "answer": "0, 8",
     "solution": "**[Logical Anchor]** 치환 후 대칭축의 위치에 따른 케이스 분류\n$\\implies t=x^2-4x+6 \\implies t \\in [2, 6] \\quad (x \\in [0, 3])$\n$\\implies y=(t-a)^2+1$\n$\\text{i) } a < 2 \\implies f(2)=5 \\implies a=0$\n$\\text{ii) } 2 \\le a \\le 6 \\implies f(a)=1 \\neq 5$\n$\\text{iii) } a > 6 \\implies f(6)=5 \\implies a=8$\n$\\therefore a=0, 8$\n\n[Figure]\n좌표계: t-y 평면, t축 범위 [2, 6]\n도형 관계: 포물선의 꼭짓점 (a, 1)의 이동에 따른 최소점 변화"

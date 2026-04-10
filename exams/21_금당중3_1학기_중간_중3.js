@@ -34,7 +34,7 @@ window.questionBank = [
   {
     "id": 3,
     "level": "상",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "제곱근과 실수",
     "content": "다음 조건을 만족하는 자연수 $x, y$에 대하여 $x+y$의 최솟값은? [4점]<div class='box'>[조건1] $\\sqrt{50x}$는 자연수이다.<br>[조건2] $\\sqrt{45y}$는 자연수이다.</div>",
     "choices": ["5", "7", "8", "10", "13"],
@@ -125,7 +125,7 @@ window.questionBank = [
   {
     "id": 9,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "제곱근과 실수",
     "content": "아래 그림과 같이 컴퍼스를 사용하여 원점 $O$를 중심으로 하고 $\\overline{OA}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P$라 하였다. 직각삼각형 $OBP$에서 $\\overline{BP}=1$이고, $\\overline{OB}=\\overline{OQ}$일 때, 점 $Q$가 나타내는 수는? (단, $\\overline{OA}$는 한 변의 길이가 $1$인 정사각형의 대각선이다.) [4점]<br><Figure src='image_e1c229.png' />",
     "choices": ["$\\sqrt{2}$", "$\\sqrt{3}$", "2", "$\\sqrt{5}$", "$\\sqrt{6}$"],
@@ -197,7 +197,7 @@ window.questionBank = [
   {
     "id": 13,
     "level": "상",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "근호를 포함한 식의 계산",
     "content": "다음 그림과 같이 네 개의 정사각형 $A, B, C, D$를 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? (단, $A$의 넓이는 $B$의 넓이의 $2$배, $B$는 $C$의 $2$배, $C$는 $D$의 $2$배이며 $A$의 넓이는 $8$이다.) [5점]<br><svg width='160' height='120' viewBox='0 0 160 120'><rect x='10' y='50' width='40' height='40' fill='none' stroke='black'/><rect x='50' y='61.7' width='28.3' height='28.3' fill='none' stroke='black'/><rect x='78.3' y='70' width='20' height='20' fill='none' stroke='black'/><rect x='98.3' y='75.9' width='14.1' height='14.1' fill='none' stroke='black'/><text x='25' y='75' font-size='12'>A</text><text x='60' y='80' font-size='10'>B</text><text x='85' y='85' font-size='8'>C</text><text x='102' y='88' font-size='6'>D</text></svg>",
     "choices": ["$4\\sqrt{2}+8$", "$6\\sqrt{2}+6$", "$8\\sqrt{2}+4$", "$10\\sqrt{2}+6$", "$12\\sqrt{2}+4$"],
@@ -316,7 +316,7 @@ window.questionBank = [
   {
     "id": 20,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "인수분해",
     "content": "두 다항식 $x^2-12x+a$와 $4x^2+12x+b$를 완전제곱식이 되도록 하는 수 $a, b$에 대하여 $a+b$의 값은? [4점]",
     "choices": ["40", "45", "60", "72", "75"],
@@ -331,7 +331,7 @@ window.questionBank = [
   {
     "id": 21,
     "level": "중",
-    "tags": ["중상", "서술형"],
+    "tags": ["중", "서술형"],
     "category": "제곱근과 실수",
     "content": "[서술형1] 다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $AB$와 $CD$를 그린 후, $\\overline{AB}=\\overline{AP}$, $\\overline{CD}=\\overline{CQ}$가 되도록 수직선 위에 두 점 $P$와 $Q$를 정한 것이다. $PQ$의 길이를 구하시오. [6점]<br><Figure src='image_e1c264.png' />",
     "choices": [" ", " ", " ", " ", " "],

@@ -74,27 +74,27 @@ window.questionBank = [
 window.questionBank = window.questionBank.concat([
   {
     "id": 8,
-    "level": "중상",
+    "level": "중",
     "category": "이차함수와 직선",
-    "content": "[중상] $y=3x^{2}-4x-7$의 그래프와 직선 $y=10x+10$의 두 교점의 $x$좌표를 각각 $a, b$라 하자. $a+b = \\frac{\\beta}{\\alpha}$일 때, $\\alpha+\\beta$의 값은? (단, $\\alpha, \\beta$는 서로소인 자연수) [4점]",
+    "content": "[중] $y=3x^{2}-4x-7$의 그래프와 직선 $y=10x+10$의 두 교점의 $x$좌표를 각각 $a, b$라 하자. $a+b = \\frac{\\beta}{\\alpha}$일 때, $\\alpha+\\beta$의 값은? (단, $\\alpha, \\beta$는 서로소인 자연수) [4점]",
     "choices": ["$7$", "$11$", "$13$", "$17$", "$20$"],
     "answer": "④",
     "solution": "**[Logical Anchor]** 교점의 $x$좌표는 연립방정식의 근과 같음\n$\\because 3x^2-4x-7 = 10x+10 \\implies 3x^2-14x-17=0$\n$\\implies a+b = -\\frac{-14}{3} = \\frac{14}{3}$\n$\\because \\alpha=3, \\beta=14 \\text{ (서로소)}$\n$\\therefore \\alpha+\\beta = 17$"
   },
   {
     "id": 9,
-    "level": "중상",
+    "level": "중",
     "category": "항등식",
-    "content": "[중상] $y=2x+2k$를 만족시키는 모든 실수 $x, y$에 대하여 $ax^{2}+xy+3y+18=0$이 항상 성립할 때, $ak$의 값은? [4점]",
+    "content": "[중] $y=2x+2k$를 만족시키는 모든 실수 $x, y$에 대하여 $ax^{2}+xy+3y+18=0$이 항상 성립할 때, $ak$의 값은? [4점]",
     "choices": ["$-18$", "$-6$", "$0$", "$6$", "$18$"],
     "answer": "④",
     "solution": "**[Logical Anchor]** 관계식이 주어진 항등식은 한 문자로 정리\n$\\implies ax^2 + x(2x+2k) + 3(2x+2k) + 18 = 0$\n$\\implies (a+2)x^2 + (2k+6)x + (6k+18) = 0$\n$\\because a+2=0, 2k+6=0, 6k+18=0$\n$\\implies a=-2, k=-3$\n$\\therefore ak = 6$"
   },
   {
     "id": 10,
-    "level": "중상",
+    "level": "중",
     "category": "이차방정식의 판별식",
-    "content": "[중상] 이차방정식 $(x^{2}+2x+3)k+3x^{2}-4x-1=0$이 중근을 갖도록 하는 모든 실수 $k$의 값의 합을 구하시오. [4점]",
+    "content": "[중] 이차방정식 $(x^{2}+2x+3)k+3x^{2}-4x-1=0$이 중근을 갖도록 하는 모든 실수 $k$의 값의 합을 구하시오. [4점]",
     "choices": ["$-12$", "$-7$", "$-6$", "$6$", "$12$"],
     "answer": "③",
     "solution": "**[Logical Anchor]** $k$에 관한 내림차순을 $x$에 관한 내림차순으로 재정렬\n$\\implies (k+3)x^2 + (2k-4)x + (3k-1) = 0$\n$\\because D/4 = (k-2)^2 - (k+3)(3k-1) = -2k^2-12k+7 = 0$\n$\\implies 2k^2+12k-7=0$\n$\\therefore \\text{모든 } k \\text{ 의 합} = -\\frac{12}{2} = -6$"
@@ -128,9 +128,9 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 14,
-    "level": "중상",
+    "level": "중",
     "category": "복소수의 주기성",
-    "content": "[중상] 복소수 $z=\\frac{\\sqrt{2}}{1+i}$에 대하여 $1+z+z^{2}+\\dots+z^{21}+z^{24}$의 값을 구하시오. [4.5점]",
+    "content": "[중] 복소수 $z=\\frac{\\sqrt{2}}{1+i}$에 대하여 $1+z+z^{2}+\\dots+z^{21}+z^{24}$의 값을 구하시오. [4.5점]",
     "choices": ["$0$", "$1$", "$2$", "$3$", "$4$"],
     "answer": "②",
     "solution": "**[Logical Anchor]** 복소수의 거듭제곱 규칙성 파악\n$\\because z = \\frac{1-i}{\\sqrt{2}} \\implies z^2 = -i, z^4 = -1, z^8 = 1$\n$\\implies \\sum_{k=0}^{7} z^k = 0$\n$\\implies (z^0+\\dots+z^{23}) + z^{24} = 0 + (z^8)^3$\n$\\therefore 1$"
@@ -148,9 +148,9 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 16,
-    "level": "최상",
+    "level": "상",
     "category": "이차방정식의 판별식",
-    "content": "[최상] $-20 \\le m, n \\le 20$인 정수 $m, n$. $x^{2}+mx+n=0$은 중근, $x^{2}+nx+m=0$은 서로 다른 두 실근인 순서쌍 개수는? [4.8점]",
+    "content": "[상] $-20 \\le m, n \\le 20$인 정수 $m, n$. $x^{2}+mx+n=0$은 중근, $x^{2}+nx+m=0$은 서로 다른 두 실근인 순서쌍 개수는? [4.8점]",
     "choices": ["$4$개", "$5$개", "$6$개", "$7$개", "$8$개"],
     "answer": "③",
     "solution": "**[Logical Anchor]** 중근 조건과 실근 부등식의 연립\n$\\because n = \\frac{m^2}{4} \\implies m \\in \\{0, \\pm 2, \\pm 4, \\pm 6, \\pm 8\\}$\n$\\implies n^2-4m > 0 \\text{ 만족하는 쌍 추출}$\n$\\therefore (m,n) \\in \\{(-8,16), (-6,9), (-4,4), (-2,1), (6,9), (8,16)\\} \\implies 6\\text{개}$"
@@ -166,18 +166,18 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 18,
-    "level": "최상",
+    "level": "상",
     "category": "다항식의 항등식",
-    "content": "[최상] $Q(x)^{2}+Q(x+2)^{2}=xP(x)$를 만족하는 이차식 $Q(x)$(최고차항 1)에 대하여 $P(x)$를 $Q(x+2)$로 나눈 나머지 $R(1)$은? [5.2점]",
+    "content": "[상] $Q(x)^{2}+Q(x+2)^{2}=xP(x)$를 만족하는 이차식 $Q(x)$(최고차항 1)에 대하여 $P(x)$를 $Q(x+2)$로 나눈 나머지 $R(1)$은? [5.2점]",
     "choices": ["$8$", "$2$", "$4$", "$10$", "$16$"],
     "answer": "⑤",
     "solution": "**[Logical Anchor]** 수치대입을 통한 이차식 $Q(x)$의 인수 결정\n$\\because x=0 \\implies Q(0)=0, Q(2)=0 \\implies Q(x)=x(x-2)$\n$\\implies P(x) = \\frac{x^2(x-2)^2+x^2(x+2)^2}{x} = 2x^3+8x$\n$\\therefore R(x) = 16x \\implies R(1)=16$"
   },
   {
     "id": 19,
-    "level": "최상",
+    "level": "상",
     "category": "복소수의 연산",
-    "content": "[최상] $z=\\frac{1}{\\sqrt{5}(1-\\sqrt{3}i)}$일 때, $z^n$ 유리수 개수 $a$, $\\frac{1}{10^8} < |z^n| < \\frac{1}{10^2}$ 개수 $b$에 대해 $a-b$는? ($10 \\le n \\le 100$) [5.2점]",
+    "content": "[상] $z=\\frac{1}{\\sqrt{5}(1-\\sqrt{3}i)}$일 때, $z^n$ 유리수 개수 $a$, $\\frac{1}{10^8} < |z^n| < \\frac{1}{10^2}$ 개수 $b$에 대해 $a-b$는? ($10 \\le n \\le 100$) [5.2점]",
     "choices": ["$3$", "$6$", "$9$", "$12$", "$15$"],
     "answer": "④",
     "solution": "**[Logical Anchor]** 복소수의 극형식(편각)과 상용로그 활용\n$\\because arg(z)=60^{\\circ} \\implies n=6k \\implies a=15$\n$\\because 2 < \\frac{n}{2}\\log 20 < 8 \\implies 3.07 < n < 12.29 \\implies b=3$\n$\\therefore a-b = 12$"

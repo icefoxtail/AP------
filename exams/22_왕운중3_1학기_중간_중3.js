@@ -30,7 +30,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$x^2+4ax$를 $A^2-B^2$으로 변형했을 때, $A-B$의 값은? [4점]",
     "choices": ["$x$", "$x+2a$", "$x+4a$", "$2a$", "$4a$"],
@@ -48,7 +48,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$7-\\sqrt{7} \\le x \\le 4+\\sqrt{10}$을 만족하는 설명 중 옳은 것은? [4점]",
     "choices": ["자연수 $x$는 무수히 많다.", "실수의 개수는 유한개이다.", "유리수 $x$의 개수는 유한개이다.", "$x$의 정수 부분이 될 수 있는 것은 5, 6, 7이다.", "$x=2+\\sqrt{3}$은 조건을 만족시킨다."],
@@ -57,7 +57,7 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$x=\\frac{1}{5-2\\sqrt{6}}, y=\\frac{1}{5+2\\sqrt{6}}$일 때, $x^2-xy+y^2$의 값은? [4점]",
     "choices": ["250", "200", "100", "97", "95"],
@@ -75,7 +75,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "부등식 $-10 < -\\sqrt{5x}$를 만족하는 정수 $x$의 개수는? [4점]",
     "choices": ["9개", "10개", "11개", "12개", "13개"],
@@ -84,7 +84,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$\\sqrt{(2-\\sqrt{7})^2} - \\sqrt{(3-\\sqrt{7})^2} = a+b\\sqrt{7}$일 때, $a-b$의 값은? [4점]",
     "choices": ["-7", "-3", "-1", "3", "7"],
@@ -147,7 +147,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$2\\sqrt{6}(\\frac{1}{\\sqrt{2}}-\\sqrt{6})-\\frac{a}{\\sqrt{3}}(2\\sqrt{3}-3)$이 유리수가 되는 $a$는? [4점]",
     "choices": ["$a=-4$", "$a \\ne 4$", "$a=-2$", "$a=2$", "$a \\ne -2$"],
@@ -156,7 +156,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$A=\\sqrt{63}-\\sqrt{2}, B=\\sqrt{28}+\\sqrt{5}, C=2\\sqrt{7}+\\sqrt{10}$ 대소 관계는? [4점]",
     "choices": ["$A<B<C$", "$A<C<B$", "$B<A<C$", "$C<A<B$", "$C<B<A$"],
@@ -165,7 +165,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$f(1)+f(2)+f(3)+\\cdots+f(20)$의 값을 구하면? [5점]",
     "choices": ["38", "45", "50", "54", "62"],
@@ -201,7 +201,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 3] $3\\sqrt{5}$ 정수 부분 $a$, 소수 부분 $b$일 때 $\\frac{a}{b+6}$은? [5점]",
     "choices": [" ", " ", " ", " ", " "],

@@ -48,7 +48,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$\\sqrt{2}=a, \\sqrt{3}=b$일 때, $\\sqrt{96} = \\square ab, \\sqrt{0.54} = \\square ab^3$이라 하자. $\\square$ 안에 알맞은 두 수의 곱은?",
     "choices": ["$\\frac{6}{5}$", "$\\frac{11}{5}$", "$\\frac{5}{6}$", "$2$", "$4$"],
@@ -84,7 +84,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "두 수 $2+a\\sqrt{3}$과 $b-3\\sqrt{3}$의 합과 곱이 모두 유리수가 되도록 하는 $a-b$의 값은?",
     "choices": ["$-3$", "$1$", "$-\\frac{2}{3}$", "$2$", "$3$"],
@@ -93,7 +93,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$[\\sqrt{20}] - \\langle\\sqrt{8}\\rangle \\times \\sqrt{2}$의 값은? (단, $[x]$는 정수부분, $\\langle x\\rangle$는 소수부분)",
     "choices": ["$4-2\\sqrt{2}$", "$\\sqrt{2}$", "$2\\sqrt{2}$", "$4+2\\sqrt{2}$", "$8+2\\sqrt{2}$"],
@@ -156,7 +156,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$(x^2-3x)^2 - 2x^2 + 6x - 8$의 인수가 아닌 것은?",
     "choices": ["$x-1$", "$x+1$", "$x-2$", "$x+2$", "$x-4$"],
@@ -192,7 +192,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형2] 그림에서 $p=2-\\sqrt{10}, q=10+\\sqrt{10}$일 때, $3p+q$의 값을 구하시오.",
     "choices": [" ", " ", " ", " ", " "],

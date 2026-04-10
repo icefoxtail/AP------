@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>AP 수학 엔진</title>
     <script>
-        // [무결성 로직] 인라인 수식 인식 및 자동 실행 제어 설정
         window.MathJax = {
             tex: { inlineMath: [['$', '$']] },
             options: { enableMenu: false },
@@ -17,17 +16,23 @@
         @page { size: A4; margin: 0; }
         body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; color: #000; }
         #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: white; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; border-bottom: 1px solid #ddd; box-sizing: border-box; }
-        
+
         .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto 10mm auto; background: white; box-sizing: border-box; display: flex; flex-direction: column; }
-        .content-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0 20px; }
+        .content-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0 20px; align-items: start; }
         .content-container::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
-        /* ans 모드: 1단 레이아웃 */
         .content-container.single-col { grid-template-columns: 1fr; }
         .content-container.single-col::after { display: none; }
+        .col { display: flex; flex-direction: column; min-width: 0; }
 
-        .item { padding: 15px 10px; border-bottom: 0.5px solid #eee; break-inside: avoid; display: flex; flex-direction: column; height: 100%; }
+        .item { padding: 15px 10px; border-bottom: 0.5px solid #eee; break-inside: avoid; display: flex; flex-direction: column; height: auto; min-height: 0; }
         .answer-box { margin-top: auto; border: 1px dashed #ccc; min-height: 35mm; background: #fafafa; }
-        @media print { .no-print { display: none; } body { padding: 0; } .page { margin: 0; border: none; } }
+
+        @media print {
+            .no-print { display: none !important; }
+            #mode-ctrl { display: none !important; }
+            body { padding: 0; }
+            .page { margin: 0; border: none; }
+        }
     </style>
 </head>
 <body class="test-mode">
@@ -49,12 +54,12 @@ function circled(n) {
     return chars[n-1] || `${n}.`;
 }
 
-// [수식 보정 무결성] LaTeX 자동 감지 및 $ 래핑 로직
 function normalizeQuestion(q) {
     const processText = (t) => {
         if (!t) return t;
         let res = t.replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ');
-        return (res.includes('\\') && !res.includes('$')) ? `$${res.trim()}$` : res;
+        const needsLatex = (res.includes('\\') || /\^{|\_{/.test(res)) && !res.includes('$');
+        return needsLatex ? `$${res.trim()}$` : res;
     };
     const n = JSON.parse(JSON.stringify(q));
     n.content = processText(n.content);
@@ -129,7 +134,6 @@ function buildItemHTML(q, i) {
             </div>`;
     }
 
-    // 알 수 없는 mode 폴백
     return `<div class="item"><span style="color:#ccc; font-size:9pt;">알 수 없는 모드</span></div>`;
 }
 
@@ -140,36 +144,92 @@ async function initRender() {
 
     pool.innerHTML = normalizedBank.map((q, i) => buildItemHTML(q, i)).join('');
 
-    paginate();
-
     await new Promise(r => requestAnimationFrame(r));
     if (window.MathJax?.typesetPromise) {
-        await MathJax.typesetPromise();
+        await MathJax.typesetPromise([pool]);
     }
+
+    await paginate();
 }
 
-function paginate() {
+async function paginate() {
     const printArea = document.getElementById('print-area');
     printArea.innerHTML = '';
-    const items = Array.from(document.getElementById('item-pool').querySelectorAll('.item'));
     const isAns = AppState.mode === 'ans';
+    const colClass = isAns ? ' single-col' : '';
 
+    // [수정 1] PAGE_H 런타임 측정 — 샘플 페이지로 실제 content-container 높이 측정
+    const samplePage = document.createElement('div');
+    samplePage.className = 'page';
+    samplePage.style.visibility = 'hidden';
+    samplePage.innerHTML = `
+        <div style="border-bottom:2px solid #000; padding-bottom:5px; margin-bottom:15px;">​</div>
+        <div class="content-container${colClass}">
+            <div class="col"></div>
+            ${isAns ? '' : '<div class="col"></div>'}
+        </div>`;
+    printArea.appendChild(samplePage);
+    await new Promise(r => requestAnimationFrame(r));
+    const PAGE_H = samplePage.querySelector('.content-container').getBoundingClientRect().height;
+    const colWidth = samplePage.querySelector('.col').getBoundingClientRect().width;
+    printArea.innerHTML = '';
+
+    // [수정 2] ruler rAF 추가 — MathJax 렌더링 완료 후 layout 확정 대기
+    const ruler = document.createElement('div');
+    ruler.style.cssText = `position:absolute; top:-9999px; left:0; visibility:hidden; width:${colWidth}px;`;
+    document.body.appendChild(ruler);
+    await new Promise(r => requestAnimationFrame(r));
+
+    const items = Array.from(document.getElementById('item-pool').querySelectorAll('.item'));
+    const heights = items.map(item => {
+        const clone = item.cloneNode(true);
+        ruler.appendChild(clone);
+        const h = clone.getBoundingClientRect().height;
+        ruler.removeChild(clone);
+        return h;
+    });
+    document.body.removeChild(ruler);
+
+    // 페이지/컬럼 배분
     const addPage = () => {
-        const p = document.createElement('div'); p.className = 'page';
-        p.innerHTML = `<div style="border-bottom:2px solid #000; padding-bottom:5px; margin-bottom:15px; display:flex; justify-content:space-between; font-weight:800;">
-            <span>${AppState.title}</span><span>- ${printArea.children.length+1} -</span>
-        </div><div class="content-container${isAns ? ' single-col' : ''}"></div>`;
+        const p = document.createElement('div');
+        p.className = 'page';
+        p.innerHTML = `
+            <div style="border-bottom:2px solid #000; padding-bottom:5px; margin-bottom:15px; display:flex; justify-content:space-between; font-weight:800;">
+                <span>${AppState.title}</span>
+                <span>- ${printArea.children.length + 1} -</span>
+            </div>
+            <div class="content-container${colClass}">
+                <div class="col col-left"></div>
+                ${isAns ? '' : '<div class="col col-right"></div>'}
+            </div>`;
         printArea.appendChild(p);
         return p;
     };
 
-    // ans 모드는 qpp를 2배로 — 1단이라 한 페이지에 더 많이 들어감
-    const effectiveQpp = isAns ? AppState.qpp * 2 : AppState.qpp;
-
     let currentPage = addPage();
-    items.forEach((item, idx) => {
-        if (idx > 0 && idx % effectiveQpp === 0) currentPage = addPage();
-        currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
+    let colIdx = 0;
+    let colFilled = 0;
+
+    const getCol = (page, idx) =>
+        page.querySelectorAll('.content-container .col')[idx];
+
+    items.forEach((item, i) => {
+        const h = heights[i];
+
+        if (colFilled + h > PAGE_H) {
+            if (!isAns && colIdx === 0) {
+                colIdx = 1;
+                colFilled = 0;
+            } else {
+                currentPage = addPage();
+                colIdx = 0;
+                colFilled = 0;
+            }
+        }
+
+        getCol(currentPage, colIdx).appendChild(item.cloneNode(true));
+        colFilled += h;
     });
 }
 </script>

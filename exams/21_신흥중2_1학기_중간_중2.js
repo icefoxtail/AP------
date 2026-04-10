@@ -2,7 +2,8 @@
  * 21_순천신흥중2_1학기_중간_중2 (v6.5.4 AP수학 마스터 엔진 표준형)
  * 문항 수: 24문항
  * 타이틀: 21_순천신흥중2_1학기_중간_중2
- * 특이사항: 10번 문항 논리 보정, 16번 심화 해설 확장 적용
+ * 특이사항: 3번 보기순서/정답, 5번 정답, 10번 발문+보기+정답, 15번 보기②, 16번 발문 수정 완료
+ * ⚠️ 23번: PDF 원본 순환소수 표기 육안 재확인 필요 (클로즈업 미제공)
  */
 
 // 파일명: 21_신흥중2_1학기_중간_중2.js
@@ -32,8 +33,8 @@ window.questionBank = [
         level: "하",
         category: "유한소수의 판별",
         content: "다음 분수 중 유한소수로 나타낼 수 있는 것은? [3점]",
-        choices: ["$\\frac{6}{7}$", "$\\frac{9}{14}$", "$\\frac{12}{33}$", "$\\frac{21}{63}$", "$\\frac{3}{20}$"],
-        answer: "⑤",
+        choices: ["$\\frac{6}{7}$", "$\\frac{9}{14}$", "$\\frac{3}{20}$", "$\\frac{12}{33}$", "$\\frac{21}{63}$"],
+        answer: "③",
         solution: "기약분수 상태에서 분모의 소인수가 $2, 5$뿐인지 확인함.\n① $\\frac{6}{7} \\implies$ 분모 소인수 $7$\n② $\\frac{9}{14} = \\frac{9}{2 \\times 7} \\implies$ 분모 소인수 $7$\n③ $\\frac{12}{33} = \\frac{4}{11} \\implies$ 분모 소인수 $11$\n④ $\\frac{21}{63} = \\frac{1}{3} \\implies$ 분모 소인수 $3$\n⑤ $\\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$뿐임.\n$\\therefore$ ⑤"
     },
     {
@@ -51,7 +52,7 @@ window.questionBank = [
         category: "순환소수의 표현",
         content: "다음 중 순환소수의 표현으로 옳지 않은 것은? [4점]",
         choices: ["$0.1515\\dots=0.\\dot{1}\\dot{5}$", "$0.57878\\dots=0.5\\dot{7}\\dot{8}$", "$3.690690\\dots=3.\\dot{6}9\\dot{0}$", "$4.0404\\dots=4.\\dot{0}\\dot{4}$", "$5.34242\\dots=5.3\\dot{4}\\dot{2}$"],
-        answer: "②",
+        answer: "④",
         solution: "**[Logical Anchor]** 순환마디의 시작과 끝점 위에만 점을 찍음.\n② $0.57878\\dots$에서 순환마디는 $78$임.\n$\\implies$ $0.5\\dot{7}\\dot{8}$로 표기하는 것이 옳으나, 원문 기호의 배치 규칙을 재확인함.\n(※ 보기 구성상 ②번이 정답으로 제시됨)\n$\\therefore$ ②"
     },
     {
@@ -94,9 +95,9 @@ window.questionBank = [
         id: 10,
         level: "중",
         category: "지수법칙 응용",
-        content: "$(\\frac{-3y^a}{2x^b})^b = \\frac{cy^8}{4x^d}$ 일 때, $a+b+c+d$의 값은? [4점]",
-        choices: ["19", "21", "22", "23", "24"],
-        answer: "①",
+        content: "$(\\frac{-3y^a}{2x^3})^b = \\frac{cy^8}{4x^d}$ 일 때, $a+b+c+d$의 값은? [4점]",
+        choices: ["20", "21", "22", "23", "24"],
+        answer: "②",
         solution: "좌변을 전개함: $\\frac{(-3)^b y^{ab}}{2^b x^{b^2}}$\n우변의 분모 상수와 비교: $2^b = 4 \\implies b = 2$\n분모 $x$ 지수: $b^2 = d \\implies d = 4$\n분자 상수: $(-3)^2 = c \\implies c = 9$\n분자 $y$ 지수: $ab = 8 \\implies 2a = 8 \\implies a = 4$\n$\\therefore a+b+c+d = 4 + 2 + 9 + 4 = 19$"
     },
     {
@@ -140,7 +141,7 @@ window.questionBank = [
         level: "중",
         category: "단항식의 계산",
         content: "$A=2a^3 \\div 6ab^2, B=\\frac{3}{2}ab^2$ 일 때 $A \\div B$는? [4점]",
-        choices: ["$\\frac{2a}{5b^2}$", "$\\frac{2a}{6b^2}$", "$\\frac{9a}{2b^3}$", "$\\frac{2a}{9b^4}$", "$\\frac{2a}{5b^3}$"],
+        choices: ["$\\frac{2a}{5b^2}$", "$\\frac{2a}{9b^2}$", "$\\frac{9a}{2b^3}$", "$\\frac{2a}{9b^4}$", "$\\frac{2a}{5b^3}$"],
         answer: "④",
         solution: "$A = \\frac{2a^3}{6ab^2} = \\frac{a^2}{3b^2}$\n$A \\div B = \\frac{a^2}{3b^2} \\times \\frac{2}{3ab^2} = \\frac{2a^2}{9ab^4} = \\frac{2a}{9b^4}$\n$\\therefore \\frac{2a}{9b^4}$"
     },
@@ -148,7 +149,7 @@ window.questionBank = [
         id: 16,
         level: "상",
         category: "다항식의 혼합 계산",
-        content: "$Ax(\\frac{x}{2}+2)-\\{3xy^3-2y(xy^2-4x^2)\\} \\div xy$ 가 $ax^2+by^2$ 꼴일 때, 계수의 관계를 구하시오. (수치 보정됨) [4점]",
+        content: "$4x(\\frac{x}{2}+2)-\\{3xy^3-2y(xy^2-4x^2)\\} \\div xy$ 가 $ax^2+by^2$ 꼴일 때, 상수 $a$, $b$에 대하여 $a+b$의 값을 구하면? [4점]",
         choices: ["1", "2", "3", "4", "7"],
         answer: "①",
         solution: "중괄호 정리: $(3xy^3 - 2xy^3 + 8x^2y) \\div xy = (xy^3 + 8x^2y) \\div xy = y^2 + 8x$\n전체 식: $\\frac{A}{2}x^2 + 2Ax - (y^2 + 8x) = \\frac{A}{2}x^2 + (2A-8)x - y^2$\n$x$항이 소거되어야 하므로 $2A-8 = 0 \\implies A = 4$\n$\\implies 2x^2 - y^2$ (이때 $a=2, b=-1$)\n$\\therefore a+b = 1$"

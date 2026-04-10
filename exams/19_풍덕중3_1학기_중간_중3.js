@@ -21,7 +21,7 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$10 \\le x \\le 20$일 때, $\\sqrt{\\frac{x}{240}}$이 유리수가 되는 $x$의 값을 구하면?",
     "choices": ["$11$", "$12$", "$13$", "$14$", "$15$"],
@@ -48,7 +48,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$ab=4$일 때, $2a\\sqrt{\\frac{b}{a}} + 3b\\sqrt{\\frac{a}{b}}$의 값을 구하면? (단, $a, b > 0$)",
     "choices": ["$10$", "$12$", "$15$", "$16$", "$20$"],
@@ -75,7 +75,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$\\sqrt{7}=a, \\sqrt{70}=b$일 때, $\\sqrt{175} + \\sqrt{2.8}$을 $a, b$로 나타내면?",
     "choices": ["$a + 10b$", "$5a + \\frac{1}{10}b$", "$5a + b$", "$5a + \\frac{1}{5}b$", "$35a + 5b$"],
@@ -129,7 +129,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$3^{16}-1$의 $10$보다 작은 약수의 합을 구하면?",
     "choices": ["$20$", "$18$", "$15$", "$12$", "$16$"],
@@ -147,7 +147,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$x^2 + Ax - 18$이 두 일차식 곱으로 인수분해될 때 $A$가 될 수 없는 수는?",
     "choices": ["$17$", "$-17$", "$-3$", "$13$", "$3$"],
@@ -156,7 +156,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$x^2 + 13x + k$가 $(x+a)(x+b)$로 인수분해될 때 $k$의 최댓값은? (단, $a, b$는 자연수)",
     "choices": ["$36$", "$40$", "$48$", "$42$", "$30$"],
@@ -165,7 +165,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$(a+b)^2 - 4(a+b) - 5$를 인수분해하면?",
     "choices": ["$(a+b+1)(a+b-5)$", "$(a+b+1)(a-b-5)$", "$(a-b+1)(a+b-5)$", "$(a+b-1)(a-b+5)$", "$(a-b-1)(a+b+5)$"],
@@ -210,7 +210,7 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "[서술형2] $2x^2 + 5x - 12$와 $2x^2 - x - 3$의 공통인수를 구하여라.",
     "choices": [" ", " ", " ", " ", " "],

@@ -172,7 +172,7 @@ window.questionBank = [
     },
     {
         id: 19,
-        level: "중상",
+        level: "중",
         category: "일차부등식의 해",
         content: "일차부등식 $\\frac{3x+2}{5} < 0.6 + \\frac{1}{3}x$ 를 만족시키는 가장 큰 정수 $a$의 값은?",
         choices: ["-3", "-2", "-1", "0", "1"],
@@ -190,7 +190,7 @@ window.questionBank = [
     },
     {
         id: 21,
-        level: "중상",
+        level: "중",
         category: "서술형 1",
         content: "반지름 $a$, 높이 $3b$인 원뿔의 부피는 반지름 $2b$, 높이 $a$인 원기둥 부피의 몇 배인지 구하고 그 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
@@ -199,7 +199,7 @@ window.questionBank = [
     },
     {
         id: 22,
-        level: "중상",
+        level: "중",
         category: "서술형 2",
         content: "두 일차부등식 $3x-2 \\le x+4$와 $3x-a \\ge 5(x-2)+1$의 해가 서로 같을 때, 상수 $a$의 값을 구하시오.",
         choices: [" ", " ", " ", " ", " "],

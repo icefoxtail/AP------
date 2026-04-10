@@ -74,7 +74,7 @@ window.questionBank = [
     },
     {
         id: 8,
-        level: "중상",
+        level: "중",
         category: "이차함수의 최대와 최소",
         content: "$1 \\le x \\le 7$일 때, 이차함수 $y=x^2-6x+1$의 최솟값을 $m$, 최댓값을 $M$이라 하자. 이때 $m+M$의 값은? [4.1점]",
         choices: ["0", "1", "2", "3", "4"],
@@ -83,7 +83,7 @@ window.questionBank = [
     },
     {
         id: 9,
-        level: "중상",
+        level: "중",
         category: "곱셈 공식의 변형 응용",
         content: "$a=-1+\\sqrt{2}, b=-1-\\sqrt{2}$일 때, $a^5+b^5+a^2b^3+a^3b^2$의 값은? [4.6점]",
         choices: ["84", "80", "-76", "-80", "-84"],
@@ -92,7 +92,7 @@ window.questionBank = [
     },
     {
         id: 10,
-        level: "중상",
+        level: "중",
         category: "다항식의 전개와 나머지",
         content: "$1002^{10}$을 $250$으로 나누었을 때의 나머지는? [4.6점]",
         choices: ["10", "16", "24", "32", "40"],
@@ -119,7 +119,7 @@ window.questionBank = [
     },
     {
         id: 13,
-        level: "중상",
+        level: "중",
         category: "이차함수와 직선의 위치 관계",
         content: "직선 $y=x+k$가 이차함수 $y=2x^2+8x+4$와 만나고, $y=x^2-2x+3$과는 만나지 않도록 하는 정수 $k$의 개수는? [4.7점]",
         choices: ["2", "3", "4", "5", "6"],
@@ -137,7 +137,7 @@ window.questionBank = [
     },
     {
         id: 15,
-        level: "중상",
+        level: "중",
         category: "제한된 범위 내 이차함수 활용",
         content: "점 $P(a, b)$가 점 $A(0, 6)$에서 점 $B(3, 0)$까지 직선 $y=-2x+6$을 따라 움직일 때, $2a^2+4b$의 최솟값은? [5.1점]",
         choices: ["13", "14", "15", "16", "17"],
@@ -146,7 +146,7 @@ window.questionBank = [
     },
     {
         id: 16,
-        level: "최상",
+        level: "상",
         category: "이차함수와 직선 (기하학적 넓이)",
         content: "이차함수 $y=x^2$과 직선 $y=x+k$가 만나는 두 점 $A, B$를 통해 정의된 삼각형의 넓이 차 $S_1-S_2=32$일 때 양수 $k$는? [5.2점]",
         choices: ["13", "15", "17", "19", "21"],
@@ -155,7 +155,7 @@ window.questionBank = [
     },
     {
         id: 17,
-        level: "중상",
+        level: "중",
         category: "나머지 정리 심화",
         content: "다항식 $f(x)$를 $(x^2-1)$로 나눈 몫과 나머지가 같고, 나머지가 $1$인 조건에서 $R(x)$의 계수를 구하시오. [5.2점]",
         choices: ["-2", "-1", "0", "1", "2"],

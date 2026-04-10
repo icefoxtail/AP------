@@ -50,7 +50,7 @@ window.questionBank = [
     "id": 3,
     "level": "상",
     "category": "제곱근과 실수",
-    "tags": ["중상", "무리수와 수직선", "함정: 한 변의 길이"],
+    "tags": ["중", "무리수와 수직선", "함정: 한 변의 길이"],
     "content": "다음 그림은 한 변의 길이가 $\\sqrt{2}$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}, \\overline{BD}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때, $x$와 $y$ 사이의 거리는?(5점)<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><line x1=\"10\" y1=\"100\" x2=\"150\" y2=\"100\" stroke=\"black\"/><rect x=\"60\" y=\"71.7\" width=\"28.3\" height=\"28.3\" fill=\"none\" stroke=\"black\"/><line x1=\"60\" y1=\"100\" x2=\"88.3\" y2=\"71.7\" stroke=\"red\"/><line x1=\"88.3\" y1=\"100\" x2=\"60\" y2=\"71.7\" stroke=\"red\"/><text x=\"58\" y=\"110\" font-size=\"8\">B</text><text x=\"86\" y=\"110\" font-size=\"8\">C</text><text x=\"55\" y=\"68\" font-size=\"8\">A</text><text x=\"90\" y=\"68\" font-size=\"8\">D</text><path d=\"M 88.3 100 A 40 40 0 0 0 48.3 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><path d=\"M 60 100 A 40 40 0 0 1 100 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><text x=\"40\" y=\"110\" font-size=\"8\">P(x)</text><text x=\"102\" y=\"110\" font-size=\"8\">Q(y)</text></svg>",
     "choices": [
       "① $\\sqrt{2}+1$",
@@ -114,9 +114,9 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "중상",
+    "level": "중",
     "category": "근호를 포함한 식의 계산",
-    "tags": ["중상", "근호의 변형"],
+    "tags": ["중", "근호의 변형"],
     "content": "다음은 $\\sqrt{2}=a, \\sqrt{3}=b$일 때, 주어진 수를 $a, b$ 사용하여 나타낸 것이다. $\\square$ 안에 알맞은 수의 곱은?(4점)<div class='box'>$\\sqrt{96} = \\square ab$<br>$\\sqrt{0.54} = \\square ab$</div>",
     "choices": [
       "① $21$",
@@ -201,9 +201,9 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "중상",
+    "level": "중",
     "category": "근호를 포함한 식의 계산",
-    "tags": ["중상", "무리수가 유리수가 될 조건"],
+    "tags": ["중", "무리수가 유리수가 될 조건"],
     "content": "두 수 $2+a\\sqrt{3}$과 $b-3\\sqrt{3}$의 합과 곱이 모두 유리수가 되도록 하는 $a-b$의 값을 구하면? (단, $a, b$는 유리수이다.) (4점) [cite: 69-71]",
     "choices": [
       "① $1-3$ [cite: 73]",
@@ -224,9 +224,9 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "level": "중상",
+    "level": "중",
     "category": "제곱근과 실수",
-    "tags": ["중상", "정수 부분과 소수 부분"],
+    "tags": ["중", "정수 부분과 소수 부분"],
     "content": "$\\sqrt{a}$ 의 정수 부분을 $[\\sqrt{a}]$, 소수 부분을 $\\langle \\sqrt{a} \\rangle$라 할 때, $[\\sqrt{20}]-\\langle \\sqrt{8} \\rangle \\times \\sqrt{2}$의 값은?(5점) [cite: 81-82]",
     "choices": [
       "① $4-2\\sqrt{2}$ [cite: 83]",
@@ -375,9 +375,9 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "중상",
+    "level": "중",
     "category": "인수분해",
-    "tags": ["중상", "치환을 이용한 인수분해"],
+    "tags": ["중", "치환을 이용한 인수분해"],
     "content": "다항식 $(x^{2}-3x)^{2}-2x^{2}+6x-8$ 의 인수가 아닌 것은?(4점) [cite: 99]",
     "choices": [
       "① $x-1$",

@@ -317,7 +317,7 @@ window.questionBank = [
     {
         "id": 19,
         "level": "상",
-        "tags": ["중상"],
+        "tags": ["중"],
         "category": "일차부등식",
         "content": "일차부등식 $x+1 \\le 3(x-3)$의 해가 일차부등식 $5x-a \\ge 4x+2$의 해와 같을 때, $a$의 값은? [5점]",
         "choices": ["$3$", "$2$", "$1$", "$0$", "$-1$"],
@@ -332,7 +332,7 @@ window.questionBank = [
     {
         "id": 20,
         "level": "중",
-        "tags": ["중상"],
+        "tags": ["중"],
         "category": "삼각형의 성질",
         "content": "삼각형의 성질이 옳으면 '예' 방향으로 이동하고, 옳지 않으면 '아니오' 방향으로 이동할 때, 도착지는? [4점]<br><Figure src='image_d76062.jpg' />",
         "choices": ["서울", "대전", "대구", "부산", "광주/순천"],
@@ -378,7 +378,7 @@ window.questionBank = [
     {
         "id": 23,
         "level": "상",
-        "tags": ["중상"],
+        "tags": ["중"],
         "category": "삼각형의 내심과 외심",
         "content": "[서술형 3] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 외접원의 반지름의 길이와 내접원의 반지름의 길이를 각각 구하시오. (단, $\\overline{AB}=20\\text{cm}, \\overline{AC}=12\\text{cm}, \\overline{BC}=16\\text{cm}$) [5점]<br><Figure src='image_d7bada.png' />",
         "choices": [],

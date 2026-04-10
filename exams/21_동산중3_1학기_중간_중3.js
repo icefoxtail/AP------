@@ -133,7 +133,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 값",
     "content": "$x=3-2\\sqrt{2}$일 때, 식 $x^{2}-6x+7$의 값을 구하면? [4점]",
     "choices": ["3", "6√2", "4√2", "6", "9"],
@@ -142,7 +142,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해의 활용",
     "content": "곱셈공식을 이용하여 다음 식을 계산하면? [4점]\n$2021 \\times 2023 - 4042 - 2020 \\times 2022$",
     "choices": ["0", "1", "2021", "2022", "2023"],
@@ -178,7 +178,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$2 < x < 3$일 때, $\\sqrt{(x^{2}-4x+4)}-\\sqrt{(x^{2}-6x+9)}$ 를 간단히 하면? [4점]",
     "choices": ["2x-5", "2x", "2x+1", "2x-1", "5"],
@@ -205,7 +205,7 @@ window.questionBank = [
   },
   {
     "id": "서술형1",
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$2\\sqrt{3}$의 정수부분을 $a$, 소수부분을 $b$라고 할 때, $a, b$의 값과 $\\sqrt{3}a-3b$의 값을 구하여라. [7점]",
     "choices": [" ", " ", " ", " ", " "],
@@ -214,7 +214,7 @@ window.questionBank = [
   },
   {
     "id": "서술형2",
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$AB=PB, CD=CQ$일 때 점 P에 대응하는 수, Q에 대응하는 수, $PQ$의 길이를 구하여라. [7점]",
     "choices": [" ", " ", " ", " ", " "],

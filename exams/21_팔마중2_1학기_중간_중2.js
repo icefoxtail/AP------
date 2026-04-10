@@ -164,7 +164,7 @@ window.questionBank = [
     },
     {
         id: 18,
-        level: "중상",
+        level: "중",
         category: "부등식 심화",
         content: "$|a| = 3$ 이고 일차부등식 $5x - 3 < a - bx$ 의 해가 $x < 1$ 일 때, $a+b$의 값은? [5점]",
         choices: ["1", "2", "3", "4", "5"],
@@ -191,7 +191,7 @@ window.questionBank = [
     },
     {
         id: 21,
-        level: "중상",
+        level: "중",
         category: "서술형 1",
         content: "$\\frac{25^3+25^3+25^3+25^3+25^3}{9^2+9^2+9^2} \\times \\frac{3^5+3^5+3^5}{5^6}$ 을 간단히 계산하시오. [4점]",
         choices: [" ", " ", " ", " ", " "],
@@ -200,7 +200,7 @@ window.questionBank = [
     },
     {
         id: 22,
-        level: "중상",
+        level: "중",
         category: "서술형 2",
         content: "반지름 $a$, 높이 $3a$인 원기둥의 물을 반지름 $2a$인 원뿔에 부었을 때 가득 찼다면, 이 원뿔의 높이 $h$를 $a$에 관한 식으로 나타내시오. [6점]",
         choices: [" ", " ", " ", " ", " "],
@@ -209,7 +209,7 @@ window.questionBank = [
     },
     {
         id: 23,
-        level: "중상",
+        level: "중",
         category: "서술형 3",
         content: "$4x^2 + 3x - 4$ 에서 어떤 식을 더해야 할 것을 잘못하여 뺐더니 $2x^2 + 8x + 3$ 이 되었다. 바르게 계산한 식을 구하시오. [5점]",
         choices: [" ", " ", " ", " ", " "],

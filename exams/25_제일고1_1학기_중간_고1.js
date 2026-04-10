@@ -81,9 +81,9 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "중상",
+    "level": "중",
     "category": "복소수의 성질",
-    "content": "[중상] $x^{2}-x+1=0$의 한 허근을 $\\alpha$라 할 때, $\\alpha^{4}+k\\alpha^{2}+1=0$을 만족하는 상수 $k$의 값은? [4.8점]",
+    "content": "[중] $x^{2}-x+1=0$의 한 허근을 $\\alpha$라 할 때, $\\alpha^{4}+k\\alpha^{2}+1=0$을 만족하는 상수 $k$의 값은? [4.8점]",
     "choices": ["1", "2", "3", "4", "5"],
     "answer": "①",
     "solution": "**[Logical Anchor]** 허근의 차수 낮추기 및 복소수의 상등\n$\\because \\alpha^2-\\alpha+1=0 \\implies \\alpha^2 = \\alpha-1, \\alpha^3 = -1$\n$\\implies \\alpha^4+k\\alpha^2+1 = \\alpha(\\alpha^3)+k(\\alpha-1)+1$\n$\\implies -\\alpha+k\\alpha-k+1 = (k-1)\\alpha + (1-k) = 0$\n$\\therefore k=1$"
@@ -108,9 +108,9 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "level": "중상",
+    "level": "중",
     "category": "복소수의 연산",
-    "content": "[중상] 실수 $a$에 대하여 $\\sqrt{\\frac{a+3}{a-3}}=-\\frac{\\sqrt{a+3}}{\\sqrt{a-3}}$ 을 만족하는 정수 $a$의 개수는? [4.3점]",
+    "content": "[중] 실수 $a$에 대하여 $\\sqrt{\\frac{a+3}{a-3}}=-\\frac{\\sqrt{a+3}}{\\sqrt{a-3}}$ 을 만족하는 정수 $a$의 개수는? [4.3점]",
     "choices": ["3", "4", "5", "6", "7"],
     "answer": "④",
     "solution": "**[Logical Anchor]** 음의 제곱근의 성질(나눗셈) 적용\n$\\because \\frac{\\sqrt{A}}{\\sqrt{B}} = -\\sqrt{\\frac{A}{B}} \\iff A \\ge 0, B < 0$\n$\\implies a+3 \\ge 0 \\text{ 이고 } a-3 < 0$\n$\\implies -3 \\le a < 3$\n$\\therefore a \\in \\{-3, -2, -1, 0, 1, 2\\} \\implies 6\\text{개}$"
@@ -135,7 +135,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "중상",
+    "level": "중",
     "category": "복소수의 연산",
     "content": "$i+2i^2+3i^3+4i^4+\\dots+48i^{48}=a+bi$를 만족하는 두 실수 $a, b$에 대하여 $a-b$의 값은? [4.6점]",
     "choices": ["24", "48", "72", "96", "0"],
@@ -153,9 +153,9 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "level": "중상",
+    "level": "중",
     "category": "이차식의 작성",
-    "content": "[중상] 이차방정식 $x^2-2x+3=0$의 두 근 $\\alpha, \\beta$에 대하여 $f(\\alpha)=f(\\beta)=\\alpha\\beta, f(1)=2$를 만족시키는 이차식 $f(x)$에 대하여 $f(5)$의 값은? [4.7점]",
+    "content": "[중] 이차방정식 $x^2-2x+3=0$의 두 근 $\\alpha, \\beta$에 대하여 $f(\\alpha)=f(\\beta)=\\alpha\\beta, f(1)=2$를 만족시키는 이차식 $f(x)$에 대하여 $f(5)$의 값은? [4.7점]",
     "choices": ["-15", "-6", "8", "12", "15"],
     "answer": "②",
     "solution": "**[Logical Anchor]** 인수정리를 활용한 이차식 $f(x)$ 구성\n$\\because \\alpha+\\beta=2, \\alpha\\beta=3$\n$\\implies f(\\alpha)=3, f(\\beta)=3 \\implies f(x)-3 = p(x-\\alpha)(x-\\beta)$\n$\\implies f(x) = p(x^2-2x+3)+3$\n$\\because f(1) = 2p+3 = 2 \\implies p = -\\frac{1}{2}$\n$\\therefore f(5) = -\\frac{1}{2}(25-10+3)+3 = -6$"
@@ -181,7 +181,7 @@ window.questionBank = [
   {
   "id": 20,
   "level": "중",
-  "tags": ["중상"],
+  "tags": ["중"],
   "category": "나머지 정리",
   "content": "[서술형 2] 다항식 $P(x)$가 다음 두 조건을 만족한다.\n\n가) $P(x)$는 $x+1$로 나누어 떨어진다.\n나) $P(x)$를 $x^2$으로 나눈 몫과 나머지가 같다.\n\n$P(1)=8$일 때, $P(2)$의 값을 구하시오. [6점]",
   "choices": [" ", " ", " ", " ", " "],

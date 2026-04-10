@@ -1,7 +1,7 @@
 /**
  * 23_부영여고2_1학기_중간_고2 (v6.5.4 AP수학 마스터 엔진 완결판)
  * 문항 수: 21문항 (누락 없음)
- * 적용 매뉴얼: 고등부 해설 MAXIMUM_EXPANSION 및 [하/중/상/최상] 난이도 체계
+ * 적용 매뉴얼: 고등부 해설 MAXIMUM_EXPANSION 및 [하/중/상/상] 난이도 체계
  * 제작자: AP수학 마스터 엔진
  */
 
@@ -128,7 +128,7 @@ window.questionBank = [
     },
     {
         id: 14,
-        level: "최상",
+        level: "상",
         category: "산술·기하 평균과 로그",
         content: "1이 아닌 서로 다른 두 양수 $a, b$ 가 $\\log_a b = \\log_b a$ 를 만족시킬 때, $(a+2)(b+2)$ 의 최솟값은? [4.9점]",
         choices: ["8", "9", "10", "11", "12"],
@@ -182,7 +182,7 @@ window.questionBank = [
     },
     {
         id: 20,
-        level: "최상",
+        level: "상",
         category: "지수와 로그의 혼합 (서술형)",
         content: "[서술형 2] 네 양수 $x, y, z, a$ 에 대하여 (가) $2^{x} = 3^{y} = a^{z}$ (나) $\\log 3 + \\log xy - \\log(3x-y) = \\log z$ 일 때 $a^{3}$ 의 값을 구하시오. [6.5점]",
         choices: [" ", " ", " ", " ", " "],
@@ -191,7 +191,7 @@ window.questionBank = [
     },
     {
         id: 21,
-        level: "최상",
+        level: "상",
         category: "지수부등식의 정수 해 (서술형)",
         content: "[서술형 3] 자연수 $a, b$ 에 대하여 부등식 $b < 2^{n} \\times a \\le 16b$ 를 만족하는 모든 정수 $n$ 의 합이 18일 때, $a, b$ 의 값을 구하시오. [7.5점]",
         choices: [" ", " ", " ", " ", " "],

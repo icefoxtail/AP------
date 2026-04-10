@@ -130,7 +130,7 @@ window.questionBank = {
       "level": "중",
       "score": 4.5,
       "category": "인수분해",
-      "tags": ["중상"],
+      "tags": ["중"],
       "content": "다항식 $x^4+3x^2-4$가 $(x^2+a)(x+b)(x-b)$로 인수분해 될 때, 두 양수 $a, b$에 대하여 $a+2b$의 값은? (단, $a, b$는 상수이다.)",
       "choices": [
         {"key": "①", "text": "4"},
@@ -155,7 +155,7 @@ window.questionBank = {
       "level": "중",
       "score": 4.6,
       "category": "곱셈 공식의 변형",
-      "tags": ["중상"],
+      "tags": ["중"],
       "content": "$x^2-4x+1=0$일 때, $x^3+x+\\dfrac{1}{x}+\\dfrac{1}{x^3}$의 값은?",
       "choices": [
         {"key": "①", "text": "52"},
@@ -180,7 +180,7 @@ window.questionBank = {
       "level": "중",
       "score": 4.7,
       "category": "다항식의 나눗셈",
-      "tags": ["중상"],
+      "tags": ["중"],
       "content": "다항식 $x^3-ax+b$가 $(x-1)^2$으로 나누어떨어질 때, 몫을 $Q(x)$라 하자. 이때 $a+b+Q(5)$의 값은? (단, $a, b$는 상수이다.)",
       "choices": [
         {"key": "①", "text": "10"},
@@ -205,7 +205,7 @@ window.questionBank = {
       "level": "상",
       "score": 4.8,
       "category": "항등식의 성질",
-      "tags": ["중상"],
+      "tags": ["중"],
       "content": "다항식 $f(x)=x^3+15x^2-6x+12$에 대하여 등식 $f(x+k)=x^3-2kx^2+ax+b$가 $x$에 대한 항등식일 때, $k+a+b$의 값은? (단, $k, a, b$는 상수이다.)",
       "choices": [
         {"key": "①", "text": "48"},
@@ -230,7 +230,7 @@ window.questionBank = {
       "level": "중",
       "score": 4.9,
       "category": "이차함수의 최대최소",
-      "tags": ["중상"],
+      "tags": ["중"],
       "content": "길이가 $180m$인 끈을 모두 사용하여 직사각형 모양의 $2$개의 영역(하나는 정사각형)으로 나눌 때, 전체 넓이의 합이 최대가 되는 정사각형 영역의 한 변의 길이는?",
       "choices": [
         {"key": "①", "text": "20m"},
@@ -258,7 +258,7 @@ window.questionBank = {
       "level": "중",
       "score": 4.9,
       "category": "이차함수와 이차방정식",
-      "tags": ["중상"],
+      "tags": ["중"],
       "content": "이차함수 $y=x^2-2kx+k^2-2k+4$의 그래프는 $x$축과 서로 다른 두 점에서 만나고, 이차함수 $y=x^2-4kx+4k^2-k-2$의 그래프는 $x$축과 접할 때, $k$의 값은? (단, $k$는 실수이다.)",
       "choices": [
         {"key": "①", "text": "-2"},
@@ -333,7 +333,7 @@ window.questionBank = {
       "level": "상",
       "score": 5.3,
       "category": "복소수의 성질",
-      "tags": ["최상"],
+      "tags": ["상"],
       "content": "복소수 $z=a+bi (b \\ne 0)$에 대하여 $\\dfrac{z}{1+z^2}$가 실수일 때, $a^2+b^2$의 값은?",
       "choices": [
         {"key": "①", "text": "1"},
@@ -379,7 +379,7 @@ window.questionBank = {
       "level": "상",
       "score": 3.0,
       "category": "이차함수와 직선",
-      "tags": ["중상"],
+      "tags": ["중"],
       "content": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오. [cite: 736]",
       "choices": [],
       "answer": "-16",
@@ -454,7 +454,7 @@ window.questionBank = {
       "level": "상",
       "score": 10.0,
       "category": "이차함수와 도형의 넓이",
-      "tags": ["최상"],
+      "tags": ["상"],
       "content": "[서술형 2] 이차함수 $y=-x^2+4x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $4$배가 될 때, $a$의 최댓값을 구하시오. (단, $b \\ne 0$) [cite: 743]",
       "choices": [],
       "answer": "8",

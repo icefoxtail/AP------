@@ -65,7 +65,7 @@ window.questionBank = [
     },
     {
         id: 7,
-        level: "중상",
+        level: "중",
         category: "곱셈 공식의 변형",
         content: "$x^2-6x+1=0$일 때, $x^3-x-\\frac{1}{x}+\\frac{1}{x^3}$의 값은? [4.6점]",
         choices: ["188", "190", "192", "194", "196"],
@@ -83,7 +83,7 @@ window.questionBank = [
     },
     {
         id: 9,
-        level: "중상",
+        level: "중",
         category: "항등식의 성질",
         content: "다항식 $f(x)=x^3+10x^2-5x+17$에 대하여 등식 $f(x+k)=x^3-2kx^2+ax+b$가 $x$의 값에 관계없이 항상 성립할 때, $k+a+b$의 값은? (단, $k, a, b$는 상수이다.) [4.8점]",
         choices: ["12", "16", "20", "24", "28"],
@@ -101,7 +101,7 @@ window.questionBank = [
     },
     {
         id: 11,
-        level: "중상",
+        level: "중",
         category: "이차함수와 이차방정식",
         content: "이차함수 $y=x^2-4kx+4k^2-3k+6$은 $x$축과 서로 다른 두 점에서 만나고, $y=2x^2-3kx+k^2+k+6$은 $x$축과 접할 때, $5k$의 값은? [4.9점]",
         choices: ["40", "50", "60", "70", "80"],
@@ -128,7 +128,7 @@ window.questionBank = [
     },
     {
         id: 14,
-        level: "최상",
+        level: "상",
         category: "복소수의 성질",
         content: "복소수 $z=a+2bi (b \\ne 0)$에 대하여 $\\frac{z}{2+z^2}$가 실수일 때, 다항식 $2a^2-4b^2+12a-5$의 최솟값은? [5.3점]",
         choices: ["-46", "-37", "-28", "-19", "-10"],
@@ -146,7 +146,7 @@ window.questionBank = [
     },
     {
         id: 16,
-        level: "중상",
+        level: "중",
         category: "이차함수와 직선",
         content: "[단답형 2] 이차함수 $y=-x^2+x-20$의 그래프가 직선 $y=4x+a-1$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오. [3점]",
         choices: [" ", " ", " ", " ", " "],
@@ -182,7 +182,7 @@ window.questionBank = [
     },
     {
         id: 20,
-        level: "최상",
+        level: "상",
         category: "이차함수와 도형의 넓이",
         content: "[서술형 2] 이차함수 $y=-x^2+6x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $9$배가 될 때 $a$의 최댓값의 절댓값을 구하시오. [10점]",
         choices: [" ", " ", " ", " ", " "],

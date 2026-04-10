@@ -56,7 +56,7 @@ window.questionBank = [
     },
     {
         id: 6,
-        level: "중상",
+        level: "중",
         category: "순환소수의 자릿수",
         content: "$5.4\\dot{9}$의 소수점 아래 $100$번째 수와 $1.02\\dot{4}1\\dot{5}$의 소수점 아래 $100$번째 수의 합을 구하면? [5점]",
         choices: ["8", "7", "9", "10", "6"],
@@ -155,7 +155,7 @@ window.questionBank = [
     },
     {
         id: 17,
-        level: "중상",
+        level: "중",
         category: "지수법칙 응용",
         content: "$2^{n+3} + 2^{n+2} = 96$ 이고 $(5^{b-1} \\times 5) \\times 25^b = 25^6$ 일 때, $n+b$의 값을 구하면? [5점]",
         choices: ["3", "4", "7", "12", "5"],
@@ -191,7 +191,7 @@ window.questionBank = [
     },
     {
         id: 21,
-        level: "중상",
+        level: "중",
         category: "서술형 1",
         content: "$\\frac{8}{15}$의 순환마디를 구하고, 순환소수 $0.2\\dot{7} = \\frac{5}{a}$ 일 때 $a$의 값을 구하시오. [4점]",
         choices: [" ", " ", " ", " ", " "],
@@ -209,7 +209,7 @@ window.questionBank = [
     },
     {
         id: 23,
-        level: "중상",
+        level: "중",
         category: "서술형 3",
         content: "어떤 식에 $x^2-5x+6$을 더해야 할 것을 잘못하여 뺐더니 $2x^2-5x+3$이 되었다. 바르게 계산한 식은? [5점]",
         choices: [" ", " ", " ", " ", " "],

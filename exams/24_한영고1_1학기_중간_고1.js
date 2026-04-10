@@ -99,7 +99,7 @@ window.questionBank = [
     },
     {
         id: 11,
-        level: "중상",
+        level: "중",
         category: "이차함수의 그래프",
         content: "두 함수 $f(x)=x^2+ax+b, g(x)=-x^2+cx+d$의 그래프가 그림과 같다. $f(x)=2g(x)$의 두 근을 $\\alpha, \\beta$라 할 때, $\\alpha-\\beta$의 값은? (단, $\\alpha > \\beta$) [4.5점]",
         choices: ["$5$", "$6$", "$7$", "$8$", "$9$"],
@@ -144,9 +144,9 @@ window.questionBank = [
     },
     {
         id: 16,
-        level: "중상",
+        level: "중",
         category: "연립부등식",
-        content: "[단답형 2/중상] 연립부등식 $3x-2a \\ge 6x+1, 4-x < 5x-2$를 만족시키는 정수 개수가 2일 때, 모든 정수 $a$의 합은? [5.0점]",
+        content: "[단답형 2/중] 연립부등식 $3x-2a \\ge 6x+1, 4-x < 5x-2$를 만족시키는 정수 개수가 2일 때, 모든 정수 $a$의 합은? [5.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "-11",
         solution: "**[Logical Anchor]** 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\n각 부등식을 정리함.\n\\text{i) } 3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\frac{-2a-1}{3}\n\\text{ii) } 6x > 6 \\implies x > 1\n범위 $1 < x \\le \\frac{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\n경계값의 범위를 부등식으로 설정함.\n\\implies 3 \\le \\frac{-2a-1}{3} < 4\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\n\\implies -6.5 < a \\le -5\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\n\\implies -6 + (-5) = -11\n\\therefore -11"
@@ -171,9 +171,9 @@ window.questionBank = [
     },
     {
         id: 19,
-        level: "중상",
+        level: "중",
         category: "음수의 제곱근",
-        content: "[서술형 1/중상] $x^2+7x+1=0$의 두 근 $\\alpha, \\beta$일 때 $k=\\sqrt{\\alpha}-\\sqrt{\\beta}+\\frac{1}{\\sqrt{\\alpha}}-\\frac{1}{\\sqrt{\\beta}}$의 값을 구하시오. [6.0점]",
+        content: "[서술형 1/중] $x^2+7x+1=0$의 두 근 $\\alpha, \\beta$일 때 $k=\\sqrt{\\alpha}-\\sqrt{\\beta}+\\frac{1}{\\sqrt{\\alpha}}-\\frac{1}{\\sqrt{\\beta}}$의 값을 구하시오. [6.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "0",
         solution: "**[Logical Anchor]** 근과 계수의 관계를 통해 두 근의 부호를 판별하고, 음수의 제곱근 성질을 적용함.\n$\\alpha+\\beta=-7, \\alpha\\beta=1$이므로 두 근 $\\alpha, \\beta$는 모두 음수임.\n\\implies \\sqrt{\\alpha}\\sqrt{\\beta} = -\\sqrt{\\alpha\\beta} = -1\n목표 식을 정리하여 통분함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\frac{\\sqrt{\\beta}-\\sqrt{\\alpha}}{\\sqrt{\\alpha}\\sqrt{\\beta}}\n음수의 제곱근 곱셈 결과를 대입함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\frac{-(\\sqrt{\\alpha}-\\sqrt{\\beta})}{-1} = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + (\\sqrt{\\alpha}-\\sqrt{\\beta})\n(※ 기존 풀이의 구조적 소거 논리를 따름)\n\\therefore 0"
@@ -189,9 +189,9 @@ window.questionBank = [
     },
     {
         id: 21,
-        level: "최상",
+        level: "상",
         category: "복소수의 주기성",
-        content: "[서술형 3/최상] 복소수 $z = \\frac{1-3i}{2i}$와 자연수 $n$에 대하여 $f(k)f(k+2)=360$을 만족하는 모든 자연수 $k$의 합을 구하시오. [8.0점]",
+        content: "[서술형 3/상] 복소수 $z = \\frac{1-3i}{2i}$와 자연수 $n$에 대하여 $f(k)f(k+2)=360$을 만족하는 모든 자연수 $k$의 합을 구하시오. [8.0점]",
         choices: [" ", " ", " ", " ", " "],
         answer: "35",
         solution: "**[Logical Anchor]** 복소수를 간단한 형태로 변형한 후 거듭제곱의 주기성을 파악하여 방정식을 만족하는 변수들을 합산함.\n복소수 $z$의 분모를 실수화하여 정리함.\n\\implies z = \\frac{(1-3i)(-i)}{2i(-i)} = \\frac{-i-3}{2} = -\\frac{3}{2} - \\frac{1}{2}i\n이 복소수는 거듭제곱에 따른 일정 주기성을 가짐.\n함숫값 $f(n)$의 규칙성을 찾아 $f(k)f(k+2)=360$ 방정식에 대입함.\n주기성에 의해 특정 조건의 $k$ 값들이 도출됨.\n모든 $k$의 합을 구함.\n\\therefore 35"

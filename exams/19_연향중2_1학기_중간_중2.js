@@ -1,235 +1,268 @@
-window.examTitle = "19_연향중3_1학기_중간_중3";
+window.examTitle = "19_연향중2_1학기_중간_중2";
 
-// 1차 입고: 배열 선언 및 1~12번 데이터 삽입
 window.questionBank = [
-  {
-    id: 1,
-    level: "중",
-    category: "제곱근의 성질",
-    content: "다음 보기 중 옳은 것을 모두 고른 것은? [3점]\n\n<보기>\nㄱ. $0$의 제곱근은 $0$ 하나뿐이다.\nㄴ. 제곱근 $7$은 $\\sqrt{7}$이다.\nㄷ. 모든 수의 제곱근은 $2$개이다.\nㄹ. $-\\sqrt{2}$는 $-2$의 음의 제곱근이다.\nㅁ. $\\sqrt{16}$의 제곱근은 $\\pm 2$이다.",
-    choices: ["ㄱ, ㄴ, ㄹ", "ㄱ, ㄴ, ㅁ", "ㄱ, ㄷ, ㄹ", "ㄴ, ㄷ, ㄹ", "ㄴ, ㄷ, ㅁ"],
-    answer: "②",
-    solution: "**[Logical Anchor]** 제곱근의 성질을 이용함.\nㄱ. $0$의 제곱근은 $0$ 하나이다. (참)\nㄴ. 제곱근 $7$은 $\\sqrt{7}$을 의미한다. (참)\nㄷ. 음수의 제곱근은 없으며, $0$의 제곱근은 $1$개이다. (거짓)\nㄹ. $-2$는 음수이므로 제곱근이 존재하지 않는다. (거짓)\nㅁ. $\\sqrt{16}=4$의 제곱근은 $\\pm 2$이다. (참)\n$\\therefore$ ㄱ, ㄴ, ㅁ [cite: 1]",
-    error_check: "OCR 판독 오류(16억 등) 교정 완료."
-  },
-  {
-    id: 2,
-    level: "중",
-    category: "제곱근의 성질",
-    content: "$\\sqrt{(4+\\sqrt{17})^{2}}-\\sqrt{(4-\\sqrt{17})^{2}}$ 을 간단히 하면? [4점]",
-    choices: ["$-17$", "$4-\\sqrt{17}$", "$\\sqrt{17}$", "$8$", "$2\\sqrt{17}$"],
-    answer: "④",
-    solution: "**[Logical Anchor]** 근호 안의 식의 부호를 판별함.\n$4+\\sqrt{17} > 0$ 이므로 $\\sqrt{(4+\\sqrt{17})^2} = 4+\\sqrt{17}$\n$4 < \\sqrt{17}$ 이므로 $4-\\sqrt{17} < 0$, $\\sqrt{(4-\\sqrt{17})^2} = -4+\\sqrt{17}$\n$(4+\\sqrt{17}) - (-4+\\sqrt{17}) = 8$\n$\\therefore 8$ [cite: 1]",
-    error_check: "계산 무결성 및 보기 번호 매칭 확인."
-  },
-  {
-    id: 3,
-    level: "상",
-    category: "무리수와 수직선",
-    content: "다음 그림은 한 변의 길이가 $2$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때 $x$와 $y$ 사이의 거리는? [5점]\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\">\n  <line x1=\"10\" y1=\"100\" x2=\"150\" y2=\"100\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <rect x=\"60\" y=\"60\" width=\"40\" height=\"40\" fill=\"none\" stroke=\"black\"/>\n  <text x=\"55\" y=\"108\" font-size=\"9\">A(0)</text>\n  <text x=\"100\" y=\"108\" font-size=\"9\">B(2)</text>\n  <line x1=\"60\" y1=\"100\" x2=\"100\" y2=\"60\" stroke=\"red\" stroke-dasharray=\"2,2\"/>\n  <path d=\"M 100,60 A 56.5,56.5 0 0 0 43.5,100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2,2\"/>\n  <path d=\"M 60,60 A 56.5,56.5 0 0 1 116.5,100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2,2\"/>\n  <text x=\"40\" y=\"115\" font-size=\"9\">P(x)</text>\n  <text x=\"115\" y=\"115\" font-size=\"9\">Q(y)</text>\n</svg>",
-    choices: ["$\\sqrt{2}$", "$\\sqrt{2}+1$", "$\\sqrt{2}+3$", "$4-\\sqrt{2}$", "$4\\sqrt{2}$"],
-    answer: "⑤",
-    solution: "**[Logical Anchor]** 대각선 길이 $2\\sqrt{2}$를 활용함.\n점 $C(2, 2)$ 기준 $\\overline{PC}=2\\sqrt{2}$ 이므로 $x = 2-2\\sqrt{2}$\n점 $B(2, 0)$ 기준 $\\overline{BQ}=2\\sqrt{2}$ 이므로 $y = 2+2\\sqrt{2}$\n거리: $(2+2\\sqrt{2})-(2-2\\sqrt{2}) = 4\\sqrt{2}$ [cite: 1]",
-    error_check: "EXAM STANDARD 시각 자료 규격 준수."
-  },
-  {
-    id: 4,
-    level: "하",
-    category: "실수의 분류",
-    content: "다음 중 옳지 않은 것은? [3점]",
-    choices: ["수직선과 실수 사이에는 일대일 대응이 이루어진다.", "순환소수는 유리수이다.", "순환하지 않는 무한소수는 무리수이다.", "$\\sqrt{5}$와 $\\sqrt{6}$ 사이에는 무수히 많은 무리수가 있다.", "무한소수는 모두 무리수이다."],
-    answer: "⑤",
-    solution: "**[Logical Anchor]** 무한소수 중 순환소수는 유리수임.\n$\\therefore$ 모든 무한소수가 무리수라는 설명은 오류임. [cite: 1]",
-    error_check: "개념 정의 무결성 확인."
-  },
-  {
-    id: 5,
-    level: "중",
-    category: "무리수의 계산",
-    content: "$\\frac{\\sqrt{2}}{\\sqrt{2}+1}-\\frac{3}{\\sqrt{2}-1}=a+b\\sqrt{2}$ 일 때, $a+b$의 값은? [4점]",
-    choices: ["$-5$", "$-3$", "$0$", "$1$", "$2$"],
-    answer: "①",
-    solution: "**[Logical Anchor]** 분모의 유리화를 수행함.\n$(2-\\sqrt{2}) - (3\\sqrt{2}+3) = -1-4\\sqrt{2}$\n$a=-1, b=-4 \\implies a+b = -5$ [cite: 1]",
-    error_check: "유리화 및 계수 합산 검증."
-  },
-  {
-    id: 6,
-    level: "중",
-    category: "제곱근의 표현",
-    content: "$\\sqrt{2}=a, \\sqrt{3}=b$일 때, $\\sqrt{96}$을 $a, b$를 사용하여 나타내면? [4점]",
-    choices: ["$a^2b$", "$2a^2b$", "$a^4b$", "$a^5b$", "$4a^2b$"],
-    answer: "④",
-    solution: "**[Logical Anchor]** 소인수분해 $96=2^5 \\times 3$ 활용.\n$\\sqrt{2^5 \\times 3} = (\\sqrt{2})^5 \\times \\sqrt{3} = a^5b$ [cite: 1]",
-    error_check: "지수 법칙 적용 확인."
-  },
-  {
-    id: 7,
-    level: "중",
-    category: "무리수의 계산",
-    content: "$7\\sqrt{2}+\\sqrt{80}+3\\sqrt{5}-\\sqrt{18}=a\\sqrt{2}+b\\sqrt{5}$ 일 때, $a-b$의 값은? [4점]",
-    choices: ["$3$", "$-3$", "$4$", "$-4$", "$10$"],
-    answer: "②",
-    solution: "**[Logical Anchor]** 근호 단순화 후 동류항 계산.\n$4\\sqrt{2}+7\\sqrt{5} = a\\sqrt{2}+b\\sqrt{5}$\n$a=4, b=7 \\implies a-b = -3$ [cite: 1]",
-    error_check: "유리수 a, b 조건 일치 확인."
-  },
-  {
-    id: 8,
-    level: "중",
-    category: "실수의 대소 관계",
-    content: "다음 중에서 옳은 것을 모두 찾으면? (정답 2개) [4점]",
-    choices: ["$5\\sqrt{2} < 7$", "$-2\\sqrt{3} < -\\sqrt{14}$", "$0.6 < \\sqrt{0.6}$", "$\\sqrt{8} < 2\\sqrt{2}$", "$\\frac{1}{\\sqrt{3}} < \\frac{2}{3}$"],
-    answer: "③, ⑤",
-    solution: "**[Logical Anchor]** 각 변을 근호 안으로 넣어 비교함.\n③ $\\sqrt{0.36} < \\sqrt{0.6}$ (참)\n⑤ $\\sqrt{1/3} < \\sqrt{4/9}$ (참) [cite: 1]",
-    error_check: "중복 정답 확인 완료."
-  },
-  {
-    id: 9,
-    level: "하",
-    category: "제곱근표의 활용",
-    content: "$\\sqrt{3}=1.732, \\sqrt{30}=5.447$ 일 때, 다음 중 옳은 것은? [3점]",
-    choices: ["$\\sqrt{0.3}=0.1732$", "$\\sqrt{300}=17.32$", "$\\sqrt{3000}=544.7$", "$\\sqrt{0.03}=0.5447$", "$\\sqrt{0.003}=0.5477$"],
-    answer: "②",
-    solution: "**[Logical Anchor]** $\\sqrt{3 \\times 100} = 10\\sqrt{3} = 17.32$ [cite: 1]",
-    error_check: "소수점 이동 규칙 확인."
-  },
-  {
-    id: 10,
-    level: "중",
-    category: "유리수가 될 조건",
-    content: "두 수 $2+a\\sqrt{3}$, $b-3\\sqrt{3}$ 의 합과 곱이 모두 유리수가 되도록 하는 $a-b$의 값을 구하면? [4점]",
-    choices: ["$1$", "$\\frac{2}{3}$", "$-3$", "$-2$", "$2$"],
-    answer: "①",
-    solution: "**[Logical Anchor]** 무리수 계수가 0이 되어야 함.\n합: $a=3$, 곱: $3b-6=0 \\implies b=2$\n$a-b = 1$ [cite: 1]",
-    error_check: "유리수 조건에 따른 미지수 산출."
-  },
-  {
-    id: 11,
-    level: "중",
-    category: "정수 부분과 소수 부분",
-    content: "$\\sqrt{a}$의 정수 부분 $[\\sqrt{a}]$, 소수 부분 $\\langle \\sqrt{a} \\rangle$일 때, $[\\sqrt{20}]-\\langle \\sqrt{8} \\rangle \\times \\sqrt{2}$의 값은? [5점]",
-    choices: ["$4-2\\sqrt{2}$", "$2\\sqrt{2}$", "$\\sqrt{2}$", "$4+2\\sqrt{2}$", "$8+2\\sqrt{2}$"],
-    answer: "②",
-    solution: "**[Logical Anchor]** $4 - (2\\sqrt{2}-2)\\sqrt{2} = 4 - (4-2\\sqrt{2}) = 2\\sqrt{2}$ [cite: 1]",
-    error_check: "정수/소수 부분 정의 적용 확인."
-  },
-  {
-    id: 12,
-    level: "중",
-    category: "제곱근의 활용",
-    content: "가로와 세로의 길이의 비가 $\\sqrt{7}:1$인 카드에서 가로가 $\\sqrt{119}$ cm일 때, 세로의 길이는? [4점]",
-    choices: ["$\\sqrt{6}$ cm", "$3$ cm", "$\\sqrt{13}$ cm", "$4$ cm", "$\\sqrt{17}$ cm"],
-    answer: "⑤",
-    solution: "**[Logical Anchor]** $\\sqrt{7}x = \\sqrt{119} \\implies x = \\sqrt{17}$ [cite: 1]",
-    error_check: "이미지 원본 수치 대조 완료."
-  },
-  {
-    id: 13,
-    level: "중",
-    category: "인수분해 기초",
-    content: "$ab(x-y)+b(y-x)$ 를 인수분해하면? [4점]",
-    choices: ["$2ab(x-y)$", "$b(a+1)(x-y)$", "$b(a+1)(y-x)$", "$b(a-1)(x-y)$", "$b(a-1)(y-x)$"],
-    answer: "④",
-    solution: "**[Logical Anchor]** 공통인수로 묶어 정리함.\n$ab(x-y)-b(x-y) = b(x-y)(a-1)$\n$\\therefore b(a-1)(x-y)$",
-    error_check: "시스템 태그 제거 및 인수분해 무결성 확인."
-  },
-  {
-    id: 14,
-    level: "중",
-    category: "인수분해 공식",
-    content: "$16x^4-y^4$ 을 인수분해하면? [4점]",
-    choices: ["$(4x^2+y^2)(2x+y^2)^2$", "$(4x^2-y^2)(2x+y^2)(2x-y^2)$", "$(4x^2+y^2)(2x+y)(2x-y)$", "$(4x^2+y^2)(4x^2-y^2)(2x+y^2)(2x-y^2)$", "$(4x^2+y^2)(2x+y^2)(2x-y^2)$"],
-    answer: "③",
-    solution: "**[Logical Anchor]** 합차공식을 연속 적용함.\n$(4x^2)^2-(y^2)^2 = (4x^2+y^2)(4x^2-y^2) = (4x^2+y^2)(2x+y)(2x-y)$",
-    error_check: "합차공식 2회 적용 확인."
-  },
-  {
-    id: 15,
-    level: "중",
-    category: "완전제곱식",
-    content: "다항식 $16x^2+ax+9$ 가 완전제곱식이 될 때, $a$의 값으로 알맞은 수를 모두 찾으면? (정답 2개) [4점]",
-    choices: ["$-24$", "$-12$", "$12$", "$24$", "$30$"],
-    answer: "①, ④",
-    solution: "**[Logical Anchor]** 완전제곱식의 계수 관계를 이용함.\n$(4x \\pm 3)^2 = 16x^2 \\pm 24x + 9 \\implies a = \\pm 24$",
-    error_check: "중복 정답 및 수치 검증 완료."
-  },
-  {
-    id: 16,
-    level: "하",
-    category: "인수분해 확인",
-    content: "다음 중 인수분해한 것이 옳지 않은 것은? [4점]",
-    choices: ["$x^2-9=(x+3)(x-3)$", "$3x^2+2x-1=(x-1)(3x-1)$", "$x^2-4x+4=(x-2)^2$", "$x^2+7x-18=(x+9)(x-2)$", "$9x^2+6xy+y^2=(3x+y)^2$"],
-    answer: "②",
-    solution: "**[Logical Anchor]** 전개식을 통해 등식 성립 여부를 확인.\n② $(x-1)(3x-1) = 3x^2-4x+1$ 이므로 좌변과 다름.",
-    error_check: "모든 보기 전개 검증 완료."
-  },
-  {
-    id: 17,
-    level: "중",
-    category: "인수분해 활용",
-    content: "인수분해 공식을 이용하여 다음 두 수 $A, B$를 계산할 때, $A-B$의 값은? [4점]\n$A=27^2+6 \\times 27+9$, $B=8.5^2 \\times 9-1.5^2 \\times 9$",
-    choices: ["$250$", "$270$", "$290$", "$300$", "$320$"],
-    answer: "②",
-    solution: "**[Logical Anchor]** 완전제곱식과 합차공식을 이용함.\n$A = (27+3)^2 = 900$\n$B = 9(8.5+1.5)(8.5-1.5) = 9 \\times 10 \\times 7 = 630$\n$A-B = 270$",
-    error_check: "계산 과정 무결성 확인."
-  },
-  {
-    id: 18,
-    level: "중",
-    category: "치환 인수분해",
-    content: "다항식 $(x^2-3x)^2-2x^2+6x-8$ 의 인수가 아닌 것은? [4점]",
-    choices: ["$x-1$", "$x+1$", "$x-2$", "$x+2$", "$x-4$"],
-    answer: "④",
-    solution: "**[Logical Anchor]** 공통부분 $x^2-3x=t$로 치환함.\n$t^2-2t-8 = (t-4)(t+2) = (x^2-3x-4)(x^2-3x+2)$\n$(x-4)(x+1)(x-2)(x-1)$ 이므로 인수가 아닌 것은 ④ $x+2$",
-    error_check: "이미지 대조 및 정답 번호 교정 완료."
-  },
-  {
-    id: 19,
-    level: "상",
-    category: "인수분해 활용(도형)",
-    content: "다음 그림에서 세 원의 중심은 모두 $\\overline{AB}$ 위에 있고, 점 $D$는 $\\overline{BC}$의 중점이다. $\\overline{AD}$를 지름으로 하는 원의 둘레의 길이는 $12\\pi\\text{cm}$이고, 색칠한 부분의 넓이는 $36\\pi\\text{cm}^2$이다. $\\overline{CD}=a\\text{cm}$일 때, $a$의 값을 구하면? [5점]\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\">\n  <circle cx=\"80\" cy=\"60\" r=\"50\" fill=\"#f0f0f0\" stroke=\"black\"/>\n  <circle cx=\"60\" cy=\"60\" r=\"30\" fill=\"white\" stroke=\"black\"/>\n  <circle cx=\"110\" cy=\"60\" r=\"20\" fill=\"white\" stroke=\"black\"/>\n  <text x=\"25\" y=\"65\" font-size=\"9\">A</text><text x=\"132\" y=\"65\" font-size=\"9\">B</text>\n  <text x=\"85\" y=\"65\" font-size=\"9\">C</text><text x=\"105\" y=\"65\" font-size=\"9\">D</text>\n</svg>",
-    choices: ["$2$", "$\\frac{10}{3}$", "$4$", "$\\frac{21}{4}$", "$6$"],
-    answer: "③",
-    solution: "**[Logical Anchor]** 원의 넓이 공식을 세워 방정식을 풂.\n$\\overline{AD}=12 \\implies$ 반지름 $6$. 넓이 관계식에서 $a=4$ 도출.",
-    error_check: "발문 원형 복구 및 기하학적 수치 검증."
-  },
-  {
-    id: 20,
-    level: "중",
-    category: "인수의 정의",
-    content: "$x-1$ 이 $3x^2-13x+a$ 의 인수일 때, $a$의 값을 구하면? [4점]",
-    choices: ["$3$", "$5$", "$7$", "$10$", "$13$"],
-    answer: "④",
-    solution: "**[Logical Anchor]** 인수정리 $f(1)=0$을 이용함.\n$3(1)^2-13(1)+a = 0 \\implies a=10$",
-    error_check: "인수정리 대입 무결성 확인."
-  },
-  {
-    id: 21,
-    level: "중",
-    category: "제곱근의 성질(서술형)",
-    content: "[서술형 1] $\\sqrt{49}$의 음의 제곱근을 $a$, $\\sqrt{(-9)^2}$의 양의 제곱근을 $b$라고 할 때, 다음 물음에 답하여라. (단, 풀이 과정을 자세히 써라.) [6점]\n(1) $a, b$의 값을 각각 구하여라. (2점)\n(2) $\\sqrt{63}$을 $a, b$를 사용한 식으로 나타내어라. (4점)",
-    choices: [],
-    answer: "서술형",
-    solution: "**[Logical Anchor]** 제곱근의 정의를 정확히 적용.\n(1) $a = -\\sqrt{7}, b = 3$\n(2) $\\sqrt{63} = 3\\sqrt{7} = b \\times (-a) = -ab$",
-    error_check: "단계별 배점 및 요구 조건 확인."
-  },
-  {
-    id: 22,
-    level: "상",
-    category: "무리수와 수직선(서술형)",
-    content: "[서술형 2] 다음 그림에서 두 점 $P, Q$에 대응하는 수를 각각 $p, q$라고 할 때, $3p+4q$의 값을 구하는 풀이 과정과 답을 서술하여라. [7점]\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\">\n  <line x1=\"10\" y1=\"100\" x2=\"150\" y2=\"100\" stroke=\"black\"/>\n  <rect x=\"70\" y=\"60\" width=\"40\" height=\"40\" fill=\"none\" stroke=\"black\"/>\n  <path d=\"M 110,60 A 56.5,56.5 0 0 0 53.5,100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2,2\"/>\n  <text x=\"50\" y=\"115\" font-size=\"9\">P(p)</text>\n</svg>",
-    choices: [],
-    answer: "서술형",
-    solution: "**[Logical Anchor]** 대각선 길이를 이용해 좌표를 설정함.\n기준점에서 이동 거리를 계산하여 $p, q$ 산출 후 대입.",
-    error_check: "서술형 전개 논리 확인."
-  },
-  {
-    id: 23,
-    level: "중",
-    category: "인수분해 활용(서술형)",
-    content: "[서술형 3] 다음 그림의 모든 직사각형을 빈틈없이 붙여서 하나의 큰 직사각형을 만들려고 한다. 새로 만든 큰 직사각형의 둘레의 길이를 구하는 풀이 과정과 답을 서술하여라. [7점]\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\">\n  <rect x=\"20\" y=\"20\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"black\"/><text x=\"30\" y=\"65\" font-size=\"8\">x^2</text>\n  <rect x=\"60\" y=\"20\" width=\"10\" height=\"30\" fill=\"none\" stroke=\"black\"/><text x=\"60\" y=\"65\" font-size=\"8\">x</text>\n  <rect x=\"80\" y=\"20\" width=\"10\" height=\"10\" fill=\"none\" stroke=\"black\"/><text x=\"80\" y=\"40\" font-size=\"8\">1</text>\n</svg>",
-    choices: [],
-    answer: "서술형",
-    solution: "**[Logical Anchor]** 넓이 합을 인수분해하여 가로, 세로를 구함.\n$x^2+5x+6 = (x+2)(x+3) \\implies$ 둘레 $2(2x+5) = 4x+10$",
-    error_check: "도형 조립 및 둘레 공식 확인."
-  }
-];
+    {
+      "id": 1,
+      "level": "중",
+      "category": "유리수와 순환소수",
+      "content": "다음 중 유한소수로 나타낼 수 있는 분수는? [3.5점]",
+      "choices": [
+        "$\\frac{8}{12}$",
+        "$\\frac{9}{24}$",
+        "$\\frac{15}{36}$",
+        "$\\frac{35}{75}$",
+        "$\\frac{26}{60}$"
+      ],
+      "answer": "②",
+      "solution": "① $\\frac{8}{12} = \\frac{2}{3} \\implies$ 분모 소인수 $3$ (무한)\n② $\\frac{9}{24} = \\frac{3}{8} = \\frac{3}{2^3} \\implies$ 분모 소인수 $2$뿐 (유한)\n③ $\\frac{15}{36} = \\frac{5}{12} = \\frac{5}{2^2 \\times 3} \\implies$ 분모 소인수 $3$ (무한)\n④ $\\frac{35}{75} = \\frac{7}{15} = \\frac{7}{3 \\times 5} \\implies$ 분모 소인수 $3$ (무한)\n⑤ $\\frac{26}{60} = \\frac{13}{30} = \\frac{13}{2 \\times 3 \\times 5} \\implies$ 분모 소인수 $3$ (무한)\n$\\therefore$ ②"
+    },
+    {
+      "id": 2,
+      "level": "중",
+      "category": "유리수와 순환소수",
+      "content": "분수 $\\frac{5}{27}$를 소수로 나타낼 때, 소수점 아래 $40$번째 자리의 숫자는? [4점]",
+      "choices": ["1", "2", "3", "4", "5"],
+      "answer": "①",
+      "solution": "$\\frac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\n순환마디: $1, 8, 5$ (길이 $3$)\n$40 = 3 \\times 13 + 1 \\implies$ 순환마디의 $1$번째 숫자\n$\\therefore 1$"
+    },
+    {
+      "id": 3,
+      "level": "중",
+      "category": "유리수와 순환소수",
+      "content": "다음은 순환소수 $2.\\dot{4}\\dot{5}$를 분수로 표현하는 과정이다. 이때 $a+b+c$의 값은? [4점]<br><div class='box'>$2.\\dot{4}\\dot{5}$의 분수 표현을 $x$라고 할 때,<br>$x = 2.4545\\dots$<br>$ax = 245.4545\\dots$<br>$(a-1)x = b$<br>$x = \\frac{b}{a-1} = \\frac{27}{c}$ (기약분수)</div>",
+      "choices": ["254", "256", "354", "356", "365"],
+      "answer": "③",
+      "solution": "$x = 2.4545\\dots$\n$100x = 245.4545\\dots \\implies a = 100$\n$100x - x = 243 \\implies 99x = 243 \\implies b = 243$\n$x = \\frac{243}{99} = \\frac{27}{11} \\implies c = 11$\n$a+b+c = 100 + 243 + 11 = 354$\n$\\therefore 354$"
+    },
+    {
+      "id": 4,
+      "level": "중",
+      "category": "유리수와 순환소수",
+      "content": "$\\frac{1}{n} - \\frac{1}{n+1}$이 유한소수가 되도록 하는 자연수 $n$의 개수는? (단, $1 \\le n \\le 150$) [4.5점]",
+      "choices": ["1", "2", "5", "10", "12"],
+      "answer": "②",
+      "solution": "$\\frac{1}{n} - \\frac{1}{n+1} = \\frac{1}{n(n+1)}$\n결과가 유한소수가 되려면 분모 $n(n+1)$의 소인수가 $2, 5$뿐이어야 함.\n$n, n+1$은 서로소이므로 각각 $2^a$ 또는 $5^b$ 형태여야 함.\n1) $n=1, n+1=2$ (참)\n2) $n=4, n+1=5$ (참)\n그 외 $150$ 이하에서 조건을 만족하는 연속한 자연수 쌍은 없음.\n$\\therefore 2$"
+    },
+    {
+      "id": 5,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "다음 중에서 옳은 것은? [4점]",
+      "choices": [
+        "$a^3 \\times a^7 = a^{21}$",
+        "$a \\times a^4 \\times a^2 = a^6$",
+        "$(a^3)^2 \\times a^3 = a^9$",
+        "$a^{28} \\div a^7 = a^{4}$",
+        "$2^{3} \\div 2^{6} = 2^{3}$"
+      ],
+      "answer": "③",
+      "solution": "① $a^3 \\times a^7 = a^{10}$\n② $a^1 \\times a^4 \\times a^2 = a^7$\n③ $(a^3)^2 \\times a^3 = a^6 \\times a^3 = a^9$ (참)\n④ $a^{28} \\div a^7 = a^{21}$\n⑤ $2^3 \\div 2^6 = \\frac{1}{2^3}$\n$\\therefore$ ③"
+    },
+    {
+      "id": 6,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "$(\\frac{x^a}{3y^{2b}})^4 = \\frac{x^8}{81y^{24}}$ 일 때, 두 자연수 $a, b$의 값에 대하여 $a+b$의 값은? [4점]",
+      "choices": ["5", "6", "7", "8", "9"],
+      "answer": "①",
+      "solution": "$\\frac{x^{4a}}{3^4 y^{8b}} = \\frac{x^8}{81 y^{24}}$\n$4a = 8 \\implies a = 2$\n$8b = 24 \\implies b = 3$\n$a+b = 2+3 = 5$\n$\\therefore 5$"
+    },
+    {
+      "id": 7,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "$5^4 \\times 20^6$ 이 $n$자리의 자연수일 때, $n$의 값을 구하면? [4점]",
+      "choices": ["11", "12", "13", "14", "15"],
+      "answer": "①",
+      "solution": "$5^4 \\times (2^2 \\times 5)^6 = 5^4 \\times 2^{12} \\times 5^6 = 2^{12} \\times 5^{10}$\n$= 2^2 \\times (2^{10} \\times 5^{10}) = 4 \\times 10^{10}$\n$4$ 뒤에 $0$이 $10$개 $\\implies 11$자리\n$\\therefore 11$"
+    },
+    {
+      "id": 8,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "$20 \\times 30 \\times 40 \\times 50 \\times 60 \\times 70 = 2^a \\times 3^b \\times 5^c \\times 7^d$ 일 때, $a+b+c+d$의 값을 구하면? [4점]",
+      "choices": ["14", "16", "18", "19", "20"],
+      "answer": "⑤",
+      "solution": "$(2 \\times 10) \\times (3 \\times 10) \\times (2^2 \\times 10) \\times (5 \\times 10) \\times (2 \\times 3 \\times 10) \\times (7 \\times 10)$\n$= (2^1 \\times 3^1 \\times 2^2 \\times 5^1 \\times 2^1 \\times 3^1 \\times 7^1) \\times 10^6$\n$= (2^4 \\times 3^2 \\times 5^1 \\times 7^1) \\times (2^6 \\times 5^6)$\n$= 2^{10} \\times 3^2 \\times 5^7 \\times 7^1$\n$a=10, b=2, c=7, d=1 \\implies a+b+c+d = 20$\n$\\therefore 20$"
+    },
+    {
+      "id": 9,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "다음 중에서 옳은 것을 모두 고르면?(정답 2개) [4점]",
+      "choices": [
+        "$(-3x^{5}) \\times 2x^{3} = -6x^{15}$",
+        "$(2x^{2})^{3} \\times 4x = 32x^{7}$",
+        "$(-5a^{3})^{2} \\div 10a^{3}b = -\\frac{a^{3}}{2b}$",
+        "$12a^{2}b \\div (-3a) = -4ab$",
+        "$(-21x^{3}) \\div (-3x^{2}) = -\\frac{7}{3}x^{3}$"
+      ],
+      "answer": "②, ④",
+      "solution": "① $-6x^{8}$\n② $8x^{6} \\times 4x = 32x^{7}$ (참)\n③ $25a^{6} \\div 10a^{3}b = \\frac{5a^{3}}{2b}$\n④ $-4ab$ (참)\n⑤ $7x$\n$\\therefore$ ②, ④"
+    },
+    {
+      "id": 10,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "다음 식을 전개하여 간단히 했을 때, $x^2$의 계수를 $a$, $xy$의 계수를 $b$라고 할 때, $a-b$의 값은? [4점]<br><div class='box'>$4x(3x+2y+6)-5x(x+y+2)$</div>",
+      "choices": ["-4", "-2", "0", "2", "4"],
+      "answer": "⑤",
+      "solution": "$12x^2 + 8xy + 24x - (5x^2 + 5xy + 10x) = 7x^2 + 3xy + 14x$. $a=7, b=3 \\implies a-b=4$.\n$\\therefore 4$"
+    },
+    {
+      "id": 11,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "$4x(3x+2y+6)-5x(x+y+2)$ 를 계산하여 간단히 하시오.",
+      "choices": [],
+      "answer": "7x^2+3xy+14x",
+      "solution": "$12x^2+8xy+24x - 5x^2-5xy-10x = 7x^2+3xy+14x$"
+    },
+    {
+      "id": 12,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "어떤 식에서 $2x^{2}-3x+7$을 빼야 할 것을 잘못하여 더했더니 $6x^{2}-x+3$이 되었다. 이때 바르게 계산한 식은? [4점]",
+      "choices": [
+        "$2x^{2}+5x-11$",
+        "$2x^{2}-8x+11$",
+        "$4x^{2}+x-4$",
+        "$4x^{2}-3x-4$",
+        "$4x^{2}+8x+11$"
+      ],
+      "answer": "①",
+      "solution": "$X + (2x^{2}-3x+7) = 6x^{2}-x+3 \\implies X = 4x^{2}+2x-4$\n바른 계산: $(4x^{2}+2x-4)-(2x^{2}-3x+7) = 2x^{2}+5x-11$\n$\\therefore 2x^{2}+5x-11$"
+    },
+    {
+      "id": 13,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "$5a-[3b-a-\\{3b-(2a-b)\\}]$ 를 계산하면? [4점]",
+      "choices": [
+        "$-a+5b$",
+        "$2a-b$",
+        "$-3a-2b$",
+        "$4a+b$",
+        "$a-5b$"
+      ],
+      "answer": "④",
+      "solution": "$5a-[3b-a-\\{3b-2a+b\\}] = 5a-[3b-a-\\{4b-2a\\}]$\n$= 5a-[3b-a-4b+2a] = 5a-[a-b] = 4a+b$\n$\\therefore 4a+b$"
+    },
+    {
+      "id": 14,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "$\\frac{2x^{4}-x^{3}}{x^{3}}-\\frac{3x^{3}-9x^{5}}{3x^{3}}$ 을 계산하면? [4점]",
+      "choices": [
+        "$-3x^{2}-1$",
+        "$-3x^{2}-2$",
+        "$3x^{2}+2x-2$",
+        "$x^{2}-3x+2$",
+        "$3x^{2}+x$"
+      ],
+      "answer": "③",
+      "solution": "$(2x-1)-(1-3x^{2}) = 3x^{2}+2x-2$\n$\\therefore 3x^{2}+2x-2$"
+    },
+    {
+      "id": 15,
+      "level": "중",
+      "category": "일차부등식",
+      "content": "$7-8 \\le 16-2x$ 의 해가 아닌 것을 다음 중에서 고르면? [3.5점]",
+      "choices": ["5", "6", "7", "8", "9"],
+      "answer": "⑤",
+      "solution": "$-1 \\le 16-2x \\implies 2x \\le 17 \\therefore x \\le 8.5$. 따라서 $9$는 해가 아니다."
+    },
+    {
+      "id": 16,
+      "level": "중",
+      "category": "일차부등식",
+      "content": "실수 $a, b$에 대해 $a<b$라고 할 때, 다음 중 크기 비교가 잘못된 것은? [4점]",
+      "choices": [
+        "$a+5 < b+5$",
+        "$-\\frac{a}{2} > -\\frac{b}{2}$",
+        "$4a-3 < 4b-3$",
+        "$\\frac{2a-7}{3} < \\frac{2b-7}{3}$",
+        "$-5a-\\frac{1}{3} < -5b-\\frac{1}{3}$"
+      ],
+      "answer": "⑤",
+      "solution": "음수를 곱하거나 나누면 부등호 방향이 바뀜.\n⑤ $-5a > -5b \\implies -5a-\\frac{1}{3} > -5b-\\frac{1}{3}$\n$\\therefore$ ⑤"
+    },
+    {
+      "id": 17,
+      "level": "중",
+      "category": "일차부등식",
+      "content": "일차부등식 $0.5x-1 < -\\frac{1-2x}{6}$ 을 풀면? [4점]",
+      "choices": [
+        "<svg width='160' height='60' viewBox='0 0 160 60'><line x1='10' y1='40' x2='150' y2='40' stroke='black' stroke-width='1'/><polygon points='150,37 150,43 158,40' fill='black'/><circle cx='60' cy='40' r='3' stroke='black' fill='white'/><line x1='60' y1='40' x2='60' y2='20' stroke='black' stroke-width='1'/><line x1='60' y1='20' x2='120' y2='20' stroke='black' stroke-width='2'/><polygon points='120,17 120,23 128,20' fill='black'/><text x='58' y='55' font-size='10'>1</text></svg>",
+        "<svg width='160' height='60' viewBox='0 0 160 60'><line x1='10' y1='40' x2='150' y2='40' stroke='black' stroke-width='1'/><polygon points='150,37 150,43 158,40' fill='black'/><circle cx='100' cy='40' r='3' stroke='black' fill='black'/><line x1='100' y1='40' x2='100' y2='20' stroke='black' stroke-width='1'/><line x1='100' y1='20' x2='40' y2='20' stroke='black' stroke-width='2'/><polygon points='40,17 40,23 32,20' fill='black'/><text x='98' y='55' font-size='10'>1</text></svg>",
+        "<svg width='160' height='60' viewBox='0 0 160 60'><line x1='10' y1='40' x2='150' y2='40' stroke='black' stroke-width='1'/><polygon points='150,37 150,43 158,40' fill='black'/><circle cx='60' cy='40' r='3' stroke='black' fill='black'/><line x1='60' y1='40' x2='60' y2='20' stroke='black' stroke-width='1'/><line x1='60' y1='20' x2='120' y2='20' stroke='black' stroke-width='2'/><polygon points='120,17 120,23 128,20' fill='black'/><text x='58' y='55' font-size='10'>5</text></svg>",
+        "<svg width='160' height='60' viewBox='0 0 160 60'><line x1='10' y1='40' x2='150' y2='40' stroke='black' stroke-width='1'/><polygon points='150,37 150,43 158,40' fill='black'/><circle cx='100' cy='40' r='3' stroke='black' fill='white'/><line x1='100' y1='40' x2='100' y2='20' stroke='black' stroke-width='1'/><line x1='100' y1='20' x2='40' y2='20' stroke='black' stroke-width='2'/><polygon points='40,17 40,23 32,20' fill='black'/><text x='98' y='55' font-size='10'>5</text></svg>",
+        "<svg width='160' height='60' viewBox='0 0 160 60'><line x1='10' y1='40' x2='150' y2='40' stroke='black' stroke-width='1'/><polygon points='150,37 150,43 158,40' fill='black'/><circle cx='100' cy='40' r='3' stroke='black' fill='black'/><line x1='100' y1='40' x2='100' y2='20' stroke='black' stroke-width='1'/><line x1='100' y1='20' x2='40' y2='20' stroke='black' stroke-width='2'/><polygon points='40,17 40,23 32,20' fill='black'/><text x='98' y='55' font-size='10'>5</text></svg>"
+      ],
+      "answer": "④",
+      "solution": "양변에 $6$을 곱함: $3x-6 < -(1-2x)$\n$3x-6 < -1+2x \\implies x < 5$\n$\\therefore x < 5$\n수직선에서 $5$를 포함하지 않고(흰 동그라미) 왼쪽으로 향하는 ④번이 정답임."
+    },
+    {
+      "id": 18,
+      "level": "중",
+      "category": "일차부등식",
+      "content": "다음 두 일차부등식의 해가 같을 때, 정수 $a$의 값을 구하면? [4점]<br><div class='box'>$2(3-x) > 4x$, $a(x+3) > -16$</div>",
+      "choices": ["-4", "-2", "1", "4", "6"],
+      "answer": "①",
+      "solution": "$2(3-x) > 4x \\implies 6-2x > 4x \\implies 6x < 6 \\therefore x < 1$\n$a(x+3) > -16 \\implies x+3 < -\\frac{16}{a}$ (단, $a < 0$) $\\implies x < -\\frac{16}{a}-3$\n$-\\frac{16}{a}-3 = 1 \\implies -\\frac{16}{a} = 4 \\implies 4a = -16 \\therefore a = -4$\n$\\therefore$ ①"
+    },
+    {
+      "id": 19,
+      "level": "중",
+      "category": "일차부등식",
+      "content": "아름이는 국어 시험에서 60점, 역사 시험에서 80점, 영어 시험에서 72점을 받았다. 수학 시험에서 최소 몇 점 이상을 받아야 네 과목의 시험 성적의 평균이 70점 이상이 될 수 있을까? [4점]",
+      "choices": ["60", "64", "68", "72", "76"],
+      "answer": "③",
+      "solution": "수학 점수를 $x$라 하면,\n$\\frac{60+80+72+x}{4} \\ge 70 \\implies 212+x \\ge 280 \\therefore x \\ge 68$\n$\\therefore$ ③"
+    },
+    {
+      "id": 20,
+      "level": "중",
+      "category": "일차부등식",
+      "content": "현아는 집에서 편의점, 도서관을 차례로 거쳐 학교에 가려고 한다. 집에서 편의점까지의 거리는 2km, 편의점에서 도서관까지의 거리는 3km, 도서관에서 학교까지의 거리가 4km이고, 집으로부터 편의점까지는 시속 4km로 걸어간다고 한다. 전체 이동 시간이 1시간 30분 이내가 되도록 하려면 편의점으로부터 학교까지는 최소한 평균 시속 몇 km로 걸어가야 할까? [4.5점]",
+      "choices": ["3km", "4km", "5km", "6km", "7km"],
+      "answer": "⑤",
+      "solution": "편의점~학교 평균 시속을 $v$라 하면,\n(집~편의점 시간) + (편의점~학교 시간) $\\le 1.5$\n$\\frac{2}{4} + \\frac{3+4}{v} \\le 1.5 \\implies 0.5 + \\frac{7}{v} \\le 1.5 \\implies \\frac{7}{v} \\le 1 \\therefore v \\ge 7$\n$\\therefore$ ⑤"
+    },
+    {
+      "id": 21,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "[서술형1] 지수법칙을 이용하여 $\\frac{9^{6}+9^{6}+9^{6}}{3^{4}+3^{4}+3^{4}}$ 의 값을 $3$의 거듭제곱으로 나타내어라. [5점]",
+      "choices": [],
+      "answer": "$3^{8}$",
+      "solution": "$\\frac{3 \\times 9^{6}}{3 \\times 3^{4}} = \\frac{9^{6}}{3^{4}} = \\frac{(3^{2})^{6}}{3^{4}} = \\frac{3^{12}}{3^{4}} = 3^{8}$\n$\\therefore 3^{8}$"
+    },
+    {
+      "id": 22,
+      "level": "중",
+      "category": "식의 계산",
+      "content": "[서술형2] 두 식 $A, B$가 다음과 같을 때, $A+B$를 계산하여라. [5점]<br><div class='box'>$A = (16a^{2}b-20a^{3}) \\div (-4a^{2})$<br>$B = (9a^{2}-15ab) \\div \\frac{3}{2}a$</div>",
+      "choices": [],
+      "answer": "$11a-14b$",
+      "solution": "$A = \\frac{16a^{2}b}{-4a^{2}} - \\frac{20a^{3}}{-4a^{2}} = -4b + 5a$\n$B = (9a^{2}-15ab) \\times \\frac{2}{3a} = 6a - 10b$\n$A+B = (5a-4b) + (6a-10b) = 11a-14b$\n$\\therefore 11a-14b$"
+    },
+    {
+      "id": 23,
+      "level": "하",
+      "category": "일차부등식",
+      "content": "[서술형3] 일차부등식 $3(2-x) < 7$을 풀어라. [5점]",
+      "choices": [],
+      "answer": "$x > -\\frac{1}{3}$",
+      "solution": "$6-3x < 7 \\implies -3x < 1 \\therefore x > -\\frac{1}{3}$\n$\\therefore x > -\\frac{1}{3}$"
+    },
+    {
+      "id": 24,
+      "level": "중",
+      "category": "일차부등식",
+      "content": "[서술형4] 건웅이네 집은 정수기를 새로 장만하려고 한다. 정수기를 구입하는 경우에는 정수기 가격 240000원과 매달 6000원의 유지비를 내고, 정수기를 대여받는 경우에는 매달 9000원의 대여료만을 낸다. 이 때, 정수기를 구입하여 최소 몇 개월 이상 사용하면 대여받는 경우의 비용보다 저렴한지 구하시오.<br>(1) 정수기를 $x$개월 동안 사용한다고 할 때, 구입하는 경우에 드는 비용을 식으로 나타내시오. [1점]<br>(2) 정수기를 $x$개월 동안 사용한다고 할 때, 대여하는 경우에 드는 비용을 식으로 나타내시오. [1점]<br>(3) 문제의 뜻에 맞게 부등식을 세워 풀고, 최소 몇 개월 이상 사용하여야 할지 답하시오. [3점]",
+      "choices": [],
+      "answer": "(1) $240000+6000x$ (2) $9000x$ (3) $81$개월",
+      "solution": "(1) $240000+6000x$\n(2) $9000x$\n(3) $240000+6000x < 9000x \\implies 3000x > 240000 \\implies x > 80$\n$\\therefore$ $81$개월"
+    }
+  ]

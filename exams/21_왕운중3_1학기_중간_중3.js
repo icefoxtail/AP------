@@ -39,7 +39,7 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$(x+3y)^{2}-(ax+y)(x+2y)$를 전개하여 간단히 하면 $xy$의 계수가 3일 때, 상수의 값은? [3점]",
     "choices": ["1", "2", "3", "4", "5"],
@@ -84,7 +84,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "부등식 $6 \\le \\frac{\\sqrt{2(n-1)}}{2} < 7$을 만족시키는 자연수 n은 모두 몇 개인가? [4점]",
     "choices": ["25개", "26개", "27개", "28개", "29개"],
@@ -111,7 +111,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "$-\\frac{1}{\\sqrt{5}} \\times (-\\sqrt{90}) \\div \\frac{5\\sqrt{32}}{\\sqrt{80}} = k\\sqrt{a}$ 일 때, 유리수 $k$의 값은? [4점]",
     "choices": ["\\frac{2}{5}", "\\frac{3}{5}", "2", "3", "5"],
@@ -129,7 +129,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "$x+y=3, x-y=5$ 일 때, $x^{2}-y^{2}+4x-4y$ 의 값은? [5점]",
     "choices": ["5", "15", "20", "25", "35"],
@@ -165,7 +165,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[단답형 1] 원기둥의 부피를 $A$, 겉넓이를 $B$라 할 때, $\\frac{B}{A} = a\\sqrt{2} + b\\sqrt{5}$이다. $a+b$를 구하시오. [4점]",
     "choices": [" ", " ", " ", " ", " "],
@@ -183,7 +183,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "[서술형 1] $A+B$의 값을 구하시오. [6점]\n$A=\\frac{998\\times996+998\\times4}{999^{2}-1}, B=\\sqrt{2022\\times2020+1}$",
     "choices": [" ", " ", " ", " ", " "],
@@ -201,7 +201,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "[서술형 3] $x=\\frac{2}{\\sqrt{5}+\\sqrt{3}}, y=\\frac{4}{\\sqrt{5}-\\sqrt{3}}$ 일 때, $x^{2}y-xy^{2}$의 값을 구하시오. [7점]",
     "choices": [" ", " ", " ", " ", " "],

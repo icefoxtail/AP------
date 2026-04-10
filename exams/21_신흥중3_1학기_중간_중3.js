@@ -30,7 +30,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
     "choices": ["893", "475", "1285", "1674", "2431"],
@@ -75,7 +75,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
     "choices": ["점 $P$의 좌표는 $1-\\sqrt{2}$이다.", "점 $Q$의 좌표는 $1+\\sqrt{2}$이다.", "$\\overline{BP}=\\sqrt{2}$", "$\\overline{PA}=\\sqrt{2}-1$", "$\\overline{PQ}=-1+2\\sqrt{2}$"],
@@ -122,7 +122,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 14,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$(2x-3y)(-3x+7y)+(-2x+3y)^2$ 전개한 식에서 $xy$의 계수를 구하면? (4점)",
     "choices": ["2", "3", "4", "5", "11"],
@@ -131,7 +131,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 15,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "인수분해",
     "content": "인수분해 공식을 이용하여 $\\frac{1001 \\times 1002 - 1002}{1001^2-1}$를 계산하면? (4점)",
     "choices": ["1", "2", "5", "8", "12"],
@@ -194,7 +194,7 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 22,
-    "level": "[중상]",
+    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^2}-\\sqrt{(-\\frac{1}{2}a)^2}$을 간단히 하시오. (5점)",
     "choices": [" ", " ", " ", " ", " "],

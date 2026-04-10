@@ -5,7 +5,7 @@ window.questionBank = {
       "id": 1,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
+      "tags": ["중", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
       "content": "분수 $\\frac{x}{2^2 \\times 3 \\times 5^2}$를 소수로 나타낼 때, 무한소수가 되도록 하는 $10$보다 작은 자연수 $x$의 개수를 구하시오.",
       "choices": [
         {"key": "①", "text": "3개"},
@@ -25,7 +25,7 @@ window.questionBank = {
       "id": 2,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
+      "tags": ["중", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
       "content": "다음 중 분수 $\\frac{21}{2 \\times 5^2 \\times a}$가 유한소수가 되도록 하는 한 자리 자연수 $a$의 값이 아닌 것은?",
       "choices": [
         {"key": "①", "text": "3"},
@@ -44,7 +44,7 @@ window.questionBank = {
       "id": 3,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
+      "tags": ["중", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
       "content": "두 분수 $\\frac{7}{40}$, $\\frac{11}{2^2 \\times 3 \\times 5}$에 어떤 자연수 $n$을 곱하여 두 분수 모두 유한소수가 되게 하려고 한다. 이때 $n$의 값이 될 수 있는 가장 작은 두 자리 자연수를 구하시오.",
       "choices": [
         {"key": "①", "text": "12"},
@@ -63,7 +63,7 @@ window.questionBank = {
       "id": 4,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
+      "tags": ["중", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
       "content": "분수 $\\frac{x}{2 \\times 3^2 \\times 5}$를 소수로 나타내면 유한소수가 된다고 한다. $20$ 이하의 자연수 $x$ 중에서 가장 큰 값을 $M$, 가장 작은 값을 $m$이라 할 때, $M-m$의 값을 구하시오.",
       "choices": [
         {"key": "①", "text": "7"},
@@ -83,7 +83,7 @@ window.questionBank = {
       "id": 5,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
+      "tags": ["중", "유리수와 소수", "유한소수로 나타낼 수 있는 분수"],
       "content": "다음 분수 중 소수로 나타내었을 때 무한소수가 되는 것을 모두 고르면? (정답 2개)",
       "choices": [
         {"key": "①", "text": "$\\frac{12}{2^2 \\times 3 \\times 5}$"},
@@ -101,7 +101,7 @@ window.questionBank = {
       "id": 6,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "순환소수의 표현"],
+      "tags": ["중", "순환소수의 표현"],
       "content": "다음 중 순환소수의 표현이 옳은 것을 모두 고르면? (정답 2개)",
       "choices": [
         {"key": "①", "text": "$0.121212\\cdots = 0.\\dot{1}\\dot{2}$"},
@@ -116,7 +116,7 @@ window.questionBank = {
       "id": 7,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "순환소수의 표현"],
+      "tags": ["중", "순환소수의 표현"],
       "content": "순환소수 $3.125125125\\cdots$를 순환마디를 이용하여 바르게 나타낸 것과 이 소수의 순환마디를 차례대로 나열한 것은?",
       "choices": [
         {"key": "①", "text": "$3.1\\dot{2}\\dot{5}$, $251$"},
@@ -131,7 +131,7 @@ window.questionBank = {
       "id": 8,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "순환소수의 표현"],
+      "tags": ["중", "순환소수의 표현"],
       "content": "다음 중 순환소수의 표현 방법이 옳은 것을 모두 고르면? (정답 2개)",
       "choices": [
         {"key": "①", "text": "$0.777\\cdots = 0.\\dot{7}$"},
@@ -146,7 +146,7 @@ window.questionBank = {
       "id": 9,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "분수의 소수 표현"],
+      "tags": ["중", "분수의 소수 표현"],
       "content": "분수 $\\frac{7}{22}$을 소수로 나타낼 때, 옳은 표현을 고르고 소수점 아래 $50$번째 자리의 숫자를 구하시오.",
       "choices": [
         {"key": "①", "text": "$0.3\\dot{1}\\dot{8}$, $1$"},
@@ -161,7 +161,7 @@ window.questionBank = {
       "id": 10,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "분수의 소수 표현"],
+      "tags": ["중", "분수의 소수 표현"],
       "content": "분수 $\\frac{5}{13}$를 소수로 나타낼 때, 순환마디의 숫자의 개수를 $x$, 소수점 아래 $100$번째 자리의 숫자를 $y$라 하자. $x+y$의 값은?",
       "choices": [
         {"key": "①", "text": "9"},
@@ -176,7 +176,7 @@ window.questionBank = {
       "id": 11,
       "type": "single",
       "level": "중",
-      "tags": ["중상", "분수의 소수 표현"],
+      "tags": ["중", "분수의 소수 표현"],
       "content": "분수 $\\frac{8}{41}$을 소수로 나타낼 때, 소수점 아래 $2026$번째 자리의 숫자를 구하시오.",
       "choices": [
         {"key": "①", "text": "1"},
@@ -253,7 +253,7 @@ window.questionBank = {
       "level": "중",
       "score": 4,
       "category": "유리수와 소수",
-      "tags": ["중상", "유리수와 소수", "유한소수가 되게 하는 미지수 구하기", "RPM_p14_0069번_변형"],
+      "tags": ["중", "유리수와 소수", "유한소수가 되게 하는 미지수 구하기", "RPM_p14_0069번_변형"],
       "content": "분수 $\\frac{11}{420} \\times A$를 소수로 나타내면 유한소수가 된다고 한다. 이때 $A$의 값이 될 수 있는 가장 큰 두 자리 자연수를 구하시오.",
       "answer_count": 1,
       "choices": [
@@ -343,7 +343,7 @@ window.questionBank = {
       "level": "중",
       "score": 5,
       "category": "유리수와 소수",
-      "tags": ["중상", "유리수와 소수", "유한소수가 되게 하는 자연수 곱하기", "RPM_p15_0073번_변형"],
+      "tags": ["중", "유리수와 소수", "유한소수가 되게 하는 자연수 곱하기", "RPM_p15_0073번_변형"],
       "content": "두 분수 $\\frac{11}{2^2 \\times 3 \\times 7}$, $\\frac{5}{2 \\times 3^2 \\times 5^2}$에 각각 자연수 $n$을 곱하여 모두 유한소수가 되게 하려고 한다. $n$이 $50$보다 크고 $100$보다 작은 자연수일 때, $n$의 값을 구하시오.",
       "answer_count": 1,
       "choices": [
@@ -390,7 +390,7 @@ window.questionBank = {
     {
     "id": 19,
     "level": "중",
-    "tags": ["중상", "유한소수", "미지수 구하기"],
+    "tags": ["중", "유한소수", "미지수 구하기"],
     "question": "분수 $\\frac{21}{2^2 \\times 3 \\times 5 \\times x}$를 소수로 나타내면 유한소수가 된다고 한다. $10 < x < 20$인 자연수 $x$의 값 중 가장 큰 값을 $M$, 가장 작은 값을 $m$이라 할 때, $M-m$의 값은?",
     "options": [
       "2",
@@ -430,7 +430,7 @@ window.questionBank = {
   {
     "id": 21,
     "level": "상",
-    "tags": ["중상", "기약분수", "유한소수"],
+    "tags": ["중", "기약분수", "유한소수"],
     "question": "분수 $\\frac{a}{150}$를 소수로 나타내면 유한소수가 되고, 기약분수로 나타내면 $\\frac{7}{b}$가 된다. $40 < a < 60$일 때, $a-b$의 값은?",
     "options": [
       "14",
@@ -471,7 +471,7 @@ window.questionBank = {
   {
     "id": 23,
     "level": "상",
-    "tags": ["중상", "유한소수", "미지수 구하기"],
+    "tags": ["중", "유한소수", "미지수 구하기"],
     "question": "분수 $\\frac{n}{280}$을 소수로 나타내면 유한소수가 되고, 기약분수로 나타내면 $\\frac{3}{k}$가 된다. $n$이 두 자리 자연수일 때, $n+k$의 값은?",
     "options": [
       "61",
@@ -492,7 +492,7 @@ window.questionBank = {
     {
       "id": 24,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 4,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "순환소수가 되는 조건", "RPM_p16_0082번_변형"],
@@ -517,7 +517,7 @@ window.questionBank = {
     {
       "id": 25,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 5,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "순환소수가 되는 조건", "RPM_p16_0082번_변형"],
@@ -561,7 +561,7 @@ window.questionBank = {
     {
       "id": 27,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 4,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "순환소수를 분수로 나타내기", "RPM_p16_0085번_변형"],
@@ -586,7 +586,7 @@ window.questionBank = {
     {
       "id": 28,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 5,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "순환소수를 분수로 나타내기", "RPM_p16_0085번_변형"],
@@ -699,7 +699,7 @@ window.questionBank = {
     {
       "id": 33,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 4,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "유한소수가 되는 조건", "RPM_p17_0093번_변형"],
@@ -724,7 +724,7 @@ window.questionBank = {
     {
       "id": 34,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 5,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "유한소수가 되는 조건", "RPM_p17_0093번_변형"],
@@ -749,7 +749,7 @@ window.questionBank = {
     {
       "id": 35,
       "type": "short",
-      "level": "중상",
+      "level": "중",
       "score": 6,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "유한소수가 되는 조건", "RPM_p17_0093번_변형"],
@@ -931,7 +931,7 @@ window.questionBank = {
     {
       "id": 49,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 4,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "순환소수의 대소 관계", "RPM_p18_0101번_변형"],
@@ -1002,7 +1002,7 @@ window.questionBank = {
     {
       "id": 52,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 4,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "유리수와 소수의 관계", "RPM_p18_0104번_변형"],
@@ -1076,7 +1076,7 @@ window.questionBank = {
     {
       "id": 55,
       "type": "single",
-      "level": "중상",
+      "level": "중",
       "score": 5,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "두 분수 사이의 유한소수", "RPM_p19_0107번_변형"],
@@ -1127,7 +1127,7 @@ window.questionBank = {
     {
       "id": 57,
       "type": "short",
-      "level": "중상",
+      "level": "중",
       "score": 5,
       "category": "유리수와 순환소수",
       "tags": ["유리수와 순환소수", "두 분수 사이의 유한소수", "RPM_p19_0107번_변형"],

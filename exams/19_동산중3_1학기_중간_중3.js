@@ -56,7 +56,7 @@ window.questionBank = [
   {
     "id": 5,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "제곱근과 실수",
     "content": "$\\sqrt{12-a}$가 양의 정수일 때, 다음 중 양의 정수 $a$가 될 수 있는 값을 모두 고르면? (2개) (4점)",
     "choices": ["1", "24", "38", "11", "15"],
@@ -86,7 +86,7 @@ window.questionBank = [
   {
     "id": 8,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "제곱근과 실수",
     "content": "다음 그림에서 $ABCD$는 한 변의 길이가 1인 정사각형이고, $\\overline{AC}=\\overline{PC}$, $\\overline{BD}=\\overline{BQ}$이다. 점 $P$에 대응하는 수를 $a$, 점 $Q$에 대응하는 수를 $b$라고 할 때, $a+b$의 값은? (4점)",
     "choices": ["-3", "-2\\sqrt{2}", "-2\\sqrt{2}+1", "$2\\sqrt{2}-1$", "$2\\sqrt{2}+1$"],
@@ -112,7 +112,7 @@ window.questionBank = [
   {
     "id": 10,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "제곱근과 실수",
     "content": "0 < a < 1일 때, 다음 수 중에서 가장 큰 수는? (4점)",
     "choices": ["$a$", "$a^{2}$", "$\\sqrt{a}$", "$\\tf{1}{a}$", "$\\tf{1}{\\sqrt{a}}$"],
@@ -122,7 +122,7 @@ window.questionBank = [
   {
     "id": 11,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "근호를 포함한 식의 계산",
     "content": "$\\tf{2+3\\sqrt{2}}{\\sqrt{2}}-\\tf{2(3-\\sqrt{2})}{\\sqrt{8}}=x\\sqrt{2}+y$일 때, $x+y$의 값은? (4점)",
     "choices": ["3", "3.5", "4", "4.5", "5"],
@@ -204,7 +204,7 @@ window.questionBank = [
   {
     "id": 18,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "인수분해의 활용",
     "content": "$x=\\sqrt{3}+2\\sqrt{2}$, $y=\\sqrt{3}-2\\sqrt{2}$일 때, $x^{3}y-xy^{3}$의 값은? (4점)",
     "choices": ["$-40\\sqrt{6}$", "$-50\\sqrt{3}$", "$32\\sqrt{5}$", "$50\\sqrt{3}$", "$40\\sqrt{6}$"],
@@ -240,7 +240,7 @@ window.questionBank = [
   {
     "id": 21,
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "인수분해",
     "content": "이차식 $x^{2}+Ax+B$를 인수분해 하는데 서인이는 일차항의 계수를 잘못 보아 $(x+4)(x+3)$이 되었고, 한별이는 상수항을 잘못 보아 $(x-1)(x-7)$이 되었다. 처음 이차식을 바르게 인수분해한 것은? (4점)",
     "choices": ["(x-1)(x-6)", "(x-2)(x-6)", "(x+2)(x+6)", "(x+1)(x+6)", "(x+3)(x-4)"],
@@ -277,7 +277,7 @@ window.questionBank = [
   {
     "id": "서술형4",
     "level": "중",
-    "tags": ["중상"],
+    "tags": ["중"],
     "category": "제곱근과 실수",
     "content": "정사각형 모양의 색종이 3장을 붙였다. B의 넓이는 A의 4배이고, C의 넓이는 A의 9배이다. A의 넓이가 $5\\text{cm}^{2}$일 때, 전체 도형의 둘레의 길이를 구하시오. (4점)",
     "answer": "$20\\sqrt{5}\\text{cm}$",
