@@ -33,7 +33,7 @@
         .stat-value { font-size: 28px; font-weight: 800; color: #ffffff; }
         .stat-label { font-size: 13px; color: #64748b; font-weight: bold; }
 
-        /* --- 기존 유지 스타일 (여백 최적화만 적용) --- */
+        /* --- 메인 컨테이너 --- */
         .main-container { max-width: 1200px; margin: -20px auto 40px; padding: 0 20px; position: relative; z-index: 10; }
         
         .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); margin-bottom: 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -107,8 +107,7 @@
 
     <div class="main-container">
         <div class="filter-container">
-            <div class="breadcrumb" id="breadcrumb">
-                </div>
+            <div class="breadcrumb" id="breadcrumb"></div>
             <div style="display: flex; width: 100%; gap: 10px; align-items: center;">
                 <input type="text" id="searchInput" placeholder="학교명 또는 과목 검색..." style="flex: 1;">
                 <div class="qpp-group">
@@ -148,13 +147,9 @@
                 
                 renderMain();
                 document.getElementById('searchInput').addEventListener('input', handleSearch);
-                
-                // 통계 업데이트 함수 독립 호출
                 updateHeroStats();
             };
-            s.onerror = () => {
-                alert('db.js 파일을 로드하지 못했습니다.');
-            };
+            s.onerror = () => alert('db.js 파일을 로드하지 못했습니다.');
             document.body.appendChild(s);
         }
 
@@ -185,7 +180,6 @@
             let html = `<span onclick="goStep(0)">🏠 학년선택(메인)</span>`;
             
             currentPath.forEach((path, idx) => {
-                // UI 상으로는 "학기" 문자를 추가해서 보여줌 (옵션)
                 let displayPath = path;
                 if(idx === 2 && path.includes('-')) {
                     displayPath = path.split('-')[1] + '학기';
@@ -198,7 +192,6 @@
 
         function renderChoices(target) {
             const container = document.getElementById('choiceList');
-            document.getElementById('examList').innerHTML = ''; 
             container.innerHTML = '';
             
             let filtered = db.exams.filter(ex => ex.grade === currentPath[0]);
@@ -217,17 +210,16 @@
             options.forEach(opt => {
                 const btn = document.createElement('div');
                 btn.className = 'choice-btn';
-                
-                // [버그 수정 반영] 학기 선택 시에만 텍스트 변환 적용
                 let displayText = opt;
                 if (target === 'semester' && opt.includes('-')) {
                     displayText = opt.split('-')[1] + '학기';
                 }
                 btn.textContent = displayText;
-                
                 btn.onclick = () => selectPath(opt);
                 container.appendChild(btn);
             });
+
+            renderExams(filtered);
         }
 
         function renderMain() {
@@ -238,7 +230,6 @@
             updateBreadcrumb();
 
             const grades = ['중2', '중3', '고1', '고2'];
-            
             grades.forEach(g => {
                 const btn = document.createElement('div');
                 btn.className = 'choice-btn';
@@ -250,10 +241,8 @@
             grades.forEach(grade => {
                 const gradeExams = db.exams.filter(e => e.grade === grade);
                 if(gradeExams.length === 0) return;
-                
                 const maxYear = Math.max(...gradeExams.map(e => parseInt(e.year) || 0));
                 const top4 = gradeExams.filter(e => parseInt(e.year) === maxYear).slice(0, 4);
-                
                 if(top4.length > 0) {
                     const title = document.createElement('div');
                     title.className = 'section-title';
@@ -278,7 +267,6 @@
         function handleSearch() {
             const s = document.getElementById('searchInput').value.toLowerCase();
             if(!s) { renderCurrentState(); return; }
-            
             document.getElementById('choiceList').innerHTML = '';
             
             let baseData = db.exams;
@@ -298,17 +286,12 @@
 
         function createCard(ex) {
             const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-            
-            // UI용 학기 텍스트 추출 로직 보완
             let semText = ex.computedSemester;
-            if(semText.includes('-')) {
-                semText = semText.split('-')[1] + '학기';
-            }
+            if(semText.includes('-')) semText = semText.split('-')[1] + '학기';
             let displayTitle = `${ex.year} ${ex.school || ''} ${semText} ${ex.subject} ${typeText}`.replace(/\s+/g, ' ').trim();
             
             const card = document.createElement('div');
             card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
-            
             const isArchive = ex.type === 'archive';
             const badgeBg = isArchive ? '#dcfce7' : '#eff6ff';
             const badgeColor = isArchive ? '#166534' : '#1e40af';
@@ -336,20 +319,14 @@
             data.forEach(ex => container.appendChild(createCard(ex)));
         }
 
-        window.addEventListener('DOMContentLoaded', init);
-        
-        // --- 히어로 섹션 통계 계산 로직 ---
         function updateHeroStats() {
             if(!db || !db.exams) return;
-            
-            const totalExams = db.exams.length;
-            const uniqueGrades = new Set(db.exams.map(e => e.grade).filter(Boolean)).size;
-            const uniqueSubjects = new Set(db.exams.map(e => e.subject).filter(Boolean)).size;
-            
-            document.getElementById('stat-total').innerText = totalExams;
-            document.getElementById('stat-grades').innerText = uniqueGrades;
-            document.getElementById('stat-subjects').innerText = uniqueSubjects;
+            document.getElementById('stat-total').innerText = db.exams.length;
+            document.getElementById('stat-grades').innerText = new Set(db.exams.map(e => e.grade).filter(Boolean)).size;
+            document.getElementById('stat-subjects').innerText = new Set(db.exams.map(e => e.subject).filter(Boolean)).size;
         }
+
+        window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
