@@ -98,6 +98,15 @@ window.questionBank = [
         solution: "* ③ $(x-5)^2 = x^2-10x+25$ 입니다.\n* ⑤ $(x+6)(x-1) = x^2+5x-6$ 입니다.\n* 정답: ③, ⑤"
     },
     {
+    num: "14",
+    content: "이차식 $(x+5)(x-A)$를 전개한 식에서 상수항이 $15$일 때, 상수 $A$의 값과 $x$의 계수를 차례로 구하면? [4점]",
+    choices: ["8, 3", "7, -5", "6, -8", "-5, 9", "-3, 8"],
+    answer: "⑤",
+    category: "14. 다항식의 전개",
+    solution: "* 상수항: $-5A = 15 \\implies A = -3$\n* $x$의 계수: $5-A = 5-(-3) = 8$\n* 따라서 $A=-3$, 계수는 $8$입니다.\n* 정답: ⑤"
+    },
+
+    {
         num: "13",
         content: "$\\left(\\frac{1}{2^{2}}-1\\right)\\left(\\frac{1}{3^{2}}-1\\right)\\dots\\left(\\frac{1}{10^{2}}-1\\right)$ 을 간단히 하면? [5점]",
         choices: ["0", "$-\\frac{11}{20}$", "$\\frac{1}{10}$", "$\\frac{9}{20}$", "$\\frac{11}{20}$"],
@@ -105,14 +114,7 @@ window.questionBank = [
         category: "13. 합차 공식을 이용한 식의 계산",
         solution: "* $(\\frac{1}{2}-1)(\\frac{1}{2}+1) \\times (\\frac{1}{3}-1)(\\frac{1}{3}+1) \\dots$\n* $= (-\\frac{1}{2})(\\frac{3}{2}) \\times (-\\frac{2}{3})(\\frac{4}{3}) \\dots$\n* 9개의 음수 곱이므로 결과는 음수. 중간 항 소거 후 $-\\frac{1}{2} \\times \\frac{11}{10} = -\\frac{11}{20}$\n* 정답: ②"
     },
-    {
-        num: "14",
-        content: "이차식 $(x+A)(x-3)$을 전개한 식에서 상수항이 $15$일 때, 상수 $A$ 값과 $x$의 계수를 차례로 구하면? [4점]",
-        choices: ["8, 3", "7, 5", "-5, -8", "-5, 9"],
-        answer: "③",
-        category: "14. 다항식의 전개",
-        solution: "* 상수항: $-3A = 15 \\rightarrow A = -5$\n* $x$의 계수: $A-3 = -5-3 = -8$\n* 정답: ③"
-    },
+    
     {
         num: "15",
         content: "이차식 $(x+5)(x-3)-k$가 완전제곱식이 되도록 하는 상수 $k$의 값을 구하면? [4점]",
@@ -146,12 +148,21 @@ window.questionBank = [
         solution: "* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\frac{2}{7}a-\\frac{4}{7})^2} = |3a+9| - |2a-4|$\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\n* 정답: ③"
     },
     {
-        num: "19",
-        content: "직사각형 내부 넓이가 $2x^2, 8x, 7x, 28$일 때, 큰 직사각형의 둘레의 길이를 구하면? [4점]",
-        choices: ["$6x+22$", "$7x+22$", "$8x+22$", "$9x+22$"],
-        answer: "①",
-        category: "19. 인수분해와 도형의 활용",
-        solution: "* 전체 넓이: $2x^2+15x+28 = (2x+7)(x+4)$\n* 가로, 세로가 각각 $2x+7, x+4$ 이므로\n* 둘레: $2\\{(2x+7)+(x+4)\\} = 2(3x+11) = 6x+22$\n* 정답: ①"
+    num: "19",
+    content: "다음 그림과 같이 직사각형 내부 넓이가 $2x^2, 8x, 7x, 28$일 때, 큰 직사각형의 둘레의 길이를 구하면? [4점]",
+    svg: `<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="140" height="100" fill="none" stroke="black" stroke-width="1"/>
+        <line x1="80" y1="10" x2="60" y2="110" stroke="black" stroke-width="1"/>
+        <line x1="10" y1="60" x2="150" y2="80" stroke="black" stroke-width="1"/>
+        <text x="35" y="45" font-size="12" text-anchor="middle">$2x^2$</text>
+        <text x="110" y="55" font-size="12" text-anchor="middle">$7x$</text>
+        <text x="30" y="95" font-size="12" text-anchor="middle">$8x$</text>
+        <text x="110" y="105" font-size="12" text-anchor="middle">$28$</text>
+    </svg>`,
+    choices: ["$6x+22$", "$7x+22$", "$8x+22$", "$9x+22$", "$10x+22$"],
+    answer: "①",
+    category: "19. 인수분해와 도형의 활용",
+    solution: "* 전체 넓이: $2x^2+15x+28 = (2x+7)(x+4)$\n* 가로: $2x+7$, 세로: $x+4$\n* 둘레: $2\\{(2x+7)+(x+4)\\} = 2(3x+11) = 6x+22$\n* 정답: ①"
     },
     {
         num: "20",
@@ -186,11 +197,20 @@ window.questionBank = [
         solution: "* $(x^2-10mx+n)-(2mx-5n) = x^2-12mx+6n$\n* 완전제곱식 조건: $(12m/2)^2 = 6n \\rightarrow 36m^2 = 6n \\rightarrow n=6m^2$\n* $m=1\\rightarrow n=6, m=2\\rightarrow n=24, m=3\\rightarrow n=54, m=4\\rightarrow n=96$ (100이하 최대)\n* $n-m = 96-4 = 92$\n* 정답: 92"
     },
     {
-        num: "[서술형 4]",
-        content: "수직선 위 점 A, B, C, D의 좌표를 구하고 $\\overline{BC}$와 $\\overline{AD}$의 길이의 차를 구하시오. [6점]",
-        choices: [" "],
-        answer: "$2\\sqrt{10}+2\\sqrt{5}$",
-        category: "서술형 4. 수직선 위의 점과 무리수",
-        solution: "* 반지름 $r_1=\\sqrt{2^2+1^2}=\\sqrt{5}, r_2=\\sqrt{3^2+1^2}=\\sqrt{10}$\n* 좌표: $A=-4-\\sqrt{5}, B=-4+\\sqrt{5}, C=2-\\sqrt{10}, D=2+\\sqrt{10}$\n* $\\overline{AD}=(2+\\sqrt{10})-(-4-\\sqrt{5})=6+\\sqrt{10}+\\sqrt{5}$\n* $\\overline{BC}=(2-\\sqrt{10})-(-4+\\sqrt{5})=6-\\sqrt{10}-\\sqrt{5}$\n* 차: $(6+\\sqrt{10}+\\sqrt{5})-(6-\\sqrt{10}-\\sqrt{5})=2\\sqrt{10}+2\\sqrt{5}$\n* 정답: $2\\sqrt{10}+2\\sqrt{5}$"
-    }
+    num: "[서술형 4]",
+    content: "다음 그림은 수직선 위의 두 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선과 만나는 점을 각각 A, B, C, D라 할 때, A, B, C, D에 대응하는 점을 각각 구하고 $\\overline{BC}$와 $\\overline{AD}$의 길이의 차를 구하는 과정을 서술하시오. [6점]",
+    svg: `<svg width="160" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="10" y1="90" x2="190" y2="90" stroke="black" stroke-width="1"/>
+        <path d="M 60 90 A 45 45 0 0 1 120 90" fill="none" stroke="gray" stroke-dasharray="2"/>
+        <path d="M 110 90 A 55 55 0 0 1 180 90" fill="none" stroke="gray" stroke-dasharray="2"/>
+        <polygon points="90,90 120,90 120,70" fill="lightgray" stroke="black"/>
+        <polygon points="130,90 160,90 160,40" fill="lightgray" stroke="black"/>
+        <text x="35" y="105" font-size="10">A</text><text x="115" y="105" font-size="10">B</text>
+        <text x="125" y="105" font-size="10">C</text><text x="185" y="105" font-size="10">D</text>
+    </svg>`,
+    choices: [" "],
+    answer: "$2\\sqrt{10}+2\\sqrt{5}$",
+    category: "서술형 4. 수직선 위의 점과 무리수",
+    solution: "* 왼쪽 피타고라스: $r_1=\\sqrt{2^2+1^2}=\\sqrt{5}$\n* 오른쪽 피타고라스: $r_2=\\sqrt{3^2+1^2}=\\sqrt{10}$\n* 좌표: $A=-4-\\sqrt{5}, B=-4+\\sqrt{5}, C=2-\\sqrt{10}, D=2+\\sqrt{10}$\n* 차이 계산: $(D-A)-(C-B) = 2\\sqrt{10}+2\\sqrt{5}$\n* 정답: $2\\sqrt{10}+2\\sqrt{5}$"
+   }
 ];
