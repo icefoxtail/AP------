@@ -6,15 +6,6 @@
     <title>AP 수학 | 통합 출제 시스템</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        // [무결성 로직] 2026-04-10 14:00 MathJax 설정 준수
-        window.MathJax = {
-            tex: { inlineMath: [['$', '$']] },
-            options: { enableMenu: false },
-            startup: { typeset: false }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
         :root {
             --navy-dark: #0f172a;
@@ -25,131 +16,96 @@
             --bg-soft: #f8fafc;
         }
         body { margin: 0; font-family: 'Pretendard', sans-serif; background: var(--bg-soft); color: #1e293b; overflow-x: hidden; }
-        .view { display: none; }
-        .view.active { display: block; }
-
-        /* [INDEX 스타일] */
+        
         header { background: var(--navy-dark); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .top-nav { max-width: 1200px; margin: 0 auto; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
         .logo-area { display: flex; align-items: center; gap: 10px; color: white; cursor: pointer; }
         .logo-grid { width: 22px; height: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
         .logo-grid div { background: #3b82f6; border-radius: 1px; }
+        
         .grade-quick-bar { display: flex; align-items: center; gap: 28px; }
         .grade-tab { color: #94a3b8; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.2s; position: relative; padding: 20px 0; }
         .grade-tab.active { color: #3b82f6; }
         .grade-tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #3b82f6; }
+
         .hero { background: var(--navy-dark); color: white; padding: 50px 24px 70px; }
         .hero-inner { max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: 36px; font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
+        
         .stats-row { display: flex; gap: 50px; }
         .stat-card { border-left: 2px solid #334155; padding-left: 18px; }
         .stat-num { font-size: 30px; font-weight: 800; color: #3b82f6; }
+
         .content-wrap { max-width: 1200px; margin: -35px auto 60px; padding: 0 20px; }
         .filter-bar { background: white; padding: 14px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
         .search-box { flex: 1; min-width: 200px; position: relative; }
         .search-box input { width: 100%; padding: 12px 12px 12px 42px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; font-size: 14px; box-sizing: border-box; }
         .search-box::before { content: '🔍'; position: absolute; left: 16px; top: 12px; opacity: 0.4; z-index: 1; }
+        
         select { padding: 10px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; font-weight: 700; color: #475569; cursor: pointer; }
         .btn-mixer { background: var(--purple-primary); color: white; border: none; padding: 12px 22px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; }
-        .exam-grid { display: grid; gap: 24px; grid-template-columns: repeat(1, 1fr); margin-top: 25px; }
-        @media (min-width: 768px) { .exam-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .exam-grid { grid-template-columns: repeat(3, 1fr); } }
-        .exam-card { background: white; border-radius: 16px; padding: 22px; border: 1px solid #f1f5f9; box-shadow: 0 2px 10px rgba(0,0,0,0.02); transition: 0.25s; border-left: 5px solid var(--gray-private); display: flex; flex-direction: column; cursor: pointer; }
+
+        .exam-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); margin-top: 25px; }
+        .exam-card { background: white; border-radius: 16px; padding: 22px; border: 1px solid #f1f5f9; box-shadow: 0 2px 10px rgba(0,0,0,0.02); transition: 0.25s; border-left: 5px solid var(--gray-private); display: flex; flex-direction: column; cursor: default; }
+        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(0,0,0,0.05); }
         .exam-card.gichul { border-left-color: var(--blue-exam); }
         .exam-card.unit { border-left-color: var(--green-unit); }
+        
+        .card-year { font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; }
         .card-main-title { font-size: 18px; font-weight: 800; line-height: 1.45; margin-bottom: 15px; color: #1e293b; min-height: 52px; }
+        .badge-row { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+        .badge { background: #f1f5f9; color: #475569; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; }
+
         .card-actions { border-top: 1px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: space-around; align-items: center; margin-top: auto; }
         .action-item { text-align: center; cursor: pointer; flex: 1; transition: 0.2s; padding: 5px; border-radius: 8px; }
         .action-item:hover { background: #f8fafc; }
         .action-item i { font-size: 20px; color: #3b82f6; margin-bottom: 5px; display: block; }
         .action-item span { font-size: 11px; font-weight: 800; color: #64748b; }
-
-        /* [ENGINE 스타일] */
-        .engine-view { background: #f1f5f9; min-height: 100vh; font-family: 'Nanum Myeongjo', serif; }
-        #engine-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: white; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 2000; border-bottom: 1px solid #ddd; box-sizing: border-box; }
-        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 20px auto; background: white; box-sizing: border-box; display: flex; flex-direction: column; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .content-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0 20px; }
-        .content-container::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
-        .item { padding: 15px 10px; border-bottom: 0.5px solid #eee; break-inside: avoid; display: flex; flex-direction: column; font-size: 9.5pt; }
-        .ans-grid-wrapper { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; border: 1.5px solid #000; padding: 15px; background: #fff; }
-        .ans-cell { border-bottom: 1px solid #eee; padding: 8px 5px; display: flex; gap: 10px; font-family: sans-serif; font-size: 10pt; }
-
-        @media print { 
-            .no-print { display: none !important; } 
-            body { background: white; } 
-            .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; } 
-            #view-engine { display: block !important; }
-            #view-index { display: none !important; }
-        }
-        @media (max-width: 600px) {
-            .hero-title { font-size: 28px; }
-            .grade-quick-bar { gap: 15px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
-            .grade-tab { white-space: nowrap; }
-            .page { width: 100%; height: auto; padding: 10mm; margin: 10px 0; }
-            .content-container { grid-template-columns: 1fr; }
-            .content-container::after { display: none; }
-        }
     </style>
 </head>
 <body>
-    <div id="view-index" class="view active">
-        <header>
-            <div class="top-nav">
-                <div class="logo-area" onclick="location.reload()">
-                    <div class="logo-grid"><div></div><div></div><div></div><div></div></div>
-                    <span style="font-weight: 900; font-size: 20px;">AP 수학</span>
-                </div>
-                <nav class="grade-quick-bar" id="gradeBar">
-                    <span class="grade-tab" data-grade="고3">고3</span><span class="grade-tab" data-grade="고2">고2</span><span class="grade-tab" data-grade="고1">고1</span>
-                    <span class="grade-tab" data-grade="중3">중3</span><span class="grade-tab" data-grade="중2">중2</span><span class="grade-tab" data-grade="중1">중1</span>
-                    <span class="grade-tab active" data-grade="">전체</span>
-                </nav>
+    <header>
+        <div class="top-nav">
+            <div class="logo-area" onclick="location.reload()">
+                <div class="logo-grid"><div></div><div></div><div></div><div></div></div>
+                <span style="font-weight: 900; font-size: 20px;">AP 수학</span>
             </div>
-        </header>
-        <div class="hero"><div class="hero-inner"><h1 class="hero-title">기출 & 변형 문제<br><span style="color:#3b82f6">통합 출제 시스템</span></h1><div class="stats-row"><div class="stat-card"><span class="stat-num" id="stat-total">0</span><span style="color:#64748b; font-size:13px; font-weight:600;">총 시험지</span></div><div class="stat-card"><span class="stat-num" id="stat-grades">0</span><span style="color:#64748b; font-size:13px; font-weight:600;">대상 학년</span></div></div></div></div>
-        <div class="content-wrap">
-            <div class="filter-bar">
-                <div class="search-box"><input type="text" id="searchInput" placeholder="학교명 또는 과정 검색..."></div>
-                <select id="subjectFilter"><option value="">과정</option></select>
-                <button class="btn-mixer" onclick="location.href='mixer.html'">⚡ 믹서</button>
+            <nav class="grade-quick-bar" id="gradeBar">
+                <span class="grade-tab" data-grade="고3">고3</span><span class="grade-tab" data-grade="고2">고2</span><span class="grade-tab" data-grade="고1">고1</span>
+                <span class="grade-tab" data-grade="중3">중3</span><span class="grade-tab" data-grade="중2">중2</span><span class="grade-tab" data-grade="중1">중1</span>
+                <span class="grade-tab active" data-grade="">전체</span>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">기출 & 변형 문제<br><span style="color:#3b82f6">통합 출제 시스템</span></h1>
+            <div class="stats-row">
+                <div class="stat-card"><span class="stat-num" id="stat-total">0</span><span style="color:#64748b; font-size:13px; font-weight:600; display:block;">총 시험지</span></div>
+                <div class="stat-card"><span class="stat-num" id="stat-grades">0</span><span style="color:#64748b; font-size:13px; font-weight:600; display:block;">대상 학년</span></div>
             </div>
-            <div id="examGrid" class="exam-grid"></div>
         </div>
     </div>
 
-    <div id="view-engine" class="view engine-view">
-        <div id="engine-ctrl" class="no-print">
-            <button onclick="switchView('index')" style="padding: 8px 15px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; font-weight: 700;">← 목록으로</button>
-            <div id="engine-title" style="font-weight: 800; font-size: 14px; color: #1e293b;"></div>
-            <button onclick="window.print()" style="background:#1e293b; color:white; border:none; padding:8px 18px; border-radius:4px; font-weight: 700; cursor: pointer;">인쇄</button>
+    <div class="content-wrap">
+        <div class="filter-bar">
+            <div class="search-box"><input type="text" id="searchInput" placeholder="학교명 또는 과정 검색..."></div>
+            <select id="examTypeFilter">
+                <option value="">전체</option>
+                <option value="1-mid">1학기 중간</option>
+                <option value="1-final">1학기 기말</option>
+                <option value="2-mid">2학기 중간</option>
+                <option value="2-final">2학기 기말</option>
+            </select>
+            <button class="btn-mixer" onclick="location.href='mixer.html'">⚡ 믹서기</button>
         </div>
-        <div id="print-area" style="padding-top: 50px;"></div>
-        <div id="item-pool" style="display:none;"></div>
+        <div id="examGrid" class="exam-grid"></div>
     </div>
 
     <script>
         let db = { exams: [] };
         let selectedGrade = "";
-        let currentQpp = 4;
-
-        function normalizeQuestion(q) {
-            const processText = (t) => {
-                if (!t) return t;
-                let res = t.replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ');
-                return (res.includes('\\') && !res.includes('$')) ? `$${res.trim()}$` : res;
-            };
-            const n = JSON.parse(JSON.stringify(q));
-            n.content = processText(n.content);
-            if (n.choices) n.choices = n.choices.map(c => processText(c));
-            if (n.solution) n.solution = processText(n.solution);
-            return n;
-        }
-
-        function switchView(name) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById(`view-${name}`).classList.add('active');
-            window.scrollTo(0, 0);
-        }
 
         function init() {
             const s = document.createElement('script');
@@ -157,24 +113,18 @@
             s.onload = () => {
                 db = window.mainDB || window.db || { exams: [] };
                 updateStats();
-                populateFilters();
                 initGradeBar();
                 renderList();
             };
             document.body.appendChild(s);
             document.getElementById('searchInput').oninput = renderList;
-            document.getElementById('subjectFilter').onchange = renderList;
+            document.getElementById('examTypeFilter').onchange = renderList;
         }
 
         function updateStats() {
-            document.getElementById('stat-total').innerText = db.exams.length;
-            document.getElementById('stat-grades').innerText = new Set(db.exams.map(e => e.grade)).size;
-        }
-
-        function populateFilters() {
-            const subjects = [...new Set(db.exams.map(e => e.subject))].sort();
-            const sF = document.getElementById('subjectFilter');
-            subjects.forEach(s => sF.innerHTML += `<option value="${s}">${s}</option>`);
+            const visibleExams = db.exams.filter(e => e.type !== 'hidden');
+            document.getElementById('stat-total').innerText = visibleExams.length;
+            document.getElementById('stat-grades').innerText = new Set(visibleExams.map(e => e.grade).filter(Boolean)).size;
         }
 
         function initGradeBar() {
@@ -191,107 +141,56 @@
         function renderList() {
             const grid = document.getElementById('examGrid');
             const keyword = document.getElementById('searchInput').value.toLowerCase();
-            const subject = document.getElementById('subjectFilter').value;
+            const examType = document.getElementById('examTypeFilter').value;
             grid.innerHTML = '';
             
             const filtered = db.exams.filter(ex => {
                 if (ex.type === 'hidden') return false;
                 const matchK = `${ex.school} ${ex.subject}`.toLowerCase().includes(keyword);
                 const matchG = !selectedGrade || ex.grade === selectedGrade;
-                const matchS = !subject || ex.subject === subject;
-                return matchK && matchG && matchS;
+                let matchT = true;
+                if (examType) {
+                    const [sem, type] = examType.split('-');
+                    matchT = String(ex.semester) === sem && ex.examType === type;
+                }
+                return matchK && matchG && matchT;
             });
 
             filtered.forEach(ex => {
                 const card = document.createElement('div');
                 card.className = `exam-card ${ex.type === 'exam' ? 'gichul' : 'unit'}`;
-                const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
+                const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : null;
                 card.innerHTML = `
                     <div class="card-year">${ex.year}</div>
-                    <div class="card-main-title">${ex.school} ${ex.grade}<br>${ex.semester}학기 ${typeText}</div>
-                    <div class="badge-row"><span class="badge">${ex.type === 'exam' ? '기출' : '자료'}</span><span class="badge">${ex.grade}</span></div>
+                    <div class="card-main-title">${ex.school} ${ex.grade}<br>${ex.semester}학기${typeText ? ' ' + typeText : ''}</div>
+                    <div class="badge-row">
+                        <span class="badge">${ex.type === 'exam' ? '기출' : '자료'}</span>
+                        <span class="badge">${ex.grade}</span>
+                        <span class="badge">${ex.subject}</span>
+                    </div>
                     <div class="card-actions">
-                        <div class="action-item" onclick="loadContent('${ex.file}', '${ex.school}', '${ex.subject}', 'exam')">
-                            <i class="fa-regular fa-file-pdf"></i><span>시험지</span>
-                        </div>
-                        <div class="action-item" onclick="loadContent('${ex.file}', '${ex.school}', '${ex.subject}', 'sol')">
-                            <i class="fa-solid fa-chalkboard-user"></i><span>해설지</span>
-                        </div>
-                        <div class="action-item" onclick="loadContent('${ex.file}', '${ex.school}', '${ex.subject}', 'ans')">
-                            <i class="fa-solid fa-list-check"></i><span>정답표</span>
-                        </div>
+                        <div class="action-item"><i class="fa-regular fa-file-pdf"></i><span>시험지</span></div>
+                        <div class="action-item"><i class="fa-solid fa-chalkboard-user"></i><span>해설지</span></div>
+                        <div class="action-item"><i class="fa-solid fa-list-check"></i><span>정답표</span></div>
                     </div>
                 `;
+
+                const actions = card.querySelectorAll('.action-item');
+                const modes = ['exam', 'sol', 'ans'];
+                actions.forEach((btn, idx) => {
+                    btn.addEventListener('click', e => {
+                        e.stopPropagation();
+                        openEngine(ex.file, ex.school, ex.subject, modes[idx]);
+                    });
+                });
+
                 grid.appendChild(card);
             });
         }
 
-        function loadContent(file, school, subject, mode) {
-            event.stopPropagation();
-            const modeText = mode === 'exam' ? '시험지' : mode === 'sol' ? '해설지' : '정답표';
-            document.getElementById('engine-title').innerText = `${school} ${subject} (${modeText})`;
-            switchView('engine');
-            const old = document.getElementById('temp-script');
-            if (old) old.remove();
-            const s = document.createElement('script');
-            s.id = 'temp-script';
-            s.src = `exams/${file}?v=${Date.now()}`;
-            s.onload = () => initRender(mode);
-            document.body.appendChild(s);
-        }
-
-        async function initRender(mode) {
-            const pool = document.getElementById('item-pool');
-            const bank = (window.questionBank || []).map(q => normalizeQuestion(q));
-            
-            if (mode === 'ans') {
-                pool.innerHTML = `<div class="ans-grid-wrapper">` + 
-                                 bank.map((q, i) => `<div class="ans-cell"><b>${i+1}</b> ${q.answer}</div>`).join('') + 
-                                 `</div>`;
-            } else {
-                pool.innerHTML = bank.map((q, i) => `
-                    <div class="item">
-                        <div style="font-weight:700; margin-bottom:8px;">${i+1}. ${q.content}</div>
-                        ${mode === 'exam' ? 
-                            (q.choices ? `<div style="line-height:1.8;">${q.choices.map((c,ci)=>`<div>${ci+1}) ${c}</div>`).join('')}</div>` : '<div class="answer-box"></div>') :
-                            `<div style="margin-top:10px; padding:12px; background:#fef2f2; border-radius:6px; border:1px solid #fee2e2;">
-                                <b style="color:#ef4444; display:block; margin-bottom:6px;">[정답] ${q.answer}</b>
-                                <div style="font-size:9pt; color:#475569; line-height:1.5;">${q.solution || '해설이 제공되지 않는 문항입니다.'}</div>
-                            </div>`
-                        }
-                    </div>`).join('');
-            }
-
-            paginate(mode);
-            await new Promise(r => requestAnimationFrame(r));
-            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise();
-        }
-
-        function paginate(mode) {
-            const printArea = document.getElementById('print-area');
-            printArea.innerHTML = '';
-            const items = Array.from(document.getElementById('item-pool').querySelectorAll(mode === 'ans' ? '.ans-grid-wrapper' : '.item'));
-            
-            const addPage = () => {
-                const p = document.createElement('div'); p.className = 'page';
-                p.innerHTML = `<div style="border-bottom:2px solid #000; padding-bottom:5px; margin-bottom:15px; display:flex; justify-content:space-between; font-weight:800; font-size:10pt;">
-                    <span>AP 수학 통합 시스템</span><span>- ${printArea.children.length+1} -</span>
-                </div><div class="content-container"></div>`;
-                printArea.appendChild(p);
-                return p;
-            };
-
-            let cur = addPage();
-            if (mode === 'ans') {
-                cur.querySelector('.content-container').style.display = 'block';
-                cur.querySelector('.content-container').appendChild(items[0]);
-                return;
-            }
-            
-            items.forEach((item, idx) => {
-                if (idx > 0 && idx % currentQpp === 0) cur = addPage();
-                cur.querySelector('.content-container').appendChild(item.cloneNode(true));
-            });
+        function openEngine(file, school, subject, mode) {
+            const url = `engine.html?data=exams/${file}&title=${encodeURIComponent(school + ' ' + subject)}&mode=${mode}`;
+            window.location.href = url;
         }
 
         window.onload = init;

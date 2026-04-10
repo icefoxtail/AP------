@@ -15,12 +15,15 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
-        body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; }
-        #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: white; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; border-bottom: 1px solid #ddd; width: 100%; box-sizing: border-box; }
+        body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 50px; color: #000; }
+        #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: white; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; border-bottom: 1px solid #ddd; box-sizing: border-box; }
         
         .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto 10mm auto; background: white; box-sizing: border-box; display: flex; flex-direction: column; }
         .content-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0 20px; }
         .content-container::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
+        /* ans 모드: 1단 레이아웃 */
+        .content-container.single-col { grid-template-columns: 1fr; }
+        .content-container.single-col::after { display: none; }
 
         .item { padding: 15px 10px; border-bottom: 0.5px solid #eee; break-inside: avoid; display: flex; flex-direction: column; height: 100%; }
         .answer-box { margin-top: auto; border: 1px dashed #ccc; min-height: 35mm; background: #fafafa; }
@@ -30,21 +33,27 @@
 <body class="test-mode">
     <div id="mode-ctrl" class="no-print">
         <button onclick="location.href='index.html'">← 목록</button>
+        <span id="mode-label" style="font-size:13px; font-weight:700; color:#475569;"></span>
         <button onclick="window.print()" style="background:#1e293b; color:white; border:none; padding:5px 15px; border-radius:4px;">인쇄</button>
     </div>
     <div id="print-area"></div>
     <div id="item-pool" style="display:none;"></div>
 
 <script>
-const AppState = { title: "", qpp: 4 };
+const AppState = { title: "", qpp: 4, mode: "exam" };
 
-// [수식 보정 무결성] LaTeX 자동 감지 및 $ 래핑 로직 (백슬래시 중복 및 텍스트 혼용 처리)
+function circled(n) {
+    const chars = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩',
+                   '⑪','⑫','⑬','⑭','⑮','⑯','⑰','⑱','⑲','⑳',
+                   '㉑','㉒','㉓','㉔','㉕','㉖','㉗','㉘','㉙','㉚'];
+    return chars[n-1] || `${n}.`;
+}
+
+// [수식 보정 무결성] LaTeX 자동 감지 및 $ 래핑 로직
 function normalizeQuestion(q) {
     const processText = (t) => {
         if (!t) return t;
-        // \text{}, \mbox{} 등의 불필요한 태그 제거 및 공백 처리
         let res = t.replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ');
-        // 수식 기호가 있으나 $로 감싸이지 않은 경우 자동 보정
         return (res.includes('\\') && !res.includes('$')) ? `$${res.trim()}$` : res;
     };
     const n = JSON.parse(JSON.stringify(q));
@@ -57,32 +66,82 @@ function normalizeQuestion(q) {
     const params = new URLSearchParams(window.location.search);
     AppState.qpp = parseInt(params.get('qpp')) || 4;
     AppState.title = decodeURIComponent(params.get('title') || 'AP수학');
+    AppState.mode = params.get('mode') || 'exam';
+
+    const modeLabels = { exam: '시험지', sol: '해설지', ans: '정답표' };
+    document.getElementById('mode-label').textContent = modeLabels[AppState.mode] || '';
+
     const f = params.get('data');
     if (!f) return;
-    
-    const s = document.createElement('script');
-    s.src = decodeURIComponent(f) + '?v=' + Date.now();
-    s.onload = initRender;
-    document.body.appendChild(s);
+
+    if (f === 'mixed') {
+        const raw = sessionStorage.getItem('mixedQuestions');
+        if (!raw) { alert('믹서기 데이터가 없습니다.'); return; }
+        window.questionBank = JSON.parse(raw);
+        initRender();
+    } else {
+        const s = document.createElement('script');
+        s.src = decodeURIComponent(f) + '?v=' + Date.now();
+        s.onload = initRender;
+        document.body.appendChild(s);
+    }
 })();
 
-// [렌더링 무결성] 비동기 대기 및 확정 렌더링 로직 적용
+function buildItemHTML(q, i) {
+    const num = circled(i + 1);
+
+    if (AppState.mode === 'exam') {
+        return `
+            <div class="item">
+                <div style="font-size:10.5pt; margin-bottom:8px;"><b style="font-size:12pt;">${num}</b> ${q.content}</div>
+                ${q.choices
+                    ? `<div style="line-height:1.8;">${q.choices.map((c,ci)=>`<div>${ci+1}) ${c}</div>`).join('')}</div>`
+                    : '<div class="answer-box"></div>'}
+            </div>`;
+
+    } else if (AppState.mode === 'sol') {
+        const solutionHTML = (() => {
+            if (q.solution_steps && q.solution_steps.length > 0) {
+                return q.solution_steps.map((step, si) =>
+                    `<div style="margin-bottom:4px; padding-left:8px; border-left:2px solid #e2e8f0;">
+                        <span style="font-size:8pt; color:#64748b; font-weight:700;">[${si+1}단계]</span> ${step}
+                    </div>`
+                ).join('');
+            } else if (q.answer !== undefined) {
+                return `<div style="padding:8px; background:#f8fafc; border-radius:4px;">
+                    <span style="font-size:8pt; color:#64748b; font-weight:700;">정답:</span> ${q.answer}
+                </div>`;
+            } else {
+                return `<div style="color:#94a3b8; font-size:8pt; padding:8px;">해설 없음</div>`;
+            }
+        })();
+        return `
+            <div class="item">
+                <div style="font-size:10.5pt; margin-bottom:8px;"><b style="font-size:12pt;">${num}</b> ${q.content}</div>
+                <div style="margin-top:8px; font-size:9pt;">${solutionHTML}</div>
+            </div>`;
+
+    } else if (AppState.mode === 'ans') {
+        return `
+            <div class="item" style="flex-direction:row; align-items:center; gap:12px; min-height:0; padding:8px 10px;">
+                <b style="font-size:12pt; min-width:28px;">${num}</b>
+                <span style="font-size:10pt;">${q.answer ?? '–'}</span>
+            </div>`;
+    }
+
+    // 알 수 없는 mode 폴백
+    return `<div class="item"><span style="color:#ccc; font-size:9pt;">알 수 없는 모드</span></div>`;
+}
+
 async function initRender() {
     const pool = document.getElementById('item-pool');
     const bank = window.questionBank || [];
-    
-    // 데이터를 정제하여 풀에 삽입
     const normalizedBank = bank.map(q => normalizeQuestion(q));
-    
-    pool.innerHTML = normalizedBank.map((q, i) => `
-        <div class="item">
-            <div style="font-size:10.5pt; margin-bottom:8px;"><b>${i+1}.</b> ${q.content}</div>
-            ${q.choices ? `<div style="line-height:1.8;">${q.choices.map((c,ci)=>`<div>${ci+1}) ${c}</div>`).join('')}</div>` : '<div class="answer-box"></div>'}
-        </div>`).join('');
 
-    paginate(); // 2단 분할
+    pool.innerHTML = normalizedBank.map((q, i) => buildItemHTML(q, i)).join('');
 
-    // DOM 복제 완료 및 MathJax 비동기 렌더링 타이밍 보정
+    paginate();
+
     await new Promise(r => requestAnimationFrame(r));
     if (window.MathJax?.typesetPromise) {
         await MathJax.typesetPromise();
@@ -93,19 +152,23 @@ function paginate() {
     const printArea = document.getElementById('print-area');
     printArea.innerHTML = '';
     const items = Array.from(document.getElementById('item-pool').querySelectorAll('.item'));
-    
+    const isAns = AppState.mode === 'ans';
+
     const addPage = () => {
         const p = document.createElement('div'); p.className = 'page';
         p.innerHTML = `<div style="border-bottom:2px solid #000; padding-bottom:5px; margin-bottom:15px; display:flex; justify-content:space-between; font-weight:800;">
             <span>${AppState.title}</span><span>- ${printArea.children.length+1} -</span>
-        </div><div class="content-container"></div>`;
+        </div><div class="content-container${isAns ? ' single-col' : ''}"></div>`;
         printArea.appendChild(p);
         return p;
     };
 
+    // ans 모드는 qpp를 2배로 — 1단이라 한 페이지에 더 많이 들어감
+    const effectiveQpp = isAns ? AppState.qpp * 2 : AppState.qpp;
+
     let currentPage = addPage();
     items.forEach((item, idx) => {
-        if (idx > 0 && idx % AppState.qpp === 0) currentPage = addPage();
+        if (idx > 0 && idx % effectiveQpp === 0) currentPage = addPage();
         currentPage.querySelector('.content-container').appendChild(item.cloneNode(true));
     });
 }
