@@ -5,47 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AP 수학학원 통합 출제 시스템</title>
     <style>
-        /* [Style 유지] 기존 스타일 동일 적용 */
-        body { font-family: 'Pretendard', -apple-system, sans-serif; margin: 0; padding: 0; background: #f5f5f5; color: #333; }
-        .hero-section { background: #0f172a; color: white; padding: 20px 40px 40px; border-bottom: 1px solid #1e293b; }
-        .header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-        .logo-group { display: flex; align-items: center; gap: 12px; font-weight: bold; font-size: 18px; letter-spacing: -0.5px; }
-        .logo-sub { font-size: 14px; font-weight: normal; color: #94a3b8; margin-left: 8px; }
-        .btn-mixer { background: #3b82f6; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.2s; border: 1px solid #2563eb; }
+        body { font-family: 'Pretendard', -apple-system, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #1e293b; }
+        .hero-section { background: #0f172a; color: white; padding: 24px 20px 48px; }
+        .header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+        .logo-group { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; }
+        .logo-sub { font-size: 14px; color: #94a3b8; font-weight: 400; }
+        .btn-mixer { background: #3b82f6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
         .btn-mixer:hover { background: #2563eb; transform: translateY(-2px); }
-        .hero-content { max-width: 1200px; margin: 0 auto; }
-        .hero-label { font-size: 12px; font-weight: bold; color: #64748b; letter-spacing: 1px; margin-bottom: 10px; }
-        .hero-title { font-size: 36px; font-weight: 800; margin: 0 0 15px 0; line-height: 1.3; }
+        .hero-title { font-size: 36px; font-weight: 800; line-height: 1.3; margin: 0 0 16px 0; }
         .hero-title .text-blue { color: #3b82f6; }
-        .hero-desc { color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 30px; }
-        .stat-container { display: flex; gap: 40px; margin-top: 20px; }
-        .stat-box { display: flex; flex-direction: column; gap: 5px; border-left: 2px solid #1e293b; padding-left: 15px; }
-        .stat-box:first-child { border-left: none; padding-left: 0; }
-        .stat-value { font-size: 28px; font-weight: 800; color: #ffffff; }
-        .stat-label { font-size: 13px; color: #64748b; font-weight: bold; }
-        .main-container { max-width: 1200px; margin: -20px auto 40px; padding: 0 20px; position: relative; z-index: 10; }
-        .filter-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); margin-bottom: 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-        input { padding: 10px 12px; border: 1px solid #e2e8f0; border-radius: 6px; outline: none; font-size: 14px; transition: border-color 0.2s; flex: 1; }
-        input:focus { border-color: #3b82f6; }
-        .qpp-group { display: flex; gap: 5px; margin-left: auto; align-items: center; }
-        .qpp-btn { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; font-size: 13px; font-weight: bold; color: #64748b; transition: 0.2s; }
-        .qpp-btn.active { background: #1e293b; color: white; border-color: #1e293b; }
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-        .exam-card { background: white; padding: 12px; border-radius: 8px; border-left: 4px solid #3b82f6; transition: 0.2s; cursor: pointer; min-height: 80px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-decoration: none; color: inherit; border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; }
-        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.10); }
-        .exam-card.archive { border-left-color: #10b981; }
-        .title { font-weight: bold; font-size: 0.9em; color: #1e293b; margin-bottom: 6px; word-break: keep-all; line-height: 1.3; }
-        .meta { font-size: 0.75em; color: #64748b; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
-        .badge { padding: 2px 6px; border-radius: 4px; background: #f8fafc; border: 1px solid #e2e8f0; font-weight: bold; color: #475569; }
-        .file-info { font-size: 0.85em; margin-top: 6px; color: #94a3b8; width: 100%; text-align: right; font-family: monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .breadcrumb { font-size: 15px; font-weight: bold; margin-bottom: 5px; color: #1e293b; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-        .breadcrumb span { cursor: pointer; color: #6366f1; transition: 0.2s; }
+        .hero-desc { color: #94a3b8; font-size: 15.5px; line-height: 1.6; }
+        .stat-container { display: flex; gap: 40px; margin-top: 24px; flex-wrap: wrap; }
+        .stat-value { font-size: 32px; font-weight: 800; }
+        .stat-label { font-size: 13px; color: #94a3b8; font-weight: 600; }
+        .main-container { max-width: 1280px; margin: -32px auto 40px; padding: 0 20px; position: relative; z-index: 10; }
+        .filter-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 24px; }
+        .breadcrumb { font-size: 15px; font-weight: 600; margin-bottom: 12px; color: #475569; }
+        .breadcrumb span { cursor: pointer; color: #6366f1; }
         .breadcrumb span:hover { text-decoration: underline; }
-        .breadcrumb .separator { color: #94a3b8; cursor: default; text-decoration: none; }
-        .choice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-bottom: 20px; }
-        .choice-btn { padding: 12px; text-align: center; background: white; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); color: #334155; }
-        .choice-btn:hover { background: #f8fafc; border-color: #6366f1; color: #6366f1; transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .section-title { font-size: 1.1em; font-weight: bold; margin: 20px 0 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; grid-column: 1 / -1; color: #0f172a; }
+        .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        input#searchInput { flex: 1; min-width: 260px; padding: 12px 16px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 15px; }
+        input#searchInput:focus { border-color: #3b82f6; outline: none; }
+        select#sortSelect { padding: 11px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14.5px; background: white; cursor: pointer; min-width: 160px; outline: none; }
+        select#sortSelect:focus { border-color: #3b82f6; }
+        .qpp-group { display: flex; gap: 6px; background: #f1f5f9; padding: 4px; border-radius: 8px; }
+        .qpp-btn { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .qpp-btn.active { background: #1e293b; color: white; }
+        .choice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-bottom: 32px; }
+        .choice-btn { padding: 16px 12px; text-align: center; background: white; border: 1px solid #e2e8f0; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .choice-btn:hover { border-color: #6366f1; color: #4f46e5; transform: translateY(-3px); }
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+        .exam-card { background: white; padding: 16px; border-radius: 12px; border-left: 5px solid #3b82f6; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: all 0.25s; cursor: pointer; display: flex; flex-direction: column; }
+        .exam-card:hover { transform: translateY(-6px); box-shadow: 0 15px 25px rgba(0,0,0,0.12); }
+        .exam-card.archive { border-left-color: #10b981; }
+        .title { font-weight: 700; font-size: 15.5px; line-height: 1.35; margin-bottom: 10px; }
+        .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .badge { font-size: 12.5px; padding: 4px 10px; border-radius: 9999px; font-weight: 600; }
+        .file-info { margin-top: auto; font-size: 13px; color: #64748b; font-family: monospace; text-align: right; }
+        .section-title { font-size: 1.15em; font-weight: 700; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; color: #0f172a; }
+        .empty-state { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -75,8 +73,14 @@
     <div class="main-container">
         <div class="filter-container">
             <div class="breadcrumb" id="breadcrumb"></div>
-            <div style="display: flex; width: 100%; gap: 10px; align-items: center;">
+            <div class="filter-row">
                 <input type="text" id="searchInput" placeholder="학교명 또는 과목 검색..." autocomplete="off">
+                <select id="sortSelect" onchange="changeSort(this.value)">
+                    <option value="year-desc">최신 연도순</option>
+                    <option value="year-asc">오래된 연도순</option>
+                    <option value="school-asc">학교 가나다순</option>
+                    <option value="subject-asc">과목순</option>
+                </select>
                 <div class="qpp-group">
                     <div class="qpp-btn active" onclick="setQpp(4, this)">4</div>
                     <div class="qpp-btn" onclick="setQpp(6, this)">6</div>
@@ -90,8 +94,9 @@
     <script>
         let db = { exams: [] };
         let currentQpp = 4;
-        let currentPath = []; 
-        let isSearching = false; // 검색 상태 플래그 추가
+        let currentPath = [];
+        let currentSort = 'year-desc';
+        let isSearching = false;
 
         function setQpp(n, el) {
             currentQpp = n;
@@ -99,40 +104,31 @@
             el.classList.add('active');
         }
 
-        // 1. [개선] db.js 로드 안정성 강화 및 에러 처리
+        function changeSort(val) {
+            currentSort = val;
+            renderCurrentState();
+        }
+
         function init() {
             const s = document.createElement('script');
             s.src = 'db.js?v=' + Date.now();
             s.onload = () => {
-                // mainDB 또는 db 변수 유연하게 대응
                 const rawData = window.mainDB || window.db;
-                if (!rawData || !rawData.exams) {
-                    console.error("DB 로드 실패: exams 데이터가 없습니다.");
-                    alert("데이터를 불러오지 못했습니다. db.js 형식을 확인하세요.");
-                    return;
-                }
-
+                if (!rawData?.exams) return;
                 db = rawData;
                 db.exams = db.exams.filter(e => e.type !== 'hidden');
                 db.exams.forEach(ex => {
-                    const gradeStr = ex.grade || '미분류'; 
-                    const semStr = ex.semester || '1'; 
-                    ex.computedSemester = `${gradeStr}-${semStr}`; 
+                    ex.computedSemester = `${ex.grade || '미분류'}-${ex.semester || '1'}`;
                 });
-
-                renderMain();
+                renderCurrentState();
                 document.getElementById('searchInput').addEventListener('input', handleSearch);
                 updateHeroStats();
-            };
-            s.onerror = () => {
-                alert("db.js 파일을 로드할 수 없습니다. 파일명과 위치를 확인해 주세요.");
-                renderMain(); 
             };
             document.body.appendChild(s);
         }
 
         function goStep(stepIndex) {
-            isSearching = false; // 경로 이동 시 검색 초기화
+            isSearching = false;
             document.getElementById('searchInput').value = '';
             currentPath = currentPath.slice(0, stepIndex);
             renderCurrentState();
@@ -143,66 +139,76 @@
             renderCurrentState();
         }
 
-        function renderCurrentState() {
-            updateBreadcrumb();
-            const level = currentPath.length;
-            if (level === 0) renderMain();
-            else if (level === 1) renderChoices('semester'); 
-            else if (level === 2) renderChoices('year');     
-            else renderFinalExams();                         
-        }
-
-        // 2. [개선] Breadcrumb 검색 모드 동기화
         function updateBreadcrumb() {
             const bc = document.getElementById('breadcrumb');
             if (isSearching) {
-                bc.innerHTML = `<span style="color:#94a3b8; cursor:default;">🔍 검색 결과 모드 (경로 선택 불가)</span>`;
+                bc.innerHTML = `<span style="color:#94a3b8;">🔍 검색 결과 모드</span>`;
                 return;
             }
-
             let html = `<span onclick="goStep(0)">🏠 학년 선택</span>`;
             currentPath.forEach((path, idx) => {
-                let displayPath = path;
-                if(idx === 1 && path.includes('-')) displayPath = path.split('-')[1] + '학기';
-                html += `<span class="separator"> > </span><span onclick="goStep(${idx + 1})">${displayPath}</span>`;
+                let display = path;
+                if (idx === 1 && path.includes('-')) display = path.split('-')[1] + '학기';
+                html += `<span class="separator"> > </span><span onclick="goStep(${idx + 1})">${display}</span>`;
             });
             bc.innerHTML = html;
         }
 
-        function renderChoices(target) {
-            const container = document.getElementById('choiceList');
-            container.innerHTML = '';
-            
-            let filtered = db.exams.filter(ex => ex.grade === currentPath[0]);
-            if (currentPath[1]) filtered = filtered.filter(ex => ex.computedSemester === currentPath[1]);
+        function renderCurrentState() {
+            updateBreadcrumb();
+            const level = currentPath.length;
+            if (level === 0) renderMain();
+            else if (level === 1) renderChoices('semester');
+            else if (level === 2) renderChoices('year');
+            else renderFinalExams();
+        }
 
-            let options = [];
-            if (target === 'semester') {
-                options = [...new Set(filtered.map(e => e.computedSemester))].filter(Boolean).sort();
-            } else if (target === 'year') {
-                options = [...new Set(filtered.map(e => e.year ? String(e.year) : null))].filter(Boolean).sort((a,b)=>parseInt(b)-parseInt(a));
+        function getFilteredData() {
+            let data = db.exams;
+            if (currentPath.length > 0) data = data.filter(ex => ex.grade === currentPath[0]);
+            if (currentPath.length > 1) data = data.filter(ex => ex.computedSemester === currentPath[1]);
+            if (currentPath.length > 2) data = data.filter(ex => String(ex.year) === currentPath[2]);
+            const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (keyword) {
+                data = data.filter(ex =>
+                    (ex.school || "").toLowerCase().includes(keyword) ||
+                    (ex.subject || "").toLowerCase().includes(keyword) ||
+                    (ex.file || "").toLowerCase().includes(keyword)
+                );
             }
+            return data;
+        }
 
-            options.forEach(opt => {
-                const btn = document.createElement('div');
-                btn.className = 'choice-btn';
-                let displayText = opt;
-                if (target === 'semester' && opt.includes('-')) displayText = opt.split('-')[1] + '학기';
-                btn.textContent = displayText;
-                btn.onclick = () => selectPath(opt);
-                container.appendChild(btn);
+        function sortData(data) {
+            return [...data].sort((a, b) => {
+                if (currentSort.startsWith('year')) {
+                    const diff = (parseInt(a.year) || 0) - (parseInt(b.year) || 0);
+                    return (currentSort === 'year-desc' ? -diff : diff) || (a.school || "").localeCompare(b.school || "", 'ko');
+                }
+                const key = currentSort === 'school-asc' ? 'school' : 'subject';
+                return (a[key] || "").localeCompare(b[key] || "", 'ko');
             });
+        }
 
-            renderExams(filtered); 
+        function renderExams(data) {
+            const container = document.getElementById('examList');
+            container.innerHTML = "";
+            const sortedData = sortData(data);
+            if (sortedData.length === 0) {
+                container.innerHTML = `<div class="empty-state">조건에 맞는 시험지가 없습니다.</div>`;
+                return;
+            }
+            sortedData.forEach(ex => container.appendChild(createCard(ex)));
         }
 
         function renderMain() {
             const choiceContainer = document.getElementById('choiceList');
             const examContainer = document.getElementById('examList');
             choiceContainer.innerHTML = ''; examContainer.innerHTML = '';
-            updateBreadcrumb();
-
-            const grades = ['중2', '중3', '고1', '고2'];
+            
+            // 무결성 패치: 학년 리스트를 DB에서 동적으로 추출하여 신규 학년 추가 시 자동 대응
+            const grades = [...new Set(db.exams.map(e => e.grade).filter(Boolean))].sort();
+            
             grades.forEach(g => {
                 const btn = document.createElement('div');
                 btn.className = 'choice-btn';
@@ -213,10 +219,11 @@
 
             grades.forEach(grade => {
                 const gradeExams = db.exams.filter(e => e.grade === grade);
-                if(gradeExams.length === 0) return;
-                const maxYear = Math.max(...gradeExams.map(e => parseInt(e.year) || 0));
-                const top4 = gradeExams.filter(e => parseInt(e.year) === maxYear).slice(0, 4);
-                if(top4.length > 0) {
+                if (!gradeExams.length) return;
+                const validYears = gradeExams.map(e => parseInt(e.year)).filter(n => !isNaN(n));
+                const maxYear = validYears.length ? Math.max(...validYears) : 0;
+                const top4 = gradeExams.filter(e => (parseInt(e.year) || 0) === maxYear).slice(0, 4);
+                if (top4.length) {
                     const title = document.createElement('div');
                     title.className = 'section-title';
                     title.textContent = `🔥 ${grade} 최신 기출 (${maxYear}년)`;
@@ -226,78 +233,65 @@
             });
         }
 
-        function renderFinalExams() {
-            document.getElementById('choiceList').innerHTML = '';
-            let filtered = db.exams.filter(ex => 
-                ex.grade === currentPath[0] && 
-                ex.computedSemester === currentPath[1] &&
-                String(ex.year) === currentPath[2]
-            );
+        function renderChoices(target) {
+            const container = document.getElementById('choiceList');
+            container.innerHTML = '';
+            let filtered = db.exams.filter(ex => ex.grade === currentPath[0]);
+            if (currentPath[1]) filtered = filtered.filter(ex => ex.computedSemester === currentPath[1]);
+            let options = [];
+            if (target === 'semester') {
+                options = [...new Set(filtered.map(e => e.computedSemester))].filter(Boolean).sort();
+            } else if (target === 'year') {
+                options = [...new Set(filtered.map(e => String(e.year)))].filter(Boolean).sort((a,b) => parseInt(b) - parseInt(a));
+            }
+            options.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'choice-btn';
+                let text = opt;
+                if (target === 'semester' && opt.includes('-')) text = opt.split('-')[1] + '학기';
+                btn.textContent = text;
+                btn.onclick = () => selectPath(opt);
+                container.appendChild(btn);
+            });
             renderExams(filtered);
         }
 
-        // 3. [개선] 검색 로직 고도화 및 경로 동기화
+        function renderFinalExams() {
+            document.getElementById('choiceList').innerHTML = '';
+            renderExams(getFilteredData());
+        }
+
         function handleSearch() {
-            const s = document.getElementById('searchInput').value.toLowerCase().trim();
-            if(!s) { 
-                isSearching = false;
-                renderCurrentState(); 
-                return; 
-            }
-            
-            isSearching = true;
+            isSearching = !!document.getElementById('searchInput').value.trim();
             updateBreadcrumb();
             document.getElementById('choiceList').innerHTML = '';
-            
-            // 현재 선택된 경로가 있다면 그 안에서만 검색, 없다면 전체에서 검색
-            let baseData = db.exams;
-            if (currentPath.length > 0) baseData = baseData.filter(ex => ex.grade === currentPath[0]);
-            if (currentPath.length > 1) baseData = baseData.filter(ex => ex.computedSemester === currentPath[1]);
-            if (currentPath.length > 2) baseData = baseData.filter(ex => String(ex.year) === currentPath[2]);
-
-            const filtered = baseData.filter(ex => 
-                (ex.school || "").toLowerCase().includes(s) || 
-                (ex.subject || "").toLowerCase().includes(s) ||
-                (ex.file || "").toLowerCase().includes(s)
-            );
-            renderExams(filtered);
+            renderExams(getFilteredData());
         }
 
         function createCard(ex) {
             const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-            let semText = ex.computedSemester;
-            if(semText.includes('-')) semText = semText.split('-')[1] + '학기';
-            let displayTitle = `${ex.year} ${ex.school || ''} ${semText} ${ex.subject} ${typeText}`.replace(/\s+/g, ' ').trim();
+            let semText = ex.computedSemester.includes('-') ? ex.computedSemester.split('-')[1] + '학기' : ex.computedSemester;
+            const displayTitle = `${ex.year} ${ex.school || ''} ${semText} ${ex.subject} ${typeText}`.trim();
             const card = document.createElement('div');
             card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
             const isArchive = ex.type === 'archive';
             card.innerHTML = `
                 <div class="title">${displayTitle}</div>
                 <div class="meta">
-                    <span class="badge" style="background:${isArchive ? '#dcfce7' : '#eff6ff'}; color:${isArchive ? '#166534' : '#1e40af'}; border:none;">${isArchive ? '단원정리' : '학교기출'}</span>
-                    <span class="badge" style="border:none;">${ex.grade}</span>
+                    <span class="badge" style="background:${isArchive ? '#dcfce7' : '#eff6ff'}; color:${isArchive ? '#166534' : '#1e40af'};">${isArchive ? '단원정리' : '학교기출'}</span>
+                    <span class="badge" style="background:#f1f5f9; color:#475569;">${ex.grade}</span>
                 </div>
                 <div class="file-info">📄 ${ex.file}</div>`;
             card.onclick = () => window.open(`engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}&qpp=${currentQpp}`, 'ap_engine');
             return card;
         }
 
-        function renderExams(data) {
-            const container = document.getElementById('examList');
-            container.innerHTML = "";
-            if (data.length === 0) {
-                container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#94a3b8;">조건에 맞는 시험지가 없습니다.</div>`;
-            }
-            data.forEach(ex => container.appendChild(createCard(ex)));
-        }
-
         function updateHeroStats() {
-            if(!db || !db.exams) return;
+            if (!db.exams) return;
             document.getElementById('stat-total').innerText = db.exams.length;
             document.getElementById('stat-grades').innerText = new Set(db.exams.map(e => e.grade).filter(Boolean)).size;
             document.getElementById('stat-subjects').innerText = new Set(db.exams.map(e => e.subject).filter(Boolean)).size;
         }
-
         window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
