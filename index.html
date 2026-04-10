@@ -3,296 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AP 수학학원 통합 출제 시스템</title>
+    <title>AP 수학 | 통합 출제 시스템</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        // [무결성 로직] 2026-04-10 14:00 MathJax 설정 준수
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$']] },
+            options: { enableMenu: false },
+            startup: { typeset: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
-        body { font-family: 'Pretendard', -apple-system, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #1e293b; }
-        .hero-section { background: #0f172a; color: white; padding: 24px 20px 48px; }
-        .header-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
-        .logo-group { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; }
-        .logo-sub { font-size: 14px; color: #94a3b8; font-weight: 400; }
-        .btn-mixer { background: #3b82f6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
-        .btn-mixer:hover { background: #2563eb; transform: translateY(-2px); }
-        .hero-title { font-size: 36px; font-weight: 800; line-height: 1.3; margin: 0 0 16px 0; }
-        .hero-title .text-blue { color: #3b82f6; }
-        .hero-desc { color: #94a3b8; font-size: 15.5px; line-height: 1.6; }
-        .stat-container { display: flex; gap: 40px; margin-top: 24px; flex-wrap: wrap; }
-        .stat-value { font-size: 32px; font-weight: 800; }
-        .stat-label { font-size: 13px; color: #94a3b8; font-weight: 600; }
-        .main-container { max-width: 1280px; margin: -32px auto 40px; padding: 0 20px; position: relative; z-index: 10; }
-        .filter-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 24px; }
-        .breadcrumb { font-size: 15px; font-weight: 600; margin-bottom: 12px; color: #475569; }
-        .breadcrumb span { cursor: pointer; color: #6366f1; }
-        .breadcrumb span:hover { text-decoration: underline; }
-        .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        input#searchInput { flex: 1; min-width: 260px; padding: 12px 16px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 15px; }
-        input#searchInput:focus { border-color: #3b82f6; outline: none; }
-        select#sortSelect { padding: 11px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14.5px; background: white; cursor: pointer; min-width: 160px; outline: none; }
-        select#sortSelect:focus { border-color: #3b82f6; }
-        .qpp-group { display: flex; gap: 6px; background: #f1f5f9; padding: 4px; border-radius: 8px; }
-        .qpp-btn { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; }
-        .qpp-btn.active { background: #1e293b; color: white; }
-        .choice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-bottom: 32px; }
-        .choice-btn { padding: 16px 12px; text-align: center; background: white; border: 1px solid #e2e8f0; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
-        .choice-btn:hover { border-color: #6366f1; color: #4f46e5; transform: translateY(-3px); }
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
-        .exam-card { background: white; padding: 16px; border-radius: 12px; border-left: 5px solid #3b82f6; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: all 0.25s; cursor: pointer; display: flex; flex-direction: column; }
-        .exam-card:hover { transform: translateY(-6px); box-shadow: 0 15px 25px rgba(0,0,0,0.12); }
-        .exam-card.archive { border-left-color: #10b981; }
-        .title { font-weight: 700; font-size: 15.5px; line-height: 1.35; margin-bottom: 10px; }
-        .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-        .badge { font-size: 12.5px; padding: 4px 10px; border-radius: 9999px; font-weight: 600; }
-        .file-info { margin-top: auto; font-size: 13px; color: #64748b; font-family: monospace; text-align: right; }
-        .section-title { font-size: 1.15em; font-weight: 700; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; color: #0f172a; }
-        .empty-state { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #94a3b8; }
+        :root {
+            --navy-dark: #0f172a;
+            --purple-primary: #4f46e5;
+            --blue-exam: #378ADD;
+            --green-unit: #1D9E75;
+            --gray-private: #94a3b8;
+            --bg-soft: #f8fafc;
+        }
+        body { margin: 0; font-family: 'Pretendard', sans-serif; background: var(--bg-soft); color: #1e293b; overflow-x: hidden; }
+        .view { display: none; }
+        .view.active { display: block; }
+
+        /* [INDEX 스타일] */
+        header { background: var(--navy-dark); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .top-nav { max-width: 1200px; margin: 0 auto; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+        .logo-area { display: flex; align-items: center; gap: 10px; color: white; cursor: pointer; }
+        .logo-grid { width: 22px; height: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+        .logo-grid div { background: #3b82f6; border-radius: 1px; }
+        .grade-quick-bar { display: flex; align-items: center; gap: 28px; }
+        .grade-tab { color: #94a3b8; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.2s; position: relative; padding: 20px 0; }
+        .grade-tab.active { color: #3b82f6; }
+        .grade-tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #3b82f6; }
+        .hero { background: var(--navy-dark); color: white; padding: 50px 24px 70px; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; }
+        .hero-title { font-size: 36px; font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
+        .stats-row { display: flex; gap: 50px; }
+        .stat-card { border-left: 2px solid #334155; padding-left: 18px; }
+        .stat-num { font-size: 30px; font-weight: 800; color: #3b82f6; }
+        .content-wrap { max-width: 1200px; margin: -35px auto 60px; padding: 0 20px; }
+        .filter-bar { background: white; padding: 14px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .search-box { flex: 1; min-width: 200px; position: relative; }
+        .search-box input { width: 100%; padding: 12px 12px 12px 42px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; font-size: 14px; box-sizing: border-box; }
+        .search-box::before { content: '🔍'; position: absolute; left: 16px; top: 12px; opacity: 0.4; z-index: 1; }
+        select { padding: 10px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; font-weight: 700; color: #475569; cursor: pointer; }
+        .btn-mixer { background: var(--purple-primary); color: white; border: none; padding: 12px 22px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .exam-grid { display: grid; gap: 24px; grid-template-columns: repeat(1, 1fr); margin-top: 25px; }
+        @media (min-width: 768px) { .exam-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .exam-grid { grid-template-columns: repeat(3, 1fr); } }
+        .exam-card { background: white; border-radius: 16px; padding: 22px; border: 1px solid #f1f5f9; box-shadow: 0 2px 10px rgba(0,0,0,0.02); transition: 0.25s; border-left: 5px solid var(--gray-private); display: flex; flex-direction: column; cursor: pointer; }
+        .exam-card.gichul { border-left-color: var(--blue-exam); }
+        .exam-card.unit { border-left-color: var(--green-unit); }
+        .card-main-title { font-size: 18px; font-weight: 800; line-height: 1.45; margin-bottom: 15px; color: #1e293b; min-height: 52px; }
+        .card-actions { border-top: 1px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: space-around; align-items: center; margin-top: auto; }
+        .action-item { text-align: center; cursor: pointer; flex: 1; transition: 0.2s; padding: 5px; border-radius: 8px; }
+        .action-item:hover { background: #f8fafc; }
+        .action-item i { font-size: 20px; color: #3b82f6; margin-bottom: 5px; display: block; }
+        .action-item span { font-size: 11px; font-weight: 800; color: #64748b; }
+
+        /* [ENGINE 스타일] */
+        .engine-view { background: #f1f5f9; min-height: 100vh; font-family: 'Nanum Myeongjo', serif; }
+        #engine-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: white; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 2000; border-bottom: 1px solid #ddd; box-sizing: border-box; }
+        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 20px auto; background: white; box-sizing: border-box; display: flex; flex-direction: column; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .content-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0 20px; }
+        .content-container::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
+        .item { padding: 15px 10px; border-bottom: 0.5px solid #eee; break-inside: avoid; display: flex; flex-direction: column; font-size: 9.5pt; }
+        .ans-grid-wrapper { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; border: 1.5px solid #000; padding: 15px; background: #fff; }
+        .ans-cell { border-bottom: 1px solid #eee; padding: 8px 5px; display: flex; gap: 10px; font-family: sans-serif; font-size: 10pt; }
+
+        @media print { 
+            .no-print { display: none !important; } 
+            body { background: white; } 
+            .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; } 
+        }
+        @media (max-width: 600px) {
+            .hero-title { font-size: 28px; }
+            .grade-quick-bar { gap: 15px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+            .grade-tab { white-space: nowrap; }
+            .page { width: 100%; height: auto; padding: 10mm; margin: 10px 0; }
+            .content-container { grid-template-columns: 1fr; }
+            .content-container::after { display: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="hero-section">
-        <div class="hero-content">
-            <div class="header-area">
-                <div class="logo-group">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2" y="2" width="9" height="9" rx="2" fill="#3b82f6"/><rect x="13" y="2" width="9" height="9" rx="2" fill="#60a5fa"/>
-                        <rect x="2" y="13" width="9" height="9" rx="2" fill="#93c5fd"/><rect x="13" y="13" width="9" height="9" rx="2" fill="#bfdbfe"/>
-                    </svg>
-                    AP수학 <span class="logo-sub">시험지 관리 시스템</span>
+    <div id="view-index" class="view active">
+        <header>
+            <div class="top-nav">
+                <div class="logo-area" onclick="location.reload()">
+                    <div class="logo-grid"><div></div><div></div><div></div><div></div></div>
+                    <span style="font-weight: 900; font-size: 20px;">AP 수학</span>
                 </div>
-                <a href="mixer.html" class="btn-mixer">+ 새 문제지 믹스</a>
+                <nav class="grade-quick-bar" id="gradeBar">
+                    <span class="grade-tab" data-grade="고3">고3</span><span class="grade-tab" data-grade="고2">고2</span><span class="grade-tab" data-grade="고1">고1</span>
+                    <span class="grade-tab" data-grade="중3">중3</span><span class="grade-tab" data-grade="중2">중2</span><span class="grade-tab" data-grade="중1">중1</span>
+                    <span class="grade-tab active" data-grade="">전체</span>
+                </nav>
             </div>
-            <div class="hero-label">AP MATH ACADEMY</div>
-            <h1 class="hero-title">기출 & 변형 문제<br><span class="text-blue">통합 출제 시스템</span></h1>
-            <p class="hero-desc">학교별 기출 문제를 불러오거나,<br>단원·난이도 조건으로 믹싱하여 맞춤 시험지를 생성하세요.</p>
-            <div class="stat-container">
-                <div class="stat-box"><div class="stat-value" id="stat-total">0</div><div class="stat-label">총 시험지</div></div>
-                <div class="stat-box"><div class="stat-value" id="stat-grades">0</div><div class="stat-label">대상 학년</div></div>
-                <div class="stat-box"><div class="stat-value" id="stat-subjects">0</div><div class="stat-label">커버 과목</div></div>
+        </header>
+        <div class="hero"><div class="hero-inner"><h1 class="hero-title">기출 & 변형 문제<br><span style="color:#3b82f6">통합 출제 시스템</span></h1><div class="stats-row"><div class="stat-card"><span class="stat-num" id="stat-total">0</span><span style="color:#64748b; font-size:13px; font-weight:600;">총 시험지</span></div><div class="stat-card"><span class="stat-num" id="stat-grades">0</span><span style="color:#64748b; font-size:13px; font-weight:600;">대상 학년</span></div></div></div></div>
+        <div class="content-wrap">
+            <div class="filter-bar">
+                <div class="search-box"><input type="text" id="searchInput" placeholder="학교명 또는 과정 검색..."></div>
+                <select id="subjectFilter"><option value="">과정</option></select>
+                <button class="btn-mixer" onclick="location.href='mixer.html'">⚡ 믹서</button>
             </div>
+            <div id="examGrid" class="exam-grid"></div>
         </div>
     </div>
 
-    <div class="main-container">
-        <div class="filter-container">
-            <div class="breadcrumb" id="breadcrumb"></div>
-            <div class="filter-row">
-                <input type="text" id="searchInput" placeholder="학교명 또는 과목 검색..." autocomplete="off">
-                <select id="sortSelect" onchange="changeSort(this.value)">
-                    <option value="year-desc">최신 연도순</option>
-                    <option value="year-asc">오래된 연도순</option>
-                    <option value="school-asc">학교 가나다순</option>
-                    <option value="subject-asc">과목순</option>
-                </select>
-                <div class="qpp-group">
-                    <div class="qpp-btn active" onclick="setQpp(4, this)">4</div>
-                    <div class="qpp-btn" onclick="setQpp(6, this)">6</div>
-                </div>
-            </div>
+    <div id="view-engine" class="view engine-view">
+        <div id="engine-ctrl" class="no-print">
+            <button onclick="switchView('index')" style="padding: 8px 15px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; font-weight: 700;">← 목록으로</button>
+            <div id="engine-title" style="font-weight: 800; font-size: 14px; color: #1e293b;"></div>
+            <button onclick="window.print()" style="background:#1e293b; color:white; border:none; padding:8px 18px; border-radius:4px; font-weight: 700; cursor: pointer;">인쇄</button>
         </div>
-        <div id="choiceList" class="choice-grid"></div>
-        <div id="examList" class="exam-grid"></div>
+        <div id="print-area" style="padding-top: 50px;"></div>
+        <div id="item-pool" style="display:none;"></div>
     </div>
 
     <script>
         let db = { exams: [] };
+        let selectedGrade = "";
         let currentQpp = 4;
-        let currentPath = [];
-        let currentSort = 'year-desc';
-        let isSearching = false;
 
-        function setQpp(n, el) {
-            currentQpp = n;
-            document.querySelectorAll('.qpp-btn').forEach(btn => btn.classList.remove('active'));
-            el.classList.add('active');
+        function normalizeQuestion(q) {
+            const processText = (t) => {
+                if (!t) return t;
+                let res = t.replace(/\\(?:text|mbox)\{([^}]+)\}/g, ' $1 ');
+                return (res.includes('\\') && !res.includes('$')) ? `$${res.trim()}$` : res;
+            };
+            const n = JSON.parse(JSON.stringify(q));
+            n.content = processText(n.content);
+            if (n.choices) n.choices = n.choices.map(c => processText(c));
+            if (n.solution) n.solution = processText(n.solution);
+            return n;
         }
 
-        function changeSort(val) {
-            currentSort = val;
-            renderCurrentState();
+        function switchView(name) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(`view-${name}`).classList.add('active');
+            window.scrollTo(0, 0);
         }
 
         function init() {
             const s = document.createElement('script');
             s.src = 'db.js?v=' + Date.now();
             s.onload = () => {
-                const rawData = window.mainDB || window.db;
-                if (!rawData?.exams) return;
-                db = rawData;
-                db.exams = db.exams.filter(e => e.type !== 'hidden');
-                db.exams.forEach(ex => {
-                    ex.computedSemester = `${ex.grade || '미분류'}-${ex.semester || '1'}`;
-                });
-                renderCurrentState();
-                document.getElementById('searchInput').addEventListener('input', handleSearch);
-                updateHeroStats();
+                db = window.mainDB || window.db || { exams: [] };
+                updateStats();
+                populateFilters();
+                initGradeBar();
+                renderList();
             };
+            document.body.appendChild(s);
+            document.getElementById('searchInput').oninput = renderList;
+            document.getElementById('subjectFilter').onchange = renderList;
+        }
+
+        function updateStats() {
+            document.getElementById('stat-total').innerText = db.exams.length;
+            document.getElementById('stat-grades').innerText = new Set(db.exams.map(e => e.grade)).size;
+        }
+
+        function populateFilters() {
+            const subjects = [...new Set(db.exams.map(e => e.subject))].sort();
+            const sF = document.getElementById('subjectFilter');
+            subjects.forEach(s => sF.innerHTML += `<option value="${s}">${s}</option>`);
+        }
+
+        function initGradeBar() {
+            document.querySelectorAll('.grade-tab').forEach(tab => {
+                tab.onclick = () => {
+                    document.querySelectorAll('.grade-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    selectedGrade = tab.dataset.grade;
+                    renderList();
+                };
+            });
+        }
+
+        function renderList() {
+            const grid = document.getElementById('examGrid');
+            const keyword = document.getElementById('searchInput').value.toLowerCase();
+            const subject = document.getElementById('subjectFilter').value;
+            grid.innerHTML = '';
+            
+            const filtered = db.exams.filter(ex => {
+                if (ex.type === 'hidden') return false;
+                const matchK = `${ex.school} ${ex.subject}`.toLowerCase().includes(keyword);
+                const matchG = !selectedGrade || ex.grade === selectedGrade;
+                const matchS = !subject || ex.subject === subject;
+                return matchK && matchG && matchS;
+            });
+
+            filtered.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = `exam-card ${ex.type === 'exam' ? 'gichul' : 'unit'}`;
+                const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
+                card.innerHTML = `
+                    <div class="card-year">${ex.year}</div>
+                    <div class="card-main-title">${ex.school} ${ex.grade}<br>${ex.semester}학기 ${typeText}</div>
+                    <div class="badge-row"><span class="badge">${ex.type === 'exam' ? '기출' : '자료'}</span><span class="badge">${ex.grade}</span></div>
+                    <div class="card-actions">
+                        <div class="action-item" onclick="loadContent('${ex.file}', '${ex.school}', '${ex.subject}', 'exam')">
+                            <i class="fa-regular fa-file-pdf"></i><span>시험지</span>
+                        </div>
+                        <div class="action-item" onclick="loadContent('${ex.file}', '${ex.school}', '${ex.subject}', 'sol')">
+                            <i class="fa-solid fa-chalkboard-user"></i><span>해설지</span>
+                        </div>
+                        <div class="action-item" onclick="loadContent('${ex.file}', '${ex.school}', '${ex.subject}', 'ans')">
+                            <i class="fa-solid fa-list-check"></i><span>정답표</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function loadContent(file, school, subject, mode) {
+            event.stopPropagation();
+            const modeText = mode === 'exam' ? '시험지' : mode === 'sol' ? '해설지' : '정답표';
+            document.getElementById('engine-title').innerText = `${school} ${subject} (${modeText})`;
+            switchView('engine');
+            const old = document.getElementById('temp-script');
+            if (old) old.remove();
+            const s = document.createElement('script');
+            s.id = 'temp-script';
+            s.src = `exams/${file}?v=${Date.now()}`;
+            s.onload = () => initRender(mode);
             document.body.appendChild(s);
         }
 
-        function goStep(stepIndex) {
-            isSearching = false;
-            document.getElementById('searchInput').value = '';
-            currentPath = currentPath.slice(0, stepIndex);
-            renderCurrentState();
+        async function initRender(mode) {
+            const pool = document.getElementById('item-pool');
+            const bank = (window.questionBank || []).map(q => normalizeQuestion(q));
+            
+            if (mode === 'ans') {
+                pool.innerHTML = `<div class="ans-grid-wrapper">` + 
+                                 bank.map((q, i) => `<div class="ans-cell"><b>${i+1}</b> ${q.answer}</div>`).join('') + 
+                                 `</div>`;
+            } else {
+                pool.innerHTML = bank.map((q, i) => `
+                    <div class="item">
+                        <div style="font-weight:700; margin-bottom:8px;">${i+1}. ${q.content}</div>
+                        ${mode === 'exam' ? 
+                            (q.choices ? `<div style="line-height:1.8;">${q.choices.map((c,ci)=>`<div>${ci+1}) ${c}</div>`).join('')}</div>` : '<div class="answer-box"></div>') :
+                            `<div style="margin-top:10px; padding:12px; background:#fef2f2; border-radius:6px; border:1px solid #fee2e2;">
+                                <b style="color:#ef4444; display:block; margin-bottom:6px;">[정답] ${q.answer}</b>
+                                <div style="font-size:9pt; color:#475569; line-height:1.5;">${q.solution || '해설이 제공되지 않는 문항입니다.'}</div>
+                            </div>`
+                        }
+                    </div>`).join('');
+            }
+
+            paginate(mode);
+            await new Promise(r => requestAnimationFrame(r));
+            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise();
         }
 
-        function selectPath(value) {
-            currentPath.push(value);
-            renderCurrentState();
-        }
+        function paginate(mode) {
+            const printArea = document.getElementById('print-area');
+            printArea.innerHTML = '';
+            const items = Array.from(document.getElementById('item-pool').querySelectorAll(mode === 'ans' ? '.ans-grid-wrapper' : '.item'));
+            
+            const addPage = () => {
+                const p = document.createElement('div'); p.className = 'page';
+                p.innerHTML = `<div style="border-bottom:2px solid #000; padding-bottom:5px; margin-bottom:15px; display:flex; justify-content:space-between; font-weight:800; font-size:10pt;">
+                    <span>AP 수학 통합 시스템</span><span>- ${printArea.children.length+1} -</span>
+                </div><div class="content-container"></div>`;
+                printArea.appendChild(p);
+                return p;
+            };
 
-        function updateBreadcrumb() {
-            const bc = document.getElementById('breadcrumb');
-            if (isSearching) {
-                bc.innerHTML = `<span style="color:#94a3b8;">🔍 검색 결과 모드</span>`;
+            let cur = addPage();
+            if (mode === 'ans') {
+                cur.querySelector('.content-container').style.display = 'block';
+                cur.querySelector('.content-container').appendChild(items[0]);
                 return;
             }
-            let html = `<span onclick="goStep(0)">🏠 학년 선택</span>`;
-            currentPath.forEach((path, idx) => {
-                let display = path;
-                if (idx === 1 && path.includes('-')) display = path.split('-')[1] + '학기';
-                html += `<span class="separator"> > </span><span onclick="goStep(${idx + 1})">${display}</span>`;
-            });
-            bc.innerHTML = html;
-        }
-
-        function renderCurrentState() {
-            updateBreadcrumb();
-            const level = currentPath.length;
-            if (level === 0) renderMain();
-            else if (level === 1) renderChoices('semester');
-            else if (level === 2) renderChoices('year');
-            else renderFinalExams();
-        }
-
-        function getFilteredData() {
-            let data = db.exams;
-            if (currentPath.length > 0) data = data.filter(ex => ex.grade === currentPath[0]);
-            if (currentPath.length > 1) data = data.filter(ex => ex.computedSemester === currentPath[1]);
-            if (currentPath.length > 2) data = data.filter(ex => String(ex.year) === currentPath[2]);
-            const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
-            if (keyword) {
-                data = data.filter(ex =>
-                    (ex.school || "").toLowerCase().includes(keyword) ||
-                    (ex.subject || "").toLowerCase().includes(keyword) ||
-                    (ex.file || "").toLowerCase().includes(keyword)
-                );
-            }
-            return data;
-        }
-
-        function sortData(data) {
-            return [...data].sort((a, b) => {
-                if (currentSort.startsWith('year')) {
-                    const diff = (parseInt(a.year) || 0) - (parseInt(b.year) || 0);
-                    return (currentSort === 'year-desc' ? -diff : diff) || (a.school || "").localeCompare(b.school || "", 'ko');
-                }
-                const key = currentSort === 'school-asc' ? 'school' : 'subject';
-                return (a[key] || "").localeCompare(b[key] || "", 'ko');
-            });
-        }
-
-        function renderExams(data) {
-            const container = document.getElementById('examList');
-            container.innerHTML = "";
-            const sortedData = sortData(data);
-            if (sortedData.length === 0) {
-                container.innerHTML = `<div class="empty-state">조건에 맞는 시험지가 없습니다.</div>`;
-                return;
-            }
-            sortedData.forEach(ex => container.appendChild(createCard(ex)));
-        }
-
-        function renderMain() {
-            const choiceContainer = document.getElementById('choiceList');
-            const examContainer = document.getElementById('examList');
-            choiceContainer.innerHTML = ''; examContainer.innerHTML = '';
             
-            // 무결성 패치: 학년 리스트를 DB에서 동적으로 추출하여 신규 학년 추가 시 자동 대응
-            const grades = [...new Set(db.exams.map(e => e.grade).filter(Boolean))].sort();
-            
-            grades.forEach(g => {
-                const btn = document.createElement('div');
-                btn.className = 'choice-btn';
-                btn.innerHTML = `<span style="color:#6366f1;">📁</span> ${g}`;
-                btn.onclick = () => selectPath(g);
-                choiceContainer.appendChild(btn);
-            });
-
-            grades.forEach(grade => {
-                const gradeExams = db.exams.filter(e => e.grade === grade);
-                if (!gradeExams.length) return;
-                const validYears = gradeExams.map(e => parseInt(e.year)).filter(n => !isNaN(n));
-                const maxYear = validYears.length ? Math.max(...validYears) : 0;
-                const top4 = gradeExams.filter(e => (parseInt(e.year) || 0) === maxYear).slice(0, 4);
-                if (top4.length) {
-                    const title = document.createElement('div');
-                    title.className = 'section-title';
-                    title.textContent = `🔥 ${grade} 최신 기출 (${maxYear}년)`;
-                    examContainer.appendChild(title);
-                    top4.forEach(ex => examContainer.appendChild(createCard(ex)));
-                }
+            items.forEach((item, idx) => {
+                if (idx > 0 && idx % currentQpp === 0) cur = addPage();
+                cur.querySelector('.content-container').appendChild(item.cloneNode(true));
             });
         }
 
-        function renderChoices(target) {
-            const container = document.getElementById('choiceList');
-            container.innerHTML = '';
-            let filtered = db.exams.filter(ex => ex.grade === currentPath[0]);
-            if (currentPath[1]) filtered = filtered.filter(ex => ex.computedSemester === currentPath[1]);
-            let options = [];
-            if (target === 'semester') {
-                options = [...new Set(filtered.map(e => e.computedSemester))].filter(Boolean).sort();
-            } else if (target === 'year') {
-                options = [...new Set(filtered.map(e => String(e.year)))].filter(Boolean).sort((a,b) => parseInt(b) - parseInt(a));
-            }
-            options.forEach(opt => {
-                const btn = document.createElement('div');
-                btn.className = 'choice-btn';
-                let text = opt;
-                if (target === 'semester' && opt.includes('-')) text = opt.split('-')[1] + '학기';
-                btn.textContent = text;
-                btn.onclick = () => selectPath(opt);
-                container.appendChild(btn);
-            });
-            renderExams(filtered);
-        }
-
-        function renderFinalExams() {
-            document.getElementById('choiceList').innerHTML = '';
-            renderExams(getFilteredData());
-        }
-
-        function handleSearch() {
-            isSearching = !!document.getElementById('searchInput').value.trim();
-            updateBreadcrumb();
-            document.getElementById('choiceList').innerHTML = '';
-            renderExams(getFilteredData());
-        }
-
-        function createCard(ex) {
-            const typeText = ex.examType === 'mid' ? '중간' : (ex.examType === 'final' ? '기말' : '');
-            let semText = ex.computedSemester.includes('-') ? ex.computedSemester.split('-')[1] + '학기' : ex.computedSemester;
-            const displayTitle = `${ex.year} ${ex.school || ''} ${semText} ${ex.subject} ${typeText}`.trim();
-            const card = document.createElement('div');
-            card.className = `exam-card ${ex.type === 'archive' ? 'archive' : ''}`;
-            const isArchive = ex.type === 'archive';
-            card.innerHTML = `
-                <div class="title">${displayTitle}</div>
-                <div class="meta">
-                    <span class="badge" style="background:${isArchive ? '#dcfce7' : '#eff6ff'}; color:${isArchive ? '#166534' : '#1e40af'};">${isArchive ? '단원정리' : '학교기출'}</span>
-                    <span class="badge" style="background:#f1f5f9; color:#475569;">${ex.grade}</span>
-                </div>
-                <div class="file-info">📄 ${ex.file}</div>`;
-            card.onclick = () => window.open(`engine.html?data=${encodeURIComponent('exams/' + ex.file)}&title=${encodeURIComponent(displayTitle)}&qpp=${currentQpp}`, 'ap_engine');
-            return card;
-        }
-
-        function updateHeroStats() {
-            if (!db.exams) return;
-            document.getElementById('stat-total').innerText = db.exams.length;
-            document.getElementById('stat-grades').innerText = new Set(db.exams.map(e => e.grade).filter(Boolean)).size;
-            document.getElementById('stat-subjects').innerText = new Set(db.exams.map(e => e.subject).filter(Boolean)).size;
-        }
-        window.addEventListener('DOMContentLoaded', init);
+        window.onload = init;
     </script>
 </body>
 </html>
