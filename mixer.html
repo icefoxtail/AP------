@@ -50,9 +50,9 @@
 <div class="layout">
     <div class="left">
         <div class="filter-bar">
-            <select id="gradeFilter" onchange="filterExams()"><option value="all">모든 학년</option></select>
-            <select id="subjectFilter" onchange="filterExams()"><option value="all">모든 과목</option></select>
-            <select id="yearFilter" onchange="filterExams()"><option value="all">모든 연도</option></select>
+            <select id="gradeFilter" onchange="filterExams()"></select>
+            <select id="subjectFilter" onchange="filterExams()"></select>
+            <select id="yearFilter" onchange="filterExams()"></select>
         </div>
         <div class="select-all-bar">
             <button onclick="selectAll(true)">전체 선택</button>
@@ -128,9 +128,16 @@ function toggleChip(el) {
 }
 
 async function init() {
-    const res = await fetch('db.json?v=' + Date.now());
-    db = await res.json();
-    db.exams = db.exams.filter(e => e.type !== 'hidden');
+    await new Promise(res => {
+        const s = document.createElement('script');
+        s.src = 'db.js?v=' + Date.now();
+        s.onload = () => {
+            db = window.mainDB || { exams: [] };
+            db.exams = db.exams.filter(e => e.type !== 'hidden');
+            res();
+        };
+        document.body.appendChild(s);
+    });
     setupFilters();
     filterExams();
 }
@@ -146,7 +153,17 @@ function setupFilters() {
 
 function populateSelect(id, items) {
     const sel = document.getElementById(id);
-    items.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+    sel.innerHTML = '';
+    const allOpt = document.createElement('option');
+    allOpt.value = 'all';
+    allOpt.textContent = id === 'gradeFilter' ? '학년' 
+                       : id === 'subjectFilter' ? '과목' 
+                       : '연도';
+    sel.appendChild(allOpt);
+    items.forEach(v => {
+        const o = document.createElement('option');
+        o.value = v; o.textContent = v; sel.appendChild(o);
+    });
 }
 
 function filterExams() {
@@ -212,7 +229,6 @@ async function loadAndAnalyze() {
     }
     loadedQuestions = all;
     
-    // [신규 추가] 단원 칩 렌더
     const cats = [...new Set(all.map(q => q.category || '미분류'))]
                  .filter(Boolean).sort((a,b) => a.localeCompare(b, 'ko'));
     const catContainer = document.getElementById('categoryChips');
@@ -233,7 +249,6 @@ function generate() {
     const title = document.getElementById('examTitle').value || '믹스 시험지';
     const activeLevels = [...document.querySelectorAll('#levelChips .chip.active')].map(c => c.dataset.val);
     
-    // [신규 변경] 단원 필터값도 함께 체크
     const activeCategories = [...document.querySelectorAll('#categoryChips .chip.active')].map(c => c.dataset.val);
     const filtered = loadedQuestions.filter(q => 
         activeLevels.includes(q.level || '중') &&
@@ -254,4 +269,4 @@ function generate() {
 window.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-</html>s
+</html>
