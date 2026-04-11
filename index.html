@@ -69,9 +69,56 @@
         .action-item span { font-size: 11px; font-weight: 800; color: #64748b; }
         .action-item.pdf-only { flex: unset; width: 100%; }
         .action-item.pdf-only i { font-size: 22px; color: var(--green-unit); }
+
+        /* ── QPP 선택 모달 ── */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 2000;
+            align-items: center; justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: white; border-radius: 20px;
+            padding: 36px 40px; width: 360px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .modal-title { font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 6px; }
+        .modal-sub { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
+        .qpp-btns { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; }
+        .qpp-opt {
+            flex: 1; padding: 20px 0; border: 2px solid #e2e8f0;
+            border-radius: 14px; cursor: pointer; transition: 0.2s;
+            font-size: 28px; font-weight: 800; color: #475569;
+            background: #f8fafc;
+        }
+        .qpp-opt:hover { border-color: #4f46e5; background: #eef2ff; color: #4338ca; }
+        .qpp-opt span { display: block; font-size: 11px; font-weight: 600; color: #94a3b8; margin-top: 4px; }
+        .modal-cancel {
+            font-size: 13px; color: #94a3b8; cursor: pointer;
+            border: none; background: none; padding: 4px 12px;
+        }
+        .modal-cancel:hover { color: #475569; }
     </style>
 </head>
 <body>
+    <!-- QPP 선택 모달 -->
+    <div class="modal-overlay" id="qppModal">
+        <div class="modal-box">
+            <div class="modal-title">시험지 출력 형식</div>
+            <div class="modal-sub">한 페이지에 몇 문항을 배치할까요?</div>
+            <div class="qpp-btns">
+                <div class="qpp-opt" onclick="confirmQpp(4)">
+                    4<span>2 × 2 배열</span>
+                </div>
+                <div class="qpp-opt" onclick="confirmQpp(6)">
+                    6<span>2 × 3 배열</span>
+                </div>
+            </div>
+            <button class="modal-cancel" onclick="closeModal()">취소</button>
+        </div>
+    </div>
+
     <header>
         <div class="top-nav">
             <div class="logo-area" onclick="location.reload()">
@@ -265,16 +312,46 @@
         return card;
     }
 
+    /* ── QPP 모달 상태 ── */
+    let _pendingItem   = null;
+    let _pendingAction = null;
+
     /* ── 엔진 열기 ── */
     function openEngine(item, action) {
-        let url;
         if (item._source === 'archive') {
-            url = `engine.html?mode=pdf&file=${encodeURIComponent('pdf_archive/' + item.fileName)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
-        } else {
-            url = `engine.html?mode=${action}&data=${encodeURIComponent('exams/' + item.file)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
+            const url = `engine.html?mode=pdf&file=${encodeURIComponent('pdf_archive/' + item.fileName)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
+            window.location.href = url;
+            return;
         }
+        if (action === 'exam') {
+            // 시험지만 QPP 선택 모달
+            _pendingItem   = item;
+            _pendingAction = action;
+            document.getElementById('qppModal').classList.add('open');
+            return;
+        }
+        // 해설지·정답표는 바로 이동
+        goEngine(item, action, 4);
+    }
+
+    function confirmQpp(qpp) {
+        closeModal();
+        goEngine(_pendingItem, _pendingAction, qpp);
+    }
+
+    function closeModal() {
+        document.getElementById('qppModal').classList.remove('open');
+    }
+
+    function goEngine(item, action, qpp) {
+        const url = `engine.html?mode=${action}&qpp=${qpp}&data=${encodeURIComponent('exams/' + item.file)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
         window.location.href = url;
     }
+
+    // 모달 배경 클릭 시 닫기
+    document.getElementById('qppModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
 
     window.onload = init;
 </script>

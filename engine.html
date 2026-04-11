@@ -87,29 +87,48 @@
             padding: 0 12px; overflow: hidden;
         }
 
-        /* 문항 박스 */
+        /* 문항 박스 — flex:1로 열 높이를 균등 분할 (4등분/6등분) */
         .q-box {
+            flex: 1;
             padding: 10px 0;
-            border-bottom: 0.5px solid #eee;
-            flex-shrink: 0;
+            border-bottom: 0.5px solid #ccc;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 4px; }
+        .q-box:last-child { border-bottom: none; }
+        .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 4px; flex-shrink: 0; }
         .answer-box {
-            border: 1px dashed #bbb; min-height: 28mm;
+            flex: 1;
+            border: 1px dashed #bbb;
             margin-top: 8px; background: #fafafa;
         }
         .choices { margin-top: 6px; line-height: 2; }
 
-        /* 해설지 1열 */
+        /* 해설지 2열 신문 칼럼 */
+        .sol-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+            align-items: start;
+        }
+        .sol-container::after {
+            content: ''; position: absolute;
+            left: 50%; top: 0; bottom: 0;
+            width: 1px; background: #ccc;
+        }
         .sol-col {
-            flex: 1; display: flex;
-            flex-direction: column; overflow: hidden;
+            display: flex; flex-direction: column;
+            padding: 0 12px; overflow: hidden;
         }
         .sol-box {
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 0.5px solid #eee;
             flex-shrink: 0;
         }
+        .sol-box:last-child { border-bottom: none; }
         .sol-step {
             padding-left: 8px;
             border-left: 2px solid #e2e8f0;
@@ -251,7 +270,7 @@ function buildExamBox(q, i) {
         ${choicesHTML}`;
 }
 
-/* ── 해설지: 높이 기반 1열 흘림 ── */
+/* ── 해설지: 높이 기반 2열 신문 흘림 ── */
 async function renderSol(area, bank) {
     const staging = document.getElementById('staging');
     staging.innerHTML = '';
@@ -269,23 +288,34 @@ async function renderSol(area, bank) {
 
     const heights = boxes.map(el => el.getBoundingClientRect().height);
 
-    // 가용 높이 측정
+    // 가용 높이 측정 (한 열의 높이)
     const probe = makePage(area, 'sol');
     await raf();
-    const PAGE_H = probe.col.getBoundingClientRect().height;
+    const PAGE_H = probe.cols[0].getBoundingClientRect().height;
     probe.page.remove();
     pageCount--;
 
-    let cur = makePage(area, 'sol');
+    let cur    = makePage(area, 'sol');
+    let colIdx = 0;   // 0: 왼쪽, 1: 오른쪽
     let filled = 0;
 
-    boxes.forEach((el, i) => {
-        const h = heights[i];
-        if (filled + h > PAGE_H && filled > 0) {
-            cur    = makePage(area, 'sol');
-            filled = 0;
+    boxes.forEach((el) => {
+        const h = heights[boxes.indexOf(el)];
+
+        if (filled + h > PAGE_H) {
+            if (colIdx === 0) {
+                // 왼쪽 열 꽉 참 → 오른쪽 열로
+                colIdx = 1;
+                filled = 0;
+            } else {
+                // 오른쪽 열도 꽉 참 → 새 페이지
+                cur    = makePage(area, 'sol');
+                colIdx = 0;
+                filled = 0;
+            }
         }
-        cur.col.appendChild(el.cloneNode(true));
+
+        cur.cols[colIdx].appendChild(el.cloneNode(true));
         filled += h;
     });
 }
@@ -338,11 +368,17 @@ function makePage(area, type) {
     page.appendChild(header);
 
     if (type === 'sol') {
-        const col = document.createElement('div');
-        col.className = 'sol-col';
-        page.appendChild(col);
+        const container = document.createElement('div');
+        container.className = 'sol-container';
+        const left  = document.createElement('div');
+        left.className = 'sol-col';
+        const right = document.createElement('div');
+        right.className = 'sol-col';
+        container.appendChild(left);
+        container.appendChild(right);
+        page.appendChild(container);
         area.appendChild(page);
-        return { page, col };
+        return { page, cols: [left, right] };
     }
 
     if (type === 'ans') {
