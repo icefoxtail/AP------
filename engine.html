@@ -34,38 +34,98 @@
             align-items: center; padding: 0 20px; z-index: 1000;
             box-sizing: border-box; border-bottom: 1px solid #ccc;
         }
-
         .print-btn {
             padding: 8px 16px; background: #378ADD; color: white;
-            border: none; border-radius: 4px; cursor: pointer; font-family: inherit; font-weight: bold;
+            border: none; border-radius: 4px; cursor: pointer;
+            font-family: inherit; font-weight: bold;
         }
 
-        #print-area { display: none; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+        #print-area {
+            display: none; flex-direction: column;
+            align-items: center; gap: 20px; padding: 20px 0;
+        }
+
         .page {
-            width: 210mm; min-height: 297mm; background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm;
-            box-sizing: border-box; position: relative; display: flex; flex-direction: column;
+            width: 210mm; height: 297mm;
+            background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 15mm; box-sizing: border-box;
+            display: flex; flex-direction: column;
             overflow: hidden;
         }
+
         @media print {
             body { padding-top: 0; background: white; }
             #mode-ctrl { display: none; }
-            #print-area { display: flex; gap: 0; padding: 0; }
-            .page { box-shadow: none; width: 210mm; height: 297mm; page-break-after: always; }
+            #print-area { display: flex !important; gap: 0; padding: 0; }
+            .page { box-shadow: none; page-break-after: always; }
             #pdf-container { display: none !important; }
         }
-        .page-header { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 15px; font-weight: bold; }
-        
+
+        .page-header {
+            display: flex; justify-content: space-between;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px; margin-bottom: 12px;
+            font-weight: bold; flex-shrink: 0;
+        }
+
         #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); }
         #pdf-viewer { width: 100%; height: 100%; border: none; }
 
-        .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 20px; }
-        .ans-cell { border: 1px solid #000; padding: 10px; display: flex; align-items: center; gap: 10px; }
-        
-        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; align-content: start; }
-        .sol-col { display: flex; flex-direction: column; gap: 20px; flex: 1; }
-        .q-box { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; break-inside: avoid; }
-        .q-num { font-weight: bold; font-size: 11pt; }
+        /* 시험지 2열 */
+        .grid-container {
+            flex: 1; display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative; overflow: hidden;
+        }
+        .grid-container::after {
+            content: ''; position: absolute;
+            left: 50%; top: 0; bottom: 0;
+            width: 1px; background: #000;
+        }
+        .grid-col {
+            display: flex; flex-direction: column;
+            padding: 0 12px; overflow: hidden;
+        }
+
+        /* 문항 박스 */
+        .q-box {
+            padding: 10px 0;
+            border-bottom: 0.5px solid #eee;
+            flex-shrink: 0;
+        }
+        .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 4px; }
+        .answer-box {
+            border: 1px dashed #bbb; min-height: 28mm;
+            margin-top: 8px; background: #fafafa;
+        }
+        .choices { margin-top: 6px; line-height: 2; }
+
+        /* 해설지 1열 */
+        .sol-col {
+            flex: 1; display: flex;
+            flex-direction: column; overflow: hidden;
+        }
+        .sol-box {
+            padding: 10px 0;
+            border-bottom: 0.5px solid #eee;
+            flex-shrink: 0;
+        }
+        .sol-step {
+            padding-left: 8px;
+            border-left: 2px solid #e2e8f0;
+            margin-bottom: 4px; font-size: 9pt;
+        }
+
+        /* 정답표 */
+        .ans-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px; margin-top: 10px;
+        }
+        .ans-cell {
+            border: 1px solid #000; padding: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
     </style>
 </head>
 <body>
@@ -74,7 +134,8 @@
         <h3 id="top-title" style="margin:0;">AP 수학 엔진</h3>
         <div>
             <button class="print-btn" onclick="window.print()">인쇄하기 / PDF 저장</button>
-            <button class="print-btn" style="background:#64748b; margin-left:10px;" onclick="history.back()">목록으로</button>
+            <button class="print-btn" style="background:#64748b; margin-left:10px;"
+                    onclick="history.back()">목록으로</button>
         </div>
     </div>
 
@@ -83,122 +144,232 @@
     </div>
 
     <div id="print-area"></div>
+    <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:85mm;"></div>
 
-    <script>
-        const AppState = { title: 'AP 수학', data: [], mode: 'exam' };
+<script>
+const AppState = { title: 'AP 수학', data: [], mode: 'exam', qpp: 4 };
+let pageCount = 0;
 
-        async function init() {
-            const params = new URLSearchParams(window.location.search);
-            const mode = params.get('mode') || 'exam';
-            const title = params.get('title') || 'AP 수학 기출';
-            const file = params.get('file');
-            const dataUrl = params.get('data');
+/* ── 데이터 로딩 ── */
+async function loadData(dataUrl) {
+    // mixed: sessionStorage
+    if (dataUrl === 'mixed') {
+        const raw = sessionStorage.getItem('mixedQuestions');
+        return raw ? JSON.parse(raw) : [];
+    }
 
-            AppState.mode = mode;
-            AppState.title = title;
-            document.getElementById('top-title').innerText = title;
+    // exams/*.js : script 태그 방식 (window.questionBank)
+    return new Promise(res => {
+        delete window.questionBank;
+        const s = document.createElement('script');
+        s.src = dataUrl + '?v=' + Date.now();
+        s.onload = () => {
+            const qb = window.questionBank;
+            const data = Array.isArray(qb) ? qb
+                       : (qb?.questions || qb?.problems || []);
+            res(data);
+        };
+        s.onerror = () => res([]);
+        document.body.appendChild(s);
+    });
+}
 
-            if (mode === 'pdf' && file) {
-                document.getElementById('pdf-container').style.display = 'block';
-                document.getElementById('pdf-viewer').src = file;
-                return;
-            }
+/* ── 초기화 ── */
+async function init() {
+    const p = new URLSearchParams(window.location.search);
+    AppState.mode  = p.get('mode')  || 'exam';
+    AppState.title = p.get('title') || 'AP 수학 기출';
+    AppState.qpp   = parseInt(p.get('qpp')) || 4;
 
-            document.getElementById('print-area').style.display = 'flex';
-            if (dataUrl) {
-                try {
-                    const res = await fetch(dataUrl);
-                    if (res.ok) {
-                        AppState.data = await res.json();
-                        renderEngine();
-                    }
-                } catch (e) {
-                    console.error("Data load failed", e);
-                }
-            }
+    const file    = p.get('file');
+    const dataUrl = p.get('data');
+
+    document.getElementById('top-title').innerText = AppState.title;
+
+    // PDF 모드
+    if (AppState.mode === 'pdf' && file) {
+        document.getElementById('pdf-container').style.display = 'block';
+        document.getElementById('pdf-viewer').src = file;
+        return;
+    }
+
+    document.getElementById('print-area').style.display = 'flex';
+
+    if (dataUrl) {
+        AppState.data = await loadData(dataUrl);
+        if (AppState.data.length > 0) await renderEngine();
+        else console.warn('문항 데이터 없음:', dataUrl);
+    }
+}
+
+/* ── 렌더 분기 ── */
+async function renderEngine() {
+    const area = document.getElementById('print-area');
+    area.innerHTML = '';
+    pageCount = 0;
+
+    if      (AppState.mode === 'ans') renderAnsGrid(area, AppState.data);
+    else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
+    else                               await renderExam(area, AppState.data);
+}
+
+/* ── 시험지: QPP 격자 (2×2 or 2×3) ── */
+async function renderExam(area, bank) {
+    const perCol  = AppState.qpp / 2;
+    const staging = document.getElementById('staging');
+    staging.innerHTML = '';
+
+    const boxes = bank.map((q, i) => {
+        const el = document.createElement('div');
+        el.className = 'q-box';
+        el.innerHTML = buildExamBox(q, i);
+        staging.appendChild(el);
+        return el;
+    });
+
+    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
+    await raf();
+
+    for (let start = 0; start < boxes.length; start += AppState.qpp) {
+        const chunk = boxes.slice(start, start + AppState.qpp);
+        const page  = makePage(area, 'exam');
+
+        chunk.slice(0, perCol).forEach(el => page.cols[0].appendChild(el.cloneNode(true)));
+        chunk.slice(perCol).forEach(el   => page.cols[1].appendChild(el.cloneNode(true)));
+    }
+}
+
+function buildExamBox(q, i) {
+    const circled = ['①','②','③','④','⑤'];
+    const choicesHTML = q.choices
+        ? `<div class="choices">${q.choices.map((c, ci) =>
+              `<div>${circled[ci] || (ci+1)+')'} ${c}</div>`).join('')}</div>`
+        : `<div class="answer-box"></div>`;
+    return `
+        <div class="q-num">${i + 1}.</div>
+        <div>${q.content || q.question || ''}</div>
+        ${choicesHTML}`;
+}
+
+/* ── 해설지: 높이 기반 1열 흘림 ── */
+async function renderSol(area, bank) {
+    const staging = document.getElementById('staging');
+    staging.innerHTML = '';
+
+    const boxes = bank.map((q, i) => {
+        const el = document.createElement('div');
+        el.className = 'sol-box';
+        el.innerHTML = buildSolBox(q, i);
+        staging.appendChild(el);
+        return el;
+    });
+
+    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
+    await raf();
+
+    const heights = boxes.map(el => el.getBoundingClientRect().height);
+
+    // 가용 높이 측정
+    const probe = makePage(area, 'sol');
+    await raf();
+    const PAGE_H = probe.col.getBoundingClientRect().height;
+    probe.page.remove();
+    pageCount--;
+
+    let cur = makePage(area, 'sol');
+    let filled = 0;
+
+    boxes.forEach((el, i) => {
+        const h = heights[i];
+        if (filled + h > PAGE_H && filled > 0) {
+            cur    = makePage(area, 'sol');
+            filled = 0;
         }
+        cur.col.appendChild(el.cloneNode(true));
+        filled += h;
+    });
+}
 
-        function renderEngine() {
-            const area = document.getElementById('print-area');
-            area.innerHTML = '';
-            pageCount = 0;
+function buildSolBox(q, i) {
+    let solHTML;
+    if (q.solution_steps?.length) {
+        solHTML = q.solution_steps.map((s, si) =>
+            `<div class="sol-step"><b>[${si+1}단계]</b> ${s}</div>`
+        ).join('');
+    } else if (q.solution) {
+        solHTML = `<div class="sol-step">${q.solution}</div>`;
+    } else {
+        solHTML = `<span style="color:#94a3b8;font-size:8pt;">해설 없음</span>`;
+    }
+    return `
+        <div class="q-num" style="margin-bottom:4px;">${i+1}.
+            <span style="font-size:9pt;font-weight:normal;">
+                ${q.content || q.question || ''}
+            </span>
+        </div>
+        <div style="font-size:9pt;">${solHTML}</div>`;
+}
 
-            if (AppState.mode === 'ans') {
-                renderAnsGrid(area, AppState.data);
-            } else {
-                let currentLayout = createPage(area, AppState.mode === 'sol');
-                let currentContainer = currentLayout.grid || currentLayout.col;
-                
-                AppState.data.forEach((q, i) => {
-                    const qEl = document.createElement('div');
-                    qEl.className = 'q-box';
-                    qEl.innerHTML = `
-                        <div class="q-num">${i + 1}.</div>
-                        <div>${q.question || q.content || ''}</div>
-                        ${AppState.mode === 'sol' ? `<div style="color:blue; margin-top:10px;">[해설] ${q.solution || ''}</div>` : ''}
-                    `;
-                    currentContainer.appendChild(qEl);
+/* ── 정답표 ── */
+function renderAnsGrid(area, bank) {
+    const p = makePage(area, 'ans');
+    const grid = document.createElement('div');
+    grid.className = 'ans-grid';
+    bank.forEach((q, i) => {
+        const cell = document.createElement('div');
+        cell.className = 'ans-cell';
+        cell.innerHTML = `<b style="font-size:11pt;min-width:24px;">${i+1}.</b>
+                          <span style="font-size:10pt;">${q.answer ?? '–'}</span>`;
+        grid.appendChild(cell);
+    });
+    p.body.appendChild(grid);
+    if (window.MathJax?.typesetPromise) MathJax.typesetPromise([p.body]);
+}
 
-                    // Paginate 코어 로직 복구 (페이지 높이 초과 시 새 페이지 생성)
-                    if (currentLayout.page.scrollHeight > currentLayout.page.clientHeight) {
-                        currentContainer.removeChild(qEl);
-                        currentLayout = createPage(area, AppState.mode === 'sol');
-                        currentContainer = currentLayout.grid || currentLayout.col;
-                        currentContainer.appendChild(qEl);
-                    }
-                });
-                if (window.MathJax?.typesetPromise) MathJax.typesetPromise([area]);
-            }
-        }
+/* ── 페이지 팩토리 ── */
+function makePage(area, type) {
+    pageCount++;
+    const page = document.createElement('div');
+    page.className = 'page';
 
-        function renderAnsGrid(area, bank) {
-            const page = document.createElement('div');
-            page.className = 'page';
-            const pn = document.createElement('div');
-            pn.className = 'page-header';
-            pn.innerHTML = `<span>${AppState.title} — 정답표</span><span>- 1 -</span>`;
-            const grid = document.createElement('div');
-            grid.className = 'ans-grid';
-            bank.forEach((q, i) => {
-                const cell = document.createElement('div');
-                cell.className = 'ans-cell';
-                cell.innerHTML = `<b style="font-size:11pt;min-width:24px;">${i + 1}.</b>
-                                  <span style="font-size:10pt;">${q.answer ?? '–'}</span>`;
-                grid.appendChild(cell);
-            });
-            page.appendChild(pn);
-            page.appendChild(grid);
-            area.appendChild(page);
-            if (window.MathJax?.typesetPromise) MathJax.typesetPromise([page]);
-        }
+    const header = document.createElement('div');
+    header.className = 'page-header';
+    header.innerHTML = `<span>${AppState.title}</span><span>- ${pageCount} -</span>`;
+    page.appendChild(header);
 
-        let pageCount = 0;
-        function createPage(area, isSol = false) {
-            pageCount++;
-            const page = document.createElement('div');
-            page.className = 'page';
+    if (type === 'sol') {
+        const col = document.createElement('div');
+        col.className = 'sol-col';
+        page.appendChild(col);
+        area.appendChild(page);
+        return { page, col };
+    }
 
-            const header = document.createElement('div');
-            header.className = 'page-header';
-            header.innerHTML = `<span>${AppState.title}</span><span>- ${pageCount} -</span>`;
-            page.appendChild(header);
+    if (type === 'ans') {
+        const body = document.createElement('div');
+        body.style.flex = '1';
+        page.appendChild(body);
+        area.appendChild(page);
+        return { page, body };
+    }
 
-            if (isSol) {
-                const col = document.createElement('div');
-                col.className = 'sol-col';
-                page.appendChild(col);
-                area.appendChild(page);
-                return { page, col };
-            } else {
-                const grid = document.createElement('div');
-                grid.className = 'grid-container';
-                page.appendChild(grid);
-                area.appendChild(page);
-                return { page, grid };
-            }
-        }
+    // exam — 2열
+    const grid  = document.createElement('div');
+    grid.className = 'grid-container';
+    const left  = document.createElement('div');
+    left.className = 'grid-col';
+    const right = document.createElement('div');
+    right.className = 'grid-col';
+    grid.appendChild(left);
+    grid.appendChild(right);
+    page.appendChild(grid);
+    area.appendChild(page);
+    return { page, cols: [left, right] };
+}
 
-        window.onload = init;
-    </script>
+function raf() { return new Promise(r => requestAnimationFrame(r)); }
+
+window.onload = init;
+</script>
 </body>
 </html>
