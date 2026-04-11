@@ -2,67 +2,72 @@ import os
 import csv
 import shutil
 
-def execute_rename():
-    input_csv = "analysis_report.csv"
-    output_dir = "ready_for_r2"
-    
-    if not os.path.exists(input_csv):
-        print(f"오류: {input_csv} 파일이 없습니다. 분석기를 먼저 실행해주세요.")
+# [1] 원장님 집 컴퓨터 절대 경로 (고정)
+BASE_DIR = r"C:\Users\USER\Desktop\APMATH\AP"
+PDF_ROOT = os.path.join(BASE_DIR, "pdf_archive")
+CSV_FILE = os.path.join(BASE_DIR, "AP수학_파일명분류_사전보고서.csv")
+# 목적지를 pdf_archive 외부로 명확히 분리
+OUTPUT_DIR = os.path.join(BASE_DIR, "ready_for_r2")
+
+def ironclad_rename_v10():
+    # [2] 원장님 제안: 목적지 루트 폴더 생성
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    if not os.path.exists(CSV_FILE):
+        print(f"❌ 지시서(CSV) 누락: {CSV_FILE}")
         return
 
-    # 1. 출력 폴더 생성
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-        print(f"--- '{output_dir}' 폴더를 생성했습니다. ---")
+    # [3] 물리 파일 전수조사 (이름 -> 절대경로 매핑)
+    print("🔍 파일 시스템 정밀 스캔 중...")
+    file_map = {}
+    for root, dirs, files in os.walk(PDF_ROOT):
+        # 복사될 폴더가 원본 폴더 안에 있을 경우를 대비한 방어 로직
+        if "ready_for_r2" in root: continue 
+        for f in files:
+            clean_name = f.strip().lower()
+            file_map[clean_name] = os.path.abspath(os.path.join(root, f))
 
-    print("--- 파일 복사 및 이름 변경 시작 ---")
-    
-    success_count = 0
-    fail_count = 0
-    collision_count = 0
+    print(f"📂 실제 물리 파일 {len(file_map)}개 확인 완료.")
 
-    with open(input_csv, "r", encoding="utf-8-sig") as f:
+    success, fail = 0, 0
+    with open(CSV_FILE, "r", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            old_path = row['Original_Path']
-            new_name = row['Predicted_Name']
+            old_name = row['원본파일명'].strip().lower()
+            new_name = row['제안파일명'].strip()
             
-            # 파일이 실제로 존재하는지 확인
-            if not os.path.exists(old_path):
-                print(f"[실패] 파일을 찾을 수 없음: {old_path}")
-                fail_count += 1
-                continue
+            if old_name in file_map:
+                src = file_map[old_name]
+                # [4] 핵심: 목적지 경로도 절대경로화
+                dst = os.path.abspath(os.path.join(OUTPUT_DIR, new_name))
+                
+                # [5] 원장님 묘수: 목적지 디렉토리가 없으면 강제로 만듦 (WinError 3 박멸)
+                os.makedirs(os.path.dirname(dst), exist_ok=True)
+                
+                # 중복 파일명 처리 (번호 부여)
+                if os.path.exists(dst):
+                    name_part, ext_part = os.path.splitext(new_name)
+                    c = 1
+                    while os.path.exists(os.path.join(OUTPUT_DIR, f"{name_part}({c}){ext_part}")):
+                        c += 1
+                    dst = os.path.join(OUTPUT_DIR, f"{name_part}({c}){ext_part}")
 
-            # 대상 경로 설정
-            target_path = os.path.join(output_dir, new_name)
-
-            # [중요] 이름 충돌 방지: 같은 이름이 이미 있다면 (1), (2) 등을 붙임
-            if os.path.exists(target_path):
-                base, ext = os.path.splitext(new_name)
-                counter = 1
-                while os.path.exists(os.path.join(output_dir, f"{base}({counter}){ext}")):
-                    counter += 1
-                new_name = f"{base}({counter}){ext}"
-                target_path = os.path.join(output_dir, new_name)
-                collision_count += 1
-
-            try:
-                # 파일 복사 (원본 보존을 위해 copy2 사용)
-                shutil.copy2(old_path, target_path)
-                success_count += 1
-                if success_count % 100 == 0:
-                    print(f"진행 중... {success_count}개 완료")
-            except Exception as e:
-                print(f"[에러] {old_path} 작업 중 오류: {e}")
-                fail_count += 1
+                try:
+                    # [6] 복사 실행
+                    shutil.copy2(src, dst)
+                    success += 1
+                except Exception as e:
+                    print(f"❌ 복사 실패 ({old_name}): {e}")
+                    fail += 1
+            else:
+                fail += 1
 
     print("\n" + "="*40)
-    print(f"✅ 작업 완료!")
-    print(f"   - 성공: {success_count}개")
-    print(f"   - 충돌(이름중복): {collision_count}개")
-    print(f"   - 실패: {fail_count}개")
-    print(f"📂 모든 파일이 '{output_dir}' 폴더에 모였습니다.")
+    print(f"✅ [MASTER IRONCLAD v10.0] 작업 완료")
+    print(f" - 복사 성공: {success}건")
+    print(f" - 매칭 실패: {fail}건")
+    print(f"📂 결과물 위치: {OUTPUT_DIR}")
     print("="*40)
 
 if __name__ == "__main__":
-    execute_rename()
+    ironclad_rename_v10()

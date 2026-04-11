@@ -433,7 +433,7 @@ function wrapLatex(text) {
 // 태그 제거
 function stripCite(text) {
     if (!text) return text;
-    return text.replace(/\]*\]/g, '').trim();
+    return text.replace(/\[cite:[^\]]*\]/g, '').trim();
 }
 
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
