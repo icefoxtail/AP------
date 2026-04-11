@@ -243,11 +243,11 @@ function buildExamBox(q, i) {
     const circled = ['①','②','③','④','⑤'];
     const choicesHTML = q.choices
         ? `<div class="choices">${q.choices.map((c, ci) =>
-              `<div>${circled[ci] || (ci+1)+')'} ${c}</div>`).join('')}</div>`
+              `<div>${circled[ci] || (ci+1)+')'} ${wrapLatex(c)}</div>`).join('')}</div>`
         : `<div class="answer-box"></div>`;
     return `
         <div class="q-num">${i + 1}.</div>
-        <div>${q.content || q.question || ''}</div>
+        <div>${wrapLatex(q.content || q.question || '')}</div>
         ${choicesHTML}`;
 }
 
@@ -294,17 +294,17 @@ function buildSolBox(q, i) {
     let solHTML;
     if (q.solution_steps?.length) {
         solHTML = q.solution_steps.map((s, si) =>
-            `<div class="sol-step"><b>[${si+1}단계]</b> ${s}</div>`
+            `<div class="sol-step"><b>[${si+1}단계]</b> ${stripCite(s)}</div>`
         ).join('');
     } else if (q.solution) {
-        solHTML = `<div class="sol-step">${q.solution}</div>`;
+        solHTML = `<div class="sol-step">${stripCite(q.solution)}</div>`;
     } else {
         solHTML = `<span style="color:#94a3b8;font-size:8pt;">해설 없음</span>`;
     }
     return `
         <div class="q-num" style="margin-bottom:4px;">${i+1}.
             <span style="font-size:9pt;font-weight:normal;">
-                ${q.content || q.question || ''}
+                ${wrapLatex(q.content || q.question || '')}
             </span>
         </div>
         <div style="font-size:9pt;">${solHTML}</div>`;
@@ -365,6 +365,22 @@ function makePage(area, type) {
     page.appendChild(grid);
     area.appendChild(page);
     return { page, cols: [left, right] };
+}
+
+/* ── 텍스트 전처리 유틸 ── */
+
+// \frac 등 LaTeX인데 $ 없는 경우 자동으로 감싸기
+function wrapLatex(text) {
+    if (!text) return text;
+    if (text.includes('$')) return text;          // 이미 $ 있으면 그대로
+    if (text.includes('\\')) return `$${text}$`; // \ 있으면 수식으로 감싸기
+    return text;
+}
+
+// [cite: ...] 태그 제거
+function stripCite(text) {
+    if (!text) return text;
+    return text.replace(/\[cite:[^\]]*\]/g, '').trim();
 }
 
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
