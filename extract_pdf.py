@@ -1,58 +1,44 @@
 import os
 import json
+import re
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_OUT_DIR = os.path.join(BASE_DIR, "data")
+# [확정] 원장님의 R2 버킷 공용 주소
+R2_PUBLIC_URL = "https://pub-4e78e71560154e7a86ec04d0bd37c191.r2.dev"
+PDF_DIR = "pdf_archive"
+OUTPUT_FILE = "data/catalog.json"
 
-def extract_pdf_data():
-    if not os.path.exists(DATA_OUT_DIR):
-        os.makedirs(DATA_OUT_DIR)
+def extract_metadata():
+    if not os.path.exists(PDF_DIR):
+        print(f"오류: {PDF_DIR} 폴더를 찾을 수 없습니다.")
+        return
 
-    catalog = {"years": set(), "exams": set(), "files": []}
-
-    for root, dirs, files in os.walk(BASE_DIR):
-        if "data" in root or ".git" in root:
-            continue
-            
-        for filename in files:
-            if not filename.endswith(".pdf"):
-                continue
-
-            name_part = os.path.splitext(filename)[0]
-            parts = name_part.split("_")
-
-            if len(parts) < 2:
-                print(f"[Skip] 규칙 위반 파일 무시됨: {filename}")
-                continue
-
-            year = parts[0]
-            school = parts[1]
-            
-            file_type = "문제"
-            if "정답" in name_part: file_type = "정답"
-            elif "해설" in name_part: file_type = "해설"
-
-            exam_season = "기타"
-            for p in parts:
-                if "중간" in p or "기말" in p:
-                    exam_season = p
-                    break
-            
-            subject = parts[2] if len(parts) > 2 else "수학"
-            
-            catalog["files"].append({
-                "year": year, "school": school, "subject": subject,
-                "exam": exam_season, "type": file_type, "fileName": filename
-            })
-
-            catalog["years"].add(year)
-            catalog["exams"].add(exam_season)
-
-    catalog["years"] = sorted(list(catalog["years"]), reverse=True)
-    catalog["exams"] = sorted(list(catalog["exams"]))
+    catalog = {"files": []}
     
-    with open(os.path.join(DATA_OUT_DIR, "catalog.json"), "w", encoding="utf-8") as f:
+    # 파일명 규칙: 2024_연향중_중2_수학_1학기중간.pdf (5개 그룹)
+    pattern = re.compile(r"(\d{4})_(.+?)_(.+?)_(.+?)_(.+?)\.pdf")
+
+    for filename in sorted(os.listdir(PDF_DIR)):
+        if filename.endswith(".pdf"):
+            match = pattern.match(filename)
+            if match:
+                year, school, grade, subject, exam = match.groups()
+                catalog["files"].append({
+                    "year": year,
+                    "school": school,
+                    "grade": grade,
+                    "subject": subject,
+                    "exam": exam,
+                    "fileName": filename,
+                    "url": f"{R2_PUBLIC_URL}/{filename}"
+                })
+            else:
+                print(f"[경고] 파일명 규칙 불일치, 건너뜀: {filename}")
+
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(catalog, f, ensure_ascii=False, indent=2)
+    
+    print(f"완료: {len(catalog['files'])}개의 파일이 등록되었습니다.")
 
 if __name__ == "__main__":
-    extract_pdf_data()
+    extract_metadata()
