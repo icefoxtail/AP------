@@ -1,9 +1,12 @@
 import os
 import json
 import re
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # ── 설정 ──────────────────────────────────────────
-R2_PUBLIC_URL = "https://pub-4e78e71560154e7a86ec04d0bd37c191.r2.dev"
+R2_PUBLIC_URL = "https://pub-a1a47eadaf4f4f2bbc9d65c13ee8abba.r2.dev"
 PDF_DIR       = r"C:\Users\USER\Desktop\APMATH\AP\ready_for_r2"
 OUTPUT_FILE   = r"C:\Users\USER\Desktop\APMATH\AP\data\catalog.json"
 # ──────────────────────────────────────────────────
