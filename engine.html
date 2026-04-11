@@ -29,16 +29,52 @@
         }
 
         #mode-ctrl {
-            position: fixed; top: 0; left: 0; width: 100%; height: 54px;
-            background: white; display: flex; justify-content: space-between;
-            align-items: center; padding: 0 20px; z-index: 1000;
-            box-sizing: border-box; border-bottom: 1px solid #ccc;
+            position: fixed; top: 0; left: 0; width: 100%; height: 56px;
+            background: #0f172a; display: flex; justify-content: space-between;
+            align-items: center; padding: 0 24px; z-index: 1000;
+            box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.08);
+            gap: 16px;
         }
+        #ctrl-title {
+            font-size: 14px; font-weight: 800; color: white;
+            white-space: nowrap; letter-spacing: -0.3px;
+            flex-shrink: 0;
+        }
+        /* 모드 전환 탭 */
+        .mode-tabs {
+            display: flex; gap: 4px;
+            background: rgba(255,255,255,0.07);
+            padding: 4px; border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .mode-tab {
+            padding: 6px 16px; border-radius: 7px;
+            font-size: 12px; font-weight: 700;
+            cursor: pointer; border: none;
+            background: transparent; color: rgba(255,255,255,0.5);
+            transition: 0.18s; font-family: inherit;
+            letter-spacing: -0.2px;
+        }
+        .mode-tab:hover { color: white; background: rgba(255,255,255,0.1); }
+        .mode-tab.active {
+            background: white; color: #0f172a;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+        }
+        /* 우측 버튼 */
+        .ctrl-right { display: flex; gap: 8px; flex-shrink: 0; }
         .print-btn {
-            padding: 8px 16px; background: #378ADD; color: white;
-            border: none; border-radius: 4px; cursor: pointer;
-            font-family: inherit; font-weight: bold;
+            padding: 7px 16px; border: none; border-radius: 7px;
+            font-family: inherit; font-weight: 700; font-size: 12px;
+            cursor: pointer; transition: 0.15s;
         }
+        .print-btn.primary {
+            background: #378ADD; color: white;
+        }
+        .print-btn.primary:hover { background: #2e73c4; }
+        .print-btn.ghost {
+            background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
+        }
+        .print-btn.ghost:hover { background: rgba(255,255,255,0.18); color: white; }
 
         #print-area {
             display: none; flex-direction: column;
@@ -108,25 +144,16 @@
         /* 해설지 2열 신문 칼럼 */
         .sol-container {
             flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-            overflow: hidden;
-            align-items: start;
-        }
-        .sol-container::after {
-            content: ''; position: absolute;
-            left: 50%; top: 0; bottom: 0;
-            width: 1px; background: #ccc;
-        }
-        .sol-col {
-            display: flex; flex-direction: column;
-            padding: 0 12px; overflow: hidden;
+            column-count: 2;
+            column-gap: 24px;
+            column-rule: 1px solid #ccc;
         }
         .sol-box {
             padding: 8px 0;
             border-bottom: 0.5px solid #eee;
-            flex-shrink: 0;
+            break-inside: avoid-page;
+            display: inline-block;
+            width: 100%;
         }
         .sol-box:last-child { border-bottom: none; }
         .sol-step {
@@ -137,24 +164,30 @@
 
         /* 정답표 */
         .ans-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px; margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; margin-top: 10px;
         }
         .ans-cell {
-            border: 1px solid #000; padding: 8px;
-            display: flex; align-items: center; gap: 8px;
+            padding: 8px;
+            display: flex; align-items: flex-start; gap: 8px;
         }
     </style>
 </head>
 <body>
 
     <div id="mode-ctrl">
-        <h3 id="top-title" style="margin:0;">AP 수학 엔진</h3>
-        <div>
-            <button class="print-btn" onclick="window.print()">인쇄하기 / PDF 저장</button>
-            <button class="print-btn" style="background:#64748b; margin-left:10px;"
-                    onclick="history.back()">목록으로</button>
+        <span id="ctrl-title">AP 수학</span>
+
+        <div class="mode-tabs" id="modeTabs">
+            <button class="mode-tab" data-mode="exam" onclick="switchMode('exam')">시험지</button>
+            <button class="mode-tab" data-mode="sol"  onclick="switchMode('sol')">해설지</button>
+            <button class="mode-tab" data-mode="ans"  onclick="switchMode('ans')">정답표</button>
+        </div>
+
+        <div class="ctrl-right">
+            <button class="print-btn primary" onclick="window.print()">🖨 인쇄</button>
+            <button class="print-btn ghost"   onclick="history.back()">← 목록</button>
         </div>
     </div>
 
@@ -199,18 +232,23 @@ async function init() {
     AppState.mode  = p.get('mode')  || 'exam';
     AppState.title = p.get('title') || 'AP 수학 기출';
     AppState.qpp   = parseInt(p.get('qpp')) || 4;
+    AppState.data_url = p.get('data') || '';
 
     const file    = p.get('file');
-    const dataUrl = p.get('data');
+    const dataUrl = AppState.data_url;
 
-    document.getElementById('top-title').innerText = AppState.title;
+    document.getElementById('ctrl-title').innerText = AppState.title;
 
-    // PDF 모드
+    // PDF 모드 — 탭 숨김
     if (AppState.mode === 'pdf' && file) {
+        document.getElementById('modeTabs').style.display = 'none';
         document.getElementById('pdf-container').style.display = 'block';
         document.getElementById('pdf-viewer').src = file;
         return;
     }
+
+    // 탭 활성화
+    updateTabs(AppState.mode);
 
     document.getElementById('print-area').style.display = 'flex';
 
@@ -219,6 +257,23 @@ async function init() {
         if (AppState.data.length > 0) await renderEngine();
         else console.warn('문항 데이터 없음:', dataUrl);
     }
+}
+
+/* ── 탭 활성화 ── */
+function updateTabs(mode) {
+    document.querySelectorAll('.mode-tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+}
+
+/* ── 모드 전환 ── */
+function switchMode(mode) {
+    if (mode === AppState.mode) return;
+    const qpp = (mode === 'exam') ? AppState.qpp : 4;
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', mode);
+    url.searchParams.set('qpp', qpp);
+    window.location.href = url.toString();
 }
 
 /* ── 렌더 분기 ── */
@@ -270,54 +325,22 @@ function buildExamBox(q, i) {
         ${choicesHTML}`;
 }
 
-/* ── 해설지: 높이 기반 2열 신문 흘림 ── */
+/* ── 해설지: CSS 다단 Flow ── */
 async function renderSol(area, bank) {
     const staging = document.getElementById('staging');
     staging.innerHTML = '';
 
-    const boxes = bank.map((q, i) => {
+    const p = makePage(area, 'sol');
+    const container = p.container;
+
+    bank.forEach((q, i) => {
         const el = document.createElement('div');
         el.className = 'sol-box';
         el.innerHTML = buildSolBox(q, i);
-        staging.appendChild(el);
-        return el;
+        container.appendChild(el);
     });
 
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
-    await raf();
-
-    const heights = boxes.map(el => el.getBoundingClientRect().height);
-
-    // 가용 높이 측정 (한 열의 높이)
-    const probe = makePage(area, 'sol');
-    await raf();
-    const PAGE_H = probe.cols[0].getBoundingClientRect().height;
-    probe.page.remove();
-    pageCount--;
-
-    let cur    = makePage(area, 'sol');
-    let colIdx = 0;   // 0: 왼쪽, 1: 오른쪽
-    let filled = 0;
-
-    boxes.forEach((el) => {
-        const h = heights[boxes.indexOf(el)];
-
-        if (filled + h > PAGE_H) {
-            if (colIdx === 0) {
-                // 왼쪽 열 꽉 참 → 오른쪽 열로
-                colIdx = 1;
-                filled = 0;
-            } else {
-                // 오른쪽 열도 꽉 참 → 새 페이지
-                cur    = makePage(area, 'sol');
-                colIdx = 0;
-                filled = 0;
-            }
-        }
-
-        cur.cols[colIdx].appendChild(el.cloneNode(true));
-        filled += h;
-    });
+    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([p.page]);
 }
 
 function buildSolBox(q, i) {
@@ -348,8 +371,8 @@ function renderAnsGrid(area, bank) {
     bank.forEach((q, i) => {
         const cell = document.createElement('div');
         cell.className = 'ans-cell';
-        cell.innerHTML = `<b style="font-size:11pt;min-width:24px;">${i+1}.</b>
-                          <span style="font-size:10pt;">${q.answer ?? '–'}</span>`;
+        cell.innerHTML = `<b style="font-size:11pt;min-width:40px;">${i+1}.</b>
+                          <span style="font-size:11pt;">${wrapLatex(q.answer ?? '–')}</span>`;
         grid.appendChild(cell);
     });
     p.body.appendChild(grid);
@@ -370,15 +393,9 @@ function makePage(area, type) {
     if (type === 'sol') {
         const container = document.createElement('div');
         container.className = 'sol-container';
-        const left  = document.createElement('div');
-        left.className = 'sol-col';
-        const right = document.createElement('div');
-        right.className = 'sol-col';
-        container.appendChild(left);
-        container.appendChild(right);
         page.appendChild(container);
         area.appendChild(page);
-        return { page, cols: [left, right] };
+        return { page, container };
     }
 
     if (type === 'ans') {
@@ -413,10 +430,10 @@ function wrapLatex(text) {
     return text;
 }
 
-// [cite: ...] 태그 제거
+// 태그 제거
 function stripCite(text) {
     if (!text) return text;
-    return text.replace(/\[cite:[^\]]*\]/g, '').trim();
+    return text.replace(/\]*\]/g, '').trim();
 }
 
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
