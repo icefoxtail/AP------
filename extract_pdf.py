@@ -7,113 +7,88 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # ── 설정 ──────────────────────────────────────────
 R2_PUBLIC_URL = "https://pub-a1a47eadaf4f4f2bbc9d65c13ee8abba.r2.dev"
-PDF_DIR       = r"C:\Users\USER\Desktop\APMATH\AP\ready_for_r2"
+PDF_DIR       = r"C:\Users\USER\Desktop\APMATH\AP\pdf_archive"
 OUTPUT_FILE   = r"C:\Users\USER\Desktop\APMATH\AP\data\catalog.json"
 # ──────────────────────────────────────────────────
 
-# 시험 구분 키워드
 EXAM_KEYWORDS = ['중간', '기말']
 
-# 유형 키워드 → 분류
 TYPE_MAP = {
-    '문제지': 'q',
-    '문제':   'q',
-    '해설지': 'sol',
-    '해설':   'sol',
-    '정답지': 'ans',
-    '정답':   'ans',
+    '문제지': 'q', '문제': 'q',
+    '해설지': 'sol', '해설': 'sol', '풀이': 'sol',
+    '정답지': 'ans', '정답': 'ans',
 }
 
-def classify_type(part):
-    """마지막 파트에서 유형 판별"""
+def classify_type(stem):
     for keyword, kind in TYPE_MAP.items():
-        if keyword in part:
+        if keyword in stem:
             return kind
-    return 'q'  # 기본값: 문제지
+    return 'q'
 
 def find_exam_idx(parts):
-    """중간/기말 키워드가 포함된 파트의 인덱스 반환"""
     for i, p in enumerate(parts):
         for kw in EXAM_KEYWORDS:
             if kw in p:
                 return i
     return -1
 
-def extract_grade(school):
-    """학교명에서 학년 추출 (예: 연향중3 → 중3, 금당중1 → 중1, 고1 → 고1)"""
-    m = re.search(r'(중|고)(\d)', school)
+def extract_grade(text):
+    m = re.search(r'(중|고)(\d)', text)
     if m:
         return m.group(1) + m.group(2)
     return None
 
 def parse_filename(filename):
-    """
-    유연한 파싱:
-    - 첫 파트: 연도 (4자리 숫자)
-    - 두 번째 파트: 학교 (학년 포함)
-    - 중간/기말 포함 파트: 시험구분
-    - 마지막 파트: 유형 (문제지/해설지/정답)
-    - 그 사이: 과목 또는 학년 (있을 수도 없을 수도)
-    """
     stem = os.path.splitext(filename)[0]
     parts = stem.split('_')
 
     if len(parts) < 3:
         return None
 
-    # 연도
     year = parts[0]
     if not re.match(r'^\d{4}$', year):
         return None
 
-    # 학교 (두 번째)
     school = parts[1]
-
-    # 마지막 파트 = 유형
-    type_part = parts[-1]
-    kind = classify_type(type_part)
-
-    # 시험구분 = 중간/기말 포함 파트
     exam_idx = find_exam_idx(parts)
     if exam_idx == -1:
-        return None  # 시험구분 불명확
-    exam = parts[exam_idx]
+        return None
 
-    # 학년 추출 (학교명 또는 중간 파트에서)
+    exam = parts[exam_idx]
     grade = extract_grade(school)
     if not grade:
-        # 학교 파트에 없으면 중간 파트에서 탐색
         for p in parts[2:exam_idx]:
             g = extract_grade(p)
             if g:
                 grade = g
                 break
 
-    # 과목: 학교~시험구분 사이 파트 (있으면)
     subject_parts = parts[2:exam_idx]
     subject = '_'.join(subject_parts) if subject_parts else '수학'
+    kind = classify_type(stem)
 
     return {
-        'year':    year,
-        'school':  school,
-        'grade':   grade,
-        'subject': subject,
-        'exam':    exam,
-        'kind':    kind,
+        'year': year, 'school': school, 'grade': grade,
+        'subject': subject, 'exam': exam, 'kind': kind,
     }
+
+def collect_pdfs(root):
+    """하위 폴더 전체 재귀 탐색"""
+    result = []
+    for dirpath, _, files in os.walk(root):
+        for f in files:
+            if f.lower().endswith('.pdf'):
+                result.append(f)
+    return sorted(set(result))
 
 def extract_metadata():
     if not os.path.exists(PDF_DIR):
         print(f"❌ 폴더 없음: {PDF_DIR}")
         return
 
-    all_pdfs = sorted([
-        f for f in os.listdir(PDF_DIR)
-        if f.lower().endswith('.pdf')
-    ])
+    all_pdfs = collect_pdfs(PDF_DIR)
     print(f"🔍 PDF 총 {len(all_pdfs)}개 발견")
 
-    # 키: (year, school, exam) → entry
     entries = {}
     skipped = []
 
@@ -128,17 +103,14 @@ def extract_metadata():
 
         if key not in entries:
             entries[key] = {
-                'year':     meta['year'],
-                'school':   meta['school'],
-                'grade':    meta['grade'],
-                'subject':  meta['subject'],
-                'exam':     meta['exam'],
-                'fileName': filename,
+                'year': meta['year'], 'school': meta['school'],
+                'grade': meta['grade'], 'subject': meta['subject'],
+                'exam': meta['exam'], 'fileName': filename,
             }
 
         kind = meta['kind']
         if kind == 'q':
-            entries[key]['url']      = url
+            entries[key]['url'] = url
             entries[key]['fileName'] = filename
         elif kind == 'sol':
             entries[key]['solUrl'] = url
