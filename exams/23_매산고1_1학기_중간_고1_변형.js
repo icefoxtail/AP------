@@ -360,7 +360,6 @@ window.questionBank = {
       "category": "다항식의 전개",
       "tags": ["중하"],
       "content": "[단답형 1] 다항식 $(2x^2-3x+1)^2$의 전개식에서 $x$의 계수를 구하시오.",
-      "choices": [],
       "answer": "-6",
       "solution_steps": [
         "**[Step 1]** $(2x^2-3x+1)(2x^2-3x+1)$ 에서 $x$항이 나오는 경우를 찾음. [cite: 736]",
@@ -381,7 +380,6 @@ window.questionBank = {
       "category": "이차함수와 직선",
       "tags": ["중"],
       "content": "[단답형 2] 이차함수 $y=-x^2+2x-15$의 그래프가 직선 $y=4x+a+2$보다 항상 아래쪽에 있도록 하는 정수 $a$의 최솟값을 구하시오. [cite: 736]",
-      "choices": [],
       "answer": "-16",
       "solution_steps": [
         "**[Step 1]** 모든 실수 $x$에 대하여 $-x^2+2x-15 < 4x+a+2$ 가 성립해야 함.",
@@ -400,7 +398,6 @@ window.questionBank = {
       "category": "수치 계산의 공식화",
       "tags": ["중"],
       "content": "[단답형 3] $A=47^3+9 \\times 47^2+27 \\times 47+127$ 이라고 할 때, $A$의 값을 구하시오. [cite: 739]",
-      "choices": [],
       "answer": "125100",
       "solution_steps": [
         "**[Step 1]** $(x+y)^3 = x^3+3x^2y+3xy^2+y^3$ 꼴을 이용함. $x=47, y=3$ 으로 설정.",
@@ -418,7 +415,6 @@ window.questionBank = {
       "category": "다항식의 인수분해",
       "tags": ["상"],
       "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $20$의 값을 가질 때, $x+y+z$의 값을 구하시오. [cite: 739]",
-      "choices": [],
       "answer": "14",
       "solution_steps": [
         "**[Step 1]** 주어진 식을 인수분해하면 $(x-z)(x-y)^2 = 20$ 임.",
@@ -437,7 +433,6 @@ window.questionBank = {
       "category": "복소수의 거듭제곱",
       "tags": ["상"],
       "content": "[서술형 1] $10$이하의 자연수 $n, m$에 대하여 $n=4p, m=4q$ ($p, q$는 자연수)이고 $f(n,m)=(\\dfrac{1+i}{\\sqrt{2}})^n + i^m = 0$을 만족하는 순서쌍 $(n, m)$의 개수를 구하시오. [cite: 739]",
-      "choices": [],
       "answer": "2",
       "solution_steps": [
         "**[Step 1]** $(\\dfrac{1+i}{\\sqrt{2}})^2 = i$ 이므로 $(\\dfrac{1+i}{\\sqrt{2}})^n = i^{2p} = (-1)^p$ 임.",
@@ -456,7 +451,6 @@ window.questionBank = {
       "category": "이차함수와 도형의 넓이",
       "tags": ["상"],
       "content": "[서술형 2] 이차함수 $y=-x^2+4x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $4$배가 될 때, $a$의 최댓값을 구하시오. (단, $b \\ne 0$) [cite: 743]",
-      "choices": [],
       "answer": "8",
       "solution_steps": [
         "**[Step 1]** 접점 $C$의 $x$좌표는 연립방정식의 중근인 $\\dfrac{4-a}{2}$ 임. $b = \\dfrac{(a-4)^2}{4}$ 임.",

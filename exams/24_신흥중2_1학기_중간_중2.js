@@ -16,7 +16,7 @@ window.questionBank = [
         content: "다음은 분수와 소수에 대해 친구들이 발표한 것이다. 친구들의 설명 중 바르지 못한 것은?",
         choices: ["다혜 : 분수는 나누는 과정에서 생겨났어요.", "주영 : 음식 레시피에서 재료의 양은 주로 소수가 쓰여요.", "은세 : 소수는 분수보다 훨씬 늦게 발명됐어요.", "승연 : 음악 시간에 박자를 나타낼 때 분수가 쓰여요.", "정식 : 내 키나 몸무게 같은 것은 소수로 표현해요."],
         answer: "②",
-        solution: "**[Logical Anchor]** 실생활에서의 수의 활용 사례를 분석함.\n② 음식 레시피에서는 주로 $\\frac{1}{2}$컵, $\\frac{2}{3}$스푼 등 분수 표현이 소수보다 더 빈번하게 사용됨.\n$\\therefore$ ②"
+        solution: "**[Logical Anchor]** 실생활에서의 수의 활용 사례를 분석함.\\n② 음식 레시피에서는 주로 $\\frac{1}{2}$컵, $\\frac{2}{3}$스푼 등 분수 표현이 소수보다 더 빈번하게 사용됨.\\n$\\therefore$ ②"
     },
     {
         id: 2,
@@ -25,7 +25,7 @@ window.questionBank = [
         content: "다음 분수 중에서 유한소수로 나타낼 수 있는 것을 모두 고르면? (정답 2개)",
         choices: ["$\\frac{14}{2^2 \\times 7}$", "$\\frac{1}{15}$", "$\\frac{3 \\times 7}{2 \\times 5 \\times 7^2}$", "$\\frac{6}{18}$", "$\\frac{45}{2^2 \\times 3^2 \\times 5^2}$"],
         answer: "①, ⑤",
-        solution: "**[Logical Anchor]** 기약분수 상태에서 분모의 소인수가 $2$ 또는 $5$뿐인지 확인.\n① $\\frac{14}{28} = \\frac{1}{2} \\implies$ 분모 소인수 $2$ (유한)\n② $\\frac{1}{15} = \\frac{1}{3 \\times 5} \\implies$ 분모 소인수 $3$ (순환)\n③ $\\frac{21}{490} = \\frac{3}{70} \\implies$ 분모 소인수 $7$ (순환)\n④ $\\frac{6}{18} = \\frac{1}{3} \\implies$ 분모 소인수 $3$ (순환)\n⑤ $\\frac{45}{4 \\times 9 \\times 25} = \\frac{45}{900} = \\frac{1}{20} = \\frac{1}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$ (유한)\n$\\therefore$ ①, ⑤"
+        solution: "**[Logical Anchor]** 기약분수 상태에서 분모의 소인수가 $2$ 또는 $5$뿐인지 확인.\\n① $\\frac{14}{28} = \\frac{1}{2} \\implies$ 분모 소인수 $2$ (유한)\\n② $\\frac{1}{15} = \\frac{1}{3 \\times 5} \\implies$ 분모 소인수 $3$ (순환)\\n③ $\\frac{21}{490} = \\frac{3}{70} \\implies$ 분모 소인수 $7$ (순환)\\n④ $\\frac{6}{18} = \\frac{1}{3} \\implies$ 분모 소인수 $3$ (순환)\\n⑤ $\\frac{45}{4 \\times 9 \\times 25} = \\frac{45}{900} = \\frac{1}{20} = \\frac{1}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$ (유한)\\n$\\therefore$ ①, ⑤"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ window.questionBank = [
         content: "다음 중 순환소수의 순환마디와 그 표현이 옳은 것은?",
         choices: ["$8.1414\\dots$ 마디:41, 표:$8.1\\dot{4}$", "$20.96565\\dots$ 마디:65, 표:$20.9\\dot{6}\\dot{5}$", "$30.37437\\dots$ 마디:374, 표:$30.\\dot{3}7\\dot{4}$", "$0.1010\\dots$ 마디:10, 표:$0.1\\dot{0}$", "$2.34523\\dots$ 마디:2345, 표:$2.\\dot{2}34\\dot{5}$"],
         answer: "③",
-        solution: "순환마디는 반복되는 최소 단위이며, 마디의 시작과 끝 숫자 위에 점을 찍음.\n③ $30.374374\\dots \\implies$ 마디: $374$, 표: $30.\\dot{3}7\\dot{4}$ (옳음)\n$\\therefore$ ③"
+        solution: "순환마디는 반복되는 최소 단위이며, 마디의 시작과 끝 숫자 위에 점을 찍음.\\n③ $30.374374\\dots \\implies$ 마디: $374$, 표: $30.\\dot{3}7\\dot{4}$ (옳음)\\n$\\therefore$ ③"
     },
     {
         id: 4,
@@ -43,7 +43,7 @@ window.questionBank = [
         content: "분수 $\\frac{5}{27}$ 을 소수로 나타낼 때, 소수점 아래 49번째 자리의 숫자를 구하면?",
         choices: ["1", "4", "5", "7", "8"],
         answer: "①",
-        solution: "$\\frac{5}{27} = 5 \\div 27 = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\n순환마디는 $(1, 8, 5)$이며 길이는 $3$임.\n$49 = 3 \\times 16 + 1$\n$\\because$ 나머지가 $1$이므로 순환마디의 첫 번째 숫자인 $1$임.\n$\\therefore$ 1"
+        solution: "$\\frac{5}{27} = 5 \\div 27 = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\\n순환마디는 $(1, 8, 5)$이며 길이는 $3$임.\\n$49 = 3 \\times 16 + 1$\\n$\\because$ 나머지가 $1$이므로 순환마디의 첫 번째 숫자인 $1$임.\\n$\\therefore$ 1"
     },
     {
         id: 5,
@@ -52,7 +52,7 @@ window.questionBank = [
         content: "다음 중에서 옳은 것을 모두 고르면? (정답 2개)",
         choices: ["순환소수는 모두 유리수이다.", "유한소수 중에는 유리수가 아닌 것도 있다.", "모든 무한소수는 순환소수이다.", "분모의 소인수에 7이 있는 기약분수는 순환소수가 된다.", "정수가 아닌 유리수는 모두 유한소수이다."],
         answer: "①, ④",
-        solution: "① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\n④ 기약분수 분모에 $2, 5$ 이외의 소인수($7$ 등)가 있으면 순환소수가 됨. (참)\n$\\because$ ② 모든 유한소수는 유리수임. ③ 무한소수 중 비순환소수는 유리수가 아님.\n$\\therefore$ ①, ④"
+        solution: "① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\\n④ 기약분수 분모에 $2, 5$ 이외의 소인수($7$ 등)가 있으면 순환소수가 됨. (참)\\n$\\because$ ② 모든 유한소수는 유리수임. ③ 무한소수 중 비순환소수는 유리수가 아님.\\n$\\therefore$ ①, ④"
     },
     {
         id: 6,
@@ -61,7 +61,7 @@ window.questionBank = [
         content: "순환소수 $0.1\\dot{3}\\dot{2}$를 분수로 고칠 때 필요한 가장 편리한 계산식은?",
         choices: ["$100x - x$", "$1000x - x$", "$1000x - 100x$", "$1000x - 10x$", "$10x - x$"],
         answer: "④",
-        solution: "$x = 0.1323232\\dots$\n$1000x = 132.3232\\dots \\cdots (1)$\n$10x = 1.3232\\dots \\cdots (2)$\n$(1) - (2)$를 통해 소수 부분을 제거함.\n$\\therefore 1000x - 10x$"
+        solution: "$x = 0.1323232\\dots$\\n$1000x = 132.3232\\dots \\cdots (1)$\\n$10x = 1.3232\\dots \\cdots (2)$\\n$(1) - (2)$를 통해 소수 부분을 제거함.\\n$\\therefore 1000x - 10x$"
     },
     {
         id: 7,
@@ -70,7 +70,7 @@ window.questionBank = [
         content: "다음 중에서 옳은 것은?",
         choices: ["$a^2 \\div a^5 = a^3$", "$a^2 \\times a^3 = a^6$", "$(\\frac{b^2}{2a^3})^3 = \\frac{b^6}{6a^9}$", "$(-ab^2)^3 = -a^3b^6$", "$a^2 \\div a^2 = 0$"],
         answer: "④",
-        solution: "④ $(-ab^2)^3 = (-1)^3 \\times a^3 \\times (b^2)^3 = -a^3b^6$ (참)\n$\\because$ ① $\\frac{1}{a^3}$, ② $a^5$, ③ $\\frac{b^6}{8a^9}$, ⑤ $1$\n$\\therefore$ ④"
+        solution: "④ $(-ab^2)^3 = (-1)^3 \\times a^3 \\times (b^2)^3 = -a^3b^6$ (참)\\n$\\because$ ① $\\frac{1}{a^3}$, ② $a^5$, ③ $\\frac{b^6}{8a^9}$, ⑤ $1$\\n$\\therefore$ ④"
     },
     {
         id: 8,
@@ -79,7 +79,7 @@ window.questionBank = [
         content: "$(\\frac{x^a}{3y^{2b}})^4 = \\frac{x^8}{81y^{24}}$ 일 때, $a+b$의 값은?",
         choices: ["5", "6", "7", "8", "9"],
         answer: "①",
-        solution: "좌변을 지수법칙으로 전개하여 우변과 비교함.\n$\\frac{x^{4a}}{3^4 y^{8b}} = \\frac{x^8}{81y^{24}}$\n(1) $4a = 8 \\implies a = 2$\n(2) $8b = 24 \\implies b = 3$\n$\\therefore a + b = 2 + 3 = 5$"
+        solution: "좌변을 지수법칙으로 전개하여 우변과 비교함.\\n$\\frac{x^{4a}}{3^4 y^{8b}} = \\frac{x^8}{81y^{24}}$\\n(1) $4a = 8 \\implies a = 2$\\n(2) $8b = 24 \\implies b = 3$\\n$\\therefore a + b = 2 + 3 = 5$"
     },
     {
         id: 9,
@@ -88,7 +88,7 @@ window.questionBank = [
         content: "$1 \\times 2 \\times 3 \\times \\dots \\times 12 = 2^a \\times b$ ($b$는 홀수)일 때, 자연수 $a$의 값은?",
         choices: ["8", "9", "10", "11", "12"],
         answer: "③",
-        solution: "$1$부터 $12$까지 중 소인수 $2$의 개수를 합산함.\n$2(1개), 4(2^2, 2개), 6(2\\times3, 1개), 8(2^3, 3개), 10(2\\times5, 1개), 12(2^2\\times3, 2개)$\n$\\implies 1 + 2 + 1 + 3 + 1 + 2 = 10$\n$\\therefore a = 10$"
+        solution: "$1$부터 $12$까지 중 소인수 $2$의 개수를 합산함.\\n$2(1개), 4(2^2, 2개), 6(2\\times3, 1개), 8(2^3, 3개), 10(2\\times5, 1개), 12(2^2\\times3, 2개)$\\n$\\implies 1 + 2 + 1 + 3 + 1 + 2 = 10$\\n$\\therefore a = 10$"
     },
     {
         id: 10,
@@ -97,7 +97,7 @@ window.questionBank = [
         content: "$5^{10} \\times 2^{12}$은 몇 자리의 자연수인가?",
         choices: ["10", "11", "12", "13", "14"],
         answer: "②",
-        solution: "**[Logical Anchor]** $2^n \\times 5^n = 10^n$ 성질을 이용함.\n$5^{10} \\times 2^{12} = 5^{10} \\times 2^{10} \\times 2^2$\n$= (5 \\times 2)^{10} \\times 4 = 4 \\times 10^{10}$\n$\\because$ $4$ 뒤에 $0$이 $10$개 붙으므로 자릿수는 $1 + 10 = 11$임.\n$\\therefore$ 11자리"
+        solution: "**[Logical Anchor]** $2^n \\times 5^n = 10^n$ 성질을 이용함.\\n$5^{10} \\times 2^{12} = 5^{10} \\times 2^{10} \\times 2^2$\\n$= (5 \\times 2)^{10} \\times 4 = 4 \\times 10^{10}$\\n$\\because$ $4$ 뒤에 $0$이 $10$개 붙으므로 자릿수는 $1 + 10 = 11$임.\\n$\\therefore$ 11자리"
     },
     {
         id: 11,
@@ -106,7 +106,7 @@ window.questionBank = [
         content: "$\\frac{36^9}{54^6} = 2^a$ 일 때, 자연수 $a$의 값은?",
         choices: ["2", "4", "6", "8", "12"],
         answer: "⑤",
-        solution: "**[Logical Anchor]** 밑을 소인수분해하여 지수법칙을 적용함.\n$\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{18-6} = 2^{12}$\n$\\therefore a = 12$"
+        solution: "**[Logical Anchor]** 밑을 소인수분해하여 지수법칙을 적용함.\\n$\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{18-6} = 2^{12}$\\n$\\therefore a = 12$"
     },
     {
         id: 12,
@@ -115,7 +115,7 @@ window.questionBank = [
         content: "$(-2x^2)^3 \\times (-9x) \\div 12x^4$ 을 간단히 하면?",
         choices: ["$8x^3$", "$2x^3$", "$6x^3$", "$\\frac{3x^4}{2}$", "$-6x^2$"],
         answer: "③",
-        solution: "$-8x^6 \\times (-9x) \\times \\frac{1}{12x^4}$\n$= 72x^7 \\times \\frac{1}{12x^4} = 6x^3$\n$\\therefore 6x^3$"
+        solution: "$-8x^6 \\times (-9x) \\times \\frac{1}{12x^4}$\\n$= 72x^7 \\times \\frac{1}{12x^4} = 6x^3$\\n$\\therefore 6x^3$"
     },
     {
         id: 13,
@@ -124,7 +124,7 @@ window.questionBank = [
         content: "$2xy^2 \\times A \\div (-3x^2y^3) = 4xy$ 를 만족하는 식 $A$는?",
         choices: ["$-6xy^3$", "$6x^2y$", "$-6x^2y^2$", "$6x^3y^2$", "$-6x^3y$"],
         answer: "③",
-        solution: "$A = 4xy \\times (-3x^2y^3) \\div 2xy^2$\n$A = -12x^3y^4 \\div 2xy^2 = -6x^2y^2$\n$\\therefore -6x^2y^2$"
+        solution: "$A = 4xy \\times (-3x^2y^3) \\div 2xy^2$\\n$A = -12x^3y^4 \\div 2xy^2 = -6x^2y^2$\\n$\\therefore -6x^2y^2$"
     },
     {
         id: 14,
@@ -133,7 +133,7 @@ window.questionBank = [
         content: "다항식 $3x^2 + \\frac{x}{3} - 2 - 2x^2 - 1$ 에 대한 설명으로 옳은 것은?",
         choices: ["항이 4개이다.", "$3x^2$과 $\\frac{x}{3}$은 동류항이다.", "간단히 했을 때, $x$의 계수는 $\\frac{1}{3}$이다.", "상수항은 3이다.", "이 식은 일차식이다."],
         answer: "③",
-        solution: "동류항을 정리함: $(3-2)x^2 + \\frac{1}{3}x + (-2-1) = x^2 + \\frac{1}{3}x - 3$\n③ $x$의 계수는 $\\frac{1}{3}$임. (참)\n$\\because$ ① 항은 3개, ② 차수가 다름, ④ 상수항 -3, ⑤ 이차식임.\n$\\therefore$ ③"
+        solution: "동류항을 정리함: $(3-2)x^2 + \\frac{1}{3}x + (-2-1) = x^2 + \\frac{1}{3}x - 3$\\n③ $x$의 계수는 $\\frac{1}{3}$임. (참)\\n$\\because$ ① 항은 3개, ② 차수가 다름, ④ 상수항 -3, ⑤ 이차식임.\\n$\\therefore$ ③"
     },
     {
         id: 15,
@@ -142,7 +142,7 @@ window.questionBank = [
         content: "어떤 식에 $2x^2-3x+7$ 을 더했더니 $6x^2-2x+3$ 이 되었다. 어떤 식에서 $(2x^2-3x+7)$ 을 뺀 식은?",
         choices: ["$2x^2+8x-11$", "$-2x^2-5x+11$", "$-2x^2+x+11$", "$2x^2+4x-11$", "$2x^2-3x+11$"],
         answer: "④",
-        solution: "**[Logical Anchor]** 역산을 통해 어떤 식을 먼저 구함.\n어떤 식 $= (6x^2-2x+3) - (2x^2-3x+7) = 4x^2+x-4$\n바른 계산: $(4x^2+x-4) - (2x^2-3x+7) = 2x^2+4x-11$\n$\\therefore 2x^2+4x-11$"
+        solution: "**[Logical Anchor]** 역산을 통해 어떤 식을 먼저 구함.\\n어떤 식 $= (6x^2-2x+3) - (2x^2-3x+7) = 4x^2+x-4$\\n바른 계산: $(4x^2+x-4) - (2x^2-3x+7) = 2x^2+4x-11$\\n$\\therefore 2x^2+4x-11$"
     },
     {
         id: 16,
@@ -151,7 +151,7 @@ window.questionBank = [
         content: "$x - \\{2x-y-(-x+4y)-3\\}$ 를 간단히 하면?",
         choices: ["$2x-3y+3$", "$x+5y-3$", "$-x+3y-3$", "$-3x+y+3$", "$-2x+5y+3$"],
         answer: "⑤",
-        solution: "$x - \{2x - y + x - 4y - 3\} = x - \{3x - 5y - 3\}$\n$= x - 3x + 5y + 3 = -2x + 5y + 3$\n$\\therefore -2x + 5y + 3$"
+        solution: "$x - \\{2x - y + x - 4y - 3\\} = x - \\{3x - 5y - 3\\}$\\n$= x - 3x + 5y + 3 = -2x + 5y + 3$\\n$\\therefore -2x + 5y + 3$"
     },
     {
         id: 17,
@@ -160,7 +160,7 @@ window.questionBank = [
         content: "$x=2$ 가 해가 되는 부등식을 <보기>에서 모두 고른 것은?<br>ㄱ. $2x-1 < 3$, ㄴ. $1+x \\ge 3$, ㄷ. $\\frac{1}{3}x + 3 > 1$, ㄹ. $2x \\ge x+1$",
         choices: ["ㄱ, ㄷ", "ㄱ, ㄴ, ㄷ", "ㄴ, ㄹ", "ㄴ, ㄷ, ㄹ", "ㄷ, ㄹ"],
         answer: "④",
-        solution: "$x=2$를 각 부등식에 대입하여 참/거짓 판별.\nㄱ. $4-1 < 3 \implies 3 < 3$ (거짓)\nㄴ. $1+2 \\ge 3 \implies 3 \\ge 3$ (참)\nㄷ. $\\frac{2}{3} + 3 > 1$ (참)\nㄹ. $4 \\ge 3$ (참)\n$\\therefore$ ㄴ, ㄷ, ㄹ"
+        solution: "$x=2$를 각 부등식에 대입하여 참/거짓 판별.\\nㄱ. $4-1 < 3 \\implies 3 < 3$ (거짓)\\nㄴ. $1+2 \\ge 3 \\implies 3 \\ge 3$ (참)\\nㄷ. $\\frac{2}{3} + 3 > 1$ (참)\\nㄹ. $4 \\ge 3$ (참)\\n$\\therefore$ ㄴ, ㄷ, ㄹ"
     },
     {
         id: 18,
@@ -169,7 +169,7 @@ window.questionBank = [
         content: "문장을 부등식으로 나타낸 것 중 옳지 않은 것을 모두 고르면? (정답 2개)",
         choices: ["차간 최소 거리 $50m$ ($x \\le 50$)", "최고속도 시속 $100km$ ($x \\le 100$)", "19세 미만 관람 금지 ($x < 19$)", "탑승 가능 인원 10명 ($x \\le 10$)", "키 $120cm$ 이하는 이용 불가 ($x \\ge 120$)"],
         answer: "①, ⑤",
-        solution: "① 최소 거리가 $50$이므로 $x \\ge 50$이어야 함.\n⑤ $120$ 이하가 불가이므로 이용 가능한 범위는 $x > 120$이어야 함.\n$\\therefore$ ①, ⑤"
+        solution: "① 최소 거리가 $50$이므로 $x \\ge 50$이어야 함.\\n⑤ $120$ 이하가 불가이므로 이용 가능한 범위는 $x > 120$이어야 함.\\n$\\therefore$ ①, ⑤"
     },
     {
         id: 19,
@@ -178,7 +178,7 @@ window.questionBank = [
         content: "분수 $\\frac{7}{30}$ 에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다. $a$가 한 자리의 자연수라고 할 때, $a$의 값을 모두 구하고 그 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
         answer: "3, 6, 9",
-        solution: "**[Solution Engine]**\n(1) 분모의 소인수분해: $30 = 2 \\times 3 \\times 5$\n(2) 유한소수 조건 분석: 기약분수 분모의 소인수가 $2, 5$뿐이어야 하므로, 소인수 $3$이 제거되어야 함.\n(3) $a$의 조건 도출: $a$는 $3$의 배수여야 함.\n(4) 범위 내 값 탐색: 한 자리 자연수 중 $3$의 배수는 $3, 6, 9$임.\n$\\therefore 3, 6, 9$"
+        solution: "**[Solution Engine]**\\n(1) 분모의 소인수분해: $30 = 2 \\times 3 \\times 5$\\n(2) 유한소수 조건 분석: 기약분수 분모의 소인수가 $2, 5$뿐이어야 하므로, 소인수 $3$이 제거되어야 함.\\n(3) $a$의 조건 도출: $a$는 $3$의 배수여야 함.\\n(4) 범위 내 값 탐색: 한 자리 자연수 중 $3$의 배수는 $3, 6, 9$임.\\n$\\therefore 3, 6, 9$"
     },
     {
         id: 20,
@@ -187,7 +187,7 @@ window.questionBank = [
         content: "순환소수 $0.1\\dot{4}\\dot{7}$ 을 기약분수로 나타내는 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
         answer: "$\\frac{73}{495}$",
-        solution: "**[Solution Engine]**\n(1) $x = 0.1474747\\dots$ 라 함.\n(2) $1000x = 147.4747\\dots$ (순환마디 끝까지 곱함)\n(3) $10x = 1.4747\\dots$ (순환하지 않는 부분까지 곱함)\n(4) 두 식을 뺌: $990x = 146$\n(5) $x = \\frac{146}{990} = \\frac{73}{495}$\n$\\therefore \\frac{73}{495}$"
+        solution: "**[Solution Engine]**\\n(1) $x = 0.1474747\\dots$ 라 함.\\n(2) $1000x = 147.4747\\dots$ (순환마디 끝까지 곱함)\\n(3) $10x = 1.4747\\dots$ (순환하지 않는 부분까지 곱함)\\n(4) 두 식을 뺌: $990x = 146$\\n(5) $x = \\frac{146}{990} = \\frac{73}{495}$\\n$\\therefore \\frac{73}{495}$"
     },
     {
         id: 21,
@@ -196,7 +196,7 @@ window.questionBank = [
         content: "$x+2y - \\frac{x-3y}{2}$ 를 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하는 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
         answer: "$\\frac{7}{4}$",
-        solution: "**[Solution Engine]**\n(1) 통분하여 식 정리: $\\frac{2(x+2y) - (x-3y)}{2} = \\frac{2x+4y-x+3y}{2} = \\frac{x+7y}{2}$\n(2) 계수 추출: $\\frac{1}{2}x + \\frac{7}{2}y \\implies a=\\frac{1}{2}, b=\\frac{7}{2}$\n(3) 계산: $ab = \\frac{1}{2} \\times \\frac{7}{2} = \\frac{7}{4}$\n$\\therefore \\frac{7}{4}$"
+        solution: "**[Solution Engine]**\\n(1) 통분하여 식 정리: $\\frac{2(x+2y) - (x-3y)}{2} = \\frac{2x+4y-x+3y}{2} = \\frac{x+7y}{2}$\\n(2) 계수 추출: $\\frac{1}{2}x + \\frac{7}{2}y \\implies a=\\frac{1}{2}, b=\\frac{7}{2}$\\n(3) 계산: $ab = \\frac{1}{2} \\times \\frac{7}{2} = \\frac{7}{4}$\\n$\\therefore \\frac{7}{4}$"
     },
     {
         id: 22,
@@ -205,7 +205,7 @@ window.questionBank = [
         content: "$(6xy^2 - 8x^2y) \\div \\frac{2}{5}xy - \\frac{3xy - 9xy^2}{3xy}$ 을 계산하는 과정을 서술하시오.",
         choices: [" ", " ", " ", " ", " "],
         answer: "$-20x+18y-1$",
-        solution: "**[Solution Engine]**\n(1) 첫 번째 항 계산: $(6xy^2 - 8x^2y) \\times \\frac{5}{2xy} = 15y - 20x$\n(2) 두 번째 항 계산: $(3xy - 9xy^2) \\div 3xy = 1 - 3y$\n(3) 전체 결합: $(15y - 20x) - (1 - 3y) = 15y - 20x - 1 + 3y = -20x + 18y - 1$\n$\\therefore -20x + 18y - 1$"
+        solution: "**[Solution Engine]**\\n(1) 첫 번째 항 계산: $(6xy^2 - 8x^2y) \\times \\frac{5}{2xy} = 15y - 20x$\\n(2) 두 번째 항 계산: $(3xy - 9xy^2) \\div 3xy = 1 - 3y$\\n(3) 전체 결합: $(15y - 20x) - (1 - 3y) = 15y - 20x - 1 + 3y = -20x + 18y - 1$\\n$\\therefore -20x + 18y - 1$"
     },
     {
         id: 23,
@@ -214,6 +214,6 @@ window.questionBank = [
         content: "$a \\ge b$ 일 때, 부등식의 성질을 이용하여 $-5a+3 \\le -5b+3$ 이 성립함을 설명하시오.",
         choices: [" ", " ", " ", " ", " "],
         answer: "증명 완료",
-        solution: "**[Solution Engine]**\n(1) 부등식의 양변에 음수($-5$)를 곱하면 부등호의 방향이 바뀜: $a \\ge b \\implies -5a \\le -5b$\n(2) 양변에 같은 수($3$)를 더해도 부등호의 방향은 유지됨: $-5a+3 \\le -5b+3$\n$\\therefore$ 성립함."
+        solution: "**[Solution Engine]**\\n(1) 부등식의 양변에 음수($-5$)를 곱하면 부등호의 방향이 바뀜: $a \\ge b \\implies -5a \\le -5b$\\n(2) 양변에 같은 수($3$)를 더해도 부등호의 방향은 유지됨: $-5a+3 \\le -5b+3$\\n$\\therefore$ 성립함."
     }
 ];

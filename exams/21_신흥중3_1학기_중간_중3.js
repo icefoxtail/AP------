@@ -188,7 +188,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^2+\\sqrt{(-5)^2}$을 계산하시오. (4점)",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "6",
     "solution": "$13 - 12 + 5 = 6$임."
   },
@@ -197,7 +196,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^2}-\\sqrt{(-\\frac{1}{2}a)^2}$을 간단히 하시오. (5점)",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "$-\\frac{5}{2}a$",
     "solution": "$|3a| - |-\\frac{1}{2}a| = -3a - (\\frac{1}{2}a) = -\\frac{5}{2}a$."
   },
@@ -206,7 +204,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[상]",
     "category": "다항식의 곱셈",
     "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "$-40\\sqrt{6}$",
     "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$."
   },
@@ -215,7 +212,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[상]",
     "category": "인수분해",
     "content": "[서답형 4-2] 이차식 $2x^2-ax-3$이 정수 계수로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "0",
     "solution": "$a=1, -1, 5, -5$ 가능. 모든 $a$의 합은 $0$임."
   }

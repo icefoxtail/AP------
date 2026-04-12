@@ -104,7 +104,7 @@ window.questionBank = [
     "id": 12,
     "level": "[중]",
     "category": "제곱근과 실수",
-    "content": "다음 보기 중 무리수인 것을 모두 고른 것은? [4점]\n<div class='box'>ㄱ. 가로의 길이가 6, 세로의 길이가 8인 직사각형의 대각선의 길이 ㄴ. 반지름의 길이가 2인 원의 넓이 ㄷ. 넓이가 \\frac{9}{16}인 정사각형의 한 변의 길이 ㄹ. 한변의 길이가 6인 정삼각형의 높이</div>",
+    "content": "다음 보기 중 무리수인 것을 모두 고른 것은? [4점]\\n<div class='box'>ㄱ. 가로의 길이가 6, 세로의 길이가 8인 직사각형의 대각선의 길이 ㄴ. 반지름의 길이가 2인 원의 넓이 ㄷ. 넓이가 \\frac{9}{16}인 정사각형의 한 변의 길이 ㄹ. 한변의 길이가 6인 정삼각형의 높이</div>",
     "choices": ["ㄱ, ㄴ", "ㄴ, ㄹ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄷ, ㄹ"],
     "answer": "2",
     "solution": "ㄱ. $\\sqrt{100}=10$ (유리수) ㄴ. $4\\pi$ (무리수) ㄷ. $\\frac{3}{4}$ (유리수) ㄹ. $3\\sqrt{3}$ (무리수) \\\\ \\therefore ㄴ, ㄹ"
@@ -140,7 +140,7 @@ window.questionBank = [
     "id": 16,
     "level": "[상]",
     "category": "제곱근과 실수",
-    "content": "두 번째로 큰 수는 $a$, 세 번째로 작은 수를 $b$라 할 때 $a^{2}-b^{2}$의 값은? [5점]\n<div class='box'>\\sqrt{5}, -\\sqrt{\\frac{9}{4}}, -\\sqrt{3}, \\frac{5}{2}, -\\sqrt{\\frac{5}{2}}, \\sqrt{\\frac{13}{2}}</div>",
+    "content": "두 번째로 큰 수는 $a$, 세 번째로 작은 수를 $b$라 할 때 $a^{2}-b^{2}$의 값은? [5점]\\n<div class='box'>\\sqrt{5}, -\\sqrt{\\frac{9}{4}}, -\\sqrt{3}, \\frac{5}{2}, -\\sqrt{\\frac{5}{2}}, \\sqrt{\\frac{13}{2}}</div>",
     "choices": ["\\frac{17}{4}", "-\\frac{5}{2}", "4", "-2", "\\frac{11}{4}"],
     "answer": "3",
     "solution": "$a = \\frac{5}{2}, b = -\\frac{3}{2} \\implies a^2-b^2 = 6.25 - 2.25 = 4$."
@@ -158,7 +158,7 @@ window.questionBank = [
     "id": 18,
     "level": "[상]",
     "category": "제곱근과 실수",
-    "content": "$A=\\sqrt{1-2x+x^{2}}+2\\sqrt{x^{2}+4x+4}$ 일 때, 옳은 것을 모두 고른 것은? [5점]\n<div class='box'>ㄱ. x < -2이면 A = -3x-3 ㄴ. -2 < x < 1이면 A = 3 ㄷ. x > 1이면 A = 3x+3</div>",
+    "content": "$A=\\sqrt{1-2x+x^{2}}+2\\sqrt{x^{2}+4x+4}$ 일 때, 옳은 것을 모두 고른 것은? [5점]\\n<div class='box'>ㄱ. x < -2이면 A = -3x-3 ㄴ. -2 < x < 1이면 A = 3 ㄷ. x > 1이면 A = 3x+3</div>",
     "choices": ["ㄱ", "ㄴ", "ㄱ, ㄴ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     "answer": "5",
     "solution": "ㄱ, ㄴ, ㄷ 모두 참임."
@@ -168,7 +168,6 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[단답형 1] 원기둥의 부피를 $A$, 겉넓이를 $B$라 할 때, $\\frac{B}{A} = a\\sqrt{2} + b\\sqrt{5}$이다. $a+b$를 구하시오. [4점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "17/15",
     "solution": "$A = 6\\sqrt{5}\\pi, B = 4\\pi + 6\\sqrt{10}\\pi \\implies \\frac{B}{A} = \\frac{2\\sqrt{5}}{15} + \\sqrt{2} \\implies a+b = \\frac{17}{15}$"
   },
@@ -177,7 +176,6 @@ window.questionBank = [
     "level": "[상]",
     "category": "제곱근과 실수",
     "content": "[단답형 2] 연산 규칙을 준수한 계산 값을 구하시오. [4점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "-42\\sqrt{3}",
     "solution": "원문 규칙에 따른 산출 시 $-42\\sqrt{3}$"
   },
@@ -185,8 +183,7 @@ window.questionBank = [
     "id": 21,
     "level": "[중]",
     "category": "인수분해",
-    "content": "[서술형 1] $A+B$의 값을 구하시오. [6점]\n$A=\\frac{998\\times996+998\\times4}{999^{2}-1}, B=\\sqrt{2022\\times2020+1}$",
-    "choices": [" ", " ", " ", " ", " "],
+    "content": "[서술형 1] $A+B$의 값을 구하시오. [6점]\\n$A=\\frac{998\\times996+998\\times4}{999^{2}-1}, B=\\sqrt{2022\\times2020+1}$",
     "answer": "2022",
     "solution": "$A = 1, B = 2021 \\implies A+B = 2022$"
   },
@@ -195,7 +192,6 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 2] $A=2\\sqrt{2}-1, B=4-2\\sqrt{2}, C=4-\\sqrt{10}$ 의 대소를 비교하시오. [7점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "C < B < A",
     "solution": "$A-B > 0, B-C > 0$ 이므로 $C < B < A$"
   },
@@ -204,7 +200,6 @@ window.questionBank = [
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "content": "[서술형 3] $x=\\frac{2}{\\sqrt{5}+\\sqrt{3}}, y=\\frac{4}{\\sqrt{5}-\\sqrt{3}}$ 일 때, $x^{2}y-xy^{2}$의 값을 구하시오. [7점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "-4\\sqrt{5}-12\\sqrt{3}",
     "solution": "$xy(x-y) = 4(-\\sqrt{5}-3\\sqrt{3}) = -4\\sqrt{5}-12\\sqrt{3}$"
   }

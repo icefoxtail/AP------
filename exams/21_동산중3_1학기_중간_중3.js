@@ -144,7 +144,7 @@ window.questionBank = [
     "id": 16,
     "level": "[중]",
     "category": "인수분해의 활용",
-    "content": "곱셈공식을 이용하여 다음 식을 계산하면? [4점]\n$2021 \\times 2023 - 4042 - 2020 \\times 2022$",
+    "content": "곱셈공식을 이용하여 다음 식을 계산하면? [4점]\\n$2021 \\times 2023 - 4042 - 2020 \\times 2022$",
     "choices": ["0", "1", "2021", "2022", "2023"],
     "answer": "2",
     "solution": "$2021=x$로 치환: $x(x+2)-2x-(x-1)(x+1) = x^{2}+2x-2x-(x^{2}-1) = 1$"
@@ -208,7 +208,6 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$2\\sqrt{3}$의 정수부분을 $a$, 소수부분을 $b$라고 할 때, $a, b$의 값과 $\\sqrt{3}a-3b$의 값을 구하여라. [7점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "a=3, b=2\\sqrt{3}-3, 값: 9-3\\sqrt{3}",
     "solution": "1) $3 < \\sqrt{12} < 4 \\implies a=3$. 2) $b=2\\sqrt{3}-3$. 3) $3\\sqrt{3}-3(2\\sqrt{3}-3) = 9-3\\sqrt{3}$"
   },
@@ -217,7 +216,6 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "$AB=PB, CD=CQ$일 때 점 P에 대응하는 수, Q에 대응하는 수, $PQ$의 길이를 구하여라. [7점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "p=2-\\sqrt{5}, q=5+\\sqrt{5}, PQ=3+2\\sqrt{5}",
     "solution": "대각선 $\\sqrt{5}$. $p=2-\\sqrt{5}, q=5+\\sqrt{5}$. $PQ = q-p = (5+\\sqrt{5})-(2-\\sqrt{5}) = 3+2\\sqrt{5}$"
   },
@@ -225,8 +223,7 @@ window.questionBank = [
     "id": "서술형3",
     "level": "[중]",
     "category": "인수분해",
-    "content": "다음 두 식을 인수분해하고 공통인수를 써라. [6점]\n$[x^{2}-4y^{2}, 3x+6y]$ ",
-    "choices": [" ", " ", " ", " ", " "],
+    "content": "다음 두 식을 인수분해하고 공통인수를 써라. [6점]\\n$[x^{2}-4y^{2}, 3x+6y]$ ",
     "answer": "x+2y",
     "solution": "1) $(x+2y)(x-2y)$, 2) $3(x+2y)$. 공통인수는 $x+2y$임."
   }

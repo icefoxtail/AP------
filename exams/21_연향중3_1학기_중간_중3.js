@@ -51,7 +51,7 @@ window.questionBank = [
     "level": "상",
     "category": "제곱근과 실수",
     "tags": ["중", "무리수와 수직선", "함정: 한 변의 길이"],
-    "content": "다음 그림은 한 변의 길이가 $\\sqrt{2}$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}, \\overline{BD}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때, $x$와 $y$ 사이의 거리는?(5점)<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><line x1=\"10\" y1=\"100\" x2=\"150\" y2=\"100\" stroke=\"black\"/><rect x=\"60\" y=\"71.7\" width=\"28.3\" height=\"28.3\" fill=\"none\" stroke=\"black\"/><line x1=\"60\" y1=\"100\" x2=\"88.3\" y2=\"71.7\" stroke=\"red\"/><line x1=\"88.3\" y1=\"100\" x2=\"60\" y2=\"71.7\" stroke=\"red\"/><text x=\"58\" y=\"110\" font-size=\"8\">B</text><text x=\"86\" y=\"110\" font-size=\"8\">C</text><text x=\"55\" y=\"68\" font-size=\"8\">A</text><text x=\"90\" y=\"68\" font-size=\"8\">D</text><path d=\"M 88.3 100 A 40 40 0 0 0 48.3 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><path d=\"M 60 100 A 40 40 0 0 1 100 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><text x=\"40\" y=\"110\" font-size=\"8\">P(x)</text><text x=\"102\" y=\"110\" font-size=\"8\">Q(y)</text></svg>",
+    "content": "다음 그림은 한 변의 길이가 $\\sqrt{2}$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}, \\overline{BD}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때, $x$와 $y$ 사이의 거리는?(5점)<svg width=\\"160\\" height=\\"120\\" viewBox=\\"0 0 160 120\\"><line x1=\\"10\\" y1=\\"100\\" x2=\\"150\\" y2=\\"100\\" stroke=\\"black\\"/><rect x=\\"60\\" y=\\"71.7\\" width=\\"28.3\\" height=\\"28.3\\" fill=\\"none\\" stroke=\\"black\\"/><line x1=\\"60\\" y1=\\"100\\" x2=\\"88.3\\" y2=\\"71.7\\" stroke=\\"red\\"/><line x1=\\"88.3\\" y1=\\"100\\" x2=\\"60\\" y2=\\"71.7\\" stroke=\\"red\\"/><text x=\\"58\\" y=\\"110\\" font-size=\\"8\\">B</text><text x=\\"86\\" y=\\"110\\" font-size=\\"8\\">C</text><text x=\\"55\\" y=\\"68\\" font-size=\\"8\\">A</text><text x=\\"90\\" y=\\"68\\" font-size=\\"8\\">D</text><path d=\\"M 88.3 100 A 40 40 0 0 0 48.3 100\\" fill=\\"none\\" stroke=\\"blue\\" stroke-dasharray=\\"2\\"/><path d=\\"M 60 100 A 40 40 0 0 1 100 100\\" fill=\\"none\\" stroke=\\"blue\\" stroke-dasharray=\\"2\\"/><text x=\\"40\\" y=\\"110\\" font-size=\\"8\\">P(x)</text><text x=\\"102\\" y=\\"110\\" font-size=\\"8\\">Q(y)</text></svg>",
     "choices": [
       "① $\\sqrt{2}+1$",
       "② $4-\\sqrt{2}$",
@@ -66,7 +66,7 @@ window.questionBank = [
       "3. 조건 $\\overline{BD}=\\overline{BQ}$에 의해 점 $Q$는 점 $B$를 중심으로 하고 반지름이 $2$인 원호를 따라 수직선과 만나는 점이므로 $y = B+2$이다. [cite: 3]",
       "4. 두 점 사이의 거리는 $y-x = (B+2) - (C-2) = 4 - (C-B)$이다. [cite: 3]",
       "5. 정사각형의 한 변의 길이 $C-B = \\sqrt{2}$이므로 거리는 $4-\\sqrt{2}$이다. [cite: 3]",
-      "\n[Figure]\n- 좌표계: 수직선 상의 점 $B, C$를 각각 $b, c$로 설정, $x$축 상의 거리 측정\n- 엄밀성: $\\overline{AC}=2$, $B, C$ 간격 $\\sqrt{2}$ 고정\n- 도형 관계: $\\overline{AC}\\perp\\overline{BD}$는 정사각형의 성질이나 수직선 좌표 산출에 직접 사용됨"
+      "\\n[Figure]\\n- 좌표계: 수직선 상의 점 $B, C$를 각각 $b, c$로 설정, $x$축 상의 거리 측정\\n- 엄밀성: $\\overline{AC}=2$, $B, C$ 간격 $\\sqrt{2}$ 고정\\n- 도형 관계: $\\overline{AC}\\perp\\overline{BD}$는 정사각형의 성질이나 수직선 좌표 산출에 직접 사용됨"
     ],
     "error_check": "이미지상 원호의 중심이 각각 $B, C$로 교차되어 있음을 확인하고, 대각선 길이 $2$를 이용하여 $y-x$를 정확히 연립함. [cite: 2026-04-10]"
   },
@@ -357,7 +357,7 @@ window.questionBank = [
     "level": "중",
     "category": "인수분해",
     "tags": ["중", "인수분해 공식의 활용"],
-    "content": "인수분해 공식을 이용하여 다음 두 수 $A, B$를 계산할 때, $A-B$의 값은?(4점) [cite: 87]\n<div class='box'>$A=27^{2}+6\\times27+9$ [cite: 88]\n$B=8.5^{2}\\times9-1.5^{2}\\times9$ [cite: 88]</div>",
+    "content": "인수분해 공식을 이용하여 다음 두 수 $A, B$를 계산할 때, $A-B$의 값은?(4점) [cite: 87]\\n<div class='box'>$A=27^{2}+6\\times27+9$ [cite: 88]\\n$B=8.5^{2}\\times9-1.5^{2}\\times9$ [cite: 88]</div>",
     "choices": [
       "① $250$",
       "② $270$",
@@ -401,7 +401,7 @@ window.questionBank = [
     "level": "상",
     "category": "다항식의 곱셈과 인수분해",
     "tags": ["상", "원과 넓이", "도형의 활용"],
-    "content": "다음 그림에서 세 원의 중심은 모두 $\\overline{AB}$ 위에 있고, 점 $D$는 $\\overline{BC}$의 중점이다. $\\overline{AD}$를 지름으로 하는 원의 둘레의 길이는 $12\\pi$ cm이고, 색칠한 부분의 넓이는 $36\\pi$ $\\text{cm}^{2}$이다. $\\overline{CD}=a$ cm일 때, $a$의 값을 구하면?(5점) [cite: 108-109]\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><circle cx=\"80\" cy=\"60\" r=\"60\" fill=\"#bbb\" stroke=\"black\"/><circle cx=\"40\" cy=\"60\" r=\"20\" fill=\"white\" stroke=\"black\"/><circle cx=\"100\" cy=\"60\" r=\"40\" fill=\"white\" stroke=\"black\"/><line x1=\"20\" y1=\"60\" x2=\"140\" y2=\"60\" stroke=\"black\"/><text x=\"15\" y=\"65\" font-size=\"8\">A</text><text x=\"142\" y=\"65\" font-size=\"8\">B</text><text x=\"58\" y=\"65\" font-size=\"8\">C</text><text x=\"98\" y=\"65\" font-size=\"8\">D</text></svg>",
+    "content": "다음 그림에서 세 원의 중심은 모두 $\\overline{AB}$ 위에 있고, 점 $D$는 $\\overline{BC}$의 중점이다. $\\overline{AD}$를 지름으로 하는 원의 둘레의 길이는 $12\\pi$ cm이고, 색칠한 부분의 넓이는 $36\\pi$ $\\text{cm}^{2}$이다. $\\overline{CD}=a$ cm일 때, $a$의 값을 구하면?(5점) [cite: 108-109]\\n<svg width=\\"160\\" height=\\"120\\" viewBox=\\"0 0 160 120\\"><circle cx=\\"80\\" cy=\\"60\\" r=\\"60\\" fill=\\"#bbb\\" stroke=\\"black\\"/><circle cx=\\"40\\" cy=\\"60\\" r=\\"20\\" fill=\\"white\\" stroke=\\"black\\"/><circle cx=\\"100\\" cy=\\"60\\" r=\\"40\\" fill=\\"white\\" stroke=\\"black\\"/><line x1=\\"20\\" y1=\\"60\\" x2=\\"140\\" y2=\\"60\\" stroke=\\"black\\"/><text x=\\"15\\" y=\\"65\\" font-size=\\"8\\">A</text><text x=\\"142\\" y=\\"65\\" font-size=\\"8\\">B</text><text x=\\"58\\" y=\\"65\\" font-size=\\"8\\">C</text><text x=\\"98\\" y=\\"65\\" font-size=\\"8\\">D</text></svg>",
     "choices": [
       "① $3$",
       "② $\\frac{10}{3}$",
@@ -416,7 +416,7 @@ window.questionBank = [
       "3. 전체 지름 $\\overline{AB} = 12+a$, 내부 원의 지름 $\\overline{AC} = 12-a$, $\\overline{BC} = 2a$ 이다.",
       "4. 색칠한 넓이 식: 전체 원 넓이에서 내부 원 두 개의 넓이를 뺀다. $\\pi(6+\\frac{a}{2})^{2} - \\pi(6-\\frac{a}{2})^{2} - \\pi a^{2} = 36\\pi$.",
       "5. 식을 정리하면 $12a-a^{2}=36$, 즉 $(a-6)^{2}=0$ 이므로 $a=6$ 이다.",
-      "\n[Figure]\n- 좌표계: $A(0,0)$ 을 원점으로 하는 $x$축 상에 모든 중심 배치 [cite: 2026-04-09]\n- 엄밀성: $\\overline{AD}=12$, $\\overline{CD}=\\overline{DB}=a$ 관계를 연립방정식으로 도출 [cite: 2026-04-09]\n- 도형 관계: $\\overline{AB}$ 는 세 원 지름의 합이며 중심은 모두 동일 직선상에 존재함 [cite: 2026-04-09]"
+      "\\n[Figure]\\n- 좌표계: $A(0,0)$ 을 원점으로 하는 $x$축 상에 모든 중심 배치 [cite: 2026-04-09]\\n- 엄밀성: $\\overline{AD}=12$, $\\overline{CD}=\\overline{DB}=a$ 관계를 연립방정식으로 도출 [cite: 2026-04-09]\\n- 도형 관계: $\\overline{AB}$ 는 세 원 지름의 합이며 중심은 모두 동일 직선상에 존재함 [cite: 2026-04-09]"
     ],
     "error_check": "이미지상 $D$가 $BC$ 중점임을 확인하고 넓이 관계식을 통해 $a=6$ 임을 역산 검증 완료. [cite: 2026-04-10]"
   },
@@ -446,8 +446,7 @@ window.questionBank = [
     "level": "중",
     "category": "제곱근과 실수",
     "tags": ["중", "서술형", "제곱근의 연산"],
-    "content": "서술형 1. $\\sqrt{49}$의 음의 제곱근을 $a$, $\\sqrt{(-9)^{2}}$의 양의 제곱근을 $b$라고 할 때, 다음 물음에 답하여라. (단, 풀이 과정을 자세히 써라.)(6점) [cite: 145-146]\n(1) $a, b$의 값을 각각 구하여라. (2점) [cite: 147]\n(2) $\\sqrt{63}$을 $a, b$를 사용한 식으로 나타내어라. (4점) [cite: 148]",
-    "choices": [],
+    "content": "서술형 1. $\\sqrt{49}$의 음의 제곱근을 $a$, $\\sqrt{(-9)^{2}}$의 양의 제곱근을 $b$라고 할 때, 다음 물음에 답하여라. (단, 풀이 과정을 자세히 써라.)(6점) [cite: 145-146]\\n(1) $a, b$의 값을 각각 구하여라. (2점) [cite: 147]\\n(2) $\\sqrt{63}$을 $a, b$를 사용한 식으로 나타내어라. (4점) [cite: 148]",
     "answer": "(1) a = -\\sqrt{7}, b = 3 (2) -ab",
     "solution_steps": [
       "1. (1) $\\sqrt{49}=7$ 이므로 $7$의 음의 제곱근 $a=-\\sqrt{7}$ 이다.",
@@ -462,15 +461,14 @@ window.questionBank = [
     "level": "상",
     "category": "제곱근과 실수",
     "tags": ["상", "서술형", "무리수와 수직선"],
-    "content": "서술형 2. 다음 그림에서 두 점 $P, Q$에 대응하는 수를 각각 $p, q$라고 할 때, $3p+q$의 값을 구하는 풀이 과정과 답을 서술하여라. (단, 풀이 과정을 자세히 써라.)(7점) [cite: 149-151]\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><line x1=\"10\" y1=\"100\" x2=\"150\" y2=\"100\" stroke=\"black\"/><rect x=\"60\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"black\"/><line x1=\"60\" y1=\"100\" x2=\"90\" y2=\"70\" stroke=\"red\"/><path d=\"M 90 100 A 42.4 42.4 0 0 0 47.6 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><path d=\"M 60 100 A 42.4 42.4 0 0 1 102.4 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><text x=\"58\" y=\"110\" font-size=\"8\">-2</text><text x=\"88\" y=\"110\" font-size=\"8\">-1</text><text x=\"42\" y=\"110\" font-size=\"8\">P(p)</text><text x=\"102\" y=\"110\" font-size=\"8\">Q(q)</text></svg>",
-    "choices": [],
+    "content": "서술형 2. 다음 그림에서 두 점 $P, Q$에 대응하는 수를 각각 $p, q$라고 할 때, $3p+q$의 값을 구하는 풀이 과정과 답을 서술하여라. (단, 풀이 과정을 자세히 써라.)(7점) [cite: 149-151]\\n<svg width=\\"160\\" height=\\"120\\" viewBox=\\"0 0 160 120\\"><line x1=\\"10\\" y1=\\"100\\" x2=\\"150\\" y2=\\"100\\" stroke=\\"black\\"/><rect x=\\"60\\" y=\\"70\\" width=\\"30\\" height=\\"30\\" fill=\\"none\\" stroke=\\"black\\"/><line x1=\\"60\\" y1=\\"100\\" x2=\\"90\\" y2=\\"70\\" stroke=\\"red\\"/><path d=\\"M 90 100 A 42.4 42.4 0 0 0 47.6 100\\" fill=\\"none\\" stroke=\\"blue\\" stroke-dasharray=\\"2\\"/><path d=\\"M 60 100 A 42.4 42.4 0 0 1 102.4 100\\" fill=\\"none\\" stroke=\\"blue\\" stroke-dasharray=\\"2\\"/><text x=\\"58\\" y=\\"110\\" font-size=\\"8\\">-2</text><text x=\\"88\\" y=\\"110\\" font-size=\\"8\\">-1</text><text x=\\"42\\" y=\\"110\\" font-size=\\"8\\">P(p)</text><text x=\\"102\\" y=\\"110\\" font-size=\\"8\\">Q(q)</text></svg>",
     "answer": "-5-2\\sqrt{2}",
     "solution_steps": [
       "1. 정사각형의 한 변의 길이는 $1$이므로 대각선의 길이는 $\\sqrt{1^{2}+1^{2}}=\\sqrt{2}$ 이다.",
       "2. 점 $P(p)$는 점 $-1$을 중심으로 반지름 $\\sqrt{2}$인 원호를 왼쪽으로 그린 점이므로 $p=-1-\\sqrt{2}$ 이다.",
       "3. 점 $Q(q)$는 점 $-2$을 중심으로 반지름 $\\sqrt{2}$인 원호를 오른쪽으로 그린 점이므로 $q=-2+\\sqrt{2}$ 이다.",
       "4. $3p+q = 3(-1-\\sqrt{2}) + (-2+\\sqrt{2}) = -3-3\\sqrt{2}-2+\\sqrt{2} = -5-2\\sqrt{2}$ 이다.",
-      "\n[Figure]\n- 좌표계: 수직선 상의 눈금을 기준으로 함, 원점은 $0$ [cite: 2026-04-09]\n- 엄밀성: 대각선 반경 $\\sqrt{2}$를 컴퍼스 궤적으로 대응시킴 [cite: 2026-04-09]\n- 도형 관계: 아크의 중심점과 대응점의 좌표를 수치적으로 명시함 [cite: 2026-04-09]"
+      "\\n[Figure]\\n- 좌표계: 수직선 상의 눈금을 기준으로 함, 원점은 $0$ [cite: 2026-04-09]\\n- 엄밀성: 대각선 반경 $\\sqrt{2}$를 컴퍼스 궤적으로 대응시킴 [cite: 2026-04-09]\\n- 도형 관계: 아크의 중심점과 대응점의 좌표를 수치적으로 명시함 [cite: 2026-04-09]"
     ],
     "error_check": "이미지상의 아크 궤적을 재확인하여 중심점($-1, -2$)과 좌표를 정확히 산출함."
   },
@@ -479,15 +477,14 @@ window.questionBank = [
     "level": "중",
     "category": "인수분해",
     "tags": ["중", "서술형", "인수분해의 기하학적 모델"],
-    "content": "서술형 3. 다음 그림의 모든 직사각형을 빈틈없이 붙여서 하나의 큰 사각형을 만들려고 한다. 다음 물음에 답하여라. (단, 풀이 과정을 자세히 써라.)(7점) [cite: 156-158]\n(1) 새로 만든 큰 직사각형의 넓이를 다항식으로 나타내고 인수분해 하여라. (4점) [cite: 159]\n(2) 새로 만든 큰 직사각형의 둘레의 길이를 구하여라. (3점) [cite: 160]\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><rect x=\"20\" y=\"20\" width=\"30\" height=\"30\" fill=\"#bbb\" stroke=\"black\"/><rect x=\"55\" y=\"20\" width=\"30\" height=\"30\" fill=\"#bbb\" stroke=\"black\"/><rect x=\"90\" y=\"20\" width=\"30\" height=\"30\" fill=\"#bbb\" stroke=\"black\"/><rect x=\"20\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"35\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"50\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"65\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"80\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"95\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"110\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"125\" y=\"60\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/><rect x=\"137\" y=\"60\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/><rect x=\"125\" y=\"72\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/><rect x=\"137\" y=\"72\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/></svg>",
-    "choices": [],
+    "content": "서술형 3. 다음 그림의 모든 직사각형을 빈틈없이 붙여서 하나의 큰 사각형을 만들려고 한다. 다음 물음에 답하여라. (단, 풀이 과정을 자세히 써라.)(7점) [cite: 156-158]\\n(1) 새로 만든 큰 직사각형의 넓이를 다항식으로 나타내고 인수분해 하여라. (4점) [cite: 159]\\n(2) 새로 만든 큰 직사각형의 둘레의 길이를 구하여라. (3점) [cite: 160]\\n<svg width=\\"160\\" height=\\"120\\" viewBox=\\"0 0 160 120\\"><rect x=\\"20\\" y=\\"20\\" width=\\"30\\" height=\\"30\\" fill=\\"#bbb\\" stroke=\\"black\\"/><rect x=\\"55\\" y=\\"20\\" width=\\"30\\" height=\\"30\\" fill=\\"#bbb\\" stroke=\\"black\\"/><rect x=\\"90\\" y=\\"20\\" width=\\"30\\" height=\\"30\\" fill=\\"#bbb\\" stroke=\\"black\\"/><rect x=\\"20\\" y=\\"60\\" width=\\"10\\" height=\\"30\\" fill=\\"#eee\\" stroke=\\"black\\"/><rect x=\\"35\\" y=\\"60\\" width=\\"10\\" height=\\"30\\" fill=\\"#eee\\" stroke=\\"black\\"/><rect x=\\"50\\" y=\\"60\\" width=\\"10\\" height=\\"30\\" fill=\\"#eee\\" stroke=\\"black\\"/><rect x=\\"65\\" y=\\"60\\" width=\\"10\\" height=\\"30\\" fill=\\"#eee\\" stroke=\\"black\\"/><rect x=\\"80\\" y=\\"60\\" width=\\"10\\" height=\\"30\\" fill=\\"#eee\\" stroke=\\"black\\"/><rect x=\\"95\\" y=\\"60\\" width=\\"10\\" height=\\"30\\" fill=\\"#eee\\" stroke=\\"black\\"/><rect x=\\"110\\" y=\\"60\\" width=\\"10\\" height=\\"30\\" fill=\\"#eee\\" stroke=\\"black\\"/><rect x=\\"125\\" y=\\"60\\" width=\\"10\\" height=\\"10\\" fill=\\"#ddd\\" stroke=\\"black\\"/><rect x=\\"137\\" y=\\"60\\" width=\\"10\\" height=\\"10\\" fill=\\"#ddd\\" stroke=\\"black\\"/><rect x=\\"125\\" y=\\"72\\" width=\\"10\\" height=\\"10\\" fill=\\"#ddd\\" stroke=\\"black\\"/><rect x=\\"137\\" y=\\"72\\" width=\\"10\\" height=\\"10\\" fill=\\"#ddd\\" stroke=\\"black\\"/></svg>",
     "answer": "(1) (3x+4)(x+1) (2) 8x+10",
     "solution_steps": [
       "1. (1) 넓이가 $x^2$인 타일 3개, $x$인 타일 7개, $1$인 타일 4개의 합은 $3x^2+7x+4$ 이다.",
       "2. 다항식 $3x^2+7x+4$ 를 인수분해하면 $(3x+4)(x+1)$ 이 된다.",
       "3. (2) 큰 직사각형의 가로와 세로는 각각 $3x+4, x+1$ 이다.",
       "4. 둘레의 길이는 $2\\{(3x+4)+(x+1)\\} = 2(4x+5) = 8x+10$ 이다.",
-      "\n[Figure]\n- 좌표계: 추상 기하 모델로 좌표계 생략 [cite: 2026-04-09]\n- 엄밀성: 타일의 수량과 면적 합산 과정을 명시함 [cite: 2026-04-09]\n- 도형 관계: 큰 직사각형의 가로, 세로가 다항식의 인수와 대응함을 기술함 [cite: 2026-04-09]"
+      "\\n[Figure]\\n- 좌표계: 추상 기하 모델로 좌표계 생략 [cite: 2026-04-09]\\n- 엄밀성: 타일의 수량과 면적 합산 과정을 명시함 [cite: 2026-04-09]\\n- 도형 관계: 큰 직사각형의 가로, 세로가 다항식의 인수와 대응함을 기술함 [cite: 2026-04-09]"
     ],
     "error_check": "이미지상의 타일 수량을 전수 조사하여 다항식 수립 및 인수분해 결과를 교차 검증함."
   }

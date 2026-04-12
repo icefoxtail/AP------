@@ -192,14 +192,13 @@ window.questionBank = window.questionBank.concat([
     "content": "다음 그림은 수직선 위에 한 변의 길이가 2인 정사각형 $ABCD$를 그린 것이다. 점 $C$를 중심으로 하고 대각선 $AC$를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $E$라고 할 때, 색칠한 부분의 넓이를 구하면?",
     "choices": ["$\\frac{1}{2}(\\pi-3\\sqrt{2})cm^2$", "$(\\pi-3\\sqrt{2})cm^2$", "$\\frac{1}{4}(\\pi-2\\sqrt{2})cm^2$", "$\\frac{1}{2}(\\pi-2\\sqrt{2})cm^2$", "$(\\pi-2\\sqrt{2})cm^2$"],
     "answer": "4",
-    "solution": "정사각형 한 변 = 2 \\implies 대각선 AC = \\sqrt{2^2+2^2} = 2\\sqrt{2} \\\\ 부채꼴 ACE 넓이 = \\frac{1}{4} \\times \\pi \\times (2\\sqrt{2})^2 = 2\\pi \\\\ 직각삼각형 ABC 넓이 = \\frac{1}{2} \\times 2 \\times 2 = 2 \\\\ (※ 문제의 '색칠한 부분' 정의에 따라 부채꼴에서 삼각형을 제외한 활꼴 등 계산 필요, 선택지 4번 구조 추정) \\\\ \\therefore 4 \n\n [Figure] \n x축 수직선 위 정사각형 ABCD. C 중심, AC 반지름 원호가 x축과 E에서 만남. AB \\perp BC"
+    "solution": "정사각형 한 변 = 2 \\implies 대각선 AC = \\sqrt{2^2+2^2} = 2\\sqrt{2} \\\\ 부채꼴 ACE 넓이 = \\frac{1}{4} \\times \\pi \\times (2\\sqrt{2})^2 = 2\\pi \\\\ 직각삼각형 ABC 넓이 = \\frac{1}{2} \\times 2 \\times 2 = 2 \\\\ (※ 문제의 '색칠한 부분' 정의에 따라 부채꼴에서 삼각형을 제외한 활꼴 등 계산 필요, 선택지 4번 구조 추정) \\\\ \\therefore 4 \\n\\n [Figure] \\n x축 수직선 위 정사각형 ABCD. C 중심, AC 반지름 원호가 x축과 E에서 만남. AB \\perp BC"
   },
   {
     "id": 22,
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 1] 다음 대화를 읽고, 4와 5를 근호를 사용하여 나타내고 식 $4 < \\sqrt{x} < 5$를 만족시키는 자연수 $x$의 값을 모두 구하시오.",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "x = 17, 18, 19, 20, 21, 22, 23, 24",
     "solution": "4 = \\sqrt{16}, 5 = \\sqrt{25} \\implies \\sqrt{16} < \\sqrt{x} < \\sqrt{25} \\\\ \\implies 16 < x < 25 \\\\ \\therefore x = 17, 18, 19, 20, 21, 22, 23, 24"
   },
@@ -207,17 +206,15 @@ window.questionBank = window.questionBank.concat([
     "id": 23,
     "level": "[중]",
     "category": "제곱근과 실수",
-    "content": "[서술형 2] 다음 그림은 한 칸의 가로와 세로의 길이가 각각 1인 모눈종이 위에 수직선을 그린 것이다. $\\overline{AB}=\\overline{AP}, \\overline{AC}=\\overline{AQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $a, b$라고 할 때, 다음 물음에 답하시오.\n(1) $\\overline{AB}, \\overline{AC}$의 길이를 각각 구하시오.\n(2) $a, b$를 각각 구하고, $a+b$의 값을 구하시오.",
-    "choices": [" ", " ", " ", " ", " "],
+    "content": "[서술형 2] 다음 그림은 한 칸의 가로와 세로의 길이가 각각 1인 모눈종이 위에 수직선을 그린 것이다. $\\overline{AB}=\\overline{AP}, \\overline{AC}=\\overline{AQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $a, b$라고 할 때, 다음 물음에 답하시오.\\n(1) $\\overline{AB}, \\overline{AC}$의 길이를 각각 구하시오.\\n(2) $a, b$를 각각 구하고, $a+b$의 값을 구하시오.",
     "answer": "(1) AB=\\sqrt{2}, AC=\\sqrt{5} (2) a=-1-\\sqrt{2}, b=-1+\\sqrt{5}, a+b=-2-\\sqrt{2}+\\sqrt{5}",
-    "solution": "(1) AB = \\sqrt{1^2+1^2} = \\sqrt{2}, AC = \\sqrt{1^2+2^2} = \\sqrt{5} \\\\ (2) 기준점 A = -1 \\implies a = -1-\\sqrt{2}, b = -1+\\sqrt{5} \\\\ \\implies a+b = -1-\\sqrt{2}-1+\\sqrt{5} = -2-\\sqrt{2}+\\sqrt{5} \n\n [Figure] \n 모눈종이 위 수직선. A(-1,0), B(0,1), C(1,0) 등 위치 확인. AP, AQ 원호 표시"
+    "solution": "(1) AB = \\sqrt{1^2+1^2} = \\sqrt{2}, AC = \\sqrt{1^2+2^2} = \\sqrt{5} \\\\ (2) 기준점 A = -1 \\implies a = -1-\\sqrt{2}, b = -1+\\sqrt{5} \\\\ \\implies a+b = -1-\\sqrt{2}-1+\\sqrt{5} = -2-\\sqrt{2}+\\sqrt{5} \\n\\n [Figure] \\n 모눈종이 위 수직선. A(-1,0), B(0,1), C(1,0) 등 위치 확인. AP, AQ 원호 표시"
   },
   {
     "id": 24,
     "level": "[중]",
     "category": "인수분해",
-    "content": "[서술형 3] 주어진 식을 각각 인수분해 하시오.\n(1) $2x^2+3x-14$\n(2) $-18x^2+32y^2$",
-    "choices": [" ", " ", " ", " ", " "],
+    "content": "[서술형 3] 주어진 식을 각각 인수분해 하시오.\\n(1) $2x^2+3x-14$\\n(2) $-18x^2+32y^2$",
     "answer": "(1) (x-2)(2x+7) (2) -2(3x-4y)(3x+4y)",
     "solution": "(1) 2x^2+3x-14 = (x-2)(2x+7) \\implies \\therefore (x-2)(2x+7) \\\\ (2) -2(9x^2-16y^2) = -2(3x-4y)(3x+4y) \\implies \\therefore -2(3x-4y)(3x+4y)"
   },
@@ -226,7 +223,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[상]",
     "category": "인수분해",
     "content": "[서술형 4] 반지름의 길이가 각각 $20cm, 16cm$인 원 모양의 피자를 8등분 하였다. 큰 피자 한 조각의 넓이는 작은 피자 한 조각의 넓이보다 얼마만큼 더 큰지 인수분해를 이용하여 계산하시오.",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "18\\pi cm^2",
     "solution": "S = \\frac{1}{8} \\pi (20^2 - 16^2) = \\frac{1}{8} \\pi (20-16)(20+16) \\\\ = \\frac{1}{8} \\pi \\times 4 \\times 36 = 18\\pi \\\\ \\therefore 18\\pi cm^2"
   }

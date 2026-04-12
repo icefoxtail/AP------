@@ -143,7 +143,7 @@ window.questionBank = [
     "id": 15,
     "level": "상",
     "category": "식의 계산",
-    "content": "$1 \\times 2 \\times 3 \dots \times 18 = 2^{a} \\times b$ ($b$는 홀수)일 때, $a$의 값은? [5점]",
+    "content": "$1 \\times 2 \\times 3 \\dots \\times 18 = 2^{a} \\times b$ ($b$는 홀수)일 때, $a$의 값은? [5점]",
     "choices": ["13", "14", "15", "16", "17"],
     "answer": "④",
     "solution": "$18$ 이하 $2$의 거듭제곱 배수 개수 합: $9+4+2+1 \\therefore 16$ [cite: 114]"

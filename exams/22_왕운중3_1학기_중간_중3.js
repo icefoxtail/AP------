@@ -186,7 +186,6 @@ window.questionBank = [
     "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "[서술형 1] $(x-5y)(3x+2)$ 전개 시 $x$ 계수 $A, y$ 계수 $B$일 때 $A+B$는? [4점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "-8",
     "solution": "$A=2, B=-10$."
   },
@@ -195,7 +194,6 @@ window.questionBank = [
     "level": "[상]",
     "category": "다항식의 곱셈",
     "content": "[서술형 2] $a+b=7$일 때 $a^8-b^8$ 공식 만족하는 $ab$의 값은? [5점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "12",
     "solution": "$a-b=1$이어야 하므로 $a=4, b=3$."
   },
@@ -204,7 +202,6 @@ window.questionBank = [
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 3] $3\\sqrt{5}$ 정수 부분 $a$, 소수 부분 $b$일 때 $\\frac{a}{b+6}$은? [5점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "$\\frac{2\\sqrt{5}}{5}$",
     "solution": "$a=6, b=3\\sqrt{5}-6$ 대입."
   },
@@ -213,7 +210,6 @@ window.questionBank = [
     "level": "[상]",
     "category": "근호를 포함한 식의 계산",
     "content": "[서술형 4] 높이가 원본의 $\\frac{1}{4}$인 사각뿔을 잘라낼 때 그 부피는? [6점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "$\\frac{3\\sqrt{3}}{8}$",
     "solution": "원본 부피 $24\\sqrt{3} \\times \\frac{1}{64}$."
   }

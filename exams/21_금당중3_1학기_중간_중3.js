@@ -334,7 +334,6 @@ window.questionBank = [
     "tags": ["중", "서술형"],
     "category": "제곱근과 실수",
     "content": "[서술형1] 다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $AB$와 $CD$를 그린 후, $\\overline{AB}=\\overline{AP}$, $\\overline{CD}=\\overline{CQ}$가 되도록 수직선 위에 두 점 $P$와 $Q$를 정한 것이다. $PQ$의 길이를 구하시오. [6점]<br><Figure src='image_e1c264.png' />",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "$6-\\sqrt{5}$",
     "solution_steps": [
       "1단계: 피타고라스 정리에 의해 $\\overline{AB} = \\sqrt{4^2+2^2} = \\sqrt{20} = 2\\sqrt{5}$이고, $\\overline{CD} = \\sqrt{2^2+1^2} = \\sqrt{5}$이다.",
@@ -350,7 +349,6 @@ window.questionBank = [
     "tags": ["중", "서술형"],
     "category": "다항식의 곱셈과 인수분해",
     "content": "[서술형2] $x=2+\\sqrt{3}$일 때, $x^2-4x-5$의 값을 구하시오. [6점]",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "-6",
     "solution_steps": [
       "1단계: $x-2 = \\sqrt{3}$의 양변을 제곱하면 $x^2-4x+4 = 3$이다.",
@@ -365,7 +363,6 @@ window.questionBank = [
     "tags": ["중", "서술형"],
     "category": "제곱근과 실수",
     "content": "[서술형3] 다음 제곱근표를 이용하여 주어진 제곱근의 값을 구하시오. [8점]<br>(1) $\\sqrt{5.53}$<br>(2) $\\sqrt{0.553}$<br><Figure src='image_e1c288.jpg' />",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "(1) 2.352, (2) 0.7436",
     "solution_steps": [
       "1단계: (1) 표의 $5.5$행과 $3$열이 만나는 위치의 값 $2.352$를 읽는다.",

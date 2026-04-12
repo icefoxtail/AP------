@@ -279,8 +279,8 @@ window.questionBank = [
         "answer": "②",
         "solution_steps": [
             "1단계: 삼각형의 내심 $I$에 대하여 $\\angle BIC = 90^\\circ + \\frac{1}{2}\\angle A$의 관계가 성립한다. [cite: 2026-04-09]",
-            "2단계: $110^\circ = 90^\circ + \\frac{1}{2}\\angle A$ 식을 세워 정리하면 $20^\circ = \\frac{1}{2}\\angle A$이다. [cite: 2026-04-09]",
-            "3단계: 따라서 $\\angle A = 40^\circ$이다. [cite: 2026-04-09]"
+            "2단계: $110^\\circ = 90^\\circ + \\frac{1}{2}\\angle A$ 식을 세워 정리하면 $20^\\circ = \\frac{1}{2}\\angle A$이다. [cite: 2026-04-09]",
+            "3단계: 따라서 $\\angle A = 40^\\circ$이다. [cite: 2026-04-09]"
         ],
         "error_check": "공식 역대입: $90 + 20 = 110$ 확인 완료. [cite: 2026-04-09]"
     },
@@ -351,7 +351,6 @@ window.questionBank = [
         "tags": ["중하"],
         "category": "순환소수의 자릿수",
         "content": "[서술형 1] 순환소수 $0.\\dot{1}5384\\dot{6}$에 대하여 (1) 순환마디를 구하고, (2) 소수점 아래 $100$번째 자리의 숫자를 구하시오. [5점]",
-        "choices": [],
         "answer": "(1) 153846 (2) 8",
         "solution_steps": [
             "1단계: 순환소수 $0.\\dot{1}5384\\dot{6}$의 순환마디는 반복되는 구간인 $1, 5, 3, 8, 4, 6$이다. [cite: 2026-04-09]",
@@ -366,7 +365,6 @@ window.questionBank = [
         "tags": ["중"],
         "category": "단항식의 계산",
         "content": "[서술형 2] 단항식 $A$에 $2a^2b$를 나누어야 할 것을 잘못하여 곱하였더니 $16a^4b^3$이 되었다. 바르게 계산한 답을 구하시오. [6점]",
-        "choices": [],
         "answer": "$4b$",
         "solution_steps": [
             "1단계: 잘못된 식 $A \\times 2a^2b = 16a^4b^3$에서 $A = \\frac{16a^4b^3}{2a^2b} = 8a^2b^2$이다. [cite: 2026-04-09]",
@@ -381,7 +379,6 @@ window.questionBank = [
         "tags": ["중"],
         "category": "삼각형의 내심과 외심",
         "content": "[서술형 3] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 외접원의 반지름의 길이와 내접원의 반지름의 길이를 각각 구하시오. (단, $\\overline{AB}=20\\text{cm}, \\overline{AC}=12\\text{cm}, \\overline{BC}=16\\text{cm}$) [5점]<br><Figure src='image_d7bada.png' />",
-        "choices": [],
         "answer": "외접원: $10\\text{cm}$, 내접원: $4\\text{cm}$",
         "solution_steps": [
             "1단계: 직각삼각형의 외심은 빗변의 중점이므로 외접원의 반지름 $R = \\frac{1}{2}\\overline{AB} = \\frac{20}{2} = 10\\text{cm}$이다. [cite: 2026-04-09]",
@@ -396,7 +393,6 @@ window.questionBank = [
         "tags": ["하"],
         "category": "삼각형의 외심의 정의",
         "content": "[서술형 4] 세 나무로부터 거리가 같은 보물이 묻힌 곳의 위치를 찾는 방법을 외심의 성질을 이용하여 서술하시오. [4점]",
-        "choices": [],
         "answer": "삼각형의 세 변의 수직이등분선의 교점(외심)을 찾는다.",
         "solution_steps": [
             "1단계: 세 나무를 꼭짓점으로 하는 삼각형을 가정할 때, 세 꼭짓점으로부터 같은 거리에 있는 점은 외심이다. [cite: 2026-04-10]",

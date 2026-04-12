@@ -168,7 +168,6 @@ window.questionBank = [
     "level": "중",
     "category": "서술형",
     "content": "서술형1. 다음 물음에 답하시오. <span class='score'>(7점)</span><br>(1) 순환소수 $0.1\\dot{2}\\dot{4}$를 기약분수로 바꾸시오. (4점)<br>(단, $x=0.1\\dot{2}\\dot{4}$로 놓고 풀이과정을 자세히 적으시오.)<br>(2) (1)에서 구한 기약분수에 자연수 A를 곱하여 유한소수가 되도록 하는 가장 작은 자연수 A를 구하시오. (3점)",
-    "choices": [],
     "answer": "(1) 41/330, (2) 11",
     "solution": "(1) $1000x-10x = 124.24.. - 1.24.. \\implies 990x = 123 \\implies x = 41/330$. (2) $330=2 \\cdot 3 \\cdot 5 \\cdot 11$. 분자 41과 약분 안되는 11이 필요. $\\therefore$ 11"
   },
@@ -177,7 +176,6 @@ window.questionBank = [
     "level": "중",
     "category": "서술형",
     "content": "서술형2. $12\\left(\\frac{2x^2-3x^3}{x^2} - \\frac{x^2-5x}{4} + \\frac{3x^3-9x^4}{3x}\\right)$를 계산하시오. <span class='score'>(6점)</span>",
-    "choices": [],
     "answer": "-12x^3 + x^2 - 21x + 24",
     "solution": "$= 12(2-3x) - 3(x^2-5x) + 4(x^2-3x^3) = -12x^3 + x^2 - 21x + 24$."
   },
@@ -186,7 +184,6 @@ window.questionBank = [
     "level": "상",
     "category": "서술형",
     "content": "서술형3. 가연이가 집에서 산책을 나갔는데, 갈 때는 시속 $3km$로 걷고, 돌아올 때는 갈 때보다 $2km$ 더 먼 길을 시속 $5km$로 뛰어서 1시간 30분 이내로 집으로 돌아오려고 한다. 이 때 가연이는 집에서 최대 몇 $km$ 떨어진 곳까지 갈 수 있는지 구하시오. <span class='score'>(7점)</span>",
-    "choices": [],
     "answer": "2.0625km (또는 33/16km)",
     "solution": "$x/3 + (x+2)/5 \\le 1.5 \\implies 5x+3x+6 \\le 22.5 \\implies 8x \\le 16.5 \\implies x \\le 2.0625$."
   }

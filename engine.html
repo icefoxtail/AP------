@@ -204,13 +204,11 @@ let pageCount = 0;
 
 /* ── 데이터 로딩 ── */
 async function loadData(dataUrl) {
-    // mixed: sessionStorage
     if (dataUrl === 'mixed') {
         const raw = sessionStorage.getItem('mixedQuestions');
         return raw ? JSON.parse(raw) : [];
     }
 
-    // exams/*.js : script 태그 방식 (window.questionBank)
     return new Promise(res => {
         delete window.questionBank;
         const s = document.createElement('script');
@@ -239,7 +237,6 @@ async function init() {
 
     document.getElementById('ctrl-title').innerText = AppState.title;
 
-    // PDF 모드 — 탭 숨김
     if (AppState.mode === 'pdf' && file) {
         document.getElementById('modeTabs').style.display = 'none';
         document.getElementById('pdf-container').style.display = 'block';
@@ -247,7 +244,6 @@ async function init() {
         return;
     }
 
-    // 탭 활성화
     updateTabs(AppState.mode);
 
     document.getElementById('print-area').style.display = 'flex';
@@ -315,7 +311,8 @@ async function renderExam(area, bank) {
 
 function buildExamBox(q, i) {
     const circled = ['①','②','③','④','⑤'];
-    const choicesHTML = q.choices
+    const isMultipleChoice = q.choices && q.choices.length > 0 && q.choices[0].trim() !== "";
+    const choicesHTML = isMultipleChoice
         ? `<div class="choices">${q.choices.map((c, ci) =>
               `<div>${circled[ci] || (ci+1)+')'} ${wrapLatex(c)}</div>`).join('')}</div>`
         : `<div class="answer-box"></div>`;
@@ -347,10 +344,10 @@ function buildSolBox(q, i) {
     let solHTML;
     if (q.solution_steps?.length) {
         solHTML = q.solution_steps.map((s, si) =>
-            `<div class="sol-step"><b>[${si+1}단계]</b> ${stripCite(s)}</div>`
+            `<div class="sol-step"><b>[${si+1}단계]</b> ${stripCite(s).replace(/\n/g, '<br>')}</div>`
         ).join('');
     } else if (q.solution) {
-        solHTML = `<div class="sol-step">${stripCite(q.solution)}</div>`;
+        solHTML = `<div class="sol-step">${stripCite(q.solution).replace(/\n/g, '<br>')}</div>`;
     } else {
         solHTML = `<span style="color:#94a3b8;font-size:8pt;">해설 없음</span>`;
     }
@@ -406,7 +403,6 @@ function makePage(area, type) {
         return { page, body };
     }
 
-    // exam — 2열
     const grid  = document.createElement('div');
     grid.className = 'grid-container';
     const left  = document.createElement('div');
@@ -421,19 +417,16 @@ function makePage(area, type) {
 }
 
 /* ── 텍스트 전처리 유틸 ── */
-
-// \frac 등 LaTeX인데 $ 없는 경우 자동으로 감싸기
 function wrapLatex(text) {
     if (!text) return text;
-    if (text.includes('$')) return text;          // 이미 $ 있으면 그대로
-    if (text.includes('\\')) return `$${text}$`; // \ 있으면 수식으로 감싸기
+    if (text.includes('$')) return text;
+    if (text.includes('\\')) return `$${text}$`;
     return text;
 }
 
-// 태그 제거
 function stripCite(text) {
     if (!text) return text;
-    return text.replace(/\[cite:[^\]]*\]/g, '').trim();
+    return text.replace(/\]*\]/g, '').trim();
 }
 
 function raf() { return new Promise(r => requestAnimationFrame(r)); }

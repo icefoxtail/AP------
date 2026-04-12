@@ -14,7 +14,7 @@ window.questionBank = [
         "$\\frac{26}{60}$"
       ],
       "answer": "②",
-      "solution": "① $\\frac{8}{12} = \\frac{2}{3} \\implies$ 분모 소인수 $3$ (무한)\n② $\\frac{9}{24} = \\frac{3}{8} = \\frac{3}{2^3} \\implies$ 분모 소인수 $2$뿐 (유한)\n③ $\\frac{15}{36} = \\frac{5}{12} = \\frac{5}{2^2 \\times 3} \\implies$ 분모 소인수 $3$ (무한)\n④ $\\frac{35}{75} = \\frac{7}{15} = \\frac{7}{3 \\times 5} \\implies$ 분모 소인수 $3$ (무한)\n⑤ $\\frac{26}{60} = \\frac{13}{30} = \\frac{13}{2 \\times 3 \\times 5} \\implies$ 분모 소인수 $3$ (무한)\n$\\therefore$ ②"
+      "solution": "① $\\frac{8}{12} = \\frac{2}{3} \\implies$ 분모 소인수 $3$ (무한)\\n② $\\frac{9}{24} = \\frac{3}{8} = \\frac{3}{2^3} \\implies$ 분모 소인수 $2$뿐 (유한)\\n③ $\\frac{15}{36} = \\frac{5}{12} = \\frac{5}{2^2 \\times 3} \\implies$ 분모 소인수 $3$ (무한)\\n④ $\\frac{35}{75} = \\frac{7}{15} = \\frac{7}{3 \\times 5} \\implies$ 분모 소인수 $3$ (무한)\\n⑤ $\\frac{26}{60} = \\frac{13}{30} = \\frac{13}{2 \\times 3 \\times 5} \\implies$ 분모 소인수 $3$ (무한)\\n$\\therefore$ ②"
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@ window.questionBank = [
       "content": "분수 $\\frac{5}{27}$를 소수로 나타낼 때, 소수점 아래 $40$번째 자리의 숫자는? [4점]",
       "choices": ["1", "2", "3", "4", "5"],
       "answer": "①",
-      "solution": "$\\frac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\n순환마디: $1, 8, 5$ (길이 $3$)\n$40 = 3 \\times 13 + 1 \\implies$ 순환마디의 $1$번째 숫자\n$\\therefore 1$"
+      "solution": "$\\frac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\\n순환마디: $1, 8, 5$ (길이 $3$)\\n$40 = 3 \\times 13 + 1 \\implies$ 순환마디의 $1$번째 숫자\\n$\\therefore 1$"
     },
     {
       "id": 3,
@@ -32,7 +32,7 @@ window.questionBank = [
       "content": "다음은 순환소수 $2.\\dot{4}\\dot{5}$를 분수로 표현하는 과정이다. 이때 $a+b+c$의 값은? [4점]<br><div class='box'>$2.\\dot{4}\\dot{5}$의 분수 표현을 $x$라고 할 때,<br>$x = 2.4545\\dots$<br>$ax = 245.4545\\dots$<br>$(a-1)x = b$<br>$x = \\frac{b}{a-1} = \\frac{27}{c}$ (기약분수)</div>",
       "choices": ["254", "256", "354", "356", "365"],
       "answer": "③",
-      "solution": "$x = 2.4545\\dots$\n$100x = 245.4545\\dots \\implies a = 100$\n$100x - x = 243 \\implies 99x = 243 \\implies b = 243$\n$x = \\frac{243}{99} = \\frac{27}{11} \\implies c = 11$\n$a+b+c = 100 + 243 + 11 = 354$\n$\\therefore 354$"
+      "solution": "$x = 2.4545\\dots$\\n$100x = 245.4545\\dots \\implies a = 100$\\n$100x - x = 243 \\implies 99x = 243 \\implies b = 243$\\n$x = \\frac{243}{99} = \\frac{27}{11} \\implies c = 11$\\n$a+b+c = 100 + 243 + 11 = 354$\\n$\\therefore 354$"
     },
     {
       "id": 4,
@@ -41,7 +41,7 @@ window.questionBank = [
       "content": "$\\frac{1}{n} - \\frac{1}{n+1}$이 유한소수가 되도록 하는 자연수 $n$의 개수는? (단, $1 \\le n \\le 150$) [4.5점]",
       "choices": ["1", "2", "5", "10", "12"],
       "answer": "②",
-      "solution": "$\\frac{1}{n} - \\frac{1}{n+1} = \\frac{1}{n(n+1)}$\n결과가 유한소수가 되려면 분모 $n(n+1)$의 소인수가 $2, 5$뿐이어야 함.\n$n, n+1$은 서로소이므로 각각 $2^a$ 또는 $5^b$ 형태여야 함.\n1) $n=1, n+1=2$ (참)\n2) $n=4, n+1=5$ (참)\n그 외 $150$ 이하에서 조건을 만족하는 연속한 자연수 쌍은 없음.\n$\\therefore 2$"
+      "solution": "$\\frac{1}{n} - \\frac{1}{n+1} = \\frac{1}{n(n+1)}$\\n결과가 유한소수가 되려면 분모 $n(n+1)$의 소인수가 $2, 5$뿐이어야 함.\\n$n, n+1$은 서로소이므로 각각 $2^a$ 또는 $5^b$ 형태여야 함.\\n1) $n=1, n+1=2$ (참)\\n2) $n=4, n+1=5$ (참)\\n그 외 $150$ 이하에서 조건을 만족하는 연속한 자연수 쌍은 없음.\\n$\\therefore 2$"
     },
     {
       "id": 5,
@@ -56,7 +56,7 @@ window.questionBank = [
         "$2^{3} \\div 2^{6} = 2^{3}$"
       ],
       "answer": "③",
-      "solution": "① $a^3 \\times a^7 = a^{10}$\n② $a^1 \\times a^4 \\times a^2 = a^7$\n③ $(a^3)^2 \\times a^3 = a^6 \\times a^3 = a^9$ (참)\n④ $a^{28} \\div a^7 = a^{21}$\n⑤ $2^3 \\div 2^6 = \\frac{1}{2^3}$\n$\\therefore$ ③"
+      "solution": "① $a^3 \\times a^7 = a^{10}$\\n② $a^1 \\times a^4 \\times a^2 = a^7$\\n③ $(a^3)^2 \\times a^3 = a^6 \\times a^3 = a^9$ (참)\\n④ $a^{28} \\div a^7 = a^{21}$\\n⑤ $2^3 \\div 2^6 = \\frac{1}{2^3}$\\n$\\therefore$ ③"
     },
     {
       "id": 6,
@@ -65,7 +65,7 @@ window.questionBank = [
       "content": "$(\\frac{x^a}{3y^{2b}})^4 = \\frac{x^8}{81y^{24}}$ 일 때, 두 자연수 $a, b$의 값에 대하여 $a+b$의 값은? [4점]",
       "choices": ["5", "6", "7", "8", "9"],
       "answer": "①",
-      "solution": "$\\frac{x^{4a}}{3^4 y^{8b}} = \\frac{x^8}{81 y^{24}}$\n$4a = 8 \\implies a = 2$\n$8b = 24 \\implies b = 3$\n$a+b = 2+3 = 5$\n$\\therefore 5$"
+      "solution": "$\\frac{x^{4a}}{3^4 y^{8b}} = \\frac{x^8}{81 y^{24}}$\\n$4a = 8 \\implies a = 2$\\n$8b = 24 \\implies b = 3$\\n$a+b = 2+3 = 5$\\n$\\therefore 5$"
     },
     {
       "id": 7,
@@ -74,7 +74,7 @@ window.questionBank = [
       "content": "$5^4 \\times 20^6$ 이 $n$자리의 자연수일 때, $n$의 값을 구하면? [4점]",
       "choices": ["11", "12", "13", "14", "15"],
       "answer": "①",
-      "solution": "$5^4 \\times (2^2 \\times 5)^6 = 5^4 \\times 2^{12} \\times 5^6 = 2^{12} \\times 5^{10}$\n$= 2^2 \\times (2^{10} \\times 5^{10}) = 4 \\times 10^{10}$\n$4$ 뒤에 $0$이 $10$개 $\\implies 11$자리\n$\\therefore 11$"
+      "solution": "$5^4 \\times (2^2 \\times 5)^6 = 5^4 \\times 2^{12} \\times 5^6 = 2^{12} \\times 5^{10}$\\n$= 2^2 \\times (2^{10} \\times 5^{10}) = 4 \\times 10^{10}$\\n$4$ 뒤에 $0$이 $10$개 $\\implies 11$자리\\n$\\therefore 11$"
     },
     {
       "id": 8,
@@ -83,7 +83,7 @@ window.questionBank = [
       "content": "$20 \\times 30 \\times 40 \\times 50 \\times 60 \\times 70 = 2^a \\times 3^b \\times 5^c \\times 7^d$ 일 때, $a+b+c+d$의 값을 구하면? [4점]",
       "choices": ["14", "16", "18", "19", "20"],
       "answer": "⑤",
-      "solution": "$(2 \\times 10) \\times (3 \\times 10) \\times (2^2 \\times 10) \\times (5 \\times 10) \\times (2 \\times 3 \\times 10) \\times (7 \\times 10)$\n$= (2^1 \\times 3^1 \\times 2^2 \\times 5^1 \\times 2^1 \\times 3^1 \\times 7^1) \\times 10^6$\n$= (2^4 \\times 3^2 \\times 5^1 \\times 7^1) \\times (2^6 \\times 5^6)$\n$= 2^{10} \\times 3^2 \\times 5^7 \\times 7^1$\n$a=10, b=2, c=7, d=1 \\implies a+b+c+d = 20$\n$\\therefore 20$"
+      "solution": "$(2 \\times 10) \\times (3 \\times 10) \\times (2^2 \\times 10) \\times (5 \\times 10) \\times (2 \\times 3 \\times 10) \\times (7 \\times 10)$\\n$= (2^1 \\times 3^1 \\times 2^2 \\times 5^1 \\times 2^1 \\times 3^1 \\times 7^1) \\times 10^6$\\n$= (2^4 \\times 3^2 \\times 5^1 \\times 7^1) \\times (2^6 \\times 5^6)$\\n$= 2^{10} \\times 3^2 \\times 5^7 \\times 7^1$\\n$a=10, b=2, c=7, d=1 \\implies a+b+c+d = 20$\\n$\\therefore 20$"
     },
     {
       "id": 9,
@@ -98,7 +98,7 @@ window.questionBank = [
         "$(-21x^{3}) \\div (-3x^{2}) = -\\frac{7}{3}x^{3}$"
       ],
       "answer": "②, ④",
-      "solution": "① $-6x^{8}$\n② $8x^{6} \\times 4x = 32x^{7}$ (참)\n③ $25a^{6} \\div 10a^{3}b = \\frac{5a^{3}}{2b}$\n④ $-4ab$ (참)\n⑤ $7x$\n$\\therefore$ ②, ④"
+      "solution": "① $-6x^{8}$\\n② $8x^{6} \\times 4x = 32x^{7}$ (참)\\n③ $25a^{6} \\div 10a^{3}b = \\frac{5a^{3}}{2b}$\\n④ $-4ab$ (참)\\n⑤ $7x$\\n$\\therefore$ ②, ④"
     },
     {
       "id": 10,
@@ -107,14 +107,13 @@ window.questionBank = [
       "content": "다음 식을 전개하여 간단히 했을 때, $x^2$의 계수를 $a$, $xy$의 계수를 $b$라고 할 때, $a-b$의 값은? [4점]<br><div class='box'>$4x(3x+2y+6)-5x(x+y+2)$</div>",
       "choices": ["-4", "-2", "0", "2", "4"],
       "answer": "⑤",
-      "solution": "$12x^2 + 8xy + 24x - (5x^2 + 5xy + 10x) = 7x^2 + 3xy + 14x$. $a=7, b=3 \\implies a-b=4$.\n$\\therefore 4$"
+      "solution": "$12x^2 + 8xy + 24x - (5x^2 + 5xy + 10x) = 7x^2 + 3xy + 14x$. $a=7, b=3 \\implies a-b=4$.\\n$\\therefore 4$"
     },
     {
       "id": 11,
       "level": "중",
       "category": "식의 계산",
       "content": "$4x(3x+2y+6)-5x(x+y+2)$ 를 계산하여 간단히 하시오.",
-      "choices": [],
       "answer": "7x^2+3xy+14x",
       "solution": "$12x^2+8xy+24x - 5x^2-5xy-10x = 7x^2+3xy+14x$"
     },
@@ -131,7 +130,7 @@ window.questionBank = [
         "$4x^{2}+8x+11$"
       ],
       "answer": "①",
-      "solution": "$X + (2x^{2}-3x+7) = 6x^{2}-x+3 \\implies X = 4x^{2}+2x-4$\n바른 계산: $(4x^{2}+2x-4)-(2x^{2}-3x+7) = 2x^{2}+5x-11$\n$\\therefore 2x^{2}+5x-11$"
+      "solution": "$X + (2x^{2}-3x+7) = 6x^{2}-x+3 \\implies X = 4x^{2}+2x-4$\\n바른 계산: $(4x^{2}+2x-4)-(2x^{2}-3x+7) = 2x^{2}+5x-11$\\n$\\therefore 2x^{2}+5x-11$"
     },
     {
       "id": 13,
@@ -146,7 +145,7 @@ window.questionBank = [
         "$a-5b$"
       ],
       "answer": "④",
-      "solution": "$5a-[3b-a-\\{3b-2a+b\\}] = 5a-[3b-a-\\{4b-2a\\}]$\n$= 5a-[3b-a-4b+2a] = 5a-[a-b] = 4a+b$\n$\\therefore 4a+b$"
+      "solution": "$5a-[3b-a-\\{3b-2a+b\\}] = 5a-[3b-a-\\{4b-2a\\}]$\\n$= 5a-[3b-a-4b+2a] = 5a-[a-b] = 4a+b$\\n$\\therefore 4a+b$"
     },
     {
       "id": 14,
@@ -161,7 +160,7 @@ window.questionBank = [
         "$3x^{2}+x$"
       ],
       "answer": "③",
-      "solution": "$(2x-1)-(1-3x^{2}) = 3x^{2}+2x-2$\n$\\therefore 3x^{2}+2x-2$"
+      "solution": "$(2x-1)-(1-3x^{2}) = 3x^{2}+2x-2$\\n$\\therefore 3x^{2}+2x-2$"
     },
     {
       "id": 15,
@@ -185,7 +184,7 @@ window.questionBank = [
         "$-5a-\\frac{1}{3} < -5b-\\frac{1}{3}$"
       ],
       "answer": "⑤",
-      "solution": "음수를 곱하거나 나누면 부등호 방향이 바뀜.\n⑤ $-5a > -5b \\implies -5a-\\frac{1}{3} > -5b-\\frac{1}{3}$\n$\\therefore$ ⑤"
+      "solution": "음수를 곱하거나 나누면 부등호 방향이 바뀜.\\n⑤ $-5a > -5b \\implies -5a-\\frac{1}{3} > -5b-\\frac{1}{3}$\\n$\\therefore$ ⑤"
     },
     {
       "id": 17,
@@ -200,7 +199,7 @@ window.questionBank = [
         "<svg width='160' height='60' viewBox='0 0 160 60'><line x1='10' y1='40' x2='150' y2='40' stroke='black' stroke-width='1'/><polygon points='150,37 150,43 158,40' fill='black'/><circle cx='100' cy='40' r='3' stroke='black' fill='black'/><line x1='100' y1='40' x2='100' y2='20' stroke='black' stroke-width='1'/><line x1='100' y1='20' x2='40' y2='20' stroke='black' stroke-width='2'/><polygon points='40,17 40,23 32,20' fill='black'/><text x='98' y='55' font-size='10'>5</text></svg>"
       ],
       "answer": "④",
-      "solution": "양변에 $6$을 곱함: $3x-6 < -(1-2x)$\n$3x-6 < -1+2x \\implies x < 5$\n$\\therefore x < 5$\n수직선에서 $5$를 포함하지 않고(흰 동그라미) 왼쪽으로 향하는 ④번이 정답임."
+      "solution": "양변에 $6$을 곱함: $3x-6 < -(1-2x)$\\n$3x-6 < -1+2x \\implies x < 5$\\n$\\therefore x < 5$\\n수직선에서 $5$를 포함하지 않고(흰 동그라미) 왼쪽으로 향하는 ④번이 정답임."
     },
     {
       "id": 18,
@@ -209,7 +208,7 @@ window.questionBank = [
       "content": "다음 두 일차부등식의 해가 같을 때, 정수 $a$의 값을 구하면? [4점]<br><div class='box'>$2(3-x) > 4x$, $a(x+3) > -16$</div>",
       "choices": ["-4", "-2", "1", "4", "6"],
       "answer": "①",
-      "solution": "$2(3-x) > 4x \\implies 6-2x > 4x \\implies 6x < 6 \\therefore x < 1$\n$a(x+3) > -16 \\implies x+3 < -\\frac{16}{a}$ (단, $a < 0$) $\\implies x < -\\frac{16}{a}-3$\n$-\\frac{16}{a}-3 = 1 \\implies -\\frac{16}{a} = 4 \\implies 4a = -16 \\therefore a = -4$\n$\\therefore$ ①"
+      "solution": "$2(3-x) > 4x \\implies 6-2x > 4x \\implies 6x < 6 \\therefore x < 1$\\n$a(x+3) > -16 \\implies x+3 < -\\frac{16}{a}$ (단, $a < 0$) $\\implies x < -\\frac{16}{a}-3$\\n$-\\frac{16}{a}-3 = 1 \\implies -\\frac{16}{a} = 4 \\implies 4a = -16 \\therefore a = -4$\\n$\\therefore$ ①"
     },
     {
       "id": 19,
@@ -218,7 +217,7 @@ window.questionBank = [
       "content": "아름이는 국어 시험에서 60점, 역사 시험에서 80점, 영어 시험에서 72점을 받았다. 수학 시험에서 최소 몇 점 이상을 받아야 네 과목의 시험 성적의 평균이 70점 이상이 될 수 있을까? [4점]",
       "choices": ["60", "64", "68", "72", "76"],
       "answer": "③",
-      "solution": "수학 점수를 $x$라 하면,\n$\\frac{60+80+72+x}{4} \\ge 70 \\implies 212+x \\ge 280 \\therefore x \\ge 68$\n$\\therefore$ ③"
+      "solution": "수학 점수를 $x$라 하면,\\n$\\frac{60+80+72+x}{4} \\ge 70 \\implies 212+x \\ge 280 \\therefore x \\ge 68$\\n$\\therefore$ ③"
     },
     {
       "id": 20,
@@ -227,42 +226,38 @@ window.questionBank = [
       "content": "현아는 집에서 편의점, 도서관을 차례로 거쳐 학교에 가려고 한다. 집에서 편의점까지의 거리는 2km, 편의점에서 도서관까지의 거리는 3km, 도서관에서 학교까지의 거리가 4km이고, 집으로부터 편의점까지는 시속 4km로 걸어간다고 한다. 전체 이동 시간이 1시간 30분 이내가 되도록 하려면 편의점으로부터 학교까지는 최소한 평균 시속 몇 km로 걸어가야 할까? [4.5점]",
       "choices": ["3km", "4km", "5km", "6km", "7km"],
       "answer": "⑤",
-      "solution": "편의점~학교 평균 시속을 $v$라 하면,\n(집~편의점 시간) + (편의점~학교 시간) $\\le 1.5$\n$\\frac{2}{4} + \\frac{3+4}{v} \\le 1.5 \\implies 0.5 + \\frac{7}{v} \\le 1.5 \\implies \\frac{7}{v} \\le 1 \\therefore v \\ge 7$\n$\\therefore$ ⑤"
+      "solution": "편의점~학교 평균 시속을 $v$라 하면,\\n(집~편의점 시간) + (편의점~학교 시간) $\\le 1.5$\\n$\\frac{2}{4} + \\frac{3+4}{v} \\le 1.5 \\implies 0.5 + \\frac{7}{v} \\le 1.5 \\implies \\frac{7}{v} \\le 1 \\therefore v \\ge 7$\\n$\\therefore$ ⑤"
     },
     {
       "id": 21,
       "level": "중",
       "category": "식의 계산",
       "content": "[서술형1] 지수법칙을 이용하여 $\\frac{9^{6}+9^{6}+9^{6}}{3^{4}+3^{4}+3^{4}}$ 의 값을 $3$의 거듭제곱으로 나타내어라. [5점]",
-      "choices": [],
       "answer": "$3^{8}$",
-      "solution": "$\\frac{3 \\times 9^{6}}{3 \\times 3^{4}} = \\frac{9^{6}}{3^{4}} = \\frac{(3^{2})^{6}}{3^{4}} = \\frac{3^{12}}{3^{4}} = 3^{8}$\n$\\therefore 3^{8}$"
+      "solution": "$\\frac{3 \\times 9^{6}}{3 \\times 3^{4}} = \\frac{9^{6}}{3^{4}} = \\frac{(3^{2})^{6}}{3^{4}} = \\frac{3^{12}}{3^{4}} = 3^{8}$\\n$\\therefore 3^{8}$"
     },
     {
       "id": 22,
       "level": "중",
       "category": "식의 계산",
       "content": "[서술형2] 두 식 $A, B$가 다음과 같을 때, $A+B$를 계산하여라. [5점]<br><div class='box'>$A = (16a^{2}b-20a^{3}) \\div (-4a^{2})$<br>$B = (9a^{2}-15ab) \\div \\frac{3}{2}a$</div>",
-      "choices": [],
       "answer": "$11a-14b$",
-      "solution": "$A = \\frac{16a^{2}b}{-4a^{2}} - \\frac{20a^{3}}{-4a^{2}} = -4b + 5a$\n$B = (9a^{2}-15ab) \\times \\frac{2}{3a} = 6a - 10b$\n$A+B = (5a-4b) + (6a-10b) = 11a-14b$\n$\\therefore 11a-14b$"
+      "solution": "$A = \\frac{16a^{2}b}{-4a^{2}} - \\frac{20a^{3}}{-4a^{2}} = -4b + 5a$\\n$B = (9a^{2}-15ab) \\times \\frac{2}{3a} = 6a - 10b$\\n$A+B = (5a-4b) + (6a-10b) = 11a-14b$\\n$\\therefore 11a-14b$"
     },
     {
       "id": 23,
       "level": "하",
       "category": "일차부등식",
       "content": "[서술형3] 일차부등식 $3(2-x) < 7$을 풀어라. [5점]",
-      "choices": [],
       "answer": "$x > -\\frac{1}{3}$",
-      "solution": "$6-3x < 7 \\implies -3x < 1 \\therefore x > -\\frac{1}{3}$\n$\\therefore x > -\\frac{1}{3}$"
+      "solution": "$6-3x < 7 \\implies -3x < 1 \\therefore x > -\\frac{1}{3}$\\n$\\therefore x > -\\frac{1}{3}$"
     },
     {
       "id": 24,
       "level": "중",
       "category": "일차부등식",
       "content": "[서술형4] 건웅이네 집은 정수기를 새로 장만하려고 한다. 정수기를 구입하는 경우에는 정수기 가격 240000원과 매달 6000원의 유지비를 내고, 정수기를 대여받는 경우에는 매달 9000원의 대여료만을 낸다. 이 때, 정수기를 구입하여 최소 몇 개월 이상 사용하면 대여받는 경우의 비용보다 저렴한지 구하시오.<br>(1) 정수기를 $x$개월 동안 사용한다고 할 때, 구입하는 경우에 드는 비용을 식으로 나타내시오. [1점]<br>(2) 정수기를 $x$개월 동안 사용한다고 할 때, 대여하는 경우에 드는 비용을 식으로 나타내시오. [1점]<br>(3) 문제의 뜻에 맞게 부등식을 세워 풀고, 최소 몇 개월 이상 사용하여야 할지 답하시오. [3점]",
-      "choices": [],
       "answer": "(1) $240000+6000x$ (2) $9000x$ (3) $81$개월",
-      "solution": "(1) $240000+6000x$\n(2) $9000x$\n(3) $240000+6000x < 9000x \\implies 3000x > 240000 \\implies x > 80$\n$\\therefore$ $81$개월"
+      "solution": "(1) $240000+6000x$\\n(2) $9000x$\\n(3) $240000+6000x < 9000x \\implies 3000x > 240000 \\implies x > 80$\\n$\\therefore$ $81$개월"
     }
   ]

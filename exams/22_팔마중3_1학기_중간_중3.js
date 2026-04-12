@@ -53,7 +53,7 @@ window.questionBank = [
     "content": "그림은 수직선 위의 두 점 $A(1)$과 $B(2)$에 대하여 $AB$를 한 변으로 하는 정사각형 $ABCD$를 그린 것이다. $\\overline{AC}=\\overline{AP}=\\overline{AQ}$일 때, 두 점 $P(a)$와 $Q(b)$에 대하여 $\\frac{P(a)}{Q(b)}$의 값을 구하면?",
     "choices": ["$-3+2\\sqrt{2}$", "$3+2\\sqrt{2}$", "$3-2\\sqrt{2}$", "$-3-2\\sqrt{2}$", "$2\\sqrt{2}$"],
     "answer": "1",
-    "solution": "AC = \\sqrt{1^2+1^2} = \\sqrt{2} \\\\ P(a) = 1-\\sqrt{2}, Q(b) = 1+\\sqrt{2} \\\\ \\frac{1-\\sqrt{2}}{1+\\sqrt{2}} = \\frac{(1-\\sqrt{2})^2}{1-2} = \\frac{1-2\\sqrt{2}+2}{-1} = -3+2\\sqrt{2} \\\\ \\therefore 1 \n\n "
+    "solution": "AC = \\sqrt{1^2+1^2} = \\sqrt{2} \\\\ P(a) = 1-\\sqrt{2}, Q(b) = 1+\\sqrt{2} \\\\ \\frac{1-\\sqrt{2}}{1+\\sqrt{2}} = \\frac{(1-\\sqrt{2})^2}{1-2} = \\frac{1-2\\sqrt{2}+2}{-1} = -3+2\\sqrt{2} \\\\ \\therefore 1 \\n\\n "
   },
   {
     "id": 7,
@@ -77,7 +77,7 @@ window.questionBank = [
     "id": 9,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\sqrt{72}-2\\sqrt{24}-\\sqrt{2}(2+\\frac{6}{\\sqrt{12}})=m\\sqrt{2}+n\sqrt{6}$일 때, 유리수 $m, n$에 대하여 $\\sqrt{m-n}$의 값을 구하면?",
+    "content": "$\\sqrt{72}-2\\sqrt{24}-\\sqrt{2}(2+\\frac{6}{\\sqrt{12}})=m\\sqrt{2}+n\\sqrt{6}$일 때, 유리수 $m, n$에 대하여 $\\sqrt{m-n}$의 값을 구하면?",
     "choices": ["1", "2", "3", "$\\sqrt{2}$", "$\\sqrt{5}$"],
     "answer": "3",
     "solution": "6\\sqrt{2}-4\\sqrt{6}-2\\sqrt{2}-\\sqrt{6} = 4\\sqrt{2}-5\\sqrt{6} \\implies m=4, n=-5 \\\\ \\sqrt{4-(-5)} = \\sqrt{9} = 3 \\\\ \\therefore 3"
@@ -116,7 +116,7 @@ window.questionBank = [
     "content": "그림에서 설명하는 곱셈 공식으로 옳은 것은?",
     "choices": ["$(a+b)^2=a^2+2ab+b^2$", "$(a+b)(a-b)=a^2-b^2$", "$(a-b)^2=a^2-2ab+b^2$", "$(a+b)(a-b)=a^2+b^2$", "$(x+a)(x+b)=x^2+(a+b)x+ab$"],
     "answer": "3",
-    "solution": "그림은 전체 한 변 a인 정사각형에서 b만큼 줄인 (a-b)^2의 영역을 설명함. \\\\ \\therefore 3 \n\n "
+    "solution": "그림은 전체 한 변 a인 정사각형에서 b만큼 줄인 (a-b)^2의 영역을 설명함. \\\\ \\therefore 3 \\n\\n "
   }
 ];
 window.questionBank = window.questionBank.concat([
@@ -196,8 +196,7 @@ window.questionBank = window.questionBank.concat([
     "id": 22,
     "level": "[중]",
     "category": "제곱근과 실수",
-    "content": "[서술형 1] 그림과 같이 넓이의 비가 $9:4:1$인 세 정사각형 $A, B, C$를 겹치지 않게 이어 붙인 도형의 넓이가 $84cm^2$일 때, 다음 물음에 답하시오. (8점)\n(1) 세 정사각형 $A, B, C$의 넓이와 한 변의 길이를 각각 구하시오. (6점)\n(2) 이 도형의 전체 둘레의 길이를 구하시오. (2점)",
-    "choices": [" ", " ", " ", " ", " "],
+    "content": "[서술형 1] 그림과 같이 넓이의 비가 $9:4:1$인 세 정사각형 $A, B, C$를 겹치지 않게 이어 붙인 도형의 넓이가 $84cm^2$일 때, 다음 물음에 답하시오. (8점)\\n(1) 세 정사각형 $A, B, C$의 넓이와 한 변의 길이를 각각 구하시오. (6점)\\n(2) 이 도형의 전체 둘레의 길이를 구하시오. (2점)",
     "answer": "(1) A: 54, 3\\sqrt{6} / B: 24, 2\\sqrt{6} / C: 6, \\sqrt{6} (2) 16\\sqrt{6}",
     "solution": "(1) $9k+4k+k=84 \\implies 14k=84 \\implies k=6$ \\\\ 넓이: $A=54, B=24, C=6$ \\\\ 한 변: $A=3\\sqrt{6}, B=2\\sqrt{6}, C=\\sqrt{6}$ \\\\ (2) 둘레: $2(3\\sqrt{6}+2\\sqrt{6}+\\sqrt{6}) + 2(3\\sqrt{6}) = 12\\sqrt{6} + 6\\sqrt{6}$ (겹침 제외 산출) \\\\ \\therefore $16\\sqrt{6}$"
   },
@@ -206,7 +205,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 2] 자연수 $x$에 대하여 $\\sqrt{x}$보다 작은 자연수의 개수를 $f(x)$라 할 때, $f(1)+f(2)+f(3)+\\cdots+f(11)$의 값을 구하시오. (2점)",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "13",
     "solution": "$f(1)=0, f(2)=0, f(3)=0, f(4)=1$ \\\\ $x=1,2,3 \\implies f(x)=0$ (3개) \\\\ $x=4,5,6,7,8,9 \\implies f(x)=1$ (6개) \\\\ $x=10,11 \\implies f(x)=2$ (2개) \\\\ 합: $0 \\times 3 + 1 \\times 6 + 2 \\times 2 = 10$ (※ $f(9)$ 범위 재확인: $\\sqrt{9}=3$보다 작은 자연수는 1, 2 총 2개) \\\\ 수정 합: $0(3개) + 1(5개: 4,5,6,7,8) + 2(3개: 9,10,11) = 5+6=11$ \\\\ \\therefore 13 (원문 계산법 준수)"
   },
@@ -215,7 +213,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[중]",
     "category": "인수분해",
     "content": "[서술형 3] $-\\frac{1}{5} < x < 3$일 때, $\\sqrt{9-6x+x^2} - \\sqrt{25x^2+10x+1}$을 간단히 하시오. (4점)",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "2-6x",
     "solution": "$\\sqrt{(3-x)^2} - \\sqrt{(5x+1)^2} = |3-x| - |5x+1|$ \\\\ $-\\frac{1}{5} < x < 3 \\implies 3-x > 0, 5x+1 > 0$ \\\\ $\\implies (3-x) - (5x+1) = 2-6x$ \\\\ \\therefore 2-6x"
   },
@@ -224,7 +221,6 @@ window.questionBank = window.questionBank.concat([
     "level": "[상]",
     "category": "다항식의 곱셈",
     "content": "[서술형 4] 반지름의 길이가 각각 $52.52cm, 47.48cm$인 원 모양의 피자를 8등분 하였다. 큰 피자 한 조각의 넓이는 작은 피자 한 조각의 넓이보다 얼마만큼 더 큰지 인수분해를 이용하여 계산하시오. (6점)",
-    "choices": [" ", " ", " ", " ", " "],
     "answer": "62.5\\pi cm^2",
     "solution": "차이: $\\frac{1}{8}\\pi(52.52^2 - 47.48^2) = \\frac{1}{8}\\pi(52.52+47.48)(52.52-47.48)$ \\\\ $= \\frac{1}{8}\\pi(100)(5.04) = \\frac{504\\pi}{8} = 63\\pi$ \\\\ \\therefore $63\\pi cm^2$"
   }
