@@ -102,7 +102,6 @@
     </style>
 </head>
 <body>
-    <!-- QPP 선택 모달 -->
     <div class="modal-overlay" id="qppModal">
         <div class="modal-box">
             <div class="modal-title">시험지 출력 형식</div>
@@ -182,7 +181,7 @@
 
     /* ── 초기화 ── */
     async function init() {
-        // 엔진 데이터: db.js 스크립트 태그 (mixer.html과 동일한 방식 — 통일)
+        // 엔진 데이터
         await new Promise(res => {
             const s = document.createElement('script');
             s.src = 'db.js?v=' + Date.now();
@@ -191,7 +190,7 @@
             document.body.appendChild(s);
         });
 
-        // PDF 아카이브: catalog.json (files[] 배열)
+        // PDF 아카이브
         try {
             const r = await fetch('./data/catalog.json?v=' + Date.now());
             if (r.ok) archiveDB = await r.json();
@@ -234,7 +233,6 @@
         const examType = document.getElementById('examTypeFilter').value;
         grid.innerHTML = '';
 
-        // 엔진 필터
         const engineItems = engineDB.exams.filter(ex => {
             if (ex.type === 'hidden') return false;
             const matchK = !keyword || `${ex.school} ${ex.subject}`.toLowerCase().includes(keyword);
@@ -245,7 +243,6 @@
             return matchK && matchG && matchT;
         }).map(ex => ({ ...ex, _source: 'engine' }));
 
-        // 아카이브 필터
         const archiveItems = (archiveDB.files || []).filter(f => {
             const matchK = !keyword || `${f.school} ${f.subject} ${f.year}`.toLowerCase().includes(keyword);
             const matchG = !selectedGrade || f.grade === selectedGrade;
@@ -319,18 +316,16 @@
     /* ── 엔진 열기 ── */
     function openEngine(item, action) {
         if (item._source === 'archive') {
-            const url = `engine.html?mode=pdf&file=${encodeURIComponent('pdf_archive/' + item.fileName)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
+            const url = `engine.html?mode=pdf&file=${encodeURIComponent(item.url || item.fileName)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
             window.location.href = url;
             return;
         }
         if (action === 'exam') {
-            // 시험지만 QPP 선택 모달
             _pendingItem   = item;
             _pendingAction = action;
             document.getElementById('qppModal').classList.add('open');
             return;
         }
-        // 해설지·정답표는 바로 이동
         goEngine(item, action, 4);
     }
 
@@ -348,7 +343,6 @@
         window.location.href = url;
     }
 
-    // 모달 배경 클릭 시 닫기
     document.getElementById('qppModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
