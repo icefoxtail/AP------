@@ -3,609 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS아카이브 | 수학 기출 통합 시스템</title>
+    <title>AP 수학 | 통합 출제 시스템</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --navy:          #07111f;
-            --navy-2:        #0c1a2e;
-            --blue-main:     #1d4ed8;
-            --blue-light:    #60a5fa;
-            --blue-pale:     #dbeafe;
-            --green-main:    #059669;
-            --green-pale:    #d1fae5;
-            --gray-muted:    #94a3b8;
-            --bg-soft:       #f8fafc;
+            --navy-dark: #0f172a;
+            --purple-primary: #4f46e5;
+            --blue-exam: #378ADD;
+            --green-unit: #1D9E75;
+            --gray-private: #94a3b8;
+            --bg-soft: #f8fafc;
         }
+        body { margin: 0; font-family: 'Pretendard', sans-serif; background: var(--bg-soft); color: #1e293b; overflow-x: hidden; }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Pretendard', sans-serif; background: var(--bg-soft); color: #1e293b; overflow-x: hidden; }
+        /* ── 헤더 ── */
+        header { background: var(--navy-dark); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .top-nav { max-width: 1200px; margin: 0 auto; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+        .logo-area { display: flex; align-items: center; gap: 10px; color: white; cursor: pointer; }
+        .logo-grid { width: 22px; height: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+        .logo-grid div { background: #3b82f6; border-radius: 1px; }
 
-        /* ── NAV ── */
-        header { background: var(--navy); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .top-nav { max-width: 1200px; margin: 0 auto; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+        /* ── 학년 탭 ── */
+        .grade-quick-bar { display: flex; align-items: center; gap: 28px; }
+        .grade-tab { color: #94a3b8; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.2s; position: relative; padding: 20px 0; }
+        .grade-tab.active { color: #3b82f6; }
+        .grade-tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #3b82f6; }
 
-        .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .logo-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--blue-main); display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; padding: 5px; }
-        .logo-mark div { background: white; border-radius: 1px; }
-        .logo-mark div:last-child { background: var(--blue-light); }
-        .logo-name { font-size: 17px; font-weight: 800; color: white; letter-spacing: -0.5px; }
-        .logo-name em { color: var(--blue-light); font-style: normal; }
+        /* ── 히어로 ── */
+        .hero { background: var(--navy-dark); color: white; padding: 50px 24px 70px; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; }
+        .hero-title { font-size: 36px; font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
+        .stats-row { display: flex; gap: 50px; }
+        .stat-card { border-left: 2px solid #334155; padding-left: 18px; }
+        .stat-num { font-size: 30px; font-weight: 800; color: #3b82f6; }
 
-        .grade-nav { display: flex; gap: 2px; }
-        .gtab { font-size: 13px; color: rgba(255,255,255,0.38); font-weight: 600; padding: 5px 11px; border-radius: 6px; cursor: pointer; transition: 0.15s; }
-        .gtab:hover { color: rgba(255,255,255,0.7); }
-        .gtab.active { color: white; background: rgba(255,255,255,0.1); }
+        /* ── 컨텐츠 ── */
+        .content-wrap { max-width: 1200px; margin: -35px auto 60px; padding: 0 20px; }
+        .filter-bar { background: white; padding: 14px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .search-box { flex: 1; min-width: 200px; position: relative; }
+        .search-box input { width: 100%; padding: 12px 12px 12px 42px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; font-size: 14px; box-sizing: border-box; }
+        .search-box::before { content: '🔍'; position: absolute; left: 16px; top: 12px; opacity: 0.4; z-index: 1; }
+        select { padding: 10px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; font-weight: 700; color: #475569; cursor: pointer; }
+        .btn-mixer { background: var(--purple-primary); color: white; border: none; padding: 12px 22px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        .btn-mixer:hover { background: #4338ca; }
 
-        .nav-count { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; background: rgba(255,255,255,0.07); padding: 4px 12px; border-radius: 20px; }
+        /* ── 카드 그리드 ── */
+        .exam-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); margin-top: 25px; }
+        .exam-card { background: white; border-radius: 16px; padding: 22px; border: 1px solid #f1f5f9; box-shadow: 0 2px 10px rgba(0,0,0,0.02); transition: 0.25s; border-left: 5px solid var(--gray-private); display: flex; flex-direction: column; }
+        .exam-card:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(0,0,0,0.05); }
+        .exam-card.gichul { border-left-color: var(--blue-exam); }
+        .exam-card.archive { border-left-color: var(--green-unit); }
 
-        /* ── HERO ── */
-        .hero { background: var(--navy); padding: 36px 24px 50px; position: relative; overflow: hidden; }
-        .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-        .hero-grid-bg {
-            position: absolute; inset: 0; opacity: 0.035;
-            background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
-            background-size: 32px 32px;
+        .card-year { font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; }
+        .card-main-title { font-size: 18px; font-weight: 800; line-height: 1.45; margin-bottom: 15px; color: #1e293b; min-height: 52px; }
+        .badge-row { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+        .badge { background: #f1f5f9; color: #475569; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; }
+        .badge.blue { background: #dbeafe; color: #1d4ed8; }
+        .badge.green { background: #d1fae5; color: #065f46; }
+
+        .card-actions { border-top: 1px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: space-around; align-items: center; margin-top: auto; }
+        .action-item { text-align: center; cursor: pointer; flex: 1; transition: 0.2s; padding: 5px; border-radius: 8px; }
+        .action-item:hover { background: #f8fafc; }
+        .action-item i { font-size: 20px; color: #3b82f6; margin-bottom: 5px; display: block; }
+        .action-item span { font-size: 11px; font-weight: 800; color: #64748b; }
+        .action-item.pdf-only { flex: unset; width: 100%; }
+        .action-item.pdf-only i { font-size: 22px; color: var(--green-unit); }
+
+        /* ── QPP 선택 모달 ── */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 2000;
+            align-items: center; justify-content: center;
         }
-        .hero-deco { position: absolute; right: 10%; top: 20px; opacity: 0.06; pointer-events: none; }
-        .hero-deco div { color: white; font-size: 22px; font-family: 'Nanum Myeongjo', serif; line-height: 2.2; text-align: right; }
-
-        .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(29,78,216,0.2); border: 1px solid rgba(96,165,250,0.2); border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
-        .tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); }
-        .hero-tag span { font-size: 11px; font-weight: 700; color: #93c5fd; letter-spacing: 0.8px; text-transform: uppercase; }
-
-        .hero-title { font-size: 30px; font-weight: 800; color: white; line-height: 1.25; letter-spacing: -0.8px; margin-bottom: 7px; }
-        .hero-title em { color: var(--blue-light); font-style: normal; }
-        .hero-desc { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; }
-
-        .stat-pills { display: flex; gap: 10px; flex-shrink: 0; }
-        .stat-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 22px; text-align: center; min-width: 84px; }
-        .stat-n { font-size: 26px; font-weight: 800; color: var(--blue-light); line-height: 1; font-variant-numeric: tabular-nums; }
-        .stat-l { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; margin-top: 5px; white-space: nowrap; }
-
-        /* ── FILTER BAND ── */
-        .filter-band { background: white; border-bottom: 1px solid #e2e8f0; position: sticky; top: 56px; z-index: 900; }
-        .filter-inner { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 10px; }
-
-        .fb-search { flex: 1; position: relative; }
-        .fb-search input {
-            width: 100%; background: #f8fafc; border: 1px solid #e2e8f0;
-            border-radius: 8px; padding: 9px 14px 9px 36px;
-            font-size: 13px; color: #1e293b; font-family: inherit; outline: none;
-            transition: border-color 0.15s;
-        }
-        .fb-search input:focus { border-color: var(--blue-main); background: white; }
-        .fb-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 13px; color: #94a3b8; pointer-events: none; }
-
-        .fb-divider { width: 1px; height: 24px; background: #e2e8f0; flex-shrink: 0; }
-
-        .fb-sel-group { display: flex; align-items: center; gap: 6px; }
-        .fb-label { font-size: 11px; font-weight: 700; color: #64748b; white-space: nowrap; }
-        .fb-sel {
-            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
-            padding: 8px 12px; font-size: 13px; color: #1e293b;
-            font-family: inherit; cursor: pointer; font-weight: 600; outline: none;
-        }
-        .fb-sel:focus { border-color: var(--blue-main); }
-
-        .fb-mixer {
-            display: flex; align-items: center; gap: 7px;
-            background: var(--blue-main); color: white; border: none;
-            border-radius: 8px; padding: 9px 18px; font-size: 13px;
-            font-weight: 700; font-family: inherit; cursor: pointer;
-            white-space: nowrap; flex-shrink: 0; transition: background 0.15s;
-        }
-        .fb-mixer:hover { background: #1e40af; }
-        .mixer-icon { width: 14px; height: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; flex-shrink: 0; }
-        .mixer-icon div { background: rgba(255,255,255,0.7); border-radius: 1px; }
-
-        /* ── CONTENT ── */
-        .content-wrap { max-width: 1200px; margin: 0 auto; padding: 28px 24px 60px; }
-
-        /* 섹션 헤더 */
-        .sec-block { margin-bottom: 32px; }
-        .sec-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-        .sec-badge { font-size: 12px; font-weight: 800; color: white; padding: 4px 12px; border-radius: 6px; flex-shrink: 0; }
-        .sec-badge.engine { background: var(--blue-main); }
-        .sec-badge.pdf    { background: var(--green-main); }
-        .sec-title { font-size: 15px; font-weight: 800; color: #1e293b; }
-        .sec-line  { flex: 1; height: 0.5px; background: #e2e8f0; }
-        .sec-count { font-size: 11px; color: #94a3b8; font-weight: 600; flex-shrink: 0; }
-        .sec-more  { font-size: 12px; font-weight: 700; cursor: pointer; flex-shrink: 0; transition: opacity 0.15s; }
-        .sec-more:hover { opacity: 0.7; }
-        .sec-more.blue  { color: var(--blue-main); }
-        .sec-more.green { color: var(--green-main); }
-        .sec-divider { border: none; border-top: 2px dashed #e2e8f0; margin: 32px 0; }
-
-        /* 카드 그리드 */
-        .card-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-
-        /* 카드 */
-        .exam-card { background: white; border: 1px solid #f1f5f9; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: 0.2s; }
-        .exam-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); border-color: #e2e8f0; }
-        .card-top { height: 3px; background: var(--blue-main); }
-        .card-top.green { background: var(--green-main); }
-        .card-body { padding: 16px; flex: 1; }
-        .card-grade-label { font-size: 10px; font-weight: 800; color: #94a3b8; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
-        .card-main-title { font-size: 15px; font-weight: 800; line-height: 1.4; margin-bottom: 11px; color: #1e293b; letter-spacing: -0.3px; }
-        .badge-row { display: flex; gap: 5px; flex-wrap: wrap; }
-        .badge { font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 4px; }
-        .badge.blue  { background: var(--blue-pale); color: #1e40af; }
-        .badge.green { background: var(--green-pale); color: #065f46; }
-        .badge.gray  { background: #f1f5f9; color: #64748b; }
-
-        .card-actions { border-top: 1px solid #f1f5f9; display: flex; }
-        .action-btn { flex: 1; padding: 10px 0; text-align: center; font-size: 11px; font-weight: 700; color: #64748b; cursor: pointer; transition: 0.15s; }
-        .action-btn + .action-btn { border-left: 1px solid #f1f5f9; }
-        .action-btn:hover { background: #f8fafc; color: #1e293b; }
-        .action-btn.sole { flex: unset; width: 100%; color: var(--green-main); font-size: 12px; }
-
-        /* 연도 그룹 (전체 목록용) */
-        .yr-group { margin-bottom: 28px; }
-        .yr-group-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .yr-group-badge { font-size: 12px; font-weight: 800; color: white; padding: 3px 12px; border-radius: 20px; background: #334155; flex-shrink: 0; }
-        .yr-group-badge.latest { background: var(--blue-main); }
-        .yr-group-line  { flex: 1; height: 0.5px; background: #e2e8f0; }
-        .yr-group-count { font-size: 11px; color: #94a3b8; font-weight: 600; }
-        .list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-top: 4px; }
-        .list-title { font-size: 15px; font-weight: 800; color: #1e293b; }
-        .list-meta  { font-size: 12px; color: #94a3b8; font-weight: 600; }
-        #full-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-        .empty-msg { grid-column: 1/-1; text-align: center; padding: 60px; color: #94a3b8; font-size: 14px; }
-
-        /* ── QPP 모달 ── */
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 2000; align-items: center; justify-content: center; }
         .modal-overlay.open { display: flex; }
-        .modal-box { background: white; border-radius: 20px; padding: 36px 40px; width: 360px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); text-align: center; }
-        .modal-title { font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 6px; }
+        .modal-box {
+            background: white; border-radius: 20px;
+            padding: 36px 40px; width: 360px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .modal-title { font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 6px; }
         .modal-sub { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-        .qpp-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 20px; }
-        .qpp-opt { flex: 1; padding: 20px 0; border: 2px solid #e2e8f0; border-radius: 14px; cursor: pointer; transition: 0.18s; font-size: 28px; font-weight: 800; color: #475569; background: #f8fafc; }
-        .qpp-opt:hover { border-color: var(--blue-main); background: #eff6ff; color: var(--blue-main); }
+        .qpp-btns { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; }
+        .qpp-opt {
+            flex: 1; padding: 20px 0; border: 2px solid #e2e8f0;
+            border-radius: 14px; cursor: pointer; transition: 0.2s;
+            font-size: 28px; font-weight: 800; color: #475569;
+            background: #f8fafc;
+        }
+        .qpp-opt:hover { border-color: #4f46e5; background: #eef2ff; color: #4338ca; }
         .qpp-opt span { display: block; font-size: 11px; font-weight: 600; color: #94a3b8; margin-top: 4px; }
-        .modal-cancel { font-size: 13px; color: #94a3b8; cursor: pointer; border: none; background: none; padding: 4px 12px; }
+        .modal-cancel {
+            font-size: 13px; color: #94a3b8; cursor: pointer;
+            border: none; background: none; padding: 4px 12px;
+        }
         .modal-cancel:hover { color: #475569; }
     </style>
 </head>
 <body>
-
-<!-- QPP 모달 -->
-<div class="modal-overlay" id="qppModal">
-    <div class="modal-box">
-        <div class="modal-title">시험지 출력 형식</div>
-        <div class="modal-sub">한 페이지에 몇 문항을 배치할까요?</div>
-        <div class="qpp-btns">
-            <div class="qpp-opt" onclick="confirmQpp(4)">4<span>2 × 2 배열</span></div>
-            <div class="qpp-opt" onclick="confirmQpp(6)">6<span>2 × 3 배열</span></div>
-        </div>
-        <button class="modal-cancel" onclick="closeModal()">취소</button>
-    </div>
-</div>
-
-<!-- NAV -->
-<header>
-    <div class="top-nav">
-        <div class="logo" onclick="resetView()">
-            <div class="logo-mark"><div></div><div></div><div></div><div></div></div>
-            <span class="logo-name"><em>JS</em>아카이브</span>
-        </div>
-        <nav class="grade-nav" id="gradeBar">
-            <span class="gtab" data-grade="고3">고3</span>
-            <span class="gtab" data-grade="고2">고2</span>
-            <span class="gtab" data-grade="고1">고1</span>
-            <span class="gtab" data-grade="중3">중3</span>
-            <span class="gtab" data-grade="중2">중2</span>
-            <span class="gtab active" data-grade="">전체</span>
-        </nav>
-        <span class="nav-count" id="navCount">시험지 0개</span>
-    </div>
-</header>
-
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-deco" aria-hidden="true">
-        <div>∫ f(x) dx</div>
-        <div>lim<sub>n→∞</sub> aₙ</div>
-        <div>∑ aₙ = S</div>
-    </div>
-    <div class="hero-inner">
-        <div class="hero-left">
-            <div class="hero-tag"><div class="tag-dot"></div><span>수학 기출 아카이브</span></div>
-            <div class="hero-title">학교별 기출 & 변형<br><em>통합 출제 시스템</em></div>
-            <div class="hero-desc">시험지 · 해설지 · 정답표를 한 번에<br>엔진 렌더링 + PDF 기출 통합 관리</div>
-        </div>
-        <div class="stat-pills">
-            <div class="stat-pill"><div class="stat-n" id="stat-total">0</div><div class="stat-l">총 시험지</div></div>
-            <div class="stat-pill"><div class="stat-n" id="stat-grades">0</div><div class="stat-l">대상 학년</div></div>
-            <div class="stat-pill"><div class="stat-n" id="stat-pdf">0</div><div class="stat-l">PDF 기출</div></div>
+    <!-- QPP 선택 모달 -->
+    <div class="modal-overlay" id="qppModal">
+        <div class="modal-box">
+            <div class="modal-title">시험지 출력 형식</div>
+            <div class="modal-sub">한 페이지에 몇 문항을 배치할까요?</div>
+            <div class="qpp-btns">
+                <div class="qpp-opt" onclick="confirmQpp(4)">
+                    4<span>2 × 2 배열</span>
+                </div>
+                <div class="qpp-opt" onclick="confirmQpp(6)">
+                    6<span>2 × 3 배열</span>
+                </div>
+            </div>
+            <button class="modal-cancel" onclick="closeModal()">취소</button>
         </div>
     </div>
-</div>
 
-<!-- FILTER BAND -->
-<div class="filter-band">
-    <div class="filter-inner">
-        <div class="fb-search">
-            <i class="fa-solid fa-magnifying-glass fb-search-icon"></i>
-            <input type="text" id="searchInput" placeholder="학교명, 과목으로 검색…">
+    <header>
+        <div class="top-nav">
+            <div class="logo-area" onclick="location.reload()">
+                <div class="logo-grid"><div></div><div></div><div></div><div></div></div>
+                <span style="font-weight:900; font-size:20px;">AP 수학</span>
+            </div>
+            <nav class="grade-quick-bar" id="gradeBar">
+                <span class="grade-tab" data-grade="고3">고3</span>
+                <span class="grade-tab" data-grade="고2">고2</span>
+                <span class="grade-tab" data-grade="고1">고1</span>
+                <span class="grade-tab" data-grade="중3">중3</span>
+                <span class="grade-tab" data-grade="중2">중2</span>
+                <span class="grade-tab" data-grade="중1">중1</span>
+                <span class="grade-tab active" data-grade="">전체</span>
+            </nav>
         </div>
-        <div class="fb-divider"></div>
-        <div class="fb-sel-group">
-            <span class="fb-label">연도</span>
-            <select class="fb-sel" id="yearFilter">
-                <option value="">전체</option>
-            </select>
+    </header>
+
+    <div class="hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">기출 & 변형 문제<br><span style="color:#3b82f6">통합 출제 시스템</span></h1>
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-total">0</span>
+                    <span style="color:#64748b; font-size:13px; font-weight:600; display:block;">총 시험지</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-grades">0</span>
+                    <span style="color:#64748b; font-size:13px; font-weight:600; display:block;">대상 학년</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-pdf">0</span>
+                    <span style="color:#64748b; font-size:13px; font-weight:600; display:block;">PDF 기출</span>
+                </div>
+            </div>
         </div>
-        <div class="fb-sel-group">
-            <span class="fb-label">시험</span>
-            <select class="fb-sel" id="examTypeFilter">
+    </div>
+
+    <div class="content-wrap">
+        <div class="filter-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="학교명, 과목, 연도 검색...">
+            </div>
+            <select id="examTypeFilter">
                 <option value="">전체</option>
                 <option value="1학기중간">1학기 중간</option>
                 <option value="1학기기말">1학기 기말</option>
                 <option value="2학기중간">2학기 중간</option>
                 <option value="2학기기말">2학기 기말</option>
             </select>
+            <button class="btn-mixer" onclick="location.href='mixer.html'">⚡ 믹서기</button>
         </div>
-        <div class="fb-divider"></div>
-        <button class="fb-mixer" onclick="location.href='mixer.html'">
-            <div class="mixer-icon"><div></div><div></div><div></div><div></div></div>
-            믹서 출제
-        </button>
+        <div id="examGrid" class="exam-grid"></div>
     </div>
-</div>
-
-<!-- CONTENT -->
-<div class="content-wrap">
-    <!-- 연도×학년 피처드 섹션 -->
-    <div id="featured-section"></div>
-
-    <!-- 전체/필터 결과 목록 (필터 활성 시 표시) -->
-    <div id="full-section" style="display:none;">
-        <div class="list-header">
-            <span class="list-title" id="listTitle">전체 자료</span>
-            <span class="list-meta" id="listMeta"></span>
-        </div>
-        <div id="full-grid"></div>
-    </div>
-</div>
 
 <script>
-/* ── 상태 ── */
-let engineDB  = { exams: [] };
-let archiveDB = { files: [] };
-let selectedGrade = '';
-let _filterType   = '';   // 'engine' | 'pdf' | ''
+    /* ── 상태 ── */
+    let engineDB  = { exams: [] };
+    let archiveDB = { files: [] };
+    let selectedGrade = '';
 
-const FEATURED_GRADES = ['중2', '중3', '고1', '고2'];
+    /* ── 초기화 ── */
+    async function init() {
+        // 엔진 데이터: db.js 스크립트 태그 (mixer.html과 동일한 방식 — 통일)
+        await new Promise(res => {
+            const s = document.createElement('script');
+            s.src = 'db.js?v=' + Date.now();
+            s.onload = () => { engineDB = window.mainDB || window.db || { exams: [] }; res(); };
+            s.onerror = () => res();
+            document.body.appendChild(s);
+        });
 
-/* ── 초기화 ── */
-async function init() {
-    // 엔진 DB
-    await new Promise(res => {
-        const s = document.createElement('script');
-        s.src = 'db.js?v=' + Date.now();
-        s.onload = () => { engineDB = window.mainDB || window.db || { exams: [] }; res(); };
-        s.onerror = () => res();
-        document.body.appendChild(s);
-    });
+        // PDF 아카이브: catalog.json (files[] 배열)
+        try {
+            const r = await fetch('./data/catalog.json?v=' + Date.now());
+            if (r.ok) archiveDB = await r.json();
+        } catch (e) {}
 
-    // PDF 아카이브
-    try {
-        const r = await fetch('./data/catalog.json?v=' + Date.now());
-        if (r.ok) archiveDB = await r.json();
-    } catch (e) {}
+        updateStats();
+        initGradeBar();
+        renderList();
 
-    updateStats();
-    populateYearFilter();
-    initGradeBar();
-    renderFeatured();
-
-    document.getElementById('searchInput').addEventListener('input', onFilterChange);
-    document.getElementById('yearFilter').addEventListener('change', onFilterChange);
-    document.getElementById('examTypeFilter').addEventListener('change', onFilterChange);
-}
-
-/* ── 통계 ── */
-function updateStats() {
-    const ve = engineDB.exams.filter(e => e.type !== 'hidden');
-    const af = archiveDB.files || [];
-    const total = ve.length + af.length;
-
-    document.getElementById('stat-total').innerText  = total;
-    document.getElementById('stat-grades').innerText =
-        new Set([...ve.map(e => e.grade), ...af.map(f => f.grade)].filter(Boolean)).size;
-    document.getElementById('stat-pdf').innerText    = af.length;
-    document.getElementById('navCount').innerText    = `시험지 ${total}개`;
-}
-
-/* ── 연도 필터 옵션 자동 생성 ── */
-function populateYearFilter() {
-    const years = new Set([
-        ...engineDB.exams.map(e => e.year),
-        ...(archiveDB.files || []).map(f => f.year)
-    ].filter(Boolean));
-
-    const sel = document.getElementById('yearFilter');
-    [...years].sort((a, b) => b - a).forEach(y => {
-        const opt = document.createElement('option');
-        opt.value = y; opt.textContent = y;
-        sel.appendChild(opt);
-    });
-}
-
-/* ── 학년 탭 ── */
-function initGradeBar() {
-    document.querySelectorAll('.gtab').forEach(tab => {
-        tab.onclick = () => {
-            document.querySelectorAll('.gtab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            selectedGrade = tab.dataset.grade;
-            onFilterChange();
-        };
-    });
-}
-
-/* ── 필터 변경 핸들러 ── */
-function onFilterChange() {
-    _filterType = '';  // 드롭다운/검색 건드리면 타입 필터 해제
-    const keyword  = document.getElementById('searchInput').value.trim();
-    const year     = document.getElementById('yearFilter').value;
-    const examType = document.getElementById('examTypeFilter').value;
-    const hasFilter = keyword || year || examType || selectedGrade || _filterType;
-
-    if (hasFilter) {
-        document.getElementById('featured-section').style.display = 'none';
-        document.getElementById('full-section').style.display = 'block';
-        renderFullList();
-    } else {
-        document.getElementById('featured-section').style.display = 'block';
-        document.getElementById('full-section').style.display = 'none';
-        renderFeatured();
-    }
-}
-
-/* ── 피처드: 엔진/PDF 2원화 렌더 ── */
-function renderFeatured() {
-    const section = document.getElementById('featured-section');
-    section.innerHTML = '';
-
-    const allEngine  = engineDB.exams.filter(e => e.type !== 'hidden');
-    const allArchive = archiveDB.files || [];
-
-    // 엔진기출 섹션 — 학년별 최신 1개
-    const engineCards = FEATURED_GRADES.map(grade => {
-        const found = allEngine
-            .filter(e => e.grade === grade)
-            .sort((a, b) => (b.year || 0) - (a.year || 0))[0];
-        return found ? { ...found, _source: 'engine' } : null;
-    }).filter(Boolean);
-
-    if (engineCards.length > 0) {
-        const engineBlock = document.createElement('div');
-        engineBlock.className = 'sec-block';
-        engineBlock.innerHTML = `
-            <div class="sec-header">
-                <span class="sec-badge engine">엔진기출</span>
-                <span class="sec-title">학교별 기출 문제</span>
-                <div class="sec-line"></div>
-                <span class="sec-count">${allEngine.length}개</span>
-                <span class="sec-more blue" onclick="showType('engine')">전체 보기 →</span>
-            </div>
-            <div class="card-grid" id="engine-grid"></div>`;
-        section.appendChild(engineBlock);
-        const grid = engineBlock.querySelector('#engine-grid');
-        engineCards.forEach(ex => grid.appendChild(buildCard(ex)));
+        document.getElementById('searchInput').addEventListener('input', renderList);
+        document.getElementById('examTypeFilter').addEventListener('change', renderList);
     }
 
-    // PDF기출 섹션 — 학년별 최신 1개
-    const pdfCards = FEATURED_GRADES.map(grade => {
-        const found = (allArchive)
-            .filter(f => f.grade === grade)
-            .sort((a, b) => (b.year || 0) - (a.year || 0))[0];
-        return found ? { ...found, _source: 'archive' } : null;
-    }).filter(Boolean);
-
-    if (pdfCards.length > 0) {
-        const divider = document.createElement('hr');
-        divider.className = 'sec-divider';
-        section.appendChild(divider);
-
-        const pdfBlock = document.createElement('div');
-        pdfBlock.className = 'sec-block';
-        pdfBlock.innerHTML = `
-            <div class="sec-header">
-                <span class="sec-badge pdf">PDF기출</span>
-                <span class="sec-title">원본 시험지 아카이브</span>
-                <div class="sec-line"></div>
-                <span class="sec-count">${allArchive.length}개</span>
-                <span class="sec-more green" onclick="showType('pdf')">전체 보기 →</span>
-            </div>
-            <div class="card-grid" id="pdf-grid"></div>`;
-        section.appendChild(pdfBlock);
-        const grid = pdfBlock.querySelector('#pdf-grid');
-        pdfCards.forEach(ex => grid.appendChild(buildCard(ex)));
-    }
-}
-
-/* ── 전체/필터 목록 렌더 (연도별 그룹핑) ── */
-function renderFullList() {
-    const keyword  = document.getElementById('searchInput').value.toLowerCase().trim();
-    const year     = document.getElementById('yearFilter').value;
-    const examType = document.getElementById('examTypeFilter').value;
-    const container = document.getElementById('full-grid');
-    container.innerHTML = '';
-
-    const engineItems = (_filterType === 'pdf') ? [] : engineDB.exams.filter(ex => {
-        if (ex.type === 'hidden') return false;
-        const matchK = !keyword || `${ex.school} ${ex.subject}`.toLowerCase().includes(keyword);
-        const matchG = !selectedGrade || ex.grade === selectedGrade;
-        const matchY = !year || String(ex.year) === String(year);
-        const typeStr = ex.semester && ex.examType
-            ? `${ex.semester}학기${ex.examType === 'mid' ? '중간' : '기말'}` : '';
-        const matchT = !examType || typeStr === examType;
-        return matchK && matchG && matchY && matchT;
-    }).map(ex => ({ ...ex, _source: 'engine' }));
-
-    const archiveItems = (_filterType === 'engine') ? [] : (archiveDB.files || []).filter(f => {
-        const matchK = !keyword || `${f.school} ${f.subject} ${f.year}`.toLowerCase().includes(keyword);
-        const matchG = !selectedGrade || f.grade === selectedGrade;
-        const matchY = !year || String(f.year) === String(year);
-        const matchT = !examType || f.exam === examType;
-        return matchK && matchG && matchY && matchT;
-    }).map(f => ({ ...f, _source: 'archive' }));
-
-    const all = [...engineItems, ...archiveItems].sort((a, b) => (b.year || 0) - (a.year || 0));
-
-    // 타이틀 / 메타
-    const typeText  = _filterType === 'engine' ? ' · 엔진기출' : _filterType === 'pdf' ? ' · PDF기출' : '';
-    const gradeText = selectedGrade ? ` · ${selectedGrade}` : '';
-    const yearText  = year ? ` · ${year}년` : '';
-    document.getElementById('listTitle').innerText = `전체 자료${typeText}${gradeText}${yearText}`;
-    document.getElementById('listMeta').innerText  = `${all.length}개 · 최신순`;
-
-    if (all.length === 0) {
-        container.innerHTML = '<div class="empty-msg">일치하는 자료가 없습니다.</div>';
-        return;
+    /* ── 통계 ── */
+    function updateStats() {
+        const ve = engineDB.exams.filter(e => e.type !== 'hidden');
+        const af = archiveDB.files || [];
+        document.getElementById('stat-total').innerText  = ve.length + af.length;
+        document.getElementById('stat-grades').innerText =
+            new Set([...ve.map(e => e.grade), ...af.map(f => f.grade)].filter(Boolean)).size;
+        document.getElementById('stat-pdf').innerText = af.length;
     }
 
-    // 연도별 그룹핑
-    const grouped = {};
-    all.forEach(ex => {
-        const y = ex.year || '연도미상';
-        if (!grouped[y]) grouped[y] = [];
-        grouped[y].push(ex);
-    });
-
-    const sortedYears = Object.keys(grouped).sort((a, b) => b - a);
-    const latestYear  = sortedYears[0];
-
-    sortedYears.forEach(y => {
-        const items = grouped[y];
-        const group = document.createElement('div');
-        group.className = 'yr-group';
-        group.innerHTML = `
-            <div class="yr-group-header">
-                <span class="yr-group-badge ${y === latestYear ? 'latest' : ''}">${y}</span>
-                <div class="yr-group-line"></div>
-                <span class="yr-group-count">${items.length}개</span>
-            </div>
-            <div class="card-grid" id="yg-${y}"></div>`;
-        container.appendChild(group);
-        const grid = group.querySelector(`#yg-${y}`);
-        items.forEach(ex => grid.appendChild(buildCard(ex)));
-    });
-}
-
-/* ── 타입별 전체보기 ── */
-function showType(type) {
-    // 타입 필터는 검색어로 대신 처리 (엔진/PDF는 _source로 구분)
-    _filterType = type;
-    document.getElementById('featured-section').style.display = 'none';
-    document.getElementById('full-section').style.display = 'block';
-    renderFullList();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-/* ── 홈 리셋 ── */
-function resetView() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('yearFilter').value  = '';
-    document.getElementById('examTypeFilter').value = '';
-    selectedGrade = '';
-    _filterType   = '';
-    document.querySelectorAll('.gtab').forEach(t => t.classList.remove('active'));
-    document.querySelector('.gtab[data-grade=""]').classList.add('active');
-    onFilterChange();
-}
-
-/* ── 카드 빌더 ── */
-function buildCard(ex) {
-    const isArchive = ex._source === 'archive';
-    const card = document.createElement('div');
-    card.className = 'exam-card';
-
-    let topClass, gradeLabel, titleHTML, badgesHTML, actionsHTML;
-
-    if (isArchive) {
-        topClass   = 'green';
-        gradeLabel = ex.grade || '';
-        titleHTML  = `${ex.school || ''}<br>${ex.exam || ''}`;
-        badgesHTML = `<span class="badge green">PDF기출</span>
-                      ${ex.subject ? `<span class="badge gray">${ex.subject}</span>` : ''}`;
-        actionsHTML = `<div class="action-btn sole" data-action="pdf">PDF 열기</div>`;
-    } else {
-        topClass   = '';
-        gradeLabel = ex.grade || '';
-        const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : '';
-        titleHTML  = `${ex.school || ''}<br>${ex.semester ? ex.semester + '학기 ' : ''}${typeText}`;
-        badgesHTML = `<span class="badge blue">엔진기출</span>
-                      ${ex.subject ? `<span class="badge gray">${ex.subject}</span>` : ''}`;
-        actionsHTML = `
-            <div class="action-btn" data-action="exam">시험지</div>
-            <div class="action-btn" data-action="sol">해설지</div>
-            <div class="action-btn" data-action="ans">정답표</div>`;
+    /* ── 학년 탭 ── */
+    function initGradeBar() {
+        document.querySelectorAll('.grade-tab').forEach(tab => {
+            tab.onclick = () => {
+                document.querySelectorAll('.grade-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                selectedGrade = tab.dataset.grade;
+                renderList();
+            };
+        });
     }
 
-    card.innerHTML = `
-        <div class="card-top ${topClass}"></div>
-        <div class="card-body">
-            <div class="card-grade-label">${gradeLabel}</div>
+    /* ── 목록 렌더 ── */
+    function renderList() {
+        const grid     = document.getElementById('examGrid');
+        const keyword  = document.getElementById('searchInput').value.toLowerCase().trim();
+        const examType = document.getElementById('examTypeFilter').value;
+        grid.innerHTML = '';
+
+        // 엔진 필터
+        const engineItems = engineDB.exams.filter(ex => {
+            if (ex.type === 'hidden') return false;
+            const matchK = !keyword || `${ex.school} ${ex.subject}`.toLowerCase().includes(keyword);
+            const matchG = !selectedGrade || ex.grade === selectedGrade;
+            const typeStr = ex.semester && ex.examType
+                ? `${ex.semester}학기${ex.examType === 'mid' ? '중간' : '기말'}` : '';
+            const matchT = !examType || typeStr === examType;
+            return matchK && matchG && matchT;
+        }).map(ex => ({ ...ex, _source: 'engine' }));
+
+        // 아카이브 필터
+        const archiveItems = (archiveDB.files || []).filter(f => {
+            const matchK = !keyword || `${f.school} ${f.subject} ${f.year}`.toLowerCase().includes(keyword);
+            const matchG = !selectedGrade || f.grade === selectedGrade;
+            const matchT = !examType || f.exam === examType;
+            return matchK && matchG && matchT;
+        }).map(f => ({ ...f, _source: 'archive' }));
+
+        const all = [...engineItems, ...archiveItems];
+
+        if (all.length === 0) {
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:#94a3b8;font-size:15px;">일치하는 자료가 없습니다.</div>';
+            return;
+        }
+        all.forEach(ex => grid.appendChild(buildCard(ex)));
+    }
+
+    /* ── 카드 빌더 ── */
+    function buildCard(ex) {
+        const isArchive = ex._source === 'archive';
+        const card = document.createElement('div');
+        card.className = `exam-card ${isArchive ? 'archive' : 'gichul'}`;
+
+        let titleHTML, badgesHTML, actionsHTML;
+
+        if (isArchive) {
+            titleHTML  = `${ex.school || ''} ${ex.grade || ''}<br>${ex.exam || ''}`;
+            badgesHTML = `<span class="badge green">PDF기출</span>
+                          ${ex.grade   ? `<span class="badge">${ex.grade}</span>`   : ''}
+                          ${ex.subject ? `<span class="badge">${ex.subject}</span>` : ''}`;
+            actionsHTML = `<div class="action-item pdf-only" data-action="pdf">
+                               <i class="fa-regular fa-file-pdf"></i><span>PDF 열기</span>
+                           </div>`;
+        } else {
+            const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : '';
+            titleHTML  = `${ex.school || ''} ${ex.grade || ''}<br>${ex.semester ? ex.semester + '학기' : ''}${typeText ? ' ' + typeText : ''}`;
+            badgesHTML = `<span class="badge blue">엔진기출</span>
+                          ${ex.grade   ? `<span class="badge">${ex.grade}</span>`   : ''}
+                          ${ex.subject ? `<span class="badge">${ex.subject}</span>` : ''}`;
+            actionsHTML = `
+                <div class="action-item" data-action="exam">
+                    <i class="fa-regular fa-file-pdf"></i><span>시험지</span>
+                </div>
+                <div class="action-item" data-action="sol">
+                    <i class="fa-solid fa-chalkboard-user"></i><span>해설지</span>
+                </div>
+                <div class="action-item" data-action="ans">
+                    <i class="fa-solid fa-list-check"></i><span>정답표</span>
+                </div>`;
+        }
+
+        card.innerHTML = `
+            <div class="card-year">${ex.year || ''}</div>
             <div class="card-main-title">${titleHTML}</div>
             <div class="badge-row">${badgesHTML}</div>
-        </div>
-        <div class="card-actions">${actionsHTML}</div>`;
+            <div class="card-actions">${actionsHTML}</div>`;
 
-    card.querySelectorAll('.action-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-            e.stopPropagation();
-            openEngine(ex, btn.dataset.action);
+        card.querySelectorAll('.action-item').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                openEngine(ex, btn.dataset.action);
+            });
         });
+
+        return card;
+    }
+
+    /* ── QPP 모달 상태 ── */
+    let _pendingItem   = null;
+    let _pendingAction = null;
+
+    /* ── 엔진 열기 ── */
+    function openEngine(item, action) {
+        if (item._source === 'archive') {
+            const url = `engine.html?mode=pdf&file=${encodeURIComponent('pdf_archive/' + item.fileName)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
+            window.location.href = url;
+            return;
+        }
+        if (action === 'exam') {
+            // 시험지만 QPP 선택 모달
+            _pendingItem   = item;
+            _pendingAction = action;
+            document.getElementById('qppModal').classList.add('open');
+            return;
+        }
+        // 해설지·정답표는 바로 이동
+        goEngine(item, action, 4);
+    }
+
+    function confirmQpp(qpp) {
+        closeModal();
+        goEngine(_pendingItem, _pendingAction, qpp);
+    }
+
+    function closeModal() {
+        document.getElementById('qppModal').classList.remove('open');
+    }
+
+    function goEngine(item, action, qpp) {
+        const url = `engine.html?mode=${action}&qpp=${qpp}&data=${encodeURIComponent('exams/' + item.file)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
+        window.location.href = url;
+    }
+
+    // 모달 배경 클릭 시 닫기
+    document.getElementById('qppModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
     });
 
-    return card;
-}
-
-/* ── QPP 모달 ── */
-let _pendingItem   = null;
-let _pendingAction = null;
-
-function openEngine(item, action) {
-    if (item._source === 'archive') {
-        const url = `engine.html?mode=pdf&file=${encodeURIComponent(item.url || item.fileName)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
-        window.location.href = url;
-        return;
-    }
-    if (action === 'exam') {
-        _pendingItem   = item;
-        _pendingAction = action;
-        document.getElementById('qppModal').classList.add('open');
-        return;
-    }
-    goEngine(item, action, 4);
-}
-
-function confirmQpp(qpp) {
-    closeModal();
-    goEngine(_pendingItem, _pendingAction, qpp);
-}
-
-function closeModal() {
-    document.getElementById('qppModal').classList.remove('open');
-}
-
-function goEngine(item, action, qpp) {
-    const url = `engine.html?mode=${action}&qpp=${qpp}&data=${encodeURIComponent('exams/' + item.file)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
-    window.location.href = url;
-}
-
-document.getElementById('qppModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-});
-
-window.onload = init;
+    window.onload = init;
 </script>
 </body>
 </html>
