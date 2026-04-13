@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP 수학 엔진</title>
+    <title>JS아카이브 엔진</title>
     <script>
         window.MathJax = {
             tex: {
@@ -40,7 +40,6 @@
             white-space: nowrap; letter-spacing: -0.3px;
             flex-shrink: 0;
         }
-        /* 모드 전환 탭 */
         .mode-tabs {
             display: flex; gap: 4px;
             background: rgba(255,255,255,0.07);
@@ -60,20 +59,15 @@
             background: white; color: #0f172a;
             box-shadow: 0 1px 4px rgba(0,0,0,0.25);
         }
-        /* 우측 버튼 */
         .ctrl-right { display: flex; gap: 8px; flex-shrink: 0; }
         .print-btn {
             padding: 7px 16px; border: none; border-radius: 7px;
             font-family: inherit; font-weight: 700; font-size: 12px;
             cursor: pointer; transition: 0.15s;
         }
-        .print-btn.primary {
-            background: #378ADD; color: white;
-        }
+        .print-btn.primary { background: #378ADD; color: white; }
         .print-btn.primary:hover { background: #2e73c4; }
-        .print-btn.ghost {
-            background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
-        }
+        .print-btn.ghost { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
         .print-btn.ghost:hover { background: rgba(255,255,255,0.18); color: white; }
 
         #print-area {
@@ -94,7 +88,8 @@
             #mode-ctrl { display: none; }
             #print-area { display: flex !important; gap: 0; padding: 0; }
             .page { box-shadow: none; page-break-after: always; }
-            #pdf-container { display: none !important; }
+            #pdf-container { display: block !important; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; }
+            body:not(.mode-pdf) #pdf-container { display: none !important; }
         }
 
         .page-header {
@@ -107,7 +102,6 @@
         #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); }
         #pdf-viewer { width: 100%; height: 100%; border: none; }
 
-        /* 시험지 2열 */
         .grid-container {
             flex: 1; display: grid;
             grid-template-columns: 1fr 1fr;
@@ -123,7 +117,7 @@
             padding: 0 12px; overflow: hidden;
         }
 
-        /* 문항 박스 — flex:1로 열 높이를 균등 분할 (4등분/6등분) */
+        /* 문항 박스 스타일 */
         .q-box {
             flex: 1;
             padding: 10px 0;
@@ -134,6 +128,18 @@
         }
         .q-box:last-child { border-bottom: none; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 4px; flex-shrink: 0; }
+        
+        /* 데이터 내부 .box 스타일 추가 */
+        .box {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 10px;
+            margin: 6px 0;
+            background: #f9f9f9;
+            font-size: 9pt;
+            line-height: 1.5;
+        }
+
         .answer-box {
             flex: 1;
             border: 1px dashed #bbb;
@@ -141,18 +147,9 @@
         }
         .choices { margin-top: 6px; line-height: 2; }
 
-        /* 해설지 2열 신문 칼럼 */
-        .sol-container {
-            flex: 1;
-            column-count: 2;
-            column-gap: 24px;
-            column-rule: 1px solid #ccc;
-        }
         .sol-box {
             padding: 8px 0;
             border-bottom: 0.5px solid #eee;
-            break-inside: avoid-page;
-            display: inline-block;
             width: 100%;
         }
         .sol-box:last-child { border-bottom: none; }
@@ -162,7 +159,6 @@
             margin-bottom: 4px; font-size: 9pt;
         }
 
-        /* 정답표 */
         .ans-grid {
             display: flex;
             flex-direction: column;
@@ -177,14 +173,12 @@
 <body>
 
     <div id="mode-ctrl">
-        <span id="ctrl-title">AP 수학</span>
-
+        <span id="ctrl-title">JS아카이브</span>
         <div class="mode-tabs" id="modeTabs">
             <button class="mode-tab" data-mode="exam" onclick="switchMode('exam')">시험지</button>
             <button class="mode-tab" data-mode="sol"  onclick="switchMode('sol')">해설지</button>
             <button class="mode-tab" data-mode="ans"  onclick="switchMode('ans')">정답표</button>
         </div>
-
         <div class="ctrl-right">
             <button class="print-btn primary" onclick="window.print()">🖨 인쇄</button>
             <button class="print-btn ghost"   onclick="history.back()">← 목록</button>
@@ -199,24 +193,25 @@
     <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:85mm;"></div>
 
 <script>
-const AppState = { title: 'AP 수학', data: [], mode: 'exam', qpp: 4 };
+const AppState = { title: 'JS아카이브', data: [], mode: 'exam', qpp: 4 };
 let pageCount = 0;
 
-/* ── 데이터 로딩 ── */
 async function loadData(dataUrl) {
     if (dataUrl === 'mixed') {
         const raw = sessionStorage.getItem('mixedQuestions');
         return raw ? JSON.parse(raw) : [];
     }
-
     return new Promise(res => {
+        const oldScript = document.getElementById('data-script');
+        if (oldScript) oldScript.remove();
+        
         delete window.questionBank;
         const s = document.createElement('script');
+        s.id = 'data-script';
         s.src = dataUrl + '?v=' + Date.now();
         s.onload = () => {
             const qb = window.questionBank;
-            const data = Array.isArray(qb) ? qb
-                       : (qb?.questions || qb?.problems || []);
+            const data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
             res(data);
         };
         s.onerror = () => res([]);
@@ -224,20 +219,22 @@ async function loadData(dataUrl) {
     });
 }
 
-/* ── 초기화 ── */
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.mode  = p.get('mode')  || 'exam';
-    AppState.title = p.get('title') || 'AP 수학 기출';
-    AppState.qpp   = parseInt(p.get('qpp')) || 4;
+    AppState.title = p.get('title') || 'JS아카이브 기출';
+    
+    const rawQpp = parseInt(p.get('qpp'));
+    AppState.qpp = isNaN(rawQpp) ? 4 : Math.max(2, Math.min(8, rawQpp));
     AppState.data_url = p.get('data') || '';
 
-    const file    = p.get('file');
+    const file = p.get('file');
     const dataUrl = AppState.data_url;
 
     document.getElementById('ctrl-title').innerText = AppState.title;
 
     if (AppState.mode === 'pdf' && file) {
+        document.body.classList.add('mode-pdf');
         document.getElementById('modeTabs').style.display = 'none';
         document.getElementById('pdf-container').style.display = 'block';
         document.getElementById('pdf-viewer').src = file;
@@ -245,24 +242,20 @@ async function init() {
     }
 
     updateTabs(AppState.mode);
-
     document.getElementById('print-area').style.display = 'flex';
 
     if (dataUrl) {
         AppState.data = await loadData(dataUrl);
         if (AppState.data.length > 0) await renderEngine();
-        else console.warn('문항 데이터 없음:', dataUrl);
     }
 }
 
-/* ── 탭 활성화 ── */
 function updateTabs(mode) {
     document.querySelectorAll('.mode-tab').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.mode === mode);
     });
 }
 
-/* ── 모드 전환 ── */
 function switchMode(mode) {
     if (mode === AppState.mode) return;
     const qpp = (mode === 'exam') ? AppState.qpp : 4;
@@ -272,7 +265,6 @@ function switchMode(mode) {
     window.location.href = url.toString();
 }
 
-/* ── 렌더 분기 ── */
 async function renderEngine() {
     const area = document.getElementById('print-area');
     area.innerHTML = '';
@@ -283,10 +275,10 @@ async function renderEngine() {
     else                               await renderExam(area, AppState.data);
 }
 
-/* ── 시험지: QPP 격자 (2×2 or 2×3) ── */
 async function renderExam(area, bank) {
-    const perCol  = AppState.qpp / 2;
+    const perCol  = Math.ceil(AppState.qpp / 2);
     const staging = document.getElementById('staging');
+    staging.style.width = '85mm';
     staging.innerHTML = '';
 
     const boxes = bank.map((q, i) => {
@@ -303,7 +295,6 @@ async function renderExam(area, bank) {
     for (let start = 0; start < boxes.length; start += AppState.qpp) {
         const chunk = boxes.slice(start, start + AppState.qpp);
         const page  = makePage(area, 'exam');
-
         chunk.slice(0, perCol).forEach(el => page.cols[0].appendChild(el.cloneNode(true)));
         chunk.slice(perCol).forEach(el   => page.cols[1].appendChild(el.cloneNode(true)));
     }
@@ -311,43 +302,72 @@ async function renderExam(area, bank) {
 
 function buildExamBox(q, i) {
     const circled = ['①','②','③','④','⑤'];
-    const isMultipleChoice = q.choices && q.choices.length > 0 && q.choices[0].trim() !== "";
+    const isMultipleChoice = Array.isArray(q.choices) && 
+                             q.choices.length > 0 && 
+                             q.choices[0] !== "주관식" && 
+                             q.choices.some(c => String(c).trim() !== "");
+                             
     const choicesHTML = isMultipleChoice
         ? `<div class="choices">${q.choices.map((c, ci) =>
-              `<div>${circled[ci] || (ci+1)+')'} ${wrapLatex(c)}</div>`).join('')}</div>`
+              `<div>${circled[ci] || (ci+1)+')'} ${wrapLatex(String(c))}</div>`).join('')}</div>`
         : `<div class="answer-box"></div>`;
-    return `
-        <div class="q-num">${i + 1}.</div>
-        <div>${wrapLatex(q.content || q.question || '')}</div>
-        ${choicesHTML}`;
+    return `<div class="q-num">${i + 1}.</div><div>${wrapLatex(q.content || q.question || '')}</div>${choicesHTML}`;
 }
 
-/* ── 해설지: CSS 다단 Flow ── */
 async function renderSol(area, bank) {
     const staging = document.getElementById('staging');
+    staging.style.width = '85mm';
     staging.innerHTML = '';
 
-    const p = makePage(area, 'sol');
-    const container = p.container;
-
-    bank.forEach((q, i) => {
+    const boxes = bank.map((q, i) => {
         const el = document.createElement('div');
         el.className = 'sol-box';
         el.innerHTML = buildSolBox(q, i);
-        container.appendChild(el);
+        staging.appendChild(el);
+        return el;
     });
 
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([p.page]);
+    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
+    await raf();
+
+    let p = makePage(area, 'sol');
+    const headerEl = p.page.querySelector('.page-header');
+    const headerH  = headerEl?.getBoundingClientRect().height || 40;
+    const PAGE_H   = 297 * 3.7795 - 15 * 2 * 3.7795 - headerH - 20; 
+    
+    let curColH = 0;
+    let colIdx = 0;
+
+    for (const el of boxes) {
+        const h = el.getBoundingClientRect().height;
+        
+        if (curColH + h > PAGE_H) {
+            if (colIdx === 0) {
+                colIdx = 1;
+                curColH = 0;
+            } else {
+                p = makePage(area, 'sol');
+                colIdx = 0;
+                curColH = 0;
+            }
+        }
+        p.cols[colIdx].appendChild(el.cloneNode(true));
+        curColH += h;
+    }
 }
 
 function buildSolBox(q, i) {
     let solHTML;
     if (q.solution_steps?.length) {
         solHTML = q.solution_steps.map((s, si) =>
-            `<div class="sol-step"><b>[${si+1}단계]</b> ${stripCite(s).replace(/\n/g, '<br>')}</div>`
+            `<div class="sol-step"><b>[${si+1}단계]</b> ${wrapLatex(stripCite(s).replace(/\n/g, '<br>'))}</div>`
         ).join('');
     } else if (q.solution) {
-        solHTML = `<div class="sol-step">${stripCite(q.solution).replace(/\n/g, '<br>')}</div>`;
+        // \\\\ 기준으로 줄 분리하여 각각 수식 처리 (인라인 math 개행 제한 해결)
+        const lines = stripCite(q.solution).split(/\\\\/);
+        solHTML = lines.map(line =>
+            `<div class="sol-step">${wrapLatex(line.trim().replace(/\n/g, '<br>'))}</div>`
+        ).join('');
     } else {
         solHTML = `<span style="color:#94a3b8;font-size:8pt;">해설 없음</span>`;
     }
@@ -360,7 +380,6 @@ function buildSolBox(q, i) {
         <div style="font-size:9pt;">${solHTML}</div>`;
 }
 
-/* ── 정답표 ── */
 function renderAnsGrid(area, bank) {
     const p = makePage(area, 'ans');
     const grid = document.createElement('div');
@@ -369,31 +388,21 @@ function renderAnsGrid(area, bank) {
         const cell = document.createElement('div');
         cell.className = 'ans-cell';
         cell.innerHTML = `<b style="font-size:11pt;min-width:40px;">${i+1}.</b>
-                          <span style="font-size:11pt;">${wrapLatex(q.answer ?? '–')}</span>`;
+                          <span style="font-size:11pt;">${wrapLatex(String(q.answer ?? '–'))}</span>`;
         grid.appendChild(cell);
     });
     p.body.appendChild(grid);
     if (window.MathJax?.typesetPromise) MathJax.typesetPromise([p.body]);
 }
 
-/* ── 페이지 팩토리 ── */
 function makePage(area, type) {
     pageCount++;
     const page = document.createElement('div');
     page.className = 'page';
-
     const header = document.createElement('div');
     header.className = 'page-header';
     header.innerHTML = `<span>${AppState.title}</span><span>- ${pageCount} -</span>`;
     page.appendChild(header);
-
-    if (type === 'sol') {
-        const container = document.createElement('div');
-        container.className = 'sol-container';
-        page.appendChild(container);
-        area.appendChild(page);
-        return { page, container };
-    }
 
     if (type === 'ans') {
         const body = document.createElement('div');
@@ -416,7 +425,6 @@ function makePage(area, type) {
     return { page, cols: [left, right] };
 }
 
-/* ── 텍스트 전처리 유틸 ── */
 function wrapLatex(text) {
     if (!text) return text;
     if (text.includes('$')) return text;
@@ -426,11 +434,11 @@ function wrapLatex(text) {
 
 function stripCite(text) {
     if (!text) return text;
-    return text.replace(/\]*\]/g, '').trim();
+    // 인용 패턴 및 대괄호 쌍(예: 【...】, [...]) 제거 로직 업데이트
+    return text.replace(/【[^】]*】/g, '').replace(/\[[^\]]*\]/g, '').trim();
 }
 
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
-
 window.onload = init;
 </script>
 </body>
