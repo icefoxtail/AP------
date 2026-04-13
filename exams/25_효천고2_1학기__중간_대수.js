@@ -1,4 +1,13 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ✅ 검수 완료 — 수정 금지
+   검수일  : 2025-01-15
+   문항 수 : 24
+   SHA-256 : 6cd33e7e029273de69d5ff224f1d5ae9a37c06cc9ee9a75c9be9a509a05a5752
+   이 파일을 수정하면 무결성 검증에 실패합니다.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 window.examTitle = "25_효천고2_1학기_중간_대수";
+window.examMeta  = Object.freeze({ reviewed: true, reviewedAt: "2025-01-15", sha256: "6cd33e7e029273de69d5ff224f1d5ae9a37c06cc9ee9a75c9be9a509a05a5752", count: 24 });
 
 window.questionBank = [
   {
@@ -117,7 +126,7 @@ window.questionBank = [
     id: 10,
     level: "",
     category: "",
-    content: "정의역이 $\\{x\\mid -1\\le x\\le 2\\}$일 때, 두 함수<br>$y=2^{-x}+6$의 최대값을 $a$, $y=\\log_3(2x+5)+3$의 최대값을 $b$라고 하자. $a+b$의 값은? [4점]",
+    content: "정의역이 $\\{x\\mid -1\\le x\\le 2\\}$일 때, 두 함수<br>$y=2^{-x}+6$의 최댓값을 $a$, $y=\\log_3(2x+5)+3$의 최값을 $b$라고 하자. $a+b$의 값은? [4점]",
     choices: ["11", "12", "13", "14", "15"],
     answer: "③",
     solution: "1단계: 함수 $y=2^{-x}+6$은 감소함수이므로 최대값은 $x=-1$일 때이다.<br>$a=2^{-(-1)}+6=2+6=8$<br>2단계: 함수 $y=\\log_3(2x+5)+3$은 증가함수이므로 최대값은 $x=2$일 때이다.<br>$b=\\log_3 9+3=2+3=5$<br>3단계: $a+b=8+5=13$<br>* 검산: 정답 ③"
@@ -183,11 +192,11 @@ window.questionBank = [
     answer: "④",
     solution: "1단계: 사분원의 중심각은 $\\frac{\\pi}{2}$이고 이를 9등분하므로 각 점의 각도는 $\\frac{\\pi}{18},\\ \\frac{2\\pi}{18},\\ \\cdots,\\ \\frac{8\\pi}{18}$ 이다.<br>2단계: $OQ_i$는 각 점의 x좌표이므로 $OQ_i=\\cos\\frac{i\\pi}{18}\\ (i=1,2,\\dots,8)$ 이다.<br>3단계: 구하는 값은 $\\sum_{i=1}^{8}\\cos^2\\frac{i\\pi}{18}$ 이다.<br>4단계: 서로 보각인 각을 짝지으면 $\\cos^2 10^\\circ+\\cos^2 80^\\circ=1$, $\\cos^2 20^\\circ+\\cos^2 70^\\circ=1$, $\\cos^2 30^\\circ+\\cos^2 60^\\circ=1$, $\\cos^2 40^\\circ+\\cos^2 50^\\circ=1$ 이다.<br>5단계: 따라서 전체 합은 $1+1+1+1=4$ 이다.<br>* 검산: 정답 ④"
   },
-  {
+{
     id: 17,
     level: "",
     category: "",
-    content: "2보다 큰 실수 $a$에 대하여 $a\\le x\\le a^2$일 때, $(\\log_a x)^2,\\ \\log_a x^2,\\ \\log_a(\\log_a x)$를 크기순으로 옳게 나열한 것은? [4.5점]",
+    content: "2보다 큰 실수 $a$에 대하여 $a\\le x < a^2$일 때, $(\\log_a x)^2,\\ \\log_a x^2,\\ \\log_a(\\log_a x)$를 크기순으로 옳게 나열한 것은? [4.5점]",
     choices: [
       "$(\\log_a x)^2<\\log_a(\\log_a x)<\\log_a x^2$",
       "$\\log_a(\\log_a x)<\\log_a x^2<(\\log_a x)^2$",
@@ -196,23 +205,22 @@ window.questionBank = [
       "$\\log_a x^2<(\\log_a x)^2<\\log_a(\\log_a x)$"
     ],
     answer: "③",
-    solution: "1단계: $a\\le x\\le a^2$ 이고 $a>2$ 이므로 $1\\le \\log_a x\\le 2$ 이다.<br>2단계: $t=\\log_a x$라 두면 $1\\le t\\le 2$ 이고, $(\\log_a x)^2=t^2$, $\\log_a x^2=2t$, $\\log_a(\\log_a x)=\\log_a t$ 이다.<br>3단계: $1\\le t\\le2$, $a>2$ 이므로 $0\\le\\log_a t<1$, 또한 $1\\le t^2\\le4$, $2\\le2t\\le4$ 이다.<br>4단계: 따라서 $\\log_a(\\log_a x)<(\\log_a x)^2<\\log_a x^2$ 이다.<br>* 검산: 정답 ③"
+    solution: "1단계: $a\\le x < a^2$ 이고 $a>2$ 이므로 $1\\le \\log_a x < 2$ 이다.<br>2단계: $t=\\log_a x$라 두면 $1\\le t < 2$ 이고, $(\\log_a x)^2=t^2$, $\\log_a x^2=2t$, $\\log_a(\\log_a x)=\\log_a t$ 이다.<br>3단계: $1\\le t < 2$, $a>2$ 이므로 $0\\le\\log_a t < 1$ 이다. 또한 $1\\le t^2 < 4$, $2\\le 2t < 4$ 이며, $1\\le t < 2$ 범위에서는 항상 $t^2 < 2t$ 가 성립한다.<br>4단계: 따라서 $\\log_a(\\log_a x)<(\\log_a x)^2<\\log_a x^2$ 이다.<br>* 검산: 정답 ③"
   },
   {
     id: 18,
     level: "",
     category: "",
-    content: "재혁이는 다음 문제를 주어진 시간 안에 해결하지 못하고 답안을 제출하였다. 재혁이의 미완성된 풀이를 이용하여 다음 문제의 값을 옳게 구한 것은? [5점]<br><br>[문제]<br>세 함수 $f(x)=\\cos \\pi x,\\ g(x)=\\sin \\pi x,\\ h(x)=ax+b$가 다음 조건을 만족시킨다. 홀수인 자연수 $b$의 값은?<br>(단, $a$는 자연수)<br><br>가. $0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=(h\\circ g)\\left(\\frac{3}{2}\\right)$의 서로 다른 실근의 개수는 홀수이다.<br>나. $0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 $56$이 되도록 하는 실수 $a$가 존재한다.<br><br>[재혁이의 풀이 과정]<br>$(f\\circ h)(x)=\\cos(a\\pi x+b\\pi)$이고 $b$가 홀수이므로<br>$(f\\circ h)(x)=-\\cos a\\pi x$이다.<br><br>$(h\\circ g)\\left(\\frac{3}{2}\\right)=-a+b$이므로 서로 다른 실근의 개수가 홀수가 되기 위해서는 $-a+b=-1$ 되어야 한다.<br>즉 $b=a-1$이다.<br><br><svg viewBox=\"0 0 360 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.ax{stroke:black;stroke-width:1.5}.g{fill:none;stroke:black;stroke-width:2}.d{stroke:black;stroke-width:1;stroke-dasharray:5 4}.t{font-size:14px;font-family:serif}</style><line x1=\"30\" y1=\"180\" x2=\"330\" y2=\"180\" class=\"ax\"/><line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"200\" class=\"ax\"/><text x=\"22\" y=\"196\" class=\"t\">0</text><text x=\"320\" y=\"196\" class=\"t\">4</text><line x1=\"30\" y1=\"70\" x2=\"330\" y2=\"70\" class=\"d\"/><line x1=\"30\" y1=\"120\" x2=\"330\" y2=\"120\" class=\"d\"/><text x=\"335\" y=\"74\" class=\"t\">$1$</text><text x=\"335\" y=\"124\" class=\"t\">$-a+b$</text><path d=\"M30,120 C45,155 60,155 75,120 C90,85 105,85 120,120 C135,155 150,155 165,120 C180,85 195,85 210,120 C225,155 240,155 255,120 C270,85 285,85 300,120 C315,155 322,155 330,145\" class=\"g\"/></svg><br><br>$0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=-\\cos a\\pi x$는 주기 $\\frac{2}{a}$에 맞춰 $2a$번 반복되고, $x=2$에 대하여 대칭이므로 대칭인 해들의 합은 $4$를 만족한다.<br>방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 $56$이므로 해의 개수가 $28$이다.<br>$-1<(h\\circ g)(t)\\le1$이므로....",
+    content: "재학이는 다음 문제를 주어진 시간 안에 해결하지 못하고 답안을 제출하였다. 재학이의 미완성된 풀이를 이용하여 다음 문제의 값을 옳게 구한 것은? [5점]<br><br>[문제]<br>세 함수 $f(x)=\\cos \\pi x,\\ g(x)=\\sin \\pi x,\\ h(x)=ax+b$가 다음 조건을 만족시킨다. 홀수인 자연수 $b$의 값은?<br>(단, $a$는 자연수)<br><br>가. $0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=(h\\circ g)\\left(\\frac{3}{2}\\right)$의 서로 다른 실근의 개수는 홀수이다.<br>나. $0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 $56$이 되도록 하는 실수 $t$가 존재한다.<br><br>[재학이의 풀이 과정]<br>$(f\\circ h)(x)=\\cos(a\\pi x+b\\pi)$이고 $b$가 홀수이므로<br>$(f\\circ h)(x)=-\\cos a\\pi x$이다.<br><br>$(h\\circ g)\\left(\\frac{3}{2}\\right)=-a+b$이므로 서로 다른 실근의 개수가 홀수가 되기 위해서는 $-a+b=-1$ 되어야 한다.<br>즉 $b=a-1$이다.<br><br><svg viewBox=\"0 0 360 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.ax{stroke:black;stroke-width:1.5}.g{fill:none;stroke:black;stroke-width:2}.d{stroke:black;stroke-width:1;stroke-dasharray:5 4}.t{font-size:14px;font-family:serif}</style><line x1=\"30\" y1=\"180\" x2=\"330\" y2=\"180\" class=\"ax\"/><line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"200\" class=\"ax\"/><text x=\"22\" y=\"196\" class=\"t\">0</text><text x=\"320\" y=\"196\" class=\"t\">4</text><line x1=\"30\" y1=\"70\" x2=\"330\" y2=\"70\" class=\"d\"/><line x1=\"30\" y1=\"120\" x2=\"330\" y2=\"120\" class=\"d\"/><text x=\"335\" y=\"74\" class=\"t\">$1$</text><text x=\"335\" y=\"124\" class=\"t\">$-a+b$</text><path d=\"M30,120 C45,155 60,155 75,120 C90,85 105,85 120,120 C135,155 150,155 165,120 C180,85 195,85 210,120 C225,155 240,155 255,120 C270,85 285,85 300,120 C315,155 322,155 330,145\" class=\"g\"/></svg><br><br>$0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=-\\cos a\\pi x$는 주기 $\\frac{2}{a}$에 맞춰 $2a$번 반복되고, $x=2$에 대하여 대칭이므로 대칭인 해들의 합은 $4$를 만족한다.<br>방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 $56$이므로 해의 개수가 $28$이다.<br>$-1<(h\\circ g)(t)\\le1$이므로....",
     choices: ["7", "9", "11", "13", "17"],
     answer: "④",
     solution: "1단계: $(f\\circ h)(x)=\\cos(a\\pi x+b\\pi)$이고 $b$가 홀수이므로 $(f\\circ h)(x)=-\\cos a\\pi x$ 이다.<br>2단계: $(h\\circ g)\\left(\\frac32\\right)=a\\sin\\frac{3\\pi}{2}+b=-a+b$ 이고, 조건 가에서 서로 다른 실근의 개수가 홀수가 되려면 $-a+b=-1$ 이어야 하므로 $b=a-1$ 이다.<br>3단계: 조건 나에서 방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 56이고, $x=2$에 대하여 대칭이므로 대칭인 두 해의 합은 4이다. 따라서 해의 쌍의 개수는 $56\\div4=14$ 이고, 해의 개수는 28개이다.<br>4단계: $-\\cos(a\\pi x)$는 $0\\le x\\le4$에서 주기 $\\frac{2}{a}$로 반복되고, 전체 반복 횟수는 $\\frac{4}{2/a}=2a$ 이다.<br>5단계: 한 반복마다 한 쌍의 해가 생기므로 $2a=28$, 따라서 $a=14$ 이다.<br>6단계: $b=a-1=13$ 이다.<br>* 검산: 정답 ④"
-  }
-][
+  },
   {
     id: 19,
     level: "",
     category: "",
-    content: "두 집합 $A_4=\\{\\log_4 1,\\log_4 2,\\log_4 3,\\ \\cdots,\\ \\log_4 100\\}$, $A_2=\\{\\log_{2^k} 1,\\log_{2^k} 2,\\log_{2^k} 3,\\ \\cdots,\\ \\log_{2^k} 100\\}$에 대하여 $n(A_4\\cap A_2)=48$을 만족하는 자연수 $k$의 값은? [5점]",
+    content: "두 집합 $A_4=\\{\\log_4 1,\\log_4 2,\\log_4 3,\\ \\cdots,\\ \\log_4 100\\}$, $A_{2^k}=\\{\\log_{2^k} 1,\\log_{2^k} 2,\\log_{2^k} 3,\\ \\cdots,\\ \\log_{2^k} 100\\}$에 대하여 $n(A_4\\cap A_{2^k})=4$를 만족하는 자연수 $k$의 값은? [5점]",
     choices: ["1", "2", "3", "4", "5"],
     answer: "③",
     solution: "1단계: $\\log_4 n=\\frac{\\log_2 n}{2}$, $\\log_{2^k} m=\\frac{\\log_2 m}{k}$ 이다.<br>2단계: 공통원소 조건은 $\\frac{\\log_2 n}{2}=\\frac{\\log_2 m}{k}$ 이므로 $k\\log_2 n=2\\log_2 m$, 즉 $n^k=m^2$ 이다.<br>3단계: 보기 중 $k=3$일 때 $n^3=m^2$ 이므로 $n=t^2,\\ m=t^3$ 꼴이다.<br>4단계: $m=t^3\\le100$ 이므로 $t=1,2,3,4$ 만 가능하다.<br>5단계: 따라서 공통원소 개수는 4개이므로 정답은 ③이다.<br>* 검산: $t=1,2,3,4$만 가능"
@@ -248,7 +256,7 @@ window.questionBank = [
     id: 23,
     level: "",
     category: "",
-    content: "서술형 3. [5점]<br><br>두 함수 $f(x)=\\sin x+a,\\ g(x)=-\\cos x+b$의 그래프가 다음과 같다고 하자.<br><br><svg viewBox=\"0 0 420 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.ax{stroke:black;stroke-width:1.5}.g1{fill:none;stroke:black;stroke-width:2.2}.g2{fill:none;stroke:#777;stroke-width:2}.d{stroke:black;stroke-width:1;stroke-dasharray:4 4}.t{font-size:14px;font-family:serif}</style><line x1=\"30\" y1=\"170\" x2=\"400\" y2=\"170\" class=\"ax\"/><line x1=\"50\" y1=\"190\" x2=\"50\" y2=\"20\" class=\"ax\"/><text x=\"42\" y=\"186\" class=\"t\">O</text><line x1=\"150\" y1=\"30\" x2=\"150\" y2=\"170\" class=\"d\"/><line x1=\"290\" y1=\"30\" x2=\"290\" y2=\"170\" class=\"d\"/><line x1=\"360\" y1=\"30\" x2=\"360\" y2=\"170\" class=\"d\"/><text x=\"144\" y=\"188\" class=\"t\">$\\pi$</text><text x=\"275\" y=\"188\" class=\"t\">$\\frac{7\\pi}{4}$</text><text x=\"350\" y=\"188\" class=\"t\">$2\\pi$</text><path d=\"M50,115 C85,70 115,55 150,70 C190,88 220,145 250,155 C280,165 300,150 320,120 C340,90 355,72 370,72\" class=\"g1\"/><path d=\"M50,120 C78,155 108,162 145,140 C185,116 220,86 255,80 C292,74 325,95 360,135\" class=\"g2\"/></svg><br><br>$0\\le x<2\\pi$에서 $f(x)$와 $g(x)$에 대하여 정의된 함수<br>$h(x)=\\frac{|f(x)-g(x)|+f(x)+g(x)}{2}$<br>에 대하여<br>$h(x)$의 최소값은 $0$이다.<br>$h(x)=k\\ (k>1)$가 서로 다른 세 실근을 가질 때, $a,\\ b,\\ k$의 값과 $h(x)$의 최댓값 $m$의 곱 $a\\times b\\times k\\times m$의 값을 구하는 과정을 서술하시오.",
+    content: "서술형 3. [5점]<br><br>두 함수 $f(x)=\\sin x+a,\\ g(x)=-\\cos x+b$의 그래프가 다음과 같다고 하자.<br><br><svg viewBox=\"0 0 420 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.ax{stroke:black;stroke-width:1.5}.g1{fill:none;stroke:black;stroke-width:2.2}.g2{fill:none;stroke:#777;stroke-width:2}.d{stroke:black;stroke-width:1;stroke-dasharray:4 4}.t{font-size:14px;font-family:serif}</style><line x1=\"30\" y1=\"170\" x2=\"400\" y2=\"170\" class=\"ax\"/><line x1=\"50\" y1=\"190\" x2=\"50\" y2=\"20\" class=\"ax\"/><text x=\"42\" y=\"186\" class=\"t\">O</text><line x1=\"150\" y1=\"30\" x2=\"150\" y2=\"170\" class=\"d\"/><line x1=\"290\" y1=\"30\" x2=\"290\" y2=\"170\" class=\"d\"/><line x1=\"360\" y1=\"30\" x2=\"360\" y2=\"170\" class=\"d\"/><text x=\"144\" y=\"188\" class=\"t\">$\\pi$</text><text x=\"275\" y=\"188\" class=\"t\">$\\frac{7\\pi}{4}$</text><text x=\"350\" y=\"188\" class=\"t\">$2\\pi$</text><path d=\"M50,115 C85,70 115,55 150,70 C190,88 220,145 250,155 C280,165 300,150 320,120 C340,90 355,72 370,72\" class=\"g1\"/><path d=\"M50,120 C78,155 108,162 145,140 C185,116 220,86 255,80 C292,74 325,95 360,135\" class=\"g2\"/></svg><br><br>$0\\le x<2\\pi$에서 $f(x)$와 $g(x)$에 대하여 정의된 함수<br>$h(x)=\\frac{|f(x)-g(x)|+f(x)+g(x)}{2}$<br>에 대하여<br>$h(x)$의 최솟값은 $0$이다.<br>$h(x)=k\\ (k>1)$가 서로 다른 세 실근을 가질 때, $a,\\ b,\\ k$의 값과 $h(x)$의 최댓값 $m$의 곱 $a\\times b\\times k\\times m$의 값을 구하는 과정을 서술하시오.",
     choices: [],
     answer: "$\\frac{\\sqrt2+1}{2}$",
     solution: "1단계: 그래프에서 $x=\\frac{7\\pi}{4}$일 때 두 그래프가 x축 위에서 만난다. 따라서 $f\\left(\\frac{7\\pi}{4}\\right)=0$ 이고 $\\sin\\frac{7\\pi}{4}+a=0$ 이므로 $-\\frac{\\sqrt2}{2}+a=0$, 따라서 $a=\\frac{\\sqrt2}{2}$ 이다.<br>2단계: 또 $g\\left(\\frac{7\\pi}{4}\\right)=0$ 이므로 $-\\cos\\frac{7\\pi}{4}+b=0$, 즉 $-\\frac{\\sqrt2}{2}+b=0$, 따라서 $b=\\frac{\\sqrt2}{2}$ 이다.<br>3단계: $h(x)=\\frac{|f(x)-g(x)|+f(x)+g(x)}{2}$ 는 $f(x), g(x)$ 중 큰 값을 나타낸다.<br>4단계: 그래프에서 $h(x)=k\\ (k>1)$ 가 서로 다른 세 실근을 가지려면 $k=f\\left(\\frac{3\\pi}{4}\\right)$ 이어야 한다.<br>5단계: $f\\left(\\frac{3\\pi}{4}\\right)=\\sin\\frac{3\\pi}{4}+\\frac{\\sqrt2}{2}=\\frac{\\sqrt2}{2}+\\frac{\\sqrt2}{2}=\\sqrt2$ 이므로 $k=\\sqrt2$ 이다.<br>6단계: 그래프에서 $h(x)$의 최댓값은 $x=\\frac{\\pi}{2}$ 또는 $x=2\\pi$ 일 때이고, $m=\\frac{2+\\sqrt2}{2}$ 이다.<br>7단계: 따라서 $a\\times b\\times k\\times m=\\frac{\\sqrt2}{2}\\times\\frac{\\sqrt2}{2}\\times\\sqrt2\\times\\frac{2+\\sqrt2}{2}=\\frac{\\sqrt2+1}{2}$ 이다.<br>* 검산: 정답 $\\frac{\\sqrt2+1}{2}$"
@@ -263,3 +271,4 @@ window.questionBank = [
     solution: "1단계: $f(x)=\\left|\\cos2\\left(x-\\frac{\\pi}{6}\\right)\\right|+\\frac12$ 이고, $-\\pi\\le x\\le\\pi$에서 그래프를 보면 $y=1$과 만나는 서로 다른 점의 개수는 $n=5$ 이다.<br>2단계: 조건에서 $m-n=3$ 이므로 $m=8$ 이다.<br>3단계: $f(x)=k$가 서로 다른 8개의 실근을 가지려면 그래프의 높이로 보아 $0<k<\\frac12$ 이어야 한다.<br>4단계: 이때 8개의 근을 $x_1,x_2,\\dots,x_8$이라 하면, 그래프는 $x=\\frac{\\pi}{6}$에 대하여 대칭이다.<br>5단계: 따라서 $x_1+x_8=\\frac{\\pi}{3}$ 이고, 마찬가지로 $x_2+x_7=x_3+x_6=x_4+x_5=\\frac{\\pi}{3}$ 이다.<br>6단계: 모든 실근의 합은 $4\\cdot\\frac{\\pi}{3}=\\frac{4\\pi}{3}$ 이다.<br>* 검산: $0<k<\\frac12$, 실근의 합 $\\frac{4\\pi}{3}$"
   }
 ]
+Object.freeze(window.questionBank);

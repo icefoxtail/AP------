@@ -1,14 +1,3 @@
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ✅ 검수 완료 — 수정 금지
-   검수일  : 2025-01-15
-   문항 수 : 23
-   SHA-256 : f878f6d73ae49d8773244bf58e3ebc580f15017bc49f2fe834dc00bccb9a3c0f
-   이 파일을 수정하면 무결성 검증에 실패합니다.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-window.examTitle = "24_왕운중3_1학기_중간_중3";
-window.examMeta  = Object.freeze({ reviewed: true, reviewedAt: "2025-01-15", sha256: "f878f6d73ae49d8773244bf58e3ebc580f15017bc49f2fe834dc00bccb9a3c0f", count: 23 });
-
 window.questionBank = [
   {
     "id": 1,
@@ -266,4 +255,3 @@ window.questionBank = [
     "solution": "a=3, b=2, 높이=2√6, 넓이=√6"
   }
 ];
-Object.freeze(window.questionBank);
