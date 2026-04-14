@@ -25,14 +25,14 @@ window.questionBank = [
     "answer": "②",
     "solution": "**[Logical Anchor]** 나머지 정리 $R = P(k)$ 적용\\n$\\because$ 나머지는 $P(1)$의 값과 같음\\n$\\implies P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2$\\n$\\therefore P(1) = 2$"
   },
-  {
+{
     "id": 3,
     "level": "하",
     "category": "나머지 정리",
-    "content": "조립제법을 이용하여 다항식 $x^{3}-2x^{2}+x+2$을 $x-1$로 나누었을 때의 몫과 나머지를 구하는 과정이 다음과 같다. $a+b$의 값은? [4.2점]\\n<div class='box'>\\n$\\begin{array}{r|rrrr} 1 & 1 & -2 & 1 & 2 \\\\ \\multicolumn{2}{r}{} & 1 & a & 0 \\\\ \\cline{2-5} \\multicolumn{2}{r}{} & 1 & -1 & b & \\underline{| \\ 2} \\end{array}\\n</div>",
-    "choices": ["1", "2", "3", "4", "5"],
+    "content": "조립제법을 이용하여 다항식 $x^{3}-2x^{2}+x+2$을 $x-1$로 나누었을 때의 몫과 나머지를 구하는 과정이 다음과 같다. $a+b$의 값은? [4.2점]<br/><div style='text-align:center; margin:10px 0;'><svg width='280' height='130' viewBox='0 0 280 130' style='background:white;'><line x1='40' y1='30' x2='40' y2='110' stroke='black' stroke-width='1.5'/><line x1='45' y1='90' x2='240' y2='90' stroke='black' stroke-width='1.5'/><text x='25' y='65' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='65' y='25' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='115' y='25' font-size='16' text-anchor='middle' font-family='serif'>-2</text><text x='165' y='25' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='215' y='25' font-size='16' text-anchor='middle' font-family='serif'>2</text><text x='115' y='65' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='165' y='65' font-size='16' text-anchor='middle' font-weight='bold' font-family='serif'>a</text><text x='215' y='65' font-size='16' text-anchor='middle' font-family='serif'>0</text><text x='65' y='115' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='115' y='115' font-size='16' text-anchor='middle' font-family='serif'>-1</text><text x='165' y='115' font-size='16' text-anchor='middle' font-weight='bold' font-family='serif'>b</text><line x1='200' y1='95' x2='200' y2='125' stroke='black' stroke-width='1'/><text x='225' y='115' font-size='16' text-anchor='middle' font-family='serif'>2</text></svg></div>",
+    "choices": ["-3", "-2", "-1", "0", "1"],
     "answer": "③",
-    "solution": "**[Logical Anchor]** 조립제법의 연산 구조 분석\\n$\\implies a = (-2) + 1 = -1$\\n$\\implies b = 1 + a = 1 + (-1) = 0$\\n$\\therefore a+b = -1+0 = -1$"
+    "solution": "**[Logical Anchor]** 조립제법의 연산 구조 분석<br/><div style='text-align:center; margin:10px 0;'><svg width='280' height='130' viewBox='0 0 280 130' style='background:white;'><line x1='40' y1='30' x2='40' y2='110' stroke='black' stroke-width='1.5'/><line x1='45' y1='90' x2='240' y2='90' stroke='black' stroke-width='1.5'/><text x='25' y='65' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='65' y='25' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='115' y='25' font-size='16' text-anchor='middle' font-family='serif'>-2</text><text x='165' y='25' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='215' y='25' font-size='16' text-anchor='middle' font-family='serif'>2</text><text x='115' y='65' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='165' y='65' font-size='16' text-anchor='middle' font-weight='bold' text-decoration='underline' font-family='serif'>-1</text><text x='215' y='65' font-size='16' text-anchor='middle' font-family='serif'>0</text><text x='65' y='115' font-size='16' text-anchor='middle' font-family='serif'>1</text><text x='115' y='115' font-size='16' text-anchor='middle' font-family='serif'>-1</text><text x='165' y='115' font-size='16' text-anchor='middle' font-weight='bold' text-decoration='underline' font-family='serif'>0</text><line x1='200' y1='95' x2='200' y2='125' stroke='black' stroke-width='1'/><text x='225' y='115' font-size='16' text-anchor='middle' font-family='serif'>2</text></svg></div>$\\because$ $a$는 앞선 열의 합($-1$)과 제수($1$)의 곱임<br/>$\\implies a = (-1) \\times 1 = -1$<br/>$\\implies b = 1 + a = 1 + (-1) = 0$<br/>$\\therefore a+b = -1+0 = -1$"
   },
   {
     "id": 4,
@@ -115,14 +115,14 @@ window.questionBank = [
     "answer": "④",
     "solution": "**[Logical Anchor]** 음의 제곱근의 성질(나눗셈) 적용\\n$\\because \\frac{\\sqrt{A}}{\\sqrt{B}} = -\\sqrt{\\frac{A}{B}} \\iff A \\ge 0, B < 0$\\n$\\implies a+3 \\ge 0 \\text{ 이고 } a-3 < 0$\\n$\\implies -3 \\le a < 3$\\n$\\therefore a \\in \\{-3, -2, -1, 0, 1, 2\\} \\implies 6\\text{개}$"
   },
-  {
+{
     "id": 13,
     "level": "상",
     "category": "이차함수와 이차방정식",
-    "content": "[상] 이차함수 $y=f(x)$의 그래프가 $x$축과 두 점 $(-2, 0), (5, 0)$에서 만날 때, 이차방정식 $f(x+1)=0$의 두 실근의 곱은? [4.4점]",
+    "content": "[상] 이차함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 이차방정식 $f(x+1)=0$의 두 실근의 곱은? [4.4점]<br/><div style='text-align:center; margin:10px 0;'><svg width='300' height='200' viewBox='0 0 300 200' style='background:white;'><line x1='0' y1='140' x2='300' y2='140' stroke='#cccccc' stroke-width='1'/><line x1='150' y1='0' x2='150' y2='200' stroke='#cccccc' stroke-width='1'/><line x1='20' y1='140' x2='280' y2='140' stroke='black' stroke-width='1.5'/><line x1='150' y1='180' x2='150' y2='20' stroke='black' stroke-width='1.5'/><text x='285' y='155' font-size='12' font-style='italic'>x</text><text x='160' y='15' font-size='12' font-style='italic'>y</text><text x='135' y='155' font-size='12'>O</text><path d='M 70 40 Q 180 340 290 40' fill='none' stroke='black' stroke-width='2'/><circle cx='110' cy='140' r='3' fill='black'/><text x='100' y='130' font-size='12' font-weight='bold'>-2</text><circle cx='250' cy='140' r='3' fill='black'/><text x='255' y='130' font-size='12' font-weight='bold'>5</text></svg></div>",
     "choices": ["-12", "-10", "-8", "-6", "-4"],
     "answer": "①",
-    "solution": "**[Logical Anchor]** 함수의 평행이동과 근의 변화 분석\\n$\\because f(x)=0 \\text{ 의 근은 } x=-2, 5$\\n$\\implies f(x+1)=0 \\text{ 의 근은 } x+1=-2, x+1=5$\\n$\\implies x=-3, 4$\\n$\\therefore (-3) \\times 4 = -12$"
+    "solution": "**[Logical Anchor]** 함수의 평행이동과 근의 변화 분석\\n$\\because f(x)=0$ 의 근은 $x=-2, 5$ (그래프 참조)\\n$\\implies f(x+1)=0$ 의 근은 $x+1=-2, x+1=5$\\n$\\implies x=-3, 4$\\n$\\therefore (-3) \\times 4 = -12$"
   },
   {
     "id": 14,
@@ -137,19 +137,19 @@ window.questionBank = [
     "id": 15,
     "level": "중",
     "category": "복소수의 연산",
-    "content": "$i+2i^2+3i^3+4i^4+\\dots+48i^{48}=a+bi$를 만족하는 두 실수 $a, b$에 대하여 $a-b$의 값은? [4.6점]",
-    "choices": ["24", "48", "72", "96", "0"],
-    "answer": "②",
-    "solution": "**[Logical Anchor]** 복소수 수열의 주기적 합 계산\\n$\\because i^n \\text{ 은 4개를 주기로 반복됨}$\\n$\\implies (i-2-3i+4) + (5i-6-7i+8) + \\dots$\\n$\\implies (2-2i) \\times (48 \\div 4) = 12(2-2i) = 24-24i$\\n$\\because a=24, b=-24$\\n$\\therefore a-b = 24-(-24) = 48$"
+    "content": "$i+2i^{2}+3i^{3}+4i^{4}+\\dots+48i^{48}=a+bi$를 만족하는 두 실수 $a, b$에 대하여 $a-b$의 값은? [4.6점]",
+    "choices": ["0", "24", "48", "72", "96"],
+    "answer": "③",
+    "solution": "**[Logical Anchor]** 복소수 수열의 주기적 합 계산\\n$\\because i^{n}$ 은 4개를 주기로 반복됨\\n$\\implies (i-2-3i+4) + (5i-6-7i+8) + \\dots$\\n$\\implies (2-2i) \\times (48 \\div 4) = 12(2-2i) = 24-24i$\\n$\\because a=24, b=-24$\\n$\\therefore a-b = 24-(-24) = 48$"
   },
   {
     "id": 16,
     "level": "상",
     "category": "이차함수와 직선",
-    "content": "[상] $x$에 대한 이차함수 $y=x^2-2kx+k^2+3k$의 그래프와 직선 $y=ax+b$가 $k$의 값에 관계없이 항상 접할 때, $a+b$의 값은? [4.6점]",
-    "choices": ["$\\frac{1}{16}$", "$\\frac{1}{8}$", "$\\frac{3}{4}$", "$\\frac{7}{8}$", "$\\frac{1}{2}$"],
-    "answer": "③",
-    "solution": "**[Logical Anchor]** 판별식 $D=0$이 $k$에 대한 항등식임을 이용\\n$\\implies x^2-(2k+a)x+(k^2+3k-b)=0$\\n$\\implies D = (2k+a)^2-4(k^2+3k-b) = 0$\\n$\\implies (4a-12)k + (a^2+4b) = 0$\\n$\\because 4a-12=0, a^2+4b=0 \\implies a=3, b=-\\frac{9}{4}$\\n$\\therefore a+b = 3-\\frac{9}{4} = \\frac{3}{4}$"
+    "content": "[상] $x$에 대한 이차함수 $y=x^{2}-2kx+k^{2}+3k$의 그래프와 직선 $y=ax+b$가 $k$의 값에 관계없이 항상 접할 때, $a+b$의 값은? (단, $a, b$는 상수) [4.6점]",
+    "choices": ["$\\frac{1}{16}$", "$\\frac{1}{8}$", "$\\frac{1}{4}$", "$\\frac{3}{4}$", "$\\frac{7}{8}$"],
+    "answer": "④",
+    "solution": "**[Logical Anchor]** 판별식 $D=0$이 $k$에 대한 항등식임을 이용\\n$\\implies x^{2}-(2k+a)x+(k^{2}+3k-b)=0$\\n$\\implies D = (2k+a)^{2}-4(k^{2}+3k-b) = 0$\\n$\\implies (4a-12)k + (a^{2}+4b) = 0$\\n$\\because 4a-12=0, a^{2}+4b=0 \\implies a=3, b=-\\frac{9}{4}$\\n$\\therefore a+b = 3-\\frac{9}{4} = \\frac{3}{4}$"
   },
   {
     "id": 17,
@@ -164,10 +164,10 @@ window.questionBank = [
     "id": 18,
     "level": "상",
     "category": "이차함수의 최대최소",
-    "content": "[상] 한 변의 길이가 8인 정사각형 $ABCD$ 내부에 $DE=4, DF=3$인 선분 $EF$ 위의 점 $P$로부터 변 $AB, BC$에 내린 수선으로 만든 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]",
-    "choices": ["39", "118/3", "119/3", "40", "121/3"],
+    "content": "[상] 다음 그림과 같이 한 변의 길이가 8인 정사각형 $ABCD$에 $DE=4, DF=3$이 되도록 점 $E, F$가 각각 변 $AD$와 $CD$ 위에 있다. 선분 $EF$ 위에 한 점 $P$를 잡고 점 $P$에서 변 $AB, BC$에 내린 수선의 발을 각각 $M, N$이라 할 때, 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]<br/><div style='text-align:center; margin:10px 0;'><svg width='300' height='300' viewBox='-20 -20 340 340' style='background:white;'><rect x='0' y='0' width='300' height='300' fill='none' stroke='black' stroke-width='2'/><text x='-15' y='15' font-size='14'>A</text><text x='-15' y='315' font-size='14'>B</text><text x='305' y='315' font-size='14'>C</text><text x='305' y='15' font-size='14'>D</text><circle cx='300' cy='150' r='3' fill='black'/><text x='310' y='155' font-size='14'>E</text><circle cx='187.5' cy='0' r='3' fill='black'/><text x='180' y='-5' font-size='14'>F</text><line x1='300' y1='150' x2='187.5' y2='0' stroke='black' stroke-width='2'/><circle cx='243.75' cy='75' r='4' fill='black'/><text x='250' y='70' font-size='14' font-weight='bold'>P</text><line x1='243.75' y1='75' x2='0' y2='75' stroke='black' stroke-width='1' stroke-dasharray='4'/><line x1='243.75' y1='75' x2='243.75' y2='300' stroke='black' stroke-width='1' stroke-dasharray='4'/><text x='-15' y='80' font-size='14'>M</text><text x='238' y='320' font-size='14'>N</text><rect x='0' y='75' width='243.75' height='225' fill='#f0f0f0' stroke='black' stroke-width='1.5'/><text x='150' y='320' font-size='14' text-anchor='middle'>8</text></svg></div>",
+    "choices": ["39", "$\\frac{118}{3}$", "$\\frac{119}{3}$", "40", "$\\frac{121}{3}$"],
     "answer": "⑤",
-    "solution": "**[Logical Anchor]** 좌표평면 도입 및 이차함수 최대치 산출\\n$\\implies D(0,0), E(3,0), F(0,4) \\text{ 로 설정 (직선 } EF: \\frac{x}{3}+\\frac{y}{4}=1)$\\n$\\implies P(t, 4-\\frac{4}{3}t), \\text{ 사각형 가로 } = 8-t, \\text{ 세로 } = 4+\\frac{4}{3}t$\\n$\\implies S(t) = (8-t)(4+\\frac{4}{3}t) = -\\frac{4}{3}(t-\\frac{5}{2})^2 + \\frac{121}{3}$\\n$\\therefore \\text{최댓값은 } \\frac{121}{3}$"
+    "solution": "**[Logical Anchor]** 좌표평면 도입 및 이차함수 최대치 산출\\n$\\implies D(0,0), E(3,0), F(0,4)$ 로 설정 (직선 $EF: \\frac{x}{3} + \\frac{y}{4} = 1$)<br/>$\\implies P(t, 4 - \\frac{4}{3} t), \\text{ 사각형 가로 } = 8-t, \\text{ 세로 } = 4+\\frac{4}{3} t$\\n$\\implies S(t) = (8-t)(4+\\frac{4}{3} t) = -\\frac{4}{3}(t-\\frac{5}{2})^{2} + \\frac{121}{3}$<br/>$\\therefore$ 최댓값은 $\\frac{121}{3}$"
   },
   {
     "id": 19,

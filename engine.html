@@ -800,52 +800,31 @@ function wrapLatexPreserveBlocks(text) {
     if (!text) return text;
     let s = String(text);
 
-    // 1. OCR 및 비표준 기호 정밀 보정
-    s = s.replace(/\^\[([^\]]+)\]/g, '^{$1}');
-    s = s.replace(/_\[([^\]]+)\]/g, '_{$1}');
+    s = s.replace(/\^\[([^\]]+)\]/g, '^{$1}').replace(/_\[([^\]]+)\]/g, '_{$1}');
     s = s.replace(//g, '(').replace(//g, ')').replace(//g, '');
     s = s.replace(/²/g, '^2').replace(/³/g, '^3');
+    s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}').replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
+    s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
+    s = s.replace(/\\tf\{([^}]*)\}\{([^}]*)\}/g, '\\frac{$1}{$2}').replace(/\\tf[0-9a-zA-Z]+/g, '');
 
-    // 루트 보정: 괄호형 먼저, 단순형 나중
-    s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}');
-    s = s.replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
-
-    // 2. HWP/기타 매크로 보정
-    s = s.replace(/\\tf\{([^}]*)\}\{([^}]*)\}/g, '\\frac{$1}{$2}');
-    s = s.replace(/\\tf[0-9a-zA-Z]+/g, '');
-
-    // 3. 이미 수식 태그가 적용된 경우 그대로 반환
-    if (/^\s*\$\$[\s\S]*\$\$\s*$/.test(s) || /^\s*\$[\s\S]*\$\s*$/.test(s)) {
-        return s;
-    }
-
-    // 4. 구조화 수식은 블록 수식으로 강제 변환
-    if (
-        /\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) ||
-        /\\multicolumn|\\cline|\\hline/.test(s)
-    ) {
+    if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s)) {
         return `$$${s}$$`;
     }
 
-    // 5. HTML 태그가 섞여 있으면 자동 래핑하지 않고 줄바꿈만 처리
-    if (/<[^>]+>/.test(s)) {
-        return s.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
-    }
+    if (/^\s*\$\$[\s\S]*\$\$\s*$/.test(s) || /^\s*\$[\s\S]*\$\s*$/.test(s)) return s;
 
-    // 6. 일반 줄바꿈 처리
-    s = s.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+    const parts = s.split(/(<[^>]+>)/g);
+    return parts.map(p => {
+        if (!p) return '';
+        if (p.startsWith('<')) return p;
 
-    // 7. 정밀한 자동 래핑 결정
-    const trimmed = s.trim();
-    const looksLikeMath =
-        /\\[a-zA-Z]+/.test(trimmed) ||
-        (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0);
+        let t = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+        const trimmed = t.trim();
+        const looksLikeMath = /\\[a-zA-Z]+/.test(trimmed) || (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0);
 
-    if (looksLikeMath && !s.includes('<br>')) {
-        return `$${trimmed}$`;
-    }
-
-    return s;
+        if (looksLikeMath && !t.includes('<br>')) return `$${trimmed}$`;
+        return t;
+    }).join('');
 }
 
 function stripCite(text) {
