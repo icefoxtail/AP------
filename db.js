@@ -577,7 +577,7 @@ window.mainDB = {
             "semester": "1",
             "examType": "mid",
             "subject": "",
-            "file": "25_팔마고1_1학기_중간_고1.js",
+            "file": "25_팔마고1_1학기_중간_고1_r.js",
             "type": "exam"
         },
         {
