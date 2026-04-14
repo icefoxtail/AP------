@@ -117,19 +117,19 @@
             padding: 0 12px; overflow: hidden;
         }
 
-        /* 문항 박스 스타일 */
         .q-box {
             flex: 1;
             padding: 10px 0;
             border-bottom: 0.5px solid #ccc;
-            overflow: hidden;
+            overflow: visible; 
             display: flex;
             flex-direction: column;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
         }
         .q-box:last-child { border-bottom: none; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 4px; flex-shrink: 0; }
         
-        /* 데이터 내부 .box 스타일 추가 */
         .box {
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -151,8 +151,9 @@
             padding: 8px 0;
             border-bottom: 0.5px solid #eee;
             width: 100%;
+            margin-bottom: 45px;
         }
-        .sol-box:last-child { border-bottom: none; }
+        .sol-box:last-child { border-bottom: none; margin-bottom: 0; }
         .sol-step {
             padding-left: 8px;
             border-left: 2px solid #e2e8f0;
@@ -162,11 +163,13 @@
         .ans-grid {
             display: flex;
             flex-direction: column;
-            gap: 10px; margin-top: 10px;
+            gap: 2px; margin-top: 5px;
+            max-height: 70%;
         }
         .ans-cell {
-            padding: 8px;
-            display: flex; align-items: flex-start; gap: 8px;
+            padding: 4px 8px;
+            display: flex; align-items: flex-start; gap: 12px;
+            border-bottom: 0.1px solid #f0f0f0;
         }
     </style>
 </head>
@@ -222,7 +225,7 @@ async function loadData(dataUrl) {
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.mode  = p.get('mode')  || 'exam';
-    AppState.title = p.get('title') || 'JS아카이브 기출';
+    AppState.title = (p.get('title') || 'JS아카이브 기출').replace(/\s/g, ''); 
     
     const rawQpp = parseInt(p.get('qpp'));
     AppState.qpp = isNaN(rawQpp) ? 4 : Math.max(2, Math.min(8, rawQpp));
@@ -363,7 +366,6 @@ function buildSolBox(q, i) {
             `<div class="sol-step"><b>[${si+1}단계]</b> ${wrapLatex(stripCite(s).replace(/\n/g, '<br>'))}</div>`
         ).join('');
     } else if (q.solution) {
-        // \\\\ 기준으로 줄 분리하여 각각 수식 처리 (인라인 math 개행 제한 해결)
         const lines = stripCite(q.solution).split(/\\\\/);
         solHTML = lines.map(line =>
             `<div class="sol-step">${wrapLatex(line.trim().replace(/\n/g, '<br>'))}</div>`
@@ -387,8 +389,12 @@ function renderAnsGrid(area, bank) {
     bank.forEach((q, i) => {
         const cell = document.createElement('div');
         cell.className = 'ans-cell';
-        cell.innerHTML = `<b style="font-size:11pt;min-width:40px;">${i+1}.</b>
-                          <span style="font-size:11pt;">${wrapLatex(String(q.answer ?? '–'))}</span>`;
+        const rawAns = String(q.answer ?? '–');
+        const displayAns = (rawAns.includes('sqrt') || rawAns.includes('/') || rawAns.includes('^')) 
+                           ? wrapLatex(rawAns) : rawAns;
+
+        cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${i+1}.</b>
+                          <span style="font-size:10.5pt;">${wrapLatex(displayAns)}</span>`;
         grid.appendChild(cell);
     });
     p.body.appendChild(grid);
@@ -428,13 +434,14 @@ function makePage(area, type) {
 function wrapLatex(text) {
     if (!text) return text;
     if (text.includes('$')) return text;
-    if (text.includes('\\')) return `$${text}$`;
+    if (text.includes('\\') || /[\+\-\*\/\^\(\)]/.test(text)) {
+        if (!text.startsWith('$')) return `$${text}$`;
+    }
     return text;
 }
 
 function stripCite(text) {
     if (!text) return text;
-    // 인용 패턴 및 대괄호 쌍(예: 【...】, [...]) 제거 로직 업데이트
     return text.replace(/【[^】]*】/g, '').replace(/\[[^\]]*\]/g, '').trim();
 }
 

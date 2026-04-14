@@ -12,15 +12,6 @@ window.mainDB = {
     {
       "year": "2019",
       "school": "금당",
-      "grade": "중2",
-      "semester": "1",
-      "examType": "mid",
-      "subject": "중2",
-      "file": "19_금당중2_1학기_중간_중2.js"
-    },
-    {
-      "year": "2019",
-      "school": "금당",
       "grade": "중3",
       "semester": "1",
       "examType": "mid",
@@ -71,42 +62,6 @@ window.mainDB = {
       "examType": "mid",
       "subject": "중3",
       "file": "19_풍덕중3_1학기_중간_중3.js"
-    },
-    {
-      "year": "2023",
-      "school": "왕운",
-      "grade": "중3",
-      "semester": "1",
-      "examType": "mid",
-      "subject": "중3",
-      "file": "2023_왕운중3_1학기_중간_중3.js"
-    },
-    {
-      "year": "2025",
-      "school": "금당",
-      "grade": "고1",
-      "semester": "1",
-      "examType": "mid",
-      "subject": "고1",
-      "file": "2025_금당고1_1학기_중간_고1.js"
-    },
-    {
-      "year": "2025",
-      "school": "금당",
-      "grade": "중3",
-      "semester": "1",
-      "examType": "mid",
-      "subject": "중3",
-      "file": "2025_금당중3_1학기_중간_중3.js"
-    },
-    {
-      "year": "2025",
-      "school": "신흥",
-      "grade": "중3",
-      "semester": "1",
-      "examType": "mid",
-      "subject": "중3",
-      "file": "2025_신흥중3_1학기_중간_중3.js"
     },
     {
       "year": "2020",
@@ -308,6 +263,15 @@ window.mainDB = {
     },
     {
       "year": "2023",
+      "school": "왕운",
+      "grade": "중3",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중3",
+      "file": "23_왕운중3_1학기_중간_중3.js"
+    },
+    {
+      "year": "2023",
       "school": "중앙여",
       "grade": "고1",
       "semester": "1",
@@ -332,6 +296,24 @@ window.mainDB = {
       "examType": "mid",
       "subject": "대수",
       "file": "23_한영고2_1학기_중간_대수.js"
+    },
+    {
+      "year": "2024",
+      "school": "금당",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "대수",
+      "file": "24_금당고2_1학기_중간_대수.js"
+    },
+    {
+      "year": "2024",
+      "school": "금당",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "대수",
+      "file": "24_금당고2_1학기_중간_대수_s.js"
     },
     {
       "year": "2024",
@@ -371,6 +353,15 @@ window.mainDB = {
     },
     {
       "year": "2024",
+      "school": "왕운",
+      "grade": "중3",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중3",
+      "file": "24_왕운중3_1학기_중간_중3_r.js"
+    },
+    {
+      "year": "2024",
       "school": "한영",
       "grade": "고1",
       "semester": "1",
@@ -383,9 +374,45 @@ window.mainDB = {
       "school": "강남여",
       "grade": "고1",
       "semester": "1",
+      "examType": "final",
+      "subject": "고1",
+      "file": "25_강남여고1_1학기_기말_고1.js"
+    },
+    {
+      "year": "2025",
+      "school": "강남여",
+      "grade": "고1",
+      "semester": "1",
       "examType": "mid",
       "subject": "고1",
       "file": "25_강남여고1_1학기_중간_고1.js"
+    },
+    {
+      "year": "2025",
+      "school": "강남여",
+      "grade": "고1",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "고1",
+      "file": "25_강남여고1_1학기_중간_고1_s.js"
+    },
+    {
+      "year": "2025",
+      "school": "금당",
+      "grade": "고1",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "고1",
+      "file": "25_금당고1_1학기_중간_고1.js"
+    },
+    {
+      "year": "2025",
+      "school": "금당",
+      "grade": "중3",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중3",
+      "file": "25_금당중3_1학기_중간_중3.js"
     },
     {
       "year": "2025",
@@ -417,11 +444,29 @@ window.mainDB = {
     {
       "year": "2025",
       "school": "순천여",
+      "grade": "고1",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "고1",
+      "file": "25_순천여고1_1학기_중간_고1_s.js"
+    },
+    {
+      "year": "2025",
+      "school": "순천여",
       "grade": "고2",
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
       "file": "25_순천여고2_1학기_중간_대수.js"
+    },
+    {
+      "year": "2025",
+      "school": "신흥",
+      "grade": "중3",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중3",
+      "file": "25_신흥중3_1학기_중간_중3.js"
     },
     {
       "year": "2025",
@@ -461,6 +506,15 @@ window.mainDB = {
     },
     {
       "year": "2025",
+      "school": "제일",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "",
+      "subject": "중간",
+      "file": "25_제일고2_1학기__중간_대수.js"
+    },
+    {
+      "year": "2025",
       "school": "팔마",
       "grade": "고1",
       "semester": "1",
@@ -476,6 +530,15 @@ window.mainDB = {
       "examType": "mid",
       "subject": "고1",
       "file": "25_효천고1_1학기_중간_고1.js"
+    },
+    {
+      "year": "2025",
+      "school": "효천",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "",
+      "subject": "중간",
+      "file": "25_효천고2_1학기__중간_대수.js"
     },
     {
       "year": "2026",
