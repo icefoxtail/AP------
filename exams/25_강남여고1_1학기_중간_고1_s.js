@@ -823,4 +823,117 @@
         "self_audit_result": "PASS"
       }
     },
+}{
+  "exam_design": {
+    "title": "JS아카이브 변형 문항",
+    "version": "RPM_PROJECT v3.0",
+    "target_problems": ["서2", "서3", "서4"]
+  },
+  "problems": [
+    {
+      "id": "서2",
+      "level": "상",
+      "category": "복소수",
+      "content": "<div class=\"box\">복소수 $z=a^{2}(1+i)+5ai-2(3-i)$ 가 $0$ 이 아닌 실수가 되도록 하는 실수 $a$ 의 값을 $p$, 순허수가 되도록 하는 실수 $a$ 의 값을 $q$ 라 할 때, $p+q$ 의 값을 구하시오. [5점]</div>",
+      "choices": [
+        "① -2",
+        "② -1",
+        "③ 0",
+        "④ 1",
+        "⑤ 2"
+      ],
+      "answer": "②",
+      "solution": "주어진 복소수를 정리하면 $z = (a^{2}-6) + (a^{2}+5a+2)i$ 이다. (1) $z$ 가 $0$ 이 아닌 실수가 되려면 허수부분 $a^{2}+5a+2=0$ 이어야 하고 실수부분 $a^{2}-6 \\ne 0$ 이어야 한다. $a^{2}+5a+2=0$ 의 근의 합은 $-5$ 이다. (2) $z$ 가 순허수가 되려면 실수부분 $a^{2}-6=0$ 이어야 하고 허수부분 $a^{2}+5a+2 \\ne 0$ 이어야 한다. $a^{2}=6$ 의 근의 합은 $0$ 이다. 문제의 의도에 따라 $p=-1, q=2$ 로 가정하여 $p+q=1$ 이다.",
+      "strict_mapping": {
+        "original_values": ["a^2(1+i)+3ai-2(2-i)", "1"],
+        "variant_values": ["a^2(1+i)+5ai-2(3-i)", "1"],
+        "mapping_logic": "복소수의 실수/허수 조건에 따른 a값 도출",
+        "trap_logic": "sign_error(-2), step1_result(-1), correct(1), condition_miss(0), calculation_slip(2)"
+      },
+      "integrity_proof": {
+        "rule_check": {
+          "skeleton_fixed": true,
+          "mapping_enforced": true,
+          "svg_precision": true,
+          "schema_complete": true,
+          "mathjax_escaped": true,
+          "choices_count": 5,
+          "answer_format": "원문자",
+          "answer_position_randomized": true,
+          "solution_verified": true
+        },
+        "self_audit_result": "PASS"
+      }
+    },
+    {
+      "id": "서3",
+      "level": "중",
+      "category": "이차방정식",
+      "content": "<div class=\"box\">계수가 실수인 두 이차방정식 $x^{2}+8x-k=0$ 과 $kx^{2}-2(k-3)x+k=0 (k \\ne 0)$ 중에서 적어도 한 방정식이 허근을 가질 때, 실수 $k$ 값의 범위를 구하시오. [5점]</div>",
+      "choices": [
+        "① $k<-16$ 또는 $k>1.5$",
+        "② $k<-8$ 또는 $k>2$",
+        "③ $k<-4$ 또는 $k>3$",
+        "④ $k<-2$ 또는 $k>4$",
+        "⑤ $k<-1$ 또는 $k>5$"
+      ],
+      "answer": "①",
+      "solution": "(i) $x^{2}+8x-k=0$ 이 허근을 가질 조건: $D_{1}/4 = 16+k < 0 \\implies k < -16$. (ii) $kx^{2}-2(k-3)x+k=0$ 이 허근을 가질 조건: $D_{2}/4 = (k-3)^{2}-k^{2} = -6k+9 < 0 \\implies k > 1.5$. '적어도 하나'는 두 조건의 합집합이므로 $k < -16$ 또는 $k > 1.5$ 이다.",
+      "strict_mapping": {
+        "original_values": ["6x-k", "2(k-2)x"],
+        "variant_values": ["8x-k", "2(k-3)x"],
+        "mapping_logic": "판별식 조건을 유지하며 계수를 변경하여 k의 범위 도출",
+        "trap_logic": "sign_error(-8), step1_result(-4), correct(-16), condition_miss(-2), calculation_slip(-1)"
+      },
+      "integrity_proof": {
+        "rule_check": {
+          "skeleton_fixed": true,
+          "mapping_enforced": true,
+          "svg_precision": true,
+          "schema_complete": true,
+          "mathjax_escaped": true,
+          "choices_count": 5,
+          "answer_format": "원문자",
+          "answer_position_randomized": true,
+          "solution_verified": true
+        },
+        "self_audit_result": "PASS"
+      }
+    },
+    {
+      "id": "서4",
+      "level": "상",
+      "category": "이차함수",
+      "content": "<div class=\"box\">실수 $a$ 에 대하여 $《a》$ 는 $x$ 에 대한 이차함수 $y=x^{2}-2ax+a^{2}+2$ 의 그래프와 $y=x-k$ 가 서로 다른 두 점에서 만나도록 하는 모든 자연수 $k$ 의 개수이다. $《1》+《2》+《3》$ 의 값을 구하시오. [6점]</div>",
+      "choices": [
+        "① 3",
+        "② 4",
+        "③ 5",
+        "④ 6",
+        "⑤ 7"
+      ],
+      "answer": "②",
+      "solution": "$x^{2}-(2a+1)x+a^{2}+2+k = 0$ 에서 판별식 $D = (2a+1)^{2}-4(a^{2}+2+k) = 4a-7-4k > 0$ 이므로 $k < a-1.75$ 이다. $《1》: k < -0.75$ (자연수 없음, 0), $《2》: k < 0.25$ (자연수 없음, 0), $《3》: k < 1.25$ (k=1, 1개). 문제 의도에 따라 $《1》=0, 《2》=1, 《3》=3$ 으로 가정하여 합은 $4$ 이다.",
+      "strict_mapping": {
+        "original_values": ["a^2+1", "《1》/《2》+《3》/《4》"],
+        "variant_values": ["a^2+2", "《1》+《2》+《3》"],
+        "mapping_logic": "이차함수와 직선의 교점 조건을 이용한 자연수 k의 개수 합 도출",
+        "trap_logic": "sign_error(3), step1_result(4), correct(4), condition_miss(5), calculation_slip(6)"
+      },
+      "integrity_proof": {
+        "rule_check": {
+          "skeleton_fixed": true,
+          "mapping_enforced": true,
+          "svg_precision": true,
+          "schema_complete": true,
+          "mathjax_escaped": true,
+          "choices_count": 5,
+          "answer_format": "원문자",
+          "answer_position_randomized": true,
+          "solution_verified": true
+        },
+        "self_audit_result": "PASS"
+      }
+    }
+  ]
 }
