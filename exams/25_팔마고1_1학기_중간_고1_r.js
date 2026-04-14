@@ -151,14 +151,14 @@ window.questionBank = [
     "answer": "③",
     "solution": "중근 조건\n$m^2-4n=0 \\implies n=\\frac{m^2}{4}$\n$n$이 정수이므로 $m=2k$\n$\\therefore n=k^2$\n\n두 번째 방정식\n$x^2+k^2x+2k=0$\n서로 다른 두 실근\n$D>0$\n$k^4-8k>0$\n$k(k^3-8)>0$\n\n범위 $-20\\le m,n\\le20$\n$m=2k \\Rightarrow |k|\\le10$\n$n=k^2\\le20 \\Rightarrow |k|\\le4$\n\n따라서 $k=-4,-3,-2,-1,1,2,3,4$\n이 중 $k(k^3-8)>0$ 만족\n$k=-4,-3,-2,-1,3,4$\n\n각각 하나씩 대응\n$\\therefore 6\\text{개}$"
   },
-  { 
+  {
     "id": 17,
     "level": "고1",
     "category": "공통수학1",
     "content": "오른쪽 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$의 내부에 직사각형을 딱 맞게 넣으려고 한다. 삼각형 $ABC$의 넓이가 $6$이고 $\\overline{BC}=4$일 때, 이 직사각형의 넓이의 최댓값을 구하시오. [4.8점]\n<div class=\"svg-container\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 200\" preserveAspectRatio=\"xMidYMid meet\"><rect x=\"80\" y=\"110.0\" width=\"80\" height=\"60.0\" fill=\"none\" stroke=\"black\" stroke-width=\"2\"/><polygon points=\"120,50 40,170 200,170\" fill=\"none\" stroke=\"black\" stroke-width=\"2.5\"/><text x=\"115\" y=\"40\" font-size=\"14\" font-weight=\"bold\">A</text><text x=\"25\" y=\"175\" font-size=\"14\" font-weight=\"bold\">B</text><text x=\"205\" y=\"175\" font-size=\"14\" font-weight=\"bold\">C</text></svg></div>",
     "choices": ["3", "6", "9", "12", "15"],
     "answer": "①",
-    "solution": "삼각형의 높이 $AH=3$이다. 직사각형의 높이를 $h$, 가로를 $w$라 하면 닮음에 의해 $w:4 = (3-h):3$이므로 $w=\\frac{4}{3}(3-h)$이다. 넓이 $S=wh = \\frac{4}{3}(3h-h^2)$은 $h=1.5$일 때 최댓값 $3$을 갖는다.\n<div class=\"svg-container\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 200\" preserveAspectRatio=\"xMidYMid meet\"><rect width=\"240\" height=\"200\" fill=\"#f9f9f9\" stroke=\"#eee\" stroke-width=\"1\"/><line x1=\"120\" y1=\"50\" x2=\"120\" y2=\"170\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><text x=\"125\" y=\"110.0\" font-size=\"12\" font-weight=\"bold\">3</text><text x=\"115\" y=\"185\" font-size=\"12\">H</text><rect x=\"80\" y=\"110.0\" width=\"80\" height=\"60.0\" fill=\"none\" stroke=\"black\" stroke-width=\"2\"/><polygon points=\"120,50 40,170 200,170\" fill=\"none\" stroke=\"black\" stroke-width=\"2.5\"/><text x=\"115\" y=\"40\" font-size=\"14\" font-weight=\"bold\">A</text><text x=\"25\" y=\"175\" font-size=\"14\" font-weight=\"bold\">B</text><text x=\"205\" y=\"175\" font-size=\"14\" font-weight=\"bold\">C</text><text x=\"120\" y=\"188\" font-size=\"12\" text-anchor=\"middle\">4</text><text x=\"120\" y=\"105.0\" font-size=\"12\" text-anchor=\"middle\">w</text><text x=\"65\" y=\"140.0\" font-size=\"12\">h</text></svg></div>"
+    "solution": "삼각형의 밑변을 $BC$, 높이를 $AH$라 하면 넓이가 $6$이므로 $\\frac{1}{2} \\cdot 4 \\cdot AH = 6$에서 $AH=3$이다. 직사각형의 높이를 $h$, 가로 길이를 $w$라 하면 삼각형의 닮음에 의해 $(3-h):3 = w:4$이 성립한다. 즉, $w = \\frac{4}{3}(3-h)$이다. 직사각형의 넓이 $S = w \\cdot h = \\frac{4}{3}(3-h)h$이다. $S = -\\frac{4}{3}(h-1.5)^2 + 3$이므로 $h=1.5$일 때 최댓값 $3$을 갖는다.\n<div class=\"svg-container\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 200\" preserveAspectRatio=\"xMidYMid meet\"><rect width=\"240\" height=\"200\" fill=\"#f9f9f9\" stroke=\"#eee\" stroke-width=\"1\"/><line x1=\"120\" y1=\"50\" x2=\"120\" y2=\"170\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><text x=\"125\" y=\"110.0\" font-size=\"12\" font-weight=\"bold\">3</text><text x=\"115\" y=\"185\" font-size=\"12\">H</text><rect x=\"80\" y=\"110.0\" width=\"80\" height=\"60.0\" fill=\"none\" stroke=\"black\" stroke-width=\"2\"/><polygon points=\"120,50 40,170 200,170\" fill=\"none\" stroke=\"black\" stroke-width=\"2.5\"/><text x=\"115\" y=\"40\" font-size=\"14\" font-weight=\"bold\">A</text><text x=\"25\" y=\"175\" font-size=\"14\" font-weight=\"bold\">B</text><text x=\"205\" y=\"175\" font-size=\"14\" font-weight=\"bold\">C</text><text x=\"120\" y=\"188\" font-size=\"12\" text-anchor=\"middle\">4</text><text x=\"120\" y=\"105.0\" font-size=\"12\" text-anchor=\"middle\">w</text><text x=\"65\" y=\"140.0\" font-size=\"12\">h</text></svg></div>"
   },
   {
     "id": 18,
@@ -169,14 +169,14 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$x=0$ 대입\n$Q(0)^2+Q(2)^2=0 \\implies Q(0)=0,\\;Q(2)=0$\n이차식이므로\n$Q(x)=x(x-2)$\n원식에 대입\n$xP(x)=x^2(x-2)^2+x^2(x+2)^2$\n$=x^2[(x-2)^2+(x+2)^2]$\n$=x^2(2x^2+8)$\n$\\therefore P(x)=2x^3+8x$\n$Q(x+2)=x(x+2)$\n나머지는 1차식 $R(x)=ax+b$\n$x=0,-2$ 대입\n$P(0)=0,\\;P(-2)=-32$\n$R(0)=0,\\;R(-2)=-32$\n$\\therefore R(x)=16x \\implies R(1)=16$"
   },
-{
+  {
     "id": 19,
     "level": "상",
     "category": "복소수의 연산",
     "content": "$10 \\le n \\le 100$인 자연수 $n$에 대하여 $z=\\frac{1}{\\sqrt{5}(1-\\sqrt{3}i)}$일 때, $z^n$이 유리수가 되는 $n$의 개수를 $a$, $z^n$이 유리수가 되는 $n$ 중 $\\frac{1}{10^8} < |z^n| < \\frac{1}{10^2}$가 되는 $n$을 $b$라 할 때, $a-b$의 값을 구하시오. (단, $a, b$는 자연수이고, $|z^n|$은 $z^n$의 절댓값이다.) [5.2점]",
     "choices": ["$-3$", "$0$", "$3$", "$6$", "$9$"],
     "answer": "③",
-    "solution": "$z = \\frac{1+\\sqrt{3}i}{2\\sqrt{5}}$이므로 $z^n = 5^{-n/2}(\\cos\\frac{n\\pi}{3}+i\\sin\\frac{n\\pi}{3})$이다. 유리수가 되려면 $n=6k$여야 하므로 $n \\in \\{12, 18, \\dots, 96\\}$에서 $a=15$이다. $|z^n|=5^{-n/2}$에서 $2 < \\frac{n}{2}\\log 5 < 8$을 풀면 $10 \\le n \\le 22$이며 필기 기준 $b=12$이다. 따라서 $a-b=3$이다."
+    "solution": "$z = \\frac{1+\\sqrt{3}i}{2\\sqrt{5}} = \\frac{1}{\\sqrt{5}}(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3})$로 나타낼 수 있다. $z^n = (\\frac{1}{\\sqrt{5}})^n(\\cos\\frac{n\\pi}{3}+i\\sin\\frac{n\\pi}{3})$이 유리수가 되려면 $\\sin\\frac{n\\pi}{3}=0$이고 $\\cos\\frac{n\\pi}{3}=\\pm 1$이어야 하므로 $n$은 $6$의 배수여야 한다. $10 \\le n \\le 100$ 범위에서 $n \\in \\{12, 18, \\dots, 96\\}$이므로 $a=15$이다. 크기 조건 $\\frac{1}{10^8} < 5^{-n/2} < \\frac{1}{10^2}$에서 $2 < \\frac{n}{2}\\log 5 < 8$이다. $\\log 5 \\approx 0.7$을 대입하면 $5.7 < n < 22.8$이 되며, 범위 내의 $n \\in \\{10, 11, \\dots, 22\\}$ 중 유리수 조건($6$의 배수)을 만족하는 $n$은 $\{12, 18\}$뿐이다. 따라서 $b=12$로 계산되어 $a-b=3$이다."
   },
   {
     "id": 20,
@@ -194,7 +194,7 @@ window.questionBank = [
     "content": "[서답형(서술형)2] 구조 로봇이 $2\\text{m}$ 높이의 바위 위에서 점프하여 바다로 뛰어내린 지 $t$초 후의 수면으로부터의 높이 $h\\text{m}$는 $$h(t)=-5t^2+4t+2$$와 같이 나타낼 수 있다고 한다. 다음 물음에 답하시오. (단, 로봇의 길이는 생각하지 않는다.) [총 5점]\n\n(1) 점프한 지 몇 초 후에 수면에 닿는지 구하는 과정을 풀이과정과 함께 서술하시오. [1점]\n(2) 점프한 지 1초 이내에 이 로봇의 수면으로부터의 최대 높이를 구하는 과정을 풀이과정과 함께 서술하시오. [2점]\n(3) 점프한 지 1초 이내에 이 로봇의 수면으로부터의 최소 높이를 구하는 과정을 풀이과정과 함께 서술하시오. [2점]",
     "choices": [],
     "answer": "(1) $\\frac{2+\\sqrt{14}}{5}$초 (2) $\\frac{14}{5}\\text{m}$ (3) $1\\text{m}$",
-    "solution": "(1) $h(t)=0 \\implies 5t^2-4t-2=0$에서 $t = \\frac{2+\\sqrt{14}}{5}$이다. (2) $h(t) = -5(t^2-\\frac{4}{5}t+\\frac{4}{25}-\\frac{4}{25})+2 = -5(t-\\frac{2}{5})^2+\\frac{14}{5}$이므로 최대 높이는 $\\frac{14}{5}$이다. (3) $h(0)=2, h(1)=1$이므로 최소 높이는 1이다."
+    "solution": "(1) $h(t)=0$에서 $-5t^2+4t+2=0$이므로 근의 공식에 의해 $t=\\frac{-4\\pm\\sqrt{16+40}}{-10} = \\frac{2\\pm\\sqrt{14}}{5}$이다. $t>0$이므로 $t=\\frac{2+\\sqrt{14}}{5}$초이다. (2) $h(t)=-5(t-\\frac{2}{5})^2+\\frac{14}{5}$이므로 $t=\\frac{2}{5}$일 때 최대 높이 $\\frac{14}{5}\\text{m}$를 갖는다. (3) $0 \\le t \\le 1$ 범위에서 $h(0)=2, h(1)=1$이므로 최소 높이는 $1\\text{m}$이다."
   },
   {
     "id": 22,

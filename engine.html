@@ -84,12 +84,54 @@
         }
 
         @media print {
-            body { padding-top: 0; background: white; }
-            #mode-ctrl { display: none; }
-            #print-area { display: flex !important; gap: 0; padding: 0; }
-            .page { box-shadow: none; page-break-after: always; }
-            #pdf-container { display: block !important; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; }
-            body:not(.mode-pdf) #pdf-container { display: none !important; }
+            @page { size: A4; margin: 0; }
+
+            body {
+                padding-top: 0;
+                margin: 0;
+                background: white;
+            }
+
+            #mode-ctrl {
+                display: none !important;
+            }
+
+            #print-area {
+                display: flex !important;
+                gap: 0;
+                padding: 0;
+            }
+
+            .page {
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            #pdf-container {
+                display: block !important;
+                position: fixed;
+                inset: 0;
+                width: 100vw;
+                height: 100vh;
+                background: white;
+                z-index: 9999;
+                margin: 0;
+                padding: 0;
+            }
+
+            #pdf-viewer {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            body:not(.mode-pdf) #pdf-container {
+                display: none !important;
+            }
+
+            body.mode-pdf #print-area {
+                display: none !important;
+            }
         }
 
         .page-header {
@@ -99,13 +141,26 @@
             font-weight: bold; flex-shrink: 0;
         }
 
-        #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); }
-        #pdf-viewer { width: 100%; height: 100%; border: none; }
+        #pdf-container {
+            display: none;
+            width: 100%;
+            height: calc(100vh - 54px);
+            background: #525659;
+            overflow: hidden;
+        }
+
+        #pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
 
         .grid-container {
             flex: 1; display: grid;
             grid-template-columns: 1fr 1fr;
             position: relative; overflow: hidden;
+            min-height: 0;
         }
         .grid-container::after {
             content: ''; position: absolute;
@@ -113,8 +168,10 @@
             width: 1px; background: #000;
         }
         .grid-col {
-            display: flex; flex-direction: column;
-            padding: 0 12px; overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 0 12px;
+            overflow: hidden;
             min-height: 0;
         }
 
@@ -143,7 +200,7 @@
         .q-content {
             min-height: 0;
         }
-        
+
         .box {
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -157,8 +214,10 @@
         .answer-box {
             flex: 1;
             border: 1px dashed #bbb;
-            margin-top: 8px; background: #fafafa;
+            margin-top: 8px;
+            background: #fafafa;
         }
+
         .choices {
             margin-top: 6px;
             line-height: 1.8;
@@ -168,12 +227,10 @@
             font-size: 9.1pt;
             line-height: 1.42;
         }
-
         .q-box.fit-tight .q-num {
             font-size: 10.5pt;
             margin-bottom: 3px;
         }
-
         .q-box.fit-tight .choices {
             margin-top: 4px;
             line-height: 1.62;
@@ -183,12 +240,10 @@
             font-size: 8.6pt;
             line-height: 1.34;
         }
-
         .q-box.fit-tighter .q-num {
             font-size: 10pt;
             margin-bottom: 2px;
         }
-
         .q-box.fit-tighter .choices {
             margin-top: 3px;
             line-height: 1.46;
@@ -198,30 +253,52 @@
             font-size: 8.1pt;
             line-height: 1.26;
         }
-
         .q-box.fit-micro .q-num {
             font-size: 9.5pt;
             margin-bottom: 2px;
         }
-
         .q-box.fit-micro .choices {
             margin-top: 2px;
             line-height: 1.32;
         }
 
         .sol-box {
-            padding: 8px 0;
-            border-bottom: 0.5px solid #eee;
+            padding: 0;
+            border-bottom: none;
             width: 100%;
-            margin-bottom: 45px;
-            break-inside: avoid;
-            page-break-inside: avoid;
+            margin-bottom: 0;
         }
-        .sol-box:last-child { border-bottom: none; margin-bottom: 0; }
+
+        .sol-head {
+            padding: 8px 0 4px 0;
+            width: 100%;
+            font-size: 9pt;
+            line-height: 1.5;
+        }
+
+        .sol-head .q-num {
+            margin-bottom: 0;
+        }
+
+        .sol-frag {
+            width: 100%;
+            margin-bottom: 4px;
+        }
+
         .sol-step {
             padding-left: 8px;
             border-left: 2px solid #e2e8f0;
-            margin-bottom: 4px; font-size: 9pt;
+            margin-bottom: 4px;
+            font-size: 9pt;
+            line-height: 1.5;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+            break-inside: avoid;
+        }
+
+        .sol-divider {
+            border-bottom: 0.5px solid #eee;
+            margin: 8px 0 36px 0;
         }
 
         .ans-grid {
@@ -247,8 +324,9 @@
             <button class="mode-tab" data-mode="ans"  onclick="switchMode('ans')">정답표</button>
         </div>
         <div class="ctrl-right">
+            <button class="print-btn ghost" id="pdf-open-btn" style="display:none;">↗ PDF 새 탭</button>
             <button class="print-btn primary" onclick="window.print()">🖨 인쇄</button>
-            <button class="print-btn ghost"   onclick="history.back()">← 목록</button>
+            <button class="print-btn ghost" onclick="history.back()">← 목록</button>
         </div>
     </div>
 
@@ -271,7 +349,7 @@ async function loadData(dataUrl) {
     return new Promise(res => {
         const oldScript = document.getElementById('data-script');
         if (oldScript) oldScript.remove();
-        
+
         delete window.questionBank;
         const s = document.createElement('script');
         s.id = 'data-script';
@@ -289,8 +367,7 @@ async function loadData(dataUrl) {
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.mode  = p.get('mode')  || 'exam';
-    AppState.title = (p.get('title') || 'JS아카이브 기출').replace(/\s/g, ''); 
-    
+    AppState.title = (p.get('title') || 'JS아카이브 기출').replace(/\s/g, '');
     const rawQpp = parseInt(p.get('qpp'));
     AppState.qpp = isNaN(rawQpp) ? 4 : Math.max(2, Math.min(8, rawQpp));
     AppState.data_url = p.get('data') || '';
@@ -305,6 +382,12 @@ async function init() {
         document.getElementById('modeTabs').style.display = 'none';
         document.getElementById('pdf-container').style.display = 'block';
         document.getElementById('pdf-viewer').src = file;
+
+        const openBtn = document.getElementById('pdf-open-btn');
+        if (openBtn) {
+            openBtn.style.display = 'inline-block';
+            openBtn.onclick = () => window.open(file, '_blank', 'noopener,noreferrer');
+        }
         return;
     }
 
@@ -337,9 +420,9 @@ async function renderEngine() {
     area.innerHTML = '';
     pageCount = 0;
 
-    if      (AppState.mode === 'ans') renderAnsGrid(area, AppState.data);
+    if (AppState.mode === 'ans') renderAnsGrid(area, AppState.data);
     else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
-    else                               await renderExam(area, AppState.data);
+    else await renderExam(area, AppState.data);
 }
 
 async function renderExam(area, bank) {
@@ -384,7 +467,6 @@ async function renderExam(area, bank) {
     }
 }
 
-/* 데이터가 객체일 경우 텍스트를 안전하게 추출하는 헬퍼 */
 function extractChoice(c) {
     if (c === null || c === undefined) return '';
     if (typeof c === 'object') {
@@ -441,95 +523,123 @@ function fitQuestionBox(box) {
     }
 }
 
+function buildSolHeader(q, i) {
+    return `
+        <div class="sol-head">
+            <div class="q-num">${i + 1}.
+                <span style="font-size:9pt;font-weight:normal;">
+                    ${wrapLatex(q.content || q.question || '')}
+                </span>
+            </div>
+        </div>
+    `;
+}
+
+function buildSolFragments(q) {
+    if (q.solution_steps?.length) {
+        return q.solution_steps.map((s, si) => `
+            <div class="sol-frag">
+                <div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatex(stripCite(s))}</div>
+            </div>
+        `);
+    }
+
+    if (q.solution) {
+        const lines = stripCite(q.solution).split(/\\\\/).map(v => v.trim()).filter(Boolean);
+        return lines.map(line => `
+            <div class="sol-frag">
+                <div class="sol-step">${wrapLatex(line)}</div>
+            </div>
+        `);
+    }
+
+    return [
+        `<div class="sol-frag"><div class="sol-step" style="color:#94a3b8;font-size:8pt;">해설 없음</div></div>`
+    ];
+}
+
 async function renderSol(area, bank) {
-    const staging = document.getElementById('staging');
-    staging.style.width = '85mm';
-    staging.innerHTML = '';
-
-    const boxes = bank.map((q, i) => {
-        const el = document.createElement('div');
-        el.className = 'sol-box';
-        el.innerHTML = buildSolBox(q, i);
-        staging.appendChild(el);
-        return el;
-    });
-
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
-    await raf();
-
     let p = makePage(area, 'sol');
     let colIdx = 0;
 
-    for (const srcEl of boxes) {
-        let placed = false;
+    async function ensureFitOrAdvance(targetCol, node) {
+        targetCol.appendChild(node);
 
-        while (!placed) {
+        if (window.MathJax?.typesetPromise) {
+            await MathJax.typesetPromise([targetCol]);
+        }
+        await raf();
+
+        const overflowed = targetCol.scrollHeight > targetCol.clientHeight + 1;
+
+        if (!overflowed) return true;
+
+        node.remove();
+
+        if (colIdx === 0) {
+            colIdx = 1;
+        } else {
+            p = makePage(area, 'sol');
+            colIdx = 0;
+        }
+        return false;
+    }
+
+    for (let i = 0; i < bank.length; i++) {
+        const q = bank[i];
+
+        const headWrap = document.createElement('div');
+        headWrap.innerHTML = buildSolHeader(q, i).trim();
+        const headEl = headWrap.firstElementChild;
+
+        let placedHeader = false;
+        while (!placedHeader) {
             const targetCol = p.cols[colIdx];
-            const clone = srcEl.cloneNode(true);
-            targetCol.appendChild(clone);
+            placedHeader = await ensureFitOrAdvance(targetCol, headEl.cloneNode(true));
+        }
 
-            if (window.MathJax?.typesetPromise) {
-                await MathJax.typesetPromise([targetCol]);
-            }
-            await raf();
+        const fragments = buildSolFragments(q);
 
-            const overflowed = targetCol.scrollHeight > targetCol.clientHeight + 1;
+        for (const fragHTML of fragments) {
+            const fragWrap = document.createElement('div');
+            fragWrap.innerHTML = fragHTML.trim();
+            const fragEl = fragWrap.firstElementChild;
 
-            if (!overflowed) {
-                placed = true;
-                continue;
-            }
-
-            clone.remove();
-
-            if (colIdx === 0) {
-                colIdx = 1;
-            } else {
-                p = makePage(area, 'sol');
-                colIdx = 0;
+            let placedFrag = false;
+            while (!placedFrag) {
+                const targetCol = p.cols[colIdx];
+                placedFrag = await ensureFitOrAdvance(targetCol, fragEl.cloneNode(true));
             }
         }
-    }
-}
 
-function buildSolBox(q, i) {
-    let solHTML;
-    if (q.solution_steps?.length) {
-        solHTML = q.solution_steps.map((s, si) =>
-            `<div class="sol-step"><b>[${si+1}단계]</b> ${wrapLatex(stripCite(s))}</div>`
-        ).join('');
-    } else if (q.solution) {
-        const lines = stripCite(q.solution).split(/\\\\/);
-        solHTML = lines.map(line =>
-            `<div class="sol-step">${wrapLatex(line.trim())}</div>`
-        ).join('');
-    } else {
-        solHTML = `<span style="color:#94a3b8;font-size:8pt;">해설 없음</span>`;
+        const divider = document.createElement('div');
+        divider.className = 'sol-divider';
+
+        let placedDivider = false;
+        while (!placedDivider) {
+            const targetCol = p.cols[colIdx];
+            placedDivider = await ensureFitOrAdvance(targetCol, divider.cloneNode(true));
+        }
     }
-    return `
-        <div class="q-num" style="margin-bottom:4px;">${i+1}.
-            <span style="font-size:9pt;font-weight:normal;">
-                ${wrapLatex(q.content || q.question || '')}
-            </span>
-        </div>
-        <div style="font-size:9pt;">${solHTML}</div>`;
 }
 
 function renderAnsGrid(area, bank) {
     const p = makePage(area, 'ans');
     const grid = document.createElement('div');
     grid.className = 'ans-grid';
+
     bank.forEach((q, i) => {
         const cell = document.createElement('div');
         cell.className = 'ans-cell';
         const rawAns = String(q.answer ?? '–');
-        const displayAns = (rawAns.includes('sqrt') || rawAns.includes('/') || rawAns.includes('^')) 
+        const displayAns = (rawAns.includes('sqrt') || rawAns.includes('/') || rawAns.includes('^'))
                            ? wrapLatex(rawAns) : rawAns;
 
-        cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${i+1}.</b>
+        cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${i + 1}.</b>
                           <span style="font-size:10.5pt;">${wrapLatex(displayAns)}</span>`;
         grid.appendChild(cell);
     });
+
     p.body.appendChild(grid);
     if (window.MathJax?.typesetPromise) MathJax.typesetPromise([p.body]);
 }
@@ -538,6 +648,7 @@ function makePage(area, type) {
     pageCount++;
     const page = document.createElement('div');
     page.className = 'page';
+
     const header = document.createElement('div');
     header.className = 'page-header';
     header.innerHTML = `<span>${AppState.title}</span><span>- ${pageCount} -</span>`;
@@ -551,34 +662,34 @@ function makePage(area, type) {
         return { page, body };
     }
 
-    const grid  = document.createElement('div');
+    const grid = document.createElement('div');
     grid.className = 'grid-container';
-    const left  = document.createElement('div');
+
+    const left = document.createElement('div');
     left.className = 'grid-col';
+
     const right = document.createElement('div');
     right.className = 'grid-col';
+
     grid.appendChild(left);
     grid.appendChild(right);
     page.appendChild(grid);
     area.appendChild(page);
+
     return { page, cols: [left, right] };
 }
 
-/* 수식 보정 로직: \tf 변환 및 멀티라인 수식 보호 */
 function wrapLatex(text) {
     if (!text) return text;
     let s = String(text);
-    
-    // HWP 수식 보정: \tf{a}{b} -> \frac{a}{b}
+
     s = s.replace(/\\tf\{([^}]*)\}\{([^}]*)\}/g, '\\frac{$1}{$2}');
-    s = s.replace(/\\tf[0-9a-zA-Z]+/g, ''); // 나머지 찌꺼기 제거
-    
-    // 수식 래핑 및 줄바꿈 처리 (수식 밖의 개행문자만 보호)
+    s = s.replace(/\\tf[0-9a-zA-Z]+/g, '');
+
     const parts = s.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g);
     return parts.map(p => {
-        if (p.startsWith('$')) return p; // 수식 영역은 보존
+        if (p.startsWith('$')) return p;
         let processed = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
-        // 텍스트 내 자동 수식 감지 (필요 시에만 래핑)
         if (processed.includes('\\') || /[\+\-\*\/\^\(\)]/.test(processed)) {
             if (processed.trim() !== "" && !processed.includes('<br>')) return `$${processed}$`;
         }
@@ -591,7 +702,10 @@ function stripCite(text) {
     return text.replace(/【[^】]*】/g, '').replace(/\[[^\]]*\]/g, '').trim();
 }
 
-function raf() { return new Promise(r => requestAnimationFrame(r)); }
+function raf() {
+    return new Promise(r => requestAnimationFrame(r));
+}
+
 window.onload = init;
 </script>
 </body>
