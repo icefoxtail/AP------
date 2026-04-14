@@ -115,6 +115,7 @@
         .grid-col {
             display: flex; flex-direction: column;
             padding: 0 12px; overflow: hidden;
+            min-height: 0;
         }
 
         .q-box {
@@ -213,6 +214,8 @@
             border-bottom: 0.5px solid #eee;
             width: 100%;
             margin-bottom: 45px;
+            break-inside: avoid;
+            page-break-inside: avoid;
         }
         .sol-box:last-child { border-bottom: none; margin-bottom: 0; }
         .sol-step {
@@ -455,30 +458,37 @@ async function renderSol(area, bank) {
     await raf();
 
     let p = makePage(area, 'sol');
-    const headerEl = p.page.querySelector('.page-header');
-    const headerH  = headerEl?.getBoundingClientRect().height || 40;
-    const PAGE_H   = 297 * 3.7795 - 15 * 2 * 3.7795 - headerH - 20; 
-    
-    let curColH = 0;
     let colIdx = 0;
 
-    for (const el of boxes) {
-        const style = window.getComputedStyle(el);
-        const margin = parseFloat(style.marginTop) + parseFloat(style.marginBottom);
-        const h = el.getBoundingClientRect().height + margin;
-        
-        if (curColH + h > PAGE_H) {
+    for (const srcEl of boxes) {
+        let placed = false;
+
+        while (!placed) {
+            const targetCol = p.cols[colIdx];
+            const clone = srcEl.cloneNode(true);
+            targetCol.appendChild(clone);
+
+            if (window.MathJax?.typesetPromise) {
+                await MathJax.typesetPromise([targetCol]);
+            }
+            await raf();
+
+            const overflowed = targetCol.scrollHeight > targetCol.clientHeight + 1;
+
+            if (!overflowed) {
+                placed = true;
+                continue;
+            }
+
+            clone.remove();
+
             if (colIdx === 0) {
                 colIdx = 1;
-                curColH = 0;
             } else {
                 p = makePage(area, 'sol');
                 colIdx = 0;
-                curColH = 0;
             }
         }
-        p.cols[colIdx].appendChild(el.cloneNode(true));
-        curColH += h;
     }
 }
 
