@@ -303,16 +303,25 @@ async function renderExam(area, bank) {
     }
 }
 
+/* 데이터 타입 확인을 통해 텍스트만 추출하는 헬퍼 함수 */
+function extractChoice(c) {
+    if (c === null || c === undefined) return '';
+    if (typeof c === 'object') {
+        return c.text || c.content || c.value || c.answer || Object.values(c)[0] || JSON.stringify(c);
+    }
+    return String(c);
+}
+
 function buildExamBox(q, i) {
     const circled = ['①','②','③','④','⑤'];
     const isMultipleChoice = Array.isArray(q.choices) && 
                              q.choices.length > 0 && 
                              q.choices[0] !== "주관식" && 
-                             q.choices.some(c => String(c).trim() !== "");
+                             q.choices.some(c => extractChoice(c).trim() !== "");
                              
     const choicesHTML = isMultipleChoice
         ? `<div class="choices">${q.choices.map((c, ci) =>
-              `<div>${circled[ci] || (ci+1)+')'} ${wrapLatex(String(c))}</div>`).join('')}</div>`
+              `<div>${circled[ci] || (ci+1)+')'} ${wrapLatex(extractChoice(c))}</div>`).join('')}</div>`
         : `<div class="answer-box"></div>`;
     return `<div class="q-num">${i + 1}.</div><div>${wrapLatex(q.content || q.question || '')}</div>${choicesHTML}`;
 }
@@ -342,7 +351,10 @@ async function renderSol(area, bank) {
     let colIdx = 0;
 
     for (const el of boxes) {
-        const h = el.getBoundingClientRect().height;
+        /* 마진 여백까지 계산에 포함시켜 정확한 높이 측정 */
+        const style = window.getComputedStyle(el);
+        const margin = parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+        const h = el.getBoundingClientRect().height + margin;
         
         if (curColH + h > PAGE_H) {
             if (colIdx === 0) {
@@ -363,12 +375,12 @@ function buildSolBox(q, i) {
     let solHTML;
     if (q.solution_steps?.length) {
         solHTML = q.solution_steps.map((s, si) =>
-            `<div class="sol-step"><b>[${si+1}단계]</b> ${wrapLatex(stripCite(s).replace(/\n/g, '<br>'))}</div>`
+            `<div class="sol-step"><b>[${si+1}단계]</b> ${wrapLatex(stripCite(s))}</div>`
         ).join('');
     } else if (q.solution) {
         const lines = stripCite(q.solution).split(/\\\\/);
         solHTML = lines.map(line =>
-            `<div class="sol-step">${wrapLatex(line.trim().replace(/\n/g, '<br>'))}</div>`
+            `<div class="sol-step">${wrapLatex(line.trim())}</div>`
         ).join('');
     } else {
         solHTML = `<span style="color:#94a3b8;font-size:8pt;">해설 없음</span>`;
@@ -431,13 +443,37 @@ function makePage(area, type) {
     return { page, cols: [left, right] };
 }
 
+/* 수식 파싱과 보호를 동시에 처리하는 강력한 방어 로직 */
 function wrapLatex(text) {
     if (!text) return text;
-    if (text.includes('$')) return text;
-    if (text.includes('\\') || /[\+\-\*\/\^\(\)]/.test(text)) {
-        if (!text.startsWith('$')) return `$${text}$`;
+    let s = String(text);
+    
+    // HWP 찌꺼기 제거
+    s = s.replace(/\\tf[0-9a-zA-Z]+/g, '');
+    
+    // 이미 $로 묶여 있는 수식 블록 처리 (블록 밖의 개행문자만 보호)
+    if (s.includes('$')) {
+        const parts = s.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g);
+        for (let i = 0; i < parts.length; i++) {
+            if (!parts[i].startsWith('$')) {
+                parts[i] = parts[i].replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+            }
+        }
+        return parts.join('');
     }
-    return text;
+    
+    // $는 없지만 개행(\n)이 포함된 경우 줄 단위로 분리하여 MathJax 충돌 방지
+    if (s.includes('\\n') || s.includes('\n')) {
+         const lines = s.split(/\\n|\n/);
+         return lines.map(l => wrapLatex(l)).join('<br>');
+    }
+
+    // 일반 텍스트 내 수식 기호 자동 래핑 (기존 로직 유지)
+    if (s.includes('\\') || /[\+\-\*\/\^\(\)]/.test(s)) {
+        if (!s.startsWith('$')) return `$${s}$`;
+    }
+    
+    return s;
 }
 
 function stripCite(text) {
