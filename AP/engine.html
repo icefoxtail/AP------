@@ -303,11 +303,11 @@ async function renderExam(area, bank) {
     }
 }
 
-/* 데이터 타입 확인을 통해 텍스트만 추출하는 헬퍼 함수 */
+/* 데이터가 객체일 경우 텍스트를 안전하게 추출하는 헬퍼 */
 function extractChoice(c) {
     if (c === null || c === undefined) return '';
     if (typeof c === 'object') {
-        return c.text || c.content || c.value || c.answer || Object.values(c)[0] || JSON.stringify(c);
+        return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
     }
     return String(c);
 }
@@ -351,7 +351,6 @@ async function renderSol(area, bank) {
     let colIdx = 0;
 
     for (const el of boxes) {
-        /* 마진 여백까지 계산에 포함시켜 정확한 높이 측정 */
         const style = window.getComputedStyle(el);
         const margin = parseFloat(style.marginTop) + parseFloat(style.marginBottom);
         const h = el.getBoundingClientRect().height + margin;
@@ -443,37 +442,26 @@ function makePage(area, type) {
     return { page, cols: [left, right] };
 }
 
-/* 수식 파싱과 보호를 동시에 처리하는 강력한 방어 로직 */
+/* 수식 보정 로직: \tf 변환 및 멀티라인 수식 보호 */
 function wrapLatex(text) {
     if (!text) return text;
     let s = String(text);
     
-    // HWP 찌꺼기 제거
-    s = s.replace(/\\tf[0-9a-zA-Z]+/g, '');
+    // HWP 수식 보정: \tf{a}{b} -> \frac{a}{b}
+    s = s.replace(/\\tf\{([^}]*)\}\{([^}]*)\}/g, '\\frac{$1}{$2}');
+    s = s.replace(/\\tf[0-9a-zA-Z]+/g, ''); // 나머지 찌꺼기 제거
     
-    // 이미 $로 묶여 있는 수식 블록 처리 (블록 밖의 개행문자만 보호)
-    if (s.includes('$')) {
-        const parts = s.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g);
-        for (let i = 0; i < parts.length; i++) {
-            if (!parts[i].startsWith('$')) {
-                parts[i] = parts[i].replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
-            }
+    // 수식 래핑 및 줄바꿈 처리 (수식 밖의 개행문자만 보호)
+    const parts = s.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g);
+    return parts.map(p => {
+        if (p.startsWith('$')) return p; // 수식 영역은 보존
+        let processed = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+        // 텍스트 내 자동 수식 감지 (필요 시에만 래핑)
+        if (processed.includes('\\') || /[\+\-\*\/\^\(\)]/.test(processed)) {
+            if (processed.trim() !== "" && !processed.includes('<br>')) return `$${processed}$`;
         }
-        return parts.join('');
-    }
-    
-    // $는 없지만 개행(\n)이 포함된 경우 줄 단위로 분리하여 MathJax 충돌 방지
-    if (s.includes('\\n') || s.includes('\n')) {
-         const lines = s.split(/\\n|\n/);
-         return lines.map(l => wrapLatex(l)).join('<br>');
-    }
-
-    // 일반 텍스트 내 수식 기호 자동 래핑 (기존 로직 유지)
-    if (s.includes('\\') || /[\+\-\*\/\^\(\)]/.test(s)) {
-        if (!s.startsWith('$')) return `$${s}$`;
-    }
-    
-    return s;
+        return processed;
+    }).join('');
 }
 
 function stripCite(text) {

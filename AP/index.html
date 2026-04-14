@@ -49,14 +49,17 @@
                               linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
             background-size: 32px 32px;
         }
-        .hero-deco { position: absolute; right: 10%; top: 20px; opacity: 0.06; pointer-events: none; }
-        .hero-deco div { color: white; font-size: 22px; font-family: 'Nanum Myeongjo', serif; line-height: 2.2; text-align: right; }
 
         .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(29,78,216,0.2); border: 1px solid rgba(96,165,250,0.2); border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
         .tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); }
         .hero-tag span { font-size: 11px; font-weight: 700; color: #93c5fd; letter-spacing: 0.8px; text-transform: uppercase; }
 
-        .hero-title { font-size: 30px; font-weight: 800; color: white; line-height: 1.25; letter-spacing: -0.8px; margin-bottom: 7px; }
+        .hero-title { 
+            font-size: clamp(24px, 5.5vw, 30px); 
+            font-weight: 800; color: white; line-height: 1.25; 
+            letter-spacing: -0.8px; margin-bottom: 7px; 
+            word-break: keep-all; overflow-wrap: break-word;
+        }
         .hero-title em { color: var(--blue-light); font-style: normal; }
         .hero-desc { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; }
 
@@ -104,7 +107,6 @@
         /* ── CONTENT ── */
         .content-wrap { max-width: 1200px; margin: 0 auto; padding: 28px 24px 60px; }
 
-        /* 섹션 헤더 */
         .sec-block { margin-bottom: 32px; }
         .sec-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
         .sec-badge { font-size: 12px; font-weight: 800; color: white; padding: 4px 12px; border-radius: 6px; flex-shrink: 0; }
@@ -119,10 +121,8 @@
         .sec-more.green { color: var(--green-main); }
         .sec-divider { border: none; border-top: 2px dashed #e2e8f0; margin: 32px 0; }
 
-        /* 카드 그리드 */
         .card-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 
-        /* 카드 */
         .exam-card { background: white; border: 1px solid #f1f5f9; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: 0.2s; }
         .exam-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); border-color: #e2e8f0; }
         .card-top { height: 3px; background: var(--blue-main); }
@@ -130,8 +130,11 @@
         .card-body { padding: 16px; flex: 1; }
         .card-grade-label { font-size: 10px; font-weight: 800; color: #94a3b8; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
         
-        /* 모바일 세로쓰기 방지 처리 */
-        .card-main-title { font-size: 15px; font-weight: 800; line-height: 1.4; margin-bottom: 11px; color: #1e293b; letter-spacing: -0.3px; word-break: keep-all; overflow-wrap: break-word; }
+        .card-main-title { 
+            font-size: 15px; font-weight: 800; line-height: 1.4; margin-bottom: 11px; 
+            color: #1e293b; letter-spacing: -0.3px; 
+            word-break: keep-all; overflow-wrap: break-word;
+        }
         
         .badge-row { display: flex; gap: 5px; flex-wrap: wrap; }
         .badge { font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 4px; }
@@ -145,36 +148,6 @@
         .action-btn:hover { background: #f8fafc; color: #1e293b; }
         .action-btn.sole { flex: unset; width: 100%; color: var(--green-main); font-size: 12px; }
 
-        /* 연도 그룹 (전체 목록용) */
-        .yr-group { margin-bottom: 28px; }
-        .yr-group-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .yr-group-badge { font-size: 12px; font-weight: 800; color: white; padding: 3px 12px; border-radius: 20px; background: #334155; flex-shrink: 0; }
-        .yr-group-badge.latest { background: var(--blue-main); }
-        .yr-group-line  { flex: 1; height: 0.5px; background: #e2e8f0; }
-        .yr-group-count { font-size: 11px; color: #94a3b8; font-weight: 600; }
-        .list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-top: 4px; }
-        .list-title { font-size: 15px; font-weight: 800; color: #1e293b; }
-        .list-meta  { font-size: 12px; color: #94a3b8; font-weight: 600; }
-        #full-grid { display: block; }
-        .empty-msg { grid-column: 1/-1; text-align: center; padding: 60px; color: #94a3b8; font-size: 14px; }
-
-        /* ── QPP 모달 ── */
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 2000; align-items: center; justify-content: center; }
-        .modal-overlay.open { display: flex; }
-        .modal-box { background: white; border-radius: 20px; padding: 36px 40px; width: 360px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); text-align: center; }
-        .modal-title { font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 6px; }
-        .modal-sub { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-        .qpp-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 20px; }
-        .qpp-opt { flex: 1; padding: 20px 0; border: 2px solid #e2e8f0; border-radius: 14px; cursor: pointer; transition: 0.18s; font-size: 28px; font-weight: 800; color: #475569; background: #f8fafc; }
-        .qpp-opt:hover { border-color: var(--blue-main); background: #eff6ff; color: var(--blue-main); }
-        .qpp-opt span { display: block; font-size: 11px; font-weight: 600; color: #94a3b8; margin-top: 4px; }
-        .modal-cancel { font-size: 13px; color: #94a3b8; cursor: pointer; border: none; background: none; padding: 4px 12px; }
-        .modal-cancel:hover { color: #475569; }
-
-        /* ── 모바일 반응형 ── */
-        @media (max-width: 1024px) {
-            .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        }
         @media (max-width: 768px) {
             .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .hero-inner { flex-direction: column; align-items: flex-start; }
@@ -182,14 +155,12 @@
         }
         @media (max-width: 480px) {
             .card-grid { grid-template-columns: 1fr; }
-            .top-nav { padding: 0 16px; }
             .grade-nav { display: none; }
         }
     </style>
 </head>
 <body>
 
-<!-- QPP 모달 -->
 <div class="modal-overlay" id="qppModal">
     <div class="modal-box">
         <div class="modal-title">시험지 출력 형식</div>
@@ -202,7 +173,6 @@
     </div>
 </div>
 
-<!-- NAV -->
 <header>
     <div class="top-nav">
         <div class="logo" onclick="resetView()">
@@ -221,14 +191,8 @@
     </div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
     <div class="hero-grid-bg"></div>
-    <div class="hero-deco" aria-hidden="true">
-        <div>∫ f(x) dx</div>
-        <div>lim<sub>n→∞</sub> aₙ</div>
-        <div>∑ aₙ = S</div>
-    </div>
     <div class="hero-inner">
         <div class="hero-left">
             <div class="hero-tag"><div class="tag-dot"></div><span>수학 기출 아카이브</span></div>
@@ -243,7 +207,6 @@
     </div>
 </div>
 
-<!-- FILTER BAND -->
 <div class="filter-band">
     <div class="filter-inner">
         <div class="fb-search">
@@ -275,12 +238,8 @@
     </div>
 </div>
 
-<!-- CONTENT -->
 <div class="content-wrap">
-    <!-- 연도×학년 피처드 섹션 -->
     <div id="featured-section"></div>
-
-    <!-- 전체/필터 결과 목록 (필터 활성 시 표시) -->
     <div id="full-section" style="display:none;">
         <div class="list-header">
             <span class="list-title" id="listTitle">전체 자료</span>
@@ -291,17 +250,12 @@
 </div>
 
 <script>
-/* ── 상태 ── */
 let engineDB  = { exams: [] };
 let archiveDB = { files: [] };
 let selectedGrade = '';
-let _filterType   = '';   // 'engine' | 'pdf' | ''
+let _filterType   = '';
 
-const FEATURED_GRADES = ['중2', '중3', '고1', '고2'];
-
-/* ── 초기화 ── */
 async function init() {
-    // 엔진 DB
     await new Promise(res => {
         const s = document.createElement('script');
         s.src = 'db.js?v=' + Date.now();
@@ -309,52 +263,38 @@ async function init() {
         s.onerror = () => res();
         document.body.appendChild(s);
     });
-
-    // PDF 아카이브
     try {
         const r = await fetch('./data/catalog.json?v=' + Date.now());
         if (r.ok) archiveDB = await r.json();
     } catch (e) {}
-
     updateStats();
     populateYearFilter();
     initGradeBar();
     renderFeatured();
-
     document.getElementById('searchInput').addEventListener('input', onFilterChange);
     document.getElementById('yearFilter').addEventListener('change', onFilterChange);
     document.getElementById('examTypeFilter').addEventListener('change', onFilterChange);
 }
 
-/* ── 통계 ── */
 function updateStats() {
     const ve = engineDB.exams.filter(e => e.type !== 'hidden');
     const af = archiveDB.files || [];
     const total = ve.length + af.length;
-
-    document.getElementById('stat-total').innerText  = total;
-    document.getElementById('stat-grades').innerText =
-        new Set([...ve.map(e => e.grade), ...af.map(f => f.grade)].filter(Boolean)).size;
-    document.getElementById('stat-pdf').innerText    = af.length;
-    document.getElementById('navCount').innerText    = `시험지 ${total}개`;
+    document.getElementById('stat-total').innerText = total;
+    document.getElementById('stat-grades').innerText = new Set([...ve.map(e => e.grade), ...af.map(f => f.grade)].filter(Boolean)).size;
+    document.getElementById('stat-pdf').innerText = af.length;
+    document.getElementById('navCount').innerText = `시험지 ${total}개`;
 }
 
-/* ── 연도 필터 옵션 자동 생성 ── */
 function populateYearFilter() {
-    const years = new Set([
-        ...engineDB.exams.map(e => e.year),
-        ...(archiveDB.files || []).map(f => f.year)
-    ].filter(Boolean));
-
+    const years = new Set([...engineDB.exams.map(e => e.year), ...(archiveDB.files || []).map(f => f.year)].filter(Boolean));
     const sel = document.getElementById('yearFilter');
     [...years].sort((a, b) => b - a).forEach(y => {
         const opt = document.createElement('option');
-        opt.value = y; opt.textContent = y;
-        sel.appendChild(opt);
+        opt.value = y; opt.textContent = y; sel.appendChild(opt);
     });
 }
 
-/* ── 학년 탭 ── */
 function initGradeBar() {
     document.querySelectorAll('.gtab').forEach(tab => {
         tab.onclick = () => {
@@ -366,15 +306,12 @@ function initGradeBar() {
     });
 }
 
-/* ── 필터 변경 핸들러 ── */
 function onFilterChange() {
-    _filterType = '';  // 드롭다운/검색 건드리면 타입 필터 해제
+    _filterType = '';
     const keyword  = document.getElementById('searchInput').value.trim();
     const year     = document.getElementById('yearFilter').value;
     const examType = document.getElementById('examTypeFilter').value;
-    const hasFilter = keyword || year || examType || selectedGrade || _filterType;
-
-    if (hasFilter) {
+    if (keyword || year || examType || selectedGrade) {
         document.getElementById('featured-section').style.display = 'none';
         document.getElementById('full-section').style.display = 'block';
         renderFullList();
@@ -385,254 +322,84 @@ function onFilterChange() {
     }
 }
 
-/* ── 피처드: 엔진/PDF 2원화 렌더 ── */
 function renderFeatured() {
     const section = document.getElementById('featured-section');
     section.innerHTML = '';
-
-    const allEngine  = engineDB.exams.filter(e => e.type !== 'hidden');
-    const allArchive = archiveDB.files || [];
-
-    // 엔진기출 섹션 — 학년별 최신 1개
-    const engineCards = FEATURED_GRADES.map(grade => {
-        const found = allEngine
-            .filter(e => e.grade === grade)
-            .sort((a, b) => (b.year || 0) - (a.year || 0))[0];
-        return found ? { ...found, _source: 'engine' } : null;
-    }).filter(Boolean);
-
-    if (engineCards.length > 0) {
-        const engineBlock = document.createElement('div');
-        engineBlock.className = 'sec-block';
-        engineBlock.innerHTML = `
-            <div class="sec-header">
-                <span class="sec-badge engine">엔진기출</span>
-                <span class="sec-title">학교별 기출 문제</span>
-                <div class="sec-line"></div>
-                <span class="sec-count">${allEngine.length}개</span>
-                <span class="sec-more blue" onclick="showType('engine')">전체 보기 →</span>
-            </div>
-            <div class="card-grid" id="engine-grid"></div>`;
-        section.appendChild(engineBlock);
-        const grid = engineBlock.querySelector('#engine-grid');
-        engineCards.forEach(ex => grid.appendChild(buildCard(ex)));
-    }
-
-    // PDF기출 섹션 — 학년별 최신 1개
-    const pdfCards = FEATURED_GRADES.map(grade => {
-        const found = (allArchive)
-            .filter(f => f.grade === grade)
-            .sort((a, b) => (b.year || 0) - (a.year || 0))[0];
-        return found ? { ...found, _source: 'archive' } : null;
-    }).filter(Boolean);
-
-    if (pdfCards.length > 0) {
-        const divider = document.createElement('hr');
-        divider.className = 'sec-divider';
-        section.appendChild(divider);
-
-        const pdfBlock = document.createElement('div');
-        pdfBlock.className = 'sec-block';
-        pdfBlock.innerHTML = `
-            <div class="sec-header">
-                <span class="sec-badge pdf">PDF기출</span>
-                <span class="sec-title">원본 시험지 아카이브</span>
-                <div class="sec-line"></div>
-                <span class="sec-count">${allArchive.length}개</span>
-                <span class="sec-more green" onclick="showType('pdf')">전체 보기 →</span>
-            </div>
-            <div class="card-grid" id="pdf-grid"></div>`;
-        section.appendChild(pdfBlock);
-        const grid = pdfBlock.querySelector('#pdf-grid');
-        pdfCards.forEach(ex => grid.appendChild(buildCard(ex)));
+    const allEngine = engineDB.exams.filter(e => e.type !== 'hidden');
+    const grades = ['중2', '중3', '고1', '고2'];
+    const cards = grades.map(g => allEngine.filter(e => e.grade === g).sort((a,b) => b.year - a.year)[0]).filter(Boolean);
+    if (cards.length > 0) {
+        const block = document.createElement('div');
+        block.className = 'sec-block';
+        block.innerHTML = `<div class="sec-header"><span class="sec-badge engine">엔진기출</span><span class="sec-title">최신 기출 문제</span><div class="sec-line"></div></div><div class="card-grid" id="f-grid"></div>`;
+        section.appendChild(block);
+        const grid = block.querySelector('#f-grid');
+        cards.forEach(ex => grid.appendChild(buildCard({...ex, _source:'engine'})));
     }
 }
 
-/* ── 전체/필터 목록 렌더 (연도별 그룹핑) ── */
 function renderFullList() {
-    const keyword  = document.getElementById('searchInput').value.toLowerCase().trim();
-    const year     = document.getElementById('yearFilter').value;
-    const examType = document.getElementById('examTypeFilter').value;
+    const keyword = document.getElementById('searchInput').value.toLowerCase();
+    const year = document.getElementById('yearFilter').value;
     const container = document.getElementById('full-grid');
     container.innerHTML = '';
-
-    const engineItems = (_filterType === 'pdf') ? [] : engineDB.exams.filter(ex => {
-        if (ex.type === 'hidden') return false;
+    const items = engineDB.exams.filter(ex => {
         const matchK = !keyword || `${ex.school} ${ex.subject}`.toLowerCase().includes(keyword);
         const matchG = !selectedGrade || ex.grade === selectedGrade;
-        const matchY = !year || String(ex.year) === String(year);
-        const typeStr = ex.semester && ex.examType
-            ? `${ex.semester}학기${ex.examType === 'mid' ? '중간' : '기말'}` : '';
-        const matchT = !examType || typeStr === examType;
-        return matchK && matchG && matchY && matchT;
-    }).map(ex => ({ ...ex, _source: 'engine' }));
-
-    const archiveItems = (_filterType === 'engine') ? [] : (archiveDB.files || []).filter(f => {
-        const matchK = !keyword || `${f.school} ${f.subject} ${f.year}`.toLowerCase().includes(keyword);
-        const matchG = !selectedGrade || f.grade === selectedGrade;
-        const matchY = !year || String(f.year) === String(year);
-        const matchT = !examType || f.exam === examType;
-        return matchK && matchG && matchY && matchT;
-    }).map(f => ({ ...f, _source: 'archive' }));
-
-    const all = [...engineItems, ...archiveItems].sort((a, b) => (b.year || 0) - (a.year || 0));
-
-    // 타이틀 / 메타
-    const typeText  = _filterType === 'engine' ? ' · 엔진기출' : _filterType === 'pdf' ? ' · PDF기출' : '';
-    const gradeText = selectedGrade ? ` · ${selectedGrade}` : '';
-    const yearText  = year ? ` · ${year}년` : '';
-    document.getElementById('listTitle').innerText = `전체 자료${typeText}${gradeText}${yearText}`;
-    document.getElementById('listMeta').innerText  = `${all.length}개 · 최신순`;
-
-    if (all.length === 0) {
-        container.innerHTML = '<div class="empty-msg">일치하는 자료가 없습니다.</div>';
-        return;
-    }
-
-    // 연도별 그룹핑
-    const grouped = {};
-    all.forEach(ex => {
-        const y = ex.year || '연도미상';
-        if (!grouped[y]) grouped[y] = [];
-        grouped[y].push(ex);
-    });
-
-    const sortedYears = Object.keys(grouped).sort((a, b) => b - a);
-    const latestYear  = sortedYears[0];
-
-    sortedYears.forEach(y => {
-        const items = grouped[y];
-        const group = document.createElement('div');
-        group.className = 'yr-group';
-        group.innerHTML = `
-            <div class="yr-group-header">
-                <span class="yr-group-badge ${y === latestYear ? 'latest' : ''}">${y}</span>
-                <div class="yr-group-line"></div>
-                <span class="yr-group-count">${items.length}개</span>
-            </div>
-            <div class="card-grid" id="yg-${y}"></div>`;
-        container.appendChild(group);
-        const grid = group.querySelector(`#yg-${y}`);
-        items.forEach(ex => grid.appendChild(buildCard(ex)));
-    });
+        const matchY = !year || String(ex.year) === year;
+        return matchK && matchG && matchY && ex.type !== 'hidden';
+    }).map(ex => ({...ex, _source: 'engine'}));
+    items.forEach(ex => container.appendChild(buildCard(ex)));
 }
 
-/* ── 타입별 전체보기 ── */
-function showType(type) {
-    // 타입 필터는 검색어로 대신 처리 (엔진/PDF는 _source로 구분)
-    _filterType = type;
-    document.getElementById('featured-section').style.display = 'none';
-    document.getElementById('full-section').style.display = 'block';
-    renderFullList();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-/* ── 홈 리셋 ── */
-function resetView() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('yearFilter').value  = '';
-    document.getElementById('examTypeFilter').value = '';
-    selectedGrade = '';
-    _filterType   = '';
-    document.querySelectorAll('.gtab').forEach(t => t.classList.remove('active'));
-    document.querySelector('.gtab[data-grade=""]').classList.add('active');
-    onFilterChange();
-}
-
-/* ── 카드 빌더 ── */
 function buildCard(ex) {
     const isArchive = ex._source === 'archive';
     const card = document.createElement('div');
     card.className = 'exam-card';
 
-    let topClass, gradeLabel, titleHTML, badgesHTML, actionsHTML;
+    let displaySchool = ex.school || '';
+    const grade = ex.grade || '';
+    if (grade.startsWith('중') && !displaySchool.endsWith('중')) displaySchool += '중';
+    else if (grade.startsWith('고') && !displaySchool.endsWith('고')) displaySchool += '고';
+    
+    ex._displaySchool = displaySchool;
+    const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : '기출';
 
+    let topClass = '', actionsHTML = '';
     if (isArchive) {
-        topClass   = 'green';
-        gradeLabel = ex.grade || '';
-        titleHTML  = `${ex.school || ''}<br>${ex.exam || ''}`;
-        badgesHTML = `<span class="badge green">PDF기출</span>
-                      ${ex.subject ? `<span class="badge gray">${ex.subject}</span>` : ''}`;
-        actionsHTML = `<div class="action-btn sole" data-action="pdf">PDF 열기</div>`;
+        topClass = 'green';
+        actionsHTML = `<div class="action-btn sole" onclick="window.location.href='engine.html?mode=pdf&file=${encodeURIComponent(ex.url || ex.fileName)}&title=${encodeURIComponent((ex.school || '') + ' ' + (ex.subject || ''))}'">PDF 열기</div>`;
     } else {
-        topClass   = '';
-        gradeLabel = ex.grade || '';
-        
-        let displaySchool = ex.school || '';
-        if (gradeLabel.startsWith('중') && !displaySchool.endsWith('중')) displaySchool += '중';
-        else if (gradeLabel.startsWith('고') && !displaySchool.endsWith('고')) displaySchool += '고';
-        
-        /* 엔진으로 전달할 보정된 학교 명칭 저장 */
-        ex._displaySchool = displaySchool;
-        
-        const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : '';
-        titleHTML  = `${displaySchool}<br>${ex.semester ? ex.semester + '학기 ' : ''}${typeText}`;
-        badgesHTML = `<span class="badge blue">엔진기출</span>
-                      ${ex.subject ? `<span class="badge gray">${ex.subject}</span>` : ''}`;
         actionsHTML = `
-            <div class="action-btn" data-action="exam">시험지</div>
-            <div class="action-btn" data-action="sol">해설지</div>
-            <div class="action-btn" data-action="ans">정답표</div>`;
+            <div class="action-btn" onclick="openEngineLink('${ex.file}', 'exam', '${displaySchool}')">시험</div>
+            <div class="action-btn" onclick="openEngineLink('${ex.file}', 'sol', '${displaySchool}')">해설</div>
+            <div class="action-btn" onclick="openEngineLink('${ex.file}', 'ans', '${displaySchool}')">정답</div>`;
     }
 
     card.innerHTML = `
         <div class="card-top ${topClass}"></div>
         <div class="card-body">
-            <div class="card-grade-label">${gradeLabel}</div>
-            <div class="card-main-title">${titleHTML}</div>
-            <div class="badge-row">${badgesHTML}</div>
+            <div class="card-grade-label">${grade}</div>
+            <div class="card-main-title">${displaySchool}<br>${ex.semester}학기 ${typeText}</div>
+            <div class="badge-row"><span class="badge ${isArchive ? 'green' : 'blue'}">${isArchive ? 'PDF기출' : '엔진기출'}</span></div>
         </div>
         <div class="card-actions">${actionsHTML}</div>`;
-
-    card.querySelectorAll('.action-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-            e.stopPropagation();
-            openEngine(ex, btn.dataset.action);
-        });
-    });
-
     return card;
 }
 
-/* ── QPP 모달 ── */
-let _pendingItem   = null;
-let _pendingAction = null;
-
-function openEngine(item, action) {
-    if (item._source === 'archive') {
-        const url = `engine.html?mode=pdf&file=${encodeURIComponent(item.url || item.fileName)}&title=${encodeURIComponent((item.school || '') + ' ' + (item.subject || ''))}`;
-        window.location.href = url;
-        return;
-    }
-    if (action === 'exam') {
-        _pendingItem   = item;
-        _pendingAction = action;
-        document.getElementById('qppModal').classList.add('open');
-        return;
-    }
-    goEngine(item, action, 4);
+function openEngineLink(file, mode, title) {
+    window.location.href = `engine.html?mode=${mode}&data=exams/${file}&title=${encodeURIComponent(title)}`;
 }
 
-function confirmQpp(qpp) {
-    closeModal();
-    goEngine(_pendingItem, _pendingAction, qpp);
+function resetView() {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('yearFilter').value  = '';
+    document.getElementById('examTypeFilter').value = '';
+    selectedGrade = '';
+    document.querySelectorAll('.gtab').forEach(t => t.classList.remove('active'));
+    document.querySelector('.gtab[data-grade=""]').classList.add('active');
+    onFilterChange();
 }
-
-function closeModal() {
-    document.getElementById('qppModal').classList.remove('open');
-}
-
-function goEngine(item, action, qpp) {
-    /* 보정된 학교 이름(_displaySchool)을 최우선으로 적용하여 엔진에 전달 */
-    const schoolName = item._displaySchool || item.school || '';
-    const title = schoolName + ' ' + (item.subject || '');
-    const url = `engine.html?mode=${action}&qpp=${qpp}&data=${encodeURIComponent('exams/' + item.file)}&title=${encodeURIComponent(title)}`;
-    window.location.href = url;
-}
-
-document.getElementById('qppModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-});
 
 window.onload = init;
 </script>

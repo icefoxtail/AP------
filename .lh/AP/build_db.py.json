@@ -1,0 +1,22 @@
+{
+    "sourceFile": "AP/build_db.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1776160726133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1776160732682,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,10 @@\n sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')\r\n \r\n # ── 설정 ──────────────────────────────────────────\r\n # 본인의 폴더 경로와 일치하는지 확인하세요.\r\n-EXAMS_DIR   = r\"C:\\Users\\Desktop\\APMATH\\AP\\exams\"\r\n-OUTPUT_FILE = r\"C:\\Users\\Desktop\\APMATH\\AP\\db.js\"\r\n+EXAMS_DIR   = r\"C:\\Users\\USER\\Desktop\\APMATH\\AP\\exams\"\r\n+OUTPUT_FILE = r\"C:\\Users\\USER\\Desktop\\APMATH\\AP\\db.js\"\r\n # ──────────────────────────────────────────────────\r\n \r\n def parse_js_filename(filename):\r\n     stem = os.path.splitext(filename)[0]\r\n"
+                }
+            ],
+            "date": 1776160726133,
+            "name": "Commit-0",
+            "content": "import os\r\nimport json\r\nimport re\r\nimport sys\r\nimport io\r\n\r\nsys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')\r\n\r\n# ── 설정 ──────────────────────────────────────────\r\n# 본인의 폴더 경로와 일치하는지 확인하세요.\r\nEXAMS_DIR   = r\"C:\\Users\\Desktop\\APMATH\\AP\\exams\"\r\nOUTPUT_FILE = r\"C:\\Users\\Desktop\\APMATH\\AP\\db.js\"\r\n# ──────────────────────────────────────────────────\r\n\r\ndef parse_js_filename(filename):\r\n    stem = os.path.splitext(filename)[0]\r\n    parts = stem.split('_')\r\n\r\n    if len(parts) < 4:\r\n        return None\r\n\r\n    year_prefix = parts[0]\r\n    year = f\"20{year_prefix}\" if len(year_prefix) == 2 else year_prefix\r\n\r\n    school_raw = parts[1]\r\n    grade = \"\"\r\n    school = school_raw\r\n    \r\n    m = re.search(r'(중|고)\\d', school_raw)\r\n    if m:\r\n        grade = m.group()\r\n        school = school_raw.replace(grade, '')\r\n\r\n    semester = parts[2].replace('학기', '')\r\n    exam_raw = parts[3]\r\n    examType = 'mid' if '중간' in exam_raw else 'final' if '기말' in exam_raw else exam_raw\r\n\r\n    subject = parts[4] if len(parts) > 4 else \"수학\"\r\n    \r\n    if not grade:\r\n        m2 = re.search(r'(중|고)\\d', subject)\r\n        if m2:\r\n            grade = m2.group()\r\n\r\n    return {\r\n        \"year\": year,\r\n        \"school\": school,\r\n        \"grade\": grade,\r\n        \"semester\": semester,\r\n        \"examType\": examType,\r\n        \"subject\": subject,\r\n        \"file\": filename\r\n    }\r\n\r\ndef build_engine_db():\r\n    if not os.path.exists(EXAMS_DIR):\r\n        print(f\"❌ 폴더 없음: {EXAMS_DIR}\")\r\n        return\r\n\r\n    exams_list = []\r\n    skipped = []\r\n\r\n    for f in os.listdir(EXAMS_DIR):\r\n        if f.endswith('.js'):\r\n            meta = parse_js_filename(f)\r\n            if meta:\r\n                exams_list.append(meta)\r\n            else:\r\n                skipped.append(f)\r\n\r\n    db_content = {\r\n        \"exams\": exams_list\r\n    }\r\n\r\n    # db.js 파일 생성 (에러 발생 구간 수정됨)\r\n    dir_path = os.path.dirname(OUTPUT_FILE)\r\n    if dir_path and not os.path.exists(dir_path):\r\n        os.makedirs(dir_path)\r\n        \r\n    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:\r\n        f.write(\"window.mainDB = \")\r\n        json.dump(db_content, f, ensure_ascii=False, indent=2)\r\n        f.write(\";\")\r\n\r\n    print(f\"\\n✅ 완료: 총 {len(exams_list)}개의 엔진 데이터가 db.js에 등록되었습니다.\")\r\n    if skipped:\r\n        print(f\"⚠️ 규칙에 맞지 않아 건너뛴 파일: {len(skipped)}개\")\r\n        for s in skipped:\r\n            print(f\"  - {s}\")\r\n\r\nif __name__ == \"__main__\":\r\n    build_engine_db()"
+        }
+    ]
+}

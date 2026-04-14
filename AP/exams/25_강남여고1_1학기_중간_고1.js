@@ -226,11 +226,11 @@ window.questionBank = [
     "answer": "4",
     "solution": "$f(x) = (x-1)Q_{1}(x)+3 \\implies Q_{1}(2) = f(2)-3$\\n$f(x) = (x-3)Q_{2}(x)+4 \\implies Q_{2}(2) = \\frac{f(2)-4}{-1} = 4-f(2)$\\n나머지 정리에 의해 구하는 값은 $Q_{1}(2)+Q_{2}(2)$이다.\\n$Q_{1}(2)+Q_{2}(2) = (f(2)-3) + (4-f(2)) = 1$\\n$\\therefore$ 정답은 ④이다."
   },
-  {
+ {
     "id": 16,
     "level": "상",
     "category": "다항식의 연산",
-    "content": "[그림 1]과 같이 가로의 길이, 세로의 길이, 높이가 각각 $x, x, y$ ($y>x$)인 정사각기둥 3개를 [그림 2]와 같이 각각의 중앙 부분이 겹치면서 서로 수직으로 만나도록 만든 입체가 있다. 이때 [그림 2]의 입체의 부피를 $x, y$로 나타내면? [4.6점]<br><svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><path d='M30 40 L50 30 L70 40 L70 90 L50 100 L30 90 Z' fill='none' stroke='black'/><path d='M30 40 L50 50 L70 40' fill='none' stroke='black'/><path d='M50 50 L50 100' fill='none' stroke='black'/><text x='45' y='115' font-size='10'>[그림 1]</text><path d='M100 60 L140 60 L140 70 L100 70 Z M115 45 L115 85 L125 85 L125 45 Z' fill='none' stroke='black' stroke-width='1'/><path d='M105 55 L135 75 M135 55 L105 75' fill='none' stroke='black' stroke-width='0.5' stroke-dasharray='2'/><text x='110' y='100' font-size='10'>[그림 2]</text></svg>",
+    "content": "[그림 1]과 같이 가로의 길이, 세로의 길이, 높이가 각각 $x, x, y$ ($y>x$)인 정사각기둥 3개를 [그림 2]와 같이 각각의 중앙 부분이 겹치면서 서로 수직으로 만나도록 만든 입체가 있다. 이때 [그림 2]의 입체의 부피를 $x, y$로 나타내면? [4.6점]<br><svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"black\" stroke-width=\"1.5\" stroke-linejoin=\"round\"><polygon points=\"30,40 50,40 50,110 30,110\" fill=\"white\"/><polygon points=\"30,40 42,28 62,28 50,40\" fill=\"white\"/><polygon points=\"50,40 62,28 62,98 50,110\" fill=\"white\"/><text x=\"40\" y=\"130\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\" stroke=\"none\">[그림 1]</text><text x=\"40\" y=\"125\" font-size=\"11\" text-anchor=\"middle\" stroke=\"none\">x</text><text x=\"60\" y=\"110\" font-size=\"11\" stroke=\"none\">x</text><text x=\"18\" y=\"75\" font-size=\"11\" stroke=\"none\">y</text><polygon points=\"162,43 174,31 194,31 182,43\" fill=\"white\"/><polygon points=\"182,43 194,31 194,51 182,63\" fill=\"white\"/><polygon points=\"162,43 182,43 182,63 162,63\" fill=\"white\"/><polygon points=\"110,55 122,43 150,43 150,55\" fill=\"white\"/><polygon points=\"110,55 150,55 150,75 110,75\" fill=\"white\"/><polygon points=\"170,55 182,43 222,43 210,55\" fill=\"white\"/><polygon points=\"210,55 222,43 222,63 210,75\" fill=\"white\"/><polygon points=\"170,55 210,55 210,75 170,75\" fill=\"white\"/><polygon points=\"150,15 162,3 182,3 170,15\" fill=\"white\"/><polygon points=\"170,15 182,3 182,43 170,55\" fill=\"white\"/><polygon points=\"150,15 170,15 170,55 150,55\" fill=\"white\"/><polygon points=\"170,75 182,63 182,103 170,115\" fill=\"white\"/><polygon points=\"150,115 162,103 182,103 170,115\" fill=\"white\"/><polygon points=\"150,75 170,75 170,115 150,115\" fill=\"white\"/><polygon points=\"150,55 170,55 170,75 150,75\" fill=\"white\"/><polygon points=\"138,67 150,55 170,55 158,67\" fill=\"white\"/><polygon points=\"158,67 170,55 170,75 158,87\" fill=\"white\"/><polygon points=\"138,67 158,67 158,87 138,87\" fill=\"white\"/><text x=\"160\" y=\"135\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\" stroke=\"none\">[그림 2]</text></g></svg>",
     "choices": [
       "$(y-x)(3y-x^{2})$",
       "$x^{2}(3y-x)$",
@@ -239,7 +239,7 @@ window.questionBank = [
       "$x^{2}(3y-2x)$"
     ],
     "answer": "5",
-    "solution": "각 정사각기둥의 부피는 $x \\times x \\times y = x^{2}y$이다.\\n3개의 기둥이 겹쳐지므로 전체 부피의 합은 $3x^{2}y$이다.\\n이때 중심에서 가로, 세로, 높이 방향의 기둥이 모두 겹치는 부분은 한 변의 길이가 $x$인 정육면체이다.\\n이 정육면체 부분($x^{3}$)이 3번 중복 계산되었으므로, 중복을 제거하기 위해 2번($2x^{3}$)을 빼주어야 한다.\\n$\\therefore V = 3x^{2}y - 2x^{3} = x^{2}(3y-2x)$\\n정답은 ⑤이다."
+    "solution": "각 정사각기둥의 부피는 $x \\times x \\times y = x^{2}y$이다.\\n3개의 기둥이 겹쳐지므로 전체 부피의 합은 $3x^{2}y$이다.\\n이때 중심에서 가로, 세로, 높이 방향의 기둥이 모두 겹치는 부분은 한 변의 길이가 $x$인 정육면체이다.<br><svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"black\" stroke-width=\"2\" fill=\"#e0e0e0\" stroke-linejoin=\"round\"><polygon points=\"60,40 75,25 105,25 90,40\" /><polygon points=\"90,40 105,25 105,55 90,70\" /><polygon points=\"60,40 90,40 90,70 60,70\" /></g><text x=\"82\" y=\"100\" font-size=\"12\" text-anchor=\"middle\">중심 겹침 ($x^3$)</text></svg>\\n이 정육면체 부분($x^{3}$)이 3번 중복 계산되었으므로, 중복을 제거하기 위해 2번($2x^{3}$)을 빼주어야 한다.\\n$\\therefore V = 3x^{2}y - 2x^{3} = x^{2}(3y-2x)$\\n정답은 ⑤이다."
   },
   {
     "id": 17,
@@ -271,11 +271,11 @@ window.questionBank = [
     "answer": "2",
     "solution": "$x=1$ 대입: $p = (1+2-1)^{5} = 2^{5} = 32$\\n$x=-1$ 대입: $q = (1-2-1)^{5} = (-2)^{5} = -32$\\n$r = \\frac{p+q}{2} = \\frac{32-32}{2} = 0$\\n$s = \\frac{p-q}{2} = \\frac{32-(-32)}{2} = 32$\\n최고차항 계수 $a_{10} = 1^{5} = 1$\\n상수항 $a_{0} = (-1)^{5} = -1$\\n$t = a_{10}-a_{0} = 1-(-1) = 2$\\n$\\therefore p+q+r+s+t = 32-32+0+32+2 = 34$\\n정답은 ②이다."
   },
-  {
+ {
     "id": 19,
     "level": "상",
     "category": "이차함수",
-    "content": "직각을 낀 두 변의 길이가 $8, 10$인 직각삼각형을 밑면으로 하고 높이가 $24$인 삼각기둥을 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하면? [4.9점]<br><svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><path d='M40 100 L120 100 L40 20 Z' fill='none' stroke='black'/><path d='M120 100 L120 80 L40 0 L40 20' fill='none' stroke='black'/><path d='M40 0 L120 80' fill='none' stroke='black'/><path d='M60 100 L60 60 L100 80' fill='none' stroke='black' stroke-dasharray='2'/><text x='75' y='110' font-size='10'>8</text><text x='30' y='60' font-size='10'>10</text><text x='125' y='90' font-size='10'>24</text></svg>",
+    "content": "직각을 낀 두 변의 길이가 $8, 10$인 직각삼각형을 밑면으로 하고 높이가 $24$인 삼각기둥을 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하면? [4.9점]<br><svg width=\"240\" height=\"220\" viewBox=\"0 0 240 220\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"40\" y1=\"150\" x2=\"190\" y2=\"160\" stroke=\"black\" stroke-width=\"1.2\" stroke-dasharray=\"4 4\" /><line x1=\"155\" y1=\"175\" x2=\"115\" y2=\"155\" stroke=\"black\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\" /><line x1=\"80\" y1=\"170\" x2=\"115\" y2=\"155\" stroke=\"black\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\" /><line x1=\"115\" y1=\"155\" x2=\"115\" y2=\"35\" stroke=\"black\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\" /><g stroke=\"none\" stroke-linejoin=\"round\"><polygon points=\"120,70 155,55 115,35 80,50\" fill=\"#eeeeee\" fill-opacity=\"0.8\" /><polygon points=\"120,70 80,50 80,170 120,190\" fill=\"#cccccc\" fill-opacity=\"0.8\" /><polygon points=\"120,70 155,55 155,175 120,190\" fill=\"#aaaaaa\" fill-opacity=\"0.8\" /></g><g stroke=\"black\" stroke-width=\"1.2\" stroke-linejoin=\"round\" fill=\"none\"><polygon points=\"120,70 155,55 115,35 80,50\" /><polygon points=\"120,70 80,50 80,170 120,190\" /><polygon points=\"120,70 155,55 155,175 120,190\" /></g><g stroke=\"black\" stroke-width=\"1.5\" stroke-linejoin=\"round\" fill=\"none\"><polygon points=\"120,70 190,40 40,30\" /><line x1=\"120\" y1=\"70\" x2=\"120\" y2=\"190\" /><line x1=\"190\" y1=\"40\" x2=\"190\" y2=\"160\" /><line x1=\"40\" y1=\"30\" x2=\"40\" y2=\"150\" /><line x1=\"120\" y1=\"190\" x2=\"190\" y2=\"160\" /><line x1=\"120\" y1=\"190\" x2=\"40\" y2=\"150\" /></g><text x=\"65\" y=\"185\" font-size=\"12\" fill=\"black\">10</text><text x=\"165\" y=\"190\" font-size=\"12\" fill=\"black\">8</text><text x=\"200\" y=\"105\" font-size=\"12\" fill=\"black\">24</text></svg>",
     "choices": [
       "360",
       "420",
@@ -284,7 +284,7 @@ window.questionBank = [
       "600"
     ],
     "answer": "3",
-    "solution": "직육면체의 높이를 $h$, 밑면의 가로를 $x$, 세로를 $y$라 하자.\\n이 문제에서 직육면체의 한 면은 삼각기둥의 높이 $24$와 평행하게 만들어지므로, 높이는 $24$로 고정된다.\\n밑면인 직각삼각형(변 $8, 10$) 내부에 내접하는 직사각형의 넓이가 최대일 때 부피가 최대가 된다.\\n닮음비에 의해 가로 $x$일 때 세로는 $y = 10 - \\frac{10}{8}x = 10 - \\frac{5}{4}x$이다.\\n밑면 넓이 $S = x(10 - \\frac{5}{4}x) = -\\frac{5}{4}(x-4)^{2} + 20$\\n따라서 밑면 넓이의 최댓값은 $x=4$일 때 $20$이다.\\n최대 부피 $V = 20 \\times 24 = 480$이다.\\n$\\therefore$ 정답은 ③이다."
+    "solution": "직육면체의 높이를 $h$, 밑면의 가로를 $x$, 세로를 $y$라 하자.\\n이 문제에서 직육면체의 한 면은 삼각기둥의 높이 $24$와 평행하게 만들어지므로, 높이는 $24$로 고정된다.\\n밑면인 직각삼각형(변 $8, 10$) 내부에 내접하는 직사각형의 넓이가 최대일 때 부피가 최대가 된다.<br><svg width=\"160\" height=\"180\" viewBox=\"0 0 160 180\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"40,140 120,140 40,40\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><rect x=\"40\" y=\"90\" width=\"40\" height=\"50\" fill=\"#f0f0f0\" stroke=\"black\" stroke-width=\"1.2\" /><polyline points=\"40,130 50,130 50,140\" fill=\"none\" stroke=\"black\" stroke-width=\"1\" /><text x=\"20\" y=\"95\" font-size=\"12\">10</text><text x=\"80\" y=\"160\" font-size=\"12\">8</text><text x=\"60\" y=\"135\" font-size=\"12\">x</text><text x=\"25\" y=\"120\" font-size=\"12\">y</text></svg>\\n닮음비에 의해 가로 $x$일 때 세로는 $y = 10 - \\frac{10}{8}x = 10 - \\frac{5}{4}x$이다.\\n밑면 넓이 $S = x(10 - \\frac{5}{4}x) = -\\frac{5}{4}(x-4)^{2} + 20$\\n따라서 밑면 넓이의 최댓값은 $x=4$일 때 $20$이다.\\n최대 부피 $V = 20 \\times 24 = 480$이다.\\n$\\therefore$ 정답은 ③이다."
   },
   {
     "id": 20,
