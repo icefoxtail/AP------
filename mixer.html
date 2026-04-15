@@ -104,6 +104,18 @@
             color: var(--gray-700);
             outline: none;
         }
+        .panel-action {
+            padding: 6px 10px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 12px;
+            background: var(--blue-light);
+            color: var(--blue-dark);
+            font-weight: 800;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .panel-action:hover { background: #dbeafe; }
 
         .filter-area {
             padding: 15px;
@@ -370,6 +382,10 @@
                     <option value="default">기본순</option>
                     <option value="category">단원별 묶음</option>
                 </select>
+                <select id="q-category-filter" class="panel-select" onchange="renderQuestionList()">
+                    <option value="">단원 전체</option>
+                </select>
+                <button id="add-category-btn" class="panel-action" type="button" onclick="addCurrentCategory()">현재 단원 전체 담기</button>
             </div>
         </div>
         <div class="list-scroll" id="question-list">
@@ -510,6 +526,7 @@ async function loadExamQuestions(examMeta) {
         currentQuestions = Array.isArray(qb) ? qb.map(q => ({ ...q })) : ((qb?.questions || qb?.problems || []).map(q => ({ ...q })));
         delete window.questionBank;
         s.remove();
+        populateCategoryFilter();
         renderQuestionList();
         if (window.MathJax?.typesetPromise) {
             await MathJax.typesetPromise([container]);
@@ -536,6 +553,155 @@ function extractChoiceText(choice) {
     return String(choice);
 }
 
+
+function wrapLatex(text) {
+    return wrapLatexPreserveBlocks(text);
+}
+
+function wrapLatexPreserveBlocks(text) {
+    if (!text) return text;
+    let s = String(text);
+
+    s = s.replace(/\^\[([^\]]+)\]/g, '^{$1}').replace(/_\[([^\]]+)\]/g, '_{$1}');
+    s = s.replace(//g, '(').replace(//g, ')').replace(//g, '');
+    s = s.replace(/²/g, '^2').replace(/³/g, '^3');
+    s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}').replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
+    s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
+    s = s.replace(/\\frac\[([^\]]+)\]\[([^\]]+)\]/g, '\\frac{$1}{$2}').replace(/\\dot\[([^\]]+)\]/g, '\\dot{$1}');
+
+    if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s)) {
+        return `$$${s}$$`;
+    }
+
+    if (/^\s*\$\$[\s\S]*\$\$\s*$/.test(s) || /^\s*\$[\s\S]*\$\s*$/.test(s)) return s;
+
+    const parts = s.split(/(<[^>]+>)/g);
+    return parts.map(p => {
+        if (!p) return '';
+        if (p.startsWith('<')) return p;
+
+        let t = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+
+        if (!/\$/.test(t)) {
+            t = t.split(/(<br>)/g).map(seg => {
+                if (seg === '<br>') return seg;
+
+                const tokens = seg.split(/(\s+)/);
+                const out = [];
+                let run = [];
+
+                const flush = () => {
+                    if (!run.length) return;
+                    const joined = run.join('');
+                    const trimmed = joined.trim();
+                    if (trimmed) out.push(`$${trimmed}$`);
+                    run = [];
+                };
+
+                for (let i = 0; i < tokens.length; i++) {
+                    const tok = tokens[i];
+                    if (!tok) continue;
+
+                    if (/^\s+$/.test(tok)) {
+                        if (run.length) run.push(tok);
+                        else out.push(tok);
+                        continue;
+                    }
+
+                    if (/[가-힣]/.test(tok)) {
+                        flush();
+                        out.push(tok);
+                        continue;
+                    }
+
+                    const asciiMath = /^[0-9A-Za-z.,:;(){}\[\]+\-*\/=^_|\\%]+$/.test(tok);
+                    const indicator = /\\[A-Za-z]+|\^|_/.test(tok);
+
+                    let nextMeaningful = '';
+                    for (let j = i + 1; j < tokens.length; j++) {
+                        if (!/^\s+$/.test(tokens[j] || '')) {
+                            nextMeaningful = tokens[j] || '';
+                            break;
+                        }
+                    }
+                    const nextIndicator = /\\[A-Za-z]+|\^|_/.test(nextMeaningful);
+
+                    if (asciiMath && (run.length || indicator || nextIndicator)) {
+                        run.push(tok);
+                    } else {
+                        flush();
+                        out.push(tok);
+                    }
+                }
+
+                flush();
+                return out.join('');
+            }).join('');
+        }
+
+        const trimmed = t.trim();
+        const hasKorean = /[가-힣]/.test(trimmed);
+        const hasDollar = /\$/.test(trimmed);
+
+        const looksLikeMath =
+            !hasKorean &&
+            !hasDollar &&
+            (
+                /\\[a-zA-Z]+/.test(trimmed) ||
+                (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0)
+            );
+
+        if (looksLikeMath && !t.includes('<br>')) return `$${trimmed}$`;
+        return t;
+    }).join('');
+}
+
+function currentCategoryFilterValue() {
+    return document.getElementById('q-category-filter')?.value || '';
+}
+
+function populateCategoryFilter() {
+    const sel = document.getElementById('q-category-filter');
+    if (!sel) return;
+    const keep = sel.value || '';
+    const categories = [...new Set(currentQuestions.map(q => String(q.category || '기타')))]
+        .sort((a, b) => a.localeCompare(b, 'ko'));
+    sel.innerHTML = '<option value="">단원 전체</option>' + categories.map(c => `<option value="${c}">${c}</option>`).join('');
+    if (categories.includes(keep)) sel.value = keep;
+}
+
+function addCurrentCategory() {
+    const selected = currentCategoryFilterValue();
+    if (!selected) {
+        alert('먼저 단원을 선택해주세요.');
+        return;
+    }
+    const indexes = currentQuestions
+        .map((q, idx) => ({ q, idx }))
+        .filter(({ q }) => String(q.category || '기타') === selected)
+        .map(({ idx }) => idx);
+
+    let added = 0;
+    indexes.forEach(idx => {
+        const q = currentQuestions[idx];
+        const qId = String(q.id ?? idx);
+        const isDup = cart.some(c => c._sourceFile === currentExamFile && String(c.id ?? c._originalIndex) === qId);
+        if (isDup) return;
+        cart.push({
+            ...q,
+            _sourceFile: currentExamFile,
+            _sourceTitle: currentExamTitle,
+            _originalIndex: idx
+        });
+        added += 1;
+    });
+
+    renderCart();
+    renderQuestionList();
+    if (added === 0) alert('이미 모두 담긴 단원입니다.');
+}
+
+
 function buildChoicesHTML(q) {
     if (!Array.isArray(q.choices) || !q.choices.length) return '';
     const circled = ['①','②','③','④','⑤'];
@@ -544,7 +710,7 @@ function buildChoicesHTML(q) {
         .filter(v => String(v).trim() !== '' && String(v).trim() !== '주관식');
 
     if (!validChoices.length) return '';
-    return `<div class="q-choices">${validChoices.map((choice, idx) => `<div class="q-choice">${circled[idx] || (idx + 1) + ')'} ${choice}</div>`).join('')}</div>`;
+    return `<div class="q-choices">${validChoices.map((choice, idx) => `<div class="q-choice">${circled[idx] || (idx + 1) + ')'} ${wrapLatex(choice)}</div>`).join('')}</div>`;
 }
 
 function getQuestionRenderOrder() {
@@ -570,9 +736,20 @@ function renderQuestionList() {
         return;
     }
 
-    const renderItems = getQuestionRenderOrder();
+    const selectedCategory = currentCategoryFilterValue();
+    const renderItems = getQuestionRenderOrder().filter(({ q }) => !selectedCategory || String(q.category || '기타') === selectedCategory);
     const groupMode = (document.getElementById('q-view-mode')?.value || 'default') === 'category';
     let lastCategory = null;
+
+    const addCategoryBtn = document.getElementById('add-category-btn');
+    if (addCategoryBtn) {
+        addCategoryBtn.style.display = selectedCategory ? 'inline-flex' : 'none';
+    }
+
+    if (!renderItems.length) {
+        container.innerHTML = '<div class="empty-box">선택한 단원에 해당하는 문항이 없습니다.</div>';
+        return;
+    }
 
     renderItems.forEach(({ q, idx }) => {
         const category = String(q.category || '기타');
@@ -592,7 +769,7 @@ function renderQuestionList() {
                 <span>No. ${idx + 1}</span>
                 <span>${category}</span>
             </div>
-            <div class="q-body">${q.content || q.question || ''}</div>
+            <div class="q-body">${wrapLatex(q.content || q.question || '')}</div>
             ${buildChoicesHTML(q)}
         `;
 
@@ -648,7 +825,7 @@ function renderCart() {
         row.innerHTML = `
             <div class="cart-info">
                 <div class="c-title">${c._sourceTitle} [${c._originalIndex + 1}번] · ${c.category || '기타'}</div>
-                <div class="c-body">${c.content || c.question || ''}</div>
+                <div class="c-body">${wrapLatex(c.content || c.question || '')}</div>
             </div>
         `;
 
