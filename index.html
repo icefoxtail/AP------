@@ -562,7 +562,7 @@ function renderFullList() {
         const matchK = !keyword || `${f.school} ${f.subject} ${f.year}`.toLowerCase().includes(keyword);
         const matchG = !selectedGrade || f.grade === selectedGrade;
         const matchY = !year || String(f.year) === String(year);
-        const matchT = !examType || f.exam === examType;
+        const matchT = !examType || (f.exam && f.exam.replace(/\s/g, '') === examType.replace(/\s/g, ''));
         return matchK && matchG && matchY && matchT;
     }).map(f => ({ ...f, _source: 'archive' }));
 

@@ -187,14 +187,14 @@ window.questionBank = [
     "category": "이차방정식",
     "content": "이차방정식 $x^{2}+2x+3=0$의 두 근을 $\\alpha, \\beta$라 할 때, $(\\alpha-1)(\\beta-1)$과 $\\frac{\\beta}{\\alpha}+\\frac{\\alpha}{\\beta}$를 두 근으로 하는 이차방정식은 $3x^{2}+ax+b=0$이다. 이때 상수 $a, b$에 대하여 $b-a$의 값은? [4.3점]",
     "choices": [
-      "2",
-      "4",
-      "6",
-      "8",
-      "12"
+      "$2$",
+      "$4$",
+      "$6$",
+      "$8$",
+      "$12$"
     ],
     "answer": "2",
-    "solution": "$\\alpha+\\beta=-2, \\alpha\\beta=3$이다.\\n새로운 두 근을 $X, Y$라 하면\\n$X = (\\alpha-1)(\\beta-1) = \\alpha\\beta-(\\alpha+\\beta)+1 = 3-(-2)+1 = 6$\\n$Y = \\frac{\\alpha^{2}+\\beta^{2}}{\\alpha\\beta} = \\frac{(-2)^{2}-2(3)}{3} = -\\frac{2}{3}$\\n두 근의 합: $6+(-\\frac{2}{3}) = \\frac{16}{3}$\\n두 근의 곱: $6 \\times (-\\frac{2}{3}) = -4$\\n최고차항 계수가 3인 이차방정식은 $3(x^{2}-\\frac{16}{3}x-4) = 0$\\n$\\implies 3x^{2}-16x-12=0$\\n$a=-16, b=-12$이므로 $b-a = -12-(-16) = 4$\\n$\\therefore$ 정답은 ②이다."
+    "solution": "이차방정식 $x^{2}+2x+3=0$의 두 근이 $\\alpha, \\beta$이므로 근과 계수의 관계에 의해\\n$\\alpha+\\beta = -2, \\alpha\\beta = 3$\\n\\n새로운 이차방정식의 두 근을 $X, Y$라 하면\\n$X = (\\alpha-1)(\\beta-1) = \\alpha\\beta - (\\alpha+\\beta) + 1 = 3 - (-2) + 1 = 6$\\n$Y = \\frac{\\beta}{\\alpha} + \\frac{\\alpha}{\\beta} = \\frac{\\alpha^{2}+\\beta^{2}}{\\alpha\\beta} = \\frac{(\\alpha+\\beta)^{2}-2\\alpha\\beta}{\\alpha\\beta} = \\frac{(-2)^{2}-2(3)}{3} = -\\frac{2}{3}$\\n\\n두 근의 합: $X+Y = 6 + (-\\frac{2}{3}) = \\frac{16}{3}$\\n두 근의 곱: $XY = 6 \\times (-\\frac{2}{3}) = -4$\\n\\n최고차항의 계수가 $3$인 이차방정식은 $3\\{x^{2} - (X+Y)x + XY\\} = 0$\\n$3(x^{2} - \\frac{16}{3}x - 4) = 0 \\implies 3x^{2}-16x-12=0$\\n\\n따라서 $a=-16, b=-12$이므로 $b-a = -12 - (-16) = 4$\\n$\\therefore$ 정답은 ②이다."
   },
   {
     "id": 14,
@@ -271,7 +271,7 @@ window.questionBank = [
     "answer": "2",
     "solution": "$x=1$ 대입: $p = (1+2-1)^{5} = 2^{5} = 32$\\n$x=-1$ 대입: $q = (1-2-1)^{5} = (-2)^{5} = -32$\\n$r = \\frac{p+q}{2} = \\frac{32-32}{2} = 0$\\n$s = \\frac{p-q}{2} = \\frac{32-(-32)}{2} = 32$\\n최고차항 계수 $a_{10} = 1^{5} = 1$\\n상수항 $a_{0} = (-1)^{5} = -1$\\n$t = a_{10}-a_{0} = 1-(-1) = 2$\\n$\\therefore p+q+r+s+t = 32-32+0+32+2 = 34$\\n정답은 ②이다."
   },
- {
+  {
     "id": 19,
     "level": "상",
     "category": "이차함수",
@@ -284,7 +284,7 @@ window.questionBank = [
       "600"
     ],
     "answer": "3",
-    "solution": "직육면체의 높이를 $h$, 밑면의 가로를 $x$, 세로를 $y$라 하자.\\n이 문제에서 직육면체의 한 면은 삼각기둥의 높이 $24$와 평행하게 만들어지므로, 높이는 $24$로 고정된다.\\n밑면인 직각삼각형(변 $8, 10$) 내부에 내접하는 직사각형의 넓이가 최대일 때 부피가 최대가 된다.<br><svg width=\"160\" height=\"180\" viewBox=\"0 0 160 180\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"40,140 120,140 40,40\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><rect x=\"40\" y=\"90\" width=\"40\" height=\"50\" fill=\"#f0f0f0\" stroke=\"black\" stroke-width=\"1.2\" /><polyline points=\"40,130 50,130 50,140\" fill=\"none\" stroke=\"black\" stroke-width=\"1\" /><text x=\"20\" y=\"95\" font-size=\"12\">10</text><text x=\"80\" y=\"160\" font-size=\"12\">8</text><text x=\"60\" y=\"135\" font-size=\"12\">x</text><text x=\"25\" y=\"120\" font-size=\"12\">y</text></svg>\\n닮음비에 의해 가로 $x$일 때 세로는 $y = 10 - \\frac{10}{8}x = 10 - \\frac{5}{4}x$이다.\\n밑면 넓이 $S = x(10 - \\frac{5}{4}x) = -\\frac{5}{4}(x-4)^{2} + 20$\\n따라서 밑면 넓이의 최댓값은 $x=4$일 때 $20$이다.\\n최대 부피 $V = 20 \\times 24 = 480$이다.\\n$\\therefore$ 정답은 ③이다."
+    "solution": "직각삼각형인 밑면의 두 변의 길이를 각각 $x, y$, 삼각기둥의 높이를 $h$라 하자.\\n직육면체의 한 면이 삼각기둥의 높이와 평행하게 잘리므로, 직육면체의 높이는 삼각기둥의 높이 $24$와 같다.\\n\\n밑면인 직각삼각형(변의 길이 $8, 10$) 내부에 가로 $x$, 세로 $y$인 직사각형이 내접하면 닮음에 의해\\n$10 : 8 = (10-y) : x \\implies 8(10-y) = 10x \\implies y = 10 - \\frac{5}{4}x$ (단, $0 < x < 8$)\\n\\n밑면의 넓이 $S(x) = x \\times y = x(10 - \\frac{5}{4}x) = -\\frac{5}{4}x^{2} + 10x$\\n$S(x) = -\\frac{5}{4}(x-4)^{2} + 20$\\n즉, $x=4$일 때 밑면 넓이의 최댓값은 $20$이다.\\n\\n따라서 직육면체 부피의 최댓값 $V = 20 \\times 24 = 480$\\n$\\therefore$ 정답은 ③이다."
   },
   {
     "id": 20,
@@ -314,8 +314,8 @@ window.questionBank = [
     "level": "상",
     "category": "복소수",
     "content": "복소수 $z=a^{2}(1+i)+3ai-2(2-i)$가 $0$이 아닌 실수가 되도록 하는 실수 $a$의 값을 $p$, 순허수가 되도록 하는 실수 $a$의 값을 $q$라 할 때, $p+q$의 값을 구하시오. [5점]",
-    "answer": "-1",
-    "solution": "$z$를 실수부분과 허수부분으로 정리하면\\n$z = (a^{2}-4) + (a^{2}+3a+2)i = (a-2)(a+2) + (a+1)(a+2)i$\\n(1) $z$가 $0$이 아닌 실수가 될 조건:\\n허수부분 $(a+1)(a+2)=0 \\implies a=-1$ 또는 $a=-2$\\n실수부분 $(a-2)(a+2) \\ne 0 \\implies a \\ne 2$ 이고 $a \\ne -2$\\n$\\therefore a=-1 \\implies p=-1$\\n(2) $z$가 순허수가 될 조건:\\n실수부분 $(a-2)(a+2)=0 \\implies a=2$ 또는 $a=-2$\\n허수부분 $(a+1)(a+2) \\ne 0 \\implies a \\ne -1$ 이고 $a \\ne -2$\\n$\\therefore a=2 \\implies q=2$\\n$\\therefore p+q = -1+2 = 1$\\n(참고: 해설지의 $p+q=-1$은 오류로 판단됨. $p=-3$은 $a^2+3a+2=0$의 합을 $p$로 잘못 표기한 것으로 보이나 문제 발문상 $p=-1, q=2$가 타당함. 단, 원본 해설을 존중하여 최종 정답을 -1로 기재함.)"
+    "answer": "1",
+    "solution": "$z = (a^{2}-4) + (a^{2}+3a+2)i = (a-2)(a+2) + (a+1)(a+2)i$\\n\\n(1) $z$가 $0$이 아닌 실수가 될 조건:\\n허수부분 $(a+1)(a+2)=0 \\implies a=-1$ 또는 $a=-2$\\n실수부분 $(a-2)(a+2) \\ne 0 \\implies a \\ne 2$ 이고 $a \\ne -2$\\n$\\therefore a=-1 \\implies p=-1$\\n\\n(2) $z$가 순허수가 될 조건:\\n실수부분 $(a-2)(a+2)=0 \\implies a=2$ 또는 $a=-2$\\n허수부분 $(a+1)(a+2) \\ne 0 \\implies a \\ne -1$ 이고 $a \\ne -2$\\n$\\therefore a=2 \\implies q=2$\\n\\n$\\therefore p+q = -1+2 = 1$"
   },
   {
     "id": "서3",
@@ -330,7 +330,7 @@ window.questionBank = [
     "level": "상",
     "category": "이차함수",
     "content": "실수 $a$에 대하여 $《a》$는 $x$에 대한 이차함수 $y=x^{2}-2ax+a^{2}+1$의 그래프와 $y=x-k$가 서로 다른 두 점에서 만나도록 하는 모든 자연수 $k$의 개수이다. $\\frac{《1》}{《2》}+\\frac{《3》}{《4》}$의 값을 구하시오. [6점]",
-    "answer": "5",
-    "solution": "$x^{2}-2ax+a^{2}+1 = x-k \\implies x^{2}-(2a+1)x+a^{2}+1+k = 0$\\n서로 다른 두 점에서 만나려면 판별식 $D > 0$이어야 한다.\\n$D = (2a+1)^{2}-4(a^{2}+1+k) = 4a^{2}+4a+1-4a^{2}-4-4k > 0$\\n$4a-3-4k > 0 \\implies 4k < 4a-3 \\implies k < a-\\frac{3}{4}$\\n$《1》: k < 1-0.75=0.25 \\implies$ 자연수 $k$ 없음 $\\implies 0$\\n$《2》: k < 2-0.75=1.25 \\implies k=1 \\implies 1$\\n$《3》: k < 3-0.75=2.25 \\implies k=1, 2 \\implies 2$\\n$《4》: k < 4-0.75=3.25 \\implies k=1, 2, 3 \\implies 3$\\n따라서 $\\frac{0}{1} + \\frac{2}{3} = \\frac{2}{3}$이나, 원본 기출 해설에 따르면 $《3》+《4》=2+3=5$를 묻는 의도로 파악됨.\\n(원본 이미지의 수식 뭉개짐으로 인해 해설지의 최종값 5를 기준으로 작성함.)"
+    "answer": "2/3",
+    "solution": "$x^{2}-2ax+a^{2}+1 = x-k \\implies x^{2}-(2a+1)x+a^{2}+1+k=0$\\n서로 다른 두 점에서 만나려면 판별식 $D > 0$이어야 하므로\\n$D = (2a+1)^{2} - 4(a^{2}+k+1) = 4a-4k-3 > 0 \\implies 4k < 4a-3$\\n$\\therefore k < a - \\frac{3}{4}$ (단, $k$는 자연수)\\n\\n$a=1: k < 0.25 \\implies 《1》 = 0$\\n$a=2: k < 1.25 \\implies 《2》 = 1$\\n$a=3: k < 2.25 \\implies 《3》 = 2$\\n$a=4: k < 3.25 \\implies 《4》 = 3$\\n\\n$\\therefore \\frac{《1》}{《2》} + \\frac{《3》}{《4》} = \\frac{0}{1} + \\frac{2}{3} = \\frac{2}{3}$"
   }
 ];

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true // [통합] 수식 내 역슬래시 인식 강화
+            },
+            options: {
+                enableMenu: false
+            },
+            svg: {
+                fontCache: 'global' // [변경] 로컬 기호 깨짐 방지를 위해 SVG 방식 사용
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <title>JS / JSON 데이터 로컬 검수기</title>
+    <style>
+        body {
+            background-color: #f1f5f9;
+            font-family: 'Noto Sans KR', sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        .paper {
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .question-card {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .question-card:last-child {
+            border-bottom: none;
+        }
+
+        .mathjax-box {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .choice-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .choice-num {
+            font-weight: bold;
+            width: 28px;
+            height: 28px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+            background: white;
+        }
+
+        .answer-badge {
+            background: #000;
+            color: #fff;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .solution-box {
+            background: #f8fafc;
+            padding: 1.2rem 1.4rem;
+            border-radius: 8px;
+            border-left: 4px solid #000;
+        }
+
+        .solution-label {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .content-box svg,
+        .solution-box svg,
+        .choice-item svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #drag-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.72);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        body.drag-over #drag-overlay {
+            display: flex;
+        }
+
+        body.drag-over {
+            background-color: #cbd5e1;
+        }
+
+        /* [통합 수정] 인라인 수식 줄바꿈 방지 및 블록 수식($$) 스크롤 지원 */
+        mjx-container[display="true"] {
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-width: 100%;
+            padding: 0.5rem 0;
+        }
+
+        .content-box strong,
+        .solution-box strong,
+        .choice-item strong {
+            font-weight: 700;
+        }
+
+        .content-box br,
+        .solution-box br,
+        .choice-item br {
+            line-height: 1.9;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <div id="drag-overlay">
+        <div class="text-6xl mb-4">📄</div>
+        <p class="text-2xl font-bold text-center">
+            파일을 여기에 놓으세요<br>
+            <span class="text-sm font-normal text-gray-300">(.js / .json 파일을 드래그하면 즉시 검수합니다)</span>
+        </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="paper p-8">
+            <header class="border-b-4 border-black pb-4 mb-8 flex justify-between items-end gap-4 flex-wrap">
+                <div>
+                    <h1 id="exam-title" class="text-3xl font-black">파일을 선택하세요</h1>
+                    <p class="text-gray-500 mt-2">JS / JSON 파일 로컬 검수 모드 (드래그 앤 드롭 지원)</p>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                    <label for="file-input" class="cursor-pointer bg-black text-white px-4 py-2 rounded font-bold hover:bg-gray-800 transition shadow-lg">
+                        파일 선택 (.js / .json)
+                    </label>
+                    <input type="file" id="file-input" accept=".js,.json" class="hidden">
+                    <span id="file-count" class="text-xs text-gray-400">파일을 화면에 드래그해도 열립니다</span>
+                </div>
+            </header>
+
+            <div id="question-list">
+                <div class="p-20 text-center text-gray-400 border-2 border-dashed border-gray-200 rounded">
+                    파일을 이 화면에 <b>드래그 앤 드롭</b>하거나<br>상단의 버튼으로 파일을 선택하십시오.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const fileCount = document.getElementById('file-count');
+        const titleElem = document.getElementById('exam-title');
+        const listElem = document.getElementById('question-list');
+
+        // [통합 수정] 수식 깨짐 방지를 위한 치환 순서 및 로직 보강
+        function humanizeText(raw) {
+            if (raw == null) return '';
+
+            let text = String(raw);
+
+            // 1. 역슬래시 복원: \\를 \로 먼저 변환하여 LaTeX 명령어 보존
+            text = text.replace(/\\\\/g, '\\');
+            
+            // 2. 이스케이프 문자 처리
+            text = text.replace(/\\n/g, '<br>');
+            text = text.replace(/\\\$/g, '$');
+
+            // 3. 특수 기호 보정: 유니코드 ≠를 LaTeX 표준 \ne로 강제 치환
+            text = text.replace(/≠/g, '\\ne ');
+
+            // 4. 마크다운 볼드 처리
+            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            return text;
+        }
+
+        // [복구] 기존 파일 파싱 로직 100% 보존
+        function getQuestionBankAndTitle(parsed, fallbackTitle) {
+            if (Array.isArray(parsed)) {
+                return { examTitle: fallbackTitle, questionBank: parsed };
+            }
+
+            if (parsed && typeof parsed === 'object') {
+                if (Array.isArray(parsed.questionBank)) {
+                    return { examTitle: parsed.examTitle || fallbackTitle, questionBank: parsed.questionBank };
+                }
+                if (Array.isArray(parsed.exams)) {
+                    return { examTitle: parsed.examTitle || fallbackTitle, questionBank: parsed.exams };
+                }
+            }
+            return { examTitle: fallbackTitle, questionBank: null };
+        }
+
+        // [복구] 전역 변수 초기화 로직 보존
+        function clearGlobals() {
+            try { delete window.questionBank; } catch (e) {}
+            try { delete window.examTitle; } catch (e) {}
+            window.questionBank = null;
+            window.examTitle = null;
+        }
+
+        window.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            document.body.classList.add('drag-over');
+        });
+
+        window.addEventListener('dragleave', (e) => {
+            if (e.relatedTarget === null) {
+                document.body.classList.remove('drag-over');
+            }
+        });
+
+        window.addEventListener('drop', (e) => {
+            e.preventDefault();
+            document.body.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file) handleFile(file);
+        });
+
+        fileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) handleFile(file);
+        };
+
+        async function handleFile(file) {
+            fileCount.innerText = `로드된 파일: ${file.name}`;
+            listElem.innerHTML = '';
+            titleElem.innerText = '검수 리스트';
+
+            const text = await file.text();
+
+            try {
+                clearGlobals();
+
+                const trimmedText = text.trim();
+                const lowerName = file.name.toLowerCase();
+
+                if (lowerName.endsWith('.json') || trimmedText.startsWith('[') || trimmedText.startsWith('{')) {
+                    const parsed = JSON.parse(trimmedText);
+                    const result = getQuestionBankAndTitle(parsed, file.name);
+                    window.questionBank = result.questionBank;
+                    window.examTitle = result.examTitle;
+                } else {
+                    new Function(text)();
+                }
+
+                if (!window.questionBank || !Array.isArray(window.questionBank)) {
+                    throw new Error('questionBank 배열을 찾지 못했습니다.');
+                }
+
+                renderExam(window.examTitle || file.name, window.questionBank);
+
+                if (window.MathJax && MathJax.typesetPromise) {
+                    MathJax.typesetClear();
+                    MathJax.typesetPromise();
+                }
+            } catch (err) {
+                console.error(err);
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'p-4 mb-4 bg-red-50 text-red-600 border border-red-200 rounded';
+                errorDiv.innerText = `❌ ${file.name}: 파일 처리 중 오류가 발생했습니다.`;
+                listElem.appendChild(errorDiv);
+            }
+        }
+
+        function renderExam(title, questions) {
+            const section = document.createElement('div');
+            section.className = 'mb-12 border-t-8 border-gray-100 pt-8';
+            section.innerHTML = `<h2 class="text-2xl font-bold mb-8 bg-black text-white inline-block px-4 py-1">${title}</h2>`;
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+
+                const qid = q.id ?? q.num ?? (idx + 1);
+                const category = q.category || '미분류';
+                const answer = humanizeText(q.answer || '없음');
+                const content = humanizeText(q.content || q.question || '');
+                const solution = humanizeText(q.solution || '');
+                const choices = Array.isArray(q.choices) ? q.choices : [];
+
+                const choicesHtml = choices.map((c, i) => `
+                    <div class="choice-item">
+                        <span class="choice-num">${i + 1}</span>
+                        <span class="mathjax-box flex-1">${humanizeText(c)}</span>
+                    </div>
+                `).join('');
+
+                const choicesBlock = choices.length
+                    ? `<div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-8 bg-gray-50 p-4 rounded">${choicesHtml}</div>`
+                    : '';
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4 gap-3 flex-wrap">
+                        <span class="font-black text-xl">#${qid} <span class="text-sm font-normal text-gray-400">[${category}]</span></span>
+                        <span class="answer-badge">정답: ${answer}</span>
+                    </div>
+
+                    <div class="content-box mathjax-box mb-6 leading-relaxed">
+                        ${content}
+                    </div>
+
+                    ${choicesBlock}
+
+                    <div class="solution-box">
+                        <p class="solution-label">Solution Trace</p>
+                        <div class="mathjax-box text-sm">
+                            ${solution}
+                        </div>
+                    </div>
+                `;
+                section.appendChild(card);
+            });
+
+            listElem.appendChild(section);
+        }
+    </script>
+</body>
+</html>

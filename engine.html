@@ -805,7 +805,7 @@ function wrapLatexPreserveBlocks(text) {
     s = s.replace(/²/g, '^2').replace(/³/g, '^3');
     s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}').replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
     s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
-    s = s.replace(/\\tf\{([^}]*)\}\{([^}]*)\}/g, '\\frac{$1}{$2}').replace(/\\tf[0-9a-zA-Z]+/g, '');
+    s = s.replace(/\\frac\[([^\]]+)\]\[([^\]]+)\]/g, '\\frac{$1}{$2}').replace(/\\dot\[([^\]]+)\]/g, '\\dot{$1}');
 
     if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s)) {
         return `$$${s}$$`;
@@ -820,7 +820,17 @@ function wrapLatexPreserveBlocks(text) {
 
         let t = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
         const trimmed = t.trim();
-        const looksLikeMath = /\\[a-zA-Z]+/.test(trimmed) || (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0);
+
+        const hasKorean = /[가-힣]/.test(trimmed);
+        const hasDollar = /\$/.test(trimmed);
+
+        const looksLikeMath =
+            !hasKorean &&
+            !hasDollar &&
+            (
+                /\\[a-zA-Z]+/.test(trimmed) ||
+                (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0)
+            );
 
         if (looksLikeMath && !t.includes('<br>')) return `$${trimmed}$`;
         return t;
@@ -829,7 +839,7 @@ function wrapLatexPreserveBlocks(text) {
 
 function stripCite(text) {
     if (!text) return text;
-    return text.replace(/【[^】]*】/g, '').replace(/\[[^\]]*\]/g, '').trim();
+    return text.replace(/【[^】]*】/g, '').trim();
 }
 
 function raf() {

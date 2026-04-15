@@ -22,10 +22,10 @@ window.questionBank = [
     "level": "중",
     "tags": ["중"],
     "category": "제곱근과 실수",
-    "content": "다음 보기 중 무리수는 모두 몇 개인가? (3점)<div class='box'>보기<br>$\\sqrt{\\tf{2}{9}}$, $0.21$, $\\sqrt{2}+\\sqrt{81}$, $3.\\dot{4}$, $\\sqrt{0.36}$, $\\sqrt{0.4}$</div>",
+    "content": "다음 보기 중 무리수는 모두 몇 개인가? (3점)<div class='box'>보기<br>$\\sqrt{\\frac{2}{9}}$, $0.21$, $\\sqrt{2}+\\sqrt{81}$, $3.\\dot{4}$, $\\sqrt{0.36}$, $\\sqrt{0.4}$</div>",
     "choices": ["3개", "4개", "5개", "6개", "8개"],
     "answer": "1",
-    "solution": "무리수는 $\\sqrt{\\tf{2}{9}}$, $\\sqrt{2}+9$, $\\sqrt{0.4}$로 총 3개이다."
+    "solution": "무리수는 $\\sqrt{\\frac{2}{9}}$, $\\sqrt{2}+9$, $\\sqrt{0.4}$로 총 3개이다."
   },
   {
     "id": 3,
@@ -45,13 +45,13 @@ window.questionBank = [
     "content": "다음 중 옳지 않은 것은? (3점)",
     "choices": [
       "$\\sqrt{3}\\times\\sqrt{12}=6$",
-      "$3\\sqrt{3}\\times\\sqrt{18}\\times\\sqrt{\\tf{1}{6}}=9$",
+      "$3\\sqrt{3}\\times\\sqrt{18}\\times\\sqrt{\\frac{1}{6}}=9$",
       "$3\\sqrt{w}:\\sqrt{3}=3\\sqrt{2}$",
-      "$\\sqrt{\\tf{3}{16}}\\times\\sqrt{\\tf{2}{3}}\\div\\sqrt{2}=\\tf{1}{8}$",
+      "$\\sqrt{\\frac{3}{16}}\\times\\sqrt{\\frac{2}{3}}\\div\\sqrt{2}=\\frac{1}{8}$",
       "$\\sqrt{48}\\div\\sqrt{4}\\times\\sqrt{3}=6$"
     ],
     "answer": "4",
-    "solution": "④ $\\sqrt{\\tf{3}{16} \\times \\tf{2}{3} \\div 2} = \\sqrt{\\tf{1}{8}} \\times \\tf{1}{\\sqrt{2}} = \\tf{1}{4}$이므로 옳지 않다."
+    "solution": "④ $\\sqrt{\\frac{3}{16} \\times \\frac{2}{3} \\div 2} = \\sqrt{\\frac{1}{8}} \\times \\frac{1}{\\sqrt{2}} = \\frac{1}{4}$이므로 옳지 않다."
   },
   {
     "id": 5,
@@ -115,26 +115,26 @@ window.questionBank = [
     "tags": ["중"],
     "category": "제곱근과 실수",
     "content": "0 < a < 1일 때, 다음 수 중에서 가장 큰 수는? (4점)",
-    "choices": ["$a$", "$a^{2}$", "$\\sqrt{a}$", "$\\tf{1}{a}$", "$\\tf{1}{\\sqrt{a}}$"],
+    "choices": ["$a$", "$a^{2}$", "$\\sqrt{a}$", "$\\frac{1}{a}$", "$\\frac{1}{\\sqrt{a}}$"],
     "answer": "4",
-    "solution": "$a=0.25$ 대입 시 $0.25, 0.0625, 0.5, 4, 2$이므로 $\\tf{1}{a}$가 가장 크다."
+    "solution": "$a=0.25$ 대입 시 $0.25, 0.0625, 0.5, 4, 2$이므로 $\\frac{1}{a}$가 가장 크다."
   },
   {
     "id": 11,
     "level": "중",
     "tags": ["중"],
     "category": "근호를 포함한 식의 계산",
-    "content": "$\\tf{2+3\\sqrt{2}}{\\sqrt{2}}-\\tf{2(3-\\sqrt{2})}{\\sqrt{8}}=x\\sqrt{2}+y$일 때, $x+y$의 값은? (4점)",
+    "content": "$\\frac{2+3\\sqrt{2}}{\\sqrt{2}}-\\frac{2(3-\\sqrt{2})}{\\sqrt{8}}=x\\sqrt{2}+y$일 때, $x+y$의 값은? (4점)",
     "choices": ["3", "3.5", "4", "4.5", "5"],
     "answer": "2",
-    "solution": "$\\tf{2\\sqrt{2}+6}{2}-\\tf{6-2\\sqrt{2}}{2\\sqrt{2}} = (\\sqrt{2}+3) - (\\tf{3\\sqrt{2}-2}{2}) = 3+1 - \\tf{1}{2}\\sqrt{2} = 4-\\tf{1}{2}\\sqrt{2}$. $x=-0.5, y=4$이므로 $x+y=3.5$."
+    "solution": "$\\frac{2\\sqrt{2}+6}{2}-\\frac{6-2\\sqrt{2}}{2\\sqrt{2}} = (\\sqrt{2}+3) - (\\frac{3\\sqrt{2}-2}{2}) = 3+1 - \\frac{1}{2}\\sqrt{2} = 4-\\frac{1}{2}\\sqrt{2}$. $x=-0.5, y=4$이므로 $x+y=3.5$."
   },
   {
     "id": 12,
     "level": "상",
     "tags": ["상"],
     "category": "근호를 포함한 식의 계산",
-    "content": "$ab=16$일 때, $a\\sqrt{\\tf{2b}{a}}+b\\sqrt{\\tf{8a}{b}}$를 간단히 하면? (단, $a>0, b>0$) (4점)",
+    "content": "$ab=16$일 때, $a\\sqrt{\\frac{2b}{a}}+b\\sqrt{\\frac{8a}{b}}$를 간단히 하면? (단, $a>0, b>0$) (4점)",
     "choices": ["$4\\sqrt{2}$", "$8\\sqrt{2}$", "$10\\sqrt{2}$", "$12\\sqrt{2}$", "$16\\sqrt{2}$"],
     "answer": "4",
     "solution": "$\\sqrt{2ab} + \\sqrt{8ab} = \\sqrt{32} + \\sqrt{128} = 4\\sqrt{2} + 8\\sqrt{2} = 12\\sqrt{2}$."
@@ -157,7 +157,7 @@ window.questionBank = [
     "content": "다음 중 완전제곱식으로 나타낼 수 없는 것은? (4점)",
     "choices": [
       "$a^{2}+8a+16$",
-      "$\\tf{1}{4}x^{2}+x+1$",
+      "$\\frac{1}{4}x^{2}+x+1$",
       "$1+2y+y^{2}$",
       "$9a^{2}+30ab+16b^{2}$",
       "$3x^{2}-12xy+12y^{2}$"
@@ -261,9 +261,9 @@ window.questionBank = [
     "level": "상",
     "tags": ["상"],
     "category": "인수분해의 활용",
-    "content": "$0 < a < 1$일 때, 다음 식을 간단히 하시오. (4점)\\n$5\\sqrt{a^{2}}+2\\sqrt{(a+\\tf{1}{a})^{2}-4}-2\\sqrt{(a-\\tf{1}{a})^{2}+4}$",
+    "content": "$0 < a < 1$일 때, 다음 식을 간단히 하시오. (4점)\\n$5\\sqrt{a^{2}}+2\\sqrt{(a+\\frac{1}{a})^{2}-4}-2\\sqrt{(a-\\frac{1}{a})^{2}+4}$",
     "answer": "a",
-    "solution": "$5|a| + 2|a-\\tf{1}{a}| - 2|a+\\tf{1}{a}| = 5a + 2(\\tf{1}{a}-a) - 2(a+\\tf{1}{a}) = a$."
+    "solution": "$5|a| + 2|a-\\frac{1}{a}| - 2|a+\\frac{1}{a}| = 5a + 2(\\frac{1}{a}-a) - 2(a+\\frac{1}{a}) = a$."
   },
   {
     "id": "서술형3",
