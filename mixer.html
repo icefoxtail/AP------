@@ -2,344 +2,642 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AP 수학 엔진</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS아카이브 | 믹서 출제</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$']],
-                displayMath: [['$$', '$$']],
-                packages: {'[+]': ['ams', 'boldsymbol']}
-            },
+            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
-        @page { size: A4; margin: 0; }
-
+        :root {
+            --navy: #0f172a;
+            --blue: #1d4ed8;
+            --blue-dark: #1e40af;
+            --blue-light: #eff6ff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --danger: #dc2626;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            margin: 0;
-            font-family: 'Nanum Myeongjo', serif;
-            font-size: 9.5pt;
-            background: #f1f5f9;
-            padding-top: 54px;
-            color: #000;
-        }
-
-        #mode-ctrl {
-            position: fixed; top: 0; left: 0; width: 100%; height: 54px;
-            background: white; display: flex; justify-content: space-between;
-            align-items: center; padding: 0 20px; z-index: 1000;
-            box-sizing: border-box; border-bottom: 1px solid #ccc;
-        }
-        .print-btn {
-            padding: 8px 16px; background: #378ADD; color: white;
-            border: none; border-radius: 4px; cursor: pointer;
-            font-family: inherit; font-weight: bold;
-        }
-
-        /* ── 인쇄 영역 ── */
-        #print-area {
-            display: none; flex-direction: column;
-            align-items: center; gap: 20px; padding: 20px 0;
-        }
-
-        /* ── A4 페이지 ── */
-        .page {
-            width: 210mm; height: 297mm;
-            background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 15mm; box-sizing: border-box;
-            display: flex; flex-direction: column;
+            font-family: 'Pretendard', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
         }
-
-        @media print {
-            body { padding-top: 0; background: white; }
-            #mode-ctrl { display: none; }
-            #print-area { display: flex !important; gap: 0; padding: 0; }
-            .page { box-shadow: none; page-break-after: always; }
-            #pdf-container { display: none !important; }
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 0 20px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            gap: 12px;
         }
-
-        .page-header {
-            display: flex; justify-content: space-between;
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px; margin-bottom: 12px;
-            font-weight: bold; flex-shrink: 0;
+        .h-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+        .h-title { font-size: 18px; font-weight: 800; white-space: nowrap; }
+        .btn-icon {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
         }
+        .btn-icon:hover { background: rgba(255,255,255,0.18); }
 
-        /* ── PDF 뷰어 ── */
-        #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); }
-        #pdf-viewer { width: 100%; height: 100%; border: none; }
-
-        /* ── 시험지: 2열 격자 ── */
-        .grid-container {
+        main {
+            display: flex;
             flex: 1;
+            overflow: hidden;
+            gap: 1px;
+            background: var(--gray-200);
+        }
+        .panel {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        #panel-exams { width: 320px; flex-shrink: 0; }
+        #panel-questions { flex: 1; min-width: 420px; }
+        #panel-cart { width: 360px; flex-shrink: 0; }
+
+        .panel-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--gray-200);
+            font-weight: 800;
+            font-size: 14px;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .panel-subtle { font-weight: 600; color: var(--gray-500); font-size: 12px; }
+
+        .filter-area {
+            padding: 15px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .search-box { position: relative; }
+        .search-box input {
+            width: 100%;
+            padding: 9px 10px 9px 34px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 13px;
+            outline: none;
+        }
+        .search-box input:focus { border-color: var(--blue); }
+        .search-box i {
+            position: absolute;
+            left: 11px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-300);
+            font-size: 13px;
+        }
+        .filter-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            position: relative;
-            overflow: hidden;
+            gap: 6px;
         }
-        .grid-container::after {
-            content: '';
-            position: absolute;
-            left: 50%; top: 0; bottom: 0;
-            width: 1px; background: #000;
+        .filter-grid select {
+            padding: 8px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            outline: none;
+            background: white;
         }
-        .grid-col {
-            display: flex; flex-direction: column;
-            padding: 0 12px;
-            overflow: hidden;
-        }
-
-        /* ── 문항 박스 ── */
-        .q-box {
-            padding: 10px 0;
-            border-bottom: 0.5px solid #eee;
-            flex-shrink: 0;
-        }
-        .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 4px; }
-        .answer-box {
-            border: 1px dashed #bbb;
-            min-height: 28mm;
-            margin-top: 8px;
-            background: #fafafa;
-        }
-        .choices { margin-top: 6px; line-height: 2; }
-
-        /* ── 해설지: 1열 ── */
-        .sol-col {
+        .list-scroll {
             flex: 1;
-            display: flex; flex-direction: column;
-            overflow: hidden;
+            overflow-y: auto;
+            min-height: 0;
         }
-        .sol-box {
-            padding: 10px 0;
-            border-bottom: 0.5px solid #eee;
-            flex-shrink: 0;
+        #exam-list { padding: 10px; }
+        .exam-item {
+            padding: 12px;
+            border: 1px solid var(--gray-100);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: 0.15s;
         }
-        .sol-step {
-            padding-left: 8px;
-            border-left: 2px solid #e2e8f0;
+        .exam-item:hover {
+            border-color: var(--blue);
+            background: var(--blue-light);
+        }
+        .exam-item.active {
+            border-color: var(--blue);
+            background: var(--blue-light);
+            box-shadow: inset 0 0 0 1px var(--blue);
+        }
+        .ex-grade {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--gray-500);
             margin-bottom: 4px;
-            font-size: 9pt;
+        }
+        .ex-title {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--gray-800);
         }
 
-        /* ── 정답표 ── */
-        .ans-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px; margin-top: 10px;
+        #question-list, #cart-list { padding: 0; }
+        .empty-box {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--gray-300);
+            font-size: 14px;
         }
-        .ans-cell {
-            border: 1px solid #000; padding: 8px;
-            display: flex; align-items: center; gap: 8px;
+        .q-item {
+            padding: 20px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .q-meta {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .q-body {
+            font-size: 14px;
+            line-height: 1.65;
+            margin-bottom: 15px;
+            color: var(--gray-800);
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+        .btn-add {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .btn-add:hover { background: var(--blue-dark); }
+        .btn-add.added {
+            background: var(--gray-200);
+            color: var(--gray-500);
+            cursor: default;
+        }
+
+        .cart-item {
+            padding: 12px;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .cart-info { flex: 1; min-width: 0; }
+        .c-title {
+            font-size: 11px;
+            color: var(--gray-500);
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .c-body {
+            font-size: 12px;
+            line-height: 1.45;
+            color: var(--gray-800);
+            max-height: 3.1em;
+            overflow: hidden;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+        .cart-ctrl {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+        .btn-small {
+            border: 1px solid var(--gray-200);
+            background: white;
+            padding: 4px 7px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .btn-small:hover { background: var(--gray-100); }
+        .btn-small.remove { color: var(--danger); }
+
+        .cart-footer {
+            padding: 18px;
+            border-top: 1px solid var(--gray-200);
+            background: white;
+        }
+        .cart-stats {
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .btn-print {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-print.main { background: var(--blue); color: white; }
+        .btn-print.main:hover { background: var(--blue-dark); }
+        .btn-print.sub { background: var(--gray-800); color: white; }
+        .btn-print.sub:hover { background: var(--gray-700); }
+
+        @media (max-width: 1024px) {
+            body { height: auto; min-height: 100vh; overflow: auto; }
+            main { flex-direction: column; overflow: visible; }
+            .panel { width: 100% !important; min-height: 320px; }
+            #panel-questions { min-width: unset; }
+            #panel-cart { min-height: 260px; }
         }
     </style>
 </head>
 <body>
+<header>
+    <div class="h-left">
+        <button class="btn-icon" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i> 목록으로</button>
+        <span class="h-title">믹서 출제</span>
+    </div>
+    <button class="btn-icon" onclick="resetCart()"><i class="fa-solid fa-trash-can"></i> 선택 비우기</button>
+</header>
 
-    <div id="mode-ctrl">
-        <h3 id="top-title" style="margin:0;">AP 수학 엔진</h3>
-        <div>
-            <button class="print-btn" onclick="window.print()">인쇄하기 / PDF 저장</button>
-            <button class="print-btn" style="background:#64748b; margin-left:10px;"
-                    onclick="history.back()">목록으로</button>
+<main>
+    <section class="panel" id="panel-exams">
+        <div class="filter-area">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="학교명, 과목, 학년, 시험 검색" oninput="renderExamList()">
+            </div>
+            <div class="filter-grid">
+                <select id="f-grade" onchange="renderExamList()">
+                    <option value="">학년 전체</option>
+                    <option value="고3">고3</option><option value="고2">고2</option><option value="고1">고1</option>
+                    <option value="중3">중3</option><option value="중2">중2</option>
+                </select>
+                <select id="f-year" onchange="renderExamList()"><option value="">연도 전체</option></select>
+                <select id="f-exam" onchange="renderExamList()">
+                    <option value="">시험 전체</option>
+                    <option value="1학기중간">1학기 중간</option><option value="1학기기말">1학기 기말</option>
+                    <option value="2학기중간">2학기 중간</option><option value="2학기기말">2학기 기말</option>
+                </select>
+            </div>
         </div>
-    </div>
+        <div class="list-scroll" id="exam-list"></div>
+    </section>
 
-    <div id="pdf-container">
-        <iframe id="pdf-viewer" src=""></iframe>
-    </div>
+    <section class="panel" id="panel-questions">
+        <div class="panel-header">문항 목록 <span id="q-count-info" class="panel-subtle"></span></div>
+        <div class="list-scroll" id="question-list">
+            <div class="empty-box">시험지를 선택해주세요.</div>
+        </div>
+    </section>
 
-    <div id="print-area"></div>
-
-    <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:85mm;"></div>
+    <section class="panel" id="panel-cart">
+        <div class="panel-header">선택 바구니 <span id="cart-total-top" class="panel-subtle">0문항</span></div>
+        <div class="list-scroll" id="cart-list">
+            <div class="empty-box">담긴 문항이 없습니다.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-stats">총 <span id="cart-total">0</span>문항 선택됨</div>
+            <div class="btn-group">
+                <button class="btn-print main" onclick="openMixed('exam')">시험지 보기</button>
+                <button class="btn-print sub" onclick="openMixed('sol')">해설지 보기</button>
+                <button class="btn-print sub" onclick="openMixed('ans')">정답표 보기</button>
+            </div>
+        </div>
+    </section>
+</main>
 
 <script>
-const AppState = { title: 'AP 수학', data: [], mode: 'exam', qpp: 4 };
-let pageCount = 0;
+let db = { exams: [] };
+let cart = [];
+let currentExamFile = null;
+let currentExamTitle = '';
+let currentQuestions = [];
 
-async function init() {
-    const p = new URLSearchParams(window.location.search);
-    AppState.mode  = p.get('mode')  || 'exam';
-    AppState.title = p.get('title') || 'AP 수학 기출';
-    AppState.qpp   = parseInt(p.get('qpp')) || 4;
+function examTypeLabel(examType) {
+    if (examType === 'mid') return '중간';
+    if (examType === 'final') return '기말';
+    return examType || '';
+}
 
-    const file    = p.get('file');
-    const dataUrl = p.get('data');
+function buildExamLabel(ex) {
+    return `${ex.year || ''}년 ${ex.grade || ''} ${ex.semester || ''}학기 ${examTypeLabel(ex.examType)}`.trim();
+}
 
-    document.getElementById('top-title').innerText = AppState.title;
+function getExamSearchText(ex) {
+    return [
+        ex.school || '',
+        ex.subject || '',
+        ex.grade || '',
+        ex.year || '',
+        ex.semester ? `${ex.semester}학기` : '',
+        examTypeLabel(ex.examType),
+        buildExamLabel(ex)
+    ].join(' ').toLowerCase();
+}
 
-    if (AppState.mode === 'pdf' && file) {
-        document.getElementById('pdf-container').style.display = 'block';
-        document.getElementById('pdf-viewer').src = file;
+async function loadDB() {
+    return new Promise(res => {
+        const s = document.createElement('script');
+        s.src = 'db.js?v=' + Date.now();
+        s.onload = () => {
+            db = window.mainDB || window.db || { exams: [] };
+            populateYearFilter();
+            renderExamList();
+            res();
+        };
+        s.onerror = () => {
+            alert('db.js를 불러오지 못했습니다.');
+            res();
+        };
+        document.body.appendChild(s);
+    });
+}
+
+function populateYearFilter() {
+    const years = [...new Set((db.exams || []).map(e => e.year))].filter(Boolean).sort((a, b) => b - a);
+    const sel = document.getElementById('f-year');
+    years.forEach(y => {
+        const opt = document.createElement('option');
+        opt.value = String(y);
+        opt.textContent = `${y}년`;
+        sel.appendChild(opt);
+    });
+}
+
+function renderExamList() {
+    const keyword = document.getElementById('search-input').value.trim().toLowerCase();
+    const grade = document.getElementById('f-grade').value;
+    const year = document.getElementById('f-year').value;
+    const exam = document.getElementById('f-exam').value;
+
+    const filtered = (db.exams || []).filter(ex => {
+        if (ex.type === 'hidden') return false;
+        const typeStr = ex.semester && ex.examType ? `${ex.semester}학기${examTypeLabel(ex.examType)}` : '';
+        const matchK = !keyword || getExamSearchText(ex).includes(keyword);
+        const matchG = !grade || ex.grade === grade;
+        const matchY = !year || String(ex.year) === String(year);
+        const matchE = !exam || typeStr === exam;
+        return matchK && matchG && matchY && matchE;
+    });
+
+    const container = document.getElementById('exam-list');
+    container.innerHTML = '';
+
+    if (filtered.length === 0) {
+        container.innerHTML = '<div class="empty-box">일치하는 시험지가 없습니다.</div>';
         return;
     }
 
-    document.getElementById('print-area').style.display = 'flex';
-
-    if (dataUrl === 'mixed') {
-        const raw = sessionStorage.getItem('mixedQuestions');
-        if (raw) { AppState.data = JSON.parse(raw); await renderEngine(); }
-    } else if (dataUrl) {
-        try {
-            const res = await fetch(dataUrl);
-            if (res.ok) { AppState.data = await res.json(); await renderEngine(); }
-        } catch (e) { console.error('Data load failed', e); }
-    }
-}
-
-async function renderEngine() {
-    const area = document.getElementById('print-area');
-    area.innerHTML = '';
-    pageCount = 0;
-
-    if (AppState.mode === 'ans') {
-        renderAnsGrid(area, AppState.data);
-    } else if (AppState.mode === 'sol') {
-        await renderSol(area, AppState.data);
-    } else {
-        await renderExam(area, AppState.data);
-    }
-}
-
-async function renderExam(area, bank) {
-    const perCol = AppState.qpp / 2;
-    const staging = document.getElementById('staging');
-    staging.innerHTML = '';
-
-    const boxes = bank.map((q, i) => {
-        const el = document.createElement('div');
-        el.className = 'q-box';
-        el.innerHTML = buildExamBox(q, i);
-        staging.appendChild(el);
-        return el;
+    filtered.forEach(ex => {
+        const item = document.createElement('div');
+        item.className = `exam-item ${currentExamFile === ex.file ? 'active' : ''}`;
+        item.dataset.file = ex.file || '';
+        item.innerHTML = `
+            <div class="ex-grade">${buildExamLabel(ex)}</div>
+            <div class="ex-title">${ex.school || ''} ${ex.subject || ''}</div>
+        `;
+        item.addEventListener('click', () => loadExamQuestions(ex));
+        container.appendChild(item);
     });
-
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
-    await raf();
-
-    for (let start = 0; start < boxes.length; start += AppState.qpp) {
-        const chunk = boxes.slice(start, start + AppState.qpp);
-        const page  = makePage(area, false);
-        const leftItems  = chunk.slice(0, perCol);
-        const rightItems = chunk.slice(perCol, perCol * 2);
-
-        leftItems.forEach(el  => page.cols[0].appendChild(el.cloneNode(true)));
-        rightItems.forEach(el => page.cols[1].appendChild(el.cloneNode(true)));
-    }
 }
 
-function buildExamBox(q, i) {
-    const num = i + 1;
-    const choicesHTML = q.choices
-        ? `<div class="choices">${q.choices.map((c, ci) =>
-              `<div>${['①','②','③','④','⑤'][ci] || (ci+1)+')'} ${c}</div>`).join('')}</div>`
-        : `<div class="answer-box"></div>`;
-    return `
-        <div class="q-num">${num}.</div>
-        <div>${q.content || q.question || ''}</div>
-        ${choicesHTML}`;
-}
+async function loadExamQuestions(examMeta) {
+    currentExamFile = examMeta.file;
+    currentExamTitle = `${examMeta.school || ''} ${examMeta.subject || ''}`.trim();
+    currentQuestions = [];
+    renderExamList();
 
-async function renderSol(area, bank) {
-    const staging = document.getElementById('staging');
-    staging.innerHTML = '';
+    const container = document.getElementById('question-list');
+    container.innerHTML = '<div class="empty-box">로딩 중...</div>';
+    document.getElementById('q-count-info').innerText = '';
 
-    const boxes = bank.map((q, i) => {
-        const el = document.createElement('div');
-        el.className = 'sol-box';
-        el.innerHTML = buildSolBox(q, i);
-        staging.appendChild(el);
-        return el;
-    });
+    const old = document.getElementById('exam-data-script');
+    if (old) old.remove();
+    delete window.questionBank;
 
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
-    await raf();
-
-    let cur = makePage(area, true);
-
-    boxes.forEach((el, i) => {
-        cur.col.appendChild(el.cloneNode(true));
-        if (cur.page.getBoundingClientRect().height > 1050) {
-            const last = cur.col.lastElementChild;
-            last.remove();
-            cur = makePage(area, true);
-            cur.col.appendChild(last);
+    const s = document.createElement('script');
+    s.id = 'exam-data-script';
+    s.src = 'exams/' + examMeta.file + '?v=' + Date.now();
+    s.onload = async () => {
+        const qb = window.questionBank;
+        currentQuestions = Array.isArray(qb) ? qb.map(q => ({ ...q })) : ((qb?.questions || qb?.problems || []).map(q => ({ ...q })));
+        delete window.questionBank;
+        s.remove();
+        renderQuestionList();
+        if (window.MathJax?.typesetPromise) {
+            await MathJax.typesetPromise([container]);
         }
-    });
+    };
+    s.onerror = () => {
+        currentQuestions = [];
+        container.innerHTML = '<div class="empty-box">문항을 불러오지 못했습니다.</div>';
+        document.getElementById('q-count-info').innerText = '';
+    };
+    document.body.appendChild(s);
 }
 
-function buildSolBox(q, i) {
-    const num = i + 1;
-    return `
-        <div class="q-num" style="margin-bottom:4px;">${num}. <span style="font-size:9pt;font-weight:normal;">${q.content || q.question || ''}</span></div>
-        <div style="margin-top:10px;">
-          ${q.solution_steps?.length
-            ? q.solution_steps.map((s,i)=>`<div style="padding-left:8px;border-left:2px solid #e2e8f0;margin-bottom:4px;"><b>[${i+1}단계]</b> ${s}</div>`).join('')
-            : `[해설] ${q.solution || '해설 없음'}`}
-        </div>`;
+function isQuestionAdded(q, idx) {
+    const qId = String(q.id ?? idx);
+    return cart.some(c => c._sourceFile === currentExamFile && String(c.id ?? c._originalIndex) === qId);
 }
 
-function renderAnsGrid(area, bank) {
-    const page = makePage(area, false, true);
-    const grid = document.createElement('div');
-    grid.className = 'ans-grid';
-    bank.forEach((q, i) => {
-        const cell = document.createElement('div');
-        cell.className = 'ans-cell';
-        cell.innerHTML = `<b style="font-size:11pt;min-width:24px;">${i+1}.</b>
-                          <span style="font-size:10pt;">${q.answer ?? '–'}</span>`;
-        grid.appendChild(cell);
-    });
-    page.body.appendChild(grid);
-    if (window.MathJax?.typesetPromise) MathJax.typesetPromise([page.body]);
-}
+function renderQuestionList() {
+    const container = document.getElementById('question-list');
+    container.innerHTML = '';
+    document.getElementById('q-count-info').innerText = currentQuestions.length ? `${currentQuestions.length}문항` : '';
 
-function makePage(area, isSol = false, isAns = false) {
-    pageCount++;
-    const page = document.createElement('div');
-    page.className = 'page';
-
-    const header = document.createElement('div');
-    header.className = 'page-header';
-    header.innerHTML = `<span>${AppState.title}</span><span>- ${pageCount} -</span>`;
-    page.appendChild(header);
-
-    if (isSol) {
-        const col = document.createElement('div');
-        col.className = 'sol-col';
-        page.appendChild(col);
-        area.appendChild(page);
-        return { page, col };
+    if (!currentQuestions.length) {
+        container.innerHTML = '<div class="empty-box">불러온 문항이 없습니다.</div>';
+        return;
     }
 
-    if (isAns) {
-        const body = document.createElement('div');
-        body.style.flex = '1';
-        page.appendChild(body);
-        area.appendChild(page);
-        return { page, body };
-    }
+    currentQuestions.forEach((q, idx) => {
+        const isAdded = isQuestionAdded(q, idx);
+        const item = document.createElement('div');
+        item.className = 'q-item';
+        item.innerHTML = `
+            <div class="q-meta">
+                <span>No. ${idx + 1}</span>
+                <span>${q.category || ''}</span>
+            </div>
+            <div class="q-body">${q.content || q.question || ''}</div>
+        `;
 
-    const grid = document.createElement('div');
-    grid.className = 'grid-container';
-    const left  = document.createElement('div');
-    left.className = 'grid-col';
-    const right = document.createElement('div');
-    right.className = 'grid-col';
-    grid.appendChild(left);
-    grid.appendChild(right);
-    page.appendChild(grid);
-    area.appendChild(page);
-    return { page, cols: [left, right] };
+        const btn = document.createElement('button');
+        btn.className = `btn-add ${isAdded ? 'added' : ''}`;
+        btn.textContent = isAdded ? '담겼음' : '+ 담기';
+        btn.disabled = isAdded;
+        btn.addEventListener('click', () => addQuestion(idx));
+
+        item.appendChild(btn);
+        container.appendChild(item);
+    });
+
+    if (window.MathJax?.typesetPromise) {
+        MathJax.typesetPromise([container]);
+    }
 }
 
-function raf() { return new Promise(r => requestAnimationFrame(r)); }
-window.onload = init;
+function addQuestion(originalIdx) {
+    const q = currentQuestions[originalIdx];
+    if (!q) return;
+
+    const qId = String(q.id ?? originalIdx);
+    const isDup = cart.some(c => c._sourceFile === currentExamFile && String(c.id ?? c._originalIndex) === qId);
+    if (isDup) return;
+
+    const item = {
+        ...q,
+        _sourceFile: currentExamFile,
+        _sourceTitle: currentExamTitle,
+        _originalIndex: originalIdx
+    };
+
+    cart.push(item);
+    renderCart();
+    renderQuestionList();
+}
+
+function renderCart() {
+    const container = document.getElementById('cart-list');
+    document.getElementById('cart-total').innerText = String(cart.length);
+    document.getElementById('cart-total-top').innerText = `${cart.length}문항`;
+
+    if (!cart.length) {
+        container.innerHTML = '<div class="empty-box">담긴 문항이 없습니다.</div>';
+        return;
+    }
+
+    container.innerHTML = '';
+    cart.forEach((c, idx) => {
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML = `
+            <div class="cart-info">
+                <div class="c-title">${c._sourceTitle} [${c._originalIndex + 1}번]</div>
+                <div class="c-body">${c.content || c.question || ''}</div>
+            </div>
+        `;
+
+        const ctrl = document.createElement('div');
+        ctrl.className = 'cart-ctrl';
+
+        const up = document.createElement('button');
+        up.className = 'btn-small';
+        up.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+        up.addEventListener('click', () => moveQuestionUp(idx));
+
+        const down = document.createElement('button');
+        down.className = 'btn-small';
+        down.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+        down.addEventListener('click', () => moveQuestionDown(idx));
+
+        const remove = document.createElement('button');
+        remove.className = 'btn-small remove';
+        remove.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        remove.addEventListener('click', () => removeQuestion(idx));
+
+        ctrl.appendChild(up);
+        ctrl.appendChild(down);
+        ctrl.appendChild(remove);
+        row.appendChild(ctrl);
+        container.appendChild(row);
+    });
+
+    if (window.MathJax?.typesetPromise) {
+        MathJax.typesetPromise([container]);
+    }
+}
+
+function removeQuestion(idx) {
+    cart.splice(idx, 1);
+    renderCart();
+    if (currentQuestions.length) renderQuestionList();
+}
+
+function moveQuestionUp(idx) {
+    if (idx <= 0) return;
+    [cart[idx - 1], cart[idx]] = [cart[idx], cart[idx - 1]];
+    renderCart();
+}
+
+function moveQuestionDown(idx) {
+    if (idx >= cart.length - 1) return;
+    [cart[idx + 1], cart[idx]] = [cart[idx], cart[idx + 1]];
+    renderCart();
+}
+
+function resetCart() {
+    if (!cart.length) return;
+    if (!confirm('선택한 문항을 모두 비우시겠습니까?')) return;
+    cart = [];
+    renderCart();
+    if (currentQuestions.length) renderQuestionList();
+}
+
+function openMixed(mode) {
+    if (!cart.length) {
+        alert('문항을 담아주세요.');
+        return;
+    }
+
+    const meta = {
+        title: `믹서 출제 (${cart.length}문항)`,
+        count: cart.length,
+        generatedAt: new Date().toISOString()
+    };
+
+    sessionStorage.setItem('mixedQuestions', JSON.stringify(cart));
+    sessionStorage.setItem('mixedMeta', JSON.stringify(meta));
+    window.open(`mixed_engine.html?mode=${mode}&qpp=4`, '_blank', 'noopener,noreferrer');
+}
+
+window.onload = loadDB;
 </script>
 </body>
 </html>
