@@ -236,7 +236,16 @@
         @media (max-width: 480px) {
             .card-grid { grid-template-columns: 1fr; }
             .top-nav { padding: 0 16px; }
-            .grade-nav { display: none; }
+            .grade-nav {
+                display: flex;
+                flex: 1;
+                overflow-x: auto;
+                white-space: nowrap;
+                gap: 2px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .grade-nav::-webkit-scrollbar { display: none; }
+            .nav-count { display: none; }
         }
     </style>
 </head>
