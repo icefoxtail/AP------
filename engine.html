@@ -457,7 +457,7 @@ async function loadData(dataUrl) {
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.mode = p.get('mode') || 'exam';
-    AppState.title = (p.get('title') || 'JS아카이브 기출').replace(/\s/g, '');
+    AppState.title = (p.get('title') || 'JS아카이브 기출');
 
     const rawQpp = parseInt(p.get('qpp'));
     AppState.qpp = isNaN(rawQpp) ? 4 : Math.max(2, Math.min(8, rawQpp));
@@ -499,10 +499,9 @@ function updateTabs(mode) {
 
 function switchMode(mode) {
     if (mode === AppState.mode) return;
-    const qpp = (mode === 'exam') ? AppState.qpp : 4;
     const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
-    url.searchParams.set('qpp', qpp);
+    url.searchParams.set('qpp', AppState.qpp);
     window.location.href = url.toString();
 }
 
@@ -740,7 +739,17 @@ function renderAnsGrid(area, bank) {
     const grid = document.createElement('div');
     grid.className = 'ans-grid';
 
-    bank.forEach((q, i) => {
+    const splitIndex = Math.ceil(bank.length / 2);
+    const orderedItems = [];
+
+    for (let i = 0; i < splitIndex; i++) {
+        orderedItems.push({ q: bank[i], qNum: i + 1 });
+        if (bank[splitIndex + i]) {
+            orderedItems.push({ q: bank[splitIndex + i], qNum: splitIndex + i + 1 });
+        }
+    }
+
+    orderedItems.forEach(({ q, qNum }) => {
         const cell = document.createElement('div');
         cell.className = 'ans-cell';
         const rawAns = String(q.answer ?? '–');
@@ -748,7 +757,7 @@ function renderAnsGrid(area, bank) {
             ? wrapLatex(rawAns)
             : rawAns;
 
-        cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${i + 1}.</b>
+        cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${qNum}.</b>
                           <span style="font-size:10.5pt;">${wrapLatex(displayAns)}</span>`;
         grid.appendChild(cell);
     });
