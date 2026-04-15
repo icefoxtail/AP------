@@ -94,6 +94,16 @@
             gap: 8px;
         }
         .panel-subtle { font-weight: 600; color: var(--gray-500); font-size: 12px; }
+        .panel-tools { display: flex; align-items: center; gap: 8px; }
+        .panel-select {
+            padding: 6px 8px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 12px;
+            background: white;
+            color: var(--gray-700);
+            outline: none;
+        }
 
         .filter-area {
             padding: 15px;
@@ -193,10 +203,34 @@
         .q-body {
             font-size: 14px;
             line-height: 1.65;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--gray-800);
             word-break: keep-all;
             overflow-wrap: anywhere;
+        }
+        .q-choices {
+            margin: 8px 0 14px;
+            padding: 10px 12px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--gray-700);
+        }
+        .q-choice { margin-bottom: 4px; }
+        .q-choice:last-child { margin-bottom: 0; }
+        .q-group-title {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            padding: 10px 20px;
+            background: #f8fafc;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--gray-700);
         }
         .btn-add {
             background: var(--blue);
@@ -329,7 +363,15 @@
     </section>
 
     <section class="panel" id="panel-questions">
-        <div class="panel-header">문항 목록 <span id="q-count-info" class="panel-subtle"></span></div>
+        <div class="panel-header">
+            <div>문항 목록 <span id="q-count-info" class="panel-subtle"></span></div>
+            <div class="panel-tools">
+                <select id="q-view-mode" class="panel-select" onchange="renderQuestionList()">
+                    <option value="default">기본순</option>
+                    <option value="category">단원별 묶음</option>
+                </select>
+            </div>
+        </div>
         <div class="list-scroll" id="question-list">
             <div class="empty-box">시험지를 선택해주세요.</div>
         </div>
@@ -486,6 +528,38 @@ function isQuestionAdded(q, idx) {
     return cart.some(c => c._sourceFile === currentExamFile && String(c.id ?? c._originalIndex) === qId);
 }
 
+function extractChoiceText(choice) {
+    if (choice === null || choice === undefined) return '';
+    if (typeof choice === 'object') {
+        return choice.text || choice.content || choice.value || choice.answer || Object.values(choice)[0] || '';
+    }
+    return String(choice);
+}
+
+function buildChoicesHTML(q) {
+    if (!Array.isArray(q.choices) || !q.choices.length) return '';
+    const circled = ['①','②','③','④','⑤'];
+    const validChoices = q.choices
+        .map(extractChoiceText)
+        .filter(v => String(v).trim() !== '' && String(v).trim() !== '주관식');
+
+    if (!validChoices.length) return '';
+    return `<div class="q-choices">${validChoices.map((choice, idx) => `<div class="q-choice">${circled[idx] || (idx + 1) + ')'} ${choice}</div>`).join('')}</div>`;
+}
+
+function getQuestionRenderOrder() {
+    const mode = document.getElementById('q-view-mode')?.value || 'default';
+    const mapped = currentQuestions.map((q, idx) => ({ q, idx }));
+    if (mode !== 'category') return mapped;
+
+    return mapped.sort((a, b) => {
+        const ca = String(a.q.category || '기타');
+        const cb = String(b.q.category || '기타');
+        if (ca === cb) return a.idx - b.idx;
+        return ca.localeCompare(cb, 'ko');
+    });
+}
+
 function renderQuestionList() {
     const container = document.getElementById('question-list');
     container.innerHTML = '';
@@ -496,16 +570,30 @@ function renderQuestionList() {
         return;
     }
 
-    currentQuestions.forEach((q, idx) => {
+    const renderItems = getQuestionRenderOrder();
+    const groupMode = (document.getElementById('q-view-mode')?.value || 'default') === 'category';
+    let lastCategory = null;
+
+    renderItems.forEach(({ q, idx }) => {
+        const category = String(q.category || '기타');
+        if (groupMode && category !== lastCategory) {
+            const groupTitle = document.createElement('div');
+            groupTitle.className = 'q-group-title';
+            groupTitle.textContent = category;
+            container.appendChild(groupTitle);
+            lastCategory = category;
+        }
+
         const isAdded = isQuestionAdded(q, idx);
         const item = document.createElement('div');
         item.className = 'q-item';
         item.innerHTML = `
             <div class="q-meta">
                 <span>No. ${idx + 1}</span>
-                <span>${q.category || ''}</span>
+                <span>${category}</span>
             </div>
             <div class="q-body">${q.content || q.question || ''}</div>
+            ${buildChoicesHTML(q)}
         `;
 
         const btn = document.createElement('button');
@@ -559,7 +647,7 @@ function renderCart() {
         row.className = 'cart-item';
         row.innerHTML = `
             <div class="cart-info">
-                <div class="c-title">${c._sourceTitle} [${c._originalIndex + 1}번]</div>
+                <div class="c-title">${c._sourceTitle} [${c._originalIndex + 1}번] · ${c.category || '기타'}</div>
                 <div class="c-body">${c.content || c.question || ''}</div>
             </div>
         `;
@@ -626,14 +714,25 @@ function openMixed(mode) {
         return;
     }
 
+    const categorySet = [...new Set(cart.map(q => q.category || '기타'))];
     const meta = {
         title: `믹서 출제 (${cart.length}문항)`,
         count: cart.length,
+        categories: categorySet,
         generatedAt: new Date().toISOString()
     };
 
-    sessionStorage.setItem('mixedQuestions', JSON.stringify(cart));
-    sessionStorage.setItem('mixedMeta', JSON.stringify(meta));
+    const payload = JSON.stringify(cart);
+    const metaPayload = JSON.stringify(meta);
+
+    try {
+        localStorage.setItem('mixedQuestions', payload);
+        localStorage.setItem('mixedMeta', metaPayload);
+    } catch (e) {}
+
+    sessionStorage.setItem('mixedQuestions', payload);
+    sessionStorage.setItem('mixedMeta', metaPayload);
+
     window.open(`mixed_engine.html?mode=${mode}&qpp=4`, '_blank', 'noopener,noreferrer');
 }
 

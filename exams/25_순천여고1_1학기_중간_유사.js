@@ -1,11 +1,9 @@
 window.examTitle = "25_순천여고1_1학기_중간_유사";
+
 window.questionBank = [
   {
     "id": 1,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "1"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "1" },
     "type": "single",
     "level": "하",
     "category": "다항식의 연산",
@@ -16,17 +14,14 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "2"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "2" },
     "type": "single",
     "level": "하",
     "category": "다항식의 인수분해",
     "content": "<div>다항식 $27x^{3}+54x^{2}+36x+8$ 를 인수분해하면 $(ax+b)^{3}$ 일 때, 상수 $a, b$ 에 대하여 $ab$ 의 값은? [4.0점]</div>",
     "choices": ["① 3", "② 4", "③ 5", "④ 6", "⑤ 7"],
     "answer": "④",
-    "solution": "세제곱 합의 공식 $(A+B)^3$ 의 역산을 이용한다. $27x^3 = (3x)^3$ 이고 $8 = 2^3$ 이므로 $(3x+2)^3 = (3x)^3 + 3(3x)^2(2) + 3(3x)(2^2) + 2^3$ 이다. 따라서 $a=3, b=2$ 이며 $ab = 3 \\\\times 2 = 6$ 이다."
+    "solution": "세제곱 합의 공식 $(A+B)^3$ 의 역산을 이용한다. $27x^3 = (3x)^3$ 이고 $8 = 2^3$ 이므로 $(3x+2)^3 = (3x)^3 + 3(3x)^2(2) + 3(3x)(2^2) + 2^3$ 이다. 따라서 $a=3, b=2$ 이며 $ab = 3 \\times 2 = 6$ 이다."
   },
   {
     "id": 3,
@@ -44,199 +39,157 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "4"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "4" },
     "type": "single",
     "level": "하",
     "category": "나머지 정리",
     "content": "<div>다항식 $x^{5}+15x^{4}-2x+k$ 를 $x+1$ 로 나눈 나머지가 $10$ 일 때, 상수 $k$ 의 값은? [4.2점]</div>",
     "choices": ["① -16", "② -6", "③ -4", "④ 6", "⑤ 16"],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 나머지 정리 $P(\\\\alpha)=R$ 적용<br>\\\\\\(\\\\because P(x) = x^{5}+15x^{4}-2x+k\\\\\\)<br>\\\\\\(\\\\implies P(-1) = (-1)^{5}+15(-1)^{4}-2(-1)+k = 10\\\\\\)<br>\\\\\\(\\\\implies -1+15+2+k = 10\\\\\\)<br>\\\\\\(\\\\implies 16+k = 10\\\\\\)<br>\\\\\\(\\\\therefore k = -6\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 나머지 정리 $P(\\alpha)=R$ 적용<br>$\\because P(x) = x^{5}+15x^{4}-2x+k$<br>$\\implies P(-1) = (-1)^{5}+15(-1)^{4}-2(-1)+k = 10$<br>$\\implies -1+15+2+k = 10$<br>$\\implies 16+k = 10$<br>$\\therefore k = -6$"
   },
   {
     "id": 5,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "5"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "5" },
     "type": "single",
     "level": "중",
     "category": "이차함수의 최대최소",
-    "content": "<div>[중] $-1 \\\\le x \\\\le 1$ 에서 이차함수 $y=-x^{2}+4x+5$ 의 최댓값과 최솟값의 합은? [4.3점]</div>",
+    "content": "<div>[중] $-1 \\le x \\le 1$ 에서 이차함수 $y=-x^{2}+4x+5$ 의 최댓값과 최솟값의 합은? [4.3점]</div>",
     "choices": ["① 0", "② 7", "③ 8", "④ 9", "⑤ 17"],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 표준형 변환 및 제한된 범위 내 단조성 확인<br>\\\\\\(\\\\because y = -(x-2)^{2}+9\\\\\\)<br>\\\\\\(\\\\implies \\\\text{축 } x=2 \\\\text{ 가 범위 } [-1, 1] \\\\text{ 우측에 존재}\\\\\\\\\\)<br>\\\\\\(\\\\implies x=1 \\\\text{ 에서 최댓값 } M = 8\\\\\\)<br>\\\\\\(\\\\implies x=-1 \\\\text{ 에서 최솟값 } m = 0\\\\\\)<br>\\\\\\(\\\\therefore M+m = 8+0 = 8\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 표준형 변환 및 제한된 범위 내 단조성 확인<br>$\\because y = -(x-2)^{2}+9$<br>$\\implies \\text{축 } x=2 \\text{ 가 범위 } [-1, 1] \\text{ 우측에 존재}$<br>$\\implies x=1 \\text{ 에서 최댓값 } M = 8$<br>$\\implies x=-1 \\text{ 에서 최솟값 } m = 0$<br>$\\therefore M+m = 8+0 = 8$"
   },
   {
     "id": 6,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "6"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "6" },
     "type": "single",
     "level": "하",
     "category": "다항식의 나눗셈",
     "content": "<div>다항식 $2x^{2}-7x+9$ 를 $x-2$ 로 나누는 과정에서 (몫을 $ax+c$, 나머지를 $b$ 라 할 때) 미정계수 $a, b$ 에 대하여 $a+b$ 의 값은? [4.3점]</div>",
     "choices": ["① -1", "② 2", "③ 3", "④ 5", "⑤ 6"],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 나눗셈의 관계식 $A=BQ+R$ 수립<br>\\\\\\(\\\\implies 2x^{2}-7x+9 = (x-2)(ax+c)+b\\\\\\)<br>\\\\\\(\\\\implies 2x^{2}-7x+9 = (x-2)(2x-3)+3\\\\\\)<br>\\\\\\(\\\\implies a=2, b=3\\\\\\)<br>\\\\\\(\\\\therefore a+b = 5\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 나눗셈의 관계식 $A=BQ+R$ 수립<br>$\\implies 2x^{2}-7x+9 = (x-2)(ax+c)+b$<br>$\\implies 2x^{2}-7x+9 = (x-2)(2x-3)+3$<br>$\\implies a=2, b=3$<br>$\\therefore a+b = 5$"
   },
   {
     "id": 7,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "7"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "7" },
     "type": "single",
     "level": "중",
     "category": "나머지 정리",
     "content": "<div>[중] 다항식 $P(x)$ 를 $x-2$ 로 나눈 나머지는 $3$, $x-4$ 로 나눈 나머지는 $11$ 이다. $P(x)$ 를 $x^{2}-6x+8$ 로 나눈 나머지 $R(x)$ 에 대하여 $R(6)$ 의 값은? [4.4점]</div>",
     "choices": ["① -19", "② -5", "③ 4", "④ 19", "⑤ 24"],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 2차식 나눗셈의 나머지 $R(x)=ax+b$ 설정<br>\\\\\\(\\\\because P(2)=3, P(4)=11\\\\\\)<br>\\\\\\(\\\\implies R(2)=2a+b=3, R(4)=4a+b=11\\\\\\)<br>\\\\\\(\\\\implies 2a=8 \\\\implies a=4, b=-5\\\\\\)<br>\\\\\\(\\\\implies R(x) = 4x-5\\\\\\)<br>\\\\\\(\\\\therefore R(6) = 24-5 = 19\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 2차식 나눗셈의 나머지 $R(x)=ax+b$ 설정<br>$\\because P(2)=3, P(4)=11$<br>$\\implies R(2)=2a+b=3, R(4)=4a+b=11$<br>$\\implies 2a=8 \\implies a=4, b=-5$<br>$\\implies R(x) = 4x-5$<br>$\\therefore R(6) = 24-5 = 19$"
   },
   {
     "id": 8,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "8"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "8" },
     "type": "single",
     "level": "하",
     "category": "곱셈 공식의 변형",
     "content": "<div>실수 $x, y$ 에 대하여 $x-y=2, x^{2}+y^{2}=10$ 일 때, $x^{3}-y^{3}$ 의 값은? [4.4점]</div>",
     "choices": ["① 3", "② 8", "③ 14", "④ 18", "⑤ 26"],
     "answer": "⑤",
-    "solution": "<b>[Logical Anchor]</b> 곱셈 공식의 변형 $(x-y)^{2}$ 및 $x^{3}-y^{3}$ 활용<br>\\\\\\(\\\\because x^{2}+y^{2} = (x-y)^{2}+2xy\\\\\\)<br>\\\\\\(\\\\implies 10 = 2^{2}+2xy \\\\implies 10 = 4+2xy \\\\implies 2xy = 6 \\\\implies xy = 3\\\\\\)<br>\\\\\\(\\\\implies x^{3}-y^{3} = (x-y)^{3}+3xy(x-y)\\\\\\\\\\)<br>\\\\\\(\\\\implies 2^{3}+3(3)(2) = 8+18 = 26\\\\\\)<br>\\\\\\(\\\\therefore x^{3}-y^{3} = 26\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 곱셈 공식의 변형 $(x-y)^{2}$ 및 $x^{3}-y^{3}$ 활용<br>$\\because x^{2}+y^{2} = (x-y)^{2}+2xy$<br>$\\implies 10 = 2^{2}+2xy \\implies 10 = 4+2xy \\implies 2xy = 6 \\implies xy = 3$<br>$\\implies x^{3}-y^{3} = (x-y)^{3}+3xy(x-y)$<br>$\\implies 2^{3}+3(3)(2) = 8+18 = 26$<br>$\\therefore x^{3}-y^{3} = 26$"
   },
   {
     "id": 9,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "9"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "9" },
     "type": "single",
     "level": "중",
     "category": "행렬",
-    "content": "<div>[중] 이차 정사각행렬 $A$ 의 성분이 $a_{ij} = \\\\begin{cases} i+j & (i=j) \\\\\\\\ i-j^{2} & (i \\\\neq j) \\\\end{cases}$ 일 때, &lt;보기&gt; 중 옳은 것만을 고른 것은? [4.5점]<br><div class='box'>&lt;보 기&gt;<br>ㄱ. 제 2열의 모든 성분의 합은 1이다.<br>ㄴ. 제 1행은 $(2, -3)$ 이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div></div>",
+    "content": "<div>[중] 이차 정사각행렬 $A$ 의 성분이 $a_{ij} = \\begin{cases} i+j & (i=j) \\\\ i-j^{2} & (i \\neq j) \\end{cases}$ 일 때, &lt;보기&gt; 중 옳은 것만을 고른 것은? [4.5점]<br><div class='box'>&lt;보 기&gt;<br>ㄱ. 제 2열의 모든 성분의 합은 1이다.<br>ㄴ. 제 1행은 $(2, -3)$ 이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div></div>",
     "choices": ["① ㄱ", "② ㄴ, ㄷ", "③ ㄱ, ㄴ", "④ ㄱ, ㄷ", "⑤ ㄱ, ㄴ, ㄷ"],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>\\\\\\(\\\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4\\\\\\)<br>\\\\\\(\\\\implies A = \\\\begin{pmatrix} 2 & -3 \\\\\\\\ 1 & 4 \\\\end{pmatrix}\\\\\\\\\\)<br>\\\\\\(\\\\implies \\\\text{ㄱ. } -3+4=1 \\\\text{ (참)}\\\\\\\\\\)<br>\\\\\\(\\\\implies \\\\text{ㄴ. } (2, -3) \\\\text{ (참)}\\\\\\\\\\)<br>\\\\\\(\\\\implies \\\\text{ㄷ. } -3-2(2)=-7 \\\\neq 1 \\\\text{ (거짓)}\\\\\\\\\\)<br>\\\\\\(\\\\therefore \\\\text{ㄱ, ㄴ}\\\\\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>$\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4$<br>$\\implies A = \\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$<br>$\\implies \\text{ㄱ. } -3+4=1 \\text{ (참)}$<br>$\\implies \\text{ㄴ. } (2, -3) \\text{ (참)}$<br>$\\implies \\text{ㄷ. } -3-2(2)=-7 \\neq 1 \\text{ (거짓)}$<br>$\\therefore \\text{ㄱ, ㄴ}$"
   },
   {
     "id": 10,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "10"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "10" },
     "type": "single",
     "level": "상",
     "category": "이차방정식의 판별식",
     "content": "<div>[상] 이차방정식 $x^{2}-2(k-3)x+k^{2}-24=0$ 이 실근을 갖기 위한 양의 정수 $k$ 의 개수는? [4.4점]</div>",
     "choices": ["① 3", "② 4", "③ 5", "④ 6", "⑤ 8"],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D \\\\ge 0$ 조건 활용<br>\\\\\\(\\\\because \\\\frac{D}{4} = (k-3)^{2}-(k^{2}-24) \\\\ge 0\\\\\\)<br>\\\\\\(\\\\implies k^{2}-6k+9-k^{2}+24 \\\\ge 0\\\\\\)<br>\\\\\\(\\\\implies -6k+33 \\\\ge 0 \\\\implies 6k \\\\le 33 \\\\implies k \\\\le 5.5\\\\\\)<br>\\\\\\(\\\\therefore k \\\\in \\\\{1, 2, 3, 4, 5\\\\} \\\\implies 5\\\\text{개}\\\\\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D \\ge 0$ 조건 활용<br>$\\because \\frac{D}{4} = (k-3)^{2}-(k^{2}-24) \\ge 0$<br>$\\implies k^{2}-6k+9-k^{2}+24 \\ge 0$<br>$\\implies -6k+33 \\ge 0 \\implies 6k \\le 33 \\implies k \\le 5.5$<br>$\\therefore k \\in \\{1, 2, 3, 4, 5\\} \\implies 5\\text{개}$"
   },
   {
     "id": 11,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "11"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "11" },
     "type": "single",
     "level": "하",
     "category": "복소수의 연산",
-    "content": "<div>실수 $a, b$ 에 대하여 등식 $\\\\frac{2}{i}+\\\\frac{4}{i^{2}}+\\\\frac{6}{i^{3}}+\\\\frac{8}{i^{4}} = a+bi$ 가 성립할 때, $a-b$ 의 값은? [4.5점]</div>",
+    "content": "<div>실수 $a, b$ 에 대하여 등식 $\\frac{2}{i}+\\frac{4}{i^{2}}+\\frac{6}{i^{3}}+\\frac{8}{i^{4}} = a+bi$ 가 성립할 때, $a-b$ 의 값은? [4.5점]</div>",
     "choices": ["① -4", "② 0", "③ 2", "④ 4", "⑤ 8"],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> $i$ 의 주기성 및 실수화<br>\\\\\\(\\\\because \\\\frac{2}{i}=-2i, \\\\frac{4}{i^{2}}=-4, \\\\frac{6}{i^{3}}=6i, \\\\frac{8}{i^{4}}=8\\\\\\)<br>\\\\\\(\\\\implies (-2i-4+6i+8) = 4+4i\\\\\\)<br>\\\\\\(\\\\implies a=4, b=4\\\\\\)<br>\\\\\\(\\\\therefore a-b = 4-4 = 0\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> $i$ 의 주기성 및 실수화<br>$\\because \\frac{2}{i}=-2i, \\frac{4}{i^{2}}=-4, \\frac{6}{i^{3}}=6i, \\frac{8}{i^{4}}=8$<br>$\\implies (-2i-4+6i+8) = 4+4i$<br>$\\implies a=4, b=4$<br>$\\therefore a-b = 4-4 = 0$"
   },
   {
     "id": 12,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "12"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "12" },
     "type": "single",
     "level": "하",
     "category": "복소수의 연산",
-    "content": "<div>복소수 $z=\\\\frac{3+i}{1-i}$ 에 대하여 $z+\\\\bar{z}$ 의 값은? (단, $\\\\bar{z}$ 는 $z$ 의 켤레복소수이다.) [4.5점]</div>",
+    "content": "<div>복소수 $z=\\frac{3+i}{1-i}$ 에 대하여 $z+\\bar{z}$ 의 값은? (단, $\\bar{z}$ 는 $z$ 의 켤레복소수이다.) [4.5점]</div>",
     "choices": ["① -2", "② 1", "③ 2", "④ 3", "⑤ 4"],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 복소수의 나눗셈(유리화) 및 켤레복소수의 성질 $z+\\\\bar{z}=2\\\\operatorname{Re}(z)$<br>\\\\\\(\\\\because z = \\\\frac{(3+i)(1+i)}{(1-i)(1+i)} = \\\\frac{3+3i+i-1}{1^{2}+1^{2}} = \\\\frac{2+4i}{2} = 1+2i\\\\\\)<br>\\\\\\(\\\\implies \\\\bar{z} = 1-2i\\\\\\)<br>\\\\\\(\\\\therefore z+\\\\bar{z} = (1+2i) + (1-2i) = 2\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 복소수의 나눗셈(유리화) 및 켤레복소수의 성질 $z+\\bar{z}=2\\operatorname{Re}(z)$<br>$\\because z = \\frac{(3+i)(1+i)}{(1-i)(1+i)} = \\frac{3+3i+i-1}{1^{2}+1^{2}} = \\frac{2+4i}{2} = 1+2i$<br>$\\implies \\bar{z} = 1-2i$<br>$\\therefore z+\\bar{z} = (1+2i) + (1-2i) = 2$"
   },
   {
     "id": 13,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "13"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "13" },
     "type": "single",
     "level": "상",
     "category": "다항식의 전개",
     "content": "<div>[상] 다항식 $(x-3)(x-1)(x+2)(x+4)$ 를 전개한 식에서 $x^{3}$ 의 계수를 $a$, $x^{2}$ 의 계수를 $b$ 라 할 때, $a+b$ 의 값은? [4.6점]</div>",
     "choices": ["① -13", "② -11", "③ -9", "④ 2", "⑤ 11"],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 치환을 위한 항 재배치 및 전개<br>\\\\\\(\\\\implies \\\\{(x-3)(x+4)\\\\\\}\\\\{(x-1)(x+2)\\\\\\}\\\\\\\\\\)<br>\\\\\\(\\\\implies (x^{2}+x-12)(x^{2}+x-2)\\\\\\\\\\)<br>\\\\\\(\\\\implies (x^{2}+x)^{2}-14(x^{2}+x)+24\\\\\\)<br>\\\\\\(\\\\implies x^{4}+2x^{3}+x^{2}-14x^{2}-14x+24\\\\\\)<br>\\\\\\(\\\\implies x^{4}+2x^{3}-13x^{2}-14x+24\\\\\\)<br>\\\\\\(\\\\implies a=2, b=-13 \\\\implies a+b=-11\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 치환을 위한 항 재배치 및 전개<br>$\\implies \\{(x-3)(x+4)\\}\\{(x-1)(x+2)\\}$<br>$\\implies (x^{2}+x-12)(x^{2}+x-2)$<br>$\\implies (x^{2}+x)^{2}-14(x^{2}+x)+24$<br>$\\implies x^{4}+2x^{3}+x^{2}-14x^{2}-14x+24$<br>$\\implies x^{4}+2x^{3}-13x^{2}-14x+24$<br>$\\implies a=2, b=-13 \\implies a+b=-11$"
   },
   {
     "id": 14,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "14"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "14" },
     "type": "single",
     "level": "중",
     "category": "이차방정식의 근과 계수",
-    "content": "<div>[중] 이차방정식 $x^{2}-4x-3=0$ 의 두 근을 $\\\\alpha, \\\\beta$ 라 할 때, $\\\\frac{\\\\alpha-1}{\\\\beta}, \\\\frac{\\\\beta-1}{\\\\alpha}$ 을 두 근으로 하는 이차방정식 $x^{2}+ax+b=0$ 에 대하여 $a-b$ 의 값은? [4.6점]</div>",
+    "content": "<div>[중] 이차방정식 $x^{2}-4x-3=0$ 의 두 근을 $\\alpha, \\beta$ 라 할 때, $\\frac{\\alpha-1}{\\beta}, \\frac{\\beta-1}{\\alpha}$ 을 두 근으로 하는 이차방정식 $x^{2}+ax+b=0$ 에 대하여 $a-b$ 의 값은? [4.6점]</div>",
     "choices": ["① -8", "② -4", "③ 2", "④ 4", "⑤ 8"],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 새로운 근의 합과 곱 계산<br>\\\\\\(\\\\because \\\\alpha+\\\\beta=4, \\\\alpha\\\\beta=-3\\\\\\)<br>\\\\\\(\\\\implies \\\\text{합: } \\\\frac{\\\\alpha^{2}-\\\\alpha+\\\\beta^{2}-\\\\beta}{\\\\alpha\\\\beta} = \\\\frac{(\\\\alpha+\\\\beta)^{2}-2\\\\alpha\\\\beta-(\\\\alpha+\\\\beta)}{\\\\alpha\\\\beta} = \\\\frac{16-2(-3)-4}{-3} = \\\\frac{18}{-3} = -6 = -a \\\\implies a=6\\\\\\)<br>\\\\\\(\\\\implies \\\\text{곱: } \\\\frac{(\\\\alpha-1)(\\\\beta-1)}{\\\\alpha\\\\beta} = \\\\frac{\\\\alpha\\\\beta-(\\\\alpha+\\\\beta)+1}{\\\\alpha\\\\beta} = \\\\frac{-3-4+1}{-3} = \\\\frac{-6}{-3} = 2 = b\\\\\\)<br>\\\\\\(\\\\therefore a-b = 6-2 = 4\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 새로운 근의 합과 곱 계산<br>$\\because \\alpha+\\beta=4, \\alpha\\beta=-3$<br>$\\implies \\text{합: } \\frac{\\alpha^{2}-\\alpha+\\beta^{2}-\\beta}{\\alpha\\beta} = \\frac{(\\alpha+\\beta)^{2}-2\\alpha\\beta-(\\alpha+\\beta)}{\\alpha\\beta} = \\frac{16-2(-3)-4}{-3} = \\frac{18}{-3} = -6 = -a \\implies a=6$<br>$\\implies \\text{곱: } \\frac{(\\alpha-1)(\\beta-1)}{\\alpha\\beta} = \\frac{\\alpha\\beta-(\\alpha+\\beta)+1}{\\alpha\\beta} = \\frac{-3-4+1}{-3} = \\frac{-6}{-3} = 2 = b$<br>$\\therefore a-b = 6-2 = 4$"
   },
   {
     "id": 15,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "15"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "15" },
     "type": "single",
     "level": "하",
     "category": "다항식의 연산",
     "content": "<div>다항식 $x^{2}-4x-2=0$ 일 때, $x^{4}-4x^{3}-8x+7$ 의 값은? [4.7점]</div>",
     "choices": ["① -11", "② 3", "③ 7", "④ 11", "⑤ 15"],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 주어진 식을 이용한 고차식의 차수 낮추기<br>\\\\\\(\\\\because x^{2}-4x=2\\\\\\)<br>\\\\\\(\\\\implies x^{4}-4x^{3}-8x+7 = x^{2}(x^{2}-4x)-8x+7\\\\\\)<br>\\\\\\(\\\\implies x^{2}(2)-8x+7 = 2x^{2}-8x+7 = 2(x^{2}-4x)+7\\\\\\)<br>\\\\\\(\\\\therefore 2(2)+7 = 11\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 주어진 식을 이용한 고차식의 차수 낮추기<br>$\\because x^{2}-4x=2$<br>$\\implies x^{4}-4x^{3}-8x+7 = x^{2}(x^{2}-4x)-8x+7$<br>$\\implies x^{2}(2)-8x+7 = 2x^{2}-8x+7 = 2(x^{2}-4x)+7$<br>$\\therefore 2(2)+7 = 11$"
   },
   {
     "id": 16,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "16"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "16" },
     "type": "single",
     "level": "상",
     "category": "이차함수의 최대최소",
-    "content": "<div>[상] $x \\\\ge 2$ 인 실수 $x$ 에 대하여 세 모서리의 길이가 각각 $x-2, x+1, x+3$ 인 직육면체의 겉넓이의 최솟값은? [4.7점]</div>",
+    "content": "<div>[상] $x \\ge 2$ 인 실수 $x$ 에 대하여 세 모서리의 길이가 각각 $x-2, x+1, x+3$ 인 직육면체의 겉넓이의 최솟값은? [4.7점]</div>",
     "choices": ["① 24", "② 30", "③ 32", "④ 36", "⑤ 40"],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 겉넓이 함수 $S(x)$ 구성 및 정의역 내 최솟값 추적<br>\\\\\\(\\\\because S(x) = 2\\\\{(x-2)(x+1) + (x+1)(x+3) + (x-2)(x+3)\\\\\\}\\\\\\\\\\)<br>\\\\\\(\\\\implies S(x) = 2\\\\{(x^{2}-x-2) + (x^{2}+4x+3) + (x^{2}+x-6)\\\\\\}\\\\\\\\\\)<br>\\\\\\(\\\\implies S(x) = 2(3x^{2}+4x-5) = 6x^{2}+8x-10\\\\\\)<br>\\\\\\(\\\\because x \\\\ge 2$ 에서 $S(x)$ 는 증가함수\\\\\\\\<br>\\\\\\(\\\\therefore S(2) = 6(4)+8(2)-10 = 24+16-10 = 30\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 겉넓이 함수 $S(x)$ 구성 및 정의역 내 최솟값 추적<br>$\\because S(x) = 2\\{(x-2)(x+1) + (x+1)(x+3) + (x-2)(x+3)\\}$<br>$\\implies S(x) = 2\\{(x^{2}-x-2) + (x^{2}+4x+3) + (x^{2}+x-6)\\}$<br>$\\implies S(x) = 2(3x^{2}+4x-5) = 6x^{2}+8x-10$<br>$\\because x \\ge 2$ 에서 $S(x)$ 는 증가함수<br>$\\therefore S(2) = 6(4)+8(2)-10 = 24+16-10 = 30$"
   },
   {
     "id": 17,
-    "source_metadata": {
-      "page_number": 0,
-      "original_id": "17"
-    },
+    "source_metadata": { "page_number": 0, "original_id": "17" },
     "type": "single",
     "level": "상",
     "category": "행렬",
-    "content": "<div>[상] 소수 $p$ 와 $100$ 이하의 자연수 $x, y$ 에 대하여 두 행렬 $A = \\\\begin{pmatrix} xy-p & 0 \\\\\\\\ 0 & x-y \\\\end{pmatrix}, B = \\\\begin{pmatrix} x+y-1 & 0 \\\\\\\\ 0 & p-1 \\\\end{pmatrix}$ 가 $A=B$ 이다. $p$ 의 최댓값은? [4.8점]</div>",
+    "content": "<div>[상] 소수 $p$ 와 $100$ 이하의 자연수 $x, y$ 에 대하여 두 행렬 $A = \\begin{pmatrix} xy-p & 0 \\\\ 0 & x-y \\end{pmatrix}, B = \\begin{pmatrix} x+y-1 & 0 \\\\ 0 & p-1 \\end{pmatrix}$ 가 $A=B$ 이다. $p$ 의 최댓값은? [4.8점]</div>",
     "choices": ["① 89", "② 91", "③ 97", "④ 99", "⑤ 101"],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 행렬 상등 조건 및 소수 성질 활용<br>\\\\\\(\\\\because xy-p = x+y-1 \\\\implies xy-x-y+1 = p \\\\implies (x-1)(y-1) = p\\\\\\)<br>\\\\\\(\\\\because x-y = p-1\\\\\\)<br>\\\\\\(\\\\implies p$ 가 소수이므로 $x-1=p, y-1=1 \\\\implies x=p+1, y=2\\\\\\)<br>\\\\\\(\\\\because x \\\\le 100 \\\\implies p+1 \\\\le 100 \\\\implies p \\\\le 99\\\\\\)<br>\\\\\\(\\\\therefore 99 \\\\text{ 이하의 최대 소수는 } 97\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 행렬 상등 조건 및 소수 성질 활용<br>$\\because xy-p = x+y-1 \\implies xy-x-y+1 = p \\implies (x-1)(y-1) = p$<br>$\\because x-y = p-1$<br>$\\implies p$ 가 소수이므로 $x-1=p, y-1=1 \\implies x=p+1, y=2$<br>$\\because x \\le 100 \\implies p+1 \\le 100 \\implies p \\le 99$<br>$\\therefore 99 \\text{ 이하의 최대 소수는 } 97$"
   },
   {
     "id": 18,

@@ -432,7 +432,7 @@ let pageCount = 0;
 
 async function loadData(dataUrl) {
     if (dataUrl === 'mixed') {
-        const raw = sessionStorage.getItem('mixedQuestions');
+        const raw = localStorage.getItem('mixedQuestions') || sessionStorage.getItem('mixedQuestions');
         return raw ? JSON.parse(raw) : [];
     }
 
@@ -456,7 +456,7 @@ async function loadData(dataUrl) {
 
 async function init() {
     const p = new URLSearchParams(window.location.search);
-    const mixedMetaRaw = sessionStorage.getItem('mixedMeta');
+    const mixedMetaRaw = localStorage.getItem('mixedMeta') || sessionStorage.getItem('mixedMeta');
     let mixedMeta = {};
     try {
         mixedMeta = mixedMetaRaw ? JSON.parse(mixedMetaRaw) : {};
@@ -499,7 +499,7 @@ async function init() {
             await renderEngine();
         } else {
             const area = document.getElementById('print-area');
-            area.innerHTML = '<div style="padding:48px 20px;text-align:center;color:#64748b;font-family:Pretendard,sans-serif;">저장된 믹서 문항이 없습니다. mixer.html에서 문항을 먼저 담아주세요.</div>';
+            area.innerHTML = '<div style="padding:48px 20px;text-align:center;color:#64748b;font-family:Pretendard,sans-serif;">저장된 믹서 문항이 없습니다. 문항을 담은 뒤 다시 열어주세요.<br>같은 도메인/같은 폴더에서 mixer.html과 mixed_engine.html을 함께 열어야 합니다.</div>';
         }
     }
 }
