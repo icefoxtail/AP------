@@ -709,6 +709,29 @@ function keywordScore(target, pattern, base) {
     return base + patternNorm.length;
 }
 
+function isNonUnitCategory(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return true;
+
+    const compact = normalizeText(raw);
+
+    if (/^(서답형|객관식|주관식|선택형|단답형)\s*\d*$/i.test(raw)) return true;
+    if (/^(no\.?|문항|번호)\s*\d+$/i.test(raw)) return true;
+    if (/^[0-9]+$/.test(compact)) return true;
+
+    const blocked = [
+        '서답형', '객관식', '주관식', '선택형', '단답형',
+        '배점', '문항', '번호', 'no'
+    ];
+
+    return blocked.some(token => compact === normalizeText(token) || compact.startsWith(normalizeText(token)));
+}
+
+function getFallbackUnitName(rawCategory) {
+    return isNonUnitCategory(rawCategory) ? '미분류' : (String(rawCategory || '').trim() || '미분류');
+}
+
+
 function inferStandardUnit(examMeta, question) {
     const schemaKey = detectCourseKey(examMeta);
     const schema = schemaKey ? STANDARD_UNIT_SCHEMA[schemaKey] : null;
@@ -716,7 +739,7 @@ function inferStandardUnit(examMeta, question) {
     const rawContent = String(question.content || question.question || '').trim();
 
     if (!schema) {
-        const fallbackName = rawCategory || '미분류';
+        const fallbackName = getFallbackUnitName(rawCategory);
         return {
             standardTrack: 'UNKNOWN',
             standardCourse: String(examMeta?.subject || examMeta?.grade || '미분류'),
@@ -746,12 +769,13 @@ function inferStandardUnit(examMeta, question) {
     });
 
     if (!best) {
+        const fallbackName = getFallbackUnitName(rawCategory);
         return {
             standardTrack: schema.track,
             standardCourse: schema.courseName,
             standardUnitType: schema.unitType,
-            standardUnitKey: `UNCLASSIFIED-${schema.courseName}`,
-            standardUnitName: rawCategory || '미분류',
+            standardUnitKey: fallbackName === '미분류' ? `UNCLASSIFIED-${schema.courseName}` : `RAW-${normalizeText(fallbackName) || 'unclassified'}`,
+            standardUnitName: fallbackName,
             standardUnitOrder: 999
         };
     }

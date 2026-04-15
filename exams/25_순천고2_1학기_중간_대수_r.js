@@ -31,12 +31,13 @@ window.questionBank = [
     category: "일반각과 사분면",
     solution: "* ① $135^\\circ$ (2사분면)\\n* ② $-240^\\circ = 120^\\circ$ (2사분면)\\n* ③ $510^\\circ = 150^\\circ$ (2사분면)\\n* ④ $\\frac{29}{6}\\pi = 4\\pi + \\frac{5}{6}\\pi = 150^\\circ$ (2사분면)\\n* ⑤ $-855^\\circ = -720^\\circ - 135^\\circ = 225^\\circ$ (3사분면)"
   },
-  {
+   {
     id: "5",
-    content: "함수 $y=2^{x-a}+b$의 그래프가 다음 그림(y절편 2, 점근선 y=-2)과 같을 때, $ab$의 값은? (단, a, b는 상수이고 점선은 그래프의 점근선이다.) (3.5점)",    choices: ["4", "2", "1", "-2", "-4"],
+    content: "함수 $y=2^{x-a}+b$의 그래프가 다음 그림과 같을 때, $ab$의 값은? (단, a, b는 상수이고 점선은 그래프의 점근선이다.) (3.5점)<br><div class='flex justify-center my-4'><svg width='280' height='220' viewBox='-100 -160 320 230' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrowhead' markerWidth='10' markerHeight='7' refX='0' refY='3.5' orient='auto'><polygon points='0 0, 10 3.5, 0 7' fill='#000'/></marker></defs><!-- 좌표축 (광각 뷰포트 적용) --><line x1='-90' y1='0' x2='200' y2='0' stroke='#000' stroke-width='1.2' marker-end='url(#arrowhead)'/><line x1='0' y1='60' x2='0' y2='-140' stroke='#000' stroke-width='1.2' marker-end='url(#arrowhead)'/><!-- 점근선 y = -2 (1단위=25px, SVG y=50) --><line x1='-90' y1='50' x2='200' y2='50' stroke='#000' stroke-width='1' stroke-dasharray='4 3'/><!-- 지수함수 y = 2^{x+2}-2 (y절편 2 -> SVG y=-50) --><path d='M -100 48 Q -20 48 0 -50 T 25 -155' fill='none' stroke='#000' stroke-width='1.8'/><!-- 수치 라벨 (y축 인접 배치) --><text x='190' y='18' font-family='serif' font-style='italic' font-size='14'>x</text><text x='-20' y='-130' font-family='serif' font-style='italic' font-size='14'>y</text><text x='8' y='-45' font-family='serif' font-size='14'>2</text><text x='8' y='68' font-family='serif' font-size='14'>-2</text><text x='-18' y='18' font-family='serif' font-size='14'>O</text></svg></div>",
+    choices: ["4", "2", "1", "-2", "-4"],
     answer: "①",
     category: "지수함수의 그래프와 평행이동",
-    solution: "* 점근선 $y=-2$ 이므로 $b=-2$\\n* $y절편 (0, 2)$ 대입: $2 = 2^{-a} - 2 \\implies 2^{-a} = 4 = 2^2 \\implies a = -2$\\n* $ab = (-2) \\times (-2) = 4$\\n* 정답: ① (소스 데이터의 answer '1'은 보기 1번인 '4'를 의미함)"
+    solution: "[Solution]\n\n점근선의 방정식 $y = b$ 가 $y = -2$ 이므로 $\\rightarrow b = -2$\n함수 $y = 2^{x-a} - 2$ 가 점 $(0, 2)$ 를 지나므로\n$2 = 2^{0-a} - 2 \\rightarrow 2^{-a} = 4 = 2^2$\n$\\therefore a = -2$\n구하는 값 $ab = (-2) \\times (-2) = 4$\n\n---\n\n[Conclusion]\n\nAnswer: ①"
   },
   {
     id: "6",
