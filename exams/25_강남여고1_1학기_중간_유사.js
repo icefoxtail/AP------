@@ -1,3 +1,5 @@
+window.examTitle = "25_강남여고1_1학기_중간_유사";
+
 window.questionBank = [
   {
     "id": 1,

@@ -16,7 +16,7 @@ window.questionBank = [
         content: "다음 중 순환마디를 옳게 나타낸 것을 고르면? [3점]",
         choices: ["$0.6333\\dots \\rightarrow 63$", "$29.05909090\\dots \\rightarrow 90$", "$0.373737\\dots \\rightarrow 73$", "$47.273273273\\dots \\rightarrow 2732$", "$5.8170581705\\dots \\rightarrow 58170$"],
         answer: "②",
-        solution: "**[Logical Anchor]** 순환마디는 소수점 아래에서 일정하게 반복되는 가장 짧은 부분임.\\n② $29.059090\\dots$ 에서 소수점 아래 $90$이 반복됨.\\n$\\therefore$ 순환마디는 $90$임."
+        solution: "<b>[Logical Anchor]</b> 순환마디는 소수점 아래에서 일정하게 반복되는 가장 짧은 부분임.\\n② $29.059090\\dots$ 에서 소수점 아래 $90$이 반복됨.\\n$\\therefore$ 순환마디는 $90$임."
     },
     {
         id: 2,
@@ -25,7 +25,7 @@ window.questionBank = [
         content: "다음 순환소수를 $x$라 하고 분수로 나타낼 때 사용하는 식으로 적절하지 않은 것을 고르면? [4점]",
         choices: ["$3.2\\dot{4}\\dot{5} \\Rightarrow 1000x - 10x$", "$0.567\\dot{7} \\Rightarrow 1000x - x$", "$2.0\\dot{3} \\Rightarrow 100x - 10x$", "$5.\\dot{4}3\\dot{1} \\Rightarrow 1000x - x$", "$1.\\dot{4} \\Rightarrow 10x - x$"],
         answer: "②",
-        solution: "**[Logical Anchor]** 순환마디 끝을 소수점 위로 보내는 $10^n$에서 마디 시작 전까지 보내는 $10^m$을 빼야 함.\\n② $x = 0.567\\dot{7} = 0.56777\\dots$ \\n$1000x = 567.777\\dots$ 이며, 순환하지 않는 부분인 소수점 아래 두 번째 자리까지를 빼야 하므로\\n$\\implies 1000x - 100x$ 가 적절함.\\n$\\therefore$ ②"
+        solution: "<b>[Logical Anchor]</b> 순환마디 끝을 소수점 위로 보내는 $10^n$에서 마디 시작 전까지 보내는 $10^m$을 빼야 함.\\n② $x = 0.567\\dot{7} = 0.56777\\dots$ \\n$1000x = 567.777\\dots$ 이며, 순환하지 않는 부분인 소수점 아래 두 번째 자리까지를 빼야 하므로\\n$\\implies 1000x - 100x$ 가 적절함.\\n$\\therefore$ ②"
     },
     {
         id: 3,
@@ -43,7 +43,7 @@ window.questionBank = [
         content: "다음 중 옳은 것은? [4점]",
         choices: ["순환소수는 모두 유리수이다.", "모든 무한소수는 유리수가 아니다.", "정수가 아닌 유리수는 모두 순환소수이다.", "유한소수 중에는 유리수가 아닌 것도 있다.", "순환소수는 유한소수이다."],
         answer: "①",
-        solution: "**[Logical Anchor]** 유리수는 분수 $\\frac{b}{a}$ ($a, b$는 정수, $a \\neq 0$) 꼴로 나타낼 수 있는 수임.\\n① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\\n② 무한소수 중 순환소수는 유리수임.\\n③ 정수가 아닌 유리수는 유한소수이거나 순환소수임.\\n④ 유한소수는 모두 유리수임.\\n$\\therefore$ ①"
+        solution: "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{b}{a}$ ($a, b$는 정수, $a \\neq 0$) 꼴로 나타낼 수 있는 수임.\\n① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\\n② 무한소수 중 순환소수는 유리수임.\\n③ 정수가 아닌 유리수는 유한소수이거나 순환소수임.\\n④ 유한소수는 모두 유리수임.\\n$\\therefore$ ①"
     },
     {
         id: 5,
@@ -97,7 +97,7 @@ window.questionBank = [
         content: "분할된 선분들로 이루어진 도형의 둘레의 길이를 $a, b$에 관한 식으로 나타내면? [4점]",
         choices: ["$10a+6b$", "$10a+7b$", "$8a+8b$", "$10a+8b$", "$12a+8b$"],
         answer: "④",
-        solution: "**[Logical Anchor]** 계단 모양 도형의 둘레는 외부 큰 직사각형의 둘레와 같음.\\n가로의 총합과 세로의 총합을 각각 구하여 $2$배 함.\\n$\\implies 10a + 8b$ (상세 수치 매핑 적용)\\n$\\therefore 10a + 8b$"
+        solution: "<b>[Logical Anchor]</b> 계단 모양 도형의 둘레는 외부 큰 직사각형의 둘레와 같음.\\n가로의 총합과 세로의 총합을 각각 구하여 $2$배 함.\\n$\\implies 10a + 8b$ (상세 수치 매핑 적용)\\n$\\therefore 10a + 8b$"
     },
     {
         id: 11,

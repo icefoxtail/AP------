@@ -1,3 +1,5 @@
+window.examTitle = "24_왕운중3_1학기_중간_중3_r";
+
 window.questionBank = [
   {
     "id": 1,

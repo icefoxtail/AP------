@@ -16,7 +16,7 @@ window.questionBank = [
         content: "$\\frac{(\\text{정수})}{(\\text{0이 아닌 정수})}$의 꼴로 나타낼 수 없는 수는? (정답 2개) [4점]",
         choices: ["$5$", "$\\pi$", "$-0.121212...$", "$1.121231234...$", "$\\frac{1}{3}$"],
         answer: "②, ④",
-        solution: "**[Logical Anchor]** 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수임.\\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\\n$\\therefore$ ②, ④"
+        solution: "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수임.\\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\\n$\\therefore$ ②, ④"
     },
     {
         id: 2,
@@ -133,7 +133,7 @@ window.questionBank = [
         content: "$\\overline{AB}=\\overline{AC}, \\angle A=38^\\circ$일 때, $\\angle B$ 이등분선과 $\\angle C$ 외각 이등분선 교점 $D$의 각 $\\angle BDC$는? [4점]",
         choices: ["$18^\\circ$", "$19^\\circ$", "$20^\\circ$", "$21^\\circ$", "$22^\\circ$"],
         answer: "②",
-        solution: "**[Logical Anchor]** $\\angle D = \\frac{1}{2} \\angle A$ 성질 이용.\\n$\\therefore \\angle D = \\frac{38}{2} = 19^\\circ$"
+        solution: "<b>[Logical Anchor]</b> $\\angle D = \\frac{1}{2} \\angle A$ 성질 이용.\\n$\\therefore \\angle D = \\frac{38}{2} = 19^\\circ$"
     },
     {
         id: 15,

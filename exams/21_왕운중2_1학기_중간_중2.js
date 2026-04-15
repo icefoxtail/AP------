@@ -224,7 +224,7 @@ window.questionBank = [
       "$\\frac{11}{2}ab + \\frac{3}{2}b^2$"
     ],
     "answer": "⑤",
-    "solution": "직사각형 ABCD의 전체 넓이에서 주변 3개의 직각삼각형 넓이를 빼어 $\\triangle AEF$의 넓이를 구한다.\\n전체 넓이: $3b \\times (5a+b) = 15ab+3b^2$\\n$\\triangle ABE$ 넓이: $\\frac{1}{2} \\times 2a \\times 3b = 3ab$\\n$\\triangle ECF$ 넓이: $\\frac{1}{2} \\times (5a+b-2a) \\times b = \\frac{1}{2} \\times (3a+b) \\times b = \\frac{3}{2}ab+\\frac{1}{2}b^2$\\n$\\triangle FDA$ 넓이: $\\frac{1}{2} \\times (5a+b) \\times (3b-b) = \\frac{1}{2} \\times (5a+b) \\times 2b = 5ab+b^2$\\n$\\triangle AEF = (15ab+3b^2) - \\left(3ab + \\frac{3}{2}ab+\\frac{1}{2}b^2 + 5ab+b^2\\right)$\\n$= (15ab+3b^2) - \\left(\\frac{19}{2}ab + \\frac{3}{2}b^2\\right) = \\frac{11}{2}ab + \\frac{3}{2}b^2$\\n$\\therefore$ ⑤\\n\\n**[Figure]**\\n$AB \\perp BC$, $BC \\perp CD$, $CD \\perp DA$"
+    "solution": "직사각형 ABCD의 전체 넓이에서 주변 3개의 직각삼각형 넓이를 빼어 $\\triangle AEF$의 넓이를 구한다.\\n전체 넓이: $3b \\times (5a+b) = 15ab+3b^2$\\n$\\triangle ABE$ 넓이: $\\frac{1}{2} \\times 2a \\times 3b = 3ab$\\n$\\triangle ECF$ 넓이: $\\frac{1}{2} \\times (5a+b-2a) \\times b = \\frac{1}{2} \\times (3a+b) \\times b = \\frac{3}{2}ab+\\frac{1}{2}b^2$\\n$\\triangle FDA$ 넓이: $\\frac{1}{2} \\times (5a+b) \\times (3b-b) = \\frac{1}{2} \\times (5a+b) \\times 2b = 5ab+b^2$\\n$\\triangle AEF = (15ab+3b^2) - \\left(3ab + \\frac{3}{2}ab+\\frac{1}{2}b^2 + 5ab+b^2\\right)$\\n$= (15ab+3b^2) - \\left(\\frac{19}{2}ab + \\frac{3}{2}b^2\\right) = \\frac{11}{2}ab + \\frac{3}{2}b^2$\\n$\\therefore$ ⑤\\n\\n<b>[Figure]</b>\\n$AB \\perp BC$, $BC \\perp CD$, $CD \\perp DA$"
   },
   {
     "id": 16,

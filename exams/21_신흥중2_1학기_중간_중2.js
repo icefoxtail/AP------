@@ -17,7 +17,7 @@ window.questionBank = [
         content: "다음 중 옳은 것을 2개 고르면? [4점]",
         choices: ["모든 소수는 유리수이다.", "무한소수는 순환소수이다.", "모든 순환소수는 분수로 나타낼 수 있다.", "유리수는 모두 유한소수로 나타낼 수 있다.", "기약분수의 분모에 2 또는 5 이외의 소인수가 있으면 순환소수이다."],
         answer: "③, ⑤",
-        solution: "**[Logical Anchor]** 유리수와 소수의 분류 정의를 명확히 함.\\n③ 모든 순환소수는 분수로 나타낼 수 있는 유리수임. (참)\\n⑤ 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 순환소수가 됨. (참)\\n$\\because$ ① 무한소수 중 비순환소수는 무리수임. ② 무한소수에는 비순환소수도 포함됨. ④ $\\frac{1}{3}$ 등은 무한소수임.\\n$\\therefore$ ③, ⑤"
+        solution: "<b>[Logical Anchor]</b> 유리수와 소수의 분류 정의를 명확히 함.\\n③ 모든 순환소수는 분수로 나타낼 수 있는 유리수임. (참)\\n⑤ 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 순환소수가 됨. (참)\\n$\\because$ ① 무한소수 중 비순환소수는 무리수임. ② 무한소수에는 비순환소수도 포함됨. ④ $\\frac{1}{3}$ 등은 무한소수임.\\n$\\therefore$ ③, ⑤"
     },
     {
         id: 2,
@@ -53,7 +53,7 @@ window.questionBank = [
         content: "다음 중 순환소수의 표현으로 옳지 않은 것은? [4점]",
         choices: ["$0.1515\\dots=0.\\dot{1}\\dot{5}$", "$0.57878\\dots=0.5\\dot{7}\\dot{8}$", "$3.690690\\dots=3.\\dot{6}9\\dot{0}$", "$4.0404\\dots=4.\\dot{0}\\dot{4}$", "$5.34242\\dots=5.3\\dot{4}\\dot{2}$"],
         answer: "④",
-        solution: "**[Logical Anchor]** 순환마디의 시작과 끝점 위에만 점을 찍음.\\n② $0.57878\\dots$에서 순환마디는 $78$임.\\n$\\implies$ $0.5\\dot{7}\\dot{8}$로 표기하는 것이 옳으나, 원문 기호의 배치 규칙을 재확인함.\\n(※ 보기 구성상 ②번이 정답으로 제시됨)\\n$\\therefore$ ②"
+        solution: "<b>[Logical Anchor]</b> 순환마디의 시작과 끝점 위에만 점을 찍음.\\n② $0.57878\\dots$에서 순환마디는 $78$임.\\n$\\implies$ $0.5\\dot{7}\\dot{8}$로 표기하는 것이 옳으나, 원문 기호의 배치 규칙을 재확인함.\\n(※ 보기 구성상 ②번이 정답으로 제시됨)\\n$\\therefore$ ②"
     },
     {
         id: 6,
@@ -107,7 +107,7 @@ window.questionBank = [
         content: "$\\frac{36^9}{54^6} = 2^a, \\frac{9^6+9^6+9^6}{3^4+3^4+3^4} = 3^b$ 일 때 $a-b$의 값은? [4점]",
         choices: ["-1", "0", "4", "5", "6"],
         answer: "③",
-        solution: "**[Logical Anchor]** 밑을 소인수분해하여 지수법칙을 적용함.\\n(1) $\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{12} \\implies a = 12$\\n(2) $\\frac{3 \\times 9^6}{3 \\times 3^4} = \\frac{(3^2)^6}{3^4} = \\frac{3^{12}}{3^4} = 3^8 \\implies b = 8$\\n$\\therefore a-b = 12 - 8 = 4$"
+        solution: "<b>[Logical Anchor]</b> 밑을 소인수분해하여 지수법칙을 적용함.\\n(1) $\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{12} \\implies a = 12$\\n(2) $\\frac{3 \\times 9^6}{3 \\times 3^4} = \\frac{(3^2)^6}{3^4} = \\frac{3^{12}}{3^4} = 3^8 \\implies b = 8$\\n$\\therefore a-b = 12 - 8 = 4$"
     },
     {
         id: 12,
@@ -134,7 +134,7 @@ window.questionBank = [
         content: "반지름의 길이가 $2ab$인 원뿔의 부피가 $48\\pi a^3b^2-24\\pi a^2b^3$일 때, 이 원뿔의 높이는? [4점]",
         choices: ["$12a-28b$", "$24a-18b$", "$36a-18b$", "$48a-18b$", "$48ab-28b$"],
         answer: "③",
-        solution: "**[Logical Anchor]** $(\\text{원뿔 부피}) = \\frac{1}{3} \\pi r^2 h$\\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{1}{3} \\pi (2ab)^2 h$\\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{4}{3} \\pi a^2b^2 h$\\n양변을 $\\frac{4}{3} \\pi a^2b^2$로 나눔.\\n$h = (48\\pi a^3b^2 - 24\\pi a^2b^3) \\times \\frac{3}{4\\pi a^2b^2}$\\n$h = 36a - 18b$\\n$\\therefore 36a - 18b$"
+        solution: "<b>[Logical Anchor]</b> $(\\text{원뿔 부피}) = \\frac{1}{3} \\pi r^2 h$\\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{1}{3} \\pi (2ab)^2 h$\\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{4}{3} \\pi a^2b^2 h$\\n양변을 $\\frac{4}{3} \\pi a^2b^2$로 나눔.\\n$h = (48\\pi a^3b^2 - 24\\pi a^2b^3) \\times \\frac{3}{4\\pi a^2b^2}$\\n$h = 36a - 18b$\\n$\\therefore 36a - 18b$"
     },
     {
         id: 15,
