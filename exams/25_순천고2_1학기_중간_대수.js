@@ -92,10 +92,11 @@ window.questionBank = [
   },
   {
     id: "13",
-    content: "아래 그림과 같은 두 부채꼴 AOB, COD에 대하여 $\\overset{\\frown}{\\text{AB}}=2\\pi$, $\\overset{\\frown}{\\text{CD}}=\\frac{4}{3}\\pi$이다. 색칠한 부분의 넓이가 $5\\pi$일 때, $\\angle\\text{AOB}$의 크기는? (4.3점)",    choices: ["\\frac{\\pi}{9}", "\\frac{\\pi}{6}", "\\frac{2\\pi}{9}", "\\frac{5\\pi}{18}", "\\frac{\\pi}{3}"],
+    content: "아래 그림과 같은 두 부채꼴 AOB, COD에 대하여 $\\overset{\\frown}{\\text{AB}}=2\\pi$, $\\overset{\\frown}{\\text{CD}}=\\frac{4}{3}\\pi$이다. 색칠한 부분의 넓이가 $5\\pi$일 때, $\\angle\\text{AOB}$의 크기는? (4.3점)<br><div class='flex justify-center my-4'><svg width='200' height='180' viewBox='0 0 200 180' xmlns='http://www.w3.org/2000/svg'><path d='M 100 160 L 170 48 A 140 140 0 0 0 30 48 Z' fill='none' stroke='#000' stroke-width='1.5'/><path d='M 147 85 A 93 93 0 0 0 53 85 L 30 48 A 140 140 0 0 0 170 48 Z' fill='gray' fill-opacity='0.2'/><path d='M 147 85 A 93 93 0 0 0 53 85' fill='none' stroke='#000' stroke-width='1.5'/><text x='95' y='175' font-family='serif' font-size='14'>O</text><text x='175' y='45' font-family='serif' font-size='14'>A</text><text x='15' y='45' font-family='serif' font-size='14'>B</text><text x='152' y='90' font-family='serif' font-size='14'>C</text><text x='38' y='90' font-family='serif' font-size='14'>D</text></svg></div>",
+    choices: ["\\frac{\\pi}{9}", "\\frac{\\pi}{6}", "\\frac{2\\pi}{9}", "\\frac{5\\pi}{18}", "\\frac{\\pi}{3}"],
     answer: "③",
     category: "부채꼴의 호의 길이와 넓이",
-    solution: "* $R\\theta = 2\\pi, r\\theta = \\frac{4}{3}\\pi \\implies (R-r)\\theta = \\frac{2}{3}\\pi$\\n* 넓이: $\\frac{1}{2}(R+r)(R-r)\\theta = 5\\pi \\implies \\frac{1}{2}(2\\pi + \\frac{4}{3}\\pi)(R-r) = 5\\pi$\\n* $R-r = 3$ 대입: $3\\theta = \\frac{2}{3}\\pi \\implies \\theta = \\frac{2}{9}\\pi$"
+    solution: "[Solution]\n\n두 부채꼴의 반지름을 $R, r$, 중심각을 $\\theta$라 하면\n$R\\theta = 2\\pi, r\\theta = \\frac{4}{3}\\pi \\rightarrow (R-r)\\theta = \\frac{2}{3}\\pi \\cdots ①$\n색칠한 부분의 넓이 $S = \\frac{1}{2}(R^2 - r^2)\\theta = \\frac{1}{2}(R+r)(R-r)\\theta = 5\\pi$\n①을 대입하면 $\\frac{1}{2}(R+r) \\cdot \\frac{2}{3}\\pi = 5\\pi \\rightarrow R+r = 15$\n$R+r = \\frac{2\\pi}{\\theta} + \\frac{4\\pi}{3\\theta} = \\frac{10\\pi}{3\\theta} = 15 \\rightarrow \\theta = \\frac{2\\pi}{9}$\n\n---\n\n[Conclusion]\n\nAnswer: ③"
   },
   {
     id: "14",
@@ -168,12 +169,13 @@ window.questionBank = [
     category: "지수법칙과 부정방정식",
     solution: "* $b = a^{m-6} \\implies a^m = a^{n(m-6)} \\implies m = n(m-6)$\\n* $m = 6 + 6/(n-1) \\implies n-1$은 6의 약수. $n=\{2, 3, 4, 7\}$로 4개."
   },
-  {
+ {
     id: "24",
-    content: "아래 그림과 같이 함수 $y=a^{x-2}$, 함수 $y=\\log_a(x-2)$의 그래프와 함수 $y=-x+6$의 그래프의 교점을 각각 A, B라 하고 $y=-x+6$과 $y$축의 교점을 C라 하면 $\\overline{\\text{AB}}:\\overline{\\text{AC}}=2:3$이다. 이때 $a$의 값을 구하는 과정을 풀이 과정과 함께 서술하시오. (단, $a>1$) (6점)",    choices: [],
+    content: "아래 그림과 같이 함수 $y=a^{x-2}$, 함수 $y=\\log_a(x-2)$의 그래프와 함수 $y=-x+6$의 그래프의 교점을 각각 A, B라 하고 $y=-x+6$과 $y$축의 교점을 C라 하면 $\\overline{\\text{AB}}:\\overline{\\text{AC}}=2:3$이다. 이때 $a$의 값을 구하는 과정을 풀이 과정과 함께 서술하시오. (단, $a>1$) (6점)<br><div class='flex justify-center my-4'><svg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='40' y1='200' x2='220' y2='200' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='210' x2='40' y2='20' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='50' x2='190' y2='200' stroke='black' stroke-width='1.5'/><path d='M 42 198 Q 100 195 115 125 C 122 80 125 40 128 15' fill='none' stroke='#000' stroke-width='1.8'/><path d='M 92 230 Q 95 185 165 175 C 205 170 230 165 245 162' fill='none' stroke='#000' stroke-width='1.8'/><circle cx='40' cy='50' r='2.5' fill='black'/><text x='20' y='55' font-size='14' font-family='serif' font-style='italic'>C</text><circle cx='115' cy='125' r='2.5' fill='black'/><text x='102' y='120' font-size='14' font-family='serif' font-style='italic'>A</text><circle cx='165' cy='175' r='2.5' fill='black'/><text x='170' y='170' font-size='14' font-family='serif' font-style='italic'>B</text><text x='225' y='215' font-size='13' font-family='serif' font-style='italic'>x</text><text x='20' y='25' font-size='13' font-family='serif' font-style='italic'>y</text><text x='20' y='215' font-size='14' font-family='serif' font-style='italic'>O</text></svg></div>",
+    choices: [],
     answer: "3",
     category: "지수·로그함수의 역함수 관계",
-    solution: "* 평행이동 전 $y=a^x, y=\\log_a x$의 교점 $A'(p, q)$에서 $p+q=4$\\n* 비례식 $3(q-p) = 2(p+2) \\implies p=1, q=3$. $3 = a^1 \\implies a=3$"
+    solution: "[Solution]\n\n두 함수 $y = a^{x-2}$ 와 $y = \\log_a(x-2)$ 는 직선 $y = x-2$ 에 대하여 대칭이다.\n직선 $y = -x+6$ 과 대칭축 $y = x-2$ 의 교점을 $M$ 이라 하면 $-x+6 = x-2 \\rightarrow M(4, 2)$ 이다.\n교점 $A, B$ 는 점 $M$ 에 대하여 대칭이므로 $M$ 은 선분 $AB$ 의 중점이다.\n$C(0, 6)$ 과 $M(4, 2)$ 사이의 거리 $\\overline{CM} = \\sqrt{(4-0)^2 + (2-6)^2} = 4\\sqrt{2}$ 이다.\n$\\overline{AB} : \\overline{AC} = 2 : 3$ 이고 $\\overline{AM} = \\frac{1}{2}\\overline{AB}$ 이므로 $\\overline{AM} : \\overline{AC} = 1 : 3$ 이다.\n점 $A$ 는 선분 $CM$ 을 $3 : 1$ 로 내분하는 점이므로\n$A = ( \\frac{3 \\cdot 4 + 1 \\cdot 0}{4}, \\frac{3 \\cdot 2 + 1 \\cdot 6}{4} ) = (3, 3)$\n점 $A(3, 3)$ 을 $y = a^{x-2}$ 에 대입하면 $3 = a^{3-2} \\rightarrow \\therefore a = 3$\n\n---\n\n[Conclusion]\n\nAnswer: 3"
   }
 ];
 

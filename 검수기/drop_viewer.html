@@ -8,13 +8,13 @@
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true // [통합] 수식 내 역슬래시 인식 강화
+                processEscapes: true
             },
             options: {
                 enableMenu: false
             },
             svg: {
-                fontCache: 'global' // [변경] 로컬 기호 깨짐 방지를 위해 SVG 방식 사용
+                fontCache: 'global'
             }
         };
     </script>
@@ -132,7 +132,6 @@
             background-color: #cbd5e1;
         }
 
-        /* [통합 수정] 인라인 수식 줄바꿈 방지 및 블록 수식($$) 스크롤 지원 */
         mjx-container[display="true"] {
             overflow-x: auto;
             overflow-y: hidden;
@@ -193,34 +192,21 @@
         const titleElem = document.getElementById('exam-title');
         const listElem = document.getElementById('question-list');
 
-        // [통합 수정] 수식 깨짐 방지를 위한 치환 순서 및 로직 보강
         function humanizeText(raw) {
             if (raw == null) return '';
-
             let text = String(raw);
-
-            // 1. 역슬래시 복원: \\를 \로 먼저 변환하여 LaTeX 명령어 보존
             text = text.replace(/\\\\/g, '\\');
-            
-            // 2. 이스케이프 문자 처리
             text = text.replace(/\\n/g, '<br>');
             text = text.replace(/\\\$/g, '$');
-
-            // 3. 특수 기호 보정: 유니코드 ≠를 LaTeX 표준 \ne로 강제 치환
             text = text.replace(/≠/g, '\\ne ');
-
-            // 4. 마크다운 볼드 처리
             text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
             return text;
         }
 
-        // [복구] 기존 파일 파싱 로직 100% 보존
         function getQuestionBankAndTitle(parsed, fallbackTitle) {
             if (Array.isArray(parsed)) {
                 return { examTitle: fallbackTitle, questionBank: parsed };
             }
-
             if (parsed && typeof parsed === 'object') {
                 if (Array.isArray(parsed.questionBank)) {
                     return { examTitle: parsed.examTitle || fallbackTitle, questionBank: parsed.questionBank };
@@ -232,7 +218,6 @@
             return { examTitle: fallbackTitle, questionBank: null };
         }
 
-        // [복구] 전역 변수 초기화 로직 보존
         function clearGlobals() {
             try { delete window.questionBank; } catch (e) {}
             try { delete window.examTitle; } catch (e) {}
@@ -272,21 +257,31 @@
 
             try {
                 clearGlobals();
-
                 const trimmedText = text.trim();
-                const lowerName = file.name.toLowerCase();
+                let data = null;
 
-                if (lowerName.endsWith('.json') || trimmedText.startsWith('[') || trimmedText.startsWith('{')) {
-                    const parsed = JSON.parse(trimmedText);
-                    const result = getQuestionBankAndTitle(parsed, file.name);
+                // 1. 순수 JSON 시도
+                try {
+                    data = JSON.parse(trimmedText);
+                } catch (jsonErr) {
+                    // 2. JS 표현식(배열 리터럴 등) 시도 -> Untitled-2.js 처리
+                    try {
+                        const expression = trimmedText.replace(/;+$/, '');
+                        data = new Function(`return (${expression})`)();
+                    } catch (jsErr) {
+                        // 3. 할당문 스크립트 실행 -> Untitled-1.json(JS포함) 처리
+                        new Function(text)();
+                    }
+                }
+
+                if (data) {
+                    const result = getQuestionBankAndTitle(data, file.name);
                     window.questionBank = result.questionBank;
                     window.examTitle = result.examTitle;
-                } else {
-                    new Function(text)();
                 }
 
                 if (!window.questionBank || !Array.isArray(window.questionBank)) {
-                    throw new Error('questionBank 배열을 찾지 못했습니다.');
+                    throw new Error('questionBank 배열을 찾지 못했습니다. 파일 구조를 확인해 주세요.');
                 }
 
                 renderExam(window.examTitle || file.name, window.questionBank);
@@ -299,7 +294,7 @@
                 console.error(err);
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'p-4 mb-4 bg-red-50 text-red-600 border border-red-200 rounded';
-                errorDiv.innerText = `❌ ${file.name}: 파일 처리 중 오류가 발생했습니다.`;
+                errorDiv.innerText = `❌ ${file.name}: ${err.message}`;
                 listElem.appendChild(errorDiv);
             }
         }
