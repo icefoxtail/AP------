@@ -444,6 +444,15 @@ window.mainDB = {
     {
       "year": "2025",
       "school": "순천여",
+      "grade": "고1",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "유사",
+      "file": "25_순천여고1_1학기_중간_유사.js"
+    },
+    {
+      "year": "2025",
+      "school": "순천여",
       "grade": "고2",
       "semester": "1",
       "examType": "mid",
@@ -538,7 +547,25 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "고1",
-      "file": "25_효천고1_1학기_중간_고1.js"
+      "file": "25_효천고1_1학기_중간_고1_r.js"
+    },
+    {
+      "year": "2025",
+      "school": "효천",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "",
+      "subject": "중간",
+      "file": "25_효천고2_1학기__중간_대수.js"
+    },
+    {
+      "year": "2026",
+      "school": "RPM",
+      "grade": "중2",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "단항식의계산",
+      "file": "26_RPM중2_1_중간_단항식의계산.js"
     },
     {
       "year": "2026",
