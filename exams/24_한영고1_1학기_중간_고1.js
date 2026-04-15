@@ -14,7 +14,7 @@ window.questionBank = [
         content: "두 다항식 $A, B$에 대하여 $A+B=3x^2-2xy-y^2, A-B=-x^2+4xy+5y^2$일 때, 다항식 $A+2B=ax^2+bxy+cy^2$이다. 세 상수 $a, b, c$에 대하여 $a+b+c$의 값은? [4.0점]",
         choices: ["$-4$", "$-2$", "$0$", "$2$", "$4$"],
         answer: "①",
-        solution: "**[Logical Anchor]** 주어진 두 식을 연립하여 $A, B$를 각각 구한 후 목표 식에 대입함.\\n$(A+B) + (A-B) = 2A\\n\\implies 2A = (3x^2-2xy-y^2) + (-x^2+4xy+5y^2) = 2x^2+2xy+4y^2\\n\\implies A = x^2+xy+2y^2\\n$(A+B) - (A-B) = 2B\\n\\implies 2B = (3x^2-2xy-y^2) - (-x^2+4xy+5y^2) = 4x^2-6xy-6y^2\\n\\implies B = 2x^2-3xy-3y^2\\n$A+2B$를 계산함.\\n\\implies (x^2+xy+2y^2) + 2(2x^2-3xy-3y^2) = 5x^2-5xy-4y^2\\n계수를 비교하면 $a=5, b=-5, c=-4$임.\\n\\therefore a+b+c = 5 + (-5) + (-4) = -4"
+        solution: "<b>[Logical Anchor]</b> 주어진 두 식을 연립하여 $A, B$를 각각 구한 후 목표 식에 대입함.\\n$(A+B) + (A-B) = 2A\\n\\implies 2A = (3x^2-2xy-y^2) + (-x^2+4xy+5y^2) = 2x^2+2xy+4y^2\\n\\implies A = x^2+xy+2y^2\\n$(A+B) - (A-B) = 2B\\n\\implies 2B = (3x^2-2xy-y^2) - (-x^2+4xy+5y^2) = 4x^2-6xy-6y^2\\n\\implies B = 2x^2-3xy-3y^2\\n$A+2B$를 계산함.\\n\\implies (x^2+xy+2y^2) + 2(2x^2-3xy-3y^2) = 5x^2-5xy-4y^2\\n계수를 비교하면 $a=5, b=-5, c=-4$임.\\n\\therefore a+b+c = 5 + (-5) + (-4) = -4"
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ window.questionBank = [
         content: "$x+y=4, xy=2$일 때, $x^3+y^3$의 값은? [4.0점]",
         choices: ["$20$", "$36$", "$40$", "$48$", "$64$"],
         answer: "③",
-        solution: "**[Logical Anchor]** 합과 곱의 꼴로 이루어진 곱셈 공식의 변형을 이용함.\\n$x^3+y^3 = (x+y)^3 - 3xy(x+y)$\\n주어진 조건 $x+y=4, xy=2$를 대입함.\\n\\implies x^3+y^3 = 4^3 - 3(2)(4)\\n\\implies 64 - 24 = 40\\n\\therefore 40"
+        solution: "<b>[Logical Anchor]</b> 합과 곱의 꼴로 이루어진 곱셈 공식의 변형을 이용함.\\n$x^3+y^3 = (x+y)^3 - 3xy(x+y)$\\n주어진 조건 $x+y=4, xy=2$를 대입함.\\n\\implies x^3+y^3 = 4^3 - 3(2)(4)\\n\\implies 64 - 24 = 40\\n\\therefore 40"
     },
     {
         id: 3,
