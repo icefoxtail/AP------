@@ -7,6 +7,11 @@ window.questionBank = [
         choices: ["5", "6", "7", "8", "9"],
         answer: "③",
         category: "1. 유리수와 순환소수의 분류",
+        originalCategory: "1. 유리수와 순환소수의 분류",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* 유리수($a$): $2.3, 3.222\\dots, 3.1415\\dots, 0.44444, 15$ (5개)\\n* 순환소수($b$): $3.222\\dots, 3.1415415\\dots$ (2개)\\n* $a+b = 5+2 = 7$\\n* 정답: ③"
     },
     {
@@ -15,6 +20,11 @@ window.questionBank = [
         choices: ["$0.444\\dots = 0.\\dot{4}$", "$2.707070\\dots = 2.\\dot{7}\\dot{0}$", "$0.4858585\\dots = 0.4\\dot{8}\\dot{5}$", "$2.312312\\dots = 2.\\dot{3}1\\dot{2}$", "$3.141414\\dots = 3.1\\dot{4}$"],
         answer: "⑤",
         category: "2. 순환소수의 표기법",
+        originalCategory: "2. 순환소수의 표기법",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* ⑤ $3.141414\\dots$의 순환마디는 '14'이므로 $3.\\dot{1}\\dot{4}$로 표기해야 옳습니다.\\n* 정답: ⑤"
     },
     {
@@ -23,6 +33,11 @@ window.questionBank = [
         choices: ["0개", "1개", "2개", "3개", "4개"],
         answer: "②",
         category: "3. 유리수의 성질 판단",
+        originalCategory: "3. 유리수의 성질 판단",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* ㄴ만 옳은 설명입니다.\\n* ㄱ: $\\frac{1}{3}$은 순환소수이므로 거짓입니다.\\n* ㄷ: 비순환 무한소수는 분수로 나타낼 수 없습니다.\\n* ㄹ: 순환소수는 무한소수이지만 유리수입니다.\\n* 정답: ②"
     },
     {
@@ -31,6 +46,11 @@ window.questionBank = [
         choices: ["$\\frac{5}{4}=1.25$", "$\\frac{3}{40}=0.075$", "$\\frac{3}{20}=0.15$", "$\\frac{1}{8}=0.125$", "$\\frac{427}{200}=2.125$"],
         answer: "⑤",
         category: "4. 분수와 유한소수 변환",
+        originalCategory: "4. 분수와 유한소수 변환",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* ⑤ $\\frac{427}{200} = \\frac{213.5}{100} = 2.135$ 입니다. 제시된 2.125는 오답입니다.\\n* 정답: ⑤"
     },
     {
@@ -39,6 +59,11 @@ window.questionBank = [
         choices: ["126", "252", "315", "378", "441"],
         answer: "③",
         category: "5. 유한소수 조건 응용",
+        originalCategory: "5. 유한소수 조건 응용",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* $\\frac{n}{2^2 \\times 7}$ 이 유한소수 $\\rightarrow n$은 7의 배수\\n* $\\frac{n}{3^2 \\times 5}$ 이 유한소수 $\\rightarrow n$은 9의 배수\\n* $n$은 $lcm(7, 9) = 63$의 배수. 300 근처의 63배수: 252, 315. 315가 가장 가깝습니다.\\n* 정답: ③"
     },
     {
@@ -47,6 +72,11 @@ window.questionBank = [
         choices: ["162", "163", "164", "165", "166"],
         answer: "①",
         category: "6. 순환소수 분수 변환",
+        originalCategory: "6. 순환소수 분수 변환",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* (가) $a = 1000$, (나) $b = 10$\\n* $990x = 126 \\rightarrow x = \\frac{126}{990} = \\frac{7}{55}$ ($p=55, q=7$)\\n* $\\frac{b}{a} + p + q = \\frac{10}{1000} + 55 + 7$ (질의상 문항 오류 가능성: $\\frac{a}{b}$로 계산 시 $100+62=162$)\\n* 정답: ①"
     },
     {
@@ -55,6 +85,11 @@ window.questionBank = [
         choices: ["$0.\\dot{6}=\\frac{3}{5}$", "$0.\\dot{2}\\dot{7}=\\frac{3}{11}$", "$0.4\\dot{8}=\\frac{48}{99}$", "$0.31\\dot{2}=\\frac{311}{909}$", "$1.11\\dot{2}=\\frac{1123}{990}$"],
         answer: "②",
         category: "7. 분수 변환 검증",
+        originalCategory: "7. 분수 변환 검증",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* ② $0.\\dot{2}\\dot{7} = \\frac{27}{99} = \\frac{3}{11}$ (참)\\n* 정답: ②"
     },
     {
@@ -63,6 +98,11 @@ window.questionBank = [
         choices: ["3638", "3640", "3641", "3642", "3649"],
         answer: "④",
         category: "8. 순환마디 주기성과 합",
+        originalCategory: "8. 순환마디 주기성과 합",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* $\\frac{3}{41} = 0.\\dot{0}731\\dot{7}$ (주기 5). 홀수 번째 항 $0, 3, 7, 7, 1$ 반복.\\n* 항의 개수 1013개. $202 \\times 18 + (0+3+7) = 3636 + 10 = 3646$. 근사치 ④ 선택.\\n* 정답: ④"
     },
     {
@@ -71,6 +111,11 @@ window.questionBank = [
         choices: ["유찬", "소미", "성준", "유찬, 소미", "유찬, 성준"],
         answer: "③",
         category: "9. 지수법칙 기초 판단",
+        originalCategory: "9. 지수법칙 기초 판단",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-9.지수법칙기초판단",
+        standardUnit: "9. 지수법칙 기초 판단",
+        standardUnitOrder: 999,
         solution: "* 성준의 계산 $(a^{20})^3 = a^{20 \\times 3} = a^{60}$이 옳습니다.\\n* 유찬: $x^5$ 이어야 하며, 소미: $2^{103}$ 이어야 합니다.\\n* 정답: ③"
     },
     {
@@ -79,6 +124,11 @@ window.questionBank = [
         choices: ["$\\frac{3}{16}GiB$", "$\\frac{1}{2}GiB$", "$\\frac{3}{32}GiB$", "$\\frac{1}{4}GiB$", "$\\frac{5}{64}GiB$"],
         answer: "⑤",
         category: "10. 지수법칙과 단위 변환",
+        originalCategory: "10. 지수법칙과 단위 변환",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-10.지수법칙과단위변환",
+        standardUnit: "10. 지수법칙과 단위 변환",
+        standardUnitOrder: 999,
         solution: "* $160 \\times 512 = (5 \\times 2^5) \\times 2^9 = 5 \\times 2^{14} \\text{KiB}$\\n* $\\frac{5 \\times 2^{14}}{2^{20}} = \\frac{5}{2^6} = \\frac{5}{64} \\text{GiB}$\\n* 정답: ⑤"
     },
     {
@@ -87,6 +137,11 @@ window.questionBank = [
         choices: ["ㄱ, ㄴ", "ㄴ, ㄹ", "ㄹ, ㅁ", "ㄴ, ㄹ, ㅁ", "ㄱ, ㄴ, ㅁ"],
         answer: "②",
         category: "11. 지수법칙의 응용",
+        originalCategory: "11. 지수법칙의 응용",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-11.지수법칙의응용",
+        standardUnit: "11. 지수법칙의 응용",
+        standardUnitOrder: 999,
         solution: "* ㄴ: $2 \\times 2^{50} = 2^{51}$ (참)\\n* ㄹ: $-(9a^4b^2) = -9a^4b^2$ (참)\\n* ㅁ: $a^{12}$ 이어야 하므로 거짓입니다.\\n* 정답: ②"
     },
     {
@@ -95,6 +150,11 @@ window.questionBank = [
         choices: ["$3a^3b^5 \\div (-2a^2) \\div (-3ab)^2 = \\frac{b^3}{6a}$", "$(-3x^2+7x-2)-(2x^2-8x+5) = -5x^2+15x-7$", "$(9x^2y-3x^2y^2) \\div 3xy - x(3-2y) = xy$", "$5a-2b+[-a+\\{3a-2(a-2b)\\}] = 5a+2b$", "$-\\frac{x^2y-5x^2y^2}{y} = -x^2+5x^2y$"],
         answer: "①",
         category: "12. 복잡한 식의 계산",
+        originalCategory: "12. 복잡한 식의 계산",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-02",
+        standardUnit: "식의 계산",
+        standardUnitOrder: 2,
         solution: "* ① 계산 결과의 부호가 $-\\frac{b^3}{6a}$가 되어야 하므로 옳지 않습니다.\\n* 정답: ①"
     },
     {
@@ -103,6 +163,11 @@ window.questionBank = [
         choices: ["100", "103", "105", "107", "200"],
         answer: "③",
         category: "13. 자릿수 계산",
+        originalCategory: "13. 자릿수 계산",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-13.자릿수계산",
+        standardUnit: "13. 자릿수 계산",
+        standardUnitOrder: 999,
         solution: "* $2^4 \\times (2 \\times 5)^{96} = 16 \\times 10^{96} \\rightarrow n=98, a=7$\\n* $a+n = 105$\\n* 정답: ③"
     },
     {
@@ -111,6 +176,11 @@ window.questionBank = [
         choices: ["$3xy^2$", "$3xy$", "$3y^2$", "$9xy^2$", "$9xy$"],
         answer: "④",
         category: "14. 도형의 부피 역산",
+        originalCategory: "14. 도형의 부피 역산",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-14.도형의부피역산",
+        standardUnit: "14. 도형의 부피 역산",
+        standardUnitOrder: 999,
         solution: "* $V = \\frac{1}{3} S \\times 5x = 15\\pi x^2y^2 \\rightarrow S = 9\\pi xy^2$ (단위 제외 수치 ④ 선택)\\n* 정답: ④"
     },
     {
@@ -119,6 +189,11 @@ window.questionBank = [
         choices: ["$x < 5.5$", "$x \\le 5.5$", "$x > 5.5$", "$x \\ge 5.5$", "$x = 5.5$"],
         answer: "②",
         category: "15. 부등식의 해석",
+        originalCategory: "15. 부등식의 해석",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-15.부등식의해석",
+        standardUnit: "15. 부등식의 해석",
+        standardUnitOrder: 999,
         solution: "* '이하'는 $\\le$ 기호를 사용하여 $x \\le 5.5$\\n* 정답: ②"
     },
     {
@@ -127,6 +202,11 @@ window.questionBank = [
         choices: ["-3", "-2", "-1", "0", "1"],
         answer: "①",
         category: "16. 부등식의 해",
+        originalCategory: "16. 부등식의 해",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-16.부등식의해",
+        standardUnit: "16. 부등식의 해",
+        standardUnitOrder: 999,
         solution: "* $-3x+1 \\ge 4x+4 \\rightarrow -7x \\ge 3 \\rightarrow x \\le -\\frac{3}{7}$\\n* 만족하는 정수 $x$는 $-2, -1$이며 합은 $-3$입니다.\\n* 정답: ①"
     },
     {
@@ -135,6 +215,11 @@ window.questionBank = [
         choices: ["$a+2 \\ge b+2$", "$-a+4 \\le -b+4$", "$4-5a \\le 4-5b$", "$-\\frac{a}{4}+1 \\ge -\\frac{b}{4}+1$", "$2a-4 \\ge 2b-4$"],
         answer: "④",
         category: "17. 부등식 성질 판단",
+        originalCategory: "17. 부등식 성질 판단",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-17.부등식성질판단",
+        standardUnit: "17. 부등식 성질 판단",
+        standardUnitOrder: 999,
         solution: "* ④ 음수($-\\frac{1}{4}$)를 곱하면 부등호 방향이 바뀌어야 합니다.\\n* 정답: ④"
     },
     {
@@ -143,6 +228,11 @@ window.questionBank = [
         choices: ["3개", "4개", "5개", "6개", "7개"],
         answer: "⑤",
         category: "18. 생활 부등식 활용",
+        originalCategory: "18. 생활 부등식 활용",
+        standardCourse: "중2 수학",
+        standardUnitKey: "RAW-18.생활부등식활용",
+        standardUnit: "18. 생활 부등식 활용",
+        standardUnitOrder: 999,
         solution: "* $1000x > 500x + 3000 \\rightarrow 500x > 3000 \\rightarrow x > 6$\\n* 7개부터 B마트가 유리합니다.\\n* 정답: ⑤"
     },
     {
@@ -151,6 +241,11 @@ window.questionBank = [
         choices: [" "],
         answer: "30",
         category: "단답형 1. 순환소수 조건",
+        originalCategory: "단답형 1. 순환소수 조건",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* $600 = 2^3 \\times 3 \\times 5^2 \\rightarrow x$가 3의 배수가 아니어야 함.\\n* 두 자리 2의 배수 45개 중 6의 배수 15개 제외 $\\rightarrow$ 30개.\\n* 정답: 30"
     },
     {
@@ -159,6 +254,11 @@ window.questionBank = [
         choices: [" "],
         answer: "$0 < n \\le 1$",
         category: "단답형 2. 해의 조건",
+        originalCategory: "단답형 2. 해의 조건",
+        standardCourse: "중2 수학",
+        standardUnitKey: "UNCLASSIFIED-MIDDLE2",
+        standardUnit: "미분류",
+        standardUnitOrder: 999,
         solution: "* $x < n$ 이고 해가 $\\{-2, -1, 0\\}$일 때 $0 < n \\le 1$ 입니다.\\n* 정답: $0 < n \\le 1$"
     },
     {
@@ -167,6 +267,11 @@ window.questionBank = [
         choices: [" "],
         answer: "45",
         category: "서술형 1. 순환소수 활용",
+        originalCategory: "서술형 1. 순환소수 활용",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-01",
+        standardUnit: "유리수와 순환소수",
+        standardUnitOrder: 1,
         solution: "* $\\frac{2}{3}x - \\frac{3}{5}x = 3 \\rightarrow \\frac{1}{15}x = 3 \\rightarrow x = 45$\\n* 정답: 45"
     },
     {
@@ -175,6 +280,11 @@ window.questionBank = [
         choices: [" "],
         answer: "$-7x^2+4x+7$",
         category: "서술형 2. 다항식의 계산",
+        originalCategory: "서술형 2. 다항식의 계산",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-02",
+        standardUnit: "식의 계산",
+        standardUnitOrder: 2,
         solution: "* $A + (3x^2-2x-1) = -x^2+5 \\rightarrow A = -4x^2+2x+6$\\n* 바른 계산: $(-4x^2+2x+6) - (3x^2-2x-1) = -7x^2+4x+7$\\n* 정답: $-7x^2+4x+7$"
     },
     {
@@ -183,6 +293,11 @@ window.questionBank = [
         choices: [" "],
         answer: "$x \\ge -2$",
         category: "서술형 3. 부등식 풀이",
+        originalCategory: "서술형 3. 부등식 풀이",
+        standardCourse: "중2 수학",
+        standardUnitKey: "M2-03",
+        standardUnit: "일차부등식",
+        standardUnitOrder: 3,
         solution: "* $x+1 \\ge -2x-5 \\rightarrow 3x \\ge -6 \\rightarrow x \\ge -2$\\n* 수직선 표현: -2에 칠해진 점을 찍고 오른쪽으로 화살표를 그림.\\n* 정답: $x \\ge -2$"
     }
 ];

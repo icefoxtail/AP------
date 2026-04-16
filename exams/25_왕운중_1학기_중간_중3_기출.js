@@ -7,6 +7,11 @@ window.questionBank = [
         choices: ["$x^{2}=a(a>0)$일 때, $a$의 제곱근은 $\\sqrt{a}$ 이다.", "$x^{2}=3$일 때, $x$의 제곱근은 $\\pm\\sqrt{3}$ 이다.", "제곱근의 개수는 항상 2개다.", "$-4$는 $16$의 음의 제곱근이다.", "제곱근 $81$은 $\\pm9$이다."],
         answer: "④",
         category: "1. 제곱근의 뜻과 성질",
+        originalCategory: "1. 제곱근의 뜻과 성질",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* ① $a$의 제곱근은 $\\pm\\sqrt{a}$ 입니다.\\n* ② $x$가 $3$의 제곱근이므로 $x=\\pm\\sqrt{3}$ 이고, $x$의 제곱근은 $\\pm\\sqrt{\\pm\\sqrt{3}}$ 형태가 되어 옳지 않습니다.\\n* ③ $0$의 제곱근은 1개, 음수의 제곱근은 0개입니다.\\n* ⑤ 제곱근 81은 $\\sqrt{81}=9$ 입니다.\\n* 정답: ④"
     },
     {
@@ -15,6 +20,11 @@ window.questionBank = [
         choices: ["-36", "-24", "12", "24", "36"],
         answer: "③",
         category: "2. 제곱근을 포함한 식의 계산",
+        originalCategory: "2. 제곱근을 포함한 식의 계산",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* $\\sqrt{(-16)^2} = 16$. 16의 음의 제곱근 $a = -4$\\n* 제곱근 81은 $\\sqrt{81}=9$. 9의 음의 제곱근 $b = -3$\\n* $ab = (-4) \\times (-3) = 12$\\n* 정답: ③"
     },
     {
@@ -23,6 +33,11 @@ window.questionBank = [
         choices: ["2", "5", "$2\\sqrt{3}$", "$\\frac{\\sqrt{3}}{3}$", "$\\frac{7\\sqrt{5}}{5}$"],
         answer: "①",
         category: "3. 근호를 포함한 식의 곱셈과 나눗셈",
+        originalCategory: "3. 근호를 포함한 식의 곱셈과 나눗셈",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* $\\frac{\\sqrt{15}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{\\sqrt{12}}{7}$\\n* $= \\frac{\\sqrt{3} \\times \\sqrt{5}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{2\\sqrt{3}}{7}$\\n* $= \\frac{\\sqrt{3} \\times 2\\sqrt{3}}{3} = \\frac{6}{3} = 2$\\n* 정답: ①"
     },
    {
@@ -31,6 +46,11 @@ window.questionBank = [
     choices: ["5개", "4개", "3개", "2개", "1개"],
     answer: "③",
     category: "4. 무리수와 실수",
+    originalCategory: "4. 무리수와 실수",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-01",
+    standardUnit: "제곱근과 실수",
+    standardUnitOrder: 1,
     solution: "* 순환소수가 아닌 무한소수는 무리수이다.\\n* $\\sqrt{25}=5$ 이므로 유리수이다.\\n* $\\pi^{2}$는 무리수이다.\\n* $2\\sqrt{81}-3=2\\times 9-3=15$ 이므로 유리수이다.\\n* $\\sqrt{3.7}$은 무리수이다.\\n* $-6+\\sqrt{36}=-6+6=0$ 이므로 유리수이다.\\n* $\\sqrt{\\frac{1}{4}}=\\frac{1}{2}$ 이므로 유리수이다.\\n* $\\sqrt{8.1}$은 무리수이다.\\n* 따라서 무리수는 $\\pi^{2},\\ \\sqrt{3.7},\\ \\sqrt{8.1}$의 3개이다.\\n* 정답: ③"
 },
 {
@@ -45,6 +65,11 @@ window.questionBank = [
     ],
     answer: "②",
     category: "5. 실수의 대소 관계",
+    originalCategory: "5. 실수의 대소 관계",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-01",
+    standardUnit: "제곱근과 실수",
+    standardUnitOrder: 1,
     solution: "* ① $\\sqrt{2}+1<2+1=3$ 이므로 $3>\\sqrt{2}+1$ 이다.\\n* ② 같은 수 $\\sqrt{2}$를 양변에서 빼면 $\\sqrt{5}<\\sqrt{7}$ 이므로 $\\sqrt{5}-\\sqrt{2}<\\sqrt{7}-\\sqrt{2}$ 이다.\\n* ③ $5>\\sqrt{2}$ 이므로 $\\sqrt{11}+5>\\sqrt{11}+\\sqrt{2}$ 이다.\\n* ④ $\\sqrt{7}>2$ 이므로 $2+\\sqrt{7}>4$ 이다.\\n* ⑤ $-\\sqrt{121}=-11$ 이고 $-11>-121$ 이다.\\n* 따라서 부등호의 방향이 다른 하나는 ②이다.\\n* 정답: ②"
 },
     {
@@ -53,6 +78,11 @@ window.questionBank = [
         choices: ["2.415", "24.15", "241.5", "2415", "24150"],
         answer: "①",
         category: "6. 제곱근표의 활용",
+        originalCategory: "6. 제곱근표의 활용",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* $\\sqrt{5.83} = \\sqrt{\\frac{58300}{10000}} = \\frac{\\sqrt{58300}}{100} = \\frac{241.5}{100} = 2.415$\\n* 정답: ①"
     },
     {
@@ -61,6 +91,11 @@ window.questionBank = [
         choices: ["3", "2", "-1", "0", "1"],
         answer: "④",
         category: "7. 인수분해 공식의 활용",
+        originalCategory: "7. 인수분해 공식의 활용",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-03",
+        standardUnit: "인수분해",
+        standardUnitOrder: 3,
         solution: "* $ab = (\\sqrt{3}-2)(\\sqrt{3}+2) = 3-4 = -1$\\n* $a^8b^6 = (ab)^6 \\times a^2 = (-1)^6 \\times (\\sqrt{3}-2)^2 = 1 \\times (3-4\\sqrt{3}+4) = 7-4\\sqrt{3}$\\n* $a^8b^6+4a+1 = (7-4\\sqrt{3}) + 4(\\sqrt{3}-2) + 1 = 7-4\\sqrt{3}+4\\sqrt{3}-8+1 = 0$\\n* 정답: ④"
     },
     {
@@ -69,6 +104,11 @@ window.questionBank = [
         choices: ["자연수 $x$는 무수히 많다.", "무리수 $x$의 개수는 유한개이다.", "실수 $x$의 개수는 유한개이다.", "$x$의 정수 부분 중 가장 큰 수는 8이다.", "$4+2\\sqrt{2}$는 조건을 만족시키는 수이다."],
         answer: "⑤",
         category: "8. 무리수의 범위와 성질",
+        originalCategory: "8. 무리수의 범위와 성질",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* $3+2.828\\dots = 5.828\\dots < x < 5+4.123\\dots = 9.123\\dots$\\n* 자연수 $x$: $6, 7, 8, 9$ (4개)\\n* 정수 부분 최대는 9입니다.\\n* $4+2\\sqrt{2} = 4+\\sqrt{8} = 4+2.828\\dots = 6.828\\dots$ 이므로 범위에 포함됩니다.\\n* 정답: ⑤"
     },
     {
@@ -77,6 +117,11 @@ window.questionBank = [
         choices: ["1", "$\\sqrt{27}$", "$\\frac{1}{15}\\sqrt{26}$", "15", "$\\frac{4}{15}\\sqrt{30}$"],
         answer: "⑤",
         category: "9. 복합 함수 수식 계산",
+        originalCategory: "9. 복합 함수 수식 계산",
+        standardCourse: "중3 수학",
+        standardUnitKey: "RAW-9.복합함수수식계산",
+        standardUnit: "9. 복합 함수 수식 계산",
+        standardUnitOrder: 999,
         solution: "* $f(\\frac{b}{a}) = \\sqrt{\\frac{a^2-b^2}{b^2}}$\\n* $f(\\frac{2}{3}) = \\sqrt{\\frac{3^2-2^2}{2^2}} = \\frac{\\sqrt{5}}{2}$\\n* $f(\\frac{3}{5}) = \\sqrt{\\frac{5^2-3^2}{3^2}} = \\frac{4}{3}$\\n* $f(\\frac{5}{7}) = \\sqrt{\\frac{7^2-5^2}{5^2}} = \\frac{\\sqrt{24}}{5} = \\frac{2\\sqrt{6}}{5}$\\n* 곱: $\\frac{\\sqrt{5}}{2} \\times \\frac{4}{3} \\times \\frac{2\\sqrt{6}}{5} = \\frac{4\\sqrt{30}}{15}$\\n* 정답: ⑤"
     },
     {
@@ -85,6 +130,11 @@ window.questionBank = [
         choices: ["34", "39", "44", "47", "54"],
         answer: "④",
         category: "10. 제곱근의 성질과 개수 세기",
+        originalCategory: "10. 제곱근의 성질과 개수 세기",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* $x=20\\sim 35$: $\\sqrt{x}$는 $4.\\dots \\sim 5.\\dots$. 짝수는 $2, 4$로 2개 ($16 \\times 2 = 32$)\\n* $x=36\\sim 40$: $\\sqrt{x}$는 $6 \\sim 6.\\dots$. 짝수는 $2, 4, 6$으로 3개 ($5 \\times 3 = 15$)\\n* 합: $32 + 15 = 47$\\n* 정답: ④"
     },
     {
@@ -93,6 +143,11 @@ window.questionBank = [
         choices: ["$-2ab$", "$-4ab$", "$-5ab$", "$4ab$", "$5ab$"],
         answer: "③",
         category: "11. 근호 안의 문자의 성질",
+        originalCategory: "11. 근호 안의 문자의 성질",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* $ab < 0$ 이므로 $\\sqrt{(ab)^2} = |ab| = -ab$\\n* $-ab > 0$ 이므로 $4\\sqrt{(-ab)^2} = 4|-ab| = -4ab$\\n* 합: $-ab - 4ab = -5ab$\\n* 정답: ③"
     },
     {
@@ -101,6 +156,11 @@ window.questionBank = [
         choices: ["$x^2+4x+4 = (x+2)^2$", "$3a^2-3ab = 3a(a-b)$", "$x^2-25x+10 = (x-5)^2$", "$25x^2-49y^2 = (5x+7y)(5x-7y)$", "$x^2-5x+6 = (x+6)(x-1)$"],
         answer: "③, ⑤",
         category: "12. 인수분해의 기본",
+        originalCategory: "12. 인수분해의 기본",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-03",
+        standardUnit: "인수분해",
+        standardUnitOrder: 3,
         solution: "* ③ $(x-5)^2 = x^2-10x+25$ 입니다.\\n* ⑤ $(x+6)(x-1) = x^2+5x-6$ 입니다.\\n* 정답: ③, ⑤"
     },
     {
@@ -109,6 +169,11 @@ window.questionBank = [
     choices: ["8, 3", "7, -5", "6, -8", "-5, 9", "-3, 8"],
     answer: "⑤",
     category: "14. 다항식의 전개",
+    originalCategory: "14. 다항식의 전개",
+    standardCourse: "중3 수학",
+    standardUnitKey: "RAW-14.다항식의전개",
+    standardUnit: "14. 다항식의 전개",
+    standardUnitOrder: 999,
     solution: "* 상수항: $-5A = 15 \\implies A = -3$\\n* $x$의 계수: $5-A = 5-(-3) = 8$\\n* 따라서 $A=-3$, 계수는 $8$입니다.\\n* 정답: ⑤"
     },
 
@@ -118,6 +183,11 @@ window.questionBank = [
         choices: ["0", "$-\\frac{11}{20}$", "$\\frac{1}{10}$", "$\\frac{9}{20}$", "$\\frac{11}{20}$"],
         answer: "②",
         category: "13. 합차 공식을 이용한 식의 계산",
+        originalCategory: "13. 합차 공식을 이용한 식의 계산",
+        standardCourse: "중3 수학",
+        standardUnitKey: "RAW-13.합차공식을이용한식의계산",
+        standardUnit: "13. 합차 공식을 이용한 식의 계산",
+        standardUnitOrder: 999,
         solution: "* $(\\frac{1}{2}-1)(\\frac{1}{2}+1) \\times (\\frac{1}{3}-1)(\\frac{1}{3}+1) \\dots$\\n* $= (-\\frac{1}{2})(\\frac{3}{2}) \\times (-\\frac{2}{3})(\\frac{4}{3}) \\dots$\\n* 9개의 음수 곱이므로 결과는 음수. 중간 항 소거 후 $-\\frac{1}{2} \\times \\frac{11}{10} = -\\frac{11}{20}$\\n* 정답: ②"
     },
     
@@ -127,6 +197,11 @@ window.questionBank = [
         choices: ["-8", "-16", "4", "8", "16"],
         answer: "②",
         category: "15. 완전제곱식이 될 조건",
+        originalCategory: "15. 완전제곱식이 될 조건",
+        standardCourse: "중3 수학",
+        standardUnitKey: "RAW-15.완전제곱식이될조건",
+        standardUnit: "15. 완전제곱식이 될 조건",
+        standardUnitOrder: 999,
         solution: "* $x^2+2x-15-k$\\n* 완전제곱식이 되려면 상수항이 $(\\frac{2}{2})^2 = 1$ 이어야 함.\\n* $-15-k = 1 \\rightarrow k = -16$\\n* 정답: ②"
     },
     {
@@ -135,6 +210,11 @@ window.questionBank = [
         choices: ["$a^{2}+8a+\\square=(a+4)^{2}$", "$(a+1)^{2}=a^{2}+\\square a+1$", "$(3x+\\frac{1}{3})^{2}=9x^{2}+\\square x+\\frac{1}{9}$", "$x^{2}-5x+6=(x-2)(x-\\square)$", "$6x^{2}-\\square xy-3y^{2}=(3x+y)(2x-3y)$"],
         answer: "①",
         category: "16. 곱셈 공식의 이해",
+        originalCategory: "16. 곱셈 공식의 이해",
+        standardCourse: "중3 수학",
+        standardUnitKey: "RAW-16.곱셈공식의이해",
+        standardUnit: "16. 곱셈 공식의 이해",
+        standardUnitOrder: 999,
         solution: "* ① 16, ② 2, ③ 2, ④ 3, ⑤ 7\\n* 가장 큰 수는 16입니다.\\n* 정답: ①"
     },
     {
@@ -143,6 +223,11 @@ window.questionBank = [
         choices: ["$a=-10, b=7$", "$a=-10, b=-7$", "$a=10, b=-7$", "$a=10, b=7$", "$a=10, b=9$"],
         answer: "③",
         category: "17. 인수분해 응용",
+        originalCategory: "17. 인수분해 응용",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-03",
+        standardUnit: "인수분해",
+        standardUnitOrder: 3,
         solution: "* 상수항: $-3b = 21 \\rightarrow b = -7$\\n* $x$의 계수: $-a = -3+b = -3-7 = -10 \\rightarrow a = 10$\\n* 정답: ③"
     },
     {
@@ -151,6 +236,11 @@ window.questionBank = [
         choices: ["$a+2$", "$3a+2$", "$5a+5$", "$7a+5$", "$11a+5$"],
         answer: "③",
         category: "18. 근호 안의 완전제곱식",
+        originalCategory: "18. 근호 안의 완전제곱식",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\frac{2}{7}a-\\frac{4}{7})^2} = |3a+9| - |2a-4|$\\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\\n* 정답: ③"
     },
     {
@@ -168,6 +258,11 @@ window.questionBank = [
     choices: ["$6x+22$", "$7x+22$", "$8x+22$", "$9x+22$", "$10x+22$"],
     answer: "①",
     category: "19. 인수분해와 도형의 활용",
+    originalCategory: "19. 인수분해와 도형의 활용",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-03",
+    standardUnit: "인수분해",
+    standardUnitOrder: 3,
     solution: "* 전체 넓이: $2x^2+15x+28 = (2x+7)(x+4)$\\n* 가로: $2x+7$, 세로: $x+4$\\n* 둘레: $2\\{(2x+7)+(x+4)\\} = 2(3x+11) = 6x+22$\\n* 정답: ①"
     },
     {
@@ -176,6 +271,11 @@ window.questionBank = [
         choices: ["7", "6", "5", "4", "3"],
         answer: "⑤",
         category: "20. 인수분해와 정수론적 추론",
+        originalCategory: "20. 인수분해와 정수론적 추론",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-03",
+        standardUnit: "인수분해",
+        standardUnitOrder: 3,
         solution: "* 가능한 $(a, b)$ 쌍 중 $a+b$가 소수인 경우:\\n* (1, 1)->2, (1, 4)->5, (4, 9)->13\\n* 소수는 2, 5, 13으로 3개입니다.\\n* 정답: ⑤"
     },
     {
@@ -184,6 +284,11 @@ window.questionBank = [
         choices: [" "],
         answer: "(1) $A=3, B=-\\sqrt{7}$  (2) $\\frac{3+\\sqrt{7}}{2}$",
         category: "서술형 1. 제곱근과 분모의 유리화",
+        originalCategory: "서술형 1. 제곱근과 분모의 유리화",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-01",
+        standardUnit: "제곱근과 실수",
+        standardUnitOrder: 1,
         solution: "* (1) $(-3)^2=9 \\rightarrow A=3, B=-\\sqrt{7}$\\n* (2) $1/(3-\\sqrt{7}) = (3+\\sqrt{7})/(9-7) = (3+\\sqrt{7})/2$\\n* 정답: (1) $A=3, B=-\\sqrt{7}$  (2) $\\frac{3+\\sqrt{7}}{2}$"
     },
     {
@@ -192,6 +297,11 @@ window.questionBank = [
         choices: [" "],
         answer: "$3+5\\sqrt{3}$",
         category: "서술형 2. 식의 값 구하기",
+        originalCategory: "서술형 2. 식의 값 구하기",
+        standardCourse: "중3 수학",
+        standardUnitKey: "M3-03",
+        standardUnit: "인수분해",
+        standardUnitOrder: 3,
         solution: "* $a^2-9a+14 = (a-2)(a-7)$\\n* $a=7+\\sqrt{3}$ 대입: $(7+\\sqrt{3}-2)(7+\\sqrt{3}-7) = (5+\\sqrt{3})(\\sqrt{3}) = 3+5\\sqrt{3}$\\n* 정답: $3+5\\sqrt{3}$"
     },
     {
@@ -200,6 +310,11 @@ window.questionBank = [
         choices: [" "],
         answer: "92",
         category: "서술형 3. 완전제곱식의 응용",
+        originalCategory: "서술형 3. 완전제곱식의 응용",
+        standardCourse: "중3 수학",
+        standardUnitKey: "RAW-서술형3.완전제곱식의응용",
+        standardUnit: "서술형 3. 완전제곱식의 응용",
+        standardUnitOrder: 999,
         solution: "* $(x^2-10mx+n)-(2mx-5n) = x^2-12mx+6n$\\n* 완전제곱식 조건: $(12m/2)^2 = 6n \\rightarrow 36m^2 = 6n \\rightarrow n=6m^2$\\n* $m=1\\rightarrow n=6, m=2\\rightarrow n=24, m=3\\rightarrow n=54, m=4\\rightarrow n=96$ (100이하 최대)\\n* $n-m = 96-4 = 92$\\n* 정답: 92"
     },
     {
@@ -217,6 +332,11 @@ window.questionBank = [
     choices: [" "],
     answer: "$2\\sqrt{10}+2\\sqrt{5}$",
     category: "서술형 4. 수직선 위의 점과 무리수",
+    originalCategory: "서술형 4. 수직선 위의 점과 무리수",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-01",
+    standardUnit: "제곱근과 실수",
+    standardUnitOrder: 1,
     solution: "* 왼쪽 피타고라스: $r_1=\\sqrt{2^2+1^2}=\\sqrt{5}$\\n* 오른쪽 피타고라스: $r_2=\\sqrt{3^2+1^2}=\\sqrt{10}$\\n* 좌표: $A=-4-\\sqrt{5}, B=-4+\\sqrt{5}, C=2-\\sqrt{10}, D=2+\\sqrt{10}$\\n* 차이 계산: $(D-A)-(C-B) = 2\\sqrt{10}+2\\sqrt{5}$\\n* 정답: $2\\sqrt{10}+2\\sqrt{5}$"
    }
 ];
