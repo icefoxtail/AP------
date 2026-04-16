@@ -1379,6 +1379,12 @@ function extractChoiceText(choice) {
     return String(choice);
 }
 
+function stripChoicePrefix(text) {
+    return String(text || '')
+        .replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '')
+        .trim();
+}
+
 function wrapLatex(text) {
     return wrapLatexPreserveBlocks(text);
 }
@@ -1599,7 +1605,10 @@ function buildChoicesHTML(q) {
         .filter(v => String(v).trim() !== '' && String(v).trim() !== '주관식');
 
     if (!validChoices.length) return '';
-    return `<div class="q-choices">${validChoices.map((choice, idx) => `<div class="q-choice">${circled[idx] || (idx + 1) + ')'} ${wrapLatex(choice)}</div>`).join('')}</div>`;
+    return `<div class="q-choices">${validChoices.map((choice, idx) => {
+        const cleanChoice = stripChoicePrefix(choice);
+        return `<div class="q-choice">${circled[idx] || (idx + 1) + ')'} ${wrapLatex(cleanChoice)}</div>`;
+    }).join('')}</div>`;
 }
 
 function getQuestionRenderOrder() {

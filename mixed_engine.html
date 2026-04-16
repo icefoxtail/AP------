@@ -582,6 +582,12 @@ function extractChoice(c) {
     return String(c);
 }
 
+function stripChoicePrefix(text) {
+    return String(text || '')
+        .replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '')
+        .trim();
+}
+
 function buildExamBox(q, i) {
     const circled = ['①','②','③','④','⑤'];
     const isMultipleChoice =
@@ -591,8 +597,11 @@ function buildExamBox(q, i) {
         q.choices.some(c => extractChoice(c).trim() !== "");
 
     const choicesHTML = isMultipleChoice
-        ? `<div class="choices">${q.choices.map((c, ci) =>
-              `<div>${circled[ci] || (ci + 1) + ')'} ${wrapLatex(extractChoice(c))}</div>`).join('')}</div>`
+        ? `<div class="choices">${q.choices.map((c, ci) => {
+              const rawChoice = extractChoice(c);
+              const cleanChoice = stripChoicePrefix(rawChoice);
+              return `<div>${circled[ci] || (ci + 1) + ')'} ${wrapLatex(cleanChoice)}</div>`;
+          }).join('')}</div>`
         : `<div class="answer-box"></div>`;
 
     return `
