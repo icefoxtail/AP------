@@ -141,20 +141,20 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "① $\\sqrt{0.08} = \\sqrt{\\frac{8}{100}} = \\frac{2\\sqrt{2}}{10} = 0.2 \\times 1.414 = 0.2828$ (옳음)\\n② $\\sqrt{0.2} = \\sqrt{\\frac{20}{100}} = \\frac{\\sqrt{20}}{10} = 0.4472$ (옳음)\\n③ $\\sqrt{0.5} = \\sqrt{\\frac{50}{100}} = \\frac{5\\sqrt{2}}{10} = 0.5 \\times 1.414 = 0.707$ (옳음)\\n④ $\\sqrt{18} = 3\\sqrt{2} = 3 \\times 1.414 = 4.242$ (옳음)\\n⑤ $\\sqrt{200} = 10\\sqrt{2} = 10 \\times 1.414 = 14.14$ (옳지 않음)\\n$\\therefore$ ⑤"
   },
-  {
-    "id": 11,
-    "level": "중",
-    "category": "실수와 그 연산",
-    "originalCategory": "실수와 그 연산",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-01",
-    "standardUnit": "제곱근과 실수",
-    "standardUnitOrder": 1,
-    "content": "한 변의 길이가 $2cm$인 정육각형의 대각선을 따라 직각삼각형 두 조각과 이등변삼각형 두 조각으로 자른 것이다. 이 네 조각을 이용하여 만든 새로운 도형의 둘레의 길이를 구하면? [4점]\\n<svg width=\\"240\\" height=\\"120\\" viewBox=\\"0 0 240 120\\" xmlns=\\"http://www.w3.org/2000/svg\\"><polygon points=\\"70,40 55.0,65.98 25.0,65.98 10,40 25.0,14.02 55.0,14.02\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1\\" /><line x1=\\"25\\" y1=\\"40\\" x2=\\"55\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"0.5\\" stroke-dasharray=\\"2,2\\" /><line x1=\\"40\\" y1=\\"14\\" x2=\\"40\\" y2=\\"66\\" stroke=\\"black\\" stroke-width=\\"0.5\\" stroke-dasharray=\\"2,2\\" /><text x=\\"35\\" y=\\"85\\" font-size=\\"10\\" font-family=\\"serif\\">2cm</text><text x=\\"90\\" y=\\"45\\" font-size=\\"20\\"> → </text><g transform=\\"translate(160, 40)\\"><polygon points=\\"0,0 20,-34 -20,-34\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1\\" /><polygon points=\\"0,0 20,34 -20,34\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1\\" /><polygon points=\\"-20,-34 -20,34 -40,0\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1\\" /><polygon points=\\"20,-34 20,34 40,0\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1\\" /></g></svg>",
-    "choices": ["① $(4+4\\sqrt{3})cm$", "② $(6+2\\sqrt{3})cm$", "③ $(8+8\\sqrt{3})cm$", "④ $(8+4\\sqrt{3})cm$", "⑤ $(10+2\\sqrt{3})cm$"],
-    "answer": "④",
-    "solution": "(1) 정육각형의 한 내각과 대각선의 길이 파악\\n정육각형의 한 내각은 $120^{\\circ}$이며, 한 변이 2인 정육각형의 짧은 대각선 길이는 $2\\sqrt{3}$이다.\\n(2) 잘려진 조각의 변의 길이 구하기\\n이등변삼각형 조각의 변은 $2, 2, 2\\sqrt{3}$이며, 직각삼각형 조각의 변은 $1, \\sqrt{3}, 2$이다.\\n(3) 새로운 도형의 둘레 계산\\n새로운 도형의 둘레는 정육각형의 변 4개와 이등변삼각형의 밑변($2\\sqrt{3}$) 2개로 구성된다.\\n$2 \\times 4 + 2\\sqrt{3} \\times 2 = 8 + 4\\sqrt{3}$\\n$\\therefore (8+4\\sqrt{3})cm$"
-  },
+{
+  "id": 11,
+  "level": "중",
+  "category": "실수와 그 연산",
+  "originalCategory": "실수와 그 연산",
+  "standardCourse": "중3 수학",
+  "standardUnitKey": "M3-01",
+  "standardUnit": "제곱근과 실수",
+  "standardUnitOrder": 1,
+  "content": "한 변의 길이가 $2cm$인 정육각형의 대각선을 따라 직각삼각형 두 조각과 이등변삼각형 두 조각으로 자른 것이다. 이 네 조각을 이용하여 만든 새로운 도형의 둘레의 길이를 구하면? [4점]\\n<svg width=\\\"240\\\" height=\\\"120\\\" viewBox=\\\"0 0 240 120\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\"><polygon points=\\\"70,40 55.0,65.98 25.0,65.98 10,40 25.0,14.02 55.0,14.02\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1\\\" /><line x1=\\\"25\\\" y1=\\\"40\\\" x2=\\\"55\\\" y2=\\\"40\\\" stroke=\\\"black\\\" stroke-width=\\\"0.5\\\" stroke-dasharray=\\\"2,2\\\" /><line x1=\\\"40\\\" y1=\\\"14\\\" x2=\\\"40\\\" y2=\\\"66\\\" stroke=\\\"black\\\" stroke-width=\\\"0.5\\\" stroke-dasharray=\\\"2,2\\\" /><text x=\\\"35\\\" y=\\\"85\\\" font-size=\\\"10\\\" font-family=\\\"serif\\\">2cm</text><text x=\\\"90\\\" y=\\\"45\\\" font-size=\\\"20\\\"> → </text><g transform=\\\"translate(160, 40)\\\"><polygon points=\\\"0,0 20,-34 -20,-34\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1\\\" /><polygon points=\\\"0,0 20,34 -20,34\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1\\\" /><polygon points=\\\"-20,-34 -20,34 -40,0\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1\\\" /><polygon points=\\\"20,-34 20,34 40,0\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1\\\" /></g></svg>",
+  "choices": ["① $(4+4\\sqrt{3})cm$", "② $(6+2\\sqrt{3})cm$", "③ $(8+8\\sqrt{3})cm$", "④ $(8+4\\sqrt{3})cm$", "⑤ $(10+2\\sqrt{3})cm$"],
+  "answer": "④",
+  "solution": "(1) 정육각형의 한 내각과 대각선의 길이 파악\\n정육각형의 한 내각은 $120^{\\circ}$이며, 한 변이 2인 정육각형의 짧은 대각선 길이는 $2\\sqrt{3}$이다.\\n(2) 잘려진 조각의 변의 길이 구하기\\n이등변삼각형 조각의 변은 $2, 2, 2\\sqrt{3}$이며, 직각삼각형 조각의 변은 $1, \\sqrt{3}, 2$이다.\\n(3) 새로운 도형의 둘레 계산\\n새로운 도형의 둘레는 정육각형의 변 4개와 이등변삼각형의 밑변($2\\sqrt{3}$) 2개로 구성된다.\\n$2 \\times 4 + 2\\sqrt{3} \\times 2 = 8 + 4\\sqrt{3}$\\n$\\therefore (8+4\\sqrt{3})cm$"
+},
   {
     "id": 12,
     "level": "중",
