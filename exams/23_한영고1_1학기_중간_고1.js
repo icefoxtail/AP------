@@ -1,201 +1,319 @@
-/**
- * 23_한영고1_1학기_중간_고1 (v6.5.4 AP수학 마스터 엔진 완결판)
- * 문항 수: 21문항 (전수 수록)
- * 적용 매뉴얼: 고등부 해설 MAXIMUM_EXPANSION [하/중/상]
- * 타이틀 규정: 23_한영고1_1학기_중간_고1
- */
-
-// 파일명: 23_한영고1_1학기_중간_고1.js
 window.examTitle = "23_한영고1_1학기_중간_고1";
 
 window.questionBank = [
     {
-        id: 1,
-        level: "하",
-        category: "다항식의 연산",
-        content: "두 다항식 $A=x^2+5x+3, B=x^2+3x+4$에 대하여 $A+B=2x^2+ax+7$일 때, $a$의 값은? [3.6점]",
-        choices: ["5", "8", "11", "14", "17"],
-        answer: "②",
-        solution: "<b>[Logical Anchor]</b> 다항식의 덧셈은 동류항끼리 계수를 정리하는 과정임.\\n주어진 두 식을 합하여 정리함.\\n$A + B = (x^2 + 5x + 3) + (x^2 + 3x + 4)$\\n동류항끼리 묶어서 계산하면,\\n$\\implies (1 + 1)x^2 + (5 + 3)x + (3 + 4)$\\n$\\implies 2x^2 + 8x + 7$\\n우변 $2x^2 + ax + 7$과 계수를 비교함.\\n$\\therefore a = 8$"
+        "id": 1,
+        "level": "하",
+        "category": "다항식의 연산",
+        "content": "두 다항식 $A, B$에 대하여 $2A+B=3x^2-2xy-y^2, A-B=-x^2+4xy+5y^2$일 때, 다항식 $A+2B=ax^2+bxy+cy^2$이다. 세 상수 $a, b, c$에 대하여 $a+b+c$의 값은? [4.0점]",
+        "choices": [
+            "$-8$",
+            "$-6$",
+            "$-4$",
+            "$-2$",
+            "$0$"
+        ],
+        "answer": "①",
+        "solution": "<b>[키포인트]</b> 주어진 두 다항식의 식을 적절히 연산하여 목표 식을 한 번에 도출함.\\n구하고자 하는 식은 $A+2B$임.\\n주어진 두 식을 빼면 해당 형태가 됨.\\n\\implies (2A+B) - (A-B) = A+2B\\n우변의 식도 동일하게 빼줌.\\n\\implies (3x^2-2xy-y^2) - (-x^2+4xy+5y^2) = 4x^2-6xy-6y^2\\n계수를 비교하면 $a=4, b=-6, c=-6$임.\\n\\therefore a+b+c = 4 + (-6) + (-6) = -8"
     },
     {
-        id: 2,
-        level: "하",
-        category: "복소수의 상등",
-        content: "등식 $(x+y)+yi=1+6i$를 만족시키는 실수 $x, y$에 대하여 $xy$의 값은? [3.6점]",
-        choices: ["-30", "-20", "10", "20", "30"],
-        answer: "①",
-        solution: "<b>[Logical Anchor]</b> 두 복소수가 같을 조건(복소수의 상등)을 이용하여 미지수를 결정함.\\n$\\because x, y$가 실수이므로 실수부분과 허수부분을 각각 비교함.\\n$\\text{i) 허수부분 비교: } y = 6$\\n$\\text{ii) 실수부분 비교: } x + y = 1$\\n이미 구한 $y=6$을 대입하면,\\n$\\implies x + 6 = 1 \\implies x = -5$\\n구하고자 하는 값 $xy$를 계산함.\\n$\\therefore xy = (-5) \\times 6 = -30$"
+        "id": 2,
+        "level": "하",
+        "category": "곱셈공식의 변형",
+        "content": "$x+y=4, xy=2$일 때, $x^3+y^3$의 값은? [4.0점]",
+        "choices": [
+            "$20$",
+            "$36$",
+            "$40$",
+            "$48$",
+            "$64$"
+        ],
+        "answer": "③",
+        "solution": "<b>[키포인트]</b> 합과 곱의 꼴로 이루어진 곱셈 공식의 변형을 이용함.\\n$x^3+y^3 = (x+y)^3 - 3xy(x+y)\\n주어진 조건 $x+y=4, xy=2$를 대입함.\\n\\implies x^3+y^3 = 4^3 - 3(2)(4)\\n\\implies 64 - 24 = 40\\n\\therefore 40"
     },
     {
-        id: 3,
-        level: "하",
-        category: "이차함수의 최대최소",
-        content: "이차함수 $y=2x^2-4x+1$이 $x=a$에서 최솟값 $b$를 가질 때, $a-b$의 값은? [3.8점]",
-        choices: ["-2", "-1", "0", "1", "2"],
-        answer: "⑤",
-        solution: "<b>[Logical Anchor]</b> 이차함수를 표준형으로 변형하여 꼭짓점의 좌표를 파악함.\\n$y = 2(x^2 - 2x) + 1$\\n완전제곱식을 만들기 위해 괄호 안에 $1$을 더하고 뺌.\\n$\\implies y = 2(x^2 - 2x + 1 - 1) + 1$\\n$\\implies y = 2(x - 1)^2 - 2 + 1$\\n$\\implies y = 2(x - 1)^2 - 1$\\n$\\because$ 최고차항의 계수가 양수이므로 아래로 볼록한 포물선임.\\n$\\implies x=1$일 때 최솟값 $-1$을 가짐.\\n$a = 1, b = -1$ 이므로\\n$\\therefore a - b = 1 - (-1) = 2$"
+        "id": 3,
+        "level": "하",
+        "category": "복소수의 연산",
+        "content": "복소수 $(1-3i)(2-i)$의 실수부분은? (단, $i=\\sqrt{-1}$이다.) [4.0점]",
+        "choices": [
+            "$-2$",
+            "$-1$",
+            "$0$",
+            "$1$",
+            "$2$"
+        ],
+        "answer": "②",
+        "solution": "<b>[키포인트]</b> 복소수의 곱셈을 전개하여 $a+bi$ 꼴로 정리함.\\n$(1-3i)(2-i) = 2 - i - 6i + 3i^2$\\n$i^2 = -1$이므로 대입하여 정리함.\\n\\implies 2 - 7i + 3(-1) = 2 - 7i - 3 = -1 - 7i\\n\\therefore 실수부분은 -1"
     },
     {
-        id: 4,
-        level: "하",
-        category: "곱셈 공식의 변형",
-        content: "$a+b+c=3, ab+bc+ca=-1$일 때, $a^2+b^2+c^2$의 값은? [3.8점]",
-        choices: ["11", "18", "25", "32", "43"],
-        answer: "①",
-        solution: "<b>[Logical Anchor]</b> 세 변수의 합과 곱의 관계를 나타내는 곱셈 공식을 적용함.\\n$(a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + bc + ca)$\\n주어진 수치를 대입함.\\n$\\implies 3^2 = a^2 + b^2 + c^2 + 2(-1)$\\n$\\implies 9 = a^2 + b^2 + c^2 - 2$\\n상수항을 이항하여 정리함.\\n$\\therefore a^2 + b^2 + c^2 = 11$"
+        "id": 4,
+        "level": "중",
+        "category": "항등식",
+        "content": "등식 $a(x-1)(x+1)+bx(x-1)+cx(x+1)=2x^2+3x+4$가 $x$에 대한 항등식이 될 때, 세 상수 $a, b, c$에 대하여 $-a+2b+2c$의 값은? [4.0점]",
+        "choices": [
+            "$8$",
+            "$10$",
+            "$12$",
+            "$14$",
+            "$16$"
+        ],
+        "answer": "⑤",
+        "solution": "<b>[키포인트]</b> 양변에 적절한 값을 대입하는 수치대입법을 사용하여 미정계수를 구함.\\n\\text{i) } x=0 \\text{ 대입:}\\n\\implies a(-1)(1) = 4 \\implies -a = 4 \\implies a = -4\\n\\text{ii) } x=1 \\text{ 대입:}\\n\\implies c(1)(2) = 2(1)^2+3(1)+4 = 9 \\implies 2c = 9\\n\\text{iii) } x=-1 \\text{ 대입:}\\n\\implies b(-1)(-2) = 2(-1)^2+3(-1)+4 = 3 \\implies 2b = 3\\n구하고자 하는 값 $-a+2b+2c$에 대입함.\\n\\implies 4 + 3 + 9 = 16\\n\\therefore 16"
     },
     {
-        id: 5,
-        level: "하",
-        category: "근과 계수의 관계",
-        content: "이차방정식 $x^2-3x-6=0$의 두 근을 $\\alpha, \\beta$라 할 때, $(\\alpha+1)(\\beta+1)$의 값은? [4점]",
-        choices: ["-3", "-2", "-1", "2", "3"],
-        answer: "②",
-        solution: "<b>[Logical Anchor]</b> 근과 계수의 관계를 통해 얻은 합과 곱을 전개된 식에 대입함.\\n$x^2 - 3x - 6 = 0$에서 근과 계수의 관계에 의하여\\n$\\alpha + \\beta = 3, \\alpha\\beta = -6$\\n구하고자 하는 식을 전개함.\\n$(\\alpha + 1)(\\beta + 1) = \\alpha\\beta + \\alpha + \\beta + 1$\\n구해놓은 수치를 대입함.\\n$\\implies -6 + 3 + 1$\\n$\\therefore -2$"
+        "id": 5,
+        "level": "중",
+        "category": "인수분해",
+        "content": "다항식 $x^2-xy-2y^2-x-7y-6$이 $(x+ay-3)(x+by+c)$로 인수분해 될 때, $-2a+3b+c$의 값은? [4.0점]",
+        "choices": [
+            "$6$",
+            "$7$",
+            "$8$",
+            "$9$",
+            "$10$"
+        ],
+        "answer": "④",
+        "solution": "<b>[키포인트]</b> 문자가 여러 개인 다항식은 차수가 낮은 문자에 대해, 차수가 같으면 어느 한 문자에 대해 내림차순으로 정리함.\\n$x$에 대한 내림차순으로 정리함.\\n\\implies x^2 - (y+1)x - (2y^2+7y+6)\\n상수항에 해당하는 $y$의 이차식을 인수분해함.\\n\\implies 2y^2+7y+6 = (2y+3)(y+2)\\n전체 식을 대각선 방법으로 인수분해함.\\n\\implies x^2 - (y+1)x - (2y+3)(y+2)\\n\\implies (x-(2y+3))(x+(y+2)) = (x-2y-3)(x+y+2)\\n주어진 식 $(x+ay-3)(x+by+c)$와 계수를 비교함.\\n\\implies a=-2, b=1, c=2\\n\\implies -2a+3b+c = -2(-2) + 3(1) + 2 = 4+3+2 = 9\\n\\therefore 9"
     },
     {
-        id: 6,
-        level: "중",
-        category: "나머지 정리",
-        content: "다항식 $f(x)=2x^3+ax^2+3x+b$를 $x-2$로 나누었을 때의 나머지가 $6$이고, $x+1$로 나누어떨어진다. $b-a$의 값은? [4.2점]",
-        choices: ["9", "10", "11", "12", "13"],
-        answer: "⑤",
-        solution: "<b>[Logical Anchor]</b> 나머지 정리 $f(k)=R$과 인수정리 $f(k)=0$을 연립함.\\n$\\text{i) } x-2 \\text{로 나눈 나머지가 } 6 \\implies f(2) = 6$\\n$\\implies 2(8) + a(4) + 3(2) + b = 6$\\n$\\implies 16 + 4a + 6 + b = 6 \\implies 4a + b = -16 \\quad \\cdots (1)$\\n$\\text{ii) } x+1 \\text{로 나누어떨어짐} \\implies f(-1) = 0$\\n$\\implies 2(-1) + a(1) + 3(-1) + b = 0$\\n$\\implies -2 + a - 3 + b = 0 \\implies a + b = 5 \\quad \\cdots (2)$\\n$\\text{iii) 연립방정식 풀이}$\\n$(1) - (2) \\implies 3a = -21 \\implies a = -7$\\n$a = -7$을 $(2)$에 대입하면 $-7 + b = 5 \\implies b = 12$\\n$\\therefore b - a = 12 - (-7) = 19$\\n(※ 선택지 구성상 연산 결과 확인 필수)"
+        "id": 6,
+        "level": "중",
+        "category": "이차함수와 직선",
+        "content": "점 $(-1, 3)$을 지나고 함수 $y=-x^2+2x+3$의 그래프와 접하는 두 직선의 기울기의 합은? [4.2점]",
+        "choices": [
+            "$7$",
+            "$8$",
+            "$9$",
+            "$10$",
+            "$11$"
+        ],
+        "answer": "②",
+        "solution": "<b>[키포인트]</b> 직선의 방정식을 설정하고 이차함수와 연립한 후 판별식을 이용해 접할 조건을 찾음.\\n점 $(-1, 3)$을 지나는 직선의 방정식을 $y-3 = m(x+1)$이라 설정함.\\n\\implies y = mx + m + 3\\n이차함수 $y=-x^2+2x+3$과 연립함.\\n\\implies -x^2+2x+3 = mx+m+3\\n\\implies x^2 + (m-2)x + m = 0\\n접하므로 이차방정식의 판별식 $D=0$이어야 함.\\n\\implies D = (m-2)^2 - 4m = 0\\n\\implies m^2 - 4m + 4 - 4m = 0\\n\\implies m^2 - 8m + 4 = 0\\n이 $m$에 대한 이차방정식의 두 근이 두 직선의 기울기 $m_1, m_2$임.\\n근과 계수의 관계에 의해 기울기의 합은 $8$임.\\n\\therefore 8"
     },
     {
-        id: 7,
-        level: "중",
-        category: "다항식의 인수분해",
-        content: "$f(x)=x^3+x^2-5x+3$일 때, 인수분해를 이용하여 $f(21)$의 값을 구하면? [4.2점]",
-        choices: ["8400", "8800", "9200", "9600", "10000"],
-        answer: "④",
-        solution: "<b>[Logical Anchor]</b> 조립제법을 통해 다항식을 인수분해하여 계산을 단순화함.\\n$f(x) = x^3 + x^2 - 5x + 3$에서 계수의 합이 $0$이므로 $x=1$을 대입하면 $0$이 됨.\\n$\\implies (x-1)$을 인수로 가짐.\\n조립제법 시행:\\n$1 \\quad 1 \\quad -5 \\quad 3 \\quad | \\quad 1$\\n$\\implies 1, \\ 2, \\ -3, \\ 0$\\n$\\implies f(x) = (x-1)(x^2 + 2x - 3) = (x-1)(x-1)(x+3) = (x-1)^2(x+3)$\\n이제 $x=21$을 대입함.\\n$f(21) = (21-1)^2(21+3) = 20^2 \\times 24$\\n$\\implies 400 \\times 24 = 9600$\\n$\\therefore 9600$"
+        "id": 7,
+        "level": "중",
+        "category": "연립이차방정식",
+        "content": "연립방정식 $2x^2-xy-y^2=0, x^2+y^2=20$을 만족시키는 두 실수 $x, y$에 대하여 $x+2y$의 최댓값은? [4.2점]",
+        "choices": [
+            "$6$",
+            "$10$",
+            "$13$",
+            "$3\\sqrt{10}$",
+            "$1+2\\sqrt{5}$"
+        ],
+        "answer": "④",
+        "solution": "<b>[키포인트]</b> 상수항이 0인 이차식을 먼저 인수분해하여 일차식의 관계를 얻고, 다른 식에 대입함.\\n$2x^2-xy-y^2=0$을 인수분해함.\\n\\implies (2x+y)(x-y)=0 \\implies y=-2x \\text{ 또는 } y=x\\n\\text{i) } y=-2x \\text{일 때:}\\n\\implies x^2 + (-2x)^2 = 20 \\implies 5x^2 = 20 \\implies x = \\pm 2\\n\\implies x=2, y=-4 \\text{ 이면 } x+2y = -6\\n\\implies x=-2, y=4 \\text{ 이면 } x+2y = 6\\n\\text{ii) } y=x \\text{일 때:}\\n\\implies x^2 + x^2 = 20 \\implies 2x^2 = 20 \\implies x = \\pm \\sqrt{10}\\n\\implies x=\\sqrt{10}, y=\\sqrt{10} \\text{ 이면 } x+2y = 3\\sqrt{10}\\n\\implies x=-\\sqrt{10}, y=-\\sqrt{10} \\text{ 이면 } x+2y = -3\\sqrt{10}\\n값들 중 최댓값을 찾음. ($\\sqrt{90} > 6$)\\n\\therefore 3\\sqrt{10}"
     },
     {
-        id: 8,
-        level: "중",
-        category: "이차방정식의 켤레근",
-        content: "이차방정식 $x^2+ax+b=0$의 한 근이 $2+i$일 때, 두 실수 $a, b$에 대하여 $b-a$의 값은? [4.4점]",
-        choices: ["9", "10", "11", "12", "13"],
-        answer: "①",
-        solution: "<b>[Logical Anchor]</b> 실계수 방정식에서 허근을 가지면 그 켤레복소수도 반드시 근임.\\n$\\because a, b$가 실수이므로 다른 한 근은 $2-i$ 임.\\n근과 계수의 관계를 적용함.\\n$\\text{i) 두 근의 합: } (2+i) + (2-i) = 4 = -a \\implies a = -4$\\n$\\text{ii) 두 근의 곱: } (2+i)(2-i) = 2^2 - i^2 = 4 + 1 = 5 = b \\implies b = 5$\\n최종 결과 계산:\\n$\\therefore b - a = 5 - (-4) = 9$"
+        "id": 8,
+        "level": "중",
+        "category": "나머지 정리",
+        "content": "다항식 $f(x)$를 $x+2$로 나누었을 때, 몫이 $Q(x)$, 나머지가 $-4$이고 $Q(x)$를 $x-3$으로 나누었을 때 나머지가 $3$이다. 이때 $f(x)$를 $x^2-x-6$으로 나눈 나머지 $R(x)$에 대하여 $R(1)$의 값은? [4.2점]",
+        "choices": [
+            "$2$",
+            "$3$",
+            "$4$",
+            "$5$",
+            "$6$"
+        ],
+        "answer": "④",
+        "solution": "<b>[키포인트]</b> 주어진 나눗셈을 검산식 세워 항등식의 성질을 이용해 함숫값을 추출함.\\n나눗셈 항등식을 세움.\\n\\implies f(x) = (x+2)Q(x) - 4\\n\\implies Q(3) = 3\\n위 식들에 $x=3$과 $x=-2$를 대입하여 $f(3)$과 $f(-2)$의 값을 구함.\\n\\implies f(3) = 5Q(3) - 4 = 15 - 4 = 11\\n\\implies f(-2) = -4\\n$f(x)$를 $x^2-x-6=(x-3)(x+2)$로 나눈 나머지 $R(x)=ax+b$를 설정함.\\n\\implies f(x) = (x-3)(x+2)Q'(x) + ax+b\\n\\implies f(3) = 3a+b = 11\\n\\implies f(-2) = -2a+b = -4\\n두 식을 연립함.\\n\\implies 5a = 15 \\implies a=3, b=2\\n\\implies R(x) = 3x+2\\n\\therefore R(1) = 3(1)+2 = 5"
     },
     {
-        id: 9,
-        level: "중",
-        category: "곱셈 공식의 응용",
-        content: "$a+b=6, ab=5$일 때, $(a+a^2+a^3)-(b+b^2+b^3)$의 값은? (단, $a>b$) [4.4점]",
-        choices: ["136", "144", "152", "160", "168"],
-        answer: "③",
-        solution: "<b>[Logical Anchor]</b> 식을 동일 차수끼리 묶어 인수분해 및 변형 공식을 적용함.\\n구하는 식: $(a-b) + (a^2-b^2) + (a^3-b^3)$\\n$\\text{i) } a-b \\text{ 구하기: } (a-b)^2 = (a+b)^2 - 4ab = 6^2 - 4(5) = 16$\\n$\\because a>b$ 이므로 $a-b = 4$\\n$\\text{ii) } a^2-b^2 = (a-b)(a+b) = 4 \\times 6 = 24$\\n$\\text{iii) } a^3-b^3 = (a-b)(a^2+ab+b^2) = (a-b)\\{(a+b)^2 - ab\\}$\\n$\\implies 4(36 - 5) = 4 \\times 31 = 124$\\n모든 항을 합산함.\\n$\\therefore 4 + 24 + 124 = 152$"
+        "id": 9,
+        "level": "중",
+        "category": "이차방정식과 이차함수",
+        "content": "방정식 $x^2-2x+5=0$의 두 근을 $\\alpha, \\beta$라 할 때, $f(\\alpha)=1, f(\\beta)=1$를 만족시키는 이차식 $f(x)$에 대하여 $f(2)$의 값은? (단, $f(x)$의 최고차항 계수는 1이다.) [4.2점]",
+        "choices": [
+            "$2$",
+            "$3$",
+            "$4$",
+            "$5$",
+            "$6$"
+        ],
+        "answer": "⑤",
+        "solution": "<b>[키포인트]</b> 주어진 함숫값 조건을 만족하는 새로운 이차방정식을 작성함.\\n$f(\\alpha)-1=0, f(\\beta)-1=0$이므로, 이차방정식 $f(x)-1=0$의 두 근이 $\\alpha, \\beta$임.\\n최고차항 계수가 $1$이므로 이차식을 작성함.\\n\\implies f(x)-1 = (x-\\alpha)(x-\\beta)\\n$\\alpha, \\beta$가 $x^2-2x+5=0$의 두 근이므로 $(x-\\alpha)(x-\\beta) = x^2-2x+5$와 일치함.\\n\\implies f(x)-1 = x^2-2x+5\\n\\implies f(x) = x^2-2x+6\\n\\implies f(2) = 2^2 - 2(2) + 6 = 6\\n\\therefore 6"
     },
     {
-        id: 10,
-        level: "중",
-        category: "복소수의 주기성과 연산",
-        content: "등식 $\\frac{x+yi}{1-2i}=\\frac{1}{i^{15}}+\\frac{1}{i^{17}}+\\frac{1}{i^{19}}$을 만족하는 실수 $x, y$에 대하여 $x+y$의 값은? [4.6점]",
-        choices: ["1", "2", "3", "4", "5"],
-        answer: "③",
-        solution: "<b>[Logical Anchor]</b> $i$의 거듭제곱 주기성($4$주기)을 이용하여 우변을 단순화함.\\n$\\text{i) 우변 정리}$\\n$i^{15} = (i^4)^3 \\cdot i^3 = -i \\implies \\frac{1}{i^{15}} = \\frac{1}{-i} = i$\\n$i^{17} = (i^4)^4 \\cdot i = i \\implies \\frac{1}{i^{17}} = \\frac{1}{i} = -i$\\n$i^{19} = (i^4)^4 \\cdot i^3 = -i \\implies \\frac{1}{i^{19}} = \\frac{1}{-i} = i$\\n$\\text{우변} = i - i + i = i$\\n$\\text{ii) 식의 변형 및 실수화}$\\n$\\frac{x+yi}{1-2i} = i \\implies x+yi = i(1-2i) = i - 2i^2 = 2+i$\\n$\\because x=2, y=1$\\n$\\therefore x + y = 3$"
+        "id": 10,
+        "level": "상",
+        "category": "나머지 정리의 심화",
+        "content": "이차식 $f(x)$가 다음 <조건>을 만족한다.\n<div class='box'><조건>\n(가) $f(x)$의 최고차항의 계수가 $1$이다.\n(나) $f(x)$는 $x+2$로 나누어떨어진다.\n(다) $f(x^2)$을 $f(x)$로 나누었을 때의 나머지는 $10x+2$이다.</div>\n이때, $f(2)$의 값은? [4.2점]",
+        "choices": [
+            "$-24$",
+            "$-20$",
+            "$-16$",
+            "$-12$",
+            "$-8$"
+        ],
+        "answer": "②",
+        "solution": "<b>[키포인트]</b> 주어진 조건 (가), (나)를 바탕으로 다항식의 형태를 설정하고, 항등식에 대입하여 계수를 확정함.\\n조건 (가), (나)에 의해 $f(x) = (x+2)(x-k)$로 설정할 수 있음.\\n조건 (다)를 항등식으로 나타냄.\\n\\implies f(x^2) = f(x)Q(x) + 10x+2\\n$x=-2$를 대입하여 좌변의 함숫값을 상수화함.\\n\\implies f((-2)^2) = f(-2)Q(-2) + 10(-2)+2\\n$f(-2)=0$이므로 우변은 $-18$이 됨.\\n\\implies f(4) = -18\\n설정한 $f(x)$ 식에 대입하여 미정계수 $k$를 구함.\\n\\implies f(4) = (4+2)(4-k) = 6(4-k) = -18\\n\\implies 4-k = -3 \\implies k = 7\\n\\implies f(x) = (x+2)(x-7)\\n\\implies f(2) = (2+2)(2-7) = 4 \\times (-5) = -20\\n\\therefore -20"
     },
     {
-        id: 11,
-        level: "하",
-        category: "절댓값 부등식",
-        content: "부등식 $|x-4|<4$를 만족시키는 모든 정수 $x$의 총합을 구하시오. [4.6점]",
-        choices: ["26", "27", "28", "29", "30"],
-        answer: "③",
-        solution: "<b>[Logical Anchor]</b> 절댓값의 정의를 이용하여 부등식의 범위를 확정함.\\n$|x - 4| < 4 \\implies -4 < x - 4 < 4$\\n각 변에 $4$를 더함.\\n$\\implies 0 < x < 8$\\n해당 범위에 속하는 정수 $x$는 $1, 2, 3, 4, 5, 6, 7$ 임.\\n총합을 구함.\\n$1 + 2 + 3 + 4 + 5 + 6 + 7 = 28$\\n$\\therefore 28$"
+        "id": 11,
+        "level": "중",
+        "category": "이차함수의 그래프",
+        "content": "[그래프필요] 두 함수 $f(x)=x^2+ax+b, g(x)=-x^2+cx+d$의 그래프가 그림과 같다. 방정식 $f(x)=2g(x)$의 두 근을 $\\alpha, \\beta$라 할 때, $\\alpha-\\beta$의 값은? (단, $\\alpha>\\beta$ 이고 $a, b, c, d$는 실수이다.) [4.5점]",
+        "choices": [
+            "$5$",
+            "$6$",
+            "$7$",
+            "$8$",
+            "$9$"
+        ],
+        "answer": "①",
+        "solution": "<b>[키포인트]</b> 그래프가 $x$축과 만나는 절편을 이용하여 각 이차함수의 식을 구한 후 연립함.\\n$f(x)$는 $(-1, 0), (2, 0)$을 지나고 최고차항 계수가 $1$임.\\n\\implies f(x) = (x+1)(x-2) = x^2-x-2\\n$g(x)$는 $(-4, 0), (2, 0)$을 지나고 최고차항 계수가 $-1$임.\\n\\implies g(x) = -(x+4)(x-2) = -x^2-2x+8\\n방정식 $f(x)=2g(x)$를 세우고 정리함.\\n\\implies x^2-x-2 = 2(-x^2-2x+8)\\n\\implies x^2-x-2 = -2x^2-4x+16\\n\\implies 3x^2+3x-18 = 0 \\implies x^2+x-6 = 0\\n인수분해하여 두 근을 구함.\\n\\implies (x+3)(x-2)=0 \\implies x=2, -3\\n$\\alpha > \\beta$ 이므로 $\\alpha=2, \\beta=-3$임.\\n\\implies \\alpha-\\beta = 2 - (-3) = 5\\n\\therefore 5"
     },
     {
-        id: 12,
-        level: "중",
-        category: "다항식의 나눗셈 활용",
-        content: "부피가 $\\pi(x^3+x^2-16x+20)$인 원기둥의 반지름과 높이가 일차식일 때, 겉넓이 $\\pi f(x)$에서 $f(4)$의 값은? [4.8점]",
-        choices: ["32", "36", "40", "44", "48"],
-        answer: "④",
-        solution: "<b>[Logical Anchor]</b> 부피 다항식을 인수분해하여 반지름($r$)과 높이($h$)를 결정함.\\n$\\text{i) 부피 인수분해: } x=2$를 대입하면 $8+4-32+20=0$\\n조립제법 결과 $\\implies \\pi(x-2)(x^2+3x-10) = \\pi(x-2)^2(x+5)$\\n$\\because$ 원기둥 부피 $V = \\pi r^2 h$ 이므로 $r = x-2, h = x+5$\\n$\\text{ii) 겉넓이 식 수립: } S = 2\\pi r^2 + 2\\pi rh = 2\\pi r(r+h)$\\n$f(x) = 2(x-2)\\{(x-2) + (x+5)\\} = 2(x-2)(2x+3)$\\n$\\text{iii) 값 계산: } f(4) = 2(4-2)(2 \\cdot 4 + 3) = 2 \\cdot 2 \\cdot 11 = 44$\\n$\\therefore 44$"
+        "id": 12,
+        "level": "중",
+        "category": "연쇄 조립제법",
+        "content": "등식 $x^3-4x^2+3x-5=a(x-2)^3+b(x-2)^2+c(x-2)+d$가 항등식일 때, $ab+cd$의 값은? [4.5점]",
+        "choices": [
+            "$6$",
+            "$7$",
+            "$8$",
+            "$9$",
+            "$10$"
+        ],
+        "answer": "④",
+        "solution": "<b>[키포인트]</b> 특정 일차식에 대한 내림차순 정리는 연쇄 조립제법을 통해 계수를 차례로 구함.\\n$(x-2)$에 대하여 조립제법을 연속으로 실행함.\\n\\text{i) } x=2\\text{로 1차 조립제법 시행:} 나머지는 -7 \\implies d = -7\\n\\text{ii) 몫에 대해 2차 조립제법 시행:} 나머지는 -1 \\implies c = -1\\n\\text{iii) 몫에 대해 3차 조립제법 시행:} 나머지는 2 \\implies b = 2\\text{, 마지막 몫은 } 1 \\implies a = 1\\n구해진 계수를 대입하여 계산함.\\n\\implies ab+cd = (1)(2) + (-1)(-7) = 2 + 7 = 9\\n\\therefore 9"
     },
     {
-        id: 13,
-        level: "상",
-        category: "복소수의 주기성",
-        content: "$a_n = (\\frac{1+i}{1-i})^n + (\\frac{1-i}{1+i})^n$일 때, <보기> 중 옳은 것만을 있는 대로 고른 것은? [4.8점]",
-        choices: ["ㄱ, ㄴ", "ㄷ, ㄹ", "ㄱ, ㄷ, ㄹ", "ㄱ, ㄴ, ㄹ", "ㄱ, ㄴ, ㄷ, ㄹ"],
-        answer: "⑤",
-        solution: "<b>[Logical Anchor]</b> 기본 복소수 단위를 실수화하여 주기적인 함숫값을 분석함.\\n$\\frac{1+i}{1-i} = \\frac{(1+i)^2}{2} = i, \\quad \\frac{1-i}{1+i} = -i$\\n$\\implies a_n = i^n + (-i)^n$\\n$n=1: i - i = 0$\\n$n=2: -1 - 1 = -2$\\n$n=3: -i + i = 0$\\n$n=4: 1 + 1 = 2$\\n$\\because 4$를 주기로 반복됨.\\nㄱ. $a_{10} = a_2 = -2$ (참)\\nㄴ. $2n, 6n$은 주기의 정수배 차이이므로 함숫값이 같음. (참)\\n(※ 상세 보기 검증 결과 모든 항목이 유효함)\\n$\\therefore$ ㄱ, ㄴ, ㄷ, ㄹ"
+        "id": 13,
+        "level": "중",
+        "category": "복소수의 성질",
+        "content": "두 복소수 $z_1, z_2$에 대하여 $\\overline{z_1+z_2}=-2-5i$, $\\overline{z_1z_2}=-5-6i$ 일 때, $(2z_1-3)(2z_2-3)=a+bi$이다. 두 실수 $a, b$에 대하여 $a-b$의 값은? (단, $\\bar{z}$는 $z$의 켤레복소수이다.) [5.0점]",
+        "choices": [
+            "$5$",
+            "$6$",
+            "$7$",
+            "$8$",
+            "$9$"
+        ],
+        "answer": "③",
+        "solution": "<b>[키포인트]</b> 켤레복소수의 성질을 이용하여 $z_1+z_2, z_1z_2$를 구한 후 주어진 식에 대입함.\n주어진 켤레복소수 조건에 의해 합과 곱을 구함.\n\\implies \\overline{z_1+z_2} = -2-5i \\implies z_1+z_2 = -2+5i\n\\implies \\overline{z_1z_2} = -5-6i \\implies z_1z_2 = -5+6i\n목표 식을 전개함.\n\\implies (2z_1-3)(2z_2-3) = 4z_1z_2 - 6(z_1+z_2) + 9\n구해둔 합과 곱을 대입하여 계산함.\n\\implies 4(-5+6i) - 6(-2+5i) + 9\n\\implies -20 + 24i + 12 - 30i + 9 = 1 - 6i\n$a+bi = 1-6i$이므로 계수를 비교하면 $a=1, b=-6$임.\n\\implies a-b = 1 - (-6) = 7\n\\therefore 7"
     },
     {
-        id: 14,
-        level: "상",
-        category: "나머지 정리의 심화",
-        content: "최고차항 계수가 $1$인 $f(x)$를 $(x-2)^3$으로 나눈 몫 $Q(x)$, 나머지 $R(x)$가 $R(3)=R(4)$를 만족한다. $Q(x)$를 $x-3$으로 나눈 나머지가 $5$일 때, $f(1)-R(1)$의 값은? [5점]",
-        choices: ["-7", "-3", "1", "5", "9"],
-        answer: "②",
-        solution: "<b>[Logical Anchor]</b> 나머지 정리의 정의를 사용하여 차이 함수 $f(x)-R(x)$를 직접 구성함.\\n$f(x) = (x-2)^3 Q(x) + R(x)$\\n$\\implies f(x) - R(x) = (x-2)^3 Q(x)$\\n몫 $Q(x)$를 $x-3$으로 나눈 나머지가 $5$이므로 $Q(3) = 5$ 임.\\n$R(x)$가 $2$차 이하이고 $R(3)=R(4)$이면 $R(x)$의 개형 분석이 필요하나, 구하고자 하는 $f(1)-R(1)$은\\n$\\implies f(1) - R(1) = (1-2)^3 Q(1) = -Q(1)$\\n$f(x)$가 $4$차식이라 가정할 때 $Q(x) = x-a$ 형태임.\\n$Q(3) = 3 - a = 5 \\implies a = -2$\\n$\\implies Q(x) = x + 2$\\n$\\therefore -Q(1) = -(1 + 2) = -3$"
+        "id": 14,
+        "level": "상",
+        "category": "허근 오메가의 성질",
+        "content": "방정식 $x+\\frac{1}{x}=-1$의 한 허근을 $\\omega$라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [5.0점]\n<div class='box'><보기>\nㄱ. $\\bar{\\omega}+\\bar{\\omega}^2 = \\omega+\\omega^2$\nㄴ. $(\\bar{\\omega}+1)(\\bar{\\omega}^2+1)(\\bar{\\omega}^4+1)(\\bar{\\omega}^8+1)=1$\nㄷ. $(\\bar{\\omega}+1)^{2n}=(\\frac{\\bar{\\omega}}{\\bar{\\omega}+\\omega})^{3n}$을 만족시키는 60이하의 자연수 $n$의 개수는 10이다.</div>",
+        "choices": [
+            "ㄱ",
+            "ㄷ",
+            "ㄱ, ㄴ",
+            "ㄱ, ㄷ",
+            "ㄱ, ㄴ, ㄷ"
+        ],
+        "answer": "⑤",
+        "solution": "<b>[키포인트]</b> 분수 방정식을 정리하여 $\\omega$의 성질을 파악한 후 각 보기에 적용함.\\n양변에 $x$를 곱해 정리하면 $x^2+x+1=0$이므로 $\\omega^3=1, \\omega^2+\\omega+1=0$의 성질을 가짐.\\nㄱ 검증:\\n\\implies 방정식의 실계수 성질에 의해 $\\bar{\\omega}^2+\\bar{\\omega}+1=0$도 성립하므로 좌변과 우변 모두 $-1$로 같음. (참)\\nㄴ 검증:\\n\\implies (\\bar{\\omega}+1)(\\bar{\\omega}^2+1) = (-\\bar{\\omega}^2)(-\\bar{\\omega}) = \\bar{\\omega}^3 = 1\\n\\implies \\text{주어진 식은 } 1 \\times 1 = 1\\text{이 됨. (참)}\\\nㄷ 검증:\\n\\text{좌변: } (\\bar{\\omega}+1)^{2n} = (-\\bar{\\omega}^2)^{2n} = \\bar{\\omega}^{4n} = \\bar{\\omega}^n\\n\\text{우변: } (\\frac{\\bar{\\omega}}{-1})^{3n} = (-1)^n (\\because \\bar{\\omega}^3=1)\\n\\implies \\bar{\\omega}^n = (-1)^n\\text{을 만족하는 } n\\text{은 6의 배수일 때 성립함. 60 이하 6의 배수는 10개임. (참)}\\n\\therefore \\text{ㄱ, ㄴ, ㄷ}"
     },
     {
-        id: 15,
-        level: "상",
-        category: "제한된 범위에서의 이차함수",
-        content: "$0 \\le x \\le 1$에서 이차함수 $y=-x^2+2ax$의 최댓값이 $5$일 때, 상수 $a$의 값은? [5.2점]",
-        choices: ["1", "2", "3", "4", "5"],
-        answer: "④",
-        solution: "<b>[Logical Anchor]</b> 축의 위치 $x=a$가 주어진 범위에 포함되는지 케이스를 분류함.\\n$y = -(x-a)^2 + a^2$\\n$\\text{i) } a < 0 \\text{ 인 경우: } x=0 \\text{ 에서 최대 } 0 \\ne 5$\\n$\\text{ii) } 0 \\le a \\le 1 \\text{ 인 경우: } x=a \\text{ 에서 최대 } a^2 = 5 \\implies a = \\sqrt{5} \\text{ (범위 밖)}$\\n$\\text{iii) } a > 1 \\text{ 인 경우: } x=1 \\text{ 에서 최대}$\\n$y(1) = -1 + 2a = 5 \\implies 2a = 6 \\implies a = 3$\\n조건 $a > 1$을 만족함.\\n$\\therefore a = 3$"
+        "id": 15,
+        "level": "중",
+        "category": "다항식의 나눗셈",
+        "content": "[단답형 1] 다음은 다항식 $2x^3-4x^2+5$를 $x^2-3x-1$로 나눈 몫과 나머지를 구할 때, $(가)\\sim(다)$ 안에 알맞은 것을 구하여 $(가)+(나)+(다)$를 구하시오. [5.0점]\n<div class='box'>\n$x^2-3x-1 \\overline{) 2x^3-4x^2+5}$ 몫: $2x+(가)$\n$\\qquad \\qquad \\ \\underline{\\ 2x^3-6x^2-2x \\ }$\n$\\qquad \\qquad \\ \\ \\ 2x^2+(나)+5$\n$\\qquad \\qquad \\ \\underline{\\ 2x^2-6x-2 \\ }$\n$\\qquad \\qquad \\qquad \\quad \\ \\ \\ \\ \\ $(다)\n</div>",
+        "choices": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "answer": "10x+9",
+        "solution": "<b>[키포인트]</b> 다항식의 직접 나눗셈 세로셈 과정을 관찰하여 각 위치의 식과 계수를 매칭함.\\n직접 나눗셈을 실행하여 몫과 나머지를 구함.\\n\\implies 2x^3-4x^2+5 = (x^2-3x-1)(2x+2) + (8x+7)\\n중간 과정의 수식을 구조와 매칭함.\\n\\implies (가) = 2 \\text{ (몫의 상수항)}\\n\\implies (나) = 2x \\text{ (나눗셈 도중의 일차항)}\\n\\implies (다) = 8x+7 \\text{ (나머지)}\\n\\implies (가)+(나)+(다) = 2 + 2x + 8x + 7 = 10x + 9\\n\\therefore 10x+9"
     },
     {
-        id: 16,
-        level: "하",
-        category: "항등식의 성질",
-        content: "[단답형 1] 등식 $(a+2)x+ab-10=0$이 $x$에 관계없이 항상 성립할 때 $a+b$의 값을 구하시오. [5점]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "-7",
-        solution: "<b>[Logical Anchor]</b> 항등식의 계수가 $0$임을 이용하여 연립 방정식을 해결함.\\n$x$의 값에 관계없이 성립하므로\\n$\\text{i) } x \\text{의 계수: } a + 2 = 0 \\implies a = -2$\\n$\\text{ii) 상수항: } ab - 10 = 0$\\n구한 $a$를 대입하면 $(-2)b = 10 \\implies b = -5$\\n최종 합을 계산함.\\n$\\therefore a + b = -2 + (-5) = -7$"
+        "id": 16,
+        "level": "중",
+        "category": "연립부등식",
+        "content": "[단답형 2] 연립부등식 $\\begin{cases} 3x-2a \\ge 6x+1 \\\\ 4-x < 5x-2 \\end{cases}$ 을 만족시키는 정수 $x$의 개수가 2가 되도록 하는 모든 정수 $a$의 값의 합을 구하시오. [5.0점]",
+        "choices": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "answer": "-11",
+        "solution": "<b>[키포인트]</b> 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\\n각 부등식을 정리함.\\n\\text{i) } 3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\frac{-2a-1}{3}\\n\\text{ii) } 6x > 6 \\implies x > 1\\n범위 $1 < x \\le \\frac{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\\n경계값의 범위를 부등식으로 설정함.\\n\\implies 3 \\le \\frac{-2a-1}{3} < 4\\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\\n\\implies -6.5 < a \\le -5\\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\\n\\implies -6 + (-5) = -11\\n\\therefore -11"
     },
     {
-        id: 17,
-        level: "중",
-        category: "이차함수와 x축의 교점",
-        content: "[단답형 2] 이차함수 $y=x^2+2x+k$가 $x$축과 만나지 않도록 하는 최소 정수 $k$를 구하시오. [5점]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "1",
-        solution: "<b>[Logical Anchor]</b> 실근이 존재하지 않을 조건(판별식 < 0)을 적용함.\\n$D/4 = 1^2 - k < 0 \\implies k > 1$\\n(※ 문항의 의도가 경계 조건 혹은 중근을 포함한 특수 상황인 경우를 고려하여 $1$로 처리함)\\n$\\therefore 1$"
+        "id": 17,
+        "level": "중",
+        "category": "이차방정식의 판별식",
+        "content": "[단답형 3] 이차방정식 $x^2+2(1-k)x+k^2+3=0$이 실근을 갖도록 하는 실수 $k$의 범위를 구하시오. [5.0점]",
+        "choices": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "answer": "k <= -1",
+        "solution": "<b>[키포인트]</b> 이차방정식이 실근을 가질 조건은 판별식이 0 이상임을 이용함.\\n\\implies \\frac{D}{4} = (1-k)^2 - (k^2+3) \\ge 0\\n식을 전개하여 부등식을 정리함.\\n\\implies 1 - 2k + k^2 - k^2 - 3 \\ge 0\\n\\implies -2k - 2 \\ge 0 \\implies -2k \\ge 2\\n\\implies k \\le -1\\n\\therefore k \\le -1"
     },
     {
-        id: 18,
-        level: "중",
-        category: "고차방정식의 풀이",
-        content: "[단답형 3] 방정식 $x^3-5x^2-x+5=0$의 근 중 가장 큰 근과 가장 작은 근의 합을 구하시오. [5점]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "4",
-        solution: "<b>[Logical Anchor]</b> 인수분해를 통해 모든 근을 구한 뒤 대소 비교를 수행함.\\n$x^2(x - 5) - (x - 5) = 0$\\n$(x^2 - 1)(x - 5) = 0$\\n$(x - 1)(x + 1)(x - 5) = 0$\\n실근은 $-1, 1, 5$ 임.\\n가장 큰 근: $5$, 가장 작은 근: $-1$\\n$\\therefore 5 + (-1) = 4$"
+        "id": 18,
+        "level": "상",
+        "category": "삼차방정식의 근",
+        "content": "[단답형 4] 계수가 실수인 삼차방정식 $x^3+ax^2+4x+b=0$의 한 근이 $1+i$이다. 나머지 두 근을 $c, d$라 할 때, $a+b+c+d$를 구하시오. (단, $i=\\sqrt{-1}$이다.) [5.0점]",
+        "choices": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "answer": "-3-i",
+        "solution": "<b>[키포인트]</b> 실계수 방정식의 켤레근 성질과 근과 계수의 관계를 이용하여 미정계수와 나머지 근을 구함.\\n계수가 실수인 방정식이므로 한 근이 $1+i$이면 $1-i$도 근임. ($d = 1-i$)\\n나머지 한 실근을 $c$라 하고, 세 근의 합과 둘씩 곱한 합의 식을 세움.\\n\\text{일차항 계수 조건: } (1+i)(1-i) + (1+i)c + (1-i)c = 4\\n\\implies 2 + 2c = 4 \\implies 2c = 2 \\implies c = 1\\n근과 계수의 관계를 통해 계수 $a, b$를 구함.\\n\\implies -a = (1+i) + (1-i) + 1 = 3 \\implies a = -3\\n\\implies -b = (1+i)(1-i)(1) = 2 \\implies b = -2\\n구해진 모든 값을 대입하여 계산함.\\n\\implies a+b+c+d = -3 + (-2) + 1 + (1-i) = -3-i\\n\\therefore -3-i"
     },
     {
-        id: 19,
-        level: "상",
-        category: "치환을 이용한 인수분해",
-        content: "[서술형 1] $(x^2-3x+2)(x^2-7x+12)+k$가 이차식 $f(x)$의 제곱으로 인수분해 될 때, $k+f(5)$를 구하시오. [7점]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "6",
-        solution: "<b>[Logical Anchor]</b> 공통부분이 생기도록 항을 재배치하여 치환함.\\n$\\{(x-1)(x-2)\\}\\{(x-3)(x-4)\\} + k$\\n$\\implies \\{(x-1)(x-4)\\}\\{(x-2)(x-3)\\} + k$\\n$\\implies (x^2 - 5x + 4)(x^2 - 5x + 6) + k$\\n$x^2 - 5x = t$ 로 치환 $\\implies (t + 4)(t + 6) + k = t^2 + 10t + 24 + k$\\n완전제곱식이 되려면 상수항이 $(\\frac{10}{2})^2 = 25$ 여야 함.\\n$\\implies 24 + k = 25 \\implies k = 1$\\n$\\implies (t + 5)^2 = (x^2 - 5x + 5)^2$\\n$f(x) = x^2 - 5x + 5 \\implies f(5) = 25 - 25 + 5 = 5$\\n$\\therefore k + f(5) = 1 + 5 = 6$"
+        "id": 19,
+        "level": "중",
+        "category": "음수의 제곱근",
+        "content": "방정식 $x^2+7x+1=0$의 서로 다른 두 근을 $\\alpha, \\beta$라 하자. $k=\\sqrt{\\alpha}-\\sqrt{\\beta}+\\frac{1}{\\sqrt{\\alpha}}-\\frac{1}{\\sqrt{\\beta}}$ 이라 할 때, 다음을 풀이과정과 함께 구하시오. [6.0점]\n(1) $\\alpha+\\beta$ 와 $\\alpha\\beta$의 값을 각각 구하시오. [2점]\n(2) $k^2$의 값을 구하시오. [4점]",
+        "choices": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "answer": "(1) -7, 1  (2) -20",
+        "solution": "<b>[키포인트]</b> 음수의 제곱근 성질을 이용하여 식을 정리하고 제곱함.\n(1) 근과 계수의 관계에 의해 다음이 성립함.\n\\implies \\alpha+\\beta = -7, \\alpha\\beta = 1\n(2) $\\alpha+\\beta<0, \\alpha\\beta>0$이므로 두 근 $\\alpha, \\beta$는 모두 음수임.\n\\implies \\sqrt{\\alpha}\\sqrt{\\beta} = -\\sqrt{\\alpha\\beta} = -1\n$k$의 식을 통분하여 정리함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\frac{\\sqrt{\\beta}-\\sqrt{\\alpha}}{\\sqrt{\\alpha}\\sqrt{\\beta}}\n음수의 제곱근 곱셈 결과를 대입함.\n\\implies k = (\\sqrt{\\alpha}-\\sqrt{\\beta}) + \\frac{-(\\sqrt{\\alpha}-\\sqrt{\\beta})}{-1} = 2(\\sqrt{\\alpha}-\\sqrt{\\beta})\n양변을 제곱함.\n\\implies k^2 = 4(\\sqrt{\\alpha}-\\sqrt{\\beta})^2\n음수의 제곱근 성질에 의해 $(\\sqrt{\\alpha}-\\sqrt{\\beta})^2 = \\alpha+\\beta+2\\sqrt{\\alpha\\beta}$임.\n\\implies k^2 = 4(\\alpha+\\beta+2\\sqrt{\\alpha\\beta}) = 4(-7+2(1)) = -20\n(※ 학교 답안은 0이나, 이는 두 근이 음수임을 고려하지 않은 출제 오류이며 수학적 참값은 -20임)\n\\therefore (1) -7, 1 \\quad (2) -20"
     },
     {
-        id: 20,
-        level: "중",
-        category: "이차함수의 성질",
-        content: "[서술형 2] $f(x)$ 꼭짓점이 $(-2, k)$이고 $y=f(x)+3$이 $x$축에 접할 때, $\\alpha+\\beta-k$를 구하시오. [7점]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "-1",
-        solution: "<b>[Logical Anchor]</b> 꼭짓점의 정보를 이용하여 함숫값의 평행이동과 접점 조건을 분석함.\\n$f(x) = a(x + 2)^2 + k$ (단, $a=1$로 가정)\\n$y = (x + 2)^2 + k + 3$\\n$x$축에 접하려면 꼭짓점의 $y$좌표가 $0$이어야 함.\\n$\\implies k + 3 = 0 \\implies k = -3$\\n$f(x) = (x + 2)^2 - 3 = x^2 + 4x + 1$\\n근과 계수의 관계에서 $\\alpha + \\beta = -4$\\n$\\therefore -4 - (-3) = -1$"
+        "id": 20,
+        "level": "상",
+        "category": "이차함수의 활용",
+        "content": "[서술형 2] [도형필요] 그림과 같이 $\\overline{BC}=10$이고 넓이가 30인 삼각형 $\\mathrm{ABC}$에 대하여 두 점 $\\mathrm{P}, \\mathrm{S}$는 변 $\\mathrm{BC}$ 위에 있고, 두 점 $\\mathrm{R}, \\mathrm{Q}$가 각각 두 변 $\\mathrm{AB}, \\mathrm{AC}$ 위에 있다. 이 네 점을 꼭짓점으로 하는 직사각형 $\\mathrm{PQRS}$의 넓이가 최대가 되는 $\\mathrm{RQ}$의 길이와 직사각형 $\\mathrm{PQRS}$의 넓이를 풀이과정과 함께 구하시오. [6.0점]",
+        "choices": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "answer": "RQ=5, 넓이=15",
+        "solution": "<b>[키포인트]</b> 삼각형의 닮음을 이용하여 직사각형의 높이를 밑변에 대한 식으로 나타내고 이차함수의 최댓값을 구함.\\n삼각형의 넓이가 $30$이고 밑변이 $10$이므로 높이 $h=6$임.\\n직사각형의 가로 길이를 $RQ=x$라 하면, 삼각형의 닮음에 의해 직사각형의 높이 $y$는 다음과 같음.\\n\\implies y = 6(1 - \\frac{x}{10}) = 6 - 0.6x\\n직사각형의 넓이 식을 이차함수 형태로 작성함.\\n\\implies S(x) = x(6 - 0.6x) = -0.6(x^2 - 10x)\\n완전제곱식으로 변형하여 최댓값을 구함.\\n\\implies S(x) = -0.6(x-5)^2 + 15\\n\\implies x=5\\text{일 때, 최댓값 } 15\\text{를 가짐.}\\n\\therefore RQ=5, 넓이=15"
     },
     {
-        id: 21,
-        level: "상",
-        category: "연립부등식의 해",
-        content: "[서술형 3] 연립부등식 해가 $6 < x \\le 8$일 때, 처음 부등식을 만족시키는 $x$의 범위를 구하시오. [6점]",
-        choices: [" ", " ", " ", " ", " "],
-        answer: "6 < x <= 22/3",
-        solution: "<b>[Logical Anchor]</b> 부등식의 경계값을 통해 미정계수 $a, b$를 역산함.\\n$\\text{i) } x > -3a, \\ x \\le \\frac{a+2b}{2}$\\n해의 범위가 $6 < x \\le 8$ 이므로\\n$-3a = 6 \\implies a = -2$\\n$\\frac{-2 + 2b}{2} = 8 \\implies -2 + 2b = 16 \\implies b = 9$\\n$\\text{ii) 본래 식의 대입: } 3x \\le 2b - 2a$\\n$3x \\le 2(9) - 2(-2) = 18 + 4 = 22$\\n$\\implies x \\le \\frac{22}{3}$\\n$\\therefore 6 < x \\le \\frac{22}{3}$"
+        "id": 21,
+        "level": "상",
+        "category": "복소수의 주기성",
+        "content": "[서술형 3] 복소수 $z=\\frac{1-\\sqrt{3}i}{2i}$ 와 자연수 $n$에 대하여\n$f(n)=(z^3+2z^6+3z^9+\\cdots+nz^{3n}) - (\\frac{1}{z^3}+\\frac{2}{z^6}+\\frac{3}{z^9}+\\cdots+\\frac{n}{z^{3n}})$\n이라 할 때, 다음을 풀이과정과 함께 구하시오. [8.0점]\n(1) $z^m=1$ 을 만족하는 최소의 자연수 $m$을 구하시오. [3점]\n(2) $f(k)f(k+2)=360$이 성립하도록 하는 모든 자연수 $k$의 값의 합을 구하시오. (단, $i=\\sqrt{-1}$이다.) [5점]",
+        "choices": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "answer": "(1) 12, (2) 35",
+        "solution": "<b>[키포인트]</b> 복소수 $z$를 정리하여 거듭제곱의 주기를 찾고, $f(n)$의 성질을 분석하여 방정식을 풂.\\n(1) $z$의 분모 분자에 $-i$를 곱하여 정리함.\\n\\implies z = \\frac{(1-\\sqrt{3}i)(-i)}{2i(-i)} = \\frac{-i+\\sqrt{3}i^2}{2} = \\frac{-\\sqrt{3}-i}{2}\\n이는 특수각의 형태를 띠며 $z^3 = (\\frac{-\\sqrt{3}-i}{2})^3 = -i$임.\\n$z^6 = (-i)^2 = -1$이므로 $z^{12} = 1$이 됨.\\n최소의 자연수 $m=12$임.\\n\\n(2) $w = z^3 = -i$라 치환하여 $f(n)$을 분석함.\\n$f(n) = \\sum_{x=1}^{n} xw^x - \\sum_{x=1}^{n} x(\\frac{1}{w})^x\\n\\frac{1}{w} = \\frac{1}{-i} = i$ 이므로, $w^x - (\\frac{1}{w})^x = (-i)^x - i^x$임.\\n$x$가 짝수이면 $(-i)^x = i^x$이므로 상쇄되어 0이 되고, $x$가 홀수이면 $(-i)^x = -i^x$이므로 차이는 $-2i^x$가 됨.\\n따라서 $f(n) = \\sum_{x=1, 홀수}^{n} -2xi^x$의 형태가 됨.\\n$x=1, 3, 5, 7$ 대입 시 각 항은 $-2i, 6i, -10i, 14i$임.\\n$f(n)$의 누적합을 구해보면 $n=2m-1$ 또는 $2m$일 때, $f(n) = (-1)^m \\cdot 2m \\cdot i$의 꼴을 가짐.\\n$f(k)f(k+2) = 360$에서 $k=2m-1$(홀수)일 때 $k+2=2m+1$이므로:\\n\\implies (-1)^m \\cdot 2mi \\times (-1)^{m+1} \\cdot 2(m+1)i = -4m(m+1)i^2 = 4m(m+1) = 360\\n$m(m+1) = 90$에서 $m=9$임. 따라서 $k = 2(9)-1 = 17$임.\\n$k=2m$(짝수)일 때도 동일한 결과식이 도출되며 $m=9$에서 $k=18$임.\\n모든 자연수 $k$의 합은 $17 + 18 = 35$임.\\n\\therefore (1) 12, (2) 35"
     }
 ];

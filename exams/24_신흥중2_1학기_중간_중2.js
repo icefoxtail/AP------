@@ -16,7 +16,7 @@ window.questionBank = [
         content: "다음은 분수와 소수에 대해 친구들이 발표한 것이다. 친구들의 설명 중 바르지 못한 것은?",
         choices: ["다혜 : 분수는 나누는 과정에서 생겨났어요.", "주영 : 음식 레시피에서 재료의 양은 주로 소수가 쓰여요.", "은세 : 소수는 분수보다 훨씬 늦게 발명됐어요.", "승연 : 음악 시간에 박자를 나타낼 때 분수가 쓰여요.", "정식 : 내 키나 몸무게 같은 것은 소수로 표현해요."],
         answer: "②",
-        solution: "<b>[Logical Anchor]</b> 실생활에서의 수의 활용 사례를 분석함.\\n② 음식 레시피에서는 주로 $\\frac{1}{2}$컵, $\\frac{2}{3}$스푼 등 분수 표현이 소수보다 더 빈번하게 사용됨.\\n$\\therefore$ ②"
+        solution: "<b>[키포인트]</b> 실생활에서의 수의 활용 사례를 분석함.\\n② 음식 레시피에서는 주로 $\\frac{1}{2}$컵, $\\frac{2}{3}$스푼 등 분수 표현이 소수보다 더 빈번하게 사용됨.\\n$\\therefore$ ②"
     },
     {
         id: 2,
@@ -25,7 +25,7 @@ window.questionBank = [
         content: "다음 분수 중에서 유한소수로 나타낼 수 있는 것을 모두 고르면? (정답 2개)",
         choices: ["$\\frac{14}{2^2 \\times 7}$", "$\\frac{1}{15}$", "$\\frac{3 \\times 7}{2 \\times 5 \\times 7^2}$", "$\\frac{6}{18}$", "$\\frac{45}{2^2 \\times 3^2 \\times 5^2}$"],
         answer: "①, ⑤",
-        solution: "<b>[Logical Anchor]</b> 기약분수 상태에서 분모의 소인수가 $2$ 또는 $5$뿐인지 확인.\\n① $\\frac{14}{28} = \\frac{1}{2} \\implies$ 분모 소인수 $2$ (유한)\\n② $\\frac{1}{15} = \\frac{1}{3 \\times 5} \\implies$ 분모 소인수 $3$ (순환)\\n③ $\\frac{21}{490} = \\frac{3}{70} \\implies$ 분모 소인수 $7$ (순환)\\n④ $\\frac{6}{18} = \\frac{1}{3} \\implies$ 분모 소인수 $3$ (순환)\\n⑤ $\\frac{45}{4 \\times 9 \\times 25} = \\frac{45}{900} = \\frac{1}{20} = \\frac{1}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$ (유한)\\n$\\therefore$ ①, ⑤"
+        solution: "<b>[키포인트]</b> 기약분수 상태에서 분모의 소인수가 $2$ 또는 $5$뿐인지 확인.\\n① $\\frac{14}{28} = \\frac{1}{2} \\implies$ 분모 소인수 $2$ (유한)\\n② $\\frac{1}{15} = \\frac{1}{3 \\times 5} \\implies$ 분모 소인수 $3$ (순환)\\n③ $\\frac{21}{490} = \\frac{3}{70} \\implies$ 분모 소인수 $7$ (순환)\\n④ $\\frac{6}{18} = \\frac{1}{3} \\implies$ 분모 소인수 $3$ (순환)\\n⑤ $\\frac{45}{4 \\times 9 \\times 25} = \\frac{45}{900} = \\frac{1}{20} = \\frac{1}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$ (유한)\\n$\\therefore$ ①, ⑤"
     },
     {
         id: 3,
@@ -97,7 +97,7 @@ window.questionBank = [
         content: "$5^{10} \\times 2^{12}$은 몇 자리의 자연수인가?",
         choices: ["10", "11", "12", "13", "14"],
         answer: "②",
-        solution: "<b>[Logical Anchor]</b> $2^n \\times 5^n = 10^n$ 성질을 이용함.\\n$5^{10} \\times 2^{12} = 5^{10} \\times 2^{10} \\times 2^2$\\n$= (5 \\times 2)^{10} \\times 4 = 4 \\times 10^{10}$\\n$\\because$ $4$ 뒤에 $0$이 $10$개 붙으므로 자릿수는 $1 + 10 = 11$임.\\n$\\therefore$ 11자리"
+        solution: "<b>[키포인트]</b> $2^n \\times 5^n = 10^n$ 성질을 이용함.\\n$5^{10} \\times 2^{12} = 5^{10} \\times 2^{10} \\times 2^2$\\n$= (5 \\times 2)^{10} \\times 4 = 4 \\times 10^{10}$\\n$\\because$ $4$ 뒤에 $0$이 $10$개 붙으므로 자릿수는 $1 + 10 = 11$임.\\n$\\therefore$ 11자리"
     },
     {
         id: 11,
@@ -106,7 +106,7 @@ window.questionBank = [
         content: "$\\frac{36^9}{54^6} = 2^a$ 일 때, 자연수 $a$의 값은?",
         choices: ["2", "4", "6", "8", "12"],
         answer: "⑤",
-        solution: "<b>[Logical Anchor]</b> 밑을 소인수분해하여 지수법칙을 적용함.\\n$\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{18-6} = 2^{12}$\\n$\\therefore a = 12$"
+        solution: "<b>[키포인트]</b> 밑을 소인수분해하여 지수법칙을 적용함.\\n$\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{18-6} = 2^{12}$\\n$\\therefore a = 12$"
     },
     {
         id: 12,
@@ -142,7 +142,7 @@ window.questionBank = [
         content: "어떤 식에 $2x^2-3x+7$ 을 더했더니 $6x^2-2x+3$ 이 되었다. 어떤 식에서 $(2x^2-3x+7)$ 을 뺀 식은?",
         choices: ["$2x^2+8x-11$", "$-2x^2-5x+11$", "$-2x^2+x+11$", "$2x^2+4x-11$", "$2x^2-3x+11$"],
         answer: "④",
-        solution: "<b>[Logical Anchor]</b> 역산을 통해 어떤 식을 먼저 구함.\\n어떤 식 $= (6x^2-2x+3) - (2x^2-3x+7) = 4x^2+x-4$\\n바른 계산: $(4x^2+x-4) - (2x^2-3x+7) = 2x^2+4x-11$\\n$\\therefore 2x^2+4x-11$"
+        solution: "<b>[키포인트]</b> 역산을 통해 어떤 식을 먼저 구함.\\n어떤 식 $= (6x^2-2x+3) - (2x^2-3x+7) = 4x^2+x-4$\\n바른 계산: $(4x^2+x-4) - (2x^2-3x+7) = 2x^2+4x-11$\\n$\\therefore 2x^2+4x-11$"
     },
     {
         id: 16,

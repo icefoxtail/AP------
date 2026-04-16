@@ -1,4 +1,4 @@
-window.examTitle = "2025_순천금당중3_1학기_중간_중3";
+window.examTitle = "2025_금당중3_1학기_중간_중3";
 
 window.questionBank = [
   {
@@ -53,7 +53,7 @@ window.questionBank = [
     "id": 5,
     "level": "중",
     "category": "제곱근과 실수",
-    "content": "다음 그림은 한 눈금의 길이가 1인 모눈종이 위에 수직선과 직각삼각형 ABC를 그리고, 점 A를 중심으로 하고 \\overline{AC}를 반지름으로 하는 원을 그린 것이다. 원이 수직선과 만나는 두 점을 각각 P, Q라 할 때, P-Q의 값은? [4점] <svg width=\\"160\\" height=\\"120\\" viewBox=\\"0 0 160 120\\" xmlns=\\"http://www.w3.org/2000/svg\\"><defs><pattern id=\\"grid\\" width=\\"20\\" height=\\"20\\" patternUnits=\\"userSpaceOnUse\\"><path d=\\"M 20 0 L 0 0 0 20\\" fill=\\"none\\" stroke=\\"#eee\\" stroke-width=\\"1\\"/></pattern></defs><rect width=\\"160\\" height=\\"120\\" fill=\\"url(#grid)\\"/><line x1=\\"0\\" y1=\\"100\\" x2=\\"160\\" y2=\\"100\\" stroke=\\"black\\" stroke-width=\\"1.5\\"/><path d=\\"M 60 100 A 56.57 56.57 0 0 1 116.57 100\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1\\"/><path d=\\"M 3.43 100 A 56.57 56.57 0 0 1 60 100\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1\\"/><line x1=\\"60\\" y1=\\"100\\" x2=\\"100\\" y2=\\"100\\" stroke=\\"blue\\" stroke-width=\\"2\\"/><line x1=\\"100\\" y1=\\"100\\" x2=\\"100\\" y2=\\"60\\" stroke=\\"blue\\" stroke-width=\\"2\\"/><line x1=\\"60\\" y1=\\"100\\" x2=\\"100\\" y2=\\"60\\" stroke=\\"red\\" stroke-width=\\"2\\"/><text x=\\"58\\" y=\\"115\\" font-family=\\"serif\\" font-size=\\"10\\">2</text><text x=\\"18\\" y=\\"115\\" font-family=\\"serif\\" font-size=\\"10\\">0</text><text x=\\"38\\" y=\\"115\\" font-family=\\"serif\\" font-size=\\"10\\">1</text><text x=\\"78\\" y=\\"115\\" font-family=\\"serif\\" font-size=\\"10\\">3</text><text x=\\"98\\" y=\\"115\\" font-family=\\"serif\\" font-size=\\"10\\">4</text><text x=\\"118\\" y=\\"115\\" font-family=\\"serif\\" font-size=\\"10\\">5</text><text x=\\"55\\" y=\\"95\\" font-family=\\"serif\\" font-size=\\"10\\">A</text><text x=\\"102\\" y=\\"112\\" font-family=\\"serif\\" font-size=\\"10\\">B</text><text x=\\"102\\" y=\\"58\\" font-family=\\"serif\\" font-size=\\"10\\">C</text><text x=\\"116\\" y=\\"95\\" font-family=\\"serif\\" font-size=\\"10\\">P</text><text x=\\"3\\" y=\\"95\\" font-family=\\"serif\\" font-size=\\"10\\">Q</text></svg>",
+    "content": "다음 그림은 한 눈금의 길이가 1인 모눈종이 위에 수직선과 직각삼각형 ABC를 그리고, 점 A를 중심으로 하고 \\overline{AC}를 반지름으로 하는 원을 그린 것이다. 원이 수직선과 만나는 두 점을 각각 P, Q라 할 때, P-Q의 값은? [4점] <svg width=\\\"160\\\" height=\\\"120\\\" viewBox=\\\"0 0 160 120\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\"><defs><pattern id=\\\"grid\\\" width=\\\"20\\\" height=\\\"20\\\" patternUnits=\\\"userSpaceOnUse\\\"><path d=\\\"M 20 0 L 0 0 0 20\\\" fill=\\\"none\\\" stroke=\\\"#eee\\\" stroke-width=\\\"1\\\"/></pattern></defs><rect width=\\\"160\\\" height=\\\"120\\\" fill=\\\"url(#grid)\\\"/><line x1=\\\"0\\\" y1=\\\"100\\\" x2=\\\"160\\\" y2=\\\"100\\\" stroke=\\\"black\\\" stroke-width=\\\"1.5\\\"/><path d=\\\"M 60 100 A 56.57 56.57 0 0 1 116.57 100\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1\\\"/><path d=\\\"M 3.43 100 A 56.57 56.57 0 0 1 60 100\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1\\\"/><line x1=\\\"60\\\" y1=\\\"100\\\" x2=\\\"100\\\" y2=\\\"100\\\" stroke=\\\"blue\\\" stroke-width=\\\"2\\\"/><line x1=\\\"100\\\" y1=\\\"100\\\" x2=\\\"100\\\" y2=\\\"60\\\" stroke=\\\"blue\\\" stroke-width=\\\"2\\\"/><line x1=\\\"60\\\" y1=\\\"100\\\" x2=\\\"100\\\" y2=\\\"60\\\" stroke=\\\"red\\\" stroke-width=\\\"2\\\"/><text x=\\\"58\\\" y=\\\"115\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">2</text><text x=\\\"18\\\" y=\\\"115\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">0</text><text x=\\\"38\\\" y=\\\"115\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">1</text><text x=\\\"78\\\" y=\\\"115\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">3</text><text x=\\\"98\\\" y=\\\"115\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">4</text><text x=\\\"118\\\" y=\\\"115\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">5</text><text x=\\\"55\\\" y=\\\"95\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">A</text><text x=\\\"102\\\" y=\\\"112\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">B</text><text x=\\\"102\\\" y=\\\"58\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">C</text><text x=\\\"116\\\" y=\\\"95\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">P</text><text x=\\\"3\\\" y=\\\"95\\\" font-family=\\\"serif\\\" font-size=\\\"10\\\">Q</text></svg>",
     "choices": ["① -4\\sqrt{2}", "② 0", "③ 2\\sqrt{2}", "④ 4", "⑤ 4\\sqrt{2}"],
     "answer": "⑤",
     "solution": "[풀이전략] 피타고라스 정리를 이용하여 선분 AC의 길이를 구한 뒤, 수직선 위의 점의 좌표를 계산한다.\\n직각삼각형 ABC에서 밑변 $AB = 4-2 = 2$, 높이 $BC = 2$이므로\\n$AC = \\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$\\n점 A(2)를 중심으로 반지름이 $2\\sqrt{2}$인 원이므로\\n점 P의 좌표는 $2 + 2\\sqrt{2}$, 점 Q의 좌표는 $2 - 2\\sqrt{2}$이다.\\n$P-Q = (2+2\\sqrt{2}) - (2-2\\sqrt{2}) = 4\\sqrt{2}$\\n\\n$\\therefore$ 정답은 ⑤이다."
@@ -228,6 +228,7 @@ window.questionBank = [
     "level": "하",
     "category": "제곱근과 실수",
     "content": "[서술형1] 다음 수의 제곱근을 풀이 과정을 쓰고 구하시오. [4점]\\n\\n(1) 36의 제곱근을 구하면? [2점](부분점수 있음)\\n\\n(2) \\sqrt{81}의 제곱근을 구하면? [2점](부분점수 있음)",
+    "choices": [],
     "answer": "(1) \\pm 6, (2) \\pm 3",
     "solution": "(1) $\\pm 6$\\n(2) $\\sqrt{81}=9$이므로 $\\pm 3$."
   },
@@ -236,6 +237,7 @@ window.questionBank = [
     "level": "중",
     "category": "제곱근과 실수",
     "content": "[서술형2] 6-\\sqrt{5}의 소수 부분을 x라고 하면 \\frac{3+x}{3-x} = A+B\\sqrt{5}이다. 이 때, 유리수 A+B의 값을 풀이 과정을 쓰고 구하시오. (단, A, B는 유리수) [6점](부분점수 있음)",
+    "choices": [],
     "answer": "\\frac{1}{5}",
     "solution": "$x = (6-\\sqrt{5}) - 3 = 3-\\sqrt{5}$.\\n$\\frac{3+(3-\\sqrt{5})}{3-(3-\\sqrt{5})} = \\frac{6-\\sqrt{5}}{\\sqrt{5}} = \\frac{6\\sqrt{5}-5}{5} = -1 + \\frac{6}{5}\\sqrt{5}$.\\n$A+B = -1 + 1.2 = 0.2 = 1/5$."
   },
@@ -243,7 +245,8 @@ window.questionBank = [
     "id": 23,
     "level": "상",
     "category": "다항식의 곱셈과 인수분해",
-    "content": "[서술형3] 아래 그림과 같이 한 변의 길이가 각각 x와 y인 두 정사각형이 있다. 두 정사각형의 둘레의 길이의 합은 44이고, 넓이의 합은 65이다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [5점] <svg width=\\"160\\" height=\\"120\\" viewBox=\\"0 0 160 120\\" xmlns=\\"http://www.w3.org/2000/svg\\"><rect x=\\"20\\" y=\\"40\\" width=\\"50\\" height=\\"50\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1.5\\"/><rect x=\\"80\\" y=\\"55\\" width=\\"35\\" height=\\"35\\" fill=\\"none\\" stroke=\\"black\\" stroke-width=\\"1.5\\"/><text x=\\"42\\" y=\\"105\\" font-family=\\"serif\\" font-size=\\"12\\">x</text><text x=\\"95\\" y=\\"105\\" font-family=\\"serif\\" font-size=\\"12\\">y</text></svg>\\n\\n(1) 두 정사각형의 둘레의 길이의 합이 44임을 등식으로 나타내시오. [1점]\\n(2) 두 정사각형의 넓이의 합이 65임을 등식으로 나타내시오. [1점]\\n(3) 곱셈 공식을 이용하여 두 정사각형의 둘레의 길이의 곱을 구하시오. [3점](부분점수 있음)",
+    "content": "[서술형3] 아래 그림과 같이 한 변의 길이가 각각 x와 y인 두 정사각형이 있다. 두 정사각형의 둘레의 길이의 합은 44이고, 넓이의 합은 65이다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [5점] <svg width=\\\"160\\\" height=\\\"120\\\" viewBox=\\\"0 0 160 120\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\"><rect x=\\\"20\\\" y=\\\"40\\\" width=\\\"50\\\" height=\\\"50\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1.5\\\"/><rect x=\\\"80\\\" y=\\\"55\\\" width=\\\"35\\\" height=\\\"35\\\" fill=\\\"none\\\" stroke=\\\"black\\\" stroke-width=\\\"1.5\\\"/><text x=\\\"42\\\" y=\\\"105\\\" font-family=\\\"serif\\\" font-size=\\\"12\\\">x</text><text x=\\\"95\\\" y=\\\"105\\\" font-family=\\\"serif\\\" font-size=\\\"12\\\">y</text></svg>\\n\\n(1) 두 정사각형의 둘레의 길이의 합이 44임을 등식으로 나타내시오. [1점]\\n(2) 두 정사각형의 넓이의 합이 65임을 등식으로 나타내시오. [1점]\\n(3) 곱셈 공식을 이용하여 두 정사각형의 둘레의 길이의 곱을 구하시오. [3점](부분점수 있음)",
+    "choices": [],
     "answer": "(1) 4x+4y=44, (2) x^2+y^2=65, (3) 448",
     "solution": "(1) $4x+4y=44 \\implies x+y=11$\\n(2) $x^2+y^2=65$\\n(3) $16xy = 8( (x+y)^2 - (x^2+y^2) ) = 8(121-65) = 8(56) = 448$."
   },
@@ -252,6 +255,7 @@ window.questionBank = [
     "level": "중",
     "category": "다항식의 곱셈과 인수분해",
     "content": "[서술형4] 다음 두 다항식을 인수분해하여 공통인수를 구하고자 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [5점]\\n2x^2-5x-3, x^2-8x+15\\n\\n(1) 두 다항식을 각각 인수분해하여라. [각 2점](부분점수 있음)\\n(2) 두 다항식의 공통인수를 구하여라. [1점]",
+    "choices": [],
     "answer": "(1) (2x+1)(x-3), (x-3)(x-5), (2) x-3",
     "solution": "(1) $(2x+1)(x-3)$, $(x-3)(x-5)$\\n(2) 공통인수는 $(x-3)$이다."
   }

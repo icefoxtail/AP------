@@ -1215,10 +1215,19 @@ async function loadSelectedExamPool() {
     }
 
     const container = document.getElementById('question-list');
-    const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
-    if (sourceMode === 'selectedExams') {
+    const qInfo = document.getElementById('q-count-info');
+    const sourceSel = document.getElementById('source-mode');
+
+    if (container) {
         container.innerHTML = '<div class="empty-box">선택 시험지 pool 로딩 중...</div>';
-        document.getElementById('q-count-info').innerText = 'pool 로딩 중';
+    }
+    if (qInfo) {
+        qInfo.innerText = `선택 시험지 ${files.length}개 · pool 로딩 중`;
+    }
+
+    const prevMode = sourceSel?.value || 'activeExam';
+    if (sourceSel) {
+        sourceSel.value = 'selectedExams';
     }
 
     const pool = [];
@@ -1236,9 +1245,15 @@ async function loadSelectedExamPool() {
     mergedPool = dedupePool(pool);
     refreshPoolDependentUI();
 
-    if (sourceMode === 'selectedExams' && !mergedPool.length) {
-        container.innerHTML = '<div class="empty-box">선택 시험지 문항을 불러오지 못했습니다.</div>';
+    if (!mergedPool.length) {
+        if (container) {
+            container.innerHTML = '<div class="empty-box">선택 시험지 문항을 불러오지 못했습니다.</div>';
+        }
+        renderAutoSummary('선택 시험지 pool 생성 실패');
+        return;
     }
+
+    renderAutoSummary(`선택 시험지 ${files.length}개에서 pool ${mergedPool.length}문항 로드 완료`);
 }
 
 function dedupePool(pool) {
