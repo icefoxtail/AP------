@@ -1264,9 +1264,6 @@ async function loadExamQuestions(examMeta) {
             displayQuestions = currentQuestions;
         }
         refreshPoolDependentUI();
-        if (window.MathJax?.typesetPromise) {
-            await MathJax.typesetPromise([container]);
-        }
     } catch (err) {
         currentQuestions = [];
         if ((document.getElementById('source-mode')?.value || 'activeExam') === 'activeExam') {
@@ -1466,7 +1463,6 @@ function populateAutoRangeSelects() {
 }
 
 function refreshPoolDependentUI() {
-    renderExamList();
     populateStandardUnitFilter();
     populateAutoRangeSelects();
     renderQuestionList();
