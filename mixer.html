@@ -1383,6 +1383,103 @@ function wrapLatex(text) {
     return wrapLatexPreserveBlocks(text);
 }
 
+function wrapLatexPreserveBlocks(text) {
+    if (!text) return text;
+    let s = String(text);
+
+    s = s.replace(/\^\[([^\]]+)\]/g, '^{$1}').replace(/_\[([^\]]+)\]/g, '_{$1}');
+    s = s.replace(//g, '(').replace(//g, ')').replace(//g, '');
+    s = s.replace(/²/g, '^2').replace(/³/g, '^3');
+    s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}').replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
+    s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
+    s = s.replace(/\\frac\[([^\]]+)\]\[([^\]]+)\]/g, '\\frac{$1}{$2}').replace(/\\dot\[([^\]]+)\]/g, '\\dot{$1}');
+
+    if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s)) {
+        return `$$${s}$$`;
+    }
+
+    if (/^\s*\$\$[\s\S]*\$\$\s*$/.test(s) || /^\s*\$[\s\S]*\$\s*$/.test(s)) return s;
+
+    const parts = s.split(/(<[^>]+>)/g);
+    return parts.map(p => {
+        if (!p) return '';
+        if (p.startsWith('<')) return p;
+
+        let t = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+
+        if (!/\$/.test(t)) {
+            t = t.split(/(<br>)/g).map(seg => {
+                if (seg === '<br>') return seg;
+                const tokens = seg.split(/(\s+)/);
+                const out = [];
+                let run = [];
+
+                const flush = () => {
+                    if (!run.length) return;
+                    const joined = run.join('');
+                    const trimmed = joined.trim();
+                    if (trimmed) out.push(`$${trimmed}$`);
+                    run = [];
+                };
+
+                for (let i = 0; i < tokens.length; i++) {
+                    const tok = tokens[i];
+                    if (!tok) continue;
+
+                    if (/^\s+$/.test(tok)) {
+                        if (run.length) run.push(tok);
+                        else out.push(tok);
+                        continue;
+                    }
+
+                    if (/[가-힣]/.test(tok)) {
+                        flush();
+                        out.push(tok);
+                        continue;
+                    }
+
+                    const asciiMath = /^[0-9A-Za-z.,:;(){}\[\]+\-*\/=^_|\\%]+$/.test(tok);
+                    const indicator = /\\[A-Za-z]+|\^|_/.test(tok);
+
+                    let nextMeaningful = '';
+                    for (let j = i + 1; j < tokens.length; j++) {
+                        if (!/^\s+$/.test(tokens[j] || '')) {
+                            nextMeaningful = tokens[j] || '';
+                            break;
+                        }
+                    }
+                    const nextIndicator = /\\[A-Za-z]+|\^|_/.test(nextMeaningful);
+
+                    if (asciiMath && (run.length || indicator || nextIndicator)) {
+                        run.push(tok);
+                    } else {
+                        flush();
+                        out.push(tok);
+                    }
+                }
+
+                flush();
+                return out.join('');
+            }).join('');
+        }
+
+        const trimmed = t.trim();
+        const hasKorean = /[가-힣]/.test(trimmed);
+        const hasDollar = /\$/.test(trimmed);
+
+        const looksLikeMath =
+            !hasKorean &&
+            !hasDollar &&
+            (
+                /\\[a-zA-Z]+/.test(trimmed) ||
+                (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0)
+            );
+
+        if (looksLikeMath && !t.includes('<br>')) return `$${trimmed}$`;
+        return t;
+    }).join('');
+}
+
 function getDisplayPool() {
     return Array.isArray(displayQuestions) ? displayQuestions : [];
 }
