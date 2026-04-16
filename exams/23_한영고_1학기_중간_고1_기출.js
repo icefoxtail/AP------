@@ -1,10 +1,4 @@
-/**
- * [데이터셋] 24_한영고1_1학기_중간_고1
- * AP수학 마스터 엔진 v6.5.4 [IRONCLAD] 정밀 검증 완료
- * 특징: 풀이 설명 한글화 100% 및 수식 중심 확장 전개 (Visual Weight Optimized)
- */
-
-window.examTitle = "24_한영고1_1학기_중간_고1";
+window.examTitle = "23_한영고1_1학기_중간_고1";
 
 window.questionBank = [
     {
