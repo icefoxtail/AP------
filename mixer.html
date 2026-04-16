@@ -595,6 +595,10 @@ let selectedExamFiles = new Set();
 let loadedExamQuestionMap = {};
 let mergedPool = [];
 let selectedPoolRequestSeq = 0;
+let displayQuestions = [];
+let selectedPoolLoading = false;
+let lastSelectedPoolKey = '';
+
 
 const STANDARD_UNIT_SCHEMA = {
     MIDDLE2: {
@@ -1027,14 +1031,37 @@ function getFilteredExams() {
     });
 }
 
+
+function getSelectedFilesSnapshot() {
+    return [...selectedExamFiles].sort();
+}
+
+function buildSelectedFilesKey(files) {
+    return [...(files || [])].sort().join('||');
+}
+
+function getCurrentSelectedPoolKey() {
+    return buildSelectedFilesKey(getSelectedFilesSnapshot());
+}
+
 function updateSelectedExamUI() {
     const countEl = document.getElementById('selected-exam-count');
     const metaEl = document.getElementById('selected-exam-meta');
     if (countEl) countEl.innerText = String(selectedExamFiles.size);
 
     let metaText = '선택 없음';
-    if (selectedExamFiles.size > 0 && mergedPool.length === 0) metaText = '시험지 선택됨';
-    if (mergedPool.length > 0) metaText = `pool ${mergedPool.length}문항`;
+    const currentKey = getCurrentSelectedPoolKey();
+
+    if (selectedPoolLoading) {
+        metaText = 'pool 생성 중';
+    } else if (selectedExamFiles.size > 0) {
+        if (mergedPool.length > 0 && lastSelectedPoolKey === currentKey) {
+            metaText = `pool ${mergedPool.length}문항`;
+        } else {
+            metaText = 'pool 미구성';
+        }
+    }
+
     if (metaEl) metaEl.innerText = metaText;
 
     const note = document.getElementById('cart-meta-note');
@@ -1092,26 +1119,29 @@ function renderExamList() {
 function toggleExamSelection(examMeta) {
     if (selectedExamFiles.has(examMeta.file)) {
         selectedExamFiles.delete(examMeta.file);
-        delete loadedExamQuestionMap[examMeta.file];
     } else {
         selectedExamFiles.add(examMeta.file);
     }
 
-    mergedPool = mergedPool.filter(q => selectedExamFiles.has(q._sourceFile));
-
-    const mode = document.getElementById('source-mode')?.value || 'activeExam';
-    if (mode === 'selectedExams') {
-        if (selectedExamFiles.size > 0) {
-            loadSelectedExamPool();
-        } else {
-            selectedPoolRequestSeq += 1;
-            mergedPool = [];
-            refreshPoolDependentUI();
-            renderAutoSummary('선택 시험지가 없습니다.');
+    const currentKey = getCurrentSelectedPoolKey();
+    if (lastSelectedPoolKey !== currentKey) {
+        mergedPool = [];
+        if ((document.getElementById('source-mode')?.value || 'activeExam') === 'selectedExams') {
+            displayQuestions = [];
+            renderAutoSummary(selectedExamFiles.size > 0 ? '선택 변경됨 · 다시 불러와 주세요.' : '선택 시험지가 없습니다.');
         }
-    } else {
-        renderExamList();
     }
+
+    selectedPoolRequestSeq += 1;
+    selectedPoolLoading = false;
+    renderExamList();
+
+    if ((document.getElementById('source-mode')?.value || 'activeExam') === 'selectedExams') {
+        populateStandardUnitFilter();
+        populateAutoRangeSelects();
+        renderQuestionList();
+    }
+
     updateSelectedExamUI();
 }
 
@@ -1122,20 +1152,34 @@ function selectFilteredExams() {
         return;
     }
     filtered.forEach(ex => selectedExamFiles.add(ex.file));
+    mergedPool = [];
+    displayQuestions = (document.getElementById('source-mode')?.value || 'activeExam') === 'activeExam' ? currentQuestions : [];
+    lastSelectedPoolKey = '';
+    selectedPoolRequestSeq += 1;
+    selectedPoolLoading = false;
     renderExamList();
     updateSelectedExamUI();
+    if ((document.getElementById('source-mode')?.value || 'activeExam') === 'selectedExams') {
+        populateStandardUnitFilter();
+        populateAutoRangeSelects();
+        renderQuestionList();
+        renderAutoSummary('선택 완료 · 불러와 주세요.');
+    }
 }
 
 function clearSelectedExams() {
     selectedPoolRequestSeq += 1;
     selectedExamFiles = new Set();
-    loadedExamQuestionMap = {};
     mergedPool = [];
+    selectedPoolLoading = false;
+    lastSelectedPoolKey = '';
 
     const sourceSel = document.getElementById('source-mode');
     if (sourceSel) {
         sourceSel.value = 'activeExam';
     }
+
+    displayQuestions = currentQuestions;
 
     const stdSel = document.getElementById('q-standard-filter');
     if (stdSel) stdSel.value = '';
@@ -1216,80 +1260,90 @@ async function loadExamQuestions(examMeta) {
 
     try {
         currentQuestions = await ensureExamQuestionsLoaded(examMeta);
+        if ((document.getElementById('source-mode')?.value || 'activeExam') === 'activeExam') {
+            displayQuestions = currentQuestions;
+        }
         refreshPoolDependentUI();
         if (window.MathJax?.typesetPromise) {
             await MathJax.typesetPromise([container]);
         }
     } catch (err) {
         currentQuestions = [];
+        if ((document.getElementById('source-mode')?.value || 'activeExam') === 'activeExam') {
+            displayQuestions = [];
+        }
         container.innerHTML = '<div class="empty-box">문항을 불러오지 못했습니다.</div>';
         document.getElementById('q-count-info').innerText = '';
     }
 }
 
 function hasSameSelectedFiles(filesSnapshot) {
-    if (filesSnapshot.length !== selectedExamFiles.size) return false;
-    return filesSnapshot.every(file => selectedExamFiles.has(file));
+    return buildSelectedFilesKey(filesSnapshot) === getCurrentSelectedPoolKey();
 }
 
 async function loadSelectedExamPool() {
-    const files = [...selectedExamFiles];
+    const files = getSelectedFilesSnapshot();
+    const filesKey = buildSelectedFilesKey(files);
+
     if (!files.length) {
+        selectedPoolLoading = false;
         mergedPool = [];
+        lastSelectedPoolKey = '';
+        const sourceSel = document.getElementById('source-mode');
+        if (sourceSel) sourceSel.value = 'activeExam';
+        displayQuestions = currentQuestions;
         refreshPoolDependentUI();
         renderAutoSummary('선택 시험지가 없습니다.');
         return;
     }
 
     const requestId = ++selectedPoolRequestSeq;
-    const container = document.getElementById('question-list');
-    const qInfo = document.getElementById('q-count-info');
     const sourceSel = document.getElementById('source-mode');
+    if (sourceSel) sourceSel.value = 'selectedExams';
 
-    if (sourceSel) {
-        sourceSel.value = 'selectedExams';
-    }
-
-    if (container) {
-        container.innerHTML = '<div class="empty-box">선택 시험지 pool 로딩 중...</div>';
-    }
-    if (qInfo) {
-        qInfo.innerText = `선택 시험지 ${files.length}개 · pool 로딩 중`;
-    }
+    selectedPoolLoading = true;
+    mergedPool = [];
+    displayQuestions = [];
+    lastSelectedPoolKey = '';
+    refreshPoolDependentUI();
     renderAutoSummary(`선택 시험지 ${files.length}개에서 pool 생성 중...`);
+
+    const results = await Promise.allSettled(files.map(async (file) => {
+        const meta = getExamMetaByFile(file);
+        if (!meta) return [];
+        return await ensureExamQuestionsLoaded(meta);
+    }));
+
+    if (requestId !== selectedPoolRequestSeq) {
+        return;
+    }
+
+    if (filesKey !== getCurrentSelectedPoolKey()) {
+        selectedPoolLoading = false;
+        mergedPool = [];
+        displayQuestions = [];
+        refreshPoolDependentUI();
+        renderAutoSummary('선택 변경됨 · 다시 불러와 주세요.');
+        return;
+    }
 
     const pool = [];
     let loadedExamCount = 0;
 
-    for (const file of files) {
-        const meta = getExamMetaByFile(file);
-        if (!meta) continue;
-        try {
-            const loaded = await ensureExamQuestionsLoaded(meta);
-            if (Array.isArray(loaded) && loaded.length) {
-                pool.push(...loaded);
-                loadedExamCount += 1;
-            }
-        } catch (err) {
-            console.error('[POOL LOAD FAIL]', file, err);
+    results.forEach(result => {
+        if (result.status === 'fulfilled' && Array.isArray(result.value) && result.value.length) {
+            pool.push(...result.value);
+            loadedExamCount += 1;
         }
-
-        if (requestId !== selectedPoolRequestSeq) {
-            return;
-        }
-    }
-
-    if (requestId !== selectedPoolRequestSeq || !hasSameSelectedFiles(files)) {
-        return;
-    }
+    });
 
     mergedPool = dedupePool(pool);
+    displayQuestions = mergedPool;
+    selectedPoolLoading = false;
+    lastSelectedPoolKey = filesKey;
     refreshPoolDependentUI();
 
     if (!mergedPool.length) {
-        if (container) {
-            container.innerHTML = '<div class="empty-box">선택 시험지 문항을 불러오지 못했습니다.</div>';
-        }
         renderAutoSummary('선택 시험지 pool 생성 실패');
         return;
     }
@@ -1333,17 +1387,34 @@ function wrapLatex(text) {
 }
 
 function getDisplayPool() {
-    const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
-    if (sourceMode === 'selectedExams') return mergedPool;
-    return currentQuestions;
+    return Array.isArray(displayQuestions) ? displayQuestions : [];
 }
 
 function handleSourceModeChange() {
     const mode = document.getElementById('source-mode')?.value || 'activeExam';
-    if (mode === 'selectedExams' && selectedExamFiles.size > 0 && mergedPool.length === 0) {
+
+    if (mode === 'selectedExams') {
+        if (selectedExamFiles.size === 0) {
+            displayQuestions = [];
+            selectedPoolLoading = false;
+            refreshPoolDependentUI();
+            renderAutoSummary('먼저 출제 source로 쓸 시험지를 체크해주세요.');
+            return;
+        }
+
+        const currentKey = getCurrentSelectedPoolKey();
+        if (mergedPool.length > 0 && lastSelectedPoolKey === currentKey) {
+            displayQuestions = mergedPool;
+            refreshPoolDependentUI();
+            return;
+        }
+
         loadSelectedExamPool();
         return;
     }
+
+    selectedPoolLoading = false;
+    displayQuestions = currentQuestions;
     refreshPoolDependentUI();
 }
 
@@ -1459,18 +1530,29 @@ function renderQuestionList() {
     const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
     const pool = getDisplayPool();
     const infoParts = [];
-    if (pool.length) infoParts.push(`${pool.length}문항`);
-    if (sourceMode === 'activeExam' && currentExamMeta) {
-        const schema = getSchema(currentExamMeta);
-        if (schema) infoParts.push(schema.courseName);
-        if (currentExamTitle) infoParts.push(currentExamTitle);
-    } else if (sourceMode === 'selectedExams') {
+
+    if (sourceMode === 'selectedExams' && selectedPoolLoading) {
         infoParts.push(`선택 시험지 ${selectedExamFiles.size}개`);
+        infoParts.push('pool 로딩 중');
+    } else {
+        if (pool.length) infoParts.push(`${pool.length}문항`);
+        if (sourceMode === 'activeExam' && currentExamMeta) {
+            const schema = getSchema(currentExamMeta);
+            if (schema) infoParts.push(schema.courseName);
+            if (currentExamTitle) infoParts.push(currentExamTitle);
+        } else if (sourceMode === 'selectedExams') {
+            infoParts.push(`선택 시험지 ${selectedExamFiles.size}개`);
+        }
     }
     document.getElementById('q-count-info').innerText = infoParts.join(' · ');
 
+    const addStandardBtn = document.getElementById('add-standard-btn');
+    if (addStandardBtn) addStandardBtn.style.display = 'none';
+
     if (!pool.length) {
-        if (sourceMode === 'selectedExams' && selectedExamFiles.size > 0) {
+        if (sourceMode === 'selectedExams' && selectedPoolLoading) {
+            container.innerHTML = '<div class="empty-box">선택 시험지 pool 로딩 중...</div>';
+        } else if (sourceMode === 'selectedExams' && selectedExamFiles.size > 0) {
             container.innerHTML = '<div class="empty-box">선택 시험지 pool이 아직 없습니다. 좌측에서 “선택 시험지 불러오기”를 눌러주세요.</div>';
         } else if (sourceMode === 'selectedExams') {
             container.innerHTML = '<div class="empty-box">먼저 출제 source로 쓸 시험지를 체크해주세요.</div>';
@@ -1485,7 +1567,6 @@ function renderQuestionList() {
     const groupMode = (document.getElementById('q-view-mode')?.value || 'default') === 'standard';
     let lastUnitKey = null;
 
-    const addStandardBtn = document.getElementById('add-standard-btn');
     if (addStandardBtn) addStandardBtn.style.display = selectedUnitKey ? 'inline-flex' : 'none';
 
     if (!renderItems.length) {
