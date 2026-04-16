@@ -4,7 +4,7 @@
  * 엔진 버전: v6.5.4 [IRONCLAD] (Logical Anchor Edition)
  */
 
-window.examTitle = "25_팔마고1_1학기_중간_고1";
+window.examTitle = "25_팔마고1_1학기_중간_고1_기출";
 
 window.questionBank = [
   {

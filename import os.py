@@ -1,95 +1,105 @@
 import os
-import re
 import json
+import re
+import sys
+import io
 
-# --- 확정된 폴더 구조 설정 (APMATH 기준) ---
-DB_FILE = 'db.js'       # 현재 폴더(APMATH)에 위치한 db.js
-TARGET_FOLDER = 'exams' # 하위 폴더인 exams 내부의 js 파일들을 타겟으로 함
+# 출력 인코딩 설정 (한글 깨짐 방지)
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-def run_perfect_sync():
-    # 1. 절대 경로 확보 (실행 환경에 따른 경로 오류 원천 차단)
+# --- 설정: APMATH 폴더에서 실행 기준 ---
+EXAMS_DIR   = 'exams' 
+OUTPUT_FILE = 'db.js'
+
+def parse_filename_refined(filename):
+    stem = os.path.splitext(filename)[0]
+    parts = stem.split('_')
+
+    # 최소 2토막(연도_이름) 이상은 되어야 분석 가능
+    if len(parts) < 2:
+        return None
+
+    # 1. 연도 추출 (2자리 -> 4자리 변환)
+    year_raw = parts[0]
+    year = f"20{year_raw}" if len(year_raw) == 2 and year_raw.isdigit() else year_raw
+
+    # 2. 핵심 키워드 분류를 위한 준비
+    school = parts[1]
+    grade = ""
+    semester = ""
+    examType = ""
+    subject_parts = []
+
+    # 학년/학기/시험유형 키워드 정의
+    grade_pattern = re.compile(r'[중고][123]')
+    
+    # 3. 나머지 토막들을 순회하며 정보 분류 (Exclusion Logic)
+    for p in parts[2:]:
+        if grade_pattern.search(p):
+            grade = grade_pattern.search(p).group()
+        elif '학기' in p:
+            semester = p.replace('학기', '').strip()
+        elif '중간' in p:
+            examType = 'mid'
+        elif '기말' in p:
+            examType = 'final'
+        else:
+            # 위 키워드에 해당하지 않는 '유사', '대수', '단항식의계산' 등은 모두 과목/유형으로 병합
+            subject_parts.append(p)
+
+    # 4. 기본값 및 예외 처리
+    if not examType: examType = "기출" # 중간/기말 표시 없으면 '기출'로 간주
+    if not semester: semester = "1"    # 기본 1학기
+    subject = "_".join(subject_parts) if subject_parts else "수학"
+
+    return {
+        "year": year,
+        "school": school,
+        "grade": grade,
+        "semester": semester,
+        "examType": examType,
+        "subject": subject,
+        "file": filename
+    }
+
+def build_engine_db():
     base_path = os.path.dirname(os.path.abspath(__file__))
-    db_full_path = os.path.join(base_path, DB_FILE)
-    exams_dir = os.path.join(base_path, TARGET_FOLDER)
+    exams_path = os.path.join(base_path, EXAMS_DIR)
+    output_path = os.path.join(base_path, OUTPUT_FILE)
 
-    if not os.path.exists(db_full_path):
-        print(f"❌ 오류: '{db_full_path}' 경로에 db.js가 없습니다.")
+    if not os.path.exists(exams_path):
+        print(f"❌ 오류: '{exams_path}' 폴더를 찾을 수 없습니다.")
         return
 
-    if not os.path.exists(exams_dir):
-        print(f"❌ 오류: '{exams_dir}' 폴더가 없습니다.")
-        return
+    exams_list = []
+    skipped = []
 
-    # 2. DB 로드 및 파싱
+    # 파일 읽기 및 정렬 (파일명 순)
+    all_files = sorted([f for f in os.listdir(exams_path) if f.endswith('.js')])
+
+    for f in all_files:
+        meta = parse_filename_refined(f)
+        if meta:
+            exams_list.append(meta)
+        else:
+            skipped.append(f)
+
+    # JSON 구조 생성
+    db_content = {"exams": exams_list}
+
+    # db.js 쓰기
     try:
-        with open(db_full_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-        match = re.search(r'window\.mainDB\s*=\s*(\{.*?\});', content, re.DOTALL)
-        exams_data = json.loads(match.group(1))['exams']
-    except Exception as e:
-        print(f"❌ DB 로드 실패: {e}")
-        return
-
-    print("📊 DB 로드 완료 및 정밀 동기화 시작 (동적 필터 적용)...")
-    print("-" * 65)
-
-    change_count = 0
-
-    # 3. 정밀 파일명 교차 검증 및 수정
-    for item in exams_data:
-        master_name = item['file']     
-        t_school = item['school']      
-        t_year = item['year'][-2:]     
-        t_subject = item['subject']    # DB에서 과목/유형 속성을 직접 로드
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write("window.mainDB = ")
+            json.dump(db_content, f, ensure_ascii=False, indent=2)
+            f.write(";")
         
-        current_files = [f for f in os.listdir(exams_dir) if f.endswith('.js')]
-
-        for f in current_files:
-            # 기본 포함 검사: 연도와 학교명 (예: '제일고1', '금당중2' 등 모두 통과)
-            if t_year in f and t_school in f:
-                
-                # 다중 교차 필터링: 양쪽 파일명의 핵심 속성 일치 여부 1:1 대조
-                if ('중간' in master_name) != ('중간' in f): continue
-                if ('기말' in master_name) != ('기말' in f): continue
-                
-                if ('고1' in master_name) != ('고1' in f): continue
-                if ('고2' in master_name) != ('고2' in f): continue
-                if ('중2' in master_name) != ('중2' in f): continue
-                if ('중3' in master_name) != ('중3' in f): continue
-                
-                # [수정] 하드코딩된 필터 대신 DB 값(t_subject)으로 동적 검사
-                if t_subject == '기출':
-                    # 기출은 파일명에 '기출' 또는 '_r'이 있어야 통과
-                    if '기출' not in f and '_r' not in f:
-                        continue
-                else:
-                    # '단항식의계산', '유사' 등 그 외의 값은 파일명에 정확히 있어야 통과
-                    if t_subject not in f:
-                        continue
-                
-                # 완전히 일치하는 파일은 변경 건너뜀
-                if f == master_name:
-                    continue 
-                
-                old_path = os.path.join(exams_dir, f)
-                new_path = os.path.join(exams_dir, master_name)
-
-                # 파일 존재 여부 실시간 확인 (WinError 2 방지)
-                if os.path.exists(old_path):
-                    try:
-                        # 중복 파일명 존재 시 삭제 후 rename (충돌 방지)
-                        if os.path.exists(new_path):
-                            os.remove(new_path)
-                        
-                        os.rename(old_path, new_path)
-                        print(f"✅ 정밀 복구 및 수정: {f}\n   ➔ {master_name}")
-                        change_count += 1
-                        break # 매칭 성공 시 다음 DB 항목으로 이동
-                    except Exception as e:
-                        print(f"⚠️ {f} 변경 실패: {e}")
-
-    print("-" * 65)
-    print(f"✨ 작업 완료: 총 {change_count}개의 파일이 완벽하게 정리되었습니다.")
+        print(f"✅ 동기화 완료: 총 {len(exams_list)}개의 파일을 db.js에 등록했습니다.")
+        if skipped:
+            print(f"⚠️ 건너뜀({len(skipped)}개): {skipped}")
+            
+    except Exception as e:
+        print(f"❌ 파일 쓰기 실패: {e}")
 
 if __name__ == "__main__":
-    run_perfect_sync()
+    build_engine_db()

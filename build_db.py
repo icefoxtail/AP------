@@ -4,43 +4,53 @@ import re
 import sys
 import io
 
+# 출력 인코딩 설정 (한글 깨짐 방지)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-# ── 설정 ──────────────────────────────────────────
-# 본인의 폴더 경로와 일치하는지 확인하세요.
-EXAMS_DIR   = r"C:\Users\USER\Desktop\APMATH\AP\exams"
-OUTPUT_FILE = r"C:\Users\USER\Desktop\APMATH\AP\db.js"
-# ──────────────────────────────────────────────────
+# --- 설정: APMATH 폴더에서 실행 기준 ---
+EXAMS_DIR   = 'exams' 
+OUTPUT_FILE = 'db.js'
 
-def parse_js_filename(filename):
+def parse_filename_refined(filename):
     stem = os.path.splitext(filename)[0]
     parts = stem.split('_')
 
-    if len(parts) < 4:
+    # 최소 2토막(연도_이름) 이상은 되어야 분석 가능
+    if len(parts) < 2:
         return None
 
-    year_prefix = parts[0]
-    year = f"20{year_prefix}" if len(year_prefix) == 2 else year_prefix
+    # 1. 연도 추출 (2자리 -> 4자리 변환)
+    year_raw = parts[0]
+    year = f"20{year_raw}" if len(year_raw) == 2 and year_raw.isdigit() else year_raw
 
-    school_raw = parts[1]
+    # 2. 핵심 키워드 분류를 위한 준비
+    school = parts[1]
     grade = ""
-    school = school_raw
-    
-    m = re.search(r'(중|고)\d', school_raw)
-    if m:
-        grade = m.group()
-        school = school_raw.replace(grade, '')
+    semester = ""
+    examType = ""
+    subject_parts = []
 
-    semester = parts[2].replace('학기', '')
-    exam_raw = parts[3]
-    examType = 'mid' if '중간' in exam_raw else 'final' if '기말' in exam_raw else exam_raw
-
-    subject = parts[4] if len(parts) > 4 else "수학"
+    # 학년/학기/시험유형 키워드 정의
+    grade_pattern = re.compile(r'[중고][123]')
     
-    if not grade:
-        m2 = re.search(r'(중|고)\d', subject)
-        if m2:
-            grade = m2.group()
+    # 3. 나머지 토막들을 순회하며 정보 분류 (Exclusion Logic)
+    for p in parts[2:]:
+        if grade_pattern.search(p):
+            grade = grade_pattern.search(p).group()
+        elif '학기' in p:
+            semester = p.replace('학기', '').strip()
+        elif '중간' in p:
+            examType = 'mid'
+        elif '기말' in p:
+            examType = 'final'
+        else:
+            # 위 키워드에 해당하지 않는 '유사', '대수', '단항식의계산' 등은 모두 과목/유형으로 병합
+            subject_parts.append(p)
+
+    # 4. 기본값 및 예외 처리
+    if not examType: examType = "기출" # 중간/기말 표시 없으면 '기출'로 간주
+    if not semester: semester = "1"    # 기본 1학기
+    subject = "_".join(subject_parts) if subject_parts else "수학"
 
     return {
         "year": year,
@@ -53,40 +63,43 @@ def parse_js_filename(filename):
     }
 
 def build_engine_db():
-    if not os.path.exists(EXAMS_DIR):
-        print(f"❌ 폴더 없음: {EXAMS_DIR}")
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    exams_path = os.path.join(base_path, EXAMS_DIR)
+    output_path = os.path.join(base_path, OUTPUT_FILE)
+
+    if not os.path.exists(exams_path):
+        print(f"❌ 오류: '{exams_path}' 폴더를 찾을 수 없습니다.")
         return
 
     exams_list = []
     skipped = []
 
-    for f in os.listdir(EXAMS_DIR):
-        if f.endswith('.js'):
-            meta = parse_js_filename(f)
-            if meta:
-                exams_list.append(meta)
-            else:
-                skipped.append(f)
+    # 파일 읽기 및 정렬 (파일명 순)
+    all_files = sorted([f for f in os.listdir(exams_path) if f.endswith('.js')])
 
-    db_content = {
-        "exams": exams_list
-    }
+    for f in all_files:
+        meta = parse_filename_refined(f)
+        if meta:
+            exams_list.append(meta)
+        else:
+            skipped.append(f)
 
-    # db.js 파일 생성 (에러 발생 구간 수정됨)
-    dir_path = os.path.dirname(OUTPUT_FILE)
-    if dir_path and not os.path.exists(dir_path):
-        os.makedirs(dir_path)
+    # JSON 구조 생성
+    db_content = {"exams": exams_list}
+
+    # db.js 쓰기
+    try:
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write("window.mainDB = ")
+            json.dump(db_content, f, ensure_ascii=False, indent=2)
+            f.write(";")
         
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        f.write("window.mainDB = ")
-        json.dump(db_content, f, ensure_ascii=False, indent=2)
-        f.write(";")
-
-    print(f"\n✅ 완료: 총 {len(exams_list)}개의 엔진 데이터가 db.js에 등록되었습니다.")
-    if skipped:
-        print(f"⚠️ 규칙에 맞지 않아 건너뛴 파일: {len(skipped)}개")
-        for s in skipped:
-            print(f"  - {s}")
+        print(f"✅ 동기화 완료: 총 {len(exams_list)}개의 파일을 db.js에 등록했습니다.")
+        if skipped:
+            print(f"⚠️ 건너뜀({len(skipped)}개): {skipped}")
+            
+    except Exception as e:
+        print(f"❌ 파일 쓰기 실패: {e}")
 
 if __name__ == "__main__":
     build_engine_db()
