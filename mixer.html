@@ -594,6 +594,7 @@ let currentQuestions = [];
 let selectedExamFiles = new Set();
 let loadedExamQuestionMap = {};
 let mergedPool = [];
+let selectedPoolRequestSeq = 0;
 
 const STANDARD_UNIT_SCHEMA = {
     MIDDLE2: {
@@ -1031,7 +1032,7 @@ function updateSelectedExamUI() {
     const metaEl = document.getElementById('selected-exam-meta');
     if (countEl) countEl.innerText = String(selectedExamFiles.size);
 
-    let metaText = 'pool 미구성';
+    let metaText = '선택 없음';
     if (selectedExamFiles.size > 0 && mergedPool.length === 0) metaText = '시험지 선택됨';
     if (mergedPool.length > 0) metaText = `pool ${mergedPool.length}문항`;
     if (metaEl) metaEl.innerText = metaText;
@@ -1097,8 +1098,17 @@ function toggleExamSelection(examMeta) {
     }
 
     mergedPool = mergedPool.filter(q => selectedExamFiles.has(q._sourceFile));
-    if ((document.getElementById('source-mode')?.value || 'activeExam') === 'selectedExams') {
-        refreshPoolDependentUI();
+
+    const mode = document.getElementById('source-mode')?.value || 'activeExam';
+    if (mode === 'selectedExams') {
+        if (selectedExamFiles.size > 0) {
+            loadSelectedExamPool();
+        } else {
+            selectedPoolRequestSeq += 1;
+            mergedPool = [];
+            refreshPoolDependentUI();
+            renderAutoSummary('선택 시험지가 없습니다.');
+        }
     } else {
         renderExamList();
     }
@@ -1117,15 +1127,25 @@ function selectFilteredExams() {
 }
 
 function clearSelectedExams() {
+    selectedPoolRequestSeq += 1;
     selectedExamFiles = new Set();
     loadedExamQuestionMap = {};
     mergedPool = [];
-    if ((document.getElementById('source-mode')?.value || 'activeExam') === 'selectedExams') {
-        refreshPoolDependentUI();
-    } else {
-        renderExamList();
+
+    const sourceSel = document.getElementById('source-mode');
+    if (sourceSel) {
+        sourceSel.value = 'activeExam';
     }
+
+    const stdSel = document.getElementById('q-standard-filter');
+    if (stdSel) stdSel.value = '';
+
+    renderExamList();
+    populateStandardUnitFilter();
+    populateAutoRangeSelects();
+    renderQuestionList();
     updateSelectedExamUI();
+    renderAutoSummary('선택 시험지 해제 완료');
 }
 
 function getExamMetaByFile(file) {
@@ -1207,16 +1227,28 @@ async function loadExamQuestions(examMeta) {
     }
 }
 
+function hasSameSelectedFiles(filesSnapshot) {
+    if (filesSnapshot.length !== selectedExamFiles.size) return false;
+    return filesSnapshot.every(file => selectedExamFiles.has(file));
+}
+
 async function loadSelectedExamPool() {
     const files = [...selectedExamFiles];
     if (!files.length) {
-        alert('먼저 출제 source로 사용할 시험지를 선택해주세요.');
+        mergedPool = [];
+        refreshPoolDependentUI();
+        renderAutoSummary('선택 시험지가 없습니다.');
         return;
     }
 
+    const requestId = ++selectedPoolRequestSeq;
     const container = document.getElementById('question-list');
     const qInfo = document.getElementById('q-count-info');
     const sourceSel = document.getElementById('source-mode');
+
+    if (sourceSel) {
+        sourceSel.value = 'selectedExams';
+    }
 
     if (container) {
         container.innerHTML = '<div class="empty-box">선택 시험지 pool 로딩 중...</div>';
@@ -1224,22 +1256,31 @@ async function loadSelectedExamPool() {
     if (qInfo) {
         qInfo.innerText = `선택 시험지 ${files.length}개 · pool 로딩 중`;
     }
-
-    const prevMode = sourceSel?.value || 'activeExam';
-    if (sourceSel) {
-        sourceSel.value = 'selectedExams';
-    }
+    renderAutoSummary(`선택 시험지 ${files.length}개에서 pool 생성 중...`);
 
     const pool = [];
+    let loadedExamCount = 0;
+
     for (const file of files) {
         const meta = getExamMetaByFile(file);
         if (!meta) continue;
         try {
             const loaded = await ensureExamQuestionsLoaded(meta);
-            pool.push(...loaded);
+            if (Array.isArray(loaded) && loaded.length) {
+                pool.push(...loaded);
+                loadedExamCount += 1;
+            }
         } catch (err) {
             console.error('[POOL LOAD FAIL]', file, err);
         }
+
+        if (requestId !== selectedPoolRequestSeq) {
+            return;
+        }
+    }
+
+    if (requestId !== selectedPoolRequestSeq || !hasSameSelectedFiles(files)) {
+        return;
     }
 
     mergedPool = dedupePool(pool);
@@ -1253,7 +1294,7 @@ async function loadSelectedExamPool() {
         return;
     }
 
-    renderAutoSummary(`선택 시험지 ${files.length}개에서 pool ${mergedPool.length}문항 로드 완료`);
+    renderAutoSummary(`선택 시험지 ${loadedExamCount}개에서 pool ${mergedPool.length}문항 로드 완료`);
 }
 
 function dedupePool(pool) {
