@@ -430,7 +430,7 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "file": "25_순천고2_1학기_중간_대수.js"
+      "file": "25_순천고2_1학기_중간_대수_r.js"
     },
     {
       "year": "2025",
@@ -466,7 +466,7 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "중3",
-      "file": "25_신흥중3_1학기_중간_중3.js"
+      "file": "25_신흥중3_1학기_중간_중3_r.js"
     },
     {
       "year": "2025",
@@ -475,7 +475,7 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "중2",
-      "file": "25_연향중2_1학기_중간_중2.js"
+      "file": "25_연향중2_1학기_중간_중2_r.js"
     },
     {
       "year": "2025",
@@ -493,7 +493,7 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "중3",
-      "file": "25_왕운중3_1학기_중간_중3.js"
+      "file": "25_왕운중3_1학기_중간_중3_r.js"
     },
     {
       "year": "2025",
@@ -518,9 +518,9 @@ window.mainDB = {
       "school": "제일",
       "grade": "고2",
       "semester": "1",
-      "examType": "",
-      "subject": "중간",
-      "file": "25_제일고2_1학기__중간_대수.js"
+      "examType": "mid",
+      "subject": "대수",
+      "file": "25_제일고2_1학기_중간_대수.js"
     },
     {
       "year": "2025",
