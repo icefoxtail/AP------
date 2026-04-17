@@ -272,6 +272,15 @@ window.mainDB = {
     },
     {
       "year": "2023",
+      "school": "왕운중",
+      "grade": "중3",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "유사",
+      "file": "23_왕운중_1학기_중간_중3_유사.js"
+    },
+    {
+      "year": "2023",
       "school": "중앙여고",
       "grade": "고2",
       "semester": "1",
@@ -584,6 +593,24 @@ window.mainDB = {
       "examType": "mid",
       "subject": "대수",
       "file": "25_효천고_1학기_중간_고2_대수.js"
+    },
+    {
+      "year": "2026",
+      "school": "AP수학",
+      "grade": "중1",
+      "semester": "1",
+      "examType": "기출",
+      "subject": "일차방정식활용_유형",
+      "file": "26_AP수학_1학기_일차방정식활용_중1_유형.js"
+    },
+    {
+      "year": "2026",
+      "school": "AP수학",
+      "grade": "중1",
+      "semester": "1",
+      "examType": "기출",
+      "subject": "일차방정식활용_유형2",
+      "file": "26_AP수학_1학기_일차방정식활용_중1_유형2.js"
     },
     {
       "year": "2026",
