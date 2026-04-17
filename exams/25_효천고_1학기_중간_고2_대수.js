@@ -51,7 +51,13 @@ window.questionBank = [
     standardUnit: "로그의 뜻",
     standardUnitOrder: 4,
     content: "다음 상용로그표를 보고 구한 $\\log 2.31$의 값은? [3점]<br><br><svg viewBox=\"0 0 420 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.b{font-size:16px;font-family:serif}.c{fill:none;stroke:black;stroke-width:1}</style><rect x=\"20\" y=\"20\" width=\"380\" height=\"180\" class=\"c\"/><line x1=\"80\" y1=\"20\" x2=\"80\" y2=\"200\" class=\"c\"/><line x1=\"20\" y1=\"50\" x2=\"400\" y2=\"50\" class=\"c\"/><line x1=\"20\" y1=\"80\" x2=\"400\" y2=\"80\" class=\"c\"/><line x1=\"20\" y1=\"110\" x2=\"400\" y2=\"110\" class=\"c\"/><line x1=\"20\" y1=\"140\" x2=\"400\" y2=\"140\" class=\"c\"/><line x1=\"20\" y1=\"170\" x2=\"400\" y2=\"170\" class=\"c\"/><line x1=\"140\" y1=\"20\" x2=\"140\" y2=\"200\" class=\"c\"/><line x1=\"200\" y1=\"20\" x2=\"200\" y2=\"200\" class=\"c\"/><line x1=\"260\" y1=\"20\" x2=\"260\" y2=\"200\" class=\"c\"/><line x1=\"320\" y1=\"20\" x2=\"320\" y2=\"200\" class=\"c\"/><text x=\"105\" y=\"40\" class=\"b\">0</text><text x=\"165\" y=\"40\" class=\"b\">1</text><text x=\"225\" y=\"40\" class=\"b\">2</text><text x=\"285\" y=\"40\" class=\"b\">3</text><text x=\"40\" y=\"70\" class=\"b\">2.0</text><text x=\"92\" y=\"70\" class=\"b\">0.3010</text><text x=\"152\" y=\"70\" class=\"b\">0.3032</text><text x=\"212\" y=\"70\" class=\"b\">0.3054</text><text x=\"272\" y=\"70\" class=\"b\">0.3075</text><text x=\"40\" y=\"100\" class=\"b\">2.1</text><text x=\"92\" y=\"100\" class=\"b\">0.3222</text><text x=\"152\" y=\"100\" class=\"b\">0.3243</text><text x=\"212\" y=\"100\" class=\"b\">0.3263</text><text x=\"272\" y=\"100\" class=\"b\">0.3284</text><text x=\"40\" y=\"130\" class=\"b\">2.2</text><text x=\"92\" y=\"130\" class=\"b\">0.3424</text><text x=\"152\" y=\"130\" class=\"b\">0.3444</text><text x=\"212\" y=\"130\" class=\"b\">0.3464</text><text x=\"272\" y=\"130\" class=\"b\">0.3483</text><text x=\"40\" y=\"160\" class=\"b\">2.3</text><text x=\"92\" y=\"160\" class=\"b\">0.3617</text><text x=\"152\" y=\"160\" class=\"b\">0.3636</text><text x=\"212\" y=\"160\" class=\"b\">0.3655</text><text x=\"272\" y=\"160\" class=\"b\">0.3674</text></svg>",
-    choices: ["0.3010", "0.3284", "0.3444", "0.3636", "0.3674"],
+    choices: [
+      "0.3010",
+      "0.3284",
+      "0.3444",
+      "0.3636",
+      "0.3674"
+    ],
     answer: "④",
     solution: "1단계: $\\log 2.31$은 상용로그표에서 2.3행, 1열의 값이다.<br>2단계: 표를 읽으면 $\\log 2.31=0.3636$ 이다.<br>* 검산: 정답 ④"
   },
@@ -65,7 +71,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "어느 지역의 해저에서 일어난 지진의 규모를 $M$, 지진으로 발생하는 해일의 최고 높이를 $H$m라고 하면<br>$M=\\log H+6.5$<br>인 관계가 성립한다고 한다. 해일의 최고 높이가 $10$m일 때, 지진 규모는? [3.5점]",
-    choices: ["7.5", "10.5", "12", "14", "16.5"],
+    choices: [
+      "7.5",
+      "10.5",
+      "12",
+      "14",
+      "16.5"
+    ],
     answer: "①",
     solution: "1단계: $M=\\log H+6.5$ 이다.<br>2단계: 해일의 높이 $H=10$이므로 $M=\\log 10+6.5$ 이다.<br>3단계: $\\log 10=1$ 이므로 $M=1+6.5=7.5$ 이다.<br>* 검산: 정답 ①"
   },
@@ -139,11 +151,16 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "$8^{\\frac{2}{3}}\\times\\left(\\frac{1}{2}\\right)^{-1}\\times\\left(\\log_9 3+3^{\\log_3 1}\\right)\\times2\\sin\\frac{\\pi}{6}$의 값은? [4점]",
-    choices: ["8", "9", "10", "11", "12"],
+    choices: [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
     answer: "⑤",
     solution: "1단계: $8^{\\frac23}=(\\sqrt[3]{8})^2=2^2=4$, $\\left(\\frac12\\right)^{-1}=2$ 이다.<br>2단계: $\\log_9 3=\\frac12$, $\\log_3 1=0$, $3^{\\log_3 1}=1$ 이므로 $\\log_9 3+3^{\\log_3 1}=\\frac32$ 이다.<br>3단계: $2\\sin\\frac{\\pi}{6}=1$ 이다.<br>4단계: 전체 값은 $4\\times2\\times\\frac32\\times1=12$ 이다.<br>* 검산: 정답 ⑤"
   },
-
   {
     id: 9,
     level: "",
@@ -154,7 +171,13 @@ window.questionBank = [
     standardUnit: "삼각함수의 뜻과 값",
     standardUnitOrder: 9,
     content: "그림과 같이 종이로 부채를 만들려고 한다.<br>$\\angle BOA=\\frac{2}{3}\\pi$이고 두 부채꼴 $OAB,\\ OCD$의 반지름의 길이가 각각 $6\\text{ cm},\\ 12\\text{ cm}$일 때, 종이의 넓이는? [4점]<br><br><svg viewBox=\"0 0 240 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.s{fill:none;stroke:black;stroke-width:2}.t{font-size:14px;font-family:serif}</style><path d=\"M120,150 L210,98 A120,120 0 0,0 30,98 Z\" class=\"s\"/><path d=\"M120,150 L165,124 A60,60 0 0,0 75,124 Z\" class=\"s\"/><text x=\"114\" y=\"166\" class=\"t\">O</text><text x=\"167\" y=\"128\" class=\"t\">A</text><text x=\"67\" y=\"128\" class=\"t\">B</text><text x=\"214\" y=\"98\" class=\"t\">C</text><text x=\"18\" y=\"98\" class=\"t\">D</text><text x=\"145\" y=\"143\" class=\"t\">6 cm</text><text x=\"165\" y=\"120\" class=\"t\">12 cm</text><path d=\"M140,138 A24,24 0 0,0 100,138\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><text x=\"109\" y=\"132\" class=\"t\">$\\frac{2\\pi}{3}$</text></svg>",
-    choices: ["$33\\pi$", "$36\\pi$", "$39\\pi$", "$42\\pi$", "$45\\pi$"],
+    choices: [
+      "$33\\pi$",
+      "$36\\pi$",
+      "$39\\pi$",
+      "$42\\pi$",
+      "$45\\pi$"
+    ],
     answer: "②",
     solution: "1단계: 그림은 중심각이 $\\frac{2}{3}\\pi$인 환부채꼴이다.<br>2단계: 바깥 반지름은 $12\\text{ cm}$, 안쪽 반지름은 $6\\text{ cm}$이다.<br>3단계: 넓이는 $\\frac12\\theta(R^2-r^2)$ 이므로<br>$\\frac12\\cdot\\frac{2\\pi}{3}\\cdot(12^2-6^2)=\\frac{\\pi}{3}(144-36)=\\frac{\\pi}{3}\\cdot108=36\\pi$<br>* 검산: 정답 ②"
   },
@@ -168,7 +191,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "정의역이 $\\{x\\mid -1\\le x\\le 2\\}$일 때, 두 함수<br>$y=2^{-x}+6$의 최댓값을 $a$, $y=\\log_3(2x+5)+3$의 최값을 $b$라고 하자. $a+b$의 값은? [4점]",
-    choices: ["11", "12", "13", "14", "15"],
+    choices: [
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
     answer: "③",
     solution: "1단계: 함수 $y=2^{-x}+6$은 감소함수이므로 최대값은 $x=-1$일 때이다.<br>$a=2^{-(-1)}+6=2+6=8$<br>2단계: 함수 $y=\\log_3(2x+5)+3$은 증가함수이므로 최대값은 $x=2$일 때이다.<br>$b=\\log_3 9+3=2+3=5$<br>3단계: $a+b=8+5=13$<br>* 검산: 정답 ③"
   },
@@ -182,7 +211,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "함수 $y=2^{|x-2|}+3$의 그래프와 직선 $y=k$가 만나지 않을 때, 실수 $k$의 값의 범위로 옳은 것은? [4점]",
-    choices: ["$k<3$", "$k\\le 3$", "$k=3$", "$k<4$", "$k\\le 4$"],
+    choices: [
+      "$k<3$",
+      "$k\\le 3$",
+      "$k=3$",
+      "$k<4$",
+      "$k\\le 4$"
+    ],
     answer: "④",
     solution: "1단계: $2^{|x-2|}\\ge 1$ 이므로 $y=2^{|x-2|}+3\\ge 4$ 이다.<br>2단계: 직선 $y=k$가 그래프와 만나지 않으려면 그래프의 최솟값보다 작아야 하므로 $k<4$ 이다.<br>* 검산: 정답 ④"
   },
@@ -196,7 +231,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "$\\frac{\\pi}{2}<\\theta<\\pi$인 $\\theta$에 대하여 $\\sin\\theta=\\frac{\\sqrt{7}}{4}$일 때, $\\cos\\theta$의 값은? [4점]",
-    choices: ["$\\frac{3}{4}$", "$\\frac{1}{4}$", "0", "$-\\frac{1}{4}$", "$-\\frac{3}{4}$"],
+    choices: [
+      "$\\frac{3}{4}$",
+      "$\\frac{1}{4}$",
+      "0",
+      "$-\\frac{1}{4}$",
+      "$-\\frac{3}{4}$"
+    ],
     answer: "⑤",
     solution: "1단계: $\\frac{\\pi}{2}<\\theta<\\pi$ 이므로 $\\theta$는 제2사분면에 있어 $\\cos\\theta<0$ 이다.<br>2단계: $\\cos^2\\theta=1-\\sin^2\\theta=1-\\left(\\frac{\\sqrt7}{4}\\right)^2=1-\\frac{7}{16}=\\frac{9}{16}$<br>3단계: 따라서 $\\cos\\theta=\\pm\\frac34$ 이고, 제2사분면이므로 $\\cos\\theta=-\\frac34$ 이다.<br>* 검산: 정답 ⑤"
   },
@@ -210,11 +251,16 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "함수 $y=a\\sin\\frac{\\pi}{2b}x$의 최댓값은 3이고 주기는 4이다. 두 양수 $a,\\ b$의 합 $a+b$의 값은? [4점]",
-    choices: ["4", "3", "$\\frac{5}{2}$", "2", "1"],
+    choices: [
+      "4",
+      "3",
+      "$\\frac{5}{2}$",
+      "2",
+      "1"
+    ],
     answer: "①",
     solution: "1단계: 함수 $y=a\\sin\\frac{\\pi}{2b}x$의 최댓값이 3이므로 $a=3$ 이다.<br>2단계: 주기는 $\\frac{2\\pi}{\\pi/(2b)}=4b$ 이다.<br>3단계: 주기가 4이므로 $4b=4$, 따라서 $b=1$ 이다.<br>4단계: $a+b=3+1=4$<br>* 검산: 정답 ①"
   },
-
   {
     id: 14,
     level: "",
@@ -225,7 +271,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "$\\sin\\theta+\\cos\\theta=\\frac{1}{2}$일 때, $\\sin\\theta-\\cos\\theta$의 값은? [4점]<br>(단, $\\sin\\theta<\\cos\\theta$)",
-    choices: ["$-\\frac{\\sqrt{7}}{2}$", "$-\\frac{3}{8}$", "0", "$\\frac{3}{8}$", "$\\frac{\\sqrt{7}}{2}$"],
+    choices: [
+      "$-\\frac{\\sqrt{7}}{2}$",
+      "$-\\frac{3}{8}$",
+      "0",
+      "$\\frac{3}{8}$",
+      "$\\frac{\\sqrt{7}}{2}$"
+    ],
     answer: "①",
     solution: "1단계: $(\\sin\\theta+\\cos\\theta)^2=\\sin^2\\theta+\\cos^2\\theta+2\\sin\\theta\\cos\\theta$ 이므로<br>$\\left(\\frac{1}{2}\\right)^2=1+2\\sin\\theta\\cos\\theta$<br>$\\frac{1}{4}=1+2\\sin\\theta\\cos\\theta$<br>$2\\sin\\theta\\cos\\theta=-\\frac{3}{4}$<br>2단계: $(\\sin\\theta-\\cos\\theta)^2=\\sin^2\\theta+\\cos^2\\theta-2\\sin\\theta\\cos\\theta=1-\\left(-\\frac{3}{4}\\right)=\\frac{7}{4}$<br>3단계: 따라서 $\\sin\\theta-\\cos\\theta=\\pm\\frac{\\sqrt7}{2}$ 이고, $\\sin\\theta<\\cos\\theta$ 이므로 음수이다.<br>4단계: $\\sin\\theta-\\cos\\theta=-\\frac{\\sqrt7}{2}$<br>* 검산: 정답 ①"
   },
@@ -259,11 +311,17 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "다음 그림과 같이 중심이 $O$, 반지름의 길이가 1인 사분원의 호 $PQ$를 9등분하는 점을 차례로 $P_1,\\ P_2,\\ \\cdots,\\ P_8$이라고 하자. 점 $P_1,\\ P_2,\\ \\cdots,\\ P_8$에서 선분 $OP$에 내린 수선의 발을 각각 $Q_1,\\ Q_2,\\ \\cdots,\\ Q_8$이라고 할 때, $\\overline{OQ_1}^{\\,2}+\\overline{OQ_2}^{\\,2}+\\overline{OQ_3}^{\\,2}+\\cdots+\\overline{OQ_8}^{\\,2}$의 값은? [4.5점]<br><br><svg viewBox=\"0 0 260 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.s{stroke:black;fill:none}.t{font-size:12px;font-family:serif}</style><line x1=\"40\" y1=\"180\" x2=\"220\" y2=\"180\" class=\"s\" stroke-width=\"2\"/><line x1=\"40\" y1=\"180\" x2=\"40\" y2=\"20\" class=\"s\" stroke-width=\"2\"/><path d=\"M40,20 A160,160 0 0,1 200,180\" class=\"s\" stroke-width=\"2\"/><text x=\"28\" y=\"194\" class=\"t\">O</text><text x=\"206\" y=\"194\" class=\"t\">P</text><text x=\"26\" y=\"18\" class=\"t\">Q</text><line x1=\"40\" y1=\"180\" x2=\"67.8\" y2=\"22.4\" class=\"s\" stroke-width=\"1\"/><line x1=\"40\" y1=\"180\" x2=\"95.7\" y2=\"30.1\" class=\"s\" stroke-width=\"1\"/><line x1=\"40\" y1=\"180\" x2=\"120.0\" y2=\"41.4\" class=\"s\" stroke-width=\"1\"/><line x1=\"40\" y1=\"180\" x2=\"142.8\" y2=\"57.4\" class=\"s\" stroke-width=\"1\"/><line x1=\"40\" y1=\"180\" x2=\"160.0\" y2=\"76.1\" class=\"s\" stroke-width=\"1\"/><line x1=\"40\" y1=\"180\" x2=\"177.1\" y2=\"99.0\" class=\"s\" stroke-width=\"1\"/><line x1=\"40\" y1=\"180\" x2=\"190.4\" y2=\"124.3\" class=\"s\" stroke-width=\"1\"/><line x1=\"40\" y1=\"180\" x2=\"197.6\" y2=\"152.2\" class=\"s\" stroke-width=\"1\"/><line x1=\"67.8\" y1=\"22.4\" x2=\"67.8\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><line x1=\"95.7\" y1=\"30.1\" x2=\"95.7\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><line x1=\"120.0\" y1=\"41.4\" x2=\"120.0\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><line x1=\"142.8\" y1=\"57.4\" x2=\"142.8\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><line x1=\"160.0\" y1=\"76.1\" x2=\"160.0\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><line x1=\"177.1\" y1=\"99.0\" x2=\"177.1\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><line x1=\"190.4\" y1=\"124.3\" x2=\"190.4\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><line x1=\"197.6\" y1=\"152.2\" x2=\"197.6\" y2=\"180\" class=\"s\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><text x=\"63\" y=\"20\" class=\"t\">P₁</text><text x=\"91\" y=\"28\" class=\"t\">P₂</text><text x=\"115\" y=\"39\" class=\"t\">P₃</text><text x=\"138\" y=\"55\" class=\"t\">P₄</text><text x=\"156\" y=\"74\" class=\"t\">P₅</text><text x=\"173\" y=\"97\" class=\"t\">P₆</text><text x=\"186\" y=\"122\" class=\"t\">P₇</text><text x=\"194\" y=\"150\" class=\"t\">P₈</text><text x=\"64\" y=\"196\" class=\"t\">Q₁</text><text x=\"92\" y=\"196\" class=\"t\">Q₂</text><text x=\"117\" y=\"196\" class=\"t\">Q₃</text><text x=\"139\" y=\"196\" class=\"t\">Q₄</text><text x=\"157\" y=\"196\" class=\"t\">Q₅</text><text x=\"174\" y=\"196\" class=\"t\">Q₆</text><text x=\"187\" y=\"196\" class=\"t\">Q₇</text><text x=\"194\" y=\"196\" class=\"t\">Q₈</text><text x=\"120\" y=\"172\" class=\"t\">1</text></svg>",
-    choices: ["1", "2", "3", "4", "5"],
+    choices: [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
     answer: "④",
     solution: "1단계: 사분원의 중심각은 $\\frac{\\pi}{2}$이고 이를 9등분하므로 각 점의 각도는 $\\frac{\\pi}{18},\\ \\frac{2\\pi}{18},\\ \\cdots,\\ \\frac{8\\pi}{18}$ 이다.<br>2단계: $OQ_i$는 각 점의 x좌표이므로 $OQ_i=\\cos\\frac{i\\pi}{18}\\ (i=1,2,\\dots,8)$ 이다.<br>3단계: 구하는 값은 $\\sum_{i=1}^{8}\\cos^2\\frac{i\\pi}{18}$ 이다.<br>4단계: 서로 보각인 각을 짝지으면 $\\cos^2 10^\\circ+\\cos^2 80^\\circ=1$, $\\cos^2 20^\\circ+\\cos^2 70^\\circ=1$, $\\cos^2 30^\\circ+\\cos^2 60^\\circ=1$, $\\cos^2 40^\\circ+\\cos^2 50^\\circ=1$ 이다.<br>5단계: 따라서 전체 합은 $1+1+1+1=4$ 이다.<br>* 검산: 정답 ④"
   },
-{
+  {
     id: 17,
     level: "",
     category: "",
@@ -293,7 +351,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "재학이는 다음 문제를 주어진 시간 안에 해결하지 못하고 답안을 제출하였다. 재학이의 미완성된 풀이를 이용하여 다음 문제의 값을 옳게 구한 것은? [5점]<br><br>[문제]<br>세 함수 $f(x)=\\cos \\pi x,\\ g(x)=\\sin \\pi x,\\ h(x)=ax+b$가 다음 조건을 만족시킨다. 홀수인 자연수 $b$의 값은?<br>(단, $a$는 자연수)<br><br>가. $0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=(h\\circ g)\\left(\\frac{3}{2}\\right)$의 서로 다른 실근의 개수는 홀수이다.<br>나. $0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 $56$이 되도록 하는 실수 $t$가 존재한다.<br><br>[재학이의 풀이 과정]<br>$(f\\circ h)(x)=\\cos(a\\pi x+b\\pi)$이고 $b$가 홀수이므로<br>$(f\\circ h)(x)=-\\cos a\\pi x$이다.<br><br>$(h\\circ g)\\left(\\frac{3}{2}\\right)=-a+b$이므로 서로 다른 실근의 개수가 홀수가 되기 위해서는 $-a+b=-1$ 되어야 한다.<br>즉 $b=a-1$이다.<br><br><svg viewBox=\"0 0 360 220\" preserveAspectRatio=\"xMidYMid meet\"><style>.ax{stroke:black;stroke-width:1.5}.g{fill:none;stroke:black;stroke-width:2}.d{stroke:black;stroke-width:1;stroke-dasharray:5 4}.t{font-size:14px;font-family:serif}</style><line x1=\"30\" y1=\"180\" x2=\"330\" y2=\"180\" class=\"ax\"/><line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"200\" class=\"ax\"/><text x=\"22\" y=\"196\" class=\"t\">0</text><text x=\"320\" y=\"196\" class=\"t\">4</text><line x1=\"30\" y1=\"70\" x2=\"330\" y2=\"70\" class=\"d\"/><line x1=\"30\" y1=\"120\" x2=\"330\" y2=\"120\" class=\"d\"/><text x=\"335\" y=\"74\" class=\"t\">$1$</text><text x=\"335\" y=\"124\" class=\"t\">$-a+b$</text><path d=\"M30,120 C45,155 60,155 75,120 C90,85 105,85 120,120 C135,155 150,155 165,120 C180,85 195,85 210,120 C225,155 240,155 255,120 C270,85 285,85 300,120 C315,155 322,155 330,145\" class=\"g\"/></svg><br><br>$0\\le x\\le 4$일 때, 방정식 $(f\\circ h)(x)=-\\cos a\\pi x$는 주기 $\\frac{2}{a}$에 맞춰 $2a$번 반복되고, $x=2$에 대하여 대칭이므로 대칭인 해들의 합은 $4$를 만족한다.<br>방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 $56$이므로 해의 개수가 $28$이다.<br>$-1<(h\\circ g)(t)\\le1$이므로....",
-    choices: ["7", "9", "11", "13", "17"],
+    choices: [
+      "7",
+      "9",
+      "11",
+      "13",
+      "17"
+    ],
     answer: "④",
     solution: "1단계: $(f\\circ h)(x)=\\cos(a\\pi x+b\\pi)$이고 $b$가 홀수이므로 $(f\\circ h)(x)=-\\cos a\\pi x$ 이다.<br>2단계: $(h\\circ g)\\left(\\frac32\\right)=a\\sin\\frac{3\\pi}{2}+b=-a+b$ 이고, 조건 가에서 서로 다른 실근의 개수가 홀수가 되려면 $-a+b=-1$ 이어야 하므로 $b=a-1$ 이다.<br>3단계: 조건 나에서 방정식 $(f\\circ h)(x)=(h\\circ g)(t)$의 서로 다른 모든 실근의 합이 56이고, $x=2$에 대하여 대칭이므로 대칭인 두 해의 합은 4이다. 따라서 해의 쌍의 개수는 $56\\div4=14$ 이고, 해의 개수는 28개이다.<br>4단계: $-\\cos(a\\pi x)$는 $0\\le x\\le4$에서 주기 $\\frac{2}{a}$로 반복되고, 전체 반복 횟수는 $\\frac{4}{2/a}=2a$ 이다.<br>5단계: 한 반복마다 한 쌍의 해가 생기므로 $2a=28$, 따라서 $a=14$ 이다.<br>6단계: $b=a-1=13$ 이다.<br>* 검산: 정답 ④"
   },
@@ -307,7 +371,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "두 집합 $A_4=\\{\\log_4 1,\\log_4 2,\\log_4 3,\\ \\cdots,\\ \\log_4 100\\}$, $A_{2^k}=\\{\\log_{2^k} 1,\\log_{2^k} 2,\\log_{2^k} 3,\\ \\cdots,\\ \\log_{2^k} 100\\}$에 대하여 $n(A_4\\cap A_{2^k})=4$를 만족하는 자연수 $k$의 값은? [5점]",
-    choices: ["1", "2", "3", "4", "5"],
+    choices: [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
     answer: "③",
     solution: "1단계: $\\log_4 n=\\frac{\\log_2 n}{2}$, $\\log_{2^k} m=\\frac{\\log_2 m}{k}$ 이다.<br>2단계: 공통원소 조건은 $\\frac{\\log_2 n}{2}=\\frac{\\log_2 m}{k}$ 이므로 $k\\log_2 n=2\\log_2 m$, 즉 $n^k=m^2$ 이다.<br>3단계: 보기 중 $k=3$일 때 $n^3=m^2$ 이므로 $n=t^2,\\ m=t^3$ 꼴이다.<br>4단계: $m=t^3\\le100$ 이므로 $t=1,2,3,4$ 만 가능하다.<br>5단계: 따라서 공통원소 개수는 4개이므로 정답은 ③이다.<br>* 검산: $t=1,2,3,4$만 가능"
   },
@@ -321,7 +391,13 @@ window.questionBank = [
     standardUnit: "미분류",
     standardUnitOrder: 999,
     content: "상수 $k\\ (k>0)$에 대하여 직선 $y=-x+2k$가 두 함수 $f(x)=\\log(x-k),\\ g(x)=10^{x+1}+k+1$의 그래프와 만나는 점을 각각 $A,\\ B$라 하자. $\\overline{AB}=5\\sqrt{2}$일 때, $k$의 값은? (단, $\\log 2=0.3010$) [5점]<br><br><svg viewBox=\"0 0 360 240\" preserveAspectRatio=\"xMidYMid meet\"><style>.ax{stroke:black;stroke-width:1.5}.g{fill:none;stroke:black;stroke-width:2}.t{font-size:14px;font-family:serif}</style><line x1=\"20\" y1=\"200\" x2=\"340\" y2=\"200\" class=\"ax\"/><line x1=\"60\" y1=\"220\" x2=\"60\" y2=\"20\" class=\"ax\"/><polygon points=\"340,200 332,196 332,204\" fill=\"black\"/><polygon points=\"60,20 56,28 64,28\" fill=\"black\"/><text x=\"46\" y=\"216\" class=\"t\">O</text><text x=\"344\" y=\"204\" class=\"t\">x</text><text x=\"64\" y=\"18\" class=\"t\">y</text><line x1=\"70\" y1=\"190\" x2=\"310\" y2=\"40\" class=\"g\"/><path d=\"M165,200 C170,165 182,135 205,115 C235,88 270,74 318,64\" class=\"g\"/><path d=\"M78,210 C90,208 102,203 112,192 C122,181 128,164 130,136\" class=\"g\"/><circle cx=\"205\" cy=\"115\" r=\"3\" fill=\"black\"/><circle cx=\"130\" cy=\"136\" r=\"3\" fill=\"black\"/><text x=\"211\" y=\"111\" class=\"t\">A</text><text x=\"136\" y=\"132\" class=\"t\">B</text><text x=\"185\" y=\"214\" class=\"t\">$2k$</text></svg>",
-    choices: ["1.6990", "2.3010", "2.4771", "3.3010", "3.6990"],
+    choices: [
+      "1.6990",
+      "2.3010",
+      "2.4771",
+      "3.3010",
+      "3.6990"
+    ],
     answer: "②",
     solution: "1단계: 점 $A, B$는 모두 직선 $y=-x+2k$ 위에 있으므로, $\\overline{AB}=5\\sqrt2$ 이면 두 점의 $x$좌표 차와 $y$좌표 차는 각각 5이다.<br>2단계: $A$는 로그함수 $f(x)=\\log(x-k)$ 위의 점이므로 $x-k=2$인 점을 보면 $y=\\log 2=0.3010$ 이고, 이 점의 좌표는 $A=(k+2,\\ 0.3010)$ 이다.<br>3단계: 이 점이 직선 위에도 있어야 하므로 $0.3010=-(k+2)+2k$ 이다.<br>4단계: 따라서 $0.3010=k-2$, 즉 $k=2.3010$ 이다.<br>5단계: 이때 $A$의 $x$좌표는 $4.3010$이고, 직선 위에서 $AB=5\\sqrt2$ 이므로 $B$의 $x$좌표는 $-0.6990$ 이다. $g(-0.6990)=10^{0.3010}+k+1=2+k+1=k+3$ 이고, 직선에서도 $y=0.6990+2k=k+3$ 이므로 일치한다.<br>* 검산: 정답 ②"
   },
@@ -381,5 +457,4 @@ window.questionBank = [
     answer: "$0<k<\\frac{1}{2}$, $\\frac{4\\pi}{3}$",
     solution: "1단계: $f(x)=\\left|\\cos2\\left(x-\\frac{\\pi}{6}\\right)\\right|+\\frac12$ 이고, $-\\pi\\le x\\le\\pi$에서 그래프를 보면 $y=1$과 만나는 서로 다른 점의 개수는 $n=5$ 이다.<br>2단계: 조건에서 $m-n=3$ 이므로 $m=8$ 이다.<br>3단계: $f(x)=k$가 서로 다른 8개의 실근을 가지려면 그래프의 높이로 보아 $0<k<\\frac12$ 이어야 한다.<br>4단계: 이때 8개의 근을 $x_1,x_2,\\dots,x_8$이라 하면, 그래프는 $x=\\frac{\\pi}{6}$에 대하여 대칭이다.<br>5단계: 따라서 $x_1+x_8=\\frac{\\pi}{3}$ 이고, 마찬가지로 $x_2+x_7=x_3+x_6=x_4+x_5=\\frac{\\pi}{3}$ 이다.<br>6단계: 모든 실근의 합은 $4\\cdot\\frac{\\pi}{3}=\\frac{4\\pi}{3}$ 이다.<br>* 검산: $0<k<\\frac12$, 실근의 합 $\\frac{4\\pi}{3}$"
   }
-]
-Object.freeze(window.questionBank);
+];

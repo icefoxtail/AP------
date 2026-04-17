@@ -11,8 +11,14 @@ window.questionBank = [
     "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
     "content": "다음 중 소수를 고르시오. [3점]",
-    "choices": ["3", "8", "15", "22", "39"],
-    "answer": "1",
+    "choices": [
+      "3",
+      "8",
+      "15",
+      "22",
+      "39"
+    ],
+    "answer": "①",
     "solution": "소수의 정의: 1과 자기 자신만을 약수로 가지는 자연수\\n\\implies 3의 약수는 1, 3\\n\\therefore 정답은 1번이다."
   },
   {
@@ -32,7 +38,7 @@ window.questionBank = [
       "소수의 약수는 자기 자신 뿐이다.",
       "7의 배수 중에서 소수는 1개 뿐이다."
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "① 1은 소수도 합성수도 아님\\n② 2는 짝수이지만 소수임\\n③ 합성수의 약수는 3개 이상임\\n④ 소수의 약수는 1과 자기 자신으로 2개임\\n⑤ 7의 배수 중 소수는 7뿐임\\n\\therefore 옳은 것은 5번이다."
   },
   {
@@ -45,8 +51,14 @@ window.questionBank = [
     "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
     "content": "$2^4$은 $a$를 $b$번 곱한 것이므로 $c$이다. $a+b+c$의 값을 고르시오. [3점]",
-    "choices": ["14", "16", "22", "30", "45"],
-    "answer": "3",
+    "choices": [
+      "14",
+      "16",
+      "22",
+      "30",
+      "45"
+    ],
+    "answer": "③",
     "solution": "$2^4$은 2를 4번 곱한 수\\n\\implies a=2, b=4\\n$2^4 = 16 \\implies c=16\\n\\therefore a+b+c = 2+4+16 = 22"
   },
   {
@@ -66,7 +78,7 @@ window.questionBank = [
       "$5 \\times 6$",
       "$2 \\times 3 \\times 5$"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "30을 소인수분해:\\n30 = 2 \\times 15 = 2 \\times 3 \\times 5\\n\\therefore 정답은 5번이다."
   },
   {
@@ -79,8 +91,14 @@ window.questionBank = [
     "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
     "content": "108과 소인수가 모두 같은 수를 고르시오. [4점]",
-    "choices": ["32", "45", "50", "66", "72"],
-    "answer": "5",
+    "choices": [
+      "32",
+      "45",
+      "50",
+      "66",
+      "72"
+    ],
+    "answer": "⑤",
     "solution": "$108 = 2^2 \\times 3^3 \\implies$ 소인수는 2, 3\\n① $32 = 2^5 \\implies$ 소인수: 2\\n② $45 = 3^2 \\times 5 \\implies$ 소인수: 3, 5\\n③ $50 = 2 \\times 5^2 \\implies$ 소인수: 2, 5\\n④ $66 = 2 \\times 3 \\times 11 \\implies$ 소인수: 2, 3, 11\\n⑤ $72 = 2^3 \\times 3^2 \\implies$ 소인수: 2, 3\\n\\therefore 108과 소인수가 모두 같은 수는 72이다."
   },
   {
@@ -100,7 +118,7 @@ window.questionBank = [
       "약수: ㄱ, ㄷ, 배수: ㅁ, ㅂ",
       "약수: ㄴ, ㄷ, 배수: ㅂ"
     ],
-    "answer": "3",
+    "answer": "③",
     "solution": "$N = 2^2 \\times 3 \\times 5$\\n\\because 약수는 N의 소인수의 지수보다 작거나 같은 지수를 가짐\\n\\implies ㄱ($2^2$), ㄷ($3 \\times 5$)은 약수\\n\\because 배수는 N을 약수로 가짐 (소인수 2, 3, 5의 지수가 각각 2, 1, 1 이상)\\n\\implies ㅁ($2^3 \\times 3 \\times 5$)은 배수\\n\\therefore 약수: ㄱ, ㄷ / 배수: ㅁ"
   },
   {
@@ -113,8 +131,14 @@ window.questionBank = [
     "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
     "content": "소인수가 세 개인 자연수 중에서 세 번째로 작은 자연수를 구하시오. [4.5점]",
-    "choices": ["30", "60", "70", "98", "105"],
-    "answer": "2",
+    "choices": [
+      "30",
+      "60",
+      "70",
+      "98",
+      "105"
+    ],
+    "answer": "②",
     "solution": "서로 다른 소인수가 3개인 자연수 탐색\\n1) 소인수 2, 3, 5 \\implies 2 \\times 3 \\times 5 = 30, 2^2 \\times 3 \\times 5 = 60\\n2) 소인수 2, 3, 7 \\implies 2 \\times 3 \\times 7 = 42\\n크기 순 나열: 30, 42, 60, 66, 70 \\dots\\n\\therefore 세 번째로 작은 자연수는 60이다."
   },
   {
@@ -127,8 +151,14 @@ window.questionBank = [
     "standardUnit": "최대공약수와 최소공배수",
     "standardUnitOrder": 2,
     "content": "두 자리 자연수 중에서 25와 서로소인 자연수는 모두 몇 개인지 구하시오. [4점]",
-    "choices": ["82", "80", "73", "72", "70"],
-    "answer": "4",
+    "choices": [
+      "82",
+      "80",
+      "73",
+      "72",
+      "70"
+    ],
+    "answer": "④",
     "solution": "$25 = 5^2 \\implies$ 25와 서로소인 수는 5의 배수가 아닌 수\\n두 자리 자연수(10~99) 총 개수 = 99 - 10 + 1 = 90\\n두 자리 자연수 중 5의 배수 = 10(=5 \\times 2) \\dots 95(=5 \\times 19)\\n\\implies 5의 배수 개수 = 19 - 2 + 1 = 18\\n\\therefore 25와 서로소인 수의 개수 = 90 - 18 = 72"
   },
   {
@@ -141,8 +171,14 @@ window.questionBank = [
     "standardUnit": "최대공약수와 최소공배수",
     "standardUnitOrder": 2,
     "content": "서로 다른 세 자연수 42, 54, <span class='box'>$\\\\square$</span>의 최대공약수가 6, 최소공배수가 378이다. <span class='box'>$\\\\square$</span>가 될 수 있는 수가 몇 개인지 고르시오. [5점]",
-    "choices": ["1개", "2개", "4개", "6개", "9개"],
-    "answer": "3",
+    "choices": [
+      "1개",
+      "2개",
+      "4개",
+      "6개",
+      "9개"
+    ],
+    "answer": "③",
     "solution": "$42 = 2 \\times 3 \\times 7, 54 = 2 \\times 3^3$\\n$G = 2 \\times 3, L = 2 \\times 3^3 \\times 7$\\n$\\square = 2^a \\times 3^b \\times 7^c$ 라 하면\\n\\because G = 2^1 \\times 3^1 \\implies a=1, b \\ge 1, c \\ge 0\\n\\because L = 2^1 \\times 3^3 \\times 7^1 \\implies a=1, b \\le 3, c \\le 1\\n$\\implies b \\in \\{1, 2, 3\\}, c \\in \\{0, 1\\} \\implies 1 \\times 3 \\times 2 = 6$개\\n$\\square \\in \\{6, 18, 54, 42, 126, 378\\}$\\n\\because 서로 다른 세 자연수 \\implies 42, 54 제외\\n\\therefore 가능한 $\\square$는 6, 18, 126, 378로 4개"
   },
   {
@@ -155,8 +191,14 @@ window.questionBank = [
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 3,
     "content": "10000원 용돈 받은 것을 +10000원 이라고 나타낼 때, 문방구에서 6000원 학용품 산 것을 옳게 나타낸 것을 고르시오. [3점]",
-    "choices": ["-10000원", "-6000원", "-4000원", "4000원", "6000원"],
-    "answer": "2",
+    "choices": [
+      "-10000원",
+      "-6000원",
+      "-4000원",
+      "4000원",
+      "6000원"
+    ],
+    "answer": "②",
     "solution": "\\because 수입(받은 것)을 $+$로 표시\\n\\implies 지출(산 것)은 $-$로 표시\\n\\therefore -6000원"
   },
   {
@@ -176,7 +218,7 @@ window.questionBank = [
       "$\\frac{6}{10}$은 정수가 아닌 유리수다.",
       "-3과 +2 사이에 있는 정수는 3개다."
     ],
-    "answer": "4",
+    "answer": "④",
     "solution": "① $0 \\notin 자연수 \\implies$ 정수\\n② $-3.14 < 0 \\implies$ 음수\\n③ $\\frac{1}{2} \\in 유리수$ 이나 정수는 아님\\n④ $\\frac{6}{10} = \\frac{3}{5} \\implies$ 정수가 아닌 유리수\\n⑤ $-3 < x < 2 \\implies x \\in \\{-2, -1, 0, 1\\}$ (4개)\\n\\therefore 옳은 것은 4번"
   },
   {
@@ -196,7 +238,7 @@ window.questionBank = [
       "ㄹ : $+\\frac{3}{2}$",
       "ㅁ : $+\\frac{10}{3}$"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "ㄱ: $-4$\\nㄴ: $-2 - \\frac{1}{3} = -\\frac{7}{3}$\\nㄷ: $-\\frac{3}{4}$\\nㄹ: $1 + \\frac{1}{2} = \\frac{3}{2}$\\nㅁ: $3 + \\frac{2}{3} = \\frac{11}{3}$\\n\\n[Figure]\\n좌표계: 수직선 상의 점 ㄱ(-4, 0), ㄴ(-7/3, 0), ㄷ(-3/4, 0), ㄹ(3/2, 0), ㅁ(11/3, 0)\\n\\therefore 5번이 옳지 않음"
   },
   {
@@ -209,8 +251,14 @@ window.questionBank = [
     "standardUnit": "정수와 유리수",
     "standardUnitOrder": 3,
     "content": "절댓값이 같고 부호가 다른 두 수가 있다. 두 수에 대응하는 점을 수직선 위에 나타내면 그 사이의 거리가 10이다. 이 때 두 수를 구하시오. [3점]",
-    "choices": ["-3, 3", "-4, 6", "-5, 5", "-1, 9", "-10, 10"],
-    "answer": "3",
+    "choices": [
+      "-3, 3",
+      "-4, 6",
+      "-5, 5",
+      "-1, 9",
+      "-10, 10"
+    ],
+    "answer": "③",
     "solution": "두 수를 $x, -x (x>0)$ 라 하면\\n\\because |x - (-x)| = 10 \\implies 2x = 10 \\implies x = 5\\n\\therefore 두 수는 -5, 5"
   },
   {
@@ -230,7 +278,7 @@ window.questionBank = [
       "$+5 < +8$",
       "$-2 < -7$"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "\\because |-2| = 2, |-7| = 7\\n\\because 2 < 7 \\implies -2 > -7\\n\\therefore 5번이 옳지 않음"
   },
   {
@@ -250,7 +298,7 @@ window.questionBank = [
       "$(-4) - (+5) = -1$",
       "$(+1) - (+9) = -8$"
     ],
-    "answer": "4",
+    "answer": "④",
     "solution": "④ $(-4) - (+5) = -4 - 5 = -9$\\n\\therefore 옳지 않은 것은 4번"
   },
   {
@@ -263,8 +311,14 @@ window.questionBank = [
     "standardUnit": "정수와 유리수의 계산",
     "standardUnitOrder": 4,
     "content": "$5 - 21$을 계산한 값을 고르시오. [4점]",
-    "choices": ["-26", "-24", "-16", "16", "26"],
-    "answer": "3",
+    "choices": [
+      "-26",
+      "-24",
+      "-16",
+      "16",
+      "26"
+    ],
+    "answer": "③",
     "solution": "$5 - 21 = -(21 - 5) = -16$\\n\\therefore 정답은 3번"
   },
   {
@@ -277,8 +331,14 @@ window.questionBank = [
     "standardUnit": "정수와 유리수의 계산",
     "standardUnitOrder": 4,
     "content": "13보다 -3 큰 수를 $a$, 2보다 +7 작은 수를 $b$라고 할 때, $a - b$의 값을 구하시오. [4점]",
-    "choices": ["1", "5", "11", "15", "21"],
-    "answer": "4",
+    "choices": [
+      "1",
+      "5",
+      "11",
+      "15",
+      "21"
+    ],
+    "answer": "④",
     "solution": "$a = 13 + (-3) = 10$\\n$b = 2 - (+7) = -5$\\n\\therefore a - b = 10 - (-5) = 15$"
   },
   {
@@ -298,7 +358,7 @@ window.questionBank = [
       "부호가 같은 두 수의 곱셈은 절댓값의 곱에 양의 부호를 붙인다.",
       "두 수의 나눗셈은 나누는 수의 역수를 곱한다."
     ],
-    "answer": "3",
+    "answer": "③",
     "solution": "돌멩이 달기(음수 덧셈) = 풍선 끊기(양수 뺄셈)\\n돌멩이 끊기(음수 뺄셈) = 풍선 달기(양수 덧셈)\\n\\implies 빼는 수의 부호를 바꾸어 더하는 뺄셈의 원리를 설명함\\n\\therefore 정답은 3번이다."
   },
   {
@@ -318,7 +378,7 @@ window.questionBank = [
       "$(-8) \\div (-16) = +\\frac{1}{2}$",
       "$(-6) \\div \\frac{4}{3} = -8$"
     ],
-    "answer": "5",
+    "answer": "⑤",
     "solution": "⑤ $(-6) \\div \\frac{4}{3} = -6 \\times \\frac{3}{4} = -\\frac{9}{2}$\\n\\therefore 옳지 않은 것은 5번이다."
   },
   {
@@ -331,8 +391,14 @@ window.questionBank = [
     "standardUnit": "정수와 유리수의 계산",
     "standardUnitOrder": 4,
     "content": "다음 네 개의 유리수 중에서 서로 다른 두 수를 골라서 곱한다. 이때 곱한 값 중에서 가장 작은 수를 고르시오. [4.5점]\\n$0.75$, $-3$, $-\\frac{1}{2}$, $+4$",
-    "choices": ["3", "$\\frac{3}{2}$", "$-\\frac{3}{8}$", "-12", "-36"],
-    "answer": "4",
+    "choices": [
+      "3",
+      "$\\frac{3}{2}$",
+      "$-\\frac{3}{8}$",
+      "-12",
+      "-36"
+    ],
+    "answer": "④",
     "solution": "\\because 곱이 가장 작음 \\implies 음수이면서 절댓값이 최대여야 함\\n\\implies (가장 큰 양수) \\times (절댓값이 가장 큰 음수)\\n양수 중 최대: $+4$\\n음수 중 절댓값 최대: $-3$\\n\\therefore (+4) \\times (-3) = -12$"
   },
   {
@@ -352,7 +418,7 @@ window.questionBank = [
       "$\\frac{5}{2}$",
       "$\\frac{7}{2}$"
     ],
-    "answer": "4",
+    "answer": "④",
     "solution": "중괄호 안을 먼저 계산: $(-\\frac{25}{4}) \\div 5 - (-8) = (-\\frac{25}{4}) \\times \\frac{1}{5} + 8 = -\\frac{5}{4} + \\frac{32}{4} = \\frac{27}{4}$\\n전체 식 계산: $-2 + \\frac{27}{4} \\times \\frac{2}{3} = -2 + \\frac{9}{2} = -\\frac{4}{2} + \\frac{9}{2} = \\frac{5}{2}$\\n\\therefore 정답은 4번이다."
   },
   {
