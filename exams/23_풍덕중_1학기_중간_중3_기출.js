@@ -1,339 +1,315 @@
 window.examTitle = "2023학년도 1학기 중간고사 3학년 수학 (순천풍덕중학교)";
 window.questionBank = [
-  {
-    id: 1,
-    level: "중",
-    category: "제곱근과 실수",
-    content: "다음 중 옳은 것을 고르시오. (3점)",
-    choices: [
-      "정수의 제곱근은 항상 존재한다.",
-      "음이 아닌 수는 제곱근의 합이 항상 0이다.",
-      "음수의 제곱근은 음수이다.",
-      "음이 아닌 수의 제곱근은 항상 2개이다.",
-      "음수의 제곱근은 음의 제곱근이다."
-    ],
-    answer: "2",
-    solution: "① 음의 정수는 실수 범위에서 제곱근이 존재하지 않는다. $\\rightarrow$ 거짓\n② 0의 제곱근은 0이므로 합은 0이고, 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$이므로 합은 0이다. $\\rightarrow$ 참\n③ 음수의 제곱근은 실수 범위에서 존재하지 않는다. $\\rightarrow$ 거짓\n④ 0의 제곱근은 0으로 1개이다. $\\rightarrow$ 거짓\n⑤ 음수의 제곱근은 실수 범위에서 존재하지 않는다. $\\rightarrow$ 거짓\n$\\therefore$ 2"
-  },
-  {
-    id: 2,
-    level: "중",
-    category: "제곱근과 실수",
-    content: "수에 대한 설명으로 틀린 것은? (3점)",
-    choices: [
-      "\\pi는 무한소수이다.",
-      "0.\\dot{3}은 유리수이다.",
-      "\\sqrt{0.9}는 무리수 이다.",
-      "-\\sqrt{(-3)^{2}} 은 3의 음의 제곱근이다.",
-      "\\sqrt{0.\\dot{9}}는 유리수이다."
-    ],
-    answer: "4",
-    solution: "① $\\pi$는 순환하지 않는 무한소수이다. $\\rightarrow$ 참\n② $0.\\dot{3} = \\frac{3}{9} = \\frac{1}{3}$이므로 유리수이다. $\\rightarrow$ 참\n③ $\\sqrt{0.9} = \\sqrt{\\frac{9}{10}} = \\frac{3}{\\sqrt{10}}$이므로 무리수이다. $\\rightarrow$ 참\n④ $-\\sqrt{(-3)^{2}} = -\\sqrt{9} = -3$이다. 3의 음의 제곱근은 $-\\sqrt{3}$이므로 두 값은 서로 다르다. $\\rightarrow$ 거짓\n⑤ $\\sqrt{0.\\dot{9}} = \\sqrt{\\frac{9}{9}} = \\sqrt{1} = 1$이므로 유리수이다. $\\rightarrow$ 참\n$\\therefore$ 4"
-  },
-  {
-    id: 3,
-    level: "중",
-    category: "근호를 포함한 식의 계산",
-    content: "식을 잘못 정리한 것은? (3점)",
-    choices: [
-      "\\sqrt{6}\\times\\sqrt{12}=6\\sqrt{2}",
-      "\\sqrt{\\frac{18}{2}}\\times\\sqrt{6}=3\\sqrt{6}",
-      "\\frac{6}{2\\sqrt{3}}=\\sqrt{3}",
-      "\\frac{\\sqrt{5}}{4}\\div\\frac{\\sqrt{15}}{2}=\\frac{\\sqrt{3}}{6}",
-      "\\sqrt{3}\\div\\frac{3}{\\sqrt{5}}=\\frac{3\\sqrt{3}}{\\sqrt{5}}"
-    ],
-    answer: "5",
-    solution: "① $\\sqrt{6} \\times \\sqrt{12} = \\sqrt{72} = 6\\sqrt{2}$ $\\rightarrow$ 참\n② $\\sqrt{\\frac{18}{2}} \\times \\sqrt{6} = \\sqrt{9} \\times \\sqrt{6} = 3\\sqrt{6}$ $\\rightarrow$ 참\n③ $\\frac{6}{2\\sqrt{3}} = \\frac{3}{\\sqrt{3}} = \\sqrt{3}$ $\\rightarrow$ 참\n④ $\\frac{\\sqrt{5}}{4} \\div \\frac{\\sqrt{15}}{2} = \\frac{\\sqrt{5}}{4} \\times \\frac{2}{\\sqrt{15}} = \\frac{1}{2\\sqrt{3}} = \\frac{\\sqrt{3}}{6}$ $\\rightarrow$ 참\n⑤ $\\sqrt{3} \\div \\frac{3}{\\sqrt{5}} = \\sqrt{3} \\times \\frac{\\sqrt{5}}{3} = \\frac{\\sqrt{15}}{3}$ 이다. $\\rightarrow$ 거짓\n$\\therefore$ 5"
-  },
-  {
-    id: 4,
-    level: "중",
-    category: "근호를 포함한 식의 계산",
-    content: "계산이 틀린 것은? (3점)",
-    choices: [
-      "4\\div\\sqrt{2}\\times\\sqrt{2}=2",
-      "(\\sqrt{2}-\\sqrt{28})\\sqrt{7}=\\sqrt{14}-14",
-      "\\frac{\\sqrt{5}-1}{\\sqrt{2}}=\\frac{\\sqrt{10}-\\sqrt{2}}{2}",
-      "\\sqrt{27}-2\\sqrt{3}=\\sqrt{3}",
-      "\\frac{3-\\sqrt{12}}{\\sqrt{3}}-6\\div\\sqrt{3}=-2-\\sqrt{3}"
-    ],
-    answer: "1",
-    solution: "① $4 \\div \\sqrt{2} \\times \\sqrt{2} = 4 \\times \\frac{1}{\\sqrt{2}} \\times \\sqrt{2} = 4$ 이다. $\\rightarrow$ 거짓\n② $(\\sqrt{2}-\\sqrt{28})\\sqrt{7} = \\sqrt{14} - \\sqrt{196} = \\sqrt{14} - 14$ $\\rightarrow$ 참\n③ $\\frac{\\sqrt{5}-1}{\\sqrt{2}} = \\frac{\\sqrt{10}-\\sqrt{2}}{2}$ $\\rightarrow$ 참\n④ $\\sqrt{27} - 2\\sqrt{3} = 3\\sqrt{3} - 2\\sqrt{3} = \\sqrt{3}$ $\\rightarrow$ 참\n⑤ $\\frac{3-\\sqrt{12}}{\\sqrt{3}} - 6\\div\\sqrt{3} = \\frac{3-2\\sqrt{3}}{\\sqrt{3}} - \\frac{6}{\\sqrt{3}} = \\sqrt{3} - 2 - 2\\sqrt{3} = -2 - \\sqrt{3}$ $\\rightarrow$ 참\n$\\therefore$ 1"
-  },
-  {
-    id: 5,
-    level: "하",
-    category: "다항식의 곱셈",
-    content: "(y+\\frac{1}{2})(2y-4) 를 전개한 결과로 적절한 것은? (3점)",
-    choices: [
-      "2y^{2}+3y+2",
-      "2y^{2}+3y-2",
-      "2y^{2}-3y-2",
-      "-2y^{2}-3y-2",
-      "2y^{2}-3y+2"
-    ],
-    answer: "3",
-    solution: "$(y+\\frac{1}{2})(2y-4) = 2y^2 - 4y + y - 2 = 2y^2 - 3y - 2$\n$\\therefore$ 3"
-  },
-  {
-    id: 6,
-    level: "하",
-    category: "인수분해",
-    content: "x^{2}-3x-4의 인수로 적절하지 않은 것은? (3점)",
-    choices: [
-      "0",
-      "x+1",
-      "x-4",
-      "1",
-      "x^{2}-3x-4"
-    ],
-    answer: "1",
-    solution: "$x^2-3x-4$를 인수분해하면 $(x-4)(x+1)$이다.\n다항식의 인수는 $1, x+1, x-4, (x-4)(x+1)$ 이다.\n0은 인수가 될 수 없다.\n$\\therefore$ 1"
-  },
-  {
-    id: 7,
-    level: "중",
-    category: "제곱근과 실수",
-    content: "\\sqrt{26-x}가 정수가 되도록 하는 자연수 x의 개수는? (4점)",
-    choices: [
-      "3개",
-      "4개",
-      "5개",
-      "6개",
-      "7개"
-    ],
-    answer: "4",
-    solution: "$\\sqrt{26-x}$가 정수가 되려면 $26-x = k^2$ ($k$는 $0$ 이상의 정수) 꼴이어야 한다.\n$x$가 자연수이므로 $26-x < 26$ 이다.\n26보다 작은 $k^2$ 꼴의 수는 $25, 16, 9, 4, 1, 0$ 이다.\n$26-x = 25 \\implies x=1$\n$26-x = 16 \\implies x=10$\n$26-x = 9 \\implies x=17$\n$26-x = 4 \\implies x=22$\n$26-x = 1 \\implies x=25$\n$26-x = 0 \\implies x=26$\n따라서 자연수 $x$는 6개이다.\n$\\therefore$ 4"
-  },
-  {
-    id: 8,
-    level: "중",
-    category: "제곱근과 실수",
-    content: "A=\\sqrt{3}-2, B=1-\\sqrt{3}, C=\\sqrt{2}, D=3-\\sqrt{2} 중 가장 작은 수와 큰 수를 차례로 짝지은 것은? (4점)",
-    choices: [
-      "A, B",
-      "D, B",
-      "A, D",
-      "B, C",
-      "B, D"
-    ],
-    answer: "5",
-    solution: "각 수의 대략적인 값을 비교한다. $\\sqrt{2} \\approx 1.414, \\sqrt{3} \\approx 1.732$\n$A = \\sqrt{3} - 2 \\approx 1.732 - 2 = -0.268$\n$B = 1 - \\sqrt{3} \\approx 1 - 1.732 = -0.732$\n$C = \\sqrt{2} \\approx 1.414$\n$D = 3 - \\sqrt{2} \\approx 3 - 1.414 = 1.586$\n대소 관계를 비교하면 $B < A < C < D$ 이다.\n가장 작은 수는 $B$, 가장 큰 수는 $D$ 이다.\n$\\therefore$ 5"
-  },
-  {
-    id: 9,
-    level: "중",
-    category: "근호를 포함한 식의 계산",
-    content: "\\sqrt{48}\\div\\sqrt{108}\\times\\sqrt{2}=\\sqrt{a} 일 때 a값으로 적절한 것은? (4점)",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "좌변을 계산하면 다음과 같다.\n$\\sqrt{48} \\div \\sqrt{108} \\times \\sqrt{2} = 4\\sqrt{3} \\div 6\\sqrt{3} \\times \\sqrt{2} = \\frac{4\\sqrt{3}}{6\\sqrt{3}} \\times \\sqrt{2} = \\frac{2}{3}\\sqrt{2} = \\sqrt{\\frac{4}{9} \\times 2} = \\sqrt{\\frac{8}{9}}$\n따라서 $\\sqrt{a} = \\sqrt{\\frac{8}{9}}$ 이므로 $a = \\frac{8}{9}$ 이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
-  },
-  {
-    id: 10,
-    level: "상",
-    category: "근호를 포함한 식의 계산",
-    content: "\\frac{2+\\sqrt{6}}{2-\\sqrt{6}} - \\frac{2-\\sqrt{6}}{2+\\sqrt{6}} = a+b\\sqrt{6}일 때, 유리수 a-b의 값으로 적절한 것은? (4점)",
-    choices: [
-      "4\\sqrt{6}",
-      "9-4\\sqrt{6}",
-      "[판독불가]",
-      "[판독불가]",
-      "0"
-    ],
-    answer: "[정답불가]",
-    solution: "주어진 식을 통분하여 계산한다.\n$\\frac{(2+\\sqrt{6})^2 - (2-\\sqrt{6})^2}{(2-\\sqrt{6})(2+\\sqrt{6})}$\n$= \\frac{(4 + 4\\sqrt{6} + 6) - (4 - 4\\sqrt{6} + 6)}{4 - 6}$\n$= \\frac{(10 + 4\\sqrt{6}) - (10 - 4\\sqrt{6})}{-2}$\n$= \\frac{8\\sqrt{6}}{-2} = -4\\sqrt{6}$\n따라서 $a = 0, b = -4$ 이다.\n$a - b = 0 - (-4) = 4$ 이다.\n(원문 보기 판독 불가 구간 존재로 정답 확정 불가)"
-  },
-  {
-    id: 11,
-    level: "중",
-    category: "인수분해",
-    content: "다음 두 다항식의 공통인수가 아닌 것은? (4점)\n(x+1)(x^{2}+2x-8) 와 (x+4)(2x^{2}-4x-6)",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "첫 번째 식 인수분해:\n$(x+1)(x^2+2x-8) = (x+1)(x-2)(x+4)$\n두 번째 식 인수분해:\n$(x+4)(2x^2-4x-6) = (x+4) \\cdot 2(x^2-2x-3) = 2(x+4)(x-3)(x+1)$\n두 다항식의 공통인수는 $1, (x+1), (x+4), (x+1)(x+4)$ 등이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
-  },
-  {
-    id: 12,
-    level: "중",
-    category: "다항식의 곱셈",
-    content: "(\\sqrt{7}-3)^{5}(\\sqrt{7}+3)^{5} 의 값으로 적절한 것은? (4점)",
-    choices: [
-      "2",
-      "-2",
-      "32",
-      "16",
-      "-32"
-    ],
-    answer: "5",
-    solution: "지수법칙을 이용하여 식을 변형한다.\n$((\\sqrt{7}-3)(\\sqrt{7}+3))^5$\n합차 공식을 적용하면,\n$= ((\\sqrt{7})^2 - 3^2)^5$\n$= (7 - 9)^5$\n$= (-2)^5 = -32$\n$\\therefore$ 5"
-  },
-  {
-    id: 13,
-    level: "중",
-    category: "제곱근과 실수",
-    content: "다음 중 [판독불가] 안의 수가 가장 큰 것은? (4점)\n[판독불가]",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "원문 발문 및 보기 판독 불가로 풀이 불가."
-  },
-  {
-    id: 14,
-    level: "중",
-    category: "인수분해",
-    content: "완전제곱식이 아닌 것은? (4점)",
-    choices: [
-      "9a^{2}-12ax+4x^{2}",
-      "4x^{2}-4x+1",
-      "9x^{2}-6x+y^{2}",
-      "4a^{2}+16a+16",
-      "-2x^{2}+8x-8"
-    ],
-    answer: "3",
-    solution: "① $9a^2-12ax+4x^2 = (3a-2x)^2$ (완전제곱식)\n② $4x^2-4x+1 = (2x-1)^2$ (완전제곱식)\n③ $9x^2-6x+y^2$는 완전제곱식 형태로 인수분해되지 않는다.\n④ $4a^2+16a+16 = 4(a^2+4a+4) = 4(a+2)^2$ (완전제곱식에 상수배)\n⑤ $-2x^2+8x-8 = -2(x^2-4x+4) = -2(x-2)^2$ (완전제곱식에 상수배)\n따라서 완전제곱식이 아닌 것은 3번이다.\n$\\therefore$ 3"
-  },
-  {
-    id: 15,
-    level: "상",
-    category: "다항식의 곱셈",
-    content: "a+b=3, a^{2}+b^{2}=5 일 때 a-b의 값으로 적절한 것은? (5점)",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "곱셈공식의 변형을 이용한다.\n$a^2+b^2 = (a+b)^2 - 2ab$\n$5 = 3^2 - 2ab \\implies 5 = 9 - 2ab \\implies 2ab = 4 \\implies ab = 2$\n$(a-b)^2 = (a+b)^2 - 4ab = 3^2 - 4(2) = 9 - 8 = 1$\n따라서 $a-b = \\pm 1$ 이다.\n(원문 보기 판독 불가 및 조건 부족으로 단일 정답 확정 불가)"
-  },
-  {
-    id: 16,
-    level: "상",
-    category: "다항식의 곱셈",
-    content: "x+\\frac{1}{x}=4 이고 0<x<1일 때 x-\\frac{1}{x} 의 값은? (5점)",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "곱셈공식의 변형을 이용한다.\n$(x-\\frac{1}{x})^2 = (x+\\frac{1}{x})^2 - 4 = 4^2 - 4 = 16 - 4 = 12$\n따라서 $x - \\frac{1}{x} = \\pm \\sqrt{12} = \\pm 2\\sqrt{3}$ 이다.\n조건에서 $0 < x < 1$ 이므로, $x < \\frac{1}{x}$ 이 성립한다.\n즉, $x - \\frac{1}{x} < 0$ 이다.\n따라서 $x - \\frac{1}{x} = -2\\sqrt{3}$ 이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
-  },
-  {
-    id: 17,
-    level: "상",
-    category: "다항식의 곱셈",
-    content: "(2+1)(2^{2}+1)(2^{4}+1)(2^{8}+1)=a 일 때 \\frac{a}{257} 의 값으로 적절한 것은? (단, 2^{8}=256) (5점)",
-    choices: [
-      "2^{10}-1",
-      "2^{16}+1",
-      "257",
-      "256",
-      "255"
-    ],
-    answer: "5",
-    solution: "주어진 식의 양변에 $(2-1)$을 곱한다. $(2-1=1$이므로 등식의 값은 변하지 않는다.)\n$(2-1)(2+1)(2^2+1)(2^4+1)(2^8+1) = a \\times 1 = a$\n합차 공식을 차례대로 적용한다.\n$(2^2-1)(2^2+1)(2^4+1)(2^8+1) = a$\n$(2^4-1)(2^4+1)(2^8+1) = a$\n$(2^8-1)(2^8+1) = a$\n$2^{16} - 1 = a$\n구하고자 하는 식의 분모를 변형한다. $257 = 256 + 1 = 2^8 + 1$ 이다.\n$\\frac{a}{257} = \\frac{2^{16}-1}{2^8+1} = \\frac{(2^8-1)(2^8+1)}{2^8+1} = 2^8-1$\n$2^8 = 256$ 이므로, $2^8 - 1 = 255$ 이다.\n$\\therefore$ 5"
-  },
-  {
-    id: 18,
-    level: "상",
-    category: "제곱근과 실수",
-    content: "2 < x < 3일 때, \\sqrt{x^{2}}-\\sqrt{(x-1)^{2}}+\\sqrt{(x-2)^{2}}-\\sqrt{(x-3)^{2}} 을 간단히 나타낸 식으로 적절한 것은? (5점)",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "$\\sqrt{A^2} = |A|$ 성질을 이용한다.\n$2 < x < 3$ 이므로 각 항의 부호를 판별한다.\n$x > 0 \\implies \\sqrt{x^2} = x$\n$x - 1 > 0 \\implies \\sqrt{(x-1)^2} = x-1$\n$x - 2 > 0 \\implies \\sqrt{(x-2)^2} = x-2$\n$x - 3 < 0 \\implies \\sqrt{(x-3)^2} = -(x-3) = -x+3$\n주어진 식에 대입하여 정리한다.\n$x - (x-1) + (x-2) - (-x+3)$\n$= x - x + 1 + x - 2 + x - 3$\n$= 2x - 4$\n(원문 보기 판독 불가로 정답 확정 불가)"
-  },
-  {
-    id: 19,
-    level: "상",
-    category: "다항식의 곱셈",
-    content: "a=\\frac{2}{\\sqrt{8}+2}, b=\\frac{2}{\\sqrt{8}-2} 일 때 a^{2}-6ab+b^{2} 의 값으로 적절한 것은? (5점)",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "먼저 $a, b$의 분모를 유리화한다.\n$a = \\frac{2(\\sqrt{8}-2)}{(\\sqrt{8}+2)(\\sqrt{8}-2)} = \\frac{2(2\\sqrt{2}-2)}{8-4} = \\frac{4\\sqrt{2}-4}{4} = \\sqrt{2}-1$\n$b = \\frac{2(\\sqrt{8}+2)}{(\\sqrt{8}-2)(\\sqrt{8}+2)} = \\frac{2(2\\sqrt{2}+2)}{4} = \\sqrt{2}+1$\n$a, b$의 합과 곱을 구한다.\n$a+b = (\\sqrt{2}-1) + (\\sqrt{2}+1) = 2\\sqrt{2}$\n$ab = (\\sqrt{2}-1)(\\sqrt{2}+1) = 2 - 1 = 1$\n구하고자 하는 식을 변형한다.\n$a^2 - 6ab + b^2 = a^2 + 2ab + b^2 - 8ab = (a+b)^2 - 8ab$\n값을 대입한다.\n$= (2\\sqrt{2})^2 - 8(1) = 8 - 8 = 0$\n(원문 보기 판독 불가로 정답 확정 불가)"
-  },
-  {
-    id: 20,
-    level: "상",
-    category: "인수분해",
-    content: "A=(a-1)(a+1)(a+3)(a+5)-9일 때 다항식 A의 인수로 적절하지 않은 것은? (5점)",
-    choices: [
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]",
-      "[판독불가]"
-    ],
-    answer: "[정답불가]",
-    solution: "식의 형태를 관찰하여 합이 같아지도록 두 개씩 짝지어 전개한다.\n$A = \\{(a-1)(a+5)\\} \\times \\{(a+1)(a+3)\\} - 9$\n$= (a^2+4a-5)(a^2+4a+3) - 9$\n$a^2+4a = t$ 로 치환한다.\n$A = (t-5)(t+3) - 9 = t^2 - 2t - 15 - 9 = t^2 - 2t - 24$\n치환한 식을 인수분해한다.\n$= (t-6)(t+4)$\n원래 식을 대입한다.\n$= (a^2+4a-6)(a^2+4a+4) = (a^2+4a-6)(a+2)^2$\n다항식 $A$의 인수는 $1, a+2, (a+2)^2, a^2+4a-6$ 등이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
-  },
-  {
-    id: 21,
-    level: "중",
-    category: "제곱근과 실수",
-    content: "[서술형1] 다음 수 a, b, c의 크기를 비교하는 과정을 서술하여라. (5점)\na=-\\frac{5}{2}\\sqrt{2}, b=-3, c=-6+\\sqrt{8}",
-    choices: [],
-    answer: "a < c < b",
-    solution: "각 수를 근호 안으로 넣어 크기를 비교한다.\n$a = -\\sqrt{(\\frac{5}{2})^2 \\times 2} = -\\sqrt{\\frac{25}{4} \\times 2} = -\\sqrt{\\frac{25}{2}} = -\\sqrt{12.5}$\n$b = -\\sqrt{3^2} = -\\sqrt{9}$\n$a$와 $b$를 비교하면 $12.5 > 9$ 이므로 $\\sqrt{12.5} > \\sqrt{9}$ 이다. 음수이므로 $a < b$ 이다.\n$c$를 변형하면 $c = -6 + 2\\sqrt{2}$ 이다.\n$b$와 $c$의 차를 구하여 비교한다.\n$b - c = -3 - (-6+\\sqrt{8}) = 3 - \\sqrt{8} = \\sqrt{9} - \\sqrt{8} > 0$ 이므로 $b > c$ 이다.\n$c$와 $a$의 차를 구하여 비교한다.\n$c - a = (-6+2\\sqrt{2}) - (-\\frac{5}{2}\\sqrt{2}) = -6 + 4.5\\sqrt{2} = \\sqrt{(4.5)^2 \\times 2} - \\sqrt{36} = \\sqrt{20.25 \\times 2} - \\sqrt{36} = \\sqrt{40.5} - \\sqrt{36} > 0$ 이므로 $c > a$ 이다.\n따라서 세 수의 크기 관계는 $a < c < b$ 이다.\n$\\therefore a < c < b$"
-  },
-  {
-    id: 22,
-    level: "상",
-    category: "인수분해",
-    content: "[서술형2] x^{2}+xy-6y^{2}+x+13y-6을 두 일차식의 곱으로 인수분해하는 과정을 서술하여라. (5점)",
-    choices: [],
-    answer: "(x+3y-2)(x-2y+3)",
-    solution: "주어진 다항식을 차수가 낮은 문자, 여기서는 $x$에 대하여 내림차순으로 정리한다.\n$x^2 + (y+1)x - (6y^2-13y+6)$\n상수항 부분을 $y$에 대하여 인수분해한다.\n$6y^2-13y+6 = (2y-3)(3y-2)$\n이를 본래 식에 대입한다.\n$x^2 + (y+1)x - (2y-3)(3y-2)$\n곱하여 $-(2y-3)(3y-2)$ 가 되고, 합하여 $(y+1)$ 이 되는 두 일차식을 찾는다.\n$(3y-2) + \\{-(2y-3)\\} = 3y - 2 - 2y + 3 = y + 1$\n조건을 만족하므로 전체 식을 인수분해한다.\n$(x + 3y - 2)(x - (2y - 3)) = (x+3y-2)(x-2y+3)$\n$\\therefore (x+3y-2)(x-2y+3)$"
-  },
-  {
-    id: 23,
-    level: "상",
-    category: "다항식의 곱셈",
-    content: "[서술형3] a=-3, b=\\sqrt{2} 일 때, \\sqrt{a^{2}+4ab+4b^{2}}-\\sqrt{a^{2}} 을 계산하는 과정을 서술하여라. (5점)",
-    choices: [],
-    answer: "-2\\sqrt{2}",
-    solution: "주어진 근호 안의 식을 완전제곱식으로 인수분해한다.\n$\\sqrt{(a+2b)^2} - \\sqrt{a^2}$\n$\\sqrt{A^2} = |A|$ 성질을 이용하여 절댓값 기호로 나타낸다.\n$= |a+2b| - |a|$\n$a=-3, b=\\sqrt{2}$를 대입하여 근호 안의 부호를 판별한다.\n$a+2b = -3 + 2\\sqrt{2} = -\\sqrt{9} + \\sqrt{8} < 0$\n$a = -3 < 0$\n따라서 두 값 모두 음수이므로 부호가 바뀌어 나온다.\n$= -(a+2b) - (-a) = -a - 2b + a = -2b$\n$b=\\sqrt{2}$ 를 대입한다.\n$= -2\\sqrt{2}$\n$\\therefore -2\\sqrt{2}$"
-  },
-  {
-    id: 24,
-    level: "중",
-    category: "제곱근과 실수",
-    content: "[서술형4] \\sqrt{\\frac{1}{5}x}가 자연수가 되는 가장 작은 자연수 x값을 a, 열 번째로 작은 자연수 x값을 b라고 할 때, a, b의 값을 구하는 과정을 서술하여라. (5점)",
-    choices: [],
-    answer: "a=5, b=500",
-    solution: "$\\sqrt{\\frac{1}{5}x}$ 가 자연수가 되려면 근호 안의 수인 $\\frac{1}{5}x$ 가 어떤 자연수의 제곱수여야 한다.\n즉, $\\frac{1}{5}x = k^2$ (단, $k$는 자연수) 꼴이어야 한다.\n이를 $x$에 대하여 정리하면 $x = 5k^2$ 이다.\n가장 작은 자연수 $x$의 값 $a$는 $k=1$ 일 때이므로,\n$a = 5 \\times 1^2 = 5$ 이다.\n열 번째로 작은 자연수 $x$의 값 $b$는 $k=10$ 일 때이므로,\n$b = 5 \\times 10^2 = 500$ 이다.\n$\\therefore a=5, b=500$"
-  }
+    {
+            id: "1",
+            category: "제곱근과 실수",
+            content: "다음 중 옳은 것을 고르시오. (3점)",
+            choices: ["정수의 제곱근은 항상 존재한다.", "음이 아닌 수는 제곱근의 합이 항상 0이다.", "음수의 제곱근은 음수이다.", "음이 아닌 수의 제곱근은 항상 2개이다.", "음수의 제곱근은 음의 제곱근이다."],
+            answer: "②",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "① 음의 정수는 실수 범위에서 제곱근이 존재하지 않는다. $\\rightarrow$ 거짓\n② 0의 제곱근은 0이므로 합은 0이고, 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$이므로 합은 0이다. $\\rightarrow$ 참\n③ 음수의 제곱근은 실수 범위에서 존재하지 않는다. $\\rightarrow$ 거짓\n④ 0의 제곱근은 0으로 1개이다. $\\rightarrow$ 거짓\n⑤ 음수의 제곱근은 실수 범위에서 존재하지 않는다. $\\rightarrow$ 거짓\n$\\therefore$ 2"
+        },
+    {
+            id: "2",
+            category: "제곱근과 실수",
+            content: "수에 대한 설명으로 틀린 것은? (3점)",
+            choices: ["\\pi는 무한소수이다.", "0.\\dot{3}은 유리수이다.", "\\sqrt{0.9}는 무리수 이다.", "-\\sqrt{(-3)^{2}} 은 3의 음의 제곱근이다.", "\\sqrt{0.\\dot{9}}는 유리수이다."],
+            answer: "④",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "① $\\pi$는 순환하지 않는 무한소수이다. $\\rightarrow$ 참\n② $0.\\dot{3} = \\frac{3}{9} = \\frac{1}{3}$이므로 유리수이다. $\\rightarrow$ 참\n③ $\\sqrt{0.9} = \\sqrt{\\frac{9}{10}} = \\frac{3}{\\sqrt{10}}$이므로 무리수이다. $\\rightarrow$ 참\n④ $-\\sqrt{(-3)^{2}} = -\\sqrt{9} = -3$이다. 3의 음의 제곱근은 $-\\sqrt{3}$이므로 두 값은 서로 다르다. $\\rightarrow$ 거짓\n⑤ $\\sqrt{0.\\dot{9}} = \\sqrt{\\frac{9}{9}} = \\sqrt{1} = 1$이므로 유리수이다. $\\rightarrow$ 참\n$\\therefore$ 4"
+        },
+    {
+            id: "3",
+            category: "근호를 포함한 식의 계산",
+            content: "식을 잘못 정리한 것은? (3점)",
+            choices: ["\\sqrt{6}\\times\\sqrt{12}=6\\sqrt{2}", "\\sqrt{\\frac{18}{2}}\\times\\sqrt{6}=3\\sqrt{6}", "\\frac{6}{2\\sqrt{3}}=\\sqrt{3}", "\\frac{\\sqrt{5}}{4}\\div\\frac{\\sqrt{15}}{2}=\\frac{\\sqrt{3}}{6}", "\\sqrt{3}\\div\\frac{3}{\\sqrt{5}}=\\frac{3\\sqrt{3}}{\\sqrt{5}}"],
+            answer: "⑤",
+            originalCategory: "근호를 포함한 식의 계산",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "① $\\sqrt{6} \\times \\sqrt{12} = \\sqrt{72} = 6\\sqrt{2}$ $\\rightarrow$ 참\n② $\\sqrt{\\frac{18}{2}} \\times \\sqrt{6} = \\sqrt{9} \\times \\sqrt{6} = 3\\sqrt{6}$ $\\rightarrow$ 참\n③ $\\frac{6}{2\\sqrt{3}} = \\frac{3}{\\sqrt{3}} = \\sqrt{3}$ $\\rightarrow$ 참\n④ $\\frac{\\sqrt{5}}{4} \\div \\frac{\\sqrt{15}}{2} = \\frac{\\sqrt{5}}{4} \\times \\frac{2}{\\sqrt{15}} = \\frac{1}{2\\sqrt{3}} = \\frac{\\sqrt{3}}{6}$ $\\rightarrow$ 참\n⑤ $\\sqrt{3} \\div \\frac{3}{\\sqrt{5}} = \\sqrt{3} \\times \\frac{\\sqrt{5}}{3} = \\frac{\\sqrt{15}}{3}$ 이다. $\\rightarrow$ 거짓\n$\\therefore$ 5"
+        },
+    {
+            id: "4",
+            category: "근호를 포함한 식의 계산",
+            content: "계산이 틀린 것은? (3점)",
+            choices: ["4\\div\\sqrt{2}\\times\\sqrt{2}=2", "(\\sqrt{2}-\\sqrt{28})\\sqrt{7}=\\sqrt{14}-14", "\\frac{\\sqrt{5}-1}{\\sqrt{2}}=\\frac{\\sqrt{10}-\\sqrt{2}}{2}", "\\sqrt{27}-2\\sqrt{3}=\\sqrt{3}", "\\frac{3-\\sqrt{12}}{\\sqrt{3}}-6\\div\\sqrt{3}=-2-\\sqrt{3}"],
+            answer: "①",
+            originalCategory: "근호를 포함한 식의 계산",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "① $4 \\div \\sqrt{2} \\times \\sqrt{2} = 4 \\times \\frac{1}{\\sqrt{2}} \\times \\sqrt{2} = 4$ 이다. $\\rightarrow$ 거짓\n② $(\\sqrt{2}-\\sqrt{28})\\sqrt{7} = \\sqrt{14} - \\sqrt{196} = \\sqrt{14} - 14$ $\\rightarrow$ 참\n③ $\\frac{\\sqrt{5}-1}{\\sqrt{2}} = \\frac{\\sqrt{10}-\\sqrt{2}}{2}$ $\\rightarrow$ 참\n④ $\\sqrt{27} - 2\\sqrt{3} = 3\\sqrt{3} - 2\\sqrt{3} = \\sqrt{3}$ $\\rightarrow$ 참\n⑤ $\\frac{3-\\sqrt{12}}{\\sqrt{3}} - 6\\div\\sqrt{3} = \\frac{3-2\\sqrt{3}}{\\sqrt{3}} - \\frac{6}{\\sqrt{3}} = \\sqrt{3} - 2 - 2\\sqrt{3} = -2 - \\sqrt{3}$ $\\rightarrow$ 참\n$\\therefore$ 1"
+        },
+    {
+            id: "5",
+            category: "다항식의 곱셈",
+            content: "(y+\\frac{1}{2})(2y-4) 를 전개한 결과로 적절한 것은? (3점)",
+            choices: ["2y^{2}+3y+2", "2y^{2}+3y-2", "2y^{2}-3y-2", "-2y^{2}-3y-2", "2y^{2}-3y+2"],
+            answer: "③",
+            originalCategory: "다항식의 곱셈",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "$(y+\\frac{1}{2})(2y-4) = 2y^2 - 4y + y - 2 = 2y^2 - 3y - 2$\n$\\therefore$ 3"
+        },
+    {
+            id: "6",
+            category: "인수분해",
+            content: "x^{2}-3x-4의 인수로 적절하지 않은 것은? (3점)",
+            choices: ["0", "x+1", "x-4", "1", "x^{2}-3x-4"],
+            answer: "①",
+            originalCategory: "인수분해",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "$x^2-3x-4$를 인수분해하면 $(x-4)(x+1)$이다.\n다항식의 인수는 $1, x+1, x-4, (x-4)(x+1)$ 이다.\n0은 인수가 될 수 없다.\n$\\therefore$ 1"
+        },
+    {
+            id: "7",
+            category: "제곱근과 실수",
+            content: "\\sqrt{26-x}가 정수가 되도록 하는 자연수 x의 개수는? (4점)",
+            choices: ["3개", "4개", "5개", "6개", "7개"],
+            answer: "④",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "$\\sqrt{26-x}$가 정수가 되려면 $26-x = k^2$ ($k$는 $0$ 이상의 정수) 꼴이어야 한다.\n$x$가 자연수이므로 $26-x < 26$ 이다.\n26보다 작은 $k^2$ 꼴의 수는 $25, 16, 9, 4, 1, 0$ 이다.\n$26-x = 25 \\implies x=1$\n$26-x = 16 \\implies x=10$\n$26-x = 9 \\implies x=17$\n$26-x = 4 \\implies x=22$\n$26-x = 1 \\implies x=25$\n$26-x = 0 \\implies x=26$\n따라서 자연수 $x$는 6개이다.\n$\\therefore$ 4"
+        },
+    {
+            id: "8",
+            category: "제곱근과 실수",
+            content: "A=\\sqrt{3}-2, B=1-\\sqrt{3}, C=\\sqrt{2}, D=3-\\sqrt{2} 중 가장 작은 수와 큰 수를 차례로 짝지은 것은? (4점)",
+            choices: ["A, B", "D, B", "A, D", "B, C", "B, D"],
+            answer: "⑤",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "각 수의 대략적인 값을 비교한다. $\\sqrt{2} \\approx 1.414, \\sqrt{3} \\approx 1.732$\n$A = \\sqrt{3} - 2 \\approx 1.732 - 2 = -0.268$\n$B = 1 - \\sqrt{3} \\approx 1 - 1.732 = -0.732$\n$C = \\sqrt{2} \\approx 1.414$\n$D = 3 - \\sqrt{2} \\approx 3 - 1.414 = 1.586$\n대소 관계를 비교하면 $B < A < C < D$ 이다.\n가장 작은 수는 $B$, 가장 큰 수는 $D$ 이다.\n$\\therefore$ 5"
+        },
+    {
+            id: "9",
+            category: "근호를 포함한 식의 계산",
+            content: "\\sqrt{48}\\div\\sqrt{108}\\times\\sqrt{2}=\\sqrt{a} 일 때 a값으로 적절한 것은? (4점)",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "근호를 포함한 식의 계산",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "좌변을 계산하면 다음과 같다.\n$\\sqrt{48} \\div \\sqrt{108} \\times \\sqrt{2} = 4\\sqrt{3} \\div 6\\sqrt{3} \\times \\sqrt{2} = \\frac{4\\sqrt{3}}{6\\sqrt{3}} \\times \\sqrt{2} = \\frac{2}{3}\\sqrt{2} = \\sqrt{\\frac{4}{9} \\times 2} = \\sqrt{\\frac{8}{9}}$\n따라서 $\\sqrt{a} = \\sqrt{\\frac{8}{9}}$ 이므로 $a = \\frac{8}{9}$ 이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
+        },
+    {
+            id: "10",
+            category: "근호를 포함한 식의 계산",
+            content: "\\frac{2+\\sqrt{6}}{2-\\sqrt{6}} - \\frac{2-\\sqrt{6}}{2+\\sqrt{6}} = a+b\\sqrt{6}일 때, 유리수 a-b의 값으로 적절한 것은? (4점)",
+            choices: ["4\\sqrt{6}", "9-4\\sqrt{6}", "[판독불가]", "[판독불가]", "0"],
+            answer: "[정답불가]",
+            originalCategory: "근호를 포함한 식의 계산",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "주어진 식을 통분하여 계산한다.\n$\\frac{(2+\\sqrt{6})^2 - (2-\\sqrt{6})^2}{(2-\\sqrt{6})(2+\\sqrt{6})}$\n$= \\frac{(4 + 4\\sqrt{6} + 6) - (4 - 4\\sqrt{6} + 6)}{4 - 6}$\n$= \\frac{(10 + 4\\sqrt{6}) - (10 - 4\\sqrt{6})}{-2}$\n$= \\frac{8\\sqrt{6}}{-2} = -4\\sqrt{6}$\n따라서 $a = 0, b = -4$ 이다.\n$a - b = 0 - (-4) = 4$ 이다.\n(원문 보기 판독 불가 구간 존재로 정답 확정 불가)"
+        },
+    {
+            id: "11",
+            category: "인수분해",
+            content: "다음 두 다항식의 공통인수가 아닌 것은? (4점)\n(x+1)(x^{2}+2x-8) 와 (x+4)(2x^{2}-4x-6)",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "인수분해",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "첫 번째 식 인수분해:\n$(x+1)(x^2+2x-8) = (x+1)(x-2)(x+4)$\n두 번째 식 인수분해:\n$(x+4)(2x^2-4x-6) = (x+4) \\cdot 2(x^2-2x-3) = 2(x+4)(x-3)(x+1)$\n두 다항식의 공통인수는 $1, (x+1), (x+4), (x+1)(x+4)$ 등이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
+        },
+    {
+            id: "12",
+            category: "다항식의 곱셈",
+            content: "(\\sqrt{7}-3)^{5}(\\sqrt{7}+3)^{5} 의 값으로 적절한 것은? (4점)",
+            choices: ["2", "-2", "32", "16", "-32"],
+            answer: "⑤",
+            originalCategory: "다항식의 곱셈",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "지수법칙을 이용하여 식을 변형한다.\n$((\\sqrt{7}-3)(\\sqrt{7}+3))^5$\n합차 공식을 적용하면,\n$= ((\\sqrt{7})^2 - 3^2)^5$\n$= (7 - 9)^5$\n$= (-2)^5 = -32$\n$\\therefore$ 5"
+        },
+    {
+            id: "13",
+            category: "제곱근과 실수",
+            content: "다음 중 [판독불가] 안의 수가 가장 큰 것은? (4점)\n[판독불가]",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "원문 발문 및 보기 판독 불가로 풀이 불가."
+        },
+    {
+            id: "14",
+            category: "인수분해",
+            content: "완전제곱식이 아닌 것은? (4점)",
+            choices: ["9a^{2}-12ax+4x^{2}", "4x^{2}-4x+1", "9x^{2}-6x+y^{2}", "4a^{2}+16a+16", "-2x^{2}+8x-8"],
+            answer: "③",
+            originalCategory: "인수분해",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "① $9a^2-12ax+4x^2 = (3a-2x)^2$ (완전제곱식)\n② $4x^2-4x+1 = (2x-1)^2$ (완전제곱식)\n③ $9x^2-6x+y^2$는 완전제곱식 형태로 인수분해되지 않는다.\n④ $4a^2+16a+16 = 4(a^2+4a+4) = 4(a+2)^2$ (완전제곱식에 상수배)\n⑤ $-2x^2+8x-8 = -2(x^2-4x+4) = -2(x-2)^2$ (완전제곱식에 상수배)\n따라서 완전제곱식이 아닌 것은 3번이다.\n$\\therefore$ 3"
+        },
+    {
+            id: "15",
+            category: "다항식의 곱셈",
+            content: "a+b=3, a^{2}+b^{2}=5 일 때 a-b의 값으로 적절한 것은? (5점)",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "다항식의 곱셈",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "곱셈공식의 변형을 이용한다.\n$a^2+b^2 = (a+b)^2 - 2ab$\n$5 = 3^2 - 2ab \\implies 5 = 9 - 2ab \\implies 2ab = 4 \\implies ab = 2$\n$(a-b)^2 = (a+b)^2 - 4ab = 3^2 - 4(2) = 9 - 8 = 1$\n따라서 $a-b = \\pm 1$ 이다.\n(원문 보기 판독 불가 및 조건 부족으로 단일 정답 확정 불가)"
+        },
+    {
+            id: "16",
+            category: "다항식의 곱셈",
+            content: "x+\\frac{1}{x}=4 이고 0<x<1일 때 x-\\frac{1}{x} 의 값은? (5점)",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "다항식의 곱셈",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "곱셈공식의 변형을 이용한다.\n$(x-\\frac{1}{x})^2 = (x+\\frac{1}{x})^2 - 4 = 4^2 - 4 = 16 - 4 = 12$\n따라서 $x - \\frac{1}{x} = \\pm \\sqrt{12} = \\pm 2\\sqrt{3}$ 이다.\n조건에서 $0 < x < 1$ 이므로, $x < \\frac{1}{x}$ 이 성립한다.\n즉, $x - \\frac{1}{x} < 0$ 이다.\n따라서 $x - \\frac{1}{x} = -2\\sqrt{3}$ 이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
+        },
+    {
+            id: "17",
+            category: "다항식의 곱셈",
+            content: "(2+1)(2^{2}+1)(2^{4}+1)(2^{8}+1)=a 일 때 \\frac{a}{257} 의 값으로 적절한 것은? (단, 2^{8}=256) (5점)",
+            choices: ["2^{10}-1", "2^{16}+1", "257", "256", "255"],
+            answer: "⑤",
+            originalCategory: "다항식의 곱셈",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "주어진 식의 양변에 $(2-1)$을 곱한다. $(2-1=1$이므로 등식의 값은 변하지 않는다.)\n$(2-1)(2+1)(2^2+1)(2^4+1)(2^8+1) = a \\times 1 = a$\n합차 공식을 차례대로 적용한다.\n$(2^2-1)(2^2+1)(2^4+1)(2^8+1) = a$\n$(2^4-1)(2^4+1)(2^8+1) = a$\n$(2^8-1)(2^8+1) = a$\n$2^{16} - 1 = a$\n구하고자 하는 식의 분모를 변형한다. $257 = 256 + 1 = 2^8 + 1$ 이다.\n$\\frac{a}{257} = \\frac{2^{16}-1}{2^8+1} = \\frac{(2^8-1)(2^8+1)}{2^8+1} = 2^8-1$\n$2^8 = 256$ 이므로, $2^8 - 1 = 255$ 이다.\n$\\therefore$ 5"
+        },
+    {
+            id: "18",
+            category: "제곱근과 실수",
+            content: "2 < x < 3일 때, \\sqrt{x^{2}}-\\sqrt{(x-1)^{2}}+\\sqrt{(x-2)^{2}}-\\sqrt{(x-3)^{2}} 을 간단히 나타낸 식으로 적절한 것은? (5점)",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "$\\sqrt{A^2} = |A|$ 성질을 이용한다.\n$2 < x < 3$ 이므로 각 항의 부호를 판별한다.\n$x > 0 \\implies \\sqrt{x^2} = x$\n$x - 1 > 0 \\implies \\sqrt{(x-1)^2} = x-1$\n$x - 2 > 0 \\implies \\sqrt{(x-2)^2} = x-2$\n$x - 3 < 0 \\implies \\sqrt{(x-3)^2} = -(x-3) = -x+3$\n주어진 식에 대입하여 정리한다.\n$x - (x-1) + (x-2) - (-x+3)$\n$= x - x + 1 + x - 2 + x - 3$\n$= 2x - 4$\n(원문 보기 판독 불가로 정답 확정 불가)"
+        },
+    {
+            id: "19",
+            category: "다항식의 곱셈",
+            content: "a=\\frac{2}{\\sqrt{8}+2}, b=\\frac{2}{\\sqrt{8}-2} 일 때 a^{2}-6ab+b^{2} 의 값으로 적절한 것은? (5점)",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "다항식의 곱셈",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "먼저 $a, b$의 분모를 유리화한다.\n$a = \\frac{2(\\sqrt{8}-2)}{(\\sqrt{8}+2)(\\sqrt{8}-2)} = \\frac{2(2\\sqrt{2}-2)}{8-4} = \\frac{4\\sqrt{2}-4}{4} = \\sqrt{2}-1$\n$b = \\frac{2(\\sqrt{8}+2)}{(\\sqrt{8}-2)(\\sqrt{8}+2)} = \\frac{2(2\\sqrt{2}+2)}{4} = \\sqrt{2}+1$\n$a, b$의 합과 곱을 구한다.\n$a+b = (\\sqrt{2}-1) + (\\sqrt{2}+1) = 2\\sqrt{2}$\n$ab = (\\sqrt{2}-1)(\\sqrt{2}+1) = 2 - 1 = 1$\n구하고자 하는 식을 변형한다.\n$a^2 - 6ab + b^2 = a^2 + 2ab + b^2 - 8ab = (a+b)^2 - 8ab$\n값을 대입한다.\n$= (2\\sqrt{2})^2 - 8(1) = 8 - 8 = 0$\n(원문 보기 판독 불가로 정답 확정 불가)"
+        },
+    {
+            id: "20",
+            category: "인수분해",
+            content: "A=(a-1)(a+1)(a+3)(a+5)-9일 때 다항식 A의 인수로 적절하지 않은 것은? (5점)",
+            choices: ["[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]", "[판독불가]"],
+            answer: "[정답불가]",
+            originalCategory: "인수분해",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "식의 형태를 관찰하여 합이 같아지도록 두 개씩 짝지어 전개한다.\n$A = \\{(a-1)(a+5)\\} \\times \\{(a+1)(a+3)\\} - 9$\n$= (a^2+4a-5)(a^2+4a+3) - 9$\n$a^2+4a = t$ 로 치환한다.\n$A = (t-5)(t+3) - 9 = t^2 - 2t - 15 - 9 = t^2 - 2t - 24$\n치환한 식을 인수분해한다.\n$= (t-6)(t+4)$\n원래 식을 대입한다.\n$= (a^2+4a-6)(a^2+4a+4) = (a^2+4a-6)(a+2)^2$\n다항식 $A$의 인수는 $1, a+2, (a+2)^2, a^2+4a-6$ 등이다.\n(원문 보기 판독 불가로 정답 확정 불가)"
+        },
+    {
+            id: "21",
+            category: "제곱근과 실수",
+            content: "[서술형1] 다음 수 a, b, c의 크기를 비교하는 과정을 서술하여라. (5점)\na=-\\frac{5}{2}\\sqrt{2}, b=-3, c=-6+\\sqrt{8}",
+            choices: [],
+            answer: "a < c < b",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "각 수를 근호 안으로 넣어 크기를 비교한다.\n$a = -\\sqrt{(\\frac{5}{2})^2 \\times 2} = -\\sqrt{\\frac{25}{4} \\times 2} = -\\sqrt{\\frac{25}{2}} = -\\sqrt{12.5}$\n$b = -\\sqrt{3^2} = -\\sqrt{9}$\n$a$와 $b$를 비교하면 $12.5 > 9$ 이므로 $\\sqrt{12.5} > \\sqrt{9}$ 이다. 음수이므로 $a < b$ 이다.\n$c$를 변형하면 $c = -6 + 2\\sqrt{2}$ 이다.\n$b$와 $c$의 차를 구하여 비교한다.\n$b - c = -3 - (-6+\\sqrt{8}) = 3 - \\sqrt{8} = \\sqrt{9} - \\sqrt{8} > 0$ 이므로 $b > c$ 이다.\n$c$와 $a$의 차를 구하여 비교한다.\n$c - a = (-6+2\\sqrt{2}) - (-\\frac{5}{2}\\sqrt{2}) = -6 + 4.5\\sqrt{2} = \\sqrt{(4.5)^2 \\times 2} - \\sqrt{36} = \\sqrt{20.25 \\times 2} - \\sqrt{36} = \\sqrt{40.5} - \\sqrt{36} > 0$ 이므로 $c > a$ 이다.\n따라서 세 수의 크기 관계는 $a < c < b$ 이다.\n$\\therefore a < c < b$"
+        },
+    {
+            id: "22",
+            category: "인수분해",
+            content: "[서술형2] x^{2}+xy-6y^{2}+x+13y-6을 두 일차식의 곱으로 인수분해하는 과정을 서술하여라. (5점)",
+            choices: [],
+            answer: "(x+3y-2)(x-2y+3)",
+            originalCategory: "인수분해",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "주어진 다항식을 차수가 낮은 문자, 여기서는 $x$에 대하여 내림차순으로 정리한다.\n$x^2 + (y+1)x - (6y^2-13y+6)$\n상수항 부분을 $y$에 대하여 인수분해한다.\n$6y^2-13y+6 = (2y-3)(3y-2)$\n이를 본래 식에 대입한다.\n$x^2 + (y+1)x - (2y-3)(3y-2)$\n곱하여 $-(2y-3)(3y-2)$ 가 되고, 합하여 $(y+1)$ 이 되는 두 일차식을 찾는다.\n$(3y-2) + \\{-(2y-3)\\} = 3y - 2 - 2y + 3 = y + 1$\n조건을 만족하므로 전체 식을 인수분해한다.\n$(x + 3y - 2)(x - (2y - 3)) = (x+3y-2)(x-2y+3)$\n$\\therefore (x+3y-2)(x-2y+3)$"
+        },
+    {
+            id: "23",
+            category: "다항식의 곱셈",
+            content: "[서술형3] a=-3, b=\\sqrt{2} 일 때, \\sqrt{a^{2}+4ab+4b^{2}}-\\sqrt{a^{2}} 을 계산하는 과정을 서술하여라. (5점)",
+            choices: [],
+            answer: "-2\\sqrt{2}",
+            originalCategory: "다항식의 곱셈",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "주어진 근호 안의 식을 완전제곱식으로 인수분해한다.\n$\\sqrt{(a+2b)^2} - \\sqrt{a^2}$\n$\\sqrt{A^2} = |A|$ 성질을 이용하여 절댓값 기호로 나타낸다.\n$= |a+2b| - |a|$\n$a=-3, b=\\sqrt{2}$를 대입하여 근호 안의 부호를 판별한다.\n$a+2b = -3 + 2\\sqrt{2} = -\\sqrt{9} + \\sqrt{8} < 0$\n$a = -3 < 0$\n따라서 두 값 모두 음수이므로 부호가 바뀌어 나온다.\n$= -(a+2b) - (-a) = -a - 2b + a = -2b$\n$b=\\sqrt{2}$ 를 대입한다.\n$= -2\\sqrt{2}$\n$\\therefore -2\\sqrt{2}$"
+        },
+    {
+            id: "24",
+            category: "제곱근과 실수",
+            content: "[서술형4] \\sqrt{\\frac{1}{5}x}가 자연수가 되는 가장 작은 자연수 x값을 a, 열 번째로 작은 자연수 x값을 b라고 할 때, a, b의 값을 구하는 과정을 서술하여라. (5점)",
+            choices: [],
+            answer: "a=5, b=500",
+            originalCategory: "제곱근과 실수",
+            standardCourse: "",
+            standardUnitKey: "",
+            standardUnit: "",
+            standardUnitOrder: 0,
+            solution: "$\\sqrt{\\frac{1}{5}x}$ 가 자연수가 되려면 근호 안의 수인 $\\frac{1}{5}x$ 가 어떤 자연수의 제곱수여야 한다.\n즉, $\\frac{1}{5}x = k^2$ (단, $k$는 자연수) 꼴이어야 한다.\n이를 $x$에 대하여 정리하면 $x = 5k^2$ 이다.\n가장 작은 자연수 $x$의 값 $a$는 $k=1$ 일 때이므로,\n$a = 5 \\times 1^2 = 5$ 이다.\n열 번째로 작은 자연수 $x$의 값 $b$는 $k=10$ 일 때이므로,\n$b = 5 \\times 10^2 = 500$ 이다.\n$\\therefore a=5, b=500$"
+        }
 ];

@@ -1,9 +1,8 @@
 window.examTitle = "22_팔마중3_1학기_중간_중3";
 
 window.questionBank = [
-  {
+{
     "id": 1,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -17,7 +16,6 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -31,7 +29,6 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -45,7 +42,6 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -59,7 +55,6 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -73,7 +68,6 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -87,7 +81,6 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -101,7 +94,6 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -115,7 +107,6 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -129,7 +120,6 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -143,7 +133,6 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -157,7 +146,6 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -171,7 +159,6 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -182,12 +169,9 @@ window.questionBank = [
     "choices": ["$(a+b)^2=a^2+2ab+b^2$", "$(a+b)(a-b)=a^2-b^2$", "$(a-b)^2=a^2-2ab+b^2$", "$(a+b)(a-b)=a^2+b^2$", "$(x+a)(x+b)=x^2+(a+b)x+ab$"],
     "answer": "3",
     "solution": "그림은 전체 한 변 a인 정사각형에서 b만큼 줄인 (a-b)^2의 영역을 설명함. \\\\ \\therefore 3 \\n\\n "
-  }
-];
-window.questionBank = window.questionBank.concat([
-  {
+  },
+{
     "id": 14,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$(2x-5)^2$의 전개식에서 $x^2$의 계수를 $a$, $x$의 계수를 $b$라 할 때, $a-b$의 값은? (4점)",
     "choices": ["12", "16", "20", "24", "28"],
@@ -196,7 +180,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 15,
-    "level": "[중]",
     "category": "인수분해",
     "content": "그림과 같이 넓이가 각각 $x^2$, $x$, $1$인 직사각형 6개를 빈틈없이 겹치지 않게 이어 붙여 하나의 직사각형을 만들려고 한다. 이 직사각형의 둘레의 길이는? (4점)",
     "choices": ["$2x+1$", "$3x+2$", "$4x+2$", "$6x+2$", "$6x+4$"],
@@ -205,7 +188,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 16,
-    "level": "[중]",
     "category": "인수분해",
     "content": "두 다항식을 각각 인수분해할 때, 공통으로 들어 있는 인수는? (4점) <div class='box'>$x^2-5x-14$, $3x^2+x-10$</div>",
     "choices": ["$x-7$", "$x+2$", "$3x-5$", "$x+7$", "$x-2$"],
@@ -214,7 +196,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 17,
-    "level": "[중]",
     "category": "인수분해",
     "content": "다항식 $3a^2-12ab+12b^2$의 인수인 것은? (4점)",
     "choices": ["$a-2b$", "$a+2b$", "$a-6b$", "$3a-2b$", "$3a+2b$"],
@@ -223,7 +204,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 18,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$x=\\frac{1}{\\sqrt{10}+3}$, $y=\\frac{1}{\\sqrt{10}-3}$일 때, $\\frac{y}{x}+\\frac{x}{y}$의 값은? (4점)",
     "choices": ["42", "40", "38", "24", "12"],
@@ -232,7 +212,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 19,
-    "level": "[중]",
     "category": "인수분해",
     "content": "다음 식이 $x^2-12x+a$, $4x^2+bxy+9y^2$ 완전제곱식이 되도록 하는 상수 $a, b$에 대하여 $a+b$의 값은? (단, $b<0$) (4점)",
     "choices": ["12", "18", "24", "36", "48"],
@@ -241,7 +220,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 20,
-    "level": "[상]",
     "category": "인수분해",
     "content": "$x$에 대한 이차식 $x^2+kx-60$이 $(x+a)(x+b)$로 인수분해될 때, $k$가 될 수 있는 가장 큰 값을 $M$, 가장 작은 값을 $m$이라고 할 때, $M-m$을 구하면? (단, $a, b$는 정수) (4점)",
     "choices": ["10", "40", "118", "120", "122"],
@@ -250,7 +228,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 21,
-    "level": "[상]",
     "category": "인수분해",
     "content": "자연수 $n$에 대하여 $n^2+10n+24$가 소수가 될 때, 이 소수는? (4점)",
     "choices": ["5", "7", "11", "13", "17"],
@@ -259,7 +236,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 22,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 1] 그림과 같이 넓이의 비가 $9:4:1$인 세 정사각형 $A, B, C$를 겹치지 않게 이어 붙인 도형의 넓이가 $84cm^2$일 때, 다음 물음에 답하시오. (8점)\\n(1) 세 정사각형 $A, B, C$의 넓이와 한 변의 길이를 각각 구하시오. (6점)\\n(2) 이 도형의 전체 둘레의 길이를 구하시오. (2점)",
     "answer": "(1) A: 54, 3\\sqrt{6} / B: 24, 2\\sqrt{6} / C: 6, \\sqrt{6} (2) 16\\sqrt{6}",
@@ -267,7 +243,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 23,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "content": "[서술형 2] 자연수 $x$에 대하여 $\\sqrt{x}$보다 작은 자연수의 개수를 $f(x)$라 할 때, $f(1)+f(2)+f(3)+\\cdots+f(11)$의 값을 구하시오. (2점)",
     "answer": "13",
@@ -275,7 +250,6 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 24,
-    "level": "[중]",
     "category": "인수분해",
     "content": "[서술형 3] $-\\frac{1}{5} < x < 3$일 때, $\\sqrt{9-6x+x^2} - \\sqrt{25x^2+10x+1}$을 간단히 하시오. (4점)",
     "answer": "2-6x",
@@ -283,10 +257,9 @@ window.questionBank = window.questionBank.concat([
   },
   {
     "id": 25,
-    "level": "[상]",
     "category": "다항식의 곱셈",
     "content": "[서술형 4] 반지름의 길이가 각각 $52.52cm, 47.48cm$인 원 모양의 피자를 8등분 하였다. 큰 피자 한 조각의 넓이는 작은 피자 한 조각의 넓이보다 얼마만큼 더 큰지 인수분해를 이용하여 계산하시오. (6점)",
     "answer": "62.5\\pi cm^2",
     "solution": "차이: $\\frac{1}{8}\\pi(52.52^2 - 47.48^2) = \\frac{1}{8}\\pi(52.52+47.48)(52.52-47.48)$ \\\\ $= \\frac{1}{8}\\pi(100)(5.04) = \\frac{504\\pi}{8} = 63\\pi$ \\\\ \\therefore $63\\pi cm^2$"
   }
-]);
+];

@@ -1,14 +1,8 @@
-/**
- * 23_순천왕운중3_1학기_중간_수학 (V9.1 IRON PRISON HELL 재집행)
- * 모든 텍스트, 공백, 오타, 줄바꿈을 100.000% 복제함.
- */
-
 window.examTitle = "2023_순천왕운중3_1학기_중간_수학";
 
 window.questionBank = [
-    {
+{
         "id": 1,
-        "level": "하",
         "category": "제곱근의 성질",
         "originalCategory": "제곱근의 성질",
         "standardCourse": "중3 수학",
@@ -21,7 +15,6 @@ window.questionBank = [
     },
     {
         "id": 2,
-        "level": "하",
         "category": "다항식의 전개",
         "originalCategory": "다항식의 전개",
         "standardCourse": "중3 수학",
@@ -34,7 +27,6 @@ window.questionBank = [
     },
     {
         "id": 3,
-        "level": "중",
         "category": "실수의 분류",
         "originalCategory": "실수의 분류",
         "standardCourse": "중3 수학",
@@ -47,7 +39,6 @@ window.questionBank = [
     },
     {
         "id": 4,
-        "level": "하",
         "category": "완전제곱식",
         "originalCategory": "완전제곱식",
         "standardCourse": "중3 수학",
@@ -60,7 +51,6 @@ window.questionBank = [
     },
     {
         "id": 5,
-        "level": "하",
         "category": "제곱근표",
         "originalCategory": "제곱근표",
         "standardCourse": "중3 수학",
@@ -73,7 +63,6 @@ window.questionBank = [
     },
     {
         "id": 6,
-        "level": "중",
         "category": "제곱근표의 응용",
         "originalCategory": "제곱근표의 응용",
         "standardCourse": "중3 수학",
@@ -86,7 +75,6 @@ window.questionBank = [
     },
     {
         "id": 7,
-        "level": "하",
         "category": "실수의 대소관계",
         "originalCategory": "실수의 대소관계",
         "standardCourse": "중3 수학",
@@ -99,7 +87,6 @@ window.questionBank = [
     },
     {
         "id": 8,
-        "level": "하",
         "category": "인수분해 활용",
         "originalCategory": "인수분해 활용",
         "standardCourse": "중3 수학",
@@ -112,7 +99,6 @@ window.questionBank = [
     },
     {
         "id": 9,
-        "level": "중",
         "category": "무리수와 수직선",
         "originalCategory": "무리수와 수직선",
         "standardCourse": "중3 수학",
@@ -132,7 +118,6 @@ window.questionBank = [
     },
     {
         "id": 10,
-        "level": "중",
         "category": "다항식의 인수분해",
         "originalCategory": "다항식의 인수분해",
         "standardCourse": "중3 수학",
@@ -152,7 +137,6 @@ window.questionBank = [
     },
     {
         "id": 11,
-        "level": "하",
         "category": "완전제곱식",
         "originalCategory": "완전제곱식",
         "standardCourse": "중3 수학",
@@ -172,7 +156,6 @@ window.questionBank = [
     },
     {
         "id": 12,
-        "level": "중",
         "category": "제곱근의 계산",
         "originalCategory": "제곱근의 계산",
         "standardCourse": "중3 수학",
@@ -192,7 +175,6 @@ window.questionBank = [
     },
     {
         "id": 13,
-        "level": "하",
         "category": "실수의 분류",
         "originalCategory": "실수의 분류",
         "standardCourse": "중3 수학",
@@ -212,7 +194,6 @@ window.questionBank = [
     },
     {
         "id": 14,
-        "level": "중",
         "category": "제곱근의 활용",
         "originalCategory": "제곱근의 활용",
         "standardCourse": "중3 수학",
@@ -232,7 +213,6 @@ window.questionBank = [
     },
     {
         "id": 15,
-        "level": "중",
         "category": "제곱근의 실생활 활용",
         "originalCategory": "제곱근의 실생활 활용",
         "standardCourse": "중3 수학",
@@ -252,7 +232,6 @@ window.questionBank = [
     },
     {
         "id": 16,
-        "level": "상",
         "category": "제곱근의 연쇄 계산",
         "originalCategory": "제곱근의 연쇄 계산",
         "standardCourse": "중3 수학",
@@ -272,7 +251,6 @@ window.questionBank = [
     },
     {
         "id": 17,
-        "level": "상",
         "category": "제곱근의 성질",
         "originalCategory": "제곱근의 성질",
         "standardCourse": "중3 수학",
@@ -292,7 +270,6 @@ window.questionBank = [
     },
     {
         "id": 18,
-        "level": "상",
         "category": "인수분해의 이해",
         "originalCategory": "인수분해의 이해",
         "standardCourse": "중3 수학",
@@ -312,7 +289,6 @@ window.questionBank = [
     },
     {
         "id": 19,
-        "level": "상",
         "category": "인수분해와 소수",
         "originalCategory": "인수분해와 소수",
         "standardCourse": "중3 수학",
@@ -332,7 +308,6 @@ window.questionBank = [
     },
     {
         "id": 20,
-        "level": "상",
         "category": "인수분해의 응용",
         "originalCategory": "인수분해의 응용",
         "standardCourse": "중3 수학",
@@ -352,7 +327,6 @@ window.questionBank = [
     },
     {
         "id": 21,
-        "level": "중",
         "category": "제곱근의 성질",
         "originalCategory": "제곱근의 성질",
         "standardCourse": "중3 수학",
@@ -365,7 +339,6 @@ window.questionBank = [
     },
     {
         "id": 22,
-        "level": "중",
         "category": "인수분해의 활용",
         "originalCategory": "인수분해의 활용",
         "standardCourse": "중3 수학",
@@ -378,7 +351,6 @@ window.questionBank = [
     },
     {
         "id": 23,
-        "level": "상",
         "category": "무리수의 기하학적 응용",
         "originalCategory": "무리수의 기하학적 응용",
         "standardCourse": "중3 수학",
@@ -391,7 +363,6 @@ window.questionBank = [
     },
     {
         "id": 24,
-        "level": "상",
         "category": "제곱근의 급수 계산",
         "originalCategory": "제곱근의 급수 계산",
         "standardCourse": "중3 수학",

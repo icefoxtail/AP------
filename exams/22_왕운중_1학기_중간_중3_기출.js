@@ -1,9 +1,8 @@
 window.examTitle = "22_왕운중3_1학기_중간_중3";
 
 window.questionBank = [
-  {
+{
     "id": 1,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -17,7 +16,6 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -31,7 +29,6 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -45,7 +42,6 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -59,7 +55,6 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -73,7 +68,6 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -87,7 +81,6 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -101,7 +94,6 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -115,7 +107,6 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -129,7 +120,6 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -143,7 +133,6 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -157,7 +146,6 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "level": "[상]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -171,7 +159,6 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -185,7 +172,6 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -199,7 +185,6 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "[상]",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -213,7 +198,6 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -227,7 +211,6 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -241,7 +224,6 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -255,7 +237,6 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -269,7 +250,6 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -283,7 +263,6 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "level": "[중]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -296,7 +275,6 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "level": "[상]",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -309,7 +287,6 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -322,7 +299,6 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "level": "[상]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
