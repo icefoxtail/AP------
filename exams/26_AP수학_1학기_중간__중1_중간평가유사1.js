@@ -221,26 +221,26 @@ window.questionBank = [
     "answer": "④",
     "solution": "① $0 \\notin 자연수 \\implies$ 정수\\n② $-3.14 < 0 \\implies$ 음수\\n③ $\\frac{1}{2} \\in 유리수$ 이나 정수는 아님\\n④ $\\frac{6}{10} = \\frac{3}{5} \\implies$ 정수가 아닌 유리수\\n⑤ $-3 < x < 2 \\implies x \\in \\{-2, -1, 0, 1\\}$ (4개)\\n\\therefore 옳은 것은 4번"
   },
-{
-  "id": 12,
-  "level": "중",
-  "category": "정수와 유리수",
-  "originalCategory": "정수와 유리수",
-  "standardCourse": "중1 수학",
-  "standardUnitKey": "M1-03",
-  "standardUnit": "정수와 유리수",
-  "standardUnitOrder": 3,
-  "content": "다음 수직선 위의 ㄱ~ㅁ에 대응하는 수로 옳지 않은 것을 고르시오. [4점]\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"760\" height=\"150\" viewBox=\"0 0 760 150\">\n  <line x1=\"50\" y1=\"90\" x2=\"710\" y2=\"90\" stroke=\"black\" stroke-width=\"2\"/>\n  <polygon points=\"710,90 698,84 698,96\" fill=\"black\"/>\n\n  <line x1=\"50\" y1=\"82\" x2=\"50\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"46\" y=\"118\" font-size=\"18\">-4</text>\n  <circle cx=\"50\" cy=\"68\" r=\"4\" fill=\"black\"/>\n  <text x=\"42\" y=\"56\" font-size=\"18\">ㄱ</text>\n\n  <line x1=\"110\" y1=\"82\" x2=\"110\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"106\" y=\"118\" font-size=\"18\">-3</text>\n\n  <line x1=\"170\" y1=\"82\" x2=\"170\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"166\" y=\"118\" font-size=\"18\">-2</text>\n\n  <line x1=\"230\" y1=\"82\" x2=\"230\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"226\" y=\"118\" font-size=\"18\">-1</text>\n\n  <line x1=\"290\" y1=\"82\" x2=\"290\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"286\" y=\"118\" font-size=\"18\">0</text>\n\n  <line x1=\"350\" y1=\"82\" x2=\"350\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"346\" y=\"118\" font-size=\"18\">1</text>\n\n  <line x1=\"410\" y1=\"82\" x2=\"410\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"406\" y=\"118\" font-size=\"18\">2</text>\n\n  <line x1=\"470\" y1=\"82\" x2=\"470\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"466\" y=\"118\" font-size=\"18\">3</text>\n\n  <line x1=\"530\" y1=\"82\" x2=\"530\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"526\" y=\"118\" font-size=\"18\">4</text>\n\n  <line x1=\"590\" y1=\"82\" x2=\"590\" y2=\"98\" stroke=\"black\" stroke-width=\"2\"/>\n  <text x=\"586\" y=\"118\" font-size=\"18\">5</text>\n\n  <line x1=\"130\" y1=\"86\" x2=\"130\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"150\" y1=\"86\" x2=\"150\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <circle cx=\"150\" cy=\"68\" r=\"4\" fill=\"black\"/>\n  <text x=\"142\" y=\"56\" font-size=\"18\">ㄴ</text>\n\n  <line x1=\"245\" y1=\"86\" x2=\"245\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"260\" y1=\"86\" x2=\"260\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"275\" y1=\"86\" x2=\"275\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <circle cx=\"245\" cy=\"68\" r=\"4\" fill=\"black\"/>\n  <text x=\"237\" y=\"56\" font-size=\"18\">ㄷ</text>\n\n  <line x1=\"380\" y1=\"86\" x2=\"380\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <circle cx=\"380\" cy=\"68\" r=\"4\" fill=\"black\"/>\n  <text x=\"372\" y=\"56\" font-size=\"18\">ㄹ</text>\n\n  <line x1=\"490\" y1=\"86\" x2=\"490\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"510\" y1=\"86\" x2=\"510\" y2=\"94\" stroke=\"black\" stroke-width=\"1\"/>\n  <circle cx=\"510\" cy=\"68\" r=\"4\" fill=\"black\"/>\n  <text x=\"500\" y=\"56\" font-size=\"18\">ㅁ</text>\n</svg>",
-  "choices": [
-    "ㄱ : \\(-4\\)",
-    "ㄴ : \\(-\\frac{7}{3}\\)",
-    "ㄷ : \\(-\\frac{3}{4}\\)",
-    "ㄹ : \\(+\\frac{3}{2}\\)",
-    "ㅁ : \\(+\\frac{14}{3}\\)"
-  ],
-  "answer": "⑤",
-  "solution": "수직선에서 각 점의 위치를 확인한다.\nㄱ: -4의 위치에 있다.\nㄴ: -3과 -2 사이를 3등분한 점 중 -2에서 왼쪽으로 첫 번째 점이므로 \\(-2-\\frac{1}{3}=-\\frac{7}{3}\\)이다.\nㄷ: -1과 0 사이를 4등분한 점 중 -1에서 오른쪽으로 첫 번째 점이므로 \\(-\\frac{3}{4}\\)이다.\nㄹ: 1과 2 사이의 한가운데 점이므로 \\(+\\frac{3}{2}\\)이다.\nㅁ: 3과 4 사이를 3등분한 점 중 3에서 오른쪽으로 두 번째 점이므로 \\(+3+\\frac{2}{3}=+\\frac{11}{3}\\)이다.\n따라서 옳지 않은 것은 ⑤이다."
-},
+  {
+    "id": 12,
+    "level": "중",
+    "category": "정수와 유리수",
+    "originalCategory": "정수와 유리수",
+    "standardCourse": "중1 수학",
+    "standardUnitKey": "M1-03",
+    "standardUnit": "정수와 유리수",
+    "standardUnitOrder": 3,
+    "content": "<svg width='340' height='75' viewBox='0 0 340 75' xmlns='http://www.w3.org/2000/svg'><line x1='10' y1='40' x2='330' y2='40' stroke='black' stroke-width='1.2'/><path d='M330 40 l-8 -4 v8 z' fill='black'/><path d='M10 40 l8 -4 v8 z' fill='black'/><line x1='20' y1='37' x2='20' y2='43' stroke='black'/><text x='20' y='55' font-size='8' text-anchor='middle'>-5</text><line x1='50' y1='37' x2='50' y2='43' stroke='black'/><text x='50' y='55' font-size='8' text-anchor='middle'>-4</text><line x1='80' y1='37' x2='80' y2='43' stroke='black'/><text x='80' y='55' font-size='8' text-anchor='middle'>-3</text><line x1='110' y1='37' x2='110' y2='43' stroke='black'/><text x='110' y='55' font-size='8' text-anchor='middle'>-2</text><line x1='140' y1='37' x2='140' y2='43' stroke='black'/><text x='140' y='55' font-size='8' text-anchor='middle'>-1</text><line x1='170' y1='35' x2='170' y2='45' stroke='black' stroke-width='1.5'/><text x='170' y='55' font-size='8' text-anchor='middle' font-weight='bold'>0</text><line x1='200' y1='37' x2='200' y2='43' stroke='black'/><text x='200' y='55' font-size='8' text-anchor='middle'>1</text><line x1='230' y1='37' x2='230' y2='43' stroke='black'/><text x='230' y='55' font-size='8' text-anchor='middle'>2</text><line x1='260' y1='37' x2='260' y2='43' stroke='black'/><text x='260' y='55' font-size='8' text-anchor='middle'>3</text><line x1='290' y1='37' x2='290' y2='43' stroke='black'/><text x='290' y='55' font-size='8' text-anchor='middle'>4</text><line x1='320' y1='37' x2='320' y2='43' stroke='black'/><text x='320' y='55' font-size='8' text-anchor='middle'>5</text><circle cx='50' cy='40' r='2' fill='red'/><text x='50' y='32' font-size='10' text-anchor='middle' font-weight='bold'>ㄱ</text><circle cx='90' cy='40' r='2' fill='red'/><text x='90' y='32' font-size='10' text-anchor='middle' font-weight='bold'>ㄴ</text><circle cx='147.5' cy='40' r='2' fill='red'/><text x='147.5' y='32' font-size='10' text-anchor='middle' font-weight='bold'>ㄷ</text><circle cx='215' cy='40' r='2' fill='red'/><text x='215' y='32' font-size='10' text-anchor='middle' font-weight='bold'>ㄹ</text><circle cx='310' cy='40' r='2' fill='red'/><text x='310' y='32' font-size='10' text-anchor='middle' font-weight='bold'>ㅁ</text></svg>\\nㄱ~ㅁ에 대응하는 수로 옳지 않은 것을 고르시오. [4점]",
+    "choices": [
+      "ㄱ : $-4$",
+      "ㄴ : $-\\frac{7}{3}$",
+      "ㄷ : $-\\frac{3}{4}$",
+      "ㄹ : $+\\frac{3}{2}$",
+      "ㅁ : $+\\frac{14}{3}$"
+    ],
+    "answer": "②",
+    "solution": "[Solution]\n원점 $0$을 기준으로 수직선 위 각 점의 좌표를 확인한다.\nㄱ: $-4$ 눈금 위치에 있다. $\\rightarrow ㄱ = -4$\nㄴ: 수직선 그래프에서 점 ㄴ은 $-2$와 $-3$ 사이를 $3$등분한 점 중 $-2$에서 왼쪽으로 두 번째 점에 위치한다. $\\rightarrow -2 - \\frac{2}{3} = -\\frac{8}{3}$\nㄷ: $0$과 $-1$ 사이를 $4$등분한 점 중 $0$에서 왼쪽 세 번째 점에 위치한다. $\\rightarrow ㄷ = -\\frac{3}{4}$\nㄹ: $+1$과 $+2$ 사이의 한가운데 점에 위치한다. $\\rightarrow ㄹ = +1 + \\frac{1}{2} = \\frac{3}{2}$\nㅁ: $+4$와 $+5$ 사이를 $3$등분한 점 중 $+4$에서 오른쪽으로 두 번째 점에 위치한다. $\\rightarrow ㅁ = 4 + \\frac{2}{3} = \\frac{14}{3}$\n\n따라서 보기 ②의 $-\\frac{7}{3}$은 그래프상의 실제 위치($-\\frac{8}{3}$)와 다르므로 옳지 않다.\n\n---\n[Conclusion]\nAnswer: ②"
+  },
   {
     "id": 13,
     "level": "중",
