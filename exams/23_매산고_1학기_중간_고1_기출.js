@@ -6,7 +6,7 @@
  */
 
 // 파일명: 23_매산고1_1학기_중간_고1.js
-window.examTitle = "23_매산고1_1학기_중간_고1";
+window.examTitle = "23_매산고_1학기_중간_고1_기출";
 
 window.questionBank = [
     {

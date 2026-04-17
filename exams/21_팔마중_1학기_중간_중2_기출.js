@@ -6,7 +6,7 @@
  */
 
 // 파일명: 21_팔마중2_1학기_중간_중2.js
-window.examTitle = "21_팔마중2_1학기_중간_중2";
+window.examTitle = "21_팔마중_1학기_중간_중2_기출";
 
 window.questionBank = [
     {

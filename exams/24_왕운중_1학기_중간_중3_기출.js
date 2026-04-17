@@ -1,4 +1,4 @@
-window.examTitle = "24_왕운중3_1학기_중간_중3_r";
+window.examTitle = "24_왕운중_1학기_중간_중3_기출";
 
 window.questionBank = [
 {

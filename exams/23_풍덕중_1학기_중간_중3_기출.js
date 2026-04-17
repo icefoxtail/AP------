@@ -1,4 +1,4 @@
-window.examTitle = "2023학년도 1학기 중간고사 3학년 수학 (순천풍덕중학교)";
+window.examTitle = "23_풍덕중_1학기_중간_중3_기출";
 window.questionBank = [
     {
             id: "1",

@@ -1,4 +1,4 @@
-window.examTitle = "19_동산중3_1학기_중간_수학";
+window.examTitle = "19_동산중_1학기_중간_중3_기출";
 
 window.questionBank = [
     {

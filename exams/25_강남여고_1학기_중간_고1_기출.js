@@ -1,4 +1,4 @@
-window.examTitle = "25_순천강남여고1_1학기_중간_공통수학1";
+window.examTitle = "25_강남여고_1학기_중간_고1_기출";
 
 window.questionBank = [
   {

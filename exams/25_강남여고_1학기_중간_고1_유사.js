@@ -1,4 +1,4 @@
-window.examTitle = "25_강남여고1_1학기_중간_유사";
+window.examTitle = "25_강남여고_1학기_중간_고1_유사";
 
 window.questionBank = [
   {

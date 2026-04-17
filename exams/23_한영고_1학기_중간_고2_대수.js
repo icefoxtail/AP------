@@ -1,4 +1,4 @@
-window.examTitle = "23_한영고2_1학기_중간_대수";
+window.examTitle = "23_한영고_1학기_중간_고2_대수";
 
 window.questionBank = [
     {

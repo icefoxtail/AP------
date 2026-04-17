@@ -1,4 +1,4 @@
-window.examTitle = "2023학년도 1학기 중간고사 3학년 수학 유사문항 1차 (1~10번)";
+window.examTitle = "23_풍덕중_1학기_중간_중3_유사";
 window.questionBank = [
     {
             id: "1",

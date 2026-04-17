@@ -1,4 +1,4 @@
-window.examTitle = "25_순천여고1_1학기_중간_대수";
+window.examTitle = "25_순천여고_1학기_중간_고2_대수";
 
 window.questionBank = [
     {

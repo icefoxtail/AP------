@@ -1,4 +1,4 @@
-window.examTitle = "23_여수여고1_1학기_중간_고1";
+window.examTitle = "23_여수여고_1학기_중간_고1_기출"
 
 window.questionBank = [
     {

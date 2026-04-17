@@ -1,4 +1,4 @@
-window.examTitle = "21_신흥중2_1학기_중간_중2";
+window.examTitle = "21_신흥중_1학기_중간_중2_기출";
 
 window.questionBank = [
     {

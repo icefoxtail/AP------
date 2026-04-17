@@ -1,4 +1,4 @@
-window.examTitle = "2023_순천왕운중3_1학기_중간_수학";
+window.examTitle = "2023_왕운중_1학기_중간_중3_기출";
 
 window.questionBank = [
 {

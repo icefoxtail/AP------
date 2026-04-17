@@ -6,7 +6,7 @@
  */
 
 // 파일명: 23_부영여고1_1학기_중간_고1.js
-window.examTitle = "23_부영여고1_1학기_중간_고1";
+window.examTitle = "23_부영여고_1학기_중간_고1_기출";
 
 window.questionBank = [
     {
