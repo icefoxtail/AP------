@@ -290,6 +290,24 @@ window.mainDB = {
     },
     {
       "year": "2023",
+      "school": "풍덕중",
+      "grade": "중3",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "기출",
+      "file": "23_풍덕중_1학기_중간_중3_기출.js"
+    },
+    {
+      "year": "2023",
+      "school": "풍덕중",
+      "grade": "중3",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "유사",
+      "file": "23_풍덕중_1학기_중간_중3_유사.js"
+    },
+    {
+      "year": "2023",
       "school": "한영고",
       "grade": "고1",
       "semester": "1",
@@ -458,6 +476,15 @@ window.mainDB = {
       "examType": "mid",
       "subject": "대수",
       "file": "25_순천여고_1학기_중간_고2_대수.js"
+    },
+    {
+      "year": "2025",
+      "school": "순천여고",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "file": "25_순천여고_1학기_중간_고2_확률과통계.js"
     },
     {
       "year": "2025",
