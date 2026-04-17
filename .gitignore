@@ -17,3 +17,18 @@ pdf_archive/
 **/.history/
 .lh/
 **/.lh/
+# --- 이미지 및 데이터 처리 폴더 차단 ---
+# 변환된 고화질 PNG 이미지 전체 차단
+data/images/
+data/source_images/
+
+# 모든 이미지 확장자 개별 차단 (추가 방어)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# 캐시 및 임시 파일
+__pycache__/
+*.py[cod]
