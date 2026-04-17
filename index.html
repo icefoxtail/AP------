@@ -275,6 +275,7 @@
             <span class="gtab" data-grade="고1">고1</span>
             <span class="gtab" data-grade="중3">중3</span>
             <span class="gtab" data-grade="중2">중2</span>
+            <span class="gtab" data-grade="중1">중1</span>
             <span class="gtab active" data-grade="">전체</span>
         </nav>
         <span class="nav-count" id="navCount">시험지 0개</span>
@@ -356,7 +357,7 @@ let archiveDB = { files: [] };
 let selectedGrade = '';
 let _filterType   = '';
 
-const FEATURED_GRADES = ['중2', '중3', '고1', '고2'];
+const FEATURED_GRADES = ['중1', '중2', '중3', '고1', '고2'];
 
 async function init() {
     await new Promise(res => {

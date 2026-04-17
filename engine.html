@@ -643,13 +643,13 @@ function buildSolFragments(q) {
     if (q.solution_steps?.length) {
         return q.solution_steps.map((s, si) => `
             <div class="sol-frag">
-                <div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatexPreserveBlocks(stripCite(s))}</div>
+                <div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatexPreserveBlocks(normalizeMathEnglishInSolution(stripCite(s)))}</div>
             </div>
         `);
     }
 
     if (q.solution) {
-        const raw = stripCite(q.solution);
+        const raw = normalizeMathEnglishInSolution(stripCite(q.solution));
 
         const hasStructuredMath =
             /\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(raw) ||
@@ -808,6 +808,50 @@ function makePage(area, type) {
     area.appendChild(page);
 
     return { page, cols: [left, right] };
+}
+
+
+function normalizeMathEnglishInSolution(text) {
+    if (!text) return text;
+    let s = String(text);
+
+    const rules = [
+        [/\bif\s+and\s+only\s+if\b/gi, '\\iff'],
+        [/\biff\b/gi, '\\iff'],
+        [/\btherefore\b/gi, '\\therefore'],
+        [/\bhence\b/gi, '\\therefore'],
+        [/\bthus\b/gi, '\\therefore'],
+        [/\bbecause\b/gi, '\\because'],
+        [/\bimplies\b/gi, '\\implies'],
+        [/\bimply\b/gi, '\\implies'],
+        [/=>/g, '\\implies'],
+        [/==>/g, '\\implies'],
+        [/-->/g, '\\to'],
+        [/->/g, '\\to'],
+        [/\bto\b(?=\s*[0-9a-zA-Z가-힣(\\])/g, '\\to'],
+        [/\bfor\s+all\b/gi, '\\forall'],
+        [/\bexists\b/gi, '\\exists'],
+        [/\bnot\s+equal\s+to\b/gi, '\\ne'],
+        [/\bgreater\s+than\s+or\s+equal\s+to\b/gi, '\\ge'],
+        [/\bless\s+than\s+or\s+equal\s+to\b/gi, '\\le'],
+        [/\bapproximately\b/gi, '\\approx'],
+        [/\binfinity\b/gi, '\\infty'],
+        [/\bparallel\b/gi, '\\parallel'],
+        [/\bperpendicular\b/gi, '\\perp'],
+        [/\bangle\b/gi, '\\angle'],
+        [/\btriangle\b/gi, '\\triangle']
+    ];
+
+    rules.forEach(([pattern, repl]) => {
+        s = s.replace(pattern, repl);
+    });
+
+    s = s.replace(/(^|\s)so(?=\s|$)/gi, '$1\\therefore');
+
+    s = s.replace(/\b(and|or)\b/gi, (m) => m.toLowerCase() === 'and' ? '\\text{ 그리고 }' : '\\text{ 또는 }');
+
+    s = s.replace(/\s{2,}/g, ' ').trim();
+    return s;
 }
 
 function wrapLatex(text) {
