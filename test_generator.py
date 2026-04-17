@@ -56,8 +56,8 @@ def extract_json_array(raw_text: str):
 def validate_output(data):
     if not isinstance(data, list):
         raise ValueError("출력 형식이 JSON Array가 아님")
-    if len(data) != 2:
-        raise ValueError(f"문항 수가 2개가 아님: {len(data)}개")
+    if len(data) == 0:
+        raise ValueError("추출된 문항이 없음")
 
     required_keys = {
         "id", "content", "choices", "answer",
@@ -116,7 +116,6 @@ def save_as_question_bank(data: list, image_path: str):
 
 # ── 중복 체크: exams/ 전체에서 동일 파일명 탐색 ────────────
 def find_existing_js(base_name: str) -> str | None:
-    """exams/ 하위 모든 폴더에서 base_name.js 가 있으면 경로 반환, 없으면 None."""
     js_filename = base_name + ".js"
     for root, dirs, files in os.walk(EXAMS_DIR):
         if js_filename in files:
@@ -128,7 +127,7 @@ def find_existing_js(base_name: str) -> str | None:
 def run_generator_prototype(image_path: str):
     base_name = os.path.splitext(os.path.basename(image_path))[0]
 
-    # ★ 중복 체크 — 이미 있으면 건너뜀
+    # 중복 체크 — 이미 있으면 건너뜀
     existing = find_existing_js(base_name)
     if existing:
         print(f"[건너뜀] 이미 존재 → {existing}")
@@ -141,9 +140,10 @@ def run_generator_prototype(image_path: str):
         image_part = types.Part.from_bytes(data=buf.getvalue(), mime_type="image/png")
 
         prompt = """
-당신은 수학 교육 전문가입니다. 이 이미지에서 첫 번째 문제를 추출하고, 동일한 논리 구조를 가진 '유사 문항' 1개를 추가로 생성하여 아래의 JSON 배열(Array) 형식으로 응답하십시오.
-반드시 시스템 엔진이 파싱할 수 있는 정확한 JSON Array '[ { ... }, { ... } ]' 형태로만 출력해야 하며 다른 사설은 절대 금지합니다.
+당신은 수학 교육 전문가입니다. 이 이미지에 있는 모든 문제를 빠짐없이 추출하여 아래의 JSON 배열(Array) 형식으로 응답하십시오.
+반드시 시스템 엔진이 파싱할 수 있는 정확한 JSON Array '[ { ... }, { ... }, ... ]' 형태로만 출력해야 하며 다른 사설은 절대 금지합니다.
 문항 내 줄바꿈은 반드시 '\\n' 기호를 사용하십시오.
+LaTeX 수식의 역슬래시는 반드시 이중 역슬래시(\\\\)로 출력하십시오. 예: \\\\frac, \\\\sqrt
 
 ※ 문항 유형 판단 기준:
 - 객관식(5지선다): choices 배열에 선택지 5개를 순수 텍스트로 기재. 번호 기호(①②③④⑤) 절대 포함 금지.
@@ -153,7 +153,7 @@ def run_generator_prototype(image_path: str):
 [
     {
         "id": "1",
-        "content": "원본 문제 텍스트 (수식은 $기호로 감싸기)",
+        "content": "문제 텍스트 (수식은 $...$로 감싸기, 역슬래시는 \\\\로)",
         "choices": ["1번 선택지", "2번 선택지", "3번 선택지", "4번 선택지", "5번 선택지"],
         "answer": "정답 (객관식: ③ / 주관식: 숫자 또는 식)",
         "category": "추론된 단원명",
@@ -165,17 +165,17 @@ def run_generator_prototype(image_path: str):
         "solution": "* 풀이 1단계\\n* 풀이 2단계\\n* 정답: ③"
     },
     {
-        "id": "1-유사",
-        "content": "변형된 유사 문항 텍스트",
+        "id": "2",
+        "content": "두 번째 문제 텍스트",
         "choices": [],
         "answer": "정답",
-        "category": "원본과 동일",
-        "originalCategory": "원본과 동일",
-        "standardCourse": "원본과 동일",
-        "standardUnitKey": "원본과 동일",
-        "standardUnit": "원본과 동일",
-        "standardUnitOrder": 1,
-        "solution": "* 풀이 1단계\\n* 풀이 2단계\\n* 정답: (위 answer 필드와 동일한 값)"
+        "category": "추론된 단원명",
+        "originalCategory": "추론된 단원명",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-02",
+        "standardUnit": "단원명",
+        "standardUnitOrder": 2,
+        "solution": "* 풀이\\n* 정답: 정답"
     }
 ]
         """.strip()
@@ -193,9 +193,8 @@ def run_generator_prototype(image_path: str):
 
         js_path = save_as_question_bank(data, image_path)
 
-        q_type = "주관식" if len(data[0]["choices"]) == 0 else "객관식"
         print(f"[완료] {js_path}")
-        print(f"       학년: {resolve_grade_folder(data)} / 유형: {q_type}")
+        print(f"       학년: {resolve_grade_folder(data)} / 문항 수: {len(data)}개")
 
     except Exception as e:
         print(f"[실패] {os.path.basename(image_path)} — {e}")
@@ -206,7 +205,10 @@ if __name__ == "__main__":
     if not os.path.exists(IMAGE_DIR):
         print(f"오류: 이미지 경로가 존재하지 않습니다 -> {IMAGE_DIR}")
     else:
-        png_files = sorted((f for f in os.listdir(IMAGE_DIR) if f.lower().endswith(".png") and "문제지" in f), reverse=True)
+        png_files = sorted(
+            (f for f in os.listdir(IMAGE_DIR) if f.lower().endswith(".png") and "문제지" in f),
+            reverse=True
+        )
         if not png_files:
             print(f"오류: {IMAGE_DIR} 내 PNG 파일 없음")
         else:
