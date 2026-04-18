@@ -77,7 +77,6 @@
 <script>
 const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 
-// [지시 반영] wrapLatex 전체 교체 (고도화 버전)
 function wrapLatex(text) {
     if (text == null) return '';
     let s = String(text);
@@ -86,13 +85,15 @@ function wrapLatex(text) {
     s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
     s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
 
-    // 2. []_xC_y, []_xH_y, []_xP_y (조합/중복조합/순열)
-    const comb = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
-    s = s.replace(/\[\]_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))C_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))/g, comb('C'));
-    s = s.replace(/\[\]_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))H_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))/g, comb('H'));
-    s = s.replace(/\[\]_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))P_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))/g, comb('P'));
+    // 2. 조합/중복조합/순열 처리
+    const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
+    const combPat = prefix =>
+        new RegExp(`(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
+    s = s.replace(combPat('C'), combRepl('C'));
+    s = s.replace(combPat('H'), combRepl('H'));
+    s = s.replace(combPat('P'), combRepl('P'));
 
-    // 3. SVG/img 보호 (토큰화)
+    // 3. SVG/img 보호
     const htmlTags = [];
     s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`;
@@ -100,28 +101,40 @@ function wrapLatex(text) {
         return token;
     });
 
-    // 4. < > escape (부등호 HTML 태그 오인 방지, $...$ 밖에서만)
+    // 4. < > escape ($...$ 밖에서만)
     s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$)/g).map((seg, idx) => {
-        if (idx % 2 === 1) return seg; // $...$ 안은 건드리지 않음
+        if (idx % 2 === 1) return seg;
         return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }).join('');
 
-    // 5. $...$ 밖에 있는 \command{} 패턴 자동 감싸기
+    // 5. $...$ 밖에 있는 수식/환경 자동 감싸기
     s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$|__HTMLTAG_\d+__)/g).map((seg, idx) => {
         if (idx % 2 === 1) return seg;
-        if (!seg.trim()) return seg;
+        const trimmed = seg.trim();
+        if (!trimmed) return seg;
+
         const hasKorean = /[가-힣]/.test(seg);
         const hasLatex = /\\[a-zA-Z]/.test(seg);
-        if (!hasKorean && hasLatex) {
-            const trimmed = seg.trim();
-            if (/^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\]+$/.test(trimmed) && trimmed.length > 0) {
-                return `$${trimmed}$`;
-            }
+
+        if (!hasKorean && /\\begin\{(cases|aligned|array|matrix)\}/.test(seg)) {
+            return `$$${seg}$$`;
+        }
+        if (!hasKorean && hasLatex && /^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\!;:]+$/.test(trimmed)) {
+            return `$${trimmed}$`;
+        }
+        if (hasKorean && hasLatex) {
+            return seg.replace(/(\\[a-zA-Z]+(?:\{[^}]*\})*(?:\{[^}]*\})*(?:_\{?[^}\s]+\}?)?(?:\^\{?[^}\s]+\}?)?)/g, '$$$1$$');
         }
         return seg;
     }).join('');
 
-    // 6. 줄바꿈 처리 (\n → <br>, 실제 개행 → <br>, \notin 등 LaTeX 명령 보호)
+    // [지시 반영] \{...\} 집합 표기 $...$ 밖에 있는 것 자동 래핑
+    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$)/g).map((seg, idx) => {
+        if (idx % 2 === 1) return seg;
+        return seg.replace(/(\\\{(?:[^{}]|\{[^}]*\})*\\\})/g, '$$$1$$');
+    }).join('');
+
+    // 6. 줄바꿈 처리 (\n 보호 로직 포함)
     s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
 
     // 7. 토큰 복원
@@ -134,7 +147,6 @@ function parseExamTitle(raw) {
     return { year: p[0] ? '20' + p[0] + '년' : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
 }
 
-// [성역] fitQuestionBox
 function fitQuestionBox(box) {
     const classes = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
     for (const cls of classes) {
@@ -183,7 +195,6 @@ function shuffleData() {
     render();
 }
 
-// [성역] makePage
 function makePage(area, type, pNum) {
     const page = document.createElement('div');
     page.className = 'page';
@@ -201,6 +212,8 @@ function makePage(area, type, pNum) {
     header.innerHTML = `<div style="flex:1;">${leftText}</div><div style="flex-shrink:0;">${rightText}</div>`;
     page.appendChild(header);
 
+    page.style.paddingBottom = '12mm';
+
     const body = document.createElement('div');
     body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
     page.appendChild(body);
@@ -215,7 +228,6 @@ function makePage(area, type, pNum) {
     return page;
 }
 
-// [성역] renderExam
 function renderExam(area, data) {
     let pNum = 1;
     const circled = ['①','②','③','④','⑤'];
@@ -248,7 +260,6 @@ function renderExam(area, data) {
     }
 }
 
-// [성역] renderSol
 function renderSol(area, data) {
     let pNum = 1;
     const split = Math.ceil(AppState.qpp / 2);
@@ -279,7 +290,6 @@ function renderSol(area, data) {
     }
 }
 
-// [성역] renderAns
 function renderAns(area, data) {
     const PER_PAGE = 50;
     let pCount = 1;
@@ -309,12 +319,11 @@ function renderAns(area, data) {
             const qrDiv = document.createElement('div');
             qrDiv.style.cssText = 'margin-top:auto; padding:20px 0; text-align:center; font-size:8pt; color:#555;';
             qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}" style="width:80px;height:80px;" alt="해설 QR"><div style="margin-top:4px; font-weight:bold;">📱 스마트 해설지 바로가기</div>`;
-            p.body.appendChild(qrDiv);
+            p.appendChild(qrDiv);
         }
     }
 }
 
-// [성역] render (MathJax 호출 포함)
 function render() {
     const area = document.getElementById('print-area');
     area.innerHTML = '';
