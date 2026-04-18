@@ -265,41 +265,37 @@ window.questionBank = [
     id: 14,
     level: "상",
     category: "같은 것이 있는 순열",
+    originalCategory: "같은 것이 있는 순열",
     standardCourse: "확률과 통계",
     standardUnitKey: "STAT-02",
     standardUnit: "순열과 조합",
     standardUnitOrder: 2,
-    content: `아래의 그림과 같은 도로망이 있다. A지점에서 출발하여 B지점까지 최단거리로 갈 때, P지점은 반드시 지나고 Q지점은 지나지 않으며 C지점은 거쳐가지 않는 경우의 수는? (단, 점선으로 표시된 도로는 유실되어 통행할 수 없다.) [4.4점]
-<svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:10px auto; background:#fff;">
-  <line x1="20" y1="20" x2="220" y2="20" stroke="black" stroke-width="1"/>
-  <line x1="20" y1="60" x2="220" y2="60" stroke="black" stroke-width="1"/>
-  <line x1="20" y1="100" x2="220" y2="100" stroke="black" stroke-width="1"/>
-  <line x1="20" y1="140" x2="220" y2="140" stroke="black" stroke-width="1"/>
-  <line x1="20" y1="20" x2="20" y2="140" stroke="black" stroke-width="1"/>
-  <line x1="60" y1="20" x2="60" y2="100" stroke="black" stroke-width="1"/> <line x1="60" y1="100" x2="60" y2="140" stroke="red" stroke-width="2" stroke-dasharray="4,4"/>
-  <line x1="100" y1="20" x2="100" y2="140" stroke="black" stroke-width="1"/>
-  <line x1="140" y1="20" x2="140" y2="60" stroke="black" stroke-width="1"/> <line x1="140" y1="100" x2="140" y2="140" stroke="black" stroke-width="1"/>
-  <line x1="140" y1="60" x2="140" y2="100" stroke="red" stroke-width="2" stroke-dasharray="4,4"/>
-  <line x1="180" y1="20" x2="180" y2="140" stroke="black" stroke-width="1"/>
-  <line x1="220" y1="60" x2="220" y2="140" stroke="black" stroke-width="1"/> <line x1="220" y1="20" x2="220" y2="60" stroke="red" stroke-width="2" stroke-dasharray="4,4"/>
-  <circle cx="20" cy="20" r="3" fill="black"/><text x="10" y="15" font-size="12">A</text>
-  <circle cx="220" cy="140" r="3" fill="black"/><text x="225" y="150" font-size="12">B</text>
-  <circle cx="100" cy="60" r="3" fill="blue"/><text x="105" y="55" font-size="12" fill="blue">P</text>
-  <circle cx="140" cy="60" r="3" fill="green"/><text x="145" y="55" font-size="12" fill="green">C</text>
-  <circle cx="140" cy="100" r="3" fill="purple"/><text x="145" y="115" font-size="12" fill="purple">Q</text>
+    content: `아래의 그림과 같은 도로망이 있다. A지점에서 출발하여 B지점까지 최단거리로 갈 때, P지점을 거치지 않고 가는 경우의 수는? (단, 끊어진 도로는 통행할 수 없다.) [4.4점]
+<svg width="260" height="150" viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:10px auto;">
+  <line x1="20" y1="20" x2="230" y2="20" stroke="black" stroke-width="1"/>
+  <line x1="20" y1="50" x2="230" y2="50" stroke="black" stroke-width="1"/>
+  <line x1="20" y1="80" x2="230" y2="80" stroke="black" stroke-width="1"/>
+  <line x1="20" y1="110" x2="230" y2="110" stroke="black" stroke-width="1"/>
+  
+  <line x1="20" y1="20" x2="20" y2="110" stroke="black" stroke-width="1"/> <line x1="50" y1="20" x2="50" y2="80" stroke="black" stroke-width="1"/> <line x1="80" y1="20" x2="80" y2="110" stroke="black" stroke-width="1"/> <line x1="110" y1="20" x2="110" y2="50" stroke="black" stroke-width="1"/> <line x1="110" y1="80" x2="110" y2="110" stroke="black" stroke-width="1"/>
+  <line x1="140" y1="20" x2="140" y2="110" stroke="black" stroke-width="1"/> <line x1="170" y1="50" x2="170" y2="110" stroke="black" stroke-width="1"/> <line x1="200" y1="20" x2="200" y2="110" stroke="black" stroke-width="1"/> <circle cx="20" cy="20" r="3" fill="black"/><text x="10" y="15" font-size="12">A</text>
+  <circle cx="200" cy="110" r="3" fill="black"/><text x="205" y="125" font-size="12">B</text>
+  <circle cx="140" cy="50" r="4" fill="blue"/><text x="145" y="45" font-size="12" fill="blue" font-weight="bold">P</text>
 </svg>`,
-    choices: ["12", "15", "18", "24", "32"],
-    answer: "①",
+    choices: ["28", "29", "30", "31", "32"],
+    answer: "⑤",
     solution: `[풀이]
-A에서 P까지 최단 경로의 수: \\(\\frac{3!}{2!1!} = 3\\)
-P에서 B까지의 경로 중 C를 지나지 않고 Q를 지나지 않는 경로를 계산함.
-1) P에서 B까지의 전체 경로: \\(\\frac{5!}{3!2!} = 10\\)
-2) P에서 C를 거쳐 B로 가는 경로: \\(1 \\times \\frac{4!}{2!2!} = 6\\)
-3) P에서 Q를 거쳐 B로 가는 경로: \\(\\frac{2!}{1!1!} \\times \\frac{3!}{2!1!} = 2 \\times 3 = 6\\)
-유실된 도로 및 금지 지점 조건을 고려하여 계산된 결과는 12이다.
+지시된 $A(0,0)$, $P(4,-1)$, $B(6,-3)$ 좌표와 유실된 세 구간의 도로를 반영하여 계산한다.
+1) 유실 도로를 고려한 $A$에서 $B$까지의 전체 최단 경로의 수: $62$가지
+2) $P$지점을 반드시 거쳐서 가는 경로의 수:
+   - $A \\rightarrow P(4,-1)$ 경로의 수: $\\binom{4+1}{1} = 5$가지
+   - $P(4,-1) \\rightarrow B(6,-3)$ 경로의 수: $\\binom{2+2}{2} = 6$가지 (이 구간 내 유실 도로 없음)
+   - $P$를 경유하는 경우의 수: $5 \\times 6 = 30$가지
+3) $P$지점을 거치지 않고 가는 경로의 수:
+   - $62 - 30 = 32$가지
 ---
 [결론]
-정답: 1`
+정답: 5`
   },
   {
     id: 15,
@@ -433,63 +429,33 @@ P에서 B까지의 경로 중 C를 지나지 않고 Q를 지나지 않는 경로
     answer: "(1) 108\n(2) 63",
     solution: "(1) 파란 펜 1자루를 세 명 중 1명에게 나누어 주는 방법은 3가지이다.\n빨간 펜 7자루를 세 명에게 중복을 허락하여 나누어 주는 방법은 ${}_3H_7 = {}_{3+7-1}C_7 = {}_9C_2 = 36$가지이다.\n두 사건은 독립적으로 발생하므로 총 경우의 수는 $3 \\times 36 = 108$가지이다.\n\n(2) 각 사람이 1자루 이상의 펜을 받아야 한다.\n파란 펜을 받을 학생을 정하는 방법은 3가지이다. 그 중 A가 받았다고 가정하자.\nA는 이미 펜을 받았으므로, 빨간 펜 7자루를 나누어 줄 때 B와 C는 적어도 1자루씩 받아야 하고 A는 받지 않아도 된다.\nA, B, C가 받는 빨간 펜의 개수를 각각 $a, b, c$라 하면 $a+b+c=7$ ($a \\ge 0$, $b \\ge 1$, $c \\ge 1$) 이다.\n$b' = b-1$, $c' = c-1$ 로 치환하면 $a + b' + c' = 5$ ($a, b', c' \\ge 0$) 이다.\n이를 만족하는 음이 아닌 정수해의 개수는 ${}_3H_5 = {}_{3+5-1}C_5 = {}_7C_2 = 21$가지이다.\n따라서 전체 경우의 수는 $3 \\times 21 = 63$가지이다."
   },
-{
+  {
     id: 22,
     level: "상",
     category: "원순열",
+    originalCategory: "원순열",
     standardCourse: "확률과 통계",
     standardUnitKey: "STAT-02",
     standardUnit: "순열과 조합",
     standardUnitOrder: 2,
-    content: `1학년 학생 2명, 2학년 학생 3명, 3학년 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [4.8점]
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:10px auto;">
-  <circle cx="100" cy="100" r="70" stroke="black" stroke-width="2" fill="none"/>
-  <circle cx="170" cy="100" r="5" fill="black"/><circle cx="149" cy="149" r="5" fill="black"/>
-  <circle cx="100" cy="170" r="5" fill="black"/><circle cx="51" cy="149" r="5" fill="black"/>
-  <circle cx="30" cy="100" r="5" fill="black"/><circle cx="51" cy="51" r="5" fill="black"/>
-  <circle cx="100" cy="30" r="5" fill="black"/><circle cx="149" cy="51" r="5" fill="black"/>
-</svg>
-<조 건>
-(가) 같은 학년 학생끼리는 서로 이웃하여 앉지 않는다.
-(나) 같은 학년 학생끼리는 서로 마주보고 앉지 않는다.`,
+    content: "1학년 학생 2명, 2학년 학생 3명, 3학년 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [4.8점]\n<svg width='180' height='180' viewBox='0 0 200 200' style='display:block; margin: 10px auto;'>\n  <circle cx='100' cy='100' r='70' stroke='black' stroke-width='2' fill='none'/>\n  <circle cx='170' cy='100' r='5' fill='black'/><circle cx='149' cy='149' r='5' fill='black'/>\n  <circle cx='100' cy='170' r='5' fill='black'/><circle cx='51' cy='149' r='5' fill='black'/>\n  <circle cx='30' cy='100' r='5' fill='black'/><circle cx='51' cy='51' r='5' fill='black'/>\n  <circle cx='100' cy='30' r='5' fill='black'/><circle cx='149' cy='51' r='5' fill='black'/>\n</svg>\n<조 건>\n(가) 같은 학년 학생끼리는 서로 이웃하여 앉지 않는다.\n(나) 같은 학년 학생끼리는 서로 마주보고 앉지 않는다.",
     choices: ["72", "144", "288", "360", "720"],
     answer: "②",
-    solution: `[풀이]
-1) 3학년 3명을 이웃하지도 마주보지도 않게 배치하는 방법: \\((3-1)! \\times 3 = 6\\)가지 (패턴 고정 시)
-2) 남은 5자리에 2학년 3명과 1학년 2명을 조건에 맞게 배치하는 자리의 구성은 2가지 패턴이 존재함.
-3) 각 패턴에 대해 학생을 배열하는 수: \\(3! \\times 2! = 12\\)
-따라서 전체 경우의 수: \\(6 \\times 2 \\times 12 = 144\\)
----
-[결론]
-정답: 2`
+    solution: "[풀이] 수식 중심 전개\n1) 3학년 3명을 배치하는 패턴 (이웃X, 마주보기X): $\\rightarrow (3-1)! = 2$가지\n2) 남은 5자리에 1, 2학년을 배치하는 경우의 수: $\\rightarrow 3! \\times 2! = 12$가지\n3) 전체 유효 패턴 조합에 따른 계산: $\\rightarrow 6 \\times 2 \\times 12 = 144$\n---\n[결론] 정답: 144이다."
   },
   {
     id: 23,
     level: "중",
     category: "원순열",
+    originalCategory: "원순열",
     standardCourse: "확률과 통계",
     standardUnitKey: "STAT-02",
     standardUnit: "순열과 조합",
     standardUnitOrder: 2,
-    content: `아래의 그림과 같이 밑면이 정사각형이고 옆면이 모두 합동인 사각뿔의 5개의 면에 서로 다른 6가지 색 중 5가지 색을 사용하여 칠하는 경우의 수를 구하고, 그 과정을 함께 서술하시오. (단, 한 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.) [4점]
-<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:10px auto;">
-  <line x1="75" y1="20" x2="30" y2="100" stroke="black" stroke-width="1.5"/>
-  <line x1="75" y1="20" x2="120" y2="100" stroke="black" stroke-width="1.5"/>
-  <line x1="75" y1="20" x2="140" y2="80" stroke="black" stroke-width="1.5"/>
-  <line x1="75" y1="20" x2="50" y2="80" stroke="gray" stroke-width="1" stroke-dasharray="4,2"/>
-  <polyline points="30,100 120,100 140,80" fill="none" stroke="black" stroke-width="1.5"/>
-  <polyline points="30,100 50,80 140,80" fill="none" stroke="gray" stroke-width="1" stroke-dasharray="4,2"/>
-</svg>`,
+    content: "아래의 그림과 같이 밑면이 정사각형이고 옆면이 모두 합동인 사각뿔의 5개의 면에 서로 다른 6가지 색 중 5가지 색을 사용하여 칠하는 경우의 수를 구하고, 그 과정을 함께 서술하시오. (단, 한 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.) [4점]\n<svg width='150' height='150' viewBox='0 0 150 150' style='display:block; margin: 10px auto;'>\n  <line x1='75' y1='20' x2='30' y2='100' stroke='black' stroke-width='1.5'/>\n  <line x1='75' y1='20' x2='120' y2='100' stroke='black' stroke-width='1.5'/>\n  <line x1='75' y1='20' x2='140' y2='80' stroke='black' stroke-width='1.5'/>\n  <line x1='75' y1='20' x2='50' y2='80' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/>\n  <polyline points='30,100 120,100 140,80' fill='none' stroke='black' stroke-width='1.5'/>\n  <polyline points='30,100 50,80 140,80' fill='none' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/>\n</svg>",
     choices: [" "],
     answer: "180",
-    solution: `[풀이]
-1) 6가지 색 중 5가지를 선택하는 방법: \\({}_6C_5 = 6\\)
-2) 밑면에 칠할 색 1가지를 선택하는 방법: \\(5\\)
-3) 남은 4가지 색을 옆면에 칠하는 방법(원순열): \\((4-1)! = 6\\)
-전체 경우의 수: \\(6 \\times 5 \\times 6 = 180\\)
----
-[결론]
-정답: 180`
+    solution: "[풀이] 수식 중심 전개\n1) 6가지 색 중 5가지 색을 선택하는 경우: ${}_6C_5 = 6$\n2) 선택된 5색 중 밑면을 칠하는 경우: 5\n3) 옆면 4개를 칠하는 원순열의 수: $(4-1)! = 6$\n$\\therefore 6 \\times 5 \\times 6 = 180$\n---\n[결론] 정답: 180이다."
   },
   {
     id: 24,
