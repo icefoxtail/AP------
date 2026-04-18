@@ -104,7 +104,7 @@
         /* 다크 섹션 내 카드 스타일 보정 */
         .sec-block.dark .exam-card { border-color: rgba(255,255,255,0.05); background: rgba(255,255,255,0.03); }
         .sec-block.dark .exam-card:hover { background: white; }
-        .sec-block.dark .exam-card .card-main-title { color: #1e293b; } /* 다크 섹션 내 가시성 보정 */
+        .sec-block.dark .exam-card .card-main-title { color: #1e293b; }
         .sec-block.dark .exam-card:hover .card-main-title { color: #1e293b; }
 
         .card-top { height: 3px; background: var(--blue-main); }
@@ -403,12 +403,32 @@ function renderFullList() {
 function buildCard(ex) {
     const card = document.createElement('div');
     card.className = 'exam-card';
+    
+    const fileName = (ex.file || '').replace(/\.js$/i, '');
     const isExam = (ex.contentType || '기출') === '기출';
     const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : '';
     const yearLabel = ex.year ? `${ex.year}년 ` : '';
-    const mainTitle = isExam ? `${ex.school || ''}<br>${yearLabel}${ex.semester ? ex.semester + '학기 ' : ''}${typeText}` : `${ex.topic || ''}<br>${ex.subject || ''}`;
-    card.innerHTML = `<div class="card-top"></div><div class="card-body"><div class="card-grade-label">${ex.grade}</div><div class="card-main-title">${mainTitle}</div><div class="badge-row"><span class="badge">${ex.contentType || '기출'}</span></div></div><div class="card-actions"><div class="action-btn" data-action="exam">시험</div><div class="action-btn" data-action="sol">해설</div><div class="action-btn" data-action="ans">정답</div></div>`;
-    card.querySelectorAll('.action-btn').forEach(btn => { btn.onclick = (e) => { e.stopPropagation(); openEngine(ex, btn.dataset.action); }; });
+    
+    const mainTitle = isExam 
+        ? `${ex.school || ''}<br>${yearLabel}${ex.semester ? ex.semester + '학기 ' : ''}${typeText}`
+        : `${ex.topic || fileName}<br><span style="font-size:11px;font-weight:600;color:#64748b;">${fileName}</span>`;
+
+    card.innerHTML = `
+        <div class="card-top"></div>
+        <div class="card-body">
+            <div class="card-grade-label">${ex.grade}</div>
+            <div class="card-main-title">${mainTitle}</div>
+            <div class="badge-row"><span class="badge">${ex.contentType || '기출'}</span></div>
+        </div>
+        <div class="card-actions">
+            <div class="action-btn" data-action="exam">시험</div>
+            <div class="action-btn" data-action="sol">해설</div>
+            <div class="action-btn" data-action="ans">정답</div>
+        </div>`;
+
+    card.querySelectorAll('.action-btn').forEach(btn => {
+        btn.onclick = (e) => { e.stopPropagation(); openEngine(ex, btn.dataset.action); };
+    });
     return card;
 }
 
