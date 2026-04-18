@@ -1,11 +1,13 @@
 window.mainDB = {
   "exams": [
     {
-      "contentType": "유형",
+      "year": "2001",
+      "school": "항등식과나머지정리",
       "grade": "고1",
       "topic": "항등식과나머지정리",
       "subject": "수학(상)",
-      "file": "항등식과나머지정리_고1_유형.js"
+      "file": "항등식과나머지정리_고1_유형.js",
+      "contentType": "유형"
     },
     {
       "year": "2019",
@@ -688,18 +690,22 @@ window.mainDB = {
       "contentType": "기출"
     },
     {
-      "contentType": "유형",
+      "year": "2026",
+      "school": "AP수학",
       "grade": "중1",
       "topic": "일차방정식활용",
       "subject": "수학",
-      "file": "일차방정식활용_중1_유형.js"
+      "file": "일차방정식활용_중1_유형.js",
+      "contentType": "유형"
     },
     {
-      "contentType": "유형",
+      "year": "2026",
+      "school": "AP수학",
       "grade": "중1",
       "topic": "일차방정식활용",
       "subject": "수학",
-      "file": "일차방정식활용_중1_유형2.js"
+      "file": "일차방정식활용_중1_유형2.js",
+      "contentType": "유형"
     },
     {
       "year": "2026",
@@ -707,9 +713,9 @@ window.mainDB = {
       "grade": "중1",
       "semester": "1",
       "examType": "mid",
-      "subject": "",
-      "file": "26_AP수학_1학기_중간__중1_중간평가유사1.js",
-      "contentType": "기출"
+      "subject": "수학",
+      "file": "26_AP수학_1학기_중간_중1_중간평가유사1.js",
+      "contentType": "단원평가"
     },
     {
       "year": "2026",
@@ -719,7 +725,7 @@ window.mainDB = {
       "examType": "mid",
       "subject": "수학",
       "file": "26_AP수학_1학기_중간_중1_중간평가.js",
-      "contentType": "기출"
+      "contentType": "단원평가"
     },
     {
       "year": "2026",
@@ -729,7 +735,7 @@ window.mainDB = {
       "examType": "mid",
       "subject": "수학",
       "file": "26_AP수학_1학기_중간_중1_중간평가유사2.js",
-      "contentType": "기출"
+      "contentType": "단원평가"
     },
     {
       "year": "2026",
@@ -738,8 +744,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "유리수와순환소수",
-      "file": "26_RPM_1학기_중간_중2_유리수와순환소수.js",
-      "contentType": "기출"
+      "file": "유리수와순환소수_중2_유형.js",
+      "contentType": "유형"
     }
   ]
 };
