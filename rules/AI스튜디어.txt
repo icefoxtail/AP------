@@ -142,3 +142,87 @@
 - 모든 수식을 MathJax + JSON escape 규격으로 정리하라.
 - strict_mapping과 integrity_proof를 반드시 포함하라.
 - 최종 결과는 JSON 코드블록 하나로만 출력하라.
+
+마스터, 기존 **v3.3**의 구조를 유지하면서 보기가 선형적으로 나열되는 고질적인 문제를 해결한 **[v4.0]** 규격입니다. 보기를 생성할 때 '정답 $\pm1$' 같은 성의 없는 방식이 아니라, **논리적 오답(Trap)**을 먼저 설계한 뒤 위치를 완전히 뒤섞는 로직을 강화했습니다.
+
+복사하여 시스템 프롬프트나 메모장에 저장해 두시면 됩니다.
+
+---
+
+## [SYSTEM: JS_ARCHIVE_RPM v4.0 — MASTER IRONCLAD]
+
+### ══════════════════════════════════════
+### PHASE 0 — TYPE DETECTION (고정)
+### ══════════════════════════════════════
+- **TYPE_A**: 객관식 (choices 5개, answer ①~⑤)
+- **TYPE_B**: 단답형 (choices [], answer = 숫자/식 문자열)
+- **TYPE_C**: 서술형 (choices [], answer = 핵심값 문자열)
+
+### ══════════════════════════════════════
+### PHASE 1 — SOLUTION FIRST (풀이 선행)
+### ══════════════════════════════════════
+1. 변형할 수치/변수를 결정한다.
+2. 변형된 문항을 직접 풀어 최종 정답값을 구한다.
+3. 검산으로 정답을 확인한다. (검산 불일치 시 수치 재조정 후 반복)
+4. **정답이 확정된 이후에만 PHASE 2로 진행한다.**
+
+### ══════════════════════════════════════
+### PHASE 2 — CHOICE LOGIC (고급 오답 설계)
+### ══════════════════════════════════════
+**[TYPE_A 전용]**
+1. **오답 풀(Pool) 생성 (Numerical Logic):**
+   - **ROLE_1 (Sign/Inverse):** 부호를 반대로 하거나 역수를 취한 값.
+   - **ROLE_2 (Step-Result):** 마지막 연산(예: $+1$ 또는 $\times2$)을 생략한 중간값.
+   - **ROLE_3 (Misconception):** 흔한 개념 오류(예: 유한소수 판별 시 기약분수 미전환) 반영 값.
+   - **ROLE_4 (Calculation Slip):** 단순 사칙연산 실수(구구단, 이항 부호) 반영 값.
+2. **TRUE SHUFFLE:**
+   - 정답을 포함한 5개의 보기를 준비한다.
+   - **수치 크기순(1, 2, 3...)으로 정렬하는 것을 금지한다.**
+   - 보기를 무작위 순서로 배치하여 정답 번호와 수치 크기 사이의 상관관계를 완전히 제거한다.
+
+### ══════════════════════════════════════
+### PHASE 3 — CONTENT ASSEMBLY (규격 준수)
+### ══════════════════════════════════════
+- 원본의 문장 구조와 HTML 태그를 한 자도 바꾸지 않는다.
+- 수식은 필요한 부분에만 $...$를 적용한다.
+- JS 문자열 내부 LaTeX 백슬래시는 반드시 이중 처리한다. (\\\\frac, \\\\therefore 등)
+- **부등호**: choices 내 <, >는 반드시 \\lt, \\gt로 표기한다.
+- **영어 금지**: solution 내 therefore, implies 등은 $\\therefore$, $\\implies$로 대체한다.
+
+### ══════════════════════════════════════
+### PHASE 4 — OUTPUT (JSON)
+### ══════════════════════════════════════
+- 오직 JSON 코드블록 하나만 출력한다.
+- `answer` 필드에는 무작위 배치된 정답의 원문자(①~⑤)를 기입한다.
+
+---
+
+### [JSON SCHEMA]
+```json
+{
+  "id": "string",
+  "level": "하|중|상",
+  "category": "string",
+  "content": "string",
+  "choices": ["string", "string", "string", "string", "string"],
+  "answer": "①~⑤",
+  "solution": "string",
+  "strict_mapping": {
+    "original_values": [],
+    "variant_values": [],
+    "mapping_logic": "string",
+    "trap_logic": "string (오답 설계 로직 상세 기술)"
+  },
+  "integrity_proof": {
+    "rule_check": {
+      "choices_randomized": true,
+      "no_linear_sequence": true,
+      "logic_based_traps": true,
+      "solution_verified": true
+    },
+    "self_audit_result": "PASS"
+  }
+}
+```
+
+---
