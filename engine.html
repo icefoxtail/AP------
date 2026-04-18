@@ -22,17 +22,24 @@
         .mode-tab.active { background: white; color: #0f172a; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
-        .page-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
+        .page-header { display: flex; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
         
-        .grid-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; }
+        .grid-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
-        .grid-col { display: flex; flex-direction: column; padding: 0 12px; }
+        .grid-col { display: flex; flex-direction: column; padding: 0 12px; min-height: 0; }
+        
         .q-box { flex: 1; padding: 10px 0; border-bottom: 0.5px solid #eee; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+        .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; margin-bottom: 0; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
         .choices { margin-top: 10px; font-size: 9pt; line-height: 1.6; }
         .choices div { margin-bottom: 2px; }
         .answer-box { flex: 1; border: 1px dashed #ccc; margin-top: 10px; background: #fafafa; }
         
+        /* fitQuestionBox 전용 클래스 */
+        .q-box.fit-tight { font-size: 9pt; line-height: 1.4; }
+        .q-box.fit-tighter { font-size: 8.6pt; line-height: 1.31; }
+        .q-box.fit-micro { font-size: 8.1pt; line-height: 1.23; }
+
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
@@ -62,7 +69,6 @@ const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 function wrapLatex(text) {
     if (!text) return "";
     let s = String(text);
-    // 수식 변환
     s = s.replace(/\[\]_\{?(\d+)\}?C_\{?(\d+)\}?/g, '\\binom{$1}{$2}');
     s = s.replace(/\[\]_([a-zA-Z])C_([a-zA-Z])/g, '\\binom{$1}{$2}');
     s = s.replace(/\[\]_\{?(\d+)\}?H_\{?(\d+)\}?/g, '_{$1}H_{$2}');
@@ -83,6 +89,17 @@ function parseExamTitle(raw) {
     if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
     const p = raw.split('_');
     return { year: p[0] ? '20' + p[0] + '년' : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
+}
+
+function fitQuestionBox(box) {
+    const classes = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
+    for (const cls of classes) {
+        box.classList.remove('fit-tight','fit-tighter','fit-micro');
+        if (cls) box.classList.add(cls);
+        if (box.scrollHeight <= box.clientHeight + 1) return;
+    }
+    const choices = box.querySelector('.choices');
+    if (choices) { choices.style.lineHeight = '1.2'; choices.style.marginTop = '1px'; }
 }
 
 async function init() {
@@ -124,6 +141,7 @@ function shuffleData() {
 function makePage(area, type, pNum) {
     const page = document.createElement('div');
     page.className = 'page';
+    page.style.position = 'relative';
     const header = document.createElement('div');
     header.className = 'page-header';
     if (type === 'exam') header.style.borderBottomColor = '#1d4ed8';
@@ -134,8 +152,14 @@ function makePage(area, type, pNum) {
     const left = [t.year, t.school, t.grade, t.semester, t.examType, t.subject].filter(Boolean).join(' | ') || AppState.title;
     let right = (type === 'sol') ? '[ 정답 및 해설 ]' : (type === 'ans') ? '[ 정답표 ]' : '이름: ____________  점수:        / 100';
 
-    header.innerHTML = `<div>${left}</div><div>${right}</div><div style="width:30px; text-align:right;">${pNum || ''}</div>`;
+    header.innerHTML = `<div style="flex:1;">${left}</div><div style="flex-shrink:0;">${right}</div>`;
     page.appendChild(header);
+
+    const pageNum = document.createElement('div');
+    pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
+    pageNum.textContent = `- ${pNum} -`;
+    page.appendChild(pageNum);
+
     area.appendChild(page);
     return page;
 }
@@ -149,22 +173,24 @@ function renderExam(area, data) {
         grid.className = 'grid-container';
         const left = document.createElement('div'); left.className = 'grid-col';
         const right = document.createElement('div'); right.className = 'grid-col';
+        grid.appendChild(left); grid.appendChild(right);
+        page.appendChild(grid);
         
         data.slice(i, i + AppState.qpp).forEach((q, idx) => {
             const box = document.createElement('div');
             box.className = 'q-box';
             
-            // [Item 1] 객관식/주관식 판별 로직 적용
             const isChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식' && q.choices.some(c => String(c).trim() !== '');
             const choicesHTML = isChoice
                 ? `<div class="choices">${q.choices.map((c,ci) => `<div>${circled[ci]||''} ${wrapLatex(String(c))}</div>`).join('')}</div>`
                 : `<div class="answer-box"></div>`;
 
             box.innerHTML = `<div class="q-num">${i+idx+1}.</div><div>${wrapLatex(q.content)}</div>${choicesHTML}`;
-            (idx < AppState.qpp / 2 ? left : right).appendChild(box);
+            
+            const targetCol = (idx < AppState.qpp / 2 ? left : right);
+            targetCol.appendChild(box);
+            fitQuestionBox(box);
         });
-        grid.appendChild(left); grid.appendChild(right);
-        page.appendChild(grid);
     }
 }
 
@@ -176,11 +202,15 @@ function renderSol(area, data) {
         grid.className = 'grid-container';
         const left = document.createElement('div'); left.className = 'grid-col';
         const right = document.createElement('div'); right.className = 'grid-col';
+        grid.appendChild(left); grid.appendChild(right);
+        page.appendChild(grid);
+
+        let colIdx = 0;
+        const cols = [left, right];
         
         data.slice(i, i + AppState.qpp).forEach((q, idx) => {
             const box = document.createElement('div');
-            box.className = 'q-box';
-            // [Item 2] 해설 참조 필드 수정 (solution 최우선)
+            box.className = 'q-box sol-box';
             const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
             box.innerHTML = `
                 <div class="q-num">${i + idx + 1}.</div>
@@ -189,10 +219,16 @@ function renderSol(area, data) {
                     <div style="font-weight:bold; color:red; margin-bottom:5px;">[정답] ${wrapLatex(q.answer)}</div>
                     <div style="font-size:9pt; line-height:1.6;">${wrapLatex(solutionText)}</div>
                 </div>`;
-            (idx < AppState.qpp / 2 ? left : right).appendChild(box);
+            
+            cols[colIdx].appendChild(box);
+            if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 1) {
+                if (colIdx === 0) {
+                    cols[colIdx].removeChild(box);
+                    colIdx = 1;
+                    cols[colIdx].appendChild(box);
+                }
+            }
         });
-        grid.appendChild(left); grid.appendChild(right);
-        page.appendChild(grid);
     }
 }
 
