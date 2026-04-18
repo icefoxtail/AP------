@@ -100,10 +100,12 @@
         .card-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
         .exam-card { background: white; border: 1px solid #f1f5f9; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: 0.18s; cursor: pointer; }
         .exam-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10); border-color: rgba(29, 78, 216, 0.35); }
+        
+        /* 다크 섹션 내 카드 스타일 보정 */
         .sec-block.dark .exam-card { border-color: rgba(255,255,255,0.05); background: rgba(255,255,255,0.03); }
         .sec-block.dark .exam-card:hover { background: white; }
+        .sec-block.dark .exam-card .card-main-title { color: #1e293b; } /* 다크 섹션 내 가시성 보정 */
         .sec-block.dark .exam-card:hover .card-main-title { color: #1e293b; }
-        .sec-block.dark .exam-card .card-main-title { color: white; }
 
         .card-top { height: 3px; background: var(--blue-main); }
         .card-body { padding: 20px; flex: 1; }
