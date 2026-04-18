@@ -23,6 +23,8 @@
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
         .page-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
+        
+        /* 시험지 그리드 */
         .grid-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; }
@@ -30,11 +32,11 @@
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
         .answer-box { flex: 1; border: 1px dashed #ccc; margin-top: 10px; background: #fafafa; }
         
-        /* 정답표 스타일 */
-        .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; }
-        .ans-unit { border: 1px solid #000; display: flex; height: 32px; align-items: center; }
-        .ans-n { width: 30px; background: #eee; text-align: center; font-weight: bold; font-size: 9pt; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid #000; }
-        .ans-v { flex: 1; text-align: center; font-size: 9.5pt; font-weight: bold; }
+        /* 정답표 그리드 시스템 */
+        .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
+        .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
+        .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
+        .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
 
         @media print { #mode-ctrl { display: none; } body { padding-top: 0; background: white; } .page { box-shadow: none; page-break-after: always; } }
     </style>
@@ -42,7 +44,7 @@
 <body>
     <div id="mode-ctrl">
         <span id="ctrl-title">JS아카이브</span>
-        <div class="mode-tabs" id="tab-group">
+        <div class="mode-tabs">
             <button class="mode-tab" id="btn-exam" onclick="switchMode('exam')">시험지</button>
             <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
@@ -60,11 +62,8 @@ const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 function wrapLatex(text) {
     if (!text) return "";
     let s = String(text);
-    
-    // [Item 2] LaTeX 구분자 호환성 변환
     s = s.replace(/\\\(([^)]+)\\\)/g, '$$$1$$');
     s = s.replace(/\\\[([^\]]+)\\\]/g, '$$$$$1$$$$');
-
     s = s.replace(/(?<!\\)because/gi, '\\because');
     const htmlTags = [];
     s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => {
@@ -94,8 +93,13 @@ async function init() {
     const s = document.createElement('script');
     s.src = dataUrl + '?v=' + Date.now();
     s.onload = () => {
-        AppState.data = window.questionBank.questions || window.questionBank.problems;
-        AppState.title = window.examTitle || p.get('title');
+        const qb = window.questionBank;
+        // [Item 1] 데이터 구조 호환성 (Array/Object 대응)
+        AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
+        AppState.title = window.examTitle || p.get('title') || '수학 시험지';
+        
+        // 상단 타이틀 즉시 갱신
+        document.getElementById('ctrl-title').innerText = AppState.title;
         render();
     };
     document.body.appendChild(s);
@@ -121,22 +125,64 @@ function makePage(area, type, pNum) {
     const header = document.createElement('div');
     header.className = 'page-header';
     
-    // [Item 2] 모드별 헤더 보더 색상 분기
-    if (type === 'exam') header.style.borderBottomColor = '#1d4ed8'; // 파랑
-    if (type === 'sol')  header.style.borderBottomColor = '#dc2626'; // 빨강
-    if (type === 'ans')  header.style.borderBottomColor = '#059669'; // 초록
+    // 모드별 헤더 색상
+    if (type === 'exam') header.style.borderBottomColor = '#1d4ed8';
+    else if (type === 'sol')  header.style.borderBottomColor = '#dc2626';
+    else if (type === 'ans')  header.style.borderBottomColor = '#059669';
 
     const t = parseExamTitle(AppState.title);
     const left = [t.year, t.school, t.grade, t.semester, t.examType, t.subject].filter(Boolean).join(' | ') || AppState.title;
-    let right = '';
-    if (type === 'sol') right = '[ 정답 및 해설 ]';
-    else if (type === 'ans') right = '[ 정답표 ]';
-    else right = '이름: ____________  점수:        / 100';
+    let right = (type === 'sol') ? '[ 정답 및 해설 ]' : (type === 'ans') ? '[ 정답표 ]' : '이름: ____________  점수:        / 100';
 
-    header.innerHTML = `<div>${left}</div><div>${right}</div><div style="width:30px; text-align:right;">${pNum}</div>`;
+    header.innerHTML = `<div>${left}</div><div>${right}</div><div style="width:30px; text-align:right;">${pNum || ''}</div>`;
     page.appendChild(header);
     area.appendChild(page);
     return page;
+}
+
+function renderAns(area, data) {
+    const PER_PAGE = 50;
+    let pCount = 1;
+
+    for (let start = 0; start < data.length; start += PER_PAGE) {
+        const chunk = data.slice(start, start + PER_PAGE);
+        const p = makePage(area, 'ans', pCount++);
+
+        const grid = document.createElement('div');
+        grid.className = 'ans-grid';
+
+        const splitIndex = Math.ceil(chunk.length / 2);
+        const orderedItems = [];
+
+        for (let i = 0; i < splitIndex; i++) {
+            orderedItems.push({ q: chunk[i], qNum: start + i + 1 });
+            if (chunk[splitIndex + i]) {
+                orderedItems.push({ q: chunk[splitIndex + i], qNum: start + splitIndex + i + 1 });
+            }
+        }
+
+        orderedItems.forEach(({ q, qNum }) => {
+            const unit = document.createElement('div');
+            unit.className = 'ans-cell';
+            unit.innerHTML = `<div class="ans-n">${qNum}.</div><div class="ans-v">${wrapLatex(q.answer ?? '–')}</div>`;
+            grid.appendChild(unit);
+        });
+
+        p.appendChild(grid);
+
+        // QR 코드는 마지막 페이지 하단
+        if (start + PER_PAGE >= data.length) {
+            const solUrl = new URL(window.location.href);
+            solUrl.searchParams.set('mode', 'sol');
+            const qrDiv = document.createElement('div');
+            qrDiv.style.cssText = 'margin-top:auto; padding:20px 0; text-align:center; font-size:8pt; color:#555;';
+            qrDiv.innerHTML = `
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}"
+                     style="width:80px;height:80px;" alt="해설 QR">
+                <div style="margin-top:4px; font-weight:bold;">📱 스마트 해설지 바로가기</div>`;
+            p.appendChild(qrDiv);
+        }
+    }
 }
 
 function renderExam(area, data) {
@@ -183,25 +229,6 @@ function renderSol(area, data) {
         grid.appendChild(left); grid.appendChild(right);
         page.appendChild(grid);
     }
-}
-
-function renderAns(area, data) {
-    const page = makePage(area, 'ans', 1);
-    const title = document.createElement('div');
-    title.style.cssText = 'font-size:16pt; font-weight:800; text-align:center; margin: 30px 0;';
-    title.innerText = '빠른 정답 체크';
-    page.appendChild(title);
-
-    const grid = document.createElement('div');
-    grid.className = 'ans-grid';
-    data.forEach((q, i) => {
-        const unit = document.createElement('div');
-        unit.className = 'ans-unit';
-        // [Item 2] 정답 데이터 wrapLatex 통과시켜 수식 렌더링 보장
-        unit.innerHTML = `<div class="ans-n">${i+1}</div><div class="ans-v">${wrapLatex(q.answer ?? '–')}</div>`;
-        grid.appendChild(unit);
-    });
-    page.appendChild(grid);
 }
 
 function render() {
