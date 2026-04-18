@@ -5,11 +5,7 @@
     <title>JS아카이브 엔진</title>
     <script>
         window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$']],
-                displayMath: [['$$', '$$']],
-                packages: {'[+]': ['ams', 'boldsymbol']}
-            },
+            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
@@ -18,1055 +14,203 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
+        body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 54px; }
+        #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 56px; background: #0f172a; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; z-index: 1000; box-sizing: border-box; }
+        #ctrl-title { color: white; font-weight: 800; font-size: 14px; }
+        .mode-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.07); padding: 4px; border-radius: 10px; }
+        .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
+        .mode-tab.active { background: white; color: #0f172a; }
+        #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+        .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
+        .page-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
+        .grid-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; }
+        .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
+        .grid-col { display: flex; flex-direction: column; padding: 0 12px; }
+        .q-box { flex: 1; padding: 10px 0; border-bottom: 0.5px solid #eee; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+        .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
+        .answer-box { flex: 1; border: 1px dashed #ccc; margin-top: 10px; background: #fafafa; }
+        
+        /* 정답표 스타일 */
+        .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; }
+        .ans-unit { border: 1px solid #000; display: flex; height: 32px; align-items: center; }
+        .ans-n { width: 30px; background: #eee; text-align: center; font-weight: bold; font-size: 9pt; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid #000; }
+        .ans-v { flex: 1; text-align: center; font-size: 9.5pt; font-weight: bold; }
 
-        body {
-            margin: 0;
-            font-family: 'Nanum Myeongjo', serif;
-            font-size: 9.5pt;
-            background: #f1f5f9;
-            padding-top: 54px;
-            color: #000;
-        }
-
-        #mode-ctrl {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 56px;
-            background: #0f172a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 24px;
-            z-index: 1000;
-            box-sizing: border-box;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            gap: 16px;
-        }
-
-        #ctrl-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: white;
-            white-space: nowrap;
-            letter-spacing: -0.3px;
-            flex-shrink: 0;
-        }
-
-        .mode-tabs {
-            display: flex;
-            gap: 4px;
-            background: rgba(255,255,255,0.07);
-            padding: 4px;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-
-        .mode-tab {
-            padding: 6px 16px;
-            border-radius: 7px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            color: rgba(255,255,255,0.5);
-            transition: 0.18s;
-            font-family: inherit;
-            letter-spacing: -0.2px;
-        }
-
-        .mode-tab:hover {
-            color: white;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .mode-tab.active {
-            background: white;
-            color: #0f172a;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-        }
-
-        .ctrl-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .qpp-selector {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: rgba(255,255,255,0.7);
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        #qppSelect {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px;
-            padding: 4px 8px;
-            font-family: inherit;
-            font-size: 11px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        #qppSelect:hover {
-            background: rgba(255,255,255,0.15);
-        }
-
-        .print-btn {
-            padding: 7px 16px;
-            border: none;
-            border-radius: 7px;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 12px;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-
-        .print-btn.primary {
-            background: #378ADD;
-            color: white;
-        }
-
-        .print-btn.primary:hover {
-            background: #2e73c4;
-        }
-
-        .print-btn.ghost {
-            background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.8);
-        }
-
-        .print-btn.ghost:hover {
-            background: rgba(255,255,255,0.18);
-            color: white;
-        }
-
-        #print-area {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 0;
-        }
-
-        .page {
-            width: 210mm;
-            height: 297mm;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 15mm;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        @media print {
-            @page {
-                size: A4;
-                margin: 0;
-            }
-
-            body {
-                padding-top: 0;
-                margin: 0;
-                background: white;
-            }
-
-            #mode-ctrl {
-                display: none !important;
-            }
-
-            #print-area {
-                display: flex !important;
-                gap: 0;
-                padding: 0;
-            }
-
-            .page {
-                box-shadow: none;
-                page-break-after: always;
-            }
-
-            #pdf-container {
-                display: block !important;
-                position: fixed;
-                inset: 0;
-                width: 100vw;
-                height: 100vh;
-                background: white;
-                z-index: 9999;
-                margin: 0;
-                padding: 0;
-            }
-
-            #pdf-viewer {
-                width: 100%;
-                height: 100%;
-                border: none;
-            }
-
-            body:not(.mode-pdf) #pdf-container {
-                display: none !important;
-            }
-
-            body.mode-pdf #print-area {
-                display: none !important;
-            }
-        }
-
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
-            margin-bottom: 12px;
-            font-weight: bold;
-            flex-shrink: 0;
-            font-size: 10pt;
-        }
-
-        #pdf-container {
-            display: none;
-            width: 100%;
-            height: calc(100vh - 54px);
-            background: #525659;
-            overflow: hidden;
-        }
-
-        #pdf-viewer {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: white;
-        }
-
-        .grid-container {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-            overflow: hidden;
-            min-height: 0;
-        }
-
-        .grid-container::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: #000;
-        }
-
-        .grid-col {
-            display: flex;
-            flex-direction: column;
-            padding: 0 12px;
-            overflow: hidden;
-            min-height: 0;
-        }
-
-        .q-box {
-            flex: 1 1 0;
-            min-height: 0;
-            padding: 10px 0;
-            border-bottom: 0.5px solid #ccc;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            word-break: keep-all;
-            overflow-wrap: anywhere;
-            line-height: 1.58;
-            font-size: 9.5pt;
-        }
-
-        .q-box:last-child {
-            border-bottom: none;
-        }
-
-        .q-num {
-            font-weight: bold;
-            font-size: 11pt;
-            margin-bottom: 6px;
-            flex-shrink: 0;
-        }
-
-        .q-content {
-            min-height: 0;
-        }
-
-        .box {
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 8px 10px;
-            margin: 6px 0;
-            background: #f9f9f9;
-            font-size: 9pt;
-            line-height: 1.5;
-            overflow-x: auto;
-        }
-
-        .answer-box {
-            flex: 1;
-            border: 1px dashed #bbb;
-            margin-top: 8px;
-            background: #fafafa;
-        }
-
-        .choices {
-            margin-top: 7px;
-            line-height: 1.72;
-        }
-
-        .q-box.fit-tight {
-            font-size: 9.0pt;
-            line-height: 1.40;
-        }
-
-        .q-box.fit-tight .q-num {
-            font-size: 10.5pt;
-            margin-bottom: 4px;
-        }
-
-        .q-box.fit-tight .choices {
-            margin-top: 5px;
-            line-height: 1.54;
-        }
-
-        .q-box.fit-tighter {
-            font-size: 8.6pt;
-            line-height: 1.31;
-        }
-
-        .q-box.fit-tighter .q-num {
-            font-size: 10pt;
-            margin-bottom: 3px;
-        }
-
-        .q-box.fit-tighter .choices {
-            margin-top: 4px;
-            line-height: 1.42;
-        }
-
-        .q-box.fit-micro {
-            font-size: 8.1pt;
-            line-height: 1.23;
-        }
-
-        .q-box.fit-micro .q-num {
-            font-size: 9.5pt;
-            margin-bottom: 2px;
-        }
-
-        .q-box.fit-micro .choices {
-            margin-top: 2px;
-            line-height: 1.30;
-        }
-
-        .sol-box {
-            padding: 0;
-            border-bottom: none;
-            width: 100%;
-            margin-bottom: 0;
-        }
-
-        .sol-head {
-            padding: 8px 0 4px 0;
-            width: 100%;
-            font-size: 9pt;
-            line-height: 1.5;
-        }
-
-        .sol-head .q-num {
-            margin-bottom: 0;
-        }
-
-        .sol-frag {
-            width: 100%;
-            margin-bottom: 4px;
-        }
-
-        .sol-step {
-            padding-left: 8px;
-            border-left: 2px solid #e2e8f0;
-            margin-bottom: 4px;
-            font-size: 9pt;
-            line-height: 1.5;
-            word-break: keep-all;
-            overflow-wrap: anywhere;
-            break-inside: avoid;
-            page-break-inside: avoid;
-        }
-
-        .sol-divider {
-            border-bottom: 0.5px solid #eee;
-            margin: 8px 0 36px 0;
-        }
-
-        .ans-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 24px;
-            row-gap: 2px;
-            margin-top: 5px;
-        }
-
-        .ans-cell {
-            padding: 4px 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            border-bottom: 0.1px solid #f0f0f0;
-        }
+        @media print { #mode-ctrl { display: none; } body { padding-top: 0; background: white; } .page { box-shadow: none; page-break-after: always; } }
     </style>
 </head>
 <body>
-
     <div id="mode-ctrl">
         <span id="ctrl-title">JS아카이브</span>
-        <div class="mode-tabs" id="modeTabs">
-            <button class="mode-tab" data-mode="exam" onclick="switchMode('exam')">시험지</button>
-            <button class="mode-tab" data-mode="sol" onclick="switchMode('sol')">해설지</button>
-            <button class="mode-tab" data-mode="ans" onclick="switchMode('ans')">정답표</button>
+        <div class="mode-tabs" id="tab-group">
+            <button class="mode-tab" id="btn-exam" onclick="switchMode('exam')">시험지</button>
+            <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
+            <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
-        <div class="ctrl-right">
-            <div class="qpp-selector">
-                <span>문항/쪽:</span>
-                <select id="qppSelect" onchange="changeQpp(this.value)">
-                    <option value="2">2문항</option>
-                    <option value="4">4문항</option>
-                    <option value="6">6문항</option>
-                    <option value="8">8문항</option>
-                </select>
-            </div>
-            <button class="print-btn ghost" onclick="shuffleData()">🔀 셔플</button>
-            <button class="print-btn ghost" id="pdf-open-btn" style="display:none;">↗ PDF 새 탭</button>
-            <button class="print-btn primary" onclick="window.print()">🖨 인쇄</button>
+        <div style="display:flex; gap:10px;">
+            <button class="mode-tab" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
+            <button onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
-
-    <div id="pdf-container">
-        <iframe id="pdf-viewer" src=""></iframe>
-    </div>
-
     <div id="print-area"></div>
-    <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:85mm;"></div>
 
 <script>
-const AppState = { title: 'JS아카이브', data: [], mode: 'exam', qpp: 4, shuffled: false };
-let pageCount = 0;
-
-function parseExamTitle(raw) {
-    if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
-    const parts = raw.split('_');
-    return {
-        year: parts[0] ? '20' + parts[0] + '년' : '',
-        school: parts[1] || '',
-        semester: parts[2] || '',
-        examType: parts[3] || '',
-        grade: parts[4] || '',
-        subject: parts[5] || ''
-    };
-}
-
-async function loadData(dataUrl) {
-    if (dataUrl === 'mixed') {
-        const raw = sessionStorage.getItem('mixedQuestions');
-        return raw ? JSON.parse(raw) : [];
-    }
-
-    return new Promise(res => {
-        const oldScript = document.getElementById('data-script');
-        if (oldScript) oldScript.remove();
-
-        delete window.questionBank;
-        delete window.examTitle;
-        const s = document.createElement('script');
-        s.id = 'data-script';
-        s.src = dataUrl + '?v=' + Date.now();
-        s.onload = () => {
-            const qb = window.questionBank;
-            const data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
-            res(data);
-        };
-        s.onerror = () => res([]);
-        document.body.appendChild(s);
-    });
-}
-
-async function init() {
-    const p = new URLSearchParams(window.location.search);
-    AppState.mode = p.get('mode') || 'exam';
-    AppState.title = (p.get('title') || 'JS아카이브 기출');
-
-    const rawQpp = parseInt(p.get('qpp'));
-    AppState.qpp = isNaN(rawQpp) ? 4 : Math.max(2, Math.min(8, rawQpp));
-    AppState.data_url = p.get('data') || '';
-
-    const qppSelect = document.getElementById('qppSelect');
-    if (qppSelect) qppSelect.value = AppState.qpp;
-
-    const file = p.get('file');
-    const dataUrl = AppState.data_url;
-
-    document.getElementById('ctrl-title').innerText = AppState.title;
-
-    if (AppState.mode === 'pdf' && file) {
-        document.body.classList.add('mode-pdf');
-        document.getElementById('modeTabs').style.display = 'none';
-        document.getElementById('pdf-container').style.display = 'block';
-        document.getElementById('pdf-viewer').src = file;
-
-        const openBtn = document.getElementById('pdf-open-btn');
-        if (openBtn) {
-            openBtn.style.display = 'inline-block';
-            openBtn.onclick = () => window.open(file, '_blank', 'noopener,noreferrer');
-        }
-        return;
-    }
-
-    updateTabs(AppState.mode);
-    document.getElementById('print-area').style.display = 'flex';
-
-    if (dataUrl) {
-        AppState.data = await loadData(dataUrl);
-        if (AppState.data.length > 0) await renderEngine();
-    }
-}
-
-function updateTabs(mode) {
-    document.querySelectorAll('.mode-tab').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.mode === mode);
-    });
-}
-
-function switchMode(mode) {
-    if (mode === AppState.mode) return;
-    const url = new URL(window.location.href);
-    url.searchParams.set('mode', mode);
-    url.searchParams.set('qpp', AppState.qpp);
-    const ids = new URLSearchParams(window.location.search).get('ids');
-    if (ids) url.searchParams.set('ids', ids);
-    window.location.href = url.toString();
-}
-
-function changeQpp(val) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('qpp', val);
-    url.searchParams.set('mode', AppState.mode); 
-    const ids = new URLSearchParams(window.location.search).get('ids');
-    if (ids) url.searchParams.set('ids', ids);
-    window.location.href = url.toString();
-}
-
-function shuffleData() {
-    // Fisher-Yates Shuffle
-    for (let i = AppState.data.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
-    }
-    AppState.shuffled = true;
-    renderEngine();
-}
-
-async function renderEngine() {
-    const area = document.getElementById('print-area');
-    area.innerHTML = '';
-    pageCount = 0;
-
-    const p = new URLSearchParams(window.location.search);
-    const idsParam = p.get('ids');
-    let displayData = AppState.data;
-
-    // IDS Filter logic
-    if (idsParam) {
-        const idList = idsParam.split(',').map(s => s.trim());
-        displayData = AppState.data.filter(q => idList.includes(String(q.id)));
-    }
-
-    const titlePrefix = AppState.shuffled ? '[🔀] ' : '';
-    document.getElementById('ctrl-title').innerText = titlePrefix + (window.examTitle || AppState.title);
-
-    if (AppState.mode === 'ans') {
-        renderAnsGrid(area, displayData);
-    } else if (AppState.mode === 'sol') {
-        await renderSol(area, displayData);
-    } else {
-        await renderExam(area, displayData);
-    }
-}
-
-async function renderExam(area, bank) {
-    const perCol = Math.ceil(AppState.qpp / 2);
-    const staging = document.getElementById('staging');
-    staging.style.width = '85mm';
-    staging.innerHTML = '';
-
-    const boxes = bank.map((q, i) => {
-        const el = document.createElement('div');
-        el.className = 'q-box';
-        el.innerHTML = buildExamBox(q, i);
-        staging.appendChild(el);
-        return el;
-    });
-
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
-    await raf();
-
-    for (let start = 0; start < boxes.length; start += AppState.qpp) {
-        const chunk = boxes.slice(start, start + AppState.qpp);
-        const page = makePage(area, 'exam');
-
-        const leftItems = chunk.slice(0, perCol).map(el => el.cloneNode(true));
-        const rightItems = chunk.slice(perCol).map(el => el.cloneNode(true));
-
-        leftItems.forEach(el => page.cols[0].appendChild(el));
-        rightItems.forEach(el => page.cols[1].appendChild(el));
-
-        if (window.MathJax?.typesetPromise) {
-            await MathJax.typesetPromise([page.cols[0], page.cols[1]]);
-        }
-        await raf();
-
-        fitExamColumn(page.cols[0]);
-        fitExamColumn(page.cols[1]);
-
-        if (window.MathJax?.typesetPromise) {
-            await MathJax.typesetPromise([page.cols[0], page.cols[1]]);
-        }
-        await raf();
-    }
-}
-
-function extractChoice(c) {
-    if (c === null || c === undefined) return '';
-    if (typeof c === 'object') {
-        return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
-    }
-    return String(c);
-}
-
-function stripChoicePrefix(text) {
-    return String(text || '')
-        .replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '')
-        .trim();
-}
-
-function buildExamBox(q, i) {
-    const circled = ['①','②','③','④','⑤'];
-    const isMultipleChoice =
-        Array.isArray(q.choices) &&
-        q.choices.length > 0 &&
-        q.choices[0] !== "주관식" &&
-        q.choices.some(c => extractChoice(c).trim() !== "");
-
-    const choicesHTML = isMultipleChoice
-        ? `<div class="choices">${q.choices.map((c, ci) => {
-              const rawChoice = extractChoice(c);
-              const cleanChoice = stripChoicePrefix(rawChoice);
-              return `<div>${circled[ci] || (ci + 1) + ')'} ${wrapLatex(cleanChoice)}</div>`;
-          }).join('')}</div>`
-        : `<div class="answer-box"></div>`;
-
-    return `
-        <div class="q-num">${i + 1}.</div>
-        <div class="q-content">${wrapLatex(q.content || q.question || '')}</div>
-        ${choicesHTML}
-    `;
-}
-
-function fitExamColumn(col) {
-    const boxes = [...col.querySelectorAll('.q-box')];
-    boxes.forEach(box => fitQuestionBox(box));
-}
-
-function fitQuestionBox(box) {
-    const fitClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
-
-    for (const cls of fitClasses) {
-        box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
-        if (cls) box.classList.add(cls);
-
-        if (box.scrollHeight <= box.clientHeight + 1) {
-            return;
-        }
-    }
-
-    const choices = box.querySelector('.choices');
-    if (choices) {
-        choices.style.lineHeight = '1.2';
-        choices.style.marginTop = '1px';
-    }
-
-    const qnum = box.querySelector('.q-num');
-    if (qnum) {
-        qnum.style.marginBottom = '1px';
-    }
-}
-
-function buildSolHeader(q, i) {
-    return `
-        <div class="sol-head">
-            <div class="q-num">${i + 1}.
-                <span style="font-size:9pt;font-weight:normal;">
-                    ${wrapLatex(q.content || q.question || '')}
-                </span>
-            </div>
-        </div>
-    `;
-}
-
-function buildSolFragments(q) {
-    if (q.solution_steps?.length) {
-        return q.solution_steps.map((s, si) => `
-            <div class="sol-frag">
-                <div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatexPreserveBlocks(normalizeMathEnglishInSolution(stripCite(s)))}</div>
-            </div>
-        `);
-    }
-
-    if (q.solution) {
-        const raw = normalizeMathEnglishInSolution(stripCite(q.solution));
-
-        const hasStructuredMath =
-            /\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(raw) ||
-            /\\multicolumn|\\cline|\\hline/.test(raw);
-
-        if (hasStructuredMath) {
-            return [
-                `<div class="sol-frag"><div class="sol-step">${wrapLatexPreserveBlocks(raw)}</div></div>`
-            ];
-        }
-
-        const lines = raw
-            .split(/\n+/)
-            .map(v => v.trim())
-            .filter(Boolean);
-
-        return lines.map(line => `
-            <div class="sol-frag">
-                <div class="sol-step">${wrapLatexPreserveBlocks(line)}</div>
-            </div>
-        `);
-    }
-
-    return [
-        `<div class="sol-frag"><div class="sol-step" style="color:#94a3b8;font-size:8pt;">해설 없음</div></div>`
-    ];
-}
-
-async function renderSol(area, bank) {
-    let p = makePage(area, 'sol');
-    let colIdx = 0;
-
-    async function ensureFitOrAdvance(targetCol, node) {
-        targetCol.appendChild(node);
-
-        if (window.MathJax?.typesetPromise) {
-            await MathJax.typesetPromise([targetCol]);
-        }
-        await raf();
-
-        const overflowed = targetCol.scrollHeight > targetCol.clientHeight + 1;
-
-        if (!overflowed) return true;
-
-        node.remove();
-
-        if (colIdx === 0) {
-            colIdx = 1;
-        } else {
-            p = makePage(area, 'sol');
-            colIdx = 0;
-        }
-        return false;
-    }
-
-    for (let i = 0; i < bank.length; i++) {
-        const q = bank[i];
-
-        const headWrap = document.createElement('div');
-        headWrap.innerHTML = buildSolHeader(q, i).trim();
-        const headEl = headWrap.firstElementChild;
-
-        let placedHeader = false;
-        while (!placedHeader) {
-            const targetCol = p.cols[colIdx];
-            placedHeader = await ensureFitOrAdvance(targetCol, headEl.cloneNode(true));
-        }
-
-        const fragments = buildSolFragments(q);
-
-        for (const fragHTML of fragments) {
-            const fragWrap = document.createElement('div');
-            fragWrap.innerHTML = fragHTML.trim();
-            const fragEl = fragWrap.firstElementChild;
-
-            let placedFrag = false;
-            while (!placedFrag) {
-                const targetCol = p.cols[colIdx];
-                placedFrag = await ensureFitOrAdvance(targetCol, fragEl.cloneNode(true));
-            }
-        }
-
-        const divider = document.createElement('div');
-        divider.className = 'sol-divider';
-
-        let placedDivider = false;
-        while (!placedDivider) {
-            const targetCol = p.cols[colIdx];
-            placedDivider = await ensureFitOrAdvance(targetCol, divider.cloneNode(true));
-        }
-    }
-}
-
-function renderAnsGrid(area, bank) {
-    const p = makePage(area, 'ans');
-    const grid = document.createElement('div');
-    grid.className = 'ans-grid';
-
-    const splitIndex = Math.ceil(bank.length / 2);
-    const orderedItems = [];
-
-    for (let i = 0; i < splitIndex; i++) {
-        orderedItems.push({ q: bank[i], qNum: i + 1 });
-        if (bank[splitIndex + i]) {
-            orderedItems.push({ q: bank[splitIndex + i], qNum: splitIndex + i + 1 });
-        }
-    }
-
-    orderedItems.forEach(({ q, qNum }) => {
-        const cell = document.createElement('div');
-        cell.className = 'ans-cell';
-        const rawAns = String(q.answer ?? '–');
-        const displayAns = (rawAns.includes('sqrt') || rawAns.includes('/') || rawAns.includes('^'))
-            ? wrapLatex(rawAns)
-            : rawAns;
-
-        cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${qNum}.</b>
-                          <span style="font-size:10.5pt;">${wrapLatex(displayAns)}</span>`;
-        grid.appendChild(cell);
-    });
-
-    p.body.appendChild(grid);
-
-    // 해설 QR 생성 및 삽입
-    const solUrl = new URL(window.location.href);
-    solUrl.searchParams.set('mode', 'sol');
-    const ids = new URLSearchParams(window.location.search).get('ids');
-    if (ids) solUrl.searchParams.set('ids', ids);
-
-    const qrDiv = document.createElement('div');
-    qrDiv.style.cssText = 'margin-top:24px; text-align:center; font-size:8pt; color:#555;';
-    qrDiv.innerHTML = `
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}"
-             style="width:80px;height:80px;" alt="해설 QR">
-        <div style="margin-top:4px;">📱 해설 바로가기</div>
-    `;
-    p.body.appendChild(qrDiv);
-
-    if (window.MathJax?.typesetPromise) MathJax.typesetPromise([p.body]);
-}
-
-function makePage(area, type) {
-    pageCount++;
-    const page = document.createElement('div');
-    page.className = 'page';
-
-    const header = document.createElement('div');
-    header.className = 'page-header';
-
-    const t = parseExamTitle(window.examTitle);
-    const leftText = [t.year, t.school, t.grade, (t.semester + ' ' + t.examType).trim(), t.subject]
-        .filter(Boolean).join(' | ');
-
-    let rightHTML = '';
-    if (type === 'sol') {
-        rightHTML = `<span>[ 정답 및 해설 ]</span>`;
-    } else if (type === 'ans') {
-        rightHTML = `<span>[ 정답표 ]</span>`;
-    } else {
-        rightHTML = `<div style="display:flex; gap:25px;">
-                        <span>이름: ____________</span>
-                        <span>점수: ________ / 100</span>
-                    </div>`;
-    }
-
-    header.innerHTML = `
-        <div style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; padding-right:15px;">
-            ${leftText || AppState.title}
-        </div>
-        <div style="flex-shrink:0;">${rightHTML}</div>
-        <div style="width:60px; text-align:right; flex-shrink:0;">- ${pageCount} -</div>
-    `;
-    page.appendChild(header);
-
-    if (type === 'ans') {
-        const body = document.createElement('div');
-        body.style.flex = '1';
-        page.appendChild(body);
-        area.appendChild(page);
-        return { page, body };
-    }
-
-    const grid = document.createElement('div');
-    grid.className = 'grid-container';
-
-    const left = document.createElement('div');
-    left.className = 'grid-col';
-
-    const right = document.createElement('div');
-    right.className = 'grid-col';
-
-    grid.appendChild(left);
-    grid.appendChild(right);
-    page.appendChild(grid);
-    area.appendChild(page);
-
-    return { page, cols: [left, right] };
-}
-
-
-function normalizeMathEnglishInSolution(text) {
-    if (!text) return text;
-    let s = String(text);
-
-    const rules = [
-        [/\bif\s+and\s+only\s+if\b/gi, '\\iff'],
-        [/\biff\b/gi, '\\iff'],
-        [/(?<!\\)therefore/gi, ' \\therefore '],
-        [/(?<!\\)hence/gi, ' \\therefore '],
-        [/(?<!\\)thus/gi, ' \\therefore '],
-        [/(?<!\\)because/gi, ' \\because '],
-        [/(?<!\\)implies/gi, ' \\implies '],
-        [/(?<!\\)imply/gi, ' \\implies '],
-        [/=>/g, '\\implies'],
-        [/==>/g, '\\implies'],
-        [/-->/g, '\\to'],
-        [/->/g, '\\to'],
-        [/\bto\b(?=\s*[0-9a-zA-Z가-힣(\\])/g, '\\to'],
-        [/\bfor\s+all\b/gi, '\\forall'],
-        [/\bexists\b/gi, '\\exists'],
-        [/\bnot\s+equal\s+to\b/gi, '\\ne'],
-        [/\bgreater\s+than\s+or\s+equal\s+to\b/gi, '\\ge'],
-        [/\bless\s+than\s+or\s+equal\s+to\b/gi, '\\le'],
-        [/\bapproximately\b/gi, '\\approx'],
-        [/\binfinity\b/gi, '\\infty'],
-        [/\bparallel\b/gi, '\\parallel'],
-        [/\bperpendicular\b/gi, '\\perp'],
-        [/\bangle\b/gi, '\\angle'],
-        [/\btriangle\b/gi, '\\triangle']
-    ];
-
-    rules.forEach(([pattern, repl]) => {
-        s = s.replace(pattern, repl);
-    });
-
-    s = s.replace(/(^|\s)so(?=\s|$)/gi, '$1\\therefore');
-
-    s = s.replace(/\b(and|or)\b/gi, (m) => m.toLowerCase() === 'and' ? '\\text{ 그리고 }' : '\\text{ 또는 }');
-
-    s = s.replace(/\s{2,}/g, ' ').trim();
-    return s;
-}
+const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 
 function wrapLatex(text) {
-    return wrapLatexPreserveBlocks(text);
-}
-
-function wrapLatexPreserveBlocks(text) {
-    if (!text) return text;
+    if (!text) return "";
     let s = String(text);
-
-    s = s.replace(/\^\[([^\]]+)\]/g, '^{$1}').replace(/_\[([^\]]+)\]/g, '_{$1}');
-    s = s.replace(//g, '(').replace(//g, ')').replace(//g, '');
-    s = s.replace(/²/g, '^2').replace(/³/g, '^3');
-    s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}').replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
-    s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
-    s = s.replace(/\\frac\[([^\]]+)\]\[([^\]]+)\]/g, '\\frac{$1}{$2}').replace(/\\dot\[([^\]]+)\]/g, '\\dot{$1}');
-
-    const hasAnyKorean = /[가-힣]/.test(s);
-    if (!hasAnyKorean && (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s))) {
-        return `$$${s}$$`;
-    }
-
-    const htmlTags = [];
     
+    // [Item 2] LaTeX 구분자 호환성 변환
+    s = s.replace(/\\\(([^)]+)\\\)/g, '$$$1$$');
+    s = s.replace(/\\\[([^\]]+)\\\]/g, '$$$$$1$$$$');
+
+    s = s.replace(/(?<!\\)because/gi, '\\because');
+    const htmlTags = [];
     s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`;
         htmlTags.push(m);
         return token;
     });
+    return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i]);
+}
+
+function parseExamTitle(raw) {
+    if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
+    const p = raw.split('_');
+    return { year: p[0] ? '20' + p[0] + '년' : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
+}
+
+async function init() {
+    const p = new URLSearchParams(window.location.search);
+    AppState.mode = p.get('mode') || 'exam';
+    AppState.qpp = parseInt(p.get('qpp')) || 4;
+    const dataUrl = p.get('data');
+    if (!dataUrl) return;
+
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('btn-' + AppState.mode).classList.add('active');
+
+    const s = document.createElement('script');
+    s.src = dataUrl + '?v=' + Date.now();
+    s.onload = () => {
+        AppState.data = window.questionBank.questions || window.questionBank.problems;
+        AppState.title = window.examTitle || p.get('title');
+        render();
+    };
+    document.body.appendChild(s);
+}
+
+function switchMode(mode) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', mode);
+    window.location.href = url.toString();
+}
+
+function shuffleData() {
+    for (let i = AppState.data.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
+    }
+    render();
+}
+
+function makePage(area, type, pNum) {
+    const page = document.createElement('div');
+    page.className = 'page';
+    const header = document.createElement('div');
+    header.className = 'page-header';
     
-    s = s.replace(/<\/?(?:div|span|br|p|b|i|u|strong|em|table|thead|tbody|tr|td|th|ul|ol|li|hr)(?:\s+[^<>]*?)?\s*\/?>/gi, m => {
-        const token = `__HTMLTAG_${htmlTags.length}__`;
-        htmlTags.push(m);
-        return token;
+    // [Item 2] 모드별 헤더 보더 색상 분기
+    if (type === 'exam') header.style.borderBottomColor = '#1d4ed8'; // 파랑
+    if (type === 'sol')  header.style.borderBottomColor = '#dc2626'; // 빨강
+    if (type === 'ans')  header.style.borderBottomColor = '#059669'; // 초록
+
+    const t = parseExamTitle(AppState.title);
+    const left = [t.year, t.school, t.grade, t.semester, t.examType, t.subject].filter(Boolean).join(' | ') || AppState.title;
+    let right = '';
+    if (type === 'sol') right = '[ 정답 및 해설 ]';
+    else if (type === 'ans') right = '[ 정답표 ]';
+    else right = '이름: ____________  점수:        / 100';
+
+    header.innerHTML = `<div>${left}</div><div>${right}</div><div style="width:30px; text-align:right;">${pNum}</div>`;
+    page.appendChild(header);
+    area.appendChild(page);
+    return page;
+}
+
+function renderExam(area, data) {
+    let pNum = 1;
+    for (let i = 0; i < data.length; i += AppState.qpp) {
+        const page = makePage(area, 'exam', pNum++);
+        const grid = document.createElement('div');
+        grid.className = 'grid-container';
+        const left = document.createElement('div'); left.className = 'grid-col';
+        const right = document.createElement('div'); right.className = 'grid-col';
+        
+        data.slice(i, i + AppState.qpp).forEach((q, idx) => {
+            const box = document.createElement('div');
+            box.className = 'q-box';
+            box.innerHTML = `<div class="q-num">${i + idx + 1}.</div><div>${wrapLatex(q.content)}</div><div class="answer-box"></div>`;
+            (idx < AppState.qpp / 2 ? left : right).appendChild(box);
+        });
+        grid.appendChild(left); grid.appendChild(right);
+        page.appendChild(grid);
+    }
+}
+
+function renderSol(area, data) {
+    let pNum = 1;
+    for (let i = 0; i < data.length; i += AppState.qpp) {
+        const page = makePage(area, 'sol', pNum++);
+        const grid = document.createElement('div');
+        grid.className = 'grid-container';
+        const left = document.createElement('div'); left.className = 'grid-col';
+        const right = document.createElement('div'); right.className = 'grid-col';
+        
+        data.slice(i, i + AppState.qpp).forEach((q, idx) => {
+            const box = document.createElement('div');
+            box.className = 'q-box';
+            box.innerHTML = `
+                <div class="q-num">${i + idx + 1}.</div>
+                <div style="margin-bottom:10px; color:#666;">${wrapLatex(q.content)}</div>
+                <div style="background:#fdfdfd; padding:10px; border:1px solid #eee;">
+                    <div style="font-weight:bold; color:red; margin-bottom:5px;">[정답] ${wrapLatex(q.answer)}</div>
+                    <div style="font-size:9pt; line-height:1.6;">${wrapLatex(q.explanation || q.sol || '해설이 없습니다.')}</div>
+                </div>`;
+            (idx < AppState.qpp / 2 ? left : right).appendChild(box);
+        });
+        grid.appendChild(left); grid.appendChild(right);
+        page.appendChild(grid);
+    }
+}
+
+function renderAns(area, data) {
+    const page = makePage(area, 'ans', 1);
+    const title = document.createElement('div');
+    title.style.cssText = 'font-size:16pt; font-weight:800; text-align:center; margin: 30px 0;';
+    title.innerText = '빠른 정답 체크';
+    page.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'ans-grid';
+    data.forEach((q, i) => {
+        const unit = document.createElement('div');
+        unit.className = 'ans-unit';
+        // [Item 2] 정답 데이터 wrapLatex 통과시켜 수식 렌더링 보장
+        unit.innerHTML = `<div class="ans-n">${i+1}</div><div class="ans-v">${wrapLatex(q.answer ?? '–')}</div>`;
+        grid.appendChild(unit);
     });
-
-    s = s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\n/g, '<br>');
-
-    const segments = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$|__HTMLTAG_\d+__|<br>)/g);
-
-    const out = segments.map(seg => {
-        if (!seg) return '';
-        if (seg === '<br>') return seg;
-        
-        if (/^__HTMLTAG_\d+__$/.test(seg)) {
-            return htmlTags[Number(seg.match(/\d+/)[0])] || seg;
-        }
-        
-        if (/^\$\$[\s\S]*\$\$$/.test(seg) || /^\$[^$\n]+\$$/.test(seg)) {
-            return seg;
-        }
-
-        const trimmed = seg.trim();
-        if (!trimmed) return seg;
-
-        const hasKorean = /[가-힣]/.test(trimmed);
-        const hasDollar = /\$/.test(trimmed);
-        const looksLikeMath =
-            !hasKorean &&
-            !hasDollar &&
-            (
-                /\\[a-zA-Z]+/.test(trimmed) ||
-                (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\&;]+$/.test(trimmed) && trimmed.length > 0)
-            );
-
-        if (looksLikeMath) {
-            const math = trimmed.replace(/&lt;/g, '\\lt ').replace(/&gt;/g, '\\gt ');
-            return seg.replace(trimmed, `$${math}$`);
-        }
-
-        return seg.split(/(\$[^$\n]*\$)/g).map((piece, idx) => {
-            if (idx % 2 === 1) return piece;
-            return piece.replace(/(\\\{(?:[^${}]|\{[^}]*\})*\\\})/g, '$$$1$$');
-        }).join('');
-    }).join('');
-
-    return out;
+    page.appendChild(grid);
 }
 
-function stripCite(text) {
-    if (!text) return text;
-    return text.replace(/【[^】]*】/g, '').trim();
-}
-
-function raf() {
-    return new Promise(r => requestAnimationFrame(r));
+function render() {
+    const area = document.getElementById('print-area');
+    area.innerHTML = '';
+    if (AppState.mode === 'ans') renderAns(area, AppState.data);
+    else if (AppState.mode === 'sol') renderSol(area, AppState.data);
+    else renderExam(area, AppState.data);
+    if (window.MathJax) MathJax.typesetPromise();
 }
 
 window.onload = init;
