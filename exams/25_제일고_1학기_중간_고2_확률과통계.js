@@ -82,15 +82,15 @@ window.questionBank = [
     answer: "2",
     solution: "전체 사탕 11개 중 2개를 꺼내는 경우의 수: $_{11}C_{2} = 55$\\n사과 맛 사탕 6개 중 2개를 꺼내는 경우의 수: $_{6}C_{2} = 15$\\n\\rightarrow $\\frac{15}{55} = \\frac{3}{11}$"
   },
-  {
-    id: 10,
-    level: "상",
-    category: "원순열",
-    content: "1에서 9까지 아홉 개의 자연수를 모두 사용하여 아래의 9개의 빈칸을 모두 채우려고 한다. 음영이 칠해진 가운데에는 소수를 넣어서, 숫자를 채우는 경우의 수가 $7! \\times n$이라고 할 때 $n$의 값으로 알맞은 것을 고르면? (4.0점)\n[도형필요]\n(단, 한 칸에는 하나의 숫자만 넣고, 회전하여 일치하는 것은 같은 것으로 본다.)",
-    choices: ["4", "6", "8", "10", "12"],
-    answer: "3",
-    solution: "[도형 검토 후 보완 필요]\\n음영 칠해진 가운데 들어갈 소수(2,3,5,7)를 고르는 경우 4가지.\\n나머지 8칸에 숫자를 정사각형 모양으로 배열하는 원순열 경우의 수는 $\\frac{8!}{4}$ 이다.\\n\\rightarrow $4 \\times \\frac{8!}{4} = 8! = 7! \\times 8$\\n\\rightarrow $n=8$"
-  },
+{
+  id: 10,
+  level: "상",
+  category: "원순열",
+  content: "1에서 9까지 아홉 개의 자연수를 모두 사용하여 아래의 9개의 빈칸을 모두 채우려고 한다. 음영이 칠해진 가운데에는 소수를 넣어서, 숫자를 채우는 경우의 수가 $7! \\times n$이라고 할 때 $n$의 값으로 알맞은 것을 고르면? (4.0점)<br><div style='text-align:center; margin:10px 0;'><svg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'><rect x='40' y='40' width='40' height='40' fill='#a0a0a0'/><path d='M40 0v120M80 0v120M0 40h120M0 80h120' stroke='black' stroke-width='1'/><rect x='0' y='0' width='120' height='120' fill='none' stroke='black' stroke-width='2'/></svg></div>(단, 한 칸에는 하나의 숫자만 넣고, 회전하여 일치하는 것은 같은 것으로 본다.)",
+  choices: ["4", "6", "8", "10", "12"],
+  answer: "3",
+  solution: "음영 칠해진 가운데 들어갈 소수(2, 3, 5, 7)를 고르는 경우 4가지이다.\\n나머지 8칸에 숫자를 정사각형 모양으로 배열하는 원순열 경우의 수는 $\\frac{8!}{4}$ 이다.\\n$\\therefore 4 \\times \\frac{8!}{4} = 8! = 7! \\times 8$\\n따라서 $n=8$이다."
+},
   {
     id: 11,
     level: "상",
