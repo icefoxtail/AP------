@@ -41,10 +41,6 @@
 
         .hero { background: var(--navy); padding: 36px 24px 50px; position: relative; overflow: hidden; }
         .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-        .hero-grid-bg {
-            position: absolute; inset: 0; opacity: 0.035;
-            background-size: 32px 32px;
-        }
 
         .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(29,78,216,0.2); border: 1px solid rgba(96,165,250,0.2); border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
         .tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); }
@@ -70,44 +66,107 @@
         .fb-divider { width: 1px; height: 24px; background: #e2e8f0; }
         .fb-sel-group { display: flex; align-items: center; gap: 6px; }
         .fb-label { font-size: 11px; font-weight: 700; color: #64748b; white-space: nowrap; }
-        .fb-sel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #1e293b; font-family: inherit; cursor: pointer; font-weight: 600; }
+        .fb-sel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #1e293b; font-family: inherit; cursor: pointer; font-weight: 600; outline: none; }
 
         .fb-mixer { display: flex; align-items: center; gap: 7px; background: var(--blue-main); color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer; transition: 0.15s; }
         .fb-mixer:hover { background: #1e40af; }
 
-        .content-wrap { max-width: 1200px; margin: 0 auto; padding: 28px 24px 60px; }
-        .sec-block { margin-bottom: 32px; }
-        .sec-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-        .sec-badge { font-size: 12px; font-weight: 800; color: white; padding: 4px 12px; border-radius: 6px; background: var(--blue-main); }
-        .sec-title { font-size: 15px; font-weight: 800; color: #1e293b; }
-        .sec-line { flex: 1; height: 0.5px; background: #e2e8f0; }
+        .content-wrap { max-width: 1200px; margin: 0 auto; padding: 0; }
 
-        .card-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+        /* 섹션 테마 시스템 */
+        .sec-block { 
+            padding: 48px 24px; 
+            margin-left: calc(-50vw + 50%); 
+            margin-right: calc(-50vw + 50%); 
+            width: 100vw; 
+            position: relative; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            box-sizing: border-box; 
+        }
+        .sec-block > * { max-width: 1152px; margin-left: auto; margin-right: auto; }
+        .sec-block.dark { background: var(--navy-2); color: white; }
+        .sec-block.dark .sec-title { color: white; }
+        .sec-block.dark .sec-line { background: rgba(255,255,255,0.1); }
+        .sec-block.dark .sec-count { color: rgba(255,255,255,0.5); }
+        .sec-block.light { background: var(--bg-soft); }
+
+        .sec-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .sec-badge { font-size: 12px; font-weight: 800; color: white; padding: 4px 12px; border-radius: 6px; background: var(--blue-main); }
+        .sec-title { font-size: 18px; font-weight: 800; color: #1e293b; }
+        .sec-line { flex: 1; height: 1px; background: #e2e8f0; }
+        .sec-count { font-size: 12px; color: #94a3b8; font-weight: 600; }
+
+        .card-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
         .exam-card { background: white; border: 1px solid #f1f5f9; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: 0.18s; cursor: pointer; }
         .exam-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10); border-color: rgba(29, 78, 216, 0.35); }
-        
+        .sec-block.dark .exam-card { border-color: rgba(255,255,255,0.05); background: rgba(255,255,255,0.03); }
+        .sec-block.dark .exam-card:hover { background: white; }
+        .sec-block.dark .exam-card:hover .card-main-title { color: #1e293b; }
+        .sec-block.dark .exam-card .card-main-title { color: white; }
+
         .card-top { height: 3px; background: var(--blue-main); }
-        .card-body { padding: 16px; flex: 1; }
-        .card-grade-label { font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; }
-        .card-main-title { font-size: 15px; font-weight: 800; line-height: 1.4; margin-bottom: 11px; color: #1e293b; word-break: keep-all; }
+        .card-body { padding: 20px; flex: 1; }
+        .card-grade-label { font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 6px; }
+        .card-main-title { font-size: 15px; font-weight: 800; line-height: 1.45; margin-bottom: 12px; color: #1e293b; word-break: keep-all; min-height: 2.9em; display: flex; align-items: center; }
         .badge-row { display: flex; gap: 5px; flex-wrap: wrap; }
-        .badge { font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 4px; background: var(--blue-pale); color: #1e40af; }
+        .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: var(--blue-pale); color: #1e40af; }
         
         .card-actions { border-top: 1px solid #f1f5f9; display: flex; }
-        .action-btn { flex: 1; padding: 10px 0; text-align: center; font-size: 11px; font-weight: 700; color: #64748b; cursor: pointer; }
+        .sec-block.dark .exam-card .card-actions { border-top-color: rgba(255,255,255,0.05); }
+        .action-btn { flex: 1; padding: 12px 0; text-align: center; font-size: 11px; font-weight: 700; color: #64748b; cursor: pointer; transition: 0.15s; }
         .action-btn:hover { background: #f8fafc; color: #1e293b; }
         .action-btn + .action-btn { border-left: 1px solid #f1f5f9; }
 
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 2000; align-items: center; justify-content: center; }
         .modal-overlay.open { display: flex; }
-        .modal-box { background: white; border-radius: 20px; padding: 36px 40px; width: 360px; text-align: center; }
+        .modal-box { background: white; border-radius: 20px; padding: 36px 40px; width: 360px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
         .qpp-btns { display: flex; gap: 14px; margin-bottom: 20px; }
-        .qpp-opt { flex: 1; padding: 20px 0; border: 2px solid #e2e8f0; border-radius: 14px; cursor: pointer; font-size: 28px; font-weight: 800; }
-        .qpp-opt:hover { border-color: var(--blue-main); color: var(--blue-main); }
-        .modal-cancel { cursor: pointer; border: none; background: none; color: #94a3b8; }
+        .qpp-opt { flex: 1; padding: 20px 0; border: 2px solid #e2e8f0; border-radius: 14px; cursor: pointer; font-size: 28px; font-weight: 800; background: #f8fafc; transition: 0.18s; }
+        .qpp-opt:hover { border-color: var(--blue-main); color: var(--blue-main); background: #eff6ff; }
+        .modal-cancel { cursor: pointer; border: none; background: none; color: #94a3b8; font-size: 13px; }
 
-        @media (max-width: 768px) { .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (max-width: 480px) { .card-grid { grid-template-columns: 1fr; } }
+        /* [반응형 미디어 쿼리] */
+        @media (max-width: 768px) {
+            .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .hero { padding: 24px 16px 36px; }
+            .hero-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .stat-pills { flex-wrap: wrap; gap: 10px; justify-content: flex-start; }
+            .stat-pill { min-width: 80px; padding: 12px 16px; }
+            .filter-inner { flex-wrap: wrap; gap: 8px; padding: 8px 16px; }
+            .fb-search { min-width: 100%; order: -1; }
+            .fb-sel { flex: 1; min-width: 0; }
+            .grade-nav { gap: 1px; }
+            .gtab { padding: 4px 8px; font-size: 12px; }
+            .top-nav { padding: 0 16px; }
+            .logo-name { font-size: 15px; }
+            .nav-count { display: none; }
+            .content-wrap { padding: 16px; }
+            .sec-header { flex-wrap: wrap; gap: 6px; }
+            .action-btn { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+            .exam-card { border-radius: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 22px; }
+            .stat-pills { gap: 8px; }
+            .stat-pill { min-width: calc(50% - 4px); }
+            .filter-inner { gap: 6px; }
+            .fb-sel { font-size: 13px; }
+            .action-btn { padding: 10px 0; font-size: 13px; }
+            .grade-nav {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 2px;
+                flex-wrap: nowrap;
+            }
+            .grade-nav::-webkit-scrollbar { display: none; }
+            .gtab { white-space: nowrap; padding: 5px 10px; }
+            .filter-band { top: 56px; }
+            .fb-search input { font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -117,8 +176,8 @@
         <div style="font-size:18px; font-weight:800; margin-bottom:6px;">시험지 출력 형식</div>
         <div style="font-size:13px; color:#94a3b8; margin-bottom:28px;">한 페이지에 몇 문항을 배치할까요?</div>
         <div class="qpp-btns">
-            <div class="qpp-opt" onclick="confirmQpp(4)">4<span style="display:block; font-size:11px;">2 × 2 배열</span></div>
-            <div class="qpp-opt" onclick="confirmQpp(6)">6<span style="display:block; font-size:11px;">2 × 3 배열</span></div>
+            <div class="qpp-opt" onclick="confirmQpp(4)">4<span style="display:block; font-size:11px; color:#94a3b8; margin-top:4px;">2 × 2 배열</span></div>
+            <div class="qpp-opt" onclick="confirmQpp(6)">6<span style="display:block; font-size:11px; color:#94a3b8; margin-top:4px;">2 × 3 배열</span></div>
         </div>
         <button class="modal-cancel" onclick="closeModal()">취소</button>
     </div>
@@ -136,6 +195,7 @@
             <span class="gtab" data-grade="고1">고1</span>
             <span class="gtab" data-grade="중3">중3</span>
             <span class="gtab" data-grade="중2">중2</span>
+            <span class="gtab" data-grade="중1">중1</span>
             <span class="gtab active" data-grade="">전체</span>
         </nav>
         <span class="nav-count" id="navCount">시험지 0개</span>
@@ -170,9 +230,9 @@
             <select class="fb-sel" id="yearFilter"><option value="">전체</option></select>
         </div>
         <div class="fb-sel-group">
-            <span class="fb-label">유형</span>
+            <span class="fb-label">분류</span>
             <select class="fb-sel" id="contentTypeFilter">
-                <option value="">전체 유형</option>
+                <option value="">전체 분류</option>
                 <option value="기출">기출</option>
                 <option value="유형">유형</option>
                 <option value="단원평가">단원평가</option>
@@ -186,12 +246,14 @@
 
 <div class="content-wrap">
     <div id="featured-section"></div>
-    <div id="full-section" style="display:none;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:16px;">
-            <span style="font-size:15px; font-weight:800;" id="listTitle">전체 자료</span>
-            <span style="font-size:12px; color:#94a3b8;" id="listMeta"></span>
+    <div id="full-section" style="display:none; padding:48px 24px;">
+        <div style="max-width:1152px; margin:0 auto;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:24px; align-items:center;">
+                <span style="font-size:18px; font-weight:800;" id="listTitle">전체 자료</span>
+                <span style="font-size:12px; color:#94a3b8; font-weight:600;" id="listMeta"></span>
+            </div>
+            <div id="full-grid" class="card-grid"></div>
         </div>
-        <div id="full-grid" class="card-grid"></div>
     </div>
 </div>
 
@@ -249,10 +311,14 @@ function onFilterChange() {
     const year = document.getElementById('yearFilter').value;
     const contentType = document.getElementById('contentTypeFilter').value;
     
-    if (keyword || year || contentType || selectedGrade) {
+    if (keyword || year || contentType) {
         document.getElementById('featured-section').style.display = 'none';
         document.getElementById('full-section').style.display = 'block';
         renderFullList();
+    } else if (selectedGrade) {
+        document.getElementById('featured-section').style.display = 'block';
+        document.getElementById('full-section').style.display = 'none';
+        renderGradeView(selectedGrade);
     } else {
         document.getElementById('featured-section').style.display = 'block';
         document.getElementById('full-section').style.display = 'none';
@@ -260,22 +326,53 @@ function onFilterChange() {
     }
 }
 
+function renderGradeView(grade) {
+    const section = document.getElementById('featured-section');
+    section.innerHTML = '';
+    const exams = engineDB.exams.filter(e => e.grade === grade);
+    const 기출 = exams.filter(e => (e.contentType || '기출') === '기출').reverse();
+    const 기타 = exams.filter(e => e.contentType && e.contentType !== '기출').reverse();
+
+    if (기출.length > 0) {
+        const block = document.createElement('div');
+        block.className = 'sec-block dark';
+        block.innerHTML = `<div class="sec-header"><span class="sec-badge engine">기출</span><span class="sec-title">${grade} 기출 문제</span><div class="sec-line"></div><span class="sec-count">${기출.length}개</span></div><div class="card-grid"></div>`;
+        section.appendChild(block);
+        기출.forEach(ex => block.querySelector('.card-grid').appendChild(buildCard(ex)));
+    }
+    if (기타.length > 0) {
+        const block = document.createElement('div');
+        block.className = 'sec-block light';
+        block.innerHTML = `<div class="sec-header"><span class="sec-badge" style="background:#7c3aed;color:white;">유형/단원</span><span class="sec-title">${grade} 유형 · 단원평가</span><div class="sec-line"></div><span class="sec-count">${기타.length}개</span></div><div class="card-grid"></div>`;
+        section.appendChild(block);
+        기타.forEach(ex => block.querySelector('.card-grid').appendChild(buildCard(ex)));
+    }
+    if (기출.length === 0 && 기타.length === 0) {
+        section.innerHTML = '<div style="text-align:center;padding:100px;color:#94a3b8;">해당 학년 자료가 없습니다.</div>';
+    }
+}
+
 function renderFeatured() {
     const section = document.getElementById('featured-section');
     section.innerHTML = '';
-    const latest = engineDB.exams.slice(-4).reverse();
+    const all = engineDB.exams;
     
-    const block = document.createElement('div');
-    block.className = 'sec-block';
-    block.innerHTML = `
-        <div class="sec-header">
-            <span class="sec-badge">최신 자료</span>
-            <span class="sec-title">최근 등록된 문항셋</span>
-            <div class="sec-line"></div>
-        </div>
-        <div class="card-grid"></div>`;
-    section.appendChild(block);
-    latest.forEach(ex => block.querySelector('.card-grid').appendChild(buildCard(ex)));
+    const sections = [
+        { title: '고등 최신 기출', filter: e => e.grade.startsWith('고') && (e.contentType || '기출') === '기출', theme: 'dark' },
+        { title: '중등 최신 기출', filter: e => e.grade.startsWith('중') && (e.contentType || '기출') === '기출', theme: 'light' },
+        { title: '최신 유형 자료', filter: e => e.contentType && e.contentType !== '기출', theme: 'dark' }
+    ];
+
+    sections.forEach(s => {
+        const items = all.filter(s.filter).slice(-4).reverse();
+        if (items.length > 0) {
+            const block = document.createElement('div');
+            block.className = `sec-block ${s.theme}`;
+            block.innerHTML = `<div class="sec-header"><span class="sec-badge">${s.title.split(' ')[1]}</span><span class="sec-title">${s.title}</span><div class="sec-line"></div></div><div class="card-grid"></div>`;
+            section.appendChild(block);
+            items.forEach(ex => block.querySelector('.card-grid').appendChild(buildCard(ex)));
+        }
+    });
 }
 
 function renderFullList() {
@@ -304,51 +401,27 @@ function renderFullList() {
 function buildCard(ex) {
     const card = document.createElement('div');
     card.className = 'exam-card';
-    
-    const isExam = ex.contentType === '기출';
+    const isExam = (ex.contentType || '기출') === '기출';
     const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : '';
     const yearLabel = ex.year ? `${ex.year}년 ` : '';
-    
-    const mainTitle = isExam
-        ? `${ex.school || ''}<br>${yearLabel}${ex.semester ? ex.semester + '학기 ' : ''}${typeText}`
-        : `${ex.topic || ''}<br>${ex.subject || ''}`;
-
-    card.innerHTML = `
-        <div class="card-top"></div>
-        <div class="card-body">
-            <div class="card-grade-label">${ex.grade}</div>
-            <div class="card-main-title">${mainTitle}</div>
-            <div class="badge-row"><span class="badge">${ex.contentType || '기출'}</span></div>
-        </div>
-        <div class="card-actions">
-            <div class="action-btn" data-action="exam">시험</div>
-            <div class="action-btn" data-action="sol">해설</div>
-            <div class="action-btn" data-action="ans">정답</div>
-        </div>`;
-
-    card.querySelectorAll('.action-btn').forEach(btn => {
-        btn.onclick = (e) => { e.stopPropagation(); openEngine(ex, btn.dataset.action); };
-    });
+    const mainTitle = isExam ? `${ex.school || ''}<br>${yearLabel}${ex.semester ? ex.semester + '학기 ' : ''}${typeText}` : `${ex.topic || ''}<br>${ex.subject || ''}`;
+    card.innerHTML = `<div class="card-top"></div><div class="card-body"><div class="card-grade-label">${ex.grade}</div><div class="card-main-title">${mainTitle}</div><div class="badge-row"><span class="badge">${ex.contentType || '기출'}</span></div></div><div class="card-actions"><div class="action-btn" data-action="exam">시험</div><div class="action-btn" data-action="sol">해설</div><div class="action-btn" data-action="ans">정답</div></div>`;
+    card.querySelectorAll('.action-btn').forEach(btn => { btn.onclick = (e) => { e.stopPropagation(); openEngine(ex, btn.dataset.action); }; });
     return card;
 }
 
 let _pendingItem, _pendingAction;
 function openEngine(item, action) {
-    if (action === 'exam') {
-        _pendingItem = item; _pendingAction = action;
-        document.getElementById('qppModal').classList.add('open');
-    } else { goEngine(item, action, 4); }
+    if (action === 'exam') { _pendingItem = item; _pendingAction = action; document.getElementById('qppModal').classList.add('open'); }
+    else { goEngine(item, action, 4); }
 }
-
 function confirmQpp(qpp) { closeModal(); goEngine(_pendingItem, _pendingAction, qpp); }
 function closeModal() { document.getElementById('qppModal').classList.remove('open'); }
-
 function goEngine(item, action, qpp) {
     const title = (item.school || item.topic) + ' ' + (item.subject || '');
     const url = `engine.html?mode=${action}&qpp=${qpp}&data=${encodeURIComponent('exams/' + item.file)}&title=${encodeURIComponent(title)}`;
     window.open(url, '_blank');
 }
-
 function resetView() {
     document.getElementById('searchInput').value = '';
     document.getElementById('yearFilter').value = '';
@@ -357,7 +430,6 @@ function resetView() {
     document.querySelectorAll('.gtab').forEach(t => t.classList.toggle('active', !t.dataset.grade));
     onFilterChange();
 }
-
 window.onload = init;
 </script>
 </body>
