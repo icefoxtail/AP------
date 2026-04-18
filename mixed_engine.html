@@ -90,8 +90,34 @@
 
         .ctrl-right {
             display: flex;
-            gap: 8px;
+            align-items: center;
+            gap: 12px;
             flex-shrink: 0;
+        }
+
+        .qpp-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        #qppSelect {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 4px 8px;
+            font-family: inherit;
+            font-size: 11px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #qppSelect:hover {
+            background: rgba(255,255,255,0.15);
         }
 
         .print-btn {
@@ -201,11 +227,13 @@
         .page-header {
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
             border-bottom: 2px solid #000;
             padding-bottom: 5px;
             margin-bottom: 12px;
             font-weight: bold;
             flex-shrink: 0;
+            font-size: 10pt;
         }
 
         #pdf-container {
@@ -414,6 +442,16 @@
             <button class="mode-tab" data-mode="ans" onclick="switchMode('ans')">정답표</button>
         </div>
         <div class="ctrl-right">
+            <div class="qpp-selector">
+                <span>문항/쪽:</span>
+                <select id="qppSelect" onchange="changeQpp(this.value)">
+                    <option value="2">2문항</option>
+                    <option value="4">4문항</option>
+                    <option value="6">6문항</option>
+                    <option value="8">8문항</option>
+                </select>
+            </div>
+            <button class="print-btn ghost" onclick="shuffleData()">🔀 셔플</button>
             <button class="print-btn ghost" id="pdf-open-btn" style="display:none;">↗ PDF 새 탭</button>
             <button class="print-btn primary" onclick="window.print()">🖨 인쇄</button>
         </div>
@@ -427,8 +465,21 @@
     <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:85mm;"></div>
 
 <script>
-const AppState = { title: '믹서 출제', data: [], mode: 'exam', qpp: 4 };
+const AppState = { title: '믹서 출제', data: [], mode: 'exam', qpp: 4, shuffled: false };
 let pageCount = 0;
+
+function parseExamTitle(raw) {
+    if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
+    const parts = raw.split('_');
+    return {
+        year: parts[0] ? (parts[0].length === 2 ? '20' + parts[0] + '년' : parts[0] + '년') : '',
+        school: parts[1] || '',
+        semester: parts[2] || '',
+        examType: parts[3] || '',
+        grade: parts[4] || '',
+        subject: parts[5] || ''
+    };
+}
 
 async function loadData(dataUrl) {
     if (dataUrl === 'mixed') {
@@ -441,6 +492,7 @@ async function loadData(dataUrl) {
         if (oldScript) oldScript.remove();
 
         delete window.questionBank;
+        delete window.examTitle;
         const s = document.createElement('script');
         s.id = 'data-script';
         s.src = dataUrl + '?v=' + Date.now();
@@ -458,11 +510,7 @@ async function init() {
     const p = new URLSearchParams(window.location.search);
     const mixedMetaRaw = localStorage.getItem('mixedMeta') || sessionStorage.getItem('mixedMeta');
     let mixedMeta = {};
-    try {
-        mixedMeta = mixedMetaRaw ? JSON.parse(mixedMetaRaw) : {};
-    } catch (e) {
-        mixedMeta = {};
-    }
+    try { mixedMeta = mixedMetaRaw ? JSON.parse(mixedMetaRaw) : {}; } catch (e) {}
 
     AppState.mode = p.get('mode') || 'exam';
     AppState.title = p.get('title') || mixedMeta.title || '믹서 출제';
@@ -470,6 +518,9 @@ async function init() {
     const rawQpp = parseInt(p.get('qpp'));
     AppState.qpp = isNaN(rawQpp) ? 4 : Math.max(2, Math.min(8, rawQpp));
     AppState.data_url = p.get('data') || 'mixed';
+
+    const qppSelect = document.getElementById('qppSelect');
+    if (qppSelect) qppSelect.value = AppState.qpp;
 
     const file = p.get('file');
     const dataUrl = AppState.data_url;
@@ -499,7 +550,7 @@ async function init() {
             await renderEngine();
         } else {
             const area = document.getElementById('print-area');
-            area.innerHTML = '<div style="padding:48px 20px;text-align:center;color:#64748b;font-family:Pretendard,sans-serif;">저장된 믹서 문항이 없습니다. 문항을 담은 뒤 다시 열어주세요.<br>같은 도메인/같은 폴더에서 mixer.html과 mixed_engine.html을 함께 열어야 합니다.</div>';
+            area.innerHTML = '<div style="padding:48px 20px;text-align:center;color:#64748b;font-family:Pretendard,sans-serif;">저장된 믹서 문항이 없습니다.</div>';
         }
     }
 }
@@ -515,7 +566,27 @@ function switchMode(mode) {
     const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
     url.searchParams.set('qpp', AppState.qpp);
+    const ids = new URLSearchParams(window.location.search).get('ids');
+    if (ids) url.searchParams.set('ids', ids);
     window.location.href = url.toString();
+}
+
+function changeQpp(val) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('qpp', val);
+    url.searchParams.set('mode', AppState.mode); 
+    const ids = new URLSearchParams(window.location.search).get('ids');
+    if (ids) url.searchParams.set('ids', ids);
+    window.location.href = url.toString();
+}
+
+function shuffleData() {
+    for (let i = AppState.data.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
+    }
+    AppState.shuffled = true;
+    renderEngine();
 }
 
 async function renderEngine() {
@@ -523,12 +594,24 @@ async function renderEngine() {
     area.innerHTML = '';
     pageCount = 0;
 
+    const p = new URLSearchParams(window.location.search);
+    const idsParam = p.get('ids');
+    let displayData = AppState.data;
+
+    if (idsParam) {
+        const idList = idsParam.split(',').map(s => s.trim());
+        displayData = AppState.data.filter(q => idList.includes(String(q.id)));
+    }
+
+    const titlePrefix = AppState.shuffled ? '[🔀] ' : '';
+    document.getElementById('ctrl-title').innerText = titlePrefix + (window.examTitle || AppState.title);
+
     if (AppState.mode === 'ans') {
-        renderAnsGrid(area, AppState.data);
+        renderAnsGrid(area, displayData);
     } else if (AppState.mode === 'sol') {
-        await renderSol(area, AppState.data);
+        await renderSol(area, displayData);
     } else {
-        await renderExam(area, AppState.data);
+        await renderExam(area, displayData);
     }
 }
 
@@ -559,382 +642,177 @@ async function renderExam(area, bank) {
         leftItems.forEach(el => page.cols[0].appendChild(el));
         rightItems.forEach(el => page.cols[1].appendChild(el));
 
-        if (window.MathJax?.typesetPromise) {
-            await MathJax.typesetPromise([page.cols[0], page.cols[1]]);
-        }
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page.cols[0], page.cols[1]]);
         await raf();
 
         fitExamColumn(page.cols[0]);
         fitExamColumn(page.cols[1]);
 
-        if (window.MathJax?.typesetPromise) {
-            await MathJax.typesetPromise([page.cols[0], page.cols[1]]);
-        }
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page.cols[0], page.cols[1]]);
         await raf();
     }
 }
 
 function extractChoice(c) {
     if (c === null || c === undefined) return '';
-    if (typeof c === 'object') {
-        return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
-    }
+    if (typeof c === 'object') return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
     return String(c);
 }
 
 function stripChoicePrefix(text) {
-    return String(text || '')
-        .replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '')
-        .trim();
+    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '').trim();
 }
 
 function buildExamBox(q, i) {
     const circled = ['①','②','③','④','⑤'];
-    const isMultipleChoice =
-        Array.isArray(q.choices) &&
-        q.choices.length > 0 &&
-        q.choices[0] !== "주관식" &&
-        q.choices.some(c => extractChoice(c).trim() !== "");
-
+    const isMultipleChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== "주관식" && q.choices.some(c => extractChoice(c).trim() !== "");
     const choicesHTML = isMultipleChoice
-        ? `<div class="choices">${q.choices.map((c, ci) => {
-              const rawChoice = extractChoice(c);
-              const cleanChoice = stripChoicePrefix(rawChoice);
-              return `<div>${circled[ci] || (ci + 1) + ')'} ${wrapLatex(cleanChoice)}</div>`;
-          }).join('')}</div>`
+        ? `<div class="choices">${q.choices.map((c, ci) => `<div>${circled[ci] || (ci + 1) + ')'} ${wrapLatex(stripChoicePrefix(extractChoice(c)))}</div>`).join('')}</div>`
         : `<div class="answer-box"></div>`;
 
-    return `
-        <div class="q-num">${i + 1}.</div>
-        <div class="q-content">${wrapLatex(q.content || q.question || '')}</div>
-        ${choicesHTML}
-    `;
+    return `<div class="q-num">${i + 1}.</div><div class="q-content">${wrapLatex(q.content || q.question || '')}</div>${choicesHTML}`;
 }
 
 function fitExamColumn(col) {
-    const boxes = [...col.querySelectorAll('.q-box')];
-    boxes.forEach(box => fitQuestionBox(box));
+    [...col.querySelectorAll('.q-box')].forEach(box => fitQuestionBox(box));
 }
 
 function fitQuestionBox(box) {
     const fitClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
-
     for (const cls of fitClasses) {
         box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
         if (cls) box.classList.add(cls);
-
-        if (box.scrollHeight <= box.clientHeight + 1) {
-            return;
-        }
+        if (box.scrollHeight <= box.clientHeight + 1) return;
     }
-
     const choices = box.querySelector('.choices');
-    if (choices) {
-        choices.style.lineHeight = '1.2';
-        choices.style.marginTop = '1px';
-    }
-
+    if (choices) { choices.style.lineHeight = '1.2'; choices.style.marginTop = '1px'; }
     const qnum = box.querySelector('.q-num');
-    if (qnum) {
-        qnum.style.marginBottom = '1px';
-    }
+    if (qnum) { qnum.style.marginBottom = '1px'; }
 }
 
 function buildSolHeader(q, i) {
-    return `
-        <div class="sol-head">
-            <div class="q-num">${i + 1}.
-                <span style="font-size:9pt;font-weight:normal;">
-                    ${wrapLatex(q.content || q.question || '')}
-                </span>
-            </div>
-        </div>
-    `;
+    return `<div class="sol-head"><div class="q-num">${i + 1}. <span style="font-size:9pt;font-weight:normal;">${wrapLatex(q.content || q.question || '')}</span></div></div>`;
 }
 
 function buildSolFragments(q) {
-    if (q.solution_steps?.length) {
-        return q.solution_steps.map((s, si) => `
-            <div class="sol-frag">
-                <div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatexPreserveBlocks(stripCite(s))}</div>
-            </div>
-        `);
-    }
-
+    if (q.solution_steps?.length) return q.solution_steps.map((s, si) => `<div class="sol-frag"><div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatexPreserveBlocks(normalizeMathEnglishInSolution(stripCite(s)))}</div></div>`);
     if (q.solution) {
-        const raw = stripCite(q.solution);
-
-        const hasStructuredMath =
-            /\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(raw) ||
-            /\\multicolumn|\\cline|\\hline/.test(raw);
-
-        if (hasStructuredMath) {
-            return [
-                `<div class="sol-frag"><div class="sol-step">${wrapLatexPreserveBlocks(raw)}</div></div>`
-            ];
-        }
-
-        const lines = raw
-            .split(/\n+/)
-            .map(v => v.trim())
-            .filter(Boolean);
-
-        return lines.map(line => `
-            <div class="sol-frag">
-                <div class="sol-step">${wrapLatexPreserveBlocks(line)}</div>
-            </div>
-        `);
+        const raw = normalizeMathEnglishInSolution(stripCite(q.solution));
+        if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(raw) || /\\multicolumn|\\cline|\\hline/.test(raw)) return [`<div class="sol-frag"><div class="sol-step">${wrapLatexPreserveBlocks(raw)}</div></div>`];
+        return raw.split(/\n+/).map(v => v.trim()).filter(Boolean).map(line => `<div class="sol-frag"><div class="sol-step">${wrapLatexPreserveBlocks(line)}</div></div>`);
     }
-
-    return [
-        `<div class="sol-frag"><div class="sol-step" style="color:#94a3b8;font-size:8pt;">해설 없음</div></div>`
-    ];
+    return [`<div class="sol-frag"><div class="sol-step" style="color:#94a3b8;font-size:8pt;">해설 없음</div></div>`];
 }
 
 async function renderSol(area, bank) {
     let p = makePage(area, 'sol');
     let colIdx = 0;
-
     async function ensureFitOrAdvance(targetCol, node) {
         targetCol.appendChild(node);
-
-        if (window.MathJax?.typesetPromise) {
-            await MathJax.typesetPromise([targetCol]);
-        }
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
         await raf();
-
-        const overflowed = targetCol.scrollHeight > targetCol.clientHeight + 1;
-
-        if (!overflowed) return true;
-
+        if (!(targetCol.scrollHeight > targetCol.clientHeight + 1)) return true;
         node.remove();
-
-        if (colIdx === 0) {
-            colIdx = 1;
-        } else {
-            p = makePage(area, 'sol');
-            colIdx = 0;
-        }
+        if (colIdx === 0) { colIdx = 1; } else { p = makePage(area, 'sol'); colIdx = 0; }
         return false;
     }
-
     for (let i = 0; i < bank.length; i++) {
         const q = bank[i];
-
-        const headWrap = document.createElement('div');
-        headWrap.innerHTML = buildSolHeader(q, i).trim();
-        const headEl = headWrap.firstElementChild;
-
-        let placedHeader = false;
-        while (!placedHeader) {
-            const targetCol = p.cols[colIdx];
-            placedHeader = await ensureFitOrAdvance(targetCol, headEl.cloneNode(true));
+        const headWrap = document.createElement('div'); headWrap.innerHTML = buildSolHeader(q, i).trim();
+        let placedHeader = false; while (!placedHeader) { placedHeader = await ensureFitOrAdvance(p.cols[colIdx], headWrap.firstElementChild.cloneNode(true)); }
+        for (const fragHTML of buildSolFragments(q)) {
+            const fragWrap = document.createElement('div'); fragWrap.innerHTML = fragHTML.trim();
+            let placedFrag = false; while (!placedFrag) { placedFrag = await ensureFitOrAdvance(p.cols[colIdx], fragWrap.firstElementChild.cloneNode(true)); }
         }
-
-        const fragments = buildSolFragments(q);
-
-        for (const fragHTML of fragments) {
-            const fragWrap = document.createElement('div');
-            fragWrap.innerHTML = fragHTML.trim();
-            const fragEl = fragWrap.firstElementChild;
-
-            let placedFrag = false;
-            while (!placedFrag) {
-                const targetCol = p.cols[colIdx];
-                placedFrag = await ensureFitOrAdvance(targetCol, fragEl.cloneNode(true));
-            }
-        }
-
-        const divider = document.createElement('div');
-        divider.className = 'sol-divider';
-
-        let placedDivider = false;
-        while (!placedDivider) {
-            const targetCol = p.cols[colIdx];
-            placedDivider = await ensureFitOrAdvance(targetCol, divider.cloneNode(true));
-        }
+        const divider = document.createElement('div'); divider.className = 'sol-divider';
+        let placedDivider = false; while (!placedDivider) { placedDivider = await ensureFitOrAdvance(p.cols[colIdx], divider.cloneNode(true)); }
     }
 }
 
 function renderAnsGrid(area, bank) {
     const p = makePage(area, 'ans');
-    const grid = document.createElement('div');
-    grid.className = 'ans-grid';
-
+    const grid = document.createElement('div'); grid.className = 'ans-grid';
     const splitIndex = Math.ceil(bank.length / 2);
-    const orderedItems = [];
-
     for (let i = 0; i < splitIndex; i++) {
-        orderedItems.push({ q: bank[i], qNum: i + 1 });
-        if (bank[splitIndex + i]) {
-            orderedItems.push({ q: bank[splitIndex + i], qNum: splitIndex + i + 1 });
-        }
+        [bank[i], bank[splitIndex + i]].forEach((q, idx) => {
+            if (!q) return;
+            const qNum = idx === 0 ? i + 1 : splitIndex + i + 1;
+            const cell = document.createElement('div'); cell.className = 'ans-cell';
+            const rawAns = String(q.answer ?? '–');
+            const displayAns = (rawAns.includes('sqrt') || rawAns.includes('/') || rawAns.includes('^')) ? wrapLatex(rawAns) : rawAns;
+            cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${qNum}.</b><span style="font-size:10.5pt;">${wrapLatex(displayAns)}</span>`;
+            grid.appendChild(cell);
+        });
     }
-
-    orderedItems.forEach(({ q, qNum }) => {
-        const cell = document.createElement('div');
-        cell.className = 'ans-cell';
-        const rawAns = String(q.answer ?? '–');
-        const displayAns = (rawAns.includes('sqrt') || rawAns.includes('/') || rawAns.includes('^'))
-            ? wrapLatex(rawAns)
-            : rawAns;
-
-        cell.innerHTML = `<b style="font-size:10.5pt;min-width:35px;">${qNum}.</b>
-                          <span style="font-size:10.5pt;">${wrapLatex(displayAns)}</span>`;
-        grid.appendChild(cell);
-    });
-
     p.body.appendChild(grid);
+
+    const solUrl = new URL(window.location.href); solUrl.searchParams.set('mode', 'sol');
+    const ids = new URLSearchParams(window.location.search).get('ids'); if (ids) solUrl.searchParams.set('ids', ids);
+    const qrDiv = document.createElement('div'); qrDiv.style.cssText = 'margin-top:24px; text-align:center; font-size:8pt; color:#555;';
+    qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}" style="width:80px;height:80px;" alt="해설 QR"><div style="margin-top:4px;">📱 해설 바로가기</div>`;
+    p.body.appendChild(qrDiv);
     if (window.MathJax?.typesetPromise) MathJax.typesetPromise([p.body]);
 }
 
 function makePage(area, type) {
     pageCount++;
-    const page = document.createElement('div');
-    page.className = 'page';
-
-    const header = document.createElement('div');
-    header.className = 'page-header';
-    header.innerHTML = `<span>${AppState.title}</span><span>- ${pageCount} -</span>`;
+    const page = document.createElement('div'); page.className = 'page';
+    const header = document.createElement('div'); header.className = 'page-header';
+    const t = parseExamTitle(window.examTitle || AppState.title);
+    const leftText = [t.year, t.school, t.grade, (t.semester + ' ' + t.examType).trim(), t.subject].filter(Boolean).join(' | ');
+    let rightHTML = type === 'sol' ? `<span>[ 정답 및 해설 ]</span>` : type === 'ans' ? `<span>[ 정답표 ]</span>` : `<div style="display:flex; gap:25px;"><span>이름: ____________</span><span>점수: ________ / 100</span></div>`;
+    header.innerHTML = `<div style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; padding-right:15px;">${leftText || AppState.title}</div><div style="flex-shrink:0;">${rightHTML}</div><div style="width:60px; text-align:right; flex-shrink:0;">- ${pageCount} -</div>`;
     page.appendChild(header);
-
-    if (type === 'ans') {
-        const body = document.createElement('div');
-        body.style.flex = '1';
-        page.appendChild(body);
-        area.appendChild(page);
-        return { page, body };
-    }
-
-    const grid = document.createElement('div');
-    grid.className = 'grid-container';
-
-    const left = document.createElement('div');
-    left.className = 'grid-col';
-
-    const right = document.createElement('div');
-    right.className = 'grid-col';
-
-    grid.appendChild(left);
-    grid.appendChild(right);
-    page.appendChild(grid);
-    area.appendChild(page);
-
+    if (type === 'ans') { const body = document.createElement('div'); body.style.flex = '1'; page.appendChild(body); area.appendChild(page); return { page, body }; }
+    const grid = document.createElement('div'); grid.className = 'grid-container';
+    const left = document.createElement('div'); left.className = 'grid-col';
+    const right = document.createElement('div'); right.className = 'grid-col';
+    grid.appendChild(left); grid.appendChild(right); page.appendChild(grid); area.appendChild(page);
     return { page, cols: [left, right] };
 }
 
-function wrapLatex(text) {
-    return wrapLatexPreserveBlocks(text);
+function normalizeMathEnglishInSolution(text) {
+    if (!text) return text;
+    let s = String(text);
+    const rules = [[/\bif\s+and\s+only\s+if\b/gi, '\\iff'], [/\biff\b/gi, '\\iff'], [/(?<!\\)therefore/gi, ' \\therefore '], [/(?<!\\)hence/gi, ' \\therefore '], [/(?<!\\)thus/gi, ' \\therefore '], [/(?<!\\)because/gi, ' \\because '], [/(?<!\\)implies/gi, ' \\implies '], [/(?<!\\)imply/gi, ' \\implies '], [/=>/g, '\\implies'], [/==>/g, '\\implies'], [/-->/g, '\\to'], [/->/g, '\\to'], [/\bto\b(?=\s*[0-9a-zA-Z가-힣(\\])/g, '\\to'], [/\bfor\s+all\b/gi, '\\forall'], [/\bexists\b/gi, '\\exists'], [/\bnot\s+equal\s+to\b/gi, '\\ne'], [/\bgreater\s+than\s+or\s+equal\s+to\b/gi, '\\ge'], [/\bless\s+than\s+or\s+equal\s+to\b/gi, '\\le'], [/\bapproximately\b/gi, '\\approx'], [/\binfinity\b/gi, '\\infty'], [/\bparallel\b/gi, '\\parallel'], [/\bperpendicular\b/gi, '\\perp'], [/\bangle\b/gi, '\\angle'], [/\btriangle\b/gi, '\\triangle']];
+    rules.forEach(([pattern, repl]) => { s = s.replace(pattern, repl); });
+    s = s.replace(/(^|\s)so(?=\s|$)/gi, '$1\\therefore');
+    s = s.replace(/\b(and|or)\b/gi, (m) => m.toLowerCase() === 'and' ? '\\text{ 그리고 }' : '\\text{ 또는 }');
+    return s.replace(/\s{2,}/g, ' ').trim();
 }
+
+function wrapLatex(text) { return wrapLatexPreserveBlocks(text); }
 
 function wrapLatexPreserveBlocks(text) {
     if (!text) return text;
     let s = String(text);
-
     s = s.replace(/\^\[([^\]]+)\]/g, '^{$1}').replace(/_\[([^\]]+)\]/g, '_{$1}');
     s = s.replace(//g, '(').replace(//g, ')').replace(//g, '');
     s = s.replace(/²/g, '^2').replace(/³/g, '^3');
     s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}').replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
     s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
     s = s.replace(/\\frac\[([^\]]+)\]\[([^\]]+)\]/g, '\\frac{$1}{$2}').replace(/\\dot\[([^\]]+)\]/g, '\\dot{$1}');
-
-    if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s)) {
-        return `$$${s}$$`;
-    }
-
-    if (/^\s*\$\$[\s\S]*\$\$\s*$/.test(s) || /^\s*\$[\s\S]*\$\s*$/.test(s)) return s;
-
-    const parts = s.split(/(<[^>]+>)/g);
-    return parts.map(p => {
-        if (!p) return '';
-        if (p.startsWith('<')) return p;
-
-        let t = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
-
-        if (!/\$/.test(t)) {
-            t = t.split(/(<br>)/g).map(seg => {
-                if (seg === '<br>') return seg;
-
-                const tokens = seg.split(/(\s+)/);
-                const out = [];
-                let run = [];
-
-                const flush = () => {
-                    if (!run.length) return;
-                    const joined = run.join('');
-                    const trimmed = joined.trim();
-                    if (trimmed) out.push(`$${trimmed}$`);
-                    run = [];
-                };
-
-                for (let i = 0; i < tokens.length; i++) {
-                    const tok = tokens[i];
-                    if (!tok) continue;
-
-                    if (/^\s+$/.test(tok)) {
-                        if (run.length) run.push(tok);
-                        else out.push(tok);
-                        continue;
-                    }
-
-                    if (/[가-힣]/.test(tok)) {
-                        flush();
-                        out.push(tok);
-                        continue;
-                    }
-
-                    const asciiMath = /^[0-9A-Za-z.,:;(){}\[\]+\-*\/=^_|\\%]+$/.test(tok);
-                    const indicator = /\\[A-Za-z]+|\^|_/.test(tok);
-
-                    let nextMeaningful = '';
-                    for (let j = i + 1; j < tokens.length; j++) {
-                        if (!/^\s+$/.test(tokens[j] || '')) {
-                            nextMeaningful = tokens[j] || '';
-                            break;
-                        }
-                    }
-                    const nextIndicator = /\\[A-Za-z]+|\^|_/.test(nextMeaningful);
-
-                    if (asciiMath && (run.length || indicator || nextIndicator)) {
-                        run.push(tok);
-                    } else {
-                        flush();
-                        out.push(tok);
-                    }
-                }
-
-                flush();
-                return out.join('');
-            }).join('');
-        }
-
-        const trimmed = t.trim();
-
-        const hasKorean = /[가-힣]/.test(trimmed);
-        const hasDollar = /\$/.test(trimmed);
-
-        const looksLikeMath =
-            !hasKorean &&
-            !hasDollar &&
-            (
-                /\\[a-zA-Z]+/.test(trimmed) ||
-                (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0)
-            );
-
-        if (looksLikeMath && !t.includes('<br>')) return `$${trimmed}$`;
-        return t;
+    const hasAnyKorean = /[가-힣]/.test(s);
+    if (!hasAnyKorean && (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s))) return `$$${s}$$`;
+    const htmlTags = [];
+    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => { const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token; });
+    s = s.replace(/<\/?(?:div|span|br|p|b|i|u|strong|em|table|thead|tbody|tr|td|th|ul|ol|li|hr)(?:\s+[^<>]*?)?\s*\/?>/gi, m => { const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token; });
+    s = s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\n/g, '<br>');
+    const segments = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$|__HTMLTAG_\d+__|<br>)/g);
+    return segments.map(seg => {
+        if (!seg) return ''; if (seg === '<br>') return seg;
+        if (/^__HTMLTAG_\d+__$/.test(seg)) return htmlTags[Number(seg.match(/\d+/)[0])] || seg;
+        if (/^\$\$[\s\S]*\$\$$/.test(seg) || /^\$[^$\n]+\$$/.test(seg)) return seg;
+        const trimmed = seg.trim(); if (!trimmed) return seg;
+        const looksLikeMath = !/[가-힣]/.test(trimmed) && !/\$/.test(trimmed) && (/\\[a-zA-Z]+/.test(trimmed) || (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\&;]+$/.test(trimmed) && trimmed.length > 0));
+        if (looksLikeMath) { const math = trimmed.replace(/&lt;/g, '\\lt ').replace(/&gt;/g, '\\gt '); return seg.replace(trimmed, `$${math}$`); }
+        return seg.split(/(\$[^$\n]*\$)/g).map((piece, idx) => idx % 2 === 1 ? piece : piece.replace(/(\\\{(?:[^${}]|\{[^}]*\})*\\\})/g, '$$$1$$')).join('');
     }).join('');
 }
 
-function stripCite(text) {
-    if (!text) return text;
-    return text.replace(/【[^】]*】/g, '').trim();
-}
-
-function raf() {
-    return new Promise(r => requestAnimationFrame(r));
-}
-
+function stripCite(text) { return text ? text.replace(/【[^】]*】/g, '').trim() : ''; }
+function raf() { return new Promise(r => requestAnimationFrame(r)); }
 window.onload = init;
 </script>
 </body>
