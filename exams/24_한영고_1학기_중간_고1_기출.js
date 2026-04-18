@@ -39,7 +39,7 @@ window.questionBank = [
       "$64$"
     ],
     "answer": "③",
-    "solution": "<b>[키포인트]</b> 합과 곱의 꼴로 이루어진 곱셈 공식의 변형을 이용함.\\n$x^3+y^3 = (x+y)^3 - 3xy(x+y)\\n주어진 조건 $x+y=4, xy=2$를 대입함.\\n\\implies x^3+y^3 = 4^3 - 3(2)(4)\\n\\implies 64 - 24 = 40\\n\\therefore 40"
+    "solution": "<b>[키포인트]</b> 합과 곱의 꼴로 이루어진 곱셈 공식의 변형을 이용함.\\n$x^3+y^3 = (x+y)^3 - 3xy(x+y)$\\n주어진 조건 $x+y=4, xy=2$를 대입함.\\n\\implies x^3+y^3 = 4^3 - 3(2)(4)\\n\\implies 64 - 24 = 40\\n\\therefore 40"
   },
   {
     "id": 3,

@@ -284,15 +284,15 @@ window.questionBank = [
 </svg>`,
     choices: ["28", "29", "30", "31", "32"],
     answer: "⑤",
-    solution: `[풀이]
+solution: `[풀이]
 지시된 $A(0,0)$, $P(4,-1)$, $B(6,-3)$ 좌표와 유실된 세 구간의 도로를 반영하여 계산한다.
 1) 유실 도로를 고려한 $A$에서 $B$까지의 전체 최단 경로의 수: $62$가지
 2) $P$지점을 반드시 거쳐서 가는 경로의 수:
-   - $A \\rightarrow P(4,-1)$ 경로의 수: $\\binom{4+1}{1} = 5$가지
-   - $P(4,-1) \\rightarrow B(6,-3)$ 경로의 수: $\\binom{2+2}{2} = 6$가지 (이 구간 내 유실 도로 없음)
-   - $P$를 경유하는 경우의 수: $5 \\times 6 = 30$가지
+   - $A \\rightarrow P(4,-1)$ 경로의 수: $\\binom{4+1}{1} = 5$가지
+   - $P(4,-1) \\rightarrow B(6,-3)$ 경로의 수: $\\binom{2+2}{2} = 6$가지 (이 구간 내 유실 도로 없음)
+   - $P$를 경유하는 경우의 수: $5 \\times 6 = 30$가지
 3) $P$지점을 거치지 않고 가는 경로의 수:
-   - $62 - 30 = 32$가지
+   - $62 - 30 = 32$가지
 ---
 [결론]
 정답: 5`
@@ -441,7 +441,7 @@ window.questionBank = [
     content: "1학년 학생 2명, 2학년 학생 3명, 3학년 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [4.8점]\n<svg width='180' height='180' viewBox='0 0 200 200' style='display:block; margin: 10px auto;'>\n  <circle cx='100' cy='100' r='70' stroke='black' stroke-width='2' fill='none'/>\n  <circle cx='170' cy='100' r='5' fill='black'/><circle cx='149' cy='149' r='5' fill='black'/>\n  <circle cx='100' cy='170' r='5' fill='black'/><circle cx='51' cy='149' r='5' fill='black'/>\n  <circle cx='30' cy='100' r='5' fill='black'/><circle cx='51' cy='51' r='5' fill='black'/>\n  <circle cx='100' cy='30' r='5' fill='black'/><circle cx='149' cy='51' r='5' fill='black'/>\n</svg>\n<조 건>\n(가) 같은 학년 학생끼리는 서로 이웃하여 앉지 않는다.\n(나) 같은 학년 학생끼리는 서로 마주보고 앉지 않는다.",
     choices: ["72", "144", "288", "360", "720"],
     answer: "②",
-    solution: "[풀이] 수식 중심 전개\n1) 3학년 3명을 배치하는 패턴 (이웃X, 마주보기X): $\\rightarrow (3-1)! = 2$가지\n2) 남은 5자리에 1, 2학년을 배치하는 경우의 수: $\\rightarrow 3! \\times 2! = 12$가지\n3) 전체 유효 패턴 조합에 따른 계산: $\\rightarrow 6 \\times 2 \\times 12 = 144$\n---\n[결론] 정답: 144이다."
+    solution: "[풀이]\n1) 3학년 3명을 탁자에 배치하는 원순열의 수 (비대칭 좌석 간격): 6가지\n2) 남은 5자리 중 1, 2학년의 조건(이웃 및 마주보기 금지)을 모두 만족하는 유효 좌석 조합: 2가지\n3) 해당 좌석에 1, 2학년을 각각 배열하는 경우의 수: 3! \\times 2! = 12가지\n\\rightarrow 6 \\times 2 \\times 12 = 144\n---\n[결론]\n정답: 144"
   },
   {
     id: 23,

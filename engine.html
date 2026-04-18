@@ -818,8 +818,6 @@ function normalizeMathEnglishInSolution(text) {
     const rules = [
         [/\bif\s+and\s+only\s+if\b/gi, '\\iff'],
         [/\biff\b/gi, '\\iff'],
-        // ※ \b(word boundary) 제거: OCR로 'ximplies', 'impliesa' 등 붙어나오는 케이스 처리
-        // (?<!\\) negative lookbehind: \implies 처럼 이미 LaTeX인 경우는 건드리지 않음
         [/(?<!\\)therefore/gi, ' \\therefore '],
         [/(?<!\\)hence/gi, ' \\therefore '],
         [/(?<!\\)thus/gi, ' \\therefore '],
@@ -877,7 +875,16 @@ function wrapLatexPreserveBlocks(text) {
     }
 
     const htmlTags = [];
-    s = s.replace(/<\/?(?:div|span|br|p|b|i|u|strong|em|table|thead|tbody|tr|td|th|ul|ol|li|hr|svg|g|path|line|polyline|polygon|circle|ellipse|rect|text|defs|marker|foreignObject)(?:\s+[^<>]*?)?\s*\/?>/gi, m => {
+    
+    // 1. SVG 전체 블록 및 img 태그 통째로 선제 보호 (내부 텍스트/줄바꿈 파괴 차단)
+    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => {
+        const token = `__HTMLTAG_${htmlTags.length}__`;
+        htmlTags.push(m);
+        return token;
+    });
+    
+    // 2. 나머지 일반 HTML 태그 보호 (SVG 하위 개별 태그 목록에서 제외)
+    s = s.replace(/<\/?(?:div|span|br|p|b|i|u|strong|em|table|thead|tbody|tr|td|th|ul|ol|li|hr)(?:\s+[^<>]*?)?\s*\/?>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`;
         htmlTags.push(m);
         return token;
@@ -886,14 +893,18 @@ function wrapLatexPreserveBlocks(text) {
     s = s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\n/g, '<br>');
 
+    // 3. 분할 정규식: 토큰화된 태그를 단독 세그먼트로 분리하여 수식 자동 판단에서 제외
     const segments = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$|__HTMLTAG_\d+__|<br>)/g);
 
     const out = segments.map(seg => {
         if (!seg) return '';
         if (seg === '<br>') return seg;
+        
+        // 4. 토큰을 만나면 바로 복원 (looksLikeMath 로직 타기 전 원본 반환)
         if (/^__HTMLTAG_\d+__$/.test(seg)) {
             return htmlTags[Number(seg.match(/\d+/)[0])] || seg;
         }
+        
         if (/^\$\$[\s\S]*\$\$$/.test(seg) || /^\$[^$\n]+\$$/.test(seg)) {
             return seg;
         }
