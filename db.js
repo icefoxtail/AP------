@@ -6,8 +6,8 @@ window.mainDB = {
       "grade": "고1",
       "semester": "1",
       "examType": "기출",
-      "subject": "기출",
-      "file": "01_항등식과나머지정리_고1_기출.js"
+      "subject": "유형",
+      "file": "01_항등식과나머지정리_고1_유형.js"
     },
     {
       "year": "2019",
@@ -263,6 +263,15 @@ window.mainDB = {
     },
     {
       "year": "2023",
+      "school": "여천고",
+      "grade": "고1",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "기출",
+      "file": "23_여천고_1학기_중간_고1_기출.js"
+    },
+    {
+      "year": "2023",
       "school": "왕운중",
       "grade": "중3",
       "semester": "1",
@@ -290,12 +299,12 @@ window.mainDB = {
     },
     {
       "year": "2023",
-      "school": "충무고1",
+      "school": "충무고",
       "grade": "고1",
       "semester": "1",
       "examType": "mid",
       "subject": "기출",
-      "file": "23_충무고1_1학기_중간_고1_기출.js"
+      "file": "23_충무고_1학기_중간_고1_기출.js"
     },
     {
       "year": "2023",
@@ -560,6 +569,15 @@ window.mainDB = {
     },
     {
       "year": "2025",
+      "school": "제일고",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "file": "25_제일고_1학기_중간_고2_확률과통계.js"
+    },
+    {
+      "year": "2025",
       "school": "팔마고",
       "grade": "고1",
       "semester": "1",
@@ -593,6 +611,15 @@ window.mainDB = {
       "examType": "mid",
       "subject": "대수",
       "file": "25_효천고_1학기_중간_고2_대수.js"
+    },
+    {
+      "year": "2025",
+      "school": "효천고",
+      "grade": "고2",
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "file": "25_효천고_1학기_중간_고2_확률과통계.js"
     },
     {
       "year": "2026",
