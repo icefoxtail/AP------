@@ -10,7 +10,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중하", "제곱근의 성질"],
+    "tags": [
+      "중하",
+      "제곱근의 성질"
+    ],
     "content": "다음 보기 중 옳은 것을 모두 고른 것은?(3점)<div class='box'><b>보기</b><br>ㄱ. $0$의 제곱근은 하나뿐이다.<br>ㄴ. 제곱근 $7$은 $\\sqrt{7}$이다.<br>ㄷ. 모든 수의 제곱근은 $2$개이다.<br>ㄹ. $-2$는 $4$의 음의 제곱근이다.<br>ㅁ. $16$의 제곱근은 $\\pm2$이다.</div>",
     "choices": [
       "① ㄴ, ㄹ",
@@ -27,7 +30,8 @@ window.questionBank = [
       "4. ㄹ: $(-2)^{2}=4$이므로 $-2$는 $4$의 음의 제곱근이다. 따라서 옳은 설명이다.",
       "5. ㅁ: $16$의 제곱근은 $\\pm 4$이므로 $\\pm 2$라는 설명은 옳지 않다."
     ],
-    "error_check": "각 보기의 참/거짓 여부를 제곱근의 정의에 근거하여 전수 검증하였으며, 선택지 ④번(ㄱ, ㄴ, ㄹ)이 정답임을 확정함. [cite: 2026-04-10]"
+    "error_check": "각 보기의 참/거짓 여부를 제곱근의 정의에 근거하여 전수 검증하였으며, 선택지 ④번(ㄱ, ㄴ, ㄹ)이 정답임을 확정함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 2,
@@ -38,7 +42,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "근호를 포함한 식의 계산"],
+    "tags": [
+      "중",
+      "근호를 포함한 식의 계산"
+    ],
     "content": "$\\sqrt{(4+\\sqrt{17})^{2}}-\\sqrt{(4-\\sqrt{17})^{2}}$ 을 간단히 하면?(4점)",
     "choices": [
       "① $-8$",
@@ -54,7 +61,8 @@ window.questionBank = [
       "3. $4-\\sqrt{17} < 0$이므로 $\\sqrt{(4-\\sqrt{17})^{2}} = -(4-\\sqrt{17}) = -4+\\sqrt{17}$이다.",
       "4. 식을 정리하면 $(4+\\sqrt{17}) - (-4+\\sqrt{17}) = 4+\\sqrt{17}+4-\\sqrt{17} = 8$이다."
     ],
-    "error_check": "$4-\\sqrt{17}$의 부호가 음수임을 근거로 절댓값 처리 시 부호 반전이 정확히 이루어졌음을 검산함. [cite: 2026-04-10]"
+    "error_check": "$4-\\sqrt{17}$의 부호가 음수임을 근거로 절댓값 처리 시 부호 반전이 정확히 이루어졌음을 검산함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 3,
@@ -65,7 +73,11 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "무리수와 수직선", "함정: 한 변의 길이"],
+    "tags": [
+      "중",
+      "무리수와 수직선",
+      "함정: 한 변의 길이"
+    ],
     "content": "다음 그림은 한 변의 길이가 $\\sqrt{2}$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}, \\overline{BD}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때, $x$와 $y$ 사이의 거리는?(5점)<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><line x1=\"10\" y1=\"100\" x2=\"150\" y2=\"100\" stroke=\"black\"/><rect x=\"60\" y=\"71.7\" width=\"28.3\" height=\"28.3\" fill=\"none\" stroke=\"black\"/><line x1=\"60\" y1=\"100\" x2=\"88.3\" y2=\"71.7\" stroke=\"red\"/><line x1=\"88.3\" y1=\"100\" x2=\"60\" y2=\"71.7\" stroke=\"red\"/><text x=\"58\" y=\"110\" font-size=\"8\">B</text><text x=\"86\" y=\"110\" font-size=\"8\">C</text><text x=\"55\" y=\"68\" font-size=\"8\">A</text><text x=\"90\" y=\"68\" font-size=\"8\">D</text><path d=\"M 88.3 100 A 40 40 0 0 0 48.3 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><path d=\"M 60 100 A 40 40 0 0 1 100 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><text x=\"40\" y=\"110\" font-size=\"8\">P(x)</text><text x=\"102\" y=\"110\" font-size=\"8\">Q(y)</text></svg>",
     "choices": [
       "① $\\sqrt{2}+1$",
@@ -83,7 +95,8 @@ window.questionBank = [
       "5. 정사각형의 한 변의 길이 $C-B = \\sqrt{2}$이므로 거리는 $4-\\sqrt{2}$이다.",
       "\\n[Figure]\\n- 좌표계: 수직선 상의 점 $B, C$를 각각 $b, c$로 설정, $x$축 상의 거리 측정\\n- 엄밀성: $\\overline{AC}=2$, $B, C$ 간격 $\\sqrt{2}$ 고정\\n- 도형 관계: $\\overline{AC}\\perp\\overline{BD}$는 정사각형의 성질이나 수직선 좌표 산출에 직접 사용됨"
     ],
-    "error_check": "이미지상 원호의 중심이 각각 $B, C$로 교차되어 있음을 확인하고, 대각선 길이 $2$를 이용하여 $y-x$를 정확히 연립함. [cite: 2026-04-10]"
+    "error_check": "이미지상 원호의 중심이 각각 $B, C$로 교차되어 있음을 확인하고, 대각선 길이 $2$를 이용하여 $y-x$를 정확히 연립함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 4,
@@ -94,7 +107,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["하", "실수의 대소 및 분류"],
+    "tags": [
+      "하",
+      "실수의 대소 및 분류"
+    ],
     "content": "다음 중 옳지 않은 것은?(3점)",
     "choices": [
       "① 수직선과 실수 사이에는 일대일 대응이 이루어진다.",
@@ -108,7 +124,8 @@ window.questionBank = [
       "1. 무한소수는 순환소수와 순환하지 않는 무한소수로 구분된다.",
       "2. 순환소수는 분수로 나타낼 수 있는 유리수이므로 모든 무한소수가 무리수라는 것은 틀린 설명이다."
     ],
-    "error_check": "유리수(순환소수 포함)와 무리수(순환하지 않는 무한소수)의 정의를 대조하여 ⑤번의 일반화 오류를 검증함. [cite: 2026-04-10]"
+    "error_check": "유리수(순환소수 포함)와 무리수(순환하지 않는 무한소수)의 정의를 대조하여 ⑤번의 일반화 오류를 검증함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 5,
@@ -119,7 +136,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "분모의 유리화"],
+    "tags": [
+      "중",
+      "분모의 유리화"
+    ],
     "content": "$\\frac{\\sqrt{2}}{\\sqrt{2}+1}-\\frac{3}{\\sqrt{2}-1}=a+b\\sqrt{2}$ 일 때, $a+b$의 값은?(4점)",
     "choices": [
       "① $-5$",
@@ -135,7 +155,8 @@ window.questionBank = [
       "3. $(2-\\sqrt{2}) - (3+3\\sqrt{2}) = -1-4\\sqrt{2}$이므로 $a=-1, b=-4$이다.",
       "4. 따라서 $a+b = -5$이다."
     ],
-    "error_check": "$a, b$가 유리수임을 확인하고 무리수 항과 상수항을 분리하여 계산한 결과 $-5$임을 재검산함. [cite: 2026-04-10]"
+    "error_check": "$a, b$가 유리수임을 확인하고 무리수 항과 상수항을 분리하여 계산한 결과 $-5$임을 재검산함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 6,
@@ -146,7 +167,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "근호의 변형"],
+    "tags": [
+      "중",
+      "근호의 변형"
+    ],
     "content": "다음은 $\\sqrt{2}=a, \\sqrt{3}=b$일 때, 주어진 수를 $a, b$ 사용하여 나타낸 것이다. $\\square$ 안에 알맞은 수의 곱은?(4점)<div class='box'>$\\sqrt{96} = \\square ab$ <br> $\\sqrt{0.54} = \\square ab$</div>",
     "choices": [
       "① $21$",
@@ -161,7 +185,8 @@ window.questionBank = [
       "2. $\\sqrt{0.54} = \\sqrt{\\frac{54}{100}} = \\frac{3\\sqrt{6}}{10} = 0.3ab = \\frac{3}{10}ab$이므로 두 번째 상수는 $\\frac{3}{10}$이다.",
       "3. 두 수의 곱은 $4\\times\\frac{3}{10} = \\frac{12}{10} = \\frac{6}{5}$이다."
     ],
-    "error_check": "소인수분해를 통해 각 근호 값을 $a, b$의 곱인 $\\sqrt{6}$의 배수로 정확히 표현하고 상수의 곱을 기약분수로 확인 완료. [cite: 2026-04-10]"
+    "error_check": "소인수분해를 통해 각 근호 값을 $a, b$의 곱인 $\\sqrt{6}$의 배수로 정확히 표현하고 상수의 곱을 기약분수로 확인 완료. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 7,
@@ -172,7 +197,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "무리수의 덧셈과 뺄셈"],
+    "tags": [
+      "중",
+      "무리수의 덧셈과 뺄셈"
+    ],
     "content": "$7\\sqrt{2}+\\sqrt{80}+3\\sqrt{5}-\\sqrt{18}=a\\sqrt{2}+b\\sqrt{5}$ 일 때, $a-b$의 값은? (단, $a, b$는 유리수) (4점)",
     "choices": [
       "① $34$",
@@ -187,7 +215,8 @@ window.questionBank = [
       "2. 동류항끼리 계산하면 $(7-3)\\sqrt{2} + (4+3)\\sqrt{5} = 4\\sqrt{2} + 7\\sqrt{5}$이다.",
       "3. $a=4, b=7$이므로 $a-b = 4-7 = -3$이다."
     ],
-    "error_check": "$\\sqrt{80}=4\\sqrt{5}$ 및 $\\sqrt{18}=3\\sqrt{2}$ 변환 과정의 정확성을 확인하고 최종 뺄셈 결과 $-3$을 도출함. [cite: 2026-04-10]"
+    "error_check": "$\\sqrt{80}=4\\sqrt{5}$ 및 $\\sqrt{18}=3\\sqrt{2}$ 변환 과정의 정확성을 확인하고 최종 뺄셈 결과 $-3$을 도출함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 8,
@@ -198,7 +227,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중하", "실수의 대소 관계"],
+    "tags": [
+      "중하",
+      "실수의 대소 관계"
+    ],
     "content": "다음 중에서 옳은 것을 모두 찾으면? (정답 2개)(4점)",
     "choices": [
       "① $5\\sqrt{2}<7$",
@@ -215,7 +247,8 @@ window.questionBank = [
       "4. ④ $\\sqrt{8}=2\\sqrt{2}$이므로 대소 관계가 성립하지 않는다.",
       "5. ⑤ $(\\frac{1}{\\sqrt{3}})^{2}=\\frac{1}{3}=\\frac{3}{9}$, $(\\frac{2}{3})^{2}=\\frac{4}{9}$이므로 $\\frac{1}{\\sqrt{3}} < \\frac{2}{3}$는 옳다."
     ],
-    "error_check": "제곱하여 비교하는 방식과 근사값을 활용하는 방식 두 가지로 보기를 검증하여 ③, ⑤번을 확정함. [cite: 2026-04-10]"
+    "error_check": "제곱하여 비교하는 방식과 근사값을 활용하는 방식 두 가지로 보기를 검증하여 ③, ⑤번을 확정함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 9,
@@ -226,7 +259,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["하", "제곱근표의 활용"],
+    "tags": [
+      "하",
+      "제곱근표의 활용"
+    ],
     "content": "$\\sqrt{3}=1.732, \\sqrt{30}=5.447$ 일 때, 다음 중 옳은 것은?(3점)",
     "choices": [
       "① $\\sqrt{0.3}=0.1732$",
@@ -242,7 +278,8 @@ window.questionBank = [
       "3. 주어진 $\\sqrt{3}=1.732$를 대입하면 $10 \\times 1.732 = 17.32$가 되어 옳다.",
       "4. ①은 $\\frac{\\sqrt{30}}{10}=0.5447$, ③은 $10\\sqrt{30}=54.47$, ④는 $\\frac{\\sqrt{3}}{10}=0.1732$이므로 모두 옳지 않다."
     ],
-    "error_check": "소수점 이동 시 근호 안의 100배 단위 변화가 근호 밖의 10배 변화와 일치하는지 전수 확인 완료 [cite: 2026-04-10]."
+    "error_check": "소수점 이동 시 근호 안의 100배 단위 변화가 근호 밖의 10배 변화와 일치하는지 전수 확인 완료 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 10,
@@ -253,7 +290,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "무리수가 유리수가 될 조건"],
+    "tags": [
+      "중",
+      "무리수가 유리수가 될 조건"
+    ],
     "content": "두 수 $2+a\\sqrt{3}$과 $b-3\\sqrt{3}$의 합과 곱이 모두 유리수가 되도록 하는 $a-b$의 값을 구하면? (단, $a, b$는 유리수이다.) (4점)",
     "choices": [
       "① $1-3$",
@@ -270,7 +310,8 @@ window.questionBank = [
       "4. 곱이 유리수가 되려면 $3b-6=0$, 즉 $b=2$이다.",
       "5. 따라서 $a-b = 3-2 = 1$이다."
     ],
-    "error_check": "$a=3, b=2$ 대입 시 합($5$)과 곱($-23$)이 모두 유리수임을 확인하여 데이터 무결성 검증 완료 [cite: 2026-04-10]."
+    "error_check": "$a=3, b=2$ 대입 시 합($5$)과 곱($-23$)이 모두 유리수임을 확인하여 데이터 무결성 검증 완료 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 11,
@@ -281,7 +322,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "정수 부분과 소수 부분"],
+    "tags": [
+      "중",
+      "정수 부분과 소수 부분"
+    ],
     "content": "$\\sqrt{a}$ 의 정수 부분을 $[\\sqrt{a}]$, 소수 부분을 $\\langle \\sqrt{a} \\rangle$라 할 때, $[\\sqrt{20}]-\\langle \\sqrt{8} \\rangle \\times \\sqrt{2}$의 값은?(5점)",
     "choices": [
       "① $4-2\\sqrt{2}$",
@@ -297,7 +341,8 @@ window.questionBank = [
       "3. 주어진 식에 대입하면 $4 - (2\\sqrt{2}-2) \\times \\sqrt{2} = 4 - (4-2\\sqrt{2})$이다.",
       "4. 식을 정리하면 $4-4+2\\sqrt{2} = 2\\sqrt{2}$이다."
     ],
-    "error_check": "소수 부분의 정의(수 - 정수 부분)를 정확히 적용하고 분배 법칙 시 부호 실수가 없음을 확인 완료 [cite: 2026-04-10]."
+    "error_check": "소수 부분의 정의(수 - 정수 부분)를 정확히 적용하고 분배 법칙 시 부호 실수가 없음을 확인 완료 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 12,
@@ -308,7 +353,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "비례식의 활용"],
+    "tags": [
+      "중",
+      "비례식의 활용"
+    ],
     "content": "명준이가 갖고 있는 카드는 가로의 길이와 세로의 길이의 비가 $\\sqrt{7}:1$이다. 카드의 가로의 길이가 $\\sqrt{112}$ cm일 때, 세로의 길이는?(4점)",
     "choices": [
       "① $\\sqrt{6}$ cm",
@@ -324,7 +372,8 @@ window.questionBank = [
       "3. 내항의 곱과 외항의 곱이 같으므로 $x\\sqrt{7} = 4\\sqrt{7}$이다.",
       "4. 따라서 $x=4$이므로 세로의 길이는 $4$ cm이다."
     ],
-    "error_check": "가로 길이 $\\sqrt{112}$를 $4\\sqrt{7}$로 정확히 변형했는지와 비례식 연산 결과의 정수 일치 여부 확인 완료 [cite: 2026-04-10]."
+    "error_check": "가로 길이 $\\sqrt{112}$를 $4\\sqrt{7}$로 정확히 변형했는지와 비례식 연산 결과의 정수 일치 여부 확인 완료 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 13,
@@ -335,7 +384,10 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["하", "공통인수로 묶기"],
+    "tags": [
+      "하",
+      "공통인수로 묶기"
+    ],
     "content": "$ab(x-y)+b(y-x)$ 를 인수분해하면?(4점)",
     "choices": [
       "① $2ab(x-y)$",
@@ -350,7 +402,8 @@ window.questionBank = [
       "2. 주어진 식은 $ab(x-y) - b(x-y)$가 된다.",
       "3. 공통인수 $b(x-y)$로 묶으면 $b(x-y)(a-1)$이다."
     ],
-    "error_check": "항의 순서 변경 시 부호 반전이 정확히 적용되었는지 확인하여 최종 인수분해 결과 검증 완료 [cite: 2026-04-10]."
+    "error_check": "항의 순서 변경 시 부호 반전이 정확히 적용되었는지 확인하여 최종 인수분해 결과 검증 완료 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 14,
@@ -361,7 +414,10 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["중하", "합차 공식"],
+    "tags": [
+      "중하",
+      "합차 공식"
+    ],
     "content": "$16x^{4}-y^{4}$ 을 인수분해하면? (4점)",
     "choices": [
       "① $(4x^{2}+y^{4})(2x+y^{2})^{2}$",
@@ -377,7 +433,8 @@ window.questionBank = [
       "3. 뒤의 항 $(4x^{2}-y^{2})$을 다시 $(2x)^{2}-y^{2}$으로 보고 합차 공식을 한 번 더 적용한다.",
       "4. 최종적으로 $(4x^{2}+y^{2})(2x+y)(2x-y)$ 가 된다."
     ],
-    "error_check": "인수분해가 더 이상 불가능한 일차식까지 완전히 수행되었는지 전수 확인 완료 [cite: 2026-04-10]."
+    "error_check": "인수분해가 더 이상 불가능한 일차식까지 완전히 수행되었는지 전수 확인 완료 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 15,
@@ -388,7 +445,10 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["중", "완전제곱식"],
+    "tags": [
+      "중",
+      "완전제곱식"
+    ],
     "content": "다항식 $16x^{2}+ax+9$ 가 완전제곱식이 될 때, $a$의 값으로 알맞은 수를 모두 찾으면? (정답 2개) (4점)",
     "choices": [
       "① $-24$",
@@ -404,7 +464,8 @@ window.questionBank = [
       "3. 따라서 $ax = \\pm 24x$ 이므로 $a = \\pm 24$ 이다.",
       "4. 알맞은 수는 $-24$와 $24$이다."
     ],
-    "error_check": "상수항이 양수일 때 일차항 계수가 양수와 음수 두 가지 모두 가능함을 간과하지 않았는지 확인 완료 [cite: 2026-04-10]."
+    "error_check": "상수항이 양수일 때 일차항 계수가 양수와 음수 두 가지 모두 가능함을 간과하지 않았는지 확인 완료 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 16,
@@ -415,7 +476,10 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["하", "인수분해 공식 검증"],
+    "tags": [
+      "하",
+      "인수분해 공식 검증"
+    ],
     "content": "다음 중 인수분해한 것이 옳지 않은 것은?(4점)",
     "choices": [
       "① $x^{2}-9=(x+3)(x-3)$",
@@ -430,7 +494,8 @@ window.questionBank = [
       "2. 이는 원래 식인 $3x^2+2x-1$과 일치하지 않으므로 옳지 않다.",
       "3. $3x^2+2x-1$을 바르게 인수분해하면 $(3x-1)(x+1)$이다."
     ],
-    "error_check": "각 보기의 우변을 전개하여 좌변의 다항식과 일치하는지 전수 검산하여 오답을 확정함 [cite: 2026-04-10]."
+    "error_check": "각 보기의 우변을 전개하여 좌변의 다항식과 일치하는지 전수 검산하여 오답을 확정함 [cite: 2026-04-10].",
+    "solution": ""
   },
   {
     "id": 17,
@@ -441,7 +506,10 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["중", "인수분해 공식의 활용"],
+    "tags": [
+      "중",
+      "인수분해 공식의 활용"
+    ],
     "content": "인수분해 공식을 이용하여 다음 두 수 $A, B$를 계산할 때, $A-B$의 값은?(4점)\\n<div class='box'>$A=27^{2}+6\\times27+9$\\n$B=8.5^{2}\\times9-1.5^{2}\\times9$</div>",
     "choices": [
       "① $250$",
@@ -456,7 +524,8 @@ window.questionBank = [
       "2. $B$ 계산: $9(8.5^{2}-1.5^{2})$ 이므로 합차 공식을 사용하여 $9(8.5+1.5)(8.5-1.5) = 9 \\times 10 \\times 7 = 630$ 이다.",
       "3. $A-B = 900-630 = 270$ 이다."
     ],
-    "error_check": "완전제곱식과 합차 공식을 정확히 적용하여 산술 연산의 무결성을 검증함. [cite: 2026-04-10]"
+    "error_check": "완전제곱식과 합차 공식을 정확히 적용하여 산술 연산의 무결성을 검증함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 18,
@@ -467,7 +536,10 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["중", "치환을 이용한 인수분해"],
+    "tags": [
+      "중",
+      "치환을 이용한 인수분해"
+    ],
     "content": "다항식 $(x^{2}-3x)^{2}-2x^{2}+6x-8$ 의 인수가 아닌 것은?(4점)",
     "choices": [
       "① $x-1$",
@@ -484,7 +556,8 @@ window.questionBank = [
       "4. 각각 인수분해하면 $(x-4)(x+1)(x-2)(x-1)$ 이다.",
       "5. 인수가 아닌 것은 ④ $x+2$ 이다."
     ],
-    "error_check": "치환 후 2차식의 인수분해 및 환원된 각 다항식의 추가 인수분해 가능 여부를 전수 확인함. [cite: 2026-04-10]"
+    "error_check": "치환 후 2차식의 인수분해 및 환원된 각 다항식의 추가 인수분해 가능 여부를 전수 확인함. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 19,
@@ -495,7 +568,11 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈",
     "standardUnitOrder": 2,
-    "tags": ["상", "원과 넓이", "도형의 활용"],
+    "tags": [
+      "상",
+      "원과 넓이",
+      "도형의 활용"
+    ],
     "content": "다음 그림에서 세 원의 중심은 모두 $\\overline{AB}$ 위에 있고, 점 $D$는 $\\overline{BC}$의 중점이다. $\\overline{AD}$를 지름으로 하는 원의 둘레의 길이는 $12\\pi$ cm이고, 색칠한 부분의 넓이는 $36\\pi$ $\\text{cm}^{2}$이다. $\\overline{CD}=a$ cm일 때, $a$의 값을 구하면?(5점)\\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><circle cx=\"80\" cy=\"60\" r=\"60\" fill=\"#bbb\" stroke=\"black\"/><circle cx=\"40\" cy=\"60\" r=\"20\" fill=\"white\" stroke=\"black\"/><circle cx=\"100\" cy=\"60\" r=\"40\" fill=\"white\" stroke=\"black\"/><line x1=\"20\" y1=\"60\" x2=\"140\" y2=\"60\" stroke=\"black\"/><text x=\"15\" y=\"65\" font-size=\"8\">A</text><text x=\"142\" y=\"65\" font-size=\"8\">B</text><text x=\"58\" y=\"65\" font-size=\"8\">C</text><text x=\"98\" y=\"65\" font-size=\"8\">D</text></svg>",
     "choices": [
       "① $3$",
@@ -513,7 +590,8 @@ window.questionBank = [
       "5. 식을 정리하면 $12a-a^{2}=36$, 즉 $(a-6)^{2}=0$ 이므로 $a=6$ 이다.",
       "\\n[Figure]\\n- 좌표계: $A(0,0)$ 을 원점으로 하는 $x$축 상에 모든 중심 배치 [cite: 2026-04-09]\\n- 엄밀성: $\\overline{AD}=12$, $\\overline{CD}=\\overline{DB}=a$ 관계를 연립방정식으로 도출 [cite: 2026-04-09]\\n- 도형 관계: $\\overline{AB}$ 는 세 원 지름의 합이며 중심은 모두 동일 직선상에 존재함 [cite: 2026-04-09]"
     ],
-    "error_check": "이미지상 $D$가 $BC$ 중점임을 확인하고 넓이 관계식을 통해 $a=6$ 임을 역산 검증 완료. [cite: 2026-04-10]"
+    "error_check": "이미지상 $D$가 $BC$ 중점임을 확인하고 넓이 관계식을 통해 $a=6$ 임을 역산 검증 완료. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 20,
@@ -524,7 +602,10 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["중", "인수정리"],
+    "tags": [
+      "중",
+      "인수정리"
+    ],
     "content": "$x-1$이 $8x^{2}-13x+a$의 인수일 때, $a$의 값을 구하면?(4점)",
     "choices": [
       "① $1-3$",
@@ -539,7 +620,8 @@ window.questionBank = [
       "2. $8(1)^{2}-13(1)+a=0$ 이므로 $8-13+a=0$ 이다.",
       "3. 따라서 $a=5$ 이다."
     ],
-    "error_check": "$a=5$ 대입 시 $(8x-5)(x-1)$ 로 인수분해됨을 확인하여 데이터 무결성 검증 완료. [cite: 2026-04-10]"
+    "error_check": "$a=5$ 대입 시 $(8x-5)(x-1)$ 로 인수분해됨을 확인하여 데이터 무결성 검증 완료. [cite: 2026-04-10]",
+    "solution": ""
   },
   {
     "id": 21,
@@ -550,7 +632,11 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["중", "서술형", "제곱근의 연산"],
+    "tags": [
+      "중",
+      "서술형",
+      "제곱근의 연산"
+    ],
     "content": "서술형 1. $\\sqrt{49}$의 음의 제곱근을 $a$, $\\sqrt{(-9)^{2}}$의 양의 제곱근을 $b$라고 할 때, 다음 물음에 답하여라. (단, 풀이 과정을 자세히 써라.)(6점)\\n(1) $a, b$의 값을 각각 구하여라. (2점)\\n(2) $\\sqrt{63}$을 $a, b$를 사용한 식으로 나타내어라. (4점)",
     "answer": "(1) $a = -\\sqrt{7}, b = 3$ (2) $-ab$",
     "solution_steps": [
@@ -559,7 +645,9 @@ window.questionBank = [
       "3. (2) $\\sqrt{63} = 3\\sqrt{7}$ 이다.",
       "4. $a, b$를 대입하면 $b \\times (-a) = -ab$ 로 나타낼 수 있다."
     ],
-    "error_check": "음수의 제곱근 개념과 근호 안의 제곱 처리를 정확히 수행했는지 확인 완료. [cite: 2026-04-10]"
+    "error_check": "음수의 제곱근 개념과 근호 안의 제곱 처리를 정확히 수행했는지 확인 완료. [cite: 2026-04-10]",
+    "choices": [],
+    "solution": ""
   },
   {
     "id": 22,
@@ -570,7 +658,11 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
-    "tags": ["상", "서술형", "무리수와 수직선"],
+    "tags": [
+      "상",
+      "서술형",
+      "무리수와 수직선"
+    ],
     "content": "서술형 2. 다음 그림에서 두 점 $P, Q$에 대응하는 수를 각각 $p, q$라고 할 때, $3p+q$의 값을 구하는 풀이 과정과 답을 서술하여라. (단, 풀이 과정을 자세히 써라.)(7점)\\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><line x1=\"10\" y1=\"100\" x2=\"150\" y2=\"100\" stroke=\"black\"/><rect x=\"60\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"black\"/><line x1=\"60\" y1=\"100\" x2=\"90\" y2=\"70\" stroke=\"red\"/><path d=\"M 90 100 A 42.4 42.4 0 0 0 47.6 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><path d=\"M 60 100 A 42.4 42.4 0 0 1 102.4 100\" fill=\"none\" stroke=\"blue\" stroke-dasharray=\"2\"/><text x=\"58\" y=\"110\" font-size=\"8\">-2</text><text x=\"88\" y=\"110\" font-size=\"8\">-1</text><text x=\"42\" y=\"110\" font-size=\"8\">P(p)</text><text x=\"102\" y=\"110\" font-size=\"8\">Q(q)</text></svg>",
     "answer": "$-5-2\\sqrt{2}$",
     "solution_steps": [
@@ -580,7 +672,9 @@ window.questionBank = [
       "4. $3p+q = 3(-1-\\sqrt{2}) + (-2+\\sqrt{2}) = -3-3\\sqrt{2}-2+\\sqrt{2} = -5-2\\sqrt{2}$ 이다.",
       "\\n[Figure]\\n- 좌표계: 수직선 상의 눈금을 기준으로 함, 원점은 $0$ [cite: 2026-04-09]\\n- 엄밀성: 대각선 반경 $\\sqrt{2}$를 컴퍼스 궤적으로 대응시킴 [cite: 2026-04-09]\\n- 도형 관계: 아크의 중심점과 대응점의 좌표를 수치적으로 명시함 [cite: 2026-04-09]"
     ],
-    "error_check": "이미지상의 아크 궤적을 재확인하여 중심점($-1, -2$)과 좌표를 정확히 산출함."
+    "error_check": "이미지상의 아크 궤적을 재확인하여 중심점($-1, -2$)과 좌표를 정확히 산출함.",
+    "choices": [],
+    "solution": ""
   },
   {
     "id": 23,
@@ -591,7 +685,11 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "tags": ["중", "서술형", "인수분해의 기하학적 모델"],
+    "tags": [
+      "중",
+      "서술형",
+      "인수분해의 기하학적 모델"
+    ],
     "content": "서술형 3. 다음 그림의 모든 직사각형을 빈틈없이 붙여서 하나의 큰 사각형을 만들려고 한다. 다음 물음에 답하여라. (단, 풀이 과정을 자세히 써라.)(7점)\\n(1) 새로 만든 큰 직사각형의 넓이를 다항식으로 나타내고 인수분해 하여라. (4점)\\n(2) 새로 만든 큰 직사각형의 둘레의 길이를 구하여라. (3점)\\n<svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\"><rect x=\"20\" y=\"20\" width=\"30\" height=\"30\" fill=\"#bbb\" stroke=\"black\"/><rect x=\"55\" y=\"20\" width=\"30\" height=\"30\" fill=\"#bbb\" stroke=\"black\"/><rect x=\"90\" y=\"20\" width=\"30\" height=\"30\" fill=\"#bbb\" stroke=\"black\"/><rect x=\"20\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"35\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"50\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"65\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"80\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"95\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"110\" y=\"60\" width=\"10\" height=\"30\" fill=\"#eee\" stroke=\"black\"/><rect x=\"125\" y=\"60\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/><rect x=\"137\" y=\"60\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/><rect x=\"125\" y=\"72\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/><rect x=\"137\" y=\"72\" width=\"10\" height=\"10\" fill=\"#ddd\" stroke=\"black\"/></svg>",
     "answer": "(1) $(3x+4)(x+1)$ (2) $8x+10$",
     "solution_steps": [
@@ -601,6 +699,8 @@ window.questionBank = [
       "4. 둘레의 길이는 $2\\{(3x+4)+(x+1)\\} = 2(4x+5) = 8x+10$ 이다.",
       "\\n[Figure]\\n- 좌표계: 추상 기하 모델로 좌표계 생략 [cite: 2026-04-09]\\n- 엄밀성: 타일의 수량과 면적 합산 과정을 명시함 [cite: 2026-04-09]\\n- 도형 관계: 큰 직사각형의 가로, 세로가 다항식의 인수와 대응함을 기술함 [cite: 2026-04-09]"
     ],
-    "error_check": "이미지상의 타일 수량을 전수 조사하여 다항식 수립 및 인수분해 결과를 교차 검증함."
+    "error_check": "이미지상의 타일 수량을 전수 조사하여 다항식 수립 및 인수분해 결과를 교차 검증함.",
+    "choices": [],
+    "solution": ""
   }
 ];

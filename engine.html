@@ -90,8 +90,34 @@
 
         .ctrl-right {
             display: flex;
-            gap: 8px;
+            align-items: center;
+            gap: 12px;
             flex-shrink: 0;
+        }
+
+        .qpp-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        #qppSelect {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 4px 8px;
+            font-family: inherit;
+            font-size: 11px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #qppSelect:hover {
+            background: rgba(255,255,255,0.15);
         }
 
         .print-btn {
@@ -201,11 +227,13 @@
         .page-header {
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
             border-bottom: 2px solid #000;
             padding-bottom: 5px;
             margin-bottom: 12px;
             font-weight: bold;
             flex-shrink: 0;
+            font-size: 10pt;
         }
 
         #pdf-container {
@@ -414,6 +442,16 @@
             <button class="mode-tab" data-mode="ans" onclick="switchMode('ans')">정답표</button>
         </div>
         <div class="ctrl-right">
+            <div class="qpp-selector">
+                <span>문항/쪽:</span>
+                <select id="qppSelect" onchange="changeQpp(this.value)">
+                    <option value="2">2문항</option>
+                    <option value="4">4문항</option>
+                    <option value="6">6문항</option>
+                    <option value="8">8문항</option>
+                </select>
+            </div>
+            <button class="print-btn ghost" onclick="shuffleData()">🔀 셔플</button>
             <button class="print-btn ghost" id="pdf-open-btn" style="display:none;">↗ PDF 새 탭</button>
             <button class="print-btn primary" onclick="window.print()">🖨 인쇄</button>
         </div>
@@ -427,8 +465,21 @@
     <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:85mm;"></div>
 
 <script>
-const AppState = { title: 'JS아카이브', data: [], mode: 'exam', qpp: 4 };
+const AppState = { title: 'JS아카이브', data: [], mode: 'exam', qpp: 4, shuffled: false };
 let pageCount = 0;
+
+function parseExamTitle(raw) {
+    if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
+    const parts = raw.split('_');
+    return {
+        year: parts[0] ? '20' + parts[0] + '년' : '',
+        school: parts[1] || '',
+        semester: parts[2] || '',
+        examType: parts[3] || '',
+        grade: parts[4] || '',
+        subject: parts[5] || ''
+    };
+}
 
 async function loadData(dataUrl) {
     if (dataUrl === 'mixed') {
@@ -441,6 +492,7 @@ async function loadData(dataUrl) {
         if (oldScript) oldScript.remove();
 
         delete window.questionBank;
+        delete window.examTitle;
         const s = document.createElement('script');
         s.id = 'data-script';
         s.src = dataUrl + '?v=' + Date.now();
@@ -462,6 +514,9 @@ async function init() {
     const rawQpp = parseInt(p.get('qpp'));
     AppState.qpp = isNaN(rawQpp) ? 4 : Math.max(2, Math.min(8, rawQpp));
     AppState.data_url = p.get('data') || '';
+
+    const qppSelect = document.getElementById('qppSelect');
+    if (qppSelect) qppSelect.value = AppState.qpp;
 
     const file = p.get('file');
     const dataUrl = AppState.data_url;
@@ -502,7 +557,28 @@ function switchMode(mode) {
     const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
     url.searchParams.set('qpp', AppState.qpp);
+    const ids = new URLSearchParams(window.location.search).get('ids');
+    if (ids) url.searchParams.set('ids', ids);
     window.location.href = url.toString();
+}
+
+function changeQpp(val) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('qpp', val);
+    url.searchParams.set('mode', AppState.mode); 
+    const ids = new URLSearchParams(window.location.search).get('ids');
+    if (ids) url.searchParams.set('ids', ids);
+    window.location.href = url.toString();
+}
+
+function shuffleData() {
+    // Fisher-Yates Shuffle
+    for (let i = AppState.data.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
+    }
+    AppState.shuffled = true;
+    renderEngine();
 }
 
 async function renderEngine() {
@@ -510,12 +586,25 @@ async function renderEngine() {
     area.innerHTML = '';
     pageCount = 0;
 
+    const p = new URLSearchParams(window.location.search);
+    const idsParam = p.get('ids');
+    let displayData = AppState.data;
+
+    // IDS Filter logic
+    if (idsParam) {
+        const idList = idsParam.split(',').map(s => s.trim());
+        displayData = AppState.data.filter(q => idList.includes(String(q.id)));
+    }
+
+    const titlePrefix = AppState.shuffled ? '[🔀] ' : '';
+    document.getElementById('ctrl-title').innerText = titlePrefix + (window.examTitle || AppState.title);
+
     if (AppState.mode === 'ans') {
-        renderAnsGrid(area, AppState.data);
+        renderAnsGrid(area, displayData);
     } else if (AppState.mode === 'sol') {
-        await renderSol(area, AppState.data);
+        await renderSol(area, displayData);
     } else {
-        await renderExam(area, AppState.data);
+        await renderExam(area, displayData);
     }
 }
 
@@ -772,6 +861,22 @@ function renderAnsGrid(area, bank) {
     });
 
     p.body.appendChild(grid);
+
+    // 해설 QR 생성 및 삽입
+    const solUrl = new URL(window.location.href);
+    solUrl.searchParams.set('mode', 'sol');
+    const ids = new URLSearchParams(window.location.search).get('ids');
+    if (ids) solUrl.searchParams.set('ids', ids);
+
+    const qrDiv = document.createElement('div');
+    qrDiv.style.cssText = 'margin-top:24px; text-align:center; font-size:8pt; color:#555;';
+    qrDiv.innerHTML = `
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}"
+             style="width:80px;height:80px;" alt="해설 QR">
+        <div style="margin-top:4px;">📱 해설 바로가기</div>
+    `;
+    p.body.appendChild(qrDiv);
+
     if (window.MathJax?.typesetPromise) MathJax.typesetPromise([p.body]);
 }
 
@@ -782,7 +887,30 @@ function makePage(area, type) {
 
     const header = document.createElement('div');
     header.className = 'page-header';
-    header.innerHTML = `<span>${AppState.title}</span><span>- ${pageCount} -</span>`;
+
+    const t = parseExamTitle(window.examTitle);
+    const leftText = [t.year, t.school, t.grade, (t.semester + ' ' + t.examType).trim(), t.subject]
+        .filter(Boolean).join(' | ');
+
+    let rightHTML = '';
+    if (type === 'sol') {
+        rightHTML = `<span>[ 정답 및 해설 ]</span>`;
+    } else if (type === 'ans') {
+        rightHTML = `<span>[ 정답표 ]</span>`;
+    } else {
+        rightHTML = `<div style="display:flex; gap:25px;">
+                        <span>이름: ____________</span>
+                        <span>점수: ________ / 100</span>
+                    </div>`;
+    }
+
+    header.innerHTML = `
+        <div style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; padding-right:15px;">
+            ${leftText || AppState.title}
+        </div>
+        <div style="flex-shrink:0;">${rightHTML}</div>
+        <div style="width:60px; text-align:right; flex-shrink:0;">- ${pageCount} -</div>
+    `;
     page.appendChild(header);
 
     if (type === 'ans') {
@@ -876,14 +1004,12 @@ function wrapLatexPreserveBlocks(text) {
 
     const htmlTags = [];
     
-    // 1. SVG 전체 블록 및 img 태그 통째로 선제 보호 (내부 텍스트/줄바꿈 파괴 차단)
     s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`;
         htmlTags.push(m);
         return token;
     });
     
-    // 2. 나머지 일반 HTML 태그 보호 (SVG 하위 개별 태그 목록에서 제외)
     s = s.replace(/<\/?(?:div|span|br|p|b|i|u|strong|em|table|thead|tbody|tr|td|th|ul|ol|li|hr)(?:\s+[^<>]*?)?\s*\/?>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`;
         htmlTags.push(m);
@@ -893,14 +1019,12 @@ function wrapLatexPreserveBlocks(text) {
     s = s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\n/g, '<br>');
 
-    // 3. 분할 정규식: 토큰화된 태그를 단독 세그먼트로 분리하여 수식 자동 판단에서 제외
     const segments = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$|__HTMLTAG_\d+__|<br>)/g);
 
     const out = segments.map(seg => {
         if (!seg) return '';
         if (seg === '<br>') return seg;
         
-        // 4. 토큰을 만나면 바로 복원 (looksLikeMath 로직 타기 전 원본 반환)
         if (/^__HTMLTAG_\d+__$/.test(seg)) {
             return htmlTags[Number(seg.match(/\d+/)[0])] || seg;
         }

@@ -2,411 +2,411 @@ window.examTitle = "25_제일고_1학기_중간_고1_유사";
 
 window.questionBank = [
   {
-    id: 1,
-    level: "하",
-    category: "항등식",
-    originalCategory: "항등식",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-02",
-    standardUnit: "항등식과 나머지정리",
-    standardUnitOrder: 2,
-    content: "등식 $x^{2}+x+1=ax^{2}+(b+1)x+(c-2)$ 이 $x$에 대한 항등식일 때, 상수 $a, b, c$에 대하여 $a+b+c$의 값은? [4.0점]",
-    choices: [
+    "id": 1,
+    "level": "하",
+    "category": "항등식",
+    "originalCategory": "항등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "content": "등식 $x^{2}+x+1=ax^{2}+(b+1)x+(c-2)$ 이 $x$에 대한 항등식일 때, 상수 $a, b, c$에 대하여 $a+b+c$의 값은? [4.0점]",
+    "choices": [
       "2",
       "3",
       "4",
       "5",
       "6"
     ],
-    answer: "③",
-    solution: "계수비교법 적용\\n$a=1$\\n$b+1=1 \\implies b=0$\\n$c-2=1 \\implies c=3$\\n$\\therefore a+b+c=1+0+3=4$"
+    "answer": "③",
+    "solution": "계수비교법 적용\\n$a=1$\\n$b+1=1 \\implies b=0$\\n$c-2=1 \\implies c=3$\\n$\\therefore a+b+c=1+0+3=4$"
   },
   {
-    id: 2,
-    level: "하",
-    category: "나머지 정리",
-    originalCategory: "나머지 정리",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-02",
-    standardUnit: "항등식과 나머지정리",
-    standardUnitOrder: 2,
-    content: "다항식 $P(x) = x^{3}+x^{2}-2x+2$ 를 $x-1$로 나눌 때의 나머지는? [4.1점]",
-    choices: [
+    "id": 2,
+    "level": "하",
+    "category": "나머지 정리",
+    "originalCategory": "나머지 정리",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "content": "다항식 $P(x) = x^{3}+x^{2}-2x+2$ 를 $x-1$로 나눌 때의 나머지는? [4.1점]",
+    "choices": [
       " "
     ],
-    answer: "②",
-    solution: "나머지 정리 적용\\n$x-1$로 나눈 나머지는 $P(1)$의 값과 동일\\n$P(1)=1^3+1^2-2(1)+2=2$\\n$\\therefore 2$"
+    "answer": "②",
+    "solution": "나머지 정리 적용\\n$x-1$로 나눈 나머지는 $P(1)$의 값과 동일\\n$P(1)=1^3+1^2-2(1)+2=2$\\n$\\therefore 2$"
   },
   {
-    id: 3,
-    level: "하",
-    category: "나머지 정리",
-    originalCategory: "나머지 정리",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-02",
-    standardUnit: "항등식과 나머지정리",
-    standardUnitOrder: 2,
-    content: "조립제법을 이용하여 다항식 $x^{3}-2x^{2}+x+2$을 $x-1$로 나누었을 때의 몫과 나머지를 구하는 과정이 다음과 같다. $a+b$의 값은? [4.2점]\\n<div class='box'>\\n$\\begin{array}{r|rrrr} 1 & 1 & -2 & 1 & 2 \\\\ \\multicolumn{2}{r}{} & 1 & a & 0 \\\\ \\cline{2-5} \\multicolumn{2}{r}{} & 1 & -1 & b & \\underline{| \\ 2} \\end{array}\\n</div>",
-    choices: [
+    "id": 3,
+    "level": "하",
+    "category": "나머지 정리",
+    "originalCategory": "나머지 정리",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "content": "조립제법을 이용하여 다항식 $x^{3}-2x^{2}+x+2$을 $x-1$로 나누었을 때의 몫과 나머지를 구하는 과정이 다음과 같다. $a+b$의 값은? [4.2점]\\n<div class='box'>\\n$\\begin{array}{r|rrrr} 1 & 1 & -2 & 1 & 2 \\\\ \\multicolumn{2}{r}{} & 1 & a & 0 \\\\ \\cline{2-5} \\multicolumn{2}{r}{} & 1 & -1 & b & \\underline{| \\ 2} \\end{array}\\n</div>",
+    "choices": [
       " "
     ],
-    answer: "-1",
-    solution: "조립제법 연산 원리 적용\\n$a=1 \\times (-1)=-1$\\n$b=1+a=1+(-1)=0$\\n$\\therefore a+b=-1+0=-1$"
+    "answer": "-1",
+    "solution": "조립제법 연산 원리 적용\\n$a=1 \\times (-1)=-1$\\n$b=1+a=1+(-1)=0$\\n$\\therefore a+b=-1+0=-1$"
   },
   {
-    id: 4,
-    level: "중",
-    category: "인수분해",
-    originalCategory: "인수분해",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-03",
-    standardUnit: "인수분해",
-    standardUnitOrder: 3,
-    content: "다항식 $x^{4}-x^{3}-7x^{2}+x+6$의 인수가 아닌 것은? [4.3점]",
-    choices: [
+    "id": 4,
+    "level": "중",
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "content": "다항식 $x^{4}-x^{3}-7x^{2}+x+6$의 인수가 아닌 것은? [4.3점]",
+    "choices": [
       "$x-1$",
       "$x+1$",
       "$x-2$",
       "$x+2$",
       "$x-3$"
     ],
-    answer: "③",
-    solution: "인수 정리 적용\\n$P(x)=x^4-x^3-7x^2+x+6$ 이라 할 때 $P(k) \\neq 0$인 값 탐색\\n$P(2)=16-8-28+2+6=-12 \\neq 0$\\n$\\therefore x-2$는 인수가 아님"
+    "answer": "③",
+    "solution": "인수 정리 적용\\n$P(x)=x^4-x^3-7x^2+x+6$ 이라 할 때 $P(k) \\neq 0$인 값 탐색\\n$P(2)=16-8-28+2+6=-12 \\neq 0$\\n$\\therefore x-2$는 인수가 아님"
   },
   {
-    id: 5,
-    level: "중",
-    category: "나머지 정리",
-    originalCategory: "나머지 정리",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-02",
-    standardUnit: "항등식과 나머지정리",
-    standardUnitOrder: 2,
-    content: "다항식 $P(x)$를 $x-1$로 나눈 몫을 $Q(x)$, 나머지를 $4$라 하자. $Q(x)$를 $x-2$로 나눈 나머지가 $1$일 때 $P(x)$를 $x-2$로 나눈 나머지를 구하면? [4.5점]",
-    choices: [
+    "id": 5,
+    "level": "중",
+    "category": "나머지 정리",
+    "originalCategory": "나머지 정리",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "content": "다항식 $P(x)$를 $x-1$로 나눈 몫을 $Q(x)$, 나머지를 $4$라 하자. $Q(x)$를 $x-2$로 나눈 나머지가 $1$일 때 $P(x)$를 $x-2$로 나눈 나머지를 구하면? [4.5점]",
+    "choices": [
       "2",
       "3",
       "4",
       "5",
       "6"
     ],
-    answer: "④",
-    solution: "다항식 나눗셈 검산식 작성\\n$P(x)=(x-1)Q(x)+4$\\n조건에 의해 $Q(2)=1$\\n나머지 정리에 의해 $x-2$로 나눈 나머지는 $P(2)$\\n대입: $P(2)=(2-1)Q(2)+4=1 \\times 1+4=5$\\n$\\therefore 5$"
+    "answer": "④",
+    "solution": "다항식 나눗셈 검산식 작성\\n$P(x)=(x-1)Q(x)+4$\\n조건에 의해 $Q(2)=1$\\n나머지 정리에 의해 $x-2$로 나눈 나머지는 $P(2)$\\n대입: $P(2)=(2-1)Q(2)+4=1 \\times 1+4=5$\\n$\\therefore 5$"
   },
   {
-    id: 6,
-    level: "중",
-    category: "곱셈 공식",
-    originalCategory: "곱셈 공식",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-01",
-    standardUnit: "다항식의 연산",
-    standardUnitOrder: 1,
-    content: "$x+y=3, xy=2$일 때, $x^{5}+y^{5}$의 값은? [4.6점]",
-    choices: [
+    "id": 6,
+    "level": "중",
+    "category": "곱셈 공식",
+    "originalCategory": "곱셈 공식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "content": "$x+y=3, xy=2$일 때, $x^{5}+y^{5}$의 값은? [4.6점]",
+    "choices": [
       "-1",
       "0",
       "1",
       "2",
       "33"
     ],
-    answer: "⑤",
-    solution: "곱셈 공식 변형 적용\\n$x^2+y^2=(x+y)^2-2xy=9-4=5$\\n$x^3+y^3=(x+y)^3-3xy(x+y)=27-18=9$\\n$x^5+y^5=(x^2+y^2)(x^3+y^3)-x^2y^2(x+y)$\\n대입: $5 \\times 9 - 2^2 \\times 3=45-12=33$\\n$\\therefore 33$"
+    "answer": "⑤",
+    "solution": "곱셈 공식 변형 적용\\n$x^2+y^2=(x+y)^2-2xy=9-4=5$\\n$x^3+y^3=(x+y)^3-3xy(x+y)=27-18=9$\\n$x^5+y^5=(x^2+y^2)(x^3+y^3)-x^2y^2(x+y)$\\n대입: $5 \\times 9 - 2^2 \\times 3=45-12=33$\\n$\\therefore 33$"
   },
   {
-    id: 7,
-    level: "상",
-    category: "나머지 정리",
-    originalCategory: "나머지 정리",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-02",
-    standardUnit: "항등식과 나머지정리",
-    standardUnitOrder: 2,
-    content: "다항식 $P(x)=x^{80}+ax+b$가 $(x-1)^{2}$으로 나누어 떨어질 때, 상수 $a, b$에 대하여 $b-a$의 값은? [4.7점]",
-    choices: [
+    "id": 7,
+    "level": "상",
+    "category": "나머지 정리",
+    "originalCategory": "나머지 정리",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "content": "다항식 $P(x)=x^{80}+ax+b$가 $(x-1)^{2}$으로 나누어 떨어질 때, 상수 $a, b$에 대하여 $b-a$의 값은? [4.7점]",
+    "choices": [
       "157",
       "159",
       "161",
       "163",
       "165"
     ],
-    answer: "②",
-    solution: "인수정리 및 다항식의 변형 적용\\n$P(1)=1+a+b=0 \\implies b=-a-1$\\n$P(x)=x^{80}-1+a(x-1)=(x-1)(x^{79}+x^{78}+\\dots+1+a)$\\n$P(x)$가 $(x-1)^2$으로 나누어 떨어지므로 몫 부분에 $x=1$ 대입 시 $0$\\n$80+a=0 \\implies a=-80$\\n$b=-(-80)-1=79$\\n$\\therefore b-a=79-(-80)=159$"
+    "answer": "②",
+    "solution": "인수정리 및 다항식의 변형 적용\\n$P(1)=1+a+b=0 \\implies b=-a-1$\\n$P(x)=x^{80}-1+a(x-1)=(x-1)(x^{79}+x^{78}+\\dots+1+a)$\\n$P(x)$가 $(x-1)^2$으로 나누어 떨어지므로 몫 부분에 $x=1$ 대입 시 $0$\\n$80+a=0 \\implies a=-80$\\n$b=-(-80)-1=79$\\n$\\therefore b-a=79-(-80)=159$"
   },
   {
-    id: 8,
-    level: "중",
-    category: "나머지 정리",
-    originalCategory: "나머지 정리",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-02",
-    standardUnit: "항등식과 나머지정리",
-    standardUnitOrder: 2,
-    content: "$40^{25}+5$을 $39$로 나누었을 때의 나머지는? [4.8점]",
-    choices: [
+    "id": 8,
+    "level": "중",
+    "category": "나머지 정리",
+    "originalCategory": "나머지 정리",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "content": "$40^{25}+5$을 $39$로 나누었을 때의 나머지는? [4.8점]",
+    "choices": [
       "2",
       "3",
       "4",
       "5",
       "6"
     ],
-    answer: "⑤",
-    solution: "치환을 통한 나머지 정리 적용\\n$40=x$로 치환하면 $39=x-1$\\n$x^{25}+5$를 $x-1$로 나눈 나머지 구하기\\n나머지 정리에 의해 $x=1$ 대입\\n$1^{25}+5=6$\\n$\\therefore 6$"
+    "answer": "⑤",
+    "solution": "치환을 통한 나머지 정리 적용\\n$40=x$로 치환하면 $39=x-1$\\n$x^{25}+5$를 $x-1$로 나눈 나머지 구하기\\n나머지 정리에 의해 $x=1$ 대입\\n$1^{25}+5=6$\\n$\\therefore 6$"
   },
   {
-    id: 9,
-    level: "중",
-    category: "복소수의 성질",
-    originalCategory: "복소수의 성질",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-04",
-    standardUnit: "복소수",
-    standardUnitOrder: 4,
-    content: "[중] $x^{2}+x+1=0$의 한 허근을 $\\alpha$라 할 때, $\\alpha^{4}+k\\alpha^{2}+1=0$을 만족하는 상수 $k$의 값은? [4.8점]",
-    choices: [
+    "id": 9,
+    "level": "중",
+    "category": "복소수의 성질",
+    "originalCategory": "복소수의 성질",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "content": "[중] $x^{2}+x+1=0$의 한 허근을 $\\alpha$라 할 때, $\\alpha^{4}+k\\alpha^{2}+1=0$을 만족하는 상수 $k$의 값은? [4.8점]",
+    "choices": [
       "-1",
       "0",
       "1",
       "2",
       "3"
     ],
-    answer: "③",
-    solution: "허근의 기본 성질 적용\\n$\\alpha^2+\\alpha+1=0 \\implies \\alpha^3=1, \\alpha^2=-\\alpha-1$\\n주어진 식에 대입: $\\alpha^4+k\\alpha^2+1=\\alpha+k(-\\alpha-1)+1=0$\\n식 정리: $(1-k)\\alpha+(1-k)=0$\\n$\\alpha$가 허수이고 $k$가 실수이므로 복소수 상등 조건에 의해 $1-k=0$\\n$\\therefore k=1$"
+    "answer": "③",
+    "solution": "허근의 기본 성질 적용\\n$\\alpha^2+\\alpha+1=0 \\implies \\alpha^3=1, \\alpha^2=-\\alpha-1$\\n주어진 식에 대입: $\\alpha^4+k\\alpha^2+1=\\alpha+k(-\\alpha-1)+1=0$\\n식 정리: $(1-k)\\alpha+(1-k)=0$\\n$\\alpha$가 허수이고 $k$가 실수이므로 복소수 상등 조건에 의해 $1-k=0$\\n$\\therefore k=1$"
   },
   {
-    id: 10,
-    level: "하",
-    category: "복소수의 정의",
-    originalCategory: "복소수의 정의",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-04",
-    standardUnit: "복소수",
-    standardUnitOrder: 4,
-    content: "다음 중 복소수에 대한 설명으로 옳은 것은? [4.0점]",
-    choices: [
+    "id": 10,
+    "level": "하",
+    "category": "복소수의 정의",
+    "originalCategory": "복소수의 정의",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "content": "다음 중 복소수에 대한 설명으로 옳은 것은? [4.0점]",
+    "choices": [
       "$i$는 제곱하면 $-1$이다.",
       "실수는 복소수가 아니다.",
       "$7i$의 허수 부분은 $7$이다.",
       "$4+3i$는 $4$보다 큰 수이다.",
       "$a \\neq 0, b=0$이면 $a+bi$는 허수이다."
     ],
-    answer: "③",
-    solution: "복소수의 체계 및 성질 검증\\n② 실수는 복소수의 부분집합 (거짓)\\n③ 복소수 $a+bi$에서 허수 부분은 $b$이므로 $7i$의 허수 부분은 $7$ (참)\\n④ 허수는 대소 관계 판별 불가 (거짓)\\n⑤ $b=0$이면 실수 (거짓)\\n(참고: ①도 참인 명제이나, 단일 정답 원형에 맞추어 명백한 ③을 정답 처리)\\n$\\therefore ③$"
+    "answer": "③",
+    "solution": "복소수의 체계 및 성질 검증\\n② 실수는 복소수의 부분집합 (거짓)\\n③ 복소수 $a+bi$에서 허수 부분은 $b$이므로 $7i$의 허수 부분은 $7$ (참)\\n④ 허수는 대소 관계 판별 불가 (거짓)\\n⑤ $b=0$이면 실수 (거짓)\\n(참고: ①도 참인 명제이나, 단일 정답 원형에 맞추어 명백한 ③을 정답 처리)\\n$\\therefore ③$"
   },
   {
-    id: 11,
-    level: "하",
-    category: "복소수의 연산",
-    originalCategory: "복소수의 연산",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-04",
-    standardUnit: "복소수",
-    standardUnitOrder: 4,
-    content: "$(4+7i)-(2-i)(3+3i)=a+bi$ 일 때, 두 실수 $a, b$의 합 $a+b$의 값은? [4.1점]",
-    choices: [
+    "id": 11,
+    "level": "하",
+    "category": "복소수의 연산",
+    "originalCategory": "복소수의 연산",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "content": "$(4+7i)-(2-i)(3+3i)=a+bi$ 일 때, 두 실수 $a, b$의 합 $a+b$의 값은? [4.1점]",
+    "choices": [
       " "
     ],
-    answer: "-1",
-    solution: "복소수의 사칙연산 및 상등 적용\\n곱셈 전개: $(2-i)(3+3i)=6+6i-3i-3i^2=6+3i+3=9+3i$\\n뺄셈 연산: $(4+7i)-(9+3i)=-5+4i$\\n계수 비교: $a=-5, b=4$\\n$\\therefore a+b=-1$"
+    "answer": "-1",
+    "solution": "복소수의 사칙연산 및 상등 적용\\n곱셈 전개: $(2-i)(3+3i)=6+6i-3i-3i^2=6+3i+3=9+3i$\\n뺄셈 연산: $(4+7i)-(9+3i)=-5+4i$\\n계수 비교: $a=-5, b=4$\\n$\\therefore a+b=-1$"
   },
   {
-    id: 12,
-    level: "중",
-    category: "복소수의 연산",
-    originalCategory: "복소수의 연산",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-04",
-    standardUnit: "복소수",
-    standardUnitOrder: 4,
-    content: "[중] 실수 $a$에 대하여 $\\sqrt{\\frac{a+5}{a-4}}=-\\frac{\\sqrt{a+5}}{\\sqrt{a-4}}$ 을 만족하는 정수 $a$의 개수는? [4.3점]",
-    choices: [
+    "id": 12,
+    "level": "중",
+    "category": "복소수의 연산",
+    "originalCategory": "복소수의 연산",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "content": "[중] 실수 $a$에 대하여 $\\sqrt{\\frac{a+5}{a-4}}=-\\frac{\\sqrt{a+5}}{\\sqrt{a-4}}$ 을 만족하는 정수 $a$의 개수는? [4.3점]",
+    "choices": [
       "5",
       "6",
       "7",
       "8",
       "9"
     ],
-    answer: "⑤",
-    solution: "음의 제곱근의 나눗셈 성질 적용\\n$\\frac{\\sqrt{A}}{\\sqrt{B}}=-\\sqrt{\\frac{A}{B}}$ 성립 조건: $A \\ge 0, B < 0$\\n분자 조건: $a+5 \\ge 0 \\implies a \\ge -5$\\n분모 조건: $a-4 < 0 \\implies a < 4$\\n공통 범위: $-5 \\le a < 4$\\n해당 정수: $-5, -4, -3, -2, -1, 0, 1, 2, 3$ (총 $9$개)\\n$\\therefore 9$"
+    "answer": "⑤",
+    "solution": "음의 제곱근의 나눗셈 성질 적용\\n$\\frac{\\sqrt{A}}{\\sqrt{B}}=-\\sqrt{\\frac{A}{B}}$ 성립 조건: $A \\ge 0, B < 0$\\n분자 조건: $a+5 \\ge 0 \\implies a \\ge -5$\\n분모 조건: $a-4 < 0 \\implies a < 4$\\n공통 범위: $-5 \\le a < 4$\\n해당 정수: $-5, -4, -3, -2, -1, 0, 1, 2, 3$ (총 $9$개)\\n$\\therefore 9$"
   },
   {
-    id: 13,
-    level: "상",
-    category: "이차함수와 이차방정식",
-    originalCategory: "이차함수와 이차방정식",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-13",
-    standardUnit: "이차함수",
-    standardUnitOrder: 13,
-    content: "[상] 이차함수 $y=f(x)$의 그래프가 $x$축과 두 점 $(-3, 0), (6, 0)$에서 만날 때, 이차방정식 $f(x+2)=0$의 두 실근의 곱은? [4.4점]",
-    choices: [
+    "id": 13,
+    "level": "상",
+    "category": "이차함수와 이차방정식",
+    "originalCategory": "이차함수와 이차방정식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-13",
+    "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
+    "content": "[상] 이차함수 $y=f(x)$의 그래프가 $x$축과 두 점 $(-3, 0), (6, 0)$에서 만날 때, 이차방정식 $f(x+2)=0$의 두 실근의 곱은? [4.4점]",
+    "choices": [
       "-20",
       "-18",
       "-15",
       "-12",
       "-10"
     ],
-    answer: "①",
-    solution: "이차방정식 근의 평행이동 적용\\n$f(x)=0$의 두 근이 $x=-3, 6$\\n$f(x+2)=0$이 성립하려면 $x+2=-3$ 또는 $x+2=6$\\n두 근은 $x=-5, 4$\\n두 근의 곱: $(-5) \\times 4 = -20$\\n$\\therefore -20$"
+    "answer": "①",
+    "solution": "이차방정식 근의 평행이동 적용\\n$f(x)=0$의 두 근이 $x=-3, 6$\\n$f(x+2)=0$이 성립하려면 $x+2=-3$ 또는 $x+2=6$\\n두 근은 $x=-5, 4$\\n두 근의 곱: $(-5) \\times 4 = -20$\\n$\\therefore -20$"
   },
   {
-    id: 14,
-    level: "상",
-    category: "이차방정식의 판별식",
-    originalCategory: "이차방정식의 판별식",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-05",
-    standardUnit: "이차방정식",
-    standardUnitOrder: 5,
-    content: "[상] $x$에 대한 이차방정식 $3x^2-8x-k=0$은 실근을 갖고, $x^2+2kx+k^2-k+2=0$은 허근을 갖도록 하는 정수 $k$의 최댓값은? [4.5점]",
-    choices: [
+    "id": 14,
+    "level": "상",
+    "category": "이차방정식의 판별식",
+    "originalCategory": "이차방정식의 판별식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-05",
+    "standardUnit": "이차방정식",
+    "standardUnitOrder": 5,
+    "content": "[상] $x$에 대한 이차방정식 $3x^2-8x-k=0$은 실근을 갖고, $x^2+2kx+k^2-k+2=0$은 허근을 갖도록 하는 정수 $k$의 최댓값은? [4.5점]",
+    "choices": [
       "-2",
       "-1",
       "0",
       "1",
       "2"
     ],
-    answer: "④",
-    solution: "판별식을 이용한 조건 범위 산출\\n첫 번째 방정식 실근 조건: $\\frac{D_1}{4}=(-4)^2-3(-k) \\ge 0 \\implies 16+3k \\ge 0 \\implies k \\ge -\\frac{16}{3}$\\n두 번째 방정식 허근 조건: $\\frac{D_2}{4}=k^2-(k^2-k+2) < 0 \\implies k-2 < 0 \\implies k < 2$\\n공통 범위: $-\\frac{16}{3} \\le k < 2$\\n해당 범위의 정수 $k$ 중 최댓값은 $1$\\n$\\therefore 1$"
+    "answer": "④",
+    "solution": "판별식을 이용한 조건 범위 산출\\n첫 번째 방정식 실근 조건: $\\frac{D_1}{4}=(-4)^2-3(-k) \\ge 0 \\implies 16+3k \\ge 0 \\implies k \\ge -\\frac{16}{3}$\\n두 번째 방정식 허근 조건: $\\frac{D_2}{4}=k^2-(k^2-k+2) < 0 \\implies k-2 < 0 \\implies k < 2$\\n공통 범위: $-\\frac{16}{3} \\le k < 2$\\n해당 범위의 정수 $k$ 중 최댓값은 $1$\\n$\\therefore 1$"
   },
   {
-    id: 15,
-    level: "중",
-    category: "복소수의 연산",
-    originalCategory: "복소수의 연산",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-04",
-    standardUnit: "복소수",
-    standardUnitOrder: 4,
-    content: "$i+3i^2+5i^3+7i^4+\\dots+50i^{50}=a+bi$를 만족하는 두 실수 $a, b$에 대하여 $a-b$의 값은? [4.6점]",
-    choices: [
+    "id": 15,
+    "level": "중",
+    "category": "복소수의 연산",
+    "originalCategory": "복소수의 연산",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "content": "$i+3i^2+5i^3+7i^4+\\dots+50i^{50}=a+bi$를 만족하는 두 실수 $a, b$에 대하여 $a-b$의 값은? [4.6점]",
+    "choices": [
       "-5",
       "-3",
       "-1",
       "1",
       "3"
     ],
-    answer: "②",
-    solution: "[해설생성불가]"
+    "answer": "②",
+    "solution": "[해설생성불가]"
   },
   {
-    id: 16,
-    level: "상",
-    category: "이차함수와 직선",
-    originalCategory: "이차함수와 직선",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-13",
-    standardUnit: "이차함수",
-    standardUnitOrder: 13,
-    content: "[상] $x$에 대한 이차함수 $y=x^2-4kx+4k^2+5k$의 그래프와 직선 $y=ax+b$가 $k$의 값에 관계없이 항상 접할 때, $a+b$의 값은? [4.6점]",
-    choices: [
+    "id": 16,
+    "level": "상",
+    "category": "이차함수와 직선",
+    "originalCategory": "이차함수와 직선",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-13",
+    "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
+    "content": "[상] $x$에 대한 이차함수 $y=x^2-4kx+4k^2+5k$의 그래프와 직선 $y=ax+b$가 $k$의 값에 관계없이 항상 접할 때, $a+b$의 값은? [4.6점]",
+    "choices": [
       "$\\frac{5}{16}$",
       "$\\frac{11}{16}$",
       "$\\frac{3}{4}$",
       "$\\frac{13}{16}$",
       "$\\frac{15}{16}$"
     ],
-    answer: "⑤",
-    solution: "판별식과 항등식 성질 적용\\n두 식을 연립: $x^2-(4k+a)x+(4k^2+5k-b)=0$\\n접할 조건($D=0$): $(4k+a)^2-4(4k^2+5k-b)=0$\\n식 전개: $16k^2+8ak+a^2-16k^2-20k+4b=0$\\n$k$에 대한 항등식으로 정리: $(8a-20)k+(a^2+4b)=0$\\n계수 비교: $8a-20=0 \\implies a=\\frac{5}{2}$\\n$a^2+4b=0 \\implies \\left(\\frac{5}{2}\\right)^2+4b=0 \\implies b=-\\frac{25}{16}$\\n$\\therefore a+b=\\frac{40}{16}-\\frac{25}{16}=\\frac{15}{16}$"
+    "answer": "⑤",
+    "solution": "판별식과 항등식 성질 적용\\n두 식을 연립: $x^2-(4k+a)x+(4k^2+5k-b)=0$\\n접할 조건($D=0$): $(4k+a)^2-4(4k^2+5k-b)=0$\\n식 전개: $16k^2+8ak+a^2-16k^2-20k+4b=0$\\n$k$에 대한 항등식으로 정리: $(8a-20)k+(a^2+4b)=0$\\n계수 비교: $8a-20=0 \\implies a=\\frac{5}{2}$\\n$a^2+4b=0 \\implies \\left(\\frac{5}{2}\\right)^2+4b=0 \\implies b=-\\frac{25}{16}$\\n$\\therefore a+b=\\frac{40}{16}-\\frac{25}{16}=\\frac{15}{16}$"
   },
   {
-    id: 17,
-    level: "중",
-    category: "이차식의 작성",
-    originalCategory: "이차식의 작성",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-05",
-    standardUnit: "이차방정식",
-    standardUnitOrder: 5,
-    content: "[중] 이차방정식 $x^2-3x+5=0$의 두 근 $\\alpha, \\beta$에 대하여 $f(\\alpha)=f(\\beta)=\\alpha\\beta, f(1)=3$를 만족시키는 이차식 $f(x)$에 대하여 $f(6)$의 값은? [4.7점]",
-    choices: [
+    "id": 17,
+    "level": "중",
+    "category": "이차식의 작성",
+    "originalCategory": "이차식의 작성",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-05",
+    "standardUnit": "이차방정식",
+    "standardUnitOrder": 5,
+    "content": "[중] 이차방정식 $x^2-3x+5=0$의 두 근 $\\alpha, \\beta$에 대하여 $f(\\alpha)=f(\\beta)=\\alpha\\beta, f(1)=3$를 만족시키는 이차식 $f(x)$에 대하여 $f(6)$의 값은? [4.7점]",
+    "choices": [
       " "
     ],
-    answer: "-\\frac{31}{3}",
-    solution: "이차식의 작성 및 근과 계수의 관계 적용\\n$x^2-3x+5=0$의 두 근이 $\\alpha, \\beta$이므로 $\\alpha+\\beta=3, \\alpha\\beta=5$\\n조건에서 $f(\\alpha)=f(\\beta)=5$ 이므로 $f(x)-5=p(x^2-3x+5)$로 식 세우기\\n$f(1)=3p+5=3 \\implies p=-\\frac{2}{3}$\\n$f(x)=-\\frac{2}{3}(x^2-3x+5)+5$\\n대입: $f(6)=-\\frac{2}{3}(36-18+5)+5=-\\frac{2}{3}(23)+5=-\\frac{31}{3}$\\n$\\therefore -\\frac{31}{3}$"
+    "answer": "-\\frac{31}{3}",
+    "solution": "이차식의 작성 및 근과 계수의 관계 적용\\n$x^2-3x+5=0$의 두 근이 $\\alpha, \\beta$이므로 $\\alpha+\\beta=3, \\alpha\\beta=5$\\n조건에서 $f(\\alpha)=f(\\beta)=5$ 이므로 $f(x)-5=p(x^2-3x+5)$로 식 세우기\\n$f(1)=3p+5=3 \\implies p=-\\frac{2}{3}$\\n$f(x)=-\\frac{2}{3}(x^2-3x+5)+5$\\n대입: $f(6)=-\\frac{2}{3}(36-18+5)+5=-\\frac{2}{3}(23)+5=-\\frac{31}{3}$\\n$\\therefore -\\frac{31}{3}$"
   },
   {
-    id: 18,
-    level: "상",
-    category: "이차함수의 최대최소",
-    originalCategory: "이차함수의 최대최소",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-13",
-    standardUnit: "이차함수",
-    standardUnitOrder: 13,
-    content: "[상] 한 변의 길이가 10인 정사각형 $ABCD$ 내부에 $DE=5, DF=4$인 선분 $EF$ 위의 점 $P$로부터 변 $AB, BC$에 내린 수선으로 만든 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]",
-    choices: [
+    "id": 18,
+    "level": "상",
+    "category": "이차함수의 최대최소",
+    "originalCategory": "이차함수의 최대최소",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-13",
+    "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
+    "content": "[상] 한 변의 길이가 10인 정사각형 $ABCD$ 내부에 $DE=5, DF=4$인 선분 $EF$ 위의 점 $P$로부터 변 $AB, BC$에 내린 수선으로 만든 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]",
+    "choices": [
       "235/4",
       "60",
       "245/4",
       "62",
       "255/4"
     ],
-    answer: "③",
-    solution: "좌표평면 도입 및 이차함수 최대치 산출\\n$D(0,0)$으로 설정하면 $E(5,0), F(0,4)$ 이므로 선분 $EF$의 방정식은 $y=-\\frac{4}{5}x+4$\\n$P(t, -\\frac{4}{5}t+4)$ ($0 \\le t \\le 5$)라 하면, 사각형의 가로는 $10-t$, 세로는 $10-(-\\frac{4}{5}t+4)=6+\\frac{4}{5}t$\\n넓이 $S(t)=(10-t)(6+\\frac{4}{5}t)=-\\frac{4}{5}t^2+2t+60=-\\frac{4}{5}\\left(t-\\frac{5}{4}\\right)^2+\\frac{245}{4}$\\n범위 내 꼭짓점에서 최댓값을 가지므로 넓이의 최댓값은 $\\frac{245}{4}$\\n$\\therefore \\frac{245}{4}$"
+    "answer": "③",
+    "solution": "좌표평면 도입 및 이차함수 최대치 산출\\n$D(0,0)$으로 설정하면 $E(5,0), F(0,4)$ 이므로 선분 $EF$의 방정식은 $y=-\\frac{4}{5}x+4$\\n$P(t, -\\frac{4}{5}t+4)$ ($0 \\le t \\le 5$)라 하면, 사각형의 가로는 $10-t$, 세로는 $10-(-\\frac{4}{5}t+4)=6+\\frac{4}{5}t$\\n넓이 $S(t)=(10-t)(6+\\frac{4}{5}t)=-\\frac{4}{5}t^2+2t+60=-\\frac{4}{5}\\left(t-\\frac{5}{4}\\right)^2+\\frac{245}{4}$\\n범위 내 꼭짓점에서 최댓값을 가지므로 넓이의 최댓값은 $\\frac{245}{4}$\\n$\\therefore \\frac{245}{4}$"
   },
   {
-    id: 19,
-    level: "하",
-    category: "인수분해",
-    originalCategory: "인수분해",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-03",
-    standardUnit: "인수분해",
-    standardUnitOrder: 3,
-    content: "[서술형 1] 다항식 $P(x)=x^3-2x^2-9x+18$를 인수분해하시오. [4점]",
-    choices: [
+    "id": 19,
+    "level": "하",
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "content": "[서술형 1] 다항식 $P(x)=x^3-2x^2-9x+18$를 인수분해하시오. [4점]",
+    "choices": [
       " "
     ],
-    answer: "(x-2)(x-3)(x+3)",
-    solution: "공통인수 묶기 및 합차공식 적용\\n$x^3-2x^2-9x+18=x^2(x-2)-9(x-2)$\\n$(x-2)$로 묶기: $(x^2-9)(x-2)$\\n$x^2-9$ 합차공식 적용: $(x-3)(x+3)(x-2)$\\n$\\therefore (x-2)(x-3)(x+3)$"
+    "answer": "(x-2)(x-3)(x+3)",
+    "solution": "공통인수 묶기 및 합차공식 적용\\n$x^3-2x^2-9x+18=x^2(x-2)-9(x-2)$\\n$(x-2)$로 묶기: $(x^2-9)(x-2)$\\n$x^2-9$ 합차공식 적용: $(x-3)(x+3)(x-2)$\\n$\\therefore (x-2)(x-3)(x+3)$"
   },
   {
-    id: 20,
-    level: "중",
-    category: "나머지 정리",
-    originalCategory: "나머지 정리",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-02",
-    standardUnit: "항등식과 나머지정리",
-    standardUnitOrder: 2,
-    content: "[서술형 2] 다항식 $P(x)$가 다음 두 조건을 만족한다.\\n\\n가) $P(x)$는 $x+1$로 나누어 떨어진다.\\n나) $P(x)$를 $x^2$으로 나눈 몫과 나머지가 같다.\\n\\n$P(1)=12$일 때, $P(2)$의 값을 구하시오. [6점]",
-    choices: [
+    "id": 20,
+    "level": "중",
+    "category": "나머지 정리",
+    "originalCategory": "나머지 정리",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "content": "[서술형 2] 다항식 $P(x)$가 다음 두 조건을 만족한다.\\n\\n가) $P(x)$는 $x+1$로 나누어 떨어진다.\\n나) $P(x)$를 $x^2$으로 나눈 몫과 나머지가 같다.\\n\\n$P(1)=12$일 때, $P(2)$의 값을 구하시오. [6점]",
+    "choices": [
       " "
     ],
-    answer: "45",
-    solution: "검산식 작성 및 미정계수 결정\\n조건 (나)에 의해 몫과 나머지를 $ax+b$라 하면 $P(x)=x^2(ax+b)+(ax+b)=(x^2+1)(ax+b)$\\n조건 (가)에 의해 $P(-1)=0$ 이므로 $P(-1)=2(-a+b)=0 \\implies a=b$\\n$P(x)=a(x^2+1)(x+1)$로 식 정리\\n조건 $P(1)=12$ 대입: $P(1)=a(2)(2)=4a=12 \\implies a=3$\\n다항식 완성: $P(x)=3(x^2+1)(x+1)$\\n$P(2)=3(5)(3)=45$\\n$\\therefore 45$"
+    "answer": "45",
+    "solution": "검산식 작성 및 미정계수 결정\\n조건 (나)에 의해 몫과 나머지를 $ax+b$라 하면 $P(x)=x^2(ax+b)+(ax+b)=(x^2+1)(ax+b)$\\n조건 (가)에 의해 $P(-1)=0$ 이므로 $P(-1)=2(-a+b)=0 \\implies a=b$\\n$P(x)=a(x^2+1)(x+1)$로 식 정리\\n조건 $P(1)=12$ 대입: $P(1)=a(2)(2)=4a=12 \\implies a=3$\\n다항식 완성: $P(x)=3(x^2+1)(x+1)$\\n$P(2)=3(5)(3)=45$\\n$\\therefore 45$"
   },
   {
-    id: 21,
-    level: "중",
-    category: "복소수의 상등",
-    originalCategory: "복소수의 상등",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-04",
-    standardUnit: "복소수",
-    standardUnitOrder: 4,
-    content: "[서술형 3] 복소수 $z=(2x^2+11x-6)+(x^2-36)i$ 에 대하여 $\\bar{z}=z$를 만족시키는 0이 아닌 실수 $x$의 값을 구하시오. [5점]",
-    choices: [
+    "id": 21,
+    "level": "중",
+    "category": "복소수의 상등",
+    "originalCategory": "복소수의 상등",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "content": "[서술형 3] 복소수 $z=(2x^2+11x-6)+(x^2-36)i$ 에 대하여 $\\bar{z}=z$를 만족시키는 0이 아닌 실수 $x$의 값을 구하시오. [5점]",
+    "choices": [
       " "
     ],
-    answer: "⑥",
-    solution: "복소수가 실수일 조건 적용\\n$\\bar{z}=z$를 만족하려면 $z$는 실수이어야 하므로 허수부분이 $0$\\n$x^2-36=0 \\implies (x-6)(x+6)=0 \\implies x=6$ 또는 $x=-6$\\n$x=-6$일 때 $Re(z)=2(36)+11(-6)-6=72-66-6=0$ 이 되어 $z=0$ (조건 위배)\\n$x=6$일 때 $Re(z)=2(36)+11(6)-6=72+66-6=132 \\neq 0$\\n$\\therefore 6$"
+    "answer": "⑥",
+    "solution": "복소수가 실수일 조건 적용\\n$\\bar{z}=z$를 만족하려면 $z$는 실수이어야 하므로 허수부분이 $0$\\n$x^2-36=0 \\implies (x-6)(x+6)=0 \\implies x=6$ 또는 $x=-6$\\n$x=-6$일 때 $Re(z)=2(36)+11(-6)-6=72-66-6=0$ 이 되어 $z=0$ (조건 위배)\\n$x=6$일 때 $Re(z)=2(36)+11(6)-6=72+66-6=132 \\neq 0$\\n$\\therefore 6$"
   },
   {
-    id: 22,
-    level: "상",
-    category: "이차함수의 최대최소",
-    originalCategory: "이차함수의 최대최소",
-    standardCourse: "수학(상)",
-    standardUnitKey: "H15-SA-13",
-    standardUnit: "이차함수",
-    standardUnitOrder: 13,
-    content: "[서술형 4] $-3 \\le x \\le 2$에서 $f(x)=x^2-2x+a$의 최댓값과 최솟값의 곱이 $-64$일 때, 상수 $a$의 값을 구하시오. [5점]",
-    choices: [
+    "id": 22,
+    "level": "상",
+    "category": "이차함수의 최대최소",
+    "originalCategory": "이차함수의 최대최소",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-13",
+    "standardUnit": "이차함수",
+    "standardUnitOrder": 13,
+    "content": "[서술형 4] $-3 \\le x \\le 2$에서 $f(x)=x^2-2x+a$의 최댓값과 최솟값의 곱이 $-64$일 때, 상수 $a$의 값을 구하시오. [5점]",
+    "choices": [
       " "
     ],
-    answer: "-7",
-    solution: "제한된 범위에서의 이차함수 극값 계산\\n$f(x)=(x-1)^2+a-1$\\n대칭축 $x=1$이 주어진 범위 $[-3, 2]$에 포함되므로 $x=1$에서 최솟값 $m=a-1$\\n대칭축에서 가장 먼 $x=-3$에서 최댓값 $M=f(-3)=16+a-1=a+15$\\n조건 대입: $(a-1)(a+15)=-64$\\n식 전개: $a^2+14a-15=-64 \\implies a^2+14a+49=0$\\n완전제곱식: $(a+7)^2=0 \\implies a=-7$\\n$\\therefore -7$"
+    "answer": "-7",
+    "solution": "제한된 범위에서의 이차함수 극값 계산\\n$f(x)=(x-1)^2+a-1$\\n대칭축 $x=1$이 주어진 범위 $[-3, 2]$에 포함되므로 $x=1$에서 최솟값 $m=a-1$\\n대칭축에서 가장 먼 $x=-3$에서 최댓값 $M=f(-3)=16+a-1=a+15$\\n조건 대입: $(a-1)(a+15)=-64$\\n식 전개: $a^2+14a-15=-64 \\implies a^2+14a+49=0$\\n완전제곱식: $(a+7)^2=0 \\implies a=-7$\\n$\\therefore -7$"
   }
 ];

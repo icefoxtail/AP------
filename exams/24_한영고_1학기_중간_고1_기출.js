@@ -1,4 +1,4 @@
-window.examTitle = "24_한영고_1학기_중간_고1_기출"
+window.examTitle = "24_한영고_1학기_중간_고1_기출";
 
 window.questionBank = [
   {
@@ -79,7 +79,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "⑤",
-    "solution": "<b>[키포인트]</b> 양변에 적절한 값을 대입하는 수치대입법을 사용하여 미정계수를 구함.\\n\\text{i) } x=0 \\text{ 대입:}\\n\\implies a(-1)(1) = 4 \\implies -a = 4 \\implies a = -4\\n\\text{ii) } x=1 \\text{ 대입:}\\n\\implies c(1)(2) = 2(1)^2+3(1)+4 = 9 \\implies 2c = 9\\n\\text{iii) } x=-1 \\text{ 대입:}\\n\\implies b(-1)(-2) = 2(-1)^2+3(-1)+4 = 3 \\implies 2b = 3\\n구하고자 하는 값 $-a+2b+2c$에 대입함.\\n\\implies 4 + 3 + 9 = 16\\n\\therefore 16"
+    "solution": "<b>[키포인트]</b> 양변에 적절한 값을 대입하는 수치대입법을 사용하여 미정계수를 구함.\\ni)  x=0  대입:\\n\\implies a(-1)(1) = 4 \\implies -a = 4 \\implies a = -4\\nii)  x=1  대입:\\n\\implies c(1)(2) = 2(1)^2+3(1)+4 = 9 \\implies 2c = 9\\niii)  x=-1  대입:\\n\\implies b(-1)(-2) = 2(-1)^2+3(-1)+4 = 3 \\implies 2b = 3\\n구하고자 하는 값 $-a+2b+2c$에 대입함.\\n\\implies 4 + 3 + 9 = 16\\n\\therefore 16"
   },
   {
     "id": 5,
@@ -139,7 +139,7 @@ window.questionBank = [
       "$1+2\\sqrt{5}$"
     ],
     "answer": "④",
-    "solution": "<b>[키포인트]</b> 상수항이 0인 이차식을 먼저 인수분해하여 일차식의 관계를 얻고, 다른 식에 대입함.\\n$2x^2-xy-y^2=0$을 인수분해함.\\n\\implies (2x+y)(x-y)=0 \\implies y=-2x \\text{ 또는 } y=x\\n\\text{i) } y=-2x \\text{일 때:}\\n\\implies x^2 + (-2x)^2 = 20 \\implies 5x^2 = 20 \\implies x = \\pm 2\\n\\implies x=2, y=-4 \\text{ 이면 } x+2y = -6\\n\\implies x=-2, y=4 \\text{ 이면 } x+2y = 6\\n\\text{ii) } y=x \\text{일 때:}\\n\\implies x^2 + x^2 = 20 \\implies 2x^2 = 20 \\implies x = \\pm \\sqrt{10}\\n\\implies x=\\sqrt{10}, y=\\sqrt{10} \\text{ 이면 } x+2y = 3\\sqrt{10}\\n\\implies x=-\\sqrt{10}, y=-\\sqrt{10} \\text{ 이면 } x+2y = -3\\sqrt{10}\\n값들 중 최댓값을 찾음. ($\\sqrt{90} > 6$)\\n\\therefore 3\\sqrt{10}"
+    "solution": "<b>[키포인트]</b> 상수항이 0인 이차식을 먼저 인수분해하여 일차식의 관계를 얻고, 다른 식에 대입함.\\n$2x^2-xy-y^2=0$을 인수분해함.\\n\\implies (2x+y)(x-y)=0 \\implies y=-2x  또는  y=x\\ni)  y=-2x 일 때:\\n\\implies x^2 + (-2x)^2 = 20 \\implies 5x^2 = 20 \\implies x = \\pm 2\\n\\implies x=2, y=-4  이면  x+2y = -6\\n\\implies x=-2, y=4  이면  x+2y = 6\\nii)  y=x 일 때:\\n\\implies x^2 + x^2 = 20 \\implies 2x^2 = 20 \\implies x = \\pm \\sqrt{10}\\n\\implies x=\\sqrt{10}, y=\\sqrt{10}  이면  x+2y = 3\\sqrt{10}\\n\\implies x=-\\sqrt{10}, y=-\\sqrt{10}  이면  x+2y = -3\\sqrt{10}\\n값들 중 최댓값을 찾음. ($\\sqrt{90} > 6$)\\n\\therefore 3\\sqrt{10}"
   },
   {
     "id": 8,
@@ -239,7 +239,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "④",
-    "solution": "<b>[키포인트]</b> 특정 일차식에 대한 내림차순 정리는 연쇄 조립제법을 통해 계수를 차례로 구함.\\n$(x-2)$에 대하여 조립제법을 연속으로 실행함.\\n\\text{i) } x=2\\text{로 1차 조립제법 시행:} 나머지는 -7 \\implies d = -7\\n\\text{ii) 몫에 대해 2차 조립제법 시행:} 나머지는 -1 \\implies c = -1\\n\\text{iii) 몫에 대해 3차 조립제법 시행:} 나머지는 2 \\implies b = 2\\text{, 마지막 몫은 } 1 \\implies a = 1\\n구해진 계수를 대입하여 계산함.\\n\\implies ab+cd = (1)(2) + (-1)(-7) = 2 + 7 = 9\\n\\therefore 9"
+    "solution": "<b>[키포인트]</b> 특정 일차식에 대한 내림차순 정리는 연쇄 조립제법을 통해 계수를 차례로 구함.\\n$(x-2)$에 대하여 조립제법을 연속으로 실행함.\\ni)  x=2로 1차 조립제법 시행: 나머지는 -7 \\implies d = -7\\nii) 몫에 대해 2차 조립제법 시행: 나머지는 -1 \\implies c = -1\\niii) 몫에 대해 3차 조립제법 시행: 나머지는 2 \\implies b = 2, 마지막 몫은  1 \\implies a = 1\\n구해진 계수를 대입하여 계산함.\\n\\implies ab+cd = (1)(2) + (-1)(-7) = 2 + 7 = 9\\n\\therefore 9"
   },
   {
     "id": 13,
@@ -279,7 +279,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "<b>[키포인트]</b> 분수 방정식을 정리하여 $\\omega$의 성질을 파악한 후 각 보기에 적용함.\\n양변에 $x$를 곱해 정리하면 $x^2+x+1=0$이므로 $\\omega^3=1, \\omega^2+\\omega+1=0$의 성질을 가짐.\\nㄱ 검증:\\n\\implies 방정식의 실계수 성질에 의해 $\\bar{\\omega}^2+\\bar{\\omega}+1=0$도 성립하므로 좌변과 우변 모두 $-1$로 같음. (참)\\nㄴ 검증:\\n\\implies (\\bar{\\omega}+1)(\\bar{\\omega}^2+1) = (-\\bar{\\omega}^2)(-\\bar{\\omega}) = \\bar{\\omega}^3 = 1\\n\\implies \\text{주어진 식은 } 1 \\times 1 = 1\\text{이 됨. (참)}\\\nㄷ 검증:\\n\\text{좌변: } (\\bar{\\omega}+1)^{2n} = (-\\bar{\\omega}^2)^{2n} = \\bar{\\omega}^{4n} = \\bar{\\omega}^n\\n\\text{우변: } (\\frac{\\bar{\\omega}}{-1})^{3n} = (-1)^n (\\because \\bar{\\omega}^3=1)\\n\\implies \\bar{\\omega}^n = (-1)^n\\text{을 만족하는 } n\\text{은 6의 배수일 때 성립함. 60 이하 6의 배수는 10개임. (참)}\\n\\therefore \\text{ㄱ, ㄴ, ㄷ}"
+    "solution": "<b>[키포인트]</b> 분수 방정식을 정리하여 $\\omega$의 성질을 파악한 후 각 보기에 적용함.\\n양변에 $x$를 곱해 정리하면 $x^2+x+1=0$이므로 $\\omega^3=1, \\omega^2+\\omega+1=0$의 성질을 가짐.\\nㄱ 검증:\\n\\implies 방정식의 실계수 성질에 의해 $\\bar{\\omega}^2+\\bar{\\omega}+1=0$도 성립하므로 좌변과 우변 모두 $-1$로 같음. (참)\\nㄴ 검증:\\n\\implies (\\bar{\\omega}+1)(\\bar{\\omega}^2+1) = (-\\bar{\\omega}^2)(-\\bar{\\omega}) = \\bar{\\omega}^3 = 1\\n\\implies 주어진 식은  1 \\times 1 = 1이 됨. (참)\\\nㄷ 검증:\\n좌변:  (\\bar{\\omega}+1)^{2n} = (-\\bar{\\omega}^2)^{2n} = \\bar{\\omega}^{4n} = \\bar{\\omega}^n\\n우변:  (\\frac{\\bar{\\omega}}{-1})^{3n} = (-1)^n (\\because \\bar{\\omega}^3=1)\\n\\implies \\bar{\\omega}^n = (-1)^n을 만족하는  n은 6의 배수일 때 성립함. 60 이하 6의 배수는 10개임. (참)\\n\\therefore ㄱ, ㄴ, ㄷ"
   },
   {
     "id": 15,
@@ -299,7 +299,7 @@ window.questionBank = [
       " "
     ],
     "answer": "10x+9",
-    "solution": "<b>[키포인트]</b> 다항식의 직접 나눗셈 세로셈 과정을 관찰하여 각 위치의 식과 계수를 매칭함.\\n직접 나눗셈을 실행하여 몫과 나머지를 구함.\\n\\implies 2x^3-4x^2+5 = (x^2-3x-1)(2x+2) + (8x+7)\\n중간 과정의 수식을 구조와 매칭함.\\n\\implies (가) = 2 \\text{ (몫의 상수항)}\\n\\implies (나) = 2x \\text{ (나눗셈 도중의 일차항)}\\n\\implies (다) = 8x+7 \\text{ (나머지)}\\n\\implies (가)+(나)+(다) = 2 + 2x + 8x + 7 = 10x + 9\\n\\therefore 10x+9"
+    "solution": "<b>[키포인트]</b> 다항식의 직접 나눗셈 세로셈 과정을 관찰하여 각 위치의 식과 계수를 매칭함.\\n직접 나눗셈을 실행하여 몫과 나머지를 구함.\\n\\implies 2x^3-4x^2+5 = (x^2-3x-1)(2x+2) + (8x+7)\\n중간 과정의 수식을 구조와 매칭함.\\n\\implies (가) = 2  (몫의 상수항)\\n\\implies (나) = 2x  (나눗셈 도중의 일차항)\\n\\implies (다) = 8x+7  (나머지)\\n\\implies (가)+(나)+(다) = 2 + 2x + 8x + 7 = 10x + 9\\n\\therefore 10x+9"
   },
   {
     "id": 16,
@@ -319,7 +319,7 @@ window.questionBank = [
       " "
     ],
     "answer": "-11",
-    "solution": "<b>[키포인트]</b> 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\\n각 부등식을 정리함.\\n\\text{i) } 3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\frac{-2a-1}{3}\\n\\text{ii) } 6x > 6 \\implies x > 1\\n범위 $1 < x \\le \\frac{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\\n경계값의 범위를 부등식으로 설정함.\\n\\implies 3 \\le \\frac{-2a-1}{3} < 4\\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\\n\\implies -6.5 < a \\le -5\\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\\n\\implies -6 + (-5) = -11\\n\\therefore -11"
+    "solution": "<b>[키포인트]</b> 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\\n각 부등식을 정리함.\\ni)  3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\frac{-2a-1}{3}\\nii)  6x > 6 \\implies x > 1\\n범위 $1 < x \\le \\frac{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\\n경계값의 범위를 부등식으로 설정함.\\n\\implies 3 \\le \\frac{-2a-1}{3} < 4\\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\\n\\implies -6.5 < a \\le -5\\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\\n\\implies -6 + (-5) = -11\\n\\therefore -11"
   },
   {
     "id": 17,
@@ -359,7 +359,7 @@ window.questionBank = [
       " "
     ],
     "answer": "-3-i",
-    "solution": "<b>[키포인트]</b> 실계수 방정식의 켤레근 성질과 근과 계수의 관계를 이용하여 미정계수와 나머지 근을 구함.\\n계수가 실수인 방정식이므로 한 근이 $1+i$이면 $1-i$도 근임. ($d = 1-i$)\\n나머지 한 실근을 $c$라 하고, 세 근의 합과 둘씩 곱한 합의 식을 세움.\\n\\text{일차항 계수 조건: } (1+i)(1-i) + (1+i)c + (1-i)c = 4\\n\\implies 2 + 2c = 4 \\implies 2c = 2 \\implies c = 1\\n근과 계수의 관계를 통해 계수 $a, b$를 구함.\\n\\implies -a = (1+i) + (1-i) + 1 = 3 \\implies a = -3\\n\\implies -b = (1+i)(1-i)(1) = 2 \\implies b = -2\\n구해진 모든 값을 대입하여 계산함.\\n\\implies a+b+c+d = -3 + (-2) + 1 + (1-i) = -3-i\\n\\therefore -3-i"
+    "solution": "<b>[키포인트]</b> 실계수 방정식의 켤레근 성질과 근과 계수의 관계를 이용하여 미정계수와 나머지 근을 구함.\\n계수가 실수인 방정식이므로 한 근이 $1+i$이면 $1-i$도 근임. ($d = 1-i$)\\n나머지 한 실근을 $c$라 하고, 세 근의 합과 둘씩 곱한 합의 식을 세움.\\n일차항 계수 조건:  (1+i)(1-i) + (1+i)c + (1-i)c = 4\\n\\implies 2 + 2c = 4 \\implies 2c = 2 \\implies c = 1\\n근과 계수의 관계를 통해 계수 $a, b$를 구함.\\n\\implies -a = (1+i) + (1-i) + 1 = 3 \\implies a = -3\\n\\implies -b = (1+i)(1-i)(1) = 2 \\implies b = -2\\n구해진 모든 값을 대입하여 계산함.\\n\\implies a+b+c+d = -3 + (-2) + 1 + (1-i) = -3-i\\n\\therefore -3-i"
   },
   {
     "id": 19,
@@ -399,7 +399,7 @@ window.questionBank = [
       " "
     ],
     "answer": "RQ=5, 넓이=15",
-    "solution": "<b>[키포인트]</b> 삼각형의 닮음을 이용하여 직사각형의 높이를 밑변에 대한 식으로 나타내고 이차함수의 최댓값을 구함.\\n삼각형의 넓이가 $30$이고 밑변이 $10$이므로 높이 $h=6$임.\\n직사각형의 가로 길이를 $RQ=x$라 하면, 삼각형의 닮음에 의해 직사각형의 높이 $y$는 다음과 같음.\\n\\implies y = 6(1 - \\frac{x}{10}) = 6 - 0.6x\\n직사각형의 넓이 식을 이차함수 형태로 작성함.\\n\\implies S(x) = x(6 - 0.6x) = -0.6(x^2 - 10x)\\n완전제곱식으로 변형하여 최댓값을 구함.\\n\\implies S(x) = -0.6(x-5)^2 + 15\\n\\implies x=5\\text{일 때, 최댓값 } 15\\text{를 가짐.}\\n\\therefore RQ=5, 넓이=15"
+    "solution": "<b>[키포인트]</b> 삼각형의 닮음을 이용하여 직사각형의 높이를 밑변에 대한 식으로 나타내고 이차함수의 최댓값을 구함.\\n삼각형의 넓이가 $30$이고 밑변이 $10$이므로 높이 $h=6$임.\\n직사각형의 가로 길이를 $RQ=x$라 하면, 삼각형의 닮음에 의해 직사각형의 높이 $y$는 다음과 같음.\\n\\implies y = 6(1 - \\frac{x}{10}) = 6 - 0.6x\\n직사각형의 넓이 식을 이차함수 형태로 작성함.\\n\\implies S(x) = x(6 - 0.6x) = -0.6(x^2 - 10x)\\n완전제곱식으로 변형하여 최댓값을 구함.\\n\\implies S(x) = -0.6(x-5)^2 + 15\\n\\implies x=5일 때, 최댓값  15를 가짐.\\n\\therefore RQ=5, 넓이=15"
   },
   {
     "id": 21,

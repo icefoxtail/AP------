@@ -11,7 +11,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "다음 중 옳은 것은? (4점)",
-    "choices": ["$\\sqrt{5}$는 25의 제곱근이다.", "$\\sqrt{9}$의 제곱근은 $\\pm 3$이다.", "$\\sqrt{(-7)^2}$의 음의 제곱근은 $-\\sqrt{7}$이다.", "$(-2)^2$의 제곱근은 없다.", "음이 아닌 정수의 제곱근은 2개다."],
+    "choices": [
+      "$\\sqrt{5}$는 25의 제곱근이다.",
+      "$\\sqrt{9}$의 제곱근은 $\\pm 3$이다.",
+      "$\\sqrt{(-7)^2}$의 음의 제곱근은 $-\\sqrt{7}$이다.",
+      "$(-2)^2$의 제곱근은 없다.",
+      "음이 아닌 정수의 제곱근은 2개다."
+    ],
     "answer": "3",
     "solution": "① $\\sqrt{5}$는 5의 제곱근임. ② $\\sqrt{9}=3$의 제곱근은 $\\pm\\sqrt{3}$임. ③ $\\sqrt{(-7)^{2}}=7$의 음의 제곱근은 $-\\sqrt{7}$ (참). ④ $(-2)^{2}=4$의 제곱근은 $\\pm 2$. ⑤ 0의 제곱근은 1개임."
   },
@@ -25,7 +31,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "다음 중 옳지 않은 것은? (3점)",
-    "choices": ["$\\sqrt{3^2}=3$", "$-\\sqrt{5^2}=-5$", "$\\sqrt{(-6)^2}=-6$", "$-4\\sqrt{3}=-\\sqrt{48}$", "$\\sqrt{50}=5\\sqrt{2}$"],
+    "choices": [
+      "$\\sqrt{3^2}=3$",
+      "$-\\sqrt{5^2}=-5$",
+      "$\\sqrt{(-6)^2}=-6$",
+      "$-4\\sqrt{3}=-\\sqrt{48}$",
+      "$\\sqrt{50}=5\\sqrt{2}$"
+    ],
     "answer": "3",
     "solution": "③ $\\sqrt{(-6)^{2}} = |-6| = 6$이 되어야 하므로 옳지 않음."
   },
@@ -39,7 +51,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "다음 중 무리수인 것은? (4점)",
-    "choices": ["2.111222...", "$2-\\sqrt{49}$", "$\\sqrt{\\frac{1}{1000}}$", "$\\sqrt{25}-9$", "0.29"],
+    "choices": [
+      "2.111222...",
+      "$2-\\sqrt{49}$",
+      "$\\sqrt{\\frac{1}{1000}}$",
+      "$\\sqrt{25}-9$",
+      "0.29"
+    ],
     "answer": "3",
     "solution": "③ $\\sqrt{\\frac{1}{1000}} = \\frac{1}{10\\sqrt{10}}$로 근호가 제거되지 않는 무리수임."
   },
@@ -53,7 +71,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
-    "choices": ["893", "475", "1285", "1674", "2431"],
+    "choices": [
+      "893",
+      "475",
+      "1285",
+      "1674",
+      "2431"
+    ],
     "answer": "4",
     "solution": "표에서 $a = 2.105, b = 4.31$ 확인. $2105 - 431 = 1674$."
   },
@@ -67,7 +91,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "다음에서 두 수의 대소 관계가 옳지 않은 것은? (4점)",
-    "choices": ["$\\sqrt{2}-3 < \\sqrt{3}-3$", "$1 < \\sqrt{10}-2$", "$\\sqrt{12}+1 < \\sqrt{13}+1$", "$3-\\sqrt{2} < \\sqrt{(-4)^2}$", "$\\sqrt{15}-\\sqrt{10} < -\\sqrt{10}+4$"],
+    "choices": [
+      "$\\sqrt{2}-3 < \\sqrt{3}-3$",
+      "$1 < \\sqrt{10}-2$",
+      "$\\sqrt{12}+1 < \\sqrt{13}+1$",
+      "$3-\\sqrt{2} < \\sqrt{(-4)^2}$",
+      "$\\sqrt{15}-\\sqrt{10} < -\\sqrt{10}+4$"
+    ],
     "answer": "2",
     "solution": "② $1 < \\sqrt{10}-2 \\implies 3 < \\sqrt{10}$은 참이나, 정답지 기준 2번의 수식 오류를 점검함."
   },
@@ -81,7 +111,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "다음 중 두 수 $\\sqrt{5}$와 $\\sqrt{24}$ 사이에 있는 수가 아닌 것은? (4점)",
-    "choices": ["3", "$\\sqrt{18}$", "$\\sqrt{10}$", "$\\sqrt{25}$", "$\\sqrt{15}$"],
+    "choices": [
+      "3",
+      "$\\sqrt{18}$",
+      "$\\sqrt{10}$",
+      "$\\sqrt{25}$",
+      "$\\sqrt{15}$"
+    ],
     "answer": "4",
     "solution": "④ $\\sqrt{25}=5$는 $\\sqrt{24}$보다 큰 수이므로 범위에 속하지 않음."
   },
@@ -95,7 +131,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
-    "choices": ["5", "10", "12", "14", "16"],
+    "choices": [
+      "5",
+      "10",
+      "12",
+      "14",
+      "16"
+    ],
     "answer": "1",
     "solution": "$320 = 2^{6} \\times 5$이므로 $x=5$일 때 근호 안이 $8^2$이 되어 자연수가 됨."
   },
@@ -109,7 +151,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
-    "choices": ["0", "$3\\sqrt{2}-4\\sqrt{5}$", "$-3\\sqrt{2}-4\\sqrt{5}$", "$3\\sqrt{2}+4\\sqrt{5}$", "$-3\\sqrt{2}+4\\sqrt{5}$"],
+    "choices": [
+      "0",
+      "$3\\sqrt{2}-4\\sqrt{5}$",
+      "$-3\\sqrt{2}-4\\sqrt{5}$",
+      "$3\\sqrt{2}+4\\sqrt{5}$",
+      "$-3\\sqrt{2}+4\\sqrt{5}$"
+    ],
     "answer": "5",
     "solution": "$2\\sqrt{2} - (5\\sqrt{2}-4\\sqrt{5}) = -3\\sqrt{2}+4\\sqrt{5}$."
   },
@@ -123,7 +171,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
-    "choices": ["점 $P$의 좌표는 $1-\\sqrt{2}$이다.", "점 $Q$의 좌표는 $1+\\sqrt{2}$이다.", "$\\overline{BP}=\\sqrt{2}$", "$\\overline{PA}=\\sqrt{2}-1$", "$\\overline{PQ}=-1+2\\sqrt{2}$"],
+    "choices": [
+      "점 $P$의 좌표는 $1-\\sqrt{2}$이다.",
+      "점 $Q$의 좌표는 $1+\\sqrt{2}$이다.",
+      "$\\overline{BP}=\\sqrt{2}$",
+      "$\\overline{PA}=\\sqrt{2}-1$",
+      "$\\overline{PQ}=-1+2\\sqrt{2}$"
+    ],
     "answer": "1",
     "solution": "정사각형 기준점 $B(2)$에서 왼쪽으로 $\\sqrt{2}$만큼 이동하므로 $P = 2-\\sqrt{2}$임."
   },
@@ -137,7 +191,13 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "$\\sqrt{(2-\\sqrt{5})^2} + \\sqrt{(3-\\sqrt{5})^2}$을 간단히 하면? (5점)",
-    "choices": ["1", "-1", "$1-2\\sqrt{5}$", "$4-2\\sqrt{5}$", "$2\\sqrt{5}$"],
+    "choices": [
+      "1",
+      "-1",
+      "$1-2\\sqrt{5}$",
+      "$4-2\\sqrt{5}$",
+      "$2\\sqrt{5}$"
+    ],
     "answer": "1",
     "solution": "$|2-\\sqrt{5}| + |3-\\sqrt{5}| = (\\sqrt{5}-2) + (3-\\sqrt{5}) = 1$."
   },
@@ -151,7 +211,13 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈",
     "standardUnitOrder": 2,
     "content": "$(a-2b)(3a+2b)$를 전개하면? (3점)",
-    "choices": ["$3a^2-4ab+4b^2$", "$3a^2-4ab-4b^2$", "$3a^2+4ab-4b^2$", "$3a^2-4ab-4b^2$", "$3a^2+4ab+4b^2$"],
+    "choices": [
+      "$3a^2-4ab+4b^2$",
+      "$3a^2-4ab-4b^2$",
+      "$3a^2+4ab-4b^2$",
+      "$3a^2-4ab-4b^2$",
+      "$3a^2+4ab+4b^2$"
+    ],
     "answer": "2",
     "solution": "$3a^2 + 2ab - 6ab - 4b^2 = 3a^2 - 4ab - 4b^2$."
   },
@@ -165,83 +231,175 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈",
     "standardUnitOrder": 2,
     "content": "다음에서 옳지 않은 것은? (4점)",
-    "choices": ["$(-5+b)^2 = b^2-10b+25$", "$(3x-4y)^2 = 9x^2-24xy+16y^2$", "$(2x-y)(-2x+y) = -4x^2-y^2$", "$(a+2b)(a-5b) = a^2-3ab-10b^2$", "$(2y+5)(3y-3) = 6y^2+9y-15$"],
+    "choices": [
+      "$(-5+b)^2 = b^2-10b+25$",
+      "$(3x-4y)^2 = 9x^2-24xy+16y^2$",
+      "$(2x-y)(-2x+y) = -4x^2-y^2$",
+      "$(a+2b)(a-5b) = a^2-3ab-10b^2$",
+      "$(2y+5)(3y-3) = 6y^2+9y-15$"
+    ],
     "answer": "3",
     "solution": "③ $(2x-y)(-2x+y) = -(2x-y)^2 = -4x^2+4xy-y^2$이므로 옳지 않음."
-  }
-];
-window.questionBank = window.questionBank.concat([
+  },
   {
     "id": 13,
     "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$(x+a)(x-b)=x^2+x-2$일 때, $a-b+ab$의 값은? (단, $a, b$는 상수) (4점)",
-    "choices": ["2", "3", "4", "5", "6"],
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
     "answer": "2",
-    "solution": "$(x+a)(x-b) = x^2+(a-b)x-ab$이므로 $a-b=1, ab=2$임. $a-b+ab = 1+2=3$."
+    "solution": "$(x+a)(x-b) = x^2+(a-b)x-ab$이므로 $a-b=1, ab=2$임. $a-b+ab = 1+2=3$.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 14,
     "level": "[중]",
     "category": "다항식의 곱셈",
     "content": "$(2x-3y)(-3x+7y)+(-2x+3y)^2$ 전개한 식에서 $xy$의 계수를 구하면? (4점)",
-    "choices": ["2", "3", "4", "5", "11"],
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "11"
+    ],
     "answer": "5",
-    "solution": "첫째 항에서 $xy$ 계수는 $14+9=23$. 둘째 항에서 $xy$ 계수는 $-12$. 합은 $23-12=11$."
+    "solution": "첫째 항에서 $xy$ 계수는 $14+9=23$. 둘째 항에서 $xy$ 계수는 $-12$. 합은 $23-12=11$.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 15,
     "level": "[중]",
     "category": "인수분해",
     "content": "인수분해 공식을 이용하여 $\\frac{1001 \\times 1002 - 1002}{1001^2-1}$를 계산하면? (4점)",
-    "choices": ["1", "2", "5", "8", "12"],
+    "choices": [
+      "1",
+      "2",
+      "5",
+      "8",
+      "12"
+    ],
     "answer": "1",
-    "solution": "분자: $1002(1001-1)$. 분모: $(1001-1)(1001+1)$. 약분하면 결과는 $1$임."
+    "solution": "분자: $1002(1001-1)$. 분모: $(1001-1)(1001+1)$. 약분하면 결과는 $1$임.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 16,
     "level": "[중]",
     "category": "인수분해",
     "content": "이차식 $6x^2-13x-5$를 인수분해 하였을 때, 인수를 고르면? (4점)",
-    "choices": ["$2x-3$", "$2x-1$", "$3x-1$", "$3x+5$", "$3x+1$"],
+    "choices": [
+      "$2x-3$",
+      "$2x-1$",
+      "$3x-1$",
+      "$3x+5$",
+      "$3x+1$"
+    ],
     "answer": "5",
-    "solution": "$6x^2-13x-5 = (2x-5)(3x+1)$로 인수분해됨. 인수는 $3x+1$."
+    "solution": "$6x^2-13x-5 = (2x-5)(3x+1)$로 인수분해됨. 인수는 $3x+1$.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 17,
     "level": "[중]",
     "category": "인수분해",
     "content": "다음 중 인수분해 한 것이 옳지 않은 것은? (4점)",
-    "choices": ["$x^2-4xy+4y^2=(x-2y)^2$", "$x^2-\\frac{2}{3}x+\\frac{1}{9}=(x-\\frac{1}{3})^2$", "$25x^2-9y^2=(5x+3y)(5x-3y)$", "$x^2-3x-4=(x+1)(x-4)$", "$2x^2+5x-3=(2x+1)(x-3)$"],
+    "choices": [
+      "$x^2-4xy+4y^2=(x-2y)^2$",
+      "$x^2-\\frac{2}{3}x+\\frac{1}{9}=(x-\\frac{1}{3})^2$",
+      "$25x^2-9y^2=(5x+3y)(5x-3y)$",
+      "$x^2-3x-4=(x+1)(x-4)$",
+      "$2x^2+5x-3=(2x+1)(x-3)$"
+    ],
     "answer": "5",
-    "solution": "⑤ $2x^2+5x-3 = (2x-1)(x+3)$이 되어야 하므로 옳지 않음."
+    "solution": "⑤ $2x^2+5x-3 = (2x-1)(x+3)$이 되어야 하므로 옳지 않음.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 18,
     "level": "[중]",
     "category": "인수분해",
     "content": "다음 식 $9a^2 + \\Box ab + b^2$이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 것을 고르면? (4점)",
-    "choices": ["3", "$\\pm 6$", "$\\pm 3$", "-6", "6"],
+    "choices": [
+      "3",
+      "$\\pm 6$",
+      "$\\pm 3$",
+      "-6",
+      "6"
+    ],
     "answer": "2",
-    "solution": "$9a^2 \\pm 6ab + b^2 = (3a \\pm b)^2$이므로 $\\pm 6$이 적절함."
+    "solution": "$9a^2 \\pm 6ab + b^2 = (3a \\pm b)^2$이므로 $\\pm 6$이 적절함.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 19,
     "level": "[중]",
     "category": "인수분해",
     "content": "$(x-1)^2 - (2x-3)$을 인수분해하면? (4점)",
-    "choices": ["$(x-4)(x+1)$", "$(x-2)^2$", "$(x+2)^2$", "$(x-4)(x-1)$", "$(x+4)(x+1)$"],
+    "choices": [
+      "$(x-4)(x+1)$",
+      "$(x-2)^2$",
+      "$(x+2)^2$",
+      "$(x-4)(x-1)$",
+      "$(x+4)(x+1)$"
+    ],
     "answer": "2",
-    "solution": "$x^2-2x+1-2x+3 = x^2-4x+4 = (x-2)^2$으로 인수분해됨."
+    "solution": "$x^2-2x+1-2x+3 = x^2-4x+4 = (x-2)^2$으로 인수분해됨.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 20,
     "level": "[상]",
     "category": "인수분해",
     "content": "한승이는 $x$의 계수를 잘못 보고 $(x-3)(x+6)$으로, 수정이는 상수항을 잘못 보고 $(x-4)(x-3)$으로 인수분해 하였다. 처음 이차식을 바르게 인수분해 하면? (4점)",
-    "choices": ["$(x+2)(x-9)$", "$(x-2)(x+9)$", "$(x-3)(x-4)$", "$(x-3)(x-6)$", "$(x+3)(x-6)$"],
+    "choices": [
+      "$(x+2)(x-9)$",
+      "$(x-2)(x+9)$",
+      "$(x-3)(x-4)$",
+      "$(x-3)(x-6)$",
+      "$(x+3)(x-6)$"
+    ],
     "answer": "1",
-    "solution": "한승: 상수항 $-18$ 채택. 수정: $x$ 계수 $-7$ 채택. 처음 식: $x^2-7x-18 = (x-9)(x+2)$."
+    "solution": "한승: 상수항 $-18$ 채택. 수정: $x$ 계수 $-7$ 채택. 처음 식: $x^2-7x-18 = (x-9)(x+2)$.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
   },
   {
     "id": 21,
@@ -249,7 +407,13 @@ window.questionBank = window.questionBank.concat([
     "category": "제곱근과 실수",
     "content": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^2+\\sqrt{(-5)^2}$을 계산하시오. (4점)",
     "answer": "6",
-    "solution": "$13 - 12 + 5 = 6$임."
+    "solution": "$13 - 12 + 5 = 6$임.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": "",
+    "choices": []
   },
   {
     "id": 22,
@@ -257,7 +421,13 @@ window.questionBank = window.questionBank.concat([
     "category": "제곱근과 실수",
     "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^2}-\\sqrt{(-\\frac{1}{2}a)^2}$을 간단히 하시오. (5점)",
     "answer": "$-\\frac{5}{2}a$",
-    "solution": "$|3a| - |-\\frac{1}{2}a| = -3a - (\\frac{1}{2}a) = -\\frac{5}{2}a$."
+    "solution": "$|3a| - |-\\frac{1}{2}a| = -3a - (\\frac{1}{2}a) = -\\frac{5}{2}a$.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": "",
+    "choices": []
   },
   {
     "id": 23,
@@ -265,7 +435,13 @@ window.questionBank = window.questionBank.concat([
     "category": "다항식의 곱셈",
     "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
     "answer": "$-40\\sqrt{6}$",
-    "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$."
+    "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": "",
+    "choices": []
   },
   {
     "id": 24,
@@ -273,6 +449,12 @@ window.questionBank = window.questionBank.concat([
     "category": "인수분해",
     "content": "[서답형 4-2] 이차식 $2x^2-ax-3$이 정수 계수로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
     "answer": "0",
-    "solution": "$a=1, -1, 5, -5$ 가능. 모든 $a$의 합은 $0$임."
+    "solution": "$a=1, -1, 5, -5$ 가능. 모든 $a$의 합은 $0$임.",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": "",
+    "choices": []
   }
-]);
+];
