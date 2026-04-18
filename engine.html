@@ -871,43 +871,58 @@ function wrapLatexPreserveBlocks(text) {
     s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
     s = s.replace(/\\frac\[([^\]]+)\]\[([^\]]+)\]/g, '\\frac{$1}{$2}').replace(/\\dot\[([^\]]+)\]/g, '\\dot{$1}');
 
-    if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s)) {
+    const hasAnyKorean = /[가-힣]/.test(s);
+    if (!hasAnyKorean && (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s))) {
         return `$$${s}$$`;
     }
 
-    if (/^\s*\$\$[\s\S]*\$\$\s*$/.test(s) || /^\s*\$[\s\S]*\$\s*$/.test(s)) return s;
+    const htmlTags = [];
+    s = s.replace(/<\/?(?:div|span|br|p|b|i|u|strong|em|table|thead|tbody|tr|td|th|ul|ol|li|hr|svg|g|path|line|polyline|polygon|circle|ellipse|rect|text|defs|marker|foreignObject)(?:\s+[^<>]*?)?\s*\/?>/gi, m => {
+        const token = `__HTMLTAG_${htmlTags.length}__`;
+        htmlTags.push(m);
+        return token;
+    });
 
-    const parts = s.split(/(<[^>]+>)/g);
-    return parts.map(p => {
-        if (!p) return '';
-        if (p.startsWith('<')) return p;
+    s = s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\n/g, '<br>');
 
-        let t = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
-        const trimmed = t.trim();
+    const segments = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$|__HTMLTAG_\d+__|<br>)/g);
+
+    const out = segments.map(seg => {
+        if (!seg) return '';
+        if (seg === '<br>') return seg;
+        if (/^__HTMLTAG_\d+__$/.test(seg)) {
+            return htmlTags[Number(seg.match(/\d+/)[0])] || seg;
+        }
+        if (/^\$\$[\s\S]*\$\$$/.test(seg) || /^\$[^$\n]+\$$/.test(seg)) {
+            return seg;
+        }
+
+        const trimmed = seg.trim();
+        if (!trimmed) return seg;
 
         const hasKorean = /[가-힣]/.test(trimmed);
         const hasDollar = /\$/.test(trimmed);
-
         const looksLikeMath =
             !hasKorean &&
             !hasDollar &&
             (
                 /\\[a-zA-Z]+/.test(trimmed) ||
-                (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0)
+                (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\&;]+$/.test(trimmed) && trimmed.length > 0)
             );
 
-        if (looksLikeMath && !t.includes('<br>')) {
-            // < 와 > 를 \lt / \gt 로 변환 (innerHTML에서 HTML 태그로 파싱되는 버그 방지)
-            const math = trimmed.replace(/</g, '\\lt ').replace(/>/g, '\\gt ');
-            return `$${math}$`;
+        if (looksLikeMath) {
+            const math = trimmed.replace(/&lt;/g, '\\lt ').replace(/&gt;/g, '\\gt ');
+            return seg.replace(trimmed, `$${math}$`);
         }
-        // $...$밖에 있는 \{...\} 집합 표기만 자동 래핑 ($...$안에 있는 건 건드리지 않음)
-        t = t.split(/(\$[^$\n]*\$)/g).map((seg, idx) => {
-            if (idx % 2 === 1) return seg; // $...$ 안쪽은 그대로
-            return seg.replace(/(\\\{(?:[^${}]|\{[^}]*\})*\\\})/g, '$$$1$$');
+
+        return seg.split(/(\$[^$\n]*\$)/g).map((piece, idx) => {
+            if (idx % 2 === 1) return piece;
+            return piece.replace(/(\\\{(?:[^${}]|\{[^}]*\})*\\\})/g, '$$$1$$');
         }).join('');
-        return t;
     }).join('');
+
+    return out;
 }
 
 function stripCite(text) {
