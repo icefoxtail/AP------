@@ -24,15 +24,15 @@
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
         .page-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
         
-        /* 시험지 그리드 */
         .grid-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; }
         .q-box { flex: 1; padding: 10px 0; border-bottom: 0.5px solid #eee; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
+        .choices { margin-top: 10px; font-size: 9pt; line-height: 1.6; }
+        .choices div { margin-bottom: 2px; }
         .answer-box { flex: 1; border: 1px dashed #ccc; margin-top: 10px; background: #fafafa; }
         
-        /* 정답표 그리드 시스템 */
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
@@ -62,6 +62,11 @@ const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 function wrapLatex(text) {
     if (!text) return "";
     let s = String(text);
+    // 수식 변환
+    s = s.replace(/\[\]_\{?(\d+)\}?C_\{?(\d+)\}?/g, '\\binom{$1}{$2}');
+    s = s.replace(/\[\]_([a-zA-Z])C_([a-zA-Z])/g, '\\binom{$1}{$2}');
+    s = s.replace(/\[\]_\{?(\d+)\}?H_\{?(\d+)\}?/g, '_{$1}H_{$2}');
+    s = s.replace(/\[\]_\{?(\d+)\}?P_\{?(\d+)\}?/g, '_{$1}P_{$2}');
     s = s.replace(/\\\(([^)]+)\\\)/g, '$$$1$$');
     s = s.replace(/\\\[([^\]]+)\\\]/g, '$$$$$1$$$$');
     s = s.replace(/(?<!\\)because/gi, '\\because');
@@ -94,11 +99,8 @@ async function init() {
     s.src = dataUrl + '?v=' + Date.now();
     s.onload = () => {
         const qb = window.questionBank;
-        // [Item 1] 데이터 구조 호환성 (Array/Object 대응)
         AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
         AppState.title = window.examTitle || p.get('title') || '수학 시험지';
-        
-        // 상단 타이틀 즉시 갱신
         document.getElementById('ctrl-title').innerText = AppState.title;
         render();
     };
@@ -124,8 +126,6 @@ function makePage(area, type, pNum) {
     page.className = 'page';
     const header = document.createElement('div');
     header.className = 'page-header';
-    
-    // 모드별 헤더 색상
     if (type === 'exam') header.style.borderBottomColor = '#1d4ed8';
     else if (type === 'sol')  header.style.borderBottomColor = '#dc2626';
     else if (type === 'ans')  header.style.borderBottomColor = '#059669';
@@ -140,53 +140,9 @@ function makePage(area, type, pNum) {
     return page;
 }
 
-function renderAns(area, data) {
-    const PER_PAGE = 50;
-    let pCount = 1;
-
-    for (let start = 0; start < data.length; start += PER_PAGE) {
-        const chunk = data.slice(start, start + PER_PAGE);
-        const p = makePage(area, 'ans', pCount++);
-
-        const grid = document.createElement('div');
-        grid.className = 'ans-grid';
-
-        const splitIndex = Math.ceil(chunk.length / 2);
-        const orderedItems = [];
-
-        for (let i = 0; i < splitIndex; i++) {
-            orderedItems.push({ q: chunk[i], qNum: start + i + 1 });
-            if (chunk[splitIndex + i]) {
-                orderedItems.push({ q: chunk[splitIndex + i], qNum: start + splitIndex + i + 1 });
-            }
-        }
-
-        orderedItems.forEach(({ q, qNum }) => {
-            const unit = document.createElement('div');
-            unit.className = 'ans-cell';
-            unit.innerHTML = `<div class="ans-n">${qNum}.</div><div class="ans-v">${wrapLatex(q.answer ?? '–')}</div>`;
-            grid.appendChild(unit);
-        });
-
-        p.appendChild(grid);
-
-        // QR 코드는 마지막 페이지 하단
-        if (start + PER_PAGE >= data.length) {
-            const solUrl = new URL(window.location.href);
-            solUrl.searchParams.set('mode', 'sol');
-            const qrDiv = document.createElement('div');
-            qrDiv.style.cssText = 'margin-top:auto; padding:20px 0; text-align:center; font-size:8pt; color:#555;';
-            qrDiv.innerHTML = `
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}"
-                     style="width:80px;height:80px;" alt="해설 QR">
-                <div style="margin-top:4px; font-weight:bold;">📱 스마트 해설지 바로가기</div>`;
-            p.appendChild(qrDiv);
-        }
-    }
-}
-
 function renderExam(area, data) {
     let pNum = 1;
+    const circled = ['①','②','③','④','⑤'];
     for (let i = 0; i < data.length; i += AppState.qpp) {
         const page = makePage(area, 'exam', pNum++);
         const grid = document.createElement('div');
@@ -197,7 +153,14 @@ function renderExam(area, data) {
         data.slice(i, i + AppState.qpp).forEach((q, idx) => {
             const box = document.createElement('div');
             box.className = 'q-box';
-            box.innerHTML = `<div class="q-num">${i + idx + 1}.</div><div>${wrapLatex(q.content)}</div><div class="answer-box"></div>`;
+            
+            // [Item 1] 객관식/주관식 판별 로직 적용
+            const isChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식' && q.choices.some(c => String(c).trim() !== '');
+            const choicesHTML = isChoice
+                ? `<div class="choices">${q.choices.map((c,ci) => `<div>${circled[ci]||''} ${wrapLatex(String(c))}</div>`).join('')}</div>`
+                : `<div class="answer-box"></div>`;
+
+            box.innerHTML = `<div class="q-num">${i+idx+1}.</div><div>${wrapLatex(q.content)}</div>${choicesHTML}`;
             (idx < AppState.qpp / 2 ? left : right).appendChild(box);
         });
         grid.appendChild(left); grid.appendChild(right);
@@ -217,17 +180,53 @@ function renderSol(area, data) {
         data.slice(i, i + AppState.qpp).forEach((q, idx) => {
             const box = document.createElement('div');
             box.className = 'q-box';
+            // [Item 2] 해설 참조 필드 수정 (solution 최우선)
+            const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
             box.innerHTML = `
                 <div class="q-num">${i + idx + 1}.</div>
                 <div style="margin-bottom:10px; color:#666;">${wrapLatex(q.content)}</div>
                 <div style="background:#fdfdfd; padding:10px; border:1px solid #eee;">
                     <div style="font-weight:bold; color:red; margin-bottom:5px;">[정답] ${wrapLatex(q.answer)}</div>
-                    <div style="font-size:9pt; line-height:1.6;">${wrapLatex(q.explanation || q.sol || '해설이 없습니다.')}</div>
+                    <div style="font-size:9pt; line-height:1.6;">${wrapLatex(solutionText)}</div>
                 </div>`;
             (idx < AppState.qpp / 2 ? left : right).appendChild(box);
         });
         grid.appendChild(left); grid.appendChild(right);
         page.appendChild(grid);
+    }
+}
+
+function renderAns(area, data) {
+    const PER_PAGE = 50;
+    let pCount = 1;
+    for (let start = 0; start < data.length; start += PER_PAGE) {
+        const chunk = data.slice(start, start + PER_PAGE);
+        const p = makePage(area, 'ans', pCount++);
+        const grid = document.createElement('div');
+        grid.className = 'ans-grid';
+        const splitIndex = Math.ceil(chunk.length / 2);
+        const orderedItems = [];
+        for (let i = 0; i < splitIndex; i++) {
+            orderedItems.push({ q: chunk[i], qNum: start + i + 1 });
+            if (chunk[splitIndex + i]) {
+                orderedItems.push({ q: chunk[splitIndex + i], qNum: start + splitIndex + i + 1 });
+            }
+        }
+        orderedItems.forEach(({ q, qNum }) => {
+            const unit = document.createElement('div');
+            unit.className = 'ans-cell';
+            unit.innerHTML = `<div class="ans-n">${qNum}.</div><div class="ans-v">${wrapLatex(q.answer ?? '–')}</div>`;
+            grid.appendChild(unit);
+        });
+        p.appendChild(grid);
+        if (start + PER_PAGE >= data.length) {
+            const solUrl = new URL(window.location.href);
+            solUrl.searchParams.set('mode', 'sol');
+            const qrDiv = document.createElement('div');
+            qrDiv.style.cssText = 'margin-top:auto; padding:20px 0; text-align:center; font-size:8pt; color:#555;';
+            qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}" style="width:80px;height:80px;" alt="해설 QR"><div style="margin-top:4px; font-weight:bold;">📱 스마트 해설지 바로가기</div>`;
+            p.appendChild(qrDiv);
+        }
     }
 }
 
@@ -239,7 +238,6 @@ function render() {
     else renderExam(area, AppState.data);
     if (window.MathJax) MathJax.typesetPromise();
 }
-
 window.onload = init;
 </script>
 </body>
