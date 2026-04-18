@@ -138,7 +138,7 @@ window.questionBank = [
   "standardUnitKey": "H_ST_01_01",
   "standardUnit": "여러 가지 순열",
   "standardUnitOrder": "1"
-}
+},
   {
     "id": 11,
     "level": "상",
