@@ -5,11 +5,7 @@
     <title>JS아카이브 엔진</title>
     <script>
         window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$']],
-                displayMath: [['$$', '$$']],
-                packages: {'[+]': ['ams', 'boldsymbol']}
-            },
+            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
@@ -18,537 +14,115 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
-
-        body {
-            margin: 0;
-            font-family: 'Nanum Myeongjo', serif;
-            font-size: 9.5pt;
-            background: #f1f5f9;
-            padding-top: 54px;
-            color: #000;
-        }
-
-        #mode-ctrl {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 56px;
-            background: #0f172a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 24px;
-            z-index: 1000;
-            box-sizing: border-box;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            gap: 16px;
-        }
-
-        #ctrl-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: white;
-            white-space: nowrap;
-            letter-spacing: -0.3px;
-            flex-shrink: 0;
-        }
-
-        .mode-tabs {
-            display: flex;
-            gap: 4px;
-            background: rgba(255,255,255,0.07);
-            padding: 4px;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-
-        .mode-tab {
-            padding: 6px 16px;
-            border-radius: 7px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            color: rgba(255,255,255,0.5);
-            transition: 0.18s;
-            font-family: inherit;
-            letter-spacing: -0.2px;
-        }
-
-        .mode-tab:hover {
-            color: white;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .mode-tab.active {
-            background: white;
-            color: #0f172a;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-        }
-
-        .ctrl-right {
-            display: flex;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
-        .print-btn {
-            padding: 7px 16px;
-            border: none;
-            border-radius: 7px;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 12px;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-
-        .print-btn.primary {
-            background: #378ADD;
-            color: white;
-        }
-
-        .print-btn.primary:hover {
-            background: #2e73c4;
-        }
-
-        .print-btn.ghost {
-            background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.8);
-        }
-
-        .print-btn.ghost:hover {
-            background: rgba(255,255,255,0.18);
-            color: white;
-        }
-
-        #print-area {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 0;
-        }
-
-        .page {
-            width: 210mm;
-            height: 297mm;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 15mm;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        @media print {
-            @page { size: A4; margin: 0; }
-            body { padding-top: 0; margin: 0; background: white; }
-            #mode-ctrl { display: none !important; }
-            #print-area { display: flex !important; gap: 0; padding: 0; }
-            .page { box-shadow: none; page-break-after: always; }
-            #pdf-container { display: none !important; }
-        }
-
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
-            margin-bottom: 12px;
-            font-weight: bold;
-            flex-shrink: 0;
-            font-size: 10pt;
-        }
-
-        .grid-container {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-            overflow: hidden;
-            min-height: 0;
-        }
-
-        .grid-col {
-            display: flex;
-            flex-direction: column;
-            padding: 0 12px;
-            overflow: hidden;
-            min-height: 0;
-            border-right: 1px solid #000;
-        }
-
-        .grid-col:last-child {
-            border-right: none;
-        }
-
-        .q-box {
-            flex-shrink: 0;
-            min-height: 0;
-            padding: 10px 0;
-            border-bottom: 0.5px solid #ccc;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            word-break: keep-all;
-            overflow-wrap: anywhere;
-            line-height: 1.58;
-            font-size: 9.5pt;
-        }
-
-        .q-box:last-child {
-            border-bottom: none;
-        }
-
-        .q-num {
-            font-weight: bold;
-            font-size: 11pt;
-            margin-bottom: 6px;
-            flex-shrink: 0;
-        }
-
-        .q-content {
-            min-height: 0;
-        }
-
-        .answer-box {
-            border: 1px dashed #bbb;
-            margin-top: 8px;
-            background: #fafafa;
-            height: 80px;
-        }
-
-        .choices {
-            margin-top: 7px;
-            line-height: 1.72;
-        }
-
-        .sol-box { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
-
-        .q-box.fit-tight { font-size: 9.0pt; line-height: 1.40; }
+        body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 54px; }
+        #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 56px; background: #0f172a; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; z-index: 1000; box-sizing: border-box; }
+        #ctrl-title { color: white; font-weight: 800; font-size: 14px; }
+        .mode-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.07); padding: 4px; border-radius: 10px; }
+        .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
+        .mode-tab.active { background: white; color: #0f172a; }
+        #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+        .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
+        .page-header { display: flex; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
+        
+        .grid-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
+        .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
+        .grid-col { display: flex; flex-direction: column; padding: 0 12px; min-height: 0; }
+        
+        .q-box { flex: 1; padding: 10px 0; border-bottom: 0.5px solid #eee; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+        .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; }
+        .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
+        .choices { margin-top: 10px; font-size: 9pt; line-height: 1.6; }
+        .choices div { margin-bottom: 2px; }
+        .answer-box { flex: 1; border: 1px dashed #ccc; margin-top: 10px; background: #fafafa; }
+        
+        .q-box.fit-tight { font-size: 9pt; line-height: 1.4; }
         .q-box.fit-tighter { font-size: 8.6pt; line-height: 1.31; }
         .q-box.fit-micro { font-size: 8.1pt; line-height: 1.23; }
 
-        .ans-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 32px;
-            row-gap: 0;
-            margin-top: 5px;
-            border-top: 1px solid #000;
-        }
+        .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
+        .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
+        .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
+        .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
 
-        .ans-cell {
-            padding: 7px 8px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border-bottom: 0.5px solid #ccc;
-        }
+        @media print { #mode-ctrl { display: none; } body { padding-top: 0; background: white; } .page { box-shadow: none; page-break-after: always; } }
     </style>
 </head>
 <body>
-
     <div id="mode-ctrl">
         <span id="ctrl-title">JS아카이브</span>
-        <div class="mode-tabs" id="modeTabs">
-            <button class="mode-tab" data-mode="exam" onclick="switchMode('exam')">시험지</button>
-            <button class="mode-tab" data-mode="sol" onclick="switchMode('sol')">해설지</button>
-            <button class="mode-tab" data-mode="ans" onclick="switchMode('ans')">정답표</button>
+        <div class="mode-tabs">
+            <button class="mode-tab" id="btn-exam" onclick="switchMode('exam')">시험지</button>
+            <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
+            <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
-        <div class="ctrl-right">
-            <button class="print-btn primary" onclick="window.print()">🖨 인쇄</button>
+        <div style="display:flex; gap:10px;">
+            <button class="mode-tab" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
+            <button onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
-
     <div id="print-area"></div>
-    <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:85mm;"></div>
 
 <script>
-const AppState = { title: 'JS아카이브', data: [], mode: 'exam', qpp: 4 };
-let pageCount = 0;
+const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 
-function esc(str) {
-    if (!str) return '';
-    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-    return String(str).replace(/[&<>"']/g, m => map[m]);
-}
+function wrapLatex(text) {
+    if (text == null) return "";
+    let s = String(text);
 
-function raf() { return new Promise(r => requestAnimationFrame(r)); }
+    s = s.replace(/\\\([\s\S]+?\\\)/g, m => m.replace(/^\\\(/, '$').replace(/\\\)$/, '$'));
+    s = s.replace(/\\\[[\s\S]+?\\\]/g, m => m.replace(/^\\\[/, '$$').replace(/\\\]$/, '$$'));
+    s = s.replace(/(?<!\\)because/gi, '\\because');
 
-function makePage(area, type, pNum) {
-    const page = document.createElement('div');
-    page.className = 'page';
-
-    const header = document.createElement('div');
-    header.className = 'page-header';
-    
-    let left = AppState.title;
-    let right = AppState.mode === 'exam' ? '이름: __________ 점수: / 100' : 
-                AppState.mode === 'sol' ? '해설지' : '정답표';
-
-    header.innerHTML = `
-        <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(left)}</div>
-        <div style="flex-shrink:0;margin:0 16px;">${esc(right)}</div>
-        <div style="flex-shrink:0;min-width:30px;text-align:right;">- ${pNum} -</div>`;
-    
-    page.appendChild(header);
-    area.appendChild(page);
-    return page;
-}
-
-async function loadData(dataUrl) {
-    if (dataUrl === 'mixed') {
-        try {
-            const raw = sessionStorage.getItem('mixedQuestions') || localStorage.getItem('mixedQuestions');
-            if (!raw) return [];
-            const tasks = JSON.parse(raw);
-            if (!Array.isArray(tasks)) return [];
-            if (tasks[0] && (tasks[0].content !== undefined || tasks[0].question !== undefined)) return tasks;
-
-            let bank = [];
-            const seenSourceRefs = new Set();
-            for (const task of tasks) {
-                if (!task.sourceRef || seenSourceRefs.has(task.sourceRef)) continue;
-                seenSourceRefs.add(task.sourceRef);
-                window.questionBank = [];
-                await new Promise(resolve => {
-                    const script = document.createElement('script');
-                    script.src = encodeURI(decodeURI(task.sourceRef));
-                    script.onload = () => { resolve(); script.remove(); };
-                    script.onerror = () => { resolve(); script.remove(); };
-                    document.head.appendChild(script);
-                });
-                bank = [...bank, ...(window.questionBank || [])];
-            }
-            return bank;
-        } catch (e) { return []; }
-    }
-    window.questionBank = [];
-    try {
-        await new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = encodeURI(decodeURI(dataUrl));
-            script.onload = () => { resolve(); script.remove(); };
-            script.onerror = () => { reject(); script.remove(); };
-            document.head.appendChild(script);
-        });
-        return window.questionBank || [];
-    } catch (e) { return []; }
-}
-
-async function init() {
-    const params = new URLSearchParams(window.location.search);
-    AppState.mode = params.get('mode') || 'exam';
-    AppState.title = params.get('title') || 'JS아카이브';
-    AppState.qpp = parseInt(params.get('qpp') || '4');
-
-    const dataUrl = params.get('data');
-    if (dataUrl) {
-        AppState.data = await loadData(dataUrl);
-        await render();
-    }
-}
-
-async function render() {
-    const area = document.getElementById('print-area');
-    area.innerHTML = '';
-    if (AppState.mode === 'ans') renderAns(area, AppState.data);
-    else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
-    else await renderExam(area, AppState.data);
-}
-
-async function renderExam(area, data) {
-    const circled = ['①','②','③','④','⑤'];
-    const staging = document.getElementById('staging');
-    staging.innerHTML = '';
-
-    const boxes = data.map((q, i) => {
-        const box = document.createElement('div');
-        box.className = 'q-box';
-        const isChoice = Array.isArray(q.choices) && q.choices.length > 0 
-            && q.choices[0] !== '주관식' 
-            && q.choices.some(c => String(c).trim() !== '');
-        const choicesHTML = isChoice
-            ? `<div class="choices">${q.choices.map((c,ci) => `<div>${circled[ci]||''} ${wrapLatex(String(c))}</div>`).join('')}</div>`
-            : `<div class="answer-box"></div>`;
-        box.innerHTML = `<div class="q-num">${i+1}.</div><div class="q-content">${wrapLatex(q.content)}</div>${choicesHTML}`;
-        staging.appendChild(box);
-        return box;
+    const htmlTags = [];
+    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => {
+        const token = `__HTMLTAG_${htmlTags.length}__`;
+        htmlTags.push(m);
+        return token;
     });
 
-    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]);
-    await raf();
+    s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
 
-    const perCol = Math.ceil(AppState.qpp / 2);
-    for (let i = 0; i < boxes.length; i += AppState.qpp) {
-        const chunk = boxes.slice(i, i + AppState.qpp);
-        const page = makePage(area, 'exam', Math.floor(i/AppState.qpp)+1);
-        const grid = document.createElement('div');
-        grid.className = 'grid-container';
-        const left = document.createElement('div'); left.className = 'grid-col';
-        const right = document.createElement('div'); right.className = 'grid-col';
-        grid.appendChild(left); grid.appendChild(right);
-        page.appendChild(grid);
-
-        chunk.slice(0, perCol).forEach(b => left.appendChild(b.cloneNode(true)));
-        chunk.slice(perCol).forEach(b => right.appendChild(b.cloneNode(true)));
-
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([left, right]);
-        await raf();
-
-        [...left.querySelectorAll('.q-box'), ...right.querySelectorAll('.q-box')]
-            .forEach(b => fitQuestionBox(b));
-
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([left, right]);
-        await raf();
-    }
+    return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
-async function renderSol(area, data) {
-    let pageNum = 1;
-    let page = makePage(area, 'sol', pageNum);
-    let grid = document.createElement('div');
-    grid.className = 'grid-container';
-    let left = document.createElement('div'); left.className = 'grid-col';
-    let right = document.createElement('div'); right.className = 'grid-col';
-    grid.appendChild(left); grid.appendChild(right);
-    page.appendChild(grid);
-    
-    let cols = [left, right];
-    let colIdx = 0;
-
-    for (let i = 0; i < data.length; i++) {
-        const q = data[i];
-        const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
-        const box = document.createElement('div');
-        box.className = 'q-box sol-box';
-        box.innerHTML = `
-            <div class="q-num">${i+1}.</div>
-            <div style="margin-bottom:6px;color:#666;font-size:8.5pt;">${wrapLatex(q.content)}</div>
-            <div style="background:#fdfdfd;padding:8px;border:1px solid #eee;">
-                <div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(String(q.answer??''))}</div>
-                <div style="font-size:8.5pt;line-height:1.55;">${wrapLatex(solutionText)}</div>
-            </div>`;
-
-        cols[colIdx].appendChild(box);
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]);
-        await raf();
-
-        if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
-            cols[colIdx].removeChild(box);
-            if (colIdx === 0) {
-                colIdx = 1;
-                cols[colIdx].appendChild(box);
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]);
-                await raf();
-                if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
-                    cols[colIdx].removeChild(box);
-                    pageNum++;
-                    page = makePage(area, 'sol', pageNum);
-                    grid = document.createElement('div'); grid.className = 'grid-container';
-                    left = document.createElement('div'); left.className = 'grid-col';
-                    right = document.createElement('div'); right.className = 'grid-col';
-                    grid.appendChild(left); grid.appendChild(right);
-                    page.appendChild(grid);
-                    cols = [left, right]; colIdx = 0;
-                    cols[colIdx].appendChild(box);
-                    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]);
-                    await raf();
-                }
-            } else {
-                pageNum++;
-                page = makePage(area, 'sol', pageNum);
-                grid = document.createElement('div'); grid.className = 'grid-container';
-                left = document.createElement('div'); left.className = 'grid-col';
-                right = document.createElement('div'); right.className = 'grid-col';
-                grid.appendChild(left); grid.appendChild(right);
-                page.appendChild(grid);
-                cols = [left, right]; colIdx = 0;
-                cols[colIdx].appendChild(box);
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]);
-                await raf();
-            }
-        }
-    }
-}
-
-function renderAns(area, bank) {
-    const page = makePage(area, 'ans', 1);
-    const body = document.createElement('div');
-    body.style.flex = '1';
-    page.appendChild(body);
-    const grid = document.createElement('div');
-    grid.className = 'ans-grid';
-
-    const half = Math.ceil(bank.length / 2);
-    for (let i = 0; i < half; i++) {
-        const leftAns = bank[i] ? wrapLatex(String(bank[i].answer ?? '–')) : '';
-        const leftCell = document.createElement('div');
-        leftCell.className = 'ans-cell';
-        leftCell.innerHTML = `<b style="font-size:10.5pt;min-width:28px;">${i + 1}.</b><span>${leftAns}</span>`;
-        grid.appendChild(leftCell);
-
-        const rIdx = half + i;
-        const rightAns = bank[rIdx] ? wrapLatex(String(bank[rIdx].answer ?? '–')) : '';
-        const rightCell = document.createElement('div');
-        rightCell.className = 'ans-cell';
-        rightCell.innerHTML = bank[rIdx] ? `<b style="font-size:10.5pt;min-width:28px;">${rIdx + 1}.</b><span>${rightAns}</span>` : '';
-        grid.appendChild(rightCell);
-    }
-    body.appendChild(grid);
-    if (window.MathJax?.typesetPromise) MathJax.typesetPromise([body]);
+function parseExamTitle(raw) {
+    if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
+    const p = raw.split('_');
+    return { year: p[0] ? '20' + p[0] + '년' : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
 }
 
 function fitQuestionBox(box) {
-    const fitClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
-    for (const cls of fitClasses) {
-        box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
+    const classes = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
+    for (const cls of classes) {
+        box.classList.remove('fit-tight','fit-tighter','fit-micro');
         if (cls) box.classList.add(cls);
         if (box.scrollHeight <= box.clientHeight + 1) return;
     }
+    const choices = box.querySelector('.choices');
+    if (choices) { choices.style.lineHeight = '1.2'; choices.style.marginTop = '1px'; }
 }
 
-function wrapLatex(text) {
-    return wrapLatexPreserveBlocks(text);
-}
+async function init() {
+    const p = new URLSearchParams(window.location.search);
+    AppState.mode = p.get('mode') || 'exam';
+    AppState.qpp = parseInt(p.get('qpp')) || 4;
+    const dataUrl = p.get('data');
+    if (!dataUrl) return;
 
-function wrapLatexPreserveBlocks(text) {
-    if (!text) return text;
-    let s = String(text);
-    s = s.replace(/\^\[([^\]]+)\]/g, '^{$1}').replace(/_\[([^\]]+)\]/g, '_{$1}');
-    s = s.replace(//g, '(').replace(//g, ')').replace(//g, '');
-    s = s.replace(/²/g, '^2').replace(/³/g, '^3');
-    s = s.replace(/√\s*\(([^\)]+)\)/g, '\\sqrt{$1}').replace(/√\s*([0-9a-zA-Z]+)/g, '\\sqrt{$1}');
-    s = s.replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}').replace(/frac\(([^,]+),([^)]+)\)/g, '\\frac{$1}{$2}');
-    s = s.replace(/\\frac\[([^\]]+)\]\[([^\]]+)\]/g, '\\frac{$1}{$2}').replace(/\\dot\[([^\]]+)\]/g, '\\dot{$1}');
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('btn-' + AppState.mode).classList.add('active');
 
-    if (/\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(s) || /\\multicolumn|\\cline|\\hline/.test(s)) {
-        return `$$${s}$$`;
-    }
-
-    if (/^\s*\$\$[\s\S]*\$\$\s*$/.test(s) || /^\s*\$[\s\S]*\$\s*$/.test(s)) return s;
-
-    const parts = s.split(/(<[^>]+>)/g);
-    return parts.map(p => {
-        if (!p) return '';
-        if (p.startsWith('<')) return p;
-        let t = p.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
-        const trimmed = t.trim();
-        const hasKorean = /[가-힣]/.test(trimmed);
-        const hasDollar = /\$/.test(trimmed);
-        const looksLikeMath = !hasKorean && !hasDollar && (
-            /\\[a-zA-Z]+/.test(trimmed) ||
-            (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0)
-        );
-        if (looksLikeMath && !t.includes('<br>')) return `$${trimmed}$`;
-        return t;
-    }).join('');
+    const s = document.createElement('script');
+    s.src = dataUrl + '?v=' + Date.now();
+    s.onload = () => {
+        const qb = window.questionBank;
+        AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
+        AppState.title = window.examTitle || p.get('title') || '수학 시험지';
+        document.getElementById('ctrl-title').innerText = AppState.title;
+        document.getElementById('print-area').style.display = 'flex';
+        render();
+    };
+    document.body.appendChild(s);
 }
 
 function switchMode(mode) {
@@ -557,6 +131,168 @@ function switchMode(mode) {
     window.location.href = url.toString();
 }
 
+function shuffleData() {
+    for (let i = AppState.data.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
+    }
+    render();
+}
+
+function makePage(area, type, pNum) {
+    const page = document.createElement('div');
+    page.className = 'page';
+    page.style.position = 'relative';
+    const header = document.createElement('div');
+    header.className = 'page-header';
+    if (type === 'exam') header.style.borderBottomColor = '#1d4ed8';
+    else if (type === 'sol')  header.style.borderBottomColor = '#dc2626';
+    else if (type === 'ans')  header.style.borderBottomColor = '#059669';
+
+    const t = parseExamTitle(AppState.title);
+    const leftText = [t.year, t.school, t.grade, t.semester, t.examType, t.subject].filter(Boolean).join(' | ') || AppState.title;
+    let rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : (type === 'ans') ? '[ 정답표 ]' : '이름: ____________  점수:        / 100';
+
+    header.innerHTML = `<div style="flex:1;">${leftText}</div><div style="flex-shrink:0;">${rightText}</div>`;
+    page.appendChild(header);
+
+    // [지시 반영] 하단 여백 추가
+    page.style.paddingBottom = '12mm';
+
+    const body = document.createElement('div');
+    body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
+    page.appendChild(body);
+    page.body = body;
+
+    const pageNum = document.createElement('div');
+    pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
+    pageNum.textContent = `- ${pNum} -`;
+    page.appendChild(pageNum);
+
+    area.appendChild(page);
+    return page;
+}
+
+function renderExam(area, data) {
+    let pNum = 1;
+    const circled = ['①','②','③','④','⑤'];
+    for (let i = 0; i < data.length; i += AppState.qpp) {
+        const page = makePage(area, 'exam', pNum++);
+        const grid = document.createElement('div');
+        grid.className = 'grid-container';
+        const left = document.createElement('div'); left.className = 'grid-col';
+        const right = document.createElement('div'); right.className = 'grid-col';
+        grid.appendChild(left); grid.appendChild(right);
+        page.body.appendChild(grid);
+        
+        const split = Math.ceil(AppState.qpp / 2);
+        
+        data.slice(i, i + AppState.qpp).forEach((q, idx) => {
+            const box = document.createElement('div');
+            box.className = 'q-box';
+            
+            const isChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식' && q.choices.some(c => String(c).trim() !== '');
+            const choicesHTML = isChoice
+                ? `<div class="choices">${q.choices.map((c,ci) => `<div>${circled[ci]||''} ${wrapLatex(String(c))}</div>`).join('')}</div>`
+                : `<div class="answer-box"></div>`;
+
+            box.innerHTML = `<div class="q-num">${i+idx+1}.</div><div>${wrapLatex(q.content)}</div>${choicesHTML}`;
+            
+            const targetCol = (idx < split ? left : right);
+            targetCol.appendChild(box);
+            fitQuestionBox(box);
+        });
+    }
+}
+
+function renderSol(area, data) {
+    let pNum = 1;
+    for (let i = 0; i < data.length; i += AppState.qpp) {
+        const page = makePage(area, 'sol', pNum++);
+        const grid = document.createElement('div');
+        grid.className = 'grid-container';
+        const left = document.createElement('div'); left.className = 'grid-col';
+        const right = document.createElement('div'); right.className = 'grid-col';
+        grid.appendChild(left); grid.appendChild(right);
+        page.body.appendChild(grid);
+
+        let colIdx = 0;
+        const cols = [left, right];
+        
+        data.slice(i, i + AppState.qpp).forEach((q, idx) => {
+            const box = document.createElement('div');
+            box.className = 'q-box sol-box';
+            const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
+            // [지시 반영] 정답 null 처리
+            box.innerHTML = `
+                <div class="q-num">${i + idx + 1}.</div>
+                <div style="margin-bottom:10px; color:#666;">${wrapLatex(q.content)}</div>
+                <div style="background:#fdfdfd; padding:10px; border:1px solid #eee;">
+                    <div style="font-weight:bold; color:red; margin-bottom:5px;">[정답] ${wrapLatex(q.answer ?? '–')}</div>
+                    <div style="font-size:9pt; line-height:1.6;">${wrapLatex(solutionText)}</div>
+                </div>`;
+            
+            cols[colIdx].appendChild(box);
+            if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 1) {
+                if (colIdx === 0) {
+                    cols[colIdx].removeChild(box);
+                    colIdx = 1;
+                    cols[colIdx].appendChild(box);
+                }
+            }
+        });
+    }
+}
+
+function renderAns(area, data) {
+    const PER_PAGE = 50;
+    let pCount = 1;
+    for (let start = 0; start < data.length; start += PER_PAGE) {
+        const chunk = data.slice(start, start + PER_PAGE);
+        const p = makePage(area, 'ans', pCount++);
+        const grid = document.createElement('div');
+        grid.className = 'ans-grid';
+        const splitIndex = Math.ceil(chunk.length / 2);
+        const orderedItems = [];
+        for (let i = 0; i < splitIndex; i++) {
+            orderedItems.push({ q: chunk[i], qNum: start + i + 1 });
+            if (chunk[splitIndex + i]) {
+                orderedItems.push({ q: chunk[splitIndex + i], qNum: start + splitIndex + i + 1 });
+            }
+        }
+        orderedItems.forEach(({ q, qNum }) => {
+            const unit = document.createElement('div');
+            unit.className = 'ans-cell';
+            unit.innerHTML = `<div class="ans-n">${qNum}.</div><div class="ans-v">${wrapLatex(q.answer ?? '–')}</div>`;
+            grid.appendChild(unit);
+        });
+        p.body.appendChild(grid);
+        if (start + PER_PAGE >= data.length) {
+            const solUrl = new URL(window.location.href);
+            solUrl.searchParams.set('mode', 'sol');
+            const qrDiv = document.createElement('div');
+            qrDiv.style.cssText = 'margin-top:auto; padding:20px 0; text-align:center; font-size:8pt; color:#555;';
+            qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}" style="width:80px;height:80px;" alt="해설 QR"><div style="margin-top:4px; font-weight:bold;">📱 스마트 해설지 바로가기</div>`;
+            p.body.appendChild(qrDiv);
+        }
+    }
+}
+
+function render() {
+    const area = document.getElementById('print-area');
+    area.innerHTML = '';
+    area.style.display = 'flex';
+    
+    if (AppState.mode === 'ans') renderAns(area, AppState.data);
+    else if (AppState.mode === 'sol') renderSol(area, AppState.data);
+    else renderExam(area, AppState.data);
+    
+    // [지시 반영] MathJax 재조판 안전화
+    if (window.MathJax && MathJax.typesetPromise) {
+        if (MathJax.typesetClear) MathJax.typesetClear([area]);
+        MathJax.typesetPromise([area]);
+    }
+}
 window.onload = init;
 </script>
 </body>
