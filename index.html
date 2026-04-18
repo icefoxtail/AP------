@@ -178,6 +178,7 @@
         .card-body { padding: 16px; flex: 1; }
         .card-grade-label { font-size: 10px; font-weight: 800; color: #94a3b8; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
         .card-main-title { font-size: 15px; font-weight: 800; line-height: 1.4; margin-bottom: 11px; color: #1e293b; letter-spacing: -0.3px; word-break: keep-all; overflow-wrap: break-word; }
+        .card-filename { font-size: 9.5px; color: #b0b8c9; font-family: 'Pretendard', monospace; margin-top: 5px; word-break: break-all; letter-spacing: -0.2px; }
 
         .badge-row { display: flex; gap: 5px; flex-wrap: wrap; }
         .badge { font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 4px; }
@@ -655,7 +656,8 @@ function buildCard(ex) {
         ex._displaySchool = displaySchool;
 
         const typeText = ex.examType === 'mid' ? '중간' : ex.examType === 'final' ? '기말' : '';
-        titleHTML = `${displaySchool}<br>${ex.semester ? ex.semester + '학기 ' : ''}${typeText}`;
+        const yearLabel = ex.year ? `${ex.year > 100 ? ex.year : 2000 + Number(ex.year)}년 ` : '';
+        titleHTML = `${displaySchool}<br>${yearLabel}${ex.semester ? ex.semester + '학기 ' : ''}${typeText}`;
         badgesHTML = `<span class="badge blue">엔진기출</span>
                       ${ex.subject ? `<span class="badge gray">${ex.subject}</span>` : ''}`;
         actionsHTML = `
@@ -670,6 +672,7 @@ function buildCard(ex) {
             <div class="card-grade-label">${gradeLabel}</div>
             <div class="card-main-title">${titleHTML}</div>
             <div class="badge-row">${badgesHTML}</div>
+            ${(isArchive ? (ex.url || ex.fileName || '') : (ex.file || '')).replace(/^exams\//, '').replace(/\.js$/i, '') ? `<div class="card-filename">${(isArchive ? (ex.url || ex.fileName || '') : (ex.file || '')).replace(/^.*\//, '').replace(/\.js$/i, '').replace(/\.pdf$/i, '')}</div>` : ''}
         </div>
         <div class="card-actions">${actionsHTML}</div>`;
 

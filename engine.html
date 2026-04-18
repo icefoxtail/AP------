@@ -639,35 +639,17 @@ function buildSolHeader(q, i) {
     `;
 }
 
-
-function normalizeSolutionMathEnglish(text) {
-    if (!text) return text;
-    let s = String(text);
-
-    s = s.replace(/\btherefore\b/gi, '\\therefore');
-    s = s.replace(/\bhence\b/gi, '\\therefore');
-    s = s.replace(/\bthus\b/gi, '\\therefore');
-    s = s.replace(/\bbecause\b/gi, '\\because');
-    s = s.replace(/\bimplies\b/gi, '\\implies');
-    s = s.replace(/\biff\b/gi, '\\iff');
-
-    s = s.replace(/\s*=>\s*/g, ' \\implies ');
-    s = s.replace(/\s*->\s*/g, ' \\to ');
-
-    return s;
-}
-
 function buildSolFragments(q) {
     if (q.solution_steps?.length) {
         return q.solution_steps.map((s, si) => `
             <div class="sol-frag">
-                <div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatexPreserveBlocks(stripCite(s))}</div>
+                <div class="sol-step"><b>[${si + 1}단계]</b> ${wrapLatexPreserveBlocks(normalizeMathEnglishInSolution(stripCite(s)))}</div>
             </div>
         `);
     }
 
     if (q.solution) {
-        const raw = normalizeSolutionMathEnglish(stripCite(q.solution));
+        const raw = normalizeMathEnglishInSolution(stripCite(q.solution));
 
         const hasStructuredMath =
             /\\begin\{(array|aligned|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|cases)\}/.test(raw) ||
@@ -828,6 +810,52 @@ function makePage(area, type) {
     return { page, cols: [left, right] };
 }
 
+
+function normalizeMathEnglishInSolution(text) {
+    if (!text) return text;
+    let s = String(text);
+
+    const rules = [
+        [/\bif\s+and\s+only\s+if\b/gi, '\\iff'],
+        [/\biff\b/gi, '\\iff'],
+        // ※ \b(word boundary) 제거: OCR로 'ximplies', 'impliesa' 등 붙어나오는 케이스 처리
+        // (?<!\\) negative lookbehind: \implies 처럼 이미 LaTeX인 경우는 건드리지 않음
+        [/(?<!\\)therefore/gi, ' \\therefore '],
+        [/(?<!\\)hence/gi, ' \\therefore '],
+        [/(?<!\\)thus/gi, ' \\therefore '],
+        [/(?<!\\)because/gi, ' \\because '],
+        [/(?<!\\)implies/gi, ' \\implies '],
+        [/(?<!\\)imply/gi, ' \\implies '],
+        [/=>/g, '\\implies'],
+        [/==>/g, '\\implies'],
+        [/-->/g, '\\to'],
+        [/->/g, '\\to'],
+        [/\bto\b(?=\s*[0-9a-zA-Z가-힣(\\])/g, '\\to'],
+        [/\bfor\s+all\b/gi, '\\forall'],
+        [/\bexists\b/gi, '\\exists'],
+        [/\bnot\s+equal\s+to\b/gi, '\\ne'],
+        [/\bgreater\s+than\s+or\s+equal\s+to\b/gi, '\\ge'],
+        [/\bless\s+than\s+or\s+equal\s+to\b/gi, '\\le'],
+        [/\bapproximately\b/gi, '\\approx'],
+        [/\binfinity\b/gi, '\\infty'],
+        [/\bparallel\b/gi, '\\parallel'],
+        [/\bperpendicular\b/gi, '\\perp'],
+        [/\bangle\b/gi, '\\angle'],
+        [/\btriangle\b/gi, '\\triangle']
+    ];
+
+    rules.forEach(([pattern, repl]) => {
+        s = s.replace(pattern, repl);
+    });
+
+    s = s.replace(/(^|\s)so(?=\s|$)/gi, '$1\\therefore');
+
+    s = s.replace(/\b(and|or)\b/gi, (m) => m.toLowerCase() === 'and' ? '\\text{ 그리고 }' : '\\text{ 또는 }');
+
+    s = s.replace(/\s{2,}/g, ' ').trim();
+    return s;
+}
+
 function wrapLatex(text) {
     return wrapLatexPreserveBlocks(text);
 }
@@ -868,7 +896,16 @@ function wrapLatexPreserveBlocks(text) {
                 (/^[0-9a-zA-Z\s\+\-\*\/\=\^\_\{\}\(\)\[\]\.,:;|\\]+$/.test(trimmed) && trimmed.length > 0)
             );
 
-        if (looksLikeMath && !t.includes('<br>')) return `$${trimmed}$`;
+        if (looksLikeMath && !t.includes('<br>')) {
+            // < 와 > 를 \lt / \gt 로 변환 (innerHTML에서 HTML 태그로 파싱되는 버그 방지)
+            const math = trimmed.replace(/</g, '\\lt ').replace(/>/g, '\\gt ');
+            return `$${math}$`;
+        }
+        // $...$밖에 있는 \{...\} 집합 표기만 자동 래핑 ($...$안에 있는 건 건드리지 않음)
+        t = t.split(/(\$[^$\n]*\$)/g).map((seg, idx) => {
+            if (idx % 2 === 1) return seg; // $...$ 안쪽은 그대로
+            return seg.replace(/(\\\{(?:[^${}]|\{[^}]*\})*\\\})/g, '$$$1$$');
+        }).join('');
         return t;
     }).join('');
 }
