@@ -21,7 +21,19 @@
         .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
         .mode-tab.active { background: white; color: #0f172a; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
-        .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
+        
+        .page { 
+            width: 210mm; 
+            height: 297mm; 
+            background: white; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            padding: 15mm; 
+            padding-bottom: 20mm; 
+            box-sizing: border-box; 
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+        }
         .page-header { display: flex; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
         
         .grid-container { flex: 1; display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
@@ -65,14 +77,22 @@
 <script>
 const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 
+// [지시 반영] wrapLatex 전체 교체 (고도화 버전)
 function wrapLatex(text) {
-    if (text == null) return "";
+    if (text == null) return '';
     let s = String(text);
 
-    s = s.replace(/\\\([\s\S]+?\\\)/g, m => m.replace(/^\\\(/, '$').replace(/\\\)$/, '$'));
-    s = s.replace(/\\\[[\s\S]+?\\\]/g, m => m.replace(/^\\\[/, '$$').replace(/\\\]$/, '$$'));
-    s = s.replace(/(?<!\\)because/gi, '\\because');
+    // 1. \(...\) → $...$  /  \[...\] → $$...$$
+    s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
+    s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
 
+    // 2. []_xC_y, []_xH_y, []_xP_y (조합/중복조합/순열)
+    const comb = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
+    s = s.replace(/\[\]_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))C_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))/g, comb('C'));
+    s = s.replace(/\[\]_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))H_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))/g, comb('H'));
+    s = s.replace(/\[\]_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))P_(?:\{([^}]+)\}|([a-zA-Z0-9+\-]+))/g, comb('P'));
+
+    // 3. SVG/img 보호 (토큰화)
     const htmlTags = [];
     s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`;
@@ -80,8 +100,31 @@ function wrapLatex(text) {
         return token;
     });
 
+    // 4. < > escape (부등호 HTML 태그 오인 방지, $...$ 밖에서만)
+    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$)/g).map((seg, idx) => {
+        if (idx % 2 === 1) return seg; // $...$ 안은 건드리지 않음
+        return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }).join('');
+
+    // 5. $...$ 밖에 있는 \command{} 패턴 자동 감싸기
+    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+\$|__HTMLTAG_\d+__)/g).map((seg, idx) => {
+        if (idx % 2 === 1) return seg;
+        if (!seg.trim()) return seg;
+        const hasKorean = /[가-힣]/.test(seg);
+        const hasLatex = /\\[a-zA-Z]/.test(seg);
+        if (!hasKorean && hasLatex) {
+            const trimmed = seg.trim();
+            if (/^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\]+$/.test(trimmed) && trimmed.length > 0) {
+                return `$${trimmed}$`;
+            }
+        }
+        return seg;
+    }).join('');
+
+    // 6. 줄바꿈 처리 (\n → <br>, 실제 개행 → <br>, \notin 등 LaTeX 명령 보호)
     s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
 
+    // 7. 토큰 복원
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
@@ -91,6 +134,7 @@ function parseExamTitle(raw) {
     return { year: p[0] ? '20' + p[0] + '년' : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
 }
 
+// [성역] fitQuestionBox
 function fitQuestionBox(box) {
     const classes = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
     for (const cls of classes) {
@@ -139,6 +183,7 @@ function shuffleData() {
     render();
 }
 
+// [성역] makePage
 function makePage(area, type, pNum) {
     const page = document.createElement('div');
     page.className = 'page';
@@ -156,9 +201,6 @@ function makePage(area, type, pNum) {
     header.innerHTML = `<div style="flex:1;">${leftText}</div><div style="flex-shrink:0;">${rightText}</div>`;
     page.appendChild(header);
 
-    // [지시 반영] 하단 여백 추가
-    page.style.paddingBottom = '12mm';
-
     const body = document.createElement('div');
     body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
     page.appendChild(body);
@@ -173,6 +215,7 @@ function makePage(area, type, pNum) {
     return page;
 }
 
+// [성역] renderExam
 function renderExam(area, data) {
     let pNum = 1;
     const circled = ['①','②','③','④','⑤'];
@@ -205,8 +248,10 @@ function renderExam(area, data) {
     }
 }
 
+// [성역] renderSol
 function renderSol(area, data) {
     let pNum = 1;
+    const split = Math.ceil(AppState.qpp / 2);
     for (let i = 0; i < data.length; i += AppState.qpp) {
         const page = makePage(area, 'sol', pNum++);
         const grid = document.createElement('div');
@@ -216,14 +261,10 @@ function renderSol(area, data) {
         grid.appendChild(left); grid.appendChild(right);
         page.body.appendChild(grid);
 
-        let colIdx = 0;
-        const cols = [left, right];
-        
         data.slice(i, i + AppState.qpp).forEach((q, idx) => {
             const box = document.createElement('div');
             box.className = 'q-box sol-box';
             const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
-            // [지시 반영] 정답 null 처리
             box.innerHTML = `
                 <div class="q-num">${i + idx + 1}.</div>
                 <div style="margin-bottom:10px; color:#666;">${wrapLatex(q.content)}</div>
@@ -232,18 +273,13 @@ function renderSol(area, data) {
                     <div style="font-size:9pt; line-height:1.6;">${wrapLatex(solutionText)}</div>
                 </div>`;
             
-            cols[colIdx].appendChild(box);
-            if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 1) {
-                if (colIdx === 0) {
-                    cols[colIdx].removeChild(box);
-                    colIdx = 1;
-                    cols[colIdx].appendChild(box);
-                }
-            }
+            const targetCol = (idx < split ? left : right);
+            targetCol.appendChild(box);
         });
     }
 }
 
+// [성역] renderAns
 function renderAns(area, data) {
     const PER_PAGE = 50;
     let pCount = 1;
@@ -278,6 +314,7 @@ function renderAns(area, data) {
     }
 }
 
+// [성역] render (MathJax 호출 포함)
 function render() {
     const area = document.getElementById('print-area');
     area.innerHTML = '';
@@ -287,7 +324,6 @@ function render() {
     else if (AppState.mode === 'sol') renderSol(area, AppState.data);
     else renderExam(area, AppState.data);
     
-    // [지시 반영] MathJax 재조판 안전화
     if (window.MathJax && MathJax.typesetPromise) {
         if (MathJax.typesetClear) MathJax.typesetClear([area]);
         MathJax.typesetPromise([area]);
