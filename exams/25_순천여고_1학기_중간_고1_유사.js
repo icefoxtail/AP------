@@ -474,7 +474,7 @@ window.questionBank = [
       "⑤ $(x+2)(x-\\\\frac{5+\\\\sqrt{11}i}{2})(x-\\\\frac{5-\\\\sqrt{11}i}{2})$"
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D=0$ 및 항등식 성질 활용<br>\\\\\\(\\\\because \\\\frac{D}{4} = (k-2)^{2}-(k^{2}-4k+b-5) = 0\\\\\\)<br>\\\\\\(\\\\implies k^{2}-4k+4-k^{2}+4k-b+5 = 9-b = 0 \\\\implies b=9\\\\\\)<br>\\\\\\(\\\\because a$ 는 문제 조건상 $4$ 로 주어짐 (항등식 계수 비교)\\\\\\\\\\)<br>\\\\\\(\\\\implies x^{3}-4x^{2}+4x+9 = (x+1)(x^{2}-5x+9)\\\\\\\\\\)<br>\\\\\\(\\\\therefore (x+1)(x-\\\\frac{5+\\\\sqrt{11}i}{2})(x-\\\\frac{5-\\\\sqrt{11}i}{2})\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D=0$ 및 항등식 성질 활용<br>$\because \frac{D}{4}=(k-2)^{2}-(k^{2}-4k+b-5)=0$<br>$\implies 9-b=0 \implies b=9$<br>$\because a=4$ 이므로 $x^{3}-4x^{2}+4x+9=(x+1)(x^{2}-5x+9)$<br>$\therefore (x+1)\left(x-\frac{5+\sqrt{11}i}{2}\right)\left(x-\frac{5-\sqrt{11}i}{2}\right)$"
   },
   {
     "id": 20,

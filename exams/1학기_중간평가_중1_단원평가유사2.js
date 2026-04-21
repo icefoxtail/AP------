@@ -1,4 +1,4 @@
-window.examTitle = "26_AP중1_1학기_중간_중간평가유사2";
+window.examTitle = "1학기_중간평가_중1_단원평가유사2";
 
 window.questionBank = [
   {

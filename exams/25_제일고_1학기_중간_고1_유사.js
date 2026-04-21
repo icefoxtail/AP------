@@ -44,7 +44,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
-    "content": "조립제법을 이용하여 다항식 $x^{3}-2x^{2}+x+2$을 $x-1$로 나누었을 때의 몫과 나머지를 구하는 과정이 다음과 같다. $a+b$의 값은? [4.2점]\\n<div class='box'>\\n$\\begin{array}{r|rrrr} 1 & 1 & -2 & 1 & 2 \\\\ \\multicolumn{2}{r}{} & 1 & a & 0 \\\\ \\cline{2-5} \\multicolumn{2}{r}{} & 1 & -1 & b & \\underline{| \\ 2} \\end{array}\\n</div>",
+    "content": "조립제법을 이용하여 다항식 $x^{3}-2x^{2}+x+2$을 $x-1$로 나누었을 때의 몫과 나머지를 구하는 과정이 다음과 같다. $a+b$의 값은? [4.2점]\\n<div class='box'>\\n$\\begin{array}{r|rrrr} 1 & 1 & -2 & 1 & 2 \\\\ \\multicolumn{2}{r}{} & 1 & a & 0 \\\\ \\cline{2-5} \\multicolumn{2}{r}{} & 1 & -1 & b & \\underline{| \\ 2} \\end{array}$\\n</div>",
     "choices": [],
     "answer": "-1",
     "solution": "조립제법 연산 원리 적용\\n$a=1 \\times (-1)=-1$\\n$b=1+a=1+(-1)=0$\\n$\\therefore a+b=-1+0=-1$"

@@ -351,7 +351,7 @@ window.questionBank = [
     "standardUnitKey": "RAW-삼각형의외심",
     "standardUnit": "삼각형의 외심",
     "standardUnitOrder": 999,
-    "solution": "1단계: 삼각형의 외심에서 세 꼭짓점에 이르는 거리는 같으므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다. [cite: 2026-04-09]\n2단계: 외심의 성질에 의해 $\\angle OAB + \\angle OBC + $\\angle OCA = 90^\\circ$가 성립한다. [cite: 2026-04-09]\n3단계: $30^\\circ + \\angle OBC + 40^\\circ = 90^\\circ$에서 $\\angle OBC = 20^\\circ$이다. [cite: 2026-04-09]",
+    "solution": "1단계: 삼각형의 외심에서 세 꼭짓점에 이르는 거리는 같으므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다. [cite: 2026-04-09]\n2단계: 외심의 성질에 의해 $\\angle OAB + \\angle OBC + \\angle OCA = 90^\\circ$가 성립한다. [cite: 2026-04-09]\n3단계: $30^\\circ + \\angle OBC + 40^\\circ = 90^\\circ$에서 $\\angle OBC = 20^\\circ$이다. [cite: 2026-04-09]",
     "level": "중"
   },
   {

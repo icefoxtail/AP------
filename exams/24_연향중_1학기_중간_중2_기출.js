@@ -297,7 +297,7 @@ window.questionBank = [
     "standardUnitKey": "RAW-부등식의성질",
     "standardUnit": "부등식의 성질",
     "standardUnitOrder": 999,
-    "solution": "<b>[키포인트]</b> 부등식의 양변에 음수를 곱하거나 나눌 때만 부등호의 방향이 바뀜을 이용함.\\n① $a+5 < b+5 \\implies a < b$ (방향 유지)\\n② $2a-1 < 2b-1 \\implies 2a < 2b \\implies a < b$ (방향 유지)\\n③ $3-a+\\frac{1}{5} < 3-b+\\frac{1}{5} \\implies -a < -b \\implies a > b$ (방향 반대)\\n④ \\frac{a}{4}-1 < \\frac{b}{4}-1 \\implies \\frac{a}{4} < \\frac{b}{4} \\implies a < b$ (방향 유지)\\n⑤ $a \\div (-7) > b \\div (-7) \\implies -\\frac{a}{7} > -\\frac{b}{7} \\implies a < b$ (방향 반대 $\\rightarrow$ 원래 부등호는 $a < b$ 임을 도출)\\n$\\therefore$ ③",
+    "solution": "<b>[키포인트]</b> 부등식의 양변에 음수를 곱하거나 나눌 때만 부등호의 방향이 바뀜을 이용함.\\n① $a+5 < b+5 \\implies a < b$ (방향 유지)\\n② $2a-1 < 2b-1 \\implies 2a < 2b \\implies a < b$ (방향 유지)\\n③ $3-a+\\frac{1}{5} < 3-b+\\frac{1}{5} \\implies -a < -b \\implies a > b$ (방향 반대)\\n④ $\\frac{a}{4}-1 < \\frac{b}{4}-1 \\implies \\frac{a}{4} < \\frac{b}{4} \\implies a < b$ (방향 유지)\\n⑤ $a \\div (-7) > b \\div (-7) \\implies -\\frac{a}{7} > -\\frac{b}{7} \\implies a < b$ (방향 반대 $\\rightarrow$ 원래 부등호는 $a < b$ 임을 도출)\\n$\\therefore$ ③",
     "level": "중"
   },
   {

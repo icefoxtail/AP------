@@ -1,4 +1,4 @@
-window.examTitle = "26_AP중1_1학기_중간_중간평가유사1";
+window.examTitle = "1학기_중간평가_중1_단원평가유사1";
 
 window.questionBank = [
   {
@@ -39,7 +39,7 @@ window.questionBank = [
       "20"
     ],
     "answer": "③",
-    "solution": "$2^4$는 2를 4번 곱한 수이므로 $a=2$, $b=4$이다.\n또한 $2^4=16$ 이므로 $c=16$이다.\n\\therefore a+b+c=2+4+16=22$\n따라서 정답은 3번이다."
+    "solution": "$2^4$는 2를 4번 곱한 수이므로 $a=2$, $b=4$이다.\n또한 $2^4=16$ 이므로 $c=16$이다.\n\$\therefore a+b+c=2+4+16=22$\n따라서 정답은 3번이다."
   },
   {
     "id": 3,

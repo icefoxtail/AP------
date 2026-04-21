@@ -176,7 +176,7 @@ window.questionBank = [
       "\\sqrt{340}=58.31",
       "\\sqrt{0.34}=58.31",
       "\\sqrt{0.034}=0.5831",
-      "\\sqrt{0.0034}=0.05831$"
+      "$\\sqrt{0.0034}=0.05831$"
     ],
     "answer": "5",
     "solution": "⑤ $\\sqrt{0.0034} = \\frac{\\sqrt{34}}{100} = 0.05831$"
@@ -259,7 +259,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "2",
-    "solution": "$k = \\frac{3}{5}, a=5 \\implies \\therefore 2"
+    "solution": "$k = \\frac{3}{5},\\ a=5 \\therefore k=\\frac{3}{5}$"
   },
   {
     "id": 14,
@@ -298,7 +298,7 @@ window.questionBank = [
 },
 
   {
-    "id": 15,
+    "id": 16,
     "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
@@ -319,7 +319,7 @@ window.questionBank = [
   },
  
   {
-    "id": 16,
+    "id": 17,
     "level": "[상]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -339,7 +339,7 @@ window.questionBank = [
     "solution": "$a = \\frac{5}{2}, b = -\\frac{3}{2} \\implies a^2-b^2 = 6.25 - 2.25 = 4$."
   },
   {
-    "id": 17,
+    "id": 18,
     "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
@@ -359,7 +359,7 @@ window.questionBank = [
     "solution": "$4x^2+8x-5+k = (2x+2)^2 \\implies k=9$."
   },
   {
-    "id": 18,
+    "id": 19,
     "level": "[상]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -379,7 +379,7 @@ window.questionBank = [
     "solution": "ㄱ, ㄴ, ㄷ 모두 참임."
   },
   {
-    "id": 19,
+    "id": 20,
     "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -393,7 +393,7 @@ window.questionBank = [
     "choices": []
   },
   {
-    "id": 20,
+    "id": 21,
     "level": "[상]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -407,7 +407,7 @@ window.questionBank = [
     "choices": []
   },
   {
-    "id": 21,
+    "id": 22,
     "level": "[중]",
     "category": "인수분해",
     "originalCategory": "인수분해",
@@ -421,7 +421,7 @@ window.questionBank = [
     "choices": []
   },
   {
-    "id": 22,
+    "id": 23,
     "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -435,7 +435,7 @@ window.questionBank = [
     "choices": []
   },
   {
-    "id": 23,
+    "id": 24,
     "level": "[중]",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
