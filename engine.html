@@ -183,6 +183,16 @@ async function shuffleData() {
 }
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
 
+function extractChoice(c) {
+    if (c === null || c === undefined) return '';
+    if (typeof c === 'object') return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
+    return String(c);
+}
+
+function stripChoicePrefix(text) {
+    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '').trim();
+}
+
 /**
  * [Stage E v1.6.2] renderExam - Normal Block Page-Unit Policy Applied
  */
@@ -194,8 +204,8 @@ async function renderExam(area, data) {
     // Phase 1: 프록시 측정
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box';
-        const isChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식' && q.choices.some(c => String(c).trim() !== '');
-        const choicesHTML = isChoice ? `<div class="choices">${q.choices.map((c, ci) => `<div>${circled[ci] || ''} ${wrapLatex(String(c))}</div>`).join('')}</div>` : `<div class="answer-box"></div>`;
+        const isChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식' && q.choices.some(c => extractChoice(c).trim() !== '');
+        const choicesHTML = isChoice ? `<div class="choices">${q.choices.map((c, ci) => `<div>${circled[ci] || ''} ${wrapLatex(stripChoicePrefix(extractChoice(c)))}</div>`).join('')}</div>` : `<div class="answer-box"></div>`;
         box.innerHTML = `<div class="q-num">${i + 1}.</div><div>${wrapLatex(q.content)}</div>${choicesHTML}`;
         staging.appendChild(box); return { q, box, originalIndex: i };
     });
