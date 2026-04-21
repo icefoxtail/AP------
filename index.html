@@ -68,7 +68,25 @@
         .card-sub-title { font-size: 12px; font-weight: 600; color: var(--text-sub); display: block; margin-top: 4px; line-height: 1.4; }
         .exam-card.is-active .card-sub-title { color: var(--text-active-sub); }
 
-        .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .card-file-name {
+            display: block;
+            margin-top: 10px;
+            font-size: 11px;
+            line-height: 1.45;
+            color: var(--text-sub);
+            word-break: break-all;
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .exam-card.is-active .card-file-name {
+            color: var(--text-active-sub);
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.14);
+        }
+
+        .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
         .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: var(--badge-bg); color: var(--badge-text); }
         .exam-card.is-active .badge { background: rgba(255,255,255,0.15); color: white; }
 
@@ -387,7 +405,6 @@ function renderFeatured() {
         return;
     }
 
-    // 대표 기출이 하나도 없으면 blank 금지: 전체 최신 자료 fallback
     const fallbackItems = sortExams(all).slice(0, 8);
 
     const block = document.createElement('div');
@@ -463,10 +480,10 @@ function buildCard(ex) {
     if ((ex.contentType || '기출') === '기출') {
         line1 = ex.school || ex.topic || fileName;
         line2 = (ex.subject ? ex.subject + ' ' : '') + info;
-        if (!line2.trim()) line2 = fileName;
+        if (!line2.trim()) line2 = info || '상세 정보 없음';
     } else {
         line1 = ex.topic || ex.school || fileName;
-        line2 = ex.subject || info || fileName;
+        line2 = ex.subject || info || '상세 정보 없음';
     }
 
     if (line1 === line2) line2 = info || '상세 정보 없음';
@@ -483,6 +500,7 @@ function buildCard(ex) {
                 ${line1}
                 <span class="card-sub-title">${line2}</span>
             </div>
+            <div class="card-file-name">${fileName}</div>
             <div class="badge-row">
                 <span class="badge">${ex.contentType || '기출'}</span>
                 ${subjectBadge}
