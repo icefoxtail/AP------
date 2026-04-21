@@ -14,6 +14,7 @@
             --card-border-hover: #93c5fd; --card-border-active: #3b82f6; --text-main: #0f172a;
             --text-sub: #64748b; --text-active-main: #ffffff; --text-active-sub: #dbeafe;
             --badge-bg: #dbeafe; --badge-text: #1e40af; --action-hover-bg: #eff6ff; --action-hover-text: #1d4ed8;
+            --warn-bg: #fff7ed; --warn-border: #fed7aa; --warn-text: #9a3412;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Pretendard', sans-serif; background: var(--bg-soft); color: #1e293b; overflow-x: hidden; }
@@ -76,6 +77,18 @@
         .action-btn { flex: 1; padding: 12px 0; text-align: center; font-size: 12px; font-weight: 800; color: var(--text-sub); transition: 0.15s; }
         .action-btn:hover { background: var(--action-hover-bg); color: var(--action-hover-text); }
         .exam-card.is-active .action-btn { color: var(--text-active-sub); }
+
+        .empty-state {
+            max-width: 1152px;
+            margin: 32px auto 0;
+            padding: 18px 20px;
+            border: 1px solid var(--warn-border);
+            background: var(--warn-bg);
+            color: var(--warn-text);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
 
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 2000; align-items: center; justify-content: center; }
         .modal-overlay.open { display: flex; }
@@ -152,6 +165,7 @@
 
 <div class="content-wrap">
     <div id="featured-section"></div>
+
     <div id="full-section" style="display:none; padding:48px 24px;">
         <div style="max-width:1152px; margin:0 auto;">
             <div style="display:flex; justify-content:space-between; margin-bottom:24px; align-items:center;">
@@ -176,8 +190,8 @@ function normalizeContentType(value) {
     const compact = compactText(raw);
 
     if (!compact) return '';
-    if (compact.includes('기출')) return '기출';
     if (compact.includes('단원평가')) return '단원평가';
+    if (compact.includes('기출')) return '기출';
     if (compact.includes('유형')) return '유형';
     if (compact.includes('쪽지')) return '쪽지';
 
@@ -199,34 +213,30 @@ function normalizeGrade(value) {
 
 function normalizeSemester(value) {
     const compact = compactText(value);
-
     if (!compact) return '';
     if (compact === '1' || compact === '1학기') return '1';
     if (compact === '2' || compact === '2학기') return '2';
-
     return String(value || '').trim();
 }
 
 function normalizeExamType(value) {
     const compact = compactText(value).toLowerCase();
-
     if (!compact) return '';
     if (compact === 'mid' || compact === 'middle' || compact === '중간' || compact === '중간고사') return 'mid';
     if (compact === 'final' || compact === '기말' || compact === '기말고사') return 'final';
-
     return String(value || '').trim();
 }
 
 function normalizeYear(value) {
-    const n = parseInt(String(value || '').replace(/[^\d]/g, ''), 10);
-    if (!Number.isFinite(n)) return '';
-    if (n < 100) return n;
-    return n;
+    if (value === '' || value == null) return '';
+    const s = String(value).replace(/[^\d]/g, '');
+    if (!s) return '';
+    const n = parseInt(s, 10);
+    return Number.isFinite(n) ? n : '';
 }
 
 function normalizeExamMeta(ex) {
     const normalized = { ...(ex || {}) };
-
     normalized.file = String(ex?.file || '').trim();
     normalized.school = String(ex?.school || '').trim();
     normalized.topic = String(ex?.topic || '').trim();
@@ -236,12 +246,11 @@ function normalizeExamMeta(ex) {
     normalized.semester = normalizeSemester(ex?.semester);
     normalized.examType = normalizeExamType(ex?.examType);
     normalized.contentType = normalizeContentType(ex?.contentType);
-
     return normalized;
 }
 
 function normalizedExams() {
-    return Array.isArray(engineDB.exams) ? engineDB.exams.map(normalizeExamMeta) : [];
+    return Array.isArray(engineDB.exams) ? engineDB.exams.map(normalizeExamMeta).filter(e => e.file) : [];
 }
 
 function examTypeLabel(examType) {
@@ -299,6 +308,26 @@ function initGradeBar() {
     });
 }
 
+function sortExams(list) {
+    const gradeOrder = { "고3":0, "고2":1, "고1":2, "중3":3, "중2":4, "중1":5 };
+
+    return [...list].sort((a, b) => {
+        const yA = parseInt(a.year) || 0;
+        const yB = parseInt(b.year) || 0;
+        if (yB !== yA) return yB - yA;
+
+        const gA = gradeOrder[a.grade] ?? 99;
+        const gB = gradeOrder[b.grade] ?? 99;
+        if (gA !== gB) return gA - gB;
+
+        const sA = a.school || '';
+        const sB = b.school || '';
+        if (sA !== sB) return sA.localeCompare(sB);
+
+        return (a.file || '').localeCompare(b.file || '');
+    });
+}
+
 function onFilterChange() {
     const keyword = document.getElementById('searchInput').value.trim();
     const year = document.getElementById('yearFilter').value;
@@ -315,48 +344,64 @@ function onFilterChange() {
     }
 }
 
+function showEmptyState(message) {
+    const section = document.getElementById('featured-section');
+    section.innerHTML = `<div class="empty-state">${message}</div>`;
+}
+
 function renderFeatured() {
     const section = document.getElementById('featured-section');
     section.innerHTML = '';
 
     const all = normalizedExams();
+    if (!all.length) {
+        showEmptyState('db.js를 불러오지 못했거나 등록된 자료가 없습니다.');
+        return;
+    }
+
     const featuredGrades = ['고2', '고1', '중3', '중2', '중1'];
 
     const latestByGrade = featuredGrades
         .map(grade => {
-            const items = all
-                .filter(e => e.grade === grade && e.contentType === '기출')
-                .sort((a, b) => {
-                    const yA = parseInt(a.year) || 0;
-                    const yB = parseInt(b.year) || 0;
-                    if (yB !== yA) return yB - yA;
-
-                    const sA = a.school || '';
-                    const sB = b.school || '';
-                    if (sA !== sB) return sA.localeCompare(sB);
-
-                    return (a.file || '').localeCompare(b.file || '');
-                });
-
+            const items = sortExams(
+                all.filter(e => e.grade === grade && e.contentType === '기출')
+            );
             return items[0] || null;
         })
         .filter(Boolean);
 
-    if (!latestByGrade.length) return;
+    if (latestByGrade.length) {
+        const block = document.createElement('div');
+        block.className = 'sec-block dark';
+        block.innerHTML = `
+            <div class="sec-header">
+                <span class="sec-title">학년별 대표 기출</span>
+                <div class="sec-line"></div>
+            </div>
+            <div class="card-grid"></div>
+        `;
+
+        const grid = block.querySelector('.card-grid');
+        latestByGrade.forEach(item => grid.appendChild(buildCard(item)));
+        section.appendChild(block);
+        return;
+    }
+
+    // 대표 기출이 하나도 없으면 blank 금지: 전체 최신 자료 fallback
+    const fallbackItems = sortExams(all).slice(0, 8);
 
     const block = document.createElement('div');
     block.className = 'sec-block dark';
     block.innerHTML = `
         <div class="sec-header">
-            <span class="sec-title">학년별 대표 기출</span>
+            <span class="sec-title">최신 등록 자료</span>
             <div class="sec-line"></div>
         </div>
         <div class="card-grid"></div>
     `;
 
     const grid = block.querySelector('.card-grid');
-    latestByGrade.forEach(item => grid.appendChild(buildCard(item)));
-
+    fallbackItems.forEach(item => grid.appendChild(buildCard(item)));
     section.appendChild(block);
 }
 
@@ -380,32 +425,21 @@ function renderFullList() {
         const matchK = !keyword || searchBase.includes(keyword);
         const matchG = !selectedGrade || ex.grade === selectedGrade;
         const matchY = !year || String(ex.year) === String(year);
-
         const itemType = compactText(ex.contentType || '');
         const matchT = !type || itemType === type;
 
         return matchK && matchG && matchY && matchT;
     });
 
-    const gradeOrder = { "고3": 0, "고2": 1, "고1": 2, "중3": 3, "중2": 4, "중1": 5 };
-
-    filtered.sort((a, b) => {
-        const yA = parseInt(a.year) || 0;
-        const yB = parseInt(b.year) || 0;
-        if (yB !== yA) return yB - yA;
-
-        const gA = gradeOrder[a.grade] ?? 99;
-        const gB = gradeOrder[b.grade] ?? 99;
-        if (gA !== gB) return gA - gB;
-
-        const sA = a.school || '';
-        const sB = b.school || '';
-        if (sA !== sB) return sA.localeCompare(sB);
-
-        return (a.file || '').localeCompare(b.file || '');
-    });
+    filtered = sortExams(filtered);
 
     document.getElementById('listMeta').innerText = `${filtered.length}개 자료`;
+
+    if (!filtered.length) {
+        container.innerHTML = `<div class="empty-state" style="grid-column:1/-1; margin:0;">조건에 맞는 자료가 없습니다.</div>`;
+        return;
+    }
+
     filtered.forEach(ex => container.appendChild(buildCard(ex)));
 }
 
