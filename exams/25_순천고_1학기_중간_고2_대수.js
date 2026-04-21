@@ -17,7 +17,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "지수법칙",
     "standardUnitOrder": 2,
-    "solution": "* 1번: $4^{\\frac{1}{2}} = 2 \\neq \\sqrt{2}$\\n* 2번: $9^{-\\frac{3}{2}} = 3^{-3} = \\frac{1}{27} \\neq 27$\\n* 3번: $2^{-1} = \\frac{1}{2} \\neq -\\frac{1}{2}$\\n* 4번: $7^{\\frac{2}{3}} = (7^2)^{\\frac{1}{3}} = \\sqrt[3]{49}$ (참)\\n* 5번: $(-3)^{-4} = \\frac{1}{(-3)^4} = \\frac{1}{81} \\neq -\\frac{1}{81}$",
+    "solution": "* 1번: $4^{\\frac{1}{2}} = 2 \\n eq \\sqrt{2}$\\n* 2번: $9^{-\\frac{3}{2}} = 3^{-3} = \\frac{1}{27} \\n eq 27$\\n* 3번: $2^{-1} = \\frac{1}{2} \\n eq -\\frac{1}{2}$\\n* 4번: $7^{\\frac{2}{3}} = (7^2)^{\\frac{1}{3}} = \\sqrt[3]{49}$ (참)\\n* 5번: $(-3)^{-4} = \\frac{1}{(-3)^4} = \\frac{1}{81} \\n eq -\\frac{1}{81}$",
     "level": "중"
   },
   {
@@ -97,7 +97,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "지수함수",
     "standardUnitOrder": 3,
-    "solution": "[Solution]\n\n점근선의 방정식 $y = b$ 가 $y = -2$ 이므로 $\\rightarrow b = -2$\n함수 $y = 2^{x-a} - 2$ 가 점 $(0, 2)$ 를 지나므로\n$2 = 2^{0-a} - 2 \\rightarrow 2^{-a} = 4 = 2^2$\n$\\therefore a = -2$\n구하는 값 $ab = (-2) \\times (-2) = 4$\n\n---\n\n[Conclusion]\n\nAnswer: ①",
+    "solution": "[Solution]\n\n점근선의 방정식 $y = b$ 가 $y = -2$ 이므로 $\\rightarrow b = -2$\n함수 $y = 2^{x-a} - 2$ 가 점 $(0, 2)$ 를 지나므로\n$2 = 2^{0-a} - 2 \\rightarrow 2^{-a} = 4 = 2^2$\n$\\therefore a = -2$\n구하는 값 $ab = (-2) \\times (-2) = 4$\n\n---\n\n[Conclusion]\n\n Answer: ①",
     "level": "중"
   },
   {
@@ -117,7 +117,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "로그의 뜻",
     "standardUnitOrder": 4,
-    "solution": "* 밑 조건: $x+3 > 0, x+3 \\neq 1 \\implies x > -3, x \\neq -2$\\n* 진수 조건: $-(x-9)(x+5) > 0 \\implies -5 < x < 9$\\n* 공통 범위: $-3 < x < 9$ 단, $x \\neq -2$\\n* 정수 합: $(-1) + 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 35$",
+    "solution": "* 밑 조건: $x+3 > 0, x+3 \\n eq 1 \\implies x > -3, x \\n eq -2$\\n* 진수 조건: $-(x-9)(x+5) > 0 \\implies -5 < x < 9$\\n* 공통 범위: $-3 < x < 9$ 단, $x \\n eq -2$\\n* 정수 합: $(-1) + 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 35$",
     "level": "중"
   },
   {
@@ -257,7 +257,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 9,
-    "solution": "[Solution]\n\n두 부채꼴의 반지름을 $R, r$, 중심각을 $\\theta$라 하면\n$R\\theta = 2\\pi, r\\theta = \\frac{4}{3}\\pi \\rightarrow (R-r)\\theta = \\frac{2}{3}\\pi \\cdots ①$\n색칠한 부분의 넓이 $S = \\frac{1}{2}(R^2 - r^2)\\theta = \\frac{1}{2}(R+r)(R-r)\\theta = 5\\pi$\n①을 대입하면 $\\frac{1}{2}(R+r) \\cdot \\frac{2}{3}\\pi = 5\\pi \\rightarrow R+r = 15$\n$R+r = \\frac{2\\pi}{\\theta} + \\frac{4\\pi}{3\\theta} = \\frac{10\\pi}{3\\theta} = 15 \\rightarrow \\theta = \\frac{2\\pi}{9}$\n\n---\n\n[Conclusion]\n\nAnswer: ③",
+    "solution": "[Solution]\n\n두 부채꼴의 반지름을 $R, r$, 중심각을 $\\theta$라 하면\n$R\\theta = 2\\pi, r\\theta = \\frac{4}{3}\\pi \\rightarrow (R-r)\\theta = \\frac{2}{3}\\pi \\cdots ①$\n색칠한 부분의 넓이 $S = \\frac{1}{2}(R^2 - r^2)\\theta = \\frac{1}{2}(R+r)(R-r)\\theta = 5\\pi$\n①을 대입하면 $\\frac{1}{2}(R+r) \\cdot \\frac{2}{3}\\pi = 5\\pi \\rightarrow R+r = 15$\n$R+r = \\frac{2\\pi}{\\theta} + \\frac{4\\pi}{3\\theta} = \\frac{10\\pi}{3\\theta} = 15 \\rightarrow \\theta = \\frac{2\\pi}{9}$\n\n---\n\n[Conclusion]\n\n Answer: ③",
     "level": "중"
   },
   {
@@ -304,10 +304,10 @@ window.questionBank = [
     "id": 16,
     "content": "모든 정수 $m, n$과 모든 유리수 $p, q$에 대해 두 집합\\n$A = \\{a\\,|\\,a\\text{는 } a^m \\div a^n = a^{m-n}, (a^m)^n = a^{mn}\\text{을 만족하는 실수}\\}$\\n$B = \\{a\\,|\\,a\\text{는 } a^p \\div a^q = a^{p-q}, (a^p)^q = a^{pq}\\text{를 만족하는 실수}\\}$\\n에 관한 설명으로 옳지 않은 것은? (4.4점)",
     "choices": [
-      "0\\notin A",
+      "0\\n otin A",
       "\\frac{1}{4}\\in B",
       "A\\subset B",
-      "-2\\notin B",
+      "-2\\n otin B",
       "-\\sqrt{3}\\in A"
     ],
     "answer": "③",
@@ -317,7 +317,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "지수법칙",
     "standardUnitOrder": 2,
-    "solution": "* $A$(정수 지수): $a \\neq 0$, $B$(유리수 지수): $a > 0$\\n* $B \\subset A$ 이므로 $A \\subset B$는 거짓임.",
+    "solution": "* $A$(정수 지수): $a \\n eq 0$, $B$(유리수 지수): $a > 0$\\n* $B \\subset A$ 이므로 $A \\subset B$는 거짓임.",
     "level": "중"
   },
   {
@@ -453,7 +453,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "로그함수",
     "standardUnitOrder": 6,
-    "solution": "[Solution]\n\n두 함수 $y = a^{x-2}$ 와 $y = \\log_a(x-2)$ 는 직선 $y = x-2$ 에 대하여 대칭이다.\n직선 $y = -x+6$ 과 대칭축 $y = x-2$ 의 교점을 $M$ 이라 하면 $-x+6 = x-2 \\rightarrow M(4, 2)$ 이다.\n교점 $A, B$ 는 점 $M$ 에 대하여 대칭이므로 $M$ 은 선분 $AB$ 의 중점이다.\n$C(0, 6)$ 과 $M(4, 2)$ 사이의 거리 $\\overline{CM} = \\sqrt{(4-0)^2 + (2-6)^2} = 4\\sqrt{2}$ 이다.\n$\\overline{AB} : \\overline{AC} = 2 : 3$ 이고 $\\overline{AM} = \\frac{1}{2}\\overline{AB}$ 이므로 $\\overline{AM} : \\overline{AC} = 1 : 3$ 이다.\n점 $A$ 는 선분 $CM$ 을 $3 : 1$ 로 내분하는 점이므로\n$A = ( \\frac{3 \\cdot 4 + 1 \\cdot 0}{4}, \\frac{3 \\cdot 2 + 1 \\cdot 6}{4} ) = (3, 3)$\n점 $A(3, 3)$ 을 $y = a^{x-2}$ 에 대입하면 $3 = a^{3-2} \\rightarrow \\therefore a = 3$\n\n---\n\n[Conclusion]\n\nAnswer: 3",
+    "solution": "[Solution]\n\n두 함수 $y = a^{x-2}$ 와 $y = \\log_a(x-2)$ 는 직선 $y = x-2$ 에 대하여 대칭이다.\n직선 $y = -x+6$ 과 대칭축 $y = x-2$ 의 교점을 $M$ 이라 하면 $-x+6 = x-2 \\rightarrow M(4, 2)$ 이다.\n교점 $A, B$ 는 점 $M$ 에 대하여 대칭이므로 $M$ 은 선분 $AB$ 의 중점이다.\n$C(0, 6)$ 과 $M(4, 2)$ 사이의 거리 $\\overline{CM} = \\sqrt{(4-0)^2 + (2-6)^2} = 4\\sqrt{2}$ 이다.\n$\\overline{AB} : \\overline{AC} = 2 : 3$ 이고 $\\overline{AM} = \\frac{1}{2}\\overline{AB}$ 이므로 $\\overline{AM} : \\overline{AC} = 1 : 3$ 이다.\n점 $A$ 는 선분 $CM$ 을 $3 : 1$ 로 내분하는 점이므로\n$A = ( \\frac{3 \\cdot 4 + 1 \\cdot 0}{4}, \\frac{3 \\cdot 2 + 1 \\cdot 6}{4} ) = (3, 3)$\n점 $A(3, 3)$ 을 $y = a^{x-2}$ 에 대입하면 $3 = a^{3-2} \\rightarrow \\therefore a = 3$\n\n---\n\n[Conclusion]\n\n Answer: 3",
     "level": "중"
   }
 ];

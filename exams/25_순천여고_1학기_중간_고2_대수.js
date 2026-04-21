@@ -129,7 +129,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "지수법칙",
     "standardUnitOrder": 2,
-    "content": "실수 $x$에 대하여 $\\frac{a^x - a^{-x}}{a^x + a^{-x}} = \\frac{1}{2}$일 때, $\\frac{a^{2x} + a^{-2x}}{a^{2x} - a^{-2x}}$의 값은? (단, $a>0$, $a \\ne 1$) [3.8점]",
+    "content": "실수 $x$에 대하여 $\\frac{a^x - a^{-x}}{a^x + a^{-x}} = \\frac{1}{2}$일 때, $\\frac{a^{2x} + a^{-2x}}{a^{2x} - a^{-2x}}$의 값은? (단, $a>0$, $a \\n e 1$) [3.8점]",
     "choices": [
       "$\\frac{4}{5}$",
       "$\\frac{5}{4}$",
@@ -198,7 +198,7 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "1단계: ㄱ. $x=0$을 대입하면 $y=2\\log 1+1=1$이므로 $(0, 1)$을 지난다. (참)\\n2단계: ㄴ. 로그함수의 진수 조건 $x+1>0$에 의해 점근선은 $x=-1$이다. (거짓)\\n3단계: ㄷ. $x>-1$에서 $y$값은 $-\\infty$부터 증가하며, $x=0$일 때 $y=1>0$이므로 제$4$사분면을 지나지 않는다. (참)\\n4단계: ㄹ. $y=\\log(x+1)^2$은 정의역이 $x \\ne -1$이므로 주어진 함수(정의역 $x>-1$)와 일치하지 않는다. (거짓)\\n* 검산: 옳은 것은 ㄱ, ㄷ이므로 정답은 ②번임을 확인."
+    "solution": "1단계: ㄱ. $x=0$을 대입하면 $y=2\\log 1+1=1$이므로 $(0, 1)$을 지난다. (참)\\n2단계: ㄴ. 로그함수의 진수 조건 $x+1>0$에 의해 점근선은 $x=-1$이다. (거짓)\\n3단계: ㄷ. $x>-1$에서 $y$값은 $-\\infty$부터 증가하며, $x=0$일 때 $y=1>0$이므로 제$4$사분면을 지나지 않는다. (참)\\n4단계: ㄹ. $y=\\log(x+1)^2$은 정의역이 $x \\n e -1$이므로 주어진 함수(정의역 $x>-1$)와 일치하지 않는다. (거짓)\\n* 검산: 옳은 것은 ㄱ, ㄷ이므로 정답은 ②번임을 확인."
   },
   {
     "id": 11,
@@ -209,7 +209,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "지수법칙",
     "standardUnitOrder": 2,
-    "content": "$\\sqrt[4]{\\frac{\\sqrt[3]{a^2}}{\\sqrt{a}}} \\times \\sqrt[8]{\\frac{\\sqrt[6]{a}}{a}}$ 를 간단히 하면 $\\sqrt[n]{\\frac{1}{a}}$이다. 자연수 $n$의 값\\n은? (단, $a>0$, $a \\ne 1$) [4점]",
+    "content": "$\\sqrt[4]{\\frac{\\sqrt[3]{a^2}}{\\sqrt{a}}} \\times \\sqrt[8]{\\frac{\\sqrt[6]{a}}{a}}$ 를 간단히 하면 $\\sqrt[n]{\\frac{1}{a}}$이다. 자연수 $n$의 값\\n은? (단, $a>0$, $a \\n e 1$) [4점]",
     "choices": [
       "12",
       "14",
@@ -398,7 +398,7 @@ window.questionBank = [
       "$3^{\\frac{3}{2}}$"
     ],
     "answer": "④",
-    "solution": "1단계: 각 점의 좌표를 구한다. $y=3$과의 교점: $\\mathrm{A}(0, 3)$, $\\mathrm{B}(\\log_a 3 - 1, 3)$. $y=k$와의 교점: $\\mathrm{C}(\\log_3 k - 1, k)$, $\\mathrm{D}(\\log_a k - 1, k)$. (단, $1<a<3$이고 $0<k<1$이므로 $\\log_a k < \\log_3 k$가 되어 점 $\\mathrm{D}$가 점 $\\mathrm{C}$의 왼쪽에 위치한다.)\\n2단계: 사각형 $\\mathrm{ADCB}$가 평행사변형이므로 $\\vec{AD} = \\vec{BC}$이다. $\\log_a k - 1 = \\log_3 k - 1 - (\\log_a 3 - 1)$이 성립한다.\\n3단계: $\\log_a k = \\log_3 k - \\log_a 3 + 1$. 밑을 $3$으로 통일하면 $\\frac{\\log_3 k}{\\log_3 a} = \\log_3 k - \\frac{1}{\\log_3 a} + 1$이다.\\n4단계: $\\log_3 a = u, \\log_3 k = v$라 치환하면 $\\frac{v}{u} = v - \\frac{1}{u} + 1 \\Rightarrow v = uv - 1 + u \\Rightarrow uv - v + u - 1 = 0 \\Rightarrow (u-1)(v+1)=0$이다. $1<a<3$이므로 $u \\ne 1$이고, 따라서 $v = -1$이 되어 $k = 3^{-1} = \\frac{1}{3}$이다.\\n5단계: 평행사변형의 넓이는 $(밑변) \\times (높이) = \\overline{\\mathrm{AB}} \\times (3 - k) = (\\log_a 3 - 1) \\times (3 - \\frac{1}{3}) = (\\log_a 3 - 1) \\times \\frac{8}{3} = \\frac{8}{3}$이다.\\n6단계: $\\log_a 3 - 1 = 1 \\Rightarrow \\log_a 3 = 2 \\Rightarrow a^2 = 3 \\Rightarrow a = 3^{\\frac{1}{2}}$이다.\\n7단계: $ak = 3^{\\frac{1}{2}} \\times 3^{-1} = 3^{-\\frac{1}{2}}$이다.\\n* 검산: $a=\\sqrt{3}, k=\\frac{1}{3}$을 대입하여 네 점의 좌표를 구해 벡터와 넓이를 확인한 결과 조건과 완벽히 일치함."
+    "solution": "1단계: 각 점의 좌표를 구한다. $y=3$과의 교점: $\\mathrm{A}(0, 3)$, $\\mathrm{B}(\\log_a 3 - 1, 3)$. $y=k$와의 교점: $\\mathrm{C}(\\log_3 k - 1, k)$, $\\mathrm{D}(\\log_a k - 1, k)$. (단, $1<a<3$이고 $0<k<1$이므로 $\\log_a k < \\log_3 k$가 되어 점 $\\mathrm{D}$가 점 $\\mathrm{C}$의 왼쪽에 위치한다.)\\n2단계: 사각형 $\\mathrm{ADCB}$가 평행사변형이므로 $\\vec{AD} = \\vec{BC}$이다. $\\log_a k - 1 = \\log_3 k - 1 - (\\log_a 3 - 1)$이 성립한다.\\n3단계: $\\log_a k = \\log_3 k - \\log_a 3 + 1$. 밑을 $3$으로 통일하면 $\\frac{\\log_3 k}{\\log_3 a} = \\log_3 k - \\frac{1}{\\log_3 a} + 1$이다.\\n4단계: $\\log_3 a = u, \\log_3 k = v$라 치환하면 $\\frac{v}{u} = v - \\frac{1}{u} + 1 \\Rightarrow v = uv - 1 + u \\Rightarrow uv - v + u - 1 = 0 \\Rightarrow (u-1)(v+1)=0$이다. $1<a<3$이므로 $u \\n e 1$이고, 따라서 $v = -1$이 되어 $k = 3^{-1} = \\frac{1}{3}$이다.\\n5단계: 평행사변형의 넓이는 $(밑변) \\times (높이) = \\overline{\\mathrm{AB}} \\times (3 - k) = (\\log_a 3 - 1) \\times (3 - \\frac{1}{3}) = (\\log_a 3 - 1) \\times \\frac{8}{3} = \\frac{8}{3}$이다.\\n6단계: $\\log_a 3 - 1 = 1 \\Rightarrow \\log_a 3 = 2 \\Rightarrow a^2 = 3 \\Rightarrow a = 3^{\\frac{1}{2}}$이다.\\n7단계: $ak = 3^{\\frac{1}{2}} \\times 3^{-1} = 3^{-\\frac{1}{2}}$이다.\\n* 검산: $a=\\sqrt{3}, k=\\frac{1}{3}$을 대입하여 네 점의 좌표를 구해 벡터와 넓이를 확인한 결과 조건과 완벽히 일치함."
   },
   {
     "id": 21,
@@ -440,6 +440,6 @@ window.questionBank = [
     "content": "$1$이 아닌 세 양수 $a, b, c$가 $-5\\log_a b = 25\\log_b c = \\log_c a$ 를 만\\n족시킨다. $b \\times c$의 값이 $200$ 이하의 자연수가 되도록 하는 모든\\n자연수 $a$의 값의 합을 구하는 과정과 정답을 서술하시오. [7점]",
     "choices": [],
     "answer": "275",
-    "solution": "1단계: $-5\\log_a b = 25\\log_b c = \\log_c a = k$라 둔다.\\n2단계: $\\log_a b = -\\frac{k}{5}$, $\\log_b c = \\frac{k}{25}$, $\\log_c a = k$이다.\\n3단계: 로그의 성질에 의해 $\\log_a b \\times \\log_b c \\times \\log_c a = 1$이므로, $(-\\frac{k}{5}) \\times (\\frac{k}{25}) \\times k = 1 \\Rightarrow -\\frac{k^3}{125} = 1 \\Rightarrow k^3 = -125 \\Rightarrow k = -5$이다.\\n4단계: 대입하면 $\\log_a b = 1 \\Rightarrow b = a$이고, $\\log_b c = -\\frac{1}{5} \\Rightarrow c = b^{-\\frac{1}{5}} = a^{-\\frac{1}{5}}$이다.\\n5단계: $b \\times c = a \\times a^{-\\frac{1}{5}} = a^{\\frac{4}{5}}$이다. 이 값이 자연수가 되려면 $a$는 어떤 자연수 $m$의 $5$제곱 형태인 $m^5$이어야 한다. (단, $a \\ne 1$이므로 $m \\ge 2$)\\n6단계: $a = m^5$일 때 $b \\times c = (m^5)^{\\frac{4}{5}} = m^4$이다.\\n7단계: $m^4 \\le 200$을 만족하는 자연수 $m$은 $m=2$ ($2^4=16$), $m=3$ ($3^4=81$)이다.\\n8단계: $m=2$일 때 $a = 2^5 = 32$, $m=3$일 때 $a = 3^5 = 243$이다. 따라서 모든 $a$의 합은 $32 + 243 = 275$이다.\\n* 검산: $a=32, b=32, c=1/2$일 때 주어진 비례식이 성립하며 곱이 $16$으로 $200$ 이하 조건을 충족함을 확인. $a=243$일 때도 동일하게 성립."
+    "solution": "1단계: $-5\\log_a b = 25\\log_b c = \\log_c a = k$라 둔다.\\n2단계: $\\log_a b = -\\frac{k}{5}$, $\\log_b c = \\frac{k}{25}$, $\\log_c a = k$이다.\\n3단계: 로그의 성질에 의해 $\\log_a b \\times \\log_b c \\times \\log_c a = 1$이므로, $(-\\frac{k}{5}) \\times (\\frac{k}{25}) \\times k = 1 \\Rightarrow -\\frac{k^3}{125} = 1 \\Rightarrow k^3 = -125 \\Rightarrow k = -5$이다.\\n4단계: 대입하면 $\\log_a b = 1 \\Rightarrow b = a$이고, $\\log_b c = -\\frac{1}{5} \\Rightarrow c = b^{-\\frac{1}{5}} = a^{-\\frac{1}{5}}$이다.\\n5단계: $b \\times c = a \\times a^{-\\frac{1}{5}} = a^{\\frac{4}{5}}$이다. 이 값이 자연수가 되려면 $a$는 어떤 자연수 $m$의 $5$제곱 형태인 $m^5$이어야 한다. (단, $a \\n e 1$이므로 $m \\ge 2$)\\n6단계: $a = m^5$일 때 $b \\times c = (m^5)^{\\frac{4}{5}} = m^4$이다.\\n7단계: $m^4 \\le 200$을 만족하는 자연수 $m$은 $m=2$ ($2^4=16$), $m=3$ ($3^4=81$)이다.\\n8단계: $m=2$일 때 $a = 2^5 = 32$, $m=3$일 때 $a = 3^5 = 243$이다. 따라서 모든 $a$의 합은 $32 + 243 = 275$이다.\\n* 검산: $a=32, b=32, c=1/2$일 때 주어진 비례식이 성립하며 곱이 $16$으로 $200$ 이하 조건을 충족함을 확인. $a=243$일 때도 동일하게 성립."
   }
 ];

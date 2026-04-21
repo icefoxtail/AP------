@@ -204,7 +204,7 @@ window.questionBank = [
   {
     "id": 11,
     "category": "11. 근호 안의 문자의 성질",
-    "content": "$ab^{2} > 0, ab < 0$ 일 때, $\\sqrt{(ab)^{2}} + 4\\sqrt{(-ab)^{2}}$ 의 값을 구하면? (단, $a, b \\neq 0$) [4점]",
+    "content": "$ab^{2} > 0, ab < 0$ 일 때, $\\sqrt{(ab)^{2}} + 4\\sqrt{(-ab)^{2}}$ 의 값을 구하면? (단, $a, b \\n eq 0$) [4점]",
     "choices": [
       "$-2ab$",
       "$-4ab$",
@@ -409,9 +409,7 @@ window.questionBank = [
     "id": 21,
     "category": "서술형 1. 제곱근과 분모의 유리화",
     "content": "$(-3)^2$의 양의 제곱근을 $A$, $7$의 음의 제곱근을 $B$라고 할 때, 다음 물음에 답하시오.\\n(1) $A, B$를 각각 구하시오. [2점]\\n(2) $\\frac{1}{A+B}$ 의 값을 유리화하시오. [2점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "(1) $A=3, B=-\\sqrt{7}$  (2) $\\frac{3+\\sqrt{7}}{2}$",
     "originalCategory": "서술형 1. 제곱근과 분모의 유리화",
     "standardCourse": "중3 수학",
@@ -425,9 +423,7 @@ window.questionBank = [
     "id": 22,
     "category": "서술형 2. 식의 값 구하기",
     "content": "$a=7+\\sqrt{3}$ 일 때, 인수분해를 이용하여 $a^2-9a+14$의 값을 구하는 과정을 서술하시오. [5점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$3+5\\sqrt{3}$",
     "originalCategory": "서술형 2. 식의 값 구하기",
     "standardCourse": "중3 수학",
@@ -441,9 +437,7 @@ window.questionBank = [
     "id": 23,
     "category": "서술형 3. 완전제곱식의 응용",
     "content": "$x^2-10mx+n$에 $2mx-5n$을 뺀 후 완전제곱식이 될 때, 순서쌍 $(m, n)$ 중에서 $n-m$의 최댓값을 구하시오. (단, $m, n \\le 100$ 자연수) [5점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "92",
     "originalCategory": "서술형 3. 완전제곱식의 응용",
     "standardCourse": "중3 수학",

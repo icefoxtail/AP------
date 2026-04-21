@@ -209,7 +209,7 @@ window.questionBank = [
     "standardUnitKey": "RAW-11.지수법칙의응용",
     "standardUnit": "11. 지수법칙의 응용",
     "standardUnitOrder": 999,
-    "content": "다음 중에서 옳은 것을 모두 고른 것을 고르면? (단, $a \\neq 0, b \\neq 0$이고, $m, n$은 자연수)",
+    "content": "다음 중에서 옳은 것을 모두 고른 것을 고르면? (단, $a \\n eq 0, b \\n eq 0$이고, $m, n$은 자연수)",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄹ",
@@ -370,9 +370,7 @@ window.questionBank = [
     "standardUnit": "유리수와 순환소수",
     "standardUnitOrder": 1,
     "content": "다음 조건을 만족시키는 $x$의 개수를 구하여라.(5점)\\n(가) $x$는 2의 배수이고 두 자리 자연수이다.\\n(나) 분수 $\\frac{x}{600}$는 순환소수로 나타낼 수 있다.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "30",
     "solution": "* $600 = 2^3 \\times 3 \\times 5^2 \\rightarrow x$가 3의 배수가 아니어야 함.\\n* 두 자리 2의 배수 45개 중 6의 배수 15개 제외 $\\rightarrow$ 30개.\\n* 정답: 30"
   },
@@ -386,9 +384,7 @@ window.questionBank = [
     "standardUnit": "미분류",
     "standardUnitOrder": 999,
     "content": "$x$의 값이 $-2, -1, 0, 1, 2$일 때, $x-1-n < -1$을 참이 되게 하는 $x$의 값이 3개다. 상수 $n$의 값의 범위를 구하여라.(5점)",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$0 < n \\le 1$",
     "solution": "* $x < n$ 이고 해가 $\\{-2, -1, 0\\}$일 때 $0 < n \\le 1$ 입니다.\\n* 정답: $0 < n \\le 1$"
   },
@@ -402,9 +398,7 @@ window.questionBank = [
     "standardUnit": "유리수와 순환소수",
     "standardUnitOrder": 1,
     "content": "어떤 자연수 $x$에 $0.\\dot{6}$을 곱해야 할 것을 잘못하여 $0.6$을 곱하였더니 정답과 오답의 차가 3이 되었다. 어떤 자연수 $x$를 구하여라.(7점)\\n(방정식 세우기 3점, 방정식 풀이 과정 3점, 답쓰기 1점)",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "45",
     "solution": "* $\\frac{2}{3}x - \\frac{3}{5}x = 3 \\rightarrow \\frac{1}{15}x = 3 \\rightarrow x = 45$\\n* 정답: 45"
   },
@@ -418,9 +412,7 @@ window.questionBank = [
     "standardUnit": "식의 계산",
     "standardUnitOrder": 2,
     "content": "어떤 식 $A$에 $3x^2-2x-1$을 빼야 할 것을 잘못하여 더했더니 $-x^2+5$가 되었다. 옳게 계산한 식을 구하여라.(7점)\\n(주어진 조건에 맞는 식 세우기 2점, 어떤 식 $A$ 구하는 과정 3점, 옳게 계산한 식 구하는 과정 2점)",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$-7x^2+4x+7$",
     "solution": "* $A + (3x^2-2x-1) = -x^2+5 \\rightarrow A = -4x^2+2x+6$\\n* 바른 계산: $(-4x^2+2x+6) - (3x^2-2x-1) = -7x^2+4x+7$\\n* 정답: $-7x^2+4x+7$"
   },
@@ -434,9 +426,7 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 3,
     "content": "일차부등식 $x+1 \\ge -2x-5$를 풀고, 그 해를 수직선 위에 나타내어라.(6점)\\n(부등식 해 구하는 과정 3점, 해를 수직선 위에 바르게 나타내기 3점)",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$x \\ge -2$",
     "solution": "* $x+1 \\ge -2x-5 \\rightarrow 3x \\ge -6 \\rightarrow x \\ge -2$\\n* 수직선 표현: -2에 칠해진 점을 찍고 오른쪽으로 화살표를 그림.\\n* 정답: $x \\ge -2$"
   }

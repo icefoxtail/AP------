@@ -215,7 +215,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-09",
     "standardUnit": "행렬",
     "standardUnitOrder": 9,
-    "content": "<div>[중] 이차 정사각행렬 $A$ 의 성분이 $a_{ij} = \\begin{cases} i+j & (i=j) \\\\ i-j^{2} & (i \\neq j) \\end{cases}$ 일 때, &lt;보기&gt; 중 옳은 것만을 고른 것은? [4.5점]<br><div class='box'>&lt;보 기&gt;<br>ㄱ. 제 2열의 모든 성분의 합은 1이다.<br>ㄴ. 제 1행은 $(2, -3)$ 이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div></div>",
+    "content": "<div>[중] 이차 정사각행렬 $A$ 의 성분이 $a_{ij} = \\begin{cases} i+j & (i=j) \\\\ i-j^{2} & (i \\n eq j) \\end{cases}$ 일 때, &lt;보기&gt; 중 옳은 것만을 고른 것은? [4.5점]<br><div class='box'>&lt;보 기&gt;<br>ㄱ. 제 2열의 모든 성분의 합은 1이다.<br>ㄴ. 제 1행은 $(2, -3)$ 이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div></div>",
     "choices": [
       "① ㄱ",
       "② ㄴ, ㄷ",
@@ -224,7 +224,7 @@ window.questionBank = [
       "⑤ ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>$\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4$<br>$\\implies A = \\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$<br>$\\implies ㄱ.  -3+4=1  (참)$<br>$\\implies ㄴ.  (2, -3)  (참)$<br>$\\implies ㄷ.  -3-2(2)=-7 \\neq 1  (거짓)$<br>$\\therefore ㄱ, ㄴ$"
+    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>$\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4$<br>$\\implies A = \\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$<br>$\\implies ㄱ.  -3+4=1  (참)$<br>$\\implies ㄴ.  (2, -3)  (참)$<br>$\\implies ㄷ.  -3-2(2)=-7 \\n eq 1  (거짓)$<br>$\\therefore ㄱ, ㄴ$"
   },
   {
     "id": 10,
@@ -524,7 +524,7 @@ window.questionBank = [
       "⑤ 12"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\\\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(\\i)  a < 3 \\\\implies f(3)=5 \\\\implies (3-a)^{2}=4 \\\\implies a=1\\\\\\)<br>\\\\\\(\\ii)  3 \\\\le a \\\\le 7 \\\\implies f(a)=1 \\\\neq 5\\\\\\)<br>\\\\\\(\\iii)  a > 7 \\\\implies f(7)=5 \\\\implies (7-a)^{2}=4 \\\\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)"
+    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류<br>\\\\\\(\\\\because t = (x-2)^{2}+3 \\\\implies t \\\\in [3, 7]\\\\\\)<br>\\\\\\(\\\\implies y = (t-a)^{2}+1\\\\\\)<br>\\\\\\(\\i)  a < 3 \\\\implies f(3)=5 \\\\implies (3-a)^{2}=4 \\\\implies a=1\\\\\\)<br>\\\\\\(\\ii)  3 \\\\le a \\\\le 7 \\\\implies f(a)=1 \\\\n eq 5\\\\\\)<br>\\\\\\(\\iii)  a > 7 \\\\implies f(7)=5 \\\\implies (7-a)^{2}=4 \\\\implies a=9\\\\\\)<br>\\\\\\(\\\\therefore 1+9=10\\\\\\)"
   },
   {
     "id": 22,

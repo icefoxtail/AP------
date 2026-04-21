@@ -14,7 +14,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "4",
-    "solution": "어떤 수를 $x$라 하면, $4(x - 5) = 36\\nx - 5 = 9 \\\\implies x = 14\\n\\\\therefore 4",
+    "solution": "어떤 수를 $x$라 하면, $4(x - 5) = 36\\n x - 5 = 9 \\\\implies x = 14\\n\\\\therefore 4",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",
@@ -34,7 +34,7 @@ window.questionBank = [
       "32"
     ],
     "answer": "2",
-    "solution": "작은 짝수를 $x$라 하면 큰 짝수는 $x + 2$이다.\\nx + (x + 2) = 54\\n2x + 2 = 54 \\\\implies 2x = 52 \\\\implies x = 26\\n\\\\therefore 2",
+    "solution": "작은 짝수를 $x$라 하면 큰 짝수는 $x + 2$이다.\\n x + (x + 2) = 54\\n2x + 2 = 54 \\\\implies 2x = 52 \\\\implies x = 26\\n\\\\therefore 2",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",
@@ -354,7 +354,7 @@ window.questionBank = [
       "36"
     ],
     "answer": "2",
-    "solution": "짧은 철사의 길이를 $x$라 하면 긴 철사는 $x + 14$이다.\\nx + (x + 14) = 80 \\\\implies 2x = 66 \\\\implies x = 33\\n\\\\therefore 2",
+    "solution": "짧은 철사의 길이를 $x$라 하면 긴 철사는 $x + 14$이다.\\n x + (x + 14) = 80 \\\\implies 2x = 66 \\\\implies x = 33\\n\\\\therefore 2",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",
@@ -394,7 +394,7 @@ window.questionBank = [
       "20명"
     ],
     "answer": "4",
-    "solution": "여학생 수를 $x$라 하면 남학생 수는 $x + 3$명이다.\\nx + (x + 3) = 35 \\\\implies 2x = 32 \\\\implies x = 16\\n남학생 수는 $16 + 3 = 19$명이다.\\n\\\\therefore 4",
+    "solution": "여학생 수를 $x$라 하면 남학생 수는 $x + 3$명이다.\\n x + (x + 3) = 35 \\\\implies 2x = 32 \\\\implies x = 16\\n남학생 수는 $16 + 3 = 19$명이다.\\n\\\\therefore 4",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",

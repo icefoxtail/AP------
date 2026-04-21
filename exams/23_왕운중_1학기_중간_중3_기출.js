@@ -19,7 +19,7 @@ window.questionBank = [
       "⑤ $\\sqrt{3}\\sqrt{10}=\\sqrt{30}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\sqrt{a^2b} = a\\sqrt{b}$임을 이용한다.\\n1단계: $\\sqrt{24} = \\sqrt{2^2 \\times 6} = 2\\sqrt{6}$이다.\\n2단계: $2\\sqrt{6} \\neq 4\\sqrt{6}$이므로 ①번은 옳지 않다.\\n∴ 정답: ①"
+    "solution": "[키포인트] $\\sqrt{a^2b} = a\\sqrt{b}$임을 이용한다.\\n1단계: $\\sqrt{24} = \\sqrt{2^2 \\times 6} = 2\\sqrt{6}$이다.\\n2단계: $2\\sqrt{6} \\n eq 4\\sqrt{6}$이므로 ①번은 옳지 않다.\\n∴ 정답: ①"
   },
   {
     "id": 2,
@@ -327,6 +327,7 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "[서술형 1] $\\sqrt{6}$의 정수부분을 $a$, 소수부분을 $b$라 할 때, $a, b$를 각각 구하고, $\\frac{a}{b}$의 값을 구하는 과정을 서술하시오. [4점]",
+    "choices": [],,
     "answer": "$a=2, b=\\sqrt{6}-2, \\quad \\sqrt{6}+2$",
     "solution": "[키포인트] 정수부분을 먼저 구한 뒤 원래 수에서 뺀다.\\n1단계: $2 < \\sqrt{6} < 3$이므로 $a=2, b=\\sqrt{6}-2$이다.\\n2단계: $\\frac{2}{\\sqrt{6}-2} = \\sqrt{6}+2$이다."
   },
@@ -341,6 +342,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "tags": ["서술형2"],
     "content": "[서술형 2] 하은이는 상수항을 잘못 보아 $(x+1)(x-5)$로, 정민이는 $x$의 계수를 잘못 보아 $(x-3)(x+4)$로 인수분해 하였다. 원래의 이차식을 구하고 바르게 인수분해 하시오. [5점]",
+    "choices": [],,
     "answer": "$x^2-4x-12 = (x-6)(x+2)$",
     "solution": "[키포인트] 각각 바르게 본 항을 찾아 조합한다.\\n1단계: 하은이는 $x$계수 -4를, 정민이는 상수항 -12를 바르게 보았다.\\n2단계: 원래 식은 $x^2-4x-12$이고 인수분해하면 $(x-6)(x+2)$이다."
   },
@@ -354,6 +356,7 @@ window.questionBank = [
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
     "content": "[서술형 3] 정사각형 $A, B, C$의 넓이가 각각 25, $B$, 2일 때, 직사각형 $D$의 넓이를 구하시오. [5점]\\n\\n<svg width='160' height='100' viewBox='0 0 160 100'><rect x='10' y='10' width='50' height='50' fill='none' stroke='black'/><rect x='60' y='10' width='36' height='36' fill='none' stroke='black'/><rect x='96' y='10' width='14' height='14' fill='none' stroke='black'/><rect x='60' y='46' width='50' height='14' fill='none' stroke='black'/><text x='30' y='40' font-size='10'>A</text><text x='75' y='30' font-size='10'>B</text><text x='102' y='22' font-size='10'>C</text><text x='85' y='58' font-size='10'>D</text></svg>",
+    "choices": [],,
     "answer": "$5\\sqrt{2}-4$",
     "solution": "[키포인트] 각 변의 길이를 제곱근으로 표현한다.\\n1단계: $A$변은 5, $C$변은 $\\sqrt{2}$이다.\\n2단계: $D$가로는 $5-2\\sqrt{2}$, 높이는 $\\sqrt{2}$이다.\\n3단계: 넓이는 $5\\sqrt{2}-4$이다."
   },
@@ -368,6 +371,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "tags": ["서술형4"],
     "content": "[서술형 4] $f(n) = \\sqrt{n+1} + \\sqrt{n}$일 때, $3 < \\sum_{k=1}^{n} \\frac{1}{f(k)} < 10$을 만족하는 자연수 $n$의 개수를 구하시오. [6점]",
+    "choices": [],,
     "answer": "104개",
     "solution": "[키포인트] 유리화를 통해 연쇄 소거를 이용한다.\\n1단계: $\\sum = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1} < 11$에서 $15 < n < 120$이므로 104개이다."
   }

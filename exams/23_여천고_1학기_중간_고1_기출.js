@@ -33,7 +33,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "1",
-    "solution": "$z$를 실수부분과 허수부분으로 정리하면,\n$z = (a^2-5a+6) + (a^2-4a+3)i$\n$z^2$이 음의 실수가 되려면 $z$는 순허수이어야 하므로,\n실수부분 $a^2-5a+6 = 0$ 이고 허수부분 $a^2-4a+3 \\neq 0$ 이어야 한다.\n$a^2-5a+6 = 0 \\rightarrow (a-2)(a-3) = 0 \\rightarrow a=2$ 또는 $a=3$\n$a^2-4a+3 \\neq 0 \\rightarrow (a-1)(a-3) \\neq 0 \\rightarrow a \\neq 1$ 이고 $a \\neq 3$\n따라서 조건을 만족하는 실수 $a$의 값은 $2$뿐이며 그 합도 $2$이다.",
+    "solution": "$z$를 실수부분과 허수부분으로 정리하면,\n$z = (a^2-5a+6) + (a^2-4a+3)i$\n$z^2$이 음의 실수가 되려면 $z$는 순허수이어야 하므로,\n실수부분 $a^2-5a+6 = 0$ 이고 허수부분 $a^2-4a+3 \\n eq 0$ 이어야 한다.\n$a^2-5a+6 = 0 \\rightarrow (a-2)(a-3) = 0 \\rightarrow a=2$ 또는 $a=3$\n$a^2-4a+3 \\n eq 0 \\rightarrow (a-1)(a-3) \\n eq 0 \\rightarrow a \\n eq 1$ 이고 $a \\n eq 3$\n따라서 조건을 만족하는 실수 $a$의 값은 $2$뿐이며 그 합도 $2$이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",

@@ -253,7 +253,7 @@ window.questionBank = [
       "$-\\sqrt{24} \\times \\sqrt{\\frac{1}{6}} = -2$"
     ],
     "answer": "2",
-    "solution": "2. \\sqrt{12} \\div \\sqrt{3} = \\sqrt{4} = 2 \\neq \\sqrt{2} \\\\ \\therefore 2",
+    "solution": "2. \\sqrt{12} \\div \\sqrt{3} = \\sqrt{4} = 2 \\n eq \\sqrt{2} \\\\ \\therefore 2",
     "level": "중",
     "originalCategory": "",
     "standardCourse": "",

@@ -78,7 +78,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "⑤",
-    "solution": "<b>[키포인트]</b> 양변에 적절한 값을 대입하는 수치대입법을 사용하여 미정계수를 구함.\\ni)  x=0  대입:\\n\\implies a(-1)(1) = 4 \\implies -a = 4 \\implies a = -4\\nii)  x=1  대입:\\n\\implies c(1)(2) = 2(1)^2+3(1)+4 = 9 \\implies 2c = 9\\niii)  x=-1  대입:\\n\\implies b(-1)(-2) = 2(-1)^2+3(-1)+4 = 3 \\implies 2b = 3\\n구하고자 하는 값 $-a+2b+2c$에 대입함.\\n\\implies 4 + 3 + 9 = 16\\n\\therefore 16"
+    "solution": "<b>[키포인트]</b> 양변에 적절한 값을 대입하는 수치대입법을 사용하여 미정계수를 구함.\\n i)  x=0  대입:\\n\\implies a(-1)(1) = 4 \\implies -a = 4 \\implies a = -4\\n ii)  x=1  대입:\\n\\implies c(1)(2) = 2(1)^2+3(1)+4 = 9 \\implies 2c = 9\\n iii)  x=-1  대입:\\n\\implies b(-1)(-2) = 2(-1)^2+3(-1)+4 = 3 \\implies 2b = 3\\n구하고자 하는 값 $-a+2b+2c$에 대입함.\\n\\implies 4 + 3 + 9 = 16\\n\\therefore 16"
   },
   {
     "id": 5,
@@ -138,7 +138,7 @@ window.questionBank = [
       "$1+2\\sqrt{5}$"
     ],
     "answer": "④",
-    "solution": "<b>[키포인트]</b> 상수항이 0인 이차식을 먼저 인수분해하여 일차식의 관계를 얻고, 다른 식에 대입함.\\n$2x^2-xy-y^2=0$을 인수분해함.\\n\\implies (2x+y)(x-y)=0 \\implies y=-2x  또는  y=x\\ni)  y=-2x 일 때:\\n\\implies x^2 + (-2x)^2 = 20 \\implies 5x^2 = 20 \\implies x = \\pm 2\\n\\implies x=2, y=-4  이면  x+2y = -6\\n\\implies x=-2, y=4  이면  x+2y = 6\\nii)  y=x 일 때:\\n\\implies x^2 + x^2 = 20 \\implies 2x^2 = 20 \\implies x = \\pm \\sqrt{10}\\n\\implies x=\\sqrt{10}, y=\\sqrt{10}  이면  x+2y = 3\\sqrt{10}\\n\\implies x=-\\sqrt{10}, y=-\\sqrt{10}  이면  x+2y = -3\\sqrt{10}\\n값들 중 최댓값을 찾음. ($\\sqrt{90} > 6$)\\n\\therefore 3\\sqrt{10}"
+    "solution": "<b>[키포인트]</b> 상수항이 0인 이차식을 먼저 인수분해하여 일차식의 관계를 얻고, 다른 식에 대입함.\\n$2x^2-xy-y^2=0$을 인수분해함.\\n\\implies (2x+y)(x-y)=0 \\implies y=-2x  또는  y=x\\n i)  y=-2x 일 때:\\n\\implies x^2 + (-2x)^2 = 20 \\implies 5x^2 = 20 \\implies x = \\pm 2\\n\\implies x=2, y=-4  이면  x+2y = -6\\n\\implies x=-2, y=4  이면  x+2y = 6\\n ii)  y=x 일 때:\\n\\implies x^2 + x^2 = 20 \\implies 2x^2 = 20 \\implies x = \\pm \\sqrt{10}\\n\\implies x=\\sqrt{10}, y=\\sqrt{10}  이면  x+2y = 3\\sqrt{10}\\n\\implies x=-\\sqrt{10}, y=-\\sqrt{10}  이면  x+2y = -3\\sqrt{10}\\n값들 중 최댓값을 찾음. ($\\sqrt{90} > 6$)\\n\\therefore 3\\sqrt{10}"
   },
   {
     "id": 8,
@@ -238,7 +238,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "④",
-    "solution": "<b>[키포인트]</b> 특정 일차식에 대한 내림차순 정리는 연쇄 조립제법을 통해 계수를 차례로 구함.\\n$(x-2)$에 대하여 조립제법을 연속으로 실행함.\\ni)  x=2로 1차 조립제법 시행: 나머지는 -7 \\implies d = -7\\nii) 몫에 대해 2차 조립제법 시행: 나머지는 -1 \\implies c = -1\\niii) 몫에 대해 3차 조립제법 시행: 나머지는 2 \\implies b = 2, 마지막 몫은  1 \\implies a = 1\\n구해진 계수를 대입하여 계산함.\\n\\implies ab+cd = (1)(2) + (-1)(-7) = 2 + 7 = 9\\n\\therefore 9"
+    "solution": "<b>[키포인트]</b> 특정 일차식에 대한 내림차순 정리는 연쇄 조립제법을 통해 계수를 차례로 구함.\\n$(x-2)$에 대하여 조립제법을 연속으로 실행함.\\n i)  x=2로 1차 조립제법 시행: 나머지는 -7 \\implies d = -7\\n ii) 몫에 대해 2차 조립제법 시행: 나머지는 -1 \\implies c = -1\\n iii) 몫에 대해 3차 조립제법 시행: 나머지는 2 \\implies b = 2, 마지막 몫은  1 \\implies a = 1\\n구해진 계수를 대입하여 계산함.\\n\\implies ab+cd = (1)(2) + (-1)(-7) = 2 + 7 = 9\\n\\therefore 9"
   },
   {
     "id": 13,
@@ -318,7 +318,7 @@ window.questionBank = [
       " "
     ],
     "answer": "-11",
-    "solution": "<b>[키포인트]</b> 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\\n각 부등식을 정리함.\\ni)  3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\frac{-2a-1}{3}\\nii)  6x > 6 \\implies x > 1\\n범위 $1 < x \\le \\frac{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\\n경계값의 범위를 부등식으로 설정함.\\n\\implies 3 \\le \\frac{-2a-1}{3} < 4\\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\\n\\implies -6.5 < a \\le -5\\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\\n\\implies -6 + (-5) = -11\\n\\therefore -11"
+    "solution": "<b>[키포인트]</b> 각 부등식을 푼 후, 만족하는 정수의 개수 조건에 맞춰 경계값의 범위를 설정함.\\n각 부등식을 정리함.\\n i)  3x+1 \\le -2a \\implies 3x \\le -2a-1 \\implies x \\le \\frac{-2a-1}{3}\\n ii)  6x > 6 \\implies x > 1\\n범위 $1 < x \\le \\frac{-2a-1}{3}$ 내의 정수가 2개이려면, 그 정수는 2와 3이어야 함.\\n경계값의 범위를 부등식으로 설정함.\\n\\implies 3 \\le \\frac{-2a-1}{3} < 4\\n\\implies 9 \\le -2a-1 < 12 \\implies 10 \\le -2a < 13\\n\\implies -6.5 < a \\le -5\\n이 범위에 속하는 정수 $a$는 $-6, -5$임.\\n\\implies -6 + (-5) = -11\\n\\therefore -11"
   },
   {
     "id": 17,

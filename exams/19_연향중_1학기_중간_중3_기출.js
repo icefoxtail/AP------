@@ -403,9 +403,7 @@ window.questionBank = [
   {
     "id": 21,
     "content": "[서술형1] $\\sqrt{49}$ 음의 제곱근 $a$, $\\sqrt{(-9)^2}$ 양의 제곱근 $b$라 할 때, (1) $a, b$의 값, (2) $\\sqrt{63}$을 $a, b$식으로 나타내시오.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "(1) a=-sqrt(7), b=3 (2) -ab",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -419,9 +417,7 @@ window.questionBank = [
   {
     "id": 22,
     "content": "[서술형2] 그림에서 $p=2-\\sqrt{10}, q=10+\\sqrt{10}$일 때, $3p+q$의 값을 구하시오.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "16-2sqrt(10)",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -435,9 +431,7 @@ window.questionBank = [
   {
     "id": 23,
     "content": "[서술형3] 넓이 $x^2$ 1개, $x$ 5개, $1$ 6개를 붙인 직사각형의 (1) 인수분해된 넓이, (2) 둘레를 구하시오.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "(1) (x+2)(x+3) (2) 4x+10",
     "category": "인수분해",
     "originalCategory": "인수분해",

@@ -403,9 +403,7 @@ window.questionBank = [
   {
     "id": 21,
     "content": "$(x-1)^4 = x^4+ax^3+6x^2+bx+1$ 이 항등식일 때 $a, b$를 구하시오. [5점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "a=-4, b=-4",
     "category": "서술형 1",
     "originalCategory": "서술형 1",
@@ -419,9 +417,7 @@ window.questionBank = [
   {
     "id": 22,
     "content": "사차식 $P(x)$ 추론 과정을 통해 $P(0)$을 구하시오. [7점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "15",
     "category": "서술형 2",
     "originalCategory": "서술형 2",
@@ -435,9 +431,7 @@ window.questionBank = [
   {
     "id": 23,
     "content": "$0 \\le x \\le 2$에서 $M=2m$일 때 $2a+b$의 최댓값을 구하시오. [8점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "17",
     "category": "서술형 3",
     "originalCategory": "서술형 3",

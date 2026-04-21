@@ -443,9 +443,7 @@ window.questionBank = [
   {
     "id": 23,
     "content": "[서술형1] $\\sqrt{39-n}$이 자연수가 되게 하는 자연수 $n$을 모두 구하여라.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$3, 14, 23, 30, 35, 38$",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -459,9 +457,7 @@ window.questionBank = [
   {
     "id": 24,
     "content": "[서술형2] $2x^2 + 5x - 12$와 $2x^2 - x - 3$의 공통인수를 구하여라.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$2x-3$",
     "category": "인수분해",
     "originalCategory": "인수분해",
@@ -475,9 +471,7 @@ window.questionBank = [
   {
     "id": 25,
     "content": "[서술형3] $a+b = \\sqrt{3}-1$일 때 $a^2 + b^2 + 2ab + 2a + 2b + 1$의 값을 구하여라.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "③",
     "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "다항식의 곱셈과 인수분해",

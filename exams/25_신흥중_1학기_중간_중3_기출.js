@@ -407,9 +407,7 @@ window.questionBank = [
   {
     "id": 21,
     "content": "[서술형 1] $\\sqrt{\\frac{108}{x}}$ 이 자연수가 되도록 하는 자연수 $x$의 값을 모두 구하는 과정과 답을 쓰시오. [6점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "3, 12, 27, 108",
     "category": "실수와 그 연산",
     "originalCategory": "실수와 그 연산",
@@ -423,9 +421,7 @@ window.questionBank = [
   {
     "id": 22,
     "content": "[서술형 2] $a(3-\\sqrt{5})+\\frac{10-\\sqrt{20}}{\\sqrt{5}}$ 가 유리수일 때, 유리수 $a$의 값을 구하는 과정과 답을 쓰시오. [4점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "2",
     "category": "실수와 그 연산",
     "originalCategory": "실수와 그 연산",
@@ -439,9 +435,7 @@ window.questionBank = [
   {
     "id": 23,
     "content": "[서술형 3] 다음 섭이와 후의 대화를 읽고, 섭이네 집 현관문의 비밀번호를 구하는 과정과 답을 쓰시오. (단, 비밀번호는 $ABCD$ 네 개의 숫자로 이루어져 있다.) [4점]\\n\\n섭: 우리 집 현관문의 비밀번호는 $ABCD$ 네 개의 숫자로 이루어져 있어, 알아맞혀봐.\\n후: 힌트 좀 줘.\\n섭: $(x+A)(x-2)$ 를 전개하면 $x^{2}+Bx-16$이고, $3x^{2}+2x-8$ 를 인수분해하면 $(3x-C)(x+D)$ 야.",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "8642",
     "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "다항식의 곱셈과 인수분해",
@@ -455,9 +449,7 @@ window.questionBank = [
   {
     "id": 24,
     "content": "[서술형 4] 네 자연수 $a, b, c, d$ 에 대하여 $(ax+b)(cx+d)=4x^{2}+Ax+5$ 일 때, $A$의 값이 될 수 있는 수를 모두 구하는 과정과 답을 쓰시오. (단, $a, b, c, d$는 자연수) [6점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "9, 12, 21",
     "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "다항식의 곱셈과 인수분해",

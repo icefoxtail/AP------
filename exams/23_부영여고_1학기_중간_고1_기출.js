@@ -219,7 +219,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "⑤",
-    "solution": "<b>[Logical Anchor]</b> 각 변수 간의 관계식을 인수분해하여 기하학적 형태를 도출함.\\n$i) 조건 (가):  (a - 4)(a + 1) = 0$\\n$a$는 변의 길이이므로 $a > 0 \\quad \\therefore a = 4$\\n$ii) 조건 (나) 정리: $\\n좌변: $a^3 + b^3 + c^2(a + b) = (a + b)(a^2 - ab + b^2) + c^2(a + b) = (a + b)(a^2 - ab + b^2 + c^2)$\\n우변: $c(a^2 + b^2 + 2ab) = c(a + b)^2$\\n양변을 $(a+b)$로 나눔 ($a+b \\ne 0$)\\n$a^2 - ab + b^2 + c^2 = c(a + b) = ac + bc$\\n$\\implies a^2 + b^2 + c^2 - ab - bc - ca = 0$\\n변형 공식 $\\ tf{1}{2}\\{(a-b)^2 + (b-c)^2 + (c-a)^2\\} = 0$ 에 의해 $a=b=c$임.\\n$\\therefore 둘레 = 3a = 3 \\times 4 = 12$"
+    "solution": "<b>[Logical Anchor]</b> 각 변수 간의 관계식을 인수분해하여 기하학적 형태를 도출함.\\n$i) 조건 (가):  (a - 4)(a + 1) = 0$\\n$a$는 변의 길이이므로 $a > 0 \\quad \\therefore a = 4$\\n$ii) 조건 (나) 정리: $\\n좌변: $a^3 + b^3 + c^2(a + b) = (a + b)(a^2 - ab + b^2) + c^2(a + b) = (a + b)(a^2 - ab + b^2 + c^2)$\\n우변: $c(a^2 + b^2 + 2ab) = c(a + b)^2$\\n양변을 $(a+b)$로 나눔 ($a+b \\n e 0$)\\n$a^2 - ab + b^2 + c^2 = c(a + b) = ac + bc$\\n$\\implies a^2 + b^2 + c^2 - ab - bc - ca = 0$\\n변형 공식 $\\ tf{1}{2}\\{(a-b)^2 + (b-c)^2 + (c-a)^2\\} = 0$ 에 의해 $a=b=c$임.\\n$\\therefore 둘레 = 3a = 3 \\times 4 = 12$"
   },
   {
     "id": 12,

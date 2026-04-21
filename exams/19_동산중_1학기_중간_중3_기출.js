@@ -423,9 +423,7 @@ window.questionBank = [
   {
     "id": 22,
     "content": "제곱근표를 이용하여 다음을 구하시오. (4점)\\n(1) $\\sqrt{5.53}$의 어림한 값은? (1점)\\n(2) $\\sqrt{x}$의 어림한 값이 2.390일 때, $x$의 값은? (1점)\\n(3) $\\sqrt{553}$의 어림한 값은? (2점)",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "(1) 2.352, (2) 5.71, (3) 23.52",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -439,9 +437,7 @@ window.questionBank = [
   {
     "id": 23,
     "content": "$0 < a < 1$일 때, 다음 식을 간단히 하시오. (4점)\\n$5\\sqrt{a^{2}}+2\\sqrt{(a+\\frac{1}{a})^{2}-4}-2\\sqrt{(a-\\frac{1}{a})^{2}+4}$",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "a",
     "category": "인수분해의 활용",
     "originalCategory": "인수분해의 활용",
@@ -455,9 +451,7 @@ window.questionBank = [
   {
     "id": 24,
     "content": "다음 식을 인수분해 하시오. (8점)\\n(1) $a^{2}b-2ab+3ab^{2}$\\n(2) $x^{2}-10xy+25y^{2}$\\n(3) $9x^{2}-16y^{2}$\\n(4) $x^{2}-5x+6$",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "(1) ab(a-2+3b), (2) (x-5y)^2, (3) (3x+4y)(3x-4y), (4) (x-2)(x-3)",
     "category": "인수분해",
     "originalCategory": "인수분해",
@@ -471,9 +465,7 @@ window.questionBank = [
   {
     "id": 25,
     "content": "정사각형 모양의 색종이 3장을 붙였다. B의 넓이는 A의 4배이고, C의 넓이는 A의 9배이다. A의 넓이가 $5\\text{cm}^{2}$일 때, 전체 도형의 둘레의 길이를 구하시오. (4점)",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$20\\sqrt{5}\\text{cm}$",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",

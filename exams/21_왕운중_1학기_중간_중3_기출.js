@@ -281,7 +281,7 @@ window.questionBank = [
     "answer": "5",
     "solution": "⑤ $m=-\\frac{2}{3} \\implies n=\\frac{1}{9}$ 여야 함."
   },
-<<<<<<< HEAD
+ 
 {
   "id": 15,
   "level": "[중]",
@@ -296,7 +296,7 @@ window.questionBank = [
   "answer": "5",
   "solution": "$(x-y)(x+y+4) = 5 \\times 7 = 35$ \\\\ \\therefore 35"
 },
-=======
+
   {
     "id": 15,
     "level": "[중]",
@@ -317,7 +317,7 @@ window.questionBank = [
     "answer": "5",
     "solution": "$(x-y)(x+y+4) = 5 \\times 7 = 35$ \\\\ \\therefore 5"
   },
->>>>>>> ff6f20f4ddc5a34736bfae021702c03974f9e29d
+ 
   {
     "id": 16,
     "level": "[상]",

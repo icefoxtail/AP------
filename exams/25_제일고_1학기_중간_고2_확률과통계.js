@@ -333,7 +333,7 @@ window.questionBank = [
       "$\\frac{2}{7}$"
     ],
     "answer": "4",
-    "solution": "전체 경우의 수: $15 \\times 14 = 210$\\n$B$의 원소 개수 $k$에 따른 $A$의 개수 (단, $A \\ne B, A \\ne \\emptyset$)\\n- $k=2: _{4}C_{2} \\times (2^2-2) = 6 \\times 2 = 12$\\n- $k=3: _{4}C_{3} \\times (2^3-2) = 4 \\times 6 = 24$\\n- $k=4: _{4}C_{4} \\times (2^4-2) = 1 \\times 14 = 14$\\n순서쌍의 총 개수: $12 + 24 + 14 = 50$\\n$\\therefore P = \\frac{50}{210} = \\frac{5}{21}$",
+    "solution": "전체 경우의 수: $15 \\times 14 = 210$\\n$B$의 원소 개수 $k$에 따른 $A$의 개수 (단, $A \\n e B, A \\n e \\emptyset$)\\n- $k=2: _{4}C_{2} \\times (2^2-2) = 6 \\times 2 = 12$\\n- $k=3: _{4}C_{3} \\times (2^3-2) = 4 \\times 6 = 24$\\n- $k=4: _{4}C_{4} \\times (2^4-2) = 1 \\times 14 = 14$\\n순서쌍의 총 개수: $12 + 24 + 14 = 50$\\n$\\therefore P = \\frac{50}{210} = \\frac{5}{21}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_02_01",

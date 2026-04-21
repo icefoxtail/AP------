@@ -299,7 +299,7 @@ window.questionBank = [
       "\\\\(\\\\sqrt{3}(\\\\sqrt{2} + 5) = \\\\sqrt{6} + 5\\\\sqrt{3}\\\\)"
     ],
     "answer": "③",
-    "solution": "\\\\(\\\\sqrt{18} + \\\\sqrt{2} = 3\\\\sqrt{2} + \\\\sqrt{2} = 4\\\\sqrt{2} \\\\neq 2\\\\sqrt{6}\\\\) \\\\(\\rightarrow\\\\) ③"
+    "solution": "\\\\(\\\\sqrt{18} + \\\\sqrt{2} = 3\\\\sqrt{2} + \\\\sqrt{2} = 4\\\\sqrt{2} \\\\n eq 2\\\\sqrt{6}\\\\) \\\\(\\rightarrow\\\\) ③"
   },
   {
     "id": 16,

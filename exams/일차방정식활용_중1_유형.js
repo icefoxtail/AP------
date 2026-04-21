@@ -14,7 +14,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "3",
-    "solution": "어떤 수를 $x$라 하면, $3x + 5 = 26\\n3x = 21\\nx = 7\\n\\\\therefore 3",
+    "solution": "어떤 수를 $x$라 하면, $3x + 5 = 26\\n3x = 21\\n x = 7\\n\\\\therefore 3",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",
@@ -394,7 +394,7 @@ window.questionBank = [
       "30"
     ],
     "answer": "3",
-    "solution": "짧은 끈의 길이를 $x$라 하면 긴 끈은 $x + 10$이다.\\nx + (x + 10) = 50 \\\\implies 2x = 40 \\\\implies x = 20\\n\\\\therefore 3",
+    "solution": "짧은 끈의 길이를 $x$라 하면 긴 끈은 $x + 10$이다.\\n x + (x + 10) = 50 \\\\implies 2x = 40 \\\\implies x = 20\\n\\\\therefore 3",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",

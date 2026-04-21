@@ -250,7 +250,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "content": "이차방정식 $ax^2+bx+c=0 (a \\ne 0)$에 대하여, 영희는 일차항의 계수 $b$를 잘못 봐서 두 근 $-2, 5$를 얻었고, 철수는 상수항 $c$를 잘못 봐서 두 근 $1, 4$를 얻었을 때, 원래 방정식의 두 근을 $\\alpha, \\beta$라 하자. 이때 $\\alpha^2+\\beta^2$의 값은?",
+    "content": "이차방정식 $ax^2+bx+c=0 (a \\n e 0)$에 대하여, 영희는 일차항의 계수 $b$를 잘못 봐서 두 근 $-2, 5$를 얻었고, 철수는 상수항 $c$를 잘못 봐서 두 근 $1, 4$를 얻었을 때, 원래 방정식의 두 근을 $\\alpha, \\beta$라 하자. 이때 $\\alpha^2+\\beta^2$의 값은?",
     "choices": [
       "15",
       "25",
@@ -270,7 +270,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
-    "content": "복소수 $z=a+bi (b \\ne 0)$에 대하여 $\\dfrac{z}{1+z^2}$가 실수일 때, $a^2+b^2$의 값은?",
+    "content": "복소수 $z=a+bi (b \\n e 0)$에 대하여 $\\dfrac{z}{1+z^2}$가 실수일 때, $a^2+b^2$의 값은?",
     "choices": [
       "1",
       "2",
@@ -279,7 +279,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "<b>[Step 1]</b> $\\dfrac{z}{1+z^2}$가 실수이므로 $\\dfrac{z}{1+z^2} = \\overline{\\left(\\dfrac{z}{1+z^2}\\right)}$ 이 성립함. [cite: 736]\\n<b>[Step 2]</b> $z(1+\\bar{z}^2) = \\bar{z}(1+z^2) \\implies z+z\\bar{z}^2 = \\bar{z}+\\bar{z}z^2$ 임. [cite: 736]\\n<b>[Step 3]</b> $(z-\\bar{z}) - z\\bar{z}(z-\\bar{z}) = 0 \\implies (z-\\bar{z})(1-z\\bar{z}) = 0$ 임. [cite: 736]\\n<b>[Step 4]</b> $b \\ne 0$ 이므로 $z \\ne \\bar{z}$ 이며, $z\\bar{z} = a^2+b^2 = 1$ 임. [cite: 736]\\n복소수가 실수일 조건($w = \\bar{w}$)을 이용한 대수적 증명 과정의 무결성 확인. [cite: 736]"
+    "solution": "<b>[Step 1]</b> $\\dfrac{z}{1+z^2}$가 실수이므로 $\\dfrac{z}{1+z^2} = \\overline{\\left(\\dfrac{z}{1+z^2}\\right)}$ 이 성립함. [cite: 736]\\n<b>[Step 2]</b> $z(1+\\bar{z}^2) = \\bar{z}(1+z^2) \\implies z+z\\bar{z}^2 = \\bar{z}+\\bar{z}z^2$ 임. [cite: 736]\\n<b>[Step 3]</b> $(z-\\bar{z}) - z\\bar{z}(z-\\bar{z}) = 0 \\implies (z-\\bar{z})(1-z\\bar{z}) = 0$ 임. [cite: 736]\\n<b>[Step 4]</b> $b \\n e 0$ 이므로 $z \\n e \\bar{z}$ 이며, $z\\bar{z} = a^2+b^2 = 1$ 임. [cite: 736]\\n복소수가 실수일 조건($w = \\bar{w}$)을 이용한 대수적 증명 과정의 무결성 확인. [cite: 736]"
   },
   {
     "id": 15,
@@ -360,7 +360,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "content": "[서술형 2] 이차함수 $y=-x^2+4x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $4$배가 될 때, $a$의 최댓값을 구하시오. (단, $b \\ne 0$) [cite: 743]",
+    "content": "[서술형 2] 이차함수 $y=-x^2+4x$와 직선 $y=ax+b$가 점 $C$에서 접하고, 삼각형 $ABO$의 넓이가 삼각형 $ACD$ 넓이의 $4$배가 될 때, $a$의 최댓값을 구하시오. (단, $b \\n e 0$) [cite: 743]",
     "choices": [],
     "answer": "8",
     "solution": "<b>[Step 1]</b> 접점 $C$의 $x$좌표는 연립방정식의 중근인 $\\dfrac{4-a}{2}$ 임. $b = \\dfrac{(a-4)^2}{4}$ 임.\\n<b>[Step 2]</b> 넓이비가 $4:1$이면 닮음인 두 삼각형의 길이비는 $2:1$ 임.\\n<b>[Step 3]</b> $x$축 상의 거리비 $AO : AD = 2 : 1$ (또는 점 $A$가 $O, D$의 외분점) 관계를 이용함.\\n<b>[Step 4]</b> 이를 만족하는 $a$의 값을 구하면 $8, 4, 0, -4$ 등이 도출되며 이 중 최댓값은 $8$임. (수치 변형 결과)\\n넓이비 $\\to$ 길이비 변환 및 직선의 기울기 방향성 검증 완료."

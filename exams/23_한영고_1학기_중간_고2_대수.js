@@ -37,7 +37,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "로그의 뜻",
     "standardUnitOrder": 4,
-    "solution": "<b>[Logical Anchor]</b> 로그의 정의($\\log_a N = k \\iff a^k = N$)를 사용하여 미지수를 구함.\\n$i)  a  의 값 구하기$\\n$\\log_a 4 = 2 \\implies a^2 = 4$\\n$\\because a$는 로그의 밑이므로 $a>0$ 이고 $a \\ne 1$ 임.\\n$\\therefore a = 2$\\n$ii)  b  의 값 구하기$\\n$\\log_3 b = -1 \\implies b = 3^{-1} = \\frac{1}{3}$\\n$iii) 최종 비율 계산$\\n$\\frac{a}{b} = \\frac{2}{1/3} = 2 \\times 3 = 6$\\n$\\therefore 6$",
+    "solution": "<b>[Logical Anchor]</b> 로그의 정의($\\log_a N = k \\iff a^k = N$)를 사용하여 미지수를 구함.\\n$i)  a  의 값 구하기$\\n$\\log_a 4 = 2 \\implies a^2 = 4$\\n$\\because a$는 로그의 밑이므로 $a>0$ 이고 $a \\n e 1$ 임.\\n$\\therefore a = 2$\\n$ii)  b  의 값 구하기$\\n$\\log_3 b = -1 \\implies b = 3^{-1} = \\frac{1}{3}$\\n$iii) 최종 비율 계산$\\n$\\frac{a}{b} = \\frac{2}{1/3} = 2 \\times 3 = 6$\\n$\\therefore 6$",
     "level": "중"
   },
   {

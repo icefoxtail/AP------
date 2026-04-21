@@ -218,7 +218,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 삼차방정식 $x^3=1$의 허근은 $\\omega^2+\\omega+1=0$을 만족한다.\n조건 정리:\n$\\omega$는 $x^3=1$의 허근이므로\n$\\omega^3=1$, $\\omega\\neq1$, $\\omega^2+\\omega+1=0$\n이다.\n또한 $\\bar{\\omega}=\\omega^2$ 이다.\n풀이 과정:\n먼저\n$\\omega+\\bar{\\omega}=\\omega+\\omega^2=-1$\n이다.\n또\n$\\omega^2+\\bar{\\omega}^2=\\omega^2+\\omega$\n인데 $\\bar{\\omega}^2=(\\omega^2)^2=\\omega^4=\\omega$ 이므로\n$\\omega^2+\\bar{\\omega}^2=-1$\n이다.\n한편\n$1+\\omega^2=-\\omega$, $1+\\omega=-\\omega^2$\n이다.\n따라서 주어진 식은\n$\\frac{-1}{-\\omega}+\\frac{-1}{-\\omega^2}$\n$=\\frac{1}{\\omega}+\\frac{1}{\\omega^2}$\n이다.\n$\\omega^3=1$ 이므로\n$\\frac{1}{\\omega}=\\omega^2$, $\\frac{1}{\\omega^2}=\\omega$\n이다.\n따라서\n$\\frac{1}{\\omega}+\\frac{1}{\\omega^2}=\\omega+\\omega^2=-1$\n결론:\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 삼차방정식 $x^3=1$의 허근은 $\\omega^2+\\omega+1=0$을 만족한다.\n조건 정리:\n$\\omega$는 $x^3=1$의 허근이므로\n$\\omega^3=1$, $\\omega\\n eq1$, $\\omega^2+\\omega+1=0$\n이다.\n또한 $\\bar{\\omega}=\\omega^2$ 이다.\n풀이 과정:\n먼저\n$\\omega+\\bar{\\omega}=\\omega+\\omega^2=-1$\n이다.\n또\n$\\omega^2+\\bar{\\omega}^2=\\omega^2+\\omega$\n인데 $\\bar{\\omega}^2=(\\omega^2)^2=\\omega^4=\\omega$ 이므로\n$\\omega^2+\\bar{\\omega}^2=-1$\n이다.\n한편\n$1+\\omega^2=-\\omega$, $1+\\omega=-\\omega^2$\n이다.\n따라서 주어진 식은\n$\\frac{-1}{-\\omega}+\\frac{-1}{-\\omega^2}$\n$=\\frac{1}{\\omega}+\\frac{1}{\\omega^2}$\n이다.\n$\\omega^3=1$ 이므로\n$\\frac{1}{\\omega}=\\omega^2$, $\\frac{1}{\\omega^2}=\\omega$\n이다.\n따라서\n$\\frac{1}{\\omega}+\\frac{1}{\\omega^2}=\\omega+\\omega^2=-1$\n결론:\n따라서 정답은 ②이다."
   },
   {
     "id": 12,

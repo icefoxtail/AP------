@@ -79,7 +79,7 @@ window.questionBank = [
       "순환소수는 유한소수이다."
     ],
     "answer": "①",
-    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{b}{a}$ ($a, b$는 정수, $a \\neq 0$) 꼴로 나타낼 수 있는 수임.\\n① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\\n② 무한소수 중 순환소수는 유리수임.\\n③ 정수가 아닌 유리수는 유한소수이거나 순환소수임.\\n④ 유한소수는 모두 유리수임.\\n$\\therefore$ ①"
+    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{b}{a}$ ($a, b$는 정수, $a \\n eq 0$) 꼴로 나타낼 수 있는 수임.\\n① 모든 순환소수는 분수 꼴로 나타낼 수 있는 유리수임. (참)\\n② 무한소수 중 순환소수는 유리수임.\\n③ 정수가 아닌 유리수는 유한소수이거나 순환소수임.\\n④ 유한소수는 모두 유리수임.\\n$\\therefore$ ①"
   },
   {
     "id": 5,
@@ -299,7 +299,7 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "⑤",
-    "solution": "$(3+a)x \\le 7$\\n일차부등식이려면 $x$의 계수인 $(3+a) \\neq 0$ 이어야 함.\\n$\\implies a \\neq -3$\\n$\\therefore$ ⑤"
+    "solution": "$(3+a)x \\le 7$\\n일차부등식이려면 $x$의 계수인 $(3+a) \\n eq 0$ 이어야 함.\\n$\\implies a \\n eq -3$\\n$\\therefore$ ⑤"
   },
   {
     "id": 16,

@@ -1,0 +1,404 @@
+window.examTitle = "중1 수학 일차방정식의 활용 기본 유형 2차 20제 (정답 균등 분배)";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "어떤 수 $x$에서 $5$를 빼고 $4$를 곱하면 $36$이 된다. 이 어떤 수는 얼마인가?",
+    "choices": [
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    "answer": "4",
+    "solution": "어떤 수를 $x$라 하면, $4(x - 5) = 36\\nx - 5 = 9 \\\\implies x = 14\\n\\\\therefore 4",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 2,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "연속하는 두 짝수의 합이 $54$이다. 두 짝수 중 작은 수는 얼마인가?",
+    "choices": [
+      "24",
+      "26",
+      "28",
+      "30",
+      "32"
+    ],
+    "answer": "2",
+    "solution": "작은 짝수를 $x$라 하면 큰 짝수는 $x + 2$이다.\\nx + (x + 2) = 54\\n2x + 2 = 54 \\\\implies 2x = 52 \\\\implies x = 26\\n\\\\therefore 2",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 3,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "연속하는 세 자연수의 합이 $78$이다. 이 중 가장 큰 수는 얼마인가?",
+    "choices": [
+      "27",
+      "28",
+      "29",
+      "30",
+      "31"
+    ],
+    "answer": "1",
+    "solution": "가운데 자연수를 $x$라 하면, 세 자연수는 $x-1, x, x+1$이다.\\n(x - 1) + x + (x + 1) = 78\\n3x = 78 \\\\implies x = 26\\n가장 큰 수는 $x + 1 = 27$이다.\\n\\\\therefore 1",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 4,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "십의 자리 숫자가 $5$인 두 자리 자연수가 있다. 이 자연수의 십의 자리 숫자와 일의 자리 숫자를 바꾼 수는 처음 수보다 $9$만큼 크다고 한다. 처음 수는 얼마인가?",
+    "choices": [
+      "52",
+      "53",
+      "54",
+      "55",
+      "56"
+    ],
+    "answer": "5",
+    "solution": "일의 자리 숫자를 $x$라 하면, 처음 수는 $50 + x$, 바꾼 수는 $10x + 5$이다.\\n10x + 5 = (50 + x) + 9\\n9x = 54 \\\\implies x = 6\\n처음 수는 $56$이다.\\n\\\\therefore 5",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 5,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "올해 어머니의 나이는 $45$세, 아들의 나이는 $13$세이다. 어머니의 나이가 아들의 나이의 $3$배가 되는 것은 몇 년 후인가?",
+    "choices": [
+      "1년 후",
+      "2년 후",
+      "3년 후",
+      "4년 후",
+      "5년 후"
+    ],
+    "answer": "3",
+    "solution": "$x$년 후라 하면, $45 + x = 3(13 + x)\\n45 + x = 39 + 3x \\\\implies 2x = 6 \\\\implies x = 3\\n\\\\therefore 3",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 6,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "현재 삼촌과 조카의 나이의 합은 $44$세이다. $4$년 후 삼촌의 나이가 조카의 나이의 $3$배가 될 때, 현재 조카의 나이는 몇 살인가?",
+    "choices": [
+      "8살",
+      "9살",
+      "10살",
+      "11살",
+      "12살"
+    ],
+    "answer": "2",
+    "solution": "현재 조카의 나이를 $x$라 하면, 삼촌의 나이는 $44 - x$이다.\\n(44 - x) + 4 = 3(x + 4)\\n48 - x = 3x + 12 \\\\implies 4x = 36 \\\\implies x = 9\\n\\\\therefore 2",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 7,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "현재 아버지의 나이는 $48$세, 딸의 나이는 $16$세이다. 아버지의 나이가 딸의 나이의 $2$배가 되는 것은 몇 년 후인가?",
+    "choices": [
+      "12년 후",
+      "13년 후",
+      "14년 후",
+      "15년 후",
+      "16년 후"
+    ],
+    "answer": "5",
+    "solution": "$x$년 후라 하면, $48 + x = 2(16 + x)\\n48 + x = 32 + 2x \\\\implies x = 16\\n\\\\therefore 5",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 8,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "형은 $17$살, 동생은 $11$살이다. 두 사람의 나이의 합이 $50$살이 되는 것은 몇 년 후인가?",
+    "choices": [
+      "8년 후",
+      "9년 후",
+      "10년 후",
+      "11년 후",
+      "12년 후"
+    ],
+    "answer": "4",
+    "solution": "$x$년 후라 하면, (17 + x) + (11 + x) = 50\\n28 + 2x = 50 \\\\implies 2x = 22 \\\\implies x = 11\\n\\\\therefore 4",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 9,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "가로의 길이가 세로의 길이의 $3$배인 직사각형이 있다. 둘레의 길이가 $40\\\\text{cm}$일 때, 세로의 길이는 몇 $\\\\text{cm}$인가?",
+    "choices": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "1",
+    "solution": "세로를 $x$라 하면 가로는 $3x$이다.\\n2(3x + x) = 40 \\\\implies 8x = 40 \\\\implies x = 5\\n\\\\therefore 1",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 10,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "밑변의 길이가 $12\\\\text{cm}$이고 넓이가 $54\\\\text{cm}^2$인 삼각형이 있다. 이 삼각형의 높이는 몇 $\\\\text{cm}$인가?",
+    "choices": [
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "answer": "3",
+    "solution": "높이를 $x$라 하면, $\\\\frac{1}{2} \\\\times 12 \\\\times x = 54\\n6x = 54 \\\\implies x = 9\\n\\\\therefore 3",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 11,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "한 변의 길이가 $x\\\\text{cm}$인 정오각형이 있다. 이 정오각형의 둘레의 길이가 $45\\\\text{cm}$일 때, $x$의 값은 얼마인가?",
+    "choices": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "5",
+    "solution": "정오각형의 변은 $5$개이므로, $5x = 45 \\\\implies x = 9\\n\\\\therefore 5",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 12,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "세로의 길이가 가로의 길이보다 $3\\\\text{cm}$ 더 짧은 직사각형이 있다. 둘레의 길이가 $34\\\\text{cm}$일 때, 가로의 길이는 몇 $\\\\text{cm}$인가?",
+    "choices": [
+      "10",
+      "11",
+      "12",
+      "13",
+      "14"
+    ],
+    "answer": "1",
+    "solution": "가로를 $x$라 하면 세로는 $x - 3$이다.\\n2(x + x - 3) = 34 \\\\implies 4x - 6 = 34 \\\\implies 4x = 40 \\\\implies x = 10\\n\\\\therefore 1",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 13,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "$1000$원짜리 음료수와 $700$원짜리 과자를 합하여 $12$개를 사고 $10200$원을 지불했다. 음료수는 몇 개 샀는가?",
+    "choices": [
+      "4개",
+      "5개",
+      "6개",
+      "7개",
+      "8개"
+    ],
+    "answer": "3",
+    "solution": "음료수를 $x$개라 하면 과자는 $12 - x$개이다.\\n1000x + 700(12 - x) = 10200\\n300x + 8400 = 10200 \\\\implies 300x = 1800 \\\\implies x = 6\\n\\\\therefore 3",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 14,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "한 개에 $800$원인 사과와 한 개에 $1200$원인 배를 합하여 $10$개를 샀다. 총 가격이 $10400$원일 때, 배는 몇 개 샀는가?",
+    "choices": [
+      "5개",
+      "6개",
+      "7개",
+      "8개",
+      "9개"
+    ],
+    "answer": "2",
+    "solution": "배를 $x$개라 하면 사과는 $10 - x$개이다.\\n1200x + 800(10 - x) = 10400\\n400x + 8000 = 10400 \\\\implies 400x = 2400 \\\\implies x = 6\\n\\\\therefore 2",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 15,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "어떤 물건의 정가에서 $3000$원을 할인받아 $15000$원에 샀다. 이 물건의 정가는 얼마인가?",
+    "choices": [
+      "15000원",
+      "16000원",
+      "17000원",
+      "18000원",
+      "19000원"
+    ],
+    "answer": "4",
+    "solution": "정가를 $x$라 하면, $x - 3000 = 15000 \\\\implies x = 18000\\n\\\\therefore 4",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 16,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "한 권에 $1500$원인 공책을 여러 권 사고 $1000$원짜리 상자에 담았더니 총 비용이 $11500$원이었다. 공책은 몇 권 샀는가?",
+    "choices": [
+      "7권",
+      "8권",
+      "9권",
+      "10권",
+      "11권"
+    ],
+    "answer": "1",
+    "solution": "공책을 $x$권 샀다고 하면, $1500x + 1000 = 11500\\n1500x = 10500 \\\\implies x = 7\\n\\\\therefore 1",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 17,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "주차장에 자동차와 오토바이가 합쳐서 $20$대 있다. 바퀴의 수의 합이 $64$개일 때, 자동차는 몇 대인가?",
+    "choices": [
+      "10대",
+      "11대",
+      "12대",
+      "13대",
+      "14대"
+    ],
+    "answer": "3",
+    "solution": "자동차를 $x$대라 하면, 오토바이는 $20 - x$대이다.\\n4x + 2(20 - x) = 64\\n2x + 40 = 64 \\\\implies 2x = 24 \\\\implies x = 12\\n\\\\therefore 3",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 18,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "길이가 $80\\\\text{cm}$인 철사를 두 개로 잘랐는데, 긴 철사가 짧은 철사보다 $14\\\\text{cm}$ 더 길었다. 짧은 철사의 길이는 몇 $\\\\text{cm}$인가?",
+    "choices": [
+      "32",
+      "33",
+      "34",
+      "35",
+      "36"
+    ],
+    "answer": "2",
+    "solution": "짧은 철사의 길이를 $x$라 하면 긴 철사는 $x + 14$이다.\\nx + (x + 14) = 80 \\\\implies 2x = 66 \\\\implies x = 33\\n\\\\therefore 2",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 19,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "돼지저금통에 $500$원짜리 동전과 $100$원짜리 동전이 합쳐서 $30$개 들어있다. 총 금액이 $9400$원일 때, $500$원짜리 동전의 개수는?",
+    "choices": [
+      "12개",
+      "13개",
+      "14개",
+      "15개",
+      "16개"
+    ],
+    "answer": "5",
+    "solution": "$500$원짜리 동전을 $x$개라 하면 $100$원짜리 동전은 $30 - x$개이다.\\n500x + 100(30 - x) = 9400\\n400x + 3000 = 9400 \\\\implies 400x = 6400 \\\\implies x = 16\\n\\\\therefore 5",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  },
+  {
+    "id": 20,
+    "level": "하",
+    "category": "일차방정식의 활용",
+    "content": "남학생과 여학생을 합하여 $35$명인 반이 있다. 남학생 수가 여학생 수보다 $3$명 더 많을 때, 남학생 수는 몇 명인가?",
+    "choices": [
+      "16명",
+      "17명",
+      "18명",
+      "19명",
+      "20명"
+    ],
+    "answer": "4",
+    "solution": "여학생 수를 $x$라 하면 남학생 수는 $x + 3$명이다.\\nx + (x + 3) = 35 \\\\implies 2x = 32 \\\\implies x = 16\\n남학생 수는 $16 + 3 = 19$명이다.\\n\\\\therefore 4",
+    "originalCategory": "",
+    "standardCourse": "",
+    "standardUnitKey": "",
+    "standardUnit": "",
+    "standardUnitOrder": ""
+  }
+];

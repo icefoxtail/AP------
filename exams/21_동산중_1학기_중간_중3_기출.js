@@ -443,9 +443,7 @@ window.questionBank = [
   {
     "id": 23,
     "content": "$2\\sqrt{3}$의 정수부분을 $a$, 소수부분을 $b$라고 할 때, $a, b$의 값과 $\\sqrt{3}a-3b$의 값을 구하여라. [7점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "a=3, b=2\\sqrt{3}-3, 값: 9-3\\sqrt{3}",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -459,9 +457,7 @@ window.questionBank = [
   {
     "id": 24,
     "content": "$AB=PB, CD=CQ$일 때 점 P에 대응하는 수, Q에 대응하는 수, $PQ$의 길이를 구하여라. [7점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "p=2-\\sqrt{5}, q=5+\\sqrt{5}, PQ=3+2\\sqrt{5}",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -475,9 +471,7 @@ window.questionBank = [
   {
     "id": 25,
     "content": "다음 두 식을 인수분해하고 공통인수를 써라. [6점]\\n$[x^{2}-4y^{2}, 3x+6y]$",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "x+2y",
     "category": "인수분해",
     "originalCategory": "인수분해",

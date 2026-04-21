@@ -269,7 +269,7 @@ window.questionBank = [
     "standardUnitKey": "STAT-02",
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 2,
-    "content": "아래의 그림과 같은 도로망이 있다. A지점에서 출발하여 B지점까지 최단거리로 갈 때, P지점을 거치지 않고 가는 경우의 수는? (단, 끊어진 도로는 통행할 수 없다.) [4.4점]<br><svg width=\"260\" height=\"150\" viewBox=\"0 0 260 150\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; margin:10px auto;\"><br>  <line x1=\"20\" y1=\"20\" x2=\"230\" y2=\"20\" stroke=\"black\" stroke-width=\"1\"/><br>  <line x1=\"20\" y1=\"50\" x2=\"230\" y2=\"50\" stroke=\"black\" stroke-width=\"1\"/><br>  <line x1=\"20\" y1=\"80\" x2=\"230\" y2=\"80\" stroke=\"black\" stroke-width=\"1\"/><br>  <line x1=\"20\" y1=\"110\" x2=\"230\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/><br>  <br>  <line x1=\"20\" y1=\"20\" x2=\"20\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"80\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"80\" y1=\"20\" x2=\"80\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"110\" y1=\"20\" x2=\"110\" y2=\"50\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"110\" y1=\"80\" x2=\"110\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/><br>  <line x1=\"140\" y1=\"20\" x2=\"140\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"170\" y1=\"50\" x2=\"170\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"200\" y1=\"20\" x2=\"200\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <circle cx=\"20\" cy=\"20\" r=\"3\" fill=\"black\"/><text x=\"10\" y=\"15\" font-size=\"12\">A</text><br>  <circle cx=\"200\" cy=\"110\" r=\"3\" fill=\"black\"/><text x=\"205\" y=\"125\" font-size=\"12\">B</text><br>  <circle cx=\"140\" cy=\"50\" r=\"4\" fill=\"blue\"/><text x=\"145\" y=\"45\" font-size=\"12\" fill=\"blue\" font-weight=\"bold\">P</text><br></svg>",
+    "content": "아래의 그림과 같은 도로망이 있다. A지점에서 출발하여 B지점까지 최단거리로 갈 때, P지점을 거치지 않고 가는 경우의 수는? (단, 끊어진 도로는 통행할 수 없다.) [4.4점]<br><svg width=\"260\" height=\"150\" viewBox=\"0 0 260 150\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; margin:10px auto;\">  <line x1=\"20\" y1=\"20\" x2=\"230\" y2=\"20\" stroke=\"black\" stroke-width=\"1\"/>  <line x1=\"20\" y1=\"50\" x2=\"230\" y2=\"50\" stroke=\"black\" stroke-width=\"1\"/>  <line x1=\"20\" y1=\"80\" x2=\"230\" y2=\"80\" stroke=\"black\" stroke-width=\"1\"/>  <line x1=\"20\" y1=\"110\" x2=\"230\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/>    <line x1=\"20\" y1=\"20\" x2=\"20\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"80\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"80\" y1=\"20\" x2=\"80\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"110\" y1=\"20\" x2=\"110\" y2=\"50\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"110\" y1=\"80\" x2=\"110\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/>  <line x1=\"140\" y1=\"20\" x2=\"140\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"170\" y1=\"50\" x2=\"170\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <line x1=\"200\" y1=\"20\" x2=\"200\" y2=\"110\" stroke=\"black\" stroke-width=\"1\"/> <circle cx=\"20\" cy=\"20\" r=\"3\" fill=\"black\"/><text x=\"10\" y=\"15\" font-size=\"12\">A</text>  <circle cx=\"200\" cy=\"110\" r=\"3\" fill=\"black\"/><text x=\"205\" y=\"125\" font-size=\"12\">B</text>  <circle cx=\"140\" cy=\"50\" r=\"4\" fill=\"blue\"/><text x=\"145\" y=\"45\" font-size=\"12\" fill=\"blue\" font-weight=\"bold\">P</text></svg>",
     "choices": [
       "28",
       "29",
@@ -329,7 +329,7 @@ window.questionBank = [
     "standardUnitKey": "STAT-01",
     "standardUnit": "경우의 수",
     "standardUnitOrder": 1,
-    "content": "전체집합 $U=\\{0, 1, 2, 3, 4\\}$의 두 부분집합 $A, B$에 대하여 다음의 조건을 만족하도록 하는 $A, B$의 순서쌍 $(A, B)$의 개수를 구하면? [4.4점]<br><조 건><br>(가) $A \\cup B = U$<br>(나) $A \\cap B \\neq \\varnothing$",
+    "content": "전체집합 $U=\\{0, 1, 2, 3, 4\\}$의 두 부분집합 $A, B$에 대하여 다음의 조건을 만족하도록 하는 $A, B$의 순서쌍 $(A, B)$의 개수를 구하면? [4.4점]<br><조 건><br>(가) $A \\cup B = U$<br>(나) $A \\cap B \\n eq \\varnothing$",
     "choices": [
       "128",
       "179",
@@ -390,9 +390,7 @@ window.questionBank = [
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 2,
     "content": "집합 $X=\\{1, 2, 3, 4, 5\\}$에 대하여 $X$에서 $X$로의 함수 $f$중에서 다음 조건을 만족시키는 함수의 개수를 구하고, 그 과정을 함께 서술하시오. [5점]<br><조 건><br>(가) $f(2)$는 2 이하의 자연수이다.<br>(나) $f(1) \\le f(2) \\le f(3) < f(4) \\le f(5)$",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "40",
     "solution": "조건 (가)에서 $f(2)$는 1 또는 2이다.\n\n경우 1) $f(2) = 1$ 인 경우\n조건 (나)에 의해 $f(1) \\le 1$ 이므로 $f(1) = 1$ (1가지).\n$1 \\le f(3) < f(4) \\le f(5) \\le 5$ 를 만족하는 경우의 수를 구한다.\n$f(3), f(4), f(5)$를 1부터 5까지 중 선택하되, 전체 $1 \\le f(3) \\le f(4) \\le f(5) \\le 5$ 인 경우에서 $f(3)=f(4)$인 경우를 뺀다.\n전체 경우: ${}_5H_3 = {}_7C_3 = 35$가지\n$f(3)=f(4)$인 경우: $1 \\le f(3)=f(4) \\le f(5) \\le 5$ 이므로 ${}_5H_2 = {}_6C_2 = 15$가지\n따라서 이 경우의 함수 개수는 $1 \\times (35 - 15) = 20$가지이다.\n\n경우 2) $f(2) = 2$ 인 경우\n$f(1) \\le 2$ 이므로 $f(1)$은 1, 2 중 하나 (2가지).\n$2 \\le f(3) < f(4) \\le f(5) \\le 5$ 를 만족하는 경우의 수를 구한다.\n$f(3), f(4), f(5)$를 2부터 5까지(4개) 중 선택하되, 위와 같은 방법으로 계산한다.\n전체 경우: $2 \\le f(3) \\le f(4) \\le f(5) \\le 5 \\implies {}_4H_3 = {}_6C_3 = 20$가지\n$f(3)=f(4)$인 경우: $2 \\le f(3)=f(4) \\le f(5) \\le 5 \\implies {}_4H_2 = {}_5C_2 = 10$가지\n따라서 $20 - 10 = 10$가지이고, $f(1)$을 선택하는 경우와 곱하면 $2 \\times 10 = 20$가지이다.\n\n전체 경우의 수는 $20 + 20 = 40$가지이다."
   },
@@ -406,11 +404,9 @@ window.questionBank = [
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 2,
     "content": "파란 펜 1자루와 빨간 펜 7자루를 세 학생 A, B, C에게 남김없이 나누어주려고 한다. 다음 경우의 수를 각각 구하고 그 과정을 함께 서술하시오. (단, 같은 색의 펜끼리는 서로 구분하지 않는다.) [총 6점]<br>(1) 펜을 받지 못하는 사람이 있을 수 있는 경우 [3점]<br>(2) 각 사람이 1자루 이상의 볼펜을 받도록 나누어주는 경우 [3점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "(1) 108\n(2) 63",
-    "solution": "(1) 파란 펜 1자루를 세 명 중 1명에게 나누어 주는 방법은 3가지이다.\n빨간 펜 7자루를 세 명에게 중복을 허락하여 나누어 주는 방법은 ${}_3H_7 = {}_{3+7-1}C_7 = {}_9C_2 = 36$가지이다.\n두 사건은 독립적으로 발생하므로 총 경우의 수는 $3 \\times 36 = 108$가지이다.\n\n(2) 각 사람이 1자루 이상의 펜을 받아야 한다.\n파란 펜을 받을 학생을 정하는 방법은 3가지이다. 그 중 A가 받았다고 가정하자.\nA는 이미 펜을 받았으므로, 빨간 펜 7자루를 나누어 줄 때 B와 C는 적어도 1자루씩 받아야 하고 A는 받지 않아도 된다.\nA, B, C가 받는 빨간 펜의 개수를 각각 $a, b, c$라 하면 $a+b+c=7$ ($a \\ge 0$, $b \\ge 1$, $c \\ge 1$) 이다.\n$b' = b-1$, $c' = c-1$ 로 치환하면 $a + b' + c' = 5$ ($a, b', c' \\ge 0$) 이다.\n이를 만족하는 음이 아닌 정수해의 개수는 ${}_3H_5 = {}_{3+5-1}C_5 = {}_7C_2 = 21$가지이다.\n따라서 전체 경우의 수는 $3 \\times 21 = 63$가지이다."
+    "solution": "(1) 파란 펜 1자루를 세 명 중 1명에게 나누어 주는 방법은 3가지이다.\n빨간 펜 7자루를 세 명에게 중복을 허락하여 나누어 주는 방법은 ${}_3H_7 = {}_{3+7-1}C_7 = {}_9C_2 = 36$가지이다.\n두 사건은 독립적으로 발생하므로 총 경우의 수는 $3 \\times 36 = 108$가지이다.\n\n(2) 각 사람이 1자루 이상의 펜을 받아야 한다.\n파란 펜을 받을 학생을 정하는 방법은 3가지이다. 그 중 A가 받았다고 가정하자.\n A는 이미 펜을 받았으므로, 빨간 펜 7자루를 나누어 줄 때 B와 C는 적어도 1자루씩 받아야 하고 A는 받지 않아도 된다.\n A, B, C가 받는 빨간 펜의 개수를 각각 $a, b, c$라 하면 $a+b+c=7$ ($a \\ge 0$, $b \\ge 1$, $c \\ge 1$) 이다.\n$b' = b-1$, $c' = c-1$ 로 치환하면 $a + b' + c' = 5$ ($a, b', c' \\ge 0$) 이다.\n이를 만족하는 음이 아닌 정수해의 개수는 ${}_3H_5 = {}_{3+5-1}C_5 = {}_7C_2 = 21$가지이다.\n따라서 전체 경우의 수는 $3 \\times 21 = 63$가지이다."
   },
   {
     "id": 22,
@@ -421,7 +417,7 @@ window.questionBank = [
     "standardUnitKey": "STAT-02",
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 2,
-    "content": "1학년 학생 2명, 2학년 학생 3명, 3학년 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [4.8점]<br><svg width='180' height='180' viewBox='0 0 200 200' style='display:block; margin: 10px auto;'><br>  <circle cx='100' cy='100' r='70' stroke='black' stroke-width='2' fill='none'/><br>  <circle cx='170' cy='100' r='5' fill='black'/><circle cx='149' cy='149' r='5' fill='black'/><br>  <circle cx='100' cy='170' r='5' fill='black'/><circle cx='51' cy='149' r='5' fill='black'/><br>  <circle cx='30' cy='100' r='5' fill='black'/><circle cx='51' cy='51' r='5' fill='black'/><br>  <circle cx='100' cy='30' r='5' fill='black'/><circle cx='149' cy='51' r='5' fill='black'/><br></svg><br><조 건><br>(가) 같은 학년 학생끼리는 서로 이웃하여 앉지 않는다.<br>(나) 같은 학년 학생끼리는 서로 마주보고 앉지 않는다.",
+    "content": "1학년 학생 2명, 2학년 학생 3명, 3학년 학생 3명이 일정한 간격을 두고 원 모양의 탁자에 다음 조건을 만족시키도록 모두 둘러앉는 경우의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [4.8점]<br><svg width='180' height='180' viewBox='0 0 200 200' style='display:block; margin: 10px auto;'>  <circle cx='100' cy='100' r='70' stroke='black' stroke-width='2' fill='none'/>  <circle cx='170' cy='100' r='5' fill='black'/><circle cx='149' cy='149' r='5' fill='black'/>  <circle cx='100' cy='170' r='5' fill='black'/><circle cx='51' cy='149' r='5' fill='black'/>  <circle cx='30' cy='100' r='5' fill='black'/><circle cx='51' cy='51' r='5' fill='black'/>  <circle cx='100' cy='30' r='5' fill='black'/><circle cx='149' cy='51' r='5' fill='black'/></svg><br><조 건><br>(가) 같은 학년 학생끼리는 서로 이웃하여 앉지 않는다.<br>(나) 같은 학년 학생끼리는 서로 마주보고 앉지 않는다.",
     "choices": [
       "72",
       "144",
@@ -441,10 +437,8 @@ window.questionBank = [
     "standardUnitKey": "STAT-02",
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 2,
-    "content": "아래의 그림과 같이 밑면이 정사각형이고 옆면이 모두 합동인 사각뿔의 5개의 면에 서로 다른 6가지 색 중 5가지 색을 사용하여 칠하는 경우의 수를 구하고, 그 과정을 함께 서술하시오. (단, 한 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.) [4점]<br><svg width='150' height='150' viewBox='0 0 150 150' style='display:block; margin: 10px auto;'><br>  <line x1='75' y1='20' x2='30' y2='100' stroke='black' stroke-width='1.5'/><br>  <line x1='75' y1='20' x2='120' y2='100' stroke='black' stroke-width='1.5'/><br>  <line x1='75' y1='20' x2='140' y2='80' stroke='black' stroke-width='1.5'/><br>  <line x1='75' y1='20' x2='50' y2='80' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/><br>  <polyline points='30,100 120,100 140,80' fill='none' stroke='black' stroke-width='1.5'/><br>  <polyline points='30,100 50,80 140,80' fill='none' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/><br></svg>",
-    "choices": [
-      " "
-    ],
+    "content": "아래의 그림과 같이 밑면이 정사각형이고 옆면이 모두 합동인 사각뿔의 5개의 면에 서로 다른 6가지 색 중 5가지 색을 사용하여 칠하는 경우의 수를 구하고, 그 과정을 함께 서술하시오. (단, 한 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 본다.) [4점]<br><svg width='150' height='150' viewBox='0 0 150 150' style='display:block; margin: 10px auto;'>  <line x1='75' y1='20' x2='30' y2='100' stroke='black' stroke-width='1.5'/>  <line x1='75' y1='20' x2='120' y2='100' stroke='black' stroke-width='1.5'/>  <line x1='75' y1='20' x2='140' y2='80' stroke='black' stroke-width='1.5'/>  <line x1='75' y1='20' x2='50' y2='80' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/>  <polyline points='30,100 120,100 140,80' fill='none' stroke='black' stroke-width='1.5'/>  <polyline points='30,100 50,80 140,80' fill='none' stroke='gray' stroke-width='1' stroke-dasharray='4,2'/></svg>",
+    "choices": [],
     "answer": "180",
     "solution": "[풀이] 수식 중심 전개\n1) 6가지 색 중 5가지 색을 선택하는 경우: ${}_6C_5 = 6$\n2) 선택된 5색 중 밑면을 칠하는 경우: 5\n3) 옆면 4개를 칠하는 원순열의 수: $(4-1)! = 6$\n$\\therefore 6 \\times 5 \\times 6 = 180$\n---\n[결론] 정답: 180이다."
   },
@@ -458,9 +452,7 @@ window.questionBank = [
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 2,
     "content": "6개의 숫자 0, 1, 2, 3, 4, 5를 모두 사용하여 만들 수 있는 여섯 자리 자연수 중에서 4의 배수의 개수를 구하고, 그 과정을 함께 서술하시오. [5점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "144",
     "solution": "여섯 자리 자연수가 4의 배수가 되려면 끝의 두 자리 수가 4의 배수이어야 한다.\n주어진 숫자 0, 1, 2, 3, 4, 5로 만들 수 있는 서로 다른 숫자로 구성된 끝 두 자리 4의 배수는 04, 12, 20, 24, 32, 40, 52 의 7가지이다.\n각 경우에 대하여 나머지 4개의 숫자를 앞의 4자리에 배열하는 경우의 수를 구한다.\n\n1) 0이 포함된 경우 (04, 20, 40): 3가지\n끝 두 자리에 0이 사용되었으므로, 남은 4개의 숫자를 앞의 4자리에 제한 없이 배열하면 된다. 경우의 수는 $4! = 24$가지이다.\n총 $3 \\times 24 = 72$가지.\n\n2) 0이 포함되지 않은 경우 (12, 24, 32, 52): 4가지\n끝 두 자리에 0이 사용되지 않았으므로, 남은 4개의 숫자 중에 0이 포함되어 있다.\n맨 앞자리에는 0이 올 수 없으므로, 맨 앞자리에 올 수 있는 숫자는 0을 제외한 3가지이고, 나머지 3자리에 남은 3개의 숫자를 배열하는 경우의 수는 $3!$이다.\n각 경우의 수는 $3 \\times 3! = 18$가지이다.\n총 $4 \\times 18 = 72$가지.\n\n따라서 구하는 4의 배수의 총 개수는 $72 + 72 = 144$가지이다."
   }

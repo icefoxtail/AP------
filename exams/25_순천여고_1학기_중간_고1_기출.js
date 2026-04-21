@@ -170,7 +170,7 @@ window.questionBank = [
     "id": 9,
     "level": "중",
     "category": "행렬",
-    "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\neq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
+    "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\n eq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -179,7 +179,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "3",
-    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개\\n$\\because a_{11}=2, a_{12}=-1, a_{21}=3, a_{22}=5$\\n$\\implies A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 5 \\end{pmatrix}$\\n$\\implies ㄱ.  -1+5=4  (참)$\\n$\\implies ㄴ.  (2, -1)  (참)$\\n$\\implies ㄷ.  -1-2(2)=-5 \\neq 3  (거짓)$\\n$\\therefore ㄱ, ㄴ$",
+    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개\\n$\\because a_{11}=2, a_{12}=-1, a_{21}=3, a_{22}=5$\\n$\\implies A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 5 \\end{pmatrix}$\\n$\\implies ㄱ.  -1+5=4  (참)$\\n$\\implies ㄴ.  (2, -1)  (참)$\\n$\\implies ㄷ.  -1-2(2)=-5 \\n eq 3  (거짓)$\\n$\\therefore ㄱ, ㄴ$",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",
@@ -400,7 +400,7 @@ window.questionBank = [
     "category": "이차함수의 최대최소",
     "content": "[서술형 3/상] $0 \\le x \\le 3$에서 $y=(x^{2}-4x+6)^{2}-2a(x^{2}-4x+6)+a^{2}+1$의 최솟값이 5일 때 $a$의 값을 구하시오. [8.0점]",
     "answer": "0, 8",
-    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류\\n$\\implies t=x^2-4x+6 \\implies t \\in [2, 6] \\quad (x \\in [0, 3])$\\n$\\implies y=(t-a)^2+1$\\n$i)  a < 2 \\implies f(2)=5 \\implies a=0$\\n$ii)  2 \\le a \\le 6 \\implies f(a)=1 \\neq 5$\\n$iii)  a > 6 \\implies f(6)=5 \\implies a=8$\\n$\\therefore a=0, 8$\\n\\n[Figure]\\n좌표계: t-y 평면, t축 범위 [2, 6]\\n도형 관계: 포물선의 꼭짓점 (a, 1)의 이동에 따른 최소점 변화",
+    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류\\n$\\implies t=x^2-4x+6 \\implies t \\in [2, 6] \\quad (x \\in [0, 3])$\\n$\\implies y=(t-a)^2+1$\\n$i)  a < 2 \\implies f(2)=5 \\implies a=0$\\n$ii)  2 \\le a \\le 6 \\implies f(a)=1 \\n eq 5$\\n$iii)  a > 6 \\implies f(6)=5 \\implies a=8$\\n$\\therefore a=0, 8$\\n\\n[Figure]\\n좌표계: t-y 평면, t축 범위 [2, 6]\\n도형 관계: 포물선의 꼭짓점 (a, 1)의 이동에 따른 최소점 변화",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "",

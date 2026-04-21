@@ -617,7 +617,7 @@ window.questionBank = [
     "standardUnitKey": "HH15-SA-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "solution": "$a^3+b^3+c^3-3abc = \\frac{1}{2}(a+b+c)\\{(a-b)^2+(b-c)^2+(c-a)^2\\} = 0$\\n$a, b, c$는 변의 길이이므로 $a+b+c \\neq 0$\\n$\\implies (a-b)^2+(b-c)^2+(c-a)^2 = 0$\\n$\\implies a=b=c$\\n$\\therefore 정삼각형$",
+    "solution": "$a^3+b^3+c^3-3abc = \\frac{1}{2}(a+b+c)\\{(a-b)^2+(b-c)^2+(c-a)^2\\} = 0$\\n$a, b, c$는 변의 길이이므로 $a+b+c \\n eq 0$\\n$\\implies (a-b)^2+(b-c)^2+(c-a)^2 = 0$\\n$\\implies a=b=c$\\n$\\therefore 정삼각형$",
     "level": "중"
   },
   {

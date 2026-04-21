@@ -137,7 +137,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "\\\\sqrt{41-x} 가 정수가 되려면 41-x = k^2 (k는 0 이상의 정수) 꼴이어야 한다.\nx가 자연수이므로 41-x < 41 이다.\n41보다 작은 k^2 꼴의 수는 36, 25, 16, 9, 4, 1, 0 이다.\n41-x = 36 \\\\implies x=5\n41-x = 25 \\\\implies x=16\n41-x = 16 \\\\implies x=25\n41-x = 9 \\\\implies x=32\n41-x = 4 \\\\implies x=37\n41-x = 1 \\\\implies x=40\n41-x = 0 \\\\implies x=41\n따라서 자연수 x는 7개이다.\n\\\\therefore 4",
+    "solution": "\\\\sqrt{41-x} 가 정수가 되려면 41-x = k^2 (k는 0 이상의 정수) 꼴이어야 한다.\n x가 자연수이므로 41-x < 41 이다.\n41보다 작은 k^2 꼴의 수는 36, 25, 16, 9, 4, 1, 0 이다.\n41-x = 36 \\\\implies x=5\n41-x = 25 \\\\implies x=16\n41-x = 16 \\\\implies x=25\n41-x = 9 \\\\implies x=32\n41-x = 4 \\\\implies x=37\n41-x = 1 \\\\implies x=40\n41-x = 0 \\\\implies x=41\n따라서 자연수 x는 7개이다.\n\\\\therefore 4",
     "level": "중"
   },
   {
@@ -157,7 +157,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "각 수의 대략적인 값을 비교한다. \\\\sqrt{3} \\\\approx 1.732, \\\\sqrt{5} \\\\approx 2.236\nA = \\\\sqrt{5} - 2 \\\\approx 2.236 - 2 = 0.236\nB = 1 - \\\\sqrt{5} \\\\approx 1 - 2.236 = -1.236\nC = \\\\sqrt{3} \\\\approx 1.732\nD = 4 - \\\\sqrt{3} \\\\approx 4 - 1.732 = 2.268\n대소 관계를 비교하면 B < A < C < D 이다.\n가장 작은 수는 B, 가장 큰 수는 D 이다.\n\\\\therefore 3",
+    "solution": "각 수의 대략적인 값을 비교한다. \\\\sqrt{3} \\\\approx 1.732, \\\\sqrt{5} \\\\approx 2.236\n A = \\\\sqrt{5} - 2 \\\\approx 2.236 - 2 = 0.236\n B = 1 - \\\\sqrt{5} \\\\approx 1 - 2.236 = -1.236\n C = \\\\sqrt{3} \\\\approx 1.732\n D = 4 - \\\\sqrt{3} \\\\approx 4 - 1.732 = 2.268\n대소 관계를 비교하면 B < A < C < D 이다.\n가장 작은 수는 B, 가장 큰 수는 D 이다.\n\\\\therefore 3",
     "level": "중"
   },
   {
@@ -197,7 +197,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "주어진 식을 통분하여 계산한다.\n\\\\frac{(\\\\sqrt{5}+2)^2 - (\\\\sqrt{5}-2)^2}{(\\\\sqrt{5}-2)(\\\\sqrt{5}+2)}\n= \\\\frac{(9 + 4\\\\sqrt{5}) - (9 - 4\\\\sqrt{5})}{5 - 4}\n= \\\\frac{8\\\\sqrt{5}}{1} = 8\\\\sqrt{5}\n따라서 a = 0, b = 8 이다.\na + b = 0 + 8 = 8 이다.\n\\\\therefore 2",
+    "solution": "주어진 식을 통분하여 계산한다.\n\\\\frac{(\\\\sqrt{5}+2)^2 - (\\\\sqrt{5}-2)^2}{(\\\\sqrt{5}-2)(\\\\sqrt{5}+2)}\n= \\\\frac{(9 + 4\\\\sqrt{5}) - (9 - 4\\\\sqrt{5})}{5 - 4}\n= \\\\frac{8\\\\sqrt{5}}{1} = 8\\\\sqrt{5}\n따라서 a = 0, b = 8 이다.\n a + b = 0 + 8 = 8 이다.\n\\\\therefore 2",
     "level": "중"
   },
   {
@@ -297,7 +297,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "곱셈공식의 변형을 이용한다.\\na^2+b^2 = (a+b)^2 - 2ab\\n10 = 4^2 - 2ab \\\\implies 10 = 16 - 2ab \\\\implies 2ab = 6 \\\\implies ab = 3\\n(a-b)^2 = (a+b)^2 - 4ab = 4^2 - 4(3) = 16 - 12 = 4\\n따라서 a-b = \\\\pm 2 이다.\\n\\\\therefore 3",
+    "solution": "곱셈공식의 변형을 이용한다.\\n a^2+b^2 = (a+b)^2 - 2ab\\n10 = 4^2 - 2ab \\\\implies 10 = 16 - 2ab \\\\implies 2ab = 6 \\\\implies ab = 3\\n(a-b)^2 = (a+b)^2 - 4ab = 4^2 - 4(3) = 16 - 12 = 4\\n따라서 a-b = \\\\pm 2 이다.\\n\\\\therefore 3",
     "level": "중"
   },
   {
@@ -357,7 +357,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "\\\\sqrt{A^2} = |A| 성질을 이용한다.\\n1 < x < 2 이므로 각 항의 부호를 판별한다.\\nx > 0 \\\\implies \\\\sqrt{x^2} = x\\nx - 1 > 0 \\\\implies \\\\sqrt{(x-1)^2} = x-1\\nx - 2 < 0 \\\\implies \\\\sqrt{(x-2)^2} = -(x-2) = -x+2\\nx - 3 < 0 \\\\implies \\\\sqrt{(x-3)^2} = -(x-3) = -x+3\\n주어진 식에 대입하여 정리한다.\\nx + (x-1) - (-x+2) - (-x+3)\\n= x + x - 1 + x - 2 + x - 3\\n= 4x - 6\\n\\\\therefore 2",
+    "solution": "\\\\sqrt{A^2} = |A| 성질을 이용한다.\\n1 < x < 2 이므로 각 항의 부호를 판별한다.\\n x > 0 \\\\implies \\\\sqrt{x^2} = x\\n x - 1 > 0 \\\\implies \\\\sqrt{(x-1)^2} = x-1\\n x - 2 < 0 \\\\implies \\\\sqrt{(x-2)^2} = -(x-2) = -x+2\\n x - 3 < 0 \\\\implies \\\\sqrt{(x-3)^2} = -(x-3) = -x+3\\n주어진 식에 대입하여 정리한다.\\n x + (x-1) - (-x+2) - (-x+3)\\n= x + x - 1 + x - 2 + x - 3\\n= 4x - 6\\n\\\\therefore 2",
     "level": "중"
   },
   {
@@ -377,7 +377,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "먼저 a, b의 분모를 유리화한다.\\na = \\\\frac{3(\\\\sqrt{12}-3)}{(\\\\sqrt{12}+3)(\\\\sqrt{12}-3)} = \\\\frac{3(2\\\\sqrt{3}-3)}{12-9} = 2\\\\sqrt{3}-3\\nb = \\\\frac{3(\\\\sqrt{12}+3)}{(\\\\sqrt{12}-3)(\\\\sqrt{12}+3)} = \\\\frac{3(2\\\\sqrt{3}+3)}{12-9} = 2\\\\sqrt{3}+3\\na, b의 합과 곱을 구한다.\\na+b = (2\\\\sqrt{3}-3) + (2\\\\sqrt{3}+3) = 4\\\\sqrt{3}\\nab = (2\\\\sqrt{3}-3)(2\\\\sqrt{3}+3) = 12 - 9 = 3\\n구하고자 하는 식을 변형한다.\\na^2 - 4ab + b^2 = a^2 + 2ab + b^2 - 6ab = (a+b)^2 - 6ab\\n값을 대입한다.\\n= (4\\\\sqrt{3})^2 - 6(3) = 48 - 18 = 30\\n\\\\therefore 3",
+    "solution": "먼저 a, b의 분모를 유리화한다.\\n a = \\\\frac{3(\\\\sqrt{12}-3)}{(\\\\sqrt{12}+3)(\\\\sqrt{12}-3)} = \\\\frac{3(2\\\\sqrt{3}-3)}{12-9} = 2\\\\sqrt{3}-3\\n b = \\\\frac{3(\\\\sqrt{12}+3)}{(\\\\sqrt{12}-3)(\\\\sqrt{12}+3)} = \\\\frac{3(2\\\\sqrt{3}+3)}{12-9} = 2\\\\sqrt{3}+3\\n a, b의 합과 곱을 구한다.\\n a+b = (2\\\\sqrt{3}-3) + (2\\\\sqrt{3}+3) = 4\\\\sqrt{3}\\n ab = (2\\\\sqrt{3}-3)(2\\\\sqrt{3}+3) = 12 - 9 = 3\\n구하고자 하는 식을 변형한다.\\n a^2 - 4ab + b^2 = a^2 + 2ab + b^2 - 6ab = (a+b)^2 - 6ab\\n값을 대입한다.\\n= (4\\\\sqrt{3})^2 - 6(3) = 48 - 18 = 30\\n\\\\therefore 3",
     "level": "중"
   },
   {
@@ -397,7 +397,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "식의 형태를 관찰하여 합이 같아지도록 두 개씩 짝지어 전개한다.\\nA = \\\\{(x-2)(x+4)\\\\} \\\\times \\\\{x(x+2)\\\\} - 9\\n= (x^2+2x-8)(x^2+2x) - 9\\nx^2+2x = t 로 치환한다.\\nA = (t-8)t - 9 = t^2 - 8t - 9\\n치환한 식을 인수분해한다.\\n= (t-9)(t+1)\\n원래 식을 대입한다.\\n= (x^2+2x-9)(x^2+2x+1) = (x^2+2x-9)(x+1)^2\\n다항식 A의 인수는 1, x+1, (x+1)^2, x^2+2x-9 등이다.\\n보기 중 x-3은 인수가 아니다.\\n\\\\therefore 3",
+    "solution": "식의 형태를 관찰하여 합이 같아지도록 두 개씩 짝지어 전개한다.\\n A = \\\\{(x-2)(x+4)\\\\} \\\\times \\\\{x(x+2)\\\\} - 9\\n= (x^2+2x-8)(x^2+2x) - 9\\n x^2+2x = t 로 치환한다.\\n A = (t-8)t - 9 = t^2 - 8t - 9\\n치환한 식을 인수분해한다.\\n= (t-9)(t+1)\\n원래 식을 대입한다.\\n= (x^2+2x-9)(x^2+2x+1) = (x^2+2x-9)(x+1)^2\\n다항식 A의 인수는 1, x+1, (x+1)^2, x^2+2x-9 등이다.\\n보기 중 x-3은 인수가 아니다.\\n\\\\therefore 3",
     "level": "중"
   },
   {
@@ -411,7 +411,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "각 수를 근호 안으로 넣어 크기를 비교한다.\na = -\\\\sqrt{(\\\\frac{3}{2})^2 \\\\times 5} = -\\\\sqrt{\\\\frac{9}{4} \\\\times 5} = -\\\\sqrt{\\\\frac{45}{4}} = -\\\\sqrt{11.25}\nb = -\\\\sqrt{4^2} = -\\\\sqrt{16}\na와 b를 비교하면 16 > 11.25 이므로 \\\\sqrt{16} > \\\\sqrt{11.25} 이다. 음수이므로 b < a 이다.\nc를 변형하면 c = -7 + 2\\\\sqrt{5} 이다.\nb와 c의 차를 구하여 비교한다.\nb - c = -4 - (-7+\\\\sqrt{20}) = 3 - \\\\sqrt{20} = \\\\sqrt{9} - \\\\sqrt{20} < 0 이므로 b < c 이다.\nc와 a의 차를 구하여 비교한다.\nc - a = (-7+2\\\\sqrt{5}) - (-\\\\frac{3}{2}\\\\sqrt{5}) = -7 + \\\\frac{7}{2}\\\\sqrt{5} = \\\\sqrt{(\\\\frac{7}{2})^2 \\\\times 5} - \\\\sqrt{49} = \\\\sqrt{\\\\frac{245}{4}} - \\\\sqrt{49} = \\\\sqrt{61.25} - \\\\sqrt{49} > 0 이므로 c > a 이다.\n따라서 세 수의 크기 관계는 b < a < c 이다.\n\\\\therefore b < a < c",
+    "solution": "각 수를 근호 안으로 넣어 크기를 비교한다.\n a = -\\\\sqrt{(\\\\frac{3}{2})^2 \\\\times 5} = -\\\\sqrt{\\\\frac{9}{4} \\\\times 5} = -\\\\sqrt{\\\\frac{45}{4}} = -\\\\sqrt{11.25}\n b = -\\\\sqrt{4^2} = -\\\\sqrt{16}\n a와 b를 비교하면 16 > 11.25 이므로 \\\\sqrt{16} > \\\\sqrt{11.25} 이다. 음수이므로 b < a 이다.\n c를 변형하면 c = -7 + 2\\\\sqrt{5} 이다.\n b와 c의 차를 구하여 비교한다.\n b - c = -4 - (-7+\\\\sqrt{20}) = 3 - \\\\sqrt{20} = \\\\sqrt{9} - \\\\sqrt{20} < 0 이므로 b < c 이다.\n c와 a의 차를 구하여 비교한다.\n c - a = (-7+2\\\\sqrt{5}) - (-\\\\frac{3}{2}\\\\sqrt{5}) = -7 + \\\\frac{7}{2}\\\\sqrt{5} = \\\\sqrt{(\\\\frac{7}{2})^2 \\\\times 5} - \\\\sqrt{49} = \\\\sqrt{\\\\frac{245}{4}} - \\\\sqrt{49} = \\\\sqrt{61.25} - \\\\sqrt{49} > 0 이므로 c > a 이다.\n따라서 세 수의 크기 관계는 b < a < c 이다.\n\\\\therefore b < a < c",
     "level": "중"
   },
   {
@@ -425,7 +425,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "주어진 다항식을 차수가 낮은 문자, 여기서는 x에 대하여 내림차순으로 정리한다.\nx^2 + (y+3)x - (2y^2-9y+4)\n상수항 부분을 y에 대하여 인수분해한다.\n2y^2-9y+4 = (2y-1)(y-4)\n이를 본래 식에 대입한다.\nx^2 + (y+3)x - (2y-1)(y-4)\n곱하여 -(2y-1)(y-4) 가 되고, 합하여 (y+3) 이 되는 두 일차식을 찾는다.\n(2y-1) + \\\\{-(y-4)\\\\} = 2y - 1 - y + 4 = y + 3\n조건을 만족하므로 전체 식을 인수분해한다.\n(x + (2y - 1))(x - (y - 4)) = (x+2y-1)(x-y+4)\n\\\\therefore (x+2y-1)(x-y+4)",
+    "solution": "주어진 다항식을 차수가 낮은 문자, 여기서는 x에 대하여 내림차순으로 정리한다.\n x^2 + (y+3)x - (2y^2-9y+4)\n상수항 부분을 y에 대하여 인수분해한다.\n2y^2-9y+4 = (2y-1)(y-4)\n이를 본래 식에 대입한다.\n x^2 + (y+3)x - (2y-1)(y-4)\n곱하여 -(2y-1)(y-4) 가 되고, 합하여 (y+3) 이 되는 두 일차식을 찾는다.\n(2y-1) + \\\\{-(y-4)\\\\} = 2y - 1 - y + 4 = y + 3\n조건을 만족하므로 전체 식을 인수분해한다.\n(x + (2y - 1))(x - (y - 4)) = (x+2y-1)(x-y+4)\n\\\\therefore (x+2y-1)(x-y+4)",
     "level": "중"
   },
   {
@@ -439,7 +439,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "주어진 근호 안의 식을 완전제곱식으로 인수분해한다.\n\\\\sqrt{(2a+b)^2} - \\\\sqrt{b^2}\n\\\\sqrt{A^2} = |A| 성질을 이용하여 절댓값 기호로 나타낸다.\n= |2a+b| - |b|\na=\\\\sqrt{2}, b=-3을 대입하여 근호 안의 부호를 판별한다.\n2a+b = 2\\\\sqrt{2} - 3 = \\\\sqrt{8} - \\\\sqrt{9} < 0\nb = -3 < 0\n따라서 두 값 모두 음수이므로 부호가 바뀌어 나온다.\n= -(2a+b) - (-b) = -2a - b + b = -2a\na=\\\\sqrt{2} 를 대입한다.\n= -2\\\\sqrt{2}\n\\\\therefore -2\\\\sqrt{2}",
+    "solution": "주어진 근호 안의 식을 완전제곱식으로 인수분해한다.\n\\\\sqrt{(2a+b)^2} - \\\\sqrt{b^2}\n\\\\sqrt{A^2} = |A| 성질을 이용하여 절댓값 기호로 나타낸다.\n= |2a+b| - |b|\n a=\\\\sqrt{2}, b=-3을 대입하여 근호 안의 부호를 판별한다.\n2a+b = 2\\\\sqrt{2} - 3 = \\\\sqrt{8} - \\\\sqrt{9} < 0\n b = -3 < 0\n따라서 두 값 모두 음수이므로 부호가 바뀌어 나온다.\n= -(2a+b) - (-b) = -2a - b + b = -2a\n a=\\\\sqrt{2} 를 대입한다.\n= -2\\\\sqrt{2}\n\\\\therefore -2\\\\sqrt{2}",
     "level": "중"
   },
   {
@@ -453,7 +453,7 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": 0,
-    "solution": "\\\\sqrt{\\\\frac{2}{7}x} 가 자연수가 되려면 근호 안의 수인 \\\\frac{2}{7}x 가 어떤 자연수의 제곱수여야 한다.\n즉, \\\\frac{2}{7}x = k^2 (단, k는 자연수) 꼴이어야 한다.\n이를 x에 대하여 정리하면 x = \\\\frac{7}{2}k^2 이다.\nx가 자연수이려면 k^2이 2의 배수이어야 하므로 k는 2의 배수이다.\n따라서 k=2m (m은 자연수)으로 나타낼 수 있다.\n대입하면 x = \\\\frac{7}{2}(2m)^2 = 14m^2 이다.\n가장 작은 자연수 x의 값 a는 m=1 일 때이므로,\na = 14 \\\\times 1^2 = 14 이다.\n8번째로 작은 자연수 x의 값 b는 m=8 일 때이므로,\nb = 14 \\\\times 8^2 = 14 \\\\times 64 = 896 이다.\n\\\\therefore a=14, b=896",
+    "solution": "\\\\sqrt{\\\\frac{2}{7}x} 가 자연수가 되려면 근호 안의 수인 \\\\frac{2}{7}x 가 어떤 자연수의 제곱수여야 한다.\n즉, \\\\frac{2}{7}x = k^2 (단, k는 자연수) 꼴이어야 한다.\n이를 x에 대하여 정리하면 x = \\\\frac{7}{2}k^2 이다.\n x가 자연수이려면 k^2이 2의 배수이어야 하므로 k는 2의 배수이다.\n따라서 k=2m (m은 자연수)으로 나타낼 수 있다.\n대입하면 x = \\\\frac{7}{2}(2m)^2 = 14m^2 이다.\n가장 작은 자연수 x의 값 a는 m=1 일 때이므로,\n a = 14 \\\\times 1^2 = 14 이다.\n8번째로 작은 자연수 x의 값 b는 m=8 일 때이므로,\n b = 14 \\\\times 8^2 = 14 \\\\times 64 = 896 이다.\n\\\\therefore a=14, b=896",
     "level": "중"
   }
 ];

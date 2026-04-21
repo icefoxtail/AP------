@@ -158,7 +158,7 @@ window.questionBank = [
       "⑤ $2\\sqrt{\\frac{3}{4}} = \\sqrt{\\frac{3}{2}}$"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n⑤ $2\\sqrt{\\frac{3}{4}} = 2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}$ \n$\\sqrt{3} \\neq \\sqrt{\\frac{3}{2}}$이므로 옳지 않다. \n--- \n[결론] 정답: ⑤이다."
+    "solution": "[풀이] \n⑤ $2\\sqrt{\\frac{3}{4}} = 2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}$ \n$\\sqrt{3} \\n eq \\sqrt{\\frac{3}{2}}$이므로 옳지 않다. \n--- \n[결론] 정답: ⑤이다."
   },
   {
     "id": 9,

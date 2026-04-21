@@ -31,9 +31,7 @@ window.questionBank = [
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
     "content": "다항식 $P(x) = x^{3}+x^{2}-2x+2$ 를 $x-1$로 나눌 때의 나머지는? [4.1점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "②",
     "solution": "나머지 정리 적용\\n$x-1$로 나눈 나머지는 $P(1)$의 값과 동일\\n$P(1)=1^3+1^2-2(1)+2=2$\\n$\\therefore 2$"
   },
@@ -47,9 +45,7 @@ window.questionBank = [
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
     "content": "조립제법을 이용하여 다항식 $x^{3}-2x^{2}+x+2$을 $x-1$로 나누었을 때의 몫과 나머지를 구하는 과정이 다음과 같다. $a+b$의 값은? [4.2점]\\n<div class='box'>\\n$\\begin{array}{r|rrrr} 1 & 1 & -2 & 1 & 2 \\\\ \\multicolumn{2}{r}{} & 1 & a & 0 \\\\ \\cline{2-5} \\multicolumn{2}{r}{} & 1 & -1 & b & \\underline{| \\ 2} \\end{array}\\n</div>",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "-1",
     "solution": "조립제법 연산 원리 적용\\n$a=1 \\times (-1)=-1$\\n$b=1+a=1+(-1)=0$\\n$\\therefore a+b=-1+0=-1$"
   },
@@ -71,7 +67,7 @@ window.questionBank = [
       "$x-3$"
     ],
     "answer": "③",
-    "solution": "인수 정리 적용\\n$P(x)=x^4-x^3-7x^2+x+6$ 이라 할 때 $P(k) \\neq 0$인 값 탐색\\n$P(2)=16-8-28+2+6=-12 \\neq 0$\\n$\\therefore x-2$는 인수가 아님"
+    "solution": "인수 정리 적용\\n$P(x)=x^4-x^3-7x^2+x+6$ 이라 할 때 $P(k) \\n eq 0$인 값 탐색\\n$P(2)=16-8-28+2+6=-12 \\n eq 0$\\n$\\therefore x-2$는 인수가 아님"
   },
   {
     "id": 5,
@@ -188,7 +184,7 @@ window.questionBank = [
       "실수는 복소수가 아니다.",
       "$7i$의 허수 부분은 $7$이다.",
       "$4+3i$는 $4$보다 큰 수이다.",
-      "$a \\neq 0, b=0$이면 $a+bi$는 허수이다."
+      "$a \\n eq 0, b=0$이면 $a+bi$는 허수이다."
     ],
     "answer": "③",
     "solution": "복소수의 체계 및 성질 검증\\n② 실수는 복소수의 부분집합 (거짓)\\n③ 복소수 $a+bi$에서 허수 부분은 $b$이므로 $7i$의 허수 부분은 $7$ (참)\\n④ 허수는 대소 관계 판별 불가 (거짓)\\n⑤ $b=0$이면 실수 (거짓)\\n(참고: ①도 참인 명제이나, 단일 정답 원형에 맞추어 명백한 ③을 정답 처리)\\n$\\therefore ③$"
@@ -203,9 +199,7 @@ window.questionBank = [
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
     "content": "$(4+7i)-(2-i)(3+3i)=a+bi$ 일 때, 두 실수 $a, b$의 합 $a+b$의 값은? [4.1점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "-1",
     "solution": "복소수의 사칙연산 및 상등 적용\\n곱셈 전개: $(2-i)(3+3i)=6+6i-3i-3i^2=6+3i+3=9+3i$\\n뺄셈 연산: $(4+7i)-(9+3i)=-5+4i$\\n계수 비교: $a=-5, b=4$\\n$\\therefore a+b=-1$"
   },
@@ -319,9 +313,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
     "content": "[중] 이차방정식 $x^2-3x+5=0$의 두 근 $\\alpha, \\beta$에 대하여 $f(\\alpha)=f(\\beta)=\\alpha\\beta, f(1)=3$를 만족시키는 이차식 $f(x)$에 대하여 $f(6)$의 값은? [4.7점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "-\\frac{31}{3}",
     "solution": "이차식의 작성 및 근과 계수의 관계 적용\\n$x^2-3x+5=0$의 두 근이 $\\alpha, \\beta$이므로 $\\alpha+\\beta=3, \\alpha\\beta=5$\\n조건에서 $f(\\alpha)=f(\\beta)=5$ 이므로 $f(x)-5=p(x^2-3x+5)$로 식 세우기\\n$f(1)=3p+5=3 \\implies p=-\\frac{2}{3}$\\n$f(x)=-\\frac{2}{3}(x^2-3x+5)+5$\\n대입: $f(6)=-\\frac{2}{3}(36-18+5)+5=-\\frac{2}{3}(23)+5=-\\frac{31}{3}$\\n$\\therefore -\\frac{31}{3}$"
   },
@@ -355,9 +347,7 @@ window.questionBank = [
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "content": "[서술형 1] 다항식 $P(x)=x^3-2x^2-9x+18$를 인수분해하시오. [4점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "(x-2)(x-3)(x+3)",
     "solution": "공통인수 묶기 및 합차공식 적용\\n$x^3-2x^2-9x+18=x^2(x-2)-9(x-2)$\\n$(x-2)$로 묶기: $(x^2-9)(x-2)$\\n$x^2-9$ 합차공식 적용: $(x-3)(x+3)(x-2)$\\n$\\therefore (x-2)(x-3)(x+3)$"
   },
@@ -371,9 +361,7 @@ window.questionBank = [
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
     "content": "[서술형 2] 다항식 $P(x)$가 다음 두 조건을 만족한다.\\n\\n가) $P(x)$는 $x+1$로 나누어 떨어진다.\\n나) $P(x)$를 $x^2$으로 나눈 몫과 나머지가 같다.\\n\\n$P(1)=12$일 때, $P(2)$의 값을 구하시오. [6점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "45",
     "solution": "검산식 작성 및 미정계수 결정\\n조건 (나)에 의해 몫과 나머지를 $ax+b$라 하면 $P(x)=x^2(ax+b)+(ax+b)=(x^2+1)(ax+b)$\\n조건 (가)에 의해 $P(-1)=0$ 이므로 $P(-1)=2(-a+b)=0 \\implies a=b$\\n$P(x)=a(x^2+1)(x+1)$로 식 정리\\n조건 $P(1)=12$ 대입: $P(1)=a(2)(2)=4a=12 \\implies a=3$\\n다항식 완성: $P(x)=3(x^2+1)(x+1)$\\n$P(2)=3(5)(3)=45$\\n$\\therefore 45$"
   },
@@ -387,11 +375,9 @@ window.questionBank = [
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
     "content": "[서술형 3] 복소수 $z=(2x^2+11x-6)+(x^2-36)i$ 에 대하여 $\\bar{z}=z$를 만족시키는 0이 아닌 실수 $x$의 값을 구하시오. [5점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "⑥",
-    "solution": "복소수가 실수일 조건 적용\\n$\\bar{z}=z$를 만족하려면 $z$는 실수이어야 하므로 허수부분이 $0$\\n$x^2-36=0 \\implies (x-6)(x+6)=0 \\implies x=6$ 또는 $x=-6$\\n$x=-6$일 때 $Re(z)=2(36)+11(-6)-6=72-66-6=0$ 이 되어 $z=0$ (조건 위배)\\n$x=6$일 때 $Re(z)=2(36)+11(6)-6=72+66-6=132 \\neq 0$\\n$\\therefore 6$"
+    "solution": "복소수가 실수일 조건 적용\\n$\\bar{z}=z$를 만족하려면 $z$는 실수이어야 하므로 허수부분이 $0$\\n$x^2-36=0 \\implies (x-6)(x+6)=0 \\implies x=6$ 또는 $x=-6$\\n$x=-6$일 때 $Re(z)=2(36)+11(-6)-6=72-66-6=0$ 이 되어 $z=0$ (조건 위배)\\n$x=6$일 때 $Re(z)=2(36)+11(6)-6=72+66-6=132 \\n eq 0$\\n$\\therefore 6$"
   },
   {
     "id": 22,
@@ -403,9 +389,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
     "content": "[서술형 4] $-3 \\le x \\le 2$에서 $f(x)=x^2-2x+a$의 최댓값과 최솟값의 곱이 $-64$일 때, 상수 $a$의 값을 구하시오. [5점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "-7",
     "solution": "제한된 범위에서의 이차함수 극값 계산\\n$f(x)=(x-1)^2+a-1$\\n대칭축 $x=1$이 주어진 범위 $[-3, 2]$에 포함되므로 $x=1$에서 최솟값 $m=a-1$\\n대칭축에서 가장 먼 $x=-3$에서 최댓값 $M=f(-3)=16+a-1=a+15$\\n조건 대입: $(a-1)(a+15)=-64$\\n식 전개: $a^2+14a-15=-64 \\implies a^2+14a+49=0$\\n완전제곱식: $(a+7)^2=0 \\implies a=-7$\\n$\\therefore -7$"
   }

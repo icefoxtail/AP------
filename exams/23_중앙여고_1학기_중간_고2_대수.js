@@ -3,7 +3,7 @@ window.questionBank = [
   {
     "id": 1,
     "level": "중",
-    "content": "$a>0, a\\neq 1$이고 $\\sqrt[3]{a^2} = \\sqrt{a\\sqrt[3]{a^m}}$일 때, 상수 $m$의 값은? [3.5점]",
+    "content": "$a>0, a\\n eq 1$이고 $\\sqrt[3]{a^2} = \\sqrt{a\\sqrt[3]{a^m}}$일 때, 상수 $m$의 값은? [3.5점]",
     "choices": [
       "$\\frac{5}{2}$",
       "3",

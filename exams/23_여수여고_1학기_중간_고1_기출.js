@@ -138,7 +138,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
-    "solution": "<b>[Logical Anchor]</b> 복소수 판별은 $z=a+bi$ (a, b는 실수) 대입을 통해 수식으로 증명함.\\nㄱ. $z\\bar{z} = (a+bi)(a-bi) = a^2 + b^2 = 0$\\n$\\because a, b$가 실수이므로 $a=0, b=0$ 임. $\\therefore z=0$ (참)\\nㄴ. $a+bi = a-bi \\implies 2bi = 0 \\implies b=0$\\n허수부분이 $0$이므로 $z$는 실수임. (참)\\nㄷ. $z^2 = (a+bi)^2 = a^2 - b^2 + 2abi < 0$\\n음의 실수가 되려면 허수부분 $2ab=0$ 이고 실수부분 $a^2-b^2 < 0$ 이어야 함.\\n$a, b$ 중 하나가 $0$이어야 하는데 $a^2-b^2 < 0$ 을 만족하려면 $a=0$ 이어야 함.\\n$\\because a=0, b \\ne 0$ 이므로 $z=bi$ 인 순허수임. (참)\\n$\\therefore$ ㄱ, ㄴ, ㄷ"
+    "solution": "<b>[Logical Anchor]</b> 복소수 판별은 $z=a+bi$ (a, b는 실수) 대입을 통해 수식으로 증명함.\\nㄱ. $z\\bar{z} = (a+bi)(a-bi) = a^2 + b^2 = 0$\\n$\\because a, b$가 실수이므로 $a=0, b=0$ 임. $\\therefore z=0$ (참)\\nㄴ. $a+bi = a-bi \\implies 2bi = 0 \\implies b=0$\\n허수부분이 $0$이므로 $z$는 실수임. (참)\\nㄷ. $z^2 = (a+bi)^2 = a^2 - b^2 + 2abi < 0$\\n음의 실수가 되려면 허수부분 $2ab=0$ 이고 실수부분 $a^2-b^2 < 0$ 이어야 함.\\n$a, b$ 중 하나가 $0$이어야 하는데 $a^2-b^2 < 0$ 을 만족하려면 $a=0$ 이어야 함.\\n$\\because a=0, b \\n e 0$ 이므로 $z=bi$ 인 순허수임. (참)\\n$\\therefore$ ㄱ, ㄴ, ㄷ"
   },
   {
     "id": 8,
@@ -364,9 +364,7 @@ window.questionBank = [
     "id": 19,
     "level": "상",
     "content": "[서술형 1] $f(x)$를 $x^2+1$로 나누면 나머지가 $x+1$, $x-1$로 나누면 나머지가 4이다. $(x^2+1)(x-1)$로 나누었을 때의 나머지 $R(x)$를 구하시오. [6.0점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "$x^2+x+2$",
     "category": "나머지정리 킬러",
     "originalCategory": "나머지정리 킬러",
@@ -380,9 +378,7 @@ window.questionBank = [
     "id": 20,
     "level": "상",
     "content": "[서술형 2] $y=x^2-4x+k$의 그래프가 $x$축과 만나는 두 점 사이의 거리가 $2\\sqrt{3}$일 때, $k$의 값을 구하시오. [6.0점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "①",
     "category": "이차방정식 두 근의 차",
     "originalCategory": "이차방정식 두 근의 차",
@@ -395,10 +391,8 @@ window.questionBank = [
   {
     "id": 21,
     "level": "상",
-    "content": "[서술형 3] 복소수 $z=a+bi (a, b \\ne 0)$가 $z^2+\\bar{z}^2=0$을 만족시킬 때, $\\frac{z}{\\bar{z}} + \\frac{\\bar{z}}{z}$의 값을 구하시오. [7.0점]",
-    "choices": [
-      " "
-    ],
+    "content": "[서술형 3] 복소수 $z=a+bi (a, b \\n e 0)$가 $z^2+\\bar{z}^2=0$을 만족시킬 때, $\\frac{z}{\\bar{z}} + \\frac{\\bar{z}}{z}$의 값을 구하시오. [7.0점]",
+    "choices": [],
     "answer": "0",
     "category": "복소수의 성질",
     "originalCategory": "복소수의 성질",
@@ -412,9 +406,7 @@ window.questionBank = [
     "id": 22,
     "level": "상",
     "content": "[서술형 4] 둘레가 24인 직사각형 넓이가 최대일 때의 넓이와 가로, 세로 길이를 구하시오. [7.0점]",
-    "choices": [
-      " "
-    ],
+    "choices": [],
     "answer": "36, 6, 6",
     "category": "이차함수 활용",
     "originalCategory": "이차함수 활용",

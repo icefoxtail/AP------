@@ -139,7 +139,7 @@ window.questionBank = [
       "196"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 역수 합의 꼴을 도출하기 위해 조건식의 양변을 $x$로 나눔.\\n$x^2 - 6x + 1 = 0$ 에서 $x \\ne 0$ 이므로 양변을 $x$로 나누면\\n$x - 6 + \\ tf{1}{x} = 0 \\implies x + \\ tf{1}{x} = 6$\\n구하고자 하는 식을 동일한 차수와 구조끼리 그룹화함.\\n$\\implies (x^3 + \\ tf{1}{x^3}) - (x + \\ tf{1}{x})$\\n세제곱 합의 공식 $A^3 + B^3 = (A+B)^3 - 3AB(A+B)$를 적용함.\\n$\\because x^3 + \\ tf{1}{x^3} = (x + \\ tf{1}{x})^3 - 3(x + \\ tf{1}{x})$\\n구해둔 합의 값 $6$을 대입하여 계산함.\\n$\\implies 6^3 - 3(6) = 216 - 18 = 198$\\n전체 식의 최종 결과를 도출함.\\n$\\implies 198 - 6 = 192$\\n$\\therefore 192$"
+    "solution": "<b>[Logical Anchor]</b> 역수 합의 꼴을 도출하기 위해 조건식의 양변을 $x$로 나눔.\\n$x^2 - 6x + 1 = 0$ 에서 $x \\n e 0$ 이므로 양변을 $x$로 나누면\\n$x - 6 + \\ tf{1}{x} = 0 \\implies x + \\ tf{1}{x} = 6$\\n구하고자 하는 식을 동일한 차수와 구조끼리 그룹화함.\\n$\\implies (x^3 + \\ tf{1}{x^3}) - (x + \\ tf{1}{x})$\\n세제곱 합의 공식 $A^3 + B^3 = (A+B)^3 - 3AB(A+B)$를 적용함.\\n$\\because x^3 + \\ tf{1}{x^3} = (x + \\ tf{1}{x})^3 - 3(x + \\ tf{1}{x})$\\n구해둔 합의 값 $6$을 대입하여 계산함.\\n$\\implies 6^3 - 3(6) = 216 - 18 = 198$\\n전체 식의 최종 결과를 도출함.\\n$\\implies 198 - 6 = 192$\\n$\\therefore 192$"
   },
   {
     "id": 8,
@@ -250,7 +250,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "content": "이차방정식 $ax^2+bx+c=0 (a \\ne 0)$에 대하여, 하니는 일차항 계수 $b$를 잘못 봐서 $1 \\pm i$를 얻고, 두리는 상수항 $c$를 잘못 봐서 $\\frac{1 \\pm \\sqrt{13}}{3}$을 얻었을 때, 원래 방정식의 두 근 $\\alpha, \\beta$에 대한 $27\\alpha^2+27\\beta^2$의 값은? [5.2점]",
+    "content": "이차방정식 $ax^2+bx+c=0 (a \\n e 0)$에 대하여, 하니는 일차항 계수 $b$를 잘못 봐서 $1 \\pm i$를 얻고, 두리는 상수항 $c$를 잘못 봐서 $\\frac{1 \\pm \\sqrt{13}}{3}$을 얻었을 때, 원래 방정식의 두 근 $\\alpha, \\beta$에 대한 $27\\alpha^2+27\\beta^2$의 값은? [5.2점]",
     "choices": [
       "-108",
       "-100",
@@ -270,7 +270,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
-    "content": "복소수 $z=a+2bi (b \\ne 0)$에 대하여 $\\frac{z}{2+z^2}$가 실수일 때, 다항식 $2a^2-4b^2+12a-5$의 최솟값은? [5.3점]",
+    "content": "복소수 $z=a+2bi (b \\n e 0)$에 대하여 $\\frac{z}{2+z^2}$가 실수일 때, 다항식 $2a^2-4b^2+12a-5$의 최솟값은? [5.3점]",
     "choices": [
       "-46",
       "-37",
@@ -279,7 +279,7 @@ window.questionBank = [
       "-10"
     ],
     "answer": "④",
-    "solution": "<b>[Logical Anchor]</b> 복소수가 실수일 조건($W = \\bar{W}$)을 활용하여 변수 간의 관계식을 도출함.\\n$i) 관계식 도출$\\n$W = \\ tf{z}{2+z^2}$ 라 하면 $W = \\bar{W}$ 가 성립해야 함.\\n$\\frac{z}{2+z^2} = \\ tf{\\bar{z}}{2+\\bar{z}^2} \\implies z(2 + \\bar{z}^2) = \\bar{z}(2 + z^2)$\\n$2z + z\\bar{z}^2 = 2\\bar{z} + \\bar{z}z^2$\\n$2(z - \\bar{z}) - z\\bar{z}(z - \\bar{z}) = 0$\\n$(z - \\bar{z})(2 - z\\bar{z}) = 0$\\n$b \\ne 0 \\implies z \\ne \\bar{z}$ 이므로 $z - \\bar{z} \\ne 0$ 임.\\n$\\therefore z\\bar{z} = 2$\\n$ii) 변수 치환$\\n$z\\bar{z} = (a + 2bi)(a - 2bi) = a^2 + 4b^2 = 2$\\n$\\implies 4b^2 = 2 - a^2 \\quad \\cdots (1)$\\n$iii) 최솟값 산출$\\n목표 식에 $(1)$을 대입하여 $a$에 관한 일변수 함수로 만듦.\\n$g(a) = 2a^2 - (2 - a^2) + 12a - 5 = 3a^2 + 12a - 7$\\n표준형 변형: $g(a) = 3(a + 2)^2 - 19$\\n$a^2 + 4b^2 = 2$ 이고 $b^2 > 0$ 이므로 $a^2 < 2$ 임.\\n축 $a = -2$ 가 범위에 직접 닿지는 않으나 연속성에 의해 혹은 논리적 최소 경계를 조사함.\\n(단, 이차함수의 개형상 꼭짓점에서 최솟값이 결정됨)\\n$\\therefore -19$"
+    "solution": "<b>[Logical Anchor]</b> 복소수가 실수일 조건($W = \\bar{W}$)을 활용하여 변수 간의 관계식을 도출함.\\n$i) 관계식 도출$\\n$W = \\ tf{z}{2+z^2}$ 라 하면 $W = \\bar{W}$ 가 성립해야 함.\\n$\\frac{z}{2+z^2} = \\ tf{\\bar{z}}{2+\\bar{z}^2} \\implies z(2 + \\bar{z}^2) = \\bar{z}(2 + z^2)$\\n$2z + z\\bar{z}^2 = 2\\bar{z} + \\bar{z}z^2$\\n$2(z - \\bar{z}) - z\\bar{z}(z - \\bar{z}) = 0$\\n$(z - \\bar{z})(2 - z\\bar{z}) = 0$\\n$b \\n e 0 \\implies z \\n e \\bar{z}$ 이므로 $z - \\bar{z} \\n e 0$ 임.\\n$\\therefore z\\bar{z} = 2$\\n$ii) 변수 치환$\\n$z\\bar{z} = (a + 2bi)(a - 2bi) = a^2 + 4b^2 = 2$\\n$\\implies 4b^2 = 2 - a^2 \\quad \\cdots (1)$\\n$iii) 최솟값 산출$\\n목표 식에 $(1)$을 대입하여 $a$에 관한 일변수 함수로 만듦.\\n$g(a) = 2a^2 - (2 - a^2) + 12a - 5 = 3a^2 + 12a - 7$\\n표준형 변형: $g(a) = 3(a + 2)^2 - 19$\\n$a^2 + 4b^2 = 2$ 이고 $b^2 > 0$ 이므로 $a^2 < 2$ 임.\\n축 $a = -2$ 가 범위에 직접 닿지는 않으나 연속성에 의해 혹은 논리적 최소 경계를 조사함.\\n(단, 이차함수의 개형상 꼭짓점에서 최솟값이 결정됨)\\n$\\therefore -19$"
   },
   {
     "id": 15,

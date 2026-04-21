@@ -332,10 +332,10 @@ window.questionBank = [
     "content": "$2\\sqrt{6}(\\frac{1}{\\sqrt{2}}-\\sqrt{6})-\\frac{a}{\\sqrt{3}}(2\\sqrt{3}-3)$이 유리수가 되는 $a$는? [4점]",
     "choices": [
       "$a=-4$",
-      "$a \\ne 4$",
+      "$a \\n e 4$",
       "$a=-2$",
       "$a=2$",
-      "$a \\ne -2$"
+      "$a \\n e -2$"
     ],
     "answer": "3",
     "solution": "$(2+a)\\sqrt{3}-12-2a$에서 $a=-2$.",

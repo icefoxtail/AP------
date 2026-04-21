@@ -143,7 +143,7 @@ window.questionBank = [
   {
     "id": 8,
     "level": "상",
-    "content": "<보기> 중 옳은 것만을 고른 것은? (단, $x, y > 0, a > 0, a \\neq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\frac{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
+    "content": "<보기> 중 옳은 것만을 고른 것은? (단, $x, y > 0, a > 0, a \\n eq 1$) <div style='border:1px solid #000; padding:10px;'>ㄱ. $\\log_a x \\log_a y = \\log_a x + \\log_a y$<br>ㄴ. $\\frac{\\log_a x}{\\log_a y} = \\log_y x$<br>ㄷ. $\\log_a (x-y) = \\log_a x - \\log_a y$<br>ㄹ. $(\\log_a x)^n = n \\log_a x$</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -278,7 +278,7 @@ window.questionBank = [
     "standardUnitKey": "RAW-산술기하평균과로그",
     "standardUnit": "산술·기하 평균과 로그",
     "standardUnitOrder": 999,
-    "solution": "<b>[Logical Anchor]</b> 로그의 상등 조건으로부터 $ab=1$ 관계를 유도함.\\n$\\log_a b = \\frac{1}{\\log_a b} \\implies (\\log_a b)^2 = 1$\\n$a \\ne b$ 이므로 $\\log_a b = -1 \\implies b = a^{-1} \\implies ab = 1$\\n$(a+2)(b+2) = ab + 2(a+b) + 4 = 1 + 2(a+b) + 4 = 5 + 2(a+b)$\\n산술·기하 평균 부등식 적용: $a+b \\ge 2\\sqrt{ab} = 2$\\n최솟값 $= 5 + 2(2) = 9$\\n$\\therefore 9$"
+    "solution": "<b>[Logical Anchor]</b> 로그의 상등 조건으로부터 $ab=1$ 관계를 유도함.\\n$\\log_a b = \\frac{1}{\\log_a b} \\implies (\\log_a b)^2 = 1$\\n$a \\n e b$ 이므로 $\\log_a b = -1 \\implies b = a^{-1} \\implies ab = 1$\\n$(a+2)(b+2) = ab + 2(a+b) + 4 = 1 + 2(a+b) + 4 = 5 + 2(a+b)$\\n산술·기하 평균 부등식 적용: $a+b \\ge 2\\sqrt{ab} = 2$\\n최솟값 $= 5 + 2(2) = 9$\\n$\\therefore 9$"
   },
   {
     "id": 15,

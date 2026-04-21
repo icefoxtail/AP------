@@ -398,7 +398,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "①",
-    "solution": "$P(x)=0$의 판별식 $D_{P}/4 = a^{2}-(a-1)^{2} = 2a-1$\\n$Q(x)=0$의 판별식 $D_{Q}/4 = (a+1)^{2}-a^{2} = 2a+1$\\nㄱ. $D_{P} > 0 \\implies 2a-1 > 0 \\implies a > 1/2$ 이면\\n$D_{Q} = 2a+1 > 2(1/2)+1 = 2 > 0$ 이므로 항상 서로 다른 두 실근을 갖는다. (참)\\nㄴ. $D_{P} = 0 \\implies a = 1/2$ 이면\\n$D_{Q} = 2(1/2)+1 = 2 \\ne 0$ 이므로 중근을 갖지 않는다. (거짓)\\nㄷ. $D_{P} < 0 \\implies a < 1/2$ 일 때, $a=0$이면 $D_{Q}=1 > 0$이 되어 실근을 가질 수 있다. (거짓)\\n$\\therefore$ 옳은 것은 ㄱ뿐이다."
+    "solution": "$P(x)=0$의 판별식 $D_{P}/4 = a^{2}-(a-1)^{2} = 2a-1$\\n$Q(x)=0$의 판별식 $D_{Q}/4 = (a+1)^{2}-a^{2} = 2a+1$\\nㄱ. $D_{P} > 0 \\implies 2a-1 > 0 \\implies a > 1/2$ 이면\\n$D_{Q} = 2a+1 > 2(1/2)+1 = 2 > 0$ 이므로 항상 서로 다른 두 실근을 갖는다. (참)\\nㄴ. $D_{P} = 0 \\implies a = 1/2$ 이면\\n$D_{Q} = 2(1/2)+1 = 2 \\n e 0$ 이므로 중근을 갖지 않는다. (거짓)\\nㄷ. $D_{P} < 0 \\implies a < 1/2$ 일 때, $a=0$이면 $D_{Q}=1 > 0$이 되어 실근을 가질 수 있다. (거짓)\\n$\\therefore$ 옳은 것은 ㄱ뿐이다."
   },
   {
     "id": 21,
@@ -426,7 +426,7 @@ window.questionBank = [
     "content": "복소수 $z=a^{2}(1+i)+3ai-2(2-i)$가 $0$이 아닌 실수가 되도록 하는 실수 $a$의 값을 $p$, 순허수가 되도록 하는 실수 $a$의 값을 $q$라 할 때, $p+q$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "①",
-    "solution": "$z = (a^{2}-4) + (a^{2}+3a+2)i = (a-2)(a+2) + (a+1)(a+2)i$\\n\\n(1) $z$가 $0$이 아닌 실수가 될 조건:\\n허수부분 $(a+1)(a+2)=0 \\implies a=-1$ 또는 $a=-2$\\n실수부분 $(a-2)(a+2) \\ne 0 \\implies a \\ne 2$ 이고 $a \\ne -2$\\n$\\therefore a=-1 \\implies p=-1$\\n\\n(2) $z$가 순허수가 될 조건:\\n실수부분 $(a-2)(a+2)=0 \\implies a=2$ 또는 $a=-2$\\n허수부분 $(a+1)(a+2) \\ne 0 \\implies a \\ne -1$ 이고 $a \\ne -2$\\n$\\therefore a=2 \\implies q=2$\\n\\n$\\therefore p+q = -1+2 = 1$"
+    "solution": "$z = (a^{2}-4) + (a^{2}+3a+2)i = (a-2)(a+2) + (a+1)(a+2)i$\\n\\n(1) $z$가 $0$이 아닌 실수가 될 조건:\\n허수부분 $(a+1)(a+2)=0 \\implies a=-1$ 또는 $a=-2$\\n실수부분 $(a-2)(a+2) \\n e 0 \\implies a \\n e 2$ 이고 $a \\n e -2$\\n$\\therefore a=-1 \\implies p=-1$\\n\\n(2) $z$가 순허수가 될 조건:\\n실수부분 $(a-2)(a+2)=0 \\implies a=2$ 또는 $a=-2$\\n허수부분 $(a+1)(a+2) \\n e 0 \\implies a \\n e -1$ 이고 $a \\n e -2$\\n$\\therefore a=2 \\implies q=2$\\n\\n$\\therefore p+q = -1+2 = 1$"
   },
   {
     "id": 23,
@@ -437,7 +437,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "content": "계수가 실수인 두 이차방정식 $x^{2}+6x-k=0$과 $kx^{2}-2(k-1)x+k=0 (k \\ne 0)$ 중에서 적어도 한 방정식이 허근을 가질 때, 실수 $k$값의 범위를 구하시오. [5점]",
+    "content": "계수가 실수인 두 이차방정식 $x^{2}+6x-k=0$과 $kx^{2}-2(k-1)x+k=0 (k \\n e 0)$ 중에서 적어도 한 방정식이 허근을 가질 때, 실수 $k$값의 범위를 구하시오. [5점]",
     "choices": [],
     "answer": "k<-9 또는 k>1/2",
     "solution": "(i) $x^{2}+6x-k=0$이 허근을 가질 조건:\\n$D_{1}/4 = 3^{2}-(-k) < 0 \\implies 9+k < 0 \\implies k < -9$\\n(ii) $kx^{2}-2(k-1)x+k=0$이 허근을 가질 조건:\\n$D_{2}/4 = (k-1)^{2}-k^{2} < 0 \\implies -2k+1 < 0 \\implies k > 1/2$\\n'적어도 하나'는 두 조건의 합집합이므로\\n$\\therefore k < -9$ 또는 $k > 1/2$\\n정답은 $k < -9$ 또는 $k > 1/2$이다."

@@ -298,7 +298,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "solution": "$x$축에 수직인 직선을 $x=t$라 하면 $A(t, t^2), B(t, -\\frac{1}{2}t^2+2t)$\n선분 $AB$는 $y$축에 평행하므로 정삼각형을 이루려면 $C(k,0)$에서 $AB$에 내린 수선이 $AB$를 수직이등분해야 한다.\n수선의 방정식은 $y=0$ ($x$축)이므로 선분 $AB$의 중점의 $y$좌표는 0이다.\n$\\frac{t^2 - \\frac{1}{2}t^2 + 2t}{2} = 0 \\rightarrow \\frac{1}{4}t^2 + t = 0 \\rightarrow t=-4$ ($t \\neq 0$)\n$t=-4$일 때 $A(-4, 16), B(-4, -16)$이므로 한 변의 길이는 32이다.\n정삼각형의 높이는 $\\frac{\\sqrt{3}}{2} \\times 32 = 16\\sqrt{3}$\n$k = t + 16\\sqrt{3} = -4 + 16\\sqrt{3}$ ($k>0$)\n따라서 $a = -4, b = 16 \\rightarrow a+b = 12$"
+    "solution": "$x$축에 수직인 직선을 $x=t$라 하면 $A(t, t^2), B(t, -\\frac{1}{2}t^2+2t)$\n선분 $AB$는 $y$축에 평행하므로 정삼각형을 이루려면 $C(k,0)$에서 $AB$에 내린 수선이 $AB$를 수직이등분해야 한다.\n수선의 방정식은 $y=0$ ($x$축)이므로 선분 $AB$의 중점의 $y$좌표는 0이다.\n$\\frac{t^2 - \\frac{1}{2}t^2 + 2t}{2} = 0 \\rightarrow \\frac{1}{4}t^2 + t = 0 \\rightarrow t=-4$ ($t \\n eq 0$)\n$t=-4$일 때 $A(-4, 16), B(-4, -16)$이므로 한 변의 길이는 32이다.\n정삼각형의 높이는 $\\frac{\\sqrt{3}}{2} \\times 32 = 16\\sqrt{3}$\n$k = t + 16\\sqrt{3} = -4 + 16\\sqrt{3}$ ($k>0$)\n따라서 $a = -4, b = 16 \\rightarrow a+b = 12$"
   },
   {
     "id": 16,
