@@ -44,11 +44,11 @@ window.questionBank = [
     "id": 3,
     "content": "아래 상용로그표에서 $\\log 21$의 값은? (3.3점)\\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th></tr></thead><tbody><tr><td>2.0</td><td>0.3010</td><td>0.3032</td><td>0.3054</td><td>0.3075</td></tr><tr><td>2.1</td><td>0.3222</td><td>0.3243</td><td>0.3263</td><td>0.3284</td></tr><tr><td>2.2</td><td>0.3424</td><td>0.3444</td><td>0.3464</td><td>0.3483</td></tr><tr><td>2.3</td><td>0.3617</td><td>0.3636</td><td>0.3655</td><td>0.3674</td></tr><tr><td>2.4</td><td>0.3802</td><td>0.3820</td><td>0.3838</td><td>0.3856</td></tr></tbody></table></div>",
     "choices": [
-      "0.3010",
-      "0.3222",
-      "1.3010",
-      "1.3222",
-      "3.2220"
+  "$0.3010$",
+  "$0.3222$",
+  "$1.3010$",
+  "$1.3222$",
+  "$3.2220$"
     ],
     "answer": "④",
     "category": "상용로그표의 이해",

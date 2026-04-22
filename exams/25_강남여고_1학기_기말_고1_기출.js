@@ -1,4 +1,4 @@
-window.examTitle = "25_순천강남여고1_1학기_기말_공통수학1";
+window.examTitle = "25_강남여고_1학기_기말_고1_기출";
 
 window.questionBank = [
   {
@@ -147,20 +147,20 @@ window.questionBank = [
     answer: "⑤",
     solution: "[키포인트]\n직선 $x+y=a$와 원 $x^2+y^2=8$이 한 점에서만 만나려면 접해야 한다.\n조건 정리\n원 $x^2+y^2=8$의 중심은 $(0,0)$, 반지름은 $\\sqrt{8}=2\\sqrt{2}$이다.\n풀이 과정\n직선 $x+y-a=0$이 원에 접하려면 원점에서 직선까지의 거리가 반지름과 같아야 한다.\n따라서\n$\\dfrac{|a|}{\\sqrt{1^2+1^2}}=2\\sqrt{2}$\n$\\dfrac{|a|}{\\sqrt{2}}=2\\sqrt{2}$\n$|a|=4$\n그러므로 $a=-4$ 또는 $a=4$이다.\n결론\n따라서 정답은 ⑤이다."
   },
-  {
-    id: 11,
-    level: "상",
-    category: "경우의 수",
-    originalCategory: "경우의 수",
-    standardCourse: "공통수학1",
-    standardUnitKey: "H22-C-09",
-    standardUnit: "경우의 수",
-    standardUnitOrder: 9,
-    content: "[도형필요] 그림과 같이 네 지점을 연결하는 도로에서 $B$ 지점과 $C$ 지점을 연결하는 도로를 추가하였더니 $A$지점에서 출발하여 $D$지점으로 가는 경우의 수가 $128$이었다고 한다. $B$지점과 $C$지점 사이에 추가한 도로의 개수를 구하면? (단, 한 번 지나간 지점은 다시 지나지 않고, 도로끼리는 서로 만나지 않는다.)",
-    choices: ["① 4", "② 6", "③ 8", "④ 10", "⑤ 12"],
-    answer: "③",
-    solution: "[키포인트]\n그림에서 각 구간의 도로 수를 세어 가능한 경로를 종류별로 나누어 계산한다.\n조건 정리\n그림에서 $A\\to B$는 $2$개, $A\\to C$는 $3$개, $B\\to D$는 $2$개, $C\\to D$는 $4$개이다.\n$B\\to C$ 사이에 추가한 도로의 개수를 $x$개라 하자.\n풀이 방향 설정\n$A$에서 $D$까지 가는 경로를 $A\\to B\\to D$, $A\\to C\\to D$, $A\\to B\\to C\\to D$, $A\\to C\\to B\\to D$의 네 경우로 나누어 센다.\n풀이 과정\n$A\\to B\\to D$의 경우의 수는 $2\\times2=4$\n$A\\to C\\to D$의 경우의 수는 $3\\times4=12$\n$A\\to B\\to C\\to D$의 경우의 수는 $2\\times x\\times4=8x$\n$A\\to C\\to B\\to D$의 경우의 수는 $3\\times x\\times2=6x$\n따라서 전체 경우의 수는\n$4+12+8x+6x=16+14x$\n이 값이 $128$이므로\n$16+14x=128 \\implies 14x=112 \\implies x=8$\n결론\n따라서 정답은 ③이다."
-  },
+{
+  "id": 11,
+  "level": "중",
+  "category": "경우의 수",
+  "originalCategory": "경우의 수",
+  "standardCourse": "공통수학 1",
+  "standardUnitKey": "H22-C-03",
+  "standardUnit": "경우의 수",
+  "standardUnitOrder": 3,
+  "content": "그림과 같이 네 지점을 연결하는 도로에서 $B$ 지점과 $C$ 지점을 연결하는 도로를 추가하였더니 $A$ 지점에서 출발하여 $D$ 지점으로 가는 경우의 수가 $128$이었다고 한다. $B$ 지점과 $C$ 지점 사이에 추가한 도로의 개수를 구하면? (단, 한 번 지나간 지점은 다시 지나지 않고, 도로끼리는 서로 만나지 않는다.)\\n<svg width=\"260\" height=\"160\" viewBox=\"0 0 260 160\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <path d=\"M 30,80 Q 76.29,50.72 130,40\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 30,80 Q 83.71,69.28 130,40\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 30,80 Q 85.57,86.07 130,120\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 30,80 Q 80.0,100.0 130,120\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 30,80 Q 74.43,113.93 130,120\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 130,40 Q 183.71,50.72 230,80\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 130,40 Q 176.29,69.28 230,80\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 130,120 Q 172.57,81.43 230,80\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 130,120 Q 177.40,93.50 230,80\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 130,120 Q 182.60,106.50 230,80\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <path d=\"M 130,120 Q 187.43,118.57 230,80\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\"/>\\n  <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n  <circle cx=\"30\" cy=\"80\" r=\"3\" fill=\"black\"/>\\n  <circle cx=\"130\" cy=\"40\" r=\"3\" fill=\"black\"/>\\n  <circle cx=\"130\" cy=\"120\" r=\"3\" fill=\"black\"/>\\n  <circle cx=\"230\" cy=\"80\" r=\"3\" fill=\"black\"/>\\n  <text x=\"20\" y=\"85\" font-size=\"10px\" font-family=\"serif\">A</text>\\n  <text x=\"130\" y=\"35\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">B</text>\\n  <text x=\"130\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">C</text>\\n  <text x=\"240\" y=\"85\" font-size=\"10px\" font-family=\"serif\">D</text>\\n</svg>",
+  "choices": ["4", "6", "8", "10", "12"],
+  "answer": "③",
+  "solution": "[키포인트] 가능한 경로를 경우별로 나누어 미지수에 대한 방정식을 세운다.\\n조건 정리: $A$에서 $D$로 가는 전체 경우의 수가 128이다.\\n풀이 과정:\\n$A$ 지점에서 $D$ 지점까지 가는 경로는 한 번 지나간 지점을 다시 지나지 않으므로 다음과 같이 네 가지 경우가 있다.\\n1) $A \\to B \\to D$ : $2 \\times 2 = 4$ (가지)\\n2) $A \\to C \\to D$ : $3 \\times 4 = 12$ (가지)\\n$B$ 지점과 $C$ 지점 사이에 추가한 도로의 개수를 $x$라 하면,\\n3) $A \\to B \\to C \\to D$ : $2 \\times x \\times 4 = 8x$ (가지)\\n4) $A \\to C \\to B \\to D$ : $3 \\times x \\times 2 = 6x$ (가지)\\n$A$ 지점에서 $D$ 지점으로 가는 전체 경우의 수는 $128$이므로,\\n$4 + 12 + 8x + 6x = 128$\\n$16 + 14x = 128$\\n$14x = 112$\\n$x = 8$\\n결론: 따라서 $B$ 지점과 $C$ 지점 사이에 추가한 도로의 개수는 $8$개이다. 정답은 ③이다."
+},
   {
     id: 12,
     level: "중",
@@ -251,20 +251,20 @@ window.questionBank = [
     answer: "⑤",
     solution: "[키포인트]\n먼저 절댓값부등식의 해를 구하고, 같은 해를 갖는 이차부등식을 만든다.\n조건 정리\n$|x+1|+|x-2|\\le5$의 해를 구한다.\n풀이 방향 설정\n절댓값부등식의 해를 구하면 닫힌구간이 나오고, 이를 해로 갖는 가장 간단한 이차부등식은 그 구간의 양 끝점을 근으로 하는 식이다.\n풀이 과정\n수직선에서 $-1$과 $2$를 기준으로 나누어 보면\n$|x+1|+|x-2|\\le5$의 해는 $-2\\le x\\le3$이다.\n따라서 같은 해를 갖는 이차부등식은\n$(x+2)(x-3)\\le0$\n즉\n$x^2-x-6\\le0$로 둘 수 있다.\n여기서 $a=1$, $b=-1$, $c=-6$이므로\n$\\dfrac{bc}{a}=\\dfrac{(-1)(-6)}{1}=6$이다.\n결론\n따라서 정답은 ⑤이다."
   },
-  {
-    id: 18,
-    level: "상",
-    category: "이차함수의 그래프",
-    originalCategory: "이차함수의 그래프",
-    standardCourse: "공통수학1",
-    standardUnitKey: "H22-C-06",
-    standardUnit: "이차함수",
-    standardUnitOrder: 6,
-    content: "[도형필요] 이차함수 $f(x)=x^2-4x$의 그래프와 직선 $y=-2x+3$이 만나는 두 점을 $A,B$라 하고, 점 $A$를 지나고 $x$축에 평행한 직선이 이차함수 $y=f(x)$의 그래프와 만나는 점 중 $A$가 아닌 점을 $C$, 점 $B$를 지나고 $x$축에 평행한 직선이 이차함수 $y=f(x)$의 그래프와 만나는 점 중 $B$가 아닌 점을 $D$라 할 때, 삼각형 $ABD$의 넓이를 $S$, 삼각형 $ABC$의 넓이를 $T$라 하자. $S:T=a:b$일 때, $a+b$의 값을 구하시오. (단, 점 $A$의 $x$좌표는 점 $B$의 $x$좌표보다 작고, $a$와 $b$는 서로소이다.)",
-    choices: ["① 2", "② 4", "③ 6", "④ 8", "⑤ 10"],
-    answer: "②",
-    solution: "[키포인트]\n교점을 좌표로 구한 뒤, 같은 밑변 $AB$를 갖는 삼각형의 넓이비를 높이로 비교한다.\n조건 정리\n$f(x)=x^2-4x$, 직선은 $y=-2x+3$이다.\n풀이 방향 설정\n먼저 $A,B,C,D$의 좌표를 구하고, 넓이를 좌표로 계산한다.\n풀이 과정\n교점은\n$x^2-4x=-2x+3 \\implies x^2-2x-3=0 \\implies (x+1)(x-3)=0$\n따라서 $A(-1,5)$, $B(3,-3)$이다.\n점 $A$를 지나는 수평선 $y=5$와 포물선의 다른 교점은\n$x^2-4x=5 \\implies x^2-4x-5=0 \\implies x=-1,5$\n이므로 $C(5,5)$이다.\n점 $B$를 지나는 수평선 $y=-3$과 포물선의 다른 교점은\n$x^2-4x=-3 \\implies x^2-4x+3=0 \\implies x=1,3$\n이므로 $D(1,-3)$이다.\n삼각형의 넓이를 계산하면\n$S=[\\triangle ABD]=8$, $T=[\\triangle ABC]=24$이다.\n따라서 $S:T=8:24=1:3$이므로 $a=1$, $b=3$이다.\n그러므로 $a+b=4$이다.\n결론\n따라서 정답은 ②이다."
-  },
+{
+  "id": 18,
+  "level": "상",
+  "category": "이차함수",
+  "originalCategory": "이차함수와 직선",
+  "standardCourse": "중3 수학",
+  "standardUnitKey": "M3-04",
+  "standardUnit": "이차함수와 그래프",
+  "standardUnitOrder": 4,
+  "content": "이차함수 $f(x)=x^2-4x$의 그래프와 직선 $y=-2x+3$이 만나는 두 점을 $A, B$라 하고, 점 $A$를 지나고 $x$축에 평행한 직선이 이차함수 $y=f(x)$의 그래프와 만나는 점 중 $A$가 아닌 점을 $C$, 점 $B$를 지나고 $x$축에 평행한 직선이 이차함수 $y=f(x)$의 그래프와 만나는 점 중 $B$가 아닌 점을 $D$라 할 때, 삼각형 $ABD$의 넓이는 $S$, 삼각형 $ABC$의 넓이가 $T$이면, $S:T=a:b$이다. $a+b$의 값은? (단, 점 $A$의 $x$좌표는 점 $B$의 $x$좌표보다 작고, $a$와 $b$는 서로소이다.)\\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <line x1=\"20\" y1=\"130\" x2=\"260\" y2=\"130\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n  <line x1=\"80\" y1=\"170\" x2=\"80\" y2=\"20\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n  <path d=\"M 35.0,47.5 L 39.3,57.3 L 43.6,66.7 L 47.9,75.7 L 52.1,84.2 L 56.4,92.4 L 60.7,100.2 L 65.0,107.5 L 69.3,114.4 L 73.6,121.0 L 77.9,127.1 L 82.1,132.8 L 86.4,138.1 L 90.7,143.0 L 95.0,147.5 L 99.3,151.6 L 103.6,155.3 L 107.9,158.5 L 112.1,161.4 L 116.4,163.8 L 120.7,165.9 L 125.0,167.5 L 129.3,168.7 L 133.6,169.5 L 137.9,169.9 L 142.1,169.9 L 146.4,169.5 L 150.7,168.7 L 155.0,167.5 L 159.3,165.9 L 163.6,163.8 L 167.9,161.4 L 172.1,158.5 L 176.4,155.3 L 180.7,151.6 L 185.0,147.5 L 189.3,143.0 L 193.6,138.1 L 197.9,132.8 L 202.1,127.1 L 206.4,121.0 L 210.7,114.4 L 215.0,107.5 L 219.3,100.2 L 223.6,92.4 L 227.9,84.2 L 232.1,75.7 L 236.4,66.7 L 240.7,57.3 L 245.0,47.5\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\\n  <line x1=\"35\" y1=\"70\" x2=\"215\" y2=\"190\" stroke=\"black\" stroke-width=\"1\"/>\\n  <line x1=\"40\" y1=\"80\" x2=\"240\" y2=\"80\" stroke=\"gray\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\\n  <line x1=\"40\" y1=\"160\" x2=\"240\" y2=\"160\" stroke=\"gray\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\\n  <polyline points=\"50,80 170,160 110,160 50,80\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\\n  <polyline points=\"50,80 170,160 230,80 50,80\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\\n  <circle cx=\"50\" cy=\"80\" r=\"2\" fill=\"black\"/><text x=\"40\" y=\"75\" font-size=\"10px\" font-family=\"serif\">A</text>\\n  <circle cx=\"170\" cy=\"160\" r=\"2\" fill=\"black\"/><text x=\"175\" y=\"170\" font-size=\"10px\" font-family=\"serif\">B</text>\\n  <circle cx=\"230\" cy=\"80\" r=\"2\" fill=\"black\"/><text x=\"235\" y=\"75\" font-size=\"10px\" font-family=\"serif\">C</text>\\n  <circle cx=\"110\" cy=\"160\" r=\"2\" fill=\"black\"/><text x=\"100\" y=\"170\" font-size=\"10px\" font-family=\"serif\">D</text>\\n  <text x=\"85\" y=\"142\" font-size=\"10px\" font-family=\"serif\">O</text>\\n  <text x=\"265\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\\n  <text x=\"85\" y=\"25\" font-size=\"10px\" font-family=\"serif\">y</text>\\n  <text x=\"165\" y=\"35\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\\n  <text x=\"130\" y=\"190\" font-size=\"10px\" font-family=\"serif\">y=-2x+3</text>\\n  <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\\n</svg>",
+  "choices": ["2", "4", "6", "8", "10"],
+  "answer": "②",
+  "solution": "[키포인트] 이차함수와 직선의 교점을 구하고 평행선을 이용해 다른 교점을 찾아 넓이를 계산한다.\\n조건 정리: 점 $A$, $B$는 이차함수와 직선의 교점이며, $x$축과 평행한 선을 그어 교점 $C$, $D$를 잡는다.\\n풀이 과정:\\n1. 이차함수 $f(x)=x^2-4x$와 직선 $y=-2x+3$의 교점 $A, B$의 $x$좌표를 구한다.\\n$x^2-4x = -2x+3 \\implies x^2-2x-3=0 \\implies (x-3)(x+1)=0$\\n$x=-1$ 또는 $x=3$이고 $x_A < x_B$이므로 $x_A = -1, x_B = 3$이다.\\n교점의 좌표는 $A(-1, f(-1)) = A(-1, 5)$, $B(3, f(3)) = B(3, -3)$이다.\\n2. 점 $C$와 점 $D$의 좌표를 구한다.\\n점 $C$는 점 $A$를 지나고 $x$축에 평행한 직선($y=5$)과 이차함수의 교점이므로 $x^2-4x=5 \\implies x^2-4x-5=0 \\implies (x-5)(x+1)=0$. $A$가 아닌 점이므로 $x_C=5$이며, 점 $C$의 좌표는 $(5, 5)$이다.\\n점 $D$는 점 $B$를 지나고 $x$축에 평행한 직선($y=-3$)과 이차함수의 교점이므로 $x^2-4x=-3 \\implies x^2-4x+3=0 \\implies (x-3)(x-1)=0$. $B$가 아닌 점이므로 $x_D=1$이며, 점 $D$의 좌표는 $(1, -3)$이다.\\n3. 삼각형의 넓이 $S$와 $T$를 구한다.\\n삼각형 $ABD$의 밑변 $BD$의 길이는 $|3-1|=2$이고 높이는 $5 - (-3) = 8$이므로\\n$S = \\frac{1}{2} \\times 2 \\times 8 = 8$\\n삼각형 $ABC$의 밑변 $AC$의 길이는 $|5 - (-1)| = 6$이고 높이는 $5 - (-3) = 8$이므로\\n$T = \\frac{1}{2} \\times 6 \\times 8 = 24$\\n4. $S:T = 8:24 = 1:3$이므로 $a=1, b=3$이다. $a, b$는 서로소이므로 $a+b = 4$이다.\\n결론: 최종 정답은 ②이다."
+},
   {
     id: 19,
     level: "상",
@@ -279,20 +279,26 @@ window.questionBank = [
     answer: "①",
     solution: "[키포인트]\n연립부등식의 정수해를 구간으로 정리한 뒤, 그 정수들의 합이 $-3$이 되도록 하는 $a$의 범위를 찾는다.\n조건 정리\n$3x+6\\gt5x$, $x-2\\gt-2x+a$를 동시에 만족한다.\n풀이 방향 설정\n먼저 정수해의 집합을 $a$에 따라 표현하고, 그 합이 $-3$이 되는 경우를 찾는다.\n풀이 과정\n첫째 부등식에서\n$3x+6\\gt5x \\implies 6\\gt2x \\implies x\\lt3$\n둘째 부등식에서\n$x-2\\gt-2x+a \\implies 3x\\gt a+2 \\implies x\\gt\\dfrac{a+2}{3}$\n따라서 정수해는\n$\\dfrac{a+2}{3}\\lt x\\lt3$를 만족하는 정수들이다.\n이 정수들의 합이 $-3$이 되려면 가능한 정수해는 $-3,-2,-1,0,1,2$이어야 한다.\n즉 $-3$은 포함되고 $-4$는 포함되지 않아야 하므로\n$-4\\le\\dfrac{a+2}{3}\\lt-3$\n양변에 $3$을 곱하면\n$-12\\le a+2\\lt-9$\n따라서\n$-14\\le a\\lt-11$\n정수 $a$는 $-14,-13,-12$이므로\n$M=-12$, $m=-14$이다.\n그러므로\n$M-m=(-12)-(-14)=2$\n결론\n따라서 정답은 ①이다."
   },
-  {
-    id: 20,
-    level: "상",
-    category: "이차함수의 그래프",
-    originalCategory: "이차함수의 그래프",
-    standardCourse: "공통수학1",
-    standardUnitKey: "H22-C-06",
-    standardUnit: "이차함수",
-    standardUnitOrder: 6,
-    content: "[도형필요] 이차함수 $f(x)=-x^2+4x$의 그래프와 직선 $y=x$가 만나는 두 점 중 원점이 아닌 점을 $A$라 하고, 점 $A$의 $x$좌표를 $\\alpha$라 하자. $0\\lt t\\lt\\alpha$인 실수 $t$에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프, 직선 $y=x$와 만나는 점을 각각 $P,Q$라 할 때, 선분 $PQ$의 길이는 $t=\\dfrac{n}{m}$일 때 최댓값 $\\dfrac{q}{p}$를 갖는다. $m+n+p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
-    choices: ["① 12", "② 14", "③ 16", "④ 18", "⑤ 21"],
-    answer: "④",
-    solution: "[키포인트]\n세로선 $x=t$에서 두 그래프의 $y$값 차이를 함수로 두고 최대를 구한다.\n조건 정리\n$f(x)=-x^2+4x$, 직선 $y=x$\n풀이 과정\n교점은 $-x^2+4x=x \\implies -x^2+3x=0 \\implies x(x-3)=0$이므로 $x=0,3$이다. 따라서 원점이 아닌 점 $A$의 $x$좌표는 $\\alpha=3$이다.\n$0\\lt t\\lt3$에서 $P=(t,-t^2+4t)$, $Q=(t,t)$이므로\n$PQ=(-t^2+4t)-t=-t^2+3t$\n이는 아래로 볼록한 이차식이므로 최대는 꼭짓점에서 생긴다.\n꼭짓점의 $t$값은\n$t=\\dfrac{-3}{2(-1)}=\\dfrac{3}{2}$\n따라서 $n=3$, $m=2$이다.\n최댓값은\n$-\\left(\\dfrac{3}{2}\\right)^2+3\\cdot\\dfrac{3}{2}=\\dfrac{9}{4}$\n따라서 $q=9$, $p=4$이다.\n그러므로 $m+n+p+q=2+3+4+9=18$이다.\n결론\n따라서 정답은 ④이다."
-  },
+{
+  "id": 20,
+  "level": "상",
+  "category": "이차함수",
+  "originalCategory": "이차함수의 활용",
+  "standardCourse": "중3 수학",
+  "standardUnitKey": "M3-04",
+  "standardUnit": "이차함수와 그래프",
+  "standardUnitOrder": 4,
+  "content": "이차함수 $f(x) = -x^2 + 4x$의 그래프와 직선 $y = x$가 만나는 두 점 중 원점이 아닌 점을 $A$라 하고, 점 $A$의 $x$좌표를 $a$라 하자. $0 < t < a$인 실수 $t$에 대하여 직선 $x = t$가 이차함수 $y = f(x)$의 그래프, 직선 $y = x$와 만나는 점을 각각 $P, Q$라 할 때, 선분 $PQ$의 길이는 $t = \\frac{n}{m}$일 때, 최댓값은 $\\frac{q}{p}$이다. $m + n + p + q$의 값은? (단, $p$와 $q$는 서로소인 자연수이다.)\\n<svg width=\"240\" height=\"180\" viewBox=\"0 0 240 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <line x1=\"10\" y1=\"140\" x2=\"230\" y2=\"140\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n  <line x1=\"40\" y1=\"170\" x2=\"40\" y2=\"20\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n  <path d=\"M 20.0,196.2 L 23.8,184.5 L 27.7,173.2 L 31.5,162.4 L 35.3,152.0 L 39.2,142.1 L 43.0,132.6 L 46.9,123.6 L 50.7,115.1 L 54.5,107.0 L 58.4,99.4 L 62.2,92.2 L 66.0,85.5 L 69.9,79.3 L 73.7,73.5 L 77.6,68.2 L 81.4,63.3 L 85.2,58.9 L 89.1,55.0 L 92.9,51.5 L 96.7,48.5 L 100.6,45.9 L 104.4,43.8 L 108.2,42.2 L 112.1,41.0 L 115.9,40.3 L 119.8,40.0 L 123.6,40.2 L 127.4,40.9 L 131.3,42.0 L 135.1,43.6 L 138.9,45.6 L 142.8,48.1 L 146.6,51.1 L 150.4,54.5 L 154.3,58.4 L 158.1,62.7 L 162.0,67.5 L 165.8,72.8 L 169.6,78.5 L 173.5,84.7 L 177.3,91.3 L 181.1,98.4 L 185.0,106.0 L 188.8,114.0 L 192.7,122.5 L 196.5,131.4 L 200.3,140.8 L 204.2,150.7 L 208.0,161.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\\n  <path d=\"M 20.0,152.5 L 200.0,40.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\\n  <path d=\"M 88.0,152.5 L 88.0,35.0\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n  <circle cx=\"40\" cy=\"140\" r=\"2\" fill=\"black\"/>\\n  <circle cx=\"160\" cy=\"65\" r=\"2\" fill=\"black\"/>\\n  <circle cx=\"88\" cy=\"56\" r=\"2\" fill=\"black\"/>\\n  <circle cx=\"88\" cy=\"110\" r=\"2\" fill=\"black\"/>\\n  <text x=\"30\" y=\"135\" font-size=\"10px\">O</text>\\n  <text x=\"165\" y=\"65\" font-size=\"10px\">A</text>\\n  <text x=\"75\" y=\"58\" font-size=\"10px\">P</text>\\n  <text x=\"93\" y=\"115\" font-size=\"10px\">Q</text>\\n  <text x=\"20\" y=\"25\" font-size=\"10px\">y</text>\\n  <text x=\"225\" y=\"155\" font-size=\"10px\">x</text>\\n  <text x=\"180\" y=\"45\" font-size=\"10px\">y = x</text>\\n  <text x=\"160\" y=\"160\" font-size=\"10px\">y = f(x)</text>\\n  <text x=\"75\" y=\"170\" font-size=\"10px\">x = t</text>\\n  <defs>\\n    <marker id=\"arrow\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\">\\n      <path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/>\\n    </marker>\\n  </defs>\\n</svg>",
+  "choices": [
+    "12",
+    "14",
+    "16",
+    "18",
+    "21"
+  ],
+  "answer": "④",
+  "solution": "[키포인트] 두 그래프의 교점을 구하여 범위를 정하고, 길이에 대한 식을 세워 최댓값을 구한다.\\n조건 정리: 점 $P$는 포물선 위, 점 $Q$는 직선 위의 점이며, $t$의 범위 내에서 $\\overline{PQ}$의 길이를 이차식으로 나타낸다.\\n풀이 과정:\\n1. 이차함수 $f(x) = -x^2 + 4x$와 직선 $y = x$의 교점 $A$를 구한다.\\n$-x^2 + 4x = x \\implies x^2 - 3x = 0 \\implies x(x - 3) = 0$\\n원점이 아닌 점이 $A$이므로 $x_A = 3$이다. 따라서 $a = 3$이다.\\n2. 선분 $PQ$의 길이를 $t$에 관한 식으로 나타낸다.\\n점 $P$의 $y$좌표는 $f(t) = -t^2 + 4t$이고, 점 $Q$의 $y$좌표는 $t$이다.\\n$0 < t < 3$ 범위에서 포물선이 직선보다 위쪽에 있으므로\\n$\\overline{PQ} = (-t^2 + 4t) - t = -t^2 + 3t$\\n3. $\\overline{PQ}$의 최댓값을 구한다.\\n$L(t) = -t^2 + 3t = -(t^2 - 3t) = -\\left(t - \\frac{3}{2}\\right)^2 + \\frac{9}{4}$\\n따라서 $t = \\frac{3}{2}$일 때 최댓값 $\\frac{9}{4}$를 가진다.\\n4. $m, n, p, q$ 값을 정한다.\\n$t = \\frac{n}{m} = \\frac{3}{2} \\implies n = 3, m = 2$\\n최댓값 $\\frac{q}{p} = \\frac{9}{4} \\implies q = 9, p = 4$\\n$m + n + p + q = 2 + 3 + 4 + 9 = 18$이다.\\n결론: 최종 정답은 ④이다."
+},
   {
     id: 21,
     level: "상",
