@@ -1,4 +1,4 @@
-window.examTitle = "24_금당중_1학기_중간_중2_기출";
+window.examTitle = "24_금당중_1학기_중간_중3_기출";
 
 window.questionBank = [
   {
