@@ -1,39 +1,6 @@
 window.mainDB = {
   "exams": [
     {
-      "file": "일차방정식활용_중1_유형.js",
-      "school": "AP수학",
-      "topic": "일차방정식활용",
-      "grade": "중1",
-      "year": 2026,
-      "semester": "1",
-      "examType": "",
-      "subject": "",
-      "contentType": "유형"
-    },
-    {
-      "file": "일차방정식활용_중1_유형2.js",
-      "school": "AP수학",
-      "topic": "일차방정식활용",
-      "grade": "중1",
-      "year": 2026,
-      "semester": "1",
-      "examType": "",
-      "subject": "",
-      "contentType": "유형"
-    },
-    {
-      "file": "일차방정식활용_중1_유형1.js",
-      "school": "AP수학",
-      "topic": "일차방정식활용",
-      "grade": "중1",
-      "year": 2026,
-      "semester": "1",
-      "examType": "",
-      "subject": "",
-      "contentType": "유형"
-    },
-    {
       "file": "25_매산고_1학기_중간_고2_대수.js",
       "school": "매산고",
       "topic": "",
@@ -157,6 +124,17 @@ window.mainDB = {
     {
       "file": "25_금당고_1학기_중간_고1_기출.js",
       "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "기출"
+    },
+    {
+      "file": "25_매산고_1학기_중간_고1_기출.js",
+      "school": "매산고",
       "topic": "",
       "grade": "고1",
       "year": 2025,
@@ -395,6 +373,17 @@ window.mainDB = {
       "examType": "mid",
       "subject": "",
       "contentType": "유형"
+    },
+    {
+      "file": "24_금당중_1학기_중간_중2_기출.js",
+      "school": "금당중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2024,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "기출"
     },
     {
       "file": "24_신흥중_1학기_중간_중2_기출.js",
@@ -890,6 +879,39 @@ window.mainDB = {
       "examType": "mid",
       "subject": "",
       "contentType": "단원평가"
+    },
+    {
+      "file": "일차방정식활용_중1_유형.js",
+      "school": "",
+      "topic": "일차방정식활용",
+      "grade": "중1",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형"
+    },
+    {
+      "file": "일차방정식활용_중1_유형1.js",
+      "school": "",
+      "topic": "일차방정식활용",
+      "grade": "중1",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형"
+    },
+    {
+      "file": "일차방정식활용_중1_유형3.js",
+      "school": "",
+      "topic": "일차방정식활용",
+      "grade": "중1",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형"
     }
   ]
 };
