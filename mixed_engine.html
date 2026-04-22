@@ -106,7 +106,12 @@
         .choices-compact .choice-item { min-width: 15%; }
 
         .choices-block { display: flex; flex-direction: column; gap: 5px; }
-        .choices-block .choice-item { padding: 6px 10px; background: #f9fafb; border: 0.5px solid #eee; border-radius: 4px; }
+        .choices-block .choice-item {
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+        }
 
         .answer-box { flex: 1; border: none; margin-top: 10px; background: transparent; }
 
@@ -118,6 +123,20 @@
         }
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
         table.question-table th { font-weight: 700; }
+
+        .question-table-wrap {
+            margin: 8px 0 10px 0;
+        }
+
+        /* [Note Box] 조건 박스 스타일 */
+        .question-note-box {
+            margin: 8px 0 10px 0;
+            padding: 8px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: #f8fafc;
+            line-height: 1.55;
+        }
 
         /* [Fit] Compression Classes */
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
@@ -294,13 +313,31 @@ function formatQuestionContent(html, q) {
     });
 }
 
+function normalizeQuestionTables(html) {
+    if (!html) return '';
+    return html
+        .replace(/<div class="question-table-wrap">\s*<table/gi, '<div class="question-table-wrap"><table class="question-table"')
+        .replace(/<table(?![^>]*class=)/gi, '<table class="question-table"');
+}
+
+function normalizeQuestionNotes(html) {
+    if (!html || /question-note-box/.test(html)) return html;
+    return html.replace(
+        /((?:<br\s*\/?>\s*){2,})(\[[^\]]+\](?:[\s\S]*?))(?=(?:<br\s*\/?>\s*){2,}(?!\[[^\]]+\])|$)/gi,
+        (match, breaks, noteBlock) => {
+            const brCount = (noteBlock.match(/<br\s*\/?>/gi) || []).length;
+            const plainText = noteBlock.replace(/<[^>]+>/g, '').trim();
+            if (brCount < 2 && plainText.length < 60) return match;
+            return `${breaks}<div class="question-note-box">${noteBlock}</div>`;
+        }
+    );
+}
+
 /** [Image Field Handling] */
 function stripInlineImagesFromContent(content, hasImageField) {
     if (!content) return '';
     if (!hasImageField) return content;
-    // img 태그와 주변 br 태그를 하나로 치환하여 공백 벌어짐 방지
     let stripped = content.replace(/(?:<br\s*\/?>\s*)*<img[^>]*>(?:\s*<br\s*\/?>)*/gi, '<br>');
-    // 앞뒤 잉여 줄바꿈 정리
     stripped = stripped.replace(/^(?:<br\s*\/?>\s*)+/i, '').replace(/(?:<br\s*\/?>\s*)+$/i, '');
     return stripped;
 }
@@ -360,18 +397,17 @@ async function renderExam(area, data) {
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box';
         
-        // 1. 발문 (인라인 이미지 제거 및 줄바꿈 보정)
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
-        const formattedContent = formatQuestionContent(wrapLatex(rawContent), q);
+        const formattedContent = normalizeQuestionNotes(
+            normalizeQuestionTables(
+                formatQuestionContent(wrapLatex(rawContent), q)
+            )
+        );
         
-        // 2. 별도 이미지 래퍼 
         const imageHTML = renderQuestionImageHTML(q);
-        
-        // 3. 보기 HTML 생성
         const choicesHTML = renderChoicesHTML(q);
         
-        // 조립: 발문 -> 이미지 -> 보기
         box.innerHTML = `<div class="q-num">${i + 1}.</div>
                          <div class="q-content">${formattedContent}</div>
                          ${imageHTML}
@@ -449,19 +485,34 @@ async function renderExam(area, data) {
                 wideCol.appendChild(block.items[0].box.cloneNode(true));
                 page.body.appendChild(wideCol);
             } else {
-                const bGrid = document.createElement('div'); bGrid.className = 'grid-container';
+                const bGrid = document.createElement('div');
+                bGrid.className = 'grid-container';
                 bGrid.style.flex = (block.type === 'normal') ? '1 1 0' : 'none';
                 if (bIdx < pageData.blocks.length - 1) bGrid.style.marginBottom = SE_BLOCK_GAP + 'px';
+
                 const bLeft = document.createElement('div'); bLeft.className = 'grid-col';
                 const bRight = document.createElement('div'); bRight.className = 'grid-col';
-                bGrid.appendChild(bLeft); bGrid.appendChild(bRight); page.body.appendChild(bGrid);
+                bGrid.appendChild(bLeft);
+                bGrid.appendChild(bRight);
+                page.body.appendChild(bGrid);
+
                 const split = Math.ceil(block.items.length / 2);
                 block.items.slice(0, split).forEach(it => bLeft.appendChild(it.box.cloneNode(true)));
                 block.items.slice(split).forEach(it => bRight.appendChild(it.box.cloneNode(true)));
             }
         });
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]); await raf();
-        page.querySelectorAll('.q-box').forEach(b => fitQuestionBox(b));
+
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
+        await raf();
+
+        const allPageBoxes = page.querySelectorAll('.q-box');
+        allPageBoxes.forEach(b => fitQuestionBox(b));
+
+        if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
+            allPageBoxes.forEach(b => autoCompress(b));
+            await raf();
+            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
+        }
     }
 }
 
@@ -482,8 +533,17 @@ async function renderSol(area, data) {
         const box = document.createElement('div'); box.className = 'q-box sol-box';
         const solText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
         
+        const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
+        const reminderContent = normalizeQuestionNotes(
+            normalizeQuestionTables(
+                formatQuestionContent(wrapLatex(reminderRawContent), q)
+            )
+        );
+        const reminderImageHTML = renderQuestionImageHTML(q);
+
         box.innerHTML = `<div class="q-num">${i+1}.</div>
-                         <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${wrapLatex(q.content || q.question)}</div>
+                         <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
+                         ${reminderImageHTML}
                          <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${wrapLatex(solText)}</div></div>`;
         
         cols[colIdx].appendChild(box);
@@ -501,31 +561,36 @@ async function renderSol(area, data) {
     }
 }
 
-/** [정합화] renderAnsGrid (QR & ans-grid 기반) */
-function renderAnsGrid(area, data) {
-    const p = makePage(area, 'ans', ++pageCount);
-    const grid = document.createElement('div'); grid.className = 'ans-grid';
-    const splitIndex = Math.ceil(data.length / 2);
-    for (let i = 0; i < splitIndex; i++) {
-        [data[i], data[splitIndex + i]].forEach((q, idx) => {
-            if (!q) return;
-            const qNum = (idx === 0) ? (i + 1) : (splitIndex + i + 1);
-            const cell = document.createElement('div'); cell.className = 'ans-cell';
-            cell.innerHTML = `<div class="ans-n">${qNum}.</div><div class="ans-v">${wrapLatex(q.answer ?? '–')}</div>`;
-            grid.appendChild(cell);
-        });
+function renderAns(area, data) {
+    const PER_PAGE = 50;
+    let pCount = 1;
+
+    for (let start = 0; start < data.length; start += PER_PAGE) {
+        const chunk = data.slice(start, start + PER_PAGE);
+        const p = makePage(area, 'ans', pCount++);
+        const grid = document.createElement('div');
+        grid.className = 'ans-grid';
+        const splitIndex = Math.ceil(chunk.length / 2);
+
+        for (let i = 0; i < splitIndex; i++) {
+            [i, splitIndex + i].forEach(idx => {
+                if (chunk[idx]) {
+                    const u = document.createElement('div');
+                    u.className = 'ans-cell';
+                    u.innerHTML = `<div class="ans-n">${start + idx + 1}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
+                    grid.appendChild(u);
+                }
+            });
+        }
+
+        p.body.appendChild(grid);
     }
-    p.body.appendChild(grid);
-    const solUrl = new URL(window.location.href); solUrl.searchParams.set('mode', 'sol');
-    const qrDiv = document.createElement('div'); qrDiv.style.cssText = 'margin-top:40px; text-align:center; font-size:9pt; color:#555;';
-    qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(solUrl.toString())}" style="width:90px;height:90px; border:1px solid #eee; padding:5px;"><div style="margin-top:8px; font-weight:bold;">📱 스마트 해설 바로가기</div>`;
-    p.body.appendChild(qrDiv);
 }
 
 async function render() {
     const area = document.getElementById('print-area'); area.innerHTML = '';
     pageCount = 0;
-    if (AppState.mode === 'ans') renderAnsGrid(area, AppState.data);
+    if (AppState.mode === 'ans') renderAns(area, AppState.data);
     else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
     else await renderExam(area, AppState.data);
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);

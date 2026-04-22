@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.6.4 (Rulebook v1.9 + Optimization)</title>
+    <title>JS아카이브 엔진 - Stage E v1.6.5 (Rulebook v1.9 + Note Box Support)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
@@ -72,6 +72,15 @@
 
         .question-table-wrap {
             margin: 8px 0 10px 0;
+        }
+
+        .question-note-box {
+            margin: 8px 0 10px 0;
+            padding: 8px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: #f8fafc;
+            line-height: 1.55;
         }
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
@@ -276,6 +285,20 @@ function normalizeQuestionTables(html) {
         .replace(/<table(?![^>]*class=)/gi, '<table class="question-table"');
 }
 
+
+function normalizeQuestionNotes(html) {
+    if (!html || /question-note-box/.test(html)) return html;
+    return html.replace(
+        /((?:<br\s*\/?>\s*)+)(\[[^\]]+\][\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
+        (match, breaks, noteBlock) => {
+            const brCount = (noteBlock.match(/<br\s*\/?>/gi) || []).length;
+            const plainText = noteBlock.replace(/<[^>]+>/g, '').trim();
+            if (brCount < 2 && plainText.length < 60) return match;
+            return `${breaks}<div class="question-note-box">${noteBlock}</div>`;
+        }
+    );
+}
+
 function stripInlineImagesFromContent(content, hasImageField) {
     if (!content) return '';
     if (!hasImageField) return content;
@@ -296,8 +319,10 @@ async function renderExam(area, data) {
         const box = document.createElement('div'); box.className = 'q-box';
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
-        const formattedContent = normalizeQuestionTables(
-            formatQuestionContent(wrapLatex(rawContent), q)
+        const formattedContent = normalizeQuestionNotes(
+            normalizeQuestionTables(
+                formatQuestionContent(wrapLatex(rawContent), q)
+            )
         );
         const imageHTML = renderQuestionImageHTML(q);
         const choicesHTML = renderChoicesHTML(q);
@@ -399,8 +424,14 @@ async function renderSol(area, data) {
     let { cols } = makeGridPage(); let colIdx = 0;
     for (let i = 0; i < data.length; i++) {
         const q = data[i]; const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
+        const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
+        const reminderContent = normalizeQuestionNotes(
+            normalizeQuestionTables(
+                formatQuestionContent(wrapLatex(reminderRawContent), q)
+            )
+        );
         const box = document.createElement('div'); box.className = 'q-box sol-box';
-        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${wrapLatex(q.content || q.question)}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${wrapLatex(solutionText)}</div></div>`;
+        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${wrapLatex(solutionText)}</div></div>`;
         cols[colIdx].appendChild(box);
         if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
         if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
