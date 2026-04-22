@@ -177,6 +177,13 @@
             <option value="단원평가">단원평가</option>
             <option value="쪽지">쪽지</option>
         </select>
+        <select class="fb-sel" id="examPeriodFilter">
+            <option value="">전체 시험</option>
+            <option value="1-mid">1학기 중간</option>
+            <option value="1-final">1학기 기말</option>
+            <option value="2-mid">2학기 중간</option>
+            <option value="2-final">2학기 기말</option>
+        </select>
         <button class="fb-mixer" onclick="location.href='mixer.html'">믹서 출제</button>
     </div>
 </div>
@@ -298,6 +305,7 @@ async function init() {
     document.getElementById('searchInput').addEventListener('input', onFilterChange);
     document.getElementById('yearFilter').addEventListener('change', onFilterChange);
     document.getElementById('contentTypeFilter').addEventListener('change', onFilterChange);
+    document.getElementById('examPeriodFilter').addEventListener('change', onFilterChange);
 
     renderFeatured();
 }
@@ -346,12 +354,19 @@ function sortExams(list) {
     });
 }
 
+function examPeriodValue(ex) {
+    const semester = normalizeSemester(ex?.semester);
+    const examType = normalizeExamType(ex?.examType);
+    return semester && examType ? `${semester}-${examType}` : '';
+}
+
 function onFilterChange() {
     const keyword = document.getElementById('searchInput').value.trim();
     const year = document.getElementById('yearFilter').value;
     const type = document.getElementById('contentTypeFilter').value;
+    const examPeriod = document.getElementById('examPeriodFilter').value;
 
-    if (keyword || year || type || selectedGrade) {
+    if (keyword || year || type || examPeriod || selectedGrade) {
         document.getElementById('featured-section').style.display = 'none';
         document.getElementById('full-section').style.display = 'block';
         renderFullList();
@@ -426,6 +441,7 @@ function renderFullList() {
     const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
     const year = document.getElementById('yearFilter').value;
     const type = compactText(document.getElementById('contentTypeFilter').value);
+    const examPeriod = document.getElementById('examPeriodFilter').value;
 
     const container = document.getElementById('full-grid');
     container.innerHTML = '';
@@ -444,13 +460,21 @@ function renderFullList() {
         const matchY = !year || String(ex.year) === String(year);
         const itemType = compactText(ex.contentType || '');
         const matchT = !type || itemType === type;
+        const matchP = !examPeriod || examPeriodValue(ex) === examPeriod;
 
-        return matchK && matchG && matchY && matchT;
+        return matchK && matchG && matchY && matchT && matchP;
     });
 
     filtered = sortExams(filtered);
 
-    document.getElementById('listMeta').innerText = `${filtered.length}개 자료`;
+    const activeFilters = [];
+    if (selectedGrade) activeFilters.push(selectedGrade);
+    if (year) activeFilters.push(`${year}년`);
+    if (type) activeFilters.push(document.getElementById('contentTypeFilter').selectedOptions[0]?.textContent || type);
+    if (examPeriod) activeFilters.push(document.getElementById('examPeriodFilter').selectedOptions[0]?.textContent || examPeriod);
+    document.getElementById('listMeta').innerText = activeFilters.length
+        ? `${filtered.length}개 자료 · ${activeFilters.join(' · ')}`
+        : `${filtered.length}개 자료`;
 
     if (!filtered.length) {
         container.innerHTML = `<div class="empty-state" style="grid-column:1/-1; margin:0;">조건에 맞는 자료가 없습니다.</div>`;
