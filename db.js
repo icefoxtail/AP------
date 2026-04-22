@@ -9,7 +9,20 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
+    },
+    {
+      "file": "25_수피아여고_1학기_중간_고2_확률과통계.js",
+      "school": "수피아여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "25_순천고_1학기_중간_고2_대수.js",
@@ -20,7 +33,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_순천여고_1학기_중간_고2_대수.js",
@@ -31,7 +45,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "25_순천여고_1학기_중간_고2_확률과통계.js",
@@ -42,7 +57,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "확률과통계",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_제일고_1학기_중간_고2_대수.js",
@@ -53,7 +69,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_제일고_1학기_중간_고2_확률과통계.js",
@@ -64,7 +81,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "확률과통계",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "25_효천고_1학기_중간_고2_대수.js",
@@ -75,7 +93,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_효천고_1학기_중간_고2_확률과통계.js",
@@ -86,7 +105,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "확률과통계",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "25_강남여고_1학기_기말_고1_기출.js",
@@ -97,7 +117,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "final",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_강남여고_1학기_중간_고1_기출.js",
@@ -108,7 +129,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_강남여고_1학기_중간_고1_유사.js",
@@ -119,7 +141,20 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 24
+    },
+    {
+      "file": "25_금당고_1학기_기말_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 22
     },
     {
       "file": "25_금당고_1학기_중간_고1_기출.js",
@@ -130,7 +165,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 22
     },
     {
       "file": "25_매산고_1학기_중간_고1_기출.js",
@@ -141,7 +177,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 20
     },
     {
       "file": "25_순천여고_1학기_중간_고1_기출.js",
@@ -152,7 +189,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "25_순천여고_1학기_중간_고1_유사.js",
@@ -163,7 +201,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 22
     },
     {
       "file": "25_제일고_1학기_중간_고1_기출.js",
@@ -174,7 +213,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 22
     },
     {
       "file": "25_제일고_1학기_중간_고1_유사.js",
@@ -185,7 +225,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 22
     },
     {
       "file": "25_팔마고_1학기_중간_고1_기출.js",
@@ -196,7 +237,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "25_팔마고_1학기_중간_고1_유사.js",
@@ -207,7 +249,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 23
     },
     {
       "file": "25_효천고_1학기_중간_고1_기출.js",
@@ -218,7 +261,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "25_금당중_1학기_중간_중3_기출.js",
@@ -229,7 +273,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_신흥중_1학기_중간_중3_기출.js",
@@ -240,7 +285,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_왕운중_1학기_중간_중3_기출.js",
@@ -251,7 +297,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_매산중_1학기_중간_중2_기출.js",
@@ -262,7 +309,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "25_연향중_1학기_중간_중2_기출.js",
@@ -273,7 +321,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "25_왕운중_1학기_중간_중2_기출.js",
@@ -284,7 +333,20 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
+    },
+    {
+      "file": "25_진남중_1학기_중간_중2_기출.js",
+      "school": "진남중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "24_금당고_1학기_중간_고2_대수.js",
@@ -295,7 +357,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "24_금당고_1학기_중간_고2_유사.js",
@@ -306,7 +369,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 21
     },
     {
       "file": "24_여수고_1학기_중간_고1_기출.js",
@@ -317,7 +381,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "24_제일고_1학기_중간_고1_기출.js",
@@ -328,7 +393,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 22
     },
     {
       "file": "24_한영고_1학기_중간_고1_기출.js",
@@ -339,7 +405,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "24_효천고_1학기_중간_고1_기출.js",
@@ -350,7 +417,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "24_금당중_1학기_중간_중3_기출.js",
@@ -361,7 +429,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "24_왕운중_1학기_중간_중3_기출.js",
@@ -372,7 +441,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "24_왕운중_1학기_중간_중3_유사.js",
@@ -383,7 +453,20 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 23
+    },
+    {
+      "file": "24_문성중_1학기_중간_중2_기출.js",
+      "school": "문성중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2024,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "24_신흥중_1학기_중간_중2_기출.js",
@@ -394,7 +477,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "24_연향중_1학기_중간_중2_기출.js",
@@ -405,7 +489,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "23_부영여고_1학기_중간_고2_대수.js",
@@ -416,7 +501,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "23_중앙여고_1학기_중간_고2_대수.js",
@@ -427,7 +513,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 5
     },
     {
       "file": "23_한영고_1학기_중간_고2_대수.js",
@@ -438,7 +525,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "대수",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "23_매산고_1학기_중간_고1_기출.js",
@@ -449,7 +537,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 20
     },
     {
       "file": "23_매산고_1학기_중간_고1_유사.js",
@@ -460,7 +549,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 20
     },
     {
       "file": "23_부영여고_1학기_중간_고1_기출.js",
@@ -471,7 +561,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 22
     },
     {
       "file": "23_여수여고_1학기_중간_고1_기출.js",
@@ -482,7 +573,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 20
     },
     {
       "file": "23_여천고_1학기_중간_고1_기출.js",
@@ -493,7 +585,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "23_충무고_1학기_중간_고1_기출.js",
@@ -504,7 +597,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "23_한영고_1학기_중간_고1_기출.js",
@@ -515,7 +609,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "23_왕운중_1학기_중간_중3_기출.js",
@@ -526,7 +621,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "23_왕운중_1학기_중간_중3_유사.js",
@@ -537,7 +633,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 24
     },
     {
       "file": "23_풍덕중_1학기_중간_중3_기출.js",
@@ -548,7 +645,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "23_풍덕중_1학기_중간_중3_유사.js",
@@ -559,7 +657,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 24
     },
     {
       "file": "22_왕운중_1학기_중간_중3_기출.js",
@@ -570,7 +669,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "22_팔마중_1학기_중간_중3_기출.js",
@@ -581,7 +681,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "22_풍덕중_1학기_중간_중3_기출.js",
@@ -592,7 +693,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 20
     },
     {
       "file": "21_금당중_1학기_중간_중3_기출.js",
@@ -603,7 +705,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "21_동산중_1학기_중간_중3_기출.js",
@@ -614,7 +717,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "21_매산중_1학기_중간_중3_기출.js",
@@ -625,7 +729,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "21_신흥중_1학기_중간_중3_기출.js",
@@ -636,7 +741,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "21_연향중_1학기_중간_중3_기출.js",
@@ -647,7 +753,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "21_왕운중_1학기_중간_중3_기출.js",
@@ -658,7 +765,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "21_팔마중_1학기_중간_중3_기출.js",
@@ -669,7 +777,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "21_금당중_1학기_중간_중2_기출.js",
@@ -680,7 +789,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 26
     },
     {
       "file": "21_신흥중_1학기_중간_중2_기출.js",
@@ -691,7 +801,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "21_연향중_1학기_중간_중2_기출.js",
@@ -702,7 +813,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 21
     },
     {
       "file": "21_왕운중_1학기_중간_중2_기출.js",
@@ -713,7 +825,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "21_팔마중_1학기_중간_중2_기출.js",
@@ -724,7 +837,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "21_풍덕중_1학기_중간_중2_기출.js",
@@ -735,7 +849,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "20_풍덕중_1학기_중간_중2_기출.js",
@@ -746,7 +861,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "19_금당중_1학기_중간_중3_기출.js",
@@ -757,7 +873,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "19_동산중_1학기_중간_중3_기출.js",
@@ -768,7 +885,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "19_연향중_1학기_중간_중3_기출.js",
@@ -779,7 +897,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 23
     },
     {
       "file": "19_풍덕중_1학기_중간_중3_기출.js",
@@ -790,7 +909,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "19_동산중_1학기_중간_중2_기출.js",
@@ -801,7 +921,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 25
     },
     {
       "file": "19_연향중_1학기_중간_중2_기출.js",
@@ -812,7 +933,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "기출"
+      "contentType": "기출",
+      "qCount": 24
     },
     {
       "file": "항등식과나머지정리_고1_유형.js",
@@ -823,7 +945,8 @@ window.mainDB = {
       "semester": "",
       "examType": "",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 32
     },
     {
       "file": "단항식의계산_중2_유형.js",
@@ -834,7 +957,8 @@ window.mainDB = {
       "semester": "",
       "examType": "",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 25
     },
     {
       "file": "유리수와순환소수_중2_유형.js",
@@ -845,7 +969,20 @@ window.mainDB = {
       "semester": "",
       "examType": "",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 79
+    },
+    {
+      "file": "1학기_기말평가_중1_단원평가.js",
+      "school": "",
+      "topic": "기말평가",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "단원평가",
+      "qCount": 24
     },
     {
       "file": "1학기_중간평가_중1_단원평가.js",
@@ -856,7 +993,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "단원평가"
+      "contentType": "단원평가",
+      "qCount": 24
     },
     {
       "file": "1학기_중간평가_중1_단원평가유사1.js",
@@ -867,7 +1005,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "단원평가"
+      "contentType": "단원평가",
+      "qCount": 24
     },
     {
       "file": "1학기_중간평가_중1_단원평가유사2.js",
@@ -878,7 +1017,8 @@ window.mainDB = {
       "semester": "1",
       "examType": "mid",
       "subject": "",
-      "contentType": "단원평가"
+      "contentType": "단원평가",
+      "qCount": 24
     },
     {
       "file": "일차방정식활용_중1_유형.js",
@@ -889,7 +1029,8 @@ window.mainDB = {
       "semester": "",
       "examType": "",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 20
     },
     {
       "file": "일차방정식활용_중1_유형1.js",
@@ -900,7 +1041,8 @@ window.mainDB = {
       "semester": "",
       "examType": "",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 20
     },
     {
       "file": "일차방정식활용_중1_유형3.js",
@@ -911,7 +1053,8 @@ window.mainDB = {
       "semester": "",
       "examType": "",
       "subject": "",
-      "contentType": "유형"
+      "contentType": "유형",
+      "qCount": 20
     }
   ]
 };

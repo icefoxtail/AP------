@@ -322,7 +322,6 @@ def parse_apmath_legacy_filename(filename):
         elif '학기' in p:
             semester = normalize_semester(p, filename)
         elif '중간' in p or '기말' in p:
-            # exam_type은 이미 파일명 전체로 추론
             continue
         else:
             tail_parts.append(p)
@@ -402,32 +401,238 @@ def parse_rpm_filename(filename):
 
 
 def parse_filename_upgraded(filename):
-    # 1. 새 평가형 우선
     meta = parse_eval_type_filename(filename)
     if meta:
         return meta
 
-    # 2. 단원형
     meta = parse_unit_type_filename(filename)
     if meta:
         return meta
 
-    # 3. AP수학 기존형
     meta = parse_apmath_legacy_filename(filename)
     if meta:
         return meta
 
-    # 4. RPM형
     meta = parse_rpm_filename(filename)
     if meta:
         return meta
 
-    # 5. 일반 기출형
     meta = parse_standard_exam_filename(filename)
     if meta:
         return meta
 
     return None
+
+
+def find_matching_bracket(text, start_idx, open_char='[', close_char=']'):
+    depth = 0
+    in_single = False
+    in_double = False
+    in_backtick = False
+    in_line_comment = False
+    in_block_comment = False
+    escape = False
+
+    for i in range(start_idx, len(text)):
+        ch = text[i]
+        nxt = text[i + 1] if i + 1 < len(text) else ''
+
+        if in_line_comment:
+            if ch == '\n':
+                in_line_comment = False
+            continue
+
+        if in_block_comment:
+            if ch == '*' and nxt == '/':
+                in_block_comment = False
+            continue
+
+        if in_single:
+            if escape:
+                escape = False
+            elif ch == '\\':
+                escape = True
+            elif ch == "'":
+                in_single = False
+            continue
+
+        if in_double:
+            if escape:
+                escape = False
+            elif ch == '\\':
+                escape = True
+            elif ch == '"':
+                in_double = False
+            continue
+
+        if in_backtick:
+            if escape:
+                escape = False
+            elif ch == '\\':
+                escape = True
+            elif ch == '`':
+                in_backtick = False
+            continue
+
+        if ch == '/' and nxt == '/':
+            in_line_comment = True
+            continue
+
+        if ch == '/' and nxt == '*':
+            in_block_comment = True
+            continue
+
+        if ch == "'":
+            in_single = True
+            continue
+
+        if ch == '"':
+            in_double = True
+            continue
+
+        if ch == '`':
+            in_backtick = True
+            continue
+
+        if ch == open_char:
+            depth += 1
+        elif ch == close_char:
+            depth -= 1
+            if depth == 0:
+                return i
+
+    return -1
+
+
+def count_top_level_objects_in_array(array_text):
+    depth_brace = 0
+    depth_bracket = 0
+    count = 0
+
+    in_single = False
+    in_double = False
+    in_backtick = False
+    in_line_comment = False
+    in_block_comment = False
+    escape = False
+
+    for i, ch in enumerate(array_text):
+        nxt = array_text[i + 1] if i + 1 < len(array_text) else ''
+
+        if in_line_comment:
+            if ch == '\n':
+                in_line_comment = False
+            continue
+
+        if in_block_comment:
+            if ch == '*' and nxt == '/':
+                in_block_comment = False
+            continue
+
+        if in_single:
+            if escape:
+                escape = False
+            elif ch == '\\':
+                escape = True
+            elif ch == "'":
+                in_single = False
+            continue
+
+        if in_double:
+            if escape:
+                escape = False
+            elif ch == '\\':
+                escape = True
+            elif ch == '"':
+                in_double = False
+            continue
+
+        if in_backtick:
+            if escape:
+                escape = False
+            elif ch == '\\':
+                escape = True
+            elif ch == '`':
+                in_backtick = False
+            continue
+
+        if ch == '/' and nxt == '/':
+            in_line_comment = True
+            continue
+
+        if ch == '/' and nxt == '*':
+            in_block_comment = True
+            continue
+
+        if ch == "'":
+            in_single = True
+            continue
+
+        if ch == '"':
+            in_double = True
+            continue
+
+        if ch == '`':
+            in_backtick = True
+            continue
+
+        if ch == '[':
+            depth_bracket += 1
+            continue
+        if ch == ']':
+            depth_bracket -= 1
+            continue
+
+        if ch == '{':
+            if depth_bracket == 1 and depth_brace == 0:
+                count += 1
+            depth_brace += 1
+            continue
+
+        if ch == '}':
+            depth_brace -= 1
+            continue
+
+    return count
+
+
+def extract_qcount_from_js(filepath):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            text = f.read()
+    except UnicodeDecodeError:
+        with open(filepath, 'r', encoding='cp949') as f:
+            text = f.read()
+    except Exception:
+        return 0
+
+    markers = [
+        'window.questionBank',
+        'window.문항데이터',
+        'questionBank'
+    ]
+
+    start = -1
+    for marker in markers:
+        idx = text.find(marker)
+        if idx != -1:
+            start = idx
+            break
+
+    if start == -1:
+        return 0
+
+    array_start = text.find('[', start)
+    if array_start == -1:
+        return 0
+
+    array_end = find_matching_bracket(text, array_start, '[', ']')
+    if array_end == -1:
+        return 0
+
+    array_text = text[array_start:array_end + 1]
+    count = count_top_level_objects_in_array(array_text)
+    return count if count > 0 else 0
 
 
 def sort_key(item):
@@ -451,12 +656,20 @@ def build_engine_db():
 
     exams_list = []
     skipped = []
+    qcount_failed = []
 
     all_files = sorted([f for f in os.listdir(exams_path) if f.lower().endswith('.js')])
 
     for filename in all_files:
         meta = parse_filename_upgraded(filename)
         if meta and meta.get("file"):
+            file_path = os.path.join(exams_path, filename)
+            qcount = extract_qcount_from_js(file_path)
+            meta["qCount"] = qcount
+
+            if qcount == 0:
+                qcount_failed.append(filename)
+
             exams_list.append(meta)
         else:
             skipped.append(filename)
@@ -473,7 +686,9 @@ def build_engine_db():
 
         print(f"✅ 동기화 완료: 총 {len(exams_list)}개의 파일을 db.js에 등록했습니다.")
         if skipped:
-            print(f"⚠️ 건너뜀({len(skipped)}개): {skipped}")
+            print(f"⚠️ 파일명 규칙 미매칭으로 건너뜀({len(skipped)}개): {skipped}")
+        if qcount_failed:
+            print(f"⚠️ qCount 추출 실패 또는 0개({len(qcount_failed)}개): {qcount_failed}")
 
     except Exception as e:
         print(f"❌ 파일 쓰기 실패: {e}")
