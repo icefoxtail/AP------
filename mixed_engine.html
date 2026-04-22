@@ -281,7 +281,7 @@ function extractChoice(c) {
     return String(c);
 }
 function stripChoicePrefix(text) {
-    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '').trim();
+    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.(?!\d)|\d+\))\s*/, '').trim();
 }
 function detectChoiceRenderMode(choices) {
     if (!choices || choices.length === 0) return 'compact';
@@ -577,7 +577,7 @@ function renderAns(area, data) {
                 if (chunk[idx]) {
                     const u = document.createElement('div');
                     u.className = 'ans-cell';
-                    u.innerHTML = `<div class="ans-n">${start + idx + 1}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
+                    u.innerHTML = `<div class=\"ans-n\">${start + idx + 1}.</div><div class=\"ans-v\">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
                     grid.appendChild(u);
                 }
             });
