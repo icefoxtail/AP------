@@ -353,6 +353,17 @@ window.mainDB = {
       "contentType": "기출"
     },
     {
+      "file": "24_금당중_1학기_중간_중3_기출.js",
+      "school": "금당중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2024,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "기출"
+    },
+    {
       "file": "24_왕운중_1학기_중간_중3_기출.js",
       "school": "왕운중",
       "topic": "",
@@ -373,17 +384,6 @@ window.mainDB = {
       "examType": "mid",
       "subject": "",
       "contentType": "유형"
-    },
-    {
-      "file": "24_금당중_1학기_중간_중2_기출.js",
-      "school": "금당중",
-      "topic": "",
-      "grade": "중2",
-      "year": 2024,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "기출"
     },
     {
       "file": "24_신흥중_1학기_중간_중2_기출.js",
