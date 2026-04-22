@@ -381,24 +381,25 @@ window.questionBank = [
     "solution": "1단계: $f(12) = \\frac{a}{2}$를 이용해 $a$를 구한다. $12 \\ge 6$이므로 $f(12) = \\log_2 (12-4) - a = \\log_2 8 - a = 3 - a$이다.\\n2단계: $3 - a = \\frac{a}{2} \\Rightarrow \\frac{3a}{2} = 3 \\Rightarrow a = 2$이다.\\n3단계: 함수 $f(x)$와 $x$축이 만나는 점은 $f(x)=0$의 해이다. $x \\ge 6$일 때 $\\log_2 (x-4) - 2 = 0 \\Rightarrow x-4 = 2^2 \\Rightarrow x=8$이다. (점 $\\mathrm{A}$를 $(8, 0)$이라 하자.)\\n4단계: $\\overline{\\mathrm{AB}} = 5$이므로 점 $\\mathrm{B}$의 $x$좌표는 $8-5=3$ 또는 $8+5=13$이다. $13$은 $x \\ge 6$ 구간의 유일한 해가 $8$임에 모순되므로, 나머지 한 해는 $x < 6$ 구간에 속하는 $x=3$이다.\\n5단계: $f(3) = 0$을 이용해 $b$를 구한다. $b^{3-6} - 2 = 0 \\Rightarrow b^{-3} = 2 \\Rightarrow b^3 = \\frac{1}{2}$이다.\\n6단계: $(ab)^3 = a^3b^3 = 2^3 \\times \\frac{1}{2} = 4$이다.\\n* 검산: $a=2, b=2^{-1/3}$을 대입하여 $(ab)^3$을 계산한 결과가 4로 정확히 일치함."
   },
   {
-    "id": 20,
-    "level": "최상",
-    "category": "지수함수의 그래프",
-    "originalCategory": "지수함수의 그래프",
-    "standardCourse": "대수",
-    "standardUnitKey": "H22-C-03",
-    "standardUnit": "지수함수",
-    "standardUnitOrder": 3,
-    "content": "두 상수 $a, k(1 < a < 3, 0 < k < 1)$에 대하여 직선 $y=3$이\\n두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나는 두 점을 각각 $\\mathrm{A, B}$\\n라 하고, 직선 $y=k$가 두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나\\n는 두 점을 각각 $\\mathrm{C, D}$라 하자. 사각형 $\\mathrm{ADCB}$가 넓이가\\n$\\frac{8}{3}$인 평행사변형일 때, $ak$의 값은? [4.7점]",
-    "choices": [
+    id: 20,
+    level: "",
+    category: "지수함수와 로그함수",
+    originalCategory: "",
+    standardCourse: "대수",
+    standardUnitKey: "H22-A-01",
+    standardUnit: "지수함수와 로그함수",
+    standardUnitOrder: 1,
+    questionType: "객관식",
+    content: '두 상수 $a$, $k(1<a<3,\\ 0<k<1)$에 대하여 직선 $y=3$이 두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나는 두 점을 각각 $A$, $B$라 하고, 직선 $y=k$가 두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나는 두 점을 각각 $C$, $D$라 하자. 사각형 $ADCB$가 넓이가 $\\dfrac{8}{3}$인 평행사변형일 때, $ak$의 값은? (4.7점)<br><br><img src="images/25_순천여고_대수_20.png" style="display:block; width:260px; margin:10px auto;">',
+    choices: [
       "$3^{\\frac{1}{3}}$",
       "$3^{-\\frac{1}{3}}$",
       "$3^{\\frac{1}{2}}$",
       "$3^{-\\frac{1}{2}}$",
       "$3^{\\frac{3}{2}}$"
     ],
-    "answer": "④",
-    "solution": "1단계: 각 점의 좌표를 구한다. $y=3$과의 교점: $\\mathrm{A}(0, 3)$, $\\mathrm{B}(\\log_a 3 - 1, 3)$. $y=k$와의 교점: $\\mathrm{C}(\\log_3 k - 1, k)$, $\\mathrm{D}(\\log_a k - 1, k)$. (단, $1<a<3$이고 $0<k<1$이므로 $\\log_a k < \\log_3 k$가 되어 점 $\\mathrm{D}$가 점 $\\mathrm{C}$의 왼쪽에 위치한다.)\\n2단계: 사각형 $\\mathrm{ADCB}$가 평행사변형이므로 $\\vec{AD} = \\vec{BC}$이다. $\\log_a k - 1 = \\log_3 k - 1 - (\\log_a 3 - 1)$이 성립한다.\\n3단계: $\\log_a k = \\log_3 k - \\log_a 3 + 1$. 밑을 $3$으로 통일하면 $\\frac{\\log_3 k}{\\log_3 a} = \\log_3 k - \\frac{1}{\\log_3 a} + 1$이다.\\n4단계: $\\log_3 a = u, \\log_3 k = v$라 치환하면 $\\frac{v}{u} = v - \\frac{1}{u} + 1 \\Rightarrow v = uv - 1 + u \\Rightarrow uv - v + u - 1 = 0 \\Rightarrow (u-1)(v+1)=0$이다. $1<a<3$이므로 $u \\n e 1$이고, 따라서 $v = -1$이 되어 $k = 3^{-1} = \\frac{1}{3}$이다.\\n5단계: 평행사변형의 넓이는 $(밑변) \\times (높이) = \\overline{\\mathrm{AB}} \\times (3 - k) = (\\log_a 3 - 1) \\times (3 - \\frac{1}{3}) = (\\log_a 3 - 1) \\times \\frac{8}{3} = \\frac{8}{3}$이다.\\n6단계: $\\log_a 3 - 1 = 1 \\Rightarrow \\log_a 3 = 2 \\Rightarrow a^2 = 3 \\Rightarrow a = 3^{\\frac{1}{2}}$이다.\\n7단계: $ak = 3^{\\frac{1}{2}} \\times 3^{-1} = 3^{-\\frac{1}{2}}$이다.\\n* 검산: $a=\\sqrt{3}, k=\\frac{1}{3}$을 대입하여 네 점의 좌표를 구해 벡터와 넓이를 확인한 결과 조건과 완벽히 일치함."
+    answer: "④",
+    solution: ""
   },
   {
     "id": 21,
