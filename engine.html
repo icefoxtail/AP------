@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.6.2 (Rulebook v1.9 Final Pass)</title>
+    <title>JS아카이브 엔진 - Stage E v1.6.2 (Rulebook v1.9 + Image Field)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
@@ -33,9 +33,22 @@
         .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
         
-        /* [v1.9] 발문 가독성 보정: 한글 단어 보존 */
+        /* [v1.9] 발문 가독성 및 이미지 렌더 보정 */
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
-        .q-content img { display: block; max-width: 100%; height: auto; margin: 8px auto; }
+        
+        .q-content img, .q-image-wrap img { 
+            display: block; 
+            max-width: 100%; 
+            height: auto; 
+            margin: 8px auto; 
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        /* [v1.9] PNG 자동 축소 단계 클래스 */
+        .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
+        .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
+        .q-content img.img-fit-micro, .q-image-wrap img.img-fit-micro { max-width: 76%; max-height: 90px; }
         
         /* [v1.9] 보기(Choices) 스타일 시스템 */
         .choices { margin-top: 10px; font-size: 9pt; }
@@ -65,6 +78,11 @@
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
 
+        /* [성역] fit 클래스 정의 */
+        .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
+        .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
+        .fit-micro { font-size: 8.1pt !important; line-height: 1.25 !important; }
+
         @media print {
             #mode-ctrl { display: none; }
             body { margin: 0 !important; padding: 0 !important; background: white; }
@@ -92,7 +110,14 @@
     <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:83mm;"></div>
 
 <script>
-/** * [Stage E v1.6.2] Standardized Constants */
+/**
+ * [Stage E v1.6.2] Standardized Constants & Asset Management
+ * * 이미지 자산 정책 (Rulebook v1.9):
+ * 1. 경로: assets/images/{시험지전체명}/q{id}.png (content 내 <img> 태그 사용 또는 q.image 필드 사용)
+ * 2. 고2 이상: 반드시 과목명(대수, 미적분 등) 포함된 폴더 구조 유지
+ * 3. 원본 관리: 여백/격자/라벨 제거된 정리된 PNG 권장
+ * 4. 가독성 하한: 일반 그래프 폭 160px, 복잡 그래프 폭 180px 미만 지양
+ */
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
@@ -135,7 +160,7 @@ function wrapLatex(text) {
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
-// [성역] autoCompress / fitQuestionBox
+// [성역] autoCompress
 function autoCompress(container) {
     let fontSize = 9.5; let lineHeight = 1.58;
     while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
@@ -143,11 +168,24 @@ function autoCompress(container) {
         container.style.fontSize = fontSize + 'pt'; container.style.lineHeight = String(lineHeight);
     }
 }
+
+/**
+ * [FIXED] fitQuestionBox - PNG 축소 대상 확장 (.q-image-wrap 포함)
+ */
 function fitQuestionBox(box) {
-    const classes = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
-    for (const cls of classes) {
-        box.classList.remove('fit-tight','fit-tighter','fit-micro');
-        if (cls) box.classList.add(cls);
+    const textClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
+    const imgClasses = ['', 'img-fit-tight', 'img-fit-tighter', 'img-fit-micro'];
+    const imgs = box.querySelectorAll('.q-content img, .q-image-wrap img');
+
+    for (const tCls of textClasses) {
+        box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
+        if (tCls) box.classList.add(tCls);
+        if (box.scrollHeight <= box.clientHeight + 1) return;
+    }
+
+    for (const iCls of imgClasses) {
+        imgs.forEach(img => img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'));
+        if (iCls) imgs.forEach(img => img.classList.add(iCls));
         if (box.scrollHeight <= box.clientHeight + 1) return;
     }
 }
@@ -215,7 +253,7 @@ function stripChoicePrefix(text) {
 }
 
 /**
- * [v1.9 Pass] 보기 유형 판정 엔진 - 정밀화
+ * [v1.9] 보기 유형 판정 엔진
  */
 function detectChoiceRenderMode(choices) {
     if (!choices || choices.length === 0) return 'compact';
@@ -239,22 +277,40 @@ function renderChoicesHTML(q) {
 }
 
 /**
- * [v1.9 Pass] 서술형 소문항 줄바꿈 - 문맥(Context) 기반 판정
+ * [v1.9] 서술형 소문항 줄바꿈
  */
 function formatQuestionContent(html, q) {
     if (!html) return '';
     let count = 0;
-    // 종결부호, 공백, 태그 뒤에 오는 (숫자) 패턴만 소문항으로 인정
     return html.replace(/([\.?!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
         count++;
-        if (count === 1) return match; // 첫 번째 패턴 유지
-        if (p1.includes('br>') || p1.includes('\n')) return match; // 중복 방지
+        if (count === 1) return match; 
+        if (p1.includes('br>') || p1.includes('\n')) return match; 
         return p1 + '<br>' + p2;
     });
 }
 
 /**
- * [Stage E v1.6.2] renderExam - Final Logic
+ * [Image Field Handling]
+ * 발문 내 인라인 이미지 정리 및 래퍼 생성
+ */
+function stripInlineImagesFromContent(content, hasImageField) {
+    if (!content) return '';
+    if (!hasImageField) return content;
+    // img 태그와 주변 br 태그를 하나로 치환하여 공백 벌어짐 방지
+    let stripped = content.replace(/(?:<br\s*\/?>\s*)*<img[^>]*>(?:\s*<br\s*\/?>)*/gi, '<br>');
+    // 앞뒤 잉여 줄바꿈 정리
+    stripped = stripped.replace(/^(?:<br\s*\/?>\s*)+/i, '').replace(/(?:<br\s*\/?>\s*)+$/i, '');
+    return stripped;
+}
+
+function renderQuestionImageHTML(q) {
+    if (!q.image) return '';
+    return `<div class="q-image-wrap"><img src="${q.image}"></div>`;
+}
+
+/**
+ * [Stage E v1.6.2] renderExam - Final Logic 
  */
 async function renderExam(area, data) {
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
@@ -262,10 +318,24 @@ async function renderExam(area, data) {
 
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box';
-        const rawContent = wrapLatex(q.content);
-        const formattedContent = formatQuestionContent(rawContent, q);
+        
+        // 1. 발문 (인라인 이미지 제거 및 줄바꿈 보정)
+        const hasImageField = !!q.image;
+        const rawContent = stripInlineImagesFromContent(q.content, hasImageField);
+        const formattedContent = formatQuestionContent(wrapLatex(rawContent), q);
+        
+        // 2. 별도 이미지 래퍼 
+        const imageHTML = renderQuestionImageHTML(q);
+        
+        // 3. 보기 HTML 생성
         const choicesHTML = renderChoicesHTML(q);
-        box.innerHTML = `<div class="q-num">${i + 1}.</div><div class="q-content">${formattedContent}</div>${choicesHTML}`;
+        
+        // 조립: 발문 -> 이미지 -> 보기
+        box.innerHTML = `<div class="q-num">${i + 1}.</div>
+                         <div class="q-content">${formattedContent}</div>
+                         ${imageHTML}
+                         ${choicesHTML}`;
+                         
         staging.appendChild(box); return { q, box, originalIndex: i };
     });
 
@@ -353,7 +423,7 @@ async function renderExam(area, data) {
     }
 }
 
-// [성역] renderSol
+// [성역] renderSol (해설지는 image 필드 반영 안함, 이전 PASS본과 동일)
 async function renderSol(area, data) {
     let pageNum = 1;
     function makeGridPage() {
