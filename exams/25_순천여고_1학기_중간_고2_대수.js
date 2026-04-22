@@ -360,47 +360,48 @@ window.questionBank = [
     "answer": "③",
     "solution": "1단계: 함수 $f(x)$는 주기가 $2$인 주기함수이며, 각 구간 $[2k, 2k+2]$마다 $x=2k+1$에서 최댓값 $1$을 갖는 산 모양의 그래프를 그린다.\\n2단계: 함수 $y=\\log_{3n} x$는 점 $(1, 0)$과 $(3n, 1)$을 지나는 증가함수이다.\\n3단계: 교점의 개수를 파악하기 위해 $3n$이 홀수인 경우($3n=2k+1$)를 가정한다. $y=\\log_{3n} x$가 $y=1$에 도달하는 $x=2k+1$까지 교점을 센다.\\n4단계: $x=1$에서 $1$개의 교점을 가지며, $x=3, 5, \\cdots, 2k-1$의 $k-1$개 봉우리에서는 각각 $2$개씩 교점을 갖고, 마지막 $x=2k+1$에서 꼭짓점과 $1$개의 교점을 갖는다.\\n5단계: 총 교점의 개수는 $1 + 2(k-1) + 1 = 2k$이다. (만약 $3n$이 짝수라면 총 교점은 홀수개가 되어 $98$개가 될 수 없다.)\\n6단계: $2k = 98$이므로 $k=49$이다. 따라서 $3n = 2(49) + 1 = 99$이므로 $n=33$이다.\\n* 검산: $n=33$일 때 $y=\\log_{99} x$는 $(99, 1)$을 지나며, 이때 산 모양 그래프의 $49$번째 봉우리까지 좌우로 두 번씩 만나고 $50$번째 꼭짓점에서 한 번 만나 정확히 $98$개의 교점을 갖는다."
   },
-  {
-    "id": 19,
-    "level": "상",
-    "category": "지수함수와 로그함수의 그래프",
-    "originalCategory": "지수함수와 로그함수의 그래프",
-    "standardCourse": "대수",
-    "standardUnitKey": "H22-C-06",
-    "standardUnit": "로그함수",
-    "standardUnitOrder": 6,
-    "content": "두 양수 $a, b(a>1, 0<b<1)$에 대하여\\n$f(x) = \\begin{cases} \\log_2 (x-4) - a & (x \\ge 6) \\\\ b^{x-6} - a & (x < 6) \\end{cases}$ 이다. 함수 $y=f(x)$와 $x$축\\n이 만나는 두 점을 각각 $\\mathrm{A, B}$라 하자. $\\overline{\\mathrm{AB}} = 5$ 이고\\n$f(12) = \\frac{a}{2}$일 때, $(ab)^3$의 값은? [4.6점]",
-    "choices": [
-      "$\\frac{1}{2}$",
-      "4",
-      "8",
-      "12",
-      "27"
-    ],
-    "answer": "②",
-    "solution": "1단계: $f(12) = \\frac{a}{2}$를 이용해 $a$를 구한다. $12 \\ge 6$이므로 $f(12) = \\log_2 (12-4) - a = \\log_2 8 - a = 3 - a$이다.\\n2단계: $3 - a = \\frac{a}{2} \\Rightarrow \\frac{3a}{2} = 3 \\Rightarrow a = 2$이다.\\n3단계: 함수 $f(x)$와 $x$축이 만나는 점은 $f(x)=0$의 해이다. $x \\ge 6$일 때 $\\log_2 (x-4) - 2 = 0 \\Rightarrow x-4 = 2^2 \\Rightarrow x=8$이다. (점 $\\mathrm{A}$를 $(8, 0)$이라 하자.)\\n4단계: $\\overline{\\mathrm{AB}} = 5$이므로 점 $\\mathrm{B}$의 $x$좌표는 $8-5=3$ 또는 $8+5=13$이다. $13$은 $x \\ge 6$ 구간의 유일한 해가 $8$임에 모순되므로, 나머지 한 해는 $x < 6$ 구간에 속하는 $x=3$이다.\\n5단계: $f(3) = 0$을 이용해 $b$를 구한다. $b^{3-6} - 2 = 0 \\Rightarrow b^{-3} = 2 \\Rightarrow b^3 = \\frac{1}{2}$이다.\\n6단계: $(ab)^3 = a^3b^3 = 2^3 \\times \\frac{1}{2} = 4$이다.\\n* 검산: $a=2, b=2^{-1/3}$을 대입하여 $(ab)^3$을 계산한 결과가 4로 정확히 일치함."
-  },
-  {
-    id: 20,
-    level: "",
-    category: "지수함수와 로그함수",
-    originalCategory: "",
-    standardCourse: "대수",
-    standardUnitKey: "H22-A-01",
-    standardUnit: "지수함수와 로그함수",
-    standardUnitOrder: 1,
-    questionType: "객관식",
-    content: '두 상수 $a$, $k(1<a<3,\\ 0<k<1)$에 대하여 직선 $y=3$이 두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나는 두 점을 각각 $A$, $B$라 하고, 직선 $y=k$가 두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나는 두 점을 각각 $C$, $D$라 하자. 사각형 $ADCB$가 넓이가 $\\dfrac{8}{3}$인 평행사변형일 때, $ak$의 값은? (4.7점)<br><br><img src="images/25_순천여고_대수_20.png" style="display:block; width:260px; margin:10px auto;">',
-    choices: [
-      "$3^{\\frac{1}{3}}$",
-      "$3^{-\\frac{1}{3}}$",
-      "$3^{\\frac{1}{2}}$",
-      "$3^{-\\frac{1}{2}}$",
-      "$3^{\\frac{3}{2}}$"
-    ],
-    answer: "④",
-    solution: ""
-  },
+ {
+  id: 19,
+  level: "상",
+  category: "지수함수와 로그함수의 그래프",
+  originalCategory: "지수함수와 로그함수의 그래프",
+  standardCourse: "대수",
+  standardUnitKey: "H22-C-06",
+  standardUnit: "로그함수",
+  standardUnitOrder: 6,
+  content: "두 양수 $a, b(a>1, 0<b<1)$에 대하여\\n$f(x) = \\begin{cases} \\log_2 (x-4) - a & (x \\ge 6) \\\\ b^{x-6} - a & (x < 6) \\end{cases}$ 이다. 함수 $y=f(x)$와 $x$축\\n이 만나는 두 점을 각각 $\\mathrm{A, B}$라 하자. $\\overline{\\mathrm{AB}} = 5$ 이고\\n$f(12) = \\frac{a}{2}$일 때, $(ab)^3$의 값은? [4.6점]",
+  choices: [
+    "$\\frac{1}{2}$",
+    "4",
+    "8",
+    "12",
+    "27"
+  ],
+  answer: "②",
+  solution: "1단계: $f(12) = \\frac{a}{2}$를 이용해 $a$를 구한다. $12 \\ge 6$이므로 $f(12) = \\log_2 (12-4) - a = \\log_2 8 - a = 3 - a$이다.\\n2단계: $3 - a = \\frac{a}{2} \\Rightarrow \\frac{3a}{2} = 3 \\Rightarrow a = 2$이다.\\n3단계: 함수 $f(x)$와 $x$축이 만나는 점은 $f(x)=0$의 해이다. $x \\ge 6$일 때 $\\log_2 (x-4) - 2 = 0 \\Rightarrow x-4 = 2^2 \\Rightarrow x=8$이다. (점 $\\mathrm{A}$를 $(8, 0)$이라 하자.)\\n4단계: $\\overline{\\mathrm{AB}} = 5$이므로 점 $\\mathrm{B}$의 $x$좌표는 $8-5=3$ 또는 $8+5=13$이다. $13$은 $x \\ge 6$ 구간의 유일한 해가 $8$임에 모순되므로, 나머지 한 해는 $x < 6$ 구간에 속하는 $x=3$이다.\\n5단계: $f(3) = 0$을 이용해 $b$를 구한다. $b^{3-6} - 2 = 0 \\Rightarrow b^{-3} = 2 \\Rightarrow b^3 = \\frac{1}{2}$이다.\\n6단계: $(ab)^3 = a^3b^3 = 2^3 \\times \\frac{1}{2} = 4$이다.\\n* 검산: $a=2, b=2^{-1/3}$을 대입하여 $(ab)^3$을 계산한 결과가 4로 정확히 일치함."
+},
+{
+  id: 20,
+  level: "",
+  category: "지수함수와 로그함수",
+  originalCategory: "지수함수와 로그함수",
+  standardCourse: "대수",
+  standardUnitKey: "H22-A-01",
+  standardUnit: "지수함수와 로그함수",
+  standardUnitOrder: 1,
+  questionType: "객관식",
+  image: "assets/images/25_순천여고_1학기_중간_고2_대수/q20.png",
+  content: "두 상수 $a$, $k(1<a<3,\\ 0<k<1)$에 대하여 직선 $y=3$이 두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나는 두 점을 각각 $A$, $B$라 하고, 직선 $y=k$가 두 곡선 $y=3^{x+1}$, $y=a^{x+1}$과 만나는 두 점을 각각 $C$, $D$라 하자. 사각형 $ADCB$가 넓이가 $\\dfrac{8}{3}$인 평행사변형일 때, $ak$의 값은? (4.7점)",
+  choices: [
+    "$3^{\\frac{1}{3}}$",
+    "$3^{-\\frac{1}{3}}$",
+    "$3^{\\frac{1}{2}}$",
+    "$3^{-\\frac{1}{2}}$",
+    "$3^{\\frac{3}{2}}$"
+  ],
+  answer: "④",
+  solution: ""
+},
   {
     "id": 21,
     "level": "중",
