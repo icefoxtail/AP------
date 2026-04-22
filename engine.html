@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.6.2</title>
+    <title>JS아카이브 엔진 - Stage E v1.6.2 (Rulebook v1.9 Final Pass)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
@@ -32,8 +32,28 @@
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
-        .choices { margin-top: 10px; font-size: 9pt; line-height: 1.6; }
-        .choices div { margin-bottom: 2px; }
+        
+        /* [v1.9] 발문 가독성 보정: 한글 단어 보존 */
+        .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
+        .q-content img { display: block; max-width: 100%; height: auto; margin: 8px auto; }
+        
+        /* [v1.9] 보기(Choices) 스타일 시스템 */
+        .choices { margin-top: 10px; font-size: 9pt; }
+        .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
+        .choice-no { width: 20px; flex-shrink: 0; font-weight: bold; }
+        .choice-text { flex: 1; word-break: keep-all; overflow-wrap: anywhere; }
+
+        .choices-compact { display: flex; flex-wrap: wrap; gap: 4px 15px; }
+        .choices-compact .choice-item { min-width: 15%; }
+
+        .choices-block { display: flex; flex-direction: column; gap: 5px; }
+        .choices-block .choice-item { 
+            padding: 6px 10px; 
+            background: #f9fafb; 
+            border: 0.5px solid #eee; 
+            border-radius: 4px; 
+        }
+
         .answer-box { flex: 1; border: none; margin-top: 10px; background: transparent; }
         
         table.question-table { border-collapse: collapse; width: 100%; max-width: 280px; table-layout: fixed; font-size: 8.6pt; line-height: 1.35; margin: 8px 0; margin-left: 0; margin-right: auto; text-align: left; }
@@ -80,6 +100,7 @@ const SE_BLOCK_GAP = 15;
 
 const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 
+// [성역] wrapLatex
 function wrapLatex(text) {
     if (text == null) return '';
     let s = String(text);
@@ -114,6 +135,7 @@ function wrapLatex(text) {
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
+// [성역] autoCompress / fitQuestionBox
 function autoCompress(container) {
     let fontSize = 9.5; let lineHeight = 1.58;
     while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
@@ -121,12 +143,22 @@ function autoCompress(container) {
         container.style.fontSize = fontSize + 'pt'; container.style.lineHeight = String(lineHeight);
     }
 }
+function fitQuestionBox(box) {
+    const classes = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
+    for (const cls of classes) {
+        box.classList.remove('fit-tight','fit-tighter','fit-micro');
+        if (cls) box.classList.add(cls);
+        if (box.scrollHeight <= box.clientHeight + 1) return;
+    }
+}
+
 function parseExamTitle(raw) {
     if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
     const p = raw.split('_');
     if (p.length < 2) return { year: '', school: '', grade: '', semester: '', examType: '', subject: raw };
     return { year: p[0] ? (p[0].length === 2 ? '20' + p[0] + '년' : p[0] + '년') : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
 }
+
 function makePage(area, type, pNum) {
     const page = document.createElement('div'); page.className = 'page';
     const header = document.createElement('div'); header.className = 'page-header';
@@ -143,14 +175,6 @@ function makePage(area, type, pNum) {
     const pageNum = document.createElement('div'); pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
     pageNum.textContent = `- ${pNum} -`; page.appendChild(pageNum);
     area.appendChild(page); return page;
-}
-function fitQuestionBox(box) {
-    const classes = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
-    for (const cls of classes) {
-        box.classList.remove('fit-tight','fit-tighter','fit-micro');
-        if (cls) box.classList.add(cls);
-        if (box.scrollHeight <= box.clientHeight + 1) return;
-    }
 }
 
 async function init() {
@@ -191,18 +215,57 @@ function stripChoicePrefix(text) {
 }
 
 /**
- * [Stage E v1.6.2] renderExam - Normal Block Page-Unit Policy Applied
+ * [v1.9 Pass] 보기 유형 판정 엔진 - 정밀화
+ */
+function detectChoiceRenderMode(choices) {
+    if (!choices || choices.length === 0) return 'compact';
+    const texts = choices.map(c => stripChoicePrefix(extractChoice(c)).trim());
+    const isLong = texts.some(t => t.length > 20);
+    const hasBlockPrefix = texts.some(t => /^[가-힣ㄱ-ㅎa-zA-Z][\.\)]/.test(t));
+    const hasSentences = texts.some(t => /[.?!]/.test(t) && t.length > 15);
+    return (isLong || hasBlockPrefix || hasSentences) ? 'block' : 'compact';
+}
+
+function renderChoicesHTML(q) {
+    const circled = ['①', '②', '③', '④', '⑤'];
+    const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
+    if (isSubjective) return '<div class="answer-box"></div>';
+    const mode = detectChoiceRenderMode(q.choices);
+    const itemsHTML = q.choices.map((c, ci) => {
+        const text = wrapLatex(stripChoicePrefix(extractChoice(c)));
+        return `<div class="choice-item"><span class="choice-no">${circled[ci] || ''}</span><span class="choice-text">${text}</span></div>`;
+    }).join('');
+    return `<div class="choices choices-${mode}">${itemsHTML}</div>`;
+}
+
+/**
+ * [v1.9 Pass] 서술형 소문항 줄바꿈 - 문맥(Context) 기반 판정
+ */
+function formatQuestionContent(html, q) {
+    if (!html) return '';
+    let count = 0;
+    // 종결부호, 공백, 태그 뒤에 오는 (숫자) 패턴만 소문항으로 인정
+    return html.replace(/([\.?!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
+        count++;
+        if (count === 1) return match; // 첫 번째 패턴 유지
+        if (p1.includes('br>') || p1.includes('\n')) return match; // 중복 방지
+        return p1 + '<br>' + p2;
+    });
+}
+
+/**
+ * [Stage E v1.6.2] renderExam - Final Logic
  */
 async function renderExam(area, data) {
-    const circled = ['①', '②', '③', '④', '⑤'];
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
 
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box';
-        const isChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식' && q.choices.some(c => extractChoice(c).trim() !== '');
-        const choicesHTML = isChoice ? `<div class="choices">${q.choices.map((c, ci) => `<div>${circled[ci] || ''} ${wrapLatex(stripChoicePrefix(extractChoice(c)))}</div>`).join('')}</div>` : `<div class="answer-box"></div>`;
-        box.innerHTML = `<div class="q-num">${i + 1}.</div><div>${wrapLatex(q.content)}</div>${choicesHTML}`;
+        const rawContent = wrapLatex(q.content);
+        const formattedContent = formatQuestionContent(rawContent, q);
+        const choicesHTML = renderChoicesHTML(q);
+        box.innerHTML = `<div class="q-num">${i + 1}.</div><div class="q-content">${formattedContent}</div>${choicesHTML}`;
         staging.appendChild(box); return { q, box, originalIndex: i };
     });
 
@@ -217,19 +280,15 @@ async function renderExam(area, data) {
     const usablePageHeight = tempPage.body.clientHeight;
     area.removeChild(tempPage);
 
-    let firstPage = null;
-    let pages = [];
+    let firstPage = null; let pages = [];
     let currentPage = { blocks: [], usedHeight: 0 };
-    let activeChunk = [];
-    let currentType = null;
+    let activeChunk = []; let currentType = null;
 
     const flushBlock = () => {
         if (activeChunk.length === 0) return;
-        const type = currentType;
-        const chunk = [...activeChunk];
+        const type = currentType; const chunk = [...activeChunk];
         let hType = (type === 'normal') ? 'proxyHeight_tight' : 'proxyHeight_raw';
         let blockH;
-
         if (type === 'wide') {
             blockH = chunk[0].profile.proxyHeight_raw + SE_OVERHEAD_COL + SE_OVERHEAD_GRID;
         } else {
@@ -238,15 +297,11 @@ async function renderExam(area, data) {
             const rightH = chunk.slice(split).reduce((s, it) => s + it.profile[hType], 0) + SE_OVERHEAD_COL;
             blockH = Math.max(leftH, rightH) + SE_OVERHEAD_GRID;
         }
-
         const isNormalForceBreak = (type === 'normal' && currentPage.blocks.length > 0);
         const gap = (currentPage.blocks.length > 0) ? SE_BLOCK_GAP : 0;
-        
         if ((isNormalForceBreak || (currentPage.usedHeight + gap + blockH > usablePageHeight)) && currentPage.blocks.length > 0) {
-            pages.push(currentPage);
-            currentPage = { blocks: [], usedHeight: 0 };
+            pages.push(currentPage); currentPage = { blocks: [], usedHeight: 0 };
         }
-        
         currentPage.usedHeight += (currentPage.blocks.length > 0 ? SE_BLOCK_GAP : 0) + blockH;
         currentPage.blocks.push({ type, items: chunk, blockH });
         activeChunk = [];
@@ -254,73 +309,51 @@ async function renderExam(area, data) {
 
     items.forEach(item => {
         const lt = item.q.layoutTag || '';
-        let qType = 'normal';
-        let limit = AppState.qpp;
-
+        let qType = 'normal'; let limit = AppState.qpp;
         if (item.q.wide === true || lt === 'fullwidth') { qType = 'wide'; limit = 1; }
         else if (lt === 'subjective-2up') { qType = 'subj2'; limit = 2; }
         else if (lt === 'subjective-4up') { qType = 'subj4'; limit = 4; }
-
         const isSpecialType = (qType === 'subj2' || qType === 'subj4' || qType === 'wide');
         const prevWasSpecial = (currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide');
-
-        if (
-            (currentType !== null && currentType !== qType) || 
-            (activeChunk.length >= limit) ||
-            ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)
-        ) {
+        if ((currentType !== null && currentType !== qType) || (activeChunk.length >= limit) || ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)) {
             flushBlock();
-            if (isSpecialType && currentPage.blocks.length > 0) {
-                pages.push(currentPage);
-                currentPage = { blocks: [], usedHeight: 0 };
-            }
+            if (isSpecialType && currentPage.blocks.length > 0) { pages.push(currentPage); currentPage = { blocks: [], usedHeight: 0 }; }
             currentType = qType;
         }
         if (currentType === null) currentType = qType;
         activeChunk.push(item);
     });
-    flushBlock();
-    if (currentPage.blocks.length > 0) pages.push(currentPage);
+    flushBlock(); if (currentPage.blocks.length > 0) pages.push(currentPage);
 
     for (let pIdx = 0; pIdx < pages.length; pIdx++) {
         const pageData = pages[pIdx];
         const page = (!firstPage) ? (firstPage = makePage(area, 'exam', pNum)) : makePage(area, 'exam', ++pNum);
-
         pageData.blocks.forEach((block, bIdx) => {
             if (block.type === 'wide') {
-                const wideCol = document.createElement('div');
-                wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                wideCol.appendChild(block.items[0].box.cloneNode(true));
-                page.body.appendChild(wideCol);
+                const wideCol = document.createElement('div'); wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
+                wideCol.appendChild(block.items[0].box.cloneNode(true)); page.body.appendChild(wideCol);
             } else {
-                const bGrid = document.createElement('div');
-                bGrid.className = 'grid-container';
+                const bGrid = document.createElement('div'); bGrid.className = 'grid-container';
                 bGrid.style.flex = (block.type === 'normal') ? '1 1 0' : 'none';
                 if (bIdx < pageData.blocks.length - 1) bGrid.style.marginBottom = SE_BLOCK_GAP + 'px';
-                
                 const bLeft = document.createElement('div'); bLeft.className = 'grid-col';
                 const bRight = document.createElement('div'); bRight.className = 'grid-col';
-                bGrid.appendChild(bLeft); bGrid.appendChild(bRight);
-                page.body.appendChild(bGrid);
-
+                bGrid.appendChild(bLeft); bGrid.appendChild(bRight); page.body.appendChild(bGrid);
                 const split = Math.ceil(block.items.length / 2);
                 block.items.slice(0, split).forEach(it => bLeft.appendChild(it.box.cloneNode(true)));
                 block.items.slice(split).forEach(it => bRight.appendChild(it.box.cloneNode(true)));
             }
         });
-
         if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]); await raf();
-        const allPageBoxes = page.querySelectorAll('.q-box');
-        allPageBoxes.forEach(b => fitQuestionBox(b));
-
+        const allPageBoxes = page.querySelectorAll('.q-box'); allPageBoxes.forEach(b => fitQuestionBox(b));
         if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
-            allPageBoxes.forEach(b => autoCompress(b));
-            await raf();
+            allPageBoxes.forEach(b => autoCompress(b)); await raf();
             if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
         }
     }
 }
 
+// [성역] renderSol
 async function renderSol(area, data) {
     let pageNum = 1;
     function makeGridPage() {
@@ -331,17 +364,13 @@ async function renderSol(area, data) {
         grid.appendChild(l); grid.appendChild(r); p.body.appendChild(grid);
         return { p, cols: [l, r] };
     }
-    let { cols } = makeGridPage();
-    let colIdx = 0;
+    let { cols } = makeGridPage(); let colIdx = 0;
     for (let i = 0; i < data.length; i++) {
-        const q = data[i];
-        const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
-        const box = document.createElement('div');
-        box.className = 'q-box sol-box';
+        const q = data[i]; const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
+        const box = document.createElement('div'); box.className = 'q-box sol-box';
         box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${wrapLatex(q.content)}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${wrapLatex(solutionText)}</div></div>`;
         cols[colIdx].appendChild(box);
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]);
-        await raf();
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
         if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
             autoCompress(box); await raf();
             if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
@@ -353,6 +382,8 @@ async function renderSol(area, data) {
         }
     }
 }
+
+// [성역] renderAns
 function renderAns(area, data) {
     const PER_PAGE = 50; let pCount = 1;
     for (let start = 0; start < data.length; start += PER_PAGE) {
@@ -363,8 +394,7 @@ function renderAns(area, data) {
         for (let i = 0; i < splitIndex; i++) {
             [i, splitIndex + i].forEach(idx => {
                 if (chunk[idx]) {
-                    const u = document.createElement('div');
-                    u.className = 'ans-cell';
+                    const u = document.createElement('div'); u.className = 'ans-cell';
                     u.innerHTML = `<div class="ans-n">${start + idx + 1}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
                     grid.appendChild(u);
                 }
@@ -373,6 +403,7 @@ function renderAns(area, data) {
         p.body.appendChild(grid);
     }
 }
+
 async function render() {
     const area = document.getElementById('print-area'); area.innerHTML = '';
     if (AppState.mode === 'ans') renderAns(area, AppState.data);
