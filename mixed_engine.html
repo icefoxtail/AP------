@@ -358,12 +358,12 @@ function changeQpp(val) {
     url.searchParams.set('qpp', val);
     window.location.href = url.toString();
 }
-function shuffleData() {
+async function shuffleData() {
     for (let i = AppState.data.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
     }
-    render();
+    await render();
 }
 
 /** Page Builder */
@@ -528,11 +528,51 @@ async function renderSol(area, data) {
         return { p, cols: [l, r] };
     }
     let { cols } = makeGridPage(); let colIdx = 0;
+
+    async function placeSolutionBox(box) {
+        let placed = false;
+        while (!placed) {
+            const targetCol = cols[colIdx];
+            targetCol.appendChild(box);
+            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
+            await raf();
+
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                placed = true;
+                break;
+            }
+
+            autoCompress(box);
+            await raf();
+            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
+            await raf();
+
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                placed = true;
+                break;
+            }
+
+            const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
+            if (isOnlyBoxInColumn) {
+                placed = true;
+                break;
+            }
+
+            targetCol.removeChild(box);
+            if (colIdx === 0) {
+                colIdx = 1;
+            } else {
+                ({ cols } = makeGridPage());
+                colIdx = 0;
+            }
+        }
+    }
+
     for (let i = 0; i < data.length; i++) {
-        const q = data[i]; 
+        const q = data[i];
         const box = document.createElement('div'); box.className = 'q-box sol-box';
         const solText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
-        
+
         const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
         const reminderContent = normalizeQuestionNotes(
             normalizeQuestionTables(
@@ -545,19 +585,8 @@ async function renderSol(area, data) {
                          <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
                          ${reminderImageHTML}
                          <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${wrapLatex(solText)}</div></div>`;
-        
-        cols[colIdx].appendChild(box);
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
-        
-        if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
-            autoCompress(box); await raf();
-            if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
-                cols[colIdx].removeChild(box);
-                if (colIdx === 0) { colIdx = 1; cols[colIdx].appendChild(box); }
-                else { ({ cols } = makeGridPage()); colIdx = 0; cols[colIdx].appendChild(box); }
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
-            }
-        }
+
+        await placeSolutionBox(box);
     }
 }
 
@@ -600,17 +629,36 @@ async function init() {
     const p = new URLSearchParams(window.location.search);
     const rawData = localStorage.getItem('mixedQuestions') || sessionStorage.getItem('mixedQuestions');
     const rawMeta = localStorage.getItem('mixedMeta') || sessionStorage.getItem('mixedMeta');
-    
+
     if (!rawData) { alert('데이터가 없습니다.'); return; }
-    AppState.data = JSON.parse(rawData);
-    AppState.meta = rawMeta ? JSON.parse(rawMeta) : {};
-    
+
+    try {
+        const parsedData = JSON.parse(rawData);
+        AppState.data = Array.isArray(parsedData) ? parsedData : [];
+    } catch (e) {
+        console.error('mixedQuestions parse error:', e);
+        alert('문항 데이터를 읽지 못했습니다.');
+        return;
+    }
+
+    try {
+        AppState.meta = rawMeta ? JSON.parse(rawMeta) : {};
+    } catch (e) {
+        console.warn('mixedMeta parse error:', e);
+        AppState.meta = {};
+    }
+
+    if (!Array.isArray(AppState.data) || AppState.data.length === 0) {
+        alert('출력할 문항 데이터가 없습니다.');
+        return;
+    }
+
     AppState.mode = p.get('mode') || 'exam';
     AppState.qpp = parseInt(p.get('qpp')) || AppState.meta.qpp || 4;
-    
+
     const title = AppState.meta.customTitle || AppState.meta.title || 'JS아카이브 믹서 출제';
     document.getElementById('ctrl-title').textContent = title;
-    document.getElementById('qppSelect').value = AppState.qpp;
+    document.getElementById('qppSelect').value = String(AppState.qpp);
     document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
 
     const file = p.get('file');
