@@ -244,7 +244,7 @@ function extractChoice(c) {
 }
 
 function stripChoicePrefix(text) {
-    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.|\d+\))\s*/, '').trim();
+    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.(?!\d)|\d+\))\s*/, '').trim();
 }
 
 function detectChoiceRenderMode(choices) {
