@@ -8,99 +8,638 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --navy: #0a1830; --navy-2: #0f1d39; --blue-main: #1d4ed8; --blue-light: #60a5fa;
-            --blue-pale: #dbeafe; --green-main: #059669; --gray-muted: #94a3b8; --bg-soft: #f5f7fb;
-            --card-bg: #ffffff; --card-hover: #f8fbff; --card-active: #eef4ff; --card-border: #e2e8f0;
-            --card-border-hover: #93c5fd; --card-border-active: #60a5fa; --text-main: #0f172a;
-            --text-sub: #64748b; --text-active-main: #0f172a; --text-active-sub: #475569;
-            --badge-bg: #eef4ff; --badge-text: #315ea8; --action-hover-bg: #f3f7ff; --action-hover-text: #315ea8;
-            --warn-bg: #fff7ed; --warn-border: #fed7aa; --warn-text: #9a3412;
+            --navy: #0a1830;
+            --navy-2: #0f1d39;
+            --navy-3: #122449;
+            --blue-main: #1d4ed8;
+            --blue-light: #60a5fa;
+            --blue-pale: #dbeafe;
+            --blue-soft: #eff6ff;
+            --green-main: #059669;
+            --green-soft: #ecfdf5;
+            --gray-muted: #94a3b8;
+            --bg-soft: #f5f7fb;
+            --card-bg: #ffffff;
+            --card-active: #f7faff;
+            --card-border: #e2e8f0;
+            --card-border-hover: #93c5fd;
+            --card-border-active: #60a5fa;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --text-weak: #94a3b8;
+            --badge-bg: #eef4ff;
+            --badge-text: #315ea8;
+            --badge-border: #d8e5fb;
+            --badge-green-bg: #ecfdf5;
+            --badge-green-text: #047857;
+            --badge-green-border: #b7efd4;
+            --action-hover-bg: #f3f7ff;
+            --action-hover-text: #315ea8;
+            --warn-bg: #fff7ed;
+            --warn-border: #fed7aa;
+            --warn-text: #9a3412;
+            --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.06);
+            --shadow-hover: 0 18px 34px rgba(37, 99, 235, 0.12);
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Pretendard', sans-serif; background: var(--bg-soft); color: #1e293b; overflow-x: hidden; }
 
-        header { background: linear-gradient(180deg, rgba(10,24,48,0.98) 0%, rgba(11,27,53,0.96) 100%); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
-        .top-nav { max-width: 1200px; margin: 0 auto; height: 56px; display: flex; align-items: center; justify-content: center; padding: 0 16px; }
-        .grade-nav { display: flex; width: 100%; justify-content: space-between; max-width: 600px; }
-        .gtab { font-size: 14px; color: rgba(255,255,255,0.38); font-weight: 600; padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: 0.15s; }
-        .gtab.active { color: white; background: rgba(255,255,255,0.1); }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: var(--bg-soft);
+            color: #1e293b;
+            overflow-x: hidden;
+        }
 
-        .hero { background: radial-gradient(circle at top right, rgba(96,165,250,0.18), transparent 34%), linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); padding: 40px 24px 54px; position: relative; overflow: hidden; }
-        .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-        .hero-title { font-size: clamp(24px, 5.5vw, 30px); font-weight: 800; color: white; line-height: 1.25; }
-        .hero-title em { color: var(--blue-light); font-style: normal; }
+        header {
+            background: linear-gradient(180deg, rgba(10,24,48,0.98) 0%, rgba(11,27,53,0.96) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+        }
 
-        .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .logo-mark { width: 32px; height: 32px; border-radius: 8px; background: var(--blue-main); display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3.5px; padding: 6px; }
-        .logo-mark div { background: white; border-radius: 1px; }
+        .top-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+        }
+
+        .grade-nav {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            max-width: 780px;
+        }
+
+        .gtab {
+            font-size: 13px;
+            color: rgba(255,255,255,0.52);
+            font-weight: 700;
+            padding: 9px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: 0.18s;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+            user-select: none;
+        }
+
+        .gtab:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.12);
+        }
+
+        .gtab.active {
+            color: white;
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(147, 197, 253, 0.28);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+        }
+
+        .hero {
+            background:
+                radial-gradient(circle at top right, rgba(96,165,250,0.20), transparent 34%),
+                radial-gradient(circle at 12% 18%, rgba(29,78,216,0.16), transparent 28%),
+                linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+            padding: 44px 24px 56px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: auto -8% -30% auto;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96,165,250,0.10) 0%, rgba(96,165,250,0) 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 28px;
+        }
+
+        .hero-left {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #bfdbfe;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .hero-title {
+            font-size: clamp(30px, 5vw, 42px);
+            font-weight: 800;
+            color: white;
+            line-height: 1.18;
+            letter-spacing: -0.04em;
+            max-width: 760px;
+        }
+
+        .hero-title em {
+            color: var(--blue-light);
+            font-style: normal;
+        }
+
+        .hero-sub {
+            margin-top: 16px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #cbd5e1;
+            max-width: 760px;
+            word-break: keep-all;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .hero-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 38px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #e2e8f0;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .hero-side {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        .hero-panel {
+            border-radius: 22px;
+            padding: 20px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.10);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(2, 8, 23, 0.20);
+        }
+
+        .hero-panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .hero-panel-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .hero-panel-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            padding: 0 10px;
+            border-radius: 999px;
+            background: rgba(96,165,250,0.18);
+            color: #bfdbfe;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .hero-panel-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .hero-panel-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-panel-item i {
+            margin-top: 2px;
+            color: #93c5fd;
+            font-size: 13px;
+        }
+
+        .hero-panel-item strong {
+            display: block;
+            font-size: 13px;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .hero-panel-item span {
+            display: block;
+            font-size: 12px;
+            color: #cbd5e1;
+            line-height: 1.45;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .logo-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--blue-main);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 3.5px;
+            padding: 6px;
+            box-shadow: 0 10px 20px rgba(29,78,216,0.24);
+        }
+
+        .logo-mark div { background: white; border-radius: 2px; }
         .logo-mark div:last-child { background: var(--blue-light); }
-        .logo-name { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.5px; }
-        .logo-name em { color: var(--blue-light); font-style: normal; }
 
-        .filter-band { background: rgba(255,255,255,0.94); border-bottom: 1px solid #e6ebf3; position: sticky; top: 56px; z-index: 900; backdrop-filter: blur(10px); }
-        .filter-inner { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 10px; }
-        .fb-search { flex: 1; position: relative; }
-        .fb-search input { width: 100%; background: #fbfcfe; border: 1px solid #e6ebf3; border-radius: 8px; padding: 9px 14px 9px 36px; font-size: 13px; outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s; }
-        .fb-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 13px; }
-        .fb-sel { background: #fbfcfe; border: 1px solid #e6ebf3; border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; cursor: pointer; color: #334155; }
-        .fb-mixer { background: var(--blue-main); color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 18px rgba(29, 78, 216, 0.16); transition: transform 0.15s, box-shadow 0.15s, background 0.15s; }
-        .fb-mixer:hover { background: #1f46c7; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(29, 78, 216, 0.2); }
+        .logo-name {
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.5px;
+        }
 
-        .sec-block { padding: 48px 24px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
-        .sec-block > * { max-width: 1152px; margin: 0 auto; }
-        .sec-block.dark { background: var(--navy-2); color: white; }
-        .sec-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-        .sec-title { font-size: 18px; font-weight: 800; color: #1e293b; }
-        .sec-block.dark .sec-title { color: white; }
-        .sec-line { flex: 1; height: 1px; background: #e2e8f0; }
-        .sec-block.dark .sec-line { background: rgba(255,255,255,0.1); }
+        .logo-name em {
+            color: var(--blue-light);
+            font-style: normal;
+        }
 
-        .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .exam-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: 0.18s; cursor: pointer; }
-        .exam-card:hover { transform: translateY(-3px); border-color: var(--card-border-hover); box-shadow: 0 12px 26px rgba(37, 99, 235, 0.12); }
-        .exam-card.is-active { background: var(--card-active); border-color: var(--card-border-active); box-shadow: 0 10px 24px rgba(96, 165, 250, 0.16); }
-        .card-top { display: none; }
-        .card-body { padding: 20px; flex: 1; }
-        .card-grade-label { font-size: 10px; font-weight: 800; color: var(--text-sub); margin-bottom: 6px; }
-         .exam-card.is-active .card-grade-label { color: var(--text-active-sub); }
+        .filter-band {
+            background: rgba(255,255,255,0.94);
+            border-bottom: 1px solid #e6ebf3;
+            position: sticky;
+            top: 56px;
+            z-index: 900;
+            backdrop-filter: blur(10px);
+        }
 
-        .card-main-title { font-size: 15px; font-weight: 800; color: var(--text-main); display: block; line-height: 1.45; margin-bottom: 8px; white-space: normal; word-break: break-all; }
-        .exam-card.is-active .card-main-title { color: var(--text-active-main); }
-        .card-sub-title { font-size: 12px; font-weight: 600; color: var(--text-sub); display: block; margin-top: 4px; line-height: 1.4; }
-        .exam-card.is-active .card-sub-title { color: var(--text-active-sub); }
+        .filter-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .fb-search {
+            flex: 1 1 320px;
+            position: relative;
+            min-width: 260px;
+        }
+
+        .fb-search input {
+            width: 100%;
+            background: #fbfcfe;
+            border: 1px solid #e6ebf3;
+            border-radius: 10px;
+            padding: 11px 14px 11px 38px;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+        }
+
+        .fb-search input:focus {
+            border-color: var(--blue-main);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.08);
+        }
+
+        .fb-search-icon {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .fb-sel {
+            background: #fbfcfe;
+            border: 1px solid #e6ebf3;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #334155;
+            min-width: 120px;
+        }
+
+        .fb-mixer {
+            background: var(--blue-main);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 11px 18px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(29, 78, 216, 0.16);
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+        }
+
+        .fb-mixer:hover {
+            background: #1f46c7;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(29, 78, 216, 0.2);
+        }
+
+        .content-wrap {
+            background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .sec-block {
+            padding: 48px 24px;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .sec-block > * {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .sec-block.dark {
+            background: linear-gradient(180deg, var(--navy-2) 0%, var(--navy-3) 100%);
+            color: white;
+        }
+
+        .sec-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .sec-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e293b;
+            letter-spacing: -0.02em;
+        }
+
+        .sec-block.dark .sec-title {
+            color: white;
+        }
+
+        .sec-line {
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .sec-block.dark .sec-line {
+            background: rgba(255,255,255,0.10);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .exam-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: 0.18s;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .exam-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--card-border-hover);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .exam-card.is-active {
+            background: var(--card-active);
+            border-color: var(--card-border-active);
+            box-shadow: 0 16px 34px rgba(96, 165, 250, 0.16);
+        }
+
+        .card-top {
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue-main) 0%, var(--blue-light) 100%);
+        }
+
+        .exam-card.type-sheet .card-top {
+            background: linear-gradient(90deg, var(--blue-main) 0%, var(--blue-light) 100%);
+        }
+
+        .exam-card.type-study .card-top {
+            background: linear-gradient(90deg, #059669 0%, #34d399 100%);
+        }
+
+        .card-body {
+            padding: 20px 20px 18px;
+            display: flex;
+            flex-direction: column;
+            min-height: 204px;
+        }
+
+        .card-grade-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-grade-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-sub);
+            letter-spacing: 0.02em;
+        }
+
+        .card-type-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 24px;
+            padding: 0 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            border: 1px solid var(--badge-border);
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            flex-shrink: 0;
+        }
+
+        .exam-card.type-study .card-type-chip {
+            background: var(--badge-green-bg);
+            color: var(--badge-green-text);
+            border-color: var(--badge-green-border);
+        }
+
+        .card-main-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.32;
+            letter-spacing: -0.03em;
+            display: block;
+            margin-bottom: 8px;
+            white-space: normal;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+
+        .card-sub-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-sub);
+            line-height: 1.5;
+            display: block;
+        }
+
+        .card-meta-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+            min-height: 26px;
+        }
+
+        .meta-badge {
+            display: inline-flex;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 9px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #475569;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-badge.primary {
+            color: var(--blue-main);
+            background: #eff6ff;
+            border-color: #dbeafe;
+        }
+
+        .meta-badge.green {
+            color: #047857;
+            background: #ecfdf5;
+            border-color: #b7efd4;
+        }
 
         .card-file-name {
             display: block;
-            margin-top: 10px;
+            margin-top: auto;
             font-size: 11px;
             line-height: 1.45;
-            color: var(--text-sub);
+            color: var(--text-weak);
             word-break: break-all;
-            padding: 8px 10px;
-            border-radius: 8px;
-            background: #fbfcfe;
-            border: 1px solid #e6ebf3;
+            padding-top: 12px;
+            border-top: 1px dashed #e2e8f0;
         }
+
         .exam-card.is-active .card-file-name {
-            color: var(--text-active-sub);
-            background: #f8fbff;
-            border-color: #dce8fb;
+            color: #64748b;
+            border-top-color: #d7e6fb;
         }
 
-        .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-        .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: var(--badge-bg); color: var(--badge-text); border: 1px solid #d8e5fb; }
-        .exam-card.is-active .badge { background: #e8f1ff; color: #315ea8; border-color: #cfe0fb; }
+        .card-actions {
+            border-top: 1px solid var(--card-border);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #fcfdff;
+        }
 
-        .card-actions { border-top: 1px solid var(--card-border); display: flex; background: #fcfdff; }
-        .exam-card.is-active .card-actions { background: #f7faff; border-top-color: #dbeafe; }
-        .action-btn { flex: 1; padding: 12px 0; text-align: center; font-size: 12px; font-weight: 800; color: var(--text-sub); transition: background 0.15s, color 0.15s, border-color 0.15s; }
-        .action-btn + .action-btn { border-left: 1px solid #edf2f7; }
-        .action-btn:hover { background: #f7faff; color: #315ea8; }
-        .exam-card.is-active .action-btn { color: #475569; }
-        .exam-card.is-active .action-btn + .action-btn { border-left-color: #e3edfb; }
-        .exam-card.is-active .action-btn:hover { background: #edf4ff; color: #315ea8; }
+        .exam-card.is-active .card-actions {
+            background: #f7faff;
+            border-top-color: #dbeafe;
+        }
 
-        .content-wrap { background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 100%); }
+        .action-btn {
+            min-height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-sub);
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+
+        .action-btn + .action-btn {
+            border-left: 1px solid #edf2f7;
+        }
+
+        .action-btn:hover {
+            background: #f7faff;
+            color: #315ea8;
+        }
+
+        .exam-card.is-active .action-btn {
+            color: #475569;
+        }
+
+        .exam-card.is-active .action-btn + .action-btn {
+            border-left-color: #e3edfb;
+        }
+
+        .exam-card.is-active .action-btn:hover {
+            background: #edf4ff;
+            color: #315ea8;
+        }
 
         .empty-state {
             max-width: 1152px;
@@ -111,33 +650,171 @@
             color: var(--warn-text);
             border-radius: 12px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 2000; align-items: center; justify-content: center; }
-        .modal-overlay.open { display: flex; }
-        .modal-box { background: white; border-radius: 20px; padding: 36px 40px; width: 360px; text-align: center; }
-        .qpp-btns { display: flex; gap: 14px; margin-bottom: 20px; }
-        .qpp-opt { flex: 1; padding: 20px 0; border: 2px solid #e2e8f0; border-radius: 14px; cursor: pointer; font-size: 28px; font-weight: 800; }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .modal-sub {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        .qpp-btns {
+            display: flex;
+            gap: 14px;
+            margin: 24px 0;
+        }
+
+        .qpp-opt {
+            flex: 1;
+            padding: 24px 0;
+            border: 2px solid #eef2f6;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 32px;
+            font-weight: 800;
+            transition: all 0.2s;
+            background: #fcfdfe;
+            color: #cbd5e1;
+        }
+
+        .qpp-opt:hover {
+            border-color: var(--blue-main);
+            color: var(--blue-main);
+            background: var(--blue-pale);
+            transform: scale(1.05);
+        }
+
+        .modal-close-btn {
+            border: none;
+            background: none;
+            color: var(--gray-muted);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        @media (max-width: 960px) {
+            .hero-inner {
+                flex-direction: column;
+            }
+
+            .hero-side {
+                width: 100%;
+            }
+
+            .hero-panel {
+                max-width: 100%;
+            }
+        }
 
         @media (max-width: 768px) {
-            .card-grid { grid-template-columns: 1fr; }
-            .hero-inner { flex-direction: column; text-align: center; }
-            .logo { margin-top: 20px; }
-            .filter-inner { flex-wrap: wrap; }
-            .fb-search { min-width: 100%; }
+            .top-nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 10px 14px;
+            }
+
+            .grade-nav {
+                width: max-content;
+                flex-wrap: nowrap;
+                gap: 7px;
+                justify-content: flex-start;
+                padding-right: 12px;
+            }
+
+            .gtab {
+                white-space: nowrap;
+            }
+
+            .hero {
+                padding: 36px 18px 46px;
+            }
+
+            .hero-title {
+                font-size: clamp(26px, 8vw, 34px);
+            }
+
+            .hero-sub {
+                font-size: 14px;
+            }
+
+            .hero-panel {
+                padding: 16px;
+            }
+
+            .filter-band {
+                top: 56px;
+            }
+
+            .filter-inner {
+                padding: 12px 16px;
+            }
+
+            .fb-search {
+                min-width: 100%;
+            }
+
+            .fb-sel,
+            .fb-mixer {
+                flex: 1 1 calc(50% - 5px);
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-body {
+                min-height: 188px;
+            }
+
+            .modal-box {
+                width: calc(100% - 28px);
+                padding: 30px 22px;
+            }
         }
     </style>
 </head>
 <body>
 <div class="modal-overlay" id="qppModal">
     <div class="modal-box">
-        <div style="font-size:18px; font-weight:800; margin-bottom:6px;">시험지 출력 형식</div>
+        <div class="modal-title">시험지 출력 형식</div>
+        <div class="modal-sub">한 페이지에 담을 문항 수를 선택하세요.</div>
         <div class="qpp-btns">
             <div class="qpp-opt" onclick="confirmQpp(4)">4</div>
             <div class="qpp-opt" onclick="confirmQpp(6)">6</div>
         </div>
-        <button onclick="closeModal()" style="border:none; background:none; color:var(--gray-muted); cursor:pointer;">취소</button>
+        <button class="modal-close-btn" onclick="closeModal()">다음에 하기</button>
     </div>
 </div>
 
@@ -158,11 +835,58 @@
 <div class="hero">
     <div class="hero-inner">
         <div class="hero-left">
-            <div class="hero-title">학교별 기출 & 유형<br><em>통합 출제 시스템</em></div>
+            <div class="hero-kicker">
+                <i class="fa-solid fa-layer-group"></i>
+                JS ARCHIVE
+            </div>
+            <div class="hero-title">
+                학교별 기출부터 단원 자료까지,<br>
+                <em>가장 빠르게 찾고 바로 출력하는</em> 수학 아카이브
+            </div>
+            <div class="hero-sub">
+                기출 · 유형 · 단원평가 · 쪽지시험을 한 화면에서 정리하고,
+                시험지·해설·정답까지 바로 열 수 있도록 식별성과 탐색 속도를 함께 잡은 인덱스입니다.
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><i class="fa-solid fa-school"></i> 학교별 기출 정리</div>
+                <div class="hero-stat"><i class="fa-solid fa-filter"></i> 연도·시험기간·분류 필터</div>
+                <div class="hero-stat"><i class="fa-solid fa-file-lines"></i> 시험·해설·정답 즉시 열기</div>
+            </div>
         </div>
-        <div class="logo" onclick="resetView()">
-            <div class="logo-mark"><div></div><div></div><div></div><div></div></div>
-            <span class="logo-name"><em>JS</em>아카이브</span>
+
+        <div class="hero-side">
+            <div class="hero-panel">
+                <div class="hero-panel-head">
+                    <div class="logo" onclick="resetView()">
+                        <div class="logo-mark"><div></div><div></div><div></div><div></div></div>
+                        <span class="logo-name"><em>JS</em>아카이브</span>
+                    </div>
+                    <span class="hero-panel-badge">INDEX</span>
+                </div>
+                <div class="hero-panel-list">
+                    <div class="hero-panel-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <strong>기출 카드</strong>
+                            <span>학교명 중심으로 어느 시험지인지 즉시 식별</span>
+                        </div>
+                    </div>
+                    <div class="hero-panel-item">
+                        <i class="fa-solid fa-shapes"></i>
+                        <div>
+                            <strong>유형·단원평가 카드</strong>
+                            <span>단원명(topic) 중심으로 자료 성격을 바로 확인</span>
+                        </div>
+                    </div>
+                    <div class="hero-panel-item">
+                        <i class="fa-solid fa-print"></i>
+                        <div>
+                            <strong>실사용 출력 흐름</strong>
+                            <span>시험 / 해설 / 정답 버튼으로 바로 연결</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -171,7 +895,7 @@
     <div class="filter-inner">
         <div class="fb-search">
             <i class="fa-solid fa-magnifying-glass fb-search-icon"></i>
-            <input type="text" id="searchInput" placeholder="학교명, 과목, 파일명 검색…">
+            <input type="text" id="searchInput" placeholder="학교명, 단원명, 과목, 파일명 검색…">
         </div>
         <select class="fb-sel" id="yearFilter">
             <option value="">전체 연도</option>
@@ -199,9 +923,9 @@
 
     <div id="full-section" style="display:none; padding:48px 24px;">
         <div style="max-width:1152px; margin:0 auto;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:24px; align-items:center;">
-                <span style="font-size:18px; font-weight:800;" id="listTitle">전체 자료</span>
-                <span id="listMeta" style="font-size:12px; color:#94a3b8;"></span>
+            <div style="display:flex; justify-content:space-between; margin-bottom:24px; align-items:center; gap:16px; flex-wrap:wrap;">
+                <span style="font-size:18px; font-weight:800; color:var(--text-main);" id="listTitle">전체 자료</span>
+                <span id="listMeta" style="font-size:12px; color:#94a3b8; font-weight:700;"></span>
             </div>
             <div id="full-grid" class="card-grid"></div>
         </div>
@@ -490,51 +1214,75 @@ function renderFullList() {
     filtered.forEach(ex => container.appendChild(buildCard(ex)));
 }
 
+function buildMetaBadge(text, variant = '') {
+    if (!text) return '';
+    return `<span class="meta-badge ${variant}">${text}</span>`;
+}
+
 function buildCard(ex) {
     const card = document.createElement('div');
-    card.className = 'exam-card';
+    const fileName = (ex.file || '파일정보없음').replace(/\.js$/i, '');
+    const semester = ex.semester ? `${ex.semester}학기` : '';
+    const examName = examTypeLabel(ex.examType);
+    const isSheet = (ex.contentType || '기출') === '기출';
+    const cardTypeClass = isSheet ? 'type-sheet' : 'type-study';
+    const contentTypeLabel = ex.contentType || '기출';
+
+    card.className = `exam-card ${cardTypeClass}`;
 
     card.onclick = () => {
         document.querySelectorAll('.exam-card').forEach(c => c.classList.remove('is-active'));
         card.classList.add('is-active');
     };
 
-    const fileName = (ex.file || '파일정보없음').replace(/\.js$/i, '');
-    const semester = ex.semester ? `${ex.semester}학기` : '';
-    const examName = examTypeLabel(ex.examType);
-    const info = `${ex.year || ''} ${semester} ${examName}`.trim();
+    let title = '';
+    let subtitle = '';
+    let metaHTML = '';
 
-    let line1 = '';
-    let line2 = '';
+    if (isSheet) {
+        title = ex.school || fileName;
+        subtitle = [
+            ex.year ? `${ex.year}년` : '',
+            semester,
+            examName,
+            ex.subject || '',
+            contentTypeLabel
+        ].filter(Boolean).join(' · ');
 
-    if ((ex.contentType || '기출') === '기출') {
-        line1 = ex.school || ex.topic || fileName;
-        line2 = (ex.subject ? ex.subject + ' ' : '') + info;
-        if (!line2.trim()) line2 = info || '상세 정보 없음';
+        metaHTML = [
+            buildMetaBadge(ex.grade || ''),
+            buildMetaBadge(ex.subject || '', 'primary'),
+            buildMetaBadge(`${semester} ${examName}`.trim() || '', 'primary')
+        ].filter(Boolean).join('');
     } else {
-        line1 = ex.topic || ex.school || fileName;
-        line2 = ex.subject || info || '상세 정보 없음';
+        title = ex.topic || ex.school || fileName;
+        subtitle = [
+            ex.grade || '',
+            contentTypeLabel,
+            ex.subject || ''
+        ].filter(Boolean).join(' · ');
+
+        if (!subtitle) subtitle = contentTypeLabel;
+
+        metaHTML = [
+            buildMetaBadge(ex.grade || ''),
+            buildMetaBadge(contentTypeLabel, 'green'),
+            buildMetaBadge(ex.subject || ''),
+            (ex.school && ex.school !== 'AP수학') ? buildMetaBadge(ex.school) : ''
+        ].filter(Boolean).join('');
     }
-
-    if (line1 === line2) line2 = info || '상세 정보 없음';
-
-    const subjectBadge = (ex.subject && String(ex.grade || '').startsWith('고'))
-        ? `<span class="badge" style="background:var(--blue-pale); color:var(--blue-main);">${ex.subject}</span>`
-        : '';
 
     card.innerHTML = `
         <div class="card-top"></div>
         <div class="card-body">
-            <div class="card-grade-label">${ex.grade || ''}</div>
-            <div class="card-main-title">
-                ${line1}
-                <span class="card-sub-title">${line2}</span>
+            <div class="card-grade-row">
+                <div class="card-grade-label">${isSheet ? '학교 시험지' : '학습 자료'}</div>
+                <div class="card-type-chip">${contentTypeLabel}</div>
             </div>
+            <div class="card-main-title">${title}</div>
+            <div class="card-sub-title">${subtitle || '상세 정보 없음'}</div>
+            <div class="card-meta-line">${metaHTML}</div>
             <div class="card-file-name">${fileName}</div>
-            <div class="badge-row">
-                <span class="badge">${ex.contentType || '기출'}</span>
-                ${subjectBadge}
-            </div>
         </div>
         <div class="card-actions">
             <div class="action-btn" data-action="exam">시험</div>
