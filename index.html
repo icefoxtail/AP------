@@ -8,24 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --navy: #07111f; --navy-2: #0c1a2e; --blue-main: #1d4ed8; --blue-light: #60a5fa;
-            --blue-pale: #dbeafe; --green-main: #059669; --gray-muted: #94a3b8; --bg-soft: #f8fafc;
-            --card-bg: #ffffff; --card-hover: #f8fbff; --card-active: #10213f; --card-border: #e2e8f0;
-            --card-border-hover: #93c5fd; --card-border-active: #3b82f6; --text-main: #0f172a;
-            --text-sub: #64748b; --text-active-main: #ffffff; --text-active-sub: #dbeafe;
-            --badge-bg: #dbeafe; --badge-text: #1e40af; --action-hover-bg: #eff6ff; --action-hover-text: #1d4ed8;
+            --navy: #0a1830; --navy-2: #0f1d39; --blue-main: #1d4ed8; --blue-light: #60a5fa;
+            --blue-pale: #dbeafe; --green-main: #059669; --gray-muted: #94a3b8; --bg-soft: #f5f7fb;
+            --card-bg: #ffffff; --card-hover: #f8fbff; --card-active: #eef4ff; --card-border: #e2e8f0;
+            --card-border-hover: #93c5fd; --card-border-active: #60a5fa; --text-main: #0f172a;
+            --text-sub: #64748b; --text-active-main: #0f172a; --text-active-sub: #475569;
+            --badge-bg: #eef4ff; --badge-text: #315ea8; --action-hover-bg: #f3f7ff; --action-hover-text: #315ea8;
             --warn-bg: #fff7ed; --warn-border: #fed7aa; --warn-text: #9a3412;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Pretendard', sans-serif; background: var(--bg-soft); color: #1e293b; overflow-x: hidden; }
 
-        header { background: var(--navy); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        header { background: linear-gradient(180deg, rgba(10,24,48,0.98) 0%, rgba(11,27,53,0.96) 100%); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
         .top-nav { max-width: 1200px; margin: 0 auto; height: 56px; display: flex; align-items: center; justify-content: center; padding: 0 16px; }
         .grade-nav { display: flex; width: 100%; justify-content: space-between; max-width: 600px; }
         .gtab { font-size: 14px; color: rgba(255,255,255,0.38); font-weight: 600; padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: 0.15s; }
         .gtab.active { color: white; background: rgba(255,255,255,0.1); }
 
-        .hero { background: var(--navy); padding: 36px 24px 50px; position: relative; overflow: hidden; }
+        .hero { background: radial-gradient(circle at top right, rgba(96,165,250,0.18), transparent 34%), linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); padding: 40px 24px 54px; position: relative; overflow: hidden; }
         .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
         .hero-title { font-size: clamp(24px, 5.5vw, 30px); font-weight: 800; color: white; line-height: 1.25; }
         .hero-title em { color: var(--blue-light); font-style: normal; }
@@ -37,13 +37,14 @@
         .logo-name { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.5px; }
         .logo-name em { color: var(--blue-light); font-style: normal; }
 
-        .filter-band { background: white; border-bottom: 1px solid #e2e8f0; position: sticky; top: 56px; z-index: 900; }
+        .filter-band { background: rgba(255,255,255,0.94); border-bottom: 1px solid #e6ebf3; position: sticky; top: 56px; z-index: 900; backdrop-filter: blur(10px); }
         .filter-inner { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 10px; }
         .fb-search { flex: 1; position: relative; }
-        .fb-search input { width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 9px 14px 9px 36px; font-size: 13px; outline: none; }
+        .fb-search input { width: 100%; background: #fbfcfe; border: 1px solid #e6ebf3; border-radius: 8px; padding: 9px 14px 9px 36px; font-size: 13px; outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s; }
         .fb-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 13px; }
-        .fb-sel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .fb-mixer { background: var(--blue-main); color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .fb-sel { background: #fbfcfe; border: 1px solid #e6ebf3; border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; cursor: pointer; color: #334155; }
+        .fb-mixer { background: var(--blue-main); color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 18px rgba(29, 78, 216, 0.16); transition: transform 0.15s, box-shadow 0.15s, background 0.15s; }
+        .fb-mixer:hover { background: #1f46c7; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(29, 78, 216, 0.2); }
 
         .sec-block { padding: 48px 24px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
         .sec-block > * { max-width: 1152px; margin: 0 auto; }
@@ -57,11 +58,11 @@
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
         .exam-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: 0.18s; cursor: pointer; }
         .exam-card:hover { transform: translateY(-3px); border-color: var(--card-border-hover); box-shadow: 0 12px 26px rgba(37, 99, 235, 0.12); }
-        .exam-card.is-active { background: var(--card-active); border-color: var(--card-border-active); }
-        .card-top { height: 3px; background: var(--blue-main); }
+        .exam-card.is-active { background: var(--card-active); border-color: var(--card-border-active); box-shadow: 0 10px 24px rgba(96, 165, 250, 0.16); }
+        .card-top { display: none; }
         .card-body { padding: 20px; flex: 1; }
         .card-grade-label { font-size: 10px; font-weight: 800; color: var(--text-sub); margin-bottom: 6px; }
-        .exam-card.is-active .card-grade-label { color: var(--text-active-sub); }
+         .exam-card.is-active .card-grade-label { color: var(--text-active-sub); }
 
         .card-main-title { font-size: 15px; font-weight: 800; color: var(--text-main); display: block; line-height: 1.45; margin-bottom: 8px; white-space: normal; word-break: break-all; }
         .exam-card.is-active .card-main-title { color: var(--text-active-main); }
@@ -77,24 +78,29 @@
             word-break: break-all;
             padding: 8px 10px;
             border-radius: 8px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: #fbfcfe;
+            border: 1px solid #e6ebf3;
         }
         .exam-card.is-active .card-file-name {
             color: var(--text-active-sub);
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.14);
+            background: #f8fbff;
+            border-color: #dce8fb;
         }
 
         .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-        .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: var(--badge-bg); color: var(--badge-text); }
-        .exam-card.is-active .badge { background: rgba(255,255,255,0.15); color: white; }
+        .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: var(--badge-bg); color: var(--badge-text); border: 1px solid #d8e5fb; }
+        .exam-card.is-active .badge { background: #e8f1ff; color: #315ea8; border-color: #cfe0fb; }
 
-        .card-actions { border-top: 1px solid var(--card-border); display: flex; background: #fff; }
-        .exam-card.is-active .card-actions { background: rgba(255,255,255,0.05); border-top-color: rgba(255,255,255,0.1); }
-        .action-btn { flex: 1; padding: 12px 0; text-align: center; font-size: 12px; font-weight: 800; color: var(--text-sub); transition: 0.15s; }
-        .action-btn:hover { background: var(--action-hover-bg); color: var(--action-hover-text); }
-        .exam-card.is-active .action-btn { color: var(--text-active-sub); }
+        .card-actions { border-top: 1px solid var(--card-border); display: flex; background: #fcfdff; }
+        .exam-card.is-active .card-actions { background: #f7faff; border-top-color: #dbeafe; }
+        .action-btn { flex: 1; padding: 12px 0; text-align: center; font-size: 12px; font-weight: 800; color: var(--text-sub); transition: background 0.15s, color 0.15s, border-color 0.15s; }
+        .action-btn + .action-btn { border-left: 1px solid #edf2f7; }
+        .action-btn:hover { background: #f7faff; color: #315ea8; }
+        .exam-card.is-active .action-btn { color: #475569; }
+        .exam-card.is-active .action-btn + .action-btn { border-left-color: #e3edfb; }
+        .exam-card.is-active .action-btn:hover { background: #edf4ff; color: #315ea8; }
+
+        .content-wrap { background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 100%); }
 
         .empty-state {
             max-width: 1152px;
@@ -169,6 +175,13 @@
         </div>
         <select class="fb-sel" id="yearFilter">
             <option value="">전체 연도</option>
+        </select>
+        <select class="fb-sel" id="examPeriodFilter">
+            <option value="">전체 시험</option>
+            <option value="1-mid">1학기 중간</option>
+            <option value="1-final">1학기 기말</option>
+            <option value="2-mid">2학기 중간</option>
+            <option value="2-final">2학기 기말</option>
         </select>
         <select class="fb-sel" id="contentTypeFilter">
             <option value="">전체 분류</option>
@@ -298,6 +311,7 @@ async function init() {
     document.getElementById('searchInput').addEventListener('input', onFilterChange);
     document.getElementById('yearFilter').addEventListener('change', onFilterChange);
     document.getElementById('contentTypeFilter').addEventListener('change', onFilterChange);
+    document.getElementById('examPeriodFilter').addEventListener('change', onFilterChange);
 
     renderFeatured();
 }
@@ -346,12 +360,19 @@ function sortExams(list) {
     });
 }
 
+function examPeriodValue(ex) {
+    const semester = normalizeSemester(ex?.semester);
+    const examType = normalizeExamType(ex?.examType);
+    return semester && examType ? `${semester}-${examType}` : '';
+}
+
 function onFilterChange() {
     const keyword = document.getElementById('searchInput').value.trim();
     const year = document.getElementById('yearFilter').value;
     const type = document.getElementById('contentTypeFilter').value;
+    const examPeriod = document.getElementById('examPeriodFilter').value;
 
-    if (keyword || year || type || selectedGrade) {
+    if (keyword || year || type || examPeriod || selectedGrade) {
         document.getElementById('featured-section').style.display = 'none';
         document.getElementById('full-section').style.display = 'block';
         renderFullList();
@@ -426,6 +447,7 @@ function renderFullList() {
     const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
     const year = document.getElementById('yearFilter').value;
     const type = compactText(document.getElementById('contentTypeFilter').value);
+    const examPeriod = document.getElementById('examPeriodFilter').value;
 
     const container = document.getElementById('full-grid');
     container.innerHTML = '';
@@ -444,13 +466,21 @@ function renderFullList() {
         const matchY = !year || String(ex.year) === String(year);
         const itemType = compactText(ex.contentType || '');
         const matchT = !type || itemType === type;
+        const matchP = !examPeriod || examPeriodValue(ex) === examPeriod;
 
-        return matchK && matchG && matchY && matchT;
+        return matchK && matchG && matchY && matchT && matchP;
     });
 
     filtered = sortExams(filtered);
 
-    document.getElementById('listMeta').innerText = `${filtered.length}개 자료`;
+    const activeFilters = [];
+    if (selectedGrade) activeFilters.push(selectedGrade);
+    if (year) activeFilters.push(`${year}년`);
+    if (type) activeFilters.push(document.getElementById('contentTypeFilter').selectedOptions[0]?.textContent || type);
+    if (examPeriod) activeFilters.push(document.getElementById('examPeriodFilter').selectedOptions[0]?.textContent || examPeriod);
+    document.getElementById('listMeta').innerText = activeFilters.length
+        ? `${filtered.length}개 자료 · ${activeFilters.join(' · ')}`
+        : `${filtered.length}개 자료`;
 
     if (!filtered.length) {
         container.innerHTML = `<div class="empty-state" style="grid-column:1/-1; margin:0;">조건에 맞는 자료가 없습니다.</div>`;
