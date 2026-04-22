@@ -80,7 +80,6 @@ const SE_BLOCK_GAP = 15;
 
 const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 
-// [성역] wrapLatex
 function wrapLatex(text) {
     if (text == null) return '';
     let s = String(text);
@@ -115,7 +114,6 @@ function wrapLatex(text) {
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
 
-// [성역] autoCompress / parseExamTitle / makePage / fitQuestionBox
 function autoCompress(container) {
     let fontSize = 9.5; let lineHeight = 1.58;
     while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
@@ -155,7 +153,6 @@ function fitQuestionBox(box) {
     }
 }
 
-// [성역] 초기화 / 셔플 / 모드전환
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.mode = p.get('mode') || 'exam'; AppState.qpp = parseInt(p.get('qpp')) || 4;
@@ -201,7 +198,6 @@ async function renderExam(area, data) {
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
 
-    // Phase 1: 프록시 측정
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box';
         const isChoice = Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식' && q.choices.some(c => extractChoice(c).trim() !== '');
@@ -227,7 +223,6 @@ async function renderExam(area, data) {
     let activeChunk = [];
     let currentType = null;
 
-    // Phase 2: Sequential Block Generation
     const flushBlock = () => {
         if (activeChunk.length === 0) return;
         const type = currentType;
@@ -259,13 +254,12 @@ async function renderExam(area, data) {
 
     items.forEach(item => {
         const lt = item.q.layoutTag || '';
-        const tags = Array.isArray(item.q.tags) ? item.q.tags : [];
         let qType = 'normal';
         let limit = AppState.qpp;
 
         if (item.q.wide === true || lt === 'fullwidth') { qType = 'wide'; limit = 1; }
-        else if (lt === 'subjective-2up' || tags.includes('서술형2')) { qType = 'subj2'; limit = 2; }
-        else if (lt === 'subjective-4up' || tags.includes('서술형4')) { qType = 'subj4'; limit = 4; }
+        else if (lt === 'subjective-2up') { qType = 'subj2'; limit = 2; }
+        else if (lt === 'subjective-4up') { qType = 'subj4'; limit = 4; }
 
         const isSpecialType = (qType === 'subj2' || qType === 'subj4' || qType === 'wide');
         const prevWasSpecial = (currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide');
@@ -288,7 +282,6 @@ async function renderExam(area, data) {
     flushBlock();
     if (currentPage.blocks.length > 0) pages.push(currentPage);
 
-    // Phase 3: Rendering
     for (let pIdx = 0; pIdx < pages.length; pIdx++) {
         const pageData = pages[pIdx];
         const page = (!firstPage) ? (firstPage = makePage(area, 'exam', pNum)) : makePage(area, 'exam', ++pNum);
@@ -328,7 +321,6 @@ async function renderExam(area, data) {
     }
 }
 
-// [성역] renderSol
 async function renderSol(area, data) {
     let pageNum = 1;
     function makeGridPage() {
@@ -361,7 +353,6 @@ async function renderSol(area, data) {
         }
     }
 }
-// [성역] renderAns
 function renderAns(area, data) {
     const PER_PAGE = 50; let pCount = 1;
     for (let start = 0; start < data.length; start += PER_PAGE) {
