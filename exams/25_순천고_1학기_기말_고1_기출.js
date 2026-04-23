@@ -200,23 +200,22 @@ window.questionBank = [
     answer: "①",
     solution: "[키포인트] 행렬 $A$를 구하고 거듭제곱의 규칙성을 찾는다.\\n$a_{11}=1, a_{12}=1 \\times 2 = 2, a_{21}=2-2 \\times 1 = 0, a_{22}=1$\\n$A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$이므로 $A^n = \\begin{pmatrix} 1 & 2n \\\\ 0 & 1 \\end{pmatrix}$이다.\\n$A^7 = \\begin{pmatrix} 1 & 14 \\\\ 0 & 1 \\end{pmatrix}$의 모든 성분의 합은 $1+14+0+1 = 16$이다.\\n따라서 정답은 ①이다."
   },
-  {
+{
     id: 12,
-    level: "상",
-    category: "이차함수",
-    originalCategory: "이차방정식과 이차함수",
+    level: "중",
+    category: "이차부등식",
+    originalCategory: "이차함수와 이차부등식",
     standardCourse: "공통수학 1",
-    standardUnitKey: "H22-C-05",
-    standardUnit: "이차방정식과 이차함수",
-    standardUnitOrder: 5,
+    standardUnitKey: "H22-C-06",
+    standardUnit: "여러 가지 방정식과 부등식",
+    standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
     tags: [],
-    image: "assets/images/25_순천고_1학기_기말_고1_기출/q12.png",
-    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+    content: "이차함수 $y=f(x)$의 그래프가 다음과 같을 때, <보기>에서 옳은 것만 있는 대로 고른 것은? [4.2 점]\\n<svg width=\"280\" height=\"180\" viewBox=\"0 0 280 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n <line x1=\"10\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n <line x1=\"50\" y1=\"170\" x2=\"50\" y2=\"10\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n <path d=\"M 32.5,18.8 L 41.3,40.3 L 50.0,60.0 L 58.8,77.8 L 67.5,93.8 L 76.3,107.8 L 85.0,120.0 L 93.8,130.3 L 102.5,138.8 L 111.3,145.3 L 120.0,150.0 L 128.8,152.8 L 137.5,153.8 L 146.3,152.8 L 155.0,150.0 L 163.8,145.3 L 172.5,138.8 L 181.3,130.3 L 190.0,120.0 L 198.8,107.8 L 207.5,93.8 L 216.3,77.8 L 225.0,60.0 L 233.8,40.3 L 242.5,18.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\\n <line x1=\"45\" y1=\"90\" x2=\"230\" y2=\"90\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n <line x1=\"65.4\" y1=\"90\" x2=\"65.4\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n <line x1=\"209.6\" y1=\"90\" x2=\"209.6\" y2=\"120\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\\n <path d=\"M 85,118 A 5 5 0 0 1 85 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <path d=\"M 190,118 A 5 5 0 0 0 190 110\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <path d=\"M 65.4,88 A 5 5 0 0 1 65.4 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <path d=\"M 209.6,88 A 5 5 0 0 0 209.6 80\" stroke=\"black\" fill=\"none\" stroke-width=\"0.8\"/>\\n <text x=\"255\" y=\"135\" font-size=\"10px\" font-family=\"serif\">x</text>\\n <text x=\"38\" y=\"18\" font-size=\"10px\" font-family=\"serif\">y</text>\\n <text x=\"38\" y=\"135\" font-size=\"10px\" font-family=\"serif\">O</text>\\n <text x=\"65.4\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">p</text>\\n <text x=\"85\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">q</text>\\n <text x=\"190\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">r</text>\\n <text x=\"209.6\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">s</text>\\n <text x=\"230\" y=\"40\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\\n <text x=\"40\" y=\"93\" font-size=\"10px\" text-anchor=\"end\" font-family=\"serif\">2</text>\\n <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\\n</svg>\\n<div class=\"question-table-wrap\">\\n <table class=\"question-table\" style=\"width:100%; border:1px solid black;\">\\n <tr>\\n <td>\\n &lt;보기&gt;<br/>\\n ㄱ. 부등식 $f(x)-2 \\ge 0$의 해는 $p \\le x \\le s$이다.<br/>\\n ㄴ. $q-p = s-r$<br/>\\n ㄷ. 부등식 $f(-2x) < 0$의 해는 $-2r < x < -2q$이다.\\n </td>\\n </tr>\\n </table>\\n</div>",
     choices: ["ㄱ", "ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     answer: "②",
-    solution: "[키포인트] 그래프에서 직선 $y=2$와의 위치관계, 대칭축의 성질, 함수의 치환을 이용하여 판단한다.\\nㄱ. $f(x)-2 \\ge 0$은 $f(x) \\ge 2$라는 뜻이다. 그래프가 직선 $y=2$보다 위쪽 또는 위에 있는 부분은 가운데 구간이 아니라 바깥쪽 구간이므로 $p \\le x \\le s$는 옳지 않다. (거짓)\\nㄴ. 같은 높이의 두 점은 대칭축에 대하여 서로 대칭이므로 대응하는 가로거리의 차가 서로 같다. 따라서 보기의 등식은 성립한다. (참)\\nㄷ. $f(-2x) < 0$은 먼저 $f(t) < 0$의 해를 구한 뒤 $t=-2x$로 치환하여 해를 구해야 한다. 제시된 구간은 치환 후의 범위를 바르게 나타낸 것이 아니므로 옳지 않다. (거짓)\\n따라서 정답은 ②이다."
+    solution: "[키포인트] 이차함수 그래프의 대칭성과 부등식의 성질을 이용하여 각 보기를 판단한다.\\n이차함수 $y=f(x)$의 대칭축을 $x=k$라고 하자.\\nㄱ. $f(x) - 2 \\ge 0 \\Rightarrow f(x) \\ge 2$이다. 그래프에서 함숫값이 $2$보다 크거나 같은 구간은 $x \\le p$ 또는 $x \\ge s$이므로 ㄱ은 옳지 않다.\\nㄴ. 이차함수는 대칭축에 대하여 선대칭이다. $f(p)=f(s)=2$이므로 $p$와 $s$의 중점은 $k$이다. 즉, $\\frac{p+s}{2}=k$이므로 $p+s=2k$이다. 마찬가지로 $f(q)=f(r)=0$이므로 $q$와 $r$의 중점은 $k$이다. 즉, $\\frac{q+r}{2}=k$이므로 $q+r=2k$이다. 따라서 $p+s=q+r \\Rightarrow s-r=q-p$가 성립하므로 ㄴ은 옳다.\\nㄷ. 그래프에서 $f(x) < 0$의 해는 $q < x < r$이다. $f(-2x) < 0$이려면 $q < -2x < r$을 만족해야 한다. 각 변을 $-2$로 나누면 부등호의 방향이 바뀌어 $-\\frac{r}{2} < x < -\\frac{q}{2}$가 된다. 따라서 ㄷ은 옳지 않다.\\n옳은 것은 ㄴ뿐이므로 정답은 ②이다."
   },
   {
     id: 13,
