@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.7.3 (Exam Frame Fixed)</title>
+    <title>JS아카이브 엔진 - Stage E v1.7.4 (AP Header)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
@@ -21,33 +21,34 @@
         .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
         .mode-tab.active { background: white; color: #0f172a; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
-        
-        /* 미세 보정: page 상단 패딩 14mm로 소폭 축소, 프레임 위치 11.5mm로 안쪽 조정 */
+
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
         .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
         .page-header { display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 0.8pt solid #000; padding: 5px 8px 6px; margin-bottom: 8px; font-weight: 700; font-size: 9.4pt; line-height: 1.2; background: #fff; }
         .page-header.page-header--exam { gap: 4px; }
         .page-header-title { text-align: center; font-size: 15.5pt; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
         .page-header-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; font-size: 9.2pt; }
-        .page-header-meta-left { font-weight: 700; white-space: nowrap; }
+        .page-header-meta-left { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+        .page-header-brand { display: inline-flex; align-items: center; gap: 6px; }
+        .page-header-brand-mark { display: inline-block; width: 10px; height: 10px; border: 0.8pt solid #000; }
         .page-header-meta-right { display: flex; align-items: flex-end; gap: 14px; white-space: nowrap; }
         .header-fill-line { display: inline-block; min-width: 78px; border-bottom: 0.8pt solid #000; height: 0.95em; vertical-align: bottom; margin-left: 4px; }
         .header-fill-line.header-fill-line--score { min-width: 34px; text-align: center; margin: 0 3px 0 4px; }
-        
+
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow: hidden; height: 100%; min-height: 0; }
-        
+
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
-        
+
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
         .q-content img, .q-image-wrap img { display: block; max-width: 100%; height: auto; margin: 8px auto; break-inside: avoid; page-break-inside: avoid; }
         .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
         .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
         .q-content img.img-fit-micro, .q-image-wrap img.img-fit-micro { max-width: 76%; max-height: 90px; }
-        
+
         .choices { margin-top: 10px; font-size: 9pt; }
         .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
         .choice-no { width: 20px; flex-shrink: 0; font-weight: bold; }
@@ -191,15 +192,9 @@ function buildExamHeaderTitle(meta) {
     return parts.join(' ') || '수학 시험지';
 }
 
-function buildExamHeaderTarget(meta) {
-    const parts = [meta.year, meta.school, meta.grade].filter(Boolean);
-    return parts.join(' · ') || '전체';
-}
-
 function makePage(area, type, pNum) {
     const page = document.createElement('div'); page.className = 'page';
-    
-    // 외곽 프레임은 exam 모드에서만 삽입되도록 조건 제한
+
     if (type === 'exam') {
         const frame = document.createElement('div'); frame.className = 'page-exam-frame';
         page.appendChild(frame);
@@ -211,11 +206,10 @@ function makePage(area, type, pNum) {
 
     if (type === 'exam') {
         const headerTitle = buildExamHeaderTitle(t);
-        const headerTarget = buildExamHeaderTarget(t);
         header.innerHTML = `
             <div class="page-header-title">${headerTitle}</div>
             <div class="page-header-meta">
-                <div class="page-header-meta-left">대상: ${headerTarget}</div>
+                <div class="page-header-meta-left"><span class="page-header-brand"><span class="page-header-brand-mark"></span><span>AP수학</span></span></div>
                 <div class="page-header-meta-right">
                     <span>이름<span class="header-fill-line"></span></span>
                     <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
@@ -240,7 +234,7 @@ async function init() {
     AppState.mode = p.get('mode') || 'exam'; AppState.qpp = parseInt(p.get('qpp')) || 4;
     document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
     const targetBtn = document.getElementById('btn-' + AppState.mode); if (targetBtn) targetBtn.classList.add('active');
-    
+
     const qppDisp = document.getElementById('qpp-display');
     if (qppDisp) qppDisp.innerText = `QPP: ${AppState.qpp}`;
 
@@ -296,10 +290,10 @@ function renderChoicesHTML(q) {
 function formatQuestionContent(html, q) {
     if (!html) return '';
     let count = 0;
-    return html.replace(/([\.?!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
+    return html.replace(/([\.?\!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
         count++;
-        if (count === 1) return match; 
-        if (p1.includes('br>') || p1.includes('\n')) return match; 
+        if (count === 1) return match;
+        if (p1.includes('br>') || p1.includes('\n')) return match;
         return p1 + '<br>' + p2;
     });
 }
@@ -463,7 +457,7 @@ async function renderSol(area, data) {
             autoCompress(box); await raf();
             if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
                 cols[colIdx].removeChild(box);
-                if (colIdx === 0) { colIdx = 1; cols[colIdx].appendChild(box); } 
+                if (colIdx === 0) { colIdx = 1; cols[colIdx].appendChild(box); }
                 else { ({ cols } = makeGridPage()); colIdx = 0; cols[colIdx].appendChild(box); }
                 if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
             }
