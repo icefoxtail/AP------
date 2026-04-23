@@ -151,7 +151,7 @@ window.questionBank = [
     standardUnit: "이차함수",
     standardUnitOrder: 6,
     layoutTag: "grid",
-    content: "[도형필요] 건축가가 <조건>에 맞는 집을 지을 수 없다고 하였다. 건축가가 이 집을 지을 수 있도록 하는 방법이 아닌 것은?\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><th><조건></th></tr>\n<tr><td>\n- 집의 밑면은 직사각형 모양이어야 합니다.<br>\n- 집의 밑면 둘레의 길이는 $100\\text{m}$이어야 합니다.<br>\n- 집의 밑면 넓이는 $800\\text{m}^2$이어야 합니다.\n</td></tr>\n</table>\n</div>",
+    content: "건축가가 <조건>에 맞는 집을 지을 수 없다고 하였다. 건축가가 이 집을 지을 수 있도록 하는 방법이 아닌 것은?\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><th><조건></th></tr>\n<tr><td>\n- 집의 밑면은 직사각형 모양이어야 합니다.<br>\n- 집의 밑면 둘레의 길이는 $100\\text{m}$이어야 합니다.<br>\n- 집의 밑면 넓이는 $800\\text{m}^2$이어야 합니다.\n</td></tr>\n</table>\n</div>",
     choices: [
       "① 넓이는 그대로 두고, 둘레의 길이를 $116\\text{m}$ 이상으로 한다.",
       "② 둘레의 길이는 그대로 두고, 넓이를 $625\\text{m}^{2}$으로 한다.",

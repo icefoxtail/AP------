@@ -135,8 +135,10 @@
         table.question-table { border-collapse: collapse; width: 100%; max-width: 280px; table-layout: fixed; font-size: 8.6pt; line-height: 1.35; margin: 8px 0; margin-left: 0; margin-right: auto; text-align: left; }
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
         table.question-table th { font-weight: 700; }
-        .question-table-wrap { margin: 8px 0 10px 0; }
-        .question-note-box, .box { margin: 8px 0 10px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
+        
+        /* 여백 축소 보정된 부분 */
+        .question-table-wrap { margin: 4px 0 8px 0; }
+        .question-note-box, .box { margin: 4px 0 8px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
@@ -231,16 +233,7 @@ function injectQrToLastExamPage(area) {
     const pages = area.querySelectorAll('.page');
     if (!pages.length) return;
 
-    let targetPage = pages[pages.length - 1];
-    let targetBody = targetPage.body || targetPage.querySelector(':scope > div[style*="flex:1"]');
-    if (!targetBody) return;
-
-    const reservePx = 62;
-
-    if (targetBody.scrollHeight > targetBody.clientHeight - reservePx) {
-        targetPage = makePage(area, 'exam', pages.length + 1);
-        targetBody = targetPage.body;
-    }
+    const targetPage = pages[pages.length - 1];
 
     const oldQr = targetPage.querySelector('.page-qr');
     if (oldQr) oldQr.remove();
@@ -473,6 +466,7 @@ function normalizeQuestionTables(html) {
         .replace(/<table(?![^>]*class=)/gi, '<table class="question-table"');
 }
 
+/* 줄바꿈(breaks)을 제거하고 바로 박스를 이어붙이도록 보정된 부분 */
 function normalizeQuestionNotes(html) {
     if (!html || /question-note-box/.test(html)) return html;
     return html.replace(
@@ -481,7 +475,7 @@ function normalizeQuestionNotes(html) {
             const brCount = (noteBlock.match(/<br\s*\/?>/gi) || []).length;
             const plainText = noteBlock.replace(/<[^>]+>/g, '').trim();
             if (brCount < 2 && plainText.length < 60) return match;
-            return `${breaks}<div class="question-note-box">${noteBlock}</div>`;
+            return `<div class="question-note-box">${noteBlock}</div>`;
         }
     );
 }
