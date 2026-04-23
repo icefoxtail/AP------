@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.6.6 (Rulebook v1.9 + Note Box Support)</title>
+    <title>JS아카이브 엔진 - Stage E v1.7.1 (Slim Header + Outer Frame)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
@@ -23,7 +23,15 @@
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; padding-bottom: 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
-        .page-header { display: flex; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt; }
+        .page-exam-frame { position: absolute; top: 10.5mm; right: 10.5mm; bottom: 10.5mm; left: 10.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
+        .page-header { display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 0.8pt solid #000; padding: 5px 8px 6px; margin-bottom: 8px; font-weight: 700; font-size: 9.4pt; line-height: 1.2; background: #fff; }
+        .page-header.page-header--exam { gap: 4px; }
+        .page-header-title { text-align: center; font-size: 15.5pt; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
+        .page-header-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; font-size: 9.2pt; }
+        .page-header-meta-left { font-weight: 700; white-space: nowrap; }
+        .page-header-meta-right { display: flex; align-items: flex-end; gap: 14px; white-space: nowrap; }
+        .header-fill-line { display: inline-block; min-width: 78px; border-bottom: 0.8pt solid #000; height: 0.95em; vertical-align: bottom; margin-left: 4px; }
+        .header-fill-line.header-fill-line--score { min-width: 34px; text-align: center; margin: 0 3px 0 4px; }
         
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
@@ -192,16 +200,57 @@ function parseExamTitle(raw) {
     return { year: p[0] ? (p[0].length === 2 ? '20' + p[0] + '년' : p[0] + '년') : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
 }
 
+function normalizeSemesterLabel(value) {
+    const v = String(value || '').trim();
+    if (!v) return '';
+    return /학기$/.test(v) ? v : `${v}학기`;
+}
+
+function normalizeExamTypeLabel(value) {
+    const v = String(value || '').trim().toLowerCase();
+    if (!v) return '';
+    if (v === 'mid' || v === '중간' || v === '중간고사') return '중간고사';
+    if (v === 'final' || v === '기말' || v === '기말고사') return '기말고사';
+    return value;
+}
+
+function buildExamHeaderTitle(meta) {
+    const parts = [normalizeSemesterLabel(meta.semester), normalizeExamTypeLabel(meta.examType)].filter(Boolean);
+    return parts.join(' ') || '수학 시험지';
+}
+
+function buildExamHeaderTarget(meta) {
+    const parts = [meta.year, meta.school, meta.grade].filter(Boolean);
+    return parts.join(' · ') || '전체';
+}
+
 function makePage(area, type, pNum) {
     const page = document.createElement('div'); page.className = 'page';
-    const header = document.createElement('div'); header.className = 'page-header';
-    if (type === 'exam') header.style.borderBottomColor = '#1d4ed8';
-    else if (type === 'sol') header.style.borderBottomColor = '#dc2626';
-    else header.style.borderBottomColor = '#059669';
+    const frame = document.createElement('div'); frame.className = 'page-exam-frame';
+    page.appendChild(frame);
+
+    const header = document.createElement('div');
+    header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
     const t = parseExamTitle(AppState.title);
-    const leftText = [t.year, t.school, t.grade, t.semester, t.examType, t.subject].filter(Boolean).join(' | ') || AppState.title;
-    let rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : (type === 'ans') ? '[ 정답표 ]' : '이름: ____________  점수:        / 100';
-    header.innerHTML = `<div style="flex:1;">${leftText}</div><div>${rightText}</div>`;
+
+    if (type === 'exam') {
+        const headerTitle = buildExamHeaderTitle(t);
+        const headerTarget = buildExamHeaderTarget(t);
+        header.innerHTML = `
+            <div class="page-header-title">${headerTitle}</div>
+            <div class="page-header-meta">
+                <div class="page-header-meta-left">대상: ${headerTarget}</div>
+                <div class="page-header-meta-right">
+                    <span>이름<span class="header-fill-line"></span></span>
+                    <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
+                </div>
+            </div>`;
+    } else {
+        const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || AppState.title;
+        const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
+        header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${leftText}</div><div>${rightText}</div></div>`;
+    }
+
     page.appendChild(header);
     const body = document.createElement('div'); body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
     page.appendChild(body); page.body = body;
