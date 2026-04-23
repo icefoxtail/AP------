@@ -482,7 +482,7 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "주관식",
     layoutTag: "grid",
-    image: "assets/images/25_순천매산여고_1학기_기말_고1_공통수학1/q23.png",
+    image: "assets/images/25_매산여고_1학기_기말_고1_기출/q23.png",
     content: "그림과 같이 7개의 좌석이 있는 차량에 앞줄에 2개, 가운데 줄에 2개, 뒷줄에 3개의 좌석이 배열되어 있다. 이 차량에 남자 2명과 여자 2명이 앉으려고 한다. 같은 줄에는 남자와 여자가 서로 이웃하지 않도록 좌석을 배정하는 모든 경우의 수를 구하시오. (단, 운전석에는 무조건 한 명은 앉아야 한다.)",
     choices: [],
     answer: "$184$",

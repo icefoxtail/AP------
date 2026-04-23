@@ -305,7 +305,8 @@ window.questionBank = [
     standardUnit: "좌표평면과 그래프",
     standardUnitOrder: 4,
     questionType: "객관식",
-    content: "[그래프필요] 다음 좌표평면 위의 네 점 A, B, C, D의 좌표를 나타낸 것으로 옳은 것을 고르시오. [3점]",
+    content: "다음 좌표평면 위의 네 점 A, B, C, D의 좌표를 나타낸 것으로 옳은 것을 고르시오. [3점]",
+    image: "assets/images/1학기_기말평가_중1_단원평가/q15.png",
     choices: [
       "A(2, -3)",
       "B(1, 0)",
