@@ -24,13 +24,12 @@
 
         .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
         .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
+        
         .page-header { display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 0.8pt solid #000; padding: 5px 8px 6px; margin-bottom: 8px; font-weight: 700; font-size: 9.4pt; line-height: 1.2; background: #fff; }
-        .page-header.page-header--exam { gap: 4px; }
+        .page-header.page-header--exam { gap: 12px; padding: 15px 12px 10px; }
         .page-header-title { text-align: center; font-size: 15.5pt; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
         .page-header-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; font-size: 9.2pt; }
         .page-header-meta-left { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
-        .page-header-brand { display: inline-flex; align-items: center; gap: 6px; }
-        .page-header-brand-mark { display: inline-block; width: 10px; height: 10px; border: 0.8pt solid #000; }
         .page-header-meta-right { display: flex; align-items: flex-end; gap: 14px; white-space: nowrap; }
         .header-fill-line { display: inline-block; min-width: 78px; border-bottom: 0.8pt solid #000; height: 0.95em; vertical-align: bottom; margin-left: 4px; }
         .header-fill-line.header-fill-line--score { min-width: 34px; text-align: center; margin: 0 3px 0 4px; }
@@ -187,9 +186,19 @@ function normalizeExamTypeLabel(value) {
     return value;
 }
 
-function buildExamHeaderTitle(meta) {
-    const parts = [normalizeSemesterLabel(meta.semester), normalizeExamTypeLabel(meta.examType)].filter(Boolean);
-    return parts.join(' ') || '수학 시험지';
+function getExamTitleFull() {
+    if (window.examTitle) return window.examTitle;
+    if (AppState.title && AppState.title !== '수학 시험지') return AppState.title;
+    try {
+        const p = new URLSearchParams(window.location.search);
+        const dataUrl = p.get('data');
+        if (dataUrl) {
+            let filename = dataUrl.split('/').pop().split('?')[0];
+            filename = decodeURIComponent(filename).replace(/\.[^/.]+$/, "");
+            if (filename) return filename;
+        }
+    } catch(e) {}
+    return AppState.title || '수학 시험지';
 }
 
 function makePage(area, type, pNum) {
@@ -205,11 +214,11 @@ function makePage(area, type, pNum) {
     const t = parseExamTitle(AppState.title);
 
     if (type === 'exam') {
-        const headerTitle = buildExamHeaderTitle(t);
+        const headerTitle = getExamTitleFull();
         header.innerHTML = `
             <div class="page-header-title">${headerTitle}</div>
             <div class="page-header-meta">
-                <div class="page-header-meta-left"><span class="page-header-brand"><span class="page-header-brand-mark"></span><span>AP수학</span></span></div>
+                <div class="page-header-meta-left"></div>
                 <div class="page-header-meta-right">
                     <span>이름<span class="header-fill-line"></span></span>
                     <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>

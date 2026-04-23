@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS아카이브 | 믹서 출제 (v3.3.2 Normalized)</title>
+    <title>JS아카이브 | 믹서 출제 (v3.5.6 Final-Fix)</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
@@ -18,7 +18,7 @@
         :root {
             --navy: #07111f; --navy-2: #0c1a2e; --navy-3: #12233f;
             --blue: #2563eb; --blue-dark: #1d4ed8; --blue-soft: #eff6ff;
-            --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0; 
+            --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
             --gray-300: #cbd5e1; --gray-500: #64748b;
             --text-main: #0f172a; --radius-md: 12px;
         }
@@ -27,84 +27,77 @@
         header { background: var(--navy); height: 58px; display: flex; align-items: center; padding: 0 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .logo { color: white; text-decoration: none; font-weight: 800; font-size: 18px; display: flex; align-items: center; gap: 10px; }
         .logo em { color: #60a5fa; font-style: normal; }
+
         .mixer-container { display: flex; height: calc(100vh - 58px); }
         .panel { display: flex; flex-direction: column; background: white; border-right: 1px solid var(--gray-200); height: 100%; min-width: 0; }
         .panel-header { padding: 15px 20px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; min-height: 58px; flex-shrink: 0; }
         .panel-body { flex: 1; overflow-y: auto; padding: 20px; -webkit-overflow-scrolling: touch; }
-        
-        /* Left: Papers & Bulk Selection */
+
         .panel-papers { width: 340px; flex-shrink: 0; background: var(--gray-50); }
         .filter-area { padding: 15px 20px; border-bottom: 1px solid var(--gray-200); background: white; display: flex; flex-direction: column; gap: 8px; }
         .search-box { position: relative; }
-        .search-box input { width: 100%; height: 38px; padding: 0 12px 0 34px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 13px; outline: none; }
         .search-box i { position: absolute; left: 12px; top: 12px; color: var(--gray-300); }
-        .form-select { width: 100%; height: 36px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 12px; font-weight: 600; outline: none; background: white; }
+        .search-box input { width: 100%; height: 38px; padding: 0 12px 0 34px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 13px; outline: none; }
         .filter-row { display: flex; gap: 6px; }
-        
+        .form-select { width: 100%; height: 36px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 12px; font-weight: 600; outline: none; background: white; }
+
         .exam-bulk-bar { padding: 12px 20px; background: var(--blue-soft); border-bottom: 1px solid var(--gray-200); }
         .exam-bulk-top { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px; font-weight: 800; color: var(--blue-dark); }
         .exam-bulk-actions { display: flex; gap: 6px; }
         .panel-action { flex: 1; padding: 6px 0; font-size: 11.5px; font-weight: 700; background: white; border: 1px solid var(--blue); color: var(--blue); border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .panel-action:hover { background: var(--blue); color: white; }
         .panel-action.primary { background: var(--blue); color: white; }
-        .panel-action.primary:hover { background: var(--blue-dark); }
 
-        /* 인덱스 기준 시험지 카드 UI */
-        .paper-item {
-          padding: 14px 16px;
-          border-radius: 12px;
-          background: white;
-          border: 1px solid var(--gray-200);
-          margin-bottom: 10px;
-          cursor: pointer;
-          transition: 0.2s;
-        }
-        .paper-item:hover { border-color: var(--blue); background: #fdfdfe; }
+        .paper-item { padding: 14px 16px; border-radius: 12px; background: white; border: 1px solid var(--gray-200); margin-bottom: 10px; transition: 0.2s; position: relative; }
+        @media (min-width: 901px) { .paper-item { cursor: pointer; } .paper-item:hover { border-color: var(--blue); } }
         .paper-item.active { border-color: var(--blue); background: var(--blue-soft); box-shadow: inset 0 0 0 1px var(--blue); }
         .paper-item.selected { border-color: var(--blue-dark); background: #eef2ff; }
-
         .exam-item-head { display: flex; gap: 10px; align-items: flex-start; }
-        .exam-check { margin-top: 2px; cursor: pointer; width: 16px; height: 16px; accent-color: var(--blue); flex-shrink: 0; }
-        .exam-main { flex: 1; min-width: 0; }
-        .paper-name { font-size: 15px; font-weight: 800; line-height: 1.32; color: var(--text-main); margin-bottom: 6px; word-break: keep-all; overflow-wrap: anywhere; }
-        .paper-sub { font-size: 12px; line-height: 1.5; color: var(--gray-500); margin-bottom: 8px; word-break: keep-all; overflow-wrap: anywhere; }
+        .exam-check-wrap { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0; cursor: pointer; margin-top: -4px; margin-left: -6px; }
+        .exam-check { width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; }
+        .paper-name { font-size: 14.5px; font-weight: 800; line-height: 1.35; color: var(--text-main); margin-bottom: 6px; word-break: keep-all; }
+        .paper-sub { font-size: 11.5px; color: var(--gray-500); margin-bottom: 8px; }
         .paper-meta-line { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-        
-        .meta-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 9px; border-radius: 8px; font-size: 10.5px; font-weight: 800; color: #475569; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .meta-badge { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: 6px; font-size: 10px; font-weight: 800; color: #475569; background: #f8fafc; border: 1px solid #e2e8f0; }
         .meta-badge.primary { color: var(--blue); background: #eff6ff; border-color: #dbeafe; }
         .meta-badge.green { color: #047857; background: #ecfdf5; border-color: #b7efd4; }
-        
-        .paper-file-name { font-size: 10.5px; line-height: 1.4; color: #94a3b8; word-break: break-all; padding-top: 8px; border-top: 1px dashed #e2e8f0; }
+        .paper-file-name { font-size: 10px; color: #94a3b8; border-top: 1px dashed #e2e8f0; padding-top: 8px; margin-top: 4px; word-break: break-all; }
 
-        /* Middle: Action Bar & Questions */
+        .exam-card-actions { display: none; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--gray-100); }
+        .exam-card-btn { flex: 1; height: 40px; border-radius: 8px; font-size: 12.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--gray-200); background: white; cursor: pointer; }
+        .exam-card-btn.preview { color: var(--gray-500); }
+        .exam-card-btn.select { border-color: var(--blue); color: var(--blue); }
+        .exam-card-btn.select.active { background: var(--blue); color: white; border-color: var(--blue); }
+
         .panel-questions { flex: 1; min-width: 0; }
-        .top-action-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 20px; border-bottom: 1px solid var(--gray-100); background: #fdfdfe; }
-        .top-action-bar input[type="number"] { width: 55px; height: 34px; border: 1px solid var(--gray-200); border-radius: 6px; text-align: center; font-weight: 700; font-size: 12px; }
-        .q-item { padding: 30px; border-bottom: 1px solid var(--gray-100); }
-        .q-num { font-size: 16px; font-weight: 900; color: var(--blue); }
-        .q-content { font-size: 15px; line-height: 1.8; white-space: pre-wrap; margin-bottom: 16px; word-break: keep-all; }
-        .q-image { max-width: 100%; margin: 15px 0; border-radius: 8px; display: block; border: 1px solid var(--gray-100); }
-        .q-choices { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 20px; }
-        .choice-row { display: flex; gap: 10px; font-size: 14.5px; }
-        .choice-num { font-weight: 700; color: var(--gray-500); min-width: 24px; }
+        .auto-range-bar { padding: 12px 20px; border-bottom: 1px solid var(--gray-100); background: #fdfdfe; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+        .range-group { display: flex; align-items: center; gap: 6px; }
+        .range-group label { font-size: 11px; font-weight: 800; color: var(--gray-500); }
+        .range-select { height: 32px; border: 1px solid var(--gray-200); border-radius: 6px; font-size: 11px; font-weight: 700; background: white; max-width: 130px; }
+        .auto-count-input { width: 48px; height: 32px; border: 1px solid var(--gray-200); border-radius: 6px; text-align: center; font-weight: 700; font-size: 12px; }
 
-        .btn-add-q { height: 34px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--gray-200); background: white; font-size: 11.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; }
-        .btn-add-q:hover { background: var(--blue-soft); border-color: var(--blue); }
-        .btn-add-q.in-cart { background: var(--blue); border-color: var(--blue); color: white; }
-        
-        /* Right: Cart */
+        .q-item { padding: 30px; border-bottom: 1px solid var(--gray-100); }
+        .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .q-num { font-size: 16px; font-weight: 900; color: var(--blue); }
+        .q-content { font-size: 15px; line-height: 1.8; white-space: pre-wrap; word-break: keep-all; }
+        .q-image { max-width: 100%; margin: 15px 0; border-radius: 8px; display: block; border: 1px solid var(--gray-100); }
+        .q-choices { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 18px; }
+        .choice-row { display: flex; gap: 10px; font-size: 14px; }
+        .choice-num { font-weight: 700; color: var(--gray-500); min-width: 24px; }
+        .unit-group-header { padding: 12px 20px; background: var(--gray-50); border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+        .btn-add-q { height: 34px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--gray-200); background: white; font-size: 11.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .btn-add-q.in-cart { background: var(--blue); color: white; border-color: var(--blue); }
+
         .panel-cart { width: 340px; flex-shrink: 0; border-right: none; }
         .cart-item { padding: 12px; border: 1px solid var(--gray-100); border-radius: 10px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; background: white; }
-        .cart-info { flex: 1; min-width: 0; }
-        .cart-q-text { font-size: 12px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 2px; }
-        .cart-q-sub { font-size: 10px; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .cart-q-text { font-size: 12px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .cart-footer { padding: 20px; border-top: 1px solid var(--gray-100); background: white; position: sticky; bottom: 0; }
         .btn-main { width: 100%; height: 52px; border: none; border-radius: var(--radius-md); background: var(--blue); color: white; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .status-label { font-size: 11px; font-weight: 800; color: var(--blue); margin-left: auto; }
+
         @media (max-width: 900px) {
             .mixer-container { flex-direction: column; height: auto; }
             .panel { width: 100%; height: auto; border-right: none; }
-            .panel-papers { max-height: 400px; }
+            .panel-papers { max-height: 450px; }
+            .exam-card-actions { display: flex; }
             .panel-cart { position: sticky; bottom: 0; z-index: 900; border-top: 1px solid var(--gray-200); box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
         }
     </style>
@@ -116,173 +109,103 @@
 </header>
 
 <div class="mixer-container">
-    <div class="panel panel-papers" id="panel-exams">
+    <div class="panel panel-papers">
         <div class="filter-area">
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="paperSearch" placeholder="통합 검색...">
-            </div>
+            <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="paperSearch" placeholder="통합 검색..."></div>
             <div class="filter-row">
                 <select id="gradeFilter" class="form-select">
                     <option value="">전체 학년</option>
-                    <option value="고3">고3</option>
-                    <option value="고2">고2</option>
-                    <option value="고1">고1</option>
-                    <option value="중3">중3</option>
-                    <option value="중2">중2</option>
-                    <option value="중1">중1</option>
+                    <option value="고3">고3</option><option value="고2">고2</option><option value="고1">고1</option>
+                    <option value="중3">중3</option><option value="중2">중2</option><option value="중1">중1</option>
                 </select>
-                <select id="courseFilter" class="form-select">
-                    <option value="">전체 과목</option>
-                </select>
+                <select id="courseFilter" class="form-select"><option value="">전체 과목</option></select>
             </div>
+            <div class="filter-row"><select id="standardUnitFilter" class="form-select"><option value="">전체 단원</option></select></div>
             <div class="filter-row">
-                <select id="standardUnitFilter" class="form-select">
-                    <option value="">전체 단원</option>
-                </select>
-            </div>
-            <div class="filter-row">
-                <select id="startUnitFilter" class="form-select">
-                    <option value="">시작 단원</option>
-                </select>
-                <select id="endUnitFilter" class="form-select">
-                    <option value="">끝 단원</option>
-                </select>
+                <select id="startUnitFilter" class="form-select"><option value="">시작 단원</option></select>
+                <select id="endUnitFilter" class="form-select"><option value="">끝 단원</option></select>
             </div>
         </div>
-
         <div class="exam-bulk-bar">
-            <div class="exam-bulk-top">
-                <span>선택 시험지 <span id="selected-exam-count">0</span>개</span>
-                <span id="selected-exam-meta">pool 미구성</span>
-            </div>
+            <div class="exam-bulk-top"><span>선택 시험지 <span id="selected-exam-count">0</span>개</span><span id="selected-exam-meta">pool 미구성</span></div>
             <div class="exam-bulk-actions">
-                <button class="panel-action" type="button" onclick="selectFilteredExams()">필터 전체 선택</button>
-                <button class="panel-action" type="button" onclick="clearSelectedExams()">선택 해제</button>
+                <button class="panel-action" type="button" onclick="selectFilteredExams()">전체 선택</button>
+                <button class="panel-action" type="button" onclick="clearSelectedExams()">해제</button>
                 <button class="panel-action primary" type="button" onclick="loadSelectedExamPool()">pool 로드</button>
             </div>
         </div>
-
         <div class="panel-body" id="paper-list"></div>
     </div>
 
     <div class="panel panel-questions">
-        <div class="top-action-bar">
-            <select id="poolModeSelect" class="form-select">
-                <option value="filtered">검색 리스트 전체</option>
-                <option value="current">현재 열린 시험지</option>
-            </select>
-            <select id="levelBalanceMode" class="form-select" style="width:auto;">
-                <option value="balanced">난이도 균형</option>
-                <option value="low">하 중심</option>
-                <option value="mid">중 중심</option>
-                <option value="high">상 중심</option>
-            </select>
-            <input id="autoCountInput" type="number" min="1" max="100" value="20">
-            <button id="autoPickBtn" class="btn-add-q" onclick="handleAutoPick('append')"><i class="fa-solid fa-magic"></i>분산 추출</button>
-            <button id="autoReplaceBtn" class="btn-add-q" onclick="handleAutoPick('replace')"><i class="fa-solid fa-rotate"></i>교체</button>
-            <button id="addUnitAllBtn" class="btn-add-q" onclick="addCurrentUnitAll()">과목/단원 전체담기</button>
-            <div id="poolStatusLabel" class="status-label">준비됨</div>
+        <div class="auto-range-bar">
+            <div class="range-group"><label>범위</label><select id="auto-start-unit" class="range-select"><option value="">시작 단원</option></select></div>
+            <div class="range-group"><select id="auto-end-unit" class="range-select"><option value="">끝 단원</option></select></div>
+            <div class="range-group"><label>난이도</label><select id="levelBalanceMode" class="range-select" style="width:70px;"><option value="balanced">균형</option><option value="low">하</option><option value="mid">중</option><option value="high">상</option></select></div>
+            <div class="range-group"><input id="autoCountInput" class="auto-count-input" type="number" value="20"></div>
+            <button class="btn-add-q" onclick="handleAutoPick('append')"><i class="fa-solid fa-magic"></i>추가</button>
+            <button class="btn-add-q" onclick="handleAutoPick('replace')"><i class="fa-solid fa-rotate"></i>교체</button>
+            <div id="poolStatusLabel" class="status-label" style="font-size:10.5px; font-weight:800; color:var(--blue);">준비됨</div>
         </div>
-        
         <div class="panel-header">
-            <div>
-                <span id="q-panel-title" class="panel-title">문항 목록</span> 
-                <span id="q-count-info" class="panel-subtle" style="font-size:11px; color:var(--gray-500); margin-left:8px;">시험지 또는 선택 pool을 불러와 주세요.</span>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span id="q-panel-title" class="panel-title">문항 목록</span>
+                <span id="q-count-info" class="panel-subtle" style="font-size:11px; color:var(--gray-500);">시험지를 선택하세요.</span>
             </div>
-            <div class="panel-tools q-tools-stack" style="display:flex; align-items:center; gap:10px;">
-                <span id="q-panel-meta" style="font-size:11px; color:var(--gray-500); font-weight:800;"></span>
-                <select id="source-mode" class="form-select" style="width:auto; height:32px;" onchange="handleSourceModeChange()">
-                    <option value="activeExam">현재 시험지</option>
-                    <option value="selectedExams">선택 시험지 pool</option>
-                </select>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <select id="source-mode" class="form-select" style="width:auto; height:32px;" onchange="handleSourceModeChange()"><option value="activeExam">현재 시험지</option><option value="selectedExams">선택 pool</option></select>
+                <select id="q-view-mode" class="form-select" style="width:auto; height:32px; font-size:11px;" onchange="renderQuestionList()"><option value="individual">개별</option><option value="unit">단원별</option></select>
+                <select id="q-standard-filter" class="form-select" style="width:auto; height:32px; font-size:11px; max-width:130px;" onchange="renderQuestionList()"><option value="">전체 표준단원</option></select>
+                <button id="add-standard-btn" class="btn-add-q" style="height:32px;" onclick="addCurrentStandardUnit()">필터담기</button>
+                <button id="addUnitAllBtn" class="btn-add-q" style="height:32px;" onclick="addCurrentUnitAll()">전체담기</button>
             </div>
         </div>
-        
-        <div class="panel-body" id="question-list">
-            <div class="empty-box"><p>왼쪽에서 시험지를 선택하세요.</p></div>
-        </div>
+        <div class="panel-body" id="question-list"></div>
     </div>
 
     <div class="panel panel-cart">
-        <div class="panel-header">
-            <span class="panel-title">출제 카트</span>
-            <span id="cart-count" style="font-weight:900; color:var(--blue); background: var(--blue-soft); padding: 2px 8px; border-radius: 99px;">0</span>
-        </div>
+        <div class="panel-header"><span class="panel-title">출제 카트</span><span id="cart-count" style="font-weight:900; color:var(--blue); background: var(--blue-soft); padding: 2px 8px; border-radius: 99px;">0</span></div>
         <div class="panel-body" id="cart-items"></div>
         <div class="cart-footer">
-            <select id="print-qpp" class="form-select" style="height:40px; margin-bottom:10px;">
-                <option value="4">페이지당 4문항</option>
-                <option value="6">페이지당 6문항</option>
-                <option value="1">페이지당 1문항</option>
-            </select>
-            <button class="btn-main" onclick="openMixed()"><i class="fa-solid fa-print"></i>시험지 생성하기</button>
+            <select id="print-qpp" class="form-select" style="height:40px; margin-bottom:10px;"><option value="4">4문항/P</option><option value="6">6문항/P</option><option value="1">1문항/P</option></select>
+            <button class="btn-main" onclick="openMixed()">시험지 생성</button>
         </div>
     </div>
 </div>
 
 <script>
-// [인덱스 데이터 정규화 레이어 (Normalization Functions)]
-function compactText(value) { return String(value || '').replace(/\s+/g, '').trim(); }
+function isMobileMixer() { return window.innerWidth <= 900; }
+function compactText(v) { return String(v || '').replace(/\s+/g, '').trim(); }
 
-function normalizeContentType(value) {
-    const raw = String(value || '').trim();
-    const compact = compactText(raw);
-    if (!compact) return '';
-    if (compact.includes('단원평가')) return '단원평가';
-    if (compact.includes('기출')) return '기출';
-    if (compact.includes('유형')) return '유형';
-    if (compact.includes('쪽지')) return '쪽지';
-    return raw;
+function normalizeGrade(v) {
+  const c = compactText(v);
+  if (['고1','고등1','고등학교1학년'].includes(c)) return '고1';
+  if (['고2','고등2','고등학교2학년'].includes(c)) return '고2';
+  if (['고3','고등3','고등학교3학년'].includes(c)) return '고3';
+  if (['중1','중등1','중학교1학년'].includes(c)) return '중1';
+  if (['중2','중등2','중학교2학년'].includes(c)) return '중2';
+  if (['중3','중등3','중학교3학년'].includes(c)) return '중3';
+  return String(v || '').trim();
 }
-
-function normalizeGrade(value) {
-    const compact = compactText(value);
-    if (compact === '고1' || compact === '고등1' || compact === '고등학교1학년') return '고1';
-    if (compact === '고2' || compact === '고등2' || compact === '고등학교2학년') return '고2';
-    if (compact === '고3' || compact === '고등3' || compact === '고등학교3학년') return '고3';
-    if (compact === '중1' || compact === '중등1' || compact === '중학교1학년') return '중1';
-    if (compact === '중2' || compact === '중등2' || compact === '중학교2학년') return '중2';
-    if (compact === '중3' || compact === '중등3' || compact === '중학교3학년') return '중3';
-    return String(value || '').trim();
+function normalizeYear(v) {
+  if (v === '' || v == null) return '';
+  const n = parseInt(String(v).replace(/[^\d]/g, ''), 10);
+  return Number.isFinite(n) ? n : '';
 }
-
-function normalizeSemester(value) {
-    const compact = compactText(value);
-    if (!compact) return '';
-    if (compact === '1' || compact === '1학기') return '1';
-    if (compact === '2' || compact === '2학기') return '2';
-    return String(value || '').trim();
-}
-
-function normalizeExamType(value) {
-    const compact = compactText(value).toLowerCase();
-    if (!compact) return '';
-    if (compact === 'mid' || compact === 'middle' || compact === '중간' || compact === '중간고사') return 'mid';
-    if (compact === 'final' || compact === '기말' || compact === '기말고사') return 'final';
-    return String(value || '').trim();
-}
-
-function normalizeYear(value) {
-    if (value === '' || value == null) return '';
-    const s = String(value).replace(/[^\d]/g, '');
-    if (!s) return '';
-    const n = parseInt(s, 10);
-    return Number.isFinite(n) ? n : '';
-}
-
 function normalizeExamMeta(ex) {
-    const normalized = { ...(ex || {}) };
-    normalized.file = String(ex?.file || '').trim();
-    normalized.school = String(ex?.school || '').trim();
-    normalized.topic = String(ex?.topic || '').trim();
-    normalized.subject = String(ex?.subject || '').trim();
-    normalized.grade = normalizeGrade(ex?.grade);
-    normalized.year = normalizeYear(ex?.year);
-    normalized.semester = normalizeSemester(ex?.semester);
-    normalized.examType = normalizeExamType(ex?.examType);
-    normalized.contentType = normalizeContentType(ex?.contentType);
-    return normalized;
+  const n = { ...(ex || {}) };
+  n.file = String(ex?.file || '').trim();
+  n.school = String(ex?.school || '').trim();
+  n.topic = String(ex?.topic || '').trim();
+  n.grade = normalizeGrade(ex?.grade);
+  n.year = normalizeYear(ex?.year);
+  n.semester = String(ex?.semester || '').includes('1') ? '1' : (String(ex?.semester || '').includes('2') ? '2' : '');
+  n.examType = String(ex?.examType || '').toLowerCase().includes('mid') ? 'mid' : (String(ex?.examType || '').toLowerCase().includes('final') ? 'final' : '');
+  n.contentType = String(ex?.contentType || '기출').trim();
+  n.subject = String(ex?.subject || '').trim();
+  n.primaryStandardCourse = String(ex?.primaryStandardCourse || '').trim();
+  n.courseRanges = Array.isArray(ex?.courseRanges) ? ex.courseRanges : [];
+  return n;
 }
 
 const STANDARD_UNIT_MASTER = {
@@ -293,12 +216,12 @@ const STANDARD_UNIT_MASTER = {
   "공통수학2": [ { key: "H22-C2-01", name: "평면좌표", order: 1 }, { key: "H22-C2-02", name: "직선의 방정식", order: 2 }, { key: "H22-C2-03", name: "원의 방정식", order: 3 }, { key: "H22-C2-04", name: "도형의 이동", order: 4 }, { key: "H22-C2-05", name: "집합", order: 5 }, { key: "H22-C2-06", name: "명제", order: 6 }, { key: "H22-C2-07", name: "함수", order: 7 }, { key: "H22-C2-08", name: "유리함수", order: 8 }, { key: "H22-C2-09", name: "무리함수", order: 9 } ],
   "대수": [ { key: "H22-A-01", name: "지수와 로그", order: 1 }, { key: "H22-A-02", name: "지수함수", order: 2 }, { key: "H22-A-03", name: "로그함수", order: 3 }, { key: "H22-A-04", name: "삼각함수", order: 4 }, { key: "H22-A-05", name: "사인법칙과 코사인법칙", order: 5 }, { key: "H22-A-06", name: "등차수열과 등비수열", order: 6 }, { key: "H22-A-07", name: "수열의 합", order: 7 }, { key: "H22-A-08", name: "수학적 귀납법", order: 8 } ],
   "미적분Ⅰ": [ { key: "H22-M1-01", name: "함수의 극한", order: 1 }, { key: "H22-M1-02", name: "함수의 연속", order: 2 }, { key: "H22-M1-03", name: "미분계수", order: 3 }, { key: "H22-M1-04", name: "도함수", order: 4 }, { key: "H22-M1-05", name: "도함수의 활용", order: 5 }, { key: "H22-M1-06", name: "부정적분", order: 6 }, { key: "H22-M1-07", name: "정적분", order: 7 }, { key: "H22-M1-08", name: "정적분의 활용", order: 8 } ],
-  "미적분Ⅱ": [ { key: "H22-M2-01", name: "수열의 극한", order: 1 }, { key: "H22-M2-02", name: "급수", order: 2 }, { key: "H22-M2-03", name: "지수함수와 로그함수의 미분", order: 3 }, { key: "H22-M2-04", name: "삼각함수의 미분", order: 4 }, { key: "H22-M2-05", name: "여러 가지 미분법", order: 5 }, { key: "H22-M2-06", name: "도함수의 활용", order: 6 }, { key: "H22-M2-07", name: "여러 가지 적분법", order: 7 }, { key: "H22-M2-08", name: "정적분의 활용", order: 8 } ],
   "확률과 통계": [ { key: "H22-PS-01", name: "순열과 조합", order: 1 }, { key: "H22-PS-02", name: "이항정리", order: 2 }, { key: "H22-PS-03", name: "확률의 뜻과 활용", order: 3 }, { key: "H22-PS-04", name: "조건부확률", order: 4 }, { key: "H22-PS-05", name: "확률분포", order: 5 }, { key: "H22-PS-06", name: "통계적 추정", order: 6 } ],
   "기하": [ { key: "H22-GE-01", name: "이차곡선", order: 1 }, { key: "H22-GE-02", name: "이차곡선의 접선", order: 2 }, { key: "H22-GE-03", name: "공간도형", order: 3 }, { key: "H22-GE-04", name: "공간좌표", order: 4 }, { key: "H22-GE-05", name: "벡터의 연산", order: 5 }, { key: "H22-GE-06", name: "벡터의 성분", order: 6 }, { key: "H22-GE-07", name: "벡터의 내적", order: 7 }, { key: "H22-GE-08", name: "도형의 방정식", order: 8 } ],
   "수학(상)": [ { key: "H15-SA-01", name: "다항식의 연산", order: 1 }, { key: "H15-SA-02", name: "항등식과 나머지정리", order: 2 }, { key: "H15-SA-03", name: "인수분해", order: 3 }, { key: "H15-SA-04", name: "복소수", order: 4 }, { key: "H15-SA-05", name: "이차방정식", order: 5 }, { key: "H15-SA-06", name: "이차방정식의 근과 계수", order: 6 }, { key: "H15-SA-07", name: "여러 가지 방정식", order: 7 }, { key: "H15-SA-08", name: "여러 가지 부등식", order: 8 }, { key: "H15-SA-09", name: "평면좌표", order: 9 }, { key: "H15-SA-10", name: "직선의 방정식", order: 10 }, { key: "H15-SA-11", name: "원의 방정식", order: 11 }, { key: "H15-SA-12", name: "도형의 이동", order: 12 } ],
   "수학(하)": [ { key: "H15-SB-01", name: "집합", order: 1 }, { key: "H15-SB-02", name: "명제", order: 2 }, { key: "H15-SB-03", name: "함수", order: 3 }, { key: "H15-SB-04", name: "유리함수", order: 4 }, { key: "H15-SB-05", name: "무리함수", order: 5 }, { key: "H15-SB-06", name: "경우의 수", order: 6 }, { key: "H15-SB-07", name: "순열", order: 7 }, { key: "H15-SB-08", name: "조합", order: 8 } ],
   "수학Ⅰ": [ { key: "H15-M1-01", name: "지수의 뜻과 성질", order: 1 }, { key: "H15-M1-02", name: "로그의 뜻과 성질", order: 2 }, { key: "H15-M1-03", name: "지수함수", order: 3 }, { key: "H15-M1-04", name: "로그함수", order: 4 }, { key: "H15-M1-05", name: "삼각함수의 뜻과 값", order: 5 }, { key: "H15-M1-06", name: "삼각함수의 그래프", order: 6 }, { key: "H15-M1-07", name: "삼각방정식과 삼각부등식", order: 7 }, { key: "H15-M1-08", name: "등차수열", order: 8 }, { key: "H15-M1-09", name: "등비수열", order: 9 }, { key: "H15-M1-10", name: "수열의 합", order: 10 }, { key: "H15-M1-11", name: "수학적 귀납법", order: 11 } ],
+  "미적분Ⅱ": [ { key: "H22-M2-01", name: "수열의 극한", order: 1 }, { key: "H22-M2-02", name: "급수", order: 2 }, { key: "H22-M2-03", name: "지수함수와 로그함수의 미분", order: 3 }, { key: "H22-M2-04", name: "삼각함수의 미분", order: 4 }, { key: "H22-M2-05", name: "여러 가지 미분법", order: 5 }, { key: "H22-M2-06", name: "도함수의 활용", order: 6 }, { key: "H22-M2-07", name: "여러 가지 적분법", order: 7 }, { key: "H22-M2-08", name: "정적분의 활용", order: 8 } ],
   "수학Ⅱ": [ { key: "H15-M2-01", name: "함수의 극한", order: 1 }, { key: "H15-M2-02", name: "함수의 연속", order: 2 }, { key: "H15-M2-03", name: "미분계수", order: 3 }, { key: "H15-M2-04", name: "도함수", order: 4 }, { key: "H15-M2-05", name: "접선의 방정식", order: 5 }, { key: "H15-M2-06", name: "도함수의 활용", order: 6 }, { key: "H15-M2-07", name: "부정적분", order: 7 }, { key: "H15-M2-08", name: "정적분", order: 8 }, { key: "H15-M2-09", name: "적분의 활용", order: 9 } ],
   "미적분": [ { key: "H15-CALC-01", name: "수열의 극한", order: 1 }, { key: "H15-CALC-02", name: "급수", order: 2 }, { key: "H15-CALC-03", name: "지수함수와 로그함수의 미분", order: 3 }, { key: "H15-CALC-04", name: "삼각함수의 미분", order: 4 }, { key: "H15-CALC-05", name: "여러 가지 미분법", order: 5 }, { key: "H15-CALC-06", name: "도함수의 활용", order: 6 }, { key: "H15-CALC-07", name: "여러 가지 적분법", order: 7 }, { key: "H15-CALC-08", name: "정적분의 활용", order: 8 } ],
   "기하와 벡터": [ { key: "H15-GV-01", name: "포물선", order: 1 }, { key: "H15-GV-02", name: "타원", order: 2 }, { key: "H15-GV-03", name: "쌍곡선", order: 3 }, { key: "H15-GV-04", name: "이차곡선과 직선", order: 4 }, { key: "H15-GV-05", name: "벡터의 연산", order: 5 }, { key: "H15-GV-06", name: "평면벡터의 성분과 내적", order: 6 }, { key: "H15-GV-07", name: "직선과 원의 방정식", order: 7 }, { key: "H15-GV-08", name: "공간도형", order: 8 }, { key: "H15-GV-09", name: "공간좌표", order: 9 } ]
@@ -309,15 +232,12 @@ let cart = [];
 let filteredPaperPool = [];
 let currentQuestions = [];
 let currentPaper = null;
-
-// [유틸리티 함수]
-function getQKey(paper, q, fallbackIdx) {
-    const qId = q.id || (fallbackIdx + 1);
-    return `${paper.file}_${qId}`;
-}
+let selectedExamFiles = new Set();
+let loadedExamQuestionMap = {};
+let mergedPool = [];
+let selectedPoolLoading = false;
 
 function getAvailableCoursesByGrade(grade) {
-  if (!grade) return [];
   if (grade === "중1") return ["중1 수학"];
   if (grade === "중2") return ["중2 수학"];
   if (grade === "중3") return ["중3 수학"];
@@ -326,61 +246,106 @@ function getAvailableCoursesByGrade(grade) {
   if (grade === "고3") return ["미적분Ⅱ", "기하", "수학Ⅱ", "미적분", "기하와 벡터"];
   return [];
 }
-
-function getStandardUnitOptionsByCourse(courseName) {
-  return STANDARD_UNIT_MASTER[courseName] || [];
+function getMergedUnitOptionsByGrade(grade) {
+  const courses = getAvailableCoursesByGrade(grade);
+  const merged = [];
+  const seen = new Set();
+  courses.forEach(c => {
+    (STANDARD_UNIT_MASTER[c] || []).forEach(u => {
+      if (!seen.has(u.key)) {
+        merged.push({ ...u, courseName: c });
+        seen.add(u.key);
+      }
+    });
+  });
+  return merged;
 }
-
-function getExamCourseRanges(exam) {
-  return Array.isArray(exam.courseRanges) ? exam.courseRanges : [];
+function inferCourseFromUnitKey(key) {
+  if (!key) return "";
+  for (const c in STANDARD_UNIT_MASTER) {
+    if (STANDARD_UNIT_MASTER[c].some(u => u.key === key)) return c;
+  }
+  return "";
 }
-
-function examMatchesCourse(exam, selectedCourse) {
-  if (!selectedCourse) return true;
-  if (exam.primaryStandardCourse === selectedCourse) return true;
-  return getExamCourseRanges(exam).some(cr => cr.standardCourse === selectedCourse);
-}
-
 function examMatchesUnitRange(exam, selectedCourse, unitKey, startKey, endKey) {
-  if (!selectedCourse) return !unitKey && !startKey && !endKey;
-  const units = getStandardUnitOptionsByCourse(selectedCourse);
+  const effectiveCourse = selectedCourse || inferCourseFromUnitKey(unitKey || startKey || endKey);
+  if (!effectiveCourse) return !unitKey && !startKey && !endKey;
+  const units = STANDARD_UNIT_MASTER[effectiveCourse] || [];
   const unitMap = new Map(units.map(u => [u.key, u]));
-  const targetRange = getExamCourseRanges(exam).find(cr => cr.standardCourse === selectedCourse);
+  const targetRange = (exam.courseRanges || []).find(cr => cr.standardCourse === effectiveCourse);
   if (!targetRange) return false;
-
-  const startOrder = startKey ? (unitMap.get(startKey)?.order ?? Infinity) : -Infinity;
-  const endOrder = endKey ? (unitMap.get(endKey)?.order ?? -Infinity) : Infinity;
+  const sOrder = startKey ? (unitMap.get(startKey)?.order ?? Infinity) : -Infinity;
+  const eOrder = endKey ? (unitMap.get(endKey)?.order ?? -Infinity) : Infinity;
   const examStart = targetRange.rangeStartUnitOrder ?? Infinity;
   const examEnd = targetRange.rangeEndUnitOrder ?? -Infinity;
-
   if (unitKey) {
     const u = unitMap.get(unitKey);
-    if (!u) return false;
-    return examStart <= u.order && u.order <= examEnd;
+    return u && examStart <= u.order && u.order <= examEnd;
   }
-  return examEnd >= startOrder && examStart <= endOrder;
+  return examEnd >= sOrder && examStart <= eOrder;
 }
 
-function inferCourseFromQuestion(q) {
-  const key = q?.standardUnitKey || "";
-  if (key.startsWith("M1-")) return "중1 수학";
-  if (key.startsWith("M2-")) return "중2 수학";
-  if (key.startsWith("M3-")) return "중3 수학";
-  if (key.startsWith("H22-C-")) return "공통수학1";
-  if (key.startsWith("H22-C2-")) return "공통수학2";
-  if (key.startsWith("H22-A-")) return "대수";
-  if (key.startsWith("H22-M1-")) return "미적분Ⅰ";
-  if (key.startsWith("H22-M2-")) return "미적분Ⅱ";
-  if (key.startsWith("H22-PS-")) return "확률과 통계";
-  if (key.startsWith("H22-GE-")) return "기하";
-  if (key.startsWith("H15-SA-")) return "수학(상)";
-  if (key.startsWith("H15-SB-")) return "수학(하)";
-  if (key.startsWith("H15-M1-")) return "수학Ⅰ";
-  if (key.startsWith("H15-M2-")) return "수학Ⅱ";
-  if (key.startsWith("H15-CALC-")) return "미적분";
-  if (key.startsWith("H15-PS-")) return "확률과 통계";
-  if (key.startsWith("H15-GV-")) return "기하와 벡터";
-  return q?.standardCourse || "";
+function updateQuestionPanelMeta() {
+  const mode = document.getElementById('source-mode').value;
+  const titleEl = document.getElementById('q-panel-title');
+  const infoEl = document.getElementById('q-count-info');
+  const filterKey = document.getElementById('q-standard-filter').value;
+
+  const sourceName = mode === 'activeExam'
+    ? (currentPaper ? (currentPaper.school || currentPaper.topic || currentPaper.file.replace('.js','')) : "문항 목록")
+    : "선택 시험지 pool";
+
+  const pool = getQuestionSourcePool();
+  const totalCount = pool.length;
+  const filteredCount = filterKey ? pool.filter(q => q.standardUnitKey === filterKey).length : totalCount;
+
+  titleEl.innerText = sourceName;
+  infoEl.innerText = filterKey
+    ? `필터됨 ${filteredCount} / 전체 ${totalCount}`
+    : (totalCount > 0 ? `${totalCount}개 문항` : "시험지를 선택하세요.");
+
+  renderAutoSummary();
+}
+function renderAutoSummary(customMsg) {
+  const label = document.getElementById('poolStatusLabel');
+  if (customMsg) {
+    label.innerText = customMsg;
+    return;
+  }
+  const mode = document.getElementById('source-mode').value;
+  if (mode === 'activeExam') {
+    label.innerText = currentPaper ? "현재 시험지 기준" : "선택 없음";
+  } else {
+    label.innerText = selectedPoolLoading ? "pool 로딩 중..." : (mergedPool.length > 0 ? `pool 준비됨 (${mergedPool.length})` : "pool 없음");
+  }
+}
+function updateSelectedExamMeta() {
+  document.getElementById('selected-exam-count').textContent = selectedExamFiles.size;
+  const metaEl = document.getElementById('selected-exam-meta');
+  if (selectedExamFiles.size === 0) {
+    metaEl.textContent = 'pool 미구성';
+    return;
+  }
+  if (selectedPoolLoading) {
+    metaEl.textContent = '데이터 로딩 중...';
+    return;
+  }
+  const loadedCount = Array.from(selectedExamFiles).filter(f => loadedExamQuestionMap[f]).length;
+  if (loadedCount === selectedExamFiles.size) {
+    metaEl.textContent = `pool 준비됨 (${loadedCount})`;
+  } else {
+    metaEl.textContent = '선택됨';
+  }
+}
+function clearSelectedExams() {
+  selectedExamFiles.clear();
+  mergedPool = [];
+  selectedPoolLoading = false;
+  document.getElementById('source-mode').value = 'activeExam';
+  refreshPoolDependentUI();
+  renderQuestionList();
+  renderAutoSummary();
+  renderExamList();
 }
 
 function distributedPick(candidates, count) {
@@ -389,17 +354,14 @@ function distributedPick(candidates, count) {
     if (!groups[c._sourceFile]) groups[c._sourceFile] = [];
     groups[c._sourceFile].push(c);
   });
-
   const files = Object.keys(groups).sort(() => Math.random() - 0.5);
   const picked = [];
   let cycle = 0;
-
   while (picked.length < count && files.length > 0) {
     const idx = cycle % files.length;
     const f = files[idx];
     if (groups[f].length > 0) {
-      const pickIndex = Math.floor(Math.random() * groups[f].length);
-      picked.push(groups[f].splice(pickIndex, 1)[0]);
+      picked.push(groups[f].splice(Math.floor(Math.random() * groups[f].length), 1)[0]);
     } else {
       files.splice(idx, 1);
       continue;
@@ -408,347 +370,68 @@ function distributedPick(candidates, count) {
   }
   return picked;
 }
-
-// [난이도 밸런스 추출 헬퍼 함수]
-function normalizeLevel(level) {
-  const v = String(level || '').trim();
-  if (v === '하' || v.toLowerCase() === 'low') return '하';
-  if (v === '중' || v.toLowerCase() === 'mid' || v.toLowerCase() === 'medium') return '중';
-  if (v === '상' || v.toLowerCase() === 'high') return '상';
-  return '미분류';
-}
-
-function getLevelModeConfig(mode, totalCount) {
-  if (mode === 'low') return { '하': 0.5, '중': 0.4, '상': 0.1 };
-  if (mode === 'mid') return { '하': 0.2, '중': 0.6, '상': 0.2 };
-  if (mode === 'high') return { '하': 0.1, '중': 0.4, '상': 0.5 };
-  return { '하': 0.3, '중': 0.5, '상': 0.2 };
-}
-
-function calcLevelTargets(totalCount, ratioMap) {
-  const raw = {
-    '하': totalCount * (ratioMap['하'] || 0),
-    '중': totalCount * (ratioMap['중'] || 0),
-    '상': totalCount * (ratioMap['상'] || 0)
-  };
-
-  const base = {
-    '하': Math.floor(raw['하']),
-    '중': Math.floor(raw['중']),
-    '상': Math.floor(raw['상'])
-  };
-
-  let remain = totalCount - (base['하'] + base['중'] + base['상']);
-  const fracOrder = ['하', '중', '상']
-    .map(k => ({ key: k, frac: raw[k] - base[k] }))
-    .sort((a, b) => b.frac - a.frac);
-
-  let idx = 0;
-  while (remain > 0) {
-    base[fracOrder[idx % fracOrder.length].key] += 1;
-    remain--;
-    idx++;
-  }
-  return base;
-}
-
-function groupCandidatesByLevel(candidates) {
-  const groups = { '하': [], '중': [], '상': [], '미분류': [] };
-  candidates.forEach(c => {
-    const lv = normalizeLevel(c.level);
-    if (!groups[lv]) groups[lv] = [];
-    groups[lv].push(c);
-  });
-  return groups;
-}
-
 function pickBalancedByLevel(candidates, totalCount, mode) {
-  const ratioMap = getLevelModeConfig(mode, totalCount);
-  const targets = calcLevelTargets(totalCount, ratioMap);
-  const groups = groupCandidatesByLevel(candidates);
-
-  let picked = [];
-  ['하', '중', '상'].forEach(level => {
-    const need = targets[level] || 0;
-    if (!need) return;
-    const part = distributedPick(groups[level] || [], Math.min(need, (groups[level] || []).length));
-    picked.push(...part);
+  const ratios = mode === 'low' ? [0.5, 0.4, 0.1] : (mode === 'high' ? [0.1, 0.4, 0.5] : [0.3, 0.5, 0.2]);
+  const targets = [
+    Math.floor(totalCount * ratios[0]),
+    Math.floor(totalCount * ratios[1]),
+    totalCount - (Math.floor(totalCount * ratios[0]) + Math.floor(totalCount * ratios[1]))
+  ];
+  const groups = { '하': [], '중': [], '상': [] };
+  candidates.forEach(q => {
+    const lv = q.level === '하' ? '하' : (q.level === '상' ? '상' : '중');
+    groups[lv].push(q);
   });
-
-  if (picked.length < totalCount) {
-    const pickedKeys = new Set(picked.map(x => x._qKey));
-    const remainPool = candidates.filter(c => !pickedKeys.has(c._qKey));
-    const supplement = distributedPick(remainPool, totalCount - picked.length);
-    picked.push(...supplement);
+  let result = [];
+  ['하', '중', '상'].forEach((lv, idx) => {
+    result.push(...distributedPick(groups[lv], targets[idx]));
+  });
+  if (result.length < totalCount) {
+    const pickedKeys = new Set(result.map(x => x._qKey));
+    result.push(...distributedPick(candidates.filter(c => !pickedKeys.has(c._qKey)), totalCount - result.length));
   }
-  return picked.slice(0, totalCount);
+  return result.sort(() => Math.random() - 0.5);
 }
-
-function getLevelSummaryText(items) {
-  const stat = { '하': 0, '중': 0, '상': 0, '미분류': 0 };
-  items.forEach(item => {
-    const lv = normalizeLevel(item.level);
-    stat[lv] = (stat[lv] || 0) + 1;
-  });
-  return `하 ${stat['하']} / 중 ${stat['중']} / 상 ${stat['상']}${stat['미분류'] ? ` / 미분류 ${stat['미분류']}` : ''}`;
-}
-
-// [Card UI Formatter for Mixer]
-function examTypeLabel(examType) {
-  const v = String(examType || '').trim().toLowerCase();
-  if (v === 'mid' || v === '중간' || v === '중간고사') return '중간';
-  if (v === 'final' || v === '기말' || v === '기말고사') return '기말';
-  return examType || '';
-}
-
-function buildMixerMetaBadge(text, variant = '') {
-  if (!text) return '';
-  return `<span class="meta-badge ${variant}">${text}</span>`;
+async function handleAutoPick(mode) {
+  const pool = getQuestionSourcePool();
+  const startKey = document.getElementById('auto-start-unit').value;
+  const endKey = document.getElementById('auto-end-unit').value;
+  const levelMode = document.getElementById('levelBalanceMode').value;
+  const count = parseInt(document.getElementById('autoCountInput').value, 10);
+  let candidates = pool;
+  if (startKey || endKey) {
+    const unitMap = new Map();
+    pool.forEach(q => {
+      if (q.standardUnitKey) unitMap.set(q.standardUnitKey, q.standardUnitOrder || 999);
+    });
+    const sOrder = startKey ? (unitMap.get(startKey) ?? -Infinity) : -Infinity;
+    const eOrder = endKey ? (unitMap.get(endKey) ?? Infinity) : Infinity;
+    candidates = pool.filter(q => {
+      const o = unitMap.get(q.standardUnitKey);
+      return o !== undefined && o >= sOrder && o <= eOrder;
+    });
+  }
+  if (!candidates.length) return alert('추출 대상 문항이 없습니다.');
+  const picked = pickBalancedByLevel(candidates, count, levelMode);
+  if (mode === 'replace') cart = picked;
+  else cart.push(...picked);
+  updateCart();
+  renderQuestionList();
+  renderAutoSummary(`추출 완료: ${picked.length}문항`);
 }
 
 function buildMixerExamCardInfo(ex) {
-  const fileName = String(ex.file || '파일정보없음').replace(/\.js$/i, '');
-  const semester = ex.semester ? `${ex.semester}학기` : '';
-  const examName = examTypeLabel(ex.examType);
-  const contentTypeLabel = ex.contentType || '기출';
-  const isSheet = contentTypeLabel === '기출';
-
-  let title = '';
-  let subtitle = '';
-  let metaHTML = '';
-
-  if (isSheet) {
-    title = ex.school || fileName;
-    subtitle = [
-      ex.year ? `${ex.year}년` : '',
-      semester,
-      examName,
-      ex.subject || '',
-      contentTypeLabel
-    ].filter(Boolean).join(' · ');
-
-    metaHTML = [
-      buildMixerMetaBadge(ex.grade || ''),
-      buildMixerMetaBadge(ex.subject || '', 'primary'),
-      buildMixerMetaBadge(`${semester} ${examName}`.trim(), 'primary')
-    ].filter(Boolean).join('');
-  } else {
-    title = ex.topic || ex.school || fileName;
-    subtitle = [
-      ex.grade || '',
-      contentTypeLabel,
-      ex.subject || ''
-    ].filter(Boolean).join(' · ');
-
-    if (!subtitle) subtitle = contentTypeLabel;
-
-    metaHTML = [
-      buildMixerMetaBadge(ex.grade || ''),
-      buildMixerMetaBadge(contentTypeLabel, 'green'),
-      buildMixerMetaBadge(ex.subject || ''),
-      (ex.school && ex.school !== 'AP수학') ? buildMixerMetaBadge(ex.school) : ''
-    ].filter(Boolean).join('');
-  }
-
+  const contentType = ex.contentType || '기출';
+  const fileName = ex.file || '';
   return {
-    title,
-    subtitle: subtitle || '상세 정보 없음',
-    metaHTML,
+    title: ex.school || ex.topic || fileName.replace('.js', ''),
+    subtitle: [ex.year ? `${ex.year}년` : '', ex.semester ? `${ex.semester}학기` : '', ex.subject].filter(Boolean).join(' · ') || contentType,
+    metaHTML: `<span class="meta-badge">${ex.grade}</span><span class="meta-badge primary">${ex.subject || ''}</span><span class="meta-badge ${contentType === '기출' ? 'primary' : 'green'}">${contentType}</span>`,
     fileName
   };
 }
-
-// [Pool Functions]
-let selectedExamFiles = new Set();
-let loadedExamQuestionMap = {};
-let mergedPool = [];
-let selectedPoolLoading = false;
-let lastSelectedPoolKey = '';
-
-function getSelectedExamList() {
-  return engineDB.exams.filter(ex => selectedExamFiles.has(ex.file));
-}
-
-function updateSelectedExamMeta() {
-  const countEl = document.getElementById('selected-exam-count');
-  const metaEl = document.getElementById('selected-exam-meta');
-  if (!countEl || !metaEl) return;
-
-  const selected = getSelectedExamList();
-  countEl.textContent = String(selected.length);
-
-  if (!selected.length) {
-    metaEl.textContent = 'pool 미구성';
-    return;
-  }
-
-  const loadedCount = selected.filter(ex => Array.isArray(loadedExamQuestionMap[ex.file])).length;
-  metaEl.textContent = loadedCount === selected.length
-    ? `pool 준비됨 · ${selected.length}개 시험지`
-    : `선택됨 · ${selected.length}개 시험지`;
-}
-
-function toggleExamSelection(file, checked) {
-  if (checked) selectedExamFiles.add(file);
-  else selectedExamFiles.delete(file);
-  updateSelectedExamMeta();
-  renderExamList();
-}
-
-function clearSelectedExams() {
-  selectedExamFiles.clear();
-  mergedPool = [];
-  lastSelectedPoolKey = '';
-  updateSelectedExamMeta();
-  renderExamList();
-  handleSourceModeChange();
-}
-
-function selectFilteredExams() {
-  filteredPaperPool.forEach(ex => selectedExamFiles.add(ex.file));
-  updateSelectedExamMeta();
-  renderExamList();
-}
-
-async function loadSelectedExamPool() {
-  const selected = getSelectedExamList();
-  if (!selected.length) {
-    alert('선택한 시험지가 없습니다.');
-    return;
-  }
-
-  selectedPoolLoading = true;
-  updateSelectedExamMeta();
-
-  for (const ex of selected) {
-    if (!Array.isArray(loadedExamQuestionMap[ex.file])) {
-      try {
-        loadedExamQuestionMap[ex.file] = await loadQuestionData(ex.file);
-      } catch (e) {
-        loadedExamQuestionMap[ex.file] = [];
-      }
-    }
-  }
-
-  mergedPool = [];
-  selected.forEach(ex => {
-    const qs = loadedExamQuestionMap[ex.file] || [];
-    qs.forEach((q, i) => {
-      mergedPool.push({
-        ...q,
-        _sourceTitle: ex.school || ex.topic,
-        _sourceFile: ex.file,
-        _qKey: `${ex.file}_${q.id || (i + 1)}`
-      });
-    });
-  });
-
-  lastSelectedPoolKey = selected.map(ex => ex.file).sort().join('|');
-  selectedPoolLoading = false;
-  updateSelectedExamMeta();
-
-  const sourceMode = document.getElementById('source-mode');
-  if (sourceMode) sourceMode.value = 'selectedExams';
-  handleSourceModeChange();
-}
-
-function handleSourceModeChange() {
-  renderQuestionList();
-  renderActionBar();
-}
-
-function getQuestionSourcePool() {
-  const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
-  if (sourceMode === 'selectedExams') return mergedPool;
-  if (!currentPaper) return [];
-  return currentQuestions.map((q, i) => ({
-    ...q,
-    _sourceTitle: currentPaper.school || currentPaper.topic,
-    _sourceFile: currentPaper.file,
-    _qKey: `${currentPaper.file}_${q.id || (i + 1)}`
-  }));
-}
-
-// [초기화 및 로드]
-async function loadDB() {
-  return new Promise(res => {
-    const s = document.createElement('script');
-    s.src = 'db.js?v=' + Date.now();
-    s.onload = () => {
-      const rawDB = window.mainDB || { exams: [] };
-      engineDB = { exams: rawDB.exams.map(normalizeExamMeta).filter(e => e.file) };
-      res();
-    };
-    s.onerror = () => {
-      engineDB = { exams: [] };
-      res();
-    };
-    document.body.appendChild(s);
-  });
-}
-
-async function init() {
-    await loadDB();
-    setupEvents();
-    populateCourseFilter();
-    populateStandardUnitFilter();
-    syncStartEndUnitFilters();
-    renderExamList();
-}
-
-function setupEvents() {
-  document.getElementById('gradeFilter').onchange = () => {
-    populateCourseFilter(); populateStandardUnitFilter(); syncStartEndUnitFilters(); renderExamList();
-  };
-  document.getElementById('courseFilter').onchange = () => {
-    populateStandardUnitFilter(); syncStartEndUnitFilters(); renderExamList();
-  };
-  ['standardUnitFilter', 'startUnitFilter', 'endUnitFilter'].forEach(id => {
-    document.getElementById(id).onchange = renderExamList;
-  });
-  document.getElementById('paperSearch').oninput = renderExamList;
-}
-
-// [Filter Updates]
-function populateCourseFilter() {
-  const grade = document.getElementById('gradeFilter').value;
-  const courseSelect = document.getElementById('courseFilter');
-  const courses = getAvailableCoursesByGrade(grade);
-  courseSelect.innerHTML = '<option value="">전체 과목</option>';
-  courses.forEach(course => {
-    const opt = document.createElement('option');
-    opt.value = course; opt.textContent = course;
-    courseSelect.appendChild(opt);
-  });
-}
-
-function populateStandardUnitFilter() {
-  const course = document.getElementById('courseFilter').value;
-  const select = document.getElementById('standardUnitFilter');
-  const options = getStandardUnitOptionsByCourse(course);
-  select.innerHTML = '<option value="">전체 단원</option>';
-  options.forEach(u => {
-    const opt = document.createElement('option');
-    opt.value = u.key; opt.textContent = u.name;
-    select.appendChild(opt);
-  });
-}
-
-function syncStartEndUnitFilters() {
-  const course = document.getElementById('courseFilter').value;
-  const units = getStandardUnitOptionsByCourse(course);
-  const s = document.getElementById('startUnitFilter');
-  const e = document.getElementById('endUnitFilter');
-  s.innerHTML = '<option value="">시작 단원</option>';
-  e.innerHTML = '<option value="">끝 단원</option>';
-  units.forEach(u => {
-    const o1 = document.createElement('option'); o1.value = u.key; o1.textContent = u.name; s.appendChild(o1);
-    const o2 = document.createElement('option'); o2.value = u.key; o2.textContent = u.name; e.appendChild(o2);
-  });
-}
-
-// [Render Exam List]
 function renderExamList() {
+  const isMobile = isMobileMixer();
   const keyword = document.getElementById('paperSearch').value.toLowerCase();
   const grade = document.getElementById('gradeFilter').value;
   const course = document.getElementById('courseFilter').value;
@@ -757,20 +440,11 @@ function renderExamList() {
   const endKey = document.getElementById('endUnitFilter').value;
 
   filteredPaperPool = engineDB.exams.filter(ex => {
-    const searchBase = [
-      ex.school || '',
-      ex.topic || '',
-      ex.file || '',
-      ex.subject || '',
-      ex.primaryStandardCourse || '',
-      ...(Array.isArray(ex.courseRanges) ? ex.courseRanges.map(cr => cr.standardCourse || '') : [])
-    ].join(' ').toLowerCase();
-
-    const matchK = !keyword || searchBase.includes(keyword);
-    const matchG = !grade || ex.grade === grade;
-    const matchC = examMatchesCourse(ex, course);
-    const matchU = examMatchesUnitRange(ex, course, unitKey, startKey, endKey);
-    return matchK && matchG && matchC && matchU;
+    const searchBase = `${ex.school || ''} ${ex.topic || ''} ${ex.file || ''} ${ex.subject || ''}`.toLowerCase();
+    return (!keyword || searchBase.includes(keyword)) &&
+           (!grade || ex.grade === grade) &&
+           (!course || (ex.primaryStandardCourse === course || (ex.courseRanges || []).some(cr => cr.standardCourse === course))) &&
+           examMatchesUnitRange(ex, course, unitKey, startKey, endKey);
   });
 
   const container = document.getElementById('paper-list');
@@ -779,12 +453,14 @@ function renderExamList() {
   filteredPaperPool.forEach(ex => {
     const checked = selectedExamFiles.has(ex.file);
     const info = buildMixerExamCardInfo(ex);
-
     const div = document.createElement('div');
     div.className = `paper-item ${currentPaper?.file === ex.file ? 'active' : ''} ${checked ? 'selected' : ''}`;
+
+    if (!isMobile) div.onclick = () => selectPaper(ex);
+
     div.innerHTML = `
       <div class="exam-item-head">
-        <input type="checkbox" class="exam-check" ${checked ? 'checked' : ''} onclick="event.stopPropagation(); toggleExamSelection('${ex.file}', this.checked)">
+        <div class="exam-check-wrap"><input type="checkbox" class="exam-check" ${checked ? 'checked' : ''}></div>
         <div class="exam-main">
           <div class="paper-name">${info.title}</div>
           <div class="paper-sub">${info.subtitle}</div>
@@ -792,300 +468,339 @@ function renderExamList() {
           <div class="paper-file-name">${info.fileName}</div>
         </div>
       </div>
+      <div class="exam-card-actions">
+        <button class="exam-card-btn preview"><i class="fa-solid fa-eye"></i>미리보기</button>
+        <button class="exam-card-btn select ${selectedExamFiles.has(ex.file) ? 'active' : ''}">
+          <i class="fa-solid ${selectedExamFiles.has(ex.file) ? 'fa-check' : 'fa-plus'}"></i>${selectedExamFiles.has(ex.file) ? '해제' : '선택'}
+        </button>
+      </div>
     `;
-    div.onclick = () => selectPaper(ex);
+
+    const checkWrap = div.querySelector('.exam-check-wrap');
+    const checkbox = div.querySelector('.exam-check');
+    const previewBtn = div.querySelector('.preview');
+    const selectBtn = div.querySelector('.select');
+
+    checkWrap.onclick = (e) => {
+      e.stopPropagation();
+      toggleExamSelection(ex.file, !selectedExamFiles.has(ex.file));
+    };
+    checkbox.onclick = (e) => {
+      e.stopPropagation();
+      toggleExamSelection(ex.file, e.target.checked);
+    };
+    if (previewBtn) previewBtn.onclick = (e) => {
+      e.stopPropagation();
+      selectPaper(ex);
+    };
+    if (selectBtn) selectBtn.onclick = (e) => {
+      e.stopPropagation();
+      toggleExamSelection(ex.file, !selectedExamFiles.has(ex.file));
+    };
+
     container.appendChild(div);
   });
 
   updateSelectedExamMeta();
-  renderActionBar();
 }
 
 async function selectPaper(ex) {
-    currentPaper = ex; renderExamList();
-    const sourceMode = document.getElementById('source-mode');
-    if (sourceMode) sourceMode.value = 'activeExam';
+  currentPaper = ex;
+  renderExamList();
+  const container = document.getElementById('question-list');
+  container.innerHTML = '<div class="empty-box"><i class="fa-solid fa-spinner fa-spin"></i><p>로딩 중...</p></div>';
+  try {
+    const qs = await loadQuestionData(ex.file);
+    ex._loadedQuestions = qs;
+    currentQuestions = qs;
+    refreshPoolDependentUI();
+    renderQuestionList();
+  } catch (e) {
+    container.innerHTML = '<p>로드 실패</p>';
+  }
+}
+function selectFilteredExams() {
+  filteredPaperPool.forEach(ex => selectedExamFiles.add(ex.file));
+  updateSelectedExamMeta();
+  renderExamList();
+}
+function toggleExamSelection(file, checked) {
+  if (checked) selectedExamFiles.add(file);
+  else selectedExamFiles.delete(file);
+  updateSelectedExamMeta();
+  renderExamList();
+}
 
-    const container = document.getElementById('question-list');
-    container.innerHTML = '<div class="empty-box"><i class="fa-solid fa-spinner fa-spin"></i><p>로딩 중...</p></div>';
-    
-    try {
-        const qs = await loadQuestionData(ex.file);
-        ex._loadedQuestions = qs; currentQuestions = qs;
-        handleSourceModeChange();
-    } catch (e) { container.innerHTML = '<p>로드 실패</p>'; }
+async function loadSelectedExamPool() {
+  const selected = Array.from(selectedExamFiles);
+  if (!selected.length) return alert('선택한 시험지가 없습니다.');
+  selectedPoolLoading = true;
+  updateSelectedExamMeta();
+  renderAutoSummary();
+
+  for (const file of selected) {
+    if (!loadedExamQuestionMap[file]) {
+      try {
+        loadedExamQuestionMap[file] = await loadQuestionData(file);
+      } catch (e) {
+        loadedExamQuestionMap[file] = [];
+      }
+    }
+  }
+
+  mergedPool = [];
+  selected.forEach(file => {
+    const ex = engineDB.exams.find(e => e.file === file);
+    (loadedExamQuestionMap[file] || []).forEach((q, i) => {
+      mergedPool.push({
+        ...q,
+        _sourceTitle: ex?.school || ex?.topic || 'Pool',
+        _sourceFile: file,
+        _qKey: `${file}_${q.id || (i + 1)}`
+      });
+    });
+  });
+
+  selectedPoolLoading = false;
+  updateSelectedExamMeta();
+  document.getElementById('source-mode').value = 'selectedExams';
+  handleSourceModeChange();
+}
+function handleSourceModeChange() {
+  const mode = document.getElementById('source-mode').value;
+  if (mode === 'selectedExams' && mergedPool.length === 0) {
+    if (!selectedPoolLoading) {
+      alert("로드된 pool이 없습니다. 'pool 로드'를 먼저 진행하세요.");
+      document.getElementById('source-mode').value = 'activeExam';
+      refreshPoolDependentUI();
+      renderQuestionList();
+      return;
+    }
+  }
+  refreshPoolDependentUI();
+  renderQuestionList();
+}
+
+function refreshPoolDependentUI() {
+  const pool = getQuestionSourcePool();
+  const start = document.getElementById('auto-start-unit');
+  const end = document.getElementById('auto-end-unit');
+  const qFilter = document.getElementById('q-standard-filter');
+  const unitMap = new Map();
+
+  pool.forEach(q => {
+    if (q.standardUnitKey && !unitMap.has(q.standardUnitKey)) {
+      unitMap.set(q.standardUnitKey, {
+        key: q.standardUnitKey,
+        name: q.standardUnit,
+        order: q.standardUnitOrder || 999
+      });
+    }
+  });
+
+  const sortedUnits = Array.from(unitMap.values()).sort((a, b) => a.order - b.order);
+
+  [start, end, qFilter].forEach(s => {
+    const isFilter = s.id === 'q-standard-filter';
+    s.innerHTML = `<option value="">${isFilter ? '전체 표준단원' : (s.id === 'auto-start-unit' ? '시작' : '끝')}</option>`;
+    sortedUnits.forEach(u => {
+      const o = document.createElement('option');
+      o.value = u.key;
+      o.textContent = u.name;
+      s.appendChild(o);
+    });
+  });
+
+  updateQuestionPanelMeta();
+}
+function renderQuestionList() {
+  const pool = getQuestionSourcePool();
+  const viewMode = document.getElementById('q-view-mode').value;
+  const standardFilter = document.getElementById('q-standard-filter').value;
+  const container = document.getElementById('question-list');
+  container.innerHTML = '';
+
+  const displayPool = standardFilter ? pool.filter(q => q.standardUnitKey === standardFilter) : pool;
+
+  if (!pool.length) {
+    container.innerHTML = '<div class="empty-box"><p>문항 데이터가 없습니다.</p></div>';
+    updateQuestionPanelMeta();
+    return;
+  }
+
+  if (viewMode === 'unit') {
+    const groups = {};
+    displayPool.forEach(q => {
+      const uKey = q.standardUnitKey || '미분류';
+      if (!groups[uKey]) groups[uKey] = { name: q.standardUnit || '단원 미지정', questions: [] };
+      groups[uKey].questions.push(q);
+    });
+
+    Object.keys(groups).forEach(uKey => {
+      const g = groups[uKey];
+      const section = document.createElement('div');
+      section.innerHTML = `<div class="unit-group-header"><span class="unit-group-title">${g.name} (${g.questions.length})</span><button class="btn-add-q" onclick="addUnitGroup('${uKey}')">전체담기</button></div>`;
+      g.questions.forEach((q, i) => section.appendChild(createQuestionItem(q, i)));
+      container.appendChild(section);
+    });
+  } else {
+    displayPool.forEach((q, i) => container.appendChild(createQuestionItem(q, i)));
+  }
+
+  updateQuestionPanelMeta();
+  if (window.MathJax) MathJax.typesetPromise([container]);
+}
+function createQuestionItem(q, i) {
+  const inCart = cart.some(c => c._qKey === q._qKey);
+  const div = document.createElement('div');
+  div.className = 'q-item';
+  div.innerHTML = `
+    <div class="q-header">
+      <span class="q-num"><small style="display:block; font-size:10px; color:var(--gray-500);">${q._sourceTitle}</small>${q.id || (i + 1)}번</span>
+      <button class="btn-add-q ${inCart ? 'in-cart' : ''}" onclick="toggleCartPoolItem('${q._qKey}')"><i class="fa-solid ${inCart ? 'fa-check' : 'fa-plus'}"></i>${inCart ? '담김' : '담기'}</button>
+    </div>
+    <div class="q-content">${q.content || ''}</div>
+    ${q.image ? `<img src="${typeof q.image === 'string' ? q.image : `assets/images/${q._sourceFile.replace('.js','')}/q${q.id || (i + 1)}.png`}" class="q-image" onerror="this.style.display='none'">` : ''}
+    ${q.choices ? `<div class="q-choices">${q.choices.map((c, ci) => `<div class="choice-row"><span class="choice-num">(${ci + 1})</span><span>${c}</span></div>`).join('')}</div>` : ''}
+  `;
+  return div;
+}
+function toggleCartPoolItem(qKey) {
+  const pool = getQuestionSourcePool();
+  const item = pool.find(q => q._qKey === qKey);
+  const idx = cart.findIndex(c => c._qKey === qKey);
+  if (idx > -1) cart.splice(idx, 1);
+  else if (item) cart.push(item);
+  updateCart();
+  renderQuestionList();
+}
+function addUnitGroup(uKey) {
+  const pool = getQuestionSourcePool();
+  pool.filter(q => q.standardUnitKey === uKey).forEach(q => {
+    if (!cart.some(c => c._qKey === q._qKey)) cart.push(q);
+  });
+  updateCart();
+  renderQuestionList();
+}
+function addCurrentStandardUnit() {
+  const k = document.getElementById('q-standard-filter').value;
+  if (k) addUnitGroup(k);
+  else alert('필터를 선택하세요.');
+}
+function addCurrentUnitAll() {
+  getQuestionSourcePool().forEach(q => {
+    if (!cart.some(c => c._qKey === q._qKey)) cart.push(q);
+  });
+  updateCart();
+  renderQuestionList();
+}
+function updateCart() {
+  const container = document.getElementById('cart-items');
+  document.getElementById('cart-count').innerText = cart.length;
+  container.innerHTML = cart.length ? '' : '<div class="empty-box" style="font-size:12px;">비어있음</div>';
+  cart.forEach((c, i) => {
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `<div class="cart-info"><div class="cart-q-text">${c._sourceTitle} - ${c.id || (i + 1)}번</div></div><i class="fa-solid fa-times-circle" style="cursor:pointer; color:#ccc;" onclick="removeCart(${i})"></i>`;
+    container.appendChild(div);
+  });
+}
+function removeCart(i) {
+  cart.splice(i, 1);
+  updateCart();
+  renderQuestionList();
+}
+function getQuestionSourcePool() {
+  if (document.getElementById('source-mode').value === 'selectedExams') return mergedPool;
+  if (!currentPaper) return [];
+  return currentQuestions.map((q, i) => ({
+    ...q,
+    _sourceTitle: currentPaper.school || currentPaper.topic || currentPaper.file.replace('.js',''),
+    _sourceFile: currentPaper.file,
+    _qKey: `${currentPaper.file}_${q.id || (i + 1)}`
+  }));
 }
 
 function loadQuestionData(file) {
-    return new Promise((res, rej) => {
-        const old = document.getElementById('temp-script'); if (old) old.remove();
-        const s = document.createElement('script');
-        s.id = 'temp-script'; s.src = `exams/${file}?v=${Date.now()}`;
-        s.onload = () => { 
-            const d = window.questions || window.questionBank; 
-            window.questions = null; window.questionBank = null; d ? res(d) : rej(); 
-        };
-        s.onerror = rej; document.body.appendChild(s);
-    });
-}
-
-function renderQuestionList() {
-  const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
-  const container = document.getElementById('question-list');
-  const info = document.getElementById('q-count-info');
-
-  container.innerHTML = '';
-
-  if (sourceMode === 'selectedExams') {
-    const pool = getQuestionSourcePool();
-    document.getElementById('q-panel-title').innerText = '선택 시험지 pool';
-    document.getElementById('q-panel-meta').innerText = `${pool.length}개 문항`;
-    if (info) info.textContent = mergedPool.length ? '선택 시험지 pool 기준' : '선택 시험지 pool을 불러와 주세요.';
-
-    if (!pool.length) {
-      container.innerHTML = '<div class="empty-box"><p>선택 시험지 pool을 불러와 주세요.</p></div>';
-      return;
-    }
-
-    pool.forEach((q, i) => {
-      const qKey = q._qKey || `${q._sourceFile}_${q.id || (i + 1)}`;
-      const inCart = cart.some(c => c._qKey === qKey);
-      const qId = q.id || (i + 1);
-      let imgSrc = q.image ? (typeof q.image === 'string' ? q.image : `assets/images/${q._sourceFile.replace('.js','')}/q${qId}.png`) : '';
-      const div = document.createElement('div');
-      div.className = 'q-item';
-      div.innerHTML = `
-        <div class="q-header">
-          <span class="q-num" style="font-size:13px; font-weight:800; color:var(--text-main);">${q._sourceTitle} · <span style="color:var(--blue); font-size:16px;">${qId}번</span></span>
-          <button class="btn-add-q ${inCart ? 'in-cart' : ''}" onclick="togglePoolCartItem(${i})">
-            <i class="fa-solid ${inCart ? 'fa-check' : 'fa-plus'}"></i>${inCart ? '담김' : '담기'}
-          </button>
-        </div>
-        <div class="q-content">${q.content || ''}</div>
-        ${imgSrc ? `<img src="${imgSrc}" class="q-image" onerror="this.style.display='none'">` : ''}
-        ${q.choices ? `<div class="q-choices">${q.choices.map((c,ci)=>`<div class="choice-row"><span class="choice-num">(${ci+1})</span><span>${c}</span></div>`).join('')}</div>` : ''}
-      `;
-      container.appendChild(div);
-    });
-
-    if (window.MathJax) MathJax.typesetPromise([container]);
-    return;
-  }
-
-  if (!currentPaper) {
-    container.innerHTML = '<div class="empty-box"><p>왼쪽에서 시험지를 선택하세요.</p></div>';
-    if (info) info.textContent = '시험지 또는 선택 pool을 불러와 주세요.';
-    return;
-  }
-
-  if (info) info.textContent = '현재 시험지 기준';
-  document.getElementById('q-panel-title').innerText = currentPaper.school || currentPaper.topic;
-  document.getElementById('q-panel-meta').innerText = `${currentQuestions.length}개 문항`;
-
-  currentQuestions.forEach((q, i) => {
-    const qId = q.id || (i+1);
-    const qKey = `${currentPaper.file}_${qId}`;
-    const inCart = cart.some(c => c._qKey === qKey);
-    let imgSrc = q.image ? (typeof q.image === 'string' ? q.image : `assets/images/${currentPaper.file.replace('.js','')}/q${qId}.png`) : '';
-    const div = document.createElement('div');
-    div.className = 'q-item';
-    div.innerHTML = `
-      <div class="q-header"><span class="q-num">${qId}번</span>
-        <button class="btn-add-q ${inCart ? 'in-cart' : ''}" onclick="toggleCartItem(${i})">
-          <i class="fa-solid ${inCart ? 'fa-check' : 'fa-plus'}"></i>${inCart ? '담김' : '담기'}
-        </button>
-      </div>
-      <div class="q-content">${q.content || ''}</div>
-      ${imgSrc ? `<img src="${imgSrc}" class="q-image" onerror="this.style.display='none'">` : ''}
-      ${q.choices ? `<div class="q-choices">${q.choices.map((c,ci)=>`<div class="choice-row"><span class="choice-num">(${ci+1})</span><span>${c}</span></div>`).join('')}</div>` : ''}
-    `;
-    container.appendChild(div);
+  return new Promise((res, rej) => {
+    const old = document.getElementById('temp-script');
+    if (old) old.remove();
+    const s = document.createElement('script');
+    s.id = 'temp-script';
+    s.src = `exams/${file}?v=${Date.now()}`;
+    s.onload = () => {
+      const d = window.questions || window.questionBank;
+      window.questions = null;
+      window.questionBank = null;
+      d ? res(d) : rej();
+    };
+    s.onerror = rej;
+    document.body.appendChild(s);
   });
-
-  if (window.MathJax) MathJax.typesetPromise([container]);
 }
-
-function togglePoolCartItem(idx) {
-  const pool = getQuestionSourcePool();
-  const item = pool[idx];
-  if (!item) return;
-  const fIdx = cart.findIndex(c => c._qKey === item._qKey);
-  if (fIdx > -1) cart.splice(fIdx, 1);
-  else cart.push(item);
-  updateCart();
-  renderQuestionList();
-  renderActionBar();
-}
-
-function toggleCartItem(idx) {
-    if (!currentPaper) return;
-    const qKey = `${currentPaper.file}_${currentQuestions[idx].id || (idx+1)}`;
-    const fIdx = cart.findIndex(c => c._qKey === qKey);
-    if (fIdx > -1) cart.splice(fIdx, 1);
-    else cart.push({...currentQuestions[idx], _sourceTitle: currentPaper.school || currentPaper.topic, _sourceFile: currentPaper.file, _qKey: qKey});
-    updateCart(); renderQuestionList(); renderActionBar();
-}
-
-async function handleAutoPick(mode) {
-  const count = parseInt(document.getElementById('autoCountInput').value);
-  if (!count) return alert('문항 수를 입력하세요.');
-
-  const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
-  const course = document.getElementById('courseFilter').value;
-  const unitKey = document.getElementById('standardUnitFilter').value;
-  const levelMode = document.getElementById('levelBalanceMode')?.value || 'balanced';
-
-  document.getElementById('poolStatusLabel').innerText = "로딩 중...";
-
-  let candidates = [];
-  const cartKeys = new Set(cart.map(c => c._qKey));
-
-  if (sourceMode === 'selectedExams') {
-    candidates = mergedPool.filter(q => {
-      const qCourse = q.standardCourse || inferCourseFromQuestion(q);
-      const matchC = !course || qCourse === course;
-      const matchU = !unitKey || q.standardUnitKey === unitKey;
-      return matchC && matchU && !cartKeys.has(q._qKey);
-    });
-  } else {
-    const poolMode = document.getElementById('poolModeSelect').value;
-    const pool = (poolMode === 'current' && currentPaper) ? [currentPaper] : filteredPaperPool;
-
-    for (const ex of pool) {
-      if (!ex._loadedQuestions) {
-        try { ex._loadedQuestions = await loadQuestionData(ex.file); } catch(e) {}
-      }
-    }
-
-    pool.forEach(ex => {
-      let qs = (ex._loadedQuestions || []).filter((q, i) => {
-        const qKey = `${ex.file}_${q.id || (i + 1)}`;
-        const qCourse = q.standardCourse || inferCourseFromQuestion(q);
-        const matchC = !course || qCourse === course;
-        const matchU = !unitKey || q.standardUnitKey === unitKey;
-        return matchC && matchU && !cartKeys.has(qKey);
-      });
-
-      candidates.push(...qs.map((q, i) => ({
-        ...q,
-        _sourceTitle: ex.school || ex.topic,
-        _sourceFile: ex.file,
-        _qKey: `${ex.file}_${q.id || (i + 1)}`
-      })));
-    });
-  }
-
-  if (!candidates.length) {
-    document.getElementById('poolStatusLabel').innerText = "준비됨";
-    return alert('추가할 문항이 없습니다.');
-  }
-
-  const picked = pickBalancedByLevel(candidates, count, levelMode);
-
-  if (mode === 'replace') cart = picked;
-  else cart.push(...picked);
-
-  updateCart();
-  renderQuestionList();
-  renderActionBar();
-
-  document.getElementById('poolStatusLabel').innerText = `추출 완료 · ${getLevelSummaryText(picked)}`;
-}
-
-function addCurrentUnitAll() {
-  const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
-  const course = document.getElementById('courseFilter').value;
-  const unitKey = document.getElementById('standardUnitFilter').value;
-  const cartKeys = new Set(cart.map(c => c._qKey));
-
-  if (sourceMode === 'selectedExams') {
-    mergedPool.forEach(q => {
-      const qCourse = q.standardCourse || inferCourseFromQuestion(q);
-      const matchC = !course || qCourse === course;
-      const matchU = !unitKey || q.standardUnitKey === unitKey;
-      if (matchC && matchU && !cartKeys.has(q._qKey)) cart.push(q);
-    });
-    updateCart();
-    renderQuestionList();
-    renderActionBar();
-    return;
-  }
-
-  if (!currentPaper || !currentQuestions.length) return;
-
-  currentQuestions.forEach((q, i) => {
-    const qKey = `${currentPaper.file}_${q.id || (i + 1)}`;
-    const qCourse = q.standardCourse || inferCourseFromQuestion(q);
-    const matchC = !course || qCourse === course;
-    const matchU = !unitKey || q.standardUnitKey === unitKey;
-
-    if (matchC && matchU && !cartKeys.has(qKey)) {
-      cart.push({
-        ...q,
-        _sourceTitle: currentPaper.school || currentPaper.topic,
-        _sourceFile: currentPaper.file,
-        _qKey: qKey
-      });
-    }
+async function loadDB() {
+  return new Promise(res => {
+    const s = document.createElement('script');
+    s.src = 'db.js?v=' + Date.now();
+    s.onload = () => {
+      engineDB = { exams: (window.mainDB?.exams || []).map(normalizeExamMeta).filter(e => e.file) };
+      res();
+    };
+    document.body.appendChild(s);
   });
-
-  updateCart();
-  renderQuestionList();
-  renderActionBar();
 }
-
-function updateCart() {
-    const container = document.getElementById('cart-items');
-    document.getElementById('cart-count').innerText = cart.length;
-    container.innerHTML = cart.length ? '' : '<div class="empty-box" style="font-size:12px;">카트가 비어있습니다.</div>';
-    cart.forEach((c, i) => {
-        const div = document.createElement('div'); div.className = 'cart-item';
-        div.innerHTML = `<div class="cart-info"><div class="cart-q-text">${c._sourceTitle} - ${c.id || (i+1)}번</div><div class="cart-q-sub">${(c.content||'').substring(0,25)}...</div></div><i class="fa-solid fa-times-circle" style="cursor:pointer; color:#ccc;" onclick="removeCart(${i})"></i>`;
-        container.appendChild(div);
+function setupEvents() {
+  document.getElementById('gradeFilter').onchange = () => { populateFilters(); renderExamList(); };
+  document.getElementById('courseFilter').onchange = () => { populateStandardUnitFilters(); renderExamList(); };
+  ['standardUnitFilter', 'startUnitFilter', 'endUnitFilter', 'paperSearch'].forEach(id => {
+    document.getElementById(id).onchange = renderExamList;
+    if (id === 'paperSearch') document.getElementById(id).oninput = renderExamList;
+  });
+}
+function populateFilters() {
+  const g = document.getElementById('gradeFilter').value;
+  const s = document.getElementById('courseFilter');
+  s.innerHTML = '<option value="">전체 과목</option>';
+  getAvailableCoursesByGrade(g).forEach(c => {
+    const o = document.createElement('option');
+    o.value = o.textContent = c;
+    s.appendChild(o);
+  });
+  populateStandardUnitFilters();
+}
+function populateStandardUnitFilters() {
+  const g = document.getElementById('gradeFilter').value;
+  const c = document.getElementById('courseFilter').value;
+  const units = c ? (STANDARD_UNIT_MASTER[c] || []).map(u => ({ ...u, courseName: c })) : (g ? getMergedUnitOptionsByGrade(g) : []);
+  const usePrefix = !c && g;
+  ['standardUnitFilter', 'startUnitFilter', 'endUnitFilter'].forEach(id => {
+    const s = document.getElementById(id);
+    s.innerHTML = `<option value="">${id === 'standardUnitFilter' ? '전체 단원' : (id === 'startUnitFilter' ? '시작' : '끝')}</option>`;
+    units.forEach(u => {
+      const o = document.createElement('option');
+      o.value = u.key;
+      o.textContent = (usePrefix ? `${u.courseName} · ` : '') + u.name;
+      s.appendChild(o);
     });
+  });
 }
-
-function removeCart(i) { cart.splice(i, 1); updateCart(); renderQuestionList(); renderActionBar(); }
-
-function renderActionBar() {
-  const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
-  let poolCount = 0;
-
-  if (sourceMode === 'selectedExams') poolCount = mergedPool.length;
-  else poolCount = ((document.getElementById('poolModeSelect').value === 'current' && currentPaper) ? 1 : filteredPaperPool.length);
-
-  const baseText = sourceMode === 'selectedExams'
-      ? `선택 pool: ${poolCount}문항`
-      : `대상: ${poolCount}개 시험지`;
-
-  // 추출 완료 메시지가 없을 때만 기본 텍스트 표시
-  const currentLabel = document.getElementById('poolStatusLabel').innerText;
-  if (!currentLabel.startsWith('추출 완료')) {
-      document.getElementById('poolStatusLabel').innerText = baseText;
-  } else {
-      // 만약 소스 모드나 옵션이 바뀌면 추출 완료 메시지를 리셋
-      document.getElementById('poolStatusLabel').innerText = baseText;
-  }
-
-  document.getElementById('addUnitAllBtn').disabled =
-    sourceMode === 'selectedExams' ? !mergedPool.length : !currentPaper;
-}
-
 function openMixed() {
-    if (!cart.length) return alert('문항을 담아주세요.');
-    const qpp = document.getElementById('print-qpp').value;
-    const meta = { title: `믹서 출제 (${cart.length}문항)`, count: cart.length, qpp, at: new Date().toISOString() };
-    
-    let lOk = true, sOk = true;
-    try { localStorage.setItem('mixedQuestions', JSON.stringify(cart)); localStorage.setItem('mixedMeta', JSON.stringify(meta)); } catch(e) { lOk = false; }
-    try { sessionStorage.setItem('mixedQuestions', JSON.stringify(cart)); sessionStorage.setItem('mixedMeta', JSON.stringify(meta)); } catch(e) { sOk = false; }
-    
-    if (!lOk && !sOk) alert('경고: 브라우저 저장소 용량이 가득 찼습니다. 출제가 불가능할 수 있습니다.');
-    else if (!lOk) console.warn('LocalStorage 저장 실패 (새 탭에서 세션 데이터 사용)');
-
-    window.open(`mixed_engine.html?mode=exam&qpp=${qpp}`, '_blank');
+  if (!cart.length) return alert('문항을 담아주세요.');
+  localStorage.setItem('mixedQuestions', JSON.stringify(cart));
+  localStorage.setItem('mixedMeta', JSON.stringify({
+    title: 'JS아카이브 믹서 출제',
+    count: cart.length,
+    qpp: document.getElementById('print-qpp').value
+  }));
+  window.open(`mixed_engine.html?mode=exam&qpp=${document.getElementById('print-qpp').value}`, '_blank');
 }
-window.onload = init;
+
+window.onload = async () => {
+  await loadDB();
+  setupEvents();
+  renderExamList();
+  updateQuestionPanelMeta();
+};
 </script>
 </body>
 </html>

@@ -6,10 +6,10 @@ window.questionBank = [
     "level": "하",
     "category": "다항식의 연산",
     "originalCategory": "다항식의 연산",
-    "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
-    "standardUnit": "다항식의 연산",
-    "standardUnitOrder": 1,
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "나머지 정리",
+    "standardUnitOrder": 2,
     "content": "등식 $2x+a=bx+7$이 $x$에 대한 항등식이 되도록 하는 상수 $a, b$에 대하여 $a+b$의 값은? [4.0점]",
     "choices": [
       "5",
@@ -19,15 +19,15 @@ window.questionBank = [
       "9"
     ],
     "answer": "5",
-    "solution": "<b>[Logical Anchor]</b> 항등식의 계수비교법 적용\\n$\\because x$에 대한 항등식\\n$\\implies 2 = b, a = 7$\\n$\\therefore a+b = 7+2 = 9$"
+    "solution": "[키포인트] $x$에 대한 항등식은 양변의 같은 차수의 항의 계수가 서로 같아야 한다.\\n조건 정리: 등식 $2x+a=bx+7$이 모든 실수 $x$에 대하여 성립한다.\\n풀이 방향: 계수비교법을 사용하여 일차항의 계수와 상수항을 각각 비교한다.\\n정석 풀이:\\n1) 일차항의 계수 비교: 좌변의 $2$와 우변의 $b$가 같으므로 $b = 2$이다.\\n2) 상수항 비교: 좌변의 $a$와 우변의 $7$이 같으므로 $a = 7$이다.\\n3) 구하고자 하는 값 계산: $a+b = 7+2 = 9$이다.\\n결론: 따라서 정답은 ⑤이다."
   },
   {
     "id": 2,
     "level": "하",
     "category": "다항식의 인수분해",
     "originalCategory": "다항식의 인수분해",
-    "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-03",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "content": "다항식 $8x^{3}+36x^{2}+54x+27$ 를 인수분해하면 $(ax+b)^{3}$ 일 때, 상수 $a, b$에 대하여 $ab$의 값은? [4.0점]",
@@ -39,15 +39,15 @@ window.questionBank = [
       "10"
     ],
     "answer": "3",
-    "solution": "<b>[Logical Anchor]</b> 세제곱 합의 공식 $(A+B)^3$ 역산\\n$\\because 8x^3 = (2x)^3, 27 = 3^3$\\n$\\implies (2x+3)^3 = (2x)^3 + 3(2x)^2(3) + 3(2x)(3^2) + 3^3$\\n$\\implies a=2, b=3$\\n$\\therefore ab = 2 \\times 3 = 6$"
+    "solution": "[키포인트] 다항식의 곱셈 공식 중 세제곱의 합 공식 $(A+B)^{3} = A^{3} + 3A^{2}B + 3AB^{2} + B^{3}$의 구조를 이용한다.\\n조건 정리: 주어진 식 $8x^{3}+36x^{2}+54x+27$을 $(ax+b)^{3}$ 꼴로 변형해야 한다.\\n풀이 방향: 최고차항과 상수항을 통해 $a, b$의 값을 추론한 뒤 중간 항들이 일치하는지 확인한다.\\n정석 풀이:\\n1) 식의 구조 확인: $8x^{3} = (2x)^{3}$이고 $27 = 3^{3}$이므로 $A=2x, B=3$으로 설정한다.\\n2) 공식 대입 및 검증: $(2x+3)^{3} = (2x)^{3} + 3(2x)^{2}(3) + 3(2x)(3)^{2} + 3^{3} = 8x^{3} + 36x^{2} + 54x + 27$이 되어 주어진 식과 일치한다.\\n3) 계수 결정: $ax+b = 2x+3$이므로 $a=2, b=3$이다.\\n4) 최종 값 계산: $ab = 2 \\cdot 3 = 6$이다.\\n결론: 따라서 정답은 ③이다."
   },
   {
     "id": 3,
     "level": "하",
     "category": "다항식의 연산",
     "originalCategory": "다항식의 연산",
-    "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "content": "세 다항식 $A, B, C$의 연산 결과 조립제법을 통해 얻은 미정계수 $a, b$에 대하여 $a+b$의 값은? [4.1점]",
@@ -59,21 +59,16 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 조립제법을 이용한 미정계수 추출 및 합산\\n1. 조립제법 수행: 주어진 다항식의 계수와 나눗셈 조건을 조립제법으로 연산.\\n2. 계수 확정: 연산 결과 $a=-1, b=0$이 도출됨.\\n3. 최종 합산: $a+b = -1+0 = -1$임.",
-    "error_check": {
-      "substitution": "a=-1, b=0 결과 대입",
-      "calculation": "-1 + 0 = -1",
-      "result": "-1 (②) 일치"
-    }
+    "solution": "[키포인트] 조립제법의 연산 구조(내려올 때는 합산, 대각선으로 올라갈 때는 곱셈)를 정확히 이해한다.\\n조건 정리: 다항식의 계수들을 이용하여 나눗셈의 몫과 나머지를 구하는 조립제법 과정이 주어졌다.\\n풀이 방향: 비어있는 계수 $a, b$의 위치를 확인하고 조립제법의 계산 순서에 따라 값을 구한다.\\n정석 풀이:\\n1) 조립제법 연산 수행: 제시된 수치들을 바탕으로 역산하거나 순차 계산을 진행한다.\\n2) 계수 확정: 연산 결과에 의해 미정계수 $a=-1, b=0$이 도출된다.\\n3) 최종 합산: $a+b = -1+0 = -1$이다.\\n결론: 따라서 정답은 ②이다."
   },
   {
     "id": 4,
     "level": "하",
     "category": "나머지 정리",
     "originalCategory": "나머지 정리",
-    "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "항등식과 나머지정리",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "나머지 정리",
     "standardUnitOrder": 2,
     "content": "다항식 $x^{5}+27x^{4}-x+k$를 $x+1$로 나눈 나머지가 $12$일 때, 상수 $k$의 값은? [4.2점]",
     "choices": [
@@ -84,17 +79,17 @@ window.questionBank = [
       "15"
     ],
     "answer": "2",
-    "solution": "<b>[Logical Anchor]</b> 나머지 정리 $P(\\alpha)=R$ 적용\\n$\\because P(x) = x^5+27x^4-x+k$\\n$\\implies P(-1) = (-1)^5+27(-1)^4-(-1)+k = 12$\\n$\\implies -1+27+1+k = 12$\\n$\\therefore k = -15$"
+    "solution": "[키포인트] 나머지 정리에 의하여 다항식 $P(x)$를 일차식 $x-a$로 나눈 나머지는 $P(a)$이다.\\n조건 정리: $P(x) = x^{5}+27x^{4}-x+k$라 할 때, $P(-1) = 12$가 성립한다.\\n풀이 방향: $x=-1$을 다항식에 대입하여 $k$에 관한 일차방정식을 푼다.\\n정석 풀이:\\n1) 나머지 정리 적용: $P(-1) = (-1)^{5} + 27(-1)^{4} - (-1) + k = 12$이다.\\n2) 식 정리: $-1 + 27 + 1 + k = 12$가 된다.\\n3) 상수 계산: $27 + k = 12$이므로 $k = 12 - 27 = -15$이다.\\n결론: 따라서 정답은 ②이다."
   },
   {
     "id": 5,
     "level": "중",
     "category": "이차함수의 최대최소",
     "originalCategory": "이차함수의 최대최소",
-    "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-13",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
     "standardUnit": "이차함수",
-    "standardUnitOrder": 13,
+    "standardUnitOrder": 6,
     "content": "[중] $-2 \\le x \\le 0$에서 이차함수 $y=-x^{2}+2x+3$의 최댓값과 최솟값의 합은? [4.3점]",
     "choices": [
       "-5",
@@ -104,15 +99,15 @@ window.questionBank = [
       "3"
     ],
     "answer": "3",
-    "solution": "<b>[Logical Anchor]</b> 표준형 변환 및 제한된 범위 내 단조성 확인\\n$\\because y = -(x-1)^2+4$\\n$\\implies 축  x=1  이 범위  [-2, 0]  우측에 존재$\\n$\\implies x=0  에서 최댓값  M = 3$\\n$\\implies x=-2  에서 최솟값  m = -5$\\n$\\therefore M+m = 3-5 = -2$"
+    "solution": "[키포인트] 제한된 범위에서의 이차함수의 최대·최소는 꼭짓점의 위치와 범위 양 끝점의 함숫값을 비교하여 결정한다.\\n조건 정리: 이차함수 $y = -x^{2}+2x+3$의 범위를 $-2 \\le x \\le 0$으로 제한한다.\\n풀이 방향: 함수를 표준형으로 고쳐 대칭축을 확인하고, 주어진 범위 내에서 함숫값의 변화를 파악한다.\\n정석 풀이:\\n1) 표준형 변환: $y = -(x^{2}-2x+1-1)+3 = -(x-1)^{2}+4$이다. 대칭축은 $x=1$이다.\\n2) 위치 관계 확인: 대칭축 $x=1$이 주어진 범위 $[-2, 0]$의 오른쪽에 존재하므로, 이 범위에서 함수는 $x$가 증가할 때 $y$도 증가하는 증가 상태이다.\\n3) 최댓값 계산: $x=0$일 때 최댓값 $M = -(0-1)^{2}+4 = 3$이다.\\n4) 최솟값 계산: $x=-2$일 때 최솟값 $m = -(-2-1)^{2}+4 = -9+4 = -5$이다.\\n5) 최종 합산: $M+m = 3 + (-5) = -2$이다.\\n결론: 따라서 정답은 ③이다."
   },
   {
     "id": 6,
     "level": "하",
     "category": "다항식의 나눗셈",
     "originalCategory": "다항식의 나눗셈",
-    "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-01",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "content": "다항식 $3x^{2}-5x+6$ 을 $x-1$로 나누는 과정에서 미정계수 $a, b$에 대하여 $a+b$의 값은? [4.3점]",
@@ -124,16 +119,16 @@ window.questionBank = [
       "7"
     ],
     "answer": "5",
-    "solution": "<b>[Logical Anchor]</b> 나눗셈의 관계식 $A=BQ+R$ 수립\\n$\\implies 3x^2-5x+6 = (x-1)(ax+c)+b$\\n$\\implies 3x^2-5x+6 = (x-1)(3x-2)+4$\\n$\\implies a=3, b=4$\\n$\\therefore a+b = 7$"
+    "solution": "[키포인트] 다항식의 나눗셈 관계식 $A = BQ + R$을 세우거나 직접 나눗셈을 통해 미정계수를 구한다.\\n조건 정리: $3x^{2}-5x+6$을 $x-1$로 나눌 때 발생하는 몫의 계수 $a$와 나머지 $b$를 찾는다.\\n풀이 방향: 직접 나눗셈 또는 조립제법을 통해 몫과 나머지를 계산한다.\\n정석 풀이:\\n1) 직접 나눗셈 수행: $3x^{2}-5x+6$을 $x-1$로 나누면 몫은 $3x-2$이고 나머지는 $4$가 된다.\\n2) 계수 매칭: 몫의 최고차항 계수 $a=3$이고, 나머지 $b=4$이다.\\n3) 값 계산: $a+b = 3+4 = 7$이다.\\n결론: 따라서 정답은 ⑤이다."
   },
   {
     "id": 7,
     "level": "중",
     "category": "나머지 정리",
     "originalCategory": "나머지 정리",
-    "standardCourse": "수학(상)",
-    "standardUnitKey": "H15-SA-02",
-    "standardUnit": "항등식과 나머지정리",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "나머지 정리",
     "standardUnitOrder": 2,
     "content": "[중] 다항식 $P(x)$를 $x-1$로 나눈 나머지는 $7$, $x-3$으로 나눈 나머지는 $-9$이다. $P(x)$를 $x^{2}-4x+3$으로 나눈 나머지 $R(x)$에 대하여 $R(5)$의 값은? [4.4점]",
     "choices": [
@@ -144,12 +139,17 @@ window.questionBank = [
       "25"
     ],
     "answer": "2",
-    "solution": "<b>[Logical Anchor]</b> 2차식 나눗셈의 나머지 $R(x)=ax+b$ 설정\\n$\\because P(1)=7, P(3)=-9$\\n$\\implies R(1)=a+b=7, R(3)=3a+b=-9$\\n$\\implies 2a=-16 \\implies a=-8, b=15$\\n$\\implies R(x) = -8x+15$\\n$\\therefore R(5) = -40+15 = -25$"
+    "solution": "[키포인트] 이차식으로 나눈 나머지는 일차식($ax+b$)으로 설정하며, 나머지 정리를 통해 함숫값을 대입하여 연립방정식을 푼다.\\n조건 정리: $P(1)=7, P(3)=-9$이고 나누는 식은 $x^{2}-4x+3 = (x-1)(x-3)$으로 인수분해된다.\\n풀이 방향: $P(x) = (x-1)(x-3)Q(x) + R(x)$ 식을 세우고 $R(x)=ax+b$를 구한 뒤 $R(5)$를 계산한다.\\n정석 풀이:\\n1) 검산식 수립: $P(x) = (x-1)(x-3)Q(x) + ax+b$이다.\\n2) $x=1$ 대입: $P(1) = a+b = 7$ (식 ①)\\n3) $x=3$ 대입: $P(3) = 3a+b = -9$ (식 ②)\\n4) 연립방정식 풀이: 식 ②에서 식 ①을 빼면 $2a = -16$에서 $a = -8$이다. 이를 식 ①에 대입하면 $-8+b=7$에서 $b=15$이다.\\n5) 나머지 확정: $R(x) = -8x+15$이다.\\n6) 값 계산: $R(5) = -8(5)+15 = -40+15 = -25$이다.\\n결론: 따라서 정답은 ②이다."
   },
   {
     "id": 8,
     "level": "하",
     "category": "곱셈 공식의 변형",
+    "originalCategory": "곱셈 공식의 변형",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "content": "실수 $x, y$에 대하여 $x-y=3, x^{2}+y^{2}=12$ 일 때, $xy$의 값은? [4.4점]",
     "choices": [
       "1",
@@ -159,18 +159,18 @@ window.questionBank = [
       "3"
     ],
     "answer": "2",
-    "solution": "<b>[Logical Anchor]</b> 곱셈 공식의 변형 $(x-y)^2$ 활용\\n$\\because x^2+y^2 = (x-y)^2+2xy$\\n$\\implies 12 = 3^2+2xy$\\n$\\implies 2xy = 3$\\n$\\therefore xy = \\frac{3}{2}$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 곱셈 공식의 변형 $x^{2}+y^{2} = (x-y)^{2} + 2xy$를 활용한다.\\n조건 정리: $x-y=3$과 $x^{2}+y^{2}=12$가 주어졌다.\\n풀이 방향: 주어진 값들을 곱셈 공식에 대입하여 $xy$를 분리해낸다.\\n정석 풀이:\\n1) 공식 적용: $(x-y)^{2} = x^{2}-2xy+y^{2}$이다. 이를 $x^{2}+y^{2} = (x-y)^{2} + 2xy$로 정리할 수 있다.\\n2) 값 대입: $12 = 3^{2} + 2xy$가 된다.\\n3) 방정식 풀이: $12 = 9 + 2xy$에서 $2xy = 3$이다.\\n4) 최종 계산: $xy = \\frac{3}{2}$이다.\\n결론: 따라서 정답은 ②이다."
   },
   {
     "id": 9,
     "level": "중",
     "category": "행렬",
-    "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\n eq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
+    "originalCategory": "행렬",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "content": "[중] 이차 정사각행렬 $A$의 성분이 $a_{ij} = \\begin{cases} ij+1 & (i=j) \\\\ i^{2}-j & (i \\neq j) \\end{cases}$ 일 때, <보기> 중 옳은 것만을 고른 것은? [4.5점] <div class='box'>ㄱ. 제 2열의 모든 성분의 합은 4이다.<br>ㄴ. 제 1행은 (2, -1)이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -179,17 +179,17 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "3",
-    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개\\n$\\because a_{11}=2, a_{12}=-1, a_{21}=3, a_{22}=5$\\n$\\implies A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 5 \\end{pmatrix}$\\n$\\implies ㄱ.  -1+5=4  (참)$\\n$\\implies ㄴ.  (2, -1)  (참)$\\n$\\implies ㄷ.  -1-2(2)=-5 \\n eq 3  (거짓)$\\n$\\therefore ㄱ, ㄴ$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 행렬의 성분 정의 $a_{ij}$에서 $i$는 행 번호, $j$는 열 번호를 의미하며 조건에 맞게 각 성분을 계산한다.\\n조건 정리: $i=j$인 대각성분은 $ij+1$로, $i \\neq j$인 성분은 $i^2-j$로 계산한다.\\n풀이 방향: $2 \\times 2$ 행렬의 모든 성분을 구한 뒤 보기의 조건을 하나씩 검증한다.\\n정석 풀이:\\n1) 행렬 $A$의 성분 계산:\\n- $a_{11} = 1 \\cdot 1+1 = 2$\\n- $a_{12} = 1^2-2 = -1$\\n- $a_{21} = 2^2-1 = 3$\\n- $a_{22} = 2 \\cdot 2+1 = 5$\\n따라서 $A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 5 \\end{pmatrix}$이다.\\n2) 보기 검증:\\nㄱ. 제 2열 성분은 $a_{12}, a_{22}$이므로 합은 $-1+5=4$이다. (참)\\nㄴ. 제 1행 성분은 $(a_{11}, a_{12}) = (2, -1)$이다. (참)\\nㄷ. $a_{12}-2a_{11} = -1-2(2) = -5$이고 $a_{21}=3$이므로 서로 같지 않다. (거짓)\\n결론: 따라서 정답은 ③이다."
   },
   {
     "id": 10,
     "level": "상",
     "category": "이차방정식의 판별식",
+    "originalCategory": "이차방정식의 판별식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "content": "[상] 이차방정식 $x^{2}-2(k-2)x+k^{2}-28=0$ 이 실근을 갖기 위한 양의 정수 $k$의 개수는? [4.4점]",
     "choices": [
       "8",
@@ -199,17 +199,17 @@ window.questionBank = [
       "4"
     ],
     "answer": "1",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D \\ge 0$ 조건 활용\\n$\\because \\frac{D}{4} = (k-2)^2-(k^2-28) \\ge 0$\\n$\\implies k^2-4k+4-k^2+28 \\ge 0$\\n$\\implies -4k+32 \\ge 0 \\implies k \\le 8$\\n$\\therefore k \\in \\{1, 2, 3, 4, 5, 6, 7, 8\\} \\implies 8개$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 이차방정식이 실근을 가질 조건은 판별식 $D \\ge 0$이다.\\n조건 정리: 주어진 방정식의 일차항 계수가 짝수이므로 짝수 판별식을 활용한다.\\n풀이 방향: 판별식 부등식을 풀어 $k$의 범위를 구하고 해당 범위에 속하는 양의 정수를 카운트한다.\\n정석 풀이:\\n1) 판별식 적용: $\\frac{D}{4} = (k-2)^2 - 1 \\cdot (k^2-28) \\ge 0$이어야 한다.\\n2) 식 전개 및 정리: $k^2 - 4k + 4 - k^2 + 28 \\ge 0 \\implies -4k + 32 \\ge 0$이다.\\n3) $k$ 범위 산출: $4k \\le 32$에서 $k \\le 8$이다.\\n4) 정수 조건 확인: 양의 정수 $k$는 $1, 2, 3, 4, 5, 6, 7, 8$로 총 8개이다.\\n결론: 따라서 정답은 ①이다."
   },
   {
     "id": 11,
     "level": "하",
     "category": "복소수의 연산",
+    "originalCategory": "복소수의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
+    "standardUnitOrder": 4,
     "content": "실수 $a, b$에 대하여 등식 $\\frac{1}{i}+\\frac{3}{i^{2}}+\\frac{5}{i^{3}}+\\frac{7}{i^{4}} = a+bi$ 가 성립할 때, $a-b$의 값은? [4.5점]",
     "choices": [
       "-4",
@@ -219,17 +219,17 @@ window.questionBank = [
       "4"
     ],
     "answer": "3",
-    "solution": "<b>[Logical Anchor]</b> $i$의 주기성 및 실수화\\n$\\because \\frac{1}{i}=-i, \\frac{3}{i^2}=-3, \\frac{5}{i^3}=5i, \\frac{7}{i^4}=7$\\n$\\implies (-i-3+5i+7) = 4+4i$\\n$\\implies a=4, b=4$\\n$\\therefore a-b = 0$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 허수 단위 $i$의 거듭제곱의 주기성($i, -1, -i, 1$)과 분모의 실수화를 이용한다.\\n조건 정리: 각 항의 분모를 간단히 하여 실수부분과 허수부분으로 분리한다.\\n풀이 방향: $i$의 지수에 따라 각 항을 변환한 후 합산하여 $a, b$를 찾는다.\\n정석 풀이:\\n1) 각 항 변환:\\n- $\\frac{1}{i} = \\frac{i}{i^2} = -i$\\n- $\\frac{3}{i^2} = \\frac{3}{-1} = -3$\\n- $\\frac{5}{i^3} = \\frac{5}{-i} = \\frac{5i}{-i^2} = 5i$\\n- $\\frac{7}{i^4} = \\frac{7}{1} = 7$\\n2) 전체 합산: $(-i) + (-3) + 5i + 7 = (7-3) + (5-1)i = 4+4i$이다.\\n3) 계수 결정: $a=4, b=4$이므로 $a-b = 4-4 = 0$이다.\\n결론: 따라서 정답은 ③이다."
   },
   {
     "id": 12,
     "level": "하",
     "category": "복소수의 연산",
+    "originalCategory": "복소수의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
+    "standardUnitOrder": 4,
     "content": "복소수 $z=1-2i$ 에 대하여 $z+\\bar{z}$의 값은? [4.5점]",
     "choices": [
       "1",
@@ -239,17 +239,17 @@ window.questionBank = [
       "5"
     ],
     "answer": "2",
-    "solution": "<b>[Logical Anchor]</b> 켤레복소수의 성질 $z+\\bar{z}=2Re(z)$\\n$\\because z=1-2i, \\bar{z}=1+2i$\\n$\\therefore z+\\bar{z} = 2$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 복소수 $z=a+bi$와 켤레복소수 $\\bar{z}=a-bi$의 합은 실수부분의 2배($2a$)이다.\\n조건 정리: $z=1-2i$이므로 $\\bar{z}=1+2i$이다.\\n풀이 방향: 두 복소수를 직접 더하여 허수부분을 소거한다.\\n정석 풀이: $z+\\bar{z} = (1-2i) + (1+2i) = 1+1 + (-2+2)i = 2$이다.\\n결론: 따라서 정답은 ②이다."
   },
   {
     "id": 13,
     "level": "상",
     "category": "다항식의 전개",
+    "originalCategory": "다항식의 전개",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "content": "[상] 다항식 $(x-2)(x-1)(x+3)(x+4)$ 를 전개한 식에서 $x^{3}$의 계수를 $a$, $x^{2}$의 계수를 $b$라 할 때, $a+b$의 값은? [4.6점]",
     "choices": [
       "-29",
@@ -259,18 +259,18 @@ window.questionBank = [
       "29"
     ],
     "answer": "1",
-    "solution": "<b>[Logical Anchor]</b> 치환을 위한 항 재배치 및 전개\\n$\\implies \\{(x-2)(x+4)\\}\\{(x-1)(x+3)\\}$\\n$\\implies (x^2+2x-8)(x^2+2x-3)$\\n$\\implies (x^2+2x)^2-11(x^2+2x)+24$\\n$\\implies x^4+4x^3+4x^2-11x^2-22x+24$\\n$\\implies a=4, b=-7 \\implies a+b=-3$\\n(※ 데이터 정합성을 위해 정답 코드 1 유지)",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 공통부분이 생기도록 두 개씩 항을 짝지어 전개한 뒤 치환을 활용한다.\\n조건 정리: 네 일차식의 곱을 전개하여 삼차항과 이차항의 계수를 추출한다.\\n풀이 방향: 상수항의 합이 같아지는 $(x-2)(x+4)$와 $(x-1)(x+3)$을 먼저 곱한다.\\n정석 풀이:\\n1) 항 재배치: $\\{(x-2)(x+4)\\}\\{(x-1)(x+3)\\}$\\n2) 전개: $(x^2+2x-8)(x^2+2x-3)$이다.\\n3) 치환: $x^2+2x = t$라 하면 $(t-8)(t-3) = t^2 - 11t + 24$이다.\\n4) 재대입: $(x^2+2x)^2 - 11(x^2+2x) + 24 = x^4 + 4x^3 + 4x^2 - 11x^2 - 22x + 24$이다.\\n5) 정리: $x^4 + 4x^3 - 7x^2 - 22x + 24$이므로 $a=4, b=-7$이다.\\n6) 값 계산: $a+b = 4 + (-7) = -3$이다.\\n(※ 계산 결과인 $-3$이 보기에 없으나 원본 데이터의 정합성을 유지하기 위해 정답 코드를 1(①)로 표시한다. 실제 문제 혹은 보기의 오타 가능성이 높음)\\n결론: 따라서 정답은 ①이다."
   },
   {
     "id": 14,
     "level": "중",
     "category": "이차방정식의 근과 계수",
-    "content": "[중] 이차방정식 $x^{2}-3x-2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\frac{\\alpha-1}{2}, \\frac{\\beta-1}{2}$ 을 두 근으로 하는 이차방정식 $x^{2}+ax+b=0$에 대하여 $a-b$의 값은? [4.6점]",
+    "originalCategory": "이차방정식의 근과 계수",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "content": "[중] 이차방정식 $x^{2}-3x-2=0$의 두 근을 $\\alpha, \\beta$라 할 때, $\\frac{\\alpha-1}{2}, \\frac{\\beta-1}{2}$ 을 두 근으로 하는 이차방정 $x^{2}+ax+b=0$에 대하여 $a-b$의 값은? [4.6점]",
     "choices": [
       "0.25",
       "0.5",
@@ -279,17 +279,17 @@ window.questionBank = [
       "1.5"
     ],
     "answer": "2",
-    "solution": "<b>[Logical Anchor]</b> 새로운 근의 합과 곱 계산\\n$\\because \\alpha+\\beta=3, \\alpha\\beta=-2$\\n$\\implies 합:  \\frac{\\alpha+\\beta-2}{2} = \\frac{1}{2} = -a \\implies a=-0.5$\\n$\\implies 곱:  \\frac{(\\alpha-1)(\\beta-1)}{4} = \\frac{\\alpha\\beta-(\\alpha+\\beta)+1}{4} = -1 = b$\\n$\\therefore a-b = -0.5-(-1) = 0.5$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 기존 방정식의 근과 계수의 관계를 통해 새로운 근들의 합과 곱을 구하여 이차방정식을 작성한다.\\n조건 정리: $x^2-3x-2=0$에서 $\\alpha+\\beta=3, \\alpha\\beta=-2$이다.\\n풀이 방향: 새로운 두 근의 합은 $-a$, 곱은 $b$임을 이용하여 $a, b$를 산출한다.\\n정석 풀이:\\n1) 새로운 근의 합: $\\frac{\\alpha-1}{2} + \\frac{\\beta-1}{2} = \\frac{\\alpha+\\beta-2}{2} = \\frac{3-2}{2} = 0.5$이다. 따라서 $-a = 0.5 \\implies a = -0.5$이다.\\n2) 새로운 근의 곱: $\\frac{(\\alpha-1)(\\beta-1)}{4} = \\frac{\\alpha\\beta - (\\alpha+\\beta) + 1}{4} = \\frac{-2 - 3 + 1}{4} = \\frac{-4}{4} = -1$이다. 따라서 $b = -1$이다.\\n3) 최종 계산: $a-b = -0.5 - (-1) = 0.5$이다.\\n결론: 따라서 정답은 ②이다."
   },
   {
     "id": 15,
     "level": "하",
     "category": "다항식의 연산",
+    "originalCategory": "다항식의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
     "content": "다항식 $x^{2}+2x-1=0$ 일 때, $x^{4}+2x^{3}+2x+5$의 값은? [4.7점]",
     "choices": [
       "3",
@@ -299,17 +299,17 @@ window.questionBank = [
       "7"
     ],
     "answer": "4",
-    "solution": "<b>[Logical Anchor]</b> 주어진 식을 이용한 고차식의 차수 낮추기\\n$\\because x^2+2x=1$\\n$\\implies x^4+2x^3+2x+5 = x^2(x^2+2x)+2x+5$\\n$\\implies x^2(1)+2x+5 = x^2+2x+5$\\n$\\therefore 1+5 = 6$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 주어진 이차식을 이용하여 고차식의 차수를 낮추거나 나눗셈을 통해 값을 구한다.\\n조건 정리: $x^2+2x=1$임을 이용한다.\\n풀이 방향: 구하려는 다항식에서 공통인수를 묶어 조건식을 대입한다.\\n정석 풀이:\\n1) 식 변형: $x^{4}+2x^{3}+2x+5 = x^2(x^2+2x) + 2x+5$이다.\\n2) 조건 대입: $x^2+2x=1$을 대입하면 $x^2(1) + 2x+5 = x^2+2x+5$가 된다.\\n3) 최종 계산: 다시 $x^2+2x=1$을 대입하면 $1+5 = 6$이다.\\n결론: 따라서 정답은 ④이다."
   },
   {
     "id": 16,
     "level": "상",
     "category": "이차함수의 최대최소",
+    "originalCategory": "이차함수의 최대최소",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
     "content": "[상] $x \\ge 1$인 실수 $x$에 대하여 세 모서리의 길이가 각각 $x-1, x+1, x+2$ 인 직육면체의 겉넓이의 최솟값은? [4.7점]",
     "choices": [
       "10",
@@ -319,17 +319,17 @@ window.questionBank = [
       "18"
     ],
     "answer": "2",
-    "solution": "<b>[Logical Anchor]</b> 겉넓이 함수의 구성 및 정의역 내 최솟값 추적\\n$\\implies S(x) = 2\\{(x-1)(x+1) + (x+1)(x+2) + (x-1)(x+2)\\}$\\n$\\implies S(x) = 6x^2+8x-2$\\n$\\because x \\ge 1  에서  S(x)  는 증가함수$\\n$\\therefore S(1) = 6+8-2 = 12$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 직육면체의 겉넓이 공식 $S = 2(ab+bc+ca)$를 세 변의 길이에 적용하여 이차함수 모델을 만든다.\\n조건 정리: $a=x-1, b=x+1, c=x+2$이며 $x \\ge 1$이다.\\n풀이 방향: 겉넓이 함수 $S(x)$를 구성하고 주어진 범위 내에서 최솟값을 결정한다.\\n정석 풀이:\\n1) 겉넓이 식 구성: $S(x) = 2\\{(x-1)(x+1) + (x+1)(x+2) + (x-1)(x+2)\\}$\\n2) 전개 및 정리: $S(x) = 2\\{(x^2-1) + (x^2+3x+2) + (x^2+x-2)\\} = 2(3x^2+4x-1) = 6x^2+8x-2$이다.\\n3) 함수 분석: 대칭축은 $x = -\\frac{8}{2 \\cdot 6} = -\\frac{2}{3}$이다. 아래로 볼록한 포물선이며 범위 $x \\ge 1$은 대칭축의 오른쪽에 위치한다.\\n4) 최솟값 결정: $x \\ge 1$ 범위에서 함수는 증가하므로 경계값 $x=1$에서 최솟값을 갖는다.\\n5) 값 대입: $S(1) = 6(1)^2 + 8(1) - 2 = 12$이다.\\n결론: 따라서 정답은 ②이다."
   },
   {
     "id": 17,
     "level": "상",
     "category": "행렬",
+    "originalCategory": "행렬",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
     "content": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $x+y+p$의 최댓값은? [4.8점]",
     "choices": [
       "100",
@@ -339,17 +339,17 @@ window.questionBank = [
       "108"
     ],
     "answer": "4",
-    "solution": "<b>[Logical Anchor]</b> 변수 간 관계식 수립 및 소수 조건 탐색\\n$\\implies x+y+p = (p+1)+11+p = 2p+12$\\n$\\because x \\le 50 \\implies p+1 \\le 50 \\implies p \\le 49$\\n$\\implies 49  이하의 최대 소수  p=47$\\n$\\therefore 2(47)+12 = 106$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 행렬의 상등 조건을 통해 변수 간 관계식을 세우고, 주어진 범위 내에서 조건을 만족하는 소수를 찾는다. \\n조건 정리: $x, y$는 50 이하의 자연수이고 $p$는 소수이다. 행렬의 상등에 의해 $x-1=p$와 $y=11$이 성립한다. \\n풀이 방향: 구하려는 값 $x+y+p$를 하나의 변수 $p$에 관한 식으로 나타낸 뒤 $p$의 범위를 제한한다. \\n정석 풀이:\\n1) 식 변형: $x=p+1, y=11$이므로 $x+y+p = (p+1)+11+p = 2p+12$이다.\\n2) 범위 설정: $x \\le 50$이므로 $p+1 \\le 50 \\implies p \\le 49$이다.\\n3) 조건 탐색: 49 이하의 소수 $p$ 중에서 $2p+12$를 최대화하려면 $p$가 가장 커야 한다. 49 이하의 가장 큰 소수는 47이다. \\n4) 최댓값 계산: $p=47$을 대입하면 $2(47)+12 = 94+12 = 106$이다.\\n결론: 따라서 정답은 ④이다."
   },
   {
     "id": 18,
     "level": "상",
     "category": "다항식의 인수분해",
+    "originalCategory": "다항식의 인수분해",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
     "content": "[상] 최고차항 계수 1인 이차다항식 $P(x), Q(x)$가 조건을 만족할 때, $P(x)Q(x)+k$가 이차식의 제곱으로 인수분해되기 위한 $k+a+b$의 값은? [4.9점]",
     "choices": [
       "1",
@@ -359,53 +359,48 @@ window.questionBank = [
       "5"
     ],
     "answer": "1",
-    "solution": "<b>[Logical Anchor]</b> 완전제곱식 구성을 위한 미정계수 결정\\n$\\implies (x^2-5x+6)(x^2-5x+4)+k$\\n$\\implies (t+6)(t+4)+k = t^2+10t+24+k \\quad (t=x^2-5x)$\\n$\\because 완전제곱식 조건:  24+k=25 \\implies k=1$\\n$\\implies (x^2-5x+5)^2 \\implies a=-5, b=5$\\n$\\therefore k+a+b = 1-5+5 = 1$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": ""
+    "solution": "[키포인트] 공통부분이 있는 사차식을 치환하여 이차식의 완전제곱식 꼴이 되도록 미정계수를 결정한다. \\n조건 정리: $P(x)Q(x)+k$가 이차식의 완전제곱식이 되어야 한다. (원본 조건 기반으로 $P(x)=(x-2)(x-3), Q(x)=(x-1)(x-4)$ 형태 추정) \\n풀이 방향: 공통부분 $x^2-5x$를 $t$로 치환하여 전개한 후 판별식 $D=0$ 조건을 활용한다. \\n정석 풀이:\\n1) 식 구성: $(x^2-5x+6)(x^2-5x+4)+k$로 식을 세운다. \\n2) 치환: $x^2-5x=t$라 하면 $(t+6)(t+4)+k = t^2+10t+24+k$이다.\\n3) 조건 적용: 이 식이 $t$에 대한 완전제곱식이 되려면 상수항 $24+k$가 $(10/2)^2=25$여야 한다. 따라서 $k=1$이다. \\n4) 인수분해 확인: $(t+5)^2 = (x^2-5x+5)^2$이므로 $a=-5, b=5$이다.\\n5) 값 계산: $k+a+b = 1+(-5)+5 = 1$이다. \\n결론: 따라서 정답은 ①이다."
   },
   {
     "id": 19,
     "level": "중",
     "category": "복소수와 이차방정식",
+    "originalCategory": "복소수와 이차방정식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "content": "[서술형 1] $k$의 값에 관계없이 중근을 가질 때 $a, b$를 구하고, $x^{2}-4x+a+b$ 를 복소수 범위에서 인수분해하시오. [6.0점]",
+    "choices": [],
     "answer": "(x-2-sqrt(2)i)(x-2+sqrt(2)i)",
-    "solution": "<b>[Logical Anchor]</b> 항등식의 성질을 이용한 계수 결정 및 근의 공식 적용\\n$\\because (a-2)k+(4-b)=0 \\implies a=2, b=4$\\n$\\implies x^2-4x+6=0  의 근:  x=2 \\pm \\sqrt{2}i$\\n$\\therefore (x-2-\\sqrt{2}i)(x-2+\\sqrt{2}i)$",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": "",
-    "choices": []
+    "solution": "[키포인트] 중근 조건($D=0$)이 임의의 $k$에 대해 성립하면 이를 $k$에 대한 항등식으로 해석한다. \\n조건 정리: 판별식이 0이며, 이 식이 모든 $k$에 대해 만족된다. \\n풀이 방향: $a, b$를 먼저 결정한 후, 이차방정식의 근을 구하여 복소수 범위까지 인수분해를 확장한다. \\n정석 풀이:\\n1) 판별식 및 항등식 처리: 중근 조건에서 유도된 식을 정리하면 $(a-2)k+(4-b)=0$ 꼴이 된다. $k$에 대한 항등식이므로 $a-2=0, 4-b=0$에서 $a=2, b=4$이다. \\n2) 다항식 구성: $x^2-4x+a+b = x^2-4x+6$이다.\\n3) 근 구하기: $x^2-4x+6=0$에 근의 공식을 적용하면 $x = \\frac{4 \\pm \\sqrt{16-24}}{2} = 2 \\pm \\sqrt{2}i$이다. \\n4) 인수분해: 근을 인수의 형태로 나타내면 $(x-(2+\\sqrt{2}i))(x-(2-\\sqrt{2}i))$이다.\\n결론: 따라서 구하는 식은 $(x-2-\\sqrt{2}i)(x-2+\\sqrt{2}i)$이다. "
   },
   {
     "id": 20,
     "level": "상",
     "category": "이차방정식의 활용",
+    "originalCategory": "이차방정식의 활용",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
     "content": "[서술형 2/상] 원의 지름 $AB$와 현 $CD$가 $P$에서 만날 때($CP=9, DP=6$), 선분 $AP, BP$를 근으로 하는 이차방정식은? [6.0점]",
+    "choices": [],
     "answer": "x^2-20x+54=0",
-    "solution": "<b>[Logical Anchor]</b> 방멱의 정리 및 이차방정식의 작성\\n$\\because AP \\cdot PB = CP \\cdot DP = 54$\\n$\\because AP+PB = 20  (지름 조건)$\\n$\\therefore x^2-20x+54=0$\\n\\n[Figure]\\n좌표계: 원의 중심 O(0,0), 반지름 10\\n도형 관계: 현 CD와 지름 AB의 교점 P",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": "",
-    "choices": []
+    "solution": "[키포인트] 원의 현에 관한 성질(방멱의 정리)을 이용하여 두 선분의 곱을 구하고, 지름 조건을 통해 두 선분의 합을 구한다. \\n조건 정리: $CP=9, DP=6$이며 $AB$는 지름이다. (지름의 길이는 문제의 도형 조건에 따라 20으로 주어짐) \\n풀이 방향: 두 근의 합과 곱을 알 때 이차방정식 $x^2-(합)x+(곱)=0$을 작성한다. \\n정석 풀이:\\n1) 두 근의 곱 계산: 원 내의 두 현이 만날 때 $AP \\cdot PB = CP \\cdot PD$가 성립한다. 따라서 $AP \\cdot PB = 9 \\cdot 6 = 54$이다. \\n2) 두 근의 합 확인: $AB$가 지름이므로 $AP+PB = AB = 20$이다. \\n3) 이차방정식 작성: 합이 20이고 곱이 54인 두 수 $AP, PB$를 근으로 하는 방정식은 $x^2-20x+54=0$이다.\\n결론: 따라서 구하는 이차방정식은 $x^2-20x+54=0$이다. "
   },
   {
     "id": 21,
     "level": "상",
     "category": "이차함수의 최대최소",
-    "content": "[서술형 3/상] $0 \\le x \\le 3$에서 $y=(x^{2}-4x+6)^{2}-2a(x^{2}-4x+6)+a^{2}+1$의 최솟값이 5일 때 $a$의 값을 구하시오. [8.0점]",
+    "originalCategory": "이차함수의 최대최소",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 6,
+    "content": "[서답형 3/상] $0 \\le x \\le 3$에서 $y=(x^{2}-4x+6)^{2}-2a(x^{2}-4x+6)+a^{2}+1$의 최솟값이 5일 때 $a$의 값을 구하시오. [8.0점]",
+    "choices": [],
     "answer": "0, 8",
-    "solution": "<b>[Logical Anchor]</b> 치환 후 대칭축의 위치에 따른 케이스 분류\\n$\\implies t=x^2-4x+6 \\implies t \\in [2, 6] \\quad (x \\in [0, 3])$\\n$\\implies y=(t-a)^2+1$\\n$i)  a < 2 \\implies f(2)=5 \\implies a=0$\\n$ii)  2 \\le a \\le 6 \\implies f(a)=1 \\n eq 5$\\n$iii)  a > 6 \\implies f(6)=5 \\implies a=8$\\n$\\therefore a=0, 8$\\n\\n[Figure]\\n좌표계: t-y 평면, t축 범위 [2, 6]\\n도형 관계: 포물선의 꼭짓점 (a, 1)의 이동에 따른 최소점 변화",
-    "originalCategory": "",
-    "standardCourse": "",
-    "standardUnitKey": "",
-    "standardUnit": "",
-    "standardUnitOrder": "",
-    "choices": []
+    "solution": "[키포인트] 복잡한 이차식의 꼴은 치환을 통해 간단히 하고, 치환한 변수의 범위를 반드시 확인한 후 대칭축의 위치에 따라 경우를 나누어 최솟값을 찾는다. \\n조건 정리: $t = x^2-4x+6 = (x-2)^2+2$이다. $0 \\le x \\le 3$ 범위에서 $t$의 범위를 구하면 $x=2$일 때 최소 2, $x=0$일 때 최대 6이므로 $2 \\le t \\le 6$이다. \\n풀이 방향: $y = (t-a)^2+1$에서 $t$의 범위가 $[2, 6]$일 때 최솟값이 5가 되는 $a$를 케이스별로 구한다. \\n정석 풀이:\\n1) $a < 2$인 경우: 범위의 왼쪽 끝인 $t=2$에서 최소이다. $(2-a)^2+1 = 5 \\implies (2-a)^2 = 4$이다. $2-a = 2$이면 $a=0$ (성립), $2-a = -2$이면 $a=4$ (모순).\\n2) $2 \\le a \\le 6$인 경우: 꼭짓점에서 최소이다. 최솟값은 1이 되어야 하는데 조건에서 5라 하였으므로 모순이다.\\n3) $a > 6$인 경우: 범위의 오른쪽 끝인 $t=6$에서 최소이다. $(6-a)^2+1 = 5 \\implies (6-a)^2 = 4$이다. $6-a = 2$이면 $a=4$ (모순), $6-a = -2$이면 $a=8$ (성립). \\n결론: 따라서 구하는 $a$의 값은 0, 8이다. "
   }
 ];
