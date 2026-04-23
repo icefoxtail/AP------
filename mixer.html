@@ -456,7 +456,15 @@ function renderExamList() {
     const div = document.createElement('div');
     div.className = `paper-item ${currentPaper?.file === ex.file ? 'active' : ''} ${checked ? 'selected' : ''}`;
 
-    if (!isMobile) div.onclick = () => selectPaper(ex);
+    if (!isMobile) {
+      div.onclick = () => selectPaper(ex);
+    } else {
+      div.onclick = (e) => {
+        const isActionClick = e.target.closest('.exam-card-actions') || e.target.closest('.exam-check-wrap') || e.target.closest('.exam-check');
+        if (isActionClick) return;
+        selectPaper(ex);
+      };
+    }
 
     div.innerHTML = `
       <div class="exam-item-head">
@@ -523,12 +531,25 @@ function selectFilteredExams() {
   filteredPaperPool.forEach(ex => selectedExamFiles.add(ex.file));
   updateSelectedExamMeta();
   renderExamList();
+  renderAutoSummary();
 }
 function toggleExamSelection(file, checked) {
   if (checked) selectedExamFiles.add(file);
   else selectedExamFiles.delete(file);
+
+  if (!selectedExamFiles.size) {
+    mergedPool = [];
+    selectedPoolLoading = false;
+    if (document.getElementById('source-mode').value === 'selectedExams') {
+      document.getElementById('source-mode').value = 'activeExam';
+    }
+  }
+
   updateSelectedExamMeta();
   renderExamList();
+  refreshPoolDependentUI();
+  renderQuestionList();
+  renderAutoSummary();
 }
 
 async function loadSelectedExamPool() {
@@ -750,7 +771,12 @@ async function loadDB() {
   });
 }
 function setupEvents() {
-  document.getElementById('gradeFilter').onchange = () => { populateFilters(); renderExamList(); };
+  document.getElementById('gradeFilter').onchange = () => {
+    populateFilters();
+    document.getElementById('courseFilter').value = '';
+    populateStandardUnitFilters();
+    renderExamList();
+  };
   document.getElementById('courseFilter').onchange = () => { populateStandardUnitFilters(); renderExamList(); };
   ['standardUnitFilter', 'startUnitFilter', 'endUnitFilter', 'paperSearch'].forEach(id => {
     document.getElementById(id).onchange = renderExamList;
@@ -798,8 +824,11 @@ function openMixed() {
 window.onload = async () => {
   await loadDB();
   setupEvents();
+  populateFilters();
   renderExamList();
+  refreshPoolDependentUI();
   updateQuestionPanelMeta();
+  renderAutoSummary();
 };
 </script>
 </body>
