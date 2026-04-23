@@ -37,6 +37,30 @@
         /* 왼쪽 패널: 검색 및 시험지 목록 */
         .panel-papers { width: 360px; flex-shrink: 0; background: var(--gray-50); }
         .filter-area { padding: 15px 20px; border-bottom: 1px solid var(--gray-200); background: white; display: flex; flex-direction: column; gap: 8px; }
+        
+        /* 필터 토글 버튼 (소형 보조버튼화) */
+        .btn-filter-toggle {
+            height: 28px;
+            padding: 0 12px;
+            border-radius: 9999px;
+            border: 1px solid var(--gray-200);
+            background: white;
+            color: var(--gray-500);
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            flex: 0 0 auto;
+            transition: 0.2s;
+        }
+        .btn-filter-toggle:hover {
+            background: var(--gray-50);
+            color: var(--text-main);
+            border-color: var(--gray-300);
+        }
+
         .search-box { position: relative; }
         .search-box i { position: absolute; left: 12px; top: 12px; color: var(--gray-300); }
         .search-box input { width: 100%; height: 38px; padding: 0 12px 0 34px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 13px; outline: none; }
@@ -115,21 +139,30 @@
 <div class="mixer-container">
     <div class="panel panel-papers">
         <div class="filter-area">
-            <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="paperSearch" placeholder="학교명, 파일명 검색..."></div>
-            <div class="filter-row">
-                <select id="gradeFilter" class="form-select">
-                    <option value="">학년 선택</option>
-                    <option value="고3">고3</option><option value="고2">고2</option><option value="고1">고1</option>
-                    <option value="중3">중3</option><option value="중2">중2</option><option value="중1">중1</option>
-                </select>
-                <select id="axisFilter" class="form-select">
-                    <option value="">전체 시험축</option>
-                    <option value="1-mid">1학기 중간</option>
-                    <option value="1-final">1학기 기말</option>
-                    <option value="2-mid">2학기 중간</option>
-                    <option value="2-final">2학기 기말</option>
-                    <option value="other">기타/전범위</option>
-                </select>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 13px; font-weight: 800; color: var(--text-main);">탐색 필터</span>
+                <button id="btn-toggle-filter" class="btn-filter-toggle" onclick="toggleFilterPanel()">
+                    <i class="fa-solid fa-caret-down"></i> 필터 닫기
+                </button>
+            </div>
+            
+            <div id="filter-panel-content" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="paperSearch" placeholder="학교명, 파일명 검색..."></div>
+                <div class="filter-row">
+                    <select id="gradeFilter" class="form-select">
+                        <option value="">학년 선택</option>
+                        <option value="고3">고3</option><option value="고2">고2</option><option value="고1">고1</option>
+                        <option value="중3">중3</option><option value="중2">중2</option><option value="중1">중1</option>
+                    </select>
+                    <select id="axisFilter" class="form-select">
+                        <option value="">전체 시험축</option>
+                        <option value="1-mid">1학기 중간</option>
+                        <option value="1-final">1학기 기말</option>
+                        <option value="2-mid">2학기 중간</option>
+                        <option value="2-final">2학기 기말</option>
+                        <option value="other">기타/전범위</option>
+                    </select>
+                </div>
             </div>
         </div>
         
@@ -189,6 +222,21 @@
 </div>
 
 <script>
+/**
+ * 필터 패널 토글 로직
+ */
+function toggleFilterPanel() {
+    const panel = document.getElementById('filter-panel-content');
+    const btn = document.getElementById('btn-toggle-filter');
+    if (panel.style.display === 'none') {
+        panel.style.display = 'flex';
+        btn.innerHTML = '<i class="fa-solid fa-caret-down"></i> 필터 닫기';
+    } else {
+        panel.style.display = 'none';
+        btn.innerHTML = '<i class="fa-solid fa-caret-right"></i> 필터 열기';
+    }
+}
+
 /**
  * [Core] JS아카이브 표준단원 마스터 테이블 구조
  * 룰북 및 마스터 테이블에 등재된 완벽한 소단원 기준 화이트리스트
@@ -501,6 +549,12 @@ function resetMixerState() {
   document.getElementById('axisFilter').value = '';
   document.getElementById('q-unit-filter').innerHTML = '<option value="">전체 표준단원</option>';
   document.getElementById('q-view-mode').value = 'list';
+  
+  // 필터가 닫혀있다면 다시 열어줌
+  const panel = document.getElementById('filter-panel-content');
+  if (panel.style.display === 'none') {
+      toggleFilterPanel();
+  }
 
   renderExamList();
   updateBulkStatus();
