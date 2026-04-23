@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.7.1 (Slim Header + Outer Frame)</title>
+    <title>JS아카이브 엔진 - Stage E v1.7.3 (Exam Frame Fixed)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
@@ -22,8 +22,9 @@
         .mode-tab.active { background: white; color: #0f172a; }
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         
-        .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; padding-bottom: 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
-        .page-exam-frame { position: absolute; top: 10.5mm; right: 10.5mm; bottom: 10.5mm; left: 10.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
+        /* 미세 보정: page 상단 패딩 14mm로 소폭 축소, 프레임 위치 11.5mm로 안쪽 조정 */
+        .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
+        .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
         .page-header { display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 0.8pt solid #000; padding: 5px 8px 6px; margin-bottom: 8px; font-weight: 700; font-size: 9.4pt; line-height: 1.2; background: #fff; }
         .page-header.page-header--exam { gap: 4px; }
         .page-header-title { text-align: center; font-size: 15.5pt; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
@@ -42,16 +43,7 @@
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
         
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
-        
-        .q-content img, .q-image-wrap img { 
-            display: block; 
-            max-width: 100%; 
-            height: auto; 
-            margin: 8px auto; 
-            break-inside: avoid;
-            page-break-inside: avoid;
-        }
-
+        .q-content img, .q-image-wrap img { display: block; max-width: 100%; height: auto; margin: 8px auto; break-inside: avoid; page-break-inside: avoid; }
         .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
         .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
         .q-content img.img-fit-micro, .q-image-wrap img.img-fit-micro { max-width: 76%; max-height: 90px; }
@@ -60,37 +52,17 @@
         .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
         .choice-no { width: 20px; flex-shrink: 0; font-weight: bold; }
         .choice-text { flex: 1; word-break: keep-all; overflow-wrap: anywhere; }
-
         .choices-compact { display: flex; flex-wrap: wrap; gap: 4px 15px; }
         .choices-compact .choice-item { min-width: 15%; }
-
         .choices-block { display: flex; flex-direction: column; gap: 5px; }
-        .choices-block .choice-item { 
-            padding: 0; 
-            background: transparent; 
-            border: none; 
-            border-radius: 0; 
-        }
+        .choices-block .choice-item { padding: 0; background: transparent; border: none; border-radius: 0; }
 
         .answer-box { flex: 1; border: none; margin-top: 10px; background: transparent; }
-        
         table.question-table { border-collapse: collapse; width: 100%; max-width: 280px; table-layout: fixed; font-size: 8.6pt; line-height: 1.35; margin: 8px 0; margin-left: 0; margin-right: auto; text-align: left; }
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
         table.question-table th { font-weight: 700; }
-
-        .question-table-wrap {
-            margin: 8px 0 10px 0;
-        }
-
-        .question-note-box,
-        .box {
-            margin: 8px 0 10px 0;
-            padding: 8px 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            background: #f8fafc;
-            line-height: 1.55;
-        }
+        .question-table-wrap { margin: 8px 0 10px 0; }
+        .question-note-box, .box { margin: 8px 0 10px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
@@ -119,8 +91,8 @@
             <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
-        <div style="display:flex; gap:10px;">
-            <button class="mode-tab" id="btn-shuffle" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
+        <div style="display:flex; gap:10px; align-items:center;">
+            <span id="qpp-display" style="color:rgba(255,255,255,0.7); font-size:11px; font-weight:bold;"></span>
             <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
         </div>
     </div>
@@ -226,8 +198,12 @@ function buildExamHeaderTarget(meta) {
 
 function makePage(area, type, pNum) {
     const page = document.createElement('div'); page.className = 'page';
-    const frame = document.createElement('div'); frame.className = 'page-exam-frame';
-    page.appendChild(frame);
+    
+    // 외곽 프레임은 exam 모드에서만 삽입되도록 조건 제한
+    if (type === 'exam') {
+        const frame = document.createElement('div'); frame.className = 'page-exam-frame';
+        page.appendChild(frame);
+    }
 
     const header = document.createElement('div');
     header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
@@ -264,6 +240,10 @@ async function init() {
     AppState.mode = p.get('mode') || 'exam'; AppState.qpp = parseInt(p.get('qpp')) || 4;
     document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
     const targetBtn = document.getElementById('btn-' + AppState.mode); if (targetBtn) targetBtn.classList.add('active');
+    
+    const qppDisp = document.getElementById('qpp-display');
+    if (qppDisp) qppDisp.innerText = `QPP: ${AppState.qpp}`;
+
     const dataUrl = p.get('data'); if (!dataUrl) return;
     const s = document.createElement('script'); s.src = dataUrl + '?v=' + Date.now();
     s.onload = async () => {
@@ -275,15 +255,11 @@ async function init() {
     };
     document.body.appendChild(s);
 }
+
 function switchMode(mode) {
     const url = new URL(window.location.href); url.searchParams.set('mode', mode); window.location.href = url.toString();
 }
-async function shuffleData() {
-    for (let i = AppState.data.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
-    }
-    await render();
-}
+
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
 
 function extractChoice(c) {
@@ -334,7 +310,6 @@ function normalizeQuestionTables(html) {
         .replace(/<div class="question-table-wrap">\s*<table/gi, '<div class="question-table-wrap"><table class="question-table"')
         .replace(/<table(?![^>]*class=)/gi, '<table class="question-table"');
 }
-
 
 function normalizeQuestionNotes(html) {
     if (!html || /question-note-box/.test(html)) return html;
