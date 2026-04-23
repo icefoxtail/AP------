@@ -329,7 +329,8 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "이차함수",
     "standardUnitOrder": 6,
-    "content": "[도형필요] 오른쪽 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$의 내부에 직사각형을 딱 맞게 넣으려고 한다. 삼각형 $ABC$의 넓이가 $6$이고 $\\overline{BC}=4$일 때, 이 직사각형의 넓이의 최댓값을 구하시오. [4.8점]",
+    "content": "오른쪽 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$의 내부에 직사각형을 딱 맞게 넣으려고 한다. 삼각형 $ABC$의 넓이가 $6$이고 $\\overline{BC}=4$일 때, 이 직사각형의 넓이의 최댓값을 구하시오. [4.8점]",
+    "image": "assets/images/25_팔마고_1학기_중간_고1_기출/q17.png",
     "choices": [
       "3",
       "6",
