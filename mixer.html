@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS아카이브 | 믹서 출제 (v3.3 Level Balanced)</title>
+    <title>JS아카이브 | 믹서 출제 (v3.3.2 Normalized)</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
@@ -49,15 +49,32 @@
         .panel-action.primary { background: var(--blue); color: white; }
         .panel-action.primary:hover { background: var(--blue-dark); }
 
-        .paper-item { padding: 14px 16px; border-radius: 12px; background: white; border: 1px solid var(--gray-200); margin-bottom: 10px; cursor: pointer; transition: 0.2s; }
+        /* 인덱스 기준 시험지 카드 UI */
+        .paper-item {
+          padding: 14px 16px;
+          border-radius: 12px;
+          background: white;
+          border: 1px solid var(--gray-200);
+          margin-bottom: 10px;
+          cursor: pointer;
+          transition: 0.2s;
+        }
         .paper-item:hover { border-color: var(--blue); background: #fdfdfe; }
         .paper-item.active { border-color: var(--blue); background: var(--blue-soft); box-shadow: inset 0 0 0 1px var(--blue); }
         .paper-item.selected { border-color: var(--blue-dark); background: #eef2ff; }
+
         .exam-item-head { display: flex; gap: 10px; align-items: flex-start; }
         .exam-check { margin-top: 2px; cursor: pointer; width: 16px; height: 16px; accent-color: var(--blue); flex-shrink: 0; }
         .exam-main { flex: 1; min-width: 0; }
-        .paper-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .paper-meta { font-size: 10.5px; color: var(--gray-500); font-weight: 600; }
+        .paper-name { font-size: 15px; font-weight: 800; line-height: 1.32; color: var(--text-main); margin-bottom: 6px; word-break: keep-all; overflow-wrap: anywhere; }
+        .paper-sub { font-size: 12px; line-height: 1.5; color: var(--gray-500); margin-bottom: 8px; word-break: keep-all; overflow-wrap: anywhere; }
+        .paper-meta-line { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+        
+        .meta-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 9px; border-radius: 8px; font-size: 10.5px; font-weight: 800; color: #475569; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .meta-badge.primary { color: var(--blue); background: #eff6ff; border-color: #dbeafe; }
+        .meta-badge.green { color: #047857; background: #ecfdf5; border-color: #b7efd4; }
+        
+        .paper-file-name { font-size: 10.5px; line-height: 1.4; color: #94a3b8; word-break: break-all; padding-top: 8px; border-top: 1px dashed #e2e8f0; }
 
         /* Middle: Action Bar & Questions */
         .panel-questions { flex: 1; min-width: 0; }
@@ -205,6 +222,69 @@
 </div>
 
 <script>
+// [인덱스 데이터 정규화 레이어 (Normalization Functions)]
+function compactText(value) { return String(value || '').replace(/\s+/g, '').trim(); }
+
+function normalizeContentType(value) {
+    const raw = String(value || '').trim();
+    const compact = compactText(raw);
+    if (!compact) return '';
+    if (compact.includes('단원평가')) return '단원평가';
+    if (compact.includes('기출')) return '기출';
+    if (compact.includes('유형')) return '유형';
+    if (compact.includes('쪽지')) return '쪽지';
+    return raw;
+}
+
+function normalizeGrade(value) {
+    const compact = compactText(value);
+    if (compact === '고1' || compact === '고등1' || compact === '고등학교1학년') return '고1';
+    if (compact === '고2' || compact === '고등2' || compact === '고등학교2학년') return '고2';
+    if (compact === '고3' || compact === '고등3' || compact === '고등학교3학년') return '고3';
+    if (compact === '중1' || compact === '중등1' || compact === '중학교1학년') return '중1';
+    if (compact === '중2' || compact === '중등2' || compact === '중학교2학년') return '중2';
+    if (compact === '중3' || compact === '중등3' || compact === '중학교3학년') return '중3';
+    return String(value || '').trim();
+}
+
+function normalizeSemester(value) {
+    const compact = compactText(value);
+    if (!compact) return '';
+    if (compact === '1' || compact === '1학기') return '1';
+    if (compact === '2' || compact === '2학기') return '2';
+    return String(value || '').trim();
+}
+
+function normalizeExamType(value) {
+    const compact = compactText(value).toLowerCase();
+    if (!compact) return '';
+    if (compact === 'mid' || compact === 'middle' || compact === '중간' || compact === '중간고사') return 'mid';
+    if (compact === 'final' || compact === '기말' || compact === '기말고사') return 'final';
+    return String(value || '').trim();
+}
+
+function normalizeYear(value) {
+    if (value === '' || value == null) return '';
+    const s = String(value).replace(/[^\d]/g, '');
+    if (!s) return '';
+    const n = parseInt(s, 10);
+    return Number.isFinite(n) ? n : '';
+}
+
+function normalizeExamMeta(ex) {
+    const normalized = { ...(ex || {}) };
+    normalized.file = String(ex?.file || '').trim();
+    normalized.school = String(ex?.school || '').trim();
+    normalized.topic = String(ex?.topic || '').trim();
+    normalized.subject = String(ex?.subject || '').trim();
+    normalized.grade = normalizeGrade(ex?.grade);
+    normalized.year = normalizeYear(ex?.year);
+    normalized.semester = normalizeSemester(ex?.semester);
+    normalized.examType = normalizeExamType(ex?.examType);
+    normalized.contentType = normalizeContentType(ex?.contentType);
+    return normalized;
+}
+
 const STANDARD_UNIT_MASTER = {
   "중1 수학": [ { key: "M1-01", name: "소인수분해", order: 1 }, { key: "M1-02", name: "정수와 유리수", order: 2 }, { key: "M1-03", name: "문자와 식", order: 3 }, { key: "M1-04", name: "좌표평면과 그래프", order: 4 }, { key: "M1-05", name: "기본도형", order: 5 }, { key: "M1-06", name: "평면도형의 성질", order: 6 }, { key: "M1-07", name: "입체도형의 성질", order: 7 }, { key: "M1-08", name: "자료의 정리와 해석", order: 8 } ],
   "중2 수학": [ { key: "M2-01", name: "수와 식", order: 1 }, { key: "M2-02", name: "일차부등식", order: 2 }, { key: "M2-03", name: "연립일차방정식", order: 3 }, { key: "M2-04", name: "일차함수와 그래프", order: 4 }, { key: "M2-05", name: "도형의 성질", order: 5 }, { key: "M2-06", name: "도형의 닮음", order: 6 }, { key: "M2-07", name: "피타고라스 정리", order: 7 }, { key: "M2-08", name: "확률", order: 8 } ],
@@ -230,14 +310,12 @@ let filteredPaperPool = [];
 let currentQuestions = [];
 let currentPaper = null;
 
-// [Pool Variables]
-let selectedExamFiles = new Set();
-let loadedExamQuestionMap = {};
-let mergedPool = [];
-let selectedPoolLoading = false;
-let lastSelectedPoolKey = '';
+// [유틸리티 함수]
+function getQKey(paper, q, fallbackIdx) {
+    const qId = q.id || (fallbackIdx + 1);
+    return `${paper.file}_${qId}`;
+}
 
-// [Helper Functions]
 function getAvailableCoursesByGrade(grade) {
   if (!grade) return [];
   if (grade === "중1") return ["중1 수학"];
@@ -331,7 +409,7 @@ function distributedPick(candidates, count) {
   return picked;
 }
 
-// [v3.3 난이도 밸런스 추출 헬퍼 함수 추가]
+// [난이도 밸런스 추출 헬퍼 함수]
 function normalizeLevel(level) {
   const v = String(level || '').trim();
   if (v === '하' || v.toLowerCase() === 'low') return '하';
@@ -371,7 +449,6 @@ function calcLevelTargets(totalCount, ratioMap) {
     remain--;
     idx++;
   }
-
   return base;
 }
 
@@ -391,7 +468,6 @@ function pickBalancedByLevel(candidates, totalCount, mode) {
   const groups = groupCandidatesByLevel(candidates);
 
   let picked = [];
-
   ['하', '중', '상'].forEach(level => {
     const need = targets[level] || 0;
     if (!need) return;
@@ -405,7 +481,6 @@ function pickBalancedByLevel(candidates, totalCount, mode) {
     const supplement = distributedPick(remainPool, totalCount - picked.length);
     picked.push(...supplement);
   }
-
   return picked.slice(0, totalCount);
 }
 
@@ -418,7 +493,78 @@ function getLevelSummaryText(items) {
   return `하 ${stat['하']} / 중 ${stat['중']} / 상 ${stat['상']}${stat['미분류'] ? ` / 미분류 ${stat['미분류']}` : ''}`;
 }
 
+// [Card UI Formatter for Mixer]
+function examTypeLabel(examType) {
+  const v = String(examType || '').trim().toLowerCase();
+  if (v === 'mid' || v === '중간' || v === '중간고사') return '중간';
+  if (v === 'final' || v === '기말' || v === '기말고사') return '기말';
+  return examType || '';
+}
+
+function buildMixerMetaBadge(text, variant = '') {
+  if (!text) return '';
+  return `<span class="meta-badge ${variant}">${text}</span>`;
+}
+
+function buildMixerExamCardInfo(ex) {
+  const fileName = String(ex.file || '파일정보없음').replace(/\.js$/i, '');
+  const semester = ex.semester ? `${ex.semester}학기` : '';
+  const examName = examTypeLabel(ex.examType);
+  const contentTypeLabel = ex.contentType || '기출';
+  const isSheet = contentTypeLabel === '기출';
+
+  let title = '';
+  let subtitle = '';
+  let metaHTML = '';
+
+  if (isSheet) {
+    title = ex.school || fileName;
+    subtitle = [
+      ex.year ? `${ex.year}년` : '',
+      semester,
+      examName,
+      ex.subject || '',
+      contentTypeLabel
+    ].filter(Boolean).join(' · ');
+
+    metaHTML = [
+      buildMixerMetaBadge(ex.grade || ''),
+      buildMixerMetaBadge(ex.subject || '', 'primary'),
+      buildMixerMetaBadge(`${semester} ${examName}`.trim(), 'primary')
+    ].filter(Boolean).join('');
+  } else {
+    title = ex.topic || ex.school || fileName;
+    subtitle = [
+      ex.grade || '',
+      contentTypeLabel,
+      ex.subject || ''
+    ].filter(Boolean).join(' · ');
+
+    if (!subtitle) subtitle = contentTypeLabel;
+
+    metaHTML = [
+      buildMixerMetaBadge(ex.grade || ''),
+      buildMixerMetaBadge(contentTypeLabel, 'green'),
+      buildMixerMetaBadge(ex.subject || ''),
+      (ex.school && ex.school !== 'AP수학') ? buildMixerMetaBadge(ex.school) : ''
+    ].filter(Boolean).join('');
+  }
+
+  return {
+    title,
+    subtitle: subtitle || '상세 정보 없음',
+    metaHTML,
+    fileName
+  };
+}
+
 // [Pool Functions]
+let selectedExamFiles = new Set();
+let loadedExamQuestionMap = {};
+let mergedPool = [];
+let selectedPoolLoading = false;
+let lastSelectedPoolKey = '';
+
 function getSelectedExamList() {
   return engineDB.exams.filter(ex => selectedExamFiles.has(ex.file));
 }
@@ -529,7 +675,8 @@ async function loadDB() {
     const s = document.createElement('script');
     s.src = 'db.js?v=' + Date.now();
     s.onload = () => {
-      engineDB = window.mainDB || { exams: [] };
+      const rawDB = window.mainDB || { exams: [] };
+      engineDB = { exams: rawDB.exams.map(normalizeExamMeta).filter(e => e.file) };
       res();
     };
     s.onerror = () => {
@@ -546,7 +693,7 @@ async function init() {
     populateCourseFilter();
     populateStandardUnitFilter();
     syncStartEndUnitFilters();
-    renderPaperList();
+    renderExamList();
 }
 
 function setupEvents() {
@@ -562,6 +709,7 @@ function setupEvents() {
   document.getElementById('paperSearch').oninput = renderExamList;
 }
 
+// [Filter Updates]
 function populateCourseFilter() {
   const grade = document.getElementById('gradeFilter').value;
   const courseSelect = document.getElementById('courseFilter');
@@ -599,10 +747,7 @@ function syncStartEndUnitFilters() {
   });
 }
 
-function renderPaperList() {
-    renderExamList();
-}
-
+// [Render Exam List]
 function renderExamList() {
   const keyword = document.getElementById('paperSearch').value.toLowerCase();
   const grade = document.getElementById('gradeFilter').value;
@@ -613,7 +758,11 @@ function renderExamList() {
 
   filteredPaperPool = engineDB.exams.filter(ex => {
     const searchBase = [
-      ex.school || '', ex.topic || '', ex.file || '', ex.subject || '', ex.primaryStandardCourse || '',
+      ex.school || '',
+      ex.topic || '',
+      ex.file || '',
+      ex.subject || '',
+      ex.primaryStandardCourse || '',
       ...(Array.isArray(ex.courseRanges) ? ex.courseRanges.map(cr => cr.standardCourse || '') : [])
     ].join(' ').toLowerCase();
 
@@ -629,14 +778,18 @@ function renderExamList() {
 
   filteredPaperPool.forEach(ex => {
     const checked = selectedExamFiles.has(ex.file);
+    const info = buildMixerExamCardInfo(ex);
+
     const div = document.createElement('div');
     div.className = `paper-item ${currentPaper?.file === ex.file ? 'active' : ''} ${checked ? 'selected' : ''}`;
     div.innerHTML = `
       <div class="exam-item-head">
         <input type="checkbox" class="exam-check" ${checked ? 'checked' : ''} onclick="event.stopPropagation(); toggleExamSelection('${ex.file}', this.checked)">
         <div class="exam-main">
-          <div class="paper-name">${ex.school || ex.topic || ex.file}</div>
-          <div class="paper-meta">${ex.grade} · ${ex.contentType}</div>
+          <div class="paper-name">${info.title}</div>
+          <div class="paper-sub">${info.subtitle}</div>
+          <div class="paper-meta-line">${info.metaHTML}</div>
+          <div class="paper-file-name">${info.fileName}</div>
         </div>
       </div>
     `;
@@ -773,7 +926,6 @@ function toggleCartItem(idx) {
     updateCart(); renderQuestionList(); renderActionBar();
 }
 
-// [v3.3 난이도 밸런스 추출 적용된 handleAutoPick]
 async function handleAutoPick(mode) {
   const count = parseInt(document.getElementById('autoCountInput').value);
   if (!count) return alert('문항 수를 입력하세요.');
@@ -888,14 +1040,13 @@ function updateCart() {
     container.innerHTML = cart.length ? '' : '<div class="empty-box" style="font-size:12px;">카트가 비어있습니다.</div>';
     cart.forEach((c, i) => {
         const div = document.createElement('div'); div.className = 'cart-item';
-        div.innerHTML = `<div class="cart-info"><div class="cart-q-text">${c._sourceTitle} - ${c.id || (i+1)}번</div></div><i class="fa-solid fa-times-circle" style="cursor:pointer; color:#ccc;" onclick="removeCart(${i})"></i>`;
+        div.innerHTML = `<div class="cart-info"><div class="cart-q-text">${c._sourceTitle} - ${c.id || (i+1)}번</div><div class="cart-q-sub">${(c.content||'').substring(0,25)}...</div></div><i class="fa-solid fa-times-circle" style="cursor:pointer; color:#ccc;" onclick="removeCart(${i})"></i>`;
         container.appendChild(div);
     });
 }
 
 function removeCart(i) { cart.splice(i, 1); updateCart(); renderQuestionList(); renderActionBar(); }
 
-// [v3.3 ActionBar Render 수정 적용]
 function renderActionBar() {
   const sourceMode = document.getElementById('source-mode')?.value || 'activeExam';
   let poolCount = 0;
@@ -907,8 +1058,12 @@ function renderActionBar() {
       ? `선택 pool: ${poolCount}문항`
       : `대상: ${poolCount}개 시험지`;
 
-  // 추출 직후가 아니면 baseText 표시, 추출 후에는 handleAutoPick에서 변경한 텍스트 유지
-  if (!document.getElementById('poolStatusLabel').innerText.startsWith('추출 완료')) {
+  // 추출 완료 메시지가 없을 때만 기본 텍스트 표시
+  const currentLabel = document.getElementById('poolStatusLabel').innerText;
+  if (!currentLabel.startsWith('추출 완료')) {
+      document.getElementById('poolStatusLabel').innerText = baseText;
+  } else {
+      // 만약 소스 모드나 옵션이 바뀌면 추출 완료 메시지를 리셋
       document.getElementById('poolStatusLabel').innerText = baseText;
   }
 
@@ -920,8 +1075,14 @@ function openMixed() {
     if (!cart.length) return alert('문항을 담아주세요.');
     const qpp = document.getElementById('print-qpp').value;
     const meta = { title: `믹서 출제 (${cart.length}문항)`, count: cart.length, qpp, at: new Date().toISOString() };
-    try { localStorage.setItem('mixedQuestions', JSON.stringify(cart)); localStorage.setItem('mixedMeta', JSON.stringify(meta)); } catch(e) {}
-    try { sessionStorage.setItem('mixedQuestions', JSON.stringify(cart)); sessionStorage.setItem('mixedMeta', JSON.stringify(meta)); } catch(e) {}
+    
+    let lOk = true, sOk = true;
+    try { localStorage.setItem('mixedQuestions', JSON.stringify(cart)); localStorage.setItem('mixedMeta', JSON.stringify(meta)); } catch(e) { lOk = false; }
+    try { sessionStorage.setItem('mixedQuestions', JSON.stringify(cart)); sessionStorage.setItem('mixedMeta', JSON.stringify(meta)); } catch(e) { sOk = false; }
+    
+    if (!lOk && !sOk) alert('경고: 브라우저 저장소 용량이 가득 찼습니다. 출제가 불가능할 수 있습니다.');
+    else if (!lOk) console.warn('LocalStorage 저장 실패 (새 탭에서 세션 데이터 사용)');
+
     window.open(`mixed_engine.html?mode=exam&qpp=${qpp}`, '_blank');
 }
 window.onload = init;
