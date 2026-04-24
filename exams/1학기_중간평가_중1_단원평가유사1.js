@@ -430,7 +430,7 @@ window.questionBank = [
     "standardUnitKey": "M1-01",
     "standardUnit": "소인수분해",
     "standardUnitOrder": 1,
-    "content": "$45 \\times a$는 어떤 자연수 $b$의 제곱이라고 한다. $a, b$의 값 중 두 번째로 작은 값을 각각 구하는 과정을 서술하시오. [6점]",
+    "content": "$45 \\times a$는 어떤 자연수 $b$의 제곱이라고 한다. $a, b$의 값 중 두 번째로 작은 값을 각각 구하는 과정을 서술하시오.($a, b$는 자연수) [6점]",
     "choices": [],
     "answer": "a=20, b=30",
     "solution": "$45=3^2\\times5$\n$45\\times a=b^2$ 가 되려면 소인수의 지수가 모두 짝수여야 한다.\n따라서 $a$는 5에 어떤 자연수의 제곱을 곱한 꼴이어야 하므로\n$a=5\\times k^2$ ($k$는 자연수)\n이다.\n$k=1$이면 $a=5$, $b^2=45\\times5=225=15^2$ 이므로 $b=15$\n$k=2$이면 $a=20$, $b^2=45\\times20=900=30^2$ 이므로 $b=30$\n\\therefore 두 번째로 작은 값은 $a=20$, $b=30$이다."
