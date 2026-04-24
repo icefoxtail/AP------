@@ -38,7 +38,6 @@
         .panel-papers { width: 360px; flex-shrink: 0; background: var(--gray-50); }
         .filter-area { padding: 15px 20px; border-bottom: 1px solid var(--gray-200); background: white; display: flex; flex-direction: column; gap: 8px; }
         
-        /* 필터 토글 버튼 (소형 보조버튼화) */
         .btn-filter-toggle {
             height: 28px;
             padding: 0 12px;
@@ -196,11 +195,13 @@
             <select id="q-level-filter" class="form-select" style="width:110px;">
                 <option value="">전체 난이도</option>
                 <option value="상">상</option>
-                <option value="중상">중상</option>
                 <option value="중">중</option>
                 <option value="하">하</option>
             </select>
-            <select id="q-view-mode" class="form-select" style="width:110px;"><option value="list">리스트형</option><option value="group">그룹형</option></select>
+            <select id="q-view-mode" class="form-select" style="width:110px;">
+                <option value="list">문항순 보기</option>
+                <option value="group">단원별 보기</option>
+            </select>
             <button class="btn-action primary btn-filter-all" onclick="addCurrentFilterAll()">필터 담기</button>
         </div>
 
@@ -221,6 +222,14 @@
         <div class="panel-body" id="cart-items"></div>
 
         <div class="cart-footer">
+            <button class="btn-action reset" type="button" onclick="clearCartOnly()" style="margin-bottom:10px; width:100%;">카트 비우기</button>
+            <input
+              type="text"
+              id="mixed-title-input"
+              class="form-select"
+              placeholder="시험지 제목 입력"
+              style="height:40px; margin-bottom:10px; padding:0 12px; font-weight:700;"
+            >
             <select id="cart-level-order" class="form-select" style="height:40px; margin-bottom:10px;">
                 <option value="original">담은 순서</option>
                 <option value="high-first">난이도순 (상→하)</option>
@@ -254,7 +263,6 @@ function toggleFilterPanel() {
 
 /**
  * [Core] JS아카이브 표준단원 마스터 테이블 구조
- * 룰북 및 마스터 테이블에 등재된 완벽한 소단원 기준 화이트리스트
  */
 const COURSE_BASE_ORDER = {
     "중1 수학": 100, "중2 수학": 200, "중3 수학": 300,
@@ -263,7 +271,6 @@ const COURSE_BASE_ORDER = {
 };
 
 const MASTER_TABLE = {
-    // 중1 수학
     "M1-01": { course: "중1 수학", unit: "소인수분해", order: 1 },
     "M1-02": { course: "중1 수학", unit: "정수와 유리수", order: 2 },
     "M1-03": { course: "중1 수학", unit: "문자와 식", order: 3 },
@@ -272,7 +279,6 @@ const MASTER_TABLE = {
     "M1-06": { course: "중1 수학", unit: "평면도형의 성질", order: 6 },
     "M1-07": { course: "중1 수학", unit: "입체도형의 성질", order: 7 },
     "M1-08": { course: "중1 수학", unit: "자료의 정리와 해석", order: 8 },
-    // 중2 수학
     "M2-01": { course: "중2 수학", unit: "수와 식", order: 1 },
     "M2-02": { course: "중2 수학", unit: "일차부등식", order: 2 },
     "M2-03": { course: "중2 수학", unit: "연립일차방정식", order: 3 },
@@ -281,7 +287,6 @@ const MASTER_TABLE = {
     "M2-06": { course: "중2 수학", unit: "도형의 닮음", order: 6 },
     "M2-07": { course: "중2 수학", unit: "피타고라스 정리", order: 7 },
     "M2-08": { course: "중2 수학", unit: "확률", order: 8 },
-    // 중3 수학
     "M3-01": { course: "중3 수학", unit: "실수와 그 계산", order: 1 },
     "M3-02": { course: "중3 수학", unit: "다항식의 곱셈과 인수분해", order: 2 },
     "M3-03": { course: "중3 수학", unit: "이차방정식", order: 3 },
@@ -289,8 +294,6 @@ const MASTER_TABLE = {
     "M3-05": { course: "중3 수학", unit: "삼각비", order: 5 },
     "M3-06": { course: "중3 수학", unit: "원의 성질", order: 6 },
     "M3-07": { course: "중3 수학", unit: "통계", order: 7 },
-    
-    // 고등 - 공통수학1
     "H22-C-01": { course: "공통수학1", unit: "다항식의 연산", order: 1 },
     "H22-C-02": { course: "공통수학1", unit: "항등식과 나머지 정리", order: 2 },
     "H22-C-03": { course: "공통수학1", unit: "인수분해", order: 3 },
@@ -300,7 +303,6 @@ const MASTER_TABLE = {
     "H22-C-07": { course: "공통수학1", unit: "합의 법칙과 곱의 법칙", order: 7 },
     "H22-C-08": { course: "공통수학1", unit: "순열과 조합", order: 8 },
     "H22-C-09": { course: "공통수학1", unit: "행렬과 그 연산", order: 9 },
-    // 고등 - 공통수학2
     "H22-C2-01": { course: "공통수학2", unit: "평면좌표", order: 1 },
     "H22-C2-02": { course: "공통수학2", unit: "직선의 방정식", order: 2 },
     "H22-C2-03": { course: "공통수학2", unit: "원의 방정식", order: 3 },
@@ -310,7 +312,6 @@ const MASTER_TABLE = {
     "H22-C2-07": { course: "공통수학2", unit: "함수", order: 7 },
     "H22-C2-08": { course: "공통수학2", unit: "유리함수", order: 8 },
     "H22-C2-09": { course: "공통수학2", unit: "무리함수", order: 9 },
-    // 고등 - 대수
     "H22-A-01": { course: "대수", unit: "지수와 로그", order: 1 },
     "H22-A-02": { course: "대수", unit: "지수함수", order: 2 },
     "H22-A-03": { course: "대수", unit: "로그함수", order: 3 },
@@ -319,7 +320,6 @@ const MASTER_TABLE = {
     "H22-A-06": { course: "대수", unit: "등차수열과 등비수열", order: 6 },
     "H22-A-07": { course: "대수", unit: "수열의 합", order: 7 },
     "H22-A-08": { course: "대수", unit: "수학적 귀납법", order: 8 },
-    // 고등 - 미적분Ⅰ
     "H22-M1-01": { course: "미적분Ⅰ", unit: "함수의 극한", order: 1 },
     "H22-M1-02": { course: "미적분Ⅰ", unit: "함수의 연속", order: 2 },
     "H22-M1-03": { course: "미적분Ⅰ", unit: "미분계수", order: 3 },
@@ -328,7 +328,6 @@ const MASTER_TABLE = {
     "H22-M1-06": { course: "미적분Ⅰ", unit: "부정적분", order: 6 },
     "H22-M1-07": { course: "미적분Ⅰ", unit: "정적분", order: 7 },
     "H22-M1-08": { course: "미적분Ⅰ", unit: "정적분의 활용", order: 8 },
-    // 고등 - 미적분Ⅱ
     "H22-M2-01": { course: "미적분Ⅱ", unit: "수열의 극한", order: 1 },
     "H22-M2-02": { course: "미적분Ⅱ", unit: "급수", order: 2 },
     "H22-M2-03": { course: "미적분Ⅱ", unit: "지수함수와 로그함수의 미분", order: 3 },
@@ -337,14 +336,12 @@ const MASTER_TABLE = {
     "H22-M2-06": { course: "미적분Ⅱ", unit: "도함수의 활용", order: 6 },
     "H22-M2-07": { course: "미적분Ⅱ", unit: "여러 가지 적분법", order: 7 },
     "H22-M2-08": { course: "미적분Ⅱ", unit: "정적분의 활용", order: 8 },
-    // 고등 - 확률과 통계
     "H22-PS-01": { course: "확률과 통계", unit: "순열과 조합", order: 1 },
     "H22-PS-02": { course: "확률과 통계", unit: "이항정리", order: 2 },
     "H22-PS-03": { course: "확률과 통계", unit: "확률의 뜻과 활용", order: 3 },
     "H22-PS-04": { course: "확률과 통계", unit: "조건부확률", order: 4 },
     "H22-PS-05": { course: "확률과 통계", unit: "확률분포", order: 5 },
     "H22-PS-06": { course: "확률과 통계", unit: "통계적 추정", order: 6 },
-    // 고등 - 기하
     "H22-GE-01": { course: "기하", unit: "이차곡선", order: 1 },
     "H22-GE-02": { course: "기하", unit: "이차곡선의 접선", order: 2 },
     "H22-GE-03": { course: "기하", unit: "공간도형", order: 3 },
@@ -355,189 +352,33 @@ const MASTER_TABLE = {
     "H22-GE-08": { course: "기하", unit: "도형의 방정식", order: 8 }
 };
 
-/**
- * [Core] Legacy (15개정/비표준명) -> Master Key 직접 매핑
- * 이 매핑표에 명시된 원문은 곧바로 Master Table의 정식 소단원 키로 변환됨
- */
 const LEGACY_TO_KEY_MAP = {
-    // 중1
-    "중1 수학::소인수분해": "M1-01",
-    "중1 수학::정수와 유리수": "M1-02",
-    "중1 수학::문자와 식": "M1-03",
-    "중1 수학::좌표평면과 그래프": "M1-04",
-    "중1 수학::기본도형": "M1-05",
-    "중1 수학::평면도형의 성질": "M1-06",
-    "중1 수학::입체도형의 성질": "M1-07",
-    "중1 수학::자료의 정리와 해석": "M1-08",
-    // 중2
-    "중2 수학::유리수와 순환소수": "M2-01",
-    "중2 수학::수와 식": "M2-01",
-    "중2 수학::식의 계산": "M2-01",
-    "중2 수학::일차부등식": "M2-02",
-    "중2 수학::연립일차방정식": "M2-03",
-    "중2 수학::일차함수": "M2-04",
-    "중2 수학::일차함수의 그래프": "M2-04",
-    "중2 수학::일차함수와 그래프": "M2-04",
-    "중2 수학::삼각형의 성질": "M2-05",
-    "중2 수학::사각형의 성질": "M2-05",
-    "중2 수학::평행사변형": "M2-05",
-    "중2 수학::여러 가지 사각형": "M2-05",
-    "중2 수학::도형의 성질": "M2-05",
-    "중2 수학::닮음": "M2-06",
-    "중2 수학::닮은 도형": "M2-06",
-    "중2 수학::도형의 닮음": "M2-06",
-    "중2 수학::피타고라스 정리": "M2-07",
-    "중2 수학::확률": "M2-08",
-    // 중3
-    "중3 수학::제곱근과 실수": "M3-01",
-    "중3 수학::근호를 포함한 식의 계산": "M3-01",
-    "중3 수학::실수와 그 계산": "M3-01",
-    "중3 수학::다항식의 곱셈": "M3-02",
-    "중3 수학::인수분해": "M3-02",
-    "중3 수학::다항식의 곱셈과 인수분해": "M3-02",
-    "중3 수학::이차방정식": "M3-03",
-    "중3 수학::이차함수": "M3-04",
-    "중3 수학::이차함수의 그래프": "M3-04",
-    "중3 수학::이차함수와 그래프": "M3-04",
-    "중3 수학::삼각비": "M3-05",
-    "중3 수학::원의 성질": "M3-06",
-    "중3 수학::원주각": "M3-06",
-    "중3 수학::접선과 현": "M3-06",
-    "중3 수학::원과 직선": "M3-06",
-    "중3 수학::통계": "M3-07",
-    "중3 수학::산점도": "M3-07",
-    "중3 수학::상관관계": "M3-07",
-    "중3 수학::산점도와 상관관계": "M3-07",
-
-    // 수학(상) -> 공통수학1, 2
-    "수학(상)::다항식의 연산": "H22-C-01",
-    "수학(상)::항등식과 나머지정리": "H22-C-02",
-    "수학(상)::항등식과 나머지 정리": "H22-C-02",
-    "수학(상)::인수분해": "H22-C-03",
-    "수학(상)::복소수": "H22-C-04",
-    "수학(상)::이차방정식": "H22-C-04",
-    "수학(상)::이차방정식의 근과 계수": "H22-C-04",
-    "수학(상)::이차방정식과 이차함수": "H22-C-05",
-    "수학(상)::이차함수": "H22-C-05",
-    "수학(상)::여러 가지 방정식": "H22-C-06",
-    "수학(상)::여러 가지 부등식": "H22-C-06",
-    "수학(상)::여러 가지 방정식과 부등식": "H22-C-06",
-    "수학(상)::평면좌표": "H22-C2-01",
-    "수학(상)::직선의 방정식": "H22-C2-02",
-    "수학(상)::원의 방정식": "H22-C2-03",
-    "수학(상)::도형의 이동": "H22-C2-04",
-
-    // 수학(하) -> 공통수학1, 2
-    "수학(하)::집합": "H22-C2-05",
-    "수학(하)::명제": "H22-C2-06",
-    "수학(하)::함수": "H22-C2-07",
-    "수학(하)::유리함수": "H22-C2-08",
-    "수학(하)::무리함수": "H22-C2-09",
-    "수학(하)::유리함수와 무리함수": "H22-C2-08", // 통합된 경우 대표 배정
-    "수학(하)::경우의 수": "H22-C-07", // 합의 법칙과 곱의 법칙
-    "수학(하)::합의 법칙과 곱의 법칙": "H22-C-07",
-    "수학(하)::순열": "H22-C-08",
-    "수학(하)::조합": "H22-C-08",
-    "수학(하)::순열과 조합": "H22-C-08",
-
-    // 수학I -> 대수
-    "수학Ⅰ::지수": "H22-A-01",
-    "수학Ⅰ::로그": "H22-A-01",
-    "수학Ⅰ::지수의 뜻과 성질": "H22-A-01",
-    "수학Ⅰ::로그의 뜻과 성질": "H22-A-01",
-    "수학Ⅰ::지수함수": "H22-A-02",
-    "수학Ⅰ::로그함수": "H22-A-03",
-    "수학Ⅰ::지수함수와 로그함수": "H22-A-02",
-    "수학Ⅰ::삼각함수": "H22-A-04",
-    "수학Ⅰ::삼각함수의 뜻과 값": "H22-A-04",
-    "수학Ⅰ::삼각함수의 그래프": "H22-A-04",
-    "수학Ⅰ::삼각방정식과 삼각부등식": "H22-A-04",
-    "수학Ⅰ::사인법칙과 코사인법칙": "H22-A-05",
-    "수학Ⅰ::등차수열": "H22-A-06",
-    "수학Ⅰ::등비수열": "H22-A-06",
-    "수학Ⅰ::등차수열과 등비수열": "H22-A-06",
-    "수학Ⅰ::수열의 합": "H22-A-07",
-    "수학Ⅰ::수학적 귀납법": "H22-A-08",
-
-    // 수학II -> 미적분I
-    "수학Ⅱ::함수의 극한": "H22-M1-01",
-    "수학Ⅱ::함수의 연속": "H22-M1-02",
-    "수학Ⅱ::미분계수": "H22-M1-03",
-    "수학Ⅱ::도함수": "H22-M1-04",
-    "수학Ⅱ::접선의 방정식": "H22-M1-05",
-    "수학Ⅱ::도함수의 활용": "H22-M1-05",
-    "수학Ⅱ::부정적분": "H22-M1-06",
-    "수학Ⅱ::정적분": "H22-M1-07",
-    "수학Ⅱ::적분의 활용": "H22-M1-08",
-    "수학Ⅱ::정적분의 활용": "H22-M1-08",
-
-    // 미적분 -> 미적분II
-    "미적분::수열의 극한": "H22-M2-01",
-    "미적분::급수": "H22-M2-02",
-    "미적분::지수함수와 로그함수의 미분": "H22-M2-03",
-    "미적분::삼각함수의 미분": "H22-M2-04",
-    "미적분::여러 가지 미분법": "H22-M2-05",
-    "미적분::도함수의 활용": "H22-M2-06",
-    "미적분::여러 가지 적분법": "H22-M2-07",
-    "미적분::정적분": "H22-M2-07",
-    "미적분::정적분의 활용": "H22-M2-08",
-
-    // 확률과 통계 -> 확률과 통계
-    "확률과 통계::경우의 수": "H22-PS-01", // 원순열, 중복순열 등 포괄
-    "확률과 통계::순열과 조합": "H22-PS-01",
-    "확률과 통계::이항정리": "H22-PS-02",
-    "확률과 통계::확률": "H22-PS-03",
-    "확률과 통계::확률의 뜻과 활용": "H22-PS-03",
-    "확률과 통계::조건부확률": "H22-PS-04",
-    "확률과 통계::통계": "H22-PS-05",
-    "확률과 통계::확률분포": "H22-PS-05",
-    "확률과 통계::통계적 추정": "H22-PS-06",
-
-    // 기하 / 기하와 벡터 -> 기하
-    "기하::이차곡선": "H22-GE-01",
-    "기하::이차곡선의 접선": "H22-GE-02",
-    "기하::공간도형": "H22-GE-03",
-    "기하::공간좌표": "H22-GE-04",
-    "기하::벡터의 연산": "H22-GE-05",
-    "기하::벡터의 성분": "H22-GE-06",
-    "기하::벡터의 내적": "H22-GE-07",
-    "기하::도형의 방정식": "H22-GE-08",
-    "기하와 벡터::포물선": "H22-GE-01",
-    "기하와 벡터::타원": "H22-GE-01",
-    "기하와 벡터::쌍곡선": "H22-GE-01",
-    "기하와 벡터::이차곡선과 직선": "H22-GE-02",
-    "기하와 벡터::공간도형": "H22-GE-03",
-    "기하와 벡터::공간좌표": "H22-GE-04",
-    "기하와 벡터::공간벡터": "H22-GE-04",
-    "기하와 벡터::벡터의 연산": "H22-GE-05",
-    "기하와 벡터::평면벡터의 성분과 내적": "H22-GE-06", // 대표 매핑
-    "기하와 벡터::직선과 원의 방정식": "H22-GE-08"
+    "중1 수학::소인수분해": "M1-01", "중1 수학::정수와 유리수": "M1-02", "중1 수학::문자와 식": "M1-03", "중1 수학::좌표평면과 그래프": "M1-04",
+    "중1 수학::기본도형": "M1-05", "중1 수학::평면도형의 성질": "M1-06", "중1 수학::입체도형의 성질": "M1-07", "중1 수학::자료의 정리와 해석": "M1-08",
+    "중2 수학::유리수와 순환소수": "M2-01", "중2 수학::수와 식": "M2-01", "중2 수학::식의 계산": "M2-01", "중2 수학::일차부등식": "M2-02",
+    "중2 수학::연립일차방정식": "M2-03", "중2 수학::일차함수": "M2-04", "중2 수학::일차함수와 그래프": "M2-04", "중2 수학::도형의 성질": "M2-05",
+    "중2 수학::도형의 닮음": "M2-06", "중2 수학::피타고라스 정리": "M2-07", "중2 수학::확률": "M2-08", "중3 수학::실수와 그 계산": "M3-01",
+    "중3 수학::다항식의 곱셈과 인수분해": "M3-02", "중3 수학::이차방정식": "M3-03", "중3 수학::이차함수와 그래프": "M3-04", "중3 수학::삼각비": "M3-05",
+    "중3 수학::원의 성질": "M3-06", "중3 수학::통계": "M3-07",
+    "수학(상)::다항식의 연산": "H22-C-01", "수학(상)::항등식과 나머지 정리": "H22-C-02", "수학(상)::인수분해": "H22-C-03",
+    "수학(상)::복소수": "H22-C-04", "수학(상)::이차방정식": "H22-C-04", "수학(상)::이차방정식과 이차함수": "H22-C-05",
+    "수학(상)::여러 가지 방정식과 부등식": "H22-C-06", "수학(상)::평면좌표": "H22-C2-01", "수학(상)::직선의 방정식": "H22-C2-02",
+    "수학(상)::원의 방정식": "H22-C2-03", "수학(상)::도형의 이동": "H22-C2-04", "수학(하)::집합": "H22-C2-05",
+    "수학(하)::명제": "H22-C2-06", "수학(하)::함수": "H22-C2-07", "수학(하)::유리함수": "H22-C2-08", "수학(하)::무리함수": "H22-C2-09",
+    "수학(하)::순열과 조합": "H22-C-08", "수학Ⅰ::지수와 로그": "H22-A-01", "수학Ⅰ::지수함수": "H22-A-02", "수학Ⅰ::로그함수": "H22-A-03",
+    "수학Ⅰ::삼각함수": "H22-A-04", "수학Ⅰ::사인법칙과 코사인법칙": "H22-A-05", "수학Ⅰ::등차수열과 등비수열": "H22-A-06",
+    "수학Ⅰ::수열의 합": "H22-A-07", "수학Ⅰ::수학적 귀납법": "H22-A-08", "수학Ⅱ::함수의 극한": "H22-M1-01",
+    "수학Ⅱ::함수의 연속": "H22-M1-02", "수학Ⅱ::미분계수": "H22-M1-03", "수학Ⅱ::도함수": "H22-M1-04",
+    "수학Ⅱ::도함수의 활용": "H22-M1-05", "수학Ⅱ::부정적분": "H22-M1-06", "수학Ⅱ::정적분": "H22-M1-07",
+    "수학Ⅱ::정적분의 활용": "H22-M1-08"
 };
 
-/**
- * [Core] 문항의 표준단원 변환 및 검증 함수
- * 매핑 실패 시 원문 통과 절대 금지, '미분류'로 반환 및 로그 기록
- */
 function getStandardizedUnit(q) {
     const key = String(q.standardUnitKey || '').trim();
-    
-    // 1. 이미 Master Table에 등재된 Key를 가진 경우 (우선순위 1)
-    if (key && !key.startsWith('RAW-') && MASTER_TABLE[key]) {
-        return MASTER_TABLE[key];
-    }
-
-    // 2. 15개정 등 비표준 문자열 매핑 시도
-    const course = String(q.standardCourse || '').trim();
-    const unit = String(q.standardUnit || '').trim();
-    const mapKey = `${course}::${unit}`;
-    
+    if (key && !key.startsWith('RAW-') && MASTER_TABLE[key]) return MASTER_TABLE[key];
+    const mapKey = `${String(q.standardCourse || '').trim()}::${String(q.standardUnit || '').trim()}`;
     const mappedKey = LEGACY_TO_KEY_MAP[mapKey];
-    if (mappedKey && MASTER_TABLE[mappedKey]) {
-        return MASTER_TABLE[mappedKey];
-    }
-
-    // 3. 매핑 완전 실패 시 (원문 통과 금지, 미분류 강제 격리)
-    console.warn(`[미분류 발생] 파일: ${q._sourceFile || '알수없음'}, 문항: ${q.id}, 원문: ${mapKey}`);
+    if (mappedKey && MASTER_TABLE[mappedKey]) return MASTER_TABLE[mappedKey];
     return { course: "기타", unit: "미분류", order: 999 };
 }
 
@@ -566,12 +407,12 @@ function resetMixerState() {
   document.getElementById('q-level-filter').value = '';
   document.getElementById('q-view-mode').value = 'list';
   document.getElementById('cart-level-order').value = 'original';
+
+  const titleInput = document.getElementById('mixed-title-input');
+  if (titleInput) titleInput.value = '';
   
-  // 필터가 닫혀있다면 다시 열어줌
   const panel = document.getElementById('filter-panel-content');
-  if (panel.style.display === 'none') {
-      toggleFilterPanel();
-  }
+  if (panel.style.display === 'none') toggleFilterPanel();
 
   renderExamList();
   updateBulkStatus();
@@ -584,6 +425,15 @@ function resetMixerState() {
       <p>왼쪽에서 시험지를 클릭하거나<br>여러 개 선택 후 불러오기를 누르세요.</p>
     </div>
   `;
+}
+
+/**
+ * 카트만 비우는 함수 (필터/선택 상태 유지)
+ */
+function clearCartOnly() {
+    cart = [];
+    updateCartUI();
+    renderQuestionList();
 }
 
 function normalizeExamMeta(ex) {
@@ -689,11 +539,8 @@ function updateUnitFilter(questions) {
     questions.forEach(q => {
         const stdUnit = getStandardizedUnit(q);
         const name = stdUnit.unit;
-        // 비표준(미분류)은 노출 필터에서 제외
         if (name && name !== '미분류') {
-            if (!unitMap.has(name)) {
-                unitMap.set(name, getGlobalOrder(stdUnit));
-            }
+            if (!unitMap.has(name)) unitMap.set(name, getGlobalOrder(stdUnit));
         }
     });
 
@@ -702,8 +549,7 @@ function updateUnitFilter(questions) {
         .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0], 'ko'))
         .forEach(([name]) => {
             const opt = document.createElement('option');
-            opt.value = name;
-            opt.textContent = name;
+            opt.value = name; opt.textContent = name;
             select.appendChild(opt);
         });
 
@@ -722,61 +568,50 @@ function addCurrentFilterAll() {
     });
 
     const existing = new Set(cart.map(c => c._qKey));
-    targets.forEach(q => {
-        if (!existing.has(q._qKey)) cart.push(q);
-    });
-
+    targets.forEach(q => { if (!existing.has(q._qKey)) cart.push(q); });
     updateCartUI();
     renderQuestionList();
 }
 
 function fetchQuestionData(file) {
     return new Promise((res, rej) => {
-        delete window.questionBank;
-        delete window.questions;
+        delete window.questionBank; delete window.questions;
         const s = document.createElement('script');
         s.src = `exams/${file}?v=${Date.now()}`;
         s.onload = () => {
             const data = window.questions || window.questionBank;
-            if (Array.isArray(data)) res(data);
-            else rej(new Error(`Format Error: ${file}`));
+            if (Array.isArray(data)) res(data); else rej(new Error(`Format Error`));
             s.remove();
         };
-        s.onerror = () => { rej(new Error(`Load Error: ${file}`)); s.remove(); };
+        s.onerror = () => { rej(new Error(`Load Error`)); s.remove(); };
         document.body.appendChild(s);
     });
 }
 
 async function loadSingleExam(ex) {
-    currentViewingSource = ex;
-    renderExamList();
+    currentViewingSource = ex; renderExamList();
     const container = document.getElementById('question-list');
-    container.innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-spinner fa-spin"></i><p>문항을 불러오고 있습니다...</p></div>';
+    container.innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-spinner fa-spin"></i><p>문항 로드 중...</p></div>';
     try {
         const questions = await fetchQuestionData(ex.file);
         currentDisplayQuestions = questions.map(q => ({
-            ...q,
-            _sourceTitle: ex.school || ex.topic || ex.file,
-            _sourceFile: ex.file,
-            _qKey: `${ex.file}_${q.id}`
+            ...q, _sourceTitle: ex.school || ex.topic || ex.file, _sourceFile: ex.file, _qKey: `${ex.file}_${q.id}`
         }));
         updateStatusSummary(ex.school || ex.topic || ex.file, currentDisplayQuestions.length);
         updateUnitFilter(currentDisplayQuestions);
         renderQuestionList();
     } catch (e) {
-        console.error(e);
-        container.innerHTML = `<div class="empty-placeholder"><p>시험지를 불러오지 못했습니다.<br>${ex.file}</p></div>`;
+        container.innerHTML = `<div class="empty-placeholder"><p>로드 실패: ${ex.file}</p></div>`;
         resetQuestionStatus('로드 실패');
     }
 }
 
 async function loadMultipleExams() {
     const files = Array.from(selectedFiles);
-    if(files.length === 0) return alert('선택한 시험지가 없습니다.');
-    currentViewingSource = { file: "multi", school: `${files.length}개 시험지 묶음` };
-    renderExamList();
+    if(!files.length) return alert('선택한 시험지가 없습니다.');
+    currentViewingSource = { file: "multi" }; renderExamList();
     const container = document.getElementById('question-list');
-    container.innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-spinner fa-spin"></i><p>묶음 문항 처리 중...</p></div>';
+    container.innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-spinner fa-spin"></i><p>묶음 처리 중...</p></div>';
     let allQs = [];
     for(const file of files) {
         try {
@@ -785,12 +620,7 @@ async function loadMultipleExams() {
             allQs.push(...qs.map(q => ({
                 ...q, _sourceTitle: ex.school || '기출', _sourceFile: file, _qKey: `${file}_${q.id}`
             })));
-        } catch(e) { console.error(e); }
-    }
-    if (allQs.length === 0) {
-        container.innerHTML = '<div class="empty-placeholder"><p>불러올 문항이 없습니다.</p></div>';
-        resetQuestionStatus('불러오기 실패');
-        return;
+        } catch(e) {}
     }
     currentDisplayQuestions = allQs;
     updateStatusSummary(`${files.length}개 시험지`, allQs.length);
@@ -806,9 +636,8 @@ function updateStatusSummary(sourceName, qCount) {
 function renderQuestionList() {
     const container = document.getElementById('question-list');
     const unitFilter = document.getElementById('q-unit-filter').value;
-    const viewMode = document.getElementById('q-view-mode').value;
-    
     const levelFilter = document.getElementById('q-level-filter').value;
+    const viewMode = document.getElementById('q-view-mode').value;
 
     let displayQs = currentDisplayQuestions.filter(q => {
         const unitPass = !unitFilter || getStandardizedUnit(q).unit === unitFilter;
@@ -816,13 +645,12 @@ function renderQuestionList() {
         return unitPass && levelPass;
     });
     
-    if(displayQs.length === 0) {
+    if(!displayQs.length) {
         container.innerHTML = '<div class="empty-placeholder"><p>표시할 문항이 없습니다.</p></div>';
         return;
     }
     
     container.innerHTML = '';
-    
     if(viewMode === 'group') {
         const groups = {};
         displayQs.forEach(q => {
@@ -831,14 +659,11 @@ function renderQuestionList() {
             if (!groups[key]) groups[key] = { list: [], globalOrder: getGlobalOrder(stdUnit) };
             groups[key].list.push(q);
         });
-
-        // 교육과정 전체 순서(Global Order) 기준으로 그룹 정렬
-        const sortedUnitNames = Object.keys(groups).sort((a, b) => groups[a].globalOrder - groups[b].globalOrder || a.localeCompare(b, 'ko'));
-
-        sortedUnitNames.forEach(unitName => {
+        Object.keys(groups).sort((a, b) => groups[a].globalOrder - groups[b].globalOrder)
+        .forEach(name => {
             const groupDiv = document.createElement('div');
-            groupDiv.innerHTML = `<div style="padding:10px 20px; background:var(--gray-50); font-weight:800; font-size:13px; border-bottom:1px solid var(--gray-200);">${unitName}</div>`;
-            groups[unitName].list.forEach(q => groupDiv.appendChild(createQuestionItem(q)));
+            groupDiv.innerHTML = `<div style="padding:10px 20px; background:var(--gray-50); font-weight:800; font-size:13px; border-bottom:1px solid var(--gray-200);">${name}</div>`;
+            groups[name].list.forEach(q => groupDiv.appendChild(createQuestionItem(q)));
             container.appendChild(groupDiv);
         });
     } else {
@@ -849,35 +674,21 @@ function renderQuestionList() {
 
 function createQuestionItem(q) {
     const isAdded = cart.some(c => c._qKey === q._qKey);
-    const div = document.createElement('div');
-    div.className = 'q-item';
+    const div = document.createElement('div'); div.className = 'q-item';
     const stdUnit = getStandardizedUnit(q);
-    
-    let choicesHTML = '';
-    if (q.choices && Array.isArray(q.choices) && q.choices.length > 0 && q.choices[0] !== '주관식') {
-        choicesHTML = `<div class="q-choices">` + q.choices.map((c, ci) => 
-            `<div class="choice-row"><span style="font-weight:700; color:var(--gray-500); min-width:24px;">(${ci + 1})</span><span>${c}</span></div>`
-        ).join('') + `</div>`;
-    }
+    let choicesHTML = (q.choices && q.choices.length > 0 && q.choices[0] !== '주관식') 
+        ? `<div class="q-choices">` + q.choices.map((c, i) => `<div class="choice-row"><span style="font-weight:700; color:var(--gray-500); min-width:24px;">(${i+1})</span><span>${c}</span></div>`).join('') + `</div>` : '';
     
     div.innerHTML = `
         <div class="q-header">
             <div>
-                <div class="q-tag-line">
-                    <span class="q-unit-tag">${stdUnit.course}</span>
-                    <span class="q-unit-tag" style="background:#eee; color:#666;">${stdUnit.unit}</span>
-                    <span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${q.level || '미지정'}</span>
-                </div>
-                <span class="q-num">${q.id}번</span>
-                <span style="font-size:11px; color:#999; margin-left:10px;">${q._sourceTitle}</span>
+                <div class="q-tag-line"><span class="q-unit-tag">${stdUnit.course}</span><span class="q-unit-tag" style="background:#eee; color:#666;">${stdUnit.unit}</span><span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${q.level || '미'}</span></div>
+                <span class="q-num">${q.id}번</span><span style="font-size:11px; color:#999; margin-left:10px;">${q._sourceTitle}</span>
             </div>
-            <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick="toggleCart('${q._qKey}')">
-                <i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}
-            </button>
+            <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick="toggleCart('${q._qKey}')"><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button>
         </div>
         <div class="q-content">${q.content}</div>
-        ${q.image ? `<img src="${q.image}" class="q-image">` : ''}
-        ${choicesHTML}
+        ${q.image ? `<img src="${q.image}" class="q-image">` : ''}${choicesHTML}
     `;
     return div;
 }
@@ -885,21 +696,12 @@ function createQuestionItem(q) {
 window.onload = async () => {
     const s = document.createElement('script');
     s.src = 'db.js?v=' + Date.now();
-    s.onload = () => {
-        if(window.mainDB) {
-            engineDB.exams = window.mainDB.exams.map(normalizeExamMeta);
-            renderExamList();
-        }
-    };
+    s.onload = () => { if(window.mainDB) { engineDB.exams = window.mainDB.exams.map(normalizeExamMeta); renderExamList(); } };
     document.body.appendChild(s);
-    
     document.getElementById('paperSearch').oninput = renderExamList;
     document.getElementById('gradeFilter').onchange = renderExamList;
     document.getElementById('axisFilter').onchange = renderExamList;
-    document.getElementById('q-unit-filter').onchange = () => {
-        renderQuestionList();
-        updateCurrentUnitStatus();
-    };
+    document.getElementById('q-unit-filter').onchange = () => { renderQuestionList(); updateCurrentUnitStatus(); };
     document.getElementById('q-view-mode').onchange = renderQuestionList;
     document.getElementById('q-level-filter').onchange = renderQuestionList;
 };
@@ -907,39 +709,31 @@ window.onload = async () => {
 function toggleCart(qKey) {
     const idx = cart.findIndex(c => c._qKey === qKey);
     if(idx > -1) cart.splice(idx, 1);
-    else {
-        const q = currentDisplayQuestions.find(it => it._qKey === qKey);
-        if(q) cart.push(q);
-    }
-    updateCartUI();
-    renderQuestionList();
+    else { const q = currentDisplayQuestions.find(it => it._qKey === qKey); if(q) cart.push(q); }
+    updateCartUI(); renderQuestionList();
 }
 
 function updateCartUI() {
     document.getElementById('cart-count').innerText = cart.length;
-    const container = document.getElementById('cart-items');
-    container.innerHTML = cart.map((c, i) => {
+    document.getElementById('cart-items').innerHTML = cart.map(c => {
         const stdUnit = getStandardizedUnit(c);
-        return `
-        <div class="cart-item">
-            <span style="font-size:12px; font-weight:700;">
-                <span style="color:var(--blue); font-size:10px; margin-right:4px;">[${stdUnit.unit}]</span>
-                <span style="color:#64748b; font-size:10px; margin-right:4px;">[${c.level || '미지정'}]</span>
-                ${c._sourceTitle} ${c.id}번
-            </span>
-            <i class="fa-solid fa-xmark" style="cursor:pointer; color:#ccc;" onclick="toggleCart('${c._qKey}')"></i>
-        </div>
-        `;
+        return `<div class="cart-item"><span style="font-size:12px; font-weight:700;"><span style="color:var(--blue); font-size:10px; margin-right:4px;">[${stdUnit.unit}]</span><span style="color:#64748b; font-size:10px; margin-right:4px;">[${c.level || '미'}]</span>${c._sourceTitle} ${c.id}번</span><i class="fa-solid fa-xmark" style="cursor:pointer; color:#ccc;" onclick="toggleCart('${c._qKey}')"></i></div>`;
     }).join('');
 }
 
+/**
+ * [Core] 난이도 정렬 가중치 함수 (상/중/하 3단계 최종본)
+ */
 function getLevelRank(level, mode = 'high-first') {
-    const highFirst = { "상": 1, "중상": 2, "중": 3, "하": 4 };
-    const lowFirst  = { "하": 1, "중": 2, "중상": 3, "상": 4 };
-    const table = mode === 'low-first' ? lowFirst : highFirst;
+    const table = mode === 'low-first'
+        ? { "하": 1, "중": 2, "상": 3 }
+        : { "상": 1, "중": 2, "하": 3 };
     return table[String(level || '').trim()] ?? 999;
 }
 
+/**
+ * [Core] 제목 메타 전달 강화된 시험지 생성 함수
+ */
 function openMixedEngine() {
     if(cart.length === 0) return alert('카트가 비어있습니다.');
     const orderMode = document.getElementById('cart-level-order').value;
@@ -953,7 +747,18 @@ function openMixedEngine() {
         });
     }
 
+    const customTitle = String(document.getElementById('mixed-title-input')?.value || '').trim();
+    const autoTitle = currentViewingSource
+        ? (currentViewingSource.school || currentViewingSource.topic || currentViewingSource.file || `믹서 출제 (${exportCart.length}문항)`)
+        : `믹서 출제 (${exportCart.length}문항)`;
+    const meta = {
+        title: customTitle || autoTitle,
+        count: exportCart.length,
+        generatedAt: new Date().toISOString()
+    };
+
     localStorage.setItem('mixedQuestions', JSON.stringify(exportCart));
+    localStorage.setItem('mixedMeta', JSON.stringify(meta));
     window.open(`mixed_engine.html?qpp=${document.getElementById('print-qpp').value}`, '_blank');
 }
 </script>

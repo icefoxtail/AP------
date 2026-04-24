@@ -333,7 +333,7 @@ window.questionBank = [
   },
   {
     id: 18,
-    level: "중상",
+    level: "상",
     category: "다항식의 곱셈과 인수분해",
     originalCategory: "다항식의 곱셈과 인수분해",
     standardCourse: "중3 수학",
@@ -351,7 +351,7 @@ window.questionBank = [
   },
   {
     id: 19,
-    level: "중상",
+    level: "상",
     category: "다항식의 곱셈과 인수분해",
     originalCategory: "다항식의 곱셈과 인수분해",
     standardCourse: "중3 수학",
@@ -369,7 +369,7 @@ window.questionBank = [
   },
   {
     id: 20,
-    level: "중상",
+    level: "상",
     category: "다항식의 곱셈과 인수분해",
     originalCategory: "다항식의 곱셈과 인수분해",
     standardCourse: "중3 수학",
@@ -387,7 +387,7 @@ window.questionBank = [
   },
   {
     id: 21,
-    level: "중상",
+    level: "상",
     category: "실수와 그 계산",
     originalCategory: "실수와 그 계산",
     standardCourse: "중3 수학",
@@ -405,7 +405,7 @@ window.questionBank = [
   },
   {
     id: 22,
-    level: "중상",
+    level: "상",
     category: "다항식의 곱셈과 인수분해",
     originalCategory: "다항식의 곱셈과 인수분해",
     standardCourse: "중3 수학",
@@ -423,7 +423,7 @@ window.questionBank = [
   },
   {
     id: 23,
-    level: "중상",
+    level: "상",
     category: "실수와 그 계산",
     originalCategory: "실수와 그 계산",
     standardCourse: "중3 수학",

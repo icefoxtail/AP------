@@ -179,7 +179,7 @@ window.questionBank = [
   },
   {
     id: 11,
-    level: "중상",
+    level: "상",
     category: "",
     originalCategory: "",
     standardCourse: "공통수학1",
@@ -193,7 +193,7 @@ window.questionBank = [
   },
   {
     id: 12,
-    level: "중상",
+    level: "상",
     category: "",
     originalCategory: "",
     standardCourse: "공통수학1",
@@ -227,7 +227,7 @@ window.questionBank = [
   },
   {
     id: 14,
-    level: "중상",
+    level: "상",
     category: "",
     originalCategory: "",
     standardCourse: "공통수학1",
@@ -417,7 +417,7 @@ window.questionBank = [
   },
   {
     id: 10,
-    level: "중상",
+    level: "상",
     category: "",
     originalCategory: "",
     standardCourse: "공통수학1",
@@ -431,7 +431,7 @@ window.questionBank = [
   },
   {
     id: 11,
-    level: "중상",
+    level: "상",
     category: "",
     originalCategory: "",
     standardCourse: "공통수학1",
@@ -465,7 +465,7 @@ window.questionBank = [
   },
   {
     id: 13,
-    level: "중상",
+    level: "상",
     category: "",
     originalCategory: "",
     standardCourse: "공통수학1",
@@ -479,7 +479,7 @@ window.questionBank = [
   },
   {
     id: 14,
-    level: "중상",
+    level: "상",
     category: "",
     originalCategory: "",
     standardCourse: "공통수학1",
