@@ -521,15 +521,56 @@ H22-PS: 확률과통계 | H22-GE: 기하
 
 ---
 
-## 현재 미결 이슈
+[AP Math OS 현재 상태 업데이트]
 
-| 우선순위 | 이슈 | 상태 |
-|----------|------|------|
-| 🔴 | combPat negative lookbehind 미적용 | Gemini 대기 |
-| 🔴 | parseExamTitle `1학기학기` 중복 버그 | Gemini 대기 |
-| 🟡 | 초장문 해설 1문항 단/페이지 잘림 실출력 검증 | 미확인 |
-| 🟡 | index.html UI 조정 | 미착수 |
-| 🟢 | 인쇄 실측 오차 (MathJax 타이밍) | 실환경 테스트 후 결정 |
+AP Math OS v26.1.2 [IRONCLAD] 패키지 확인 완료.
+구성 파일은 index.html, app.js, worker/index.js, worker/schema.sql, worker/wrangler.jsonc, README.txt이다.
+
+현재 기능:
+- 29명 중등부 기준 SEED_DATA 포함
+- 반별 대시보드
+- 학생 목록
+- 등원 토글
+- 숙제 완료 토글
+- OMR/성적 입력
+- 틀린 문항 체크 저장
+- 학생별 성적 이력
+- 제적 처리
+- 오프라인 syncQueue
+- Cloudflare Worker API 기본 골격
+- D1 schema 기본 테이블
+
+현재 Worker API:
+- GET /api/initial-data
+- PATCH /api/attendance
+- PATCH /api/homework
+- PATCH /api/exam-sessions/new
+- DELETE /api/students/:id
+- GET /api/questions/resource?qId=...
+- GET /api/questions/similar?qId=...
+
+현재 D1 테이블:
+- students
+- classes
+- class_students
+- attendance
+- homework
+- exam_sessions
+- wrong_answers
+- questions
+
+남은 핵심:
+- D1 생성
+- wrangler.jsonc database_id 입력
+- schema.sql 적용
+- Worker 배포
+- /api/initial-data 확인
+- index.html + app.js 업로드
+- 등원/숙제/OMR/제적 4개 실사용 테스트
+
+JS아카이브 QR 오답 저장과 연결할 때는 현재 openOMR(sid) 구조를 확장한다.
+현재는 10문항 고정 wrong_ids 저장 방식이므로, 추후 QR에서 examTitle, qCount, source, studentId, question metadata를 넘기는 방식으로 확장한다.
+목표는 시험지/믹서 QR → 오답체크 또는 OMR 입력 → AP Math OS D1 저장 → 학생별/시험지별/단원별 통계 연결이다.
 
 ---
 
