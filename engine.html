@@ -220,10 +220,38 @@ const QR_PATCH = {
 function buildQrTargetUrl() {
     const url = new URL(window.location.href);
     url.searchParams.set('mode', 'sol');
+    url.searchParams.set('qr', '1');
     if (!url.searchParams.has('qpp')) {
         url.searchParams.set('qpp', String(AppState.qpp || 4));
     }
     return url.toString();
+}
+
+function isQrSolutionMode() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('qr') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+function applyQrSolutionLockUI() {
+    if (!isQrSolutionMode()) return;
+
+    const btnExam = document.getElementById('btn-exam');
+    const btnAns = document.getElementById('btn-ans');
+    const btnSol = document.getElementById('btn-sol');
+
+    if (btnExam) btnExam.style.display = 'none';
+    if (btnAns) btnAns.style.display = 'none';
+    if (btnSol) {
+        btnSol.classList.add('active');
+        btnSol.style.pointerEvents = 'none';
+    }
+
+    const title = document.getElementById('ctrl-title');
+    if (title) title.innerText = 'JS아카이브 해설지';
 }
 
 function injectQrToLastExamPage(area) {
@@ -361,31 +389,28 @@ function makePage(area, type, pNum) {
         page.appendChild(frame);
     }
 
-    if (pNum === 1 || pNum === 0) {
-        const header = document.createElement('div');
-        header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
-        const t = parseExamTitle(AppState.title);
+    const header = document.createElement('div');
+    header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
+    const t = parseExamTitle(AppState.title);
 
-        if (type === 'exam') {
-            const headerTitle = getExamTitleFull();
-            header.innerHTML = `
-                <div class="page-header-title">${headerTitle}</div>
-                <div class="page-header-meta">
-                    <div class="page-header-meta-left"></div>
-                    <div class="page-header-meta-right">
-                        <span>이름<span class="header-fill-line"></span></span>
-                        <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
-                    </div>
-                </div>`;
-        } else {
-            const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || AppState.title;
-            const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
-            header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${leftText}</div><div>${rightText}</div></div>`;
-        }
-
-        page.appendChild(header);
+    if (type === 'exam') {
+        const headerTitle = getExamTitleFull();
+        header.innerHTML = `
+            <div class="page-header-title">${headerTitle}</div>
+            <div class="page-header-meta">
+                <div class="page-header-meta-left"></div>
+                <div class="page-header-meta-right">
+                    <span>이름<span class="header-fill-line"></span></span>
+                    <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
+                </div>
+            </div>`;
+    } else {
+        const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || AppState.title;
+        const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
+        header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${leftText}</div><div>${rightText}</div></div>`;
     }
 
+    page.appendChild(header);
     const body = document.createElement('div'); body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
     page.appendChild(body); page.body = body;
     const pageNum = document.createElement('div'); pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
@@ -396,8 +421,10 @@ function makePage(area, type, pNum) {
 async function init() {
     const p = new URLSearchParams(window.location.search);
     AppState.mode = p.get('mode') || 'exam'; AppState.qpp = parseInt(p.get('qpp')) || 4;
+    if (isQrSolutionMode()) AppState.mode = 'sol';
     document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
     const targetBtn = document.getElementById('btn-' + AppState.mode); if (targetBtn) targetBtn.classList.add('active');
+    applyQrSolutionLockUI();
 
     const qppDisp = document.getElementById('qpp-display');
     if (qppDisp) qppDisp.innerText = `QPP: ${AppState.qpp}`;
@@ -415,7 +442,13 @@ async function init() {
 }
 
 function switchMode(mode) {
-    const url = new URL(window.location.href); url.searchParams.set('mode', mode); window.location.href = url.toString();
+    if (isQrSolutionMode() && mode !== 'sol') {
+        mode = 'sol';
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', mode);
+    if (isQrSolutionMode()) url.searchParams.set('qr', '1');
+    window.location.href = url.toString();
 }
 
 function raf() { return new Promise(r => requestAnimationFrame(r)); }
@@ -667,6 +700,7 @@ async function render() {
     }
 
     injectQrToLastExamPage(area);
+    applyQrSolutionLockUI();
 }
 
 window.onload = init;
