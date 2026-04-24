@@ -15,6 +15,7 @@
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -51,6 +52,16 @@
             border-radius: 6px; padding: 4px 8px; font-family: inherit; font-size: 11px; cursor: pointer;
         }
 
+        /* [v1.9] 드롭다운 가독성 보정 */
+        #qppSelect option {
+            background: #ffffff;
+            color: #0f172a;
+        }
+        #qppSelect:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.35);
+        }
+
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
 
         /* [PDF Mode] Container & Viewer */
@@ -62,13 +73,34 @@
         /* [Page] A4 Basis */
         .page {
             width: 210mm; height: 297mm; background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15mm; padding-bottom: 20mm;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm;
             box-sizing: border-box; display: flex; flex-direction: column; position: relative;
         }
-        .page-header {
-            display: flex; align-items: flex-end; border-bottom: 2px solid #000;
-            padding-bottom: 5px; margin-bottom: 12px; font-weight: bold; font-size: 10pt;
-        }
+
+        .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
+
+        .page-header { display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 0.8pt solid #000; padding: 5px 8px 6px; margin-bottom: 8px; font-weight: 700; font-size: 9.4pt; line-height: 1.2; background: #fff; }
+
+        .page-header.page-header--exam { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 18px; row-gap: 0; padding: 12px 14px 10px; }
+
+        .page-header-title { text-align: center; font-size: 15.5pt; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
+
+        .page-header.page-header--exam .page-header-title { text-align: left; font-size: 14.2pt; line-height: 1.15; letter-spacing: -0.02em; white-space: normal; overflow: visible; text-overflow: clip; word-break: break-all; }
+
+        .page-header-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; font-size: 9.2pt; }
+
+        .page-header.page-header--exam .page-header-meta { justify-content: flex-end; align-items: center; gap: 12px; min-width: max-content; }
+
+        .page-header-meta-left { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+
+        .page-header.page-header--exam .page-header-meta-left { display: none; }
+
+        .page-header-meta-right { display: flex; align-items: flex-end; gap: 14px; white-space: nowrap; }
+
+        .page-header.page-header--exam .page-header-meta-right { align-items: center; gap: 12px; }
+
+        .header-fill-line { display: inline-block; min-width: 78px; border-bottom: 0.8pt solid #000; height: 0.95em; vertical-align: bottom; margin-left: 4px; }
+        .header-fill-line.header-fill-line--score { min-width: 34px; text-align: center; margin: 0 3px 0 4px; }
         
         /* [Grid] Exam Layout */
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
@@ -124,19 +156,8 @@
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
         table.question-table th { font-weight: 700; }
 
-        .question-table-wrap {
-            margin: 8px 0 10px 0;
-        }
-
-        /* [Note Box] 조건 박스 스타일 */
-        .question-note-box {
-            margin: 8px 0 10px 0;
-            padding: 8px 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            background: #f8fafc;
-            line-height: 1.55;
-        }
+        .question-table-wrap { margin: 4px 0 8px 0; }
+        .question-note-box, .box { margin: 4px 0 8px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
 
         /* [Fit] Compression Classes */
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
@@ -155,11 +176,39 @@
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
 
+        .page-qr {
+            position: absolute;
+            right: 15mm;
+            bottom: 13mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            z-index: 20;
+            background: #fff;
+            padding: 1mm 0 0;
+        }
+
+        .page-qr-label {
+            font-size: 7.6pt;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            white-space: nowrap;
+        }
+
+        .page-qr canvas {
+            display: block;
+            width: 13.5mm;
+            height: 13.5mm;
+            image-rendering: pixelated;
+        }
+
         @media print {
             #mode-ctrl { display: none !important; }
             body { margin: 0 !important; padding: 0 !important; background: white; }
             
-            body:not(.mode-pdf) #print-area { display: flex !important; gap: 0; padding: 0; }
+            body:not(.mode-pdf) #print-area { display: block !important; gap: 0 !important; padding: 0 !important; }
             body.mode-pdf #print-area { display: none !important; }
             body.mode-pdf #pdf-container { display: block !important; height: auto !important; }
             
@@ -206,6 +255,50 @@ const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
+const QR_PATCH = {
+    enabled: true,
+    label: '정답 · 해설 보기',
+    size: 150
+};
+
+function buildQrTargetUrl() {
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', 'sol');
+    if (!url.searchParams.has('qpp')) {
+        url.searchParams.set('qpp', String(AppState.qpp || 4));
+    }
+    return url.toString();
+}
+
+function injectQrToLastExamPage(area) {
+    if (AppState.mode !== 'exam' || !QR_PATCH.enabled) return;
+    if (typeof QRious !== 'function') return;
+
+    const pages = area.querySelectorAll('.page');
+    if (!pages.length) return;
+
+    const targetPage = pages[pages.length - 1];
+
+    const oldQr = targetPage.querySelector('.page-qr');
+    if (oldQr) oldQr.remove();
+
+    const qrWrap = document.createElement('div');
+    qrWrap.className = 'page-qr';
+    qrWrap.innerHTML = `<div class="page-qr-label">${QR_PATCH.label}</div><canvas></canvas>`;
+
+    targetPage.appendChild(qrWrap);
+
+    new QRious({
+        element: qrWrap.querySelector('canvas'),
+        value: buildQrTargetUrl(),
+        size: QR_PATCH.size,
+        level: 'M',
+        background: 'white',
+        foreground: 'black',
+        padding: 0
+    });
+}
+
 const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4 };
 let pageCount = 0;
 
@@ -216,7 +309,7 @@ function wrapLatexPreserveBlocks(text) {
     s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
     s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
     const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
-    const combPat = prefix => new RegExp(`(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
+    const combPat = prefix => new RegExp(`(?<!\\$)(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
     const htmlTags = [];
     s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
         const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
@@ -323,12 +416,12 @@ function normalizeQuestionTables(html) {
 function normalizeQuestionNotes(html) {
     if (!html || /question-note-box/.test(html)) return html;
     return html.replace(
-        /((?:<br\s*\/?>\s*){2,})(\[[^\]]+\](?:[\s\S]*?))(?=(?:<br\s*\/?>\s*){2,}(?!\[[^\]]+\])|$)/gi,
+        /((?:<br\s*\/?>\s*)+)(\[[^\]]+\][\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
         (match, breaks, noteBlock) => {
             const brCount = (noteBlock.match(/<br\s*\/?>/gi) || []).length;
             const plainText = noteBlock.replace(/<[^>]+>/g, '').trim();
             if (brCount < 2 && plainText.length < 60) return match;
-            return `${breaks}<div class="question-note-box">${noteBlock}</div>`;
+            return `<div class="question-note-box">${noteBlock}</div>`;
         }
     );
 }
@@ -369,24 +462,37 @@ async function shuffleData() {
 /** Page Builder */
 function makePage(area, type, pNum) {
     const page = document.createElement('div'); page.className = 'page';
-    const header = document.createElement('div'); header.className = 'page-header';
-    header.style.borderBottomColor = (type === 'exam') ? '#1d4ed8' : (type === 'sol') ? '#dc2626' : '#059669';
-    
-    const title = AppState.meta.customTitle || AppState.meta.title || 'JS아카이브 믹서 출제';
-    const leftText = title;
-    let rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : (type === 'ans') ? '[ 정답표 ]' : '이름: ____________  점수:        / 100';
-    
-    header.innerHTML = `<div style="flex:1;">${leftText}</div><div>${rightText}</div>`;
+
+    if (type === 'exam') {
+        const frame = document.createElement('div'); frame.className = 'page-exam-frame';
+        page.appendChild(frame);
+    }
+
+    const header = document.createElement('div');
+    header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
+    const title = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
+
+    if (type === 'exam') {
+        header.innerHTML = `
+            <div class="page-header-title">${title}</div>
+            <div class="page-header-meta">
+                <div class="page-header-meta-left"></div>
+                <div class="page-header-meta-right">
+                    <span>이름<span class="header-fill-line"></span></span>
+                    <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
+                </div>
+            </div>`;
+    } else {
+        const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
+        header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${title}</div><div>${rightText}</div></div>`;
+    }
+
     page.appendChild(header);
-    
     const body = document.createElement('div'); body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
     page.appendChild(body); page.body = body;
-    
     const pageNum = document.createElement('div'); pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
     pageNum.textContent = `- ${pNum} -`; page.appendChild(pageNum);
-    
-    area.appendChild(page); 
-    return page; 
+    area.appendChild(page); return page;
 }
 
 /** [PASS] renderExam - Rulebook v1.9 + Image Field Synchronized */
@@ -623,6 +729,7 @@ async function render() {
     else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
     else await renderExam(area, AppState.data);
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
+    injectQrToLastExamPage(area);
 }
 
 async function init() {
