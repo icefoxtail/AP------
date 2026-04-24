@@ -70,7 +70,10 @@
         .exam-bulk-bar { padding: 12px 20px; background: #fdfdfe; border-bottom: 1px solid var(--gray-200); }
         .bulk-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 11.5px; font-weight: 800; color: var(--gray-500); }
         .exam-bulk-actions { display: flex; gap: 6px; }
-        .btn-action { flex: 1; padding: 8px 0; font-size: 11px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: 0.2s; border: 1px solid var(--gray-200); background: white; color: var(--text-main); }
+        .btn-action { padding: 8px 0; font-size: 11px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: 0.2s; border: 1px solid var(--gray-200); background: white; color: var(--text-main); }
+        .exam-bulk-actions .btn-action { flex: 1; }
+        .question-filter-bar .btn-action { flex: 0 0 auto; }
+        .btn-filter-all { height: 34px; padding: 0 12px; font-size: 12px; white-space: nowrap; }
         .btn-action.primary { background: var(--blue); color: white; border-color: var(--blue); }
         .btn-action.reset { border-color: #fca5a5; color: #ef4444; }
 
@@ -189,9 +192,16 @@
         </div>
 
         <div class="question-filter-bar">
-            <select id="q-unit-filter" class="form-select" style="width:240px;"><option value="">전체 표준단원</option></select>
-            <select id="q-view-mode" class="form-select" style="width:120px;"><option value="list">리스트형</option><option value="group">그룹형</option></select>
-            <button class="btn-action primary" style="width:auto; padding:0 15px;" onclick="addCurrentFilterAll()">필터 전체 담기</button>
+            <select id="q-unit-filter" class="form-select" style="width:220px;"><option value="">전체 표준단원</option></select>
+            <select id="q-level-filter" class="form-select" style="width:110px;">
+                <option value="">전체 난이도</option>
+                <option value="상">상</option>
+                <option value="중상">중상</option>
+                <option value="중">중</option>
+                <option value="하">하</option>
+            </select>
+            <select id="q-view-mode" class="form-select" style="width:110px;"><option value="list">리스트형</option><option value="group">그룹형</option></select>
+            <button class="btn-action primary btn-filter-all" onclick="addCurrentFilterAll()">필터 담기</button>
         </div>
 
         <div class="panel-body" id="question-list">
@@ -211,6 +221,11 @@
         <div class="panel-body" id="cart-items"></div>
 
         <div class="cart-footer">
+            <select id="cart-level-order" class="form-select" style="height:40px; margin-bottom:10px;">
+                <option value="original">담은 순서</option>
+                <option value="high-first">난이도순 (상→하)</option>
+                <option value="low-first">난이도순 (하→상)</option>
+            </select>
             <select id="print-qpp" class="form-select" style="height:40px; margin-bottom:10px;">
                 <option value="4">4문항/P</option>
                 <option value="6">6문항/P</option>
@@ -548,7 +563,9 @@ function resetMixerState() {
   document.getElementById('gradeFilter').value = '';
   document.getElementById('axisFilter').value = '';
   document.getElementById('q-unit-filter').innerHTML = '<option value="">전체 표준단원</option>';
+  document.getElementById('q-level-filter').value = '';
   document.getElementById('q-view-mode').value = 'list';
+  document.getElementById('cart-level-order').value = 'original';
   
   // 필터가 닫혀있다면 다시 열어줌
   const panel = document.getElementById('filter-panel-content');
@@ -696,9 +713,13 @@ function updateUnitFilter(questions) {
 
 function addCurrentFilterAll() {
     const unitFilter = document.getElementById('q-unit-filter').value;
-    const targets = unitFilter
-        ? currentDisplayQuestions.filter(q => getStandardizedUnit(q).unit === unitFilter)
-        : currentDisplayQuestions;
+    const levelFilter = document.getElementById('q-level-filter').value;
+    
+    const targets = currentDisplayQuestions.filter(q => {
+        const unitPass = !unitFilter || getStandardizedUnit(q).unit === unitFilter;
+        const levelPass = !levelFilter || String(q.level || '').trim() === levelFilter;
+        return unitPass && levelPass;
+    });
 
     const existing = new Set(cart.map(c => c._qKey));
     targets.forEach(q => {
@@ -787,9 +808,13 @@ function renderQuestionList() {
     const unitFilter = document.getElementById('q-unit-filter').value;
     const viewMode = document.getElementById('q-view-mode').value;
     
-    let displayQs = unitFilter
-        ? currentDisplayQuestions.filter(q => getStandardizedUnit(q).unit === unitFilter)
-        : currentDisplayQuestions;
+    const levelFilter = document.getElementById('q-level-filter').value;
+
+    let displayQs = currentDisplayQuestions.filter(q => {
+        const unitPass = !unitFilter || getStandardizedUnit(q).unit === unitFilter;
+        const levelPass = !levelFilter || String(q.level || '').trim() === levelFilter;
+        return unitPass && levelPass;
+    });
     
     if(displayQs.length === 0) {
         container.innerHTML = '<div class="empty-placeholder"><p>표시할 문항이 없습니다.</p></div>';
@@ -841,6 +866,7 @@ function createQuestionItem(q) {
                 <div class="q-tag-line">
                     <span class="q-unit-tag">${stdUnit.course}</span>
                     <span class="q-unit-tag" style="background:#eee; color:#666;">${stdUnit.unit}</span>
+                    <span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${q.level || '미지정'}</span>
                 </div>
                 <span class="q-num">${q.id}번</span>
                 <span style="font-size:11px; color:#999; margin-left:10px;">${q._sourceTitle}</span>
@@ -875,6 +901,7 @@ window.onload = async () => {
         updateCurrentUnitStatus();
     };
     document.getElementById('q-view-mode').onchange = renderQuestionList;
+    document.getElementById('q-level-filter').onchange = renderQuestionList;
 };
 
 function toggleCart(qKey) {
@@ -897,6 +924,7 @@ function updateCartUI() {
         <div class="cart-item">
             <span style="font-size:12px; font-weight:700;">
                 <span style="color:var(--blue); font-size:10px; margin-right:4px;">[${stdUnit.unit}]</span>
+                <span style="color:#64748b; font-size:10px; margin-right:4px;">[${c.level || '미지정'}]</span>
                 ${c._sourceTitle} ${c.id}번
             </span>
             <i class="fa-solid fa-xmark" style="cursor:pointer; color:#ccc;" onclick="toggleCart('${c._qKey}')"></i>
@@ -905,9 +933,27 @@ function updateCartUI() {
     }).join('');
 }
 
+function getLevelRank(level, mode = 'high-first') {
+    const highFirst = { "상": 1, "중상": 2, "중": 3, "하": 4 };
+    const lowFirst  = { "하": 1, "중": 2, "중상": 3, "상": 4 };
+    const table = mode === 'low-first' ? lowFirst : highFirst;
+    return table[String(level || '').trim()] ?? 999;
+}
+
 function openMixedEngine() {
     if(cart.length === 0) return alert('카트가 비어있습니다.');
-    localStorage.setItem('mixedQuestions', JSON.stringify(cart));
+    const orderMode = document.getElementById('cart-level-order').value;
+    let exportCart = [...cart];
+
+    if (orderMode === 'high-first' || orderMode === 'low-first') {
+        exportCart.sort((a, b) => {
+            const diff = getLevelRank(a.level, orderMode) - getLevelRank(b.level, orderMode);
+            if (diff !== 0) return diff;
+            return (a.id ?? 999) - (b.id ?? 999);
+        });
+    }
+
+    localStorage.setItem('mixedQuestions', JSON.stringify(exportCart));
     window.open(`mixed_engine.html?qpp=${document.getElementById('print-qpp').value}`, '_blank');
 }
 </script>
