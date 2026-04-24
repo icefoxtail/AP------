@@ -240,45 +240,53 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 지수법칙과 합차 공식을 이용한다.\\n조건 정리: $(A^n)(B^n) = (AB)^n$\\n풀이 과정:\\n$\\{(\\sqrt{7}-3)(\\sqrt{7}+3)\\}^5 = (7-9)^5 = (-2)^5 = -32$\\n결론: 따라서 정답은 ⑤이다."
   },
-  {
-    "id": 13,
-    "level": "중",
-    "category": "다항식의 곱셈",
-    "originalCategory": "다항식의 곱셈",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
-    "content": "다음 중 $\\Box$ 안의 수가 가장 큰 것은? [4점]<br><br><div class='question-table-wrap'><table><tr><td>$(2x+3)^{2}=\\Box x^{2}+12x+9$</td></tr><tr><td>$(x-2)^{2}=x^{2}+\\Box x+4$</td></tr><tr><td>$(x+3)(x-3)=x^{2}+\\Box$</td></tr><tr><td>$(2x+4)(x+2)=2x^{2}+\\Box x+8$</td></tr><tr><td>$(2x-1)(3x+4)=6x^{2}+5x+\\Box$</td></tr></table></div>",
-    "choices": [
-      "첫 번째 식의 $\\Box$",
-      "두 번째 식의 $\\Box$",
-      "세 번째 식의 $\\Box$",
-      "네 번째 식의 $\\Box$",
-      "다섯 번째 식의 $\\Box$"
+ {
+    id: 13,
+    category: "인수분해",
+    originalCategory: "인수분해",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-02",
+    standardUnit: "다항식의 곱셈과 인수분해",
+    standardUnitOrder: 2,
+    level: "중",
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [],
+    wide: false,
+    content: "다음 중 $\\Box$ 안의 수가 가장 큰 것은? (4점)",
+    choices: [
+      "$(3x+2)^{2}=\\Box x^{2}+12x+4",
+      "$(x-3)^{2}=x^{2}+\\Box x+9",
+      "$(x+4)(x-4)=x^{2}+\\Box",
+      "$(3x+2)(x+1)=3x^{2}+\\Box x+2",
+      "$(2x-3)(4x+5)=8x^{2}-2x-\\Box"
     ],
-    "answer": "④",
-    "solution": "[키포인트] 곱셈공식을 이용해 전개하고 계수를 비교한다.\\n조건 정리: 각 식의 빈칸 채우기\\n풀이 과정:\\n- $(2x+3)^2 = 4x^2 + 12x + 9 \\implies \\Box = 4$\\n- $(x-2)^2 = x^2 - 4x + 4 \\implies \\Box = -4$\\n- $(x+3)(x-3) = x^2 - 9 \\implies \\Box = -9$\\n- $(2x+4)(x+2) = 2x^2 + 8x + 8 \\implies \\Box = 8$\\n- $(2x-1)(3x+4) = 6x^2 + 5x - 4 \\implies \\Box = -4$\\n가장 큰 값은 $8$이다.\\n결론: 따라서 정답은 ④이다."
+    answer: "⑤",
+    solution: "[키포인트] 곱셈공식을 이용하여 각 식을 전개하고 계수를 비교한다.\\n① $(3x+2)^2 = 9x^2+12x+4 \\rightarrow \\Box = 9$\\n② $(x-3)^2 = x^2-6x+9 \\rightarrow \\Box = -6$\\n③ $(x+4)(x-4) = x^2-16 \\rightarrow \\Box = -16$\\n④ $(3x+2)(x+1) = 3x^2+5x+2 \\rightarrow \\Box = 5$\\n⑤ $(2x-3)(4x+5) = 8x^2-2x-15 \\rightarrow \\Box = 15$이다.\\n따라서 $\\Box$ 안의 수가 가장 큰 것은 $15$인 ⑤이다.\\n따라서 정답은 ⑤이다."
   },
   {
-    "id": 14,
-    "level": "중",
-    "category": "인수분해",
-    "originalCategory": "인수분해",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
-    "content": "완전제곱식이 아닌 것은? [4점]",
-    "choices": [
-      "$9a^{2}-12ax+4x^{2}$",
-      "$4x^{2}-4x+1$",
-      "$9x^{2}-6x+y^{2}$",
+    id: 14,
+    category: "인수분해",
+    originalCategory: "인수분해",
+    standardCourse: "중3 수학",
+    standardUnitKey: "M3-02",
+    standardUnit: "다항식의 곱셈과 인수분해",
+    standardUnitOrder: 2,
+    level: "중",
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [],
+    wide: false,
+    content: "완전제곱식이 아닌 것은? (4점)",
+    choices: [
+      "$16a^{2}-24ax+9x^{2}$",
+      "$x^{2}-10x+25$",
+      "$4x^{2}-12x+16$",
       "$4a^{2}+16a+16$",
-      "$-2x^{2}+8x-8$"
+      "$x^{2}-6x+9$"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 완전제곱식 $(A\\pm B)^2$ 꼴인지 확인한다.\\n조건 정리: 각 보기의 인수분해 가능성 확인\\n풀이 과정:\\n① $(3a-2x)^2$\\n② $(2x-1)^2$\\n③ $9x^2-6x+y^2$는 완전제곱식이 되려면 $y^2$항의 계수나 중간항이 달라야 한다.\\n④ $4(a+2)^2$\\n⑤ $-2(x-2)^2$\\n결론: 따라서 정답은 ③이다."
+    answer: "③",
+    solution: "[키포인트] $(A \\pm B)^2$ 꼴로 인수분해되는지 확인한다.\\n① $16a^2-24ax+9x^2 = (4a-3x)^2$이므로 완전제곱식이다.\\n② $x^2-10x+25 = (x-5)^2$이므로 완전제곱식이다.\\n③ $4x^2-12x+16$은 $4x^2=(2x)^2$, $16=4^2$이지만 가운데 항은 $\\pm 2\\cdot 2x\\cdot 4=\\pm16x$이어야 한다. 실제 가운데 항은 $-12x$이므로 완전제곱식이 아니다.\\n④ $4a^2+16a+16=(2a+4)^2$이므로 완전제곱식이다.\\n⑤ $x^2-6x+9=(x-3)^2$이므로 완전제곱식이다.\\n따라서 정답은 ③이다."
   },
   {
     "id": 15,
