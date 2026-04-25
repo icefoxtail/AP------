@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * 통합 프론트엔드 엔진 - 운영 관제센터 1차 적용본
+ * 통합 프론트엔드 엔진 - 운영 관제센터 1.1 (toggleShowDischarged 복구본)
  */
 
 const CONFIG = {
@@ -61,12 +61,18 @@ const SEED_DATA = {
 
 let state = {
     ui: { viewScope: 'teacher', userName: '박준성', currentClassId: null, showDischarged: false },
-    db: { students: [], classes: [], class_students: [], attendance: [], homework: [], exam_sessions: [], wrong_answers: [] }
+    db: { students: [], classes: [], class_students: [], attendance: [], homework: [], exam_sessions: [], wrong_answers: [], attendance_history: [], homework_history: [] }
 };
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
 
+// --- 운영 관제센터 1.1 상수 ---
+const RISK_LOOKBACK_DAYS = 14;
+const RISK_ABSENCE_THRESHOLD = 2;
+const RISK_HOMEWORK_THRESHOLD = 3;
 const RISK_WRONG_THRESHOLD = 3;
+const RISK_MUTE_DAYS = 2;
+const RISK_MUTE_KEY = 'APMATH_MUTED_RISKS';
 
 const api = {
     async get(res) {
@@ -114,7 +120,9 @@ async function loadData(isInitial = false) {
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
         homework: Array.isArray(data.homework) ? data.homework : [],
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [],
-        wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : []
+        wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [],
+        attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [],
+        homework_history: Array.isArray(data.homework_history) ? data.homework_history : []
     };
 
     if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
@@ -125,13 +133,12 @@ async function refreshDataOnly() {
     const data = await api.get('initial-data');
     state.db = {
         ...state.db,
-        classes: (data.classes && data.classes.length) ? data.classes : state.db.classes,
-        students: (data.students && data.students.length) ? data.students : state.db.students,
-        class_students: (data.class_students && data.class_students.length) ? data.class_students : state.db.class_students,
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
         homework: Array.isArray(data.homework) ? data.homework : [],
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [],
-        wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : []
+        wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [],
+        attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [],
+        homework_history: Array.isArray(data.homework_history) ? data.homework_history : []
     };
 }
 
@@ -173,17 +180,47 @@ function toggleScope() {
     renderDashboard();
 }
 
-// --- 운영 관제센터 1차: 데이터/뷰 분리 로직 ---
+// --- Mute Helpers (localStorage) ---
+function getMutedRisks() {
+    return JSON.parse(localStorage.getItem(RISK_MUTE_KEY) || '{}');
+}
 
+function saveMutedRisks(data) {
+    localStorage.setItem(RISK_MUTE_KEY, JSON.stringify(data));
+}
+
+function muteRiskStudent(sid) {
+    const muted = getMutedRisks();
+    muted[sid] = new Date().toLocaleDateString('sv-SE');
+    saveMutedRisks(muted);
+    toast('확인 처리 완료 (2일간 숨김)', 'info');
+    renderDashboard();
+}
+
+function dateToDayIndex(str) {
+    const [y, m, d] = String(str).split('-').map(Number);
+    return Math.floor(Date.UTC(y, m - 1, d) / 86400000);
+}
+
+function isRiskMuted(sid) {
+    const muted = getMutedRisks();
+    const mutedDate = muted[sid];
+    if (!mutedDate) return false;
+
+    const today = new Date().toLocaleDateString('sv-SE');
+    const diff = dateToDayIndex(today) - dateToDayIndex(mutedDate);
+
+    return diff >= 0 && diff < RISK_MUTE_DAYS;
+}
+
+// --- 운영 관제센터 1.1: 데이터 연산 엔진 ---
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
-    
-    // 1. 재원생 필터
     const activeStudents = state.db.students.filter(s => s.status === '재원');
     const activeIds = new Set(activeStudents.map(s => s.id));
     const totalActive = activeStudents.length;
 
-    // 2. 오늘 출결/숙제 계산
+    // 오늘 스냅샷
     const todayAtt = state.db.attendance.filter(a => a.date === today && activeIds.has(a.student_id));
     const presentCount = todayAtt.filter(a => a.status === '등원').length;
     const absentCount = todayAtt.filter(a => a.status === '결석').length;
@@ -192,39 +229,39 @@ function computeDashboardData() {
     const hwDoneCount = todayHw.filter(h => h.status === '완료').length;
     const hwNotDoneCount = Math.max(totalActive - hwDoneCount, 0);
 
-    // 3. 시험/오답 인덱싱 (O(N) 최적화)
+    // 14일 이력 인덱싱
+    const attHistory = state.db.attendance_history || [];
+    const hwHistory = state.db.homework_history || [];
     const examsByStudent = new Map();
     state.db.exam_sessions.forEach(es => {
         if (!examsByStudent.has(es.student_id)) examsByStudent.set(es.student_id, []);
         examsByStudent.get(es.student_id).push(es);
     });
 
-    const wrongAnswersBySession = new Map();
+    const wrongBySession = new Map();
     state.db.wrong_answers.forEach(w => {
-        if (!wrongAnswersBySession.has(w.session_id)) wrongAnswersBySession.set(w.session_id, 0);
-        wrongAnswersBySession.set(w.session_id, wrongAnswersBySession.get(w.session_id) + 1);
+        wrongBySession.set(w.session_id, (wrongBySession.get(w.session_id) || 0) + 1);
     });
 
-    // 4. 학생별 위험도 계산
     const studentsData = {};
     let wrongRiskCount = 0;
-    let actionRequiredCount = 0;
     const priorityStudentsAll = [];
 
     activeStudents.forEach(s => {
         const sid = s.id;
-        const classMap = state.db.class_students.find(m => m.student_id === sid);
-        const classId = classMap ? classMap.class_id : '';
-        const clsObj = state.db.classes.find(c => c.id === classId);
-        const className = clsObj ? clsObj.name : '미배정';
+        const clsMap = state.db.class_students.find(m => m.student_id === sid);
+        const clsId = clsMap ? clsMap.class_id : '';
+        const clsName = state.db.classes.find(c => c.id === clsId)?.name || '미배정';
 
-        const att = todayAtt.find(a => a.student_id === sid);
-        const isAbsent = att?.status === '결석';
-        
-        const hw = todayHw.find(h => h.student_id === sid);
-        const isHwNotDone = hw?.status !== '완료';
+        // 1. 결석 위험 (14일 내 2회 이상)
+        const absCount = attHistory.filter(a => a.student_id === sid && a.status === '결석').length;
+        const isAbsenceRisk = absCount >= RISK_ABSENCE_THRESHOLD;
 
-        // 최신 시험 기준 오답 위험 계산
+        // 2. 숙제 위험 (14일 내 미완료 3회 이상)
+        const hwMissCount = hwHistory.filter(h => h.student_id === sid && h.status !== '완료').length;
+        const isHwRisk = hwMissCount >= RISK_HOMEWORK_THRESHOLD;
+
+        // 3. 오답 위험 (최신 시험 오답 3개 이상)
         let isWrongRisk = false;
         let latestWrongCount = 0;
         const exams = examsByStudent.get(sid) || [];
@@ -233,88 +270,62 @@ function computeDashboardData() {
                 const d = String(b.exam_date || '').localeCompare(String(a.exam_date || ''));
                 return d !== 0 ? d : String(b.id || '').localeCompare(String(a.id || ''));
             });
-            const latestSessionId = exams[0].id;
-            latestWrongCount = wrongAnswersBySession.get(latestSessionId) || 0;
-            if (latestWrongCount >= RISK_WRONG_THRESHOLD) {
-                isWrongRisk = true;
-            }
+            latestWrongCount = wrongBySession.get(exams[0].id) || 0;
+            if (latestWrongCount >= RISK_WRONG_THRESHOLD) isWrongRisk = true;
         }
 
-        // 위험도 점수 계산
-        let riskScore = 0;
-        if (isAbsent) riskScore += 1;
-        if (isHwNotDone) riskScore += 1;
-        if (isWrongRisk) riskScore += 1;
+        const riskScore = (isAbsenceRisk ? 1 : 0) + (isHwRisk ? 1 : 0) + (isWrongRisk ? 1 : 0);
+        const rankWeight = riskScore * 1000 + (isAbsenceRisk ? 500 : 0) + (isWrongRisk ? 100 : 0);
 
-        const rankWeight = riskScore * 100 + (isAbsent ? 10 : 0) + (isWrongRisk ? 5 : 0);
+        const tags = [];
+        if (isAbsenceRisk) tags.push('결석누적');
+        if (isHwRisk) tags.push('숙제미달');
+        if (isWrongRisk) tags.push('오답경고');
 
-        let riskLevel = '정상';
+        let riskLevel = '';
         if (riskScore === 3) riskLevel = '🔴 긴급';
         else if (riskScore === 2) riskLevel = '🟠 주의';
         else if (riskScore === 1) riskLevel = '🟡 관찰';
 
-        const tags = [];
-        if (isAbsent) tags.push('결석');
-        if (isHwNotDone) tags.push('미완료');
-        if (isWrongRisk) tags.push('오답');
-
         if (isWrongRisk) wrongRiskCount++;
-        if (riskScore >= 1) {
-            actionRequiredCount++;
-            priorityStudentsAll.push({
-                id: sid, name: s.name, classId, className, isAbsent, isHwNotDone, isWrongRisk,
-                latestWrongCount, riskScore, riskLevel, tags, rankWeight
-            });
-        }
 
-        studentsData[sid] = {
-            id: sid, name: s.name, classId, className, isAbsent, isHwNotDone, isWrongRisk,
-            latestWrongCount, riskScore, riskLevel, tags, rankWeight
+        const sd = {
+            id: sid, name: s.name, classId: clsId, className: clsName,
+            isAbsenceRisk, isHwRisk, isWrongRisk, riskScore, riskLevel, tags, rankWeight
         };
+
+        studentsData[sid] = sd;
+
+        if (riskScore >= 1 && !isRiskMuted(sid)) {
+            priorityStudentsAll.push(sd);
+        }
     });
 
-    // 조치 필요 학생 정렬 및 추출 (Top 5)
-    priorityStudentsAll.sort((a, b) => {
-        if (b.rankWeight !== a.rankWeight) return b.rankWeight - a.rankWeight;
-        return a.name.localeCompare(b.name);
-    });
-    const priorityStudentsTop = priorityStudentsAll.slice(0, 5);
+    priorityStudentsAll.sort((a, b) => (b.rankWeight - a.rankWeight) || a.name.localeCompare(b.name));
 
-    // 5. 학급별 운영 요약
+    // 학급 요약 (Mute 무관 실제 위험수)
     const classSummaries = {};
     state.db.classes.forEach(c => {
         const mIds = state.db.class_students.filter(m => m.class_id === c.id).map(m => m.student_id);
         const clsActiveIds = mIds.filter(id => activeIds.has(id));
-        
-        let cPresent = 0, cAbsent = 0, cHwNotDone = 0, cRisk = 0;
-        
+        let cRisk = 0, cHwNotDone = 0, cAbsent = 0, cPresent = 0;
+
         clsActiveIds.forEach(id => {
             const sd = studentsData[id];
-            if (sd) {
-                if (todayAtt.find(a => a.student_id === id)?.status === '등원') cPresent++;
-                if (sd.isAbsent) cAbsent++;
-                if (sd.isHwNotDone) cHwNotDone++;
-                if (sd.isWrongRisk) cRisk++;
-            }
+            const att = todayAtt.find(a => a.student_id === id);
+            if (att?.status === '등원') cPresent++;
+            if (att?.status === '결석') cAbsent++;
+            if (todayHw.find(h => h.student_id === id)?.status !== '완료') cHwNotDone++;
+            // 위험 n: 누적 결석/숙제 또는 최신 오답 기준 충족 학생
+            if (sd && sd.riskScore >= 1) cRisk++;
         });
-        
-        classSummaries[c.id] = {
-            activeCount: clsActiveIds.length,
-            present: cPresent,
-            absent: cAbsent,
-            hwNotDone: cHwNotDone,
-            riskCount: cRisk
-        };
+
+        classSummaries[c.id] = { activeCount: clsActiveIds.length, present: cPresent, absent: cAbsent, hwNotDone: cHwNotDone, riskCount: cRisk };
     });
 
     return {
-        today,
-        global: {
-            totalActive, presentCount, absentCount, hwDoneCount, hwNotDoneCount, wrongRiskCount, actionRequiredCount
-        },
-        students: studentsData,
-        priorityStudentsAll,
-        priorityStudentsTop,
+        global: { totalActive, presentCount, absentCount, hwDoneCount, hwNotDoneCount, wrongRiskCount },
+        priorityTop: priorityStudentsAll.slice(0, 1),
         classSummaries
     };
 }
@@ -323,16 +334,18 @@ function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id];
     if (!s) return '';
     return `
-        <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 120px;">
+        <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 110px; padding: 16px;">
             <div>
-                <div style="font-weight:800; font-size:18px;">${cls.name} <span style="font-size:12px; font-weight:normal; color:var(--secondary);">재원 ${s.activeCount}명</span></div>
-                <div style="font-size:13px; color:var(--secondary); margin-top:8px;">
-                    등원 ${s.present} <span style="opacity:0.3;">|</span> <span style="color:var(--error); font-weight:${s.absent > 0 ? '700' : 'normal'};">결석 ${s.absent}</span>
+                <div style="font-weight:800; font-size:17px; display:flex; justify-content:space-between;">
+                    ${cls.name} <span style="font-size:12px; font-weight:normal; color:var(--secondary);">재원 ${s.activeCount}</span>
+                </div>
+                <div style="font-size:13px; color:var(--secondary); margin-top:6px;">
+                    등원 ${s.present} <span style="opacity:0.3;">|</span> <span style="color:${s.absent > 0 ? 'var(--error)' : 'inherit'}; font-weight:${s.absent > 0 ? '700' : 'normal'};">결석 ${s.absent}</span>
                 </div>
             </div>
-            <div style="display:flex; gap:6px; margin-top:12px; font-size:12px;">
-                <span style="background:${s.hwNotDone > 0 ? '#fef7e0' : '#f1f3f4'}; color:${s.hwNotDone > 0 ? '#b06000' : '#5f6368'}; padding:2px 8px; border-radius:4px; font-weight:700;">미완료 ${s.hwNotDone}</span>
-                <span style="background:${s.riskCount > 0 ? '#fce8e6' : '#f1f3f4'}; color:${s.riskCount > 0 ? '#c5221f' : '#5f6368'}; padding:2px 8px; border-radius:4px; font-weight:700;">위험 ${s.riskCount}</span>
+            <div style="display:flex; gap:6px; margin-top:10px;">
+                <span style="background:${s.hwNotDone > 0 ? '#fef7e0' : '#f1f3f4'}; color:${s.hwNotDone > 0 ? '#b06000' : '#5f6368'}; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:700;">숙제 ${s.hwNotDone}</span>
+                <span style="background:${s.riskCount > 0 ? '#fce8e6' : '#f1f3f4'}; color:${s.riskCount > 0 ? '#c5221f' : '#5f6368'}; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:700;">위험 ${s.riskCount}</span>
             </div>
         </div>
     `;
@@ -340,117 +353,110 @@ function renderClassSummaryCard(cls, data) {
 
 function renderDashboard() {
     state.ui.currentClassId = null;
-
     const data = computeDashboardData();
-    const g = data.global;
-
     const root = document.getElementById('app-root');
 
-    // 섹션 1: 전역 관제 카드
-    const section1 = `
-    <h3 style="margin:0 0 12px 0;">📊 오늘 전역 관제</h3>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:10px; margin-bottom:24px;">
-        <div class="card" style="padding:16px 8px; text-align:center; margin:0; border-left: 4px solid var(--primary);">
-            <div style="font-size:24px; font-weight:900; color:var(--primary);">${g.totalActive}</div>
-            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">전체 재원생</div>
+    // 1단: 학원 현황
+    const academyStatus = `
+    <h3 style="margin:0 0 12px 0; font-size:16px;">🏢 학원 현황</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(100px, 1fr)); gap:10px; margin-bottom:28px;">
+        <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom: 3px solid var(--primary);">
+            <div style="font-size:22px; font-weight:900;">${data.global.totalActive}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px;">재원생</div>
         </div>
-        <div class="card" style="padding:16px 8px; text-align:center; margin:0; border-left: 4px solid var(--success);">
-            <div style="font-size:24px; font-weight:900; color:var(--success);">${g.presentCount}</div>
-            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">오늘 등원</div>
+        <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom: 3px solid var(--success);">
+            <div style="font-size:22px; font-weight:900; color:var(--success);">${data.global.presentCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px;">등원</div>
         </div>
-        <div class="card" style="padding:16px 8px; text-align:center; margin:0; border-left: 4px solid var(--error);">
-            <div style="font-size:24px; font-weight:900; color:var(--error);">${g.absentCount}</div>
-            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">오늘 결석</div>
+        <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom: 3px solid var(--error);">
+            <div style="font-size:22px; font-weight:900; color:var(--error);">${data.global.absentCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px;">결석</div>
         </div>
-        <div class="card" style="padding:16px 8px; text-align:center; margin:0; border-left: 4px solid var(--success);">
-            <div style="font-size:24px; font-weight:900; color:var(--success);">${g.hwDoneCount}</div>
-            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">숙제 완료</div>
+        <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom: 3px solid var(--warning);">
+            <div style="font-size:22px; font-weight:900; color:var(--warning);">${data.global.hwNotDoneCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px;">숙제미달</div>
         </div>
-        <div class="card" style="padding:16px 8px; text-align:center; margin:0; border-left: 4px solid var(--warning);">
-            <div style="font-size:24px; font-weight:900; color:var(--warning);">${g.hwNotDoneCount}</div>
-            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">숙제 미완료</div>
-        </div>
-        <div class="card" style="padding:16px 8px; text-align:center; margin:0; border-left: 4px solid #c5221f;">
-            <div style="font-size:24px; font-weight:900; color:#c5221f;">${g.wrongRiskCount}</div>
-            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">오답 위험</div>
+        <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom: 3px solid #c5221f;">
+            <div style="font-size:22px; font-weight:900; color:#c5221f;">${data.global.wrongRiskCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px;">오답위험</div>
         </div>
     </div>
     `;
 
-    // 섹션 2: 오늘 조치 필요 학생
-    let section2 = '';
-    if (data.priorityStudentsTop.length > 0) {
-        const pRows = data.priorityStudentsTop.map(s => `
-            <div class="card" style="padding:12px 16px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; border-left: 4px solid ${s.riskScore === 3 ? 'var(--error)' : (s.riskScore === 2 ? 'var(--warning)' : '#fbbc04')};" onclick="renderStudentDetail('${s.id}')">
-                <div>
-                    <span style="font-weight:800; font-size:15px; margin-right:8px;">${s.name}</span>
-                    <span style="font-size:12px; color:var(--secondary);">${s.className}</span>
-                </div>
-                <div style="display:flex; gap:4px;">
-                    ${s.tags.map(t => `<span style="background:#f1f3f4; color:#5f6368; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:700;">${t}</span>`).join('')}
-                    <span style="margin-left:4px; font-size:12px;">${s.riskLevel}</span>
-                </div>
-            </div>
-        `).join('');
-
-        section2 = `
-        <div style="margin-bottom:24px;">
-            <h3 style="margin:0 0 12px 0; color:var(--error);">🚨 오늘 조치 필요 학생 <span style="font-size:14px; font-weight:normal; color:var(--secondary);">(${g.actionRequiredCount}명)</span></h3>
-            ${pRows}
-        </div>
-        `;
-    }
-
-    // 섹션 3: 학급별 운영 현황
-    const classes = state.ui.viewScope === 'all'
-        ? state.db.classes
-        : state.db.classes.filter(c => c.teacher_name === state.ui.userName);
-
-    const section3 = `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-        <h3 style="margin:0;">📂 학급별 운영 현황</h3>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="renderAttendanceLedger()">📋 출석부</button>
-            <button class="btn" style="padding:8px 12px; font-size:12px;" onclick="openAddStudent()">+ 학생 추가</button>
+    // 2단: 학급별 운영 현황
+    const classes = state.ui.viewScope === 'all' ? state.db.classes : state.db.classes.filter(c => c.teacher_name === state.ui.userName);
+    const classStatus = `
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="margin:0; font-size:16px;">📂 학급별 운영 현황</h3>
+        <div style="display:flex; gap:6px;">
+            <button class="btn btn-primary" style="padding:6px 12px; font-size:12px;" onclick="renderAttendanceLedger()">📋 출석부</button>
+            <button class="btn" style="padding:6px 10px; font-size:12px;" onclick="openAddStudent()">+ 학생</button>
         </div>
     </div>
-    <div class="grid">
+    <div class="grid" style="margin-bottom:32px;">
         ${classes.map(c => renderClassSummaryCard(c, data)).join('')}
     </div>
     `;
 
-    root.innerHTML = section1 + section2 + section3;
+    // 3단: 집중 확인 학생
+    let prioritySection = '';
+    if (data.priorityTop.length > 0) {
+        const s = data.priorityTop[0];
+        prioritySection = `
+        <h3 style="margin:0 0 12px 0; font-size:16px; color:var(--error);">🎯 집중 확인 학생</h3>
+        <div class="card" style="padding:16px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; border-left: 5px solid var(--error);" onclick="renderStudentDetail('${s.id}')">
+            <div>
+                <div style="font-weight:800; font-size:16px;">${s.name} <span style="font-size:12px; font-weight:normal; color:var(--secondary); margin-left:6px;">${s.className}</span></div>
+                <div style="display:flex; gap:4px; margin-top:6px;">
+                    ${s.tags.map(t => `<span style="background:#fce8e6; color:#c5221f; padding:1px 6px; border-radius:4px; font-size:11px; font-weight:700;">${t}</span>`).join('')}
+                    <span style="font-size:12px; margin-left:4px;">${s.riskLevel}</span>
+                </div>
+            </div>
+            <button class="btn" style="padding:8px 16px; font-size:13px; font-weight:700; border-color:var(--border);" onclick="event.stopPropagation(); muteRiskStudent('${s.id}')">확인</button>
+        </div>
+        `;
+    } else {
+        prioritySection = `
+        <div style="text-align:center; padding:20px; opacity:0.5; font-size:13px;">
+            ✅ 현재 집중 확인이 필요한 학생이 없습니다.
+        </div>
+        `;
+    }
+
+    root.innerHTML = academyStatus + classStatus + prioritySection;
     document.getElementById('scope-text').innerText = state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
 
 function renderClass(cid) {
     state.ui.currentClassId = cid;
-
     const cls = state.db.classes.find(c => c.id === cid);
-    const mIds = state.db.class_students
-        .filter(m => m.class_id === cid)
-        .map(m => m.student_id);
+    const mIds = state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id);
 
-    const latestWrongCountMap = {};
-    mIds.forEach(sid => {
-        const latestSession = state.db.exam_sessions
-            .filter(es => es.student_id === sid)
-            .sort((a, b) => {
-                const dateCompare = String(b.exam_date || '').localeCompare(String(a.exam_date || ''));
-                if (dateCompare !== 0) return dateCompare;
-                return String(b.id || '').localeCompare(String(a.id || ''));
-            })[0];
-        latestWrongCountMap[sid] = latestSession
-            ? state.db.wrong_answers.filter(w => w.session_id === latestSession.id).length
-            : 0;
+    const examsByStudent = new Map();
+    state.db.exam_sessions.forEach(es => {
+        if (!examsByStudent.has(es.student_id)) examsByStudent.set(es.student_id, []);
+        examsByStudent.get(es.student_id).push(es);
+    });
+    const wrongBySession = new Map();
+    state.db.wrong_answers.forEach(w => {
+        wrongBySession.set(w.session_id, (wrongBySession.get(w.session_id) || 0) + 1);
     });
 
-    const allStds = state.db.students.filter(s => mIds.includes(s.id));
-    const stds = allStds
+    const stds = state.db.students
+        .filter(s => mIds.includes(s.id))
         .filter(s => state.ui.showDischarged ? true : s.status === '재원')
-        .sort((a, b) => (latestWrongCountMap[b.id] || 0) - (latestWrongCountMap[a.id] || 0));
+        .map(s => {
+            const exams = examsByStudent.get(s.id) || [];
+            if (exams.length > 0) {
+                exams.sort((a, b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)));
+                s._wc = wrongBySession.get(exams[0].id) || 0;
+            } else s._wc = 0;
+            return s;
+        })
+        .sort((a, b) => (b._wc || 0) - (a._wc || 0));
 
-    const activeCount = allStds.filter(s => s.status === '재원').length;
+    const activeCount = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원').length;
+    const today = new Date().toLocaleDateString('sv-SE');
 
     document.getElementById('app-root').innerHTML = `
         <div style="display:flex; gap:10px; margin-bottom:15px; align-items:center; flex-wrap:wrap;">
@@ -460,27 +466,20 @@ function renderClass(cid) {
             <button class="btn" onclick="openAddStudent('${cid}')">+ 학생 추가</button>
         </div>
         <div class="card">
-            <h2>${cls.name} 관리 <span style="font-weight:normal; opacity:0.5; font-size:14px;">(재원 ${activeCount}명)</span></h2>
+            <h2>${cls.name} <span style="font-weight:normal; opacity:0.5; font-size:14px;">(재원 ${activeCount}명)</span></h2>
             <table>
                 <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">출결/숙제/성적</th></tr></thead>
                 <tbody>${stds.map(s => {
                     const isDischarged = s.status === '제적';
-                    const today = new Date().toLocaleDateString('sv-SE');
                     const att = state.db.attendance.find(a => a.student_id === s.id && a.date === today);
                     const hw = state.db.homework.find(h => h.student_id === s.id && h.date === today);
-                    const wc = latestWrongCountMap[s.id] || 0;
-                    const badge = wc > 0
-                        ? `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">🔴 최근 오답 ${wc}개</span>`
-                        : '';
-                    const dischargedBadge = isDischarged
-                        ? `<span style="display:inline-block;background:#f1f3f4;color:#5f6368;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">제적</span>`
-                        : '';
+                    const badge = s._wc > 0 ? `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">🔴 오답 ${s._wc}</span>` : '';
                     return `
                         <tr style="${isDischarged ? 'opacity:0.5;' : ''}">
-                            <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer;font-weight:800;color:var(--primary);">${s.name}${badge}${dischargedBadge}</td>
+                            <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer;font-weight:800;color:var(--primary);">${s.name}${badge}</td>
                             <td>${s.school_name}</td>
                             <td style="text-align:right;">
-                                ${isDischarged ? '<span style="font-size:12px;opacity:0.4;">-</span>' : `
+                                ${isDischarged ? '-' : `
                                     <button class="btn ${att?.status === '등원' ? 'btn-primary' : ''}" style="padding:4px 8px;font-size:11px;" onclick="toggleAtt('${s.id}')">${att?.status || '미정'}</button>
                                     <button class="btn ${hw?.status === '완료' ? 'btn-primary' : ''}" style="padding:4px 8px;font-size:11px;" onclick="toggleHw('${s.id}')">${hw?.status || '미완료'}</button>
                                     <button class="btn btn-primary" style="padding:4px 8px;font-size:11px;" onclick="openOMR('${s.id}')">성적</button>
@@ -502,20 +501,13 @@ async function toggleAtt(sid, date) {
         : state.db.attendance.find(a => a.student_id === sid && a.date === today);
     const nextStatus = cur?.status === '등원' ? '결석' : '등원';
 
-    await api.patch('attendance', {
-        studentId: sid,
-        status: nextStatus,
-        date: today
-    });
+    await api.patch('attendance', { studentId: sid, status: nextStatus, date: today });
 
     if (isLedger) {
-        if (today === new Date().toLocaleDateString('sv-SE')) {
-            await refreshDataOnly();
-        }
+        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly();
         await loadLedger();
     } else {
         await loadData();
-        if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
     }
 }
 
@@ -527,20 +519,13 @@ async function toggleHw(sid, date) {
         : state.db.homework.find(h => h.student_id === sid && h.date === today);
     const nextStatus = cur?.status === '완료' ? '미완료' : '완료';
 
-    await api.patch('homework', {
-        studentId: sid,
-        status: nextStatus,
-        date: today
-    });
+    await api.patch('homework', { studentId: sid, status: nextStatus, date: today });
 
     if (isLedger) {
-        if (today === new Date().toLocaleDateString('sv-SE')) {
-            await refreshDataOnly();
-        }
+        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly();
         await loadLedger();
     } else {
         await loadData();
-        if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
     }
 }
 
@@ -557,43 +542,16 @@ async function handleOMRSave(sid) {
     const title = document.getElementById('omr-title').value;
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const score = (10 - wrs.length) * 10;
-
-    const res = await api.patch('exam-sessions/new', {
-        student_id: sid,
-        exam_title: title,
-        score,
-        wrong_ids: wrs,
-        exam_date: new Date().toLocaleDateString('sv-SE')
-    });
-
-    if (res.success) {
-        toast(`${score}점 저장됨`, 'info');
-        closeModal();
-        await loadData();
-    }
+    const res = await api.patch('exam-sessions/new', { student_id: sid, exam_title: title, score, wrong_ids: wrs, exam_date: new Date().toLocaleDateString('sv-SE') });
+    if (res.success) { toast(`${score}점 저장됨`, 'info'); closeModal(); await loadData(); }
 }
 
 function renderStudentDetail(sid) {
     const s = state.db.students.find(st => st.id === sid);
-    const exs = state.db.exam_sessions
-        .filter(es => es.student_id === sid)
-        .sort((a, b) => b.exam_date.localeCompare(a.exam_date));
-
+    const exs = state.db.exam_sessions.filter(es => es.student_id === sid).sort((a, b) => b.exam_date.localeCompare(a.exam_date));
     const examRows = exs.map(e => {
-        const wrs = state.db.wrong_answers
-            .filter(w => w.session_id === e.id)
-            .map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 7px;margin:2px;font-size:12px;font-weight:700;">Q${w.question_id}</span>`)
-            .join('');
-
-        return `
-            <tr>
-                <td>${e.exam_date}</td>
-                <td>${e.exam_title || '-'}</td>
-                <td style="text-align:center;"><b>${e.score}점</b></td>
-                <td>${wrs || '<span style="opacity:0.4;font-size:12px;">없음</span>'}</td>
-                <td><button class="btn" style="padding:2px 8px;font-size:11px;color:var(--error);border-color:var(--error);" onclick="handleDeleteSession('${e.id}', '${sid}')">삭제</button></td>
-            </tr>
-        `;
+        const wrs = state.db.wrong_answers.filter(w => w.session_id === e.id).map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 7px;margin:2px;font-size:12px;font-weight:700;">Q${w.question_id}</span>`).join('');
+        return `<tr><td>${e.exam_date}</td><td>${e.exam_title || '-'}</td><td style="text-align:center;"><b>${e.score}점</b></td><td>${wrs || '<span style="opacity:0.4;font-size:12px;">없음</span>'}</td><td><button class="btn" style="padding:2px 8px;font-size:11px;color:var(--error);border-color:var(--error);" onclick="handleDeleteSession('${e.id}', '${sid}')">삭제</button></td></tr>`;
     }).join('');
 
     showModal(`${s.name} 프로필`, `
@@ -602,28 +560,15 @@ function renderStudentDetail(sid) {
             <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="openEditStudent('${sid}')">정보 수정</button>
         </div>
         <h4 style="margin-bottom:10px;">📋 성적 및 오답 이력</h4>
-        ${exs.length ? `
-            <table>
-                <thead><tr><th>날짜</th><th>시험명</th><th>점수</th><th>오답</th><th></th></tr></thead>
-                <tbody>${examRows}</tbody>
-            </table>
-        ` : '<p style="opacity:0.5;">성적 데이터 없음</p>'}
-        ${s.status === '재원'
-            ? `<button class="btn" onclick="handleDelete('${sid}')" style="color:var(--error);border-color:var(--error);margin-top:20px;">제적 처리</button>`
-            : `<button class="btn btn-primary" onclick="handleRestore('${sid}')" style="margin-top:20px;">재원 복구</button>`
-        }
+        ${exs.length ? `<table><thead><tr><th>날짜</th><th>시험명</th><th>점수</th><th>오답</th><th></th></tr></thead><tbody>${examRows}</tbody></table>` : '<p style="opacity:0.5;">성적 데이터 없음</p>'}
+        ${s.status === '재원' ? `<button class="btn" onclick="handleDelete('${sid}')" style="color:var(--error);border-color:var(--error);margin-top:20px;">제적 처리</button>` : `<button class="btn btn-primary" onclick="handleRestore('${sid}')" style="margin-top:20px;">재원 복구</button>`}
     `);
 }
 
 async function handleDelete(sid) {
     if (!confirm('정말 제적하시겠습니까? 데이터는 보존됩니다.')) return;
-
     const r = await api.delete('students', sid);
-    if (r.success) {
-        toast('제적 완료', 'info');
-        closeModal();
-        await loadData();
-    }
+    if (r.success) { toast('제적 완료', 'info'); closeModal(); await loadData(); }
 }
 
 function toggleShowDischarged() {
@@ -632,22 +577,13 @@ function toggleShowDischarged() {
 }
 
 function openAddStudent(defaultClassId = '') {
-    const classOptions = state.db.classes
-        .map(c => `<option value="${c.id}" ${c.id === defaultClassId ? 'selected' : ''}>${c.name}</option>`)
-        .join('');
+    const classOptions = state.db.classes.map(c => `<option value="${c.id}" ${c.id === defaultClassId ? 'selected' : ''}>${c.name}</option>`).join('');
     showModal('학생 추가', `
         <div style="display:flex;flex-direction:column;gap:12px;">
             <input id="add-name" class="btn" placeholder="이름" style="width:100%;text-align:left;">
             <input id="add-school" class="btn" placeholder="학교명" style="width:100%;text-align:left;">
-            <select id="add-grade" class="btn" style="width:100%;">
-                <option value="중1">중1</option>
-                <option value="중2">중2</option>
-                <option value="중3">중3</option>
-            </select>
-            <select id="add-class" class="btn" style="width:100%;">
-                <option value="">반 선택 (선택사항)</option>
-                ${classOptions}
-            </select>
+            <select id="add-grade" class="btn" style="width:100%;"><option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option></select>
+            <select id="add-class" class="btn" style="width:100%;"><option value="">반 선택 (선택사항)</option>${classOptions}</select>
         </div>
     `, '추가', handleAddStudent);
 }
@@ -664,46 +600,28 @@ async function handleAddStudent() {
 
 async function handleRestore(sid) {
     if (!confirm('재원으로 복구하시겠습니까?')) return;
-    const r = await fetch(`${CONFIG.API_BASE}/students/${sid}/restore`, {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' }
-    });
+    const r = await fetch(`${CONFIG.API_BASE}/students/${sid}/restore`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' } });
     const data = await r.json();
     if (data.success) { toast('재원 복구 완료', 'info'); closeModal(); await loadData(); }
 }
 
 async function handleDeleteSession(sessionId, sid) {
     if (!confirm('이 성적 기록을 삭제하시겠습니까? 오답 기록도 함께 삭제됩니다.')) return;
-
     const r = await fetch(`${CONFIG.API_BASE}/exam-sessions/${sessionId}`, { method: 'DELETE' });
     const data = await r.json();
-
-    if (data.success) {
-        toast('삭제 완료', 'info');
-        closeModal();
-        await loadData();
-        renderStudentDetail(sid);
-    }
+    if (data.success) { toast('삭제 완료', 'info'); closeModal(); await loadData(); renderStudentDetail(sid); }
 }
 
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
     const currentClassId = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
-    const classOptions = state.db.classes
-        .map(c => `<option value="${c.id}" ${c.id === currentClassId ? 'selected' : ''}>${c.name}</option>`)
-        .join('');
+    const classOptions = state.db.classes.map(c => `<option value="${c.id}" ${c.id === currentClassId ? 'selected' : ''}>${c.name}</option>`).join('');
     showModal('학생 정보 수정', `
         <div style="display:flex;flex-direction:column;gap:12px;">
             <input id="edit-name" class="btn" value="${s.name}" style="width:100%;text-align:left;">
             <input id="edit-school" class="btn" value="${s.school_name || ''}" style="width:100%;text-align:left;">
-            <select id="edit-grade" class="btn" style="width:100%;">
-                <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option>
-                <option value="중2" ${s.grade==='중2'?'selected':''}>중2</option>
-                <option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
-            </select>
-            <select id="edit-class" class="btn" style="width:100%;">
-                <option value="">반 미배정</option>
-                ${classOptions}
-            </select>
+            <select id="edit-grade" class="btn" style="width:100%;"><option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option></select>
+            <select id="edit-class" class="btn" style="width:100%;"><option value="">반 미배정</option>${classOptions}</select>
         </div>
     `, '저장', () => handleEditStudent(sid));
 }
@@ -714,17 +632,9 @@ async function handleEditStudent(sid) {
     const grade = document.getElementById('edit-grade').value;
     const class_id = document.getElementById('edit-class').value;
     if (!name || !school_name) { toast('이름과 학교명을 입력해주세요', 'warn'); return; }
-    const r = await fetch(`${CONFIG.API_BASE}/students/${sid}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, school_name, grade, class_id })
-    });
+    const r = await fetch(`${CONFIG.API_BASE}/students/${sid}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, school_name, grade, class_id }) });
     const data = await r.json();
-    if (data.success) {
-        toast('수정 완료', 'info');
-        closeModal();
-        await loadData();
-    }
+    if (data.success) { toast('수정 완료', 'info'); closeModal(); await loadData(); }
 }
 
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
@@ -744,81 +654,40 @@ async function goDashboardFromLedger() {
 }
 
 function renderAttendanceLedger() {
-    const classOptions = state.db.classes
-        .map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`)
-        .join('');
-
+    const classOptions = state.db.classes.map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`).join('');
     document.getElementById('app-root').innerHTML = `
-        <div style="display:flex;gap:10px;margin-bottom:15px;align-items:center;flex-wrap:wrap;">
-            <h2 style="margin:0;">📋 출석부</h2>
-        </div>
+        <div style="display:flex;gap:10px;margin-bottom:15px;align-items:center;flex-wrap:wrap;"><h2 style="margin:0;">📋 출석부</h2></div>
         <div class="card" style="margin-bottom:12px;">
             <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
                 <input type="date" id="ledger-date" class="btn" value="${ledgerState.date}" style="width:160px;" onchange="ledgerState.date=this.value;loadLedger();">
-                <select id="ledger-class" class="btn" style="flex:1;min-width:120px;" onchange="ledgerState.classId=this.value;renderLedgerTable();">
-                    <option value="">전체 반</option>
-                    ${classOptions}
-                </select>
-                <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                    <button class="btn ${ledgerState.mode==='att'?'btn-primary':''}" onclick="ledgerState.mode='att';renderLedgerTable();">출결</button>
-                    <button class="btn ${ledgerState.mode==='hw'?'btn-primary':''}" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제</button>
-                </div>
+                <select id="ledger-class" class="btn" style="flex:1;min-width:120px;" onchange="ledgerState.classId=this.value;renderLedgerTable();"><option value="">전체 반</option>${classOptions}</select>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;"><button class="btn ${ledgerState.mode==='att'?'btn-primary':''}" onclick="ledgerState.mode='att';renderLedgerTable();">출결</button><button class="btn ${ledgerState.mode==='hw'?'btn-primary':''}" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제</button></div>
             </div>
             <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;" id="bulk-btn-area"></div>
         </div>
-        <div class="card" id="ledger-table-wrap">
-            <p style="opacity:0.5;text-align:center;">날짜를 선택하면 조회됩니다.</p>
-        </div>
+        <div class="card" id="ledger-table-wrap"><p style="opacity:0.5;text-align:center;">날짜를 선택하면 조회됩니다.</p></div>
     `;
     loadLedger();
 }
 
 function renderLedgerTable() {
     const cid = ledgerState.classId;
-    const mIds = cid
-        ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id)
-        : state.db.students.map(s => s.id);
-
+    const mIds = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
     const isAtt = ledgerState.mode === 'att';
     const records = isAtt ? ledgerState.attendance : ledgerState.homework;
 
     const bulkArea = document.getElementById('bulk-btn-area');
-    if (bulkArea) {
-        bulkArea.innerHTML = isAtt ? `
-            <button class="btn btn-primary" style="flex:1;" onclick="handleBulkAtt('등원')">✅ 전체 등원</button>
-            <button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkAtt('결석')">❌ 전체 결석</button>
-        ` : `
-            <button class="btn btn-primary" style="flex:1;" onclick="handleBulkHw('완료')">✅ 전체 완료</button>
-            <button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkHw('미완료')">❌ 전체 미완료</button>
-        `;
-    }
+    if (bulkArea) { bulkArea.innerHTML = isAtt ? `<button class="btn btn-primary" style="flex:1;" onclick="handleBulkAtt('등원')">✅ 전체 등원</button><button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkAtt('결석')">❌ 전체 결석</button>` : `<button class="btn btn-primary" style="flex:1;" onclick="handleBulkHw('완료')">✅ 전체 완료</button><button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkHw('미완료')">❌ 전체 미완료</button>`; }
 
     const rows = stds.map(s => {
         const rec = records.find(r => r.student_id === s.id);
         const status = isAtt ? (rec?.status || '미정') : (rec?.status || '미완료');
         const isActive = isAtt ? status === '등원' : status === '완료';
-        return `
-            <tr>
-                <td style="font-weight:700;">${s.name}</td>
-                <td>${s.school_name}</td>
-                <td style="text-align:right;">
-                    <button class="btn ${isActive ? 'btn-primary' : ''}" style="padding:6px 14px;font-size:13px;"
-                        onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">
-                        ${status}
-                    </button>
-                </td>
-            </tr>
-        `;
+        return `<tr><td style="font-weight:700;">${s.name}</td><td>${s.school_name}</td><td style="text-align:right;"><button class="btn ${isActive ? 'btn-primary' : ''}" style="padding:6px 14px;font-size:13px;" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button></td></tr>`;
     }).join('');
 
-    document.getElementById('ledger-table-wrap').innerHTML = `
-        <p style="font-size:13px;color:#5f6368;margin-bottom:12px;">${ledgerState.date} · ${cid ? state.db.classes.find(c=>c.id===cid)?.name : '전체 반'} · ${isAtt?'출결':'숙제'}</p>
-        <table>
-            <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">상태</th></tr></thead>
-            <tbody>${rows || '<tr><td colspan="3" style="text-align:center;opacity:0.5;">학생 없음</td></tr>'}</tbody>
-        </table>
-    `;
+    document.getElementById('ledger-table-wrap').innerHTML = `<p style="font-size:13px;color:#5f6368;margin-bottom:12px;">${ledgerState.date} · ${cid ? state.db.classes.find(c=>c.id===cid)?.name : '전체 반'} · ${isAtt?'출결':'숙제'}</p><table><thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">상태</th></tr></thead><tbody>${rows || '<tr><td colspan="3" style="text-align:center;opacity:0.5;">학생 없음</td></tr>'}</tbody></table>`;
 }
 
 async function handleBulkAtt(status) {
@@ -826,24 +695,11 @@ async function handleBulkAtt(status) {
     const label = status === '등원' ? '전체 등원' : '전체 결석';
     const scopeLabel = cid ? state.db.classes.find(c => c.id === cid)?.name : '전체 반';
     if (!confirm(`${ledgerState.date} 기준 ${scopeLabel} 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
-    const sids = cid
-        ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id)
-        : state.db.students.map(s => s.id);
+    const sids = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
-    const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ entries })
-    });
-    const data = await r.json();
-    if (data.success) {
-        toast(`${label} 처리 완료`, 'info');
-        if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) {
-            await refreshDataOnly();
-        }
-        await loadLedger();
-    }
+    const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ entries }) });
+    if (r.ok) { toast(`${label} 처리 완료`, 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
 async function handleBulkHw(status) {
@@ -851,24 +707,11 @@ async function handleBulkHw(status) {
     const label = status === '완료' ? '전체 완료' : '전체 미완료';
     const scopeLabel = cid ? state.db.classes.find(c => c.id === cid)?.name : '전체 반';
     if (!confirm(`${ledgerState.date} 기준 ${scopeLabel} 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
-    const sids = cid
-        ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id)
-        : state.db.students.map(s => s.id);
+    const sids = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
-    const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ entries })
-    });
-    const data = await r.json();
-    if (data.success) {
-        toast(`${label} 처리 완료`, 'info');
-        if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) {
-            await refreshDataOnly();
-        }
-        await loadLedger();
-    }
+    const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ entries }) });
+    if (r.ok) { toast(`${label} 처리 완료`, 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
 function toast(m, t = 'info') {
@@ -884,15 +727,7 @@ function showModal(t, b, at = null, af = null) {
     document.getElementById('modal-title').innerText = t;
     document.getElementById('modal-body').innerHTML = b;
     const ab = document.getElementById('modal-action-btn');
-
-    if (at && af) {
-        ab.innerText = at;
-        ab.onclick = af;
-        ab.classList.remove('hidden');
-    } else {
-        ab.classList.add('hidden');
-    }
-
+    if (at && af) { ab.innerText = at; ab.onclick = af; ab.classList.remove('hidden'); } else { ab.classList.add('hidden'); }
     document.getElementById('modal-overlay').classList.remove('hidden');
 }
 

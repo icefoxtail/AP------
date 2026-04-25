@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * Cloudflare Worker 통합 API 엔진 - D1 스키마 및 트랜잭션 완결판
+ * Cloudflare Worker 통합 API 엔진 - 운영 관제센터 1.1 (KST 기준 이력 추가)
  */
 
 const headers = {
@@ -37,7 +37,7 @@ export default {
             }), { headers });
         }
 
-        // 3차 보정: 출결 전용 일괄 처리 API
+        // 출결 일괄 처리
         if (resource === 'attendance-batch' && method === 'POST') {
             const data = await request.json();
             const stmts = (data.entries || []).map(({ studentId, status, date }) => {
@@ -52,7 +52,7 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // 3차 보정 추가: 숙제 전용 일괄 처리 API
+        // 숙제 일괄 처리
         if (resource === 'homework-batch' && method === 'POST') {
             const data = await request.json();
             const stmts = (data.entries || []).map(({ studentId, status, date }) => {
@@ -67,15 +67,20 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
         }
 
+        // 초기 데이터 로드 (운영 관제센터 1.1: 14일치 이력 및 KST 보정)
         if (resource === 'initial-data') {
-          const [stds, clss, map, att, hw, exs, wrs] = await Promise.all([
+          const [stds, clss, map, att, hw, exs, wrs, attHis, hwHis] = await Promise.all([
             env.DB.prepare('SELECT * FROM students').all(),
             env.DB.prepare('SELECT * FROM classes').all(),
             env.DB.prepare('SELECT * FROM class_students').all(),
-            env.DB.prepare('SELECT * FROM attendance WHERE date = CURRENT_DATE').all(),
-            env.DB.prepare('SELECT * FROM homework WHERE date = CURRENT_DATE').all(),
+            // 오늘 데이터 (KST 기준)
+            env.DB.prepare("SELECT * FROM attendance WHERE date = DATE('now', '+9 hours')").all(),
+            env.DB.prepare("SELECT * FROM homework WHERE date = DATE('now', '+9 hours')").all(),
             env.DB.prepare('SELECT * FROM exam_sessions ORDER BY exam_date DESC LIMIT 100').all(),
-            env.DB.prepare('SELECT * FROM wrong_answers').all()
+            env.DB.prepare('SELECT * FROM wrong_answers').all(),
+            // 최근 14일 이력 (누적 위험도 계산용)
+            env.DB.prepare("SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 500").all(),
+            env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 500").all()
           ]);
 
           return new Response(JSON.stringify({
@@ -85,10 +90,13 @@ export default {
             attendance: att.results,
             homework: hw.results,
             exam_sessions: exs.results,
-            wrong_answers: wrs.results
+            wrong_answers: wrs.results,
+            attendance_history: attHis.results,
+            homework_history: hwHis.results
           }), { headers });
         }
 
+        // 학생 추가
         if (resource === 'students' && method === 'POST') {
             const data = await request.json();
             const sid = `s_${Date.now()}`;
@@ -108,6 +116,7 @@ export default {
             return new Response(JSON.stringify({ success: true, id: sid }), { headers });
         }
 
+        // 재원 복구
         if (resource === 'students' && method === 'PATCH' && path[3] === 'restore') {
             await env.DB.prepare(`
                 UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?
@@ -115,6 +124,7 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
         }
 
+        // 학생 정보 수정
         if (resource === 'students' && method === 'PATCH' && !path[3]) {
             const data = await request.json();
             const stmts = [
@@ -178,6 +188,7 @@ export default {
           }
         }
 
+        // 시험 삭제
         if (resource === 'exam-sessions' && method === 'DELETE') {
             await env.DB.batch([
                 env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(id),
@@ -186,33 +197,11 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
         }
 
+        // 제적 처리
         if (resource === 'students' && method === 'DELETE') {
           await env.DB.prepare("UPDATE students SET status = '제적', updated_at = DATETIME('now') WHERE id = ?")
             .bind(id).run();
           return new Response(JSON.stringify({ success: true }), { headers });
-        }
-
-        if (resource === 'questions') {
-          if (id === 'resource') {
-            const qId = url.searchParams.get('qId');
-            const item = await env.DB.prepare('SELECT * FROM questions WHERE id = ?').bind(qId).first();
-            return new Response(JSON.stringify(item || {}), { headers });
-          }
-          if (id === 'similar') {
-            const qId = url.searchParams.get('qId');
-            const src = await env.DB.prepare('SELECT standard_unit, difficulty FROM questions WHERE id = ?').bind(qId).first();
-            if (!src) return new Response(JSON.stringify([]), { headers });
-
-            const diffMap = { '최하': 1, '하': 2, '중': 3, '상': 4, '최상': 5 };
-            const target = diffMap[src.difficulty] || 3;
-            const wSQL = "(CASE difficulty WHEN '최하' THEN 1 WHEN '하' THEN 2 WHEN '중' THEN 3 WHEN '상' THEN 4 WHEN '최상' THEN 5 ELSE 3 END)";
-            const sim = await env.DB.prepare(`
-              SELECT * FROM questions
-              WHERE standard_unit = ? AND id != ?
-              ORDER BY ABS(${wSQL} - ?) ASC, RANDOM() LIMIT 3
-            `).bind(src.standard_unit, qId, target).all();
-            return new Response(JSON.stringify(sim.results), { headers });
-          }
         }
       }
 
