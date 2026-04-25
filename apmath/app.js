@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * 통합 프론트엔드 엔진 - 29인 실데이터 및 운영 루프 완결판
+ * 통합 프론트엔드 엔진 - 출석부 3.1 및 운영 안정화 통합본
  */
 
 const CONFIG = {
@@ -119,6 +119,23 @@ async function loadData(isInitial = false) {
     else renderDashboard();
 }
 
+/**
+ * 전역 상태(state.db)만 최신화 (UI 리렌더링 방지)
+ */
+async function refreshDataOnly() {
+    const data = await api.get('initial-data');
+    state.db = {
+        ...state.db,
+        classes: (data.classes && data.classes.length) ? data.classes : state.db.classes,
+        students: (data.students && data.students.length) ? data.students : state.db.students,
+        class_students: (data.class_students && data.class_students.length) ? data.class_students : state.db.class_students,
+        attendance: Array.isArray(data.attendance) ? data.attendance : [],
+        homework: Array.isArray(data.homework) ? data.homework : [],
+        exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [],
+        wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : []
+    };
+}
+
 function addToSyncQueue(method, resource, data) {
     syncQueue.push({ id: Date.now(), method, resource, data });
     localStorage.setItem('AP_SYNC_QUEUE', JSON.stringify(syncQueue));
@@ -164,7 +181,7 @@ function renderDashboard() {
             </div>
             <div class="card" style="border-left: 6px solid var(--success);">
                 <div style="font-size:12px; opacity:0.6;">오늘 등원</div>
-                <div style="font-size:26px; font-weight:900;">${state.db.attendance.filter(a => a.status === '등원').length}명</div>
+                <div style="font-size:26px; font-weight:900;">${state.db.attendance.filter(a => a.status === '등원' && a.date === new Date().toLocaleDateString('sv-SE')).length}명</div>
             </div>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
@@ -229,8 +246,9 @@ function renderClass(cid) {
                 <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">출결/숙제/성적</th></tr></thead>
                 <tbody>${stds.map(s => {
                     const isDischarged = s.status === '제적';
-                    const att = state.db.attendance.find(a => a.student_id === s.id);
-                    const hw = state.db.homework.find(h => h.student_id === s.id);
+                    const today = new Date().toLocaleDateString('sv-SE');
+                    const att = state.db.attendance.find(a => a.student_id === s.id && a.date === today);
+                    const hw = state.db.homework.find(h => h.student_id === s.id && h.date === today);
                     const wc = latestWrongCountMap[s.id] || 0;
                     const badge = wc > 0
                         ? `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">🔴 최근 오답 ${wc}개</span>`
@@ -271,9 +289,10 @@ async function toggleAtt(sid, date) {
         date: today
     });
 
-    const isToday = today === new Date().toLocaleDateString('sv-SE');
     if (isLedger) {
-        if (isToday) await loadData();
+        if (today === new Date().toLocaleDateString('sv-SE')) {
+            await refreshDataOnly();
+        }
         await loadLedger();
     } else {
         await loadData();
@@ -295,9 +314,10 @@ async function toggleHw(sid, date) {
         date: today
     });
 
-    const isToday = today === new Date().toLocaleDateString('sv-SE');
     if (isLedger) {
-        if (isToday) await loadData();
+        if (today === new Date().toLocaleDateString('sv-SE')) {
+            await refreshDataOnly();
+        }
         await loadLedger();
     } else {
         await loadData();
@@ -498,6 +518,15 @@ async function loadLedger() {
     renderLedgerTable();
 }
 
+/**
+ * 출석부에서 홈으로 이동 시 데이터 동기화 후 대시보드 렌더링
+ */
+async function goDashboardFromLedger() {
+    await refreshDataOnly();
+    state.ui.currentClassId = null;
+    renderDashboard();
+}
+
 function renderAttendanceLedger() {
     const classOptions = state.db.classes
         .map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`)
@@ -505,7 +534,7 @@ function renderAttendanceLedger() {
 
     document.getElementById('app-root').innerHTML = `
         <div style="display:flex;gap:10px;margin-bottom:15px;align-items:center;flex-wrap:wrap;">
-            <button class="btn" onclick="renderDashboard()">← 홈</button>
+            <button class="btn" onclick="goDashboardFromLedger()">← 홈</button>
             <h2 style="margin:0;">📋 출석부</h2>
         </div>
         <div class="card" style="margin-bottom:12px;">
@@ -593,7 +622,13 @@ async function handleBulkAtt(status) {
         body: JSON.stringify({ entries })
     });
     const data = await r.json();
-    if (data.success) { toast(`${label} 처리 완료`, 'info'); await loadLedger(); }
+    if (data.success) {
+        toast(`${label} 처리 완료`, 'info');
+        if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) {
+            await refreshDataOnly();
+        }
+        await loadLedger();
+    }
 }
 
 async function handleBulkHw(status) {
@@ -612,7 +647,13 @@ async function handleBulkHw(status) {
         body: JSON.stringify({ entries })
     });
     const data = await r.json();
-    if (data.success) { toast(`${label} 처리 완료`, 'info'); await loadLedger(); }
+    if (data.success) {
+        toast(`${label} 처리 완료`, 'info');
+        if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) {
+            await refreshDataOnly();
+        }
+        await loadLedger();
+    }
 }
 
 function toggleScope() {
