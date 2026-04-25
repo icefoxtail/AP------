@@ -1,6 +1,7 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * 통합 프론트엔드 엔진 - 운영 안정화 3차 (버튼 색상 동기화 및 QR 경로 보정본)
+ * 통합 프론트엔드 엔진 - 운영 안정화 3차 최종본
+ * (관제센터 1.1 + QR 3.0 + 출석부 동기화 보정 완료)
  */
 
 const CONFIG = {
@@ -66,7 +67,7 @@ let state = {
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
 
-// --- 상수 (운영 관제센터 1.1) ---
+// --- 상수 및 설정 (운영 관제센터 1.1) ---
 const RISK_LOOKBACK_DAYS = 14;
 const RISK_ABSENCE_THRESHOLD = 2;
 const RISK_HOMEWORK_THRESHOLD = 3;
@@ -120,7 +121,7 @@ async function loadData(isInitial = false) {
 }
 
 /**
- * 렌더링 없는 데이터 최신화 (출석부 등)
+ * UI 리렌더링 없이 데이터만 동기화
  */
 async function refreshDataOnly() {
     const data = await api.get('initial-data');
@@ -164,14 +165,14 @@ function toggleScope() {
     renderDashboard(); 
 }
 
-// --- Mute & Risk Logic (운영 관제센터 1.1) ---
+// --- Mute & Risk 관리 시스템 ---
 function getMutedRisks() { return JSON.parse(localStorage.getItem(RISK_MUTE_KEY) || '{}'); }
 function saveMutedRisks(data) { localStorage.setItem(RISK_MUTE_KEY, JSON.stringify(data)); }
 function muteRiskStudent(sid) { 
     const muted = getMutedRisks(); 
     muted[sid] = new Date().toLocaleDateString('sv-SE'); 
     saveMutedRisks(muted); 
-    toast('확인 완료 (2일 숨김)', 'info'); 
+    toast('확인 처리 완료', 'info'); 
     renderDashboard(); 
 }
 function dateToDayIndex(str) { 
@@ -188,7 +189,7 @@ function isRiskMuted(sid) {
 }
 
 /**
- * 대시보드 계산 엔진
+ * 전역 관제 데이터 연산 (computeDashboardData)
  */
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
@@ -344,7 +345,7 @@ function renderDashboard() {
 }
 
 /**
- * 학급 관리 상세 화면
+ * 학급 관리 상세 화면 (renderClass)
  */
 function renderClass(cid) {
     state.ui.currentClassId = cid;
@@ -406,7 +407,7 @@ function renderClass(cid) {
     }).join('');
 }
 
-// --- QR 생성 시스템 (경로 보정 반영) ---
+// --- QR 생성 엔진 (QR 3.0) ---
 function openQrGenerator(cid) {
     const cls = state.db.classes.find(c => c.id === cid);
     const today = new Date().toLocaleDateString('sv-SE');
@@ -414,7 +415,7 @@ function openQrGenerator(cid) {
         <div style="display:flex; flex-direction:column; gap:12px;">
             <p style="margin:0;"><b>대상 학급:</b> ${cls.name}</p>
             <div>
-                <label style="font-size:12px; color:var(--secondary);">시험명 입력/선택:</label>
+                <label style="font-size:12px; color:var(--secondary);">시험명 선택/입력:</label>
                 <div style="display:flex; gap:4px; margin:6px 0;">
                     <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('qr-exam').value='단원평가'">단원평가</button>
                     <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('qr-exam').value='쪽지시험'">쪽지시험</button>
@@ -445,9 +446,8 @@ function generateQrCode() {
     const q = parseInt(document.getElementById('qr-q').value) || 20;
     const date = document.getElementById('qr-date').value;
 
-    if (!exam || q < 1 || q > 50) { toast('입력 정보를 확인하세요 (문항 수 1~50).', 'warn'); return; }
+    if (!exam || q < 1 || q > 50) { toast('시험명과 문항 수(1~50)를 정확히 입력하세요.', 'warn'); return; }
 
-    // 보정: /apmath/ 경로 하위로 꼬이지 않도록 루트 기준 경로 생성
     const appBasePath = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/apmath\/?$/, '/');
     const baseUrl = window.location.origin + appBasePath + 'check/';
     const fullUrl = `${baseUrl}?class=${cid}&exam=${encodeURIComponent(exam)}&q=${q}&date=${date}`;
@@ -463,15 +463,22 @@ function copyQrUrl() {
     navigator.clipboard.writeText(url).then(() => toast('URL 복사 완료!', 'info'));
 }
 
-// --- 출석부 3.1 시스템 ---
+// --- 출석부 시스템 (Ledger / 출석부 3.1) ---
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
+/**
+ * [보정 완료] 출석부 데이터 로드 및 즉시 렌더링
+ */
 async function loadLedger() {
-    const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`);
-    const data = await r.json();
-    ledgerState.attendance = data.attendance || [];
-    ledgerState.homework = data.homework || [];
-    renderLedgerTable();
+    try {
+        const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`);
+        const data = await r.json();
+        ledgerState.attendance = data.attendance || [];
+        ledgerState.homework = data.homework || [];
+        renderLedgerTable();
+    } catch (e) {
+        toast('데이터를 불러오지 못했습니다.', 'warn');
+    }
 }
 
 async function goDashboardFromLedger() {
@@ -505,6 +512,9 @@ function renderAttendanceLedger() {
     loadLedger();
 }
 
+/**
+ * [보정 완료] 출석부 테이블 렌더러 (방어식 rec 조회 적용)
+ */
 function renderLedgerTable() {
     const cid = ledgerState.classId;
     const mIds = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
@@ -520,10 +530,10 @@ function renderLedgerTable() {
     }
 
     const rows = stds.map(s => {
-        const rec = records.find(r => r.student_id === s.id);
+        const rec = records.find(r => r.student_id === s.id && (!r.date || r.date === ledgerState.date));
         const status = isAtt ? (rec?.status || '미정') : (rec?.status || '미완료');
         const isActive = isAtt ? status === '등원' : status === '완료';
-        return `<tr><td style="font-weight:700;">${s.name}</td><td>${s.school_name}</td><td style="text-align:right;"><button class="btn ${isActive ? 'btn-primary' : ''}" style="padding:6px 14px;font-size:13px;" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button></td></tr>`;
+        return `<tr><td style="font-weight:700;">${s.name}</td><td>${s.school_name}</td><td style="text-align:right;"><button class="btn ${isActive ? 'btn-primary' : ''}" style="padding:6px 14px;font-size:13px;min-width:75px;" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button></td></tr>`;
     }).join('');
 
     document.getElementById('ledger-table-wrap').innerHTML = `
@@ -534,7 +544,7 @@ function renderLedgerTable() {
 
 async function handleBulkAtt(status) {
     const cid = ledgerState.classId;
-    if (!confirm(`${ledgerState.date} 기준 전체를 "${status}"으로 처리하시겠습니까?`)) return;
+    if (!confirm(`${ledgerState.date} 기준 전체를 "${status}"으로 처리할까요?`)) return;
     const sids = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
@@ -544,7 +554,7 @@ async function handleBulkAtt(status) {
 
 async function handleBulkHw(status) {
     const cid = ledgerState.classId;
-    if (!confirm(`${ledgerState.date} 기준 전체를 "${status}"으로 처리하시겠습니까?`)) return;
+    if (!confirm(`${ledgerState.date} 기준 전체를 "${status}"으로 처리할까요?`)) return;
     const sids = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
@@ -552,14 +562,14 @@ async function handleBulkHw(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
-// --- 코어 핸들러 (성공 검증 보정 반영) ---
+// --- 코어 핸들러 (성공 검증 보정 완료) ---
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
-    const cur = isLedger ? ledgerState.attendance.find(a => a.student_id === sid) : state.db.attendance.find(a => a.student_id===sid && a.date===today);
-    const next = cur?.status==='등원'?'결석':'등원';
+    const list = isLedger ? ledgerState.attendance : state.db.attendance;
+    const cur = list.find(a => a.student_id === sid && a.date === today);
+    const next = cur?.status === '등원' ? '결석' : '등원';
     
-    // 보정: 성공 여부 확인 후 리로드
     const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('출결 저장 실패', 'warn'); return; }
 
@@ -570,10 +580,10 @@ async function toggleAtt(sid, date) {
 async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
-    const cur = isLedger ? ledgerState.homework.find(h => h.student_id === sid) : state.db.homework.find(h => h.student_id===sid && h.date===today);
-    const next = cur?.status==='완료'?'미완료':'완료';
+    const list = isLedger ? ledgerState.homework : state.db.homework;
+    const cur = list.find(h => h.student_id === sid && h.date === today);
+    const next = cur?.status === '완료' ? '미완료' : '완료';
     
-    // 보정: 성공 여부 확인 후 리로드
     const r = await api.patch('homework', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('숙제 저장 실패', 'warn'); return; }
 
@@ -614,9 +624,9 @@ function renderStudentDetail(sid) {
     `);
 }
 
-async function handleDelete(sid) { if(confirm('제적 처리하시겠습니까?')) { await api.delete('students', sid); closeModal(); await loadData(); } }
-async function handleRestore(sid) { if(confirm('재원으로 복구하시겠습니까?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); } }
-async function handleDeleteSession(eid, sid) { if(confirm('기록을 삭제하시겠습니까?')) { await api.delete('exam-sessions', eid); closeModal(); await loadData(); renderStudentDetail(sid); } }
+async function handleDelete(sid) { if(confirm('제적 처리할까요?')) { await api.delete('students', sid); closeModal(); await loadData(); } }
+async function handleRestore(sid) { if(confirm('재원으로 복구할까요?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); } }
+async function handleDeleteSession(eid, sid) { if(confirm('기록을 삭제할까요?')) { await api.delete('exam-sessions', eid); closeModal(); await loadData(); renderStudentDetail(sid); } }
 
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
@@ -664,7 +674,7 @@ async function handleAddStudent() {
 }
 
 /**
- * 전역 유틸리티
+ * 전역 유틸리티 (Toast, Modal)
  */
 function toast(m, t='info') { const c = document.getElementById('toast-container'), el = document.createElement('div'); el.className=`toast ${t}`; el.innerText=m; c.appendChild(el); setTimeout(() => el.remove(), 3000); }
 function showModal(t, b, at=null, af=null) { document.getElementById('modal-title').innerText=t; document.getElementById('modal-body').innerHTML=b; const ab = document.getElementById('modal-action-btn'); if(at&&af){ ab.innerText=at; ab.onclick=af; ab.classList.remove('hidden'); } else ab.classList.add('hidden'); document.getElementById('modal-overlay').classList.remove('hidden'); }
