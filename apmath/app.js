@@ -257,10 +257,12 @@ function renderClass(cid) {
     `;
 }
 
-// 3차 보정: toggleAtt 날짜 기준 sv-SE 포맷으로 통일
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
-    const cur = state.db.attendance.find(a => a.student_id === sid && a.date === today);
+    const isLedger = !!date;
+    const cur = isLedger
+        ? ledgerState.attendance.find(a => a.student_id === sid)
+        : state.db.attendance.find(a => a.student_id === sid && a.date === today);
     const nextStatus = cur?.status === '등원' ? '결석' : '등원';
 
     await api.patch('attendance', {
@@ -270,18 +272,21 @@ async function toggleAtt(sid, date) {
     });
 
     const isToday = today === new Date().toLocaleDateString('sv-SE');
-    if (isToday) {
+    if (isLedger) {
+        if (isToday) await loadData();
+        await loadLedger();
+    } else {
         await loadData();
         if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
-    } else {
-        await loadLedger();
     }
 }
 
-// 3차 보정: toggleHw 날짜 기준 sv-SE 포맷으로 통일
 async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
-    const cur = state.db.homework.find(h => h.student_id === sid && h.date === today);
+    const isLedger = !!date;
+    const cur = isLedger
+        ? ledgerState.homework.find(h => h.student_id === sid)
+        : state.db.homework.find(h => h.student_id === sid && h.date === today);
     const nextStatus = cur?.status === '완료' ? '미완료' : '완료';
 
     await api.patch('homework', {
@@ -291,11 +296,12 @@ async function toggleHw(sid, date) {
     });
 
     const isToday = today === new Date().toLocaleDateString('sv-SE');
-    if (isToday) {
+    if (isLedger) {
+        if (isToday) await loadData();
+        await loadLedger();
+    } else {
         await loadData();
         if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
-    } else {
-        await loadLedger();
     }
 }
 
@@ -482,7 +488,6 @@ async function handleEditStudent(sid) {
     }
 }
 
-// 3차 보정: 날짜 기본값 sv-SE 포맷 통일
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
 async function loadLedger() {
@@ -535,7 +540,7 @@ function renderLedgerTable() {
     const records = isAtt ? ledgerState.attendance : ledgerState.homework;
 
     const bulkArea = document.getElementById('bulk-btn-area');
-    if (bulkArea && cid) {
+    if (bulkArea) {
         bulkArea.innerHTML = isAtt ? `
             <button class="btn btn-primary" style="flex:1;" onclick="handleBulkAtt('등원')">✅ 전체 등원</button>
             <button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkAtt('결석')">❌ 전체 결석</button>
@@ -543,8 +548,6 @@ function renderLedgerTable() {
             <button class="btn btn-primary" style="flex:1;" onclick="handleBulkHw('완료')">✅ 전체 완료</button>
             <button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkHw('미완료')">❌ 전체 미완료</button>
         `;
-    } else if (bulkArea) {
-        bulkArea.innerHTML = '<p style="font-size:12px;opacity:0.5;">반을 선택하면 일괄 처리 버튼이 표시됩니다.</p>';
     }
 
     const rows = stds.map(s => {
@@ -566,7 +569,7 @@ function renderLedgerTable() {
     }).join('');
 
     document.getElementById('ledger-table-wrap').innerHTML = `
-        <p style="font-size:13px;color:#5f6368;margin-bottom:12px;">${ledgerState.date} · ${cid ? state.db.classes.find(c=>c.id===cid)?.name : '전체'} · ${isAtt?'출결':'숙제'}</p>
+        <p style="font-size:13px;color:#5f6368;margin-bottom:12px;">${ledgerState.date} · ${cid ? state.db.classes.find(c=>c.id===cid)?.name : '전체 반'} · ${isAtt?'출결':'숙제'}</p>
         <table>
             <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">상태</th></tr></thead>
             <tbody>${rows || '<tr><td colspan="3" style="text-align:center;opacity:0.5;">학생 없음</td></tr>'}</tbody>
@@ -575,10 +578,13 @@ function renderLedgerTable() {
 }
 
 async function handleBulkAtt(status) {
-    const label = status === '등원' ? '전체 등원' : '전체 결석';
-    if (!confirm(`${ledgerState.date} 기준 현재 반 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
     const cid = ledgerState.classId;
-    const sids = state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id);
+    const label = status === '등원' ? '전체 등원' : '전체 결석';
+    const scopeLabel = cid ? state.db.classes.find(c => c.id === cid)?.name : '전체 반';
+    if (!confirm(`${ledgerState.date} 기준 ${scopeLabel} 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
+    const sids = cid
+        ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id)
+        : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
     const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, {
@@ -590,12 +596,14 @@ async function handleBulkAtt(status) {
     if (data.success) { toast(`${label} 처리 완료`, 'info'); await loadLedger(); }
 }
 
-// 3차 보정: 숙제 일괄 처리는 homework-batch API 사용
 async function handleBulkHw(status) {
-    const label = status === '완료' ? '전체 완료' : '전체 미완료';
-    if (!confirm(`${ledgerState.date} 기준 현재 반 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
     const cid = ledgerState.classId;
-    const sids = state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id);
+    const label = status === '완료' ? '전체 완료' : '전체 미완료';
+    const scopeLabel = cid ? state.db.classes.find(c => c.id === cid)?.name : '전체 반';
+    if (!confirm(`${ledgerState.date} 기준 ${scopeLabel} 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
+    const sids = cid
+        ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id)
+        : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
     const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, {
