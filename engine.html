@@ -389,28 +389,31 @@ function makePage(area, type, pNum) {
         page.appendChild(frame);
     }
 
-    const header = document.createElement('div');
-    header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
-    const t = parseExamTitle(AppState.title);
+    const showHeader = (type !== 'exam') || (pNum === 1);
+    if (showHeader) {
+        const header = document.createElement('div');
+        header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
+        const t = parseExamTitle(AppState.title);
 
-    if (type === 'exam') {
-        const headerTitle = getExamTitleFull();
-        header.innerHTML = `
-            <div class="page-header-title">${headerTitle}</div>
-            <div class="page-header-meta">
-                <div class="page-header-meta-left"></div>
-                <div class="page-header-meta-right">
-                    <span>이름<span class="header-fill-line"></span></span>
-                    <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
-                </div>
-            </div>`;
-    } else {
-        const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || AppState.title;
-        const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
-        header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${leftText}</div><div>${rightText}</div></div>`;
+        if (type === 'exam') {
+            const headerTitle = getExamTitleFull();
+            header.innerHTML = `
+                <div class="page-header-title">${headerTitle}</div>
+                <div class="page-header-meta">
+                    <div class="page-header-meta-left"></div>
+                    <div class="page-header-meta-right">
+                        <span>이름<span class="header-fill-line"></span></span>
+                        <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
+                    </div>
+                </div>`;
+        } else {
+            const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || AppState.title;
+            const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
+            header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${leftText}</div><div>${rightText}</div></div>`;
+        }
+
+        page.appendChild(header);
     }
-
-    page.appendChild(header);
     const body = document.createElement('div'); body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
     page.appendChild(body); page.body = body;
     const pageNum = document.createElement('div'); pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
