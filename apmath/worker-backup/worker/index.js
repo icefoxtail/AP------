@@ -221,6 +221,62 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
           }
         }
+
+        // 8. AI 보고 문구 생성 (4D-1)
+        if (resource === 'ai' && path[2] === 'student-report' && method === 'POST') {
+          const payload = await request.json();
+          const { type, student, today: td } = payload;
+
+          const examStr = td?.exam
+            ? `${td.exam.title} ${td.exam.score}점${td.exam.wrongs?.length ? ` (오답: ${td.exam.wrongs.join(',')})` : ''}`
+            : '없음';
+          const avgStr = td?.avg !== null && td?.avg !== undefined ? `${td.avg}점` : '데이터 없음';
+
+          let fallbackMessage = '';
+          if (type === 'parent') {
+            fallbackMessage =
+              `[AP Math] ${student.name} 학생 오늘 수업 안내\n` +
+              `출결: ${td.att}\n` +
+              `숙제: ${td.hw}\n` +
+              `오늘 성적: ${examStr}\n` +
+              `최근 3회 평균: ${avgStr}`;
+          } else if (type === 'student') {
+            fallbackMessage =
+              `${student.name}아, 오늘 수고 많았어! 😊\n` +
+              `숙제 잊지 말고, 다음 시간에 또 보자!`;
+          } else {
+            fallbackMessage =
+              `[상담 메모] ${student.name} (${student.school} ${student.grade})\n` +
+              `출결: ${td.att} / 숙제: ${td.hw}\n` +
+              `금일 성적: ${examStr}\n` +
+              `최근 평균: ${avgStr}`;
+          }
+
+          const AI_KEY = env.AI_API_KEY || '';
+          if (!AI_KEY) {
+            return new Response(JSON.stringify({
+              success: true,
+              message: fallbackMessage,
+              source: 'fallback'
+            }), { headers });
+          }
+
+          try {
+            // TODO: AI provider 연결
+            // API 키가 준비되면 이 위치에서 AI provider를 호출한다.
+            // 프론트에는 API 키를 절대 노출하지 않는다.
+            return new Response(JSON.stringify({
+              success: true,
+              message: fallbackMessage,
+              source: 'fallback'
+            }), { headers });
+          } catch (aiErr) {
+            return new Response(JSON.stringify({
+              success: false,
+              error: aiErr.message
+            }), { headers });
+          }
+        }
       }
 
       return new Response(JSON.stringify({ error: 'API Endpoint Not Found' }), { status: 404, headers });

@@ -1,7 +1,7 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
  * 통합 프론트엔드 엔진 - 운영 안정화 3차 최종 통합본
- * (4B 마감센터 유지 + 4C-2 학생/퇴원생 관리 및 보고서비스 고도화)
+ * (4B 마감센터 유지 + 4C-2 학생/퇴원생 관리 및 보고서비스 고도화 + 4D-1 AI 보고 문구 생성)
  */
 
 const CONFIG = {
@@ -456,7 +456,6 @@ function renderDashboard() {
         prioSec = `<div style="text-align:center; padding:20px; opacity:0.5; font-size:13px;">✅ 현재 집중 확인이 필요한 학생이 없습니다.</div>`;
     }
 
-    // 4C-2: 대시보드 하단 퇴원생 관리 진입점 추가
     const dischargedLink = `
         <div style="text-align:center; margin-top:20px; padding-bottom:20px;">
             <button class="btn" style="font-size:12px; border:none; background:transparent; color:var(--secondary);" onclick="openDischargedStudents()">🗄️ 퇴원생 목록 조회</button>
@@ -662,12 +661,7 @@ function computeTodayCloseData(todayExam = getTodayExamConfig()) {
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
-
-    if (!r?.success) {
-        toast('출결 처리 실패', 'warn');
-        return;
-    }
-
+    if (!r?.success) { toast('출결 처리 실패', 'warn'); return; }
     await refreshDataOnly();
     openTodayCloseModal(tab);
 }
@@ -675,12 +669,7 @@ async function quickToggleAtt(sid, status, tab = 'att') {
 async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
-
-    if (!r?.success) {
-        toast('숙제 처리 실패', 'warn');
-        return;
-    }
-
+    if (!r?.success) { toast('숙제 처리 실패', 'warn'); return; }
     await refreshDataOnly();
     openTodayCloseModal(tab);
 }
@@ -695,11 +684,7 @@ function buildAcademySummary() {
     text += `재원생: ${closeData.totalActive}명\n`;
     text += `출결 처리: ${closeData.attDone}/${closeData.totalActive}\n`;
     text += `숙제 처리: ${closeData.hwDone}/${closeData.totalActive}\n`;
-
-    if (todayExam) {
-        text += `성적 입력: ${closeData.testDone}/${closeData.totalActive}\n`;
-    }
-
+    if (todayExam) text += `성적 입력: ${closeData.testDone}/${closeData.totalActive}\n`;
     if (closeData.allClear) {
         text += `\n✅ 오늘 운영 마감 완료`;
     } else {
@@ -708,18 +693,14 @@ function buildAcademySummary() {
         text += `- 숙제 미처리: ${closeData.noHw.length}명\n`;
         if (todayExam) text += `- 성적 미입력: ${closeData.noTest.length}명\n`;
     }
-
     return text;
 }
 
 function copyAcademySummary() {
     const text = buildAcademySummary();
-
     navigator.clipboard.writeText(text).then(() => {
         toast('운영 요약이 복사되었습니다.', 'info');
-    }).catch(() => {
-        toast('복사 실패', 'warn');
-    });
+    }).catch(() => toast('복사 실패', 'warn'));
 }
 
 function openTodayCloseModal(tab = 'att') {
@@ -732,7 +713,7 @@ function openTodayCloseModal(tab = 'att') {
     const tabs = [
         { key: 'att',  label: `출결 미처리 ${d.noAtt.length}`,  list: d.noAtt,  emptyMsg: '모든 학생 출결 처리 완료 ✅' },
         { key: 'hw',   label: `숙제 미처리 ${d.noHw.length}`,   list: d.noHw,   emptyMsg: '모든 학생 숙제 처리 완료 ✅' },
-        { key: 'test', label: testTabLabel,  list: todayExam ? d.noTest : [], emptyMsg: testTabEmptyMsg }
+        { key: 'test', label: testTabLabel, list: todayExam ? d.noTest : [], emptyMsg: testTabEmptyMsg }
     ];
     const cur = tabs.find(t => t.key === tab) || tabs[0];
 
@@ -768,7 +749,6 @@ function openTodayCloseModal(tab = 'att') {
                         <button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="closeModal();openOMR('${s.id}', '${preset}')">성적 입력</button>
                     </div>`;
             }
-
             return `
                 <div style="padding:14px 4px; border-bottom:1px solid var(--border);">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -792,7 +772,7 @@ function openTodayCloseModal(tab = 'att') {
 // --- 4A 헬퍼 함수 ---
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
-    const todayExam = getTodayExamConfig(); // 4C-2 보정
+    const todayExam = getTodayExamConfig();
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
     const aIds = active.map(s => s.id);
@@ -840,8 +820,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         return;
     }
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
-    const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'"); // 4C-2 보정
-    
+    const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
     showModal('📊 제출 현황', `
         <div style="background:#f8f9fa;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px;">
             <b>${examTitle}</b> · ${safeDate} · ${submitted.length + pending.length}명 중 <b>${submitted.length}명 제출</b>
@@ -862,7 +841,7 @@ function getRecentAverage(studentId, limit = 3) {
     return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
 }
 
-// 4C-2 보고 문구 톤 개선
+// --- 4C-2 보고 문구 (정적 즉시 복사) ---
 function copyReport(sid, type) {
     const s = state.db.students.find(x => x.id === sid);
     const today = new Date().toLocaleDateString('sv-SE');
@@ -873,22 +852,101 @@ function copyReport(sid, type) {
     const avg = getRecentAverage(sid, 3);
     
     let text = '';
-    if(type === 'parent') {
+    if (type === 'parent') {
         text = `[AP Math] ${s.name} 학생 오늘 수업 안내\n출결: ${att}\n숙제: ${hw}\n오늘 성적: ${todayEx ? todayEx.score+'점' : '없음'}\n최근 3회 평균: ${avg !== null ? avg+'점' : '데이터 없음'}`;
-    } else if(type === 'student') {
+    } else if (type === 'student') {
         text = `${s.name}아, 오늘 수고 많았어! 😊\n숙제 잊지 말고, 다음 시간에 또 보자!`;
     } else {
         text = `[상담 메모 - ${today}] ${s.name} (${s.school_name} ${s.grade})\n출결: ${att} / 숙제: ${hw}\n금일 성적: ${todayEx ? todayEx.exam_title+' '+todayEx.score+'점' : '시험 없음'}\n최근 평균: ${avg !== null ? avg+'점' : '없음'}`;
     }
-    
     navigator.clipboard.writeText(text).then(() => {
         toast('복사 완료', 'info');
-    }).catch(() => {
-        toast('복사 실패', 'warn');
-    });
+    }).catch(() => toast('복사 실패', 'warn'));
 }
 
-// 4C-2 퇴원생 관리 화면 신설
+// --- 4D-1 AI 보고 문구 생성 ---
+
+function escapeHtmlForTextarea(text) {
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+async function requestAiReport(sid, type) {
+    const s = state.db.students.find(x => x.id === sid);
+    if (!s) return;
+
+    const today = new Date().toLocaleDateString('sv-SE');
+    const att = state.db.attendance.find(a => a.student_id === sid && a.date === today)?.status || '미기록';
+    const hw = state.db.homework.find(h => h.student_id === sid && h.date === today)?.status || '미기록';
+    const exs = state.db.exam_sessions.filter(e => e.student_id === sid).sort((a,b) => b.exam_date.localeCompare(a.exam_date));
+    const todayEx = exs.find(e => e.exam_date === today);
+    const avg = getRecentAverage(sid, 3);
+    const wrongs = todayEx
+        ? state.db.wrong_answers.filter(w => w.session_id === todayEx.id).map(w => w.question_id).sort((a, b) => a - b)
+        : [];
+
+    const payload = {
+        type,
+        student: { name: s.name, school: s.school_name, grade: s.grade },
+        today: {
+            att,
+            hw,
+            exam: todayEx ? { title: todayEx.exam_title, score: todayEx.score, wrongs } : null,
+            avg: avg !== null ? avg : null
+        }
+    };
+
+    showModal('🤖 AI 보고 문구 생성', `
+        <div style="text-align:center; padding:30px 0; color:var(--secondary);">
+            <div style="font-size:24px; margin-bottom:12px;">⏳</div>
+            <div style="font-size:13px;">문구를 생성 중입니다...</div>
+        </div>
+    `);
+
+    try {
+        const r = await fetch(`${CONFIG.API_BASE}/ai/student-report`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        const data = await r.json();
+
+        if (!data.success) {
+            toast('문구 생성 실패, 기본 템플릿으로 복사합니다.', 'warn');
+            closeModal();
+            copyReport(sid, type);
+            return;
+        }
+
+        const sourceLabel = data.source === 'ai' ? '🤖 AI 생성' : '📝 기본 생성';
+        const typeLabel = type === 'parent' ? '학부모용' : type === 'student' ? '학생용' : '상담용';
+        const safeMessage = escapeHtmlForTextarea(data.message || '');
+
+        showModal('🤖 AI 보고 문구', `
+            <div style="font-size:11px; color:var(--secondary); margin-bottom:8px;">${sourceLabel} · ${typeLabel}</div>
+            <textarea id="ai-report-text" style="width:100%; height:160px; padding:12px; border:1px solid var(--border); border-radius:8px; font-size:13px; line-height:1.7; resize:vertical; font-family:inherit;">${safeMessage}</textarea>
+            <button class="btn btn-primary" style="width:100%; margin-top:12px;" onclick="copyAiReportText()">복사</button>
+        `);
+
+    } catch (e) {
+        toast('네트워크 오류, 기본 템플릿으로 복사합니다.', 'warn');
+        closeModal();
+        copyReport(sid, type);
+    }
+}
+
+function copyAiReportText() {
+    const text = document.getElementById('ai-report-text')?.value || '';
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        toast('복사 완료', 'info');
+    }).catch(() => toast('복사 실패', 'warn'));
+}
+
+// --- 4C-2 퇴원생 관리 ---
 function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');
     const rows = discharged.length ? discharged.map(s => `
@@ -901,9 +959,7 @@ function openDischargedStudents() {
     `).join('') : `<div style="padding:32px 16px; text-align:center; color:var(--secondary); font-size:14px;">퇴원생이 없습니다.</div>`;
 
     showModal('🗄️ 퇴원생 목록', `
-        <div style="max-height:60vh; overflow-y:auto;">
-            ${rows}
-        </div>
+        <div style="max-height:60vh; overflow-y:auto;">${rows}</div>
     `);
 }
 
@@ -925,9 +981,6 @@ async function goDashboardFromLedger() {
     renderDashboard();
 }
 
-/**
- * 출석부 메인 프레임 (탭 ID 부여 완료)
- */
 function renderAttendanceLedger() {
     const classOptions = state.db.classes.map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`).join('');
     document.getElementById('app-root').innerHTML = `
@@ -953,9 +1006,6 @@ function renderAttendanceLedger() {
     loadLedger();
 }
 
-/**
- * 출석부 테이블 렌더러
- */
 function renderLedgerTable() {
     const attModeBtn = document.getElementById('ledger-mode-att');
     const hwModeBtn = document.getElementById('ledger-mode-hw');
@@ -1010,17 +1060,14 @@ async function handleBulkHw(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
-// --- 코어 핸들러 (성공 검증 필수 포함) ---
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
     const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => a.student_id === sid && a.date === today);
     const next = cur?.status === '등원' ? '결석' : '등원';
-    
     const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('출결 저장 실패', 'warn'); return; }
-
     if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } 
     else await loadData();
 }
@@ -1031,37 +1078,27 @@ async function toggleHw(sid, date) {
     const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => h.student_id === sid && h.date === today);
     const next = cur?.status === '완료' ? '미완료' : '완료';
-    
     const r = await api.patch('homework', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('숙제 저장 실패', 'warn'); return; }
-
     if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } 
     else await loadData();
 }
 
 function openOMR(sid, presetTitle = '') {
-    // 우선순위: presetTitle > getTodayExamConfig()?.title > "단원평가"
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
-
     showModal('성적 직접 입력', `
         시험명: <input id="omr-title" class="btn" value="${defaultTitle}" style="width:100%; text-align:left;">
         <div class="omr-grid">${Array.from({length:10},(_,i)=>`<div class="omr-item">Q${i+1}<br><input type="checkbox" class="omr-q" value="${i+1}"></div>`).join('')}</div>
     `, '저장', () => handleOMRSave(sid));
 }
 
-// 4C-2 보정: OMR 저장 성공 검증 추가
 async function handleOMRSave(sid) {
     const title = document.getElementById('omr-title').value;
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const score = (10-wrs.length)*10;
-    
     const r = await api.patch('exam-sessions/new', { student_id: sid, exam_title: title, score, wrong_ids: wrs, exam_date: new Date().toLocaleDateString('sv-SE') });
-    if (!r?.success) {
-        toast('저장 실패', 'warn');
-        return;
-    }
-    
+    if (!r?.success) { toast('저장 실패', 'warn'); return; }
     toast(`${score}점 저장됨`, 'info'); 
     closeModal(); 
     await loadData();
@@ -1075,12 +1112,21 @@ function renderStudentDetail(sid) {
         const wrs = state.db.wrong_answers.filter(w => w.session_id === e.id).map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 6px;margin:2px;font-size:11px;font-weight:700;">Q${w.question_id}</span>`).join('');
         return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
     }).join('');
-    
+
     const reportButtons = `
-        <div style="margin-top:20px; display:flex; gap:6px;">
-            <button class="btn btn-primary" onclick="copyReport('${sid}', 'parent')" style="flex:1; font-size:11px; padding:10px 4px;">학부모용 복사</button>
-            <button class="btn" onclick="copyReport('${sid}', 'student')" style="flex:1; font-size:11px; padding:10px 4px; border-color:var(--primary); color:var(--primary);">학생용 복사</button>
-            <button class="btn" onclick="copyReport('${sid}', 'memo')" style="flex:1; font-size:11px; padding:10px 4px;">상담용 복사</button>
+        <div style="margin-top:20px;">
+            <div style="font-size:11px; color:var(--secondary); margin-bottom:6px;">📋 즉시 복사</div>
+            <div style="display:flex; gap:6px; margin-bottom:10px;">
+                <button class="btn btn-primary" onclick="copyReport('${sid}', 'parent')" style="flex:1; font-size:11px; padding:8px 4px;">학부모용</button>
+                <button class="btn" onclick="copyReport('${sid}', 'student')" style="flex:1; font-size:11px; padding:8px 4px; border-color:var(--primary); color:var(--primary);">학생용</button>
+                <button class="btn" onclick="copyReport('${sid}', 'memo')" style="flex:1; font-size:11px; padding:8px 4px;">상담용</button>
+            </div>
+            <div style="font-size:11px; color:var(--secondary); margin-bottom:6px;">🤖 AI 생성 후 확인</div>
+            <div style="display:flex; gap:6px;">
+                <button class="btn" onclick="requestAiReport('${sid}', 'parent')" style="flex:1; font-size:11px; padding:8px 4px; border-color:#a8c7fa; color:#1a73e8; background:#e8f0fe;">🤖 학부모</button>
+                <button class="btn" onclick="requestAiReport('${sid}', 'student')" style="flex:1; font-size:11px; padding:8px 4px; border-color:#a8c7fa; color:#1a73e8; background:#e8f0fe;">🤖 학생</button>
+                <button class="btn" onclick="requestAiReport('${sid}', 'memo')" style="flex:1; font-size:11px; padding:8px 4px; border-color:#a8c7fa; color:#1a73e8; background:#e8f0fe;">🤖 상담</button>
+            </div>
         </div>
     `;
 
@@ -1160,9 +1206,6 @@ async function handleAddStudent() {
     closeModal(); await loadData();
 }
 
-/**
- * 전역 유틸리티 (Toast, Modal)
- */
 function toast(m, t='info') { const c = document.getElementById('toast-container'), el = document.createElement('div'); el.className=`toast ${t}`; el.innerText=m; c.appendChild(el); setTimeout(() => el.remove(), 3000); }
 function showModal(t, b, at=null, af=null) { document.getElementById('modal-title').innerText=t; document.getElementById('modal-body').innerHTML=b; const ab = document.getElementById('modal-action-btn'); if(at&&af){ ab.innerText=at; ab.onclick=af; ab.classList.remove('hidden'); } else ab.classList.add('hidden'); document.getElementById('modal-overlay').classList.remove('hidden'); }
 function closeModal() { document.getElementById('modal-overlay').classList.add('hidden'); }
