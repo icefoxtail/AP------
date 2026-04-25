@@ -191,15 +191,24 @@ function renderClass(cid) {
         .filter(m => m.class_id === cid)
         .map(m => m.student_id);
 
-    const wrongCountMap = {};
+    const latestWrongCountMap = {};
     mIds.forEach(sid => {
-        wrongCountMap[sid] = state.db.wrong_answers.filter(w => w.student_id === sid).length;
+        const latestSession = state.db.exam_sessions
+            .filter(es => es.student_id === sid)
+            .sort((a, b) => {
+                const dateCompare = String(b.exam_date || '').localeCompare(String(a.exam_date || ''));
+                if (dateCompare !== 0) return dateCompare;
+                return String(b.id || '').localeCompare(String(a.id || ''));
+            })[0];
+        latestWrongCountMap[sid] = latestSession
+            ? state.db.wrong_answers.filter(w => w.session_id === latestSession.id).length
+            : 0;
     });
 
     const allStds = state.db.students.filter(s => mIds.includes(s.id));
     const stds = allStds
         .filter(s => state.ui.showDischarged ? true : s.status === '재원')
-        .sort((a, b) => (wrongCountMap[b.id] || 0) - (wrongCountMap[a.id] || 0));
+        .sort((a, b) => (latestWrongCountMap[b.id] || 0) - (latestWrongCountMap[a.id] || 0));
 
     const activeCount = allStds.filter(s => s.status === '재원').length;
 
@@ -219,9 +228,9 @@ function renderClass(cid) {
                     const isDischarged = s.status === '제적';
                     const att = state.db.attendance.find(a => a.student_id === s.id);
                     const hw = state.db.homework.find(h => h.student_id === s.id);
-                    const wc = wrongCountMap[s.id] || 0;
+                    const wc = latestWrongCountMap[s.id] || 0;
                     const badge = wc > 0
-                        ? `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">🔴 오답 ${wc}개</span>`
+                        ? `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">🔴 최근 오답 ${wc}개</span>`
                         : '';
                     const dischargedBadge = isDischarged
                         ? `<span style="display:inline-block;background:#f1f3f4;color:#5f6368;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">제적</span>`

@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>오답 체크</title>
     <style>
-        :root {
-            --primary: #1a73e8;
-            --error: #d93025;
-            --border: #dadce0;
-            --bg: #f8f9fa;
-            --surface: #ffffff;
-        }
+        :root { --primary: #1a73e8; --error: #d93025; --border: #dadce0; --bg: #f8f9fa; --surface: #ffffff; --warning: #f9ab00; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: #202124; }
         header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px; text-align: center; }
@@ -20,12 +14,19 @@
         main { padding: 16px; max-width: 480px; margin: 0 auto; }
         .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 16px; }
         .card h3 { font-size: 14px; color: #5f6368; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        select, input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: 16px; background: var(--surface); margin-bottom: 0; }
+        select, input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: 16px; background: var(--surface); }
         .q-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
         .q-btn { height: 52px; border-radius: 10px; border: 2px solid var(--border); background: var(--surface); font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
         .q-btn.wrong { background: var(--error); color: white; border-color: var(--error); }
-        .submit-btn { width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 700; cursor: pointer; margin-top: 8px; }
-        .submit-btn:disabled { opacity: 0.4; }
+        .action-btn { width: 100%; padding: 16px; border: none; border-radius: 14px; font-size: 17px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+        .action-btn.primary { background: var(--primary); color: white; }
+        .action-btn.secondary { background: var(--surface); color: var(--primary); border: 2px solid var(--primary); }
+        .action-btn:disabled { opacity: 0.4; }
+        .confirm-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+        .confirm-row:last-of-type { border-bottom: none; }
+        .confirm-label { color: #5f6368; }
+        .confirm-value { font-weight: 700; }
+        .warn-box { background: #fff8e1; border: 1px solid var(--warning); border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #5f3000; margin-bottom: 12px; }
         .done-card { text-align: center; padding: 40px 20px; }
         .done-score { font-size: 64px; font-weight: 900; color: var(--primary); }
         .done-label { font-size: 16px; color: #5f6368; margin-top: 8px; }
@@ -56,12 +57,23 @@
             <h3>오답 번호 선택 (틀린 번호를 누르세요)</h3>
             <div id="q-grid" class="q-grid"></div>
         </div>
-        <button id="submit-btn" class="submit-btn hidden" onclick="handleSubmit()">제출하기</button>
+        <button id="submit-btn" class="action-btn primary hidden" onclick="handleSubmit()">제출하기</button>
+        <div id="step-confirm" class="card hidden">
+            <h3>제출 확인</h3>
+            <div id="confirm-warn" class="warn-box hidden"></div>
+            <div class="confirm-row"><span class="confirm-label">학생</span><span class="confirm-value" id="confirm-name"></span></div>
+            <div class="confirm-row"><span class="confirm-label">시험명</span><span class="confirm-value" id="confirm-exam"></span></div>
+            <div class="confirm-row"><span class="confirm-label">총 문항</span><span class="confirm-value" id="confirm-total"></span></div>
+            <div class="confirm-row"><span class="confirm-label">오답</span><span class="confirm-value" id="confirm-wrong"></span></div>
+            <div class="confirm-row"><span class="confirm-label">예상 점수</span><span class="confirm-value" id="confirm-score"></span></div>
+            <button class="action-btn primary" style="margin-top:16px;" onclick="handleFinalSubmit()">최종 제출</button>
+            <button class="action-btn secondary" onclick="handleBackToEdit()">뒤로가기</button>
+        </div>
         <div id="step-done" class="card done-card hidden">
             <div class="done-score" id="done-score"></div>
             <div class="done-label">점수</div>
             <div class="done-wrong" id="done-wrong"></div>
-            <p style="margin-top:24px; font-size:14px; color:#5f6368;">제출이 완료되었습니다.</p>
+            <p style="margin-top:24px;font-size:14px;color:#5f6368;">제출이 완료되었습니다.</p>
         </div>
     </main>
     <script src="check.js"></script>
