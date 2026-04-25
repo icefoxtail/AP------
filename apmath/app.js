@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * 통합 프론트엔드 엔진 - 운영 관제센터 1.1 + QR 3.0 (URL 경로 고정 보정본)
+ * 통합 프론트엔드 엔진 - 운영 안정화 3차 (버튼 색상 동기화 및 QR 경로 보정본)
  */
 
 const CONFIG = {
@@ -66,7 +66,7 @@ let state = {
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
 
-// --- 운영 관제센터 및 리스크 관리 상수 ---
+// --- 상수 (운영 관제센터 1.1) ---
 const RISK_LOOKBACK_DAYS = 14;
 const RISK_ABSENCE_THRESHOLD = 2;
 const RISK_HOMEWORK_THRESHOLD = 3;
@@ -99,7 +99,7 @@ const api = {
 };
 
 /**
- * 데이터 로드 및 라우팅
+ * 데이터 로드 및 전역 라우팅
  */
 async function loadData(isInitial = false) {
     if (isInitial) toast('시스템 초기화 중...', 'info');
@@ -120,7 +120,7 @@ async function loadData(isInitial = false) {
 }
 
 /**
- * UI 리렌더링 없이 데이터만 최신화
+ * 렌더링 없는 데이터 최신화 (출석부 등)
  */
 async function refreshDataOnly() {
     const data = await api.get('initial-data');
@@ -154,9 +154,6 @@ async function processSyncQueue() {
     toast('동기화 완료', 'info'); await loadData();
 }
 
-/**
- * 전역 네비게이션
- */
 async function goHome() { 
     state.ui.currentClassId = null; 
     await loadData(); 
@@ -167,14 +164,14 @@ function toggleScope() {
     renderDashboard(); 
 }
 
-// --- Mute/Risk Logic (운영 관제센터 1.1) ---
+// --- Mute & Risk Logic (운영 관제센터 1.1) ---
 function getMutedRisks() { return JSON.parse(localStorage.getItem(RISK_MUTE_KEY) || '{}'); }
 function saveMutedRisks(data) { localStorage.setItem(RISK_MUTE_KEY, JSON.stringify(data)); }
 function muteRiskStudent(sid) { 
     const muted = getMutedRisks(); 
     muted[sid] = new Date().toLocaleDateString('sv-SE'); 
     saveMutedRisks(muted); 
-    toast('확인 처리 완료 (2일간 숨김)', 'info'); 
+    toast('확인 완료 (2일 숨김)', 'info'); 
     renderDashboard(); 
 }
 function dateToDayIndex(str) { 
@@ -191,24 +188,23 @@ function isRiskMuted(sid) {
 }
 
 /**
- * 대시보드 데이터 연산 엔진
+ * 대시보드 계산 엔진
  */
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
     const activeIds = new Set(activeStudents.map(s => s.id));
-    const totalActive = activeStudents.length;
-
+    
     const todayAtt = state.db.attendance.filter(a => a.date === today && activeIds.has(a.student_id));
     const presentCount = todayAtt.filter(a => a.status === '등원').length;
     const absentCount = todayAtt.filter(a => a.status === '결석').length;
 
     const todayHw = state.db.homework.filter(h => h.date === today && activeIds.has(h.student_id));
     const hwDoneCount = todayHw.filter(h => h.status === '완료').length;
-    const hwNotDoneCount = Math.max(totalActive - hwDoneCount, 0);
+    const hwNotDoneCount = Math.max(activeStudents.length - hwDoneCount, 0);
 
-    const attHistory = state.db.attendance_history || [];
-    const hwHistory = state.db.homework_history || [];
+    const attHis = state.db.attendance_history || [];
+    const hwHis = state.db.homework_history || [];
     
     const examsByStudent = new Map();
     state.db.exam_sessions.forEach(es => {
@@ -226,15 +222,14 @@ function computeDashboardData() {
 
     activeStudents.forEach(s => {
         const sid = s.id;
-        const absCount = attHistory.filter(a => a.student_id === sid && a.status === '결석').length;
-        const hwMissCount = hwHistory.filter(h => h.student_id === sid && h.status !== '완료').length;
+        const absCount = attHis.filter(a => a.student_id === sid && a.status === '결석').length;
+        const hwMissCount = hwHis.filter(h => h.student_id === sid && h.status !== '완료').length;
         
-        let isWrongRisk = false, latestWC = 0;
-        const exams = examsByStudent.get(sid) || [];
-        if (exams.length > 0) {
-            exams.sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)));
-            latestWC = wrongBySession.get(exams[0].id) || 0;
-            if (latestWC >= RISK_WRONG_THRESHOLD) isWrongRisk = true;
+        let isWrongRisk = false;
+        const sExams = examsByStudent.get(sid) || [];
+        if (sExams.length > 0) {
+            sExams.sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)));
+            if ((wrongBySession.get(sExams[0].id) || 0) >= RISK_WRONG_THRESHOLD) isWrongRisk = true;
         }
 
         const isAbsenceRisk = absCount >= RISK_ABSENCE_THRESHOLD;
@@ -247,11 +242,7 @@ function computeDashboardData() {
             riskLevel: riskScore===3?'🔴 긴급':riskScore===2?'🟠 주의':riskScore===1?'🟡 관찰':'', 
             className: state.db.classes.find(c => c.id === (state.db.class_students.find(m => m.student_id===sid)?.class_id))?.name || '미배정' 
         };
-        
-        if (isAbsenceRisk) sd.tags.push('결석누적'); 
-        if (isHwRisk) sd.tags.push('숙제미달'); 
-        if (isWrongRisk) sd.tags.push('오답경고');
-        
+        if (isAbsenceRisk) sd.tags.push('결석누적'); if (isHwRisk) sd.tags.push('숙제미달'); if (isWrongRisk) sd.tags.push('오답경고');
         if (isWrongRisk) wrongRiskCount++;
         studentsData[sid] = sd;
         if (riskScore >= 1 && !isRiskMuted(sid)) priorityAll.push(sd);
@@ -274,15 +265,12 @@ function computeDashboardData() {
     });
 
     return { 
-        global: { totalActive, presentCount, absentCount, hwNotDoneCount, wrongRiskCount }, 
+        global: { totalActive: activeStudents.length, presentCount, absentCount, hwDoneCount, hwNotDoneCount, wrongRiskCount }, 
         priorityTop: priorityAll.slice(0, 1), 
         classSummaries 
     };
 }
 
-/**
- * 학급 요약 카드 컴포넌트
- */
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
     return `
@@ -303,9 +291,6 @@ function renderClassSummaryCard(cls, data) {
     `;
 }
 
-/**
- * 대시보드 메인 렌더러
- */
 function renderDashboard() {
     state.ui.currentClassId = null;
     const data = computeDashboardData();
@@ -421,7 +406,7 @@ function renderClass(cid) {
     }).join('');
 }
 
-// --- QR 생성 시스템 (보정 반영) ---
+// --- QR 생성 시스템 (경로 보정 반영) ---
 function openQrGenerator(cid) {
     const cls = state.db.classes.find(c => c.id === cid);
     const today = new Date().toLocaleDateString('sv-SE');
@@ -429,7 +414,7 @@ function openQrGenerator(cid) {
         <div style="display:flex; flex-direction:column; gap:12px;">
             <p style="margin:0;"><b>대상 학급:</b> ${cls.name}</p>
             <div>
-                <label style="font-size:12px; color:var(--secondary);">시험명 선택/입력:</label>
+                <label style="font-size:12px; color:var(--secondary);">시험명 입력/선택:</label>
                 <div style="display:flex; gap:4px; margin:6px 0;">
                     <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('qr-exam').value='단원평가'">단원평가</button>
                     <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('qr-exam').value='쪽지시험'">쪽지시험</button>
@@ -460,12 +445,10 @@ function generateQrCode() {
     const q = parseInt(document.getElementById('qr-q').value) || 20;
     const date = document.getElementById('qr-date').value;
 
-    if (!exam || q < 1 || q > 50) { toast('시험명과 문항 수(1~50)를 정확히 입력하세요.', 'warn'); return; }
+    if (!exam || q < 1 || q > 50) { toast('입력 정보를 확인하세요 (문항 수 1~50).', 'warn'); return; }
 
-    // 보정: 경로가 /apmath/ 하위로 꼬이지 않도록 고정 경로 생성
-    const appBasePath = window.location.pathname
-        .replace(/\/index\.html$/, '/')
-        .replace(/\/apmath\/?$/, '/');
+    // 보정: /apmath/ 경로 하위로 꼬이지 않도록 루트 기준 경로 생성
+    const appBasePath = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/apmath\/?$/, '/');
     const baseUrl = window.location.origin + appBasePath + 'check/';
     const fullUrl = `${baseUrl}?class=${cid}&exam=${encodeURIComponent(exam)}&q=${q}&date=${date}`;
     
@@ -477,10 +460,10 @@ function generateQrCode() {
 
 function copyQrUrl() {
     const url = document.getElementById('qr-url').innerText;
-    navigator.clipboard.writeText(url).then(() => toast('URL이 복사되었습니다.', 'info'));
+    navigator.clipboard.writeText(url).then(() => toast('URL 복사 완료!', 'info'));
 }
 
-// --- 출석부 시스템 (출석부 3.1) ---
+// --- 출석부 3.1 시스템 ---
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
 async function loadLedger() {
@@ -569,14 +552,19 @@ async function handleBulkHw(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
-// --- 학생 및 성적 관리 핸들러 ---
+// --- 코어 핸들러 (성공 검증 보정 반영) ---
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
     const cur = isLedger ? ledgerState.attendance.find(a => a.student_id === sid) : state.db.attendance.find(a => a.student_id===sid && a.date===today);
     const next = cur?.status==='등원'?'결석':'등원';
-    await api.patch('attendance', { studentId: sid, status: next, date: today });
-    if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } else await loadData();
+    
+    // 보정: 성공 여부 확인 후 리로드
+    const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
+    if (!r?.success) { toast('출결 저장 실패', 'warn'); return; }
+
+    if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } 
+    else await loadData();
 }
 
 async function toggleHw(sid, date) {
@@ -584,12 +572,17 @@ async function toggleHw(sid, date) {
     const isLedger = !!date;
     const cur = isLedger ? ledgerState.homework.find(h => h.student_id === sid) : state.db.homework.find(h => h.student_id===sid && h.date===today);
     const next = cur?.status==='완료'?'미완료':'완료';
-    await api.patch('homework', { studentId: sid, status: next, date: today });
-    if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } else await loadData();
+    
+    // 보정: 성공 여부 확인 후 리로드
+    const r = await api.patch('homework', { studentId: sid, status: next, date: today });
+    if (!r?.success) { toast('숙제 저장 실패', 'warn'); return; }
+
+    if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } 
+    else await loadData();
 }
 
 function openOMR(sid) {
-    showModal('단원평가 성적 입력', `
+    showModal('성적 직접 입력', `
         시험명: <input id="omr-title" class="btn" value="단원평가" style="width:100%; text-align:left;">
         <div class="omr-grid">${Array.from({length:10},(_,i)=>`<div class="omr-item">Q${i+1}<br><input type="checkbox" class="omr-q" value="${i+1}"></div>`).join('')}</div>
     `, '저장', () => handleOMRSave(sid));
@@ -608,21 +601,21 @@ function renderStudentDetail(sid) {
     const exs = state.db.exam_sessions.filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
     const rows = exs.map(e => {
         const wrs = state.db.wrong_answers.filter(w => w.session_id === e.id).map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 6px;margin:2px;font-size:11px;font-weight:700;">Q${w.question_id}</span>`).join('');
-        return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td>${wrs||'없음'}</td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
+        return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
     }).join('');
-    showModal(`${s.name} 프로필`, `
+    showModal(`${s.name} 상세 정보`, `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
             <p style="margin:0;">${s.school_name} | ${s.grade}</p>
             <button class="btn" style="font-size:11px; padding:4px 8px;" onclick="openEditStudent('${sid}')">정보 수정</button>
         </div>
-        <h4>시험 및 오답 이력</h4>
+        <h4>성적 및 오답 이력</h4>
         <table><thead><tr><th>날짜</th><th>시험명</th><th>점수</th><th>오답</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan="5">기록 없음</td></tr>'}</tbody></table>
         ${s.status==='재원'?`<button class="btn" style="color:var(--error); margin-top:20px;" onclick="handleDelete('${sid}')">제적 처리</button>`:`<button class="btn btn-primary" style="margin-top:20px;" onclick="handleRestore('${sid}')">재원 복구</button>`}
     `);
 }
 
-async function handleDelete(sid) { if(confirm('제적하시겠습니까?')) { await api.delete('students', sid); closeModal(); await loadData(); } }
-async function handleRestore(sid) { if(confirm('복구하시겠습니까?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); } }
+async function handleDelete(sid) { if(confirm('제적 처리하시겠습니까?')) { await api.delete('students', sid); closeModal(); await loadData(); } }
+async function handleRestore(sid) { if(confirm('재원으로 복구하시겠습니까?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); } }
 async function handleDeleteSession(eid, sid) { if(confirm('기록을 삭제하시겠습니까?')) { await api.delete('exam-sessions', eid); closeModal(); await loadData(); renderStudentDetail(sid); } }
 
 function openEditStudent(sid) {
@@ -653,7 +646,7 @@ function toggleShowDischarged() { state.ui.showDischarged = !state.ui.showDischa
 
 function openAddStudent(defaultCid = '') {
     const opts = state.db.classes.map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`).join('');
-    showModal('학생 추가', `
+    showModal('신규 학생 추가', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="add-name" class="btn" placeholder="이름" style="text-align:left;">
             <input id="add-school" class="btn" placeholder="학교" style="text-align:left;">
