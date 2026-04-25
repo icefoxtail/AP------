@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * 통합 프론트엔드 엔진 - 출석부 3.1 및 운영 안정화 통합본
+ * 통합 프론트엔드 엔진 - 대시보드 1차 개편 및 요약 데이터 무결성 보정본
  */
 
 const CONFIG = {
@@ -164,40 +164,94 @@ async function processSyncQueue() {
     await loadData();
 }
 
+/**
+ * 대문/네비 개편: goHome 함수 추가 (async 구현, 중복 호출 방지)
+ */
+async function goHome() {
+    state.ui.currentClassId = null;
+    await loadData();
+}
+
+function toggleScope() {
+    state.ui.viewScope = state.ui.viewScope === 'teacher' ? 'all' : 'teacher';
+    renderDashboard();
+}
+
+/**
+ * 대시보드 1차 개편 + 재원생 기준 데이터 무결성 보정
+ */
 function renderDashboard() {
     state.ui.currentClassId = null;
 
     const root = document.getElementById('app-root');
-    const activeStds = state.db.students.filter(s => s.status === '재원');
+    
+    // 보정: 재원생 기준 필터링 강화
+    const today = new Date().toLocaleDateString('sv-SE');
+    const activeStudents = state.db.students.filter(s => s.status === '재원');
+    const activeIds = new Set(activeStudents.map(s => s.id));
+    const totalActive = activeStudents.length;
+
+    const todayAtt = state.db.attendance.filter(a =>
+        a.date === today && activeIds.has(a.student_id)
+    );
+    const presentCount = todayAtt.filter(a => a.status === '등원').length;
+    const absentCount = todayAtt.filter(a => a.status === '결석').length;
+
+    const todayHw = state.db.homework.filter(h =>
+        h.date === today && activeIds.has(h.student_id)
+    );
+    const hwDoneCount = todayHw.filter(h => h.status === '완료').length;
+    const hwNotDoneCount = Math.max(totalActive - hwDoneCount, 0);
+
     const classes = state.ui.viewScope === 'all'
         ? state.db.classes
         : state.db.classes.filter(c => c.teacher_name === state.ui.userName);
 
-    root.innerHTML = `
-        <div class="grid" style="margin-bottom: 24px;">
-            <div class="card" style="border-left: 6px solid var(--primary);">
-                <div style="font-size:12px; opacity:0.6;">전체 재원생</div>
-                <div style="font-size:26px; font-weight:900;">${activeStds.length}명</div>
-            </div>
-            <div class="card" style="border-left: 6px solid var(--success);">
-                <div style="font-size:12px; opacity:0.6;">오늘 등원</div>
-                <div style="font-size:26px; font-weight:900;">${state.db.attendance.filter(a => a.status === '등원' && a.date === new Date().toLocaleDateString('sv-SE')).length}명</div>
-            </div>
+    const summaryCards = `
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:12px; margin-bottom:24px;">
+        <div class="card" style="padding:16px; text-align:center; margin-bottom:0; border-left: 5px solid var(--primary);">
+            <div style="font-size:26px; font-weight:900; color:var(--primary);">${totalActive}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">전체 재원생</div>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
-            <h3 style="margin:0;">📂 학급 목록</h3>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                <button class="btn" onclick="renderAttendanceLedger()">📋 출석부</button>
-                <button class="btn btn-primary" onclick="openAddStudent()">+ 학생 추가</button>
-            </div>
+        <div class="card" style="padding:16px; text-align:center; margin-bottom:0; border-left: 5px solid var(--success);">
+            <div style="font-size:26px; font-weight:900; color:var(--success);">${presentCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">오늘 등원</div>
         </div>
-        <div class="grid">${classes.map(c => `
-            <div class="card" onclick="renderClass('${c.id}')" style="cursor:pointer;">
-                <div style="font-weight:800; font-size:18px;">${c.name}</div>
-                <div style="font-size:13px; opacity:0.6;">${c.grade} | ${state.db.class_students.filter(m => m.class_id === c.id).length}명</div>
-            </div>
-        `).join('')}</div>
+        <div class="card" style="padding:16px; text-align:center; margin-bottom:0; border-left: 5px solid var(--error);">
+            <div style="font-size:26px; font-weight:900; color:var(--error);">${absentCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">오늘 결석</div>
+        </div>
+        <div class="card" style="padding:16px; text-align:center; margin-bottom:0; border-left: 5px solid var(--success);">
+            <div style="font-size:26px; font-weight:900; color:var(--success);">${hwDoneCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">숙제 완료</div>
+        </div>
+        <div class="card" style="padding:16px; text-align:center; margin-bottom:0; border-left: 5px solid var(--warning);">
+            <div style="font-size:26px; font-weight:900; color:var(--warning);">${hwNotDoneCount}</div>
+            <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:700;">숙제 미완료</div>
+        </div>
+    </div>
     `;
+
+    const classHeader = `
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
+        <h3 style="margin:0;">📂 학급 목록</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn" onclick="renderAttendanceLedger()">📋 출석부</button>
+            <button class="btn btn-primary" onclick="openAddStudent()">+ 학생 추가</button>
+        </div>
+    </div>
+    `;
+
+    const classGrid = `
+    <div class="grid">${classes.map(c => `
+        <div class="card" onclick="renderClass('${c.id}')" style="cursor:pointer; margin-bottom:0;">
+            <div style="font-weight:800; font-size:18px;">${c.name}</div>
+            <div style="font-size:13px; opacity:0.6;">${c.grade} | ${state.db.class_students.filter(m => m.class_id === c.id).length}명</div>
+        </div>
+    `).join('')}</div>
+    `;
+
+    root.innerHTML = summaryCards + classHeader + classGrid;
 
     document.getElementById('scope-text').innerText =
         state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
@@ -234,7 +288,7 @@ function renderClass(cid) {
 
     document.getElementById('app-root').innerHTML = `
         <div style="display:flex; gap:10px; margin-bottom:15px; align-items:center; flex-wrap:wrap;">
-            <button class="btn" onclick="renderDashboard()">← 홈</button>
+            <button class="btn" onclick="goHome()">← 홈</button>
             <button class="btn" onclick="toggleShowDischarged()" style="${state.ui.showDischarged ? 'background:#f1f3f4;' : ''}">
                 ${state.ui.showDischarged ? '👁 제적자 포함' : '재원만 보기'}
             </button>
@@ -534,7 +588,6 @@ function renderAttendanceLedger() {
 
     document.getElementById('app-root').innerHTML = `
         <div style="display:flex;gap:10px;margin-bottom:15px;align-items:center;flex-wrap:wrap;">
-            <button class="btn" onclick="goDashboardFromLedger()">← 홈</button>
             <h2 style="margin:0;">📋 출석부</h2>
         </div>
         <div class="card" style="margin-bottom:12px;">
