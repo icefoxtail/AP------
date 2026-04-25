@@ -23,7 +23,7 @@ export default {
         const resource = path[1];
         const id = path[2];
 
-        // 3차 보정: attendance-history 조회 API
+        // attendance-history 조회 API
         if (resource === 'attendance-history' && method === 'GET') {
             const date = url.searchParams.get('date') || new Date().toLocaleDateString('sv-SE');
             const [att, hw] = await Promise.all([
