@@ -912,9 +912,9 @@ window.mainDB = {
       "rangeStartUnitKey": "M3-01",
       "rangeStartUnit": "실수와 그 계산",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M3-03",
-      "rangeEndUnit": "이차방정식",
-      "rangeEndUnitOrder": 3,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
       "courseRanges": [
         {
           "standardCourse": "중3 수학",
@@ -922,9 +922,9 @@ window.mainDB = {
           "rangeStartUnitKey": "M3-01",
           "rangeStartUnit": "실수와 그 계산",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-03",
-          "rangeEndUnit": "이차방정식",
-          "rangeEndUnitOrder": 3
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중3 수학"
@@ -943,9 +943,9 @@ window.mainDB = {
       "rangeStartUnitKey": "M2-01",
       "rangeStartUnit": "수와 식",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M2-03",
-      "rangeEndUnit": "연립일차방정식",
-      "rangeEndUnitOrder": 3,
+      "rangeEndUnitKey": "M2-02",
+      "rangeEndUnit": "일차부등식",
+      "rangeEndUnitOrder": 2,
       "courseRanges": [
         {
           "standardCourse": "중2 수학",
@@ -953,9 +953,9 @@ window.mainDB = {
           "rangeStartUnitKey": "M2-01",
           "rangeStartUnit": "수와 식",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M2-03",
-          "rangeEndUnit": "연립일차방정식",
-          "rangeEndUnitOrder": 3
+          "rangeEndUnitKey": "M2-02",
+          "rangeEndUnit": "일차부등식",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중2 수학"
@@ -1290,36 +1290,26 @@ window.mainDB = {
       "examType": "mid",
       "subject": "",
       "contentType": "기출",
-      "qCount": 25,
-      "rangeStartUnitKey": "M1-02",
-      "rangeStartUnit": "정수와 유리수",
-      "rangeStartUnitOrder": 2,
-      "rangeEndUnitKey": "M1-02",
-      "rangeEndUnit": "정수와 유리수",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
       "rangeEndUnitOrder": 2,
       "courseRanges": [
-        {
-          "standardCourse": "중1 수학",
-          "courseCode": "M1",
-          "rangeStartUnitKey": "M1-02",
-          "rangeStartUnit": "정수와 유리수",
-          "rangeStartUnitOrder": 2,
-          "rangeEndUnitKey": "M1-02",
-          "rangeEndUnit": "정수와 유리수",
-          "rangeEndUnitOrder": 2
-        },
         {
           "standardCourse": "중3 수학",
           "courseCode": "M3",
           "rangeStartUnitKey": "M3-01",
           "rangeStartUnit": "실수와 그 계산",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-04",
-          "rangeEndUnit": "이차함수와 그래프",
-          "rangeEndUnitOrder": 4
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
         }
       ],
-      "primaryStandardCourse": "중1 수학"
+      "primaryStandardCourse": "중3 수학"
     },
     {
       "file": "24_왕운중_1학기_중간_중3_기출.js",
@@ -2109,9 +2099,9 @@ window.mainDB = {
       "rangeStartUnitKey": "M3-01",
       "rangeStartUnit": "실수와 그 계산",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M3-03",
-      "rangeEndUnit": "이차방정식",
-      "rangeEndUnitOrder": 3,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
       "courseRanges": [
         {
           "standardCourse": "중3 수학",
@@ -2119,9 +2109,9 @@ window.mainDB = {
           "rangeStartUnitKey": "M3-01",
           "rangeStartUnit": "실수와 그 계산",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-03",
-          "rangeEndUnit": "이차방정식",
-          "rangeEndUnitOrder": 3
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중3 수학"
@@ -2140,9 +2130,9 @@ window.mainDB = {
       "rangeStartUnitKey": "M3-01",
       "rangeStartUnit": "실수와 그 계산",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M3-03",
-      "rangeEndUnit": "이차방정식",
-      "rangeEndUnitOrder": 3,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
       "courseRanges": [
         {
           "standardCourse": "중3 수학",
@@ -2150,9 +2140,9 @@ window.mainDB = {
           "rangeStartUnitKey": "M3-01",
           "rangeStartUnit": "실수와 그 계산",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-03",
-          "rangeEndUnit": "이차방정식",
-          "rangeEndUnitOrder": 3
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중3 수학"
@@ -2778,6 +2768,522 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "비상대수삼각함수1_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수삼각함수1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수1_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수삼각함수1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수대단원_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수삼각함수대단원",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 16,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-05",
+      "rangeEndUnit": "사인법칙과 코사인법칙",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-05",
+          "rangeEndUnit": "사인법칙과 코사인법칙",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수대단원_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수삼각함수대단원",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 16,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-05",
+      "rangeEndUnit": "사인법칙과 코사인법칙",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-05",
+          "rangeEndUnit": "사인법칙과 코사인법칙",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수익힘책_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수삼각함수익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수익힘책_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수삼각함수익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수활용_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수삼각함수활용",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-05",
+      "rangeStartUnit": "사인법칙과 코사인법칙",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-A-05",
+      "rangeEndUnit": "사인법칙과 코사인법칙",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-05",
+          "rangeStartUnit": "사인법칙과 코사인법칙",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-A-05",
+          "rangeEndUnit": "사인법칙과 코사인법칙",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수활용_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수삼각함수활용",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-05",
+      "rangeStartUnit": "사인법칙과 코사인법칙",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-A-05",
+      "rangeEndUnit": "사인법칙과 코사인법칙",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-05",
+          "rangeStartUnit": "사인법칙과 코사인법칙",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-A-05",
+          "rangeEndUnit": "사인법칙과 코사인법칙",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수활용익힘책_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수삼각함수활용익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 16,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-05",
+      "rangeEndUnit": "사인법칙과 코사인법칙",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-05",
+          "rangeEndUnit": "사인법칙과 코사인법칙",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수삼각함수활용익힘책_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수삼각함수활용익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 16,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-05",
+      "rangeEndUnit": "사인법칙과 코사인법칙",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-05",
+          "rangeEndUnit": "사인법칙과 코사인법칙",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수지수로그_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수지수로그",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 44,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-03",
+      "rangeEndUnit": "로그함수",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-03",
+          "rangeEndUnit": "로그함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수지수로그_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수지수로그",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 41,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-03",
+      "rangeEndUnit": "로그함수",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-03",
+          "rangeEndUnit": "로그함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수지수로그익힘책_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수지수로그익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 15,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        },
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-03",
+          "rangeEndUnit": "로그함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "비상대수지수로그익힘책_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수지수로그익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 15,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        },
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-03",
+          "rangeEndUnit": "로그함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "비상대수지수로그함수익힘책_고2_유형변형.js",
+      "school": "",
+      "topic": "비상대수지수로그함수익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-03",
+      "rangeEndUnit": "로그함수",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-03",
+          "rangeEndUnit": "로그함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "비상대수지수로그함수익힘책_고2_유형심화.js",
+      "school": "",
+      "topic": "비상대수지수로그함수익힘책",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 14,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-03",
+      "rangeEndUnit": "로그함수",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-03",
+          "rangeEndUnit": "로그함수",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
       "file": "항등식과나머지정리_고1_유형.js",
       "school": "",
       "topic": "항등식과나머지정리",
@@ -3008,9 +3514,9 @@ window.mainDB = {
       "rangeStartUnitKey": "M1-01",
       "rangeStartUnit": "소인수분해",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M1-04",
-      "rangeEndUnit": "좌표평면과 그래프",
-      "rangeEndUnitOrder": 4,
+      "rangeEndUnitKey": "M1-02",
+      "rangeEndUnit": "정수와 유리수",
+      "rangeEndUnitOrder": 2,
       "courseRanges": [
         {
           "standardCourse": "중1 수학",
@@ -3018,9 +3524,9 @@ window.mainDB = {
           "rangeStartUnitKey": "M1-01",
           "rangeStartUnit": "소인수분해",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M1-04",
-          "rangeEndUnit": "좌표평면과 그래프",
-          "rangeEndUnitOrder": 4
+          "rangeEndUnitKey": "M1-02",
+          "rangeEndUnit": "정수와 유리수",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중1 수학"
