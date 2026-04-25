@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>오답 체크</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --error: #d93025;
+            --border: #dadce0;
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: #202124; }
+        header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px; text-align: center; }
+        header h1 { font-size: 18px; font-weight: 900; color: var(--primary); }
+        header p { font-size: 13px; color: #5f6368; margin-top: 4px; }
+        main { padding: 16px; max-width: 480px; margin: 0 auto; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+        .card h3 { font-size: 14px; color: #5f6368; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        select, input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: 16px; background: var(--surface); margin-bottom: 0; }
+        .q-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .q-btn { height: 52px; border-radius: 10px; border: 2px solid var(--border); background: var(--surface); font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+        .q-btn.wrong { background: var(--error); color: white; border-color: var(--error); }
+        .submit-btn { width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+        .submit-btn:disabled { opacity: 0.4; }
+        .done-card { text-align: center; padding: 40px 20px; }
+        .done-score { font-size: 64px; font-weight: 900; color: var(--primary); }
+        .done-label { font-size: 16px; color: #5f6368; margin-top: 8px; }
+        .done-wrong { margin-top: 16px; font-size: 14px; color: var(--error); font-weight: 700; }
+        .hidden { display: none !important; }
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: white; padding: 12px 24px; border-radius: 50px; font-size: 14px; font-weight: 600; z-index: 999; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="exam-title">오답 체크</h1>
+        <p id="exam-meta"></p>
+    </header>
+    <main id="app-root">
+        <div id="step-select" class="card">
+            <h3>반 선택</h3>
+            <select id="class-select" onchange="onClassChange()">
+                <option value="">반을 선택하세요</option>
+            </select>
+            <div style="margin-top:12px;">
+                <h3>학생 선택</h3>
+                <select id="student-select" disabled>
+                    <option value="">반을 먼저 선택하세요</option>
+                </select>
+            </div>
+        </div>
+        <div id="step-omr" class="card hidden">
+            <h3>오답 번호 선택 (틀린 번호를 누르세요)</h3>
+            <div id="q-grid" class="q-grid"></div>
+        </div>
+        <button id="submit-btn" class="submit-btn hidden" onclick="handleSubmit()">제출하기</button>
+        <div id="step-done" class="card done-card hidden">
+            <div class="done-score" id="done-score"></div>
+            <div class="done-label">점수</div>
+            <div class="done-wrong" id="done-wrong"></div>
+            <p style="margin-top:24px; font-size:14px; color:#5f6368;">제출이 완료되었습니다.</p>
+        </div>
+    </main>
+    <script src="check.js"></script>
+</body>
+</html>
