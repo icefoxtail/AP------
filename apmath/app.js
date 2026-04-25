@@ -1,7 +1,7 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * 통합 프론트엔드 엔진 - 운영 안정화 3차 최종본
- * (관제센터 1.1 + QR 3.0 + 출석부 동기화 보정 완료)
+ * 통합 프론트엔드 엔진 - 운영 안정화 3차 최종 통합본
+ * (관제센터 1.1 + QR 3.0 + 출석부 탭/버튼 동기화 완결)
  */
 
 const CONFIG = {
@@ -67,7 +67,7 @@ let state = {
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
 
-// --- 상수 및 설정 (운영 관제센터 1.1) ---
+// --- 상수 (운영 관제 및 리스크 관리) ---
 const RISK_LOOKBACK_DAYS = 14;
 const RISK_ABSENCE_THRESHOLD = 2;
 const RISK_HOMEWORK_THRESHOLD = 3;
@@ -121,7 +121,7 @@ async function loadData(isInitial = false) {
 }
 
 /**
- * UI 리렌더링 없이 데이터만 동기화
+ * UI 리렌더링 없이 데이터만 동기화 (최소 부하)
  */
 async function refreshDataOnly() {
     const data = await api.get('initial-data');
@@ -165,7 +165,7 @@ function toggleScope() {
     renderDashboard(); 
 }
 
-// --- Mute & Risk 관리 시스템 ---
+// --- Mute & Risk 로직 (운영 관제센터 1.1) ---
 function getMutedRisks() { return JSON.parse(localStorage.getItem(RISK_MUTE_KEY) || '{}'); }
 function saveMutedRisks(data) { localStorage.setItem(RISK_MUTE_KEY, JSON.stringify(data)); }
 function muteRiskStudent(sid) { 
@@ -189,7 +189,7 @@ function isRiskMuted(sid) {
 }
 
 /**
- * 전역 관제 데이터 연산 (computeDashboardData)
+ * 대시보드 계산 엔진 (computeDashboardData)
  */
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
@@ -344,9 +344,6 @@ function renderDashboard() {
     document.getElementById('scope-text').innerText = state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
 
-/**
- * 학급 관리 상세 화면 (renderClass)
- */
 function renderClass(cid) {
     state.ui.currentClassId = cid;
     const cls = state.db.classes.find(c => c.id === cid);
@@ -446,7 +443,7 @@ function generateQrCode() {
     const q = parseInt(document.getElementById('qr-q').value) || 20;
     const date = document.getElementById('qr-date').value;
 
-    if (!exam || q < 1 || q > 50) { toast('시험명과 문항 수(1~50)를 정확히 입력하세요.', 'warn'); return; }
+    if (!exam || q < 1 || q > 50) { toast('입력 정보를 확인하세요 (문항 수 1~50).', 'warn'); return; }
 
     const appBasePath = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/apmath\/?$/, '/');
     const baseUrl = window.location.origin + appBasePath + 'check/';
@@ -466,9 +463,6 @@ function copyQrUrl() {
 // --- 출석부 시스템 (Ledger / 출석부 3.1) ---
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
-/**
- * [보정 완료] 출석부 데이터 로드 및 즉시 렌더링
- */
 async function loadLedger() {
     try {
         const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`);
@@ -476,9 +470,7 @@ async function loadLedger() {
         ledgerState.attendance = data.attendance || [];
         ledgerState.homework = data.homework || [];
         renderLedgerTable();
-    } catch (e) {
-        toast('데이터를 불러오지 못했습니다.', 'warn');
-    }
+    } catch (e) { toast('데이터를 불러오지 못했습니다.', 'warn'); }
 }
 
 async function goDashboardFromLedger() {
@@ -487,6 +479,9 @@ async function goDashboardFromLedger() {
     renderDashboard();
 }
 
+/**
+ * 출석부 메인 프레임 (탭 ID 부여 완료)
+ */
 function renderAttendanceLedger() {
     const classOptions = state.db.classes.map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`).join('');
     document.getElementById('app-root').innerHTML = `
@@ -501,8 +496,8 @@ function renderAttendanceLedger() {
                     <option value="">전체 반</option>${classOptions}
                 </select>
                 <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                    <button class="btn ${ledgerState.mode==='att'?'btn-primary':''}" onclick="ledgerState.mode='att';renderLedgerTable();">출결</button>
-                    <button class="btn ${ledgerState.mode==='hw'?'btn-primary':''}" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제</button>
+                    <button id="ledger-mode-att" class="btn ${ledgerState.mode==='att'?'btn-primary':''}" onclick="ledgerState.mode='att';renderLedgerTable();">출결</button>
+                    <button id="ledger-mode-hw" class="btn ${ledgerState.mode==='hw'?'btn-primary':''}" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제</button>
                 </div>
             </div>
             <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;" id="bulk-btn-area"></div>
@@ -513,9 +508,17 @@ function renderAttendanceLedger() {
 }
 
 /**
- * [보정 완료] 출석부 테이블 렌더러 (방어식 rec 조회 적용)
+ * 출석부 테이블 렌더러 (탭 색상 동기화 및 방어식 rec 조회 적용)
  */
 function renderLedgerTable() {
+    // [보정] 상단 탭 버튼 활성화 상태 실시간 동기화
+    const attModeBtn = document.getElementById('ledger-mode-att');
+    const hwModeBtn = document.getElementById('ledger-mode-hw');
+    if (attModeBtn && hwModeBtn) {
+        attModeBtn.classList.toggle('btn-primary', ledgerState.mode === 'att');
+        hwModeBtn.classList.toggle('btn-primary', ledgerState.mode === 'hw');
+    }
+
     const cid = ledgerState.classId;
     const mIds = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
@@ -538,7 +541,7 @@ function renderLedgerTable() {
 
     document.getElementById('ledger-table-wrap').innerHTML = `
         <p style="font-size:13px;color:#5f6368;margin-bottom:12px;">${ledgerState.date} · ${cid ? state.db.classes.find(c=>c.id===cid)?.name : '전체 반'} · ${isAtt?'출결':'숙제'}</p>
-        <table><thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">상태</th></tr></thead><tbody>${rows || '<tr><td colspan="3" style="text-align:center;opacity:0.5;">학생 없음</td></tr>'}</tbody></table>
+        <table><thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">상태</th></tr></thead><tbody>${rows || '<tr><td colspan="3" style="text-align:center;opacity:0.5;padding:20px;">표시할 학생이 없습니다.</td></tr>'}</tbody></table>
     `;
 }
 
@@ -562,7 +565,7 @@ async function handleBulkHw(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
-// --- 코어 핸들러 (성공 검증 보정 완료) ---
+// --- 코어 핸들러 (성공 검증 필수 포함) ---
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
@@ -613,7 +616,7 @@ function renderStudentDetail(sid) {
         const wrs = state.db.wrong_answers.filter(w => w.session_id === e.id).map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 6px;margin:2px;font-size:11px;font-weight:700;">Q${w.question_id}</span>`).join('');
         return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
     }).join('');
-    showModal(`${s.name} 상세 정보`, `
+    showModal(`${s.name} 프로필`, `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
             <p style="margin:0;">${s.school_name} | ${s.grade}</p>
             <button class="btn" style="font-size:11px; padding:4px 8px;" onclick="openEditStudent('${sid}')">정보 수정</button>
@@ -624,9 +627,9 @@ function renderStudentDetail(sid) {
     `);
 }
 
-async function handleDelete(sid) { if(confirm('제적 처리할까요?')) { await api.delete('students', sid); closeModal(); await loadData(); } }
-async function handleRestore(sid) { if(confirm('재원으로 복구할까요?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); } }
-async function handleDeleteSession(eid, sid) { if(confirm('기록을 삭제할까요?')) { await api.delete('exam-sessions', eid); closeModal(); await loadData(); renderStudentDetail(sid); } }
+async function handleDelete(sid) { if(confirm('제적 처리하시겠습니까?')) { await api.delete('students', sid); closeModal(); await loadData(); } }
+async function handleRestore(sid) { if(confirm('재원으로 복구하시겠습니까?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); } }
+async function handleDeleteSession(eid, sid) { if(confirm('기록을 삭제하시겠습니까?')) { await api.delete('exam-sessions', eid); closeModal(); await loadData(); renderStudentDetail(sid); } }
 
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
