@@ -1,7 +1,7 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
  * 통합 프론트엔드 엔진 - 운영 안정화 3차 최종 통합본 (보정 완료)
- * (관제센터 1.1 + QR 3.0 + 출석부 탭/버튼 동기화 완결 + 방어/문구 패치)
+ * (관제센터 1.1 + QR 3.0 + 출석부 탭/버튼 동기화 완결 + 방어/문구 패치 + 4B-1 마감판)
  */
 
 const CONFIG = {
@@ -274,8 +274,17 @@ function computeDashboardData() {
 
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
+    // [4B-1] 성적 처리율 계산 (오늘 기준)
+    const today = new Date().toLocaleDateString('sv-SE');
+    const cIds = state.db.class_students.filter(m => m.class_id === cls.id).map(m => m.student_id);
+    const activeIds = state.db.students.filter(st => cIds.includes(st.id) && st.status === '재원').map(st => st.id);
+    const testDone = new Set(state.db.exam_sessions.filter(es => es.exam_date === today && activeIds.includes(es.student_id)).map(es => es.student_id)).size;
+    const n = s.activeCount || 1;
+    const attRate  = Math.round((s.present / n) * 100);
+    const hwRate   = Math.round(((n - s.hwNotDone) / n) * 100);
+    const testRate = Math.round((testDone / n) * 100);
     return `
-        <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 110px; padding: 16px;">
+        <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 120px; padding: 16px;">
             <div>
                 <div style="font-weight:800; font-size:17px; display:flex; justify-content:space-between;">
                     ${cls.name} <span style="font-size:12px; font-weight:normal; color:var(--secondary);">재원 ${s.activeCount}</span>
@@ -287,6 +296,9 @@ function renderClassSummaryCard(cls, data) {
             <div style="display:flex; gap:6px; margin-top:10px;">
                 <span style="background:${s.hwNotDone > 0 ? '#fef7e0' : '#f1f3f4'}; color:${s.hwNotDone > 0 ? '#b06000' : '#5f6368'}; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:700;">숙제 ${s.hwNotDone}</span>
                 <span style="background:${s.riskCount > 0 ? '#fce8e6' : '#f1f3f4'}; color:${s.riskCount > 0 ? '#c5221f' : '#5f6368'}; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:700;">위험 ${s.riskCount}</span>
+            </div>
+            <div style="margin-top:8px; font-size:11px; color:var(--secondary); opacity:0.75;">
+                출 ${attRate}% · 숙 ${hwRate}% · 성 ${testRate}%
             </div>
         </div>
     `;
@@ -307,6 +319,36 @@ function renderDashboard() {
             <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom: 3px solid #c5221f;"><div style="font-size:22px; font-weight:900; color:#c5221f;">${data.global.wrongRiskCount}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">오답위험</div></div>
         </div>
     `;
+
+    // [4B-1] 오늘 수업 마감 배너
+    const closeData = computeTodayCloseData();
+    const closeBanner = closeData.allClear
+        ? `<div style="
+                display:flex; align-items:center; gap:10px;
+                background:#e6f4ea; border:1px solid #a8d5b5; border-radius:12px;
+                padding:14px 16px; margin-bottom:20px; font-size:14px; color:#1e6b34;">
+            <span style="font-size:20px;">✅</span>
+            <div><b>오늘 수업 마감 완료</b><br>
+                <span style="font-size:12px; opacity:0.8;">출결·숙제·성적 모두 처리되었습니다.</span>
+            </div>
+          </div>`
+        : `<div onclick="openTodayCloseModal('att')" style="
+                display:flex; align-items:center; justify-content:space-between; gap:10px;
+                background:#fff8e1; border:1px solid #f9ab00; border-radius:12px;
+                padding:14px 16px; margin-bottom:20px; cursor:pointer;">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:20px;">📋</span>
+                <div style="font-size:14px; color:#7a4f00;">
+                    <b>오늘 수업 마감 체크</b><br>
+                    <span style="font-size:12px;">
+                        출결 미처리 <b>${closeData.noAtt.length}</b>명 &nbsp;·&nbsp;
+                        숙제 미처리 <b>${closeData.noHw.length}</b>명 &nbsp;·&nbsp;
+                        성적 미입력 <b>${closeData.noTest.length}</b>명
+                    </span>
+                </div>
+            </div>
+            <span style="font-size:18px; color:#f9ab00;">›</span>
+          </div>`;
 
     const classes = state.ui.viewScope === 'all' ? state.db.classes : state.db.classes.filter(c => c.teacher_name === state.ui.userName);
     const classStatus = `
@@ -339,7 +381,7 @@ function renderDashboard() {
         prioSec = `<div style="text-align:center; padding:20px; opacity:0.5; font-size:13px;">✅ 현재 집중 확인이 필요한 학생이 없습니다.</div>`;
     }
 
-    root.innerHTML = academyStatus + classStatus + prioSec;
+    root.innerHTML = academyStatus + closeBanner + classStatus + prioSec;
     document.getElementById('scope-text').innerText = state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
 
@@ -477,6 +519,93 @@ function copyQrUrl() {
     }).catch(() => toast('복사 실패', 'warn'));
 }
 
+// --- 4B-1 오늘 수업 마감 체크 ---
+
+/**
+ * computeTodayCloseData() - 보정 완료
+ * 수정 내용: status 조건('등원'/'완료')을 제거하여, 
+ * 등원·결석/완료·미완료 구분 없이 '기록 존재 여부'만으로 처리 완료를 판단함.
+ */
+function computeTodayCloseData() {
+    const today = new Date().toLocaleDateString('sv-SE');
+    const active = state.db.students.filter(s => s.status === '재원');
+
+    // 보정: status 조건 제거 (기록이 존재하면 처리된 것으로 간주)
+    const attTodaySet = new Set(
+        state.db.attendance.filter(a => a.date === today).map(a => a.student_id)
+    );
+    const hwTodaySet = new Set(
+        state.db.homework.filter(h => h.date === today).map(h => h.student_id)
+    );
+    const testTodaySet = new Set(
+        state.db.exam_sessions.filter(es => es.exam_date === today).map(es => es.student_id)
+    );
+
+    const noAtt = [], noHw = [], noTest = [];
+    active.forEach(s => {
+        const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
+        const className = state.db.classes.find(c => c.id === cid)?.name || '미배정';
+        const info = { id: s.id, name: s.name, className };
+        if (!attTodaySet.has(s.id))  noAtt.push(info);
+        if (!hwTodaySet.has(s.id))   noHw.push(info);
+        if (!testTodaySet.has(s.id)) noTest.push(info);
+    });
+
+    const totalActive = active.length;
+    return {
+        totalActive,
+        noAtt,   attDone: totalActive - noAtt.length,
+        noHw,    hwDone:  totalActive - noHw.length,
+        noTest,  testDone: totalActive - noTest.length,
+        allClear: noAtt.length === 0 && noHw.length === 0 && noTest.length === 0
+    };
+}
+
+/**
+ * openTodayCloseModal(tab)
+ * 미처리 학생 명단을 탭(출결/숙제/성적) 형태로 표시.
+ * 항목 클릭 시 해당 학생 프로필로 연결.
+ */
+function openTodayCloseModal(tab = 'att') {
+    const d = computeTodayCloseData();
+
+    const tabs = [
+        { key: 'att',  label: `출결 미처리 ${d.noAtt.length}`,  list: d.noAtt,  emptyMsg: '모든 학생 출결 처리 완료 ✅' },
+        { key: 'hw',   label: `숙제 미처리 ${d.noHw.length}`,   list: d.noHw,   emptyMsg: '모든 학생 숙제 처리 완료 ✅' },
+        { key: 'test', label: `성적 미입력 ${d.noTest.length}`,  list: d.noTest, emptyMsg: '모든 학생 성적 입력 완료 ✅ (시험 없는 학생 포함)' }
+    ];
+    const cur = tabs.find(t => t.key === tab) || tabs[0];
+
+    const tabBtns = tabs.map(t => `
+        <button onclick="openTodayCloseModal('${t.key}')" style="
+            flex:1; padding:8px 4px; border:none; border-radius:8px; font-size:12px; font-weight:700;
+            background:${t.key === tab ? 'var(--primary)' : '#f1f3f4'};
+            color:${t.key === tab ? 'white' : 'var(--secondary)'};
+            cursor:pointer;">
+            ${t.label}
+        </button>
+    `).join('');
+
+    const rows = cur.list.length
+        ? cur.list.map(s => `
+            <div onclick="closeModal();renderStudentDetail('${s.id}')" style="
+                display:flex; justify-content:space-between; align-items:center;
+                padding:10px 4px; border-bottom:1px solid var(--border); cursor:pointer;">
+                <div>
+                    <span style="font-weight:700;">${s.name}</span>
+                    <span style="font-size:12px; color:var(--secondary); margin-left:8px;">${s.className}</span>
+                </div>
+                <span style="font-size:12px; color:var(--primary);">→ 프로필</span>
+            </div>`).join('')
+        : `<div style="padding:24px; text-align:center; color:var(--success); font-weight:700; font-size:14px;">${cur.emptyMsg}</div>`;
+
+    showModal('📋 오늘 수업 마감 체크', `
+        <div style="display:flex; gap:6px; margin-bottom:16px;">${tabBtns}</div>
+        <div>${rows}</div>
+        ${tab === 'test' ? '<p style="font-size:11px; color:var(--secondary); margin-top:12px; opacity:0.7;">※ 성적 미입력은 오늘 시험 기록이 없는 학생입니다. 시험이 없는 날에도 표시됩니다.</p>' : ''}
+    `);
+}
+
 // --- 4A 헬퍼 함수 ---
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
@@ -509,17 +638,20 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const today = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => c.id === classId);
     const safeDate = examDate || today;
+    // [4B-1] 최근 사용 시험명 localStorage 저장 (제목 확정 시점에 기록)
     if (!examTitle) {
+        const lastExam = localStorage.getItem('AP_LAST_EXAM_NAME') || '';
         showModal('📊 제출 현황', `
             <div style="display:flex;flex-direction:column;gap:10px;">
                 <p style="margin:0;font-size:13px;color:var(--secondary);"><b>${cls?.name || ''}</b> 확인할 시험명을 입력하세요.</p>
-                <input id="qr-status-exam" class="btn" placeholder="시험명 (예: 단원평가)" style="width:100%;text-align:left;">
+                <input id="qr-status-exam" class="btn" placeholder="시험명 (예: 단원평가)" value="${lastExam}" style="width:100%;text-align:left;">
                 <input id="qr-status-date" type="date" class="btn" value="${safeDate}" style="width:100%;">
             </div>
         `, '현황 보기', () => {
             const title = document.getElementById('qr-status-exam').value.trim();
             const date = document.getElementById('qr-status-date').value;
             if (!title) { toast('시험명을 입력하세요.', 'warn'); return; }
+            localStorage.setItem('AP_LAST_EXAM_NAME', title); // [4B-1] 저장
             openQrSubmitStatus(classId, title, date);
         });
         return;
