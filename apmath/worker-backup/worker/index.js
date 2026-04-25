@@ -45,7 +45,6 @@ export default {
           }), { headers });
         }
 
-        // 보강 반영: POST /api/students 신규 학생 추가
         if (resource === 'students' && method === 'POST') {
             const data = await request.json();
             const sid = `s_${Date.now()}`;
@@ -65,11 +64,28 @@ export default {
             return new Response(JSON.stringify({ success: true, id: sid }), { headers });
         }
 
-        // 보강 반영: PATCH /api/students/:id/restore 재원 복구 (독립 블록)
         if (resource === 'students' && method === 'PATCH' && path[3] === 'restore') {
             await env.DB.prepare(`
                 UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?
             `).bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+        }
+
+        // 수정 2 — PATCH /api/students/:id (정보 수정 + 반 이동)
+        if (resource === 'students' && method === 'PATCH' && !path[3]) {
+            const data = await request.json();
+            const stmts = [
+                env.DB.prepare(`
+                    UPDATE students SET name=?, school_name=?, grade=?, updated_at=DATETIME('now') WHERE id=?
+                `).bind(data.name, data.school_name, data.grade, id)
+            ];
+            if (data.class_id !== undefined) {
+                stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id));
+                if (data.class_id) {
+                    stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(data.class_id, id));
+                }
+            }
+            await env.DB.batch(stmts);
             return new Response(JSON.stringify({ success: true }), { headers });
         }
 
@@ -117,6 +133,15 @@ export default {
             await env.DB.batch(stmts);
             return new Response(JSON.stringify({ success: true, id: sid }), { headers });
           }
+        }
+
+        // 수정 1 — DELETE /api/exam-sessions/:id
+        if (resource === 'exam-sessions' && method === 'DELETE') {
+            await env.DB.batch([
+                env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(id),
+                env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(id)
+            ]);
+            return new Response(JSON.stringify({ success: true }), { headers });
         }
 
         if (resource === 'students' && method === 'DELETE') {

@@ -329,16 +329,20 @@ function renderStudentDetail(sid) {
                 <td>${e.exam_title || '-'}</td>
                 <td style="text-align:center;"><b>${e.score}점</b></td>
                 <td>${wrs || '<span style="opacity:0.4;font-size:12px;">없음</span>'}</td>
+                <td><button class="btn" style="padding:2px 8px;font-size:11px;color:var(--error);border-color:var(--error);" onclick="handleDeleteSession('${e.id}', '${sid}')">삭제</button></td>
             </tr>
         `;
     }).join('');
 
     showModal(`${s.name} 프로필`, `
-        <p style="margin-bottom:16px;"><b>학교:</b> ${s.school_name} &nbsp;|&nbsp; <b>학년:</b> ${s.grade} &nbsp;|&nbsp; <b>상태:</b> ${s.status}</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <p style="margin:0;"><b>학교:</b> ${s.school_name} &nbsp;|&nbsp; <b>학년:</b> ${s.grade}</p>
+            <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="openEditStudent('${sid}')">정보 수정</button>
+        </div>
         <h4 style="margin-bottom:10px;">📋 성적 및 오답 이력</h4>
         ${exs.length ? `
             <table>
-                <thead><tr><th>날짜</th><th>시험명</th><th>점수</th><th>오답</th></tr></thead>
+                <thead><tr><th>날짜</th><th>시험명</th><th>점수</th><th>오답</th><th></th></tr></thead>
                 <tbody>${examRows}</tbody>
             </table>
         ` : '<p style="opacity:0.5;">성적 데이터 없음</p>'}
@@ -403,6 +407,62 @@ async function handleRestore(sid) {
     });
     const data = await r.json();
     if (data.success) { toast('재원 복구 완료', 'info'); closeModal(); await loadData(); }
+}
+
+async function handleDeleteSession(sessionId, sid) {
+    if (!confirm('이 성적 기록을 삭제하시겠습니까? 오답 기록도 함께 삭제됩니다.')) return;
+
+    const r = await fetch(`${CONFIG.API_BASE}/exam-sessions/${sessionId}`, { method: 'DELETE' });
+    const data = await r.json();
+
+    if (data.success) {
+        toast('삭제 완료', 'info');
+        closeModal();
+        await loadData();
+        renderStudentDetail(sid);
+    }
+}
+
+function openEditStudent(sid) {
+    const s = state.db.students.find(st => st.id === sid);
+    const currentClassId = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
+    const classOptions = state.db.classes
+        .map(c => `<option value="${c.id}" ${c.id === currentClassId ? 'selected' : ''}>${c.name}</option>`)
+        .join('');
+    showModal('학생 정보 수정', `
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <input id="edit-name" class="btn" value="${s.name}" style="width:100%;text-align:left;">
+            <input id="edit-school" class="btn" value="${s.school_name || ''}" style="width:100%;text-align:left;">
+            <select id="edit-grade" class="btn" style="width:100%;">
+                <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option>
+                <option value="중2" ${s.grade==='중2'?'selected':''}>중2</option>
+                <option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
+            </select>
+            <select id="edit-class" class="btn" style="width:100%;">
+                <option value="">반 미배정</option>
+                ${classOptions}
+            </select>
+        </div>
+    `, '저장', () => handleEditStudent(sid));
+}
+
+async function handleEditStudent(sid) {
+    const name = document.getElementById('edit-name').value.trim();
+    const school_name = document.getElementById('edit-school').value.trim();
+    const grade = document.getElementById('edit-grade').value;
+    const class_id = document.getElementById('edit-class').value;
+    if (!name || !school_name) { toast('이름과 학교명을 입력해주세요', 'warn'); return; }
+    const r = await fetch(`${CONFIG.API_BASE}/students/${sid}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, school_name, grade, class_id })
+    });
+    const data = await r.json();
+    if (data.success) {
+        toast('수정 완료', 'info');
+        closeModal();
+        await loadData();
+    }
 }
 
 function toggleScope() {
