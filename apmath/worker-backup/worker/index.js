@@ -45,6 +45,34 @@ export default {
           }), { headers });
         }
 
+        // 보강 반영: POST /api/students 신규 학생 추가
+        if (resource === 'students' && method === 'POST') {
+            const data = await request.json();
+            const sid = `s_${Date.now()}`;
+            const stmts = [
+                env.DB.prepare(`
+                    INSERT INTO students (id, name, school_name, grade, status, created_at, updated_at)
+                    VALUES (?, ?, ?, ?, '재원', DATETIME('now'), DATETIME('now'))
+                `).bind(sid, data.name, data.school_name, data.grade)
+            ];
+            if (data.class_id) {
+                stmts.push(
+                    env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)')
+                        .bind(data.class_id, sid)
+                );
+            }
+            await env.DB.batch(stmts);
+            return new Response(JSON.stringify({ success: true, id: sid }), { headers });
+        }
+
+        // 보강 반영: PATCH /api/students/:id/restore 재원 복구 (독립 블록)
+        if (resource === 'students' && method === 'PATCH' && path[3] === 'restore') {
+            await env.DB.prepare(`
+                UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?
+            `).bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+        }
+
         if (method === 'PATCH') {
           const data = await request.json();
 

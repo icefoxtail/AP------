@@ -60,7 +60,7 @@ const SEED_DATA = {
 };
 
 let state = {
-    ui: { viewScope: 'teacher', userName: '박준성', currentClassId: null },
+    ui: { viewScope: 'teacher', userName: '박준성', currentClassId: null, showDischarged: false },
     db: { students: [], classes: [], class_students: [], attendance: [], homework: [], exam_sessions: [], wrong_answers: [] }
 };
 
@@ -87,6 +87,15 @@ const api = {
     async delete(res, id) {
         if (!navigator.onLine) return addToSyncQueue('DELETE', `${res}/${id}`, {});
         const r = await fetch(`${CONFIG.API_BASE}/${res}/${id}`, { method: 'DELETE' });
+        return await r.json();
+    },
+    async post(res, d) {
+        if (!navigator.onLine) return addToSyncQueue('POST', res, d);
+        const r = await fetch(`${CONFIG.API_BASE}/${res}`, {
+            method: 'POST',
+            body: JSON.stringify(d),
+            headers: { 'Content-Type': 'application/json' }
+        });
         return await r.json();
     }
 };
@@ -158,7 +167,10 @@ function renderDashboard() {
                 <div style="font-size:26px; font-weight:900;">${state.db.attendance.filter(a => a.status === '등원').length}명</div>
             </div>
         </div>
-        <h3 style="margin-bottom:15px;">📂 학급 목록</h3>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
+            <h3 style="margin:0;">📂 학급 목록</h3>
+            <button class="btn btn-primary" onclick="openAddStudent()">+ 학생 추가</button>
+        </div>
         <div class="grid">${classes.map(c => `
             <div class="card" onclick="renderClass('${c.id}')" style="cursor:pointer;">
                 <div style="font-weight:800; font-size:18px;">${c.name}</div>
@@ -171,7 +183,6 @@ function renderDashboard() {
         state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
 
-// [수정 완료] renderClass 함수 - 오답수 집계 및 정렬 로직 추가
 function renderClass(cid) {
     state.ui.currentClassId = cid;
 
@@ -185,31 +196,46 @@ function renderClass(cid) {
         wrongCountMap[sid] = state.db.wrong_answers.filter(w => w.student_id === sid).length;
     });
 
-    const stds = state.db.students
-        .filter(s => mIds.includes(s.id) && s.status === '재원')
+    const allStds = state.db.students.filter(s => mIds.includes(s.id));
+    const stds = allStds
+        .filter(s => state.ui.showDischarged ? true : s.status === '재원')
         .sort((a, b) => (wrongCountMap[b.id] || 0) - (wrongCountMap[a.id] || 0));
 
+    const activeCount = allStds.filter(s => s.status === '재원').length;
+
     document.getElementById('app-root').innerHTML = `
-        <button class="btn" style="margin-bottom:15px;" onclick="renderDashboard()">← 홈</button>
+        <div style="display:flex; gap:10px; margin-bottom:15px; align-items:center; flex-wrap:wrap;">
+            <button class="btn" onclick="renderDashboard()">← 홈</button>
+            <button class="btn" onclick="toggleShowDischarged()" style="${state.ui.showDischarged ? 'background:#f1f3f4;' : ''}">
+                ${state.ui.showDischarged ? '👁 제적자 포함' : '재원만 보기'}
+            </button>
+            <button class="btn btn-primary" onclick="openAddStudent('${cid}')">+ 학생 추가</button>
+        </div>
         <div class="card">
-            <h2>${cls.name} 관리 <span style="font-weight:normal; opacity:0.5; font-size:14px;">(${stds.length}명)</span></h2>
+            <h2>${cls.name} 관리 <span style="font-weight:normal; opacity:0.5; font-size:14px;">(재원 ${activeCount}명)</span></h2>
             <table>
                 <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">출결/숙제/성적</th></tr></thead>
                 <tbody>${stds.map(s => {
+                    const isDischarged = s.status === '제적';
                     const att = state.db.attendance.find(a => a.student_id === s.id);
                     const hw = state.db.homework.find(h => h.student_id === s.id);
                     const wc = wrongCountMap[s.id] || 0;
                     const badge = wc > 0
                         ? `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">🔴 오답 ${wc}개</span>`
                         : '';
+                    const dischargedBadge = isDischarged
+                        ? `<span style="display:inline-block;background:#f1f3f4;color:#5f6368;border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:6px;">제적</span>`
+                        : '';
                     return `
-                        <tr>
-                            <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer; font-weight:800; color:var(--primary);">${s.name}${badge}</td>
+                        <tr style="${isDischarged ? 'opacity:0.5;' : ''}">
+                            <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer;font-weight:800;color:var(--primary);">${s.name}${badge}${dischargedBadge}</td>
                             <td>${s.school_name}</td>
                             <td style="text-align:right;">
-                                <button class="btn ${att?.status === '등원' ? 'btn-primary' : ''}" style="padding:4px 8px; font-size:11px;" onclick="toggleAtt('${s.id}')">${att?.status || '미정'}</button>
-                                <button class="btn ${hw?.status === '완료' ? 'btn-primary' : ''}" style="padding:4px 8px; font-size:11px;" onclick="toggleHw('${s.id}')">${hw?.status || '미완료'}</button>
-                                <button class="btn btn-primary" style="padding:4px 8px; font-size:11px;" onclick="openOMR('${s.id}')">성적</button>
+                                ${isDischarged ? '<span style="font-size:12px;opacity:0.4;">-</span>' : `
+                                    <button class="btn ${att?.status === '등원' ? 'btn-primary' : ''}" style="padding:4px 8px;font-size:11px;" onclick="toggleAtt('${s.id}')">${att?.status || '미정'}</button>
+                                    <button class="btn ${hw?.status === '완료' ? 'btn-primary' : ''}" style="padding:4px 8px;font-size:11px;" onclick="toggleHw('${s.id}')">${hw?.status || '미완료'}</button>
+                                    <button class="btn btn-primary" style="padding:4px 8px;font-size:11px;" onclick="openOMR('${s.id}')">성적</button>
+                                `}
                             </td>
                         </tr>
                     `;
@@ -287,6 +313,7 @@ function renderStudentDetail(sid) {
             .filter(w => w.session_id === e.id)
             .map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 7px;margin:2px;font-size:12px;font-weight:700;">Q${w.question_id}</span>`)
             .join('');
+
         return `
             <tr>
                 <td>${e.exam_date}</td>
@@ -298,7 +325,7 @@ function renderStudentDetail(sid) {
     }).join('');
 
     showModal(`${s.name} 프로필`, `
-        <p style="margin-bottom:16px;"><b>학교:</b> ${s.school_name} &nbsp;|&nbsp; <b>학년:</b> ${s.grade}</p>
+        <p style="margin-bottom:16px;"><b>학교:</b> ${s.school_name} &nbsp;|&nbsp; <b>학년:</b> ${s.grade} &nbsp;|&nbsp; <b>상태:</b> ${s.status}</p>
         <h4 style="margin-bottom:10px;">📋 성적 및 오답 이력</h4>
         ${exs.length ? `
             <table>
@@ -306,7 +333,10 @@ function renderStudentDetail(sid) {
                 <tbody>${examRows}</tbody>
             </table>
         ` : '<p style="opacity:0.5;">성적 데이터 없음</p>'}
-        <button class="btn" onclick="handleDelete('${sid}')" style="color:var(--error);border-color:var(--error);margin-top:20px;">제적 처리</button>
+        ${s.status === '재원'
+            ? `<button class="btn" onclick="handleDelete('${sid}')" style="color:var(--error);border-color:var(--error);margin-top:20px;">제적 처리</button>`
+            : `<button class="btn btn-primary" onclick="handleRestore('${sid}')" style="margin-top:20px;">재원 복구</button>`
+        }
     `);
 }
 
@@ -319,6 +349,51 @@ async function handleDelete(sid) {
         closeModal();
         await loadData();
     }
+}
+
+function toggleShowDischarged() {
+    state.ui.showDischarged = !state.ui.showDischarged;
+    renderClass(state.ui.currentClassId);
+}
+
+function openAddStudent(defaultClassId = '') {
+    const classOptions = state.db.classes
+        .map(c => `<option value="${c.id}" ${c.id === defaultClassId ? 'selected' : ''}>${c.name}</option>`)
+        .join('');
+    showModal('학생 추가', `
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <input id="add-name" class="btn" placeholder="이름" style="width:100%;text-align:left;">
+            <input id="add-school" class="btn" placeholder="학교명" style="width:100%;text-align:left;">
+            <select id="add-grade" class="btn" style="width:100%;">
+                <option value="중1">중1</option>
+                <option value="중2">중2</option>
+                <option value="중3">중3</option>
+            </select>
+            <select id="add-class" class="btn" style="width:100%;">
+                <option value="">반 선택 (선택사항)</option>
+                ${classOptions}
+            </select>
+        </div>
+    `, '추가', handleAddStudent);
+}
+
+async function handleAddStudent() {
+    const name = document.getElementById('add-name').value.trim();
+    const school_name = document.getElementById('add-school').value.trim();
+    const grade = document.getElementById('add-grade').value;
+    const class_id = document.getElementById('add-class').value;
+    if (!name || !school_name) { toast('이름과 학교명을 입력해주세요', 'warn'); return; }
+    const r = await api.post('students', { name, school_name, grade, class_id });
+    if (r.success) { toast('학생 추가 완료', 'info'); closeModal(); await loadData(); }
+}
+
+async function handleRestore(sid) {
+    if (!confirm('재원으로 복구하시겠습니까?')) return;
+    const r = await fetch(`${CONFIG.API_BASE}/students/${sid}/restore`, {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await r.json();
+    if (data.success) { toast('재원 복구 완료', 'info'); closeModal(); await loadData(); }
 }
 
 function toggleScope() {
