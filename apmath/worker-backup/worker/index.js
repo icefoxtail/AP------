@@ -23,6 +23,50 @@ export default {
         const resource = path[1];
         const id = path[2];
 
+        // 3차 보정: attendance-history 조회 API
+        if (resource === 'attendance-history' && method === 'GET') {
+            const date = url.searchParams.get('date') || new Date().toLocaleDateString('sv-SE');
+            const [att, hw] = await Promise.all([
+                env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(),
+                env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()
+            ]);
+            return new Response(JSON.stringify({
+                attendance: att.results,
+                homework: hw.results,
+                date
+            }), { headers });
+        }
+
+        // 3차 보정: 출결 전용 일괄 처리 API
+        if (resource === 'attendance-batch' && method === 'POST') {
+            const data = await request.json();
+            const stmts = (data.entries || []).map(({ studentId, status, date }) => {
+                const aid = `${studentId}_${date}`;
+                return env.DB.prepare(`
+                    INSERT INTO attendance (id, student_id, status, date, created_at)
+                    VALUES (?, ?, ?, ?, DATETIME('now'))
+                    ON CONFLICT(id) DO UPDATE SET status=excluded.status
+                `).bind(aid, studentId, status, date);
+            });
+            if (stmts.length) await env.DB.batch(stmts);
+            return new Response(JSON.stringify({ success: true }), { headers });
+        }
+
+        // 3차 보정 추가: 숙제 전용 일괄 처리 API
+        if (resource === 'homework-batch' && method === 'POST') {
+            const data = await request.json();
+            const stmts = (data.entries || []).map(({ studentId, status, date }) => {
+                const hid = `${studentId}_${date}`;
+                return env.DB.prepare(`
+                    INSERT INTO homework (id, student_id, status, date, created_at)
+                    VALUES (?, ?, ?, ?, DATETIME('now'))
+                    ON CONFLICT(id) DO UPDATE SET status=excluded.status
+                `).bind(hid, studentId, status, date);
+            });
+            if (stmts.length) await env.DB.batch(stmts);
+            return new Response(JSON.stringify({ success: true }), { headers });
+        }
+
         if (resource === 'initial-data') {
           const [stds, clss, map, att, hw, exs, wrs] = await Promise.all([
             env.DB.prepare('SELECT * FROM students').all(),
@@ -71,7 +115,6 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // 수정 2 — PATCH /api/students/:id (정보 수정 + 반 이동)
         if (resource === 'students' && method === 'PATCH' && !path[3]) {
             const data = await request.json();
             const stmts = [
@@ -135,7 +178,6 @@ export default {
           }
         }
 
-        // 수정 1 — DELETE /api/exam-sessions/:id
         if (resource === 'exam-sessions' && method === 'DELETE') {
             await env.DB.batch([
                 env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(id),

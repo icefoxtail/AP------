@@ -169,7 +169,10 @@ function renderDashboard() {
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:8px;">
             <h3 style="margin:0;">📂 학급 목록</h3>
-            <button class="btn btn-primary" onclick="openAddStudent()">+ 학생 추가</button>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="btn" onclick="renderAttendanceLedger()">📋 출석부</button>
+                <button class="btn btn-primary" onclick="openAddStudent()">+ 학생 추가</button>
+            </div>
         </div>
         <div class="grid">${classes.map(c => `
             <div class="card" onclick="renderClass('${c.id}')" style="cursor:pointer;">
@@ -254,10 +257,11 @@ function renderClass(cid) {
     `;
 }
 
-async function toggleAtt(sid) {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const current = state.db.attendance.find(a => a.student_id === sid);
-    const nextStatus = current?.status === '등원' ? '결석' : '등원';
+// 3차 보정: toggleAtt 날짜 기준 sv-SE 포맷으로 통일
+async function toggleAtt(sid, date) {
+    const today = date || new Date().toLocaleDateString('sv-SE');
+    const cur = state.db.attendance.find(a => a.student_id === sid && a.date === today);
+    const nextStatus = cur?.status === '등원' ? '결석' : '등원';
 
     await api.patch('attendance', {
         studentId: sid,
@@ -265,13 +269,20 @@ async function toggleAtt(sid) {
         date: today
     });
 
-    await loadData();
+    const isToday = today === new Date().toLocaleDateString('sv-SE');
+    if (isToday) {
+        await loadData();
+        if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
+    } else {
+        await loadLedger();
+    }
 }
 
-async function toggleHw(sid) {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const current = state.db.homework.find(h => h.student_id === sid);
-    const nextStatus = current?.status === '완료' ? '미완료' : '완료';
+// 3차 보정: toggleHw 날짜 기준 sv-SE 포맷으로 통일
+async function toggleHw(sid, date) {
+    const today = date || new Date().toLocaleDateString('sv-SE');
+    const cur = state.db.homework.find(h => h.student_id === sid && h.date === today);
+    const nextStatus = cur?.status === '완료' ? '미완료' : '완료';
 
     await api.patch('homework', {
         studentId: sid,
@@ -279,7 +290,13 @@ async function toggleHw(sid) {
         date: today
     });
 
-    await loadData();
+    const isToday = today === new Date().toLocaleDateString('sv-SE');
+    if (isToday) {
+        await loadData();
+        if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
+    } else {
+        await loadLedger();
+    }
 }
 
 function openOMR(sid) {
@@ -463,6 +480,131 @@ async function handleEditStudent(sid) {
         closeModal();
         await loadData();
     }
+}
+
+// 3차 보정: 날짜 기본값 sv-SE 포맷 통일
+let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
+
+async function loadLedger() {
+    const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`);
+    const data = await r.json();
+    ledgerState.attendance = data.attendance || [];
+    ledgerState.homework = data.homework || [];
+    renderLedgerTable();
+}
+
+function renderAttendanceLedger() {
+    const classOptions = state.db.classes
+        .map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`)
+        .join('');
+
+    document.getElementById('app-root').innerHTML = `
+        <div style="display:flex;gap:10px;margin-bottom:15px;align-items:center;flex-wrap:wrap;">
+            <button class="btn" onclick="renderDashboard()">← 홈</button>
+            <h2 style="margin:0;">📋 출석부</h2>
+        </div>
+        <div class="card" style="margin-bottom:12px;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+                <input type="date" id="ledger-date" class="btn" value="${ledgerState.date}" style="width:160px;" onchange="ledgerState.date=this.value;loadLedger();">
+                <select id="ledger-class" class="btn" style="flex:1;min-width:120px;" onchange="ledgerState.classId=this.value;renderLedgerTable();">
+                    <option value="">전체 반</option>
+                    ${classOptions}
+                </select>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <button class="btn ${ledgerState.mode==='att'?'btn-primary':''}" onclick="ledgerState.mode='att';renderLedgerTable();">출결</button>
+                    <button class="btn ${ledgerState.mode==='hw'?'btn-primary':''}" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제</button>
+                </div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;" id="bulk-btn-area"></div>
+        </div>
+        <div class="card" id="ledger-table-wrap">
+            <p style="opacity:0.5;text-align:center;">날짜를 선택하면 조회됩니다.</p>
+        </div>
+    `;
+    loadLedger();
+}
+
+function renderLedgerTable() {
+    const cid = ledgerState.classId;
+    const mIds = cid
+        ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id)
+        : state.db.students.map(s => s.id);
+
+    const stds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
+    const isAtt = ledgerState.mode === 'att';
+    const records = isAtt ? ledgerState.attendance : ledgerState.homework;
+
+    const bulkArea = document.getElementById('bulk-btn-area');
+    if (bulkArea && cid) {
+        bulkArea.innerHTML = isAtt ? `
+            <button class="btn btn-primary" style="flex:1;" onclick="handleBulkAtt('등원')">✅ 전체 등원</button>
+            <button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkAtt('결석')">❌ 전체 결석</button>
+        ` : `
+            <button class="btn btn-primary" style="flex:1;" onclick="handleBulkHw('완료')">✅ 전체 완료</button>
+            <button class="btn" style="flex:1;color:var(--error);border-color:var(--error);" onclick="handleBulkHw('미완료')">❌ 전체 미완료</button>
+        `;
+    } else if (bulkArea) {
+        bulkArea.innerHTML = '<p style="font-size:12px;opacity:0.5;">반을 선택하면 일괄 처리 버튼이 표시됩니다.</p>';
+    }
+
+    const rows = stds.map(s => {
+        const rec = records.find(r => r.student_id === s.id);
+        const status = isAtt ? (rec?.status || '미정') : (rec?.status || '미완료');
+        const isActive = isAtt ? status === '등원' : status === '완료';
+        return `
+            <tr>
+                <td style="font-weight:700;">${s.name}</td>
+                <td>${s.school_name}</td>
+                <td style="text-align:right;">
+                    <button class="btn ${isActive ? 'btn-primary' : ''}" style="padding:6px 14px;font-size:13px;"
+                        onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">
+                        ${status}
+                    </button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    document.getElementById('ledger-table-wrap').innerHTML = `
+        <p style="font-size:13px;color:#5f6368;margin-bottom:12px;">${ledgerState.date} · ${cid ? state.db.classes.find(c=>c.id===cid)?.name : '전체'} · ${isAtt?'출결':'숙제'}</p>
+        <table>
+            <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">상태</th></tr></thead>
+            <tbody>${rows || '<tr><td colspan="3" style="text-align:center;opacity:0.5;">학생 없음</td></tr>'}</tbody>
+        </table>
+    `;
+}
+
+async function handleBulkAtt(status) {
+    const label = status === '등원' ? '전체 등원' : '전체 결석';
+    if (!confirm(`${ledgerState.date} 기준 현재 반 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
+    const cid = ledgerState.classId;
+    const sids = state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id);
+    const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
+    const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
+    const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entries })
+    });
+    const data = await r.json();
+    if (data.success) { toast(`${label} 처리 완료`, 'info'); await loadLedger(); }
+}
+
+// 3차 보정: 숙제 일괄 처리는 homework-batch API 사용
+async function handleBulkHw(status) {
+    const label = status === '완료' ? '전체 완료' : '전체 미완료';
+    if (!confirm(`${ledgerState.date} 기준 현재 반 학생 전체를 "${label}"으로 처리하시겠습니까?`)) return;
+    const cid = ledgerState.classId;
+    const sids = state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id);
+    const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
+    const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
+    const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entries })
+    });
+    const data = await r.json();
+    if (data.success) { toast(`${label} 처리 완료`, 'info'); await loadLedger(); }
 }
 
 function toggleScope() {
