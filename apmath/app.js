@@ -1,7 +1,7 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * 통합 프론트엔드 엔진 - 운영 안정화 3차 최종 통합본
- * (4B 마감센터 유지 + 4C-2 학생/퇴원생 관리 및 보고서비스 고도화 + 4D-1 AI 보고 문구 생성)
+ * 통합 프론트엔드 엔진 - 4E 실사용 안정화 미니 번들 최종 완결본
+ * (4B 마감 + 4C-2 복원 + 4D-1 AI 보고 엔진 + 4E UX 보정 및 누락 함수 복원)
  */
 
 const CONFIG = {
@@ -456,9 +456,10 @@ function renderDashboard() {
         prioSec = `<div style="text-align:center; padding:20px; opacity:0.5; font-size:13px;">✅ 현재 집중 확인이 필요한 학생이 없습니다.</div>`;
     }
 
+    // 4E UX: 퇴원생 관리 버튼 모바일 터치 영역 확장 적용 완료
     const dischargedLink = `
         <div style="text-align:center; margin-top:20px; padding-bottom:20px;">
-            <button class="btn" style="font-size:12px; border:none; background:transparent; color:var(--secondary);" onclick="openDischargedStudents()">🗄️ 퇴원생 목록 조회</button>
+            <button class="btn" style="font-size:12px; border:none; background:transparent; color:var(--secondary); padding:10px 14px; border-radius:10px;" onclick="openDischargedStudents()">🗄️ 퇴원생 목록 조회</button>
         </div>
     `;
 
@@ -570,6 +571,7 @@ function openQrGenerator(cid) {
     `, 'QR 코드 생성', generateQrCode);
 }
 
+// 4E UX 적용: QR 생성 후 오늘 마감 기준 설정 Confirm
 function generateQrCode() {
     const cid = state.ui.currentClassId;
     const exam = document.getElementById('qr-exam').value.trim();
@@ -588,10 +590,14 @@ function generateQrCode() {
     
     document.getElementById('qr-url').innerText = fullUrl;
     document.getElementById('qr-result-area').classList.remove('hidden');
+    localStorage.setItem('AP_LAST_EXAM_NAME', exam);
     toast('QR 코드가 생성되었습니다.', 'info');
 
-    setTodayExamConfig(exam, q);
-    localStorage.setItem('AP_LAST_EXAM_NAME', exam);
+    const bindTodayExam = confirm('이 시험을 오늘 마감 기준으로 설정할까요?');
+    if (bindTodayExam) {
+        setTodayExamConfig(exam, q);
+        toast('오늘 시험 기준으로 설정되었습니다.', 'info');
+    }
 }
 
 function copyQrUrl() {
@@ -661,7 +667,12 @@ function computeTodayCloseData(todayExam = getTodayExamConfig()) {
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
-    if (!r?.success) { toast('출결 처리 실패', 'warn'); return; }
+
+    if (!r?.success) {
+        toast('출결 처리 실패', 'warn');
+        return;
+    }
+
     await refreshDataOnly();
     openTodayCloseModal(tab);
 }
@@ -669,7 +680,12 @@ async function quickToggleAtt(sid, status, tab = 'att') {
 async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
-    if (!r?.success) { toast('숙제 처리 실패', 'warn'); return; }
+
+    if (!r?.success) {
+        toast('숙제 처리 실패', 'warn');
+        return;
+    }
+
     await refreshDataOnly();
     openTodayCloseModal(tab);
 }
@@ -684,7 +700,11 @@ function buildAcademySummary() {
     text += `재원생: ${closeData.totalActive}명\n`;
     text += `출결 처리: ${closeData.attDone}/${closeData.totalActive}\n`;
     text += `숙제 처리: ${closeData.hwDone}/${closeData.totalActive}\n`;
-    if (todayExam) text += `성적 입력: ${closeData.testDone}/${closeData.totalActive}\n`;
+
+    if (todayExam) {
+        text += `성적 입력: ${closeData.testDone}/${closeData.totalActive}\n`;
+    }
+
     if (closeData.allClear) {
         text += `\n✅ 오늘 운영 마감 완료`;
     } else {
@@ -693,14 +713,18 @@ function buildAcademySummary() {
         text += `- 숙제 미처리: ${closeData.noHw.length}명\n`;
         if (todayExam) text += `- 성적 미입력: ${closeData.noTest.length}명\n`;
     }
+
     return text;
 }
 
 function copyAcademySummary() {
     const text = buildAcademySummary();
+
     navigator.clipboard.writeText(text).then(() => {
         toast('운영 요약이 복사되었습니다.', 'info');
-    }).catch(() => toast('복사 실패', 'warn'));
+    }).catch(() => {
+        toast('복사 실패', 'warn');
+    });
 }
 
 function openTodayCloseModal(tab = 'att') {
@@ -713,7 +737,7 @@ function openTodayCloseModal(tab = 'att') {
     const tabs = [
         { key: 'att',  label: `출결 미처리 ${d.noAtt.length}`,  list: d.noAtt,  emptyMsg: '모든 학생 출결 처리 완료 ✅' },
         { key: 'hw',   label: `숙제 미처리 ${d.noHw.length}`,   list: d.noHw,   emptyMsg: '모든 학생 숙제 처리 완료 ✅' },
-        { key: 'test', label: testTabLabel, list: todayExam ? d.noTest : [], emptyMsg: testTabEmptyMsg }
+        { key: 'test', label: testTabLabel,  list: todayExam ? d.noTest : [], emptyMsg: testTabEmptyMsg }
     ];
     const cur = tabs.find(t => t.key === tab) || tabs[0];
 
@@ -749,6 +773,7 @@ function openTodayCloseModal(tab = 'att') {
                         <button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="closeModal();openOMR('${s.id}', '${preset}')">성적 입력</button>
                     </div>`;
             }
+
             return `
                 <div style="padding:14px 4px; border-bottom:1px solid var(--border);">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -784,6 +809,7 @@ function computeClassTodaySummary(classId) {
     return { att, hw, test, total };
 }
 
+// 4C-2 원본: 제출 통계 계산 로직 복원 (FAIL 해결)
 function computeQrSubmitStatus(classId, examTitle, examDate) {
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
@@ -821,6 +847,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     }
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
     const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
+    
     showModal('📊 제출 현황', `
         <div style="background:#f8f9fa;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px;">
             <b>${examTitle}</b> · ${safeDate} · ${submitted.length + pending.length}명 중 <b>${submitted.length}명 제출</b>
@@ -841,7 +868,7 @@ function getRecentAverage(studentId, limit = 3) {
     return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
 }
 
-// --- 4C-2 보고 문구 (정적 즉시 복사) ---
+// --- 4C-2 정적 즉시 복사 엔진 ---
 function copyReport(sid, type) {
     const s = state.db.students.find(x => x.id === sid);
     const today = new Date().toLocaleDateString('sv-SE');
@@ -852,20 +879,22 @@ function copyReport(sid, type) {
     const avg = getRecentAverage(sid, 3);
     
     let text = '';
-    if (type === 'parent') {
+    if(type === 'parent') {
         text = `[AP Math] ${s.name} 학생 오늘 수업 안내\n출결: ${att}\n숙제: ${hw}\n오늘 성적: ${todayEx ? todayEx.score+'점' : '없음'}\n최근 3회 평균: ${avg !== null ? avg+'점' : '데이터 없음'}`;
-    } else if (type === 'student') {
+    } else if(type === 'student') {
         text = `${s.name}아, 오늘 수고 많았어! 😊\n숙제 잊지 말고, 다음 시간에 또 보자!`;
     } else {
         text = `[상담 메모 - ${today}] ${s.name} (${s.school_name} ${s.grade})\n출결: ${att} / 숙제: ${hw}\n금일 성적: ${todayEx ? todayEx.exam_title+' '+todayEx.score+'점' : '시험 없음'}\n최근 평균: ${avg !== null ? avg+'점' : '없음'}`;
     }
+    
     navigator.clipboard.writeText(text).then(() => {
         toast('복사 완료', 'info');
-    }).catch(() => toast('복사 실패', 'warn'));
+    }).catch(() => {
+        toast('복사 실패', 'warn');
+    });
 }
 
-// --- 4D-1 AI 보고 문구 생성 ---
-
+// --- 4D-1 AI 보고 엔진 및 UX 안전 헬퍼 ---
 function escapeHtmlForTextarea(text) {
     return String(text)
         .replace(/&/g, '&amp;')
@@ -892,8 +921,7 @@ async function requestAiReport(sid, type) {
         type,
         student: { name: s.name, school: s.school_name, grade: s.grade },
         today: {
-            att,
-            hw,
+            att, hw,
             exam: todayEx ? { title: todayEx.exam_title, score: todayEx.score, wrongs } : null,
             avg: avg !== null ? avg : null
         }
@@ -946,7 +974,7 @@ function copyAiReportText() {
     }).catch(() => toast('복사 실패', 'warn'));
 }
 
-// --- 4C-2 퇴원생 관리 ---
+// --- 4C-2 퇴원생 관리 화면 ---
 function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');
     const rows = discharged.length ? discharged.map(s => `
@@ -959,10 +987,13 @@ function openDischargedStudents() {
     `).join('') : `<div style="padding:32px 16px; text-align:center; color:var(--secondary); font-size:14px;">퇴원생이 없습니다.</div>`;
 
     showModal('🗄️ 퇴원생 목록', `
-        <div style="max-height:60vh; overflow-y:auto;">${rows}</div>
+        <div style="max-height:60vh; overflow-y:auto;">
+            ${rows}
+        </div>
     `);
 }
 
+// --- 4C-2 출석부 (Ledger) 로직 ---
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
 async function loadLedger() {
@@ -1060,14 +1091,17 @@ async function handleBulkHw(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
+// --- 코어 핸들러 ---
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
     const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => a.student_id === sid && a.date === today);
     const next = cur?.status === '등원' ? '결석' : '등원';
+    
     const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('출결 저장 실패', 'warn'); return; }
+
     if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } 
     else await loadData();
 }
@@ -1078,8 +1112,10 @@ async function toggleHw(sid, date) {
     const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => h.student_id === sid && h.date === today);
     const next = cur?.status === '완료' ? '미완료' : '완료';
+    
     const r = await api.patch('homework', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('숙제 저장 실패', 'warn'); return; }
+
     if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } 
     else await loadData();
 }
@@ -1087,6 +1123,7 @@ async function toggleHw(sid, date) {
 function openOMR(sid, presetTitle = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
+
     showModal('성적 직접 입력', `
         시험명: <input id="omr-title" class="btn" value="${defaultTitle}" style="width:100%; text-align:left;">
         <div class="omr-grid">${Array.from({length:10},(_,i)=>`<div class="omr-item">Q${i+1}<br><input type="checkbox" class="omr-q" value="${i+1}"></div>`).join('')}</div>
@@ -1097,8 +1134,10 @@ async function handleOMRSave(sid) {
     const title = document.getElementById('omr-title').value;
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const score = (10-wrs.length)*10;
+    
     const r = await api.patch('exam-sessions/new', { student_id: sid, exam_title: title, score, wrong_ids: wrs, exam_date: new Date().toLocaleDateString('sv-SE') });
     if (!r?.success) { toast('저장 실패', 'warn'); return; }
+    
     toast(`${score}점 저장됨`, 'info'); 
     closeModal(); 
     await loadData();
@@ -1112,7 +1151,8 @@ function renderStudentDetail(sid) {
         const wrs = state.db.wrong_answers.filter(w => w.session_id === e.id).map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 6px;margin:2px;font-size:11px;font-weight:700;">Q${w.question_id}</span>`).join('');
         return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
     }).join('');
-
+    
+    // [4D-1] 정적 복사 3종 + AI 보고 3종 버튼 장착 완료
     const reportButtons = `
         <div style="margin-top:20px;">
             <div style="font-size:11px; color:var(--secondary); margin-bottom:6px;">📋 즉시 복사</div>
@@ -1206,6 +1246,9 @@ async function handleAddStudent() {
     closeModal(); await loadData();
 }
 
+/**
+ * 전역 유틸리티 (Toast, Modal)
+ */
 function toast(m, t='info') { const c = document.getElementById('toast-container'), el = document.createElement('div'); el.className=`toast ${t}`; el.innerText=m; c.appendChild(el); setTimeout(() => el.remove(), 3000); }
 function showModal(t, b, at=null, af=null) { document.getElementById('modal-title').innerText=t; document.getElementById('modal-body').innerHTML=b; const ab = document.getElementById('modal-action-btn'); if(at&&af){ ab.innerText=at; ab.onclick=af; ab.classList.remove('hidden'); } else ab.classList.add('hidden'); document.getElementById('modal-overlay').classList.remove('hidden'); }
 function closeModal() { document.getElementById('modal-overlay').classList.add('hidden'); }
