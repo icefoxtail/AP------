@@ -61,7 +61,11 @@ const SEED_DATA = {
 
 let state = {
     ui: { viewScope: 'teacher', userName: '박준성', currentClassId: null },
-    db: { students: [], classes: [], class_students: [], attendance: [], homework: [], exam_sessions: [], wrong_answers: [], attendance_history: [], homework_history: [] }
+    db: { 
+        students: [], classes: [], class_students: [], attendance: [], homework: [], 
+        exam_sessions: [], wrong_answers: [], attendance_history: [], homework_history: [],
+        consultations: [] // 4H 추가
+    }
 };
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
@@ -143,7 +147,8 @@ async function loadData(isInitial = false) {
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [],
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [],
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [],
-        homework_history: Array.isArray(data.homework_history) ? data.homework_history : []
+        homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
+        consultations: Array.isArray(data.consultations) ? data.consultations : [] // 4H 추가
     };
     if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
     else renderDashboard();
@@ -161,7 +166,8 @@ async function refreshDataOnly() {
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [], 
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [], 
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [], 
-        homework_history: Array.isArray(data.homework_history) ? data.homework_history : [] 
+        homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
+        consultations: Array.isArray(data.consultations) ? data.consultations : [] // 4H 추가
     };
 }
 

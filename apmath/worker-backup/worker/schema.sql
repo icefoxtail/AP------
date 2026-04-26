@@ -59,3 +59,20 @@ CREATE TABLE IF NOT EXISTS questions (
   standard_unit TEXT,
   difficulty TEXT
 );
+
+CREATE TABLE IF NOT EXISTS consultations (
+  id TEXT PRIMARY KEY,
+  student_id TEXT NOT NULL,
+  date TEXT NOT NULL,
+  type TEXT,
+  content TEXT NOT NULL,
+  next_action TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_consultations_student_id ON consultations(student_id);
+CREATE INDEX IF NOT EXISTS idx_consultations_date ON consultations(date);
+
+ALTER TABLE students ADD COLUMN memo TEXT;
+ALTER TABLE students ADD COLUMN guardian_name TEXT;
+ALTER TABLE students ADD COLUMN guardian_relation TEXT;

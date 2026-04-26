@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * Cloudflare Worker 통합 API 엔진 - QR 3차 (check-init 통합본)
+ * Cloudflare Worker 통합 API 엔진 - QR 3차 (check-init 통합본) + 4H 학생기록/상담 확장
  */
 
 const headers = {
@@ -61,20 +61,19 @@ export default {
           }), { headers });
         }
 
-        // 2. 관리자용 초기 데이터 로드 (운영 관제센터 1.1 반영)
+        // 2. 관리자용 초기 데이터 로드 (운영 관제센터 1.1 + 4H 반영)
         if (resource === 'initial-data') {
-          const [stds, clss, map, att, hw, exs, wrs, attHis, hwHis] = await Promise.all([
+          const [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns] = await Promise.all([
             env.DB.prepare('SELECT * FROM students').all(),
             env.DB.prepare('SELECT * FROM classes').all(),
             env.DB.prepare('SELECT * FROM class_students').all(),
-            // 오늘 데이터 (KST 기준)
             env.DB.prepare("SELECT * FROM attendance WHERE date = DATE('now', '+9 hours')").all(),
             env.DB.prepare("SELECT * FROM homework WHERE date = DATE('now', '+9 hours')").all(),
             env.DB.prepare('SELECT * FROM exam_sessions ORDER BY exam_date DESC LIMIT 100').all(),
             env.DB.prepare('SELECT * FROM wrong_answers').all(),
-            // 최근 14일 이력 (운영 관제센터 누적 위험도 계산용)
             env.DB.prepare("SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 500").all(),
-            env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 500").all()
+            env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 500").all(),
+            env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC').all()
           ]);
 
           return new Response(JSON.stringify({
@@ -86,7 +85,8 @@ export default {
             exam_sessions: exs.results,
             wrong_answers: wrs.results,
             attendance_history: attHis.results,
-            homework_history: hwHis.results
+            homework_history: hwHis.results,
+            consultations: cns.results
           }), { headers });
         }
 
@@ -133,15 +133,15 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // 5. 학생 관리 (CUD)
+        // 5. 학생 관리 (CUD + 4H 인적사항 확장)
         if (resource === 'students' && method === 'POST') {
           const data = await request.json();
           const sid = `s_${Date.now()}`;
           const stmts = [
             env.DB.prepare(`
-              INSERT INTO students (id, name, school_name, grade, status, created_at, updated_at)
-              VALUES (?, ?, ?, ?, '재원', DATETIME('now'), DATETIME('now'))
-            `).bind(sid, data.name, data.school_name, data.grade)
+              INSERT INTO students (id, name, school_name, grade, status, memo, guardian_name, guardian_relation, created_at, updated_at)
+              VALUES (?, ?, ?, ?, '재원', ?, ?, ?, DATETIME('now'), DATETIME('now'))
+            `).bind(sid, data.name, data.school_name, data.grade, data.memo || '', data.guardian_name || '', data.guardian_relation || '')
           ];
           if (data.class_id) {
             stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(data.class_id, sid));
@@ -156,10 +156,11 @@ export default {
             await env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
-          // 정보 수정
+          // 정보 수정 (4H 인적사항 포함)
           const data = await request.json();
           const stmts = [
-            env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, updated_at=DATETIME('now') WHERE id=?").bind(data.name, data.school_name, data.grade, id)
+            env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, memo=?, guardian_name=?, guardian_relation=?, updated_at=DATETIME('now') WHERE id=?")
+              .bind(data.name, data.school_name, data.grade, data.memo || '', data.guardian_name || '', data.guardian_relation || '', id)
           ];
           if (data.class_id !== undefined) {
             stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id));
@@ -222,7 +223,28 @@ export default {
           }
         }
 
-        // 8. AI 보고 문구 생성 (4D-1)
+        // 8. 4H: 상담 기록 관리
+        if (resource === 'consultations') {
+          if (method === 'POST') {
+            const data = await request.json();
+            const cid = `cns_${Date.now()}`;
+            await env.DB.prepare(`
+              INSERT INTO consultations (id, student_id, date, type, content, next_action)
+              VALUES (?, ?, ?, ?, ?, ?)
+            `).bind(cid, data.studentId, data.date, data.type, data.content, data.nextAction || '').run();
+            return new Response(JSON.stringify({ success: true, id: cid }), { headers });
+          }
+
+          if (method === 'GET') {
+            const studentId = url.searchParams.get('studentId');
+            if (studentId) {
+              const res = await env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC').bind(studentId).all();
+              return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
+            }
+          }
+        }
+
+        // 9. AI 보고 문구 생성 (4D-1)
         if (resource === 'ai' && path[2] === 'student-report' && method === 'POST') {
           const payload = await request.json();
           const { type, student, today: td } = payload;
