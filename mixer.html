@@ -236,9 +236,10 @@
                 <option value="low-first">난이도순 (하→상)</option>
             </select>
             <select id="print-qpp" class="form-select" style="height:40px; margin-bottom:10px;">
+                <option value="2">2문항/P</option>
                 <option value="4">4문항/P</option>
                 <option value="6">6문항/P</option>
-                <option value="1">1문항/P</option>
+                <option value="8">8문항/P</option>
             </select>
             <button class="btn-main" onclick="openMixedEngine()">시험지 생성</button>
         </div>
@@ -350,27 +351,6 @@ const MASTER_TABLE = {
     "H22-GE-06": { course: "기하", unit: "벡터의 성분", order: 6 },
     "H22-GE-07": { course: "기하", unit: "벡터의 내적", order: 7 },
     "H22-GE-08": { course: "기하", unit: "도형의 방정식", order: 8 }
-};
-
-const LEGACY_TO_KEY_MAP = {
-    "중1 수학::소인수분해": "M1-01", "중1 수학::정수와 유리수": "M1-02", "중1 수학::문자와 식": "M1-03", "중1 수학::좌표평면과 그래프": "M1-04",
-    "중1 수학::기본도형": "M1-05", "중1 수학::평면도형의 성질": "M1-06", "중1 수학::입체도형의 성질": "M1-07", "중1 수학::자료의 정리와 해석": "M1-08",
-    "중2 수학::유리수와 순환소수": "M2-01", "중2 수학::수와 식": "M2-01", "중2 수학::식의 계산": "M2-01", "중2 수학::일차부등식": "M2-02",
-    "중2 수학::연립일차방정식": "M2-03", "중2 수학::일차함수": "M2-04", "중2 수학::일차함수와 그래프": "M2-04", "중2 수학::도형의 성질": "M2-05",
-    "중2 수학::도형의 닮음": "M2-06", "중2 수학::피타고라스 정리": "M2-07", "중2 수학::확률": "M2-08", "중3 수학::실수와 그 계산": "M3-01",
-    "중3 수학::다항식의 곱셈과 인수분해": "M3-02", "중3 수학::이차방정식": "M3-03", "중3 수학::이차함수와 그래프": "M3-04", "중3 수학::삼각비": "M3-05",
-    "중3 수학::원의 성질": "M3-06", "중3 수학::통계": "M3-07",
-    "수학(상)::다항식의 연산": "H22-C-01", "수학(상)::항등식과 나머지 정리": "H22-C-02", "수학(상)::인수분해": "H22-C-03",
-    "수학(상)::복소수": "H22-C-04", "수학(상)::이차방정식": "H22-C-04", "수학(상)::이차방정식과 이차함수": "H22-C-05",
-    "수학(상)::여러 가지 방정식과 부등식": "H22-C-06", "수학(상)::평면좌표": "H22-C2-01", "수학(상)::직선의 방정식": "H22-C2-02",
-    "수학(상)::원의 방정식": "H22-C2-03", "수학(상)::도형의 이동": "H22-C2-04", "수학(하)::집합": "H22-C2-05",
-    "수학(하)::명제": "H22-C2-06", "수학(하)::함수": "H22-C2-07", "수학(하)::유리함수": "H22-C2-08", "수학(하)::무리함수": "H22-C2-09",
-    "수학(하)::순열과 조합": "H22-C-08", "수학Ⅰ::지수와 로그": "H22-A-01", "수학Ⅰ::지수함수": "H22-A-02", "수학Ⅰ::로그함수": "H22-A-03",
-    "수학Ⅰ::삼각함수": "H22-A-04", "수학Ⅰ::사인법칙과 코사인법칙": "H22-A-05", "수학Ⅰ::등차수열과 등비수열": "H22-A-06",
-    "수학Ⅰ::수열의 합": "H22-A-07", "수학Ⅰ::수학적 귀납법": "H22-A-08", "수학Ⅱ::함수의 극한": "H22-M1-01",
-    "수학Ⅱ::함수의 연속": "H22-M1-02", "수학Ⅱ::미분계수": "H22-M1-03", "수학Ⅱ::도함수": "H22-M1-04",
-    "수학Ⅱ::도함수의 활용": "H22-M1-05", "수학Ⅱ::부정적분": "H22-M1-06", "수학Ⅱ::정적분": "H22-M1-07",
-    "수학Ⅱ::정적분의 활용": "H22-M1-08"
 };
 
 function getStandardizedUnit(q) {
@@ -757,9 +737,10 @@ function openMixedEngine() {
         generatedAt: new Date().toISOString()
     };
 
-    localStorage.setItem('mixedQuestions', JSON.stringify(exportCart));
-    localStorage.setItem('mixedMeta', JSON.stringify(meta));
-    window.open(`mixed_engine.html?qpp=${document.getElementById('print-qpp').value}`, '_blank');
+    const sessionKey = 'mix_' + Date.now();
+    localStorage.setItem('mixedQuestions_' + sessionKey, JSON.stringify(exportCart));
+    localStorage.setItem('mixedMeta_' + sessionKey, JSON.stringify(meta));
+    window.open(`mixed_engine.html?qpp=${document.getElementById('print-qpp').value}&key=${sessionKey}`, '_blank');
 }
 </script>
 </body>

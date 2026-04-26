@@ -264,10 +264,36 @@ const QR_PATCH = {
 function buildQrTargetUrl() {
     const url = new URL(window.location.href);
     url.searchParams.set('mode', 'sol');
+    url.searchParams.set('qr', '1');
+    url.searchParams.set('key', AppState.key);
     if (!url.searchParams.has('qpp')) {
         url.searchParams.set('qpp', String(AppState.qpp || 4));
     }
     return url.toString();
+}
+
+function isQrSolutionMode() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('qr') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+function applyQrSolutionLockUI() {
+    if (!isQrSolutionMode()) return;
+    const btnExam = document.getElementById('btn-exam');
+    const btnAns = document.getElementById('btn-ans');
+    const btnSol = document.getElementById('btn-sol');
+    if (btnExam) btnExam.style.display = 'none';
+    if (btnAns) btnAns.style.display = 'none';
+    if (btnSol) {
+        btnSol.classList.add('active');
+        btnSol.style.pointerEvents = 'none';
+    }
+    const title = document.getElementById('ctrl-title');
+    if (title) title.textContent = 'JS아카이브 해설지';
 }
 
 function injectQrToLastExamPage(area) {
@@ -299,7 +325,7 @@ function injectQrToLastExamPage(area) {
     });
 }
 
-const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4 };
+const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '' };
 let pageCount = 0;
 
 /** [성역] wrapLatex */
@@ -442,8 +468,10 @@ function renderQuestionImageHTML(q) {
 
 /** UI Actions & Navigation */
 function switchMode(mode) {
+    if (isQrSolutionMode() && mode !== 'sol') return;
     const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
+    if (isQrSolutionMode()) url.searchParams.set('qr', '1');
     window.location.href = url.toString();
 }
 function changeQpp(val) {
@@ -468,7 +496,8 @@ function makePage(area, type, pNum) {
         page.appendChild(frame);
     }
 
-    if (pNum === 0 || pNum === 1) {
+    const showHeader = (type !== 'exam') || (pNum === 0 || pNum === 1);
+    if (showHeader) {
         const header = document.createElement('div');
         header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
         const title = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
@@ -500,7 +529,7 @@ function makePage(area, type, pNum) {
 
 /** [PASS] renderExam - Rulebook v1.9 + Image Field Synchronized */
 async function renderExam(area, data) {
-    const staging = document.getElementById('staging'); staging.innerHTML = '';
+    const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
 
     const items = data.map((q, i) => {
@@ -574,8 +603,9 @@ async function renderExam(area, data) {
         else if (lt === 'subjective-2up') { qType = 'subj2'; limit = 2; }
         else if (lt === 'subjective-4up') { qType = 'subj4'; limit = 4; }
 
-        const isSpecialType = (qType !== 'normal');
-        if (currentType !== null && currentType !== qType || activeChunk.length >= limit || (isSpecialType && currentPage.blocks.length > 0)) {
+        const isSpecialType = (qType === 'subj2' || qType === 'subj4' || qType === 'wide');
+        const prevWasSpecial = (currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide');
+        if ((currentType !== null && currentType !== qType) || (activeChunk.length >= limit) || ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)) {
             flushBlock();
             if (isSpecialType && currentPage.blocks.length > 0) { pages.push(currentPage); currentPage = { blocks: [], usedHeight: 0 }; }
             currentType = qType;
@@ -737,8 +767,9 @@ async function render() {
 
 async function init() {
     const p = new URLSearchParams(window.location.search);
-    const rawData = localStorage.getItem('mixedQuestions') || sessionStorage.getItem('mixedQuestions');
-    const rawMeta = localStorage.getItem('mixedMeta') || sessionStorage.getItem('mixedMeta');
+    AppState.key = p.get('key') || '';
+    const rawData = localStorage.getItem('mixedQuestions_' + AppState.key) || sessionStorage.getItem('mixedQuestions');
+    const rawMeta = localStorage.getItem('mixedMeta_' + AppState.key) || sessionStorage.getItem('mixedMeta');
 
     if (!rawData) { alert('데이터가 없습니다.'); return; }
 
@@ -764,6 +795,9 @@ async function init() {
     }
 
     AppState.mode = p.get('mode') || 'exam';
+    if (isQrSolutionMode()) AppState.mode = 'sol';
+    applyQrSolutionLockUI();
+    
     AppState.qpp = parseInt(p.get('qpp')) || AppState.meta.qpp || 4;
 
     const title = AppState.meta.customTitle || AppState.meta.title || 'JS아카이브 믹서 출제';
