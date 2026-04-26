@@ -629,12 +629,99 @@ def parse_rpm_filename(filename):
     }
 
 
+
+def parse_publisher_unit_type_filename(filename):
+    stem = os.path.splitext(filename)[0]
+    parts = stem.split('_')
+
+    # 예:
+    # 비상_대수_사인코사인법칙_고2_유형확인
+    # 비상_대수_삼각함수_중단원_고2_유형심화
+    # 비상_대수_지수로그함수_익힘책_고2_유형확인
+    if len(parts) < 5:
+        return None
+
+    publisher = parts[0].strip()
+    course_name = parts[1].strip()
+
+    # 현재 확인된 출판사형 파일만 안전하게 허용
+    if publisher not in ('비상',):
+        return None
+
+    grade_idx = -1
+    grade_pattern = re.compile(r'^[중고][123]$')
+
+    for i, p in enumerate(parts):
+        if grade_pattern.fullmatch(p.strip()):
+            grade_idx = i
+            break
+
+    if grade_idx == -1:
+        return None
+
+    if grade_idx < 3:
+        return None
+
+    grade = normalize_grade(parts[grade_idx].strip())
+
+    tail_parts = parts[grade_idx + 1:]
+    tail = '_'.join(tail_parts).strip()
+
+    if not tail:
+        return None
+
+    if '유형확인' in tail or '확인' in tail:
+        content_type = '유형'
+        type_suffix = '유형확인'
+    elif '유형심화' in tail or '심화' in tail:
+        content_type = '유형'
+        type_suffix = '유형심화'
+    elif '단원평가' in tail:
+        content_type = '단원평가'
+        type_suffix = '단원평가'
+    elif '쪽지' in tail:
+        content_type = '쪽지'
+        type_suffix = '쪽지'
+    else:
+        return None
+
+    middle_parts = parts[2:grade_idx]
+
+    unit_topic = middle_parts[0].strip() if middle_parts else ''
+    source_scope = '_'.join(middle_parts[1:]).strip('_') if len(middle_parts) >= 2 else ''
+
+    topic_parts = []
+    if publisher:
+        topic_parts.append(publisher)
+    if unit_topic:
+        topic_parts.append(unit_topic)
+    if source_scope:
+        topic_parts.append(source_scope)
+    if type_suffix:
+        topic_parts.append(type_suffix)
+
+    topic = '_'.join(topic_parts)
+
+    return {
+        "file": filename,
+        "school": publisher,
+        "topic": topic,
+        "grade": grade,
+        "year": "",
+        "semester": "",
+        "examType": "",
+        "subject": course_name,
+        "contentType": content_type,
+    }
+
+
 def parse_filename_upgraded(filename):
     for parser in (
         parse_eval_type_filename,
         parse_unit_type_filename,
         parse_apmath_legacy_filename,
         parse_rpm_filename,
+        parse_publisher_unit_type_filename,
         parse_standard_exam_filename,
     ):
         meta = parser(filename)
