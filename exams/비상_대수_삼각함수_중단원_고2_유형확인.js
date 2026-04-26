@@ -1,4 +1,5 @@
-window.examTitle_Check = "비상대수삼각함수1_고2_유형변형";
+window.examTitle = "비상_대수_삼각함수_중단원_고2_유형확인";
+
 window.questionBank = [
   {
     id: 1,
@@ -13,14 +14,14 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: "$\\pi < \\theta < \\frac{3}{2}\\pi$이고 각 $\\theta$와 각 $4\\theta$를 나타내는 두 동경이 일직선 위에 있고 방향이 반대일 때, 각 $\\theta$의 크기를 구하시오.",
+    content: "$\\pi < \\theta < \\frac{3}{2}\\pi$이고 각 $\\theta$와 각 $7\\theta$를 나타내는 두 동경이 일직선 위에 있고 방향이 반대일 때, 각 $\\theta$의 크기를 구하시오.",
     choices: [],
     answer: "$\\frac{7}{6}\\pi$",
-    solution: ""
+    solution: "[키포인트] 두 동경이 일직선 위에 있고 방향이 반대이면 두 각의 차는 홀수배의 $\\pi$이다.\\n조건 정리: 각 $\\theta$와 각 $7\\theta$의 차는 $6\\theta$이고, 방향이 반대이므로 $6\\theta=(2k+1)\\pi$이다.\\n풀이 방향: 주어진 범위 $\\pi<\\theta<\\frac32\\pi$를 만족하는 값을 찾는다.\\n정석 풀이: $6\\theta=(2k+1)\pi$이므로 $\\theta=\\dfrac{2k+1}{6}\\pi$이다.\\n범위 조건에 대입하면 $\\pi<\\dfrac{2k+1}{6}\\pi<\\dfrac32\\pi$이므로 $6<2k+1<9$이다.\\n이 범위에 있는 홀수는 $7$뿐이므로 $2k+1=7$이다.\\n따라서 $\\theta=\\dfrac76\pi$이다.\\n따라서 구하는 값은 $\\frac{7}{6}\\pi$이다."
   },
   {
     id: 2,
-    level: "중하",
+    level: "하",
     category: "삼각함수",
     originalCategory: "삼각함수",
     standardCourse: "대수",
@@ -33,12 +34,12 @@ window.questionBank = [
     wide: false,
     content: "둘레의 길이가 $16$인 부채꼴 중에서 넓이가 최대인 부채꼴의 호의 길이를 구하시오.",
     choices: [],
-    answer: "8",
+    answer: "$8$",
     solution: "[키포인트] 부채꼴의 둘레가 일정할 때 넓이의 최댓값은 이차함수를 이용하여 구한다.\\n조건 정리: 부채꼴의 반지름을 $r$, 호의 길이를 $l$이라 하면 둘레는 $2r + l = 16$이다.\\n풀이 방향: 넓이 $S = \\frac{1}{2}rl$에 $l = 16 - 2r$을 대입하여 이차함수의 최댓값을 구한다.\\n정석 풀이: $2r + l = 16$에서 $l = 16 - 2r$이다. ($r>0, l>0$이므로 $0 < r < 8$)\\n넓이 $S = \\frac{1}{2}r(16 - 2r) = -r^2 + 8r = -(r-4)^2 + 16$이다.\\n$r=4$일 때 넓이가 최대가 되며, 이때 호의 길이는 $l = 16 - 2(4) = 8$이다.\\n따라서 구하는 값은 $8$이다."
   },
   {
     id: 3,
-    level: "중하",
+    level: "하",
     category: "삼각함수",
     originalCategory: "삼각함수",
     standardCourse: "대수",
@@ -92,7 +93,7 @@ window.questionBank = [
   },
   {
     id: 6,
-    level: "중하",
+    level: "하",
     category: "삼각함수",
     originalCategory: "삼각함수",
     standardCourse: "대수",
@@ -105,8 +106,8 @@ window.questionBank = [
     wide: false,
     content: "다음 함수의 주기와 최댓값, 최솟값을 각각 구하시오.\\n(1) $y = 3 \\cos\\left(\\frac{x}{2} + \\frac{\\pi}{6}\\right) + 1$\\n(2) $y = -\\frac{1}{2} \\sin 3\\left(x - \\frac{\\pi}{4}\\right) - 2$",
     choices: [],
-    answer: "(1) 주기: $4\\pi$, 최댓값: $4$, 최솟값: $-2$ (2) 주기: $\\frac{2}{3}\\pi$, 최댓값: $-\\frac{3}{2}$, 최솟값: $-\\frac{5}{2}$",
-    solution: "[키포인트] 삼각함수 $y=a\\cos(bx+c)+d$의 주기는 $\\frac{2\\pi}{|b|}$, 최댓값은 $|a|+d$, 최솟값은 $-|a|+d$이다.\\n조건 정리: 각 삼각함수의 계수를 파악한다.\\n풀이 방향: 공식을 이용하여 주기, 최댓값, 최솟값을 각각 계산한다.\\n정석 풀이: (1) $y = 3 \\cos\\left(\\frac{1}{2}x + \\frac{\\pi}{6}\\right) + 1$에서 $a=3, b=\\frac{1}{2}, d=1$이다.\\n주기는 $\\frac{2\\pi}{1/2} = 4\\pi$, 최댓값은 $|3|+1=4$, 최솟값은 $-|3|+1=-2$이다.\\n(2) $y = -\\frac{1}{2} \\sin 3\\left(x - \\frac{\\pi}{4}\\right) - 2$에서 $a=-\\frac{1}{2}, b=3, d=-2$이다.\\n주기는 $\\frac{2\\pi}{3}$, 최댓값은 $\\left|-\\frac{1}{2}\\right|-2 = -\\frac{3}{2}$, 최솟값은 $-\\left|-\\frac{1}{2}\\right|-2 = -\\frac{5}{2}$이다.\\n따라서 구하는 값은 (1) 주기: $4\\pi$, 최댓값: $4$, 최솟값: $-2$ (2) 주기: $\\frac{2}{3}\\pi$, 최댓값: $-\\frac{3}{2}$, 최솟값: $-\\frac{5}{2}$이다."
+    answer: "(1) 주기: $4\\pi$, 최댓값: $4$, 최솟값: $-2$ (2) 주기: $\\frac{2\\pi}{3}$, 최댓값: $-\\frac{3}{2}$, 최솟값: $-\\frac{5}{2}$",
+    solution: "[키포인트] 삼각함수 $y=a\\cos(bx+c)+d$의 주기는 $\\frac{2\\pi}{|b|}$, 최댓값은 $|a|+d$, 최솟값은 $-|a|+d$이다.\\n조건 정리: 각 삼각함수의 계수를 파악한다.\\n풀이 방향: 공식을 이용하여 주기, 최댓값, 최솟값을 각각 계산한다.\\n정석 풀이: (1) $y = 3 \\cos\\left(\\frac{1}{2}x + \\frac{\\pi}{6}\\right) + 1$에서 $a=3, b=\\frac{1}{2}, d=1$이다.\\n주기는 $\\frac{2\\pi}{1/2} = 4\\pi$, 최댓값은 $|3|+1=4$, 최솟값은 $-|3|+1=-2$이다.\\n(2) $y = -\\frac{1}{2} \\sin 3\\left(x - \\frac{\\pi}{4}\\right) - 2$에서 $a=-\\frac{1}{2}, b=3, d=-2$이다.\\n주기는 $\\frac{2\\pi}{3}$, 최댓값은 $\\left|-\\frac{1}{2}\\right|-2 = -\\frac{3}{2}$, 최솟값은 $-\\left|-\\frac{1}{2}\\right|-2 = -\\frac{5}{2}$이다.\\n따라서 구하는 값은 (1) 주기: $4\\pi$, 최댓값: $4$, 최솟값: $-2$ (2) 주기: $\\frac{2\\pi}{3}$, 최댓값: $-\\frac{3}{2}$, 최솟값: $-\\frac{5}{2}$이다."
   },
   {
     id: 7,
@@ -128,7 +129,7 @@ window.questionBank = [
   },
   {
     id: 8,
-    level: "중하",
+    level: "하",
     category: "삼각함수",
     originalCategory: "삼각함수",
     standardCourse: "대수",
@@ -177,12 +178,12 @@ window.questionBank = [
     wide: false,
     content: "$0 \\le x < 1$일 때, 방정식 $\\cos 2\\pi x = \\frac{1}{4}$의 모든 해의 합을 구하시오.",
     choices: [],
-    answer: "1",
+    answer: "$1$",
     solution: "[키포인트] 삼각방정식의 해의 합은 그래프의 대칭성을 활용하여 구한다.\\n조건 정리: $0 \\le x < 1$에서 $\\cos 2\\pi x = \\frac{1}{4}$의 모든 해의 합\\n풀이 방향: 주기를 구하고, 두 실근이 어느 $x$값을 기준으로 대칭인지 파악한다.\\n정석 풀이: 함수 $y = \\cos 2\\pi x$의 주기는 $\\frac{2\\pi}{2\\pi} = 1$이다.\\n$0 \\le x < 1$ 범위에서 이 함수의 그래프는 $x = \\frac{1}{2}$에 대하여 선대칭이다.\\n직선 $y = \\frac{1}{4}$과 만나는 두 교점의 $x$좌표를 각각 $\\alpha, \\beta$라 하면, 두 근은 대칭성에 의해 $\\frac{\\alpha + \\beta}{2} = \\frac{1}{2}$를 만족한다.\\n양변에 $2$를 곱하면 $\\alpha + \\beta = 1$이다.\\n따라서 구하는 값은 $1$이다."
   },
   {
     id: 11,
-    level: "중상",
+    level: "상",
     category: "삼각함수",
     originalCategory: "삼각함수",
     standardCourse: "대수",
@@ -195,7 +196,7 @@ window.questionBank = [
     wide: false,
     content: "모든 실수 $x$에 대하여 부등식 $\\cos^2 x - 3 \\cos x + a - 1 \\ge 0$이 항상 성립하도록 하는 실수 $a$의 최솟값을 구하시오.",
     choices: [],
-    answer: "3",
+    answer: "$3$",
     solution: "[키포인트] 삼각함수를 치환하여 제한된 범위에서 이차부등식이 항상 성립할 조건을 찾는다.\\n조건 정리: $\\cos^2 x - 3 \\cos x + a - 1 \\ge 0$이 모든 실수 $x$에 대해 성립해야 한다.\\n풀이 방향: $\\cos x = t$로 치환하고 $t$의 범위 안에서 이차함수의 최솟값이 $0$ 이상임을 이용한다.\\n정석 풀이: $\\cos x = t$라 하면 모든 실수 $x$에 대하여 $-1 \\le t \\le 1$이다.\\n주어진 부등식은 $t^2 - 3t + a - 1 \\ge 0$으로 바뀐다.\\n$f(t) = t^2 - 3t + a - 1 = \\left(t - \\frac{3}{2}\\right)^2 + a - \\frac{13}{4}$라 하자.\\n이차함수 $f(t)$의 대칭축은 $t = \\frac{3}{2}$이므로, 주어진 구간 $-1 \\le t \\le 1$에서 $f(t)$는 감소한다.\\n따라서 구간 내에서의 최솟값은 $t=1$일 때 발생한다.\\n$f(1) = 1 - 3 + a - 1 = a - 3$이다.\\n조건을 만족하려면 최솟값이 $0$ 이상이어야 하므로 $a - 3 \\ge 0$, 즉 $a \\ge 3$이다.\\n따라서 실수 $a$의 최솟값은 $3$이다.\\n따라서 구하는 값은 $3$이다."
   },
   {
@@ -213,12 +214,12 @@ window.questionBank = [
     wide: false,
     content: "함수 $y = 3 \\sin\\left(\\frac{\\pi}{4} x\\right)$의 그래프가 직선 $y = \\frac{3}{2}$과 만나는 두 점을 $A, B$라 하자. 점 $O$가 원점일 때, 삼각형 $OAB$의 넓이를 구하시오. (단, 점 $A$의 $x$좌표가 점 $B$의 $x$좌표보다 작고, $0 \\le x \\le 4$이다.)",
     choices: [],
-    answer: "2",
+    answer: "$2$",
     solution: "[키포인트] 삼각방정식을 풀어 교점의 좌표를 찾고 삼각형의 밑변과 높이를 구한다.\\n조건 정리: 함수 $y = 3 \\sin\\left(\\frac{\\pi}{4} x\\right)$와 직선 $y = \\frac{3}{2}$의 교점, $0 \\le x \\le 4$\\n풀이 방향: $y$값에 $\\frac{3}{2}$를 대입하여 $x$좌표를 구한 후, 선분 $AB$를 밑변으로 하는 삼각형의 넓이를 계산한다.\\n정석 풀이: $3 \\sin\\left(\\frac{\\pi}{4} x\\right) = \\frac{3}{2}$에서 $\\sin\\left(\\frac{\\pi}{4} x\\right) = \\frac{1}{2}$이다.\\n$0 \\le x \\le 4$에서 $0 \\le \\frac{\\pi}{4} x \\le \\pi$이므로 $\\frac{\\pi}{4} x = \\frac{\\pi}{6}$ 또는 $\\frac{5\\pi}{6}$이다.\\n따라서 $x = \\frac{2}{3}$ 또는 $x = \\frac{10}{3}$이다.\\n점 $A$와 $B$의 좌표는 각각 $A\\left(\\frac{2}{3}, \\frac{3}{2}\\right)$, $B\\left(\\frac{10}{3}, \\frac{3}{2}\\right)$이다.\\n삼각형 $OAB$의 밑변의 길이는 $\\frac{10}{3} - \\frac{2}{3} = \\frac{8}{3}$이고, 높이는 교점의 $y$좌표인 $\\frac{3}{2}$이다.\\n넓이 $S = \\frac{1}{2} \\times \\frac{8}{3} \\times \\frac{3}{2} = 2$이다.\\n따라서 구하는 값은 $2$이다."
   },
   {
     id: 13,
-    level: "중상",
+    level: "상",
     category: "삼각함수",
     originalCategory: "삼각함수",
     standardCourse: "대수",
@@ -247,7 +248,7 @@ window.questionBank = [
     layoutTag: "grid",
     tags: [],
     wide: false,
-    content: "$0 < x < \\frac{\\pi}{4}$인 모든 실수 $x$에 대하여 다음 중 옳은 것만을 <보기>에서 있는 대로 고른 것은?\\n<br>\\n[보기]\\nㄱ. $\\sin x < \\cos x$\\nㄴ. $(\\frac{1}{2})^{\\sin x} < (\\frac{1}{2})^{\\cos x}$\\nㄷ. $\\log_2(\\tan x) < 0$",
+    content: "$0 < x < \\frac{\\pi}{4}$인 모든 실수 $x$에 대하여 다음 중 옳은 것만을 [보기]에서 있는 대로 고른 것은?\\n<br>\\n[보기]\\nㄱ. $\\sin x < \\cos x$\\nㄴ. $(\\frac{1}{2})^{\\sin x} < (\\frac{1}{2})^{\\cos x}$\\nㄷ. $\\log_2(\\tan x) < 0$",
     choices: ["ㄱ", "ㄴ", "ㄱ, ㄷ", "ㄴ, ㄷ", "ㄱ, ㄴ, ㄷ"],
     answer: "③",
     solution: "[키포인트] 주어진 범위에서 $\\sin x, \\cos x, \\tan x$의 대소 관계를 비교하고 지수·로그함수의 성질을 이용한다.\\n조건 정리: $0 < x < \\frac{\\pi}{4}$\\n풀이 방향: 기본 삼각함수의 그래프를 그려 값의 범위를 찾고 ㄱ, ㄴ, ㄷ의 참거짓을 판별한다.\\n정석 풀이: $0 < x < \\frac{\\pi}{4}$의 범위에서 $\\sin x$의 값은 $0$에서 $\\frac{\\sqrt{2}}{2}$로 증가하고, $\\cos x$의 값은 $1$에서 $\\frac{\\sqrt{2}}{2}$로 감소하므로 항상 $\\sin x < \\cos x$이다.\\n또한 $\\tan x$의 값은 $0$에서 $1$ 사이이다.\\nㄱ. $\\sin x < \\cos x$이므로 참이다.\\nㄴ. 밑이 $\\frac{1}{2}$로 $1$보다 작으므로 지수함수는 감소함수이다. 따라서 지수가 더 큰 쪽의 함숫값이 작아진다. $\\sin x < \\cos x$이므로 $\\left(\\frac{1}{2}\\right)^{\\sin x} > \\left(\\frac{1}{2}\\right)^{\\cos x}$이다. (거짓)\\nㄷ. $0 < \\tan x < 1$이고 로그의 밑이 $2$로 $1$보다 크므로 $\\log_2(\\tan x) < \\log_2 1 = 0$이다. (참)\\n따라서 옳은 것은 ㄱ, ㄷ이다.\\n따라서 정답은 ③이다."

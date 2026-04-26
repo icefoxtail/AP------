@@ -1,4 +1,4 @@
-window.examTitle = "비상대수삼각함수대단원_고2_유형변형";
+window.examTitle = "비상_대수_삼각함수_대단원_고2_유형변형";
 
 window.questionBank = [
   {
