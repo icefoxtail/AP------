@@ -1,39 +1,49 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
- * 대시보드 계산, 렌더링 및 오늘 마감 운영 로직
+ * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진
  */
 
-function openTodayExamSetModal() {
-    const cfg = getTodayExamConfig();
-    showModal('⚙️ 오늘 시험 설정', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <p style="margin:0; font-size:13px; color:var(--secondary);">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</p>
-            <div style="display:flex; gap:4px; flex-wrap:wrap; margin:6px 0;">
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button>
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button>
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button>
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button>
+/**
+ * ⚙️ 운영 메뉴 모달 오픈 (4G)
+ */
+function openOperationMenu() {
+    const isOnline = navigator.onLine;
+    const qLen = syncQueue.length;
+    const syncStatusText = qLen > 0 ? `⚠️ 대기 중 ${qLen}건` : "✅ 대기 없음";
+    const onlineStatusText = isOnline ? "🟢 온라인" : "🔴 오프라인";
+
+    showModal('⚙️ 학원 운영 관리', `
+        <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="padding-bottom:16px; border-bottom:1px solid var(--border);">
+                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">학생 관리</label>
+                <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openDischargedStudents();">
+                    🗄️ 퇴원생 목록 조회 / 복구
+                </button>
             </div>
-            <input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%;">
-            <input id="set-exam-q" type="number" class="btn" placeholder="문항 수" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%;">
-            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
-                <button class="btn btn-primary" style="flex:1; min-width:120px; padding:12px;" onclick="handleSetTodayExam()">저장 및 적용</button>
-                <button class="btn" style="flex:1; min-width:120px; padding:12px; color:var(--error); border-color:var(--error);" onclick="clearTodayExamConfig(); closeModal();">시험 없음 처리</button>
+
+            <div>
+                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">시스템 및 동기화 상태</label>
+                <div class="card" style="margin:0; padding:12px; background:#f8f9fa; border-style:dashed;">
+                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:8px;">
+                        <span>네트워크 상태:</span>
+                        <b style="color:${isOnline ? 'var(--success)' : 'var(--error)'}">${onlineStatusText}</b>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:12px;">
+                        <span>미전송 데이터:</span>
+                        <b style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}">${syncStatusText}</b>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%; font-size:12px; padding:8px;" onclick="processSyncQueue(); closeModal();">
+                        🔄 지금 동기화 시도
+                    </button>
+                </div>
             </div>
         </div>
     `);
 }
 
-function handleSetTodayExam() {
-    const t = document.getElementById('set-exam-title').value.trim();
-    const q = parseInt(document.getElementById('set-exam-q').value, 10) || 20;
-    if (!t) { toast('시험명을 입력하세요.', 'warn'); return; }
-    setTodayExamConfig(t, q);
-    toast('오늘 시험이 설정되었습니다.', 'info');
-    closeModal();
-    renderDashboard();
-}
-
+/**
+ * 대시보드 데이터 계산 엔진
+ */
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
@@ -115,6 +125,9 @@ function computeDashboardData() {
     };
 }
 
+/**
+ * 학급 요약 카드 렌더링
+ */
 function renderClassSummaryCard(cls, data, todayExam) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
     const today = new Date().toLocaleDateString('sv-SE');
@@ -150,6 +163,9 @@ function renderClassSummaryCard(cls, data, todayExam) {
     `;
 }
 
+/**
+ * 대시보드 메인 렌더링 (4G)
+ */
 function renderDashboard() {
     state.ui.currentClassId = null;
     const data = computeDashboardData();
@@ -168,7 +184,7 @@ function renderDashboard() {
                 ${examBadge}
             </div>
             <div style="display:flex; gap:6px;">
-                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openTodayExamSetModal()">⚙️ 설정</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openOperationMenu()">⚙️ 운영</button>
                 <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;" onclick="copyAcademySummary()">📋 요약 복사</button>
             </div>
         </div>
@@ -238,16 +254,14 @@ function renderDashboard() {
         prioSec = `<div style="text-align:center; padding:20px; opacity:0.5; font-size:13px;">✅ 현재 집중 확인이 필요한 학생이 없습니다.</div>`;
     }
 
-    const dischargedLink = `
-        <div style="text-align:center; margin-top:20px; padding-bottom:20px;">
-            <button class="btn" style="font-size:12px; border:none; background:transparent; color:var(--secondary); padding:10px 14px; border-radius:10px;" onclick="openDischargedStudents()">🗄️ 퇴원생 목록 조회</button>
-        </div>
-    `;
-
-    root.innerHTML = academyStatus + closeBanner + classStatus + prioSec + dischargedLink;
+    // 4G: 대시보드 하단 퇴원생 링크 제거 상태 유지
+    root.innerHTML = academyStatus + closeBanner + classStatus + prioSec;
     document.getElementById('scope-text').innerText = state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
 
+/**
+ * 위험 관리 유틸리티
+ */
 function getMutedRisks() { return JSON.parse(localStorage.getItem(RISK_MUTE_KEY) || '{}'); }
 function saveMutedRisks(data) { localStorage.setItem(RISK_MUTE_KEY, JSON.stringify(data)); }
 
@@ -273,6 +287,9 @@ function isRiskMuted(sid) {
     return diff >= 0 && diff < RISK_MUTE_DAYS;
 }
 
+/**
+ * 오늘 마감 데이터 계산
+ */
 function computeTodayCloseData(todayExam = getTodayExamConfig()) {
     const today = new Date().toLocaleDateString('sv-SE');
     const active = state.db.students.filter(s => s.status === '재원');
@@ -308,6 +325,9 @@ function computeTodayCloseData(todayExam = getTodayExamConfig()) {
     };
 }
 
+/**
+ * 퀵 액션: 출결 토글
+ */
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
@@ -316,6 +336,9 @@ async function quickToggleAtt(sid, status, tab = 'att') {
     openTodayCloseModal(tab);
 }
 
+/**
+ * 퀵 액션: 숙제 토글
+ */
 async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
@@ -324,6 +347,9 @@ async function quickToggleHw(sid, status, tab = 'hw') {
     openTodayCloseModal(tab);
 }
 
+/**
+ * 운영 요약 텍스트 빌드
+ */
 function buildAcademySummary() {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = getTodayExamConfig();
@@ -344,11 +370,17 @@ function buildAcademySummary() {
     return text;
 }
 
+/**
+ * 운영 요약 복사
+ */
 function copyAcademySummary() {
     const text = buildAcademySummary();
     navigator.clipboard.writeText(text).then(() => toast('운영 요약이 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
 }
 
+/**
+ * 오늘 마감 상세 모달
+ */
 function openTodayCloseModal(tab = 'att') {
     const todayExam = getTodayExamConfig();
     const d = computeTodayCloseData(todayExam);
@@ -399,4 +431,41 @@ function openTodayCloseModal(tab = 'att') {
         : `<div style="padding:32px 16px; text-align:center; color:var(--success); font-weight:700; font-size:14px;">${cur.emptyMsg}</div>`;
 
     showModal('📋 오늘 마감 상세', `<div style="display:flex; gap:6px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
+}
+
+/**
+ * 오늘 시험 설정 모달 (복구)
+ */
+function openTodayExamSetModal() {
+    const cfg = getTodayExamConfig();
+    showModal('⚙️ 오늘 시험 설정', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <p style="margin:0; font-size:13px; color:var(--secondary);">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</p>
+            <div style="display:flex; gap:4px; flex-wrap:wrap; margin:6px 0;">
+                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button>
+                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button>
+                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button>
+                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button>
+            </div>
+            <input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%;">
+            <input id="set-exam-q" type="number" class="btn" placeholder="문항 수" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%;">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+                <button class="btn btn-primary" style="flex:1; min-width:120px; padding:12px;" onclick="handleSetTodayExam()">저장 및 적용</button>
+                <button class="btn" style="flex:1; min-width:120px; padding:12px; color:var(--error); border-color:var(--error);" onclick="clearTodayExamConfig(); closeModal();">시험 없음 처리</button>
+            </div>
+        </div>
+    `);
+}
+
+/**
+ * 오늘 시험 설정 저장 (복구)
+ */
+function handleSetTodayExam() {
+    const t = document.getElementById('set-exam-title').value.trim();
+    const q = parseInt(document.getElementById('set-exam-q').value, 10) || 20;
+    if (!t) { toast('시험명을 입력하세요.', 'warn'); return; }
+    setTodayExamConfig(t, q);
+    toast('오늘 시험이 설정되었습니다.', 'info');
+    closeModal();
+    renderDashboard();
 }

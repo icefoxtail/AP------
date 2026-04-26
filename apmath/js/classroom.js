@@ -4,7 +4,7 @@
  */
 
 /**
- * 개별 학급 관리 화면 렌더링 (4E 원본 구조 복구)
+ * 개별 학급 관리 화면 렌더링 (4G: 버튼 스타일 속성 중복 해결 및 시각화 개선)
  */
 function renderClass(cid) {
     state.ui.currentClassId = cid;
@@ -57,6 +57,21 @@ function renderClass(cid) {
     listRoot.innerHTML = stds.map(s => {
         const att = state.db.attendance.find(a => a.student_id===s.id && a.date===today);
         const hw = state.db.homework.find(h => h.student_id===s.id && h.date===today);
+        
+        // 출결 상태 스타일 통합 (4G)
+        const attStatus = att?.status || '미정';
+        const attClass = attStatus === '등원' ? 'btn-primary' : '';
+        const attStyleStr = attStatus === '결석' 
+            ? 'border-color:var(--error); color:var(--error); font-weight:700;' 
+            : '';
+
+        // 숙제 상태 스타일 통합 (4G)
+        const hwStatus = hw?.status || '미완료';
+        const hwClass = hwStatus === '완료' ? 'btn-primary' : '';
+        const hwStyleStr = hwStatus === '미완료' 
+            ? 'border-color:var(--warning); color:var(--warning); font-weight:700;' 
+            : '';
+
         const sExams = examsByStudent.get(s.id) || [];
         let wc = 0;
         if (sExams.length > 0) {
@@ -68,8 +83,8 @@ function renderClass(cid) {
             <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer; font-weight:800; color:var(--primary);">${s.name} ${wc>0?`<span style="display:inline-block; background:#fce8e6; color:#d93025; border-radius:20px; padding:1px 8px; font-size:10px; font-weight:700; margin-left:4px;">🔴 오답 ${wc}</span>`:''}</td>
             <td>${s.school_name}</td>
             <td style="text-align:right; white-space:nowrap;">
-                <button class="btn ${att?.status==='등원'?'btn-primary':''}" style="padding:4px 8px; font-size:11px;" onclick="toggleAtt('${s.id}')">${att?.status||'미정'}</button>
-                <button class="btn ${hw?.status==='완료'?'btn-primary':''}" style="padding:4px 8px; font-size:11px;" onclick="toggleHw('${s.id}')">${hw?.status||'미완료'}</button>
+                <button class="btn ${attClass}" style="padding:4px 8px; font-size:11px; ${attStyleStr}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
+                <button class="btn ${hwClass}" style="padding:4px 8px; font-size:11px; ${hwStyleStr}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
                 <button class="btn btn-primary" style="padding:4px 8px; font-size:11px;" onclick="openOMR('${s.id}')">성적</button>
             </td>
         </tr>`;
@@ -148,7 +163,7 @@ function renderAttendanceLedger() {
 }
 
 /**
- * 출석부 테이블 렌더링
+ * 출석부 테이블 렌더링 (4G: 버튼 스타일 속성 중복 해결 및 상태 표시 개선)
  */
 function renderLedgerTable() {
     const attModeBtn = document.getElementById('ledger-mode-att');
@@ -174,8 +189,18 @@ function renderLedgerTable() {
     const rows = stds.map(s => {
         const rec = records.find(r => r.student_id === s.id && (!r.date || r.date === ledgerState.date));
         const status = isAtt ? (rec?.status || '미정') : (rec?.status || '미완료');
-        const isActive = isAtt ? status === '등원' : status === '완료';
-        return `<tr><td style="font-weight:700;">${s.name}</td><td>${s.school_name}</td><td style="text-align:right;"><button class="btn ${isActive ? 'btn-primary' : ''}" style="padding:6px 14px;font-size:13px;min-width:75px;" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button></td></tr>`;
+        
+        let btnClass = '';
+        let btnExtraStyle = '';
+        if (isAtt) {
+            if (status === '등원') btnClass = 'btn-primary';
+            else if (status === '결석') btnExtraStyle = 'border-color:var(--error); color:var(--error); font-weight:700;';
+        } else {
+            if (status === '완료') btnClass = 'btn-primary';
+            else if (status === '미완료') btnExtraStyle = 'border-color:var(--warning); color:var(--warning); font-weight:700;';
+        }
+
+        return `<tr><td style="font-weight:700;">${s.name}</td><td>${s.school_name}</td><td style="text-align:right;"><button class="btn ${btnClass}" style="padding:6px 14px;font-size:13px;min-width:75px;${btnExtraStyle}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button></td></tr>`;
     }).join('');
 
     document.getElementById('ledger-table-wrap').innerHTML = `
@@ -185,7 +210,7 @@ function renderLedgerTable() {
 }
 
 /**
- * 출결 일괄 처리
+ * 출결 일괄 처리 (로직 유지)
  */
 async function handleBulkAtt(status) {
     const cid = ledgerState.classId;
@@ -198,7 +223,7 @@ async function handleBulkAtt(status) {
 }
 
 /**
- * 숙제 일괄 처리
+ * 숙제 일괄 처리 (로직 유지)
  */
 async function handleBulkHw(status) {
     const cid = ledgerState.classId;

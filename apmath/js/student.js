@@ -4,7 +4,7 @@
  */
 
 /**
- * 학생 상세 정보 모달 렌더링
+ * 학생 상세 정보 모달 렌더링 (4G UX 반영: 퇴원 처리 버튼 위치 조정)
  */
 function renderStudentDetail(sid) {
     const s = state.db.students.find(st => st.id === sid);
@@ -38,17 +38,20 @@ function renderStudentDetail(sid) {
                 <p style="margin:0;">${s.school_name} | ${s.grade}</p>
                 <p style="margin:4px 0 0 0; font-size:13px; color:var(--secondary);">상태: <span style="color:var(--primary); font-weight:bold;">${s.status === '제적' ? '퇴원생' : '재원생'}</span></p>
             </div>
-            <button class="btn" style="font-size:11px; padding:4px 8px;" onclick="openEditStudent('${sid}')">정보 수정</button>
+            <div style="display:flex; gap:6px;">
+                <button class="btn" style="font-size:11px; padding:4px 8px;" onclick="openEditStudent('${sid}')">정보 수정</button>
+                ${s.status === '재원' ? `<button class="btn" style="font-size:11px; padding:4px 8px; color:var(--error); border-color:var(--border);" onclick="handleDelete('${sid}')">퇴원 처리</button>` : ''}
+            </div>
         </div>
         <h4>성적 및 오답 이력</h4>
         <table><thead><tr><th>날짜</th><th>시험명</th><th>점수</th><th>오답</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan="5">기록 없음</td></tr>'}</tbody></table>
         ${reportButtons}
-        ${s.status==='재원'?`<button class="btn" style="color:var(--error); border-color:var(--error); margin-top:20px; width:100%;" onclick="handleDelete('${sid}')">퇴원 처리</button>`:`<button class="btn btn-primary" style="margin-top:20px; width:100%;" onclick="handleRestore('${sid}')">재원 복구</button>`}
+        ${s.status === '제적' ? `<button class="btn btn-primary" style="margin-top:20px; width:100%;" onclick="handleRestore('${sid}')">재원 복구</button>` : ''}
     `);
 }
 
 /**
- * 학생 퇴원 처리
+ * 학생 퇴원 처리 (로직 유지)
  */
 async function handleDelete(sid) {
     if (confirm('퇴원 처리하시겠습니까?')) {
@@ -59,7 +62,7 @@ async function handleDelete(sid) {
 }
 
 /**
- * 학생 재원 복구
+ * 학생 재원 복구 (로직 유지)
  */
 async function handleRestore(sid) {
     if (confirm('재원으로 복구하시겠습니까?')) {
