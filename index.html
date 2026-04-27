@@ -585,8 +585,7 @@
         .card-actions {
             border-top: 1px solid var(--card-border);
             display: grid;
-            /* [5B-2] 변경: 3열 -> 4열로 확장 */
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             background: linear-gradient(180deg, #fcfdff 0%, #f9fbff 100%);
         }
 
@@ -658,43 +657,6 @@
             border: 1px solid rgba(226,232,240,0.9);
         }
 
-        /* [5B-2] 신규 추가: 반 선택 모달 전용 스타일 */
-        .class-select {
-            width: 100%;
-            height: 44px;
-            margin: 20px 0;
-            padding: 0 12px;
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
-            font-size: 14px;
-            font-weight: 600;
-            outline: none;
-            background: rgba(255,255,255,0.92);
-        }
-        .modal-btn-primary {
-            background: var(--blue-main);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-        }
-        .modal-btn-cancel {
-            background: #f1f5f9;
-            color: var(--text-sub);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 8px;
-        }
-
         .modal-title {
             font-size: 20px;
             font-weight: 800;
@@ -737,6 +699,36 @@
             box-shadow: 0 16px 26px rgba(37, 99, 235, 0.10);
         }
 
+        .modal-btn-primary {
+            background: var(--blue-main);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        .modal-btn-primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .modal-btn-cancel {
+            background: #f1f5f9;
+            color: var(--text-sub);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
+        }
+
         .modal-close-btn {
             border: none;
             background: none;
@@ -744,6 +736,19 @@
             cursor: pointer;
             font-weight: 700;
             font-size: 14px;
+        }
+
+        .class-select {
+            width: 100%;
+            height: 44px;
+            margin: 20px 0;
+            padding: 0 12px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            font-size: 14px;
+            font-weight: 600;
+            outline: none;
+            background: rgba(255,255,255,0.92);
         }
 
         @media (max-width: 768px) {
@@ -815,15 +820,23 @@
                 width: calc(100% - 28px);
                 padding: 30px 22px;
             }
-
-            /* [5B-2] 버튼이 4개로 늘어남에 따라 텍스트가 깨지지 않도록 모바일 사이즈 보정 */
-            .action-btn {
-                font-size: 11px;
-            }
         }
     </style>
 </head>
 <body>
+
+<div class="modal-overlay" id="examModeModal">
+    <div class="modal-box">
+        <div class="modal-title">시험지 출력 방식 선택</div>
+        <div class="modal-sub">원하시는 출력 형태를 선택하세요.</div>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+            <button class="modal-btn-primary" onclick="selectExamMode(false)">일반 시험지 출력</button>
+            <button class="modal-btn-primary" style="background: var(--navy);" onclick="selectExamMode(true)">AP 제출 QR 시험지 출력</button>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal()">취소</button>
+    </div>
+</div>
+
 <div class="modal-overlay" id="qppModal">
     <div class="modal-box">
         <div class="modal-title">시험지 출력 형식</div>
@@ -1294,7 +1307,6 @@ function buildCard(ex) {
         ].filter(Boolean).join('');
     }
 
-    /* [5B-2] 버튼 확장: QR출력 추가 */
     card.innerHTML = `
         <div class="card-top"></div>
         <div class="card-body">
@@ -1311,62 +1323,57 @@ function buildCard(ex) {
             <div class="action-btn" data-action="exam">시험</div>
             <div class="action-btn" data-action="sol">해설</div>
             <div class="action-btn" data-action="ans">정답</div>
-            <div class="action-btn" data-action="qr">QR출력</div>
         </div>
     `;
 
-    /* [5B-2] 버튼 클릭 분기 처리 */
     card.querySelectorAll('.action-btn').forEach(btn => {
         btn.onclick = (e) => {
             e.stopPropagation();
-            const action = btn.dataset.action;
-            if (action === 'qr') {
-                openQrEngine(ex.file);
-            } else {
-                openEngine(ex.file, action);
-            }
+            openEngine(ex.file, btn.dataset.action);
         };
     });
 
     return card;
 }
 
-/* [5B-2] 상태 변수 추가 및 핸들링 로직 */
+/* 상태 변수 */
 let _pendingFile, _pendingAction, _pendingSubmitQr = false, _pendingQpp;
 
 function openEngine(file, action) {
-    _pendingSubmitQr = false;
     if (action === 'exam') {
         _pendingFile = file;
         _pendingAction = action;
-        document.getElementById('qppModal').classList.add('open');
+        openExamModeModal();
     } else {
         const item = normalizedExams().find(e => e.file === file);
         if (item) goEngine(item, action, 4);
     }
 }
 
-function openQrEngine(file) {
-    _pendingSubmitQr = true;
-    _pendingFile = file;
-    _pendingAction = 'exam';
+function openExamModeModal() {
+    document.getElementById('examModeModal').classList.add('open');
+}
+
+function selectExamMode(withSubmitQr) {
+    _pendingSubmitQr = withSubmitQr;
+    document.getElementById('examModeModal').classList.remove('open');
     document.getElementById('qppModal').classList.add('open');
 }
 
 function confirmQpp(qpp) {
     closeModal();
     const item = normalizedExams().find(e => e.file === _pendingFile);
-    if (item) {
-        if (_pendingSubmitQr) {
-            _pendingQpp = qpp;
-            openClassSelectionModalForIndex(item, qpp);
-        } else {
-            goEngine(item, _pendingAction, qpp);
-        }
+    if (!item) return;
+
+    if (_pendingSubmitQr) {
+        _pendingQpp = qpp;
+        openClassSelectionModalForIndex(item, qpp);
+    } else {
+        goEngine(item, _pendingAction, qpp);
     }
 }
 
-/* [5B-2] 신규 추가: API 기반 학급 선택 모달 로직 */
+/* API 기반 학급 선택 모달 */
 async function openClassSelectionModalForIndex(item, qpp) {
     const overlay = document.getElementById('classModalOverlay');
     const body = document.getElementById('classModalBody');
@@ -1404,6 +1411,7 @@ async function openClassSelectionModalForIndex(item, qpp) {
 
 function closeModal() {
     document.getElementById('qppModal').classList.remove('open');
+    document.getElementById('examModeModal').classList.remove('open');
     const classModal = document.getElementById('classModalOverlay');
     if (classModal) classModal.classList.remove('open');
 }
@@ -1412,18 +1420,18 @@ function confirmClassSelectionForIndex() {
     const select = document.getElementById('index-class-select');
     if (!select) return;
     const selectedClassId = select.value;
-    closeModal(); // [Fix] closeClassModal() -> closeModal()
+    closeModal();
     
     const item = normalizedExams().find(e => e.file === _pendingFile);
     if (item) {
-        goEngine(item, _pendingAction, _pendingQpp, {
+        goEngine(item, "exam", _pendingQpp, {
             submitQr: true,
             classId: selectedClassId
         });
     }
 }
 
-/* [5B-2] 변경: goEngine 옵션 객체 지원 및 URLSearchParams 사용으로 파라미터 안전 바인딩 */
+/* engine.html 연동 */
 function goEngine(item, action, qpp, options = {}) {
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
     const title = `${baseTitle} ${item.subject || ''}`.trim();
