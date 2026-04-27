@@ -1,6 +1,6 @@
 /**
- * AP Math OS v26.1.2 [IRONCLAD - 5G Phase 3 FINAL]
- * Cloudflare Worker 통합 API 엔진 - 전방위 권한 방어 및 QR 전용 API 추가
+ * AP Math OS v26.1.2 [IRONCLAD - Phase 3-B1 FINAL REVISION]
+ * Cloudflare Worker 통합 API 엔진 - check-init archiveFile 파라미터 픽스
  */
 
 const headers = {
@@ -16,7 +16,7 @@ async function sha256hex(str) {
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-// Basic Auth 검증
+// Basic Auth 파싱 및 검증
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
   if (!auth.startsWith('Basic ')) return null;
@@ -98,7 +98,54 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // [5G-3] QR 출제용 반 목록 API (mixer 엔진용)
+        // --- 2. 학생용 QR 인증 및 초기화 (check-pin / check-init) ---
+        if (resource === 'check-pin' && method === 'POST') {
+          const { student_id, pin } = await request.json();
+          const student = await env.DB.prepare('SELECT student_pin FROM students WHERE id = ?').bind(student_id).first();
+          if (!student?.student_pin || student.student_pin === String(pin)) {
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+          return new Response(JSON.stringify({ success: false, message: 'PIN 번호가 일치하지 않습니다.' }), { status: 401, headers });
+        }
+
+        if (resource === 'check-init' && method === 'GET') {
+          const classId = url.searchParams.get('class');
+          const examTitle = url.searchParams.get('exam') || '';
+          const examDate = url.searchParams.get('date') || '';
+          const qCount = parseInt(url.searchParams.get('q')) || 0;
+          
+          // [5G Phase 3-B1 FIX] archiveFile 수신명 매칭
+          const archiveFile = 
+            url.searchParams.get('archiveFile') || 
+            url.searchParams.get('archive_file') || 
+            url.searchParams.get('archive') || 
+            '';
+
+          if (!classId) return new Response(JSON.stringify({ error: 'class required', students: [], submitted_sessions: [] }), { status: 400, headers });
+
+          const todayKST = new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString().split('T')[0];
+          const targetDate = examDate || todayKST;
+
+          const [clsInfo, stds, sessions] = await Promise.all([
+            env.DB.prepare('SELECT name FROM classes WHERE id = ?').bind(classId).first(),
+            env.DB.prepare("SELECT id, name, school_name, grade, student_pin FROM students WHERE id IN (SELECT student_id FROM class_students WHERE class_id = ?) AND status = '재원'").bind(classId).all(),
+            env.DB.prepare("SELECT id, student_id, exam_title, exam_date, score FROM exam_sessions WHERE exam_title = ? AND exam_date = ? AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(examTitle, targetDate, classId).all()
+          ]);
+
+          return new Response(JSON.stringify({ 
+            success: true,
+            class_id: classId, 
+            class_name: clsInfo?.name || '알 수 없는 반', 
+            exam_title: examTitle, 
+            exam_date: targetDate,
+            question_count: qCount,
+            archive_file: archiveFile,
+            students: stds.results, 
+            submitted_sessions: sessions.results 
+          }), { headers });
+        }
+
+        // --- 3. QR 출제용 반 목록 ---
         if (resource === 'qr-classes' && method === 'GET') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -119,7 +166,7 @@ export default {
           return new Response(JSON.stringify({ success: true, classes: res.results }), { headers });
         }
 
-        // --- 2. 초기 데이터 로드 (권한 필터링) ---
+        // --- 4. 메인 데이터 로드 (initial-data) ---
         if (resource === 'initial-data') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -172,7 +219,7 @@ export default {
           return new Response(JSON.stringify({ students: stds.results, classes: clss.results, class_students: map.results, attendance: att.results, homework: hw.results, exam_sessions: exs.results, wrong_answers: wrs.results, attendance_history: attHis.results, homework_history: hwHis.results, consultations: cns.results, operation_memos: opm.results, exam_schedules: exS.results }), { headers });
         }
 
-        // --- 3. 학생 관리 (보안 강화) ---
+        // --- 5. 학생 관리 (보안 강화) ---
         if (resource === 'students') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -211,6 +258,9 @@ export default {
               if (!(await canAccessClass(teacher, d.class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             }
             let pin = d.student_pin || await generateStudentPin(d.grade, env);
+            const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ?').bind(pin).first();
+            if (exist) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers });
+
             const sid = `s_${Date.now()}`;
             const stmts = [env.DB.prepare("INSERT INTO students (id, name, school_name, grade, status, memo, guardian_relation, student_phone, parent_phone, student_pin, created_at, updated_at) VALUES (?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(sid, d.name, d.school_name, d.grade, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', pin)];
             if (d.class_id) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.class_id, sid));
@@ -226,6 +276,10 @@ export default {
             if (d.class_id !== undefined && d.class_id) {
               if (!(await canAccessClass(teacher, d.class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             }
+            if (d.student_pin) {
+              const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ? AND id != ?').bind(d.student_pin, id).first();
+              if (exist) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers });
+            }
             const stmts = [env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, memo=?, guardian_relation=?, student_phone=?, parent_phone=?, student_pin=?, updated_at=DATETIME('now') WHERE id=?").bind(d.name, d.school_name, d.grade, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', d.student_pin || '', id)];
             if (d.class_id !== undefined) { stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id)); if (d.class_id) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.class_id, id)); }
             try { await env.DB.batch(stmts); return new Response(JSON.stringify({ success: true }), { headers }); }
@@ -239,7 +293,7 @@ export default {
           }
         }
 
-        // --- 4. 출결 및 숙제 ---
+        // --- 6. 출결 및 숙제 ---
         if (resource === 'attendance-history' && method === 'GET') {
           const date = url.searchParams.get('date') || new Date().toLocaleDateString('sv-SE');
           const [att, hw] = await Promise.all([env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(), env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()]);
@@ -264,7 +318,59 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // --- 5. 시험 세션 및 오답 ---
+        // --- 7. 시험 설계도 (Blueprints) [Phase 3-B1 신설] ---
+        if (resource === 'exam-blueprints') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          if (method === 'POST') {
+            const d = await request.json();
+            if (!d.archive_file) return new Response(JSON.stringify({ error: 'archive_file required' }), { status: 400, headers });
+            if (!Array.isArray(d.items)) return new Response(JSON.stringify({ error: 'items must be an array' }), { status: 400, headers });
+
+            const stmts = [];
+            for (const item of d.items) {
+              if (!item.question_no) continue;
+              
+              const src_archive_file = item.source_archive_file || d.archive_file;
+              const src_question_no = item.source_question_no || item.question_no;
+              
+              stmts.push(env.DB.prepare(`
+                INSERT INTO exam_blueprints (
+                  archive_file, question_no, source_archive_file, source_question_no, 
+                  standard_unit_key, standard_unit, standard_course, concept_cluster_key,
+                  created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+                ON CONFLICT(archive_file, question_no) DO UPDATE SET
+                  source_archive_file=excluded.source_archive_file,
+                  source_question_no=excluded.source_question_no,
+                  standard_unit_key=excluded.standard_unit_key,
+                  standard_unit=excluded.standard_unit,
+                  standard_course=excluded.standard_course,
+                  concept_cluster_key=excluded.concept_cluster_key,
+                  updated_at=DATETIME('now')
+              `).bind(
+                d.archive_file, item.question_no, src_archive_file, src_question_no,
+                item.standard_unit_key || null, item.standard_unit || null, item.standard_course || null, item.concept_cluster_key || null
+              ));
+            }
+
+            if (stmts.length > 0) {
+              await env.DB.batch(stmts);
+            }
+            return new Response(JSON.stringify({ success: true, count: stmts.length }), { headers });
+          }
+
+          if (method === 'GET') {
+            const file = url.searchParams.get('file');
+            if (!file) return new Response(JSON.stringify({ error: 'file parameter required' }), { status: 400, headers });
+            
+            const res = await env.DB.prepare('SELECT * FROM exam_blueprints WHERE archive_file = ? ORDER BY question_no ASC').bind(file).all();
+            return new Response(JSON.stringify({ success: true, archive_file: file, items: res.results }), { headers });
+          }
+        }
+
+        // --- 8. 시험 세션 및 오답 ---
         if (resource === 'exam-sessions') {
           if (method === 'GET' && id === 'by-class') {
             const classId = url.searchParams.get('class');
@@ -284,7 +390,16 @@ export default {
             const d = await request.json();
             const sid = id === 'new' ? `ex_${Date.now()}` : id;
             const stmts = [
-              env.DB.prepare("INSERT INTO exam_sessions (id, student_id, exam_title, score, exam_date, question_count, class_id, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET score=excluded.score, question_count=excluded.question_count, class_id=excluded.class_id, updated_at=excluded.updated_at").bind(sid, d.student_id, d.exam_title, d.score, d.exam_date, d.question_count || 0, d.class_id || null),
+              env.DB.prepare(`
+                INSERT INTO exam_sessions (id, student_id, exam_title, score, exam_date, question_count, class_id, archive_file, updated_at) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now')) 
+                ON CONFLICT(id) DO UPDATE SET 
+                  score=excluded.score, 
+                  question_count=excluded.question_count, 
+                  class_id=excluded.class_id, 
+                  archive_file=COALESCE(excluded.archive_file, exam_sessions.archive_file),
+                  updated_at=excluded.updated_at
+              `).bind(sid, d.student_id, d.exam_title, d.score, d.exam_date, d.question_count || 0, d.class_id || null, d.archive_file || null),
               env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sid)
             ];
             for (const qId of (d.wrong_ids || [])) stmts.push(env.DB.prepare('INSERT INTO wrong_answers (session_id, question_id, student_id) VALUES (?, ?, ?)').bind(sid, qId, d.student_id));
@@ -297,7 +412,7 @@ export default {
           }
         }
 
-        // --- 6. 운영 관리 (상담, 클래스, 메모, 일정) ---
+        // --- 9. 운영 관리 (상담, 클래스, 메모, 일정) ---
         if (resource === 'consultations') {
           if (method === 'POST') {
             const d = await request.json();
@@ -346,7 +461,6 @@ export default {
           }
           if (method === 'DELETE' && id) { await env.DB.prepare("DELETE FROM operation_memos WHERE id=?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
         }
-
         if (resource === 'exam-schedules') {
           if (method === 'GET') { const res = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(); return new Response(JSON.stringify({ success: true, data: res.results }), { headers }); }
           if (method === 'POST') {
@@ -363,7 +477,7 @@ export default {
           if (method === 'DELETE' && id) { await env.DB.prepare("DELETE FROM exam_schedules WHERE id=?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
         }
 
-        // --- 7. 선생님 및 담당반 관리 (Admin Only) ---
+        // --- 10. 선생님 및 담당반 관리 (Admin Only) ---
         if (resource === 'teachers' && method === 'GET') {
           const t = await verifyAuth(request, env);
           if (t?.role !== 'admin') return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -371,7 +485,6 @@ export default {
           const map = await env.DB.prepare('SELECT * FROM teacher_classes').all();
           return new Response(JSON.stringify({ teachers: res.results, teacher_classes: map.results }), { headers });
         }
-
         if (resource === 'teacher-classes' && method === 'POST') {
           const t = await verifyAuth(request, env);
           if (t?.role !== 'admin') return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -382,7 +495,7 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // --- 8. AI 리포트 ---
+        // --- 11. AI 리포트 ---
         if (resource === 'ai' && path[2] === 'student-report' && method === 'POST') {
           const p = await request.json();
           const { type, student, today: td } = p;
@@ -390,6 +503,7 @@ export default {
           let fallback = type === 'parent' ? `[AP Math] ${student.name} 학생 오늘 수업 안내\n출결: ${td.att}\n숙제: ${td.hw}\n성적: ${examStr}` : type === 'student' ? `${student.name}아 수고했어!` : `상담메모: ${student.name}`;
           return new Response(JSON.stringify({ success: true, message: fallback, source: 'fallback' }), { headers });
         }
+
       }
       return new Response(JSON.stringify({ error: 'API Endpoint Not Found' }), { status: 404, headers });
     } catch (err) { return new Response(JSON.stringify({ error: err.message }), { status: 500, headers }); }

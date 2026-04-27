@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * QR 3.0 학생용 오답 체크 엔진 (5G: 학생 점수 은닉 및 PIN 보안 방어 강화)
+ * QR 3.0 학생용 오답 체크 엔진 (5G: 학생 점수 은닉 및 PIN 보안 방어 강화, 3B1: archive_file 연동 보완)
  */
 
 const CONFIG = {
@@ -13,7 +13,7 @@ const STORAGE_KEYS = {
 
 let state = {
     step: 'select', // select | pin | input | confirm | done
-    config: { classId: '', exam: '', q: 0, date: '' },
+    config: { classId: '', exam: '', q: 0, date: '', archiveFile: '' },
     students: [],
     submittedSessions: [],
     className: '',
@@ -24,12 +24,23 @@ let state = {
     pinVerified: false
 };
 
+// [3B1] check-init URL 생성 헬퍼 (파라미터 누락 방지 및 일원화)
+function buildCheckInitUrl() {
+    return `${CONFIG.API_BASE}/check-init`
+        + `?class=${encodeURIComponent(state.config.classId)}`
+        + `&exam=${encodeURIComponent(state.config.exam)}`
+        + `&date=${encodeURIComponent(state.config.date)}`
+        + `&q=${encodeURIComponent(state.config.q)}`
+        + `&archiveFile=${encodeURIComponent(state.config.archiveFile || '')}`;
+}
+
 async function init() {
     const params = new URLSearchParams(window.location.search);
     state.config.classId = params.get('class');
     state.config.exam = params.get('exam'); 
     state.config.q = parseInt(params.get('q')) || 0;
     state.config.date = params.get('date') || new Date().toLocaleDateString('sv-SE');
+    state.config.archiveFile = params.get('archiveFile') || ''; // [3B] 추가 유지
 
     if (!state.config.classId || !state.config.exam || state.config.q < 1 || state.config.q > 50) {
         renderError('잘못된 접근이거나 시험 정보(문항 수 1~50)가 유효하지 않습니다.');
@@ -42,7 +53,7 @@ async function init() {
 
 async function refreshData() {
     try {
-        const res = await fetch(`${CONFIG.API_BASE}/check-init?class=${state.config.classId}&exam=${encodeURIComponent(state.config.exam)}&date=${state.config.date}`);
+        const res = await fetch(buildCheckInitUrl());
         const data = await res.json();
         
         state.students = data.students || [];
@@ -241,7 +252,7 @@ async function submit() {
     if (state.isSubmitting) return;
     
     try {
-        const checkRes = await fetch(`${CONFIG.API_BASE}/check-init?class=${state.config.classId}&exam=${encodeURIComponent(state.config.exam)}&date=${state.config.date}`);
+        const checkRes = await fetch(buildCheckInitUrl());
         const checkData = await checkRes.json();
         const alreadyDone = (checkData.submitted_sessions || []).some(ss => ss.student_id === state.selectedStudent.id);
         
@@ -268,7 +279,8 @@ async function submit() {
         wrong_ids: validWrongs.map(String),
         exam_date: state.config.date,
         question_count: state.config.q,
-        class_id: state.config.classId
+        class_id: state.config.classId,
+        archive_file: state.config.archiveFile || ''  // [3B] 추가 유지
     };
 
     try {
@@ -302,7 +314,6 @@ function checkPendingSubmit() {
     if (!pending) return;
 
     // 동일 기기 네트워크 실패 복구용
-    // (추후 PIN 재검증 추가 고려)
     const { payload, studentName } = JSON.parse(pending);
     
     if (payload.exam_title === state.config.exam && payload.exam_date === state.config.date) {
