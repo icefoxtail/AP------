@@ -349,9 +349,21 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
+    
     const sessions = sessionSource.filter(es =>
         es.exam_title === examTitle && es.exam_date === examDate && ids.includes(es.student_id)
     );
+
+    // [핵심] 통계 계산 전 설계도 강제 로드 (try/catch 방어 코드 적용)
+    const sessionsWithArchive = sessions.filter(s => s.archive_file);
+    if (sessionsWithArchive.length > 0 && typeof ensureBlueprintsForSessions === 'function') {
+        try {
+            await ensureBlueprintsForSessions(sessionsWithArchive);
+        } catch (e) {
+            console.warn('[openExamDetail] ensureBlueprintsForSessions failed', e);
+        }
+    }
+
     const submittedIds = new Set(sessions.map(s => s.student_id));
     const qCount = sessions[0]?.question_count || 0;
 
@@ -373,7 +385,14 @@ async function openExamDetail(classId, examTitle, examDate) {
     });
     const pending = active.filter(s => !submittedIds.has(s.id));
 
-    const submittedHTML = submitted.map(s => `
+    // 미제출 학생의 '입력' 버튼에 전달할 동일 시험의 안전한 설계도 추출
+    const examArchiveFileObj = sessions.find(s => s.archive_file);
+    const examArchiveFile = examArchiveFileObj ? String(examArchiveFileObj.archive_file).replace(/'/g,"\\'") : '';
+
+    const submittedHTML = submitted.map(s => {
+        // 수정 버튼에 전달할 개별 세션의 설계도
+        const sArchive = s.session?.archive_file ? String(s.session.archive_file).replace(/'/g,"\\'") : '';
+        return `
         <tr>
             <td style="padding:10px 4px;">${s.name}</td>
             <td style="text-align:center;font-weight:800;color:var(--primary);padding:10px 4px;">${s.score}점</td>
@@ -383,16 +402,18 @@ async function openExamDetail(classId, examTitle, examDate) {
                 </div>
             </td>
             <td style="text-align:center;padding:10px 4px;">
-                <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}')">수정</button>
+                <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}')">수정</button>
+                <button class="btn" style="padding:4px 8px;font-size:11px;color:var(--error);margin-top:4px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g,"\\'")}','${examDate}')">삭제</button>
             </td>
-        </tr>`).join('');
+        </tr>`;
+    }).join('');
 
     const pendingHTML = pending.map(s => `
         <tr style="background-color:var(--bg);">
             <td style="padding:10px 4px; color:var(--secondary);">${s.name}</td>
             <td colspan="2" style="opacity:0.5; text-align:center; font-size:12px; padding:10px 4px;">미제출</td>
             <td style="text-align:center;padding:10px 4px;">
-                <button class="btn btn-primary" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','')">입력</button>
+                <button class="btn btn-primary" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','','${examArchiveFile}')">입력</button>
             </td>
         </tr>`).join('');
 
@@ -415,4 +436,23 @@ async function openExamDetail(classId, examTitle, examDate) {
             <tbody>${submittedHTML}${pendingHTML}</tbody>
         </table>
     `);
+}
+
+// [5G] 개별 세션 삭제 함수 추가 (파라미터 분리 전달)
+async function deleteExamSession(sessionId, classId, examTitle, examDate) {
+    if (!sessionId) return;
+    if (!confirm('이 성적 기록을 삭제하시겠습니까? 오답 정보도 함께 삭제됩니다.')) return;
+    
+    // core.js의 api.delete 규격에 맞게 파라미터 분리 전달
+    const r = await api.delete('exam-sessions', sessionId);
+    
+    if (!r?.success) { 
+        toast('삭제 실패', 'warn'); 
+        return; 
+    }
+    
+    toast('삭제되었습니다.', 'info');
+    closeModal(); 
+    await loadData(); 
+    openExamDetail(classId, examTitle, examDate); 
 }
