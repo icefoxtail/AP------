@@ -314,6 +314,7 @@ function computeStudentWeakUnits(studentId) {
             examDate: session.exam_date,
             score: session.score,
             questionCount: session.question_count,
+            archiveFile: session.archive_file || '',
             questionId: w.question_id
         });
     });
@@ -363,6 +364,7 @@ function computeClassWeakUnits(classId, examTitle = '', examDate = '') {
             examDate: session.exam_date,
             score: session.score,
             questionCount: session.question_count,
+            archiveFile: session.archive_file || '',
             questionId: w.question_id
         });
     });
@@ -448,6 +450,7 @@ function openWeakUnitDetail(detailKey) {
             <div style="font-size:11px;color:var(--secondary);margin-top:4px;">
                 ${item.unitKey ? `단원키 ${apEscapeHtml(item.unitKey)} · ` : ''}오답 ${apEscapeHtml(item.count || 0)}회${studentCountHtml}
             </div>
+            <button class="btn btn-primary" style="width:100%;margin-top:10px;padding:10px;font-size:12px;font-weight:900;" onclick="openSimilarQuestionRecommendations('${detailKey}')">유사문항 추천</button>
         </div>
         ${renderWeakUnitDetailList(item, mode)}
     `);
@@ -486,6 +489,281 @@ function renderWeakUnitSummary(items, emptyText = '누적 오답 단원 데이�
             }).join('')}
         </div>
     `;
+}
+
+
+// [3D] JS아카이브 기반 유사문항 추천 및 클리닉 후보 바구니
+const CLINIC_CART_KEY = 'APMATH_CLINIC_CANDIDATES';
+
+function getJsArchiveBaseUrl() {
+    try {
+        return new URL('../', window.location.href).href;
+    } catch (e) {
+        return `${window.location.origin}/`;
+    }
+}
+
+function normalizeArchivePath(file) {
+    const raw = String(file || '').trim();
+    if (!raw) return '';
+    if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
+    if (raw.startsWith('exams/')) return raw;
+    return `exams/${raw.replace(/^\.\//, '')}`;
+}
+
+function getExamDisplayTitle(meta = {}, file = '') {
+    return meta.title || meta.examTitle || meta.exam_title || meta.name || String(file || '').replace(/^exams\//, '').replace(/\.js$/, '');
+}
+
+async function fetchArchiveScriptText(relativePath) {
+    const base = getJsArchiveBaseUrl();
+    const url = new URL(relativePath, base).href;
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`JS아카이브 파일 로드 실패: ${relativePath}`);
+    return await res.text();
+}
+
+async function loadJsArchiveDBForRecommend() {
+    if (state.ui.jsArchiveDBCache) return state.ui.jsArchiveDBCache;
+    const text = await fetchArchiveScriptText('db.js');
+    const sandbox = {};
+    const db = new Function('window', `${text}\n;return window.mainDB || {};`)(sandbox);
+    state.ui.jsArchiveDBCache = db || {};
+    return state.ui.jsArchiveDBCache;
+}
+
+async function loadConceptMapForRecommend() {
+    if (state.ui.conceptMapCache) return state.ui.conceptMapCache;
+    try {
+        const text = await fetchArchiveScriptText('concept_map.js');
+        const sandbox = {};
+        const map = new Function('window', `${text}\n;return window.CONCEPT_MAP || {};`)(sandbox);
+        state.ui.conceptMapCache = map || {};
+    } catch (e) {
+        state.ui.conceptMapCache = {};
+    }
+    return state.ui.conceptMapCache;
+}
+
+async function loadArchiveQuestionBank(file) {
+    const path = normalizeArchivePath(file);
+    if (!path) return { examTitle: '', questionBank: [] };
+    if (!state.ui.archiveQuestionBankCache) state.ui.archiveQuestionBankCache = {};
+    if (state.ui.archiveQuestionBankCache[path]) return state.ui.archiveQuestionBankCache[path];
+
+    const text = await fetchArchiveScriptText(path);
+    const sandbox = {};
+    const data = new Function('window', `${text}\n;return { examTitle: window.examTitle || '', questionBank: window.questionBank || [] };`)(sandbox);
+    const normalized = {
+        examTitle: data.examTitle || path.replace(/^exams\//, '').replace(/\.js$/, ''),
+        questionBank: Array.isArray(data.questionBank) ? data.questionBank : []
+    };
+    state.ui.archiveQuestionBankCache[path] = normalized;
+    return normalized;
+}
+
+function getDbExamEntries(db) {
+    if (Array.isArray(db?.exams)) return db.exams;
+    if (Array.isArray(db?.시험)) return db.시험;
+    if (db && typeof db === 'object') {
+        return Object.values(db).flatMap(v => Array.isArray(v) ? v : []);
+    }
+    return [];
+}
+
+function entryMayContainUnit(entry, unitKey, standardCourse = '') {
+    if (!unitKey) return true;
+    const ranges = Array.isArray(entry.courseRanges) ? entry.courseRanges : [];
+    const allRanges = ranges.length ? ranges : [entry];
+    return allRanges.some(r => {
+        const startKey = r.rangeStartUnitKey || entry.rangeStartUnitKey || '';
+        const endKey = r.rangeEndUnitKey || entry.rangeEndUnitKey || '';
+        const startOrder = Number(r.rangeStartUnitOrder ?? entry.rangeStartUnitOrder ?? 999);
+        const endOrder = Number(r.rangeEndUnitOrder ?? entry.rangeEndUnitOrder ?? 999);
+        const course = r.standardCourse || entry.primaryStandardCourse || entry.standardCourse || '';
+
+        if (startKey === unitKey || endKey === unitKey) return true;
+        if (standardCourse && course && standardCourse !== course) return false;
+
+        const prefix = unitKey.split('-').slice(0, -1).join('-');
+        if (startKey && endKey && startKey.startsWith(prefix) && endKey.startsWith(prefix)) {
+            const n = Number(unitKey.split('-').pop());
+            if (Number.isFinite(n) && Number.isFinite(startOrder) && Number.isFinite(endOrder)) {
+                return startOrder <= n && n <= endOrder;
+            }
+        }
+        return !startKey && !endKey;
+    });
+}
+
+function isOriginalWrongQuestion(item, filePath, questionId) {
+    const normalizedFile = normalizeArchivePath(filePath);
+    return (item?.questions || []).some(q => {
+        const wrongFile = normalizeArchivePath(q.archiveFile || q.sourceArchiveFile || '');
+        return wrongFile && wrongFile === normalizedFile && Number(q.questionId) === Number(questionId);
+    });
+}
+
+function makeRecommendCandidateKey(candidate) {
+    return `${normalizeArchivePath(candidate.file)}::${Number(candidate.questionId)}`;
+}
+
+function getClinicCart() {
+    try {
+        const arr = JSON.parse(localStorage.getItem(CLINIC_CART_KEY) || '[]');
+        return Array.isArray(arr) ? arr : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveClinicCart(items) {
+    localStorage.setItem(CLINIC_CART_KEY, JSON.stringify(Array.isArray(items) ? items : []));
+}
+
+function addClinicCandidate(candidateKey) {
+    const candidate = state.ui.recommendationCandidates?.[candidateKey];
+    if (!candidate) {
+        toast('추천 문항 데이터를 찾을 수 없습니다.', 'warn');
+        return;
+    }
+    const cart = getClinicCart();
+    const key = makeRecommendCandidateKey(candidate);
+    if (cart.some(item => makeRecommendCandidateKey(item) === key)) {
+        toast('이미 클리닉 후보에 담긴 문항입니다.', 'warn');
+        return;
+    }
+    cart.push(candidate);
+    saveClinicCart(cart);
+    toast(`클리닉 후보에 담았습니다. (${cart.length}개)`, 'info');
+}
+
+async function buildSimilarQuestionCandidates(item, limit = 10) {
+    const unitKey = item?.unitKey || '';
+    const cluster = item?.cluster || '';
+    const standardCourse = item?.course || '';
+    if (!unitKey && !cluster) return [];
+
+    const db = await loadJsArchiveDBForRecommend();
+    const conceptMap = await loadConceptMapForRecommend();
+    const entries = getDbExamEntries(db)
+        .filter(entry => entry && entry.file)
+        .filter(entry => entryMayContainUnit(entry, unitKey, standardCourse));
+
+    const exact = [];
+    const fallback = [];
+    const seen = new Set();
+
+    for (const entry of entries) {
+        if (exact.length >= limit && fallback.length >= limit) break;
+        const file = normalizeArchivePath(entry.file);
+        try {
+            const bankData = await loadArchiveQuestionBank(file);
+            for (const q of bankData.questionBank) {
+                if (!q || q.id === undefined || q.id === null) continue;
+                if (isOriginalWrongQuestion(item, file, q.id)) continue;
+
+                const qUnitKey = q.standardUnitKey || '';
+                const qCluster = q.conceptClusterKey || conceptMap[qUnitKey] || '';
+                const key = `${file}::${Number(q.id)}`;
+                if (seen.has(key)) continue;
+
+                const isExact = unitKey && qUnitKey === unitKey;
+                const isFallback = !isExact && cluster && qCluster === cluster;
+                if (!isExact && !isFallback) continue;
+
+                const candidate = {
+                    file,
+                    examTitle: bankData.examTitle || getExamDisplayTitle(entry, file),
+                    questionId: q.id,
+                    level: q.level || '',
+                    standardUnitKey: qUnitKey,
+                    standardUnit: q.standardUnit || qUnitKey || '',
+                    standardCourse: q.standardCourse || entry.primaryStandardCourse || '',
+                    conceptClusterKey: qCluster,
+                    contentPreview: String(q.content || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 90),
+                    matchType: isExact ? 'standardUnitKey' : 'conceptClusterKey'
+                };
+
+                seen.add(key);
+                if (isExact) exact.push(candidate);
+                else fallback.push(candidate);
+                if (exact.length >= limit) break;
+            }
+        } catch (e) {
+            console.warn('[3D] 추천 후보 로드 실패:', file, e);
+        }
+    }
+
+    return exact.concat(fallback).slice(0, limit);
+}
+
+function renderSimilarQuestionCandidates(candidates) {
+    if (!Array.isArray(candidates) || !candidates.length) {
+        return `<div style="font-size:12px;color:var(--secondary);background:#f8f9fa;border:1px dashed var(--border);border-radius:8px;padding:14px;text-align:center;">추천 가능한 유사문항을 아직 찾지 못했습니다.</div>`;
+    }
+
+    if (!state.ui.recommendationCandidates) state.ui.recommendationCandidates = {};
+
+    return `
+        <div style="display:flex;flex-direction:column;gap:8px;max-height:62vh;overflow-y:auto;padding-right:2px;">
+            ${candidates.map((c, idx) => {
+                const key = `rec_${Date.now()}_${idx}_${Math.random().toString(36).slice(2, 7)}`;
+                state.ui.recommendationCandidates[key] = c;
+                const matchLabel = c.matchType === 'standardUnitKey' ? '단원 일치' : '개념군 보완';
+                return `
+                    <div style="border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 12px;">
+                        <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;">
+                            <div style="flex:1;min-width:0;">
+                                <div style="font-size:12px;font-weight:900;color:var(--primary);line-height:1.45;word-break:break-word;">${idx + 1}. ${apEscapeHtml(c.examTitle)}</div>
+                                <div style="font-size:11px;color:var(--secondary);margin-top:3px;">Q${apEscapeHtml(c.questionId)} · ${apEscapeHtml(c.standardUnit || '')} ${c.level ? `· ${apEscapeHtml(c.level)}` : ''}</div>
+                                <div style="font-size:11px;color:#5f6368;margin-top:5px;line-height:1.45;word-break:break-word;">${apEscapeHtml(c.contentPreview || '')}</div>
+                            </div>
+                            <span style="font-size:10px;font-weight:900;color:${c.matchType === 'standardUnitKey' ? 'var(--success)' : 'var(--warning)'};background:#f8f9fa;border-radius:999px;padding:4px 7px;white-space:nowrap;">${matchLabel}</span>
+                        </div>
+                        <button class="btn" style="width:100%;margin-top:8px;padding:8px;font-size:11px;font-weight:900;border-color:var(--primary);color:var(--primary);" onclick="addClinicCandidate('${key}')">클리닉 후보 담기</button>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
+async function openSimilarQuestionRecommendations(detailKey) {
+    const payload = state.ui.weakUnitDetails?.[detailKey];
+    if (!payload || !payload.item) {
+        toast('추천 기준 데이터를 찾을 수 없습니다.', 'warn');
+        return;
+    }
+
+    const item = payload.item;
+    showModal('유사문항 추천', `
+        <div style="text-align:center;padding:24px;color:var(--secondary);">
+            <div style="font-size:24px;margin-bottom:8px;">⏳</div>
+            <div style="font-size:13px;font-weight:800;">JS아카이브에서 유사문항을 찾는 중입니다...</div>
+        </div>
+    `);
+
+    try {
+        const candidates = await buildSimilarQuestionCandidates(item, 10);
+        const cartCount = getClinicCart().length;
+        showModal('유사문항 추천', `
+            <div style="background:#f8f9fa;border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:900;color:var(--primary);line-height:1.5;">${apEscapeHtml(item.label || '취약 단원')}</div>
+                <div style="font-size:11px;color:var(--secondary);margin-top:4px;line-height:1.5;">
+                    ${item.unitKey ? `기준 단원 ${apEscapeHtml(item.unitKey)} · ` : ''}${item.cluster ? `개념군 ${apEscapeHtml(item.cluster)} · ` : ''}현재 후보 ${cartCount}개 보관 중
+                </div>
+            </div>
+            ${renderSimilarQuestionCandidates(candidates)}
+        `);
+    } catch (e) {
+        console.warn('[3D] 유사문항 추천 실패:', e);
+        showModal('유사문항 추천', `
+            <div style="font-size:12px;color:var(--error);background:#fce8e6;border-radius:8px;padding:14px;text-align:center;line-height:1.5;">
+                유사문항 추천을 불러오지 못했습니다.<br>JS아카이브 db.js 또는 exams 경로를 확인하세요.
+            </div>
+        `);
+    }
 }
 
 function addToSyncQueue(method, resource, data) {
