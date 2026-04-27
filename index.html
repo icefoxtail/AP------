@@ -1367,6 +1367,8 @@ function confirmQpp(qpp) {
 
     if (_pendingSubmitQr) {
         _pendingQpp = qpp;
+        window._pendingClassSelectItem = item;
+        window._pendingClassSelectQpp = qpp;
         openClassSelectionModalForIndex(item, qpp);
     } else {
         goEngine(item, _pendingAction, qpp);
@@ -1377,28 +1379,53 @@ function confirmQpp(qpp) {
 async function openClassSelectionModalForIndex(item, qpp) {
     const overlay = document.getElementById('classModalOverlay');
     const body = document.getElementById('classModalBody');
-    
+
     overlay.classList.add('open');
     body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
-    
+
+    // [5G] APMATH_SESSION 인증 정보 로드
+    let authHeader = {};
     try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/initial-data');
+        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (!session || !session.login_id || !session.raw_password) {
+            body.innerHTML = `
+                <div style="display:flex; flex-direction:column; gap:10px; padding:4px 0;">
+                    <div style="font-size:12px; color:var(--text-sub);">AP Math OS 계정으로 로그인하세요.</div>
+                    <input id="apmath-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
+                    <input id="apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
+                    <div id="apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
+                    <button class="modal-btn-primary" onclick="doApmathLoginAndLoadClasses(arguments[0])">로그인 후 반 목록 불러오기</button>
+                </div>`;
+            return;
+        }
+        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+    } catch(e) {
+        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">오류가 발생했습니다. 새로고침 후 다시 시도하세요.</div>';
+        return;
+    }
+
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
+        if (res.status === 401) {
+            body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">AP Math OS 로그인 후 다시 시도하세요.</div>';
+            return;
+        }
         if (!res.ok) throw new Error('API Request Failed');
-        
+
         const data = await res.json();
-        if (data && Array.isArray(data.classes)) {
+        if (data && data.success && Array.isArray(data.classes)) {
             if (data.classes.length === 0) {
                 body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
                 return;
             }
-            
+
             let selectHtml = '<select id="index-class-select" class="class-select">';
             data.classes.forEach(c => {
                 selectHtml += `<option value="${c.id}">${c.name} (${c.grade})</option>`;
             });
             selectHtml += '</select>';
             selectHtml += '<button class="modal-btn-primary" onclick="confirmClassSelectionForIndex()">확인</button>';
-            
+
             body.innerHTML = selectHtml;
         } else {
             throw new Error('Invalid data format');
@@ -1406,6 +1433,28 @@ async function openClassSelectionModalForIndex(item, qpp) {
     } catch(e) {
         console.error(e);
         body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+    }
+}
+
+async function doApmathLoginAndLoadClasses(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const loginId = document.getElementById('apmath-login-id')?.value.trim();
+    const pw = document.getElementById('apmath-login-pw')?.value;
+    const errEl = document.getElementById('apmath-login-err');
+    if (!loginId || !pw) { if (errEl) errEl.innerText = '아이디와 비밀번호를 입력하세요.'; return; }
+    if (errEl) errEl.innerText = '로그인 중...';
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ login_id: loginId, password: pw })
+        });
+        const data = await res.json();
+        if (!data.success) { if (errEl) errEl.innerText = '아이디 또는 비밀번호가 맞지 않습니다.'; return; }
+        localStorage.setItem('APMATH_SESSION', JSON.stringify({ login_id: loginId, raw_password: pw, name: data.name, role: data.role }));
+        openClassSelectionModalForIndex(window._pendingClassSelectItem, window._pendingClassSelectQpp);
+    } catch(err) {
+        if (errEl) errEl.innerText = '서버 연결 실패. 다시 시도하세요.';
     }
 }
 
