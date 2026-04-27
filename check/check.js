@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * QR 3.0 학생용 오답 체크 엔진 (백업 복구 보정본)
+ * QR 3.0 학생용 오답 체크 엔진 (5F: 학생 개인 고유번호 PIN 인증 및 방어 추가)
  */
 
 const CONFIG = {
@@ -12,7 +12,7 @@ const STORAGE_KEYS = {
 };
 
 let state = {
-    step: 'select', // select | input | confirm | done
+    step: 'select', // select | pin | input | confirm | done
     config: { classId: '', exam: '', q: 0, date: '' },
     students: [],
     submittedSessions: [],
@@ -20,7 +20,8 @@ let state = {
     selectedStudent: null,
     wrongIds: [], // 숫자로 저장
     isSubmitting: false,
-    searchKeyword: ''
+    searchKeyword: '',
+    pinVerified: false // [5F] 추가
 };
 
 /**
@@ -110,10 +111,27 @@ function render() {
                 <div style="text-align:center; margin-bottom:10px; font-weight:800; font-size:18px; color:var(--primary);">
                     ${state.selectedStudent?.name} 학생이 맞습니까?
                 </div>
-                <button class="btn-main" onclick="goToStep('input')">예, 맞습니다</button>
+                <button class="btn-main" onclick="goToStep('pin')">예, 맞습니다</button>
             </div>
         `;
     } 
+    // [5F] 학생 PIN 검증 단계
+    else if (state.step === 'pin') {
+        root.innerHTML = banner + `
+            <div class="card" style="text-align:center; padding:30px 20px;">
+                <h3 style="color:var(--primary); margin-bottom:8px;">고유 번호 확인</h3>
+                <p style="color:var(--secondary); font-size:13px; margin-bottom:24px;">본인의 4자리 번호를 입력하세요</p>
+                <input id="pin-input" type="number" maxlength="4" placeholder="••••" inputmode="numeric"
+                    style="font-size:32px; text-align:center; width:160px; letter-spacing:12px; border:2px solid var(--border); border-radius:12px; padding:16px; outline:none;"
+                    oninput="if(this.value.length>4)this.value=this.value.slice(0,4)">
+                <div id="pin-error" style="color:var(--error); font-size:13px; margin-top:12px; min-height:18px; font-weight:600;"></div>
+            </div>
+            <div class="bottom-bar" style="display:flex; gap:10px;">
+                <button class="btn-sub" style="flex:1;" onclick="state.pinVerified=false; state.wrongIds=[]; state.step='select'; render();">이름 다시 선택</button>
+                <button class="btn-main" style="flex:2;" onclick="verifyPin()">확인</button>
+            </div>
+        `;
+    }
     else if (state.step === 'input') {
         const omr = Array.from({ length: state.config.q }, (_, i) => {
             const num = i + 1;
@@ -132,7 +150,7 @@ function render() {
             <div class="bottom-bar">
                 <button class="btn-main" style="background:var(--success);" onclick="state.wrongIds=[]; goToStep('confirm');">모두 맞음 (100점)</button>
                 <button class="btn-main" onclick="goToStep('confirm')" ${state.wrongIds.length === 0 ? 'style="display:none;"' : ''}>오답 ${state.wrongIds.length}개 제출</button>
-                <button class="btn-sub" onclick="state.step='select'; render();">이름 다시 선택</button>
+                <button class="btn-sub" onclick="state.pinVerified=false; state.wrongIds=[]; state.step='select'; render();">이름 다시 선택</button>
             </div>
         `;
     }
@@ -152,7 +170,7 @@ function render() {
                 <button class="btn-main" id="submit-btn" onclick="submit()" ${state.isSubmitting ? 'disabled' : ''}>
                     ${state.isSubmitting ? '제출 중...' : '확인했습니다. 제출합니다'}
                 </button>
-                <button class="btn-sub" onclick="state.step='input'; render();">수정하기</button>
+                <button class="btn-sub" onclick="goToStep('input')">수정하기</button>
             </div>
         `;
     }
@@ -183,6 +201,33 @@ function render() {
 }
 
 /**
+ * [5F] 서버에 PIN 검증 요청
+ */
+async function verifyPin() {
+    const input = document.getElementById('pin-input').value;
+    if (input.length !== 4) {
+        document.getElementById('pin-error').innerText = '4자리 숫자를 입력하세요.';
+        return;
+    }
+    try {
+        const res = await fetch(`${CONFIG.API_BASE}/check-pin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ student_id: state.selectedStudent.id, pin: input })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+            state.pinVerified = true;
+            goToStep('input');
+        } else {
+            document.getElementById('pin-error').innerText = data.message || '번호가 맞지 않습니다.';
+        }
+    } catch (err) {
+        document.getElementById('pin-error').innerText = '네트워크 오류가 발생했습니다.';
+    }
+}
+
+/**
  * 오답 번호 토글
  */
 function toggleWrong(num) {
@@ -200,6 +245,8 @@ function toggleWrong(num) {
  */
 function selectStudent(sid) {
     state.selectedStudent = state.students.find(s => s.id === sid);
+    state.pinVerified = false; // [5F 보완] 학생 변경 시 PIN 상태 초기화
+    state.wrongIds = [];       // [5F 보완] 학생 변경 시 오답 초기화
     render();
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
@@ -208,7 +255,12 @@ function selectStudent(sid) {
  * 단계 이동
  */
 function goToStep(s) {
-    state.step = s;
+    // [5F 보완] 비정상적인 단계 이동 방어 (PIN 미인증 시 입력화면 진입 불가)
+    if (s === 'input' && !state.pinVerified) {
+        state.step = 'pin';
+    } else {
+        state.step = s;
+    }
     window.scrollTo(0, 0);
     render();
 }
@@ -248,7 +300,9 @@ async function submit() {
         exam_title: state.config.exam,
         score: score,
         wrong_ids: validWrongs.map(String),
-        exam_date: state.config.date
+        exam_date: state.config.date,
+        question_count: state.config.q,
+        class_id: state.config.classId
     };
 
     try {
@@ -285,12 +339,13 @@ function checkPendingSubmit() {
     const pending = localStorage.getItem(STORAGE_KEYS.PENDING);
     if (!pending) return;
 
+    // [5F 보완] 동일 기기 네트워크 실패 복구용
+    // (보안 강화를 원하면 추후 PIN 재검증으로 이동)
     const { payload, studentName } = JSON.parse(pending);
     
     // 현재 접속한 QR 정보와 백업 정보가 일치할 때만 복구 안내
     if (payload.exam_title === state.config.exam && payload.exam_date === state.config.date) {
         if (confirm(`${studentName} 학생의 보내지 못한 데이터가 있습니다. 지금 다시 제출할까요?`)) {
-            // 복구 시도 시에도 중복 확인을 위해 state 설정 후 submit 호출
             state.selectedStudent = state.students.find(s => s.id === payload.student_id);
             state.wrongIds = payload.wrong_ids.map(Number);
             if (state.selectedStudent) {

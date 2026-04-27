@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/student.js]
- * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (4D: 보고 문구 도구 명칭 변경 및 UI 보정)
+ * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (5F: 학생 고유번호 PIN 관리 UI 추가)
  */
 
 function renderStudentDetail(sid) {
@@ -30,9 +30,10 @@ function renderStudentDetail(sid) {
 
     const todayStr = new Date().toLocaleDateString('sv-SE');
 
-    const extraInfoHtml = (s.guardian_relation || s.memo) ? `
+    const extraInfoHtml = (s.guardian_relation || s.memo || s.student_pin) ? `
         <div style="margin-top:8px; font-size:12px; background:#f1f3f4; padding:8px 10px; border-radius:6px; color:var(--secondary);">
             ${s.guardian_relation ? `<div style="margin-bottom:4px;"><b>보호자 관계:</b> ${s.guardian_relation}</div>` : ''}
+            ${s.student_pin ? `<div style="margin-bottom:4px;"><b>고유 PIN:</b> ${s.student_pin}</div>` : ''}
             ${s.memo ? `<div><b>메모:</b> ${s.memo}</div>` : ''}
         </div>
     ` : '';
@@ -65,7 +66,6 @@ function renderStudentDetail(sid) {
         </div>
     `;
 
-    // 4D: 보고 문구 명칭 변경 ("상담·전달 문구")
     const reportButtons = `
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
             <details>
@@ -195,23 +195,39 @@ function openEditStudent(sid) {
             <select id="edit-class" class="btn"><option value="">반 미배정</option>${opts}</select>
             
             <hr style="border:0; border-top:1px solid var(--border); margin:10px 0;">
-            <label style="font-size:12px; color:var(--secondary);">연락처 및 특이사항</label>
+            <label style="font-size:12px; color:var(--secondary);">연락처, 특이사항 및 보안</label>
             
             <input id="edit-student-phone" class="btn" value="${s.student_phone||''}" placeholder="학생 전화번호 (예: 010-1234-5678)" style="text-align:left;">
             <input id="edit-parent-phone" class="btn" value="${s.parent_phone||''}" placeholder="학부모 전화번호 (예: 010-1234-5678)" style="text-align:left;">
             <input id="edit-guardian-rel" class="btn" value="${s.guardian_relation||''}" placeholder="보호자 관계 (예: 어머님, 아버님)" style="text-align:left;">
+            
+            <input id="edit-student-pin" class="btn" value="${s.student_pin||''}" placeholder="학생 고유번호 PIN (4자리 숫자)" maxlength="4" inputmode="numeric" style="text-align:left; letter-spacing: 2px;" oninput="this.value=this.value.replace(/\\D/g,'').slice(0,4);">
+            
             <textarea id="edit-memo" class="btn" placeholder="학생 특이사항 메모" style="text-align:left; resize:vertical; min-height:60px; line-height:1.5;">${s.memo||''}</textarea>
         </div>
     `, '저장', () => handleEditStudent(sid));
 }
 
+// [5F] PIN 입력값 검증 및 저장 반영
 async function handleEditStudent(sid) {
     const n = document.getElementById('edit-name').value, sc = document.getElementById('edit-school').value, 
           g = document.getElementById('edit-grade').value, c = document.getElementById('edit-class').value,
           sp = document.getElementById('edit-student-phone').value.trim(), pp = document.getElementById('edit-parent-phone').value.trim(),
           gr = document.getElementById('edit-guardian-rel').value.trim(), memo = document.getElementById('edit-memo').value.trim();
           
-    await api.patch(`students/${sid}`, { name: n, school_name: sc, grade: g, class_id: c, student_phone: sp, parent_phone: pp, guardian_relation: gr, memo: memo });
+    const pin = document.getElementById('edit-student-pin').value.trim();
+
+    if (pin && !/^\d{4}$/.test(pin)) {
+        toast('PIN은 4자리 숫자입니다.', 'warn');
+        return;
+    }
+          
+    await api.patch(`students/${sid}`, { 
+        name: n, school_name: sc, grade: g, class_id: c, 
+        student_phone: sp, parent_phone: pp, guardian_relation: gr, memo: memo,
+        student_pin: pin 
+    });
+    
     closeModal(); await loadData();
 }
 
@@ -223,22 +239,38 @@ function openAddStudent(defaultCid = '') {
 
     showModal('신규 학생 추가', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <input id="add-name" class="btn" placeholder="이름" style="text-align:left;">
-            <input id="add-school" class="btn" placeholder="학교" style="text-align:left;">
+            <input id="add-name" class="btn" placeholder="이름 (필수)" style="text-align:left;">
+            <input id="add-school" class="btn" placeholder="학교 (필수)" style="text-align:left;">
             <select id="add-grade" class="btn">
                 <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
                 <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
             </select>
             <select id="add-class" class="btn"><option value="">반 선택</option>${opts}</select>
+            
+            <hr style="border:0; border-top:1px solid var(--border); margin:5px 0;">
+            
+            <input id="add-student-pin" class="btn" placeholder="초기 고유번호 PIN (4자리 숫자, 선택)" maxlength="4" inputmode="numeric" style="text-align:left; letter-spacing: 2px;" oninput="this.value=this.value.replace(/\\D/g,'').slice(0,4);">
         </div>
     `, '추가', handleAddStudent);
 }
 
 async function handleAddStudent() {
-    const n = document.getElementById('add-name').value, sc = document.getElementById('add-school').value, 
+    const n = document.getElementById('add-name').value.trim(), sc = document.getElementById('add-school').value.trim(), 
           g = document.getElementById('add-grade').value, c = document.getElementById('add-class').value;
-    if(!n || !sc) return;
-    await api.post('students', { name: n, school_name: sc, grade: g, class_id: c });
+          
+    const pin = document.getElementById('add-student-pin').value.trim();
+
+    if(!n || !sc) {
+        toast('이름과 학교를 입력해주세요.', 'warn');
+        return;
+    }
+    
+    if (pin && !/^\d{4}$/.test(pin)) {
+        toast('PIN은 4자리 숫자입니다.', 'warn');
+        return;
+    }
+
+    await api.post('students', { name: n, school_name: sc, grade: g, class_id: c, student_pin: pin });
     closeModal(); await loadData();
 }
 

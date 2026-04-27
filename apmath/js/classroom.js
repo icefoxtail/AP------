@@ -36,7 +36,7 @@ async function handleClassBulkAtt(classId, status) {
     
     const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ entries })
     });
 
@@ -69,7 +69,7 @@ async function handleClassBulkHw(classId, status) {
     
     const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ entries })
     });
 
@@ -97,11 +97,13 @@ function renderClass(cid) {
     const bulkDisabledAttr = !summary.isScheduled ? 'disabled' : '';
     const bulkDisabledStyle = !summary.isScheduled ? 'opacity:0.5; pointer-events:none;' : '';
 
+    // [5F] 시험·성적 버튼 추가
     const opToolsPanel = `
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:15px;">
             <div style="display:flex; gap:8px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR 생성</button>
                 <button class="btn" style="flex:1; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrSubmitStatus('${cid}')">📊 제출 현황</button>
+                <button class="btn" style="flex:1; padding:10px; font-size:13px; border-color:var(--border);" onclick="openExamGradeView('${cid}')">📋 시험·성적</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
                 <button class="btn btn-primary" ${bulkDisabledAttr} style="flex:1; padding:12px; font-size:13px; font-weight:700; ${bulkDisabledStyle}" onclick="handleClassBulkAtt('${cid}', '등원')">✅ 전체 등원</button>
@@ -184,7 +186,7 @@ let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', a
 
 async function loadLedger() {
     try {
-        const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`);
+        const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`, { headers: getAuthHeader() });
         const data = await r.json();
         ledgerState.attendance = data.attendance || [];
         ledgerState.homework = data.homework || [];
@@ -246,7 +248,7 @@ async function handleBulkAtt(status) {
     const sids = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
-    const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ entries }) });
+    const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...getAuthHeader() }, body: JSON.stringify({ entries }) });
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
@@ -255,13 +257,10 @@ async function handleBulkHw(status) {
     const sids = cid ? state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id) : state.db.students.map(s => s.id);
     const stds = state.db.students.filter(s => sids.includes(s.id) && s.status === '재원');
     const entries = stds.map(s => ({ studentId: s.id, status, date: ledgerState.date }));
-    const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ entries }) });
+    const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...getAuthHeader() }, body: JSON.stringify({ entries }) });
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
-/**
- * 개별 출결 상태 전환 (4단계 최적화: 반 화면은 전체 loadData 생략)
- */
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date; const list = isLedger ? ledgerState.attendance : state.db.attendance;
@@ -280,9 +279,6 @@ async function toggleAtt(sid, date) {
     }
 }
 
-/**
- * 개별 숙제 상태 전환 (4단계 최적화: 반 화면은 전체 loadData 생략)
- */
 async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date; const list = isLedger ? ledgerState.homework : state.db.homework;
@@ -299,4 +295,89 @@ async function toggleHw(sid, date) {
         if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
         else renderDashboard();
     }
+}
+
+// [5F 보완] 반별 시험/성적 조회 모달 연동
+async function openExamGradeView(classId) {
+    const cls = state.db.classes.find(c => c.id === classId);
+    
+    // 반 소속 exam_sessions에서 시험명 목록 추출
+    // (향후 /api/exam-sessions/by-class 연동 예정)
+    const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
+    const sessions = state.db.exam_sessions.filter(es => ids.includes(es.student_id));
+    
+    // 시험명 + 날짜 기준으로 그룹핑
+    const examMap = {};
+    sessions.forEach(es => {
+        const key = `${es.exam_title}||${es.exam_date}`;
+        if (!examMap[key]) examMap[key] = { title: es.exam_title, date: es.exam_date, sessions: [] };
+        examMap[key].sessions.push(es);
+    });
+    const examList = Object.values(examMap).sort((a, b) => b.date.localeCompare(a.date));
+
+    const listHTML = examList.length
+        ? examList.map(ex => `
+            <div class="exam-grade-row" onclick="openExamDetail('${classId}','${ex.title.replace(/'/g,"\\'")}','${ex.date}')" style="padding: 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; cursor: pointer; background: var(--surface); box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <div style="font-weight:800; color:var(--primary);">${ex.title}</div>
+                <div style="font-size:12px; color:var(--secondary); margin-top:4px;">${ex.date} · <b>${ex.sessions.length}명</b> 제출 완료</div>
+            </div>`).join('')
+        : '<div style="opacity:0.5;text-align:center;padding:30px;">등록된 시험이 없습니다.</div>';
+
+    showModal(`📋 ${cls.name} 시험·성적`, `
+        <div style="display:flex;flex-direction:column;gap:8px;">${listHTML}</div>
+    `);
+}
+
+async function openExamDetail(classId, examTitle, examDate) {
+    const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
+    const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
+    const sessions = state.db.exam_sessions.filter(es =>
+        es.exam_title === examTitle && es.exam_date === examDate && ids.includes(es.student_id)
+    );
+    const submittedIds = new Set(sessions.map(s => s.student_id));
+    const qCount = sessions[0]?.question_count || 0;
+
+    const submitted = active.filter(s => submittedIds.has(s.id)).map(s => {
+        const sess = sessions.find(es => es.student_id === s.id);
+        const wrongs = state.db.wrong_answers.filter(w => w.session_id === sess?.id).map(w => w.question_id).sort((a,b)=>Number(a)-Number(b));
+        return { ...s, score: sess?.score ?? '-', sessionId: sess?.id, wrongs };
+    });
+    const pending = active.filter(s => !submittedIds.has(s.id));
+
+    // [5F 보완] 수정 버튼을 눌렀을 때, 기존 session ID를 넘기도록 준비
+    const submittedHTML = submitted.map(s => `
+        <tr>
+            <td style="padding:10px 4px;">${s.name}</td>
+            <td style="text-align:center;font-weight:800;color:var(--primary);padding:10px 4px;">${s.score}점</td>
+            <td style="font-size:11px;padding:10px 4px;color:var(--error);font-weight:600;">${s.wrongs.join(', ') || '없음'}</td>
+            <td style="text-align:center;padding:10px 4px;">
+                <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}')">수정</button>
+            </td>
+        </tr>`).join('');
+
+    const pendingHTML = pending.map(s => `
+        <tr style="background-color:var(--bg);">
+            <td style="padding:10px 4px; color:var(--secondary);">${s.name}</td>
+            <td colspan="2" style="opacity:0.5; text-align:center; font-size:12px; padding:10px 4px;">미제출</td>
+            <td style="text-align:center;padding:10px 4px;">
+                <button class="btn btn-primary" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','')">입력</button>
+            </td>
+        </tr>`).join('');
+
+    // [5F 보완] 모달 제목에서 HTML 태그 제거
+    showModal(`${examTitle} (${examDate})`, `
+        <div style="font-size:13px; color:var(--secondary); margin-bottom:12px; background:var(--bg); padding:10px; border-radius:8px; text-align:center;">
+            <b>${submitted.length + pending.length}명</b> 중 <b style="color:var(--success);">${submitted.length}명 제출</b>
+            ${qCount ? `<br><span style="font-size:11px; margin-top:4px; display:inline-block;">기준 문항 수: ${qCount}문항</span>` : ''}
+        </div>
+        <table style="width:100%;font-size:13px;border-collapse:collapse;">
+            <thead><tr style="border-bottom:2px solid var(--border);">
+                <th style="text-align:left;padding:8px 4px;">이름</th>
+                <th style="text-align:center;padding:8px 4px;">점수</th>
+                <th style="text-align:left;padding:8px 4px;">오답</th>
+                <th style="text-align:center;padding:8px 4px;">액션</th>
+            </tr></thead>
+            <tbody>${submittedHTML}${pendingHTML}</tbody>
+        </table>
+    `);
 }

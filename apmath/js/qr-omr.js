@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/qr-omr.js]
- * QR 코드 생성 및 OMR 성적 입력 도구
+ * QR 코드 생성 및 OMR 성적 입력 도구 (5F: sessionId 연동 및 OMR 동적 생성)
  */
 
 /**
@@ -134,32 +134,79 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         <h4 style="color:var(--success);margin:10px 0 5px;">✅ 제출 (${submitted.length})</h4>
         <table style="font-size:12px;">${submitted.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><b>${s.score}점</b></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
         <h4 style="color:var(--error);margin:16px 0 5px;">⏳ 미제출 (${pending.length})</h4>
-        <table style="font-size:12px;">${pending.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><button class="btn" style="padding:2px 8px;font-size:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
+        <table style="font-size:12px;">${pending.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><button class="btn" style="padding:2px 8px;font-size:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', 0, '${classId}', '')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
     `);
 }
 
 /**
- * 성적 입력 모달 (OMR) 오픈
+ * [5F] 성적 입력 모달 (OMR) 오픈 - 동적 렌더링 및 sessionId 지원
  */
-function openOMR(sid, presetTitle = '') {
+function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
+    const defaultQ = presetQ || todayExam?.q || 20;
 
     showModal('성적 직접 입력', `
-        시험명: <input id="omr-title" class="btn" value="${defaultTitle}" style="width:100%; text-align:left;">
-        <div class="omr-grid">${Array.from({length:10},(_,i)=>`<div class="omr-item">Q${i+1}<br><input type="checkbox" class="omr-q" value="${i+1}"></div>`).join('')}</div>
-    `, '저장', () => handleOMRSave(sid));
+        <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+                <label style="font-size:12px;color:var(--secondary);">시험명</label>
+                <input id="omr-title" class="btn" value="${defaultTitle}" style="width:100%;text-align:left;">
+            </div>
+            <div>
+                <label style="font-size:12px;color:var(--secondary);">문항 수</label>
+                <input id="omr-q" type="number" class="btn" value="${defaultQ}" min="1" max="50" style="width:100%;text-align:left;" oninput="rebuildOmrGrid()">
+            </div>
+            <div id="omr-grid-wrap">
+                <div class="omr-grid">${buildOmrItems(defaultQ)}</div>
+            </div>
+        </div>
+    `, '저장', () => handleOMRSave(sid, presetClassId, sessionId));
+}
+
+function buildOmrItems(q) {
+    return Array.from({length: q}, (_, i) =>
+        `<div class="omr-item">Q${i+1}<br><input type="checkbox" class="omr-q" value="${i+1}"></div>`
+    ).join('');
+}
+
+function rebuildOmrGrid() {
+    let q = parseInt(document.getElementById('omr-q').value) || 20;
+    q = Math.max(1, Math.min(50, q)); // Clamp 1~50
+    const wrap = document.getElementById('omr-grid-wrap');
+    if (wrap) wrap.innerHTML = `<div class="omr-grid">${buildOmrItems(q)}</div>`;
 }
 
 /**
- * 성적 저장 실행
+ * [5F] 성적 저장 실행 - sessionId 연동, classId fallback 및 점수 계산 반영
  */
-async function handleOMRSave(sid) {
-    const title = document.getElementById('omr-title').value;
+async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
+    const title = document.getElementById('omr-title').value.trim();
+    let q = parseInt(document.getElementById('omr-q').value) || 20;
+    q = Math.max(1, Math.min(50, q)); // 저장 직전 1~50 clamp
+
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
-    const score = (10-wrs.length)*10;
+    const score = Math.round(((q - wrs.length) / q) * 100);
     
-    const r = await api.patch('exam-sessions/new', { student_id: sid, exam_title: title, score, wrong_ids: wrs, exam_date: new Date().toLocaleDateString('sv-SE') });
+    // ClassId 결정 우선순위
+    let classId = presetClassId || state.ui?.currentClassId;
+    if (!classId) {
+        const mapObj = state.db.class_students.find(m => m.student_id === sid);
+        classId = mapObj ? mapObj.class_id : null;
+    }
+
+    const payload = {
+        student_id: sid, 
+        exam_title: title, 
+        score: score, 
+        wrong_ids: wrs, 
+        exam_date: new Date().toLocaleDateString('sv-SE'), 
+        question_count: q, 
+        class_id: classId
+    };
+    
+    const endpoint = sessionId ? `exam-sessions/${sessionId}` : 'exam-sessions/new';
+    const r = await api.patch(endpoint, payload);
+    
     if (!r?.success) { toast('저장 실패', 'warn'); return; }
     
     toast(`${score}점 저장됨`, 'info'); 
