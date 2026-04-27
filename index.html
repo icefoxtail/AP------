@@ -585,7 +585,8 @@
         .card-actions {
             border-top: 1px solid var(--card-border);
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            /* [5B-2] 변경: 3열 -> 4열로 확장 */
+            grid-template-columns: repeat(4, 1fr);
             background: linear-gradient(180deg, #fcfdff 0%, #f9fbff 100%);
         }
 
@@ -655,6 +656,43 @@
             text-align: center;
             box-shadow: 0 28px 60px rgba(0,0,0,0.22);
             border: 1px solid rgba(226,232,240,0.9);
+        }
+
+        /* [5B-2] 신규 추가: 반 선택 모달 전용 스타일 */
+        .class-select {
+            width: 100%;
+            height: 44px;
+            margin: 20px 0;
+            padding: 0 12px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            font-size: 14px;
+            font-weight: 600;
+            outline: none;
+            background: rgba(255,255,255,0.92);
+        }
+        .modal-btn-primary {
+            background: var(--blue-main);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+        .modal-btn-cancel {
+            background: #f1f5f9;
+            color: var(--text-sub);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
         }
 
         .modal-title {
@@ -777,6 +815,11 @@
                 width: calc(100% - 28px);
                 padding: 30px 22px;
             }
+
+            /* [5B-2] 버튼이 4개로 늘어남에 따라 텍스트가 깨지지 않도록 모바일 사이즈 보정 */
+            .action-btn {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
@@ -790,6 +833,16 @@
             <div class="qpp-opt" onclick="confirmQpp(6)">6</div>
         </div>
         <button class="modal-close-btn" onclick="closeModal()">다음에 하기</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="classModalOverlay">
+    <div class="modal-box">
+        <div class="modal-title">출제 학급 선택</div>
+        <div class="modal-sub">학생 오답을 수집할 반을 선택하세요.</div>
+        <div id="classModalBody">
+            </div>
+        <button class="modal-btn-cancel" onclick="closeModal()">취소</button>
     </div>
 </div>
 
@@ -1241,6 +1294,7 @@ function buildCard(ex) {
         ].filter(Boolean).join('');
     }
 
+    /* [5B-2] 버튼 확장: QR출력 추가 */
     card.innerHTML = `
         <div class="card-top"></div>
         <div class="card-body">
@@ -1257,22 +1311,31 @@ function buildCard(ex) {
             <div class="action-btn" data-action="exam">시험</div>
             <div class="action-btn" data-action="sol">해설</div>
             <div class="action-btn" data-action="ans">정답</div>
+            <div class="action-btn" data-action="qr">QR출력</div>
         </div>
     `;
 
+    /* [5B-2] 버튼 클릭 분기 처리 */
     card.querySelectorAll('.action-btn').forEach(btn => {
         btn.onclick = (e) => {
             e.stopPropagation();
-            openEngine(ex.file, btn.dataset.action);
+            const action = btn.dataset.action;
+            if (action === 'qr') {
+                openQrEngine(ex.file);
+            } else {
+                openEngine(ex.file, action);
+            }
         };
     });
 
     return card;
 }
 
-let _pendingFile, _pendingAction;
+/* [5B-2] 상태 변수 추가 및 핸들링 로직 */
+let _pendingFile, _pendingAction, _pendingSubmitQr = false, _pendingQpp;
 
 function openEngine(file, action) {
+    _pendingSubmitQr = false;
     if (action === 'exam') {
         _pendingFile = file;
         _pendingAction = action;
@@ -1283,24 +1346,98 @@ function openEngine(file, action) {
     }
 }
 
+function openQrEngine(file) {
+    _pendingSubmitQr = true;
+    _pendingFile = file;
+    _pendingAction = 'exam';
+    document.getElementById('qppModal').classList.add('open');
+}
+
 function confirmQpp(qpp) {
     closeModal();
     const item = normalizedExams().find(e => e.file === _pendingFile);
-    if (item) goEngine(item, _pendingAction, qpp);
+    if (item) {
+        if (_pendingSubmitQr) {
+            _pendingQpp = qpp;
+            openClassSelectionModalForIndex(item, qpp);
+        } else {
+            goEngine(item, _pendingAction, qpp);
+        }
+    }
+}
+
+/* [5B-2] 신규 추가: API 기반 학급 선택 모달 로직 */
+async function openClassSelectionModalForIndex(item, qpp) {
+    const overlay = document.getElementById('classModalOverlay');
+    const body = document.getElementById('classModalBody');
+    
+    overlay.classList.add('open');
+    body.innerHTML = '<div style="margin:20px 0; color:var(--text-sub);">반 목록을 불러오는 중...</div>';
+    
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/initial-data');
+        if (!res.ok) throw new Error('API Request Failed');
+        
+        const data = await res.json();
+        if (data && Array.isArray(data.classes)) {
+            if (data.classes.length === 0) {
+                body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
+                return;
+            }
+            
+            let selectHtml = '<select id="index-class-select" class="class-select">';
+            data.classes.forEach(c => {
+                selectHtml += `<option value="${c.id}">${c.name} (${c.grade})</option>`;
+            });
+            selectHtml += '</select>';
+            selectHtml += '<button class="modal-btn-primary" onclick="confirmClassSelectionForIndex()">확인</button>';
+            
+            body.innerHTML = selectHtml;
+        } else {
+            throw new Error('Invalid data format');
+        }
+    } catch(e) {
+        console.error(e);
+        body.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+    }
 }
 
 function closeModal() {
     document.getElementById('qppModal').classList.remove('open');
+    const classModal = document.getElementById('classModalOverlay');
+    if (classModal) classModal.classList.remove('open');
 }
 
-function goEngine(item, action, qpp) {
+function confirmClassSelectionForIndex() {
+    const select = document.getElementById('index-class-select');
+    if (!select) return;
+    const selectedClassId = select.value;
+    closeModal(); // [Fix] closeClassModal() -> closeModal()
+    
+    const item = normalizedExams().find(e => e.file === _pendingFile);
+    if (item) {
+        goEngine(item, _pendingAction, _pendingQpp, {
+            submitQr: true,
+            classId: selectedClassId
+        });
+    }
+}
+
+/* [5B-2] 변경: goEngine 옵션 객체 지원 및 URLSearchParams 사용으로 파라미터 안전 바인딩 */
+function goEngine(item, action, qpp, options = {}) {
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
     const title = `${baseTitle} ${item.subject || ''}`.trim();
 
-    window.open(
-        `engine.html?mode=${action}&qpp=${qpp}&data=${encodeURIComponent('exams/' + item.file)}&title=${encodeURIComponent(title)}`,
-        '_blank'
-    );
+    const url = new URL('engine.html', window.location.href);
+    url.searchParams.set('mode', action);
+    url.searchParams.set('qpp', qpp);
+    url.searchParams.set('data', 'exams/' + item.file);
+    url.searchParams.set('title', title);
+
+    if (options.submitQr) url.searchParams.set('submitQr', '1');
+    if (options.classId) url.searchParams.set('class', options.classId);
+
+    window.open(url.toString(), '_blank');
 }
 
 function resetView() {

@@ -398,7 +398,7 @@ function buildSubmitQrTargetUrl() {
     const q = params.get('q') || AppState.data.length || 0;
     const exam = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
 
-    const url = new URL(window.location.origin + '/check/');
+    const url = new URL('./check/', window.location.href);
     if (classId) url.searchParams.set('class', classId);
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
