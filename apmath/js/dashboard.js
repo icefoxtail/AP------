@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
- * 대시보드 및 원장 전용 위험 관제센터 (5G Phase 1 - 픽스: 원장 역할 분리 엄격 적용)
+ * 대시보드 및 원장 전용 학원 운영센터 (5G Phase 3 - 운영센터 심화 및 모바일 최적화)
  */
 
 function copyPhoneNumber(text) {
@@ -49,7 +49,6 @@ function computeRiskStudents() {
                 scoreRisk = true;
                 reasons.push(`최근 3회 평균 ${Math.round(avg)}점`);
             } else if (exams.length >= 3) {
-                // index 0: 최신, index 1: 이전, index 2: 그 이전
                 if (exams[0].score < exams[1].score && exams[1].score < exams[2].score) {
                     scoreRisk = true;
                     reasons.push(`성적 2회 연속 하락`);
@@ -97,7 +96,57 @@ function computeRiskStudents() {
     return risks;
 }
 
-// [5G] 원장 전용 관제센터 렌더링
+/**
+ * [5G-3] 원장 운영센터 요약 카드 클릭 시 목록 보기 모달
+ */
+function openAdminStudentList(type) {
+    const todayTime = new Date(new Date().toLocaleDateString('sv-SE')).getTime();
+    let list = [], title = "";
+
+    if (type === 'active') {
+        list = state.db.students.filter(s => s.status === '재원');
+        title = "재원생 목록";
+    } else if (type === 'new') {
+        list = state.db.students.filter(s => {
+            if (s.status !== '재원' || !s.created_at) return false;
+            return (todayTime - new Date(s.created_at).getTime()) / (1000*3600*24) <= 30;
+        });
+        title = "신규생 목록 (최근 30일)";
+    } else if (type === 'discharged') {
+        list = state.db.students.filter(s => s.status === '제적');
+        title = "퇴원생 목록";
+    } else if (type === 'risk') {
+        list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r }));
+        title = "위험학생 목록";
+    }
+
+    const rows = list.map(s => {
+        const cId = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
+        const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
+        let riskDetails = "";
+        if (s.riskInfo) {
+            riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:4px;"><b>위험:</b> ${s.riskInfo.riskTypes.join(', ')} (${s.riskInfo.reasons.join(' · ')})</div>`;
+        }
+        return `
+            <div style="padding:12px 4px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+                <div style="flex:1; padding-right:10px;">
+                    <div style="font-weight:700; font-size:14px;">${s.name} <span style="font-size:11px; color:var(--secondary); font-weight:normal;">${s.school_name} ${s.grade} | ${cName}</span></div>
+                    <div style="font-size:11px; color:var(--secondary); margin-top:2px;">상태: ${s.status} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</div>
+                    ${riskDetails}
+                </div>
+                <button class="btn" style="padding:6px 12px; font-size:11px; white-space:nowrap;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세</button>
+            </div>
+        `;
+    }).join('');
+
+    showModal(`📋 ${title} (${list.length}명)`, `
+        <div style="max-height:65vh; overflow-y:auto; padding-right:5px;">
+            ${rows || '<div style="text-align:center; padding:30px; opacity:0.5;">대상 학생이 없습니다.</div>'}
+        </div>
+    `);
+}
+
+// [5G] 원장 전용 운영센터 렌더링 (5G-3 픽스: 명칭 변경, 버튼 삭제, 클릭 추가, 모바일 최적화)
 function renderAdminControlCenter() {
     const root = document.getElementById('app-root');
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -114,32 +163,32 @@ function renderAdminControlCenter() {
     
     const risks = computeRiskStudents();
 
-    // 상단 요약 카드 (5G-Fix: 선생님 화면으로 넘어가는 버튼 원천 삭제)
+    // 상단 요약 카드 (5G-3: 제목 변경 및 클릭 이벤트/반응형 그리드 적용)
     const summaryHtml = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 style="margin:0; font-size:18px;">🏢 학원 관제센터</h3>
+            <h3 style="margin:0; font-size:18px;">🏢 학원 운영센터</h3>
         </div>
-        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:28px;">
-            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--primary);"><div style="font-size:22px; font-weight:900;">${activeStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">총 재원생</div></div>
-            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--success);"><div style="font-size:22px; font-weight:900; color:var(--success);">${newStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">신규 (30일)</div></div>
-            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--secondary);"><div style="font-size:22px; font-weight:900; color:var(--secondary);">${dischargedStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">퇴원생</div></div>
-            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--error); background:${risks.length > 0 ? '#fce8e6' : 'white'};"><div style="font-size:22px; font-weight:900; color:var(--error);">${risks.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">위험학생</div></div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:28px;">
+            <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--primary);"><div style="font-size:22px; font-weight:900;">${activeStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">총 재원생</div></div>
+            <div class="card" onclick="openAdminStudentList('new')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--success);"><div style="font-size:22px; font-weight:900; color:var(--success);">${newStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">신규 (30일)</div></div>
+            <div class="card" onclick="openAdminStudentList('discharged')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--secondary);"><div style="font-size:22px; font-weight:900; color:var(--secondary);">${dischargedStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">퇴원생</div></div>
+            <div class="card" onclick="openAdminStudentList('risk')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--error); background:${risks.length > 0 ? '#fce8e6' : 'white'};"><div style="font-size:22px; font-weight:900; color:var(--error);">${risks.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">위험학생</div></div>
         </div>
     `;
 
-    // 학생 검색 섹션
+    // 학생 검색 섹션 (5G-3: 모바일 flex-wrap 보정)
     const searchHtml = `
         <div class="card" style="margin-bottom:28px;">
             <h4 style="margin:0 0 10px 0; font-size:14px;">🔍 학생 통합 검색</h4>
-            <div style="display:flex; gap:8px;">
-                <input id="admin-search-input" class="btn" placeholder="이름으로 검색..." style="flex:1; text-align:left;" onkeyup="if(event.key==='Enter') renderAdminStudentSearch()">
-                <button class="btn btn-primary" onclick="renderAdminStudentSearch()">검색</button>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <input id="admin-search-input" class="btn" placeholder="이름으로 검색..." style="flex:1; min-width:180px; text-align:left;" onkeyup="if(event.key==='Enter') renderAdminStudentSearch()">
+                <button class="btn btn-primary" style="min-width:80px;" onclick="renderAdminStudentSearch()">검색</button>
             </div>
             <div id="admin-search-results" style="margin-top:12px; font-size:13px; max-height:200px; overflow-y:auto;"></div>
         </div>
     `;
 
-    // 위험학생 목록 렌더링
+    // 위험학생 목록 렌더링 (5G-3: 모바일 상세 버튼 위치 보정)
     const riskRows = risks.map(r => {
         const badges = r.riskTypes.map(t => {
             let color = 'var(--secondary)';
@@ -159,12 +208,12 @@ function renderAdminControlCenter() {
 
         return `
             <div style="padding:14px; border:1px solid var(--border); border-radius:8px; margin-bottom:10px; background:var(--surface); box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-                    <div>
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+                    <div style="flex:1; min-width:150px;">
                         <div style="font-weight:800; font-size:15px; color:var(--primary); margin-bottom:4px;">${r.student.name} <span style="font-size:12px; color:var(--secondary); font-weight:normal;">${r.className} | ${r.student.school_name} ${r.student.grade}</span></div>
                         <div style="display:flex; gap:4px; flex-wrap:wrap;">${badges}</div>
                     </div>
-                    <button class="btn" style="padding:4px 8px; font-size:11px; color:var(--primary); border-color:var(--border);" onclick="renderStudentDetail('${r.student.id}')">상세 정보</button>
+                    <button class="btn" style="padding:6px 12px; font-size:11px; color:var(--primary); border-color:var(--border);" onclick="renderStudentDetail('${r.student.id}')">상세 정보</button>
                 </div>
                 <div style="background:#f8f9fa; padding:8px 10px; border-radius:6px; margin-top:8px;">
                     ${reasonsHtml}
@@ -183,7 +232,7 @@ function renderAdminControlCenter() {
 
     root.innerHTML = summaryHtml + searchHtml + riskSectionHtml;
     const scopeBtn = document.querySelector('header nav button');
-    if (scopeBtn) scopeBtn.style.display = 'none'; // 원장 메인에서는 토글 불필요
+    if (scopeBtn) scopeBtn.style.display = 'none';
 }
 
 function renderAdminStudentSearch() {

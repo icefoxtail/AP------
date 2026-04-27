@@ -587,9 +587,24 @@ function updateCartUI() {
 async function openClassSelectionModal() {
     const overlay = document.getElementById('class-modal-overlay'), body = document.getElementById('class-modal-body');
     overlay.style.display = 'flex'; body.innerHTML = '<p style="text-align:center; padding:20px; color:var(--gray-500);">반 목록을 불러오는 중...</p>';
+
+    // [5G] APMATH_SESSION 인증 정보 로드
+    let authHeader = {};
     try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/initial-data'), data = await res.json();
-        if (data && Array.isArray(data.classes)) {
+        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (!session || !session.login_id || !session.raw_password) {
+            body.innerHTML = '<div style="color:#ef4444; font-size:13px;">AP Math OS 로그인 후 다시 시도하세요.</div>'; return;
+        }
+        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+    } catch(e) {
+        body.innerHTML = '<div style="color:#ef4444; font-size:13px;">AP Math OS 로그인 후 다시 시도하세요.</div>'; return;
+    }
+
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes', { headers: authHeader });
+        if (res.status === 401) { body.innerHTML = '<div style="color:#ef4444; font-size:13px;">AP Math OS 로그인 후 다시 시도하세요.</div>'; return; }
+        const data = await res.json();
+        if (data && data.success && Array.isArray(data.classes)) {
             if (data.classes.length === 0) {
                 body.innerHTML = '<div style="color:red; font-size:13px;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>'; return;
             }

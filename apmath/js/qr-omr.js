@@ -1,8 +1,29 @@
 /**
  * AP Math OS v26.1.2 [js/qr-omr.js]
- * QR 코드 생성 및 OMR 성적 입력 도구 (5G: OMR 동적 문항 및 오답 프리체크)
+ * QR 코드 생성 및 OMR 성적 입력 도구 (5G-3: 경로 안정화 및 카카오톡 공유 추가)
  */
 
+/**
+ * [5G-3] 학생용 QR 접속 기본 URL 계산 (경로 안정화)
+ */
+function getCheckBaseUrl() {
+    const origin = window.location.origin;
+    let path = window.location.pathname;
+
+    // index.html 경로 제거
+    path = path.replace(/\/index\.html$/, '/');
+
+    // 파일명이 포함된 경우를 대비해 마지막 슬래시 기준으로 경로 추출
+    if (!path.endsWith('/')) {
+        path = path.substring(0, path.lastIndexOf('/') + 1);
+    }
+
+    return origin + path + 'check/';
+}
+
+/**
+ * QR 코드 생성 모달 오픈
+ */
 function openQrGenerator(cid) {
     const cls = state.db.classes.find(c => c.id === cid);
     const today = new Date().toLocaleDateString('sv-SE');
@@ -28,14 +49,21 @@ function openQrGenerator(cid) {
                 <input id="qr-date" type="date" class="btn" value="${today}" style="width:100%; text-align:left;">
             </div>
             <div id="qr-result-area" class="hidden" style="text-align:center; margin-top:15px; border-top:1px solid var(--border); padding-top:15px;">
-                <img id="qr-img" style="width:180px; height:180px; margin-bottom:10px; border: 1px solid #ddd; padding: 5px; background: white;">
+                <img id="qr-img" style="width:180px; max-width:80vw; height:auto; margin-bottom:10px; border: 1px solid #ddd; padding: 5px; background: white;">
                 <div id="qr-url" style="font-size:11px; word-break:break-all; background:#f1f3f4; padding:8px; border-radius:8px; margin-bottom:10px; color:var(--secondary);"></div>
-                <button class="btn btn-primary" style="width:100%;" onclick="copyQrUrl()">URL 복사</button>
+                
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn btn-primary" style="flex:1; min-width:120px; padding:12px;" onclick="shareQrUrl()">카카오톡 공유</button>
+                    <button class="btn" style="flex:1; min-width:120px; padding:12px;" onclick="copyQrUrl()">URL 복사</button>
+                </div>
             </div>
         </div>
     `, 'QR 코드 생성', generateQrCode);
 }
 
+/**
+ * QR 코드 생성 실행
+ */
 function generateQrCode() {
     const cid = state.ui.currentClassId;
     const exam = document.getElementById('qr-exam').value.trim();
@@ -44,8 +72,8 @@ function generateQrCode() {
 
     if (!exam || q < 1 || q > 50) { toast('입력 정보를 확인하세요 (문항 수 1~50).', 'warn'); return; }
 
-    const appBasePath = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/apmath\/?$/, '/');
-    const baseUrl = window.location.origin + appBasePath + 'check/';
+    // [5G-3] 보정된 baseUrl 적용 (apmath 경로 보존)
+    const baseUrl = getCheckBaseUrl();
     const fullUrl = `${baseUrl}?class=${cid}&exam=${encodeURIComponent(exam)}&q=${q}&date=${date}`;
     
     const qrImg = document.getElementById('qr-img');
@@ -64,16 +92,49 @@ function generateQrCode() {
     }
 }
 
+/**
+ * [5G-3] 카카오톡(Web Share API) 공유 함수
+ */
+function shareQrUrl() {
+    const url = document.getElementById('qr-url')?.innerText || '';
+    const exam = document.getElementById('qr-exam')?.value?.trim() || '시험';
+    const q = document.getElementById('qr-q')?.value || '';
+    const clsName = state.db.classes.find(c => c.id === state.ui.currentClassId)?.name || '';
+
+    const shareText = `[AP Math OS]\n${clsName} ${exam}\n${q}문항 오답 체크 링크입니다.\n${url}`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'AP Math OS 오답 체크',
+            text: shareText,
+            url: url
+        }).then(() => {
+            toast('공유창을 열었습니다.', 'info');
+        }).catch(() => {
+            copyQrUrl();
+        });
+    } else {
+        copyQrUrl();
+        toast('공유 기능을 지원하지 않아 URL을 복사했습니다.', 'warn');
+    }
+}
+
+/**
+ * QR URL 복사
+ */
 function copyQrUrl() {
     const url = document.getElementById('qr-url')?.innerText || '';
     if (!url) return;
     navigator.clipboard.writeText(url).then(() => {
         toast('URL 복사 완료!', 'info');
-        const btn = document.querySelector('#qr-result-area .btn-primary');
+        const btn = document.querySelector('#qr-result-area .btn:not(.btn-primary)');
         if (btn) { const t = btn.innerText; btn.innerText = '복사됨 ✅'; setTimeout(() => btn.innerText = t, 1000); }
     }).catch(() => toast('복사 실패', 'warn'));
 }
 
+/**
+ * 학급의 시험 제출 통계 계산
+ */
 function computeQrSubmitStatus(classId, examTitle, examDate) {
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
@@ -88,6 +149,9 @@ function computeQrSubmitStatus(classId, examTitle, examDate) {
     return { submitted, pending };
 }
 
+/**
+ * [5G-2/3] 특정 시험의 문항 수를 DB에서 추론하는 헬퍼 함수
+ */
 function findExamQuestionCount(examTitle = '', classId = '') {
     if (!examTitle) return 0;
     const ids = classId
@@ -103,6 +167,9 @@ function findExamQuestionCount(examTitle = '', classId = '') {
     return found ? parseInt(found.question_count) : 0;
 }
 
+/**
+ * 시험 제출 현황 모달 오픈
+ */
 function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const today = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => c.id === classId);
@@ -127,6 +194,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
     const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
     
+    // [5G-3] 문항 수 추론 포함
     const inferredQCount = findExamQuestionCount(examTitle, classId);
     
     showModal('📊 제출 현황', `
@@ -141,26 +209,23 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 }
 
 /**
- * [5G] 성적 입력 모달 오픈 - 기존 오답 프리체크 기능 추가
+ * 성적 입력 모달 (OMR) 오픈 - 동적 추론 및 오답 프리체크
  */
 function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
 
-    // 1. Session ID가 있으면 DB에서 바로 꺼내옴
     const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
     
-    // 2. 동적 추론 로직
     const inferredQ = session?.question_count 
         || presetQ 
         || findExamQuestionCount(presetTitle, presetClassId) 
         || todayExam?.q 
         || 20;
 
-    // 3. 1~50 범위 클램프
     const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
 
-    // [5G] 4. 기존 오답 번호 추출 (프리체크용)
+    // [5G-2/3] 기존 오답 번호 추출 (프리체크용)
     const checkedWrongIds = sessionId 
         ? state.db.wrong_answers
             .filter(w => w.session_id === sessionId)
@@ -184,7 +249,7 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
     `, '저장', () => handleOMRSave(sid, presetClassId, sessionId));
 }
 
-// [5G] checkedIds 배열을 받아 기존 오답에 checked 속성 부여
+// [5G-2/3] 오답 프리체크를 위한 build 함수 확장
 function buildOmrItems(q, checkedIds = []) {
     return Array.from({length: q}, (_, i) => {
         const qNum = String(i + 1);
@@ -196,7 +261,6 @@ function buildOmrItems(q, checkedIds = []) {
 function rebuildOmrGrid() {
     let q = parseInt(document.getElementById('omr-q').value) || 20;
     q = Math.max(1, Math.min(50, q)); 
-    // 새로고침 시 기존 오답 유지는 DOM 파싱 등 복잡도가 올라가므로 현재 화면의 오답을 백업하여 리렌더링
     const currentChecked = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const wrap = document.getElementById('omr-grid-wrap');
     if (wrap) wrap.innerHTML = `<div class="omr-grid">${buildOmrItems(q, currentChecked)}</div>`;
