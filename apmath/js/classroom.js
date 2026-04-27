@@ -402,7 +402,11 @@ async function openExamDetail(classId, examTitle, examDate) {
                 </div>
             </td>
             <td style="text-align:center;padding:10px 4px;">
-                <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}')">수정</button>
+                <div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;">
+                    <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}')">수정</button>
+                    <button class="btn" style="padding:4px 8px;font-size:11px;color:var(--warning);border-color:var(--warning);" onclick="handleResetExamWrongsFromClass('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g,"\\'")}','${examDate}')">오답초기화</button>
+                    <button class="btn" style="padding:4px 8px;font-size:11px;color:var(--error);border-color:var(--error);" onclick="handleDeleteExamSessionFromClass('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g,"\\'")}','${examDate}')">삭제</button>
+                </div>
             </td>
         </tr>`;
     }).join('');
@@ -420,6 +424,9 @@ async function openExamDetail(classId, examTitle, examDate) {
         <div style="font-size:13px; color:var(--secondary); margin-bottom:12px; background:var(--bg); padding:10px; border-radius:8px; text-align:center;">
             <b>${submitted.length + pending.length}명</b> 중 <b style="color:var(--success);">${submitted.length}명 제출</b>
             ${qCount ? `<br><span style="font-size:11px; margin-top:4px; display:inline-block;">기준 문항 수: ${qCount}문항</span>` : ''}
+        </div>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px;flex-wrap:wrap;">
+            <button class="btn" style="padding:7px 10px;font-size:12px;color:var(--error);border-color:var(--error);" onclick="handleDeleteWholeExamFromClass('${classId}','${examTitle.replace(/'/g,"\\'")}','${examDate}',${submitted.length})">🗑 이 시험 전체 삭제</button>
         </div>
         <div style="margin-bottom:12px;">
             <div style="font-size:13px;font-weight:900;margin-bottom:6px;color:var(--primary);">📌 반 취약 단원 TOP</div>

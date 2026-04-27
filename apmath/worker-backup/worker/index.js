@@ -372,6 +372,44 @@ export default {
 
         // --- 8. 시험 세션 및 오답 ---
         if (resource === 'exam-sessions') {
+          if (method === 'DELETE' && id === 'by-exam') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+            const classId = url.searchParams.get('class') || '';
+            const examTitle = url.searchParams.get('exam') || '';
+            const examDate = url.searchParams.get('date') || '';
+
+            if (!classId || !examTitle || !examDate) {
+              return new Response(JSON.stringify({ success: false, error: 'class, exam, date required' }), { status: 400, headers });
+            }
+            if (!(await canAccessClass(teacher, classId, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            const targets = await env.DB.prepare(`
+              SELECT id
+              FROM exam_sessions
+              WHERE exam_title = ?
+                AND exam_date = ?
+                AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+            `).bind(examTitle, examDate, classId).all();
+
+            const sessionIds = (targets.results || []).map(r => r.id).filter(Boolean);
+            if (!sessionIds.length) {
+              return new Response(JSON.stringify({ success: true, deleted: 0 }), { headers });
+            }
+
+            const stmts = [];
+            for (const sessionId of sessionIds) {
+              stmts.push(env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId));
+              stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
+            }
+            await env.DB.batch(stmts);
+
+            return new Response(JSON.stringify({ success: true, deleted: sessionIds.length }), { headers });
+          }
+
           if (method === 'GET' && id === 'by-class') {
             const classId = url.searchParams.get('class');
             const examTitle = url.searchParams.get('exam') || null;
@@ -431,8 +469,34 @@ export default {
             await env.DB.batch(stmts);
             return new Response(JSON.stringify({ success: true, id: sid }), { headers });
           }
+          if (method === 'DELETE' && path[3] === 'wrongs') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+            const session = await env.DB.prepare('SELECT student_id FROM exam_sessions WHERE id = ?').bind(id).first();
+            if (!session) return new Response(JSON.stringify({ success: false, error: 'session not found' }), { status: 404, headers });
+            if (!(await canAccessStudent(teacher, session.student_id, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            await env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+
           if (method === 'DELETE') {
-            await env.DB.batch([env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(id), env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(id)]);
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+            const session = await env.DB.prepare('SELECT student_id FROM exam_sessions WHERE id = ?').bind(id).first();
+            if (!session) return new Response(JSON.stringify({ success: false, error: 'session not found' }), { status: 404, headers });
+            if (!(await canAccessStudent(teacher, session.student_id, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            await env.DB.batch([
+              env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(id),
+              env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(id)
+            ]);
             return new Response(JSON.stringify({ success: true }), { headers });
           }
         }

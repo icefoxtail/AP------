@@ -17,7 +17,7 @@ async function renderStudentDetail(sid) {
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
             .map(w => buildWrongUnitChip(e, w.question_id))
             .join('');
-        return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
+        return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;"><button class="btn" style="color:var(--warning); border-color:var(--warning); padding:2px 8px; font-size:11px;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답초기화</button><button class="btn" style="color:var(--error); border-color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></div></td></tr>`;
     }).join('');
     
     const cnsList = state.db.consultations.filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.id).localeCompare(String(a.id)));
@@ -182,7 +182,33 @@ async function handleRestore(sid) {
 }
 
 async function handleDeleteSession(eid, sid) {
-    if(confirm('기록을 삭제하시겠습니까?')) { await api.delete('exam-sessions', eid); closeModal(); await loadData(); renderStudentDetail(sid); }
+    if (!confirm('이 시험 기록을 삭제하시겠습니까?\n연결된 오답 기록도 함께 삭제됩니다.')) return;
+
+    const r = await api.delete('exam-sessions', eid);
+    if (!r?.success) {
+        toast(r?.error || '시험 기록 삭제 실패', 'warn');
+        return;
+    }
+
+    toast('시험 기록이 삭제되었습니다.', 'info');
+    closeModal();
+    await loadData();
+    renderStudentDetail(sid);
+}
+
+async function handleResetSessionWrongs(eid, sid) {
+    if (!confirm('이 시험의 오답번호만 초기화하시겠습니까?\n점수와 시험 기록은 그대로 유지됩니다.')) return;
+
+    const r = await api.delete('exam-sessions', `${eid}/wrongs`);
+    if (!r?.success) {
+        toast(r?.error || '오답번호 초기화 실패', 'warn');
+        return;
+    }
+
+    toast('오답번호가 초기화되었습니다.', 'info');
+    closeModal();
+    await loadData();
+    renderStudentDetail(sid);
 }
 
 function openEditStudent(sid) {
