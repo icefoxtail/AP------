@@ -119,10 +119,24 @@
         .panel-cart { width: 340px; flex-shrink: 0; border-right: none; }
         .cart-item { padding: 12px; border: 1px solid var(--gray-100); border-radius: 10px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; background: white; }
         .cart-footer { padding: 20px; border-top: 1px solid var(--gray-100); background: white; position: sticky; bottom: 0; }
-        .btn-main { width: 100%; height: 52px; border: none; border-radius: var(--radius-md); background: var(--blue); color: white; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-main { width: 100%; height: 52px; border: none; border-radius: var(--radius-md); background: var(--blue); color: white; font-size: 15px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; }
+        .btn-main:hover { opacity: 0.9; }
 
         .empty-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--gray-300); text-align: center; padding: 40px; }
         .empty-placeholder i { font-size: 48px; margin-bottom: 15px; }
+
+        /* [5D-2] 모달 UI */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: none; align-items: center;
+            justify-content: center; z-index: 2000;
+        }
+        .modal-content {
+            background: white; padding: 24px; border-radius: 12px; width: 320px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 16px;
+        }
+        .modal-title { font-size: 16px; font-weight: 800; color: var(--text-main); }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
 
         @media (max-width: 900px) {
             .mixer-container { flex-direction: column; height: auto; }
@@ -241,12 +255,34 @@
                 <option value="6">6문항/P</option>
                 <option value="8">8문항/P</option>
             </select>
-            <button class="btn-main" onclick="openMixedEngine()">시험지 생성</button>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button class="btn-main" onclick="openMixedEngine(false)">시험지 생성</button>
+                <button class="btn-main" style="background: var(--navy); border: 1px solid var(--navy-2);" onclick="openClassSelectionModal()">
+                    <i class="fa-solid fa-qrcode"></i> AP 제출 QR 포함 출력
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="class-modal-overlay" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-title">출제 학급 선택</div>
+        <div id="class-modal-body">
+            </div>
+        <div class="modal-actions">
+            <button class="btn-action reset" style="padding:8px 16px;" onclick="closeClassModal()">취소</button>
+            <button class="btn-action primary" style="padding:8px 16px;" onclick="confirmClassSelection()">확인</button>
         </div>
     </div>
 </div>
 
 <script>
+/**
+ * [5D-2] 필수 수정 1: LEGACY_TO_KEY_MAP 방어 코드
+ */
+const LEGACY_TO_KEY_MAP = window.LEGACY_TO_KEY_MAP || {};
+
 /**
  * 필터 패널 토글 로직
  */
@@ -702,7 +738,7 @@ function updateCartUI() {
 }
 
 /**
- * [Core] 난이도 정렬 가중치 함수 (상/중/하 3단계 최종본)
+ * [Core] 난이도 정렬 가중치 함수
  */
 function getLevelRank(level, mode = 'high-first') {
     const table = mode === 'low-first'
@@ -712,9 +748,62 @@ function getLevelRank(level, mode = 'high-first') {
 }
 
 /**
- * [Core] 제목 메타 전달 강화된 시험지 생성 함수
+ * [5D-2] 모달 로직: API 통신 및 UI 렌더링
  */
-function openMixedEngine() {
+async function openClassSelectionModal() {
+    if(cart.length === 0) return alert('카트가 비어있습니다.');
+    
+    const overlay = document.getElementById('class-modal-overlay');
+    const body = document.getElementById('class-modal-body');
+    
+    overlay.style.display = 'flex';
+    body.innerHTML = '<div style="text-align:center; padding:20px; color:var(--gray-500);"><i class="fa-solid fa-spinner fa-spin"></i> 반 목록을 불러오는 중...</div>';
+    
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/initial-data');
+        if (!res.ok) throw new Error('API Request Failed');
+        
+        const data = await res.json();
+        if (data && Array.isArray(data.classes)) {
+            if (data.classes.length === 0) {
+                body.innerHTML = '<div style="color:red; font-size:13px;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
+                return;
+            }
+            
+            let selectHtml = '<select id="modal-class-select" class="form-select" style="width:100%;">';
+            data.classes.forEach(c => {
+                selectHtml += `<option value="${c.id}">${c.name} (${c.grade})</option>`;
+            });
+            selectHtml += '</select>';
+            
+            body.innerHTML = selectHtml;
+        } else {
+            throw new Error('Invalid data format received');
+        }
+    } catch(e) {
+        console.error(e);
+        body.innerHTML = '<div style="color:#ef4444; font-size:13px; word-break:keep-all;">반 목록을 불러오지 못했습니다. AP Math OS 연결을 확인하세요.</div>';
+    }
+}
+
+function closeClassModal() {
+    document.getElementById('class-modal-overlay').style.display = 'none';
+}
+
+function confirmClassSelection() {
+    const select = document.getElementById('modal-class-select');
+    if (!select) return; // 에러 또는 로딩 중일 때는 동작 안 함
+    
+    const selectedClassId = select.value;
+    closeClassModal();
+    openMixedEngine(true, selectedClassId);
+}
+
+/**
+ * [Core] 제목 메타 전달 강화된 시험지 생성 함수
+ * [5D-2] classId 파라미터 추가
+ */
+function openMixedEngine(withSubmitQr = false, classId = "") {
     if(cart.length === 0) return alert('카트가 비어있습니다.');
     const orderMode = document.getElementById('cart-level-order').value;
     let exportCart = [...cart];
@@ -740,7 +829,18 @@ function openMixedEngine() {
     const sessionKey = 'mix_' + Date.now();
     localStorage.setItem('mixedQuestions_' + sessionKey, JSON.stringify(exportCart));
     localStorage.setItem('mixedMeta_' + sessionKey, JSON.stringify(meta));
-    window.open(`mixed_engine.html?qpp=${document.getElementById('print-qpp').value}&key=${sessionKey}`, '_blank');
+    
+    let targetUrl = `mixed_engine.html?qpp=${document.getElementById('print-qpp').value}&key=${sessionKey}`;
+    
+    // 5D-2 로직: AP 제출 QR 포함 출력 시 파라미터 및 classId 바인딩
+    if (withSubmitQr) {
+        targetUrl += '&submitQr=1';
+        if (classId) {
+            targetUrl += '&class=' + encodeURIComponent(classId);
+        }
+    }
+    
+    window.open(targetUrl, '_blank');
 }
 </script>
 </body>
