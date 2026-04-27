@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/classroom.js]
- * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (3C 최종 보정)
+ * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (4단계: 오프라인 방어 및 최적화, HTML 속성 보정)
  */
 
 function formatClassScheduleDays(daysStr) {
@@ -17,9 +17,14 @@ function isClassScheduledToday(clsId) {
 }
 
 /**
- * 3C: 반 화면 전용 전체 출결 처리 (ledgerState 독립)
+ * 4단계: 오프라인 방어 적용된 반 화면 전용 출결 일괄 처리
  */
 async function handleClassBulkAtt(classId, status) {
+    if (!navigator.onLine) {
+        toast("오프라인 상태에서는 전체 처리를 할 수 없습니다. 연결 후 다시 시도하세요.", "warn");
+        return;
+    }
+
     const cls = state.db.classes.find(c => c.id === classId);
     if (!confirm(`${cls.name} 학생 전체를 "${status}" 처리할까요?`)) return;
 
@@ -36,7 +41,7 @@ async function handleClassBulkAtt(classId, status) {
     });
 
     if (r.ok) {
-        toast(`${cls.name} 전체 ${status} 완료`, 'info'); // 3C 보정: info로 통일
+        toast(`${cls.name} 전체 ${status} 완료`, 'info');
         await refreshDataOnly();
         renderClass(classId);
     } else {
@@ -45,9 +50,14 @@ async function handleClassBulkAtt(classId, status) {
 }
 
 /**
- * 3C: 반 화면 전용 전체 숙제 처리 (ledgerState 독립)
+ * 4단계: 오프라인 방어 적용된 반 화면 전용 숙제 일괄 처리
  */
 async function handleClassBulkHw(classId, status) {
+    if (!navigator.onLine) {
+        toast("오프라인 상태에서는 전체 처리를 할 수 없습니다. 연결 후 다시 시도하세요.", "warn");
+        return;
+    }
+
     const cls = state.db.classes.find(c => c.id === classId);
     if (!confirm(`${cls.name} 학생 전체 숙제를 "${status}" 처리할까요?`)) return;
 
@@ -64,7 +74,7 @@ async function handleClassBulkHw(classId, status) {
     });
 
     if (r.ok) {
-        toast(`${cls.name} 전체 숙제 ${status} 완료`, 'info'); // 3C 보정: info로 통일
+        toast(`${cls.name} 전체 숙제 ${status} 완료`, 'info');
         await refreshDataOnly();
         renderClass(classId);
     } else {
@@ -73,7 +83,7 @@ async function handleClassBulkHw(classId, status) {
 }
 
 /**
- * 개별 학급 관리 화면 렌더링 (3C: 버튼 위계 축소 및 상태바 성적 제거)
+ * 개별 학급 관리 화면 렌더링 (4단계: 비수업일 HTML 속성 보정 및 성적 버튼 보조화)
  */
 function renderClass(cid) {
     state.ui.currentClassId = cid;
@@ -83,7 +93,10 @@ function renderClass(cid) {
 
     const summary = computeClassTodaySummary(cid);
     
-    // 3C: 모바일 최적화 3단 상단 도구 레이아웃 및 위험 버튼 위계 축소
+    // 4단계 보정: disabled HTML 속성과 CSS style 문자열 분리
+    const bulkDisabledAttr = !summary.isScheduled ? 'disabled' : '';
+    const bulkDisabledStyle = !summary.isScheduled ? 'opacity:0.5; pointer-events:none;' : '';
+
     const opToolsPanel = `
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:15px;">
             <div style="display:flex; gap:8px;">
@@ -91,22 +104,21 @@ function renderClass(cid) {
                 <button class="btn" style="flex:1; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrSubmitStatus('${cid}')">📊 제출 현황</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
-                <button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px; font-weight:700;" onclick="handleClassBulkAtt('${cid}', '등원')">✅ 전체 등원</button>
-                <button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--error); border-color:var(--error);" onclick="handleClassBulkAtt('${cid}', '결석')">❌ 전체 결석</button>
+                <button class="btn btn-primary" ${bulkDisabledAttr} style="flex:1; padding:12px; font-size:13px; font-weight:700; ${bulkDisabledStyle}" onclick="handleClassBulkAtt('${cid}', '등원')">✅ 전체 등원</button>
+                <button class="btn" ${bulkDisabledAttr} style="flex:1; padding:10px; font-size:12px; color:var(--error); border-color:var(--error); ${bulkDisabledStyle}" onclick="handleClassBulkAtt('${cid}', '결석')">❌ 전체 결석</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
-                <button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px; font-weight:700;" onclick="handleClassBulkHw('${cid}', '완료')">✅ 전체 완료</button>
-                <button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--warning); border-color:var(--warning);" onclick="handleClassBulkHw('${cid}', '미완료')">⚠️ 전체 미완료</button>
+                <button class="btn btn-primary" ${bulkDisabledAttr} style="flex:1; padding:12px; font-size:13px; font-weight:700; ${bulkDisabledStyle}" onclick="handleClassBulkHw('${cid}', '완료')">✅ 전체 완료</button>
+                <button class="btn" ${bulkDisabledAttr} style="flex:1; padding:10px; font-size:12px; color:var(--warning); border-color:var(--warning); ${bulkDisabledStyle}" onclick="handleClassBulkHw('${cid}', '미완료')">⚠️ 전체 미완료</button>
             </div>
         </div>
     `;
 
-    // 3C: statusBarHtml에서 성적 제거
     const statusBarHtml = summary.isScheduled
         ? `<span>출석 <b>${summary.att}/${summary.total}</b></span>
            <span style="opacity:0.3;">·</span>
            <span>숙제 <b>${summary.hw}/${summary.total}</b></span>`
-        : `<span style="color:var(--warning); font-weight:700;">오늘은 정규 수업일이 아닙니다. (수동 처리 가능)</span>`;
+        : `<span style="color:var(--warning); font-weight:700;">오늘은 정규 수업일이 아닙니다. 개별 수동 처리는 가능합니다.</span>`;
 
     document.getElementById('app-root').innerHTML = `
         ${opToolsPanel}
@@ -125,30 +137,27 @@ function renderClass(cid) {
 
     const listRoot = document.getElementById('class-std-list');
     const stds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
-    const examsByStudent = new Map();
-    state.db.exam_sessions.forEach(es => { if (!examsByStudent.has(es.student_id)) examsByStudent.set(es.student_id, []); examsByStudent.get(es.student_id).push(es); });
-    const wrongBySession = new Map();
-    state.db.wrong_answers.forEach(w => { wrongBySession.set(w.session_id, (wrongBySession.get(w.session_id) || 0) + 1); });
 
     listRoot.innerHTML = stds.map(s => {
         const att = state.db.attendance.find(a => a.student_id===s.id && a.date===today);
         const hw = state.db.homework.find(h => h.student_id===s.id && h.date===today);
+        
         const attStatus = att?.status || '미정';
         const attClass = attStatus === '등원' ? 'btn-primary' : '';
         const attStyleStr = attStatus === '결석' ? 'border-color:var(--error); color:var(--error); font-weight:700;' : '';
+        
         const hwStatus = hw?.status || '미완료';
         const hwClass = hwStatus === '완료' ? 'btn-primary' : '';
         const hwStyleStr = hwStatus === '미완료' ? 'border-color:var(--warning); color:var(--warning); font-weight:700;' : '';
-        const sExams = examsByStudent.get(s.id) || [];
-        let wc = 0; if (sExams.length > 0) { sExams.sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date))); wc = wrongBySession.get(sExams[0].id) || 0; }
 
+        // 4단계: 성적 버튼 보조화 (작은 outline 스타일)
         return `<tr>
-            <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer; font-weight:800; color:var(--primary);">${s.name} ${wc>0?`<span style="display:inline-block; background:#fce8e6; color:#d93025; border-radius:20px; padding:1px 8px; font-size:10px; font-weight:700; margin-left:4px;">🔴 오답 ${wc}</span>`:''}</td>
+            <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer; font-weight:800; color:var(--primary);">${s.name}</td>
             <td>${s.school_name}</td>
             <td style="text-align:right; white-space:nowrap;">
-                <button class="btn ${attClass}" style="padding:4px 8px; font-size:11px; ${attStyleStr}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
-                <button class="btn ${hwClass}" style="padding:4px 8px; font-size:11px; ${hwStyleStr}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
-                <button class="btn" style="padding:4px 8px; font-size:11px; border-color:var(--border);" onclick="openOMR('${s.id}')">성적</button>
+                <button class="btn ${attClass}" style="padding:6px 10px; font-size:12px; ${attStyleStr}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
+                <button class="btn ${hwClass}" style="padding:6px 10px; font-size:12px; ${hwStyleStr}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
+                <button class="btn" style="padding:4px 6px; font-size:11px; margin-left:4px; border-color:var(--border); color:var(--secondary);" onclick="openOMR('${s.id}')">성적</button>
             </td>
         </tr>`;
     }).join('');
@@ -166,7 +175,6 @@ function computeClassTodaySummary(classId) {
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
     const att = state.db.attendance.filter(a => a.date === today && a.status === '등원' && aIds.includes(a.student_id)).length;
     const hw = state.db.homework.filter(h => h.date === today && h.status === '완료' && aIds.includes(h.student_id)).length;
-    // 3C: test 계산 자체는 나중을 위해 내부적으로 유지
     const test = todayExam ? new Set(state.db.exam_sessions.filter(es => es.exam_date === today && es.exam_title === todayExam.title && aIds.includes(es.student_id)).map(es => es.student_id)).size : 0;
     return { att, hw, test, total, isScheduled };
 }
@@ -251,20 +259,44 @@ async function handleBulkHw(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
+/**
+ * 개별 출결 상태 전환 (4단계 최적화: 반 화면은 전체 loadData 생략)
+ */
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date; const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => a.student_id === sid && a.date === today); const next = cur?.status === '등원' ? '결석' : '등원';
+    
     const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('출결 저장 실패', 'warn'); return; }
-    if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } else await loadData();
+
+    if (isLedger) { 
+        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); 
+        await loadLedger(); 
+    } else {
+        await refreshDataOnly();
+        if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
+        else renderDashboard();
+    }
 }
 
+/**
+ * 개별 숙제 상태 전환 (4단계 최적화: 반 화면은 전체 loadData 생략)
+ */
 async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date; const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => h.student_id === sid && h.date === today); const next = cur?.status === '완료' ? '미완료' : '완료';
+    
     const r = await api.patch('homework', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('숙제 저장 실패', 'warn'); return; }
-    if (isLedger) { if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); } else await loadData();
+
+    if (isLedger) { 
+        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); 
+        await loadLedger(); 
+    } else {
+        await refreshDataOnly();
+        if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
+        else renderDashboard();
+    }
 }
