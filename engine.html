@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.7.4 (AP Header)</title>
+    <title>JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)</title>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
@@ -136,7 +136,6 @@
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
         table.question-table th { font-weight: 700; }
         
-        /* 여백 축소 보정된 부분 */
         .question-table-wrap { margin: 4px 0 8px 0; }
         .question-note-box, .box { margin: 4px 0 8px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
 
@@ -149,6 +148,7 @@
         .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
         .fit-micro { font-size: 8.1pt !important; line-height: 1.25 !important; }
 
+        /* 기존 해설/정답 QR 스타일 */
         .page-qr {
             position: absolute;
             right: 15mm;
@@ -161,7 +161,6 @@
             background: #fff;
             padding: 1mm 0 0;
         }
-
         .page-qr-label {
             font-size: 7.6pt;
             font-weight: 700;
@@ -169,11 +168,57 @@
             color: #000;
             white-space: nowrap;
         }
-
         .page-qr canvas {
             display: block;
             width: 13.5mm;
             height: 13.5mm;
+            image-rendering: pixelated;
+        }
+
+        /* 5A 추가: 오답 제출 전용 QR 스타일 */
+        .page-submit-qr {
+            position: absolute;
+            left: 15mm;
+            bottom: 12mm;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 20;
+            background: #fff;
+            padding: 6px;
+            border: 1px dashed #64748b;
+            border-radius: 4px;
+        }
+        .page-submit-qr-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            max-width: 140px;
+        }
+        .page-submit-qr-label {
+            font-size: 8.5pt;
+            font-weight: 800;
+            color: #1d4ed8;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+        .page-submit-qr-desc {
+            font-size: 6.5pt;
+            color: #475569;
+            line-height: 1.3;
+            word-break: keep-all;
+        }
+        .page-submit-qr-warn {
+            font-size: 6.5pt;
+            color: #ef4444;
+            font-weight: bold;
+            line-height: 1.3;
+            word-break: keep-all;
+        }
+        .page-submit-qr canvas {
+            display: block;
+            width: 16mm;
+            height: 16mm;
             image-rendering: pixelated;
         }
 
@@ -286,6 +331,92 @@ function injectQrToLastExamPage(area) {
         padding: 0
     });
 }
+
+// =========================================================================
+// [5A] AP Math OS 제출용 QR 추가 기능 시작
+// =========================================================================
+
+function shouldRenderSubmitQr() {
+    if (AppState.mode !== 'exam') return false;
+    try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('submitQr') === '1' || params.get('osqr') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+function buildSubmitQrTargetUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const classId = params.get('class') || '';
+    
+    let date = params.get('date') || '';
+    if (!date) {
+        const d = new Date();
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        date = `${year}-${month}-${day}`;
+    }
+    
+    const q = params.get('q') || AppState.data.length || 0;
+    const exam = AppState.title || '시험지';
+
+    const url = new URL(window.location.origin + '/check/');
+    if (classId) url.searchParams.set('class', classId);
+    url.searchParams.set('exam', exam);
+    url.searchParams.set('date', date);
+    url.searchParams.set('q', q);
+
+    return url.toString();
+}
+
+function injectSubmitQrToLastExamPage(area) {
+    if (!shouldRenderSubmitQr()) return;
+    if (typeof QRious !== 'function') return;
+
+    const pages = area.querySelectorAll('.page');
+    if (!pages.length) return;
+
+    const targetPage = pages[pages.length - 1];
+
+    const oldQr = targetPage.querySelector('.page-submit-qr');
+    if (oldQr) oldQr.remove();
+
+    const params = new URLSearchParams(window.location.search);
+    const hasClass = !!params.get('class');
+
+    const qrWrap = document.createElement('div');
+    qrWrap.className = 'page-submit-qr';
+    
+    const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">반 정보 없음: AP Math OS 반 화면에서 생성한 QR 사용 권장</div>`;
+    
+    qrWrap.innerHTML = `
+        <div class="page-submit-qr-info">
+            <div class="page-submit-qr-label">AP Math 오답 제출</div>
+            <div class="page-submit-qr-desc">학생은 QR을 찍고 이름을 선택한 뒤 오답을 제출합니다.</div>
+            ${warnHtml}
+        </div>
+        <canvas></canvas>
+    `;
+
+    targetPage.appendChild(qrWrap);
+
+    const canvas = qrWrap.querySelector('canvas');
+    new QRious({
+        element: canvas,
+        value: buildSubmitQrTargetUrl(),
+        size: 150,
+        level: 'M',
+        background: 'white',
+        foreground: 'black',
+        padding: 0
+    });
+}
+
+// =========================================================================
+// [5A] AP Math OS 제출용 QR 추가 기능 끝
+// =========================================================================
 
 function wrapLatex(text) {
     if (text == null) return '';
@@ -505,7 +636,6 @@ function normalizeQuestionTables(html) {
         .replace(/<table(?![^>]*class=)/gi, '<table class="question-table"');
 }
 
-/* 줄바꿈(breaks)을 제거하고 바로 박스를 이어붙이도록 보정된 부분 */
 function normalizeQuestionNotes(html) {
     if (!html || /question-note-box/.test(html)) return html;
     return html.replace(
@@ -703,6 +833,7 @@ async function render() {
     }
 
     injectQrToLastExamPage(area);
+    injectSubmitQrToLastExamPage(area);
     applyQrSolutionLockUI();
 }
 
