@@ -102,7 +102,7 @@ async function renderStudentDetail(sid) {
 
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
             <h4 style="margin:0 0 10px 0;">📌 취약 단원 TOP</h4>
-            ${renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터 없음')}
+            ${renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터 없음', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원` })}
         </div>
 
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">

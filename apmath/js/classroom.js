@@ -402,7 +402,7 @@ async function openExamDetail(classId, examTitle, examDate) {
         </div>
         <div style="margin-bottom:12px;">
             <div style="font-size:13px;font-weight:900;margin-bottom:6px;color:var(--primary);">📌 반 취약 단원 TOP</div>
-            ${renderWeakUnitSummary(classWeakUnits, '이 시험의 누적 오답 단원 데이터 없음')}
+            ${renderWeakUnitSummary(classWeakUnits, '이 시험의 누적 오답 단원 데이터 없음', { clickable: true, mode: 'class', titlePrefix: '반 취약 단원' })}
         </div>
         <table style="width:100%;font-size:13px;border-collapse:collapse;">
             <thead><tr style="border-bottom:2px solid var(--border);">

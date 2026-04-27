@@ -296,11 +296,26 @@ function computeStudentWeakUnits(studentId) {
 
         const key = concept.unitKey || concept.label;
         if (!bucket[key]) {
-            bucket[key] = { key, label: concept.label, unitKey: concept.unitKey, course: concept.course, cluster: concept.cluster, count: 0, questions: [] };
+            bucket[key] = {
+                key,
+                label: concept.label,
+                unitKey: concept.unitKey,
+                course: concept.course,
+                cluster: concept.cluster,
+                count: 0,
+                questions: []
+            };
         }
 
         bucket[key].count += 1;
-        bucket[key].questions.push({ examTitle: session.exam_title, examDate: session.exam_date, questionId: w.question_id });
+        bucket[key].questions.push({
+            sessionId: session.id,
+            examTitle: session.exam_title,
+            examDate: session.exam_date,
+            score: session.score,
+            questionCount: session.question_count,
+            questionId: w.question_id
+        });
     });
 
     return sortWeakUnitEntries(bucket);
@@ -327,12 +342,29 @@ function computeClassWeakUnits(classId, examTitle = '', examDate = '') {
 
         const key = concept.unitKey || concept.label;
         if (!bucket[key]) {
-            bucket[key] = { key, label: concept.label, unitKey: concept.unitKey, course: concept.course, cluster: concept.cluster, count: 0, students: new Set(), questions: [] };
+            bucket[key] = {
+                key,
+                label: concept.label,
+                unitKey: concept.unitKey,
+                course: concept.course,
+                cluster: concept.cluster,
+                count: 0,
+                students: new Set(),
+                questions: []
+            };
         }
 
         bucket[key].count += 1;
         bucket[key].students.add(session.student_id);
-        bucket[key].questions.push({ studentId: session.student_id, examTitle: session.exam_title, examDate: session.exam_date, questionId: w.question_id });
+        bucket[key].questions.push({
+            sessionId: session.id,
+            studentId: session.student_id,
+            examTitle: session.exam_title,
+            examDate: session.exam_date,
+            score: session.score,
+            questionCount: session.question_count,
+            questionId: w.question_id
+        });
     });
 
     const result = sortWeakUnitEntries(bucket);
@@ -343,22 +375,115 @@ function computeClassWeakUnits(classId, examTitle = '', examDate = '') {
     return result;
 }
 
-function renderWeakUnitSummary(items, emptyText = '누적 오답 단원 데이터 없음') {
-    if (!Array.isArray(items) || items.length === 0) {
-        return `<div style="font-size:12px;color:var(--secondary);background:#f8f9fa;border:1px dashed var(--border);border-radius:8px;padding:10px;text-align:center;">${emptyText}</div>`;
+function apEscapeHtml(text) {
+    return String(text ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function getStudentNameById(studentId) {
+    return (state.db.students || []).find(s => s.id === studentId)?.name || '학생';
+}
+
+function makeWeakUnitDetailKey(item, mode, title) {
+    if (!state.ui.weakUnitDetails) state.ui.weakUnitDetails = {};
+    const key = `wu_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    state.ui.weakUnitDetails[key] = { item, mode, title };
+    return key;
+}
+
+function renderWeakUnitDetailList(item, mode = 'student') {
+    const questions = Array.isArray(item?.questions) ? item.questions : [];
+    if (!questions.length) {
+        return `<div style="font-size:12px;color:var(--secondary);background:#f8f9fa;border:1px dashed var(--border);border-radius:8px;padding:14px;text-align:center;">상세 오답 기록이 없습니다.</div>`;
     }
 
     return `
-        <div style="display:flex;flex-direction:column;gap:6px;">
-            ${items.slice(0, 5).map((item, idx) => `
-                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:#f8f9fa;border:1px solid var(--border);border-radius:8px;padding:8px 10px;">
-                    <div style="font-size:12px;font-weight:800;color:#202124;line-height:1.4;">
-                        ${idx + 1}. ${item.label}
-                        ${item.unitKey ? `<span style="font-size:10px;color:var(--secondary);font-weight:600;margin-left:4px;">${item.unitKey}</span>` : ''}
+        <div style="display:flex;flex-direction:column;gap:8px;max-height:60vh;overflow-y:auto;padding-right:2px;">
+            ${questions.map(q => {
+                const studentLabel = mode === 'class'
+                    ? `<div style="font-size:13px;font-weight:900;color:var(--primary);">${apEscapeHtml(getStudentNameById(q.studentId))}</div>`
+                    : '';
+                const scoreLabel = q.score !== undefined && q.score !== null && q.score !== ''
+                    ? `<span style="font-size:11px;color:var(--secondary);font-weight:700;">${apEscapeHtml(q.score)}점</span>`
+                    : '';
+
+                return `
+                    <div style="border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+                            <div style="flex:1;min-width:0;">
+                                ${studentLabel}
+                                <div style="font-size:12px;color:#202124;font-weight:800;line-height:1.45;word-break:break-word;">${apEscapeHtml(q.examTitle || '시험명 없음')}</div>
+                                <div style="font-size:11px;color:var(--secondary);margin-top:3px;">${apEscapeHtml(q.examDate || '')} ${scoreLabel ? `· ${scoreLabel}` : ''}</div>
+                            </div>
+                            <div style="font-size:12px;font-weight:900;color:var(--error);background:#fce8e6;border-radius:999px;padding:4px 8px;white-space:nowrap;">Q${apEscapeHtml(q.questionId)}</div>
+                        </div>
                     </div>
-                    <div style="font-size:12px;font-weight:900;color:var(--error);white-space:nowrap;">${item.count}회</div>
-                </div>
-            `).join('')}
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
+function openWeakUnitDetail(detailKey) {
+    const payload = state.ui.weakUnitDetails?.[detailKey];
+    if (!payload || !payload.item) {
+        toast('상세 데이터를 찾을 수 없습니다.', 'warn');
+        return;
+    }
+
+    const item = payload.item;
+    const mode = payload.mode || 'student';
+    const title = payload.title || '취약 단원 상세';
+    const studentCountHtml = mode === 'class' && item.studentCount
+        ? `<span style="font-size:11px;color:var(--secondary);font-weight:700;margin-left:6px;">${item.studentCount}명</span>`
+        : '';
+
+    showModal(`📌 ${apEscapeHtml(item.label || title)}`, `
+        <div style="background:#f8f9fa;border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:12px;">
+            <div style="font-size:13px;font-weight:900;color:var(--primary);line-height:1.5;">${apEscapeHtml(item.label || '')}</div>
+            <div style="font-size:11px;color:var(--secondary);margin-top:4px;">
+                ${item.unitKey ? `단원키 ${apEscapeHtml(item.unitKey)} · ` : ''}오답 ${apEscapeHtml(item.count || 0)}회${studentCountHtml}
+            </div>
+        </div>
+        ${renderWeakUnitDetailList(item, mode)}
+    `);
+}
+
+function renderWeakUnitSummary(items, emptyText = '누적 오답 단원 데이터 없음', options = {}) {
+    if (!Array.isArray(items) || items.length === 0) {
+        return `<div style="font-size:12px;color:var(--secondary);background:#f8f9fa;border:1px dashed var(--border);border-radius:8px;padding:10px;text-align:center;">${apEscapeHtml(emptyText)}</div>`;
+    }
+
+    const clickable = options.clickable === true;
+    const mode = options.mode || 'student';
+    const titlePrefix = options.titlePrefix || '취약 단원';
+
+    return `
+        <div style="display:flex;flex-direction:column;gap:6px;">
+            ${items.slice(0, 5).map((item, idx) => {
+                const key = clickable ? makeWeakUnitDetailKey(item, mode, `${titlePrefix} 상세`) : '';
+                const clickAttr = clickable ? ` onclick="openWeakUnitDetail('${key}')"` : '';
+                const cursorStyle = clickable ? 'cursor:pointer;' : '';
+                const detailHint = clickable ? `<span style="font-size:10px;color:var(--primary);font-weight:800;margin-left:6px;white-space:nowrap;">상세 ›</span>` : '';
+                const studentCount = mode === 'class' && item.studentCount ? `<span style="font-size:10px;color:var(--secondary);font-weight:600;margin-left:4px;">${item.studentCount}명</span>` : '';
+
+                return `
+                    <div${clickAttr} style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:#f8f9fa;border:1px solid var(--border);border-radius:8px;padding:8px 10px;${cursorStyle}">
+                        <div style="font-size:12px;font-weight:800;color:#202124;line-height:1.4;min-width:0;">
+                            ${idx + 1}. ${apEscapeHtml(item.label)}
+                            ${item.unitKey ? `<span style="font-size:10px;color:var(--secondary);font-weight:600;margin-left:4px;">${apEscapeHtml(item.unitKey)}</span>` : ''}
+                            ${studentCount}
+                        </div>
+                        <div style="display:flex;align-items:center;gap:2px;font-size:12px;font-weight:900;color:var(--error);white-space:nowrap;">
+                            ${apEscapeHtml(item.count)}회${detailHint}
+                        </div>
+                    </div>
+                `;
+            }).join('')}
         </div>
     `;
 }
