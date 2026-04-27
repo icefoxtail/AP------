@@ -341,7 +341,14 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
 
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const score = Math.round(((q - wrs.length) / q) * 100);
-    const archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
+    
+    // [보정] 명시적으로 입력된 값 또는 기존 세션의 고유값만 안전하게 가져옴
+    let archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
+    
+    if (!archiveFile) {
+        const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
+        archiveFile = normalizeQrArchiveFile(session?.archive_file || '');
+    }
     
     let classId = presetClassId || state.ui?.currentClassId;
     if (!classId) {
