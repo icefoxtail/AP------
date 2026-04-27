@@ -1,10 +1,10 @@
 /**
  * AP Math OS v26.1.2 [js/student.js]
- * 학생 관리, 퇴원생 관리 및 인적사항 수정 로직 (4H: 4G UX 원본 유지 + 상담 UI 추가)
+ * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (2단계)
  */
 
 /**
- * 학생 상세 정보 모달 렌더링 (4G UX 유지 + 4H: 상담 기록 영역 및 인적사항 확장)
+ * 학생 상세 정보 모달 렌더링 (2단계: 상담 수정/삭제 기능 추가 및 전화번호 노출 제외)
  */
 function renderStudentDetail(sid) {
     const s = state.db.students.find(st => st.id === sid);
@@ -16,11 +16,17 @@ function renderStudentDetail(sid) {
         return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
     }).join('');
     
-    // 4H: 상담 이력 렌더링
+    // 상담 이력 렌더링 (2단계: 수정/삭제 액션 추가)
     const cnsList = state.db.consultations.filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.id).localeCompare(String(a.id)));
     const cnsRows = cnsList.map(c => `
         <div style="border-bottom:1px solid var(--border); padding:10px 0;">
-            <div style="font-size:11px; color:var(--secondary); margin-bottom:4px;">${c.date} | <span style="font-weight:700; color:var(--primary);">${c.type}</span></div>
+            <div style="font-size:11px; color:var(--secondary); margin-bottom:4px; display:flex; justify-content:space-between;">
+                <span>${c.date} | <span style="font-weight:700; color:var(--primary);">${c.type}</span></span>
+                <div>
+                    <span style="cursor:pointer; color:var(--primary); margin-right:8px;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
+                    <span style="cursor:pointer; color:var(--error);" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
+                </div>
+            </div>
             <div style="font-size:13px; margin-bottom:6px; white-space:pre-wrap;">${escapeHtmlForTextarea(c.content)}</div>
             ${c.next_action ? `<div style="font-size:12px; color:#b06000; background:#fef7e0; padding:6px 8px; border-radius:6px;"><b>👉 조치:</b> ${escapeHtmlForTextarea(c.next_action)}</div>` : ''}
         </div>
@@ -45,15 +51,14 @@ function renderStudentDetail(sid) {
         </div>
     `;
 
-    // 4H: 인적사항 및 메모 표시 영역
-    const extraInfoHtml = (s.guardian_name || s.guardian_relation || s.memo) ? `
+    // 2단계: 전화번호 상시 노출 제외, 관계와 메모만 표시
+    const extraInfoHtml = (s.guardian_relation || s.memo) ? `
         <div style="margin-top:8px; font-size:12px; background:#f1f3f4; padding:8px 10px; border-radius:6px; color:var(--secondary);">
-            ${s.guardian_name || s.guardian_relation ? `<div style="margin-bottom:4px;"><b>보호자:</b> ${s.guardian_name||''} ${s.guardian_relation ? `(${s.guardian_relation})` : ''}</div>` : ''}
+            ${s.guardian_relation ? `<div style="margin-bottom:4px;"><b>보호자 관계:</b> ${s.guardian_relation}</div>` : ''}
             ${s.memo ? `<div><b>메모:</b> ${s.memo}</div>` : ''}
         </div>
     ` : '';
 
-    // 4H: 상담 기록 작성 및 리스트 UI
     const consultationHTML = `
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
             <h4 style="margin:0 0 10px 0;">💬 학생 상담 기록</h4>
@@ -106,7 +111,71 @@ function renderStudentDetail(sid) {
 }
 
 /**
- * 신규 상담 기록 저장 (4H)
+ * 상담 기록 수정 모달 오픈 (2단계)
+ */
+function openEditConsultation(cid, sid) {
+    const c = state.db.consultations.find(x => x.id === cid);
+    if (!c) return;
+    
+    showModal('상담 기록 수정', `
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; gap:8px;">
+                <input type="date" id="edit-cns-date" class="btn" value="${c.date}" style="flex:1;">
+                <select id="edit-cns-type" class="btn" style="flex:1;">
+                    <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
+                    <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
+                    <option value="출결" ${c.type==='출결'?'selected':''}>출결</option>
+                    <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
+                    <option value="상담" ${c.type==='상담'?'selected':''}>일반 상담</option>
+                    <option value="기타" ${c.type==='기타'?'selected':''}>기타</option>
+                </select>
+            </div>
+            <textarea id="edit-cns-content" class="btn" placeholder="상담 내용을 입력하세요." style="text-align:left; resize:vertical; min-height:80px; line-height:1.5;">${c.content}</textarea>
+            <textarea id="edit-cns-action" class="btn" placeholder="다음 조치사항 (선택)" style="text-align:left; resize:vertical; min-height:50px; line-height:1.5;">${c.next_action||''}</textarea>
+        </div>
+    `, '수정 저장', () => handleEditConsultation(cid, sid));
+}
+
+/**
+ * 상담 기록 수정 실행 (2단계)
+ */
+async function handleEditConsultation(cid, sid) {
+    const date = document.getElementById('edit-cns-date').value;
+    const type = document.getElementById('edit-cns-type').value;
+    const content = document.getElementById('edit-cns-content').value.trim();
+    const nextAction = document.getElementById('edit-cns-action').value.trim();
+
+    if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
+
+    const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
+    if (r.success) {
+        toast('상담 기록이 수정되었습니다.', 'info');
+        closeModal();
+        await loadData();
+        renderStudentDetail(sid);
+    } else {
+        toast('상담 수정 실패', 'error');
+    }
+}
+
+/**
+ * 상담 기록 삭제 실행 (2단계)
+ */
+async function handleDeleteConsultation(cid, sid) {
+    if (confirm('이 상담 기록을 삭제하시겠습니까?')) {
+        const r = await api.delete('consultations', cid);
+        if (r.success) {
+            toast('상담 기록이 삭제되었습니다.', 'info');
+            await loadData();
+            renderStudentDetail(sid);
+        } else {
+            toast('상담 삭제 실패', 'error');
+        }
+    }
+}
+
+/**
+ * 신규 상담 기록 저장
  */
 async function handleSaveConsultation(sid) {
     const date = document.getElementById('cns-date').value;
@@ -127,7 +196,7 @@ async function handleSaveConsultation(sid) {
 }
 
 /**
- * 학생 퇴원 처리 (로직 유지)
+ * 학생 퇴원 처리
  */
 async function handleDelete(sid) {
     if (confirm('퇴원 처리하시겠습니까?')) {
@@ -138,7 +207,7 @@ async function handleDelete(sid) {
 }
 
 /**
- * 학생 재원 복구 (로직 유지)
+ * 학생 재원 복구
  */
 async function handleRestore(sid) {
     if (confirm('재원으로 복구하시겠습니까?')) {
@@ -161,7 +230,7 @@ async function handleDeleteSession(eid, sid) {
 }
 
 /**
- * 학생 정보 수정 모달 오픈 (4H: 보호자/메모 입력 폼 추가)
+ * 학생 정보 수정 모달 오픈 (2단계: 연락처 필드 추가 및 보호자명 삭제)
  */
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
@@ -180,30 +249,32 @@ function openEditStudent(sid) {
             <select id="edit-class" class="btn"><option value="">반 미배정</option>${opts}</select>
             
             <hr style="border:0; border-top:1px solid var(--border); margin:10px 0;">
-            <label style="font-size:12px; color:var(--secondary);">보호자 및 특이사항</label>
+            <label style="font-size:12px; color:var(--secondary);">연락처 및 특이사항</label>
             
-            <input id="edit-guardian-name" class="btn" value="${s.guardian_name||''}" placeholder="보호자 성함 (예: 홍길동)" style="text-align:left;">
-            <input id="edit-guardian-rel" class="btn" value="${s.guardian_relation||''}" placeholder="관계 (예: 모, 부)" style="text-align:left;">
+            <input id="edit-student-phone" class="btn" value="${s.student_phone||''}" placeholder="학생 전화번호 (예: 010-1234-5678)" style="text-align:left;">
+            <input id="edit-parent-phone" class="btn" value="${s.parent_phone||''}" placeholder="학부모 전화번호 (예: 010-1234-5678)" style="text-align:left;">
+            <input id="edit-guardian-rel" class="btn" value="${s.guardian_relation||''}" placeholder="보호자 관계 (예: 어머님, 아버님)" style="text-align:left;">
             <textarea id="edit-memo" class="btn" placeholder="학생 특이사항 메모" style="text-align:left; resize:vertical; min-height:60px; line-height:1.5;">${s.memo||''}</textarea>
         </div>
     `, '저장', () => handleEditStudent(sid));
 }
 
 /**
- * 학생 정보 수정 실행 (4H: 확장 인적사항 저장 연동)
+ * 학생 정보 수정 실행 (2단계: 연락처 데이터 저장)
  */
 async function handleEditStudent(sid) {
     const n = document.getElementById('edit-name').value, 
           sc = document.getElementById('edit-school').value, 
           g = document.getElementById('edit-grade').value, 
           c = document.getElementById('edit-class').value,
-          gn = document.getElementById('edit-guardian-name').value.trim(),
+          sp = document.getElementById('edit-student-phone').value.trim(),
+          pp = document.getElementById('edit-parent-phone').value.trim(),
           gr = document.getElementById('edit-guardian-rel').value.trim(),
           memo = document.getElementById('edit-memo').value.trim();
           
     await api.patch(`students/${sid}`, { 
         name: n, school_name: sc, grade: g, class_id: c,
-        guardian_name: gn, guardian_relation: gr, memo: memo 
+        student_phone: sp, parent_phone: pp, guardian_relation: gr, memo: memo 
     });
     
     closeModal();

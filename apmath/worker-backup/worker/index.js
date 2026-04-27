@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * Cloudflare Worker 통합 API 엔진 - QR 3차 (check-init 통합본) + 4H 학생기록/상담 확장
+ * Cloudflare Worker 통합 API 엔진 - 2단계 외부 소통 기반 확장
  */
 
 const headers = {
@@ -23,7 +23,7 @@ export default {
         const resource = path[1];
         const id = path[2];
 
-        // 1. [신규] 학생용 초기화 API (보안 및 데이터 최소화)
+        // 1. 학생용 초기화 API
         if (resource === 'check-init' && method === 'GET') {
           const classId = url.searchParams.get('class');
           const examTitle = url.searchParams.get('exam') || '';
@@ -61,7 +61,7 @@ export default {
           }), { headers });
         }
 
-        // 2. 관리자용 초기 데이터 로드 (운영 관제센터 1.1 + 4H 반영)
+        // 2. 관리자용 초기 데이터 로드
         if (resource === 'initial-data') {
           const [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns] = await Promise.all([
             env.DB.prepare('SELECT * FROM students').all(),
@@ -133,15 +133,15 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // 5. 학생 관리 (CUD + 4H 인적사항 확장)
+        // 5. 학생 관리 (2단계 연락처 확장 적용)
         if (resource === 'students' && method === 'POST') {
           const data = await request.json();
           const sid = `s_${Date.now()}`;
           const stmts = [
             env.DB.prepare(`
-              INSERT INTO students (id, name, school_name, grade, status, memo, guardian_name, guardian_relation, created_at, updated_at)
-              VALUES (?, ?, ?, ?, '재원', ?, ?, ?, DATETIME('now'), DATETIME('now'))
-            `).bind(sid, data.name, data.school_name, data.grade, data.memo || '', data.guardian_name || '', data.guardian_relation || '')
+              INSERT INTO students (id, name, school_name, grade, status, memo, guardian_name, guardian_relation, student_phone, parent_phone, created_at, updated_at)
+              VALUES (?, ?, ?, ?, '재원', ?, '', ?, ?, ?, DATETIME('now'), DATETIME('now'))
+            `).bind(sid, data.name, data.school_name, data.grade, data.memo || '', data.guardian_relation || '', data.student_phone || '', data.parent_phone || '')
           ];
           if (data.class_id) {
             stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(data.class_id, sid));
@@ -156,11 +156,11 @@ export default {
             await env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
-          // 정보 수정 (4H 인적사항 포함)
+          // 정보 수정 (2단계 연락처 확장 적용, guardian_name 사용 제외)
           const data = await request.json();
           const stmts = [
-            env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, memo=?, guardian_name=?, guardian_relation=?, updated_at=DATETIME('now') WHERE id=?")
-              .bind(data.name, data.school_name, data.grade, data.memo || '', data.guardian_name || '', data.guardian_relation || '', id)
+            env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, memo=?, guardian_name='', guardian_relation=?, student_phone=?, parent_phone=?, updated_at=DATETIME('now') WHERE id=?")
+              .bind(data.name, data.school_name, data.grade, data.memo || '', data.guardian_relation || '', data.student_phone || '', data.parent_phone || '', id)
           ];
           if (data.class_id !== undefined) {
             stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id));
@@ -177,7 +177,7 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // 6. 시험 세션 및 오답 처리 (PATCH/DELETE)
+        // 6. 시험 세션 및 오답 처리
         if (resource === 'exam-sessions') {
           if (method === 'PATCH') {
             const data = await request.json();
@@ -223,7 +223,7 @@ export default {
           }
         }
 
-        // 8. 4H: 상담 기록 관리
+        // 8. 상담 기록 관리 (2단계: PATCH, DELETE 추가)
         if (resource === 'consultations') {
           if (method === 'POST') {
             const data = await request.json();
@@ -242,9 +242,22 @@ export default {
               return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
             }
           }
+
+          if (method === 'PATCH' && id) {
+            const data = await request.json();
+            await env.DB.prepare(`
+              UPDATE consultations SET date = ?, type = ?, content = ?, next_action = ? WHERE id = ?
+            `).bind(data.date, data.type, data.content, data.nextAction || '', id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+
+          if (method === 'DELETE' && id) {
+            await env.DB.prepare('DELETE FROM consultations WHERE id = ?').bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
         }
 
-        // 9. AI 보고 문구 생성 (4D-1)
+        // 9. AI 보고 문구 생성
         if (resource === 'ai' && path[2] === 'student-report' && method === 'POST') {
           const payload = await request.json();
           const { type, student, today: td } = payload;
@@ -285,8 +298,6 @@ export default {
 
           try {
             // TODO: AI provider 연결
-            // API 키가 준비되면 이 위치에서 AI provider를 호출한다.
-            // 프론트에는 API 키를 절대 노출하지 않는다.
             return new Response(JSON.stringify({
               success: true,
               message: fallbackMessage,

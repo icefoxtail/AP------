@@ -1,10 +1,80 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
- * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진
+ * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (2단계)
  */
 
 /**
- * ⚙️ 운영 메뉴 모달 오픈 (4G)
+ * 전화번호 복사 유틸리티 (2단계)
+ */
+function copyPhoneNumber(text) {
+    navigator.clipboard.writeText(text).then(() => toast('전화번호가 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
+}
+
+/**
+ * 주소록 렌더링 엔진 (2단계)
+ */
+function renderAddressBookList() {
+    const search = document.getElementById('ab-search').value.trim().toLowerCase();
+    const cid = document.getElementById('ab-class').value;
+    const listRoot = document.getElementById('ab-list');
+    
+    let stds = state.db.students.filter(s => s.status === '재원');
+    if (search) stds = stds.filter(s => s.name.toLowerCase().includes(search));
+    if (cid) {
+        const cIds = state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id);
+        stds = stds.filter(s => cIds.includes(s.id));
+    }
+    
+    if (stds.length === 0) {
+        listRoot.innerHTML = '<div style="text-align:center; padding:20px; color:var(--secondary);">검색 결과가 없습니다.</div>';
+        return;
+    }
+    
+    listRoot.innerHTML = stds.map(s => {
+        const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
+        return `
+            <div style="padding:12px 4px; border-bottom:1px solid var(--border);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <div><b style="font-size:15px;">${s.name}</b> <span style="color:var(--secondary); font-size:12px;">${cName} | ${s.school_name} ${s.grade}</span></div>
+                    <button class="btn" style="padding:4px 8px; font-size:11px; color:var(--primary);" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 ➔</button>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--secondary);">
+                    <div style="display:flex; justify-content:space-between; background:#f8f9fa; padding:6px 10px; border-radius:6px;">
+                        <span>학생: ${s.student_phone || '없음'}</span>
+                        ${s.student_phone ? `<span style="color:var(--primary); cursor:pointer; font-weight:700;" onclick="copyPhoneNumber('${s.student_phone}')">복사</span>` : ''}
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#f8f9fa; padding:6px 10px; border-radius:6px;">
+                        <span>보호자(${s.guardian_relation || '미지정'}): ${s.parent_phone || '없음'}</span>
+                        ${s.parent_phone ? `<span style="color:var(--primary); cursor:pointer; font-weight:700;" onclick="copyPhoneNumber('${s.parent_phone}')">복사</span>` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+/**
+ * 주소록 모달 오픈 (2단계)
+ */
+function openAddressBook() {
+    const classOptions = state.db.classes.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    
+    showModal('📒 주소록', `
+        <div style="display:flex; gap:8px; margin-bottom:12px;">
+            <input id="ab-search" class="btn" placeholder="이름 검색" style="flex:1; text-align:left;" oninput="renderAddressBookList()">
+            <select id="ab-class" class="btn" style="flex:1;" onchange="renderAddressBookList()">
+                <option value="">전체 반</option>
+                ${classOptions}
+            </select>
+        </div>
+        <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px;">
+            </div>
+    `);
+    renderAddressBookList();
+}
+
+/**
+ * ⚙️ 운영 메뉴 모달 오픈 (2단계: 주소록 진입점 추가)
  */
 function openOperationMenu() {
     const isOnline = navigator.onLine;
@@ -15,10 +85,15 @@ function openOperationMenu() {
     showModal('⚙️ 학원 운영 관리', `
         <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="padding-bottom:16px; border-bottom:1px solid var(--border);">
-                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">학생 관리</label>
-                <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openDischargedStudents();">
-                    🗄️ 퇴원생 목록 조회 / 복구
-                </button>
+                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">학생 및 연락처 관리</label>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddressBook();">
+                        📒 주소록 (학생/학부모 연락처 조회)
+                    </button>
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openDischargedStudents();">
+                        🗄️ 퇴원생 목록 조회 / 복구
+                    </button>
+                </div>
             </div>
 
             <div>
@@ -164,7 +239,7 @@ function renderClassSummaryCard(cls, data, todayExam) {
 }
 
 /**
- * 대시보드 메인 렌더링 (4G)
+ * 대시보드 메인 렌더링
  */
 function renderDashboard() {
     state.ui.currentClassId = null;
@@ -254,7 +329,6 @@ function renderDashboard() {
         prioSec = `<div style="text-align:center; padding:20px; opacity:0.5; font-size:13px;">✅ 현재 집중 확인이 필요한 학생이 없습니다.</div>`;
     }
 
-    // 4G: 대시보드 하단 퇴원생 링크 제거 상태 유지
     root.innerHTML = academyStatus + closeBanner + classStatus + prioSec;
     document.getElementById('scope-text').innerText = state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
@@ -326,7 +400,7 @@ function computeTodayCloseData(todayExam = getTodayExamConfig()) {
 }
 
 /**
- * 퀵 액션: 출결 토글
+ * 퀵 액션: 출결/숙제 토글
  */
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
@@ -336,9 +410,6 @@ async function quickToggleAtt(sid, status, tab = 'att') {
     openTodayCloseModal(tab);
 }
 
-/**
- * 퀵 액션: 숙제 토글
- */
 async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
@@ -348,7 +419,7 @@ async function quickToggleHw(sid, status, tab = 'hw') {
 }
 
 /**
- * 운영 요약 텍스트 빌드
+ * 운영 요약 텍스트 복사
  */
 function buildAcademySummary() {
     const today = new Date().toLocaleDateString('sv-SE');
@@ -370,9 +441,6 @@ function buildAcademySummary() {
     return text;
 }
 
-/**
- * 운영 요약 복사
- */
 function copyAcademySummary() {
     const text = buildAcademySummary();
     navigator.clipboard.writeText(text).then(() => toast('운영 요약이 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
@@ -434,7 +502,7 @@ function openTodayCloseModal(tab = 'att') {
 }
 
 /**
- * 오늘 시험 설정 모달 (복구)
+ * 오늘 시험 설정
  */
 function openTodayExamSetModal() {
     const cfg = getTodayExamConfig();
@@ -457,9 +525,6 @@ function openTodayExamSetModal() {
     `);
 }
 
-/**
- * 오늘 시험 설정 저장 (복구)
- */
 function handleSetTodayExam() {
     const t = document.getElementById('set-exam-title').value.trim();
     const q = parseInt(document.getElementById('set-exam-q').value, 10) || 20;

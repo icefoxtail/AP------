@@ -76,3 +76,7 @@ CREATE INDEX IF NOT EXISTS idx_consultations_date ON consultations(date);
 ALTER TABLE students ADD COLUMN memo TEXT;
 ALTER TABLE students ADD COLUMN guardian_name TEXT;
 ALTER TABLE students ADD COLUMN guardian_relation TEXT;
+
+-- 2단계: 외부 소통 연락처 확장
+ALTER TABLE students ADD COLUMN student_phone TEXT;
+ALTER TABLE students ADD COLUMN parent_phone TEXT;
