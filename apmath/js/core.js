@@ -844,7 +844,7 @@ function openClinicBasketByKey(contextKey = '') {
         ${renderClinicBasketItems(filtered, contextKey)}
         <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
             <button class="btn" style="flex:1;min-width:120px;color:var(--error);border-color:var(--error);font-size:12px;font-weight:900;" onclick="clearClinicBasket('${apEscapeAttr(contextKey)}')">${context ? '현재 바구니 비우기' : '전체 비우기'}</button>
-            <button class="btn btn-primary" style="flex:1;min-width:140px;font-size:12px;font-weight:900;" onclick="toast('클리닉지 생성은 Phase 3-F에서 연결합니다.', 'info')">클리닉지 생성 준비중</button>
+            <button class="btn btn-primary" style="flex:1;min-width:140px;font-size:12px;font-weight:900;" onclick="openClinicWorksheet('${apEscapeAttr(contextKey)}')">클리닉지 출력</button>
         </div>
     `);
 }
@@ -982,6 +982,190 @@ async function openSimilarQuestionRecommendations(detailKey) {
                 유사문항 추천을 불러오지 못했습니다.<br>JS아카이브 db.js 또는 exams 경로를 확인하세요.
             </div>
         `);
+    }
+}
+
+
+// [3F] 클리닉 바구니 → mixed_engine.html 출력 연결
+function getClinicCartItemsForContext(contextKey = '') {
+    const context = state.ui.clinicContexts?.[contextKey] || null;
+    const cart = getClinicCart();
+    if (!context) return cart;
+    return cart.filter(item => item.targetType === context.targetType && item.targetId === context.targetId);
+}
+
+function makeClinicPrintKey(context = null) {
+    const targetType = context?.targetType || 'all';
+    const rawTargetId = context?.targetId || 'basket';
+    const safeTargetId = String(rawTargetId).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40) || 'basket';
+    return `clinic_${targetType}_${safeTargetId}_${Date.now()}`;
+}
+
+function makeClinicPrintTitle(context = null) {
+    const today = new Date().toLocaleDateString('sv-SE').replace(/-/g, '').slice(2);
+    const label = context?.targetLabel || '전체';
+    return `${label} 클리닉지 - ${today}`;
+}
+
+function normalizeClinicSourceFile(file) {
+    const path = normalizeArchivePath(file);
+    return path.replace(/^\.\//, '');
+}
+
+function getQuestionNumberFromClinicItem(item) {
+    const raw = item?.questionNo ?? item?.questionId ?? item?._sourceQuestionNo ?? item?.sourceQuestionNo;
+    const n = Number(raw);
+    return Number.isFinite(n) ? n : null;
+}
+
+function findQuestionInBank(questionBank, questionNo) {
+    if (!Array.isArray(questionBank) || questionNo === null || questionNo === undefined) return null;
+    const byId = questionBank.find(q => Number(q?.id) === Number(questionNo));
+    if (byId) return byId;
+    const idx = Number(questionNo) - 1;
+    if (Number.isInteger(idx) && idx >= 0 && idx < questionBank.length) return questionBank[idx];
+    return null;
+}
+
+function cloneQuestionForClinicPrint(original, item, outputNo, bankData) {
+    const sourceFile = normalizeClinicSourceFile(item.archiveFile || item.file || item.sourceFile || item._sourceFile || '');
+    const sourceTitle = item.sourceTitle || item.examTitle || bankData?.examTitle || sourceFile.replace(/^exams\//, '').replace(/\.js$/, '');
+    const sourceQuestionNo = getQuestionNumberFromClinicItem(item) ?? original?.id ?? outputNo;
+    const q = JSON.parse(JSON.stringify(original || {}));
+
+    q.id = outputNo;
+    q._originalId = original?.id ?? sourceQuestionNo;
+    q._sourceFile = sourceFile;
+    q._sourceTitle = sourceTitle;
+    q._sourceQuestionNo = sourceQuestionNo;
+
+    if (q.solution == null) q.solution = '';
+    if (q.answer == null) q.answer = '';
+    if (!Array.isArray(q.choices)) q.choices = q.choices ? [q.choices] : [];
+
+    q.standardUnitKey = q.standardUnitKey || item.standardUnitKey || '';
+    q.standardUnit = q.standardUnit || item.standardUnit || '';
+    q.standardCourse = q.standardCourse || item.standardCourse || '';
+    q.conceptClusterKey = q.conceptClusterKey || item.conceptClusterKey || '';
+    q.level = q.level || item.level || '';
+
+    return q;
+}
+
+async function hydrateClinicBasketItems(items = []) {
+    const output = [];
+    const failures = [];
+    const bankCache = {};
+
+    for (const item of (Array.isArray(items) ? items : [])) {
+        const file = normalizeClinicSourceFile(item.archiveFile || item.file || item.sourceFile || item._sourceFile || '');
+        const qNo = getQuestionNumberFromClinicItem(item);
+        if (!file || qNo === null) {
+            failures.push({ item, reason: '문항 출처 또는 번호 없음' });
+            continue;
+        }
+
+        try {
+            if (!bankCache[file]) bankCache[file] = await loadArchiveQuestionBank(file);
+            const bankData = bankCache[file];
+            const original = findQuestionInBank(bankData.questionBank, qNo);
+            if (!original) {
+                failures.push({ item, reason: `${file} ${qNo}번 문항 없음` });
+                continue;
+            }
+            output.push(cloneQuestionForClinicPrint(original, item, output.length + 1, bankData));
+        } catch (e) {
+            console.warn('[3F] 클리닉 문항 로드 실패:', file, qNo, e);
+            failures.push({ item, reason: e?.message || '문항 로드 실패' });
+        }
+    }
+
+    return { questions: output, failures };
+}
+
+function buildClinicMixedMeta(items, questions, context = null, key = '') {
+    const title = makeClinicPrintTitle(context);
+    const unitSummary = [...new Set((items || []).map(item => item.standardUnit || item.standardUnitKey || '').filter(Boolean))];
+    return {
+        title,
+        customTitle: title,
+        source: 'apmath_clinic',
+        key,
+        targetType: context?.targetType || 'all',
+        targetId: context?.targetId || '',
+        targetLabel: context?.targetLabel || '전체',
+        createdAt: new Date().toISOString(),
+        unitSummary,
+        qCount: questions.length,
+        qpp: 4,
+        printMode: 'exam'
+    };
+}
+
+function saveClinicMixedPayload(key, questions, meta) {
+    const qStr = JSON.stringify(questions || []);
+    const mStr = JSON.stringify(meta || {});
+    try {
+        localStorage.setItem('mixedQuestions_' + key, qStr);
+        localStorage.setItem('mixedMeta_' + key, mStr);
+        return 'localStorage';
+    } catch (e) {
+        console.warn('[3F] localStorage 저장 실패, sessionStorage fallback:', e);
+        sessionStorage.setItem('mixedQuestions', qStr);
+        sessionStorage.setItem('mixedMeta', mStr);
+        return 'sessionStorage';
+    }
+}
+
+function buildMixedEngineClinicUrl(key, qpp = 4) {
+    const base = getJsArchiveBaseUrl();
+    const url = new URL('mixed_engine.html', base);
+    url.searchParams.set('key', key);
+    url.searchParams.set('mode', 'exam');
+    url.searchParams.set('qpp', String(qpp || 4));
+    return url.toString();
+}
+
+async function openClinicWorksheet(contextKey = '') {
+    const context = state.ui.clinicContexts?.[contextKey] || null;
+    const items = getClinicCartItemsForContext(contextKey);
+    if (!items.length) {
+        toast('출력할 클리닉 문항이 없습니다.', 'warn');
+        return;
+    }
+
+    const popup = window.open('', '_blank');
+    if (!popup) {
+        toast('새 창이 차단되었습니다. 팝업 허용 후 다시 시도하세요.', 'warn');
+        return;
+    }
+
+    popup.document.write(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>클리닉지 준비 중</title></head><body style="font-family:system-ui,-apple-system,sans-serif;padding:24px;line-height:1.6;"><h3>클리닉지 준비 중...</h3><p>JS아카이브 문항을 불러오는 중입니다.</p></body></html>`);
+    popup.document.close();
+
+    try {
+        const { questions, failures } = await hydrateClinicBasketItems(items);
+        if (!questions.length) {
+            popup.close();
+            toast('출력 가능한 문항을 불러오지 못했습니다.', 'warn');
+            return;
+        }
+
+        const key = makeClinicPrintKey(context);
+        const meta = buildClinicMixedMeta(items, questions, context, key);
+        saveClinicMixedPayload(key, questions, meta);
+
+        if (failures.length) {
+            toast(`일부 문항 ${failures.length}개는 불러오지 못해 제외했습니다.`, 'warn');
+        } else {
+            toast(`${questions.length}문항 클리닉지를 생성합니다.`, 'info');
+        }
+
+        popup.location.href = buildMixedEngineClinicUrl(key, meta.qpp);
+    } catch (e) {
+        console.warn('[3F] 클리닉지 생성 실패:', e);
+        try { popup.close(); } catch (_) {}
+        toast('클리닉지 생성 중 오류가 발생했습니다.', 'error');
     }
 }
 

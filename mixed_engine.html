@@ -284,7 +284,7 @@
                     <option value="8">8문항</option>
                 </select>
             </div>
-            <button class="mode-tab" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
+            <button class="mode-tab" id="btn-shuffle" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
             <button class="mode-tab" id="btn-pdf-link" style="display:none; color:#fbbf24;">↗ PDF 새 탭</button>
             <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄 / PDF 저장</button>
         </div>
@@ -374,6 +374,7 @@ function injectQrToLastExamPage(area) {
 }
 
 function shouldRenderSubmitQr() {
+    if (isClinicMode()) return false;
     if (AppState.mode !== 'exam') return false;
     try {
         const params = new URLSearchParams(window.location.search);
@@ -454,6 +455,10 @@ function injectSubmitQrToLastExamPage(area) {
 }
 
 const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '' };
+
+function isClinicMode() {
+    return AppState.meta && AppState.meta.source === 'apmath_clinic';
+}
 let pageCount = 0;
 
 /** [성역] wrapLatex */
@@ -980,6 +985,12 @@ async function init() {
     } catch (e) {
         console.warn('mixedMeta parse error:', e);
         AppState.meta = {};
+    }
+
+    if (isClinicMode()) {
+        document.body.classList.add('is-clinic');
+        const shuffleBtn = document.getElementById('btn-shuffle');
+        if (shuffleBtn) shuffleBtn.style.display = 'none';
     }
 
     if (!Array.isArray(AppState.data) || AppState.data.length === 0) {

@@ -94,6 +94,7 @@ async function renderStudentDetail(sid) {
                 ${extraInfoHtml}
             </div>
             <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+                <button class="btn" style="font-size:11px; padding:6px 10px;" onclick="openClinicBasketForStudent('${sid}')">🧺 바구니</button>
                 <button class="btn" style="font-size:11px; padding:6px 10px;" onclick="openEditStudent('${sid}')">정보 수정</button>
             </div>
         </div>
@@ -102,7 +103,7 @@ async function renderStudentDetail(sid) {
 
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
             <h4 style="margin:0 0 10px 0;">📌 취약 단원 TOP</h4>
-            ${renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터 없음', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { studentId: sid } })}
+            ${renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터 없음', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s.name } })}
         </div>
 
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
@@ -111,10 +112,6 @@ async function renderStudentDetail(sid) {
         </div>
         
         ${reportButtons}
-
-        <div style="margin-top:14px;">
-            <button class="btn" style="width:100%;padding:10px;font-size:12px;font-weight:900;border-color:var(--primary);color:var(--primary);" onclick="openClinicBasket()">🧺 클리닉 바구니 보기</button>
-        </div>
         
         <div style="margin-top:20px; padding-top:16px; border-top:1px dashed var(--border); text-align:right;">
             ${s.status === '재원' 
