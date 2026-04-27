@@ -176,20 +176,20 @@ window.mainDB = {
       "subject": "확률과통계",
       "contentType": "기출",
       "qCount": 24,
-      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnitKey": "H22-PS-01",
       "rangeStartUnit": "순열과 조합",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H15-PS-01",
+      "rangeEndUnitKey": "H22-PS-01",
       "rangeEndUnit": "순열과 조합",
       "rangeEndUnitOrder": 1,
       "courseRanges": [
         {
           "standardCourse": "확률과 통계",
-          "courseCode": "H15-PS",
-          "rangeStartUnitKey": "H15-PS-01",
+          "courseCode": "H22-PS",
+          "rangeStartUnitKey": "H22-PS-01",
           "rangeStartUnit": "순열과 조합",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H15-PS-01",
+          "rangeEndUnitKey": "H22-PS-01",
           "rangeEndUnit": "순열과 조합",
           "rangeEndUnitOrder": 1
         }
@@ -248,20 +248,20 @@ window.mainDB = {
       "subject": "확률과통계",
       "contentType": "기출",
       "qCount": 23,
-      "rangeStartUnitKey": "H15-PS-02",
+      "rangeStartUnitKey": "H22-PS-02",
       "rangeStartUnit": "이항정리",
       "rangeStartUnitOrder": 2,
-      "rangeEndUnitKey": "H15-PS-03",
+      "rangeEndUnitKey": "H22-PS-03",
       "rangeEndUnit": "확률의 뜻과 활용",
       "rangeEndUnitOrder": 3,
       "courseRanges": [
         {
           "standardCourse": "확률과 통계",
-          "courseCode": "H15-PS",
-          "rangeStartUnitKey": "H15-PS-02",
+          "courseCode": "H22-PS",
+          "rangeStartUnitKey": "H22-PS-02",
           "rangeStartUnit": "이항정리",
           "rangeStartUnitOrder": 2,
-          "rangeEndUnitKey": "H15-PS-03",
+          "rangeEndUnitKey": "H22-PS-03",
           "rangeEndUnit": "확률의 뜻과 활용",
           "rangeEndUnitOrder": 3
         }
@@ -405,7 +405,7 @@ window.mainDB = {
     {
       "file": "25_강남여고_1학기_중간_고1_유사.js",
       "school": "강남여고",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "고1",
       "year": 2025,
       "semester": "1",
@@ -684,7 +684,7 @@ window.mainDB = {
     {
       "file": "25_순천여고_1학기_중간_고1_유사.js",
       "school": "순천여고",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "고1",
       "year": 2025,
       "semester": "1",
@@ -746,7 +746,7 @@ window.mainDB = {
     {
       "file": "25_제일고_1학기_중간_고1_유사.js",
       "school": "제일고",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "고1",
       "year": 2025,
       "semester": "1",
@@ -808,7 +808,7 @@ window.mainDB = {
     {
       "file": "25_팔마고_1학기_중간_고1_유사.js",
       "school": "팔마고",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "고1",
       "year": 2025,
       "semester": "1",
@@ -1118,7 +1118,7 @@ window.mainDB = {
     {
       "file": "24_금당고_1학기_중간_고2_유사.js",
       "school": "금당고",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "고2",
       "year": 2024,
       "semester": "1",
@@ -1376,7 +1376,7 @@ window.mainDB = {
     {
       "file": "24_왕운중_1학기_중간_중3_유사.js",
       "school": "왕운중",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "중3",
       "year": 2024,
       "semester": "1",
@@ -1624,7 +1624,7 @@ window.mainDB = {
     {
       "file": "23_매산고_1학기_중간_고1_유사.js",
       "school": "매산고",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "고1",
       "year": 2023,
       "semester": "1",
@@ -1871,7 +1871,7 @@ window.mainDB = {
     {
       "file": "23_왕운중_1학기_중간_중3_유사1.js",
       "school": "왕운중",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "중3",
       "year": 2023,
       "semester": "1",
@@ -1902,7 +1902,7 @@ window.mainDB = {
     {
       "file": "23_왕운중_1학기_중간_중3_유사2.js",
       "school": "왕운중",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "중3",
       "year": 2023,
       "semester": "1",
@@ -1933,7 +1933,7 @@ window.mainDB = {
     {
       "file": "23_왕운중_1학기_중간_중3_유사3.js",
       "school": "왕운중",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "중3",
       "year": 2023,
       "semester": "1",
@@ -1995,7 +1995,7 @@ window.mainDB = {
     {
       "file": "23_풍덕중_1학기_중간_중3_유사1.js",
       "school": "풍덕중",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "중3",
       "year": 2023,
       "semester": "1",
@@ -2026,7 +2026,7 @@ window.mainDB = {
     {
       "file": "23_풍덕중_1학기_중간_중3_유사2.js",
       "school": "풍덕중",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "중3",
       "year": 2023,
       "semester": "1",
@@ -2057,7 +2057,7 @@ window.mainDB = {
     {
       "file": "23_풍덕중_1학기_중간_중3_유사3.js",
       "school": "풍덕중",
-      "topic": "중간 유사",
+      "topic": "",
       "grade": "중3",
       "year": 2023,
       "semester": "1",
@@ -3449,25 +3449,25 @@ window.mainDB = {
       "subject": "",
       "contentType": "유형",
       "qCount": 32,
-      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnitKey": "H22-C-01",
       "rangeStartUnit": "다항식의 연산",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H15-SA-03",
+      "rangeEndUnitKey": "H22-C-03",
       "rangeEndUnit": "인수분해",
       "rangeEndUnitOrder": 3,
       "courseRanges": [
         {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-01",
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
           "rangeStartUnit": "다항식의 연산",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H15-SA-03",
+          "rangeEndUnitKey": "H22-C-03",
           "rangeEndUnit": "인수분해",
           "rangeEndUnitOrder": 3
         }
       ],
-      "primaryStandardCourse": "수학(상)"
+      "primaryStandardCourse": "공통수학1"
     },
     {
       "file": "항등식과나머지정리_고1_유형1.js",
@@ -3542,25 +3542,14 @@ window.mainDB = {
       "subject": "",
       "contentType": "유형",
       "qCount": 79,
-      "rangeStartUnitKey": "M2-01",
-      "rangeStartUnit": "수와 식",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M2-01",
-      "rangeEndUnit": "수와 식",
-      "rangeEndUnitOrder": 1,
-      "courseRanges": [
-        {
-          "standardCourse": "중2 수학",
-          "courseCode": "M2",
-          "rangeStartUnitKey": "M2-01",
-          "rangeStartUnit": "수와 식",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M2-01",
-          "rangeEndUnit": "수와 식",
-          "rangeEndUnitOrder": 1
-        }
-      ],
-      "primaryStandardCourse": "중2 수학"
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
     },
     {
       "file": "1학기_기말평가_중1_단원평가.js",
@@ -3697,25 +3686,14 @@ window.mainDB = {
       "subject": "",
       "contentType": "유형",
       "qCount": 20,
-      "rangeStartUnitKey": "M1-03",
-      "rangeStartUnit": "문자와 식",
-      "rangeStartUnitOrder": 3,
-      "rangeEndUnitKey": "M1-03",
-      "rangeEndUnit": "문자와 식",
-      "rangeEndUnitOrder": 3,
-      "courseRanges": [
-        {
-          "standardCourse": "중1 수학",
-          "courseCode": "M1",
-          "rangeStartUnitKey": "M1-03",
-          "rangeStartUnit": "문자와 식",
-          "rangeStartUnitOrder": 3,
-          "rangeEndUnitKey": "M1-03",
-          "rangeEndUnit": "문자와 식",
-          "rangeEndUnitOrder": 3
-        }
-      ],
-      "primaryStandardCourse": "중1 수학"
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
     },
     {
       "file": "일차방정식활용_중1_유형1.js",
@@ -3728,25 +3706,14 @@ window.mainDB = {
       "subject": "",
       "contentType": "유형",
       "qCount": 20,
-      "rangeStartUnitKey": "M1-03",
-      "rangeStartUnit": "문자와 식",
-      "rangeStartUnitOrder": 3,
-      "rangeEndUnitKey": "M1-03",
-      "rangeEndUnit": "문자와 식",
-      "rangeEndUnitOrder": 3,
-      "courseRanges": [
-        {
-          "standardCourse": "중1 수학",
-          "courseCode": "M1",
-          "rangeStartUnitKey": "M1-03",
-          "rangeStartUnit": "문자와 식",
-          "rangeStartUnitOrder": 3,
-          "rangeEndUnitKey": "M1-03",
-          "rangeEndUnit": "문자와 식",
-          "rangeEndUnitOrder": 3
-        }
-      ],
-      "primaryStandardCourse": "중1 수학"
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
     },
     {
       "file": "일차방정식활용_중1_유형3.js",
