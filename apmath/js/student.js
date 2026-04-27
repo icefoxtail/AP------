@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/student.js]
- * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (3단계: 학년 구조 확장)
+ * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (3B: 활성 반 매핑 적용)
  */
 
 function renderStudentDetail(sid) {
@@ -204,12 +204,15 @@ async function handleDeleteSession(eid, sid) {
 }
 
 /**
- * 3단계: 학년 옵션에 고1, 고2, 고3 추가
+ * 3B: 학생 정보 수정 (기존 반 배정이 날아가지 않도록 활성반 + 현재반 포함)
  */
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
-    const opts = state.db.classes.map(c => `<option value="${c.id}" ${c.id===curCid?'selected':''}>${c.name}</option>`).join('');
+    const opts = state.db.classes
+        .filter(c => c.is_active !== 0 || c.id === curCid)
+        .map(c => `<option value="${c.id}" ${c.id===curCid?'selected':''}>${c.name}</option>`)
+        .join('');
     
     showModal('학생 정보 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
@@ -256,10 +259,14 @@ async function handleEditStudent(sid) {
 }
 
 /**
- * 3단계: 학년 옵션에 고1, 고2, 고3 추가
+ * 3B: 신규 학생 추가 (활성 반만 표시)
  */
 function openAddStudent(defaultCid = '') {
-    const opts = state.db.classes.map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`).join('');
+    const opts = state.db.classes
+        .filter(c => c.is_active !== 0)
+        .map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`)
+        .join('');
+
     showModal('신규 학생 추가', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="add-name" class="btn" placeholder="이름" style="text-align:left;">

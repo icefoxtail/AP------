@@ -1,11 +1,14 @@
 /**
  * AP Math OS v26.1.2 [js/classroom.js]
- * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (3단계 반영)
+ * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (3B)
  */
 
-/**
- * 요일 기반 수업 여부 확인 (3단계)
- */
+function formatClassScheduleDays(daysStr) {
+    if (!daysStr) return '매일';
+    const map = ['일','월','화','수','목','금','토'];
+    return daysStr.split(',').map(d => map[parseInt(d)]).join('');
+}
+
 function isClassScheduledToday(clsId) {
     const cls = state.db.classes.find(c => c.id === clsId);
     if (!cls || !cls.schedule_days) return true;
@@ -14,7 +17,7 @@ function isClassScheduledToday(clsId) {
 }
 
 /**
- * 개별 학급 관리 화면 렌더링
+ * 개별 학급 관리 화면 렌더링 (3B: 학생 추가 버튼 제거 및 요일 표시)
  */
 function renderClass(cid) {
     state.ui.currentClassId = cid;
@@ -24,22 +27,21 @@ function renderClass(cid) {
 
     const summary = computeClassTodaySummary(cid);
     
+    // 3B: 학생 추가 버튼 제거 (운영 메뉴로 이동)
     const opToolsPanel = `
         <div style="display:flex; gap:8px; overflow-x:auto; margin-bottom:12px; padding-bottom:4px; white-space:nowrap;">
             <button class="btn btn-primary" style="padding:8px 14px; font-size:13px; flex:0 0 auto;" onclick="openQrGenerator('${cid}')">📸 QR 생성</button>
             <button class="btn" style="padding:8px 14px; font-size:13px; flex:0 0 auto;" onclick="openQrSubmitStatus('${cid}')">📊 제출 현황</button>
-            <button class="btn" style="padding:8px 14px; font-size:13px; flex:0 0 auto;" onclick="openAddStudent('${cid}')">👤 학생 추가</button>
         </div>
     `;
 
-    // 3단계: 오늘 수업이 없는 경우 미처리 상태 대신 요일 안내 표시
     const statusBarHtml = summary.isScheduled
         ? `<span>출석 <b>${summary.att}/${summary.total}</b></span>
            <span style="opacity:0.3;">·</span>
            <span>숙제 <b>${summary.hw}/${summary.total}</b></span>
            <span style="opacity:0.3;">·</span>
            <span>성적 <b>${summary.test}/${summary.total}</b></span>`
-        : `<span style="color:var(--warning); font-weight:700;">오늘은 정규 수업일이 아닙니다. (출결/숙제 수동 처리 가능)</span>`;
+        : `<span style="color:var(--warning); font-weight:700;">오늘은 정규 수업일이 아닙니다. (수동 처리 가능)</span>`;
 
     document.getElementById('app-root').innerHTML = `
         ${opToolsPanel}
@@ -48,7 +50,7 @@ function renderClass(cid) {
             ${statusBarHtml}
         </div>
         <div class="card">
-            <h2>${cls.name} 관리 <span style="font-weight:normal; opacity:0.5; font-size:14px;">(재원 ${summary.total}명)</span></h2>
+            <h2>${cls.name} 관리 <span style="font-weight:normal; opacity:0.5; font-size:14px;">(재원 ${summary.total}명 · ${formatClassScheduleDays(cls.schedule_days)})</span></h2>
             <table>
                 <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">출결/숙제/성적</th></tr></thead>
                 <tbody id="class-std-list"></tbody>
@@ -104,9 +106,6 @@ function renderClass(cid) {
     }).join('');
 }
 
-/**
- * 학급의 오늘 수업 현황 요약 계산 (3단계 반영)
- */
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = getTodayExamConfig();
@@ -115,7 +114,6 @@ function computeClassTodaySummary(classId) {
     const aIds = active.map(s => s.id);
     const total = active.length;
     
-    // 3단계: 이 반이 오늘 수업 대상인지 확인
     const isScheduled = isClassScheduledToday(classId);
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
@@ -127,7 +125,6 @@ function computeClassTodaySummary(classId) {
 }
 
 // --- 출석부 (Ledger) 로직 ---
-
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
 async function loadLedger() {
@@ -147,7 +144,7 @@ async function goDashboardFromLedger() {
 }
 
 function renderAttendanceLedger() {
-    const classOptions = state.db.classes.map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`).join('');
+    const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`).join('');
     document.getElementById('app-root').innerHTML = `
         <div style="display:flex;gap:10px;margin-bottom:15px;align-items:center;flex-wrap:wrap;">
             <button class="btn" onclick="goDashboardFromLedger()">← 홈</button>
@@ -157,7 +154,7 @@ function renderAttendanceLedger() {
             <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
                 <input type="date" id="ledger-date" class="btn" value="${ledgerState.date}" style="width:160px;" onchange="ledgerState.date=this.value;loadLedger();">
                 <select id="ledger-class" class="btn" style="flex:1;min-width:120px;" onchange="ledgerState.classId=this.value;renderLedgerTable();">
-                    <option value="">전체 반</option>${classOptions}
+                    <option value="">전체 반 (활성)</option>${classOptions}
                 </select>
                 <div style="display:flex;gap:6px;flex-wrap:wrap;">
                     <button id="ledger-mode-att" class="btn ${ledgerState.mode==='att'?'btn-primary':''}" onclick="ledgerState.mode='att';renderLedgerTable();">출결</button>

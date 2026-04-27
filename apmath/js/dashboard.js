@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
- * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (3단계: 반 요일 마감 체크 반영)
+ * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (3B 반/학생 관리 완성)
  */
 
 function copyPhoneNumber(text) {
@@ -48,13 +48,13 @@ function renderAddressBookList() {
 }
 
 function openAddressBook() {
-    const classOptions = state.db.classes.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}">${c.name}</option>`).join('');
     
     showModal('📒 주소록', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <input id="ab-search" class="btn" placeholder="이름 검색" style="flex:1; text-align:left;" oninput="renderAddressBookList()">
             <select id="ab-class" class="btn" style="flex:1;" onchange="renderAddressBookList()">
-                <option value="">전체 반</option>
+                <option value="">전체 반 (활성)</option>
                 ${classOptions}
             </select>
         </div>
@@ -65,48 +65,152 @@ function openAddressBook() {
 }
 
 /**
- * 3단계: 반 수업 요일 설정 모달
+ * 3B: 반 관리 UI 헬퍼
  */
-function openClassScheduleSettings() {
-    const days = ['일', '월', '화', '수', '목', '금', '토'];
-    const rows = state.db.classes.map(c => {
-        const selected = c.schedule_days ? c.schedule_days.split(',') : ['0','1','2','3','4','5','6'];
-        const checkboxes = days.map((d, i) => `
-            <label style="margin-right:8px; font-size:12px; cursor:pointer;">
-                <input type="checkbox" value="${i}" class="sched-chk-${c.id}" ${selected.includes(String(i)) ? 'checked' : ''}> ${d}
-            </label>
-        `).join('');
-        
-        return `
-            <div style="padding:14px 0; border-bottom:1px solid var(--border);">
-                <div style="font-weight:bold; margin-bottom:8px; font-size:14px; color:var(--primary);">
-                    ${c.name} <span style="font-size:11px; font-weight:normal; color:var(--secondary);">(${c.grade})</span>
-                </div>
-                <div style="display:flex; flex-wrap:wrap; gap:4px;">${checkboxes}</div>
-            </div>
-        `;
-    }).join('');
-
-    showModal('📅 반 수업 요일 설정', `
-        <p style="font-size:12px; color:var(--secondary); margin-top:0;">체크된 요일에만 대시보드 마감 체크(미처리 명단)에 해당 반 학생들이 나타납니다.<br>아무것도 설정하지 않으면 기본적으로 매일 나타납니다.</p>
-        <div style="max-height:50vh; overflow-y:auto;">
-            ${rows}
-        </div>
-    `, '설정 저장', () => saveClassScheduleSettings());
+function formatClassScheduleDaysForUI(daysStr) {
+    if (!daysStr) return '매일';
+    const map = ['일','월','화','수','목','금','토'];
+    return daysStr.split(',').map(d => map[parseInt(d)]).join('');
 }
 
-async function saveClassScheduleSettings() {
-    const updates = [];
-    state.db.classes.forEach(c => {
-        const checkboxes = document.querySelectorAll(`.sched-chk-${c.id}:checked`);
-        const days = Array.from(checkboxes).map(chk => chk.value).join(',');
-        updates.push(api.patch(`classes/${c.id}`, { schedule_days: days }));
-    });
+/**
+ * 3B: 반 관리 모달 오픈
+ */
+function openClassManageModal() {
+    const activeClasses = state.db.classes.filter(c => c.is_active !== 0);
+    const hiddenClasses = state.db.classes.filter(c => c.is_active === 0);
+
+    const renderClassRow = (c) => `
+        <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <div style="font-weight:bold; font-size:14px; color:${c.is_active===0?'var(--secondary)':'var(--primary)'};">
+                    ${c.name} <span style="font-size:11px; font-weight:normal; color:var(--secondary);">(${c.grade})</span>
+                </div>
+                <div style="font-size:11px; color:var(--secondary); margin-top:4px;">담당: ${c.teacher_name} | 요일: ${formatClassScheduleDaysForUI(c.schedule_days)}</div>
+            </div>
+            <div style="display:flex; gap:6px;">
+                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="openEditClassModal('${c.id}')">수정</button>
+                ${c.is_active === 0
+                  ? `<button class="btn btn-primary" style="padding:4px 8px; font-size:11px;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
+                  : `<button class="btn" style="padding:4px 8px; font-size:11px; color:var(--error); border-color:var(--border);" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
+                }
+            </div>
+        </div>
+    `;
+
+    showModal('🏫 반 관리', `
+        <div style="display:flex; justify-content:flex-end; margin-bottom:12px;">
+            <button class="btn btn-primary" style="padding:8px 14px;" onclick="openAddClassModal()">➕ 새 반 추가</button>
+        </div>
+        <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--primary);">활성 반 (${activeClasses.length})</h4>
+        <div style="margin-bottom:20px;">
+            ${activeClasses.length ? activeClasses.map(renderClassRow).join('') : '<div style="font-size:12px; color:var(--secondary);">활성 반이 없습니다.</div>'}
+        </div>
+        ${hiddenClasses.length ? `
+            <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">숨김 반 (${hiddenClasses.length})</h4>
+            <div style="opacity:0.7;">
+                ${hiddenClasses.map(renderClassRow).join('')}
+            </div>
+        ` : ''}
+    `);
+}
+
+function openAddClassModal() {
+    showModal('➕ 새 반 추가', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <input id="add-cls-name" class="btn" placeholder="반 이름 (예: 중3A)" style="text-align:left;">
+            <select id="add-cls-grade" class="btn">
+                <option value="중1">중1</option>
+                <option value="중2">중2</option>
+                <option value="중3">중3</option>
+                <option value="고1">고1</option>
+                <option value="고2">고2</option>
+                <option value="고3">고3</option>
+            </select>
+            <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left;">
+            <input id="add-cls-teacher" class="btn" value="박준성" placeholder="담당 교사" style="text-align:left;">
+            
+            <label style="font-size:12px; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px;"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
+            </div>
+        </div>
+    `, '추가', handleAddClass);
+}
+
+async function handleAddClass() {
+    const name = document.getElementById('add-cls-name').value.trim();
+    if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
     
-    await Promise.all(updates);
-    toast('수업 요일이 저장되었습니다.', 'success');
-    closeModal();
-    await loadData();
+    const grade = document.getElementById('add-cls-grade').value;
+    const subject = document.getElementById('add-cls-subject').value.trim();
+    const teacher_name = document.getElementById('add-cls-teacher').value.trim();
+    const schedule_days = Array.from(document.querySelectorAll('.add-cls-days:checked')).map(e => e.value).join(',');
+
+    const r = await api.post('classes', { name, grade, subject, teacher_name, schedule_days });
+    if (r.success) {
+        toast('새 반이 추가되었습니다.', 'success');
+        await loadData();
+        openClassManageModal();
+    }
+}
+
+function openEditClassModal(cid) {
+    const c = state.db.classes.find(x => x.id === cid);
+    const selectedDays = c.schedule_days ? c.schedule_days.split(',') : [];
+
+    showModal('반 수정', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <input id="edit-cls-name" class="btn" value="${c.name}" placeholder="반 이름" style="text-align:left;">
+            <select id="edit-cls-grade" class="btn">
+                ${['중1','중2','중3','고1','고2','고3'].map(g => `<option value="${g}" ${c.grade===g?'selected':''}>${g}</option>`).join('')}
+            </select>
+            <input id="edit-cls-subject" class="btn" value="${c.subject||''}" placeholder="과목" style="text-align:left;">
+            <input id="edit-cls-teacher" class="btn" value="${c.teacher_name||''}" placeholder="담당 교사" style="text-align:left;">
+            
+            <label style="font-size:12px; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
+            </div>
+        </div>
+    `, '저장', () => handleEditClass(cid));
+}
+
+async function handleEditClass(cid) {
+    const c = state.db.classes.find(x => x.id === cid);
+    const name = document.getElementById('edit-cls-name').value.trim();
+    if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
+
+    const grade = document.getElementById('edit-cls-grade').value;
+    const subject = document.getElementById('edit-cls-subject').value.trim();
+    const teacher_name = document.getElementById('edit-cls-teacher').value.trim();
+    const schedule_days = Array.from(document.querySelectorAll('.edit-cls-days:checked')).map(e => e.value).join(',');
+
+    const payload = { name, grade, subject, teacher_name, schedule_days, is_active: c.is_active !== undefined ? c.is_active : 1 };
+    
+    const r = await api.patch(`classes/${cid}`, payload);
+    if (r.success) {
+        toast('반 정보가 수정되었습니다.', 'success');
+        await loadData();
+        openClassManageModal();
+    }
+}
+
+async function toggleClassActive(cid, status) {
+    if (!confirm(status === 0 ? '이 반을 숨김 처리하시겠습니까?' : '이 반을 복구하시겠습니까?')) return;
+    const c = state.db.classes.find(x => x.id === cid);
+    const payload = {
+        name: c.name, grade: c.grade, subject: c.subject, 
+        teacher_name: c.teacher_name, schedule_days: c.schedule_days, 
+        is_active: status
+    };
+    
+    const r = await api.patch(`classes/${cid}`, payload);
+    if (r.success) {
+        toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info');
+        await loadData();
+        openClassManageModal();
+    }
 }
 
 function openOperationMenu() {
@@ -118,10 +222,13 @@ function openOperationMenu() {
     showModal('⚙️ 학원 운영 관리', `
         <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="padding-bottom:16px; border-bottom:1px solid var(--border);">
-                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">운영 및 연락처 관리</label>
+                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">운영 및 학생 관리</label>
                 <div style="display:flex; flex-direction:column; gap:8px;">
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openClassScheduleSettings();">
-                        📅 반 수업 요일 설정
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openClassManageModal();">
+                        🏫 반 관리 (추가 / 수정 / 숨김 / 요일설정)
+                    </button>
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddStudent();">
+                        👤 학생 추가
                     </button>
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddressBook();">
                         📒 주소록 (학생/학부모 연락처 조회)
@@ -213,7 +320,8 @@ function computeDashboardData() {
     priorityAll.sort((a, b) => b.rankWeight - a.rankWeight || a.name.localeCompare(b.name));
     
     const classSummaries = {};
-    state.db.classes.forEach(c => {
+    // 3B: 활성 반만 요약에 포함
+    state.db.classes.filter(c => c.is_active !== 0).forEach(c => {
         const cIds = state.db.class_students.filter(m => m.class_id === c.id).map(m => m.student_id).filter(id => activeIds.has(id));
         let cRisk=0, cMiss=0, cAbs=0, cPre=0;
         cIds.forEach(id => {
@@ -305,7 +413,6 @@ function renderDashboard() {
 
     const noTestStr = todayExam ? `성적 미입력 <b>${closeData.noTest.length}</b>명` : `<span style="opacity:0.6;">성적 (시험 없음)</span>`;
     
-    // 3단계: 오늘 수업 대상 학생이 없을 때 깔끔하게 보이도록 처리
     const closeBanner = closeData.totalActive === 0
         ? `${syncWarning}<div style="display:flex; align-items:center; gap:10px; background:#f1f3f4; border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:14px; color:var(--secondary);">
             <span style="font-size:20px;">☕</span>
@@ -331,7 +438,11 @@ function renderDashboard() {
                 <span style="font-size:18px; color:#f9ab00;">›</span>
               </div>`;
 
-    const classes = state.ui.viewScope === 'all' ? state.db.classes : state.db.classes.filter(c => c.teacher_name === state.ui.userName);
+    // 3B: 활성 반만 대시보드에 표시
+    const classes = state.ui.viewScope === 'all' 
+        ? state.db.classes.filter(c => c.is_active !== 0) 
+        : state.db.classes.filter(c => c.teacher_name === state.ui.userName && c.is_active !== 0);
+
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap;">
             <h3 style="margin:0; font-size:16px;">📂 학급별 운영 현황</h3>
@@ -391,23 +502,16 @@ function isRiskMuted(sid) {
     return diff >= 0 && diff < RISK_MUTE_DAYS;
 }
 
-/**
- * 3단계: 오늘 수업 대상인지 확인하는 헬퍼 함수
- */
 function isClassScheduledToday(clsId) {
     const cls = state.db.classes.find(c => c.id === clsId);
-    if (!cls || !cls.schedule_days) return true; // schedule_days가 없으면 매일로 간주
+    if (!cls || !cls.schedule_days) return true;
     const todayIdx = String(new Date().getDay());
     return cls.schedule_days.split(',').includes(todayIdx);
 }
 
-/**
- * 오늘 마감 데이터 계산 (3단계: 오늘 대상 학생만 필터링)
- */
 function computeTodayCloseData(todayExam = getTodayExamConfig()) {
     const today = new Date().toLocaleDateString('sv-SE');
     
-    // 3단계: 오늘 대상인 재원생만 추출
     const scheduledActive = state.db.students.filter(s => {
         if (s.status !== '재원') return false;
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
@@ -437,7 +541,7 @@ function computeTodayCloseData(todayExam = getTodayExamConfig()) {
         if (todayExam && !testTodaySet.has(s.id)) noTest.push(info);
     });
 
-    const totalActive = scheduledActive.length; // 오늘 대상 학생 수로 한정
+    const totalActive = scheduledActive.length;
     return {
         totalActive, todayExam, noAtt, attDone: totalActive - noAtt.length,
         noHw, hwDone: totalActive - noHw.length,

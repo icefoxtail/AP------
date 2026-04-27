@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * Cloudflare Worker 통합 API 엔진 - 3단계 반·학년 운영 구조 확장
+ * Cloudflare Worker 통합 API 엔진 - 3B 반·학생 관리 확장
  */
 
 const headers = {
@@ -205,7 +205,7 @@ export default {
           }
         }
 
-        // 7. 개별 출결/숙제 PATCH (3단계: request.json 중복 읽기 방지를 위해 분리 처리)
+        // 7. 개별 출결/숙제 PATCH 
         if (method === 'PATCH' && (resource === 'attendance' || resource === 'homework')) {
           const data = await request.json();
           if (resource === 'attendance') {
@@ -307,12 +307,35 @@ export default {
           }
         }
 
-        // 10. 반 관리 (3단계: 수업 요일 설정)
-        if (resource === 'classes' && method === 'PATCH' && id) {
-          const data = await request.json();
-          await env.DB.prepare(`UPDATE classes SET schedule_days = ? WHERE id = ?`)
-            .bind(data.schedule_days || '', id).run();
-          return new Response(JSON.stringify({ success: true }), { headers });
+        // 10. 반 관리 (3B: 반 추가 및 전체 수정/숨김 처리)
+        if (resource === 'classes') {
+          if (method === 'POST') {
+            const data = await request.json();
+            const cid = `cls_${Date.now()}`;
+            await env.DB.prepare(`
+              INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, is_active)
+              VALUES (?, ?, ?, ?, ?, ?, 1)
+            `).bind(cid, data.name, data.grade, data.subject || '수학', data.teacher_name || '박준성', data.schedule_days || '').run();
+            return new Response(JSON.stringify({ success: true, id: cid }), { headers });
+          }
+
+          if (method === 'PATCH' && id) {
+            const data = await request.json();
+            await env.DB.prepare(`
+              UPDATE classes 
+              SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, is_active = ?
+              WHERE id = ?
+            `).bind(
+              data.name, 
+              data.grade, 
+              data.subject, 
+              data.teacher_name, 
+              data.schedule_days || '', 
+              data.is_active !== undefined ? data.is_active : 1, 
+              id
+            ).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
         }
       }
 
