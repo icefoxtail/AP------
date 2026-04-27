@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/student.js]
- * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (4단계: 학생 상세 보관소 UI 정리)
+ * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (4D: 보고 문구 도구 명칭 변경 및 UI 보정)
  */
 
 function renderStudentDetail(sid) {
@@ -37,7 +37,6 @@ function renderStudentDetail(sid) {
         </div>
     ` : '';
 
-    // 4단계: 섹션 2. 상담 기록 (접힘 UI 기본 적용)
     const consultationHTML = `
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
             <h4 style="margin:0 0 10px 0;">💬 학생 상담 기록</h4>
@@ -66,21 +65,20 @@ function renderStudentDetail(sid) {
         </div>
     `;
 
-    // 4단계: 섹션 4. 보고 문구 (접힘 영역으로 묶고 AI 버튼 숨김)
+    // 4D: 보고 문구 명칭 변경 ("상담·전달 문구")
     const reportButtons = `
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
             <details>
-                <summary style="font-size:13px; font-weight:700; cursor:pointer; color:var(--secondary);">📋 보고 문구 복사 도구</summary>
+                <summary style="font-size:13px; font-weight:700; cursor:pointer; color:var(--secondary);">📋 상담·전달 문구</summary>
                 <div style="display:flex; gap:6px; margin-top:12px;">
                     <button class="btn btn-primary" onclick="copyReport('${sid}', 'parent')" style="flex:1; font-size:11px; padding:10px 4px;">학부모용</button>
                     <button class="btn" onclick="copyReport('${sid}', 'student')" style="flex:1; font-size:11px; padding:10px 4px; border-color:var(--primary); color:var(--primary);">학생용</button>
                     <button class="btn" onclick="copyReport('${sid}', 'memo')" style="flex:1; font-size:11px; padding:10px 4px;">상담용</button>
                 </div>
-                </details>
+            </details>
         </div>
     `;
 
-    // 4단계: 모달 조립 (순서 정립 및 퇴원 버튼 하단 이동)
     showModal(`${s.name} 프로필`, `
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:5px;">
             <div style="flex:1;">
@@ -113,7 +111,6 @@ function renderStudentDetail(sid) {
 function openEditConsultation(cid, sid) {
     const c = state.db.consultations.find(x => x.id === cid);
     if (!c) return;
-    
     showModal('상담 기록 수정', `
         <div style="display:flex; flex-direction:column; gap:8px;">
             <div style="display:flex; gap:8px;">
@@ -138,30 +135,17 @@ async function handleEditConsultation(cid, sid) {
     const type = document.getElementById('edit-cns-type').value;
     const content = document.getElementById('edit-cns-content').value.trim();
     const nextAction = document.getElementById('edit-cns-action').value.trim();
-
     if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
-
     const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
-    if (r.success) {
-        toast('상담 기록이 수정되었습니다.', 'info');
-        closeModal();
-        await loadData();
-        renderStudentDetail(sid);
-    } else {
-        toast('상담 수정 실패', 'error');
-    }
+    if (r.success) { toast('상담 기록이 수정되었습니다.', 'info'); closeModal(); await loadData(); renderStudentDetail(sid); } 
+    else { toast('상담 수정 실패', 'error'); }
 }
 
 async function handleDeleteConsultation(cid, sid) {
     if (confirm('이 상담 기록을 삭제하시겠습니까?')) {
         const r = await api.delete('consultations', cid);
-        if (r.success) {
-            toast('상담 기록이 삭제되었습니다.', 'info');
-            await loadData();
-            renderStudentDetail(sid);
-        } else {
-            toast('상담 삭제 실패', 'error');
-        }
+        if (r.success) { toast('상담 기록이 삭제되었습니다.', 'info'); await loadData(); renderStudentDetail(sid); } 
+        else { toast('상담 삭제 실패', 'error'); }
     }
 }
 
@@ -170,42 +154,22 @@ async function handleSaveConsultation(sid) {
     const type = document.getElementById('cns-type').value;
     const content = document.getElementById('cns-content').value.trim();
     const nextAction = document.getElementById('cns-action').value.trim();
-
     if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
-
     const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction });
-    if (r.success) {
-        toast('상담 기록이 저장되었습니다.', 'info');
-        await loadData();
-        renderStudentDetail(sid);
-    } else {
-        toast('상담 저장 실패', 'error');
-    }
+    if (r.success) { toast('상담 기록이 저장되었습니다.', 'info'); await loadData(); renderStudentDetail(sid); } 
+    else { toast('상담 저장 실패', 'error'); }
 }
 
 async function handleDelete(sid) {
-    if (confirm('이 학생을 퇴원 처리하시겠습니까?')) {
-        await api.delete('students', sid);
-        closeModal();
-        await loadData();
-    }
+    if (confirm('이 학생을 퇴원 처리하시겠습니까?')) { await api.delete('students', sid); closeModal(); await loadData(); }
 }
 
 async function handleRestore(sid) {
-    if (confirm('이 학생을 재원으로 복구하시겠습니까?')) {
-        await api.patch(`students/${sid}/restore`, {});
-        closeModal();
-        await loadData();
-    }
+    if (confirm('이 학생을 재원으로 복구하시겠습니까?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); }
 }
 
 async function handleDeleteSession(eid, sid) {
-    if(confirm('기록을 삭제하시겠습니까?')) {
-        await api.delete('exam-sessions', eid);
-        closeModal();
-        await loadData();
-        renderStudentDetail(sid);
-    }
+    if(confirm('기록을 삭제하시겠습니까?')) { await api.delete('exam-sessions', eid); closeModal(); await loadData(); renderStudentDetail(sid); }
 }
 
 function openEditStudent(sid) {
@@ -242,22 +206,13 @@ function openEditStudent(sid) {
 }
 
 async function handleEditStudent(sid) {
-    const n = document.getElementById('edit-name').value, 
-          sc = document.getElementById('edit-school').value, 
-          g = document.getElementById('edit-grade').value, 
-          c = document.getElementById('edit-class').value,
-          sp = document.getElementById('edit-student-phone').value.trim(),
-          pp = document.getElementById('edit-parent-phone').value.trim(),
-          gr = document.getElementById('edit-guardian-rel').value.trim(),
-          memo = document.getElementById('edit-memo').value.trim();
+    const n = document.getElementById('edit-name').value, sc = document.getElementById('edit-school').value, 
+          g = document.getElementById('edit-grade').value, c = document.getElementById('edit-class').value,
+          sp = document.getElementById('edit-student-phone').value.trim(), pp = document.getElementById('edit-parent-phone').value.trim(),
+          gr = document.getElementById('edit-guardian-rel').value.trim(), memo = document.getElementById('edit-memo').value.trim();
           
-    await api.patch(`students/${sid}`, { 
-        name: n, school_name: sc, grade: g, class_id: c,
-        student_phone: sp, parent_phone: pp, guardian_relation: gr, memo: memo 
-    });
-    
-    closeModal();
-    await loadData();
+    await api.patch(`students/${sid}`, { name: n, school_name: sc, grade: g, class_id: c, student_phone: sp, parent_phone: pp, guardian_relation: gr, memo: memo });
+    closeModal(); await loadData();
 }
 
 function openAddStudent(defaultCid = '') {
@@ -271,12 +226,8 @@ function openAddStudent(defaultCid = '') {
             <input id="add-name" class="btn" placeholder="이름" style="text-align:left;">
             <input id="add-school" class="btn" placeholder="학교" style="text-align:left;">
             <select id="add-grade" class="btn">
-                <option value="중1">중1</option>
-                <option value="중2">중2</option>
-                <option value="중3">중3</option>
-                <option value="고1">고1</option>
-                <option value="고2">고2</option>
-                <option value="고3">고3</option>
+                <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
+                <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
             </select>
             <select id="add-class" class="btn"><option value="">반 선택</option>${opts}</select>
         </div>
@@ -284,14 +235,11 @@ function openAddStudent(defaultCid = '') {
 }
 
 async function handleAddStudent() {
-    const n = document.getElementById('add-name').value, 
-          sc = document.getElementById('add-school').value, 
-          g = document.getElementById('add-grade').value, 
-          c = document.getElementById('add-class').value;
+    const n = document.getElementById('add-name').value, sc = document.getElementById('add-school').value, 
+          g = document.getElementById('add-grade').value, c = document.getElementById('add-class').value;
     if(!n || !sc) return;
     await api.post('students', { name: n, school_name: sc, grade: g, class_id: c });
-    closeModal();
-    await loadData();
+    closeModal(); await loadData();
 }
 
 function openDischargedStudents() {
@@ -305,9 +253,5 @@ function openDischargedStudents() {
         </div>
     `).join('') : `<div style="padding:32px 16px; text-align:center; color:var(--secondary); font-size:14px;">퇴원생이 없습니다.</div>`;
 
-    showModal('🗄️ 퇴원생 목록', `
-        <div style="max-height:60vh; overflow-y:auto;">
-            ${rows}
-        </div>
-    `);
+    showModal('🗄️ 퇴원생 목록', `<div style="max-height:60vh; overflow-y:auto;">${rows}</div>`);
 }

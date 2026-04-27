@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/core.js]
- * 핵심 설정, 전역 상태, 통신 엔진 및 초기화 로직
+ * 핵심 설정 및 데이터 동기화 엔진 (4D: 할 일 메모 및 시험일정 추가)
  */
 
 const CONFIG = {
@@ -64,13 +64,12 @@ let state = {
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
         exam_sessions: [], wrong_answers: [], attendance_history: [], homework_history: [],
-        consultations: [] // 4H 추가
+        consultations: [], operation_memos: [], exam_schedules: []
     }
 };
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
 
-// --- 상수 (운영 관제 및 리스크 관리) ---
 const RISK_LOOKBACK_DAYS = 14;
 const RISK_ABSENCE_THRESHOLD = 2;
 const RISK_HOMEWORK_THRESHOLD = 3;
@@ -78,42 +77,9 @@ const RISK_WRONG_THRESHOLD = 3;
 const RISK_MUTE_DAYS = 2;
 const RISK_MUTE_KEY = 'APMATH_MUTED_RISKS';
 
-// --- AP_TODAY_EXAM 관리 함수 ---
-function getTodayExamConfig() {
-    try {
-        const raw = localStorage.getItem('AP_TODAY_EXAM');
-        if (!raw) return null;
-        const cfg = JSON.parse(raw);
-        const today = new Date().toLocaleDateString('sv-SE');
-        if (cfg.date !== today || !cfg.title) {
-            localStorage.removeItem('AP_TODAY_EXAM');
-            return null;
-        }
-        return { date: cfg.date, title: String(cfg.title), q: parseInt(cfg.q, 10) || 20 };
-    } catch (e) {
-        localStorage.removeItem('AP_TODAY_EXAM');
-        return null;
-    }
-}
-
-function setTodayExamConfig(title, q) {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const validQ = parseInt(q, 10) || 20;
-    localStorage.setItem('AP_TODAY_EXAM', JSON.stringify({ date: today, title: String(title), q: validQ }));
-}
-
-function clearTodayExamConfig() {
-    localStorage.removeItem('AP_TODAY_EXAM');
-    renderDashboard();
-}
-
-// --- API 통신 엔진 ---
 const api = {
     async get(res) {
-        try {
-            const r = await fetch(`${CONFIG.API_BASE}/${res}`);
-            return await r.json();
-        } catch (e) { return {}; }
+        try { const r = await fetch(`${CONFIG.API_BASE}/${res}`); return await r.json(); } catch (e) { return {}; }
     },
     async patch(res, d) {
         if (!navigator.onLine) return addToSyncQueue('PATCH', res, d);
@@ -132,9 +98,6 @@ const api = {
     }
 };
 
-/**
- * 데이터 로드 및 전역 라우팅
- */
 async function loadData(isInitial = false) {
     if (isInitial) toast('시스템 초기화 중...', 'info');
     const data = await api.get('initial-data');
@@ -148,15 +111,14 @@ async function loadData(isInitial = false) {
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [],
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [],
         homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
-        consultations: Array.isArray(data.consultations) ? data.consultations : [] // 4H 추가
+        consultations: Array.isArray(data.consultations) ? data.consultations : [],
+        operation_memos: Array.isArray(data.operation_memos) ? data.operation_memos : [],
+        exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : []
     };
     if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
     else renderDashboard();
 }
 
-/**
- * UI 리렌더링 없이 데이터만 동기화
- */
 async function refreshDataOnly() {
     const data = await api.get('initial-data');
     state.db = { 
@@ -167,7 +129,9 @@ async function refreshDataOnly() {
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [], 
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [], 
         homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
-        consultations: Array.isArray(data.consultations) ? data.consultations : [] // 4H 추가
+        consultations: Array.isArray(data.consultations) ? data.consultations : [],
+        operation_memos: Array.isArray(data.operation_memos) ? data.operation_memos : [],
+        exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : []
     };
 }
 
@@ -190,12 +154,5 @@ async function processSyncQueue() {
     toast('동기화 완료', 'info'); await loadData();
 }
 
-async function goHome() { 
-    state.ui.currentClassId = null; 
-    await loadData(); 
-}
-
-function toggleScope() { 
-    state.ui.viewScope = state.ui.viewScope === 'teacher' ? 'all' : 'teacher'; 
-    renderDashboard(); 
-}
+async function goHome() { state.ui.currentClassId = null; await loadData(); }
+function toggleScope() { state.ui.viewScope = state.ui.viewScope === 'teacher' ? 'all' : 'teacher'; renderDashboard(); }
