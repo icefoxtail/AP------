@@ -40,6 +40,7 @@ function normalizeQrArchiveFile(raw = '') {
  * QR 코드 생성 모달 오픈
  */
 function openQrGenerator(cid) {
+    state.ui.currentClassId = cid; // [3G 긴급 보정] 반 ID 유실 방지
     const cls = state.db.classes.find(c => c.id === cid);
     const today = new Date().toLocaleDateString('sv-SE');
     const lastArchiveFile = localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '';
