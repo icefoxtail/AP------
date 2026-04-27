@@ -367,15 +367,16 @@ export default {
 
         // --- 7.5. 시험 배정 관리 (Phase 3-H) ---
         if (resource === 'class-exam-assignments') {
-          const teacher = await verifyAuth(request, env);
-          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
-
           if (method === 'POST') {
             const d = await request.json();
             if (!d.class_id || !d.exam_title || !d.exam_date) {
               return new Response(JSON.stringify({ success: false, error: 'class_id, exam_title, exam_date required' }), { status: 400, headers });
             }
-            if (!(await canAccessClass(teacher, d.class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+
+            const cls = await env.DB.prepare('SELECT id FROM classes WHERE id = ? LIMIT 1').bind(d.class_id).first();
+            if (!cls) {
+              return new Response(JSON.stringify({ success: false, error: 'class not found' }), { status: 404, headers });
+            }
 
             const archive_file = d.archive_file || '';
             const source_type = d.source_type || 'archive';
@@ -397,6 +398,9 @@ export default {
           }
 
           if (method === 'GET') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
             const classId = url.searchParams.get('class');
             if (!classId) return new Response(JSON.stringify({ success: false, error: 'classId required' }), { status: 400, headers });
             if (!(await canAccessClass(teacher, classId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });

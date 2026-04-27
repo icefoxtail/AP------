@@ -423,6 +423,71 @@ function injectSubmitQrToLastExamPage(area) {
 // [5A] AP Math OS 제출용 QR 추가 기능 끝
 // =========================================================================
 
+// =========================================================================
+// [3H] class_exam_assignments 자동 등록 (AP 제출 QR 모드 전용)
+// =========================================================================
+let _classExamAssignmentRegisteredSig = '';
+
+function getKstTodayString() {
+    const d = new Date();
+    const kst = new Date(d.getTime() + (9 * 60 * 60 * 1000));
+    return kst.toISOString().split('T')[0];
+}
+
+function getAssignmentAuthHeader() {
+    try {
+        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (!session?.login_id || !session?.raw_password) return null;
+        return { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+    } catch (e) {
+        return null;
+    }
+}
+
+async function registerClassExamAssignmentToOS() {
+    if (!shouldRenderSubmitQr()) return;
+    if (!AppState.data.length) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const classId = params.get('class') || '';
+    if (!classId) return;
+
+    const authHeader = getAssignmentAuthHeader();
+    if (!authHeader) return;
+
+    const examDate = params.get('date') || getKstTodayString();
+    const archiveFile = params.get('data') || '';
+    const qCountRaw = params.get('q');
+    const questionCount = parseInt(qCountRaw, 10) || AppState.data.length || 0;
+    const examTitle = AppState.title || window.examTitle || '시험지';
+
+    const sig = [classId, examTitle, examDate, archiveFile, questionCount, 'archive'].join('|');
+    if (sig === _classExamAssignmentRegisteredSig) return;
+
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/class-exam-assignments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', ...authHeader },
+            body: JSON.stringify({
+                class_id: classId,
+                exam_title: examTitle,
+                exam_date: examDate,
+                question_count: questionCount,
+                archive_file: archiveFile,
+                source_type: 'archive'
+            })
+        });
+        if (!res.ok) {
+            console.warn('[3H] class_exam_assignment 등록 실패:', res.status);
+            return;
+        }
+        _classExamAssignmentRegisteredSig = sig;
+    } catch (e) {
+        console.warn('[3H] class_exam_assignment 등록 오류:', e);
+    }
+}
+
+
 function wrapLatex(text) {
     if (text == null) return '';
     let s = String(text);
@@ -841,6 +906,7 @@ async function render() {
     injectSubmitQrToLastExamPage(area);
     applyQrSolutionLockUI();
     registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
+    registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 (비동기, 출력 차단 없음)
 }
 
 // [3B] exam_blueprints 자동 등록 (AP 제출 QR 모드 전용)

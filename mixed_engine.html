@@ -16,7 +16,6 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -284,7 +283,7 @@
                     <option value="8">8문항</option>
                 </select>
             </div>
-            <button class="mode-tab" id="btn-shuffle" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
+            <button class="mode-tab" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
             <button class="mode-tab" id="btn-pdf-link" style="display:none; color:#fbbf24;">↗ PDF 새 탭</button>
             <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄 / PDF 저장</button>
         </div>
@@ -374,7 +373,6 @@ function injectQrToLastExamPage(area) {
 }
 
 function shouldRenderSubmitQr() {
-    if (isClinicMode()) return false;
     if (AppState.mode !== 'exam') return false;
     try {
         const params = new URLSearchParams(window.location.search);
@@ -405,9 +403,6 @@ function buildSubmitQrTargetUrl() {
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
     url.searchParams.set('q', q);
-
-    // [3B] archive_file 전달 (MIXED:<key>)
-    if (AppState.key) url.searchParams.set('archiveFile', 'MIXED:' + AppState.key);
 
     return url.toString();
 }
@@ -454,11 +449,72 @@ function injectSubmitQrToLastExamPage(area) {
     });
 }
 
-const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '' };
 
-function isClinicMode() {
-    return AppState.meta && AppState.meta.source === 'apmath_clinic';
+// =========================================================================
+// [3H] class_exam_assignments 자동 등록 (AP 제출 QR 모드 전용, 믹서)
+// =========================================================================
+let _classExamAssignmentRegisteredSig = '';
+
+function getKstTodayString() {
+    const d = new Date();
+    const kst = new Date(d.getTime() + (9 * 60 * 60 * 1000));
+    return kst.toISOString().split('T')[0];
 }
+
+function getAssignmentAuthHeader() {
+    try {
+        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (!session?.login_id || !session?.raw_password) return null;
+        return { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
+    } catch (e) {
+        return null;
+    }
+}
+
+async function registerClassExamAssignmentToOS() {
+    if (!shouldRenderSubmitQr()) return;
+    if (!AppState.data.length || !AppState.key) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const classId = params.get('class') || '';
+    if (!classId) return;
+
+    const authHeader = getAssignmentAuthHeader();
+    if (!authHeader) return;
+
+    const examDate = params.get('date') || getKstTodayString();
+    const qCountRaw = params.get('q');
+    const questionCount = parseInt(qCountRaw, 10) || AppState.data.length || 0;
+    const examTitle = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
+    const archiveFile = 'MIXED:' + AppState.key;
+
+    const sig = [classId, examTitle, examDate, archiveFile, questionCount, 'mixed'].join('|');
+    if (sig === _classExamAssignmentRegisteredSig) return;
+
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/class-exam-assignments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', ...authHeader },
+            body: JSON.stringify({
+                class_id: classId,
+                exam_title: examTitle,
+                exam_date: examDate,
+                question_count: questionCount,
+                archive_file: archiveFile,
+                source_type: 'mixed'
+            })
+        });
+        if (!res.ok) {
+            console.warn('[3H] class_exam_assignment 등록 실패:', res.status);
+            return;
+        }
+        _classExamAssignmentRegisteredSig = sig;
+    } catch (e) {
+        console.warn('[3H] class_exam_assignment 등록 오류:', e);
+    }
+}
+
+const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '' };
 let pageCount = 0;
 
 /** [성역] wrapLatex */
@@ -897,70 +953,7 @@ async function render() {
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
-    registerBlueprintToOS(); // [3B] blueprint 등록 — shuffle 후 AppState.data 기준, 비동기
-}
-
-// [3B] exam_blueprints 자동 등록 (AP 제출 QR 모드 전용, 믹서)
-let _blueprintRegisteredSig = '';
-
-function normalizeArchiveFile(raw) {
-    if (!raw) return '';
-    const s = String(raw).trim();
-    if (!s) return '';
-    // "exams/" 접두사 보장
-    if (s.startsWith('exams/') || s.startsWith('MIXED:')) return s;
-    return 'exams/' + s;
-}
-
-async function registerBlueprintToOS() {
-    if (!shouldRenderSubmitQr()) return;
-    if (!AppState.data.length || !AppState.key) return;
-
-    // WARN1: shuffle 후 순서 변경 시 재등록, 동일 순서 반복 POST 방지
-    const archiveFile = 'MIXED:' + AppState.key;
-    const sig = archiveFile + '|' + AppState.data.map(q => (q._sourceFile || '') + ':' + q.id).join(',');
-    if (sig === _blueprintRegisteredSig) return;
-
-    let authHeader = {};
-    try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session?.login_id || !session?.raw_password) return;
-        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
-    } catch(e) { return; }
-
-    const getKey = window.getConceptClusterKey || (() => '__UNMAPPED__'); // WARN2
-
-    // FAIL2: source_archive_file 누락 시 해당 item 제외
-    const items = AppState.data.map((q, i) => {
-        const sourceFile = normalizeArchiveFile(q._sourceFile);
-        if (!sourceFile) {
-            console.warn('[3B] source_archive_file 누락 — item 제외:', q);
-            return null;
-        }
-        return {
-            question_no: i + 1,
-            source_archive_file: sourceFile,
-            source_question_no: q.id ?? (i + 1),
-            standard_unit_key: q.standardUnitKey || '',
-            standard_unit: q.standardUnit || '',
-            standard_course: q.standardCourse || '',
-            concept_cluster_key: getKey(q.standardUnitKey || '')
-        };
-    }).filter(Boolean);
-
-    if (!items.length) { console.warn('[3B] 등록할 blueprint item 없음'); return; }
-
-    try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/exam-blueprints', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', ...authHeader },
-            body: JSON.stringify({ archive_file: archiveFile, items })
-        });
-        if (!res.ok) console.warn('[3B] blueprint 등록 실패:', res.status);
-        else _blueprintRegisteredSig = sig;
-    } catch(e) {
-        console.warn('[3B] blueprint 등록 오류:', e);
-    }
+    registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 — 비동기
 }
 
 async function init() {
@@ -985,12 +978,6 @@ async function init() {
     } catch (e) {
         console.warn('mixedMeta parse error:', e);
         AppState.meta = {};
-    }
-
-    if (isClinicMode()) {
-        document.body.classList.add('is-clinic');
-        const shuffleBtn = document.getElementById('btn-shuffle');
-        if (shuffleBtn) shuffleBtn.style.display = 'none';
     }
 
     if (!Array.isArray(AppState.data) || AppState.data.length === 0) {
