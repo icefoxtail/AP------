@@ -1,6 +1,6 @@
 /**
- * AP Math OS v26.1.2 [IRONCLAD - Phase 3-B1 FINAL REVISION]
- * Cloudflare Worker 통합 API 엔진 - check-init archiveFile 파라미터 픽스
+ * AP Math OS v26.1.2 [IRONCLAD - Phase 3-H FINAL FIXED]
+ * Cloudflare Worker 통합 API 엔진 - class-exam-assignments API 추가 및 원본 완전 복구
  */
 
 const headers = {
@@ -114,7 +114,6 @@ export default {
           const examDate = url.searchParams.get('date') || '';
           const qCount = parseInt(url.searchParams.get('q')) || 0;
           
-          // [5G Phase 3-B1 FIX] archiveFile 수신명 매칭
           const archiveFile = 
             url.searchParams.get('archiveFile') || 
             url.searchParams.get('archive_file') || 
@@ -219,12 +218,11 @@ export default {
           return new Response(JSON.stringify({ students: stds.results, classes: clss.results, class_students: map.results, attendance: att.results, homework: hw.results, exam_sessions: exs.results, wrong_answers: wrs.results, attendance_history: attHis.results, homework_history: hwHis.results, consultations: cns.results, operation_memos: opm.results, exam_schedules: exS.results }), { headers });
         }
 
-        // --- 5. 학생 관리 (보안 강화) ---
+        // --- 5. 학생 관리 ---
         if (resource === 'students') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          // 일괄 PIN 배분
           if (method === 'POST' && id === 'batch-pins') {
             const { class_id } = await request.json();
             if (!class_id && teacher.role !== 'admin') return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
@@ -239,7 +237,6 @@ export default {
             return new Response(JSON.stringify({ success: true, count }), { headers });
           }
 
-          // 단건 자동 생성
           if (method === 'POST' && path[3] === 'auto-pin') {
             if (!(await canAccessStudent(teacher, id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const student = await env.DB.prepare('SELECT grade, student_pin FROM students WHERE id = ?').bind(id).first();
@@ -250,7 +247,6 @@ export default {
             return new Response(JSON.stringify({ success: true, pin: newPin }), { headers });
           }
 
-          // 신규 등록
           if (method === 'POST' && !id) {
             const d = await request.json();
             if (teacher.role !== 'admin') {
@@ -268,7 +264,6 @@ export default {
             catch (err) { if (err.message.includes('UNIQUE')) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers }); throw err; }
           }
 
-          // 수정
           if (method === 'PATCH' && id) {
             if (!(await canAccessStudent(teacher, id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (path[3] === 'restore') { await env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
@@ -318,7 +313,7 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // --- 7. 시험 설계도 (Blueprints) [Phase 3-B1 신설] ---
+        // --- 7. 시험 설계도 (Blueprints) ---
         if (resource === 'exam-blueprints') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -370,6 +365,52 @@ export default {
           }
         }
 
+        // --- 7.5. 시험 배정 관리 (Phase 3-H) ---
+        if (resource === 'class-exam-assignments') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          if (method === 'POST') {
+            const d = await request.json();
+            if (!d.class_id || !d.exam_title || !d.exam_date) {
+              return new Response(JSON.stringify({ success: false, error: 'class_id, exam_title, exam_date required' }), { status: 400, headers });
+            }
+            if (!(await canAccessClass(teacher, d.class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+
+            const archive_file = d.archive_file || '';
+            const source_type = d.source_type || 'archive';
+            const aid = crypto.randomUUID();
+
+            await env.DB.prepare(`
+              INSERT INTO class_exam_assignments (id, class_id, exam_title, exam_date, question_count, archive_file, source_type, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+              ON CONFLICT(class_id, exam_title, exam_date, archive_file) DO UPDATE SET
+                question_count = excluded.question_count,
+                source_type = excluded.source_type,
+                updated_at = DATETIME('now')
+            `).bind(aid, d.class_id, d.exam_title, d.exam_date, d.question_count || 0, archive_file, source_type).run();
+
+            const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE class_id = ? AND exam_title = ? AND exam_date = ? AND archive_file = ?')
+              .bind(d.class_id, d.exam_title, d.exam_date, archive_file).first();
+
+            return new Response(JSON.stringify({ success: true, assignment }), { headers });
+          }
+
+          if (method === 'GET') {
+            const classId = url.searchParams.get('class');
+            if (!classId) return new Response(JSON.stringify({ success: false, error: 'classId required' }), { status: 400, headers });
+            if (!(await canAccessClass(teacher, classId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+
+            const res = await env.DB.prepare(`
+              SELECT * FROM class_exam_assignments
+              WHERE class_id = ?
+              ORDER BY exam_date DESC, updated_at DESC
+            `).bind(classId).all();
+
+            return new Response(JSON.stringify({ success: true, assignments: res.results }), { headers });
+          }
+        }
+
         // --- 8. 시험 세션 및 오답 ---
         if (resource === 'exam-sessions') {
           if (method === 'DELETE' && id === 'by-exam') {
@@ -396,16 +437,18 @@ export default {
             `).bind(examTitle, examDate, classId).all();
 
             const sessionIds = (targets.results || []).map(r => r.id).filter(Boolean);
-            if (!sessionIds.length) {
-              return new Response(JSON.stringify({ success: true, deleted: 0 }), { headers });
-            }
-
             const stmts = [];
+            
             for (const sessionId of sessionIds) {
               stmts.push(env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId));
               stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
             }
-            await env.DB.batch(stmts);
+            
+            stmts.push(env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ? AND exam_title = ? AND exam_date = ?').bind(classId, examTitle, examDate));
+            
+            if (stmts.length > 0) {
+              await env.DB.batch(stmts);
+            }
 
             return new Response(JSON.stringify({ success: true, deleted: sessionIds.length }), { headers });
           }
@@ -413,16 +456,18 @@ export default {
           if (method === 'GET' && id === 'by-class') {
             const classId = url.searchParams.get('class');
             const examTitle = url.searchParams.get('exam') || null;
-            if (!classId) return new Response(JSON.stringify({ error: 'class required', students: [], sessions: [], wrong_answers: [], blueprints: [] }), { status: 400, headers });
+            if (!classId) return new Response(JSON.stringify({ error: 'class required', students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [] }), { status: 400, headers });
 
             const studentIds = await env.DB.prepare("SELECT student_id FROM class_students WHERE class_id = ?").bind(classId).all();
             const sIds = studentIds.results.map(r => r.student_id);
-            if (!sIds.length) return new Response(JSON.stringify({ students: [], sessions: [], wrong_answers: [], blueprints: [] }), { headers });
+            if (!sIds.length) return new Response(JSON.stringify({ students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [] }), { headers });
+            
             const p = sIds.map(() => '?').join(',');
-            const [students, sessions, wrongs] = await Promise.all([
+            const [students, sessions, wrongs, assignments] = await Promise.all([
               env.DB.prepare(`SELECT id, name, school_name, grade FROM students WHERE id IN (${p}) AND status='재원'`).bind(...sIds).all(),
               examTitle ? env.DB.prepare(`SELECT * FROM exam_sessions WHERE class_id = ? AND exam_title = ? ORDER BY exam_date DESC`).bind(classId, examTitle).all() : env.DB.prepare(`SELECT * FROM exam_sessions WHERE class_id = ? ORDER BY exam_date DESC LIMIT 200`).bind(classId).all(),
-              env.DB.prepare(`SELECT * FROM wrong_answers WHERE student_id IN (${p})`).bind(...sIds).all()
+              env.DB.prepare(`SELECT * FROM wrong_answers WHERE student_id IN (${p})`).bind(...sIds).all(),
+              env.DB.prepare(`SELECT * FROM class_exam_assignments WHERE class_id = ? ORDER BY exam_date DESC, updated_at DESC`).bind(classId).all()
             ]);
 
             const archiveFiles = [...new Set(
@@ -446,9 +491,11 @@ export default {
               students: students.results,
               sessions: sessions.results,
               wrong_answers: wrongs.results,
-              blueprints: blueprints.results
+              blueprints: blueprints.results,
+              assignments: assignments.results
             }), { headers });
           }
+
           if (method === 'PATCH') {
             const d = await request.json();
             const sid = id === 'new' ? `ex_${Date.now()}` : id;
@@ -469,6 +516,7 @@ export default {
             await env.DB.batch(stmts);
             return new Response(JSON.stringify({ success: true, id: sid }), { headers });
           }
+
           if (method === 'DELETE' && path[3] === 'wrongs') {
             const teacher = await verifyAuth(request, env);
             if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -550,6 +598,7 @@ export default {
           }
           if (method === 'DELETE' && id) { await env.DB.prepare("DELETE FROM operation_memos WHERE id=?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
         }
+        
         if (resource === 'exam-schedules') {
           if (method === 'GET') { const res = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(); return new Response(JSON.stringify({ success: true, data: res.results }), { headers }); }
           if (method === 'POST') {
