@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/qr-omr.js]
- * QR 코드 생성 및 OMR 성적 입력 도구 (5F: sessionId 연동 및 OMR 동적 생성)
+ * QR 코드 생성 및 OMR 성적 입력 도구 (5F 긴급 보완: OMR 문항 수 동적 추론 완결판)
  */
 
 /**
@@ -40,7 +40,7 @@ function openQrGenerator(cid) {
 }
 
 /**
- * QR 코드 생성 실행 및 마감 기준 설정 (4E UX 반영)
+ * QR 코드 생성 실행 및 마감 기준 설정
  */
 function generateQrCode() {
     const cid = state.ui.currentClassId;
@@ -84,7 +84,7 @@ function copyQrUrl() {
 }
 
 /**
- * 학급의 시험 제출 통계 계산 (4E 복구본 원본)
+ * 학급의 시험 제출 통계 계산
  */
 function computeQrSubmitStatus(classId, examTitle, examDate) {
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
@@ -98,6 +98,24 @@ function computeQrSubmitStatus(classId, examTitle, examDate) {
     });
     const pending = active.filter(s => !submittedIds.has(s.id));
     return { submitted, pending };
+}
+
+/**
+ * [긴급 보완] 특정 시험의 문항 수를 DB에서 추론하는 헬퍼 함수
+ */
+function findExamQuestionCount(examTitle = '', classId = '') {
+    if (!examTitle) return 0;
+    const ids = classId
+        ? state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id)
+        : state.db.students.map(s => s.id);
+
+    const found = state.db.exam_sessions.find(es =>
+        es.exam_title === examTitle &&
+        ids.includes(es.student_id) &&
+        parseInt(es.question_count) > 0
+    );
+
+    return found ? parseInt(found.question_count) : 0;
 }
 
 /**
@@ -127,6 +145,9 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
     const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
     
+    // [긴급 보완] DB에서 해당 시험의 question_count 추론
+    const inferredQCount = findExamQuestionCount(examTitle, classId);
+    
     showModal('📊 제출 현황', `
         <div style="background:#f8f9fa;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px;">
             <b>${examTitle}</b> · ${safeDate} · ${submitted.length + pending.length}명 중 <b>${submitted.length}명 제출</b>
@@ -134,17 +155,29 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         <h4 style="color:var(--success);margin:10px 0 5px;">✅ 제출 (${submitted.length})</h4>
         <table style="font-size:12px;">${submitted.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><b>${s.score}점</b></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
         <h4 style="color:var(--error);margin:16px 0 5px;">⏳ 미제출 (${pending.length})</h4>
-        <table style="font-size:12px;">${pending.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><button class="btn" style="padding:2px 8px;font-size:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', 0, '${classId}', '')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
+        <table style="font-size:12px;">${pending.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><button class="btn" style="padding:2px 8px;font-size:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
     `);
 }
 
 /**
- * [5F] 성적 입력 모달 (OMR) 오픈 - 동적 렌더링 및 sessionId 지원
+ * [5F 긴급 보완] 성적 입력 모달 (OMR) 오픈 - 동적 추론 완벽 적용
  */
 function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
-    const defaultQ = presetQ || todayExam?.q || 20;
+
+    // 1. Session ID가 있으면 DB에서 바로 꺼내옴
+    const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
+    
+    // 2. 동적 추론 로직
+    const inferredQ = session?.question_count 
+        || presetQ 
+        || findExamQuestionCount(presetTitle, presetClassId) 
+        || todayExam?.q 
+        || 20;
+
+    // 3. 1~50 범위 클램프
+    const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
 
     showModal('성적 직접 입력', `
         <div style="display:flex;flex-direction:column;gap:10px;">
@@ -177,7 +210,7 @@ function rebuildOmrGrid() {
 }
 
 /**
- * [5F] 성적 저장 실행 - sessionId 연동, classId fallback 및 점수 계산 반영
+ * 성적 저장 실행 - sessionId 연동, classId fallback 및 점수 계산 반영
  */
 async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
     const title = document.getElementById('omr-title').value.trim();
