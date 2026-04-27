@@ -1,6 +1,7 @@
 /**
  * AP Math OS v26.1.2 [js/student.js]
  * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (5F: 학생 고유번호 PIN 관리 UI 추가)
+ * Phase 3-G: 취약 단원 TOP 안내문 추가, 버튼 터치 영역 보정
  */
 
 async function renderStudentDetail(sid) {
@@ -17,7 +18,7 @@ async function renderStudentDetail(sid) {
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
             .map(w => buildWrongUnitChip(e, w.question_id))
             .join('');
-        return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;"><button class="btn" style="color:var(--warning); border-color:var(--warning); padding:2px 8px; font-size:11px;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답초기화</button><button class="btn" style="color:var(--error); border-color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></div></td></tr>`;
+        return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;"><button class="btn" style="color:var(--warning); border-color:var(--warning); padding:4px 10px; font-size:11px;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답초기화</button><button class="btn" style="color:var(--error); border-color:var(--error); padding:4px 10px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></div></td></tr>`;
     }).join('');
     
     const cnsList = state.db.consultations.filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.id).localeCompare(String(a.id)));
@@ -102,7 +103,8 @@ async function renderStudentDetail(sid) {
         ${consultationHTML}
 
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
-            <h4 style="margin:0 0 10px 0;">📌 취약 단원 TOP</h4>
+            <h4 style="margin:0 0 6px 0;">📌 취약 단원 TOP</h4>
+            <p style="margin:0 0 10px 0; font-size:11px; color:var(--secondary);">단원을 누르면 오답 상세와 유사문항 추천으로 이동합니다.</p>
             ${renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터 없음', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s.name } })}
         </div>
 

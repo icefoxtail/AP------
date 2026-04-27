@@ -1,6 +1,7 @@
 /**
  * AP Math OS v26.1.2 [js/classroom.js]
- * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (5G-2: 일괄 PIN 배분 UI 추가)
+ * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
+ * Phase 3-G: 액션 버튼 모바일 터치 패딩 보정 + 시험 전체삭제 버튼 추가
  */
 
 function formatClassScheduleDays(daysStr) {
@@ -21,22 +22,17 @@ async function handleClassBulkAtt(classId, status) {
         toast("오프라인 상태에서는 전체 처리를 할 수 없습니다. 연결 후 다시 시도하세요.", "warn");
         return;
     }
-
     const cls = state.db.classes.find(c => c.id === classId);
     if (!confirm(`${cls.name} 학생 전체를 "${status}" 처리할까요?`)) return;
-
     const today = new Date().toLocaleDateString('sv-SE');
     const mIds = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const activeStds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
-    
     const entries = activeStds.map(s => ({ studentId: s.id, status, date: today }));
-    
     const r = await fetch(`${CONFIG.API_BASE}/attendance-batch`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ entries })
     });
-
     if (r.ok) {
         toast(`${cls.name} 전체 ${status} 완료`, 'info');
         await refreshDataOnly();
@@ -51,22 +47,17 @@ async function handleClassBulkHw(classId, status) {
         toast("오프라인 상태에서는 전체 처리를 할 수 없습니다. 연결 후 다시 시도하세요.", "warn");
         return;
     }
-
     const cls = state.db.classes.find(c => c.id === classId);
     if (!confirm(`${cls.name} 학생 전체 숙제를 "${status}" 처리할까요?`)) return;
-
     const today = new Date().toLocaleDateString('sv-SE');
     const mIds = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const activeStds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
-    
     const entries = activeStds.map(s => ({ studentId: s.id, status, date: today }));
-    
     const r = await fetch(`${CONFIG.API_BASE}/homework-batch`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({ entries })
     });
-
     if (r.ok) {
         toast(`${cls.name} 전체 숙제 ${status} 완료`, 'info');
         await refreshDataOnly();
@@ -81,13 +72,10 @@ function renderClass(cid) {
     const cls = state.db.classes.find(c => c.id === cid);
     const mIds = state.db.class_students.filter(m => m.class_id === cid).map(m => m.student_id);
     const today = new Date().toLocaleDateString('sv-SE');
-
     const summary = computeClassTodaySummary(cid);
-    
     const bulkDisabledAttr = !summary.isScheduled ? 'disabled' : '';
     const bulkDisabledStyle = !summary.isScheduled ? 'opacity:0.5; pointer-events:none;' : '';
 
-    // [5G-2] PIN 일괄 배분 버튼 UI 추가
     const opToolsPanel = `
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:15px;">
             <div style="display:flex; gap:8px;">
@@ -133,19 +121,15 @@ function renderClass(cid) {
 
     const listRoot = document.getElementById('class-std-list');
     const stds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
-
     listRoot.innerHTML = stds.map(s => {
         const att = state.db.attendance.find(a => a.student_id===s.id && a.date===today);
         const hw = state.db.homework.find(h => h.student_id===s.id && h.date===today);
-        
         const attStatus = att?.status || '미정';
         const attClass = attStatus === '등원' ? 'btn-primary' : '';
         const attStyleStr = attStatus === '결석' ? 'border-color:var(--error); color:var(--error); font-weight:700;' : '';
-        
         const hwStatus = hw?.status || '미완료';
         const hwClass = hwStatus === '완료' ? 'btn-primary' : '';
         const hwStyleStr = hwStatus === '미완료' ? 'border-color:var(--warning); color:var(--warning); font-weight:700;' : '';
-
         return `<tr>
             <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer; font-weight:800; color:var(--primary);">${s.name}</td>
             <td>${s.school_name}</td>
@@ -160,7 +144,6 @@ function renderClass(cid) {
 // [5G-2] PIN 일괄 배분 기능
 async function handleBatchGeneratePins(classId) {
     if (!confirm('이 반에서 PIN이 아직 없는 모든 학생들에게 고유 PIN을 일괄 배분(자동 생성)하시겠습니까? (기존 PIN은 절대 덮어쓰지 않습니다)')) return;
-    
     const r = await api.post('students/batch-pins', { class_id: classId });
     if (r.success) {
         toast(`총 ${r.count}명의 학생에게 PIN이 자동 배분되었습니다.`, 'info');
@@ -178,7 +161,6 @@ function computeClassTodaySummary(classId) {
     const aIds = active.map(s => s.id);
     const total = active.length;
     const isScheduled = isClassScheduledToday(classId);
-    
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
     const att = state.db.attendance.filter(a => a.date === today && a.status === '등원' && aIds.includes(a.student_id)).length;
     const hw = state.db.homework.filter(h => h.date === today && h.status === '완료' && aIds.includes(h.student_id)).length;
@@ -269,13 +251,11 @@ async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date; const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => a.student_id === sid && a.date === today); const next = cur?.status === '등원' ? '결석' : '등원';
-    
     const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('출결 저장 실패', 'warn'); return; }
-
-    if (isLedger) { 
-        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); 
-        await loadLedger(); 
+    if (isLedger) {
+        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly();
+        await loadLedger();
     } else {
         await refreshDataOnly();
         if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
@@ -287,13 +267,11 @@ async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date; const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => h.student_id === sid && h.date === today); const next = cur?.status === '완료' ? '미완료' : '완료';
-    
     const r = await api.patch('homework', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('숙제 저장 실패', 'warn'); return; }
-
-    if (isLedger) { 
-        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); 
-        await loadLedger(); 
+    if (isLedger) {
+        if (today === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly();
+        await loadLedger();
     } else {
         await refreshDataOnly();
         if (state.ui.currentClassId) renderClass(state.ui.currentClassId);
@@ -303,10 +281,8 @@ async function toggleHw(sid, date) {
 
 async function openExamGradeView(classId) {
     const cls = state.db.classes.find(c => c.id === classId);
-    
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const sessions = state.db.exam_sessions.filter(es => ids.includes(es.student_id));
-    
     const examMap = {};
     sessions.forEach(es => {
         const key = `${es.exam_title}||${es.exam_date}`;
@@ -314,7 +290,6 @@ async function openExamGradeView(classId) {
         examMap[key].sessions.push(es);
     });
     const examList = Object.values(examMap).sort((a, b) => b.date.localeCompare(a.date));
-
     const listHTML = examList.length
         ? examList.map(ex => `
             <div class="exam-grade-row" onclick="openExamDetail('${classId}','${ex.title.replace(/'/g,"\\'")}','${ex.date}')" style="padding: 14px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; cursor: pointer; background: var(--surface); box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
@@ -322,7 +297,6 @@ async function openExamGradeView(classId) {
                 <div style="font-size:12px; color:var(--secondary); margin-top:4px;">${ex.date} · <b>${ex.sessions.length}명</b> 제출 완료</div>
             </div>`).join('')
         : '<div style="opacity:0.5;text-align:center;padding:30px;">등록된 시험이 없습니다.</div>';
-
     showModal(`📋 ${cls.name} 시험·성적`, `
         <div style="display:flex;flex-direction:column;gap:8px;">${listHTML}</div>
     `);
@@ -334,34 +308,23 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     try {
         const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`);
-        if (res && Array.isArray(res.blueprints)) {
-            setExamBlueprintsForFiles(res.blueprints);
-        }
-        if (res && Array.isArray(res.sessions)) {
-            sessionSource = res.sessions;
-        }
-        if (res && Array.isArray(res.wrong_answers)) {
-            wrongSource = res.wrong_answers;
-        }
+        if (res && Array.isArray(res.blueprints)) setExamBlueprintsForFiles(res.blueprints);
+        if (res && Array.isArray(res.sessions)) sessionSource = res.sessions;
+        if (res && Array.isArray(res.wrong_answers)) wrongSource = res.wrong_answers;
     } catch (e) {
         console.warn('[3C1] by-class blueprint load failed', e);
     }
 
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
-    
     const sessions = sessionSource.filter(es =>
         es.exam_title === examTitle && es.exam_date === examDate && ids.includes(es.student_id)
     );
 
-    // [핵심] 통계 계산 전 설계도 강제 로드 (try/catch 방어 코드 적용)
     const sessionsWithArchive = sessions.filter(s => s.archive_file);
     if (sessionsWithArchive.length > 0 && typeof ensureBlueprintsForSessions === 'function') {
-        try {
-            await ensureBlueprintsForSessions(sessionsWithArchive);
-        } catch (e) {
-            console.warn('[openExamDetail] ensureBlueprintsForSessions failed', e);
-        }
+        try { await ensureBlueprintsForSessions(sessionsWithArchive); }
+        catch (e) { console.warn('[openExamDetail] ensureBlueprintsForSessions failed', e); }
     }
 
     const submittedIds = new Set(sessions.map(s => s.student_id));
@@ -385,12 +348,10 @@ async function openExamDetail(classId, examTitle, examDate) {
     });
     const pending = active.filter(s => !submittedIds.has(s.id));
 
-    // 미제출 학생의 '입력' 버튼에 전달할 동일 시험의 안전한 설계도 추출
     const examArchiveFileObj = sessions.find(s => s.archive_file);
     const examArchiveFile = examArchiveFileObj ? String(examArchiveFileObj.archive_file).replace(/'/g,"\\'") : '';
 
     const submittedHTML = submitted.map(s => {
-        // 수정 버튼에 전달할 개별 세션의 설계도
         const sArchive = s.session?.archive_file ? String(s.session.archive_file).replace(/'/g,"\\'") : '';
         return `
         <tr>
@@ -402,8 +363,10 @@ async function openExamDetail(classId, examTitle, examDate) {
                 </div>
             </td>
             <td style="text-align:center;padding:10px 4px;">
-                <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}')">수정</button>
-                <button class="btn" style="padding:4px 8px;font-size:11px;color:var(--error);margin-top:4px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g,"\\'")}','${examDate}')">삭제</button>
+                <div style="display:flex;flex-direction:column;gap:4px;align-items:center;">
+                    <button class="btn" style="padding:6px 10px;font-size:11px;min-width:44px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}')">수정</button>
+                    <button class="btn" style="padding:6px 10px;font-size:11px;min-width:44px;color:var(--error);border-color:var(--error);" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g,"\\'")}','${examDate}')">삭제</button>
+                </div>
             </td>
         </tr>`;
     }).join('');
@@ -413,15 +376,24 @@ async function openExamDetail(classId, examTitle, examDate) {
             <td style="padding:10px 4px; color:var(--secondary);">${s.name}</td>
             <td colspan="2" style="opacity:0.5; text-align:center; font-size:12px; padding:10px 4px;">미제출</td>
             <td style="text-align:center;padding:10px 4px;">
-                <button class="btn btn-primary" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','','${examArchiveFile}')">입력</button>
+                <button class="btn btn-primary" style="padding:6px 10px;font-size:11px;min-width:44px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','','${examArchiveFile}')">입력</button>
             </td>
         </tr>`).join('');
 
+    // [3G] 시험 전체 컨트롤 — 전체삭제 버튼
+    const safeTitle = examTitle.replace(/'/g,"\\'");
+    const bulkDeleteBtn = `
+        <div style="margin-bottom:12px; text-align:right;">
+            <button class="btn" style="padding:6px 12px;font-size:11px;color:var(--error);border-color:var(--error);" onclick="deleteExamByClass('${classId}','${safeTitle}','${examDate}')">🗑 이 시험 전체삭제</button>
+        </div>
+    `;
+
     showModal(`${examTitle} (${examDate})`, `
-        <div style="font-size:13px; color:var(--secondary); margin-bottom:12px; background:var(--bg); padding:10px; border-radius:8px; text-align:center;">
+        <div style="font-size:13px; color:var(--secondary); margin-bottom:8px; background:var(--bg); padding:10px; border-radius:8px; text-align:center;">
             <b>${submitted.length + pending.length}명</b> 중 <b style="color:var(--success);">${submitted.length}명 제출</b>
             ${qCount ? `<br><span style="font-size:11px; margin-top:4px; display:inline-block;">기준 문항 수: ${qCount}문항</span>` : ''}
         </div>
+        ${bulkDeleteBtn}
         <div style="margin-bottom:12px;">
             <div style="font-size:13px;font-weight:900;margin-bottom:6px;color:var(--primary);">📌 반 취약 단원 TOP</div>
             ${renderWeakUnitSummary(classWeakUnits, '이 시험의 누적 오답 단원 데이터 없음', { clickable: true, mode: 'class', titlePrefix: '반 취약 단원', context: { targetType: 'class', targetId: classId, targetLabel: (state.db.classes || []).find(c => c.id === classId)?.name || '반' } })}
@@ -438,21 +410,42 @@ async function openExamDetail(classId, examTitle, examDate) {
     `);
 }
 
-// [5G] 개별 세션 삭제 함수 추가 (파라미터 분리 전달)
+// [5G] 개별 세션 삭제 함수 (파라미터 분리 전달)
 async function deleteExamSession(sessionId, classId, examTitle, examDate) {
     if (!sessionId) return;
     if (!confirm('이 성적 기록을 삭제하시겠습니까? 오답 정보도 함께 삭제됩니다.')) return;
-    
-    // core.js의 api.delete 규격에 맞게 파라미터 분리 전달
     const r = await api.delete('exam-sessions', sessionId);
-    
-    if (!r?.success) { 
-        toast('삭제 실패', 'warn'); 
-        return; 
-    }
-    
+    if (!r?.success) { toast('삭제 실패', 'warn'); return; }
     toast('삭제되었습니다.', 'info');
-    closeModal(); 
-    await loadData(); 
-    openExamDetail(classId, examTitle, examDate); 
+    closeModal();
+    await loadData();
+    openExamDetail(classId, examTitle, examDate);
+}
+
+// [3G] 시험 전체삭제 함수 — by-exam API 직접 fetch 호출
+async function deleteExamByClass(classId, examTitle, examDate) {
+    if (!confirm('이 시험의 제출 기록 전체를 삭제할까요?')) return;
+    if (!confirm('오답 기록도 모두 삭제됩니다. 정말 삭제하시겠습니까?')) return;
+
+    try {
+        const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}`;
+        const r = await fetch(url, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', ...getAuthHeader() }
+        });
+        const data = await r.json();
+
+        if (!r.ok || !data.success) {
+            toast('시험 전체삭제 실패', 'warn');
+            return;
+        }
+
+        toast('시험 전체 기록이 삭제되었습니다.', 'info');
+        closeModal();
+        await loadData();
+        openExamGradeView(classId);
+    } catch (e) {
+        console.warn('[3G] deleteExamByClass 실패:', e);
+        toast('시험 전체삭제 실패', 'warn');
+    }
 }
