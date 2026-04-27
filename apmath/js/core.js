@@ -390,10 +390,10 @@ function getStudentNameById(studentId) {
     return (state.db.students || []).find(s => s.id === studentId)?.name || '학생';
 }
 
-function makeWeakUnitDetailKey(item, mode, title) {
+function makeWeakUnitDetailKey(item, mode, title, context = null) {
     if (!state.ui.weakUnitDetails) state.ui.weakUnitDetails = {};
     const key = `wu_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-    state.ui.weakUnitDetails[key] = { item, mode, title };
+    state.ui.weakUnitDetails[key] = { item, mode, title, context };
     return key;
 }
 
@@ -468,7 +468,7 @@ function renderWeakUnitSummary(items, emptyText = '누적 오답 단원 데이�
     return `
         <div style="display:flex;flex-direction:column;gap:6px;">
             ${items.slice(0, 5).map((item, idx) => {
-                const key = clickable ? makeWeakUnitDetailKey(item, mode, `${titlePrefix} 상세`) : '';
+                const key = clickable ? makeWeakUnitDetailKey(item, mode, `${titlePrefix} 상세`, options.context || null) : '';
                 const clickAttr = clickable ? ` onclick="openWeakUnitDetail('${key}')"` : '';
                 const cursorStyle = clickable ? 'cursor:pointer;' : '';
                 const detailHint = clickable ? `<span style="font-size:10px;color:var(--primary);font-weight:800;margin-left:6px;white-space:nowrap;">상세 ›</span>` : '';
@@ -492,8 +492,12 @@ function renderWeakUnitSummary(items, emptyText = '누적 오답 단원 데이�
 }
 
 
-// [3D] JS아카이브 기반 유사문항 추천 및 클리닉 후보 바구니
+// [3D/3E] JS아카이브 기반 유사문항 추천 및 클리닉 바구니 관리
 const CLINIC_CART_KEY = 'APMATH_CLINIC_CANDIDATES';
+
+function apEscapeAttr(text) {
+    return apEscapeHtml(text).replace(/`/g, '&#96;');
+}
 
 function getJsArchiveBaseUrl() {
     try {
@@ -605,37 +609,244 @@ function isOriginalWrongQuestion(item, filePath, questionId) {
 }
 
 function makeRecommendCandidateKey(candidate) {
-    return `${normalizeArchivePath(candidate.file)}::${Number(candidate.questionId)}`;
+    return `${normalizeArchivePath(candidate.archiveFile || candidate.file)}::${Number(candidate.questionNo || candidate.questionId)}`;
+}
+
+function makeClinicItemId(candidate, context = {}) {
+    const targetType = context.targetType || candidate.targetType || 'general';
+    const targetId = context.targetId || candidate.targetId || 'general';
+    return `${makeRecommendCandidateKey(candidate)}::${targetType}::${targetId}`;
+}
+
+function normalizeClinicContext(context = null) {
+    const safe = context && typeof context === 'object' ? context : {};
+    const targetType = ['student', 'class', 'general'].includes(safe.targetType) ? safe.targetType : 'general';
+    const targetId = String(safe.targetId || targetType || 'general');
+    const targetLabel = String(safe.targetLabel || (targetType === 'student' ? '학생' : targetType === 'class' ? '반' : '일반'));
+    return { targetType, targetId, targetLabel };
+}
+
+function normalizeClinicBasketItem(raw, fallbackContext = null) {
+    if (!raw || typeof raw !== 'object') return null;
+
+    const context = normalizeClinicContext({
+        targetType: raw.targetType,
+        targetId: raw.targetId,
+        targetLabel: raw.targetLabel,
+        ...(fallbackContext || {})
+    });
+
+    const archiveFile = normalizeArchivePath(raw.archiveFile || raw.file || raw.source_archive_file || '');
+    const questionNo = Number(raw.questionNo ?? raw.questionId ?? raw.source_question_no);
+    if (!archiveFile || !Number.isFinite(questionNo)) return null;
+
+    const item = {
+        id: raw.id || '',
+        archiveFile,
+        questionNo,
+        sourceTitle: raw.sourceTitle || raw.examTitle || getExamDisplayTitle({}, archiveFile),
+        standardUnitKey: raw.standardUnitKey || raw.standard_unit_key || '',
+        standardUnit: raw.standardUnit || raw.standard_unit || raw.standardUnitKey || raw.standard_unit_key || '',
+        standardCourse: raw.standardCourse || raw.standard_course || '',
+        conceptClusterKey: raw.conceptClusterKey || raw.concept_cluster_key || '',
+        level: raw.level || '',
+        preview: raw.preview || raw.contentPreview || '',
+        matchType: raw.matchType || 'unknown',
+        targetType: context.targetType,
+        targetId: context.targetId,
+        targetLabel: context.targetLabel,
+        addedAt: raw.addedAt || new Date().toISOString()
+    };
+
+    item.id = makeClinicItemId(item, context);
+    return item;
 }
 
 function getClinicCart() {
     try {
         const arr = JSON.parse(localStorage.getItem(CLINIC_CART_KEY) || '[]');
-        return Array.isArray(arr) ? arr : [];
+        if (!Array.isArray(arr)) return [];
+        return arr.map(item => normalizeClinicBasketItem(item)).filter(Boolean);
     } catch (e) {
         return [];
     }
 }
 
 function saveClinicCart(items) {
-    localStorage.setItem(CLINIC_CART_KEY, JSON.stringify(Array.isArray(items) ? items : []));
+    try {
+        const safe = (Array.isArray(items) ? items : []).map(item => normalizeClinicBasketItem(item)).filter(Boolean);
+        localStorage.setItem(CLINIC_CART_KEY, JSON.stringify(safe));
+        return safe;
+    } catch (e) {
+        toast('클리닉 바구니 저장에 실패했습니다.', 'warn');
+        return getClinicCart();
+    }
 }
 
-function addClinicCandidate(candidateKey) {
+function addClinicCandidate(candidateKey, contextKey = '') {
     const candidate = state.ui.recommendationCandidates?.[candidateKey];
     if (!candidate) {
         toast('추천 문항 데이터를 찾을 수 없습니다.', 'warn');
         return;
     }
-    const cart = getClinicCart();
-    const key = makeRecommendCandidateKey(candidate);
-    if (cart.some(item => makeRecommendCandidateKey(item) === key)) {
-        toast('이미 클리닉 후보에 담긴 문항입니다.', 'warn');
+
+    const context = state.ui.clinicContexts?.[contextKey] || state.ui.activeClinicContext || null;
+    const item = normalizeClinicBasketItem(candidate, context);
+    if (!item) {
+        toast('클리닉 후보로 담을 수 없는 문항입니다.', 'warn');
         return;
     }
-    cart.push(candidate);
+
+    const cart = getClinicCart();
+    if (cart.some(x => x.id === item.id)) {
+        toast('이미 해당 대상의 클리닉 바구니에 담긴 문항입니다.', 'warn');
+        return;
+    }
+
+    cart.push(item);
     saveClinicCart(cart);
-    toast(`클리닉 후보에 담았습니다. (${cart.length}개)`, 'info');
+    toast(`클리닉 바구니에 담았습니다. (${cart.length}개)`, 'info');
+}
+
+function removeClinicCandidate(itemId, contextKey = '') {
+    const id = String(itemId || '');
+    if (!id) return;
+    const next = getClinicCart().filter(item => item.id !== id);
+    saveClinicCart(next);
+    toast('클리닉 후보를 삭제했습니다.', 'info');
+    openClinicBasketByKey(contextKey);
+}
+
+function clearClinicBasket(contextKey = '') {
+    const context = state.ui.clinicContexts?.[contextKey] || null;
+    const cart = getClinicCart();
+    const filtered = context
+        ? cart.filter(item => item.targetType === context.targetType && item.targetId === context.targetId)
+        : cart;
+
+    if (!filtered.length) {
+        toast('비울 클리닉 후보가 없습니다.', 'warn');
+        return;
+    }
+
+    const label = context ? `${context.targetLabel} 바구니` : '전체 클리닉 바구니';
+    if (!confirm(`${label}의 후보 ${filtered.length}개를 모두 비울까요?`)) return;
+
+    const removeIds = new Set(filtered.map(item => item.id));
+    saveClinicCart(cart.filter(item => !removeIds.has(item.id)));
+    toast('클리닉 바구니를 비웠습니다.', 'info');
+    openClinicBasketByKey(contextKey);
+}
+
+function makeClinicContextKey(context = null) {
+    if (!state.ui.clinicContexts) state.ui.clinicContexts = {};
+    const normalized = normalizeClinicContext(context);
+    const key = `clinic_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    state.ui.clinicContexts[key] = normalized;
+    return key;
+}
+
+function openClinicBasketForClass(classId) {
+    const cls = (state.db.classes || []).find(c => c.id === classId);
+    const key = makeClinicContextKey({ targetType: 'class', targetId: classId, targetLabel: cls?.name || '반' });
+    openClinicBasketByKey(key);
+}
+
+function openClinicBasketForStudent(studentId) {
+    const s = (state.db.students || []).find(st => st.id === studentId);
+    const key = makeClinicContextKey({ targetType: 'student', targetId: studentId, targetLabel: s?.name || '학생' });
+    openClinicBasketByKey(key);
+}
+
+function openClinicBasket(context = null) {
+    const key = context ? makeClinicContextKey(context) : '';
+    openClinicBasketByKey(key);
+}
+
+function groupClinicItems(items) {
+    const groups = {};
+    items.forEach(item => {
+        const targetKey = `${item.targetType}::${item.targetId}`;
+        if (!groups[targetKey]) {
+            groups[targetKey] = {
+                targetType: item.targetType,
+                targetId: item.targetId,
+                targetLabel: item.targetLabel,
+                units: {}
+            };
+        }
+        const unitKey = item.standardUnitKey || item.standardUnit || '미분류';
+        if (!groups[targetKey].units[unitKey]) {
+            groups[targetKey].units[unitKey] = {
+                unitKey,
+                unitLabel: item.standardUnit || item.standardUnitKey || '미분류 단원',
+                items: []
+            };
+        }
+        groups[targetKey].units[unitKey].items.push(item);
+    });
+    return Object.values(groups);
+}
+
+function renderClinicBasketItems(items, contextKey = '') {
+    if (!items.length) {
+        return `<div style="font-size:12px;color:var(--secondary);background:#f8f9fa;border:1px dashed var(--border);border-radius:10px;padding:18px;text-align:center;">담긴 클리닉 후보가 없습니다.</div>`;
+    }
+
+    const groups = groupClinicItems(items);
+    return `
+        <div style="display:flex;flex-direction:column;gap:12px;max-height:62vh;overflow-y:auto;padding-right:2px;">
+            ${groups.map(group => `
+                <div style="border:1px solid var(--border);border-radius:12px;background:#fff;overflow:hidden;">
+                    <div style="background:#f8f9fa;padding:10px 12px;border-bottom:1px solid var(--border);">
+                        <div style="font-size:13px;font-weight:900;color:var(--primary);">${apEscapeHtml(group.targetLabel || '일반')}</div>
+                        <div style="font-size:10px;color:var(--secondary);margin-top:2px;">${group.targetType === 'student' ? '학생별 클리닉' : group.targetType === 'class' ? '반별 클리닉' : '일반 클리닉'}</div>
+                    </div>
+                    ${Object.values(group.units).map(unit => `
+                        <div style="padding:10px 12px;border-bottom:1px solid #f1f3f4;">
+                            <div style="font-size:12px;font-weight:900;color:#202124;margin-bottom:6px;">${apEscapeHtml(unit.unitLabel)} ${unit.unitKey && unit.unitKey !== unit.unitLabel ? `<span style="font-size:10px;color:var(--secondary);font-weight:700;">${apEscapeHtml(unit.unitKey)}</span>` : ''}</div>
+                            <div style="display:flex;flex-direction:column;gap:6px;">
+                                ${unit.items.map(item => `
+                                    <div style="border:1px solid #eef0f2;border-radius:9px;padding:8px 9px;background:#fff;">
+                                        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+                                            <div style="flex:1;min-width:0;">
+                                                <div style="font-size:11px;font-weight:900;color:var(--primary);line-height:1.4;word-break:break-word;">${apEscapeHtml(item.sourceTitle)}</div>
+                                                <div style="font-size:10px;color:var(--secondary);margin-top:2px;">Q${apEscapeHtml(item.questionNo)}${item.level ? ` · ${apEscapeHtml(item.level)}` : ''} · ${item.matchType === 'standardUnitKey' ? '단원 일치' : item.matchType === 'conceptClusterKey' ? '개념군 보완' : '후보'}</div>
+                                                ${item.preview ? `<div style="font-size:10px;color:#5f6368;line-height:1.45;margin-top:4px;word-break:break-word;">${apEscapeHtml(item.preview)}</div>` : ''}
+                                            </div>
+                                            <button class="btn" style="padding:4px 7px;font-size:10px;color:var(--error);border-color:var(--error);" onclick="removeClinicCandidate('${apEscapeAttr(item.id)}','${apEscapeAttr(contextKey)}')">삭제</button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function openClinicBasketByKey(contextKey = '') {
+    const context = state.ui.clinicContexts?.[contextKey] || null;
+    const cart = getClinicCart();
+    const filtered = context
+        ? cart.filter(item => item.targetType === context.targetType && item.targetId === context.targetId)
+        : cart;
+    const title = context ? `🧺 ${context.targetLabel} 클리닉 바구니` : '🧺 클리닉 바구니';
+    const scopeLabel = context ? `${context.targetLabel} 후보 ${filtered.length}개 / 전체 ${cart.length}개` : `전체 후보 ${cart.length}개`;
+
+    showModal(title, `
+        <div style="background:#f8f9fa;border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:12px;">
+            <div style="font-size:13px;font-weight:900;color:var(--primary);">${apEscapeHtml(scopeLabel)}</div>
+            <div style="font-size:11px;color:var(--secondary);margin-top:4px;line-height:1.5;">학생별·반별·단원별로 담긴 유사문항 후보를 관리합니다.</div>
+        </div>
+        ${renderClinicBasketItems(filtered, contextKey)}
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+            <button class="btn" style="flex:1;min-width:120px;color:var(--error);border-color:var(--error);font-size:12px;font-weight:900;" onclick="clearClinicBasket('${apEscapeAttr(contextKey)}')">${context ? '현재 바구니 비우기' : '전체 비우기'}</button>
+            <button class="btn btn-primary" style="flex:1;min-width:140px;font-size:12px;font-weight:900;" onclick="toast('클리닉지 생성은 Phase 3-F에서 연결합니다.', 'info')">클리닉지 생성 준비중</button>
+        </div>
+    `);
 }
 
 async function buildSimilarQuestionCandidates(item, limit = 10) {
@@ -674,14 +885,18 @@ async function buildSimilarQuestionCandidates(item, limit = 10) {
 
                 const candidate = {
                     file,
+                    archiveFile: file,
                     examTitle: bankData.examTitle || getExamDisplayTitle(entry, file),
+                    sourceTitle: bankData.examTitle || getExamDisplayTitle(entry, file),
                     questionId: q.id,
+                    questionNo: q.id,
                     level: q.level || '',
                     standardUnitKey: qUnitKey,
                     standardUnit: q.standardUnit || qUnitKey || '',
                     standardCourse: q.standardCourse || entry.primaryStandardCourse || '',
                     conceptClusterKey: qCluster,
                     contentPreview: String(q.content || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 90),
+                    preview: String(q.content || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 90),
                     matchType: isExact ? 'standardUnitKey' : 'conceptClusterKey'
                 };
 
@@ -698,7 +913,7 @@ async function buildSimilarQuestionCandidates(item, limit = 10) {
     return exact.concat(fallback).slice(0, limit);
 }
 
-function renderSimilarQuestionCandidates(candidates) {
+function renderSimilarQuestionCandidates(candidates, contextKey = '') {
     if (!Array.isArray(candidates) || !candidates.length) {
         return `<div style="font-size:12px;color:var(--secondary);background:#f8f9fa;border:1px dashed var(--border);border-radius:8px;padding:14px;text-align:center;">추천 가능한 유사문항을 아직 찾지 못했습니다.</div>`;
     }
@@ -721,7 +936,7 @@ function renderSimilarQuestionCandidates(candidates) {
                             </div>
                             <span style="font-size:10px;font-weight:900;color:${c.matchType === 'standardUnitKey' ? 'var(--success)' : 'var(--warning)'};background:#f8f9fa;border-radius:999px;padding:4px 7px;white-space:nowrap;">${matchLabel}</span>
                         </div>
-                        <button class="btn" style="width:100%;margin-top:8px;padding:8px;font-size:11px;font-weight:900;border-color:var(--primary);color:var(--primary);" onclick="addClinicCandidate('${key}')">클리닉 후보 담기</button>
+                        <button class="btn" style="width:100%;margin-top:8px;padding:8px;font-size:11px;font-weight:900;border-color:var(--primary);color:var(--primary);" onclick="addClinicCandidate('${key}','${contextKey}')">클리닉 후보 담기</button>
                     </div>
                 `;
             }).join('')}
@@ -737,6 +952,9 @@ async function openSimilarQuestionRecommendations(detailKey) {
     }
 
     const item = payload.item;
+    const contextKey = makeClinicContextKey(payload.context || null);
+    state.ui.activeClinicContext = state.ui.clinicContexts?.[contextKey] || normalizeClinicContext(null);
+
     showModal('유사문항 추천', `
         <div style="text-align:center;padding:24px;color:var(--secondary);">
             <div style="font-size:24px;margin-bottom:8px;">⏳</div>
@@ -751,15 +969,16 @@ async function openSimilarQuestionRecommendations(detailKey) {
             <div style="background:#f8f9fa;border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:12px;">
                 <div style="font-size:13px;font-weight:900;color:var(--primary);line-height:1.5;">${apEscapeHtml(item.label || '취약 단원')}</div>
                 <div style="font-size:11px;color:var(--secondary);margin-top:4px;line-height:1.5;">
-                    ${item.unitKey ? `기준 단원 ${apEscapeHtml(item.unitKey)} · ` : ''}${item.cluster ? `개념군 ${apEscapeHtml(item.cluster)} · ` : ''}현재 후보 ${cartCount}개 보관 중
+                    ${item.unitKey ? `기준 단원 ${apEscapeHtml(item.unitKey)} · ` : ''}${item.cluster ? `개념군 ${apEscapeHtml(item.cluster)} · ` : ''}전체 후보 ${cartCount}개 보관 중
                 </div>
+                <button class="btn" style="width:100%;margin-top:8px;padding:8px;font-size:11px;font-weight:900;border-color:var(--primary);color:var(--primary);" onclick="openClinicBasketByKey('${contextKey}')">🧺 클리닉 바구니 보기</button>
             </div>
-            ${renderSimilarQuestionCandidates(candidates)}
+            ${renderSimilarQuestionCandidates(candidates, contextKey)}
         `);
     } catch (e) {
         console.warn('[3D] 유사문항 추천 실패:', e);
         showModal('유사문항 추천', `
-            <div style="font-size:12px;color:var(--error);background:#fce8e6;border-radius:8px;padding:14px;text-align:center;line-height:1.5;">
+            <div style="font-size:12px;color:var(--error);background:#fce8e6;border-radius:10px;padding:14px;text-align:center;line-height:1.6;">
                 유사문항 추천을 불러오지 못했습니다.<br>JS아카이브 db.js 또는 exams 경로를 확인하세요.
             </div>
         `);

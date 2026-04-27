@@ -97,6 +97,7 @@ function renderClass(cid) {
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; border-color:var(--border); color:var(--primary);" onclick="handleBatchGeneratePins('${cid}')">🔑 PIN 일괄 배분</button>
+                <button class="btn" style="flex:1; padding:10px; font-size:12px; border-color:var(--border); color:var(--primary);" onclick="openClinicBasket()">🧺 클리닉 바구니</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
                 <button class="btn btn-primary" ${bulkDisabledAttr} style="flex:1; padding:12px; font-size:13px; font-weight:700; ${bulkDisabledStyle}" onclick="handleClassBulkAtt('${cid}', '등원')">✅ 전체 등원</button>
@@ -402,7 +403,7 @@ async function openExamDetail(classId, examTitle, examDate) {
         </div>
         <div style="margin-bottom:12px;">
             <div style="font-size:13px;font-weight:900;margin-bottom:6px;color:var(--primary);">📌 반 취약 단원 TOP</div>
-            ${renderWeakUnitSummary(classWeakUnits, '이 시험의 누적 오답 단원 데이터 없음', { clickable: true, mode: 'class', titlePrefix: '반 취약 단원' })}
+            ${renderWeakUnitSummary(classWeakUnits, '이 시험의 누적 오답 단원 데이터 없음', { clickable: true, mode: 'class', titlePrefix: '반 취약 단원', context: { classId, examTitle, examDate } })}
         </div>
         <table style="width:100%;font-size:13px;border-collapse:collapse;">
             <thead><tr style="border-bottom:2px solid var(--border);">
