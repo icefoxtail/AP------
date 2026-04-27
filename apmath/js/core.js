@@ -29,7 +29,7 @@ let state = {
     ui: { viewScope: 'teacher', userName: '', currentClassId: null },
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
-        exam_sessions: [], wrong_answers: [], attendance_history: [], homework_history: [],
+        exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
         consultations: [], operation_memos: [], exam_schedules: []
     }
 };
@@ -158,6 +158,7 @@ async function loadData(isInitial = false) {
         homework: Array.isArray(data.homework) ? data.homework : [],
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [],
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [],
+        exam_blueprints: Array.isArray(data.exam_blueprints) ? data.exam_blueprints : [],
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [],
         homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
         consultations: Array.isArray(data.consultations) ? data.consultations : [],
@@ -188,12 +189,74 @@ async function refreshDataOnly() {
         homework: Array.isArray(data.homework) ? data.homework : [], 
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [], 
         wrong_answers: Array.isArray(data.wrong_answers) ? data.wrong_answers : [], 
+        exam_blueprints: Array.isArray(data.exam_blueprints) ? data.exam_blueprints : (state.db.exam_blueprints || []),
         attendance_history: Array.isArray(data.attendance_history) ? data.attendance_history : [], 
         homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
         consultations: Array.isArray(data.consultations) ? data.consultations : [],
         operation_memos: Array.isArray(data.operation_memos) ? data.operation_memos : [],
         exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : []
     };
+}
+
+
+// [3C1] exam_blueprints 병합 및 오답 문항 단원 표시 헬퍼
+function setExamBlueprintsForFiles(blueprints = []) {
+    if (!Array.isArray(blueprints)) return;
+
+    const incomingKeys = new Set(
+        blueprints
+            .filter(bp => bp && bp.archive_file && bp.question_no !== undefined && bp.question_no !== null)
+            .map(bp => `${bp.archive_file}::${Number(bp.question_no)}`)
+    );
+
+    const kept = (state.db.exam_blueprints || []).filter(bp =>
+        !incomingKeys.has(`${bp.archive_file}::${Number(bp.question_no)}`)
+    );
+
+    state.db.exam_blueprints = kept.concat(blueprints);
+}
+
+function findBlueprintForWrong(session, questionId) {
+    if (!session || !session.archive_file) return null;
+
+    const qNo = Number(questionId);
+    if (!Number.isFinite(qNo)) return null;
+
+    return (state.db.exam_blueprints || []).find(bp =>
+        bp.archive_file === session.archive_file &&
+        Number(bp.question_no) === qNo
+    ) || null;
+}
+
+function buildWrongUnitChip(session, questionId) {
+    const bp = findBlueprintForWrong(session, questionId);
+    const qNo = String(questionId);
+    const unit = bp ? (bp.standard_unit || bp.standard_unit_key || '') : '';
+    const label = unit ? `Q${qNo} · ${unit}` : `Q${qNo}`;
+
+    return `<span style="display:inline-flex;align-items:center;background:#fce8e6;color:#d93025;border-radius:999px;padding:2px 7px;margin:2px;font-size:11px;font-weight:700;line-height:1.4;">${label}</span>`;
+}
+
+async function ensureBlueprintsForSessions(sessions = []) {
+    const files = [...new Set(
+        (sessions || [])
+            .map(s => s && s.archive_file)
+            .filter(v => v && String(v).trim())
+    )];
+
+    for (const file of files) {
+        const already = (state.db.exam_blueprints || []).some(bp => bp.archive_file === file);
+        if (already) continue;
+
+        try {
+            const res = await api.get(`exam-blueprints?file=${encodeURIComponent(file)}`);
+            if (res && Array.isArray(res.items)) {
+                setExamBlueprintsForFiles(res.items);
+            }
+        } catch (e) {
+            console.warn('[3C1] blueprint load failed:', file, e);
+        }
+    }
 }
 
 function addToSyncQueue(method, resource, data) {

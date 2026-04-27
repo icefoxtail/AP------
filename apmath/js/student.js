@@ -3,13 +3,19 @@
  * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (5F: 학생 고유번호 PIN 관리 UI 추가)
  */
 
-function renderStudentDetail(sid) {
+async function renderStudentDetail(sid) {
     const s = state.db.students.find(st => st.id === sid);
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
 
     const exs = state.db.exam_sessions.filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
+    await ensureBlueprintsForSessions(exs);
+
     const rows = exs.map(e => {
-        const wrs = state.db.wrong_answers.filter(w => w.session_id === e.id).map(w => `<span style="display:inline-block;background:#fce8e6;color:#d93025;border-radius:4px;padding:2px 6px;margin:2px;font-size:11px;font-weight:700;">Q${w.question_id}</span>`).join('');
+        const wrs = state.db.wrong_answers
+            .filter(w => w.session_id === e.id)
+            .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
+            .map(w => buildWrongUnitChip(e, w.question_id))
+            .join('');
         return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
     }).join('');
     

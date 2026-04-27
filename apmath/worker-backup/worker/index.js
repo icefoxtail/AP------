@@ -375,16 +375,41 @@ export default {
           if (method === 'GET' && id === 'by-class') {
             const classId = url.searchParams.get('class');
             const examTitle = url.searchParams.get('exam') || null;
+            if (!classId) return new Response(JSON.stringify({ error: 'class required', students: [], sessions: [], wrong_answers: [], blueprints: [] }), { status: 400, headers });
+
             const studentIds = await env.DB.prepare("SELECT student_id FROM class_students WHERE class_id = ?").bind(classId).all();
             const sIds = studentIds.results.map(r => r.student_id);
-            if (!sIds.length) return new Response(JSON.stringify({ sessions: [], students: [] }), { headers });
+            if (!sIds.length) return new Response(JSON.stringify({ students: [], sessions: [], wrong_answers: [], blueprints: [] }), { headers });
             const p = sIds.map(() => '?').join(',');
             const [students, sessions, wrongs] = await Promise.all([
               env.DB.prepare(`SELECT id, name, school_name, grade FROM students WHERE id IN (${p}) AND status='재원'`).bind(...sIds).all(),
               examTitle ? env.DB.prepare(`SELECT * FROM exam_sessions WHERE class_id = ? AND exam_title = ? ORDER BY exam_date DESC`).bind(classId, examTitle).all() : env.DB.prepare(`SELECT * FROM exam_sessions WHERE class_id = ? ORDER BY exam_date DESC LIMIT 200`).bind(classId).all(),
               env.DB.prepare(`SELECT * FROM wrong_answers WHERE student_id IN (${p})`).bind(...sIds).all()
             ]);
-            return new Response(JSON.stringify({ students: students.results, sessions: sessions.results, wrong_answers: wrongs.results }), { headers });
+
+            const archiveFiles = [...new Set(
+              (sessions.results || [])
+                .map(s => s.archive_file)
+                .filter(v => v && String(v).trim())
+            )];
+
+            let blueprints = { results: [] };
+            if (archiveFiles.length > 0) {
+              const bpMarkers = archiveFiles.map(() => '?').join(',');
+              blueprints = await env.DB.prepare(`
+                SELECT *
+                FROM exam_blueprints
+                WHERE archive_file IN (${bpMarkers})
+                ORDER BY archive_file ASC, question_no ASC
+              `).bind(...archiveFiles).all();
+            }
+
+            return new Response(JSON.stringify({
+              students: students.results,
+              sessions: sessions.results,
+              wrong_answers: wrongs.results,
+              blueprints: blueprints.results
+            }), { headers });
           }
           if (method === 'PATCH') {
             const d = await request.json();

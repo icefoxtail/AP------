@@ -328,9 +328,27 @@ async function openExamGradeView(classId) {
 }
 
 async function openExamDetail(classId, examTitle, examDate) {
+    let sessionSource = state.db.exam_sessions || [];
+    let wrongSource = state.db.wrong_answers || [];
+
+    try {
+        const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`);
+        if (res && Array.isArray(res.blueprints)) {
+            setExamBlueprintsForFiles(res.blueprints);
+        }
+        if (res && Array.isArray(res.sessions)) {
+            sessionSource = res.sessions;
+        }
+        if (res && Array.isArray(res.wrong_answers)) {
+            wrongSource = res.wrong_answers;
+        }
+    } catch (e) {
+        console.warn('[3C1] by-class blueprint load failed', e);
+    }
+
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
-    const sessions = state.db.exam_sessions.filter(es =>
+    const sessions = sessionSource.filter(es =>
         es.exam_title === examTitle && es.exam_date === examDate && ids.includes(es.student_id)
     );
     const submittedIds = new Set(sessions.map(s => s.student_id));
@@ -338,8 +356,11 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     const submitted = active.filter(s => submittedIds.has(s.id)).map(s => {
         const sess = sessions.find(es => es.student_id === s.id);
-        const wrongs = state.db.wrong_answers.filter(w => w.session_id === sess?.id).map(w => w.question_id).sort((a,b)=>Number(a)-Number(b));
-        return { ...s, score: sess?.score ?? '-', sessionId: sess?.id, wrongs };
+        const wrongs = wrongSource
+            .filter(w => w.session_id === sess?.id)
+            .map(w => w.question_id)
+            .sort((a,b)=>Number(a)-Number(b));
+        return { ...s, score: sess?.score ?? '-', sessionId: sess?.id, session: sess, wrongs };
     });
     const pending = active.filter(s => !submittedIds.has(s.id));
 
@@ -347,7 +368,11 @@ async function openExamDetail(classId, examTitle, examDate) {
         <tr>
             <td style="padding:10px 4px;">${s.name}</td>
             <td style="text-align:center;font-weight:800;color:var(--primary);padding:10px 4px;">${s.score}점</td>
-            <td style="font-size:11px;padding:10px 4px;color:var(--error);font-weight:600;">${s.wrongs.join(', ') || '없음'}</td>
+            <td style="font-size:11px;padding:10px 4px;color:var(--error);font-weight:600;">
+                <div style="display:flex;flex-wrap:wrap;gap:2px;">
+                    ${s.wrongs.length ? s.wrongs.map(qid => buildWrongUnitChip(s.session, qid)).join('') : '없음'}
+                </div>
+            </td>
             <td style="text-align:center;padding:10px 4px;">
                 <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g,"\\'")}',${qCount},'${classId}','${s.sessionId || ''}')">수정</button>
             </td>
