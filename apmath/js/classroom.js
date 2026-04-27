@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/classroom.js]
- * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (4단계: 오프라인 방어 및 최적화, HTML 속성 보정)
+ * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (5G-2: 일괄 PIN 배분 UI 추가)
  */
 
 function formatClassScheduleDays(daysStr) {
@@ -16,9 +16,6 @@ function isClassScheduledToday(clsId) {
     return cls.schedule_days.split(',').includes(todayIdx);
 }
 
-/**
- * 4단계: 오프라인 방어 적용된 반 화면 전용 출결 일괄 처리
- */
 async function handleClassBulkAtt(classId, status) {
     if (!navigator.onLine) {
         toast("오프라인 상태에서는 전체 처리를 할 수 없습니다. 연결 후 다시 시도하세요.", "warn");
@@ -49,9 +46,6 @@ async function handleClassBulkAtt(classId, status) {
     }
 }
 
-/**
- * 4단계: 오프라인 방어 적용된 반 화면 전용 숙제 일괄 처리
- */
 async function handleClassBulkHw(classId, status) {
     if (!navigator.onLine) {
         toast("오프라인 상태에서는 전체 처리를 할 수 없습니다. 연결 후 다시 시도하세요.", "warn");
@@ -82,9 +76,6 @@ async function handleClassBulkHw(classId, status) {
     }
 }
 
-/**
- * 개별 학급 관리 화면 렌더링 (4단계: 비수업일 HTML 속성 보정 및 성적 버튼 보조화)
- */
 function renderClass(cid) {
     state.ui.currentClassId = cid;
     const cls = state.db.classes.find(c => c.id === cid);
@@ -93,17 +84,19 @@ function renderClass(cid) {
 
     const summary = computeClassTodaySummary(cid);
     
-    // 4단계 보정: disabled HTML 속성과 CSS style 문자열 분리
     const bulkDisabledAttr = !summary.isScheduled ? 'disabled' : '';
     const bulkDisabledStyle = !summary.isScheduled ? 'opacity:0.5; pointer-events:none;' : '';
 
-    // [5F] 시험·성적 버튼 추가
+    // [5G-2] PIN 일괄 배분 버튼 UI 추가
     const opToolsPanel = `
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:15px;">
             <div style="display:flex; gap:8px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR 생성</button>
                 <button class="btn" style="flex:1; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrSubmitStatus('${cid}')">📊 제출 현황</button>
                 <button class="btn" style="flex:1; padding:10px; font-size:13px; border-color:var(--border);" onclick="openExamGradeView('${cid}')">📋 시험·성적</button>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <button class="btn" style="flex:1; padding:10px; font-size:12px; border-color:var(--border); color:var(--primary);" onclick="handleBatchGeneratePins('${cid}')">🔑 PIN 일괄 배분</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
                 <button class="btn btn-primary" ${bulkDisabledAttr} style="flex:1; padding:12px; font-size:13px; font-weight:700; ${bulkDisabledStyle}" onclick="handleClassBulkAtt('${cid}', '등원')">✅ 전체 등원</button>
@@ -131,7 +124,7 @@ function renderClass(cid) {
         <div class="card">
             <h2 style="font-size:16px;">${cls.name} 관리 <span style="font-weight:normal; opacity:0.5; font-size:13px;">(재원 ${summary.total}명 · ${formatClassScheduleDays(cls.schedule_days)})</span></h2>
             <table>
-                <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">출결/숙제/성적</th></tr></thead>
+                <thead><tr><th>이름</th><th>학교</th><th style="text-align:right;">출결/숙제</th></tr></thead>
                 <tbody id="class-std-list"></tbody>
             </table>
         </div>
@@ -152,17 +145,28 @@ function renderClass(cid) {
         const hwClass = hwStatus === '완료' ? 'btn-primary' : '';
         const hwStyleStr = hwStatus === '미완료' ? 'border-color:var(--warning); color:var(--warning); font-weight:700;' : '';
 
-        // 4단계: 성적 버튼 보조화 (작은 outline 스타일)
         return `<tr>
             <td onclick="renderStudentDetail('${s.id}')" style="cursor:pointer; font-weight:800; color:var(--primary);">${s.name}</td>
             <td>${s.school_name}</td>
             <td style="text-align:right; white-space:nowrap;">
                 <button class="btn ${attClass}" style="padding:6px 10px; font-size:12px; ${attStyleStr}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
                 <button class="btn ${hwClass}" style="padding:6px 10px; font-size:12px; ${hwStyleStr}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
-                <button class="btn" style="padding:4px 6px; font-size:11px; margin-left:4px; border-color:var(--border); color:var(--secondary);" onclick="openOMR('${s.id}')">성적</button>
             </td>
         </tr>`;
     }).join('');
+}
+
+// [5G-2] PIN 일괄 배분 기능
+async function handleBatchGeneratePins(classId) {
+    if (!confirm('이 반에서 PIN이 아직 없는 모든 학생들에게 고유 PIN을 일괄 배분(자동 생성)하시겠습니까? (기존 PIN은 절대 덮어쓰지 않습니다)')) return;
+    
+    const r = await api.post('students/batch-pins', { class_id: classId });
+    if (r.success) {
+        toast(`총 ${r.count}명의 학생에게 PIN이 자동 배분되었습니다.`, 'info');
+        await loadData();
+    } else {
+        toast(r.message || '일괄 배분에 실패했습니다.', 'error');
+    }
 }
 
 function computeClassTodaySummary(classId) {
@@ -181,7 +185,6 @@ function computeClassTodaySummary(classId) {
     return { att, hw, test, total, isScheduled };
 }
 
-// --- 출석부 (Ledger) 로직 ---
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
 async function loadLedger() {
@@ -297,16 +300,12 @@ async function toggleHw(sid, date) {
     }
 }
 
-// [5F 보완] 반별 시험/성적 조회 모달 연동
 async function openExamGradeView(classId) {
     const cls = state.db.classes.find(c => c.id === classId);
     
-    // 반 소속 exam_sessions에서 시험명 목록 추출
-    // (향후 /api/exam-sessions/by-class 연동 예정)
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const sessions = state.db.exam_sessions.filter(es => ids.includes(es.student_id));
     
-    // 시험명 + 날짜 기준으로 그룹핑
     const examMap = {};
     sessions.forEach(es => {
         const key = `${es.exam_title}||${es.exam_date}`;
@@ -344,7 +343,6 @@ async function openExamDetail(classId, examTitle, examDate) {
     });
     const pending = active.filter(s => !submittedIds.has(s.id));
 
-    // [5F 보완] 수정 버튼을 눌렀을 때, 기존 session ID를 넘기도록 준비
     const submittedHTML = submitted.map(s => `
         <tr>
             <td style="padding:10px 4px;">${s.name}</td>
@@ -364,7 +362,6 @@ async function openExamDetail(classId, examTitle, examDate) {
             </td>
         </tr>`).join('');
 
-    // [5F 보완] 모달 제목에서 HTML 태그 제거
     showModal(`${examTitle} (${examDate})`, `
         <div style="font-size:13px; color:var(--secondary); margin-bottom:12px; background:var(--bg); padding:10px; border-radius:8px; text-align:center;">
             <b>${submitted.length + pending.length}명</b> 중 <b style="color:var(--success);">${submitted.length}명 제출</b>

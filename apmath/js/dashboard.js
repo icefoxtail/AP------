@@ -1,11 +1,212 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
- * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (4D 최종 보정: 문구 수정 및 일정/메모 수정 기능 추가)
+ * 대시보드 및 원장 전용 위험 관제센터 (5G Phase 1 - 픽스: 원장 역할 분리 엄격 적용)
  */
 
 function copyPhoneNumber(text) {
     navigator.clipboard.writeText(text).then(() => toast('전화번호가 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
 }
+
+// [5G] 위험학생 판정 알고리즘
+function computeRiskStudents() {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = new Date(todayStr).getTime();
+    const active = state.db.students.filter(s => s.status === '재원');
+    
+    const risks = [];
+    
+    active.forEach(s => {
+        let riskTypes = [];
+        let reasons = [];
+        
+        // 1. 출결 위험 (최근 14일 2회 이상 결석)
+        const recentAtt = state.db.attendance_history.filter(a => a.student_id === s.id && a.status === '결석');
+        const absenceCount = recentAtt.length;
+        if (absenceCount >= 2) {
+            riskTypes.push('출결위험');
+            reasons.push(`최근 14일 결석 ${absenceCount}회`);
+        }
+        
+        // 2. 숙제 위험 (최근 14일 3회 이상 미완료)
+        const recentHw = state.db.homework_history.filter(h => h.student_id === s.id && h.status === '미완료');
+        const hwMissCount = recentHw.length;
+        if (hwMissCount >= 3) {
+            riskTypes.push('숙제위험');
+            reasons.push(`최근 14일 숙제 미완료 ${hwMissCount}회`);
+        }
+        
+        // 3. 성적 위험 (평균 60 미만 또는 2회 연속 하락)
+        const exams = state.db.exam_sessions.filter(e => e.student_id === s.id)
+            .sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)))
+            .slice(0, 3);
+        
+        let scoreSummary = '';
+        if (exams.length > 0) {
+            scoreSummary = exams.map(e => `${e.score}점`).join(' ← ');
+            const avg = exams.reduce((acc, cur) => acc + cur.score, 0) / exams.length;
+            let scoreRisk = false;
+            if (avg < 60) {
+                scoreRisk = true;
+                reasons.push(`최근 3회 평균 ${Math.round(avg)}점`);
+            } else if (exams.length >= 3) {
+                // index 0: 최신, index 1: 이전, index 2: 그 이전
+                if (exams[0].score < exams[1].score && exams[1].score < exams[2].score) {
+                    scoreRisk = true;
+                    reasons.push(`성적 2회 연속 하락`);
+                }
+            }
+            if (scoreRisk) riskTypes.push('성적위험');
+        }
+        
+        // 4. 관리 위험 (30일간 상담 없음, 단 가입 14일 이내 신규생 제외)
+        const cns = state.db.consultations.filter(c => c.student_id === s.id)
+            .sort((a,b) => String(b.date).localeCompare(String(a.date)));
+        let lastCnsDate = cns.length ? cns[0].date : '없음';
+        
+        let cnsDaysDiff = 999;
+        if (cns.length > 0) {
+            cnsDaysDiff = (todayTime - new Date(cns[0].date).getTime()) / (1000*3600*24);
+        }
+        
+        let isNewStudent = false;
+        if (s.created_at) {
+            const createTime = new Date(s.created_at).getTime();
+            if ((todayTime - createTime) / (1000*3600*24) <= 14) isNewStudent = true;
+        }
+        
+        if (cnsDaysDiff >= 30 && !isNewStudent) {
+            riskTypes.push('관리위험');
+            reasons.push(`최근 30일 상담 기록 없음`);
+        }
+        
+        // 5. 복합 위험
+        if (riskTypes.length >= 2) {
+            riskTypes.push('복합위험');
+        }
+        
+        if (riskTypes.length > 0) {
+            const cId = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
+            const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
+            risks.push({
+                student: s, className: cName, riskTypes, reasons,
+                scoreSummary, absenceCount, hwMissCount, lastConsultationDate: lastCnsDate
+            });
+        }
+    });
+    
+    return risks;
+}
+
+// [5G] 원장 전용 관제센터 렌더링
+function renderAdminControlCenter() {
+    const root = document.getElementById('app-root');
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = new Date(todayStr).getTime();
+    
+    const activeStudents = state.db.students.filter(s => s.status === '재원');
+    const dischargedStudents = state.db.students.filter(s => s.status === '제적');
+    
+    const newStudents = activeStudents.filter(s => {
+        if (!s.created_at) return false;
+        const diff = (todayTime - new Date(s.created_at).getTime()) / (1000*3600*24);
+        return diff <= 30;
+    });
+    
+    const risks = computeRiskStudents();
+
+    // 상단 요약 카드 (5G-Fix: 선생님 화면으로 넘어가는 버튼 원천 삭제)
+    const summaryHtml = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h3 style="margin:0; font-size:18px;">🏢 학원 관제센터</h3>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:28px;">
+            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--primary);"><div style="font-size:22px; font-weight:900;">${activeStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">총 재원생</div></div>
+            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--success);"><div style="font-size:22px; font-weight:900; color:var(--success);">${newStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">신규 (30일)</div></div>
+            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--secondary);"><div style="font-size:22px; font-weight:900; color:var(--secondary);">${dischargedStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">퇴원생</div></div>
+            <div class="card" style="padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--error); background:${risks.length > 0 ? '#fce8e6' : 'white'};"><div style="font-size:22px; font-weight:900; color:var(--error);">${risks.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">위험학생</div></div>
+        </div>
+    `;
+
+    // 학생 검색 섹션
+    const searchHtml = `
+        <div class="card" style="margin-bottom:28px;">
+            <h4 style="margin:0 0 10px 0; font-size:14px;">🔍 학생 통합 검색</h4>
+            <div style="display:flex; gap:8px;">
+                <input id="admin-search-input" class="btn" placeholder="이름으로 검색..." style="flex:1; text-align:left;" onkeyup="if(event.key==='Enter') renderAdminStudentSearch()">
+                <button class="btn btn-primary" onclick="renderAdminStudentSearch()">검색</button>
+            </div>
+            <div id="admin-search-results" style="margin-top:12px; font-size:13px; max-height:200px; overflow-y:auto;"></div>
+        </div>
+    `;
+
+    // 위험학생 목록 렌더링
+    const riskRows = risks.map(r => {
+        const badges = r.riskTypes.map(t => {
+            let color = 'var(--secondary)';
+            if (t === '출결위험') color = '#f9ab00';
+            if (t === '숙제위험') color = '#f9ab00';
+            if (t === '성적위험') color = 'var(--error)';
+            if (t === '관리위험') color = '#b06000';
+            if (t === '복합위험') color = '#d93025';
+            return `<span style="font-size:10px; background:#f1f3f4; color:${color}; font-weight:800; padding:2px 6px; border-radius:4px; border:1px solid ${color};">${t}</span>`;
+        }).join(' ');
+
+        const reasonsHtml = r.reasons.map(reason => `<div style="font-size:12px; color:var(--secondary); margin-bottom:2px;">• ${reason}</div>`).join('');
+        
+        let recentDataHtml = '';
+        if (r.scoreSummary) recentDataHtml += `<div style="font-size:11px; color:#5f6368; margin-top:6px;"><b>성적흐름:</b> ${r.scoreSummary}</div>`;
+        if (r.lastConsultationDate !== '없음') recentDataHtml += `<div style="font-size:11px; color:#5f6368; margin-top:2px;"><b>마지막 상담:</b> ${r.lastConsultationDate}</div>`;
+
+        return `
+            <div style="padding:14px; border:1px solid var(--border); border-radius:8px; margin-bottom:10px; background:var(--surface); box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                    <div>
+                        <div style="font-weight:800; font-size:15px; color:var(--primary); margin-bottom:4px;">${r.student.name} <span style="font-size:12px; color:var(--secondary); font-weight:normal;">${r.className} | ${r.student.school_name} ${r.student.grade}</span></div>
+                        <div style="display:flex; gap:4px; flex-wrap:wrap;">${badges}</div>
+                    </div>
+                    <button class="btn" style="padding:4px 8px; font-size:11px; color:var(--primary); border-color:var(--border);" onclick="renderStudentDetail('${r.student.id}')">상세 정보</button>
+                </div>
+                <div style="background:#f8f9fa; padding:8px 10px; border-radius:6px; margin-top:8px;">
+                    ${reasonsHtml}
+                    ${recentDataHtml}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    const riskSectionHtml = `
+        <div>
+            <h3 style="margin:0 0 12px 0; font-size:16px; color:var(--error);">🚨 집중 관리가 필요한 학생 (${risks.length})</h3>
+            ${risks.length > 0 ? riskRows : '<div style="text-align:center; padding:30px; color:var(--success); font-weight:800; background:var(--surface); border-radius:8px; border:1px solid var(--border);">현재 위험 징후를 보이는 학생이 없습니다. 🎉</div>'}
+        </div>
+    `;
+
+    root.innerHTML = summaryHtml + searchHtml + riskSectionHtml;
+    const scopeBtn = document.querySelector('header nav button');
+    if (scopeBtn) scopeBtn.style.display = 'none'; // 원장 메인에서는 토글 불필요
+}
+
+function renderAdminStudentSearch() {
+    const keyword = document.getElementById('admin-search-input').value.trim().toLowerCase();
+    const resultArea = document.getElementById('admin-search-results');
+    if (!keyword) { resultArea.innerHTML = '<div style="color:var(--secondary);">검색어를 입력하세요.</div>'; return; }
+    
+    const results = state.db.students.filter(s => s.name.toLowerCase().includes(keyword));
+    if (results.length === 0) { resultArea.innerHTML = '<div style="color:var(--secondary);">일치하는 학생이 없습니다.</div>'; return; }
+    
+    resultArea.innerHTML = results.map(s => {
+        const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
+        return `
+            <div style="padding:8px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+                <div><b style="font-size:14px;">${s.name}</b> <span style="font-size:12px; color:var(--secondary);">${cName} | ${s.status}</span></div>
+                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세</button>
+            </div>
+        `;
+    }).join('');
+}
+
+
+// --- 기존 Teacher 전용 Dashboard 및 공통 로직 유지 ---
 
 function renderAddressBookList() {
     const search = document.getElementById('ab-search').value.trim().toLowerCase();
@@ -183,7 +384,6 @@ async function toggleClassActive(cid, status) {
     if (r.success) { toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info'); await loadData(); openClassManageModal(); }
 }
 
-// 4D: 할 일 메모 관리 모달
 function openTodoMemoModal() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const memos = state.db.operation_memos || [];
@@ -232,7 +432,10 @@ async function toggleMemoDone(id, done) {
     if(r.success) { 
         await loadData(); 
         if(document.getElementById('new-memo-content') || document.getElementById('edit-memo-content')) openTodoMemoModal(); 
-        else renderDashboard();
+        else {
+            if (state.auth.role === 'admin') renderAdminControlCenter();
+            else renderDashboard();
+        }
     }
 }
 
@@ -242,7 +445,6 @@ async function deleteMemo(id) {
     if(r.success) { await loadData(); openTodoMemoModal(); }
 }
 
-// 4D: 할 일 메모 수정 기능
 function openEditTodoMemoModal(id) {
     const m = state.db.operation_memos.find(x => x.id === id);
     if(!m) return;
@@ -279,7 +481,6 @@ async function handleEditTodoMemo(id) {
     }
 }
 
-// 4D: 시험일정 보드 모달
 function openExamScheduleModal() {
     const schedules = state.db.exam_schedules || [];
     const rows = schedules.map(e => `
@@ -335,7 +536,6 @@ async function deleteExamSchedule(id) {
     if(r.success) { await loadData(); openExamScheduleModal(); }
 }
 
-// 4D: 시험일정 수정 기능
 function openEditExamScheduleModal(id) {
     const e = state.db.exam_schedules.find(x => x.id === id);
     if(!e) return;
@@ -381,9 +581,6 @@ async function handleEditExamSchedule(id) {
     }
 }
 
-/**
- * 4D: 운영 메뉴 순서 (할 일 메모, 시험일정 추가)
- */
 function openOperationMenu() {
     const isOnline = navigator.onLine;
     const qLen = syncQueue.length;
@@ -415,13 +612,6 @@ function openOperationMenu() {
     `);
 }
 
-function isClassScheduledToday(clsId) {
-    const cls = state.db.classes.find(c => c.id === clsId);
-    if (!cls || !cls.schedule_days) return true;
-    const todayIdx = String(new Date().getDay());
-    return cls.schedule_days.split(',').includes(todayIdx);
-}
-
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
@@ -438,12 +628,10 @@ function computeDashboardData() {
     const presentCount = scheduledAtt.filter(a => a.status === '등원').length;
     const absentCount = scheduledAtt.filter(a => a.status === '결석').length;
     
-    // 4D: 숙제 미처리는 오늘 수업 대상 중 오늘 완료가 아닌 학생 수
     const scheduledHw = state.db.homework.filter(h => h.date === today && scheduledIds.has(h.student_id));
     const hwDoneCount = scheduledHw.filter(h => h.status === '완료').length;
     const hwNotDoneCount = Math.max(scheduledActiveStudents.length - hwDoneCount, 0);
 
-    // 4D: 할 일 카드 미완료/오늘+고정 개수
     const todoCount = state.db.operation_memos.filter(m => m.is_done !== 1 && (m.is_pinned === 1 || m.memo_date === today)).length;
 
     const classSummaries = {};
@@ -513,12 +701,8 @@ function renderClassSummaryCard(cls, data) {
     `;
 }
 
-/**
- * 4D: 할 일 및 시험일정 섹션 렌더링
- */
 function renderTodoSections() {
     const today = new Date();
-    // KST 변환 보정 필요 시 (현행 날짜 문자열 체계 사용)
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const nextWeek = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
     const nextWeekStr = nextWeek.toLocaleDateString('sv-SE');
@@ -586,7 +770,7 @@ function renderDashboard() {
     const academyStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                <h3 style="margin:0; font-size:16px;">🏢 학원 현황 <span style="font-size:12px; font-weight:normal; color:var(--secondary); margin-left:4px;">(전체 재원 ${data.global.totalActive}명)</span></h3>
+                <h3 style="margin:0; font-size:16px;">🏫 내 담당 학급 현황</h3>
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openOperationMenu()">⚙️ 운영</button>
@@ -614,7 +798,6 @@ function renderDashboard() {
         return `<span style="font-size:11px; background:#fff; padding:2px 6px; border-radius:4px; margin-left:6px; color:#7a4f00;">${str}</span>`;
     };
 
-    // 4D 최종 보정: "오늘 수업"
     const closeBanner = closeData.totalActive === 0
         ? `${syncWarning}<div style="display:flex; align-items:center; gap:10px; background:#f1f3f4; border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:14px; color:var(--secondary);">
             <span style="font-size:20px;">☕</span>
@@ -641,9 +824,7 @@ function renderDashboard() {
 
     const todoSections = renderTodoSections();
 
-    const classes = state.ui.viewScope === 'all' 
-        ? state.db.classes.filter(c => c.is_active !== 0) 
-        : state.db.classes.filter(c => c.teacher_name === state.ui.userName && c.is_active !== 0);
+    const classes = state.db.classes.filter(c => c.is_active !== 0);
 
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap;">
@@ -656,7 +837,6 @@ function renderDashboard() {
     `;
 
     root.innerHTML = academyStatus + closeBanner + todoSections + classStatus;
-    document.getElementById('scope-text').innerText = state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
 
 function computeTodayCloseData(todayExam = null) {
@@ -794,7 +974,6 @@ function openTodayCloseModal(tab = 'att') {
     showModal('📋 오늘 마감 센터', `<div style="display:flex; gap:6px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
 }
 
-// 오늘 시험 설정 관련 기능 보존
 function getTodayExamConfig() {
     try {
         const raw = localStorage.getItem('AP_TODAY_EXAM');
@@ -805,19 +984,31 @@ function getTodayExamConfig() {
         return { date: cfg.date, title: String(cfg.title), q: parseInt(cfg.q, 10) || 20 };
     } catch (e) { localStorage.removeItem('AP_TODAY_EXAM'); return null; }
 }
+
 function setTodayExamConfig(title, q) {
     const today = new Date().toLocaleDateString('sv-SE');
     const validQ = parseInt(q, 10) || 20;
     localStorage.setItem('AP_TODAY_EXAM', JSON.stringify({ date: today, title: String(title), q: validQ }));
 }
-function clearTodayExamConfig() { localStorage.removeItem('AP_TODAY_EXAM'); renderDashboard(); }
+
+function clearTodayExamConfig() { 
+    localStorage.removeItem('AP_TODAY_EXAM'); 
+    if(state.auth.role === 'admin') renderAdminControlCenter();
+    else renderDashboard();
+}
+
 function openTodayExamSetModal() {
     const cfg = getTodayExamConfig();
     showModal('⚙️ 오늘 시험 설정', `<div style="display:flex; flex-direction:column; gap:12px;"><p style="margin:0; font-size:13px; color:var(--secondary);">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</p><div style="display:flex; gap:4px; flex-wrap:wrap; margin:6px 0;"><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button></div><input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%;"><input id="set-exam-q" type="number" class="btn" placeholder="문항 수" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%;"><div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; min-width:120px; padding:12px;" onclick="handleSetTodayExam()">저장 및 적용</button><button class="btn" style="flex:1; min-width:120px; padding:12px; color:var(--error); border-color:var(--error);" onclick="clearTodayExamConfig(); closeModal();">시험 없음 처리</button></div></div>`);
 }
+
 function handleSetTodayExam() {
     const t = document.getElementById('set-exam-title').value.trim();
     const q = parseInt(document.getElementById('set-exam-q').value, 10) || 20;
     if (!t) { toast('시험명을 입력하세요.', 'warn'); return; }
-    setTodayExamConfig(t, q); toast('오늘 시험이 설정되었습니다.', 'info'); closeModal(); renderDashboard();
+    setTodayExamConfig(t, q); 
+    toast('오늘 시험이 설정되었습니다.', 'info'); 
+    closeModal(); 
+    if(state.auth.role === 'admin') renderAdminControlCenter();
+    else renderDashboard();
 }

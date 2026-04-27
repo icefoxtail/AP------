@@ -1,11 +1,8 @@
 /**
  * AP Math OS v26.1.2 [js/qr-omr.js]
- * QR 코드 생성 및 OMR 성적 입력 도구 (5F 긴급 보완: OMR 문항 수 동적 추론 완결판)
+ * QR 코드 생성 및 OMR 성적 입력 도구 (5G: OMR 동적 문항 및 오답 프리체크)
  */
 
-/**
- * QR 코드 생성 모달 오픈
- */
 function openQrGenerator(cid) {
     const cls = state.db.classes.find(c => c.id === cid);
     const today = new Date().toLocaleDateString('sv-SE');
@@ -39,9 +36,6 @@ function openQrGenerator(cid) {
     `, 'QR 코드 생성', generateQrCode);
 }
 
-/**
- * QR 코드 생성 실행 및 마감 기준 설정
- */
 function generateQrCode() {
     const cid = state.ui.currentClassId;
     const exam = document.getElementById('qr-exam').value.trim();
@@ -70,9 +64,6 @@ function generateQrCode() {
     }
 }
 
-/**
- * QR URL 복사
- */
 function copyQrUrl() {
     const url = document.getElementById('qr-url')?.innerText || '';
     if (!url) return;
@@ -83,9 +74,6 @@ function copyQrUrl() {
     }).catch(() => toast('복사 실패', 'warn'));
 }
 
-/**
- * 학급의 시험 제출 통계 계산
- */
 function computeQrSubmitStatus(classId, examTitle, examDate) {
     const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
@@ -100,9 +88,6 @@ function computeQrSubmitStatus(classId, examTitle, examDate) {
     return { submitted, pending };
 }
 
-/**
- * [긴급 보완] 특정 시험의 문항 수를 DB에서 추론하는 헬퍼 함수
- */
 function findExamQuestionCount(examTitle = '', classId = '') {
     if (!examTitle) return 0;
     const ids = classId
@@ -118,9 +103,6 @@ function findExamQuestionCount(examTitle = '', classId = '') {
     return found ? parseInt(found.question_count) : 0;
 }
 
-/**
- * 시험 제출 현황 모달 오픈
- */
 function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const today = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => c.id === classId);
@@ -145,7 +127,6 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
     const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
     
-    // [긴급 보완] DB에서 해당 시험의 question_count 추론
     const inferredQCount = findExamQuestionCount(examTitle, classId);
     
     showModal('📊 제출 현황', `
@@ -160,7 +141,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 }
 
 /**
- * [5F 긴급 보완] 성적 입력 모달 (OMR) 오픈 - 동적 추론 완벽 적용
+ * [5G] 성적 입력 모달 오픈 - 기존 오답 프리체크 기능 추가
  */
 function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '') {
     const todayExam = getTodayExamConfig();
@@ -179,6 +160,13 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
     // 3. 1~50 범위 클램프
     const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
 
+    // [5G] 4. 기존 오답 번호 추출 (프리체크용)
+    const checkedWrongIds = sessionId 
+        ? state.db.wrong_answers
+            .filter(w => w.session_id === sessionId)
+            .map(w => String(w.question_id))
+        : [];
+
     showModal('성적 직접 입력', `
         <div style="display:flex;flex-direction:column;gap:10px;">
             <div>
@@ -190,37 +178,38 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
                 <input id="omr-q" type="number" class="btn" value="${defaultQ}" min="1" max="50" style="width:100%;text-align:left;" oninput="rebuildOmrGrid()">
             </div>
             <div id="omr-grid-wrap">
-                <div class="omr-grid">${buildOmrItems(defaultQ)}</div>
+                <div class="omr-grid">${buildOmrItems(defaultQ, checkedWrongIds)}</div>
             </div>
         </div>
     `, '저장', () => handleOMRSave(sid, presetClassId, sessionId));
 }
 
-function buildOmrItems(q) {
-    return Array.from({length: q}, (_, i) =>
-        `<div class="omr-item">Q${i+1}<br><input type="checkbox" class="omr-q" value="${i+1}"></div>`
-    ).join('');
+// [5G] checkedIds 배열을 받아 기존 오답에 checked 속성 부여
+function buildOmrItems(q, checkedIds = []) {
+    return Array.from({length: q}, (_, i) => {
+        const qNum = String(i + 1);
+        const isChecked = checkedIds.includes(qNum) ? 'checked' : '';
+        return `<div class="omr-item">Q${qNum}<br><input type="checkbox" class="omr-q" value="${qNum}" ${isChecked}></div>`;
+    }).join('');
 }
 
 function rebuildOmrGrid() {
     let q = parseInt(document.getElementById('omr-q').value) || 20;
-    q = Math.max(1, Math.min(50, q)); // Clamp 1~50
+    q = Math.max(1, Math.min(50, q)); 
+    // 새로고침 시 기존 오답 유지는 DOM 파싱 등 복잡도가 올라가므로 현재 화면의 오답을 백업하여 리렌더링
+    const currentChecked = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const wrap = document.getElementById('omr-grid-wrap');
-    if (wrap) wrap.innerHTML = `<div class="omr-grid">${buildOmrItems(q)}</div>`;
+    if (wrap) wrap.innerHTML = `<div class="omr-grid">${buildOmrItems(q, currentChecked)}</div>`;
 }
 
-/**
- * 성적 저장 실행 - sessionId 연동, classId fallback 및 점수 계산 반영
- */
 async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
     const title = document.getElementById('omr-title').value.trim();
     let q = parseInt(document.getElementById('omr-q').value) || 20;
-    q = Math.max(1, Math.min(50, q)); // 저장 직전 1~50 clamp
+    q = Math.max(1, Math.min(50, q)); 
 
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const score = Math.round(((q - wrs.length) / q) * 100);
     
-    // ClassId 결정 우선순위
     let classId = presetClassId || state.ui?.currentClassId;
     if (!classId) {
         const mapObj = state.db.class_students.find(m => m.student_id === sid);
