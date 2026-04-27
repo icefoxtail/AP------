@@ -1,11 +1,8 @@
 /**
  * AP Math OS v26.1.2 [js/student.js]
- * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (2단계)
+ * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (3단계: 학년 구조 확장)
  */
 
-/**
- * 학생 상세 정보 모달 렌더링 (2단계: 상담 수정/삭제 기능 추가 및 전화번호 노출 제외)
- */
 function renderStudentDetail(sid) {
     const s = state.db.students.find(st => st.id === sid);
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
@@ -16,7 +13,6 @@ function renderStudentDetail(sid) {
         return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><button class="btn" style="color:var(--error); padding:2px 8px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></td></tr>`;
     }).join('');
     
-    // 상담 이력 렌더링 (2단계: 수정/삭제 액션 추가)
     const cnsList = state.db.consultations.filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.id).localeCompare(String(a.id)));
     const cnsRows = cnsList.map(c => `
         <div style="border-bottom:1px solid var(--border); padding:10px 0;">
@@ -51,7 +47,6 @@ function renderStudentDetail(sid) {
         </div>
     `;
 
-    // 2단계: 전화번호 상시 노출 제외, 관계와 메모만 표시
     const extraInfoHtml = (s.guardian_relation || s.memo) ? `
         <div style="margin-top:8px; font-size:12px; background:#f1f3f4; padding:8px 10px; border-radius:6px; color:var(--secondary);">
             ${s.guardian_relation ? `<div style="margin-bottom:4px;"><b>보호자 관계:</b> ${s.guardian_relation}</div>` : ''}
@@ -110,9 +105,6 @@ function renderStudentDetail(sid) {
     `);
 }
 
-/**
- * 상담 기록 수정 모달 오픈 (2단계)
- */
 function openEditConsultation(cid, sid) {
     const c = state.db.consultations.find(x => x.id === cid);
     if (!c) return;
@@ -136,9 +128,6 @@ function openEditConsultation(cid, sid) {
     `, '수정 저장', () => handleEditConsultation(cid, sid));
 }
 
-/**
- * 상담 기록 수정 실행 (2단계)
- */
 async function handleEditConsultation(cid, sid) {
     const date = document.getElementById('edit-cns-date').value;
     const type = document.getElementById('edit-cns-type').value;
@@ -158,9 +147,6 @@ async function handleEditConsultation(cid, sid) {
     }
 }
 
-/**
- * 상담 기록 삭제 실행 (2단계)
- */
 async function handleDeleteConsultation(cid, sid) {
     if (confirm('이 상담 기록을 삭제하시겠습니까?')) {
         const r = await api.delete('consultations', cid);
@@ -174,9 +160,6 @@ async function handleDeleteConsultation(cid, sid) {
     }
 }
 
-/**
- * 신규 상담 기록 저장
- */
 async function handleSaveConsultation(sid) {
     const date = document.getElementById('cns-date').value;
     const type = document.getElementById('cns-type').value;
@@ -195,9 +178,6 @@ async function handleSaveConsultation(sid) {
     }
 }
 
-/**
- * 학생 퇴원 처리
- */
 async function handleDelete(sid) {
     if (confirm('퇴원 처리하시겠습니까?')) {
         await api.delete('students', sid);
@@ -206,9 +186,6 @@ async function handleDelete(sid) {
     }
 }
 
-/**
- * 학생 재원 복구
- */
 async function handleRestore(sid) {
     if (confirm('재원으로 복구하시겠습니까?')) {
         await api.patch(`students/${sid}/restore`, {});
@@ -217,9 +194,6 @@ async function handleRestore(sid) {
     }
 }
 
-/**
- * 특정 시험 기록 삭제
- */
 async function handleDeleteSession(eid, sid) {
     if(confirm('기록을 삭제하시겠습니까?')) {
         await api.delete('exam-sessions', eid);
@@ -230,7 +204,7 @@ async function handleDeleteSession(eid, sid) {
 }
 
 /**
- * 학생 정보 수정 모달 오픈 (2단계: 연락처 필드 추가 및 보호자명 삭제)
+ * 3단계: 학년 옵션에 고1, 고2, 고3 추가
  */
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
@@ -245,6 +219,9 @@ function openEditStudent(sid) {
                 <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option>
                 <option value="중2" ${s.grade==='중2'?'selected':''}>중2</option>
                 <option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
+                <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option>
+                <option value="고2" ${s.grade==='고2'?'selected':''}>고2</option>
+                <option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
             </select>
             <select id="edit-class" class="btn"><option value="">반 미배정</option>${opts}</select>
             
@@ -259,9 +236,6 @@ function openEditStudent(sid) {
     `, '저장', () => handleEditStudent(sid));
 }
 
-/**
- * 학생 정보 수정 실행 (2단계: 연락처 데이터 저장)
- */
 async function handleEditStudent(sid) {
     const n = document.getElementById('edit-name').value, 
           sc = document.getElementById('edit-school').value, 
@@ -282,7 +256,7 @@ async function handleEditStudent(sid) {
 }
 
 /**
- * 신규 학생 추가 모달 오픈
+ * 3단계: 학년 옵션에 고1, 고2, 고3 추가
  */
 function openAddStudent(defaultCid = '') {
     const opts = state.db.classes.map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`).join('');
@@ -290,15 +264,19 @@ function openAddStudent(defaultCid = '') {
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="add-name" class="btn" placeholder="이름" style="text-align:left;">
             <input id="add-school" class="btn" placeholder="학교" style="text-align:left;">
-            <select id="add-grade" class="btn"><option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option></select>
+            <select id="add-grade" class="btn">
+                <option value="중1">중1</option>
+                <option value="중2">중2</option>
+                <option value="중3">중3</option>
+                <option value="고1">고1</option>
+                <option value="고2">고2</option>
+                <option value="고3">고3</option>
+            </select>
             <select id="add-class" class="btn"><option value="">반 선택</option>${opts}</select>
         </div>
     `, '추가', handleAddStudent);
 }
 
-/**
- * 신규 학생 추가 실행
- */
 async function handleAddStudent() {
     const n = document.getElementById('add-name').value, 
           sc = document.getElementById('add-school').value, 
@@ -310,9 +288,6 @@ async function handleAddStudent() {
     await loadData();
 }
 
-/**
- * 퇴원생 목록 조회 모달 오픈
- */
 function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');
     const rows = discharged.length ? discharged.map(s => `

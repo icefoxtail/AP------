@@ -1,10 +1,20 @@
 /**
  * AP Math OS v26.1.2 [js/classroom.js]
- * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
+ * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진 (3단계 반영)
  */
 
 /**
- * 개별 학급 관리 화면 렌더링 (4G: 버튼 스타일 속성 중복 해결 및 시각화 개선)
+ * 요일 기반 수업 여부 확인 (3단계)
+ */
+function isClassScheduledToday(clsId) {
+    const cls = state.db.classes.find(c => c.id === clsId);
+    if (!cls || !cls.schedule_days) return true;
+    const todayIdx = String(new Date().getDay());
+    return cls.schedule_days.split(',').includes(todayIdx);
+}
+
+/**
+ * 개별 학급 관리 화면 렌더링
  */
 function renderClass(cid) {
     state.ui.currentClassId = cid;
@@ -22,15 +32,20 @@ function renderClass(cid) {
         </div>
     `;
 
+    // 3단계: 오늘 수업이 없는 경우 미처리 상태 대신 요일 안내 표시
+    const statusBarHtml = summary.isScheduled
+        ? `<span>출석 <b>${summary.att}/${summary.total}</b></span>
+           <span style="opacity:0.3;">·</span>
+           <span>숙제 <b>${summary.hw}/${summary.total}</b></span>
+           <span style="opacity:0.3;">·</span>
+           <span>성적 <b>${summary.test}/${summary.total}</b></span>`
+        : `<span style="color:var(--warning); font-weight:700;">오늘은 정규 수업일이 아닙니다. (출결/숙제 수동 처리 가능)</span>`;
+
     document.getElementById('app-root').innerHTML = `
         ${opToolsPanel}
         <div style="padding:8px 12px; background:#f8f9fa; border-radius:8px; margin-bottom:12px; font-size:11px; color:#5f6368; display:flex; flex-wrap:wrap; gap:8px; border:1px solid var(--border);">
             <b style="color:var(--primary);">오늘 수업 현황</b>
-            <span>출석 <b>${summary.att}/${summary.total}</b></span>
-            <span style="opacity:0.3;">·</span>
-            <span>숙제 <b>${summary.hw}/${summary.total}</b></span>
-            <span style="opacity:0.3;">·</span>
-            <span>성적 <b>${summary.test}/${summary.total}</b></span>
+            ${statusBarHtml}
         </div>
         <div class="card">
             <h2>${cls.name} 관리 <span style="font-weight:normal; opacity:0.5; font-size:14px;">(재원 ${summary.total}명)</span></h2>
@@ -58,14 +73,12 @@ function renderClass(cid) {
         const att = state.db.attendance.find(a => a.student_id===s.id && a.date===today);
         const hw = state.db.homework.find(h => h.student_id===s.id && h.date===today);
         
-        // 출결 상태 스타일 통합 (4G)
         const attStatus = att?.status || '미정';
         const attClass = attStatus === '등원' ? 'btn-primary' : '';
         const attStyleStr = attStatus === '결석' 
             ? 'border-color:var(--error); color:var(--error); font-weight:700;' 
             : '';
 
-        // 숙제 상태 스타일 통합 (4G)
         const hwStatus = hw?.status || '미완료';
         const hwClass = hwStatus === '완료' ? 'btn-primary' : '';
         const hwStyleStr = hwStatus === '미완료' 
@@ -92,7 +105,7 @@ function renderClass(cid) {
 }
 
 /**
- * 학급의 오늘 수업 현황 요약 계산
+ * 학급의 오늘 수업 현황 요약 계산 (3단계 반영)
  */
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
@@ -101,20 +114,22 @@ function computeClassTodaySummary(classId) {
     const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
     const aIds = active.map(s => s.id);
     const total = active.length;
-    if (!total) return { att: 0, hw: 0, test: 0, total: 0 };
+    
+    // 3단계: 이 반이 오늘 수업 대상인지 확인
+    const isScheduled = isClassScheduledToday(classId);
+
+    if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
     const att = state.db.attendance.filter(a => a.date === today && a.status === '등원' && aIds.includes(a.student_id)).length;
     const hw = state.db.homework.filter(h => h.date === today && h.status === '완료' && aIds.includes(h.student_id)).length;
     const test = todayExam ? new Set(state.db.exam_sessions.filter(es => es.exam_date === today && es.exam_title === todayExam.title && aIds.includes(es.student_id)).map(es => es.student_id)).size : 0;
-    return { att, hw, test, total };
+    
+    return { att, hw, test, total, isScheduled };
 }
 
 // --- 출석부 (Ledger) 로직 ---
 
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
 
-/**
- * 출석부 데이터 로드
- */
 async function loadLedger() {
     try {
         const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`);
@@ -125,18 +140,12 @@ async function loadLedger() {
     } catch (e) { toast('데이터를 불러오지 못했습니다.', 'warn'); }
 }
 
-/**
- * 출석부에서 대시보드로 복귀
- */
 async function goDashboardFromLedger() {
     await refreshDataOnly();
     state.ui.currentClassId = null;
     renderDashboard();
 }
 
-/**
- * 출석부 메인 화면 렌더링
- */
 function renderAttendanceLedger() {
     const classOptions = state.db.classes.map(c => `<option value="${c.id}" ${c.id === ledgerState.classId ? 'selected' : ''}>${c.name}</option>`).join('');
     document.getElementById('app-root').innerHTML = `
@@ -162,9 +171,6 @@ function renderAttendanceLedger() {
     loadLedger();
 }
 
-/**
- * 출석부 테이블 렌더링 (4G: 버튼 스타일 속성 중복 해결 및 상태 표시 개선)
- */
 function renderLedgerTable() {
     const attModeBtn = document.getElementById('ledger-mode-att');
     const hwModeBtn = document.getElementById('ledger-mode-hw');
@@ -209,9 +215,6 @@ function renderLedgerTable() {
     `;
 }
 
-/**
- * 출결 일괄 처리 (로직 유지)
- */
 async function handleBulkAtt(status) {
     const cid = ledgerState.classId;
     if (!confirm(`${ledgerState.date} 기준 전체를 "${status}"으로 처리할까요?`)) return;
@@ -222,9 +225,6 @@ async function handleBulkAtt(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
-/**
- * 숙제 일괄 처리 (로직 유지)
- */
 async function handleBulkHw(status) {
     const cid = ledgerState.classId;
     if (!confirm(`${ledgerState.date} 기준 전체를 "${status}"으로 처리할까요?`)) return;
@@ -235,9 +235,6 @@ async function handleBulkHw(status) {
     if (r.ok) { toast('일괄 처리 완료', 'info'); if (ledgerState.date === new Date().toLocaleDateString('sv-SE')) await refreshDataOnly(); await loadLedger(); }
 }
 
-/**
- * 개별 출결 상태 전환 (토글)
- */
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
@@ -252,9 +249,6 @@ async function toggleAtt(sid, date) {
     else await loadData();
 }
 
-/**
- * 개별 숙제 상태 전환 (토글)
- */
 async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;

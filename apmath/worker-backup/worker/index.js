@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD]
- * Cloudflare Worker 통합 API 엔진 - 2단계 외부 소통 기반 확장
+ * Cloudflare Worker 통합 API 엔진 - 3단계 반·학년 운영 구조 확장
  */
 
 const headers = {
@@ -33,7 +33,6 @@ export default {
             return new Response(JSON.stringify({ students: [], submitted_sessions: [] }), { headers });
           }
 
-          // 오늘 KST 날짜 계산
           const todayKST = new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString().split('T')[0];
           const targetDate = examDate || todayKST;
 
@@ -133,7 +132,7 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // 5. 학생 관리 (2단계 연락처 확장 적용)
+        // 5. 학생 관리
         if (resource === 'students' && method === 'POST') {
           const data = await request.json();
           const sid = `s_${Date.now()}`;
@@ -151,12 +150,10 @@ export default {
         }
 
         if (resource === 'students' && method === 'PATCH') {
-          // 재원 복구
           if (path[2] && path[3] === 'restore') {
             await env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
-          // 정보 수정 (2단계 연락처 확장 적용, guardian_name 사용 제외)
           const data = await request.json();
           const stmts = [
             env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, memo=?, guardian_name='', guardian_relation=?, student_phone=?, parent_phone=?, updated_at=DATETIME('now') WHERE id=?")
@@ -208,8 +205,8 @@ export default {
           }
         }
 
-        // 7. 개별 출결/숙제 PATCH
-        if (method === 'PATCH') {
+        // 7. 개별 출결/숙제 PATCH (3단계: request.json 중복 읽기 방지를 위해 분리 처리)
+        if (method === 'PATCH' && (resource === 'attendance' || resource === 'homework')) {
           const data = await request.json();
           if (resource === 'attendance') {
             const aid = `${data.studentId}_${data.date}`;
@@ -223,7 +220,7 @@ export default {
           }
         }
 
-        // 8. 상담 기록 관리 (2단계: PATCH, DELETE 추가)
+        // 8. 상담 기록 관리
         if (resource === 'consultations') {
           if (method === 'POST') {
             const data = await request.json();
@@ -297,7 +294,6 @@ export default {
           }
 
           try {
-            // TODO: AI provider 연결
             return new Response(JSON.stringify({
               success: true,
               message: fallbackMessage,
@@ -309,6 +305,14 @@ export default {
               error: aiErr.message
             }), { headers });
           }
+        }
+
+        // 10. 반 관리 (3단계: 수업 요일 설정)
+        if (resource === 'classes' && method === 'PATCH' && id) {
+          const data = await request.json();
+          await env.DB.prepare(`UPDATE classes SET schedule_days = ? WHERE id = ?`)
+            .bind(data.schedule_days || '', id).run();
+          return new Response(JSON.stringify({ success: true }), { headers });
         }
       }
 

@@ -1,18 +1,12 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
- * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (2단계)
+ * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (3단계: 반 요일 마감 체크 반영)
  */
 
-/**
- * 전화번호 복사 유틸리티 (2단계)
- */
 function copyPhoneNumber(text) {
     navigator.clipboard.writeText(text).then(() => toast('전화번호가 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
 }
 
-/**
- * 주소록 렌더링 엔진 (2단계)
- */
 function renderAddressBookList() {
     const search = document.getElementById('ab-search').value.trim().toLowerCase();
     const cid = document.getElementById('ab-class').value;
@@ -53,9 +47,6 @@ function renderAddressBookList() {
     }).join('');
 }
 
-/**
- * 주소록 모달 오픈 (2단계)
- */
 function openAddressBook() {
     const classOptions = state.db.classes.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
     
@@ -68,14 +59,56 @@ function openAddressBook() {
             </select>
         </div>
         <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px;">
-            </div>
+        </div>
     `);
     renderAddressBookList();
 }
 
 /**
- * ⚙️ 운영 메뉴 모달 오픈 (2단계: 주소록 진입점 추가)
+ * 3단계: 반 수업 요일 설정 모달
  */
+function openClassScheduleSettings() {
+    const days = ['일', '월', '화', '수', '목', '금', '토'];
+    const rows = state.db.classes.map(c => {
+        const selected = c.schedule_days ? c.schedule_days.split(',') : ['0','1','2','3','4','5','6'];
+        const checkboxes = days.map((d, i) => `
+            <label style="margin-right:8px; font-size:12px; cursor:pointer;">
+                <input type="checkbox" value="${i}" class="sched-chk-${c.id}" ${selected.includes(String(i)) ? 'checked' : ''}> ${d}
+            </label>
+        `).join('');
+        
+        return `
+            <div style="padding:14px 0; border-bottom:1px solid var(--border);">
+                <div style="font-weight:bold; margin-bottom:8px; font-size:14px; color:var(--primary);">
+                    ${c.name} <span style="font-size:11px; font-weight:normal; color:var(--secondary);">(${c.grade})</span>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px;">${checkboxes}</div>
+            </div>
+        `;
+    }).join('');
+
+    showModal('📅 반 수업 요일 설정', `
+        <p style="font-size:12px; color:var(--secondary); margin-top:0;">체크된 요일에만 대시보드 마감 체크(미처리 명단)에 해당 반 학생들이 나타납니다.<br>아무것도 설정하지 않으면 기본적으로 매일 나타납니다.</p>
+        <div style="max-height:50vh; overflow-y:auto;">
+            ${rows}
+        </div>
+    `, '설정 저장', () => saveClassScheduleSettings());
+}
+
+async function saveClassScheduleSettings() {
+    const updates = [];
+    state.db.classes.forEach(c => {
+        const checkboxes = document.querySelectorAll(`.sched-chk-${c.id}:checked`);
+        const days = Array.from(checkboxes).map(chk => chk.value).join(',');
+        updates.push(api.patch(`classes/${c.id}`, { schedule_days: days }));
+    });
+    
+    await Promise.all(updates);
+    toast('수업 요일이 저장되었습니다.', 'success');
+    closeModal();
+    await loadData();
+}
+
 function openOperationMenu() {
     const isOnline = navigator.onLine;
     const qLen = syncQueue.length;
@@ -85,8 +118,11 @@ function openOperationMenu() {
     showModal('⚙️ 학원 운영 관리', `
         <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="padding-bottom:16px; border-bottom:1px solid var(--border);">
-                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">학생 및 연락처 관리</label>
+                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">운영 및 연락처 관리</label>
                 <div style="display:flex; flex-direction:column; gap:8px;">
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openClassScheduleSettings();">
+                        📅 반 수업 요일 설정
+                    </button>
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddressBook();">
                         📒 주소록 (학생/학부모 연락처 조회)
                     </button>
@@ -116,9 +152,6 @@ function openOperationMenu() {
     `);
 }
 
-/**
- * 대시보드 데이터 계산 엔진
- */
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
@@ -200,9 +233,6 @@ function computeDashboardData() {
     };
 }
 
-/**
- * 학급 요약 카드 렌더링
- */
 function renderClassSummaryCard(cls, data, todayExam) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
     const today = new Date().toLocaleDateString('sv-SE');
@@ -238,9 +268,6 @@ function renderClassSummaryCard(cls, data, todayExam) {
     `;
 }
 
-/**
- * 대시보드 메인 렌더링
- */
 function renderDashboard() {
     state.ui.currentClassId = null;
     const data = computeDashboardData();
@@ -278,25 +305,31 @@ function renderDashboard() {
 
     const noTestStr = todayExam ? `성적 미입력 <b>${closeData.noTest.length}</b>명` : `<span style="opacity:0.6;">성적 (시험 없음)</span>`;
     
-    const closeBanner = closeData.allClear
-        ? `${syncWarning}<div style="display:flex; align-items:center; gap:10px; background:#e6f4ea; border:1px solid #a8d5b5; border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:14px; color:#1e6b34;">
-            <span style="font-size:20px;">✅</span>
-            <div><b>오늘 수업 마감 완료</b><br><span style="font-size:12px; opacity:0.8;">${todayExam ? '출결·숙제·성적 모두 처리되었습니다.' : '출결·숙제 기록이 완료되었습니다.'}</span></div>
+    // 3단계: 오늘 수업 대상 학생이 없을 때 깔끔하게 보이도록 처리
+    const closeBanner = closeData.totalActive === 0
+        ? `${syncWarning}<div style="display:flex; align-items:center; gap:10px; background:#f1f3f4; border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:14px; color:var(--secondary);">
+            <span style="font-size:20px;">☕</span>
+            <div><b>오늘은 예정된 정규 수업이 없습니다.</b></div>
           </div>`
-        : `${syncWarning}<div onclick="openTodayCloseModal('att')" style="display:flex; align-items:center; justify-content:space-between; gap:10px; background:#fff8e1; border:1px solid #f9ab00; border-radius:12px; padding:14px 16px; margin-bottom:20px; cursor:pointer;">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <span style="font-size:20px;">📋</span>
-                <div style="font-size:14px; color:#7a4f00;">
-                    <b>오늘 수업 마감 체크</b><br>
-                    <span style="font-size:12px;">
-                        출결 미처리 <b>${closeData.noAtt.length}</b>명 &nbsp;·&nbsp;
-                        숙제 미처리 <b>${closeData.noHw.length}</b>명 &nbsp;·&nbsp;
-                        ${noTestStr}
-                    </span>
+        : closeData.allClear
+            ? `${syncWarning}<div style="display:flex; align-items:center; gap:10px; background:#e6f4ea; border:1px solid #a8d5b5; border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:14px; color:#1e6b34;">
+                <span style="font-size:20px;">✅</span>
+                <div><b>오늘 수업 마감 완료</b><br><span style="font-size:12px; opacity:0.8;">${todayExam ? '출결·숙제·성적 모두 처리되었습니다.' : '출결·숙제 기록이 완료되었습니다.'}</span></div>
+              </div>`
+            : `${syncWarning}<div onclick="openTodayCloseModal('att')" style="display:flex; align-items:center; justify-content:space-between; gap:10px; background:#fff8e1; border:1px solid #f9ab00; border-radius:12px; padding:14px 16px; margin-bottom:20px; cursor:pointer;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="font-size:20px;">📋</span>
+                    <div style="font-size:14px; color:#7a4f00;">
+                        <b>오늘 수업 마감 체크</b> <span style="font-size:11px; opacity:0.7;">(오늘 대상 ${closeData.totalActive}명)</span><br>
+                        <span style="font-size:12px;">
+                            출결 미처리 <b>${closeData.noAtt.length}</b>명 &nbsp;·&nbsp;
+                            숙제 미처리 <b>${closeData.noHw.length}</b>명 &nbsp;·&nbsp;
+                            ${noTestStr}
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <span style="font-size:18px; color:#f9ab00;">›</span>
-          </div>`;
+                <span style="font-size:18px; color:#f9ab00;">›</span>
+              </div>`;
 
     const classes = state.ui.viewScope === 'all' ? state.db.classes : state.db.classes.filter(c => c.teacher_name === state.ui.userName);
     const classStatus = `
@@ -333,9 +366,6 @@ function renderDashboard() {
     document.getElementById('scope-text').innerText = state.ui.viewScope === 'all' ? '전체 관리' : '내 담당';
 }
 
-/**
- * 위험 관리 유틸리티
- */
 function getMutedRisks() { return JSON.parse(localStorage.getItem(RISK_MUTE_KEY) || '{}'); }
 function saveMutedRisks(data) { localStorage.setItem(RISK_MUTE_KEY, JSON.stringify(data)); }
 
@@ -362,12 +392,29 @@ function isRiskMuted(sid) {
 }
 
 /**
- * 오늘 마감 데이터 계산
+ * 3단계: 오늘 수업 대상인지 확인하는 헬퍼 함수
+ */
+function isClassScheduledToday(clsId) {
+    const cls = state.db.classes.find(c => c.id === clsId);
+    if (!cls || !cls.schedule_days) return true; // schedule_days가 없으면 매일로 간주
+    const todayIdx = String(new Date().getDay());
+    return cls.schedule_days.split(',').includes(todayIdx);
+}
+
+/**
+ * 오늘 마감 데이터 계산 (3단계: 오늘 대상 학생만 필터링)
  */
 function computeTodayCloseData(todayExam = getTodayExamConfig()) {
     const today = new Date().toLocaleDateString('sv-SE');
-    const active = state.db.students.filter(s => s.status === '재원');
-    const activeIds = new Set(active.map(s => s.id));
+    
+    // 3단계: 오늘 대상인 재원생만 추출
+    const scheduledActive = state.db.students.filter(s => {
+        if (s.status !== '재원') return false;
+        const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
+        return isClassScheduledToday(cid);
+    });
+
+    const activeIds = new Set(scheduledActive.map(s => s.id));
 
     const attTodaySet = new Set(
         state.db.attendance.filter(a => a.date === today && activeIds.has(a.student_id)).map(a => a.student_id)
@@ -380,7 +427,7 @@ function computeTodayCloseData(todayExam = getTodayExamConfig()) {
     ) : new Set();
 
     const noAtt = [], noHw = [], noTest = [];
-    active.forEach(s => {
+    scheduledActive.forEach(s => {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const className = state.db.classes.find(c => c.id === cid)?.name || '미배정';
         const info = { id: s.id, name: s.name, className };
@@ -390,18 +437,15 @@ function computeTodayCloseData(todayExam = getTodayExamConfig()) {
         if (todayExam && !testTodaySet.has(s.id)) noTest.push(info);
     });
 
-    const totalActive = active.length;
+    const totalActive = scheduledActive.length; // 오늘 대상 학생 수로 한정
     return {
         totalActive, todayExam, noAtt, attDone: totalActive - noAtt.length,
         noHw, hwDone: totalActive - noHw.length,
         noTest, testDone: todayExam ? totalActive - noTest.length : 0,
-        allClear: noAtt.length === 0 && noHw.length === 0 && (!todayExam || noTest.length === 0)
+        allClear: totalActive > 0 && noAtt.length === 0 && noHw.length === 0 && (!todayExam || noTest.length === 0)
     };
 }
 
-/**
- * 퀵 액션: 출결/숙제 토글
- */
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
@@ -418,9 +462,6 @@ async function quickToggleHw(sid, status, tab = 'hw') {
     openTodayCloseModal(tab);
 }
 
-/**
- * 운영 요약 텍스트 복사
- */
 function buildAcademySummary() {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = getTodayExamConfig();
@@ -428,13 +469,16 @@ function buildAcademySummary() {
 
     let text = `[AP Math 운영 마감 보고 - ${today}]\n\n`;
     text += `오늘 시험: ${todayExam ? todayExam.title : '없음'}\n`;
-    text += `재원생: ${closeData.totalActive}명\n`;
+    text += `오늘 수업 대상: ${closeData.totalActive}명\n`;
     text += `출결 처리: ${closeData.attDone}/${closeData.totalActive}\n`;
     text += `숙제 처리: ${closeData.hwDone}/${closeData.totalActive}\n`;
     if (todayExam) text += `성적 입력: ${closeData.testDone}/${closeData.totalActive}\n`;
 
-    if (closeData.allClear) text += `\n✅ 오늘 운영 마감 완료`;
-    else {
+    if (closeData.totalActive === 0) {
+        text += `\n✅ 오늘은 예정된 정규 수업이 없습니다.`;
+    } else if (closeData.allClear) {
+        text += `\n✅ 오늘 운영 마감 완료`;
+    } else {
         text += `\n⚠️ 미처리 항목\n- 출결 미처리: ${closeData.noAtt.length}명\n- 숙제 미처리: ${closeData.noHw.length}명\n`;
         if (todayExam) text += `- 성적 미입력: ${closeData.noTest.length}명\n`;
     }
@@ -446,19 +490,16 @@ function copyAcademySummary() {
     navigator.clipboard.writeText(text).then(() => toast('운영 요약이 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
 }
 
-/**
- * 오늘 마감 상세 모달
- */
 function openTodayCloseModal(tab = 'att') {
     const todayExam = getTodayExamConfig();
     const d = computeTodayCloseData(todayExam);
 
     const testTabLabel = todayExam ? `성적 미입력 ${d.noTest.length}` : `성적 -`;
-    const testTabEmptyMsg = todayExam ? '모든 학생 성적 입력 완료 ✅' : '오늘 시험이 설정되지 않았습니다.';
+    const testTabEmptyMsg = todayExam ? '모든 대상 성적 입력 완료 ✅' : '오늘 시험이 설정되지 않았습니다.';
 
     const tabs = [
-        { key: 'att',  label: `출결 미처리 ${d.noAtt.length}`,  list: d.noAtt,  emptyMsg: '모든 학생 출결 처리 완료 ✅' },
-        { key: 'hw',   label: `숙제 미처리 ${d.noHw.length}`,   list: d.noHw,   emptyMsg: '모든 학생 숙제 처리 완료 ✅' },
+        { key: 'att',  label: `출결 미처리 ${d.noAtt.length}`,  list: d.noAtt,  emptyMsg: '모든 대상 출결 처리 완료 ✅' },
+        { key: 'hw',   label: `숙제 미처리 ${d.noHw.length}`,   list: d.noHw,   emptyMsg: '모든 대상 숙제 처리 완료 ✅' },
         { key: 'test', label: testTabLabel, list: todayExam ? d.noTest : [], emptyMsg: testTabEmptyMsg }
     ];
     const cur = tabs.find(t => t.key === tab) || tabs[0];
@@ -501,9 +542,6 @@ function openTodayCloseModal(tab = 'att') {
     showModal('📋 오늘 마감 상세', `<div style="display:flex; gap:6px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
 }
 
-/**
- * 오늘 시험 설정
- */
 function openTodayExamSetModal() {
     const cfg = getTodayExamConfig();
     showModal('⚙️ 오늘 시험 설정', `
