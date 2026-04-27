@@ -32,6 +32,37 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "26_삼산중_1학기_중간_중3_기출.js",
+      "school": "삼산중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-03",
+      "rangeEndUnit": "이차방정식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-03",
+          "rangeEndUnit": "이차방정식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "25_매산고_1학기_중간_고2_대수.js",
       "school": "매산고",
       "topic": "",
@@ -233,6 +264,88 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-A-01",
           "rangeEndUnit": "지수와 로그",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "25_제일고_1학기_중간_고2_심화.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "심화",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-02",
+          "rangeStartUnit": "항등식과 나머지 정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C-02",
+          "rangeEndUnit": "항등식과 나머지 정리",
+          "rangeEndUnitOrder": 2
+        },
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-08",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "25_제일고_1학기_중간_고2_유사.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 25,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-02",
+          "rangeStartUnit": "항등식과 나머지 정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C-02",
+          "rangeEndUnit": "항등식과 나머지 정리",
+          "rangeEndUnitOrder": 2
+        },
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-08",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 8
         }
       ],
       "primaryStandardCourse": ""
