@@ -354,6 +354,14 @@ async function openExamDetail(classId, examTitle, examDate) {
     const submittedIds = new Set(sessions.map(s => s.student_id));
     const qCount = sessions[0]?.question_count || 0;
 
+    const prevSessions = state.db.exam_sessions;
+    const prevWrongs = state.db.wrong_answers;
+    state.db.exam_sessions = sessionSource;
+    state.db.wrong_answers = wrongSource;
+    const classWeakUnits = computeClassWeakUnits(classId, examTitle, examDate);
+    state.db.exam_sessions = prevSessions;
+    state.db.wrong_answers = prevWrongs;
+
     const submitted = active.filter(s => submittedIds.has(s.id)).map(s => {
         const sess = sessions.find(es => es.student_id === s.id);
         const wrongs = wrongSource
@@ -391,6 +399,10 @@ async function openExamDetail(classId, examTitle, examDate) {
         <div style="font-size:13px; color:var(--secondary); margin-bottom:12px; background:var(--bg); padding:10px; border-radius:8px; text-align:center;">
             <b>${submitted.length + pending.length}명</b> 중 <b style="color:var(--success);">${submitted.length}명 제출</b>
             ${qCount ? `<br><span style="font-size:11px; margin-top:4px; display:inline-block;">기준 문항 수: ${qCount}문항</span>` : ''}
+        </div>
+        <div style="margin-bottom:12px;">
+            <div style="font-size:13px;font-weight:900;margin-bottom:6px;color:var(--primary);">📌 반 취약 단원 TOP</div>
+            ${renderWeakUnitSummary(classWeakUnits, '이 시험의 누적 오답 단원 데이터 없음')}
         </div>
         <table style="width:100%;font-size:13px;border-collapse:collapse;">
             <thead><tr style="border-bottom:2px solid var(--border);">

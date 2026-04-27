@@ -259,6 +259,110 @@ async function ensureBlueprintsForSessions(sessions = []) {
     }
 }
 
+
+// [3C2] 취약 단원 통계 계산 헬퍼
+function getWrongConceptFromSession(session, questionId) {
+    const bp = findBlueprintForWrong(session, questionId);
+    if (!bp) return null;
+
+    const unitKey = bp.standard_unit_key || '';
+    const unit = bp.standard_unit || unitKey;
+    const course = bp.standard_course || '';
+    const cluster = bp.concept_cluster_key || '';
+
+    if (!unit && !unitKey && !cluster) return null;
+
+    return { unitKey, unit, course, cluster, label: unit || unitKey || cluster };
+}
+
+function sortWeakUnitEntries(mapObj) {
+    return Object.values(mapObj).sort((a, b) => {
+        if (b.count !== a.count) return b.count - a.count;
+        return String(a.label).localeCompare(String(b.label));
+    });
+}
+
+function computeStudentWeakUnits(studentId) {
+    const sessions = (state.db.exam_sessions || []).filter(e => e.student_id === studentId);
+    const sessionMap = new Map(sessions.map(e => [e.id, e]));
+    const bucket = {};
+
+    (state.db.wrong_answers || []).forEach(w => {
+        const session = sessionMap.get(w.session_id);
+        if (!session || !session.archive_file) return;
+
+        const concept = getWrongConceptFromSession(session, w.question_id);
+        if (!concept) return;
+
+        const key = concept.unitKey || concept.label;
+        if (!bucket[key]) {
+            bucket[key] = { key, label: concept.label, unitKey: concept.unitKey, course: concept.course, cluster: concept.cluster, count: 0, questions: [] };
+        }
+
+        bucket[key].count += 1;
+        bucket[key].questions.push({ examTitle: session.exam_title, examDate: session.exam_date, questionId: w.question_id });
+    });
+
+    return sortWeakUnitEntries(bucket);
+}
+
+function computeClassWeakUnits(classId, examTitle = '', examDate = '') {
+    const ids = (state.db.class_students || []).filter(m => m.class_id === classId).map(m => m.student_id);
+    const sessions = (state.db.exam_sessions || []).filter(e => {
+        if (!ids.includes(e.student_id)) return false;
+        if (examTitle && e.exam_title !== examTitle) return false;
+        if (examDate && e.exam_date !== examDate) return false;
+        return true;
+    });
+
+    const sessionMap = new Map(sessions.map(e => [e.id, e]));
+    const bucket = {};
+
+    (state.db.wrong_answers || []).forEach(w => {
+        const session = sessionMap.get(w.session_id);
+        if (!session || !session.archive_file) return;
+
+        const concept = getWrongConceptFromSession(session, w.question_id);
+        if (!concept) return;
+
+        const key = concept.unitKey || concept.label;
+        if (!bucket[key]) {
+            bucket[key] = { key, label: concept.label, unitKey: concept.unitKey, course: concept.course, cluster: concept.cluster, count: 0, students: new Set(), questions: [] };
+        }
+
+        bucket[key].count += 1;
+        bucket[key].students.add(session.student_id);
+        bucket[key].questions.push({ studentId: session.student_id, examTitle: session.exam_title, examDate: session.exam_date, questionId: w.question_id });
+    });
+
+    const result = sortWeakUnitEntries(bucket);
+    result.forEach(item => {
+        item.studentCount = item.students.size;
+        delete item.students;
+    });
+    return result;
+}
+
+function renderWeakUnitSummary(items, emptyText = '누적 오답 단원 데이터 없음') {
+    if (!Array.isArray(items) || items.length === 0) {
+        return `<div style="font-size:12px;color:var(--secondary);background:#f8f9fa;border:1px dashed var(--border);border-radius:8px;padding:10px;text-align:center;">${emptyText}</div>`;
+    }
+
+    return `
+        <div style="display:flex;flex-direction:column;gap:6px;">
+            ${items.slice(0, 5).map((item, idx) => `
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:#f8f9fa;border:1px solid var(--border);border-radius:8px;padding:8px 10px;">
+                    <div style="font-size:12px;font-weight:800;color:#202124;line-height:1.4;">
+                        ${idx + 1}. ${item.label}
+                        ${item.unitKey ? `<span style="font-size:10px;color:var(--secondary);font-weight:600;margin-left:4px;">${item.unitKey}</span>` : ''}
+                    </div>
+                    <div style="font-size:12px;font-weight:900;color:var(--error);white-space:nowrap;">${item.count}회</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
 function addToSyncQueue(method, resource, data) {
     syncQueue.push({ id: Date.now(), method, resource, data });
     localStorage.setItem('AP_SYNC_QUEUE', JSON.stringify(syncQueue));

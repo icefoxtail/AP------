@@ -9,6 +9,7 @@ async function renderStudentDetail(sid) {
 
     const exs = state.db.exam_sessions.filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
     await ensureBlueprintsForSessions(exs);
+    const weakUnits = computeStudentWeakUnits(sid);
 
     const rows = exs.map(e => {
         const wrs = state.db.wrong_answers
@@ -98,6 +99,11 @@ async function renderStudentDetail(sid) {
         </div>
         
         ${consultationHTML}
+
+        <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
+            <h4 style="margin:0 0 10px 0;">📌 취약 단원 TOP</h4>
+            ${renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터 없음')}
+        </div>
 
         <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
             <h4 style="margin:0 0 10px 0;">📊 성적 및 오답 이력</h4>
