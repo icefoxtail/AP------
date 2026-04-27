@@ -1,6 +1,6 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
- * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (3B 반/학생 관리 완성)
+ * 대시보드 계산, 렌더링 및 학원 운영 메뉴 엔진 (3C: 메인 UX 간소화 및 성적 노출 제거)
  */
 
 function copyPhoneNumber(text) {
@@ -64,18 +64,12 @@ function openAddressBook() {
     renderAddressBookList();
 }
 
-/**
- * 3B: 반 관리 UI 헬퍼
- */
 function formatClassScheduleDaysForUI(daysStr) {
     if (!daysStr) return '매일';
     const map = ['일','월','화','수','목','금','토'];
     return daysStr.split(',').map(d => map[parseInt(d)]).join('');
 }
 
-/**
- * 3B: 반 관리 모달 오픈
- */
 function openClassManageModal() {
     const activeClasses = state.db.classes.filter(c => c.is_active !== 0);
     const hiddenClasses = state.db.classes.filter(c => c.is_active === 0);
@@ -107,7 +101,7 @@ function openClassManageModal() {
             ${activeClasses.length ? activeClasses.map(renderClassRow).join('') : '<div style="font-size:12px; color:var(--secondary);">활성 반이 없습니다.</div>'}
         </div>
         ${hiddenClasses.length ? `
-            <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">숨김 반 (${hiddenClasses.length})</h4>
+            <h4 style="margin:20px 0 8px 0; font-size:13px; color:var(--secondary);">숨김 반 (${hiddenClasses.length})</h4>
             <div style="opacity:0.7;">
                 ${hiddenClasses.map(renderClassRow).join('')}
             </div>
@@ -141,24 +135,17 @@ function openAddClassModal() {
 async function handleAddClass() {
     const name = document.getElementById('add-cls-name').value.trim();
     if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
-    
     const grade = document.getElementById('add-cls-grade').value;
     const subject = document.getElementById('add-cls-subject').value.trim();
     const teacher_name = document.getElementById('add-cls-teacher').value.trim();
     const schedule_days = Array.from(document.querySelectorAll('.add-cls-days:checked')).map(e => e.value).join(',');
-
     const r = await api.post('classes', { name, grade, subject, teacher_name, schedule_days });
-    if (r.success) {
-        toast('새 반이 추가되었습니다.', 'success');
-        await loadData();
-        openClassManageModal();
-    }
+    if (r.success) { toast('새 반이 추가되었습니다.', 'success'); await loadData(); openClassManageModal(); }
 }
 
 function openEditClassModal(cid) {
     const c = state.db.classes.find(x => x.id === cid);
     const selectedDays = c.schedule_days ? c.schedule_days.split(',') : [];
-
     showModal('반 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="edit-cls-name" class="btn" value="${c.name}" placeholder="반 이름" style="text-align:left;">
@@ -167,7 +154,6 @@ function openEditClassModal(cid) {
             </select>
             <input id="edit-cls-subject" class="btn" value="${c.subject||''}" placeholder="과목" style="text-align:left;">
             <input id="edit-cls-teacher" class="btn" value="${c.teacher_name||''}" placeholder="담당 교사" style="text-align:left;">
-            
             <label style="font-size:12px; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
@@ -180,37 +166,21 @@ async function handleEditClass(cid) {
     const c = state.db.classes.find(x => x.id === cid);
     const name = document.getElementById('edit-cls-name').value.trim();
     if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
-
     const grade = document.getElementById('edit-cls-grade').value;
     const subject = document.getElementById('edit-cls-subject').value.trim();
     const teacher_name = document.getElementById('edit-cls-teacher').value.trim();
     const schedule_days = Array.from(document.querySelectorAll('.edit-cls-days:checked')).map(e => e.value).join(',');
-
     const payload = { name, grade, subject, teacher_name, schedule_days, is_active: c.is_active !== undefined ? c.is_active : 1 };
-    
     const r = await api.patch(`classes/${cid}`, payload);
-    if (r.success) {
-        toast('반 정보가 수정되었습니다.', 'success');
-        await loadData();
-        openClassManageModal();
-    }
+    if (r.success) { toast('반 정보가 수정되었습니다.', 'success'); await loadData(); openClassManageModal(); }
 }
 
 async function toggleClassActive(cid, status) {
     if (!confirm(status === 0 ? '이 반을 숨김 처리하시겠습니까?' : '이 반을 복구하시겠습니까?')) return;
     const c = state.db.classes.find(x => x.id === cid);
-    const payload = {
-        name: c.name, grade: c.grade, subject: c.subject, 
-        teacher_name: c.teacher_name, schedule_days: c.schedule_days, 
-        is_active: status
-    };
-    
+    const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, is_active: status };
     const r = await api.patch(`classes/${cid}`, payload);
-    if (r.success) {
-        toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info');
-        await loadData();
-        openClassManageModal();
-    }
+    if (r.success) { toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info'); await loadData(); openClassManageModal(); }
 }
 
 function openOperationMenu() {
@@ -225,7 +195,7 @@ function openOperationMenu() {
                 <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">운영 및 학생 관리</label>
                 <div style="display:flex; flex-direction:column; gap:8px;">
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openClassManageModal();">
-                        🏫 반 관리 (추가 / 수정 / 숨김 / 요일설정)
+                        🏫 반 관리 (추가 / 수정 / 숨김 / 요일)
                     </button>
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddStudent();">
                         👤 학생 추가
@@ -263,97 +233,65 @@ function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
     const activeIds = new Set(activeStudents.map(s => s.id));
-    
     const todayAtt = state.db.attendance.filter(a => a.date === today && activeIds.has(a.student_id));
     const presentCount = todayAtt.filter(a => a.status === '등원').length;
     const absentCount = todayAtt.filter(a => a.status === '결석').length;
-
     const todayHw = state.db.homework.filter(h => h.date === today && activeIds.has(h.student_id));
     const hwDoneCount = todayHw.filter(h => h.status === '완료').length;
     const hwNotDoneCount = Math.max(activeStudents.length - hwDoneCount, 0);
-
     const attHis = state.db.attendance_history || [];
     const hwHis = state.db.homework_history || [];
-    
     const examsByStudent = new Map();
-    state.db.exam_sessions.forEach(es => {
-        if (!examsByStudent.has(es.student_id)) examsByStudent.set(es.student_id, []);
-        examsByStudent.get(es.student_id).push(es);
-    });
+    state.db.exam_sessions.forEach(es => { if (!examsByStudent.has(es.student_id)) examsByStudent.set(es.student_id, []); examsByStudent.get(es.student_id).push(es); });
     const wrongBySession = new Map();
-    state.db.wrong_answers.forEach(w => { 
-        wrongBySession.set(w.session_id, (wrongBySession.get(w.session_id) || 0) + 1); 
-    });
-
+    state.db.wrong_answers.forEach(w => { wrongBySession.set(w.session_id, (wrongBySession.get(w.session_id) || 0) + 1); });
     const studentsData = {};
     let wrongRiskCount = 0;
     const priorityAll = [];
-
     activeStudents.forEach(s => {
         const sid = s.id;
         const absCount = attHis.filter(a => a.student_id === sid && a.status === '결석').length;
         const hwMissCount = hwHis.filter(h => h.student_id === sid && h.status !== '완료').length;
-        
         let isWrongRisk = false;
         const sExams = examsByStudent.get(sid) || [];
         if (sExams.length > 0) {
             sExams.sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)));
             if ((wrongBySession.get(sExams[0].id) || 0) >= RISK_WRONG_THRESHOLD) isWrongRisk = true;
         }
-
         const isAbsenceRisk = absCount >= RISK_ABSENCE_THRESHOLD;
         const isHwRisk = hwMissCount >= RISK_HOMEWORK_THRESHOLD;
         const riskScore = (isAbsenceRisk?1:0) + (isHwRisk?1:0) + (isWrongRisk?1:0);
         const rankWeight = riskScore * 1000 + (isAbsenceRisk?500:0) + (isWrongRisk?100:0);
-
-        const sd = { 
-            id: sid, name: s.name, tags: [], riskScore, rankWeight, 
-            riskLevel: riskScore===3?'🔴 긴급':riskScore===2?'🟠 주의':riskScore===1?'🟡 관찰':'', 
-            className: state.db.classes.find(c => c.id === (state.db.class_students.find(m => m.student_id===sid)?.class_id))?.name || '미배정' 
-        };
+        const sd = { id: sid, name: s.name, tags: [], riskScore, rankWeight, riskLevel: riskScore===3?'🔴 긴급':riskScore===2?'🟠 주의':riskScore===1?'🟡 관찰':'', className: state.db.classes.find(c => c.id === (state.db.class_students.find(m => m.student_id===sid)?.class_id))?.name || '미배정' };
         if (isAbsenceRisk) sd.tags.push('결석누적'); if (isHwRisk) sd.tags.push('숙제미달'); if (isWrongRisk) sd.tags.push('오답경고');
         if (isWrongRisk) wrongRiskCount++;
         studentsData[sid] = sd;
         if (riskScore >= 1 && !isRiskMuted(sid)) priorityAll.push(sd);
     });
-
     priorityAll.sort((a, b) => b.rankWeight - a.rankWeight || a.name.localeCompare(b.name));
-    
     const classSummaries = {};
-    // 3B: 활성 반만 요약에 포함
     state.db.classes.filter(c => c.is_active !== 0).forEach(c => {
         const cIds = state.db.class_students.filter(m => m.class_id === c.id).map(m => m.student_id).filter(id => activeIds.has(id));
         let cRisk=0, cMiss=0, cAbs=0, cPre=0;
         cIds.forEach(id => {
             const att = todayAtt.find(a => a.student_id===id);
-            if (att?.status==='등원') cPre++;
-            if (att?.status==='결석') cAbs++;
+            if (att?.status==='등원') cPre++; if (att?.status==='결석') cAbs++;
             if (todayHw.find(h => h.student_id===id)?.status!=='완료') cMiss++;
             if (studentsData[id]?.riskScore >= 1) cRisk++;
         });
         classSummaries[c.id] = { activeCount: cIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, riskCount: cRisk };
     });
-
-    return { 
-        global: { totalActive: activeStudents.length, presentCount, absentCount, hwDoneCount, hwNotDoneCount, wrongRiskCount }, 
-        priorityTop: priorityAll.slice(0, 1), 
-        classSummaries 
-    };
+    return { global: { totalActive: activeStudents.length, presentCount, absentCount, hwDoneCount, hwNotDoneCount, wrongRiskCount }, priorityTop: priorityAll.slice(0, 1), classSummaries };
 }
 
-function renderClassSummaryCard(cls, data, todayExam) {
+/**
+ * 3C: 학급 요약 카드 성적 표시 제거
+ */
+function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
-    const today = new Date().toLocaleDateString('sv-SE');
-    const cIds = state.db.class_students.filter(m => m.class_id === cls.id).map(m => m.student_id);
-    const activeIds = state.db.students.filter(st => cIds.includes(st.id) && st.status === '재원').map(st => st.id);
-    const testDone = todayExam
-        ? new Set(state.db.exam_sessions.filter(es => es.exam_date === today && es.exam_title === todayExam.title && activeIds.includes(es.student_id)).map(es => es.student_id)).size
-        : 0;
     const n = s.activeCount || 1;
-    const attRate  = Math.round((s.present / n) * 100);
-    const hwRate   = Math.round(((n - s.hwNotDone) / n) * 100);
-    
-    const testRateStr = todayExam ? `성 ${Math.round((testDone / n) * 100)}%` : `성 —`;
+    const attRate = Math.round((s.present / n) * 100);
+    const hwRate = Math.round(((n - s.hwNotDone) / n) * 100);
     
     return `
         <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 120px; padding: 16px;">
@@ -367,15 +305,18 @@ function renderClassSummaryCard(cls, data, todayExam) {
             </div>
             <div style="display:flex; gap:6px; margin-top:10px;">
                 <span style="background:${s.hwNotDone > 0 ? '#fef7e0' : '#f1f3f4'}; color:${s.hwNotDone > 0 ? '#b06000' : '#5f6368'}; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:700;">숙제 ${s.hwNotDone}</span>
-                <span style="background:${s.riskCount > 0 ? '#fce8e6' : '#f1f3f4'}; color:${s.riskCount > 0 ? '#c5221f' : '#5f6368'}; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:700;">위험 ${s.riskCount}</span>
+                ${s.riskCount > 0 ? `<span style="background:#fce8e6; color:#c5221f; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:700;">위험 ${s.riskCount}</span>` : ''}
             </div>
             <div style="margin-top:8px; font-size:11px; color:var(--secondary); opacity:0.75;">
-                출 ${attRate}% · 숙 ${hwRate}% · ${testRateStr}
+                출석 ${attRate}% · 숙제 ${hwRate}%
             </div>
         </div>
     `;
 }
 
+/**
+ * 3C: 메인 대시보드 렌더링 (성적 배지 및 미입력 제거)
+ */
 function renderDashboard() {
     state.ui.currentClassId = null;
     const data = computeDashboardData();
@@ -383,15 +324,10 @@ function renderDashboard() {
     const closeData = computeTodayCloseData(todayExam);
     const root = document.getElementById('app-root');
 
-    const examBadge = todayExam 
-        ? `<span style="background:#e8f0fe; color:#1a73e8; padding:3px 8px; border-radius:12px; font-size:11px; font-weight:700; border:1px solid #c2d7fa; white-space:nowrap;">시험: ${todayExam.title}</span>` 
-        : `<span style="background:#f1f3f4; color:#5f6368; padding:3px 8px; border-radius:12px; font-size:11px; font-weight:700; white-space:nowrap;">오늘 시험 없음</span>`;
-
     const academyStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                 <h3 style="margin:0; font-size:16px;">🏢 학원 현황</h3>
-                ${examBadge}
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openOperationMenu()">⚙️ 운영</button>
@@ -411,8 +347,6 @@ function renderDashboard() {
         ? `<div style="background:#fce8e6; color:#c5221f; padding:8px 16px; border-radius:8px; font-size:12px; font-weight:700; margin-bottom:12px; text-align:center; border:1px solid #f9d2ce;">⚠️ 인터넷 끊김: ${syncQueue.length}건의 마감 데이터 대기 중</div>` 
         : '';
 
-    const noTestStr = todayExam ? `성적 미입력 <b>${closeData.noTest.length}</b>명` : `<span style="opacity:0.6;">성적 (시험 없음)</span>`;
-    
     const closeBanner = closeData.totalActive === 0
         ? `${syncWarning}<div style="display:flex; align-items:center; gap:10px; background:#f1f3f4; border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:14px; color:var(--secondary);">
             <span style="font-size:20px;">☕</span>
@@ -421,7 +355,7 @@ function renderDashboard() {
         : closeData.allClear
             ? `${syncWarning}<div style="display:flex; align-items:center; gap:10px; background:#e6f4ea; border:1px solid #a8d5b5; border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:14px; color:#1e6b34;">
                 <span style="font-size:20px;">✅</span>
-                <div><b>오늘 수업 마감 완료</b><br><span style="font-size:12px; opacity:0.8;">${todayExam ? '출결·숙제·성적 모두 처리되었습니다.' : '출결·숙제 기록이 완료되었습니다.'}</span></div>
+                <div><b>오늘 수업 마감 완료</b><br><span style="font-size:12px; opacity:0.8;">출결·숙제 기록이 완료되었습니다.</span></div>
               </div>`
             : `${syncWarning}<div onclick="openTodayCloseModal('att')" style="display:flex; align-items:center; justify-content:space-between; gap:10px; background:#fff8e1; border:1px solid #f9ab00; border-radius:12px; padding:14px 16px; margin-bottom:20px; cursor:pointer;">
                 <div style="display:flex; align-items:center; gap:10px;">
@@ -430,19 +364,14 @@ function renderDashboard() {
                         <b>오늘 수업 마감 체크</b> <span style="font-size:11px; opacity:0.7;">(오늘 대상 ${closeData.totalActive}명)</span><br>
                         <span style="font-size:12px;">
                             출결 미처리 <b>${closeData.noAtt.length}</b>명 &nbsp;·&nbsp;
-                            숙제 미처리 <b>${closeData.noHw.length}</b>명 &nbsp;·&nbsp;
-                            ${noTestStr}
+                            숙제 미처리 <b>${closeData.noHw.length}</b>명
                         </span>
                     </div>
                 </div>
                 <span style="font-size:18px; color:#f9ab00;">›</span>
               </div>`;
 
-    // 3B: 활성 반만 대시보드에 표시
-    const classes = state.ui.viewScope === 'all' 
-        ? state.db.classes.filter(c => c.is_active !== 0) 
-        : state.db.classes.filter(c => c.teacher_name === state.ui.userName && c.is_active !== 0);
-
+    const classes = state.ui.viewScope === 'all' ? state.db.classes.filter(c => c.is_active !== 0) : state.db.classes.filter(c => c.teacher_name === state.ui.userName && c.is_active !== 0);
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap;">
             <h3 style="margin:0; font-size:16px;">📂 학급별 운영 현황</h3>
@@ -450,7 +379,7 @@ function renderDashboard() {
                 <button class="btn btn-primary" style="padding:6px 12px; font-size:12px;" onclick="renderAttendanceLedger()">📋 출석부</button>
             </div>
         </div>
-        <div class="grid" style="margin-bottom:32px;">${classes.map(c => renderClassSummaryCard(c, data, todayExam)).join('')}</div>
+        <div class="grid" style="margin-bottom:32px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
     let prioSec = '';
@@ -483,9 +412,7 @@ function saveMutedRisks(data) { localStorage.setItem(RISK_MUTE_KEY, JSON.stringi
 function muteRiskStudent(sid) { 
     const muted = getMutedRisks(); 
     muted[sid] = new Date().toLocaleDateString('sv-SE'); 
-    saveMutedRisks(muted); 
-    toast('확인 처리 완료', 'info'); 
-    renderDashboard(); 
+    saveMutedRisks(muted); toast('확인 처리 완료', 'info'); renderDashboard(); 
 }
 
 function dateToDayIndex(str) { 
@@ -495,8 +422,7 @@ function dateToDayIndex(str) {
 
 function isRiskMuted(sid) {
     const muted = getMutedRisks(); 
-    const mutedDate = muted[sid]; 
-    if (!mutedDate) return false;
+    const mutedDate = muted[sid]; if (!mutedDate) return false;
     const today = new Date().toLocaleDateString('sv-SE');
     const diff = dateToDayIndex(today) - dateToDayIndex(mutedDate);
     return diff >= 0 && diff < RISK_MUTE_DAYS;
@@ -511,42 +437,28 @@ function isClassScheduledToday(clsId) {
 
 function computeTodayCloseData(todayExam = getTodayExamConfig()) {
     const today = new Date().toLocaleDateString('sv-SE');
-    
     const scheduledActive = state.db.students.filter(s => {
         if (s.status !== '재원') return false;
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         return isClassScheduledToday(cid);
     });
-
     const activeIds = new Set(scheduledActive.map(s => s.id));
-
-    const attTodaySet = new Set(
-        state.db.attendance.filter(a => a.date === today && activeIds.has(a.student_id)).map(a => a.student_id)
-    );
-    const hwTodaySet = new Set(
-        state.db.homework.filter(h => h.date === today && activeIds.has(h.student_id)).map(h => h.student_id)
-    );
-    const testTodaySet = todayExam ? new Set(
-        state.db.exam_sessions.filter(es => es.exam_date === today && es.exam_title === todayExam.title && activeIds.has(es.student_id)).map(es => es.student_id)
-    ) : new Set();
-
+    const attTodaySet = new Set(state.db.attendance.filter(a => a.date === today && activeIds.has(a.student_id)).map(a => a.student_id));
+    const hwTodaySet = new Set(state.db.homework.filter(h => h.date === today && activeIds.has(h.student_id)).map(h => h.student_id));
+    const testTodaySet = todayExam ? new Set(state.db.exam_sessions.filter(es => es.exam_date === today && es.exam_title === todayExam.title && activeIds.has(es.student_id)).map(es => es.student_id)) : new Set();
     const noAtt = [], noHw = [], noTest = [];
     scheduledActive.forEach(s => {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const className = state.db.classes.find(c => c.id === cid)?.name || '미배정';
         const info = { id: s.id, name: s.name, className };
-
         if (!attTodaySet.has(s.id)) noAtt.push(info);
         if (!hwTodaySet.has(s.id)) noHw.push(info);
         if (todayExam && !testTodaySet.has(s.id)) noTest.push(info);
     });
-
     const totalActive = scheduledActive.length;
     return {
-        totalActive, todayExam, noAtt, attDone: totalActive - noAtt.length,
-        noHw, hwDone: totalActive - noHw.length,
-        noTest, testDone: todayExam ? totalActive - noTest.length : 0,
-        allClear: totalActive > 0 && noAtt.length === 0 && noHw.length === 0 && (!todayExam || noTest.length === 0)
+        totalActive, todayExam, noAtt, attDone: totalActive - noAtt.length, noHw, hwDone: totalActive - noHw.length, noTest, testDone: todayExam ? totalActive - noTest.length : 0,
+        allClear: totalActive > 0 && noAtt.length === 0 && noHw.length === 0
     };
 }
 
@@ -554,38 +466,30 @@ async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
     if (!r?.success) { toast('출결 처리 실패', 'warn'); return; }
-    await refreshDataOnly();
-    openTodayCloseModal(tab);
+    await refreshDataOnly(); openTodayCloseModal(tab);
 }
 
 async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
     if (!r?.success) { toast('숙제 처리 실패', 'warn'); return; }
-    await refreshDataOnly();
-    openTodayCloseModal(tab);
+    await refreshDataOnly(); openTodayCloseModal(tab);
 }
 
+/**
+ * 3C: 운영 요약 문구 성적 제거
+ */
 function buildAcademySummary() {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = getTodayExamConfig();
     const closeData = computeTodayCloseData(todayExam);
-
     let text = `[AP Math 운영 마감 보고 - ${today}]\n\n`;
-    text += `오늘 시험: ${todayExam ? todayExam.title : '없음'}\n`;
     text += `오늘 수업 대상: ${closeData.totalActive}명\n`;
     text += `출결 처리: ${closeData.attDone}/${closeData.totalActive}\n`;
     text += `숙제 처리: ${closeData.hwDone}/${closeData.totalActive}\n`;
-    if (todayExam) text += `성적 입력: ${closeData.testDone}/${closeData.totalActive}\n`;
-
-    if (closeData.totalActive === 0) {
-        text += `\n✅ 오늘은 예정된 정규 수업이 없습니다.`;
-    } else if (closeData.allClear) {
-        text += `\n✅ 오늘 운영 마감 완료`;
-    } else {
-        text += `\n⚠️ 미처리 항목\n- 출결 미처리: ${closeData.noAtt.length}명\n- 숙제 미처리: ${closeData.noHw.length}명\n`;
-        if (todayExam) text += `- 성적 미입력: ${closeData.noTest.length}명\n`;
-    }
+    if (closeData.totalActive === 0) text += `\n✅ 오늘은 예정된 정규 수업이 없습니다.`;
+    else if (closeData.allClear) text += `\n✅ 오늘 운영 마감 완료`;
+    else { text += `\n⚠️ 미처리 항목\n- 출결 미처리: ${closeData.noAtt.length}명\n- 숙제 미처리: ${closeData.noHw.length}명\n`; }
     return text;
 }
 
@@ -594,85 +498,41 @@ function copyAcademySummary() {
     navigator.clipboard.writeText(text).then(() => toast('운영 요약이 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
 }
 
+/**
+ * 3C: 오늘 마감 상세 모달 성적 탭 제거
+ */
 function openTodayCloseModal(tab = 'att') {
     const todayExam = getTodayExamConfig();
     const d = computeTodayCloseData(todayExam);
-
-    const testTabLabel = todayExam ? `성적 미입력 ${d.noTest.length}` : `성적 -`;
-    const testTabEmptyMsg = todayExam ? '모든 대상 성적 입력 완료 ✅' : '오늘 시험이 설정되지 않았습니다.';
-
     const tabs = [
         { key: 'att',  label: `출결 미처리 ${d.noAtt.length}`,  list: d.noAtt,  emptyMsg: '모든 대상 출결 처리 완료 ✅' },
-        { key: 'hw',   label: `숙제 미처리 ${d.noHw.length}`,   list: d.noHw,   emptyMsg: '모든 대상 숙제 처리 완료 ✅' },
-        { key: 'test', label: testTabLabel, list: todayExam ? d.noTest : [], emptyMsg: testTabEmptyMsg }
+        { key: 'hw',   label: `숙제 미처리 ${d.noHw.length}`,   list: d.noHw,   emptyMsg: '모든 대상 숙제 처리 완료 ✅' }
     ];
     const cur = tabs.find(t => t.key === tab) || tabs[0];
-
     const tabBtns = tabs.map(t => `
-        <button onclick="openTodayCloseModal('${t.key}')" style="
-            flex:1; padding:10px 4px; border:none; border-radius:8px; font-size:12px; font-weight:700;
-            background:${t.key === tab ? 'var(--primary)' : '#f1f3f4'};
-            color:${t.key === tab ? 'white' : 'var(--secondary)'};
-            cursor:pointer;">
+        <button onclick="openTodayCloseModal('${t.key}')" style="flex:1; padding:10px 4px; border:none; border-radius:8px; font-size:12px; font-weight:700; background:${t.key === tab ? 'var(--primary)' : '#f1f3f4'}; color:${t.key === tab ? 'white' : 'var(--secondary)'}; cursor:pointer;">
             ${t.label}
         </button>
     `).join('');
-
     const rows = cur.list.length
         ? cur.list.map(s => {
             let actionBtns = '';
-            if (tab === 'att') {
-                actionBtns = `<div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="quickToggleAtt('${s.id}', '등원', '${tab}')">✅ 등원</button><button class="btn" style="flex:1; padding:12px; font-size:13px; color:var(--error); border-color:var(--error);" onclick="quickToggleAtt('${s.id}', '결석', '${tab}')">❌ 결석</button></div>`;
-            } else if (tab === 'hw') {
-                actionBtns = `<div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="quickToggleHw('${s.id}', '완료', '${tab}')">✅ 완료</button><button class="btn" style="flex:1; padding:12px; font-size:13px; color:var(--warning); border-color:var(--warning);" onclick="quickToggleHw('${s.id}', '미완료', '${tab}')">❌ 미완료</button></div>`;
-            } else if (tab === 'test') {
-                const preset = todayExam ? todayExam.title.replace(/'/g, "\\'") : '';
-                actionBtns = `<div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="closeModal();openOMR('${s.id}', '${preset}')">성적 입력</button></div>`;
-            }
-            return `
-                <div style="padding:14px 4px; border-bottom:1px solid var(--border);">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;">
-                            <span style="font-weight:700; font-size:15px;">${s.name}</span>
-                            <span style="font-size:12px; color:var(--secondary); margin-left:8px;">${s.className}</span>
-                        </div>
-                        <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:12px; color:var(--primary); cursor:pointer;">→ 프로필</span>
-                    </div>
-                    ${actionBtns}
-                </div>`;
+            if (tab === 'att') actionBtns = `<div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="quickToggleAtt('${s.id}', '등원', '${tab}')">✅ 등원</button><button class="btn" style="flex:1; padding:12px; font-size:13px; color:var(--error); border-color:var(--error);" onclick="quickToggleAtt('${s.id}', '결석', '${tab}')">❌ 결석</button></div>`;
+            else if (tab === 'hw') actionBtns = `<div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="quickToggleHw('${s.id}', '완료', '${tab}')">✅ 완료</button><button class="btn" style="flex:1; padding:12px; font-size:13px; color:var(--warning); border-color:var(--warning);" onclick="quickToggleHw('${s.id}', '미완료', '${tab}')">❌ 미완료</button></div>`;
+            return `<div style="padding:14px 4px; border-bottom:1px solid var(--border);"><div style="display:flex; justify-content:space-between; align-items:center;"><div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;"><span style="font-weight:700; font-size:15px;">${s.name}</span><span style="font-size:12px; color:var(--secondary); margin-left:8px;">${s.className}</span></div><span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:12px; color:var(--primary); cursor:pointer;">→ 프로필</span></div>${actionBtns}</div>`;
         }).join('')
         : `<div style="padding:32px 16px; text-align:center; color:var(--success); font-weight:700; font-size:14px;">${cur.emptyMsg}</div>`;
-
     showModal('📋 오늘 마감 상세', `<div style="display:flex; gap:6px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
 }
 
 function openTodayExamSetModal() {
     const cfg = getTodayExamConfig();
-    showModal('⚙️ 오늘 시험 설정', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <p style="margin:0; font-size:13px; color:var(--secondary);">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</p>
-            <div style="display:flex; gap:4px; flex-wrap:wrap; margin:6px 0;">
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button>
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button>
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button>
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button>
-            </div>
-            <input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%;">
-            <input id="set-exam-q" type="number" class="btn" placeholder="문항 수" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%;">
-            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
-                <button class="btn btn-primary" style="flex:1; min-width:120px; padding:12px;" onclick="handleSetTodayExam()">저장 및 적용</button>
-                <button class="btn" style="flex:1; min-width:120px; padding:12px; color:var(--error); border-color:var(--error);" onclick="clearTodayExamConfig(); closeModal();">시험 없음 처리</button>
-            </div>
-        </div>
-    `);
+    showModal('⚙️ 오늘 시험 설정', `<div style="display:flex; flex-direction:column; gap:12px;"><p style="margin:0; font-size:13px; color:var(--secondary);">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</p><div style="display:flex; gap:4px; flex-wrap:wrap; margin:6px 0;"><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button></div><input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%;"><input id="set-exam-q" type="number" class="btn" placeholder="문항 수" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%;"><div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; min-width:120px; padding:12px;" onclick="handleSetTodayExam()">저장 및 적용</button><button class="btn" style="flex:1; min-width:120px; padding:12px; color:var(--error); border-color:var(--error);" onclick="clearTodayExamConfig(); closeModal();">시험 없음 처리</button></div></div>`);
 }
 
 function handleSetTodayExam() {
     const t = document.getElementById('set-exam-title').value.trim();
     const q = parseInt(document.getElementById('set-exam-q').value, 10) || 20;
     if (!t) { toast('시험명을 입력하세요.', 'warn'); return; }
-    setTodayExamConfig(t, q);
-    toast('오늘 시험이 설정되었습니다.', 'info');
-    closeModal();
-    renderDashboard();
+    setTodayExamConfig(t, q); toast('오늘 시험이 설정되었습니다.', 'info'); closeModal(); renderDashboard();
 }
