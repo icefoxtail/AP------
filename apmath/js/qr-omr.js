@@ -22,14 +22,32 @@ function getCheckBaseUrl() {
 }
 
 /**
+ * archiveFile 입력값 정규화
+ * - 빈 값이면 ''
+ * - MIXED:<key>는 그대로 유지
+ * - exams/ 접두사가 없고 .js 파일이면 exams/를 붙임
+ */
+function normalizeQrArchiveFile(raw = '') {
+    const s = String(raw || '').trim();
+    if (!s) return '';
+    if (s.startsWith('MIXED:')) return s;
+    if (s.startsWith('exams/')) return s;
+    if (s.endsWith('.js')) return 'exams/' + s;
+    return s;
+}
+
+/**
  * QR 코드 생성 모달 오픈
  */
 function openQrGenerator(cid) {
     const cls = state.db.classes.find(c => c.id === cid);
     const today = new Date().toLocaleDateString('sv-SE');
+    const lastArchiveFile = localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '';
+
     showModal('📱 시험 QR 생성', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <p style="margin:0;"><b>대상 학급:</b> ${cls.name}</p>
+
             <div>
                 <label style="font-size:12px; color:var(--secondary);">시험명 선택/입력:</label>
                 <div style="display:flex; gap:4px; flex-wrap:wrap; margin:6px 0;">
@@ -40,14 +58,25 @@ function openQrGenerator(cid) {
                 </div>
                 <input id="qr-exam" class="btn" value="단원평가" style="width:100%; text-align:left;">
             </div>
+
             <div>
                 <label style="font-size:12px; color:var(--secondary);">문항 수 (1~50):</label>
                 <input id="qr-q" type="number" class="btn" value="20" min="1" max="50" style="width:100%; text-align:left;">
             </div>
+
             <div>
                 <label style="font-size:12px; color:var(--secondary);">시험 날짜:</label>
                 <input id="qr-date" type="date" class="btn" value="${today}" style="width:100%; text-align:left;">
             </div>
+
+            <div>
+                <label style="font-size:12px; color:var(--secondary);">JS아카이브 파일명 / archiveFile 선택 입력:</label>
+                <input id="qr-archiveFile" class="btn" value="${lastArchiveFile}" placeholder="예: exams/26_효천고_1학기_중간_고1_기출.js" style="width:100%; text-align:left;">
+                <div style="font-size:11px; color:var(--secondary); line-height:1.4; margin-top:4px;">
+                    비워두면 일반 단원평가 QR로 생성됩니다. JS아카이브 시험지와 연결하려면 <b>exams/파일명.js</b> 형식으로 입력하세요.
+                </div>
+            </div>
+
             <div id="qr-result-area" class="hidden" style="text-align:center; margin-top:15px; border-top:1px solid var(--border); padding-top:15px;">
                 <img id="qr-img" style="width:180px; max-width:80vw; height:auto; margin-bottom:10px; border: 1px solid #ddd; padding: 5px; background: white;">
                 <div id="qr-url" style="font-size:11px; word-break:break-all; background:#f1f3f4; padding:8px; border-radius:8px; margin-bottom:10px; color:var(--secondary);"></div>
@@ -69,12 +98,23 @@ function generateQrCode() {
     const exam = document.getElementById('qr-exam').value.trim();
     const q = parseInt(document.getElementById('qr-q').value) || 20;
     const date = document.getElementById('qr-date').value;
+    const archiveFile = normalizeQrArchiveFile(document.getElementById('qr-archiveFile')?.value || '');
 
-    if (!exam || q < 1 || q > 50) { toast('입력 정보를 확인하세요 (문항 수 1~50).', 'warn'); return; }
+    if (!exam || q < 1 || q > 50) {
+        toast('입력 정보를 확인하세요 (문항 수 1~50).', 'warn');
+        return;
+    }
 
     // [5G-3] 보정된 baseUrl 적용 (apmath 경로 보존)
     const baseUrl = getCheckBaseUrl();
-    const fullUrl = `${baseUrl}?class=${cid}&exam=${encodeURIComponent(exam)}&q=${q}&date=${date}`;
+    const params = new URLSearchParams();
+    params.set('class', cid);
+    params.set('exam', exam);
+    params.set('q', String(q));
+    params.set('date', date);
+    if (archiveFile) params.set('archiveFile', archiveFile);
+
+    const fullUrl = `${baseUrl}?${params.toString()}`;
     
     const qrImg = document.getElementById('qr-img');
     qrImg.onerror = () => toast('QR 이미지 생성 실패. URL 복사를 사용하세요.', 'warn');
@@ -82,7 +122,10 @@ function generateQrCode() {
     
     document.getElementById('qr-url').innerText = fullUrl;
     document.getElementById('qr-result-area').classList.remove('hidden');
+
     localStorage.setItem('AP_LAST_EXAM_NAME', exam);
+    if (archiveFile) localStorage.setItem('AP_LAST_ARCHIVE_FILE', archiveFile);
+
     toast('QR 코드가 생성되었습니다.', 'info');
 
     const bindTodayExam = confirm('이 시험을 오늘 마감 기준으로 설정할까요?');
@@ -128,7 +171,11 @@ function copyQrUrl() {
     navigator.clipboard.writeText(url).then(() => {
         toast('URL 복사 완료!', 'info');
         const btn = document.querySelector('#qr-result-area .btn:not(.btn-primary)');
-        if (btn) { const t = btn.innerText; btn.innerText = '복사됨 ✅'; setTimeout(() => btn.innerText = t, 1000); }
+        if (btn) {
+            const t = btn.innerText;
+            btn.innerText = '복사됨 ✅';
+            setTimeout(() => btn.innerText = t, 1000);
+        }
     }).catch(() => toast('복사 실패', 'warn'));
 }
 
@@ -174,6 +221,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const today = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => c.id === classId);
     const safeDate = examDate || today;
+
     if (!examTitle) {
         const lastExam = localStorage.getItem('AP_LAST_EXAM_NAME') || '';
         showModal('📊 제출 현황', `
@@ -185,17 +233,23 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         `, '현황 보기', () => {
             const title = document.getElementById('qr-status-exam').value.trim();
             const date = document.getElementById('qr-status-date').value;
-            if (!title) { toast('시험명을 입력하세요.', 'warn'); return; }
+            if (!title) {
+                toast('시험명을 입력하세요.', 'warn');
+                return;
+            }
             localStorage.setItem('AP_LAST_EXAM_NAME', title);
             openQrSubmitStatus(classId, title, date);
         });
         return;
     }
+
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
     const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
     
     // [5G-3] 문항 수 추론 포함
     const inferredQCount = findExamQuestionCount(examTitle, classId);
+    const lastArchiveFile = normalizeQrArchiveFile(localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '');
+    const safeArchiveFileForJs = String(lastArchiveFile).replace(/'/g, "\\'");
     
     showModal('📊 제출 현황', `
         <div style="background:#f8f9fa;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px;">
@@ -204,14 +258,14 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         <h4 style="color:var(--success);margin:10px 0 5px;">✅ 제출 (${submitted.length})</h4>
         <table style="font-size:12px;">${submitted.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><b>${s.score}점</b></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
         <h4 style="color:var(--error);margin:16px 0 5px;">⏳ 미제출 (${pending.length})</h4>
-        <table style="font-size:12px;">${pending.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><button class="btn" style="padding:2px 8px;font-size:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
+        <table style="font-size:12px;">${pending.map(s => `<tr><td>${s.name}</td><td style="text-align:right;"><button class="btn" style="padding:2px 8px;font-size:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="opacity:0.5;text-align:center;">없음</td></tr>'}</table>
     `);
 }
 
 /**
  * 성적 입력 모달 (OMR) 오픈 - 동적 추론 및 오답 프리체크
  */
-function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '') {
+function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '', presetArchiveFile = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
 
@@ -224,6 +278,13 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
         || 20;
 
     const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
+
+    const defaultArchiveFile = normalizeQrArchiveFile(
+        session?.archive_file ||
+        presetArchiveFile ||
+        localStorage.getItem('AP_LAST_ARCHIVE_FILE') ||
+        ''
+    );
 
     // [5G-2/3] 기존 오답 번호 추출 (프리체크용)
     const checkedWrongIds = sessionId 
@@ -241,6 +302,13 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
             <div>
                 <label style="font-size:12px;color:var(--secondary);">문항 수</label>
                 <input id="omr-q" type="number" class="btn" value="${defaultQ}" min="1" max="50" style="width:100%;text-align:left;" oninput="rebuildOmrGrid()">
+            </div>
+            <div>
+                <label style="font-size:12px;color:var(--secondary);">JS아카이브 파일명 / archiveFile 선택 입력</label>
+                <input id="omr-archiveFile" class="btn" value="${defaultArchiveFile}" placeholder="예: exams/26_효천고_1학기_중간_고1_기출.js" style="width:100%;text-align:left;">
+                <div style="font-size:11px;color:var(--secondary);line-height:1.4;margin-top:4px;">
+                    JS아카이브 시험지와 연결하면 오답 단원 분석과 클리닉 추천에 사용됩니다. 일반 시험이면 비워두세요.
+                </div>
             </div>
             <div id="omr-grid-wrap">
                 <div class="omr-grid">${buildOmrItems(defaultQ, checkedWrongIds)}</div>
@@ -273,6 +341,7 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
 
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const score = Math.round(((q - wrs.length) / q) * 100);
+    const archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
     
     let classId = presetClassId || state.ui?.currentClassId;
     if (!classId) {
@@ -289,11 +358,19 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
         question_count: q, 
         class_id: classId
     };
+
+    if (archiveFile) {
+        payload.archive_file = archiveFile;
+        localStorage.setItem('AP_LAST_ARCHIVE_FILE', archiveFile);
+    }
     
     const endpoint = sessionId ? `exam-sessions/${sessionId}` : 'exam-sessions/new';
     const r = await api.patch(endpoint, payload);
     
-    if (!r?.success) { toast('저장 실패', 'warn'); return; }
+    if (!r?.success) {
+        toast('저장 실패', 'warn');
+        return;
+    }
     
     toast(`${score}점 저장됨`, 'info'); 
     closeModal(); 
