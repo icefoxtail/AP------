@@ -1,10 +1,10 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
- * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
+ * 공용 UI 컴포넌트 및 사이드바 테마 전환 엔진
  */
 
 // ============================================================
-// [Theme Manager] 다크 모드 고정 플로팅 버튼
+// [Theme Manager] 사이드바 상단 다크 모드 전환
 // ============================================================
 function getTheme() {
     return localStorage.getItem('APMATH_THEME') || 'light';
@@ -17,9 +17,9 @@ function applyTheme(theme) {
         document.body.classList.toggle('dark', isDark);
     }
 
-    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const toggleBtn = document.getElementById('drawer-theme-toggle-btn');
     if (toggleBtn) {
-        toggleBtn.innerText = isDark ? '라이트' : '다크';
+        toggleBtn.innerText = isDark ? '라이트 모드' : '다크 모드';
         toggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
         toggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
     }
@@ -30,55 +30,15 @@ function toggleTheme() {
     const next = current === 'dark' ? 'light' : 'dark';
 
     localStorage.setItem('APMATH_THEME', next);
-    ensureThemeToggleButton();
     applyTheme(next);
 }
 
 function ensureThemeToggleButton() {
-    if (!document.body) return;
-
-    let btn = document.getElementById('theme-toggle-btn');
-
-    if (!btn) {
-        btn = document.createElement('button');
-        btn.id = 'theme-toggle-btn';
-        btn.type = 'button';
-        document.body.appendChild(btn);
-    }
-
-    if (btn.parentElement !== document.body) {
-        document.body.appendChild(btn);
-    }
-
-    btn.className = 'theme-floating-toggle';
-    btn.type = 'button';
-    btn.onclick = toggleTheme;
-
-    btn.style.display = 'inline-flex';
-    btn.style.visibility = 'visible';
-    btn.style.opacity = '1';
-    btn.style.pointerEvents = 'auto';
-
     applyTheme(getTheme());
 }
 
 function bootThemeManager() {
-    ensureThemeToggleButton();
-
-    if (!window.__apmathThemeObserverAttached) {
-        window.__apmathThemeObserverAttached = true;
-
-        const observer = new MutationObserver(() => {
-            if (!document.getElementById('theme-toggle-btn')) {
-                ensureThemeToggleButton();
-            }
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: false
-        });
-    }
+    applyTheme(getTheme());
 }
 
 if (document.readyState === 'loading') {
@@ -234,10 +194,13 @@ function safeToastError(message) {
 
 
 // ============================================================
-// [드로어 네비게이션] 원본 구조 보존
+// [드로어 네비게이션]
 // ============================================================
 function renderAppDrawer() {
-    if (document.getElementById('app-drawer')) return;
+    if (document.getElementById('app-drawer')) {
+        applyTheme(getTheme());
+        return;
+    }
 
     if (!document.getElementById('app-drawer-style')) {
         const style = document.createElement('style');
@@ -259,7 +222,7 @@ function renderAppDrawer() {
                 top:0;
                 left:0;
                 bottom:0;
-                width:min(75vw, 260px); 
+                width:min(75vw, 260px);
                 background:var(--surface);
                 z-index:9999;
                 display:flex;
@@ -273,25 +236,31 @@ function renderAppDrawer() {
             #app-drawer.drw-open { transform:translateX(0); }
 
             .drw-hdr {
-                padding:calc(40px + env(safe-area-inset-top)) 20px 20px;
-                background:var(--bg);
+                padding:calc(18px + env(safe-area-inset-top)) 16px 14px;
+                background:var(--surface);
                 flex-shrink:0;
                 border-bottom:1px solid var(--border);
             }
-            .drw-title {
-                color:var(--primary);
-                font-size:20px;
-                font-weight:950;
-                margin:0;
-                letter-spacing:-0.8px;
+            .drw-theme-toggle {
+                width:100%;
+                min-height:42px;
+                border:1px solid var(--border);
+                border-radius:12px;
+                background:var(--surface-2);
+                color:var(--text);
+                font-size:14px;
+                font-weight:900;
+                font-family:inherit;
+                cursor:pointer;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                letter-spacing:-0.02em;
             }
-            .drw-sub {
-                color:var(--secondary);
-                font-size:12px;
-                font-weight:700;
-                margin:6px 0 0;
+            .drw-theme-toggle:active {
+                background:var(--bg);
+                transform:scale(0.98);
             }
-
             .drw-sec {
                 font-size:11px;
                 font-weight:900;
@@ -330,9 +299,7 @@ function renderAppDrawer() {
                 background:rgba(26,92,255,0.12);
                 transform:scale(0.96);
             }
-            .drw-item.danger {
-                color:var(--error);
-            }
+            .drw-item.danger { color:var(--error); }
             .drw-item.danger:active {
                 background:rgba(255,71,87,0.08);
                 transform:scale(0.96);
@@ -348,11 +315,7 @@ function renderAppDrawer() {
         document.head.appendChild(style);
     }
 
-    const session = typeof getSession === 'function' ? getSession() : null;
     const isAdmin = !!(state && state.auth && state.auth.role === 'admin');
-    const displayName = isAdmin
-        ? (state.auth?.name || session?.name || '원장')
-        : (typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.auth?.name || session?.name || '담당'));
 
     const teacherMenu = `
         <div class="drw-sec">메인</div>
@@ -386,8 +349,7 @@ function renderAppDrawer() {
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
         <nav id="app-drawer" aria-label="AP Math OS navigation">
             <div class="drw-hdr">
-                <p class="drw-title">AP Math OS</p>
-                <p class="drw-sub">${isAdmin ? `${displayName} 원장` : `${displayName} 선생님`}</p>
+                <button id="drawer-theme-toggle-btn" class="drw-theme-toggle" type="button" onclick="toggleTheme()">다크 모드</button>
             </div>
             ${isAdmin ? adminMenu : teacherMenu}
             <div class="drw-spacer"></div>
@@ -398,10 +360,12 @@ function renderAppDrawer() {
     `;
 
     while (wrapper.firstChild) document.body.appendChild(wrapper.firstChild);
+    applyTheme(getTheme());
 }
 
 function openAppDrawer() {
     renderAppDrawer();
+    applyTheme(getTheme());
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
     if (drw) drw.classList.add('drw-open');
