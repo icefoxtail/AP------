@@ -1,10 +1,10 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
- * 공용 UI 컴포넌트 및 사이드바 테마 전환 엔진
+ * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
  */
 
 // ============================================================
-// [Theme Manager] 사이드바 상단 다크 모드 전환
+// [Theme Manager] 다크 모드: 사이드바 상단 버튼 방식
 // ============================================================
 function getTheme() {
     return localStorage.getItem('APMATH_THEME') || 'light';
@@ -17,11 +17,18 @@ function applyTheme(theme) {
         document.body.classList.toggle('dark', isDark);
     }
 
-    const toggleBtn = document.getElementById('drawer-theme-toggle-btn');
-    if (toggleBtn) {
-        toggleBtn.innerText = isDark ? '라이트 모드' : '다크 모드';
-        toggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
-        toggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
+    const drawerToggleBtn = document.getElementById('drawer-theme-toggle');
+    if (drawerToggleBtn) {
+        drawerToggleBtn.innerText = isDark ? '라이트 모드' : '다크 모드';
+        drawerToggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+        drawerToggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
+    }
+
+    const legacyToggleBtn = document.getElementById('theme-toggle-btn');
+    if (legacyToggleBtn) {
+        legacyToggleBtn.innerText = isDark ? '라이트 모드' : '다크 모드';
+        legacyToggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+        legacyToggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
     }
 }
 
@@ -34,11 +41,16 @@ function toggleTheme() {
 }
 
 function ensureThemeToggleButton() {
+    const floatingBtn = document.getElementById('theme-toggle-btn');
+    if (floatingBtn && floatingBtn.classList.contains('theme-floating-toggle')) {
+        floatingBtn.remove();
+    }
+
     applyTheme(getTheme());
 }
 
 function bootThemeManager() {
-    applyTheme(getTheme());
+    ensureThemeToggleButton();
 }
 
 if (document.readyState === 'loading') {
@@ -194,7 +206,7 @@ function safeToastError(message) {
 
 
 // ============================================================
-// [드로어 네비게이션]
+// [드로어 네비게이션] 상단 문구 제거 + 다크모드 버튼 배치
 // ============================================================
 function renderAppDrawer() {
     if (document.getElementById('app-drawer')) {
@@ -235,40 +247,42 @@ function renderAppDrawer() {
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
-            .drw-hdr {
-                padding:calc(18px + env(safe-area-inset-top)) 16px 14px;
+            .drw-top-tools {
+                padding:calc(22px + env(safe-area-inset-top)) 14px 10px;
                 background:var(--surface);
-                flex-shrink:0;
                 border-bottom:1px solid var(--border);
+                flex-shrink:0;
             }
-            .drw-theme-toggle {
+
+            .drw-theme-btn {
                 width:100%;
                 min-height:42px;
-                border:1px solid var(--border);
-                border-radius:12px;
-                background:var(--surface-2);
-                color:var(--text);
-                font-size:14px;
-                font-weight:900;
-                font-family:inherit;
-                cursor:pointer;
                 display:flex;
                 align-items:center;
                 justify-content:center;
-                letter-spacing:-0.02em;
+                border:1px solid var(--border);
+                border-radius:14px;
+                background:var(--surface-2);
+                color:var(--text);
+                font-size:13px;
+                font-weight:900;
+                font-family:inherit;
+                cursor:pointer;
             }
-            .drw-theme-toggle:active {
+
+            .drw-theme-btn:active {
                 background:var(--bg);
                 transform:scale(0.98);
             }
+
             .drw-sec {
-                font-size:11px;
+                font-size:12px;
                 font-weight:900;
                 color:var(--secondary);
-                padding:16px 20px 6px;
-                letter-spacing:0.5px;
-                text-transform:uppercase;
+                padding:16px 18px 6px;
+                letter-spacing:-0.1px;
             }
+
             .drw-item {
                 display:flex;
                 align-items:center;
@@ -281,10 +295,11 @@ function renderAppDrawer() {
                 background:transparent;
                 color:var(--text);
                 font-size:14px;
-                font-weight:700;
+                font-weight:800;
                 font-family:inherit;
                 text-align:left;
                 cursor:pointer;
+                letter-spacing:-0.2px;
                 transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
             .drw-item:active {
@@ -295,11 +310,17 @@ function renderAppDrawer() {
                 background:rgba(26,92,255,0.08);
                 color:var(--primary);
             }
+            body.dark .drw-item.primary {
+                background:rgba(92,138,255,0.12);
+                color:var(--primary);
+            }
             .drw-item.primary:active {
                 background:rgba(26,92,255,0.12);
                 transform:scale(0.96);
             }
-            .drw-item.danger { color:var(--error); }
+            .drw-item.danger {
+                color:var(--error);
+            }
             .drw-item.danger:active {
                 background:rgba(255,71,87,0.08);
                 transform:scale(0.96);
@@ -348,8 +369,8 @@ function renderAppDrawer() {
     wrapper.innerHTML = `
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
         <nav id="app-drawer" aria-label="AP Math OS navigation">
-            <div class="drw-hdr">
-                <button id="drawer-theme-toggle-btn" class="drw-theme-toggle" type="button" onclick="toggleTheme()">다크 모드</button>
+            <div class="drw-top-tools">
+                <button id="drawer-theme-toggle" class="drw-theme-btn" type="button" onclick="toggleTheme()">다크 모드</button>
             </div>
             ${isAdmin ? adminMenu : teacherMenu}
             <div class="drw-spacer"></div>
@@ -360,12 +381,12 @@ function renderAppDrawer() {
     `;
 
     while (wrapper.firstChild) document.body.appendChild(wrapper.firstChild);
+
     applyTheme(getTheme());
 }
 
 function openAppDrawer() {
     renderAppDrawer();
-    applyTheme(getTheme());
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
     if (drw) drw.classList.add('drw-open');
@@ -394,5 +415,6 @@ window.setModalBody = setModalBody;
 window.setModalLoading = setModalLoading;
 window.safeToastError = safeToastError;
 window.setButtonBusy = setButtonBusy;
+window.renderAppDrawer = renderAppDrawer;
 window.openAppDrawer = openAppDrawer;
 window.closeAppDrawer = closeAppDrawer;
