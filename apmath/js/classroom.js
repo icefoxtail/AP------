@@ -1,7 +1,7 @@
 /**
  * AP Math OS v26.1.2 [js/classroom.js]
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
- * Phase 4/5: 반 화면 상단 4대 액션 재배치, 예외 정책 기반 통계 보정, 수업 기록 모달 추가
+ * Phase 4/5: 반 화면 상단 4대 액션 재배치, 예외 정책 기반 통계 보정, 진도관리 모달 개편
  */
 
 function formatClassScheduleDays(daysStr) {
@@ -61,13 +61,13 @@ function renderClass(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     const summary = computeClassTodaySummary(cid);
 
-    // [Phase 4/5] 4대 핵심 액션만 남기고 상단 툴바 재배치
+    // [Phase 4/5] 4대 핵심 액션만 남기고 상단 툴바 재배치 (명칭 보정)
     const opToolsPanel = `
         <div style="display:flex; gap:8px; margin-bottom:15px; flex-wrap:wrap;">
-            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR 생성</button>
+            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR/OMR</button>
             <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openExamGradeView('${cid}')">📋 시험·성적</button>
             <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openClinicBasketForClass('${cid}')">🧺 클리닉</button>
-            <button class="btn btn-primary" style="flex:1; min-width:80px; padding:10px; font-size:13px; font-weight:800;" onclick="openClassRecordModal('${cid}')">✏️ 수업 기록</button>
+            <button class="btn btn-primary" style="flex:1; min-width:80px; padding:10px; font-size:13px; font-weight:800;" onclick="openClassRecordModal('${cid}')">✏️ 진도관리</button>
         </div>
     `;
 
@@ -118,7 +118,7 @@ function renderClass(cid) {
     }).join('');
 }
 
-// [Phase 4/5] 반별 수업 기록 (진도 및 특이사항) 모달
+// [Phase 4/5] 반별 진도관리 (진도 및 특이사항) 모달
 function openClassRecordModal(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -153,7 +153,7 @@ function openClassRecordModal(cid) {
 
     const prevNote = existingRecord ? existingRecord.special_note : '';
 
-    showModal(`✏️ ${cls.name} 수업 기록`, `
+    showModal(`✏️ ${cls.name} 진도관리`, `
         <div style="margin-bottom:16px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                 <h4 style="margin:0; font-size:13px; color:var(--primary);">오늘 진행한 교재</h4>
@@ -167,11 +167,11 @@ function openClassRecordModal(cid) {
             <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--primary);">특이사항 (선택)</h4>
             <textarea id="record-special-note" class="btn" placeholder="수업 특이사항이나 원장님께 공유할 내용을 입력하세요." style="width:100%; height:80px; text-align:left; resize:vertical; font-family:inherit; font-size:13px;">${prevNote}</textarea>
         </div>
-        <button class="btn btn-primary" style="width:100%; padding:12px; font-size:13px; font-weight:800;" onclick="saveClassRecord('${cid}', '${todayStr}')">💾 수업 기록 저장</button>
+        <button class="btn btn-primary" style="width:100%; padding:12px; font-size:13px; font-weight:800;" onclick="saveClassRecord('${cid}', '${todayStr}')">💾 진도관리 저장</button>
     `);
 }
 
-// [Phase 4/5] 수업 기록 저장 API (지피티 형님의 1차 백엔드 스펙 준수)
+// [Phase 4/5] 수업 기록(진도) 저장 API (실제 교사명 연동 보완)
 async function saveClassRecord(cid, dateStr) {
     const checks = document.querySelectorAll('.record-tb-check:checked');
     const progresses = [];
@@ -191,21 +191,31 @@ async function saveClassRecord(cid, dateStr) {
 
     const specialNote = document.getElementById('record-special-note').value.trim();
 
+    // 작성한 실제 교사명 매핑 (dashboard.js 헬퍼 우선 참조)
+    let actualTeacherName = state.ui.userName;
+    if (typeof getTeacherNameForUI === 'function') {
+        actualTeacherName = getTeacherNameForUI();
+    } else {
+        const session = typeof getSession === 'function' ? getSession() : null;
+        actualTeacherName = state.ui.userName || state.auth?.name || session?.name || '담당';
+        if (actualTeacherName === '선생님1') actualTeacherName = '담당';
+    }
+
     const payload = {
         class_id: cid,
         date: dateStr,
-        teacher_name: state.ui.userName,
+        teacher_name: actualTeacherName,
         special_note: specialNote,
         progress: progresses
     };
 
     const r = await api.post('class-daily-records', payload);
     if (r.success) {
-        toast('수업 기록이 저장되었습니다.', 'success');
+        toast('진도 및 특이사항이 저장되었습니다.', 'success');
         closeModal();
         await loadData(); 
     } else {
-        toast(r.error || '수업 기록 저장 실패', 'error');
+        toast(r.error || '진도관리 저장 실패', 'error');
     }
 }
 

@@ -2,13 +2,31 @@
  * AP Math OS v26.1.2 [js/dashboard.js]
  * 대시보드 및 원장 전용 학원 운영센터 (5G Phase 3 - 운영센터 심화 및 모바일 최적화)
  * Phase 4/5: 메인 4대 액션 재배치, 예외 정책 통계 보정, 일지 날짜 선택 지원 및 필터 오류 수정
+ * [최종 3차 개편 적용]: 2차 기능 100% 보존 + 원장 화면 선생님 중심 관제 카드 전면 적용
  */
+
+// 교사명 표시 우선순위 헬퍼
+function getTeacherNameForUI() {
+    const session = typeof getSession === 'function' ? getSession() : null;
+    let name = state.ui?.userName || state.auth?.name || session?.name || '';
+    name = String(name || '').trim();
+    if (!name || name === '선생님1') return '담당';
+    return name;
+}
+
+// 특정 날짜의 요일 기준 수업 여부 판정 헬퍼
+function isClassScheduledOnDate(clsId, dateStr) {
+    const cls = state.db.classes.find(c => String(c.id) === String(clsId));
+    if (!cls || !cls.schedule_days) return true; // 설정 없으면 매일 수업으로 간주
+    const dayIdx = String(new Date(dateStr).getDay());
+    return cls.schedule_days.split(',').includes(dayIdx);
+}
 
 function copyPhoneNumber(text) {
     navigator.clipboard.writeText(text).then(() => toast('전화번호가 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
 }
 
-// [5G] 위험학생 판정 알고리즘
+// [5G] 위험학생 판정 알고리즘 (상세 사유 및 최근 데이터 유지)
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = new Date(todayStr).getTime();
@@ -98,6 +116,7 @@ function openAdminStudentList(type) {
     showModal(`📋 ${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:5px;">${rows || '<div style="text-align:center; padding:30px; opacity:0.5;">대상 학생이 없습니다.</div>'}</div>`);
 }
 
+// [개편] 원장 화면에 선생님 카드 구조 추가 (기존 요약/일정 유지)
 function renderAdminControlCenter() {
     const root = document.getElementById('app-root');
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -108,10 +127,10 @@ function renderAdminControlCenter() {
     const newStudents = activeStudents.filter(s => { if (!s.created_at) return false; return (todayTime - new Date(s.created_at).getTime()) / (1000*3600*24) <= 30; });
     const risks = computeRiskStudents();
 
+    // 상단 일지 결재함 버튼 제거됨
     const summaryHtml = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
             <h3 style="margin:0; font-size:18px;">🏢 학원 운영센터</h3>
-            <button class="btn btn-primary" style="padding:6px 12px; font-size:12px;" onclick="openAdminJournalList(new Date().toLocaleDateString('sv-SE'))">📑 일지 결재함</button>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:28px;">
             <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--primary);"><div style="font-size:22px; font-weight:900;">${activeStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">총 재원생</div></div>
@@ -121,6 +140,42 @@ function renderAdminControlCenter() {
         </div>
     `;
 
+    // 이번 주 일정 영역 유지
+    const nextWeek = new Date(todayTime + 7 * 24 * 60 * 60 * 1000).toLocaleDateString('sv-SE');
+    const upcomingSchedules = (state.db.exam_schedules || [])
+        .filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeek)
+        .sort((a,b) => a.exam_date.localeCompare(b.exam_date));
+
+    const adminScheduleHtml = `
+        <div class="card" style="margin-bottom:28px;">
+            <h4 style="margin:0 0 12px 0; font-size:15px; color:var(--primary);">📅 이번 주 일정</h4>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+                ${upcomingSchedules.length > 0 ? upcomingSchedules.map(e => {
+                    const d = new Date(e.exam_date);
+                    const dateLabel = `${d.getMonth()+1}월 ${d.getDate()}일`;
+                    const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:normal;">${e.grade}</span> ` : '';
+                    return `
+                        <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #f1f3f4; font-size:13px;">
+                            <div><b>${e.school_name}</b> ${gradeLabel}${e.exam_name}</div>
+                            <div style="color:var(--secondary); font-size:11px;">${dateLabel}</div>
+                        </div>
+                    `;
+                }).join('') : '<div style="text-align:center; padding:10px; color:var(--secondary); font-size:12px;">이번 주 예정된 일정이 없습니다.</div>'}
+            </div>
+        </div>
+    `;
+
+    // [신규] 선생님별 관리 카드 영역 추가
+    const teacherCardsHtml = `
+        <div style="margin-bottom:28px;">
+            <h3 style="margin:0 0 12px 0; font-size:16px;">👨‍🏫 선생님별 관리</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px;">
+                ${renderAdminTeacherCards(todayStr)}
+            </div>
+        </div>
+    `;
+
+    // 통합 검색 및 위험학생 영역 유지
     const searchHtml = `
         <div class="card" style="margin-bottom:28px;">
             <h4 style="margin:0 0 10px 0; font-size:14px;">🔍 학생 통합 검색</h4>
@@ -132,7 +187,6 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    // [Phase 4/5 픽스] 가짜 Snooze 버튼 제거
     const riskRows = risks.map(r => {
         const badges = r.riskTypes.map(t => {
             let color = 'var(--secondary)';
@@ -172,9 +226,100 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    root.innerHTML = summaryHtml + searchHtml + riskSectionHtml;
+    // 추천 순서에 맞춰 렌더링
+    root.innerHTML = summaryHtml + adminScheduleHtml + teacherCardsHtml + searchHtml + riskSectionHtml;
     const scopeBtn = document.querySelector('header nav button');
     if (scopeBtn) scopeBtn.style.display = 'none';
+}
+
+// [신규] 원장용 선생님 카드 렌더링 로직
+function renderAdminTeacherCards(todayStr) {
+    const activeClasses = state.db.classes.filter(c => c.is_active !== 0);
+    const teachers = [...new Set(activeClasses.map(c => c.teacher_name || '담당 미지정'))];
+    
+    return teachers.map(tName => {
+        const myClasses = activeClasses.filter(c => (c.teacher_name || '담당 미지정') === tName);
+        const myClassIds = myClasses.map(c => c.id);
+        const myStudentIds = [...new Set(state.db.class_students.filter(m => myClassIds.includes(m.class_id)).map(m => m.student_id))];
+        const activeStudentCount = state.db.students.filter(s => myStudentIds.includes(s.id) && s.status === '재원').length;
+        
+        const log = (state.db.journals || []).find(j => j.date === todayStr && j.teacher_name === tName && j.status !== '작성중');
+        let logStatus = '<span style="color:var(--secondary);">미제출</span>';
+        if (log) {
+            if (log.status === '결재완료') logStatus = '<span style="color:var(--success); font-weight:bold;">결재완료</span>';
+            else logStatus = '<span style="color:var(--primary); font-weight:bold;">제출됨</span>';
+        }
+
+        const safeName = (tName || '담당').replace(/'/g, "\\'");
+
+        return `
+            <div class="card" style="margin:0; padding:16px; cursor:pointer; border-left:4px solid var(--primary);" onclick="openAdminTeacherPanel('${safeName}')">
+                <div style="font-weight:800; font-size:16px; margin-bottom:8px;">${tName}</div>
+                <div style="font-size:12px; color:var(--secondary); margin-bottom:12px;">
+                    반 ${myClasses.length}개 · 학생 ${activeStudentCount}명
+                </div>
+                <div style="font-size:11px; background:#f8f9fa; padding:6px; border-radius:4px; text-align:center;">
+                    오늘 일지: ${logStatus}
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// [신규] 선생님 관리 패널 모달 (일지/학생 2카드 구조)
+function openAdminTeacherPanel(teacherName) {
+    state.ui.currentAdminTeacherName = teacherName;
+    const safeName = teacherName.replace(/'/g, "\\'");
+
+    showModal(`${teacherName} 선생님 관리`, `
+        <div style="display:flex; flex-direction:column; gap:12px; padding:8px 0;">
+            <button class="btn" style="padding:20px; font-size:16px; display:flex; align-items:center; justify-content:center; gap:12px;" onclick="renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">
+                <span style="font-size:24px;">📑</span> <b>일지 확인 및 결재</b>
+            </button>
+            <button class="btn" style="padding:20px; font-size:16px; display:flex; align-items:center; justify-content:center; gap:12px;" onclick="renderAdminTeacherStudents('${safeName}')">
+                <span style="font-size:24px;">👥</span> <b>담당 학생 현황 확인</b>
+            </button>
+        </div>
+    `);
+}
+
+// [신규] 선생님별 담당 학생 확인
+function renderAdminTeacherStudents(teacherName) {
+    const myClasses = state.db.classes.filter(c => (c.teacher_name || '담당 미지정') === teacherName && c.is_active !== 0);
+    
+    let html = `
+        <div style="margin-bottom:16px;">
+            <button class="btn" style="font-size:12px; padding:6px 12px; border-color:var(--border);" onclick="openAdminTeacherPanel('${teacherName.replace(/'/g, "\\'")}')">← 선생님 메뉴</button>
+        </div>
+        <div style="max-height:60vh; overflow-y:auto;">
+    `;
+
+    if (myClasses.length === 0) {
+        html += '<div style="text-align:center; padding:30px; opacity:0.5;">담당하고 있는 활성 반이 없습니다.</div>';
+    } else {
+        myClasses.forEach(cls => {
+            const mIds = state.db.class_students.filter(m => m.class_id === cls.id).map(m => m.student_id);
+            const stds = state.db.students.filter(s => mIds.includes(s.id) && s.status === '재원');
+            
+            html += `
+                <div style="margin-bottom:20px;">
+                    <div style="background:var(--bg); padding:8px 12px; border-radius:6px; font-weight:800; font-size:14px; margin-bottom:8px; color:var(--primary); display:flex; justify-content:space-between;">
+                        <span>${cls.name}</span> <span style="font-size:11px; font-weight:normal;">${stds.length}명</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                        ${stds.map(s => `
+                            <div style="padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; cursor:pointer; background:white;" onclick="closeModal(); renderStudentDetail('${s.id}')">
+                                <b>${s.name}</b>
+                            </div>
+                        `).join('') || '<div style="grid-column:1/3; text-align:center; font-size:12px; opacity:0.5; padding:10px;">배정된 학생이 없습니다.</div>'}
+                    </div>
+                </div>
+            `;
+        });
+    }
+    html += '</div>';
+
+    showModal(`👥 ${teacherName} 선생님 학생 확인`, html);
 }
 
 function renderAdminStudentSearch() {
@@ -240,9 +385,8 @@ function renderAddressBookList() {
 }
 
 function openAddressBook() {
-    // [Phase 4/5 픽스] teacher_name 필터 제거, initial-data에서 내려준 classes 그대로 사용
     const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}">${c.name}</option>`).join('');
-    showModal('📒 주소록 및 학생 관리', `
+    showModal('👥 학생 전반 관리', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button class="btn" style="padding:8px; flex:1; font-size:11px;" onclick="closeModal(); openAddStudent();">👤 학생 추가</button>
             <button class="btn" style="padding:8px; flex:1; font-size:11px; color:var(--primary); border-color:var(--primary);" onclick="openGlobalPinManagement()">🔑 통합 PIN 관리</button>
@@ -257,7 +401,6 @@ function openAddressBook() {
 }
 
 function openGlobalPinManagement() {
-    // [Phase 4/5 픽스] teacher_name 필터 제거
     const classes = state.db.classes.filter(c => c.is_active !== 0);
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:12px; margin-bottom:6px;" onclick="handleBatchGeneratePins('${c.id}')">
@@ -327,7 +470,7 @@ function openAddClassModal() {
                 <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
             </select>
             <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left;">
-            <input id="add-cls-teacher" class="btn" value="${state.ui.userName || '박준성'}" placeholder="담당 교사" style="text-align:left;">
+            <input id="add-cls-teacher" class="btn" value="${getTeacherNameForUI()}" placeholder="담당 교사" style="text-align:left;">
             <input id="add-cls-textbook" class="btn" placeholder="기존 교재(호환용)" style="text-align:left;">
             
             <label style="font-size:12px; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
@@ -394,7 +537,7 @@ async function toggleClassActive(cid, status) {
     if (r.success) { toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info'); await loadData(); openClassManageModal(); }
 }
 
-// [Phase 4/5] 독립된 교재 관리 (class_textbooks 연동)
+// [보존 유지] 교재 관리 (class_textbooks 연동)
 function renderTextbookManageList() {
     const classId = document.getElementById('tb-manage-class').value;
     const listRoot = document.getElementById('tb-manage-list');
@@ -551,6 +694,7 @@ async function handleDeleteTextbook(tbId) {
 }
 
 
+// [보존 유지] 메모 관리
 function openTodoMemoModal() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const memos = state.db.operation_memos || [];
@@ -569,17 +713,17 @@ function openTodoMemoModal() {
         </div>
     `).join('');
 
-    showModal('📝 할 일 관리', `
+    showModal('📝 메모 관리', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:#f8f9fa; padding:12px; border-radius:8px;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="date" id="new-memo-date" class="btn" value="${todayStr}" style="text-align:left; flex:1;">
                 <label style="font-size:13px; display:flex; align-items:center; gap:4px; white-space:nowrap;"><input type="checkbox" id="new-memo-pin"> 📌 고정</label>
             </div>
-            <input type="text" id="new-memo-content" class="btn" placeholder="할 일 입력 (예: 고2 시험대비 직전보강)" style="text-align:left;">
+            <input type="text" id="new-memo-content" class="btn" placeholder="메모 입력 (예: 고2 시험대비 직전보강)" style="text-align:left;">
             <button class="btn btn-primary" style="padding:8px; font-size:12px; margin-top:4px;" onclick="addTodoMemo()">저장</button>
         </div>
         <div style="max-height:40vh; overflow-y:auto;">
-            ${memos.length ? memoRows : '<div style="text-align:center; color:var(--secondary); font-size:12px; padding:10px;">등록된 할 일이 없습니다.</div>'}
+            ${memos.length ? memoRows : '<div style="text-align:center; color:var(--secondary); font-size:12px; padding:10px;">등록된 메모가 없습니다.</div>'}
         </div>
     `);
 }
@@ -615,7 +759,7 @@ async function deleteMemo(id) {
 function openEditTodoMemoModal(id) {
     const m = state.db.operation_memos.find(x => x.id === id);
     if(!m) return;
-    showModal('📝 할 일 메모 수정', `
+    showModal('📝 메모 수정', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:#f8f9fa; padding:12px; border-radius:8px;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="date" id="edit-memo-date" class="btn" value="${m.memo_date}" style="text-align:left; flex:1;">
@@ -648,12 +792,13 @@ async function handleEditTodoMemo(id) {
     }
 }
 
+// [보존 유지] 시험일정 관리
 function openExamScheduleModal() {
     const schedules = state.db.exam_schedules || [];
     const rows = schedules.map(e => `
         <div style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div style="flex:1;">
-                <div style="font-size:11px; color:var(--secondary); margin-bottom:4px;">${e.exam_date} | ${e.school_name} ${e.grade}</div>
+                <div style="font-size:11px; color:var(--secondary); margin-bottom:4px;">${e.exam_date} ${e.grade ? `| ${e.school_name} ${e.grade}` : `| ${e.school_name}`}</div>
                 <div style="font-size:14px; font-weight:bold;">${e.exam_name}</div>
                 ${e.memo ? `<div style="font-size:12px; color:var(--secondary); margin-top:2px;">${e.memo}</div>` : ''}
             </div>
@@ -669,6 +814,7 @@ function openExamScheduleModal() {
             <div style="display:flex; gap:8px;">
                 <input type="text" id="new-ex-school" class="btn" placeholder="학교명" style="flex:1; text-align:left;">
                 <select id="new-ex-grade" class="btn" style="flex:1;">
+                    <option value="">전체/공통</option>
                     <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
                     <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
                 </select>
@@ -688,11 +834,11 @@ function openExamScheduleModal() {
 
 async function addExamSchedule() {
     const sc = document.getElementById('new-ex-school').value.trim();
-    const gr = document.getElementById('new-ex-grade').value;
+    const gr = document.getElementById('new-ex-grade').value; // 공란 허용
     const na = document.getElementById('new-ex-name').value.trim();
     const da = document.getElementById('new-ex-date').value;
     const me = document.getElementById('new-ex-memo').value.trim();
-    if(!sc || !na || !da) return toast('필수 항목을 입력하세요', 'warn');
+    if(!sc || !na || !da) return toast('학교명, 시험명, 날짜는 필수입니다.', 'warn');
     const r = await api.post('exam-schedules', { schoolName: sc, grade: gr, examName: na, examDate: da, memo: me });
     if(r.success) { await loadData(); openExamScheduleModal(); }
 }
@@ -711,6 +857,7 @@ function openEditExamScheduleModal(id) {
             <div style="display:flex; gap:8px;">
                 <input type="text" id="edit-ex-school" class="btn" value="${e.school_name}" style="flex:1; text-align:left;">
                 <select id="edit-ex-grade" class="btn" style="flex:1;">
+                    <option value="" ${!e.grade?'selected':''}>전체/공통</option>
                     <option value="중1" ${e.grade==='중1'?'selected':''}>중1</option>
                     <option value="중2" ${e.grade==='중2'?'selected':''}>중2</option>
                     <option value="중3" ${e.grade==='중3'?'selected':''}>중3</option>
@@ -736,7 +883,7 @@ async function handleEditExamSchedule(id) {
     const na = document.getElementById('edit-ex-name').value.trim();
     const da = document.getElementById('edit-ex-date').value;
     const me = document.getElementById('edit-ex-memo').value.trim();
-    if(!sc || !na || !da) return toast('필수 항목을 입력하세요', 'warn');
+    if(!sc || !na || !da) return toast('학교명, 시험명, 날짜는 필수입니다.', 'warn');
     
     const r = await api.patch('exam-schedules/' + id, { schoolName: sc, grade: gr, examName: na, examDate: da, memo: me });
     if(r.success) { 
@@ -748,7 +895,6 @@ async function handleEditExamSchedule(id) {
     }
 }
 
-// [Phase 4/5] 4대 액션 중 '시험·성적'의 글로벌 진입점 (teacher_name 필터 제거)
 function openGlobalExamGradeView() {
     const classes = state.db.classes.filter(c => c.is_active !== 0);
     const rows = classes.map(c => `
@@ -763,9 +909,10 @@ function openGlobalExamGradeView() {
     `);
 }
 
+// [수정 보존] 운영 메뉴에서 일지 보관함 버튼만 제거, 동기화/오프라인 상태는 유지
 function openOperationMenu() {
     const isOnline = navigator.onLine;
-    const qLen = syncQueue.length;
+    const qLen = typeof syncQueue !== 'undefined' ? syncQueue.length : 0;
     const syncStatusText = qLen > 0 ? `⚠️ 대기 중 ${qLen}건` : "✅ 대기 없음";
     const onlineStatusText = isOnline ? "🟢 온라인" : "🔴 오프라인";
 
@@ -775,11 +922,9 @@ function openOperationMenu() {
                 <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">운영 및 관리 메뉴</label>
                 <div style="display:flex; flex-direction:column; gap:8px;">
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openClassManageModal();">🏫 반 및 교재 관리</button>
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openTextbookManageModal();">📚 전체 교재 목록 관리</button>
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddressBook();">📒 주소록 및 학생/PIN 관리</button>
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddressBook();">👥 학생 전반 관리</button>
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openExamScheduleModal();">📅 시험일정 관리</button>
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openDischargedStudents();">🗄️ 퇴원생 조회 및 복구</button>
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAdminJournalList(new Date().toLocaleDateString('sv-SE'));">📑 일지 보관함 (과거 내역)</button>
                 </div>
             </div>
             <div>
@@ -787,14 +932,13 @@ function openOperationMenu() {
                 <div class="card" style="margin:0; padding:12px; background:#f8f9fa; border-style:dashed;">
                     <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:8px;"><span>네트워크:</span><b style="color:${isOnline ? 'var(--success)' : 'var(--error)'}">${onlineStatusText}</b></div>
                     <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:12px;"><span>미전송 데이터:</span><b style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}">${syncStatusText}</b></div>
-                    <button class="btn btn-primary" style="width:100%; font-size:12px; padding:8px;" onclick="processSyncQueue(); closeModal();">🔄 지금 동기화 시도</button>
+                    <button class="btn btn-primary" style="width:100%; font-size:12px; padding:8px;" onclick="if(typeof processSyncQueue==='function') processSyncQueue(); closeModal();">🔄 지금 동기화 시도</button>
                 </div>
             </div>
         </div>
     `);
 }
 
-// [Phase 4/5 픽스] 예외 정책 기반 (미기록 = 정상, 결석/미완료 = 예외)
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
@@ -803,16 +947,14 @@ function computeDashboardData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && cls.is_active === 0) return false;
-        return isClassScheduledToday(cid);
+        return typeof isClassScheduledToday === 'function' ? isClassScheduledToday(cid) : true;
     });
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
     
-    // 결석자만 체크 (나머진 다 등원)
     const absentCount = state.db.attendance.filter(a => a.date === today && a.status === '결석' && scheduledIds.has(a.student_id)).length;
     const presentCount = scheduledActiveStudents.length - absentCount;
     
-    // 숙제 미완료자만 체크 (나머진 다 완료)
     const hwNotDoneCount = state.db.homework.filter(h => h.date === today && h.status === '미완료' && scheduledIds.has(h.student_id)).length;
 
     const todoCount = state.db.operation_memos.filter(m => m.is_done !== 1 && (m.is_pinned === 1 || m.memo_date === today)).length;
@@ -832,7 +974,7 @@ function computeDashboardData() {
         });
         
         let cPre = cActiveIds.length - cAbs;
-        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledToday(c.id) };
+        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: typeof isClassScheduledToday === 'function' ? isClassScheduledToday(c.id) : true };
     });
 
     return { 
@@ -889,8 +1031,8 @@ function renderClassSummaryCard(cls, data) {
     `;
 }
 
+// [보존 유지] 선생님용 대시보드 일정 표시 
 function renderTodoSections() {
-    const today = new Date();
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const nextWeek = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
     const nextWeekStr = nextWeek.toLocaleDateString('sv-SE');
@@ -906,7 +1048,7 @@ function renderTodoSections() {
                 <span style="font-size:14px; ${m.is_pinned ? 'font-weight:bold; color:var(--primary);' : ''}">${m.is_pinned ? '📌 ' : ''}${m.content}</span>
             </div>
         </div>
-    `).join('') : '<div style="font-size:12px; color:var(--secondary); padding:10px 4px;">오늘 등록된 할 일이 없습니다.</div>';
+    `).join('') : '<div style="font-size:12px; color:var(--secondary); padding:10px 4px;">오늘 등록된 메모가 없습니다.</div>';
 
     let upcomingHtml = '';
     const upcomingItems = [];
@@ -923,7 +1065,8 @@ function renderTodoSections() {
 
             if (u.type === 'exam') {
                 const e = u.item;
-                return `<div style="padding:8px 4px; font-size:13px; color:#b06000; border-bottom:1px solid var(--border);">[시험] ${e.school_name} ${e.grade} ${e.exam_name} <b style="margin-left:4px; font-size:11px; background:#fef7e0; padding:2px 6px; border-radius:4px;">${dDay}</b></div>`;
+                const gradeLabel = e.grade ? ` ${e.grade}` : '';
+                return `<div style="padding:8px 4px; font-size:13px; color:#b06000; border-bottom:1px solid var(--border);">[시험] ${e.school_name}${gradeLabel} ${e.exam_name} <b style="margin-left:4px; font-size:11px; background:#fef7e0; padding:2px 6px; border-radius:4px;">${dDay}</b></div>`;
             } else {
                 return `<div style="padding:8px 4px; font-size:13px; color:var(--secondary); border-bottom:1px solid var(--border);">${u.item.content} <b style="margin-left:4px; font-size:11px; background:#f1f3f4; padding:2px 6px; border-radius:4px;">${dDay}</b></div>`;
             }
@@ -933,13 +1076,13 @@ function renderTodoSections() {
     return `
         <div style="margin-bottom:28px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <h3 style="margin:0; font-size:16px;">📝 오늘의 할 일</h3>
+                <h3 style="margin:0; font-size:16px;">📝 오늘의 메모</h3>
             </div>
             <div class="card" style="margin-bottom:16px; padding:8px 12px;">${todayHtml}</div>
             
             ${upcomingHtml ? `
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <h3 style="margin:0; font-size:15px; color:var(--secondary);">📅 이번 주 할 일</h3>
+                    <h3 style="margin:0; font-size:15px; color:var(--secondary);">📅 이번 주 일정</h3>
                 </div>
                 <div class="card" style="padding:8px 12px;">${upcomingHtml}</div>
             ` : ''}
@@ -947,16 +1090,18 @@ function renderTodoSections() {
     `;
 }
 
-// [Phase 4/5] 대시보드 렌더링 로직 (4대 액션 고정 & 예외 현황)
+// [보존 유지] 선생님용 대시보드 렌더링 
 function renderDashboard() {
     state.ui.currentClassId = null;
     const data = computeDashboardData();
-    const closeData = computeTodayCloseData();
+    const closeData = typeof computeTodayCloseData === 'function' ? computeTodayCloseData() : { totalActive:0, absents:[], hwMisses:[], allClear:true };
     const root = document.getElementById('app-root');
+
+    const teacherName = getTeacherNameForUI();
 
     const topActions = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 style="margin:0; font-size:16px;">🚀 ${state.ui.userName} 선생님</h3>
+            <h3 style="margin:0; font-size:16px;">🚀 ${teacherName} 선생님</h3>
             <button class="btn" style="padding:6px 10px; font-size:11px; border-color:var(--border);" onclick="openOperationMenu()">⚙️ 운영 메뉴</button>
         </div>
         <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin-bottom:20px;">
@@ -964,19 +1109,20 @@ function renderDashboard() {
                 <span style="font-size:20px;">📝</span> 일지
             </button>
             <button class="btn" style="padding:12px 4px; font-size:12px; font-weight:800; border-color:var(--border); display:flex; flex-direction:column; align-items:center; gap:6px;" onclick="openTodoMemoModal()">
-                <span style="font-size:20px;">✅</span> 할 일
+                <span style="font-size:20px;">✅</span> 메모
             </button>
             <button class="btn" style="padding:12px 4px; font-size:12px; font-weight:800; border-color:var(--border); display:flex; flex-direction:column; align-items:center; gap:6px;" onclick="if(typeof renderAttendanceLedger==='function') renderAttendanceLedger()">
                 <span style="font-size:20px;">📋</span> 출석부
             </button>
             <button class="btn" style="padding:12px 4px; font-size:12px; font-weight:800; border-color:var(--border); display:flex; flex-direction:column; align-items:center; gap:6px;" onclick="openGlobalExamGradeView()">
-                <span style="font-size:20px;">📊</span> 성적
+                <span style="font-size:20px;">📊</span> 시험·성적
             </button>
         </div>
     `;
 
-    const syncWarning = syncQueue.length > 0 
-        ? `<div style="background:#fce8e6; color:#c5221f; padding:8px 16px; border-radius:8px; font-size:12px; font-weight:700; margin-bottom:12px; text-align:center; border:1px solid #f9d2ce;">⚠️ 인터넷 끊김: ${syncQueue.length}건의 데이터 대기 중</div>` 
+    const qLen = typeof syncQueue !== 'undefined' ? syncQueue.length : 0;
+    const syncWarning = qLen > 0 
+        ? `<div style="background:#fce8e6; color:#c5221f; padding:8px 16px; border-radius:8px; font-size:12px; font-weight:700; margin-bottom:12px; text-align:center; border:1px solid #f9d2ce;">⚠️ 인터넷 끊김: ${qLen}건의 데이터 대기 중</div>` 
         : '';
 
     const buildSummaryBadges = (list) => {
@@ -998,7 +1144,7 @@ function renderDashboard() {
                 <span style="font-size:20px;">✅</span>
                 <div><b>오늘 수업 예외사항 없음</b><br><span style="font-size:12px; opacity:0.8;">전원 출석 및 전원 숙제 완료</span></div>
               </div>`
-            : `${syncWarning}<div onclick="openTodayCloseModal('att')" style="display:flex; align-items:center; justify-content:space-between; gap:10px; background:#fff8e1; border:1px solid #f9ab00; border-radius:12px; padding:14px 16px; margin-bottom:20px; cursor:pointer;">
+            : `${syncWarning}<div onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="display:flex; align-items:center; justify-content:space-between; gap:10px; background:#fff8e1; border:1px solid #f9ab00; border-radius:12px; padding:14px 16px; margin-bottom:20px; cursor:pointer;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <span style="font-size:20px;">📋</span>
                     <div style="font-size:14px; color:#7a4f00;">
@@ -1014,7 +1160,6 @@ function renderDashboard() {
 
     const todoSections = renderTodoSections();
 
-    // [Phase 4/5 픽스] teacher_name 필터 제거, initial-data 의존
     const classes = state.db.classes.filter(c => c.is_active !== 0);
 
     const classStatus = `
@@ -1024,10 +1169,10 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:32px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = topActions + closeBanner + classStatus + todoSections;
+    root.innerHTML = topActions + closeBanner + todoSections + classStatus;
 }
 
-// [Phase 4/5 픽스] 결석/미완료 목록만 수집
+// [5G-2] 오늘의 예외 현황 계산 헬퍼 (classroom.js 의존성 보완)
 function computeTodayCloseData() {
     const today = new Date().toLocaleDateString('sv-SE');
     
@@ -1036,7 +1181,7 @@ function computeTodayCloseData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && cls.is_active === 0) return false;
-        return isClassScheduledToday(cid);
+        return typeof isClassScheduledToday === 'function' ? isClassScheduledToday(cid) : true;
     });
 
     const absents = [];
@@ -1063,137 +1208,30 @@ function computeTodayCloseData() {
     };
 }
 
-async function quickToggleAtt(sid, status, tab = 'att') {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const r = await api.patch('attendance', { studentId: sid, status, date: today });
-    if (!r?.success) { toast('출결 처리 실패', 'warn'); return; }
-    await refreshDataOnly();
-    openTodayCloseModal(tab);
-}
-
-async function quickToggleHw(sid, status, tab = 'hw') {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const r = await api.patch('homework', { studentId: sid, status, date: today });
-    if (!r?.success) { toast('숙제 처리 실패', 'warn'); return; }
-    await refreshDataOnly();
-    openTodayCloseModal(tab);
-}
-
-// [Phase 4/5 픽스] 모달 탭명 변경 및 결석/미완료 리스트 표시
-function openTodayCloseModal(tab = 'att') {
-    const d = computeTodayCloseData();
-
-    const tabs = [
-        { key: 'att',  label: `결석 학생 ${d.absents.length}`,  list: d.absents,  emptyMsg: '결석자 없음 ✅' },
-        { key: 'hw',   label: `숙제 미완료 ${d.hwMisses.length}`, list: d.hwMisses, emptyMsg: '미완료자 없음 ✅' }
-    ];
-    const cur = tabs.find(t => t.key === tab) || tabs[0];
-
-    const tabBtns = tabs.map(t => `
-        <button onclick="openTodayCloseModal('${t.key}')" style="
-            flex:1; padding:10px 4px; border:none; border-radius:8px; font-size:12px; font-weight:700;
-            background:${t.key === tab ? 'var(--primary)' : '#f1f3f4'};
-            color:${t.key === tab ? 'white' : 'var(--secondary)'};
-            cursor:pointer;">
-            ${t.label}
-        </button>
-    `).join('');
-
-    const grouped = cur.list.reduce((acc, item) => {
-        if(!acc[item.className]) acc[item.className] = [];
-        acc[item.className].push(item);
-        return acc;
-    }, {});
-
-    const rows = cur.list.length
-        ? Object.keys(grouped).sort().map(cName => {
-            const classHeader = `<div style="background:#f1f3f4; padding:6px 10px; font-size:12px; font-weight:bold; color:var(--secondary); margin-top:8px; border-radius:4px;">${cName}</div>`;
-            const studentRows = grouped[cName].map(s => {
-                let actionBtns = '';
-                if (tab === 'att') {
-                    actionBtns = `<div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="quickToggleAtt('${s.id}', '등원', '${tab}')">✅ 등원 (취소)</button><button class="btn" style="flex:1; padding:12px; font-size:13px; color:var(--error); border-color:var(--error); cursor:default;">❌ 결석됨</button></div>`;
-                } else if (tab === 'hw') {
-                    actionBtns = `<div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; padding:12px; font-size:13px;" onclick="quickToggleHw('${s.id}', '완료', '${tab}')">✅ 완료 (취소)</button><button class="btn" style="flex:1; padding:12px; font-size:13px; color:var(--warning); border-color:var(--warning); cursor:default;">⚠️ 미완료됨</button></div>`;
-                }
-                return `
-                    <div style="padding:14px 4px; border-bottom:1px solid var(--border);">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;">
-                                <span style="font-weight:700; font-size:15px;">${s.name}</span>
-                            </div>
-                            <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:12px; color:var(--primary); cursor:pointer;">→ 프로필</span>
-                        </div>
-                        ${actionBtns}
-                    </div>`;
-            }).join('');
-            return classHeader + studentRows;
-        }).join('')
-        : `<div style="padding:32px 16px; text-align:center; color:var(--success); font-weight:700; font-size:14px;">${cur.emptyMsg}</div>`;
-
-    showModal('📋 오늘 예외 현황', `<div style="display:flex; gap:6px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
-}
-
-function getTodayExamConfig() {
-    try {
-        const raw = localStorage.getItem('AP_TODAY_EXAM');
-        if (!raw) return null;
-        const cfg = JSON.parse(raw);
-        const today = new Date().toLocaleDateString('sv-SE');
-        if (cfg.date !== today || !cfg.title) { localStorage.removeItem('AP_TODAY_EXAM'); return null; }
-        return { date: cfg.date, title: String(cfg.title), q: parseInt(cfg.q, 10) || 20 };
-    } catch (e) { localStorage.removeItem('AP_TODAY_EXAM'); return null; }
-}
-
-function setTodayExamConfig(title, q) {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const validQ = parseInt(q, 10) || 20;
-    localStorage.setItem('AP_TODAY_EXAM', JSON.stringify({ date: today, title: String(title), q: validQ }));
-}
-
-function clearTodayExamConfig() { 
-    localStorage.removeItem('AP_TODAY_EXAM'); 
-    if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
-    else renderDashboard();
-}
-
-function openTodayExamSetModal() {
-    const cfg = getTodayExamConfig();
-    showModal('⚙️ 오늘 시험 설정', `<div style="display:flex; flex-direction:column; gap:12px;"><p style="margin:0; font-size:13px; color:var(--secondary);">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</p><div style="display:flex; gap:4px; flex-wrap:wrap; margin:6px 0;"><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button><button class="btn" style="padding:4px 8px; font-size:11px;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button></div><input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%;"><input id="set-exam-q" type="number" class="btn" placeholder="문항 수" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%;"><div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;"><button class="btn btn-primary" style="flex:1; min-width:120px; padding:12px;" onclick="handleSetTodayExam()">저장 및 적용</button><button class="btn" style="flex:1; min-width:120px; padding:12px; color:var(--error); border-color:var(--error);" onclick="clearTodayExamConfig(); closeModal();">시험 없음 처리</button></div></div>`);
-}
-
-function handleSetTodayExam() {
-    const t = document.getElementById('set-exam-title').value.trim();
-    const q = parseInt(document.getElementById('set-exam-q').value, 10) || 20;
-    if (!t) { toast('시험명을 입력하세요.', 'warn'); return; }
-    setTodayExamConfig(t, q); 
-    toast('오늘 시험이 설정되었습니다.', 'info'); 
-    closeModal(); 
-    if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
-    else renderDashboard();
-}
-
-function apEscapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-// [Phase 4/5 픽스] 날짜를 인자로 받아 해당 날짜의 일지를 생성
+// [보존 유지] 일지 자동 취합 로직 (중등부 필터 및 실제 수업일 기반)
 function buildJournalContent(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
+    const teacherName = getTeacherNameForUI();
+    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${teacherName}\n\n`;
 
-    // 날짜 무관하게 해당 선생님의 반을 불러옴
-    const activeClasses = state.db.classes.filter(c => c.is_active !== 0);
+    const activeClasses = state.db.classes.filter(c => {
+        if (c.is_active === 0) return false;
+        const gradeMatch = c.grade && (c.grade.includes('중1') || c.grade.includes('중2') || c.grade.includes('중3'));
+        const nameMatch = c.name && (c.name.startsWith('중1') || c.name.startsWith('중2') || c.name.startsWith('중3'));
+        return gradeMatch || nameMatch;
+    });
 
-    if (activeClasses.length === 0) {
-        text += `✅ 담당 학급이 없습니다.\n`;
+    const scheduledClasses = activeClasses.filter(cls => isClassScheduledOnDate(cls.id, targetDate));
+
+    if (scheduledClasses.length === 0) {
+        text += `✅ 해당 날짜에 중등부 수업 반이 없습니다.\n`;
         return text;
     }
 
-    activeClasses.forEach(cls => {
-        text += `■ ${cls.name}반\n`;
+    scheduledClasses.forEach(cls => {
+        const classLabel = String(cls.name || '').endsWith('반') ? cls.name : `${cls.name}반`;
+        text += `■ ${classLabel}\n`;
 
-        // 1. 출결 / 숙제 수집 (해당 날짜 기준)
         const memberIds = state.db.class_students.filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
         const students = state.db.students.filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
 
@@ -1213,7 +1251,6 @@ function buildJournalContent(dateStr) {
             if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
         }
 
-        // 2. 수업 기록 수집 (해당 날짜 기준 DB 연동)
         const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
         if (dailyRecord) {
             const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
@@ -1229,7 +1266,6 @@ function buildJournalContent(dateStr) {
             text += `- 진도: (수업 기록 미입력)\n`;
         }
 
-        // 3. 상담 내역 수집
         const cns = (state.db.consultations || []).filter(c => c.date === targetDate && memberIds.includes(String(c.student_id)));
         if (cns.length > 0) {
             text += `- 상담:\n`;
@@ -1245,9 +1281,9 @@ function buildJournalContent(dateStr) {
     return text.trim() + '\n';
 }
 
-// [Phase 4/5 픽스] 날짜 선택 기능 추가
 function openDailyJournalModal(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
+    const teacherName = getTeacherNameForUI();
 
     if (state.ui.viewScope === 'all' || state.auth.role === 'admin') {
         renderAdminJournalList(targetDate);
@@ -1255,7 +1291,7 @@ function openDailyJournalModal(dateStr) {
     }
 
     const journals = state.db.journals || [];
-    const myJournal = journals.find(j => j.date === targetDate && j.teacher_name === state.ui.userName);
+    const myJournal = journals.find(j => j.date === targetDate && j.teacher_name === teacherName);
 
     const content = myJournal ? myJournal.content : buildJournalContent(targetDate);
     const status = myJournal ? myJournal.status : '작성중';
@@ -1296,8 +1332,9 @@ async function saveJournal(status, existingId = null, targetDate) {
     if (!el) return toast('일지 입력칸을 찾을 수 없습니다.', 'warn');
 
     const content = el.value;
+    const teacherName = getTeacherNameForUI();
     const journals = state.db.journals || [];
-    const myJournal = journals.find(j => j.date === targetDate && j.teacher_name === state.ui.userName);
+    const myJournal = journals.find(j => j.date === targetDate && j.teacher_name === teacherName);
 
     const journalId = existingId || myJournal?.id;
     let result;
@@ -1314,9 +1351,20 @@ async function saveJournal(status, existingId = null, targetDate) {
     await loadData();
 }
 
-function renderAdminJournalList(dateStr) {
+// [개편] 선생님별 필터 기능이 추가된 원장용 일지 확인 (뒤로가기 지원)
+function renderAdminJournalList(dateStr, teacherName = '') {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    const journals = (state.db.journals || []).filter(j => j.date === targetDate && j.status !== '작성중');
+    const journals = (state.db.journals || []).filter(j => 
+        j.date === targetDate && 
+        j.status !== '작성중' && 
+        (!teacherName || j.teacher_name === teacherName)
+    );
+
+    const safeTName = (teacherName || '').replace(/'/g, "\\'");
+    const headerHtml = teacherName ? `
+        <div style="margin-bottom:16px;">
+            <button class="btn" style="font-size:12px; padding:6px 12px; border-color:var(--border);" onclick="openAdminTeacherPanel('${safeTName}')">← 선생님 메뉴</button>
+        </div>` : '';
 
     const rows = journals.map(j => `
         <div class="card" style="padding:12px; margin-bottom:10px; cursor:pointer; border-color:${j.status === '결재완료' ? '#34a853' : 'var(--primary)'};" onclick="openAdminJournalFeedback('${j.id}')">
@@ -1328,10 +1376,11 @@ function renderAdminJournalList(dateStr) {
         </div>
     `).join('');
 
-    showModal(`📑 일지 보관함`, `
+    showModal(`📑 ${teacherName ? `${teacherName} 선생님 ` : ''}일지 보관함`, `
+        ${headerHtml}
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; background:#f8f9fa; padding:8px; border-radius:8px; border:1px solid var(--border);">
             <b style="font-size:13px; color:var(--primary);">결재 기준일:</b>
-            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left;" onchange="renderAdminJournalList(this.value)">
+            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left;" onchange="renderAdminJournalList(this.value, '${safeTName}')">
         </div>
         <div style="max-height:55vh; overflow-y:auto;">${journals.length ? rows : '<div style="text-align:center; opacity:0.5; padding:20px;">제출된 일지가 없습니다.</div>'}</div>
     `);
@@ -1358,5 +1407,11 @@ async function approveJournal(id, dateStr) {
     toast('결재가 완료되었습니다.', 'success');
     closeModal();
     await loadData();
-    renderAdminJournalList(dateStr);
+    
+    // 결재 후 선생님 일지 목록으로 복귀
+    if (state.ui.currentAdminTeacherName) {
+        renderAdminJournalList(dateStr, state.ui.currentAdminTeacherName);
+    } else {
+        renderAdminJournalList(dateStr);
+    }
 }
