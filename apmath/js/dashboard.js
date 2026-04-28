@@ -264,9 +264,9 @@ function openAddressBook() {
             <button class="btn" style="padding:10px; flex:1; font-size:12px;" onclick="closeModal(); openAddStudent();">학생 추가</button>
             <button class="btn" style="padding:10px; flex:1; font-size:12px; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="openGlobalPinManagement()">PIN관리</button>
         </div>
-        <div style="display:flex; gap:8px; margin-bottom:16px;">
-            <input id="ab-search" class="btn" placeholder="이름 검색" style="flex:1; text-align:left; background:var(--surface-2); border:none;" oninput="renderAddressBookList()">
-            <select id="ab-class" class="btn" style="flex:1; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체학급</option>${classOptions}</select>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+            <input id="ab-search" class="btn" placeholder="이름 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="renderAddressBookList()">
+            <select id="ab-class" class="btn" style="width:100%; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체 학급</option>${classOptions}</select>
         </div>
         <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px; padding-right:4px;"></div>
     `);
@@ -804,6 +804,25 @@ function openOperationMenu() {
     `);
 }
 
+function getClassGradeRank(grade) {
+    const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    const idx = order.indexOf(grade);
+    return idx >= 0 ? idx : 99;
+}
+
+function sortClassesForDashboard(classes) {
+    const today = String(new Date().getDay());
+    return [...classes].sort((a, b) => {
+        const aToday = (!a.schedule_days || a.schedule_days.split(',').includes(today)) ? 0 : 1;
+        const bToday = (!b.schedule_days || b.schedule_days.split(',').includes(today)) ? 0 : 1;
+        if (aToday !== bToday) return aToday - bToday;
+        const aRank = getClassGradeRank(a.grade);
+        const bRank = getClassGradeRank(b.grade);
+        if (aRank !== bRank) return aRank - bRank;
+        return (a.name || '').localeCompare(b.name || '');
+    });
+}
+
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
@@ -858,40 +877,69 @@ function computeDashboardData() {
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
     const n = s.activeCount || 1;
-    const attRate = Math.round((s.present / n) * 100);
-    const hwRate = Math.round(((n - s.hwNotDone) / n) * 100);
-    
+
+    const hasAbsent = s.absent > 0;
+    const hasHwMiss = s.hwNotDone > 0;
+
     if (!s.isScheduled) {
         return `
-            <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 120px; padding: 18px; opacity:0.85; background:var(--surface); border:1px solid var(--border);">
-                <div>
-                    <div style="font-weight:900; font-size:16px; color:var(--text); display:flex; justify-content:space-between; align-items:center;">
-                        ${cls.name} <span style="font-size:11px; font-weight:700; color:var(--secondary); background:var(--surface-2); padding:4px 8px; border-radius:6px;">재원 ${s.activeCount}</span>
+            <div onclick="renderClass('${cls.id}')" style="cursor:pointer; position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1.5px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
+                <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:var(--border); border-radius:20px 0 0 20px;"></div>
+                <div style="padding-left:6px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <span style="font-weight:900; font-size:15px; color:var(--secondary);">${cls.name}</span>
+                        <span style="font-size:10px; font-weight:700; color:var(--secondary); background:var(--surface); padding:3px 8px; border-radius:20px; border:1px solid var(--border);">재원 ${s.activeCount}</span>
                     </div>
-                </div>
-                <div style="margin-top:16px; font-size:13px; font-weight:700; color:var(--secondary); text-align:center; background:var(--surface-2); padding:10px; border-radius:10px;">
-                    오늘 수업 없음
+                    <div style="font-size:12px; font-weight:800; color:var(--secondary); background:var(--surface); padding:7px 10px; border-radius:8px; text-align:center;">오늘 수업 없음</div>
                 </div>
             </div>
         `;
     }
 
+    let accentColor, gradientBg, borderColor, shadowColor, chipBg, chipColor, chipLabel;
+
+    if (hasAbsent) {
+        accentColor = 'var(--error)';
+        gradientBg = 'linear-gradient(135deg, rgba(255,71,87,0.08) 0%, var(--surface) 100%)';
+        borderColor = 'rgba(255,71,87,0.35)';
+        shadowColor = 'rgba(255,71,87,0.12)';
+        chipBg = 'rgba(255,71,87,0.15)';
+        chipColor = 'var(--error)';
+        chipLabel = `결석 ${s.absent}명`;
+    } else if (hasHwMiss) {
+        accentColor = 'var(--warning)';
+        gradientBg = 'linear-gradient(135deg, rgba(255,165,2,0.09) 0%, var(--surface) 100%)';
+        borderColor = 'rgba(255,165,2,0.35)';
+        shadowColor = 'rgba(255,165,2,0.12)';
+        chipBg = 'rgba(255,165,2,0.15)';
+        chipColor = '#b06000';
+        chipLabel = `미완료 ${s.hwNotDone}명`;
+    } else {
+        accentColor = 'var(--primary)';
+        gradientBg = 'linear-gradient(135deg, rgba(26,92,255,0.07) 0%, var(--surface) 100%)';
+        borderColor = 'rgba(26,92,255,0.2)';
+        shadowColor = 'rgba(26,92,255,0.09)';
+        chipBg = 'rgba(26,92,255,0.1)';
+        chipColor = 'var(--primary)';
+        chipLabel = '정상 출석';
+    }
+
     return `
-        <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 120px; padding: 18px; background:var(--surface); border:1px solid var(--border);">
-            <div>
-                <div style="font-weight:900; font-size:16px; color:var(--text); display:flex; justify-content:space-between; align-items:center;">
-                    ${cls.name} <span style="font-size:11px; font-weight:700; color:var(--secondary); background:var(--surface-2); padding:4px 8px; border-radius:6px;">재원 ${s.activeCount}</span>
+        <div onclick="renderClass('${cls.id}')" style="cursor:pointer; position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1.5px solid ${borderColor}; box-shadow:0 4px 16px ${shadowColor}; overflow:hidden;">
+            <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:${accentColor}; border-radius:20px 0 0 20px;"></div>
+            <div style="padding-left:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="font-weight:900; font-size:15px; color:#191F28;">${cls.name}</span>
+                    <span style="font-size:10px; font-weight:700; color:var(--secondary); background:var(--surface); padding:3px 8px; border-radius:20px; border:1px solid var(--border);">재원 ${s.activeCount}</span>
                 </div>
-                <div style="font-size:13px; font-weight:700; color:var(--text-soft); margin-top:10px; display:flex; align-items:center; gap:8px;">
-                    <span style="color:var(--text);">등원 <b style="font-size:15px;">${s.present}</b></span> 
-                    <span style="color:var(--border);">|</span> 
-                    <span style="color:${s.absent > 0 ? 'var(--error)' : 'var(--secondary)'}; background:${s.absent > 0 ? 'rgba(255,71,87,0.1)' : 'transparent'}; padding:${s.absent > 0 ? '2px 8px' : '0'}; border-radius:6px;">결석 <b style="font-size:15px;">${s.absent}</b></span>
-                </div>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:14px;">
-                <span style="background:${s.hwNotDone > 0 ? 'rgba(255,165,2,0.12)' : 'var(--surface-2)'}; color:${s.hwNotDone > 0 ? 'var(--warning)' : 'var(--secondary)'}; padding:4px 8px; border-radius:6px; font-size:11px; font-weight:800;">미완료 ${s.hwNotDone}명</span>
-                <div style="font-size:11px; font-weight:600; color:var(--secondary);">
-                    출석 ${attRate}% · 숙제 ${hwRate}%
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <div style="background:var(--surface); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:#191F28;">
+                        등원 <span style="font-size:15px; color:var(--success);">${s.present}</span>
+                    </div>
+                    <div style="background:var(--surface); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:#191F28;">
+                        결석 <span style="font-size:15px; color:${s.absent > 0 ? 'var(--error)' : 'var(--secondary)'};">${s.absent}</span>
+                    </div>
+                    <span style="background:${chipBg}; color:${chipColor}; padding:5px 10px; border-radius:20px; font-size:11px; font-weight:900; margin-left:auto;">${chipLabel}</span>
                 </div>
             </div>
         </div>
@@ -940,17 +988,17 @@ function renderTodoSections() {
     }
 
     return `
-        <div style="margin-bottom:32px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 4px;">
-                <h3 style="margin:0; font-size:16px; font-weight:900; color:var(--text);">오늘일정</h3>
+        <div style="margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+                <h3 style="margin:0; font-size:15px; font-weight:900; color:var(--text);">오늘일정</h3>
             </div>
-            <div class="card" style="margin-bottom:20px; padding:0; overflow:hidden; border:none; box-shadow:var(--shadow); border-radius:16px;">${todayHtml}</div>
+            <div style="margin-bottom:14px; overflow:hidden; border-radius:16px; box-shadow:0 4px 16px rgba(26,92,255,0.10); border:1.5px solid rgba(26,92,255,0.13); background:linear-gradient(135deg,rgba(26,92,255,0.06) 0%,var(--surface) 100%);">${todayHtml}</div>
             
             ${upcomingHtml ? `
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 4px;">
-                    <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--secondary);">주간일정</h3>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+                    <h3 style="margin:0; font-size:14px; font-weight:700; color:var(--secondary);">주간일정</h3>
                 </div>
-                <div class="card" style="padding:0; overflow:hidden; border:none; box-shadow:var(--shadow); border-radius:16px;">${upcomingHtml}</div>
+                <div style="overflow:hidden; border-radius:16px; box-shadow:0 4px 14px rgba(255,165,2,0.10); border:1.5px solid rgba(255,165,2,0.18); background:linear-gradient(135deg,rgba(255,165,2,0.07) 0%,var(--surface) 100%);">${upcomingHtml}</div>
             ` : ''}
         </div>
     `;
@@ -965,12 +1013,12 @@ function renderDashboard() {
     const teacherName = typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당');
 
     const appHeader = `
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; padding:2px 4px 0;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; padding:2px 4px 0;">
             <div style="display:flex; align-items:center; gap:12px; min-width:0;">
-                <button class="btn" style="width:40px; height:40px; padding:0; border:none; background:transparent; color:var(--text); font-size:24px; line-height:1;" onclick="openAppDrawer()">☰</button>
+                <button class="btn" style="width:36px; height:36px; padding:0; border:none; background:transparent; color:var(--text); font-size:22px; line-height:1;" onclick="openAppDrawer()">☰</button>
                 <div style="min-width:0;">
-                    <div style="font-size:20px; font-weight:900; color:var(--text); letter-spacing:-0.5px;">AP Math OS</div>
-                    <div style="font-size:13px; font-weight:600; color:var(--secondary); margin-top:2px;">${teacherName} 선생님</div>
+                    <div style="font-size:18px; font-weight:900; color:var(--text); letter-spacing:-0.5px;">AP Math OS</div>
+                    <div style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:1px;">${teacherName} 선생님</div>
                 </div>
             </div>
         </div>
@@ -991,18 +1039,18 @@ function renderDashboard() {
     };
 
     const closeBanner = closeData.totalActive === 0
-        ? `${syncWarning}<div class="card" style="margin-bottom:24px; padding:20px;"><b style="color:var(--text); font-size:15px; font-weight:900;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
+        ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:12px 14px;"><b style="color:var(--text); font-size:15px; font-weight:900;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
         : closeData.allClear
-            ? `${syncWarning}<div class="card" style="margin-bottom:24px; padding:20px; border-left:4px solid var(--success);"><b style="font-size:15px; font-weight:900; color:var(--text);">모든 학생 등원 및 과제 완료</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; display:block; margin-top:4px;">예외사항이 없습니다.</span></div>`
-            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:24px; padding:20px; cursor:pointer; border-left:4px solid var(--warning);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--secondary); font-weight:900;">›</span></div></div>`;
+            ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:12px 14px; border-left:4px solid var(--success);"><b style="font-size:15px; font-weight:900; color:var(--text);">모든 학생 등원 및 과제 완료</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; display:block; margin-top:4px;">예외사항이 없습니다.</span></div>`
+            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:14px; padding:12px 14px; cursor:pointer; border-left:4px solid var(--warning);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--secondary); font-weight:900;">›</span></div></div>`;
 
     const todoSections = renderTodoSections();
-    const classes = state.db.classes.filter(c => c.is_active !== 0);
+    const classes = sortClassesForDashboard(state.db.classes.filter(c => c.is_active !== 0));
     const classStatus = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 4px;">
-            <h3 style="margin:0; font-size:16px; font-weight:900; color:var(--text);">학급관리</h3>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+            <h3 style="margin:0; font-size:15px; font-weight:900; color:var(--text);">학급관리</h3>
         </div>
-        <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
+        <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:10px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
     root.innerHTML = appHeader + closeBanner + todoSections + classStatus;
