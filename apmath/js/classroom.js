@@ -74,7 +74,7 @@ function renderClass(cid) {
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
                 <div style="min-width:0;">
-                    <div style="font-size:20px; font-weight:900; color:#191F28; letter-spacing:-0.5px; line-height:1.2;">${cls.name}</div>
+                    <div style="font-size:20px; font-weight:900; color:var(--text); letter-spacing:-0.5px; line-height:1.2;">${cls.name}</div>
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:2px;">${formatClassScheduleDays(cls.schedule_days)}</div>
                 </div>
             </div>
@@ -82,13 +82,13 @@ function renderClass(cid) {
         </div>
         
         <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:24px;">
-            <button class="btn" style="padding:16px 4px; font-size:12px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:10px; border-radius:18px; background:var(--surface); border:none; box-shadow:var(--shadow); color:#191F28;" onclick="openQrGenerator('${cid}')">
+            <button class="btn" style="padding:16px 4px; font-size:12px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:10px; border-radius:18px; background:var(--surface); border:none; box-shadow:var(--shadow); color:var(--text);" onclick="openQrGenerator('${cid}')">
                 <span style="color:var(--primary);">${icons.qr}</span> <span>QR/OMR</span>
             </button>
-            <button class="btn" style="padding:16px 4px; font-size:12px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:10px; border-radius:18px; background:var(--surface); border:none; box-shadow:var(--shadow); color:#191F28;" onclick="openExamGradeView('${cid}')">
+            <button class="btn" style="padding:16px 4px; font-size:12px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:10px; border-radius:18px; background:var(--surface); border:none; box-shadow:var(--shadow); color:var(--text);" onclick="openExamGradeView('${cid}')">
                 <span style="color:var(--primary);">${icons.grade}</span> <span>시험성적</span>
             </button>
-            <button class="btn" style="padding:16px 4px; font-size:12px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:10px; border-radius:18px; background:var(--surface); border:none; box-shadow:var(--shadow); color:#191F28;" onclick="openClinicBasketForClass('${cid}')">
+            <button class="btn" style="padding:16px 4px; font-size:12px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:10px; border-radius:18px; background:var(--surface); border:none; box-shadow:var(--shadow); color:var(--text);" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');">
                 <span style="color:var(--primary);">${icons.clinic}</span> <span>클리닉</span>
             </button>
             <button class="btn btn-primary" style="padding:16px 4px; font-size:12px; font-weight:800; display:flex; flex-direction:column; align-items:center; gap:10px; border-radius:18px;" onclick="openClassRecordModal('${cid}')">
@@ -99,9 +99,9 @@ function renderClass(cid) {
 
     const statusBarHtml = summary.isScheduled
         ? `<div style="display:flex; gap:14px; align-items:center;">
-             <span>출석 <b style="color:#191F28;">${summary.att}/${summary.total}</b></span>
+             <span>출석 <b style="color:var(--text);">${summary.att}/${summary.total}</b></span>
              <span style="width:1px; height:12px; background:var(--border);"></span>
-             <span>숙제 <b style="color:#191F28;">${summary.hw}/${summary.total}</b></span>
+             <span>숙제 <b style="color:var(--text);">${summary.hw}/${summary.total}</b></span>
            </div>`
         : `<span style="color:var(--warning); font-weight:800;">정규 수업일이 아닙니다.</span>`;
 
@@ -113,7 +113,7 @@ function renderClass(cid) {
         </div>
         <div class="card" style="padding:8px 0; border-radius:20px;">
             <div style="padding:12px 20px 14px; border-bottom:1px solid var(--border);">
-                <h2 style="font-size:16px; font-weight:900; color:#191F28; margin:0;">학생 명단</h2>
+                <h2 style="font-size:16px; font-weight:900; color:var(--text); margin:0;">학생 명단</h2>
             </div>
             <table style="width:100%; border-collapse:collapse;">
                 <thead>
@@ -175,7 +175,7 @@ function openClassRecordModal(cid) {
         
         return `
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-            <label style="display:flex; align-items:center; gap:10px; font-size:13px; font-weight:800; min-width:120px; color:#191F28; cursor:pointer;">
+            <label style="display:flex; align-items:center; gap:10px; font-size:13px; font-weight:800; min-width:120px; color:var(--text); cursor:pointer;">
                 <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${String(tb.title).replace(/"/g, '&quot;')}" ${isChecked} style="transform:scale(1.3); accent-color:var(--primary);">
                 ${String(tb.title)}
             </label>
@@ -189,7 +189,7 @@ function openClassRecordModal(cid) {
     showModal('진도관리', `
         <div style="margin-bottom:24px;">
             <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-                <h4 style="margin:0; font-size:16px; font-weight:900; color:#191F28;">교재별 진도</h4>
+                <h4 style="margin:0; font-size:16px; font-weight:900; color:var(--text);">교재별 진도</h4>
                 <span style="font-size:12px; font-weight:700; color:var(--secondary);">${todayStr}</span>
             </div>
             <div style="background:var(--surface); padding:4px 0;">
@@ -197,7 +197,7 @@ function openClassRecordModal(cid) {
             </div>
         </div>
         <div style="margin-bottom:28px;">
-            <h4 style="margin:0 0 12px 0; font-size:16px; font-weight:900; color:#191F28;">특이사항</h4>
+            <h4 style="margin:0 0 12px 0; font-size:16px; font-weight:900; color:var(--text);">특이사항</h4>
             <textarea id="record-special-note" class="btn" placeholder="전달사항이나 수업 메모를 입력하세요." style="width:100%; height:110px; text-align:left; resize:vertical; font-family:inherit; font-size:14px; background:var(--bg); border:none; padding:16px; line-height:1.7; border-radius:16px;">${prevNote}</textarea>
         </div>
         <button class="btn btn-primary" style="width:100%; padding:18px; font-size:16px; font-weight:900; border-radius:18px; box-shadow:0 6px 16px rgba(26,92,255,0.25);" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>
@@ -265,7 +265,7 @@ function renderAttendanceLedger() {
                 <button class="btn" style="width:44px; height:44px; padding:0; border:none; border-radius:14px; background:var(--surface); box-shadow:var(--shadow); color:var(--secondary);" onclick="openAppDrawer()">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
-                <div style="font-size:22px; font-weight:950; color:#191F28; letter-spacing:-0.5px;">출석부</div>
+                <div style="font-size:22px; font-weight:950; color:var(--text); letter-spacing:-0.5px;">출석부</div>
             </div>
             <button class="btn" style="padding:10px 16px; font-size:13px; font-weight:800; background:var(--bg); border:none; border-radius:12px;" onclick="goDashboardFromLedger()">홈으로</button>
         </div>
@@ -325,7 +325,7 @@ function renderLedgerTable() {
             : (status === '완료' ? 'background:rgba(26,92,255,0.1); color:var(--primary);' : 'background:rgba(255,165,2,0.15); color:var(--warning); font-weight:900;');
         
         return `<tr style="border-bottom:1px solid var(--bg);">
-            <td style="padding:16px 20px; font-weight:800; color:#191F28; font-size:14px;">${s.name}</td>
+            <td style="padding:16px 20px; font-weight:800; color:var(--text); font-size:14px;">${s.name}</td>
             <td style="padding:16px 10px; color:var(--secondary); font-size:12px; font-weight:500;">${s.school_name}</td>
             <td style="padding:16px 20px; text-align:right;">
                 <button class="btn" style="padding:6px 14px; font-size:11px; min-width:64px; border:none; border-radius:10px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button>
@@ -477,7 +477,7 @@ async function openExamGradeView(classId) {
             : `<span style="font-size:10px; font-weight:800; background:var(--bg); color:var(--secondary); padding:3px 8px; border-radius:6px; margin-left:8px;">제출됨</span>`;
         
         return `<div class="exam-grade-row" onclick="openExamDetail('${classId}','${String(ex.title).replace(/'/g,"\\'")}','${ex.date}')" style="padding:16px; border:1px solid var(--border); border-radius:14px; margin-bottom:12px; cursor:pointer; background:var(--surface); box-shadow:var(--shadow);">
-            <div style="font-weight:800; color:#191F28; line-height:1.4; font-size:15px;">${ex.title}${sourceBadge}</div>
+            <div style="font-weight:800; color:var(--text); line-height:1.4; font-size:15px;">${ex.title}${sourceBadge}</div>
             <div style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px; display:flex; align-items:center; gap:6px;">
                 <span>${ex.date || '날짜 없음'}</span>
                 <span style="width:3px; height:3px; background:var(--border); border-radius:50%;"></span>
@@ -497,7 +497,7 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     try {
         const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`);
-        if (res && Array.isArray(res.blueprints)) setExamBlueprintsForFiles(res.blueprints);
+        if (res && Array.isArray(res.blueprints) && typeof setExamBlueprintsForFiles === 'function') setExamBlueprintsForFiles(res.blueprints);
         if (res && Array.isArray(res.sessions)) sessionSource = res.sessions;
         if (res && Array.isArray(res.wrong_answers)) wrongSource = res.wrong_answers;
         if (res && Array.isArray(res.assignments)) assignmentSource = res.assignments;
@@ -541,7 +541,7 @@ async function openExamDetail(classId, examTitle, examDate) {
         const sArchive = s.session?.archive_file ? String(s.session.archive_file).replace(/'/g, "\\'") : examArchiveFile;
         return `<tr>
             <td style="padding:14px 4px; font-weight:800; color:var(--primary); font-size:14px;">${s.name}</td>
-            <td style="text-align:center; font-weight:800; color:#191F28; padding:14px 4px;">${s.score}점</td>
+            <td style="text-align:center; font-weight:800; color:var(--text); padding:14px 4px;">${s.score}점</td>
             <td style="padding:14px 4px;">
                 <div style="display:flex; flex-wrap:wrap; gap:4px;">
                     ${s.wrongs.length ? s.wrongs.map(qid => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(s.session, qid) : `<span style="background:rgba(255,71,87,0.1); color:var(--error); padding:2px 7px; border-radius:6px; font-size:11px; font-weight:700;">${qid}</span>`).join('') : '<span style="color:var(--secondary); font-size:11px;">없음</span>'}
@@ -568,7 +568,7 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     showModal(`${examTitle}`, `
         <div style="padding:14px; background:var(--bg); border-radius:14px; margin-bottom:16px; text-align:center;">
-            <div style="font-size:13px; font-weight:800; color:#191F28;">제출 완료: <b style="color:var(--success);">${submitted.length}명</b> / 전체 ${submitted.length + pending.length}명</div>
+            <div style="font-size:13px; font-weight:800; color:var(--text);">제출 완료: <b style="color:var(--success);">${submitted.length}명</b> / 전체 ${submitted.length + pending.length}명</div>
             <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:4px;">${examDate} · ${qCount}문항 기준</div>
         </div>
         <div style="margin-bottom:16px; border:1px solid rgba(26,92,255,0.2); border-radius:14px; padding:12px; background:rgba(26,92,255,0.02);">
@@ -598,7 +598,7 @@ async function deleteExamSession(sessionId, classId, examTitle, examDate) {
     const r = await api.delete('exam-sessions', sessionId);
     if (!r?.success) { toast('삭제 실패', 'warn'); return; }
     toast('기록이 삭제되었습니다.', 'info');
-    closeModal(); await loadData(); openExamDetail(classId, examTitle, examDate);
+    closeModal(); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate);
 }
 
 async function deleteExamByClass(classId, examTitle, examDate) {
@@ -610,6 +610,6 @@ async function deleteExamByClass(classId, examTitle, examDate) {
         const data = await r.json();
         if (!r.ok || !data.success) { toast('시험 전체삭제 실패', 'warn'); return; }
         toast('시험 전체 기록이 삭제되었습니다.', 'info');
-        closeModal(); await loadData(); openExamGradeView(classId);
+        closeModal(); await refreshDataOnly(); openExamGradeView(classId);
     } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
 }
