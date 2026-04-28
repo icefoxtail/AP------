@@ -30,7 +30,7 @@ let state = {
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
         exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
-        consultations: [], operation_memos: [], exam_schedules: []
+        consultations: [], operation_memos: [], exam_schedules: [], journals: []
     }
 };
 
@@ -163,7 +163,8 @@ async function loadData(isInitial = false) {
         homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
         consultations: Array.isArray(data.consultations) ? data.consultations : [],
         operation_memos: Array.isArray(data.operation_memos) ? data.operation_memos : [],
-        exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : []
+        exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : [],
+        journals: Array.isArray(data.journals) ? data.journals : []
     };
     
     if (state.ui.currentClassId) {
@@ -194,7 +195,8 @@ async function refreshDataOnly() {
         homework_history: Array.isArray(data.homework_history) ? data.homework_history : [],
         consultations: Array.isArray(data.consultations) ? data.consultations : [],
         operation_memos: Array.isArray(data.operation_memos) ? data.operation_memos : [],
-        exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : []
+        exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : [],
+        journals: Array.isArray(data.journals) ? data.journals : (state.db.journals || [])
     };
 }
 
@@ -1011,8 +1013,8 @@ async function buildSimilarQuestionCandidates(item, limit = 10) {
                     standardUnit: q.standardUnit || qUnitKey || '',
                     standardCourse: q.standardCourse || entry.primaryStandardCourse || '',
                     conceptClusterKey: qCluster,
-                    contentPreview: String(q.content || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 90),
-                    preview: String(q.content || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 90),
+                    contentPreview: String(q.content || '').replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim().slice(0, 90),
+                    preview: String(q.content || '').replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim().slice(0, 90),
                     matchType: isExact ? 'standardUnitKey' : 'conceptClusterKey'
                 };
 
@@ -1124,7 +1126,7 @@ function makeClinicPrintTitle(context = null) {
 
 function normalizeClinicSourceFile(file) {
     const path = normalizeArchivePath(file);
-    return path.replace(/^\.\//, '');
+    return path.replace(/^\\.\\//, '');
 }
 
 function getQuestionNumberFromClinicItem(item) {
@@ -1144,7 +1146,7 @@ function findQuestionInBank(questionBank, questionNo) {
 
 function cloneQuestionForClinicPrint(original, item, outputNo, bankData) {
     const sourceFile = normalizeClinicSourceFile(item.archiveFile || item.file || item.sourceFile || item._sourceFile || '');
-    const sourceTitle = item.sourceTitle || item.examTitle || bankData?.examTitle || sourceFile.replace(/^exams\//, '').replace(/\.js$/, '');
+    const sourceTitle = item.sourceTitle || item.examTitle || bankData?.examTitle || sourceFile.replace(/^exams\\//, '').replace(/\\.js$/, '');
     const sourceQuestionNo = getQuestionNumberFromClinicItem(item) ?? original?.id ?? outputNo;
     const q = JSON.parse(JSON.stringify(original || {}));
 

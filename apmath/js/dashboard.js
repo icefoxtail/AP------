@@ -1,6 +1,7 @@
 /**
  * AP Math OS v26.1.2 [js/dashboard.js]
  * 대시보드 및 원장 전용 학원 운영센터 (5G Phase 3 - 운영센터 심화 및 모바일 최적화)
+ * Phase 4/5: 교재 관리 및 오늘의 일지 기능 안전 이식 완료
  */
 
 function copyPhoneNumber(text) {
@@ -373,6 +374,7 @@ function openAddClassModal() {
             </select>
             <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left;">
             <input id="add-cls-teacher" class="btn" value="박준성" placeholder="담당 교사" style="text-align:left;">
+            <input id="add-cls-textbook" class="btn" placeholder="교재 (선택)" style="text-align:left;">
             
             <label style="font-size:12px; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
@@ -388,8 +390,9 @@ async function handleAddClass() {
     const grade = document.getElementById('add-cls-grade').value;
     const subject = document.getElementById('add-cls-subject').value.trim();
     const teacher_name = document.getElementById('add-cls-teacher').value.trim();
+    const textbook = document.getElementById('add-cls-textbook').value.trim();
     const schedule_days = Array.from(document.querySelectorAll('.add-cls-days:checked')).map(e => e.value).join(',');
-    const r = await api.post('classes', { name, grade, subject, teacher_name, schedule_days });
+    const r = await api.post('classes', { name, grade, subject, teacher_name, schedule_days, textbook });
     if (r.success) { toast('새 반이 추가되었습니다.', 'success'); await loadData(); openClassManageModal(); }
 }
 
@@ -404,6 +407,7 @@ function openEditClassModal(cid) {
             </select>
             <input id="edit-cls-subject" class="btn" value="${c.subject||''}" placeholder="과목" style="text-align:left;">
             <input id="edit-cls-teacher" class="btn" value="${c.teacher_name||''}" placeholder="담당 교사" style="text-align:left;">
+            <input id="edit-cls-textbook" class="btn" value="${c.textbook || ''}" placeholder="교재 (선택)" style="text-align:left;">
             <label style="font-size:12px; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
@@ -419,8 +423,9 @@ async function handleEditClass(cid) {
     const grade = document.getElementById('edit-cls-grade').value;
     const subject = document.getElementById('edit-cls-subject').value.trim();
     const teacher_name = document.getElementById('edit-cls-teacher').value.trim();
+    const textbook = document.getElementById('edit-cls-textbook').value.trim();
     const schedule_days = Array.from(document.querySelectorAll('.edit-cls-days:checked')).map(e => e.value).join(',');
-    const payload = { name, grade, subject, teacher_name, schedule_days, is_active: c.is_active !== undefined ? c.is_active : 1 };
+    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: c.is_active !== undefined ? c.is_active : 1 };
     const r = await api.patch(`classes/${cid}`, payload);
     if (r.success) { toast('반 정보가 수정되었습니다.', 'success'); await loadData(); openClassManageModal(); }
 }
@@ -428,7 +433,7 @@ async function handleEditClass(cid) {
 async function toggleClassActive(cid, status) {
     if (!confirm(status === 0 ? '이 반을 숨김 처리하시겠습니까?' : '이 반을 복구하시겠습니까?')) return;
     const c = state.db.classes.find(x => x.id === cid);
-    const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, is_active: status };
+    const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, textbook: c.textbook || '', is_active: status };
     const r = await api.patch(`classes/${cid}`, payload);
     if (r.success) { toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info'); await loadData(); openClassManageModal(); }
 }
@@ -482,7 +487,7 @@ async function toggleMemoDone(id, done) {
         await loadData(); 
         if(document.getElementById('new-memo-content') || document.getElementById('edit-memo-content')) openTodoMemoModal(); 
         else {
-            if (state.auth.role === 'admin') renderAdminControlCenter();
+            if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
             else renderDashboard();
         }
     }
@@ -823,7 +828,7 @@ function renderDashboard() {
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openOperationMenu()">⚙️ 운영</button>
-                <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;" onclick="copyAcademySummary()">📋 요약 복사</button>
+                <button class="btn btn-primary" style="padding:6px 10px; font-size:11px;" onclick="openDailyJournalModal()">📝 오늘의 일지</button>
             </div>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(80px, 1fr)); gap:10px; margin-bottom:28px;">
@@ -1042,7 +1047,7 @@ function setTodayExamConfig(title, q) {
 
 function clearTodayExamConfig() { 
     localStorage.removeItem('AP_TODAY_EXAM'); 
-    if(state.auth.role === 'admin') renderAdminControlCenter();
+    if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
     else renderDashboard();
 }
 
@@ -1058,6 +1063,202 @@ function handleSetTodayExam() {
     setTodayExamConfig(t, q); 
     toast('오늘 시험이 설정되었습니다.', 'info'); 
     closeModal(); 
-    if(state.auth.role === 'admin') renderAdminControlCenter();
+    if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
     else renderDashboard();
+}
+
+function apEscapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function buildJournalContent() {
+    const today = new Date().toLocaleDateString('sv-SE');
+    let text = `[AP Math 운영 일지 - ${today}]\n작성자: ${state.ui.userName}\n\n`;
+
+    const activeClasses = state.db.classes.filter(c =>
+        c.is_active !== 0 &&
+        c.teacher_name === state.ui.userName &&
+        isClassScheduledToday(c.id)
+    );
+
+    if (activeClasses.length === 0) {
+        text += `✅ 오늘은 예정된 정규 수업이 없습니다.\n`;
+        return text;
+    }
+
+    activeClasses.forEach(cls => {
+        text += `■ ${cls.name}반${cls.textbook ? ` (${cls.textbook})` : ''}\n`;
+
+        const memberIds = state.db.class_students
+            .filter(m => String(m.class_id) === String(cls.id))
+            .map(m => String(m.student_id));
+
+        const students = state.db.students.filter(s =>
+            memberIds.includes(String(s.id)) &&
+            s.status === '재원'
+        );
+
+        const absents = [];
+        const hwMiss = [];
+        const scores = [];
+
+        students.forEach(s => {
+            const att = state.db.attendance.find(a =>
+                String(a.student_id) === String(s.id) &&
+                a.date === today
+            );
+            const hw = state.db.homework.find(h =>
+                String(h.student_id) === String(s.id) &&
+                h.date === today
+            );
+            const exam = state.db.exam_sessions.find(e =>
+                String(e.student_id) === String(s.id) &&
+                e.exam_date === today
+            );
+
+            if (att?.status === '결석') absents.push(s.name);
+            if (hw?.status === '미완료') hwMiss.push(s.name);
+            if (exam) scores.push(`${s.name} ${exam.score}점`);
+        });
+
+        text += `- 출결: 결석 ${absents.length}명${absents.length ? ` (${absents.join(', ')})` : ''}\n`;
+        text += `- 숙제: 미완료 ${hwMiss.length}명${hwMiss.length ? ` (${hwMiss.join(', ')})` : ''}\n`;
+        if (scores.length > 0) {
+            text += `- 금일 시험 점수: ${scores.join(', ')}\n`;
+        }
+        text += `\n`;
+    });
+
+    return text;
+}
+
+function openDailyJournalModal() {
+    const today = new Date().toLocaleDateString('sv-SE');
+
+    if (state.ui.viewScope === 'all' || state.auth.role === 'admin') {
+        renderAdminJournalList(today);
+        return;
+    }
+
+    const journals = state.db.journals || [];
+    const myJournal = journals.find(j =>
+        j.date === today &&
+        j.teacher_name === state.ui.userName
+    );
+
+    const content = myJournal ? myJournal.content : buildJournalContent();
+    const status = myJournal ? myJournal.status : '작성중';
+    const isLocked = status === '제출완료' || status === '결재완료';
+
+    let actionBtns = '';
+    if (!myJournal || status === '작성중') {
+        actionBtns = `
+            <button class="btn" style="flex:1; padding:12px;" onclick="saveJournal('작성중')">💾 임시 저장</button>
+            <button class="btn btn-primary" style="flex:1; padding:12px;" onclick="saveJournal('제출완료')">🚀 원장님께 제출</button>
+        `;
+    } else if (status === '제출완료') {
+        actionBtns = `
+            <button class="btn" style="flex:1; padding:12px; color:var(--error); border-color:var(--error);" onclick="saveJournal('작성중', '${myJournal.id}')">↩️ 제출 취소 및 수정</button>
+        `;
+    }
+
+    showModal(`📝 오늘의 일지 (${status})`, `
+        ${status === '결재완료' ? `
+            <div style="background:#e6f4ea; border:1px solid #a8d5b5; color:#1e6b34; padding:12px; border-radius:8px; margin-bottom:12px;">
+                <b style="display:flex; align-items:center; gap:6px;"><span style="font-size:18px;">✅</span> 원장님 결재 완료</b>
+                ${myJournal.feedback ? `<div style="margin-top:8px; font-size:13px; background:white; padding:8px; border-radius:4px;"><b>원장님 코멘트:</b><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
+            </div>
+        ` : ''}
+        <textarea id="journal-content" class="btn" style="width:100%; height:260px; text-align:left; resize:vertical; font-family:inherit; font-size:13px; line-height:1.6;" ${isLocked ? 'readonly' : ''}>${content}</textarea>
+        <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
+            ${actionBtns}
+        </div>
+    `);
+}
+
+async function saveJournal(status, existingId = null) {
+    const today = new Date().toLocaleDateString('sv-SE');
+    const el = document.getElementById('journal-content');
+    if (!el) return toast('일지 입력칸을 찾을 수 없습니다.', 'warn');
+
+    const content = el.value;
+    const journals = state.db.journals || [];
+    const myJournal = journals.find(j =>
+        j.date === today &&
+        j.teacher_name === state.ui.userName
+    );
+
+    const journalId = existingId || myJournal?.id;
+
+    let result;
+    if (journalId) {
+        result = await api.patch(`daily-journals/${journalId}`, { content, status });
+    } else {
+        result = await api.post('daily-journals', { date: today, content, status });
+    }
+
+    if (!result || result.error) {
+        toast(result?.error || '일지 저장 실패', 'error');
+        return;
+    }
+
+    toast(`일지가 ${status} 처리되었습니다.`, 'success');
+    closeModal();
+    await loadData();
+}
+
+function renderAdminJournalList(date) {
+    const journals = (state.db.journals || []).filter(j =>
+        j.date === date &&
+        j.status !== '작성중'
+    );
+
+    const rows = journals.map(j => `
+        <div class="card" style="padding:12px; margin-bottom:10px; cursor:pointer; border-color:${j.status === '결재완료' ? '#34a853' : 'var(--primary)'};" onclick="openAdminJournalFeedback('${j.id}')">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; gap:8px;">
+                <b style="font-size:15px;">${apEscapeHtml(j.teacher_name)} 선생님</b>
+                <span style="font-size:11px; font-weight:bold; color:${j.status === '결재완료' ? 'var(--success)' : 'var(--primary)'}; background:${j.status === '결재완료' ? '#e6f4ea' : '#e8f0fe'}; padding:2px 6px; border-radius:4px;">${apEscapeHtml(j.status)}</span>
+            </div>
+            <div style="font-size:12px; color:var(--secondary); white-space:pre-wrap; max-height:48px; overflow:hidden; line-height:1.5;">${apEscapeHtml(j.content)}</div>
+        </div>
+    `).join('');
+
+    showModal(`📑 ${date} 제출된 일지`, `
+        <div style="max-height:60vh; overflow-y:auto;">
+            ${journals.length ? rows : '<div style="text-align:center; opacity:0.5; padding:20px;">제출된 일지가 없습니다.</div>'}
+        </div>
+    `);
+}
+
+function openAdminJournalFeedback(id) {
+    const journal = (state.db.journals || []).find(j => j.id === id);
+    if (!journal) return toast('일지를 찾을 수 없습니다.', 'warn');
+
+    showModal(`결재: ${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
+        <textarea readonly class="btn" style="width:100%; height:170px; text-align:left; resize:vertical; font-size:13px; line-height:1.6; background:#f8f9fa;">${journal.content}</textarea>
+        <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; margin-top:12px;">${journal.feedback || ''}</textarea>
+        <div style="margin-top:12px;">
+            <button class="btn btn-primary" style="width:100%; padding:12px;" onclick="approveJournal('${journal.id}')">✅ 피드백 저장 및 결재 완료</button>
+        </div>
+    `);
+}
+
+async function approveJournal(id) {
+    const feedback = document.getElementById('journal-feedback')?.value.trim() || '';
+    const result = await api.patch(`daily-journals/${id}`, { feedback });
+
+    if (!result || result.error) {
+        toast(result?.error || '결재 실패', 'error');
+        return;
+    }
+
+    toast('결재가 완료되었습니다.', 'success');
+    closeModal();
+    await loadData();
+    renderAdminJournalList(new Date().toLocaleDateString('sv-SE'));
 }
