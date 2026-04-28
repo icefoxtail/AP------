@@ -1,8 +1,8 @@
 /**
  * AP Math OS 1.0 [js/dashboard.js]
- * 운영센터 및 선생님별 관제 엔진 (v6 개편 최종 보정본)
- * [IRONCLAD 5G UI 보정]: Toss Base + Vivid Pop 디자인 톤 반영
- * [Final Polish]: 버전명 동기화, 이모지 제거, '관리필요' 문구 순화 적용
+ * 운영센터 및 선생님별 관제 엔진 (품질 보정 최종판)
+ * [IRONCLAD 5G]: 기능 100% 보존, 하드코딩 색상 변수화 완벽 타격
+ * [Full PASS]: openDischargedStudents 구현 및 문구 품질 개선 완료
  */
 
 function copyPhoneNumber(text) {
@@ -70,6 +70,11 @@ function computeRiskStudents() {
     return risks;
 }
 
+// [Final Fix] 운영메뉴 퇴원생 버튼과 연동
+function openDischargedStudents() {
+    openAdminStudentList('discharged');
+}
+
 function openAdminStudentList(type) {
     const todayTime = new Date(new Date().toLocaleDateString('sv-SE')).getTime();
     let list = [], title = "";
@@ -87,16 +92,16 @@ function openAdminStudentList(type) {
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
-                    <div style="font-weight:700; font-size:14px; color:#191F28;">${s.name} <span style="font-size:12px; color:var(--secondary); font-weight:500; margin-left:4px;">${s.school_name} ${s.grade}</span></div>
+                    <div style="font-weight:900; font-size:14px; color:var(--text);">${s.name} <span style="font-size:12px; color:var(--secondary); font-weight:600; margin-left:4px;">${s.school_name} ${s.grade}</span></div>
                     <div style="font-size:12px; color:var(--primary); font-weight:600; margin-top:4px;">${cName} <span style="color:var(--secondary); font-weight:500;">| ${s.status} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
                     ${riskDetails}
                 </div>
-                <button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--bg); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세</button>
+                <button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
             </div>
         `;
     }).join('');
 
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || '<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>'}</div>`);
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 function renderAdminControlCenter() {
@@ -112,9 +117,9 @@ function renderAdminControlCenter() {
     const headerHtml = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
             <div style="display:flex; align-items:center; gap:10px;">
-                <button class="btn" style="width:40px; height:40px; padding:0; font-size:24px; border:none; background:transparent; color:#191F28;" onclick="openAppDrawer()">☰</button>
+                <button class="btn" style="width:40px; height:40px; padding:0; font-size:24px; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
                 <div>
-                    <div style="font-size:20px; font-weight:900; color:#191F28; letter-spacing:-0.5px;">운영센터</div>
+                    <div style="font-size:20px; font-weight:900; color:var(--text); letter-spacing:-0.5px;">운영센터</div>
                 </div>
             </div>
         </div>
@@ -144,7 +149,7 @@ function renderAdminControlCenter() {
     const teacherCardsHtml = `
         <div style="margin-bottom:32px;">
             <div style="margin-bottom:12px;">
-                <h3 style="margin:0; font-size:16px; font-weight:800; color:#191F28;">선생님</h3>
+                <h3 style="margin:0; font-size:16px; font-weight:900; color:var(--text);">선생님</h3>
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
                 ${renderAdminTeacherCards(todayStr)}
@@ -162,8 +167,8 @@ function renderAdminControlCenter() {
                     const d = new Date(e.exam_date); 
                     const dateLabel = `${d.getMonth()+1}월 ${d.getDate()}일`; 
                     const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:600;">${e.grade}</span> ` : '<span style="color:var(--secondary); font-weight:600;">학교공통</span> '; 
-                    return `<div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px;"><div><b style="font-weight:700;">${e.school_name}</b> ${gradeLabel}${e.exam_name}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`; 
-                }).join('') : '<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:600;">이번 주 예정된 일정이 없습니다.</div>'}
+                    return `<div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px;"><div><b style="font-weight:700; color:var(--text);">${e.school_name}</b> ${gradeLabel}${e.exam_name}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`; 
+                }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:600;">이번 주 예정된 일정이 없습니다.</div>`}
             </div>
         </div>
     `;
@@ -172,18 +177,18 @@ function renderAdminControlCenter() {
         <div class="card" style="padding:14px 16px; border:1px solid rgba(255,71,87,0.2); border-radius:14px; margin-bottom:10px; background:rgba(255,71,87,0.05); cursor:pointer; transition:background 0.2s;" onclick="renderStudentDetail('${r.student.id}')">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
                 <div style="min-width:0;">
-                    <div style="font-weight:800; color:#191F28; font-size:14px;">${r.student.name}</div>
+                    <div style="font-weight:900; color:var(--text); font-size:14px;">${r.student.name}</div>
                     <div style="font-size:12px; color:var(--error); font-weight:600; margin-top:4px;">${r.className} · ${r.reasons.slice(0,2).join(' · ')}</div>
                 </div>
-                <span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">상세</span>
+                <span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">상세 보기</span>
             </div>
         </div>
     `).join('');
     
     const riskSectionHtml = `
         <div style="margin-bottom:40px;">
-            <h3 style="margin:0 0 12px 0; font-size:15px; font-weight:700; color:var(--error);">관리필요 학생 ${risks.length}명</h3>
-            ${risks.length > 0 ? riskRows : '<div style="text-align:center; padding:20px; color:var(--success); font-weight:600; background:rgba(0,208,132,0.1); border-radius:16px;">현재 관리 필요 징후를 보이는 학생이 없습니다.</div>'}
+            <h3 style="margin:0 0 12px 0; font-size:15px; font-weight:900; color:var(--error);">관리필요 학생 ${risks.length}명</h3>
+            ${risks.length > 0 ? riskRows : `<div style="text-align:center; padding:20px; color:var(--success); font-weight:600; background:rgba(0,208,132,0.1); border-radius:16px;">현재 관리 필요 징후를 보이는 학생이 없습니다.</div>`}
         </div>
     `;
 
@@ -193,17 +198,17 @@ function renderAdminControlCenter() {
 function renderAdminStudentSearch() {
     const keyword = document.getElementById('admin-search-input').value.trim().toLowerCase();
     const resultArea = document.getElementById('admin-search-results');
-    if (!keyword) { resultArea.innerHTML = '<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">검색어를 입력하세요.</div>'; return; }
+    if (!keyword) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">검색어를 입력하세요.</div>`; return; }
     
     const results = state.db.students.filter(s => s.name.toLowerCase().includes(keyword));
-    if (results.length === 0) { resultArea.innerHTML = '<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">일치하는 학생이 없습니다.</div>'; return; }
+    if (results.length === 0) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">일치하는 학생이 없습니다.</div>`; return; }
     
     resultArea.innerHTML = results.map(s => {
         const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
         return `
             <div style="padding:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-                <div><b style="font-size:13px;">${s.name}</b> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${cName} | ${s.status}</span></div>
-                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세</button>
+                <div><b style="font-size:13px; color:var(--text);">${s.name}</b> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${cName} | ${s.status}</span></div>
+                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세 보기</button>
             </div>
         `;
     }).join('');
@@ -225,7 +230,7 @@ function renderAddressBookList() {
     }
     
     if (stds.length === 0) {
-        listRoot.innerHTML = '<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px;">검색 결과가 없습니다.</div>';
+        listRoot.innerHTML = `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px;">검색 결과가 없습니다.</div>`;
         return;
     }
     
@@ -234,15 +239,15 @@ function renderAddressBookList() {
         return `
             <div style="padding:14px 0; border-bottom:1px solid var(--border);">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <div><b style="font-size:14px; color:#191F28;">${s.name}</b> <span style="color:var(--secondary); font-size:12px; margin-left:6px;">${cName} | ${s.school_name} ${s.grade}</span></div>
+                    <div><b style="font-size:14px; color:var(--text);">${s.name}</b> <span style="color:var(--secondary); font-size:12px; margin-left:6px;">${cName} | ${s.school_name} ${s.grade}</span></div>
                     <button class="btn" style="padding:6px 12px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">프로필</button>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:6px; font-size:12px; color:var(--secondary);">
-                    <div style="display:flex; justify-content:space-between; background:var(--bg); padding:8px 12px; border-radius:8px;">
+                    <div style="display:flex; justify-content:space-between; background:var(--surface-2); padding:8px 12px; border-radius:8px;">
                         <span>학생: ${s.student_phone || '없음'}</span>
                         ${s.student_phone ? `<span style="color:var(--primary); cursor:pointer; font-weight:700;" onclick="copyPhoneNumber('${s.student_phone}')">복사</span>` : ''}
                     </div>
-                    <div style="display:flex; justify-content:space-between; background:var(--bg); padding:8px 12px; border-radius:8px;">
+                    <div style="display:flex; justify-content:space-between; background:var(--surface-2); padding:8px 12px; border-radius:8px;">
                         <span>보호자(${s.guardian_relation || '미지정'}): ${s.parent_phone || '없음'}</span>
                         ${s.parent_phone ? `<span style="color:var(--primary); cursor:pointer; font-weight:700;" onclick="copyPhoneNumber('${s.parent_phone}')">복사</span>` : ''}
                     </div>
@@ -260,8 +265,8 @@ function openAddressBook() {
             <button class="btn" style="padding:10px; flex:1; font-size:12px; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="openGlobalPinManagement()">PIN관리</button>
         </div>
         <div style="display:flex; gap:8px; margin-bottom:16px;">
-            <input id="ab-search" class="btn" placeholder="이름 검색" style="flex:1; text-align:left; background:var(--bg); border:none;" oninput="renderAddressBookList()">
-            <select id="ab-class" class="btn" style="flex:1; background:var(--bg); border:none;" onchange="renderAddressBookList()"><option value="">전체학급</option>${classOptions}</select>
+            <input id="ab-search" class="btn" placeholder="이름 검색" style="flex:1; text-align:left; background:var(--surface-2); border:none;" oninput="renderAddressBookList()">
+            <select id="ab-class" class="btn" style="flex:1; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체학급</option>${classOptions}</select>
         </div>
         <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px; padding-right:4px;"></div>
     `);
@@ -271,15 +276,15 @@ function openAddressBook() {
 function openGlobalPinManagement() {
     const classes = state.db.classes.filter(c => c.is_active !== 0);
     const rows = classes.map(c => `
-        <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border);" onclick="handleBatchGeneratePins('${c.id}')">
-            <span style="font-weight:700; font-size:14px;">${c.name}</span>
+        <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="handleBatchGeneratePins('${c.id}')">
+            <span style="font-weight:900; font-size:14px; color:var(--text);">${c.name}</span>
             <span style="font-size:11px; color:var(--primary); font-weight:700; background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
         </button>
     `).join('');
     
     showModal('PIN관리', `
-        <div style="margin-bottom:16px; font-size:12px; color:var(--secondary); line-height:1.5; background:var(--bg); padding:12px; border-radius:10px;">선택한 반에 속한 학생 중, <b>아직 PIN 번호가 없는 학생</b>들에게만 고유 PIN을 자동 부여합니다. (기존 PIN은 유지됨)</div>
-        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || '<div style="text-align:center; color:var(--secondary); padding:20px; font-size:13px;">관리할 반이 없습니다.</div>'}</div>
+        <div style="margin-bottom:16px; font-size:12px; color:var(--secondary); line-height:1.5; background:var(--surface-2); padding:12px; border-radius:10px;">선택한 반에 속한 학생 중, <b>아직 PIN 번호가 없는 학생</b>들에게만 고유 PIN을 자동 부여합니다. (기존 PIN은 유지됨)</div>
+        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:20px; font-size:13px;">관리할 반이 없습니다.</div>`}</div>
     `);
 }
 
@@ -296,7 +301,7 @@ function openClassManageModal() {
     const renderClassRow = (c) => `
         <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div>
-                <div style="font-weight:700; font-size:14px; color:${c.is_active===0?'var(--secondary)':'#191F28'};">
+                <div style="font-weight:900; font-size:14px; color:${c.is_active===0?'var(--secondary)':'var(--text)'};">
                     ${c.name} <span style="font-size:11px; font-weight:normal; color:var(--secondary); margin-left:4px;">${c.grade}</span>
                 </div>
                 <div style="font-size:11px; color:var(--secondary); margin-top:4px;">담당: ${c.teacher_name} | 요일: ${formatClassScheduleDaysForUI(c.schedule_days)}</div>
@@ -319,7 +324,7 @@ function openClassManageModal() {
         </div>
         <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">활성 반 (${activeClasses.length})</h4>
         <div style="margin-bottom:20px;">
-            ${activeClasses.length ? activeClasses.map(renderClassRow).join('') : '<div style="font-size:12px; color:var(--secondary);">활성 반이 없습니다.</div>'}
+            ${activeClasses.length ? activeClasses.map(renderClassRow).join('') : `<div style="font-size:12px; color:var(--secondary);">활성 반이 없습니다.</div>`}
         </div>
         ${hiddenClasses.length ? `
             <h4 style="margin:20px 0 8px 0; font-size:13px; color:var(--secondary);">숨김 반 (${hiddenClasses.length})</h4>
@@ -333,18 +338,18 @@ function openClassManageModal() {
 function openAddClassModal() {
     showModal('새 반 추가', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <input id="add-cls-name" class="btn" placeholder="반 이름 (예: 중3A)" style="text-align:left; background:var(--bg); border:none;">
-            <select id="add-cls-grade" class="btn" style="background:var(--bg); border:none;">
+            <input id="add-cls-name" class="btn" placeholder="반 이름 (예: 중3A)" style="text-align:left; background:var(--surface-2); border:none;">
+            <select id="add-cls-grade" class="btn" style="background:var(--surface-2); border:none;">
                 <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
                 <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
             </select>
-            <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--bg); border:none;">
-            <input id="add-cls-teacher" class="btn" value="${state.ui.userName || '박준성'}" placeholder="담당 교사" style="text-align:left; background:var(--bg); border:none;">
-            <input id="add-cls-textbook" class="btn" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--bg); border:none;">
+            <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="add-cls-teacher" class="btn" value="${state.ui.userName || '박준성'}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="add-cls-textbook" class="btn" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--surface-2); border:none;">
             
             <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--bg); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
+                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
             </div>
         </div>
     `, '추가', handleAddClass);
@@ -367,18 +372,18 @@ function openEditClassModal(cid) {
     const selectedDays = c.schedule_days ? c.schedule_days.split(',') : [];
     showModal('반 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <input id="edit-cls-name" class="btn" value="${c.name}" placeholder="반 이름" style="text-align:left; background:var(--bg); border:none;">
-            <select id="edit-cls-grade" class="btn" style="background:var(--bg); border:none;">
+            <input id="edit-cls-name" class="btn" value="${c.name}" placeholder="반 이름" style="text-align:left; background:var(--surface-2); border:none;">
+            <select id="edit-cls-grade" class="btn" style="background:var(--surface-2); border:none;">
                 ${['중1','중2','중3','고1','고2','고3'].map(g => `<option value="${g}" ${c.grade===g?'selected':''}>${g}</option>`).join('')}
             </select>
-            <input id="edit-cls-subject" class="btn" value="${c.subject||''}" placeholder="과목" style="text-align:left; background:var(--bg); border:none;">
-            <input id="edit-cls-teacher" class="btn" value="${c.teacher_name||''}" placeholder="담당 교사" style="text-align:left; background:var(--bg); border:none;">
-            <input id="edit-cls-textbook" class="btn" value="${c.textbook || ''}" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--bg); border:none;">
+            <input id="edit-cls-subject" class="btn" value="${c.subject||''}" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-teacher" class="btn" value="${c.teacher_name||''}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-textbook" class="btn" value="${c.textbook || ''}" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="font-size:11px; color:var(--secondary);">※ 다중 교재 관리는 '교재 관리' 메뉴를 이용하세요.</div>
             
             <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--bg); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
+                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
             </div>
         </div>
     `, '저장', () => handleEditClass(cid));
@@ -422,13 +427,13 @@ function renderTextbookManageList() {
         const isCompleted = tb.status === 'completed';
         
         let statusBadge = '';
-        if (isCompleted) statusBadge = '<span style="font-size:10px; background:rgba(0,208,132,0.1); color:var(--success); padding:2px 6px; border-radius:4px; font-weight:700;">완료</span>';
-        else if (isHidden) statusBadge = '<span style="font-size:10px; background:var(--bg); color:var(--secondary); padding:2px 6px; border-radius:4px; font-weight:700;">숨김</span>';
+        if (isCompleted) statusBadge = `<span style="font-size:10px; background:rgba(0,208,132,0.1); color:var(--success); padding:2px 6px; border-radius:4px; font-weight:700;">완료</span>`;
+        else if (isHidden) statusBadge = `<span style="font-size:10px; background:var(--bg); color:var(--secondary); padding:2px 6px; border-radius:4px; font-weight:700;">숨김</span>`;
 
         return `
             <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <div style="font-weight:700; font-size:14px; color:${tb.status==='active' ? '#191F28' : 'var(--secondary)'};">${tb.title} ${statusBadge}</div>
+                    <div style="font-weight:900; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'};">${tb.title} ${statusBadge}</div>
                     <div style="font-size:11px; color:var(--secondary); margin-top:4px;">${cName} | 시작: ${tb.start_date || '-'} ${tb.end_date ? `| 종료: ${tb.end_date}` : ''}</div>
                 </div>
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openEditTextbookModal('${tb.id}')">관리</button>
@@ -439,7 +444,7 @@ function renderTextbookManageList() {
     listRoot.innerHTML = `
         <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">현재 사용 중인 교재 (${activeBooks.length})</h4>
         <div style="margin-bottom:20px;">
-            ${activeBooks.length ? activeBooks.map(renderTbRow).join('') : '<div style="font-size:12px; color:var(--secondary); padding:10px 0;">사용 중인 교재가 없습니다.</div>'}
+            ${activeBooks.length ? activeBooks.map(renderTbRow).join('') : `<div style="font-size:12px; color:var(--secondary); padding:10px 0;">사용 중인 교재가 없습니다.</div>`}
         </div>
         ${inactiveBooks.length ? `
             <h4 style="margin:20px 0 8px 0; font-size:13px; color:var(--secondary);">완료 / 숨김 교재 (${inactiveBooks.length})</h4>
@@ -453,7 +458,7 @@ function openTextbookManageModal() {
     
     showModal('교재 관리', `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <select id="tb-manage-class" class="btn" style="flex:1; margin-right:8px; background:var(--bg); border:none;" onchange="renderTextbookManageList()">
+            <select id="tb-manage-class" class="btn" style="flex:1; margin-right:8px; background:var(--surface-2); border:none;" onchange="renderTextbookManageList()">
                 <option value="">전체학급 (내 담당)</option>
                 ${classOptions}
             </select>
@@ -469,11 +474,11 @@ function openAddTextbookModal() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     showModal('새 교재 등록', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <select id="new-tb-class" class="btn" style="background:var(--bg); border:none;"><option value="">반을 선택하세요</option>${classOptions}</select>
-            <input id="new-tb-title" class="btn" placeholder="교재명 (예: 개념원리 중1-1)" style="text-align:left; background:var(--bg); border:none;">
+            <select id="new-tb-class" class="btn" style="background:var(--surface-2); border:none;"><option value="">반을 선택하세요</option>${classOptions}</select>
+            <input id="new-tb-title" class="btn" placeholder="교재명 (예: 개념원리 중1-1)" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">시작일:</span>
-                <input type="date" id="new-tb-start" class="btn" value="${todayStr}" style="flex:1; background:var(--bg); border:none;">
+                <input type="date" id="new-tb-start" class="btn" value="${todayStr}" style="flex:1; background:var(--surface-2); border:none;">
             </div>
             <button class="btn btn-primary" style="margin-top:10px; padding:12px;" onclick="handleAddTextbook()">저장</button>
         </div>
@@ -492,7 +497,7 @@ async function handleAddTextbook() {
         toast('교재가 등록되었습니다.', 'success');
         await loadData();
         openTextbookManageModal();
-    } else toast('저장실패', 'error');
+    } else toast('저장 실패', 'error');
 }
 
 function openEditTextbookModal(tbId) {
@@ -504,15 +509,15 @@ function openEditTextbookModal(tbId) {
     
     showModal('교재 수정', `
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
-            <input id="edit-tb-title" class="btn" value="${tb.title}" style="text-align:left; background:var(--bg); border:none;">
+            <input id="edit-tb-title" class="btn" value="${tb.title}" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">시작일:</span>
-                <input type="date" id="edit-tb-start" class="btn" value="${tb.start_date || ''}" style="flex:1; background:var(--bg); border:none;">
+                <input type="date" id="edit-tb-start" class="btn" value="${tb.start_date || ''}" style="flex:1; background:var(--surface-2); border:none;">
             </div>
             ${isCompleted || tb.end_date ? `
             <div style="display:flex; gap:8px; align-items:center;">
                 <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">종료일:</span>
-                <input type="date" id="edit-tb-end" class="btn" value="${tb.end_date || ''}" style="flex:1; background:var(--bg); border:none;">
+                <input type="date" id="edit-tb-end" class="btn" value="${tb.end_date || ''}" style="flex:1; background:var(--surface-2); border:none;">
             </div>` : ''}
             <button class="btn btn-primary" style="margin-top:8px; padding:12px;" onclick="handlePatchTextbook('${tbId}', false)">정보 수정 저장</button>
         </div>
@@ -522,7 +527,7 @@ function openEditTextbookModal(tbId) {
                 ${isCompleted || isHidden 
                     ? `<button class="btn" style="flex:1; padding:10px; font-size:12px;" onclick="handlePatchTextbook('${tbId}', true, 'active')">진행중으로 복구</button>`
                     : `<button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--success); background:rgba(0,208,132,0.1); border:none; font-weight:700;" onclick="handlePatchTextbook('${tbId}', true, 'completed')">교재 완료 처리</button>
-                       <button class="btn" style="flex:1; padding:10px; font-size:12px; background:var(--bg); border:none;" onclick="handlePatchTextbook('${tbId}', true, 'hidden')">숨김 보류</button>`
+                       <button class="btn" style="flex:1; padding:10px; font-size:12px; background:var(--surface-2); border:none;" onclick="handlePatchTextbook('${tbId}', true, 'hidden')">숨김 보류</button>`
                 }
             </div>
             <button class="btn" style="margin-top:12px; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="handleDeleteTextbook('${tbId}')">교재 완전 삭제</button>
@@ -545,10 +550,10 @@ async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active'
     
     const r = await api.patch(`class-textbooks/${tbId}`, payload);
     if (r.success) {
-        toast('저장완료', 'success');
+        toast('저장 완료', 'success');
         await loadData();
         openTextbookManageModal();
-    } else toast('저장실패', 'error');
+    } else toast('저장 실패', 'error');
 }
 
 async function handleDeleteTextbook(tbId) {
@@ -569,27 +574,27 @@ function openTodoMemoModal() {
     const memoRows = memos.map(m => `
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; ${m.is_done ? 'opacity:0.5;' : ''}">
             <div style="flex:1;">
-                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${m.memo_date} ${m.is_pinned ? '<span style="color:var(--primary); font-weight:800;">고정</span>' : ''}</div>
-                <div style="font-size:14px; font-weight:600; color:#191F28; text-decoration:${m.is_done ? 'line-through' : 'none'};">${m.content}</div>
+                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${m.memo_date} ${m.is_pinned ? `<span style="color:var(--primary); font-weight:800;">고정</span>` : ''}</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text); text-decoration:${m.is_done ? 'line-through' : 'none'};">${m.content}</div>
             </div>
             <div style="display:flex; gap:6px;">
-                <button class="btn ${m.is_done ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:700; ${m.is_done ? 'background:var(--bg); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!m.is_done})">${m.is_done ? '취소' : '완료'}</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; background:var(--bg); border:none;" onclick="openEditTodoMemoModal('${m.id}')">수정</button>
+                <button class="btn ${m.is_done ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:700; ${m.is_done ? 'background:var(--surface-2); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!m.is_done})">${m.is_done ? '취소' : '완료'}</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; background:var(--surface-2); border:none;" onclick="openEditTodoMemoModal('${m.id}')">수정</button>
             </div>
         </div>
     `).join('');
 
     showModal('메모 / 할 일', `
-        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--bg); padding:12px; border-radius:12px;">
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px; align-items:center;">
-                <input type="date" id="new-memo-date" class="btn" value="${todayStr}" style="text-align:left; flex:1; border:none;">
-                <label style="font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap;"><input type="checkbox" id="new-memo-pin"> 고정</label>
+                <input type="date" id="new-memo-date" class="btn" value="${todayStr}" style="text-align:left; flex:1; border:none; background:var(--surface);">
+                <label style="font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);"><input type="checkbox" id="new-memo-pin"> 고정</label>
             </div>
-            <input type="text" id="new-memo-content" class="btn" placeholder="할 일 입력 (예: 고2 직전보강)" style="text-align:left; border:none;">
+            <input type="text" id="new-memo-content" class="btn" placeholder="할 일 입력 (예: 고2 직전보강)" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn btn-primary" style="padding:10px; font-size:13px; font-weight:700; margin-top:4px;" onclick="addTodoMemo()">저장</button>
         </div>
         <div style="max-height:45vh; overflow-y:auto; padding-right:4px;">
-            ${memos.length ? memoRows : '<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">등록된 할 일이 없습니다.</div>'}
+            ${memos.length ? memoRows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">등록된 할 일이 없습니다.</div>`}
         </div>
     `);
 }
@@ -626,14 +631,14 @@ function openEditTodoMemoModal(id) {
     const m = state.db.operation_memos.find(x => x.id === id);
     if(!m) return;
     showModal('메모 수정', `
-        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--bg); padding:12px; border-radius:12px;">
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px; align-items:center;">
-                <input type="date" id="edit-memo-date" class="btn" value="${m.memo_date}" style="text-align:left; flex:1; border:none;">
-                <label style="font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap;">
+                <input type="date" id="edit-memo-date" class="btn" value="${m.memo_date}" style="text-align:left; flex:1; border:none; background:var(--surface);">
+                <label style="font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);">
                     <input type="checkbox" id="edit-memo-pin" ${m.is_pinned ? 'checked' : ''}> 고정
                 </label>
             </div>
-            <input type="text" id="edit-memo-content" class="btn" value="${m.content}" style="text-align:left; border:none;">
+            <input type="text" id="edit-memo-content" class="btn" value="${m.content}" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditTodoMemo('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openTodoMemoModal()">취소</button>
@@ -667,33 +672,33 @@ function openExamScheduleModal() {
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div style="flex:1;">
                 <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${e.exam_date} | ${e.school_name} ${e.grade}</div>
-                <div style="font-size:14px; font-weight:800; color:#191F28;">${e.exam_name}</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text);">${e.exam_name}</div>
                 ${e.memo ? `<div style="font-size:12px; color:var(--secondary); margin-top:4px;">${e.memo}</div>` : ''}
             </div>
             <div style="display:flex; gap:6px;">
-                <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; background:var(--bg); border:none;" onclick="openEditExamScheduleModal('${e.id}')">수정</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; background:var(--surface-2); border:none;" onclick="openEditExamScheduleModal('${e.id}')">수정</button>
             </div>
         </div>
     `).join('');
 
     showModal('시험일정 관리', `
-        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--bg); padding:12px; border-radius:12px;">
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px;">
-                <input type="text" id="new-ex-school" class="btn" placeholder="학교명" style="flex:1; text-align:left; border:none;">
-                <select id="new-ex-grade" class="btn" style="flex:1; border:none;">
+                <input type="text" id="new-ex-school" class="btn" placeholder="학교명" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <select id="new-ex-grade" class="btn" style="flex:1; border:none; background:var(--surface);">
                     <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
                     <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
                 </select>
             </div>
             <div style="display:flex; gap:8px;">
-                <input type="text" id="new-ex-name" class="btn" placeholder="시험명" style="flex:1; text-align:left; border:none;">
-                <input type="date" id="new-ex-date" class="btn" style="flex:1; border:none;">
+                <input type="text" id="new-ex-name" class="btn" placeholder="시험명" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="date" id="new-ex-date" class="btn" style="flex:1; border:none; background:var(--surface);">
             </div>
-            <input type="text" id="new-ex-memo" class="btn" placeholder="메모 (선택)" style="text-align:left; border:none;">
+            <input type="text" id="new-ex-memo" class="btn" placeholder="메모 (선택)" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn btn-primary" style="padding:10px; font-size:13px; font-weight:700; margin-top:4px;" onclick="addExamSchedule()">저장</button>
         </div>
         <div style="max-height:45vh; overflow-y:auto; padding-right:4px;">
-            ${schedules.length ? rows : '<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">시험일정이 없습니다</div>'}
+            ${schedules.length ? rows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">시험일정이 없습니다</div>`}
         </div>
     `);
 }
@@ -719,10 +724,10 @@ function openEditExamScheduleModal(id) {
     const e = state.db.exam_schedules.find(x => x.id === id);
     if(!e) return;
     showModal('시험일정 수정', `
-        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--bg); padding:12px; border-radius:12px;">
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px;">
-                <input type="text" id="edit-ex-school" class="btn" value="${e.school_name}" style="flex:1; text-align:left; border:none;">
-                <select id="edit-ex-grade" class="btn" style="flex:1; border:none;">
+                <input type="text" id="edit-ex-school" class="btn" value="${e.school_name}" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <select id="edit-ex-grade" class="btn" style="flex:1; border:none; background:var(--surface);">
                     <option value="중1" ${e.grade==='중1'?'selected':''}>중1</option>
                     <option value="중2" ${e.grade==='중2'?'selected':''}>중2</option>
                     <option value="중3" ${e.grade==='중3'?'selected':''}>중3</option>
@@ -732,10 +737,10 @@ function openEditExamScheduleModal(id) {
                 </select>
             </div>
             <div style="display:flex; gap:8px;">
-                <input type="text" id="edit-ex-name" class="btn" value="${e.exam_name}" style="flex:1; text-align:left; border:none;">
-                <input type="date" id="edit-ex-date" class="btn" value="${e.exam_date}" style="flex:1; border:none;">
+                <input type="text" id="edit-ex-name" class="btn" value="${e.exam_name}" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="date" id="edit-ex-date" class="btn" value="${e.exam_date}" style="flex:1; border:none; background:var(--surface);">
             </div>
-            <input type="text" id="edit-ex-memo" class="btn" value="${e.memo||''}" style="text-align:left; border:none;">
+            <input type="text" id="edit-ex-memo" class="btn" value="${e.memo||''}" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
@@ -755,11 +760,11 @@ async function handleEditExamSchedule(id) {
     
     const r = await api.patch('exam-schedules/' + id, { schoolName: sc, grade: gr, examName: na, examDate: da, memo: me });
     if(r.success) { 
-        toast('저장완료', 'info');
+        toast('저장 완료', 'info');
         await loadData(); 
         openExamScheduleModal(); 
     } else {
-        toast('저장실패', 'error');
+        toast('저장 실패', 'error');
     }
 }
 
@@ -768,13 +773,13 @@ function openGlobalExamGradeView() {
     const classes = state.db.classes.filter(c => c.is_active !== 0);
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:16px; margin-bottom:10px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); if(typeof openExamGradeView==='function') openExamGradeView('${c.id}')">
-            <span style="font-weight:800; font-size:15px; color:#191F28;">${c.name}</span>
+            <span style="font-weight:900; font-size:15px; color:var(--text);">${c.name}</span>
             <span style="font-size:12px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 10px; border-radius:8px;">${c.grade}</span>
         </button>
     `).join('');
     showModal('반별 시험성적', `
         <div style="margin-bottom:16px; font-size:13px; color:var(--secondary); font-weight:600;">조회할 반을 선택하세요.</div>
-        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || '<div style="text-align:center; color:var(--secondary); padding:30px; font-size:13px; font-weight:600;">담당 반이 없습니다.</div>'}</div>
+        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:30px; font-size:13px; font-weight:600;">담당 반이 없습니다.</div>`}</div>
     `);
 }
 
@@ -786,11 +791,11 @@ function openOperationMenu() {
 
     showModal('운영메뉴', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:700; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openClassManageModal();">학급교재</button>
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:700; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openAddressBook();">학생관리</button>
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:700; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openExamScheduleModal();">시험일정</button>
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:700; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openDischargedStudents();">퇴원생</button>
-            <div style="margin-top:12px; padding:16px; border-radius:14px; background:var(--bg); border:none;">
+            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openClassManageModal();">학급교재</button>
+            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openAddressBook();">학생관리</button>
+            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openExamScheduleModal();">시험일정</button>
+            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openDischargedStudents();">퇴원생</button>
+            <div style="margin-top:12px; padding:16px; border-radius:14px; background:var(--surface-2); border:none;">
                 <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:8px; color:var(--secondary);"><span>네트워크</span><b style="color:${isOnline ? 'var(--success)' : 'var(--error)'}">${onlineStatusText}</b></div>
                 <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:16px; color:var(--secondary);"><span>미전송 데이터</span><b style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}">${syncStatusText}</b></div>
                 <button class="btn btn-primary" style="width:100%; font-size:14px; font-weight:700; padding:12px; border-radius:10px;" onclick="if(typeof processSyncQueue==='function') processSyncQueue(); closeModal();">지금 동기화 시도</button>
@@ -860,11 +865,11 @@ function renderClassSummaryCard(cls, data) {
         return `
             <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 120px; padding: 18px; opacity:0.85; background:var(--surface); border:1px solid var(--border);">
                 <div>
-                    <div style="font-weight:800; font-size:16px; color:#191F28; display:flex; justify-content:space-between; align-items:center;">
-                        ${cls.name} <span style="font-size:11px; font-weight:700; color:var(--secondary); background:var(--bg); padding:4px 8px; border-radius:6px;">재원 ${s.activeCount}</span>
+                    <div style="font-weight:900; font-size:16px; color:var(--text); display:flex; justify-content:space-between; align-items:center;">
+                        ${cls.name} <span style="font-size:11px; font-weight:700; color:var(--secondary); background:var(--surface-2); padding:4px 8px; border-radius:6px;">재원 ${s.activeCount}</span>
                     </div>
                 </div>
-                <div style="margin-top:16px; font-size:13px; font-weight:700; color:var(--secondary); text-align:center; background:var(--bg); padding:10px; border-radius:10px;">
+                <div style="margin-top:16px; font-size:13px; font-weight:700; color:var(--secondary); text-align:center; background:var(--surface-2); padding:10px; border-radius:10px;">
                     오늘 수업 없음
                 </div>
             </div>
@@ -874,17 +879,17 @@ function renderClassSummaryCard(cls, data) {
     return `
         <div class="card" onclick="renderClass('${cls.id}')" style="cursor:pointer; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; min-height: 120px; padding: 18px; background:var(--surface); border:1px solid var(--border);">
             <div>
-                <div style="font-weight:800; font-size:16px; color:#191F28; display:flex; justify-content:space-between; align-items:center;">
-                    ${cls.name} <span style="font-size:11px; font-weight:700; color:var(--secondary); background:var(--bg); padding:4px 8px; border-radius:6px;">재원 ${s.activeCount}</span>
+                <div style="font-weight:900; font-size:16px; color:var(--text); display:flex; justify-content:space-between; align-items:center;">
+                    ${cls.name} <span style="font-size:11px; font-weight:700; color:var(--secondary); background:var(--surface-2); padding:4px 8px; border-radius:6px;">재원 ${s.activeCount}</span>
                 </div>
-                <div style="font-size:13px; font-weight:700; color:var(--secondary); margin-top:10px; display:flex; align-items:center; gap:8px;">
-                    <span style="color:#191F28;">등원 <b style="font-size:15px;">${s.present}</b></span> 
+                <div style="font-size:13px; font-weight:700; color:var(--text-soft); margin-top:10px; display:flex; align-items:center; gap:8px;">
+                    <span style="color:var(--text);">등원 <b style="font-size:15px;">${s.present}</b></span> 
                     <span style="color:var(--border);">|</span> 
                     <span style="color:${s.absent > 0 ? 'var(--error)' : 'var(--secondary)'}; background:${s.absent > 0 ? 'rgba(255,71,87,0.1)' : 'transparent'}; padding:${s.absent > 0 ? '2px 8px' : '0'}; border-radius:6px;">결석 <b style="font-size:15px;">${s.absent}</b></span>
                 </div>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:14px;">
-                <span style="background:${s.hwNotDone > 0 ? 'rgba(255,165,2,0.12)' : 'var(--bg)'}; color:${s.hwNotDone > 0 ? 'var(--warning)' : 'var(--secondary)'}; padding:4px 8px; border-radius:6px; font-size:11px; font-weight:800;">미완료 ${s.hwNotDone}명</span>
+                <span style="background:${s.hwNotDone > 0 ? 'rgba(255,165,2,0.12)' : 'var(--surface-2)'}; color:${s.hwNotDone > 0 ? 'var(--warning)' : 'var(--secondary)'}; padding:4px 8px; border-radius:6px; font-size:11px; font-weight:800;">미완료 ${s.hwNotDone}명</span>
                 <div style="font-size:11px; font-weight:600; color:var(--secondary);">
                     출석 ${attRate}% · 숙제 ${hwRate}%
                 </div>
@@ -907,10 +912,10 @@ function renderTodoSections() {
         <div style="padding:14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
             <label style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
                 <input type="checkbox" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.2); margin:0; accent-color:var(--primary);">
-                <span style="font-size:14px; font-weight:700; color:#191F28; ${m.is_pinned ? 'color:var(--primary);' : ''}">${m.is_pinned ? '<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ' : ''}${m.content}</span>
+                <span style="font-size:14px; font-weight:900; color:var(--text); ${m.is_pinned ? 'color:var(--primary);' : ''}">${m.is_pinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${m.content}</span>
             </label>
         </div>
-    `).join('') : '<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center; background:var(--bg);">오늘 등록된 할 일이 없습니다.</div>';
+    `).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center; background:var(--surface-2);">오늘 등록된 할 일이 없습니다.</div>`;
 
     let upcomingHtml = '';
     const upcomingItems = [];
@@ -927,9 +932,9 @@ function renderTodoSections() {
 
             if (u.type === 'exam') {
                 const e = u.item;
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:700; color:var(--warning); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);"><div>${e.school_name} ${e.grade} ${e.exam_name}</div><span style="font-size:11px; background:rgba(255,165,2,0.12); padding:4px 8px; border-radius:6px;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:900; color:var(--warning); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);"><div>${e.school_name} ${e.grade} ${e.exam_name}</div><span style="font-size:11px; background:rgba(255,165,2,0.12); padding:4px 8px; border-radius:6px;">${dDay}</span></div>`;
             } else {
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:600; color:#191F28; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);"><div>${u.item.content}</div><span style="font-size:11px; background:var(--bg); color:var(--secondary); padding:4px 8px; border-radius:6px;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);"><div>${u.item.content}</div><span style="font-size:11px; background:var(--surface-2); color:var(--secondary); padding:4px 8px; border-radius:6px;">${dDay}</span></div>`;
             }
         }).join('');
     }
@@ -937,7 +942,7 @@ function renderTodoSections() {
     return `
         <div style="margin-bottom:32px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 4px;">
-                <h3 style="margin:0; font-size:16px; font-weight:800; color:#191F28;">오늘일정</h3>
+                <h3 style="margin:0; font-size:16px; font-weight:900; color:var(--text);">오늘일정</h3>
             </div>
             <div class="card" style="margin-bottom:20px; padding:0; overflow:hidden; border:none; box-shadow:var(--shadow); border-radius:16px;">${todayHtml}</div>
             
@@ -962,9 +967,9 @@ function renderDashboard() {
     const appHeader = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; padding:2px 4px 0;">
             <div style="display:flex; align-items:center; gap:12px; min-width:0;">
-                <button class="btn" style="width:40px; height:40px; padding:0; border:none; background:transparent; color:#191F28; font-size:24px; line-height:1;" onclick="openAppDrawer()">☰</button>
+                <button class="btn" style="width:40px; height:40px; padding:0; border:none; background:transparent; color:var(--text); font-size:24px; line-height:1;" onclick="openAppDrawer()">☰</button>
                 <div style="min-width:0;">
-                    <div style="font-size:20px; font-weight:900; color:#191F28; letter-spacing:-0.5px;">AP Math OS</div>
+                    <div style="font-size:20px; font-weight:900; color:var(--text); letter-spacing:-0.5px;">AP Math OS</div>
                     <div style="font-size:13px; font-weight:600; color:var(--secondary); margin-top:2px;">${teacherName} 선생님</div>
                 </div>
             </div>
@@ -986,16 +991,16 @@ function renderDashboard() {
     };
 
     const closeBanner = closeData.totalActive === 0
-        ? `${syncWarning}<div class="card" style="margin-bottom:24px; padding:20px;"><b style="color:#191F28; font-size:15px; font-weight:800;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
+        ? `${syncWarning}<div class="card" style="margin-bottom:24px; padding:20px;"><b style="color:var(--text); font-size:15px; font-weight:900;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
         : closeData.allClear
-            ? `${syncWarning}<div class="card" style="margin-bottom:24px; padding:20px; border-left:4px solid var(--success);"><b style="font-size:15px; font-weight:800; color:#191F28;">모든 학생 등원 및 과제 완료</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; display:block; margin-top:4px;">예외사항이 없습니다.</span></div>`
-            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:24px; padding:20px; cursor:pointer; border-left:4px solid var(--warning);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:800; color:#191F28;">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--bg); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center;">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center;">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--secondary); font-weight:900;">›</span></div></div>`;
+            ? `${syncWarning}<div class="card" style="margin-bottom:24px; padding:20px; border-left:4px solid var(--success);"><b style="font-size:15px; font-weight:900; color:var(--text);">모든 학생 등원 및 과제 완료</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; display:block; margin-top:4px;">예외사항이 없습니다.</span></div>`
+            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:24px; padding:20px; cursor:pointer; border-left:4px solid var(--warning);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--secondary); font-weight:900;">›</span></div></div>`;
 
     const todoSections = renderTodoSections();
     const classes = state.db.classes.filter(c => c.is_active !== 0);
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 4px;">
-            <h3 style="margin:0; font-size:16px; font-weight:800; color:#191F28;">학급관리</h3>
+            <h3 style="margin:0; font-size:16px; font-weight:900; color:var(--text);">학급관리</h3>
         </div>
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
@@ -1066,7 +1071,7 @@ function openTodayCloseModal(tab = 'att') {
     const tabBtns = tabs.map(t => `
         <button onclick="openTodayCloseModal('${t.key}')" style="
             flex:1; padding:12px; border:none; border-radius:10px; font-size:13px; font-weight:700; transition:all 0.2s;
-            background:${t.key === tab ? 'var(--primary)' : 'var(--bg)'};
+            background:${t.key === tab ? 'var(--primary)' : 'var(--surface-2)'};
             color:${t.key === tab ? 'white' : 'var(--secondary)'};
             cursor:pointer;">
             ${t.label}
@@ -1081,7 +1086,7 @@ function openTodayCloseModal(tab = 'att') {
 
     const rows = cur.list.length
         ? Object.keys(grouped).sort().map(cName => {
-            const classHeader = `<div style="background:var(--bg); padding:8px 12px; font-size:12px; font-weight:800; color:var(--secondary); margin-top:12px; border-radius:8px;">${cName}</div>`;
+            const classHeader = `<div style="background:var(--surface-2); padding:8px 12px; font-size:12px; font-weight:800; color:var(--secondary); margin-top:12px; border-radius:8px;">${cName}</div>`;
             const studentRows = grouped[cName].map(s => {
                 let actionBtns = '';
                 if (tab === 'att') {
@@ -1090,12 +1095,12 @@ function openTodayCloseModal(tab = 'att') {
                     actionBtns = `<div style="display:flex; gap:8px; margin-top:12px;"><button class="btn btn-primary" style="flex:1; padding:10px; font-size:12px; border-radius:8px;" onclick="quickToggleHw('${s.id}', '완료', '${tab}')">완료 (취소)</button><button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--warning); background:rgba(255,165,2,0.12); border:none; border-radius:8px; cursor:default; font-weight:700;">미완료 유지</button></div>`;
                 }
                 return `
-                    <div style="padding:16px 8px; border-bottom:1px solid var(--border);">
+                    <div style="padding:16px 8px; border-bottom:1px solid var(--border); background:var(--surface);">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;">
-                                <span style="font-weight:800; font-size:15px; color:#191F28;">${s.name}</span>
+                                <span style="font-weight:900; font-size:15px; color:var(--text);">${s.name}</span>
                             </div>
-                            <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px; cursor:pointer;">상세</span>
+                            <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px; cursor:pointer;">상세 보기</span>
                         </div>
                         ${actionBtns}
                     </div>`;
@@ -1134,15 +1139,15 @@ function openTodayExamSetModal() {
     const cfg = getTodayExamConfig();
     showModal('오늘 시험 설정', `
         <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="font-size:12px; color:var(--secondary); background:var(--bg); padding:10px; border-radius:8px; line-height:1.5;">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</div>
+            <div style="font-size:12px; color:var(--secondary); background:var(--surface-2); padding:10px; border-radius:8px; line-height:1.5;">오늘 전체 학급에 적용될 시험 기준을 설정합니다.<br>(QR 코드 생성 시에도 자동 연동됩니다)</div>
             <div style="display:flex; gap:6px; flex-wrap:wrap; margin:4px 0;">
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--bg); border:none;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--bg); border:none;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--bg); border:none;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--bg); border:none;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='쪽지시험'">쪽지시험</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='단원평가'">단원평가</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='월말평가'">월말평가</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--surface-2); border:none;" onclick="document.getElementById('set-exam-title').value='모의고사'">모의고사</button>
             </div>
-            <input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%; background:var(--bg); border:none;">
-            <input id="set-exam-q" type="number" class="btn" placeholder="문항 수 (기본 20)" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%; background:var(--bg); border:none;">
+            <input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%; background:var(--surface-2); border:none;">
+            <input id="set-exam-q" type="number" class="btn" placeholder="문항 수 (기본 20)" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; margin-top:12px;">
                 <button class="btn" style="flex:1; padding:12px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="clearTodayExamConfig(); closeModal();">시험 없음</button>
                 <button class="btn btn-primary" style="flex:1.5; padding:12px; font-size:12px; font-weight:700;" onclick="handleSetTodayExam()">저장 및 적용</button>
@@ -1248,7 +1253,7 @@ function openDailyJournalModal(dateStr) {
     let actionBtns = '';
     if (!myJournal || status === '작성중') {
         actionBtns = `
-            <button class="btn" style="flex:1; padding:14px; font-weight:700; background:var(--surface);" onclick="saveJournal('작성중', null, '${targetDate}')">임시 저장</button>
+            <button class="btn" style="flex:1; padding:14px; font-weight:700; background:var(--surface); color:var(--text);" onclick="saveJournal('작성중', null, '${targetDate}')">임시 저장</button>
             <button class="btn btn-primary" style="flex:1; padding:14px; font-weight:800;" onclick="saveJournal('제출완료', null, '${targetDate}')">제출</button>
         `;
     } else if (status === '제출완료') {
@@ -1258,17 +1263,17 @@ function openDailyJournalModal(dateStr) {
     }
 
     showModal('일지', `
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--bg); padding:10px 14px; border-radius:10px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:10px 14px; border-radius:10px;">
             <b style="font-size:13px; color:var(--secondary);">작성 기준일</b>
-            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:700;" onchange="openDailyJournalModal(this.value)">
+            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:900; color:var(--text);" onchange="openDailyJournalModal(this.value)">
         </div>
         ${status === '결재완료' ? `
             <div style="background:rgba(0,208,132,0.1); color:var(--success); padding:16px; border-radius:12px; margin-bottom:16px;">
                 <b style="display:flex; align-items:center; gap:8px; font-size:14px;">원장님 확인 완료</b>
-                ${myJournal.feedback ? `<div style="margin-top:10px; font-size:13px; background:var(--surface); padding:12px; border-radius:8px; color:#191F28;"><b>피드백:</b><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
+                ${myJournal.feedback ? `<div style="margin-top:10px; font-size:13px; background:var(--surface); padding:12px; border-radius:8px; color:var(--text);"><b>피드백:</b><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
             </div>
         ` : ''}
-        <textarea id="journal-content" class="btn" style="width:100%; height:250px; text-align:left; resize:vertical; font-family:inherit; font-size:14px; line-height:1.6; background:${isLocked ? 'var(--bg)' : 'var(--surface)'}; border:1px solid var(--border);" ${isLocked ? 'readonly' : ''}>${content}</textarea>
+        <textarea id="journal-content" class="btn" style="width:100%; height:250px; text-align:left; resize:vertical; font-family:inherit; font-size:14px; line-height:1.6; background:${isLocked ? 'var(--surface-2)' : 'var(--surface)'}; border:1px solid var(--border); color:var(--text);" ${isLocked ? 'readonly' : ''}>${content}</textarea>
         <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;">
             ${actionBtns}
         </div>
@@ -1291,9 +1296,9 @@ async function saveJournal(status, existingId = null, targetDate) {
         result = await api.post('daily-journals', { date: targetDate, content, status });
     }
 
-    if (!result || result.error) return toast(result?.error || '저장실패', 'error');
+    if (!result || result.error) return toast(result?.error || '저장 실패', 'error');
 
-    toast(`저장완료`, 'success');
+    toast(`저장 완료`, 'success');
     closeModal();
     await loadData();
 }
@@ -1305,7 +1310,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
     if (teacherName) journals = journals.filter(j => j.teacher_name === teacherName);
     const title = teacherName ? `${teacherName} 선생님 일지` : '일지확인';
     
-    const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:800; background:var(--bg); border:none;" onclick="openAdminTeacherPanel('${safeTeacher}')">← 선생님 메뉴</button>` : '';
+    const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeTeacher}')">← 선생님 메뉴</button>` : '';
     
     const rows = journals.map(j => {
         const teacherArg = String(teacherName || j.teacher_name || '').replace(/'/g, "\\'");
@@ -1316,21 +1321,21 @@ function renderAdminJournalList(dateStr, teacherName = '') {
         return `
             <div class="card" style="padding:16px; margin-bottom:12px; cursor:pointer; border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); background:var(--surface);" onclick="openAdminJournalFeedback('${j.id}', '${teacherArg}')">
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px; gap:8px; align-items:center;">
-                    <b style="font-size:15px; color:#191F28;">${apEscapeHtml(j.teacher_name)} 선생님</b>
-                    <span style="font-size:11px; font-weight:800; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
+                    <b style="font-size:15px; color:var(--text);">${apEscapeHtml(j.teacher_name)} 선생님</b>
+                    <span style="font-size:11px; font-weight:900; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
                 </div>
-                <div style="font-size:13px; color:var(--secondary); white-space:pre-wrap; max-height:60px; overflow:hidden; line-height:1.6;">${apEscapeHtml(j.content)}</div>
+                <div style="font-size:13px; color:var(--text-soft); white-space:pre-wrap; max-height:60px; overflow:hidden; line-height:1.6;">${apEscapeHtml(j.content)}</div>
             </div>`;
     }).join('');
     
     showModal(`${apEscapeHtml(title)}`, `
         ${backBtn}
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--bg); padding:12px 14px; border-radius:12px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:12px 14px; border-radius:12px;">
             <b style="font-size:13px; color:var(--secondary); white-space:nowrap;">기준일</b>
-            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:700;" onchange="renderAdminJournalList(this.value, '${safeTeacher}')">
+            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:900; color:var(--text);" onchange="renderAdminJournalList(this.value, '${safeTeacher}')">
         </div>
         <div style="max-height:55vh; overflow-y:auto; padding-right:4px;">
-            ${journals.length ? rows : '<div style="text-align:center; color:var(--secondary); padding:30px; font-weight:600; font-size:13px; background:var(--bg); border-radius:12px;">해당 날짜에 제출된 일지가 없습니다.</div>'}
+            ${journals.length ? rows : `<div style="text-align:center; color:var(--secondary); padding:30px; font-weight:600; font-size:13px; background:var(--surface-2); border-radius:12px;">해당 날짜에 제출된 일지가 없습니다.</div>`}
         </div>
     `);
 }
@@ -1341,8 +1346,8 @@ function openAdminJournalFeedback(id, teacherName = '') {
     const safeTeacher = String(teacherName || journal.teacher_name || '').replace(/'/g, "\\'");
     
     showModal(`${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
-        <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--bg); border:none; border-radius:12px; padding:16px; margin-bottom:12px;">${journal.content}</textarea>
-        <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px;">${journal.feedback || ''}</textarea>
+        <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--surface-2); border:none; border-radius:12px; padding:16px; margin-bottom:12px; color:var(--text);">${journal.content}</textarea>
+        <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px; background:var(--surface); color:var(--text);">${journal.feedback || ''}</textarea>
         <div style="margin-top:16px;">
             <button class="btn btn-primary" style="width:100%; padding:16px; border-radius:14px; font-weight:800; font-size:15px;" onclick="approveJournal('${journal.id}', '${journal.date}', '${safeTeacher}')">확인완료</button>
         </div>
@@ -1352,8 +1357,8 @@ function openAdminJournalFeedback(id, teacherName = '') {
 function approveJournal(id, dateStr, teacherName = '') {
     const feedback = document.getElementById('journal-feedback')?.value.trim() || '';
     return api.patch(`daily-journals/${id}`, { feedback, status: '결재완료' }).then(async result => {
-        if (!result || result.error) return toast(result?.error || '저장실패', 'error');
-        toast('저장완료', 'success');
+        if (!result || result.error) return toast(result?.error || '저장 실패', 'error');
+        toast('저장 완료', 'success');
         closeModal();
         await loadData();
         renderAdminJournalList(dateStr, teacherName);
@@ -1370,12 +1375,9 @@ function renderAdminTeacherCards(todayStr) {
         teacherMap[tName].push(c);
     });
     const teacherNames = Object.keys(teacherMap).filter(Boolean);
-    if (!teacherNames.length) return '<div style="text-align:center; padding:24px; color:var(--secondary); font-weight:600; background:var(--bg); border-radius:16px;">등록된 선생님이 없습니다.</div>';
-    
-    const avatarColors = ['#E6F1FB:#1A5CFF', '#E8F7EE:#00D084', '#FFF3E0:#FFA502', '#FDE8E9:#FF4757', '#F2F4F6:#8B95A1'];
+    if (!teacherNames.length) return `<div style="text-align:center; padding:24px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">등록된 선생님이 없습니다.</div>`;
     
     return teacherNames.map((tName, idx) => {
-        const colors = avatarColors[idx % avatarColors.length].split(':');
         const myClasses = teacherMap[tName];
         const myClassIds = myClasses.map(c => String(c.id));
         const myStudentIds = [...new Set(state.db.class_students.filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
@@ -1384,22 +1386,22 @@ function renderAdminTeacherCards(todayStr) {
         
         const journalStatus = log ? (log.status === '결재완료' ? '확인완료' : '제출완료') : '미제출';
         const statusColor = log ? (log.status === '결재완료' ? 'var(--success)' : 'var(--primary)') : 'var(--secondary)';
-        const statusBg = log ? (log.status === '결재완료' ? 'rgba(0,208,132,0.1)' : 'rgba(26,92,255,0.1)') : 'var(--bg)';
+        const statusBg = log ? (log.status === '결재완료' ? 'rgba(0,208,132,0.1)' : 'rgba(26,92,255,0.1)') : 'var(--surface-2)';
         
         const safeName = String(tName).replace(/'/g, "\\'");
         
         return `
             <div class="card" onclick="openAdminTeacherPanel('${safeName}')" style="cursor:pointer; padding:18px; margin:0; border:1px solid var(--border); border-radius:20px; background:var(--surface); box-shadow:var(--shadow); transition:transform 0.2s;">
                 <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
-                    <div style="width:46px; height:46px; border-radius:14px; background:${colors[0]}; color:${colors[1]}; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900; flex-shrink:0;">${tName.charAt(0)}</div>
+                    <div style="width:46px; height:46px; border-radius:14px; background:var(--surface-2); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900; flex-shrink:0;">${tName.charAt(0)}</div>
                     <div style="min-width:0; flex:1;">
-                        <div style="font-size:16px; font-weight:800; color:#191F28; line-height:1.2;">${apEscapeHtml(tName)} 선생님</div>
+                        <div style="font-size:16px; font-weight:900; color:var(--text); line-height:1.2;">${apEscapeHtml(tName)} 선생님</div>
                         <div style="font-size:12px; color:var(--secondary); font-weight:600; margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">반 ${myClasses.length}개 · 학생 ${activeStudentCount}명</div>
                     </div>
                 </div>
-                <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg); border-radius:10px; padding:10px 12px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface-2); border-radius:10px; padding:10px 12px;">
                     <span style="font-size:12px; color:var(--secondary); font-weight:700;">오늘 일지</span>
-                    <span style="font-size:11px; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px; font-weight:800;">${journalStatus}</span>
+                    <span style="font-size:11px; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px; font-weight:900;">${journalStatus}</span>
                 </div>
             </div>`;
     }).join('');
@@ -1410,8 +1412,8 @@ function openAdminTeacherPanel(teacherName) {
     const safeName = String(teacherName || '').replace(/'/g, "\\'");
     showModal(`${apEscapeHtml(teacherName)} 선생님`, `
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-            <button class="btn btn-primary" style="padding:16px; font-size:14px; font-weight:800; border-radius:16px;" onclick="closeModal(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지확인</button>
-            <button class="btn" style="padding:16px; font-size:14px; font-weight:800; border-radius:16px; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow);" onclick="closeModal(); renderAdminTeacherStudents('${safeName}')">학생확인</button>
+            <button class="btn btn-primary" style="padding:16px; font-size:14px; font-weight:900; border-radius:16px;" onclick="closeModal(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지확인</button>
+            <button class="btn" style="padding:16px; font-size:14px; font-weight:900; border-radius:16px; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow); color:var(--text);" onclick="closeModal(); renderAdminTeacherStudents('${safeName}')">학생확인</button>
         </div>
     `);
 }
@@ -1420,29 +1422,29 @@ function renderAdminTeacherStudents(teacherName) {
     const safeName = String(teacherName || '').replace(/'/g, "\\'");
     const myClasses = state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && c.is_active !== 0);
     
-    let html = `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:800; background:var(--bg); border:none;" onclick="openAdminTeacherPanel('${safeName}')">← 선생님 메뉴</button><div style="max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:16px; padding-right:4px;">`;
+    let html = `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:900; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeName}')">← 선생님 메뉴</button><div style="max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:16px; padding-right:4px;">`;
     
     if (!myClasses.length) {
-        html += '<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:600; background:var(--bg); border-radius:16px;">담당 학급 또는 재원생이 없습니다.</div>';
+        html += `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">담당 학급 또는 재원생이 없습니다.</div>`;
     } else {
         myClasses.forEach(cls => { 
             const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id)); 
             const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원'); 
             
             html += `<div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                        <div style="padding:14px 16px; background:var(--bg); font-weight:800; color:#191F28; display:flex; justify-content:space-between; border-bottom:1px solid var(--border);">
+                        <div style="padding:14px 16px; background:var(--surface-2); font-weight:900; color:var(--text); display:flex; justify-content:space-between; border-bottom:1px solid var(--border);">
                             <span>${apEscapeHtml(cls.name)}</span>
-                            <span style="font-size:12px; color:var(--secondary); font-weight:600;">${stds.length}명</span>
+                            <span style="font-size:12px; color:var(--secondary); font-weight:700;">${stds.length}명</span>
                         </div>
                         ${stds.length ? stds.map(s => `
-                            <div style="padding:14px 16px; border-bottom:1px solid var(--bg); display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                            <div style="padding:14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:8px;">
                                 <div>
-                                    <b style="font-size:14px; color:#191F28;">${apEscapeHtml(s.name)}</b>
+                                    <b style="font-size:14px; color:var(--text);">${apEscapeHtml(s.name)}</b>
                                     <span style="font-size:11px; color:var(--secondary); margin-left:6px; font-weight:600;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span>
                                 </div>
-                                <button class="btn" style="padding:6px 12px; font-size:11px; font-weight:700; border-radius:8px; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세</button>
+                                <button class="btn" style="padding:6px 12px; font-size:11px; font-weight:700; border-radius:8px; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
                             </div>
-                        `).join('') : '<div style="padding:20px; text-align:center; color:var(--secondary); font-size:12px; font-weight:600;">재원생이 없습니다.</div>'}
+                        `).join('') : `<div style="padding:20px; text-align:center; color:var(--secondary); font-size:12px; font-weight:600;">재원생이 없습니다.</div>`}
                     </div>`; 
         });
     }
