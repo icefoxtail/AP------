@@ -32,7 +32,7 @@ async function handleBatchGeneratePins(classId) {
 // [Phase 4/5] 예외 정책 기반 반별 요약 계산 (미기록 = 등원/완료 간주)
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
-    const todayExam = getTodayExamConfig();
+    const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
     const aIds = active.map(s => String(s.id));
@@ -61,10 +61,10 @@ function renderClass(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     const summary = computeClassTodaySummary(cid);
 
-    // [Phase 4/5] 4대 핵심 액션만 남기고 상단 툴바 재배치 (명칭 보정)
+    // [Phase 4/5] 4대 핵심 액션만 남기고 상단 툴바 재배치
     const opToolsPanel = `
         <div style="display:flex; gap:8px; margin-bottom:15px; flex-wrap:wrap;">
-            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR/OMR</button>
+            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR 생성</button>
             <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openExamGradeView('${cid}')">📋 시험·성적</button>
             <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openClinicBasketForClass('${cid}')">🧺 클리닉</button>
             <button class="btn btn-primary" style="flex:1; min-width:80px; padding:10px; font-size:13px; font-weight:800;" onclick="openClassRecordModal('${cid}')">✏️ 진도관리</button>
@@ -197,8 +197,9 @@ async function saveClassRecord(cid, dateStr) {
         actualTeacherName = getTeacherNameForUI();
     } else {
         const session = typeof getSession === 'function' ? getSession() : null;
-        actualTeacherName = state.ui.userName || state.auth?.name || session?.name || '담당';
-        if (actualTeacherName === '선생님1') actualTeacherName = '담당';
+        actualTeacherName = state.ui?.userName || state.auth?.name || session?.name || '담당';
+        actualTeacherName = String(actualTeacherName || '').trim();
+        if (!actualTeacherName || actualTeacherName === '선생님1') actualTeacherName = '담당';
     }
 
     const payload = {
