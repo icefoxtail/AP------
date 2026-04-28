@@ -1,8 +1,33 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
- * 공용 UI 컴포넌트 및 상단 액션 모달 엔진
- * [IRONCLAD 5G]&#58; Top Action 모달 구조 정식 적용
+ * 공용 UI 컴포넌트 및 다크모드 테마 엔진
  */
+
+// ============================================================
+// [Theme Manager] 다크 모드 테마 관리
+// ============================================================
+function getTheme() {
+    return localStorage.getItem('APMATH_THEME') || 'light';
+}
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+}
+
+function toggleTheme() {
+    const current = getTheme();
+    const next = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('APMATH_THEME', next);
+    applyTheme(next);
+}
+
+// 파일 로드 시 즉시 테마 적용
+applyTheme(getTheme());
+
 
 function toast(m, t='info') {
     const c = document.getElementById('toast-container');
@@ -24,10 +49,6 @@ let modalCloseTimer = null;
 
 /**
  * Top Action Modal
- * @param {string} t 제목
- * @param {string} b 본문 HTML
- * @param {string|null} at 상단 우측 액션 버튼 텍스트
- * @param {Function|null} af 상단 우측 액션 콜백
  */
 function showModal(t, b, at=null, af=null) {
     const titleEl = document.getElementById('modal-title');
@@ -153,7 +174,7 @@ function safeToastError(message) {
 }
 
 // ============================================================
-// [드로어 네비게이션] Toss Pop 스타일
+// [드로어 네비게이션] Toss Pop 스타일 및 테마 스위치 (슬림화)
 // ============================================================
 function renderAppDrawer() {
     if (document.getElementById('app-drawer')) return;
@@ -173,40 +194,42 @@ function renderAppDrawer() {
             }
             #app-drawer-overlay.drw-open { display:block; }
 
+            /* 너비 축소 (300px -> 260px) 및 그림자 약화 */
             #app-drawer {
                 position:fixed;
                 top:0;
                 left:0;
                 bottom:0;
-                width:min(82vw,300px);
+                width:min(75vw, 260px); 
                 background:var(--surface);
                 z-index:9999;
                 display:flex;
                 flex-direction:column;
                 transform:translateX(-104%);
                 transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.05);
-                box-shadow:10px 0 40px rgba(0,0,0,0.1);
+                box-shadow:4px 0 24px rgba(0,0,0,0.06);
                 overflow-y:auto;
-                border-radius:0 24px 24px 0;
+                border-radius:0 20px 20px 0;
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
+            /* 패딩 다이어트 */
             .drw-hdr {
-                padding:calc(44px + env(safe-area-inset-top)) 24px 24px;
+                padding:calc(40px + env(safe-area-inset-top)) 20px 20px;
                 background:var(--bg);
                 flex-shrink:0;
                 border-bottom:1px solid var(--border);
             }
             .drw-title {
                 color:var(--primary);
-                font-size:22px;
+                font-size:20px;
                 font-weight:950;
                 margin:0;
                 letter-spacing:-0.8px;
             }
             .drw-sub {
                 color:var(--secondary);
-                font-size:13px;
+                font-size:12px;
                 font-weight:700;
                 margin:6px 0 0;
             }
@@ -215,22 +238,22 @@ function renderAppDrawer() {
                 font-size:11px;
                 font-weight:900;
                 color:var(--secondary);
-                padding:20px 24px 8px;
+                padding:16px 20px 6px;
                 letter-spacing:0.5px;
                 text-transform:uppercase;
             }
             .drw-item {
                 display:flex;
                 align-items:center;
-                width:calc(100% - 24px);
-                margin:4px 12px;
-                padding:14px 16px;
-                min-height:48px;
+                width:calc(100% - 16px);
+                margin:2px 8px;
+                padding:12px 14px;
+                min-height:44px;
                 border:0;
-                border-radius:14px;
+                border-radius:12px;
                 background:transparent;
-                color:#191F28;
-                font-size:15px;
+                color:var(--text);
+                font-size:14px;
                 font-weight:700;
                 font-family:inherit;
                 text-align:left;
@@ -258,10 +281,39 @@ function renderAppDrawer() {
             }
             .drw-spacer { flex:1; }
             .drw-footer {
-                padding:10px 0 calc(20px + env(safe-area-inset-bottom));
+                padding:8px 0 calc(16px + env(safe-area-inset-bottom));
                 border-top:1px solid var(--border);
                 flex-shrink:0;
                 background:var(--surface);
+            }
+
+            /* [Theme Switch] 미세 조정 */
+            .theme-switch {
+                width: 42px; 
+                height: 24px; 
+                border-radius: 12px; 
+                background: rgba(139,149,161,0.3); 
+                position: relative; 
+                transition: background 0.3s; 
+                flex-shrink: 0;
+            }
+            .theme-switch::after {
+                content: ''; 
+                position: absolute; 
+                top: 2px; 
+                left: 2px; 
+                width: 20px; 
+                height: 20px; 
+                border-radius: 50%; 
+                background: #ffffff; 
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+                box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            }
+            body.dark .theme-switch { 
+                background: var(--success); 
+            }
+            body.dark .theme-switch::after { 
+                transform: translateX(18px); 
             }
         `;
         document.head.appendChild(style);
@@ -311,6 +363,10 @@ function renderAppDrawer() {
             ${isAdmin ? adminMenu : teacherMenu}
             <div class="drw-spacer"></div>
             <div class="drw-footer">
+                <button class="drw-item" style="justify-content: space-between;" onclick="toggleTheme();">
+                    <span>화면 모드</span>
+                    <div class="theme-switch"></div>
+                </button>
                 <button class="drw-item danger" onclick="closeAppDrawer(); logout();">로그아웃</button>
             </div>
         </nav>

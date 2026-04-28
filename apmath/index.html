@@ -6,7 +6,7 @@
     <title>AP Math OS 1.0</title>
     <style>
         :root {
-            /* [Toss Base + Vivid Pop] 트렌디 컬러 팔레트 */
+            /* [Toss Base + Vivid Pop] 라이트 모드 (기본) */
             --primary: #1A5CFF;
             --primary-dark: #0040D6;
             --secondary: #8B95A1;
@@ -16,27 +16,50 @@
 
             --bg: #F2F4F6;
             --surface: #FFFFFF;
+            --surface-alpha: rgba(255, 255, 255, 0.85);
             --border: #E5E8EB;
             --shadow: 0 2px 12px rgba(0,0,0,0.04);
+            
+            --text: #191F28;
+            --text-soft: #333D4B;
+        }
+
+        /* [Dark Mode] 다크 테마 컬러셋 */
+        body.dark {
+            --primary: #4D7CFF;
+            --primary-dark: #2F5EEA;
+            --secondary: #A7B0BD;
+            --success: #22D98F;
+            --error: #FF6B7A;
+            --warning: #FFB84D;
+
+            --bg: #111318;
+            --surface: #1B1F27;
+            --surface-alpha: rgba(27, 31, 39, 0.85);
+            --border: #2B313B;
+            --shadow: 0 2px 16px rgba(0,0,0,0.35);
+            
+            --text: #F2F4F6;
+            --text-soft: #D1D6DE;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
-        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #191F28; line-height: 1.6; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.2s, color 0.2s; }
 
         header {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(255, 255, 255, 0.85);
+            background: var(--surface-alpha);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             padding: calc(12px + env(safe-area-inset-top)) 16px 12px;
             display: flex; justify-content: space-between; align-items: center;
         }
         .brand { display: flex; align-items: baseline; gap: 8px; }
-        .brand-text { font-size: 20px; font-weight: 900; color: #191F28; letter-spacing: -0.5px; cursor: pointer; }
+        .brand-text { font-size: 20px; font-weight: 900; color: var(--text); letter-spacing: -0.5px; cursor: pointer; }
         .tag { font-size: 10px; background: var(--primary); color: #ffffff; padding: 3px 8px; border-radius: 20px; font-weight: 800; }
 
         nav { display: flex; gap: 8px; }
-        nav .btn { background: #F2F4F6; color: #191F28; border: none; font-size: 13px; padding: 6px 12px; font-weight: 700; }
+        nav .btn { background: var(--bg); color: var(--text); border: none; font-size: 13px; padding: 6px 12px; font-weight: 700; }
 
         main { max-width: 600px; margin: 0 auto; padding: 16px 14px calc(100px + env(safe-area-inset-bottom)); }
 
@@ -46,17 +69,17 @@
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
             padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border);
-            background: var(--surface); color: #191F28; font-size: 14px; font-weight: 700;
+            background: var(--surface); color: var(--text); font-size: 14px; font-weight: 700;
             cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); gap: 6px; min-height: 44px;
             font-family: inherit;
         }
         .btn-primary { background: var(--primary); color: #ffffff; border: none; box-shadow: 0 4px 12px rgba(26,92,255,0.25); }
         .btn-primary:active { background: var(--primary-dark); transform: scale(0.96); }
-        .btn:active { background: #F2F4F6; transform: scale(0.96); }
+        .btn:active { background: var(--bg); transform: scale(0.96); }
 
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { text-align: left; font-size: 12px; color: var(--secondary); padding: 8px 6px; border-bottom: 1.5px solid var(--border); font-weight: 700; }
-        td { padding: 12px 6px; border-bottom: 1px solid #F2F4F6; font-size: 14px; color: #191F28; }
+        td { padding: 12px 6px; border-bottom: 1px solid var(--bg); font-size: 14px; color: var(--text); }
         .hidden { display: none !important; }
 
         #modal-overlay {
@@ -75,7 +98,7 @@
         }
         #modal-overlay.show #modal-content { transform: translateY(0) scale(1); opacity: 1; }
 
-        /* [Top Action Modal] 좌측 취소 / 중앙 제목 / 우측 액션 */
+        /* [Top Action Modal] */
         #modal-header {
             display: grid;
             grid-template-columns: 64px minmax(0, 1fr) 64px;
@@ -106,7 +129,7 @@
             font-size: 18px;
             font-weight: 900;
             letter-spacing: -0.5px;
-            color: #191F28;
+            color: var(--text);
             text-align: center;
             white-space: nowrap;
             overflow: hidden;
