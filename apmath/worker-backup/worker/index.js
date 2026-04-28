@@ -1,6 +1,7 @@
 /**
  * AP Math OS v26.1.2 [IRONCLAD - Phase 4/5 FINAL RECOVERY]
  * Cloudflare Worker 통합 API 엔진 - 절대 축약 없음, 모든 기존 API 복구 완료본
+ * Phase 4/5 Add-on: class_textbooks / class_daily_records / class_daily_progress API 추가
  */
 
 const headers = {
@@ -48,7 +49,6 @@ async function canAccessClass(teacher, classId, env) {
   const row = await env.DB.prepare(`
     SELECT 1 FROM teacher_classes
     WHERE teacher_id = ? AND class_id = ?
-    LIMIT 1
   `).bind(teacher.id, classId).first();
   return !!row;
 }
@@ -65,6 +65,10 @@ async function generateStudentPin(grade, env) {
   } else {
     return prefix + '01';
   }
+}
+
+function todayKstDateString() {
+  return new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString().split('T')[0];
 }
 
 export default {
@@ -122,7 +126,7 @@ export default {
 
           if (!classId) return new Response(JSON.stringify({ error: 'class required', students: [], submitted_sessions: [] }), { status: 400, headers });
 
-          const todayKST = new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString().split('T')[0];
+          const todayKST = todayKstDateString();
           const targetDate = examDate || todayKST;
 
           const [clsInfo, stds, sessions] = await Promise.all([
@@ -170,10 +174,10 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou;
+          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou, txt, cdr, cdp;
 
           if (teacher.role === 'admin') {
-            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou] = await Promise.all([
+            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
               env.DB.prepare('SELECT * FROM class_students').all(),
@@ -186,29 +190,52 @@ export default {
               env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC').all(),
               env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all(),
               env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(),
-              env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC').all()
+              env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC').all(),
+              env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all(),
+              env.DB.prepare('SELECT * FROM class_daily_records ORDER BY date DESC, created_at DESC LIMIT 1000').all(),
+              env.DB.prepare('SELECT * FROM class_daily_progress ORDER BY created_at ASC LIMIT 3000').all()
             ]);
           } else {
             const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
             const classIds = tcls.results.map(r => r.class_id);
             
-            // 🚨 [수정됨] 일반 선생님 분기: operation_memos 실제 조회 교체 및 journals 응답 포함
             opm = await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
             jou = await env.DB.prepare('SELECT * FROM daily_journals WHERE teacher_name = ? ORDER BY date DESC').bind(teacher.name).all();
 
             if (!classIds.length) {
-              return new Response(JSON.stringify({ students:[], classes:[], class_students:[], attendance:[], homework:[], exam_sessions:[], wrong_answers:[], attendance_history:[], homework_history:[], consultations:[], operation_memos: opm.results, exam_schedules: exS.results, journals: jou.results }), { headers });
+              return new Response(JSON.stringify({
+                students: [],
+                classes: [],
+                class_students: [],
+                attendance: [],
+                homework: [],
+                exam_sessions: [],
+                wrong_answers: [],
+                attendance_history: [],
+                homework_history: [],
+                consultations: [],
+                operation_memos: opm.results,
+                exam_schedules: exS.results,
+                journals: jou.results,
+                class_textbooks: [],
+                class_daily_records: [],
+                class_daily_progress: []
+              }), { headers });
             }
             
-            const cMarkers = classIds.map(()=>'?').join(',');
-            [clss, map] = await Promise.all([
+            const cMarkers = classIds.map(() => '?').join(',');
+            [clss, map, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare(`SELECT * FROM classes WHERE id IN (${cMarkers})`).bind(...classIds).all(),
-              env.DB.prepare(`SELECT * FROM class_students WHERE class_id IN (${cMarkers})`).bind(...classIds).all()
+              env.DB.prepare(`SELECT * FROM class_students WHERE class_id IN (${cMarkers})`).bind(...classIds).all(),
+              env.DB.prepare(`SELECT * FROM class_textbooks WHERE class_id IN (${cMarkers}) ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC`).bind(...classIds).all(),
+              env.DB.prepare(`SELECT * FROM class_daily_records WHERE class_id IN (${cMarkers}) ORDER BY date DESC, created_at DESC LIMIT 1000`).bind(...classIds).all(),
+              env.DB.prepare(`SELECT * FROM class_daily_progress WHERE class_id IN (${cMarkers}) ORDER BY created_at ASC LIMIT 3000`).bind(...classIds).all()
             ]);
+
             const studentIds = map.results.map(r => r.student_id);
             if (studentIds.length > 0) {
-              const sMarkers = studentIds.map(()=>'?').join(',');
+              const sMarkers = studentIds.map(() => '?').join(',');
               [stds, att, hw, exs, wrs, attHis, hwHis, cns] = await Promise.all([
                 env.DB.prepare(`SELECT * FROM students WHERE id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM attendance WHERE date = DATE('now', '+9 hours') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
@@ -219,9 +246,36 @@ export default {
                 env.DB.prepare(`SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM consultations WHERE student_id IN (${sMarkers}) ORDER BY date DESC, created_at DESC`).bind(...studentIds).all()
               ]);
-            } else { stds={results:[]}; att={results:[]}; hw={results:[]}; exs={results:[]}; wrs={results:[]}; attHis={results:[]}; hwHis={results:[]}; cns={results:[]}; }
+            } else {
+              stds = { results: [] };
+              att = { results: [] };
+              hw = { results: [] };
+              exs = { results: [] };
+              wrs = { results: [] };
+              attHis = { results: [] };
+              hwHis = { results: [] };
+              cns = { results: [] };
+            }
           }
-          return new Response(JSON.stringify({ students: stds.results, classes: clss.results, class_students: map.results, attendance: att.results, homework: hw.results, exam_sessions: exs.results, wrong_answers: wrs.results, attendance_history: attHis.results, homework_history: hwHis.results, consultations: cns.results, operation_memos: opm.results, exam_schedules: exS.results, journals: jou.results }), { headers });
+
+          return new Response(JSON.stringify({
+            students: stds.results,
+            classes: clss.results,
+            class_students: map.results,
+            attendance: att.results,
+            homework: hw.results,
+            exam_sessions: exs.results,
+            wrong_answers: wrs.results,
+            attendance_history: attHis.results,
+            homework_history: hwHis.results,
+            consultations: cns.results,
+            operation_memos: opm.results,
+            exam_schedules: exS.results,
+            journals: jou.results,
+            class_textbooks: txt.results,
+            class_daily_records: cdr.results,
+            class_daily_progress: cdp.results
+          }), { headers });
         }
 
         // --- 5. 학생 관리 ---
@@ -296,22 +350,34 @@ export default {
 
         // --- 6. 출결 및 숙제 ---
         if (resource === 'attendance-history' && method === 'GET') {
-          const date = url.searchParams.get('date') || new Date().toLocaleDateString('sv-SE');
-          const [att, hw] = await Promise.all([env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(), env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()]);
+          const date = url.searchParams.get('date') || todayKstDateString();
+          const [att, hw] = await Promise.all([
+            env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(),
+            env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()
+          ]);
           return new Response(JSON.stringify({ attendance: att.results, homework: hw.results, date }), { headers });
         }
+
         if (resource === 'attendance-batch' && method === 'POST') {
           const data = await request.json();
-          const stmts = (data.entries || []).map(({ studentId, status, date }) => env.DB.prepare("INSERT INTO attendance (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status").bind(`${studentId}_${date}`, studentId, status, date));
+          const stmts = (data.entries || []).map(({ studentId, status, date }) =>
+            env.DB.prepare("INSERT INTO attendance (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status")
+              .bind(`${studentId}_${date}`, studentId, status, date)
+          );
           if (stmts.length) await env.DB.batch(stmts);
           return new Response(JSON.stringify({ success: true }), { headers });
         }
+
         if (resource === 'homework-batch' && method === 'POST') {
           const data = await request.json();
-          const stmts = (data.entries || []).map(({ studentId, status, date }) => env.DB.prepare("INSERT INTO homework (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status").bind(`${studentId}_${date}`, studentId, status, date));
+          const stmts = (data.entries || []).map(({ studentId, status, date }) =>
+            env.DB.prepare("INSERT INTO homework (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status")
+              .bind(`${studentId}_${date}`, studentId, status, date)
+          );
           if (stmts.length) await env.DB.batch(stmts);
           return new Response(JSON.stringify({ success: true }), { headers });
         }
+
         if (method === 'PATCH' && (resource === 'attendance' || resource === 'homework')) {
           const d = await request.json();
           const table = resource === 'attendance' ? 'attendance' : 'homework';
@@ -611,8 +677,277 @@ export default {
           if (method === 'DELETE' && id) { await env.DB.prepare("DELETE FROM exam_schedules WHERE id=?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
         }
 
+        // --- 9.5. 반별 교재 관리 ---
+        if (resource === 'class-textbooks') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          if (method === 'GET') {
+            const classId = url.searchParams.get('class') || '';
+            const status = url.searchParams.get('status') || '';
+
+            if (classId) {
+              if (!(await canAccessClass(teacher, classId, env))) {
+                return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+              }
+
+              let query = 'SELECT * FROM class_textbooks WHERE class_id = ?';
+              const params = [classId];
+
+              if (status) {
+                query += ' AND status = ?';
+                params.push(status);
+              }
+
+              query += ' ORDER BY sort_order ASC, created_at ASC';
+
+              const res = await env.DB.prepare(query).bind(...params).all();
+              return new Response(JSON.stringify({ success: true, items: res.results }), { headers });
+            }
+
+            if (teacher.role === 'admin') {
+              const res = await env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all();
+              return new Response(JSON.stringify({ success: true, items: res.results }), { headers });
+            }
+
+            const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+            const classIds = tcls.results.map(r => r.class_id);
+
+            if (!classIds.length) {
+              return new Response(JSON.stringify({ success: true, items: [] }), { headers });
+            }
+
+            const markers = classIds.map(() => '?').join(',');
+            const res = await env.DB.prepare(`SELECT * FROM class_textbooks WHERE class_id IN (${markers}) ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC`).bind(...classIds).all();
+            return new Response(JSON.stringify({ success: true, items: res.results }), { headers });
+          }
+
+          if (method === 'POST') {
+            const d = await request.json();
+
+            if (!d.class_id || !String(d.title || '').trim()) {
+              return new Response(JSON.stringify({ success: false, error: 'class_id and title required' }), { status: 400, headers });
+            }
+
+            if (!(await canAccessClass(teacher, d.class_id, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            const tid = `tx_${crypto.randomUUID()}`;
+            const startDate = d.start_date || todayKstDateString();
+
+            await env.DB.prepare(`
+              INSERT INTO class_textbooks (
+                id, class_id, title, status, start_date, end_date, sort_order, created_at, updated_at
+              ) VALUES (?, ?, ?, 'active', ?, NULL, ?, DATETIME('now'), DATETIME('now'))
+            `).bind(
+              tid,
+              d.class_id,
+              String(d.title).trim(),
+              startDate,
+              Number(d.sort_order || 0)
+            ).run();
+
+            const item = await env.DB.prepare('SELECT * FROM class_textbooks WHERE id = ?').bind(tid).first();
+            return new Response(JSON.stringify({ success: true, item }), { headers });
+          }
+
+          if (method === 'PATCH' && id) {
+            const current = await env.DB.prepare('SELECT * FROM class_textbooks WHERE id = ?').bind(id).first();
+
+            if (!current) {
+              return new Response(JSON.stringify({ success: false, error: 'not found' }), { status: 404, headers });
+            }
+
+            if (!(await canAccessClass(teacher, current.class_id, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            const d = await request.json();
+            const nextStatus = d.status || current.status || 'active';
+            const today = todayKstDateString();
+
+            let nextEndDate = d.end_date !== undefined ? d.end_date : current.end_date;
+            if (nextStatus === 'completed' && !nextEndDate) nextEndDate = today;
+            if (nextStatus === 'active' && d.clear_end_date === true) nextEndDate = null;
+
+            await env.DB.prepare(`
+              UPDATE class_textbooks
+              SET title = ?,
+                  status = ?,
+                  start_date = ?,
+                  end_date = ?,
+                  sort_order = ?,
+                  updated_at = DATETIME('now')
+              WHERE id = ?
+            `).bind(
+              String(d.title !== undefined ? d.title : current.title).trim(),
+              nextStatus,
+              d.start_date !== undefined ? d.start_date : current.start_date,
+              nextEndDate,
+              d.sort_order !== undefined ? Number(d.sort_order || 0) : Number(current.sort_order || 0),
+              id
+            ).run();
+
+            const item = await env.DB.prepare('SELECT * FROM class_textbooks WHERE id = ?').bind(id).first();
+            return new Response(JSON.stringify({ success: true, item }), { headers });
+          }
+
+          if (method === 'DELETE' && id) {
+            const current = await env.DB.prepare('SELECT * FROM class_textbooks WHERE id = ?').bind(id).first();
+
+            if (!current) {
+              return new Response(JSON.stringify({ success: false, error: 'not found' }), { status: 404, headers });
+            }
+
+            if (!(await canAccessClass(teacher, current.class_id, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            await env.DB.prepare('DELETE FROM class_textbooks WHERE id = ?').bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+        }
+
+        // --- 9.6. 반별 수업 기록 관리 ---
+        if (resource === 'class-daily-records') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          if (method === 'GET') {
+            const classId = url.searchParams.get('class') || '';
+            const date = url.searchParams.get('date') || todayKstDateString();
+
+            if (classId) {
+              if (!(await canAccessClass(teacher, classId, env))) {
+                return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+              }
+
+              const records = await env.DB.prepare('SELECT * FROM class_daily_records WHERE class_id = ? AND date = ? ORDER BY created_at ASC').bind(classId, date).all();
+              const progress = await env.DB.prepare(`
+                SELECT *
+                FROM class_daily_progress
+                WHERE class_id = ?
+                  AND record_id IN (
+                    SELECT id FROM class_daily_records WHERE class_id = ? AND date = ?
+                  )
+                ORDER BY created_at ASC
+              `).bind(classId, classId, date).all();
+
+              return new Response(JSON.stringify({
+                success: true,
+                date,
+                records: records.results,
+                progress: progress.results
+              }), { headers });
+            }
+
+            let classIds = [];
+            if (teacher.role === 'admin') {
+              const allClasses = await env.DB.prepare('SELECT id FROM classes WHERE is_active != 0 OR is_active IS NULL').all();
+              classIds = allClasses.results.map(r => r.id);
+            } else {
+              const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+              classIds = tcls.results.map(r => r.class_id);
+            }
+
+            if (!classIds.length) {
+              return new Response(JSON.stringify({ success: true, date, records: [], progress: [] }), { headers });
+            }
+
+            const markers = classIds.map(() => '?').join(',');
+            const records = await env.DB.prepare(`SELECT * FROM class_daily_records WHERE date = ? AND class_id IN (${markers}) ORDER BY class_id ASC, created_at ASC`).bind(date, ...classIds).all();
+            const progress = await env.DB.prepare(`SELECT * FROM class_daily_progress WHERE record_id IN (SELECT id FROM class_daily_records WHERE date = ? AND class_id IN (${markers})) ORDER BY created_at ASC`).bind(date, ...classIds).all();
+
+            return new Response(JSON.stringify({
+              success: true,
+              date,
+              records: records.results,
+              progress: progress.results
+            }), { headers });
+          }
+
+          if (method === 'POST') {
+            const d = await request.json();
+
+            if (!d.class_id || !d.date) {
+              return new Response(JSON.stringify({ success: false, error: 'class_id and date required' }), { status: 400, headers });
+            }
+
+            if (!(await canAccessClass(teacher, d.class_id, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            const existing = await env.DB.prepare('SELECT * FROM class_daily_records WHERE class_id = ? AND date = ?').bind(d.class_id, d.date).first();
+            const recordId = existing?.id || `cdr_${crypto.randomUUID()}`;
+            const teacherName = d.teacher_name || teacher.name || '';
+            const specialNote = d.special_note || '';
+
+            const stmts = [];
+
+            if (existing) {
+              stmts.push(env.DB.prepare(`
+                UPDATE class_daily_records
+                SET teacher_name = ?,
+                    special_note = ?,
+                    updated_at = DATETIME('now')
+                WHERE id = ?
+              `).bind(teacherName, specialNote, recordId));
+            } else {
+              stmts.push(env.DB.prepare(`
+                INSERT INTO class_daily_records (
+                  id, class_id, date, teacher_name, special_note, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+              `).bind(recordId, d.class_id, d.date, teacherName, specialNote));
+            }
+
+            stmts.push(env.DB.prepare('DELETE FROM class_daily_progress WHERE record_id = ?').bind(recordId));
+
+            const progressItems = Array.isArray(d.progress) ? d.progress : [];
+
+            for (const item of progressItems) {
+              const textbookId = item.textbook_id || '';
+              const progressText = String(item.progress_text || '').trim();
+
+              if (!textbookId && !String(item.textbook_title_snapshot || '').trim()) continue;
+
+              let titleSnapshot = String(item.textbook_title_snapshot || '').trim();
+
+              if (textbookId) {
+                const textbook = await env.DB.prepare('SELECT title FROM class_textbooks WHERE id = ? AND class_id = ?').bind(textbookId, d.class_id).first();
+                if (textbook?.title) titleSnapshot = textbook.title;
+              }
+
+              if (!titleSnapshot) continue;
+
+              stmts.push(env.DB.prepare(`
+                INSERT INTO class_daily_progress (
+                  id, record_id, class_id, textbook_id, textbook_title_snapshot, progress_text, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, DATETIME('now'))
+              `).bind(
+                `cdp_${crypto.randomUUID()}`,
+                recordId,
+                d.class_id,
+                textbookId || null,
+                titleSnapshot,
+                progressText
+              ));
+            }
+
+            await env.DB.batch(stmts);
+
+            const record = await env.DB.prepare('SELECT * FROM class_daily_records WHERE id = ?').bind(recordId).first();
+            const progress = await env.DB.prepare('SELECT * FROM class_daily_progress WHERE record_id = ? ORDER BY created_at ASC').bind(recordId).all();
+
+            return new Response(JSON.stringify({
+              success: true,
+              record,
+              progress: progress.results
+            }), { headers });
+          }
+        }
+
         // --- 10. 반 관리 (classes) ---
-        // 🚨 [수정됨] textbook 필드만 추가 반영, 기존 로직/기본값 유지
         if (resource === 'classes') {
           if (method === 'POST') {
             const d = await request.json();
@@ -635,6 +970,7 @@ export default {
           const map = await env.DB.prepare('SELECT * FROM teacher_classes').all();
           return new Response(JSON.stringify({ teachers: res.results, teacher_classes: map.results }), { headers });
         }
+
         if (resource === 'teacher-classes' && method === 'POST') {
           const t = await verifyAuth(request, env);
           if (t?.role !== 'admin') return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -655,7 +991,6 @@ export default {
         }
         
         // --- 13. 오늘의 일지 (결재 시스템) ---
-        // 🚨 [수정됨] PATCH 소유권 검사 철저 보정
         if (resource === 'daily-journals') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -695,9 +1030,11 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
           }
         }
-
       }
+
       return new Response(JSON.stringify({ error: 'API Endpoint Not Found' }), { status: 404, headers });
-    } catch (err) { return new Response(JSON.stringify({ error: err.message }), { status: 500, headers }); }
+    } catch (err) {
+      return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+    }
   }
 };
