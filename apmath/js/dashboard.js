@@ -14,6 +14,13 @@ function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = new Date(todayStr).getTime();
     const active = state.db.students.filter(s => s.status === '재원');
+
+    const attendanceHistory = state.db.attendance_history || [];
+    const homeworkHistory = state.db.homework_history || [];
+    const examSessions = state.db.exam_sessions || [];
+    const consultations = state.db.consultations || [];
+    const classStudents = state.db.class_students || [];
+    const classes = state.db.classes || [];
     
     const risks = [];
     
@@ -21,15 +28,15 @@ function computeRiskStudents() {
         let riskTypes = [];
         let reasons = [];
         
-        const recentAtt = state.db.attendance_history.filter(a => a.student_id === s.id && a.status === '결석');
+        const recentAtt = attendanceHistory.filter(a => a.student_id === s.id && a.status === '결석');
         const absenceCount = recentAtt.length;
         if (absenceCount >= 2) { riskTypes.push('출결주의'); reasons.push(`최근 14일 결석 ${absenceCount}회`); }
         
-        const recentHw = state.db.homework_history.filter(h => h.student_id === s.id && h.status === '미완료');
+        const recentHw = homeworkHistory.filter(h => h.student_id === s.id && h.status === '미완료');
         const hwMissCount = recentHw.length;
         if (hwMissCount >= 3) { riskTypes.push('숙제주의'); reasons.push(`최근 14일 숙제 미완료 ${hwMissCount}회`); }
         
-        const exams = state.db.exam_sessions.filter(e => e.student_id === s.id)
+        const exams = examSessions.filter(e => e.student_id === s.id)
             .sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)))
             .slice(0, 3);
         
@@ -46,7 +53,7 @@ function computeRiskStudents() {
             if (scoreRisk) riskTypes.push('성적주의');
         }
         
-        const cns = state.db.consultations.filter(c => c.student_id === s.id).sort((a,b) => String(b.date).localeCompare(String(a.date)));
+        const cns = consultations.filter(c => c.student_id === s.id).sort((a,b) => String(b.date).localeCompare(String(a.date)));
         let lastCnsDate = cns.length ? cns[0].date : '없음';
         let cnsDaysDiff = 999;
         if (cns.length > 0) cnsDaysDiff = (todayTime - new Date(cns[0].date).getTime()) / (1000*3600*24);
@@ -61,8 +68,8 @@ function computeRiskStudents() {
         if (riskTypes.length >= 2) { riskTypes.push('종합주의'); }
         
         if (riskTypes.length > 0) {
-            const cId = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
-            const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
+            const cId = classStudents.find(m => m.student_id === s.id)?.class_id;
+            const cName = classes.find(c => c.id === cId)?.name || '미배정';
             risks.push({ student: s, className: cName, riskTypes, reasons, scoreSummary, absenceCount, hwMissCount, lastConsultationDate: lastCnsDate });
         }
     });
@@ -262,7 +269,7 @@ function openAddressBook() {
     showModal('학생관리', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button class="btn" style="padding:10px; flex:1; font-size:12px;" onclick="closeModal(); openAddStudent();">학생 추가</button>
-            <button class="btn" style="padding:10px; flex:1; font-size:12px; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="openGlobalPinManagement()">PIN관리</button>
+            <button class="btn" style="padding:10px; flex:1; font-size:12px; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="closeModal(); openGlobalPinManagement()">PIN관리</button>
         </div>
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
             <input id="ab-search" class="btn" placeholder="이름 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="renderAddressBookList()">
@@ -876,7 +883,6 @@ function computeDashboardData() {
 
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
-    const n = s.activeCount || 1;
 
     const hasAbsent = s.absent > 0;
     const hasHwMiss = s.hwNotDone > 0;
@@ -900,25 +906,25 @@ function renderClassSummaryCard(cls, data) {
 
     if (hasAbsent) {
         accentColor = 'var(--error)';
-        gradientBg = 'linear-gradient(135deg, rgba(255,71,87,0.08) 0%, var(--surface) 100%)';
-        borderColor = 'rgba(255,71,87,0.35)';
-        shadowColor = 'rgba(255,71,87,0.12)';
+        gradientBg = 'linear-gradient(135deg, rgba(255,71,87,0.10) 0%, var(--surface) 100%)';
+        borderColor = 'rgba(255,71,87,0.40)';
+        shadowColor = 'rgba(255,71,87,0.14)';
         chipBg = 'rgba(255,71,87,0.15)';
         chipColor = 'var(--error)';
         chipLabel = `결석 ${s.absent}명`;
     } else if (hasHwMiss) {
         accentColor = 'var(--warning)';
-        gradientBg = 'linear-gradient(135deg, rgba(255,165,2,0.09) 0%, var(--surface) 100%)';
-        borderColor = 'rgba(255,165,2,0.35)';
-        shadowColor = 'rgba(255,165,2,0.12)';
+        gradientBg = 'linear-gradient(135deg, rgba(255,165,2,0.11) 0%, var(--surface) 100%)';
+        borderColor = 'rgba(255,165,2,0.40)';
+        shadowColor = 'rgba(255,165,2,0.14)';
         chipBg = 'rgba(255,165,2,0.15)';
         chipColor = '#b06000';
         chipLabel = `미완료 ${s.hwNotDone}명`;
     } else {
         accentColor = 'var(--primary)';
-        gradientBg = 'linear-gradient(135deg, rgba(26,92,255,0.07) 0%, var(--surface) 100%)';
-        borderColor = 'rgba(26,92,255,0.2)';
-        shadowColor = 'rgba(26,92,255,0.09)';
+        gradientBg = 'linear-gradient(135deg, rgba(26,92,255,0.14) 0%, var(--surface) 100%)';
+        borderColor = 'rgba(26,92,255,0.35)';
+        shadowColor = 'rgba(26,92,255,0.10)';
         chipBg = 'rgba(26,92,255,0.1)';
         chipColor = 'var(--primary)';
         chipLabel = '정상 출석';
@@ -929,14 +935,14 @@ function renderClassSummaryCard(cls, data) {
             <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:${accentColor}; border-radius:20px 0 0 20px;"></div>
             <div style="padding-left:6px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <span style="font-weight:900; font-size:15px; color:#191F28;">${cls.name}</span>
+                    <span style="font-weight:900; font-size:15px; color:var(--text);">${cls.name}</span>
                     <span style="font-size:10px; font-weight:700; color:var(--secondary); background:var(--surface); padding:3px 8px; border-radius:20px; border:1px solid var(--border);">재원 ${s.activeCount}</span>
                 </div>
                 <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-                    <div style="background:var(--surface); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:#191F28;">
+                    <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:var(--text);">
                         등원 <span style="font-size:15px; color:var(--success);">${s.present}</span>
                     </div>
-                    <div style="background:var(--surface); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:#191F28;">
+                    <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:var(--text);">
                         결석 <span style="font-size:15px; color:${s.absent > 0 ? 'var(--error)' : 'var(--secondary)'};">${s.absent}</span>
                     </div>
                     <span style="background:${chipBg}; color:${chipColor}; padding:5px 10px; border-radius:20px; font-size:11px; font-weight:900; margin-left:auto;">${chipLabel}</span>

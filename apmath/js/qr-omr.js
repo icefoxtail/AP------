@@ -45,7 +45,7 @@ function openQrGenerator(cid) {
         <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="background:var(--bg); padding:14px 18px; border-radius:14px; font-size:13px; display:flex; justify-content:space-between; align-items:center;">
                 <span style="color:var(--secondary); font-weight:700;">대상 학급</span>
-                <span style="font-weight:900; color:#191F28; font-size:15px;">${cls.name}</span>
+                <span style="font-weight:900; color:var(--text); font-size:15px;">${cls.name}</span>
             </div>
 
             <div>
@@ -80,7 +80,7 @@ function openQrGenerator(cid) {
 
             <div id="qr-result-area" class="hidden" style="margin-top:20px;">
                 <div style="background:var(--surface); border:1px solid rgba(26,92,255,0.2); border-radius:24px; padding:28px 20px; text-align:center; box-shadow:0 12px 32px rgba(26,92,255,0.08);">
-                    <div style="font-size:18px; font-weight:950; color:#191F28; letter-spacing:-0.5px;">AP Math OS</div>
+                    <div style="font-size:18px; font-weight:950; color:var(--text); letter-spacing:-0.5px;">AP Math OS</div>
                     <div style="font-size:13px; font-weight:800; color:var(--primary); margin-bottom:24px;">모바일 오답 체크 전용 접속 QR</div>
                     
                     <div style="display:inline-block; padding:12px; background:#fff; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.06); margin-bottom:20px; border:1px solid var(--border);">
@@ -191,16 +191,20 @@ function copyQrUrl() {
  * 학급의 시험 제출 통계 계산
  */
 function computeQrSubmitStatus(classId, examTitle, examDate) {
-    const ids = state.db.class_students.filter(m => m.class_id === classId).map(m => m.student_id);
-    const active = state.db.students.filter(s => ids.includes(s.id) && s.status === '재원');
-    const aIds = active.map(s => s.id);
-    const sessions = state.db.exam_sessions.filter(es => es.exam_date === examDate && es.exam_title === examTitle && aIds.includes(es.student_id));
-    const submittedIds = new Set(sessions.map(es => es.student_id));
-    const submitted = active.filter(s => submittedIds.has(s.id)).map(s => {
-        const sess = sessions.find(ts => ts.student_id === s.id);
+    const classStudents = state.db.class_students || [];
+    const students = state.db.students || [];
+    const examSessions = state.db.exam_sessions || [];
+
+    const ids = classStudents.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
+    const active = students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
+    const aIds = active.map(s => String(s.id));
+    const sessions = examSessions.filter(es => es.exam_date === examDate && es.exam_title === examTitle && aIds.includes(String(es.student_id)));
+    const submittedIds = new Set(sessions.map(es => String(es.student_id)));
+    const submitted = active.filter(s => submittedIds.has(String(s.id))).map(s => {
+        const sess = sessions.find(ts => String(ts.student_id) === String(s.id));
         return { ...s, score: sess?.score ?? '' };
     });
-    const pending = active.filter(s => !submittedIds.has(s.id));
+    const pending = active.filter(s => !submittedIds.has(String(s.id)));
     return { submitted, pending };
 }
 
@@ -260,7 +264,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     showModal('제출 현황', `
         <div style="background:var(--bg);padding:14px 18px;border-radius:14px;font-size:13px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
             <div>
-                <div style="font-weight:900;color:#191F28;font-size:15px;margin-bottom:2px;">${examTitle}</div>
+                <div style="font-weight:900;color:var(--text);font-size:15px;margin-bottom:2px;">${examTitle}</div>
                 <div style="font-size:12px;color:var(--secondary);font-weight:700;">${safeDate}</div>
             </div>
             <div style="text-align:right;">
@@ -271,21 +275,21 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span>
-            <h4 style="margin:0;font-size:14px;font-weight:800;color:#191F28;">제출 완료 (${submitted.length})</h4>
+            <h4 style="margin:0;font-size:14px;font-weight:800;color:var(--text);">제출 완료 (${submitted.length})</h4>
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;margin-bottom:28px;">
             <table style="width:100%;font-size:14px;">
-                ${submitted.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:#191F28;">${s.name}</td><td style="padding:12px 20px;text-align:right;font-weight:900;color:var(--primary);">${s.score}점</td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">제출한 학생이 없습니다.</td></tr>'}
+                ${submitted.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:var(--text);">${s.name}</td><td style="padding:12px 20px;text-align:right;font-weight:900;color:var(--primary);">${s.score}점</td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">제출한 학생이 없습니다.</td></tr>'}
             </table>
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <span style="width:8px;height:8px;border-radius:50%;background:var(--error);"></span>
-            <h4 style="margin:0;font-size:14px;font-weight:800;color:#191F28;">미제출 (${pending.length})</h4>
+            <h4 style="margin:0;font-size:14px;font-weight:800;color:var(--text);">미제출 (${pending.length})</h4>
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;">
             <table style="width:100%;font-size:14px;">
-                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:#191F28;">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="padding:8px 14px;font-size:12px;font-weight:800;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">미제출 학생이 없습니다.</td></tr>'}
+                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="padding:8px 14px;font-size:12px;font-weight:800;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}', 'class', '')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">미제출 학생이 없습니다.</td></tr>'}
             </table>
         </div>
     `);
@@ -329,7 +333,7 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
             </div>
 
             <div style="margin-top:14px;">
-                <div style="font-size:14px;font-weight:900;color:#191F28;margin-bottom:16px;">틀린 번호를 선택하세요</div>
+                <div style="font-size:14px;font-weight:900;color:var(--text);margin-bottom:16px;">틀린 번호를 선택하세요</div>
                 <div id="omr-grid-wrap">
                     <div class="omr-grid" style="gap:14px;">${buildOmrItems(defaultQ, checkedWrongIds)}</div>
                 </div>
