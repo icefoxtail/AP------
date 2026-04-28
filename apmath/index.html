@@ -6,7 +6,7 @@
     <title>AP Math OS 1.0</title>
     <style>
         :root {
-            /* 라이트 모드 확정값 */
+            /* [Toss Base] 라이트 모드 확정값 */
             --primary: #1A5CFF;
             --primary-dark: #0040D6;
             --secondary: #6B7684;
@@ -26,7 +26,7 @@
         }
 
         body.dark {
-            /* 다크 모드 확정값 */
+            /* [Vivid Pop] 다크 모드 확정값 (고대비 보정) */
             --primary: #5C8AFF;
             --primary-dark: #3F6FEA;
             --secondary: #A3B1C6;
@@ -45,6 +45,34 @@
             --text-soft: #A3B1C6;
         }
 
+        /* [핵심] 다크모드 버튼 가시성 및 클릭 영역 고정 */
+        .theme-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface-2);
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 900;
+            font-family: inherit;
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+            z-index: 200;
+            pointer-events: auto;
+            transition: transform 0.1s;
+        }
+        body.dark .theme-toggle-btn {
+            background: var(--surface-2);
+            color: var(--text);
+            border-color: var(--border);
+        }
+        .theme-toggle-btn:active { transform: scale(0.96); }
+
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
         body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.2s, color 0.2s; }
 
@@ -56,74 +84,53 @@
             padding: calc(12px + env(safe-area-inset-top)) 16px 12px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .brand { display: flex; align-items: baseline; gap: 8px; }
-        .brand-text { font-size: 20px; font-weight: 900; color: var(--text); letter-spacing: -0.5px; cursor: pointer; }
+        .brand { display: flex; align-items: baseline; gap: 8px; cursor: pointer; }
+        .brand-text { font-size: 20px; font-weight: 950; color: var(--text); letter-spacing: -0.5px; }
         .tag { font-size: 10px; background: var(--primary); color: #ffffff; padding: 3px 8px; border-radius: 20px; font-weight: 800; }
 
         nav { display: flex; gap: 8px; align-items: center; }
-        nav .btn { background: var(--bg); color: var(--text); border: none; font-size: 13px; padding: 6px 12px; font-weight: 700; }
 
         main { max-width: 600px; margin: 0 auto; padding: 16px 14px calc(100px + env(safe-area-inset-bottom)); }
 
-        /* 공통 CSS 보정 */
-        h1, h2, h3, h4, b, strong {
-            color: var(--text);
-        }
+        /* 공통 UI 및 고대비 보정 */
+        h1, h2, h3, h4, b, strong { color: var(--text); }
 
         .card { 
             background: var(--surface); 
             color: var(--text);
             border-radius: 18px; 
-            border: none;
             padding: 16px; 
             margin-bottom: 12px; 
-            box-shadow: var(--shadow); 
+            box-shadow: var(--shadow);
+            border: 1px solid transparent;
+            transition: background 0.2s, border 0.2s;
         }
-        body.dark .card {
-            border: 1px solid var(--border);
-        }
+        body.dark .card { border: 1px solid var(--border); }
 
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
-            padding: 12px 16px; border-radius: 12px; 
-            border: 1px solid var(--border);
-            background: var(--surface); 
-            color: var(--text); 
-            font-size: 14px; font-weight: 700;
+            padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border);
+            background: var(--surface); color: var(--text); font-size: 14px; font-weight: 700;
             cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); gap: 6px; min-height: 44px;
             font-family: inherit;
         }
-        .btn-primary { 
-            background: var(--primary); 
-            color: #ffffff; 
-            border: none; 
-            box-shadow: 0 4px 12px rgba(26,92,255,0.25); 
-        }
+        .btn-primary { background: var(--primary); color: #ffffff; border: none; box-shadow: 0 4px 12px rgba(26,92,255,0.25); }
         
-        body.dark .btn {
-            background: var(--surface-2);
-        }
-        body.dark .btn-primary {
-            background: var(--primary-dark);
-            color: #ffffff;
-        }
+        body.dark .btn { background: var(--surface-2); }
+        body.dark .btn-primary { background: var(--primary-dark); color: #ffffff; }
 
         .btn-primary:active { background: var(--primary-dark); transform: scale(0.96); }
         .btn:active { background: var(--bg); transform: scale(0.96); }
 
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { text-align: left; font-size: 12px; color: var(--secondary); padding: 8px 6px; border-bottom: 1.5px solid var(--border); font-weight: 700; }
-        td { padding: 12px 6px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text); }
-        
-        table td, table th {
-            color: var(--text);
-            border-color: var(--border);
-        }
+        table td, table th { color: var(--text); border-bottom: 1px solid var(--border); padding: 12px 8px; font-size: 14px; text-align: left; }
+        th { font-size: 12px; color: var(--secondary); font-weight: 700; border-bottom: 1.5px solid var(--border); }
         
         .hidden { display: none !important; }
 
+        /* [Modal Structure] */
         #modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000;
             display: flex; align-items: center; justify-content: center; padding: 16px;
@@ -134,86 +141,36 @@
 
         #modal-content {
             background: var(--surface); width: 100%; max-width: 500px; border-radius: 24px;
-            padding: 0; position: relative; max-height: 88vh; display: flex; flex-direction: column; overflow: hidden;
-            transform: translateY(40px) scale(0.98); opacity: 0;
+            overflow: hidden; transform: translateY(40px) scale(0.98); opacity: 0;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column; max-height: 90vh;
         }
         #modal-overlay.show #modal-content { transform: translateY(0) scale(1); opacity: 1; }
 
-        /* [Top Action Modal] 좌측 취소 / 중앙 제목 / 우측 액션 */
         #modal-header {
-            display: grid;
-            grid-template-columns: 64px minmax(0, 1fr) 64px;
-            align-items: center;
-            gap: 8px;
-            padding: 18px 20px 14px;
-            border-bottom: 1px solid var(--border);
-            flex-shrink: 0;
-            background: var(--surface);
-            z-index: 10;
+            display: grid; grid-template-columns: 64px 1fr 64px; align-items: center;
+            padding: 18px 20px 14px; border-bottom: 1px solid var(--border);
+            background: var(--surface); flex-shrink: 0;
         }
-
-        #modal-cancel-btn {
-            border: none;
-            background: transparent;
-            color: var(--secondary);
-            font-size: 15px;
-            font-weight: 800;
-            font-family: inherit;
-            padding: 8px 0;
-            min-height: auto;
-            cursor: pointer;
-            text-align: left;
-        }
-
-        #modal-title {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            color: var(--text);
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        #modal-action-btn,
-        .modal-top-action {
-            border: none;
-            background: transparent;
-            color: var(--primary);
-            font-size: 15px;
-            font-weight: 900;
-            font-family: inherit;
-            padding: 8px 0;
-            min-height: auto;
-            cursor: pointer;
-            text-align: right;
-            box-shadow: none;
-        }
-
-        #modal-action-btn:active,
-        #modal-cancel-btn:active {
-            background: transparent;
-            transform: scale(0.96);
-        }
+        #modal-title { font-size: 18px; font-weight: 950; text-align: center; color: var(--text); margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        #modal-cancel-btn { background: transparent; border: none; color: var(--secondary); font-weight: 800; cursor: pointer; text-align: left; font-size: 15px; }
+        #modal-action-btn, .modal-top-action { background: transparent; border: none; color: var(--primary); font-weight: 900; cursor: pointer; text-align: right; font-size: 15px; }
 
         #modal-body { padding: 20px 24px; overflow-y: auto; flex: 1; min-height: 0; }
 
         #modal-footer {
             padding: 14px 24px calc(18px + env(safe-area-inset-bottom));
             border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: flex-end;
-            flex-shrink: 0;
-            background: var(--surface);
+            display: flex; justify-content: flex-end;
+            flex-shrink: 0; background: var(--surface);
         }
 
+        /* [Toast UI] */
         .toast-container { position: fixed; bottom: calc(30px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
         .toast { background: rgba(25, 31, 40, 0.9); backdrop-filter: blur(8px); color: #FFFFFF; padding: 14px 24px; border-radius: 50px; font-size: 14px; font-weight: 600; box-shadow: 0 8px 20px rgba(0,0,0,0.15); animation: toast-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes toast-in { from { transform: translateY(30px) scale(0.9); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 
+        /* [OMR & Tab UI] */
         .omr-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 20px 0; }
         .omr-item { text-align: center; font-size: 13px; font-weight: 700; color: var(--secondary); }
         .omr-q { width: 26px; height: 26px; margin-top: 8px; cursor: pointer; accent-color: var(--primary); }
@@ -225,19 +182,18 @@
         @media (max-width: 600px) {
             #modal-content { border-radius: 24px 24px 0 0; position: fixed; bottom: 0; max-height: 92vh; }
             .omr-grid { grid-template-columns: repeat(3, 1fr); }
-            main { padding: 12px 12px calc(100px + env(safe-area-inset-bottom)); }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="brand">
-            <div class="brand-text" onclick="goHome()">AP MATH</div>
+        <div class="brand" onclick="goHome()">
+            <div class="brand-text">AP MATH</div>
             <div class="tag">1.0</div>
         </div>
         <nav>
-            <button id="theme-toggle-btn" class="btn" onclick="toggleTheme()" style="min-height: 32px; padding: 6px 12px; font-size: 13px; border-radius: 12px; background: transparent; border: 1px solid var(--border); color: var(--text);">다크 모드</button>
-            <button class="btn" onclick="toggleScope()"><span id="scope-text">내 담당</span></button>
+            <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" onclick="toggleTheme()">다크 모드</button>
+            <button class="btn" style="min-height:32px; padding:6px 12px; font-size:13px;" onclick="toggleScope()"><span id="scope-text">내 담당</span></button>
         </nav>
     </header>
 
