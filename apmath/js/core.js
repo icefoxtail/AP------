@@ -1126,7 +1126,7 @@ function makeClinicPrintTitle(context = null) {
 
 function normalizeClinicSourceFile(file) {
     const path = normalizeArchivePath(file);
-    return path.replace(/^\\.\\//, '');
+    return path.replace(/^\.\//, '');
 }
 
 function getQuestionNumberFromClinicItem(item) {
@@ -1146,7 +1146,7 @@ function findQuestionInBank(questionBank, questionNo) {
 
 function cloneQuestionForClinicPrint(original, item, outputNo, bankData) {
     const sourceFile = normalizeClinicSourceFile(item.archiveFile || item.file || item.sourceFile || item._sourceFile || '');
-    const sourceTitle = item.sourceTitle || item.examTitle || bankData?.examTitle || sourceFile.replace(/^exams\\//, '').replace(/\\.js$/, '');
+    const sourceTitle = item.sourceTitle || item.examTitle || bankData?.examTitle || sourceFile.replace(/^exams\//, '').replace(/\.js$/, '');
     const sourceQuestionNo = getQuestionNumberFromClinicItem(item) ?? original?.id ?? outputNo;
     const q = JSON.parse(JSON.stringify(original || {}));
 
