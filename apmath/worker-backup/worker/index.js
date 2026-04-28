@@ -1,6 +1,6 @@
 /**
- * AP Math OS v26.1.2 [IRONCLAD - Phase 3-H FINAL FIXED]
- * Cloudflare Worker 통합 API 엔진 - class-exam-assignments API 추가 및 원본 완전 복구
+ * AP Math OS v26.1.2 [IRONCLAD - Phase 4/5 FINAL RECOVERY]
+ * Cloudflare Worker 통합 API 엔진 - 절대 축약 없음, 모든 기존 API 복구 완료본
  */
 
 const headers = {
@@ -170,10 +170,10 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS;
+          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou;
 
           if (teacher.role === 'admin') {
-            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS] = await Promise.all([
+            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
               env.DB.prepare('SELECT * FROM class_students').all(),
@@ -185,14 +185,22 @@ export default {
               env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
               env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC').all(),
               env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all(),
-              env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all()
+              env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(),
+              env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC').all()
             ]);
           } else {
             const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
             const classIds = tcls.results.map(r => r.class_id);
+            
+            // 🚨 [수정됨] 일반 선생님 분기: operation_memos 실제 조회 교체 및 journals 응답 포함
+            opm = await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all();
+            exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
+            jou = await env.DB.prepare('SELECT * FROM daily_journals WHERE teacher_name = ? ORDER BY date DESC').bind(teacher.name).all();
+
             if (!classIds.length) {
-              return new Response(JSON.stringify({ students:[], classes:[], class_students:[], attendance:[], homework:[], exam_sessions:[], wrong_answers:[], attendance_history:[], homework_history:[], consultations:[], operation_memos:[], exam_schedules:[] }), { headers });
+              return new Response(JSON.stringify({ students:[], classes:[], class_students:[], attendance:[], homework:[], exam_sessions:[], wrong_answers:[], attendance_history:[], homework_history:[], consultations:[], operation_memos: opm.results, exam_schedules: exS.results, journals: jou.results }), { headers });
             }
+            
             const cMarkers = classIds.map(()=>'?').join(',');
             [clss, map] = await Promise.all([
               env.DB.prepare(`SELECT * FROM classes WHERE id IN (${cMarkers})`).bind(...classIds).all(),
@@ -212,10 +220,8 @@ export default {
                 env.DB.prepare(`SELECT * FROM consultations WHERE student_id IN (${sMarkers}) ORDER BY date DESC, created_at DESC`).bind(...studentIds).all()
               ]);
             } else { stds={results:[]}; att={results:[]}; hw={results:[]}; exs={results:[]}; wrs={results:[]}; attHis={results:[]}; hwHis={results:[]}; cns={results:[]}; }
-            exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
-            opm = {results: []};
           }
-          return new Response(JSON.stringify({ students: stds.results, classes: clss.results, class_students: map.results, attendance: att.results, homework: hw.results, exam_sessions: exs.results, wrong_answers: wrs.results, attendance_history: attHis.results, homework_history: hwHis.results, consultations: cns.results, operation_memos: opm.results, exam_schedules: exS.results }), { headers });
+          return new Response(JSON.stringify({ students: stds.results, classes: clss.results, class_students: map.results, attendance: att.results, homework: hw.results, exam_sessions: exs.results, wrong_answers: wrs.results, attendance_history: attHis.results, homework_history: hwHis.results, consultations: cns.results, operation_memos: opm.results, exam_schedules: exS.results, journals: jou.results }), { headers });
         }
 
         // --- 5. 학생 관리 ---
@@ -553,7 +559,7 @@ export default {
           }
         }
 
-        // --- 9. 운영 관리 (상담, 클래스, 메모, 일정) ---
+        // --- 9. 운영 관리 (상담, 메모, 일정) ---
         if (resource === 'consultations') {
           if (method === 'POST') {
             const d = await request.json();
@@ -571,20 +577,6 @@ export default {
             return new Response(JSON.stringify({ success: true }), { headers });
           }
           if (method === 'DELETE' && id) { await env.DB.prepare('DELETE FROM consultations WHERE id = ?').bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
-        }
-
-        if (resource === 'classes') {
-          if (method === 'POST') {
-            const d = await request.json();
-            const cid = `cls_${Date.now()}`;
-            await env.DB.prepare("INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, is_active) VALUES (?, ?, ?, ?, ?, ?, 1)").bind(cid, d.name, d.grade, d.subject || '수학', d.teacher_name || '박준성', d.schedule_days || '').run();
-            return new Response(JSON.stringify({ success: true, id: cid }), { headers });
-          }
-          if (method === 'PATCH' && id) {
-            const d = await request.json();
-            await env.DB.prepare("UPDATE classes SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, is_active = ? WHERE id = ?").bind(d.name, d.grade, d.subject, d.teacher_name, d.schedule_days || '', d.is_active !== undefined ? d.is_active : 1, id).run();
-            return new Response(JSON.stringify({ success: true }), { headers });
-          }
         }
 
         if (resource === 'operation-memos') {
@@ -619,7 +611,23 @@ export default {
           if (method === 'DELETE' && id) { await env.DB.prepare("DELETE FROM exam_schedules WHERE id=?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
         }
 
-        // --- 10. 선생님 및 담당반 관리 (Admin Only) ---
+        // --- 10. 반 관리 (classes) ---
+        // 🚨 [수정됨] textbook 필드만 추가 반영, 기존 로직/기본값 유지
+        if (resource === 'classes') {
+          if (method === 'POST') {
+            const d = await request.json();
+            const cid = `cls_${Date.now()}`;
+            await env.DB.prepare("INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, 1)").bind(cid, d.name, d.grade, d.subject || '수학', d.teacher_name || '박준성', d.schedule_days || '', d.textbook || '').run();
+            return new Response(JSON.stringify({ success: true, id: cid }), { headers });
+          }
+          if (method === 'PATCH' && id) {
+            const d = await request.json();
+            await env.DB.prepare("UPDATE classes SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, textbook = ?, is_active = ? WHERE id = ?").bind(d.name, d.grade, d.subject, d.teacher_name, d.schedule_days || '', d.textbook || '', d.is_active !== undefined ? d.is_active : 1, id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+        }
+
+        // --- 11. 선생님 및 담당반 관리 (Admin Only) ---
         if (resource === 'teachers' && method === 'GET') {
           const t = await verifyAuth(request, env);
           if (t?.role !== 'admin') return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
@@ -637,13 +645,55 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // --- 11. AI 리포트 ---
+        // --- 12. AI 리포트 ---
         if (resource === 'ai' && path[2] === 'student-report' && method === 'POST') {
           const p = await request.json();
           const { type, student, today: td } = p;
           const examStr = td?.exam ? `${td.exam.title} ${td.exam.score}점` : '없음';
           let fallback = type === 'parent' ? `[AP Math] ${student.name} 학생 오늘 수업 안내\n출결: ${td.att}\n숙제: ${td.hw}\n성적: ${examStr}` : type === 'student' ? `${student.name}아 수고했어!` : `상담메모: ${student.name}`;
           return new Response(JSON.stringify({ success: true, message: fallback, source: 'fallback' }), { headers });
+        }
+        
+        // --- 13. 오늘의 일지 (결재 시스템) ---
+        // 🚨 [수정됨] PATCH 소유권 검사 철저 보정
+        if (resource === 'daily-journals') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          if (method === 'POST') {
+            const d = await request.json();
+            const jid = `jou_${Date.now()}`;
+            await env.DB.prepare("INSERT INTO daily_journals (id, date, teacher_name, content, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(jid, d.date, teacher.name, d.content, d.status || '작성중').run();
+            return new Response(JSON.stringify({ success: true, id: jid }), { headers });
+          }
+
+          if (method === 'PATCH' && id) {
+            const d = await request.json();
+
+            const existing = await env.DB.prepare('SELECT * FROM daily_journals WHERE id = ?')
+              .bind(id)
+              .first();
+
+            if (!existing) {
+              return new Response(JSON.stringify({ success: false, error: 'journal not found' }), { status: 404, headers });
+            }
+
+            if (teacher.role !== 'admin' && existing.teacher_name !== teacher.name) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            if (teacher.role === 'admin' && d.feedback !== undefined) {
+              await env.DB.prepare("UPDATE daily_journals SET feedback = ?, status = '결재완료', updated_at = DATETIME('now') WHERE id = ?")
+                .bind(d.feedback, id)
+                .run();
+            } else {
+              await env.DB.prepare("UPDATE daily_journals SET content = ?, status = ?, updated_at = DATETIME('now') WHERE id = ?")
+                .bind(d.content, d.status, id)
+                .run();
+            }
+
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
         }
 
       }
