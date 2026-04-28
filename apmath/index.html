@@ -3,59 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AP Math OS v26.1.2 [IRONCLAD]</title>
+    <title>AP Math OS 1.0</title>
     <style>
         :root {
-            --primary: #1a73e8;
-            --secondary: #5f6368;
-            --success: #34a853;
-            --error: #d93025;
-            --warning: #f9ab00;
-            --bg: #f8f9fa;
+            --primary: #185FA5;
+            --primary-dark: #0C447C;
+            --secondary: #666666;
+            --success: #1D9E75;
+            --error: #E24B4A;
+            --warning: #BA7517;
+            --bg: #F2F2F0;
             --surface: #ffffff;
-            --border: #dadce0;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --border: #E2E2E0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.07);
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
-        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #202124; line-height: 1.6; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #1a1a1a; line-height: 1.6; }
         header {
-            position: sticky; top: 0; z-index: 100; background: var(--surface);
-            border-bottom: 1px solid var(--border); padding: 12px 16px;
+            position: sticky; top: 0; z-index: 100; background: var(--primary-dark);
+            border-bottom: none; padding: 14px 16px;
             display: flex; justify-content: space-between; align-items: center;
         }
         .brand { display: flex; align-items: baseline; gap: 8px; }
-        .brand-text { font-size: 20px; font-weight: 900; color: var(--primary); letter-spacing: -0.5px; transition: opacity 0.2s; }
+        .brand-text { font-size: 20px; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; transition: opacity 0.2s; cursor: pointer; }
         .brand-text:active { opacity: 0.7; }
-        .tag { font-size: 10px; background: #e8f0fe; color: var(--primary); padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+        .tag { font-size: 10px; background: rgba(255,255,255,0.18); color: #ffffff; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
         nav { display: flex; gap: 8px; }
-        main { max-width: 800px; margin: 0 auto; padding: 20px 16px 80px; }
-        .card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
+        nav .btn { background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.25); font-size: 13px; padding: 6px 12px; }
+        main { max-width: 600px; margin: 0 auto; padding: 16px 14px 100px; }
+        .card { background: var(--surface); border-radius: 14px; border: 0.5px solid var(--border); padding: 16px; margin-bottom: 12px; box-shadow: none; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
-            padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border);
-            background: var(--surface); color: var(--secondary); font-size: 14px; font-weight: 600;
-            cursor: pointer; transition: all 0.2s; gap: 6px;
+            padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border);
+            background: var(--surface); color: #1a1a1a; font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: background 0.15s; gap: 6px; min-height: 44px;
+            font-family: inherit;
         }
-        .btn-primary { background: var(--primary); color: white; border: none; }
-        .btn:active { transform: translateY(1px); filter: brightness(0.9); }
+        .btn-primary { background: var(--primary); color: #ffffff; border: none; }
+        .btn-primary:active { background: var(--primary-dark); }
+        .btn:active { background: #f0f0f0; transform: none; filter: none; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { text-align: left; font-size: 12px; color: var(--secondary); padding: 8px 4px; border-bottom: 2px solid var(--border); }
-        td { padding: 12px 4px; border-bottom: 1px solid var(--border); font-size: 15px; }
+        th { text-align: left; font-size: 12px; color: var(--secondary); padding: 8px 6px; border-bottom: 1.5px solid var(--border); font-weight: 600; }
+        td { padding: 12px 6px; border-bottom: 0.5px solid var(--border); font-size: 14px; color: #1a1a1a; }
         .hidden { display: none !important; }
         
         /* [3G] 모달 UX 구조 대폭 개선 (상단 닫기, 스크롤 안정화) */
         #modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; }
-        #modal-content { background: var(--surface); width: 100%; max-width: 500px; border-radius: 20px; padding: 0; position: relative; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; }
-        #modal-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 24px 16px; border-bottom: 2px solid var(--primary); flex-shrink: 0; background: var(--surface); z-index: 10; }
-        #modal-title { margin: 0; font-size: 20px; letter-spacing: -1px; word-break: break-all; padding-right: 12px; }
-        #modal-close-top { background: none; border: none; font-size: 28px; line-height: 1; cursor: pointer; color: var(--secondary); padding: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin: -8px -8px 0 0; }
+        #modal-content { background: var(--surface); width: 100%; max-width: 500px; border-radius: 20px; padding: 0; position: relative; max-height: 88vh; display: flex; flex-direction: column; overflow: hidden; }
+        #modal-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 18px 20px 14px; border-bottom: 2px solid var(--primary); flex-shrink: 0; background: var(--surface); z-index: 10; }
+        #modal-title { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: #1a1a1a; word-break: break-all; padding-right: 12px; }
+        #modal-close-top { background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; color: #aaa; padding: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin: -8px -8px 0 0; }
         #modal-close-top:active { color: var(--error); }
-        #modal-body { padding: 20px 24px; overflow-y: auto; flex: 1; min-height: 0; }
-        #modal-footer { padding: 16px 24px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; flex-shrink: 0; background: var(--surface); }
+        #modal-body { padding: 18px 20px; overflow-y: auto; flex: 1; min-height: 0; }
+        #modal-footer { padding: 14px 20px 18px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; flex-shrink: 0; background: var(--surface); }
         
         .toast-container { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
-        .toast { background: #323232; color: white; padding: 12px 24px; border-radius: 50px; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: toast-in 0.3s; }
+        .toast { background: #1E1E1C; color: #F5F5F3; padding: 12px 22px; border-radius: 50px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.2); animation: toast-in 0.3s; }
         @keyframes toast-in { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .omr-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 20px 0; }
         .omr-item { text-align: center; font-size: 12px; font-weight: 700; color: var(--secondary); }
@@ -63,7 +67,9 @@
         @media (max-width: 600px) {
             #modal-content { border-radius: 16px; }
             .omr-grid { grid-template-columns: repeat(3, 1fr); }
-            .btn { padding: 10px 14px; font-size: 13px; }
+            .btn { padding: 10px 12px; font-size: 13px; }
+            .card { border-radius: 12px; padding: 14px; }
+            main { padding: 12px 12px 100px; }
         }
     </style>
 </head>
@@ -71,7 +77,7 @@
     <header>
         <div class="brand">
             <div class="brand-text" onclick="goHome()" style="cursor:pointer;">AP MATH</div>
-            <div class="tag">v26.1.2 [IRONCLAD]</div>
+            <div class="tag">1.0</div>
         </div>
         <nav>
             <button class="btn" onclick="toggleScope()">🔭 <span id="scope-text">내 담당</span></button>
