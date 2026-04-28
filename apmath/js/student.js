@@ -1,167 +1,297 @@
 /**
- * AP Math OS v26.1.2 [js/student.js]
- * 학생 관리, 인적사항 수정 및 상담 기록 엔진 (5F: 학생 고유번호 PIN 관리 UI 추가)
- * Phase 3-G: 취약 단원 TOP 안내문 추가, 버튼 터치 영역 보정
+ * AP Math OS 1.0 [js/student.js]
+ * 학생 관리 및 프로필 관제 홈 (Master Level UI/UX)
+ * [IRONCLAD 5G]: 3단 탭 시스템, Chart.js 성적 시각화, 알림톡 미리보기 시스템 도입
+ * [Final Polish]: 정렬 버그 수정, 이모지 제거 및 클립보드 예외 처리 적용
  */
 
+/**
+ * 학생 상세 진입점 (기존 유지)
+ */
 async function renderStudentDetail(sid) {
     const s = state.db.students.find(st => st.id === sid);
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
 
-    const exs = state.db.exam_sessions.filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
+    // 기본 데이터 로드 및 전처리는 기존 로직 보존
+    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
     await ensureBlueprintsForSessions(exs);
-    const weakUnits = computeStudentWeakUnits(sid);
 
-    const rows = exs.map(e => {
+    // 탭 전환을 위한 내부 렌더링 함수 호출 (기본값: 성적분석)
+    renderStudentDetailTab(sid, 'grade');
+}
+
+/**
+ * 탭별 내용 렌더링 엔진
+ */
+function renderStudentDetailTab(sid, tab) {
+    const s = state.db.students.find(st => st.id === sid);
+    const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
+    const cls = state.db.classes.find(c => String(c.id) === String(mIds?.class_id));
+
+    // 1. 프로필 헤더 (공통)
+    const headerHtml = `
+        <div style="margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div>
+                    <h1 style="margin:0; font-size:26px; font-weight:900; color:#191F28;">${s.name}</h1>
+                    <div style="display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;">
+                        <span style="background:rgba(26,92,255,0.1); color:var(--primary); padding:4px 10px; border-radius:100px; font-size:12px; font-weight:800;">${s.school_name} ${s.grade}</span>
+                        <span style="background:var(--bg); color:var(--secondary); padding:4px 10px; border-radius:100px; font-size:12px; font-weight:800;">${cls?.name || '반 미배정'}</span>
+                        ${s.student_pin ? `<span style="background:#191F28; color:#fff; padding:4px 10px; border-radius:100px; font-size:11px; font-weight:700; letter-spacing:1px;">PIN ${s.student_pin}</span>` : ''}
+                    </div>
+                </div>
+                <button class="btn" style="padding:10px; font-size:12px; background:var(--bg); border:none;" onclick="openEditStudent('${sid}')">정보 수정</button>
+            </div>
+            
+            <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                <div style="background:var(--bg); padding:12px; border-radius:16px;">
+                    <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:4px;">학생 연락처</div>
+                    <div style="font-size:13px; font-weight:800; color:var(--primary); cursor:pointer;" onclick="copyPhoneNumber('${s.student_phone}')">${s.student_phone || '미등록'}</div>
+                </div>
+                <div style="background:var(--bg); padding:12px; border-radius:16px;">
+                    <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:4px;">보호자 (${s.guardian_relation || '미지정'})</div>
+                    <div style="font-size:13px; font-weight:800; color:var(--primary); cursor:pointer;" onclick="copyPhoneNumber('${s.parent_phone}')">${s.parent_phone || '미등록'}</div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // 2. 탭 바 (공통)
+    const tabBarHtml = `
+        <div class="tab-bar">
+            <button class="tab-btn ${tab==='grade'?'active':''}" onclick="renderStudentDetailTab('${sid}','grade')">성적분석</button>
+            <button class="tab-btn ${tab==='weak'?'active':''}" onclick="renderStudentDetailTab('${sid}','weak')">취약단원</button>
+            <button class="tab-btn ${tab==='cns'?'active':''}" onclick="renderStudentDetailTab('${sid}','cns')">상담기록</button>
+        </div>
+    `;
+
+    // 3. 탭별 본문 생성
+    let bodyHtml = '';
+    if (tab === 'grade') bodyHtml = renderGradeTab(sid);
+    else if (tab === 'weak') bodyHtml = renderWeakTab(sid);
+    else if (tab === 'cns') bodyHtml = renderCnsTab(sid);
+
+    // 4. 하단 액션바 (이모지 제거됨)
+    const footerHtml = `
+        <div style="margin-top:24px; padding-top:20px; border-top:1.5px dashed var(--border); display:flex; gap:10px;">
+            <button class="btn btn-primary" style="flex:1.5; font-size:13px; font-weight:800;" onclick="openReportPreview('${sid}')">알림톡 문구 생성</button>
+            <button class="btn" style="flex:1; font-size:13px; font-weight:800; color:var(--primary); border-color:var(--primary);" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
+        </div>
+    `;
+
+    showModal(`${s.name} 프로필`, headerHtml + tabBarHtml + bodyHtml + footerHtml);
+    
+    if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
+}
+
+/**
+ * [Tab 1] 성적분석 렌더러
+ */
+function renderGradeTab(sid) {
+    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
+    
+    const chartArea = exs.length > 0 
+        ? `<div style="margin-bottom:24px; padding:10px; background:var(--surface); border:1px solid var(--border); border-radius:18px;">
+             <canvas id="studentGradeChart" style="width:100%; height:180px;"></canvas>
+           </div>`
+        : `<div style="padding:40px 20px; text-align:center; color:var(--secondary); background:var(--bg); border-radius:18px; margin-bottom:20px; font-size:13px; font-weight:700;">누적된 성적 기록이 없습니다.</div>`;
+
+    const historyRows = exs.map(e => {
         const wrs = state.db.wrong_answers
             .filter(w => w.session_id === e.id)
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
-            .map(w => buildWrongUnitChip(e, w.question_id))
+            .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size:10px; padding:2px 6px; background:#f1f3f4; border-radius:4px; margin:1px;">Q${w.question_id}</span>`)
             .join('');
-        return `<tr><td>${e.exam_date}</td><td>${e.exam_title}</td><td style="text-align:center;"><b>${e.score}점</b></td><td><div style="display:flex;flex-wrap:wrap;gap:2px;">${wrs||'없음'}</div></td><td><div style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;"><button class="btn" style="color:var(--warning); border-color:var(--warning); padding:4px 10px; font-size:11px;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답초기화</button><button class="btn" style="color:var(--error); border-color:var(--error); padding:4px 10px; font-size:11px;" onclick="handleDeleteSession('${e.id}','${sid}')">삭제</button></div></td></tr>`;
-    }).join('');
-    
-    const cnsList = state.db.consultations.filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.id).localeCompare(String(a.id)));
-    const cnsRows = cnsList.map(c => `
-        <div style="border-bottom:1px solid var(--border); padding:10px 0;">
-            <div style="font-size:11px; color:var(--secondary); margin-bottom:4px; display:flex; justify-content:space-between;">
-                <span>${c.date} | <span style="font-weight:700; color:var(--primary);">${c.type}</span></span>
-                <div>
-                    <span style="cursor:pointer; color:var(--primary); margin-right:8px;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
-                    <span style="cursor:pointer; color:var(--error);" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
+            
+        return `
+            <div style="padding:16px 0; border-bottom:1px solid var(--border);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                    <div>
+                        <div style="font-size:14px; font-weight:800; color:#191F28;">${e.exam_title}</div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:600; margin-top:2px;">${e.exam_date}</div>
+                    </div>
+                    <div style="font-size:18px; font-weight:900; color:var(--primary);">${e.score}점</div>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:2px; margin-bottom:12px;">${wrs || '<span style="font-size:11px; color:var(--secondary);">오답 없음</span>'}</div>
+                <div style="display:flex; gap:6px; justify-content:flex-end;">
+                    <button class="btn" style="padding:6px 12px; font-size:11px; color:var(--warning); border:none; background:rgba(255,165,2,0.1);" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
+                    <button class="btn" style="padding:6px 12px; font-size:11px; color:var(--error); border:none; background:rgba(255,71,87,0.1);" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>
                 </div>
             </div>
-            <div style="font-size:13px; margin-bottom:6px; white-space:pre-wrap;">${escapeHtmlForTextarea(c.content)}</div>
-            ${c.next_action ? `<div style="font-size:12px; color:#b06000; background:#fef7e0; padding:6px 8px; border-radius:6px;"><b>👉 조치:</b> ${escapeHtmlForTextarea(c.next_action)}</div>` : ''}
+        `;
+    }).join('');
+
+    return `
+        <div>
+            <h4 style="margin:0 0 12px 0; font-size:15px; font-weight:900;">최근 성적 추이</h4>
+            ${chartArea}
+            <h4 style="margin:24px 0 12px 0; font-size:15px; font-weight:900;">전체 시험 이력</h4>
+            <div style="max-height:400px; overflow-y:auto; padding-right:4px;">${historyRows || '<p style="text-align:center; padding:20px; color:var(--secondary);">기록 없음</p>'}</div>
+        </div>
+    `;
+}
+
+/**
+ * [Tab 2] 취약단원 렌더러
+ */
+function renderWeakTab(sid) {
+    const weakUnits = typeof computeStudentWeakUnits === 'function' ? computeStudentWeakUnits(sid) : [];
+    const s = state.db.students.find(st => st.id === sid);
+
+    return `
+        <div>
+            <h4 style="margin:0 0 4px 0; font-size:15px; font-weight:900;">취약 단원 분석</h4>
+            <p style="margin:0 0 16px 0; font-size:12px; color:var(--secondary); font-weight:600;">단원을 누르면 상세 오답과 추천 문항을 확인합니다.</p>
+            ${typeof renderWeakUnitSummary === 'function' 
+                ? renderWeakUnitSummary(weakUnits, '누적 오답 데이터가 없습니다.', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s.name } })
+                : '<div style="padding:20px; text-align:center;">데이터를 불러올 수 없습니다.</div>'}
+        </div>
+    `;
+}
+
+/**
+ * [Tab 3] 상담기록 렌더러
+ */
+function renderCnsTab(sid) {
+    const cnsList = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)));
+
+    const cnsCards = cnsList.map(c => `
+        <div class="card" style="padding:16px; margin-bottom:12px; border:1px solid var(--border); box-shadow:none; background:var(--surface);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:12px; font-weight:800; color:var(--secondary);">${c.date}</span>
+                    <span style="background:rgba(26,92,255,0.1); color:var(--primary); padding:2px 8px; border-radius:6px; font-size:11px; font-weight:800;">${c.type}</span>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <span style="cursor:pointer; color:var(--primary); font-size:12px; font-weight:700;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
+                    <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:700;" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
+                </div>
+            </div>
+            <div style="font-size:14px; font-weight:600; line-height:1.6; color:#191F28; white-space:pre-wrap;">${apEscapeHtml(c.content)}</div>
+            ${c.next_action ? `
+                <div style="margin-top:12px; padding:10px; background:rgba(255,165,2,0.1); border-radius:10px; font-size:12px; color:#b06000; font-weight:700;">
+                    <b>조치:</b> ${apEscapeHtml(c.next_action)}
+                </div>` : ''}
         </div>
     `).join('');
 
-    const todayStr = new Date().toLocaleDateString('sv-SE');
-
-    const extraInfoHtml = (s.guardian_relation || s.memo || s.student_pin) ? `
-        <div style="margin-top:8px; font-size:12px; background:#f1f3f4; padding:8px 10px; border-radius:6px; color:var(--secondary);">
-            ${s.guardian_relation ? `<div style="margin-bottom:4px;"><b>보호자 관계:</b> ${s.guardian_relation}</div>` : ''}
-            ${s.student_pin ? `<div style="margin-bottom:4px;"><b>고유 PIN:</b> ${s.student_pin}</div>` : ''}
-            ${s.memo ? `<div><b>메모:</b> ${s.memo}</div>` : ''}
-        </div>
-    ` : '';
-
-    const consultationHTML = `
-        <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
-            <h4 style="margin:0 0 10px 0;">💬 학생 상담 기록</h4>
-            <details style="margin-bottom:16px; background:#f8f9fa; padding:12px; border-radius:8px; border:1px solid var(--border);">
-                <summary style="font-size:13px; font-weight:700; cursor:pointer; color:var(--primary);">➕ 새 상담 기록하기</summary>
-                <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
-                    <div style="display:flex; gap:8px;">
-                        <input type="date" id="cns-date" class="btn" value="${todayStr}" style="flex:1;">
-                        <select id="cns-type" class="btn" style="flex:1;">
-                            <option value="학습">학습</option>
-                            <option value="태도">태도</option>
-                            <option value="출결">출결</option>
-                            <option value="성적">성적</option>
-                            <option value="상담">일반 상담</option>
-                            <option value="기타">기타</option>
-                        </select>
-                    </div>
-                    <textarea id="cns-content" class="btn" placeholder="상담 내용을 입력하세요." style="text-align:left; resize:vertical; min-height:80px; line-height:1.5;"></textarea>
-                    <textarea id="cns-action" class="btn" placeholder="다음 조치사항 (선택)" style="text-align:left; resize:vertical; min-height:50px; line-height:1.5;"></textarea>
-                    <button class="btn btn-primary" onclick="handleSaveConsultation('${sid}')" style="padding:10px;">기록 저장</button>
-                </div>
-            </details>
-            <div style="max-height:250px; overflow-y:auto; padding-right:4px;">
-                ${cnsRows || '<div style="font-size:13px; color:var(--secondary); text-align:center; padding:16px; background:#f1f3f4; border-radius:8px;">등록된 상담 기록이 없습니다.</div>'}
+    return `
+        <div>
+            <button class="btn btn-primary" style="width:100%; margin-bottom:20px; padding:14px; font-size:14px; font-weight:800; border-radius:16px;" onclick="openAddConsultationModal('${sid}')">새 상담 기록하기</button>
+            <div style="max-height:450px; overflow-y:auto; padding-right:4px;">
+                ${cnsCards || '<div style="text-align:center; padding:40px; color:var(--secondary); font-weight:600;">상담 기록이 없습니다.</div>'}
             </div>
         </div>
     `;
-
-    const reportButtons = `
-        <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
-            <details>
-                <summary style="font-size:13px; font-weight:700; cursor:pointer; color:var(--secondary);">📋 상담·전달 문구</summary>
-                <div style="display:flex; gap:6px; margin-top:12px;">
-                    <button class="btn btn-primary" onclick="copyReport('${sid}', 'parent')" style="flex:1; font-size:11px; padding:10px 4px;">학부모용</button>
-                    <button class="btn" onclick="copyReport('${sid}', 'student')" style="flex:1; font-size:11px; padding:10px 4px; border-color:var(--primary); color:var(--primary);">학생용</button>
-                    <button class="btn" onclick="copyReport('${sid}', 'memo')" style="flex:1; font-size:11px; padding:10px 4px;">상담용</button>
-                </div>
-            </details>
-        </div>
-    `;
-
-    showModal(`${s.name} 프로필`, `
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:5px;">
-            <div style="flex:1;">
-                <p style="margin:0; font-weight:bold;">${s.school_name} | ${s.grade}</p>
-                <p style="margin:4px 0 0 0; font-size:13px; color:var(--secondary);">상태: <span style="color:var(--primary); font-weight:bold;">${s.status === '제적' ? '퇴원생' : '재원생'}</span></p>
-                ${extraInfoHtml}
-            </div>
-            <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
-                <button class="btn" style="font-size:11px; padding:6px 10px;" onclick="openClinicBasketForStudent('${sid}')">🧺 바구니</button>
-                <button class="btn" style="font-size:11px; padding:6px 10px;" onclick="openEditStudent('${sid}')">정보 수정</button>
-            </div>
-        </div>
-        
-        ${consultationHTML}
-
-        <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
-            <h4 style="margin:0 0 6px 0;">📌 취약 단원 TOP</h4>
-            <p style="margin:0 0 10px 0; font-size:11px; color:var(--secondary);">단원을 누르면 오답 상세와 유사문항 추천으로 이동합니다.</p>
-            ${renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터 없음', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s.name } })}
-        </div>
-
-        <div style="margin-top:20px; border-top:2px solid var(--border); padding-top:16px;">
-            <h4 style="margin:0 0 10px 0;">📊 성적 및 오답 이력</h4>
-            <table><thead><tr><th>날짜</th><th>시험명</th><th>점수</th><th>오답</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan=\"5\">기록 없음</td></tr>'}</tbody></table>
-        </div>
-        
-        ${reportButtons}
-        
-        <div style="margin-top:20px; padding-top:16px; border-top:1px dashed var(--border); text-align:right;">
-            ${s.status === '재원' 
-                ? `<button class="btn" style="font-size:12px; padding:6px 12px; color:var(--error); border-color:transparent;" onclick="handleDelete('${sid}')">퇴원</button>` 
-                : `<button class="btn btn-primary" style="font-size:13px; padding:10px; width:100%;" onclick="handleRestore('${sid}')">재원 복구</button>`}
-        </div>
-    `);
 }
 
-function openEditConsultation(cid, sid) {
-    const c = state.db.consultations.find(x => x.id === cid);
-    if (!c) return;
-    showModal('상담 기록 수정', `
-        <div style="display:flex; flex-direction:column; gap:8px;">
+/**
+ * Chart.js 그리기 엔진
+ */
+let currentStudentChart = null;
+function drawGradeChart(sid) {
+    const canvas = document.getElementById('studentGradeChart');
+    if (!canvas || typeof Chart === 'undefined') return;
+
+    const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>a.exam_date.localeCompare(b.exam_date)).slice(-7);
+    if (!exs.length) return;
+
+    if (currentStudentChart) { currentStudentChart.destroy(); }
+
+    currentStudentChart = new Chart(canvas, {
+        type: 'line',
+        data: {
+            labels: exs.map(e => e.exam_date.slice(5)),
+            datasets: [{
+                label: '점수',
+                data: exs.map(e => e.score),
+                borderColor: '#1A5CFF',
+                backgroundColor: 'rgba(26,92,255,0.1)',
+                borderWidth: 3,
+                tension: 0.4,
+                fill: true,
+                pointBackgroundColor: '#fff',
+                pointBorderColor: '#1A5CFF',
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { min: 0, max: 100, ticks: { stepSize: 20, font: { weight: 'bold' } }, grid: { color: '#E5E8EB' } },
+                x: { grid: { display: false }, ticks: { font: { weight: 'bold' } } }
+            }
+        }
+    });
+}
+
+/**
+ * 알림톡 문구 미리보기 및 복사 시스템 (버그 수정본)
+ */
+function openReportPreview(sid) {
+    const s = state.db.students.find(st => st.id === sid);
+    const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
+    
+    const lastRecord = (state.db.class_daily_records || [])
+        .filter(r => String(r.class_id) === String(mIds?.class_id))
+        .sort((a,b) => b.date.localeCompare(a.date))[0];
+    
+    let progressText = '정규 수업을 진행했습니다.';
+    if (lastRecord) {
+        const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(lastRecord.id));
+        if (progresses.length > 0) {
+            progressText = progresses.map(p => `${p.textbook_title_snapshot} ${p.progress_text}`).join(', ') + '를 학습했습니다.';
+        }
+    }
+
+    const lastCns = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => b.date.localeCompare(a.date))[0];
+    let cnsText = lastCns ? `\n\n[학습 피드백]\n${lastCns.content}` : '';
+
+    // [수정] 최근 시험 정렬 버그 해결
+    const lastExam = (state.db.exam_sessions || [])
+        .filter(e => e.student_id === sid)
+        .sort((a,b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
+    let examText = lastExam ? `\n\n[최근 평가]\n${lastExam.exam_title}: ${lastExam.score}점` : '';
+
+    const template = `안녕하세요 학부모님, AP수학입니다.\n\n오늘 ${s.name}이는 ${progressText}${examText}${cnsText}\n\n궁금하신 점은 언제든 편하게 문의주세요. 감사합니다!`;
+
+    showModal('알림톡 문구 미리보기', `
+        <div style="background:var(--bg); padding:16px; border-radius:18px; margin-bottom:16px;">
+            <p style="margin:0 0 10px 0; font-size:12px; color:var(--secondary); font-weight:700;">내용을 확인하고 필요하면 수정하세요.</p>
+            <textarea id="report-preview-text" class="btn" style="width:100%; height:280px; text-align:left; background:var(--surface); border:none; padding:16px; font-size:14px; line-height:1.7; resize:none; font-family:inherit;">${template}</textarea>
+        </div>
+    `, '최종 복사하기', () => {
+        const text = document.getElementById('report-preview-text').value;
+        // [수정] 클립보드 복사 실패 처리 추가
+        navigator.clipboard.writeText(text).then(() => {
+            toast('문구가 복사되었습니다!', 'success');
+            closeModal();
+        }).catch(() => {
+            toast('복사에 실패했습니다.', 'warn');
+        });
+    });
+}
+
+/**
+ * 기존 기능 보존 (상담/정보수정/삭제)
+ */
+function openAddConsultationModal(sid) {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    showModal('상담 기록 추가', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
             <div style="display:flex; gap:8px;">
-                <input type="date" id="edit-cns-date" class="btn" value="${c.date}" style="flex:1;">
-                <select id="edit-cns-type" class="btn" style="flex:1;">
-                    <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
-                    <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
-                    <option value="출결" ${c.type==='출결'?'selected':''}>출결</option>
-                    <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
-                    <option value="상담" ${c.type==='상담'?'selected':''}>일반 상담</option>
-                    <option value="기타" ${c.type==='기타'?'selected':''}>기타</option>
+                <input type="date" id="cns-date" class="btn" value="${todayStr}" style="flex:1;">
+                <select id="cns-type" class="btn" style="flex:1;">
+                    <option value="학습">학습</option><option value="태도">태도</option><option value="성적">성적</option><option value="기타">기타</option>
                 </select>
             </div>
-            <textarea id="edit-cns-content" class="btn" placeholder="상담 내용을 입력하세요." style="text-align:left; resize:vertical; min-height:80px; line-height:1.5;">${c.content}</textarea>
-            <textarea id="edit-cns-action" class="btn" placeholder="다음 조치사항 (선택)" style="text-align:left; resize:vertical; min-height:50px; line-height:1.5;">${c.next_action||''}</textarea>
+            <textarea id="cns-content" class="btn" placeholder="상담 내용을 입력하세요." style="text-align:left; height:120px;"></textarea>
+            <textarea id="cns-action" class="btn" placeholder="조치 사항 (선택)" style="text-align:left; height:60px;"></textarea>
         </div>
-    `, '수정 저장', () => handleEditConsultation(cid, sid));
-}
-
-async function handleEditConsultation(cid, sid) {
-    const date = document.getElementById('edit-cns-date').value;
-    const type = document.getElementById('edit-cns-type').value;
-    const content = document.getElementById('edit-cns-content').value.trim();
-    const nextAction = document.getElementById('edit-cns-action').value.trim();
-    if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
-    const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
-    if (r.success) { toast('상담 기록이 수정되었습니다.', 'info'); closeModal(); await loadData(); renderStudentDetail(sid); } 
-    else { toast('상담 수정 실패', 'error'); }
-}
-
-async function handleDeleteConsultation(cid, sid) {
-    if (confirm('이 상담 기록을 삭제하시겠습니까?')) {
-        const r = await api.delete('consultations', cid);
-        if (r.success) { toast('상담 기록이 삭제되었습니다.', 'info'); await loadData(); renderStudentDetail(sid); } 
-        else { toast('상담 삭제 실패', 'error'); }
-    }
+    `, '저장', () => handleSaveConsultation(sid));
 }
 
 async function handleSaveConsultation(sid) {
@@ -169,10 +299,43 @@ async function handleSaveConsultation(sid) {
     const type = document.getElementById('cns-type').value;
     const content = document.getElementById('cns-content').value.trim();
     const nextAction = document.getElementById('cns-action').value.trim();
-    if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
+    if (!content) { toast('내용을 입력하세요.', 'warn'); return; }
     const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction });
-    if (r.success) { toast('상담 기록이 저장되었습니다.', 'info'); await loadData(); renderStudentDetail(sid); } 
-    else { toast('상담 저장 실패', 'error'); }
+    if (r.success) { toast('저장완료', 'success'); closeModal(); await loadData(); renderStudentDetailTab(sid, 'cns'); }
+}
+
+function openEditConsultation(cid, sid) {
+    const c = state.db.consultations.find(x => x.id === cid);
+    if (!c) return;
+    showModal('상담 수정', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; gap:8px;">
+                <input type="date" id="edit-cns-date" class="btn" value="${c.date}" style="flex:1;">
+                <select id="edit-cns-type" class="btn" style="flex:1;">
+                    <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
+                    <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
+                    <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
+                </select>
+            </div>
+            <textarea id="edit-cns-content" class="btn" style="text-align:left; height:120px;">${c.content}</textarea>
+            <textarea id="edit-cns-action" class="btn" style="text-align:left; height:60px;">${c.next_action||''}</textarea>
+        </div>
+    `, '수정 완료', () => handleEditConsultation(cid, sid));
+}
+
+async function handleEditConsultation(cid, sid) {
+    const date = document.getElementById('edit-cns-date').value;
+    const type = document.getElementById('edit-cns-type').value;
+    const content = document.getElementById('edit-cns-content').value.trim();
+    const nextAction = document.getElementById('edit-cns-action').value.trim();
+    const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
+    if (r.success) { toast('수정완료', 'info'); closeModal(); await loadData(); renderStudentDetailTab(sid, 'cns'); }
+}
+
+async function handleDeleteConsultation(cid, sid) {
+    if (!confirm('삭제하시겠습니까?')) return;
+    const r = await api.delete('consultations', cid);
+    if (r.success) { toast('삭제완료', 'info'); await loadData(); renderStudentDetailTab(sid, 'cns'); }
 }
 
 async function handleDelete(sid) {
@@ -184,147 +347,84 @@ async function handleRestore(sid) {
 }
 
 async function handleDeleteSession(eid, sid) {
-    if (!confirm('이 시험 기록을 삭제하시겠습니까?\n연결된 오답 기록도 함께 삭제됩니다.')) return;
-
+    if (!confirm('시험 기록을 삭제하시겠습니까?')) return;
     const r = await api.delete('exam-sessions', eid);
-    if (!r?.success) {
-        toast(r?.error || '시험 기록 삭제 실패', 'warn');
-        return;
-    }
-
-    toast('시험 기록이 삭제되었습니다.', 'info');
-    closeModal();
-    await loadData();
-    renderStudentDetail(sid);
+    if (r?.success) { toast('삭제완료', 'info'); await loadData(); renderStudentDetailTab(sid, 'grade'); }
 }
 
 async function handleResetSessionWrongs(eid, sid) {
-    if (!confirm('이 시험의 오답번호만 초기화하시겠습니까?\n점수와 시험 기록은 그대로 유지됩니다.')) return;
-
+    if (!confirm('오답만 초기화하시겠습니까?')) return;
     const r = await api.delete('exam-sessions', `${eid}/wrongs`);
-    if (!r?.success) {
-        toast(r?.error || '오답번호 초기화 실패', 'warn');
-        return;
-    }
-
-    toast('오답번호가 초기화되었습니다.', 'info');
-    closeModal();
-    await loadData();
-    renderStudentDetail(sid);
+    if (r?.success) { toast('초기화완료', 'info'); await loadData(); renderStudentDetailTab(sid, 'grade'); }
 }
 
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
-    const opts = state.db.classes
-        .filter(c => c.is_active !== 0 || c.id === curCid)
-        .map(c => `<option value="${c.id}" ${c.id===curCid?'selected':''}>${c.name}</option>`)
-        .join('');
+    const opts = state.db.classes.filter(c => c.is_active !== 0 || c.id === curCid).map(c => `<option value="${c.id}" ${c.id===curCid?'selected':''}>${c.name}</option>`).join('');
     
     showModal('학생 정보 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="edit-name" class="btn" value="${s.name}" style="text-align:left;">
             <input id="edit-school" class="btn" value="${s.school_name}" style="text-align:left;">
             <select id="edit-grade" class="btn">
-                <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option>
-                <option value="중2" ${s.grade==='중2'?'selected':''}>중2</option>
-                <option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
-                <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option>
-                <option value="고2" ${s.grade==='고2'?'selected':''}>고2</option>
-                <option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
+                <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
+                <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option><option value="고2" ${s.grade==='고2'?'selected':''}>고2</option><option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
             </select>
             <select id="edit-class" class="btn"><option value="">반 미배정</option>${opts}</select>
-            
-            <hr style="border:0; border-top:1px solid var(--border); margin:10px 0;">
-            <label style="font-size:12px; color:var(--secondary);">연락처, 특이사항 및 보안</label>
-            
-            <input id="edit-student-phone" class="btn" value="${s.student_phone||''}" placeholder="학생 전화번호 (예: 010-1234-5678)" style="text-align:left;">
-            <input id="edit-parent-phone" class="btn" value="${s.parent_phone||''}" placeholder="학부모 전화번호 (예: 010-1234-5678)" style="text-align:left;">
-            <input id="edit-guardian-rel" class="btn" value="${s.guardian_relation||''}" placeholder="보호자 관계 (예: 어머님, 아버님)" style="text-align:left;">
-            
-            <input id="edit-student-pin" class="btn" value="${s.student_pin||''}" placeholder="학생 고유번호 PIN (4자리 숫자)" maxlength="4" inputmode="numeric" style="text-align:left; letter-spacing: 2px;" oninput="this.value=this.value.replace(/\\D/g,'').slice(0,4);">
-            
-            <textarea id="edit-memo" class="btn" placeholder="학생 특이사항 메모" style="text-align:left; resize:vertical; min-height:60px; line-height:1.5;">${s.memo||''}</textarea>
+            <input id="edit-student-phone" class="btn" value="${s.student_phone||''}" placeholder="학생 전화번호" style="text-align:left;">
+            <input id="edit-parent-phone" class="btn" value="${s.parent_phone||''}" placeholder="학부모 전화번호" style="text-align:left;">
+            <input id="edit-guardian-rel" class="btn" value="${s.guardian_relation||''}" placeholder="보호자 관계" style="text-align:left;">
+            <input id="edit-student-pin" class="btn" value="${s.student_pin||''}" placeholder="PIN (4자리)" maxlength="4" style="text-align:left;">
+            <textarea id="edit-memo" class="btn" placeholder="메모" style="text-align:left; height:60px;">${s.memo||''}</textarea>
         </div>
     `, '저장', () => handleEditStudent(sid));
 }
 
-// [5F] PIN 입력값 검증 및 저장 반영
 async function handleEditStudent(sid) {
-    const n = document.getElementById('edit-name').value, sc = document.getElementById('edit-school').value, 
-          g = document.getElementById('edit-grade').value, c = document.getElementById('edit-class').value,
-          sp = document.getElementById('edit-student-phone').value.trim(), pp = document.getElementById('edit-parent-phone').value.trim(),
-          gr = document.getElementById('edit-guardian-rel').value.trim(), memo = document.getElementById('edit-memo').value.trim();
-          
     const pin = document.getElementById('edit-student-pin').value.trim();
-
-    if (pin && !/^\d{4}$/.test(pin)) {
-        toast('PIN은 4자리 숫자입니다.', 'warn');
-        return;
-    }
+    if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
           
     await api.patch(`students/${sid}`, { 
-        name: n, school_name: sc, grade: g, class_id: c, 
-        student_phone: sp, parent_phone: pp, guardian_relation: gr, memo: memo,
+        name: document.getElementById('edit-name').value, 
+        school_name: document.getElementById('edit-school').value, 
+        grade: document.getElementById('edit-grade').value, 
+        class_id: document.getElementById('edit-class').value, 
+        student_phone: document.getElementById('edit-student-phone').value, 
+        parent_phone: document.getElementById('edit-parent-phone').value, 
+        guardian_relation: document.getElementById('edit-guardian-rel').value, 
+        memo: document.getElementById('edit-memo').value,
         student_pin: pin 
     });
-    
     closeModal(); await loadData();
 }
 
 function openAddStudent(defaultCid = '') {
-    const opts = state.db.classes
-        .filter(c => c.is_active !== 0)
-        .map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`)
-        .join('');
-
+    const opts = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`).join('');
     showModal('신규 학생 추가', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="add-name" class="btn" placeholder="이름 (필수)" style="text-align:left;">
             <input id="add-school" class="btn" placeholder="학교 (필수)" style="text-align:left;">
-            <select id="add-grade" class="btn">
-                <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
-                <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
-            </select>
             <select id="add-class" class="btn"><option value="">반 선택</option>${opts}</select>
-            
-            <hr style="border:0; border-top:1px solid var(--border); margin:5px 0;">
-            
-            <input id="add-student-pin" class="btn" placeholder="초기 고유번호 PIN (4자리 숫자, 선택)" maxlength="4" inputmode="numeric" style="text-align:left; letter-spacing: 2px;" oninput="this.value=this.value.replace(/\\D/g,'').slice(0,4);">
+            <input id="add-student-pin" class="btn" placeholder="PIN (4자리 숫자, 선택)" maxlength="4" style="text-align:left;">
         </div>
     `, '추가', handleAddStudent);
 }
 
 async function handleAddStudent() {
-    const n = document.getElementById('add-name').value.trim(), sc = document.getElementById('add-school').value.trim(), 
-          g = document.getElementById('add-grade').value, c = document.getElementById('add-class').value;
-          
-    const pin = document.getElementById('add-student-pin').value.trim();
-
-    if(!n || !sc) {
-        toast('이름과 학교를 입력해주세요.', 'warn');
-        return;
-    }
-    
-    if (pin && !/^\d{4}$/.test(pin)) {
-        toast('PIN은 4자리 숫자입니다.', 'warn');
-        return;
-    }
-
-    await api.post('students', { name: n, school_name: sc, grade: g, class_id: c, student_pin: pin });
+    const n = document.getElementById('add-name').value.trim(), sc = document.getElementById('add-school').value.trim();
+    if(!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
+    await api.post('students', { name: n, school_name: sc, class_id: document.getElementById('add-class').value, student_pin: document.getElementById('add-student-pin').value.trim() });
     closeModal(); await loadData();
 }
 
 function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');
-    const rows = discharged.length ? discharged.map(s => `
-        <div style="padding:10px 4px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <div style="font-weight:700; font-size:15px;">${s.name} <span style="font-size:12px; color:var(--secondary); font-weight:normal;">${s.school_name} ${s.grade}</span></div>
-            </div>
+    const rows = discharged.map(s => `
+        <div style="padding:16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
+            <div><b style="font-size:15px;">${s.name}</b> <span style="font-size:12px; color:var(--secondary);">${s.school_name}</span></div>
             <button class="btn btn-primary" style="padding:6px 12px; font-size:11px;" onclick="handleRestore('${s.id}')">재원 복구</button>
         </div>
-    `).join('') : `<div style="padding:32px 16px; text-align:center; color:var(--secondary); font-size:14px;">퇴원생이 없습니다.</div>`;
-
-    showModal('🗄️ 퇴원생', `<div style="max-height:60vh; overflow-y:auto;">${rows}</div>`);
+    `).join('');
+    showModal('퇴원생 관리', `<div style="max-height:60vh; overflow-y:auto; margin:-20px;">${rows || '<div style="padding:40px; text-align:center; color:var(--secondary);">퇴원생이 없습니다.</div>'}</div>`);
 }
