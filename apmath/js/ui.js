@@ -4,44 +4,55 @@
  */
 
 // ============================================================
-// [Theme Manager] 다크 모드 테마 관리 및 안정화
+// [Theme Manager] 다크 모드 고정 플로팅 버튼
 // ============================================================
 function getTheme() {
     return localStorage.getItem('APMATH_THEME') || 'light';
 }
 
 function applyTheme(theme) {
-    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const isDark = theme === 'dark';
 
-    if (theme === 'dark') {
-        document.body.classList.add('dark');
-        if (toggleBtn) toggleBtn.innerText = '라이트 모드';
-    } else {
-        document.body.classList.remove('dark');
-        if (toggleBtn) toggleBtn.innerText = '다크 모드';
+    if (document.body) {
+        document.body.classList.toggle('dark', isDark);
+    }
+
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    if (toggleBtn) {
+        toggleBtn.innerText = isDark ? '라이트' : '다크';
+        toggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+        toggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
     }
 }
 
-function ensureThemeToggleButton() {
-    const header = document.querySelector('header');
-    if (!header) return;
+function toggleTheme() {
+    const current = getTheme();
+    const next = current === 'dark' ? 'light' : 'dark';
 
-    const nav = header.querySelector('nav');
-    if (!nav) return;
+    localStorage.setItem('APMATH_THEME', next);
+    ensureThemeToggleButton();
+    applyTheme(next);
+}
+
+function ensureThemeToggleButton() {
+    if (!document.body) return;
 
     let btn = document.getElementById('theme-toggle-btn');
 
     if (!btn) {
         btn = document.createElement('button');
         btn.id = 'theme-toggle-btn';
-        btn.className = 'theme-toggle-btn';
         btn.type = 'button';
-        btn.onclick = toggleTheme;
-
-        const scopeBtn = document.getElementById('scope-text')?.closest('button');
-        if (scopeBtn) nav.insertBefore(btn, scopeBtn);
-        else nav.prepend(btn);
+        document.body.appendChild(btn);
     }
+
+    if (btn.parentElement !== document.body) {
+        document.body.appendChild(btn);
+    }
+
+    btn.className = 'theme-floating-toggle';
+    btn.type = 'button';
+    btn.onclick = toggleTheme;
 
     btn.style.display = 'inline-flex';
     btn.style.visibility = 'visible';
@@ -51,36 +62,34 @@ function ensureThemeToggleButton() {
     applyTheme(getTheme());
 }
 
-function toggleTheme() {
-    const current = getTheme();
-    const next = current === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('APMATH_THEME', next);
-    applyTheme(next);
-}
-
-// 초기 실행 및 헤더 감시 (DOMContentLoaded + MutationObserver)
-document.addEventListener('DOMContentLoaded', () => {
+function bootThemeManager() {
     ensureThemeToggleButton();
 
-    const header = document.querySelector('header');
-    if (header && !window.__themeToggleObserverAttached) {
-        window.__themeToggleObserverAttached = true;
+    if (!window.__apmathThemeObserverAttached) {
+        window.__apmathThemeObserverAttached = true;
 
         const observer = new MutationObserver(() => {
             if (!document.getElementById('theme-toggle-btn')) {
                 ensureThemeToggleButton();
-            } else {
-                applyTheme(getTheme());
             }
         });
 
-        observer.observe(header, { childList: true, subtree: true });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: false
+        });
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootThemeManager);
+} else {
+    bootThemeManager();
+}
 
 
 // ============================================================
-// [UI Components] 토스트 및 모달 (원본 유지)
+// [UI Components] 토스트 및 모달
 // ============================================================
 function toast(m, t='info') {
     const c = document.getElementById('toast-container');
@@ -223,8 +232,9 @@ function safeToastError(message) {
     toast(message, 'error');
 }
 
+
 // ============================================================
-// [드로어 네비게이션] (원본 100% 보존 영역)
+// [드로어 네비게이션] 원본 구조 보존
 // ============================================================
 function renderAppDrawer() {
     if (document.getElementById('app-drawer')) return;
@@ -405,7 +415,10 @@ function closeAppDrawer() {
     if (ovl) ovl.classList.remove('drw-open');
 }
 
-// 전역 노출
+
+// ============================================================
+// [전역 함수 노출]
+// ============================================================
 window.toggleTheme = toggleTheme;
 window.applyTheme = applyTheme;
 window.getTheme = getTheme;
