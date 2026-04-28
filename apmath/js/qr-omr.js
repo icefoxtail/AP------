@@ -45,7 +45,7 @@ function openQrGenerator(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     const lastArchiveFile = localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '';
 
-    showModal('📱 시험 QR 생성', `
+    showModal('📱 QR/OMR', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <p style="margin:0;"><b>대상 학급:</b> ${cls.name}</p>
 
@@ -376,11 +376,11 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
     const r = await api.patch(endpoint, payload);
     
     if (!r?.success) {
-        toast('저장 실패', 'warn');
+        toast('저장실패', 'warn');
         return;
     }
     
-    toast(`${score}점 저장됨`, 'info'); 
+    toast(`저장완료 (${score}점)`, 'info'); 
     closeModal(); 
     await loadData();
 }

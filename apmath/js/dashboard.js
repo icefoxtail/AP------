@@ -108,7 +108,7 @@ function openAdminStudentList(type) {
                     <div style="font-size:11px; color:var(--secondary); margin-top:2px;">상태: ${s.status} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</div>
                     ${riskDetails}
                 </div>
-                <button class="btn" style="padding:6px 12px; font-size:11px; white-space:nowrap;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세</button>
+                <button class="btn" style="padding:6px 12px; font-size:11px; white-space:nowrap;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세보기</button>
             </div>
         `;
     }).join('');
@@ -118,6 +118,7 @@ function openAdminStudentList(type) {
 
 // [수정] 원장 화면에 이번 주 일정 추가 반영
 function renderAdminControlCenter() {
+    if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const root = document.getElementById('app-root');
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = new Date(todayStr).getTime();
@@ -129,8 +130,11 @@ function renderAdminControlCenter() {
 
     const summaryHtml = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 style="margin:0; font-size:18px;">🏢 학원 운영센터</h3>
-            <button class="btn btn-primary" style="padding:6px 12px; font-size:12px;" onclick="openAdminJournalList(new Date().toLocaleDateString('sv-SE'))">📑 일지 결재함</button>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <button class="btn" style="padding:6px 10px; font-size:18px; border-color:var(--border); line-height:1;" onclick="openAppDrawer()">&#9776;</button>
+                <h3 style="margin:0; font-size:18px;">🏢 운영센터</h3>
+            </div>
+            <button class="btn btn-primary" style="padding:6px 12px; font-size:12px;" onclick="openAdminJournalList(new Date().toLocaleDateString('sv-SE'))">📑 일지확인</button>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:28px;">
             <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border-bottom:3px solid var(--primary);"><div style="font-size:22px; font-weight:900;">${activeStudents.length}</div><div style="font-size:11px; color:var(--secondary); margin-top:4px;">총 재원생</div></div>
@@ -148,7 +152,7 @@ function renderAdminControlCenter() {
 
     const adminScheduleHtml = `
         <div class="card" style="margin-bottom:28px;">
-            <h4 style="margin:0 0 12px 0; font-size:15px; color:var(--primary);">📅 이번 주 일정</h4>
+            <h4 style="margin:0 0 12px 0; font-size:15px; color:var(--primary);">📅 주간일정</h4>
             <div style="display:flex; flex-direction:column; gap:8px;">
                 ${upcomingSchedules.length > 0 ? upcomingSchedules.map(e => {
                     const d = new Date(e.exam_date);
@@ -233,7 +237,7 @@ function renderAdminStudentSearch() {
         return `
             <div style="padding:8px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
                 <div><b style="font-size:14px;">${s.name}</b> <span style="font-size:12px; color:var(--secondary);">${cName} | ${s.status}</span></div>
-                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세</button>
+                <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세보기</button>
             </div>
         `;
     }).join('');
@@ -265,7 +269,7 @@ function renderAddressBookList() {
             <div style="padding:12px 4px; border-bottom:1px solid var(--border);">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                     <div><b style="font-size:15px;">${s.name}</b> <span style="color:var(--secondary); font-size:12px;">${cName} | ${s.school_name} ${s.grade}</span></div>
-                    <button class="btn" style="padding:4px 8px; font-size:11px; color:var(--primary);" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 ➔</button>
+                    <button class="btn" style="padding:4px 8px; font-size:11px; color:var(--primary);" onclick="closeModal(); renderStudentDetail('${s.id}')">상세보기</button>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--secondary);">
                     <div style="display:flex; justify-content:space-between; background:#f8f9fa; padding:6px 10px; border-radius:6px;">
@@ -284,14 +288,14 @@ function renderAddressBookList() {
 
 function openAddressBook() {
     const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}">${c.name}</option>`).join('');
-    showModal('👥 학생 관리', `
+    showModal('👥 학생관리', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button class="btn" style="padding:8px; flex:1; font-size:11px;" onclick="closeModal(); openAddStudent();">👤 학생 추가</button>
-            <button class="btn" style="padding:8px; flex:1; font-size:11px; color:var(--primary); border-color:var(--primary);" onclick="openGlobalPinManagement()">🔑 통합 PIN 관리</button>
+            <button class="btn" style="padding:8px; flex:1; font-size:11px; color:var(--primary); border-color:var(--primary);" onclick="openGlobalPinManagement()">🔑 PIN관리</button>
         </div>
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <input id="ab-search" class="btn" placeholder="이름 검색" style="flex:1; text-align:left;" oninput="renderAddressBookList()">
-            <select id="ab-class" class="btn" style="flex:1;" onchange="renderAddressBookList()"><option value="">전체 반 (활성)</option>${classOptions}</select>
+            <select id="ab-class" class="btn" style="flex:1;" onchange="renderAddressBookList()"><option value="">전체학급</option>${classOptions}</select>
         </div>
         <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px;"></div>
     `);
@@ -343,7 +347,7 @@ function openClassManageModal() {
 
     showModal('🏫 반 관리', `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <button class="btn" style="padding:8px 14px; font-size:11px; color:var(--primary); border-color:var(--primary);" onclick="closeModal(); openTextbookManageModal();">📚 교재 관리</button>
+            <button class="btn" style="padding:8px 14px; font-size:11px; color:var(--primary); border-color:var(--primary);" onclick="closeModal(); openTextbookManageModal();">📚 학급교재</button>
             <button class="btn btn-primary" style="padding:8px 14px;" onclick="openAddClassModal()">➕ 새 반 추가</button>
         </div>
         <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--primary);">활성 반 (${activeClasses.length})</h4>
@@ -579,7 +583,7 @@ async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active'
         toast('변경사항이 저장되었습니다.', 'success');
         await loadData();
         openTextbookManageModal();
-    } else toast('저장 실패', 'error');
+    } else toast('저장실패', 'error');
 }
 
 async function handleDeleteTextbook(tbId) {
@@ -711,7 +715,7 @@ function openExamScheduleModal() {
             <div style="display:flex; gap:8px;">
                 <input type="text" id="new-ex-school" class="btn" placeholder="학교명" style="flex:1; text-align:left;">
                 <select id="new-ex-grade" class="btn" style="flex:1;">
-                    <option value="">전체/공통</option>
+                    <option value="">학교공통</option>
                     <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
                     <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
                 </select>
@@ -800,7 +804,7 @@ function openGlobalExamGradeView() {
             <span style="font-size:12px; color:var(--secondary);">${c.grade}</span>
         </button>
     `).join('');
-    showModal('📊 전체 반별 시험·성적', `
+    showModal('📊 시험성적', `
         <div style="margin-bottom:12px; font-size:12px; color:var(--secondary);">조회할 반을 선택하세요.</div>
         <div style="max-height:60vh; overflow-y:auto;">${rows || '<div style="text-align:center; opacity:0.5; padding:20px;">담당 반이 없습니다.</div>'}</div>
     `);
@@ -812,20 +816,19 @@ function openOperationMenu() {
     const syncStatusText = qLen > 0 ? `⚠️ 대기 중 ${qLen}건` : "✅ 대기 없음";
     const onlineStatusText = isOnline ? "🟢 온라인" : "🔴 오프라인";
 
-    showModal('⚙️ 백오피스 운영 관리', `
+    showModal('⚙️ 운영메뉴', `
         <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="padding-bottom:16px; border-bottom:1px solid var(--border);">
-                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">운영 및 관리 메뉴</label>
                 <div style="display:flex; flex-direction:column; gap:8px;">
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openClassManageModal();">🏫 반 및 교재 관리</button>
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddressBook();">👥 학생 관리</button>
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openExamScheduleModal();">📅 시험일정 관리</button>
-                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openDischargedStudents();">🗄️ 퇴원생 조회 및 복구</button>
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openClassManageModal();">🏫 학급교재</button>
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAddressBook();">👥 학생관리</button>
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openExamScheduleModal();">📅 시험일정</button>
+                    <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openDischargedStudents();">🗄️ 퇴원생</button>
                     <button class="btn" style="width:100%; justify-content:flex-start; padding:14px;" onclick="closeModal(); openAdminJournalList(new Date().toLocaleDateString('sv-SE'));">📑 일지 보관함 (과거 내역)</button>
                 </div>
             </div>
             <div>
-                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">시스템 및 동기화 상태</label>
+                <label style="font-size:12px; color:var(--secondary); margin-bottom:8px; display:block;">동기화상태</label>
                 <div class="card" style="margin:0; padding:12px; background:#f8f9fa; border-style:dashed;">
                     <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:8px;"><span>네트워크:</span><b style="color:${isOnline ? 'var(--success)' : 'var(--error)'}">${onlineStatusText}</b></div>
                     <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:12px;"><span>미전송 데이터:</span><b style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}">${syncStatusText}</b></div>
@@ -972,13 +975,13 @@ function renderTodoSections() {
     return `
         <div style="margin-bottom:28px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <h3 style="margin:0; font-size:16px;">📝 오늘의 메모</h3>
+                <h3 style="margin:0; font-size:16px;">📝 오늘일정</h3>
             </div>
             <div class="card" style="margin-bottom:16px; padding:8px 12px;">${todayHtml}</div>
             
             ${upcomingHtml ? `
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <h3 style="margin:0; font-size:15px; color:var(--secondary);">📅 이번 주 일정</h3>
+                    <h3 style="margin:0; font-size:15px; color:var(--secondary);">📅 주간일정</h3>
                 </div>
                 <div class="card" style="padding:8px 12px;">${upcomingHtml}</div>
             ` : ''}
@@ -988,6 +991,7 @@ function renderTodoSections() {
 
 function renderDashboard() {
     state.ui.currentClassId = null;
+    if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const data = computeDashboardData();
     const closeData = typeof computeTodayCloseData === 'function' ? computeTodayCloseData() : { totalActive:0, absents:[], hwMisses:[], allClear:true };
     const root = document.getElementById('app-root');
@@ -996,8 +1000,11 @@ function renderDashboard() {
 
     const topActions = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 style="margin:0; font-size:16px;">🚀 ${teacherName} 선생님</h3>
-            <button class="btn" style="padding:6px 10px; font-size:11px; border-color:var(--border);" onclick="openOperationMenu()">⚙️ 운영 메뉴</button>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <button class="btn" style="padding:6px 10px; font-size:18px; border-color:var(--border); line-height:1;" onclick="openAppDrawer()">&#9776;</button>
+                <h3 style="margin:0; font-size:16px;">🚀 ${teacherName} 선생님</h3>
+            </div>
+            <button class="btn" style="padding:6px 10px; font-size:11px; border-color:var(--border);" onclick="openOperationMenu()">⚙️ 운영메뉴</button>
         </div>
         <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin-bottom:20px;">
             <button class="btn btn-primary" style="padding:12px 4px; font-size:12px; font-weight:800; display:flex; flex-direction:column; align-items:center; gap:6px; background:var(--primary); color:white; border:none;" onclick="openDailyJournalModal()">
@@ -1010,7 +1017,7 @@ function renderDashboard() {
                 <span style="font-size:20px;">📋</span> 출석부
             </button>
             <button class="btn" style="padding:12px 4px; font-size:12px; font-weight:800; border-color:var(--border); display:flex; flex-direction:column; align-items:center; gap:6px;" onclick="openGlobalExamGradeView()">
-                <span style="font-size:20px;">📊</span> 시험·성적
+                <span style="font-size:20px;">📊</span> 시험성적
             </button>
         </div>
     `;
@@ -1059,7 +1066,7 @@ function renderDashboard() {
 
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap;">
-            <h3 style="margin:0; font-size:16px;">📂 학급 관리</h3>
+            <h3 style="margin:0; font-size:16px;">📂 학급관리</h3>
         </div>
         <div class="grid" style="margin-bottom:32px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;

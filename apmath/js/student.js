@@ -117,7 +117,7 @@ async function renderStudentDetail(sid) {
         
         <div style="margin-top:20px; padding-top:16px; border-top:1px dashed var(--border); text-align:right;">
             ${s.status === '재원' 
-                ? `<button class="btn" style="font-size:12px; padding:6px 12px; color:var(--error); border-color:transparent;" onclick="handleDelete('${sid}')">학생 퇴원 처리</button>` 
+                ? `<button class="btn" style="font-size:12px; padding:6px 12px; color:var(--error); border-color:transparent;" onclick="handleDelete('${sid}')">퇴원</button>` 
                 : `<button class="btn btn-primary" style="font-size:13px; padding:10px; width:100%;" onclick="handleRestore('${sid}')">재원 복구</button>`}
         </div>
     `);
@@ -326,5 +326,5 @@ function openDischargedStudents() {
         </div>
     `).join('') : `<div style="padding:32px 16px; text-align:center; color:var(--secondary); font-size:14px;">퇴원생이 없습니다.</div>`;
 
-    showModal('🗄️ 퇴원생 목록', `<div style="max-height:60vh; overflow-y:auto;">${rows}</div>`);
+    showModal('🗄️ 퇴원생', `<div style="max-height:60vh; overflow-y:auto;">${rows}</div>`);
 }

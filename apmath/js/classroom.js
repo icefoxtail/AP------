@@ -63,9 +63,16 @@ function renderClass(cid) {
 
     // [Phase 4/5] 4대 핵심 액션만 남기고 상단 툴바 재배치
     const opToolsPanel = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <button class="btn" style="padding:6px 10px; font-size:18px; border-color:var(--border); line-height:1;" onclick="openAppDrawer()">&#9776;</button>
+                <span style="font-weight:800; font-size:16px; color:var(--primary);">${cls.name}</span>
+            </div>
+            <button class="btn" style="font-size:11px; padding:4px 10px;" onclick="renderDashboard()">&#8592; 목록</button>
+        </div>
         <div style="display:flex; gap:8px; margin-bottom:15px; flex-wrap:wrap;">
-            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR 생성</button>
-            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openExamGradeView('${cid}')">📋 시험·성적</button>
+            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openQrGenerator('${cid}')">📸 QR/OMR</button>
+            <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openExamGradeView('${cid}')">📋 시험성적</button>
             <button class="btn" style="flex:1; min-width:80px; padding:10px; font-size:13px; border-color:var(--border);" onclick="openClinicBasketForClass('${cid}')">🧺 클리닉</button>
             <button class="btn btn-primary" style="flex:1; min-width:80px; padding:10px; font-size:13px; font-weight:800;" onclick="openClassRecordModal('${cid}')">✏️ 진도관리</button>
         </div>
@@ -80,7 +87,7 @@ function renderClass(cid) {
     document.getElementById('app-root').innerHTML = `
         ${opToolsPanel}
         <div style="padding:8px 12px; background:#f8f9fa; border-radius:8px; margin-bottom:12px; font-size:11px; color:#5f6368; display:flex; flex-wrap:wrap; gap:8px; border:1px solid var(--border);">
-            <b style="color:var(--primary);">오늘 수업 현황</b>
+            <b style="color:var(--primary);">수업현황</b>
             ${statusBarHtml}
         </div>
         <div class="card">
@@ -156,7 +163,7 @@ function openClassRecordModal(cid) {
     showModal(`✏️ ${cls.name} 진도관리`, `
         <div style="margin-bottom:16px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <h4 style="margin:0; font-size:13px; color:var(--primary);">오늘 진행한 교재</h4>
+                <h4 style="margin:0; font-size:13px; color:var(--primary);">교재진도</h4>
                 <span style="font-size:11px; color:var(--secondary);">${todayStr}</span>
             </div>
             <div style="background:#f8f9fa; padding:12px 12px 4px 12px; border-radius:8px; border:1px solid var(--border);">
@@ -164,10 +171,10 @@ function openClassRecordModal(cid) {
             </div>
         </div>
         <div style="margin-bottom:16px;">
-            <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--primary);">특이사항 (선택)</h4>
-            <textarea id="record-special-note" class="btn" placeholder="수업 특이사항이나 원장님께 공유할 내용을 입력하세요." style="width:100%; height:80px; text-align:left; resize:vertical; font-family:inherit; font-size:13px;">${prevNote}</textarea>
+            <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--primary);">특이사항</h4>
+            <textarea id="record-special-note" class="btn" placeholder="특이사항 입력" style="width:100%; height:80px; text-align:left; resize:vertical; font-family:inherit; font-size:13px;">${prevNote}</textarea>
         </div>
-        <button class="btn btn-primary" style="width:100%; padding:12px; font-size:13px; font-weight:800;" onclick="saveClassRecord('${cid}', '${todayStr}')">💾 진도관리 저장</button>
+        <button class="btn btn-primary" style="width:100%; padding:12px; font-size:13px; font-weight:800;" onclick="saveClassRecord('${cid}', '${todayStr}')">저장</button>
     `);
 }
 
@@ -212,11 +219,11 @@ async function saveClassRecord(cid, dateStr) {
 
     const r = await api.post('class-daily-records', payload);
     if (r.success) {
-        toast('진도 및 특이사항이 저장되었습니다.', 'success');
+        toast('저장완료', 'success');
         closeModal();
         await loadData(); 
     } else {
-        toast(r.error || '진도관리 저장 실패', 'error');
+        toast(r.error || '저장실패', 'error');
     }
 }
 
@@ -246,7 +253,7 @@ function renderAttendanceLedger() {
             <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
                 <input type="date" id="ledger-date" class="btn" value="${ledgerState.date}" style="width:160px;" onchange="ledgerState.date=this.value;loadLedger();">
                 <select id="ledger-class" class="btn" style="flex:1;min-width:120px;" onchange="ledgerState.classId=this.value;renderLedgerTable();">
-                    <option value="">전체 반 (활성)</option>${classOptions}
+                    <option value="">전체학급</option>${classOptions}
                 </select>
                 <div style="display:flex;gap:6px;flex-wrap:wrap;">
                     <button id="ledger-mode-att" class="btn ${ledgerState.mode==='att'?'btn-primary':''}" onclick="ledgerState.mode='att';renderLedgerTable();">출결</button>

@@ -74,13 +74,26 @@ function renderLogin() {
     if (logoutBtn) logoutBtn.style.display = 'none';
 
     root.innerHTML = `
-        <div class="card" style="max-width: 400px; margin: 60px auto; text-align: center; padding: 40px 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-            <h2 style="color:var(--primary); margin-top:0; letter-spacing:-1px;">AP Math OS</h2>
-            <p style="color:var(--secondary); font-size:14px; margin-bottom:30px;">선생님 계정으로 로그인하세요</p>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-                <input id="login-id" type="text" class="btn" placeholder="아이디" style="width:100%; text-align:left; cursor:text;">
-                <input id="login-pw" type="password" class="btn" placeholder="비밀번호" style="width:100%; text-align:left; cursor:text;" onkeyup="if(event.key==='Enter')handleLogin()">
-                <button class="btn btn-primary" style="width:100%; margin-top:10px; padding:14px;" onclick="handleLogin()">로그인</button>
+        <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:#F5F5F3; padding:20px;">
+            <div style="width:100%; max-width:380px; background:#fff; border-radius:20px; padding:40px 28px; border:0.5px solid #e0e0e0;">
+                <div style="text-align:center; margin-bottom:32px;">
+                    <div style="display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; background:#0C447C; border-radius:14px; margin-bottom:16px;">
+                        <span style="color:#fff; font-size:22px; font-weight:900;">A</span>
+                    </div>
+                    <h2 style="color:#1a1a1a; margin:0 0 6px; font-size:22px; font-weight:800; letter-spacing:-0.5px;">AP Math OS</h2>
+                    <p style="color:#888; font-size:14px; margin:0;">선생님 계정으로 로그인하세요</p>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:#555; margin-bottom:6px;">아이디</label>
+                        <input id="login-id" type="text" class="btn" placeholder="아이디 입력" style="width:100%; text-align:left; cursor:text; padding:14px 16px; font-size:15px; border-radius:10px; border:1.5px solid #ddd; background:#fafafa;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; font-weight:600; color:#555; margin-bottom:6px;">비밀번호</label>
+                        <input id="login-pw" type="password" class="btn" placeholder="비밀번호 입력" style="width:100%; text-align:left; cursor:text; padding:14px 16px; font-size:15px; border-radius:10px; border:1.5px solid #ddd; background:#fafafa;" onkeyup="if(event.key==='Enter')handleLogin()">
+                    </div>
+                    <button class="btn btn-primary" style="width:100%; margin-top:8px; padding:16px; font-size:16px; font-weight:700; border-radius:12px;" onclick="handleLogin()">로그인</button>
+                </div>
             </div>
         </div>
     `;
