@@ -549,7 +549,7 @@ async function openExamDetail(classId, examTitle, examDate) {
             </td>
             <td style="text-align:right; padding:14px 4px;">
                 <div style="display:flex; gap:6px; justify-content:flex-end;">
-                    <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--bg); border:none;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}')">수정</button>
+                    <button class="btn" style="padding:6px 10px; font-size:11px; background:var(--bg); border:none;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
                     <button class="btn" style="padding:6px 10px; font-size:11px; color:var(--error); border:none; background:rgba(255,71,87,0.05);" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}')">삭제</button>
                 </div>
             </td>
@@ -560,7 +560,7 @@ async function openExamDetail(classId, examTitle, examDate) {
         <td style="padding:14px 4px; color:var(--secondary); font-weight:600;">${s.name}</td>
         <td colspan="2" style="text-align:center; font-size:12px; color:var(--secondary); font-weight:600;">미제출</td>
         <td style="text-align:right; padding:14px 4px;">
-            <button class="btn btn-primary" style="padding:6px 12px; font-size:11px; font-weight:800;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}')">입력</button>
+            <button class="btn btn-primary" style="padding:6px 12px; font-size:11px; font-weight:800;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
         </td>
     </tr>`).join('');
 

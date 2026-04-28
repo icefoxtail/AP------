@@ -247,11 +247,39 @@ function renderAppDrawer() {
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
+            .drw-top-tools {
+                padding:calc(22px + env(safe-area-inset-top)) 14px 10px;
+                background:var(--surface);
+                border-bottom:1px solid var(--border);
+                flex-shrink:0;
+            }
+
+            .drw-theme-btn {
+                width:100%;
+                min-height:42px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                border:1px solid var(--border);
+                border-radius:14px;
+                background:var(--surface-2);
+                color:var(--text);
+                font-size:13px;
+                font-weight:900;
+                font-family:inherit;
+                cursor:pointer;
+            }
+
+            .drw-theme-btn:active {
+                background:var(--bg);
+                transform:scale(0.98);
+            }
+
             .drw-sec {
-                font-size:16px;
+                font-size:12px;
                 font-weight:900;
                 color:var(--secondary);
-                padding:24px 18px 8px;
+                padding:16px 18px 6px;
                 letter-spacing:-0.1px;
             }
 
@@ -341,6 +369,9 @@ function renderAppDrawer() {
     wrapper.innerHTML = `
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
         <nav id="app-drawer" aria-label="AP Math OS navigation">
+            <div class="drw-top-tools">
+                <button id="drawer-theme-toggle" class="drw-theme-btn" type="button" onclick="toggleTheme()">다크 모드</button>
+            </div>
             ${isAdmin ? adminMenu : teacherMenu}
             <div class="drw-spacer"></div>
             <div class="drw-footer">

@@ -294,7 +294,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 /**
  * 성적 직접 입력 모달 (OMR) 오픈
  */
-function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '', presetArchiveFile = '') {
+function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '', presetArchiveFile = '', returnMode = '', returnExamDate = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
     const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
@@ -335,7 +335,7 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
                 </div>
             </div>
         </div>
-    `, '저장', () => handleOMRSave(sid, presetClassId, sessionId));
+    `, '저장', () => handleOMRSave(sid, presetClassId, sessionId, returnMode, returnExamDate));
 }
 
 /**
@@ -387,7 +387,7 @@ function rebuildOmrGrid() {
     if (wrap) wrap.innerHTML = `<div class="omr-grid" style="gap:14px;">${buildOmrItems(q, currentChecked)}</div>`;
 }
 
-async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
+async function handleOMRSave(sid, presetClassId = '', sessionId = '', returnMode = '', returnExamDate = '') {
     const title = document.getElementById('omr-title').value.trim();
     let q = parseInt(document.getElementById('omr-q').value) || 20;
     q = Math.max(1, Math.min(50, q)); 
@@ -397,8 +397,9 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
     
     let archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
     
+    const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
+
     if (!archiveFile) {
-        const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
         archiveFile = normalizeQrArchiveFile(session?.archive_file || '');
     }
     
@@ -408,12 +409,14 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
         classId = mapObj ? mapObj.class_id : null;
     }
 
+    const savedExamDate = returnExamDate || session?.exam_date || new Date().toLocaleDateString('sv-SE');
+
     const payload = {
         student_id: sid, 
         exam_title: title, 
         score: score, 
         wrong_ids: wrs, 
-        exam_date: new Date().toLocaleDateString('sv-SE'), 
+        exam_date: savedExamDate, 
         question_count: q, 
         class_id: classId
     };
@@ -433,5 +436,15 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '') {
     
     toast(`저장완료 (${score}점)`, 'success'); 
     closeModal(); 
-    await loadData();
+    await refreshDataOnly();
+
+    if (returnMode === 'examDetail') {
+        openExamDetail(classId, title, savedExamDate);
+    } else if (returnMode === 'studentGrade') {
+        renderStudentDetailTab(sid, 'grade');
+    } else if (classId) {
+        renderClass(classId);
+    } else {
+        renderDashboard();
+    }
 }
