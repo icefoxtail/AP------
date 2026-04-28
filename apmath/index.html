@@ -6,41 +6,43 @@
     <title>AP Math OS 1.0</title>
     <style>
         :root {
-            /* [Toss Base + Vivid Pop] 라이트 모드 (기본) */
+            /* 라이트 모드 확정값 */
             --primary: #1A5CFF;
             --primary-dark: #0040D6;
-            --secondary: #8B95A1;
-            --success: #00D084;
-            --error: #FF4757;
-            --warning: #FFA502;
+            --secondary: #6B7684;
+            --success: #00B894;
+            --error: #E8414F;
+            --warning: #F59F00;
 
             --bg: #F2F4F6;
             --surface: #FFFFFF;
-            --surface-alpha: rgba(255, 255, 255, 0.85);
+            --surface-2: #F8FAFC;
+            --surface-alpha: rgba(255,255,255,0.88);
             --border: #E5E8EB;
             --shadow: 0 2px 12px rgba(0,0,0,0.04);
-            
+
             --text: #191F28;
             --text-soft: #333D4B;
         }
 
-        /* [Dark Mode] 다크 테마 컬러셋 */
         body.dark {
-            --primary: #4D7CFF;
-            --primary-dark: #2F5EEA;
-            --secondary: #A7B0BD;
+            /* 다크 모드 확정값 */
+            --primary: #5C8AFF;
+            --primary-dark: #3F6FEA;
+            --secondary: #A3B1C6;
             --success: #22D98F;
             --error: #FF6B7A;
             --warning: #FFB84D;
 
-            --bg: #111318;
-            --surface: #1B1F27;
-            --surface-alpha: rgba(27, 31, 39, 0.85);
-            --border: #2B313B;
-            --shadow: 0 2px 16px rgba(0,0,0,0.35);
-            
+            --bg: #10141D;
+            --surface: #1E2432;
+            --surface-2: #252C3A;
+            --surface-alpha: rgba(30,36,50,0.88);
+            --border: #2C3444;
+            --shadow: 0 4px 18px rgba(0,0,0,0.45);
+
             --text: #F2F4F6;
-            --text-soft: #D1D6DE;
+            --text-soft: #A3B1C6;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
@@ -58,28 +60,71 @@
         .brand-text { font-size: 20px; font-weight: 900; color: var(--text); letter-spacing: -0.5px; cursor: pointer; }
         .tag { font-size: 10px; background: var(--primary); color: #ffffff; padding: 3px 8px; border-radius: 20px; font-weight: 800; }
 
-        nav { display: flex; gap: 8px; }
+        nav { display: flex; gap: 8px; align-items: center; }
         nav .btn { background: var(--bg); color: var(--text); border: none; font-size: 13px; padding: 6px 12px; font-weight: 700; }
+        
+        #theme-toggle { background: transparent; padding: 4px; font-size: 18px; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; box-shadow: none; border: none; }
+        #theme-toggle:active { background: var(--border); }
 
         main { max-width: 600px; margin: 0 auto; padding: 16px 14px calc(100px + env(safe-area-inset-bottom)); }
 
-        .card { background: var(--surface); border-radius: 18px; border: none; padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+        /* 공통 CSS 보정 */
+        h1, h2, h3, h4, b, strong {
+            color: var(--text);
+        }
+
+        .card { 
+            background: var(--surface); 
+            color: var(--text);
+            border-radius: 18px; 
+            border: none;
+            padding: 16px; 
+            margin-bottom: 12px; 
+            box-shadow: var(--shadow); 
+        }
+        body.dark .card {
+            border: 1px solid var(--border);
+        }
+
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
-            padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border);
-            background: var(--surface); color: var(--text); font-size: 14px; font-weight: 700;
+            padding: 12px 16px; border-radius: 12px; 
+            border: 1px solid var(--border);
+            background: var(--surface); 
+            color: var(--text); 
+            font-size: 14px; font-weight: 700;
             cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); gap: 6px; min-height: 44px;
             font-family: inherit;
         }
-        .btn-primary { background: var(--primary); color: #ffffff; border: none; box-shadow: 0 4px 12px rgba(26,92,255,0.25); }
+        .btn-primary { 
+            background: var(--primary); 
+            color: #ffffff; 
+            border: none; 
+            box-shadow: 0 4px 12px rgba(26,92,255,0.25); 
+        }
+        
+        body.dark .btn {
+            background: var(--surface-2);
+        }
+        body.dark .btn-primary {
+            background: var(--primary-dark);
+            color: #ffffff;
+        }
+
         .btn-primary:active { background: var(--primary-dark); transform: scale(0.96); }
         .btn:active { background: var(--bg); transform: scale(0.96); }
 
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { text-align: left; font-size: 12px; color: var(--secondary); padding: 8px 6px; border-bottom: 1.5px solid var(--border); font-weight: 700; }
-        td { padding: 12px 6px; border-bottom: 1px solid var(--bg); font-size: 14px; color: var(--text); }
+        td { padding: 12px 6px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text); }
+        
+        table td, table th {
+            color: var(--text);
+            border-color: var(--border);
+        }
+        
         .hidden { display: none !important; }
 
         #modal-overlay {
@@ -98,7 +143,6 @@
         }
         #modal-overlay.show #modal-content { transform: translateY(0) scale(1); opacity: 1; }
 
-        /* [Top Action Modal] */
         #modal-header {
             display: grid;
             grid-template-columns: 64px minmax(0, 1fr) 64px;
@@ -194,6 +238,7 @@
             <div class="tag">1.0</div>
         </div>
         <nav>
+            <button id="theme-toggle" class="btn" onclick="toggleTheme()">🌙</button>
             <button class="btn" onclick="toggleScope()"><span id="scope-text">내 담당</span></button>
         </nav>
     </header>
