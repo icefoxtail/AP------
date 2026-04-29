@@ -1199,7 +1199,7 @@ function renderTodayJournalCard(data) {
 
     let contentHtml = '';
     if (todayClasses.length === 0) {
-        contentHtml = `<div style="font-size:13px; font-weight:600; color:var(--secondary);">오늘 수업반 없음</div>`;
+        contentHtml = `<div style="font-size:13px; font-weight:600; color:var(--secondary); text-align:center; padding:18px 12px;">오늘 수업반 없음</div>`;
     } else {
         const classStrings = todayClasses.map(c => {
             const summary = data.classSummaries[c.id];
@@ -1209,12 +1209,14 @@ function renderTodayJournalCard(data) {
     }
 
     return `
-        <div onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('일지 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:14px 16px; margin-bottom:18px; cursor:pointer; box-shadow:var(--shadow);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div style="margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">오늘일지</h3>
-                <span style="font-size:18px; font-weight:950; color:var(--primary); line-height:1;">›</span>
             </div>
-            ${contentHtml}
+            <div onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('일지 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                <div style="min-width:0; flex:1;">${contentHtml}</div>
+                <span style="font-size:18px; font-weight:950; color:var(--primary); line-height:1; flex:0 0 auto;">›</span>
+            </div>
         </div>
     `;
 }

@@ -337,49 +337,29 @@ function getDrawerRoleKey() {
 function drawerItem(icon, label, action, extraClass = '') {
     const safeLabel = String(label || '');
     return `
-        <button class="drw-item ${extraClass}" title="${safeLabel}" onclick="${action}">
-            <span class="drw-icon" aria-hidden="true">${icon}</span>
+        <button class="drw-item ${extraClass}" onclick="${action}">
             <span class="drw-label">${safeLabel}</span>
         </button>
     `;
 }
 
-function drawerSection(label, color = 'var(--secondary)') {
-    return `<div class="drw-sec" style="color:${color};"><span class="drw-sec-label">${label}</span></div>`;
+function drawerSection() {
+    return '';
 }
 
 function buildDrawerMenu(roleKey) {
-    if (roleKey === 'admin') {
-        return `
-            ${drawerSection('원장', 'var(--primary)')}
-            ${drawerItem('⌂', '운영센터', "closeAppDrawer(); renderAdminControlCenter();")}
-            ${drawerItem('👤', '학생관리', "closeAppDrawer(); openAddressBook();")}
-            ${drawerItem('🏫', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
-
-            ${drawerSection('운영', 'var(--warning)')}
-            ${drawerItem('📅', '시험일정', "closeAppDrawer(); openExamScheduleModal();")}
-            ${drawerItem('🚪', '퇴원생', "closeAppDrawer(); openDischargedStudents();")}
-            ${drawerItem('⚙', '시스템·동기화', "closeAppDrawer(); openOperationMenu();")}
-        `;
-    }
-
     return `
-        ${drawerSection('메인', 'var(--primary)')}
-        ${drawerItem('⌂', '홈', "closeAppDrawer(); renderDashboard();")}
-        ${drawerItem('📘', '일지', "closeAppDrawer(); openDailyJournalModal();")}
-        ${drawerItem('📝', '메모', "closeAppDrawer(); openTodoMemoModal();")}
-        ${drawerItem('👤', '학생관리', "closeAppDrawer(); openAddressBook();")}
-        ${drawerItem('🏫', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
-
-        ${drawerSection('수업·성적', '#6E54FF')}
-        ${drawerItem('✓', '출석부', "closeAppDrawer(); if(typeof renderAttendanceLedger==='function') renderAttendanceLedger();")}
-        ${drawerItem('📅', '시험일정', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal();")}
-        ${drawerItem('📊', '시험성적', "closeAppDrawer(); openGlobalExamGradeView();")}
-        ${drawerItem('▣', '클리닉', "closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket();")}
-
-        ${drawerSection('운영', 'var(--warning)')}
-        ${drawerItem('🚪', '퇴원생', "closeAppDrawer(); openDischargedStudents();")}
-        ${drawerItem('⚙', '시스템·동기화', "closeAppDrawer(); openOperationMenu();")}
+        ${drawerItem('', '홈', "closeAppDrawer(); goHome();")}
+        ${drawerItem('', '일지', "closeAppDrawer(); openDailyJournalModal();")}
+        ${drawerItem('', '메모', "closeAppDrawer(); openTodoMemoModal();")}
+        ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
+        ${drawerItem('', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
+        ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else toast('출석부는 다음 버전에서 연결됩니다.', 'warn');")}
+        ${drawerItem('', '시험일정', "closeAppDrawer(); openExamScheduleModal();")}
+        ${drawerItem('', '시험성적', "closeAppDrawer(); openGlobalExamGradeView();")}
+        ${drawerItem('', '클리닉', "closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
     `;
 }
 
@@ -411,7 +391,7 @@ function ensureDrawerStyle() {
             display:flex;
             flex-direction:column;
             transform:translateX(-104%);
-            transition:transform .26s cubic-bezier(0.4, 0, 0.2, 1), width .22s ease;
+            transition:transform .26s cubic-bezier(0.4, 0, 0.2, 1), width .22s ease, background .2s ease;
             box-shadow:4px 0 24px rgba(0,0,0,0.08);
             overflow-y:auto;
             overflow-x:hidden;
@@ -421,133 +401,48 @@ function ensureDrawerStyle() {
         }
         #app-drawer.drw-open { transform:translateX(0); }
 
-        .drw-rail-head {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:10px;
-            padding:calc(14px + env(safe-area-inset-top)) 14px 10px;
+        .drw-rail-toggle {
+            display:none;
+            width:56px;
+            height:52px;
+            border:0;
             border-bottom:1px solid var(--border);
-            flex-shrink:0;
-        }
-        .drw-brand {
-            display:flex;
-            align-items:center;
-            gap:10px;
-            min-width:0;
-            font-size:15px;
-            font-weight:950;
-            color:var(--text);
-            letter-spacing:-0.3px;
-        }
-        .drw-logo {
-            width:32px;
-            height:32px;
-            border-radius:11px;
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            background:var(--primary);
-            color:#fff;
-            font-size:13px;
-            font-weight:950;
-            flex:0 0 auto;
-        }
-        .drw-close {
-            width:36px;
-            height:36px;
-            border:0;
-            border-radius:12px;
-            background:var(--surface-2);
-            color:var(--text);
-            font-size:20px;
-            font-weight:900;
-            cursor:pointer;
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            flex:0 0 auto;
-        }
-        .drw-menu {
-            padding:10px 8px 12px;
-            flex:0 0 auto;
-        }
-        .drw-sec {
-            width:100%;
-            box-sizing:border-box;
-            font-size:11px;
-            font-weight:950;
-            padding:18px 12px 6px;
-            letter-spacing:-0.1px;
-            line-height:1.2;
-            text-align:left;
-            opacity:.95;
-        }
-        .drw-item {
-            display:flex;
-            align-items:center;
-            justify-content:flex-start;
-            gap:12px;
-            width:100%;
-            margin:2px 0;
-            padding:11px 12px;
-            min-height:44px;
-            border:0;
-            border-radius:14px;
+            border-radius:0;
             background:transparent;
             color:var(--text);
-            font-size:14px;
-            font-weight:850;
-            font-family:inherit;
-            text-align:left;
+            font-size:20px;
+            font-weight:800;
             cursor:pointer;
-            letter-spacing:-0.2px;
-            transition:background .18s ease, transform .18s ease;
-        }
-        .drw-icon {
-            width:28px;
-            height:28px;
-            border-radius:11px;
-            display:inline-flex;
             align-items:center;
             justify-content:center;
-            flex:0 0 28px;
-            background:var(--surface-2);
-            color:var(--primary);
-            font-size:14px;
-            font-weight:900;
-            line-height:1;
+            font-family:inherit;
         }
-        .drw-label {
-            display:inline-block;
-            min-width:0;
-            overflow:hidden;
-            text-overflow:ellipsis;
-            white-space:nowrap;
-        }
-        .drw-item:active {
-            background:var(--bg);
-            transform:scale(0.98);
-        }
-        .drw-item.danger { color:var(--error); }
-        .drw-item.danger .drw-icon { color:var(--error); }
-        .drw-spacer { flex:1; }
+
         .drw-top-tools {
-            margin:8px;
-            padding:12px;
-            border-radius:16px;
-            background:var(--surface-2);
-            display:flex;
-            justify-content:space-between;
+            padding:calc(16px + env(safe-area-inset-top)) 18px 16px;
+            border-bottom:1px solid var(--border);
+            display:grid;
+            grid-template-columns:1fr auto auto;
             align-items:center;
             gap:12px;
+            flex-shrink:0;
         }
         .drw-top-label {
-            font-size:13px;
+            font-size:15px;
             font-weight:900;
             color:var(--text);
             line-height:1;
             white-space:nowrap;
+        }
+        .drw-text-close {
+            border:0;
+            background:transparent;
+            color:var(--secondary);
+            font-size:13px;
+            font-weight:900;
+            font-family:inherit;
+            cursor:pointer;
+            padding:6px 0 6px 8px;
         }
         .switch {
             position:relative;
@@ -561,7 +456,7 @@ function ensureDrawerStyle() {
             position:absolute;
             cursor:pointer;
             top:0; left:0; right:0; bottom:0;
-            background-color:var(--surface);
+            background-color:var(--surface-2);
             border:1px solid var(--border);
             transition:.25s;
             border-radius:999px;
@@ -579,8 +474,45 @@ function ensureDrawerStyle() {
         }
         input:checked + .slider { background-color:var(--primary); border-color:var(--primary); }
         input:checked + .slider:before { transform:translateX(22px); background-color:#fff; }
+
+        .drw-menu {
+            padding:12px 12px;
+            flex:0 0 auto;
+        }
+        .drw-sec { display:none; }
+        .drw-item {
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            width:100%;
+            margin:2px 0;
+            padding:12px 12px;
+            min-height:44px;
+            border:0;
+            border-radius:12px;
+            background:transparent;
+            color:var(--text);
+            font-size:15px;
+            font-weight:850;
+            font-family:inherit;
+            text-align:left;
+            cursor:pointer;
+            letter-spacing:-0.2px;
+            transition:background .18s ease, transform .18s ease, color .18s ease;
+        }
+        .drw-label {
+            display:inline-block;
+            min-width:0;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
+        .drw-item:active { background:var(--bg); transform:scale(0.98); }
+        .drw-item:hover { background:var(--surface-2); }
+        .drw-item.danger { color:var(--error); }
+        .drw-spacer { flex:1; }
         .drw-footer {
-            padding:8px 8px calc(14px + env(safe-area-inset-bottom));
+            padding:10px 12px calc(14px + env(safe-area-inset-bottom));
             border-top:1px solid var(--border);
             flex-shrink:0;
             background:var(--surface);
@@ -589,31 +521,31 @@ function ensureDrawerStyle() {
         @media (min-width:901px) {
             #app-drawer-overlay { display:none !important; }
             #app-drawer {
-                width:64px;
+                width:56px;
                 transform:none !important;
                 border-radius:0;
                 box-shadow:none;
                 background:var(--surface-alpha);
                 backdrop-filter:blur(14px);
                 -webkit-backdrop-filter:blur(14px);
+                overflow:hidden;
             }
-            #app-drawer.drw-expanded { width:260px; box-shadow:8px 0 30px rgba(0,0,0,0.08); }
-            .drw-rail-head { padding:14px 10px 10px; justify-content:center; }
-            #app-drawer.drw-expanded .drw-rail-head { justify-content:space-between; padding-left:14px; padding-right:14px; }
-            .drw-brand-text, .drw-close, .drw-label, .drw-sec-label, .drw-top-label { display:none; }
-            #app-drawer.drw-expanded .drw-brand-text,
-            #app-drawer.drw-expanded .drw-close,
-            #app-drawer.drw-expanded .drw-label,
-            #app-drawer.drw-expanded .drw-sec-label,
-            #app-drawer.drw-expanded .drw-top-label { display:inline-block; }
-            .drw-menu { padding:10px 8px; }
-            .drw-sec { padding:16px 0 5px; text-align:center; }
-            #app-drawer.drw-expanded .drw-sec { padding:18px 12px 6px; text-align:left; }
-            .drw-item { justify-content:center; gap:0; padding:10px 8px; }
-            #app-drawer.drw-expanded .drw-item { justify-content:flex-start; gap:12px; padding:11px 12px; }
-            .drw-top-tools { justify-content:center; padding:10px 0; background:transparent; }
-            #app-drawer.drw-expanded .drw-top-tools { justify-content:space-between; padding:12px; background:var(--surface-2); }
-            .drw-footer { padding-left:8px; padding-right:8px; }
+            #app-drawer.drw-expanded {
+                width:260px;
+                box-shadow:8px 0 30px rgba(0,0,0,0.08);
+                background:var(--surface);
+                overflow-y:auto;
+            }
+            .drw-rail-toggle { display:flex; }
+            #app-drawer.drw-expanded .drw-rail-toggle { display:none; }
+            #app-drawer:not(.drw-expanded) .drw-top-tools,
+            #app-drawer:not(.drw-expanded) .drw-menu,
+            #app-drawer:not(.drw-expanded) .drw-footer,
+            #app-drawer:not(.drw-expanded) .drw-spacer { display:none; }
+            #app-drawer.drw-expanded .drw-top-tools { display:grid; }
+            #app-drawer.drw-expanded .drw-menu { display:block; }
+            #app-drawer.drw-expanded .drw-footer { display:block; }
+            #app-drawer.drw-expanded .drw-spacer { display:block; flex:1; }
         }
     `;
     document.head.appendChild(style);
@@ -638,26 +570,21 @@ function renderAppDrawer(force = false) {
     wrapper.innerHTML = `
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
         <nav id="app-drawer" data-role="${currentRole}" aria-label="AP Math OS navigation">
-            <div class="drw-rail-head">
-                <div class="drw-brand" title="AP Math OS">
-                    <span class="drw-logo">AP</span>
-                    <span class="drw-brand-text">AP Math OS</span>
-                </div>
-                <button class="drw-close" onclick="closeAppDrawer()" aria-label="닫기">×</button>
-            </div>
-            <div class="drw-menu">
-                ${buildDrawerMenu(currentRole)}
-            </div>
-            <div class="drw-spacer"></div>
+            <button class="drw-rail-toggle" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴">☰</button>
             <div class="drw-top-tools">
                 <span class="drw-top-label">다크 모드</span>
                 <label class="switch" title="다크 모드">
                     <input type="checkbox" id="theme-switch" onchange="toggleTheme()">
                     <span class="slider"></span>
                 </label>
+                <button class="drw-text-close" onclick="closeAppDrawer()">닫기</button>
             </div>
+            <div class="drw-menu">
+                ${buildDrawerMenu(currentRole)}
+            </div>
+            <div class="drw-spacer"></div>
             <div class="drw-footer">
-                ${drawerItem('⎋', '로그아웃', "closeAppDrawer(); logout();", 'danger')}
+                ${drawerItem('', '로그아웃', "closeAppDrawer(); logout();", 'danger')}
             </div>
         </nav>
     `;
