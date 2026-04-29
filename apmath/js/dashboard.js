@@ -695,17 +695,18 @@ async function handleEditTodoMemo(id) {
 function openExamScheduleModal(baseDateStr = '') {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     
+    if (!state.ui) state.ui = {};
+    if (baseDateStr) {
+        state.ui.examCalendarMonth = baseDateStr;
+    } else if (!state.ui.examCalendarMonth) {
+        state.ui.examCalendarMonth = todayStr;
+    }
+    
     // 1. 기준 달력 연/월 계산
     let targetYear, targetMonth;
-    if (baseDateStr) {
-        const parts = baseDateStr.split('-');
-        targetYear = parseInt(parts[0], 10);
-        targetMonth = parseInt(parts[1], 10) - 1;
-    } else {
-        const parts = todayStr.split('-');
-        targetYear = parseInt(parts[0], 10);
-        targetMonth = parseInt(parts[1], 10) - 1;
-    }
+    const parts = state.ui.examCalendarMonth.split('-');
+    targetYear = parseInt(parts[0], 10);
+    targetMonth = parseInt(parts[1], 10) - 1;
 
     const firstDay = new Date(targetYear, targetMonth, 1).getDay();
     const lastDate = new Date(targetYear, targetMonth + 1, 0).getDate();
@@ -1056,12 +1057,54 @@ function renderTodoSections() {
     `;
 }
 
+// [NEW] 오늘일지 카드 생성 함수
+function renderTodayJournalCard(data) {
+    const todayClasses = state.db.classes.filter(c => {
+        if (c.is_active === 0) return false;
+        const gradeText = String(c.grade || '');
+const nameText = String(c.name || '');
+
+if (
+    gradeText.startsWith('고') ||
+    nameText.startsWith('고') ||
+    nameText.includes('고1') ||
+    nameText.includes('고2') ||
+    nameText.includes('고3') ||
+    nameText.includes('고등')
+) return false;
+
+        const summary = data.classSummaries[c.id];
+        if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
+        return true;
+    });
+
+    let contentHtml = '';
+    if (todayClasses.length === 0) {
+        contentHtml = `<div style="font-size:13px; font-weight:600; color:var(--secondary);">오늘 수업반 없음</div>`;
+    } else {
+        const classStrings = todayClasses.map(c => {
+            const summary = data.classSummaries[c.id];
+            return `${c.name} ${summary.present}/${summary.activeCount}`;
+        });
+        contentHtml = `<div style="font-size:14px; font-weight:850; color:var(--text); line-height:1.55;">${classStrings.join(' · ')}</div>`;
+    }
+
+    return `
+        <div onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('일지 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:14px 16px; margin-bottom:18px; cursor:pointer; box-shadow:var(--shadow);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">오늘일지</h3>
+                <span style="font-size:18px; font-weight:950; color:var(--primary); line-height:1;">›</span>
+            </div>
+            ${contentHtml}
+        </div>
+    `;
+}
+
 // [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
 function renderDashboard() {
     state.ui.currentClassId = null;
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const data = computeDashboardData();
-    const closeData = typeof computeTodayCloseData === 'function' ? computeTodayCloseData() : { totalActive:0, absents:[], hwMisses:[], allClear:true };
     const root = document.getElementById('app-root');
     const teacherName = typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당');
 
@@ -1078,27 +1121,10 @@ function renderDashboard() {
         </div>
     `;
 
-    const qLen = typeof syncQueue !== 'undefined' ? syncQueue.length : 0;
-    const syncWarning = qLen > 0
-        ? `<div style="background:rgba(255,71,87,0.1); color:var(--error); padding:12px 16px; border-radius:12px; font-size:12px; font-weight:800; margin-bottom:16px; text-align:center;">네트워크 지연: ${qLen}건 대기 중</div>`
-        : '';
-
-    const buildSummaryBadges = (list) => {
-        if(list.length === 0) return '';
-        const group = list.reduce((acc, cur) => { acc[cur.className] = (acc[cur.className]||0)+1; return acc; }, {});
-        const keys = Object.keys(group);
-        let str = keys.slice(0, 2).map(k => `${k} ${group[k]}`).join(' · ');
-        if(keys.length > 2) str += ` 외 ${keys.length - 2}개 반`;
-        return `<span style="font-size:11px; background:var(--surface); padding:2px 6px; border-radius:6px; margin-left:6px; color:rgba(255,165,2,0.8); font-weight:800; border:1px solid rgba(255,165,2,0.2);">${str}</span>`;
-    };
-
-    const closeBanner = closeData.totalActive === 0
-        ? `${syncWarning}<div class="card" style="margin-bottom:20px; padding:14px 16px; border:1px solid var(--border); background:var(--surface-2); border-radius:16px; box-shadow:none;"><b style="color:var(--secondary); font-size:14px; font-weight:900;">수업 없는 날</b></div>`
-        : closeData.allClear
-            ? `${syncWarning}<div class="card" style="margin-bottom:20px; padding:14px 16px; border:1px solid rgba(0,208,132,0.12); background:rgba(0,208,132,0.02); border-radius:16px; box-shadow:none;"><b style="font-size:14px; font-weight:950; color:var(--success);">오늘 마감 완료</b></div>`
-            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:20px; padding:14px 16px; cursor:pointer; border:1px solid rgba(255,165,2,0.18); background:rgba(255,165,2,0.03); border-radius:16px; box-shadow:none;"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:950; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:950; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--warning); font-weight:950;">›</span></div></div>`;
+    const todayJournalCard = renderTodayJournalCard(data);
 
     const todoSections = renderTodoSections();
+    
     const classes = sortClassesForDashboard(state.db.classes.filter(c => c.is_active !== 0));
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
@@ -1107,7 +1133,7 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = appHeader + closeBanner + todoSections + classStatus;
+    root.innerHTML = appHeader + todayJournalCard + todoSections + classStatus;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
@@ -1469,7 +1495,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
 
 function openAdminJournalFeedback(id, teacherName = '') {
     const journal = (state.db.journals || []).find(j => j.id === id);
-    if (!journal) return toast('일지를 찾을 수 없습니다.', 'warn');
+    if (!journal) return toast('일지를 찾을 수 일습니다.', 'warn');
     const safeTeacher = String(teacherName || journal.teacher_name || '').replace(/'/g, "\\'");
     
     showModal(`${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
