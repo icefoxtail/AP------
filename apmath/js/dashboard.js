@@ -1,7 +1,7 @@
 /**
  * AP Math OS 1.0 [js/dashboard.js]
  * 운영센터 및 선생님별 관제 엔진 (Partner B 보정판)
- * [Sidebar Polish 2]: 상단 헤더 정리, 주간 일정 블루 톤 규격화 반영
+ * [Minimalism Polish]: 학급 카드 및 마감 배너 은은한 테두리 기반 디자인 적용
  */
 
 function copyPhoneNumber(text) {
@@ -881,35 +881,36 @@ function computeDashboardData() {
 }
 
 function renderClassSummaryCard(cls, data) {
-    const s = data.classSummaries[cls.id]; 
-    if (!s) return '';
+    const s = data.classSummaries[cls.id]; if (!s) return '';
 
-    const isOffDay = !s.isScheduled;
-    const absentColor = s.absent > 0 ? 'var(--error)' : 'var(--secondary)';
-    const cardBg = isOffDay ? 'var(--surface-2)' : 'var(--surface)';
-    const classNameColor = isOffDay ? 'var(--secondary)' : 'var(--text)';
-    const borderColor = s.absent > 0 ? 'rgba(255,71,87,0.18)' : 'var(--border)';
+    // [미니멀리즘] 1. 오늘 수업 없는 반: 차분한 톤, 무채색 테두리
+    if (!s.isScheduled) {
+        return `
+            <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
+                <div style="font-weight:900; font-size:15px; color:var(--secondary); margin-bottom:12px;">${cls.name}</div>
+                <div style="font-size:12px; font-weight:800; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:center;">오늘 수업 없음</div>
+            </div>
+        `;
+    }
+
+    // [미니멀리즘] 2. 오늘 수업 있는 반 (활성): 파란색 톤 1px 은은한 테두리 & 아주 옅은 그라데이션
+    // 결석이나 미완료가 있어도 테두리/배경은 메인(블루) 컬러로 단정하게 통일
+    const gradientBg = 'linear-gradient(135deg, rgba(26,92,255,0.04) 0%, var(--surface) 100%)';
+    const borderColor = 'rgba(26,92,255,0.14)';
+    const shadowColor = 'rgba(26,92,255,0.06)';
 
     return `
-        <div onclick="renderClass('${cls.id}')" style="cursor:pointer; position:relative; min-height:96px; padding:16px; border-radius:18px; background:${cardBg}; border:1px solid ${borderColor}; box-shadow:var(--shadow); overflow:hidden;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:14px;">
-                <div style="min-width:0;">
-                    <div style="font-weight:900; font-size:15px; color:${classNameColor}; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${cls.name}</div>
-                    ${isOffDay ? `<div style="font-size:11px; font-weight:800; color:var(--secondary); margin-top:5px;">오늘 수업 없음</div>` : ''}
+        <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
+            <div style="font-weight:900; font-size:15px; color:var(--text); margin-bottom:12px;">${cls.name}</div>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">
+                    재원 <span style="font-weight:900; color:var(--text); margin-left:4px;">${s.activeCount}</span>
                 </div>
-            </div>
-            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
-                <div style="background:var(--bg); border-radius:12px; padding:8px 6px; text-align:center; border:1px solid var(--border);">
-                    <div style="font-size:10px; font-weight:800; color:var(--secondary); margin-bottom:2px;">재원</div>
-                    <div style="font-size:16px; font-weight:950; color:var(--text);">${s.activeCount}</div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">
+                    등원 <span style="font-weight:900; color:var(--success); margin-left:4px;">${s.present}</span>
                 </div>
-                <div style="background:var(--bg); border-radius:12px; padding:8px 6px; text-align:center; border:1px solid var(--border);">
-                    <div style="font-size:10px; font-weight:800; color:var(--secondary); margin-bottom:2px;">등원</div>
-                    <div style="font-size:16px; font-weight:950; color:var(--text);">${s.present}</div>
-                </div>
-                <div style="background:var(--bg); border-radius:12px; padding:8px 6px; text-align:center; border:1px solid var(--border);">
-                    <div style="font-size:10px; font-weight:800; color:var(--secondary); margin-bottom:2px;">결석</div>
-                    <div style="font-size:16px; font-weight:950; color:${absentColor};">${s.absent}</div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">
+                    결석 <span style="font-weight:900; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:4px;">${s.absent}</span>
                 </div>
             </div>
         </div>
@@ -1007,11 +1008,12 @@ function renderDashboard() {
         return `<span style="font-size:11px; background:var(--surface); padding:2px 6px; border-radius:6px; margin-left:6px; color:var(--warning); font-weight:700; border:1px solid rgba(255,165,2,0.3);">${str}</span>`;
     };
 
+    // [미니멀리즘] 마감 배너: 굵은 띠 제거 및 상태별 1px 컬러 테두리 적용
     const closeBanner = closeData.totalActive === 0
-        ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:12px 14px;"><b style="color:var(--text); font-size:15px; font-weight:900;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
+        ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:14px 16px; border:1px solid var(--border); background:var(--surface-2); border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04);"><b style="color:var(--text); font-size:15px; font-weight:900;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
         : closeData.allClear
-            ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:12px 14px; border:1px solid var(--border);"><b style="font-size:15px; font-weight:900; color:var(--text);">오늘 마감 완료</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; display:block; margin-top:4px;">예외사항 없음</span></div>`
-            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:14px; padding:12px 14px; cursor:pointer; border:1px solid var(--border);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--secondary); font-weight:900;">›</span></div></div>`;
+            ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:14px 16px; border:1px solid rgba(0,208,132,0.3); background:rgba(0,208,132,0.04); border-radius:16px; box-shadow:0 4px 14px rgba(0,208,132,0.06);"><b style="font-size:15px; font-weight:900; color:var(--success);">오늘 마감 완료</b><br><span style="font-size:13px; color:var(--text-soft); font-weight:600; display:block; margin-top:4px;">결석 및 미완료 예외사항이 없습니다.</span></div>`
+            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:14px; padding:14px 16px; cursor:pointer; border:1px solid rgba(255,165,2,0.3); background:rgba(255,165,2,0.04); border-radius:16px; box-shadow:0 4px 14px rgba(255,165,2,0.06);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface); padding:4px 8px; border-radius:6px; margin-left:6px; border:1px solid var(--border);">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--warning); font-weight:900;">›</span></div></div>`;
 
     const todoSections = renderTodoSections();
     const classes = sortClassesForDashboard(state.db.classes.filter(c => c.is_active !== 0));
