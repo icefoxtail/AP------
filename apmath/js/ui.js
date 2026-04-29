@@ -1,12 +1,10 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
- * [Minimalism Polish]&#58; 폰트 조절 제거, 섹션 헤더 강화, 다크모드 토글 스위치 적용
- * [UI Fix]&#58; 사이드바 왼쪽 정렬 통일 및 섹션 헤더 시인성 강화
  */
 
 // ============================================================
-// [Theme Manager] 다크 모드 전용 엔진 (Toggle Switch 방식)
+// [Theme Manager] 다크 모드: 사이드바 상단 스위치 방식
 // ============================================================
 function getTheme() {
     return localStorage.getItem('APMATH_THEME') || 'light';
@@ -19,7 +17,6 @@ function applyTheme(theme) {
         document.body.classList.toggle('dark', isDark);
     }
 
-    // [Polish] 사이드바 내부 토글 스위치 상태 동기화
     const themeSwitch = document.getElementById('theme-switch');
     if (themeSwitch) {
         themeSwitch.checked = isDark;
@@ -28,21 +25,17 @@ function applyTheme(theme) {
     const legacyToggleBtn = document.getElementById('theme-toggle-btn');
     if (legacyToggleBtn) {
         legacyToggleBtn.innerText = isDark ? '라이트 모드' : '다크 모드';
+        legacyToggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+        legacyToggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
     }
 }
 
 function toggleTheme() {
     const themeSwitch = document.getElementById('theme-switch');
-    const next = (themeSwitch && themeSwitch.checked) ? 'dark' : 'light';
+    const next = themeSwitch
+        ? (themeSwitch.checked ? 'dark' : 'light')
+        : (getTheme() === 'dark' ? 'light' : 'dark');
 
-    localStorage.setItem('APMATH_THEME', next);
-    applyTheme(next);
-}
-
-// 구 버전 호환용 (대시보드 등에서 직접 호출 시)
-function toggleThemeLegacy() {
-    const current = getTheme();
-    const next = current === 'dark' ? 'light' : 'dark';
     localStorage.setItem('APMATH_THEME', next);
     applyTheme(next);
 }
@@ -52,6 +45,7 @@ function ensureThemeToggleButton() {
     if (floatingBtn && floatingBtn.classList.contains('theme-floating-toggle')) {
         floatingBtn.remove();
     }
+
     applyTheme(getTheme());
 }
 
@@ -109,12 +103,10 @@ function showModal(t, b, at=null, af=null) {
             actionBtn.style.border = 'none';
             actionBtn.style.boxShadow = 'none';
             actionBtn.style.color = 'var(--primary)';
-            actionBtn.style.fontWeight = '800';
+            actionBtn.style.fontWeight = '900';
             actionBtn.style.fontSize = '15px';
-            actionBtn.style.padding = '8px 12px';
-            actionBtn.style.minHeight = '44px';
-            actionBtn.style.borderRadius = '8px';
-            actionBtn.style.transition = 'background 0.2s';
+            actionBtn.style.padding = '8px 0';
+            actionBtn.style.minHeight = 'auto';
         } else {
             actionBtn.classList.add('hidden');
             actionBtn.onclick = null;
@@ -187,7 +179,7 @@ function setModalBody(html) {
 function setModalLoading(title, message) {
     showModal(title, `
         <div style="text-align:center; padding:40px 24px; color:var(--secondary);">
-            <div style="font-size:14px; font-weight:700;">${message || '잠시만 기다려주세요...'}</div>
+            <div style="font-size:14px; font-weight:800;">${message || '잠시만 기다려주세요...'}</div>
         </div>
     `);
 }
@@ -214,7 +206,7 @@ function safeToastError(message) {
 
 
 // ============================================================
-// [드로어 네비게이션] 왼쪽 정렬 강화 + 섹션 헤더 크기 보정 + 토글 스위치
+// [드로어 네비게이션] 상단 문구 제거 + 다크모드 버튼 배치
 // ============================================================
 function renderAppDrawer() {
     if (document.getElementById('app-drawer')) {
@@ -242,7 +234,7 @@ function renderAppDrawer() {
                 top:0;
                 left:0;
                 bottom:0;
-                width:min(80vw, 280px);
+                width:min(75vw, 260px);
                 background:var(--surface);
                 z-index:9999;
                 display:flex;
@@ -250,88 +242,99 @@ function renderAppDrawer() {
                 transform:translateX(-104%);
                 transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.05);
                 box-shadow:4px 0 24px rgba(0,0,0,0.06);
-                border-right:1px solid var(--border);
                 overflow-y:auto;
-                border-radius:0 24px 24px 0;
+                border-right:1px solid var(--border);
+                border-radius:0 20px 20px 0;
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
-            /* [Polish] 상단 토글 영역: 좌우 수평 정렬 24px 고정 */
             .drw-top-tools {
-                padding:calc(16px + env(safe-area-inset-top)) 24px 10px;
+                padding:calc(18px + env(safe-area-inset-top)) 24px 12px;
                 background:var(--surface);
                 border-bottom:1px solid var(--border);
                 flex-shrink:0;
                 display:flex;
-                justify-content:space-between;
+                justify-content:flex-start;
                 align-items:center;
+                gap:12px;
+                text-align:left;
             }
+
             .drw-top-label {
                 font-size:15px;
                 font-weight:900;
                 color:var(--text);
+                text-align:left;
+                letter-spacing:-0.2px;
+                line-height:1;
             }
 
-            /* [Polish] 다크모드 토글 스위치 CSS */
             .switch {
-                position: relative;
-                display: inline-block;
-                width: 48px;
-                height: 26px;
+                position:relative;
+                display:inline-block;
+                width:48px;
+                height:26px;
+                flex:0 0 auto;
             }
-            .switch input { opacity: 0; width: 0; height: 0; }
+            .switch input {
+                opacity:0;
+                width:0;
+                height:0;
+            }
             .slider {
-                position: absolute;
-                cursor: pointer;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background-color: var(--surface-2);
-                border: 1px solid var(--border);
-                transition: .3s;
-                border-radius: 26px;
+                position:absolute;
+                cursor:pointer;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                background-color:var(--surface-2);
+                border:1px solid var(--border);
+                transition:.25s;
+                border-radius:999px;
             }
             .slider:before {
-                position: absolute;
-                content: "";
-                height: 20px;
-                width: 20px;
-                left: 2px;
-                bottom: 2px;
-                background-color: var(--secondary);
-                transition: .3s;
-                border-radius: 50%;
+                position:absolute;
+                content:"";
+                height:20px;
+                width:20px;
+                left:2px;
+                bottom:2px;
+                background-color:var(--secondary);
+                transition:.25s;
+                border-radius:50%;
             }
             input:checked + .slider {
-                background-color: var(--primary);
-                border-color: var(--primary);
+                background-color:var(--primary);
+                border-color:var(--primary);
             }
             input:checked + .slider:before {
-                transform: translateX(22px);
-                background-color: #ffffff;
+                transform:translateX(22px);
+                background-color:#fff;
             }
 
-            /* [Polish] 섹션 헤더: 24px 왼쪽 정렬 강화 및 색상 보정 */
             .drw-sec {
                 font-size:14px;
                 font-weight:900;
-                color:var(--text);
-                padding:22px 24px 8px;
+                padding:20px 24px 7px;
                 letter-spacing:-0.2px;
                 text-align:left;
+                line-height:1.2;
             }
 
-            /* [Polish] 아이템 여백 조정 (8+16=24px 시작점 일치) */
             .drw-item {
                 display:flex;
                 align-items:center;
+                justify-content:flex-start;
                 width:calc(100% - 16px);
                 margin:2px 8px;
-                padding:13px 16px;
-                min-height:47px;
+                padding:12px 16px;
+                min-height:44px;
                 border:0;
                 border-radius:12px;
                 background:transparent;
                 color:var(--text);
-                font-size:14.5px;
+                font-size:14px;
                 font-weight:800;
                 font-family:inherit;
                 text-align:left;
@@ -339,22 +342,12 @@ function renderAppDrawer() {
                 letter-spacing:-0.2px;
                 transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
-
             .drw-item:active {
-                background:rgba(128, 128, 128, 0.1);
+                background:var(--bg);
                 transform:scale(0.96);
             }
             .drw-item.primary {
-                background:rgba(26,92,255,0.06);
-                color:var(--primary);
-            }
-            body.dark .drw-item.primary {
-                background:rgba(10,132,255,0.1);
-                color:var(--primary);
-            }
-            .drw-item.primary:active {
-                background:rgba(26,92,255,0.12);
-                transform:scale(0.96);
+                color:var(--text);
             }
             .drw-item.danger {
                 color:var(--error);
@@ -365,7 +358,7 @@ function renderAppDrawer() {
             }
             .drw-spacer { flex:1; }
             .drw-footer {
-                padding:10px 0 calc(18px + env(safe-area-inset-bottom));
+                padding:8px 0 calc(16px + env(safe-area-inset-bottom));
                 border-top:1px solid var(--border);
                 flex-shrink:0;
                 background:var(--surface);
@@ -377,28 +370,28 @@ function renderAppDrawer() {
     const isAdmin = !!(state && state.auth && state.auth.role === 'admin');
 
     const teacherMenu = `
-        <div class="drw-sec">메인</div>
-        <button class="drw-item primary" onclick="closeAppDrawer(); renderDashboard();">홈</button>
+        <div class="drw-sec" style="color:var(--primary);">메인</div>
+        <button class="drw-item" onclick="closeAppDrawer(); renderDashboard();">홈</button>
         <button class="drw-item" onclick="closeAppDrawer(); openDailyJournalModal();">일지</button>
         <button class="drw-item" onclick="closeAppDrawer(); openTodoMemoModal();">메모</button>
         <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
 
-        <div class="drw-sec">수업·성적</div>
-        <button class="drw-item" onclick="closeAppDrawer(); setTimeout(() => { if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); }, 260);">출석부</button>
-        <button class="drw-item" onclick="closeAppDrawer(); setTimeout(() => { if(typeof openExamScheduleModal==='function') openExamScheduleModal(); }, 260);">시험일정</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openGlobalExamGradeView();">시험·성적</button>
+        <div class="drw-sec" style="color:#6E54FF;">수업·성적</div>
+        <button class="drw-item" onclick="closeAppDrawer(); if(typeof renderAttendanceLedger==='function') renderAttendanceLedger();">출석부</button>
+        <button class="drw-item" onclick="closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal();">시험일정</button>
+        <button class="drw-item" onclick="closeAppDrawer(); openGlobalExamGradeView();">시험성적</button>
         <button class="drw-item" onclick="closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket();">클리닉</button>
 
-        <div class="drw-sec">운영</div>
+        <div class="drw-sec" style="color:var(--warning);">운영</div>
         <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">운영메뉴</button>
     `;
 
     const adminMenu = `
-        <div class="drw-sec">원장</div>
-        <button class="drw-item primary" onclick="closeAppDrawer(); renderAdminControlCenter();">운영센터</button>
+        <div class="drw-sec" style="color:var(--primary);">원장</div>
+        <button class="drw-item" onclick="closeAppDrawer(); renderAdminControlCenter();">운영센터</button>
         <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
 
-        <div class="drw-sec">운영</div>
+        <div class="drw-sec" style="color:var(--warning);">운영</div>
         <button class="drw-item" onclick="closeAppDrawer(); openExamScheduleModal();">시험일정</button>
         <button class="drw-item" onclick="closeAppDrawer(); openDischargedStudents();">퇴원생</button>
         <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">동기화상태</button>
@@ -448,7 +441,6 @@ function closeAppDrawer() {
 // [전역 함수 노출]
 // ============================================================
 window.toggleTheme = toggleTheme;
-window.toggleThemeLegacy = toggleThemeLegacy;
 window.applyTheme = applyTheme;
 window.getTheme = getTheme;
 window.ensureThemeToggleButton = ensureThemeToggleButton;
