@@ -597,18 +597,21 @@ function openTodoMemoModal() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const memos = state.db.operation_memos || [];
     
-    const memoRows = memos.map(m => `
-        <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; ${m.is_done ? 'opacity:0.5;' : ''}">
+    const memoRows = memos.map(m => {
+        const isDone = m.is_done == 1 || m.is_done === true;
+        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
+        return `
+        <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; ${isDone ? 'opacity:0.5;' : ''}">
             <div style="flex:1;">
-                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${m.memo_date} ${m.is_pinned ? `<span style="color:var(--primary); font-weight:800;">고정</span>` : ''}</div>
-                <div style="font-size:14px; font-weight:900; color:var(--text); text-decoration:${m.is_done ? 'line-through' : 'none'};">${m.content}</div>
+                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${m.memo_date} ${isPinned ? `<span style="color:var(--primary); font-weight:800;">고정</span>` : ''}</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text); text-decoration:${isDone ? 'line-through' : 'none'};">${m.content}</div>
             </div>
             <div style="display:flex; gap:6px;">
-                <button class="btn ${m.is_done ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:700; ${m.is_done ? 'background:var(--surface-2); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!m.is_done})">${m.is_done ? '취소' : '완료'}</button>
+                <button class="btn ${isDone ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:700; ${isDone ? 'background:var(--surface-2); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!isDone})">${isDone ? '취소' : '완료'}</button>
                 <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; background:var(--surface-2); border:none;" onclick="openEditTodoMemoModal('${m.id}')">수정</button>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 
     showModal('메모 / 할 일', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
@@ -636,7 +639,8 @@ async function addTodoMemo() {
 
 async function toggleMemoDone(id, done) {
     const m = state.db.operation_memos.find(x => x.id === id);
-    const r = await api.patch(`operation-memos/${id}`, { memoDate: m.memo_date, content: m.content, isPinned: m.is_pinned, isDone: done });
+    const p = m.is_pinned == 1 || m.is_pinned === true;
+    const r = await api.patch(`operation-memos/${id}`, { memoDate: m.memo_date, content: m.content, isPinned: p, isDone: done });
     if(r.success) { 
         await loadData(); 
         if(document.getElementById('new-memo-content') || document.getElementById('edit-memo-content')) openTodoMemoModal(); 
@@ -656,12 +660,13 @@ async function deleteMemo(id) {
 function openEditTodoMemoModal(id) {
     const m = state.db.operation_memos.find(x => x.id === id);
     if(!m) return;
+    const isPinned = m.is_pinned == 1 || m.is_pinned === true;
     showModal('메모 수정', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="date" id="edit-memo-date" class="btn" value="${m.memo_date}" style="text-align:left; flex:1; border:none; background:var(--surface);">
                 <label style="font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);">
-                    <input type="checkbox" id="edit-memo-pin" ${m.is_pinned ? 'checked' : ''}> 고정
+                    <input type="checkbox" id="edit-memo-pin" ${isPinned ? 'checked' : ''}> 고정
                 </label>
             </div>
             <input type="text" id="edit-memo-content" class="btn" value="${m.content}" style="text-align:left; border:none; background:var(--surface);">
@@ -682,7 +687,8 @@ async function handleEditTodoMemo(id) {
     const p = document.getElementById('edit-memo-pin').checked;
     if(!c) return toast('내용을 입력하세요', 'warn');
     
-    const r = await api.patch('operation-memos/' + id, { memoDate: d, content: c, isPinned: p, isDone: m.is_done === 1 });
+    const isDone = m.is_done == 1 || m.is_done === true;
+    const r = await api.patch('operation-memos/' + id, { memoDate: d, content: c, isPinned: p, isDone: isDone });
     if(r.success) { 
         toast('메모가 수정되었습니다.', 'info');
         await loadData(); 
@@ -884,13 +890,9 @@ function openOperationMenu() {
     const syncStatusText = qLen > 0 ? `대기 ${qLen}건` : '대기 없음';
     const onlineStatusText = isOnline ? '연결됨' : '오프라인';
 
-    showModal('운영메뉴', `
+    showModal('시스템·동기화 상태', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openClassManageModal();">학급교재</button>
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openAddressBook();">학생관리</button>
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openExamScheduleModal();">시험일정</button>
-            <button class="btn" style="width:100%; justify-content:flex-start; padding:16px; font-size:15px; font-weight:900; border-radius:14px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); openDischargedStudents();">퇴원생</button>
-            <div style="margin-top:12px; padding:16px; border-radius:14px; background:var(--surface-2); border:none;">
+            <div style="padding:16px; border-radius:14px; background:var(--surface-2); border:none;">
                 <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:8px; color:var(--secondary);"><span>네트워크</span><b style="color:${isOnline ? 'var(--success)' : 'var(--error)'}">${onlineStatusText}</b></div>
                 <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:16px; color:var(--secondary);"><span>미전송 데이터</span><b style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}">${syncStatusText}</b></div>
                 <button class="btn btn-primary" style="width:100%; font-size:14px; font-weight:700; padding:12px; border-radius:10px;" onclick="if(typeof processSyncQueue==='function') processSyncQueue(); closeModal();">지금 동기화 시도</button>
@@ -936,7 +938,11 @@ function computeDashboardData() {
     
     const hwNotDoneCount = state.db.homework.filter(h => h.date === today && h.status === '미완료' && scheduledIds.has(h.student_id)).length;
 
-    const todoCount = state.db.operation_memos.filter(m => m.is_done !== 1 && (m.is_pinned === 1 || m.memo_date === today)).length;
+    const todoCount = state.db.operation_memos.filter(m => {
+        const isDone = m.is_done == 1 || m.is_done === true;
+        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
+        return !isDone && (isPinned || m.memo_date === today);
+    }).length;
 
     const classSummaries = {};
     state.db.classes.filter(c => c.is_active !== 0).forEach(c => {
@@ -1005,18 +1011,30 @@ function renderTodoSections() {
     const nextWeek = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
     const nextWeekStr = nextWeek.toLocaleDateString('sv-SE');
 
-    const todayMemos = state.db.operation_memos.filter(m => m.is_done !== 1 && (m.is_pinned === 1 || m.memo_date === todayStr));
-    const upcomingMemos = state.db.operation_memos.filter(m => m.is_done !== 1 && m.is_pinned !== 1 && m.memo_date > todayStr && m.memo_date <= nextWeekStr);
+    const todayMemos = state.db.operation_memos.filter(m => {
+        const isDone = m.is_done == 1 || m.is_done === true;
+        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
+        return !isDone && (isPinned || m.memo_date === todayStr);
+    });
+    
+    const upcomingMemos = state.db.operation_memos.filter(m => {
+        const isDone = m.is_done == 1 || m.is_done === true;
+        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
+        return !isDone && !isPinned && m.memo_date > todayStr && m.memo_date <= nextWeekStr;
+    });
+    
     const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
 
-    let todayHtml = todayMemos.length ? todayMemos.map(m => `
+    let todayHtml = todayMemos.length ? todayMemos.map(m => {
+        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
+        return `
         <div style="padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; background:transparent;">
             <label style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
                 <input type="checkbox" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:rgba(255,165,2,0.8);">
-                <span style="font-size:14px; font-weight:950; color:var(--text); ${m.is_pinned ? 'color:var(--primary);' : ''}">${m.is_pinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${m.content}</span>
+                <span style="font-size:14px; font-weight:950; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${m.content}</span>
             </label>
         </div>
-    `).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
+    `}).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
 
     let upcomingHtml = '';
     const upcomingItems = [];
@@ -1061,17 +1079,18 @@ function renderTodoSections() {
 function renderTodayJournalCard(data) {
     const todayClasses = state.db.classes.filter(c => {
         if (c.is_active === 0) return false;
-        const gradeText = String(c.grade || '');
-const nameText = String(c.name || '');
 
-if (
-    gradeText.startsWith('고') ||
-    nameText.startsWith('고') ||
-    nameText.includes('고1') ||
-    nameText.includes('고2') ||
-    nameText.includes('고3') ||
-    nameText.includes('고등')
-) return false;
+        const gradeText = String(c.grade || '');
+        const nameText = String(c.name || '');
+
+        if (
+            gradeText.startsWith('고') ||
+            nameText.startsWith('고') ||
+            nameText.includes('고1') ||
+            nameText.includes('고2') ||
+            nameText.includes('고3') ||
+            nameText.includes('고등')
+        ) return false;
 
         const summary = data.classSummaries[c.id];
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
@@ -1495,7 +1514,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
 
 function openAdminJournalFeedback(id, teacherName = '') {
     const journal = (state.db.journals || []).find(j => j.id === id);
-    if (!journal) return toast('일지를 찾을 수 일습니다.', 'warn');
+    if (!journal) return toast('일지를 찾을 수 없습니다.', 'warn');
     const safeTeacher = String(teacherName || journal.teacher_name || '').replace(/'/g, "\\'");
     
     showModal(`${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
