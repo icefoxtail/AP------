@@ -746,8 +746,7 @@ function openEditExamScheduleModal(id) {
                 <input type="text" id="edit-ex-name" class="btn" value="${e.exam_name}" style="flex:1; text-align:left; border:none; background:var(--surface);">
                 <input type="date" id="edit-ex-date" class="btn" value="${e.exam_date}" style="flex:1; border:none; background:var(--surface);">
             </div>
-            <input type="text" id="edit-ex-memo" class="btn" value="${e.memo||''}" style="text-align:left; border:none; background:var(--surface);">
-            <button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
+            <input type="text" id="edit-ex-memo" class="btn" value="${e.memo||''}" style="text-align:left; border:none; background:var(--surface);"><button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="deleteExamSchedule('${id}')">완전 삭제</button>
@@ -880,10 +879,10 @@ function computeDashboardData() {
     };
 }
 
+// [POLISH] 학급 카드: 수평적 미니멀리즘 레이아웃
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
 
-    // [미니멀리즘] 1. 오늘 수업 없는 반: 차분한 톤, 무채색 테두리
     if (!s.isScheduled) {
         return `
             <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
@@ -893,30 +892,23 @@ function renderClassSummaryCard(cls, data) {
         `;
     }
 
-    // [미니멀리즘] 2. 오늘 수업 있는 반 (활성): 파란색 톤 1px 은은한 테두리 & 아주 옅은 그라데이션
-    // 결석이나 미완료가 있어도 테두리/배경은 메인(블루) 컬러로 단정하게 통일
     const gradientBg = 'linear-gradient(135deg, rgba(26,92,255,0.04) 0%, var(--surface) 100%)';
     const borderColor = 'rgba(26,92,255,0.14)';
     const shadowColor = 'rgba(26,92,255,0.06)';
 
     return `
         <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
-            <div style="font-weight:900; font-size:15px; color:var(--text); margin-bottom:12px;">${cls.name}</div>
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">
-                    재원 <span style="font-weight:900; color:var(--text); margin-left:4px;">${s.activeCount}</span>
-                </div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">
-                    등원 <span style="font-weight:900; color:var(--success); margin-left:4px;">${s.present}</span>
-                </div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">
-                    결석 <span style="font-weight:900; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:4px;">${s.absent}</span>
-                </div>
+            <div style="font-weight:950; font-size:15px; color:var(--text); margin-bottom:14px;">${cls.name}</div>
+            <div style="display:flex; gap:6px; align-items:center;">
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:950; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">등원 <span style="font-weight:950; color:var(--success); margin-left:2px;">${s.present}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">결석 <span style="font-weight:950; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:2px;">${s.absent}</span></div>
             </div>
         </div>
     `;
 }
 
+// [POLISH] 일정 섹션: 오렌지(오늘) vs 보라(주간) 은은한 컬러 분리
 function renderTodoSections() {
     const today = new Date();
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -928,10 +920,10 @@ function renderTodoSections() {
     const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
 
     let todayHtml = todayMemos.length ? todayMemos.map(m => `
-        <div style="padding:14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:transparent;">
+        <div style="padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; background:transparent;">
             <label style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
-                <input type="checkbox" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.2); margin:0; accent-color:var(--primary);">
-                <span style="font-size:14px; font-weight:900; color:var(--text); ${m.is_pinned ? 'color:var(--primary);' : ''}">${m.is_pinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${m.content}</span>
+                <input type="checkbox" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:rgba(255,165,2,0.8);">
+                <span style="font-size:14px; font-weight:950; color:var(--text); ${m.is_pinned ? 'color:var(--primary);' : ''}">${m.is_pinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${m.content}</span>
             </label>
         </div>
     `).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
@@ -951,9 +943,9 @@ function renderTodoSections() {
 
             if (u.type === 'exam') {
                 const e = u.item;
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:900; color:var(--text); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${e.school_name} ${e.grade} ${e.exam_name}</div><span style="font-size:11px; color:var(--primary); background:rgba(26,92,255,0.10); padding:4px 8px; border-radius:6px; font-weight:900;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${e.school_name} ${e.grade} ${e.exam_name}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             } else {
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${u.item.content}</div><span style="font-size:11px; background:rgba(26,92,255,0.10); color:var(--primary); padding:4px 8px; border-radius:6px; font-weight:900;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${u.item.content}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             }
         }).join('');
     }
@@ -961,20 +953,21 @@ function renderTodoSections() {
     return `
         <div style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 style="margin:0; font-size:15px; font-weight:900; color:var(--text);">오늘일정</h3>
+                <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">오늘일정</h3>
             </div>
-            <div style="margin-bottom:14px; overflow:hidden; border-radius:16px; box-shadow:0 4px 16px rgba(26,92,255,0.10); border:1.5px solid rgba(26,92,255,0.14); background:rgba(26,92,255,0.06);">${todayHtml}</div>
+            <div style="margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(255,165,2,0.20); background:rgba(255,165,2,0.04); box-shadow:0 4px 12px rgba(255,165,2,0.04);">${todayHtml}</div>
             
             ${upcomingHtml ? `
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                    <h3 style="margin:0; font-size:14px; font-weight:700; color:var(--secondary);">주간일정</h3>
+                    <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">주간일정</h3>
                 </div>
-                <div style="overflow:hidden; border-radius:16px; box-shadow:0 4px 14px rgba(26,92,255,0.08); border:1.5px solid rgba(26,92,255,0.14); background:rgba(26,92,255,0.06);">${upcomingHtml}</div>
+                <div style="overflow:hidden; border-radius:16px; border:1px solid rgba(110,84,255,0.15); background:rgba(110,84,255,0.03); box-shadow:0 4px 12px rgba(110,84,255,0.03);">${upcomingHtml}</div>
             ` : ''}
         </div>
     `;
 }
 
+// [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
 function renderDashboard() {
     state.ui.currentClassId = null;
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
@@ -1005,31 +998,31 @@ function renderDashboard() {
         const keys = Object.keys(group);
         let str = keys.slice(0, 2).map(k => `${k} ${group[k]}`).join(' · ');
         if(keys.length > 2) str += ` 외 ${keys.length - 2}개 반`;
-        return `<span style="font-size:11px; background:var(--surface); padding:2px 6px; border-radius:6px; margin-left:6px; color:var(--warning); font-weight:700; border:1px solid rgba(255,165,2,0.3);">${str}</span>`;
+        return `<span style="font-size:11px; background:var(--surface); padding:2px 6px; border-radius:6px; margin-left:6px; color:rgba(255,165,2,0.8); font-weight:800; border:1px solid rgba(255,165,2,0.2);">${str}</span>`;
     };
 
-    // [미니멀리즘] 마감 배너: 굵은 띠 제거 및 상태별 1px 컬러 테두리 적용
     const closeBanner = closeData.totalActive === 0
-        ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:14px 16px; border:1px solid var(--border); background:var(--surface-2); border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04);"><b style="color:var(--text); font-size:15px; font-weight:900;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
+        ? `${syncWarning}<div class="card" style="margin-bottom:20px; padding:14px 16px; border:1px solid var(--border); background:var(--surface-2); border-radius:16px; box-shadow:none;"><b style="color:var(--secondary); font-size:14px; font-weight:900;">수업 없는 날</b></div>`
         : closeData.allClear
-            ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:14px 16px; border:1px solid rgba(0,208,132,0.3); background:rgba(0,208,132,0.04); border-radius:16px; box-shadow:0 4px 14px rgba(0,208,132,0.06);"><b style="font-size:15px; font-weight:900; color:var(--success);">오늘 마감 완료</b><br><span style="font-size:13px; color:var(--text-soft); font-weight:600; display:block; margin-top:4px;">결석 및 미완료 예외사항이 없습니다.</span></div>`
-            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:14px; padding:14px 16px; cursor:pointer; border:1px solid rgba(255,165,2,0.3); background:rgba(255,165,2,0.04); border-radius:16px; box-shadow:0 4px 14px rgba(255,165,2,0.06);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface); padding:4px 8px; border-radius:6px; margin-left:6px; border:1px solid var(--border);">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--warning); font-weight:900;">›</span></div></div>`;
+            ? `${syncWarning}<div class="card" style="margin-bottom:20px; padding:14px 16px; border:1px solid rgba(0,208,132,0.12); background:rgba(0,208,132,0.02); border-radius:16px; box-shadow:none;"><b style="font-size:14px; font-weight:950; color:var(--success);">오늘 마감 완료</b></div>`
+            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:20px; padding:14px 16px; cursor:pointer; border:1px solid rgba(255,165,2,0.18); background:rgba(255,165,2,0.03); border-radius:16px; box-shadow:none;"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:950; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:950; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--warning); font-weight:950;">›</span></div></div>`;
 
     const todoSections = renderTodoSections();
     const classes = sortClassesForDashboard(state.db.classes.filter(c => c.is_active !== 0));
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-            <h3 style="margin:0; font-size:15px; font-weight:900; color:var(--text);">학급관리</h3>
+            <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">학급관리</h3>
         </div>
-        <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:10px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
+        <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
     root.innerHTML = appHeader + closeBanner + todoSections + classStatus;
 }
 
+// [RESTORE] computeTodayCloseData: 원본 복구
 function computeTodayCloseData() {
     const today = new Date().toLocaleDateString('sv-SE');
-    
+
     const scheduledActive = state.db.students.filter(s => {
         if (s.status !== '재원') return false;
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
@@ -1055,13 +1048,14 @@ function computeTodayCloseData() {
 
     const totalActive = scheduledActive.length;
     return {
-        totalActive, 
-        absents, 
-        hwMisses, 
+        totalActive,
+        absents,
+        hwMisses,
         allClear: absents.length === 0 && hwMisses.length === 0
     };
 }
 
+// [RESTORE] quickToggleAtt: 원본 복구
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
@@ -1070,6 +1064,7 @@ async function quickToggleAtt(sid, status, tab = 'att') {
     openTodayCloseModal(tab);
 }
 
+// [RESTORE] quickToggleHw: 원본 복구
 async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
@@ -1131,6 +1126,7 @@ function openTodayCloseModal(tab = 'att') {
     showModal('예외 현황', `<div style="display:flex; gap:8px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
 }
 
+// [RESTORE] getTodayExamConfig: 원본 복구
 function getTodayExamConfig() {
     try {
         const raw = localStorage.getItem('AP_TODAY_EXAM');
@@ -1142,14 +1138,16 @@ function getTodayExamConfig() {
     } catch (e) { localStorage.removeItem('AP_TODAY_EXAM'); return null; }
 }
 
+// [RESTORE] setTodayExamConfig: 원본 복구
 function setTodayExamConfig(title, q) {
     const today = new Date().toLocaleDateString('sv-SE');
     const validQ = parseInt(q, 10) || 20;
     localStorage.setItem('AP_TODAY_EXAM', JSON.stringify({ date: today, title: String(title), q: validQ }));
 }
 
-function clearTodayExamConfig() { 
-    localStorage.removeItem('AP_TODAY_EXAM'); 
+// [RESTORE] clearTodayExamConfig: 원본 복구
+function clearTodayExamConfig() {
+    localStorage.removeItem('AP_TODAY_EXAM');
     if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
     else renderDashboard();
 }
@@ -1383,7 +1381,6 @@ function approveJournal(id, dateStr, teacherName = '') {
         renderAdminJournalList(dateStr, teacherName);
     });
 }
-
 
 function renderAdminTeacherCards(todayStr) {
     const activeClasses = state.db.classes.filter(c => c.is_active !== 0);

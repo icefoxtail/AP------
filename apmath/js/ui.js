@@ -1,17 +1,18 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
- * [Sidebar Polish 2]&#58; 사이드바 메인 톤 통일, 글씨 크기 조절 제거, 주메뉴/부메뉴 계층 정리
+ * [Minimalism Polish]: 폰트 조절 기능 제거, Soft Dark 적용, 테마 버튼 디자인 정제 (아이콘 제외)
  */
 
 // ============================================================
-// [Theme Manager] 다크 모드: 사이드바 상단 버튼 방식
+// [Theme Manager] 다크 모드 전용 엔진
 // ============================================================
 function getTheme() {
     return localStorage.getItem('APMATH_THEME') || 'light';
 }
 
 function getDrawerThemeLabel(isDark) {
+    // [Master Polish] 아이콘 제거, 텍스트로만 구성
     return isDark ? '라이트 모드' : '다크 모드';
 }
 
@@ -26,14 +27,11 @@ function applyTheme(theme) {
     if (drawerToggleBtn) {
         drawerToggleBtn.innerText = getDrawerThemeLabel(isDark);
         drawerToggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
-        drawerToggleBtn.setAttribute('title', getDrawerThemeLabel(isDark));
     }
 
     const legacyToggleBtn = document.getElementById('theme-toggle-btn');
     if (legacyToggleBtn) {
         legacyToggleBtn.innerText = isDark ? '라이트 모드' : '다크 모드';
-        legacyToggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
-        legacyToggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
     }
 }
 
@@ -50,7 +48,6 @@ function ensureThemeToggleButton() {
     if (floatingBtn && floatingBtn.classList.contains('theme-floating-toggle')) {
         floatingBtn.remove();
     }
-
     applyTheme(getTheme());
 }
 
@@ -104,14 +101,17 @@ function showModal(t, b, at=null, af=null) {
             actionBtn.classList.remove('hidden');
             actionBtn.disabled = false;
 
+            // [Polish] 모달 액션 버튼 미니멀리즘 및 터치 타겟 사수
             actionBtn.style.background = 'transparent';
             actionBtn.style.border = 'none';
             actionBtn.style.boxShadow = 'none';
             actionBtn.style.color = 'var(--primary)';
-            actionBtn.style.fontWeight = '900';
+            actionBtn.style.fontWeight = '800';
             actionBtn.style.fontSize = '15px';
-            actionBtn.style.padding = '8px 0';
-            actionBtn.style.minHeight = 'auto';
+            actionBtn.style.padding = '8px 12px';
+            actionBtn.style.minHeight = '44px';
+            actionBtn.style.borderRadius = '8px';
+            actionBtn.style.transition = 'background 0.2s';
         } else {
             actionBtn.classList.add('hidden');
             actionBtn.onclick = null;
@@ -184,7 +184,7 @@ function setModalBody(html) {
 function setModalLoading(title, message) {
     showModal(title, `
         <div style="text-align:center; padding:40px 24px; color:var(--secondary);">
-            <div style="font-size:14px; font-weight:800;">${message || '잠시만 기다려주세요...'}</div>
+            <div style="font-size:14px; font-weight:700;">${message || '잠시만 기다려주세요...'}</div>
         </div>
     `);
 }
@@ -211,7 +211,7 @@ function safeToastError(message) {
 
 
 // ============================================================
-// [드로어 네비게이션] 메인 톤 통일 + 주메뉴/부메뉴 계층 정리
+// [드로어 네비게이션] 글씨 크기 조절 삭제 + 테마 토글 단일화
 // ============================================================
 function renderAppDrawer() {
     if (document.getElementById('app-drawer')) {
@@ -223,11 +223,23 @@ function renderAppDrawer() {
         const style = document.createElement('style');
         style.id = 'app-drawer-style';
         style.textContent = `
+            /* [Polish] Soft Dark Palette - iOS 스타일 다크모드 적용 */
+            body.dark {
+                --bg: #121212;
+                --surface: #1A1A1C;
+                --surface-2: #242427;
+                --border: #323238;
+                --text: #F5F5F7;
+                --text-soft: #A8A8AC;
+                --secondary: #6E6E73;
+                --primary: #0A84FF;
+            }
+
             #app-drawer-overlay {
                 display:none;
                 position:fixed;
                 inset:0;
-                background:rgba(0,0,0,0.36);
+                background:rgba(0,0,0,0.4);
                 z-index:9998;
                 backdrop-filter:blur(4px);
                 -webkit-backdrop-filter:blur(4px);
@@ -240,76 +252,81 @@ function renderAppDrawer() {
                 left:0;
                 bottom:0;
                 width:min(80vw, 280px);
-                background:var(--bg);
+                background:var(--surface);
                 z-index:9999;
                 display:flex;
                 flex-direction:column;
                 transform:translateX(-104%);
-                transition:transform .28s cubic-bezier(0.175, 0.885, 0.32, 1.02);
-                box-shadow:10px 0 34px rgba(0,0,0,0.10);
-                overflow-y:auto;
-                border-radius:0 26px 26px 0;
+                transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.05);
+                box-shadow:4px 0 24px rgba(0,0,0,0.06);
                 border-right:1px solid var(--border);
-            }
-            body.dark #app-drawer {
-                box-shadow:10px 0 34px rgba(0,0,0,0.45);
+                overflow-y:auto;
+                border-radius:0 24px 24px 0;
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
             .drw-top-tools {
-                padding:calc(16px + env(safe-area-inset-top)) 14px 12px;
-                background:var(--bg);
+                padding:calc(16px + env(safe-area-inset-top)) 12px 10px;
+                background:var(--surface);
+                border-bottom:1px solid var(--border);
                 flex-shrink:0;
             }
 
-            .drw-theme-btn {
+            /* [Polish] 테마 버튼 단독 배치 스타일 */
+            .drw-tool-btn {
                 width:100%;
-                min-height:46px;
+                min-height:44px;
                 display:flex;
                 align-items:center;
                 justify-content:center;
                 border:1px solid var(--border);
-                border-radius:16px;
-                background:var(--surface);
+                border-radius:12px;
+                background:var(--surface-2);
                 color:var(--text);
                 font-size:14px;
-                font-weight:900;
+                font-weight:700;
                 font-family:inherit;
                 cursor:pointer;
                 letter-spacing:-0.2px;
-                transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow:var(--shadow);
+                transition:all 0.2s;
+                white-space:nowrap;
             }
 
-            .drw-theme-btn:active {
-                background:var(--surface-2);
+            /* [Polish] 테마 토글 버튼 상태별 동적 테두리 */
+            body:not(.dark) #drawer-theme-toggle {
+                border: 1.5px solid rgba(255, 165, 2, 0.35);
+                color: rgba(230, 110, 0, 1);
+                background: rgba(255, 165, 2, 0.03);
+            }
+            body.dark #drawer-theme-toggle {
+                border: 1.5px solid rgba(10, 132, 255, 0.25);
+                color: rgba(10, 132, 255, 1);
+                background: rgba(10, 132, 255, 0.03);
+            }
+
+            .drw-tool-btn:active {
+                background:rgba(128, 128, 128, 0.1);
                 transform:scale(0.97);
             }
 
-            .drw-menu {
-                padding:4px 10px 14px;
-                flex:0 0 auto;
-            }
-
             .drw-sec {
-                font-size:14px;
-                font-weight:950;
-                color:var(--text);
-                padding:20px 8px 8px;
-                letter-spacing:-0.3px;
-                line-height:1.2;
+                font-size:12px;
+                font-weight:900;
+                color:var(--secondary);
+                padding:18px 20px 7px;
+                letter-spacing:-0.2px;
             }
 
             .drw-item {
                 display:flex;
                 align-items:center;
-                width:100%;
-                margin:0 0 7px;
-                padding:13px 14px;
-                min-height:46px;
-                border:1px solid transparent;
-                border-radius:16px;
-                background:var(--surface);
+                width:calc(100% - 20px);
+                margin:2px 10px;
+                padding:13px 16px;
+                min-height:47px;
+                border:0;
+                border-radius:12px;
+                background:transparent;
                 color:var(--text);
                 font-size:14.5px;
                 font-weight:800;
@@ -317,52 +334,38 @@ function renderAppDrawer() {
                 text-align:left;
                 cursor:pointer;
                 letter-spacing:-0.2px;
-                box-shadow:var(--shadow);
                 transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .drw-item:active {
-                background:var(--surface-2);
-                transform:scale(0.97);
+                background:rgba(128, 128, 128, 0.1);
+                transform:scale(0.96);
             }
-
             .drw-item.primary {
-                background:rgba(26,92,255,0.08);
+                background:rgba(10,132,255,0.06);
                 color:var(--primary);
-                border-color:rgba(26,92,255,0.13);
-                box-shadow:0 4px 14px rgba(26,92,255,0.08);
             }
-
             body.dark .drw-item.primary {
-                background:rgba(92,138,255,0.14);
+                background:rgba(10,132,255,0.1);
                 color:var(--primary);
-                border-color:rgba(92,138,255,0.22);
-                box-shadow:none;
             }
-
             .drw-item.primary:active {
-                background:rgba(26,92,255,0.12);
-                transform:scale(0.97);
+                background:rgba(10,132,255,0.12);
+                transform:scale(0.96);
             }
-
             .drw-item.danger {
                 color:var(--error);
-                background:var(--surface);
-                border-color:rgba(255,71,87,0.10);
             }
-
             .drw-item.danger:active {
                 background:rgba(255,71,87,0.08);
-                transform:scale(0.97);
+                transform:scale(0.96);
             }
-
             .drw-spacer { flex:1; }
-
             .drw-footer {
-                padding:10px 10px calc(18px + env(safe-area-inset-bottom));
+                padding:10px 0 calc(18px + env(safe-area-inset-bottom));
                 border-top:1px solid var(--border);
                 flex-shrink:0;
-                background:var(--bg);
+                background:var(--surface);
             }
         `;
         document.head.appendChild(style);
@@ -402,11 +405,9 @@ function renderAppDrawer() {
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
         <nav id="app-drawer" aria-label="AP Math OS navigation">
             <div class="drw-top-tools">
-                <button id="drawer-theme-toggle" class="drw-theme-btn" type="button" onclick="toggleTheme()">다크 모드</button>
+                <button id="drawer-theme-toggle" class="drw-tool-btn" type="button" onclick="toggleTheme()">다크 모드</button>
             </div>
-            <div class="drw-menu">
-                ${isAdmin ? adminMenu : teacherMenu}
-            </div>
+            ${isAdmin ? adminMenu : teacherMenu}
             <div class="drw-spacer"></div>
             <div class="drw-footer">
                 <button class="drw-item danger" onclick="closeAppDrawer(); logout();">로그아웃</button>
