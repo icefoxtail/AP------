@@ -2,16 +2,72 @@
  * AP Math OS 1.0 [js/dashboard.js]
  * 운영센터 및 선생님별 관제 엔진 (Partner B 보정판)
  * [Minimalism Polish]: 학급 카드 및 마감 배너 은은한 테두리 기반 디자인 적용
+ * [Claude Precision Fix]: Safari Date 파싱 버그, Timezone 어긋남, is_active 타입 캐스팅 완벽 방어
+ * [Master Review Patch]: 14일 필터 적용, XSS 방어, 달력 상태 동기화, 중등부 필터 통합
+ * [3rd Stabilization]: 날짜 파싱 헬퍼 통일(apParseLocalDateTime), 중등반 필터 완전 통일
  */
 
 function copyPhoneNumber(text) {
     navigator.clipboard.writeText(text).then(() => toast('전화번호가 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
 }
 
+function apEscapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function apParseLocalDateTime(value) {
+    const str = String(value || '').trim();
+    if (!str) return null;
+
+    const datePart = str.split('T')[0].split(' ')[0];
+    const parts = datePart.split('-').map(Number);
+
+    if (parts.length !== 3) return null;
+
+    const [y, m, d] = parts;
+    if (!Number.isFinite(y) || !Number.isFinite(m) || !Number.isFinite(d)) return null;
+
+    const time = new Date(y, m - 1, d).getTime();
+    return Number.isFinite(time) ? time : null;
+}
+
+function apFormatMonthDay(value) {
+    const str = String(value || '').trim();
+    const datePart = str.split('T')[0].split(' ')[0];
+    const parts = datePart.split('-').map(Number);
+
+    if (parts.length !== 3) return '';
+
+    const [, m, d] = parts;
+    if (!Number.isFinite(m) || !Number.isFinite(d)) return '';
+
+    return `${m}월 ${d}일`;
+}
+
+function isMiddleSchoolClass(c) {
+    const gradeText = String(c?.grade || '');
+    const nameText = String(c?.name || '');
+
+    if (
+        gradeText.startsWith('고') ||
+        nameText.startsWith('고') ||
+        nameText.includes('고1') ||
+        nameText.includes('고2') ||
+        nameText.includes('고3') ||
+        nameText.includes('고등')
+    ) return false;
+
+    return true;
+}
+
 // [5G] 관리필요(구 위험학생) 판정 알고리즘
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
-    const todayTime = new Date(todayStr).getTime();
+    const todayTime = apParseLocalDateTime(todayStr);
+    
+    if (todayTime === null) return [];
+
     const active = state.db.students.filter(s => s.status === '재원');
 
     const attendanceHistory = state.db.attendance_history || [];
@@ -21,17 +77,35 @@ function computeRiskStudents() {
     const classStudents = state.db.class_students || [];
     const classes = state.db.classes || [];
     
+    // [Stabilization] 최근 14일 기준 생성
+    const LOOKBACK_DAYS = 14;
+    const cutoffTime = todayTime - (LOOKBACK_DAYS - 1) * 24 * 60 * 60 * 1000;
+
+    const getRecordTime = apParseLocalDateTime;
+    
     const risks = [];
     
     active.forEach(s => {
         let riskTypes = [];
         let reasons = [];
         
-        const recentAtt = attendanceHistory.filter(a => a.student_id === s.id && a.status === '결석');
+        // [Stabilization] 출결 14일 필터 실제 적용
+        const recentAtt = attendanceHistory.filter(a => {
+            if (String(a.student_id) !== String(s.id)) return false;
+            if (a.status !== '결석') return false;
+            const t = getRecordTime(a.date);
+            return t !== null && t >= cutoffTime && t <= todayTime;
+        });
         const absenceCount = recentAtt.length;
         if (absenceCount >= 2) { riskTypes.push('출결주의'); reasons.push(`최근 14일 결석 ${absenceCount}회`); }
         
-        const recentHw = homeworkHistory.filter(h => h.student_id === s.id && h.status === '미완료');
+        // [Stabilization] 숙제 14일 필터 실제 적용
+        const recentHw = homeworkHistory.filter(h => {
+            if (String(h.student_id) !== String(s.id)) return false;
+            if (h.status !== '미완료') return false;
+            const t = getRecordTime(h.date);
+            return t !== null && t >= cutoffTime && t <= todayTime;
+        });
         const hwMissCount = recentHw.length;
         if (hwMissCount >= 3) { riskTypes.push('숙제주의'); reasons.push(`최근 14일 숙제 미완료 ${hwMissCount}회`); }
         
@@ -55,16 +129,25 @@ function computeRiskStudents() {
         const cns = consultations.filter(c => c.student_id === s.id).sort((a,b) => String(b.date).localeCompare(String(a.date)));
         let lastCnsDate = cns.length ? cns[0].date : '없음';
         let cnsDaysDiff = 999;
-        if (cns.length > 0) cnsDaysDiff = (todayTime - new Date(cns[0].date).getTime()) / (1000*3600*24);
+        if (cns.length > 0) {
+            const cnsTime = apParseLocalDateTime(cns[0].date);
+            if (cnsTime !== null) {
+                cnsDaysDiff = (todayTime - cnsTime) / (1000*3600*24);
+            }
+        }
         
         let isNewStudent = false;
         if (s.created_at) {
-            const createTime = new Date(s.created_at).getTime();
-            if ((todayTime - createTime) / (1000*3600*24) <= 14) isNewStudent = true;
+            const createTime = apParseLocalDateTime(s.created_at);
+            if (createTime !== null && (todayTime - createTime) / (1000*3600*24) <= 14) isNewStudent = true;
         }
         
         if (cnsDaysDiff >= 30 && !isNewStudent) { riskTypes.push('상담필요'); reasons.push(`최근 30일 상담 기록 없음`); }
-        if (riskTypes.length >= 2) { riskTypes.push('종합주의'); }
+        
+        // [Stabilization] 종합주의 중복 방어
+        if (riskTypes.length >= 2 && !riskTypes.includes('종합주의')) { 
+            riskTypes.push('종합주의'); 
+        }
         
         if (riskTypes.length > 0) {
             const cId = classStudents.find(m => m.student_id === s.id)?.class_id;
@@ -82,13 +165,28 @@ function openDischargedStudents() {
 }
 
 function openAdminStudentList(type) {
-    const todayTime = new Date(new Date().toLocaleDateString('sv-SE')).getTime();
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr);
     let list = [], title = "";
 
-    if (type === 'active') { list = state.db.students.filter(s => s.status === '재원'); title = "재원생 목록"; }
-    else if (type === 'new') { list = state.db.students.filter(s => { if (s.status !== '재원' || !s.created_at) return false; return (todayTime - new Date(s.created_at).getTime()) / (1000*3600*24) <= 30; }); title = "신규생 목록"; }
-    else if (type === 'discharged') { list = state.db.students.filter(s => s.status === '제적'); title = "퇴원생 목록"; }
-    else if (type === 'risk') { list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); title = "관리필요 학생"; }
+    if (type === 'active') { 
+        list = state.db.students.filter(s => s.status === '재원'); 
+        title = "재원생 목록"; 
+    } else if (type === 'new') { 
+        list = state.db.students.filter(s => { 
+            if (s.status !== '재원' || !s.created_at || todayTime === null) return false; 
+            const createdTime = apParseLocalDateTime(s.created_at);
+            if (createdTime === null) return false;
+            return (todayTime - createdTime) / (1000*3600*24) <= 30; 
+        }); 
+        title = "신규생 목록"; 
+    } else if (type === 'discharged') { 
+        list = state.db.students.filter(s => s.status === '제적'); 
+        title = "퇴원생 목록"; 
+    } else if (type === 'risk') { 
+        list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
+        title = "관리필요 학생"; 
+    }
 
     const rows = list.map(s => {
         const cId = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
@@ -98,8 +196,8 @@ function openAdminStudentList(type) {
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
-                    <div style="font-weight:900; font-size:14px; color:var(--text);">${s.name} <span style="font-size:12px; color:var(--secondary); font-weight:600; margin-left:4px;">${s.school_name} ${s.grade}</span></div>
-                    <div style="font-size:12px; color:var(--primary); font-weight:600; margin-top:4px;">${cName} <span style="color:var(--secondary); font-weight:500;">| ${s.status} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
+                    <div style="font-weight:900; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:600; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
+                    <div style="font-size:12px; color:var(--primary); font-weight:600; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
                     ${riskDetails}
                 </div>
                 <button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
@@ -114,10 +212,15 @@ function renderAdminControlCenter() {
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const root = document.getElementById('app-root');
     const todayStr = new Date().toLocaleDateString('sv-SE');
-    const todayTime = new Date(todayStr).getTime();
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
     const activeStudents = state.db.students.filter(s => s.status === '재원');
     const dischargedStudents = state.db.students.filter(s => s.status === '제적');
-    const newStudents = activeStudents.filter(s => { if (!s.created_at) return false; return (todayTime - new Date(s.created_at).getTime()) / (1000*3600*24) <= 30; });
+    const newStudents = activeStudents.filter(s => { 
+        if (!s.created_at) return false; 
+        const createdTime = apParseLocalDateTime(s.created_at);
+        if (createdTime === null) return false;
+        return (todayTime - createdTime) / (1000*3600*24) <= 30; 
+    });
     const risks = computeRiskStudents();
 
     const headerHtml = `
@@ -163,17 +266,17 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    const nextWeek = new Date(todayTime + 7 * 24 * 60 * 60 * 1000).toLocaleDateString('sv-SE');
-    const upcomingSchedules = (state.db.exam_schedules || []).filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeek).sort((a,b) => a.exam_date.localeCompare(b.exam_date));
+    const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
+    const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
+    const upcomingSchedules = (state.db.exam_schedules || []).filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr).sort((a,b) => a.exam_date.localeCompare(b.exam_date));
     const adminScheduleHtml = `
         <div style="margin-bottom:32px;">
             <h3 style="margin:0 0 12px 0; font-size:15px; font-weight:700; color:var(--secondary);">주간일정</h3>
             <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
                 ${upcomingSchedules.length > 0 ? upcomingSchedules.map(e => { 
-                    const d = new Date(e.exam_date); 
-                    const dateLabel = `${d.getMonth()+1}월 ${d.getDate()}일`; 
-                    const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:600;">${e.grade}</span> ` : '<span style="color:var(--secondary); font-weight:600;">학교공통</span> '; 
-                    return `<div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px;"><div><b style="font-weight:700; color:var(--text);">${e.school_name}</b> ${gradeLabel}${e.exam_name}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`; 
+                    const dateLabel = apFormatMonthDay(e.exam_date) || e.exam_date; 
+                    const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:600;">학교공통</span> '; 
+                    return `<div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px;"><div><b style="font-weight:700; color:var(--text);">${apEscapeHtml(e.school_name)}</b> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`; 
                 }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:600;">이번 주 예정된 일정이 없습니다.</div>`}
             </div>
         </div>
@@ -183,8 +286,8 @@ function renderAdminControlCenter() {
         <div class="card" style="padding:14px 16px; border:1px solid rgba(255,71,87,0.2); border-radius:14px; margin-bottom:10px; background:rgba(255,71,87,0.05); cursor:pointer; transition:background 0.2s;" onclick="renderStudentDetail('${r.student.id}')">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
                 <div style="min-width:0;">
-                    <div style="font-weight:900; color:var(--text); font-size:14px;">${r.student.name}</div>
-                    <div style="font-size:12px; color:var(--error); font-weight:600; margin-top:4px;">${r.className} · ${r.reasons.slice(0,2).join(' · ')}</div>
+                    <div style="font-weight:900; color:var(--text); font-size:14px;">${apEscapeHtml(r.student.name)}</div>
+                    <div style="font-size:12px; color:var(--error); font-weight:600; margin-top:4px;">${apEscapeHtml(r.className)} · ${apEscapeHtml(r.reasons.slice(0,2).join(' · '))}</div>
                 </div>
                 <span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">상세 보기</span>
             </div>
@@ -213,7 +316,7 @@ function renderAdminStudentSearch() {
         const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
         return `
             <div style="padding:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-                <div><b style="font-size:13px; color:var(--text);">${s.name}</b> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${cName} | ${s.status}</span></div>
+                <div><b style="font-size:13px; color:var(--text);">${apEscapeHtml(s.name)}</b> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세 보기</button>
             </div>
         `;
@@ -245,16 +348,16 @@ function renderAddressBookList() {
         return `
             <div style="padding:14px 0; border-bottom:1px solid var(--border);">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <div><b style="font-size:14px; color:var(--text);">${s.name}</b> <span style="color:var(--secondary); font-size:12px; margin-left:6px;">${cName} | ${s.school_name} ${s.grade}</span></div>
+                    <div><b style="font-size:14px; color:var(--text);">${apEscapeHtml(s.name)}</b> <span style="color:var(--secondary); font-size:12px; margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
                     <button class="btn" style="padding:6px 12px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">프로필</button>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:6px; font-size:12px; color:var(--secondary);">
                     <div style="display:flex; justify-content:space-between; background:var(--surface-2); padding:8px 12px; border-radius:8px;">
-                        <span>학생: ${s.student_phone || '없음'}</span>
+                        <span>학생: ${apEscapeHtml(s.student_phone || '없음')}</span>
                         ${s.student_phone ? `<span style="color:var(--primary); cursor:pointer; font-weight:700;" onclick="copyPhoneNumber('${s.student_phone}')">복사</span>` : ''}
                     </div>
                     <div style="display:flex; justify-content:space-between; background:var(--surface-2); padding:8px 12px; border-radius:8px;">
-                        <span>보호자(${s.guardian_relation || '미지정'}): ${s.parent_phone || '없음'}</span>
+                        <span>보호자(${apEscapeHtml(s.guardian_relation || '미지정')}): ${apEscapeHtml(s.parent_phone || '없음')}</span>
                         ${s.parent_phone ? `<span style="color:var(--primary); cursor:pointer; font-weight:700;" onclick="copyPhoneNumber('${s.parent_phone}')">복사</span>` : ''}
                     </div>
                 </div>
@@ -264,7 +367,7 @@ function renderAddressBookList() {
 }
 
 function openAddressBook() {
-    const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
     showModal('학생관리', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button class="btn" style="padding:10px; flex:1; font-size:12px;" onclick="closeModal(); openAddStudent();">학생 추가</button>
@@ -280,10 +383,10 @@ function openAddressBook() {
 }
 
 function openGlobalPinManagement() {
-    const classes = state.db.classes.filter(c => c.is_active !== 0);
+    const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
     const rows = classes.map(c => `
-        <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="handleBatchGeneratePins('${c.id}')">
-            <span style="font-weight:900; font-size:14px; color:var(--text);">${c.name}</span>
+        <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
+            <span style="font-weight:900; font-size:14px; color:var(--text);">${apEscapeHtml(c.name)}</span>
             <span style="font-size:11px; color:var(--primary); font-weight:700; background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
         </button>
     `).join('');
@@ -301,21 +404,21 @@ function formatClassScheduleDaysForUI(daysStr) {
 }
 
 function openClassManageModal() {
-    const activeClasses = state.db.classes.filter(c => c.is_active !== 0);
-    const hiddenClasses = state.db.classes.filter(c => c.is_active === 0);
+    const activeClasses = state.db.classes.filter(c => Number(c.is_active) !== 0);
+    const hiddenClasses = state.db.classes.filter(c => Number(c.is_active) === 0);
 
     const renderClassRow = (c) => `
         <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div>
-                <div style="font-weight:900; font-size:14px; color:${c.is_active===0?'var(--secondary)':'var(--text)'};">
-                    ${c.name} <span style="font-size:11px; font-weight:normal; color:var(--secondary); margin-left:4px;">${c.grade}</span>
+                <div style="font-weight:900; font-size:14px; color:${Number(c.is_active)===0?'var(--secondary)':'var(--text)'};">
+                    ${apEscapeHtml(c.name)} <span style="font-size:11px; font-weight:normal; color:var(--secondary); margin-left:4px;">${apEscapeHtml(c.grade)}</span>
                 </div>
-                <div style="font-size:11px; color:var(--secondary); margin-top:4px;">담당: ${c.teacher_name} | 요일: ${formatClassScheduleDaysForUI(c.schedule_days)}</div>
-                ${c.textbook ? `<div style="font-size:11px; color:var(--secondary); margin-top:2px;">기존교재: ${c.textbook}</div>` : ''}
+                <div style="font-size:11px; color:var(--secondary); margin-top:4px;">담당: ${apEscapeHtml(c.teacher_name)} | 요일: ${formatClassScheduleDaysForUI(c.schedule_days)}</div>
+                ${c.textbook ? `<div style="font-size:11px; color:var(--secondary); margin-top:2px;">기존교재: ${apEscapeHtml(c.textbook)}</div>` : ''}
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openEditClassModal('${c.id}')">수정</button>
-                ${c.is_active === 0
+                ${Number(c.is_active) === 0
                   ? `<button class="btn btn-primary" style="padding:6px 10px; font-size:11px;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
                   : `<button class="btn" style="padding:6px 10px; font-size:11px; color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
                 }
@@ -350,7 +453,7 @@ function openAddClassModal() {
                 <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
             </select>
             <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
-            <input id="add-cls-teacher" class="btn" value="${state.ui.userName || '박준성'}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="add-cls-teacher" class="btn" value="${apEscapeHtml(state.ui.userName || '박준성')}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="add-cls-textbook" class="btn" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--surface-2); border:none;">
             
             <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
@@ -398,13 +501,13 @@ function openEditClassModal(cid) {
     const selectedDays = c.schedule_days ? c.schedule_days.split(',') : [];
     showModal('반 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <input id="edit-cls-name" class="btn" value="${c.name}" placeholder="반 이름" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-name" class="btn" value="${apEscapeHtml(c.name)}" placeholder="반 이름" style="text-align:left; background:var(--surface-2); border:none;">
             <select id="edit-cls-grade" class="btn" style="background:var(--surface-2); border:none;">
                 ${['중1','중2','중3','고1','고2','고3'].map(g => `<option value="${g}" ${c.grade===g?'selected':''}>${g}</option>`).join('')}
             </select>
-            <input id="edit-cls-subject" class="btn" value="${c.subject||''}" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
-            <input id="edit-cls-teacher" class="btn" value="${c.teacher_name||''}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
-            <input id="edit-cls-textbook" class="btn" value="${c.textbook || ''}" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-subject" class="btn" value="${apEscapeHtml(c.subject||'')}" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-teacher" class="btn" value="${apEscapeHtml(c.teacher_name||'')}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-textbook" class="btn" value="${apEscapeHtml(c.textbook || '')}" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="font-size:11px; color:var(--secondary);">※ 다중 교재 관리는 '교재 관리' 메뉴를 이용하세요.</div>
             
             <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
@@ -424,7 +527,7 @@ async function handleEditClass(cid) {
     const teacher_name = document.getElementById('edit-cls-teacher').value.trim();
     const textbook = document.getElementById('edit-cls-textbook').value.trim();
     const schedule_days = Array.from(document.querySelectorAll('.edit-cls-days:checked')).map(e => e.value).join(',');
-    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: c.is_active !== undefined ? c.is_active : 1 };
+    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: c.is_active !== undefined ? Number(c.is_active) : 1 };
     const r = await api.patch(`classes/${cid}`, payload);
     if (r.success) { toast('반 정보가 수정되었습니다.', 'success'); await loadData(); openClassManageModal(); }
 }
@@ -459,8 +562,8 @@ function renderTextbookManageList() {
         return `
             <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <div style="font-weight:900; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'};">${tb.title} ${statusBadge}</div>
-                    <div style="font-size:11px; color:var(--secondary); margin-top:4px;">${cName} | 시작: ${tb.start_date || '-'} ${tb.end_date ? `| 종료: ${tb.end_date}` : ''}</div>
+                    <div style="font-weight:900; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'};">${apEscapeHtml(tb.title)} ${statusBadge}</div>
+                    <div style="font-size:11px; color:var(--secondary); margin-top:4px;">${apEscapeHtml(cName)} | 시작: ${tb.start_date || '-'} ${tb.end_date ? `| 종료: ${tb.end_date}` : ''}</div>
                 </div>
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openEditTextbookModal('${tb.id}')">관리</button>
             </div>
@@ -480,7 +583,7 @@ function renderTextbookManageList() {
 }
 
 function openTextbookManageModal() {
-    const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
     
     showModal('교재 관리', `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
@@ -496,7 +599,7 @@ function openTextbookManageModal() {
 }
 
 function openAddTextbookModal() {
-    const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
     const todayStr = new Date().toLocaleDateString('sv-SE');
     showModal('새 교재 등록', `
         <div style="display:flex; flex-direction:column; gap:10px;">
@@ -535,7 +638,7 @@ function openEditTextbookModal(tbId) {
     
     showModal('교재 수정', `
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
-            <input id="edit-tb-title" class="btn" value="${tb.title}" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-tb-title" class="btn" value="${apEscapeHtml(tb.title)}" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">시작일:</span>
                 <input type="date" id="edit-tb-start" class="btn" value="${tb.start_date || ''}" style="flex:1; background:var(--surface-2); border:none;">
@@ -603,8 +706,8 @@ function openTodoMemoModal() {
         return `
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; ${isDone ? 'opacity:0.5;' : ''}">
             <div style="flex:1;">
-                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${m.memo_date} ${isPinned ? `<span style="color:var(--primary); font-weight:800;">고정</span>` : ''}</div>
-                <div style="font-size:14px; font-weight:900; color:var(--text); text-decoration:${isDone ? 'line-through' : 'none'};">${m.content}</div>
+                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${apEscapeHtml(m.memo_date)} ${isPinned ? `<span style="color:var(--primary); font-weight:800;">고정</span>` : ''}</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text); text-decoration:${isDone ? 'line-through' : 'none'};">${apEscapeHtml(m.content)}</div>
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn ${isDone ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:700; ${isDone ? 'background:var(--surface-2); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!isDone})">${isDone ? '취소' : '완료'}</button>
@@ -638,7 +741,11 @@ async function addTodoMemo() {
 }
 
 async function toggleMemoDone(id, done) {
-    const m = state.db.operation_memos.find(x => x.id === id);
+    const m = state.db.operation_memos.find(x => String(x.id) === String(id));
+    if (!m) {
+        toast('메모를 찾을 수 없습니다.', 'warn');
+        return;
+    }
     const p = m.is_pinned == 1 || m.is_pinned === true;
     const r = await api.patch(`operation-memos/${id}`, { memoDate: m.memo_date, content: m.content, isPinned: p, isDone: done });
     if(r.success) { 
@@ -669,7 +776,7 @@ function openEditTodoMemoModal(id) {
                     <input type="checkbox" id="edit-memo-pin" ${isPinned ? 'checked' : ''}> 고정
                 </label>
             </div>
-            <input type="text" id="edit-memo-content" class="btn" value="${m.content}" style="text-align:left; border:none; background:var(--surface);">
+            <input type="text" id="edit-memo-content" class="btn" value="${apEscapeHtml(m.content)}" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditTodoMemo('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openTodoMemoModal()">취소</button>
@@ -758,7 +865,7 @@ function openExamScheduleModal(baseDateStr = '') {
             : `<div style="width:4px; height:4px; margin:2px auto 0;"></div>`;
 
         calendarHtml += `
-            <div style="background:var(--surface); border:${border}; border-radius:8px; padding:8px 0; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center;" onclick="document.getElementById('new-ex-date').value='${dateStr}'">
+            <div style="background:var(--surface); border:${border}; border-radius:8px; padding:8px 0; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center;" onclick="document.getElementById('new-ex-date').value='${dateStr}'; state.ui.examCalendarMonth='${dateStr.substring(0,7)}-01';">
                 <span style="font-size:13px; font-weight:800; color:${color}; line-height:1;">${d}</span>
                 ${dot}
             </div>
@@ -771,9 +878,9 @@ function openExamScheduleModal(baseDateStr = '') {
     const rows = schedules.map(e => `
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div style="flex:1;">
-                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${e.exam_date} | ${e.school_name} ${e.grade}</div>
-                <div style="font-size:14px; font-weight:900; color:var(--text);">${e.exam_name}</div>
-                ${e.memo ? `<div style="font-size:12px; color:var(--secondary); margin-top:4px;">${e.memo}</div>` : ''}
+                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${e.exam_date} | ${apEscapeHtml(e.school_name)} ${apEscapeHtml(e.grade)}</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text);">${apEscapeHtml(e.exam_name)}</div>
+                ${e.memo ? `<div style="font-size:12px; color:var(--secondary); margin-top:4px;">${apEscapeHtml(e.memo)}</div>` : ''}
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; background:var(--surface-2); border:none;" onclick="openEditExamScheduleModal('${e.id}')">수정</button>
@@ -828,7 +935,7 @@ function openEditExamScheduleModal(id) {
     showModal('시험일정 수정', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px;">
-                <input type="text" id="edit-ex-school" class="btn" value="${e.school_name}" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="text" id="edit-ex-school" class="btn" value="${apEscapeHtml(e.school_name)}" style="flex:1; text-align:left; border:none; background:var(--surface);">
                 <select id="edit-ex-grade" class="btn" style="flex:1; border:none; background:var(--surface);">
                     <option value="중1" ${e.grade==='중1'?'selected':''}>중1</option>
                     <option value="중2" ${e.grade==='중2'?'selected':''}>중2</option>
@@ -839,10 +946,10 @@ function openEditExamScheduleModal(id) {
                 </select>
             </div>
             <div style="display:flex; gap:8px;">
-                <input type="text" id="edit-ex-name" class="btn" value="${e.exam_name}" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="text" id="edit-ex-name" class="btn" value="${apEscapeHtml(e.exam_name)}" style="flex:1; text-align:left; border:none; background:var(--surface);">
                 <input type="date" id="edit-ex-date" class="btn" value="${e.exam_date}" style="flex:1; border:none; background:var(--surface);">
             </div>
-            <input type="text" id="edit-ex-memo" class="btn" value="${e.memo||''}" style="text-align:left; border:none; background:var(--surface);"><button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
+            <input type="text" id="edit-ex-memo" class="btn" value="${apEscapeHtml(e.memo||'')}" style="text-align:left; border:none; background:var(--surface);"><button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="deleteExamSchedule('${id}')">완전 삭제</button>
@@ -871,11 +978,11 @@ async function handleEditExamSchedule(id) {
 
 // [Phase 4/5] 글로벌 진입점
 function openGlobalExamGradeView() {
-    const classes = state.db.classes.filter(c => c.is_active !== 0);
+    const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:16px; margin-bottom:10px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); if(typeof openExamGradeView==='function') openExamGradeView('${c.id}')">
-            <span style="font-weight:900; font-size:15px; color:var(--text);">${c.name}</span>
-            <span style="font-size:12px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 10px; border-radius:8px;">${c.grade}</span>
+            <span style="font-weight:900; font-size:15px; color:var(--text);">${apEscapeHtml(c.name)}</span>
+            <span style="font-size:12px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 10px; border-radius:8px;">${apEscapeHtml(c.grade)}</span>
         </button>
     `).join('');
     showModal('반별 시험성적', `
@@ -908,7 +1015,10 @@ function getClassGradeRank(grade) {
 }
 
 function sortClassesForDashboard(classes) {
-    const today = String(new Date().getDay());
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const parts = todayStr.split('-');
+    const today = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
+
     return [...classes].sort((a, b) => {
         const aToday = (!a.schedule_days || a.schedule_days.split(',').includes(today)) ? 0 : 1;
         const bToday = (!b.schedule_days || b.schedule_days.split(',').includes(today)) ? 0 : 1;
@@ -927,8 +1037,8 @@ function computeDashboardData() {
     const scheduledActiveStudents = activeStudents.filter(s => {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
-        if (cls && cls.is_active === 0) return false;
-        return isClassScheduledToday(cid);
+        if (cls && Number(cls.is_active) === 0) return false;
+        return typeof isClassScheduledToday === 'function' ? isClassScheduledToday(cid) : true;
     });
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
@@ -945,7 +1055,7 @@ function computeDashboardData() {
     }).length;
 
     const classSummaries = {};
-    state.db.classes.filter(c => c.is_active !== 0).forEach(c => {
+    state.db.classes.filter(c => Number(c.is_active) !== 0).forEach(c => {
         const cIds = state.db.class_students.filter(m => m.class_id === c.id).map(m => m.student_id);
         const cActiveIds = activeStudents.filter(s => cIds.includes(s.id)).map(s => s.id);
         let cMiss=0, cAbs=0;
@@ -959,7 +1069,7 @@ function computeDashboardData() {
         });
         
         let cPre = cActiveIds.length - cAbs;
-        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledToday(c.id) };
+        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: typeof isClassScheduledToday === 'function' ? isClassScheduledToday(c.id) : true };
     });
 
     return { 
@@ -982,7 +1092,7 @@ function renderClassSummaryCard(cls, data) {
     if (!s.isScheduled) {
         return `
             <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
-                <div style="font-weight:900; font-size:15px; color:var(--secondary); margin-bottom:12px;">${cls.name}</div>
+                <div style="font-weight:900; font-size:15px; color:var(--secondary); margin-bottom:12px;">${apEscapeHtml(cls.name)}</div>
                 <div style="font-size:12px; font-weight:800; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:center;">오늘 수업 없음</div>
             </div>
         `;
@@ -994,7 +1104,7 @@ function renderClassSummaryCard(cls, data) {
 
     return `
         <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
-            <div style="font-weight:950; font-size:15px; color:var(--text); margin-bottom:14px;">${cls.name}</div>
+            <div style="font-weight:950; font-size:15px; color:var(--text); margin-bottom:14px;">${apEscapeHtml(cls.name)}</div>
             <div style="display:flex; gap:6px; align-items:center;">
                 <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:950; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
                 <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">등원 <span style="font-weight:950; color:var(--success); margin-left:2px;">${s.present}</span></div>
@@ -1006,10 +1116,10 @@ function renderClassSummaryCard(cls, data) {
 
 // [POLISH] 일정 섹션: 오렌지(오늘) vs 보라(주간) 은은한 컬러 분리
 function renderTodoSections() {
-    const today = new Date();
     const todayStr = new Date().toLocaleDateString('sv-SE');
-    const nextWeek = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
-    const nextWeekStr = nextWeek.toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
+    const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
 
     const todayMemos = state.db.operation_memos.filter(m => {
         const isDone = m.is_done == 1 || m.is_done === true;
@@ -1031,7 +1141,7 @@ function renderTodoSections() {
         <div style="padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; background:transparent;">
             <label style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
                 <input type="checkbox" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:rgba(255,165,2,0.8);">
-                <span style="font-size:14px; font-weight:950; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${m.content}</span>
+                <span style="font-size:14px; font-weight:950; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}</span>
             </label>
         </div>
     `}).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
@@ -1045,15 +1155,16 @@ function renderTodoSections() {
 
     if (upcomingItems.length) {
         upcomingHtml = upcomingItems.slice(0, 5).map(u => {
-            const diffTime = new Date(u.date).setHours(0,0,0,0) - new Date(todayStr).setHours(0,0,0,0);
+            const timeVal = apParseLocalDateTime(u.date);
+            const diffTime = timeVal !== null ? (timeVal - todayTime) : 0;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             const dDay = diffDays === 0 ? 'D-Day' : `D-${diffDays}`;
 
             if (u.type === 'exam') {
                 const e = u.item;
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${e.school_name} ${e.grade} ${e.exam_name}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(e.school_name)} ${apEscapeHtml(e.grade)} ${apEscapeHtml(e.exam_name)}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             } else {
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${u.item.content}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             }
         }).join('');
     }
@@ -1078,19 +1189,8 @@ function renderTodoSections() {
 // [NEW] 오늘일지 카드 생성 함수
 function renderTodayJournalCard(data) {
     const todayClasses = state.db.classes.filter(c => {
-        if (c.is_active === 0) return false;
-
-        const gradeText = String(c.grade || '');
-        const nameText = String(c.name || '');
-
-        if (
-            gradeText.startsWith('고') ||
-            nameText.startsWith('고') ||
-            nameText.includes('고1') ||
-            nameText.includes('고2') ||
-            nameText.includes('고3') ||
-            nameText.includes('고등')
-        ) return false;
+        if (Number(c.is_active) === 0) return false;
+        if (!isMiddleSchoolClass(c)) return false;
 
         const summary = data.classSummaries[c.id];
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
@@ -1103,7 +1203,7 @@ function renderTodayJournalCard(data) {
     } else {
         const classStrings = todayClasses.map(c => {
             const summary = data.classSummaries[c.id];
-            return `${c.name} ${summary.present}/${summary.activeCount}`;
+            return `${apEscapeHtml(c.name)} ${summary.present}/${summary.activeCount}`;
         });
         contentHtml = `<div style="font-size:14px; font-weight:850; color:var(--text); line-height:1.55;">${classStrings.join(' · ')}</div>`;
     }
@@ -1134,7 +1234,7 @@ function renderDashboard() {
             </div>         
             <div style="flex:1; display:flex; justify-content:flex-end;">
                 <div style="text-align:right;">
-                    <div style="font-size:14px; font-weight:900; color:var(--text);">${teacherName} <span style="font-size:12px; font-weight:700; color:var(--secondary);">선생님</span></div>
+                    <div style="font-size:14px; font-weight:900; color:var(--text);">${apEscapeHtml(teacherName)} <span style="font-size:12px; font-weight:700; color:var(--secondary);">선생님</span></div>
                 </div>
             </div>
         </div>
@@ -1144,7 +1244,7 @@ function renderDashboard() {
 
     const todoSections = renderTodoSections();
     
-    const classes = sortClassesForDashboard(state.db.classes.filter(c => c.is_active !== 0));
+    const classes = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
             <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">학급관리</h3>
@@ -1163,8 +1263,8 @@ function computeTodayCloseData() {
         if (s.status !== '재원') return false;
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
-        if (cls && cls.is_active === 0) return false;
-        return isClassScheduledToday(cid);
+        if (cls && Number(cls.is_active) === 0) return false;
+        return typeof isClassScheduledToday === 'function' ? isClassScheduledToday(cid) : true;
     });
 
     const absents = [];
@@ -1234,9 +1334,19 @@ function openTodayCloseModal(tab = 'att') {
         return acc;
     }, {});
 
+    // [Master Fix] 학급 정렬 알고리즘 적용
+    const sortedClassNames = Object.keys(grouped).sort((a, b) => {
+        const clsA = state.db.classes.find(c => c.name === a);
+        const clsB = state.db.classes.find(c => c.name === b);
+        const rankA = clsA ? getClassGradeRank(clsA.grade) : 99;
+        const rankB = clsB ? getClassGradeRank(clsB.grade) : 99;
+        if (rankA !== rankB) return rankA - rankB;
+        return a.localeCompare(b);
+    });
+
     const rows = cur.list.length
-        ? Object.keys(grouped).sort().map(cName => {
-            const classHeader = `<div style="background:var(--surface-2); padding:8px 12px; font-size:12px; font-weight:800; color:var(--secondary); margin-top:12px; border-radius:8px;">${cName}</div>`;
+        ? sortedClassNames.map(cName => {
+            const classHeader = `<div style="background:var(--surface-2); padding:8px 12px; font-size:12px; font-weight:800; color:var(--secondary); margin-top:12px; border-radius:8px;">${apEscapeHtml(cName)}</div>`;
             const studentRows = grouped[cName].map(s => {
                 let actionBtns = '';
                 if (tab === 'att') {
@@ -1248,7 +1358,7 @@ function openTodayCloseModal(tab = 'att') {
                     <div style="padding:16px 8px; border-bottom:1px solid var(--border); background:var(--surface);">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;">
-                                <span style="font-weight:900; font-size:15px; color:var(--text);">${s.name}</span>
+                                <span style="font-weight:900; font-size:15px; color:var(--text);">${apEscapeHtml(s.name)}</span>
                             </div>
                             <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px; cursor:pointer;">상세 보기</span>
                         </div>
@@ -1320,25 +1430,16 @@ function handleSetTodayExam() {
     else renderDashboard();
 }
 
-function apEscapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
 function buildJournalContent(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
     let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
 
-    const targetDayIdx = String(new Date(targetDate).getDay());
+    const parts = targetDate.split('-');
+    const targetDayIdx = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
 
     const activeClasses = state.db.classes.filter(c => {
-        if (c.is_active === 0) return false;
-
-        const gradeText = String(c.grade || '');
-        const nameText = String(c.name || '');
-
-        // 일지는 중등부만 출력한다. 고등부 반은 제외.
-        if (gradeText.startsWith('고') || nameText.includes('고등')) return false;
+        if (Number(c.is_active) === 0) return false;
+        if (!isMiddleSchoolClass(c)) return false;
 
         // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
         if (!c.schedule_days) return true;
@@ -1395,9 +1496,9 @@ function buildJournalContent(dateStr) {
         const cns = (state.db.consultations || []).filter(c => c.date === targetDate && memberIds.includes(String(c.student_id)));
         if (cns.length > 0) {
             text += `- 상담:\n`;
-            cns.forEach(c => {
-                const sName = students.find(s => String(s.id) === String(c.student_id))?.name || '학생';
-                text += `  * ${sName}: ${c.content}\n`;
+            cns.forEach(cn => {
+                const sName = students.find(s => String(s.id) === String(cn.student_id))?.name || '학생';
+                text += `  * ${sName}: ${cn.content}\n`;
             });
         }
 
@@ -1445,7 +1546,7 @@ function openDailyJournalModal(dateStr) {
                 ${myJournal.feedback ? `<div style="margin-top:10px; font-size:13px; background:var(--surface); padding:12px; border-radius:8px; color:var(--text);"><b>피드백:</b><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
             </div>
         ` : ''}
-        <textarea id="journal-content" class="btn" style="width:100%; height:250px; text-align:left; resize:vertical; font-family:inherit; font-size:14px; line-height:1.6; background:${isLocked ? 'var(--surface-2)' : 'var(--surface)'}; border:1px solid var(--border); color:var(--text);" ${isLocked ? 'readonly' : ''}>${content}</textarea>
+        <textarea id="journal-content" class="btn" style="width:100%; height:250px; text-align:left; resize:vertical; font-family:inherit; font-size:14px; line-height:1.6; background:${isLocked ? 'var(--surface-2)' : 'var(--surface)'}; border:1px solid var(--border); color:var(--text);" ${isLocked ? 'readonly' : ''}>${apEscapeHtml(content)}</textarea>
         <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;">
             ${actionBtns}
         </div>
@@ -1518,8 +1619,8 @@ function openAdminJournalFeedback(id, teacherName = '') {
     const safeTeacher = String(teacherName || journal.teacher_name || '').replace(/'/g, "\\'");
     
     showModal(`${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
-        <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--surface-2); border:none; border-radius:12px; padding:16px; margin-bottom:12px; color:var(--text);">${journal.content}</textarea>
-        <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px; background:var(--surface); color:var(--text);">${journal.feedback || ''}</textarea>
+        <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--surface-2); border:none; border-radius:12px; padding:16px; margin-bottom:12px; color:var(--text);">${apEscapeHtml(journal.content)}</textarea>
+        <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px; background:var(--surface); color:var(--text);">${apEscapeHtml(journal.feedback || '')}</textarea>
         <div style="margin-top:16px;">
             <button class="btn btn-primary" style="width:100%; padding:16px; border-radius:14px; font-weight:800; font-size:15px;" onclick="approveJournal('${journal.id}', '${journal.date}', '${safeTeacher}')">확인완료</button>
         </div>
@@ -1538,7 +1639,7 @@ function approveJournal(id, dateStr, teacherName = '') {
 }
 
 function renderAdminTeacherCards(todayStr) {
-    const activeClasses = state.db.classes.filter(c => c.is_active !== 0);
+    const activeClasses = state.db.classes.filter(c => Number(c.is_active) !== 0);
     const teacherMap = {};
     activeClasses.forEach(c => {
         const tName = String(c.teacher_name || '담당').trim();
@@ -1548,7 +1649,7 @@ function renderAdminTeacherCards(todayStr) {
     const teacherNames = Object.keys(teacherMap).filter(Boolean);
     if (!teacherNames.length) return `<div style="text-align:center; padding:24px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">등록된 선생님이 없습니다.</div>`;
     
-    return teacherNames.map((tName, idx) => {
+    return teacherNames.map(tName => {
         const myClasses = teacherMap[tName];
         const myClassIds = myClasses.map(c => String(c.id));
         const myStudentIds = [...new Set(state.db.class_students.filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
@@ -1591,7 +1692,7 @@ function openAdminTeacherPanel(teacherName) {
 
 function renderAdminTeacherStudents(teacherName) {
     const safeName = String(teacherName || '').replace(/'/g, "\\'");
-    const myClasses = state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && c.is_active !== 0);
+    const myClasses = state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
     
     let html = `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:900; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeName}')">← 선생님 메뉴</button><div style="max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:16px; padding-right:4px;">`;
     
