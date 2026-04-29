@@ -88,6 +88,12 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
             padding: calc(12px + env(safe-area-inset-top)) 16px 12px;
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -120,18 +126,144 @@
             padding: 16px 14px calc(100px + env(safe-area-inset-bottom));
         }
 
+        .desktop-rail {
+            display: none;
+        }
+
         @media (min-width: 900px) {
+            header {
+                display: none;
+            }
+
+            body {
+                padding-left: 56px;
+            }
+
             main {
-                max-width: 1280px;
-                padding: 28px 36px 80px;
+                max-width: 1120px;
+                padding: 32px 32px 80px;
+            }
+
+            .desktop-rail {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 120;
+                width: 56px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 14px 8px calc(14px + env(safe-area-inset-bottom));
+                background: rgba(255,255,255,0.86);
+                border-right: 1px solid var(--border);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+            }
+
+            body.dark .desktop-rail {
+                background: rgba(7,17,31,0.88);
+                border-right: 1px solid var(--border);
+            }
+
+            .rail-logo,
+            .rail-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 12px;
+                border: none;
+                background: transparent;
+                color: var(--text);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: inherit;
+                font-size: 13px;
+                font-weight: 950;
+                letter-spacing: -0.3px;
+                cursor: pointer;
+                position: relative;
+                transition: background 0.16s, color 0.16s, transform 0.16s;
+            }
+
+            .rail-logo {
+                color: var(--primary);
+                margin-bottom: 18px;
+            }
+
+            .rail-btn:hover,
+            .rail-logo:hover {
+                background: var(--surface-2);
+                color: var(--primary);
+            }
+
+            .rail-btn:active,
+            .rail-logo:active {
+                transform: scale(0.94);
+            }
+
+            .rail-sep {
+                width: 28px;
+                height: 1px;
+                background: var(--border);
+                margin: 8px 0;
+            }
+
+            .rail-spacer {
+                flex: 1;
+            }
+
+            .rail-user {
+                width: 30px;
+                height: 30px;
+                border-radius: 999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--primary);
+                color: #fff;
+                font-size: 11px;
+                font-weight: 900;
+                margin-top: 8px;
+            }
+
+            .rail-btn::after,
+            .rail-logo::after {
+                content: attr(data-tip);
+                position: absolute;
+                left: 46px;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 6px 9px;
+                border-radius: 8px;
+                background: rgba(15,23,42,0.92);
+                color: #fff;
+                font-size: 12px;
+                font-weight: 800;
+                line-height: 1;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.14s;
+                box-shadow: 0 10px 20px rgba(15,23,42,0.14);
+            }
+
+            .rail-btn:hover::after,
+            .rail-logo:hover::after {
+                opacity: 1;
+            }
+
+            #app-root > div:first-child button[onclick="openAppDrawer()"] {
+                display: none !important;
             }
         }
 
         @media (min-width: 1400px) {
             main {
-                max-width: 1440px;
-                padding-left: 48px;
-                padding-right: 48px;
+                max-width: 1180px;
+                padding-left: 36px;
+                padding-right: 36px;
             }
         }
 
@@ -439,9 +571,30 @@
     </style>
 </head>
 <body>
+    <nav class="desktop-rail" aria-label="AP Math OS 데스크톱 메뉴">
+        <button class="rail-logo" data-tip="홈" onclick="if(typeof goHome==='function') goHome(); else if(typeof renderDashboard==='function') renderDashboard();">AP</button>
+        <button class="rail-btn" data-tip="홈" onclick="if(typeof renderDashboard==='function') renderDashboard();">홈</button>
+        <button class="rail-btn" data-tip="일지" onclick="if(typeof openDailyJournalModal==='function') openDailyJournalModal();">일</button>
+        <button class="rail-btn" data-tip="메모" onclick="if(typeof openTodoMemoModal==='function') openTodoMemoModal();">메</button>
+        <button class="rail-btn" data-tip="학생관리" onclick="if(typeof openAddressBook==='function') openAddressBook();">학</button>
+        <div class="rail-sep"></div>
+        <button class="rail-btn" data-tip="출석부" onclick="if(typeof renderAttendanceLedger==='function') renderAttendanceLedger();">출</button>
+        <button class="rail-btn" data-tip="시험일정" onclick="if(typeof openExamScheduleModal==='function') openExamScheduleModal();">시</button>
+        <button class="rail-btn" data-tip="시험성적" onclick="if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView();">성</button>
+        <button class="rail-btn" data-tip="클리닉" onclick="if(typeof openClinicBasket==='function') openClinicBasket(); else if(typeof toast==='function') toast('클리닉 기능을 불러오지 못했습니다.', 'warn');">클</button>
+        <div class="rail-sep"></div>
+        <button class="rail-btn" data-tip="운영메뉴" onclick="if(typeof openOperationMenu==='function') openOperationMenu();">운</button>
+        <div class="rail-spacer"></div>
+        <button class="rail-btn" data-tip="다크모드" onclick="if(typeof toggleThemeLegacy==='function') toggleThemeLegacy();">다</button>
+        <button class="rail-btn" data-tip="로그아웃" onclick="if(typeof logout==='function') logout();">나</button>
+        <div class="rail-user">AP</div>
+    </nav>
+
     <header>
-        <div class="brand" onclick="goHome()">
-            <div class="brand-text">AP MATH</div>
+        <div class="header-inner">
+            <div class="brand" onclick="goHome()">
+                <div class="brand-text">AP MATH</div>
+            </div>
         </div>
     </header>
 
