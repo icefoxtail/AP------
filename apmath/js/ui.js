@@ -1,15 +1,16 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
- * [Drawer v8]: 아이콘 없는 텍스트 메뉴 / 글래스모피즘 드로어 / PC 미니 레일
+ * [Drawer v8.1]&#58; 좌우 여백 최소화 / 햄버거·메뉴·로그아웃 왼쪽 정렬 / 다크모드 토글 오른쪽 정렬
  *
  * 현재 사이드바 원칙:
  * - 홈 메뉴는 드로어에 두지 않는다. AP MATH 로고의 goHome()이 홈 역할을 담당한다.
  * - 햄버거(openAppDrawer)는 드로어 열기/닫기 전용이다.
  * - PC 닫힘 상태는 56px 미니 레일이며 햄버거만 표시한다.
- * - PC 열림 상태는 260px 텍스트 사이드바다.
+ * - PC 열림 상태는 224px 텍스트 사이드바다.
  * - 모바일 drawer 내부에는 AP MATH OS 브랜드를 반복 표시하지 않는다.
  * - 다크모드 토글은 drawer 최상단 우측에 둔다.
+ * - 햄버거, 메뉴 글자, 로그아웃은 같은 왼쪽 x축에 정렬한다.
  * - 메뉴는 아이콘 없이 텍스트만 사용한다.
  * - 로그아웃은 drawer 하단에 둔다.
  */
@@ -113,8 +114,6 @@ function showModal(t, b, at=null, af=null) {
         modalCloseTimer = null;
     }
 
-    // 먼저 기존 show 상태만 제거하고, 내용 교체가 끝난 뒤 hidden을 해제한다.
-    // display:flex 상태의 투명 오버레이가 잠깐 클릭을 가로막는 상황을 줄인다.
     overlay.classList.remove('show');
 
     titleEl.innerText = t;
@@ -148,7 +147,6 @@ function showModal(t, b, at=null, af=null) {
         footer.innerHTML = '';
     }
 
-    // display:none 해제 직후 transition이 스킵되지 않도록 강제 reflow 후 show 적용
     overlay.classList.remove('hidden');
     overlay.getBoundingClientRect();
     requestAnimationFrame(() => {
@@ -256,7 +254,6 @@ function syncDashboardInternalHeader() {
     const root = document.getElementById('app-root');
     if (!root || !root.firstElementChild) return;
 
-    // 이전에 숨긴 요소가 첫 번째 요소가 아니게 되었거나 조건이 바뀐 경우 복구한다.
     root.querySelectorAll('.ap-internal-header-hidden').forEach(el => {
         if (el !== root.firstElementChild) el.classList.remove('ap-internal-header-hidden');
     });
@@ -268,8 +265,6 @@ function syncDashboardInternalHeader() {
     const hasTeacherSuffix = /선생님/.test(first.textContent || '');
     const hasTodayJournal = !!first.querySelector('h3') && /오늘일지/.test(first.textContent || '');
 
-    // 대시보드 내부의 상단 컨트롤 행만 숨긴다.
-    // 단순히 "선생님" 텍스트가 있다는 이유로 일반 콘텐츠를 숨기지 않는다.
     if (directDrawerButton && hasTeacherSuffix && !hasTodayJournal && first.children.length <= 3) {
         first.classList.add('ap-internal-header-hidden');
     } else {
@@ -390,11 +385,12 @@ function ensureDrawerStyle() {
         #app-drawer-overlay.drw-open { display:block; }
 
         #app-drawer {
+            --drw-x:8px;
             position:fixed;
             top:0;
             left:0;
             bottom:0;
-            width:min(82vw, 280px);
+            width:min(76vw, 238px);
             background:var(--surface-alpha);
             z-index:9999;
             display:flex;
@@ -405,7 +401,7 @@ function ensureDrawerStyle() {
             overflow-y:auto;
             overflow-x:hidden;
             border-right:1px solid var(--border);
-            border-radius:0 22px 22px 0;
+            border-radius:0 20px 20px 0;
             text-align:left;
             backdrop-filter:blur(16px);
             -webkit-backdrop-filter:blur(16px);
@@ -430,23 +426,34 @@ function ensureDrawerStyle() {
         }
 
         .drw-top-tools {
-            padding:calc(16px + env(safe-area-inset-top)) 18px 16px;
+            padding:calc(12px + env(safe-area-inset-top)) var(--drw-x) 12px;
             border-bottom:1px solid var(--border);
             display:flex;
             justify-content:space-between;
             align-items:center;
+            gap:8px;
             flex-shrink:0;
+            text-align:left;
         }
         
         .drw-hamburger {
+            width:36px;
+            height:36px;
+            padding:0;
+            margin:0;
+            border:0;
             background:transparent;
-            border:none;
             color:var(--text);
             font-size:22px;
-            font-weight:800;
-            cursor:pointer;
-            padding:0;
+            font-weight:900;
             line-height:1;
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            flex:0 0 auto;
+            cursor:pointer;
+            font-family:inherit;
+            text-align:left;
         }
 
         .switch {
@@ -455,6 +462,8 @@ function ensureDrawerStyle() {
             width:48px;
             height:26px;
             flex:0 0 auto;
+            margin-left:auto;
+            margin-right:0;
         }
         .switch input { opacity:0; width:0; height:0; }
         .slider {
@@ -481,8 +490,9 @@ function ensureDrawerStyle() {
         input:checked + .slider:before { transform:translateX(22px); background-color:#fff; }
 
         .drw-menu {
-            padding:12px 12px;
+            padding:8px 0;
             flex:0 0 auto;
+            text-align:left;
         }
         .drw-sec { display:none; }
         .drw-item {
@@ -490,37 +500,54 @@ function ensureDrawerStyle() {
             align-items:center;
             justify-content:flex-start;
             width:100%;
-            margin:4px 0;
-            padding:12px 16px;
-            min-height:44px;
+            box-sizing:border-box;
+            margin:2px 0;
+            padding:10px var(--drw-x);
+            min-height:40px;
             border:0;
-            border-radius:12px;
+            border-radius:0;
             background:transparent;
             color:var(--text-soft);
             font-size:15px;
-            font-weight:600;
+            font-weight:700;
             font-family:inherit;
             text-align:left;
             cursor:pointer;
-            letter-spacing:-0.3px;
+            letter-spacing:-0.25px;
             transition:background .18s ease, transform .18s ease, color .18s ease;
         }
         .drw-label {
-            display:inline-block;
+            display:block;
+            width:100%;
             min-width:0;
             overflow:hidden;
             text-overflow:ellipsis;
             white-space:nowrap;
+            text-align:left;
         }
         .drw-item:active { background:var(--bg); transform:scale(0.98); }
         .drw-item:hover { background:var(--surface-2); }
-        .drw-item.danger { color:var(--error); font-weight:700; }
+        .drw-item.danger { color:var(--error); font-weight:800; }
         .drw-spacer { flex:1; }
         .drw-footer {
-            padding:10px 12px calc(14px + env(safe-area-inset-bottom));
+            padding:8px 0 calc(12px + env(safe-area-inset-bottom));
             border-top:1px solid var(--border);
             flex-shrink:0;
             background:transparent;
+            text-align:left;
+        }
+
+        #app-drawer .drw-hamburger,
+        #app-drawer .drw-item,
+        #app-drawer .drw-footer .drw-item,
+        #app-drawer .drw-label {
+            text-align:left !important;
+            justify-content:flex-start !important;
+        }
+
+        #app-drawer .switch {
+            margin-left:auto !important;
+            margin-right:0 !important;
         }
 
         @media (min-width:901px) {
@@ -536,10 +563,11 @@ function ensureDrawerStyle() {
                 overflow:hidden;
             }
             #app-drawer.drw-expanded {
-                width:260px;
+                width:224px;
                 box-shadow:8px 0 30px rgba(0,0,0,0.08);
                 background:var(--surface-alpha);
                 overflow-y:auto;
+                border-radius:0 20px 20px 0;
             }
             .drw-rail-toggle { display:flex; }
             #app-drawer.drw-expanded .drw-rail-toggle { display:none; }
@@ -657,20 +685,27 @@ if (!window.__apDrawerResizePatched) {
 }
 
 
-
 function goHome() {
     try {
         if (typeof closeModal === 'function') closeModal();
         if (typeof closeAppDrawer === 'function') closeAppDrawer();
 
-        if (typeof renderDashboard !== 'function') {
+        const isAdmin = typeof state !== 'undefined'
+            && state.auth
+            && state.auth.role === 'admin';
+
+        const homeRenderer = isAdmin && typeof renderAdminControlCenter === 'function'
+            ? renderAdminControlCenter
+            : (typeof renderDashboard === 'function' ? renderDashboard : null);
+
+        if (!homeRenderer) {
             window.location.href = 'index.html';
             return;
         }
 
         window.setTimeout(() => {
             try {
-                renderDashboard();
+                homeRenderer();
                 updateMobileHeaderUser();
                 syncDashboardInternalHeader();
             } catch (e) {
@@ -682,6 +717,7 @@ function goHome() {
     } catch (e) {
         console.warn('[ui.js] goHome fallback:', e);
     }
+
     window.location.href = 'index.html';
 }
 
