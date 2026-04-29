@@ -364,13 +364,33 @@ function openAddClassModal() {
 async function handleAddClass() {
     const name = document.getElementById('add-cls-name').value.trim();
     if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
+
     const grade = document.getElementById('add-cls-grade').value;
     const subject = document.getElementById('add-cls-subject').value.trim();
-    const teacher_name = document.getElementById('add-cls-teacher').value.trim();
+    const teacher_name = document.getElementById('add-cls-teacher').value.trim() || state.ui.userName || '박준성';
     const textbook = document.getElementById('add-cls-textbook').value.trim();
     const schedule_days = Array.from(document.querySelectorAll('.add-cls-days:checked')).map(e => e.value).join(',');
-    const r = await api.post('classes', { name, grade, subject, teacher_name, schedule_days, textbook });
-    if (r.success) { toast('새 반이 추가되었습니다.', 'success'); await loadData(); openClassManageModal(); }
+
+    const payload = {
+        name,
+        grade,
+        subject,
+        teacher_name,
+        schedule_days,
+        textbook,
+        is_active: 1
+    };
+
+    const r = await api.post('classes', payload);
+
+    if (r.success) {
+        toast('새 반이 추가되었습니다.', 'success');
+        state.ui.currentClassId = null;
+        await loadData();
+        openClassManageModal();
+    } else {
+        toast(r.message || r.error || '반 추가에 실패했습니다.', 'error');
+    }
 }
 
 function openEditClassModal(cid) {
