@@ -1,6 +1,7 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
+ * [Drawer Fix]: 사이드바 전체 왼쪽 정렬 강제, 다크모드 바 왼쪽 정렬, 기존 스타일 재삽입 보정
  */
 
 // ============================================================
@@ -36,6 +37,13 @@ function toggleTheme() {
         ? (themeSwitch.checked ? 'dark' : 'light')
         : (getTheme() === 'dark' ? 'light' : 'dark');
 
+    localStorage.setItem('APMATH_THEME', next);
+    applyTheme(next);
+}
+
+// 구버전 호환용
+function toggleThemeLegacy() {
+    const next = getTheme() === 'dark' ? 'light' : 'dark';
     localStorage.setItem('APMATH_THEME', next);
     applyTheme(next);
 }
@@ -209,198 +217,206 @@ function safeToastError(message) {
 // [드로어 네비게이션] 왼쪽 정렬 + 섹션 포인트 컬러 + 즉시 호출
 // ============================================================
 function renderAppDrawer() {
-    if (document.getElementById('app-drawer')) {
-        applyTheme(getTheme());
-        return;
-    }
+    // 기존 드로어/스타일이 남아 있으면 새 CSS가 안 먹으므로 항상 제거 후 재생성
+    const oldDrawer = document.getElementById('app-drawer');
+    const oldOverlay = document.getElementById('app-drawer-overlay');
+    const oldStyle = document.getElementById('app-drawer-style');
 
-    if (!document.getElementById('app-drawer-style')) {
-        const style = document.createElement('style');
-        style.id = 'app-drawer-style';
-        style.textContent = `
-            #app-drawer-overlay {
-                display:none;
-                position:fixed;
-                inset:0;
-                background:rgba(0,0,0,0.4);
-                z-index:9998;
-                backdrop-filter:blur(4px);
-                -webkit-backdrop-filter:blur(4px);
-            }
-            #app-drawer-overlay.drw-open { display:block; }
+    if (oldDrawer) oldDrawer.remove();
+    if (oldOverlay) oldOverlay.remove();
+    if (oldStyle) oldStyle.remove();
 
-            #app-drawer {
-                position:fixed;
-                top:0;
-                left:0;
-                bottom:0;
-                width:min(75vw, 260px);
-                background:var(--surface);
-                z-index:9999;
-                display:flex;
-                flex-direction:column;
-                transform:translateX(-104%);
-                transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.05);
-                box-shadow:4px 0 24px rgba(0,0,0,0.06);
-                overflow-y:auto;
-                border-right:1px solid var(--border);
-                border-radius:0 20px 20px 0;
-                text-align:left;
-            }
-            #app-drawer.drw-open { transform:translateX(0); }
+    const style = document.createElement('style');
+    style.id = 'app-drawer-style';
+    style.textContent = `
+        #app-drawer-overlay {
+            display:none;
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.4);
+            z-index:9998;
+            backdrop-filter:blur(4px);
+            -webkit-backdrop-filter:blur(4px);
+        }
+        #app-drawer-overlay.drw-open { display:block; }
 
-            .drw-top-tools {
-                padding:calc(18px + env(safe-area-inset-top)) 24px 12px;
-                background:var(--surface);
-                border-bottom:1px solid var(--border);
-                flex-shrink:0;
-                display:flex;
-                justify-content:flex-start;
-                align-items:center;
-                gap:12px;
-                text-align:left;
-            }
+        #app-drawer {
+            position:fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            width:min(75vw, 260px);
+            background:var(--surface);
+            z-index:9999;
+            display:flex;
+            flex-direction:column;
+            transform:translateX(-104%);
+            transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.05);
+            box-shadow:4px 0 24px rgba(0,0,0,0.06);
+            overflow-y:auto;
+            border-right:1px solid var(--border);
+            border-radius:0 20px 20px 0;
+            text-align:left !important;
+        }
+        #app-drawer.drw-open { transform:translateX(0); }
 
-            .drw-top-label {
-                font-size:15px;
-                font-weight:900;
-                color:var(--text);
-                text-align:left;
-                letter-spacing:-0.2px;
-                line-height:1;
-            }
+        .drw-top-tools {
+            padding:calc(18px + env(safe-area-inset-top)) 24px 12px;
+            background:var(--surface);
+            border-bottom:1px solid var(--border);
+            flex-shrink:0;
+            display:flex;
+            justify-content:flex-start !important;
+            align-items:center !important;
+            gap:12px;
+            text-align:left !important;
+        }
 
-            .switch {
-                position:relative;
-                display:inline-block;
-                width:48px;
-                height:26px;
-                flex:0 0 auto;
-            }
-            .switch input {
-                opacity:0;
-                width:0;
-                height:0;
-            }
-            .slider {
-                position:absolute;
-                cursor:pointer;
-                top:0;
-                left:0;
-                right:0;
-                bottom:0;
-                background-color:var(--surface-2);
-                border:1px solid var(--border);
-                transition:.25s;
-                border-radius:999px;
-            }
-            .slider:before {
-                position:absolute;
-                content:"";
-                height:20px;
-                width:20px;
-                left:2px;
-                bottom:2px;
-                background-color:var(--secondary);
-                transition:.25s;
-                border-radius:50%;
-            }
-            input:checked + .slider {
-                background-color:var(--primary);
-                border-color:var(--primary);
-            }
-            input:checked + .slider:before {
-                transform:translateX(22px);
-                background-color:#fff;
-            }
+        .drw-top-label {
+            font-size:15px;
+            font-weight:900;
+            color:var(--text);
+            text-align:left !important;
+            letter-spacing:-0.2px;
+            line-height:1;
+            white-space:nowrap;
+        }
 
-            .drw-sec {
-                font-size:14px;
-                font-weight:900;
-                padding:20px 24px 7px;
-                letter-spacing:-0.2px;
-                text-align:left;
-                line-height:1.2;
-            }
+        .switch {
+            position:relative;
+            display:inline-block;
+            width:48px;
+            height:26px;
+            flex:0 0 auto;
+        }
+        .switch input {
+            opacity:0;
+            width:0;
+            height:0;
+        }
+        .slider {
+            position:absolute;
+            cursor:pointer;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color:var(--surface-2);
+            border:1px solid var(--border);
+            transition:.25s;
+            border-radius:999px;
+        }
+        .slider:before {
+            position:absolute;
+            content:"";
+            height:20px;
+            width:20px;
+            left:2px;
+            bottom:2px;
+            background-color:var(--secondary);
+            transition:.25s;
+            border-radius:50%;
+        }
+        input:checked + .slider {
+            background-color:var(--primary);
+            border-color:var(--primary);
+        }
+        input:checked + .slider:before {
+            transform:translateX(22px);
+            background-color:#fff;
+        }
 
-            .drw-item {
-                display:flex;
-                align-items:center;
-                justify-content:flex-start;
-                width:calc(100% - 16px);
-                margin:2px 8px;
-                padding:12px 16px;
-                min-height:44px;
-                border:0;
-                border-radius:12px;
-                background:transparent;
-                color:var(--text);
-                font-size:14px;
-                font-weight:800;
-                font-family:inherit;
-                text-align:left;
-                cursor:pointer;
-                letter-spacing:-0.2px;
-                transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .drw-item:active {
-                background:var(--bg);
-                transform:scale(0.96);
-            }
-            .drw-item.primary {
-                color:var(--text);
-            }
-            .drw-item.danger {
-                color:var(--error);
-            }
-            .drw-item.danger:active {
-                background:rgba(255,71,87,0.08);
-                transform:scale(0.96);
-            }
-            .drw-spacer { flex:1; }
-            .drw-footer {
-                padding:8px 0 calc(16px + env(safe-area-inset-bottom));
-                border-top:1px solid var(--border);
-                flex-shrink:0;
-                background:var(--surface);
-            }
+        .drw-sec {
+            display:block;
+            width:100%;
+            box-sizing:border-box;
+            font-size:14px;
+            font-weight:900;
+            padding:20px 24px 7px;
+            letter-spacing:-0.2px;
+            text-align:left !important;
+            line-height:1.2;
+        }
 
-            /* [FINAL OVERRIDE] 사이드바 내부 UI 왼쪽 정렬 강제 */
-            #app-drawer,
-            #app-drawer * {
-                text-align:left !important;
-            }
+        .drw-item {
+            display:flex;
+            align-items:center;
+            justify-content:flex-start !important;
+            width:calc(100% - 16px);
+            margin:2px 8px;
+            padding:12px 16px;
+            min-height:44px;
+            border:0;
+            border-radius:12px;
+            background:transparent;
+            color:var(--text);
+            font-size:14px;
+            font-weight:800;
+            font-family:inherit;
+            text-align:left !important;
+            cursor:pointer;
+            letter-spacing:-0.2px;
+            transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .drw-item:active {
+            background:var(--bg);
+            transform:scale(0.96);
+        }
+        .drw-item.primary {
+            color:var(--text);
+        }
+        .drw-item.danger {
+            color:var(--error);
+        }
+        .drw-item.danger:active {
+            background:rgba(255,71,87,0.08);
+            transform:scale(0.96);
+        }
 
-            #app-drawer .drw-top-tools {
-                justify-content:flex-start !important;
-                align-items:center !important;
-                gap:12px !important;
-                text-align:left !important;
-            }
+        .drw-spacer { flex:1; }
 
-            #app-drawer .drw-top-label {
-                text-align:left !important;
-                color:var(--text);
-            }
+        .drw-footer {
+            padding:8px 0 calc(16px + env(safe-area-inset-bottom));
+            border-top:1px solid var(--border);
+            flex-shrink:0;
+            background:var(--surface);
+        }
 
-            #app-drawer .drw-sec {
-                text-align:left !important;
-                justify-content:flex-start !important;
-            }
+        /* [FINAL OVERRIDE] 사이드바 내부 UI 왼쪽 정렬 강제 */
+        #app-drawer,
+        #app-drawer * {
+            text-align:left !important;
+        }
 
-            #app-drawer .drw-item {
-                justify-content:flex-start !important;
-                align-items:center !important;
-                text-align:left !important;
-            }
+        #app-drawer .drw-top-tools {
+            justify-content:flex-start !important;
+            align-items:center !important;
+            gap:12px !important;
+            text-align:left !important;
+        }
 
-            #app-drawer .drw-footer .drw-item {
-                justify-content:flex-start !important;
-                text-align:left !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
+        #app-drawer .drw-top-label {
+            text-align:left !important;
+            color:var(--text);
+        }
+
+        #app-drawer .drw-sec {
+            text-align:left !important;
+            justify-content:flex-start !important;
+        }
+
+        #app-drawer .drw-item {
+            justify-content:flex-start !important;
+            align-items:center !important;
+            text-align:left !important;
+        }
+
+        #app-drawer .drw-footer .drw-item {
+            justify-content:flex-start !important;
+            text-align:left !important;
+        }
+    `;
+    document.head.appendChild(style);
 
     const isAdmin = !!(state && state.auth && state.auth.role === 'admin');
 
@@ -476,6 +492,7 @@ function closeAppDrawer() {
 // [전역 함수 노출]
 // ============================================================
 window.toggleTheme = toggleTheme;
+window.toggleThemeLegacy = toggleThemeLegacy;
 window.applyTheme = applyTheme;
 window.getTheme = getTheme;
 window.ensureThemeToggleButton = ensureThemeToggleButton;
