@@ -121,30 +121,30 @@ window.questionBank = [
     answer: "⑤",
     solution: ""
   },
-  {
-    id: 6,
-    level: "중",
-    category: "소인수분해",
-    originalCategory: "소인수분해",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-01",
-    standardUnit: "소인수분해",
-    standardUnitOrder: 1,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["표"],
-    wide: false,
-    content: "ㄱ~ㅂ 중 $2 \\times 3^2 \\times 5$의 약수와 배수를 옳게 짝지은 것을 고르시오. [4점]<div class=\"question-table-wrap\"><table><tr><td>ㄱ. $3^2$<br>ㄴ. $2 \\times 5$<br>ㄷ. $2^2 \\times 3$<br>ㄹ. $2 \\times 3^2 \\times 5^2$<br>ㅁ. $2 \\times 3 \\times 5$<br>ㅂ. $2 \\times 3 \\times 5 \\times 7$</td></tr></table></div>",
-    choices: [
-      "약수: ㄱ, ㄴ, 배수: ㄹ",
-      "약수: ㄱ, ㄴ, ㅁ, 배수: ㄹ",
-      "약수: ㄴ, ㅁ, 배수: ㄹ, ㅂ",
-      "약수: ㄱ, ㄴ, ㅁ, 배수: ㅂ",
-      "약수: ㄷ, ㅁ, 배수: ㄹ"
-    ],
-    answer: "②",
-    solution: ""
-  },
+{
+  id: 6,
+  level: "중",
+  category: "소인수분해",
+  originalCategory: "소인수분해",
+  standardCourse: "중1 수학",
+  standardUnitKey: "M1-01",
+  standardUnit: "소인수분해",
+  standardUnitOrder: 1,
+  questionType: "객관식",
+  layoutTag: "grid",
+  tags: ["표"],
+  wide: false,
+  content: "ㄱ~ㅂ 중 $2 \\times 3^2 \\times 5$의 약수와 배수를 옳게 짝지은 것을 고르시오. [4점]<div class=\"question-table-wrap\"><table style=\"width:100%;\"><tr><td style=\"text-align:left; padding:8px 10px;\">ㄱ. $3^2$<br>ㄴ. $2 \\times 5$<br>ㄷ. $2^2 \\times 3$<br>ㄹ. $2 \\times 3^2 \\times 5^2$<br>ㅁ. $2 \\times 3 \\times 5$<br>ㅂ. $2 \\times 3 \\times 5 \\times 7$</td></tr></table></div>",
+  choices: [
+    "약수: ㄱ, ㄴ, 배수: ㄹ",
+    "약수: ㄱ, ㄴ, ㅁ, 배수: ㄹ",
+    "약수: ㄴ, ㅁ, 배수: ㄹ, ㅂ",
+    "약수: ㄱ, ㄴ, ㅁ, 배수: ㅂ",
+    "약수: ㄷ, ㅁ, 배수: ㄹ"
+  ],
+  answer: "②",
+  solution: ""
+},
   {
     id: 7,
     level: "상",
@@ -265,30 +265,30 @@ window.questionBank = [
     answer: "④",
     solution: ""
   },
-  {
-    id: 12,
-    level: "중",
-    category: "정수와 유리수",
-    originalCategory: "정수와 유리수",
-    standardCourse: "중1 수학",
-    standardUnitKey: "M1-02",
-    standardUnit: "정수와 유리수",
-    standardUnitOrder: 2,
-    questionType: "객관식",
-    layoutTag: "grid",
-    tags: ["도형"],
-    wide: false,
-    content: "ㄱ~ㅁ에 대응하는 수로 옳지 않은 것을 고르시오. [4점]<br><svg width=\"360\" height=\"105\" viewBox=\"0 0 360 105\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"52\" x2=\"340\" y2=\"52\" stroke=\"black\" stroke-width=\"1.2\"/><path d=\"M340 52 l-7 -4 v8 z\" fill=\"black\"/><path d=\"M20 52 l7 -4 v8 z\" fill=\"black\"/><line x1=\"20\" y1=\"45\" x2=\"20\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"20\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-5</text><line x1=\"52\" y1=\"45\" x2=\"52\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"52\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-4</text><line x1=\"84\" y1=\"45\" x2=\"84\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"84\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-3</text><line x1=\"116\" y1=\"45\" x2=\"116\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"116\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-2</text><line x1=\"148\" y1=\"45\" x2=\"148\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"148\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-1</text><line x1=\"180\" y1=\"43\" x2=\"180\" y2=\"61\" stroke=\"black\" stroke-width=\"1.4\"/><text x=\"180\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">0</text><line x1=\"212\" y1=\"45\" x2=\"212\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"212\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">1</text><line x1=\"244\" y1=\"45\" x2=\"244\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"244\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">2</text><line x1=\"276\" y1=\"45\" x2=\"276\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"276\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">3</text><line x1=\"308\" y1=\"45\" x2=\"308\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"308\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">4</text><line x1=\"340\" y1=\"45\" x2=\"340\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"340\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">5</text><line x1=\"60\" y1=\"48\" x2=\"60\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"68\" y1=\"48\" x2=\"68\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"76\" y1=\"48\" x2=\"76\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><text x=\"68\" y=\"91\" font-size=\"7\" font-family=\"serif\" text-anchor=\"middle\">4등분</text><line x1=\"126.667\" y1=\"48\" x2=\"126.667\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"137.333\" y1=\"48\" x2=\"137.333\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><text x=\"132\" y=\"91\" font-size=\"7\" font-family=\"serif\" text-anchor=\"middle\">3등분</text><line x1=\"188\" y1=\"48\" x2=\"188\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"196\" y1=\"48\" x2=\"196\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"204\" y1=\"48\" x2=\"204\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><text x=\"196\" y=\"91\" font-size=\"7\" font-family=\"serif\" text-anchor=\"middle\">4등분</text><line x1=\"254.667\" y1=\"48\" x2=\"254.667\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"265.333\" y1=\"48\" x2=\"265.333\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><text x=\"260\" y=\"91\" font-size=\"7\" font-family=\"serif\" text-anchor=\"middle\">3등분</text><line x1=\"316\" y1=\"48\" x2=\"316\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"324\" y1=\"48\" x2=\"324\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"332\" y1=\"48\" x2=\"332\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><text x=\"324\" y=\"91\" font-size=\"7\" font-family=\"serif\" text-anchor=\"middle\">4등분</text><circle cx=\"76\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"76\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄱ</text><circle cx=\"126.667\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"126.667\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄴ</text><circle cx=\"204\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"204\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄷ</text><circle cx=\"254.667\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"254.667\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄹ</text><circle cx=\"316\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"316\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㅁ</text></svg>",
-    choices: [
-      "ㄱ : $-\\frac{13}{4}$",
-      "ㄴ : $-\\frac{5}{3}$",
-      "ㄷ : $+\\frac{3}{4}$",
-      "ㄹ : $+\\frac{7}{3}$",
-      "ㅁ : $+\\frac{9}{2}$"
-    ],
-    answer: "⑤",
-    solution: ""
-  },
+{
+  id: 12,
+  level: "중",
+  category: "정수와 유리수",
+  originalCategory: "정수와 유리수",
+  standardCourse: "중1 수학",
+  standardUnitKey: "M1-02",
+  standardUnit: "정수와 유리수",
+  standardUnitOrder: 2,
+  questionType: "객관식",
+  layoutTag: "grid",
+  tags: ["도형"],
+  wide: false,
+  content: "ㄱ~ㅁ에 대응하는 수로 옳지 않은 것을 고르시오. [4점]<br><svg width=\"300\" height=\"72\" viewBox=\"0 0 360 85\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block; max-width:300px; margin:4px auto 6px;\"><line x1=\"20\" y1=\"52\" x2=\"340\" y2=\"52\" stroke=\"black\" stroke-width=\"1.2\"/><path d=\"M340 52 l-7 -4 v8 z\" fill=\"black\"/><path d=\"M20 52 l7 -4 v8 z\" fill=\"black\"/><line x1=\"20\" y1=\"45\" x2=\"20\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"20\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-5</text><line x1=\"52\" y1=\"45\" x2=\"52\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"52\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-4</text><line x1=\"84\" y1=\"45\" x2=\"84\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"84\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-3</text><line x1=\"116\" y1=\"45\" x2=\"116\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"116\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-2</text><line x1=\"148\" y1=\"45\" x2=\"148\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"148\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">-1</text><line x1=\"180\" y1=\"43\" x2=\"180\" y2=\"61\" stroke=\"black\" stroke-width=\"1.4\"/><text x=\"180\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">0</text><line x1=\"212\" y1=\"45\" x2=\"212\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"212\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">1</text><line x1=\"244\" y1=\"45\" x2=\"244\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"244\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">2</text><line x1=\"276\" y1=\"45\" x2=\"276\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"276\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">3</text><line x1=\"308\" y1=\"45\" x2=\"308\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"308\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">4</text><line x1=\"340\" y1=\"45\" x2=\"340\" y2=\"59\" stroke=\"black\" stroke-width=\"1\"/><text x=\"340\" y=\"76\" font-size=\"8\" font-family=\"serif\" text-anchor=\"middle\">5</text><line x1=\"60\" y1=\"48\" x2=\"60\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"68\" y1=\"48\" x2=\"68\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"76\" y1=\"48\" x2=\"76\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"126.667\" y1=\"48\" x2=\"126.667\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"137.333\" y1=\"48\" x2=\"137.333\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"188\" y1=\"48\" x2=\"188\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"196\" y1=\"48\" x2=\"196\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"204\" y1=\"48\" x2=\"204\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"254.667\" y1=\"48\" x2=\"254.667\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"265.333\" y1=\"48\" x2=\"265.333\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"316\" y1=\"48\" x2=\"316\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"324\" y1=\"48\" x2=\"324\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><line x1=\"332\" y1=\"48\" x2=\"332\" y2=\"56\" stroke=\"black\" stroke-width=\"0.7\"/><circle cx=\"76\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"76\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄱ</text><circle cx=\"126.667\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"126.667\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄴ</text><circle cx=\"204\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"204\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄷ</text><circle cx=\"254.667\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"254.667\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㄹ</text><circle cx=\"316\" cy=\"52\" r=\"2.4\" fill=\"black\"/><text x=\"316\" y=\"38\" font-size=\"10\" font-family=\"serif\" text-anchor=\"middle\" font-weight=\"bold\">ㅁ</text></svg>",
+  choices: [
+    "ㄱ : $-\\frac{13}{4}$",
+    "ㄴ : $-\\frac{5}{3}$",
+    "ㄷ : $+\\frac{3}{4}$",
+    "ㄹ : $+\\frac{7}{3}$",
+    "ㅁ : $+\\frac{9}{2}$"
+  ],
+  answer: "⑤",
+  solution: ""
+},
   {
     id: 13,
     level: "하",
