@@ -1,11 +1,21 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
- * [Drawer Fix]: 사이드바 전체 왼쪽 정렬 강제, 다크모드 바 왼쪽 정렬, 기존 스타일 재삽입 보정
+ * [Drawer v8]: 아이콘 없는 텍스트 메뉴 / 글래스모피즘 드로어 / PC 미니 레일
+ *
+ * 현재 사이드바 원칙:
+ * - 홈 메뉴는 드로어에 두지 않는다. AP MATH 로고의 goHome()이 홈 역할을 담당한다.
+ * - 햄버거(openAppDrawer)는 드로어 열기/닫기 전용이다.
+ * - PC 닫힘 상태는 56px 미니 레일이며 햄버거만 표시한다.
+ * - PC 열림 상태는 260px 텍스트 사이드바다.
+ * - 모바일 drawer 내부에는 AP MATH OS 브랜드를 반복 표시하지 않는다.
+ * - 다크모드 토글은 drawer 최상단 우측에 둔다.
+ * - 메뉴는 아이콘 없이 텍스트만 사용한다.
+ * - 로그아웃은 drawer 하단에 둔다.
  */
 
 // ============================================================
-// [Theme Manager] 다크 모드: 사이드바 상단 스위치 방식
+// [Theme Manager] 다크 모드: drawer 최상단 우측 스위치 방식
 // ============================================================
 function getTheme() {
     return localStorage.getItem('APMATH_THEME') || 'light';
@@ -328,7 +338,7 @@ if (document.readyState === 'loading') {
 
 
 // ============================================================
-// [드로어 네비게이션] 모바일 drawer + PC 미니 레일 겸용
+// [드로어 네비게이션] 아이콘 없는 텍스트 메뉴 + PC 미니 레일 겸용
 // ============================================================
 function getDrawerRoleKey() {
     return (typeof state !== 'undefined' && state.auth && state.auth.role === 'admin') ? 'admin' : 'teacher';
@@ -349,7 +359,6 @@ function drawerSection() {
 
 function buildDrawerMenu(roleKey) {
     return `
-        ${drawerItem('', '홈', "closeAppDrawer(); goHome();")}
         ${drawerItem('', '일지', "closeAppDrawer(); openDailyJournalModal();")}
         ${drawerItem('', '메모', "closeAppDrawer(); openTodoMemoModal();")}
         ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
@@ -386,7 +395,7 @@ function ensureDrawerStyle() {
             left:0;
             bottom:0;
             width:min(82vw, 280px);
-            background:var(--surface);
+            background:var(--surface-alpha);
             z-index:9999;
             display:flex;
             flex-direction:column;
@@ -398,6 +407,8 @@ function ensureDrawerStyle() {
             border-right:1px solid var(--border);
             border-radius:0 22px 22px 0;
             text-align:left;
+            backdrop-filter:blur(16px);
+            -webkit-backdrop-filter:blur(16px);
         }
         #app-drawer.drw-open { transform:translateX(0); }
 
@@ -421,29 +432,23 @@ function ensureDrawerStyle() {
         .drw-top-tools {
             padding:calc(16px + env(safe-area-inset-top)) 18px 16px;
             border-bottom:1px solid var(--border);
-            display:grid;
-            grid-template-columns:1fr auto auto;
+            display:flex;
+            justify-content:space-between;
             align-items:center;
-            gap:12px;
             flex-shrink:0;
         }
-        .drw-top-label {
-            font-size:15px;
-            font-weight:900;
-            color:var(--text);
-            line-height:1;
-            white-space:nowrap;
-        }
-        .drw-text-close {
-            border:0;
+        
+        .drw-hamburger {
             background:transparent;
-            color:var(--secondary);
-            font-size:13px;
-            font-weight:900;
-            font-family:inherit;
+            border:none;
+            color:var(--text);
+            font-size:22px;
+            font-weight:800;
             cursor:pointer;
-            padding:6px 0 6px 8px;
+            padding:0;
+            line-height:1;
         }
+
         .switch {
             position:relative;
             display:inline-block;
@@ -485,19 +490,19 @@ function ensureDrawerStyle() {
             align-items:center;
             justify-content:flex-start;
             width:100%;
-            margin:2px 0;
-            padding:12px 12px;
+            margin:4px 0;
+            padding:12px 16px;
             min-height:44px;
             border:0;
             border-radius:12px;
             background:transparent;
-            color:var(--text);
+            color:var(--text-soft);
             font-size:15px;
-            font-weight:850;
+            font-weight:600;
             font-family:inherit;
             text-align:left;
             cursor:pointer;
-            letter-spacing:-0.2px;
+            letter-spacing:-0.3px;
             transition:background .18s ease, transform .18s ease, color .18s ease;
         }
         .drw-label {
@@ -509,13 +514,13 @@ function ensureDrawerStyle() {
         }
         .drw-item:active { background:var(--bg); transform:scale(0.98); }
         .drw-item:hover { background:var(--surface-2); }
-        .drw-item.danger { color:var(--error); }
+        .drw-item.danger { color:var(--error); font-weight:700; }
         .drw-spacer { flex:1; }
         .drw-footer {
             padding:10px 12px calc(14px + env(safe-area-inset-bottom));
             border-top:1px solid var(--border);
             flex-shrink:0;
-            background:var(--surface);
+            background:transparent;
         }
 
         @media (min-width:901px) {
@@ -526,14 +531,14 @@ function ensureDrawerStyle() {
                 border-radius:0;
                 box-shadow:none;
                 background:var(--surface-alpha);
-                backdrop-filter:blur(14px);
-                -webkit-backdrop-filter:blur(14px);
+                backdrop-filter:blur(16px);
+                -webkit-backdrop-filter:blur(16px);
                 overflow:hidden;
             }
             #app-drawer.drw-expanded {
                 width:260px;
                 box-shadow:8px 0 30px rgba(0,0,0,0.08);
-                background:var(--surface);
+                background:var(--surface-alpha);
                 overflow-y:auto;
             }
             .drw-rail-toggle { display:flex; }
@@ -542,7 +547,7 @@ function ensureDrawerStyle() {
             #app-drawer:not(.drw-expanded) .drw-menu,
             #app-drawer:not(.drw-expanded) .drw-footer,
             #app-drawer:not(.drw-expanded) .drw-spacer { display:none; }
-            #app-drawer.drw-expanded .drw-top-tools { display:grid; }
+            #app-drawer.drw-expanded .drw-top-tools { display:flex; }
             #app-drawer.drw-expanded .drw-menu { display:block; }
             #app-drawer.drw-expanded .drw-footer { display:block; }
             #app-drawer.drw-expanded .drw-spacer { display:block; flex:1; }
@@ -572,12 +577,11 @@ function renderAppDrawer(force = false) {
         <nav id="app-drawer" data-role="${currentRole}" aria-label="AP Math OS navigation">
             <button class="drw-rail-toggle" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴">☰</button>
             <div class="drw-top-tools">
-                <span class="drw-top-label">다크 모드</span>
+                <button class="drw-hamburger" onclick="closeAppDrawer()" aria-label="메뉴 닫기" title="닫기">☰</button>
                 <label class="switch" title="다크 모드">
                     <input type="checkbox" id="theme-switch" onchange="toggleTheme()">
                     <span class="slider"></span>
                 </label>
-                <button class="drw-text-close" onclick="closeAppDrawer()">닫기</button>
             </div>
             <div class="drw-menu">
                 ${buildDrawerMenu(currentRole)}
