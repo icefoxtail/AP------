@@ -71,11 +71,11 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
+            padding: calc(14px + env(safe-area-inset-top)) 20px 14px 20px;
             display: grid;
-            grid-template-columns: 88px 1fr 88px;
+            grid-template-columns: 88px minmax(0, 1fr) 88px;
             align-items: center;
-            min-height: calc(56px + env(safe-area-inset-top));
+            min-height: calc(64px + env(safe-area-inset-top));
         }
 
         .brand {
@@ -97,8 +97,10 @@
 
         .mobile-header-menu {
             justify-self: start;
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
+            margin: 0;
+            padding: 0;
             border: 0;
             border-radius: 12px;
             background: transparent;
@@ -120,19 +122,22 @@
 
         .mobile-header-brand {
             justify-self: center;
+            min-width: 0;
         }
 
         .mobile-header-user {
-            justify-self: start;
-            max-width: 82px;
-            padding-left: 4px;
+            justify-self: end;
+            width: 88px;
+            max-width: 88px;
+            margin: 0;
+            padding: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             font-size: 13px;
-            font-weight: 900;
+            font-weight: 850;
             color: var(--text);
-            text-align: left;
+            text-align: right;
             letter-spacing: -0.2px;
         }
 
