@@ -1,51 +1,14 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
- * [Sidebar Polish]&#58; 상단 브랜드 박스 제거, 다크/라이트 최상단 이동, 사이드바 글씨 크기 조절 추가
+ * [Sidebar Polish 2]&#58; 사이드바 메인 톤 통일, 글씨 크기 조절 제거, 주메뉴/부메뉴 계층 정리
  */
 
 // ============================================================
 // [Theme Manager] 다크 모드: 사이드바 상단 버튼 방식
 // ============================================================
-const DRAWER_FONT_KEY = 'APMATH_DRAWER_FONT_SCALE';
-
 function getTheme() {
     return localStorage.getItem('APMATH_THEME') || 'light';
-}
-
-function getDrawerFontScale() {
-    const saved = localStorage.getItem(DRAWER_FONT_KEY) || 'normal';
-    return ['small', 'normal', 'large'].includes(saved) ? saved : 'normal';
-}
-
-function applyDrawerFontScale(scale = getDrawerFontScale()) {
-    const safeScale = ['small', 'normal', 'large'].includes(scale) ? scale : 'normal';
-    const drawer = document.getElementById('app-drawer');
-    const fontBtn = document.getElementById('drawer-font-toggle');
-
-    if (drawer) {
-        drawer.classList.remove('drw-font-small', 'drw-font-normal', 'drw-font-large');
-        drawer.classList.add(`drw-font-${safeScale}`);
-    }
-
-    if (fontBtn) {
-        const labelMap = {
-            small: '글씨 작게',
-            normal: '글씨 보통',
-            large: '글씨 크게'
-        };
-        fontBtn.innerText = labelMap[safeScale];
-        fontBtn.setAttribute('aria-label', `사이드바 ${labelMap[safeScale]}`);
-        fontBtn.setAttribute('title', labelMap[safeScale]);
-    }
-}
-
-function toggleDrawerFontScale() {
-    const current = getDrawerFontScale();
-    const next = current === 'normal' ? 'large' : current === 'large' ? 'small' : 'normal';
-
-    localStorage.setItem(DRAWER_FONT_KEY, next);
-    applyDrawerFontScale(next);
 }
 
 function getDrawerThemeLabel(isDark) {
@@ -72,8 +35,6 @@ function applyTheme(theme) {
         legacyToggleBtn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
         legacyToggleBtn.setAttribute('title', isDark ? '라이트 모드' : '다크 모드');
     }
-
-    applyDrawerFontScale(getDrawerFontScale());
 }
 
 function toggleTheme() {
@@ -250,12 +211,11 @@ function safeToastError(message) {
 
 
 // ============================================================
-// [드로어 네비게이션] 상단 박스 제거 + 다크모드/글씨크기 최상단 배치
+// [드로어 네비게이션] 메인 톤 통일 + 주메뉴/부메뉴 계층 정리
 // ============================================================
 function renderAppDrawer() {
     if (document.getElementById('app-drawer')) {
         applyTheme(getTheme());
-        applyDrawerFontScale(getDrawerFontScale());
         return;
     }
 
@@ -267,7 +227,7 @@ function renderAppDrawer() {
                 display:none;
                 position:fixed;
                 inset:0;
-                background:rgba(0,0,0,0.4);
+                background:rgba(0,0,0,0.36);
                 z-index:9998;
                 backdrop-filter:blur(4px);
                 -webkit-backdrop-filter:blur(4px);
@@ -280,70 +240,76 @@ function renderAppDrawer() {
                 left:0;
                 bottom:0;
                 width:min(80vw, 280px);
-                background:var(--surface);
+                background:var(--bg);
                 z-index:9999;
                 display:flex;
                 flex-direction:column;
                 transform:translateX(-104%);
-                transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.05);
-                box-shadow:4px 0 24px rgba(0,0,0,0.06);
+                transition:transform .28s cubic-bezier(0.175, 0.885, 0.32, 1.02);
+                box-shadow:10px 0 34px rgba(0,0,0,0.10);
                 overflow-y:auto;
-                border-radius:0 24px 24px 0;
+                border-radius:0 26px 26px 0;
+                border-right:1px solid var(--border);
+            }
+            body.dark #app-drawer {
+                box-shadow:10px 0 34px rgba(0,0,0,0.45);
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
             .drw-top-tools {
-                padding:calc(16px + env(safe-area-inset-top)) 12px 10px;
-                background:var(--surface);
-                border-bottom:1px solid var(--border);
+                padding:calc(16px + env(safe-area-inset-top)) 14px 12px;
+                background:var(--bg);
                 flex-shrink:0;
-                display:grid;
-                grid-template-columns:1fr 1fr;
-                gap:8px;
             }
 
-            .drw-tool-btn {
+            .drw-theme-btn {
                 width:100%;
-                min-height:44px;
+                min-height:46px;
                 display:flex;
                 align-items:center;
                 justify-content:center;
                 border:1px solid var(--border);
-                border-radius:14px;
-                background:var(--surface-2);
+                border-radius:16px;
+                background:var(--surface);
                 color:var(--text);
-                font-size:13px;
+                font-size:14px;
                 font-weight:900;
                 font-family:inherit;
                 cursor:pointer;
                 letter-spacing:-0.2px;
-                transition:all 0.2s;
-                white-space:nowrap;
+                transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow:var(--shadow);
             }
 
-            .drw-tool-btn:active {
-                background:var(--bg);
+            .drw-theme-btn:active {
+                background:var(--surface-2);
                 transform:scale(0.97);
             }
 
+            .drw-menu {
+                padding:4px 10px 14px;
+                flex:0 0 auto;
+            }
+
             .drw-sec {
-                font-size:12px;
-                font-weight:900;
-                color:var(--secondary);
-                padding:18px 20px 7px;
-                letter-spacing:-0.2px;
+                font-size:14px;
+                font-weight:950;
+                color:var(--text);
+                padding:20px 8px 8px;
+                letter-spacing:-0.3px;
+                line-height:1.2;
             }
 
             .drw-item {
                 display:flex;
                 align-items:center;
-                width:calc(100% - 20px);
-                margin:2px 10px;
-                padding:13px 16px;
-                min-height:47px;
-                border:0;
-                border-radius:14px;
-                background:transparent;
+                width:100%;
+                margin:0 0 7px;
+                padding:13px 14px;
+                min-height:46px;
+                border:1px solid transparent;
+                border-radius:16px;
+                background:var(--surface);
                 color:var(--text);
                 font-size:14.5px;
                 font-weight:800;
@@ -351,76 +317,52 @@ function renderAppDrawer() {
                 text-align:left;
                 cursor:pointer;
                 letter-spacing:-0.2px;
+                box-shadow:var(--shadow);
                 transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
-            #app-drawer.drw-font-small .drw-sec {
-                font-size:11px;
-                padding-top:16px;
-            }
-            #app-drawer.drw-font-small .drw-item {
-                font-size:13px;
-                min-height:42px;
-                padding:11px 14px;
-            }
-            #app-drawer.drw-font-small .drw-tool-btn {
-                font-size:12px;
-                min-height:40px;
-            }
-
-            #app-drawer.drw-font-normal .drw-sec {
-                font-size:12px;
-            }
-            #app-drawer.drw-font-normal .drw-item {
-                font-size:14.5px;
-            }
-            #app-drawer.drw-font-normal .drw-tool-btn {
-                font-size:13px;
-            }
-
-            #app-drawer.drw-font-large .drw-sec {
-                font-size:13px;
-                padding-top:20px;
-            }
-            #app-drawer.drw-font-large .drw-item {
-                font-size:16px;
-                min-height:52px;
-                padding:15px 17px;
-            }
-            #app-drawer.drw-font-large .drw-tool-btn {
-                font-size:14px;
-                min-height:48px;
-            }
-
             .drw-item:active {
-                background:var(--bg);
-                transform:scale(0.96);
+                background:var(--surface-2);
+                transform:scale(0.97);
             }
+
             .drw-item.primary {
                 background:rgba(26,92,255,0.08);
                 color:var(--primary);
+                border-color:rgba(26,92,255,0.13);
+                box-shadow:0 4px 14px rgba(26,92,255,0.08);
             }
+
             body.dark .drw-item.primary {
-                background:rgba(92,138,255,0.12);
+                background:rgba(92,138,255,0.14);
                 color:var(--primary);
+                border-color:rgba(92,138,255,0.22);
+                box-shadow:none;
             }
+
             .drw-item.primary:active {
                 background:rgba(26,92,255,0.12);
-                transform:scale(0.96);
+                transform:scale(0.97);
             }
+
             .drw-item.danger {
                 color:var(--error);
+                background:var(--surface);
+                border-color:rgba(255,71,87,0.10);
             }
+
             .drw-item.danger:active {
                 background:rgba(255,71,87,0.08);
-                transform:scale(0.96);
+                transform:scale(0.97);
             }
+
             .drw-spacer { flex:1; }
+
             .drw-footer {
-                padding:10px 0 calc(18px + env(safe-area-inset-bottom));
+                padding:10px 10px calc(18px + env(safe-area-inset-bottom));
                 border-top:1px solid var(--border);
                 flex-shrink:0;
-                background:var(--surface);
+                background:var(--bg);
             }
         `;
         document.head.appendChild(style);
@@ -460,10 +402,11 @@ function renderAppDrawer() {
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
         <nav id="app-drawer" aria-label="AP Math OS navigation">
             <div class="drw-top-tools">
-                <button id="drawer-theme-toggle" class="drw-tool-btn" type="button" onclick="toggleTheme()">다크 모드</button>
-                <button id="drawer-font-toggle" class="drw-tool-btn" type="button" onclick="toggleDrawerFontScale()">글씨 보통</button>
+                <button id="drawer-theme-toggle" class="drw-theme-btn" type="button" onclick="toggleTheme()">다크 모드</button>
             </div>
-            ${isAdmin ? adminMenu : teacherMenu}
+            <div class="drw-menu">
+                ${isAdmin ? adminMenu : teacherMenu}
+            </div>
             <div class="drw-spacer"></div>
             <div class="drw-footer">
                 <button class="drw-item danger" onclick="closeAppDrawer(); logout();">로그아웃</button>
@@ -474,7 +417,6 @@ function renderAppDrawer() {
     while (wrapper.firstChild) document.body.appendChild(wrapper.firstChild);
 
     applyTheme(getTheme());
-    applyDrawerFontScale(getDrawerFontScale());
 }
 
 function openAppDrawer() {
@@ -500,9 +442,6 @@ window.toggleTheme = toggleTheme;
 window.applyTheme = applyTheme;
 window.getTheme = getTheme;
 window.ensureThemeToggleButton = ensureThemeToggleButton;
-window.getDrawerFontScale = getDrawerFontScale;
-window.applyDrawerFontScale = applyDrawerFontScale;
-window.toggleDrawerFontScale = toggleDrawerFontScale;
 window.toast = toast;
 window.showModal = showModal;
 window.closeModal = closeModal;

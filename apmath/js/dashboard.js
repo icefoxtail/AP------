@@ -1,8 +1,7 @@
 /**
  * AP Math OS 1.0 [js/dashboard.js]
- * 운영센터 및 선생님별 관제 엔진 (품질 보정 최종판)
- * [IRONCLAD 5G]: 기능 100% 보존, 하드코딩 색상 변수화 완벽 타격
- * [Full PASS]: openDischargedStudents 구현 및 문구 품질 개선 완료
+ * 운영센터 및 선생님별 관제 엔진 (Partner B 보정판)
+ * [Sidebar Polish 2]: 상단 헤더 정리, 주간 일정 블루 톤 규격화 반영
  */
 
 function copyPhoneNumber(text) {
@@ -882,70 +881,35 @@ function computeDashboardData() {
 }
 
 function renderClassSummaryCard(cls, data) {
-    const s = data.classSummaries[cls.id]; if (!s) return '';
+    const s = data.classSummaries[cls.id]; 
+    if (!s) return '';
 
-    const hasAbsent = s.absent > 0;
-    const hasHwMiss = s.hwNotDone > 0;
-
-    if (!s.isScheduled) {
-        return `
-            <div onclick="renderClass('${cls.id}')" style="cursor:pointer; position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1.5px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
-                <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:var(--border); border-radius:20px 0 0 20px;"></div>
-                <div style="padding-left:6px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-weight:900; font-size:15px; color:var(--secondary);">${cls.name}</span>
-                        <span style="font-size:10px; font-weight:700; color:var(--secondary); background:var(--surface); padding:3px 8px; border-radius:20px; border:1px solid var(--border);">재원 ${s.activeCount}</span>
-                    </div>
-                    <div style="font-size:12px; font-weight:800; color:var(--secondary); background:var(--surface); padding:7px 10px; border-radius:8px; text-align:center;">오늘 수업 없음</div>
-                </div>
-            </div>
-        `;
-    }
-
-    let accentColor, gradientBg, borderColor, shadowColor, chipBg, chipColor, chipLabel;
-
-    if (hasAbsent) {
-        accentColor = 'var(--error)';
-        gradientBg = 'linear-gradient(135deg, rgba(255,71,87,0.10) 0%, var(--surface) 100%)';
-        borderColor = 'rgba(255,71,87,0.40)';
-        shadowColor = 'rgba(255,71,87,0.14)';
-        chipBg = 'rgba(255,71,87,0.15)';
-        chipColor = 'var(--error)';
-        chipLabel = `결석 ${s.absent}명`;
-    } else if (hasHwMiss) {
-        accentColor = 'var(--warning)';
-        gradientBg = 'linear-gradient(135deg, rgba(255,165,2,0.11) 0%, var(--surface) 100%)';
-        borderColor = 'rgba(255,165,2,0.40)';
-        shadowColor = 'rgba(255,165,2,0.14)';
-        chipBg = 'rgba(255,165,2,0.15)';
-        chipColor = '#b06000';
-        chipLabel = `미완료 ${s.hwNotDone}명`;
-    } else {
-        accentColor = 'var(--primary)';
-        gradientBg = 'linear-gradient(135deg, rgba(26,92,255,0.14) 0%, var(--surface) 100%)';
-        borderColor = 'rgba(26,92,255,0.35)';
-        shadowColor = 'rgba(26,92,255,0.10)';
-        chipBg = 'rgba(26,92,255,0.1)';
-        chipColor = 'var(--primary)';
-        chipLabel = '정상 출석';
-    }
+    const isOffDay = !s.isScheduled;
+    const absentColor = s.absent > 0 ? 'var(--error)' : 'var(--secondary)';
+    const cardBg = isOffDay ? 'var(--surface-2)' : 'var(--surface)';
+    const classNameColor = isOffDay ? 'var(--secondary)' : 'var(--text)';
+    const borderColor = s.absent > 0 ? 'rgba(255,71,87,0.18)' : 'var(--border)';
 
     return `
-        <div onclick="renderClass('${cls.id}')" style="cursor:pointer; position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1.5px solid ${borderColor}; box-shadow:0 4px 16px ${shadowColor}; overflow:hidden;">
-            <div style="position:absolute; top:0; left:0; width:5px; height:100%; background:${accentColor}; border-radius:20px 0 0 20px;"></div>
-            <div style="padding-left:6px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <span style="font-weight:900; font-size:15px; color:var(--text);">${cls.name}</span>
-                    <span style="font-size:10px; font-weight:700; color:var(--secondary); background:var(--surface); padding:3px 8px; border-radius:20px; border:1px solid var(--border);">재원 ${s.activeCount}</span>
+        <div onclick="renderClass('${cls.id}')" style="cursor:pointer; position:relative; min-height:96px; padding:16px; border-radius:18px; background:${cardBg}; border:1px solid ${borderColor}; box-shadow:var(--shadow); overflow:hidden;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:14px;">
+                <div style="min-width:0;">
+                    <div style="font-weight:900; font-size:15px; color:${classNameColor}; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${cls.name}</div>
+                    ${isOffDay ? `<div style="font-size:11px; font-weight:800; color:var(--secondary); margin-top:5px;">오늘 수업 없음</div>` : ''}
                 </div>
-                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-                    <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:var(--text);">
-                        등원 <span style="font-size:15px; color:var(--success);">${s.present}</span>
-                    </div>
-                    <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:800; color:var(--text);">
-                        결석 <span style="font-size:15px; color:${s.absent > 0 ? 'var(--error)' : 'var(--secondary)'};">${s.absent}</span>
-                    </div>
-                    <span style="background:${chipBg}; color:${chipColor}; padding:5px 10px; border-radius:20px; font-size:11px; font-weight:900; margin-left:auto;">${chipLabel}</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
+                <div style="background:var(--bg); border-radius:12px; padding:8px 6px; text-align:center; border:1px solid var(--border);">
+                    <div style="font-size:10px; font-weight:800; color:var(--secondary); margin-bottom:2px;">재원</div>
+                    <div style="font-size:16px; font-weight:950; color:var(--text);">${s.activeCount}</div>
+                </div>
+                <div style="background:var(--bg); border-radius:12px; padding:8px 6px; text-align:center; border:1px solid var(--border);">
+                    <div style="font-size:10px; font-weight:800; color:var(--secondary); margin-bottom:2px;">등원</div>
+                    <div style="font-size:16px; font-weight:950; color:var(--text);">${s.present}</div>
+                </div>
+                <div style="background:var(--bg); border-radius:12px; padding:8px 6px; text-align:center; border:1px solid var(--border);">
+                    <div style="font-size:10px; font-weight:800; color:var(--secondary); margin-bottom:2px;">결석</div>
+                    <div style="font-size:16px; font-weight:950; color:${absentColor};">${s.absent}</div>
                 </div>
             </div>
         </div>
@@ -963,13 +927,13 @@ function renderTodoSections() {
     const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
 
     let todayHtml = todayMemos.length ? todayMemos.map(m => `
-        <div style="padding:14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
+        <div style="padding:14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:transparent;">
             <label style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
                 <input type="checkbox" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.2); margin:0; accent-color:var(--primary);">
                 <span style="font-size:14px; font-weight:900; color:var(--text); ${m.is_pinned ? 'color:var(--primary);' : ''}">${m.is_pinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${m.content}</span>
             </label>
         </div>
-    `).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center; background:var(--surface-2);">오늘 등록된 할 일이 없습니다.</div>`;
+    `).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
 
     let upcomingHtml = '';
     const upcomingItems = [];
@@ -986,9 +950,9 @@ function renderTodoSections() {
 
             if (u.type === 'exam') {
                 const e = u.item;
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:900; color:var(--warning); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);"><div>${e.school_name} ${e.grade} ${e.exam_name}</div><span style="font-size:11px; background:rgba(255,165,2,0.12); padding:4px 8px; border-radius:6px;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:900; color:var(--text); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${e.school_name} ${e.grade} ${e.exam_name}</div><span style="font-size:11px; color:var(--primary); background:rgba(26,92,255,0.10); padding:4px 8px; border-radius:6px; font-weight:900;">${dDay}</span></div>`;
             } else {
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);"><div>${u.item.content}</div><span style="font-size:11px; background:var(--surface-2); color:var(--secondary); padding:4px 8px; border-radius:6px;">${dDay}</span></div>`;
+                return `<div style="padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${u.item.content}</div><span style="font-size:11px; background:rgba(26,92,255,0.10); color:var(--primary); padding:4px 8px; border-radius:6px; font-weight:900;">${dDay}</span></div>`;
             }
         }).join('');
     }
@@ -998,13 +962,13 @@ function renderTodoSections() {
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 style="margin:0; font-size:15px; font-weight:900; color:var(--text);">오늘일정</h3>
             </div>
-            <div style="margin-bottom:14px; overflow:hidden; border-radius:16px; box-shadow:0 4px 16px rgba(26,92,255,0.10); border:1.5px solid rgba(26,92,255,0.13); background:linear-gradient(135deg,rgba(26,92,255,0.06) 0%,var(--surface) 100%);">${todayHtml}</div>
+            <div style="margin-bottom:14px; overflow:hidden; border-radius:16px; box-shadow:0 4px 16px rgba(26,92,255,0.10); border:1.5px solid rgba(26,92,255,0.14); background:rgba(26,92,255,0.06);">${todayHtml}</div>
             
             ${upcomingHtml ? `
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                     <h3 style="margin:0; font-size:14px; font-weight:700; color:var(--secondary);">주간일정</h3>
                 </div>
-                <div style="overflow:hidden; border-radius:16px; box-shadow:0 4px 14px rgba(255,165,2,0.10); border:1.5px solid rgba(255,165,2,0.18); background:linear-gradient(135deg,rgba(255,165,2,0.07) 0%,var(--surface) 100%);">${upcomingHtml}</div>
+                <div style="overflow:hidden; border-radius:16px; box-shadow:0 4px 14px rgba(26,92,255,0.08); border:1.5px solid rgba(26,92,255,0.14); background:rgba(26,92,255,0.06);">${upcomingHtml}</div>
             ` : ''}
         </div>
     `;
@@ -1023,8 +987,7 @@ function renderDashboard() {
             <div style="display:flex; align-items:center; gap:12px; min-width:0;">
                 <button class="btn" style="width:36px; height:36px; padding:0; border:none; background:transparent; color:var(--text); font-size:22px; line-height:1;" onclick="openAppDrawer()">☰</button>
                 <div style="min-width:0;">
-                    <div style="font-size:18px; font-weight:900; color:var(--text); letter-spacing:-0.5px;">AP Math OS</div>
-                    <div style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:1px;">${teacherName} 선생님</div>
+                    <div style="font-size:20px; font-weight:950; color:var(--text); letter-spacing:-0.5px;">${teacherName} 선생님</div>
                 </div>
             </div>
         </div>
@@ -1047,8 +1010,8 @@ function renderDashboard() {
     const closeBanner = closeData.totalActive === 0
         ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:12px 14px;"><b style="color:var(--text); font-size:15px; font-weight:900;">수업이 없는 날입니다</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; margin-top:4px; display:block;">운영 기능이나 일정/메모를 확인해보세요.</span></div>`
         : closeData.allClear
-            ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:12px 14px; border-left:4px solid var(--success);"><b style="font-size:15px; font-weight:900; color:var(--text);">모든 학생 등원 및 과제 완료</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; display:block; margin-top:4px;">예외사항이 없습니다.</span></div>`
-            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:14px; padding:12px 14px; cursor:pointer; border-left:4px solid var(--warning);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--secondary); font-weight:900;">›</span></div></div>`;
+            ? `${syncWarning}<div class="card" style="margin-bottom:14px; padding:12px 14px; border:1px solid var(--border);"><b style="font-size:15px; font-weight:900; color:var(--text);">오늘 마감 완료</b><br><span style="font-size:13px; color:var(--secondary); font-weight:600; display:block; margin-top:4px;">예외사항 없음</span></div>`
+            : `${syncWarning}<div class="card" onclick="if(typeof openTodayCloseModal==='function') openTodayCloseModal('att')" style="margin-bottom:14px; padding:12px 14px; cursor:pointer; border:1px solid var(--border);"><div style="display:flex; justify-content:space-between; align-items:flex-start;"><div style="font-size:13px; color:var(--secondary);"><b style="font-size:15px; font-weight:900; color:var(--text);">수업 예외 현황</b> <span style="font-size:12px; font-weight:600; background:var(--surface-2); padding:4px 8px; border-radius:6px; margin-left:6px;">총 ${closeData.totalActive}명</span><div style="margin-top:12px; font-weight:600; display:flex; flex-direction:column; gap:6px;"><div style="display:flex; align-items:center; color:var(--text-soft);">결석 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.absents.length}</b>명 ${buildSummaryBadges(closeData.absents)}</div><div style="display:flex; align-items:center; color:var(--text-soft);">미완료 <b style="color:var(--error); margin:0 6px; font-size:14px;">${closeData.hwMisses.length}</b>명 ${buildSummaryBadges(closeData.hwMisses)}</div></div></div><span style="font-size:20px; color:var(--secondary); font-weight:900;">›</span></div></div>`;
 
     const todoSections = renderTodoSections();
     const classes = sortClassesForDashboard(state.db.classes.filter(c => c.is_active !== 0));
