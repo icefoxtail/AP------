@@ -1193,7 +1193,26 @@ function buildJournalContent(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
     let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
 
-    const activeClasses = state.db.classes.filter(c => c.is_active !== 0);
+    const targetDayIdx = String(new Date(targetDate).getDay());
+
+    const activeClasses = state.db.classes.filter(c => {
+        if (c.is_active === 0) return false;
+
+        const gradeText = String(c.grade || '');
+        const nameText = String(c.name || '');
+
+        // 일지는 중등부만 출력한다. 고등부 반은 제외.
+        if (gradeText.startsWith('고') || nameText.includes('고등')) return false;
+
+        // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
+        if (!c.schedule_days) return true;
+
+        // 제출일/선택일 기준 해당 요일 반만 출력한다.
+        return String(c.schedule_days)
+            .split(',')
+            .map(v => v.trim())
+            .includes(targetDayIdx);
+    });
 
     if (activeClasses.length === 0) {
         text += `해당 날짜에 담당 학급이 없습니다.\n`;
