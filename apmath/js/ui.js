@@ -2,6 +2,7 @@
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
  * [Minimalism Polish]: 폰트 조절 제거, 섹션 헤더 강화, 다크모드 토글 스위치 적용
+ * [UI Fix]: 사이드바 왼쪽 정렬 통일 및 섹션 헤더 시인성 강화
  */
 
 // ============================================================
@@ -255,9 +256,9 @@ function renderAppDrawer() {
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
-            /* [Polish] 상단 토글 영역: 좌우 수평 정렬 */
+            /* [Polish] 상단 토글 영역: 좌우 수평 정렬 24px 고정 */
             .drw-top-tools {
-                padding:calc(16px + env(safe-area-inset-top)) 20px 10px;
+                padding:calc(16px + env(safe-area-inset-top)) 24px 10px;
                 background:var(--surface);
                 border-bottom:1px solid var(--border);
                 flex-shrink:0;
@@ -308,21 +309,22 @@ function renderAppDrawer() {
                 background-color: #ffffff;
             }
 
-            /* [Polish] 섹션 헤더: 14px 왼쪽 정렬 강화 */
+            /* [Polish] 섹션 헤더: 24px 왼쪽 정렬 강화 및 색상 보정 */
             .drw-sec {
                 font-size:14px;
                 font-weight:900;
-                color:var(--secondary);
-                padding:22px 20px 8px;
+                color:var(--text);
+                padding:22px 24px 8px;
                 letter-spacing:-0.2px;
                 text-align:left;
             }
 
+            /* [Polish] 아이템 여백 조정 (8+16=24px 시작점 일치) */
             .drw-item {
                 display:flex;
                 align-items:center;
-                width:calc(100% - 24px);
-                margin:2px 12px;
+                width:calc(100% - 16px);
+                margin:2px 8px;
                 padding:13px 16px;
                 min-height:47px;
                 border:0;
@@ -376,29 +378,30 @@ function renderAppDrawer() {
 
     const teacherMenu = `
         <div class="drw-sec">메인</div>
-        <button class="drw-item primary" onclick="closeAppDrawer(); renderDashboard();">홈</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openDailyJournalModal();">일지</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openTodoMemoModal();">메모</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
+        <button class="drw-item primary" onclick="runAfterDrawerClose(() => renderDashboard())">홈</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openDailyJournalModal())">일지</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openTodoMemoModal())">메모</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openAddressBook())">학생관리</button>
 
         <div class="drw-sec">수업·성적</div>
-        <button class="drw-item" onclick="closeAppDrawer(); setTimeout(() => { if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); }, 260);">출석부</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openGlobalExamGradeView();">시험성적</button>
-        <button class="drw-item" onclick="closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket();">클리닉</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => { if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); })">출석부</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openGlobalExamGradeView())">시험·성적</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => { if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('시험일정 기능을 찾을 수 없습니다.', 'warn'); })">시험일정</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => { if(typeof openClinicBasket==='function') openClinicBasket(); })">클리닉</button>
 
         <div class="drw-sec">운영</div>
-        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">운영메뉴</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openOperationMenu())">운영메뉴</button>
     `;
 
     const adminMenu = `
         <div class="drw-sec">원장</div>
-        <button class="drw-item primary" onclick="closeAppDrawer(); renderAdminControlCenter();">운영센터</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
+        <button class="drw-item primary" onclick="runAfterDrawerClose(() => renderAdminControlCenter())">운영센터</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openAddressBook())">학생관리</button>
 
         <div class="drw-sec">운영</div>
-        <button class="drw-item" onclick="closeAppDrawer(); openExamScheduleModal();">시험일정</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openDischargedStudents();">퇴원생</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">동기화상태</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => { if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('시험일정 기능을 찾을 수 없습니다.', 'warn'); })">시험일정</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openDischargedStudents())">퇴원생</button>
+        <button class="drw-item" onclick="runAfterDrawerClose(() => openOperationMenu())">동기화상태</button>
     `;
 
     const wrapper = document.createElement('div');
@@ -459,3 +462,4 @@ window.setButtonBusy = setButtonBusy;
 window.renderAppDrawer = renderAppDrawer;
 window.openAppDrawer = openAppDrawer;
 window.closeAppDrawer = closeAppDrawer;
+window.runAfterDrawerClose = runAfterDrawerClose;
