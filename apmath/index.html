@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>AP Math OS</title>
     <style>
+        /* =========================================
+           [Polish] Light Mode Palette (미니멀리즘)
+           ========================================= */
         :root {
             --primary: #1A5CFF;
             --primary-dark: #0040D6;
@@ -18,29 +21,35 @@
             --surface-2: #F8FAFC;
             --surface-alpha: rgba(255,255,255,0.88);
             --border: #E5E8EB;
-            --shadow: 0 2px 12px rgba(0,0,0,0.04);
+            /* 그림자 힘 빼기: 기존 0.04보다 더 부드럽고 가볍게 */
+            --shadow: 0 2px 8px rgba(0,0,0,0.03);
 
             --text: #191F28;
             --text-soft: #333D4B;
         }
 
+        /* =========================================
+           [Polish] Dark Mode Palette (Grok's Soft Dark)
+           ========================================= */
         body.dark {
-            --primary: #5C8AFF;
-            --primary-dark: #3F6FEA;
-            --secondary: #A3B1C6;
-            --success: #22D98F;
-            --error: #FF6B7A;
-            --warning: #FFB84D;
+            --primary: #0A84FF;      /* iOS Dark Blue */
+            --primary-dark: #0070E0;
+            --secondary: #6E6E73;    /* 차분한 보조 텍스트 */
+            --success: #30D158;      /* iOS Dark Green */
+            --error: #FF453A;        /* iOS Dark Red */
+            --warning: #FF9F0A;      /* iOS Dark Orange */
 
-            --bg: #10141D;
-            --surface: #1E2432;
-            --surface-2: #252C3A;
-            --surface-alpha: rgba(30,36,50,0.88);
-            --border: #2C3444;
-            --shadow: 0 4px 18px rgba(0,0,0,0.45);
+            --bg: #121212;           /* Pure Black 탈출 -> 눈이 편안한 메인 배경 */
+            --surface: #1A1A1C;      /* 카드, 모달 등 주 컨테이너 */
+            --surface-2: #242427;    /* 입력창, 사이드바 등 보조 배경 */
+            --surface-alpha: rgba(26,26,28,0.88);
+            --border: #323238;       /* 은은하고 고급스러운 테두리 */
+            
+            /* 다크모드에서는 그림자 대신 테두리에 의존하여 미니멀리즘 극대화 */
+            --shadow: 0 4px 14px rgba(0,0,0,0.15); 
 
-            --text: #F2F4F6;
-            --text-soft: #A3B1C6;
+            --text: #F5F5F7;         /* 너무 쨍하지 않은 화이트 */
+            --text-soft: #A8A8AC;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
@@ -98,6 +107,7 @@
             color: var(--text);
         }
 
+        /* [Polish] 카드 미니멀리즘: 투명한 테두리 대신 1px 은은한 테두리로 질감 표현 */
         .card {
             background: var(--surface);
             color: var(--text);
@@ -105,12 +115,12 @@
             padding: 16px;
             margin-bottom: 12px;
             box-shadow: var(--shadow);
-            border: 1px solid transparent;
+            border: 1px solid var(--border); 
             transition: background 0.2s, border 0.2s;
         }
 
         body.dark .card {
-            border: 1px solid var(--border);
+            box-shadow: none; /* 다크모드에서는 무거운 그림자를 완전히 뺍니다 */
         }
 
         .grid {
@@ -151,6 +161,7 @@
         body.dark .btn-primary {
             background: var(--primary-dark);
             color: #ffffff;
+            box-shadow: none; /* 다크모드에서는 버튼 그림자도 제거하여 깔끔하게 */
         }
 
         .btn-primary:active {
@@ -188,10 +199,11 @@
             display: none !important;
         }
 
+        /* [Polish] 모달 오버레이 투명도 및 블러 효과 보정 */
         #modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -200,7 +212,8 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.25s ease;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         #modal-overlay.show {
@@ -220,6 +233,7 @@
             display: flex;
             flex-direction: column;
             max-height: 90vh;
+            border: 1px solid var(--border); /* 모달에도 테두리 추가하여 분리감 확보 */
         }
 
         #modal-overlay.show #modal-content {
@@ -301,6 +315,7 @@
         .toast {
             background: rgba(25, 31, 40, 0.9);
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: #FFFFFF;
             padding: 14px 24px;
             border-radius: 50px;
@@ -369,6 +384,11 @@
             background: var(--surface);
             color: var(--primary);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        body.dark .tab-btn.active {
+            box-shadow: none;
+            border: 1px solid var(--border);
         }
 
         @media (max-width: 600px) {
