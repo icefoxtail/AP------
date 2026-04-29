@@ -256,7 +256,7 @@ function renderAppDrawer() {
             overflow-y:auto;
             border-right:1px solid var(--border);
             border-radius:0 20px 20px 0;
-            text-align:left !important;
+            text-align:center;
         }
         #app-drawer.drw-open { transform:translateX(0); }
 
@@ -334,14 +334,14 @@ function renderAppDrawer() {
             font-weight:900;
             padding:20px 24px 7px;
             letter-spacing:-0.2px;
-            text-align:left !important;
+            text-align:center !important;
             line-height:1.2;
         }
 
         .drw-item {
             display:flex;
             align-items:center;
-            justify-content:flex-start !important;
+            justify-content:center !important;
             width:calc(100% - 16px);
             margin:2px 8px;
             padding:12px 16px;
@@ -353,7 +353,7 @@ function renderAppDrawer() {
             font-size:14px;
             font-weight:800;
             font-family:inherit;
-            text-align:left !important;
+            text-align:center !important;
             cursor:pointer;
             letter-spacing:-0.2px;
             transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -382,12 +382,7 @@ function renderAppDrawer() {
             background:var(--surface);
         }
 
-        /* [FINAL OVERRIDE] 사이드바 내부 UI 왼쪽 정렬 강제 */
-        #app-drawer,
-        #app-drawer * {
-            text-align:left !important;
-        }
-
+        /* [FINAL OVERRIDE] 사이드바 내부 UI 다크모드/로그아웃 예외처리 */
         #app-drawer .drw-top-tools {
             justify-content:flex-start !important;
             align-items:center !important;
@@ -401,14 +396,14 @@ function renderAppDrawer() {
         }
 
         #app-drawer .drw-sec {
-            text-align:left !important;
-            justify-content:flex-start !important;
+            text-align:center !important;
+            justify-content:center !important;
         }
 
         #app-drawer .drw-item {
-            justify-content:flex-start !important;
+            justify-content:center !important;
             align-items:center !important;
-            text-align:left !important;
+            text-align:center !important;
         }
 
         #app-drawer .drw-footer .drw-item {
@@ -426,6 +421,7 @@ function renderAppDrawer() {
         <button class="drw-item" onclick="closeAppDrawer(); openDailyJournalModal();">일지</button>
         <button class="drw-item" onclick="closeAppDrawer(); openTodoMemoModal();">메모</button>
         <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
+        <button class="drw-item" onclick="closeAppDrawer(); openClassManageModal();">학급·교재</button>
 
         <div class="drw-sec" style="color:#6E54FF;">수업·성적</div>
         <button class="drw-item" onclick="closeAppDrawer(); if(typeof renderAttendanceLedger==='function') renderAttendanceLedger();">출석부</button>
@@ -434,18 +430,20 @@ function renderAppDrawer() {
         <button class="drw-item" onclick="closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket();">클리닉</button>
 
         <div class="drw-sec" style="color:var(--warning);">운영</div>
-        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">운영메뉴</button>
+        <button class="drw-item" onclick="closeAppDrawer(); openDischargedStudents();">퇴원생</button>
+        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">시스템·동기화</button>
     `;
 
     const adminMenu = `
         <div class="drw-sec" style="color:var(--primary);">원장</div>
         <button class="drw-item" onclick="closeAppDrawer(); renderAdminControlCenter();">운영센터</button>
         <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
+        <button class="drw-item" onclick="closeAppDrawer(); openClassManageModal();">학급·교재</button>
 
         <div class="drw-sec" style="color:var(--warning);">운영</div>
         <button class="drw-item" onclick="closeAppDrawer(); openExamScheduleModal();">시험일정</button>
         <button class="drw-item" onclick="closeAppDrawer(); openDischargedStudents();">퇴원생</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">동기화상태</button>
+        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">시스템·동기화</button>
     `;
 
     const wrapper = document.createElement('div');
