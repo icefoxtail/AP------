@@ -259,33 +259,22 @@ async function goDashboardFromLedger() { await refreshDataOnly(); state.ui.curre
 
 function renderAttendanceLedger() {
     const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${String(c.id) === String(ledgerState.classId) ? 'selected' : ''}>${c.name}</option>`).join('');
-    document.getElementById('app-root').innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding:2px 4px 0;">
-            <div style="display:flex; align-items:center; gap:12px;">
-                <button class="btn" style="width:44px; height:44px; padding:0; border:none; border-radius:14px; background:var(--surface); box-shadow:var(--shadow); color:var(--secondary);" onclick="openAppDrawer()">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
-                <div style="font-size:22px; font-weight:950; color:var(--text); letter-spacing:-0.5px;">출석부</div>
+    
+    showModal('출석부', `
+        <div style="display:flex; gap:12px; flex-direction:column; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:16px;">
+            <div style="display:flex; gap:10px;">
+                <input type="date" id="ledger-date" class="btn" value="${ledgerState.date}" style="flex:1.2; text-align:left; background:var(--surface); border:none; font-weight:700;" onchange="ledgerState.date=this.value;loadLedger();">
+                <select id="ledger-class" class="btn" style="flex:1; background:var(--surface); border:none; font-weight:700;" onchange="ledgerState.classId=this.value;renderLedgerTable();">
+                    <option value="">전체 학급</option>${classOptions}
+                </select>
             </div>
-            <button class="btn" style="padding:10px 16px; font-size:13px; font-weight:800; background:var(--bg); border:none; border-radius:12px;" onclick="goDashboardFromLedger()">홈으로</button>
-        </div>
-        
-        <div class="card" style="padding:18px; margin-bottom:16px; border-radius:22px;">
-            <div style="display:flex; gap:12px; flex-direction:column;">
-                <div style="display:flex; gap:10px;">
-                    <input type="date" id="ledger-date" class="btn" value="${ledgerState.date}" style="flex:1.2; text-align:left; background:var(--bg); border:none; font-weight:700;" onchange="ledgerState.date=this.value;loadLedger();">
-                    <select id="ledger-class" class="btn" style="flex:1; background:var(--bg); border:none; font-weight:700;" onchange="ledgerState.classId=this.value;renderLedgerTable();">
-                        <option value="">전체 학급</option>${classOptions}
-                    </select>
-                </div>
-                <div style="display:flex; gap:8px; background:var(--bg); padding:5px; border-radius:14px;">
-                    <button id="ledger-mode-att" class="btn" style="flex:1; border:none; font-size:13px; border-radius:10px; transition:all 0.25s;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
-                    <button id="ledger-mode-hw" class="btn" style="flex:1; border:none; font-size:13px; border-radius:10px; transition:all 0.25s;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
-                </div>
+            <div style="display:flex; gap:8px; background:var(--surface); padding:5px; border-radius:12px;">
+                <button id="ledger-mode-att" class="btn" style="flex:1; border:none; font-size:13px; border-radius:10px; transition:all 0.25s;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
+                <button id="ledger-mode-hw" class="btn" style="flex:1; border:none; font-size:13px; border-radius:10px; transition:all 0.25s;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
             </div>
         </div>
-        <div id="ledger-table-wrap"></div>
-    `;
+        <div id="ledger-table-wrap" style="max-height:55vh; overflow-y:auto; padding-right:4px;"></div>
+    `);
     loadLedger();
 }
 
@@ -325,9 +314,9 @@ function renderLedgerTable() {
             : (status === '완료' ? 'background:rgba(26,92,255,0.1); color:var(--primary);' : 'background:rgba(255,165,2,0.15); color:var(--warning); font-weight:900;');
         
         return `<tr style="border-bottom:1px solid var(--bg);">
-            <td style="padding:16px 20px; font-weight:800; color:var(--text); font-size:14px;">${s.name}</td>
-            <td style="padding:16px 10px; color:var(--secondary); font-size:12px; font-weight:500;">${s.school_name}</td>
-            <td style="padding:16px 20px; text-align:right;">
+            <td style="padding:14px 16px; font-weight:800; color:var(--text); font-size:14px;">${s.name}</td>
+            <td style="padding:14px 8px; color:var(--secondary); font-size:12px; font-weight:500;">${s.school_name}</td>
+            <td style="padding:14px 16px; text-align:right;">
                 <button class="btn" style="padding:6px 14px; font-size:11px; min-width:64px; border:none; border-radius:10px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button>
             </td>
         </tr>`;
@@ -336,16 +325,16 @@ function renderLedgerTable() {
     const className = cid ? (state.db.classes.find(c=>String(c.id)===String(cid))?.name || '반') : '전체 학급';
     
     document.getElementById('ledger-table-wrap').innerHTML = `
-        <div class="card" style="padding:8px 0; border-radius:24px;">
-            <div style="padding:12px 20px 14px; border-bottom:1px solid var(--border);">
+        <div class="card" style="padding:8px 0; border-radius:16px; margin:0; box-shadow:none; border:1px solid var(--border);">
+            <div style="padding:12px 16px 14px; border-bottom:1px solid var(--border);">
                 <p style="font-size:13px; font-weight:800; color:var(--secondary); margin:0;">${className} 현황</p>
             </div>
             <table style="width:100%; border-collapse:collapse;">
                 <thead>
                     <tr style="background:var(--bg);">
-                        <th style="padding:12px 20px; font-size:11px; color:var(--secondary); text-transform:uppercase;">Student</th>
-                        <th style="padding:12px 10px; font-size:11px; color:var(--secondary); text-transform:uppercase;">School</th>
-                        <th style="padding:12px 20px; font-size:11px; color:var(--secondary); text-align:right; text-transform:uppercase;">Status</th>
+                        <th style="padding:12px 16px; font-size:11px; color:var(--secondary); text-transform:uppercase;">Student</th>
+                        <th style="padding:12px 8px; font-size:11px; color:var(--secondary); text-transform:uppercase;">School</th>
+                        <th style="padding:12px 16px; font-size:11px; color:var(--secondary); text-align:right; text-transform:uppercase;">Status</th>
                     </tr>
                 </thead>
                 <tbody>${rows || '<tr><td colspan="3" style="text-align:center; padding:40px; color:var(--secondary); font-size:14px; font-weight:700;">대상 학생이 없습니다.</td></tr>'}</tbody>
