@@ -206,7 +206,7 @@ function safeToastError(message) {
 
 
 // ============================================================
-// [드로어 네비게이션] 상단 문구 제거 + 다크모드 버튼 배치
+// [드로어 네비게이션] 왼쪽 정렬 + 섹션 포인트 컬러 + 즉시 호출
 // ============================================================
 function renderAppDrawer() {
     if (document.getElementById('app-drawer')) {
@@ -245,6 +245,7 @@ function renderAppDrawer() {
                 overflow-y:auto;
                 border-right:1px solid var(--border);
                 border-radius:0 20px 20px 0;
+                text-align:left;
             }
             #app-drawer.drw-open { transform:translateX(0); }
 
@@ -362,6 +363,40 @@ function renderAppDrawer() {
                 border-top:1px solid var(--border);
                 flex-shrink:0;
                 background:var(--surface);
+            }
+
+            /* [FINAL OVERRIDE] 사이드바 내부 UI 왼쪽 정렬 강제 */
+            #app-drawer,
+            #app-drawer * {
+                text-align:left !important;
+            }
+
+            #app-drawer .drw-top-tools {
+                justify-content:flex-start !important;
+                align-items:center !important;
+                gap:12px !important;
+                text-align:left !important;
+            }
+
+            #app-drawer .drw-top-label {
+                text-align:left !important;
+                color:var(--text);
+            }
+
+            #app-drawer .drw-sec {
+                text-align:left !important;
+                justify-content:flex-start !important;
+            }
+
+            #app-drawer .drw-item {
+                justify-content:flex-start !important;
+                align-items:center !important;
+                text-align:left !important;
+            }
+
+            #app-drawer .drw-footer .drw-item {
+                justify-content:flex-start !important;
+                text-align:left !important;
             }
         `;
         document.head.appendChild(style);

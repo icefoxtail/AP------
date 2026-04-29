@@ -1069,18 +1069,7 @@ function renderDashboard() {
         <div style="display:flex; align-items:center; margin-bottom:20px; padding:4px 4px 0; width:100%;">
             <div style="flex:1; display:flex; justify-content:flex-start;">
                 <button class="btn" style="width:36px; height:36px; padding:0; border:none; background:transparent; color:var(--text); font-size:22px; line-height:1;" onclick="openAppDrawer()">☰</button>
-            </div>
-            
-            <div style="display:flex; align-items:center; gap:8px;">
-                <div style="width:28px; height:28px; background:linear-gradient(135deg, var(--primary) 0%, rgba(110,84,255,1) 100%); border-radius:8px; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 8px rgba(26,92,255,0.3);">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19L12 3L20 19"></path>
-                        <path d="M8 13H16"></path>
-                    </svg>
-                </div>
-                <div style="font-size:20px; font-weight:950; color:var(--text); letter-spacing:-0.5px;">AP Math</div>
-            </div>
-            
+            </div>         
             <div style="flex:1; display:flex; justify-content:flex-end;">
                 <div style="text-align:right;">
                     <div style="font-size:14px; font-weight:900; color:var(--text);">${teacherName} <span style="font-size:12px; font-weight:700; color:var(--secondary);">선생님</span></div>
