@@ -1139,8 +1139,8 @@ function renderTodoSections() {
         const isPinned = m.is_pinned == 1 || m.is_pinned === true;
         return `
         <div style="padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; background:transparent;">
-            <label style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
-                <input type="checkbox" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:rgba(255,165,2,0.8);">
+            <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
+                <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:rgba(255,165,2,0.8);">
                 <span style="font-size:14px; font-weight:950; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}</span>
             </label>
         </div>
@@ -1162,25 +1162,27 @@ function renderTodoSections() {
 
             if (u.type === 'exam') {
                 const e = u.item;
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(e.school_name)} ${apEscapeHtml(e.grade)} ${apEscapeHtml(e.exam_name)}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
+                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(e.school_name)} ${apEscapeHtml(e.grade)} ${apEscapeHtml(e.exam_name)}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             } else {
-                return `<div style="padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
+                return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             }
         }).join('');
     }
 
     return `
         <div style="margin-bottom:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+            <div onclick="openTodoMemoModal()" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px; cursor:pointer;">
                 <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">오늘일정</h3>
+                <span style="font-size:11px; font-weight:800; color:var(--secondary);">관리</span>
             </div>
-            <div style="margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(255,165,2,0.20); background:rgba(255,165,2,0.04); box-shadow:0 4px 12px rgba(255,165,2,0.04);">${todayHtml}</div>
+            <div onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(255,165,2,0.20); background:rgba(255,165,2,0.04); box-shadow:0 4px 12px rgba(255,165,2,0.04);">${todayHtml}</div>
             
             ${upcomingHtml ? `
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+                <div onclick="openExamScheduleModal()" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px; cursor:pointer;">
                     <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">주간일정</h3>
+                    <span style="font-size:11px; font-weight:800; color:var(--secondary);">관리</span>
                 </div>
-                <div style="overflow:hidden; border-radius:16px; border:1px solid rgba(110,84,255,0.15); background:rgba(110,84,255,0.03); box-shadow:0 4px 12px rgba(110,84,255,0.03);">${upcomingHtml}</div>
+                <div onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(110,84,255,0.15); background:rgba(110,84,255,0.03); box-shadow:0 4px 12px rgba(110,84,255,0.03);">${upcomingHtml}</div>
             ` : ''}
         </div>
     `;
