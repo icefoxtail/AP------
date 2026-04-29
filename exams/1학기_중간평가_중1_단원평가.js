@@ -1,4 +1,4 @@
-window.examTitle = "26_AP수학_1학기_중간_중1_중간평가_확인";
+window.examTitle = "26_AP수학_1학기_중간_중1_중간고사";
 
 window.questionBank = [
   {
@@ -184,11 +184,11 @@ window.questionBank = [
     wide: false,
     content: "두 자리 자연수 중에서 21과 서로소인 자연수는 모두 몇 개인지 고르시오. [4점]",
     choices: [
-      "42",
-      "46",
-      "48",
-      "50",
-      "52"
+      "47",
+      "49",
+      "51",
+      "53",
+      "55"
     ],
     answer: "③",
     solution: ""
