@@ -94,8 +94,18 @@ function showModal(t, b, at=null, af=null) {
     const bodyEl = document.getElementById('modal-body');
     const actionBtn = document.getElementById('modal-action-btn');
     const footer = document.getElementById('modal-footer');
+    const overlay = document.getElementById('modal-overlay');
 
-    if (!titleEl || !bodyEl) return;
+    if (!titleEl || !bodyEl || !overlay) return;
+
+    if (modalCloseTimer) {
+        clearTimeout(modalCloseTimer);
+        modalCloseTimer = null;
+    }
+
+    // 먼저 기존 show 상태만 제거하고, 내용 교체가 끝난 뒤 hidden을 해제한다.
+    // display:flex 상태의 투명 오버레이가 잠깐 클릭을 가로막는 상황을 줄인다.
+    overlay.classList.remove('show');
 
     titleEl.innerText = t;
     bodyEl.innerHTML = b;
@@ -128,15 +138,9 @@ function showModal(t, b, at=null, af=null) {
         footer.innerHTML = '';
     }
 
-    const overlay = document.getElementById('modal-overlay');
-    if (!overlay) return;
-
-    if (modalCloseTimer) {
-        clearTimeout(modalCloseTimer);
-        modalCloseTimer = null;
-    }
-
+    // display:none 해제 직후 transition이 스킵되지 않도록 강제 reflow 후 show 적용
     overlay.classList.remove('hidden');
+    overlay.getBoundingClientRect();
     requestAnimationFrame(() => {
         overlay.classList.add('show');
     });
@@ -214,17 +218,173 @@ function safeToastError(message) {
 
 
 // ============================================================
-// [드로어 네비게이션] 왼쪽 정렬 + 섹션 포인트 컬러 + 즉시 호출
+// [상단 헤더 동기화] 모바일 헤더 사용자명 / 내부 중복 헤더 숨김
 // ============================================================
-function renderAppDrawer() {
-    // 기존 드로어/스타일이 남아 있으면 새 CSS가 안 먹으므로 항상 제거 후 재생성
-    const oldDrawer = document.getElementById('app-drawer');
-    const oldOverlay = document.getElementById('app-drawer-overlay');
-    const oldStyle = document.getElementById('app-drawer-style');
+function getHeaderUserName() {
+    if (typeof state !== 'undefined') {
+        if (state.ui && state.ui.userName) return String(state.ui.userName).replace(/\s*선생님\s*$/g, '').trim();
+        if (state.auth && state.auth.name) return String(state.auth.name).replace(/\s*선생님\s*$/g, '').trim();
+    }
 
-    if (oldDrawer) oldDrawer.remove();
-    if (oldOverlay) oldOverlay.remove();
-    if (oldStyle) oldStyle.remove();
+    try {
+        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (session && session.name) return String(session.name).replace(/\s*선생님\s*$/g, '').trim();
+    } catch (e) {}
+
+    return '';
+}
+
+function updateMobileHeaderUser(name) {
+    const el = document.getElementById('mobile-header-user');
+    if (!el) return;
+    const value = (name !== undefined ? String(name || '') : getHeaderUserName()).replace(/\s*선생님\s*$/g, '').trim();
+    el.textContent = value;
+    el.title = value;
+}
+
+function syncDashboardInternalHeader() {
+    const root = document.getElementById('app-root');
+    if (!root || !root.firstElementChild) return;
+
+    // 이전에 숨긴 요소가 첫 번째 요소가 아니게 되었거나 조건이 바뀐 경우 복구한다.
+    root.querySelectorAll('.ap-internal-header-hidden').forEach(el => {
+        if (el !== root.firstElementChild) el.classList.remove('ap-internal-header-hidden');
+    });
+
+    const first = root.firstElementChild;
+    if (!first) return;
+
+    const directDrawerButton = first.querySelector(':scope > div button[onclick*="openAppDrawer"], :scope > button[onclick*="openAppDrawer"]');
+    const hasTeacherSuffix = /선생님/.test(first.textContent || '');
+    const hasTodayJournal = !!first.querySelector('h3') && /오늘일지/.test(first.textContent || '');
+
+    // 대시보드 내부의 상단 컨트롤 행만 숨긴다.
+    // 단순히 "선생님" 텍스트가 있다는 이유로 일반 콘텐츠를 숨기지 않는다.
+    if (directDrawerButton && hasTeacherSuffix && !hasTodayJournal && first.children.length <= 3) {
+        first.classList.add('ap-internal-header-hidden');
+    } else {
+        first.classList.remove('ap-internal-header-hidden');
+    }
+}
+
+let appRootObserver = null;
+function bootHeaderSync() {
+    updateMobileHeaderUser();
+    syncDashboardInternalHeader();
+
+    const root = document.getElementById('app-root');
+    if (root && !appRootObserver) {
+        appRootObserver = new MutationObserver(() => {
+            updateMobileHeaderUser();
+            syncDashboardInternalHeader();
+        });
+        appRootObserver.observe(root, { childList: true, subtree: false });
+    }
+}
+
+function patchHeaderRelatedGlobals(retryCount = 0) {
+    let patchedSomething = false;
+
+    if (typeof window.loadData === 'function' && !window.__apLoadDataHeaderPatched) {
+        const originalLoadData = window.loadData;
+        window.loadData = async function(...args) {
+            const result = await originalLoadData.apply(this, args);
+            updateMobileHeaderUser();
+            syncDashboardInternalHeader();
+            return result;
+        };
+        window.__apLoadDataHeaderPatched = true;
+        patchedSomething = true;
+    }
+
+    if (typeof window.logout === 'function' && !window.__apLogoutHeaderPatched) {
+        const originalLogout = window.logout;
+        window.logout = function(...args) {
+            const result = originalLogout.apply(this, args);
+            updateMobileHeaderUser('');
+            removeAppDrawer();
+            return result;
+        };
+        window.__apLogoutHeaderPatched = true;
+        patchedSomething = true;
+    }
+
+    if ((!window.__apLoadDataHeaderPatched || !window.__apLogoutHeaderPatched) && retryCount < 3) {
+        setTimeout(() => patchHeaderRelatedGlobals(retryCount + 1), 120);
+    } else if (!patchedSomething && retryCount >= 3) {
+        console.warn('[ui.js] header sync hooks were not fully patched.');
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        patchHeaderRelatedGlobals();
+        bootHeaderSync();
+    });
+} else {
+    patchHeaderRelatedGlobals();
+    bootHeaderSync();
+}
+
+
+// ============================================================
+// [드로어 네비게이션] 모바일 drawer + PC 미니 레일 겸용
+// ============================================================
+function getDrawerRoleKey() {
+    return (typeof state !== 'undefined' && state.auth && state.auth.role === 'admin') ? 'admin' : 'teacher';
+}
+
+function drawerItem(icon, label, action, extraClass = '') {
+    const safeLabel = String(label || '');
+    return `
+        <button class="drw-item ${extraClass}" title="${safeLabel}" onclick="${action}">
+            <span class="drw-icon" aria-hidden="true">${icon}</span>
+            <span class="drw-label">${safeLabel}</span>
+        </button>
+    `;
+}
+
+function drawerSection(label, color = 'var(--secondary)') {
+    return `<div class="drw-sec" style="color:${color};"><span class="drw-sec-label">${label}</span></div>`;
+}
+
+function buildDrawerMenu(roleKey) {
+    if (roleKey === 'admin') {
+        return `
+            ${drawerSection('원장', 'var(--primary)')}
+            ${drawerItem('⌂', '운영센터', "closeAppDrawer(); renderAdminControlCenter();")}
+            ${drawerItem('👤', '학생관리', "closeAppDrawer(); openAddressBook();")}
+            ${drawerItem('🏫', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
+
+            ${drawerSection('운영', 'var(--warning)')}
+            ${drawerItem('📅', '시험일정', "closeAppDrawer(); openExamScheduleModal();")}
+            ${drawerItem('🚪', '퇴원생', "closeAppDrawer(); openDischargedStudents();")}
+            ${drawerItem('⚙', '시스템·동기화', "closeAppDrawer(); openOperationMenu();")}
+        `;
+    }
+
+    return `
+        ${drawerSection('메인', 'var(--primary)')}
+        ${drawerItem('⌂', '홈', "closeAppDrawer(); renderDashboard();")}
+        ${drawerItem('📘', '일지', "closeAppDrawer(); openDailyJournalModal();")}
+        ${drawerItem('📝', '메모', "closeAppDrawer(); openTodoMemoModal();")}
+        ${drawerItem('👤', '학생관리', "closeAppDrawer(); openAddressBook();")}
+        ${drawerItem('🏫', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
+
+        ${drawerSection('수업·성적', '#6E54FF')}
+        ${drawerItem('✓', '출석부', "closeAppDrawer(); if(typeof renderAttendanceLedger==='function') renderAttendanceLedger();")}
+        ${drawerItem('📅', '시험일정', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal();")}
+        ${drawerItem('📊', '시험성적', "closeAppDrawer(); openGlobalExamGradeView();")}
+        ${drawerItem('▣', '클리닉', "closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket();")}
+
+        ${drawerSection('운영', 'var(--warning)')}
+        ${drawerItem('🚪', '퇴원생', "closeAppDrawer(); openDischargedStudents();")}
+        ${drawerItem('⚙', '시스템·동기화', "closeAppDrawer(); openOperationMenu();")}
+    `;
+}
+
+function ensureDrawerStyle() {
+    if (document.getElementById('app-drawer-style')) return;
 
     const style = document.createElement('style');
     style.id = 'app-drawer-style';
@@ -233,7 +393,7 @@ function renderAppDrawer() {
             display:none;
             position:fixed;
             inset:0;
-            background:rgba(0,0,0,0.4);
+            background:rgba(0,0,0,0.42);
             z-index:9998;
             backdrop-filter:blur(4px);
             -webkit-backdrop-filter:blur(4px);
@@ -245,43 +405,150 @@ function renderAppDrawer() {
             top:0;
             left:0;
             bottom:0;
-            width:min(75vw, 260px);
+            width:min(82vw, 280px);
             background:var(--surface);
             z-index:9999;
             display:flex;
             flex-direction:column;
             transform:translateX(-104%);
-            transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.05);
-            box-shadow:4px 0 24px rgba(0,0,0,0.06);
+            transition:transform .26s cubic-bezier(0.4, 0, 0.2, 1), width .22s ease;
+            box-shadow:4px 0 24px rgba(0,0,0,0.08);
             overflow-y:auto;
+            overflow-x:hidden;
             border-right:1px solid var(--border);
-            border-radius:0 20px 20px 0;
-            text-align:center;
+            border-radius:0 22px 22px 0;
+            text-align:left;
         }
         #app-drawer.drw-open { transform:translateX(0); }
 
-        .drw-top-tools {
-            padding:calc(18px + env(safe-area-inset-top)) 24px 12px;
-            background:var(--surface);
+        .drw-rail-head {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
+            padding:calc(14px + env(safe-area-inset-top)) 14px 10px;
             border-bottom:1px solid var(--border);
             flex-shrink:0;
-            display:flex;
-            justify-content:flex-start !important;
-            align-items:center !important;
-            gap:12px;
-            text-align:left !important;
         }
-
-        .drw-top-label {
+        .drw-brand {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            min-width:0;
             font-size:15px;
+            font-weight:950;
+            color:var(--text);
+            letter-spacing:-0.3px;
+        }
+        .drw-logo {
+            width:32px;
+            height:32px;
+            border-radius:11px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            background:var(--primary);
+            color:#fff;
+            font-size:13px;
+            font-weight:950;
+            flex:0 0 auto;
+        }
+        .drw-close {
+            width:36px;
+            height:36px;
+            border:0;
+            border-radius:12px;
+            background:var(--surface-2);
+            color:var(--text);
+            font-size:20px;
+            font-weight:900;
+            cursor:pointer;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            flex:0 0 auto;
+        }
+        .drw-menu {
+            padding:10px 8px 12px;
+            flex:0 0 auto;
+        }
+        .drw-sec {
+            width:100%;
+            box-sizing:border-box;
+            font-size:11px;
+            font-weight:950;
+            padding:18px 12px 6px;
+            letter-spacing:-0.1px;
+            line-height:1.2;
+            text-align:left;
+            opacity:.95;
+        }
+        .drw-item {
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            gap:12px;
+            width:100%;
+            margin:2px 0;
+            padding:11px 12px;
+            min-height:44px;
+            border:0;
+            border-radius:14px;
+            background:transparent;
+            color:var(--text);
+            font-size:14px;
+            font-weight:850;
+            font-family:inherit;
+            text-align:left;
+            cursor:pointer;
+            letter-spacing:-0.2px;
+            transition:background .18s ease, transform .18s ease;
+        }
+        .drw-icon {
+            width:28px;
+            height:28px;
+            border-radius:11px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            flex:0 0 28px;
+            background:var(--surface-2);
+            color:var(--primary);
+            font-size:14px;
+            font-weight:900;
+            line-height:1;
+        }
+        .drw-label {
+            display:inline-block;
+            min-width:0;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
+        .drw-item:active {
+            background:var(--bg);
+            transform:scale(0.98);
+        }
+        .drw-item.danger { color:var(--error); }
+        .drw-item.danger .drw-icon { color:var(--error); }
+        .drw-spacer { flex:1; }
+        .drw-top-tools {
+            margin:8px;
+            padding:12px;
+            border-radius:16px;
+            background:var(--surface-2);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:12px;
+        }
+        .drw-top-label {
+            font-size:13px;
             font-weight:900;
             color:var(--text);
-            text-align:left !important;
-            letter-spacing:-0.2px;
             line-height:1;
             white-space:nowrap;
         }
-
         .switch {
             position:relative;
             display:inline-block;
@@ -289,19 +556,12 @@ function renderAppDrawer() {
             height:26px;
             flex:0 0 auto;
         }
-        .switch input {
-            opacity:0;
-            width:0;
-            height:0;
-        }
+        .switch input { opacity:0; width:0; height:0; }
         .slider {
             position:absolute;
             cursor:pointer;
-            top:0;
-            left:0;
-            right:0;
-            bottom:0;
-            background-color:var(--surface-2);
+            top:0; left:0; right:0; bottom:0;
+            background-color:var(--surface);
             border:1px solid var(--border);
             transition:.25s;
             border-radius:999px;
@@ -317,174 +577,182 @@ function renderAppDrawer() {
             transition:.25s;
             border-radius:50%;
         }
-        input:checked + .slider {
-            background-color:var(--primary);
-            border-color:var(--primary);
-        }
-        input:checked + .slider:before {
-            transform:translateX(22px);
-            background-color:#fff;
-        }
-
-        .drw-sec {
-            display:block;
-            width:100%;
-            box-sizing:border-box;
-            font-size:14px;
-            font-weight:900;
-            padding:20px 24px 7px;
-            letter-spacing:-0.2px;
-            text-align:center !important;
-            line-height:1.2;
-        }
-
-        .drw-item {
-            display:flex;
-            align-items:center;
-            justify-content:center !important;
-            width:calc(100% - 16px);
-            margin:2px 8px;
-            padding:12px 16px;
-            min-height:44px;
-            border:0;
-            border-radius:12px;
-            background:transparent;
-            color:var(--text);
-            font-size:14px;
-            font-weight:800;
-            font-family:inherit;
-            text-align:center !important;
-            cursor:pointer;
-            letter-spacing:-0.2px;
-            transition:all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .drw-item:active {
-            background:var(--bg);
-            transform:scale(0.96);
-        }
-        .drw-item.primary {
-            color:var(--text);
-        }
-        .drw-item.danger {
-            color:var(--error);
-        }
-        .drw-item.danger:active {
-            background:rgba(255,71,87,0.08);
-            transform:scale(0.96);
-        }
-
-        .drw-spacer { flex:1; }
-
+        input:checked + .slider { background-color:var(--primary); border-color:var(--primary); }
+        input:checked + .slider:before { transform:translateX(22px); background-color:#fff; }
         .drw-footer {
-            padding:8px 0 calc(16px + env(safe-area-inset-bottom));
+            padding:8px 8px calc(14px + env(safe-area-inset-bottom));
             border-top:1px solid var(--border);
             flex-shrink:0;
             background:var(--surface);
         }
 
-        /* [FINAL OVERRIDE] 사이드바 내부 UI 다크모드/로그아웃 예외처리 */
-        #app-drawer .drw-top-tools {
-            justify-content:flex-start !important;
-            align-items:center !important;
-            gap:12px !important;
-            text-align:left !important;
-        }
-
-        #app-drawer .drw-top-label {
-            text-align:left !important;
-            color:var(--text);
-        }
-
-        #app-drawer .drw-sec {
-            text-align:center !important;
-            justify-content:center !important;
-        }
-
-        #app-drawer .drw-item {
-            justify-content:center !important;
-            align-items:center !important;
-            text-align:center !important;
-        }
-
-        #app-drawer .drw-footer .drw-item {
-            justify-content:flex-start !important;
-            text-align:left !important;
+        @media (min-width:901px) {
+            #app-drawer-overlay { display:none !important; }
+            #app-drawer {
+                width:64px;
+                transform:none !important;
+                border-radius:0;
+                box-shadow:none;
+                background:var(--surface-alpha);
+                backdrop-filter:blur(14px);
+                -webkit-backdrop-filter:blur(14px);
+            }
+            #app-drawer.drw-expanded { width:260px; box-shadow:8px 0 30px rgba(0,0,0,0.08); }
+            .drw-rail-head { padding:14px 10px 10px; justify-content:center; }
+            #app-drawer.drw-expanded .drw-rail-head { justify-content:space-between; padding-left:14px; padding-right:14px; }
+            .drw-brand-text, .drw-close, .drw-label, .drw-sec-label, .drw-top-label { display:none; }
+            #app-drawer.drw-expanded .drw-brand-text,
+            #app-drawer.drw-expanded .drw-close,
+            #app-drawer.drw-expanded .drw-label,
+            #app-drawer.drw-expanded .drw-sec-label,
+            #app-drawer.drw-expanded .drw-top-label { display:inline-block; }
+            .drw-menu { padding:10px 8px; }
+            .drw-sec { padding:16px 0 5px; text-align:center; }
+            #app-drawer.drw-expanded .drw-sec { padding:18px 12px 6px; text-align:left; }
+            .drw-item { justify-content:center; gap:0; padding:10px 8px; }
+            #app-drawer.drw-expanded .drw-item { justify-content:flex-start; gap:12px; padding:11px 12px; }
+            .drw-top-tools { justify-content:center; padding:10px 0; background:transparent; }
+            #app-drawer.drw-expanded .drw-top-tools { justify-content:space-between; padding:12px; background:var(--surface-2); }
+            .drw-footer { padding-left:8px; padding-right:8px; }
         }
     `;
     document.head.appendChild(style);
+}
 
-    const isAdmin = !!(state && state.auth && state.auth.role === 'admin');
+function renderAppDrawer(force = false) {
+    ensureDrawerStyle();
 
-    const teacherMenu = `
-        <div class="drw-sec" style="color:var(--primary);">메인</div>
-        <button class="drw-item" onclick="closeAppDrawer(); renderDashboard();">홈</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openDailyJournalModal();">일지</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openTodoMemoModal();">메모</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openClassManageModal();">학급·교재</button>
+    const currentRole = getDrawerRoleKey();
+    const oldDrawer = document.getElementById('app-drawer');
+    const oldOverlay = document.getElementById('app-drawer-overlay');
 
-        <div class="drw-sec" style="color:#6E54FF;">수업·성적</div>
-        <button class="drw-item" onclick="closeAppDrawer(); if(typeof renderAttendanceLedger==='function') renderAttendanceLedger();">출석부</button>
-        <button class="drw-item" onclick="closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal();">시험일정</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openGlobalExamGradeView();">시험성적</button>
-        <button class="drw-item" onclick="closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket();">클리닉</button>
+    if (oldDrawer && oldOverlay && !force && oldDrawer.dataset.role === currentRole) {
+        applyTheme(getTheme());
+        return;
+    }
 
-        <div class="drw-sec" style="color:var(--warning);">운영</div>
-        <button class="drw-item" onclick="closeAppDrawer(); openDischargedStudents();">퇴원생</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">시스템·동기화</button>
-    `;
-
-    const adminMenu = `
-        <div class="drw-sec" style="color:var(--primary);">원장</div>
-        <button class="drw-item" onclick="closeAppDrawer(); renderAdminControlCenter();">운영센터</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openAddressBook();">학생관리</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openClassManageModal();">학급·교재</button>
-
-        <div class="drw-sec" style="color:var(--warning);">운영</div>
-        <button class="drw-item" onclick="closeAppDrawer(); openExamScheduleModal();">시험일정</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openDischargedStudents();">퇴원생</button>
-        <button class="drw-item" onclick="closeAppDrawer(); openOperationMenu();">시스템·동기화</button>
-    `;
+    if (oldDrawer) oldDrawer.remove();
+    if (oldOverlay) oldOverlay.remove();
 
     const wrapper = document.createElement('div');
     wrapper.innerHTML = `
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
-        <nav id="app-drawer" aria-label="AP Math OS navigation">
+        <nav id="app-drawer" data-role="${currentRole}" aria-label="AP Math OS navigation">
+            <div class="drw-rail-head">
+                <div class="drw-brand" title="AP Math OS">
+                    <span class="drw-logo">AP</span>
+                    <span class="drw-brand-text">AP Math OS</span>
+                </div>
+                <button class="drw-close" onclick="closeAppDrawer()" aria-label="닫기">×</button>
+            </div>
+            <div class="drw-menu">
+                ${buildDrawerMenu(currentRole)}
+            </div>
+            <div class="drw-spacer"></div>
             <div class="drw-top-tools">
                 <span class="drw-top-label">다크 모드</span>
-                <label class="switch">
+                <label class="switch" title="다크 모드">
                     <input type="checkbox" id="theme-switch" onchange="toggleTheme()">
                     <span class="slider"></span>
                 </label>
             </div>
-            ${isAdmin ? adminMenu : teacherMenu}
-            <div class="drw-spacer"></div>
             <div class="drw-footer">
-                <button class="drw-item danger" onclick="closeAppDrawer(); logout();">로그아웃</button>
+                ${drawerItem('⎋', '로그아웃', "closeAppDrawer(); logout();", 'danger')}
             </div>
         </nav>
     `;
 
     while (wrapper.firstChild) document.body.appendChild(wrapper.firstChild);
-
     applyTheme(getTheme());
+}
+
+function removeAppDrawer() {
+    const drw = document.getElementById('app-drawer');
+    const ovl = document.getElementById('app-drawer-overlay');
+    if (drw) drw.remove();
+    if (ovl) ovl.remove();
+}
+
+function isDesktopDrawerMode() {
+    return window.matchMedia && window.matchMedia('(min-width: 901px)').matches;
 }
 
 function openAppDrawer() {
     renderAppDrawer();
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
-    if (drw) drw.classList.add('drw-open');
+    if (!drw) return;
+
+    if (isDesktopDrawerMode()) {
+        const expanded = drw.classList.toggle('drw-expanded');
+        document.body.classList.toggle('ap-drawer-expanded', expanded);
+        return;
+    }
+
+    document.body.classList.remove('ap-drawer-expanded');
+    drw.classList.add('drw-open');
     if (ovl) ovl.classList.add('drw-open');
 }
 
 function closeAppDrawer() {
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
-    if (drw) drw.classList.remove('drw-open');
+    if (drw) {
+        drw.classList.remove('drw-open');
+        drw.classList.remove('drw-expanded');
+    }
     if (ovl) ovl.classList.remove('drw-open');
+    document.body.classList.remove('ap-drawer-expanded');
 }
 
+function syncDrawerResponsiveState() {
+    const drw = document.getElementById('app-drawer');
+
+    if (!isDesktopDrawerMode()) {
+        document.body.classList.remove('ap-drawer-expanded');
+        if (drw) drw.classList.remove('drw-expanded');
+        return;
+    }
+
+    if (drw && !drw.classList.contains('drw-expanded')) {
+        document.body.classList.remove('ap-drawer-expanded');
+    }
+}
+
+if (!window.__apDrawerResizePatched) {
+    window.__apDrawerResizePatched = true;
+    window.addEventListener('resize', syncDrawerResponsiveState);
+    window.addEventListener('orientationchange', syncDrawerResponsiveState);
+}
+
+
+
+function goHome() {
+    try {
+        if (typeof closeModal === 'function') closeModal();
+        if (typeof closeAppDrawer === 'function') closeAppDrawer();
+
+        if (typeof renderDashboard !== 'function') {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        window.setTimeout(() => {
+            try {
+                renderDashboard();
+                updateMobileHeaderUser();
+                syncDashboardInternalHeader();
+            } catch (e) {
+                console.warn('[ui.js] goHome render fallback:', e);
+                window.location.href = 'index.html';
+            }
+        }, 280);
+        return;
+    } catch (e) {
+        console.warn('[ui.js] goHome fallback:', e);
+    }
+    window.location.href = 'index.html';
+}
 
 // ============================================================
 // [전역 함수 노출]
@@ -504,3 +772,6 @@ window.setButtonBusy = setButtonBusy;
 window.renderAppDrawer = renderAppDrawer;
 window.openAppDrawer = openAppDrawer;
 window.closeAppDrawer = closeAppDrawer;
+window.goHome = goHome;
+window.updateMobileHeaderUser = updateMobileHeaderUser;
+window.syncDashboardInternalHeader = syncDashboardInternalHeader;

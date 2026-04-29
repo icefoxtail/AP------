@@ -8,109 +8,131 @@
         /* =========================================
            [Polish] Light Mode Palette (미니멀리즘)
            ========================================= */
-                :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #60a5fa;
-            --secondary: #64748b;
-            --success: #059669;
-            --error: #ef4444;
-            --warning: #f59e0b;
+        :root {
+            --primary: #1A5CFF;
+            --primary-dark: #0040D6;
+            --secondary: #6B7684;
+            --success: #00B894;
+            --error: #E8414F;
+            --warning: #F59F00;
 
-            --navy: #07111f;
-            --navy-2: #0c1a2e;
-            --navy-3: #12233f;
-            --navy-4: #173056;
-
-            --bg: #f4f7fb;
-            --surface: #ffffff;
-            --surface-2: #f7faff;
+            --bg: #F2F4F6;
+            --surface: #FFFFFF;
+            --surface-2: #F8FAFC;
             --surface-alpha: rgba(255,255,255,0.88);
-            --border: #e2e8f0;
-            --shadow: 0 14px 32px rgba(15,23,42,0.06);
+            --border: #E5E8EB;
+            /* 그림자 힘 빼기: 기존 0.04보다 더 부드럽고 가볍게 */
+            --shadow: 0 2px 8px rgba(0,0,0,0.03);
 
-            --text: #0f172a;
-            --text-soft: #64748b;
-            --text-weak: #94a3b8;
+            --text: #191F28;
+            --text-soft: #333D4B;
         }
 
         /* =========================================
            [Polish] Dark Mode Palette (Grok's Soft Dark)
            ========================================= */
-                body.dark {
-            --primary: #60a5fa;
-            --primary-dark: #3b82f6;
-            --primary-light: #93c5fd;
-            --secondary: #94a3b8;
-            --success: #34d399;
-            --error: #fb7185;
-            --warning: #fbbf24;
+        body.dark {
+            --primary: #0A84FF;      /* iOS Dark Blue */
+            --primary-dark: #0070E0;
+            --secondary: #6E6E73;    /* 차분한 보조 텍스트 */
+            --success: #30D158;      /* iOS Dark Green */
+            --error: #FF453A;        /* iOS Dark Red */
+            --warning: #FF9F0A;      /* iOS Dark Orange */
 
-            --bg: #07111f;
-            --surface: #0c1a2e;
-            --surface-2: #12233f;
-            --surface-alpha: rgba(12,26,46,0.88);
-            --border: rgba(148,163,184,0.22);
-            --shadow: 0 18px 40px rgba(0,0,0,0.45);
+            --bg: #121212;           /* Pure Black 탈출 -> 눈이 편안한 메인 배경 */
+            --surface: #1A1A1C;      /* 카드, 모달 등 주 컨테이너 */
+            --surface-2: #242427;    /* 입력창, 사이드바 등 보조 배경 */
+            --surface-alpha: rgba(26,26,28,0.88);
+            --border: #323238;       /* 은은하고 고급스러운 테두리 */
+            
+            /* 다크모드에서는 그림자 대신 테두리에 의존하여 미니멀리즘 극대화 */
+            --shadow: 0 4px 14px rgba(0,0,0,0.15); 
 
-            --text: #f8fafc;
-            --text-soft: #cbd5e1;
-            --text-weak: #94a3b8;
+            --text: #F5F5F7;         /* 너무 쨍하지 않은 화이트 */
+            --text-soft: #A8A8AC;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
 
-                body {
+        body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             margin: 0;
-            background:
-                radial-gradient(circle at top left, rgba(59,130,246,0.06), transparent 26%),
-                linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
             transition: background 0.2s, color 0.2s;
         }
 
-        body.dark {
-            background:
-                radial-gradient(circle at top left, rgba(96,165,250,0.10), transparent 28%),
-                linear-gradient(180deg, #07111f 0%, #0c1a2e 100%);
-        }
-
-                header {
+        header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: linear-gradient(180deg, rgba(7,17,31,0.98) 0%, rgba(12,26,46,0.96) 100%);
+            background: var(--surface-alpha);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: calc(12px + env(safe-area-inset-top)) 16px 12px;
-        }
-
-        .header-inner {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
+            display: grid;
+            grid-template-columns: 72px 1fr 72px;
             align-items: center;
+            min-height: calc(56px + env(safe-area-inset-top));
         }
 
         .brand {
             display: flex;
             align-items: baseline;
+            justify-content: center;
             gap: 8px;
             cursor: pointer;
+            min-width: 0;
         }
 
-                .brand-text {
+        .brand-text {
             font-size: 20px;
             font-weight: 950;
-            color: #ffffff;
+            color: var(--text);
             letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .mobile-header-menu {
+            justify-self: start;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 12px;
+            background: transparent;
+            color: var(--text);
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .mobile-header-menu:active {
+            background: var(--bg);
+            transform: scale(0.96);
+        }
+
+        .mobile-header-brand {
+            justify-self: center;
+        }
+
+        .mobile-header-user {
+            justify-self: end;
+            max-width: 72px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 13px;
+            font-weight: 900;
+            color: var(--text);
+            text-align: right;
+            letter-spacing: -0.2px;
         }
 
         nav {
@@ -119,151 +141,42 @@
             align-items: center;
         }
 
-                main {
+        main {
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
             padding: 16px 14px calc(100px + env(safe-area-inset-bottom));
         }
 
-        .desktop-rail {
-            display: none;
+        .ap-internal-header-hidden {
+            display: none !important;
         }
 
-        @media (min-width: 900px) {
+        @media (min-width: 901px) {
+            body {
+                padding-left: 64px;
+                transition: padding-left 0.24s ease;
+            }
+
+            body.ap-drawer-expanded {
+                padding-left: 260px;
+            }
+
             header {
                 display: none;
             }
 
-            body {
-                padding-left: 56px;
-            }
-
             main {
-                max-width: 1120px;
-                padding: 32px 32px 80px;
-            }
-
-            .desktop-rail {
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                z-index: 120;
-                width: 56px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                padding: 14px 8px calc(14px + env(safe-area-inset-bottom));
-                background: rgba(255,255,255,0.86);
-                border-right: 1px solid var(--border);
-                backdrop-filter: blur(14px);
-                -webkit-backdrop-filter: blur(14px);
-            }
-
-            body.dark .desktop-rail {
-                background: rgba(7,17,31,0.88);
-                border-right: 1px solid var(--border);
-            }
-
-            .rail-logo,
-            .rail-btn {
-                width: 38px;
-                height: 38px;
-                border-radius: 12px;
-                border: none;
-                background: transparent;
-                color: var(--text);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-family: inherit;
-                font-size: 13px;
-                font-weight: 950;
-                letter-spacing: -0.3px;
-                cursor: pointer;
-                position: relative;
-                transition: background 0.16s, color 0.16s, transform 0.16s;
-            }
-
-            .rail-logo {
-                color: var(--primary);
-                margin-bottom: 18px;
-            }
-
-            .rail-btn:hover,
-            .rail-logo:hover {
-                background: var(--surface-2);
-                color: var(--primary);
-            }
-
-            .rail-btn:active,
-            .rail-logo:active {
-                transform: scale(0.94);
-            }
-
-            .rail-sep {
-                width: 28px;
-                height: 1px;
-                background: var(--border);
-                margin: 8px 0;
-            }
-
-            .rail-spacer {
-                flex: 1;
-            }
-
-            .rail-user {
-                width: 30px;
-                height: 30px;
-                border-radius: 999px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: var(--primary);
-                color: #fff;
-                font-size: 11px;
-                font-weight: 900;
-                margin-top: 8px;
-            }
-
-            .rail-btn::after,
-            .rail-logo::after {
-                content: attr(data-tip);
-                position: absolute;
-                left: 46px;
-                top: 50%;
-                transform: translateY(-50%);
-                padding: 6px 9px;
-                border-radius: 8px;
-                background: rgba(15,23,42,0.92);
-                color: #fff;
-                font-size: 12px;
-                font-weight: 800;
-                line-height: 1;
-                white-space: nowrap;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.14s;
-                box-shadow: 0 10px 20px rgba(15,23,42,0.14);
-            }
-
-            .rail-btn:hover::after,
-            .rail-logo:hover::after {
-                opacity: 1;
-            }
-
-            #app-root > div:first-child button[onclick="openAppDrawer()"] {
-                display: none !important;
+                max-width: 1180px;
+                padding: 28px 36px 80px;
             }
         }
 
         @media (min-width: 1400px) {
             main {
-                max-width: 1180px;
-                padding-left: 36px;
-                padding-right: 36px;
+                max-width: 1240px;
+                padding-left: 40px;
+                padding-right: 40px;
             }
         }
 
@@ -272,20 +185,19 @@
         }
 
         /* [Polish] 카드 미니멀리즘: 투명한 테두리 대신 1px 은은한 테두리로 질감 표현 */
-                .card {
+        .card {
             background: var(--surface);
             color: var(--text);
             border-radius: 18px;
             padding: 16px;
             margin-bottom: 12px;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border); 
+            transition: background 0.2s, border 0.2s;
         }
 
-                body.dark .card {
-            box-shadow: none;
-            border: 1px solid var(--border);
+        body.dark .card {
+            box-shadow: none; /* 다크모드에서는 무거운 그림자를 완전히 뺍니다 */
         }
 
         .grid {
@@ -312,11 +224,11 @@
             font-family: inherit;
         }
 
-                .btn-primary {
-            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+        .btn-primary {
+            background: var(--primary);
             color: #ffffff;
             border: none;
-            box-shadow: 0 10px 22px rgba(37,99,235,0.20);
+            box-shadow: 0 4px 12px rgba(26,92,255,0.25);
         }
 
         body.dark .btn {
@@ -381,9 +293,14 @@
             -webkit-backdrop-filter: blur(4px);
         }
 
+        #modal-overlay:not(.show) {
+            pointer-events: none;
+        }
+
         #modal-overlay.show {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }
 
         #modal-content {
@@ -488,7 +405,13 @@
             font-weight: 600;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             animation: toast-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: opacity 0.35s ease, transform 0.35s ease;
         }
+
+        .toast.info { background: rgba(25, 31, 40, 0.92); }
+        .toast.success { background: rgba(0, 184, 148, 0.94); }
+        .toast.warn { background: rgba(245, 159, 0, 0.94); }
+        .toast.error { background: rgba(232, 65, 79, 0.94); }
 
         @keyframes toast-in {
             from {
@@ -571,31 +494,12 @@
     </style>
 </head>
 <body>
-    <nav class="desktop-rail" aria-label="AP Math OS 데스크톱 메뉴">
-        <button class="rail-logo" data-tip="홈" onclick="if(typeof goHome==='function') goHome(); else if(typeof renderDashboard==='function') renderDashboard();">AP</button>
-        <button class="rail-btn" data-tip="홈" onclick="if(typeof renderDashboard==='function') renderDashboard();">홈</button>
-        <button class="rail-btn" data-tip="일지" onclick="if(typeof openDailyJournalModal==='function') openDailyJournalModal();">일</button>
-        <button class="rail-btn" data-tip="메모" onclick="if(typeof openTodoMemoModal==='function') openTodoMemoModal();">메</button>
-        <button class="rail-btn" data-tip="학생관리" onclick="if(typeof openAddressBook==='function') openAddressBook();">학</button>
-        <div class="rail-sep"></div>
-        <button class="rail-btn" data-tip="출석부" onclick="if(typeof renderAttendanceLedger==='function') renderAttendanceLedger();">출</button>
-        <button class="rail-btn" data-tip="시험일정" onclick="if(typeof openExamScheduleModal==='function') openExamScheduleModal();">시</button>
-        <button class="rail-btn" data-tip="시험성적" onclick="if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView();">성</button>
-        <button class="rail-btn" data-tip="클리닉" onclick="if(typeof openClinicBasket==='function') openClinicBasket(); else if(typeof toast==='function') toast('클리닉 기능을 불러오지 못했습니다.', 'warn');">클</button>
-        <div class="rail-sep"></div>
-        <button class="rail-btn" data-tip="운영메뉴" onclick="if(typeof openOperationMenu==='function') openOperationMenu();">운</button>
-        <div class="rail-spacer"></div>
-        <button class="rail-btn" data-tip="다크모드" onclick="if(typeof toggleThemeLegacy==='function') toggleThemeLegacy();">다</button>
-        <button class="rail-btn" data-tip="로그아웃" onclick="if(typeof logout==='function') logout();">나</button>
-        <div class="rail-user">AP</div>
-    </nav>
-
     <header>
-        <div class="header-inner">
-            <div class="brand" onclick="goHome()">
-                <div class="brand-text">AP MATH</div>
-            </div>
+        <button class="mobile-header-menu" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴">☰</button>
+        <div class="brand mobile-header-brand" onclick="goHome()">
+            <div class="brand-text">AP MATH</div>
         </div>
+        <div class="mobile-header-user" id="mobile-header-user" aria-label="사용자"></div>
     </header>
 
     <main id="app-root"></main>
