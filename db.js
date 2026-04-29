@@ -41,13 +41,13 @@ window.mainDB = {
       "examType": "mid",
       "subject": "",
       "contentType": "기출",
-      "qCount": 24,
+      "qCount": 20,
       "rangeStartUnitKey": "M3-01",
       "rangeStartUnit": "실수와 그 계산",
       "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M3-03",
-      "rangeEndUnit": "이차방정식",
-      "rangeEndUnitOrder": 3,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
       "courseRanges": [
         {
           "standardCourse": "중3 수학",
@@ -55,9 +55,9 @@ window.mainDB = {
           "rangeStartUnitKey": "M3-01",
           "rangeStartUnit": "실수와 그 계산",
           "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-03",
-          "rangeEndUnit": "이차방정식",
-          "rangeEndUnitOrder": 3
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "중3 수학"
@@ -3655,14 +3655,25 @@ window.mainDB = {
       "subject": "",
       "contentType": "유형",
       "qCount": 79,
-      "rangeStartUnitKey": "",
-      "rangeStartUnit": "",
-      "rangeStartUnitOrder": 999,
-      "rangeEndUnitKey": "",
-      "rangeEndUnit": "",
-      "rangeEndUnitOrder": 999,
-      "courseRanges": [],
-      "primaryStandardCourse": ""
+      "rangeStartUnitKey": "M2-01",
+      "rangeStartUnit": "수와 식",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M2-01",
+      "rangeEndUnit": "수와 식",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-01",
+          "rangeStartUnit": "수와 식",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M2-01",
+          "rangeEndUnit": "수와 식",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
     },
     {
       "file": "1학기_기말평가_중1_단원평가.js",
