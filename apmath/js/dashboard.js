@@ -692,8 +692,75 @@ async function handleEditTodoMemo(id) {
     }
 }
 
-function openExamScheduleModal() {
+function openExamScheduleModal(baseDateStr = '') {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    
+    // 1. 기준 달력 연/월 계산
+    let targetYear, targetMonth;
+    if (baseDateStr) {
+        const parts = baseDateStr.split('-');
+        targetYear = parseInt(parts[0], 10);
+        targetMonth = parseInt(parts[1], 10) - 1;
+    } else {
+        const parts = todayStr.split('-');
+        targetYear = parseInt(parts[0], 10);
+        targetMonth = parseInt(parts[1], 10) - 1;
+    }
+
+    const firstDay = new Date(targetYear, targetMonth, 1).getDay();
+    const lastDate = new Date(targetYear, targetMonth + 1, 0).getDate();
+
+    // 2. 이전/다음 달 이동을 위한 날짜 문자열 계산
+    const prevMonthDate = new Date(targetYear, targetMonth - 1, 1);
+    const nextMonthDate = new Date(targetYear, targetMonth + 1, 1);
+    const prevStr = `${prevMonthDate.getFullYear()}-${String(prevMonthDate.getMonth() + 1).padStart(2, '0')}-01`;
+    const nextStr = `${nextMonthDate.getFullYear()}-${String(nextMonthDate.getMonth() + 1).padStart(2, '0')}-01`;
+
     const schedules = state.db.exam_schedules || [];
+    
+    // 3. 달력 UI 렌더링
+    let calendarHtml = `
+        <div style="background:var(--surface-2); border-radius:12px; padding:12px; margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <button class="btn" style="padding:6px 12px; font-size:12px; background:var(--surface); border:none;" onclick="openExamScheduleModal('${prevStr}')">◀</button>
+                <div style="font-size:15px; font-weight:900; color:var(--text);">${targetYear}년 ${targetMonth + 1}월</div>
+                <button class="btn" style="padding:6px 12px; font-size:12px; background:var(--surface); border:none;" onclick="openExamScheduleModal('${nextStr}')">▶</button>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; text-align:center; font-size:12px; font-weight:700; color:var(--secondary); margin-bottom:8px;">
+                <div style="color:var(--error);">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div style="color:var(--primary);">토</div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px;">
+    `;
+
+    // 시작 요일 빈 칸 채우기
+    for (let i = 0; i < firstDay; i++) {
+        calendarHtml += `<div></div>`;
+    }
+
+    // 날짜 채우기
+    for (let d = 1; d <= lastDate; d++) {
+        const dateStr = `${targetYear}-${String(targetMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const isToday = dateStr === todayStr;
+        const hasSchedule = schedules.some(s => s.exam_date === dateStr);
+        
+        let border = isToday ? '1px solid var(--primary)' : '1px solid transparent';
+        let color = isToday ? 'var(--primary)' : 'var(--text)';
+        
+        const dot = hasSchedule
+            ? `<div style="width:4px; height:4px; border-radius:50%; background:var(--error); margin:2px auto 0;"></div>`
+            : `<div style="width:4px; height:4px; margin:2px auto 0;"></div>`;
+
+        calendarHtml += `
+            <div style="background:var(--surface); border:${border}; border-radius:8px; padding:8px 0; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center;" onclick="document.getElementById('new-ex-date').value='${dateStr}'">
+                <span style="font-size:13px; font-weight:800; color:${color}; line-height:1;">${d}</span>
+                ${dot}
+            </div>
+        `;
+    }
+    
+    calendarHtml += `</div></div>`;
+
+    // 4. 기존 일정 목록 렌더링
     const rows = schedules.map(e => `
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div style="flex:1;">
@@ -707,7 +774,9 @@ function openExamScheduleModal() {
         </div>
     `).join('');
 
+    // 5. 모달 출력
     showModal('시험일정 관리', `
+        ${calendarHtml}
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px;">
                 <input type="text" id="new-ex-school" class="btn" placeholder="학교명" style="flex:1; text-align:left; border:none; background:var(--surface);">
@@ -718,12 +787,12 @@ function openExamScheduleModal() {
             </div>
             <div style="display:flex; gap:8px;">
                 <input type="text" id="new-ex-name" class="btn" placeholder="시험명" style="flex:1; text-align:left; border:none; background:var(--surface);">
-                <input type="date" id="new-ex-date" class="btn" style="flex:1; border:none; background:var(--surface);">
+                <input type="date" id="new-ex-date" class="btn" value="${todayStr}" style="flex:1; border:none; background:var(--surface);">
             </div>
             <input type="text" id="new-ex-memo" class="btn" placeholder="메모 (선택)" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn btn-primary" style="padding:10px; font-size:13px; font-weight:700; margin-top:4px;" onclick="addExamSchedule()">저장</button>
         </div>
-        <div style="max-height:45vh; overflow-y:auto; padding-right:4px;">
+        <div style="max-height:30vh; overflow-y:auto; padding-right:4px;">
             ${schedules.length ? rows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">시험일정이 없습니다</div>`}
         </div>
     `);
@@ -997,11 +1066,24 @@ function renderDashboard() {
     const teacherName = typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당');
 
     const appHeader = `
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; padding:2px 4px 0;">
-            <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+        <div style="display:flex; align-items:center; margin-bottom:20px; padding:4px 4px 0; width:100%;">
+            <div style="flex:1; display:flex; justify-content:flex-start;">
                 <button class="btn" style="width:36px; height:36px; padding:0; border:none; background:transparent; color:var(--text); font-size:22px; line-height:1;" onclick="openAppDrawer()">☰</button>
-                <div style="min-width:0;">
-                    <div style="font-size:20px; font-weight:950; color:var(--text); letter-spacing:-0.5px;">${teacherName} 선생님</div>
+            </div>
+            
+            <div style="display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; background:linear-gradient(135deg, var(--primary) 0%, rgba(110,84,255,1) 100%); border-radius:8px; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 8px rgba(26,92,255,0.3);">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19L12 3L20 19"></path>
+                        <path d="M8 13H16"></path>
+                    </svg>
+                </div>
+                <div style="font-size:20px; font-weight:950; color:var(--text); letter-spacing:-0.5px;">AP Math</div>
+            </div>
+            
+            <div style="flex:1; display:flex; justify-content:flex-end;">
+                <div style="text-align:right;">
+                    <div style="font-size:14px; font-weight:900; color:var(--text);">${teacherName} <span style="font-size:12px; font-weight:700; color:var(--secondary);">선생님</span></div>
                 </div>
             </div>
         </div>
