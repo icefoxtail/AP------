@@ -201,6 +201,44 @@ function openDischargedStudents() {
     openAdminStudentList('discharged');
 }
 
+const HIDDEN_DISCHARGED_STUDENTS_KEY = 'APMATH_HIDDEN_DISCHARGED_STUDENTS';
+
+function getHiddenDischargedStudentIds() {
+    try {
+        const parsed = JSON.parse(localStorage.getItem(HIDDEN_DISCHARGED_STUDENTS_KEY) || '[]');
+        return Array.isArray(parsed) ? parsed.map(String) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function setHiddenDischargedStudentIds(ids) {
+    localStorage.setItem(HIDDEN_DISCHARGED_STUDENTS_KEY, JSON.stringify([...new Set(ids.map(String))]));
+}
+
+async function restoreDischargedStudent(sid) {
+    if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
+    const r = await api.patch(`students/${sid}/restore`, {});
+    if (r?.success) {
+        setHiddenDischargedStudentIds(getHiddenDischargedStudentIds().filter(id => id !== String(sid)));
+        await loadData();
+        openAdminStudentList('discharged');
+    } else {
+        toast(r?.message || r?.error || '복구에 실패했습니다.', 'error');
+    }
+}
+
+function hideDischargedStudent(sid) {
+    if (!confirm('이 퇴원생을 목록에서 숨기시겠습니까?')) return;
+    setHiddenDischargedStudentIds([...getHiddenDischargedStudentIds(), String(sid)]);
+    openAdminStudentList('discharged');
+}
+
+function resetHiddenDischargedStudents() {
+    localStorage.removeItem(HIDDEN_DISCHARGED_STUDENTS_KEY);
+    openAdminStudentList('discharged');
+}
+
 function openAdminStudentList(type) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
@@ -218,7 +256,8 @@ function openAdminStudentList(type) {
         }); 
         title = "신규생 목록"; 
     } else if (type === 'discharged') { 
-        list = state.db.students.filter(s => s.status === '제적'); 
+        const hiddenIds = new Set(getHiddenDischargedStudentIds());
+        list = state.db.students.filter(s => s.status === '제적' && !hiddenIds.has(String(s.id))); 
         title = "퇴원생 목록"; 
     } else if (type === 'risk') { 
         list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
@@ -230,6 +269,15 @@ function openAdminStudentList(type) {
         const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
         let riskDetails = "";
         if (s.riskInfo) { riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:6px; background:rgba(255,71,87,0.08); padding:6px 8px; border-radius:6px; font-weight:600;">상태: ${s.riskInfo.riskTypes.join(', ')} <span style="opacity:0.7; font-weight:normal;">(${s.riskInfo.reasons.join(' · ')})</span></div>`; }
+        const actionButtons = type === 'discharged'
+            ? `
+                <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">재원 복구</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">숨김</button>
+                </div>
+            `
+            : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>`;
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
@@ -237,12 +285,16 @@ function openAdminStudentList(type) {
                     <div style="font-size:12px; color:var(--primary); font-weight:600; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
                     ${riskDetails}
                 </div>
-                <button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
+                ${actionButtons}
             </div>
         `;
     }).join('');
 
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
+    const hiddenReset = type === 'discharged' && getHiddenDischargedStudentIds().length
+        ? `<div style="display:flex; justify-content:flex-end; padding:0 4px 8px;"><button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="resetHiddenDischargedStudents()">숨김 목록 초기화</button></div>`
+        : '';
+
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenReset}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 function renderAdminControlCenter() {
@@ -1125,13 +1177,37 @@ function computeDashboardData() {
     };
 }
 
+function openDashboardClass(cid) {
+    const safeCid = String(cid || '');
+    if (!safeCid) {
+        toast('학급 정보를 찾을 수 없습니다.', 'warn');
+        return;
+    }
+
+    if (!state.ui) state.ui = {};
+    state.ui.currentClassId = safeCid;
+
+    if (typeof renderClass === 'function') {
+        renderClass(safeCid);
+        return;
+    }
+
+    if (typeof window !== 'undefined' && typeof window.renderClass === 'function') {
+        window.renderClass(safeCid);
+        return;
+    }
+
+    console.error('[AP Math OS] renderClass is not available. classroom.js load/order check required.', safeCid);
+    toast('학급 화면 모듈을 불러오지 못했습니다.', 'error');
+}
+
 // [POLISH] 학급 카드: 수평적 미니멀리즘 레이아웃
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
 
     if (!s.isScheduled) {
         return `
-            <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
+            <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
                 <div style="font-weight:900; font-size:15px; color:var(--secondary); margin-bottom:12px;">${apEscapeHtml(cls.name)}</div>
                 <div style="font-size:13px; font-weight:800; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:left;">오늘 수업 없음</div>
             </div>
@@ -1143,7 +1219,7 @@ function renderClassSummaryCard(cls, data) {
     const shadowColor = 'rgba(26,92,255,0.06)';
 
     return `
-        <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
+        <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
             <div style="font-weight:950; font-size:15px; color:var(--text); margin-bottom:14px;">${apEscapeHtml(cls.name)}</div>
             <div style="display:flex; gap:6px; align-items:center;">
                 <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:800; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:950; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
@@ -1160,23 +1236,24 @@ function renderTodoSections() {
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
     const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
     const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
+    const getMemoDate = (m) => String(m.memo_date || m.memoDate || m.date || '').split('T')[0].split(' ')[0];
+    const isMemoDone = (m) => m.is_done == 1 || m.is_done === true || m.isDone === true;
+    const isMemoPinned = (m) => m.is_pinned == 1 || m.is_pinned === true || m.isPinned === true;
 
     const todayMemos = state.db.operation_memos.filter(m => {
-        const isDone = m.is_done == 1 || m.is_done === true;
-        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
-        return !isDone && (isPinned || m.memo_date === todayStr);
+        const memoDate = getMemoDate(m);
+        return !isMemoDone(m) && (isMemoPinned(m) || memoDate === todayStr);
     });
     
     const upcomingMemos = state.db.operation_memos.filter(m => {
-        const isDone = m.is_done == 1 || m.is_done === true;
-        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
-        return !isDone && !isPinned && m.memo_date > todayStr && m.memo_date <= nextWeekStr;
+        const memoDate = getMemoDate(m);
+        return !isMemoDone(m) && !isMemoPinned(m) && memoDate > todayStr && memoDate <= nextWeekStr;
     });
     
     const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
 
     let todayHtml = todayMemos.length ? todayMemos.map(m => {
-        const isPinned = m.is_pinned == 1 || m.is_pinned === true;
+        const isPinned = isMemoPinned(m);
         return `
         <div style="padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
@@ -1188,7 +1265,7 @@ function renderTodoSections() {
 
     let upcomingHtml = '';
     const upcomingItems = [];
-    upcomingMemos.forEach(m => upcomingItems.push({ type: 'memo', date: m.memo_date, item: m }));
+    upcomingMemos.forEach(m => upcomingItems.push({ type: 'memo', date: getMemoDate(m), item: m }));
     upcomingExams.forEach(e => upcomingItems.push({ type: 'exam', date: e.exam_date, item: e }));
     
     upcomingItems.sort((a,b) => a.date.localeCompare(b.date));
@@ -1271,20 +1348,6 @@ function renderDashboard() {
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const data = computeDashboardData();
     const root = document.getElementById('app-root');
-    const teacherName = typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당');
-
-    const appHeader = `
-        <div style="display:flex; align-items:center; margin-bottom:20px; padding:4px 4px 0; width:100%;">
-            <div style="flex:1; display:flex; justify-content:flex-start;">
-                <button class="btn" style="width:36px; height:36px; padding:0; border:none; background:transparent; color:var(--text); font-size:22px; line-height:1;" onclick="openAppDrawer()">☰</button>
-            </div>         
-            <div style="flex:1; display:flex; justify-content:flex-end;">
-                <div style="text-align:right;">
-                    <div style="font-size:14px; font-weight:900; color:var(--text);">${apEscapeHtml(teacherName)} <span style="font-size:12px; font-weight:700; color:var(--secondary);">선생님</span></div>
-                </div>
-            </div>
-        </div>
-    `;
 
     const todayJournalCard = renderTodayJournalCard(data);
 
@@ -1299,7 +1362,7 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${appHeader}${todayJournalCard}${todoSections}${classStatus}</div>`;
+    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${todayJournalCard}${todoSections}${classStatus}</div>`;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
