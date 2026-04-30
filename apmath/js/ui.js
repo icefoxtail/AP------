@@ -693,7 +693,7 @@ function ensureDrawerStyle() {
         #app-drawer .switch {
             position:absolute !important;
             right:16px !important;
-            top:calc(10px + env(safe-area-inset-top)) !important;
+            top:calc(15px + env(safe-area-inset-top)) !important;
             margin:0 !important;
         }
         #app-drawer .drw-menu,
