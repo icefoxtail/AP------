@@ -5,6 +5,8 @@
  * [Claude Precision Fix]: Safari Date 파싱 버그, Timezone 어긋남, is_active 타입 캐스팅 완벽 방어
  * [Master Review Patch]: 14일 필터 적용, XSS 방어, 달력 상태 동기화, 중등부 필터 통합
  * [3rd Stabilization]: 날짜 파싱 헬퍼 통일(apParseLocalDateTime), 중등반 필터 완전 통일
+ * [Partner B Fix]: 오늘 수업 요일 필터링 적용 및 시험 일정 필수 입력 해제
+ * [Partner B Hotfix]: 학급 진입 시 state.ui.currentClassId 전역 상태 누락 버그 해결
  */
 
 function copyPhoneNumber(text) {
@@ -43,6 +45,18 @@ function apFormatMonthDay(value) {
     if (!Number.isFinite(m) || !Number.isFinite(d)) return '';
 
     return `${m}월 ${d}일`;
+}
+
+// [Partner B] 해당 반이 오늘 수업이 있는 날인지 판정하는 헬퍼
+function isClassScheduledToday(cid) {
+    const cls = state.db.classes.find(c => String(c.id) === String(cid));
+    if (!cls) return false;
+    // 수업 요일 설정이 없으면 매일 수업으로 간주
+    if (!cls.schedule_days) return true;
+    
+    const today = new Date().getDay(); // 0(일) ~ 6(토)
+    const days = String(cls.schedule_days).split(',').map(d => d.trim());
+    return days.includes(String(today));
 }
 
 function isMiddleSchoolClass(c) {
@@ -432,7 +446,7 @@ function openClassManageModal() {
 
     const renderClassRow = (c) => `
         <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-            <div>
+            <div style="flex:1; cursor:pointer; padding-right:10px;" onclick="closeModal(); state.ui.currentClassId='${c.id}'; if(typeof renderClass==='function') renderClass('${c.id}');">
                 <div style="font-weight:900; font-size:14px; color:${Number(c.is_active)===0?'var(--secondary)':'var(--text)'};">
                     ${apEscapeHtml(c.name)} <span style="font-size:11px; font-weight:normal; color:var(--secondary); margin-left:4px;">${apEscapeHtml(c.grade)}</span>
                 </div>
@@ -901,8 +915,8 @@ function openExamScheduleModal(baseDateStr = '') {
     const rows = schedules.map(e => `
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div style="flex:1;">
-                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${e.exam_date} | ${apEscapeHtml(e.school_name)} ${apEscapeHtml(e.grade)}</div>
-                <div style="font-size:14px; font-weight:900; color:var(--text);">${apEscapeHtml(e.exam_name)}</div>
+                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${e.exam_date} | ${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')}</div>
+                <div style="font-size:14px; font-weight:900; color:var(--text);">${apEscapeHtml(e.exam_name || '일정')}</div>
                 ${e.memo ? `<div style="font-size:12px; color:var(--secondary); margin-top:4px;">${apEscapeHtml(e.memo)}</div>` : ''}
             </div>
             <div style="display:flex; gap:6px;">
@@ -911,37 +925,39 @@ function openExamScheduleModal(baseDateStr = '') {
         </div>
     `).join('');
 
-    // 5. 모달 출력
+    // 5. 모달 출력 (라벨 유연화)
     showModal('시험일정 관리', `
         ${calendarHtml}
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px;">
-                <input type="text" id="new-ex-school" class="btn" placeholder="학교명" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="text" id="new-ex-school" class="btn" placeholder="장소/학교 (선택)" style="flex:1; text-align:left; border:none; background:var(--surface);">
                 <select id="new-ex-grade" class="btn" style="flex:1; border:none; background:var(--surface);">
+                    <option value="">공통/전체</option>
                     <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
                     <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
                 </select>
             </div>
             <div style="display:flex; gap:8px;">
-                <input type="text" id="new-ex-name" class="btn" placeholder="시험명" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="text" id="new-ex-name" class="btn" placeholder="일정 내용 (선택)" style="flex:1; text-align:left; border:none; background:var(--surface);">
                 <input type="date" id="new-ex-date" class="btn" value="${todayStr}" style="flex:1; border:none; background:var(--surface);">
             </div>
-            <input type="text" id="new-ex-memo" class="btn" placeholder="메모 (선택)" style="text-align:left; border:none; background:var(--surface);">
+            <input type="text" id="new-ex-memo" class="btn" placeholder="추가 메모 (선택)" style="text-align:left; border:none; background:var(--surface);">
             <button class="btn btn-primary" style="padding:10px; font-size:13px; font-weight:700; margin-top:4px;" onclick="addExamSchedule()">저장</button>
         </div>
         <div style="max-height:30vh; overflow-y:auto; padding-right:4px;">
-            ${schedules.length ? rows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">시험일정이 없습니다</div>`}
+            ${schedules.length ? rows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">일정이 없습니다</div>`}
         </div>
     `);
 }
 
+// [Partner B] 필수 입력 제거: 날짜만 있으면 저장 가능
 async function addExamSchedule() {
     const sc = document.getElementById('new-ex-school').value.trim();
     const gr = document.getElementById('new-ex-grade').value;
     const na = document.getElementById('new-ex-name').value.trim();
     const da = document.getElementById('new-ex-date').value;
     const me = document.getElementById('new-ex-memo').value.trim();
-    if(!sc || !na || !da) return toast('필수 항목을 입력하세요', 'warn');
+    if(!da) return toast('날짜를 선택하세요', 'warn');
     const r = await api.post('exam-schedules', { schoolName: sc, grade: gr, examName: na, examDate: da, memo: me });
     if(r.success) { await loadData(); openExamScheduleModal(); }
 }
@@ -955,11 +971,12 @@ async function deleteExamSchedule(id) {
 function openEditExamScheduleModal(id) {
     const e = state.db.exam_schedules.find(x => x.id === id);
     if(!e) return;
-    showModal('시험일정 수정', `
+    showModal('일정 수정', `
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px;">
-                <input type="text" id="edit-ex-school" class="btn" value="${apEscapeHtml(e.school_name)}" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="text" id="edit-ex-school" class="btn" value="${apEscapeHtml(e.school_name || '')}" placeholder="장소/학교 (선택)" style="flex:1; text-align:left; border:none; background:var(--surface);">
                 <select id="edit-ex-grade" class="btn" style="flex:1; border:none; background:var(--surface);">
+                    <option value="">공통/전체</option>
                     <option value="중1" ${e.grade==='중1'?'selected':''}>중1</option>
                     <option value="중2" ${e.grade==='중2'?'selected':''}>중2</option>
                     <option value="중3" ${e.grade==='중3'?'selected':''}>중3</option>
@@ -969,10 +986,10 @@ function openEditExamScheduleModal(id) {
                 </select>
             </div>
             <div style="display:flex; gap:8px;">
-                <input type="text" id="edit-ex-name" class="btn" value="${apEscapeHtml(e.exam_name)}" style="flex:1; text-align:left; border:none; background:var(--surface);">
+                <input type="text" id="edit-ex-name" class="btn" value="${apEscapeHtml(e.exam_name || '')}" placeholder="일정 내용 (선택)" style="flex:1; text-align:left; border:none; background:var(--surface);">
                 <input type="date" id="edit-ex-date" class="btn" value="${e.exam_date}" style="flex:1; border:none; background:var(--surface);">
             </div>
-            <input type="text" id="edit-ex-memo" class="btn" value="${apEscapeHtml(e.memo||'')}" style="text-align:left; border:none; background:var(--surface);"><button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
+            <input type="text" id="edit-ex-memo" class="btn" value="${apEscapeHtml(e.memo||'')}" placeholder="추가 메모" style="text-align:left; border:none; background:var(--surface);"><button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
                 <button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="deleteExamSchedule('${id}')">완전 삭제</button>
@@ -987,7 +1004,7 @@ async function handleEditExamSchedule(id) {
     const na = document.getElementById('edit-ex-name').value.trim();
     const da = document.getElementById('edit-ex-date').value.trim();
     const me = document.getElementById('edit-ex-memo').value.trim();
-    if(!sc || !na || !da) return toast('필수 항목을 입력하세요', 'warn');
+    if(!da) return toast('날짜를 선택하세요', 'warn');
     
     const r = await api.patch('exam-schedules/' + id, { schoolName: sc, grade: gr, examName: na, examDate: da, memo: me });
     if(r.success) { 
@@ -1061,7 +1078,7 @@ function computeDashboardData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
-        return typeof isClassScheduledToday === 'function' ? isClassScheduledToday(cid) : true;
+        return isClassScheduledToday(cid); // [Partner B] 요일 필터 적용
     });
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
@@ -1092,7 +1109,7 @@ function computeDashboardData() {
         });
         
         let cPre = cActiveIds.length - cAbs;
-        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: typeof isClassScheduledToday === 'function' ? isClassScheduledToday(c.id) : true };
+        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledToday(c.id) };
     });
 
     return { 
@@ -1114,7 +1131,7 @@ function renderClassSummaryCard(cls, data) {
 
     if (!s.isScheduled) {
         return `
-            <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
+            <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
                 <div style="font-weight:900; font-size:15px; color:var(--secondary); margin-bottom:12px;">${apEscapeHtml(cls.name)}</div>
                 <div style="font-size:12px; font-weight:800; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:center;">오늘 수업 없음</div>
             </div>
@@ -1126,7 +1143,7 @@ function renderClassSummaryCard(cls, data) {
     const shadowColor = 'rgba(26,92,255,0.06)';
 
     return `
-        <div onclick="renderClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
+        <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
             <div style="font-weight:950; font-size:15px; color:var(--text); margin-bottom:14px;">${apEscapeHtml(cls.name)}</div>
             <div style="display:flex; gap:6px; align-items:center;">
                 <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:950; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
@@ -1185,7 +1202,8 @@ function renderTodoSections() {
 
             if (u.type === 'exam') {
                 const e = u.item;
-                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(e.school_name)} ${apEscapeHtml(e.grade)} ${apEscapeHtml(e.exam_name)}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
+                const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
+                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             } else {
                 return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
             }
@@ -1205,13 +1223,12 @@ function renderTodoSections() {
                     <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">주간일정</h3>
                     <span style="font-size:11px; font-weight:800; color:var(--secondary);">관리</span>
                 </div>
-                <div onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(110,84,255,0.15); background:rgba(110,84,255,0.03); box-shadow:0 4px 12px rgba(110,84,255,0.03);">${upcomingHtml}</div>
-            ` : ''}
+<div style="overflow:hidden; border-radius:16px; border:1px solid rgba(110,84,255,0.15); background:rgba(110,84,255,0.03); box-shadow:0 4px 12px rgba(110,84,255,0.03);">${upcomingHtml}</div>            ` : ''}
         </div>
     `;
 }
 
-// [NEW] 오늘일지 카드 생성 함수
+// [NEW] 오늘일지 카드 생성 함수 (요일 필터 정밀 적용)
 function renderTodayJournalCard(data) {
     const todayClasses = state.db.classes.filter(c => {
         if (Number(c.is_active) === 0) return false;
@@ -1219,6 +1236,7 @@ function renderTodayJournalCard(data) {
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
         const summary = data.classSummaries[c.id];
+        // [Partner B] summary.isScheduled가 실제 요일 필터링 값을 가지고 있음
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
         return true;
     });
@@ -1272,6 +1290,7 @@ function renderDashboard() {
 
     const todoSections = renderTodoSections();
     
+    // [Partner B] 대시보드 학급 목록에서도 필터링된 결과와 동기화
     const classes = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
@@ -1292,7 +1311,7 @@ function computeTodayCloseData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
-        return typeof isClassScheduledToday === 'function' ? isClassScheduledToday(cid) : true;
+        return isClassScheduledToday(cid);
     });
 
     const absents = [];
