@@ -1131,9 +1131,9 @@ function renderClassSummaryCard(cls, data) {
 
     if (!s.isScheduled) {
         return `
-            <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
+            <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
                 <div style="font-weight:900; font-size:15px; color:var(--secondary); margin-bottom:12px;">${apEscapeHtml(cls.name)}</div>
-                <div style="font-size:12px; font-weight:800; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:center;">오늘 수업 없음</div>
+                <div style="font-size:13px; font-weight:800; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:left;">오늘 수업 없음</div>
             </div>
         `;
     }
@@ -1143,12 +1143,12 @@ function renderClassSummaryCard(cls, data) {
     const shadowColor = 'rgba(26,92,255,0.06)';
 
     return `
-        <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:20px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
+        <div onclick="state.ui.currentClassId='${cls.id}'; if(typeof renderClass==='function') renderClass('${cls.id}');" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
             <div style="font-weight:950; font-size:15px; color:var(--text); margin-bottom:14px;">${apEscapeHtml(cls.name)}</div>
             <div style="display:flex; gap:6px; align-items:center;">
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:950; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">등원 <span style="font-weight:950; color:var(--success); margin-left:2px;">${s.present}</span></div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">결석 <span style="font-weight:950; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:2px;">${s.absent}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:800; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:950; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:800; color:var(--secondary); border:1px solid var(--border);">등원 <span style="font-weight:950; color:var(--success); margin-left:2px;">${s.present}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:800; color:var(--secondary); border:1px solid var(--border);">결석 <span style="font-weight:950; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:2px;">${s.absent}</span></div>
             </div>
         </div>
     `;
@@ -1181,7 +1181,7 @@ function renderTodoSections() {
         <div style="padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:rgba(255,165,2,0.8);">
-                <span style="font-size:14px; font-weight:950; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:4px; font-size:10px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}</span>
+                <span style="font-size:15px; font-weight:900; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:10px; font-size:11px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}</span>
             </label>
         </div>
     `}).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
@@ -1203,9 +1203,9 @@ function renderTodoSections() {
             if (u.type === 'exam') {
                 const e = u.item;
                 const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
-                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
+                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:900; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:10px; font-weight:900;">${dDay}</span></div>`;
             } else {
-                return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:950; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:6px; font-weight:950;">${dDay}</span></div>`;
+                return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:900; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:10px; font-weight:900;">${dDay}</span></div>`;
             }
         }).join('');
     }
@@ -1249,7 +1249,7 @@ function renderTodayJournalCard(data) {
             const summary = data.classSummaries[c.id];
             return `${apEscapeHtml(c.name)} ${summary.present}/${summary.activeCount}`;
         });
-        contentHtml = `<div style="font-size:14px; font-weight:850; color:var(--text); line-height:1.55;">${classStrings.join(' · ')}</div>`;
+        contentHtml = `<div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.55;">${classStrings.join(' · ')}</div>`;
     }
 
     return `
@@ -1296,10 +1296,10 @@ function renderDashboard() {
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
             <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">학급관리</h3>
         </div>
-        <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
+        <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = appHeader + todayJournalCard + todoSections + classStatus;
+    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${appHeader}${todayJournalCard}${todoSections}${classStatus}</div>`;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
