@@ -14,7 +14,7 @@
 // ============================================================
 // [공통 토큰]
 // ============================================================
-const AP_DASH_DS = {
+const AP_UI_DS = {
     x:      '16px',
     r:      '16px',
     rSm:    '10px',
@@ -41,8 +41,8 @@ function renderTodayJournalCard(data) {
     if (todayClasses.length === 0) {
         contentHtml = `
             <span style="
-                font-size:${AP_DASH_DS.fsSub};
-                font-weight:${AP_DASH_DS.fw};
+                font-size:${AP_UI_DS.fsSub};
+                font-weight:${AP_UI_DS.fw};
                 color:var(--secondary);
             ">오늘 수업반 없음</span>
         `;
@@ -52,7 +52,7 @@ function renderTodayJournalCard(data) {
             return `
                 <span style="white-space:nowrap;">
                     ${apEscapeHtml(c.name)}
-                    <span style="color:var(--primary); font-weight:${AP_DASH_DS.fwBold};">${s.present}</span><span style="color:var(--secondary);">/${s.activeCount}</span>
+                    <span style="color:var(--primary); font-weight:${AP_UI_DS.fwBold};">${s.present}</span><span style="color:var(--secondary);">/${s.activeCount}</span>
                 </span>
             `;
         });
@@ -61,8 +61,8 @@ function renderTodayJournalCard(data) {
                 display:flex;
                 flex-wrap:wrap;
                 gap:10px;
-                font-size:${AP_DASH_DS.fs};
-                font-weight:${AP_DASH_DS.fw};
+                font-size:${AP_UI_DS.fs};
+                font-weight:${AP_UI_DS.fw};
                 color:var(--text);
                 line-height:1.6;
             ">${classStrings.join('')}</div>
@@ -78,8 +78,8 @@ function renderTodayJournalCard(data) {
                 margin-bottom:8px;
             ">
                 <span style="
-                    font-size:${AP_DASH_DS.fs};
-                    font-weight:${AP_DASH_DS.fwBold};
+                    font-size:${AP_UI_DS.fs};
+                    font-weight:${AP_UI_DS.fwBold};
                     color:var(--text);
                 ">오늘일지</span>
             </div>
@@ -90,10 +90,10 @@ function renderTodayJournalCard(data) {
                     justify-content:space-between;
                     align-items:center;
                     gap:12px;
-                    padding:14px ${AP_DASH_DS.x};
+                    padding:14px ${AP_UI_DS.x};
                     background:var(--surface);
                     border:1px solid var(--border);
-                    border-radius:${AP_DASH_DS.r};
+                    border-radius:${AP_UI_DS.r};
                     box-shadow:var(--shadow);
                     cursor:pointer;
                 "
@@ -101,7 +101,7 @@ function renderTodayJournalCard(data) {
                 <div style="min-width:0; flex:1;">${contentHtml}</div>
                 <span style="
                     font-size:20px;
-                    font-weight:${AP_DASH_DS.fwBold};
+                    font-weight:${AP_UI_DS.fwBold};
                     color:var(--primary);
                     line-height:1;
                     flex:0 0 auto;
@@ -142,7 +142,7 @@ function renderTodoSections() {
             const isPinned = m.is_pinned == 1 || m.is_pinned === true;
             return `
                 <div style="
-                    padding:13px ${AP_DASH_DS.x};
+                    padding:13px ${AP_UI_DS.x};
                     border-bottom:1px solid var(--border);
                     display:flex;
                     align-items:center;
@@ -155,18 +155,18 @@ function renderTodoSections() {
                         style="transform:scale(1.15); margin:0; flex:0 0 auto; accent-color:var(--primary);"
                     >
                     <span style="
-                        font-size:${AP_DASH_DS.fs};
-                        font-weight:${AP_DASH_DS.fw};
+                        font-size:${AP_UI_DS.fs};
+                        font-weight:${AP_UI_DS.fw};
                         color:${isPinned ? 'var(--primary)' : 'var(--text)'};
                         flex:1;
                     ">${isPinned
                         ? `<span style="
-                            font-size:${AP_DASH_DS.fsTag};
-                            font-weight:${AP_DASH_DS.fwBold};
+                            font-size:${AP_UI_DS.fsTag};
+                            font-weight:${AP_UI_DS.fwBold};
                             background:var(--surface-2);
                             color:var(--primary);
                             padding:2px 6px;
-                            border-radius:${AP_DASH_DS.rSm};
+                            border-radius:${AP_UI_DS.rSm};
                             margin-right:6px;
                           ">고정</span>`
                         : ''}${apEscapeHtml(m.content)}</span>
@@ -174,9 +174,9 @@ function renderTodoSections() {
             `;
         }).join('')
         : `<div style="
-            padding:22px ${AP_DASH_DS.x};
-            font-size:${AP_DASH_DS.fsSub};
-            font-weight:${AP_DASH_DS.fw};
+            padding:22px ${AP_UI_DS.x};
+            font-size:${AP_UI_DS.fsSub};
+            font-weight:${AP_UI_DS.fw};
             color:var(--secondary);
             text-align:center;
           ">오늘 등록된 할 일이 없습니다.</div>`;
@@ -202,7 +202,7 @@ function renderTodoSections() {
             <div
                 onclick="${action}"
                 style="
-                    padding:13px ${AP_DASH_DS.x};
+                    padding:13px ${AP_UI_DS.x};
                     border-bottom:1px solid var(--border);
                     display:flex;
                     justify-content:space-between;
@@ -212,19 +212,19 @@ function renderTodoSections() {
                 "
             >
                 <span style="
-                    font-size:${AP_DASH_DS.fs};
-                    font-weight:${AP_DASH_DS.fw};
+                    font-size:${AP_UI_DS.fs};
+                    font-weight:${AP_UI_DS.fw};
                     color:var(--text);
                     flex:1;
                     min-width:0;
                 ">${label}</span>
                 <span style="
-                    font-size:${AP_DASH_DS.fsTag};
-                    font-weight:${AP_DASH_DS.fwBold};
+                    font-size:${AP_UI_DS.fsTag};
+                    font-weight:${AP_UI_DS.fwBold};
                     color:var(--primary);
                     background:var(--surface-2);
                     padding:4px 8px;
-                    border-radius:${AP_DASH_DS.rSm};
+                    border-radius:${AP_UI_DS.rSm};
                     white-space:nowrap;
                     flex:0 0 auto;
                 ">${dDay}</span>
@@ -242,12 +242,12 @@ function renderTodoSections() {
                 align-items:center;
                 margin-bottom:8px;
             ">
-                <span style="font-size:${AP_DASH_DS.fs}; font-weight:${AP_DASH_DS.fwBold}; color:var(--text);">오늘일정</span>
+                <span style="font-size:${AP_UI_DS.fs}; font-weight:${AP_UI_DS.fwBold}; color:var(--text);">오늘일정</span>
                 <button
                     onclick="openTodoMemoModal()"
                     style="
                         padding:0; border:0; background:transparent;
-                        font-size:${AP_DASH_DS.fsSub}; font-weight:${AP_DASH_DS.fw};
+                        font-size:${AP_UI_DS.fsSub}; font-weight:${AP_UI_DS.fw};
                         color:var(--secondary); cursor:pointer; font-family:inherit;
                     "
                 >관리</button>
@@ -257,7 +257,7 @@ function renderTodoSections() {
                 style="
                     cursor:pointer;
                     margin-bottom:20px;
-                    border-radius:${AP_DASH_DS.r};
+                    border-radius:${AP_UI_DS.r};
                     border:1px solid var(--border);
                     background:var(--surface);
                     overflow:hidden;
@@ -272,18 +272,18 @@ function renderTodoSections() {
                 align-items:center;
                 margin-bottom:8px;
             ">
-                <span style="font-size:${AP_DASH_DS.fs}; font-weight:${AP_DASH_DS.fwBold}; color:var(--text);">주간일정</span>
+                <span style="font-size:${AP_UI_DS.fs}; font-weight:${AP_UI_DS.fwBold}; color:var(--text);">주간일정</span>
                 <button
                     onclick="openExamScheduleModal()"
                     style="
                         padding:0; border:0; background:transparent;
-                        font-size:${AP_DASH_DS.fsSub}; font-weight:${AP_DASH_DS.fw};
+                        font-size:${AP_UI_DS.fsSub}; font-weight:${AP_UI_DS.fw};
                         color:var(--secondary); cursor:pointer; font-family:inherit;
                     "
                 >관리</button>
             </div>
             <div style="
-                border-radius:${AP_DASH_DS.r};
+                border-radius:${AP_UI_DS.r};
                 border:1px solid var(--border);
                 background:var(--surface);
                 overflow:hidden;
@@ -307,8 +307,8 @@ function renderClassSummaryCard(cls, data) {
                 onclick="renderClass('${cls.id}')"
                 style="
                     cursor:pointer;
-                    padding:14px ${AP_DASH_DS.x};
-                    border-radius:${AP_DASH_DS.r};
+                    padding:14px ${AP_UI_DS.x};
+                    border-radius:${AP_UI_DS.r};
                     border:1px solid var(--border);
                     background:var(--surface-2);
                     display:flex;
@@ -318,20 +318,20 @@ function renderClassSummaryCard(cls, data) {
                 "
             >
                 <span style="
-                    font-size:${AP_DASH_DS.fs};
-                    font-weight:${AP_DASH_DS.fwBold};
+                    font-size:${AP_UI_DS.fs};
+                    font-weight:${AP_UI_DS.fwBold};
                     color:var(--secondary);
                     margin-bottom:10px;
                     display:block;
                 ">${apEscapeHtml(cls.name)}</span>
                 <span style="
-                    font-size:${AP_DASH_DS.fsSub};
-                    font-weight:${AP_DASH_DS.fw};
+                    font-size:${AP_UI_DS.fsSub};
+                    font-weight:${AP_UI_DS.fw};
                     color:var(--secondary);
                     background:var(--surface);
                     border:1px solid var(--border);
                     padding:6px 10px;
-                    border-radius:${AP_DASH_DS.rSm};
+                    border-radius:${AP_UI_DS.rSm};
                     text-align:center;
                 ">오늘 수업 없음</span>
             </div>
@@ -343,8 +343,8 @@ function renderClassSummaryCard(cls, data) {
             onclick="renderClass('${cls.id}')"
             style="
                 cursor:pointer;
-                padding:14px ${AP_DASH_DS.x};
-                border-radius:${AP_DASH_DS.r};
+                padding:14px ${AP_UI_DS.x};
+                border-radius:${AP_UI_DS.r};
                 border:1px solid var(--border);
                 background:var(--surface);
                 box-shadow:var(--shadow);
@@ -355,8 +355,8 @@ function renderClassSummaryCard(cls, data) {
             "
         >
             <span style="
-                font-size:${AP_DASH_DS.fs};
-                font-weight:${AP_DASH_DS.fwBold};
+                font-size:${AP_UI_DS.fs};
+                font-weight:${AP_UI_DS.fwBold};
                 color:var(--text);
                 margin-bottom:12px;
                 display:block;
@@ -364,34 +364,34 @@ function renderClassSummaryCard(cls, data) {
 
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
                 <span style="
-                    font-size:${AP_DASH_DS.fsSub};
-                    font-weight:${AP_DASH_DS.fw};
+                    font-size:${AP_UI_DS.fsSub};
+                    font-weight:${AP_UI_DS.fw};
                     color:var(--secondary);
                     background:var(--surface-2);
                     border:1px solid var(--border);
                     padding:5px 10px;
-                    border-radius:${AP_DASH_DS.rSm};
-                ">재원 <b style="font-weight:${AP_DASH_DS.fwBold}; color:var(--text);">${s.activeCount}</b></span>
+                    border-radius:${AP_UI_DS.rSm};
+                ">재원 <b style="font-weight:${AP_UI_DS.fwBold}; color:var(--text);">${s.activeCount}</b></span>
 
                 <span style="
-                    font-size:${AP_DASH_DS.fsSub};
-                    font-weight:${AP_DASH_DS.fw};
+                    font-size:${AP_UI_DS.fsSub};
+                    font-weight:${AP_UI_DS.fw};
                     color:var(--secondary);
                     background:var(--surface-2);
                     border:1px solid var(--border);
                     padding:5px 10px;
-                    border-radius:${AP_DASH_DS.rSm};
-                ">등원 <b style="font-weight:${AP_DASH_DS.fwBold}; color:var(--primary);">${s.present}</b></span>
+                    border-radius:${AP_UI_DS.rSm};
+                ">등원 <b style="font-weight:${AP_UI_DS.fwBold}; color:var(--primary);">${s.present}</b></span>
 
                 <span style="
-                    font-size:${AP_DASH_DS.fsSub};
-                    font-weight:${AP_DASH_DS.fw};
+                    font-size:${AP_UI_DS.fsSub};
+                    font-weight:${AP_UI_DS.fw};
                     color:var(--secondary);
                     background:var(--surface-2);
                     border:1px solid var(--border);
                     padding:5px 10px;
-                    border-radius:${AP_DASH_DS.rSm};
-                ">결석 <b style="font-weight:${AP_DASH_DS.fwBold}; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'};">${s.absent}</b></span>
+                    border-radius:${AP_UI_DS.rSm};
+                ">결석 <b style="font-weight:${AP_UI_DS.fwBold}; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'};">${s.absent}</b></span>
             </div>
         </div>
     `;
@@ -419,8 +419,8 @@ function renderDashboard() {
                 margin-bottom:8px;
             ">
                 <span style="
-                    font-size:${AP_DASH_DS.fs};
-                    font-weight:${AP_DASH_DS.fwBold};
+                    font-size:${AP_UI_DS.fs};
+                    font-weight:${AP_UI_DS.fwBold};
                     color:var(--text);
                 ">학급관리</span>
             </div>
@@ -437,7 +437,7 @@ function renderDashboard() {
     // 모든 콘텐츠를 padding 0 16px 래퍼 하나로 통일
     // 헤더는 ui.js 모바일 고정 헤더가 담당 → 내부 헤더 없음
     root.innerHTML = `
-        <div style="padding:0 ${AP_DASH_DS.x};">
+        <div style="padding:0 ${AP_UI_DS.x};">
             ${renderTodayJournalCard(data)}
             ${renderTodoSections()}
             ${classGrid}
