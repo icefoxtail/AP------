@@ -674,8 +674,8 @@ function ensureDrawerStyle() {
             position:absolute !important;
             left:16px !important;
             top:calc(10px + env(safe-area-inset-top)) !important;
-            width:36px !important;
-            height:36px !important;
+            width:32px !important;
+            height:32px !important;
             margin:0 !important;
             padding:0 !important;
             display:flex !important;
@@ -685,11 +685,15 @@ function ensureDrawerStyle() {
             background:transparent !important;
             border:0 !important;
             box-shadow:none !important;
+            font-size:20px !important;
+            font-weight:700 !important;
+            color:var(--text) !important;
+            cursor:pointer !important;
         }
         #app-drawer .switch {
             position:absolute !important;
             right:16px !important;
-            top:calc(15px + env(safe-area-inset-top)) !important;
+            top:calc(10px + env(safe-area-inset-top)) !important;
             margin:0 !important;
         }
         #app-drawer .drw-menu,
@@ -700,12 +704,14 @@ function ensureDrawerStyle() {
         }
         #app-drawer .drw-item {
             position:relative !important;
-            display:block !important;
+            display:flex !important;
+            align-items:center !important;
+            justify-content:flex-start !important;
             width:100% !important;
             min-height:38px !important;
             box-sizing:border-box !important;
             margin:1px 0 !important;
-            padding:0 !important;
+            padding:9px 16px !important;
             border:0 !important;
             border-radius:0 !important;
             background:transparent !important;
@@ -716,14 +722,12 @@ function ensureDrawerStyle() {
             text-align:left !important;
             letter-spacing:-0.25px !important;
             box-shadow:none !important;
+            cursor:pointer !important;
         }
         #app-drawer .drw-label {
-            position:absolute !important;
-            left:16px !important;
-            top:50% !important;
-            transform:translateY(-50%) !important;
+            position:static !important;
             display:block !important;
-            width:calc(100% - 32px) !important;
+            width:100% !important;
             min-width:0 !important;
             margin:0 !important;
             padding:0 !important;
@@ -731,6 +735,7 @@ function ensureDrawerStyle() {
             overflow:hidden !important;
             text-overflow:ellipsis !important;
             white-space:nowrap !important;
+            transform:none !important;
         }
         #app-drawer .drw-item.danger {
             color:var(--error) !important;
