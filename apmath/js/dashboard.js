@@ -201,26 +201,10 @@ function openDischargedStudents() {
     openAdminStudentList('discharged');
 }
 
-const HIDDEN_DISCHARGED_STUDENTS_KEY = 'APMATH_HIDDEN_DISCHARGED_STUDENTS';
-
-function getHiddenDischargedStudentIds() {
-    try {
-        const parsed = JSON.parse(localStorage.getItem(HIDDEN_DISCHARGED_STUDENTS_KEY) || '[]');
-        return Array.isArray(parsed) ? parsed.map(String) : [];
-    } catch (e) {
-        return [];
-    }
-}
-
-function setHiddenDischargedStudentIds(ids) {
-    localStorage.setItem(HIDDEN_DISCHARGED_STUDENTS_KEY, JSON.stringify([...new Set(ids.map(String))]));
-}
-
 async function restoreDischargedStudent(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const r = await api.patch(`students/${sid}/restore`, {});
     if (r?.success) {
-        setHiddenDischargedStudentIds(getHiddenDischargedStudentIds().filter(id => id !== String(sid)));
         await loadData();
         openAdminStudentList('discharged');
     } else {
@@ -228,15 +212,15 @@ async function restoreDischargedStudent(sid) {
     }
 }
 
-function hideDischargedStudent(sid) {
+async function hideDischargedStudent(sid) {
     if (!confirm('이 퇴원생을 목록에서 숨기시겠습니까?')) return;
-    setHiddenDischargedStudentIds([...getHiddenDischargedStudentIds(), String(sid)]);
-    openAdminStudentList('discharged');
-}
-
-function resetHiddenDischargedStudents() {
-    localStorage.removeItem(HIDDEN_DISCHARGED_STUDENTS_KEY);
-    openAdminStudentList('discharged');
+    const r = await api.patch(`students/${sid}/hide`, {});
+    if (r?.success) {
+        await loadData();
+        openAdminStudentList('discharged');
+    } else {
+        toast(r?.message || r?.error || '숨김 처리에 실패했습니다.', 'error');
+    }
 }
 
 function openAdminStudentList(type) {
@@ -256,8 +240,7 @@ function openAdminStudentList(type) {
         }); 
         title = "신규생 목록"; 
     } else if (type === 'discharged') { 
-        const hiddenIds = new Set(getHiddenDischargedStudentIds());
-        list = state.db.students.filter(s => s.status === '제적' && !hiddenIds.has(String(s.id))); 
+        list = state.db.students.filter(s => s.status === '제적'); 
         title = "퇴원생 목록"; 
     } else if (type === 'risk') { 
         list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
@@ -290,11 +273,7 @@ function openAdminStudentList(type) {
         `;
     }).join('');
 
-    const hiddenReset = type === 'discharged' && getHiddenDischargedStudentIds().length
-        ? `<div style="display:flex; justify-content:flex-end; padding:0 4px 8px;"><button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="resetHiddenDischargedStudents()">숨김 목록 초기화</button></div>`
-        : '';
-
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenReset}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 function renderAdminControlCenter() {
@@ -394,8 +373,11 @@ function renderAdminControlCenter() {
 }
 
 function renderAdminStudentSearch() {
-    const keyword = document.getElementById('admin-search-input').value.trim().toLowerCase();
+    const inputEl = document.getElementById('admin-search-input');
     const resultArea = document.getElementById('admin-search-results');
+    if (!inputEl || !resultArea) return;
+
+    const keyword = inputEl.value.trim().toLowerCase();
     if (!keyword) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">검색어를 입력하세요.</div>`; return; }
     
     const results = state.db.students.filter(s => s.name.toLowerCase().includes(keyword));
@@ -680,18 +662,11 @@ function openTextbookManageModal() {
 }
 
 function openAddTextbookModal() {
-    const classOptions = state.db.classes
-        .filter(c => Number(c.is_active) !== 0)
-        .map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`)
-        .join('');
+    const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
     const todayStr = new Date().toLocaleDateString('sv-SE');
-
     showModal('새 교재 등록', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <select id="new-tb-class" class="btn" style="background:var(--surface-2); border:none;">
-                <option value="">반을 선택하세요</option>
-                ${classOptions}
-            </select>
+            <select id="new-tb-class" class="btn" style="background:var(--surface-2); border:none;"><option value="">반을 선택하세요</option>${classOptions}</select>
             <input id="new-tb-title" class="btn" placeholder="교재명 (예: 개념원리 중1-1)" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">시작일:</span>
