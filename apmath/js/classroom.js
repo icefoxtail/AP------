@@ -90,6 +90,8 @@ function renderClass(cid) {
             align-items:center;
             padding:0 ${ds.x} 0;
             margin-bottom:20px;
+            gap:12px;
+            box-sizing:border-box;
         ">
             <div style="display:flex; align-items:center; gap:12px; min-width:0;">
                 <button
@@ -100,6 +102,7 @@ function renderClass(cid) {
                         height:40px;
                         padding:0;
                         flex:0 0 auto;
+                        cursor:pointer;
                         border:1px solid var(--border);
                         border-radius:${ds.rSm};
                         background:var(--surface);
@@ -142,6 +145,7 @@ function renderClass(cid) {
                     padding:0 14px;
                     font-size:${ds.fsSub};
                     font-weight:${ds.fw};
+                    cursor:pointer;
                     background:var(--surface-2);
                     border:1px solid var(--border);
                     border-radius:${ds.rSm};
@@ -157,6 +161,7 @@ function renderClass(cid) {
             gap:10px;
             padding:0 ${ds.x};
             margin-bottom:20px;
+            box-sizing:border-box;
         ">
             <button class="btn" style="
                 padding:14px 4px;
@@ -167,6 +172,7 @@ function renderClass(cid) {
                 align-items:center;
                 gap:8px;
                 border-radius:${ds.r};
+                cursor:pointer;
                 background:var(--surface);
                 border:1px solid var(--border);
                 color:var(--text);
@@ -185,6 +191,7 @@ function renderClass(cid) {
                 align-items:center;
                 gap:8px;
                 border-radius:${ds.r};
+                cursor:pointer;
                 background:var(--surface);
                 border:1px solid var(--border);
                 color:var(--text);
@@ -203,6 +210,7 @@ function renderClass(cid) {
                 align-items:center;
                 gap:8px;
                 border-radius:${ds.r};
+                cursor:pointer;
                 background:var(--surface);
                 border:1px solid var(--border);
                 color:var(--text);
@@ -221,6 +229,7 @@ function renderClass(cid) {
                 align-items:center;
                 gap:8px;
                 border-radius:${ds.r};
+                cursor:pointer;
                 line-height:1.2;
             " onclick="openClassRecordModal('${cid}')">
                 <span style="color:#fff;">${icons.edit}</span>
@@ -231,7 +240,7 @@ function renderClass(cid) {
 
     // [2] 오늘 현황 바
     const statusBarHtml = summary.isScheduled
-        ? `<div style="display:flex; gap:12px; align-items:center;">
+        ? `<div style="display:flex; gap:12px; align-items:center; justify-content:flex-end; flex-wrap:wrap; text-align:left;">
                <span style="font-size:${ds.fsSub}; font-weight:${ds.fw}; color:var(--secondary);">
                    출석 <b style="font-weight:${ds.fwBold}; color:var(--text);">${summary.att || 0}/${summary.total || 0}</b>
                </span>
@@ -323,6 +332,8 @@ function renderClass(cid) {
                 display:flex;
                 justify-content:space-between;
                 align-items:center;
+                gap:12px;
+                text-align:left;
             ">
                 <span style="font-weight:${ds.fwBold}; color:var(--primary);">오늘 현황</span>
                 ${statusBarHtml}
@@ -346,7 +357,8 @@ function renderClass(cid) {
                         ">학생 명단</span>
                     </div>
 
-                    <table style="width:100%; border-collapse:collapse;">
+                    <div style="width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;">
+                    <table style="width:100%; min-width:520px; border-collapse:collapse; table-layout:fixed;">
                         <thead>
                             <tr style="background:var(--surface-2);">
                                 <th style="
@@ -389,6 +401,7 @@ function renderClass(cid) {
                             `}
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
 
