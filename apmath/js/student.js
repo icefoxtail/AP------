@@ -42,9 +42,9 @@ function renderStudentDetailTab(sid, tab) {
 
     // 1. 프로필 헤더 (22px 대제목 및 고정 배지 규격)
     const headerHtml = `
-        <div style="margin-bottom: 24px; padding: 4px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
+        <div style="margin-bottom: 20px; padding: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+                <div style="min-width: 0;">
                     <h1 style="margin: 0; font-size: 22px; font-weight: 950; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${s.name}</h1>
                     <div style="display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;">
                         <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);">${s.school_name} ${s.grade}</span>
@@ -52,17 +52,17 @@ function renderStudentDetailTab(sid, tab) {
                         ${s.student_pin ? `<span class="std-badge" style="background: var(--surface); border: 1px solid var(--border); color: var(--text); letter-spacing: 1px;">PIN ${s.student_pin}</span>` : ''}
                     </div>
                 </div>
-                <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight: 800; line-height: 1.2; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text);" onclick="openEditStudent('${sid}')">정보 수정</button>
+                <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight: 800; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}')">정보 수정</button>
             </div>
             
             <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 18px;">
+                <div style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 16px; min-width: 0;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 600; margin-bottom: 4px; line-height: 1.5;">학생 연락처</div>
-                    <div style="font-size: 13px; font-weight: 800; color: var(--primary); cursor: pointer; line-height: 1.5;" onclick="copyPhoneNumber('${s.student_phone}')">${s.student_phone || '미등록'}</div>
+                    <div style="font-size: 13px; font-weight: 800; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.student_phone}')">${s.student_phone || '미등록'}</div>
                 </div>
-                <div style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 18px;">
+                <div style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 16px; min-width: 0;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 600; margin-bottom: 4px; line-height: 1.5;">보호자 (${s.guardian_relation || '미지정'})</div>
-                    <div style="font-size: 13px; font-weight: 800; color: var(--primary); cursor: pointer; line-height: 1.5;" onclick="copyPhoneNumber('${s.parent_phone}')">${s.parent_phone || '미등록'}</div>
+                    <div style="font-size: 13px; font-weight: 800; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.parent_phone}')">${s.parent_phone || '미등록'}</div>
                 </div>
             </div>
         </div>
@@ -70,10 +70,10 @@ function renderStudentDetailTab(sid, tab) {
 
     // 2. 탭 바 (규격화된 행간 및 버튼)
     const tabBarHtml = `
-        <div class="tab-bar" style="background: var(--bg); padding: 4px; border-radius: 14px; margin-bottom: 20px; display: flex; gap: 4px;">
-            <button class="tab-btn ${tab==='grade'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800;" onclick="renderStudentDetailTab('${sid}','grade')">성적분석</button>
-            <button class="tab-btn ${tab==='weak'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800;" onclick="renderStudentDetailTab('${sid}','weak')">취약단원</button>
-            <button class="tab-btn ${tab==='cns'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800;" onclick="renderStudentDetailTab('${sid}','cns')">상담기록</button>
+        <div class="tab-bar" style="background: var(--bg); padding: 4px; border-radius: 16px; margin-bottom: 20px; display: flex; gap: 4px;">
+            <button class="tab-btn ${tab==='grade'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','grade')">성적분석</button>
+            <button class="tab-btn ${tab==='weak'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','weak')">취약단원</button>
+            <button class="tab-btn ${tab==='cns'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','cns')">상담기록</button>
         </div>
     `;
 
@@ -86,12 +86,12 @@ function renderStudentDetailTab(sid, tab) {
     // 4. 하단 액션바 (큰 CTA 버튼 규격: Min-H 52px / 14px)
     const footerHtml = `
         <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px;">
-            <button class="btn btn-primary" style="flex: 1.5; min-height: 52px; font-size: 14px; font-weight: 800; border-radius: 14px; box-shadow: none;" onclick="openReportPreview('${sid}')">알림톡 문구 생성</button>
-            <button class="btn" style="flex: 1; min-height: 52px; font-size: 14px; font-weight: 800; color: var(--primary); border: 1px solid var(--primary); background: transparent; border-radius: 14px;" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
+            <button class="btn btn-primary" style="flex: 1.5; min-height: 52px; font-size: 15px; font-weight: 800; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="openReportPreview('${sid}')">알림톡 문구 생성</button>
+            <button class="btn" style="flex: 1; min-height: 52px; font-size: 15px; font-weight: 800; color: var(--primary); border: 1px solid var(--primary); background: transparent; border-radius: 16px; cursor: pointer;" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
         </div>
     `;
 
-    showModal(`${s.name} 프로필`, headerHtml + tabBarHtml + bodyHtml + footerHtml);
+    showModal(`${s.name} 프로필`, `<div style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
     if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
 }
 
@@ -102,31 +102,31 @@ function renderGradeTab(sid) {
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
     
     const chartArea = exs.length > 0 
-        ? `<div style="margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px;">
+        ? `<div style="margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
              <canvas id="studentGradeChart" style="width: 100%; height: 180px;"></canvas>
            </div>`
-        : `<div style="padding: 40px 20px; text-align: center; color: var(--secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; margin-bottom: 20px; font-size: 13px; font-weight: 700; line-height: 1.5;">누적된 성적 기록이 없습니다.</div>`;
+        : `<div style="padding: 40px 20px; text-align: center; color: var(--secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 20px; font-size: 13px; font-weight: 700; line-height: 1.5;">누적된 성적 기록이 없습니다.</div>`;
 
     const historyRows = exs.map(e => {
         const wrs = state.db.wrong_answers
             .filter(w => w.session_id === e.id)
             .sort((a,b)=>Number(a.question_id)-Number(b.question_id))
-            .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size: 11px; padding: 4px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; margin: 2px; color: var(--text-soft); font-weight: 600;">Q${w.question_id}</span>`)
+            .map(w => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(e, w.question_id) : `<span style="font-size: 11px; padding: 4px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; margin: 2px; color: var(--text-soft); font-weight: 600;">Q${w.question_id}</span>`)
             .join('');
             
         return `
             <div style="padding: 14px 4px; border-bottom: 1px solid var(--border);">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                    <div>
-                        <div style="font-size: 14px; font-weight: 900; color: var(--text); line-height: 1.4;">${e.exam_title}</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px;">
+                    <div style="min-width: 0;">
+                        <div style="font-size: 15px; font-weight: 900; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}</div>
                         <div style="font-size: 12px; color: var(--secondary); font-weight: 600; margin-top: 2px; line-height: 1.5;">${e.exam_date}</div>
                     </div>
                     <div style="font-size: 20px; font-weight: 900; color: var(--primary); line-height: 1.2;">${e.score}점</div>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px;">${wrs || '<span style="font-size: 11px; color: var(--secondary); font-weight: 600;">오답 없음</span>'}</div>
-                <div style="display: flex; gap: 6px; justify-content: flex-end;">
-                    <button class="btn" style="min-height: 32px; padding: 4px 8px; font-size: 11px; color: var(--warning); border: 1px solid rgba(255,165,2,0.2); background: rgba(255,165,2,0.05); border-radius: 8px; font-weight: 700;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
-                    <button class="btn" style="min-height: 32px; padding: 4px 8px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); border-radius: 8px; font-weight: 700;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>
+                <div style="display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap;">
+                    <button class="btn" style="min-height: 32px; padding: 4px 8px; font-size: 11px; color: var(--warning); border: 1px solid rgba(255,165,2,0.2); background: rgba(255,165,2,0.05); border-radius: 10px; font-weight: 700; cursor: pointer;" onclick="handleResetSessionWrongs('${e.id}','${sid}')">오답 초기화</button>
+                    <button class="btn" style="min-height: 32px; padding: 4px 8px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); border-radius: 10px; font-weight: 700; cursor: pointer;" onclick="handleDeleteSession('${e.id}','${sid}')">기록 삭제</button>
                 </div>
             </div>
         `;
@@ -167,11 +167,11 @@ function renderCnsTab(sid) {
     const cnsList = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)));
 
     const cnsCards = cnsList.map(c => `
-        <div class="card" style="padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 18px; box-shadow: none; background: var(--surface);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <div class="card" style="padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 16px; box-shadow: none; background: var(--surface);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span style="font-size: 12px; font-weight: 800; color: var(--secondary); line-height: 1.5;">${c.date}</span>
-                    <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 800; border: 1px solid rgba(26,92,255,0.15);">${c.type}</span>
+                    <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 800; border: 1px solid rgba(26,92,255,0.15);">${c.type}</span>
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <span style="cursor: pointer; color: var(--primary); font-size: 12px; font-weight: 800;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
@@ -421,11 +421,11 @@ async function handleEditStudent(sid) {
 function openAddStudent(defaultCid = '') {
     const opts = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`).join('');
     showModal('신규 학생 추가', `
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-            <input id="add-name" class="std-input-base" placeholder="이름 (필수)">
-            <input id="add-school" class="std-input-base" placeholder="학교 (필수)">
-            <select id="add-class" class="std-input-base"><option value="">반 선택</option>${opts}</select>
-            <input id="add-student-pin" class="std-input-base" placeholder="PIN (4자리 숫자, 선택)" maxlength="4">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px 4px; box-sizing: border-box;">
+            <input id="add-name" class="std-input-base" placeholder="이름 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
+            <input id="add-school" class="std-input-base" placeholder="학교 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
+            <select id="add-class" class="std-input-base" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;"><option value="">반 선택</option>${opts}</select>
+            <input id="add-student-pin" class="std-input-base" placeholder="PIN (4자리 숫자, 선택)" maxlength="4" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
         </div>
     `, '추가', handleAddStudent);
 }
