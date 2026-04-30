@@ -233,6 +233,11 @@ function safeToastError(message) {
 // [상단 헤더 동기화] 모바일 헤더 사용자명 / 내부 중복 헤더 숨김
 // ============================================================
 function getHeaderUserName() {
+    if (typeof getTeacherNameForUI === 'function') {
+        const teacherName = String(getTeacherNameForUI() || '').replace(/\s*선생님\s*$/g, '').trim();
+        if (teacherName) return teacherName;
+    }
+
     if (typeof state !== 'undefined') {
         if (state.ui && state.ui.userName) return String(state.ui.userName).replace(/\s*선생님\s*$/g, '').trim();
         if (state.auth && state.auth.name) return String(state.auth.name).replace(/\s*선생님\s*$/g, '').trim();
@@ -246,12 +251,41 @@ function getHeaderUserName() {
     return '';
 }
 
+function ensureDesktopHeaderUser() {
+    const topbar = document.querySelector('.desktop-topbar');
+    if (!topbar) return null;
+
+    let el = document.getElementById('desktop-header-user');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'desktop-header-user';
+        topbar.appendChild(el);
+    }
+
+    el.style.marginLeft = 'auto';
+    el.style.fontSize = '13px';
+    el.style.fontWeight = '900';
+    el.style.color = 'var(--text)';
+    el.style.whiteSpace = 'nowrap';
+    el.style.textAlign = 'right';
+    el.style.pointerEvents = 'none';
+    return el;
+}
+
 function updateMobileHeaderUser(name) {
-    const el = document.getElementById('mobile-header-user');
-    if (!el) return;
     const value = (name !== undefined ? String(name || '') : getHeaderUserName()).replace(/\s*선생님\s*$/g, '').trim();
-    el.textContent = value;
-    el.title = value;
+    const el = document.getElementById('mobile-header-user');
+    if (el) {
+        el.textContent = value;
+        el.title = value;
+    }
+
+    const desktopEl = ensureDesktopHeaderUser();
+    if (desktopEl) {
+        desktopEl.textContent = value;
+        desktopEl.title = value;
+        desktopEl.style.display = value ? 'block' : 'none';
+    }
 }
 
 function syncDashboardInternalHeader() {
