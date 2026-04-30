@@ -61,6 +61,29 @@ function isMiddleSchoolClass(c) {
     return true;
 }
 
+function isClassVisibleForCurrentTeacher(c) {
+    if (!c) return false;
+
+    if (state?.auth?.role === 'admin') return true;
+    if (state?.ui?.viewScope === 'all') return true;
+
+    const currentTeacher = typeof getTeacherNameForUI === 'function'
+        ? getTeacherNameForUI()
+        : (state?.ui?.userName || state?.auth?.name || '');
+
+    const normalizedCurrent = String(currentTeacher || '')
+        .replace(/\s*선생님\s*$/g, '')
+        .trim();
+
+    const normalizedClassTeacher = String(c.teacher_name || '')
+        .replace(/\s*선생님\s*$/g, '')
+        .trim();
+
+    if (!normalizedClassTeacher) return true;
+
+    return normalizedClassTeacher === normalizedCurrent;
+}
+
 // [5G] 관리필요(구 위험학생) 판정 알고리즘
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -1193,6 +1216,7 @@ function renderTodayJournalCard(data) {
     const todayClasses = state.db.classes.filter(c => {
         if (Number(c.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
+        if (!isClassVisibleForCurrentTeacher(c)) return false;
 
         const summary = data.classSummaries[c.id];
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
@@ -1444,6 +1468,7 @@ function buildJournalContent(dateStr) {
     const activeClasses = state.db.classes.filter(c => {
         if (Number(c.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
+        if (!isClassVisibleForCurrentTeacher(c)) return false;
 
         // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
         if (!c.schedule_days) return true;
