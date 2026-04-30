@@ -28,6 +28,46 @@ window.AP_UI_DS = window.AP_UI_DS || window.AP_DASH_DS || {
     fwBold: '900',
 };
 
+// [UI Standard]: 클래스룸 전용 스타일 주입
+function injectClassroomStyles() {
+    if (document.getElementById('classroom-style')) return;
+
+    const style = document.createElement('style');
+    style.id = 'classroom-style';
+    style.textContent = `
+        .cls-fade-in {
+            animation: clsFadeIn 0.25s ease-out;
+        }
+
+        @keyframes clsFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cls-input {
+            width: 100%;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            padding: 12px 14px;
+            font-family: inherit;
+            outline: none;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            box-sizing: border-box;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 // ============================================================
 // [학급 메인 화면] renderClass — UI 표준화 1차
 // ============================================================
