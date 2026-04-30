@@ -630,12 +630,10 @@ async function toggleClassActive(cid, status) {
 }
 
 function renderTextbookManageList() {
-    const classId = document.getElementById('tb-manage-class').value;
     const listRoot = document.getElementById('tb-manage-list');
+    if (!listRoot) return;
     
-    let allBooks = state.db.class_textbooks || [];
-    if (classId) allBooks = allBooks.filter(tb => String(tb.class_id) === String(classId));
-
+    const allBooks = state.db.class_textbooks || [];
     const activeBooks = allBooks.filter(tb => tb.status === 'active');
     const inactiveBooks = allBooks.filter(tb => tb.status !== 'active');
 
@@ -649,12 +647,12 @@ function renderTextbookManageList() {
         else if (isHidden) statusBadge = `<span style="font-size:10px; background:var(--bg); color:var(--secondary); padding:2px 6px; border-radius:4px; font-weight:700;">숨김</span>`;
 
         return `
-            <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:900; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'};">${apEscapeHtml(tb.title)} ${statusBadge}</div>
-                    <div style="font-size:11px; color:var(--secondary); margin-top:4px;">${apEscapeHtml(cName)} | 시작: ${tb.start_date || '-'} ${tb.end_date ? `| 종료: ${tb.end_date}` : ''}</div>
+            <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                <div style="min-width:0;">
+                    <div style="font-weight:900; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'}; line-height:1.4;">${apEscapeHtml(tb.title)} ${statusBadge}</div>
+                    <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5;">${apEscapeHtml(cName)} | 시작: ${tb.start_date || '-'} ${tb.end_date ? `| 종료: ${tb.end_date}` : ''}</div>
                 </div>
-                <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openEditTextbookModal('${tb.id}')">관리</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; flex-shrink:0;" onclick="openEditTextbookModal('${tb.id}')">관리</button>
             </div>
         `;
     };
@@ -672,14 +670,8 @@ function renderTextbookManageList() {
 }
 
 function openTextbookManageModal() {
-    const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
-    
     showModal('교재 관리', `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <select id="tb-manage-class" class="btn" style="flex:1; margin-right:8px; background:var(--surface-2); border:none;" onchange="renderTextbookManageList()">
-                <option value="">전체학급 (내 담당)</option>
-                ${classOptions}
-            </select>
+        <div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:16px;">
             <button class="btn btn-primary" style="padding:10px 14px; font-size:12px; font-weight:700;" onclick="openAddTextbookModal()">새 교재</button>
         </div>
         <div id="tb-manage-list" style="max-height:60vh; overflow-y:auto; padding-right:4px;"></div>
@@ -688,11 +680,18 @@ function openTextbookManageModal() {
 }
 
 function openAddTextbookModal() {
-    const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
+    const classOptions = state.db.classes
+        .filter(c => Number(c.is_active) !== 0)
+        .map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`)
+        .join('');
     const todayStr = new Date().toLocaleDateString('sv-SE');
+
     showModal('새 교재 등록', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <select id="new-tb-class" class="btn" style="background:var(--surface-2); border:none;"><option value="">반을 선택하세요</option>${classOptions}</select>
+            <select id="new-tb-class" class="btn" style="background:var(--surface-2); border:none;">
+                <option value="">반을 선택하세요</option>
+                ${classOptions}
+            </select>
             <input id="new-tb-title" class="btn" placeholder="교재명 (예: 개념원리 중1-1)" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">시작일:</span>

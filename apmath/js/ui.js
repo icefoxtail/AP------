@@ -975,3 +975,131 @@ window.removeAppDrawer = removeAppDrawer;
 window.goHome = goHome;
 window.updateMobileHeaderUser = updateMobileHeaderUser;
 window.syncDashboardInternalHeader = syncDashboardInternalHeader;
+
+
+// ============================================================
+// [Drawer Size Lock] 모바일/PC 사이드바 규격 완전 통일
+// - PC expanded drawer = 260px
+// - 모바일 drawer = 260px 기준, 작은 화면만 안전 축소
+// - 상단 drawer header 높이/좌우 padding/햄버거 위치 통일
+// ============================================================
+function installDrawerSizeLock() {
+    const old = document.getElementById('drawer-size-lock-style');
+    if (old) old.remove();
+
+    const style = document.createElement('style');
+    style.id = 'drawer-size-lock-style';
+    style.textContent = `
+        :root {
+            --ap-drawer-width: 260px;
+            --ap-drawer-rail-width: 56px;
+            --ap-drawer-x: 16px;
+            --ap-drawer-header-h: 58px;
+        }
+
+        #app-drawer {
+            --drw-left: var(--ap-drawer-x) !important;
+            --drw-right: var(--ap-drawer-x) !important;
+            width: min(var(--ap-drawer-width), calc(100vw - 56px)) !important;
+            max-width: var(--ap-drawer-width) !important;
+            box-sizing: border-box !important;
+        }
+
+        #app-drawer .drw-top-tools {
+            min-height: var(--ap-drawer-header-h) !important;
+            height: var(--ap-drawer-header-h) !important;
+            box-sizing: border-box !important;
+            padding: calc(10px + env(safe-area-inset-top)) var(--ap-drawer-x) 10px var(--ap-drawer-x) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 8px !important;
+            border-bottom: 1px solid var(--border) !important;
+        }
+
+        #app-drawer .drw-hamburger {
+            width: 36px !important;
+            height: 36px !important;
+            min-width: 36px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            line-height: 1 !important;
+        }
+
+        #app-drawer .switch {
+            width: 48px !important;
+            height: 26px !important;
+            margin-left: auto !important;
+            margin-right: 0 !important;
+            flex: 0 0 48px !important;
+        }
+
+        #app-drawer .drw-menu {
+            padding: 6px 0 !important;
+        }
+
+        #app-drawer .drw-item {
+            width: 100% !important;
+            min-height: 38px !important;
+            margin: 1px 0 !important;
+            padding: 9px var(--ap-drawer-x) !important;
+            box-sizing: border-box !important;
+            border-radius: 0 !important;
+            text-align: left !important;
+            justify-content: flex-start !important;
+        }
+
+        #app-drawer .drw-label {
+            text-align: left !important;
+        }
+
+        #app-drawer .drw-footer {
+            padding: 6px 0 calc(10px + env(safe-area-inset-bottom)) !important;
+            border-top: 1px solid var(--border) !important;
+        }
+
+        @media (min-width: 901px) {
+            #app-drawer {
+                width: var(--ap-drawer-rail-width) !important;
+                max-width: var(--ap-drawer-rail-width) !important;
+            }
+
+            #app-drawer.drw-expanded {
+                width: var(--ap-drawer-width) !important;
+                max-width: var(--ap-drawer-width) !important;
+            }
+
+            #app-drawer .drw-rail-toggle {
+                width: var(--ap-drawer-rail-width) !important;
+                height: var(--ap-drawer-header-h) !important;
+                min-height: var(--ap-drawer-header-h) !important;
+                padding: 0 0 0 var(--ap-drawer-x) !important;
+                box-sizing: border-box !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            #app-drawer {
+                width: min(var(--ap-drawer-width), calc(100vw - 56px)) !important;
+                max-width: var(--ap-drawer-width) !important;
+                border-radius: 0 18px 18px 0 !important;
+            }
+
+            #app-drawer .drw-top-tools {
+                min-height: var(--ap-drawer-header-h) !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', installDrawerSizeLock);
+} else {
+    installDrawerSizeLock();
+}
