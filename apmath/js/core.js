@@ -1185,14 +1185,43 @@ function addToSyncQueue(method, resource, data) {
 
 async function processSyncQueue() {
     if (!navigator.onLine || syncQueue.length === 0) return;
+
+    let syncedCount = 0;
+    let failedCount = 0;
+
     for (const task of [...syncQueue]) {
         try {
-            await fetch(`${CONFIG.API_BASE}/${task.resource}`, { method: task.method, body: JSON.stringify(task.data), headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
+            const r = await fetch(`${CONFIG.API_BASE}/${task.resource}`, {
+                method: task.method,
+                body: JSON.stringify(task.data),
+                headers: { 'Content-Type': 'application/json', ...getAuthHeader() }
+            });
+
+            if (!r.ok) {
+                failedCount += 1;
+                console.warn('[AP Math OS] syncQueue server rejected task:', task, r.status);
+                break;
+            }
+
             syncQueue = syncQueue.filter(t => t.id !== task.id);
             localStorage.setItem('AP_SYNC_QUEUE', JSON.stringify(syncQueue));
-        } catch (e) { break; }
+            syncedCount += 1;
+        } catch (e) {
+            failedCount += 1;
+            console.warn('[AP Math OS] syncQueue failed and preserved:', task, e);
+            break;
+        }
     }
-    toast('동기화 완료', 'info'); await loadData();
+
+    if (syncedCount > 0 && failedCount === 0) {
+        toast('동기화 완료', 'info');
+        await loadData();
+    } else if (syncedCount > 0 && failedCount > 0) {
+        toast(`일부 동기화 완료 / ${syncQueue.length}건 대기 유지`, 'warn');
+        await loadData();
+    } else if (failedCount > 0) {
+        toast('동기화 실패: 대기열 보존', 'warn');
+    }
 }
 
 async function goHome() { 

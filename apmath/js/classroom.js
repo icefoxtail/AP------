@@ -169,13 +169,13 @@ function renderClass(cid) {
 }
 
 // [UI Standard Applied]: 진도관리 모달 수동 보정
-function openClassRecordModal(cid) {
+function openClassRecordModal(cid, targetDate = '') {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayStr = targetDate || new Date().toLocaleDateString('sv-SE');
     const allTextbooks = state.db.class_textbooks || [];
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
 
-    if (activeBooks.length === 0 && cls.textbook) {
+    if (activeBooks.length === 0 && cls?.textbook) {
         activeBooks = [{ id: 'fallback', title: cls.textbook }];
     }
 
@@ -183,28 +183,32 @@ function openClassRecordModal(cid) {
     const existingProgress = existingRecord ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id)) : [];
 
     const booksHtml = activeBooks.length > 0 ? activeBooks.map((tb) => {
+        const safeTbId = String(tb.id).replace(/[^a-zA-Z0-9_-]/g, '_');
         const prevP = existingProgress.find(p => String(p.textbook_id) === String(tb.id) || (tb.id === 'fallback' && p.textbook_title_snapshot === tb.title));
         const progVal = prevP ? prevP.progress_text : '';
         const isChecked = (prevP || progVal) ? 'checked' : '';
+        const safeTitle = String(tb.title || '').replace(/"/g, '&quot;');
+        const safeProg = String(progVal || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
         
         return `
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
             <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; min-width: 120px; color: var(--text); cursor: pointer; line-height: 1.5;">
-                <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${String(tb.title).replace(/"/g, '&quot;')}" ${isChecked} style="transform: scale(1.1); accent-color: var(--primary);">
-                ${String(tb.title)}
+                <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${safeTitle}" data-progress-id="progress_${safeTbId}" ${isChecked} style="transform: scale(1.1); accent-color: var(--primary);">
+                ${String(tb.title || '')}
             </label>
-            <input type="text" class="cls-input record-tb-progress" id="progress_${tb.id}" value="${progVal}" placeholder="예: p.10~25" style="flex: 1; min-height: 44px;">
+            <input type="text" class="cls-input record-tb-progress" id="progress_${safeTbId}" value="${safeProg}" placeholder="예: p.10~25" style="flex: 1; min-height: 44px;">
         </div>
         `;
     }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight: 700; line-height: 1.5;">활성 교재 없음</div>`;
 
     const prevNote = existingRecord ? existingRecord.special_note : '';
+    const safeNote = String(prevNote || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
     showModal('진도관리', `
         <div style="margin-bottom: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px;">
                 <h4 style="margin: 0; font-size: 16px; font-weight: 950; color: var(--text); line-height: 1.3;">교재별 진도</h4>
-                <span style="font-size: 11px; font-weight: 700; color: var(--secondary); line-height: 1.5;">${todayStr}</span>
+                <input type="date" class="cls-input" value="${todayStr}" style="width: auto; min-width: 132px; padding: 6px 10px; font-size: 12px; min-height: 0; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);" onchange="openClassRecordModal('${cid}', this.value)">
             </div>
             <div style="background: var(--surface); padding: 4px 0;">
                 ${booksHtml}
@@ -212,7 +216,7 @@ function openClassRecordModal(cid) {
         </div>
         <div style="margin-bottom: 32px;">
             <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 950; color: var(--text); line-height: 1.3;">특이사항</h4>
-            <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 110px; resize: none; padding: 14px; line-height: 1.6;">${prevNote}</textarea>
+            <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 110px; resize: none; padding: 14px; line-height: 1.6;">${safeNote}</textarea>
         </div>
         <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight: 800; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>
     `);
@@ -224,7 +228,8 @@ async function saveClassRecord(cid, dateStr) {
     checks.forEach(chk => {
         const tbId = chk.value;
         const tbTitle = chk.getAttribute('data-title');
-        const progInput = document.getElementById(`progress_${tbId}`);
+        const progressId = chk.getAttribute('data-progress-id') || `progress_${tbId}`;
+        const progInput = document.getElementById(progressId);
         const progText = progInput ? progInput.value.trim() : '';
         progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: tbTitle, progress_text: progText });
     });

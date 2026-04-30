@@ -8,7 +8,7 @@
  * 학생의 최근 성적 평균 계산
  */
 function getRecentAverage(studentId, limit = 3) {
-    const scores = state.db.exam_sessions
+    const scores = (state.db.exam_sessions || [])
         .filter(s => s.student_id === studentId)
         .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')))
         .slice(0, limit)
@@ -48,9 +48,11 @@ function buildReportContext(sid) {
     const classId = classMap?.class_id || '';
     const className = (state.db.classes || []).find(c => String(c.id) === String(classId))?.name || '';
 
-    const latestRecord = (state.db.class_daily_records || [])
-        .filter(r => String(r.class_id) === String(classId))
-        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] || null;
+    const latestRecord = classId
+        ? (state.db.class_daily_records || [])
+            .filter(r => String(r.class_id) === String(classId))
+            .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] || null
+        : null;
 
     const progressItems = latestRecord
         ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(latestRecord.id))
@@ -95,6 +97,7 @@ function describeAttendance(status) {
     if (status === '등원') return '정상적으로 등원';
     if (status === '결석') return '결석';
     if (status === '지각') return '지각';
+    if (status === '조퇴') return '조기 하원';
     if (status === '미기록') return '출결 확인 전';
     return status || '출결 확인 전';
 }
@@ -142,7 +145,6 @@ function buildParentReportText(ctx) {
     if (!s) return '';
 
     const attText = describeAttendance(ctx.attendance);
-    const hwText = describeHomework(ctx.homework);
     const nextPoint = buildNextPoint(ctx);
 
     if (ctx.attendance === '결석') {
@@ -152,6 +154,38 @@ function buildParentReportText(ctx) {
 수업에서 다룬 내용은 다음 시간에 흐름이 끊기지 않도록 필요한 부분부터 다시 확인하겠습니다.
 
 가정에서도 다음 등원 전까지 교재와 숙제 준비만 한 번 확인 부탁드립니다.
+
+감사합니다.`;
+    }
+
+    if (ctx.attendance === '지각') {
+        const progressSentenceForLate = ctx.progressText
+            ? `수업에서는 ${ctx.progressText} 범위를 중심으로 진행했습니다.`
+            : '수업에서는 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
+
+        return `안녕하세요, AP수학입니다.
+
+오늘 ${s.name} 학생은 지각 후 수업에 참여했습니다.
+${progressSentenceForLate}
+
+늦게 참여한 만큼 다음 시간에는 수업 초반 흐름부터 다시 확인하겠습니다.
+가정에서도 다음 등원 전 준비물과 숙제만 한 번 확인 부탁드립니다.
+
+감사합니다.`;
+    }
+
+    if (ctx.attendance === '조퇴') {
+        const progressSentenceForEarlyLeave = ctx.progressText
+            ? `수업에서는 ${ctx.progressText} 범위를 중심으로 진행했습니다.`
+            : '수업에서는 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
+
+        return `안녕하세요, AP수학입니다.
+
+오늘 ${s.name} 학생은 수업 도중 조기 하원으로 확인되었습니다.
+${progressSentenceForEarlyLeave}
+
+마무리하지 못한 부분은 다음 시간에 흐름이 끊기지 않도록 다시 확인하겠습니다.
+가정에서도 다음 등원 전 교재와 숙제 준비만 한 번 확인 부탁드립니다.
 
 감사합니다.`;
     }
@@ -325,12 +359,10 @@ async function requestAiReport(sid, type) {
             exam: ctx.todayExam ? {
                 title: ctx.todayExam.exam_title,
                 score: ctx.todayExam.score,
-                wrongs: ctx.todayExam
-                    ? state.db.wrong_answers
-                        .filter(w => w.session_id === ctx.todayExam.id)
-                        .map(w => w.question_id)
-                        .sort((a, b) => Number(a) - Number(b))
-                    : []
+                wrongs: (state.db.wrong_answers || [])
+                    .filter(w => w.session_id === ctx.todayExam.id)
+                    .map(w => w.question_id)
+                    .sort((a, b) => Number(a) - Number(b))
             } : null,
             avg: ctx.avg !== null ? ctx.avg : null
         }
@@ -345,7 +377,7 @@ async function requestAiReport(sid, type) {
     try {
         const r = await fetch(`${CONFIG.API_BASE}/ai/student-report`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
             body: JSON.stringify(payload)
         });
         const data = await r.json();

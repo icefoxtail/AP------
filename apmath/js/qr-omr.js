@@ -289,7 +289,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;">
             <table style="width:100%;font-size:14px;">
-                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="padding:8px 14px;font-size:12px;font-weight:800;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}', 'class', '')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">미제출 학생이 없습니다.</td></tr>'}
+                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="padding:8px 14px;font-size:12px;font-weight:800;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}', 'class', '${safeDate}')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">미제출 학생이 없습니다.</td></tr>'}
             </table>
         </div>
     `);
