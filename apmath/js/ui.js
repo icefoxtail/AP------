@@ -1,7 +1,7 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
- * [Drawer v8.4 GPT Match]&#58; 기존 drawer CSS 강제 제거 후 재주입 / GPT형 260px 사이드바 / 좌우 16px 정렬
+ * [Drawer v8.5 HARD LOCK]: GPT형 260px / 좌우 16px / 중앙정렬 회귀 차단
  *
  * 현재 사이드바 원칙:
  * - 홈 메뉴는 드로어에 두지 않는다. AP MATH 로고의 goHome()이 홈 역할을 담당한다.
@@ -645,6 +645,124 @@ function ensureDrawerStyle() {
                 flex:1;
             }
         }
+
+
+        /* ============================================================
+           [FINAL HARD LOCK v8.5]
+           GPT형 drawer 위치 강제 고정
+           - 전역 button/btn/nav CSS가 중앙정렬을 다시 덮어도 이 블록이 최종 승리
+           - 폭 260px / 글자 시작 16px / 다크모드 오른쪽 16px
+        ============================================================ */
+        #app-drawer {
+            --drw-left:16px !important;
+            --drw-right:16px !important;
+            width:min(72vw, 260px) !important;
+            align-items:stretch !important;
+            text-align:left !important;
+        }
+        #app-drawer.drw-expanded { width:260px !important; }
+        #app-drawer .drw-top-tools {
+            position:relative !important;
+            width:100% !important;
+            min-height:calc(56px + env(safe-area-inset-top)) !important;
+            box-sizing:border-box !important;
+            padding:0 !important;
+            border-bottom:1px solid var(--border) !important;
+            text-align:left !important;
+        }
+        #app-drawer .drw-hamburger {
+            position:absolute !important;
+            left:16px !important;
+            top:calc(10px + env(safe-area-inset-top)) !important;
+            width:36px !important;
+            height:36px !important;
+            margin:0 !important;
+            padding:0 !important;
+            display:flex !important;
+            align-items:center !important;
+            justify-content:flex-start !important;
+            text-align:left !important;
+            background:transparent !important;
+            border:0 !important;
+            box-shadow:none !important;
+        }
+        #app-drawer .switch {
+            position:absolute !important;
+            right:16px !important;
+            top:calc(15px + env(safe-area-inset-top)) !important;
+            margin:0 !important;
+        }
+        #app-drawer .drw-menu,
+        #app-drawer .drw-footer {
+            width:100% !important;
+            box-sizing:border-box !important;
+            text-align:left !important;
+        }
+        #app-drawer .drw-item {
+            position:relative !important;
+            display:block !important;
+            width:100% !important;
+            min-height:38px !important;
+            box-sizing:border-box !important;
+            margin:1px 0 !important;
+            padding:0 !important;
+            border:0 !important;
+            border-radius:0 !important;
+            background:transparent !important;
+            color:var(--text-soft) !important;
+            font-size:15px !important;
+            font-weight:600 !important;
+            font-family:inherit !important;
+            text-align:left !important;
+            letter-spacing:-0.25px !important;
+            box-shadow:none !important;
+        }
+        #app-drawer .drw-label {
+            position:absolute !important;
+            left:16px !important;
+            top:50% !important;
+            transform:translateY(-50%) !important;
+            display:block !important;
+            width:calc(100% - 32px) !important;
+            min-width:0 !important;
+            margin:0 !important;
+            padding:0 !important;
+            text-align:left !important;
+            overflow:hidden !important;
+            text-overflow:ellipsis !important;
+            white-space:nowrap !important;
+        }
+        #app-drawer .drw-item.danger {
+            color:var(--error) !important;
+            font-weight:600 !important;
+        }
+        #app-drawer .drw-rail-toggle {
+            width:56px !important;
+            height:52px !important;
+            box-sizing:border-box !important;
+            padding:0 0 0 16px !important;
+            align-items:center !important;
+            justify-content:flex-start !important;
+            text-align:left !important;
+            background:transparent !important;
+            border-left:0 !important;
+            border-right:0 !important;
+            border-top:0 !important;
+            box-shadow:none !important;
+        }
+        @media (min-width:901px) {
+            #app-drawer:not(.drw-expanded) .drw-top-tools,
+            #app-drawer:not(.drw-expanded) .drw-menu,
+            #app-drawer:not(.drw-expanded) .drw-footer,
+            #app-drawer:not(.drw-expanded) .drw-spacer {
+                display:none !important;
+            }
+            #app-drawer:not(.drw-expanded) .drw-rail-toggle { display:flex !important; }
+            #app-drawer.drw-expanded .drw-top-tools { display:block !important; }
+            #app-drawer.drw-expanded .drw-menu,
+            #app-drawer.drw-expanded .drw-footer { display:block !important; }
+        }
+
     `;
     document.head.appendChild(style);
 }
