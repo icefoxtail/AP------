@@ -756,6 +756,9 @@ function ensureDrawerStyle() {
             box-shadow:none !important;
         }
         @media (min-width:901px) {
+            #app-drawer:not(.drw-expanded) {
+                width:56px !important;
+            }
             #app-drawer:not(.drw-expanded) .drw-top-tools,
             #app-drawer:not(.drw-expanded) .drw-menu,
             #app-drawer:not(.drw-expanded) .drw-footer,
