@@ -1,7 +1,7 @@
 /**
  * AP Math OS 1.0 [js/ui.js]
  * 공용 UI 컴포넌트 및 다크모드 안정화 엔진
- * [Drawer v8.3]: 기존 drawer CSS 강제 제거 후 재주입 / 좌우 8px 정렬 / 햄버거·메뉴·로그아웃 왼쪽 정렬 / 다크모드 토글 오른쪽 정렬
+ * [Drawer v8.3]: 기존 drawer CSS 강제 제거 후 재주입 / 좌측 0px 강제 정렬 / 우측 8px 유지 / 햄버거·메뉴·로그아웃 왼쪽 정렬 / 다크모드 토글 오른쪽 정렬
  *
  * 현재 사이드바 원칙:
  * - 홈 메뉴는 드로어에 두지 않는다. AP MATH 로고의 goHome()이 홈 역할을 담당한다.
@@ -10,7 +10,7 @@
  * - PC 열림 상태는 210px 텍스트 사이드바다.
  * - 모바일 drawer 내부에는 AP MATH OS 브랜드를 반복 표시하지 않는다.
  * - 다크모드 토글은 drawer 최상단 우측에 둔다.
- * - 햄버거, 메뉴 글자, 로그아웃은 같은 왼쪽 8px x축에 정렬한다.
+ * - 햄버거, 메뉴 글자, 로그아웃은 같은 왼쪽 0px x축에 강제 정렬한다.
  * - 다크모드 토글 오른쪽 끝은 drawer 오른쪽 8px 기준으로 정렬한다.
  * - 메뉴는 아이콘 없이 텍스트만 사용한다.
  * - 로그아웃은 drawer 하단에 둔다.
@@ -393,7 +393,8 @@ function ensureDrawerStyle() {
         #app-drawer-overlay.drw-open { display:block; }
 
         #app-drawer {
-            --drw-x:8px;
+            --drw-left:0px;
+            --drw-right:8px;
             position:fixed;
             top:0;
             left:0;
@@ -422,6 +423,8 @@ function ensureDrawerStyle() {
             display:none;
             width:56px;
             height:52px;
+            box-sizing:border-box;
+            padding:0 0 0 var(--drw-left);
             border:0;
             border-bottom:1px solid var(--border);
             border-radius:0;
@@ -431,12 +434,13 @@ function ensureDrawerStyle() {
             font-weight:900;
             cursor:pointer;
             align-items:center;
-            justify-content:center;
+            justify-content:flex-start;
             font-family:inherit;
+            text-align:left;
         }
 
         .drw-top-tools {
-            padding:calc(10px + env(safe-area-inset-top)) var(--drw-x) 10px;
+            padding:calc(10px + env(safe-area-inset-top)) var(--drw-right) 10px var(--drw-left);
             border-bottom:1px solid var(--border);
             display:flex;
             justify-content:space-between;
@@ -527,7 +531,7 @@ function ensureDrawerStyle() {
             width:100%;
             box-sizing:border-box;
             margin:1px 0;
-            padding:9px var(--drw-x);
+            padding:9px var(--drw-right) 9px var(--drw-left);
             min-height:38px;
             border:0;
             border-radius:0;
@@ -572,12 +576,60 @@ function ensureDrawerStyle() {
             text-align:left;
         }
 
+        #app-drawer .drw-top-tools,
+        #app-drawer .drw-menu,
+        #app-drawer .drw-footer {
+            width:100% !important;
+            box-sizing:border-box !important;
+            align-items:stretch !important;
+            text-align:left !important;
+        }
+
+        #app-drawer .drw-top-tools {
+            padding-left:var(--drw-left) !important;
+            padding-right:var(--drw-right) !important;
+        }
+
+        #app-drawer .drw-menu,
+        #app-drawer .drw-footer {
+            padding-left:0 !important;
+            padding-right:0 !important;
+        }
+
         #app-drawer .drw-hamburger,
         #app-drawer .drw-item,
         #app-drawer .drw-footer .drw-item,
         #app-drawer .drw-label {
             text-align:left !important;
             justify-content:flex-start !important;
+        }
+
+        #app-drawer .drw-hamburger {
+            margin-left:0 !important;
+            padding-left:0 !important;
+            transform:none !important;
+        }
+
+        #app-drawer .drw-item,
+        #app-drawer .drw-footer .drw-item {
+            margin-left:0 !important;
+            margin-right:0 !important;
+            padding-left:var(--drw-left) !important;
+            padding-right:var(--drw-right) !important;
+            transform:none !important;
+        }
+
+        #app-drawer .drw-label {
+            display:block !important;
+            margin-left:0 !important;
+            padding-left:0 !important;
+            transform:none !important;
+        }
+
+        #app-drawer .drw-rail-toggle {
+            padding-left:var(--drw-left) !important;
+            justify-content:flex-start !important;
+            text-align:left !important;
         }
 
         #app-drawer .switch {
