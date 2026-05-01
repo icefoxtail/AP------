@@ -22,7 +22,24 @@ function getRecentAverage(studentId, limit = 3) {
 /**
  * 보고 문구 생성용 기본 데이터 수집
  */
-function buildReportContext(sid) {
+function registerReportPayload(payload = {}) {
+    window.AP_REPORT_CONTEXT_OPTIONS = window.AP_REPORT_CONTEXT_OPTIONS || {};
+    const key = `report_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    window.AP_REPORT_CONTEXT_OPTIONS[key] = payload || {};
+    return key;
+}
+
+function getReportPayload(payloadKey) {
+    if (!payloadKey) return {};
+    return window.AP_REPORT_CONTEXT_OPTIONS?.[payloadKey] || {};
+}
+
+function resolveReportOptions(options = {}) {
+    if (options && options.payloadKey) return getReportPayload(options.payloadKey);
+    return options || {};
+}
+function buildReportContext(sid, options = {}) {
+    const reportOptions = resolveReportOptions(options);
     const student = state.db.students.find(x => x.id === sid);
     const today = new Date().toLocaleDateString('sv-SE');
 
@@ -86,7 +103,8 @@ function buildReportContext(sid) {
         className,
         latestRecord,
         progressText,
-        latestConsultation
+        latestConsultation,
+        riskInfo: reportOptions.riskInfo || null
     };
 }
 
@@ -140,6 +158,28 @@ function buildNextPoint(ctx) {
 /**
  * 학부모용 기본 문구 생성
  */
+function buildRiskSummaryText(riskInfo) {
+    if (!riskInfo) return "";
+    const reasons = Array.isArray(riskInfo.reasons)
+        ? riskInfo.reasons.filter(Boolean).map(v => String(v).trim()).filter(Boolean)
+        : [];
+    const types = Array.isArray(riskInfo.riskTypes)
+        ? riskInfo.riskTypes.filter(Boolean).map(v => String(v).trim()).filter(Boolean)
+        : [];
+    const summary = reasons.length ? reasons.join(", ") : types.join(", ");
+    if (!summary) return "";
+    return `\uAD00\uB9AC \uAD00\uC810\uC5D0\uC11C\uB294 \uCD5C\uADFC ${summary} \uD750\uB984\uC774 \uBCF4\uC5EC, \uB2E4\uC74C \uC218\uC5C5\uC5D0\uC11C \uD574\uB2F9 \uBD80\uBD84\uC744 \uC6B0\uC120 \uD655\uC778\uD558\uACA0\uC2B5\uB2C8\uB2E4.`;
+}
+
+function appendRiskSummaryToReportText(text, ctx) {
+    const riskSummary = buildRiskSummaryText(ctx?.riskInfo);
+    if (!riskSummary) return text;
+    const thanks = '\uAC10\uC0AC\uD569\uB2C8\uB2E4';
+    if (text.includes(thanks)) {
+        return text.replace(thanks, `${riskSummary}\n\n${thanks}`);
+    }
+    return `${text}\n\n${riskSummary}`;
+}
 function buildParentReportText(ctx) {
     const s = ctx.student;
     if (!s) return '';
@@ -148,14 +188,14 @@ function buildParentReportText(ctx) {
     const nextPoint = buildNextPoint(ctx);
 
     if (ctx.attendance === '결석') {
-        return `안녕하세요, AP수학입니다.
+        return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
 오늘 ${s.name} 학생은 결석으로 확인되었습니다.
 수업에서 다룬 내용은 다음 시간에 흐름이 끊기지 않도록 필요한 부분부터 다시 확인하겠습니다.
 
 가정에서도 다음 등원 전까지 교재와 숙제 준비만 한 번 확인 부탁드립니다.
 
-감사합니다.`;
+감사합니다.`, ctx);
     }
 
     if (ctx.attendance === '지각') {
@@ -163,7 +203,7 @@ function buildParentReportText(ctx) {
             ? `수업에서는 ${ctx.progressText} 범위를 중심으로 진행했습니다.`
             : '수업에서는 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
 
-        return `안녕하세요, AP수학입니다.
+        return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
 오늘 ${s.name} 학생은 지각 후 수업에 참여했습니다.
 ${progressSentenceForLate}
@@ -171,7 +211,7 @@ ${progressSentenceForLate}
 늦게 참여한 만큼 다음 시간에는 수업 초반 흐름부터 다시 확인하겠습니다.
 가정에서도 다음 등원 전 준비물과 숙제만 한 번 확인 부탁드립니다.
 
-감사합니다.`;
+감사합니다.`, ctx);
     }
 
     if (ctx.attendance === '조퇴') {
@@ -179,7 +219,7 @@ ${progressSentenceForLate}
             ? `수업에서는 ${ctx.progressText} 범위를 중심으로 진행했습니다.`
             : '수업에서는 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
 
-        return `안녕하세요, AP수학입니다.
+        return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
 오늘 ${s.name} 학생은 수업 도중 조기 하원으로 확인되었습니다.
 ${progressSentenceForEarlyLeave}
@@ -187,7 +227,7 @@ ${progressSentenceForEarlyLeave}
 마무리하지 못한 부분은 다음 시간에 흐름이 끊기지 않도록 다시 확인하겠습니다.
 가정에서도 다음 등원 전 교재와 숙제 준비만 한 번 확인 부탁드립니다.
 
-감사합니다.`;
+감사합니다.`, ctx);
     }
 
     const progressSentence = ctx.progressText
@@ -203,7 +243,7 @@ ${progressSentenceForEarlyLeave}
     const examSentence = buildExamSummary(ctx);
     const examBlock = examSentence ? `\n\n${examSentence}` : '';
 
-    return `안녕하세요, AP수학입니다.
+    return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
 오늘 ${s.name} 학생은 ${attText}하여 수업에 참여했습니다.
 ${progressSentence}
@@ -212,7 +252,7 @@ ${homeworkSentence}${examBlock}
 다음 시간에는 ${nextPoint}을 중심으로 다시 점검하겠습니다.
 가정에서도 해당 부분만 가볍게 확인해 주시면 학습 흐름 유지에 도움이 됩니다.
 
-감사합니다.`;
+감사합니다.`, ctx);
 }
 
 /**
@@ -295,7 +335,8 @@ ${buildNextPoint(ctx)} 중심으로 확인 필요.`;
  * Student detail report entry point
  */
 function openStudentReportModal(studentId, options = {}) {
-    const ctx = buildReportContext(studentId);
+    const payloadKey = registerReportPayload(options);
+    const ctx = buildReportContext(studentId, { payloadKey });
     const student = ctx.student;
 
     if (!student) {
@@ -313,15 +354,15 @@ function openStudentReportModal(studentId, options = {}) {
         '<div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">\uBB38\uAD6C\uB97C \uC0DD\uC131\uD55C \uB4A4 \uB0B4\uC6A9\uC744 \uD655\uC778\uD558\uACE0 \uBCF5\uC0AC\uD569\uB2C8\uB2E4.</div>',
         '</div>',
         '<div style="display:grid; grid-template-columns:1fr; gap:8px;">',
-        `<button class="btn btn-primary" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px;" onclick="copyReport('${studentId}', 'parent')">\uD559\uBD80\uBAA8\uC6A9 \uBB38\uAD6C</button>`,
-        `<button class="btn" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="copyReport('${studentId}', 'student')">\uD559\uC0DD\uC6A9 \uBB38\uAD6C</button>`,
-        `<button class="btn" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="copyReport('${studentId}', 'counsel')">\uC0C1\uB2F4\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn btn-primary" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px;" onclick="copyReport('${studentId}', 'parent', { payloadKey: '${payloadKey}' })">\uD559\uBD80\uBAA8\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="copyReport('${studentId}', 'student', { payloadKey: '${payloadKey}' })">\uD559\uC0DD\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="copyReport('${studentId}', 'counsel', { payloadKey: '${payloadKey}' })">\uC0C1\uB2F4\uC6A9 \uBB38\uAD6C</button>`,
         '</div>',
         '<div style="height:1px; background:var(--border); margin:4px 0;"></div>',
         '<div style="display:grid; grid-template-columns:1fr; gap:8px;">',
-        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'parent')">AI \uD559\uBD80\uBAA8\uC6A9 \uBB38\uAD6C</button>`,
-        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'student')">AI \uD559\uC0DD\uC6A9 \uBB38\uAD6C</button>`,
-        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'counsel')">AI \uC0C1\uB2F4\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'parent', { payloadKey: '${payloadKey}' })">AI \uD559\uBD80\uBAA8\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'student', { payloadKey: '${payloadKey}' })">AI \uD559\uC0DD\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'counsel', { payloadKey: '${payloadKey}' })">AI \uC0C1\uB2F4\uC6A9 \uBB38\uAD6C</button>`,
         '</div>',
         '</div>'
     ].join(''));
@@ -414,8 +455,8 @@ function copyAllClassReports(classId, date) {
         toast('\uBCF5\uC0AC\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
     });
 }
-function copyReport(sid, type) {
-    const ctx = buildReportContext(sid);
+function copyReport(sid, type, options = {}) {
+    const ctx = buildReportContext(sid, options);
     const s = ctx.student;
 
     if (!s) {
@@ -468,14 +509,16 @@ function copyStaticReportText() {
 /**
  * AI 보고 문구 생성 요청
  */
-async function requestAiReport(sid, type) {
-    const ctx = buildReportContext(sid);
+async function requestAiReport(sid, type, options = {}) {
+    const ctx = buildReportContext(sid, options);
     const s = ctx.student;
     if (!s) return;
 
     const payload = {
         type,
         student: { name: s.name, school: s.school_name, grade: s.grade },
+        riskInfo: ctx.riskInfo || null,
+        riskSummary: buildRiskSummaryText(ctx.riskInfo),
         today: {
             att: ctx.attendance,
             hw: ctx.homework,
@@ -509,7 +552,7 @@ async function requestAiReport(sid, type) {
         if (!data.success) {
             toast('문구 생성에 실패했습니다. 기본 문구를 불러옵니다.', 'warn');
             closeModal();
-            copyReport(sid, type);
+            copyReport(sid, type, options);
             return;
         }
 
@@ -528,7 +571,7 @@ async function requestAiReport(sid, type) {
     } catch (e) {
         toast('네트워크 오류가 발생했습니다. 기본 문구를 불러옵니다.', 'warn');
         closeModal();
-        copyReport(sid, type);
+        copyReport(sid, type, options);
     }
 }
 
