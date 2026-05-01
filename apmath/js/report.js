@@ -291,6 +291,41 @@ ${buildNextPoint(ctx)} 중심으로 확인 필요.`;
 /**
  * 정적 보고 문구 생성 → 미리보기 후 최종 복사
  */
+/**
+ * Student detail report entry point
+ */
+function openStudentReportModal(studentId, options = {}) {
+    const ctx = buildReportContext(studentId);
+    const student = ctx.student;
+
+    if (!student) {
+        toast('\uBCF4\uACE0 \uBB38\uAD6C\uB97C \uB9CC\uB4E4 \uD559\uC0DD \uC815\uBCF4\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.', 'warn');
+        return;
+    }
+
+    const title = options.title || '\uC54C\uB9BC\uD1A1 \uBB38\uAD6C \uC0DD\uC131';
+    const name = escapeHtmlForTextarea(student.name || '');
+
+    showModal(title, [
+        '<div style="display:flex; flex-direction:column; gap:10px;">',
+        '<div style="padding:14px 16px; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);">',
+        `<div style="font-size:13px; font-weight:900; color:var(--text);">${name}</div>`,
+        '<div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">\uBB38\uAD6C\uB97C \uC0DD\uC131\uD55C \uB4A4 \uB0B4\uC6A9\uC744 \uD655\uC778\uD558\uACE0 \uBCF5\uC0AC\uD569\uB2C8\uB2E4.</div>',
+        '</div>',
+        '<div style="display:grid; grid-template-columns:1fr; gap:8px;">',
+        `<button class="btn btn-primary" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px;" onclick="copyReport('${studentId}', 'parent')">\uD559\uBD80\uBAA8\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="copyReport('${studentId}', 'student')">\uD559\uC0DD\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:48px; font-size:13px; font-weight:800; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="copyReport('${studentId}', 'counsel')">\uC0C1\uB2F4\uC6A9 \uBB38\uAD6C</button>`,
+        '</div>',
+        '<div style="height:1px; background:var(--border); margin:4px 0;"></div>',
+        '<div style="display:grid; grid-template-columns:1fr; gap:8px;">',
+        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'parent')">AI \uD559\uBD80\uBAA8\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'student')">AI \uD559\uC0DD\uC6A9 \uBB38\uAD6C</button>`,
+        `<button class="btn" style="min-height:44px; font-size:12px; font-weight:800; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="requestAiReport('${studentId}', 'counsel')">AI \uC0C1\uB2F4\uC6A9 \uBB38\uAD6C</button>`,
+        '</div>',
+        '</div>'
+    ].join(''));
+}
 function copyReport(sid, type) {
     const ctx = buildReportContext(sid);
     const s = ctx.student;
@@ -380,6 +415,7 @@ async function requestAiReport(sid, type) {
             headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
             body: JSON.stringify(payload)
         });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const data = await r.json();
 
         if (!data.success) {
