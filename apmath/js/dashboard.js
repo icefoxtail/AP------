@@ -201,6 +201,15 @@ function openAdminDischargedStudents() {
     openAdminStudentList('discharged');
 }
 
+function openRiskStudentReport(studentId) {
+    const risks = typeof computeRiskStudents === 'function' ? computeRiskStudents() : [];
+    const risk = risks.find(r => String(r.student?.id) === String(studentId));
+    if (typeof openStudentReportModal === 'function') {
+        openStudentReportModal(studentId, { riskInfo: risk || null, title: '\uAD00\uB9AC\uD544\uC694 \uD559\uC0DD \uBB38\uAD6C \uC0DD\uC131' });
+        return;
+    }
+    toast('\uBCF4\uACE0 \uBB38\uAD6C \uBAA8\uB4C8\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+}
 async function restoreDischargedStudent(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const r = await api.patch(`students/${sid}/restore`, {});
@@ -252,15 +261,25 @@ function openAdminStudentList(type) {
         const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
         let riskDetails = "";
         if (s.riskInfo) { riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:6px; background:rgba(255,71,87,0.08); padding:6px 8px; border-radius:6px; font-weight:600;">상태: ${s.riskInfo.riskTypes.join(', ')} <span style="opacity:0.7; font-weight:normal;">(${s.riskInfo.reasons.join(' · ')})</span></div>`; }
-        const actionButtons = type === 'discharged'
-            ? `
+        let actionButtons = '';
+        if (type === 'discharged') {
+            actionButtons = `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
-                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">재원 복구</button>
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">숨김</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">\uC7AC\uC6D0 \uBCF5\uAD6C</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">\uC228\uAE40</button>
                 </div>
-            `
-            : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>`;
+            `;
+        } else if (type === 'risk') {
+            actionButtons = `
+                <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
+                    <button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>
+                    <button class="btn btn-primary" style="min-height:36px; padding:8px 12px; font-size:12px; font-weight:800; border-radius:8px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${s.id}')">\uBB38\uAD6C \uC0DD\uC131</button>
+                </div>
+            `;
+        } else {
+            actionButtons = `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>`;
+        }
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
@@ -357,7 +376,7 @@ function renderAdminControlCenter() {
                     <div style="font-weight:900; color:var(--text); font-size:14px;">${apEscapeHtml(r.student.name)}</div>
                     <div style="font-size:12px; color:var(--error); font-weight:600; margin-top:4px;">${apEscapeHtml(r.className)} · ${apEscapeHtml(r.reasons.slice(0,2).join(' · '))}</div>
                 </div>
-                <span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">상세 보기</span>
+                <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;"><button class="btn btn-primary" style="min-height:36px; padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${r.student.id}')">\uBB38\uAD6C \uC0DD\uC131</button><span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">\uC0C1\uC138 \uBCF4\uAE30</span></div>
             </div>
         </div>
     `).join('');
