@@ -98,8 +98,52 @@ function renderStudentDetailTab(sid, tab) {
 /**
  * [Tab 1] 성적분석 (16px 제목 및 14px 리스트 규격)
  */
+function renderTargetProgressCard(sid) {
+    const progress = typeof computeStudentTargetProgress === 'function'
+        ? computeStudentTargetProgress(sid)
+        : null;
+
+    if (!progress || progress.targetScore === null) {
+        return `
+            <div style="margin-bottom: 20px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
+                <div style="font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px;">\uBAA9\uD45C\uC810\uC218 \uBBF8\uC124\uC815</div>
+                <div style="font-size: 12px; font-weight: 700; color: var(--secondary); line-height: 1.5;">\uD559\uC0DD \uC815\uBCF4 \uC218\uC815\uC5D0\uC11C \uBAA9\uD45C\uC810\uC218\uB97C \uC785\uB825\uD558\uC138\uC694.</div>
+            </div>
+        `;
+    }
+
+    const avgText = progress.currentAverage === null ? '\uC131\uC801 \uAE30\uB85D \uB300\uAE30' : `${progress.currentAverage}\uC810`;
+    const rateText = progress.achievementRate === null ? '-' : `${progress.achievementRate}%`;
+    const remainText = progress.remainScore === null ? '-' : `${progress.remainScore}\uC810`;
+
+    return `
+        <div style="margin-bottom: 20px; padding: 16px; background: var(--surface); border: 1px solid rgba(26,92,255,0.14); border-radius: 16px;">
+            <div style="font-size: 13px; font-weight: 900; color: var(--primary); margin-bottom: 12px;">\uBAA9\uD45C \uC810\uC218</div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
+                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uBAA9\uD45C</div>
+                    <div style="font-size: 18px; color: var(--text); font-weight: 950;">${progress.targetScore}\uC810</div>
+                </div>
+                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
+                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uCD5C\uADFC \uD3C9\uADE0</div>
+                    <div style="font-size: 18px; color: var(--text); font-weight: 950;">${avgText}</div>
+                </div>
+                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
+                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uB2EC\uC131\uB960</div>
+                    <div style="font-size: 18px; color: var(--primary); font-weight: 950;">${rateText}</div>
+                </div>
+                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
+                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uBAA9\uD45C\uAE4C\uC9C0</div>
+                    <div style="font-size: 18px; color: var(--text); font-weight: 950;">${remainText}</div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 function renderGradeTab(sid) {
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
+    const targetProgressCard = renderTargetProgressCard(sid);
     
     const chartArea = exs.length > 0 
         ? `<div style="margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
@@ -134,6 +178,7 @@ function renderGradeTab(sid) {
 
     return `
         <div>
+            ${targetProgressCard}
             <h4 style="margin: 0 0 12px 4px; font-size: 16px; font-weight: 900; color: var(--text); line-height: 1.3;">최근 성적 추이</h4>
             ${chartArea}
             <h4 style="margin: 24px 0 12px 4px; font-size: 16px; font-weight: 900; color: var(--text); line-height: 1.3;">전체 시험 이력</h4>
@@ -363,6 +408,7 @@ function openEditStudent(sid) {
             <input id="edit-parent-phone" class="std-input-base" value="${s.parent_phone||''}" placeholder="학부모 전화번호">
             <input id="edit-guardian-rel" class="std-input-base" value="${s.guardian_relation||''}" placeholder="보호자 관계">
             <input id="edit-student-pin" class="std-input-base" value="${s.student_pin||''}" placeholder="PIN (4자리 숫자)" maxlength="4">
+            <input id="edit-target-score" type="number" min="0" max="100" class="std-input-base" value="${s.target_score ?? ''}" placeholder="\uBAA9\uD45C \uC810\uC218">
             <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 80px;">${s.memo||''}</textarea>
             <div style="margin-top: 10px;">
                 <button class="btn" style="width: 100%; min-height: 44px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); font-weight: 800; border-radius: 12px;" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
@@ -384,7 +430,8 @@ async function handleEditStudent(sid) {
         parent_phone: document.getElementById('edit-parent-phone').value, 
         guardian_relation: document.getElementById('edit-guardian-rel').value, 
         memo: document.getElementById('edit-memo').value,
-        student_pin: pin 
+        student_pin: pin, 
+        target_score: document.getElementById('edit-target-score').value
     });
     closeModal(); await loadData();
 }

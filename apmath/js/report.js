@@ -88,6 +88,9 @@ function buildReportContext(sid, options = {}) {
     const latestConsultation = (state.db.consultations || [])
         .filter(c => c.student_id === sid)
         .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] || null;
+    const targetProgress = typeof computeStudentTargetProgress === 'function'
+        ? computeStudentTargetProgress(sid)
+        : null;
 
     return {
         student,
@@ -104,6 +107,7 @@ function buildReportContext(sid, options = {}) {
         latestRecord,
         progressText,
         latestConsultation,
+        targetProgress,
         riskInfo: reportOptions.riskInfo || null,
         missingExamInfo: reportOptions.missingExamInfo || null
     };
@@ -178,8 +182,18 @@ function buildMissingExamSummaryText(missingExamInfo) {
     return `\uC624\uB298 \uC9C4\uD589\uD55C \u300C${title}\u300D\uC740 \uC544\uC9C1 \uC751\uC2DC \uAE30\uB85D\uC774 \uC5C6\uC5B4, \uB2E4\uC74C \uC2DC\uAC04\uC5D0 \uBA3C\uC800 \uD655\uC778\uD560 \uC608\uC815\uC785\uB2C8\uB2E4.`;
 }
 
+function buildTargetProgressText(targetProgress) {
+    if (!targetProgress || targetProgress.targetScore === null) return "";
+    if (targetProgress.currentAverage === null) {
+        return `\uBAA9\uD45C\uC810\uC218\uB294 ${targetProgress.targetScore}\uC810\uC73C\uB85C \uC124\uC815\uB418\uC5B4 \uC788\uC73C\uBA70, \uC131\uC801 \uAE30\uB85D\uC774 \uC313\uC774\uBA74 \uB2EC\uC131\uB960\uC744 \uD568\uAED8 \uD655\uC778\uD558\uACA0\uC2B5\uB2C8\uB2E4.`;
+    }
+    const rateText = targetProgress.achievementRate === null ? "" : ` \uBAA9\uD45C \uB2EC\uC131\uB960\uC740 ${targetProgress.achievementRate}%\uC785\uB2C8\uB2E4.`;
+    return `\uBAA9\uD45C\uC810\uC218\uB294 ${targetProgress.targetScore}\uC810\uC774\uBA70, \uCD5C\uADFC \uD3C9\uADE0\uC740 ${targetProgress.currentAverage}\uC810\uC73C\uB85C \uBAA9\uD45C\uAE4C\uC9C0 ${targetProgress.remainScore}\uC810 \uB0A8\uC558\uC2B5\uB2C8\uB2E4.${rateText}`;
+}
+
 function appendRiskSummaryToReportText(text, ctx) {
     const summaries = [
+        buildTargetProgressText(ctx?.targetProgress),
         buildRiskSummaryText(ctx?.riskInfo),
         buildMissingExamSummaryText(ctx?.missingExamInfo)
     ].filter(Boolean);
@@ -274,12 +288,15 @@ function buildStudentReportText(ctx) {
     if (!s) return '';
 
     const nextPoint = buildNextPoint(ctx);
+    const targetStudentLine = ctx.targetProgress && ctx.targetProgress.targetScore !== null && ctx.targetProgress.currentAverage !== null
+        ? `\n\uBAA9\uD45C\uAE4C\uC9C0 ${ctx.targetProgress.remainScore}\uC810 \uB0A8\uC558\uC73C\uB2C8, \uB2E4\uC74C \uD3C9\uAC00\uB294 \uC624\uB2F5 \uC904\uC774\uB294 \uB370 \uC9D1\uC911\uD558\uC790.`
+        : '';
 
     if (ctx.attendance === '결석') {
         return `${s.name}아, 오늘 수업은 결석으로 확인됐어.
 
 다음 시간에 진도가 끊기지 않도록 필요한 부분부터 다시 확인할게.
-오기 전에는 교재와 지난 숙제만 챙겨서 오면 돼.`;
+오기 전에는 교재와 지난 숙제만 챙겨서 오면 돼.${targetStudentLine}`;
     }
 
     const examSentence = ctx.latestExam
@@ -294,6 +311,7 @@ function buildStudentReportText(ctx) {
 
 ${examSentence}
 ${homeworkSentence}
+${targetStudentLine}
 
 다음 시간 전까지 ${nextPoint}만 정리해서 오자.`;
 }
@@ -320,6 +338,9 @@ function buildCounselReportText(ctx) {
     const missingExamSection = ctx.missingExamInfo
         ? `\n[\uBBF8\uC751\uC2DC \uD3C9\uAC00]\n${ctx.missingExamInfo.examDate || ctx.today} / ${ctx.missingExamInfo.examTitle || '\uC624\uB298 \uD3C9\uAC00'} / \uB2E4\uC74C \uC218\uC5C5 \uD655\uC778 \uD544\uC694\n`
         : '';
+    const targetSection = ctx.targetProgress && ctx.targetProgress.targetScore !== null
+        ? `\n[\uBAA9\uD45C \uC810\uC218]\n\uBAA9\uD45C\uC810\uC218: ${ctx.targetProgress.targetScore}\uC810 / \uCD5C\uADFC\uD3C9\uADE0: ${ctx.targetProgress.currentAverage === null ? '-' : `${ctx.targetProgress.currentAverage}\uC810`} / \uB2EC\uC131\uB960: ${ctx.targetProgress.achievementRate === null ? '-' : `${ctx.targetProgress.achievementRate}%`}\n`
+        : '';
 
     return `[학생 상담 메모]
 날짜: ${ctx.today}
@@ -334,6 +355,7 @@ function buildCounselReportText(ctx) {
 [성적 및 오답]
 최근 평가: ${examLine}
 오답: ${wrongLine}
+${targetSection}
 
 [최근 상담 기록]
 ${consultationLine}
@@ -535,6 +557,8 @@ async function requestAiReport(sid, type, options = {}) {
         riskSummary: buildRiskSummaryText(ctx.riskInfo),
         missingExamInfo: ctx.missingExamInfo || null,
         missingExamSummary: buildMissingExamSummaryText(ctx.missingExamInfo),
+        targetProgress: ctx.targetProgress || null,
+        targetSummary: buildTargetProgressText(ctx.targetProgress),
         today: {
             att: ctx.attendance,
             hw: ctx.homework,

@@ -207,6 +207,51 @@ async function refreshDataOnly() {
     };
 }
 
+function getStudentTargetScore(studentId) {
+    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
+    const raw = student?.target_score;
+    if (raw === undefined || raw === null || raw === '') return null;
+    const score = Number(raw);
+    if (!Number.isFinite(score)) return null;
+    return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+function computeStudentTargetProgress(studentId, limit = 3) {
+    const targetScore = getStudentTargetScore(studentId);
+    if (targetScore === null) {
+        return {
+            targetScore: null,
+            currentAverage: null,
+            remainScore: null,
+            achievementRate: null
+        };
+    }
+
+    const scores = (state.db.exam_sessions || [])
+        .filter(e => String(e.student_id) === String(studentId))
+        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')))
+        .slice(0, limit)
+        .map(e => Number(e.score))
+        .filter(v => Number.isFinite(v));
+
+    if (!scores.length) {
+        return {
+            targetScore,
+            currentAverage: null,
+            remainScore: null,
+            achievementRate: null
+        };
+    }
+
+    const currentAverage = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+    return {
+        targetScore,
+        currentAverage,
+        remainScore: Math.max(targetScore - currentAverage, 0),
+        achievementRate: targetScore > 0 ? Math.round((currentAverage / targetScore) * 100) : null
+    };
+}
+
 function setExamBlueprintsForFiles(blueprints = []) {
     if (!Array.isArray(blueprints)) return;
 

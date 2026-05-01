@@ -80,3 +80,6 @@ ALTER TABLE students ADD COLUMN guardian_relation TEXT;
 -- 2단계: 외부 소통 연락처 확장
 ALTER TABLE students ADD COLUMN student_phone TEXT;
 ALTER TABLE students ADD COLUMN parent_phone TEXT;
+
+-- V2-5: 목표점수 / 달성률
+ALTER TABLE students ADD COLUMN target_score INTEGER DEFAULT NULL;

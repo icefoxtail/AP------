@@ -71,6 +71,13 @@ function todayKstDateString() {
   return new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString().split('T')[0];
 }
 
+function normalizeTargetScore(value) {
+  if (value === undefined || value === null || value === '') return null;
+  const n = Number(value);
+  if (!Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(100, Math.round(n)));
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -318,7 +325,8 @@ export default {
             if (exist) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers });
 
             const sid = `s_${Date.now()}`;
-            const stmts = [env.DB.prepare("INSERT INTO students (id, name, school_name, grade, status, memo, guardian_relation, student_phone, parent_phone, student_pin, created_at, updated_at) VALUES (?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(sid, d.name, d.school_name, d.grade, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', pin)];
+            const targetScore = normalizeTargetScore(d.target_score);
+            const stmts = [env.DB.prepare("INSERT INTO students (id, name, school_name, grade, target_score, status, memo, guardian_relation, student_phone, parent_phone, student_pin, created_at, updated_at) VALUES (?, ?, ?, ?, ?, '\uC7AC\uC6D0', ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(sid, d.name, d.school_name, d.grade, targetScore, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', pin)];
             if (d.class_id) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.class_id, sid));
             try { await env.DB.batch(stmts); return new Response(JSON.stringify({ success: true, id: sid }), { headers }); }
             catch (err) { if (err.message.includes('UNIQUE')) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers }); throw err; }
@@ -335,7 +343,8 @@ export default {
               const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ? AND id != ?').bind(d.student_pin, id).first();
               if (exist) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers });
             }
-            const stmts = [env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, memo=?, guardian_relation=?, student_phone=?, parent_phone=?, student_pin=?, updated_at=DATETIME('now') WHERE id=?").bind(d.name, d.school_name, d.grade, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', d.student_pin || '', id)];
+            const targetScore = normalizeTargetScore(d.target_score);
+            const stmts = [env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, target_score=?, memo=?, guardian_relation=?, student_phone=?, parent_phone=?, student_pin=?, updated_at=DATETIME('now') WHERE id=?").bind(d.name, d.school_name, d.grade, targetScore, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', d.student_pin || '', id)];
             if (d.class_id !== undefined) { stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id)); if (d.class_id) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.class_id, id)); }
             try { await env.DB.batch(stmts); return new Response(JSON.stringify({ success: true }), { headers }); }
             catch (err) { if (err.message.includes('UNIQUE')) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers }); throw err; }
