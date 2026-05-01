@@ -78,6 +78,7 @@ function renderClass(cid) {
         qr: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`,
         grade: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>`,
         clinic: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path></svg>`,
+        report: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16v16H4z"></path><path d="M8 9h8M8 13h8M8 17h5"></path></svg>`,
         edit: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path></svg>`
     };
 
@@ -90,7 +91,7 @@ function renderClass(cid) {
             <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight: 800; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="renderDashboard()">닫기</button>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
             <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openQrGenerator('${cid}')">
                 <span style="color: var(--primary);">${icons.qr}</span> <span>QR/OMR</span>
             </button>
@@ -103,6 +104,10 @@ function renderClass(cid) {
             <button class="btn btn-primary" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; line-height: 1.2;" onclick="openClassRecordModal('${cid}')">
                 <span style="color: #fff;">${icons.edit}</span> <span>진도관리</span>
             </button>
+            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClassReportBatchModal==='function') openClassReportBatchModal('${cid}'); else toast('\uBB38\uAD6C \uC0DD\uC131 \uAE30\uB2A5\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');">
+                <span style="color: var(--primary);">${icons.report}</span> <span>\uBB38\uAD6C\uC0DD\uC131</span>
+            </button>
+
         </div>
     `;
 

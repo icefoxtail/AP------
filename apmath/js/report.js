@@ -326,6 +326,94 @@ function openStudentReportModal(studentId, options = {}) {
         '</div>'
     ].join(''));
 }
+function escapeReportJsString(value) {
+    return String(value || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+function makeClassReportTextId(studentId) {
+    return `class-report-${String(studentId || '').replace(/[^a-zA-Z0-9_-]/g, '_')}`;
+}
+
+function getClassReportStudents(classId) {
+    const ids = (state.db.class_students || [])
+        .filter(m => String(m.class_id) === String(classId))
+        .map(m => String(m.student_id));
+    const activeStatus = '\uC7AC\uC6D0';
+
+    return (state.db.students || [])
+        .filter(s => ids.includes(String(s.id)) && s.status === activeStatus)
+        .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+}
+
+function buildClassReportBatchHtml(classId, selectedDate = '') {
+    const today = new Date().toLocaleDateString('sv-SE');
+    const targetDate = selectedDate || today;
+    const students = getClassReportStudents(classId);
+    const safeClassId = escapeReportJsString(classId);
+
+    const cards = students.length ? students.map(s => {
+        const ctx = buildReportContext(s.id);
+        const text = buildParentReportText(ctx);
+        const textareaId = makeClassReportTextId(s.id);
+        const safeStudentId = escapeReportJsString(s.id);
+        const safeDate = escapeReportJsString(targetDate);
+        const schoolText = escapeHtmlForTextarea(`${s.school_name || ''} ${s.grade || ''}`.trim());
+
+        return [
+            '<div style="padding:14px; border:1px solid var(--border); border-radius:16px; background:var(--surface); display:flex; flex-direction:column; gap:10px;">',
+            '<div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">',
+            `<div><div style="font-size:15px; font-weight:900; color:var(--text);">${escapeHtmlForTextarea(s.name || '')}</div><div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:3px;">${schoolText}</div></div>`,
+            `<button class="btn btn-primary" style="min-height:44px; padding:10px 14px; font-size:12px; font-weight:900; border-radius:12px; flex-shrink:0;" onclick="copyClassStudentReport('${safeStudentId}', '${safeDate}')">\uBCF5\uC0AC</button>`,
+            '</div>',
+            `<textarea id="${textareaId}" class="btn" style="width:100%; min-height:220px; text-align:left; background:var(--bg); border:none; padding:14px; font-size:13px; line-height:1.65; resize:vertical; font-family:inherit; white-space:pre-wrap;">${escapeHtmlForTextarea(text)}</textarea>`,
+            '</div>'
+        ].join('');
+    }).join('') : '<div style="padding:32px 16px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800; background:var(--surface-2); border-radius:16px;">\uBB38\uAD6C\uB97C \uC0DD\uC131\uD560 \uC7AC\uC6D0\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</div>';
+
+    return [
+        '<div style="display:flex; flex-direction:column; gap:14px;">',
+        '<div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">',
+        `<input type="date" class="btn" value="${targetDate}" style="min-height:44px; flex:1; min-width:150px; background:var(--surface-2); border:1px solid var(--border); font-weight:800;" onchange="openClassReportBatchModal('${safeClassId}', this.value)">`,
+        `<button class="btn btn-primary" style="min-height:44px; padding:10px 14px; font-size:13px; font-weight:900; border-radius:12px;" onclick="copyAllClassReports('${safeClassId}', '${escapeReportJsString(targetDate)}')">\uC804\uCCB4 \uBCF5\uC0AC</button>`,
+        '</div>',
+        '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">\uD559\uBD80\uBAA8\uC6A9 \uBB38\uAD6C\uB97C \uC0DD\uC131\uD55C \uB4A4 \uB0B4\uC6A9\uC744 \uD655\uC778\uD558\uACE0 \uBCF5\uC0AC\uD569\uB2C8\uB2E4.</div>',
+        `<div style="max-height:58vh; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding-right:4px;">${cards}</div>`,
+        '</div>'
+    ].join('');
+}
+
+function openClassReportBatchModal(classId, selectedDate = '') {
+    showModal('\uBC18 \uC804\uCCB4 \uBCF4\uACE0\uBB38\uAD6C', buildClassReportBatchHtml(classId, selectedDate));
+}
+
+function copyClassStudentReport(studentId, date) {
+    const textarea = document.getElementById(makeClassReportTextId(studentId));
+    const text = textarea ? textarea.value : buildParentReportText(buildReportContext(studentId));
+    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
+    if (!text.trim()) { toast('\uBCF5\uC0AC\uD560 \uBB38\uAD6C\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.', 'warn'); return; }
+
+    navigator.clipboard.writeText(text).then(() => {
+        toast(`${student?.name || '\uD559\uC0DD'} \uBB38\uAD6C\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4.`, 'success');
+    }).catch(() => {
+        toast('\uBCF5\uC0AC\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+    });
+}
+
+function copyAllClassReports(classId, date) {
+    const parts = getClassReportStudents(classId).map(s => {
+        const textarea = document.getElementById(makeClassReportTextId(s.id));
+        const text = textarea ? textarea.value : buildParentReportText(buildReportContext(s.id));
+        return `[${s.name}]\n${text}`;
+    }).filter(Boolean);
+
+    if (!parts.length) { toast('\uBCF5\uC0AC\uD560 \uBB38\uAD6C\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.', 'warn'); return; }
+
+    navigator.clipboard.writeText(parts.join('\n\n--------------------\n\n')).then(() => {
+        toast('\uBC18 \uC804\uCCB4 \uBB38\uAD6C\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4.', 'success');
+    }).catch(() => {
+        toast('\uBCF5\uC0AC\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+    });
+}
 function copyReport(sid, type) {
     const ctx = buildReportContext(sid);
     const s = ctx.student;
