@@ -248,47 +248,18 @@ function drawGradeChart(sid) {
  * 알림톡 문구 미리보기 (CTA 및 입력창 규격)
  */
 function openReportPreview(sid) {
-    const s = state.db.students.find(st => st.id === sid);
-    const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
-    
-    const lastRecord = (state.db.class_daily_records || [])
-        .filter(r => String(r.class_id) === String(mIds?.class_id))
-        .sort((a,b) => b.date.localeCompare(a.date))[0];
-    
-    let progressText = '정규 수업을 진행했습니다.';
-    if (lastRecord) {
-        const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(lastRecord.id));
-        if (progresses.length > 0) {
-            progressText = progresses.map(p => `${p.textbook_title_snapshot} ${p.progress_text}`).join(', ') + '를 학습했습니다.';
-        }
+    if (typeof openStudentReportModal === 'function') {
+        openStudentReportModal(sid);
+        return;
     }
 
-    const lastCns = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => b.date.localeCompare(a.date))[0];
-    let cnsText = lastCns ? `\n\n[학습 피드백]\n${lastCns.content}` : '';
+    if (typeof openReportModal === 'function') {
+        openReportModal(sid);
+        return;
+    }
 
-    const lastExam = (state.db.exam_sessions || [])
-        .filter(e => e.student_id === sid)
-        .sort((a,b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
-    let examText = lastExam ? `\n\n[최근 평가]\n${lastExam.exam_title}: ${lastExam.score}점` : '';
-
-    const template = `안녕하세요 학부모님, AP수학입니다.\n\n오늘 ${s.name}이는 ${progressText}${examText}${cnsText}\n\n궁금하신 점은 언제든 편하게 문의주세요. 감사합니다!`;
-
-    showModal('알림톡 문구 미리보기', `
-        <div style="background: var(--surface-2); border: 1px solid var(--border); padding: 16px; border-radius: 18px; margin-bottom: 16px;">
-            <p style="margin: 0 0 10px 4px; font-size: 12px; color: var(--secondary); font-weight: 800; line-height: 1.5;">내용을 확인하고 필요하면 수정하세요.</p>
-            <textarea id="report-preview-text" class="std-input-base" style="height: 280px; text-align: left; background: var(--surface); border: 1px solid var(--border); line-height: 1.7; resize: none; font-size: 14px;">${template}</textarea>
-        </div>
-    `, '최종 복사하기', () => {
-        const text = document.getElementById('report-preview-text').value;
-        navigator.clipboard.writeText(text).then(() => {
-            toast('문구가 복사되었습니다!', 'success');
-            closeModal();
-        }).catch(() => {
-            toast('복사에 실패했습니다.', 'warn');
-        });
-    });
+    toast('\uBCF4\uACE0 \uBB38\uAD6C \uBAA8\uB4C8\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
 }
-
 /**
  * 기존 기능 보존 및 규격화 (CRUD Flows)
  */
