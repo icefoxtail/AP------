@@ -63,7 +63,7 @@ function openGlobalPinManagement() {
     const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
-            <span style="font-weight:900; font-size:14px; color:var(--text);">${apEscapeHtml(c.name)}</span>
+            <span style="font-weight:700; font-size:14px; color:var(--text);">${apEscapeHtml(c.name)}</span>
             <span style="font-size:11px; color:var(--primary); font-weight:700; background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
         </button>
     `).join('');
@@ -87,7 +87,7 @@ function openClassManageModal() {
     const renderClassRow = (c) => `
         <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
             <div style="flex:1; cursor:pointer; padding-right:10px;" onclick="closeModal(); state.ui.currentClassId='${c.id}'; if(typeof renderClass==='function') renderClass('${c.id}');">
-                <div style="font-weight:900; font-size:14px; color:${Number(c.is_active)===0?'var(--secondary)':'var(--text)'};">
+                <div style="font-weight:700; font-size:14px; color:${Number(c.is_active)===0?'var(--secondary)':'var(--text)'};">
                     ${apEscapeHtml(c.name)} <span style="font-size:11px; font-weight:normal; color:var(--secondary); margin-left:4px;">${apEscapeHtml(c.grade)}</span>
                 </div>
                 <div style="font-size:11px; color:var(--secondary); margin-top:4px;">담당: ${apEscapeHtml(c.teacher_name)} | 요일: ${formatClassScheduleDaysForUI(c.schedule_days)}</div>

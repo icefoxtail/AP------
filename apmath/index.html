@@ -71,28 +71,31 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            padding: calc(14px + env(safe-area-inset-top)) 20px 14px 20px;
+            padding: env(safe-area-inset-top) 16px 0 16px;
             display: grid;
             grid-template-columns: 88px minmax(0, 1fr) 88px;
             align-items: center;
+            height: calc(64px + env(safe-area-inset-top));
             min-height: calc(64px + env(safe-area-inset-top));
         }
 
         .brand {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             justify-content: center;
             gap: 8px;
             cursor: pointer;
             min-width: 0;
+            height: 44px;
         }
 
         .brand-text {
             font-size: 20px;
-            font-weight: 950;
+            font-weight:700;
             color: var(--text);
-            letter-spacing: -0.5px;
+            letter-spacing: 0;
             white-space: nowrap;
+            line-height: 1.25;
         }
 
         .mobile-header-menu {
@@ -106,7 +109,7 @@
             background: transparent;
             color: var(--text);
             font-size: 24px;
-            font-weight: 900;
+            font-weight:700;
             line-height: 1;
             display: inline-flex;
             align-items: center;
@@ -135,10 +138,11 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             font-size: 13px;
-            font-weight: 850;
+            font-weight:700;
             color: var(--text);
             text-align: right;
-            letter-spacing: -0.2px;
+            letter-spacing: 0;
+            line-height: 44px;
         }
 
         nav {
@@ -173,7 +177,7 @@
 
         .desktop-topbar-title {
             font-size: 18px;
-            font-weight: 900;
+            font-weight:700;
             letter-spacing: -0.35px;
             color: var(--text);
             cursor: pointer;
@@ -257,6 +261,8 @@
             color: var(--text);
             font-size: 14px;
             font-weight: 700;
+            min-height: 44px;
+            line-height: 1.2;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             gap: 6px;
@@ -374,8 +380,9 @@
         }
 
         #modal-title {
-            font-size: 18px;
-            font-weight: 950;
+            font-size: 20px;
+            font-weight:700;
+            line-height: 1.25;
             text-align: center;
             color: var(--text);
             margin: 0;
@@ -388,7 +395,7 @@
             background: transparent;
             border: none;
             color: var(--secondary);
-            font-weight: 800;
+            font-weight:700;
             cursor: pointer;
             text-align: left;
             font-size: 15px;
@@ -400,7 +407,7 @@
             background: transparent;
             border: none;
             color: var(--primary);
-            font-weight: 900;
+            font-weight:700;
             cursor: pointer;
             text-align: right;
             font-size: 15px;
@@ -410,6 +417,7 @@
         #modal-body {
             padding: 20px 24px;
             overflow-y: auto;
+            overflow-x: hidden;
             flex: 1;
             min-height: 0;
         }
@@ -501,7 +509,7 @@
             padding: 10px;
             border-radius: 10px;
             font-size: 13px;
-            font-weight: 800;
+            font-weight:700;
             color: var(--secondary);
             background: transparent;
             cursor: pointer;
@@ -519,12 +527,93 @@
             border: 1px solid var(--border);
         }
 
+        input.btn,
+        select.btn,
+        textarea.btn,
+        .std-input-base,
+        .cls-input {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        textarea.btn,
+        textarea.std-input-base,
+        textarea.cls-input {
+            font-weight: 400;
+            line-height: 1.7;
+            resize: vertical;
+        }
+
+        .ap-ui-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .ap-ui-row > * {
+            min-width: 0;
+        }
+
+        .ap-small-btn {
+            min-height: 36px !important;
+            border-radius: 10px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            padding: 8px 12px !important;
+        }
+
+        .ap-mid-btn {
+            min-height: 44px !important;
+            border-radius: 12px !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+        }
+
+        .ap-primary-btn {
+            width: 100%;
+            min-height: 48px !important;
+            border-radius: 14px !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+        }
+
         @media (max-width: 600px) {
             #modal-content {
-                border-radius: 24px 24px 0 0;
+                width: 100vw;
+                max-width: 100vw;
+                border-radius: 20px 20px 0 0;
                 position: fixed;
                 bottom: 0;
-                max-height: 92vh;
+                max-height: calc(92vh - env(safe-area-inset-top));
+            }
+
+            #modal-header {
+                grid-template-columns: 56px minmax(0, 1fr) 56px;
+                padding: 16px 16px 12px;
+            }
+
+            #modal-body {
+                padding: 16px;
+            }
+
+            #modal-footer {
+                padding: 12px 16px calc(16px + env(safe-area-inset-bottom));
+            }
+
+            .ap-ui-row {
+                flex-direction: column;
+            }
+
+            .ap-ui-row input,
+            .ap-ui-row select,
+            .ap-ui-row textarea,
+            .ap-ui-row button {
+                width: 100%;
             }
 
             .omr-grid {

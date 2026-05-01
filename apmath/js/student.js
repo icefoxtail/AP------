@@ -45,24 +45,24 @@ function renderStudentDetailTab(sid, tab) {
         <div style="margin-bottom: 20px; padding: 0;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
                 <div style="min-width: 0;">
-                    <h1 style="margin: 0; font-size: 22px; font-weight: 950; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${s.name}</h1>
+                    <h1 style="margin: 0; font-size: 22px; font-weight:700; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${s.name}</h1>
                     <div style="display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;">
                         <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);">${s.school_name} ${s.grade}</span>
                         <span class="std-badge" style="background: transparent; border: 1px solid var(--border); color: var(--secondary);">${cls?.name || '반 미배정'}</span>
                         ${s.student_pin ? `<span class="std-badge" style="background: var(--surface); border: 1px solid var(--border); color: var(--text); letter-spacing: 1px;">PIN ${s.student_pin}</span>` : ''}
                     </div>
                 </div>
-                <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight: 800; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}')">정보 수정</button>
+                <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}')">정보 수정</button>
             </div>
             
             <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <div style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 16px; min-width: 0;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 600; margin-bottom: 4px; line-height: 1.5;">학생 연락처</div>
-                    <div style="font-size: 13px; font-weight: 800; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.student_phone}')">${s.student_phone || '미등록'}</div>
+                    <div style="font-size: 13px; font-weight:700; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.student_phone}')">${s.student_phone || '미등록'}</div>
                 </div>
                 <div style="background: transparent; border: 1px solid var(--border); padding: 14px 12px; border-radius: 16px; min-width: 0;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 600; margin-bottom: 4px; line-height: 1.5;">보호자 (${s.guardian_relation || '미지정'})</div>
-                    <div style="font-size: 13px; font-weight: 800; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.parent_phone}')">${s.parent_phone || '미등록'}</div>
+                    <div style="font-size: 13px; font-weight:700; color: var(--primary); cursor: pointer; line-height: 1.5; overflow-wrap: anywhere;" onclick="copyPhoneNumber('${s.parent_phone}')">${s.parent_phone || '미등록'}</div>
                 </div>
             </div>
         </div>
@@ -71,9 +71,9 @@ function renderStudentDetailTab(sid, tab) {
     // 2. 탭 바 (규격화된 행간 및 버튼)
     const tabBarHtml = `
         <div class="tab-bar" style="background: var(--bg); padding: 4px; border-radius: 16px; margin-bottom: 20px; display: flex; gap: 4px;">
-            <button class="tab-btn ${tab==='grade'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','grade')">성적분석</button>
-            <button class="tab-btn ${tab==='weak'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','weak')">취약단원</button>
-            <button class="tab-btn ${tab==='cns'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight: 800; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','cns')">상담기록</button>
+            <button class="tab-btn ${tab==='grade'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight:700; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','grade')">성적분석</button>
+            <button class="tab-btn ${tab==='weak'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight:700; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','weak')">취약단원</button>
+            <button class="tab-btn ${tab==='cns'?'active':''}" style="flex: 1; min-height: 44px; font-size: 13px; font-weight:700; border-radius: 10px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','cns')">상담기록</button>
         </div>
     `;
 
@@ -86,8 +86,8 @@ function renderStudentDetailTab(sid, tab) {
     // 4. 하단 액션바 (큰 CTA 버튼 규격: Min-H 52px / 14px)
     const footerHtml = `
         <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px;">
-            <button class="btn btn-primary" style="flex: 1.5; min-height: 52px; font-size: 15px; font-weight: 800; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="openReportPreview('${sid}')">알림톡 문구 생성</button>
-            <button class="btn" style="flex: 1; min-height: 52px; font-size: 15px; font-weight: 800; color: var(--primary); border: 1px solid var(--primary); background: transparent; border-radius: 16px; cursor: pointer;" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
+            <button class="btn btn-primary" style="flex: 1.5; min-height: 52px; font-size: 15px; font-weight:700; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="openReportPreview('${sid}')">알림톡 문구 생성</button>
+            <button class="btn" style="flex: 1; min-height: 52px; font-size: 15px; font-weight:700; color: var(--primary); border: 1px solid var(--primary); background: transparent; border-radius: 16px; cursor: pointer;" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
         </div>
     `;
 
@@ -106,7 +106,7 @@ function renderTargetProgressCard(sid) {
     if (!progress || progress.targetScore === null) {
         return `
             <div style="margin-bottom: 20px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
-                <div style="font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px;">\uBAA9\uD45C\uC810\uC218 \uBBF8\uC124\uC815</div>
+                <div style="font-size: 13px; font-weight:700; color: var(--text); margin-bottom: 6px;">\uBAA9\uD45C\uC810\uC218 \uBBF8\uC124\uC815</div>
                 <div style="font-size: 12px; font-weight: 700; color: var(--secondary); line-height: 1.5;">\uD559\uC0DD \uC815\uBCF4 \uC218\uC815\uC5D0\uC11C \uBAA9\uD45C\uC810\uC218\uB97C \uC785\uB825\uD558\uC138\uC694.</div>
             </div>
         `;
@@ -118,23 +118,23 @@ function renderTargetProgressCard(sid) {
 
     return `
         <div style="margin-bottom: 20px; padding: 16px; background: var(--surface); border: 1px solid rgba(26,92,255,0.14); border-radius: 16px;">
-            <div style="font-size: 13px; font-weight: 900; color: var(--primary); margin-bottom: 12px;">\uBAA9\uD45C \uC810\uC218</div>
+            <div style="font-size: 13px; font-weight:700; color: var(--primary); margin-bottom: 12px;">\uBAA9\uD45C \uC810\uC218</div>
             <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
                 <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uBAA9\uD45C</div>
-                    <div style="font-size: 18px; color: var(--text); font-weight: 950;">${progress.targetScore}\uC810</div>
+                    <div style="font-size: 18px; color: var(--text); font-weight:700;">${progress.targetScore}\uC810</div>
                 </div>
                 <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uCD5C\uADFC \uD3C9\uADE0</div>
-                    <div style="font-size: 18px; color: var(--text); font-weight: 950;">${avgText}</div>
+                    <div style="font-size: 18px; color: var(--text); font-weight:700;">${avgText}</div>
                 </div>
                 <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uB2EC\uC131\uB960</div>
-                    <div style="font-size: 18px; color: var(--primary); font-weight: 950;">${rateText}</div>
+                    <div style="font-size: 18px; color: var(--primary); font-weight:700;">${rateText}</div>
                 </div>
                 <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
                     <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uBAA9\uD45C\uAE4C\uC9C0</div>
-                    <div style="font-size: 18px; color: var(--text); font-weight: 950;">${remainText}</div>
+                    <div style="font-size: 18px; color: var(--text); font-weight:700;">${remainText}</div>
                 </div>
             </div>
         </div>
@@ -162,10 +162,10 @@ function renderGradeTab(sid) {
             <div style="padding: 14px 4px; border-bottom: 1px solid var(--border);">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px;">
                     <div style="min-width: 0;">
-                        <div style="font-size: 15px; font-weight: 900; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}</div>
+                        <div style="font-size: 15px; font-weight:700; color: var(--text); line-height: 1.4; overflow-wrap: anywhere;">${e.exam_title}</div>
                         <div style="font-size: 12px; color: var(--secondary); font-weight: 600; margin-top: 2px; line-height: 1.5;">${e.exam_date}</div>
                     </div>
-                    <div style="font-size: 20px; font-weight: 900; color: var(--primary); line-height: 1.2;">${e.score}점</div>
+                    <div style="font-size: 20px; font-weight:700; color: var(--primary); line-height: 1.2;">${e.score}점</div>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px;">${wrs || '<span style="font-size: 11px; color: var(--secondary); font-weight: 600;">오답 없음</span>'}</div>
                 <div style="display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap;">
@@ -179,9 +179,9 @@ function renderGradeTab(sid) {
     return `
         <div>
             ${targetProgressCard}
-            <h4 style="margin: 0 0 12px 4px; font-size: 16px; font-weight: 900; color: var(--text); line-height: 1.3;">최근 성적 추이</h4>
+            <h4 style="margin: 0 0 12px 4px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">최근 성적 추이</h4>
             ${chartArea}
-            <h4 style="margin: 24px 0 12px 4px; font-size: 16px; font-weight: 900; color: var(--text); line-height: 1.3;">전체 시험 이력</h4>
+            <h4 style="margin: 24px 0 12px 4px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">전체 시험 이력</h4>
             <div style="max-height: 400px; overflow-y: auto; padding-right: 4px;">${historyRows || '<p style="text-align: center; padding: 20px; color: var(--secondary); font-size: 13px; font-weight: 700;">기록 없음</p>'}</div>
         </div>
     `;
@@ -196,7 +196,7 @@ function renderWeakTab(sid) {
 
     return `
         <div style="padding: 0 4px;">
-            <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight: 900; color: var(--text); line-height: 1.3;">취약 단원 분석</h4>
+            <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">취약 단원 분석</h4>
             <p style="margin: 0 0 16px 0; font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5;">단원을 누르면 상세 오답과 추천 문항을 확인합니다.</p>
             ${typeof renderWeakUnitSummary === 'function' 
                 ? renderWeakUnitSummary(weakUnits, '누적 오답 데이터가 없습니다.', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s.name } })
@@ -215,12 +215,12 @@ function renderCnsTab(sid) {
         <div class="card" style="padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 16px; box-shadow: none; background: var(--surface);">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 12px; font-weight: 800; color: var(--secondary); line-height: 1.5;">${c.date}</span>
-                    <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 800; border: 1px solid rgba(26,92,255,0.15);">${c.type}</span>
+                    <span style="font-size: 12px; font-weight:700; color: var(--secondary); line-height: 1.5;">${c.date}</span>
+                    <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight:700; border: 1px solid rgba(26,92,255,0.15);">${c.type}</span>
                 </div>
                 <div style="display: flex; gap: 10px;">
-                    <span style="cursor: pointer; color: var(--primary); font-size: 12px; font-weight: 800;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
-                    <span style="cursor: pointer; color: var(--error); font-size: 12px; font-weight: 800;" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
+                    <span style="cursor: pointer; color: var(--primary); font-size: 12px; font-weight:700;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
+                    <span style="cursor: pointer; color: var(--error); font-size: 12px; font-weight:700;" onclick="handleDeleteConsultation('${c.id}', '${sid}')">삭제</span>
                 </div>
             </div>
             <div style="font-size: 13px; font-weight: 700; line-height: 1.5; color: var(--text); white-space: pre-wrap;">${apEscapeHtml(c.content)}</div>
@@ -233,7 +233,7 @@ function renderCnsTab(sid) {
 
     return `
         <div style="padding: 0 4px;">
-            <button class="btn btn-primary" style="width: 100%; margin-bottom: 20px; min-height: 52px; font-size: 14px; font-weight: 800; border-radius: 16px; box-shadow: none;" onclick="openAddConsultationModal('${sid}')">+ 새 상담 기록하기</button>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 20px; min-height: 52px; font-size: 14px; font-weight:700; border-radius: 16px; box-shadow: none;" onclick="openAddConsultationModal('${sid}')">+ 새 상담 기록하기</button>
             <div style="max-height: 450px; overflow-y: auto; padding-right: 4px;">
                 ${cnsCards || '<div style="text-align: center; padding: 40px; color: var(--secondary); font-size: 13px; font-weight: 700;">상담 기록이 없습니다.</div>'}
             </div>
@@ -411,7 +411,7 @@ function openEditStudent(sid) {
             <input id="edit-target-score" type="number" min="0" max="100" class="std-input-base" value="${s.target_score ?? ''}" placeholder="\uBAA9\uD45C \uC810\uC218">
             <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 80px;">${s.memo||''}</textarea>
             <div style="margin-top: 10px;">
-                <button class="btn" style="width: 100%; min-height: 44px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); font-weight: 800; border-radius: 12px;" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
+                <button class="btn" style="width: 100%; min-height: 44px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 12px;" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
             </div>
         </div>
     `, '저장', () => handleEditStudent(sid));
@@ -459,9 +459,9 @@ function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');
     const rows = discharged.map(s => `
         <div style="padding: 14px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--surface);">
-            <div><b style="font-size: 14px; font-weight: 900; color: var(--text); line-height: 1.4;">${s.name}</b> <span style="font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5; margin-left: 4px;">${s.school_name}</span></div>
-            <button class="btn btn-primary" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight: 800; border-radius: 12px; box-shadow: none;" onclick="handleRestore('${s.id}')">재원 복구</button>
+            <div><b style="font-size: 14px; font-weight:700; color: var(--text); line-height: 1.4;">${s.name}</b> <span style="font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5; margin-left: 4px;">${s.school_name}</span></div>
+            <button class="btn btn-primary" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; border-radius: 12px; box-shadow: none;" onclick="handleRestore('${s.id}')">재원 복구</button>
         </div>
     `).join('');
-    showModal('퇴원생 관리', `<div style="max-height: 60vh; overflow-y: auto; margin: -20px 0;">${rows || '<div style="padding: 40px; text-align: center; color: var(--secondary); font-weight: 800; font-size: 13px; line-height: 1.5;">퇴원생이 없습니다.</div>'}</div>`);
+    showModal('퇴원생 관리', `<div style="max-height: 60vh; overflow-y: auto; margin: -20px 0;">${rows || '<div style="padding: 40px; text-align: center; color: var(--secondary); font-weight:700; font-size: 13px; line-height: 1.5;">퇴원생이 없습니다.</div>'}</div>`);
 }

@@ -266,15 +266,15 @@ function openAdminStudentList(type) {
             actionButtons = `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
                     <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>
-                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">\uC7AC\uC6D0 \uBCF5\uAD6C</button>
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">\uC228\uAE40</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">\uC7AC\uC6D0 \uBCF5\uAD6C</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">\uC228\uAE40</button>
                 </div>
             `;
         } else if (type === 'risk') {
             actionButtons = `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
                     <button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>
-                    <button class="btn btn-primary" style="min-height:36px; padding:8px 12px; font-size:12px; font-weight:800; border-radius:8px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${s.id}')">\uBB38\uAD6C \uC0DD\uC131</button>
+                    <button class="btn btn-primary" style="min-height:36px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${s.id}')">\uBB38\uAD6C \uC0DD\uC131</button>
                 </div>
             `;
         } else {
@@ -283,7 +283,7 @@ function openAdminStudentList(type) {
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
-                    <div style="font-weight:900; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:600; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
+                    <div style="font-weight:700; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:600; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
                     <div style="font-size:12px; color:var(--primary); font-weight:600; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
                     ${riskDetails}
                 </div>
@@ -315,7 +315,7 @@ function renderAdminControlCenter() {
             <div style="display:flex; align-items:center; gap:10px;">
                 <button class="btn" style="width:40px; height:40px; padding:0; font-size:24px; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
                 <div>
-                    <div style="font-size:20px; font-weight:900; color:var(--text); letter-spacing:-0.5px;">운영센터</div>
+                    <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">운영센터</div>
                 </div>
             </div>
         </div>
@@ -324,19 +324,19 @@ function renderAdminControlCenter() {
     const summaryHtml = `
         <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:10px; margin-bottom:32px;">
             <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                <div style="font-size:20px; font-weight:800; color:var(--primary);">${activeStudents.length}</div>
+                <div style="font-size:20px; font-weight:700; color:var(--primary);">${activeStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">재원생</div>
             </div>
             <div class="card" onclick="openAdminStudentList('new')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                <div style="font-size:20px; font-weight:800; color:var(--success);">${newStudents.length}</div>
+                <div style="font-size:20px; font-weight:700; color:var(--success);">${newStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">신규</div>
             </div>
             <div class="card" onclick="openAdminStudentList('discharged')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                <div style="font-size:20px; font-weight:800; color:var(--secondary);">${dischargedStudents.length}</div>
+                <div style="font-size:20px; font-weight:700; color:var(--secondary);">${dischargedStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">퇴원생</div>
             </div>
             <div class="card" onclick="openAdminStudentList('risk')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid ${risks.length > 0 ? 'rgba(255,71,87,0.3)' : 'var(--border)'}; border-radius:16px; background:${risks.length > 0 ? 'rgba(255,71,87,0.05)' : 'var(--surface)'};">
-                <div style="font-size:20px; font-weight:800; color:var(--error);">${risks.length}</div>
+                <div style="font-size:20px; font-weight:700; color:var(--error);">${risks.length}</div>
                 <div style="font-size:11px; color:var(--error); font-weight:600; margin-top:4px;">관리필요</div>
             </div>
         </div>
@@ -345,7 +345,7 @@ function renderAdminControlCenter() {
     const teacherCardsHtml = `
         <div style="margin-bottom:32px;">
             <div style="margin-bottom:12px;">
-                <h3 style="margin:0; font-size:16px; font-weight:900; color:var(--text);">선생님</h3>
+                <h3 style="margin:0; font-size:16px; font-weight:700; color:var(--text);">선생님</h3>
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
                 ${renderAdminTeacherCards(todayStr)}
@@ -373,17 +373,17 @@ function renderAdminControlCenter() {
         <div class="card" style="padding:14px 16px; border:1px solid rgba(255,71,87,0.2); border-radius:14px; margin-bottom:10px; background:rgba(255,71,87,0.05); cursor:pointer; transition:background 0.2s;" onclick="renderStudentDetail('${r.student.id}')">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
                 <div style="min-width:0;">
-                    <div style="font-weight:900; color:var(--text); font-size:14px;">${apEscapeHtml(r.student.name)}</div>
+                    <div style="font-weight:700; color:var(--text); font-size:14px;">${apEscapeHtml(r.student.name)}</div>
                     <div style="font-size:12px; color:var(--error); font-weight:600; margin-top:4px;">${apEscapeHtml(r.className)} · ${apEscapeHtml(r.reasons.slice(0,2).join(' · '))}</div>
                 </div>
-                <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;"><button class="btn btn-primary" style="min-height:36px; padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${r.student.id}')">\uBB38\uAD6C \uC0DD\uC131</button><span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">\uC0C1\uC138 \uBCF4\uAE30</span></div>
+                <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;"><button class="btn btn-primary" style="min-height:36px; padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${r.student.id}')">\uBB38\uAD6C \uC0DD\uC131</button><span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">\uC0C1\uC138 \uBCF4\uAE30</span></div>
             </div>
         </div>
     `).join('');
     
     const riskSectionHtml = `
         <div style="margin-bottom:40px;">
-            <h3 style="margin:0 0 12px 0; font-size:15px; font-weight:900; color:var(--error);">관리필요 학생 ${risks.length}명</h3>
+            <h3 style="margin:0 0 12px 0; font-size:15px; font-weight:700; color:var(--error);">관리필요 학생 ${risks.length}명</h3>
             ${risks.length > 0 ? riskRows : `<div style="text-align:center; padding:20px; color:var(--success); font-weight:600; background:rgba(0,208,132,0.1); border-radius:16px;">현재 관리 필요 징후를 보이는 학생이 없습니다.</div>`}
         </div>
     `;
@@ -423,7 +423,7 @@ function openGlobalExamGradeView() {
     const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:16px; margin-bottom:10px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); if(typeof openExamGradeView==='function') openExamGradeView('${c.id}')">
-            <span style="font-weight:900; font-size:15px; color:var(--text);">${apEscapeHtml(c.name)}</span>
+            <span style="font-weight:700; font-size:15px; color:var(--text);">${apEscapeHtml(c.name)}</span>
             <span style="font-size:12px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 10px; border-radius:8px;">${apEscapeHtml(c.grade)}</span>
         </button>
     `).join('');
@@ -558,8 +558,8 @@ function renderClassSummaryCard(cls, data) {
     if (!s.isScheduled) {
         return `
             <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
-                <div style="font-weight:900; font-size:15px; color:var(--secondary); margin-bottom:12px;">${apEscapeHtml(cls.name)}</div>
-                <div style="font-size:13px; font-weight:800; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:left;">오늘 수업 없음</div>
+                <div style="font-weight:700; font-size:15px; color:var(--secondary); margin-bottom:12px;">${apEscapeHtml(cls.name)}</div>
+                <div style="font-size:13px; font-weight:700; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:left;">오늘 수업 없음</div>
             </div>
         `;
     }
@@ -570,11 +570,11 @@ function renderClassSummaryCard(cls, data) {
 
     return `
         <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
-            <div style="font-weight:950; font-size:15px; color:var(--text); margin-bottom:14px;">${apEscapeHtml(cls.name)}</div>
+            <div style="font-weight:700; font-size:15px; color:var(--text); margin-bottom:14px;">${apEscapeHtml(cls.name)}</div>
             <div style="display:flex; gap:6px; align-items:center;">
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:800; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:950; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:800; color:var(--secondary); border:1px solid var(--border);">등원 <span style="font-weight:950; color:var(--success); margin-left:2px;">${s.present}</span></div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:800; color:var(--secondary); border:1px solid var(--border);">결석 <span style="font-weight:950; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:2px;">${s.absent}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:700; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">등원 <span style="font-weight:700; color:var(--success); margin-left:2px;">${s.present}</span></div>
+                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">결석 <span style="font-weight:700; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:2px;">${s.absent}</span></div>
             </div>
         </div>
     `;
@@ -608,7 +608,7 @@ function renderTodoSections() {
         <div style="padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:rgba(255,165,2,0.8);">
-                <span style="font-size:15px; font-weight:900; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:10px; font-size:11px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}</span>
+                <span style="font-size:15px; font-weight:700; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''}">${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:10px; font-size:11px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}</span>
             </label>
         </div>
     `}).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
@@ -630,9 +630,9 @@ function renderTodoSections() {
             if (u.type === 'exam') {
                 const e = u.item;
                 const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
-                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:900; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:10px; font-weight:900;">${dDay}</span></div>`;
+                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
             } else {
-                return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:900; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:10px; font-weight:900;">${dDay}</span></div>`;
+                return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
             }
         }).join('');
     }
@@ -640,15 +640,15 @@ function renderTodoSections() {
     return `
         <div style="margin-bottom:18px;">
             <div onclick="openTodoMemoModal()" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px; cursor:pointer;">
-                <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">오늘일정</h3>
-                <span style="font-size:11px; font-weight:800; color:var(--secondary);">관리</span>
+                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일정</h3>
+                <span style="font-size:11px; font-weight:700; color:var(--secondary);">관리</span>
             </div>
             <div onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(255,165,2,0.20); background:rgba(255,165,2,0.04); box-shadow:0 4px 12px rgba(255,165,2,0.04);">${todayHtml}</div>
             
             ${upcomingHtml ? `
                 <div onclick="openExamScheduleModal()" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px; cursor:pointer;">
-                    <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">주간일정</h3>
-                    <span style="font-size:11px; font-weight:800; color:var(--secondary);">관리</span>
+                    <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">주간일정</h3>
+                    <span style="font-size:11px; font-weight:700; color:var(--secondary);">관리</span>
                 </div>
 <div style="overflow:hidden; border-radius:16px; border:1px solid rgba(110,84,255,0.15); background:rgba(110,84,255,0.03); box-shadow:0 4px 12px rgba(110,84,255,0.03);">${upcomingHtml}</div>            ` : ''}
         </div>
@@ -676,17 +676,17 @@ function renderTodayJournalCard(data) {
             const summary = data.classSummaries[c.id];
             return `${apEscapeHtml(c.name)} ${summary.present}/${summary.activeCount}`;
         });
-        contentHtml = `<div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.55;">${classStrings.join(' · ')}</div>`;
+        contentHtml = `<div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">${classStrings.join(' · ')}</div>`;
     }
 
     return `
         <div style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">오늘일지</h3>
+                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일지</h3>
             </div>
             <div onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('일지 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; justify-content:space-between; align-items:center; gap:12px;">
                 <div style="min-width:0; flex:1;">${contentHtml}</div>
-                <span style="font-size:18px; font-weight:950; color:var(--primary); line-height:1; flex:0 0 auto;">›</span>
+                <span style="font-size:18px; font-weight:700; color:var(--primary); line-height:1; flex:0 0 auto;">›</span>
             </div>
         </div>
     `;
@@ -707,7 +707,7 @@ function renderDashboard() {
     const classes = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-            <h3 style="margin:0; font-size:15px; font-weight:950; color:var(--text);">학급관리</h3>
+            <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">학급관리</h3>
         </div>
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
@@ -806,7 +806,7 @@ function openTodayCloseModal(tab = 'att') {
 
     const rows = cur.list.length
         ? sortedClassNames.map(cName => {
-            const classHeader = `<div style="background:var(--surface-2); padding:8px 12px; font-size:12px; font-weight:800; color:var(--secondary); margin-top:12px; border-radius:8px;">${apEscapeHtml(cName)}</div>`;
+            const classHeader = `<div style="background:var(--surface-2); padding:8px 12px; font-size:12px; font-weight:700; color:var(--secondary); margin-top:12px; border-radius:8px;">${apEscapeHtml(cName)}</div>`;
             const studentRows = grouped[cName].map(s => {
                 let actionBtns = '';
                 if (tab === 'att') {
@@ -818,7 +818,7 @@ function openTodayCloseModal(tab = 'att') {
                     <div style="padding:16px 8px; border-bottom:1px solid var(--border); background:var(--surface);">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;">
-                                <span style="font-weight:900; font-size:15px; color:var(--text);">${apEscapeHtml(s.name)}</span>
+                                <span style="font-weight:700; font-size:15px; color:var(--text);">${apEscapeHtml(s.name)}</span>
                             </div>
                             <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px; cursor:pointer;">상세 보기</span>
                         </div>
@@ -988,7 +988,7 @@ function openDailyJournalModal(dateStr) {
     if (!myJournal || status === '작성중') {
         actionBtns = `
             <button class="btn" style="flex:1; padding:14px; font-weight:700; background:var(--surface); color:var(--text);" onclick="saveJournal('작성중', null, '${targetDate}')">임시 저장</button>
-            <button class="btn btn-primary" style="flex:1; padding:14px; font-weight:800;" onclick="saveJournal('제출완료', null, '${targetDate}')">제출</button>
+            <button class="btn btn-primary" style="flex:1; padding:14px; font-weight:700;" onclick="saveJournal('제출완료', null, '${targetDate}')">제출</button>
         `;
     } else if (status === '제출완료') {
         actionBtns = `
@@ -999,7 +999,7 @@ function openDailyJournalModal(dateStr) {
     showModal('일지', `
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:10px 14px; border-radius:10px;">
             <b style="font-size:13px; color:var(--secondary);">작성 기준일</b>
-            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:900; color:var(--text);" onchange="openDailyJournalModal(this.value)">
+            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:700; color:var(--text);" onchange="openDailyJournalModal(this.value)">
         </div>
         ${status === '결재완료' ? `
             <div style="background:rgba(0,208,132,0.1); color:var(--success); padding:16px; border-radius:12px; margin-bottom:16px;">
@@ -1044,7 +1044,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
     if (teacherName) journals = journals.filter(j => j.teacher_name === teacherName);
     const title = teacherName ? `${teacherName} 선생님 일지` : '일지확인';
     
-    const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeTeacher}')">← 선생님 메뉴</button>` : '';
+    const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:700; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeTeacher}')">← 선생님 메뉴</button>` : '';
     
     const rows = journals.map(j => {
         const teacherArg = String(teacherName || j.teacher_name || '').replace(/'/g, "\\'");
@@ -1056,7 +1056,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
             <div class="card" style="padding:16px; margin-bottom:12px; cursor:pointer; border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); background:var(--surface);" onclick="openAdminJournalFeedback('${j.id}', '${teacherArg}')">
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px; gap:8px; align-items:center;">
                     <b style="font-size:15px; color:var(--text);">${apEscapeHtml(j.teacher_name)} 선생님</b>
-                    <span style="font-size:11px; font-weight:900; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
+                    <span style="font-size:11px; font-weight:700; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
                 </div>
                 <div style="font-size:13px; color:var(--text-soft); white-space:pre-wrap; max-height:60px; overflow:hidden; line-height:1.6;">${apEscapeHtml(j.content)}</div>
             </div>`;
@@ -1066,7 +1066,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
         ${backBtn}
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:12px 14px; border-radius:12px;">
             <b style="font-size:13px; color:var(--secondary); white-space:nowrap;">기준일</b>
-            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:900; color:var(--text);" onchange="renderAdminJournalList(this.value, '${safeTeacher}')">
+            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:700; color:var(--text);" onchange="renderAdminJournalList(this.value, '${safeTeacher}')">
         </div>
         <div style="max-height:55vh; overflow-y:auto; padding-right:4px;">
             ${journals.length ? rows : `<div style="text-align:center; color:var(--secondary); padding:30px; font-weight:600; font-size:13px; background:var(--surface-2); border-radius:12px;">해당 날짜에 제출된 일지가 없습니다.</div>`}
@@ -1083,7 +1083,7 @@ function openAdminJournalFeedback(id, teacherName = '') {
         <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--surface-2); border:none; border-radius:12px; padding:16px; margin-bottom:12px; color:var(--text);">${apEscapeHtml(journal.content)}</textarea>
         <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px; background:var(--surface); color:var(--text);">${apEscapeHtml(journal.feedback || '')}</textarea>
         <div style="margin-top:16px;">
-            <button class="btn btn-primary" style="width:100%; padding:16px; border-radius:14px; font-weight:800; font-size:15px;" onclick="approveJournal('${journal.id}', '${journal.date}', '${safeTeacher}')">확인완료</button>
+            <button class="btn btn-primary" style="width:100%; padding:16px; border-radius:14px; font-weight:700; font-size:15px;" onclick="approveJournal('${journal.id}', '${journal.date}', '${safeTeacher}')">확인완료</button>
         </div>
     `);
 }
@@ -1126,15 +1126,15 @@ function renderAdminTeacherCards(todayStr) {
         return `
             <div class="card" onclick="openAdminTeacherPanel('${safeName}')" style="cursor:pointer; padding:18px; margin:0; border:1px solid var(--border); border-radius:20px; background:var(--surface); box-shadow:var(--shadow); transition:transform 0.2s;">
                 <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
-                    <div style="width:46px; height:46px; border-radius:14px; background:var(--surface-2); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900; flex-shrink:0;">${tName.charAt(0)}</div>
+                    <div style="width:46px; height:46px; border-radius:14px; background:var(--surface-2); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; flex-shrink:0;">${tName.charAt(0)}</div>
                     <div style="min-width:0; flex:1;">
-                        <div style="font-size:16px; font-weight:900; color:var(--text); line-height:1.2;">${apEscapeHtml(tName)} 선생님</div>
+                        <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.2;">${apEscapeHtml(tName)} 선생님</div>
                         <div style="font-size:12px; color:var(--secondary); font-weight:600; margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">반 ${myClasses.length}개 · 학생 ${activeStudentCount}명</div>
                     </div>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface-2); border-radius:10px; padding:10px 12px;">
                     <span style="font-size:12px; color:var(--secondary); font-weight:700;">오늘 일지</span>
-                    <span style="font-size:11px; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px; font-weight:900;">${journalStatus}</span>
+                    <span style="font-size:11px; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px; font-weight:700;">${journalStatus}</span>
                 </div>
             </div>`;
     }).join('');
@@ -1145,8 +1145,8 @@ function openAdminTeacherPanel(teacherName) {
     const safeName = String(teacherName || '').replace(/'/g, "\\'");
     showModal(`${apEscapeHtml(teacherName)} 선생님`, `
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-            <button class="btn btn-primary" style="padding:16px; font-size:14px; font-weight:900; border-radius:16px;" onclick="closeModal(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지확인</button>
-            <button class="btn" style="padding:16px; font-size:14px; font-weight:900; border-radius:16px; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow); color:var(--text);" onclick="closeModal(); renderAdminTeacherStudents('${safeName}')">학생확인</button>
+            <button class="btn btn-primary" style="padding:16px; font-size:14px; font-weight:700; border-radius:16px;" onclick="closeModal(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지확인</button>
+            <button class="btn" style="padding:16px; font-size:14px; font-weight:700; border-radius:16px; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow); color:var(--text);" onclick="closeModal(); renderAdminTeacherStudents('${safeName}')">학생확인</button>
         </div>
     `);
 }
@@ -1155,7 +1155,7 @@ function renderAdminTeacherStudents(teacherName) {
     const safeName = String(teacherName || '').replace(/'/g, "\\'");
     const myClasses = state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
     
-    let html = `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:900; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeName}')">← 선생님 메뉴</button><div style="max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:16px; padding-right:4px;">`;
+    let html = `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:700; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeName}')">← 선생님 메뉴</button><div style="max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:16px; padding-right:4px;">`;
     
     if (!myClasses.length) {
         html += `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">담당 학급 또는 재원생이 없습니다.</div>`;
@@ -1165,7 +1165,7 @@ function renderAdminTeacherStudents(teacherName) {
             const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원'); 
             
             html += `<div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                        <div style="padding:14px 16px; background:var(--surface-2); font-weight:900; color:var(--text); display:flex; justify-content:space-between; border-bottom:1px solid var(--border);">
+                        <div style="padding:14px 16px; background:var(--surface-2); font-weight:700; color:var(--text); display:flex; justify-content:space-between; border-bottom:1px solid var(--border);">
                             <span>${apEscapeHtml(cls.name)}</span>
                             <span style="font-size:12px; color:var(--secondary); font-weight:700;">${stds.length}명</span>
                         </div>
