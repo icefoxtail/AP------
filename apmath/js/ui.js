@@ -133,7 +133,7 @@ function showModal(t, b, at=null, af=null) {
             actionBtn.style.border = 'none';
             actionBtn.style.boxShadow = 'none';
             actionBtn.style.color = 'var(--primary)';
-            actionBtn.style.fontWeight = '900';
+            actionBtn.style.fontWeight = '700';
             actionBtn.style.fontSize = '15px';
             actionBtn.style.padding = '8px 0';
             actionBtn.style.minHeight = 'auto';
@@ -204,7 +204,7 @@ function setModalBody(html) {
 function setModalLoading(title, message) {
     showModal(title, `
         <div style="text-align:center; padding:40px 24px; color:var(--secondary);">
-            <div style="font-size:14px; font-weight:800;">${message || '잠시만 기다려주세요...'}</div>
+            <div style="font-size:14px; font-weight:700;">${message || '잠시만 기다려주세요...'}</div>
         </div>
     `);
 }
@@ -265,7 +265,7 @@ function ensureDesktopHeaderUser() {
 
     el.style.marginLeft = 'auto';
     el.style.fontSize = '13px';
-    el.style.fontWeight = '900';
+    el.style.fontWeight = '700';
     el.style.color = 'var(--text)';
     el.style.whiteSpace = 'nowrap';
     el.style.textAlign = 'right';
@@ -466,7 +466,7 @@ function ensureDrawerStyle() {
             background:transparent;
             color:var(--text);
             font-size:20px;
-            font-weight:900;
+            font-weight:700;
             cursor:pointer;
             align-items:center;
             justify-content:flex-start;
@@ -494,7 +494,7 @@ function ensureDrawerStyle() {
             background:transparent;
             color:var(--text);
             font-size:22px;
-            font-weight:900;
+            font-weight:700;
             line-height:1;
             display:flex;
             align-items:center;

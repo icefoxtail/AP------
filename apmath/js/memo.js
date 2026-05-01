@@ -13,8 +13,8 @@ function openTodoMemoModal() {
         return `
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; ${isDone ? 'opacity:0.5;' : ''}">
             <div style="flex:1;">
-                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${apEscapeHtml(m.memo_date)} ${isPinned ? `<span style="color:var(--primary); font-weight:800;">고정</span>` : ''}</div>
-                <div style="font-size:14px; font-weight:900; color:var(--text); text-decoration:${isDone ? 'line-through' : 'none'};">${apEscapeHtml(m.content)}</div>
+                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${apEscapeHtml(m.memo_date)} ${isPinned ? `<span style="color:var(--primary); font-weight:700;">고정</span>` : ''}</div>
+                <div style="font-size:14px; font-weight:700; color:var(--text); text-decoration:${isDone ? 'line-through' : 'none'};">${apEscapeHtml(m.content)}</div>
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn ${isDone ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:700; ${isDone ? 'background:var(--surface-2); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!isDone})">${isDone ? '취소' : '완료'}</button>

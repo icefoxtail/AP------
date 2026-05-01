@@ -85,26 +85,26 @@ function renderClass(cid) {
     const opToolsPanel = `
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 16px 14px 0;">
             <div style="min-width: 0;">
-                <div style="font-size: 20px; font-weight: 950; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${cls.name}</div>
+                <div style="font-size: 20px; font-weight:700; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${cls.name}</div>
                 <div style="font-size: 11px; font-weight: 600; color: var(--secondary); margin-top: 2px; line-height: 1.5;">${formatClassScheduleDays(cls.schedule_days)}</div>
             </div>
-            <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight: 800; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="renderDashboard()">닫기</button>
+            <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="renderDashboard()">닫기</button>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
-            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openQrGenerator('${cid}')">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
+            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openQrGenerator('${cid}')">
                 <span style="color: var(--primary);">${icons.qr}</span> <span>QR/OMR</span>
             </button>
-            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openExamGradeView('${cid}')">
+            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openExamGradeView('${cid}')">
                 <span style="color: var(--primary);">${icons.grade}</span> <span>시험성적</span>
             </button>
-            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">
+            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">
                 <span style="color: var(--primary);">${icons.clinic}</span> <span>클리닉</span>
             </button>
-            <button class="btn btn-primary" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; line-height: 1.2;" onclick="openClassRecordModal('${cid}')">
+            <button class="btn btn-primary ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; line-height: 1.2;" onclick="openClassRecordModal('${cid}')">
                 <span style="color: #fff;">${icons.edit}</span> <span>진도관리</span>
             </button>
-            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClassReportBatchModal==='function') openClassReportBatchModal('${cid}'); else toast('\uBB38\uAD6C \uC0DD\uC131 \uAE30\uB2A5\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');">
+            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClassReportBatchModal==='function') openClassReportBatchModal('${cid}'); else toast('\uBB38\uAD6C \uC0DD\uC131 \uAE30\uB2A5\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');">
                 <span style="color: var(--primary);">${icons.report}</span> <span>\uBB38\uAD6C\uC0DD\uC131</span>
             </button>
 
@@ -113,23 +113,23 @@ function renderClass(cid) {
 
     const statusBarHtml = summary.isScheduled
         ? `<div style="display: flex; gap: 12px; align-items: center;">
-             <span>출석 <b style="color: var(--text); font-weight: 900;">${summary.att}/${summary.total}</b></span>
+             <span>출석 <b style="color: var(--text); font-weight:700;">${summary.att}/${summary.total}</b></span>
              <span style="width: 1px; height: 12px; background: var(--border);"></span>
-             <span>숙제 <b style="color: var(--text); font-weight: 900;">${summary.hw}/${summary.total}</b></span>
+             <span>숙제 <b style="color: var(--text); font-weight:700;">${summary.hw}/${summary.total}</b></span>
            </div>`
-        : `<span style="color: var(--warning); font-weight: 800;">정규 수업일 아님</span>`;
+        : `<span style="color: var(--warning); font-weight:700;">정규 수업일 아님</span>`;
 
     document.getElementById('app-root').innerHTML = `
         <div class="cls-fade-in">
             ${opToolsPanel}
-            <div style="margin: 0 14px 18px; padding: 14px 16px; background: rgba(26,92,255,0.06); border: 1px solid rgba(26,92,255,0.1); border-radius: 16px; font-size: 12px; color: var(--primary); font-weight: 800; display: flex; justify-content: space-between; align-items: center; line-height: 1.5;">
+            <div style="margin: 0 14px 18px; padding: 14px 16px; background: rgba(26,92,255,0.06); border: 1px solid rgba(26,92,255,0.1); border-radius: 16px; font-size: 12px; color: var(--primary); font-weight:700; display: flex; justify-content: space-between; align-items: center; line-height: 1.5;">
                 <span>오늘 현황</span>
                 ${statusBarHtml}
             </div>
             <div style="margin: 0 14px 32px;">
                 <div class="card" style="padding: 8px 0; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
                     <div style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
-                        <h2 style="font-size: 16px; font-weight: 950; color: var(--text); margin: 0; line-height: 1.3;">학생 명단</h2>
+                        <h2 style="font-size: 16px; font-weight:700; color: var(--text); margin: 0; line-height: 1.3;">학생 명단</h2>
                     </div>
                     <table style="width: 100%; border-collapse: collapse;">
                         <thead>
@@ -156,18 +156,18 @@ function renderClass(cid) {
 
         const attStyle = attStatus === '등원' 
             ? 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);' 
-            : 'background: rgba(255,71,87,0.08); color: var(--error); font-weight: 950; border: 1px solid rgba(255,71,87,0.15);';
+            : 'background: rgba(255,71,87,0.08); color: var(--error); font-weight:700; border: 1px solid rgba(255,71,87,0.15);';
         
         const hwStyle = hwStatus === '완료' 
             ? 'background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);' 
-            : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 950; border: 1px solid rgba(255,165,2,0.15);';
+            : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight:700; border: 1px solid rgba(255,165,2,0.15);';
 
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight: 900; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
+            <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
-                <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight: 800; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
-                <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight: 800; border-radius: 8px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
+                <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
+                <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
             </td>
         </tr>`;
     }).join('');
@@ -197,7 +197,7 @@ function openClassRecordModal(cid, targetDate = '') {
         
         return `
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; min-width: 120px; color: var(--text); cursor: pointer; line-height: 1.5;">
+            <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight:700; min-width: 120px; color: var(--text); cursor: pointer; line-height: 1.5;">
                 <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${safeTitle}" data-progress-id="progress_${safeTbId}" ${isChecked} style="transform: scale(1.1); accent-color: var(--primary);">
                 ${String(tb.title || '')}
             </label>
@@ -212,7 +212,7 @@ function openClassRecordModal(cid, targetDate = '') {
     showModal('진도관리', `
         <div style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px;">
-                <h4 style="margin: 0; font-size: 16px; font-weight: 950; color: var(--text); line-height: 1.3;">교재별 진도</h4>
+                <h4 style="margin: 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">교재별 진도</h4>
                 <input type="date" class="cls-input" value="${todayStr}" style="width: auto; min-width: 132px; padding: 6px 10px; font-size: 12px; min-height: 0; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);" onchange="openClassRecordModal('${cid}', this.value)">
             </div>
             <div style="background: var(--surface); padding: 4px 0;">
@@ -220,10 +220,10 @@ function openClassRecordModal(cid, targetDate = '') {
             </div>
         </div>
         <div style="margin-bottom: 32px;">
-            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 950; color: var(--text); line-height: 1.3;">특이사항</h4>
+            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">특이사항</h4>
             <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 110px; resize: none; padding: 14px; line-height: 1.6;">${safeNote}</textarea>
         </div>
-        <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight: 800; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>
+        <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:700; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>
     `);
 }
 
@@ -271,8 +271,8 @@ function renderAttendanceLedger() {
                 </select>
             </div>
             <div style="display: flex; gap: 6px; background: var(--surface); padding: 4px; border: 1px solid var(--border); border-radius: 12px;">
-                <button id="ledger-mode-att" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight: 800; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
-                <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight: 800; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
+                <button id="ledger-mode-att" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
+                <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
             </div>
         </div>
         <div id="ledger-table-wrap" style="max-height: 55vh; overflow-y: auto; padding-right: 4px;"></div>
@@ -296,14 +296,14 @@ function renderLedgerTable() {
         const rec = records.find(r => String(r.student_id) === String(s.id) && (!r.date || r.date === ledgerState.date));
         const status = isAtt ? (rec?.status || '등원') : (rec?.status || '완료');
         let style = isAtt 
-            ? (status === '등원' ? 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);' : 'background: rgba(255,71,87,0.08); color: var(--error); font-weight: 950; border: 1px solid rgba(255,71,87,0.15);')
-            : (status === '완료' ? 'background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);' : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 950; border: 1px solid rgba(255,165,2,0.15);');
+            ? (status === '등원' ? 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);' : 'background: rgba(255,71,87,0.08); color: var(--error); font-weight:700; border: 1px solid rgba(255,71,87,0.15);')
+            : (status === '완료' ? 'background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);' : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight:700; border: 1px solid rgba(255,165,2,0.15);');
         
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 14px 12px; font-weight: 900; color: var(--text); font-size: 14px; line-height: 1.4;">${s.name}</td>
+            <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 12px; text-align: right;">
-                <button class="btn" style="padding: 4px 10px; font-size: 13px; min-width: 60px; font-weight: 800; border-radius: 8px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button>
+                <button class="btn" style="padding: 4px 10px; font-size: 13px; min-width: 60px; font-weight:700; border-radius: 8px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button>
             </td>
         </tr>`;
     }).join('');
@@ -421,11 +421,11 @@ async function openExamGradeView(classId) {
         const submittedCount = new Set((ex.sessions || []).map(s => String(s.student_id))).size;
         const qInfo = ex.questionCount ? ` · ${ex.questionCount}문항` : '';
         const sourceBadge = ex.fromAssignment 
-            ? `<span style="font-size: 10px; font-weight: 800; background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(26,92,255,0.15);">출제됨</span>`
-            : `<span style="font-size: 10px; font-weight: 800; background: var(--surface-2); color: var(--secondary); padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border);">제출됨</span>`;
+            ? `<span style="font-size: 10px; font-weight:700; background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(26,92,255,0.15);">출제됨</span>`
+            : `<span style="font-size: 10px; font-weight:700; background: var(--surface-2); color: var(--secondary); padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border);">제출됨</span>`;
         
         return `<div class="exam-grade-row" onclick="openExamDetail('${classId}','${String(ex.title).replace(/'/g,"\\'")}','${ex.date}')" style="padding: 16px; border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; cursor: pointer; background: var(--surface); box-shadow: none;">
-            <div style="font-size: 15px; font-weight: 900; color: var(--text); line-height: 1.4;">${ex.title} ${sourceBadge}</div>
+            <div style="font-size: 15px; font-weight:700; color: var(--text); line-height: 1.4;">${ex.title} ${sourceBadge}</div>
             <div style="font-size: 12px; color: var(--secondary); font-weight: 600; margin-top: 8px; display: flex; align-items: center; gap: 6px; line-height: 1.5;">
                 <span>${ex.date || '날짜 없음'}</span>
                 <span style="width: 2px; height: 2px; background: var(--secondary); border-radius: 50%;"></span>
@@ -489,8 +489,8 @@ async function openExamDetail(classId, examTitle, examDate) {
     const submittedHTML = submitted.map(s => {
         const sArchive = s.session?.archive_file ? String(s.session.archive_file).replace(/'/g, "\\'") : examArchiveFile;
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 14px 12px; font-weight: 900; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
-            <td style="text-align: center; font-weight: 950; color: var(--text); padding: 14px 4px; font-size: 14px;">${s.score}점</td>
+            <td style="padding: 14px 12px; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
+            <td style="text-align: center; font-weight:700; color: var(--text); padding: 14px 4px; font-size: 14px;">${s.score}점</td>
             <td style="padding: 14px 4px;">
                 <div style="display: flex; flex-wrap: wrap; gap: 4px;">
                     ${s.wrongs.length ? s.wrongs.map(qid => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(s.session, qid) : `<span style="background: rgba(255,71,87,0.08); color: var(--error); padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 1px solid rgba(255,71,87,0.15);">Q${qid}</span>`).join('') : '<span style="color: var(--secondary); font-size: 11px; font-weight: 600;">없음</span>'}
@@ -509,7 +509,7 @@ async function openExamDetail(classId, examTitle, examDate) {
         <td style="padding: 14px 12px; color: var(--secondary); font-weight: 600; font-size: 14px;">${s.name}</td>
         <td colspan="2" style="text-align: center; font-size: 12px; color: var(--secondary); font-weight: 700; line-height: 1.5;">미제출</td>
         <td style="text-align: right; padding: 14px 12px;">
-            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight: 800; border-radius: 8px; min-height: 32px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
+            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:700; border-radius: 8px; min-height: 32px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
         </td>
     </tr>`).join('');
 
@@ -517,15 +517,15 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     showModal(`${examTitle}`, `
         <div style="padding: 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; text-align: center;">
-            <div style="font-size: 14px; font-weight: 900; color: var(--text); line-height: 1.4;">제출 완료: <b style="color: var(--success);">${submitted.length}명</b> / 전체 ${submitted.length + pending.length}명</div>
+            <div style="font-size: 14px; font-weight:700; color: var(--text); line-height: 1.4;">제출 완료: <b style="color: var(--success);">${submitted.length}명</b> / 전체 ${submitted.length + pending.length}명</div>
             <div style="font-size: 11px; font-weight: 600; color: var(--secondary); margin-top: 4px; line-height: 1.5;">${examDate} · ${qCount}문항 기준</div>
         </div>
         <div style="margin-bottom: 24px; border: 1px solid rgba(26,92,255,0.15); border-radius: 18px; padding: 16px; background: rgba(26,92,255,0.02);">
-            <div style="font-size: 14px; font-weight: 950; margin-bottom: 12px; color: var(--primary); line-height: 1.3;">반 취약 단원 TOP</div>
+            <div style="font-size: 14px; font-weight:700; margin-bottom: 12px; color: var(--primary); line-height: 1.3;">반 취약 단원 TOP</div>
             ${weakUnitHtml}
         </div>
         <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); font-weight: 800; border-radius: 10px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}')">시험 기록 전체 삭제</button>
+            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 10px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}')">시험 기록 전체 삭제</button>
         </div>
         <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
             <thead>

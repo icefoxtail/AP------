@@ -80,9 +80,9 @@ function renderLogin() {
             <div style="width:100%; max-width:380px; background:var(--surface); border-radius:24px; padding:40px 28px; border:1px solid var(--border); box-shadow:none;">
                 <div style="text-align:center; margin-bottom:32px;">
                     <div style="display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; background:var(--primary); border-radius:16px; margin-bottom:16px; border:1.5px solid rgba(26,92,255,0.3);">
-                        <span style="color:#fff; font-size:24px; font-weight:900;">A</span>
+                        <span style="color:#fff; font-size:24px; font-weight:700;">A</span>
                     </div>
-                    <h2 style="color:var(--text); margin:0 0 6px; font-size:20px; font-weight:950; line-height:1.2; letter-spacing:-0.5px;">AP Math OS</h2>
+                    <h2 style="color:var(--text); margin:0 0 6px; font-size:20px; font-weight:700; line-height:1.2; letter-spacing:-0.5px;">AP Math OS</h2>
                     <p style="color:var(--secondary); font-size:13px; margin:0; font-weight:700; line-height:1.5;">선생님 계정으로 로그인하세요</p>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:10px;">
@@ -94,7 +94,7 @@ function renderLogin() {
                         <label style="display:block; font-size:13px; font-weight:700; color:var(--secondary); margin-bottom:6px; margin-left:4px; line-height:1.5;">비밀번호</label>
                         <input id="login-pw" type="password" class="btn" placeholder="비밀번호 입력" style="width:100%; text-align:left; cursor:text; padding:14px 16px; font-size:15px; font-weight:600; line-height:1.4; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text);" onkeyup="if(event.key==='Enter')handleLogin()">
                     </div>
-                    <button class="btn btn-primary" style="width:100%; margin-top:12px; min-height:52px; padding:14px 16px; font-size:14px; font-weight:800; line-height:1.2; border-radius:14px; box-shadow:none;" onclick="handleLogin()">로그인</button>
+                    <button class="btn btn-primary" style="width:100%; margin-top:12px; min-height:52px; padding:14px 16px; font-size:14px; font-weight:700; line-height:1.2; border-radius:14px; box-shadow:none;" onclick="handleLogin()">로그인</button>
                 </div>
             </div>
         </div>
@@ -459,7 +459,7 @@ function renderWeakUnitDetailList(item, mode = 'student') {
         <div style="display:flex; flex-direction:column; gap:10px; max-height:60vh; overflow-y:auto; padding-right:2px;">
             ${questions.map(q => {
                 const studentLabel = mode === 'class'
-                    ? `<div style="font-size:14px; font-weight:900; color:var(--primary); line-height:1.4;">${apEscapeHtml(getStudentNameById(q.studentId))}</div>`
+                    ? `<div style="font-size:14px; font-weight:700; color:var(--primary); line-height:1.4;">${apEscapeHtml(getStudentNameById(q.studentId))}</div>`
                     : '';
                 const scoreLabel = q.score !== undefined && q.score !== null && q.score !== ''
                     ? `<span style="font-size:11px; color:var(--secondary); font-weight:600; line-height:1.5;">${apEscapeHtml(q.score)}점</span>`
@@ -470,7 +470,7 @@ function renderWeakUnitDetailList(item, mode = 'student') {
                         <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
                             <div style="flex:1; min-width:0;">
                                 ${studentLabel}
-                                <div style="font-size:14px; color:var(--text); font-weight:900; line-height:1.4; word-break:break-word;">${apEscapeHtml(q.examTitle || '시험명 없음')}</div>
+                                <div style="font-size:14px; color:var(--text); font-weight:700; line-height:1.4; word-break:break-word;">${apEscapeHtml(q.examTitle || '시험명 없음')}</div>
                                 <div style="font-size:11px; color:var(--secondary); margin-top:3px; font-weight:600; line-height:1.5;">${apEscapeHtml(q.examDate || '')} ${scoreLabel ? `· ${scoreLabel}` : ''}</div>
                             </div>
                             <div style="font-size:13px; font-weight:700; color:var(--error); background:rgba(255,71,87,0.08); border-radius:8px; padding:4px 8px; white-space:nowrap; line-height:1.5;">Q${apEscapeHtml(q.questionId)}</div>
@@ -498,11 +498,11 @@ function openWeakUnitDetail(detailKey) {
 
     showModal(`📌 ${apEscapeHtml(item.label || title)}`, `
         <div style="background:var(--bg); border:1px solid transparent; border-radius:12px; padding:12px 14px; margin-bottom:12px;">
-            <div style="font-size:16px; font-weight:900; color:var(--primary); line-height:1.3;">${apEscapeHtml(item.label || '')}</div>
+            <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(item.label || '')}</div>
             <div style="font-size:11px; color:var(--secondary); margin-top:4px; font-weight:600; line-height:1.5;">
                 ${item.unitKey ? `단원키 ${apEscapeHtml(item.unitKey)} · ` : ''}오답 ${apEscapeHtml(item.count || 0)}회${studentCountHtml}
             </div>
-            <button class="btn btn-primary" style="width:100%; margin-top:10px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:800; line-height:1.2; border-radius:12px;" onclick="openSimilarQuestionRecommendations('${detailKey}')">유사문항 추천 보기</button>
+            <button class="btn btn-primary" style="width:100%; margin-top:10px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; line-height:1.2; border-radius:12px;" onclick="openSimilarQuestionRecommendations('${detailKey}')">유사문항 추천 보기</button>
         </div>
         ${renderWeakUnitDetailList(item, mode)}
     `);
@@ -524,12 +524,12 @@ function renderWeakUnitSummary(items, emptyText = '누적 오답 단원 데이�
                 const key = clickable ? makeWeakUnitDetailKey(item, mode, `${titlePrefix} 상세`, options.context || null) : '';
                 const clickAttr = clickable ? ` onclick="openWeakUnitDetail('${key}')"` : '';
                 const cursorStyle = clickable ? 'cursor:pointer;' : '';
-                const detailHint = clickable ? `<span style="font-size:11px; color:var(--primary); font-weight:800; margin-left:6px; white-space:nowrap; line-height:1.5;">상세 ›</span>` : '';
+                const detailHint = clickable ? `<span style="font-size:11px; color:var(--primary); font-weight:700; margin-left:6px; white-space:nowrap; line-height:1.5;">상세 ›</span>` : '';
                 const studentCount = mode === 'class' && item.studentCount ? `<span style="font-size:11px; color:var(--secondary); font-weight:600; margin-left:4px; line-height:1.5;">${item.studentCount}명</span>` : '';
 
                 return `
                     <div${clickAttr} style="display:flex; justify-content:space-between; align-items:center; gap:10px; background:var(--bg); border:1px solid transparent; border-radius:12px; padding:10px 12px; ${cursorStyle}">
-                        <div style="font-size:14px; font-weight:900; color:var(--text); line-height:1.4; min-width:0;">
+                        <div style="font-size:14px; font-weight:700; color:var(--text); line-height:1.4; min-width:0;">
                             ${idx + 1}. ${apEscapeHtml(item.label)}
                             ${item.unitKey ? `<span style="font-size:11px; color:var(--secondary); font-weight:600; margin-left:4px; line-height:1.5;">${apEscapeHtml(item.unitKey)}</span>` : ''}
                             ${studentCount}
@@ -851,12 +851,12 @@ function renderClinicBasketItems(items, contextKey = '') {
             ${groups.map(group => `
                 <div style="border:1px solid var(--border); border-radius:18px; background:var(--surface); overflow:hidden;">
                     <div style="background:var(--bg); padding:12px 14px; border-bottom:1px solid var(--border);">
-                        <div style="font-size:16px; font-weight:900; color:var(--primary); line-height:1.3;">${apEscapeHtml(group.targetLabel || '일반')}</div>
+                        <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(group.targetLabel || '일반')}</div>
                         <div style="font-size:11px; color:var(--secondary); margin-top:2px; font-weight:600; line-height:1.5;">${group.targetType === 'student' ? '학생별 클리닉' : group.targetType === 'class' ? '반별 클리닉' : '일반 클리닉'}</div>
                     </div>
                     ${Object.values(group.units).map(unit => `
                         <div style="padding:12px 14px; border-bottom:1px solid var(--border);">
-                            <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:8px; line-height:1.4;">${apEscapeHtml(unit.unitLabel)} ${unit.unitKey && unit.unitKey !== unit.unitLabel ? `<span style="font-size:11px; color:var(--secondary); font-weight:600; line-height:1.5;">${apEscapeHtml(unit.unitKey)}</span>` : ''}</div>
+                            <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:8px; line-height:1.4;">${apEscapeHtml(unit.unitLabel)} ${unit.unitKey && unit.unitKey !== unit.unitLabel ? `<span style="font-size:11px; color:var(--secondary); font-weight:600; line-height:1.5;">${apEscapeHtml(unit.unitKey)}</span>` : ''}</div>
                             <div style="display:flex; flex-direction:column; gap:10px;">
                                 ${unit.items.map(item => `
                                     <div style="border:1px solid var(--border); border-radius:12px; padding:10px 12px; background:var(--surface);">
@@ -890,13 +890,13 @@ function openClinicBasketByKey(contextKey = '') {
 
     showModal(title, `
         <div style="background:var(--bg); border:1px solid transparent; border-radius:12px; padding:12px 14px; margin-bottom:14px;">
-            <div style="font-size:16px; font-weight:900; color:var(--primary); line-height:1.3;">${apEscapeHtml(scopeLabel)}</div>
+            <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(scopeLabel)}</div>
             <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5; font-weight:600;">학생별·반별·단원별로 담긴 유사문항 후보를 관리합니다.</div>
         </div>
         ${renderClinicBasketItems(filtered, contextKey)}
         <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
-            <button class="btn" style="flex:1; min-width:120px; min-height:44px; padding:10px 14px; color:var(--error); border-color:transparent; background:rgba(255,71,87,0.1); font-size:13px; font-weight:800; border-radius:12px; line-height:1.2;" onclick="clearClinicBasket('${apEscapeAttr(contextKey)}')">${context ? '현재 바구니 비우기' : '전체 비우기'}</button>
-            <button class="btn btn-primary" style="flex:1; min-width:140px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:800; border-radius:12px; line-height:1.2;" onclick="openClinicWorksheet('${apEscapeAttr(contextKey)}')">클리닉지 출력</button>
+            <button class="btn" style="flex:1; min-width:120px; min-height:44px; padding:10px 14px; color:var(--error); border-color:transparent; background:rgba(255,71,87,0.1); font-size:13px; font-weight:700; border-radius:12px; line-height:1.2;" onclick="clearClinicBasket('${apEscapeAttr(contextKey)}')">${context ? '현재 바구니 비우기' : '전체 비우기'}</button>
+            <button class="btn btn-primary" style="flex:1; min-width:140px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; border-radius:12px; line-height:1.2;" onclick="openClinicWorksheet('${apEscapeAttr(contextKey)}')">클리닉지 출력</button>
         </div>
     `);
 }
@@ -983,13 +983,13 @@ function renderSimilarQuestionCandidates(candidates, contextKey = '') {
                     <div style="border:1px solid var(--border); background:var(--surface); border-radius:18px; padding:14px 12px;">
                         <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
                             <div style="flex:1; min-width:0;">
-                                <div style="font-size:14px; font-weight:900; color:var(--primary); line-height:1.4; word-break:break-word;">${idx + 1}. ${apEscapeHtml(c.examTitle)}</div>
+                                <div style="font-size:14px; font-weight:700; color:var(--primary); line-height:1.4; word-break:break-word;">${idx + 1}. ${apEscapeHtml(c.examTitle)}</div>
                                 <div style="font-size:11px; color:var(--secondary); margin-top:3px; font-weight:600; line-height:1.5;">Q${apEscapeHtml(c.questionId)} · ${apEscapeHtml(c.standardUnit || '')} ${c.level ? `· ${apEscapeHtml(c.level)}` : ''}</div>
                                 <div style="font-size:11px; color:var(--secondary); margin-top:6px; line-height:1.5; word-break:break-word;">${apEscapeHtml(c.contentPreview || '')}</div>
                             </div>
                             <span style="font-size:11px; font-weight:700; color:${c.matchType === 'standardUnitKey' ? 'var(--success)' : 'var(--warning)'}; background:var(--bg); border-radius:8px; padding:4px 8px; white-space:nowrap; line-height:1.5;">${matchLabel}</span>
                         </div>
-                        <button class="btn" style="width:100%; margin-top:12px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:800; border:1px solid var(--primary); color:var(--primary); border-radius:12px; line-height:1.2;" onclick="addClinicCandidate('${key}','${contextKey}')">클리닉 후보 담기</button>
+                        <button class="btn" style="width:100%; margin-top:12px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; border:1px solid var(--primary); color:var(--primary); border-radius:12px; line-height:1.2;" onclick="addClinicCandidate('${key}','${contextKey}')">클리닉 후보 담기</button>
                     </div>
                 `;
             }).join('')}
@@ -1011,7 +1011,7 @@ async function openSimilarQuestionRecommendations(detailKey) {
     showModal('유사문항 추천', `
         <div style="text-align:center; padding:32px 24px; color:var(--secondary);">
             <div style="font-size:28px; margin-bottom:12px;">⏳</div>
-            <div style="font-size:14px; font-weight:950; line-height:1.4;">JS아카이브에서 유사문항을 찾는 중입니다...</div>
+            <div style="font-size:14px; font-weight:700; line-height:1.4;">JS아카이브에서 유사문항을 찾는 중입니다...</div>
         </div>
     `);
 
@@ -1020,11 +1020,11 @@ async function openSimilarQuestionRecommendations(detailKey) {
         const cartCount = getClinicCart().length;
         showModal('유사문항 추천', `
             <div style="background:var(--bg); border:1px solid transparent; border-radius:12px; padding:12px 14px; margin-bottom:14px;">
-                <div style="font-size:16px; font-weight:900; color:var(--primary); line-height:1.3;">${apEscapeHtml(item.label || '취약 단원')}</div>
+                <div style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.3;">${apEscapeHtml(item.label || '취약 단원')}</div>
                 <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5; font-weight:600;">
                     ${item.unitKey ? `기준 단원 ${apEscapeHtml(item.unitKey)} · ` : ''}${item.cluster ? `개념군 ${apEscapeHtml(item.cluster)} · ` : ''}전체 후보 ${cartCount}개 보관 중
                 </div>
-                <button class="btn" style="width:100%; margin-top:10px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:800; background:var(--primary); color:#fff; border:none; border-radius:12px; line-height:1.2;" onclick="openClinicBasketByKey('${contextKey}')">🧺 클리닉 바구니 보기</button>
+                <button class="btn" style="width:100%; margin-top:10px; min-height:44px; padding:10px 14px; font-size:13px; font-weight:700; background:var(--primary); color:#fff; border:none; border-radius:12px; line-height:1.2;" onclick="openClinicBasketByKey('${contextKey}')">🧺 클리닉 바구니 보기</button>
             </div>
             ${renderSimilarQuestionCandidates(candidates, contextKey)}
         `);
