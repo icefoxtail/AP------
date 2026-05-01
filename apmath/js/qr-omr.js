@@ -226,6 +226,26 @@ function findExamQuestionCount(examTitle = '', classId = '') {
     return found ? parseInt(found.question_count) : 0;
 }
 
+function registerMissingExamReportPayload(studentId, missingExamInfo) {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.missingExamReportPayloads) state.ui.missingExamReportPayloads = {};
+    const key = `missing_${studentId}_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    state.ui.missingExamReportPayloads[key] = missingExamInfo || {};
+    return key;
+}
+
+function openMissingExamReport(studentId, payloadKey) {
+    const missingExamInfo = state.ui?.missingExamReportPayloads?.[payloadKey] || null;
+    if (typeof openStudentReportModal === 'function') {
+        openStudentReportModal(studentId, {
+            missingExamInfo,
+            title: '\uBBF8\uC751\uC2DC \uD559\uC0DD \uBB38\uAD6C \uC0DD\uC131'
+        });
+        return;
+    }
+    toast('\uBCF4\uACE0 \uBB38\uAD6C \uBAA8\uB4C8\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+}
+
 /**
  * 시험 제출 현황 모달 오픈
  */
@@ -260,7 +280,16 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     const inferredQCount = findExamQuestionCount(examTitle, classId);
     const lastArchiveFile = normalizeQrArchiveFile(localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '');
     const safeArchiveFileForJs = String(lastArchiveFile).replace(/'/g, "\\'");
-    
+    const missingExamPayloadKeys = {};
+    pending.forEach(s => {
+        missingExamPayloadKeys[String(s.id)] = registerMissingExamReportPayload(s.id, {
+            examTitle,
+            examDate: safeDate,
+            classId,
+            questionCount: inferredQCount || 0
+        });
+    });
+
     showModal('제출 현황', `
         <div style="background:var(--bg);padding:14px 18px;border-radius:14px;font-size:13px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
             <div>
@@ -289,7 +318,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;">
             <table style="width:100%;font-size:14px;">
-                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="padding:8px 14px;font-size:12px;font-weight:800;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}', 'class', '${safeDate}')">성적 입력</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">미제출 학생이 없습니다.</td></tr>'}
+                ${pending.map(s => { const payloadKey = missingExamPayloadKeys[String(s.id)] || ''; return `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:800;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><div style="display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap;"><button class="btn btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:800;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}', 'class', '${safeDate}')">\uC131\uC801 \uC785\uB825</button><button class="btn" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:800;border-radius:10px;background:var(--surface-2);border:none;color:var(--primary);" onclick="event.stopPropagation(); openMissingExamReport('${s.id}', '${payloadKey}')">\uBB38\uAD6C \uC0DD\uC131</button></div></td></tr>`; }).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
             </table>
         </div>
     `);

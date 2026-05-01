@@ -104,7 +104,8 @@ function buildReportContext(sid, options = {}) {
         latestRecord,
         progressText,
         latestConsultation,
-        riskInfo: reportOptions.riskInfo || null
+        riskInfo: reportOptions.riskInfo || null,
+        missingExamInfo: reportOptions.missingExamInfo || null
     };
 }
 
@@ -171,14 +172,24 @@ function buildRiskSummaryText(riskInfo) {
     return `\uAD00\uB9AC \uAD00\uC810\uC5D0\uC11C\uB294 \uCD5C\uADFC ${summary} \uD750\uB984\uC774 \uBCF4\uC5EC, \uB2E4\uC74C \uC218\uC5C5\uC5D0\uC11C \uD574\uB2F9 \uBD80\uBD84\uC744 \uC6B0\uC120 \uD655\uC778\uD558\uACA0\uC2B5\uB2C8\uB2E4.`;
 }
 
+function buildMissingExamSummaryText(missingExamInfo) {
+    if (!missingExamInfo) return "";
+    const title = String(missingExamInfo.examTitle || "").trim() || "\uC624\uB298 \uD3C9\uAC00";
+    return `\uC624\uB298 \uC9C4\uD589\uD55C \u300C${title}\u300D\uC740 \uC544\uC9C1 \uC751\uC2DC \uAE30\uB85D\uC774 \uC5C6\uC5B4, \uB2E4\uC74C \uC2DC\uAC04\uC5D0 \uBA3C\uC800 \uD655\uC778\uD560 \uC608\uC815\uC785\uB2C8\uB2E4.`;
+}
+
 function appendRiskSummaryToReportText(text, ctx) {
-    const riskSummary = buildRiskSummaryText(ctx?.riskInfo);
-    if (!riskSummary) return text;
+    const summaries = [
+        buildRiskSummaryText(ctx?.riskInfo),
+        buildMissingExamSummaryText(ctx?.missingExamInfo)
+    ].filter(Boolean);
+    if (!summaries.length) return text;
+    const summaryText = summaries.join("\n\n");
     const thanks = '\uAC10\uC0AC\uD569\uB2C8\uB2E4';
     if (text.includes(thanks)) {
-        return text.replace(thanks, `${riskSummary}\n\n${thanks}`);
+        return text.replace(thanks, `${summaryText}\n\n${thanks}`);
     }
-    return `${text}\n\n${riskSummary}`;
+    return `${text}\n\n${summaryText}`;
 }
 function buildParentReportText(ctx) {
     const s = ctx.student;
@@ -306,6 +317,9 @@ function buildCounselReportText(ctx) {
     const consultationLine = ctx.latestConsultation
         ? `${ctx.latestConsultation.date} / ${ctx.latestConsultation.type} / ${ctx.latestConsultation.content}`
         : '최근 상담 기록 없음';
+    const missingExamSection = ctx.missingExamInfo
+        ? `\n[\uBBF8\uC751\uC2DC \uD3C9\uAC00]\n${ctx.missingExamInfo.examDate || ctx.today} / ${ctx.missingExamInfo.examTitle || '\uC624\uB298 \uD3C9\uAC00'} / \uB2E4\uC74C \uC218\uC5C5 \uD655\uC778 \uD544\uC694\n`
+        : '';
 
     return `[학생 상담 메모]
 날짜: ${ctx.today}
@@ -323,7 +337,7 @@ function buildCounselReportText(ctx) {
 
 [최근 상담 기록]
 ${consultationLine}
-
+${missingExamSection}
 [다음 조치]
 ${buildNextPoint(ctx)} 중심으로 확인 필요.`;
 }
@@ -519,6 +533,8 @@ async function requestAiReport(sid, type, options = {}) {
         student: { name: s.name, school: s.school_name, grade: s.grade },
         riskInfo: ctx.riskInfo || null,
         riskSummary: buildRiskSummaryText(ctx.riskInfo),
+        missingExamInfo: ctx.missingExamInfo || null,
+        missingExamSummary: buildMissingExamSummaryText(ctx.missingExamInfo),
         today: {
             att: ctx.attendance,
             hw: ctx.homework,
