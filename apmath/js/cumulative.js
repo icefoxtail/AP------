@@ -84,10 +84,14 @@ function getMonthDays(month) {
     return Array.from({ length: endDay }, (_, idx) => `${m}-${String(idx + 1).padStart(2, '0')}`);
 }
 
-async function loadMonthlyAttendance(month) {
+async function loadMonthlyAttendance(month, force = false) {
     const safeMonth = String(month || new Date().toLocaleDateString('sv-SE').slice(0, 7)).trim();
     if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
-    if (state.ui.monthlyAttendanceCache[safeMonth]) return state.ui.monthlyAttendanceCache[safeMonth];
+
+    if (!force && state.ui.monthlyAttendanceCache[safeMonth]) {
+        return state.ui.monthlyAttendanceCache[safeMonth];
+    }
+
     const data = await api.get(`attendance-month?month=${encodeURIComponent(safeMonth)}`);
     const payload = data?.success ? {
         month: safeMonth,
@@ -95,6 +99,7 @@ async function loadMonthlyAttendance(month) {
         homework: Array.isArray(data.homework) ? data.homework : [],
         academy_schedules: Array.isArray(data.academy_schedules) ? data.academy_schedules : []
     } : { month: safeMonth, attendance: [], homework: [], academy_schedules: [] };
+
     state.ui.monthlyAttendanceCache[safeMonth] = payload;
     return payload;
 }
@@ -150,13 +155,30 @@ function renderAttendanceCellContent(studentId, date) {
     if (schedule.globalClosed || schedule.studentClosed) {
         return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:11px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
     }
+
     const status = getMonthlyAttendanceStatus(studentId, date);
-    if (status.attendance === '등원') {
+    const att = status.attendance || '';
+
+    if (att === '등원') {
         return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:var(--success);">○</span>';
     }
-    if (status.attendance === '결석') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:11px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">결</span>';
+
+    if (att === '결석') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#e53935;">×</span>';
     }
+
+    if (att === '지각') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#f59f00;">△</span>';
+    }
+
+    if (att === '보강') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:16px;font-weight:700;color:var(--primary);">＋</span>';
+    }
+
+    if (att === '상담') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#7c3aed;">★</span>';
+    }
+
     return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:13px;font-weight:600;color:var(--border);">-</span>';
 }
 
@@ -188,7 +210,7 @@ function openAttendanceLedger() {
 #att-hdr h2{margin:0;font-size:15px;font-weight:700;color:var(--text);flex-shrink:0;}
 .att-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
 #att-body{flex:1;overflow:auto;position:relative;}
-#att-tbl{border-collapse:collapse;width:max-content;min-width:100%;}
+#att-tbl{border-collapse:collapse;width:max-content;}
 #att-tbl th,#att-tbl td{border-bottom:1px solid var(--border);}
 #att-tbl thead th{position:sticky;top:0;z-index:2;background:var(--surface);}
 #att-tbl .att-nc{position:sticky;left:0;z-index:1;background:var(--surface);}
@@ -202,7 +224,12 @@ function openAttendanceLedger() {
 <div id="att-hdr">
   <h2>출석부</h2>
   <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
-    onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value).then(()=>renderAttendanceLedgerTable());">
+    onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
+  <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
+    <option value="">전체 (중/고)</option>
+    <option value="middle">중등부</option>
+    <option value="high">고등부</option>
+  </select>
   <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
     <option value="">전체 반</option>${classOptions}
   </select>
@@ -210,13 +237,19 @@ function openAttendanceLedger() {
   <button class="att-ctrl" onclick="closeAttendanceLedger()">닫기</button>
 </div>
 <div id="att-legend">
-  <span>○ 등원</span><span>결 결석</span><span>- 미기록</span><span>휴 휴무</span>
+  <span>○ 등원</span>
+  <span>× 결석</span>
+  <span>△ 지각</span>
+  <span>＋ 보강</span>
+  <span>★ 상담</span>
+  <span>- 미기록</span>
+  <span>휴 휴무</span>
 </div>
 <div id="att-body">
   <div id="att-tbl-root"></div>
 </div>`;
 
-    loadMonthlyAttendance(state.ui.attendanceLedgerMonth).then(() => renderAttendanceLedgerTable());
+    loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(() => renderAttendanceLedgerTable());
 }
 
 function closeAttendanceLedger() {
@@ -231,7 +264,18 @@ function renderAttendanceLedgerTable() {
     const month = state.ui.attendanceLedgerMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
     const days = getMonthDays(month);
     const classId = document.getElementById('att-cls')?.value || '';
-    const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+    const section = document.getElementById('att-sec')?.value || '';
+
+    let activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+
+    // 중등/고등 필터링 적용
+    if (section) {
+        activeClasses = activeClasses.filter(c => {
+            const isHigh = /고1|고2|고3|고등/.test(String(c.grade || '') + ' ' + String(c.name || ''));
+            return section === 'high' ? isHigh : !isHigh;
+        });
+    }
+
     const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId }));
 
     const grouped = activeClasses
@@ -260,10 +304,11 @@ function renderAttendanceLedgerTable() {
                 const click = isHol ? '' : `onclick="toggleAttendanceCellStatus('${sid}','${d}')"`;
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
+            
+            // 학생 이름 밑 학년 제거 및 상하 패딩 축소 (6px)
             return `<tr>
-<td class="att-nc" style="padding:7px 10px;min-width:96px;white-space:nowrap;">
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
   <div style="font-size:13px;font-weight:700;color:var(--text);">${apEscapeHtml(s.name)}</div>
-  <div style="font-size:10px;font-weight:600;color:var(--secondary);">${apEscapeHtml(s.grade || '')}</div>
 </td>${dateCells}</tr>`;
         }).join('');
         return groupRow + sRows;
@@ -286,6 +331,7 @@ async function toggleAttendanceCellStatus(studentId, date) {
 
     const data = getMonthlyAttendanceData();
     if (!data.attendance) data.attendance = [];
+
     const sid = String(studentId);
     const existing = data.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
     const current = existing?.status || '';
@@ -293,6 +339,9 @@ async function toggleAttendanceCellStatus(studentId, date) {
     let next;
     if (!current || current === '미기록') next = '등원';
     else if (current === '등원') next = '결석';
+    else if (current === '결석') next = '지각';
+    else if (current === '지각') next = '보강';
+    else if (current === '보강') next = '상담';
     else next = '미기록';
 
     // 낙관적 업데이트
@@ -301,6 +350,7 @@ async function toggleAttendanceCellStatus(studentId, date) {
     } else {
         data.attendance.push({ student_id: sid, date, status: next });
     }
+
     const cellEl = document.getElementById(`att-cell-${studentId}-${date}`);
     if (cellEl) cellEl.innerHTML = renderAttendanceCellContent(sid, date);
 
