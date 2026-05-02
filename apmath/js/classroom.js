@@ -30,6 +30,50 @@ function isClassScheduledToday(clsId) {
     return cls.schedule_days.split(',').includes(todayIdx);
 }
 
+function getAttendanceDisplayStatus(status) {
+    const safe = String(status || '').trim();
+    return safe && safe !== '미기록' ? safe : '등원';
+}
+
+function getNextAttendanceStatus(status) {
+    const cur = getAttendanceDisplayStatus(status);
+    if (cur === '등원') return '결석';
+    if (cur === '결석') return '지각';
+    if (cur === '지각') return '보강';
+    if (cur === '보강') return '상담';
+    return '등원';
+}
+
+function getAttendanceStatusLabel(status) {
+    const cur = getAttendanceDisplayStatus(status);
+    if (cur === '등원') return '○ 등원';
+    if (cur === '결석') return '× 결석';
+    if (cur === '지각') return '△ 지각';
+    if (cur === '보강') return '＋ 보강';
+    if (cur === '상담') return '★ 상담';
+    return '○ 등원';
+}
+
+function getAttendanceStatusStyle(status) {
+    const cur = getAttendanceDisplayStatus(status);
+    if (cur === '등원') {
+        return 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);';
+    }
+    if (cur === '결석') {
+        return 'background: rgba(255,71,87,0.08); color: var(--error); font-weight: 800; border: 1px solid rgba(255,71,87,0.15);';
+    }
+    if (cur === '지각') {
+        return 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 800; border: 1px solid rgba(255,165,2,0.18);';
+    }
+    if (cur === '보강') {
+        return 'background: rgba(26,92,255,0.08); color: var(--primary); font-weight: 800; border: 1px solid rgba(26,92,255,0.15);';
+    }
+    if (cur === '상담') {
+        return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 800; border: 1px solid rgba(124,58,237,0.18);';
+    }
+    return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
+}
+
 // [5G-2] PIN 일괄 배분 기능 (로직 사수)
 async function handleBatchGeneratePins(classId) {
     if (!confirm('이 반에서 PIN이 아직 없는 학생들에게 고유 PIN을 일괄 배분하시겠습니까? (기존 PIN은 유지됨)')) return;
@@ -146,12 +190,11 @@ function renderClass(cid) {
     listRoot.innerHTML = stds.map(s => {
         const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === today);
         const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === today);
-        const attStatus = att?.status || '등원';
+        const attStatus = getAttendanceDisplayStatus(att?.status);
         const hwStatus = hw?.status || '완료';
 
-        const attStyle = attStatus === '등원' 
-            ? 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);' 
-            : 'background: rgba(255,71,87,0.08); color: var(--error); font-weight:700; border: 1px solid rgba(255,71,87,0.15);';
+        const attStyle = getAttendanceStatusStyle(attStatus);
+        const attLabel = getAttendanceStatusLabel(attStatus);
         
         const hwStyle = hwStatus === '완료' 
             ? 'background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);' 
@@ -161,7 +204,7 @@ function renderClass(cid) {
             <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
-                <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
+                <button class="btn" style="padding: 4px 8px; font-size: 12px; min-width: 68px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
                 <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
             </td>
         </tr>`;
@@ -297,16 +340,17 @@ function renderLedgerTable() {
 
     const rows = stds.map(s => {
         const rec = records.find(r => String(r.student_id) === String(s.id) && (!r.date || r.date === ledgerState.date));
-        const status = isAtt ? (rec?.status || '등원') : (rec?.status || '완료');
+        const status = isAtt ? getAttendanceDisplayStatus(rec?.status) : (rec?.status || '완료');
+        const label = isAtt ? getAttendanceStatusLabel(status) : status;
         let style = isAtt 
-            ? (status === '등원' ? 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);' : 'background: rgba(255,71,87,0.08); color: var(--error); font-weight:700; border: 1px solid rgba(255,71,87,0.15);')
+            ? getAttendanceStatusStyle(status)
             : (status === '완료' ? 'background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);' : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight:700; border: 1px solid rgba(255,165,2,0.15);');
         
         return `<tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 12px; text-align: right;">
-                <button class="btn" style="padding: 4px 10px; font-size: 13px; min-width: 60px; font-weight:700; border-radius: 8px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${status}</button>
+                <button class="btn" style="padding: 4px 10px; font-size: 12px; min-width: ${isAtt ? '76px' : '60px'}; font-weight:700; border-radius: 8px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${label}</button>
             </td>
         </tr>`;
     }).join('');
@@ -332,7 +376,7 @@ async function toggleAtt(sid, date) {
     const isLedger = !!date;
     const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => String(a.student_id) === String(sid) && a.date === today);
-    const next = (cur?.status || '등원') === '등원' ? '결석' : '등원';
+    const next = getNextAttendanceStatus(cur?.status);
     const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
     if (!r?.success) { toast('저장 실패', 'warn'); return; }
     await refreshDataOnly();
@@ -375,73 +419,60 @@ async function openExamGradeView(classId) {
         if (res && Array.isArray(res.sessions)) {
             sessions = res.sessions.filter(es => ids.includes(String(es.student_id)));
             const classStudentIdSet = new Set(ids);
-            const otherSessions = (state.db.exam_sessions || []).filter(es => !classStudentIdSet.has(String(es.student_id)));
-            state.db.exam_sessions = [...otherSessions, ...sessions];
-        }
-        if (res && Array.isArray(res.assignments)) assignments = res.assignments;
-        if (res && Array.isArray(res.wrong_answers)) {
-            const sessionIdSet = new Set(sessions.map(s => String(s.id)));
-            const otherWrongs = (state.db.wrong_answers || []).filter(w => !sessionIdSet.has(String(w.session_id)));
-            const classWrongs = res.wrong_answers.filter(w => sessionIdSet.has(String(w.session_id)));
-            state.db.wrong_answers = [...otherWrongs, ...classWrongs];
+            assignments = Array.isArray(res.assignments) ? res.assignments.filter(a => classStudentIdSet.size && String(a.class_id) === String(classId)) : [];
         }
     } catch (e) { console.warn('[openExamGradeView] fail', e); }
 
-    const examMap = {};
+    const activeCountForAssignment = activeCount || ids.length;
+    const grouped = {};
+    sessions.forEach(s => {
+        const key = makeExamListKey(s.exam_title, s.exam_date, s.archive_file || '');
+        if (!grouped[key]) grouped[key] = { title: s.exam_title, date: s.exam_date, archiveFile: s.archive_file || '', sessions: [], questionCount: s.question_count || 0, assignment: null };
+        grouped[key].sessions.push(s);
+        if (!grouped[key].questionCount && s.question_count) grouped[key].questionCount = s.question_count;
+        if (!grouped[key].archiveFile && s.archive_file) grouped[key].archiveFile = s.archive_file;
+    });
+
     assignments.forEach(a => {
-        const title = a.exam_title || '시험지';
-        const date = a.exam_date || '';
-        const archiveFile = a.archive_file || '';
-        const key = makeExamListKey(title, date, archiveFile);
-        if (!examMap[key]) {
-            examMap[key] = { title, date, archiveFile, sourceType: a.source_type || 'archive', questionCount: Number(a.question_count || 0), sessions: [], fromAssignment: true };
-        } else {
-            examMap[key].fromAssignment = true;
-            examMap[key].questionCount = Math.max(Number(examMap[key].questionCount || 0), Number(a.question_count || 0));
+        const key = makeExamListKey(a.exam_title, a.exam_date, a.archive_file || '');
+        if (!grouped[key]) grouped[key] = { title: a.exam_title, date: a.exam_date, archiveFile: a.archive_file || '', sessions: [], questionCount: a.question_count || 0, assignment: a };
+        else {
+            grouped[key].assignment = a;
+            if (!grouped[key].questionCount && a.question_count) grouped[key].questionCount = a.question_count;
+            if (!grouped[key].archiveFile && a.archive_file) grouped[key].archiveFile = a.archive_file;
         }
     });
 
-    sessions.forEach(es => {
-        const title = es.exam_title || '시험지';
-        const date = es.exam_date || '';
-        const archiveFile = es.archive_file || '';
-        let key = makeExamListKey(title, date, archiveFile);
-        if (!examMap[key]) {
-            const detailKey = makeExamDetailKey(title, date);
-            const matchedKey = Object.keys(examMap).find(k => makeExamDetailKey(examMap[k].title, examMap[k].date) === detailKey);
-            if (matchedKey) key = matchedKey;
-        }
-        if (!examMap[key]) {
-            examMap[key] = { title, date, archiveFile, sourceType: 'session', questionCount: Number(es.question_count || 0), sessions: [], fromAssignment: false };
-        }
-        examMap[key].sessions.push(es);
-        examMap[key].questionCount = Math.max(Number(examMap[key].questionCount || 0), Number(es.question_count || 0));
-    });
-
-    const examList = Object.values(examMap).sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || String(b.title || '').localeCompare(String(a.title || '')));
-
-    const listHTML = examList.length ? examList.map(ex => {
-        const submittedCount = new Set((ex.sessions || []).map(s => String(s.student_id))).size;
-        const qInfo = ex.questionCount ? ` · ${ex.questionCount}문항` : '';
-        const sourceBadge = ex.fromAssignment 
-            ? `<span style="font-size: 10px; font-weight:700; background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(26,92,255,0.15);">출제됨</span>`
-            : `<span style="font-size: 10px; font-weight:700; background: var(--surface-2); color: var(--secondary); padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border);">제출됨</span>`;
-        
-        return `<div class="exam-grade-row" onclick="openExamDetail('${classId}','${String(ex.title).replace(/'/g,"\\'")}','${ex.date}')" style="padding: 16px; border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; cursor: pointer; background: var(--surface); box-shadow: none;">
-            <div style="font-size: 15px; font-weight:700; color: var(--text); line-height: 1.4;">${ex.title} ${sourceBadge}</div>
-            <div style="font-size: 12px; color: var(--secondary); font-weight: 600; margin-top: 8px; display: flex; align-items: center; gap: 6px; line-height: 1.5;">
-                <span>${ex.date || '날짜 없음'}</span>
-                <span style="width: 2px; height: 2px; background: var(--secondary); border-radius: 50%;"></span>
-                <span><b>${submittedCount}/${activeCount}</b> 제출</span>
-                ${qInfo ? `<span style="width: 2px; height: 2px; background: var(--secondary); border-radius: 50%;"></span><span>${qInfo.replace(' · ','')}</span>` : ''}
+    const exams = Object.values(grouped).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.title).localeCompare(String(a.title)));
+    const rows = exams.map(exam => {
+        const cnt = exam.sessions.length;
+        const qCount = exam.questionCount || exam.sessions[0]?.question_count || exam.assignment?.question_count || 0;
+        const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
+        const pct = activeCountForAssignment ? Math.round((cnt / activeCountForAssignment) * 100) : 0;
+        const archiveArg = String(exam.archiveFile || '').replace(/'/g, "\\'");
+        return `<div onclick="openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}')" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
+            <div>
+                <div style="font-weight:700; color: var(--text); font-size: 15px; line-height: 1.4;">${exam.title}</div>
+                <div style="font-size: 11px; color: var(--secondary); margin-top: 4px; font-weight: 600; line-height: 1.5;">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${activeCountForAssignment}명 (${pct}%)</div>
+            </div>
+            <div style="text-align: right; display: flex; align-items: center; gap: 10px;">
+                <div>
+                    <div style="font-size: 20px; font-weight:700; color: var(--primary); line-height: 1;">${avg}</div>
+                    <div style="font-size: 10px; color: var(--secondary); font-weight:700; margin-top:4px;">평균</div>
+                </div>
+                <button class="btn" onclick="event.stopPropagation(); if(typeof openOMR==='function') openOMR('', '${String(exam.title || '').replace(/'/g, "\\'")}', ${qCount || 20}, '${classId}', '', '${archiveArg}', 'examList', '${exam.date}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">입력</button>
             </div>
         </div>`;
-    }).join('') : `<div style="padding: 40px 20px; text-align: center; color: var(--secondary); font-size: 13px; font-weight: 700; background: var(--surface-2); border-radius: 16px; line-height: 1.5;">등록된 시험 기록이 없습니다.</div>`;
+    }).join('');
 
-    showModal('시험 성적 현황', `<div style="display: flex; flex-direction: column;">${listHTML}</div>`);
+    showModal('시험성적', `
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
+            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 10px;" onclick="if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
+        </div>
+        ${rows || `<div style="text-align:center; padding:40px 20px; color:var(--secondary); font-size:13px; font-weight:700;">시험 기록 없음</div>`}
+    `);
 }
 
-// [UI Standard Applied]: 시험 상세 화면 (테이블 패딩 및 폰트 수동 보정)
 async function openExamDetail(classId, examTitle, examDate) {
     let sessionSource = state.db.exam_sessions || [];
     let wrongSource = state.db.wrong_answers || [];
