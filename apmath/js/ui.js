@@ -457,11 +457,11 @@ function ensureDrawerStyle() {
         .drw-rail-toggle {
             display:none;
             width:56px;
-            height:52px;
+            height:58px;
             box-sizing:border-box;
-            padding:0 0 0 16px;
+            padding:0;
             border:0;
-            border-bottom:1px solid var(--border);
+            border-bottom:0;
             border-radius:0;
             background:transparent;
             color:var(--text);
@@ -469,13 +469,15 @@ function ensureDrawerStyle() {
             font-weight:700;
             cursor:pointer;
             align-items:center;
-            justify-content:flex-start;
+            justify-content:center;
             font-family:inherit;
             text-align:left;
         }
 
         .drw-top-tools {
-            padding:calc(10px + env(safe-area-inset-top)) var(--drw-right) 10px var(--drw-left);
+            height:58px;
+            min-height:58px;
+            padding:0 var(--drw-right) 0 var(--drw-left);
             border-bottom:1px solid var(--border);
             display:flex;
             justify-content:space-between;
@@ -493,12 +495,12 @@ function ensureDrawerStyle() {
             border:0;
             background:transparent;
             color:var(--text);
-            font-size:22px;
+            font-size:20px;
             font-weight:700;
             line-height:1;
             display:flex;
             align-items:center;
-            justify-content:flex-start;
+            justify-content:center;
             flex:0 0 auto;
             cursor:pointer;
             font-family:inherit;
@@ -696,26 +698,41 @@ function ensureDrawerStyle() {
             text-align:left !important;
         }
         #app-drawer.drw-expanded { width:260px !important; }
+        #app-drawer:not(.drw-expanded)::before {
+            content:"" !important;
+            position:absolute !important;
+            top:57px !important;
+            left:0 !important;
+            width:56px !important;
+            height:1px !important;
+            background:var(--border) !important;
+            pointer-events:none !important;
+            z-index:1 !important;
+        }
         #app-drawer .drw-top-tools {
             position:relative !important;
             width:100% !important;
-            min-height:calc(56px + env(safe-area-inset-top)) !important;
+            height:58px !important;
+            min-height:58px !important;
             box-sizing:border-box !important;
-            padding:0 !important;
+            padding:0 16px !important;
             border-bottom:1px solid var(--border) !important;
+            display:flex !important;
+            align-items:center !important;
+            justify-content:space-between !important;
             text-align:left !important;
         }
         #app-drawer .drw-hamburger {
-            position:absolute !important;
-            left:16px !important;
-            top:calc(10px + env(safe-area-inset-top)) !important;
-            width:32px !important;
-            height:32px !important;
+            position:static !important;
+            width:36px !important;
+            height:36px !important;
+            min-width:36px !important;
+            min-height:36px !important;
             margin:0 !important;
             padding:0 !important;
             display:flex !important;
             align-items:center !important;
-            justify-content:flex-start !important;
+            justify-content:center !important;
             text-align:left !important;
             background:transparent !important;
             border:0 !important;
@@ -726,9 +743,7 @@ function ensureDrawerStyle() {
             cursor:pointer !important;
         }
         #app-drawer .switch {
-            position:absolute !important;
-            right:16px !important;
-            top:calc(15px + env(safe-area-inset-top)) !important;
+            position:static !important;
             margin:0 !important;
         }
         #app-drawer .drw-menu,
@@ -777,17 +792,21 @@ function ensureDrawerStyle() {
             font-weight:600 !important;
         }
         #app-drawer .drw-rail-toggle {
-            width:56px !important;
-            height:52px !important;
+            width:36px !important;
+            height:36px !important;
+            min-width:36px !important;
+            min-height:36px !important;
+            margin:11px 0 0 10px !important;
             box-sizing:border-box !important;
-            padding:0 0 0 16px !important;
+            padding:0 !important;
             align-items:center !important;
-            justify-content:flex-start !important;
+            justify-content:center !important;
             text-align:left !important;
             background:transparent !important;
             border-left:0 !important;
             border-right:0 !important;
             border-top:0 !important;
+            border-bottom:0 !important;
             box-shadow:none !important;
         }
         @media (min-width:901px) {
@@ -801,7 +820,7 @@ function ensureDrawerStyle() {
                 display:none !important;
             }
             #app-drawer:not(.drw-expanded) .drw-rail-toggle { display:flex !important; }
-            #app-drawer.drw-expanded .drw-top-tools { display:block !important; }
+            #app-drawer.drw-expanded .drw-top-tools { display:flex !important; }
             #app-drawer.drw-expanded .drw-menu,
             #app-drawer.drw-expanded .drw-footer { display:block !important; }
         }
@@ -1010,7 +1029,7 @@ function installDrawerSizeLock() {
             min-height: var(--ap-drawer-header-h) !important;
             height: var(--ap-drawer-header-h) !important;
             box-sizing: border-box !important;
-            padding: calc(10px + env(safe-area-inset-top)) var(--ap-drawer-x) 10px var(--ap-drawer-x) !important;
+            padding: 0 var(--ap-drawer-x) !important;
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
@@ -1022,11 +1041,14 @@ function installDrawerSizeLock() {
             width: 36px !important;
             height: 36px !important;
             min-width: 36px !important;
+            min-height: 36px !important;
             padding: 0 !important;
             margin: 0 !important;
             display: flex !important;
             align-items: center !important;
-            justify-content: flex-start !important;
+            justify-content: center !important;
+            font-size: 20px !important;
+            font-weight: 700 !important;
             line-height: 1 !important;
         }
 
@@ -1074,13 +1096,17 @@ function installDrawerSizeLock() {
             }
 
             #app-drawer .drw-rail-toggle {
-                width: var(--ap-drawer-rail-width) !important;
-                height: var(--ap-drawer-header-h) !important;
-                min-height: var(--ap-drawer-header-h) !important;
-                padding: 0 0 0 var(--ap-drawer-x) !important;
+                width: 36px !important;
+                height: 36px !important;
+                min-width: 36px !important;
+                min-height: 36px !important;
+                margin: 11px 0 0 10px !important;
+                padding: 0 !important;
                 box-sizing: border-box !important;
                 align-items: center !important;
-                justify-content: flex-start !important;
+                justify-content: center !important;
+                font-size: 20px !important;
+                font-weight: 700 !important;
             }
         }
 
@@ -1093,6 +1119,8 @@ function installDrawerSizeLock() {
 
             #app-drawer .drw-top-tools {
                 min-height: var(--ap-drawer-header-h) !important;
+                height: var(--ap-drawer-header-h) !important;
+                padding: 0 var(--ap-drawer-x) !important;
             }
         }
     `;
