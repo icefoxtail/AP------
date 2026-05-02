@@ -256,6 +256,20 @@ function renderDashboardOperationStatusCard(data) {
     `;
 }
 
+function renderCumulativeOpsEntryCard() {
+    return `
+        <div style="margin-bottom:18px;">
+            <button class="btn" onclick="openCumulativeOpsModal()" style="width:100%; min-height:54px; padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:var(--surface); box-shadow:var(--shadow); color:var(--text); display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left;">
+                <span style="min-width:0;">
+                    <span style="display:block; font-size:14px; font-weight:700; line-height:1.35;">누적 운영표</span>
+                    <span style="display:block; margin-top:2px; font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary);">월간 출석부 · 학교 성적표</span>
+                </span>
+                <span style="font-size:18px; font-weight:700; color:var(--primary); line-height:1;">›</span>
+            </button>
+        </div>
+    `;
+}
+
 // [5G] 관리필요(구 위험학생) 판정 알고리즘
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -468,6 +482,7 @@ function renderAdminControlCenter() {
     });
     const risks = computeRiskStudents();
     const operationStatusHtml = renderDashboardOperationStatusCard(computeDashboardData());
+    const cumulativeOpsEntryHtml = renderCumulativeOpsEntryCard();
 
     const headerHtml = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
@@ -559,7 +574,7 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    root.innerHTML = headerHtml + operationStatusHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
+    root.innerHTML = headerHtml + operationStatusHtml + cumulativeOpsEntryHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
 }
 
 function renderAdminStudentSearch() {
@@ -892,6 +907,7 @@ function renderDashboard() {
 
     const todayJournalCard = renderTodayJournalCard(data);
     const operationStatusCard = renderDashboardOperationStatusCard(data);
+    const cumulativeOpsEntryCard = renderCumulativeOpsEntryCard();
 
     const todoSections = renderTodoSections();
     
@@ -904,7 +920,7 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${operationStatusCard}${todayJournalCard}${todoSections}${classStatus}</div>`;
+    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${operationStatusCard}${cumulativeOpsEntryCard}${todayJournalCard}${todoSections}${classStatus}</div>`;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
