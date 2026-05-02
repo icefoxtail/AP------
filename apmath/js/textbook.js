@@ -70,19 +70,27 @@ function openAddTextbookModal() {
 }
 
 async function handleAddTextbook() {
-    const cid = document.getElementById('new-tb-class').value;
-    const title = document.getElementById('new-tb-title').value.trim();
-    const startDate = document.getElementById('new-tb-start').value;
-    
+    const cid = document.getElementById('new-tb-class')?.value || '';
+    const title = document.getElementById('new-tb-title')?.value.trim() || '';
+    const startDate = document.getElementById('new-tb-start')?.value || '';
+
     if (!cid || !title) return toast('반과 교재명을 모두 입력하세요.', 'warn');
-    
-    const r = await api.post('class-textbooks', { class_id: cid, title: title, start_date: startDate });
-    if (r.success) {
-        toast('교재가 등록되었습니다.', 'success');
-        await loadData();
-        openTextbookManageModal();
-    } else toast('저장 실패', 'error');
+
+    try {
+        const r = await api.post('class-textbooks', { class_id: cid, title: title, start_date: startDate });
+        if (r?.success) {
+            toast('교재가 등록되었습니다.', 'success');
+            await loadData();
+            openTextbookManageModal();
+            return;
+        }
+        toast(r?.message || r?.error || '교재 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleAddTextbook] failed:', e);
+        toast('교재 저장 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 function openEditTextbookModal(tbId) {
     const tb = state.db.class_textbooks.find(x => x.id === tbId);
@@ -120,32 +128,50 @@ function openEditTextbookModal(tbId) {
 }
 
 async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active') {
-    const title = document.getElementById('edit-tb-title').value.trim();
-    const startDate = document.getElementById('edit-tb-start').value;
+    const title = document.getElementById('edit-tb-title')?.value.trim() || '';
+    const startDate = document.getElementById('edit-tb-start')?.value || '';
     const endDateEl = document.getElementById('edit-tb-end');
-    
+    if (!title) return toast('교재명을 입력하세요.', 'warn');
+
     let payload = { title, start_date: startDate };
     if (endDateEl) payload.end_date = endDateEl.value;
-    
+
     if (isStatusChange) {
         payload.status = targetStatus;
         if (targetStatus === 'active') payload.clear_end_date = true;
     }
-    
-    const r = await api.patch(`class-textbooks/${tbId}`, payload);
-    if (r.success) {
-        toast('저장 완료', 'success');
-        await loadData();
-        openTextbookManageModal();
-    } else toast('저장 실패', 'error');
+
+    try {
+        const r = await api.patch(`class-textbooks/${tbId}`, payload);
+        if (r?.success) {
+            toast(isStatusChange ? '교재 상태가 변경되었습니다.' : '교재 정보가 수정되었습니다.', 'success');
+            await loadData();
+            openTextbookManageModal();
+            return;
+        }
+        toast(r?.message || r?.error || '교재 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handlePatchTextbook] failed:', e);
+        toast('교재 수정 중 오류가 발생했습니다.', 'error');
+    }
 }
 
+
 async function handleDeleteTextbook(tbId) {
-    if (!confirm('정말 삭제하시겠습니까? (과거 일지에 기록된 텍스트 스냅샷은 안전하게 보존됩니다)')) return;
-    const r = await api.delete('class-textbooks', tbId);
-    if (r.success) {
-        toast('교재가 삭제되었습니다.', 'info');
-        await loadData();
-        openTextbookManageModal();
-    } else toast('삭제 실패', 'error');
+    if (!confirm('이 교재를 완전히 삭제하시겠습니까?')) return;
+
+    try {
+        const r = await api.delete('class-textbooks', tbId);
+        if (r?.success) {
+            toast('교재가 삭제되었습니다.', 'info');
+            await loadData();
+            openTextbookManageModal();
+            return;
+        }
+        toast(r?.message || r?.error || '교재 삭제에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleDeleteTextbook] failed:', e);
+        toast('교재 삭제 중 오류가 발생했습니다.', 'error');
+    }
 }
+

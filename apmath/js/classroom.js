@@ -44,14 +44,12 @@ async function handleBatchGeneratePins(classId) {
 
 // [Phase 4/5] 요약 계산 (로직 사수)
 function computeClassTodaySummary(classId) {
-    const today = getClassOperationTodayStr();
+    const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
-    const closedInfo = getClosedStudentIdsForDate(active.map(s => s.id), today);
-    const effectiveActive = closedInfo.hasGlobalClosed ? [] : active.filter(s => !closedInfo.closedStudentIds.has(String(s.id)));
-    const aIds = effectiveActive.map(s => String(s.id));
-    const total = effectiveActive.length;
+    const aIds = active.map(s => String(s.id));
+    const total = active.length;
     const isScheduled = isClassScheduledToday(classId);
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
@@ -67,99 +65,6 @@ function computeClassTodaySummary(classId) {
     return { att, hw, test, total, isScheduled };
 }
 
-function getClassOperationTodayStr() {
-    if (typeof getOperationDate === 'function') return getOperationDate();
-    return new Date().toLocaleDateString('sv-SE');
-}
-
-function getClosedStudentIdsForDate(studentIds, dateStr) {
-    const idSet = new Set((studentIds || []).map(id => String(id)));
-    const schedules = state.db.academy_schedules || [];
-    const hasGlobalClosed = schedules.some(s =>
-        String(s.is_deleted || 0) !== '1' &&
-        String(s.schedule_date || '') === dateStr &&
-        s.schedule_type === 'closed' &&
-        s.target_scope !== 'student'
-    );
-
-    if (hasGlobalClosed) {
-        return { hasGlobalClosed: true, closedStudentIds: new Set(idSet) };
-    }
-
-    const closedStudentIds = new Set(
-        schedules
-            .filter(s =>
-                String(s.is_deleted || 0) !== '1' &&
-                String(s.schedule_date || '') === dateStr &&
-                s.schedule_type === 'closed' &&
-                s.target_scope === 'student' &&
-                idSet.has(String(s.student_id || ''))
-            )
-            .map(s => String(s.student_id || ''))
-    );
-
-    return { hasGlobalClosed: false, closedStudentIds };
-}
-
-function getClassAcademyScheduleTone(type) {
-    if (type === 'closed') return { label: '휴무', color: 'var(--error)', bg: 'rgba(255,71,87,0.08)', border: 'rgba(255,71,87,0.16)' };
-    if (type === 'makeup') return { label: '보강', color: 'var(--primary)', bg: 'rgba(26,92,255,0.08)', border: 'rgba(26,92,255,0.14)' };
-    if (type === 'consultation') return { label: '상담', color: 'var(--success)', bg: 'rgba(0,208,132,0.08)', border: 'rgba(0,208,132,0.14)' };
-    return { label: '일정', color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' };
-}
-
-function getClassTodayOperationState(cid, memberIds, todayStr = getClassOperationTodayStr()) {
-    const memberSet = new Set((memberIds || []).map(id => String(id)));
-    const todaySchedules = (state.db.academy_schedules || []).filter(s => {
-        if (String(s.is_deleted || 0) === '1') return false;
-        if (String(s.schedule_date || '') !== todayStr) return false;
-        if (s.target_scope !== 'student') return s.schedule_type === 'closed';
-        return memberSet.has(String(s.student_id || ''));
-    });
-    const byStudent = {};
-    todaySchedules.forEach(s => {
-        if (s.target_scope === 'student') {
-            const sid = String(s.student_id || '');
-            if (!byStudent[sid]) byStudent[sid] = [];
-            byStudent[sid].push(s);
-        }
-    });
-    return {
-        todayStr,
-        globalClosed: todaySchedules.filter(s => s.schedule_type === 'closed' && s.target_scope !== 'student'),
-        studentClosed: todaySchedules.filter(s => s.schedule_type === 'closed' && s.target_scope === 'student'),
-        makeup: todaySchedules.filter(s => s.schedule_type === 'makeup'),
-        consultation: todaySchedules.filter(s => s.schedule_type === 'consultation'),
-        byStudent
-    };
-}
-
-function renderClassOperationNotice(op) {
-    const parts = [];
-    if (op.globalClosed.length) parts.push(`학원 휴무 ${op.globalClosed.length}건`);
-    if (op.studentClosed.length) parts.push(`학생 휴무 ${op.studentClosed.length}명`);
-    if (op.makeup.length) parts.push(`보강 ${op.makeup.length}건`);
-    if (op.consultation.length) parts.push(`상담 ${op.consultation.length}건`);
-    if (!parts.length) return '';
-
-    return `
-        <div style="margin:0 14px 12px; padding:12px 14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
-            <div style="font-size:12px; font-weight:700; color:var(--text); line-height:1.4; margin-bottom:6px;">오늘 운영 알림</div>
-            <div style="display:flex; flex-wrap:wrap; gap:6px;">
-                ${parts.map(p => `<span style="font-size:11px; font-weight:600; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:4px 8px; line-height:1.35;">${p}</span>`).join('')}
-            </div>
-        </div>
-    `;
-}
-
-function renderClassStudentOperationBadges(items) {
-    if (!items || !items.length) return '';
-    return `<span style="display:inline-flex; flex-wrap:wrap; gap:4px; margin-left:6px; vertical-align:middle;">${items.map(item => {
-        const tone = getClassAcademyScheduleTone(item.schedule_type);
-        return `<span title="${apEscapeHtml(item.title || '')}" style="font-size:10px; font-weight:600; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; border-radius:999px; padding:2px 6px; line-height:1.25;">${tone.label}</span>`;
-    }).join('')}</span>`;
-}
-
 // [UI Standard Applied]: 학급 메인 화면
 function renderClass(cid) {
     injectClassroomStyles();
@@ -168,14 +73,11 @@ function renderClass(cid) {
     const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
     const today = new Date().toLocaleDateString('sv-SE');
     const summary = computeClassTodaySummary(cid);
-    const operationState = getClassTodayOperationState(cid, mIds, getClassOperationTodayStr());
-    const operationNoticeHtml = renderClassOperationNotice(operationState);
 
     const icons = {
         qr: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`,
         grade: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>`,
         clinic: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path></svg>`,
-        report: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16v16H4z"></path><path d="M8 9h8M8 13h8M8 17h5"></path></svg>`,
         edit: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path></svg>`
     };
 
@@ -188,30 +90,19 @@ function renderClass(cid) {
             <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="renderDashboard()">닫기</button>
         </div>
         
-        <div style="margin:0 14px 8px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.35;">운영 버튼</div>
-            <div style="font-size:11px; font-weight:600; color:var(--secondary); line-height:1.35;">수업 중 빠른 처리</div>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
-            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openQrGenerator('${cid}')">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
+            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openQrGenerator('${cid}')">
                 <span style="color: var(--primary);">${icons.qr}</span> <span>QR/OMR</span>
             </button>
-            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openExamGradeView('${cid}')">
+            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openExamGradeView('${cid}')">
                 <span style="color: var(--primary);">${icons.grade}</span> <span>시험성적</span>
             </button>
-            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">
+            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">
                 <span style="color: var(--primary);">${icons.clinic}</span> <span>클리닉</span>
             </button>
-            <button class="btn btn-primary ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; line-height: 1.2;" onclick="openClassRecordModal('${cid}')">
+            <button class="btn btn-primary" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; line-height: 1.2;" onclick="openClassRecordModal('${cid}')">
                 <span style="color: #fff;">${icons.edit}</span> <span>진도관리</span>
             </button>
-            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClassReportBatchModal==='function') openClassReportBatchModal('${cid}'); else toast('\uBB38\uAD6C \uC0DD\uC131 \uAE30\uB2A5\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');">
-                <span style="color: var(--primary);">${icons.report}</span> <span>\uBB38\uAD6C\uC0DD\uC131</span>
-            </button>
-            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openClassWeakUnitHub('${cid}')">
-                <span style="color: var(--primary);">${icons.clinic}</span> <span>취약단원</span>
-            </button>
-
         </div>
     `;
 
@@ -229,11 +120,6 @@ function renderClass(cid) {
             <div style="margin: 0 14px 18px; padding: 14px 16px; background: rgba(26,92,255,0.06); border: 1px solid rgba(26,92,255,0.1); border-radius: 16px; font-size: 12px; color: var(--primary); font-weight:700; display: flex; justify-content: space-between; align-items: center; line-height: 1.5;">
                 <span>오늘 현황</span>
                 ${statusBarHtml}
-            </div>
-            ${operationNoticeHtml}
-            <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; margin:0 14px 18px;">
-                <button class="btn" style="min-height:44px; padding:10px 12px; font-size:13px; font-weight:700; border-radius:12px; background:rgba(0,208,132,0.08); color:var(--success); border:1px solid rgba(0,208,132,0.16);" onclick="markClassAttendanceAll('${cid}')">전체 등원 처리</button>
-                <button class="btn" style="min-height:44px; padding:10px 12px; font-size:13px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.16);" onclick="markClassHomeworkAll('${cid}')">전체 숙제 완료</button>
             </div>
             <div style="margin: 0 14px 32px;">
                 <div class="card" style="padding: 8px 0; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
@@ -262,7 +148,6 @@ function renderClass(cid) {
         const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === today);
         const attStatus = att?.status || '등원';
         const hwStatus = hw?.status || '완료';
-        const operationBadges = renderClassStudentOperationBadges(operationState.byStudent[String(s.id)]);
 
         const attStyle = attStatus === '등원' 
             ? 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);' 
@@ -273,7 +158,7 @@ function renderClass(cid) {
             : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight:700; border: 1px solid rgba(255,165,2,0.15);';
 
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;"><span>${s.name}</span>${operationBadges}</td>
+            <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
                 <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
@@ -283,38 +168,14 @@ function renderClass(cid) {
     }).join('');
 }
 
-function openClassWeakUnitHub(cid) {
-    const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    const weakUnits = typeof computeClassWeakUnits === 'function' ? computeClassWeakUnits(cid) : [];
-    const summaryHtml = typeof renderWeakUnitSummary === 'function'
-        ? renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터가 없습니다.', {
-            clickable: true,
-            mode: 'class',
-            titlePrefix: `${cls?.name || '반'} 취약 단원`,
-            context: { targetType: 'class', targetId: cid, targetLabel: cls?.name || '반' }
-        })
-        : '<div style="padding:20px; text-align:center; color:var(--secondary); font-size:13px; font-weight:600;">취약단원 분석 모듈을 불러오지 못했습니다.</div>';
-
-    showModal('반 취약단원', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="padding:14px; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:700; color:var(--text); line-height:1.35;">${apEscapeHtml(cls?.name || '')}</div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.5; margin-top:4px;">OMR 오답과 JS아카이브 단원키 기준으로 반별 클리닉 후보를 확인합니다.</div>
-            </div>
-            ${summaryHtml}
-            <button class="btn btn-primary" style="width:100%; min-height:44px; font-size:13px; font-weight:700; border-radius:12px;" onclick="openClinicBasketForClass('${cid}')">반 클리닉 바구니 보기</button>
-        </div>
-    `);
-}
-
 // [UI Standard Applied]: 진도관리 모달 수동 보정
-function openClassRecordModal(cid, targetDate = '') {
+function openClassRecordModal(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    const todayStr = targetDate || new Date().toLocaleDateString('sv-SE');
+    const todayStr = new Date().toLocaleDateString('sv-SE');
     const allTextbooks = state.db.class_textbooks || [];
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
 
-    if (activeBooks.length === 0 && cls?.textbook) {
+    if (activeBooks.length === 0 && cls.textbook) {
         activeBooks = [{ id: 'fallback', title: cls.textbook }];
     }
 
@@ -322,32 +183,28 @@ function openClassRecordModal(cid, targetDate = '') {
     const existingProgress = existingRecord ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id)) : [];
 
     const booksHtml = activeBooks.length > 0 ? activeBooks.map((tb) => {
-        const safeTbId = String(tb.id).replace(/[^a-zA-Z0-9_-]/g, '_');
         const prevP = existingProgress.find(p => String(p.textbook_id) === String(tb.id) || (tb.id === 'fallback' && p.textbook_title_snapshot === tb.title));
         const progVal = prevP ? prevP.progress_text : '';
         const isChecked = (prevP || progVal) ? 'checked' : '';
-        const safeTitle = String(tb.title || '').replace(/"/g, '&quot;');
-        const safeProg = String(progVal || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
         
         return `
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
             <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight:700; min-width: 120px; color: var(--text); cursor: pointer; line-height: 1.5;">
-                <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${safeTitle}" data-progress-id="progress_${safeTbId}" ${isChecked} style="transform: scale(1.1); accent-color: var(--primary);">
-                ${String(tb.title || '')}
+                <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${String(tb.title).replace(/"/g, '&quot;')}" ${isChecked} style="transform: scale(1.1); accent-color: var(--primary);">
+                ${String(tb.title)}
             </label>
-            <input type="text" class="cls-input record-tb-progress" id="progress_${safeTbId}" value="${safeProg}" placeholder="예: p.10~25" style="flex: 1; min-height: 44px;">
+            <input type="text" class="cls-input record-tb-progress" id="progress_${tb.id}" value="${progVal}" placeholder="예: p.10~25" style="flex: 1; min-height: 44px;">
         </div>
         `;
     }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight: 700; line-height: 1.5;">활성 교재 없음</div>`;
 
     const prevNote = existingRecord ? existingRecord.special_note : '';
-    const safeNote = String(prevNote || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
     showModal('진도관리', `
         <div style="margin-bottom: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
                 <h4 style="margin: 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">교재별 진도</h4>
-                <input type="date" class="cls-input" value="${todayStr}" style="width: auto; min-width: 132px; padding: 6px 10px; font-size: 12px; min-height: 0; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);" onchange="openClassRecordModal('${cid}', this.value)">
+                <span style="font-size: 11px; font-weight: 700; color: var(--secondary); line-height: 1.5;">${todayStr}</span>
             </div>
             <div style="background: var(--surface); padding: 4px 0;">
                 ${booksHtml}
@@ -355,7 +212,7 @@ function openClassRecordModal(cid, targetDate = '') {
         </div>
         <div style="margin-bottom: 32px;">
             <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">특이사항</h4>
-            <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 110px; resize: none; padding: 14px; line-height: 1.6;">${safeNote}</textarea>
+            <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 110px; resize: none; padding: 14px; line-height: 1.6;">${prevNote}</textarea>
         </div>
         <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:700; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>
     `);
@@ -367,17 +224,29 @@ async function saveClassRecord(cid, dateStr) {
     checks.forEach(chk => {
         const tbId = chk.value;
         const tbTitle = chk.getAttribute('data-title');
-        const progressId = chk.getAttribute('data-progress-id') || `progress_${tbId}`;
-        const progInput = document.getElementById(progressId);
+        const progInput = document.getElementById(`progress_${tbId}`);
         const progText = progInput ? progInput.value.trim() : '';
         progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: tbTitle, progress_text: progText });
     });
-    const specialNote = document.getElementById('record-special-note').value.trim();
+    const specialNote = document.getElementById('record-special-note')?.value.trim() || '';
     let actualTeacherName = typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당');
     const payload = { class_id: cid, date: dateStr, teacher_name: actualTeacherName, special_note: specialNote, progress: progresses };
-    const r = await api.post('class-daily-records', payload);
-    if (r.success) { toast('저장 완료', 'success'); closeModal(); await loadData(); }
+
+    try {
+        const r = await api.post('class-daily-records', payload);
+        if (r?.success) {
+            toast('저장 완료', 'success');
+            closeModal();
+            await loadData();
+            return;
+        }
+        toast(r?.message || r?.error || '수업 기록 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[saveClassRecord] failed:', e);
+        toast('수업 기록 저장 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 // [UI Standard Applied]: 출석부(Ledger) 엔진 수동 보정
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
@@ -393,50 +262,6 @@ async function loadLedger() {
 }
 
 async function goDashboardFromLedger() { await refreshDataOnly(); state.ui.currentClassId = null; renderDashboard(); }
-
-function getActiveClassStudentIds(cid) {
-    const memberIds = (state.db.class_students || [])
-        .filter(m => String(m.class_id) === String(cid))
-        .map(m => String(m.student_id));
-    const dateStr = getClassOperationTodayStr();
-
-    const activeIds = (state.db.students || [])
-        .filter(s => memberIds.includes(String(s.id)) && (s.status === '재원' || s.status === '?ъ썝'))
-        .map(s => String(s.id));
-    const closedInfo = getClosedStudentIdsForDate(activeIds, dateStr);
-    if (closedInfo.hasGlobalClosed) return [];
-    return activeIds.filter(id => !closedInfo.closedStudentIds.has(String(id)));
-}
-
-async function markClassAttendanceAll(cid) {
-    const studentIds = getActiveClassStudentIds(cid);
-    if (!studentIds.length) return toast('오늘은 휴무 대상이라 일괄 처리할 학생이 없습니다.', 'warn');
-    if (!confirm('현재 반 재원생 전체를 등원 처리할까요?')) return;
-
-    const date = getClassOperationTodayStr();
-    const entries = studentIds.map(studentId => ({ studentId, status: '등원', date }));
-    const r = await api.post('attendance-batch', { entries });
-    if (!r?.success) return toast('전체 등원 처리에 실패했습니다.', 'warn');
-
-    toast('전체 등원 처리되었습니다.', 'success');
-    await refreshDataOnly();
-    renderClass(cid);
-}
-
-async function markClassHomeworkAll(cid) {
-    const studentIds = getActiveClassStudentIds(cid);
-    if (!studentIds.length) return toast('오늘은 휴무 대상이라 일괄 처리할 학생이 없습니다.', 'warn');
-    if (!confirm('현재 반 재원생 전체를 숙제 완료 처리할까요?')) return;
-
-    const date = getClassOperationTodayStr();
-    const entries = studentIds.map(studentId => ({ studentId, status: '완료', date }));
-    const r = await api.post('homework-batch', { entries });
-    if (!r?.success) return toast('전체 숙제 완료 처리에 실패했습니다.', 'warn');
-
-    toast('전체 숙제 완료 처리되었습니다.', 'success');
-    await refreshDataOnly();
-    renderClass(cid);
-}
 
 function renderAttendanceLedger() {
     const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${String(c.id) === String(ledgerState.classId) ? 'selected' : ''}>${c.name}</option>`).join('');
@@ -462,8 +287,8 @@ function renderLedgerTable() {
     const attBtn = document.getElementById('ledger-mode-att');
     const hwBtn = document.getElementById('ledger-mode-hw');
     const isAtt = ledgerState.mode === 'att';
-    if (attBtn) { attBtn.style.background = isAtt ? 'var(--surface-2)' : 'transparent'; attBtn.style.color = isAtt ? 'var(--primary)' : 'var(--secondary)'; attBtn.style.fontWeight = isAtt ? '700' : '600'; }
-    if (hwBtn) { hwBtn.style.background = !isAtt ? 'var(--surface-2)' : 'transparent'; hwBtn.style.color = !isAtt ? 'var(--primary)' : 'var(--secondary)'; hwBtn.style.fontWeight = !isAtt ? '700' : '600'; }
+    if (attBtn) { attBtn.style.background = isAtt ? 'var(--surface-2)' : 'transparent'; attBtn.style.color = isAtt ? 'var(--primary)' : 'var(--secondary)'; attBtn.style.fontWeight = isAtt ? '950' : '700'; }
+    if (hwBtn) { hwBtn.style.background = !isAtt ? 'var(--surface-2)' : 'transparent'; hwBtn.style.color = !isAtt ? 'var(--primary)' : 'var(--secondary)'; hwBtn.style.fontWeight = !isAtt ? '950' : '700'; }
 
     const cid = ledgerState.classId;
     const mIds = cid ? state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id)) : state.db.students.map(s => String(s.id));
