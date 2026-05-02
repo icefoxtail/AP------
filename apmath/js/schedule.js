@@ -2,17 +2,19 @@
  * AP Math OS 1.0 [js/schedule.js]
  * Split from dashboard.js.
  * Unified Schedule Manager:
- * - 일정관리 하나에서 시험일정 + 기타일정 통합 관리
- * - 휴무/보강/상담/행사 세분화 제거
- * - 기타일정은 academy_schedules API를 사용하되 scheduleType은 'etc'로 고정
+ * - 일정관리 메뉴 하나
+ * - 일정 등록 폼 하나
+ * - 일정 유형은 시험 / 기타 두 개만 사용
+ * - 시험은 exam_schedules API 사용
+ * - 기타는 academy_schedules API 사용, scheduleType은 'etc' 고정
  */
 
+// ============================================================
+// Calendar
+// ============================================================
 function selectExamCalendarDate(dateStr) {
-    const examDateInput = document.getElementById('new-ex-date');
-    if (examDateInput) examDateInput.value = dateStr;
-
-    const etcDateInput = document.getElementById('new-etc-date');
-    if (etcDateInput) etcDateInput.value = dateStr;
+    const dateInput = document.getElementById('new-sch-date');
+    if (dateInput) dateInput.value = dateStr;
 
     if (!state.ui) state.ui = {};
     state.ui.examCalendarMonth = `${dateStr.substring(0, 7)}-01`;
@@ -28,20 +30,15 @@ function bindExamCalendarDateClicks() {
     });
 }
 
-function getEtcScheduleStudentName(studentId) {
+// ============================================================
+// Helpers
+// ============================================================
+function getScheduleStudentName(studentId) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     return student ? student.name : '';
 }
 
-function getEtcScheduleTone() {
-    return {
-        color: 'var(--primary)',
-        bg: 'rgba(26,92,255,0.08)',
-        border: 'rgba(26,92,255,0.16)'
-    };
-}
-
-function getEtcScheduleStudentOptions(selectedId = '') {
+function getScheduleStudentOptions(selectedId = '') {
     return (state.db.students || [])
         .filter(s => s.status !== '퇴원' && s.status !== '제적')
         .slice()
@@ -50,58 +47,155 @@ function getEtcScheduleStudentOptions(selectedId = '') {
         .join('');
 }
 
-function handleEtcScheduleScopeChange(prefix) {
-    const scopeEl = document.getElementById(`${prefix}-scope`);
-    const studentEl = document.getElementById(`${prefix}-student`);
-    if (!scopeEl || !studentEl) return;
-
-    studentEl.disabled = scopeEl.value !== 'student';
-    if (studentEl.disabled) studentEl.value = '';
+function getScheduleTypeLabel(type) {
+    return type === 'exam' ? '시험' : '기타';
 }
 
-function collectEtcSchedulePayload(prefix) {
+function getScheduleTone(type) {
+    if (type === 'exam') {
+        return {
+            color: 'var(--error)',
+            bg: 'rgba(255,71,87,0.08)',
+            border: 'rgba(255,71,87,0.18)'
+        };
+    }
+    return {
+        color: 'var(--primary)',
+        bg: 'rgba(26,92,255,0.08)',
+        border: 'rgba(26,92,255,0.16)'
+    };
+}
+
+function getUnifiedSchedules() {
+    const examRows = (state.db.exam_schedules || []).map(e => ({
+        kind: 'exam',
+        id: e.id,
+        date: e.exam_date || '',
+        title: e.exam_name || '일정',
+        school_name: e.school_name || '',
+        grade: e.grade || '',
+        memo: e.memo || '',
+        start_time: '',
+        end_time: '',
+        target_scope: 'global',
+        student_id: '',
+        teacher_name: ''
+    }));
+
+    const etcRows = (state.db.academy_schedules || [])
+        .filter(s => String(s.is_deleted || 0) !== '1')
+        .map(s => ({
+            kind: 'etc',
+            id: s.id,
+            date: s.schedule_date || '',
+            title: s.title || '일정',
+            school_name: '',
+            grade: '',
+            memo: s.memo || '',
+            start_time: s.start_time || '',
+            end_time: s.end_time || '',
+            target_scope: s.target_scope || 'global',
+            student_id: s.student_id || '',
+            teacher_name: s.teacher_name || ''
+        }));
+
+    return [...examRows, ...etcRows].sort((a, b) => {
+        const d = String(a.date || '').localeCompare(String(b.date || ''));
+        if (d !== 0) return d;
+        const k = String(a.kind || '').localeCompare(String(b.kind || ''));
+        if (k !== 0) return k;
+        return String(a.title || '').localeCompare(String(b.title || ''), 'ko');
+    });
+}
+
+function handleUnifiedScheduleTypeChange(prefix) {
+    const typeEl = document.getElementById(`${prefix}-kind`);
+    const scopeEl = document.getElementById(`${prefix}-scope`);
+    const studentEl = document.getElementById(`${prefix}-student`);
+    const schoolEl = document.getElementById(`${prefix}-school`);
+    const gradeEl = document.getElementById(`${prefix}-grade`);
+    const startEl = document.getElementById(`${prefix}-start`);
+    const endEl = document.getElementById(`${prefix}-end`);
+
+    if (!typeEl) return;
+
+    const isExam = typeEl.value === 'exam';
+
+    if (schoolEl) schoolEl.disabled = !isExam;
+    if (gradeEl) gradeEl.disabled = !isExam;
+
+    if (startEl) startEl.disabled = isExam;
+    if (endEl) endEl.disabled = isExam;
+
+    if (scopeEl) scopeEl.disabled = isExam;
+    if (studentEl) {
+        studentEl.disabled = isExam || (scopeEl && scopeEl.value !== 'student');
+        if (studentEl.disabled) studentEl.value = '';
+    }
+}
+
+function handleUnifiedScheduleScopeChange(prefix) {
+    handleUnifiedScheduleTypeChange(prefix);
+}
+
+function collectUnifiedSchedulePayload(prefix) {
+    const kind = document.getElementById(`${prefix}-kind`)?.value || 'exam';
     const title = document.getElementById(`${prefix}-title`)?.value.trim() || '';
     const date = document.getElementById(`${prefix}-date`)?.value || '';
-    const start = document.getElementById(`${prefix}-start`)?.value || '';
-    const end = document.getElementById(`${prefix}-end`)?.value || '';
-    const scope = document.getElementById(`${prefix}-scope`)?.value || 'global';
-    const studentId = document.getElementById(`${prefix}-student`)?.value || '';
-    const teacherName = document.getElementById(`${prefix}-teacher`)?.value.trim() || (state.auth?.name || '');
     const memo = document.getElementById(`${prefix}-memo`)?.value.trim() || '';
 
     if (!title || !date) {
-        toast('기타일정 제목과 날짜를 입력하세요.', 'warn');
+        toast('일정 내용과 날짜를 입력하세요.', 'warn');
         return null;
     }
 
-    if (scope === 'student' && !studentId) {
+    if (kind === 'exam') {
+        const schoolName = document.getElementById(`${prefix}-school`)?.value.trim() || '';
+        const grade = document.getElementById(`${prefix}-grade`)?.value || '';
+
+        return {
+            kind,
+            examPayload: {
+                schoolName,
+                grade,
+                examName: title,
+                examDate: date,
+                memo
+            }
+        };
+    }
+
+    const startTime = document.getElementById(`${prefix}-start`)?.value || '';
+    const endTime = document.getElementById(`${prefix}-end`)?.value || '';
+    const targetScope = document.getElementById(`${prefix}-scope`)?.value || 'global';
+    const studentId = document.getElementById(`${prefix}-student`)?.value || '';
+    const teacherName = document.getElementById(`${prefix}-teacher`)?.value.trim() || (state.auth?.name || '');
+
+    if (targetScope === 'student' && !studentId) {
         toast('학생 대상 일정은 학생을 선택하세요.', 'warn');
         return null;
     }
 
     return {
-        scheduleType: 'etc',
-        title,
-        scheduleDate: date,
-        startTime: start,
-        endTime: end,
-        targetScope: scope,
-        studentId,
-        teacherName,
-        memo,
-        isClosed: false
+        kind,
+        etcPayload: {
+            scheduleType: 'etc',
+            title,
+            scheduleDate: date,
+            startTime,
+            endTime,
+            targetScope,
+            studentId,
+            teacherName,
+            memo,
+            isClosed: false
+        }
     };
 }
 
-function renderScheduleSectionTitle(title, sub = '') {
-    return `
-        <div style="margin:18px 0 10px;">
-            <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.35;">${apEscapeHtml(title)}</div>
-            ${sub ? `<div style="font-size:12px; font-weight:600; color:var(--secondary); line-height:1.45; margin-top:2px;">${apEscapeHtml(sub)}</div>` : ''}
-        </div>
-    `;
-}
-
+// ============================================================
+// Render
+// ============================================================
 function renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstDay, lastDate, prevStr, nextStr) {
     const examSchedules = state.db.exam_schedules || [];
     const etcSchedules = (state.db.academy_schedules || []).filter(s => String(s.is_deleted || 0) !== '1');
@@ -114,12 +208,20 @@ function renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstD
                 <button class="btn ap-small-btn" style="background:var(--surface); border:none;" onclick="openExamScheduleModal('${nextStr}')">›</button>
             </div>
             <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; text-align:center; font-size:13px; font-weight:600; line-height:1.3; color:var(--secondary); margin-bottom:8px;">
-                <div style="color:var(--error);">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div style="color:var(--primary);">토</div>
+                <div style="color:var(--error);">일</div>
+                <div>월</div>
+                <div>화</div>
+                <div>수</div>
+                <div>목</div>
+                <div>금</div>
+                <div style="color:var(--primary);">토</div>
             </div>
             <div style="display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:4px;">
     `;
 
-    for (let i = 0; i < firstDay; i++) calendarHtml += `<div></div>`;
+    for (let i = 0; i < firstDay; i++) {
+        calendarHtml += `<div></div>`;
+    }
 
     for (let d = 1; d <= lastDate; d++) {
         const dateStr = `${targetYear}-${String(targetMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
@@ -141,8 +243,8 @@ function renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstD
     calendarHtml += `
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; font-size:11px; font-weight:600; color:var(--secondary);">
-                <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--error);margin-right:4px;"></span>시험일정</span>
-                <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--primary);margin-right:4px;"></span>기타일정</span>
+                <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--error);margin-right:4px;"></span>시험</span>
+                <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--primary);margin-right:4px;"></span>기타</span>
             </div>
         </div>
     `;
@@ -150,107 +252,103 @@ function renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstD
     return calendarHtml;
 }
 
-function renderExamScheduleContent(todayStr) {
-    const schedules = state.db.exam_schedules || [];
-
-    const rows = schedules.map(e => `
-        <div class="exam-schedule-item">
-            <div style="flex:1; min-width:0;">
-                <div style="font-size:11px; font-weight:600; line-height:1.35; color:var(--secondary); margin-bottom:4px;">${e.exam_date} | ${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')}</div>
-                <div style="font-size:15px; font-weight:700; line-height:1.35; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(e.exam_name || '일정')}</div>
-                ${e.memo ? `<div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${apEscapeHtml(e.memo)}</div>` : ''}
-            </div>
-            <button class="btn ap-small-btn" style="background:var(--surface-2); border:none; flex:0 0 auto;" onclick="openEditExamScheduleModal('${e.id}')">수정</button>
-        </div>
-    `).join('');
+function renderUnifiedScheduleForm(prefix = 'new-sch', item = null) {
+    const kind = item?.kind || 'exam';
+    const date = item?.date || new Date().toLocaleDateString('sv-SE');
+    const title = item?.title || '';
+    const memo = item?.memo || '';
+    const schoolName = item?.school_name || '';
+    const grade = item?.grade || '';
+    const startTime = item?.start_time || '';
+    const endTime = item?.end_time || '';
+    const targetScope = item?.target_scope || 'global';
+    const studentId = item?.student_id || '';
+    const teacherName = item?.teacher_name || (state.auth?.name || '');
 
     return `
-        ${renderScheduleSectionTitle('시험일정', '학교 시험, 단원평가, 월말평가 등 시험 관련 일정을 저장합니다.')}
         <div class="exam-schedule-form">
             <div class="exam-schedule-row">
-                <input type="text" id="new-ex-school" class="btn" placeholder="장소/학교 (선택)" style="text-align:left; border:none; background:var(--surface);">
-                <select id="new-ex-grade" class="btn" style="border:none; background:var(--surface);">
-                    <option value="">공통/전체</option>
-                    <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
-                    <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
+                <select id="${prefix}-kind" class="btn" style="border:none; background:var(--surface);" onchange="handleUnifiedScheduleTypeChange('${prefix}')">
+                    <option value="exam" ${kind === 'exam' ? 'selected' : ''}>시험</option>
+                    <option value="etc" ${kind === 'etc' ? 'selected' : ''}>기타</option>
                 </select>
+                <input type="text" id="${prefix}-title" class="btn" value="${apEscapeHtml(title)}" placeholder="일정 내용" style="text-align:left; border:none; background:var(--surface);">
             </div>
-            <div class="exam-schedule-row">
-                <input type="text" id="new-ex-name" class="btn" placeholder="시험일정 내용" style="text-align:left; border:none; background:var(--surface);">
-                <input type="date" id="new-ex-date" class="btn" value="${todayStr}" style="border:none; background:var(--surface);">
-            </div>
-            <input type="text" id="new-ex-memo" class="btn" placeholder="추가 메모 (선택)" style="text-align:left; border:none; background:var(--surface);">
-            <button class="btn btn-primary ap-primary-btn" onclick="addExamSchedule()">시험일정 저장</button>
-        </div>
-        <div class="exam-schedule-list">
-            ${schedules.length ? rows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; line-height:1.45; padding:20px;">시험일정이 없습니다</div>`}
-        </div>
-    `;
-}
 
-function renderEtcScheduleForm(prefix, item = null) {
-    const scope = item?.target_scope || 'global';
+            <div class="exam-schedule-row">
+                <input type="date" id="${prefix}-date" class="btn" value="${date}" style="border:none; background:var(--surface);">
+                <input type="text" id="${prefix}-school" class="btn" value="${apEscapeHtml(schoolName)}" placeholder="학교/장소 (시험 선택 시)" style="text-align:left; border:none; background:var(--surface);">
+            </div>
 
-    return `
-        <div class="exam-schedule-form">
             <div class="exam-schedule-row">
-                <input type="text" id="${prefix}-title" class="btn" value="${apEscapeHtml(item?.title || '')}" placeholder="기타일정 내용" style="text-align:left; border:none; background:var(--surface);">
-                <input type="date" id="${prefix}-date" class="btn" value="${item?.schedule_date || new Date().toLocaleDateString('sv-SE')}" style="border:none; background:var(--surface);">
+                <select id="${prefix}-grade" class="btn" style="border:none; background:var(--surface);">
+                    <option value="">공통/전체</option>
+                    <option value="중1" ${grade === '중1' ? 'selected' : ''}>중1</option>
+                    <option value="중2" ${grade === '중2' ? 'selected' : ''}>중2</option>
+                    <option value="중3" ${grade === '중3' ? 'selected' : ''}>중3</option>
+                    <option value="고1" ${grade === '고1' ? 'selected' : ''}>고1</option>
+                    <option value="고2" ${grade === '고2' ? 'selected' : ''}>고2</option>
+                    <option value="고3" ${grade === '고3' ? 'selected' : ''}>고3</option>
+                </select>
+                <input type="text" id="${prefix}-teacher" class="btn" value="${apEscapeHtml(teacherName)}" placeholder="담당자 (기타 선택 시)" style="text-align:left; border:none; background:var(--surface);">
             </div>
+
             <div class="exam-schedule-row">
-                <input type="time" id="${prefix}-start" class="btn" value="${item?.start_time || ''}" style="border:none; background:var(--surface);">
-                <input type="time" id="${prefix}-end" class="btn" value="${item?.end_time || ''}" style="border:none; background:var(--surface);">
+                <input type="time" id="${prefix}-start" class="btn" value="${startTime}" style="border:none; background:var(--surface);">
+                <input type="time" id="${prefix}-end" class="btn" value="${endTime}" style="border:none; background:var(--surface);">
             </div>
+
             <div class="exam-schedule-row">
-                <select id="${prefix}-scope" class="btn" style="border:none; background:var(--surface);" onchange="handleEtcScheduleScopeChange('${prefix}')">
-                    <option value="global" ${scope === 'global' ? 'selected' : ''}>학원 전체</option>
-                    <option value="student" ${scope === 'student' ? 'selected' : ''}>학생</option>
+                <select id="${prefix}-scope" class="btn" style="border:none; background:var(--surface);" onchange="handleUnifiedScheduleScopeChange('${prefix}')">
+                    <option value="global" ${targetScope === 'global' ? 'selected' : ''}>학원 전체</option>
+                    <option value="student" ${targetScope === 'student' ? 'selected' : ''}>학생</option>
                 </select>
                 <select id="${prefix}-student" class="btn" style="border:none; background:var(--surface);">
                     <option value="">학생 선택</option>
-                    ${getEtcScheduleStudentOptions(item?.student_id || '')}
+                    ${getScheduleStudentOptions(studentId)}
                 </select>
             </div>
-            <div class="exam-schedule-row">
-                <input type="text" id="${prefix}-teacher" class="btn" value="${apEscapeHtml(item?.teacher_name || state.auth?.name || '')}" placeholder="담당자" style="text-align:left; border:none; background:var(--surface);">
-            </div>
-            <textarea id="${prefix}-memo" class="btn" placeholder="메모" style="width:100%; min-height:86px; text-align:left; border:none; background:var(--surface); resize:vertical; font-size:14px; font-weight:400; line-height:1.7;">${apEscapeHtml(item?.memo || '')}</textarea>
+
+            <textarea id="${prefix}-memo" class="btn" placeholder="메모" style="width:100%; min-height:86px; text-align:left; border:none; background:var(--surface); resize:vertical; font-size:14px; font-weight:400; line-height:1.7;">${apEscapeHtml(memo)}</textarea>
         </div>
     `;
 }
 
-function renderEtcScheduleContent() {
-    const schedules = (state.db.academy_schedules || []).filter(s => String(s.is_deleted || 0) !== '1');
+function renderUnifiedScheduleList() {
+    const schedules = getUnifiedSchedules();
 
-    const rows = schedules.map(s => {
-        const tone = getEtcScheduleTone();
-        const studentName = s.target_scope === 'student' ? getEtcScheduleStudentName(s.student_id) : '';
+    if (!schedules.length) {
+        return `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; line-height:1.45; padding:20px;">등록된 일정이 없습니다</div>`;
+    }
+
+    return schedules.map(s => {
+        const tone = getScheduleTone(s.kind);
         const timeText = [s.start_time, s.end_time].filter(Boolean).join(' - ');
+        const studentName = s.target_scope === 'student' ? getScheduleStudentName(s.student_id) : '';
+        const subParts = [];
+
+        if (s.kind === 'exam') {
+            if (s.school_name || s.grade) subParts.push(`${s.school_name || '일반'} ${s.grade || ''}`.trim());
+        } else {
+            subParts.push(s.target_scope === 'student' ? `학생: ${studentName || s.student_id || ''}` : '학원 전체');
+            if (s.teacher_name) subParts.push(`담당: ${s.teacher_name}`);
+        }
 
         return `
             <div class="exam-schedule-item" style="border-color:${tone.border};">
                 <div style="flex:1; min-width:0;">
                     <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:5px;">
-                        <span style="font-size:11px; font-weight:600; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; padding:3px 8px; border-radius:8px;">기타</span>
-                        <span style="font-size:11px; font-weight:600; color:var(--secondary);">${apEscapeHtml(s.schedule_date || '')}${timeText ? ` · ${apEscapeHtml(timeText)}` : ''}</span>
+                        <span style="font-size:11px; font-weight:600; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; padding:3px 8px; border-radius:8px;">${getScheduleTypeLabel(s.kind)}</span>
+                        <span style="font-size:11px; font-weight:600; color:var(--secondary);">${apEscapeHtml(s.date || '')}${timeText ? ` · ${apEscapeHtml(timeText)}` : ''}</span>
                     </div>
                     <div style="font-size:15px; font-weight:700; line-height:1.35; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(s.title || '')}</div>
-                    <div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${s.target_scope === 'student' ? `학생: ${apEscapeHtml(studentName || s.student_id || '')}` : '학원 전체'}${s.teacher_name ? ` · 담당: ${apEscapeHtml(s.teacher_name)}` : ''}</div>
+                    ${subParts.length ? `<div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${apEscapeHtml(subParts.join(' · '))}</div>` : ''}
                     ${s.memo ? `<div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${apEscapeHtml(s.memo)}</div>` : ''}
                 </div>
-                <button class="btn ap-small-btn" style="background:var(--surface-2); border:none; flex:0 0 auto;" onclick="openEditEtcScheduleModal('${s.id}')">수정</button>
+                <button class="btn ap-small-btn" style="background:var(--surface-2); border:none; flex:0 0 auto;" onclick="openEditUnifiedScheduleModal('${s.kind}', '${s.id}')">수정</button>
             </div>
         `;
     }).join('');
-
-    return `
-        ${renderScheduleSectionTitle('기타일정', '휴무, 보강, 상담, 행사 등 시험 외 모든 일정을 여기에서 등록합니다.')}
-        ${renderEtcScheduleForm('new-etc')}
-        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:14px;" onclick="addEtcSchedule()">기타일정 저장</button>
-        <div class="exam-schedule-list">
-            ${schedules.length ? rows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; line-height:1.45; padding:20px;">기타일정이 없습니다</div>`}
-        </div>
-    `;
 }
 
 function openExamScheduleModal(baseDateStr = '') {
@@ -282,9 +380,8 @@ function openExamScheduleModal(baseDateStr = '') {
             .exam-calendar-day.today { border-color:var(--primary); color:var(--primary); }
             .exam-calendar-day.selected { background:rgba(26,92,255,0.08); border-color:var(--primary); color:var(--primary); }
             .exam-calendar-dot { width:4px; height:4px; border-radius:50%; margin-top:1px; display:inline-block; }
-            .exam-schedule-list { max-height:30vh; overflow-y:auto; padding-right:2px; margin-bottom:12px; }
+            .exam-schedule-list { max-height:38vh; overflow-y:auto; padding-right:2px; margin-bottom:12px; }
             .exam-schedule-item { padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; }
-            .schedule-divider { height:1px; background:var(--border); margin:18px 0 4px; }
             @media (max-width:600px) {
                 .exam-schedule-form { padding:12px; }
                 .exam-schedule-row { flex-direction:column; }
@@ -292,197 +389,191 @@ function openExamScheduleModal(baseDateStr = '') {
                 .exam-schedule-item { align-items:flex-start; }
             }
         </style>
+
         ${renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstDay, lastDate, prevStr, nextStr)}
-        ${renderExamScheduleContent(todayStr)}
-        <div class="schedule-divider"></div>
-        ${renderEtcScheduleContent()}
+
+        <div style="margin:18px 0 10px;">
+            <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.35;">일정 등록</div>
+            <div style="font-size:12px; font-weight:600; color:var(--secondary); line-height:1.45; margin-top:2px;">시험 또는 기타를 선택해 하나의 입력창에서 등록합니다.</div>
+        </div>
+
+        ${renderUnifiedScheduleForm('new-sch')}
+
+        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:16px;" onclick="addUnifiedSchedule()">일정 저장</button>
+
+        <div style="margin:18px 0 10px;">
+            <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.35;">일정 목록</div>
+        </div>
+
+        <div class="exam-schedule-list">
+            ${renderUnifiedScheduleList()}
+        </div>
     `;
 
     showModal('일정관리', body);
     bindExamCalendarDateClicks();
-    handleEtcScheduleScopeChange('new-etc');
+    handleUnifiedScheduleTypeChange('new-sch');
 }
 
-async function addExamSchedule() {
-    const sc = document.getElementById('new-ex-school')?.value.trim() || '';
-    const gr = document.getElementById('new-ex-grade')?.value || '';
-    const na = document.getElementById('new-ex-name')?.value.trim() || '';
-    const da = document.getElementById('new-ex-date')?.value || '';
-    const me = document.getElementById('new-ex-memo')?.value.trim() || '';
-    if (!da) return toast('날짜를 선택하세요.', 'warn');
+// ============================================================
+// Create / Edit / Delete
+// ============================================================
+async function addUnifiedSchedule() {
+    const payload = collectUnifiedSchedulePayload('new-sch');
+    if (!payload) return;
 
     try {
-        const r = await api.post('exam-schedules', { schoolName: sc, grade: gr, examName: na, examDate: da, memo: me });
+        const r = payload.kind === 'exam'
+            ? await api.post('exam-schedules', payload.examPayload)
+            : await api.post('academy-schedules', payload.etcPayload);
+
         if (r?.success) {
-            toast('시험일정이 저장되었습니다.', 'success');
+            toast('일정이 저장되었습니다.', 'success');
             await loadData();
             openExamScheduleModal();
             return;
         }
-        toast(r?.message || r?.error || '시험일정 저장에 실패했습니다.', 'error');
+
+        toast(r?.message || r?.error || '일정 저장에 실패했습니다.', 'error');
     } catch (e) {
-        console.error('[addExamSchedule] failed:', e);
-        toast('시험일정 저장 중 오류가 발생했습니다.', 'error');
+        console.error('[addUnifiedSchedule] failed:', e);
+        toast('일정 저장 중 오류가 발생했습니다.', 'error');
     }
+}
+
+function openEditUnifiedScheduleModal(kind, id) {
+    let item = null;
+
+    if (kind === 'exam') {
+        const e = (state.db.exam_schedules || []).find(x => String(x.id) === String(id));
+        if (!e) return;
+
+        item = {
+            kind: 'exam',
+            id: e.id,
+            date: e.exam_date || '',
+            title: e.exam_name || '',
+            school_name: e.school_name || '',
+            grade: e.grade || '',
+            memo: e.memo || '',
+            start_time: '',
+            end_time: '',
+            target_scope: 'global',
+            student_id: '',
+            teacher_name: ''
+        };
+    } else {
+        const s = (state.db.academy_schedules || []).find(x => String(x.id) === String(id));
+        if (!s) return;
+
+        item = {
+            kind: 'etc',
+            id: s.id,
+            date: s.schedule_date || '',
+            title: s.title || '',
+            school_name: '',
+            grade: '',
+            memo: s.memo || '',
+            start_time: s.start_time || '',
+            end_time: s.end_time || '',
+            target_scope: s.target_scope || 'global',
+            student_id: s.student_id || '',
+            teacher_name: s.teacher_name || ''
+        };
+    }
+
+    showModal('일정 수정', `
+        ${renderUnifiedScheduleForm('edit-sch', item)}
+        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditUnifiedSchedule('${kind}', '${id}')">수정 저장</button>
+        <div class="exam-schedule-row">
+            <button class="btn ap-mid-btn" style="border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
+            <button class="btn ap-mid-btn" style="color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="deleteUnifiedSchedule('${kind}', '${id}')">삭제</button>
+        </div>
+    `);
+
+    handleUnifiedScheduleTypeChange('edit-sch');
+}
+
+async function handleEditUnifiedSchedule(kind, id) {
+    const payload = collectUnifiedSchedulePayload('edit-sch');
+    if (!payload) return;
+
+    try {
+        const r = payload.kind === 'exam'
+            ? await api.patch('exam-schedules/' + id, payload.examPayload)
+            : await api.patch('academy-schedules/' + id, payload.etcPayload);
+
+        if (r?.success) {
+            toast('일정이 수정되었습니다.', 'success');
+            await loadData();
+            openExamScheduleModal();
+            return;
+        }
+
+        toast(r?.message || r?.error || '일정 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleEditUnifiedSchedule] failed:', e);
+        toast('일정 수정 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function deleteUnifiedSchedule(kind, id) {
+    if (!confirm('일정을 삭제하시겠습니까?')) return;
+
+    try {
+        const r = kind === 'exam'
+            ? await api.delete('exam-schedules', id)
+            : await api.delete('academy-schedules', id);
+
+        if (r?.success) {
+            toast('일정이 삭제되었습니다.', 'info');
+            await loadData();
+            openExamScheduleModal();
+            return;
+        }
+
+        toast(r?.message || r?.error || '일정 삭제에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[deleteUnifiedSchedule] failed:', e);
+        toast('일정 삭제 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+// ============================================================
+// 구버전 함수명 호환
+// ============================================================
+async function addExamSchedule() {
+    const payload = collectUnifiedSchedulePayload('new-sch');
+    if (!payload || payload.kind !== 'exam') return addUnifiedSchedule();
+    return addUnifiedSchedule();
 }
 
 async function deleteExamSchedule(id) {
-    if (!confirm('시험일정을 삭제하시겠습니까?')) return;
-
-    try {
-        const r = await api.delete('exam-schedules', id);
-        if (r?.success) {
-            toast('시험일정이 삭제되었습니다.', 'info');
-            await loadData();
-            openExamScheduleModal();
-            return;
-        }
-        toast(r?.message || r?.error || '시험일정 삭제에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[deleteExamSchedule] failed:', e);
-        toast('시험일정 삭제 중 오류가 발생했습니다.', 'error');
-    }
+    return deleteUnifiedSchedule('exam', id);
 }
 
 function openEditExamScheduleModal(id) {
-    const e = state.db.exam_schedules.find(x => x.id === id);
-    if (!e) return;
-
-    showModal('시험일정 수정', `
-        <div class="exam-schedule-form">
-            <div class="exam-schedule-row">
-                <input type="text" id="edit-ex-school" class="btn" value="${apEscapeHtml(e.school_name || '')}" placeholder="장소/학교 (선택)" style="text-align:left; border:none; background:var(--surface);">
-                <select id="edit-ex-grade" class="btn" style="border:none; background:var(--surface);">
-                    <option value="">공통/전체</option>
-                    <option value="중1" ${e.grade === '중1' ? 'selected' : ''}>중1</option>
-                    <option value="중2" ${e.grade === '중2' ? 'selected' : ''}>중2</option>
-                    <option value="중3" ${e.grade === '중3' ? 'selected' : ''}>중3</option>
-                    <option value="고1" ${e.grade === '고1' ? 'selected' : ''}>고1</option>
-                    <option value="고2" ${e.grade === '고2' ? 'selected' : ''}>고2</option>
-                    <option value="고3" ${e.grade === '고3' ? 'selected' : ''}>고3</option>
-                </select>
-            </div>
-            <div class="exam-schedule-row">
-                <input type="text" id="edit-ex-name" class="btn" value="${apEscapeHtml(e.exam_name || '')}" placeholder="시험일정 내용" style="text-align:left; border:none; background:var(--surface);">
-                <input type="date" id="edit-ex-date" class="btn" value="${e.exam_date}" style="border:none; background:var(--surface);">
-            </div>
-            <input type="text" id="edit-ex-memo" class="btn" value="${apEscapeHtml(e.memo || '')}" placeholder="추가 메모" style="text-align:left; border:none; background:var(--surface);">
-            <button class="btn btn-primary ap-primary-btn" onclick="handleEditExamSchedule('${id}')">수정 저장</button>
-            <div class="exam-schedule-row" style="margin-top:4px;">
-                <button class="btn ap-mid-btn" style="border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
-                <button class="btn ap-mid-btn" style="color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="deleteExamSchedule('${id}')">완전 삭제</button>
-            </div>
-        </div>
-    `);
+    return openEditUnifiedScheduleModal('exam', id);
 }
 
 async function handleEditExamSchedule(id) {
-    const sc = document.getElementById('edit-ex-school')?.value.trim() || '';
-    const gr = document.getElementById('edit-ex-grade')?.value || '';
-    const na = document.getElementById('edit-ex-name')?.value.trim() || '';
-    const da = document.getElementById('edit-ex-date')?.value.trim() || '';
-    const me = document.getElementById('edit-ex-memo')?.value.trim() || '';
-    if (!da) return toast('날짜를 선택하세요.', 'warn');
-
-    try {
-        const r = await api.patch('exam-schedules/' + id, { schoolName: sc, grade: gr, examName: na, examDate: da, memo: me });
-        if (r?.success) {
-            toast('시험일정이 수정되었습니다.', 'success');
-            await loadData();
-            openExamScheduleModal();
-            return;
-        }
-        toast(r?.message || r?.error || '시험일정 수정에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[handleEditExamSchedule] failed:', e);
-        toast('시험일정 수정 중 오류가 발생했습니다.', 'error');
-    }
+    return handleEditUnifiedSchedule('exam', id);
 }
 
-async function addEtcSchedule() {
-    const payload = collectEtcSchedulePayload('new-etc');
-    if (!payload) return;
-
-    try {
-        const r = await api.post('academy-schedules', payload);
-        if (r?.success) {
-            toast('기타일정이 저장되었습니다.', 'success');
-            await loadData();
-            openExamScheduleModal();
-            return;
-        }
-        toast(r?.message || r?.error || '기타일정 저장에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[addEtcSchedule] failed:', e);
-        toast('기타일정 저장 중 오류가 발생했습니다.', 'error');
-    }
-}
-
-function openEditEtcScheduleModal(id) {
-    const item = (state.db.academy_schedules || []).find(s => String(s.id) === String(id));
-    if (!item) return;
-
-    showModal('기타일정 수정', `
-        ${renderEtcScheduleForm('edit-etc', item)}
-        <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:10px;" onclick="handleEditEtcSchedule('${id}')">수정 저장</button>
-        <div class="exam-schedule-row">
-            <button class="btn ap-mid-btn" style="border:none; background:var(--surface);" onclick="openExamScheduleModal()">취소</button>
-            <button class="btn ap-mid-btn" style="color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="deleteEtcSchedule('${id}')">삭제</button>
-        </div>
-    `);
-    handleEtcScheduleScopeChange('edit-etc');
-}
-
-async function handleEditEtcSchedule(id) {
-    const payload = collectEtcSchedulePayload('edit-etc');
-    if (!payload) return;
-
-    try {
-        const r = await api.patch('academy-schedules/' + id, payload);
-        if (r?.success) {
-            toast('기타일정이 수정되었습니다.', 'success');
-            await loadData();
-            openExamScheduleModal();
-            return;
-        }
-        toast(r?.message || r?.error || '기타일정 수정에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[handleEditEtcSchedule] failed:', e);
-        toast('기타일정 수정 중 오류가 발생했습니다.', 'error');
-    }
-}
-
-async function deleteEtcSchedule(id) {
-    if (!confirm('기타일정을 삭제하시겠습니까?')) return;
-
-    try {
-        const r = await api.delete('academy-schedules', id);
-        if (r?.success) {
-            toast('기타일정이 삭제되었습니다.', 'info');
-            await loadData();
-            openExamScheduleModal();
-            return;
-        }
-        toast(r?.message || r?.error || '기타일정 삭제에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[deleteEtcSchedule] failed:', e);
-        toast('기타일정 삭제 중 오류가 발생했습니다.', 'error');
-    }
-}
-
-/* 구버전 함수명 호환 */
 async function addAcademySchedule() {
-    return addEtcSchedule();
+    const payload = collectUnifiedSchedulePayload('new-sch');
+    if (!payload || payload.kind !== 'etc') return addUnifiedSchedule();
+    return addUnifiedSchedule();
 }
 
 function openEditAcademyScheduleModal(id) {
-    return openEditEtcScheduleModal(id);
+    return openEditUnifiedScheduleModal('etc', id);
 }
 
 async function handleEditAcademySchedule(id) {
-    return handleEditEtcSchedule(id);
+    return handleEditUnifiedSchedule('etc', id);
 }
 
 async function deleteAcademySchedule(id) {
-    return deleteEtcSchedule(id);
+    return deleteUnifiedSchedule('etc', id);
 }
