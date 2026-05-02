@@ -507,6 +507,17 @@ function ensureDrawerStyle() {
             text-align:left;
         }
 
+        .ap-hamburger-glyph {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            width:20px;
+            height:20px;
+            line-height:1;
+            transform:translateX(-1px);
+            pointer-events:none;
+        }
+
         .switch {
             position:relative;
             display:inline-block;
@@ -875,9 +886,9 @@ function renderAppDrawer(force = false) {
     wrapper.innerHTML = `
         <div id="app-drawer-overlay" onclick="closeAppDrawer()"></div>
         <nav id="app-drawer" data-role="${currentRole}" aria-label="AP Math OS navigation">
-            <button class="drw-rail-toggle" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴">☰</button>
+            <button class="drw-rail-toggle" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴"><span class="ap-hamburger-glyph">☰</span></button>
             <div class="drw-top-tools">
-                <button class="drw-hamburger" onclick="closeAppDrawer()" aria-label="메뉴 닫기" title="닫기">☰</button>
+                <button class="drw-hamburger" onclick="closeAppDrawer()" aria-label="메뉴 닫기" title="닫기"><span class="ap-hamburger-glyph">☰</span></button>
                 <label class="switch" title="다크 모드">
                     <input type="checkbox" id="theme-switch" onchange="toggleTheme()">
                     <span class="slider"></span>

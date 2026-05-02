@@ -339,6 +339,7 @@ export default {
           if (method === 'PATCH' && id) {
             if (!(await canAccessStudent(teacher, id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (path[3] === 'restore') { await env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
+            if (path[3] === 'hide') { await env.DB.prepare("UPDATE students SET status = '숨김', updated_at = DATETIME('now') WHERE id = ?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
             const d = await request.json();
             if (d.class_id !== undefined && d.class_id) {
               if (!(await canAccessClass(teacher, d.class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
@@ -1038,16 +1039,38 @@ export default {
 
         // --- 10. 반 관리 (classes) ---
         if (resource === 'classes') {
+          const normalizeTeacherNameForMap = (name) => String(name || '').trim().replace(/\s+/g, '').replace(/\uC120\uC0DD\uB2D8$/g, '');
+          const syncTeacherClassMapping = async (classId, teacherName) => {
+            const rawName = String(teacherName || '').trim();
+            if (!classId || !rawName) return false;
+
+            const teachers = await env.DB.prepare('SELECT id, name FROM teachers').all();
+            const normalized = normalizeTeacherNameForMap(rawName);
+            const matched = (teachers.results || []).find(t =>
+              String(t.name || '').trim() === rawName ||
+              normalizeTeacherNameForMap(t.name) === normalized
+            );
+
+            if (!matched) return false;
+
+            await env.DB.batch([
+              env.DB.prepare('DELETE FROM teacher_classes WHERE class_id = ?').bind(classId),
+              env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(matched.id, classId)
+            ]);
+            return true;
+          };
           if (method === 'POST') {
             const d = await request.json();
             const cid = `cls_${Date.now()}`;
             await env.DB.prepare("INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, 1)").bind(cid, d.name, d.grade, d.subject || '수학', d.teacher_name || '박준성', d.schedule_days || '', d.textbook || '').run();
-            return new Response(JSON.stringify({ success: true, id: cid }), { headers });
+            const mappingUpdated = await syncTeacherClassMapping(cid, d.teacher_name);
+            return new Response(JSON.stringify({ success: true, id: cid, mappingUpdated }), { headers });
           }
           if (method === 'PATCH' && id) {
             const d = await request.json();
             await env.DB.prepare("UPDATE classes SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, textbook = ?, is_active = ? WHERE id = ?").bind(d.name, d.grade, d.subject, d.teacher_name, d.schedule_days || '', d.textbook || '', d.is_active !== undefined ? d.is_active : 1, id).run();
-            return new Response(JSON.stringify({ success: true }), { headers });
+            const mappingUpdated = await syncTeacherClassMapping(id, d.teacher_name);
+            return new Response(JSON.stringify({ success: true, mappingUpdated }), { headers });
           }
         }
 
