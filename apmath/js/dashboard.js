@@ -313,7 +313,7 @@ function renderAdminControlCenter() {
     const headerHtml = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
             <div style="display:flex; align-items:center; gap:10px;">
-                <button class="btn" style="width:36px; height:36px; padding:0; font-size:20px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
+                <button class="btn" style="width:36px; height:36px; margin-left:2px; padding:0; font-size:20px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
                 <div>
                     <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">운영센터</div>
                 </div>
