@@ -48,6 +48,38 @@ function apFormatMonthDay(value) {
 }
 
 // [Partner B] 해당 반이 오늘 수업이 있는 날인지 판정하는 헬퍼
+function getAcademyScheduleTypeLabelForDashboard(type) {
+    const labels = {
+        closed: '휴무',
+        makeup: '보강',
+        consultation: '상담',
+        event: '행사',
+        etc: '기타',
+        exam: '시험'
+    };
+    return labels[type] || '기타';
+}
+
+function getAcademyScheduleToneForDashboard(type) {
+    if (type === 'closed') return { color: 'var(--error)', bg: 'rgba(255,71,87,0.08)', border: 'rgba(255,71,87,0.16)' };
+    if (type === 'makeup') return { color: 'var(--primary)', bg: 'rgba(26,92,255,0.08)', border: 'rgba(26,92,255,0.14)' };
+    if (type === 'consultation') return { color: 'var(--success)', bg: 'rgba(0,208,132,0.08)', border: 'rgba(0,208,132,0.14)' };
+    return { color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' };
+}
+
+function getAcademyScheduleStudentNameForDashboard(studentId) {
+    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
+    return student ? student.name : '';
+}
+
+function buildAcademyScheduleTitleForDashboard(item) {
+    const label = getAcademyScheduleTypeLabelForDashboard(item.schedule_type);
+    const studentName = item.target_scope === 'student' ? getAcademyScheduleStudentNameForDashboard(item.student_id) : '';
+    const timeText = item.start_time ? ` ${item.start_time}` : '';
+    const targetText = studentName ? ` · ${studentName}` : '';
+    return `[${label}] ${item.title || '운영일정'}${targetText}${timeText}`;
+}
+
 function isClassScheduledTodayForDashboard(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
@@ -313,7 +345,7 @@ function renderAdminControlCenter() {
     const headerHtml = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
             <div style="display:flex; align-items:center; gap:10px;">
-                <button class="btn" style="width:36px; height:36px; margin-left:2px; padding:0; font-size:20px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
+                <button class="btn" style="width:36px; height:36px; padding:0; font-size:20px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
                 <div>
                     <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">운영센터</div>
                 </div>
@@ -356,11 +388,23 @@ function renderAdminControlCenter() {
     const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
     const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
     const upcomingSchedules = (state.db.exam_schedules || []).filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr).sort((a,b) => a.exam_date.localeCompare(b.exam_date));
+    const upcomingAcademySchedules = (state.db.academy_schedules || []).filter(s => String(s.is_deleted || 0) !== '1' && s.schedule_date > todayStr && s.schedule_date <= nextWeekStr);
+    const adminScheduleItems = [];
+    upcomingSchedules.forEach(e => adminScheduleItems.push({ type: 'exam', date: e.exam_date, item: e }));
+    upcomingAcademySchedules.forEach(s => adminScheduleItems.push({ type: 'academy', date: s.schedule_date, item: s }));
+    adminScheduleItems.sort((a,b) => a.date.localeCompare(b.date));
     const adminScheduleHtml = `
         <div style="margin-bottom:32px;">
             <h3 style="margin:0 0 12px 0; font-size:15px; font-weight:700; color:var(--secondary);">주간일정</h3>
             <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                ${upcomingSchedules.length > 0 ? upcomingSchedules.map(e => { 
+                ${adminScheduleItems.length > 0 ? adminScheduleItems.map(u => {
+                    if (u.type === 'academy') {
+                        const s = u.item;
+                        const tone = getAcademyScheduleToneForDashboard(s.schedule_type);
+                        const dateLabel = apFormatMonthDay(s.schedule_date) || s.schedule_date;
+                        return `<div onclick="openExamScheduleModal('', 'academy')" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px;"><div style="font-weight:700; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(buildAcademyScheduleTitleForDashboard(s))}</div><div style="color:${tone.color}; font-size:11px; font-weight:600; white-space:nowrap; background:${tone.bg}; border:1px solid ${tone.border}; padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
+                    }
+                    const e = u.item;
                     const dateLabel = apFormatMonthDay(e.exam_date) || e.exam_date; 
                     const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:600;">학교공통</span> '; 
                     return `<div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px;"><div><b style="font-weight:700; color:var(--text);">${apEscapeHtml(e.school_name)}</b> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`; 
@@ -601,6 +645,8 @@ function renderTodoSections() {
     });
     
     const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
+    const todayAcademySchedules = (state.db.academy_schedules || []).filter(s => String(s.is_deleted || 0) !== '1' && s.schedule_date === todayStr);
+    const upcomingAcademySchedules = (state.db.academy_schedules || []).filter(s => String(s.is_deleted || 0) !== '1' && s.schedule_date >= todayStr && s.schedule_date <= nextWeekStr);
 
     let todayHtml = todayMemos.length ? todayMemos.map(m => {
         const isPinned = isMemoPinned(m);
@@ -613,10 +659,19 @@ function renderTodoSections() {
         </div>
     `}).join('') : `<div style="font-size:13px; font-weight:600; color:var(--secondary); padding:24px; text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
 
+    if (todayAcademySchedules.length) {
+        const todayAcademyHtml = todayAcademySchedules.map(s => {
+            const tone = getAcademyScheduleToneForDashboard(s.schedule_type);
+            return `<div onclick="event.stopPropagation(); openExamScheduleModal('', 'academy')" style="cursor:pointer; padding:14px 16px; border-bottom:1px solid rgba(255,165,2,0.1); display:flex; justify-content:space-between; align-items:center; gap:10px; background:transparent;"><div style="font-size:13px; font-weight:700; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(buildAcademyScheduleTitleForDashboard(s))}</div><span style="font-size:11px; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; padding:4px 8px; border-radius:10px; font-weight:600; white-space:nowrap;">${getAcademyScheduleTypeLabelForDashboard(s.schedule_type)}</span></div>`;
+        }).join('');
+        todayHtml = todayMemos.length ? `${todayHtml}${todayAcademyHtml}` : todayAcademyHtml;
+    }
+
     let upcomingHtml = '';
     const upcomingItems = [];
     upcomingMemos.forEach(m => upcomingItems.push({ type: 'memo', date: getMemoDate(m), item: m }));
     upcomingExams.forEach(e => upcomingItems.push({ type: 'exam', date: e.exam_date, item: e }));
+    upcomingAcademySchedules.forEach(s => upcomingItems.push({ type: 'academy', date: s.schedule_date, item: s }));
     
     upcomingItems.sort((a,b) => a.date.localeCompare(b.date));
 
@@ -631,6 +686,10 @@ function renderTodoSections() {
                 const e = u.item;
                 const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
                 return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:rgba(110,84,255,0.8); background:rgba(110,84,255,0.08); padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
+            } else if (u.type === 'academy') {
+                const s = u.item;
+                const tone = getAcademyScheduleToneForDashboard(s.schedule_type);
+                return `<div onclick="openExamScheduleModal('', 'academy')" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; gap:10px; background:transparent;"><div>${apEscapeHtml(buildAcademyScheduleTitleForDashboard(s))}</div><span style="font-size:11px; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; padding:4px 8px; border-radius:10px; font-weight:600; white-space:nowrap;">${dDay}</span></div>`;
             } else {
                 return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(110,84,255,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(110,84,255,0.08); color:rgba(110,84,255,0.8); padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
             }
