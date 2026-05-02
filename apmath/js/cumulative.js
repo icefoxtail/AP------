@@ -145,13 +145,25 @@ function openCumulativeOpsModal() {
         : 'background:var(--surface-2); color:var(--secondary); border:1px solid var(--border);';
 
     showModal('누적 운영표', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
+        <style>
+            .cum-modal-shell { max-width:100%; overflow-x:hidden; }
+            .cum-filter-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-bottom:10px; }
+            .cum-scroll-table { overflow:auto; max-width:100%; border:1px solid var(--border); border-radius:14px; background:var(--surface); max-height:58vh; }
+            .cum-legend { display:flex; flex-wrap:wrap; gap:6px 10px; margin-bottom:8px; font-size:11px; font-weight:600; color:var(--secondary); line-height:1.45; }
+            @media (max-width:720px) {
+                .cum-filter-grid { grid-template-columns:1fr; }
+                .cum-school-filter-grid { grid-template-columns:1fr 1fr; }
+                .cum-school-filter-grid #cum-year { grid-column:1 / -1; }
+                #monthly-att-class { display:block; width:100%; }
+            }
+        </style>
+        <div class="cum-modal-shell" style="display:flex; flex-direction:column; gap:12px;">
             <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px;">
                 <button class="btn" style="min-height:42px; font-size:13px; font-weight:700; border-radius:12px; ${tabStyle('school')}" onclick="switchCumulativeOpsTab('school')">학교 성적표</button>
                 <button class="btn" style="min-height:42px; font-size:13px; font-weight:700; border-radius:12px; ${tabStyle('attendance')}" onclick="switchCumulativeOpsTab('attendance')">월간 출석부</button>
             </div>
             <div id="cum-school-panel" style="${state.ui.cumulativeTab === 'school' ? '' : 'display:none;'}">
-                <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-bottom:10px;">
+                <div class="cum-filter-grid cum-school-filter-grid">
                     <select id="cum-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
                         <option value="">전체 반</option>${classOptions}
                     </select>
@@ -166,7 +178,7 @@ function openCumulativeOpsModal() {
                 <div id="school-exam-cumulative-root"></div>
             </div>
             <div id="cum-attendance-panel" style="${state.ui.cumulativeTab === 'attendance' ? '' : 'display:none;'}">
-                <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-bottom:10px;">
+                <div class="cum-filter-grid">
                     <input id="monthly-att-month" type="month" class="btn" value="${state.ui.monthlyAttendanceMonth}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="state.ui.monthlyAttendanceMonth=this.value; loadMonthlyAttendance(this.value).then(() => renderMonthlyAttendanceTable())">
                     <select id="monthly-att-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderMonthlyAttendanceTable()">
                         <option value="">전체 반</option>${classOptions}
@@ -236,7 +248,7 @@ function renderSchoolExamCumulativeTable(options = {}) {
 
     root.innerHTML = `
         <div style="font-size:12px; font-weight:600; color:var(--secondary); line-height:1.45; margin-bottom:8px;">최근 4회 기준 학교시험 누적표입니다. QR/OMR 성적과 별도로 관리됩니다.</div>
-        <div style="overflow:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); max-height:58vh;">
+        <div class="cum-scroll-table">
             <table style="width:100%; border-collapse:collapse; min-width:${Math.max(520, 280 + columns.length * 82)}px;">
                 <thead>
                     <tr>
@@ -379,10 +391,10 @@ function renderMonthlyAttendanceTable() {
     `).join('');
 
     root.innerHTML = `
-        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; font-size:11px; font-weight:600; color:var(--secondary);">
+        <div class="cum-legend">
             <span>○ 등원</span><span>결 결석</span><span>- 미기록</span><span>휴 휴무</span><span>보 보강</span><span>상 상담</span><span>미 숙제 미완료</span>
         </div>
-        <div style="overflow:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); max-height:58vh;">
+        <div class="cum-scroll-table">
             <table style="width:100%; border-collapse:collapse; min-width:${Math.max(760, 120 + days.length * 42)}px;">
                 <thead>
                     <tr>
