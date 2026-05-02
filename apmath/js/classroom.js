@@ -126,6 +126,10 @@ function renderClass(cid) {
                 <span>오늘 현황</span>
                 ${statusBarHtml}
             </div>
+            <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; margin:0 14px 18px;">
+                <button class="btn" style="min-height:44px; padding:10px 12px; font-size:13px; font-weight:700; border-radius:12px; background:rgba(0,208,132,0.08); color:var(--success); border:1px solid rgba(0,208,132,0.16);" onclick="markClassAttendanceAll('${cid}')">전체 등원 처리</button>
+                <button class="btn" style="min-height:44px; padding:10px 12px; font-size:13px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.16);" onclick="markClassHomeworkAll('${cid}')">전체 숙제 완료</button>
+            </div>
             <div style="margin: 0 14px 32px;">
                 <div class="card" style="padding: 8px 0; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
                     <div style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
@@ -260,6 +264,46 @@ async function loadLedger() {
 
 async function goDashboardFromLedger() { await refreshDataOnly(); state.ui.currentClassId = null; renderDashboard(); }
 
+function getActiveClassStudentIds(cid) {
+    const memberIds = (state.db.class_students || [])
+        .filter(m => String(m.class_id) === String(cid))
+        .map(m => String(m.student_id));
+
+    return (state.db.students || [])
+        .filter(s => memberIds.includes(String(s.id)) && (s.status === '재원' || s.status === '?ъ썝'))
+        .map(s => String(s.id));
+}
+
+async function markClassAttendanceAll(cid) {
+    const studentIds = getActiveClassStudentIds(cid);
+    if (!studentIds.length) return toast('처리할 재원생이 없습니다.', 'warn');
+    if (!confirm('현재 반 재원생 전체를 등원 처리할까요?')) return;
+
+    const date = new Date().toLocaleDateString('sv-SE');
+    const entries = studentIds.map(studentId => ({ studentId, status: '등원', date }));
+    const r = await api.post('attendance-batch', { entries });
+    if (!r?.success) return toast('전체 등원 처리에 실패했습니다.', 'warn');
+
+    toast('전체 등원 처리되었습니다.', 'success');
+    await refreshDataOnly();
+    renderClass(cid);
+}
+
+async function markClassHomeworkAll(cid) {
+    const studentIds = getActiveClassStudentIds(cid);
+    if (!studentIds.length) return toast('처리할 재원생이 없습니다.', 'warn');
+    if (!confirm('현재 반 재원생 전체를 숙제 완료 처리할까요?')) return;
+
+    const date = new Date().toLocaleDateString('sv-SE');
+    const entries = studentIds.map(studentId => ({ studentId, status: '완료', date }));
+    const r = await api.post('homework-batch', { entries });
+    if (!r?.success) return toast('전체 숙제 완료 처리에 실패했습니다.', 'warn');
+
+    toast('전체 숙제 완료 처리되었습니다.', 'success');
+    await refreshDataOnly();
+    renderClass(cid);
+}
+
 function renderAttendanceLedger() {
     const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${String(c.id) === String(ledgerState.classId) ? 'selected' : ''}>${c.name}</option>`).join('');
     showModal('출석부', `
@@ -284,8 +328,8 @@ function renderLedgerTable() {
     const attBtn = document.getElementById('ledger-mode-att');
     const hwBtn = document.getElementById('ledger-mode-hw');
     const isAtt = ledgerState.mode === 'att';
-    if (attBtn) { attBtn.style.background = isAtt ? 'var(--surface-2)' : 'transparent'; attBtn.style.color = isAtt ? 'var(--primary)' : 'var(--secondary)'; attBtn.style.fontWeight = isAtt ? '950' : '700'; }
-    if (hwBtn) { hwBtn.style.background = !isAtt ? 'var(--surface-2)' : 'transparent'; hwBtn.style.color = !isAtt ? 'var(--primary)' : 'var(--secondary)'; hwBtn.style.fontWeight = !isAtt ? '950' : '700'; }
+    if (attBtn) { attBtn.style.background = isAtt ? 'var(--surface-2)' : 'transparent'; attBtn.style.color = isAtt ? 'var(--primary)' : 'var(--secondary)'; attBtn.style.fontWeight = isAtt ? '700' : '600'; }
+    if (hwBtn) { hwBtn.style.background = !isAtt ? 'var(--surface-2)' : 'transparent'; hwBtn.style.color = !isAtt ? 'var(--primary)' : 'var(--secondary)'; hwBtn.style.fontWeight = !isAtt ? '700' : '600'; }
 
     const cid = ledgerState.classId;
     const mIds = cid ? state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id)) : state.db.students.map(s => String(s.id));
