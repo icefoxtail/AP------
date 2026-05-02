@@ -398,6 +398,53 @@ export default {
           return new Response(JSON.stringify({ attendance: att.results, homework: hw.results, date }), { headers });
         }
 
+        if (resource === 'attendance-month' && method === 'GET') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          const month = String(url.searchParams.get('month') || '').trim();
+          if (!/^\d{4}-\d{2}$/.test(month)) {
+            return new Response(JSON.stringify({ success: false, message: 'month must be YYYY-MM' }), { status: 400, headers });
+          }
+
+          const [year, monthNo] = month.split('-').map(Number);
+          const endDay = new Date(year, monthNo, 0).getDate();
+          const startDate = `${month}-01`;
+          const endDate = `${month}-${String(endDay).padStart(2, '0')}`;
+
+          const acs = await env.DB.prepare(
+            'SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? ORDER BY schedule_date ASC, start_time ASC, created_at ASC'
+          ).bind(startDate, endDate).all();
+
+          if (teacher.role === 'admin') {
+            const [att, hw] = await Promise.all([
+              env.DB.prepare('SELECT * FROM attendance WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all(),
+              env.DB.prepare('SELECT * FROM homework WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all()
+            ]);
+            return new Response(JSON.stringify({ success: true, month, attendance: att.results, homework: hw.results, academy_schedules: acs.results }), { headers });
+          }
+
+          const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+          const classIds = (tcls.results || []).map(r => r.class_id);
+          if (!classIds.length) {
+            return new Response(JSON.stringify({ success: true, month, attendance: [], homework: [], academy_schedules: acs.results }), { headers });
+          }
+
+          const cMarkers = classIds.map(() => '?').join(',');
+          const map = await env.DB.prepare(`SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})`).bind(...classIds).all();
+          const studentIds = [...new Set((map.results || []).map(r => r.student_id))];
+          if (!studentIds.length) {
+            return new Response(JSON.stringify({ success: true, month, attendance: [], homework: [], academy_schedules: acs.results }), { headers });
+          }
+
+          const sMarkers = studentIds.map(() => '?').join(',');
+          const [att, hw] = await Promise.all([
+            env.DB.prepare(`SELECT * FROM attendance WHERE date BETWEEN ? AND ? AND student_id IN (${sMarkers}) ORDER BY date ASC`).bind(startDate, endDate, ...studentIds).all(),
+            env.DB.prepare(`SELECT * FROM homework WHERE date BETWEEN ? AND ? AND student_id IN (${sMarkers}) ORDER BY date ASC`).bind(startDate, endDate, ...studentIds).all()
+          ]);
+          return new Response(JSON.stringify({ success: true, month, attendance: att.results, homework: hw.results, academy_schedules: acs.results }), { headers });
+        }
+
         if (resource === 'attendance-batch' && method === 'POST') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });

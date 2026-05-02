@@ -112,31 +112,85 @@ function computeSchoolExamTrend(records, studentId) {
     return { avg, trend: trend === null ? '-' : `${trend >= 0 ? '+' : ''}${trend}` };
 }
 
+function sortCumulativeClasses(classes = []) {
+    return [...classes].sort((a, b) => {
+        const gradeDiff = getCumulativeGradeRankText(a.grade || a.name) - getCumulativeGradeRankText(b.grade || b.name);
+        if (gradeDiff !== 0) return gradeDiff;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+    });
+}
+
+function sortCumulativeStudents(students = []) {
+    return [...students].sort((a, b) => {
+        const aClass = getCumulativeClassName(getCumulativeClassIdForStudent(a.id));
+        const bClass = getCumulativeClassName(getCumulativeClassIdForStudent(b.id));
+        const classDiff = String(aClass || '').localeCompare(String(bClass || ''), 'ko');
+        if (classDiff !== 0) return classDiff;
+        const gradeDiff = getCumulativeGradeRankText(a.grade) - getCumulativeGradeRankText(b.grade);
+        if (gradeDiff !== 0) return gradeDiff;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+    });
+}
+
 function openCumulativeOpsModal() {
     const currentYear = new Date().getFullYear();
-    const classOptions = (state.db.classes || [])
-        .filter(c => Number(c.is_active) !== 0)
-        .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'))
+    const currentMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    if (!state.ui.cumulativeTab) state.ui.cumulativeTab = 'school';
+    if (!state.ui.monthlyAttendanceMonth) state.ui.monthlyAttendanceMonth = currentMonth;
+    const classOptions = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0))
         .map(c => `<option value="${apEscapeHtml(c.id)}">${apEscapeHtml(c.name || '')}</option>`)
         .join('');
+    const tabStyle = (tab) => state.ui.cumulativeTab === tab
+        ? 'background:var(--primary); color:#fff; border:1px solid var(--primary);'
+        : 'background:var(--surface-2); color:var(--secondary); border:1px solid var(--border);';
+
     showModal('누적 운영표', `
         <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px;">
-                <select id="cum-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
-                    <option value="">전체 반</option>${classOptions}
-                </select>
-                <select id="cum-grade" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
-                    <option value="">전체 학년</option>
-                    <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
-                    <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
-                </select>
-                <input id="cum-year" type="number" class="btn" value="${currentYear}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
+            <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px;">
+                <button class="btn" style="min-height:42px; font-size:13px; font-weight:700; border-radius:12px; ${tabStyle('school')}" onclick="switchCumulativeOpsTab('school')">학교 성적표</button>
+                <button class="btn" style="min-height:42px; font-size:13px; font-weight:700; border-radius:12px; ${tabStyle('attendance')}" onclick="switchCumulativeOpsTab('attendance')">월간 출석부</button>
             </div>
-            <button class="btn btn-primary" style="width:100%; min-height:44px; font-size:13px; font-weight:700; border-radius:12px;" onclick="openSchoolExamRecordModal()">학교시험 성적 추가</button>
-            <div id="school-exam-cumulative-root"></div>
+            <div id="cum-school-panel" style="${state.ui.cumulativeTab === 'school' ? '' : 'display:none;'}">
+                <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-bottom:10px;">
+                    <select id="cum-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
+                        <option value="">전체 반</option>${classOptions}
+                    </select>
+                    <select id="cum-grade" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
+                        <option value="">전체 학년</option>
+                        <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
+                        <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
+                    </select>
+                    <input id="cum-year" type="number" class="btn" value="${currentYear}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
+                </div>
+                <button class="btn btn-primary" style="width:100%; min-height:44px; font-size:13px; font-weight:700; border-radius:12px; margin-bottom:10px;" onclick="openSchoolExamRecordModal()">학교시험 성적 추가</button>
+                <div id="school-exam-cumulative-root"></div>
+            </div>
+            <div id="cum-attendance-panel" style="${state.ui.cumulativeTab === 'attendance' ? '' : 'display:none;'}">
+                <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-bottom:10px;">
+                    <input id="monthly-att-month" type="month" class="btn" value="${state.ui.monthlyAttendanceMonth}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="state.ui.monthlyAttendanceMonth=this.value; loadMonthlyAttendance(this.value).then(() => renderMonthlyAttendanceTable())">
+                    <select id="monthly-att-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderMonthlyAttendanceTable()">
+                        <option value="">전체 반</option>${classOptions}
+                    </select>
+                    <select id="monthly-att-mode" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderMonthlyAttendanceTable()">
+                        <option value="all">전체</option>
+                        <option value="attendance">출석만</option>
+                        <option value="homework">숙제 포함</option>
+                    </select>
+                </div>
+                <div id="monthly-attendance-root"></div>
+            </div>
         </div>
     `);
-    renderSchoolExamCumulativeTable();
+    if (state.ui.cumulativeTab === 'attendance') {
+        loadMonthlyAttendance(state.ui.monthlyAttendanceMonth).then(() => renderMonthlyAttendanceTable());
+    } else {
+        renderSchoolExamCumulativeTable();
+    }
+}
+
+function switchCumulativeOpsTab(tab) {
+    state.ui.cumulativeTab = tab === 'attendance' ? 'attendance' : 'school';
+    openCumulativeOpsModal();
 }
 
 function renderSchoolExamCumulativeTable(options = {}) {
@@ -198,6 +252,150 @@ function renderSchoolExamCumulativeTable(options = {}) {
         </div>
     `;
 }
+
+function getMonthDays(month) {
+    const m = String(month || '').trim();
+    if (!/^\d{4}-\d{2}$/.test(m)) return [];
+    const [year, monthNo] = m.split('-').map(Number);
+    const endDay = new Date(year, monthNo, 0).getDate();
+    return Array.from({ length: endDay }, (_, idx) => `${m}-${String(idx + 1).padStart(2, '0')}`);
+}
+
+async function loadMonthlyAttendance(month) {
+    const safeMonth = String(month || new Date().toLocaleDateString('sv-SE').slice(0, 7)).trim();
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+    if (state.ui.monthlyAttendanceCache[safeMonth]) return state.ui.monthlyAttendanceCache[safeMonth];
+
+    const data = await api.get(`attendance-month?month=${encodeURIComponent(safeMonth)}`);
+    const payload = data?.success ? {
+        month: safeMonth,
+        attendance: Array.isArray(data.attendance) ? data.attendance : [],
+        homework: Array.isArray(data.homework) ? data.homework : [],
+        academy_schedules: Array.isArray(data.academy_schedules) ? data.academy_schedules : []
+    } : { month: safeMonth, attendance: [], homework: [], academy_schedules: [] };
+    state.ui.monthlyAttendanceCache[safeMonth] = payload;
+    return payload;
+}
+
+function getMonthlyAttendanceData() {
+    const month = document.getElementById('monthly-att-month')?.value || state.ui.monthlyAttendanceMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+    return state.ui.monthlyAttendanceCache[month] || { month, attendance: [], homework: [], academy_schedules: [] };
+}
+
+function getMonthlyAttendanceStatus(studentId, date) {
+    const data = getMonthlyAttendanceData();
+    const sid = String(studentId);
+    const attendance = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
+    const homework = (data.homework || []).find(h => String(h.student_id) === sid && String(h.date || '') === date);
+    return { attendance: attendance?.status || '', homework: homework?.status || '' };
+}
+
+function getMonthlyScheduleBadges(studentId, date) {
+    const data = getMonthlyAttendanceData();
+    const sid = String(studentId);
+    const schedules = (data.academy_schedules || []).filter(s => {
+        if (String(s.is_deleted || 0) === '1') return false;
+        if (String(s.schedule_date || '') !== date) return false;
+        if (s.target_scope === 'student') return String(s.student_id || '') === sid;
+        return true;
+    });
+    return {
+        globalClosed: schedules.some(s => s.schedule_type === 'closed' && s.target_scope !== 'student'),
+        studentClosed: schedules.some(s => s.schedule_type === 'closed' && s.target_scope === 'student'),
+        makeup: schedules.some(s => s.schedule_type === 'makeup' && s.target_scope === 'student'),
+        consultation: schedules.some(s => s.schedule_type === 'consultation' && s.target_scope === 'student')
+    };
+}
+
+function renderMonthlyAttendanceCell(studentId, date) {
+    const mode = document.getElementById('monthly-att-mode')?.value || 'all';
+    const status = getMonthlyAttendanceStatus(studentId, date);
+    const schedule = getMonthlyScheduleBadges(studentId, date);
+    const chips = [];
+
+    if (schedule.globalClosed || schedule.studentClosed) {
+        chips.push({ text: '휴', color: 'var(--error)', bg: 'rgba(255,71,87,0.08)', border: 'rgba(255,71,87,0.18)' });
+    } else {
+        if (schedule.makeup) chips.push({ text: '보', color: 'var(--primary)', bg: 'rgba(26,92,255,0.08)', border: 'rgba(26,92,255,0.16)' });
+        if (schedule.consultation) chips.push({ text: '상', color: 'var(--success)', bg: 'rgba(0,208,132,0.08)', border: 'rgba(0,208,132,0.16)' });
+        if (mode !== 'homework') {
+            if (status.attendance === '등원') chips.push({ text: '○', color: 'var(--success)', bg: 'rgba(0,208,132,0.06)', border: 'rgba(0,208,132,0.14)' });
+            else if (status.attendance === '결석') chips.push({ text: '결', color: 'var(--error)', bg: 'rgba(255,71,87,0.08)', border: 'rgba(255,71,87,0.18)' });
+            else chips.push({ text: '-', color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' });
+        }
+        if (mode !== 'attendance' && status.homework === '미완료') {
+            chips.push({ text: '미', color: 'var(--warning)', bg: 'rgba(255,165,2,0.10)', border: 'rgba(255,165,2,0.20)' });
+        }
+    }
+
+    return `<div style="display:flex; justify-content:center; align-items:center; gap:2px; min-height:32px;">${chips.map(chip => `<span style="display:inline-flex; align-items:center; justify-content:center; min-width:20px; height:22px; padding:0 5px; border-radius:999px; font-size:11px; font-weight:700; color:${chip.color}; background:${chip.bg}; border:1px solid ${chip.border}; line-height:1;">${chip.text}</span>`).join('')}</div>`;
+}
+
+function renderMonthlyAttendanceTable() {
+    const root = document.getElementById('monthly-attendance-root');
+    if (!root) return;
+
+    const month = document.getElementById('monthly-att-month')?.value || state.ui.monthlyAttendanceMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    const days = getMonthDays(month);
+    const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+    const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 720px)').matches;
+    const classSelect = document.getElementById('monthly-att-class');
+    let classId = classSelect?.value || '';
+
+    if (isMobile && !classId && activeClasses.length) {
+        classId = String(activeClasses[0].id);
+        if (classSelect) classSelect.value = classId;
+    }
+
+    if (isMobile && !classId) {
+        root.innerHTML = `<div style="padding:24px; text-align:center; color:var(--secondary); font-size:13px; font-weight:600; background:var(--surface-2); border-radius:14px;">표시할 반이 없습니다.</div>`;
+        return;
+    }
+
+    let students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId }));
+    const grouped = activeClasses
+        .filter(c => !classId || String(c.id) === String(classId))
+        .map(cls => ({
+            cls,
+            students: students.filter(s => String(getCumulativeClassIdForStudent(s.id)) === String(cls.id))
+        }))
+        .filter(group => group.students.length);
+
+    const headerCells = days.map(d => `<th style="position:sticky; top:0; z-index:2; background:var(--surface); padding:8px 5px; min-width:42px; border-bottom:1px solid var(--border); font-size:11px; font-weight:700; color:var(--secondary); text-align:center;">${Number(d.slice(-2))}</th>`).join('');
+    const bodyRows = grouped.map(group => `
+        <tr>
+            <td colspan="${days.length + 1}" style="position:sticky; left:0; z-index:3; background:var(--surface-2); padding:8px 10px; font-size:12px; font-weight:700; color:var(--text); border-bottom:1px solid var(--border);">${apEscapeHtml(group.cls.name || '')}</td>
+        </tr>
+        ${group.students.map(s => `
+            <tr>
+                <td style="position:sticky; left:0; z-index:1; background:var(--surface); min-width:118px; padding:9px 8px; border-bottom:1px solid var(--border);">
+                    <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.35;">${apEscapeHtml(s.name || '')}</div>
+                    <div style="font-size:10px; font-weight:600; color:var(--secondary); line-height:1.35;">${apEscapeHtml(s.grade || '')}</div>
+                </td>
+                ${days.map(d => `<td style="padding:5px 4px; min-width:42px; text-align:center; border-bottom:1px solid var(--border);">${renderMonthlyAttendanceCell(s.id, d)}</td>`).join('')}
+            </tr>
+        `).join('')}
+    `).join('');
+
+    root.innerHTML = `
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; font-size:11px; font-weight:600; color:var(--secondary);">
+            <span>○ 등원</span><span>결 결석</span><span>- 미기록</span><span>휴 휴무</span><span>보 보강</span><span>상 상담</span><span>미 숙제 미완료</span>
+        </div>
+        <div style="overflow:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); max-height:58vh;">
+            <table style="width:100%; border-collapse:collapse; min-width:${Math.max(760, 120 + days.length * 42)}px;">
+                <thead>
+                    <tr>
+                        <th style="position:sticky; top:0; left:0; z-index:4; background:var(--surface); padding:8px; min-width:118px; border-bottom:1px solid var(--border); font-size:11px; font-weight:700; color:var(--secondary); text-align:left;">학생</th>
+                        ${headerCells}
+                    </tr>
+                </thead>
+                <tbody>${bodyRows || `<tr><td colspan="${days.length + 1}" style="padding:28px; text-align:center; color:var(--secondary); font-size:13px; font-weight:600;">표시할 학생이 없습니다.</td></tr>`}</tbody>
+            </table>
+        </div>
+    `;
+}
+
 
 function openSchoolExamRecordModal(recordId = '', studentId = '') {
     const record = recordId ? (state.db.school_exam_records || []).find(r => String(r.id) === String(recordId)) : null;
