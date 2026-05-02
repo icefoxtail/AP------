@@ -181,10 +181,10 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou, txt, cdr, cdp;
+          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, jou, txt, cdr, cdp;
 
           if (teacher.role === 'admin') {
-            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, jou, txt, cdr, cdp] = await Promise.all([
+            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, jou, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
               env.DB.prepare('SELECT * FROM class_students').all(),
@@ -197,6 +197,7 @@ export default {
               env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC').all(),
               env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all(),
               env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(),
+              env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 ORDER BY schedule_date ASC, start_time ASC, created_at ASC').all(),
               env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC').all(),
               env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all(),
               env.DB.prepare('SELECT * FROM class_daily_records ORDER BY date DESC, created_at DESC LIMIT 1000').all(),
@@ -208,6 +209,7 @@ export default {
             
             opm = await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
+            acs = await env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 ORDER BY schedule_date ASC, start_time ASC, created_at ASC').all();
             jou = await env.DB.prepare('SELECT * FROM daily_journals WHERE teacher_name = ? ORDER BY date DESC').bind(teacher.name).all();
 
             if (!classIds.length) {
@@ -224,6 +226,7 @@ export default {
                 consultations: [],
                 operation_memos: opm.results,
                 exam_schedules: exS.results,
+                academy_schedules: acs.results,
                 journals: jou.results,
                 class_textbooks: [],
                 class_daily_records: [],
@@ -278,6 +281,7 @@ export default {
             consultations: cns.results,
             operation_memos: opm.results,
             exam_schedules: exS.results,
+            academy_schedules: acs.results,
             journals: jou.results,
             class_textbooks: txt.results,
             class_daily_records: cdr.results,
@@ -687,6 +691,82 @@ export default {
         }
 
         // --- 9.5. 반별 교재 관리 ---
+        if (resource === 'academy-schedules') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          const normalizeAcademySchedulePayload = (d) => {
+            const scheduleType = String(d.scheduleType || '').trim();
+            const title = String(d.title || '').trim();
+            const scheduleDate = String(d.scheduleDate || '').trim();
+            const targetScope = String(d.targetScope || 'global').trim() === 'student' ? 'student' : 'global';
+            const studentId = targetScope === 'student' ? String(d.studentId || '').trim() : null;
+            const isClosed = scheduleType === 'closed' ? 1 : (d.isClosed ? 1 : 0);
+
+            if (!scheduleType || !title || !scheduleDate) return { error: 'Required fields missing' };
+            if (targetScope === 'student' && !studentId) return { error: 'Student ID required' };
+            if ((scheduleType === 'makeup' || scheduleType === 'consultation') && targetScope !== 'student') return { error: 'Student target required' };
+
+            return {
+              scheduleType,
+              title,
+              scheduleDate,
+              startTime: d.startTime || '',
+              endTime: d.endTime || '',
+              targetScope,
+              studentId,
+              teacherName: d.teacherName || teacher.name || '',
+              memo: d.memo || '',
+              isClosed
+            };
+          };
+
+          if (method === 'GET') {
+            const from = url.searchParams.get('from') || '';
+            const to = url.searchParams.get('to') || '';
+            let query = 'SELECT * FROM academy_schedules WHERE is_deleted = 0';
+            const params = [];
+            if (from) {
+              query += ' AND schedule_date >= ?';
+              params.push(from);
+            }
+            if (to) {
+              query += ' AND schedule_date <= ?';
+              params.push(to);
+            }
+            query += ' ORDER BY schedule_date ASC, start_time ASC, created_at ASC';
+            const stmt = env.DB.prepare(query);
+            const res = params.length ? await stmt.bind(...params).all() : await stmt.all();
+            return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
+          }
+
+          if (method === 'POST') {
+            const d = normalizeAcademySchedulePayload(await request.json());
+            if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            const sid = `acs_${Date.now()}`;
+            await env.DB.prepare(`INSERT INTO academy_schedules
+              (id, schedule_type, title, schedule_date, start_time, end_time, target_scope, student_id, teacher_name, memo, is_closed, is_deleted, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, DATETIME('now'), DATETIME('now'))`)
+              .bind(sid, d.scheduleType, d.title, d.scheduleDate, d.startTime, d.endTime, d.targetScope, d.studentId, d.teacherName, d.memo, d.isClosed).run();
+            return new Response(JSON.stringify({ success: true, id: sid }), { headers });
+          }
+
+          if (method === 'PATCH' && id) {
+            const d = normalizeAcademySchedulePayload(await request.json());
+            if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            await env.DB.prepare(`UPDATE academy_schedules
+              SET schedule_type=?, title=?, schedule_date=?, start_time=?, end_time=?, target_scope=?, student_id=?, teacher_name=?, memo=?, is_closed=?, updated_at=DATETIME('now')
+              WHERE id=? AND is_deleted = 0`)
+              .bind(d.scheduleType, d.title, d.scheduleDate, d.startTime, d.endTime, d.targetScope, d.studentId, d.teacherName, d.memo, d.isClosed, id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+
+          if (method === 'DELETE' && id) {
+            await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+        }
+
         if (resource === 'class-textbooks') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });

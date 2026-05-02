@@ -31,7 +31,7 @@ let state = {
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
         exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
-        consultations: [], operation_memos: [], exam_schedules: [], journals: [],
+        consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: []
     }
 };
@@ -165,6 +165,7 @@ async function loadData(isInitial = false) {
         consultations: Array.isArray(data.consultations) ? data.consultations : [],
         operation_memos: Array.isArray(data.operation_memos) ? data.operation_memos : [],
         exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : [],
+        academy_schedules: Array.isArray(data.academy_schedules) ? data.academy_schedules : [],
         journals: Array.isArray(data.journals) ? data.journals : [],
         class_textbooks: Array.isArray(data.class_textbooks) ? data.class_textbooks : [],
         class_daily_records: Array.isArray(data.class_daily_records) ? data.class_daily_records : [],
@@ -200,6 +201,7 @@ async function refreshDataOnly() {
         consultations: Array.isArray(data.consultations) ? data.consultations : [],
         operation_memos: Array.isArray(data.operation_memos) ? data.operation_memos : [],
         exam_schedules: Array.isArray(data.exam_schedules) ? data.exam_schedules : [],
+        academy_schedules: Array.isArray(data.academy_schedules) ? data.academy_schedules : (state.db.academy_schedules || []),
         journals: Array.isArray(data.journals) ? data.journals : (state.db.journals || []),
         class_textbooks: Array.isArray(data.class_textbooks) ? data.class_textbooks : (state.db.class_textbooks || []),
         class_daily_records: Array.isArray(data.class_daily_records) ? data.class_daily_records : (state.db.class_daily_records || []),
