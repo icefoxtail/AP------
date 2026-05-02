@@ -31,64 +31,6 @@ async function renderStudentDetail(sid) {
     renderStudentDetailTab(sid, 'grade');
 }
 
-function getStudentOperationTodayStr() {
-    if (typeof getOperationDate === 'function') return getOperationDate();
-    return new Date().toLocaleDateString('sv-SE');
-}
-
-function getStudentAcademyScheduleTone(type) {
-    if (type === 'closed') return { label: '휴무', color: 'var(--error)', bg: 'rgba(255,71,87,0.08)', border: 'rgba(255,71,87,0.16)' };
-    if (type === 'makeup') return { label: '보강', color: 'var(--primary)', bg: 'rgba(26,92,255,0.08)', border: 'rgba(26,92,255,0.14)' };
-    if (type === 'consultation') return { label: '상담', color: 'var(--success)', bg: 'rgba(0,208,132,0.08)', border: 'rgba(0,208,132,0.14)' };
-    if (type === 'event') return { label: '행사', color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' };
-    return { label: '기타', color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' };
-}
-
-function getStudentOperationSchedules(sid, todayStr = getStudentOperationTodayStr()) {
-    const studentId = String(sid);
-    return (state.db.academy_schedules || [])
-        .filter(s => {
-            if (String(s.is_deleted || 0) === '1') return false;
-            const isStudentSchedule = s.target_scope === 'student' && String(s.student_id || '') === studentId;
-            const isGlobalClosed = s.schedule_type === 'closed' && s.target_scope !== 'student';
-            return isStudentSchedule || isGlobalClosed;
-        })
-        .sort((a, b) => String(a.schedule_date || '').localeCompare(String(b.schedule_date || '')));
-}
-
-function renderStudentOperationScheduleCard(sid) {
-    const todayStr = getStudentOperationTodayStr();
-    const schedules = getStudentOperationSchedules(sid, todayStr);
-    const todayItems = schedules.filter(s => String(s.schedule_date || '') === todayStr);
-    const upcoming = schedules.filter(s => String(s.schedule_date || '') > todayStr).slice(0, 3);
-    if (!todayItems.length && !upcoming.length) return '';
-
-    const chip = (item) => {
-        const tone = getStudentAcademyScheduleTone(item.schedule_type);
-        const time = item.start_time ? ` ${item.start_time}` : '';
-        return `
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; padding:9px 10px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border);">
-                <div style="min-width:0;">
-                    <div style="font-size:12px; font-weight:700; color:var(--text); line-height:1.35; overflow-wrap:anywhere;">${apEscapeHtml(item.title || '운영일정')}${time}</div>
-                    <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-top:2px; line-height:1.35;">${apEscapeHtml(item.schedule_date || '')}</div>
-                </div>
-                <span style="font-size:11px; font-weight:600; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; border-radius:999px; padding:3px 7px; white-space:nowrap; line-height:1.25;">${tone.label}</span>
-            </div>
-        `;
-    };
-
-    return `
-        <div style="margin:0 0 20px; padding:14px; border-radius:16px; background:var(--surface); border:1px solid var(--border);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.35;">학생 운영일정</div>
-                <span style="font-size:11px; font-weight:600; color:var(--secondary);">${todayStr}</span>
-            </div>
-            ${todayItems.length ? `<div style="display:flex; flex-direction:column; gap:8px; margin-bottom:${upcoming.length ? '10px' : '0'};">${todayItems.map(chip).join('')}</div>` : ''}
-            ${upcoming.length ? `<div style="display:flex; flex-direction:column; gap:8px;">${upcoming.map(chip).join('')}</div>` : ''}
-        </div>
-    `;
-}
-
 /**
  * 탭별 내용 렌더링 엔진 (UI Standard 적용)
  */
@@ -110,10 +52,7 @@ function renderStudentDetailTab(sid, tab) {
                         ${s.student_pin ? `<span class="std-badge" style="background: var(--surface); border: 1px solid var(--border); color: var(--text); letter-spacing: 1px;">PIN ${s.student_pin}</span>` : ''}
                     </div>
                 </div>
-                <div style="display:flex; flex-direction:column; gap:8px; flex:0 0 auto;">
-                    ${!s.student_pin ? `<button class="btn btn-primary" style="min-height: 38px; padding: 8px 12px; font-size: 12px; font-weight:700; line-height: 1.2; border-radius: 10px; box-shadow:none; cursor: pointer; white-space: nowrap;" onclick="handleAutoPinStudent('${sid}', '${tab}')">PIN 자동 생성</button>` : ''}
-                    <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}')">정보 수정</button>
-                </div>
+                <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}')">정보 수정</button>
             </div>
             
             <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
@@ -128,8 +67,6 @@ function renderStudentDetailTab(sid, tab) {
             </div>
         </div>
     `;
-
-    const operationCardHtml = renderStudentOperationScheduleCard(sid);
 
     // 2. 탭 바 (규격화된 행간 및 버튼)
     const tabBarHtml = `
@@ -154,107 +91,15 @@ function renderStudentDetailTab(sid, tab) {
         </div>
     `;
 
-    showModal(`${s.name} 프로필`, `<div style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${operationCardHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
+    showModal(`${s.name} 프로필`, `<div style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
     if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
 }
 
 /**
  * [Tab 1] 성적분석 (16px 제목 및 14px 리스트 규격)
  */
-function renderTargetProgressCard(sid) {
-    const progress = typeof computeStudentTargetProgress === 'function'
-        ? computeStudentTargetProgress(sid)
-        : null;
-
-    if (!progress || progress.targetScore === null) {
-        return `
-            <div style="margin-bottom: 20px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
-                <div style="font-size: 13px; font-weight:700; color: var(--text); margin-bottom: 6px;">\uBAA9\uD45C\uC810\uC218 \uBBF8\uC124\uC815</div>
-                <div style="font-size: 12px; font-weight: 700; color: var(--secondary); line-height: 1.5;">\uD559\uC0DD \uC815\uBCF4 \uC218\uC815\uC5D0\uC11C \uBAA9\uD45C\uC810\uC218\uB97C \uC785\uB825\uD558\uC138\uC694.</div>
-            </div>
-        `;
-    }
-
-    const avgText = progress.currentAverage === null ? '\uC131\uC801 \uAE30\uB85D \uB300\uAE30' : `${progress.currentAverage}\uC810`;
-    const rateText = progress.achievementRate === null ? '-' : `${progress.achievementRate}%`;
-    const remainText = progress.remainScore === null ? '-' : `${progress.remainScore}\uC810`;
-
-    return `
-        <div style="margin-bottom: 20px; padding: 16px; background: var(--surface); border: 1px solid rgba(26,92,255,0.14); border-radius: 16px;">
-            <div style="font-size: 13px; font-weight:700; color: var(--primary); margin-bottom: 12px;">\uBAA9\uD45C \uC810\uC218</div>
-            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
-                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
-                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uBAA9\uD45C</div>
-                    <div style="font-size: 18px; color: var(--text); font-weight:700;">${progress.targetScore}\uC810</div>
-                </div>
-                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
-                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uCD5C\uADFC \uD3C9\uADE0</div>
-                    <div style="font-size: 18px; color: var(--text); font-weight:700;">${avgText}</div>
-                </div>
-                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
-                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uB2EC\uC131\uB960</div>
-                    <div style="font-size: 18px; color: var(--primary); font-weight:700;">${rateText}</div>
-                </div>
-                <div style="background: var(--surface-2); border-radius: 12px; padding: 12px;">
-                    <div style="font-size: 11px; color: var(--secondary); font-weight: 700; margin-bottom: 4px;">\uBAA9\uD45C\uAE4C\uC9C0</div>
-                    <div style="font-size: 18px; color: var(--text); font-weight:700;">${remainText}</div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function getLatestSchoolExamRecordForStudent(studentId) {
-    const typeRank = { final: 4, midterm: 3, performance: 2, etc: 1 };
-    const semesterRank = (value) => {
-        const text = String(value || '');
-        if (text.includes('2')) return 2;
-        if (text.includes('1')) return 1;
-        return 0;
-    };
-
-    return (state.db.school_exam_records || [])
-        .filter(record => String(record.student_id) === String(studentId) && String(record.is_deleted || 0) !== '1')
-        .sort((a, b) => {
-            const yearDiff = Number(b.exam_year || 0) - Number(a.exam_year || 0);
-            if (yearDiff !== 0) return yearDiff;
-            const semesterDiff = semesterRank(b.semester) - semesterRank(a.semester);
-            if (semesterDiff !== 0) return semesterDiff;
-            const typeDiff = (typeRank[b.exam_type] || 0) - (typeRank[a.exam_type] || 0);
-            if (typeDiff !== 0) return typeDiff;
-            return String(b.created_at || '').localeCompare(String(a.created_at || ''));
-        })[0] || null;
-}
-
-function getStudentSchoolExamTypeLabel(type) {
-    const labels = { midterm: '중간', final: '기말', performance: '수행', etc: '기타' };
-    return labels[type] || type || '기타';
-}
-
-function renderLatestSchoolExamSummary(sid) {
-    const record = getLatestSchoolExamRecordForStudent(sid);
-    if (!record) return '';
-
-    const scoreText = record.score === null || record.score === undefined || record.score === '' ? '미응시' : `${record.score}점`;
-    const parts = [
-        record.exam_year ? `${record.exam_year}년` : '',
-        record.semester || '',
-        getStudentSchoolExamTypeLabel(record.exam_type),
-        record.subject || '',
-        scoreText
-    ].filter(Boolean);
-
-    return `
-        <div style="margin-bottom:16px; padding:10px 12px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); font-size:12px; font-weight:600; color:var(--secondary); line-height:1.5; overflow-wrap:anywhere;">
-            <span style="font-weight:700; color:var(--text); margin-right:6px;">최근 학교성적</span>${apEscapeHtml(parts.join(' '))}
-        </div>
-    `;
-}
-
 function renderGradeTab(sid) {
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
-    const targetProgressCard = renderTargetProgressCard(sid);
-    const latestSchoolExamSummary = renderLatestSchoolExamSummary(sid);
     
     const chartArea = exs.length > 0 
         ? `<div style="margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
@@ -289,8 +134,6 @@ function renderGradeTab(sid) {
 
     return `
         <div>
-            ${targetProgressCard}
-            ${latestSchoolExamSummary}
             <h4 style="margin: 0 0 12px 4px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">최근 성적 추이</h4>
             ${chartArea}
             <h4 style="margin: 24px 0 12px 4px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">전체 시험 이력</h4>
@@ -308,13 +151,8 @@ function renderWeakTab(sid) {
 
     return `
         <div style="padding: 0 4px;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:12px;">
-                <div style="min-width:0;">
-                    <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">취약 단원 분석</h4>
-                    <p style="margin: 0; font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5;">단원을 누르면 상세 오답과 추천 문항을 확인합니다.</p>
-                </div>
-                <button class="btn" style="min-height:36px; padding:8px 10px; font-size:12px; font-weight:700; border-radius:10px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14); white-space:nowrap;" onclick="openClinicBasketForStudent('${sid}')">클리닉 후보</button>
-            </div>
+            <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">취약 단원 분석</h4>
+            <p style="margin: 0 0 16px 0; font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5;">단원을 누르면 상세 오답과 추천 문항을 확인합니다.</p>
             ${typeof renderWeakUnitSummary === 'function' 
                 ? renderWeakUnitSummary(weakUnits, '누적 오답 데이터가 없습니다.', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s.name } })
                 : '<div style="padding: 20px; text-align: center; color: var(--secondary); font-size: 13px; font-weight: 700;">데이터를 불러올 수 없습니다.</div>'}
@@ -328,16 +166,12 @@ function renderWeakTab(sid) {
 function renderCnsTab(sid) {
     const cnsList = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)));
 
-    const cnsCards = cnsList.map(c => {
-        const logText = `${c.content || ''}\n${c.next_action || ''}`;
-        const isReportLog = String(c.content || '').trim().startsWith('[보고문구 기록]') || logText.includes('보고문구') || logText.includes('蹂닿퀬臾멸뎄');
-        return `
+    const cnsCards = cnsList.map(c => `
         <div class="card" style="padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 16px; box-shadow: none; background: var(--surface);">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span style="font-size: 12px; font-weight:700; color: var(--secondary); line-height: 1.5;">${c.date}</span>
                     <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight:700; border: 1px solid rgba(26,92,255,0.15);">${c.type}</span>
-                    ${isReportLog ? '<span class="std-badge" style="background:rgba(0,208,132,0.08); color:var(--success); padding:2px 8px; border-radius:10px; font-size:11px; font-weight:700; border:1px solid rgba(0,208,132,0.15);">보고문구</span>' : ''}
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <span style="cursor: pointer; color: var(--primary); font-size: 12px; font-weight:700;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
@@ -350,8 +184,7 @@ function renderCnsTab(sid) {
                     <b style="color: var(--warning);">조치:</b> ${apEscapeHtml(c.next_action)}
                 </div>` : ''}
         </div>
-    `;
-    }).join('');
+    `).join('');
 
     return `
         <div style="padding: 0 4px;">
@@ -415,18 +248,47 @@ function drawGradeChart(sid) {
  * 알림톡 문구 미리보기 (CTA 및 입력창 규격)
  */
 function openReportPreview(sid) {
-    if (typeof openStudentReportModal === 'function') {
-        openStudentReportModal(sid);
-        return;
+    const s = state.db.students.find(st => st.id === sid);
+    const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
+    
+    const lastRecord = (state.db.class_daily_records || [])
+        .filter(r => String(r.class_id) === String(mIds?.class_id))
+        .sort((a,b) => b.date.localeCompare(a.date))[0];
+    
+    let progressText = '정규 수업을 진행했습니다.';
+    if (lastRecord) {
+        const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(lastRecord.id));
+        if (progresses.length > 0) {
+            progressText = progresses.map(p => `${p.textbook_title_snapshot} ${p.progress_text}`).join(', ') + '를 학습했습니다.';
+        }
     }
 
-    if (typeof openReportModal === 'function') {
-        openReportModal(sid);
-        return;
-    }
+    const lastCns = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => b.date.localeCompare(a.date))[0];
+    let cnsText = lastCns ? `\n\n[학습 피드백]\n${lastCns.content}` : '';
 
-    toast('\uBCF4\uACE0 \uBB38\uAD6C \uBAA8\uB4C8\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
+    const lastExam = (state.db.exam_sessions || [])
+        .filter(e => e.student_id === sid)
+        .sort((a,b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')))[0];
+    let examText = lastExam ? `\n\n[최근 평가]\n${lastExam.exam_title}: ${lastExam.score}점` : '';
+
+    const template = `안녕하세요 학부모님, AP수학입니다.\n\n오늘 ${s.name}이는 ${progressText}${examText}${cnsText}\n\n궁금하신 점은 언제든 편하게 문의주세요. 감사합니다!`;
+
+    showModal('알림톡 문구 미리보기', `
+        <div style="background: var(--surface-2); border: 1px solid var(--border); padding: 16px; border-radius: 18px; margin-bottom: 16px;">
+            <p style="margin: 0 0 10px 4px; font-size: 12px; color: var(--secondary); font-weight:700; line-height: 1.5;">내용을 확인하고 필요하면 수정하세요.</p>
+            <textarea id="report-preview-text" class="std-input-base" style="height: 280px; text-align: left; background: var(--surface); border: 1px solid var(--border); line-height: 1.7; resize: none; font-size: 14px;">${template}</textarea>
+        </div>
+    `, '최종 복사하기', () => {
+        const text = document.getElementById('report-preview-text').value;
+        navigator.clipboard.writeText(text).then(() => {
+            toast('문구가 복사되었습니다!', 'success');
+            closeModal();
+        }).catch(() => {
+            toast('복사에 실패했습니다.', 'warn');
+        });
+    });
 }
+
 /**
  * 기존 기능 보존 및 규격화 (CRUD Flows)
  */
@@ -476,51 +338,123 @@ function openEditConsultation(cid, sid) {
 }
 
 async function handleEditConsultation(cid, sid) {
-    const date = document.getElementById('edit-cns-date').value;
-    const type = document.getElementById('edit-cns-type').value;
-    const content = document.getElementById('edit-cns-content').value.trim();
-    const nextAction = document.getElementById('edit-cns-action').value.trim();
-    const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
-    if (r.success) { toast('수정완료', 'info'); closeModal(); await loadData(); renderStudentDetailTab(sid, 'cns'); }
+    const date = document.getElementById('edit-cns-date')?.value || '';
+    const type = document.getElementById('edit-cns-type')?.value || '';
+    const content = document.getElementById('edit-cns-content')?.value.trim() || '';
+    const nextAction = document.getElementById('edit-cns-action')?.value.trim() || '';
+    if (!content) return toast('상담 내용을 입력하세요.', 'warn');
+
+    try {
+        const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
+        if (r?.success) {
+            toast('상담 기록이 수정되었습니다.', 'info');
+            closeModal();
+            await loadData();
+            renderStudentDetailTab(sid, 'cns');
+            return;
+        }
+        toast(r?.message || r?.error || '상담 기록 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleEditConsultation] failed:', e);
+        toast('상담 기록 수정 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 async function handleDeleteConsultation(cid, sid) {
     if (!confirm('삭제하시겠습니까?')) return;
-    const r = await api.delete('consultations', cid);
-    if (r.success) { toast('삭제완료', 'info'); await loadData(); renderStudentDetailTab(sid, 'cns'); }
+
+    try {
+        const r = await api.delete('consultations', cid);
+        if (r?.success) {
+            toast('상담 기록이 삭제되었습니다.', 'info');
+            await loadData();
+            renderStudentDetailTab(sid, 'cns');
+            return;
+        }
+        toast(r?.message || r?.error || '상담 기록 삭제에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleDeleteConsultation] failed:', e);
+        toast('상담 기록 삭제 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 async function handleDelete(sid) {
-    if (confirm('이 학생을 퇴원 처리하시겠습니까?')) { await api.delete('students', sid); closeModal(); await loadData(); }
+    if (!confirm('이 학생을 퇴원 처리하시겠습니까?')) return;
+
+    try {
+        const r = await api.delete('students', sid);
+        if (r?.success) {
+            toast('퇴원 처리되었습니다.', 'info');
+            closeModal();
+            await loadData();
+            return;
+        }
+        toast(r?.message || r?.error || '퇴원 처리에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleDelete] failed:', e);
+        toast('퇴원 처리 중 오류가 발생했습니다.', 'error');
+    }
 }
 
+
 async function handleRestore(sid) {
-    if (confirm('이 학생을 재원으로 복구하시겠습니까?')) { await api.patch(`students/${sid}/restore`, {}); closeModal(); await loadData(); }
+    if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
+
+    try {
+        const r = await api.patch(`students/${sid}/restore`, {});
+        if (r?.success) {
+            toast('재원으로 복구되었습니다.', 'info');
+            closeModal();
+            await loadData();
+            return;
+        }
+        toast(r?.message || r?.error || '재원 복구에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleRestore] failed:', e);
+        toast('재원 복구 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 async function handleDeleteSession(eid, sid) {
     if (!confirm('시험 기록을 삭제하시겠습니까?')) return;
-    const r = await api.delete('exam-sessions', eid);
-    if (r?.success) { toast('삭제완료', 'info'); await loadData(); renderStudentDetailTab(sid, 'grade'); }
+
+    try {
+        const r = await api.delete('exam-sessions', eid);
+        if (r?.success) {
+            toast('시험 기록이 삭제되었습니다.', 'info');
+            await loadData();
+            renderStudentDetailTab(sid, 'grade');
+            return;
+        }
+        toast(r?.message || r?.error || '시험 기록 삭제에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleDeleteSession] failed:', e);
+        toast('시험 기록 삭제 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 async function handleResetSessionWrongs(eid, sid) {
     if (!confirm('오답만 초기화하시겠습니까?')) return;
-    const r = await api.delete('exam-sessions', `${eid}/wrongs`);
-    if (r?.success) { toast('초기화완료', 'info'); await loadData(); renderStudentDetailTab(sid, 'grade'); }
-}
 
-async function handleAutoPinStudent(sid, tab = 'grade') {
-    if (!confirm('이 학생의 PIN을 자동 생성할까요?')) return;
-    const r = await api.post(`students/${sid}/auto-pin`, {});
-    if (r?.success) {
-        toast(`PIN ${r.pin} 생성 완료`, 'success');
-        await loadData();
-        renderStudentDetailTab(sid, tab);
-    } else {
-        toast(r?.message || 'PIN 자동 생성에 실패했습니다.', 'warn');
+    try {
+        const r = await api.delete('exam-sessions', `${eid}/wrongs`);
+        if (r?.success) {
+            toast('오답이 초기화되었습니다.', 'info');
+            await loadData();
+            renderStudentDetailTab(sid, 'grade');
+            return;
+        }
+        toast(r?.message || r?.error || '오답 초기화에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleResetSessionWrongs] failed:', e);
+        toast('오답 초기화 중 오류가 발생했습니다.', 'error');
     }
 }
+
 
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
@@ -542,7 +476,6 @@ function openEditStudent(sid) {
             <input id="edit-parent-phone" class="std-input-base" value="${s.parent_phone||''}" placeholder="학부모 전화번호">
             <input id="edit-guardian-rel" class="std-input-base" value="${s.guardian_relation||''}" placeholder="보호자 관계">
             <input id="edit-student-pin" class="std-input-base" value="${s.student_pin||''}" placeholder="PIN (4자리 숫자)" maxlength="4">
-            <input id="edit-target-score" type="number" min="0" max="100" class="std-input-base" value="${s.target_score ?? ''}" placeholder="\uBAA9\uD45C \uC810\uC218">
             <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 80px;">${s.memo||''}</textarea>
             <div style="margin-top: 10px;">
                 <button class="btn" style="width: 100%; min-height: 44px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 12px;" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
@@ -552,23 +485,36 @@ function openEditStudent(sid) {
 }
 
 async function handleEditStudent(sid) {
-    const pin = document.getElementById('edit-student-pin').value.trim();
+    const pin = document.getElementById('edit-student-pin')?.value.trim() || '';
     if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
-          
-    await api.patch(`students/${sid}`, { 
-        name: document.getElementById('edit-name').value, 
-        school_name: document.getElementById('edit-school').value, 
-        grade: document.getElementById('edit-grade').value, 
-        class_id: document.getElementById('edit-class').value, 
-        student_phone: document.getElementById('edit-student-phone').value, 
-        parent_phone: document.getElementById('edit-parent-phone').value, 
-        guardian_relation: document.getElementById('edit-guardian-rel').value, 
-        memo: document.getElementById('edit-memo').value,
-        student_pin: pin, 
-        target_score: document.getElementById('edit-target-score').value
-    });
-    closeModal(); await loadData();
+
+    const payload = {
+        name: document.getElementById('edit-name')?.value || '',
+        school_name: document.getElementById('edit-school')?.value || '',
+        grade: document.getElementById('edit-grade')?.value || '',
+        class_id: document.getElementById('edit-class')?.value || '',
+        student_phone: document.getElementById('edit-student-phone')?.value || '',
+        parent_phone: document.getElementById('edit-parent-phone')?.value || '',
+        guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
+        memo: document.getElementById('edit-memo')?.value || '',
+        student_pin: pin
+    };
+
+    try {
+        const r = await api.patch(`students/${sid}`, payload);
+        if (r?.success) {
+            toast('학생 정보가 수정되었습니다.', 'success');
+            closeModal();
+            await loadData();
+            return;
+        }
+        toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleEditStudent] failed:', e);
+        toast('학생 정보 수정 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 function openAddStudent(defaultCid = '') {
     const opts = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`).join('');
@@ -583,11 +529,28 @@ function openAddStudent(defaultCid = '') {
 }
 
 async function handleAddStudent() {
-    const n = document.getElementById('add-name').value.trim(), sc = document.getElementById('add-school').value.trim();
-    if(!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
-    await api.post('students', { name: n, school_name: sc, class_id: document.getElementById('add-class').value, student_pin: document.getElementById('add-student-pin').value.trim() });
-    closeModal(); await loadData();
+    const n = document.getElementById('add-name')?.value.trim() || '';
+    const sc = document.getElementById('add-school')?.value.trim() || '';
+    const classId = document.getElementById('add-class')?.value || '';
+    const pin = document.getElementById('add-student-pin')?.value.trim() || '';
+    if (!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
+    if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
+
+    try {
+        const r = await api.post('students', { name: n, school_name: sc, class_id: classId, student_pin: pin });
+        if (r?.success) {
+            toast('학생이 추가되었습니다.', 'success');
+            closeModal();
+            await loadData();
+            return;
+        }
+        toast(r?.message || r?.error || '학생 추가에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleAddStudent] failed:', e);
+        toast('학생 추가 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');

@@ -147,50 +147,59 @@ function openAddClassModal() {
             <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="add-cls-teacher" class="btn" value="${apEscapeHtml(state.ui.userName || '박준성')}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="add-cls-textbook" class="btn" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--surface-2); border:none;">
-            
+
             <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
             </div>
+
+            <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">요일묶음 (시간표 그룹)</label>
+            <select id="add-cls-daygroup" class="btn" style="background:var(--surface-2); border:none;">
+                <option value="">요일묶음 선택 안 함</option>
+                <option value="mwf">월수금</option>
+                <option value="ttf">화목금</option>
+                <option value="custom">기타</option>
+            </select>
+            <input id="add-cls-timelabel" class="btn" placeholder="시간대 예: 4:20~5:50" style="text-align:left; background:var(--surface-2); border:none;">
         </div>
     `, '추가', handleAddClass);
 }
 
 async function handleAddClass() {
-    const name = document.getElementById('add-cls-name').value.trim();
+    const name = document.getElementById('add-cls-name')?.value.trim() || '';
     if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
 
-    const grade = document.getElementById('add-cls-grade').value;
-    const subject = document.getElementById('add-cls-subject').value.trim();
-    const teacher_name = document.getElementById('add-cls-teacher').value.trim() || state.ui.userName || '박준성';
-    const textbook = document.getElementById('add-cls-textbook').value.trim();
+    const grade = document.getElementById('add-cls-grade')?.value || '';
+    const subject = document.getElementById('add-cls-subject')?.value.trim() || '';
+    const teacher_name = document.getElementById('add-cls-teacher')?.value.trim() || state.ui.userName || '박준성';
+    const textbook = document.getElementById('add-cls-textbook')?.value.trim() || '';
     const schedule_days = Array.from(document.querySelectorAll('.add-cls-days:checked')).map(e => e.value).join(',');
+    const day_group = document.getElementById('add-cls-daygroup')?.value || '';
+    const time_label = document.getElementById('add-cls-timelabel')?.value.trim() || '';
 
-    const payload = {
-        name,
-        grade,
-        subject,
-        teacher_name,
-        schedule_days,
-        textbook,
-        is_active: 1
-    };
+    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: 1, day_group, time_label };
 
-    const r = await api.post('classes', payload);
-
-    if (r.success) {
-        toast('새 반이 추가되었습니다.', 'success');
-        state.ui.currentClassId = null;
-        await loadData();
-        openClassManageModal();
-    } else {
-        toast(r.message || r.error || '반 추가에 실패했습니다.', 'error');
+    try {
+        const r = await api.post('classes', payload);
+        if (r?.success) {
+            toast('새 반이 추가되었습니다.', 'success');
+            state.ui.currentClassId = null;
+            await loadData();
+            openClassManageModal();
+            return;
+        }
+        toast(r?.message || r?.error || '반 추가에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleAddClass] failed:', e);
+        toast('반 추가 중 오류가 발생했습니다.', 'error');
     }
 }
+
 
 function openEditClassModal(cid) {
     const c = state.db.classes.find(x => x.id === cid);
     const selectedDays = c.schedule_days ? c.schedule_days.split(',') : [];
+    const curDayGroup = c.day_group || '';
     showModal('반 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="edit-cls-name" class="btn" value="${apEscapeHtml(c.name)}" placeholder="반 이름" style="text-align:left; background:var(--surface-2); border:none;">
@@ -201,33 +210,72 @@ function openEditClassModal(cid) {
             <input id="edit-cls-teacher" class="btn" value="${apEscapeHtml(c.teacher_name||'')}" placeholder="담당 교사" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="edit-cls-textbook" class="btn" value="${apEscapeHtml(c.textbook || '')}" placeholder="기존 교재(호환용)" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="font-size:11px; color:var(--secondary);">※ 다중 교재 관리는 '교재 관리' 메뉴를 이용하세요.</div>
-            
+
             <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
             </div>
+
+            <label style="font-size:12px; font-weight:600; color:var(--secondary); margin-top:8px;">요일묶음 (시간표 그룹)</label>
+            <select id="edit-cls-daygroup" class="btn" style="background:var(--surface-2); border:none;">
+                <option value="" ${curDayGroup===''?'selected':''}>요일묶음 선택 안 함</option>
+                <option value="mwf" ${curDayGroup==='mwf'?'selected':''}>월수금</option>
+                <option value="ttf" ${curDayGroup==='ttf'?'selected':''}>화목금</option>
+                <option value="custom" ${curDayGroup==='custom'?'selected':''}>기타</option>
+            </select>
+            <input id="edit-cls-timelabel" class="btn" value="${apEscapeHtml(c.time_label || '')}" placeholder="시간대 예: 4:20~5:50" style="text-align:left; background:var(--surface-2); border:none;">
         </div>
     `, '저장', () => handleEditClass(cid));
 }
 
 async function handleEditClass(cid) {
-    const c = state.db.classes.find(x => x.id === cid);
-    const name = document.getElementById('edit-cls-name').value.trim();
+    const c = state.db.classes.find(x => String(x.id) === String(cid));
+    if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
+    const name = document.getElementById('edit-cls-name')?.value.trim() || '';
     if (!name) { toast('반 이름을 입력하세요.', 'warn'); return; }
-    const grade = document.getElementById('edit-cls-grade').value;
-    const subject = document.getElementById('edit-cls-subject').value.trim();
-    const teacher_name = document.getElementById('edit-cls-teacher').value.trim();
-    const textbook = document.getElementById('edit-cls-textbook').value.trim();
+    const grade = document.getElementById('edit-cls-grade')?.value || '';
+    const subject = document.getElementById('edit-cls-subject')?.value.trim() || '';
+    const teacher_name = document.getElementById('edit-cls-teacher')?.value.trim() || '';
+    const textbook = document.getElementById('edit-cls-textbook')?.value.trim() || '';
     const schedule_days = Array.from(document.querySelectorAll('.edit-cls-days:checked')).map(e => e.value).join(',');
-    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: c.is_active !== undefined ? Number(c.is_active) : 1 };
-    const r = await api.patch(`classes/${cid}`, payload);
-    if (r.success) { toast('반 정보가 수정되었습니다.', 'success'); await loadData(); openClassManageModal(); }
+    const day_group = document.getElementById('edit-cls-daygroup')?.value || '';
+    const time_label = document.getElementById('edit-cls-timelabel')?.value.trim() || '';
+    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: c.is_active !== undefined ? Number(c.is_active) : 1, day_group, time_label };
+
+    try {
+        const r = await api.patch(`classes/${cid}`, payload);
+        if (r?.success) {
+            toast('반 정보가 수정되었습니다.', 'success');
+            await loadData();
+            openClassManageModal();
+            return;
+        }
+        toast(r?.message || r?.error || '반 정보 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleEditClass] failed:', e);
+        toast('반 정보 수정 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 async function toggleClassActive(cid, status) {
     if (!confirm(status === 0 ? '이 반을 숨김 처리하시겠습니까?' : '이 반을 복구하시겠습니까?')) return;
-    const c = state.db.classes.find(x => x.id === cid);
-    const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, textbook: c.textbook || '', is_active: status };
-    const r = await api.patch(`classes/${cid}`, payload);
-    if (r.success) { toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info'); await loadData(); openClassManageModal(); }
+    const c = state.db.classes.find(x => String(x.id) === String(cid));
+    if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
+    const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, textbook: c.textbook || '', is_active: status, day_group: c.day_group || '', time_label: c.time_label || '' };
+
+    try {
+        const r = await api.patch(`classes/${cid}`, payload);
+        if (r?.success) {
+            toast(status === 0 ? '숨김 처리되었습니다.' : '복구되었습니다.', 'info');
+            await loadData();
+            openClassManageModal();
+            return;
+        }
+        toast(r?.message || r?.error || '반 상태 변경에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[toggleClassActive] failed:', e);
+        toast('반 상태 변경 중 오류가 발생했습니다.', 'error');
+    }
 }
+

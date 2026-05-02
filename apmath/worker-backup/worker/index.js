@@ -231,7 +231,12 @@ export default {
             
             opm = await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
-            acs = await env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 ORDER BY schedule_date ASC, start_time ASC, created_at ASC').all();
+            if (classIds.length) {
+              const cMark = classIds.map(() => '?').join(',');
+              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope != 'student' OR student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMark}))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(...classIds).all();
+            } else {
+              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND target_scope != 'student' ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).all();
+            }
             jou = await env.DB.prepare('SELECT * FROM daily_journals WHERE teacher_name = ? ORDER BY date DESC').bind(teacher.name).all();
 
             if (!classIds.length) {
@@ -390,10 +395,34 @@ export default {
 
         // --- 6. 출결 및 숙제 ---
         if (resource === 'attendance-history' && method === 'GET') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
           const date = url.searchParams.get('date') || todayKstDateString();
+
+          if (teacher.role === 'admin') {
+            const [att, hw] = await Promise.all([
+              env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(),
+              env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()
+            ]);
+            return new Response(JSON.stringify({ attendance: att.results, homework: hw.results, date }), { headers });
+          }
+
+          const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+          const classIds = (tcls.results || []).map(r => r.class_id);
+          if (!classIds.length) {
+            return new Response(JSON.stringify({ attendance: [], homework: [], date }), { headers });
+          }
+          const cMarkers = classIds.map(() => '?').join(',');
+          const map = await env.DB.prepare(`SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})`).bind(...classIds).all();
+          const studentIds = [...new Set((map.results || []).map(r => r.student_id))];
+          if (!studentIds.length) {
+            return new Response(JSON.stringify({ attendance: [], homework: [], date }), { headers });
+          }
+          const sMarkers = studentIds.map(() => '?').join(',');
           const [att, hw] = await Promise.all([
-            env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(),
-            env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()
+            env.DB.prepare(`SELECT * FROM attendance WHERE date = ? AND student_id IN (${sMarkers})`).bind(date, ...studentIds).all(),
+            env.DB.prepare(`SELECT * FROM homework WHERE date = ? AND student_id IN (${sMarkers})`).bind(date, ...studentIds).all()
           ]);
           return new Response(JSON.stringify({ attendance: att.results, homework: hw.results, date }), { headers });
         }
@@ -770,6 +799,11 @@ export default {
         }
 
         if (resource === 'operation-memos') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          // WARN: operation_memos는 전역 메모 구조로 teacher_id 컬럼이 없음.
+          // 로그인한 모든 역할(admin/teacher)이 전체 메모를 읽고 쓸 수 있는 구조.
+          // 향후 author 필드 추가 또는 admin 전용 잠금 여부를 재검토 필요.
           if (method === 'GET') { const res = await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all(); return new Response(JSON.stringify({ success: true, data: res.results }), { headers }); }
           if (method === 'POST') {
             const d = await request.json();
@@ -786,7 +820,10 @@ export default {
         }
         
         if (resource === 'exam-schedules') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           if (method === 'GET') { const res = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(); return new Response(JSON.stringify({ success: true, data: res.results }), { headers }); }
+          if (!isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
           if (method === 'POST') {
             const d = await request.json();
             const eid = `exs_${Date.now()}`;
@@ -835,25 +872,37 @@ export default {
           if (method === 'GET') {
             const from = url.searchParams.get('from') || '';
             const to = url.searchParams.get('to') || '';
-            let query = 'SELECT * FROM academy_schedules WHERE is_deleted = 0';
-            const params = [];
-            if (from) {
-              query += ' AND schedule_date >= ?';
-              params.push(from);
+            const dateParams = [];
+            let dateClause = '';
+            if (from) { dateClause += ' AND schedule_date >= ?'; dateParams.push(from); }
+            if (to) { dateClause += ' AND schedule_date <= ?'; dateParams.push(to); }
+
+            if (isAdminUser(teacher)) {
+              const query = `SELECT * FROM academy_schedules WHERE is_deleted = 0${dateClause} ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
+              const res = dateParams.length ? await env.DB.prepare(query).bind(...dateParams).all() : await env.DB.prepare(query).all();
+              return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
             }
-            if (to) {
-              query += ' AND schedule_date <= ?';
-              params.push(to);
+
+            // teacher: global 일정 전체 + 담당학생의 student 일정만
+            const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+            const classIds = (tcls.results || []).map(r => r.class_id);
+            let query, params;
+            if (!classIds.length) {
+              query = `SELECT * FROM academy_schedules WHERE is_deleted = 0 AND target_scope != 'student'${dateClause} ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
+              params = dateParams;
+            } else {
+              const cMarkers = classIds.map(() => '?').join(',');
+              query = `SELECT * FROM academy_schedules WHERE is_deleted = 0${dateClause} AND (target_scope != 'student' OR student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers}))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
+              params = [...dateParams, ...classIds];
             }
-            query += ' ORDER BY schedule_date ASC, start_time ASC, created_at ASC';
-            const stmt = env.DB.prepare(query);
-            const res = params.length ? await stmt.bind(...params).all() : await stmt.all();
+            const res = params.length ? await env.DB.prepare(query).bind(...params).all() : await env.DB.prepare(query).all();
             return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
           }
 
           if (method === 'POST') {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            if (d.targetScope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const sid = `acs_${Date.now()}`;
             await env.DB.prepare(`INSERT INTO academy_schedules
@@ -866,6 +915,7 @@ export default {
           if (method === 'PATCH' && id) {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            if (d.targetScope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare(`UPDATE academy_schedules
               SET schedule_type=?, title=?, schedule_date=?, start_time=?, end_time=?, target_scope=?, student_id=?, teacher_name=?, memo=?, is_closed=?, updated_at=DATETIME('now')
@@ -876,6 +926,7 @@ export default {
 
           if (method === 'DELETE' && id) {
             const existingAcs = await env.DB.prepare('SELECT target_scope, student_id FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
+            if (existingAcs && existingAcs.target_scope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (existingAcs && existingAcs.target_scope === 'student' && !(await canAccessStudent(teacher, existingAcs.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
@@ -945,6 +996,68 @@ export default {
             const query = `SELECT * FROM school_exam_records WHERE ${clauses.join(' AND ')} ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT ?`;
             const res = await env.DB.prepare(query).bind(...params, limit).all();
             return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
+          }
+
+          if (method === 'POST' && id === 'batch') {
+            const d = await request.json();
+            const { classId: bClassId, examYear: bYear, semester: bSem, examType: bType, subject: bSubj, records: bRecs } = d;
+            if (!bYear || !bType || !bSubj) return new Response(JSON.stringify({ success: false, message: 'examYear, examType, subject required' }), { status: 400, headers });
+            if (bClassId && !(await canAccessClass(teacher, bClassId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+
+            const bStudentIds = (bRecs || []).map(r => String(r.studentId || '')).filter(Boolean);
+            if (!bStudentIds.length) return new Response(JSON.stringify({ success: true }), { headers });
+
+            // 담당 학생 검증: teacher면 classId 기준으로 일괄 확인
+            if (teacher.role !== 'admin') {
+              let allowedIds;
+              if (bClassId) {
+                const csRes = await env.DB.prepare('SELECT student_id FROM class_students WHERE class_id = ?').bind(bClassId).all();
+                allowedIds = new Set((csRes.results || []).map(r => String(r.student_id)));
+              } else {
+                const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+                const tcIds = (tcls.results || []).map(r => r.class_id);
+                if (!tcIds.length) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+                const m2 = tcIds.map(() => '?').join(',');
+                const csRes2 = await env.DB.prepare(`SELECT student_id FROM class_students WHERE class_id IN (${m2})`).bind(...tcIds).all();
+                allowedIds = new Set((csRes2.results || []).map(r => String(r.student_id)));
+              }
+              for (const sid of bStudentIds) {
+                if (!allowedIds.has(sid)) return new Response(JSON.stringify({ error: 'Forbidden', message: '담당하지 않은 학생이 포함되어 있습니다.' }), { status: 403, headers });
+              }
+            }
+
+            // 기존 기록 일괄 조회
+            const sm = bStudentIds.map(() => '?').join(',');
+            const existRes = await env.DB.prepare(
+              `SELECT id, student_id FROM school_exam_records WHERE student_id IN (${sm}) AND exam_year = ? AND semester = ? AND exam_type = ? AND subject = ? AND is_deleted = 0`
+            ).bind(...bStudentIds, Number(bYear), String(bSem || ''), String(bType), String(bSubj)).all();
+            const existMap = new Map((existRes.results || []).map(r => [String(r.student_id), r.id]));
+
+            // 학생 정보 일괄 조회
+            const stuRes = await env.DB.prepare(`SELECT id, school_name, grade, target_score FROM students WHERE id IN (${sm})`).bind(...bStudentIds).all();
+            const stuMap = new Map((stuRes.results || []).map(s => [String(s.id), s]));
+
+            const stmts = [];
+            const baseTs = Date.now();
+            for (let i = 0; i < bRecs.length; i++) {
+              const { studentId: bSid, score: bScore } = bRecs[i];
+              const sid = String(bSid || '');
+              if (!sid) continue;
+              const rawScore = bScore === '' || bScore === null || bScore === undefined ? null : Number(bScore);
+              const finalScore = Number.isFinite(rawScore) ? rawScore : null;
+              const existId = existMap.get(sid);
+              if (existId) {
+                stmts.push(env.DB.prepare("UPDATE school_exam_records SET score = ?, class_id = ?, updated_at = DATETIME('now') WHERE id = ? AND is_deleted = 0").bind(finalScore, bClassId || null, existId));
+              } else if (finalScore !== null) {
+                const stu = stuMap.get(sid);
+                const rid = `ser_${baseTs}_${i}_${sid.slice(-4)}`;
+                stmts.push(env.DB.prepare(
+                  "INSERT INTO school_exam_records (id,student_id,class_id,school_name,grade,exam_year,semester,exam_type,subject,score,target_score_snapshot,memo,is_deleted,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,0,DATETIME('now'),DATETIME('now'))"
+                ).bind(rid, sid, bClassId || null, stu?.school_name || '', stu?.grade || '', Number(bYear), String(bSem || ''), String(bType), String(bSubj), finalScore, stu?.target_score ?? null, ''));
+              }
+            }
+            if (stmts.length) await env.DB.batch(stmts);
+            return new Response(JSON.stringify({ success: true }), { headers });
           }
 
           if (method === 'POST') {
@@ -1273,16 +1386,20 @@ export default {
             ]);
             return true;
           };
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+
           if (method === 'POST') {
             const d = await request.json();
             const cid = `cls_${Date.now()}`;
-            await env.DB.prepare("INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, 1)").bind(cid, d.name, d.grade, d.subject || '수학', d.teacher_name || '박준성', d.schedule_days || '', d.textbook || '').run();
+            await env.DB.prepare("INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active, day_group, time_label) VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?)").bind(cid, d.name, d.grade, d.subject || '수학', d.teacher_name || '박준성', d.schedule_days || '', d.textbook || '', d.day_group || '', d.time_label || '').run();
             const mappingUpdated = await syncTeacherClassMapping(cid, d.teacher_name);
             return new Response(JSON.stringify({ success: true, id: cid, mappingUpdated }), { headers });
           }
           if (method === 'PATCH' && id) {
             const d = await request.json();
-            await env.DB.prepare("UPDATE classes SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, textbook = ?, is_active = ? WHERE id = ?").bind(d.name, d.grade, d.subject, d.teacher_name, d.schedule_days || '', d.textbook || '', d.is_active !== undefined ? d.is_active : 1, id).run();
+            await env.DB.prepare("UPDATE classes SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, textbook = ?, is_active = ?, day_group = ?, time_label = ? WHERE id = ?").bind(d.name, d.grade, d.subject, d.teacher_name, d.schedule_days || '', d.textbook || '', d.is_active !== undefined ? d.is_active : 1, d.day_group || '', d.time_label || '', id).run();
             const mappingUpdated = await syncTeacherClassMapping(id, d.teacher_name);
             return new Response(JSON.stringify({ success: true, mappingUpdated }), { headers });
           }

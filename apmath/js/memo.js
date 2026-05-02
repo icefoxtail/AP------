@@ -39,13 +39,26 @@ function openTodoMemoModal() {
 }
 
 async function addTodoMemo() {
-    const d = document.getElementById('new-memo-date').value;
-    const c = document.getElementById('new-memo-content').value.trim();
-    const p = document.getElementById('new-memo-pin').checked;
-    if(!c) return toast('내용을 입력하세요', 'warn');
-    const r = await api.post('operation-memos', { memoDate: d, content: c, isPinned: p });
-    if(r.success) { await loadData(); openTodoMemoModal(); }
+    const d = document.getElementById('new-memo-date')?.value || '';
+    const c = document.getElementById('new-memo-content')?.value.trim() || '';
+    const p = !!document.getElementById('new-memo-pin')?.checked;
+    if (!c) return toast('내용을 입력하세요', 'warn');
+
+    try {
+        const r = await api.post('operation-memos', { memoDate: d, content: c, isPinned: p });
+        if (r?.success) {
+            toast('메모가 저장되었습니다.', 'success');
+            await loadData();
+            openTodoMemoModal();
+            return;
+        }
+        toast(r?.message || r?.error || '메모 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[addTodoMemo] failed:', e);
+        toast('메모 저장 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 async function toggleMemoDone(id, done) {
     const m = state.db.operation_memos.find(x => String(x.id) === String(id));
@@ -54,22 +67,45 @@ async function toggleMemoDone(id, done) {
         return;
     }
     const p = m.is_pinned == 1 || m.is_pinned === true;
-    const r = await api.patch(`operation-memos/${id}`, { memoDate: m.memo_date, content: m.content, isPinned: p, isDone: done });
-    if(r.success) { 
-        await loadData(); 
-        if(document.getElementById('new-memo-content') || document.getElementById('edit-memo-content')) openTodoMemoModal(); 
-        else {
-            if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
-            else renderDashboard();
+
+    try {
+        const r = await api.patch(`operation-memos/${id}`, { memoDate: m.memo_date, content: m.content, isPinned: p, isDone: done });
+        if (r?.success) {
+            toast(done ? '완료 처리되었습니다.' : '완료가 취소되었습니다.', 'info');
+            await loadData();
+            if (document.getElementById('new-memo-content') || document.getElementById('edit-memo-content')) openTodoMemoModal();
+            else {
+                if (state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
+                else renderDashboard();
+            }
+            return;
         }
+        toast(r?.message || r?.error || '메모 상태 변경에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[toggleMemoDone] failed:', e);
+        toast('메모 상태 변경 중 오류가 발생했습니다.', 'error');
     }
 }
 
+
 async function deleteMemo(id) {
-    if(!confirm('삭제하시겠습니까?')) return;
-    const r = await api.delete('operation-memos', id);
-    if(r.success) { await loadData(); openTodoMemoModal(); }
+    if (!confirm('삭제하시겠습니까?')) return;
+
+    try {
+        const r = await api.delete('operation-memos', id);
+        if (r?.success) {
+            toast('메모가 삭제되었습니다.', 'info');
+            await loadData();
+            openTodoMemoModal();
+            return;
+        }
+        toast(r?.message || r?.error || '메모 삭제에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[deleteMemo] failed:', e);
+        toast('메모 삭제 중 오류가 발생했습니다.', 'error');
+    }
 }
+
 
 function openEditTodoMemoModal(id) {
     const m = state.db.operation_memos.find(x => x.id === id);
@@ -94,20 +130,26 @@ function openEditTodoMemoModal(id) {
 }
 
 async function handleEditTodoMemo(id) {
-    const m = state.db.operation_memos.find(x => x.id === id);
-    if (!m) return;
-    const d = document.getElementById('edit-memo-date').value;
-    const c = document.getElementById('edit-memo-content').value.trim();
-    const p = document.getElementById('edit-memo-pin').checked;
-    if(!c) return toast('내용을 입력하세요', 'warn');
-    
+    const m = state.db.operation_memos.find(x => String(x.id) === String(id));
+    if (!m) return toast('메모를 찾을 수 없습니다.', 'warn');
+    const d = document.getElementById('edit-memo-date')?.value || '';
+    const c = document.getElementById('edit-memo-content')?.value.trim() || '';
+    const p = !!document.getElementById('edit-memo-pin')?.checked;
+    if (!c) return toast('내용을 입력하세요', 'warn');
+
     const isDone = m.is_done == 1 || m.is_done === true;
-    const r = await api.patch('operation-memos/' + id, { memoDate: d, content: c, isPinned: p, isDone: isDone });
-    if(r.success) { 
-        toast('메모가 수정되었습니다.', 'info');
-        await loadData(); 
-        openTodoMemoModal(); 
-    } else {
-        toast('메모 수정 실패', 'error');
+    try {
+        const r = await api.patch('operation-memos/' + id, { memoDate: d, content: c, isPinned: p, isDone: isDone });
+        if (r?.success) {
+            toast('메모가 수정되었습니다.', 'info');
+            await loadData();
+            openTodoMemoModal();
+            return;
+        }
+        toast(r?.message || r?.error || '메모 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleEditTodoMemo] failed:', e);
+        toast('메모 수정 중 오류가 발생했습니다.', 'error');
     }
 }
+
