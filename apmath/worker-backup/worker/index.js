@@ -53,6 +53,27 @@ async function canAccessClass(teacher, classId, env) {
   return !!row;
 }
 
+// 역할 확인 헬퍼
+function isAdminUser(teacher) { return teacher?.role === 'admin'; }
+function isTeacherUser(teacher) { return !!teacher && teacher.role !== 'admin'; }
+
+// 선생님 이름 정규화 (syncTeacherClassMapping과 동일 기준)
+function normalizeTeacherName(name) {
+  return String(name || '').trim().replace(/\s+/g, '').replace(/선생님$/, '');
+}
+
+// 선생님 담당반 ID 목록 반환
+async function getTeacherClassIds(env, teacher) {
+  if (!teacher) return [];
+  const res = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+  return (res.results || []).map(r => r.class_id);
+}
+
+// 학생 기록 접근 권한 (canAccessStudent의 의미 명시형 alias)
+async function canAccessStudentRecord(teacher, studentId, env) {
+  return canAccessStudent(teacher, studentId, env);
+}
+
 // 학년별 PIN 자동 채번 함수
 async function generateStudentPin(grade, env) {
   const prefixes = { '중1': '11', '중2': '12', '중3': '13', '고1': '21', '고2': '22', '고3': '23' };
@@ -373,8 +394,14 @@ export default {
         }
 
         if (resource === 'attendance-batch' && method === 'POST') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const data = await request.json();
-          const stmts = (data.entries || []).map(({ studentId, status, date }) =>
+          const entries = data.entries || [];
+          for (const { studentId } of entries) {
+            if (!(await canAccessStudent(teacher, studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          }
+          const stmts = entries.map(({ studentId, status, date }) =>
             env.DB.prepare("INSERT INTO attendance (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status")
               .bind(`${studentId}_${date}`, studentId, status, date)
           );
@@ -383,8 +410,14 @@ export default {
         }
 
         if (resource === 'homework-batch' && method === 'POST') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const data = await request.json();
-          const stmts = (data.entries || []).map(({ studentId, status, date }) =>
+          const entries = data.entries || [];
+          for (const { studentId } of entries) {
+            if (!(await canAccessStudent(teacher, studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          }
+          const stmts = entries.map(({ studentId, status, date }) =>
             env.DB.prepare("INSERT INTO homework (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status")
               .bind(`${studentId}_${date}`, studentId, status, date)
           );
@@ -393,7 +426,10 @@ export default {
         }
 
         if (method === 'PATCH' && (resource === 'attendance' || resource === 'homework')) {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const d = await request.json();
+          if (!(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
           const table = resource === 'attendance' ? 'attendance' : 'homework';
           await env.DB.prepare(`INSERT INTO ${table} (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status`).bind(`${d.studentId}_${d.date}`, d.studentId, d.status, d.date).run();
           return new Response(JSON.stringify({ success: true }), { headers });
@@ -544,9 +580,12 @@ export default {
           }
 
           if (method === 'GET' && id === 'by-class') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
             const classId = url.searchParams.get('class');
             const examTitle = url.searchParams.get('exam') || null;
             if (!classId) return new Response(JSON.stringify({ error: 'class required', students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [] }), { status: 400, headers });
+            if (!(await canAccessClass(teacher, classId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
 
             const studentIds = await env.DB.prepare("SELECT student_id FROM class_students WHERE class_id = ?").bind(classId).all();
             const sIds = studentIds.results.map(r => r.student_id);
@@ -587,16 +626,19 @@ export default {
           }
 
           if (method === 'PATCH') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
             const d = await request.json();
+            if (!(await canAccessStudent(teacher, d.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const sid = id === 'new' ? `ex_${Date.now()}` : id;
             const stmts = [
               env.DB.prepare(`
-                INSERT INTO exam_sessions (id, student_id, exam_title, score, exam_date, question_count, class_id, archive_file, updated_at) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now')) 
-                ON CONFLICT(id) DO UPDATE SET 
-                  score=excluded.score, 
-                  question_count=excluded.question_count, 
-                  class_id=excluded.class_id, 
+                INSERT INTO exam_sessions (id, student_id, exam_title, score, exam_date, question_count, class_id, archive_file, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
+                ON CONFLICT(id) DO UPDATE SET
+                  score=excluded.score,
+                  question_count=excluded.question_count,
+                  class_id=excluded.class_id,
                   archive_file=COALESCE(excluded.archive_file, exam_sessions.archive_file),
                   updated_at=excluded.updated_at
               `).bind(sid, d.student_id, d.exam_title, d.score, d.exam_date, d.question_count || 0, d.class_id || null, d.archive_file || null),
@@ -641,22 +683,38 @@ export default {
 
         // --- 9. 운영 관리 (상담, 메모, 일정) ---
         if (resource === 'consultations') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           if (method === 'POST') {
             const d = await request.json();
+            if (!(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const cid = `cns_${Date.now()}`;
             await env.DB.prepare("INSERT INTO consultations (id, student_id, date, type, content, next_action) VALUES (?, ?, ?, ?, ?, ?)").bind(cid, d.studentId, d.date, d.type, d.content, d.nextAction || '').run();
             return new Response(JSON.stringify({ success: true, id: cid }), { headers });
           }
           if (method === 'GET') {
             const sid = url.searchParams.get('studentId');
-            if (sid) { const res = await env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC').bind(sid).all(); return new Response(JSON.stringify({ success: true, data: res.results }), { headers }); }
+            if (sid) {
+              if (!(await canAccessStudent(teacher, sid, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+              const res = await env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC').bind(sid).all();
+              return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
+            }
           }
           if (method === 'PATCH' && id) {
+            const existing = await env.DB.prepare('SELECT student_id FROM consultations WHERE id = ?').bind(id).first();
+            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            if (!(await canAccessStudent(teacher, existing.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const d = await request.json();
             await env.DB.prepare("UPDATE consultations SET date = ?, type = ?, content = ?, next_action = ? WHERE id = ?").bind(d.date, d.type, d.content, d.nextAction || '', id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
-          if (method === 'DELETE' && id) { await env.DB.prepare('DELETE FROM consultations WHERE id = ?').bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
+          if (method === 'DELETE' && id) {
+            const existing = await env.DB.prepare('SELECT student_id FROM consultations WHERE id = ?').bind(id).first();
+            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            if (!(await canAccessStudent(teacher, existing.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            await env.DB.prepare('DELETE FROM consultations WHERE id = ?').bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
         }
 
         if (resource === 'operation-memos') {
@@ -744,6 +802,7 @@ export default {
           if (method === 'POST') {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const sid = `acs_${Date.now()}`;
             await env.DB.prepare(`INSERT INTO academy_schedules
               (id, schedule_type, title, schedule_date, start_time, end_time, target_scope, student_id, teacher_name, memo, is_closed, is_deleted, created_at, updated_at)
@@ -755,6 +814,7 @@ export default {
           if (method === 'PATCH' && id) {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare(`UPDATE academy_schedules
               SET schedule_type=?, title=?, schedule_date=?, start_time=?, end_time=?, target_scope=?, student_id=?, teacher_name=?, memo=?, is_closed=?, updated_at=DATETIME('now')
               WHERE id=? AND is_deleted = 0`)
@@ -763,6 +823,8 @@ export default {
           }
 
           if (method === 'DELETE' && id) {
+            const existingAcs = await env.DB.prepare('SELECT target_scope, student_id FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
+            if (existingAcs && existingAcs.target_scope === 'student' && !(await canAccessStudent(teacher, existingAcs.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
@@ -1090,6 +1152,43 @@ export default {
           const stmts = [env.DB.prepare('DELETE FROM teacher_classes WHERE teacher_id = ?').bind(teacher_id)];
           for (const cid of (class_ids || [])) stmts.push(env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(teacher_id, cid));
           await env.DB.batch(stmts);
+          return new Response(JSON.stringify({ success: true }), { headers });
+        }
+
+        // --- 11b. 선생님 계정 생성 (Admin Only) ---
+        if (resource === 'teachers' && method === 'POST') {
+          const t = await verifyAuth(request, env);
+          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          const d = await request.json();
+          const loginId = String(d.login_id || '').trim();
+          const password = String(d.password || '').trim();
+          const name = String(d.name || '').trim();
+          const role = d.role === 'admin' ? 'admin' : 'teacher';
+          if (!loginId || !password || !name) return new Response(JSON.stringify({ error: 'Required fields: login_id, password, name' }), { status: 400, headers });
+          const existing = await env.DB.prepare('SELECT 1 FROM teachers WHERE login_id = ?').bind(loginId).first();
+          if (existing) return new Response(JSON.stringify({ error: '이미 사용 중인 아이디입니다.' }), { status: 409, headers });
+          const hash = await sha256hex(password);
+          const tid = `t_${Date.now()}`;
+          await env.DB.prepare("INSERT INTO teachers (id, name, login_id, password_hash, role, created_at) VALUES (?, ?, ?, ?, ?, DATETIME('now'))").bind(tid, name, loginId, hash, role).run();
+          return new Response(JSON.stringify({ success: true, id: tid }), { headers });
+        }
+
+        // --- 11c. 선생님 정보 수정 / 비밀번호 초기화 (Admin Only) ---
+        if (resource === 'teachers' && method === 'PATCH' && id) {
+          const t = await verifyAuth(request, env);
+          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          const d = await request.json();
+          if (path[3] === 'reset-password') {
+            const newPass = String(d.new_password || '').trim();
+            if (!newPass) return new Response(JSON.stringify({ error: 'new_password required' }), { status: 400, headers });
+            const hash = await sha256hex(newPass);
+            await env.DB.prepare('UPDATE teachers SET password_hash = ? WHERE id = ?').bind(hash, id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+          const name = String(d.name || '').trim();
+          if (!name) return new Response(JSON.stringify({ error: 'name required' }), { status: 400, headers });
+          const role = d.role === 'admin' ? 'admin' : 'teacher';
+          await env.DB.prepare('UPDATE teachers SET name = ?, role = ? WHERE id = ?').bind(name, role, id).run();
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 

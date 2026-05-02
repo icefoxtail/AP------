@@ -27,7 +27,7 @@ const SEED_DATA = { classes: [], students: [], map: [] };
 
 let state = {
     auth: { id: null, name: null, role: null },
-    ui: { viewScope: 'teacher', userName: '', currentClassId: null },
+    ui: { viewScope: 'teacher', userName: '', currentClassId: null, baseDate: null },
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
         exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
@@ -37,6 +37,31 @@ let state = {
 };
 
 let syncQueue = JSON.parse(localStorage.getItem('AP_SYNC_QUEUE') || '[]');
+
+// ── 기준일(baseDate) 헬퍼 ─────────────────────────────────────────────
+// 기본값: 오늘 날짜(sv-SE). 화면별 전면 교체는 다음 번들에서 진행.
+function normalizeDateStr(value) {
+    if (!value) return '';
+    const s = String(value).trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : '';
+}
+
+function getTodayStr() {
+    return new Date().toLocaleDateString('sv-SE');
+}
+
+function getBaseDate() {
+    return normalizeDateStr(state.ui.baseDate) || getTodayStr();
+}
+
+function setBaseDate(dateStr) {
+    state.ui.baseDate = normalizeDateStr(dateStr) || null;
+}
+
+function getOperationDate() {
+    return getBaseDate();
+}
+// ─────────────────────────────────────────────────────────────────────
 
 const RISK_LOOKBACK_DAYS = 14;
 const RISK_ABSENCE_THRESHOLD = 2;

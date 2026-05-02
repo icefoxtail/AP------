@@ -53,7 +53,7 @@ function renderStudentDetailTab(sid, tab) {
                     </div>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:8px; flex:0 0 auto;">
-                    ${!s.student_pin ? `<button class="btn btn-primary" style="min-height: 38px; padding: 8px 12px; font-size: 12px; font-weight:700; line-height: 1.2; border-radius: 10px; box-shadow:none; cursor: pointer; white-space: nowrap;" onclick="handleAutoPinStudent('${sid}')">PIN 자동 생성</button>` : ''}
+                    ${!s.student_pin ? `<button class="btn btn-primary" style="min-height: 38px; padding: 8px 12px; font-size: 12px; font-weight:700; line-height: 1.2; border-radius: 10px; box-shadow:none; cursor: pointer; white-space: nowrap;" onclick="handleAutoPinStudent('${sid}', '${tab}')">PIN 자동 생성</button>` : ''}
                     <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}')">정보 수정</button>
                 </div>
             </div>
@@ -391,13 +391,13 @@ async function handleResetSessionWrongs(eid, sid) {
     if (r?.success) { toast('초기화완료', 'info'); await loadData(); renderStudentDetailTab(sid, 'grade'); }
 }
 
-async function handleAutoPinStudent(sid) {
+async function handleAutoPinStudent(sid, tab = 'grade') {
     if (!confirm('이 학생의 PIN을 자동 생성할까요?')) return;
     const r = await api.post(`students/${sid}/auto-pin`, {});
     if (r?.success) {
         toast(`PIN ${r.pin} 생성 완료`, 'success');
         await loadData();
-        renderStudentDetailTab(sid, 'grade');
+        renderStudentDetailTab(sid, tab);
     } else {
         toast(r?.message || 'PIN 자동 생성에 실패했습니다.', 'warn');
     }
