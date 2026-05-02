@@ -491,6 +491,46 @@ function copyAllClassReports(classId, date) {
         toast('\uBCF5\uC0AC\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
     });
 }
+function getReportTargetLabel(targetType) {
+    if (targetType === 'parent') return '학부모용';
+    if (targetType === 'student') return '학생용';
+    return '상담용';
+}
+
+async function saveReportToConsultation(studentId, targetType, sourceType, textareaId) {
+    const textarea = document.getElementById(textareaId);
+    const text = textarea ? textarea.value.trim() : '';
+
+    if (!text) {
+        toast('저장할 문구가 없습니다.', 'warn');
+        return;
+    }
+
+    const date = new Date().toLocaleDateString('sv-SE');
+    const targetLabel = getReportTargetLabel(targetType);
+    const sourceLabel = sourceType === 'ai' ? 'AI문구' : '기본문구';
+    const content = `[보고문구 기록]\n대상: ${targetLabel}\n생성: ${sourceLabel}\n\n${text}`;
+
+    try {
+        const r = await api.post('consultations', {
+            studentId,
+            date,
+            type: '학습',
+            content,
+            nextAction: '보고문구 복사/발송 후 후속 확인'
+        });
+
+        if (r?.success) {
+            await loadData();
+            toast('상담기록에 저장되었습니다.', 'success');
+        } else {
+            toast('상담기록 저장에 실패했습니다.', 'warn');
+        }
+    } catch (e) {
+        toast('상담기록 저장에 실패했습니다.', 'warn');
+    }
+}
+
 function copyReport(sid, type, options = {}) {
     const ctx = buildReportContext(sid, options);
     const s = ctx.student;
@@ -520,6 +560,7 @@ function copyReport(sid, type, options = {}) {
                 내용을 확인하고 필요하면 수정한 뒤 복사하세요.
             </p>
             <textarea id="report-copy-text" class="btn" style="width:100%; height:300px; text-align:left; background:var(--surface); border:none; padding:16px; font-size:14px; line-height:1.7; resize:vertical; font-family:inherit; white-space:pre-wrap;">${escapeHtmlForTextarea(text)}</textarea>
+            <button class="btn" style="width:100%; margin-top:10px; min-height:44px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="saveReportToConsultation('${escapeReportJsString(sid)}', '${escapeReportJsString(type)}', 'basic', 'report-copy-text')">상담기록 저장</button>
         </div>
     `, '최종 복사', copyStaticReportText);
 }
@@ -606,6 +647,7 @@ async function requestAiReport(sid, type, options = {}) {
                 <div style="font-size:11px; color:var(--primary); font-weight:700; background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px; white-space:nowrap;">${sourceLabel} · ${typeLabel}</div>
             </div>
             <textarea id="ai-report-text" class="btn" style="width:100%; height:300px; padding:16px; border:none; border-radius:12px; background:var(--bg); font-size:14px; line-height:1.7; resize:vertical; font-family:inherit; text-align:left; white-space:pre-wrap;">${safeMessage}</textarea>
+            <button class="btn" style="width:100%; margin-top:10px; min-height:44px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="saveReportToConsultation('${escapeReportJsString(sid)}', '${escapeReportJsString(type)}', 'ai', 'ai-report-text')">상담기록 저장</button>
         `, '최종 복사', copyAiReportText);
 
     } catch (e) {
