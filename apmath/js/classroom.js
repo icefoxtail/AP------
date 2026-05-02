@@ -188,6 +188,10 @@ function renderClass(cid) {
             <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="renderDashboard()">닫기</button>
         </div>
         
+        <div style="margin:0 14px 8px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.35;">운영 버튼</div>
+            <div style="font-size:11px; font-weight:600; color:var(--secondary); line-height:1.35;">수업 중 빠른 처리</div>
+        </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
             <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openQrGenerator('${cid}')">
                 <span style="color: var(--primary);">${icons.qr}</span> <span>QR/OMR</span>
@@ -203,6 +207,9 @@ function renderClass(cid) {
             </button>
             <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClassReportBatchModal==='function') openClassReportBatchModal('${cid}'); else toast('\uBB38\uAD6C \uC0DD\uC131 \uAE30\uB2A5\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');">
                 <span style="color: var(--primary);">${icons.report}</span> <span>\uBB38\uAD6C\uC0DD\uC131</span>
+            </button>
+            <button class="btn ap-mid-btn" style="min-height: 44px; padding: 12px 8px; font-size: 13px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 6px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openClassWeakUnitHub('${cid}')">
+                <span style="color: var(--primary);">${icons.clinic}</span> <span>취약단원</span>
             </button>
 
         </div>
@@ -274,6 +281,30 @@ function renderClass(cid) {
             </td>
         </tr>`;
     }).join('');
+}
+
+function openClassWeakUnitHub(cid) {
+    const cls = state.db.classes.find(c => String(c.id) === String(cid));
+    const weakUnits = typeof computeClassWeakUnits === 'function' ? computeClassWeakUnits(cid) : [];
+    const summaryHtml = typeof renderWeakUnitSummary === 'function'
+        ? renderWeakUnitSummary(weakUnits, '누적 오답 단원 데이터가 없습니다.', {
+            clickable: true,
+            mode: 'class',
+            titlePrefix: `${cls?.name || '반'} 취약 단원`,
+            context: { targetType: 'class', targetId: cid, targetLabel: cls?.name || '반' }
+        })
+        : '<div style="padding:20px; text-align:center; color:var(--secondary); font-size:13px; font-weight:600;">취약단원 분석 모듈을 불러오지 못했습니다.</div>';
+
+    showModal('반 취약단원', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="padding:14px; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:700; color:var(--text); line-height:1.35;">${apEscapeHtml(cls?.name || '')}</div>
+                <div style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.5; margin-top:4px;">OMR 오답과 JS아카이브 단원키 기준으로 반별 클리닉 후보를 확인합니다.</div>
+            </div>
+            ${summaryHtml}
+            <button class="btn btn-primary" style="width:100%; min-height:44px; font-size:13px; font-weight:700; border-radius:12px;" onclick="openClinicBasketForClass('${cid}')">반 클리닉 바구니 보기</button>
+        </div>
+    `);
 }
 
 // [UI Standard Applied]: 진도관리 모달 수동 보정
@@ -382,7 +413,7 @@ async function markClassAttendanceAll(cid) {
     if (!studentIds.length) return toast('오늘은 휴무 대상이라 일괄 처리할 학생이 없습니다.', 'warn');
     if (!confirm('현재 반 재원생 전체를 등원 처리할까요?')) return;
 
-    const date = new Date().toLocaleDateString('sv-SE');
+    const date = getClassOperationTodayStr();
     const entries = studentIds.map(studentId => ({ studentId, status: '등원', date }));
     const r = await api.post('attendance-batch', { entries });
     if (!r?.success) return toast('전체 등원 처리에 실패했습니다.', 'warn');
@@ -397,7 +428,7 @@ async function markClassHomeworkAll(cid) {
     if (!studentIds.length) return toast('오늘은 휴무 대상이라 일괄 처리할 학생이 없습니다.', 'warn');
     if (!confirm('현재 반 재원생 전체를 숙제 완료 처리할까요?')) return;
 
-    const date = new Date().toLocaleDateString('sv-SE');
+    const date = getClassOperationTodayStr();
     const entries = studentIds.map(studentId => ({ studentId, status: '완료', date }));
     const r = await api.post('homework-batch', { entries });
     if (!r?.success) return toast('전체 숙제 완료 처리에 실패했습니다.', 'warn');

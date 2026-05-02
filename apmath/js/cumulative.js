@@ -132,19 +132,51 @@ function sortCumulativeStudents(students = []) {
     });
 }
 
-function openCumulativeOpsModal() {
+function openCumulativeOpsModal(mode = 'attendance') {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
-    if (!state.ui.cumulativeTab) state.ui.cumulativeTab = 'school';
+    const activeMode = mode === 'school' ? 'school' : 'attendance';
+    state.ui.cumulativeTab = activeMode;
     if (!state.ui.monthlyAttendanceMonth) state.ui.monthlyAttendanceMonth = currentMonth;
     const classOptions = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0))
         .map(c => `<option value="${apEscapeHtml(c.id)}">${apEscapeHtml(c.name || '')}</option>`)
         .join('');
-    const tabStyle = (tab) => state.ui.cumulativeTab === tab
-        ? 'background:var(--primary); color:#fff; border:1px solid var(--primary);'
-        : 'background:var(--surface-2); color:var(--secondary); border:1px solid var(--border);';
+    const title = activeMode === 'school' ? '학교 성적표' : '출석부';
+    const schoolPanelHtml = `
+        <div id="cum-school-panel">
+            <div class="cum-filter-grid cum-school-filter-grid">
+                <select id="cum-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
+                    <option value="">전체 반</option>${classOptions}
+                </select>
+                <select id="cum-grade" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
+                    <option value="">전체 학년</option>
+                    <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
+                    <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
+                </select>
+                <input id="cum-year" type="number" class="btn" value="${currentYear}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
+            </div>
+            <button class="btn btn-primary" style="width:100%; min-height:44px; font-size:13px; font-weight:700; border-radius:12px; margin-bottom:10px;" onclick="openSchoolExamRecordModal()">학교시험 성적 추가</button>
+            <div id="school-exam-cumulative-root"></div>
+        </div>
+    `;
+    const attendancePanelHtml = `
+        <div id="cum-attendance-panel">
+            <div class="cum-filter-grid">
+                <input id="monthly-att-month" type="month" class="btn" value="${state.ui.monthlyAttendanceMonth}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="state.ui.monthlyAttendanceMonth=this.value; loadMonthlyAttendance(this.value).then(() => renderMonthlyAttendanceTable())">
+                <select id="monthly-att-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderMonthlyAttendanceTable()">
+                    <option value="">전체 반</option>${classOptions}
+                </select>
+                <select id="monthly-att-mode" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderMonthlyAttendanceTable()">
+                    <option value="all">전체</option>
+                    <option value="attendance">출석만</option>
+                    <option value="homework">숙제 포함</option>
+                </select>
+            </div>
+            <div id="monthly-attendance-root"></div>
+        </div>
+    `;
 
-    showModal('누적 운영표', `
+    showModal(title, `
         <style>
             .cum-modal-shell { max-width:100%; overflow-x:hidden; }
             .cum-filter-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-bottom:10px; }
@@ -158,42 +190,10 @@ function openCumulativeOpsModal() {
             }
         </style>
         <div class="cum-modal-shell" style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px;">
-                <button class="btn" style="min-height:42px; font-size:13px; font-weight:700; border-radius:12px; ${tabStyle('school')}" onclick="switchCumulativeOpsTab('school')">학교 성적표</button>
-                <button class="btn" style="min-height:42px; font-size:13px; font-weight:700; border-radius:12px; ${tabStyle('attendance')}" onclick="switchCumulativeOpsTab('attendance')">월간 출석부</button>
-            </div>
-            <div id="cum-school-panel" style="${state.ui.cumulativeTab === 'school' ? '' : 'display:none;'}">
-                <div class="cum-filter-grid cum-school-filter-grid">
-                    <select id="cum-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
-                        <option value="">전체 반</option>${classOptions}
-                    </select>
-                    <select id="cum-grade" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
-                        <option value="">전체 학년</option>
-                        <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
-                        <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
-                    </select>
-                    <input id="cum-year" type="number" class="btn" value="${currentYear}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderSchoolExamCumulativeTable()">
-                </div>
-                <button class="btn btn-primary" style="width:100%; min-height:44px; font-size:13px; font-weight:700; border-radius:12px; margin-bottom:10px;" onclick="openSchoolExamRecordModal()">학교시험 성적 추가</button>
-                <div id="school-exam-cumulative-root"></div>
-            </div>
-            <div id="cum-attendance-panel" style="${state.ui.cumulativeTab === 'attendance' ? '' : 'display:none;'}">
-                <div class="cum-filter-grid">
-                    <input id="monthly-att-month" type="month" class="btn" value="${state.ui.monthlyAttendanceMonth}" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="state.ui.monthlyAttendanceMonth=this.value; loadMonthlyAttendance(this.value).then(() => renderMonthlyAttendanceTable())">
-                    <select id="monthly-att-class" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderMonthlyAttendanceTable()">
-                        <option value="">전체 반</option>${classOptions}
-                    </select>
-                    <select id="monthly-att-mode" class="btn" style="min-height:44px; font-size:13px; font-weight:600; background:var(--surface-2); border:1px solid var(--border);" onchange="renderMonthlyAttendanceTable()">
-                        <option value="all">전체</option>
-                        <option value="attendance">출석만</option>
-                        <option value="homework">숙제 포함</option>
-                    </select>
-                </div>
-                <div id="monthly-attendance-root"></div>
-            </div>
+            ${activeMode === 'school' ? schoolPanelHtml : attendancePanelHtml}
         </div>
     `);
-    if (state.ui.cumulativeTab === 'attendance') {
+    if (activeMode === 'attendance') {
         loadMonthlyAttendance(state.ui.monthlyAttendanceMonth).then(() => renderMonthlyAttendanceTable());
     } else {
         renderSchoolExamCumulativeTable();
@@ -202,7 +202,7 @@ function openCumulativeOpsModal() {
 
 function switchCumulativeOpsTab(tab) {
     state.ui.cumulativeTab = tab === 'attendance' ? 'attendance' : 'school';
-    openCumulativeOpsModal();
+    openCumulativeOpsModal(state.ui.cumulativeTab);
 }
 
 function renderSchoolExamCumulativeTable(options = {}) {
@@ -476,7 +476,7 @@ async function saveSchoolExamRecord(recordId = '') {
     if (r?.success) {
         toast('학교시험 성적이 저장되었습니다.', 'success');
         await loadData();
-        openCumulativeOpsModal();
+        openCumulativeOpsModal('school');
     } else {
         toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
     }
@@ -489,7 +489,7 @@ async function deleteSchoolExamRecord(recordId) {
     if (r?.success) {
         toast('학교시험 성적 기록이 삭제되었습니다.', 'info');
         await loadData();
-        openCumulativeOpsModal();
+        openCumulativeOpsModal('school');
     } else {
         toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
     }

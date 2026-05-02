@@ -256,20 +256,6 @@ function renderDashboardOperationStatusCard(data) {
     `;
 }
 
-function renderCumulativeOpsEntryCard() {
-    return `
-        <div style="margin-bottom:18px;">
-            <button class="btn" onclick="openCumulativeOpsModal()" style="width:100%; min-height:54px; padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:var(--surface); box-shadow:var(--shadow); color:var(--text); display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left;">
-                <span style="min-width:0;">
-                    <span style="display:block; font-size:14px; font-weight:700; line-height:1.35;">누적 운영표</span>
-                    <span style="display:block; margin-top:2px; font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary);">월간 출석부 · 학교 성적표</span>
-                </span>
-                <span style="font-size:18px; font-weight:700; color:var(--primary); line-height:1;">›</span>
-            </button>
-        </div>
-    `;
-}
-
 // [5G] 관리필요(구 위험학생) 판정 알고리즘
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -481,8 +467,6 @@ function renderAdminControlCenter() {
         return (todayTime - createdTime) / (1000*3600*24) <= 30; 
     });
     const risks = computeRiskStudents();
-    const operationStatusHtml = renderDashboardOperationStatusCard(computeDashboardData());
-    const cumulativeOpsEntryHtml = renderCumulativeOpsEntryCard();
 
     const headerHtml = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
@@ -574,7 +558,7 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    root.innerHTML = headerHtml + operationStatusHtml + cumulativeOpsEntryHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
+    root.innerHTML = headerHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
 }
 
 function renderAdminStudentSearch() {
@@ -906,9 +890,6 @@ function renderDashboard() {
     const root = document.getElementById('app-root');
 
     const todayJournalCard = renderTodayJournalCard(data);
-    const operationStatusCard = renderDashboardOperationStatusCard(data);
-    const cumulativeOpsEntryCard = renderCumulativeOpsEntryCard();
-
     const todoSections = renderTodoSections();
     
     // [Partner B] 대시보드 학급 목록에서도 필터링된 결과와 동기화
@@ -920,20 +901,25 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${operationStatusCard}${cumulativeOpsEntryCard}${todayJournalCard}${todoSections}${classStatus}</div>`;
+    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${todayJournalCard}${todoSections}${classStatus}</div>`;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
 function computeTodayCloseData() {
-    const today = new Date().toLocaleDateString('sv-SE');
+    const today = getDashboardTodayStr();
 
-    const scheduledActive = state.db.students.filter(s => {
+    const baseScheduledActive = state.db.students.filter(s => {
         if (s.status !== '재원') return false;
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
+        if (cls && !isClassVisibleForCurrentTeacher(cls)) return false;
         return isClassScheduledTodayForDashboard(cid);
     });
+    const closedInfo = getDashboardClosedStudentIdsForDate(baseScheduledActive.map(s => s.id), today);
+    const scheduledActive = closedInfo.hasGlobalClosed
+        ? []
+        : baseScheduledActive.filter(s => !closedInfo.closedStudentIds.has(String(s.id)));
 
     const absents = [];
     const hwMisses = [];
@@ -1120,6 +1106,34 @@ function buildJournalContent(dateStr) {
             .includes(targetDayIdx);
     });
 
+    const activeClassIds = new Set(activeClasses.map(c => String(c.id)));
+    const journalMemberIds = (state.db.class_students || [])
+        .filter(m => activeClassIds.has(String(m.class_id)))
+        .map(m => String(m.student_id));
+    const journalMemberIdSet = new Set(journalMemberIds);
+    const journalStudentName = (studentId) => (state.db.students || []).find(s => String(s.id) === String(studentId))?.name || '학생';
+    const targetSchedules = (state.db.academy_schedules || []).filter(s => {
+        if (String(s.is_deleted || 0) === '1') return false;
+        if (String(s.schedule_date || '') !== targetDate) return false;
+        if (s.target_scope === 'student') return journalMemberIdSet.has(String(s.student_id || ''));
+        return true;
+    });
+    const globalClosedSchedules = targetSchedules.filter(s => s.schedule_type === 'closed' && s.target_scope !== 'student');
+    const studentClosedSchedules = targetSchedules.filter(s => s.schedule_type === 'closed' && s.target_scope === 'student');
+    const makeupSchedules = targetSchedules.filter(s => s.schedule_type === 'makeup');
+    const consultationSchedules = targetSchedules.filter(s => s.schedule_type === 'consultation');
+    const otherSchedules = targetSchedules.filter(s => !['closed', 'makeup', 'consultation'].includes(String(s.schedule_type || '')));
+
+    if (targetSchedules.length) {
+        text += `[운영일정]\n`;
+        if (globalClosedSchedules.length) text += `- 학원 전체 휴무: ${globalClosedSchedules.map(s => s.title || '휴무').join(', ')}\n`;
+        if (studentClosedSchedules.length) text += `- 학생 휴무: ${studentClosedSchedules.map(s => `${journalStudentName(s.student_id)}${s.title ? `(${s.title})` : ''}`).join(', ')}\n`;
+        if (makeupSchedules.length) text += `- 보강: ${makeupSchedules.map(s => `${journalStudentName(s.student_id)}${s.start_time ? ` ${s.start_time}` : ''}${s.title ? `(${s.title})` : ''}`).join(', ')}\n`;
+        if (consultationSchedules.length) text += `- 상담: ${consultationSchedules.map(s => `${journalStudentName(s.student_id)}${s.start_time ? ` ${s.start_time}` : ''}${s.title ? `(${s.title})` : ''}`).join(', ')}\n`;
+        if (otherSchedules.length) text += `- 기타/행사: ${otherSchedules.map(s => s.title || getAcademyScheduleTypeLabelForDashboard(s.schedule_type)).join(', ')}\n`;
+        text += `\n`;
+    }
+
     if (activeClasses.length === 0) {
         text += `해당 날짜에 담당 학급이 없습니다.\n`;
         return text;
@@ -1130,21 +1144,33 @@ function buildJournalContent(dateStr) {
 
         const memberIds = state.db.class_students.filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
         const students = state.db.students.filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const closedInfo = getDashboardClosedStudentIdsForDate(students.map(s => s.id), targetDate);
+        const effectiveStudents = closedInfo.hasGlobalClosed
+            ? []
+            : students.filter(s => !closedInfo.closedStudentIds.has(String(s.id)));
+        const classClosedStudents = students.filter(s => closedInfo.closedStudentIds.has(String(s.id)));
 
         const absents = [];
         const hwMiss = [];
         
-        students.forEach(s => {
+        effectiveStudents.forEach(s => {
             const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
             const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
             if (att?.status === '결석') absents.push(s.name);
             if (hw?.status === '미완료') hwMiss.push(s.name);
         });
 
-        if (absents.length === 0 && hwMiss.length === 0) text += `- 출결/숙제: 전원 출석 / 전원 완료\n`;
+        if (closedInfo.hasGlobalClosed) {
+            text += `- 출결/숙제: 학원 전체 휴무로 마감 대상 없음\n`;
+        } else if (effectiveStudents.length === 0 && students.length > 0) {
+            text += `- 출결/숙제: 휴무 대상 제외 후 마감 대상 없음\n`;
+        } else if (absents.length === 0 && hwMiss.length === 0) text += `- 출결/숙제: 전원 출석 / 전원 완료\n`;
         else {
             if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
             if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
+        }
+        if (!closedInfo.hasGlobalClosed && classClosedStudents.length > 0) {
+            text += `- 휴무 제외: ${classClosedStudents.map(s => s.name).join(', ')}\n`;
         }
 
         const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
