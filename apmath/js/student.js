@@ -31,6 +31,64 @@ async function renderStudentDetail(sid) {
     renderStudentDetailTab(sid, 'grade');
 }
 
+function getStudentOperationTodayStr() {
+    if (typeof getOperationDate === 'function') return getOperationDate();
+    return new Date().toLocaleDateString('sv-SE');
+}
+
+function getStudentAcademyScheduleTone(type) {
+    if (type === 'closed') return { label: '휴무', color: 'var(--error)', bg: 'rgba(255,71,87,0.08)', border: 'rgba(255,71,87,0.16)' };
+    if (type === 'makeup') return { label: '보강', color: 'var(--primary)', bg: 'rgba(26,92,255,0.08)', border: 'rgba(26,92,255,0.14)' };
+    if (type === 'consultation') return { label: '상담', color: 'var(--success)', bg: 'rgba(0,208,132,0.08)', border: 'rgba(0,208,132,0.14)' };
+    if (type === 'event') return { label: '행사', color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' };
+    return { label: '기타', color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' };
+}
+
+function getStudentOperationSchedules(sid, todayStr = getStudentOperationTodayStr()) {
+    const studentId = String(sid);
+    return (state.db.academy_schedules || [])
+        .filter(s => {
+            if (String(s.is_deleted || 0) === '1') return false;
+            const isStudentSchedule = s.target_scope === 'student' && String(s.student_id || '') === studentId;
+            const isGlobalClosed = s.schedule_type === 'closed' && s.target_scope !== 'student';
+            return isStudentSchedule || isGlobalClosed;
+        })
+        .sort((a, b) => String(a.schedule_date || '').localeCompare(String(b.schedule_date || '')));
+}
+
+function renderStudentOperationScheduleCard(sid) {
+    const todayStr = getStudentOperationTodayStr();
+    const schedules = getStudentOperationSchedules(sid, todayStr);
+    const todayItems = schedules.filter(s => String(s.schedule_date || '') === todayStr);
+    const upcoming = schedules.filter(s => String(s.schedule_date || '') > todayStr).slice(0, 3);
+    if (!todayItems.length && !upcoming.length) return '';
+
+    const chip = (item) => {
+        const tone = getStudentAcademyScheduleTone(item.schedule_type);
+        const time = item.start_time ? ` ${item.start_time}` : '';
+        return `
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; padding:9px 10px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border);">
+                <div style="min-width:0;">
+                    <div style="font-size:12px; font-weight:700; color:var(--text); line-height:1.35; overflow-wrap:anywhere;">${apEscapeHtml(item.title || '운영일정')}${time}</div>
+                    <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-top:2px; line-height:1.35;">${apEscapeHtml(item.schedule_date || '')}</div>
+                </div>
+                <span style="font-size:11px; font-weight:600; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; border-radius:999px; padding:3px 7px; white-space:nowrap; line-height:1.25;">${tone.label}</span>
+            </div>
+        `;
+    };
+
+    return `
+        <div style="margin:0 0 20px; padding:14px; border-radius:16px; background:var(--surface); border:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.35;">학생 운영일정</div>
+                <span style="font-size:11px; font-weight:600; color:var(--secondary);">${todayStr}</span>
+            </div>
+            ${todayItems.length ? `<div style="display:flex; flex-direction:column; gap:8px; margin-bottom:${upcoming.length ? '10px' : '0'};">${todayItems.map(chip).join('')}</div>` : ''}
+            ${upcoming.length ? `<div style="display:flex; flex-direction:column; gap:8px;">${upcoming.map(chip).join('')}</div>` : ''}
+        </div>
+    `;
+}
+
 /**
  * 탭별 내용 렌더링 엔진 (UI Standard 적용)
  */
@@ -71,6 +129,8 @@ function renderStudentDetailTab(sid, tab) {
         </div>
     `;
 
+    const operationCardHtml = renderStudentOperationScheduleCard(sid);
+
     // 2. 탭 바 (규격화된 행간 및 버튼)
     const tabBarHtml = `
         <div class="tab-bar" style="background: var(--bg); padding: 4px; border-radius: 16px; margin-bottom: 20px; display: flex; gap: 4px;">
@@ -94,7 +154,7 @@ function renderStudentDetailTab(sid, tab) {
         </div>
     `;
 
-    showModal(`${s.name} 프로필`, `<div style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
+    showModal(`${s.name} 프로필`, `<div style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${operationCardHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
     if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
 }
 

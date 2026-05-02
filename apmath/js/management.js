@@ -44,7 +44,7 @@ function renderAddressBookList() {
 }
 
 function openAddressBook() {
-    const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
+    const classOptions = sortClassesForManagement(state.db.classes.filter(c => Number(c.is_active) !== 0)).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
     showModal('학생관리', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button class="btn" style="padding:10px; flex:1; font-size:12px;" onclick="closeModal(); openAddStudent();">학생 추가</button>
@@ -60,7 +60,7 @@ function openAddressBook() {
 }
 
 function openGlobalPinManagement() {
-    const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
+    const classes = sortClassesForManagement(state.db.classes.filter(c => Number(c.is_active) !== 0));
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
             <span style="font-weight:700; font-size:14px; color:var(--text);">${apEscapeHtml(c.name)}</span>
@@ -80,9 +80,24 @@ function formatClassScheduleDaysForUI(daysStr) {
     return daysStr.split(',').map(d => map[parseInt(d)]).join('');
 }
 
+function getClassManageGradeRank(cls) {
+    const text = `${cls?.grade || ''} ${cls?.name || ''}`;
+    const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    const idx = order.findIndex(g => text.includes(g));
+    return idx === -1 ? order.length : idx;
+}
+
+function sortClassesForManagement(classes) {
+    return [...classes].sort((a, b) => {
+        const rankDiff = getClassManageGradeRank(a) - getClassManageGradeRank(b);
+        if (rankDiff !== 0) return rankDiff;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+    });
+}
+
 function openClassManageModal() {
-    const activeClasses = state.db.classes.filter(c => Number(c.is_active) !== 0);
-    const hiddenClasses = state.db.classes.filter(c => Number(c.is_active) === 0);
+    const activeClasses = sortClassesForManagement(state.db.classes.filter(c => Number(c.is_active) !== 0));
+    const hiddenClasses = sortClassesForManagement(state.db.classes.filter(c => Number(c.is_active) === 0));
 
     const renderClassRow = (c) => `
         <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
