@@ -204,9 +204,57 @@ function renderTargetProgressCard(sid) {
     `;
 }
 
+function getLatestSchoolExamRecordForStudent(studentId) {
+    const typeRank = { final: 4, midterm: 3, performance: 2, etc: 1 };
+    const semesterRank = (value) => {
+        const text = String(value || '');
+        if (text.includes('2')) return 2;
+        if (text.includes('1')) return 1;
+        return 0;
+    };
+
+    return (state.db.school_exam_records || [])
+        .filter(record => String(record.student_id) === String(studentId) && String(record.is_deleted || 0) !== '1')
+        .sort((a, b) => {
+            const yearDiff = Number(b.exam_year || 0) - Number(a.exam_year || 0);
+            if (yearDiff !== 0) return yearDiff;
+            const semesterDiff = semesterRank(b.semester) - semesterRank(a.semester);
+            if (semesterDiff !== 0) return semesterDiff;
+            const typeDiff = (typeRank[b.exam_type] || 0) - (typeRank[a.exam_type] || 0);
+            if (typeDiff !== 0) return typeDiff;
+            return String(b.created_at || '').localeCompare(String(a.created_at || ''));
+        })[0] || null;
+}
+
+function getStudentSchoolExamTypeLabel(type) {
+    const labels = { midterm: '중간', final: '기말', performance: '수행', etc: '기타' };
+    return labels[type] || type || '기타';
+}
+
+function renderLatestSchoolExamSummary(sid) {
+    const record = getLatestSchoolExamRecordForStudent(sid);
+    if (!record) return '';
+
+    const scoreText = record.score === null || record.score === undefined || record.score === '' ? '미응시' : `${record.score}점`;
+    const parts = [
+        record.exam_year ? `${record.exam_year}년` : '',
+        record.semester || '',
+        getStudentSchoolExamTypeLabel(record.exam_type),
+        record.subject || '',
+        scoreText
+    ].filter(Boolean);
+
+    return `
+        <div style="margin-bottom:16px; padding:10px 12px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); font-size:12px; font-weight:600; color:var(--secondary); line-height:1.5; overflow-wrap:anywhere;">
+            <span style="font-weight:700; color:var(--text); margin-right:6px;">최근 학교성적</span>${apEscapeHtml(parts.join(' '))}
+        </div>
+    `;
+}
+
 function renderGradeTab(sid) {
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
     const targetProgressCard = renderTargetProgressCard(sid);
+    const latestSchoolExamSummary = renderLatestSchoolExamSummary(sid);
     
     const chartArea = exs.length > 0 
         ? `<div style="margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
@@ -242,6 +290,7 @@ function renderGradeTab(sid) {
     return `
         <div>
             ${targetProgressCard}
+            ${latestSchoolExamSummary}
             <h4 style="margin: 0 0 12px 4px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">최근 성적 추이</h4>
             ${chartArea}
             <h4 style="margin: 24px 0 12px 4px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">전체 시험 이력</h4>
@@ -259,8 +308,13 @@ function renderWeakTab(sid) {
 
     return `
         <div style="padding: 0 4px;">
-            <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">취약 단원 분석</h4>
-            <p style="margin: 0 0 16px 0; font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5;">단원을 누르면 상세 오답과 추천 문항을 확인합니다.</p>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:12px;">
+                <div style="min-width:0;">
+                    <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">취약 단원 분석</h4>
+                    <p style="margin: 0; font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5;">단원을 누르면 상세 오답과 추천 문항을 확인합니다.</p>
+                </div>
+                <button class="btn" style="min-height:36px; padding:8px 10px; font-size:12px; font-weight:700; border-radius:10px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14); white-space:nowrap;" onclick="openClinicBasketForStudent('${sid}')">클리닉 후보</button>
+            </div>
             ${typeof renderWeakUnitSummary === 'function' 
                 ? renderWeakUnitSummary(weakUnits, '누적 오답 데이터가 없습니다.', { clickable: true, mode: 'student', titlePrefix: `${s.name} 취약 단원`, context: { targetType: 'student', targetId: sid, targetLabel: s.name } })
                 : '<div style="padding: 20px; text-align: center; color: var(--secondary); font-size: 13px; font-weight: 700;">데이터를 불러올 수 없습니다.</div>'}
@@ -274,12 +328,16 @@ function renderWeakTab(sid) {
 function renderCnsTab(sid) {
     const cnsList = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)));
 
-    const cnsCards = cnsList.map(c => `
+    const cnsCards = cnsList.map(c => {
+        const logText = `${c.content || ''}\n${c.next_action || ''}`;
+        const isReportLog = String(c.content || '').trim().startsWith('[보고문구 기록]') || logText.includes('보고문구') || logText.includes('蹂닿퀬臾멸뎄');
+        return `
         <div class="card" style="padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 16px; box-shadow: none; background: var(--surface);">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span style="font-size: 12px; font-weight:700; color: var(--secondary); line-height: 1.5;">${c.date}</span>
                     <span class="std-badge" style="background: rgba(26,92,255,0.08); color: var(--primary); padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight:700; border: 1px solid rgba(26,92,255,0.15);">${c.type}</span>
+                    ${isReportLog ? '<span class="std-badge" style="background:rgba(0,208,132,0.08); color:var(--success); padding:2px 8px; border-radius:10px; font-size:11px; font-weight:700; border:1px solid rgba(0,208,132,0.15);">보고문구</span>' : ''}
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <span style="cursor: pointer; color: var(--primary); font-size: 12px; font-weight:700;" onclick="openEditConsultation('${c.id}', '${sid}')">수정</span>
@@ -292,7 +350,8 @@ function renderCnsTab(sid) {
                     <b style="color: var(--warning);">조치:</b> ${apEscapeHtml(c.next_action)}
                 </div>` : ''}
         </div>
-    `).join('');
+    `;
+    }).join('');
 
     return `
         <div style="padding: 0 4px;">

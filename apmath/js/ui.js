@@ -394,15 +394,25 @@ function drawerSection() {
     return '';
 }
 
+function openExamScoreMenu() {
+    showModal('시험성적', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <button class="btn btn-primary" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px;" onclick="closeModal(); openGlobalExamGradeView();">원내 시험성적</button>
+            <button class="btn" style="width:100%; min-height:48px; padding:12px 14px; font-size:14px; font-weight:700; border-radius:14px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="closeModal(); openCumulativeOpsModal('school');">학교 성적표</button>
+        </div>
+    `);
+}
+
 function buildDrawerMenu(roleKey) {
     return `
         ${drawerItem('', '일지', "closeAppDrawer(); openDailyJournalModal();")}
         ${drawerItem('', '메모', "closeAppDrawer(); openTodoMemoModal();")}
         ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
         ${drawerItem('', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
-        ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else toast('출석부는 다음 버전에서 연결됩니다.', 'warn');")}
+        ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('attendance'); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '시험일정', "closeAppDrawer(); openExamScheduleModal();")}
-        ${drawerItem('', '시험성적', "closeAppDrawer(); openGlobalExamGradeView();")}
+        ${drawerItem('', '휴무·보강 관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal('', 'academy'); else toast('휴무·보강 관리 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('', '시험성적', "closeAppDrawer(); openExamScoreMenu();")}
         ${drawerItem('', '클리닉', "closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
