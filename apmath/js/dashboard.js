@@ -130,6 +130,132 @@ function isClassVisibleForCurrentTeacher(c) {
     return normalizedClassTeacher === normalizedCurrent;
 }
 
+function getDashboardTodayStr() {
+    if (typeof getOperationDate === 'function') return getOperationDate();
+    return new Date().toLocaleDateString('sv-SE');
+}
+
+function getDashboardStudentClassId(studentId) {
+    const mapping = (state.db.class_students || []).find(m => String(m.student_id) === String(studentId));
+    return mapping ? String(mapping.class_id) : '';
+}
+
+function getVisibleActiveStudentsForDashboard() {
+    return (state.db.students || []).filter(s => {
+        if (s.status !== '재원') return false;
+        const cid = getDashboardStudentClassId(s.id);
+        const cls = (state.db.classes || []).find(c => String(c.id) === String(cid));
+        if (cls && Number(cls.is_active) === 0) return false;
+        return !cls || isClassVisibleForCurrentTeacher(cls);
+    });
+}
+
+function getTodayAcademySchedulesForDashboard(todayStr = getDashboardTodayStr()) {
+    const visibleStudentIds = new Set(getVisibleActiveStudentsForDashboard().map(s => String(s.id)));
+    return (state.db.academy_schedules || []).filter(s => {
+        if (String(s.is_deleted || 0) === '1') return false;
+        if (String(s.schedule_date || '') !== todayStr) return false;
+        if (s.target_scope !== 'student') return true;
+        return visibleStudentIds.has(String(s.student_id || ''));
+    });
+}
+
+function getDashboardClosedStudentIdsForDate(studentIds, dateStr) {
+    const idSet = new Set((studentIds || []).map(id => String(id)));
+    const schedules = state.db.academy_schedules || [];
+    const hasGlobalClosed = schedules.some(s =>
+        String(s.is_deleted || 0) !== '1' &&
+        String(s.schedule_date || '') === dateStr &&
+        s.schedule_type === 'closed' &&
+        s.target_scope !== 'student'
+    );
+
+    if (hasGlobalClosed) {
+        return { hasGlobalClosed: true, closedStudentIds: new Set(idSet) };
+    }
+
+    const closedStudentIds = new Set(
+        schedules
+            .filter(s =>
+                String(s.is_deleted || 0) !== '1' &&
+                String(s.schedule_date || '') === dateStr &&
+                s.schedule_type === 'closed' &&
+                s.target_scope === 'student' &&
+                idSet.has(String(s.student_id || ''))
+            )
+            .map(s => String(s.student_id || ''))
+    );
+
+    return { hasGlobalClosed: false, closedStudentIds };
+}
+
+function computeDashboardOperationSnapshot(data) {
+    const todayStr = getDashboardTodayStr();
+    const todaySchedules = getTodayAcademySchedulesForDashboard(todayStr);
+    const globalClosed = todaySchedules.filter(s => s.schedule_type === 'closed' && s.target_scope !== 'student');
+    const studentClosed = todaySchedules.filter(s => s.schedule_type === 'closed' && s.target_scope === 'student');
+    const makeup = todaySchedules.filter(s => s.schedule_type === 'makeup');
+    const consultation = todaySchedules.filter(s => s.schedule_type === 'consultation');
+    const scheduledStudents = getVisibleActiveStudentsForDashboard().filter(s => {
+        const cid = getDashboardStudentClassId(s.id);
+        return isClassScheduledTodayForDashboard(cid);
+    });
+    const closedInfo = getDashboardClosedStudentIdsForDate(scheduledStudents.map(s => s.id), todayStr);
+    const targetStudents = closedInfo.hasGlobalClosed ? [] : scheduledStudents.filter(s => !closedInfo.closedStudentIds.has(String(s.id)));
+    const attendanceDone = new Set((state.db.attendance || []).filter(a => a.date === todayStr).map(a => String(a.student_id)));
+    const homeworkDone = new Set((state.db.homework || []).filter(h => h.date === todayStr).map(h => String(h.student_id)));
+
+    return {
+        todayStr,
+        globalClosed,
+        studentClosed,
+        makeup,
+        consultation,
+        scheduledClassCount: (state.db.classes || []).filter(c => Number(c.is_active) !== 0 && isClassVisibleForCurrentTeacher(c) && isClassScheduledTodayForDashboard(c.id)).length,
+        attendancePending: targetStudents.filter(s => !attendanceDone.has(String(s.id))).length,
+        homeworkPending: targetStudents.filter(s => !homeworkDone.has(String(s.id))).length,
+        targetCount: targetStudents.length,
+        data
+    };
+}
+
+function renderDashboardOperationStatusCard(data) {
+    const op = computeDashboardOperationSnapshot(data);
+    const closedTitle = op.globalClosed.length
+        ? `학원 휴무 ${op.globalClosed.length}건`
+        : `학생 휴무 ${op.studentClosed.length}명`;
+    const bannerHtml = op.globalClosed.length ? `
+        <div style="margin-bottom:10px; padding:12px 14px; border-radius:14px; background:rgba(255,71,87,0.08); border:1px solid rgba(255,71,87,0.18); color:var(--error); font-size:13px; font-weight:700; line-height:1.5;">
+            오늘은 학원 전체 휴무 일정이 있습니다. 출석/숙제 입력은 가능하지만 마감 대상에서는 제외해 확인하세요.
+        </div>
+    ` : '';
+
+    const item = (label, value, color, bg, border) => `
+        <div style="min-width:0; padding:12px 10px; border-radius:14px; background:${bg}; border:1px solid ${border};">
+            <div style="font-size:11px; font-weight:600; color:var(--secondary); line-height:1.35; margin-bottom:5px;">${label}</div>
+            <div style="font-size:20px; font-weight:700; color:${color}; line-height:1.2;">${value}</div>
+        </div>
+    `;
+
+    return `
+        <div style="margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘 운영 상태</h3>
+                <span style="font-size:11px; font-weight:600; color:var(--secondary);">${op.todayStr}</span>
+            </div>
+            ${bannerHtml}
+            <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px;">
+                ${item('오늘 수업반', op.scheduledClassCount, 'var(--primary)', 'rgba(26,92,255,0.06)', 'rgba(26,92,255,0.14)')}
+                ${item('오늘 휴무', closedTitle, 'var(--error)', 'rgba(255,71,87,0.06)', 'rgba(255,71,87,0.16)')}
+                ${item('오늘 보강', `${op.makeup.length}건`, 'var(--primary)', 'rgba(26,92,255,0.06)', 'rgba(26,92,255,0.14)')}
+                ${item('오늘 상담', `${op.consultation.length}건`, 'var(--success)', 'rgba(0,208,132,0.06)', 'rgba(0,208,132,0.14)')}
+                ${item('미처리 출석', `${op.attendancePending}/${op.targetCount}`, op.attendancePending ? 'var(--warning)' : 'var(--success)', 'var(--surface)', 'var(--border)')}
+                ${item('미처리 숙제', `${op.homeworkPending}/${op.targetCount}`, op.homeworkPending ? 'var(--warning)' : 'var(--success)', 'var(--surface)', 'var(--border)')}
+            </div>
+        </div>
+    `;
+}
+
 // [5G] 관리필요(구 위험학생) 판정 알고리즘
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -341,6 +467,7 @@ function renderAdminControlCenter() {
         return (todayTime - createdTime) / (1000*3600*24) <= 30; 
     });
     const risks = computeRiskStudents();
+    const operationStatusHtml = renderDashboardOperationStatusCard(computeDashboardData());
 
     const headerHtml = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
@@ -432,7 +559,7 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    root.innerHTML = headerHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
+    root.innerHTML = headerHtml + operationStatusHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
 }
 
 function renderAdminStudentSearch() {
@@ -517,14 +644,16 @@ function sortClassesForDashboard(classes) {
 }
 
 function computeDashboardData() {
-    const today = new Date().toLocaleDateString('sv-SE');
+    const today = getDashboardTodayStr();
     const activeStudents = state.db.students.filter(s => s.status === '재원');
+    const todayClosedInfo = getDashboardClosedStudentIdsForDate(activeStudents.map(s => s.id), today);
     
-    const scheduledActiveStudents = activeStudents.filter(s => {
+    const scheduledActiveStudents = todayClosedInfo.hasGlobalClosed ? [] : activeStudents.filter(s => {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
-        return isClassScheduledTodayForDashboard(cid); // [Partner B] 요일 필터 적용
+        if (!isClassScheduledTodayForDashboard(cid)) return false;
+        return !todayClosedInfo.closedStudentIds.has(String(s.id));
     });
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
@@ -543,7 +672,10 @@ function computeDashboardData() {
     const classSummaries = {};
     state.db.classes.filter(c => Number(c.is_active) !== 0).forEach(c => {
         const cIds = state.db.class_students.filter(m => m.class_id === c.id).map(m => m.student_id);
-        const cActiveIds = activeStudents.filter(s => cIds.includes(s.id)).map(s => s.id);
+        const cClosedInfo = getDashboardClosedStudentIdsForDate(cIds, today);
+        const cActiveIds = cClosedInfo.hasGlobalClosed ? [] : activeStudents
+            .filter(s => cIds.includes(s.id) && !cClosedInfo.closedStudentIds.has(String(s.id)))
+            .map(s => s.id);
         let cMiss=0, cAbs=0;
         
         cActiveIds.forEach(id => {
@@ -759,6 +891,7 @@ function renderDashboard() {
     const root = document.getElementById('app-root');
 
     const todayJournalCard = renderTodayJournalCard(data);
+    const operationStatusCard = renderDashboardOperationStatusCard(data);
 
     const todoSections = renderTodoSections();
     
@@ -771,7 +904,7 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${todayJournalCard}${todoSections}${classStatus}</div>`;
+    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${operationStatusCard}${todayJournalCard}${todoSections}${classStatus}</div>`;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구

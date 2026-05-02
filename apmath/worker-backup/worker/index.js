@@ -202,10 +202,10 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, jou, txt, cdr, cdp;
+          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp;
 
           if (teacher.role === 'admin') {
-            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, jou, txt, cdr, cdp] = await Promise.all([
+            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
               env.DB.prepare('SELECT * FROM class_students').all(),
@@ -219,6 +219,7 @@ export default {
               env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all(),
               env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(),
               env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 ORDER BY schedule_date ASC, start_time ASC, created_at ASC').all(),
+              env.DB.prepare('SELECT * FROM school_exam_records WHERE is_deleted = 0 ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 1000').all(),
               env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC').all(),
               env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all(),
               env.DB.prepare('SELECT * FROM class_daily_records ORDER BY date DESC, created_at DESC LIMIT 1000').all(),
@@ -248,6 +249,7 @@ export default {
                 operation_memos: opm.results,
                 exam_schedules: exS.results,
                 academy_schedules: acs.results,
+                school_exam_records: [],
                 journals: jou.results,
                 class_textbooks: [],
                 class_daily_records: [],
@@ -267,7 +269,7 @@ export default {
             const studentIds = map.results.map(r => r.student_id);
             if (studentIds.length > 0) {
               const sMarkers = studentIds.map(() => '?').join(',');
-              [stds, att, hw, exs, wrs, attHis, hwHis, cns] = await Promise.all([
+              [stds, att, hw, exs, wrs, attHis, hwHis, cns, ser] = await Promise.all([
                 env.DB.prepare(`SELECT * FROM students WHERE id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM attendance WHERE date = DATE('now', '+9 hours') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM homework WHERE date = DATE('now', '+9 hours') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
@@ -275,7 +277,8 @@ export default {
                 env.DB.prepare(`SELECT * FROM wrong_answers WHERE student_id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
-                env.DB.prepare(`SELECT * FROM consultations WHERE student_id IN (${sMarkers}) ORDER BY date DESC, created_at DESC`).bind(...studentIds).all()
+                env.DB.prepare(`SELECT * FROM consultations WHERE student_id IN (${sMarkers}) ORDER BY date DESC, created_at DESC`).bind(...studentIds).all(),
+                env.DB.prepare(`SELECT * FROM school_exam_records WHERE is_deleted = 0 AND student_id IN (${sMarkers}) ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 500`).bind(...studentIds).all()
               ]);
             } else {
               stds = { results: [] };
@@ -286,6 +289,7 @@ export default {
               attHis = { results: [] };
               hwHis = { results: [] };
               cns = { results: [] };
+              ser = { results: [] };
             }
           }
 
@@ -303,6 +307,7 @@ export default {
             operation_memos: opm.results,
             exam_schedules: exS.results,
             academy_schedules: acs.results,
+            school_exam_records: ser.results,
             journals: jou.results,
             class_textbooks: txt.results,
             class_daily_records: cdr.results,
@@ -826,6 +831,106 @@ export default {
             const existingAcs = await env.DB.prepare('SELECT target_scope, student_id FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
             if (existingAcs && existingAcs.target_scope === 'student' && !(await canAccessStudent(teacher, existingAcs.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+        }
+
+        if (resource === 'school-exam-records') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          const normalizeSchoolExamRecordPayload = async (d) => {
+            const studentId = String(d.studentId || d.student_id || '').trim();
+            const examYear = Number(d.examYear || d.exam_year || 0);
+            const examType = String(d.examType || d.exam_type || '').trim();
+            const subject = String(d.subject || '').trim();
+            if (!studentId || !examYear || !examType || !subject) return { error: 'Required fields missing' };
+
+            let targetScoreSnapshot = d.targetScoreSnapshot ?? d.target_score_snapshot ?? null;
+            if (targetScoreSnapshot === '' || targetScoreSnapshot === undefined) targetScoreSnapshot = null;
+            if (targetScoreSnapshot === null) {
+              const student = await env.DB.prepare('SELECT target_score FROM students WHERE id = ?').bind(studentId).first();
+              targetScoreSnapshot = student?.target_score ?? null;
+            }
+
+            const rawScore = d.score;
+            const score = rawScore === '' || rawScore === undefined || rawScore === null ? null : Number(rawScore);
+            const targetScore = targetScoreSnapshot === '' || targetScoreSnapshot === undefined || targetScoreSnapshot === null ? null : Number(targetScoreSnapshot);
+
+            return {
+              studentId,
+              classId: String(d.classId || d.class_id || '').trim() || null,
+              schoolName: String(d.schoolName || d.school_name || '').trim(),
+              grade: String(d.grade || '').trim(),
+              examYear,
+              semester: String(d.semester || '').trim(),
+              examType,
+              subject,
+              score: Number.isFinite(score) ? score : null,
+              targetScoreSnapshot: Number.isFinite(targetScore) ? targetScore : null,
+              memo: String(d.memo || '').trim()
+            };
+          };
+
+          if (method === 'GET') {
+            const params = [];
+            const clauses = ['is_deleted = 0'];
+            const studentId = url.searchParams.get('studentId') || '';
+            const classId = url.searchParams.get('classId') || '';
+            const grade = url.searchParams.get('grade') || '';
+            const year = url.searchParams.get('year') || '';
+
+            if (studentId) { clauses.push('student_id = ?'); params.push(studentId); }
+            if (classId) { clauses.push('class_id = ?'); params.push(classId); }
+            if (grade) { clauses.push('grade = ?'); params.push(grade); }
+            if (year) { clauses.push('exam_year = ?'); params.push(Number(year)); }
+
+            if (teacher.role !== 'admin') {
+              const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+              const classIds = (tcls.results || []).map(r => r.class_id);
+              if (!classIds.length) return new Response(JSON.stringify({ success: true, data: [] }), { headers });
+              const markers = classIds.map(() => '?').join(',');
+              clauses.push(`student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${markers}))`);
+              params.push(...classIds);
+            }
+
+            const limit = Math.min(Number(url.searchParams.get('limit') || 1000) || 1000, 2000);
+            const query = `SELECT * FROM school_exam_records WHERE ${clauses.join(' AND ')} ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT ?`;
+            const res = await env.DB.prepare(query).bind(...params, limit).all();
+            return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
+          }
+
+          if (method === 'POST') {
+            const d = await normalizeSchoolExamRecordPayload(await request.json());
+            if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            if (!(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            const rid = `ser_${Date.now()}`;
+            await env.DB.prepare(`INSERT INTO school_exam_records
+              (id, student_id, class_id, school_name, grade, exam_year, semester, exam_type, subject, score, target_score_snapshot, memo, is_deleted, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, DATETIME('now'), DATETIME('now'))`)
+              .bind(rid, d.studentId, d.classId, d.schoolName, d.grade, d.examYear, d.semester, d.examType, d.subject, d.score, d.targetScoreSnapshot, d.memo).run();
+            return new Response(JSON.stringify({ success: true, id: rid }), { headers });
+          }
+
+          if (method === 'PATCH' && id) {
+            const existing = await env.DB.prepare('SELECT student_id FROM school_exam_records WHERE id = ? AND is_deleted = 0').bind(id).first();
+            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            if (!(await canAccessStudent(teacher, existing.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            const d = await normalizeSchoolExamRecordPayload(await request.json());
+            if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
+            if (!(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            await env.DB.prepare(`UPDATE school_exam_records
+              SET student_id=?, class_id=?, school_name=?, grade=?, exam_year=?, semester=?, exam_type=?, subject=?, score=?, target_score_snapshot=?, memo=?, updated_at=DATETIME('now')
+              WHERE id=? AND is_deleted = 0`)
+              .bind(d.studentId, d.classId, d.schoolName, d.grade, d.examYear, d.semester, d.examType, d.subject, d.score, d.targetScoreSnapshot, d.memo, id).run();
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+
+          if (method === 'DELETE' && id) {
+            const existing = await env.DB.prepare('SELECT student_id FROM school_exam_records WHERE id = ? AND is_deleted = 0').bind(id).first();
+            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            if (!(await canAccessStudent(teacher, existing.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            await env.DB.prepare("UPDATE school_exam_records SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
         }

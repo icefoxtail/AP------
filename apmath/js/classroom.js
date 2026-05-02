@@ -44,12 +44,14 @@ async function handleBatchGeneratePins(classId) {
 
 // [Phase 4/5] 요약 계산 (로직 사수)
 function computeClassTodaySummary(classId) {
-    const today = new Date().toLocaleDateString('sv-SE');
+    const today = getClassOperationTodayStr();
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
-    const aIds = active.map(s => String(s.id));
-    const total = active.length;
+    const closedInfo = getClosedStudentIdsForDate(active.map(s => s.id), today);
+    const effectiveActive = closedInfo.hasGlobalClosed ? [] : active.filter(s => !closedInfo.closedStudentIds.has(String(s.id)));
+    const aIds = effectiveActive.map(s => String(s.id));
+    const total = effectiveActive.length;
     const isScheduled = isClassScheduledToday(classId);
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
@@ -65,6 +67,99 @@ function computeClassTodaySummary(classId) {
     return { att, hw, test, total, isScheduled };
 }
 
+function getClassOperationTodayStr() {
+    if (typeof getOperationDate === 'function') return getOperationDate();
+    return new Date().toLocaleDateString('sv-SE');
+}
+
+function getClosedStudentIdsForDate(studentIds, dateStr) {
+    const idSet = new Set((studentIds || []).map(id => String(id)));
+    const schedules = state.db.academy_schedules || [];
+    const hasGlobalClosed = schedules.some(s =>
+        String(s.is_deleted || 0) !== '1' &&
+        String(s.schedule_date || '') === dateStr &&
+        s.schedule_type === 'closed' &&
+        s.target_scope !== 'student'
+    );
+
+    if (hasGlobalClosed) {
+        return { hasGlobalClosed: true, closedStudentIds: new Set(idSet) };
+    }
+
+    const closedStudentIds = new Set(
+        schedules
+            .filter(s =>
+                String(s.is_deleted || 0) !== '1' &&
+                String(s.schedule_date || '') === dateStr &&
+                s.schedule_type === 'closed' &&
+                s.target_scope === 'student' &&
+                idSet.has(String(s.student_id || ''))
+            )
+            .map(s => String(s.student_id || ''))
+    );
+
+    return { hasGlobalClosed: false, closedStudentIds };
+}
+
+function getClassAcademyScheduleTone(type) {
+    if (type === 'closed') return { label: '휴무', color: 'var(--error)', bg: 'rgba(255,71,87,0.08)', border: 'rgba(255,71,87,0.16)' };
+    if (type === 'makeup') return { label: '보강', color: 'var(--primary)', bg: 'rgba(26,92,255,0.08)', border: 'rgba(26,92,255,0.14)' };
+    if (type === 'consultation') return { label: '상담', color: 'var(--success)', bg: 'rgba(0,208,132,0.08)', border: 'rgba(0,208,132,0.14)' };
+    return { label: '일정', color: 'var(--secondary)', bg: 'var(--surface-2)', border: 'var(--border)' };
+}
+
+function getClassTodayOperationState(cid, memberIds, todayStr = getClassOperationTodayStr()) {
+    const memberSet = new Set((memberIds || []).map(id => String(id)));
+    const todaySchedules = (state.db.academy_schedules || []).filter(s => {
+        if (String(s.is_deleted || 0) === '1') return false;
+        if (String(s.schedule_date || '') !== todayStr) return false;
+        if (s.target_scope !== 'student') return s.schedule_type === 'closed';
+        return memberSet.has(String(s.student_id || ''));
+    });
+    const byStudent = {};
+    todaySchedules.forEach(s => {
+        if (s.target_scope === 'student') {
+            const sid = String(s.student_id || '');
+            if (!byStudent[sid]) byStudent[sid] = [];
+            byStudent[sid].push(s);
+        }
+    });
+    return {
+        todayStr,
+        globalClosed: todaySchedules.filter(s => s.schedule_type === 'closed' && s.target_scope !== 'student'),
+        studentClosed: todaySchedules.filter(s => s.schedule_type === 'closed' && s.target_scope === 'student'),
+        makeup: todaySchedules.filter(s => s.schedule_type === 'makeup'),
+        consultation: todaySchedules.filter(s => s.schedule_type === 'consultation'),
+        byStudent
+    };
+}
+
+function renderClassOperationNotice(op) {
+    const parts = [];
+    if (op.globalClosed.length) parts.push(`학원 휴무 ${op.globalClosed.length}건`);
+    if (op.studentClosed.length) parts.push(`학생 휴무 ${op.studentClosed.length}명`);
+    if (op.makeup.length) parts.push(`보강 ${op.makeup.length}건`);
+    if (op.consultation.length) parts.push(`상담 ${op.consultation.length}건`);
+    if (!parts.length) return '';
+
+    return `
+        <div style="margin:0 14px 12px; padding:12px 14px; border-radius:14px; background:var(--surface); border:1px solid var(--border);">
+            <div style="font-size:12px; font-weight:700; color:var(--text); line-height:1.4; margin-bottom:6px;">오늘 운영 알림</div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                ${parts.map(p => `<span style="font-size:11px; font-weight:600; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:4px 8px; line-height:1.35;">${p}</span>`).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function renderClassStudentOperationBadges(items) {
+    if (!items || !items.length) return '';
+    return `<span style="display:inline-flex; flex-wrap:wrap; gap:4px; margin-left:6px; vertical-align:middle;">${items.map(item => {
+        const tone = getClassAcademyScheduleTone(item.schedule_type);
+        return `<span title="${apEscapeHtml(item.title || '')}" style="font-size:10px; font-weight:600; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; border-radius:999px; padding:2px 6px; line-height:1.25;">${tone.label}</span>`;
+    }).join('')}</span>`;
+}
+
 // [UI Standard Applied]: 학급 메인 화면
 function renderClass(cid) {
     injectClassroomStyles();
@@ -73,6 +168,8 @@ function renderClass(cid) {
     const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
     const today = new Date().toLocaleDateString('sv-SE');
     const summary = computeClassTodaySummary(cid);
+    const operationState = getClassTodayOperationState(cid, mIds, getClassOperationTodayStr());
+    const operationNoticeHtml = renderClassOperationNotice(operationState);
 
     const icons = {
         qr: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`,
@@ -126,6 +223,7 @@ function renderClass(cid) {
                 <span>오늘 현황</span>
                 ${statusBarHtml}
             </div>
+            ${operationNoticeHtml}
             <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; margin:0 14px 18px;">
                 <button class="btn" style="min-height:44px; padding:10px 12px; font-size:13px; font-weight:700; border-radius:12px; background:rgba(0,208,132,0.08); color:var(--success); border:1px solid rgba(0,208,132,0.16);" onclick="markClassAttendanceAll('${cid}')">전체 등원 처리</button>
                 <button class="btn" style="min-height:44px; padding:10px 12px; font-size:13px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.16);" onclick="markClassHomeworkAll('${cid}')">전체 숙제 완료</button>
@@ -157,6 +255,7 @@ function renderClass(cid) {
         const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === today);
         const attStatus = att?.status || '등원';
         const hwStatus = hw?.status || '완료';
+        const operationBadges = renderClassStudentOperationBadges(operationState.byStudent[String(s.id)]);
 
         const attStyle = attStatus === '등원' 
             ? 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);' 
@@ -167,7 +266,7 @@ function renderClass(cid) {
             : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight:700; border: 1px solid rgba(255,165,2,0.15);';
 
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
+            <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;"><span>${s.name}</span>${operationBadges}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
                 <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attStatus}</button>
@@ -268,15 +367,19 @@ function getActiveClassStudentIds(cid) {
     const memberIds = (state.db.class_students || [])
         .filter(m => String(m.class_id) === String(cid))
         .map(m => String(m.student_id));
+    const dateStr = getClassOperationTodayStr();
 
-    return (state.db.students || [])
+    const activeIds = (state.db.students || [])
         .filter(s => memberIds.includes(String(s.id)) && (s.status === '재원' || s.status === '?ъ썝'))
         .map(s => String(s.id));
+    const closedInfo = getClosedStudentIdsForDate(activeIds, dateStr);
+    if (closedInfo.hasGlobalClosed) return [];
+    return activeIds.filter(id => !closedInfo.closedStudentIds.has(String(id)));
 }
 
 async function markClassAttendanceAll(cid) {
     const studentIds = getActiveClassStudentIds(cid);
-    if (!studentIds.length) return toast('처리할 재원생이 없습니다.', 'warn');
+    if (!studentIds.length) return toast('오늘은 휴무 대상이라 일괄 처리할 학생이 없습니다.', 'warn');
     if (!confirm('현재 반 재원생 전체를 등원 처리할까요?')) return;
 
     const date = new Date().toLocaleDateString('sv-SE');
@@ -291,7 +394,7 @@ async function markClassAttendanceAll(cid) {
 
 async function markClassHomeworkAll(cid) {
     const studentIds = getActiveClassStudentIds(cid);
-    if (!studentIds.length) return toast('처리할 재원생이 없습니다.', 'warn');
+    if (!studentIds.length) return toast('오늘은 휴무 대상이라 일괄 처리할 학생이 없습니다.', 'warn');
     if (!confirm('현재 반 재원생 전체를 숙제 완료 처리할까요?')) return;
 
     const date = new Date().toLocaleDateString('sv-SE');
