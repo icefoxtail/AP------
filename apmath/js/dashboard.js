@@ -415,35 +415,7 @@ function renderAdminStudentSearch() {
 
 // --- Teacher Dashboard 공통 함수 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // [Partner B] 필수 입력 제거: 날짜만 있으면 저장 가능
-
-
-
 
 // [Phase 4/5] 글로벌 진입점
 function openGlobalExamGradeView() {
@@ -726,6 +698,20 @@ function renderDashboard() {
     const data = computeDashboardData();
     const root = document.getElementById('app-root');
 
+    // [NEW] 최상단 숏컷 카드 (시간표, 출석부)
+    const shortcutRow = `
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
+            <div onclick="if(typeof openExamScheduleModal === 'function') openExamScheduleModal(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; gap:8px;">
+                <span style="font-size:18px;">📅</span>
+                <span style="font-size:15px; font-weight:700; color:var(--text);">시간표</span>
+            </div>
+            <div onclick="if(typeof renderAttendanceLedger === 'function') renderAttendanceLedger(); else if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; gap:8px;">
+                <span style="font-size:18px;">📝</span>
+                <span style="font-size:15px; font-weight:700; color:var(--text);">출석부</span>
+            </div>
+        </div>
+    `;
+
     const todayJournalCard = renderTodayJournalCard(data);
 
     const todoSections = renderTodoSections();
@@ -739,7 +725,13 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${todayJournalCard}${todoSections}${classStatus}</div>`;
+    // [수정] max-width:850px 및 margin:0 auto 적용, shortcutRow 최상단 추가
+    root.innerHTML = `<div style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
+        ${shortcutRow}
+        ${todayJournalCard}
+        ${todoSections}
+        ${classStatus}
+    </div>`;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
