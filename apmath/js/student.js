@@ -456,13 +456,29 @@ async function handleResetSessionWrongs(eid, sid) {
 }
 
 
-function sortClassesByGradeDesc(classes) {
-    const gradeRank = (grade) => {
-        const text = String(grade || '');
-        const ranks = { '고3': 6, '고2': 5, '고1': 4, '중3': 3, '중2': 2, '중1': 1 };
-        return ranks[text] || 0;
+function sortClassesByGradeDesc(classes = []) {
+    const gradeRank = (cls) => {
+        const text = `${cls?.grade || ''} ${cls?.name || ''}`;
+        if (/고3/.test(text)) return 6;
+        if (/고2/.test(text)) return 5;
+        if (/고1/.test(text)) return 4;
+        if (/중3/.test(text)) return 3;
+        if (/중2/.test(text)) return 2;
+        if (/중1/.test(text)) return 1;
+        return 0;
     };
-    return [...classes].sort((a, b) => gradeRank(b.grade) - gradeRank(a.grade) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+
+    return [...classes].sort((a, b) => {
+        const diff = gradeRank(b) - gradeRank(a);
+        if (diff !== 0) return diff;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+    });
+}
+
+function inferGradeFromClass(cls) {
+    const text = `${cls?.grade || ''} ${cls?.name || ''}`;
+    const m = text.match(/(중1|중2|중3|고1|고2|고3)/);
+    return m ? m[1] : '';
 }
 
 function syncEditStudentGrade() {
@@ -477,7 +493,7 @@ function syncEditStudentGrade() {
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
-    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => c.is_active !== 0 || String(c.id) === String(curCid))).map(c => `<option value="${c.id}" ${String(c.id)===String(curCid)?'selected':''}>${c.name}</option>`).join('');
+    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid))).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
     
     showModal('학생 정보 수정', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -509,7 +525,7 @@ async function handleEditStudent(sid) {
     const classId = document.getElementById('edit-class')?.value || '';
     const editGrade = document.getElementById('edit-grade')?.value || '';
     const cls = classId ? state.db.classes.find(c => String(c.id) === String(classId)) : null;
-    const grade = cls ? (cls.grade || editGrade) : editGrade;
+    const grade = cls ? (inferGradeFromClass(cls) || editGrade) : editGrade;
 
     const payload = {
         name: document.getElementById('edit-name')?.value || '',
@@ -540,7 +556,7 @@ async function handleEditStudent(sid) {
 
 
 function openAddStudent(defaultCid = '') {
-    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => c.is_active !== 0)).map(c => `<option value="${c.id}" ${String(c.id)===String(defaultCid)?'selected':''}>${c.name}</option>`).join('');
+    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0)).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(defaultCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
     showModal('신규 학생 추가', `
         <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px 4px; box-sizing: border-box;">
             <input id="add-name" class="std-input-base" placeholder="이름 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
@@ -562,10 +578,27 @@ async function handleAddStudent() {
     if (!classId) { toast('반을 선택하세요.', 'warn'); return; }
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) { toast('반 정보를 찾을 수 없습니다.', 'warn'); return; }
-    const grade = cls.grade || '';
+    const grade = inferGradeFromClass(cls);
+    const payload = {
+        name: n,
+        school_name: sc,
+        schoolName: sc,
+        grade: grade || '',
+        class_id: classId,
+        classId: classId,
+        student_pin: pin || '',
+        studentPin: pin || '',
+        student_phone: '',
+        studentPhone: '',
+        parent_phone: '',
+        parentPhone: '',
+        guardian_relation: '',
+        guardianRelation: '',
+        memo: ''
+    };
 
     try {
-        const r = await api.post('students', { name: n, school_name: sc, grade, class_id: classId, student_pin: pin });
+        const r = await api.post('students', payload);
         if (r?.success) {
             toast('학생이 추가되었습니다.', 'success');
             closeModal();
