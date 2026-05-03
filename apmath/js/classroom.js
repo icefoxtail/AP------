@@ -145,7 +145,7 @@ function renderClass(cid) {
                 <div style="font-size: 20px; font-weight:700; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${cls.name}</div>
                 <div style="font-size: 11px; font-weight: 600; color: var(--secondary); margin-top: 2px; line-height: 1.5;">${formatClassScheduleDays(cls.schedule_days)}</div>
             </div>
-            <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="renderDashboard()">닫기</button>
+            <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="returnToPreviousManagementView()">닫기</button>
         </div>
         
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
@@ -215,7 +215,7 @@ function renderClass(cid) {
             : 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight:700; border: 1px solid rgba(255,165,2,0.15);';
 
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
+            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
                 <button class="btn class-att-toggle" style="padding: 4px 8px; font-size: 12px; min-width: 68px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
@@ -303,8 +303,9 @@ async function saveClassRecord(cid, dateStr) {
         const r = await api.post('class-daily-records', payload);
         if (r?.success) {
             toast('저장 완료', 'success');
-            closeModal();
+            closeModal(true);
             await loadData();
+            renderClass(cid);
             return;
         }
         toast(r?.message || r?.error || '수업 기록 저장에 실패했습니다.', 'error');
