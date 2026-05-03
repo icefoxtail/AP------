@@ -2,154 +2,180 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)</title>
+    <title>JS아카이브 | 믹서 출력 (Rulebook v1.9 + Image Field Final)</title>
     <script>
         window.MathJax = {
-            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                packages: {'[+]': ['ams', 'boldsymbol']}
+            },
             options: { enableMenu: false },
             startup: { typeset: false }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
-        body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 54px; }
-        #mode-ctrl { position: fixed; top: 0; left: 0; width: 100%; height: 56px; background: #0f172a; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; z-index: 1000; box-sizing: border-box; }
-        #ctrl-title { color: white; font-weight: 800; font-size: 14px; }
+
+        body {
+            margin: 0;
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 9.5pt;
+            background: #f1f5f9;
+            padding-top: 54px;
+            color: #000;
+        }
+
+        /* [UI] Mode Control Bar */
+        #mode-ctrl {
+            position: fixed; top: 0; left: 0; width: 100%; height: 56px;
+            background: #0f172a; display: flex; justify-content: space-between;
+            align-items: center; padding: 0 24px; z-index: 1000; box-sizing: border-box;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        #ctrl-title { color: white; font-weight: 800; font-size: 14px; letter-spacing: -0.02em; }
         .mode-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.07); padding: 4px; border-radius: 10px; }
-        .mode-tab { padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); }
-        .mode-tab.active { background: white; color: #0f172a; }
+        .mode-tab {
+            padding: 6px 16px; border-radius: 7px; font-size: 12px; font-weight: 700;
+            cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5);
+            transition: all 0.2s;
+        }
+        .mode-tab.active { background: white; color: #0f172a; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        .ctrl-right { display: flex; align-items: center; gap: 12px; }
+        .qpp-selector { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 700; }
+        #qppSelect {
+            background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px; padding: 4px 8px; font-family: inherit; font-size: 11px; cursor: pointer;
+        }
+
+        /* [v1.9] 드롭다운 가독성 보정 */
+        #qppSelect option {
+            background: #ffffff;
+            color: #0f172a;
+        }
+        #qppSelect:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.35);
+        }
+
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
 
-        .page { width: 210mm; height: 297mm; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
+        /* [PDF Mode] Container & Viewer */
+        #pdf-container { display: none; width: 100%; height: calc(100vh - 54px); background: #525659; overflow: hidden; }
+        #pdf-viewer { width: 100%; height: 100%; border: none; background: white; }
+        body.mode-pdf #pdf-container { display: block; }
+        body.mode-pdf #print-area { display: none; }
+
+        /* [Page] A4 Basis */
+        .page {
+            width: 210mm; height: 297mm; background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 14mm 15mm 20mm;
+            box-sizing: border-box; display: flex; flex-direction: column; position: relative;
+        }
+
         .page-exam-frame { position: absolute; top: 11.5mm; right: 11.5mm; bottom: 11.5mm; left: 11.5mm; border: 0.8pt solid #000; pointer-events: none; box-sizing: border-box; }
-        
-        .page-header {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 3px;
-            border: 0.8pt solid #000;
-            padding: 5px 8px 6px;
-            margin-bottom: 8px;
-            font-weight: 700;
-            font-size: 9.4pt;
-            line-height: 1.2;
-            background: #fff;
-        }
 
-        .page-header.page-header--exam {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            align-items: center;
-            column-gap: 18px;
-            row-gap: 0;
-            padding: 12px 14px 10px;
-        }
+        .page-header { display: flex; flex-direction: column; justify-content: center; gap: 3px; border: 0.8pt solid #000; padding: 5px 8px 6px; margin-bottom: 8px; font-weight: 700; font-size: 9.4pt; line-height: 1.2; background: #fff; }
 
-        .page-header-title {
-            text-align: center;
-            font-size: 15.5pt;
-            font-weight: 800;
-            letter-spacing: -0.01em;
-            line-height: 1.1;
-        }
+        .page-header.page-header--exam { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 18px; row-gap: 0; padding: 12px 14px 10px; }
 
-        .page-header.page-header--exam .page-header-title {
-            text-align: left;
-            font-size: 14.2pt;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            white-space: normal;
-            overflow: visible;
-            text-overflow: clip;
-            word-break: break-all;
-        }
+        .page-header-title { text-align: center; font-size: 15.5pt; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
 
-        .page-header-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 10px;
-            font-size: 9.2pt;
-        }
+        .page-header.page-header--exam .page-header-title { text-align: left; font-size: 14.2pt; line-height: 1.15; letter-spacing: -0.02em; white-space: normal; overflow: visible; text-overflow: clip; word-break: break-all; }
 
-        .page-header.page-header--exam .page-header-meta {
-            justify-content: flex-end;
-            align-items: center;
-            gap: 12px;
-            min-width: max-content;
-        }
+        .page-header-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; font-size: 9.2pt; }
 
-        .page-header-meta-left {
-            font-weight: 800;
-            white-space: nowrap;
-            letter-spacing: -0.01em;
-        }
+        .page-header.page-header--exam .page-header-meta { justify-content: flex-end; align-items: center; gap: 12px; min-width: max-content; }
 
-        .page-header.page-header--exam .page-header-meta-left {
-            display: none;
-        }
+        .page-header-meta-left { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
 
-        .page-header-meta-right {
-            display: flex;
-            align-items: flex-end;
-            gap: 14px;
-            white-space: nowrap;
-        }
+        .page-header.page-header--exam .page-header-meta-left { display: none; }
 
-        .page-header.page-header--exam .page-header-meta-right {
-            align-items: center;
-            gap: 12px;
-        }
-        
+        .page-header-meta-right { display: flex; align-items: flex-end; gap: 14px; white-space: nowrap; }
+
+        .page-header.page-header--exam .page-header-meta-right { align-items: center; gap: 12px; }
+
         .header-fill-line { display: inline-block; min-width: 78px; border-bottom: 0.8pt solid #000; height: 0.95em; vertical-align: bottom; margin-left: 4px; }
         .header-fill-line.header-fill-line--score { min-width: 34px; text-align: center; margin: 0 3px 0 4px; }
-
+        
+        /* [Grid] Exam Layout */
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow: hidden; height: 100%; min-height: 0; }
 
+        /* [Box] Question Style */
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
-        .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
 
+        /* [v1.9] 발문 가독성 및 이미지 분리 렌더 보정 */
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
-        .q-content img, .q-image-wrap img { display: block; max-width: 100%; height: auto; margin: 8px auto; break-inside: avoid; page-break-inside: avoid; }
+        
+        .q-content img, .q-image-wrap img { 
+            display: block; 
+            max-width: 100%; 
+            height: auto; 
+            margin: 8px auto; 
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        /* [v1.9] PNG 자동 축소 단계 클래스 */
         .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
         .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
         .q-content img.img-fit-micro, .q-image-wrap img.img-fit-micro { max-width: 76%; max-height: 90px; }
 
+        /* [v1.9] 보기(Choices) 시스템 */
         .choices { margin-top: 10px; font-size: 9pt; }
         .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
         .choice-no { width: 20px; flex-shrink: 0; font-weight: bold; }
         .choice-text { flex: 1; word-break: keep-all; overflow-wrap: anywhere; }
+
         .choices-compact { display: flex; flex-wrap: wrap; gap: 4px 15px; }
         .choices-compact .choice-item { min-width: 15%; }
+
         .choices-block { display: flex; flex-direction: column; gap: 5px; }
-        .choices-block .choice-item { padding: 0; background: transparent; border: none; border-radius: 0; }
+        .choices-block .choice-item {
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+        }
 
         .answer-box { flex: 1; border: none; margin-top: 10px; background: transparent; }
-        table.question-table { border-collapse: collapse; width: 100%; max-width: 280px; table-layout: fixed; font-size: 8.6pt; line-height: 1.35; margin: 8px 0; margin-left: 0; margin-right: auto; text-align: left; }
+
+        /* [v1.8] 발문 전용 표 규칙 */
+        table.question-table {
+            border-collapse: collapse; width: 100%; max-width: 280px;
+            table-layout: fixed; font-size: 8.6pt; line-height: 1.35;
+            margin: 8px 0; margin-left: 0; margin-right: auto; text-align: left;
+        }
         table.question-table th, table.question-table td { border: 1px solid #000; padding: 3px 5px; text-align: center; vertical-align: middle; word-break: break-word; }
         table.question-table th { font-weight: 700; }
-        
+
         .question-table-wrap { margin: 4px 0 8px 0; }
         .question-note-box, .box { margin: 4px 0 8px 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 4px; background: #f8fafc; line-height: 1.55; }
 
+        /* [Fit] Compression Classes */
+        .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
+        .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
+        .fit-micro { font-size: 8.1pt !important; line-height: 1.25 !important; }
+
+        /* [Solution] Styles */
+        .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
+        .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
+        .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
+        .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
+
+        /* [Answer Grid] Styles */
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
         .ans-n { width: 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
         .ans-v { flex: 1; font-weight: bold; font-size: 10.5pt; }
 
-        .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
-        .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
-        .fit-micro { font-size: 8.1pt !important; line-height: 1.25 !important; }
-
-        /* 기존 해설/정답 QR 스타일 */
         .page-qr {
             position: absolute;
             right: 15mm;
@@ -162,6 +188,7 @@
             background: #fff;
             padding: 1mm 0 0;
         }
+
         .page-qr-label {
             font-size: 7.6pt;
             font-weight: 700;
@@ -169,6 +196,7 @@
             color: #000;
             white-space: nowrap;
         }
+
         .page-qr canvas {
             display: block;
             width: 13.5mm;
@@ -176,11 +204,11 @@
             image-rendering: pixelated;
         }
 
-        /* 5A 추가: 오답 제출 전용 QR 스타일 */
+        /* [5C] AP Math OS 오답 제출용 QR 스타일 */
         .page-submit-qr {
             position: absolute;
             left: 15mm;
-            bottom: 12mm;
+            bottom: 17mm;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -224,9 +252,13 @@
         }
 
         @media print {
-            #mode-ctrl { display: none; }
+            #mode-ctrl { display: none !important; }
             body { margin: 0 !important; padding: 0 !important; background: white; }
-            #print-area { display: block !important; padding: 0 !important; }
+            
+            body:not(.mode-pdf) #print-area { display: block !important; gap: 0 !important; padding: 0 !important; }
+            body.mode-pdf #print-area { display: none !important; }
+            body.mode-pdf #pdf-container { display: block !important; height: auto !important; }
+            
             .page { box-shadow: none; height: 296.5mm; overflow: hidden; page-break-after: always; }
             .page:last-child { page-break-after: avoid; }
             #staging { display: none; }
@@ -235,27 +267,40 @@
 </head>
 <body>
     <div id="mode-ctrl">
-        <span id="ctrl-title">JS아카이브</span>
+        <span id="ctrl-title">믹서 로딩 중...</span>
         <div class="mode-tabs">
             <button class="mode-tab" id="btn-exam" onclick="switchMode('exam')">시험지</button>
             <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
-        <div style="display:flex; gap:10px; align-items:center;">
-            <span id="qpp-display" style="color:rgba(255,255,255,0.7); font-size:11px; font-weight:bold;"></span>
-            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄</button>
+        <div class="ctrl-right">
+            <div class="qpp-selector">
+                <span>문항/쪽:</span>
+                <select id="qppSelect" onchange="changeQpp(this.value)">
+                    <option value="2">2문항</option>
+                    <option value="4">4문항</option>
+                    <option value="6">6문항</option>
+                    <option value="8">8문항</option>
+                </select>
+            </div>
+            <button class="mode-tab" style="color:white;" onclick="shuffleData()">🔀 셔플</button>
+            <button class="mode-tab" id="btn-pdf-link" style="display:none; color:#fbbf24;">↗ PDF 새 탭</button>
+            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#378ADD; color:white; font-weight:bold; cursor:pointer;">인쇄 / PDF 저장</button>
         </div>
     </div>
+
+    <div id="pdf-container"><iframe id="pdf-viewer" src=""></iframe></div>
     <div id="print-area"></div>
-    <div id="staging" style="position:absolute;top:-9999px;left:0;visibility:hidden;width:83mm;"></div>
+    <div id="staging" style="position:absolute; top:-9999px; left:0; visibility:hidden; width:83mm;"></div>
 
 <script>
+/**
+ * Stage E Mixed Engine v1.6.2 (Rulebook v1.9 Final Fix + Image Field + Sol Reverted)
+ */
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
-
-const AppState = { data: [], mode: 'exam', qpp: 4, title: '' };
 
 const QR_PATCH = {
     enabled: true,
@@ -267,6 +312,7 @@ function buildQrTargetUrl() {
     const url = new URL(window.location.href);
     url.searchParams.set('mode', 'sol');
     url.searchParams.set('qr', '1');
+    url.searchParams.set('key', AppState.key);
     if (!url.searchParams.has('qpp')) {
         url.searchParams.set('qpp', String(AppState.qpp || 4));
     }
@@ -284,20 +330,17 @@ function isQrSolutionMode() {
 
 function applyQrSolutionLockUI() {
     if (!isQrSolutionMode()) return;
-
     const btnExam = document.getElementById('btn-exam');
     const btnAns = document.getElementById('btn-ans');
     const btnSol = document.getElementById('btn-sol');
-
     if (btnExam) btnExam.style.display = 'none';
     if (btnAns) btnAns.style.display = 'none';
     if (btnSol) {
         btnSol.classList.add('active');
         btnSol.style.pointerEvents = 'none';
     }
-
     const title = document.getElementById('ctrl-title');
-    if (title) title.innerText = 'JS아카이브 해설지';
+    if (title) title.textContent = 'JS아카이브 해설지';
 }
 
 function injectQrToLastExamPage(area) {
@@ -314,16 +357,12 @@ function injectQrToLastExamPage(area) {
 
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-qr';
-    qrWrap.innerHTML = `
-        <div class="page-qr-label">${QR_PATCH.label}</div>
-        <canvas></canvas>
-    `;
+    qrWrap.innerHTML = `<div class="page-qr-label">${QR_PATCH.label}</div><canvas></canvas>`;
 
     targetPage.appendChild(qrWrap);
 
-    const canvas = qrWrap.querySelector('canvas');
     new QRious({
-        element: canvas,
+        element: qrWrap.querySelector('canvas'),
         value: buildQrTargetUrl(),
         size: QR_PATCH.size,
         level: 'M',
@@ -332,10 +371,6 @@ function injectQrToLastExamPage(area) {
         padding: 0
     });
 }
-
-// =========================================================================
-// [5A] AP Math OS 제출용 QR 추가 기능 시작
-// =========================================================================
 
 function shouldRenderSubmitQr() {
     if (AppState.mode !== 'exam') return false;
@@ -350,7 +385,7 @@ function shouldRenderSubmitQr() {
 function buildSubmitQrTargetUrl() {
     const params = new URLSearchParams(window.location.search);
     const classId = params.get('class') || '';
-    
+
     let date = params.get('date') || '';
     if (!date) {
         const d = new Date();
@@ -359,19 +394,15 @@ function buildSubmitQrTargetUrl() {
         const day = String(d.getDate()).padStart(2, '0');
         date = `${year}-${month}-${day}`;
     }
-    
-    const q = params.get('q') || AppState.data.length || 0;
-    const exam = AppState.title || '시험지';
 
-    const url = new URL('./check/', window.location.href);
+    const q = params.get('q') || AppState.data.length || 0;
+    const exam = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
+
+    const url = new URL('../check/', window.location.href);
     if (classId) url.searchParams.set('class', classId);
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
     url.searchParams.set('q', q);
-
-    // [3B] archive_file 전달
-    const dataUrl = params.get('data') || '';
-    if (dataUrl) url.searchParams.set('archiveFile', dataUrl);
 
     return url.toString();
 }
@@ -393,9 +424,9 @@ function injectSubmitQrToLastExamPage(area) {
 
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-submit-qr';
-    
+
     const warnHtml = hasClass ? '' : `<div class="page-submit-qr-warn">반 정보 없음: AP Math OS 반 화면에서 생성한 QR 사용 권장</div>`;
-    
+
     qrWrap.innerHTML = `
         <div class="page-submit-qr-info">
             <div class="page-submit-qr-label">AP Math 오답 제출</div>
@@ -407,9 +438,8 @@ function injectSubmitQrToLastExamPage(area) {
 
     targetPage.appendChild(qrWrap);
 
-    const canvas = qrWrap.querySelector('canvas');
     new QRious({
-        element: canvas,
+        element: qrWrap.querySelector('canvas'),
         value: buildSubmitQrTargetUrl(),
         size: 150,
         level: 'M',
@@ -419,12 +449,9 @@ function injectSubmitQrToLastExamPage(area) {
     });
 }
 
-// =========================================================================
-// [5A] AP Math OS 제출용 QR 추가 기능 끝
-// =========================================================================
 
 // =========================================================================
-// [3H] class_exam_assignments 자동 등록 (AP 제출 QR 모드 전용)
+// [3H] class_exam_assignments 자동 등록 (AP 제출 QR 모드 전용, 믹서)
 // =========================================================================
 let _classExamAssignmentRegisteredSig = '';
 
@@ -446,7 +473,7 @@ function getAssignmentAuthHeader() {
 
 async function registerClassExamAssignmentToOS() {
     if (!shouldRenderSubmitQr()) return;
-    if (!AppState.data.length) return;
+    if (!AppState.data.length || !AppState.key) return;
 
     const params = new URLSearchParams(window.location.search);
     const classId = params.get('class') || '';
@@ -456,12 +483,12 @@ async function registerClassExamAssignmentToOS() {
     if (!authHeader) return;
 
     const examDate = params.get('date') || getKstTodayString();
-    const archiveFile = params.get('data') || '';
     const qCountRaw = params.get('q');
     const questionCount = parseInt(qCountRaw, 10) || AppState.data.length || 0;
-    const examTitle = AppState.title || window.examTitle || '시험지';
+    const examTitle = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
+    const archiveFile = 'MIXED:' + AppState.key;
 
-    const sig = [classId, examTitle, examDate, archiveFile, questionCount, 'archive'].join('|');
+    const sig = [classId, examTitle, examDate, archiveFile, questionCount, 'mixed'].join('|');
     if (sig === _classExamAssignmentRegisteredSig) return;
 
     try {
@@ -474,7 +501,7 @@ async function registerClassExamAssignmentToOS() {
                 exam_date: examDate,
                 question_count: questionCount,
                 archive_file: archiveFile,
-                source_type: 'archive'
+                source_type: 'mixed'
             })
         });
         if (!res.ok) {
@@ -487,8 +514,11 @@ async function registerClassExamAssignmentToOS() {
     }
 }
 
+const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '' };
+let pageCount = 0;
 
-function wrapLatex(text) {
+/** [성역] wrapLatex */
+function wrapLatexPreserveBlocks(text) {
     if (text == null) return '';
     let s = String(text);
     s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
@@ -521,24 +551,30 @@ function wrapLatex(text) {
     s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
     return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
 }
+function wrapLatex(text) { return wrapLatexPreserveBlocks(text); }
 
+/** [성역] autoCompress & fitQuestionBox */
 function autoCompress(container) {
     let fontSize = 9.5; let lineHeight = 1.58;
     while (container.scrollHeight > container.clientHeight + 1 && fontSize > 6.5) {
-        fontSize = Math.max(fontSize - 0.3, 6.5); lineHeight = Math.max(lineHeight - 0.08, 1.0);
-        container.style.fontSize = fontSize + 'pt'; container.style.lineHeight = String(lineHeight);
+        fontSize = Math.max(fontSize - 0.3, 6.5);
+        lineHeight = Math.max(lineHeight - 0.08, 1.0);
+        container.style.fontSize = fontSize + 'pt';
+        container.style.lineHeight = String(lineHeight);
     }
 }
-
 function fitQuestionBox(box) {
     const textClasses = ['', 'fit-tight', 'fit-tighter', 'fit-micro'];
     const imgClasses = ['', 'img-fit-tight', 'img-fit-tighter', 'img-fit-micro'];
+    
     const imgs = box.querySelectorAll('.q-content img, .q-image-wrap img');
+
     for (const tCls of textClasses) {
         box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
         if (tCls) box.classList.add(tCls);
         if (box.scrollHeight <= box.clientHeight + 1) return;
     }
+
     for (const iCls of imgClasses) {
         imgs.forEach(img => img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'));
         if (iCls) imgs.forEach(img => img.classList.add(iCls));
@@ -546,127 +582,15 @@ function fitQuestionBox(box) {
     }
 }
 
-function parseExamTitle(raw) {
-    if (!raw) return { year: '', school: '', grade: '', semester: '', examType: '', subject: '' };
-    const p = raw.split('_');
-    if (p.length < 2) return { year: '', school: '', grade: '', semester: '', examType: '', subject: raw };
-    return { year: p[0] ? (p[0].length === 2 ? '20' + p[0] + '년' : p[0] + '년') : '', school: p[1] || '', semester: p[2] || '', examType: p[3] || '', grade: p[4] || '', subject: p[5] || '' };
-}
-
-function normalizeSemesterLabel(value) {
-    const v = String(value || '').trim();
-    if (!v) return '';
-    return /학기$/.test(v) ? v : `${v}학기`;
-}
-
-function normalizeExamTypeLabel(value) {
-    const v = String(value || '').trim().toLowerCase();
-    if (!v) return '';
-    if (v === 'mid' || v === '중간' || v === '중간고사') return '중간고사';
-    if (v === 'final' || v === '기말' || v === '기말고사') return '기말고사';
-    return value;
-}
-
-function getExamTitleFull() {
-    if (window.examTitle) return window.examTitle;
-    if (AppState.title && AppState.title !== '수학 시험지') return AppState.title;
-    try {
-        const p = new URLSearchParams(window.location.search);
-        const dataUrl = p.get('data');
-        if (dataUrl) {
-            let filename = dataUrl.split('/').pop().split('?')[0];
-            filename = decodeURIComponent(filename).replace(/\.[^/.]+$/, "");
-            if (filename) return filename;
-        }
-    } catch(e) {}
-    return AppState.title || '수학 시험지';
-}
-
-function makePage(area, type, pNum) {
-    const page = document.createElement('div'); page.className = 'page';
-
-    if (type === 'exam') {
-        const frame = document.createElement('div'); frame.className = 'page-exam-frame';
-        page.appendChild(frame);
-    }
-
-    const showHeader = (type !== 'exam') || (pNum === 1);
-    if (showHeader) {
-        const header = document.createElement('div');
-        header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
-        const t = parseExamTitle(AppState.title);
-
-        if (type === 'exam') {
-            const headerTitle = getExamTitleFull();
-            header.innerHTML = `
-                <div class="page-header-title">${headerTitle}</div>
-                <div class="page-header-meta">
-                    <div class="page-header-meta-left"></div>
-                    <div class="page-header-meta-right">
-                        <span>이름<span class="header-fill-line"></span></span>
-                        <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
-                    </div>
-                </div>`;
-        } else {
-            const leftText = [t.year, t.school, t.grade, normalizeSemesterLabel(t.semester), normalizeExamTypeLabel(t.examType)].filter(Boolean).join(' | ') || AppState.title;
-            const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
-            header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${leftText}</div><div>${rightText}</div></div>`;
-        }
-
-        page.appendChild(header);
-    }
-    const body = document.createElement('div'); body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
-    page.appendChild(body); page.body = body;
-    const pageNum = document.createElement('div'); pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
-    pageNum.textContent = `- ${pNum} -`; page.appendChild(pageNum);
-    area.appendChild(page); return page;
-}
-
-async function init() {
-    const p = new URLSearchParams(window.location.search);
-    AppState.mode = p.get('mode') || 'exam'; AppState.qpp = parseInt(p.get('qpp')) || 4;
-    if (isQrSolutionMode()) AppState.mode = 'sol';
-    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
-    const targetBtn = document.getElementById('btn-' + AppState.mode); if (targetBtn) targetBtn.classList.add('active');
-    applyQrSolutionLockUI();
-
-    const qppDisp = document.getElementById('qpp-display');
-    if (qppDisp) qppDisp.innerText = `QPP: ${AppState.qpp}`;
-
-    const dataUrl = p.get('data'); if (!dataUrl) return;
-    const s = document.createElement('script'); s.src = dataUrl + '?v=' + Date.now();
-    s.onload = async () => {
-        const qb = window.questionBank;
-        AppState.data = Array.isArray(qb) ? qb : (qb?.questions || qb?.problems || []);
-        AppState.title = window.examTitle || p.get('title') || '수학 시험지';
-        document.getElementById('ctrl-title').innerText = AppState.title;
-        await render();
-    };
-    document.body.appendChild(s);
-}
-
-function switchMode(mode) {
-    if (isQrSolutionMode() && mode !== 'sol') {
-        mode = 'sol';
-    }
-    const url = new URL(window.location.href);
-    url.searchParams.set('mode', mode);
-    if (isQrSolutionMode()) url.searchParams.set('qr', '1');
-    window.location.href = url.toString();
-}
-
-function raf() { return new Promise(r => requestAnimationFrame(r)); }
-
+/** Helper: Choice & Content Handling */
 function extractChoice(c) {
-    if (c === null || c === undefined) return '';
-    if (typeof c === 'object') return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
+    if (c == null) return '';
+    if (typeof c === 'object') return c.text || c.content || c.value || Object.values(c)[0] || '';
     return String(c);
 }
-
 function stripChoicePrefix(text) {
     return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.(?!\d)|\d+\))\s*/, '').trim();
 }
-
 function detectChoiceRenderMode(choices) {
     if (!choices || choices.length === 0) return 'compact';
     const texts = choices.map(c => stripChoicePrefix(extractChoice(c)).trim());
@@ -675,7 +599,6 @@ function detectChoiceRenderMode(choices) {
     const hasSentences = texts.some(t => /[.?!]/.test(t) && t.length > 15);
     return (isLong || hasBlockPrefix || hasSentences) ? 'block' : 'compact';
 }
-
 function renderChoicesHTML(q) {
     const circled = ['①', '②', '③', '④', '⑤'];
     const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
@@ -687,11 +610,10 @@ function renderChoicesHTML(q) {
     }).join('');
     return `<div class="choices choices-${mode}">${itemsHTML}</div>`;
 }
-
 function formatQuestionContent(html, q) {
     if (!html) return '';
     let count = 0;
-    return html.replace(/([\.?\!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
+    return html.replace(/([\.?!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
         count++;
         if (count === 1) return match;
         if (p1.includes('br>') || p1.includes('\n')) return match;
@@ -719,6 +641,7 @@ function normalizeQuestionNotes(html) {
     );
 }
 
+/** [Image Field Handling] */
 function stripInlineImagesFromContent(content, hasImageField) {
     if (!content) return '';
     if (!hasImageField) return content;
@@ -732,11 +655,75 @@ function renderQuestionImageHTML(q) {
     return `<div class="q-image-wrap"><img src="${q.image}"></div>`;
 }
 
+/** UI Actions & Navigation */
+function switchMode(mode) {
+    if (isQrSolutionMode() && mode !== 'sol') return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', mode);
+    if (isQrSolutionMode()) url.searchParams.set('qr', '1');
+    window.location.href = url.toString();
+}
+function changeQpp(val) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('qpp', val);
+    window.location.href = url.toString();
+}
+async function shuffleData() {
+    for (let i = AppState.data.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [AppState.data[i], AppState.data[j]] = [AppState.data[j], AppState.data[i]];
+    }
+    await render();
+}
+
+/** Page Builder */
+function makePage(area, type, pNum) {
+    const page = document.createElement('div'); page.className = 'page';
+
+    if (type === 'exam') {
+        const frame = document.createElement('div'); frame.className = 'page-exam-frame';
+        page.appendChild(frame);
+    }
+
+    const showHeader = (type !== 'exam') || (pNum === 0 || pNum === 1);
+    if (showHeader) {
+        const header = document.createElement('div');
+        header.className = `page-header ${type === 'exam' ? 'page-header--exam' : ''}`;
+        const title = AppState.meta?.customTitle || AppState.meta?.title || 'JS아카이브 믹서 출제';
+
+        if (type === 'exam') {
+            header.innerHTML = `
+                <div class="page-header-title">${title}</div>
+                <div class="page-header-meta">
+                    <div class="page-header-meta-left"></div>
+                    <div class="page-header-meta-right">
+                        <span>이름<span class="header-fill-line"></span></span>
+                        <span>점수<span class="header-fill-line header-fill-line--score"></span>/ 100</span>
+                    </div>
+                </div>`;
+        } else {
+            const rightText = (type === 'sol') ? '[ 정답 및 해설 ]' : '[ 정답표 ]';
+            header.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;"><div style="flex:1;">${title}</div><div>${rightText}</div></div>`;
+        }
+
+        page.appendChild(header);
+    }
+
+    const body = document.createElement('div'); body.style.cssText = 'flex:1; display:flex; flex-direction:column; min-height:0;';
+    page.appendChild(body); page.body = body;
+    const pageNum = document.createElement('div'); pageNum.style.cssText = 'position:absolute; bottom:15mm; left:0; width:100%; text-align:center; font-size:9pt; color:#555;';
+    pageNum.textContent = `- ${pNum} -`; page.appendChild(pageNum);
+    area.appendChild(page); return page;
+}
+
+/** [PASS] renderExam - Rulebook v1.9 + Image Field Synchronized */
 async function renderExam(area, data) {
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
+
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box';
+        
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
         const formattedContent = normalizeQuestionNotes(
@@ -744,31 +731,41 @@ async function renderExam(area, data) {
                 formatQuestionContent(wrapLatex(rawContent), q)
             )
         );
+        
         const imageHTML = renderQuestionImageHTML(q);
         const choicesHTML = renderChoicesHTML(q);
+        
         box.innerHTML = `<div class="q-num">${i + 1}.</div>
                          <div class="q-content">${formattedContent}</div>
                          ${imageHTML}
                          ${choicesHTML}`;
+        
         staging.appendChild(box); return { q, box, originalIndex: i };
     });
+
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([staging]); await raf();
+
     for (const item of items) {
-        const p = {}; p.proxyHeight_raw = item.box.scrollHeight; item.box.classList.add('fit-tight'); await raf();
-        p.proxyHeight_tight = item.box.scrollHeight; item.box.classList.remove('fit-tight');
-        item.profile = p;
+        const p = {}; p.proxyHeight_raw = item.box.scrollHeight;
+        item.box.classList.add('fit-tight'); await raf();
+        p.proxyHeight_tight = item.box.scrollHeight;
+        item.box.classList.remove('fit-tight'); item.profile = p;
     }
+
     const tempPage = makePage(area, 'exam', 0);
     const usablePageHeight = tempPage.body.clientHeight;
-    area.removeChild(tempPage);
-    let firstPage = null; let pages = [];
+    area.removeChild(tempPage); pageCount = 0;
+
+    let pages = [];
     let currentPage = { blocks: [], usedHeight: 0 };
     let activeChunk = []; let currentType = null;
+
     const flushBlock = () => {
         if (activeChunk.length === 0) return;
         const type = currentType; const chunk = [...activeChunk];
         let hType = (type === 'normal') ? 'proxyHeight_tight' : 'proxyHeight_raw';
         let blockH;
+        
         if (type === 'wide') {
             blockH = chunk[0].profile.proxyHeight_raw + SE_OVERHEAD_COL + SE_OVERHEAD_GRID;
         } else {
@@ -777,21 +774,24 @@ async function renderExam(area, data) {
             const rightH = chunk.slice(split).reduce((s, it) => s + it.profile[hType], 0) + SE_OVERHEAD_COL;
             blockH = Math.max(leftH, rightH) + SE_OVERHEAD_GRID;
         }
+
         const isNormalForceBreak = (type === 'normal' && currentPage.blocks.length > 0);
         const gap = (currentPage.blocks.length > 0) ? SE_BLOCK_GAP : 0;
+        
         if ((isNormalForceBreak || (currentPage.usedHeight + gap + blockH > usablePageHeight)) && currentPage.blocks.length > 0) {
             pages.push(currentPage); currentPage = { blocks: [], usedHeight: 0 };
         }
         currentPage.usedHeight += (currentPage.blocks.length > 0 ? SE_BLOCK_GAP : 0) + blockH;
-        currentPage.blocks.push({ type, items: chunk, blockH });
-        activeChunk = [];
+        currentPage.blocks.push({ type, items: chunk, blockH }); activeChunk = [];
     };
+
     items.forEach(item => {
         const lt = item.q.layoutTag || '';
         let qType = 'normal'; let limit = AppState.qpp;
         if (item.q.wide === true || lt === 'fullwidth') { qType = 'wide'; limit = 1; }
         else if (lt === 'subjective-2up') { qType = 'subj2'; limit = 2; }
         else if (lt === 'subjective-4up') { qType = 'subj4'; limit = 4; }
+
         const isSpecialType = (qType === 'subj2' || qType === 'subj4' || qType === 'wide');
         const prevWasSpecial = (currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide');
         if ((currentType !== null && currentType !== qType) || (activeChunk.length >= limit) || ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)) {
@@ -803,34 +803,48 @@ async function renderExam(area, data) {
         activeChunk.push(item);
     });
     flushBlock(); if (currentPage.blocks.length > 0) pages.push(currentPage);
-    for (let pIdx = 0; pIdx < pages.length; pIdx++) {
-        const pageData = pages[pIdx];
-        const page = (!firstPage) ? (firstPage = makePage(area, 'exam', pNum)) : makePage(area, 'exam', ++pNum);
+
+    for (const pageData of pages) {
+        const page = makePage(area, 'exam', ++pageCount);
         pageData.blocks.forEach((block, bIdx) => {
             if (block.type === 'wide') {
-                const wideCol = document.createElement('div'); wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                wideCol.appendChild(block.items[0].box.cloneNode(true)); page.body.appendChild(wideCol);
+                const wideCol = document.createElement('div');
+                wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
+                wideCol.appendChild(block.items[0].box.cloneNode(true));
+                page.body.appendChild(wideCol);
             } else {
-                const bGrid = document.createElement('div'); bGrid.className = 'grid-container';
+                const bGrid = document.createElement('div');
+                bGrid.className = 'grid-container';
                 bGrid.style.flex = (block.type === 'normal') ? '1 1 0' : 'none';
                 if (bIdx < pageData.blocks.length - 1) bGrid.style.marginBottom = SE_BLOCK_GAP + 'px';
+
                 const bLeft = document.createElement('div'); bLeft.className = 'grid-col';
                 const bRight = document.createElement('div'); bRight.className = 'grid-col';
-                bGrid.appendChild(bLeft); bGrid.appendChild(bRight); page.body.appendChild(bGrid);
+                bGrid.appendChild(bLeft);
+                bGrid.appendChild(bRight);
+                page.body.appendChild(bGrid);
+
                 const split = Math.ceil(block.items.length / 2);
                 block.items.slice(0, split).forEach(it => bLeft.appendChild(it.box.cloneNode(true)));
                 block.items.slice(split).forEach(it => bRight.appendChild(it.box.cloneNode(true)));
             }
         });
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]); await raf();
-        const allPageBoxes = page.querySelectorAll('.q-box'); allPageBoxes.forEach(b => fitQuestionBox(b));
+
+        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
+        await raf();
+
+        const allPageBoxes = page.querySelectorAll('.q-box');
+        allPageBoxes.forEach(b => fitQuestionBox(b));
+
         if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
-            allPageBoxes.forEach(b => autoCompress(b)); await raf();
+            allPageBoxes.forEach(b => autoCompress(b));
+            await raf();
             if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([page]);
         }
     }
 }
 
+/** [성역] renderSol - 엄격한 원본 유지 (작업 범위 통제 준수) */
 async function renderSol(area, data) {
     let pNum = 1;
     function makeGridPage() {
@@ -842,120 +856,159 @@ async function renderSol(area, data) {
         return { p, cols: [l, r] };
     }
     let { cols } = makeGridPage(); let colIdx = 0;
+
+    async function placeSolutionBox(box) {
+        let placed = false;
+        while (!placed) {
+            const targetCol = cols[colIdx];
+            targetCol.appendChild(box);
+            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
+            await raf();
+
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                placed = true;
+                break;
+            }
+
+            autoCompress(box);
+            await raf();
+            if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([targetCol]);
+            await raf();
+
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                placed = true;
+                break;
+            }
+
+            const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
+            if (isOnlyBoxInColumn) {
+                placed = true;
+                break;
+            }
+
+            targetCol.removeChild(box);
+            if (colIdx === 0) {
+                colIdx = 1;
+            } else {
+                ({ cols } = makeGridPage());
+                colIdx = 0;
+            }
+        }
+    }
+
     for (let i = 0; i < data.length; i++) {
-        const q = data[i]; const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
+        const q = data[i];
+        const box = document.createElement('div'); box.className = 'q-box sol-box';
+        const solText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
+
         const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
         const reminderContent = normalizeQuestionNotes(
             normalizeQuestionTables(
                 formatQuestionContent(wrapLatex(reminderRawContent), q)
             )
         );
-        const box = document.createElement('div'); box.className = 'q-box sol-box';
-        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${wrapLatex(solutionText)}</div></div>`;
-        cols[colIdx].appendChild(box);
-        if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
-        if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
-            autoCompress(box); await raf();
-            if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
-                cols[colIdx].removeChild(box);
-                if (colIdx === 0) { colIdx = 1; cols[colIdx].appendChild(box); }
-                else { ({ cols } = makeGridPage()); colIdx = 0; cols[colIdx].appendChild(box); }
-                if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([cols[colIdx]]); await raf();
-            }
-        }
+        const reminderImageHTML = renderQuestionImageHTML(q);
+
+        box.innerHTML = `<div class="q-num">${i+1}.</div>
+                         <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
+                         ${reminderImageHTML}
+                         <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div><div class="sol-exp">${wrapLatex(solText)}</div></div>`;
+
+        await placeSolutionBox(box);
     }
 }
 
 function renderAns(area, data) {
-    const PER_PAGE = 50; let pCount = 1;
+    const PER_PAGE = 50;
+    let pCount = 1;
+
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
         const p = makePage(area, 'ans', pCount++);
-        const grid = document.createElement('div'); grid.className = 'ans-grid';
+        const grid = document.createElement('div');
+        grid.className = 'ans-grid';
         const splitIndex = Math.ceil(chunk.length / 2);
+
         for (let i = 0; i < splitIndex; i++) {
             [i, splitIndex + i].forEach(idx => {
                 if (chunk[idx]) {
-                    const u = document.createElement('div'); u.className = 'ans-cell';
-                    u.innerHTML = `<div class="ans-n">${start + idx + 1}.</div><div class="ans-v">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
+                    const u = document.createElement('div');
+                    u.className = 'ans-cell';
+                    u.innerHTML = `<div class=\"ans-n\">${start + idx + 1}.</div><div class=\"ans-v\">${wrapLatex(chunk[idx].answer ?? '–')}</div>`;
                     grid.appendChild(u);
                 }
             });
         }
+
         p.body.appendChild(grid);
     }
 }
 
 async function render() {
-    const area = document.getElementById('print-area');
-    area.innerHTML = '';
-
-    if (AppState.mode === 'ans') {
-        renderAns(area, AppState.data);
-    } else if (AppState.mode === 'sol') {
-        await renderSol(area, AppState.data);
-    } else {
-        await renderExam(area, AppState.data);
-    }
-
-    if (window.MathJax?.typesetPromise) {
-        await MathJax.typesetPromise([area]);
-    }
-
+    const area = document.getElementById('print-area'); area.innerHTML = '';
+    pageCount = 0;
+    if (AppState.mode === 'ans') renderAns(area, AppState.data);
+    else if (AppState.mode === 'sol') await renderSol(area, AppState.data);
+    else await renderExam(area, AppState.data);
+    if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
-    applyQrSolutionLockUI();
-    registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
-    registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 (비동기, 출력 차단 없음)
+    registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 — 비동기
 }
 
-// [3B] exam_blueprints 자동 등록 (AP 제출 QR 모드 전용)
-let _blueprintRegisteredSig = '';
+async function init() {
+    const p = new URLSearchParams(window.location.search);
+    AppState.key = p.get('key') || '';
+    const rawData = localStorage.getItem('mixedQuestions_' + AppState.key) || sessionStorage.getItem('mixedQuestions');
+    const rawMeta = localStorage.getItem('mixedMeta_' + AppState.key) || sessionStorage.getItem('mixedMeta');
 
-async function registerBlueprintToOS() {
-    if (!shouldRenderSubmitQr()) return;
-    if (!AppState.data.length) return;
-
-    const params = new URLSearchParams(window.location.search);
-    const archiveFile = params.get('data') || '';
-    if (!archiveFile) return;
-
-    // WARN1: 동일 내용 중복 POST 방지
-    const sig = archiveFile + '|' + AppState.data.map(q => q.id).join(',');
-    if (sig === _blueprintRegisteredSig) return;
-
-    let authHeader = {};
-    try {
-        const session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
-        if (!session?.login_id || !session?.raw_password) return;
-        authHeader = { 'Authorization': 'Basic ' + btoa(session.login_id + ':' + session.raw_password) };
-    } catch(e) { return; }
-
-    const getKey = window.getConceptClusterKey || (() => '__UNMAPPED__'); // WARN2
-
-    const items = AppState.data.map((q, i) => ({
-        question_no: i + 1,
-        source_archive_file: archiveFile,
-        source_question_no: q.id ?? (i + 1),
-        standard_unit_key: q.standardUnitKey || '',
-        standard_unit: q.standardUnit || '',
-        standard_course: q.standardCourse || '',
-        concept_cluster_key: getKey(q.standardUnitKey || '')
-    }));
+    if (!rawData) { alert('데이터가 없습니다.'); return; }
 
     try {
-        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/exam-blueprints', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', ...authHeader },
-            body: JSON.stringify({ archive_file: archiveFile, items })
-        });
-        if (!res.ok) console.warn('[3B] blueprint 등록 실패:', res.status);
-        else _blueprintRegisteredSig = sig;
-    } catch(e) {
-        console.warn('[3B] blueprint 등록 오류:', e);
+        const parsedData = JSON.parse(rawData);
+        AppState.data = Array.isArray(parsedData) ? parsedData : [];
+    } catch (e) {
+        console.error('mixedQuestions parse error:', e);
+        alert('문항 데이터를 읽지 못했습니다.');
+        return;
     }
-}
 
+    try {
+        AppState.meta = rawMeta ? JSON.parse(rawMeta) : {};
+    } catch (e) {
+        console.warn('mixedMeta parse error:', e);
+        AppState.meta = {};
+    }
+
+    if (!Array.isArray(AppState.data) || AppState.data.length === 0) {
+        alert('출력할 문항 데이터가 없습니다.');
+        return;
+    }
+
+    AppState.mode = p.get('mode') || 'exam';
+    if (isQrSolutionMode()) AppState.mode = 'sol';
+    applyQrSolutionLockUI();
+    
+    AppState.qpp = parseInt(p.get('qpp')) || AppState.meta.qpp || 4;
+
+    const title = AppState.meta.customTitle || AppState.meta.title || 'JS아카이브 믹서 출제';
+    document.getElementById('ctrl-title').textContent = title;
+    document.getElementById('qppSelect').value = String(AppState.qpp);
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.id === 'btn-' + AppState.mode));
+
+    const file = p.get('file');
+    if (AppState.mode === 'pdf' && file) {
+        document.body.classList.add('mode-pdf');
+        document.getElementById('pdf-viewer').src = file;
+        const link = document.getElementById('btn-pdf-link');
+        link.style.display = 'inline-block';
+        link.onclick = () => window.open(file, '_blank');
+        return;
+    }
+
+    await render();
+}
+function raf() { return new Promise(r => requestAnimationFrame(r)); }
 window.onload = init;
 </script>
 </body>
