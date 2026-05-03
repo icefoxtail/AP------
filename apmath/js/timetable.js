@@ -1,6 +1,6 @@
 /**
  * AP Math OS [js/timetable.js]
- * 전체 시간표 - 기존 반 카드 데이터 기반 PC 풀스크린 엑셀형 시간표
+ * 시간표 - 기존 반 카드 데이터 기반 PC 풀스크린 엑셀형 시간표
  * 원본 데이터: state.allDb / state.db
  * 새 DB 테이블 없음. timetable_cells / timetable_cell_students 생성 금지.
  *
