@@ -18,6 +18,23 @@ function injectStudentStyles() {
     document.head.appendChild(style);
 }
 
+// ── 신입/휴원 상태 헬퍼 ──────────────────────────────────────────
+function isStudentNewMember(s) {
+    if (!s) return false;
+    // 수동 태그 우선
+    if (String(s.memo || '').indexOf('#신입') !== -1) return true;
+    // 자동: 가장 최근 6월 1일 이후 등록한 학생 = 이번 학기 신입
+    const ca = s.created_at ? String(s.created_at).slice(0, 10) : '';
+    if (!ca) return false;
+    const now = new Date();
+    const m = now.getMonth() + 1; // 1–12
+    const cutoffYear = m >= 6 ? now.getFullYear() : now.getFullYear() - 1;
+    return ca >= (cutoffYear + '-06-01');
+}
+function isStudentOnLeave(s) {
+    return !!(s && (s.status === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
+}
+
 /**
  * 학생 상세 진입점 (기존 유지)
  */
@@ -31,6 +48,18 @@ async function renderStudentDetail(sid) {
     renderStudentDetailTab(sid, 'grade');
 }
 
+function returnFromStudentFlow(ctx = null) {
+    if (typeof returnToPreviousManagementView === 'function') {
+        return returnToPreviousManagementView('dashboard', ctx);
+    }
+
+    closeModal();
+    if (ctx?.type === 'addressBook' && typeof openAddressBook === 'function') return openAddressBook();
+    if (ctx?.type === 'classDetail' && ctx.classId && typeof renderClass === 'function') return renderClass(ctx.classId);
+    if (ctx?.type === 'studentDetail' && ctx.studentId && typeof renderStudentDetail === 'function') return renderStudentDetail(ctx.studentId);
+    if (typeof renderDashboard === 'function') return renderDashboard();
+}
+
 /**
  * 탭별 내용 렌더링 엔진 (UI Standard 적용)
  */
@@ -40,8 +69,9 @@ function renderStudentDetailTab(sid, tab) {
     const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
     const cls = state.db.classes.find(c => String(c.id) === String(mIds?.class_id));
     const returnCtx = state.ui.returnView || {};
+    if (returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
     const backButton = returnCtx.type
-        ? `<button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--secondary); cursor: pointer; white-space: nowrap;" onclick="returnToPreviousManagementView()">뒤로</button>`
+        ? `<button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--secondary); cursor: pointer; white-space: nowrap;" onclick="returnFromStudentFlow(state.ui.returnView)">뒤로</button>`
         : '';
 
     // 1. 프로필 헤더 (22px 대제목 및 고정 배지 규격)
@@ -255,6 +285,7 @@ function drawGradeChart(sid) {
  * 알림톡 문구 미리보기 (CTA 및 입력창 규격)
  */
 function openReportPreview(sid) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     const s = state.db.students.find(st => st.id === sid);
     const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
     
@@ -300,6 +331,7 @@ function openReportPreview(sid) {
  * 기존 기능 보존 및 규격화 (CRUD Flows)
  */
 function openAddConsultationModal(sid) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     const todayStr = new Date().toLocaleDateString('sv-SE');
     showModal('상담 기록 추가', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -322,10 +354,11 @@ async function handleSaveConsultation(sid) {
     const nextAction = document.getElementById('cns-action').value.trim();
     if (!content) { toast('내용을 입력하세요.', 'warn'); return; }
     const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction });
-    if (r.success) { toast('저장완료', 'success'); closeModal(); await loadData(); renderStudentDetailTab(sid, 'cns'); }
+    if (r.success) { toast('저장완료', 'success'); closeModal(true); await loadData(); renderStudentDetailTab(sid, 'cns'); }
 }
 
 function openEditConsultation(cid, sid) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     const c = state.db.consultations.find(x => x.id === cid);
     if (!c) return;
     showModal('상담 수정', `
@@ -355,7 +388,7 @@ async function handleEditConsultation(cid, sid) {
         const r = await api.patch(`consultations/${cid}`, { date, type, content, nextAction });
         if (r?.success) {
             toast('상담 기록이 수정되었습니다.', 'info');
-            closeModal();
+            closeModal(true);
             await loadData();
             renderStudentDetailTab(sid, 'cns');
             return;
@@ -396,7 +429,7 @@ async function handleDelete(sid) {
         if (r?.success) {
             toast('퇴원 처리되었습니다.', 'info');
             await loadData();
-            returnToPreviousManagementView('dashboard', returnCtx);
+            returnFromStudentFlow(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '퇴원 처리에 실패했습니다.', 'error');
@@ -416,7 +449,7 @@ async function handleRestore(sid) {
         if (r?.success) {
             toast('재원으로 복구되었습니다.', 'info');
             await loadData();
-            returnToPreviousManagementView('dashboard', returnCtx);
+            returnFromStudentFlow(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '재원 복구에 실패했습니다.', 'error');
@@ -468,17 +501,17 @@ async function handleResetSessionWrongs(eid, sid) {
 function sortClassesByGradeDesc(classes = []) {
     const gradeRank = (cls) => {
         const text = `${cls?.grade || ''} ${cls?.name || ''}`;
-        if (/고3/.test(text)) return 6;
-        if (/고2/.test(text)) return 5;
-        if (/고1/.test(text)) return 4;
-        if (/중3/.test(text)) return 3;
-        if (/중2/.test(text)) return 2;
         if (/중1/.test(text)) return 1;
-        return 0;
+        if (/중2/.test(text)) return 2;
+        if (/중3/.test(text)) return 3;
+        if (/고1/.test(text)) return 4;
+        if (/고2/.test(text)) return 5;
+        if (/고3/.test(text)) return 6;
+        return 99;
     };
 
     return [...classes].sort((a, b) => {
-        const diff = gradeRank(b) - gradeRank(a);
+        const diff = gradeRank(a) - gradeRank(b);
         if (diff !== 0) return diff;
         return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
     });
@@ -501,10 +534,15 @@ function syncEditStudentGrade() {
 
 function openEditStudent(sid, options = {}) {
     const s = state.db.students.find(st => st.id === sid);
-    if (options.returnTo) setModalReturnView(options.returnTo);
+    if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
     const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid))).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
-    
+
+    const isNew = isStudentNewMember(s);
+    const isLeave = isStudentOnLeave(s);
+    // memo에서 태그 제거하여 실제 메모만 표시
+    const cleanMemo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
+
     showModal('학생 정보 수정', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <input id="edit-name" class="std-input-base" value="${s.name}" placeholder="이름">
@@ -520,8 +558,18 @@ function openEditStudent(sid, options = {}) {
             <input id="edit-parent-phone" class="std-input-base" value="${s.parent_phone||''}" placeholder="학부모 전화번호">
             <input id="edit-guardian-rel" class="std-input-base" value="${s.guardian_relation||''}" placeholder="보호자 관계">
             <input id="edit-student-pin" class="std-input-base" value="${s.student_pin||''}" placeholder="PIN (4자리 숫자)" maxlength="4">
-            <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 80px;">${s.memo||''}</textarea>
-            <div style="margin-top: 10px;">
+            <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 64px;">${apEscapeHtml(cleanMemo)}</textarea>
+            <div style="display:flex; gap:20px; padding:4px 2px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:10px 14px;">
+                <label style="display:flex; align-items:center; gap:7px; font-size:13px; font-weight:700; cursor:pointer; color:${isNew ? '#1A5CFF' : 'var(--text)'};">
+                    <input type="checkbox" id="edit-is-new" ${isNew ? 'checked' : ''} style="accent-color:#1A5CFF; width:15px; height:15px; cursor:pointer;">
+                    <span>신입생</span>
+                </label>
+                <label style="display:flex; align-items:center; gap:7px; font-size:13px; font-weight:700; cursor:pointer; color:${isLeave ? '#FF8C00' : 'var(--text)'};">
+                    <input type="checkbox" id="edit-is-leave" ${isLeave ? 'checked' : ''} style="accent-color:#FF8C00; width:15px; height:15px; cursor:pointer;">
+                    <span>휴원</span>
+                </label>
+            </div>
+            <div style="margin-top: 4px;">
                 <button class="btn" style="width: 100%; min-height: 44px; color: var(--error); border: 1px solid rgba(255,71,87,0.2); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 12px;" onclick="handleDelete('${sid}')">퇴원(제적) 처리</button>
             </div>
         </div>
@@ -538,6 +586,17 @@ async function handleEditStudent(sid) {
     const cls = classId ? state.db.classes.find(c => String(c.id) === String(classId)) : null;
     const grade = cls ? (inferGradeFromClass(cls) || editGrade) : editGrade;
 
+    // 신입/휴원 태그를 memo에 반영
+    const rawMemo = document.getElementById('edit-memo')?.value || '';
+    const isNewChecked = document.getElementById('edit-is-new')?.checked || false;
+    const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
+    const cleanMemo = rawMemo.replace(/#신입/g, '').replace(/#휴원/g, '').trim();
+    const memoParts = [];
+    if (isNewChecked) memoParts.push('#신입');
+    if (isLeaveChecked) memoParts.push('#휴원');
+    if (cleanMemo) memoParts.push(cleanMemo);
+    const finalMemo = memoParts.join(' ').trim();
+
     const payload = {
         name: document.getElementById('edit-name')?.value || '',
         school_name: document.getElementById('edit-school')?.value || '',
@@ -546,7 +605,7 @@ async function handleEditStudent(sid) {
         student_phone: document.getElementById('edit-student-phone')?.value || '',
         parent_phone: document.getElementById('edit-parent-phone')?.value || '',
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
-        memo: document.getElementById('edit-memo')?.value || '',
+        memo: finalMemo,
         student_pin: pin
     };
 
@@ -555,7 +614,7 @@ async function handleEditStudent(sid) {
         if (r?.success) {
             toast('학생 정보가 수정되었습니다.', 'success');
             await loadData();
-            returnToPreviousManagementView('dashboard', returnCtx);
+            returnFromStudentFlow(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');
@@ -567,7 +626,7 @@ async function handleEditStudent(sid) {
 
 
 function openAddStudent(defaultCid = '', options = {}) {
-    if (options.returnTo) setModalReturnView(options.returnTo);
+    if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
     const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0)).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(defaultCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
     showModal('신규 학생 추가', `
         <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px 4px; box-sizing: border-box;">
@@ -615,7 +674,7 @@ async function handleAddStudent() {
         if (r?.success) {
             toast('학생이 추가되었습니다.', 'success');
             await loadData();
-            returnToPreviousManagementView('dashboard', returnCtx);
+            returnFromStudentFlow(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '학생 추가에 실패했습니다.', 'error');

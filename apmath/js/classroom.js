@@ -235,8 +235,60 @@ function renderClass(cid) {
     }
 }
 
+// 학년별 소단원 마스터 테이블 — 2022 개정 교육과정 기준
+// 중학교: 2022 개정 (M1/M2/M3)
+// 고등학교: 학년별 2022 개정 과정 통합 (고1=공통수학1+공통수학2, 고2=대수+미적분I, 고3=미적분II+확통+기하)
+var MATH_CURRICULUM_UNITS = {
+    '중1': [
+        '소인수분해','정수와 유리수','문자와 식','좌표평면과 그래프',
+        '기본도형','평면도형의 성질','입체도형의 성질','자료의 정리와 해석'
+    ],
+    '중2': [
+        '수와 식','일차부등식','연립일차방정식','일차함수와 그래프',
+        '도형의 성질','도형의 닮음','피타고라스 정리','확률'
+    ],
+    '중3': [
+        '실수와 그 계산','다항식의 곱셈과 인수분해','이차방정식',
+        '이차함수와 그래프','삼각비','원의 성질','통계'
+    ],
+    // 공통수학1 (H22-C) + 공통수학2 (H22-C2)
+    '고1': [
+        '다항식의 연산','항등식과 나머지 정리','인수분해',
+        '복소수와 이차방정식','이차방정식과 이차함수','여러 가지 방정식과 부등식',
+        '합의 법칙과 곱의 법칙','순열과 조합','행렬과 그 연산',
+        '평면좌표','직선의 방정식','원의 방정식','도형의 이동',
+        '집합','명제','함수','유리함수','무리함수'
+    ],
+    // 대수 (H22-A) + 미적분I (H22-M1)
+    '고2': [
+        '지수와 로그','지수함수','로그함수',
+        '삼각함수','사인법칙과 코사인법칙',
+        '등차수열과 등비수열','수열의 합','수학적 귀납법',
+        '함수의 극한','함수의 연속',
+        '미분계수','도함수','도함수의 활용',
+        '부정적분','정적분','정적분의 활용'
+    ],
+    // 미적분II (H22-M2) + 확률과 통계 (H22-PS) + 기하 (H22-GE)
+    '고3': [
+        '수열의 극한','급수',
+        '지수함수와 로그함수의 미분','삼각함수의 미분','여러 가지 미분법','도함수의 활용',
+        '여러 가지 적분법','정적분의 활용',
+        '순열과 조합','이항정리','확률의 뜻과 활용','조건부확률','확률분포','통계적 추정',
+        '이차곡선','이차곡선의 접선','공간도형','공간좌표',
+        '벡터의 연산','벡터의 성분','벡터의 내적','도형의 방정식'
+    ]
+};
+
+function _getClassGradeKey(cls) {
+    if (!cls) return '';
+    var text = String(cls.grade || '') + ' ' + String(cls.name || '');
+    var match = text.match(/(중1|중2|중3|고1|고2|고3)/);
+    return match ? match[1] : '';
+}
+
 // [UI Standard Applied]: 진도관리 모달 수동 보정
 function openClassRecordModal(cid) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId: cid });
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const allTextbooks = state.db.class_textbooks || [];
@@ -265,9 +317,38 @@ function openClassRecordModal(cid) {
         `;
     }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight: 700; line-height: 1.5;">활성 교재 없음</div>`;
 
-    const prevNote = existingRecord ? existingRecord.special_note : '';
+    const rawNote = existingRecord ? (existingRecord.special_note || '') : '';
+    // [단원선택] 줄 파싱 후 나머지를 special note 영역에 표시
+    const unitLineMatch = rawNote.match(/^\[단원선택\]([^\n]*)\n?/);
+    const prevSelectedUnits = unitLineMatch
+        ? unitLineMatch[1].split(',').map(u => u.trim()).filter(Boolean)
+        : [];
+    const prevNote = rawNote.replace(/^\[단원선택\][^\n]*\n?/, '').trim();
+
+    // 단원 선택 UI 생성
+    const gradeKey = _getClassGradeKey(cls);
+    const units = gradeKey ? (MATH_CURRICULUM_UNITS[gradeKey] || []) : [];
+    let unitsHtml = '';
+    if (units.length > 0) {
+        const unitChecks = units.map(u => {
+            const checked = prevSelectedUnits.indexOf(u) !== -1 ? 'checked' : '';
+            const safeU = u.replace(/"/g, '&quot;');
+            return `<label style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;cursor:pointer;padding:4px 8px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);white-space:nowrap;color:var(--text);">
+                <input type="checkbox" class="record-unit-check" value="${safeU}" ${checked} style="accent-color:var(--primary);cursor:pointer;">
+                ${safeU}
+            </label>`;
+        }).join('');
+        unitsHtml = `
+        <div style="margin-bottom: 20px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
+                <h4 style="margin:0;font-size:16px;font-weight:700;color:var(--text);line-height:1.3;">오늘 수업 단원 <span style="font-size:11px;font-weight:600;color:var(--secondary);">${gradeKey}</span></h4>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">${unitChecks}</div>
+        </div>`;
+    }
 
     showModal('진도관리', `
+        ${unitsHtml}
         <div style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
                 <h4 style="margin: 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">교재별 진도</h4>
@@ -279,7 +360,7 @@ function openClassRecordModal(cid) {
         </div>
         <div style="margin-bottom: 32px;">
             <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">특이사항</h4>
-            <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 110px; resize: none; padding: 14px; line-height: 1.6;">${prevNote}</textarea>
+            <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 100px; resize: none; padding: 14px; line-height: 1.6;">${apEscapeHtml(prevNote)}</textarea>
         </div>
         <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:700; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>
     `);
@@ -295,7 +376,12 @@ async function saveClassRecord(cid, dateStr) {
         const progText = progInput ? progInput.value.trim() : '';
         progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: tbTitle, progress_text: progText });
     });
-    const specialNote = document.getElementById('record-special-note')?.value.trim() || '';
+    // 선택된 단원을 special_note 앞에 [단원선택] 줄로 저장 (임시; 정식 DB 컬럼 확장 필요)
+    const selectedUnits = Array.from(document.querySelectorAll('.record-unit-check:checked')).map(cb => cb.value);
+    let specialNote = document.getElementById('record-special-note')?.value.trim() || '';
+    if (selectedUnits.length > 0) {
+        specialNote = '[단원선택] ' + selectedUnits.join(', ') + (specialNote ? '\n' + specialNote : '');
+    }
     let actualTeacherName = typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당');
     const payload = { class_id: cid, date: dateStr, teacher_name: actualTeacherName, special_note: specialNote, progress: progresses };
 
@@ -434,6 +520,7 @@ function makeExamDetailKey(title, date) {
 
 // [UI Standard Applied]: 시험 성적 리스트 수동 보정
 async function openExamGradeView(classId) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId });
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const activeCount = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원').length;
     let sessions = (state.db.exam_sessions || []).filter(es => ids.includes(String(es.student_id)));
@@ -485,20 +572,21 @@ async function openExamGradeView(classId) {
                     <div style="font-size: 20px; font-weight:700; color: var(--primary); line-height: 1;">${avg}</div>
                     <div style="font-size: 10px; color: var(--secondary); font-weight:700; margin-top:4px;">평균</div>
                 </div>
-                <button class="btn" onclick="event.stopPropagation(); if(typeof openOMR==='function') openOMR('', '${String(exam.title || '').replace(/'/g, "\\'")}', ${qCount || 20}, '${classId}', '', '${archiveArg}', 'examList', '${exam.date}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">입력</button>
+                <button class="btn" onclick="event.stopPropagation(); closeModal(true); if(typeof openOMR==='function') openOMR('', '${String(exam.title || '').replace(/'/g, "\\'")}', ${qCount || 20}, '${classId}', '', '${archiveArg}', 'examList', '${exam.date}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">입력</button>
             </div>
         </div>`;
     }).join('');
 
     showModal('시험성적', `
         <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
-            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 10px;" onclick="if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
+            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 10px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
         </div>
         ${rows || `<div style="text-align:center; padding:40px 20px; color:var(--secondary); font-size:13px; font-weight:700;">시험 기록 없음</div>`}
     `);
 }
 
 async function openExamDetail(classId, examTitle, examDate) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId });
     let sessionSource = state.db.exam_sessions || [];
     let wrongSource = state.db.wrong_answers || [];
     let assignmentSource = [];
@@ -557,7 +645,7 @@ async function openExamDetail(classId, examTitle, examDate) {
             </td>
             <td style="text-align: right; padding: 14px 12px;">
                 <div style="display: flex; gap: 6px; justify-content: flex-end;">
-                    <button class="btn" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
+                    <button class="btn" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
                     <button class="btn" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}')">삭제</button>
                 </div>
             </td>
@@ -568,7 +656,7 @@ async function openExamDetail(classId, examTitle, examDate) {
         <td style="padding: 14px 12px; color: var(--secondary); font-weight: 600; font-size: 14px;">${s.name}</td>
         <td colspan="2" style="text-align: center; font-size: 12px; color: var(--secondary); font-weight: 700; line-height: 1.5;">미제출</td>
         <td style="text-align: right; padding: 14px 12px;">
-            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:700; border-radius: 8px; min-height: 32px;" onclick="closeModal();openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
+            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:700; border-radius: 8px; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
         </td>
     </tr>`).join('');
 
@@ -606,7 +694,7 @@ async function deleteExamSession(sessionId, classId, examTitle, examDate) {
     const r = await api.delete('exam-sessions', sessionId);
     if (!r?.success) { toast('삭제 실패', 'warn'); return; }
     toast('기록이 삭제되었습니다.', 'info');
-    closeModal(); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate);
+    closeModal(true); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate);
 }
 
 async function deleteExamByClass(classId, examTitle, examDate) {
@@ -618,6 +706,6 @@ async function deleteExamByClass(classId, examTitle, examDate) {
         const data = await r.json();
         if (!r.ok || !data.success) { toast('시험 전체삭제 실패', 'warn'); return; }
         toast('시험 전체 기록이 삭제되었습니다.', 'info');
-        closeModal(); await refreshDataOnly(); openExamGradeView(classId);
+        closeModal(true); await refreshDataOnly(); openExamGradeView(classId);
     } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
 }

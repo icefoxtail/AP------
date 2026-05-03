@@ -184,6 +184,21 @@ function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
         closeModal(true);
         return renderStudentDetail(view.studentId);
     }
+    if (view.type === 'timetable' && typeof renderTimetable === 'function') {
+        closeModal(true);
+        return renderTimetable();
+    }
+    if (view.type === 'attendance') {
+        closeModal(true);
+        const attOv = document.getElementById('att-ledger-overlay');
+        if (attOv) {
+            attOv.style.display = 'flex';
+            attOv.style.flexDirection = 'column';
+        } else if (typeof openAttendanceLedger === 'function') {
+            openAttendanceLedger();
+        }
+        return;
+    }
 
     closeModal(true);
     if (fallback === 'dashboard' && typeof renderDashboard === 'function') return renderDashboard();
@@ -193,6 +208,7 @@ function closeModal(suppressReturn = false) {
     const overlay = document.getElementById('modal-overlay');
     if (!overlay) return;
     if (!state.ui) state.ui = {};
+    if (suppressReturn) state.ui.modalReturnView = null;
     const shouldReturn = !suppressReturn && !!state.ui.modalReturnView;
     const returnCtx = shouldReturn ? state.ui.modalReturnView : null;
     if (shouldReturn) state.ui.modalReturnView = null;
@@ -445,7 +461,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('', '메모', "closeAppDrawer(); openTodoMemoModal();")}
         ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
         ${drawerItem('', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
-        ${drawerItem('', '전체 시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '시험성적', "closeAppDrawer(); openExamScoreMenu();")}
