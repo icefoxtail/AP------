@@ -134,7 +134,7 @@ function generateQrCode() {
     localStorage.setItem('AP_LAST_EXAM_NAME', exam);
     if (archiveFile) localStorage.setItem('AP_LAST_ARCHIVE_FILE', archiveFile);
 
-    toast('QR 코드가 생성되었습니다.', 'success');
+    toast('QR 코드가 생성되었습니다.', 'info');
 
     const bindTodayExam = confirm('이 시험을 오늘 마감 기준으로 설정할까요?');
     if (bindTodayExam) {
@@ -177,7 +177,7 @@ function copyQrUrl() {
     const url = document.getElementById('qr-url')?.innerText || '';
     if (!url) return;
     navigator.clipboard.writeText(url).then(() => {
-        toast('URL 복사 완료!', 'success');
+        toast('URL 복사 완료!', 'info');
         const btn = document.querySelector('#qr-result-area .btn:not(.btn-primary)');
         if (btn) {
             const t = btn.innerText;
@@ -226,26 +226,6 @@ function findExamQuestionCount(examTitle = '', classId = '') {
     return found ? parseInt(found.question_count) : 0;
 }
 
-function registerMissingExamReportPayload(studentId, missingExamInfo) {
-    if (!state.ui) state.ui = {};
-    if (!state.ui.missingExamReportPayloads) state.ui.missingExamReportPayloads = {};
-    const key = `missing_${studentId}_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    state.ui.missingExamReportPayloads[key] = missingExamInfo || {};
-    return key;
-}
-
-function openMissingExamReport(studentId, payloadKey) {
-    const missingExamInfo = state.ui?.missingExamReportPayloads?.[payloadKey] || null;
-    if (typeof openStudentReportModal === 'function') {
-        openStudentReportModal(studentId, {
-            missingExamInfo,
-            title: '\uBBF8\uC751\uC2DC \uD559\uC0DD \uBB38\uAD6C \uC0DD\uC131'
-        });
-        return;
-    }
-    toast('\uBCF4\uACE0 \uBB38\uAD6C \uBAA8\uB4C8\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
-}
-
 /**
  * 시험 제출 현황 모달 오픈
  */
@@ -277,18 +257,6 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
     const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
-    const inferredQCount = findExamQuestionCount(examTitle, classId);
-    const lastArchiveFile = normalizeQrArchiveFile(localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '');
-    const safeArchiveFileForJs = String(lastArchiveFile).replace(/'/g, "\\'");
-    const missingExamPayloadKeys = {};
-    pending.forEach(s => {
-        missingExamPayloadKeys[String(s.id)] = registerMissingExamReportPayload(s.id, {
-            examTitle,
-            examDate: safeDate,
-            classId,
-            questionCount: inferredQCount || 0
-        });
-    });
 
     showModal('제출 현황', `
         <div style="background:var(--bg);padding:14px 18px;border-radius:14px;font-size:13px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
@@ -318,7 +286,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;">
             <table style="width:100%;font-size:14px;">
-                ${pending.map(s => { const payloadKey = missingExamPayloadKeys[String(s.id)] || ''; return `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:700;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><div style="display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap;"><button class="btn btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:700;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${inferredQCount}, '${classId}', '', '${safeArchiveFileForJs}', 'class', '${safeDate}')">\uC131\uC801 \uC785\uB825</button><button class="btn" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:700;border-radius:10px;background:var(--surface-2);border:none;color:var(--primary);" onclick="event.stopPropagation(); openMissingExamReport('${s.id}', '${payloadKey}')">\uBB38\uAD6C \uC0DD\uC131</button></div></td></tr>`; }).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
+                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:700;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:700;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}')">\uC131\uC801 \uC785\uB825</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
             </table>
         </div>
     `);
@@ -327,21 +295,22 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 /**
  * 성적 직접 입력 모달 (OMR) 오픈
  */
-function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', sessionId = '', presetArchiveFile = '', returnMode = '', returnExamDate = '') {
+function openOMR(sid, presetTitle = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
-    const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
     
-    const inferredQ = session?.question_count || presetQ || findExamQuestionCount(presetTitle, presetClassId) || todayExam?.q || 20;
+    const mapObj = state.db.class_students.find(m => m.student_id === sid);
+    const classId = mapObj ? mapObj.class_id : '';
+    
+    // [Fix 1] 동적 문항수(q) 처리 로직 (시그니처 확장 없이)
+    const inferredQ = todayExam?.q || findExamQuestionCount(presetTitle, classId) || 20;
     const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
 
     const defaultArchiveFile = normalizeQrArchiveFile(
-        session?.archive_file || presetArchiveFile || localStorage.getItem('AP_LAST_ARCHIVE_FILE') || ''
+        localStorage.getItem('AP_LAST_ARCHIVE_FILE') || ''
     );
 
-    const checkedWrongIds = sessionId 
-        ? state.db.wrong_answers.filter(w => w.session_id === sessionId).map(w => String(w.question_id))
-        : [];
+    const checkedWrongIds = [];
 
     showModal('성적 직접 입력', `
         <div style="display:flex;flex-direction:column;gap:18px;">
@@ -368,7 +337,7 @@ function openOMR(sid, presetTitle = '', presetQ = 0, presetClassId = '', session
                 </div>
             </div>
         </div>
-    `, '저장', () => handleOMRSave(sid, presetClassId, sessionId, returnMode, returnExamDate));
+    `, '저장', () => handleOMRSave(sid));
 }
 
 /**
@@ -420,29 +389,24 @@ function rebuildOmrGrid() {
     if (wrap) wrap.innerHTML = `<div class="omr-grid" style="gap:14px;">${buildOmrItems(q, currentChecked)}</div>`;
 }
 
-async function handleOMRSave(sid, presetClassId = '', sessionId = '', returnMode = '', returnExamDate = '') {
+async function handleOMRSave(sid) {
     const title = document.getElementById('omr-title').value.trim();
-    let q = parseInt(document.getElementById('omr-q').value) || 20;
+    // [Fix 2] 점수 계산 및 리로드 경량화 적용
+    let q = parseInt(document.getElementById('omr-q')?.value) || 10;
     q = Math.max(1, Math.min(50, q)); 
 
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
-    const score = Math.round(((q - wrs.length) / q) * 100);
+    const score = Math.round((q - wrs.length) * (100 / q));
     
     let archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
     
-    const session = sessionId ? state.db.exam_sessions.find(es => es.id === sessionId) : null;
-
-    if (!archiveFile) {
-        archiveFile = normalizeQrArchiveFile(session?.archive_file || '');
-    }
-    
-    let classId = presetClassId || state.ui?.currentClassId;
+    let classId = state.ui?.currentClassId;
     if (!classId) {
         const mapObj = state.db.class_students.find(m => m.student_id === sid);
         classId = mapObj ? mapObj.class_id : null;
     }
 
-    const savedExamDate = returnExamDate || session?.exam_date || new Date().toLocaleDateString('sv-SE');
+    const savedExamDate = new Date().toLocaleDateString('sv-SE');
 
     const payload = {
         student_id: sid, 
@@ -459,7 +423,7 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '', returnMode
         localStorage.setItem('AP_LAST_ARCHIVE_FILE', archiveFile);
     }
     
-    const endpoint = sessionId ? `exam-sessions/${sessionId}` : 'exam-sessions/new';
+    const endpoint = 'exam-sessions/new';
     const r = await api.patch(endpoint, payload);
     
     if (!r?.success) {
@@ -467,16 +431,14 @@ async function handleOMRSave(sid, presetClassId = '', sessionId = '', returnMode
         return;
     }
     
-    toast(`저장완료 (${score}점)`, 'success'); 
+    toast(`저장완료 (${score}점)`, 'info'); 
     closeModal(); 
+    
+    // 전체 loadData() 대신 부분 갱신 및 가벼운 라우팅으로 성능 최적화
     await refreshDataOnly();
 
-    if (returnMode === 'examDetail') {
-        openExamDetail(classId, title, savedExamDate);
-    } else if (returnMode === 'studentGrade') {
-        renderStudentDetailTab(sid, 'grade');
-    } else if (classId) {
-        renderClass(classId);
+    if (state.ui.currentClassId) {
+        renderClass(state.ui.currentClassId);
     } else {
         renderDashboard();
     }
