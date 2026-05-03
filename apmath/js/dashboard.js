@@ -48,7 +48,7 @@ function apFormatMonthDay(value) {
 }
 
 // [Partner B] 해당 반이 오늘 수업이 있는 날인지 판정하는 헬퍼
-function isClassScheduledToday(cid) {
+function isClassScheduledTodayForDashboard(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
     // 수업 요일 설정이 없으면 매일 수업으로 간주
@@ -197,30 +197,23 @@ function computeRiskStudents() {
 }
 
 // [Final Fix] 운영메뉴 퇴원생 버튼과 연동
-function openDischargedStudents() {
+function openAdminDischargedStudents() {
     openAdminStudentList('discharged');
 }
 
-const HIDDEN_DISCHARGED_STUDENTS_KEY = 'APMATH_HIDDEN_DISCHARGED_STUDENTS';
-
-function getHiddenDischargedStudentIds() {
-    try {
-        const parsed = JSON.parse(localStorage.getItem(HIDDEN_DISCHARGED_STUDENTS_KEY) || '[]');
-        return Array.isArray(parsed) ? parsed.map(String) : [];
-    } catch (e) {
-        return [];
+function openRiskStudentReport(studentId) {
+    const risks = typeof computeRiskStudents === 'function' ? computeRiskStudents() : [];
+    const risk = risks.find(r => String(r.student?.id) === String(studentId));
+    if (typeof openStudentReportModal === 'function') {
+        openStudentReportModal(studentId, { riskInfo: risk || null, title: '\uAD00\uB9AC\uD544\uC694 \uD559\uC0DD \uBB38\uAD6C \uC0DD\uC131' });
+        return;
     }
+    toast('\uBCF4\uACE0 \uBB38\uAD6C \uBAA8\uB4C8\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
 }
-
-function setHiddenDischargedStudentIds(ids) {
-    localStorage.setItem(HIDDEN_DISCHARGED_STUDENTS_KEY, JSON.stringify([...new Set(ids.map(String))]));
-}
-
 async function restoreDischargedStudent(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const r = await api.patch(`students/${sid}/restore`, {});
     if (r?.success) {
-        setHiddenDischargedStudentIds(getHiddenDischargedStudentIds().filter(id => id !== String(sid)));
         await loadData();
         openAdminStudentList('discharged');
     } else {
@@ -228,15 +221,15 @@ async function restoreDischargedStudent(sid) {
     }
 }
 
-function hideDischargedStudent(sid) {
+async function hideDischargedStudent(sid) {
     if (!confirm('이 퇴원생을 목록에서 숨기시겠습니까?')) return;
-    setHiddenDischargedStudentIds([...getHiddenDischargedStudentIds(), String(sid)]);
-    openAdminStudentList('discharged');
-}
-
-function resetHiddenDischargedStudents() {
-    localStorage.removeItem(HIDDEN_DISCHARGED_STUDENTS_KEY);
-    openAdminStudentList('discharged');
+    const r = await api.patch(`students/${sid}/hide`, {});
+    if (r?.success) {
+        await loadData();
+        openAdminStudentList('discharged');
+    } else {
+        toast(r?.message || r?.error || '숨김 처리에 실패했습니다.', 'error');
+    }
 }
 
 function openAdminStudentList(type) {
@@ -256,8 +249,7 @@ function openAdminStudentList(type) {
         }); 
         title = "신규생 목록"; 
     } else if (type === 'discharged') { 
-        const hiddenIds = new Set(getHiddenDischargedStudentIds());
-        list = state.db.students.filter(s => s.status === '제적' && !hiddenIds.has(String(s.id))); 
+        list = state.db.students.filter(s => s.status === '제적'); 
         title = "퇴원생 목록"; 
     } else if (type === 'risk') { 
         list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
@@ -269,15 +261,25 @@ function openAdminStudentList(type) {
         const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
         let riskDetails = "";
         if (s.riskInfo) { riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:6px; background:rgba(255,71,87,0.08); padding:6px 8px; border-radius:6px; font-weight:600;">상태: ${s.riskInfo.riskTypes.join(', ')} <span style="opacity:0.7; font-weight:normal;">(${s.riskInfo.reasons.join(' · ')})</span></div>`; }
-        const actionButtons = type === 'discharged'
-            ? `
+        let actionButtons = '';
+        if (type === 'discharged') {
+            actionButtons = `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
-                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">재원 복구</button>
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">숨김</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">\uC7AC\uC6D0 \uBCF5\uAD6C</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">\uC228\uAE40</button>
                 </div>
-            `
-            : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>`;
+            `;
+        } else if (type === 'risk') {
+            actionButtons = `
+                <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
+                    <button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>
+                    <button class="btn btn-primary" style="min-height:36px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${s.id}')">\uBB38\uAD6C \uC0DD\uC131</button>
+                </div>
+            `;
+        } else {
+            actionButtons = `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">\uC0C1\uC138 \uBCF4\uAE30</button>`;
+        }
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
@@ -290,11 +292,7 @@ function openAdminStudentList(type) {
         `;
     }).join('');
 
-    const hiddenReset = type === 'discharged' && getHiddenDischargedStudentIds().length
-        ? `<div style="display:flex; justify-content:flex-end; padding:0 4px 8px;"><button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="resetHiddenDischargedStudents()">숨김 목록 초기화</button></div>`
-        : '';
-
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenReset}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 function renderAdminControlCenter() {
@@ -315,7 +313,7 @@ function renderAdminControlCenter() {
     const headerHtml = `
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
             <div style="display:flex; align-items:center; gap:10px;">
-                <button class="btn" style="width:40px; height:40px; padding:0; font-size:24px; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
+                <button class="btn" style="width:40px; height:40px; padding:0; font-size:22px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
                 <div>
                     <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">운영센터</div>
                 </div>
@@ -378,7 +376,7 @@ function renderAdminControlCenter() {
                     <div style="font-weight:700; color:var(--text); font-size:14px;">${apEscapeHtml(r.student.name)}</div>
                     <div style="font-size:12px; color:var(--error); font-weight:600; margin-top:4px;">${apEscapeHtml(r.className)} · ${apEscapeHtml(r.reasons.slice(0,2).join(' · '))}</div>
                 </div>
-                <span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">상세 보기</span>
+                <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;"><button class="btn btn-primary" style="min-height:36px; padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none;" onclick="event.stopPropagation(); openRiskStudentReport('${r.student.id}')">\uBB38\uAD6C \uC0DD\uC131</button><span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">\uC0C1\uC138 \uBCF4\uAE30</span></div>
             </div>
         </div>
     `).join('');
@@ -394,8 +392,11 @@ function renderAdminControlCenter() {
 }
 
 function renderAdminStudentSearch() {
-    const keyword = document.getElementById('admin-search-input').value.trim().toLowerCase();
+    const inputEl = document.getElementById('admin-search-input');
     const resultArea = document.getElementById('admin-search-results');
+    if (!inputEl || !resultArea) return;
+
+    const keyword = inputEl.value.trim().toLowerCase();
     if (!keyword) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">검색어를 입력하세요.</div>`; return; }
     
     const results = state.db.students.filter(s => s.name.toLowerCase().includes(keyword));
@@ -479,7 +480,7 @@ function computeDashboardData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
-        return isClassScheduledToday(cid); // [Partner B] 요일 필터 적용
+        return isClassScheduledTodayForDashboard(cid);
     });
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
@@ -510,7 +511,7 @@ function computeDashboardData() {
         });
         
         let cPre = cActiveIds.length - cAbs;
-        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledToday(c.id) };
+        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledTodayForDashboard(c.id) };
     });
 
     return { 
@@ -691,23 +692,20 @@ function renderTodayJournalCard(data) {
     `;
 }
 
-// [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
 function renderDashboard() {
     state.ui.currentClassId = null;
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const data = computeDashboardData();
     const root = document.getElementById('app-root');
 
-    // [NEW] 최상단 숏컷 카드 (시간표, 출석부)
+    // [NEW] 최상단 숏컷 카드 (아이콘 제거 및 하단 카드와 디자인 100% 동기화)
     const shortcutRow = `
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
-            <div onclick="if(typeof openExamScheduleModal === 'function') openExamScheduleModal(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; gap:8px;">
-                <span style="font-size:18px;">📅</span>
-                <span style="font-size:15px; font-weight:700; color:var(--text);">시간표</span>
+            <div onclick="if(typeof openExamScheduleModal === 'function') openExamScheduleModal(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">시간표</span>
             </div>
-            <div onclick="if(typeof renderAttendanceLedger === 'function') renderAttendanceLedger(); else if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; gap:8px;">
-                <span style="font-size:18px;">📝</span>
-                <span style="font-size:15px; font-weight:700; color:var(--text);">출석부</span>
+            <div onclick="if(typeof renderAttendanceLedger === 'function') renderAttendanceLedger(); else if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">출석부</span>
             </div>
         </div>
     `;
@@ -743,7 +741,7 @@ function computeTodayCloseData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
-        return isClassScheduledToday(cid);
+        return isClassScheduledTodayForDashboard(cid);
     });
 
     const absents = [];
@@ -1203,5 +1201,3 @@ function renderAdminTeacherStudents(teacherName) {
     html += '</div>';
     showModal(`${apEscapeHtml(teacherName)} 선생님 학생`, html);
 }
-// [Button Audit Patch] Split-module duplicate handlers removed from dashboard.js.
-// Source of truth: management.js, textbook.js, memo.js, schedule.js.
