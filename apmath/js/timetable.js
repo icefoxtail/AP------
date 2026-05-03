@@ -442,7 +442,11 @@ function renderTimetableGrid(section) {
     if (!wrapper) return;
 
     var db = _getAllDb();
-    var allClasses = (db.classes || []).filter(function(c) { return Number(c.is_active) !== 0; });
+    var timetableSource = (Array.isArray(db.timetable_classes) && db.timetable_classes.length > 0)
+        ? db.timetable_classes
+        : (db.classes || []);
+
+    var allClasses = timetableSource.filter(function(c) { return Number(c.is_active) !== 0; });
 
     var sClasses = allClasses.filter(function(cls) {
         return getTimetableSectionForClass(cls) === section;

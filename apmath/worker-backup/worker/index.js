@@ -206,10 +206,10 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp;
+          let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses;
 
           if (isAdminUser(teacher)) {
-            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp] = await Promise.all([
+            [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
               env.DB.prepare('SELECT * FROM class_students').all(),
@@ -227,11 +227,13 @@ export default {
               env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC').all(),
               env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all(),
               env.DB.prepare('SELECT * FROM class_daily_records ORDER BY date DESC, created_at DESC LIMIT 1000').all(),
-              env.DB.prepare('SELECT * FROM class_daily_progress ORDER BY created_at ASC LIMIT 3000').all()
+              env.DB.prepare('SELECT * FROM class_daily_progress ORDER BY created_at ASC LIMIT 3000').all(),
+              env.DB.prepare('SELECT id, name, grade, subject, teacher_name, schedule_days, time_label, textbook, is_active FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name').all()
             ]);
           } else {
             const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
             const classIds = tcls.results.map(r => r.class_id);
+            timetableClasses = await env.DB.prepare('SELECT id, name, grade, subject, teacher_name, schedule_days, time_label, textbook, is_active FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name').all();
             
             opm = await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
@@ -262,7 +264,8 @@ export default {
                 journals: jou.results,
                 class_textbooks: [],
                 class_daily_records: [],
-                class_daily_progress: []
+                class_daily_progress: [],
+                timetable_classes: timetableClasses.results
               }), { headers });
             }
             
@@ -320,7 +323,8 @@ export default {
             journals: jou.results,
             class_textbooks: txt.results,
             class_daily_records: cdr.results,
-            class_daily_progress: cdp.results
+            class_daily_progress: cdp.results,
+            timetable_classes: timetableClasses.results
           }), { headers });
         }
 
