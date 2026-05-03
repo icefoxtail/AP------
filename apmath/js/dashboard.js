@@ -297,6 +297,19 @@ function openAdminStudentList(type) {
     showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenReset}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
+function renderDashboardQuickAccess() {
+    return `
+        <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; margin-bottom:18px;">
+            <button class="btn btn-primary" style="min-height:56px; font-size:15px; font-weight:800; border-radius:16px;" onclick="if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 모듈을 불러오지 못했습니다.', 'warn');">
+                시간표
+            </button>
+            <button class="btn" style="min-height:56px; font-size:15px; font-weight:800; border-radius:16px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else toast('출석부 모듈을 불러오지 못했습니다.', 'warn');">
+                출석부
+            </button>
+        </div>
+    `;
+}
+
 function renderAdminControlCenter() {
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const root = document.getElementById('app-root');
@@ -390,7 +403,7 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    root.innerHTML = headerHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
+    root.innerHTML = headerHtml + renderDashboardQuickAccess() + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
 }
 
 function renderAdminStudentSearch() {
@@ -739,7 +752,7 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${todayJournalCard}${todoSections}${classStatus}</div>`;
+    root.innerHTML = `<div style="width:100%; max-width:none; margin:0; padding:0 16px 24px; box-sizing:border-box;">${renderDashboardQuickAccess()}${todayJournalCard}${todoSections}${classStatus}</div>`;
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
@@ -1043,7 +1056,7 @@ function openDailyJournalModal(dateStr) {
 
 async function saveJournal(status, existingId = null, targetDate) {
     const el = document.getElementById('journal-content');
-    if (!el) return toast('일지 입력칸을 찾을 수 없습니다.', 'warn');
+    if (!el) return toast('일지 입력칸을 찾을 수문을 찾을 수 없습니다.', 'warn');
 
     const content = el.value;
     const journals = state.db.journals || [];
@@ -1211,5 +1224,3 @@ function renderAdminTeacherStudents(teacherName) {
     html += '</div>';
     showModal(`${apEscapeHtml(teacherName)} 선생님 학생`, html);
 }
-// [Button Audit Patch] Split-module duplicate handlers removed from dashboard.js.
-// Source of truth: management.js, textbook.js, memo.js, schedule.js.

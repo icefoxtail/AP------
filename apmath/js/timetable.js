@@ -23,9 +23,9 @@ var TIMETABLE_STUDENT_SLOT_COUNT = 8;
 var TIMETABLE_FIXED_TEACHERS = ['정겨운', '정의한', '박준성'];
 var TIMETABLE_MIDDLE_DAY_GROUPS = ['mwf', 'ttf'];
 var TIMETABLE_MIDDLE_PERIODS = [
-    { key: '1교시', label: '1교시', time: '4:20~5:50' },
-    { key: '2교시', label: '2교시', time: '6:00~7:30' },
-    { key: '3교시', label: '3교시', time: '7:40~9:10' }
+    { key: '1교시', label: '1교시', time: '4:50~6:20' },
+    { key: '2교시', label: '2교시', time: '6:30~8:00' },
+    { key: '3교시', label: '3교시', time: '8:00~9:30' }
 ];
 var TIMETABLE_HIGH_GRADES = ['고1', '고2', '고3'];
 
@@ -171,7 +171,6 @@ function getTimetableHighGrade(cls) {
 }
 
 function getTimetableDayGroup(cls) {
-    // schedule_days만을 기준으로 요일묶음 파싱 (day_group 속성 완전 무시)
     var days = String(cls.schedule_days || '');
     if (!days) return 'custom';
 
@@ -181,7 +180,6 @@ function getTimetableDayGroup(cls) {
     var has3 = arr.indexOf('3') !== -1;
     var has4 = arr.indexOf('4') !== -1;
 
-    // 월,수 포함시 무조건 mwf / 화,목 포함시 무조건 ttf 로 판정
     if (has1 && has3) return 'mwf';
     if (has2 && has4) return 'ttf';
 
@@ -191,12 +189,15 @@ function getTimetableDayGroup(cls) {
 function getTimetablePeriodKey(cls) {
     var tl = String(cls.time_label || '');
     if (!tl || tl === '시간 미지정') return 'unknown';
-    
-    // 시간대 문자열 매핑 로직
-    if (tl.indexOf('1교시') !== -1 || tl.indexOf('4:20') !== -1 || tl.indexOf('4:30') !== -1 || tl.indexOf('5:00') !== -1) return '1교시';
-    if (tl.indexOf('2교시') !== -1 || tl.indexOf('6:00') !== -1 || tl.indexOf('6:30') !== -1) return '2교시';
-    if (tl.indexOf('3교시') !== -1 || tl.indexOf('7:40') !== -1 || tl.indexOf('8:00') !== -1) return '3교시';
-    
+
+    if (tl.indexOf('1교시') !== -1 || tl.indexOf('4:50') !== -1 || tl.indexOf('4:50~6:20') !== -1) return '1교시';
+    if (tl.indexOf('2교시') !== -1 || tl.indexOf('6:30') !== -1 || tl.indexOf('6:30~8:00') !== -1) return '2교시';
+    if (tl.indexOf('3교시') !== -1 || tl.indexOf('8:00') !== -1 || tl.indexOf('8:00~9:30') !== -1) return '3교시';
+
+    if (tl.indexOf('4:20') !== -1 || tl.indexOf('4:30') !== -1 || tl.indexOf('5:00') !== -1) return '1교시';
+    if (tl.indexOf('6:00') !== -1) return '2교시';
+    if (tl.indexOf('7:40') !== -1) return '3교시';
+
     return 'unknown';
 }
 
@@ -343,12 +344,10 @@ function buildTimetableStudentSlots(students, classId) {
     var slots = [];
     var displayCount = students.length > MAX_SLOTS ? MAX_SLOTS - 1 : students.length;
 
-    // 존재하는 학생 렌더링 (최대 7명 또는 8명)
     for (var i = 0; i < displayCount; i++) {
         slots.push(buildTimetableStudentSlot(students[i], classId));
     }
 
-    // 학생 수가 슬롯 한도를 넘을 경우 +N 렌더링
     if (students.length > MAX_SLOTS) {
         var remain = students.length - displayCount;
         slots.push(
@@ -358,7 +357,6 @@ function buildTimetableStudentSlots(students, classId) {
         );
     }
 
-    // 모자란 슬롯만큼 빈 칸 렌더링
     while (slots.length < MAX_SLOTS) {
         slots.push(buildTimetableStudentSlot(null, classId));
     }
@@ -391,7 +389,7 @@ function buildTimetableCard(cls) {
     if (progress) {
         progressHtml = '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>';
     } else {
-        progressHtml = '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>'; // 높이 유지용 투명 텍스트
+        progressHtml = '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
     }
 
     var stuHtml = buildTimetableStudentSlots(students, classId);
@@ -470,14 +468,12 @@ function _renderMiddleGrid(sClasses, wrapper) {
     var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
     var cellBase     = 'padding:6px 6px; border:1px solid var(--border); font-size:12px; vertical-align:top;';
 
-    // Header 1: Time + Day Groups
     var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         var lbl = dg === 'mwf' ? '월수금' : '화목금';
         hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
     });
 
-    // Header 2: Teachers
     var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
@@ -485,7 +481,6 @@ function _renderMiddleGrid(sClasses, wrapper) {
         });
     });
 
-    // Body Rows
     var bodyHtml = '';
     TIMETABLE_MIDDLE_PERIODS.forEach(function(p) {
         var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' min-width:72px; text-align:center; vertical-align:middle; padding:8px 4px;">' +
@@ -512,7 +507,6 @@ function _renderMiddleGrid(sClasses, wrapper) {
         bodyHtml += '<tr>' + cells + '</tr>';
     });
 
-    // Unmapped Error Warning
     var unmappedCount = sClasses.filter(function(cls) {
         var dg = getTimetableDayGroup(cls);
         var t = (cls.teacher_name || '').trim();
@@ -522,7 +516,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
     }).length;
 
     var warnHtml = unmappedCount > 0 
-        ? '<div style="color:var(--error); font-size:12px; font-weight:700; padding:10px 14px; background:rgba(255,71,87,0.08); border-radius:10px; margin-bottom:12px; border:1px solid rgba(255,71,87,0.15);">⚠️ 시간대(교시)를 판정할 수 없는 중등부 반이 ' + unmappedCount + '개 있습니다. 반 관리 메뉴에서 시간(예: 4:20~5:50)을 정확히 입력해주세요.</div>' 
+        ? '<div style="color:var(--error); font-size:12px; font-weight:700; padding:10px 14px; background:rgba(255,71,87,0.08); border-radius:10px; margin-bottom:12px; border:1px solid rgba(255,71,87,0.15);">⚠️ 시간대(교시)를 판정할 수 없는 중등부 반이 ' + unmappedCount + '개 있습니다. 반 관리 메뉴에서 시간(예: 4:50~6:20, 6:30~8:00, 8:00~9:30)을 정확히 입력해주세요.</div>' 
         : '';
 
     wrapper.innerHTML = warnHtml + 
@@ -547,14 +541,12 @@ function _renderHighGrid(sClasses, wrapper) {
     var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
     var cellBase     = 'padding:6px 6px; border:1px solid var(--border); font-size:12px; vertical-align:top;';
 
-    // Header 1: Grade + Day Groups
     var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:60px; font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         var lbl = dg === 'mwf' ? '월수금' : '화목금';
         hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
     });
 
-    // Header 2: Teachers
     var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:60px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
@@ -562,7 +554,6 @@ function _renderHighGrid(sClasses, wrapper) {
         });
     });
 
-    // Body Rows
     var bodyHtml = '';
     TIMETABLE_HIGH_GRADES.forEach(function(grade) {
         var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' min-width:60px; text-align:center; vertical-align:middle; padding:8px 4px;">' +
