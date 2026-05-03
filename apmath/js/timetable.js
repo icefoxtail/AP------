@@ -56,23 +56,23 @@ function installTimetableStyle() {
         '}',
         '#timetable-root { max-width:none !important; width:100% !important; }',
 
-        '.tt-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:7px 9px; margin-bottom:6px; min-width:110px; min-height:118px; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; }',
+        '.tt-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin-bottom:6px; width:100%; min-height:148px; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; }',
         '.tt-card-hdr { display:flex; align-items:center; gap:4px; margin-bottom:3px; flex-shrink:0; }',
-        '.tt-cls-name { font-size:12px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
+        '.tt-cls-name { font-size:15px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
         '.tt-cls-name:hover { color:var(--primary); text-decoration:underline; }',
         '.tt-time { display:none; }',
         '.tt-book { font-size:10px; color:var(--secondary); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; }',
         '.tt-progress { font-size:10px; color:var(--primary); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; }',
 
-        '.tt-std-list { display:flex; flex-direction:column; gap:2px; margin-top:4px; flex:1 1 auto; min-height:0; }',
+        '.tt-std-list { display:grid; grid-template-columns:1fr 1fr; row-gap:2px; column-gap:4px; margin-top:4px; flex:1 1 auto; min-height:0; }',
         '.tt-std-slot { min-width:0; min-height:18px; display:flex; align-items:center; justify-content:flex-start; border-radius:4px; overflow:hidden; }',
-        '.tt-std-name { display:block; width:100%; min-width:0; font-size:11px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:1px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; line-height:1.25; }',
+        '.tt-std-name { display:block; width:100%; min-width:0; font-size:13px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:1px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; line-height:1.25; }',
         '.tt-std-name:hover { background:var(--surface-2); }',
         '.tt-std-name.tt-new { color:#1A5CFF !important; font-weight:700; }',
         '.tt-std-name.tt-leave { color:#FF8C00 !important; font-weight:700; }',
-        '.tt-std-empty { display:block; width:100%; min-height:20px; border:1px dashed var(--border); border-radius:4px; cursor:pointer; background:transparent; color:var(--secondary); font-size:10px; font-weight:600; line-height:18px; text-align:left; padding:0 4px; font-family:inherit; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
+        '.tt-std-empty { display:block; width:100%; min-height:20px; border:1px dashed var(--border); border-radius:4px; cursor:pointer; background:transparent; color:var(--secondary); font-size:10px; font-weight:600; line-height:18px; text-align:left; padding:0 4px; font-family:inherit; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; grid-column:span 2; }',
         '.tt-std-empty:hover { color:var(--primary); border-color:var(--primary); background:rgba(26,92,255,0.06); }',
-        '.tt-std-slot-more { display:flex; align-items:center; justify-content:flex-start; width:100%; min-height:20px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.08); border-radius:4px; cursor:pointer; padding:0 4px; box-sizing:border-box; }',
+        '.tt-std-slot-more { display:flex; align-items:center; justify-content:flex-start; width:100%; min-height:20px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.08); border-radius:4px; cursor:pointer; padding:0 4px; box-sizing:border-box; grid-column:span 2; }',
         '.tt-std-slot-more:hover { background:rgba(26,92,255,0.15); }',
 
         '.tt-row-label { font-weight:700; font-size:13px; color:var(--text); text-align:center; white-space:nowrap; }',
@@ -479,7 +479,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
     var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
-            hr2 += '<th style="' + stickyTop + ' background:' + dgBg[dg] + '; ' + cellBase + ' min-width:130px; font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+            hr2 += '<th style="' + stickyTop + ' background:' + dgBg[dg] + '; ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
         });
     });
 
@@ -503,7 +503,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
                     cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + ' min-height:104px;"></td>';
                 } else {
                     var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
-                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + ' min-width:130px;">' + cards + '</td>';
+                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + '">' + cards + '</td>';
                 }
             });
         });
@@ -525,7 +525,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
 
     wrapper.innerHTML = warnHtml + 
         '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px;">' +
-            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; width:max-content; min-width:100%;">' +
+            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%;">' +
                 '<thead><tr>' + hr1 + '</tr><tr>' + hr2 + '</tr></thead>' +
                 '<tbody>' + bodyHtml + '</tbody>' +
             '</table>' +
@@ -544,7 +544,7 @@ function _renderHighGrid(sClasses, wrapper) {
 
     var hr = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:60px; font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
     TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
-        hr += '<th style="' + stickyTop + ' ' + cellBase + ' min-width:160px; font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+        hr += '<th style="' + stickyTop + ' ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
     });
 
     var bodyHtml = '';
@@ -563,7 +563,7 @@ function _renderHighGrid(sClasses, wrapper) {
                 cells += '<td style="background:var(--surface); ' + cellBase + ' min-height:118px;"></td>';
             } else {
                 var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
-                cells += '<td style="background:var(--surface); ' + cellBase + ' min-width:160px;">' + cards + '</td>';
+                cells += '<td style="background:var(--surface); ' + cellBase + '">' + cards + '</td>';
             }
         });
 
@@ -572,7 +572,7 @@ function _renderHighGrid(sClasses, wrapper) {
 
     wrapper.innerHTML =
         '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px;">' +
-            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; width:max-content; min-width:100%;">' +
+            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%;">' +
                 '<thead><tr>' + hr + '</tr></thead>' +
                 '<tbody>' + bodyHtml + '</tbody>' +
             '</table>' +
