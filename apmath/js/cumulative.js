@@ -136,6 +136,55 @@ function getMonthlyScheduleBadges(studentId, date) {
     };
 }
 
+function getAttendanceStudentJoinedDate(student) {
+    if (!student) return '';
+    const raw = String(
+        student.join_date || student.joined_at || student.enrolled_at || student.enrollment_date ||
+        student.registered_at || student.registration_date || student.created_at || student.createdAt || ''
+    ).trim();
+    const m = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+    if (!m) return '';
+    return [m[1], String(m[2]).padStart(2, '0'), String(m[3]).padStart(2, '0')].join('-');
+}
+
+function isAttendanceNewStudent(student) {
+    const joined = getAttendanceStudentJoinedDate(student);
+    if (!joined) return false;
+    const year = new Date().getFullYear();
+    return joined >= `${year}-06-01`;
+}
+
+function isAttendanceLeaveStudent(student) {
+    return !!(student && (student.status === '휴원' || String(student.memo || '').includes('#휴원')));
+}
+
+function getAttendanceStudentNameStyle(student) {
+    if (isAttendanceLeaveStudent(student)) return 'color:#FF8C00;';
+    if (isAttendanceNewStudent(student)) return 'color:var(--primary);';
+    return 'color:var(--text);';
+}
+
+function goAttendanceHome() {
+    closeAttendanceLedger();
+
+    if (typeof state !== 'undefined' && state.ui) {
+        state.ui.currentClassId = null;
+        state.ui.returnView = null;
+    }
+
+    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
+        renderAdminControlCenter();
+        return;
+    }
+
+    if (typeof renderDashboard === 'function') {
+        renderDashboard();
+        return;
+    }
+
+    if (typeof toast === 'function') toast('홈 화면을 불러오지 못했습니다.', 'warn');
+}
+
 // ── 출석부 장부 ──────────────────────────────────────────────────
 
 function _attDayName(dateStr) {
@@ -208,6 +257,8 @@ function openAttendanceLedger() {
 #att-ledger-overlay *{box-sizing:border-box;}
 #att-hdr{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-wrap:wrap;}
 #att-hdr h2{margin:0;font-size:15px;font-weight:700;color:var(--text);flex-shrink:0;}
+.att-home-logo{height:36px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-weight:900;letter-spacing:-0.3px;font-family:inherit;cursor:pointer;flex-shrink:0;}
+.att-home-logo:hover{background:var(--surface-2);color:var(--primary);}
 .att-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
 #att-body{flex:1;overflow:auto;position:relative;}
 #att-tbl{border-collapse:collapse;width:max-content;}
@@ -222,6 +273,7 @@ function openAttendanceLedger() {
 #att-legend{padding:6px 14px;font-size:11px;font-weight:600;color:var(--secondary);display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid var(--border);background:var(--surface);}
 </style>
 <div id="att-hdr">
+  <button class="att-home-logo" onclick="goAttendanceHome()">AP MATH</button>
   <h2>출석부</h2>
   <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
     onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
@@ -319,9 +371,10 @@ function renderAttendanceLedgerTable() {
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
             
+            const nameStyle = getAttendanceStudentNameStyle(s);
             return `<tr>
 <td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
-  <div style="font-size:13px;font-weight:700;color:var(--primary);cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
+  <div style="font-size:13px;font-weight:700;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
 </td>${dateCells}</tr>`;
         }).join('');
         const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
