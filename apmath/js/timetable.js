@@ -10,8 +10,8 @@
  * - 고등부: 고1/고2/고3 학년별 고정 3행 분류
  * - 열 구조: [시간/학년] + [월수금 3인] + [화목금 3인] (무조건 7열 고정)
  * - 신입 표시: 파란색 + (신), 휴원 표시: 주황색
- * - PC: 학생명 1줄 8칸 슬롯, 모바일: 2줄 4×2 슬롯 (카드 높이 고정)
- * - 학생 수 8명 초과 시 +N 슬롯으로 대체
+ * - 학생명은 반 카드 안에서 세로 목록으로 표시
+ * - 학생 수 8명 초과 시 +N 항목으로 대체
  * - 학생칸 클릭 → 학생 수정, 빈칸 클릭 → 학생 추가 (권한 통제)
  */
 
@@ -56,33 +56,33 @@ function installTimetableStyle() {
         '}',
         '#timetable-root { max-width:none !important; width:100% !important; }',
 
-        '.tt-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:6px 8px; margin-bottom:6px; min-width:90px; height:104px; min-height:104px; max-height:104px; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; }',
-        '.tt-card-hdr { display:flex; justify-content:space-between; align-items:center; gap:4px; margin-bottom:2px; flex-shrink:0; }',
+        '.tt-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:7px 9px; margin-bottom:6px; min-width:110px; min-height:118px; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; }',
+        '.tt-card-hdr { display:flex; align-items:center; gap:4px; margin-bottom:3px; flex-shrink:0; }',
         '.tt-cls-name { font-size:12px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
         '.tt-cls-name:hover { color:var(--primary); text-decoration:underline; }',
-        '.tt-time { font-size:10px; color:var(--secondary); white-space:nowrap; flex-shrink:0; }',
+        '.tt-time { display:none; }',
         '.tt-book { font-size:10px; color:var(--secondary); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; }',
         '.tt-progress { font-size:10px; color:var(--primary); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; }',
 
-        '.tt-std-list { display:grid; grid-template-columns:repeat(8, minmax(0, 1fr)); gap:2px; margin-top:auto; flex-shrink:0; height:22px; }',
-        '.tt-std-slot { min-width:0; min-height:20px; display:flex; align-items:center; justify-content:center; border-radius:4px; overflow:hidden; }',
-        '.tt-std-name { display:block; width:100%; min-width:0; font-size:11px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:2px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:center; line-height:1.25; }',
+        '.tt-std-list { display:flex; flex-direction:column; gap:2px; margin-top:4px; flex:1 1 auto; min-height:0; }',
+        '.tt-std-slot { min-width:0; min-height:18px; display:flex; align-items:center; justify-content:flex-start; border-radius:4px; overflow:hidden; }',
+        '.tt-std-name { display:block; width:100%; min-width:0; font-size:11px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:1px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; line-height:1.25; }',
         '.tt-std-name:hover { background:var(--surface-2); }',
         '.tt-std-name.tt-new { color:#1A5CFF !important; font-weight:700; }',
         '.tt-std-name.tt-leave { color:#FF8C00 !important; font-weight:700; }',
-        '.tt-std-empty { display:block; width:100%; min-height:20px; border:1px dashed var(--border); border-radius:4px; cursor:pointer; background:transparent; color:var(--secondary); font-size:10px; font-weight:600; line-height:18px; text-align:center; padding:0 2px; font-family:inherit; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
+        '.tt-std-empty { display:block; width:100%; min-height:20px; border:1px dashed var(--border); border-radius:4px; cursor:pointer; background:transparent; color:var(--secondary); font-size:10px; font-weight:600; line-height:18px; text-align:left; padding:0 4px; font-family:inherit; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
         '.tt-std-empty:hover { color:var(--primary); border-color:var(--primary); background:rgba(26,92,255,0.06); }',
-        '.tt-std-slot-more { display:flex; align-items:center; justify-content:center; width:100%; min-height:20px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.08); border-radius:4px; cursor:pointer; }',
+        '.tt-std-slot-more { display:flex; align-items:center; justify-content:flex-start; width:100%; min-height:20px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.08); border-radius:4px; cursor:pointer; padding:0 4px; box-sizing:border-box; }',
         '.tt-std-slot-more:hover { background:rgba(26,92,255,0.15); }',
 
         '.tt-row-label { font-weight:700; font-size:13px; color:var(--text); text-align:center; white-space:nowrap; }',
         '.tt-row-sublabel { font-size:10px; color:var(--secondary); text-align:center; margin-top:2px; white-space:nowrap; }',
 
         '@media (max-width:900px) {',
-        '  .tt-card { height:132px; min-height:132px; max-height:132px; }',
-        '  .tt-std-list { grid-template-columns:repeat(4, minmax(0, 1fr)); gap:2px 4px; height:46px; }',
-        '  .tt-std-slot { min-height:22px; }',
-        '  .tt-std-name { font-size:12px; min-height:22px; line-height:18px; padding:2px 3px; }',
+        '  .tt-card { min-height:132px; }',
+        '  .tt-std-list { gap:2px; }',
+        '  .tt-std-slot { min-height:20px; }',
+        '  .tt-std-name { font-size:12px; min-height:20px; line-height:18px; padding:1px 3px; }',
         '  .tt-std-empty { min-height:22px; line-height:20px; font-size:11px; }',
         '  .tt-cls-name { font-size:13px; }',
         '}'
@@ -171,6 +171,7 @@ function getTimetableHighGrade(cls) {
 }
 
 function getTimetableDayGroup(cls) {
+    // schedule_days만을 기준으로 요일묶음 파싱 (day_group 속성 완전 무시)
     var days = String(cls.schedule_days || '');
     if (!days) return 'custom';
 
@@ -180,6 +181,7 @@ function getTimetableDayGroup(cls) {
     var has3 = arr.indexOf('3') !== -1;
     var has4 = arr.indexOf('4') !== -1;
 
+    // 월,수 포함시 무조건 mwf / 화,목 포함시 무조건 ttf 로 판정
     if (has1 && has3) return 'mwf';
     if (has2 && has4) return 'ttf';
 
@@ -340,16 +342,16 @@ function buildTimetableStudentSlot(student, classId) {
 }
 
 function buildTimetableStudentSlots(students, classId) {
-    var MAX_SLOTS = TIMETABLE_STUDENT_SLOT_COUNT;
+    var MAX_VISIBLE = TIMETABLE_STUDENT_SLOT_COUNT;
     var slots = [];
-    var displayCount = students.length > MAX_SLOTS ? MAX_SLOTS - 1 : students.length;
+    var displayCount = Math.min(students.length, MAX_VISIBLE);
 
     for (var i = 0; i < displayCount; i++) {
         slots.push(buildTimetableStudentSlot(students[i], classId));
     }
 
-    if (students.length > MAX_SLOTS) {
-        var remain = students.length - displayCount;
+    if (students.length > MAX_VISIBLE) {
+        var remain = students.length - MAX_VISIBLE;
         slots.push(
             '<div class="tt-std-slot tt-std-slot-more" onclick="event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')" title="클릭 시 반 상세로 이동">' +
                 '+' + remain +
@@ -357,9 +359,7 @@ function buildTimetableStudentSlots(students, classId) {
         );
     }
 
-    while (slots.length < MAX_SLOTS) {
-        slots.push(buildTimetableStudentSlot(null, classId));
-    }
+    slots.push(buildTimetableStudentSlot(null, classId));
 
     return '<div class="tt-std-list">' + slots.join('') + '</div>';
 }
@@ -369,13 +369,10 @@ function buildTimetableCard(cls) {
     var books = getTimetableActiveTextbooks(classId);
     var progress = getTimetableRecentProgress(classId);
     var students = getTimetableClassStudentsWithInfo(classId);
-    var timeLabel = cls.time_label && cls.time_label !== '시간 미지정' ? cls.time_label : '';
-
     var hdrHtml = '<div class="tt-card-hdr">' +
         '<span class="tt-cls-name" onclick="event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')">' +
             apEscapeHtml(cls.name) +
         '</span>' +
-        (timeLabel ? '<span class="tt-time">' + apEscapeHtml(timeLabel) + '</span>' : '') +
     '</div>';
 
     var bookHtml = '';
@@ -389,7 +386,7 @@ function buildTimetableCard(cls) {
     if (progress) {
         progressHtml = '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>';
     } else {
-        progressHtml = '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
+        progressHtml = '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>'; // 높이 유지용 투명 텍스트
     }
 
     var stuHtml = buildTimetableStudentSlots(students, classId);
@@ -445,7 +442,6 @@ function renderTimetableGrid(section) {
     var timetableSource = (Array.isArray(db.timetable_classes) && db.timetable_classes.length > 0)
         ? db.timetable_classes
         : (db.classes || []);
-
     var allClasses = timetableSource.filter(function(c) { return Number(c.is_active) !== 0; });
 
     var sClasses = allClasses.filter(function(cls) {
@@ -472,12 +468,14 @@ function _renderMiddleGrid(sClasses, wrapper) {
     var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
     var cellBase     = 'padding:6px 6px; border:1px solid var(--border); font-size:12px; vertical-align:top;';
 
+    // Header 1: Time + Day Groups
     var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         var lbl = dg === 'mwf' ? '월수금' : '화목금';
         hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
     });
 
+    // Header 2: Teachers
     var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
@@ -485,6 +483,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
         });
     });
 
+    // Body Rows
     var bodyHtml = '';
     TIMETABLE_MIDDLE_PERIODS.forEach(function(p) {
         var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' min-width:72px; text-align:center; vertical-align:middle; padding:8px 4px;">' +
@@ -511,6 +510,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
         bodyHtml += '<tr>' + cells + '</tr>';
     });
 
+    // Unmapped Error Warning
     var unmappedCount = sClasses.filter(function(cls) {
         var dg = getTimetableDayGroup(cls);
         var t = (cls.teacher_name || '').trim();
@@ -537,25 +537,14 @@ function _renderMiddleGrid(sClasses, wrapper) {
 // ────────────────────────────────────────────
 
 function _renderHighGrid(sClasses, wrapper) {
-    var dgBg  = { mwf: 'rgba(255,71,87,0.06)',  ttf: 'rgba(26,92,255,0.06)' };
-    var dgHdr = { mwf: 'rgba(255,71,87,0.13)',  ttf: 'rgba(26,92,255,0.13)' };
-
     var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
-    var stickyTop    = 'position:sticky; top:0; z-index:20;';
+    var stickyTop    = 'position:sticky; top:0; z-index:20; background:var(--surface);';
     var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
     var cellBase     = 'padding:6px 6px; border:1px solid var(--border); font-size:12px; vertical-align:top;';
 
-    var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:60px; font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
-    TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
-        var lbl = dg === 'mwf' ? '월수금' : '화목금';
-        hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
-    });
-
-    var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:60px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
-    TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
-        TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
-            hr2 += '<th style="' + stickyTop + ' background:' + dgBg[dg] + '; ' + cellBase + ' min-width:130px; font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
-        });
+    var hr = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:60px; font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
+    TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+        hr += '<th style="' + stickyTop + ' ' + cellBase + ' min-width:160px; font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
     });
 
     var bodyHtml = '';
@@ -564,21 +553,18 @@ function _renderHighGrid(sClasses, wrapper) {
             '<div class="tt-row-label" style="font-size:15px;">' + apEscapeHtml(grade) + '</div>' +
         '</td>';
 
-        TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
-            TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
-                var matched = sClasses.filter(function(cls) {
-                    return getTimetableDayGroup(cls) === dg &&
-                           (cls.teacher_name || '').trim() === t &&
-                           getTimetableHighGrade(cls) === grade;
-                });
-
-                if (matched.length === 0) {
-                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + ' min-height:104px;"></td>';
-                } else {
-                    var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
-                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + ' min-width:130px;">' + cards + '</td>';
-                }
+        TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+            var matched = sClasses.filter(function(cls) {
+                return (cls.teacher_name || '').trim() === t &&
+                       getTimetableHighGrade(cls) === grade;
             });
+
+            if (matched.length === 0) {
+                cells += '<td style="background:var(--surface); ' + cellBase + ' min-height:118px;"></td>';
+            } else {
+                var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
+                cells += '<td style="background:var(--surface); ' + cellBase + ' min-width:160px;">' + cards + '</td>';
+            }
         });
 
         bodyHtml += '<tr>' + cells + '</tr>';
@@ -587,7 +573,7 @@ function _renderHighGrid(sClasses, wrapper) {
     wrapper.innerHTML =
         '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px;">' +
             '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; width:max-content; min-width:100%;">' +
-                '<thead><tr>' + hr1 + '</tr><tr>' + hr2 + '</tr></thead>' +
+                '<thead><tr>' + hr + '</tr></thead>' +
                 '<tbody>' + bodyHtml + '</tbody>' +
             '</table>' +
         '</div>';
