@@ -21,16 +21,17 @@ function injectStudentStyles() {
 // ── 신입/휴원 상태 헬퍼 ──────────────────────────────────────────
 function isStudentNewMember(s) {
     if (!s) return false;
-    // 수동 태그 우선
-    if (String(s.memo || '').indexOf('#신입') !== -1) return true;
-    // 자동: 가장 최근 6월 1일 이후 등록한 학생 = 이번 학기 신입
-    const ca = s.created_at ? String(s.created_at).slice(0, 10) : '';
-    if (!ca) return false;
-    const now = new Date();
-    const m = now.getMonth() + 1; // 1–12
-    const cutoffYear = m >= 6 ? now.getFullYear() : now.getFullYear() - 1;
-    return ca >= (cutoffYear + '-06-01');
+    if (String(s.memo || '').indexOf('#신입') === -1) return false;
+    
+    if (s.created_at) {
+        const createdTime = new Date(String(s.created_at).split(' ')[0]).getTime();
+        if (!isNaN(createdTime) && (Date.now() - createdTime) / (1000 * 60 * 60 * 24) > 30) {
+            return false;
+        }
+    }
+    return true;
 }
+
 function isStudentOnLeave(s) {
     return !!(s && (s.status === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
 }
@@ -498,7 +499,7 @@ async function handleResetSessionWrongs(eid, sid) {
 }
 
 
-function sortClassesByGradeDesc(classes = []) {
+function sortClassesForStudentModal(classes = []) {
     const gradeRank = (cls) => {
         const text = `${cls?.grade || ''} ${cls?.name || ''}`;
         if (/중1/.test(text)) return 1;
@@ -523,6 +524,10 @@ function inferGradeFromClass(cls) {
     return m ? m[1] : '';
 }
 
+function studentAttr(value) {
+    return apEscapeHtml(String(value ?? ''));
+}
+
 function syncEditStudentGrade() {
     const classId = document.getElementById('edit-class')?.value || '';
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
@@ -536,7 +541,7 @@ function openEditStudent(sid, options = {}) {
     const s = state.db.students.find(st => st.id === sid);
     if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
-    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid))).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
+    const opts = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid))).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
 
     const isNew = isStudentNewMember(s);
     const isLeave = isStudentOnLeave(s);
@@ -545,8 +550,8 @@ function openEditStudent(sid, options = {}) {
 
     showModal('학생 정보 수정', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            <input id="edit-name" class="std-input-base" value="${s.name}" placeholder="이름">
-            <input id="edit-school" class="std-input-base" value="${s.school_name}" placeholder="학교">
+            <input id="edit-name" class="std-input-base" value="${studentAttr(s.name)}" placeholder="이름">
+            <input id="edit-school" class="std-input-base" value="${studentAttr(s.school_name)}" placeholder="학교">
             <div style="display: flex; gap: 8px;">
                 <select id="edit-grade" class="std-input-base" style="flex: 1;">
                     <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
@@ -554,10 +559,10 @@ function openEditStudent(sid, options = {}) {
                 </select>
                 <select id="edit-class" class="std-input-base" style="flex: 1.5;" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select>
             </div>
-            <input id="edit-student-phone" class="std-input-base" value="${s.student_phone||''}" placeholder="학생 전화번호">
-            <input id="edit-parent-phone" class="std-input-base" value="${s.parent_phone||''}" placeholder="학부모 전화번호">
-            <input id="edit-guardian-rel" class="std-input-base" value="${s.guardian_relation||''}" placeholder="보호자 관계">
-            <input id="edit-student-pin" class="std-input-base" value="${s.student_pin||''}" placeholder="PIN (4자리 숫자)" maxlength="4">
+            <input id="edit-student-phone" class="std-input-base" value="${studentAttr(s.student_phone || '')}" placeholder="학생 전화번호">
+            <input id="edit-parent-phone" class="std-input-base" value="${studentAttr(s.parent_phone || '')}" placeholder="학부모 전화번호">
+            <input id="edit-guardian-rel" class="std-input-base" value="${studentAttr(s.guardian_relation || '')}" placeholder="보호자 관계">
+            <input id="edit-student-pin" class="std-input-base" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4">
             <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 64px;">${apEscapeHtml(cleanMemo)}</textarea>
             <div style="display:flex; gap:20px; padding:4px 2px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:10px 14px;">
                 <label style="display:flex; align-items:center; gap:7px; font-size:13px; font-weight:700; cursor:pointer; color:${isNew ? '#1A5CFF' : 'var(--text)'};">
@@ -583,8 +588,7 @@ async function handleEditStudent(sid) {
 
     const classId = document.getElementById('edit-class')?.value || '';
     const editGrade = document.getElementById('edit-grade')?.value || '';
-    const cls = classId ? state.db.classes.find(c => String(c.id) === String(classId)) : null;
-    const grade = cls ? (inferGradeFromClass(cls) || editGrade) : editGrade;
+    const grade = editGrade;
 
     // 신입/휴원 태그를 memo에 반영
     const rawMemo = document.getElementById('edit-memo')?.value || '';
@@ -627,12 +631,15 @@ async function handleEditStudent(sid) {
 
 function openAddStudent(defaultCid = '', options = {}) {
     if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
-    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0)).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(defaultCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
+    const opts = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0)).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(defaultCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
     showModal('신규 학생 추가', `
         <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px 4px; box-sizing: border-box;">
             <input id="add-name" class="std-input-base" placeholder="이름 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-school" class="std-input-base" placeholder="학교 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <select id="add-class" class="std-input-base" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;"><option value="">반 선택</option>${opts}</select>
+            <input id="add-student-phone" class="std-input-base" placeholder="학생 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
+            <input id="add-parent-phone" class="std-input-base" placeholder="학부모 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
+            <input id="add-guardian-rel" class="std-input-base" placeholder="보호자 관계" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-student-pin" class="std-input-base" placeholder="PIN (4자리 숫자, 선택)" maxlength="4" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
         </div>
     `, '추가', handleAddStudent);
@@ -644,6 +651,9 @@ async function handleAddStudent() {
     const sc = document.getElementById('add-school')?.value.trim() || '';
     const classId = document.getElementById('add-class')?.value || '';
     const pin = document.getElementById('add-student-pin')?.value.trim() || '';
+    const studentPhone = document.getElementById('add-student-phone')?.value.trim() || '';
+    const parentPhone = document.getElementById('add-parent-phone')?.value.trim() || '';
+    const guardianRelation = document.getElementById('add-guardian-rel')?.value.trim() || '';
     if (!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
     if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
 
@@ -660,12 +670,12 @@ async function handleAddStudent() {
         classId: classId,
         student_pin: pin || '',
         studentPin: pin || '',
-        student_phone: '',
-        studentPhone: '',
-        parent_phone: '',
-        parentPhone: '',
-        guardian_relation: '',
-        guardianRelation: '',
+        student_phone: studentPhone,
+        studentPhone: studentPhone,
+        parent_phone: parentPhone,
+        parentPhone: parentPhone,
+        guardian_relation: guardianRelation,
+        guardianRelation: guardianRelation,
         memo: ''
     };
 
@@ -689,7 +699,7 @@ function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');
     const rows = discharged.map(s => `
         <div style="padding: 14px 12px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--surface);">
-            <div><b style="font-size: 14px; font-weight:700; color: var(--text); line-height: 1.4;">${s.name}</b> <span style="font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5; margin-left: 4px;">${s.school_name}</span></div>
+            <div><b style="font-size: 14px; font-weight:700; color: var(--text); line-height: 1.4;">${apEscapeHtml(s.name)}</b> <span style="font-size: 12px; color: var(--secondary); font-weight: 600; line-height: 1.5; margin-left: 4px;">${apEscapeHtml(s.school_name || '')}</span></div>
             <button class="btn btn-primary" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; border-radius: 12px; box-shadow: none;" onclick="handleRestore('${s.id}')">재원 복구</button>
         </div>
     `).join('');
