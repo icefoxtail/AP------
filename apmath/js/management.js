@@ -110,6 +110,7 @@ function openAddressBook() {
 }
 
 function openGlobalPinManagement() {
+    setModalReturnView({ type: 'addressBook' });
     const classes = sortClassesForManagement((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
@@ -203,6 +204,7 @@ function openClassManageModal() {
 }
 
 function openAddClassModal() {
+    setModalReturnView({ type: 'classManage' });
     showModal('새 반 추가', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="add-cls-name" class="btn" placeholder="반 이름 (예: 중3A)" style="text-align:left; background:var(--surface-2); border:none;">
@@ -260,6 +262,7 @@ async function handleAddClass() {
 }
 
 function openEditClassModal(cid) {
+    setModalReturnView({ type: 'classManage' });
     const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
     if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
     const selectedDays = c.schedule_days ? String(c.schedule_days).split(',') : [];

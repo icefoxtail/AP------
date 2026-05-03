@@ -257,6 +257,20 @@ function closeAttendanceLedger() {
     if (ov) ov.style.display = 'none';
 }
 
+function openEditStudentFromAttendance(sid) {
+    const ov = document.getElementById('att-ledger-overlay');
+    if (ov) ov.style.display = 'none';
+    state.ui.returnView = { type: 'attendance' };
+    if (typeof openEditStudent === 'function') openEditStudent(sid, { returnTo: { type: 'attendance' } });
+}
+
+function openAddStudentFromAttendance(classId) {
+    const ov = document.getElementById('att-ledger-overlay');
+    if (ov) ov.style.display = 'none';
+    state.ui.returnView = { type: 'attendance' };
+    if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
+}
+
 function renderAttendanceLedgerTable() {
     const root = document.getElementById('att-tbl-root');
     if (!root) return;
@@ -294,7 +308,7 @@ function renderAttendanceLedgerTable() {
     }).join('');
 
     const bodyRows = grouped.map(g => {
-        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;">${apEscapeHtml(g.cls.name)}</td></tr>`;
+        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;display:flex;align-items:center;gap:8px;">${apEscapeHtml(g.cls.name)}<button onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid var(--primary);color:var(--primary);background:transparent;cursor:pointer;flex-shrink:0;">+ 추가</button></td></tr>`;
         const sRows = g.students.map(s => {
             const sid = String(s.id);
             const dateCells = days.map(d => {
@@ -305,13 +319,17 @@ function renderAttendanceLedgerTable() {
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
             
-            // 학생 이름 밑 학년 제거 및 상하 패딩 축소 (6px)
             return `<tr>
 <td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
-  <div style="font-size:13px;font-weight:700;color:var(--text);">${apEscapeHtml(s.name)}</div>
+  <div style="font-size:13px;font-weight:700;color:var(--primary);cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
 </td>${dateCells}</tr>`;
         }).join('');
-        return groupRow + sRows;
+        const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
+        const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''">
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
+  <div style="font-size:12px;font-weight:600;color:var(--secondary);">+ 학생 추가</div>
+</td>${emptyCols}</tr>`;
+        return groupRow + sRows + emptyRow;
     }).join('');
 
     const empty = `<tr><td colspan="${days.length + 1}" style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;">표시할 학생이 없습니다.</td></tr>`;
