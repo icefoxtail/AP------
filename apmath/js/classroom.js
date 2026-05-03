@@ -110,8 +110,22 @@ function computeClassTodaySummary(classId) {
 }
 
 // [UI Standard Applied]: 학급 메인 화면
+function openClassAttendance(cid) {
+    state.ui.classDefaultTab = 'att';
+    if (typeof openDashboardClass === 'function') openDashboardClass(cid);
+    else renderClass(cid);
+}
+
+function openClassHomework(cid) {
+    state.ui.classDefaultTab = 'hw';
+    if (typeof openDashboardClass === 'function') openDashboardClass(cid);
+    else renderClass(cid);
+}
+
 function renderClass(cid) {
     injectClassroomStyles();
+    const defaultTab = state.ui.classDefaultTab || '';
+    state.ui.classDefaultTab = null;
     state.ui.currentClassId = String(cid);
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
@@ -204,11 +218,21 @@ function renderClass(cid) {
             <td onclick="renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
             <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
-                <button class="btn" style="padding: 4px 8px; font-size: 12px; min-width: 68px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
-                <button class="btn" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
+                <button class="btn class-att-toggle" style="padding: 4px 8px; font-size: 12px; min-width: 68px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
+                <button class="btn class-hw-toggle" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwStatus}</button>
             </td>
         </tr>`;
     }).join('');
+
+    if (defaultTab === 'att' || defaultTab === 'hw') {
+        setTimeout(() => {
+            const selector = defaultTab === 'att' ? '.class-att-toggle' : '.class-hw-toggle';
+            const target = document.querySelector(selector);
+            if (!target) return;
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.focus({ preventScroll: true });
+        }, 0);
+    }
 }
 
 // [UI Standard Applied]: 진도관리 모달 수동 보정
