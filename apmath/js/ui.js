@@ -158,9 +158,44 @@ function showModal(t, b, at=null, af=null) {
     });
 }
 
-function closeModal() {
+function setManagementReturnView(ctx) {
+    if (!state.ui) state.ui = {};
+    state.ui.returnView = ctx || null;
+}
+
+function setModalReturnView(ctx) {
+    if (!state.ui) state.ui = {};
+    state.ui.modalReturnView = ctx || null;
+}
+
+function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
+    if (!state.ui) state.ui = {};
+    const view = ctx || state.ui.returnView || {};
+    state.ui.modalReturnView = null;
+
+    if (view.type === 'addressBook' && typeof openAddressBook === 'function') return openAddressBook();
+    if (view.type === 'classManage' && typeof openClassManageModal === 'function') return openClassManageModal();
+    if (view.type === 'textbookManage' && typeof openTextbookManageModal === 'function') return openTextbookManageModal({ returnTo: view.parentReturn || null });
+    if (view.type === 'classDetail' && view.classId && typeof renderClass === 'function') {
+        closeModal(true);
+        return renderClass(view.classId);
+    }
+    if (view.type === 'studentDetail' && view.studentId && typeof renderStudentDetail === 'function') {
+        closeModal(true);
+        return renderStudentDetail(view.studentId);
+    }
+
+    closeModal(true);
+    if (fallback === 'dashboard' && typeof renderDashboard === 'function') return renderDashboard();
+}
+
+function closeModal(suppressReturn = false) {
     const overlay = document.getElementById('modal-overlay');
     if (!overlay) return;
+    if (!state.ui) state.ui = {};
+    const shouldReturn = !suppressReturn && !!state.ui.modalReturnView;
+    const returnCtx = shouldReturn ? state.ui.modalReturnView : null;
+    if (shouldReturn) state.ui.modalReturnView = null;
 
     if (modalCloseTimer) {
         clearTimeout(modalCloseTimer);
@@ -184,6 +219,7 @@ function closeModal() {
             footer.classList.add('hidden');
             footer.innerHTML = '';
         }
+        if (returnCtx) returnToPreviousManagementView('dashboard', returnCtx);
     }, 260);
 }
 
@@ -1031,6 +1067,9 @@ window.ensureThemeToggleButton = ensureThemeToggleButton;
 window.toast = toast;
 window.showModal = showModal;
 window.closeModal = closeModal;
+window.setManagementReturnView = setManagementReturnView;
+window.setModalReturnView = setModalReturnView;
+window.returnToPreviousManagementView = returnToPreviousManagementView;
 window.setModalBody = setModalBody;
 window.setModalLoading = setModalLoading;
 window.safeToastError = safeToastError;

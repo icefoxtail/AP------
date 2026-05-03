@@ -39,6 +39,10 @@ function renderStudentDetailTab(sid, tab) {
     const s = state.db.students.find(st => st.id === sid);
     const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
     const cls = state.db.classes.find(c => String(c.id) === String(mIds?.class_id));
+    const returnCtx = state.ui.returnView || {};
+    const backButton = returnCtx.type
+        ? `<button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--secondary); cursor: pointer; white-space: nowrap;" onclick="returnToPreviousManagementView()">뒤로</button>`
+        : '';
 
     // 1. 프로필 헤더 (22px 대제목 및 고정 배지 규격)
     const headerHtml = `
@@ -52,7 +56,10 @@ function renderStudentDetailTab(sid, tab) {
                         ${s.student_pin ? `<span class="std-badge" style="background: var(--surface); border: 1px solid var(--border); color: var(--text); letter-spacing: 1px;">PIN ${s.student_pin}</span>` : ''}
                     </div>
                 </div>
-                <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}')">정보 수정</button>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;">
+                    ${backButton}
+                    <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); cursor: pointer; white-space: nowrap;" onclick="openEditStudent('${sid}', { returnTo: { type: 'studentDetail', studentId: '${sid}' } })">정보 수정</button>
+                </div>
             </div>
             
             <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
@@ -382,13 +389,14 @@ async function handleDeleteConsultation(cid, sid) {
 
 async function handleDelete(sid) {
     if (!confirm('이 학생을 퇴원 처리하시겠습니까?')) return;
+    const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
 
     try {
         const r = await api.delete('students', sid);
         if (r?.success) {
             toast('퇴원 처리되었습니다.', 'info');
-            closeModal();
             await loadData();
+            returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
         toast(r?.message || r?.error || '퇴원 처리에 실패했습니다.', 'error');
@@ -401,13 +409,14 @@ async function handleDelete(sid) {
 
 async function handleRestore(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
+    const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
 
     try {
         const r = await api.patch(`students/${sid}/restore`, {});
         if (r?.success) {
             toast('재원으로 복구되었습니다.', 'info');
-            closeModal();
             await loadData();
+            returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
         toast(r?.message || r?.error || '재원 복구에 실패했습니다.', 'error');
@@ -490,8 +499,9 @@ function syncEditStudentGrade() {
 }
 
 
-function openEditStudent(sid) {
+function openEditStudent(sid, options = {}) {
     const s = state.db.students.find(st => st.id === sid);
+    if (options.returnTo) setModalReturnView(options.returnTo);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
     const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0 || String(c.id) === String(curCid))).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(curCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
     
@@ -519,6 +529,7 @@ function openEditStudent(sid) {
 }
 
 async function handleEditStudent(sid) {
+    const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
     const pin = document.getElementById('edit-student-pin')?.value.trim() || '';
     if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
 
@@ -543,8 +554,8 @@ async function handleEditStudent(sid) {
         const r = await api.patch(`students/${sid}`, payload);
         if (r?.success) {
             toast('학생 정보가 수정되었습니다.', 'success');
-            closeModal();
             await loadData();
+            returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
         toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');
@@ -555,7 +566,8 @@ async function handleEditStudent(sid) {
 }
 
 
-function openAddStudent(defaultCid = '') {
+function openAddStudent(defaultCid = '', options = {}) {
+    if (options.returnTo) setModalReturnView(options.returnTo);
     const opts = sortClassesByGradeDesc(state.db.classes.filter(c => Number(c.is_active) !== 0)).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(defaultCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
     showModal('신규 학생 추가', `
         <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px 4px; box-sizing: border-box;">
@@ -568,6 +580,7 @@ function openAddStudent(defaultCid = '') {
 }
 
 async function handleAddStudent() {
+    const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
     const n = document.getElementById('add-name')?.value.trim() || '';
     const sc = document.getElementById('add-school')?.value.trim() || '';
     const classId = document.getElementById('add-class')?.value || '';
@@ -601,8 +614,8 @@ async function handleAddStudent() {
         const r = await api.post('students', payload);
         if (r?.success) {
             toast('학생이 추가되었습니다.', 'success');
-            closeModal();
             await loadData();
+            returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
         toast(r?.message || r?.error || '학생 추가에 실패했습니다.', 'error');

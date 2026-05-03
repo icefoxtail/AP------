@@ -43,7 +43,9 @@ function renderTextbookManageList() {
     `;
 }
 
-function openTextbookManageModal() {
+function openTextbookManageModal(options = {}) {
+    state.ui.textbookReturnView = options.returnTo || state.ui.textbookReturnView || { type: 'classManage' };
+    setModalReturnView(state.ui.textbookReturnView);
     showModal('교재 관리', `
         <div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:16px;">
             <button class="btn btn-primary" style="padding:10px 14px; font-size:12px; font-weight:700;" onclick="openAddTextbookModal()">새 교재</button>
@@ -54,6 +56,7 @@ function openTextbookManageModal() {
 }
 
 function openAddTextbookModal() {
+    setModalReturnView({ type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } });
     const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
     const todayStr = new Date().toLocaleDateString('sv-SE');
     showModal('새 교재 등록', `
@@ -70,6 +73,7 @@ function openAddTextbookModal() {
 }
 
 async function handleAddTextbook() {
+    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } };
     const cid = document.getElementById('new-tb-class')?.value || '';
     const title = document.getElementById('new-tb-title')?.value.trim() || '';
     const startDate = document.getElementById('new-tb-start')?.value || '';
@@ -81,7 +85,7 @@ async function handleAddTextbook() {
         if (r?.success) {
             toast('교재가 등록되었습니다.', 'success');
             await loadData();
-            openTextbookManageModal();
+            returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
         toast(r?.message || r?.error || '교재 저장에 실패했습니다.', 'error');
@@ -93,6 +97,7 @@ async function handleAddTextbook() {
 
 
 function openEditTextbookModal(tbId) {
+    setModalReturnView({ type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } });
     const tb = state.db.class_textbooks.find(x => x.id === tbId);
     if (!tb) return;
     
@@ -128,6 +133,7 @@ function openEditTextbookModal(tbId) {
 }
 
 async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active') {
+    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } };
     const title = document.getElementById('edit-tb-title')?.value.trim() || '';
     const startDate = document.getElementById('edit-tb-start')?.value || '';
     const endDateEl = document.getElementById('edit-tb-end');
@@ -146,7 +152,7 @@ async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active'
         if (r?.success) {
             toast(isStatusChange ? '교재 상태가 변경되었습니다.' : '교재 정보가 수정되었습니다.', 'success');
             await loadData();
-            openTextbookManageModal();
+            returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
         toast(r?.message || r?.error || '교재 수정에 실패했습니다.', 'error');
@@ -159,13 +165,14 @@ async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active'
 
 async function handleDeleteTextbook(tbId) {
     if (!confirm('이 교재를 완전히 삭제하시겠습니까?')) return;
+    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } };
 
     try {
         const r = await api.delete('class-textbooks', tbId);
         if (r?.success) {
             toast('교재가 삭제되었습니다.', 'info');
             await loadData();
-            openTextbookManageModal();
+            returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
         toast(r?.message || r?.error || '교재 삭제에 실패했습니다.', 'error');
