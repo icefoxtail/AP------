@@ -110,6 +110,7 @@ function openClassManageModal() {
             </div>
             <div style="display:flex; gap:6px;">
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="openEditClassModal('${c.id}')">수정</button>
+                <button class="btn" style="padding:6px 10px; font-size:11px; color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="handleDeleteClass('${c.id}')">반 삭제</button>
                 ${Number(c.is_active) === 0
                   ? `<button class="btn btn-primary" style="padding:6px 10px; font-size:11px;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
                   : `<button class="btn" style="padding:6px 10px; font-size:11px; color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
@@ -276,6 +277,33 @@ async function toggleClassActive(cid, status) {
     } catch (e) {
         console.error('[toggleClassActive] failed:', e);
         toast('반 상태 변경 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function handleDeleteClass(classId) {
+    if (!classId) return;
+
+    const first = confirm('이 반을 삭제할까요?');
+    if (!first) return;
+
+    const second = confirm('반 삭제 시 반 배정, 교재, 진도, 시험 배정 등 연결 기록이 함께 삭제될 수 있습니다. 계속할까요?');
+    if (!second) return;
+
+    try {
+        const r = await api.delete('classes', classId);
+
+        if (r?.success) {
+            toast('반이 삭제되었습니다.', 'info');
+            closeModal();
+            await loadData();
+            if (typeof renderDashboard === 'function') renderDashboard();
+            return;
+        }
+
+        toast(r?.message || r?.error || '반 삭제에 실패했습니다.', 'warn');
+    } catch (e) {
+        console.error('[handleDeleteClass] failed:', e);
+        toast('반 삭제 중 오류가 발생했습니다.', 'warn');
     }
 }
 

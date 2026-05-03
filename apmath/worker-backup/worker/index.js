@@ -33,7 +33,7 @@ async function verifyAuth(request, env) {
 
 // 권한 검증 헬퍼: 특정 학생에 접근 가능한가?
 async function canAccessStudent(teacher, studentId, env) {
-  if (teacher.role === 'admin') return true;
+  if (isStaffUser(teacher)) return true;
   const row = await env.DB.prepare(`
     SELECT 1 FROM class_students cs
     JOIN teacher_classes tc ON tc.class_id = cs.class_id
@@ -45,7 +45,7 @@ async function canAccessStudent(teacher, studentId, env) {
 
 // 권한 검증 헬퍼: 특정 반에 접근 가능한가?
 async function canAccessClass(teacher, classId, env) {
-  if (teacher.role === 'admin') return true;
+  if (isStaffUser(teacher)) return true;
   const row = await env.DB.prepare(`
     SELECT 1 FROM teacher_classes
     WHERE teacher_id = ? AND class_id = ?
@@ -55,7 +55,11 @@ async function canAccessClass(teacher, classId, env) {
 
 // 역할 확인 헬퍼
 function isAdminUser(teacher) { return teacher?.role === 'admin'; }
-function isTeacherUser(teacher) { return !!teacher && teacher.role !== 'admin'; }
+function isStaffUser(user) {
+  const role = String(user?.role || '').toLowerCase();
+  return role === 'admin' || role === 'teacher';
+}
+function isTeacherUser(teacher) { return String(teacher?.role || '').toLowerCase() === 'teacher'; }
 
 // 선생님 이름 정규화 (syncTeacherClassMapping과 동일 기준)
 function normalizeTeacherName(name) {
@@ -182,7 +186,7 @@ export default {
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
           let query, params = [];
-          if (teacher.role === 'admin') {
+          if (isStaffUser(teacher)) {
             query = `SELECT id, name, grade, teacher_name FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name`;
           } else {
             query = `
@@ -204,7 +208,7 @@ export default {
 
           let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp;
 
-          if (teacher.role === 'admin') {
+          if (isStaffUser(teacher)) {
             [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
@@ -325,11 +329,26 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
+          const normalizeStudentPayload = (d = {}, current = {}) => ({
+            name: String(d.name ?? current.name ?? '').trim(),
+            schoolName: String(d.school_name ?? d.schoolName ?? current.school_name ?? '').trim(),
+            grade: String(d.grade ?? current.grade ?? '').trim(),
+            targetScore: d.target_score ?? d.targetScore ?? current.target_score ?? null,
+            memo: String(d.memo ?? current.memo ?? '').trim(),
+            guardianRelation: String(d.guardian_relation ?? d.guardianRelation ?? current.guardian_relation ?? '').trim(),
+            studentPhone: String(d.student_phone ?? d.studentPhone ?? current.student_phone ?? '').trim(),
+            parentPhone: String(d.parent_phone ?? d.parentPhone ?? current.parent_phone ?? '').trim(),
+            studentPin: String(d.student_pin ?? d.studentPin ?? current.student_pin ?? '').trim(),
+            classId: d.class_id !== undefined || d.classId !== undefined ? String(d.class_id ?? d.classId ?? '').trim() : undefined
+          });
+
           if (method === 'POST' && id === 'batch-pins') {
             const { class_id } = await request.json();
-            if (!class_id && teacher.role !== 'admin') return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
+            if (!class_id && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
             if (class_id && !(await canAccessClass(teacher, class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
-            const targets = await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND status = '재원' AND id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(class_id).all();
+            const targets = class_id
+              ? await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND status = '재원' AND id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(class_id).all()
+              : await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND status = '재원'").all();
             let count = 0;
             for (const s of targets.results) {
               const newPin = await generateStudentPin(s.grade, env);
@@ -350,19 +369,20 @@ export default {
           }
 
           if (method === 'POST' && !id) {
-            const d = await request.json();
-            if (teacher.role !== 'admin') {
-              if (!d.class_id) return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
-              if (!(await canAccessClass(teacher, d.class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            const d = normalizeStudentPayload(await request.json());
+            if (!isStaffUser(teacher)) {
+              if (!d.classId) return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
+              if (!(await canAccessClass(teacher, d.classId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             }
-            let pin = d.student_pin || await generateStudentPin(d.grade, env);
+            if (!d.name) return new Response(JSON.stringify({ error: 'name required' }), { status: 400, headers });
+            let pin = d.studentPin || await generateStudentPin(d.grade, env);
             const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ?').bind(pin).first();
             if (exist) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers });
 
             const sid = `s_${Date.now()}`;
-            const targetScore = normalizeTargetScore(d.target_score);
-            const stmts = [env.DB.prepare("INSERT INTO students (id, name, school_name, grade, target_score, status, memo, guardian_relation, student_phone, parent_phone, student_pin, created_at, updated_at) VALUES (?, ?, ?, ?, ?, '\uC7AC\uC6D0', ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(sid, d.name, d.school_name, d.grade, targetScore, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', pin)];
-            if (d.class_id) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.class_id, sid));
+            const targetScore = normalizeTargetScore(d.targetScore);
+            const stmts = [env.DB.prepare("INSERT INTO students (id, name, school_name, grade, target_score, status, memo, guardian_relation, student_phone, parent_phone, student_pin, created_at, updated_at) VALUES (?, ?, ?, ?, ?, '\uC7AC\uC6D0', ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(sid, d.name, d.schoolName, d.grade, targetScore, d.memo, d.guardianRelation, d.studentPhone, d.parentPhone, pin)];
+            if (d.classId) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, sid));
             try { await env.DB.batch(stmts); return new Response(JSON.stringify({ success: true, id: sid }), { headers }); }
             catch (err) { if (err.message.includes('UNIQUE')) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers }); throw err; }
           }
@@ -371,17 +391,20 @@ export default {
             if (!(await canAccessStudent(teacher, id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (path[3] === 'restore') { await env.DB.prepare("UPDATE students SET status = '재원', updated_at = DATETIME('now') WHERE id = ?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
             if (path[3] === 'hide') { await env.DB.prepare("UPDATE students SET status = '숨김', updated_at = DATETIME('now') WHERE id = ?").bind(id).run(); return new Response(JSON.stringify({ success: true }), { headers }); }
-            const d = await request.json();
-            if (d.class_id !== undefined && d.class_id) {
-              if (!(await canAccessClass(teacher, d.class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            const current = await env.DB.prepare('SELECT * FROM students WHERE id = ?').bind(id).first();
+            if (!current) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            const d = normalizeStudentPayload(await request.json(), current);
+            if (d.classId !== undefined && d.classId) {
+              if (!(await canAccessClass(teacher, d.classId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             }
-            if (d.student_pin) {
-              const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ? AND id != ?').bind(d.student_pin, id).first();
+            if (d.studentPin) {
+              const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ? AND id != ?').bind(d.studentPin, id).first();
               if (exist) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers });
             }
-            const targetScore = normalizeTargetScore(d.target_score);
-            const stmts = [env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, target_score=?, memo=?, guardian_relation=?, student_phone=?, parent_phone=?, student_pin=?, updated_at=DATETIME('now') WHERE id=?").bind(d.name, d.school_name, d.grade, targetScore, d.memo || '', d.guardian_relation || '', d.student_phone || '', d.parent_phone || '', d.student_pin || '', id)];
-            if (d.class_id !== undefined) { stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id)); if (d.class_id) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.class_id, id)); }
+            if (!d.name) return new Response(JSON.stringify({ error: 'name required' }), { status: 400, headers });
+            const targetScore = normalizeTargetScore(d.targetScore);
+            const stmts = [env.DB.prepare("UPDATE students SET name=?, school_name=?, grade=?, target_score=?, memo=?, guardian_relation=?, student_phone=?, parent_phone=?, student_pin=?, updated_at=DATETIME('now') WHERE id=?").bind(d.name, d.schoolName, d.grade, targetScore, d.memo, d.guardianRelation, d.studentPhone, d.parentPhone, d.studentPin, id)];
+            if (d.classId !== undefined) { stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id)); if (d.classId) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, id)); }
             try { await env.DB.batch(stmts); return new Response(JSON.stringify({ success: true }), { headers }); }
             catch (err) { if (err.message.includes('UNIQUE')) return new Response(JSON.stringify({ message: '이미 사용 중인 PIN입니다.' }), { status: 409, headers }); throw err; }
           }
@@ -400,7 +423,7 @@ export default {
 
           const date = url.searchParams.get('date') || todayKstDateString();
 
-          if (teacher.role === 'admin') {
+          if (isStaffUser(teacher)) {
             const [att, hw] = await Promise.all([
               env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(),
               env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()
@@ -445,7 +468,7 @@ export default {
             'SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? ORDER BY schedule_date ASC, start_time ASC, created_at ASC'
           ).bind(startDate, endDate).all();
 
-          if (teacher.role === 'admin') {
+          if (isStaffUser(teacher)) {
             const [att, hw] = await Promise.all([
               env.DB.prepare('SELECT * FROM attendance WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all(),
               env.DB.prepare('SELECT * FROM homework WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all()
@@ -823,7 +846,7 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           if (method === 'GET') { const res = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(); return new Response(JSON.stringify({ success: true, data: res.results }), { headers }); }
-          if (!isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          if (!isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
           if (method === 'POST') {
             const d = await request.json();
             const eid = `exs_${Date.now()}`;
@@ -877,7 +900,7 @@ export default {
             if (from) { dateClause += ' AND schedule_date >= ?'; dateParams.push(from); }
             if (to) { dateClause += ' AND schedule_date <= ?'; dateParams.push(to); }
 
-            if (isAdminUser(teacher)) {
+            if (isStaffUser(teacher)) {
               const query = `SELECT * FROM academy_schedules WHERE is_deleted = 0${dateClause} ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
               const res = dateParams.length ? await env.DB.prepare(query).bind(...dateParams).all() : await env.DB.prepare(query).all();
               return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
@@ -902,7 +925,7 @@ export default {
           if (method === 'POST') {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
-            if (d.targetScope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (d.targetScope === 'global' && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const sid = `acs_${Date.now()}`;
             await env.DB.prepare(`INSERT INTO academy_schedules
@@ -915,7 +938,7 @@ export default {
           if (method === 'PATCH' && id) {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
-            if (d.targetScope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (d.targetScope === 'global' && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare(`UPDATE academy_schedules
               SET schedule_type=?, title=?, schedule_date=?, start_time=?, end_time=?, target_scope=?, student_id=?, teacher_name=?, memo=?, is_closed=?, updated_at=DATETIME('now')
@@ -926,7 +949,7 @@ export default {
 
           if (method === 'DELETE' && id) {
             const existingAcs = await env.DB.prepare('SELECT target_scope, student_id FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
-            if (existingAcs && existingAcs.target_scope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (existingAcs && existingAcs.target_scope === 'global' && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (existingAcs && existingAcs.target_scope === 'student' && !(await canAccessStudent(teacher, existingAcs.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
@@ -983,7 +1006,7 @@ export default {
             if (grade) { clauses.push('grade = ?'); params.push(grade); }
             if (year) { clauses.push('exam_year = ?'); params.push(Number(year)); }
 
-            if (teacher.role !== 'admin') {
+            if (!isStaffUser(teacher)) {
               const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
               const classIds = (tcls.results || []).map(r => r.class_id);
               if (!classIds.length) return new Response(JSON.stringify({ success: true, data: [] }), { headers });
@@ -1008,7 +1031,7 @@ export default {
             if (!bStudentIds.length) return new Response(JSON.stringify({ success: true }), { headers });
 
             // 담당 학생 검증: teacher면 classId 기준으로 일괄 확인
-            if (teacher.role !== 'admin') {
+            if (!isStaffUser(teacher)) {
               let allowedIds;
               if (bClassId) {
                 const csRes = await env.DB.prepare('SELECT student_id FROM class_students WHERE class_id = ?').bind(bClassId).all();
@@ -1122,7 +1145,7 @@ export default {
               return new Response(JSON.stringify({ success: true, items: res.results }), { headers });
             }
 
-            if (teacher.role === 'admin') {
+            if (isStaffUser(teacher)) {
               const res = await env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all();
               return new Response(JSON.stringify({ success: true, items: res.results }), { headers });
             }
@@ -1260,7 +1283,7 @@ export default {
             }
 
             let classIds = [];
-            if (teacher.role === 'admin') {
+            if (isStaffUser(teacher)) {
               const allClasses = await env.DB.prepare('SELECT id FROM classes WHERE is_active != 0 OR is_active IS NULL').all();
               classIds = allClasses.results.map(r => r.id);
             } else {
@@ -1366,6 +1389,18 @@ export default {
 
         // --- 10. 반 관리 (classes) ---
         if (resource === 'classes') {
+          const normalizeClassPayload = (d = {}, current = {}) => ({
+            name: String(d.name ?? current.name ?? '').trim(),
+            grade: String(d.grade ?? current.grade ?? '').trim(),
+            subject: String(d.subject ?? current.subject ?? '수학').trim() || '수학',
+            teacherName: String(d.teacher_name ?? d.teacherName ?? current.teacher_name ?? teacher?.name ?? '박준성').trim() || '박준성',
+            scheduleDays: String(d.schedule_days ?? d.scheduleDays ?? current.schedule_days ?? '').trim(),
+            textbook: String(d.textbook ?? current.textbook ?? '').trim(),
+            isActive: d.is_active !== undefined ? Number(d.is_active) : (current.is_active !== undefined ? Number(current.is_active) : 1),
+            dayGroup: String(d.day_group ?? d.dayGroup ?? d.schedule_group ?? d.scheduleGroup ?? current.day_group ?? '').trim(),
+            timeLabel: String(d.time_label ?? d.timeLabel ?? d.schedule_time ?? d.scheduleTime ?? current.time_label ?? '').trim()
+          });
+
           const normalizeTeacherNameForMap = (name) => String(name || '').trim().replace(/\s+/g, '').replace(/\uC120\uC0DD\uB2D8$/g, '');
           const syncTeacherClassMapping = async (classId, teacherName) => {
             const rawName = String(teacherName || '').trim();
@@ -1388,27 +1423,76 @@ export default {
           };
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
-          if (!isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          if (!isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
 
           if (method === 'POST') {
-            const d = await request.json();
+            const d = normalizeClassPayload(await request.json());
+            if (!d.name) return new Response(JSON.stringify({ error: 'name required' }), { status: 400, headers });
             const cid = `cls_${Date.now()}`;
-            await env.DB.prepare("INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active, day_group, time_label) VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?)").bind(cid, d.name, d.grade, d.subject || '수학', d.teacher_name || '박준성', d.schedule_days || '', d.textbook || '', d.day_group || '', d.time_label || '').run();
-            const mappingUpdated = await syncTeacherClassMapping(cid, d.teacher_name);
+            await env.DB.prepare("INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active, day_group, time_label) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)").bind(cid, d.name, d.grade, d.subject, d.teacherName, d.scheduleDays, d.textbook, d.isActive, d.dayGroup, d.timeLabel).run();
+            const mappingUpdated = await syncTeacherClassMapping(cid, d.teacherName);
             return new Response(JSON.stringify({ success: true, id: cid, mappingUpdated }), { headers });
           }
           if (method === 'PATCH' && id) {
-            const d = await request.json();
-            await env.DB.prepare("UPDATE classes SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, textbook = ?, is_active = ?, day_group = ?, time_label = ? WHERE id = ?").bind(d.name, d.grade, d.subject, d.teacher_name, d.schedule_days || '', d.textbook || '', d.is_active !== undefined ? d.is_active : 1, d.day_group || '', d.time_label || '', id).run();
-            const mappingUpdated = await syncTeacherClassMapping(id, d.teacher_name);
+            const current = await env.DB.prepare('SELECT * FROM classes WHERE id = ?').bind(id).first();
+            if (!current) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            const d = normalizeClassPayload(await request.json(), current);
+            if (!d.name) return new Response(JSON.stringify({ error: 'name required' }), { status: 400, headers });
+            await env.DB.prepare("UPDATE classes SET name = ?, grade = ?, subject = ?, teacher_name = ?, schedule_days = ?, textbook = ?, is_active = ?, day_group = ?, time_label = ? WHERE id = ?").bind(d.name, d.grade, d.subject, d.teacherName, d.scheduleDays, d.textbook, d.isActive, d.dayGroup, d.timeLabel, id).run();
+            const mappingUpdated = await syncTeacherClassMapping(id, d.teacherName);
             return new Response(JSON.stringify({ success: true, mappingUpdated }), { headers });
+          }
+          if (method === 'DELETE' && id) {
+            const classId = String(id || '').trim();
+            if (!classId) return new Response(JSON.stringify({ error: 'class id required' }), { status: 400, headers });
+
+            const current = await env.DB.prepare('SELECT id FROM classes WHERE id = ?').bind(classId).first();
+            if (!current) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+
+            const countRows = async (table) => {
+              const row = await env.DB.prepare(`SELECT COUNT(*) AS count FROM ${table} WHERE class_id = ?`).bind(classId).first();
+              return Number(row?.count || 0);
+            };
+
+            const deleted = {
+              class_students: await countRows('class_students'),
+              teacher_classes: await countRows('teacher_classes'),
+              class_textbooks: await countRows('class_textbooks'),
+              class_daily_records: await countRows('class_daily_records'),
+              class_daily_progress: await countRows('class_daily_progress'),
+              class_exam_assignments: await countRows('class_exam_assignments'),
+              exam_sessions: await countRows('exam_sessions'),
+              school_exam_records: await countRows('school_exam_records'),
+              classes: 1
+            };
+
+            const sessionRes = await env.DB.prepare('SELECT id FROM exam_sessions WHERE class_id = ?').bind(classId).all();
+            const sessionIds = (sessionRes.results || []).map(r => String(r.id || '').trim()).filter(Boolean);
+            const wrongAnswerDelete = sessionIds.length
+              ? [env.DB.prepare(`DELETE FROM wrong_answers WHERE session_id IN (${sessionIds.map(() => '?').join(',')})`).bind(...sessionIds)]
+              : [];
+
+            await env.DB.batch([
+              ...wrongAnswerDelete,
+              env.DB.prepare('DELETE FROM teacher_classes WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM class_students WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM class_textbooks WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM class_daily_progress WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM class_daily_records WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM class_exam_assignments WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM exam_sessions WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM school_exam_records WHERE class_id = ?').bind(classId),
+              env.DB.prepare('DELETE FROM classes WHERE id = ?').bind(classId)
+            ]);
+
+            return new Response(JSON.stringify({ success: true, mode: 'deleted', deleted }), { headers });
           }
         }
 
-        // --- 11. 선생님 및 담당반 관리 (Admin Only) ---
+        // --- 11. 선생님 및 담당반 관리 (Staff Only) ---
         if (resource === 'teachers' && method === 'GET') {
           const t = await verifyAuth(request, env);
-          if (t?.role !== 'admin') return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const res = await env.DB.prepare('SELECT id, name, login_id, role FROM teachers ORDER BY role DESC').all();
           const map = await env.DB.prepare('SELECT * FROM teacher_classes').all();
           return new Response(JSON.stringify({ teachers: res.results, teacher_classes: map.results }), { headers });
@@ -1416,7 +1500,7 @@ export default {
 
         if (resource === 'teacher-classes' && method === 'POST') {
           const t = await verifyAuth(request, env);
-          if (t?.role !== 'admin') return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const { teacher_id, class_ids } = await request.json();
           const stmts = [env.DB.prepare('DELETE FROM teacher_classes WHERE teacher_id = ?').bind(teacher_id)];
           for (const cid of (class_ids || [])) stmts.push(env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(teacher_id, cid));
@@ -1424,10 +1508,10 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // --- 11b. 선생님 계정 생성 (Admin Only) ---
+        // --- 11b. 선생님 계정 생성 (Staff Only) ---
         if (resource === 'teachers' && method === 'POST') {
           const t = await verifyAuth(request, env);
-          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const d = await request.json();
           const loginId = String(d.login_id || '').trim();
           const password = String(d.password || '').trim();
@@ -1442,10 +1526,10 @@ export default {
           return new Response(JSON.stringify({ success: true, id: tid }), { headers });
         }
 
-        // --- 11c. 선생님 정보 수정 / 비밀번호 초기화 (Admin Only) ---
+        // --- 11c. 선생님 정보 수정 / 비밀번호 초기화 (Staff Only) ---
         if (resource === 'teachers' && method === 'PATCH' && id) {
           const t = await verifyAuth(request, env);
-          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const d = await request.json();
           if (path[3] === 'reset-password') {
             const newPass = String(d.new_password || '').trim();
@@ -1493,11 +1577,11 @@ export default {
               return new Response(JSON.stringify({ success: false, error: 'journal not found' }), { status: 404, headers });
             }
 
-            if (teacher.role !== 'admin' && existing.teacher_name !== teacher.name) {
+            if (!isStaffUser(teacher) && existing.teacher_name !== teacher.name) {
               return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             }
 
-            if (teacher.role === 'admin' && d.feedback !== undefined) {
+            if (isStaffUser(teacher) && d.feedback !== undefined) {
               await env.DB.prepare("UPDATE daily_journals SET feedback = ?, status = '결재완료', updated_at = DATETIME('now') WHERE id = ?")
                 .bind(d.feedback, id)
                 .run();
