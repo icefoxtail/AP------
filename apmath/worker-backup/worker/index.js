@@ -33,7 +33,7 @@ async function verifyAuth(request, env) {
 
 // 권한 검증 헬퍼: 특정 학생에 접근 가능한가?
 async function canAccessStudent(teacher, studentId, env) {
-  if (isStaffUser(teacher)) return true;
+  if (isAdminUser(teacher)) return true;
   const row = await env.DB.prepare(`
     SELECT 1 FROM class_students cs
     JOIN teacher_classes tc ON tc.class_id = cs.class_id
@@ -45,7 +45,7 @@ async function canAccessStudent(teacher, studentId, env) {
 
 // 권한 검증 헬퍼: 특정 반에 접근 가능한가?
 async function canAccessClass(teacher, classId, env) {
-  if (isStaffUser(teacher)) return true;
+  if (isAdminUser(teacher)) return true;
   const row = await env.DB.prepare(`
     SELECT 1 FROM teacher_classes
     WHERE teacher_id = ? AND class_id = ?
@@ -186,7 +186,7 @@ export default {
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
           let query, params = [];
-          if (isStaffUser(teacher)) {
+          if (isAdminUser(teacher)) {
             query = `SELECT id, name, grade, teacher_name FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name`;
           } else {
             query = `
@@ -208,7 +208,7 @@ export default {
 
           let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp;
 
-          if (isStaffUser(teacher)) {
+          if (isAdminUser(teacher)) {
             [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare('SELECT * FROM students').all(),
               env.DB.prepare('SELECT * FROM classes').all(),
@@ -344,7 +344,7 @@ export default {
 
           if (method === 'POST' && id === 'batch-pins') {
             const { class_id } = await request.json();
-            if (!class_id && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
+            if (!class_id && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
             if (class_id && !(await canAccessClass(teacher, class_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const targets = class_id
               ? await env.DB.prepare("SELECT id, grade FROM students WHERE (student_pin IS NULL OR student_pin = '') AND status = '재원' AND id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(class_id).all()
@@ -370,7 +370,7 @@ export default {
 
           if (method === 'POST' && !id) {
             const d = normalizeStudentPayload(await request.json());
-            if (!isStaffUser(teacher)) {
+            if (!isAdminUser(teacher)) {
               if (!d.classId) return new Response(JSON.stringify({ error: 'Class ID required' }), { status: 403, headers });
               if (!(await canAccessClass(teacher, d.classId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             }
@@ -423,7 +423,7 @@ export default {
 
           const date = url.searchParams.get('date') || todayKstDateString();
 
-          if (isStaffUser(teacher)) {
+          if (isAdminUser(teacher)) {
             const [att, hw] = await Promise.all([
               env.DB.prepare('SELECT * FROM attendance WHERE date = ?').bind(date).all(),
               env.DB.prepare('SELECT * FROM homework WHERE date = ?').bind(date).all()
@@ -468,7 +468,7 @@ export default {
             'SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? ORDER BY schedule_date ASC, start_time ASC, created_at ASC'
           ).bind(startDate, endDate).all();
 
-          if (isStaffUser(teacher)) {
+          if (isAdminUser(teacher)) {
             const [att, hw] = await Promise.all([
               env.DB.prepare('SELECT * FROM attendance WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all(),
               env.DB.prepare('SELECT * FROM homework WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all()
@@ -846,7 +846,7 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           if (method === 'GET') { const res = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(); return new Response(JSON.stringify({ success: true, data: res.results }), { headers }); }
-          if (!isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          if (!isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
           if (method === 'POST') {
             const d = await request.json();
             const eid = `exs_${Date.now()}`;
@@ -900,7 +900,7 @@ export default {
             if (from) { dateClause += ' AND schedule_date >= ?'; dateParams.push(from); }
             if (to) { dateClause += ' AND schedule_date <= ?'; dateParams.push(to); }
 
-            if (isStaffUser(teacher)) {
+            if (isAdminUser(teacher)) {
               const query = `SELECT * FROM academy_schedules WHERE is_deleted = 0${dateClause} ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
               const res = dateParams.length ? await env.DB.prepare(query).bind(...dateParams).all() : await env.DB.prepare(query).all();
               return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
@@ -925,7 +925,7 @@ export default {
           if (method === 'POST') {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
-            if (d.targetScope === 'global' && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (d.targetScope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const sid = `acs_${Date.now()}`;
             await env.DB.prepare(`INSERT INTO academy_schedules
@@ -938,7 +938,7 @@ export default {
           if (method === 'PATCH' && id) {
             const d = normalizeAcademySchedulePayload(await request.json());
             if (d.error) return new Response(JSON.stringify({ success: false, message: d.error }), { status: 400, headers });
-            if (d.targetScope === 'global' && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (d.targetScope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (d.targetScope === 'student' && !(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare(`UPDATE academy_schedules
               SET schedule_type=?, title=?, schedule_date=?, start_time=?, end_time=?, target_scope=?, student_id=?, teacher_name=?, memo=?, is_closed=?, updated_at=DATETIME('now')
@@ -949,7 +949,7 @@ export default {
 
           if (method === 'DELETE' && id) {
             const existingAcs = await env.DB.prepare('SELECT target_scope, student_id FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
-            if (existingAcs && existingAcs.target_scope === 'global' && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (existingAcs && existingAcs.target_scope === 'global' && !isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (existingAcs && existingAcs.target_scope === 'student' && !(await canAccessStudent(teacher, existingAcs.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
@@ -1006,7 +1006,7 @@ export default {
             if (grade) { clauses.push('grade = ?'); params.push(grade); }
             if (year) { clauses.push('exam_year = ?'); params.push(Number(year)); }
 
-            if (!isStaffUser(teacher)) {
+            if (!isAdminUser(teacher)) {
               const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
               const classIds = (tcls.results || []).map(r => r.class_id);
               if (!classIds.length) return new Response(JSON.stringify({ success: true, data: [] }), { headers });
@@ -1031,7 +1031,7 @@ export default {
             if (!bStudentIds.length) return new Response(JSON.stringify({ success: true }), { headers });
 
             // 담당 학생 검증: teacher면 classId 기준으로 일괄 확인
-            if (!isStaffUser(teacher)) {
+            if (!isAdminUser(teacher)) {
               let allowedIds;
               if (bClassId) {
                 const csRes = await env.DB.prepare('SELECT student_id FROM class_students WHERE class_id = ?').bind(bClassId).all();
@@ -1145,7 +1145,7 @@ export default {
               return new Response(JSON.stringify({ success: true, items: res.results }), { headers });
             }
 
-            if (isStaffUser(teacher)) {
+            if (isAdminUser(teacher)) {
               const res = await env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all();
               return new Response(JSON.stringify({ success: true, items: res.results }), { headers });
             }
@@ -1283,7 +1283,7 @@ export default {
             }
 
             let classIds = [];
-            if (isStaffUser(teacher)) {
+            if (isAdminUser(teacher)) {
               const allClasses = await env.DB.prepare('SELECT id FROM classes WHERE is_active != 0 OR is_active IS NULL').all();
               classIds = allClasses.results.map(r => r.id);
             } else {
@@ -1423,7 +1423,7 @@ export default {
           };
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
-          if (!isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          if (!isAdminUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
 
           if (method === 'POST') {
             const d = normalizeClassPayload(await request.json());
@@ -1492,7 +1492,7 @@ export default {
         // --- 11. 선생님 및 담당반 관리 (Staff Only) ---
         if (resource === 'teachers' && method === 'GET') {
           const t = await verifyAuth(request, env);
-          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const res = await env.DB.prepare('SELECT id, name, login_id, role FROM teachers ORDER BY role DESC').all();
           const map = await env.DB.prepare('SELECT * FROM teacher_classes').all();
           return new Response(JSON.stringify({ teachers: res.results, teacher_classes: map.results }), { headers });
@@ -1500,7 +1500,7 @@ export default {
 
         if (resource === 'teacher-classes' && method === 'POST') {
           const t = await verifyAuth(request, env);
-          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const { teacher_id, class_ids } = await request.json();
           const stmts = [env.DB.prepare('DELETE FROM teacher_classes WHERE teacher_id = ?').bind(teacher_id)];
           for (const cid of (class_ids || [])) stmts.push(env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(teacher_id, cid));
@@ -1511,7 +1511,7 @@ export default {
         // --- 11b. 선생님 계정 생성 (Staff Only) ---
         if (resource === 'teachers' && method === 'POST') {
           const t = await verifyAuth(request, env);
-          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const d = await request.json();
           const loginId = String(d.login_id || '').trim();
           const password = String(d.password || '').trim();
@@ -1529,7 +1529,7 @@ export default {
         // --- 11c. 선생님 정보 수정 / 비밀번호 초기화 (Staff Only) ---
         if (resource === 'teachers' && method === 'PATCH' && id) {
           const t = await verifyAuth(request, env);
-          if (!isStaffUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+          if (!isAdminUser(t)) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
           const d = await request.json();
           if (path[3] === 'reset-password') {
             const newPass = String(d.new_password || '').trim();
@@ -1577,11 +1577,11 @@ export default {
               return new Response(JSON.stringify({ success: false, error: 'journal not found' }), { status: 404, headers });
             }
 
-            if (!isStaffUser(teacher) && existing.teacher_name !== teacher.name) {
+            if (!isAdminUser(teacher) && existing.teacher_name !== teacher.name) {
               return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             }
 
-            if (isStaffUser(teacher) && d.feedback !== undefined) {
+            if (isAdminUser(teacher) && d.feedback !== undefined) {
               await env.DB.prepare("UPDATE daily_journals SET feedback = ?, status = '결재완료', updated_at = DATETIME('now') WHERE id = ?")
                 .bind(d.feedback, id)
                 .run();
