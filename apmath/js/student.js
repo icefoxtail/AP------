@@ -456,10 +456,28 @@ async function handleResetSessionWrongs(eid, sid) {
 }
 
 
+function sortClassesByGradeDesc(classes) {
+    const gradeRank = (grade) => {
+        const text = String(grade || '');
+        const ranks = { '고3': 6, '고2': 5, '고1': 4, '중3': 3, '중2': 2, '중1': 1 };
+        return ranks[text] || 0;
+    };
+    return [...classes].sort((a, b) => gradeRank(b.grade) - gradeRank(a.grade) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+}
+
+function syncEditStudentGrade() {
+    const classId = document.getElementById('edit-class')?.value || '';
+    const cls = state.db.classes.find(c => String(c.id) === String(classId));
+    if (cls?.grade) {
+        document.getElementById('edit-grade').value = cls.grade;
+    }
+}
+
+
 function openEditStudent(sid) {
     const s = state.db.students.find(st => st.id === sid);
     const curCid = state.db.class_students.find(m => m.student_id === sid)?.class_id || '';
-    const opts = state.db.classes.filter(c => c.is_active !== 0 || c.id === curCid).map(c => `<option value="${c.id}" ${c.id===curCid?'selected':''}>${c.name}</option>`).join('');
+    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => c.is_active !== 0 || String(c.id) === String(curCid))).map(c => `<option value="${c.id}" ${String(c.id)===String(curCid)?'selected':''}>${c.name}</option>`).join('');
     
     showModal('학생 정보 수정', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -470,7 +488,7 @@ function openEditStudent(sid) {
                     <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
                     <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option><option value="고2" ${s.grade==='고2'?'selected':''}>고2</option><option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
                 </select>
-                <select id="edit-class" class="std-input-base" style="flex: 1.5;"><option value="">반 미배정</option>${opts}</select>
+                <select id="edit-class" class="std-input-base" style="flex: 1.5;" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select>
             </div>
             <input id="edit-student-phone" class="std-input-base" value="${s.student_phone||''}" placeholder="학생 전화번호">
             <input id="edit-parent-phone" class="std-input-base" value="${s.parent_phone||''}" placeholder="학부모 전화번호">
@@ -488,11 +506,16 @@ async function handleEditStudent(sid) {
     const pin = document.getElementById('edit-student-pin')?.value.trim() || '';
     if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
 
+    const classId = document.getElementById('edit-class')?.value || '';
+    const editGrade = document.getElementById('edit-grade')?.value || '';
+    const cls = classId ? state.db.classes.find(c => String(c.id) === String(classId)) : null;
+    const grade = cls ? (cls.grade || editGrade) : editGrade;
+
     const payload = {
         name: document.getElementById('edit-name')?.value || '',
         school_name: document.getElementById('edit-school')?.value || '',
-        grade: document.getElementById('edit-grade')?.value || '',
-        class_id: document.getElementById('edit-class')?.value || '',
+        grade,
+        class_id: classId,
         student_phone: document.getElementById('edit-student-phone')?.value || '',
         parent_phone: document.getElementById('edit-parent-phone')?.value || '',
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
@@ -517,7 +540,7 @@ async function handleEditStudent(sid) {
 
 
 function openAddStudent(defaultCid = '') {
-    const opts = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${c.id===defaultCid?'selected':''}>${c.name}</option>`).join('');
+    const opts = sortClassesByGradeDesc(state.db.classes.filter(c => c.is_active !== 0)).map(c => `<option value="${c.id}" ${String(c.id)===String(defaultCid)?'selected':''}>${c.name}</option>`).join('');
     showModal('신규 학생 추가', `
         <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px 4px; box-sizing: border-box;">
             <input id="add-name" class="std-input-base" placeholder="이름 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
@@ -536,8 +559,13 @@ async function handleAddStudent() {
     if (!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
     if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
 
+    if (!classId) { toast('반을 선택하세요.', 'warn'); return; }
+    const cls = state.db.classes.find(c => String(c.id) === String(classId));
+    if (!cls) { toast('반 정보를 찾을 수 없습니다.', 'warn'); return; }
+    const grade = cls.grade || '';
+
     try {
-        const r = await api.post('students', { name: n, school_name: sc, class_id: classId, student_pin: pin });
+        const r = await api.post('students', { name: n, school_name: sc, grade, class_id: classId, student_pin: pin });
         if (r?.success) {
             toast('학생이 추가되었습니다.', 'success');
             closeModal();
