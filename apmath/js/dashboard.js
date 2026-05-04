@@ -7,7 +7,7 @@
  * [3rd Stabilization]: 날짜 파싱 헬퍼 통일(apParseLocalDateTime), 중등반 필터 완전 통일
  * [Partner B Fix]: 오늘 수업 요일 필터링 적용 및 시험 일정 필수 입력 해제
  * [Partner B Hotfix]: 학급 진입 시 state.ui.currentClassId 전역 상태 누락 버그 해결
- * [Dashboard Smart Active]: 공휴일 스캐너 및 클릭 감지 기반 패시브 등원(수업 없음 전환) 완벽 구현
+ * [Dashboard Smart Active]: 공휴일 스캐너 및 엄격한 등원 감지 덧셈 로직 적용 (문구 원상복구)
  */
 
 function copyPhoneNumber(text) {
@@ -69,24 +69,23 @@ function isDashboardHoliday(dateStr) {
     return false;
 }
 
-// [Dashboard Smart Active] 데이터가 있으면 자동 액티브, 없으면 스캐너 확인
+// [Dashboard Smart Active] 오직 '등원' 기록이 있을 때만 엄격하게 휴무 모드 해제
 function isClassScheduledTodayForDashboard(cid) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
     
-    // 1. 오늘자 출결/숙제 데이터가 하나라도 있는지 확인 (수동 수업 감지)
+    // 1. 오직 '등원' 상태의 데이터가 단 1개라도 있는지 확인
     const cIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
-    const hasRecord = state.db.attendance.some(a => a.date === todayStr && cIds.includes(String(a.student_id))) ||
-                      state.db.homework.some(h => h.date === todayStr && cIds.includes(String(h.student_id)));
+    const hasActiveAttendance = state.db.attendance.some(a => a.date === todayStr && cIds.includes(String(a.student_id)) && a.status === '등원');
 
-    if (hasRecord) return true; // 기록이 있으면 휴일 무시하고 무조건 수업 액티브 전환
+    if (hasActiveAttendance) return true; // 확실한 등원이면 휴무 무시하고 액티브
 
-    // 2. 기록이 없을 때 오늘이 휴일이면 수업 없음
+    // 2. 기록이 없거나(혹은 공란/결석뿐) 오늘이 휴일이면 수업 없음
     if (isDashboardHoliday(todayStr)) return false;
 
-    // 3. 기록이 없고 휴일도 아니면 원래 요일 스케줄 확인
-    if (!cls.schedule_days) return true; // 요일 설정 없으면 매일
+    // 3. 원래 요일 스케줄 확인
+    if (!cls.schedule_days) return true; 
     const today = new Date().getDay();
     const days = String(cls.schedule_days).split(',').map(d => d.trim());
     return days.includes(String(today));
@@ -496,6 +495,7 @@ function sortClassesForDashboard(classes) {
     });
 }
 
+// [Dashboard Smart Active] 오직 등원만 정직하게 덧셈
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
     const activeStudents = state.db.students.filter(s => s.status === '재원');
@@ -509,9 +509,9 @@ function computeDashboardData() {
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
     
+    // 글로벌 카운트: 명확하게 '등원'인 학생만 더함
+    const presentCount = state.db.attendance.filter(a => a.date === today && a.status === '등원' && scheduledIds.has(a.student_id)).length;
     const absentCount = state.db.attendance.filter(a => a.date === today && a.status === '결석' && scheduledIds.has(a.student_id)).length;
-    const presentCount = scheduledActiveStudents.length - absentCount;
-    
     const hwNotDoneCount = state.db.homework.filter(h => h.date === today && h.status === '미완료' && scheduledIds.has(h.student_id)).length;
 
     const todoCount = state.db.operation_memos.filter(m => {
@@ -524,17 +524,17 @@ function computeDashboardData() {
     state.db.classes.filter(c => Number(c.is_active) !== 0).forEach(c => {
         const cIds = state.db.class_students.filter(m => m.class_id === c.id).map(m => m.student_id);
         const cActiveIds = activeStudents.filter(s => cIds.includes(s.id)).map(s => s.id);
-        let cMiss=0, cAbs=0;
+        let cPre=0, cMiss=0, cAbs=0;
         
         cActiveIds.forEach(id => {
             const att = state.db.attendance.find(a => a.student_id===id && a.date===today);
+            if (att?.status === '등원') cPre++; // 오직 등원만 더함
             if (att?.status === '결석') cAbs++;
             
             const hw = state.db.homework.find(h => h.student_id===id && h.date===today);
             if (hw?.status === '미완료') cMiss++;
         });
         
-        let cPre = cActiveIds.length - cAbs;
         classSummaries[c.id] = { 
             activeCount: cActiveIds.length, 
             present: cPre, 
@@ -581,7 +581,7 @@ function openDashboardClass(cid) {
     toast('학급 화면 모듈을 불러오지 못했습니다.', 'error');
 }
 
-// 불필요한 장식 및 휴무 문구 제외 원본 스타일 유지
+// 오리지널 UI 유지
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
 
