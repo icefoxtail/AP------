@@ -7,6 +7,7 @@
  * [3rd Stabilization]: 날짜 파싱 헬퍼 통일(apParseLocalDateTime), 중등반 필터 완전 통일
  * [Partner B Fix]: 오늘 수업 요일 필터링 적용 및 시험 일정 필수 입력 해제
  * [Partner B Hotfix]: 학급 진입 시 state.ui.currentClassId 전역 상태 누락 버그 해결
+ * [Dashboard Smart Active]: 공휴일 스캐너 및 클릭 감지 기반 패시브 등원(수업 없음 전환) 완벽 구현
  */
 
 function copyPhoneNumber(text) {
@@ -47,14 +48,46 @@ function apFormatMonthDay(value) {
     return `${m}월 ${d}일`;
 }
 
-// [Partner B] 해당 반이 오늘 수업이 있는 날인지 판정하는 헬퍼
+// ── 대시보드 공휴일/휴무일 인식 ─────────────────────────────
+const DASH_HOLIDAYS = [
+    '2026-01-01', '2026-02-16', '2026-02-17', '2026-02-18', '2026-03-01', '2026-03-02',
+    '2026-05-01', '2026-05-05', '2026-05-24', '2026-05-25', '2026-06-06', '2026-07-17',
+    '2026-08-15', '2026-08-17', '2026-09-24', '2026-09-25', '2026-09-26', '2026-10-03',
+    '2026-10-05', '2026-10-09', '2026-12-25'
+];
+
+function isDashboardHoliday(dateStr) {
+    if (DASH_HOLIDAYS.includes(dateStr)) return true;
+    if (state.db.academy_schedules) {
+        return state.db.academy_schedules.some(s => 
+            String(s.is_deleted || 0) !== '1' && 
+            s.schedule_date === dateStr && 
+            s.schedule_type === 'closed' && 
+            s.target_scope !== 'student'
+        );
+    }
+    return false;
+}
+
+// [Dashboard Smart Active] 데이터가 있으면 자동 액티브, 없으면 스캐너 확인
 function isClassScheduledTodayForDashboard(cid) {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
-    // 수업 요일 설정이 없으면 매일 수업으로 간주
-    if (!cls.schedule_days) return true;
     
-    const today = new Date().getDay(); // 0(일) ~ 6(토)
+    // 1. 오늘자 출결/숙제 데이터가 하나라도 있는지 확인 (수동 수업 감지)
+    const cIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
+    const hasRecord = state.db.attendance.some(a => a.date === todayStr && cIds.includes(String(a.student_id))) ||
+                      state.db.homework.some(h => h.date === todayStr && cIds.includes(String(h.student_id)));
+
+    if (hasRecord) return true; // 기록이 있으면 휴일 무시하고 무조건 수업 액티브 전환
+
+    // 2. 기록이 없을 때 오늘이 휴일이면 수업 없음
+    if (isDashboardHoliday(todayStr)) return false;
+
+    // 3. 기록이 없고 휴일도 아니면 원래 요일 스케줄 확인
+    if (!cls.schedule_days) return true; // 요일 설정 없으면 매일
+    const today = new Date().getDay();
     const days = String(cls.schedule_days).split(',').map(d => d.trim());
     return days.includes(String(today));
 }
@@ -114,7 +147,6 @@ function computeRiskStudents() {
     const classStudents = state.db.class_students || [];
     const classes = state.db.classes || [];
     
-    // [Stabilization] 최근 14일 기준 생성
     const LOOKBACK_DAYS = 14;
     const cutoffTime = todayTime - (LOOKBACK_DAYS - 1) * 24 * 60 * 60 * 1000;
 
@@ -126,7 +158,6 @@ function computeRiskStudents() {
         let riskTypes = [];
         let reasons = [];
         
-        // [Stabilization] 출결 14일 필터 실제 적용
         const recentAtt = attendanceHistory.filter(a => {
             if (String(a.student_id) !== String(s.id)) return false;
             if (a.status !== '결석') return false;
@@ -136,7 +167,6 @@ function computeRiskStudents() {
         const absenceCount = recentAtt.length;
         if (absenceCount >= 2) { riskTypes.push('출결주의'); reasons.push(`최근 14일 결석 ${absenceCount}회`); }
         
-        // [Stabilization] 숙제 14일 필터 실제 적용
         const recentHw = homeworkHistory.filter(h => {
             if (String(h.student_id) !== String(s.id)) return false;
             if (h.status !== '미완료') return false;
@@ -181,7 +211,6 @@ function computeRiskStudents() {
         
         if (cnsDaysDiff >= 30 && !isNewStudent) { riskTypes.push('상담필요'); reasons.push(`최근 30일 상담 기록 없음`); }
         
-        // [Stabilization] 종합주의 중복 방어
         if (riskTypes.length >= 2 && !riskTypes.includes('종합주의')) { 
             riskTypes.push('종합주의'); 
         }
@@ -196,7 +225,6 @@ function computeRiskStudents() {
     return risks;
 }
 
-// [Final Fix] 운영메뉴 퇴원생 버튼과 연동
 function openAdminDischargedStudents() {
     openAdminStudentList('discharged');
 }
@@ -416,9 +444,6 @@ function renderAdminStudentSearch() {
 
 // --- Teacher Dashboard 공통 함수 ---
 
-// [Partner B] 필수 입력 제거: 날짜만 있으면 저장 가능
-
-// [Phase 4/5] 글로벌 진입점
 function openGlobalExamGradeView() {
     const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
     const rows = classes.map(c => `
@@ -456,18 +481,17 @@ function getClassGradeRank(grade) {
     return idx >= 0 ? idx : 99;
 }
 
+// 스마트 필터링이 반영된 정렬
 function sortClassesForDashboard(classes) {
-    const todayStr = new Date().toLocaleDateString('sv-SE');
-    const parts = todayStr.split('-');
-    const today = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
-
     return [...classes].sort((a, b) => {
-        const aToday = (!a.schedule_days || a.schedule_days.split(',').includes(today)) ? 0 : 1;
-        const bToday = (!b.schedule_days || b.schedule_days.split(',').includes(today)) ? 0 : 1;
+        const aToday = isClassScheduledTodayForDashboard(a.id) ? 0 : 1;
+        const bToday = isClassScheduledTodayForDashboard(b.id) ? 0 : 1;
         if (aToday !== bToday) return aToday - bToday;
+        
         const aRank = getClassGradeRank(a.grade);
         const bRank = getClassGradeRank(b.grade);
         if (aRank !== bRank) return aRank - bRank;
+        
         return (a.name || '').localeCompare(b.name || '');
     });
 }
@@ -511,7 +535,13 @@ function computeDashboardData() {
         });
         
         let cPre = cActiveIds.length - cAbs;
-        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledTodayForDashboard(c.id) };
+        classSummaries[c.id] = { 
+            activeCount: cActiveIds.length, 
+            present: cPre, 
+            absent: cAbs, 
+            hwNotDone: cMiss, 
+            isScheduled: isClassScheduledTodayForDashboard(c.id) 
+        };
     });
 
     return { 
@@ -551,7 +581,7 @@ function openDashboardClass(cid) {
     toast('학급 화면 모듈을 불러오지 못했습니다.', 'error');
 }
 
-// [POLISH] 학급 카드: 이름 왼쪽 + 재원/등원/결석 오른쪽 한 줄
+// 불필요한 장식 및 휴무 문구 제외 원본 스타일 유지
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
 
@@ -579,7 +609,6 @@ function renderClassSummaryCard(cls, data) {
     `;
 }
 
-// [POLISH] 일정 섹션: 오렌지(오늘) vs 보라(주간) 은은한 컬러 분리
 function renderTodoSections() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
@@ -654,7 +683,6 @@ function renderTodoSections() {
     `;
 }
 
-// [NEW] 오늘일지 카드 생성 함수 (요일 필터 정밀 적용)
 function renderTodayJournalCard(data) {
     const todayClasses = state.db.classes.filter(c => {
         if (Number(c.is_active) === 0) return false;
@@ -662,14 +690,13 @@ function renderTodayJournalCard(data) {
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
         const summary = data.classSummaries[c.id];
-        // [Partner B] summary.isScheduled가 실제 요일 필터링 값을 가지고 있음
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
         return true;
     });
 
     let contentHtml = '';
     if (todayClasses.length === 0) {
-        contentHtml = `<div style="font-size:13px; font-weight:600; color:var(--secondary); text-align:center; padding:18px 12px;">오늘 수업반 없음</div>`;
+        contentHtml = `<div style="font-size:13px; font-weight:600; color:var(--secondary); text-align:center; padding:18px 12px;">수업 없음</div>`;
     } else {
         const classStrings = todayClasses.map(c => {
             const summary = data.classSummaries[c.id];
@@ -697,7 +724,6 @@ function renderDashboard() {
     const data = computeDashboardData();
     const root = document.getElementById('app-root');
 
-    // [NEW] 최상단 숏컷 카드 — 3버튼 + 오늘일지 1버튼
     const todayClasses = state.db.classes.filter(c => {
         if (Number(c.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
@@ -707,7 +733,7 @@ function renderDashboard() {
         return true;
     });
     const journalContent = todayClasses.length === 0
-        ? `<span style="font-size:14px; font-weight:600; color:var(--secondary);">오늘 수업반 없음</span>`
+        ? `<span style="font-size:14px; font-weight:600; color:var(--secondary);">수업 없음</span>`
         : `<span style="font-size:14px; font-weight:700; color:var(--text);">${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
 
     const shortcutRow = `
@@ -739,11 +765,8 @@ function renderDashboard() {
         </div>
     `;
 
-    const todayJournalCard = '';
-
     const todoSections = renderTodoSections();
     
-    // [Partner B] 대시보드 학급 목록에서도 필터링된 결과와 동기화
     const classes = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
@@ -752,7 +775,6 @@ function renderDashboard() {
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    // [수정] max-width:850px 및 margin:0 auto 적용, shortcutRow 최상단 추가
     root.innerHTML = `<div style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
         ${todoSections}
@@ -760,7 +782,6 @@ function renderDashboard() {
     </div>`;
 }
 
-// [RESTORE] computeTodayCloseData: 원본 복구
 function computeTodayCloseData() {
     const today = new Date().toLocaleDateString('sv-SE');
 
@@ -796,7 +817,6 @@ function computeTodayCloseData() {
     };
 }
 
-// [RESTORE] quickToggleAtt: 원본 복구
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
@@ -805,7 +825,6 @@ async function quickToggleAtt(sid, status, tab = 'att') {
     openTodayCloseModal(tab);
 }
 
-// [RESTORE] quickToggleHw: 원본 복구
 async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
@@ -839,7 +858,6 @@ function openTodayCloseModal(tab = 'att') {
         return acc;
     }, {});
 
-    // [Master Fix] 학급 정렬 알고리즘 적용
     const sortedClassNames = Object.keys(grouped).sort((a, b) => {
         const clsA = state.db.classes.find(c => c.name === a);
         const clsB = state.db.classes.find(c => c.name === b);
@@ -877,7 +895,6 @@ function openTodayCloseModal(tab = 'att') {
     showModal('예외 현황', `<div style="display:flex; gap:8px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
 }
 
-// [RESTORE] getTodayExamConfig: 원본 복구
 function getTodayExamConfig() {
     try {
         const raw = localStorage.getItem('AP_TODAY_EXAM');
@@ -889,14 +906,12 @@ function getTodayExamConfig() {
     } catch (e) { localStorage.removeItem('AP_TODAY_EXAM'); return null; }
 }
 
-// [RESTORE] setTodayExamConfig: 원본 복구
 function setTodayExamConfig(title, q) {
     const today = new Date().toLocaleDateString('sv-SE');
     const validQ = parseInt(q, 10) || 20;
     localStorage.setItem('AP_TODAY_EXAM', JSON.stringify({ date: today, title: String(title), q: validQ }));
 }
 
-// [RESTORE] clearTodayExamConfig: 원본 복구
 function clearTodayExamConfig() {
     localStorage.removeItem('AP_TODAY_EXAM');
     if(state.auth.role === 'admin' && typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
