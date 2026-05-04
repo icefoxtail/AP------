@@ -126,7 +126,7 @@ async function handleBatchGeneratePins(classId) {
     }
 }
 
-// [Phase 4/5] 요약 계산 (속도 최적화)
+// [Phase 4/5] 요약 계산 (상태 기반 정확한 덧셈 로직으로 수정)
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
@@ -138,19 +138,38 @@ function computeClassTodaySummary(classId) {
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
 
-    let absentCount = 0;
+    // 1. 빠른 검색용 Map 생성
+    const todayAttMap = {};
     for (let i = 0; i < state.db.attendance.length; i++) {
         let a = state.db.attendance[i];
-        if (a.date === today && a.status === '결석' && aIds.has(String(a.student_id))) absentCount++;
+        if (a.date === today && aIds.has(String(a.student_id))) {
+            todayAttMap[a.student_id] = a.status;
+        }
     }
-    const att = total - absentCount;
-
-    let hwMissCount = 0;
+    
+    const todayHwMap = {};
     for (let i = 0; i < state.db.homework.length; i++) {
         let h = state.db.homework[i];
-        if (h.date === today && h.status === '미완료' && aIds.has(String(h.student_id))) hwMissCount++;
+        if (h.date === today && aIds.has(String(h.student_id))) {
+            todayHwMap[h.student_id] = h.status;
+        }
     }
-    const hw = total - hwMissCount;
+
+    // 2. 화면에 보이는 상태값을 기준으로 정확하게 카운트
+    let attCount = 0;
+    let hwCount = 0;
+    
+    active.forEach(s => {
+        const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id], isScheduled);
+        if (['등원', '지각', '보강', '상담'].includes(attStatus)) {
+            attCount++;
+        }
+        
+        const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id], isScheduled);
+        if (hwStatus === '완료') {
+            hwCount++;
+        }
+    });
 
     let test = 0;
     if (todayExam) {
@@ -164,7 +183,7 @@ function computeClassTodaySummary(classId) {
         test = testedIds.size;
     }
     
-    return { att, hw, test, total, isScheduled };
+    return { att: attCount, hw: hwCount, test, total, isScheduled };
 }
 
 // [UI Standard Applied]: 학급 메인 화면
