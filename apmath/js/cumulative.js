@@ -136,6 +136,59 @@ function getMonthlyScheduleBadges(studentId, date) {
     };
 }
 
+function getAttendanceStudentJoinedDate(student) {
+    if (!student) return '';
+    const raw = String(
+        student.join_date || student.joined_at || student.enrolled_at || student.enrollment_date ||
+        student.registered_at || student.registration_date || student.created_at || student.createdAt || ''
+    ).trim();
+    const m = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+    if (!m) return '';
+    return [m[1], String(m[2]).padStart(2, '0'), String(m[3]).padStart(2, '0')].join('-');
+}
+
+function isAttendanceNewStudent(student) {
+    const joined = getAttendanceStudentJoinedDate(student);
+    if (!joined) return false;
+    const year = new Date().getFullYear();
+    return joined >= `${year}-06-01`;
+}
+
+function isAttendanceLeaveStudent(student) {
+    return !!(student && (student.status === '휴원' || String(student.memo || '').includes('#휴원')));
+}
+
+function getAttendanceStudentNameStyle(student) {
+    if (isAttendanceLeaveStudent(student)) return 'color:#FF8C00;';
+    if (isAttendanceNewStudent(student)) return 'color:var(--primary);';
+    return 'color:var(--text);';
+}
+
+function goAttendanceHome() {
+    closeAttendanceLedger();
+
+    if (typeof leaveTimetableWideMode === 'function') {
+        leaveTimetableWideMode();
+    }
+
+    if (typeof state !== 'undefined' && state.ui) {
+        state.ui.currentClassId = null;
+        state.ui.returnView = null;
+    }
+
+    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
+        renderAdminControlCenter();
+        return;
+    }
+
+    if (typeof renderDashboard === 'function') {
+        renderDashboard();
+        return;
+    }
+
+    if (typeof toast === 'function') toast('홈 화면을 불러오지 못했습니다.', 'warn');
+}
+
 // ── 출석부 장부 ──────────────────────────────────────────────────
 
 function _attDayName(dateStr) {
@@ -152,34 +205,35 @@ function _attDayStyle(dateStr) {
 
 function renderAttendanceCellContent(studentId, date) {
     const schedule = getMonthlyScheduleBadges(studentId, date);
+    const baseStyle = 'display:inline-flex;align-items:center;justify-content:center;width:24px;height:22px;border-radius:5px;font-weight:700;';
     if (schedule.globalClosed || schedule.studentClosed) {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:11px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
+        return '<span style="' + baseStyle + 'font-size:10.5px;color:#e53935;background:rgba(229,57,53,0.08);">휴</span>';
     }
 
     const status = getMonthlyAttendanceStatus(studentId, date);
     const att = status.attendance || '';
 
     if (att === '등원') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:var(--success);">○</span>';
+        return '<span style="' + baseStyle + 'font-size:13px;color:var(--success);">○</span>';
     }
 
     if (att === '결석') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#e53935;">×</span>';
+        return '<span style="' + baseStyle + 'font-size:13px;color:#e53935;">×</span>';
     }
 
     if (att === '지각') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#f59f00;">△</span>';
+        return '<span style="' + baseStyle + 'font-size:13px;color:#f59f00;">△</span>';
     }
 
     if (att === '보강') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:16px;font-weight:700;color:var(--primary);">＋</span>';
+        return '<span style="' + baseStyle + 'font-size:13px;color:var(--primary);">＋</span>';
     }
 
     if (att === '상담') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#7c3aed;">★</span>';
+        return '<span style="' + baseStyle + 'font-size:13px;color:#7c3aed;">★</span>';
     }
 
-    return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:13px;font-weight:600;color:var(--border);">-</span>';
+    return '<span style="' + baseStyle + 'font-size:12px;font-weight:600;color:var(--border);">-</span>';
 }
 
 function _ensureAttOverlay() {
@@ -206,22 +260,26 @@ function openAttendanceLedger() {
     ov.innerHTML = `
 <style>
 #att-ledger-overlay *{box-sizing:border-box;}
-#att-brand{flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:12px 14px 10px;border-bottom:1px solid var(--border);background:var(--surface);}
-#att-brand-title{font-size:18px;font-weight:900;letter-spacing:-0.4px;color:var(--text);cursor:pointer;user-select:none;}
-#att-hdr{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-wrap:wrap;}
-#att-hdr h2{margin:0;font-size:15px;font-weight:700;color:var(--text);flex-shrink:0;}
-.att-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
-#att-body{flex:1;overflow:auto;position:relative;}
-#att-tbl{border-collapse:collapse;width:max-content;}
-#att-tbl th,#att-tbl td{border-bottom:1px solid var(--border);}
-#att-tbl thead th{position:sticky;top:0;z-index:2;background:var(--surface);}
+#att-brand{flex-shrink:0;display:flex;align-items:center;justify-content:center;height:56px;padding:0 16px;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--surface);}
+#att-brand-title{font-size:18px;font-weight:800;letter-spacing:-0.4px;color:var(--text);cursor:pointer;user-select:none;line-height:1;}
+#att-brand-title:hover{color:var(--primary);}
+#att-hdr{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--surface);flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+#att-hdr::-webkit-scrollbar{display:none;}
+#att-hdr h2{margin:0;font-size:14px;font-weight:700;color:var(--text);flex:0 0 auto;white-space:nowrap;}
+.att-ctrl{height:32px;padding:0 9px;border-radius:7px;border:1px solid rgba(0,0,0,0.06);background:var(--surface);color:var(--text);font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;flex:0 0 auto;white-space:nowrap;}
+#att-body{flex:1;overflow:auto;position:relative;background:var(--surface);}
+#att-tbl{border-collapse:collapse;width:max-content;background:var(--surface);}
+#att-tbl th,#att-tbl td{border-bottom:1px solid rgba(0,0,0,0.045);}
+#att-tbl thead th{position:sticky;top:0;z-index:2;background:var(--surface);box-shadow:0 1px 0 rgba(0,0,0,0.045);}
 #att-tbl .att-nc{position:sticky;left:0;z-index:1;background:var(--surface);}
 #att-tbl thead .att-nc{z-index:3;}
-.att-dc{padding:4px 1px;text-align:center;width:34px;min-width:34px;cursor:pointer;user-select:none;}
+.att-dc{padding:2px 1px;text-align:center;width:31px;min-width:31px;cursor:pointer;user-select:none;}
 .att-dc:active{opacity:.7;}
 .att-hol{cursor:default;}
-.att-grp td{background:var(--surface-2) !important;font-size:12px;font-weight:700;color:var(--text);padding:5px 10px;}
-#att-legend{padding:6px 14px;font-size:11px;font-weight:600;color:var(--secondary);display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid var(--border);background:var(--surface);}
+.att-grp td{background:rgba(26,92,255,0.025) !important;font-size:11px;font-weight:700;color:var(--text);padding:4px 8px;}
+#att-legend{padding:5px 12px;font-size:10.5px;font-weight:600;color:var(--secondary);display:flex;gap:9px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-shrink:0;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--surface);scrollbar-width:none;}
+#att-legend::-webkit-scrollbar{display:none;}
+#att-legend span{flex:0 0 auto;white-space:nowrap;}
 </style>
 <div id="att-brand">
   <div id="att-brand-title" onclick="goAttendanceHome()">AP MATH</div>
@@ -260,6 +318,20 @@ function closeAttendanceLedger() {
     if (ov) ov.style.display = 'none';
 }
 
+function openEditStudentFromAttendance(sid) {
+    const ov = document.getElementById('att-ledger-overlay');
+    if (ov) ov.style.display = 'none';
+    state.ui.returnView = { type: 'attendance' };
+    if (typeof openEditStudent === 'function') openEditStudent(sid, { returnTo: { type: 'attendance' } });
+}
+
+function openAddStudentFromAttendance(classId) {
+    const ov = document.getElementById('att-ledger-overlay');
+    if (ov) ov.style.display = 'none';
+    state.ui.returnView = { type: 'attendance' };
+    if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
+}
+
 function renderAttendanceLedgerTable() {
     const root = document.getElementById('att-tbl-root');
     if (!root) return;
@@ -271,7 +343,6 @@ function renderAttendanceLedgerTable() {
 
     let activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
 
-    // 중등/고등 필터링 적용
     if (section) {
         activeClasses = activeClasses.filter(c => {
             const isHigh = /고1|고2|고3|고등/.test(String(c.grade || '') + ' ' + String(c.name || ''));
@@ -293,7 +364,7 @@ function renderAttendanceLedgerTable() {
         const num = Number(d.slice(-2));
         const dayName = _attDayName(d);
         const style = _attDayStyle(d);
-        return `<th style="padding:5px 1px;width:34px;min-width:34px;text-align:center;${style}"><div style="font-size:12px;font-weight:700;line-height:1.3;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.3;">${dayName}</div></th>`;
+        return `<th style="padding:4px 1px;width:31px;min-width:31px;text-align:center;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;">${num}</div><div style="font-size:9.5px;font-weight:600;line-height:1.2;">${dayName}</div></th>`;
     }).join('');
 
     const bodyRows = grouped.map(g => {
@@ -308,16 +379,16 @@ function renderAttendanceLedgerTable() {
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
             
-            // 학생 이름 밑 학년 제거 및 상하 패딩 축소 (6px)
+            const nameStyle = getAttendanceStudentNameStyle(s);
             return `<tr>
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
-  <div style="font-size:13px;font-weight:700;color:var(--text);text-align:center;">${apEscapeHtml(s.name)}</div>
+<td class="att-nc" style="padding:4px 8px;min-width:88px;white-space:nowrap;text-align:center;">
+  <div style="font-size:12px;font-weight:700;line-height:1.2;text-align:center;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
 </td>${dateCells}</tr>`;
         }).join('');
-        const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
+        const emptyCols = days.map(() => '<td style="border-bottom:1px solid rgba(0,0,0,0.045);"></td>').join('');
         const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''">
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
-  <div style="font-size:12px;font-weight:600;color:var(--secondary);text-align:center;">+</div>
+<td class="att-nc" style="padding:4px 8px;min-width:88px;white-space:nowrap;text-align:center;">
+  <div style="font-size:12px;font-weight:600;color:var(--secondary);text-align:center;line-height:1.2;">+</div>
 </td>${emptyCols}</tr>`;
         return groupRow + sRows + emptyRow;
     }).join('');
@@ -326,7 +397,7 @@ function renderAttendanceLedgerTable() {
 
     root.innerHTML = `<table id="att-tbl">
 <thead><tr>
-  <th class="att-nc" style="padding:6px 10px;min-width:96px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
+  <th class="att-nc" style="padding:5px 8px;min-width:88px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
   ${headerCells}
 </tr></thead>
 <tbody>${bodyRows || empty}</tbody>
@@ -352,7 +423,6 @@ async function toggleAttendanceCellStatus(studentId, date) {
     else if (current === '보강') next = '상담';
     else next = '미기록';
 
-    // 낙관적 업데이트
     if (existing) {
         existing.status = next;
     } else {
@@ -366,7 +436,6 @@ async function toggleAttendanceCellStatus(studentId, date) {
         const r = await api.patch('attendance', { studentId, date, status: next });
         if (!r?.success) throw new Error(r?.message || 'fail');
     } catch {
-        // 실패 시 롤백
         if (existing) {
             existing.status = current;
         } else {
@@ -611,102 +680,4 @@ function renderSchoolExamScoreCell(record) {
     const diff = (score !== null && score !== undefined && score !== '' && target !== null && target !== undefined && target !== '')
         ? Number(score) - Number(target) : null;
     const diffText = (diff === null || !Number.isFinite(diff)) ? '' :
-        `<div style="font-size:10px;font-weight:600;color:${diff >= 0 ? 'var(--success)' : 'var(--error)'};margin-top:2px;">목표 ${diff >= 0 ? '+' : ''}${diff}</div>`;
-    return `<span style="font-size:13px;font-weight:700;color:var(--text);">${scoreText}${diffText}</span>`;
-}
-
-function computeSchoolExamTrend(records, studentId) {
-    const list = records
-        .filter(r => String(r.student_id) === String(studentId) && r.score !== null && r.score !== undefined && r.score !== '')
-        .sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
-    if (!list.length) return { avg: '-', trend: '-' };
-    const scores = list.map(r => Number(r.score)).filter(Number.isFinite);
-    const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : '-';
-    const trend = scores.length >= 2 ? scores[scores.length - 1] - scores[scores.length - 2] : null;
-    return { avg, trend: trend === null ? '-' : `${trend >= 0 ? '+' : ''}${trend}` };
-}
-
-// student.js에서 학교성적 모달이 필요한 경우를 위해 유지
-function openSchoolExamRecordModal(recordId = '', studentId = '') {
-    const record = recordId ? (state.db.school_exam_records || []).find(r => String(r.id) === String(recordId)) : null;
-    const selectedStudentId = studentId || record?.student_id || '';
-    const currentYear = new Date().getFullYear();
-    const studentOptions = getCumulativeVisibleStudents({})
-        .map(s => `<option value="${apEscapeHtml(s.id)}" ${String(s.id) === String(selectedStudentId) ? 'selected' : ''}>${apEscapeHtml(s.name || '')} ${s.school_name ? `(${apEscapeHtml(s.school_name)})` : ''}</option>`)
-        .join('');
-    const student = selectedStudentId ? getCumulativeStudent(selectedStudentId) : null;
-    const targetScore = record?.target_score_snapshot ?? student?.target_score ?? '';
-
-    showModal(record ? '학교시험 성적 수정' : '학교시험 성적 추가', `
-<div style="display:flex;flex-direction:column;gap:10px;">
-  <select id="ser-student" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);" onchange="openSchoolExamRecordModal('${recordId}',this.value)">
-    <option value="">학생 선택</option>${studentOptions}
-  </select>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-    <input id="ser-school" class="btn" value="${apEscapeHtml(record?.school_name || student?.school_name || '')}" placeholder="학교" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-    <input id="ser-grade" class="btn" value="${apEscapeHtml(record?.grade || student?.grade || '')}" placeholder="학년" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-    <input id="ser-year" type="number" class="btn" value="${record?.exam_year || currentYear}" placeholder="연도" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-    <select id="ser-semester" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-      ${['1학기','2학기'].map(v => `<option value="${v}" ${String(record?.semester || '') === v ? 'selected' : ''}>${v}</option>`).join('')}
-    </select>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-    <select id="ser-type" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-      ${[['midterm','중간'],['final','기말'],['performance','수행'],['etc','기타']].map(([v,l]) => `<option value="${v}" ${String(record?.exam_type || 'midterm') === v ? 'selected' : ''}>${l}</option>`).join('')}
-    </select>
-    <input id="ser-subject" class="btn" value="${apEscapeHtml(record?.subject || '수학')}" placeholder="과목" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-    <input id="ser-score" type="number" class="btn" value="${record?.score ?? ''}" placeholder="점수/미응시 공란" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-    <input id="ser-target" type="number" class="btn" value="${targetScore}" placeholder="목표점수" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
-  </div>
-  <textarea id="ser-memo" class="btn" placeholder="메모" style="height:84px;text-align:left;resize:vertical;font-size:13px;font-weight:500;line-height:1.6;background:var(--surface-2);border:1px solid var(--border);">${apEscapeHtml(record?.memo || '')}</textarea>
-  <button class="btn btn-primary" style="width:100%;min-height:48px;font-size:14px;font-weight:700;border-radius:12px;" onclick="saveSchoolExamRecord('${recordId || ''}')">저장</button>
-  ${record ? `<button class="btn" style="width:100%;min-height:42px;font-size:13px;font-weight:700;color:var(--error);background:rgba(255,71,87,0.08);border:1px solid rgba(255,71,87,0.16);border-radius:12px;" onclick="deleteSchoolExamRecord('${record.id}')">삭제</button>` : ''}
-</div>`);
-}
-
-async function saveSchoolExamRecord(recordId = '') {
-    const studentId = document.getElementById('ser-student')?.value || '';
-    if (!studentId) return toast('학생을 선택하세요.', 'warn');
-    const student = getCumulativeStudent(studentId);
-    const payload = {
-        studentId,
-        classId: getCumulativeClassIdForStudent(studentId),
-        schoolName: document.getElementById('ser-school')?.value.trim() || student?.school_name || '',
-        grade: document.getElementById('ser-grade')?.value.trim() || student?.grade || '',
-        examYear: Number(document.getElementById('ser-year')?.value || 0),
-        semester: document.getElementById('ser-semester')?.value || '',
-        examType: document.getElementById('ser-type')?.value || 'midterm',
-        subject: document.getElementById('ser-subject')?.value.trim() || '수학',
-        score: document.getElementById('ser-score')?.value ?? '',
-        targetScoreSnapshot: document.getElementById('ser-target')?.value ?? '',
-        memo: document.getElementById('ser-memo')?.value.trim() || ''
-    };
-    if (!payload.examYear || !payload.examType || !payload.subject) return toast('연도, 시험유형, 과목을 확인하세요.', 'warn');
-    const r = recordId
-        ? await api.patch(`school-exam-records/${recordId}`, payload)
-        : await api.post('school-exam-records', payload);
-    if (r?.success) {
-        toast('학교시험 성적이 저장되었습니다.', 'success');
-        await loadData();
-        closeModal();
-    } else {
-        toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
-    }
-}
-
-async function deleteSchoolExamRecord(recordId) {
-    if (!recordId) return;
-    if (!confirm('학교시험 성적 기록을 삭제할까요?')) return;
-    const r = await api.delete('school-exam-records', recordId);
-    if (r?.success) {
-        toast('학교시험 성적 기록이 삭제되었습니다.', 'info');
-        await loadData();
-        closeModal();
-    } else {
-        toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
-    }
-}
+        `<div style="font-size:10px;font-weight:600;color:${diff >= 0 ? 'var(--success)' : 'var(--error)'};margin
