@@ -730,12 +730,20 @@ function renderDashboard() {
                     background:var(--surface); border:1px solid var(--border);
                     box-shadow:var(--shadow); margin-bottom:16px;">
             <div style="display:flex; align-items:center; gap:12px;">
-                <div style="width:36px; height:36px; border-radius:10px;
-                            background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.15);
-                            display:flex; align-items:center; justify-content:center;
-                            font-size:16px; color:var(--primary);">⊞</div>
+                <div style="width:34px; height:34px; border-radius:10px;
+                            background:linear-gradient(180deg,#2563eb 0%,#1d4ed8 100%);
+                            display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+                            gap:3.5px; padding:6px; box-sizing:border-box;
+                            box-shadow:0 4px 10px rgba(29,78,216,0.3);">
+                    <div style="background:#fff; border-radius:2px;"></div>
+                    <div style="background:#fff; border-radius:2px;"></div>
+                    <div style="background:#fff; border-radius:2px;"></div>
+                    <div style="background:#60a5fa; border-radius:2px;"></div>
+                </div>
                 <div>
-                    <div style="font-size:15px; font-weight:700; color:var(--text); letter-spacing:-0.3px;">JS아카이브</div>
+                    <div style="font-size:15px; font-weight:800; letter-spacing:-0.3px;">
+                        <span style="color:#2563eb;">JS</span><span style="color:var(--text);">아카이브</span>
+                    </div>
                     <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:2px;">기출·유형·단원평가 시험지 출력</div>
                 </div>
             </div>
