@@ -701,10 +701,10 @@ function renderDashboard() {
     // [NEW] 최상단 숏컷 카드 (아이콘 제거 및 하단 카드와 디자인 100% 동기화)
     const shortcutRow = `
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
-            <div onclick="if(typeof openExamScheduleModal === 'function') openExamScheduleModal(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
+            <div onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
                 <span style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">시간표</span>
             </div>
-            <div onclick="if(typeof renderAttendanceLedger === 'function') renderAttendanceLedger(); else if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
+            <div onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
                 <span style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">출석부</span>
             </div>
         </div>
@@ -723,12 +723,33 @@ function renderDashboard() {
         <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
+    const archiveCard = `
+        <div onclick="window.open('../archive/index.html', '_blank')"
+             style="display:flex; align-items:center; justify-content:space-between;
+                    padding:18px 22px; border-radius:16px; cursor:pointer;
+                    background:#0f172a; margin-bottom:16px;
+                    box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+            <div style="display:flex; align-items:center; gap:14px;">
+                <div style="width:40px; height:40px; border-radius:10px;
+                            background:rgba(255,255,255,0.1);
+                            display:flex; align-items:center; justify-content:center;
+                            font-size:20px;">⊞</div>
+                <div>
+                    <div style="font-size:15px; font-weight:800; color:#fff; letter-spacing:-0.3px;">JS아카이브</div>
+                    <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px;">기출·유형·단원평가 시험지 출력</div>
+                </div>
+            </div>
+            <span style="font-size:18px; color:rgba(255,255,255,0.4);">›</span>
+        </div>
+    `;
+
     // [수정] max-width:850px 및 margin:0 auto 적용, shortcutRow 최상단 추가
     root.innerHTML = `<div style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
         ${todayJournalCard}
         ${todoSections}
         ${classStatus}
+        ${archiveCard}
     </div>`;
 }
 
