@@ -66,6 +66,61 @@ function normalizeTeacherName(name) {
   return String(name || '').trim().replace(/\s+/g, '').replace(/선생님$/, '');
 }
 
+function normalizeTeacherAlias(name) {
+  const raw = String(name || '').trim();
+  if (!raw) return '';
+  const compact = raw.replace(/\s+/g, '').replace(/선생님$/g, '');
+  const lower = compact.toLowerCase();
+  const alias = {
+    teacher1: '박준성',
+    t1: '박준성',
+    '선생님1': '박준성',
+    teacher2: '정겨운',
+    t2: '정겨운',
+    '선생님2': '정겨운',
+    teacher3: '정의한',
+    t3: '정의한',
+    '선생님3': '정의한'
+  };
+  return alias[lower] || alias[compact] || compact;
+}
+
+async function findTeacherByAlias(env, teacherName) {
+  const normalized = normalizeTeacherAlias(teacherName);
+  if (!normalized) return null;
+  const teachers = await env.DB.prepare('SELECT id, login_id, name, role FROM teachers').all();
+  const matches = (teachers.results || []).filter(t => normalizeTeacherAlias(t.name) === normalized);
+  return matches.find(t => t.role === 'teacher') || matches[0] || null;
+}
+
+async function repairTeacherClassMappings(env) {
+  const classes = await env.DB.prepare(`
+    SELECT id, teacher_name
+    FROM classes
+    WHERE teacher_name IS NOT NULL
+      AND TRIM(teacher_name) != ''
+      AND (is_active != 0 OR is_active IS NULL)
+  `).all();
+
+  const teachers = await env.DB.prepare('SELECT id, login_id, name, role FROM teachers').all();
+  const teacherRows = teachers.results || [];
+  const stmts = [];
+
+  for (const cls of (classes.results || [])) {
+    const normalized = normalizeTeacherAlias(cls.teacher_name);
+    if (!normalized) continue;
+    const matches = teacherRows.filter(t => normalizeTeacherAlias(t.name) === normalized);
+    const teacher = matches.find(t => t.role === 'teacher') || matches[0];
+    if (!teacher) continue;
+    stmts.push(
+      env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(teacher.id, cls.id)
+    );
+  }
+
+  if (stmts.length) await env.DB.batch(stmts);
+  return stmts.length;
+}
+
 // 선생님 담당반 ID 목록 반환
 async function getTeacherClassIds(env, teacher) {
   if (!teacher) return [];
@@ -205,6 +260,8 @@ export default {
         if (resource === 'initial-data') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          await repairTeacherClassMappings(env);
 
           let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses;
 
@@ -1418,19 +1475,13 @@ export default {
             timeLabel: String(d.time_label ?? d.timeLabel ?? d.schedule_time ?? d.scheduleTime ?? current.time_label ?? '').trim()
           });
 
-          const normalizeTeacherNameForMap = (name) => String(name || '').trim().replace(/\s+/g, '').replace(/\uC120\uC0DD\uB2D8$/g, '');
           const syncTeacherClassMapping = async (classId, teacherName) => {
-            const rawName = String(teacherName || '').trim();
-            if (!classId || !rawName) return false;
+            if (!classId) return false;
 
-            const teachers = await env.DB.prepare('SELECT id, name FROM teachers').all();
-            const normalized = normalizeTeacherNameForMap(rawName);
-            const matched = (teachers.results || []).find(t =>
-              String(t.name || '').trim() === rawName ||
-              normalizeTeacherNameForMap(t.name) === normalized
-            );
-
-            if (!matched) return false;
+            const matched = await findTeacherByAlias(env, teacherName);
+            if (!matched) {
+              return false;
+            }
 
             await env.DB.batch([
               env.DB.prepare('DELETE FROM teacher_classes WHERE class_id = ?').bind(classId),
