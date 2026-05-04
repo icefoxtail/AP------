@@ -726,20 +726,20 @@ function renderDashboard() {
     const archiveCard = `
         <div onclick="window.open('../archive/index.html', '_blank')"
              style="display:flex; align-items:center; justify-content:space-between;
-                    padding:18px 22px; border-radius:16px; cursor:pointer;
-                    background:#0f172a; margin-bottom:16px;
-                    box-shadow:0 4px 16px rgba(0,0,0,0.15);">
-            <div style="display:flex; align-items:center; gap:14px;">
-                <div style="width:40px; height:40px; border-radius:10px;
-                            background:rgba(255,255,255,0.1);
+                    padding:14px 16px; border-radius:16px; cursor:pointer;
+                    background:var(--surface); border:1px solid var(--border);
+                    box-shadow:var(--shadow); margin-bottom:16px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:36px; height:36px; border-radius:10px;
+                            background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.15);
                             display:flex; align-items:center; justify-content:center;
-                            font-size:20px;">⊞</div>
+                            font-size:16px; color:var(--primary);">⊞</div>
                 <div>
-                    <div style="font-size:15px; font-weight:800; color:#fff; letter-spacing:-0.3px;">JS아카이브</div>
-                    <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px;">기출·유형·단원평가 시험지 출력</div>
+                    <div style="font-size:15px; font-weight:700; color:var(--text); letter-spacing:-0.3px;">JS아카이브</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:2px;">기출·유형·단원평가 시험지 출력</div>
                 </div>
             </div>
-            <span style="font-size:18px; color:rgba(255,255,255,0.4);">›</span>
+            <span style="font-size:18px; font-weight:700; color:var(--primary);">›</span>
         </div>
     `;
 
