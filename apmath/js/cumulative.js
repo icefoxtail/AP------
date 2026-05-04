@@ -1,6 +1,6 @@
 /**
  * AP Math OS [cumulative.js]
- * 출석부 + 성적표
+ * 출석부 장부 + 성적표 일괄입력 장부.
  * QR/OMR exam_sessions 와 완전히 별도.
  *
  * 화면 규칙:
@@ -8,8 +8,9 @@
  * - 별도 뒤로가기 버튼과 닫기 버튼을 두지 않는다.
  * - AP MATH 로고 클릭으로 대시보드로 나간다.
  * - 날짜/필터/반 선택 컨트롤은 헤더 안에 두지 않고 헤더 아래 본문 상단에 둔다.
- * - 반명과 학생명 등 좌측 주요 정보는 스티키(Sticky)로 고정한다.
- * - 모든 셀(이름, 날짜, 데이터)은 가운데 정렬을 원칙으로 한다.
+ * - 출석부 반명 옆 + 버튼을 두지 않는다.
+ * - 반명과 학생명은 가운데 정렬한다.
+ * - 학생 추가용 빈 행 + 는 유지한다.
  */
 
 // ── 공통 헬퍼 ─────────────────────────────────────────────────────
@@ -124,7 +125,7 @@ function getMonthlyAttendanceStatus(studentId, date) {
     const sid = String(studentId);
     const attendance = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
     const homework = (data.homework || []).find(h => String(h.student_id) === sid && String(h.date || '') === date);
-    return { attendance: attendance?.status || '', homework: homework?.status || '' };
+    return { attendance: attendance?.status || '등원', homework: homework?.status || '' };
 }
 
 function getMonthlyScheduleBadges(studentId, date) {
@@ -172,6 +173,27 @@ function getAttendanceStudentNameStyle(student) {
     return 'color:var(--text);';
 }
 
+function goAttendanceHome() {
+    closeAttendanceLedger();
+
+    if (typeof state !== 'undefined' && state.ui) {
+        state.ui.currentClassId = null;
+        state.ui.returnView = null;
+    }
+
+    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
+        renderAdminControlCenter();
+        return;
+    }
+
+    if (typeof renderDashboard === 'function') {
+        renderDashboard();
+        return;
+    }
+
+    if (typeof toast === 'function') toast('홈 화면을 불러오지 못했습니다.', 'warn');
+}
+
 // ── 출석부 장부 ──────────────────────────────────────────────────
 
 function _attDayName(dateStr) {
@@ -186,29 +208,36 @@ function _attDayStyle(dateStr) {
     return 'color:var(--secondary);';
 }
 
-function goAttendanceHome() {
-    closeAttendanceLedger();
-    closeSchoolExamLedger();
-
-    if (typeof state !== 'undefined' && state.ui) {
-        state.ui.currentClassId = null;
-        state.ui.returnView = null;
+function renderAttendanceCellContent(studentId, date) {
+    const schedule = getMonthlyScheduleBadges(studentId, date);
+    if (schedule.globalClosed || schedule.studentClosed) {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:11px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
     }
 
-    if (typeof goHome === 'function') {
-        goHome();
-        return;
+    const status = getMonthlyAttendanceStatus(studentId, date);
+    const att = status.attendance || '';
+
+    if (att === '등원') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:var(--success);">○</span>';
     }
 
-    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
-        renderAdminControlCenter();
-        return;
+    if (att === '결석') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#e53935;">×</span>';
     }
 
-    if (typeof renderDashboard === 'function') {
-        renderDashboard();
-        return;
+    if (att === '지각') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#f59f00;">△</span>';
     }
+
+    if (att === '보강') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:16px;font-weight:700;color:var(--primary);">＋</span>';
+    }
+
+    if (att === '상담') {
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:14px;font-weight:700;color:#7c3aed;">★</span>';
+    }
+
+    return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:12px;font-weight:700;color:var(--border);">-</span>';
 }
 
 function closeAttendanceLedger() {
@@ -223,24 +252,6 @@ function openEditStudentFromAttendance(sid) {
 function openAddStudentFromAttendance(classId) {
     state.ui.returnView = { type: 'attendance' };
     if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
-}
-
-function renderAttendanceCellContent(studentId, date) {
-    const schedule = getMonthlyScheduleBadges(studentId, date);
-    if (schedule.globalClosed || schedule.studentClosed) {
-        return '<span class="att-sign" style="font-size:10px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
-    }
-
-    const status = getMonthlyAttendanceStatus(studentId, date);
-    const att = status.attendance || '';
-
-    if (att === '등원') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
-    if (att === '결석') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
-    if (att === '지각') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#f59f00;">△</span>';
-    if (att === '보강') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--primary);">＋</span>';
-    if (att === '상담') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#7c3aed;">★</span>';
-
-    return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
 }
 
 function openAttendanceLedger() {
@@ -297,7 +308,7 @@ function openAttendanceLedger() {
     </div>
   </div>
   <div id="att-legend">
-    <span>○ 등원</span><span>× 결석</span><span>△ 지각</span><span>＋ 보강</span><span>★ 상담</span><span>- 미기록</span><span>휴 휴무</span>
+    <span>○ 등원</span><span>× 결석</span><span>△ 지각</span><span>＋ 보강</span><span>★ 상담</span><span>휴 휴무</span>
   </div>
   <div id="att-tbl-wrap">
     <div id="att-tbl-root"></div>
@@ -387,16 +398,16 @@ async function toggleAttendanceCellStatus(studentId, date) {
 
     const sid = String(studentId);
     const existing = data.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
-    const current = existing?.status || '';
+    const current = existing?.status || '등원';
 
     let next;
-    if (!current || current === '미기록') next = '등원';
-    else if (current === '등원') next = '결석';
+    if (current === '등원' || current === '미기록' || !current) next = '결석';
     else if (current === '결석') next = '지각';
     else if (current === '지각') next = '보강';
     else if (current === '보강') next = '상담';
-    else next = '미기록';
+    else next = '등원';
 
+    // 낙관적 업데이트
     if (existing) {
         existing.status = next;
     } else {
@@ -410,6 +421,7 @@ async function toggleAttendanceCellStatus(studentId, date) {
         const r = await api.patch('attendance', { studentId, date, status: next });
         if (!r?.success) throw new Error(r?.message || 'fail');
     } catch {
+        // 실패 시 롤백
         if (existing) {
             existing.status = current;
         } else {
