@@ -134,7 +134,7 @@ function applyTimetableFit() {
 
     var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
     var wrapTop = wrap.getBoundingClientRect().top;
-    var bottomPadding = 0;
+    var bottomPadding = 0; // 하단 여백 필요 시 조정
     var availableHeight = Math.floor(viewportHeight - wrapTop - bottomPadding);
 
     if (!Number.isFinite(availableHeight) || availableHeight < 280) {
@@ -168,8 +168,7 @@ function applyTimetableFit() {
 // ────────────────────────────────────────────
 
 function _getAllDb() {
-    if (typeof state === 'undefined') return {};
-    return state.db || state.allDb || {};
+    return (typeof state !== 'undefined') ? (state.allDb || state.db || {}) : {};
 }
 
 function _ttNormalizeTeacherName(name) {
@@ -324,14 +323,16 @@ function getTimetableColumnPlan(section, visibleTeachers) {
 
     if (isMobile) {
         if (!isMyOnly) {
+            // [전체 보기] 고등부, 중등부 모두 148px로 고정하여 쾌적한 가로 스크롤 확보
             teacherWidth = 148;
         } else {
+            // [내 반 보기] 기존 화면 꽉 채움 로직 유지
             if (section === 'high') {
                 teacherWidth = teacherSlots > 0
                     ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
                     : 110;
                 if (teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
-            } else {
+            } else { // middle
                 teacherWidth = teacherSlots > 0
                     ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
                     : 150;
@@ -581,11 +582,13 @@ function _ttIsStudentLeave(s) {
 
 function getTimetableClassStudentsWithInfo(classId) {
     var db = _getAllDb();
-    var sIds = (db.class_students || [])
+    var dbFull = (typeof state !== 'undefined' && state.db) ? state.db : db;
+
+    var sIds = (dbFull.class_students || [])
         .filter(function(cs) { return String(cs.class_id) === String(classId); })
         .map(function(cs) { return String(cs.student_id); });
 
-    return (db.students || [])
+    return (dbFull.students || [])
         .filter(function(s) {
             if (sIds.indexOf(String(s.id)) === -1) return false;
             if (s.status === '재원') return true;
@@ -908,7 +911,7 @@ function _renderHighGrid(sClasses, wrapper, visibleTeachers) {
     var bodyHtml = '';
     TIMETABLE_HIGH_GRADES.forEach(function(grade) {
         var cells = '<td style="width:' + plan.labelWidth + 'px; position:sticky; left:0; z-index:10; background:var(--surface); padding:6px 2px; border:1px solid rgba(0,0,0,0.05); text-align:center; vertical-align:middle;">' +
-            '<div class="tt-row-label" style="font-size:14px;">' + apEscapeHtml(grade) + '</div>' +
+            '<div class="tt-row-label" style="font-size:14px;">' + apEscapeHtml(grade) + '</div>'
         '</td>';
 
         teachers.forEach(function(t) {
