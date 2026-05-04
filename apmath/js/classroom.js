@@ -2,7 +2,6 @@
  * AP Math OS 1.0 [js/classroom.js]
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Fixed Standard UI]: Typography(Fixed) & Spacing(Fixed) 전면 적용본
- * [Holiday Intelligence Patch]: 공휴일 인식 및 첫 등원 클릭 시 패시브 활성화 로직 적용
  */
 
 // [UI Standard]: 클래스룸 전용 스타일 주입 (애니메이션 및 입력창 규격)
@@ -24,27 +23,6 @@ function formatClassScheduleDays(daysStr) {
     return daysStr.split(',').map(d => map[parseInt(d)]).join('');
 }
 
-// ── 공휴일/휴무일 인식 엔진 ──────────────────────────────────
-const DASH_HOLIDAYS = [
-    '2026-01-01', '2026-02-16', '2026-02-17', '2026-02-18', '2026-03-01', '2026-03-02',
-    '2026-05-01', '2026-05-05', '2026-05-24', '2026-05-25', '2026-06-06', '2026-07-17',
-    '2026-08-15', '2026-08-17', '2026-09-24', '2026-09-25', '2026-09-26', '2026-10-03',
-    '2026-10-05', '2026-10-09', '2026-12-25'
-];
-
-function isDashboardHoliday(dateStr) {
-    if (DASH_HOLIDAYS.includes(dateStr)) return true;
-    if (state.db.academy_schedules) {
-        return state.db.academy_schedules.some(s => 
-            String(s.is_deleted || 0) !== '1' && 
-            s.schedule_date === dateStr && 
-            s.schedule_type === 'closed' && 
-            s.target_scope !== 'student'
-        );
-    }
-    return false;
-}
-
 function isClassScheduledOnDate(clsId, dateStr) {
     const cls = state.db.classes.find(c => String(c.id) === String(clsId));
     if (!cls || !cls.schedule_days) return true;
@@ -56,7 +34,6 @@ function isClassScheduledOnDate(clsId, dateStr) {
 function getAttendanceDisplayStatus(status, isClassDay = true) {
     const safe = String(status || '').trim();
     if (safe && safe !== '미기록') return safe;
-    // [Master Policy] 수업일이 아니면(휴일 포함) 기본적으로 '-' 표시
     return isClassDay ? '등원' : '수업 없음';
 }
 
@@ -74,7 +51,7 @@ function getAttendanceStatusLabel(status, isClassDay = true) {
     if (cur === '지각') return '△ 지각';
     if (cur === '보강') return '＋ 보강';
     if (cur === '상담') return '★ 상담';
-    if (cur === '수업 없음') return '-'; 
+    if (cur === '수업 없음') return '-'; // 텅 빈 모양 텍스트
     return '○ 등원';
 }
 
@@ -96,7 +73,7 @@ function getAttendanceStatusStyle(status, isClassDay = true) {
         return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 800; border: 1px solid rgba(124,58,237,0.18);';
     }
     if (cur === '수업 없음') {
-        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
+        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; // 텅 빈 스타일
     }
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
@@ -119,7 +96,7 @@ function getHomeworkStatusLabel(status, isClassDay = true) {
     const cur = getHomeworkDisplayStatus(status, isClassDay);
     if (cur === '완료') return '완료';
     if (cur === '미완료') return '미완료';
-    if (cur === '공란') return '-'; 
+    if (cur === '공란') return '-'; // 텅 빈 모양 텍스트
     return '완료';
 }
 
@@ -132,7 +109,7 @@ function getHomeworkStatusStyle(status, isClassDay = true) {
         return 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(255,165,2,0.15);';
     }
     if (cur === '공란') {
-        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
+        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; // 텅 빈 스타일
     }
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
@@ -149,7 +126,7 @@ async function handleBatchGeneratePins(classId) {
     }
 }
 
-// [Phase 4/5] 요약 계산 (상태 기반 정확한 덧셈 로직)
+// [Phase 4/5] 요약 계산 (상태 기반 정확한 덧셈 로직으로 수정)
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
@@ -157,13 +134,11 @@ function computeClassTodaySummary(classId) {
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
     const aIds = new Set(active.map(s => String(s.id)));
     const total = active.length;
-
-    // [Smart Active] 실제 등원 기록이 하나라도 있을 때만 휴무 모드 해제
-    const hasActiveAttendance = state.db.attendance.some(a => a.date === today && ids.includes(String(a.student_id)) && a.status === '등원');
-    const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(classId, today) && !isDashboardHoliday(today));
+    const isScheduled = isClassScheduledOnDate(classId, today);
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
 
+    // 1. 빠른 검색용 Map 생성
     const todayAttMap = {};
     for (let i = 0; i < state.db.attendance.length; i++) {
         let a = state.db.attendance[i];
@@ -180,15 +155,20 @@ function computeClassTodaySummary(classId) {
         }
     }
 
+    // 2. 화면에 보이는 상태값을 기준으로 정확하게 카운트
     let attCount = 0;
     let hwCount = 0;
     
     active.forEach(s => {
         const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id], isScheduled);
-        if (attStatus === '등원') attCount++;
+        if (['등원', '지각', '보강', '상담'].includes(attStatus)) {
+            attCount++;
+        }
         
         const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id], isScheduled);
-        if (hwStatus === '완료') hwCount++;
+        if (hwStatus === '완료') {
+            hwCount++;
+        }
     });
 
     let test = 0;
@@ -227,12 +207,7 @@ function renderClass(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
     const today = new Date().toLocaleDateString('sv-SE');
-    
-    // [Smart Active Logic]
-    const isHoliday = isDashboardHoliday(today);
-    const hasActiveAttendance = state.db.attendance.some(a => a.date === today && mIds.includes(String(a.student_id)) && a.status === '등원');
-    const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(cid, today) && !isHoliday);
-    
+    const isScheduled = isClassScheduledOnDate(cid, today);
     const summary = computeClassTodaySummary(cid);
 
     const icons = {
@@ -302,6 +277,7 @@ function renderClass(cid) {
         </div>
     `;
 
+    // 빠른 검색을 위한 Hash Map 구성 (속도 대폭 향상)
     const todayAttMap = {};
     const todayHwMap = {};
     for (let i = 0; i < state.db.attendance.length; i++) {
@@ -556,11 +532,7 @@ function renderLedgerTable() {
 
     const rows = stds.map(s => {
         const sCid = cid || state.db.class_students.find(m => String(m.student_id) === String(s.id))?.class_id;
-        
-        // [Smart Active] 장부에서도 휴일 인식 및 강제 활성화 적용
-        const isHoliday = isDashboardHoliday(ledgerState.date);
-        const hasActiveAttendance = records.some(r => String(r.student_id) === String(s.id) && r.date === ledgerState.date && r.status === (isAtt ? '등원' : '완료'));
-        const isScheduled = hasActiveAttendance || (sCid ? (isClassScheduledOnDate(sCid, ledgerState.date) && !isHoliday) : true);
+        const isScheduled = sCid ? isClassScheduledOnDate(sCid, ledgerState.date) : true;
         
         const recStatus = recordMap[s.id];
         const status = isAtt ? getAttendanceDisplayStatus(recStatus, isScheduled) : getHomeworkDisplayStatus(recStatus, isScheduled);
@@ -600,30 +572,31 @@ async function toggleAtt(sid, date) {
     const cur = list.find(a => String(a.student_id) === String(sid) && a.date === today);
     
     const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
-    
-    // [Strict Active] 클릭 시점에 휴일 모드 무시 로직 적용
-    const isHoliday = isDashboardHoliday(today);
-    const hasActiveRecord = list.some(a => a.date === today && a.status === '등원');
-    const isScheduled = hasActiveRecord || (sCid ? (isClassScheduledOnDate(sCid, today) && !isHoliday) : true);
+    const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
     
     const next = getNextAttendanceStatus(cur?.status, isScheduled);
     const prevStatus = cur ? cur.status : undefined;
 
+    // [1] 메모리 즉시 변경
     if (cur) {
         cur.status = next;
     } else {
         list.push({ student_id: sid, date: today, status: next });
     }
 
+    // [2] 화면 즉시 렌더링 (서버 응답 대기 안 함)
     if (isLedger) renderLedgerTable(); 
     else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
     else renderDashboard();
 
+    // [3] 뒷단에서 백그라운드 API 전송
     try {
         const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
+        // 성공 시 조용히 데이터 동기화
         if (typeof refreshDataOnly === 'function') refreshDataOnly().catch(() => {});
     } catch (e) {
+        // [4] 통신 실패 시에만 원상복구(롤백) 후 에러 메시지
         if (cur) {
             cur.status = prevStatus;
         } else {
@@ -645,28 +618,31 @@ async function toggleHw(sid, date) {
     const cur = list.find(h => String(h.student_id) === String(sid) && h.date === today);
     
     const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
-    const isHoliday = isDashboardHoliday(today);
-    const hasActiveRecord = state.db.attendance.some(a => a.date === today && a.status === '등원');
-    const isScheduled = hasActiveRecord || (sCid ? (isClassScheduledOnDate(sCid, today) && !isHoliday) : true);
+    const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
     
     const next = getNextHomeworkStatus(cur?.status, isScheduled);
     const prevStatus = cur ? cur.status : undefined;
 
+    // [1] 메모리 즉시 변경
     if (cur) {
         cur.status = next;
     } else {
         list.push({ student_id: sid, date: today, status: next });
     }
 
+    // [2] 화면 즉시 렌더링 (서버 응답 대기 안 함)
     if (isLedger) renderLedgerTable(); 
     else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
     else renderDashboard();
 
+    // [3] 뒷단에서 백그라운드 API 전송
     try {
         const r = await api.patch('homework', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
+        // 성공 시 조용히 데이터 동기화
         if (typeof refreshDataOnly === 'function') refreshDataOnly().catch(() => {});
     } catch (e) {
+        // [4] 통신 실패 시에만 원상복구(롤백) 후 에러 메시지
         if (cur) {
             cur.status = prevStatus;
         } else {
