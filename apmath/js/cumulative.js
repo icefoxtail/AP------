@@ -2,6 +2,7 @@
  * AP Math OS [cumulative.js]
  * 출석부 장부 + 학교 성적표 일괄입력 장부.
  * QR/OMR exam_sessions 와 완전히 별도.
+ * [UI Standard Applied]: 대시보드 헤더 규격 완벽 이식 (40x40 뒤로가기, 20px 타이틀, max-width:850px, 44px 컨트롤)
  */
 
 // ── 공통 헬퍼 ─────────────────────────────────────────────────────
@@ -259,55 +260,51 @@ function openAttendanceLedger() {
     ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;';
     ov.innerHTML = `
 <style>
-#att-ledger-overlay *{box-sizing:border-box;}
-#att-brand{flex-shrink:0;display:flex;align-items:center;justify-content:center;height:56px;padding:0 16px;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--surface);}
-#att-brand-title{font-size:18px;font-weight:800;letter-spacing:-0.4px;color:var(--text);cursor:pointer;user-select:none;line-height:1;}
-#att-brand-title:hover{color:var(--primary);}
-#att-hdr{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--surface);flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-#att-hdr::-webkit-scrollbar{display:none;}
-#att-hdr h2{margin:0;font-size:14px;font-weight:700;color:var(--text);flex:0 0 auto;white-space:nowrap;}
-.att-ctrl{height:32px;padding:0 9px;border-radius:7px;border:1px solid rgba(0,0,0,0.06);background:var(--surface);color:var(--text);font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;flex:0 0 auto;white-space:nowrap;}
-#att-body{flex:1;overflow:auto;position:relative;background:var(--surface);}
-#att-tbl{border-collapse:collapse;width:max-content;background:var(--surface);}
-#att-tbl th,#att-tbl td{border-bottom:1px solid rgba(0,0,0,0.045);}
-#att-tbl thead th{position:sticky;top:0;z-index:2;background:var(--surface);box-shadow:0 1px 0 rgba(0,0,0,0.045);}
-#att-tbl .att-nc{position:sticky;left:0;z-index:1;background:var(--surface);}
-#att-tbl thead .att-nc{z-index:3;}
-.att-dc{padding:2px 1px;text-align:center;width:31px;min-width:31px;cursor:pointer;user-select:none;}
-.att-dc:active{opacity:.7;}
-.att-hol{cursor:default;}
-.att-grp td{background:rgba(26,92,255,0.025) !important;font-size:11px;font-weight:700;color:var(--text);padding:4px 8px;}
-#att-legend{padding:5px 12px;font-size:10.5px;font-weight:600;color:var(--secondary);display:flex;gap:9px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-shrink:0;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--surface);scrollbar-width:none;}
-#att-legend::-webkit-scrollbar{display:none;}
-#att-legend span{flex:0 0 auto;white-space:nowrap;}
+#att-ledger-overlay * { box-sizing:border-box; }
+.att-ctrl { height:44px; min-height:44px; padding:0 14px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:13px; font-weight:600; font-family:inherit; cursor:pointer; flex:1; min-width:120px; }
+#att-body { flex:1; overflow:auto; position:relative; background:var(--surface); border:1px solid var(--border); border-radius:16px; margin-bottom:24px; }
+#att-tbl { border-collapse:collapse; width:max-content; background:var(--surface); }
+#att-tbl th, #att-tbl td { border-bottom:1px solid var(--border); }
+#att-tbl thead th { position:sticky; top:0; z-index:2; background:var(--surface); box-shadow:0 1px 0 var(--border); }
+#att-tbl .att-nc { position:sticky; left:0; z-index:1; background:var(--surface); box-shadow:1px 0 0 var(--border); }
+#att-tbl thead .att-nc { z-index:3; }
+.att-dc { padding:2px 1px; text-align:center; width:31px; min-width:31px; cursor:pointer; user-select:none; }
+.att-dc:active { opacity:.7; }
+.att-hol { cursor:default; }
+.att-grp td { background:var(--bg) !important; font-size:12px; font-weight:700; color:var(--text); padding:8px 12px; }
+#att-legend { padding:8px 0; font-size:11px; font-weight:600; color:var(--secondary); display:flex; gap:12px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; flex-shrink:0; scrollbar-width:none; margin-bottom:8px; }
+#att-legend::-webkit-scrollbar { display:none; }
+#att-legend span { flex:0 0 auto; white-space:nowrap; }
 </style>
-<div id="att-brand">
-  <div id="att-brand-title" onclick="goAttendanceHome()">AP MATH</div>
-</div>
-<div id="att-hdr">
-  <h2>출석부</h2>
-  <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
-    onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
-  <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
-    <option value="">전체 (중/고)</option>
-    <option value="middle">중등부</option>
-    <option value="high">고등부</option>
-  </select>
-  <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
-    <option value="">전체 반</option>${classOptions}
-  </select>
-</div>
-<div id="att-legend">
-  <span>○ 등원</span>
-  <span>× 결석</span>
-  <span>△ 지각</span>
-  <span>＋ 보강</span>
-  <span>★ 상담</span>
-  <span>- 미기록</span>
-  <span>휴 휴무</span>
-</div>
-<div id="att-body">
-  <div id="att-tbl-root"></div>
+<div style="width:100%; max-width:850px; margin:0 auto; padding:16px 16px 0; display:flex; flex-direction:column; height:100%;">
+  <!-- Header: 대시보드 규격 완벽 동기화 (40x40 뒤로가기 버튼) -->
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-shrink:0;">
+      <div style="display:flex; align-items:center; gap:10px;">
+          <button class="btn" style="width:40px; height:40px; padding:0; font-size:22px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="goAttendanceHome()">←</button>
+          <div>
+              <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">출석부</div>
+          </div>
+      </div>
+  </div>
+  <!-- Controls -->
+  <div style="display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap; flex-shrink:0;">
+    <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
+    <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
+      <option value="">전체 (중/고)</option>
+      <option value="middle">중등부</option>
+      <option value="high">고등부</option>
+    </select>
+    <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
+      <option value="">전체 반</option>${classOptions}
+    </select>
+  </div>
+  <div id="att-legend">
+    <span>○ 등원</span><span>× 결석</span><span>△ 지각</span><span>＋ 보강</span><span>★ 상담</span><span>- 미기록</span><span>휴 휴무</span>
+  </div>
+  <!-- Body -->
+  <div id="att-body">
+    <div id="att-tbl-root"></div>
+  </div>
 </div>`;
 
     loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(() => renderAttendanceLedgerTable());
@@ -385,7 +382,7 @@ function renderAttendanceLedgerTable() {
   <div style="font-size:12px;font-weight:700;line-height:1.2;text-align:center;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
 </td>${dateCells}</tr>`;
         }).join('');
-        const emptyCols = days.map(() => '<td style="border-bottom:1px solid rgba(0,0,0,0.045);"></td>').join('');
+        const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
         const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''">
 <td class="att-nc" style="padding:4px 8px;min-width:88px;white-space:nowrap;text-align:center;">
   <div style="font-size:12px;font-weight:600;color:var(--secondary);text-align:center;line-height:1.2;">+</div>
@@ -469,51 +466,53 @@ function openSchoolExamLedger() {
     ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;';
     ov.innerHTML = `
 <style>
-#seb-ledger-overlay *{box-sizing:border-box;}
-#seb-hdr{flex-shrink:0;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface);}
-#seb-hdr h2{margin:0 0 8px 0;font-size:15px;font-weight:700;color:var(--text);}
-#seb-frow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
-.seb-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
-#seb-body{flex:1;overflow:auto;padding-bottom:68px;}
-#seb-tbl{border-collapse:collapse;width:100%;}
-#seb-tbl th{position:sticky;top:0;background:var(--surface);z-index:1;font-size:12px;font-weight:700;color:var(--secondary);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);}
-#seb-tbl td{padding:8px 14px;border-bottom:1px solid var(--border);}
-.seb-inp{width:100%;max-width:110px;height:40px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;font-weight:600;text-align:center;font-family:inherit;}
-#seb-bar{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:10px 14px;display:flex;gap:10px;align-items:center;z-index:10001;}
-@media(max-width:600px){#seb-frow{gap:6px;}.seb-inp{max-width:90px;}}
+#seb-ledger-overlay * { box-sizing:border-box; }
+.seb-ctrl { height:44px; min-height:44px; padding:0 14px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:13px; font-weight:600; font-family:inherit; cursor:pointer; flex:1; min-width:90px; }
+#seb-body { flex:1; overflow:auto; position:relative; background:var(--surface); border:1px solid var(--border); border-radius:16px; margin-bottom:16px; }
+#seb-tbl { border-collapse:collapse; width:100%; }
+#seb-tbl th { position:sticky; top:0; background:var(--surface); z-index:1; font-size:12px; font-weight:700; color:var(--secondary); padding:12px 16px; text-align:left; border-bottom:1px solid var(--border); }
+#seb-tbl td { padding:10px 16px; border-bottom:1px solid var(--border); }
+.seb-inp { width:100%; max-width:110px; height:44px; padding:0 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:600; text-align:center; font-family:inherit; }
 </style>
-<div id="seb-hdr">
-  <h2>학교 성적표</h2>
-  <div id="seb-frow">
+<div style="width:100%; max-width:850px; margin:0 auto; padding:16px 16px 0; display:flex; flex-direction:column; height:100%;">
+  <!-- Header: 대시보드 규격 완벽 동기화 (40x40 뒤로가기 버튼) -->
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-shrink:0;">
+      <div style="display:flex; align-items:center; gap:10px;">
+          <button class="btn" style="width:40px; height:40px; padding:0; font-size:22px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="closeSchoolExamLedger()">←</button>
+          <div>
+              <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">학교 성적표</div>
+          </div>
+      </div>
+  </div>
+  <!-- Controls -->
+  <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; flex-shrink:0;">
     <select class="seb-ctrl" id="seb-cls" onchange="renderSchoolExamBatchTable()">
       <option value="">반 선택</option>${classOptions}
     </select>
-    <input type="number" class="seb-ctrl" id="seb-yr" value="${currentYear}" min="2020" max="2035" style="width:88px;" oninput="renderSchoolExamBatchTable()">
-    <select class="seb-ctrl" id="seb-sem" onchange="renderSchoolExamBatchTable()">
+    <input type="number" class="seb-ctrl" id="seb-yr" value="${currentYear}" min="2020" max="2035" style="min-width:80px; flex:0.5;" oninput="renderSchoolExamBatchTable()">
+    <select class="seb-ctrl" id="seb-sem" onchange="renderSchoolExamBatchTable()" style="min-width:80px; flex:0.5;">
       <option value="1학기">1학기</option>
       <option value="2학기">2학기</option>
     </select>
-    <select class="seb-ctrl" id="seb-typ" onchange="renderSchoolExamBatchTable()">
+    <select class="seb-ctrl" id="seb-typ" onchange="renderSchoolExamBatchTable()" style="min-width:80px; flex:0.5;">
       <option value="midterm">중간</option>
       <option value="final">기말</option>
       <option value="performance">수행</option>
       <option value="etc">기타</option>
     </select>
-    <input type="text" class="seb-ctrl" id="seb-subj" value="수학" placeholder="과목" style="width:76px;" oninput="renderSchoolExamBatchTable()">
-    <div style="flex:1;"></div>
-    <button class="seb-ctrl" onclick="closeSchoolExamLedger()">닫기</button>
+    <input type="text" class="seb-ctrl" id="seb-subj" value="수학" placeholder="과목" style="min-width:80px; flex:0.5;" oninput="renderSchoolExamBatchTable()">
   </div>
-</div>
-<div id="seb-body">
-  <div id="seb-tbl-root"></div>
-</div>
-<div id="seb-bar">
-  <span id="seb-cnt" style="font-size:13px;font-weight:600;color:var(--secondary);"></span>
-  <div style="flex:1;"></div>
-  <button id="seb-save-btn" onclick="saveSchoolExamBatch()"
-    style="height:42px;padding:0 28px;border-radius:11px;background:var(--primary);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:inherit;">
-    전체 저장
-  </button>
+  <!-- Body -->
+  <div id="seb-body">
+    <div id="seb-tbl-root"></div>
+  </div>
+  <!-- Footer (저장 버튼 영역) -->
+  <div style="flex-shrink:0; display:flex; align-items:center; justify-content:space-between; padding:0 0 24px;">
+    <span id="seb-cnt" style="font-size:13px; font-weight:600; color:var(--secondary);"></span>
+    <button id="seb-save-btn" class="btn btn-primary" onclick="saveSchoolExamBatch()" style="height:48px; padding:0 32px; border-radius:14px; font-size:14px; font-weight:700; border:none; box-shadow:none;">
+      전체 저장
+    </button>
+  </div>
 </div>`;
 
     renderSchoolExamBatchTable();
@@ -567,7 +566,7 @@ function renderSchoolExamBatchTable() {
   <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;">${apEscapeHtml(s.name)}</div>
   <div style="font-size:11px;font-weight:600;color:var(--secondary);margin-top:2px;">${apEscapeHtml(clsName)} ${apEscapeHtml(s.grade || '')}</div>
 </td>
-<td style="min-width:130px;">
+<td style="min-width:130px;text-align:right;">
   <input type="number" class="seb-inp" id="seb-score-${apEscapeHtml(String(s.id))}"
     value="${score}" placeholder="미응시" min="0" max="100">
 </td>
@@ -575,7 +574,7 @@ function renderSchoolExamBatchTable() {
     }).join('');
 
     root.innerHTML = `<table id="seb-tbl">
-<thead><tr><th>학생</th><th>점수 (0–100)</th></tr></thead>
+<thead><tr><th>학생</th><th style="text-align:right;">점수 (0–100)</th></tr></thead>
 <tbody>${rows}</tbody>
 </table>`;
 }

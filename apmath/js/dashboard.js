@@ -551,30 +551,29 @@ function openDashboardClass(cid) {
     toast('학급 화면 모듈을 불러오지 못했습니다.', 'error');
 }
 
-// [POLISH] 학급 카드: 수평적 미니멀리즘 레이아웃
+// [POLISH] 학급 카드: 이름 왼쪽 + 재원/등원/결석 오른쪽 한 줄
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
 
     if (!s.isScheduled) {
         return `
-            <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); overflow:hidden;">
-                <div style="font-weight:700; font-size:15px; color:var(--secondary); margin-bottom:12px;">${apEscapeHtml(cls.name)}</div>
-                <div style="font-size:13px; font-weight:700; color:var(--secondary); background:var(--surface); padding:8px 10px; border-radius:10px; text-align:left;">오늘 수업 없음</div>
+            <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border); gap:12px;">
+                <div style="font-weight:700; font-size:15px; color:var(--secondary);">${apEscapeHtml(cls.name)}</div>
+                <div style="font-size:12px; font-weight:600; color:var(--secondary); white-space:nowrap;">수업 없음</div>
             </div>
         `;
     }
 
     const gradientBg = 'linear-gradient(135deg, rgba(26,92,255,0.04) 0%, var(--surface) 100%)';
     const borderColor = 'rgba(26,92,255,0.14)';
-    const shadowColor = 'rgba(26,92,255,0.06)';
 
     return `
-        <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; min-height:100px; padding:14px 16px; border-radius:16px; background:${gradientBg}; border:1px solid ${borderColor}; box-shadow:0 4px 14px ${shadowColor}; overflow:hidden;">
-            <div style="font-weight:700; font-size:15px; color:var(--text); margin-bottom:14px;">${apEscapeHtml(cls.name)}</div>
-            <div style="display:flex; gap:6px; align-items:center;">
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="font-weight:700; color:var(--text); margin-left:2px;">${s.activeCount}</span></div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">등원 <span style="font-weight:700; color:var(--success); margin-left:2px;">${s.present}</span></div>
-                <div style="background:var(--bg); border-radius:10px; padding:6px 10px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">결석 <span style="font-weight:700; color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:2px;">${s.absent}</span></div>
+        <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-radius:16px; background:${gradientBg}; border:1px solid ${borderColor}; gap:12px;">
+            <div style="font-weight:700; font-size:15px; color:var(--text);">${apEscapeHtml(cls.name)}</div>
+            <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;">
+                <div style="background:var(--bg); border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="color:var(--text);">${s.activeCount}</span></div>
+                <div style="background:var(--bg); border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">등원 <span style="color:var(--success);">${s.present}</span></div>
+                <div style="background:var(--bg); border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">결석 <span style="color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'};">${s.absent}</span></div>
             </div>
         </div>
     `;
@@ -698,19 +697,49 @@ function renderDashboard() {
     const data = computeDashboardData();
     const root = document.getElementById('app-root');
 
-    // [NEW] 최상단 숏컷 카드 (아이콘 제거 및 하단 카드와 디자인 100% 동기화)
+    // [NEW] 최상단 숏컷 카드 — 3버튼 + 오늘일지 1버튼
+    const todayClasses = state.db.classes.filter(c => {
+        if (Number(c.is_active) === 0) return false;
+        if (!isMiddleSchoolClass(c)) return false;
+        if (!isClassVisibleForCurrentTeacher(c)) return false;
+        const summary = data.classSummaries[c.id];
+        if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
+        return true;
+    });
+    const journalContent = todayClasses.length === 0
+        ? `<span style="font-size:14px; font-weight:600; color:var(--secondary);">오늘 수업반 없음</span>`
+        : `<span style="font-size:14px; font-weight:700; color:var(--text);">${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
+
     const shortcutRow = `
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
-            <div onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
-                <span style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">시간표</span>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+            <div onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');"
+                 style="background:rgba(37,99,235,0.06); border:1px solid rgba(37,99,235,0.2); border-radius:16px; padding:14px 10px; cursor:pointer;
+                         display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:14px; font-weight:700; color:#2563eb;">시간표</span>
             </div>
-            <div onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;">
-                <span style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">출석부</span>
+            <div onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');"
+                 style="background:rgba(8,145,178,0.06); border:1px solid rgba(8,145,178,0.2); border-radius:16px; padding:14px 10px; cursor:pointer;
+                         display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:14px; font-weight:700; color:#0891b2;">출석부</span>
             </div>
+            <div onclick="window.open('../archive/index.html', '_blank')"
+                 style="background:rgba(15,23,42,0.06); border:1px solid rgba(15,23,42,0.15); border-radius:16px; padding:14px 10px; cursor:pointer;
+                         display:flex; align-items:center; justify-content:center;">
+                <span style="font-size:14px; font-weight:700; color:#0f172a;">아카이브</span>
+            </div>
+        </div>
+        <div onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('일지 기능을 불러오지 못했습니다.', 'warn');"
+             style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.2); border-radius:16px; padding:14px 16px; cursor:pointer; margin-bottom:18px;
+                     display:flex; justify-content:space-between; align-items:center; gap:12px;">
+            <div style="min-width:0; flex:1;">
+                <div style="font-size:11px; font-weight:700; color:#d97706; margin-bottom:3px;">오늘일지</div>
+                <div style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${journalContent}</div>
+            </div>
+            <span style="font-size:18px; font-weight:700; color:#d97706; flex-shrink:0;">›</span>
         </div>
     `;
 
-    const todayJournalCard = renderTodayJournalCard(data);
+    const todayJournalCard = '';
 
     const todoSections = renderTodoSections();
     
@@ -720,44 +749,14 @@ function renderDashboard() {
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
             <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">학급관리</h3>
         </div>
-        <div class="grid" style="margin-bottom:40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap:12px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
-    `;
-
-    const archiveCard = `
-        <div onclick="window.open('../archive/index.html', '_blank')"
-             style="display:flex; align-items:center; justify-content:space-between;
-                    padding:14px 16px; border-radius:16px; cursor:pointer;
-                    background:var(--surface); border:1px solid var(--border);
-                    box-shadow:var(--shadow); margin-bottom:16px;">
-            <div style="display:flex; align-items:center; gap:12px;">
-                <div style="width:34px; height:34px; border-radius:10px;
-                            background:linear-gradient(180deg,#2563eb 0%,#1d4ed8 100%);
-                            display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
-                            gap:3.5px; padding:6px; box-sizing:border-box;
-                            box-shadow:0 4px 10px rgba(29,78,216,0.3);">
-                    <div style="background:#fff; border-radius:2px;"></div>
-                    <div style="background:#fff; border-radius:2px;"></div>
-                    <div style="background:#fff; border-radius:2px;"></div>
-                    <div style="background:#60a5fa; border-radius:2px;"></div>
-                </div>
-                <div>
-                    <div style="font-size:15px; font-weight:800; letter-spacing:-0.3px;">
-                        <span style="color:#2563eb;">JS</span><span style="color:var(--text);">아카이브</span>
-                    </div>
-                    <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:2px;">기출·유형·단원평가 시험지 출력</div>
-                </div>
-            </div>
-            <span style="font-size:18px; font-weight:700; color:var(--primary);">›</span>
-        </div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
     // [수정] max-width:850px 및 margin:0 auto 적용, shortcutRow 최상단 추가
     root.innerHTML = `<div style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
-        ${todayJournalCard}
         ${todoSections}
         ${classStatus}
-        ${archiveCard}
     </div>`;
 }
 

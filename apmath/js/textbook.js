@@ -6,45 +6,82 @@
 function renderTextbookManageList() {
     const listRoot = document.getElementById('tb-manage-list');
     if (!listRoot) return;
-    
+
     const allBooks = state.db.class_textbooks || [];
     const activeBooks = allBooks.filter(tb => tb.status === 'active');
     const inactiveBooks = allBooks.filter(tb => tb.status !== 'active');
 
+    const gradeOrder = ['중1','중2','중3','고1','고2','고3'];
+
+    function getGradeRank(className) {
+        for (let i = 0; i < gradeOrder.length; i++) {
+            if (className && className.includes(gradeOrder[i])) return i;
+        }
+        return 99;
+    }
+
+    function groupAndSortBooks(books) {
+        // 반별로 묶기
+        const grouped = {};
+        books.forEach(tb => {
+            const cls = state.db.classes.find(c => String(c.id) === String(tb.class_id));
+            const cName = cls?.name || '알 수 없음';
+            if (!grouped[cName]) grouped[cName] = { cName, classId: tb.class_id, books: [] };
+            grouped[cName].books.push(tb);
+        });
+
+        // 중1→고3 순 정렬
+        return Object.values(grouped).sort((a, b) => {
+            const ra = getGradeRank(a.cName);
+            const rb = getGradeRank(b.cName);
+            if (ra !== rb) return ra - rb;
+            return a.cName.localeCompare(b.cName, 'ko');
+        });
+    }
+
     const renderTbRow = (tb) => {
-        const cName = state.db.classes.find(c => String(c.id) === String(tb.class_id))?.name || '알 수 없음';
         const isHidden = tb.status === 'hidden';
         const isCompleted = tb.status === 'completed';
-        
+
         let statusBadge = '';
         if (isCompleted) statusBadge = `<span style="font-size:10px; background:rgba(0,208,132,0.1); color:var(--success); padding:2px 6px; border-radius:4px; font-weight:700;">완료</span>`;
         else if (isHidden) statusBadge = `<span style="font-size:10px; background:var(--bg); color:var(--secondary); padding:2px 6px; border-radius:4px; font-weight:700;">숨김</span>`;
 
         return `
-            <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <div style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:10px;">
                 <div style="min-width:0;">
                     <div style="font-weight:700; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'}; line-height:1.4;">${apEscapeHtml(tb.title)} ${statusBadge}</div>
-                    <div style="font-size:11px; color:var(--secondary); margin-top:4px; line-height:1.5;">${apEscapeHtml(cName)} | 시작: ${tb.start_date || '-'} ${tb.end_date ? `| 종료: ${tb.end_date}` : ''}</div>
+                    <div style="font-size:11px; color:var(--secondary); margin-top:2px; line-height:1.5;">시작: ${tb.start_date || '-'}${tb.end_date ? ` | 종료: ${tb.end_date}` : ''}</div>
                 </div>
                 <button class="btn" style="padding:6px 10px; font-size:11px; flex-shrink:0;" onclick="openEditTextbookModal('${tb.id}')">관리</button>
             </div>
         `;
     };
 
+    const renderGroup = (groups) => groups.map(g => `
+        <div style="margin-bottom:16px;">
+            <div style="font-size:12px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.06); padding:6px 10px; border-radius:8px; margin-bottom:4px;">${apEscapeHtml(g.cName)}</div>
+            ${g.books.map(renderTbRow).join('')}
+        </div>
+    `).join('');
+
+    const activeGroups = groupAndSortBooks(activeBooks);
+    const inactiveGroups = groupAndSortBooks(inactiveBooks);
+
     listRoot.innerHTML = `
         <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">현재 사용 중인 교재 (${activeBooks.length})</h4>
         <div style="margin-bottom:20px;">
-            ${activeBooks.length ? activeBooks.map(renderTbRow).join('') : `<div style="font-size:12px; color:var(--secondary); padding:10px 0;">사용 중인 교재가 없습니다.</div>`}
+            ${activeGroups.length ? renderGroup(activeGroups) : `<div style="font-size:12px; color:var(--secondary); padding:10px 0;">사용 중인 교재가 없습니다.</div>`}
         </div>
-        ${inactiveBooks.length ? `
+        ${inactiveGroups.length ? `
             <h4 style="margin:20px 0 8px 0; font-size:13px; color:var(--secondary);">완료 / 숨김 교재 (${inactiveBooks.length})</h4>
-            <div style="opacity:0.7;">${inactiveBooks.map(renderTbRow).join('')}</div>
+            <div style="opacity:0.7;">${renderGroup(inactiveGroups)}</div>
         ` : ''}
     `;
 }
 
 function openTextbookManageModal(options = {}) {
-    state.ui.textbookReturnView = options.returnTo || state.ui.textbookReturnView || { type: 'classManage' };
+    state.ui.textbookReturnView = options.returnTo || { type: 'dashboard' };
     setModalReturnView(state.ui.textbookReturnView);
     showModal('교재 관리', `
         <div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:16px;">
@@ -56,7 +93,7 @@ function openTextbookManageModal(options = {}) {
 }
 
 function openAddTextbookModal() {
-    setModalReturnView({ type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } });
+    setModalReturnView({ type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'dashboard' } });
     const classOptions = state.db.classes.filter(c => Number(c.is_active) !== 0).map(c => `<option value="${c.id}">${apEscapeHtml(c.name)}</option>`).join('');
     const todayStr = new Date().toLocaleDateString('sv-SE');
     showModal('새 교재 등록', `
@@ -73,7 +110,7 @@ function openAddTextbookModal() {
 }
 
 async function handleAddTextbook() {
-    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } };
+    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'dashboard' } };
     const cid = document.getElementById('new-tb-class')?.value || '';
     const title = document.getElementById('new-tb-title')?.value.trim() || '';
     const startDate = document.getElementById('new-tb-start')?.value || '';
@@ -97,7 +134,7 @@ async function handleAddTextbook() {
 
 
 function openEditTextbookModal(tbId) {
-    setModalReturnView({ type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } });
+    setModalReturnView({ type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'dashboard' } });
     const tb = state.db.class_textbooks.find(x => x.id === tbId);
     if (!tb) return;
     
@@ -133,7 +170,7 @@ function openEditTextbookModal(tbId) {
 }
 
 async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active') {
-    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } };
+    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'dashboard' } };
     const title = document.getElementById('edit-tb-title')?.value.trim() || '';
     const startDate = document.getElementById('edit-tb-start')?.value || '';
     const endDateEl = document.getElementById('edit-tb-end');
@@ -165,7 +202,7 @@ async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active'
 
 async function handleDeleteTextbook(tbId) {
     if (!confirm('이 교재를 완전히 삭제하시겠습니까?')) return;
-    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'classManage' } };
+    const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'dashboard' } };
 
     try {
         const r = await api.delete('class-textbooks', tbId);
@@ -181,4 +218,3 @@ async function handleDeleteTextbook(tbId) {
         toast('교재 삭제 중 오류가 발생했습니다.', 'error');
     }
 }
-
