@@ -8,10 +8,9 @@
  * - 시간표 내부 햄버거 제거
  * - 모바일 가로 드래그 유지
  * - 탭 토글 전역 함수(window.ttSetSection, window.ttSetMyOnly) 분리로 호출 오류 해결
- * - 모바일 시간표 영역은 JS 실측 기반으로 화면 하단까지 꽉 채움
- * - 모바일 1교시~3교시 / 고1~고3 행은 표 내부 헤더 높이를 제외한 남은 높이를 균등 분할
- * - 모바일 시간표 영역 세로 스크롤 제거: 가로 드래그만 허용
- * - 내 반 보기는 teacher_name과 현재 로그인 이름만으로 필터링 (DB Classes Fallback + 로그인 필드 확장)
+ * - 모바일/PC 공통으로 JS 실측 기반으로 화면 하단까지 표를 꽉 채우도록 통합 (applyTimetableFit)
+ * - 중등부/고등부 교사 열 폭(220px) 동일하게 고정, 화면 넓어져도 늘어나지 않음
+ * - 내 반 보기는 teacher_name과 현재 로그인 이름(t1->박준성 명시적 매핑 포함)만으로 필터링
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
  */
 
@@ -28,8 +27,8 @@ var TIMETABLE_MIDDLE_PERIODS = [
     { key: '3교시', label: '3교시', time: '8:00~9:30' }
 ];
 var TIMETABLE_HIGH_GRADES = ['고1', '고2', '고3'];
-var TIMETABLE_MOBILE_FIT_BOUND = false;
-var TIMETABLE_MOBILE_FIT_TIMER = null;
+var TIMETABLE_FIT_BOUND = false;
+var TIMETABLE_FIT_TIMER = null;
 
 // ────────────────────────────────────────────
 // 와이드 모드 및 CSS
@@ -56,25 +55,19 @@ function installTimetableStyle() {
         '  main.ap-timetable-wide-main { max-width:none !important; width:calc(100vw - 56px) !important; margin:0 !important; padding-left:24px !important; padding-right:24px !important; }',
         '  body.ap-drawer-expanded main.ap-timetable-wide-main { width:calc(100vw - 260px) !important; }',
         '}',
-        '#timetable-root { max-width:none !important; width:100% !important; }',
+        '#timetable-root { max-width:none !important; width:100% !important; overflow:hidden; padding-bottom:0 !important; }',
         '.tt-page-title { font-size:17px; font-weight:700; color:var(--text); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
         '.tt-tab-scroll { display:flex; align-items:center; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:4px 0 14px; white-space:nowrap; scrollbar-width:none; }',
         '.tt-tab-scroll::-webkit-scrollbar { display:none; }',
         '.tt-tab-scroll .tab-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 16px; font-size:13px; font-weight:600; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:var(--surface); color:var(--secondary); transition:all 0.2s; cursor:pointer; }',
         '.tt-tab-scroll .tab-btn.active { background:var(--text); color:var(--surface); border-color:var(--text); font-weight:700; }',
 
-        '.tt-table-wrap { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; max-height:calc(100vh - 140px); border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); }',
-        '.tt-table { border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%; }',
-        '.tt-table-middle, .tt-table-high { min-width:860px; }',
+        '.tt-table-wrap { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); }',
+        '.tt-table { border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:auto; height:100%; }',
+        '.tt-table tbody { overflow:hidden; }',
+        '.tt-table-middle { width:1390px; min-width:1390px; }',
+        '.tt-table-high { width:730px; min-width:730px; }',
         '.tt-row-fixed { height:auto; min-height:0; }',
-
-        '@media (max-width:900px) {',
-        '  #timetable-root { overflow:hidden; padding-bottom:0 !important; }',
-        '  .tt-table-wrap { max-height:none; min-height:0; overflow-x:auto; overflow-y:hidden; }',
-        '  .tt-table { height:100%; }',
-        '  .tt-table tbody { overflow:hidden; }',
-        '  .tt-row-fixed { min-height:0; }',
-        '}',
 
         '.tt-card { background:var(--surface); border:1px solid rgba(0,0,0,0.06); border-radius:8px; padding:6px 8px; margin-bottom:4px; width:100%; min-height:auto; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; transition:border-color 0.2s, transform 0.2s; gap:2px; }',
         '@media (hover: hover) { .tt-card:hover { border-color:rgba(0,0,0,0.18); transform:translateY(-1px); box-shadow:0 2px 6px rgba(0,0,0,0.02); } }',
@@ -105,28 +98,28 @@ function installTimetableStyle() {
 }
 
 // ────────────────────────────────────────────
-// 모바일 실측 맞춤
+// 화면 핏 (PC/모바일 공통)
 // ────────────────────────────────────────────
 
-function scheduleTimetableMobileFit() {
-    clearTimeout(TIMETABLE_MOBILE_FIT_TIMER);
-    TIMETABLE_MOBILE_FIT_TIMER = setTimeout(function() {
-        applyTimetableMobileFit();
-        setTimeout(applyTimetableMobileFit, 120);
+function scheduleTimetableFit() {
+    clearTimeout(TIMETABLE_FIT_TIMER);
+    TIMETABLE_FIT_TIMER = setTimeout(function() {
+        applyTimetableFit();
+        setTimeout(applyTimetableFit, 120);
     }, 0);
 }
 
-function bindTimetableMobileFitEvents() {
-    if (TIMETABLE_MOBILE_FIT_BOUND) return;
-    TIMETABLE_MOBILE_FIT_BOUND = true;
+function bindTimetableFitEvents() {
+    if (TIMETABLE_FIT_BOUND) return;
+    TIMETABLE_FIT_BOUND = true;
 
-    window.addEventListener('resize', scheduleTimetableMobileFit);
+    window.addEventListener('resize', scheduleTimetableFit);
     window.addEventListener('orientationchange', function() {
-        setTimeout(scheduleTimetableMobileFit, 250);
+        setTimeout(scheduleTimetableFit, 250);
     });
 }
 
-function applyTimetableMobileFit() {
+function applyTimetableFit() {
     var root = document.getElementById('timetable-root');
     var wrap = document.querySelector('#timetable-grid-wrapper .tt-table-wrap');
     var table = wrap ? wrap.querySelector('.tt-table') : null;
@@ -135,24 +128,9 @@ function applyTimetableMobileFit() {
 
     if (!root || !wrap || !table || !rows.length) return;
 
-    if (window.innerWidth > 900) {
-        root.style.height = '';
-        root.style.overflow = '';
-        wrap.style.height = '';
-        wrap.style.maxHeight = '';
-        wrap.style.overflowX = '';
-        wrap.style.overflowY = '';
-        table.style.height = '';
-        rows.forEach(function(row) {
-            row.style.height = '';
-            row.style.minHeight = '';
-        });
-        return;
-    }
-
     var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
     var wrapTop = wrap.getBoundingClientRect().top;
-    var bottomPadding = 0;
+    var bottomPadding = 0; // 하단 여백 필요 시 조정
     var availableHeight = Math.floor(viewportHeight - wrapTop - bottomPadding);
 
     if (!Number.isFinite(availableHeight) || availableHeight < 280) {
@@ -179,9 +157,6 @@ function applyTimetableMobileFit() {
         row.style.height = rowHeight + 'px';
         row.style.minHeight = rowHeight + 'px';
     });
-
-    root.style.height = 'auto';
-    root.style.overflow = 'hidden';
 }
 
 // ────────────────────────────────────────────
@@ -193,14 +168,33 @@ function _getAllDb() {
 }
 
 function _ttNormalizeTeacherName(name) {
-    return String(name || '').replace(/\s*선생님\s*$/g, '').trim();
+    var str = String(name || '').trim();
+    if (!str) return '';
+    str = str.replace(/\s*선생님\s*$/g, '').trim();
+
+    var map = {
+        'teacher1': '박준성',
+        '선생님1': '박준성',
+        't1': '박준성',
+        'teacher2': '정겨운',
+        '선생님2': '정겨운',
+        't2': '정겨운',
+        'teacher3': '정의한',
+        '선생님3': '정의한',
+        't3': '정의한'
+    };
+
+    return map[str.toLowerCase()] || str;
 }
 
 function _ttFirstValidTeacherName(candidates) {
+    var known = TIMETABLE_FIXED_TEACHERS;
+
     for (var i = 0; i < candidates.length; i++) {
         var value = _ttNormalizeTeacherName(candidates[i]);
-        if (value) return value;
+        if (value && known.indexOf(value) !== -1) return value;
     }
+
     return '';
 }
 
@@ -242,18 +236,7 @@ function _ttGetCurrentTeacherName() {
         ).trim();
 
         if (loginId) {
-            var loginMap = {
-                teacher1: '박준성',
-                teacher2: '정겨운',
-                teacher3: '정의한',
-                t1: '박준성',
-                t2: '정겨운',
-                t3: '정의한',
-                park: '박준성',
-                jung: '정겨운',
-                jeong: '정의한'
-            };
-            if (loginMap[loginId]) candidates.push(loginMap[loginId]);
+            candidates.push(loginId);
         }
     }
 
@@ -281,18 +264,9 @@ function _ttGetCurrentTeacherName() {
                 ''
             ).trim();
 
-            var sessionLoginMap = {
-                teacher1: '박준성',
-                teacher2: '정겨운',
-                teacher3: '정의한',
-                t1: '박준성',
-                t2: '정겨운',
-                t3: '정의한',
-                park: '박준성',
-                jung: '정겨운',
-                jeong: '정의한'
-            };
-            if (sessionLoginMap[sessionLoginId]) candidates.push(sessionLoginMap[sessionLoginId]);
+            if (sessionLoginId) {
+                candidates.push(sessionLoginId);
+            }
         }
     } catch (e) {}
 
@@ -669,7 +643,7 @@ function renderTimetable() {
     if (!root) return;
 
     installTimetableStyle();
-    bindTimetableMobileFitEvents();
+    bindTimetableFitEvents();
     enterTimetableWideMode();
 
     if (typeof state !== 'undefined') {
@@ -684,7 +658,7 @@ function renderTimetable() {
     var isMid = section === 'middle';
 
     root.innerHTML =
-        '<div id="timetable-root" style="width:100%; padding:0 0 32px; box-sizing:border-box;">' +
+        '<div id="timetable-root" style="width:100%; padding:0; box-sizing:border-box;">' +
             '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
                 '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
             '</div>' +
@@ -718,7 +692,7 @@ function renderTimetableGrid(section) {
     if (section === 'middle') _renderMiddleGrid(sClasses, wrapper);
     else _renderHighGrid(sClasses, wrapper);
 
-    scheduleTimetableMobileFit();
+    scheduleTimetableFit();
 }
 
 // ────────────────────────────────────────────
@@ -729,28 +703,28 @@ function _renderMiddleGrid(sClasses, wrapper) {
     var dgBg  = { mwf: 'rgba(255,71,87,0.015)', ttf: 'rgba(26,92,255,0.015)' };
     var dgHdr = { mwf: 'rgba(255,71,87,0.03)',  ttf: 'rgba(26,92,255,0.03)' };
 
-    var firstCol = 'width:70px; min-width:70px; max-width:70px; white-space:nowrap;';
-    var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
-    var stickyTop    = 'position:sticky; top:0; z-index:20;';
-    var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
-    var cellBase     = 'padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:12px; vertical-align:top;';
-
-    var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
+    var hr1 = '<th style="width:70px; position:sticky; left:0; top:0; z-index:31; background:var(--surface); padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         var lbl = dg === 'mwf' ? '월수금' : '화목금';
-        hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
+        hr1 += '<th colspan="3" style="position:sticky; top:0; z-index:20; background:' + dgHdr[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
     });
 
-    var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
+    var hr2 = '<th style="width:70px; position:sticky; left:0; top:0; z-index:31; background:var(--surface); padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
-            hr2 += '<th style="' + stickyTop + ' background:' + dgBg[dg] + '; ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+            hr2 += '<th style="position:sticky; top:0; z-index:20; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
         });
     });
 
+    var colgroup = '<colgroup><col style="width:70px">';
+    for(var i=0; i<6; i++) {
+        colgroup += '<col style="width:220px">';
+    }
+    colgroup += '</colgroup>';
+
     var bodyHtml = '';
     TIMETABLE_MIDDLE_PERIODS.forEach(function(p) {
-        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:6px 2px;">' +
+        var cells = '<td style="width:70px; position:sticky; left:0; z-index:10; background:var(--surface); padding:6px 2px; border:1px solid rgba(0,0,0,0.05); text-align:center; vertical-align:middle;">' +
             '<div class="tt-row-label">' + apEscapeHtml(p.label) + '</div>' +
             '<div class="tt-row-sublabel">' + apEscapeHtml(p.time) + '</div>' +
         '</td>';
@@ -764,10 +738,10 @@ function _renderMiddleGrid(sClasses, wrapper) {
                 });
 
                 if (matched.length === 0) {
-                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + '"></td>';
+                    cells += '<td style="background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;"></td>';
                 } else {
                     var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
-                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + '">' + cards + '</td>';
+                    cells += '<td style="background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;">' + cards + '</td>';
                 }
             });
         });
@@ -789,6 +763,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
     wrapper.innerHTML = warnHtml +
         '<div class="tt-table-wrap">' +
             '<table class="tt-table tt-table-middle">' +
+                colgroup +
                 '<thead><tr>' + hr1 + '</tr><tr>' + hr2 + '</tr></thead>' +
                 '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="7">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
             '</table>' +
@@ -803,20 +778,20 @@ function _renderHighGrid(sClasses, wrapper) {
     var highBg = 'rgba(0,0,0,0.01)';
     var highHdr = 'rgba(0,0,0,0.02)';
 
-    var firstCol = 'width:60px; min-width:60px; max-width:60px; white-space:nowrap;';
-    var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
-    var stickyTop    = 'position:sticky; top:0; z-index:20; background:' + highHdr + ';';
-    var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
-    var cellBase     = 'padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:12px; vertical-align:top;';
-
-    var hr = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
+    var hr = '<th style="width:70px; position:sticky; left:0; top:0; z-index:31; background:var(--surface); padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
     TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
-        hr += '<th style="' + stickyTop + ' ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+        hr += '<th style="position:sticky; top:0; z-index:20; background:' + highHdr + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
     });
+
+    var colgroup = '<colgroup><col style="width:70px">';
+    for(var i=0; i<3; i++) {
+        colgroup += '<col style="width:220px">';
+    }
+    colgroup += '</colgroup>';
 
     var bodyHtml = '';
     TIMETABLE_HIGH_GRADES.forEach(function(grade) {
-        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:6px 2px;">' +
+        var cells = '<td style="width:70px; position:sticky; left:0; z-index:10; background:var(--surface); padding:6px 2px; border:1px solid rgba(0,0,0,0.05); text-align:center; vertical-align:middle;">' +
             '<div class="tt-row-label" style="font-size:14px;">' + apEscapeHtml(grade) + '</div>' +
         '</td>';
 
@@ -826,10 +801,10 @@ function _renderHighGrid(sClasses, wrapper) {
             });
 
             if (matched.length === 0) {
-                cells += '<td style="background:' + highBg + '; ' + cellBase + '"></td>';
+                cells += '<td style="background:' + highBg + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;"></td>';
             } else {
                 var cards = matched.map(function(cls) { return buildTimetableHighCardBlock(cls); }).join('');
-                cells += '<td style="background:' + highBg + '; ' + cellBase + '">' + cards + '</td>';
+                cells += '<td style="background:' + highBg + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;">' + cards + '</td>';
             }
         });
 
@@ -839,6 +814,7 @@ function _renderHighGrid(sClasses, wrapper) {
     wrapper.innerHTML =
         '<div class="tt-table-wrap">' +
             '<table class="tt-table tt-table-high">' +
+                colgroup +
                 '<thead><tr>' + hr + '</tr></thead>' +
                 '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="4">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
             '</table>' +
