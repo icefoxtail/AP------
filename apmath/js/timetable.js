@@ -11,7 +11,8 @@
  * - 모바일/PC 공통으로 JS 실측 기반으로 화면 하단까지 표를 꽉 채우도록 통합 (applyTimetableFit)
  * - 중등부/고등부는 표시 교사 목록 기준으로 열을 생성
  * - 내 반 보기는 현재 로그인 교사 열만 남기고 다른 교사 열 제거
- * - 고등부 모바일은 화면폭 기준으로 3열이 균형 있게 들어오도록 별도 폭 계산
+ * - 원장/admin은 내 반 보기 비활성화, 전체 보기 고정
+ * - 모바일은 중등/고등, 전체보기/내반보기 모두 148px 고정
  * - 내 반 보기는 teacher_name과 현재 로그인 이름(t1->박준성 명시적 매핑 포함)만으로 필터링
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
  */
@@ -133,7 +134,7 @@ function applyTimetableFit() {
 
     var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
     var wrapTop = wrap.getBoundingClientRect().top;
-    var bottomPadding = 0; // 하단 여백 필요 시 조정
+    var bottomPadding = 0;
     var availableHeight = Math.floor(viewportHeight - wrapTop - bottomPadding);
 
     if (!Number.isFinite(availableHeight) || availableHeight < 280) {
@@ -277,6 +278,9 @@ function _ttGetCurrentTeacherName() {
 }
 
 function getTimetableVisibleTeachers() {
+    var isAdmin = !!(typeof state !== 'undefined' && state.auth && state.auth.role === 'admin');
+    if (isAdmin) return TIMETABLE_FIXED_TEACHERS.slice();
+
     var isMyOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     if (!isMyOnly) return TIMETABLE_FIXED_TEACHERS.slice();
 
@@ -311,9 +315,7 @@ function getTimetableViewportWidth() {
 
 function getTimetableColumnPlan(section, visibleTeachers) {
     var teachers = visibleTeachers && visibleTeachers.length ? visibleTeachers : [];
-    var viewportWidth = getTimetableViewportWidth();
     var isMobile = window.innerWidth <= 900;
-    var isMyOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     var labelWidth = isMobile ? 58 : 70;
     var teacherSlots = section === 'middle'
         ? TIMETABLE_MIDDLE_DAY_GROUPS.length * teachers.length
@@ -321,22 +323,7 @@ function getTimetableColumnPlan(section, visibleTeachers) {
     var teacherWidth = 220;
 
     if (isMobile) {
-        if (!isMyOnly) {
-            teacherWidth = 148;
-        } else {
-            if (section === 'high') {
-                teacherWidth = teacherSlots > 0
-                    ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                    : 110;
-                if (teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
-            } else {
-                teacherWidth = teacherSlots > 0
-                    ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                    : 150;
-                if (teacherWidth < 130) teacherWidth = 130;
-                if (teacherWidth > 190) teacherWidth = 190;
-            }
-        }
+        teacherWidth = 148;
     }
 
     var tableWidth = labelWidth + teacherWidth * teacherSlots;
@@ -798,11 +785,18 @@ function renderTimetable() {
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
         if (!state.ui.timetableSection) state.ui.timetableSection = 'middle';
-        if (typeof state.ui.timetableMyOnly === 'undefined') state.ui.timetableMyOnly = false;
+
+        var isAdmin = !!(state.auth && state.auth.role === 'admin');
+        if (isAdmin) {
+            state.ui.timetableMyOnly = false;
+        } else if (typeof state.ui.timetableMyOnly === 'undefined') {
+            state.ui.timetableMyOnly = false;
+        }
     }
 
     var section = (typeof state !== 'undefined' && state.ui && state.ui.timetableSection) || 'middle';
     var myOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
+    var isAdminUserForTimetable = !!(typeof state !== 'undefined' && state.auth && state.auth.role === 'admin');
     var title = getTimetableDateTitle();
     var isMid = section === 'middle';
 
@@ -815,7 +809,7 @@ function renderTimetable() {
                 '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
                 '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'high\')">고등부</button>' +
                 '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" onclick="window.ttSetMyOnly(false)">전체 보기</button>' +
-                '<button class="tab-btn' + (myOnly ? ' active' : '') + '" onclick="window.ttSetMyOnly(true)">내 반 보기</button>' +
+                (isAdminUserForTimetable ? '' : '<button class="tab-btn' + (myOnly ? ' active' : '') + '" onclick="window.ttSetMyOnly(true)">내 반 보기</button>') +
             '</div>' +
             '<div id="timetable-grid-wrapper"></div>' +
         '</div>';
