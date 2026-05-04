@@ -7,12 +7,10 @@
  * 반영 사항:
  * - 시간표 내부 햄버거 제거
  * - 모바일 가로 드래그 유지
- * - 탭 토글 전역 함수(window.ttSetSection, window.ttSetMyOnly) 분리로 호출 오류 해결
- * - 모바일/PC 공통으로 JS 실측 기반으로 화면 하단까지 표를 꽉 채우도록 통합 (applyTimetableFit)
- * - 중등부/고등부는 표시 교사 목록 기준으로 열을 생성
- * - 내 반 보기는 현재 로그인 교사 열만 남기고 다른 교사 열 제거
- * - 고등부 모바일은 화면폭 기준으로 3열이 균형 있게 들어오도록 별도 폭 계산
- * - 내 반 보기는 teacher_name과 현재 로그인 이름(t1->박준성 명시적 매핑 포함)만으로 필터링
+ * - PC/모바일 높이 실측 기반 자동 맞춤
+ * - PC는 과도한 가로 확장 방지: 교사 열 고정폭 + 세로 꽉 채움
+ * - 모바일은 화면 하단까지 꽉 채우고 가로 드래그 유지
+ * - 내 반 보기는 teacher_name과 현재 로그인 이름만으로 필터링 (로그인 필드 확장 + 실제 교사명 우선 선택)
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
  */
 
@@ -65,10 +63,18 @@ function installTimetableStyle() {
         '.tt-tab-scroll .tab-btn.active { background:var(--text); color:var(--surface); border-color:var(--text); font-weight:700; }',
 
         '.tt-table-wrap { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); }',
-        '.tt-table { border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:auto; height:100%; }',
-        '.tt-table tbody { overflow:hidden; }',
-        '.tt-table-middle, .tt-table-high { width:auto; min-width:auto; }',
+        '.tt-table { border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:max-content; }',
+        '.tt-table-middle { min-width:1448px; }',
+        '.tt-table-high { min-width:880px; }',
         '.tt-row-fixed { height:auto; min-height:0; }',
+
+        '@media (max-width:900px) {',
+        '  .tt-table-middle, .tt-table-high { min-width:860px; }',
+        '  .tt-table-wrap { max-height:none; min-height:0; overflow-x:auto; overflow-y:hidden; }',
+        '  .tt-table { height:100%; }',
+        '  .tt-table tbody { overflow:hidden; }',
+        '  .tt-row-fixed { min-height:0; }',
+        '}',
 
         '.tt-card { background:var(--surface); border:1px solid rgba(0,0,0,0.06); border-radius:8px; padding:6px 8px; margin-bottom:4px; width:100%; min-height:auto; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; transition:border-color 0.2s, transform 0.2s; gap:2px; }',
         '@media (hover: hover) { .tt-card:hover { border-color:rgba(0,0,0,0.18); transform:translateY(-1px); box-shadow:0 2px 6px rgba(0,0,0,0.02); } }',
@@ -99,7 +105,7 @@ function installTimetableStyle() {
 }
 
 // ────────────────────────────────────────────
-// 화면 핏 (PC/모바일 공통)
+// 화면 실측 맞춤
 // ────────────────────────────────────────────
 
 function scheduleTimetableFit() {
@@ -129,12 +135,9 @@ function applyTimetableFit() {
 
     if (!root || !wrap || !table || !rows.length) return;
 
-    applyTimetableResponsiveWidth();
-
     var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
     var wrapTop = wrap.getBoundingClientRect().top;
-    var bottomPadding = 0; // 하단 여백 필요 시 조정
-    var availableHeight = Math.floor(viewportHeight - wrapTop - bottomPadding);
+    var availableHeight = Math.floor(viewportHeight - wrapTop);
 
     if (!Number.isFinite(availableHeight) || availableHeight < 280) {
         availableHeight = 280;
@@ -160,6 +163,8 @@ function applyTimetableFit() {
         row.style.height = rowHeight + 'px';
         row.style.minHeight = rowHeight + 'px';
     });
+
+    root.style.overflow = 'hidden';
 }
 
 // ────────────────────────────────────────────
@@ -171,34 +176,26 @@ function _getAllDb() {
 }
 
 function _ttNormalizeTeacherName(name) {
-    var str = String(name || '').trim();
-    if (!str) return '';
-    str = str.replace(/\s*선생님\s*$/g, '').trim();
-
-    var map = {
-        'teacher1': '박준성',
-        '선생님1': '박준성',
-        't1': '박준성',
-        'teacher2': '정겨운',
-        '선생님2': '정겨운',
-        't2': '정겨운',
-        'teacher3': '정의한',
-        '선생님3': '정의한',
-        't3': '정의한'
-    };
-
-    return map[str.toLowerCase()] || str;
+    return String(name || '').replace(/\s*선생님\s*$/g, '').replace(/\s+/g, '').trim();
 }
 
-function _ttFirstValidTeacherName(candidates) {
-    var known = TIMETABLE_FIXED_TEACHERS;
+function _ttPickTeacherName(candidates) {
+    var normalized = candidates.map(_ttNormalizeTeacherName).filter(Boolean);
 
-    for (var i = 0; i < candidates.length; i++) {
-        var value = _ttNormalizeTeacherName(candidates[i]);
-        if (value && known.indexOf(value) !== -1) return value;
+    for (var i = 0; i < TIMETABLE_FIXED_TEACHERS.length; i++) {
+        var fixed = _ttNormalizeTeacherName(TIMETABLE_FIXED_TEACHERS[i]);
+        for (var j = 0; j < normalized.length; j++) {
+            if (normalized[j] === fixed) return TIMETABLE_FIXED_TEACHERS[i];
+        }
     }
 
-    return '';
+    for (var k = 0; k < normalized.length; k++) {
+        if (!/^선생님\d*$/.test(normalized[k]) && normalized[k] !== '관리자' && normalized[k] !== 'admin') {
+            return normalized[k];
+        }
+    }
+
+    return normalized[0] || '';
 }
 
 function _ttGetCurrentTeacherName() {
@@ -225,6 +222,12 @@ function _ttGetCurrentTeacherName() {
             state.auth && state.auth.user && state.auth.user.teacherName,
             state.auth && state.auth.user && state.auth.user.display_name,
             state.auth && state.auth.user && state.auth.user.displayName,
+            state.currentUser && state.currentUser.name,
+            state.currentUser && state.currentUser.teacher_name,
+            state.currentUser && state.currentUser.display_name,
+            state.session && state.session.name,
+            state.session && state.session.teacher_name,
+            state.session && state.session.display_name,
             state.user && state.user.name,
             state.user && state.user.teacher_name,
             state.user && state.user.teacherName,
@@ -235,12 +238,25 @@ function _ttGetCurrentTeacherName() {
         var loginId = String(
             (state.auth && (state.auth.login_id || state.auth.loginId || state.auth.id || state.auth.username)) ||
             (state.auth && state.auth.user && (state.auth.user.login_id || state.auth.user.loginId || state.auth.user.id || state.auth.user.username)) ||
+            (state.currentUser && (state.currentUser.login_id || state.currentUser.loginId || state.currentUser.id || state.currentUser.username)) ||
             ''
         ).trim();
 
-        if (loginId) {
-            candidates.push(loginId);
-        }
+        var loginMap = {
+            teacher1: '박준성',
+            teacher2: '정겨운',
+            teacher3: '정의한',
+            t1: '박준성',
+            t2: '정겨운',
+            t3: '정의한',
+            pjs: '박준성',
+            park: '박준성',
+            teacher_park: '박준성',
+            teacher_junsung: '박준성',
+            jung: '정겨운',
+            jeong: '정의한'
+        };
+        if (loginMap[loginId]) candidates.push(loginMap[loginId]);
     }
 
     try {
@@ -267,120 +283,30 @@ function _ttGetCurrentTeacherName() {
                 ''
             ).trim();
 
-            if (sessionLoginId) {
-                candidates.push(sessionLoginId);
-            }
+            var sessionLoginMap = {
+                teacher1: '박준성',
+                teacher2: '정겨운',
+                teacher3: '정의한',
+                t1: '박준성',
+                t2: '정겨운',
+                t3: '정의한',
+                pjs: '박준성',
+                park: '박준성',
+                teacher_park: '박준성',
+                teacher_junsung: '박준성',
+                jung: '정겨운',
+                jeong: '정의한'
+            };
+            if (sessionLoginMap[sessionLoginId]) candidates.push(sessionLoginMap[sessionLoginId]);
         }
     } catch (e) {}
 
-    return _ttFirstValidTeacherName(candidates);
-}
+    try {
+        var visibleUser = document.querySelector('[data-user-name], .user-name, .teacher-name, #user-name, #teacher-name');
+        if (visibleUser) candidates.push(visibleUser.getAttribute('data-user-name') || visibleUser.textContent);
+    } catch (e2) {}
 
-function getTimetableVisibleTeachers() {
-    var isMyOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
-    if (!isMyOnly) return TIMETABLE_FIXED_TEACHERS.slice();
-
-    var current = _ttGetCurrentTeacherName();
-    if (!current) return [];
-    return TIMETABLE_FIXED_TEACHERS.indexOf(current) !== -1 ? [current] : [];
-}
-
-function getTimetableMergedClass(cls) {
-    if (!cls) return cls;
-    var db = _getAllDb();
-    var realClass = (db.classes || []).find(function(c) {
-        return String(c.id) === String(cls.id);
-    });
-    if (!realClass) return cls;
-
-    var merged = Object.assign({}, realClass, cls);
-    merged.teacher_name = cls.teacher_name || cls.teacherName || cls.teacher || realClass.teacher_name || realClass.teacherName || realClass.teacher || '';
-    merged.grade = cls.grade || realClass.grade || '';
-    merged.name = cls.name || realClass.name || '';
-    merged.schedule_days = cls.schedule_days || realClass.schedule_days || '';
-    merged.time_label = cls.time_label || realClass.time_label || '';
-    merged.is_active = typeof cls.is_active !== 'undefined' ? cls.is_active : realClass.is_active;
-    return merged;
-}
-
-function getTimetableViewportWidth() {
-    var root = document.getElementById('timetable-root');
-    var width = root ? root.getBoundingClientRect().width : 0;
-    return Math.floor(width || window.innerWidth || document.documentElement.clientWidth || 390);
-}
-
-function getTimetableColumnPlan(section, visibleTeachers) {
-    var teachers = visibleTeachers && visibleTeachers.length ? visibleTeachers : [];
-    var viewportWidth = getTimetableViewportWidth();
-    var isMobile = window.innerWidth <= 900;
-    var isMyOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
-    var labelWidth = isMobile ? 58 : 70;
-    var teacherSlots = section === 'middle'
-        ? TIMETABLE_MIDDLE_DAY_GROUPS.length * teachers.length
-        : teachers.length;
-    var teacherWidth = 220;
-
-    if (isMobile) {
-        if (section === 'high') {
-            teacherWidth = teacherSlots > 0
-                ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                : 110;
-            if (teacherWidth < 96) teacherWidth = 96;
-            if (!isMyOnly && teacherWidth > 118) teacherWidth = 118;
-            if (isMyOnly && teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
-        } else if (isMyOnly) {
-            teacherWidth = teacherSlots > 0
-                ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                : 150;
-            if (teacherWidth < 130) teacherWidth = 130;
-            if (teacherWidth > 190) teacherWidth = 190;
-        } else {
-            teacherWidth = 220;
-        }
-    }
-
-    var tableWidth = labelWidth + teacherWidth * teacherSlots;
-    if (isMobile && section === 'high' && !isMyOnly) {
-        tableWidth = Math.max(tableWidth, Math.min(viewportWidth, 420));
-    }
-
-    return {
-        labelWidth: labelWidth,
-        teacherWidth: teacherWidth,
-        teacherSlots: teacherSlots,
-        tableWidth: tableWidth
-    };
-}
-
-function buildTimetableColgroup(section, visibleTeachers) {
-    var plan = getTimetableColumnPlan(section, visibleTeachers);
-    var html = '<colgroup><col style="width:' + plan.labelWidth + 'px">';
-    for (var i = 0; i < plan.teacherSlots; i++) {
-        html += '<col style="width:' + plan.teacherWidth + 'px">';
-    }
-    html += '</colgroup>';
-    return html;
-}
-
-function applyTimetableResponsiveWidth() {
-    var table = document.querySelector('#timetable-grid-wrapper .tt-table');
-    if (!table) return;
-
-    var section = table.classList.contains('tt-table-high') ? 'high' : 'middle';
-    var visibleTeachers = getTimetableVisibleTeachers();
-    if (!visibleTeachers.length) return;
-
-    var plan = getTimetableColumnPlan(section, visibleTeachers);
-    table.style.width = plan.tableWidth + 'px';
-    table.style.minWidth = plan.tableWidth + 'px';
-
-    var cols = table.querySelectorAll('colgroup col');
-    if (cols.length > 0) {
-        cols[0].style.width = plan.labelWidth + 'px';
-        for (var i = 1; i < cols.length; i++) {
-            cols[i].style.width = plan.teacherWidth + 'px';
-        }
-    }
+    return _ttPickTeacherName(candidates);
 }
 
 function getTimetableClassTeacherName(cls) {
@@ -401,7 +327,7 @@ function isTimetableMyClass(cls) {
     var classTeacher = getTimetableClassTeacherName(cls);
     if (!current) return false;
     if (!classTeacher) return false;
-    return classTeacher === current;
+    return _ttNormalizeTeacherName(classTeacher) === _ttNormalizeTeacherName(current);
 }
 
 function openTimetableClass(classId) {
@@ -711,9 +637,9 @@ function getTimetableHighScheduleLines(cls) {
     if (lines.length > 0) return lines;
 
     var fallbackTime = String(cls.time_label || '').trim();
-    if (fallbackTime && fallbackTime !== '시간 미지정') return ['시간표 미세정보 없음 · ' + fallbackTime];
+    if (fallbackTime && fallbackTime !== '시간 미지정') return [fallbackTime];
 
-    return ['시간 미지정'];
+    return [''];
 }
 
 function buildTimetableHighCardBlock(cls) {
@@ -792,24 +718,15 @@ function renderTimetableGrid(section) {
     var timetableSource = (Array.isArray(db.timetable_classes) && db.timetable_classes.length > 0)
         ? db.timetable_classes
         : (db.classes || []);
-    var allClasses = timetableSource
-        .map(getTimetableMergedClass)
-        .filter(function(c) { return Number(c.is_active) !== 0; });
+    var allClasses = timetableSource.filter(function(c) { return Number(c.is_active) !== 0; });
 
-    var visibleTeachers = getTimetableVisibleTeachers();
-    var isMyOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     var sClasses = allClasses.filter(function(cls) { return getTimetableSectionForClass(cls) === section; });
-    if (isMyOnly) {
+    if (typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly) {
         sClasses = sClasses.filter(isTimetableMyClass);
     }
 
-    if (isMyOnly && !visibleTeachers.length) {
-        wrapper.innerHTML = '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;font-weight:700;background:var(--surface);border:1px solid rgba(0,0,0,0.08);border-radius:8px;">현재 로그인 교사 정보를 확인하지 못했습니다.</div>';
-        return;
-    }
-
-    if (section === 'middle') _renderMiddleGrid(sClasses, wrapper, visibleTeachers);
-    else _renderHighGrid(sClasses, wrapper, visibleTeachers);
+    if (section === 'middle') _renderMiddleGrid(sClasses, wrapper);
+    else _renderHighGrid(sClasses, wrapper);
 
     scheduleTimetableFit();
 }
@@ -818,48 +735,50 @@ function renderTimetableGrid(section) {
 // 중등부 그리드
 // ────────────────────────────────────────────
 
-function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
-    var teachers = visibleTeachers && visibleTeachers.length ? visibleTeachers : TIMETABLE_FIXED_TEACHERS.slice();
+function _renderMiddleGrid(sClasses, wrapper) {
     var dgBg  = { mwf: 'rgba(255,71,87,0.015)', ttf: 'rgba(26,92,255,0.015)' };
     var dgHdr = { mwf: 'rgba(255,71,87,0.03)',  ttf: 'rgba(26,92,255,0.03)' };
-    var plan = getTimetableColumnPlan('middle', teachers);
-    var totalCols = 1 + (TIMETABLE_MIDDLE_DAY_GROUPS.length * teachers.length);
 
-    var hr1 = '<th style="width:' + plan.labelWidth + 'px; position:sticky; left:0; top:0; z-index:31; background:var(--surface); padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
+    var firstCol = 'width:70px; min-width:70px; max-width:70px; white-space:nowrap;';
+    var teacherCol = 'width:228px; min-width:228px; max-width:228px;';
+    var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
+    var stickyTop    = 'position:sticky; top:0; z-index:20;';
+    var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
+    var cellBase     = 'padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:12px; vertical-align:top; box-sizing:border-box;';
+
+    var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         var lbl = dg === 'mwf' ? '월수금' : '화목금';
-        hr1 += '<th colspan="' + teachers.length + '" style="position:sticky; top:0; z-index:20; background:' + dgHdr[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
+        hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
     });
 
-    var hr2 = '<th style="width:' + plan.labelWidth + 'px; position:sticky; left:0; top:0; z-index:31; background:var(--surface); padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
+    var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
-        teachers.forEach(function(t) {
-            hr2 += '<th style="width:' + plan.teacherWidth + 'px; position:sticky; top:0; z-index:20; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+        TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+            hr2 += '<th style="' + stickyTop + ' background:' + dgBg[dg] + '; ' + cellBase + ' ' + teacherCol + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
         });
     });
 
-    var colgroup = buildTimetableColgroup('middle', teachers);
-
     var bodyHtml = '';
     TIMETABLE_MIDDLE_PERIODS.forEach(function(p) {
-        var cells = '<td style="width:' + plan.labelWidth + 'px; position:sticky; left:0; z-index:10; background:var(--surface); padding:6px 2px; border:1px solid rgba(0,0,0,0.05); text-align:center; vertical-align:middle;">' +
+        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:6px 2px;">' +
             '<div class="tt-row-label">' + apEscapeHtml(p.label) + '</div>' +
             '<div class="tt-row-sublabel">' + apEscapeHtml(p.time) + '</div>' +
         '</td>';
 
         TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
-            teachers.forEach(function(t) {
+            TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
                 var matched = sClasses.filter(function(cls) {
                     return getTimetableDayGroup(cls) === dg &&
-                           getTimetableClassTeacherName(cls) === t &&
+                           getTimetableClassTeacherName(cls) === _ttNormalizeTeacherName(t) &&
                            getTimetablePeriodKey(cls) === p.key;
                 });
 
                 if (matched.length === 0) {
-                    cells += '<td style="width:' + plan.teacherWidth + 'px; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;"></td>';
+                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + ' ' + teacherCol + '"></td>';
                 } else {
                     var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
-                    cells += '<td style="width:' + plan.teacherWidth + 'px; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;">' + cards + '</td>';
+                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + ' ' + teacherCol + '">' + cards + '</td>';
                 }
             });
         });
@@ -870,7 +789,7 @@ function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
         var dg = getTimetableDayGroup(cls);
         var teacher = getTimetableClassTeacherName(cls);
         if (TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(dg) === -1) return false;
-        if (teachers.indexOf(teacher) === -1) return false;
+        if (TIMETABLE_FIXED_TEACHERS.map(_ttNormalizeTeacherName).indexOf(teacher) === -1) return false;
         return getTimetablePeriodKey(cls) === 'unknown';
     }).length;
 
@@ -880,10 +799,9 @@ function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
 
     wrapper.innerHTML = warnHtml +
         '<div class="tt-table-wrap">' +
-            '<table class="tt-table tt-table-middle" style="width:' + plan.tableWidth + 'px;min-width:' + plan.tableWidth + 'px;">' +
-                colgroup +
+            '<table class="tt-table tt-table-middle">' +
                 '<thead><tr>' + hr1 + '</tr><tr>' + hr2 + '</tr></thead>' +
-                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="' + totalCols + '">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
+                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="7">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
             '</table>' +
         '</div>';
 }
@@ -892,36 +810,38 @@ function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
 // 고등부 그리드
 // ────────────────────────────────────────────
 
-function _renderHighGrid(sClasses, wrapper, visibleTeachers) {
-    var teachers = visibleTeachers && visibleTeachers.length ? visibleTeachers : TIMETABLE_FIXED_TEACHERS.slice();
+function _renderHighGrid(sClasses, wrapper) {
     var highBg = 'rgba(0,0,0,0.01)';
     var highHdr = 'rgba(0,0,0,0.02)';
-    var plan = getTimetableColumnPlan('high', teachers);
-    var totalCols = 1 + teachers.length;
 
-    var hr = '<th style="width:' + plan.labelWidth + 'px; position:sticky; left:0; top:0; z-index:31; background:var(--surface); padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
-    teachers.forEach(function(t) {
-        hr += '<th style="width:' + plan.teacherWidth + 'px; position:sticky; top:0; z-index:20; background:' + highHdr + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+    var firstCol = 'width:64px; min-width:64px; max-width:64px; white-space:nowrap;';
+    var teacherCol = 'width:270px; min-width:270px; max-width:270px;';
+    var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
+    var stickyTop    = 'position:sticky; top:0; z-index:20; background:' + highHdr + ';';
+    var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
+    var cellBase     = 'padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:12px; vertical-align:top; box-sizing:border-box;';
+
+    var hr = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
+    TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+        hr += '<th style="' + stickyTop + ' ' + cellBase + ' ' + teacherCol + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
     });
-
-    var colgroup = buildTimetableColgroup('high', teachers);
 
     var bodyHtml = '';
     TIMETABLE_HIGH_GRADES.forEach(function(grade) {
-        var cells = '<td style="width:' + plan.labelWidth + 'px; position:sticky; left:0; z-index:10; background:var(--surface); padding:6px 2px; border:1px solid rgba(0,0,0,0.05); text-align:center; vertical-align:middle;">' +
+        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:6px 2px;">' +
             '<div class="tt-row-label" style="font-size:14px;">' + apEscapeHtml(grade) + '</div>' +
         '</td>';
 
-        teachers.forEach(function(t) {
+        TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
             var matched = sClasses.filter(function(cls) {
-                return getTimetableClassTeacherName(cls) === t && getTimetableHighGrade(cls) === grade;
+                return getTimetableClassTeacherName(cls) === _ttNormalizeTeacherName(t) && getTimetableHighGrade(cls) === grade;
             });
 
             if (matched.length === 0) {
-                cells += '<td style="width:' + plan.teacherWidth + 'px; background:' + highBg + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;"></td>';
+                cells += '<td style="background:' + highBg + '; ' + cellBase + ' ' + teacherCol + '"></td>';
             } else {
                 var cards = matched.map(function(cls) { return buildTimetableHighCardBlock(cls); }).join('');
-                cells += '<td style="width:' + plan.teacherWidth + 'px; background:' + highBg + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;">' + cards + '</td>';
+                cells += '<td style="background:' + highBg + '; ' + cellBase + ' ' + teacherCol + '">' + cards + '</td>';
             }
         });
 
@@ -930,10 +850,9 @@ function _renderHighGrid(sClasses, wrapper, visibleTeachers) {
 
     wrapper.innerHTML =
         '<div class="tt-table-wrap">' +
-            '<table class="tt-table tt-table-high" style="width:' + plan.tableWidth + 'px;min-width:' + plan.tableWidth + 'px;">' +
-                colgroup +
+            '<table class="tt-table tt-table-high">' +
                 '<thead><tr>' + hr + '</tr></thead>' +
-                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="' + totalCols + '">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
+                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="4">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
             '</table>' +
         '</div>';
 }
