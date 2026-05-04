@@ -266,6 +266,7 @@ export default {
           let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses;
           let ttAllClassStudents = { results: [] };
           let ttAllStudents = { results: [] };
+          let ttAllClassTextbooks = { results: [] };
 
           if (isAdminUser(teacher)) {
             [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses] = await Promise.all([
@@ -294,19 +295,20 @@ export default {
             const classIds = tcls.results.map(r => r.class_id);
             timetableClasses = await env.DB.prepare('SELECT id, name, grade, subject, teacher_name, schedule_days, time_label, textbook, is_active FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name').all();
 
-            // 시간표 전용 전체 학생 데이터 (D1 바인딩 100개 제한 우회 - 전체 조회)
-            [ttAllClassStudents, ttAllStudents] = await Promise.all([
+            // 시간표 전용 전체 데이터 (권한 범위와 분리, D1 바인딩 한도 회피)
+            [ttAllClassStudents, ttAllStudents, ttAllClassTextbooks] = await Promise.all([
               env.DB.prepare('SELECT * FROM class_students').all(),
-              env.DB.prepare('SELECT id, name, status, memo, created_at FROM students').all()
+              env.DB.prepare('SELECT id, name, status, memo, created_at FROM students').all(),
+              env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all()
             ]);
 
             opm = await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(teacher.name).all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
             if (classIds.length) {
               const cMark = classIds.map(() => '?').join(',');
-              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope != 'student' OR student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMark}))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(...classIds).all();
+              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?) OR (target_scope = 'student' AND student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMark})))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(teacher.name, ...classIds).all();
             } else {
-              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND target_scope != 'student' ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).all();
+              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?)) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(teacher.name).all();
             }
             jou = await env.DB.prepare('SELECT * FROM daily_journals WHERE teacher_name = ? ORDER BY date DESC').bind(teacher.name).all();
 
@@ -332,7 +334,8 @@ export default {
                 class_daily_progress: [],
                 timetable_classes: timetableClasses.results,
                 timetable_class_students: ttAllClassStudents.results,
-                timetable_students: ttAllStudents.results
+                timetable_students: ttAllStudents.results,
+                timetable_class_textbooks: ttAllClassTextbooks.results
               }), { headers });
             }
             
@@ -393,7 +396,8 @@ export default {
             class_daily_progress: cdp.results,
             timetable_classes: timetableClasses.results,
             timetable_class_students: ttAllClassStudents.results,
-            timetable_students: ttAllStudents.results
+            timetable_students: ttAllStudents.results,
+            timetable_class_textbooks: isAdminUser(teacher) ? txt.results : ttAllClassTextbooks.results
           }), { headers });
         }
 
@@ -537,11 +541,12 @@ export default {
           const startDate = `${month}-01`;
           const endDate = `${month}-${String(endDay).padStart(2, '0')}`;
 
-          const acs = await env.DB.prepare(
-            'SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? ORDER BY schedule_date ASC, start_time ASC, created_at ASC'
-          ).bind(startDate, endDate).all();
+          let acs;
 
           if (isAdminUser(teacher)) {
+            acs = await env.DB.prepare(
+              'SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? ORDER BY schedule_date ASC, start_time ASC, created_at ASC'
+            ).bind(startDate, endDate).all();
             const [att, hw] = await Promise.all([
               env.DB.prepare('SELECT * FROM attendance WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all(),
               env.DB.prepare('SELECT * FROM homework WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all()
@@ -552,6 +557,7 @@ export default {
           const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
           const classIds = (tcls.results || []).map(r => r.class_id);
           if (!classIds.length) {
+            acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?)) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(startDate, endDate, teacher.name).all();
             return new Response(JSON.stringify({ success: true, month, attendance: [], homework: [], academy_schedules: acs.results }), { headers });
           }
 
@@ -559,14 +565,17 @@ export default {
           const map = await env.DB.prepare(`SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})`).bind(...classIds).all();
           const studentIds = [...new Set((map.results || []).map(r => r.student_id))];
           if (!studentIds.length) {
+            acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?)) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(startDate, endDate, teacher.name).all();
             return new Response(JSON.stringify({ success: true, month, attendance: [], homework: [], academy_schedules: acs.results }), { headers });
           }
 
           const sMarkers = studentIds.map(() => '?').join(',');
-          const [att, hw] = await Promise.all([
+          const [att, hw, acsForTeacher] = await Promise.all([
             env.DB.prepare(`SELECT * FROM attendance WHERE date BETWEEN ? AND ? AND student_id IN (${sMarkers}) ORDER BY date ASC`).bind(startDate, endDate, ...studentIds).all(),
-            env.DB.prepare(`SELECT * FROM homework WHERE date BETWEEN ? AND ? AND student_id IN (${sMarkers}) ORDER BY date ASC`).bind(startDate, endDate, ...studentIds).all()
+            env.DB.prepare(`SELECT * FROM homework WHERE date BETWEEN ? AND ? AND student_id IN (${sMarkers}) ORDER BY date ASC`).bind(startDate, endDate, ...studentIds).all(),
+            env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?) OR (target_scope = 'student' AND student_id IN (${sMarkers}))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(startDate, endDate, teacher.name, ...studentIds).all()
           ]);
+          acs = acsForTeacher;
           return new Response(JSON.stringify({ success: true, month, attendance: att.results, homework: hw.results, academy_schedules: acs.results }), { headers });
         }
 
@@ -956,7 +965,8 @@ export default {
             const scheduleType = String(d.scheduleType || '').trim();
             const title = String(d.title || '').trim();
             const scheduleDate = String(d.scheduleDate || '').trim();
-            const targetScope = String(d.targetScope || 'global').trim() === 'student' ? 'student' : 'global';
+            const rawTargetScope = String(d.targetScope || 'global').trim();
+            const targetScope = ['global', 'teacher', 'student'].includes(rawTargetScope) ? rawTargetScope : 'global';
             const studentId = targetScope === 'student' ? String(d.studentId || '').trim() : null;
             const isClosed = scheduleType === 'closed' ? 1 : (d.isClosed ? 1 : 0);
 
@@ -997,12 +1007,12 @@ export default {
             const classIds = (tcls.results || []).map(r => r.class_id);
             let query, params;
             if (!classIds.length) {
-              query = `SELECT * FROM academy_schedules WHERE is_deleted = 0 AND target_scope != 'student'${dateClause} ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
-              params = dateParams;
+              query = `SELECT * FROM academy_schedules WHERE is_deleted = 0${dateClause} AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?)) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
+              params = [...dateParams, teacher.name];
             } else {
               const cMarkers = classIds.map(() => '?').join(',');
-              query = `SELECT * FROM academy_schedules WHERE is_deleted = 0${dateClause} AND (target_scope != 'student' OR student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers}))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
-              params = [...dateParams, ...classIds];
+              query = `SELECT * FROM academy_schedules WHERE is_deleted = 0${dateClause} AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?) OR (target_scope = 'student' AND student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`;
+              params = [...dateParams, teacher.name, ...classIds];
             }
             const res = params.length ? await env.DB.prepare(query).bind(...params).all() : await env.DB.prepare(query).all();
             return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
@@ -1034,8 +1044,9 @@ export default {
           }
 
           if (method === 'DELETE' && id) {
-            const existingAcs = await env.DB.prepare('SELECT target_scope, student_id FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
+            const existingAcs = await env.DB.prepare('SELECT target_scope, student_id, teacher_name FROM academy_schedules WHERE id = ? AND is_deleted = 0').bind(id).first();
             if (existingAcs && existingAcs.target_scope === 'global' && !isStaffUser(teacher)) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (existingAcs && existingAcs.target_scope === 'teacher' && !isAdminUser(teacher) && existingAcs.teacher_name !== teacher.name) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             if (existingAcs && existingAcs.target_scope === 'student' && !(await canAccessStudent(teacher, existingAcs.student_id, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             await env.DB.prepare("UPDATE academy_schedules SET is_deleted = 1, updated_at = DATETIME('now') WHERE id = ?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });

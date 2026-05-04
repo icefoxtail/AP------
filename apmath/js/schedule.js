@@ -159,7 +159,7 @@ function collectUnifiedSchedulePayload(prefix) {
             scheduleDate: date,
             startTime: '',
             endTime: '',
-            targetScope: 'global',
+            targetScope: 'teacher',
             studentId: '',
             teacherName: state.auth?.name || '',
             memo,

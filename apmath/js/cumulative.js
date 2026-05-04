@@ -146,6 +146,27 @@ function getMonthlyAttendanceStatus(studentId, date) {
     };
 }
 
+// 2026년 법정 공휴일 및 대체공휴일, 학원 지정 휴무일 고정 배열
+const HOLIDAYS_2026 = [
+    '2026-01-01', // 신정
+    '2026-02-16', '2026-02-17', '2026-02-18', // 설날 연휴
+    '2026-03-01', '2026-03-02', // 삼일절 + 대체공휴일
+    '2026-05-01', // 근로자의 날
+    '2026-05-05', // 어린이날
+    '2026-05-24', '2026-05-25', // 부처님오신날 + 대체공휴일
+    '2026-06-06', // 현충일
+    '2026-07-17', // 제헌절 (학원 지정 휴무 추가)
+    '2026-08-15', '2026-08-17', // 광복절 + 대체공휴일
+    '2026-09-24', '2026-09-25', '2026-09-26', // 추석 연휴
+    '2026-10-03', '2026-10-05', // 개천절 + 대체공휴일
+    '2026-10-09', // 한글날
+    '2026-12-25'  // 성탄절
+];
+
+function isFixedHoliday(dateStr) {
+    return HOLIDAYS_2026.includes(dateStr);
+}
+
 function getMonthlyScheduleBadges(studentId, date) {
     const data = getMonthlyAttendanceData();
     const sid = String(studentId);
@@ -155,8 +176,12 @@ function getMonthlyScheduleBadges(studentId, date) {
         if (s.target_scope === 'student') return String(s.student_id || '') === sid;
         return true;
     });
+
+    // 2026년 고정 공휴일과 DB의 학원 전체 휴무일 병합 체크
+    const isFixed = isFixedHoliday(date);
+
     return {
-        globalClosed: schedules.some(s => s.schedule_type === 'closed' && s.target_scope !== 'student'),
+        globalClosed: isFixed || schedules.some(s => s.schedule_type === 'closed' && s.target_scope !== 'student'),
         studentClosed: schedules.some(s => s.schedule_type === 'closed' && s.target_scope === 'student'),
         makeup: schedules.some(s => s.schedule_type === 'makeup' && s.target_scope === 'student'),
         consultation: schedules.some(s => s.schedule_type === 'consultation' && s.target_scope === 'student')
@@ -246,12 +271,21 @@ function openAddStudentFromAttendance(classId) {
 
 function renderAttendanceCellContent(studentId, date) {
     const schedule = getMonthlyScheduleBadges(studentId, date);
+    
+    // 1. 학원 휴무일이나 공휴일이면 빈칸(공란) 처리
     if (schedule.globalClosed || schedule.studentClosed) {
-        return '<span class="att-sign" style="font-size:10px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
+        return ''; 
     }
 
+    // 2. 수업일이 아니면 '-' 표시
     if (!isAttendanceClassDay(studentId, date)) {
         return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
+    }
+
+    // 3. 미래 날짜 확인 (오늘 날짜까지만 출결 마크 표시, 미래는 공란)
+    const today = new Date().toLocaleDateString('sv-SE');
+    if (date > today) {
+        return ''; 
     }
 
     const status = getMonthlyAttendanceStatus(studentId, date);
@@ -404,6 +438,10 @@ function renderAttendanceLedgerTable() {
 }
 
 async function toggleAttendanceCellStatus(studentId, date) {
+    // 미래 날짜 클릭(토글) 원천 차단
+    const today = new Date().toLocaleDateString('sv-SE');
+    if (date > today) return;
+
     const sched = getMonthlyScheduleBadges(studentId, date);
     if (sched.globalClosed || sched.studentClosed) return;
     if (!isAttendanceClassDay(studentId, date)) return;
