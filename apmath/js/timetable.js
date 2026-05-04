@@ -134,7 +134,7 @@ function applyTimetableFit() {
 
     var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
     var wrapTop = wrap.getBoundingClientRect().top;
-    var bottomPadding = 0; // 하단 여백 필요 시 조정
+    var bottomPadding = 0;
     var availableHeight = Math.floor(viewportHeight - wrapTop - bottomPadding);
 
     if (!Number.isFinite(availableHeight) || availableHeight < 280) {
@@ -168,7 +168,8 @@ function applyTimetableFit() {
 // ────────────────────────────────────────────
 
 function _getAllDb() {
-    return (typeof state !== 'undefined') ? (state.allDb || state.db || {}) : {};
+    if (typeof state === 'undefined') return {};
+    return state.db || state.allDb || {};
 }
 
 function _ttNormalizeTeacherName(name) {
@@ -323,16 +324,14 @@ function getTimetableColumnPlan(section, visibleTeachers) {
 
     if (isMobile) {
         if (!isMyOnly) {
-            // [전체 보기] 고등부, 중등부 모두 148px로 고정하여 쾌적한 가로 스크롤 확보
             teacherWidth = 148;
         } else {
-            // [내 반 보기] 기존 화면 꽉 채움 로직 유지
             if (section === 'high') {
                 teacherWidth = teacherSlots > 0
                     ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
                     : 110;
                 if (teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
-            } else { // middle
+            } else {
                 teacherWidth = teacherSlots > 0
                     ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
                     : 150;

@@ -4,12 +4,12 @@
  * QR/OMR exam_sessions 와 완전히 별도.
  *
  * 화면 규칙:
- * - 출석부/성적표 상단 헤더는 대시보드 헤더와 같은 AP MATH 로고 구조를 따른다.[cite: 12]
- * - 별도 뒤로가기 버튼과 닫기 버튼을 두지 않는다.[cite: 12]
- * - AP MATH 로고 클릭으로 대시보드로 나간다.[cite: 12]
- * - 날짜/필터/반 선택 컨트롤은 헤더 안에 두지 않고 헤더 아래 본문 상단에 둔다.[cite: 12]
- * - 반명과 학생명 등 좌측 주요 정보는 스티키(Sticky)로 고정한다.[cite: 12]
- * - 모든 셀은 가운데 정렬을 원칙으로 한다.[cite: 12]
+ * - 출석부/성적표 상단 헤더는 대시보드 헤더와 같은 AP MATH 로고 구조를 따른다.
+ * - 별도 뒤로가기 버튼과 닫기 버튼을 두지 않는다.
+ * - AP MATH 로고 클릭으로 대시보드로 나간다.
+ * - 날짜/필터/반 선택 컨트롤은 헤더 안에 두지 않고 헤더 아래 본문 상단에 둔다.
+ * - 반명과 학생명 등 좌측 주요 정보는 스티키(Sticky)로 고정한다.
+ * - 모든 셀(이름, 날짜, 데이터)은 가운데 정렬을 원칙으로 한다.
  */
 
 // ── 공통 헬퍼 ─────────────────────────────────────────────────────
@@ -261,30 +261,30 @@ function openAttendanceLedger() {
     root.innerHTML = `
 <style>
 #att-main { width: 100%; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 12px 16px 0; box-sizing: border-box; }
-#att-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-shrink: 0; }
-#att-title { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
-#att-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; } /* 마스터 요청: 가로 정렬 및 배치 최적화[cite: 12] */
+#att-header-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-shrink: 0; }
+#att-title { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; white-space: nowrap; }
+#att-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .att-ctrl { height: 36px; padding: 0 10px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
 #att-legend { font-size: 11px; font-weight: 600; color: var(--secondary); display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; flex-shrink: 0; }
 #att-tbl-wrap { flex: 1; overflow: auto; border: 1px solid var(--border); border-radius: 12px 12px 0 0; background: var(--surface); }
 #att-tbl { border-collapse: collapse; width: max-content; }
-#att-tbl th, #att-tbl td { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); text-align: center; } /* 모든 셀 가운데 정렬[cite: 12] */
+#att-tbl th, #att-tbl td { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); text-align: center; } 
 #att-tbl thead th { position: sticky; top: 0; z-index: 10; background: var(--surface); box-shadow: 0 1px 0 var(--border); padding: 6px 0; }
-.att-nc { position: sticky; left: 0; z-index: 11; background: var(--surface); border-right: 2px solid var(--border) !important; text-align: center; } /* 마스터 요청: 가운데 정렬[cite: 12] */
+.att-nc { position: sticky; left: 0; z-index: 11; background: var(--surface); border-right: 2px solid var(--border) !important; text-align: center; } 
 #att-tbl thead .att-nc { z-index: 12; }
 .att-dc { padding: 3px; text-align: center; width: 32px; min-width: 32px; cursor: pointer; user-select: none; }
 .att-dc:active { opacity: .7; }
 .att-hol { cursor: default; }
 .att-grp-row td { background: var(--surface-2); }
-.att-grp-nc { position: sticky; left: 0; z-index: 11; background: var(--surface-2); font-size: 12px; font-weight: 800; color: var(--text); padding: 5px 12px; text-align: center; border-right: 2px solid var(--border) !important; } /* 마스터 요청: 가운데 정렬[cite: 12] */
-.att-student-nc { padding: 4px 12px; min-width: 90px; text-align: center; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; } /* 마스터 요청: 가운데 정렬[cite: 12] */
+.att-grp-nc { position: sticky; left: 0; z-index: 11; background: var(--surface-2); font-size: 12px; font-weight: 800; color: var(--text); padding: 5px 12px; text-align: center; border-right: 2px solid var(--border) !important; } 
+.att-student-nc { padding: 4px 12px; min-width: 90px; text-align: center; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
 .att-student-nc:hover { background: var(--surface-2); }
 .att-sign { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; }
 </style>
 <div id="att-main">
   <div id="att-header-row">
     <div id="att-title">출석부</div>
-    <div id="att-controls"> <!-- 마스터 요청: 연도 달, 전체, 반 순서[cite: 12] -->
+    <div id="att-controls"> 
       <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
       <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
         <option value="">전체 (중/고)</option>
@@ -339,7 +339,7 @@ function renderAttendanceLedgerTable() {
         const num = Number(d.slice(-2));
         const dayName = _attDayName(d);
         const style = _attDayStyle(d);
-        return `<th style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;">${dayName}</div></th>`;
+        return `<th style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;text-align:center;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;text-align:center;">${dayName}</div></th>`;
     }).join('');
 
     const bodyRows = grouped.map(g => {
@@ -371,7 +371,7 @@ function renderAttendanceLedgerTable() {
 
     root.innerHTML = `<table id="att-tbl">
 <thead><tr>
-  <th class="att-nc" style="padding:6px 12px;min-width:90px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">이름</th> <!-- 마스터 요청: 가운데 정렬[cite: 12] -->
+  <th class="att-nc" style="padding:6px 12px;min-width:90px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">이름</th>
   ${headerCells}
 </tr></thead>
 <tbody>${bodyRows || empty}</tbody>
@@ -468,7 +468,7 @@ function getSebVisibleStudents() {
 function _sebToggleSortCol() {
     var el = document.getElementById('seb-sort-col');
     var sortEl = document.getElementById('seb-sort');
-    if (el && sortEl) el.style.display = sortEl.value === 'score-desc' ? '' : 'none';
+    if (el && sortEl) el.style.display = sortEl.value === 'score-desc' ? 'block' : 'none';
 }
 
 function closeSchoolExamLedger() {
@@ -535,16 +535,16 @@ function openSchoolExamLedger() {
 
     root.innerHTML = `
 <style>
-/* 성적표 스타일 복구 및 가운데 정렬 최적화[cite: 12] */
+/* 성적표 스타일 */
 #seb-main { width: 100%; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 16px 16px 0; box-sizing: border-box; }
 .seb-ctrl { height: 44px; min-height: 44px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
 #seb-body { flex: 1; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; }
 #seb-tbl { border-collapse: collapse; width: max-content; min-width: 100%; background: var(--surface); }
-#seb-tbl th { position: sticky; top: 0; background: var(--surface); z-index: 2; font-size: 12px; font-weight: 700; color: var(--secondary); padding: 10px 4px; text-align: center; white-space: nowrap; box-shadow: 0 1px 0 var(--border); } /* 헤더 가운데 정렬[cite: 12] */
-#seb-tbl td { padding: 5px 3px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; } /* 데이터 셀 가운데 정렬[cite: 12] */
+#seb-tbl th { position: sticky; top: 0; background: var(--surface); z-index: 2; font-size: 12px; font-weight: 700; color: var(--secondary); padding: 10px 4px; text-align: center; white-space: nowrap; box-shadow: 0 1px 0 var(--border); } 
+#seb-tbl td { padding: 5px 3px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; } 
 .seb-sticky-g { position: sticky; left: 0; z-index: 1; background: var(--surface); width: 36px; min-width: 36px; font-size: 12px; font-weight: 700; color: var(--secondary); text-align: center; border-right: 1px solid var(--border); }
 .seb-sticky-c { position: sticky; left: 36px; z-index: 1; background: var(--surface); width: 64px; min-width: 64px; font-size: 12px; font-weight: 800; color: var(--primary); text-align: center; border-right: 1px solid var(--border); white-space: nowrap; }
-.seb-sticky-n { position: sticky; left: 100px; z-index: 1; background: var(--surface); width: 76px; min-width: 76px; font-size: 13px; font-weight: 700; color: var(--text); padding: 6px 8px; border-right: 1px solid var(--border); white-space: nowrap; text-align: center; } /* 마스터 요청: 가운데 정렬[cite: 12] */
+.seb-sticky-n { position: sticky; left: 100px; z-index: 1; background: var(--surface); width: 76px; min-width: 76px; font-size: 13px; font-weight: 700; color: var(--text); padding: 6px 8px; border-right: 1px solid var(--border); white-space: nowrap; text-align: center; } 
 #seb-tbl thead .seb-sticky-g, #seb-tbl thead .seb-sticky-c, #seb-tbl thead .seb-sticky-n { z-index: 3; }
 .seb-inp { width: 70px; height: 38px; padding: 0 4px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 14px; font-weight: 700; text-align: center; font-family: inherit; }
 .seb-inp:focus { outline: none; border-color: var(--primary); background: var(--surface); }
@@ -555,8 +555,8 @@ function openSchoolExamLedger() {
 .seb-border2 { border-left: 2px solid rgba(0,0,0,0.08) !important; }
 </style>
 <div id="seb-main">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;">
-    <div style="font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;cursor:pointer;" onclick="closeSchoolExamLedger()">성적표</div>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-shrink:0;">
+    <div style="font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;cursor:pointer;white-space:nowrap;" onclick="closeSchoolExamLedger()">성적표</div>
     <select class="seb-ctrl" id="seb-yr" style="width:86px;" onchange="state.ui.schoolExamYear=Number(this.value);renderSchoolExamBatchTable()">${yearOptions}</select>
   </div>
   <div class="seb-tab-wrap" style="margin-bottom:10px;flex-shrink:0;">
@@ -571,7 +571,7 @@ function openSchoolExamLedger() {
       <option value="score-desc"${sort === 'score-desc' ? ' selected' : ''}>성적순 ↓</option>
       <option value="name-desc"${sort === 'name-desc' ? ' selected' : ''}>이름순 ↓</option>
     </select>
-    <select class="seb-ctrl" id="seb-sort-col" style="flex:1;display:${sort === 'score-desc' ? '' : 'none'};" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">
+    <select class="seb-ctrl" id="seb-sort-col" style="flex:1;display:${sort === 'score-desc' ? 'block' : 'none'};" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">
       <option value="1H-mid"${sortCol === '1H-mid' ? ' selected' : ''}>1학기 중간</option>
       <option value="1H-fin"${sortCol === '1H-fin' ? ' selected' : ''}>1학기 기말</option>
       <option value="2H-mid"${sortCol === '2H-mid' ? ' selected' : ''}>2학기 중간</option>
@@ -624,7 +624,7 @@ function renderSchoolExamBatchTable() {
 
     var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>' +
         '<th rowspan="2" class="seb-sticky-c">반</th>' +
-        '<th rowspan="2" class="seb-sticky-n">이름</th>' + /* 마스터 요청: 가운데 정렬 (Style 클래스에서 처리)[cite: 12] */
+        '<th rowspan="2" class="seb-sticky-n">이름</th>' + 
         '<th colspan="2" class="seb-border2" style="padding:8px;">1학기</th>' +
         '<th colspan="2" class="seb-border2" style="padding:8px;">2학기</th>';
     var hRow2 = '<th class="seb-border2">중간</th><th>기말</th><th class="seb-border2">중간</th><th>기말</th>';
