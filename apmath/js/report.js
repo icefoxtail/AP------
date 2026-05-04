@@ -674,3 +674,250 @@ function copyAiReportText() {
         toast('복사에 실패했습니다.', 'warn');
     });
 }
+
+// ─────────────────────────────────────────
+// [학부모 리포트 카드 v1]
+// ─────────────────────────────────────────
+
+function buildReportCardNextPoint(wrongAnswers, weakUnits) {
+    if (weakUnits.length > 0) {
+        return `오답 문항 복습과 함께 ${weakUnits[0]} 단원을 중점적으로 점검하면 좋겠습니다.`;
+    }
+    if (wrongAnswers.length > 0) {
+        return `오답 ${wrongAnswers.join('번, ')}번 풀이 과정을 다시 점검해 보면 좋겠습니다.`;
+    }
+    return `이번 시험 내용을 바탕으로 다음 단원 학습을 이어가겠습니다.`;
+}
+
+function openParentReport(sid) {
+    const s = state.db.students.find(st => st.id === sid);
+    if (!s) return toast('학생 정보를 찾을 수 없습니다.', 'warn');
+
+    const classId = state.db.class_students.find(m => m.student_id === sid)?.class_id;
+    const className = state.db.classes.find(c => c.id === classId)?.name || '';
+
+    const sessions = state.db.exam_sessions
+        .filter(e => e.student_id === sid)
+        .sort((a, b) => String(b.exam_date).localeCompare(String(a.exam_date)))
+        .slice(0, 4);
+
+    if (!sessions.length) {
+        toast('시험 기록이 없어 리포트를 생성할 수 없습니다.', 'warn');
+        return;
+    }
+
+    const latest = sessions[0];
+
+    const classStudentIds = state.db.class_students
+        .filter(m => m.class_id === classId)
+        .map(m => m.student_id);
+    const classSessions = state.db.exam_sessions.filter(e =>
+        e.exam_title === latest.exam_title &&
+        e.exam_date === latest.exam_date &&
+        classStudentIds.includes(e.student_id)
+    );
+    const classAvg = classSessions.length > 1
+        ? Math.round(classSessions.reduce((sum, e) => sum + e.score, 0) / classSessions.length)
+        : null;
+
+    const recentAvg = sessions.length > 1
+        ? Math.round(sessions.slice(0, 3).reduce((sum, e) => sum + e.score, 0) / Math.min(sessions.length, 3))
+        : null;
+
+    const wrongAnswers = state.db.wrong_answers
+        .filter(w => w.session_id === latest.id)
+        .map(w => w.question_id)
+        .sort((a, b) => Number(a) - Number(b));
+
+    const questions = state.db.questions || [];
+    const weakUnits = [...new Set(
+        wrongAnswers
+            .map(qId => questions.find(q => String(q.id) === String(qId))?.standard_unit)
+            .filter(Boolean)
+    )].slice(0, 3);
+
+    const today = new Date().toLocaleDateString('sv-SE');
+    const att = state.db.attendance.find(a => a.student_id === sid && a.date === today);
+    const hw = state.db.homework.find(h => h.student_id === sid && h.date === today);
+
+    const prevScore = sessions.length > 1 ? sessions[1].score : null;
+    const scoreDiff = prevScore !== null ? latest.score - prevScore : null;
+
+    const qCount = latest.question_count || null;
+    const correctRate = qCount
+        ? Math.round(((qCount - wrongAnswers.length) / qCount) * 100)
+        : null;
+
+    const ctx = {
+        student: s, className, latest, sessions,
+        classAvg, recentAvg, wrongAnswers, weakUnits,
+        att: att?.status || null, hw: hw?.status || null,
+        scoreDiff, correctRate, qCount
+    };
+
+    showParentReportModal(ctx);
+}
+
+function showParentReportModal(ctx) {
+    const { student, className, latest, sessions, classAvg, recentAvg,
+            wrongAnswers, weakUnits, att, hw, scoreDiff, correctRate, qCount } = ctx;
+
+    const dateStr = String(latest.exam_date || '').replace(/-/g, '.');
+    const trendScores = [...sessions].reverse().map(e => e.score);
+
+    const trendHtml = (() => {
+        if (trendScores.length < 2) {
+            return `<div style="font-size:13px;color:#64748b;text-align:center;padding:12px 0;">첫 시험 기록입니다.</div>`;
+        }
+        const max = Math.max(...trendScores, 100);
+        return `<div style="display:flex;align-items:flex-end;gap:8px;justify-content:center;padding:8px 0;">` +
+            trendScores.map((score, i) => {
+                const h = Math.round((score / max) * 48);
+                const isLast = i === trendScores.length - 1;
+                return `<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                    <div style="font-size:11px;font-weight:700;color:${isLast ? '#1A5CFF' : '#64748b'};">${score}</div>
+                    <div style="width:28px;height:${h}px;background:${isLast ? '#1A5CFF' : '#e2e8f0'};border-radius:4px 4px 0 0;"></div>
+                </div>`;
+            }).join('') + `</div>`;
+    })();
+
+    const compareText = (() => {
+        if (classAvg !== null) return `반 평균 대비 ${latest.score >= classAvg ? '+' : ''}${latest.score - classAvg}점`;
+        if (recentAvg !== null) return `최근 평균 대비 ${latest.score >= recentAvg ? '+' : ''}${latest.score - recentAvg}점`;
+        return '';
+    })();
+
+    const diffBadge = scoreDiff !== null
+        ? `<span style="font-size:12px;font-weight:700;color:${scoreDiff >= 0 ? '#16a34a' : '#dc2626'};background:${scoreDiff >= 0 ? '#f0fdf4' : '#fef2f2'};padding:3px 10px;border-radius:999px;margin-left:8px;">지난 시험 대비 ${scoreDiff >= 0 ? '+' : ''}${scoreDiff}점</span>`
+        : '';
+
+    const weakUnitHtml = weakUnits.length > 0
+        ? weakUnits.map(u => `<span style="background:#eff6ff;color:#1d4ed8;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;display:inline-block;margin:3px 4px 3px 0;">📌 ${u}</span>`).join('')
+        : `<div style="font-size:13px;color:#64748b;">이번 시험에서는 뚜렷한 취약 단원이 확인되지 않았습니다.</div>`;
+
+    const wrongHtml = wrongAnswers.length > 0
+        ? wrongAnswers.join('번 · ') + '번'
+        : '오답 없이 잘 마무리했습니다.';
+
+    const statusRows = [
+        att ? `<div style="font-size:13px;color:#475569;padding:3px 0;">출결 <b style="color:#0f172a;">${att === '등원' ? '등원 ✓' : att}</b></div>` : '',
+        hw ? `<div style="font-size:13px;color:#475569;padding:3px 0;">숙제 <b style="color:#0f172a;">${hw === '완료' ? '완료 ✓' : hw}</b></div>` : ''
+    ].filter(Boolean).join('');
+
+    const defaultComment = latest.score >= 90
+        ? '꾸준한 노력이 결실을 맺고 있습니다. 이 흐름을 유지해 주세요.'
+        : latest.score >= 75
+        ? '전반적으로 안정적인 실력을 보여주고 있습니다. 오답 단원 복습을 통해 더 좋은 결과를 기대합니다.'
+        : '기초 개념 정리에 집중하면 빠른 향상이 가능합니다. 함께 꾸준히 해봅시다.';
+
+    const nextPoint = buildReportCardNextPoint(wrongAnswers, weakUnits);
+
+    const cardHtml = `
+    <div id="parent-report-card" style="background:#ffffff;width:360px;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.12);font-family:inherit;margin:0 auto;">
+        <div style="background:#0f172a;padding:18px 22px 14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span style="color:#fff;font-size:16px;font-weight:800;letter-spacing:-0.5px;">AP MATH</span>
+                <span style="color:rgba(255,255,255,0.6);font-size:12px;font-weight:600;">${dateStr}</span>
+            </div>
+            <div style="color:rgba(255,255,255,0.85);font-size:13px;font-weight:600;">${student.name} · ${className} · ${latest.exam_title}</div>
+        </div>
+
+        <div style="padding:24px 22px 18px;border-bottom:1px solid #e2e8f0;text-align:center;">
+            <div style="font-size:56px;font-weight:900;color:#1A5CFF;line-height:1;letter-spacing:-2px;">${latest.score}<span style="font-size:24px;font-weight:700;color:#64748b;">점</span></div>
+            ${diffBadge}
+            ${compareText ? `<div style="font-size:13px;color:#64748b;font-weight:600;margin-top:8px;">${compareText}</div>` : ''}
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+                ${recentAvg !== null ? `<span style="background:#f8fafc;border:1px solid #e2e8f0;color:#475569;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;">최근 평균 ${recentAvg}점</span>` : ''}
+                ${correctRate !== null ? `<span style="background:#f8fafc;border:1px solid #e2e8f0;color:#475569;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;">정답률 ${correctRate}%</span>` : ''}
+            </div>
+        </div>
+
+        <div style="padding:18px 22px;border-bottom:1px solid #e2e8f0;">
+            <div style="font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:10px;letter-spacing:0.05em;">최근 성적 추이</div>
+            ${trendHtml}
+        </div>
+
+        <div style="padding:18px 22px;border-bottom:1px solid #e2e8f0;">
+            <div style="font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:10px;letter-spacing:0.05em;">이번 시험 분석</div>
+            <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+                ${qCount ? `<span style="background:#f8fafc;border:1px solid #e2e8f0;color:#475569;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;">총 ${qCount}문항</span>` : ''}
+                <span style="background:#f8fafc;border:1px solid #e2e8f0;color:#475569;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;">오답 ${wrongAnswers.length}문항</span>
+            </div>
+            <div style="font-size:13px;color:#475569;font-weight:600;">오답: ${wrongHtml}</div>
+        </div>
+
+        <div style="padding:18px 22px;border-bottom:1px solid #e2e8f0;">
+            <div style="font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:10px;letter-spacing:0.05em;">취약 단원</div>
+            ${weakUnitHtml}
+        </div>
+
+        ${statusRows ? `<div style="padding:14px 22px;border-bottom:1px solid #e2e8f0;">
+            <div style="font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:8px;letter-spacing:0.05em;">학습 상태</div>
+            ${statusRows}
+        </div>` : ''}
+
+        <div style="padding:18px 22px;border-bottom:1px solid #e2e8f0;">
+            <div style="font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:8px;letter-spacing:0.05em;">선생님 코멘트</div>
+            <div id="report-comment-display" style="font-size:13px;color:#0f172a;line-height:1.7;font-weight:500;">${defaultComment}</div>
+        </div>
+
+        <div style="padding:14px 22px;border-bottom:1px solid #e2e8f0;background:#f8fafc;">
+            <div style="font-size:12px;color:#64748b;line-height:1.6;font-weight:600;">
+                <b style="color:#1A5CFF;">다음 학습 포인트</b><br>${nextPoint}
+            </div>
+        </div>
+
+        <div style="padding:16px 22px;text-align:center;">
+            <div style="font-size:13px;font-weight:800;color:#0f172a;letter-spacing:0.05em;">AP MATH REPORT</div>
+            <div style="font-size:10px;color:#94a3b8;font-weight:600;margin-top:3px;">학생 맞춤 학습 리포트</div>
+        </div>
+    </div>`;
+
+    document.getElementById('modal-title').innerText = '학부모 리포트';
+    document.getElementById('modal-body').innerHTML = `
+        <div style="margin-bottom:16px;">
+            <label style="font-size:12px;font-weight:700;color:#64748b;display:block;margin-bottom:6px;">선생님 코멘트 (수정 가능)</label>
+            <textarea id="report-comment-input" style="width:100%;height:72px;padding:10px 12px;border:1px solid #e2e8f0;border-radius:10px;font-size:13px;line-height:1.6;resize:vertical;font-family:inherit;color:#0f172a;box-sizing:border-box;"
+                oninput="document.getElementById('report-comment-display').innerText=this.value"
+                placeholder="이번 시험에서 잘한 점, 보완할 점을 입력하세요.">${defaultComment}</textarea>
+        </div>
+        <div style="overflow-x:auto;padding-bottom:8px;">${cardHtml}</div>`;
+
+    document.getElementById('modal-action-btn').classList.add('hidden');
+    document.getElementById('modal-overlay').classList.remove('hidden');
+
+    const existingBtn = document.getElementById('report-save-btn');
+    if (existingBtn) existingBtn.remove();
+    const footer = document.getElementById('modal-footer');
+    const saveBtn = document.createElement('button');
+    saveBtn.id = 'report-save-btn';
+    saveBtn.className = 'btn btn-primary';
+    saveBtn.style.cssText = 'padding:12px 24px;font-size:14px;font-weight:700;border-radius:12px;';
+    saveBtn.innerText = '이미지 저장';
+    saveBtn.onclick = () => saveParentReportImage(student.name, latest.exam_title);
+    footer.insertBefore(saveBtn, footer.firstChild);
+}
+
+async function saveParentReportImage(name, examTitle) {
+    const card = document.getElementById('parent-report-card');
+    if (!card || typeof html2canvas === 'undefined') {
+        toast('이미지 저장 기능을 불러오지 못했습니다.', 'warn');
+        return;
+    }
+    try {
+        toast('이미지 생성 중...', 'info');
+        const canvas = await html2canvas(card, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff',
+            logging: false
+        });
+        const link = document.createElement('a');
+        link.download = `AP_리포트_${name}_${examTitle}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        toast('이미지가 저장되었습니다. 카카오톡에서 전송하세요!', 'info');
+    } catch (e) {
+        toast('이미지 저장에 실패했습니다.', 'warn');
+    }
+}
