@@ -14,7 +14,6 @@
  * - 고등부 모바일은 화면폭 기준으로 3열이 균형 있게 들어오도록 별도 폭 계산
  * - 내 반 보기는 teacher_name과 현재 로그인 이름(t1->박준성 명시적 매핑 포함)만으로 필터링
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
- * - 모바일 전체보기(중등부/고등부 공통) 교사 열 148px 고정 및 강제 압축 로직 제거
  */
 
 // ────────────────────────────────────────────
@@ -74,14 +73,14 @@ function installTimetableStyle() {
         '.tt-card { background:var(--surface); border:1px solid rgba(0,0,0,0.06); border-radius:8px; padding:6px 8px; margin-bottom:4px; width:100%; min-height:auto; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; transition:border-color 0.2s, transform 0.2s; gap:2px; }',
         '@media (hover: hover) { .tt-card:hover { border-color:rgba(0,0,0,0.18); transform:translateY(-1px); box-shadow:0 2px 6px rgba(0,0,0,0.02); } }',
         '.tt-card-hdr { display:flex; align-items:center; gap:4px; margin-bottom:2px; flex-shrink:0; }',
-        '.tt-cls-name { font-size:14px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; letter-spacing:-0.2px; }',
+        '.tt-cls-name { font-size:13px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; letter-spacing:-0.2px; }',
         '.tt-cls-name:hover { color:var(--primary); text-decoration:underline; }',
         '.tt-book { flex-shrink:0; display:flex; flex-direction:column; gap:1px; margin-bottom:2px; }',
         '.tt-book-line { font-size:10px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; letter-spacing:-0.2px; }',
         '.tt-progress { font-size:10px; color:var(--primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; line-height:1.2; letter-spacing:-0.2px; }',
         '.tt-std-list { display:grid; grid-template-columns:1fr 1fr; row-gap:2px; column-gap:4px; margin-top:2px; flex:1 1 auto; min-height:0; }',
         '.tt-std-slot { min-width:0; min-height:18px; display:flex; align-items:center; justify-content:flex-start; border-radius:4px; overflow:hidden; }',
-        '.tt-std-name { display:block; width:100%; min-width:0; font-size:13px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:2px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; line-height:1.2; letter-spacing:-0.2px; }',
+        '.tt-std-name { display:block; width:100%; min-width:0; font-size:12px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:2px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; line-height:1.2; letter-spacing:-0.2px; }',
         '@media (hover: hover) { .tt-std-name:hover { background:var(--surface-2); color:var(--text); } }',
         '.tt-std-name.tt-new { color:#1A5CFF !important; }',
         '.tt-std-name.tt-leave { color:#FF8C00 !important; }',
@@ -322,27 +321,28 @@ function getTimetableColumnPlan(section, visibleTeachers) {
     var teacherWidth = 220;
 
     if (isMobile) {
-        if (!isMyOnly) {
-            // [전체 보기] 고등부, 중등부 모두 148px로 고정하여 쾌적한 가로 스크롤 확보
-            teacherWidth = 148;
+        if (section === 'high') {
+            teacherWidth = teacherSlots > 0
+                ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
+                : 110;
+            if (teacherWidth < 96) teacherWidth = 96;
+            if (!isMyOnly && teacherWidth > 118) teacherWidth = 118;
+            if (isMyOnly && teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
+        } else if (isMyOnly) {
+            teacherWidth = teacherSlots > 0
+                ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
+                : 150;
+            if (teacherWidth < 130) teacherWidth = 130;
+            if (teacherWidth > 190) teacherWidth = 190;
         } else {
-            // [내 반 보기] 기존 화면 꽉 채움 로직 유지
-            if (section === 'high') {
-                teacherWidth = teacherSlots > 0
-                    ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                    : 110;
-                if (teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
-            } else { // middle
-                teacherWidth = teacherSlots > 0
-                    ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                    : 150;
-                if (teacherWidth < 130) teacherWidth = 130;
-                if (teacherWidth > 190) teacherWidth = 190;
-            }
+            teacherWidth = 220;
         }
     }
 
     var tableWidth = labelWidth + teacherWidth * teacherSlots;
+    if (isMobile && section === 'high' && !isMyOnly) {
+        tableWidth = Math.max(tableWidth, Math.min(viewportWidth, 420));
+    }
 
     return {
         labelWidth: labelWidth,
@@ -582,13 +582,32 @@ function _ttIsStudentLeave(s) {
 
 function getTimetableClassStudentsWithInfo(classId) {
     var db = _getAllDb();
-    var dbFull = (typeof state !== 'undefined' && state.db) ? state.db : db;
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
 
-    var sIds = (dbFull.class_students || [])
+    var csSource =
+        allDb.timetable_class_students ||
+        mainDb.timetable_class_students ||
+        db.timetable_class_students ||
+        allDb.class_students ||
+        mainDb.class_students ||
+        db.class_students ||
+        [];
+
+    var stSource =
+        allDb.timetable_students ||
+        mainDb.timetable_students ||
+        db.timetable_students ||
+        allDb.students ||
+        mainDb.students ||
+        db.students ||
+        [];
+
+    var sIds = csSource
         .filter(function(cs) { return String(cs.class_id) === String(classId); })
         .map(function(cs) { return String(cs.student_id); });
 
-    return (dbFull.students || [])
+    return stSource
         .filter(function(s) {
             if (sIds.indexOf(String(s.id)) === -1) return false;
             if (s.status === '재원') return true;
@@ -911,7 +930,7 @@ function _renderHighGrid(sClasses, wrapper, visibleTeachers) {
     var bodyHtml = '';
     TIMETABLE_HIGH_GRADES.forEach(function(grade) {
         var cells = '<td style="width:' + plan.labelWidth + 'px; position:sticky; left:0; z-index:10; background:var(--surface); padding:6px 2px; border:1px solid rgba(0,0,0,0.05); text-align:center; vertical-align:middle;">' +
-            '<div class="tt-row-label" style="font-size:14px;">' + apEscapeHtml(grade) + '</div>'
+            '<div class="tt-row-label" style="font-size:14px;">' + apEscapeHtml(grade) + '</div>' +
         '</td>';
 
         teachers.forEach(function(t) {
