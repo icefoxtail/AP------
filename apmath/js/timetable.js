@@ -11,7 +11,7 @@
  * - 모바일/PC 공통으로 JS 실측 기반으로 화면 하단까지 표를 꽉 채우도록 통합 (applyTimetableFit)
  * - 중등부/고등부는 표시 교사 목록 기준으로 열을 생성
  * - 내 반 보기는 현재 로그인 교사 열만 남기고 다른 교사 열 제거
- * - 고등부 모바일은 화면폭 기준으로 3열이 균형 있게 들어오도록 별도 폭 계산 고정형 148px
+ * - 고등부 모바일은 화면폭 기준으로 3열이 균형 있게 들어오도록 별도 폭 계산
  * - 내 반 보기는 teacher_name과 현재 로그인 이름(t1->박준성 명시적 매핑 포함)만으로 필터링
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
  */
@@ -500,7 +500,19 @@ function getTimetablePeriodKey(cls) {
 
 function getTimetableActiveTextbooks(classId) {
     var db = _getAllDb();
-    var books = (db.class_textbooks || []).filter(function(tb) {
+    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+
+    var textbookSource =
+        mainDb.timetable_class_textbooks ||
+        db.timetable_class_textbooks ||
+        allDb.timetable_class_textbooks ||
+        mainDb.class_textbooks ||
+        db.class_textbooks ||
+        allDb.class_textbooks ||
+        [];
+
+    var books = textbookSource.filter(function(tb) {
         return String(tb.class_id) === String(classId) && tb.status === 'active';
     });
 
@@ -508,7 +520,16 @@ function getTimetableActiveTextbooks(classId) {
         return books.map(function(tb) { return String(tb.title || '').trim(); }).filter(Boolean);
     }
 
-    var cls = (db.classes || []).find(function(c) { return String(c.id) === String(classId); });
+    var classSource =
+        mainDb.timetable_classes ||
+        db.timetable_classes ||
+        allDb.timetable_classes ||
+        mainDb.classes ||
+        db.classes ||
+        allDb.classes ||
+        [];
+
+    var cls = classSource.find(function(c) { return String(c.id) === String(classId); });
     if (cls && cls.textbook) return [cls.textbook];
     return ['교재 미등록'];
 }
