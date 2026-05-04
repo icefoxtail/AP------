@@ -136,55 +136,6 @@ function getMonthlyScheduleBadges(studentId, date) {
     };
 }
 
-function getAttendanceStudentJoinedDate(student) {
-    if (!student) return '';
-    const raw = String(
-        student.join_date || student.joined_at || student.enrolled_at || student.enrollment_date ||
-        student.registered_at || student.registration_date || student.created_at || student.createdAt || ''
-    ).trim();
-    const m = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
-    if (!m) return '';
-    return [m[1], String(m[2]).padStart(2, '0'), String(m[3]).padStart(2, '0')].join('-');
-}
-
-function isAttendanceNewStudent(student) {
-    const joined = getAttendanceStudentJoinedDate(student);
-    if (!joined) return false;
-    const year = new Date().getFullYear();
-    return joined >= `${year}-06-01`;
-}
-
-function isAttendanceLeaveStudent(student) {
-    return !!(student && (student.status === '휴원' || String(student.memo || '').includes('#휴원')));
-}
-
-function getAttendanceStudentNameStyle(student) {
-    if (isAttendanceLeaveStudent(student)) return 'color:#FF8C00;';
-    if (isAttendanceNewStudent(student)) return 'color:var(--primary);';
-    return 'color:var(--text);';
-}
-
-function goAttendanceHome() {
-    closeAttendanceLedger();
-
-    if (typeof state !== 'undefined' && state.ui) {
-        state.ui.currentClassId = null;
-        state.ui.returnView = null;
-    }
-
-    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
-        renderAdminControlCenter();
-        return;
-    }
-
-    if (typeof renderDashboard === 'function') {
-        renderDashboard();
-        return;
-    }
-
-    if (typeof toast === 'function') toast('홈 화면을 불러오지 못했습니다.', 'warn');
-}
-
 // ── 출석부 장부 ──────────────────────────────────────────────────
 
 function _attDayName(dateStr) {
@@ -255,10 +206,10 @@ function openAttendanceLedger() {
     ov.innerHTML = `
 <style>
 #att-ledger-overlay *{box-sizing:border-box;}
+#att-brand{flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:12px 14px 10px;border-bottom:1px solid var(--border);background:var(--surface);}
+#att-brand-title{font-size:18px;font-weight:900;letter-spacing:-0.4px;color:var(--text);cursor:pointer;user-select:none;}
 #att-hdr{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-wrap:wrap;}
 #att-hdr h2{margin:0;font-size:15px;font-weight:700;color:var(--text);flex-shrink:0;}
-.att-home-logo{height:36px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-weight:900;letter-spacing:-0.3px;font-family:inherit;cursor:pointer;flex-shrink:0;}
-.att-home-logo:hover{background:var(--surface-2);color:var(--primary);}
 .att-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
 #att-body{flex:1;overflow:auto;position:relative;}
 #att-tbl{border-collapse:collapse;width:max-content;}
@@ -272,8 +223,10 @@ function openAttendanceLedger() {
 .att-grp td{background:var(--surface-2) !important;font-size:12px;font-weight:700;color:var(--text);padding:5px 10px;}
 #att-legend{padding:6px 14px;font-size:11px;font-weight:600;color:var(--secondary);display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid var(--border);background:var(--surface);}
 </style>
+<div id="att-brand">
+  <div id="att-brand-title" onclick="goAttendanceHome()">AP MATH</div>
+</div>
 <div id="att-hdr">
-  <button class="att-home-logo" onclick="goAttendanceHome()">AP MATH</button>
   <h2>출석부</h2>
   <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
     onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
@@ -285,8 +238,6 @@ function openAttendanceLedger() {
   <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
     <option value="">전체 반</option>${classOptions}
   </select>
-  <div style="flex:1;"></div>
-  <button class="att-ctrl" onclick="closeAttendanceLedger()">닫기</button>
 </div>
 <div id="att-legend">
   <span>○ 등원</span>
@@ -307,20 +258,6 @@ function openAttendanceLedger() {
 function closeAttendanceLedger() {
     const ov = document.getElementById('att-ledger-overlay');
     if (ov) ov.style.display = 'none';
-}
-
-function openEditStudentFromAttendance(sid) {
-    const ov = document.getElementById('att-ledger-overlay');
-    if (ov) ov.style.display = 'none';
-    state.ui.returnView = { type: 'attendance' };
-    if (typeof openEditStudent === 'function') openEditStudent(sid, { returnTo: { type: 'attendance' } });
-}
-
-function openAddStudentFromAttendance(classId) {
-    const ov = document.getElementById('att-ledger-overlay');
-    if (ov) ov.style.display = 'none';
-    state.ui.returnView = { type: 'attendance' };
-    if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
 }
 
 function renderAttendanceLedgerTable() {
@@ -360,7 +297,7 @@ function renderAttendanceLedgerTable() {
     }).join('');
 
     const bodyRows = grouped.map(g => {
-        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;display:flex;align-items:center;gap:8px;">${apEscapeHtml(g.cls.name)}<button onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid var(--primary);color:var(--primary);background:transparent;cursor:pointer;flex-shrink:0;">+ 추가</button></td></tr>`;
+        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;">${apEscapeHtml(g.cls.name)}</td></tr>`;
         const sRows = g.students.map(s => {
             const sid = String(s.id);
             const dateCells = days.map(d => {
@@ -371,16 +308,16 @@ function renderAttendanceLedgerTable() {
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
             
-            const nameStyle = getAttendanceStudentNameStyle(s);
+            // 학생 이름 밑 학년 제거 및 상하 패딩 축소 (6px)
             return `<tr>
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
-  <div style="font-size:13px;font-weight:700;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
+  <div style="font-size:13px;font-weight:700;color:var(--text);text-align:center;">${apEscapeHtml(s.name)}</div>
 </td>${dateCells}</tr>`;
         }).join('');
         const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
         const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''">
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
-  <div style="font-size:12px;font-weight:600;color:var(--secondary);">+ 학생 추가</div>
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
+  <div style="font-size:12px;font-weight:600;color:var(--secondary);text-align:center;">+</div>
 </td>${emptyCols}</tr>`;
         return groupRow + sRows + emptyRow;
     }).join('');
@@ -389,7 +326,7 @@ function renderAttendanceLedgerTable() {
 
     root.innerHTML = `<table id="att-tbl">
 <thead><tr>
-  <th class="att-nc" style="padding:6px 10px;min-width:96px;text-align:left;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
+  <th class="att-nc" style="padding:6px 10px;min-width:96px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
   ${headerCells}
 </tr></thead>
 <tbody>${bodyRows || empty}</tbody>
