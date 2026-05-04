@@ -378,7 +378,7 @@ function renderAttendanceLedgerTable() {
                 const click = isHol ? '' : `onclick="toggleAttendanceCellStatus('${sid}','${d}')"`;
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
-            
+
             const nameStyle = getAttendanceStudentNameStyle(s);
             return `<tr>
 <td class="att-nc" style="padding:4px 8px;min-width:88px;white-space:nowrap;text-align:center;">
@@ -680,4 +680,126 @@ function renderSchoolExamScoreCell(record) {
     const diff = (score !== null && score !== undefined && score !== '' && target !== null && target !== undefined && target !== '')
         ? Number(score) - Number(target) : null;
     const diffText = (diff === null || !Number.isFinite(diff)) ? '' :
-        `<div style="font-size:10px;font-weight:600;color:${diff >= 0 ? 'var(--success)' : 'var(--error)'};margin
+        `<div style="font-size:10px;font-weight:600;color:${diff >= 0 ? 'var(--success)' : 'var(--error)'};margin-top:2px;">목표 ${diff >= 0 ? '+' : ''}${diff}</div>`;
+    return `<span style="font-size:13px;font-weight:700;color:var(--text);">${scoreText}${diffText}</span>`;
+}
+
+function computeSchoolExamTrend(records, studentId) {
+    const list = records
+        .filter(r => String(r.student_id) === String(studentId) && r.score !== null && r.score !== undefined && r.score !== '')
+        .sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
+    if (!list.length) return { avg: '-', trend: '-' };
+    const scores = list.map(r => Number(r.score)).filter(Number.isFinite);
+    const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : '-';
+    const trend = scores.length >= 2 ? scores[scores.length - 1] - scores[scores.length - 2] : null;
+    return { avg, trend: trend === null ? '-' : `${trend >= 0 ? '+' : ''}${trend}` };
+}
+
+// student.js에서 학교성적 모달이 필요한 경우를 위해 유지
+function openSchoolExamRecordModal(recordId = '', studentId = '') {
+    const record = recordId ? (state.db.school_exam_records || []).find(r => String(r.id) === String(recordId)) : null;
+    const selectedStudentId = studentId || record?.student_id || '';
+    const currentYear = new Date().getFullYear();
+    const studentOptions = getCumulativeVisibleStudents({})
+        .map(s => `<option value="${apEscapeHtml(s.id)}" ${String(s.id) === String(selectedStudentId) ? 'selected' : ''}>${apEscapeHtml(s.name || '')} ${s.school_name ? `(${apEscapeHtml(s.school_name)})` : ''}</option>`)
+        .join('');
+    const student = selectedStudentId ? getCumulativeStudent(selectedStudentId) : null;
+    const targetScore = record?.target_score_snapshot ?? student?.target_score ?? '';
+
+    showModal(record ? '학교시험 성적 수정' : '학교시험 성적 추가', `
+<div style="display:flex;flex-direction:column;gap:10px;">
+  <select id="ser-student" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);" onchange="openSchoolExamRecordModal('${recordId}',this.value)">
+    <option value="">학생 선택</option>${studentOptions}
+  </select>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+    <input id="ser-school" class="btn" value="${apEscapeHtml(record?.school_name || student?.school_name || '')}" placeholder="학교" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+    <input id="ser-grade" class="btn" value="${apEscapeHtml(record?.grade || student?.grade || '')}" placeholder="학년" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+    <input id="ser-year" type="number" class="btn" value="${record?.exam_year || currentYear}" placeholder="연도" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+    <select id="ser-semester" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+      ${['1학기','2학기'].map(v => `<option value="${v}" ${String(record?.semester || '') === v ? 'selected' : ''}>${v}</option>`).join('')}
+    </select>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+    <select id="ser-type" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+      ${[['midterm','중간'],['final','기말'],['performance','수행'],['etc','기타']].map(([v,l]) => `<option value="${v}" ${String(record?.exam_type || 'midterm') === v ? 'selected' : ''}>${l}</option>`).join('')}
+    </select>
+    <input id="ser-subject" class="btn" value="${apEscapeHtml(record?.subject || '수학')}" placeholder="과목" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+    <input id="ser-score" type="number" class="btn" value="${record?.score ?? ''}" placeholder="점수/미응시 공란" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+    <input id="ser-target" type="number" class="btn" value="${targetScore}" placeholder="목표점수" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+  </div>
+  <textarea id="ser-memo" class="btn" placeholder="메모" style="height:84px;text-align:left;resize:vertical;font-size:13px;font-weight:500;line-height:1.6;background:var(--surface-2);border:1px solid var(--border);">${apEscapeHtml(record?.memo || '')}</textarea>
+  <button class="btn btn-primary" style="width:100%;min-height:48px;font-size:14px;font-weight:700;border-radius:12px;" onclick="saveSchoolExamRecord('${recordId || ''}')">저장</button>
+  ${record ? `<button class="btn" style="width:100%;min-height:42px;font-size:13px;font-weight:700;color:var(--error);background:rgba(255,71,87,0.08);border:1px solid rgba(255,71,87,0.16);border-radius:12px;" onclick="deleteSchoolExamRecord('${record.id}')">삭제</button>` : ''}
+</div>`);
+}
+
+async function saveSchoolExamRecord(recordId = '') {
+    const studentId = document.getElementById('ser-student')?.value || '';
+    if (!studentId) return toast('학생을 선택하세요.', 'warn');
+    const student = getCumulativeStudent(studentId);
+    const payload = {
+        studentId,
+        classId: getCumulativeClassIdForStudent(studentId),
+        schoolName: document.getElementById('ser-school')?.value.trim() || student?.school_name || '',
+        grade: document.getElementById('ser-grade')?.value.trim() || student?.grade || '',
+        examYear: Number(document.getElementById('ser-year')?.value || 0),
+        semester: document.getElementById('ser-semester')?.value || '',
+        examType: document.getElementById('ser-type')?.value || 'midterm',
+        subject: document.getElementById('ser-subject')?.value.trim() || '수학',
+        score: document.getElementById('ser-score')?.value ?? '',
+        targetScoreSnapshot: document.getElementById('ser-target')?.value ?? '',
+        memo: document.getElementById('ser-memo')?.value.trim() || ''
+    };
+    if (!payload.examYear || !payload.examType || !payload.subject) return toast('연도, 시험유형, 과목을 확인하세요.', 'warn');
+    const r = recordId
+        ? await api.patch(`school-exam-records/${recordId}`, payload)
+        : await api.post('school-exam-records', payload);
+    if (r?.success) {
+        toast('학교시험 성적이 저장되었습니다.', 'success');
+        await loadData();
+        closeModal();
+    } else {
+        toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
+    }
+}
+
+async function deleteSchoolExamRecord(recordId) {
+    if (!recordId) return;
+    if (!confirm('학교시험 성적 기록을 삭제할까요?')) return;
+    const r = await api.delete('school-exam-records', recordId);
+    if (r?.success) {
+        toast('학교시험 성적 기록이 삭제되었습니다.', 'info');
+        await loadData();
+        closeModal();
+    } else {
+        toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
+    }
+}
+
+// ── 기존 메뉴/사이드바 호출 호환 래퍼 ─────────────────────────────
+// 기존 UI 쪽 버튼이 어떤 이름으로 출석부를 호출하더라도
+// 월간 출석부 장부(openAttendanceLedger)로 진입하도록 유지한다.
+
+function openCumulativeAttendanceLedger() {
+    openAttendanceLedger();
+}
+
+function openMonthlyAttendanceLedger() {
+    openAttendanceLedger();
+}
+
+function openAttendanceBook() {
+    openAttendanceLedger();
+}
+
+function openAttendanceLedgerFromMenu() {
+    openAttendanceLedger();
+}
+
+function openAttendanceOpsLedger() {
+    openAttendanceLedger();
+}
