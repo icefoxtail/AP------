@@ -1,7 +1,16 @@
 /**
  * AP Math OS [cumulative.js]
- * 출석부 장부 + 학교 성적표 일괄입력 장부.
+ * 출석부 장부 + 성적표 일괄입력 장부.
  * QR/OMR exam_sessions 와 완전히 별도.
+ *
+ * 화면 규칙:
+ * - 출석부/성적표 상단 헤더는 대시보드 헤더와 같은 AP MATH 로고 구조를 따른다.
+ * - 별도 뒤로가기 버튼과 닫기 버튼을 두지 않는다.
+ * - AP MATH 로고 클릭으로 대시보드로 나간다.
+ * - 날짜/필터/반 선택 컨트롤은 헤더 안에 두지 않고 헤더 아래 본문 상단에 둔다.
+ * - 출석부 반명 옆 + 버튼을 두지 않는다.
+ * - 반명과 학생명은 가운데 정렬한다.
+ * - 학생 추가용 빈 행 + 는 유지한다.
  */
 
 // ── 공통 헬퍼 ─────────────────────────────────────────────────────
@@ -255,13 +264,14 @@ function openAttendanceLedger() {
     ov.innerHTML = `
 <style>
 #att-ledger-overlay *{box-sizing:border-box;}
-#att-hdr{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-wrap:wrap;}
-#att-hdr h2{margin:0;font-size:15px;font-weight:700;color:var(--text);flex-shrink:0;}
-.att-home-logo{height:36px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-weight:900;letter-spacing:-0.3px;font-family:inherit;cursor:pointer;flex-shrink:0;}
-.att-home-logo:hover{background:var(--surface-2);color:var(--primary);}
+#att-dash-hdr{height:56px;min-height:56px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;}
+#att-dash-logo{font-size:15px;font-weight:900;color:var(--text);letter-spacing:-0.3px;cursor:pointer;user-select:none;white-space:nowrap;}
+#att-dash-logo:hover{color:var(--primary);}
+#att-main{width:100%;padding:12px 14px 0;display:flex;flex-direction:column;flex:1;min-height:0;}
+#att-title{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px;margin-bottom:10px;flex-shrink:0;}
+#att-controls{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;flex-shrink:0;}
 .att-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
-#att-hdr,#att-legend,#att-body{width:100%;max-width:none;margin-left:0;margin-right:0;}
-#att-body{flex:1;overflow:auto;position:relative;}
+#att-body{width:100%;max-width:none;margin-left:0;margin-right:0;flex:1;overflow:auto;position:relative;}
 #att-tbl-root{width:100%;}
 #att-tbl{border-collapse:collapse;width:max-content;}
 #att-tbl th,#att-tbl td{border-bottom:1px solid var(--border);}
@@ -271,36 +281,40 @@ function openAttendanceLedger() {
 .att-dc{padding:4px 1px;text-align:center;width:34px;min-width:34px;cursor:pointer;user-select:none;}
 .att-dc:active{opacity:.7;}
 .att-hol{cursor:default;}
-.att-grp td{background:var(--surface-2) !important;font-size:12px;font-weight:700;color:var(--text);padding:5px 10px;}
-#att-legend{padding:6px 14px;font-size:11px;font-weight:600;color:var(--secondary);display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid var(--border);background:var(--surface);}
+.att-grp td{background:var(--surface-2) !important;font-size:12px;font-weight:700;color:var(--text);padding:5px 10px;text-align:center;vertical-align:middle;}
+#att-legend{width:100%;max-width:none;margin-left:0;margin-right:0;padding:6px 0;font-size:11px;font-weight:600;color:var(--secondary);display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid var(--border);background:var(--surface);}
 </style>
-<div id="att-hdr">
-  <button class="att-home-logo" onclick="goAttendanceHome()">AP MATH</button>
-  <h2>출석부</h2>
-  <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
-    onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
-  <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
-    <option value="">전체 (중/고)</option>
-    <option value="middle">중등부</option>
-    <option value="high">고등부</option>
-  </select>
-  <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
-    <option value="">전체 반</option>${classOptions}
-  </select>
-  <div style="flex:1;"></div>
-  <button class="att-ctrl" onclick="closeAttendanceLedger()">닫기</button>
-</div>
-<div id="att-legend">
-  <span>○ 등원</span>
-  <span>× 결석</span>
-  <span>△ 지각</span>
-  <span>＋ 보강</span>
-  <span>★ 상담</span>
-  <span>- 미기록</span>
-  <span>휴 휴무</span>
-</div>
-<div id="att-body">
-  <div id="att-tbl-root"></div>
+<div style="width:100%;height:100%;display:flex;flex-direction:column;">
+  <div id="att-dash-hdr">
+    <div id="att-dash-logo" onclick="goAttendanceHome()">AP MATH</div>
+  </div>
+  <div id="att-main">
+    <div id="att-title">출석부</div>
+    <div id="att-controls">
+      <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
+        onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
+      <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
+        <option value="">전체 (중/고)</option>
+        <option value="middle">중등부</option>
+        <option value="high">고등부</option>
+      </select>
+      <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
+        <option value="">전체 반</option>${classOptions}
+      </select>
+    </div>
+    <div id="att-legend">
+      <span>○ 등원</span>
+      <span>× 결석</span>
+      <span>△ 지각</span>
+      <span>＋ 보강</span>
+      <span>★ 상담</span>
+      <span>- 미기록</span>
+      <span>휴 휴무</span>
+    </div>
+    <div id="att-body">
+      <div id="att-tbl-root"></div>
+    </div>
+  </div>
 </div>`;
 
     loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(() => renderAttendanceLedgerTable());
@@ -362,7 +376,7 @@ function renderAttendanceLedgerTable() {
     }).join('');
 
     const bodyRows = grouped.map(g => {
-        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;">${apEscapeHtml(g.cls.name)}<button onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid var(--primary);color:var(--primary);background:transparent;cursor:pointer;flex-shrink:0;">+</button></td></tr>`;
+        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;text-align:center;vertical-align:middle;">${apEscapeHtml(g.cls.name)}</td></tr>`;
         const sRows = g.students.map(s => {
             const sid = String(s.id);
             const dateCells = days.map(d => {
@@ -375,14 +389,14 @@ function renderAttendanceLedgerTable() {
             
             const nameStyle = getAttendanceStudentNameStyle(s);
             return `<tr>
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
-  <div style="font-size:13px;font-weight:700;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
+  <div style="font-size:13px;font-weight:700;text-align:center;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
 </td>${dateCells}</tr>`;
         }).join('');
         const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
         const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''">
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
-  <div style="font-size:12px;font-weight:600;color:var(--secondary);">+</div>
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
+  <div style="font-size:12px;font-weight:600;color:var(--secondary);text-align:center;">+</div>
 </td>${emptyCols}</tr>`;
         return groupRow + sRows + emptyRow;
     }).join('');
@@ -391,7 +405,7 @@ function renderAttendanceLedgerTable() {
 
     root.innerHTML = `<table id="att-tbl">
 <thead><tr>
-  <th class="att-nc" style="padding:6px 10px;min-width:96px;text-align:left;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
+  <th class="att-nc" style="padding:6px 10px;min-width:96px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
   ${headerCells}
 </tr></thead>
 <tbody>${bodyRows || empty}</tbody>
