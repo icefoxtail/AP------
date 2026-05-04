@@ -23,28 +23,29 @@ function formatClassScheduleDays(daysStr) {
     return daysStr.split(',').map(d => map[parseInt(d)]).join('');
 }
 
-function isClassScheduledToday(clsId) {
+function isClassScheduledOnDate(clsId, dateStr) {
     const cls = state.db.classes.find(c => String(c.id) === String(clsId));
     if (!cls || !cls.schedule_days) return true;
-    const todayIdx = String(new Date().getDay());
-    return cls.schedule_days.split(',').includes(todayIdx);
+    const dayIdx = String(new Date(dateStr + 'T00:00:00').getDay());
+    return cls.schedule_days.split(',').includes(dayIdx);
 }
 
 // ── 출석 상태 헬퍼 ──────────────────────────────────────────────
-function getAttendanceDisplayStatus(status) {
+function getAttendanceDisplayStatus(status, isClassDay = true) {
     const safe = String(status || '').trim();
-    return safe && safe !== '미기록' ? safe : '등원';
+    if (safe && safe !== '미기록') return safe;
+    return isClassDay ? '등원' : '수업 없음';
 }
 
-function getNextAttendanceStatus(status) {
-    const cur = getAttendanceDisplayStatus(status);
+function getNextAttendanceStatus(status, isClassDay = true) {
+    const cur = getAttendanceDisplayStatus(status, isClassDay);
     if (cur === '등원') return '결석';
     if (cur === '결석') return '수업 없음';
     return '등원'; 
 }
 
-function getAttendanceStatusLabel(status) {
-    const cur = getAttendanceDisplayStatus(status);
+function getAttendanceStatusLabel(status, isClassDay = true) {
+    const cur = getAttendanceDisplayStatus(status, isClassDay);
     if (cur === '등원') return '○ 등원';
     if (cur === '결석') return '× 결석';
     if (cur === '지각') return '△ 지각';
@@ -54,8 +55,8 @@ function getAttendanceStatusLabel(status) {
     return '○ 등원';
 }
 
-function getAttendanceStatusStyle(status) {
-    const cur = getAttendanceDisplayStatus(status);
+function getAttendanceStatusStyle(status, isClassDay = true) {
+    const cur = getAttendanceDisplayStatus(status, isClassDay);
     if (cur === '등원') {
         return 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);';
     }
@@ -78,28 +79,29 @@ function getAttendanceStatusStyle(status) {
 }
 
 // ── 숙제 상태 헬퍼 ──────────────────────────────────────────────
-function getHomeworkDisplayStatus(status) {
+function getHomeworkDisplayStatus(status, isClassDay = true) {
     const safe = String(status || '').trim();
-    return safe && safe !== '미기록' ? safe : '완료';
+    if (safe && safe !== '미기록') return safe;
+    return isClassDay ? '완료' : '공란';
 }
 
-function getNextHomeworkStatus(status) {
-    const cur = getHomeworkDisplayStatus(status);
+function getNextHomeworkStatus(status, isClassDay = true) {
+    const cur = getHomeworkDisplayStatus(status, isClassDay);
     if (cur === '완료') return '미완료';
     if (cur === '미완료') return '공란';
     return '완료';
 }
 
-function getHomeworkStatusLabel(status) {
-    const cur = getHomeworkDisplayStatus(status);
+function getHomeworkStatusLabel(status, isClassDay = true) {
+    const cur = getHomeworkDisplayStatus(status, isClassDay);
     if (cur === '완료') return '완료';
     if (cur === '미완료') return '미완료';
     if (cur === '공란') return '-'; // 텅 빈 모양 텍스트
     return '완료';
 }
 
-function getHomeworkStatusStyle(status) {
-    const cur = getHomeworkDisplayStatus(status);
+function getHomeworkStatusStyle(status, isClassDay = true) {
+    const cur = getHomeworkDisplayStatus(status, isClassDay);
     if (cur === '완료') {
         return 'background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);';
     }
@@ -112,7 +114,7 @@ function getHomeworkStatusStyle(status) {
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
 
-// [5G-2] PIN 일괄 배분 기능 (로직 사수)
+// [5G-2] PIN 일괄 배분 기능
 async function handleBatchGeneratePins(classId) {
     if (!confirm('이 반에서 PIN이 아직 없는 학생들에게 고유 PIN을 일괄 배분하시겠습니까? (기존 PIN은 유지됨)')) return;
     const r = await api.post('students/batch-pins', { class_id: classId });
@@ -124,7 +126,7 @@ async function handleBatchGeneratePins(classId) {
     }
 }
 
-// [Phase 4/5] 요약 계산 (속도 최적화 적용)
+// [Phase 4/5] 요약 계산 (속도 최적화)
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
@@ -132,11 +134,10 @@ function computeClassTodaySummary(classId) {
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
     const aIds = new Set(active.map(s => String(s.id)));
     const total = active.length;
-    const isScheduled = isClassScheduledToday(classId);
+    const isScheduled = isClassScheduledOnDate(classId, today);
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
 
-    // 속도 향상을 위해 O(N) 단일 루프 적용
     let absentCount = 0;
     for (let i = 0; i < state.db.attendance.length; i++) {
         let a = state.db.attendance[i];
@@ -187,6 +188,7 @@ function renderClass(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
     const today = new Date().toLocaleDateString('sv-SE');
+    const isScheduled = isClassScheduledOnDate(cid, today);
     const summary = computeClassTodaySummary(cid);
 
     const icons = {
@@ -270,14 +272,11 @@ function renderClass(cid) {
     const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원');
     
     listRoot.innerHTML = stds.map(s => {
-        const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id]);
-        const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id]);
-
-        const attStyle = getAttendanceStatusStyle(attStatus);
-        const attLabel = getAttendanceStatusLabel(attStatus);
+        const attStyle = getAttendanceStatusStyle(todayAttMap[s.id], isScheduled);
+        const attLabel = getAttendanceStatusLabel(todayAttMap[s.id], isScheduled);
         
-        const hwStyle = getHomeworkStatusStyle(hwStatus);
-        const hwLabel = getHomeworkStatusLabel(hwStatus);
+        const hwStyle = getHomeworkStatusStyle(todayHwMap[s.id], isScheduled);
+        const hwLabel = getHomeworkStatusLabel(todayHwMap[s.id], isScheduled);
 
         return `<tr style="border-bottom: 1px solid var(--border);">
             <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
@@ -300,7 +299,7 @@ function renderClass(cid) {
     }
 }
 
-// 학년별 소단원 마스터 테이블 — 2022 개정 교육과정 기준
+// 학년별 소단원 마스터 테이블
 var MATH_CURRICULUM_UNITS = {
     '중1': [
         '소인수분해','정수와 유리수','문자와 식','좌표평면과 그래프',
@@ -505,7 +504,6 @@ function renderLedgerTable() {
     const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원');
     const records = isAtt ? ledgerState.attendance : ledgerState.homework;
 
-    // 장부 화면 렌더링 시에도 속도 최적화 맵 적용
     const recordMap = {};
     for (let i = 0; i < records.length; i++) {
         if (!records[i].date || records[i].date === ledgerState.date) {
@@ -514,10 +512,13 @@ function renderLedgerTable() {
     }
 
     const rows = stds.map(s => {
+        const sCid = cid || state.db.class_students.find(m => String(m.student_id) === String(s.id))?.class_id;
+        const isScheduled = sCid ? isClassScheduledOnDate(sCid, ledgerState.date) : true;
+        
         const recStatus = recordMap[s.id];
-        const status = isAtt ? getAttendanceDisplayStatus(recStatus) : getHomeworkDisplayStatus(recStatus);
-        const label = isAtt ? getAttendanceStatusLabel(status) : getHomeworkStatusLabel(status);
-        const style = isAtt ? getAttendanceStatusStyle(status) : getHomeworkStatusStyle(status);
+        const status = isAtt ? getAttendanceDisplayStatus(recStatus, isScheduled) : getHomeworkDisplayStatus(recStatus, isScheduled);
+        const label = isAtt ? getAttendanceStatusLabel(recStatus, isScheduled) : getHomeworkStatusLabel(recStatus, isScheduled);
+        const style = isAtt ? getAttendanceStatusStyle(recStatus, isScheduled) : getHomeworkStatusStyle(recStatus, isScheduled);
         
         return `<tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4;">${s.name}</td>
@@ -544,28 +545,96 @@ function renderLedgerTable() {
     `;
 }
 
+// ★ 낙관적 업데이트 적용: 누르자마자 메모리와 화면부터 즉각 변경
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
     const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => String(a.student_id) === String(sid) && a.date === today);
-    const next = getNextAttendanceStatus(cur?.status);
-    const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
-    if (!r?.success) { toast('저장 실패', 'warn'); return; }
-    await refreshDataOnly();
-    if (isLedger) await loadLedger(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
+    
+    const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
+    const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
+    
+    const next = getNextAttendanceStatus(cur?.status, isScheduled);
+    const prevStatus = cur ? cur.status : undefined;
+
+    // [1] 메모리 즉시 변경
+    if (cur) {
+        cur.status = next;
+    } else {
+        list.push({ student_id: sid, date: today, status: next });
+    }
+
+    // [2] 화면 즉시 렌더링 (서버 응답 대기 안 함)
+    if (isLedger) renderLedgerTable(); 
+    else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
+    else renderDashboard();
+
+    // [3] 뒷단에서 백그라운드 API 전송
+    try {
+        const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
+        if (!r?.success) throw new Error('fail');
+        // 성공 시 조용히 데이터 동기화
+        if (typeof refreshDataOnly === 'function') refreshDataOnly().catch(() => {});
+    } catch (e) {
+        // [4] 통신 실패 시에만 원상복구(롤백) 후 에러 메시지
+        if (cur) {
+            cur.status = prevStatus;
+        } else {
+            const idx = list.findIndex(a => String(a.student_id) === String(sid) && a.date === today);
+            if (idx > -1) list.splice(idx, 1);
+        }
+        if (isLedger) renderLedgerTable(); 
+        else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
+        else renderDashboard();
+        toast('저장 실패', 'warn');
+    }
 }
 
+// ★ 낙관적 업데이트 적용: 누르자마자 메모리와 화면부터 즉각 변경
 async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
     const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => String(h.student_id) === String(sid) && h.date === today);
-    const next = getNextHomeworkStatus(cur?.status);
-    const r = await api.patch('homework', { studentId: sid, status: next, date: today });
-    if (!r?.success) { toast('저장 실패', 'warn'); return; }
-    await refreshDataOnly();
-    if (isLedger) await loadLedger(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
+    
+    const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
+    const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
+    
+    const next = getNextHomeworkStatus(cur?.status, isScheduled);
+    const prevStatus = cur ? cur.status : undefined;
+
+    // [1] 메모리 즉시 변경
+    if (cur) {
+        cur.status = next;
+    } else {
+        list.push({ student_id: sid, date: today, status: next });
+    }
+
+    // [2] 화면 즉시 렌더링 (서버 응답 대기 안 함)
+    if (isLedger) renderLedgerTable(); 
+    else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
+    else renderDashboard();
+
+    // [3] 뒷단에서 백그라운드 API 전송
+    try {
+        const r = await api.patch('homework', { studentId: sid, status: next, date: today });
+        if (!r?.success) throw new Error('fail');
+        // 성공 시 조용히 데이터 동기화
+        if (typeof refreshDataOnly === 'function') refreshDataOnly().catch(() => {});
+    } catch (e) {
+        // [4] 통신 실패 시에만 원상복구(롤백) 후 에러 메시지
+        if (cur) {
+            cur.status = prevStatus;
+        } else {
+            const idx = list.findIndex(h => String(h.student_id) === String(sid) && h.date === today);
+            if (idx > -1) list.splice(idx, 1);
+        }
+        if (isLedger) renderLedgerTable(); 
+        else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
+        else renderDashboard();
+        toast('저장 실패', 'warn');
+    }
 }
 
 function makeExamListKey(title, date, archiveFile = '') {
@@ -641,7 +710,7 @@ async function openExamGradeView(classId) {
 
     showModal('시험성적', `
         <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
-            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 10px;" onclick="closeModal(true); if(typeof openOMR==function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
+            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 10px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
         </div>
         ${rows || `<div style="text-align:center; padding:40px 20px; color:var(--secondary); font-size:13px; font-weight:700;">시험 기록 없음</div>`}
     `);
