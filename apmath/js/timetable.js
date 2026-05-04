@@ -171,7 +171,6 @@ function getTimetableHighGrade(cls) {
 }
 
 function getTimetableDayGroup(cls) {
-    // schedule_days만을 기준으로 요일묶음 파싱 (day_group 속성 완전 무시)
     var days = String(cls.schedule_days || '');
     if (!days) return 'custom';
 
@@ -181,7 +180,6 @@ function getTimetableDayGroup(cls) {
     var has3 = arr.indexOf('3') !== -1;
     var has4 = arr.indexOf('4') !== -1;
 
-    // 월,수 포함시 무조건 mwf / 화,목 포함시 무조건 ttf 로 판정
     if (has1 && has3) return 'mwf';
     if (has2 && has4) return 'ttf';
 
@@ -243,6 +241,23 @@ function getTimetableRecentProgress(classId) {
     }).filter(Boolean);
 
     return items.length > 0 ? { date: latest.date, text: items.join(' / ') } : null;
+}
+
+function getTimetableCurrentTeacherName() {
+    var raw = '';
+    if (typeof getTeacherNameForUI === 'function') raw = getTeacherNameForUI() || '';
+    if (!raw && typeof state !== 'undefined') raw = (state.ui && state.ui.userName) || (state.auth && state.auth.name) || '';
+    return String(raw || '').replace(/\s*선생님\s*$/g, '').trim();
+}
+
+function isTimetableMyClass(cls) {
+    if (!cls) return false;
+    if (typeof canCurrentUserAccessClass === 'function') return !!canCurrentUserAccessClass(cls.id);
+
+    var teacher = getTimetableCurrentTeacherName();
+    var classTeacher = String(cls.teacher_name || '').replace(/\s*선생님\s*$/g, '').trim();
+    if (!teacher || !classTeacher) return true;
+    return teacher === classTeacher;
 }
 
 // ────────────────────────────────────────────
@@ -386,7 +401,7 @@ function buildTimetableCard(cls) {
     if (progress) {
         progressHtml = '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>';
     } else {
-        progressHtml = '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>'; // 높이 유지용 투명 텍스트
+        progressHtml = '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
     }
 
     var stuHtml = buildTimetableStudentSlots(students, classId);
@@ -408,21 +423,28 @@ function renderTimetable() {
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
         if (!state.ui.timetableSection) state.ui.timetableSection = 'middle';
+        if (typeof state.ui.timetableMyOnly === 'undefined') state.ui.timetableMyOnly = false;
     }
 
     var section = (typeof state !== 'undefined' && state.ui && state.ui.timetableSection) || 'middle';
+    var myOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     var title = getTimetableDateTitle();
     var isMid = section === 'middle';
 
     root.innerHTML =
         '<div id="timetable-root" style="width:100%; padding:0 0 48px; box-sizing:border-box;">' +
             '<div style="display:flex; align-items:center; gap:10px; padding:4px 0 12px;">' +
-                '<button class="btn" style="min-height:36px; padding:8px 12px; font-size:15px; flex-shrink:0;" onclick="openAppDrawer()">&#9776;</button>' +
                 '<div style="font-size:16px; font-weight:700; color:var(--text); flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + title + '</div>' +
             '</div>' +
-            '<div class="tab-bar" style="max-width:220px; margin:0 0 16px;">' +
-                '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'middle\';} renderTimetable();">중등부</button>' +
-                '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'high\';} renderTimetable();">고등부</button>' +
+            '<div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:0 0 16px;">' +
+                '<div class="tab-bar" style="max-width:220px; margin:0;">' +
+                    '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'middle\';} renderTimetable();">중등부</button>' +
+                    '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'high\';} renderTimetable();">고등부</button>' +
+                '</div>' +
+                '<div class="tab-bar" style="max-width:220px; margin:0;">' +
+                    '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableMyOnly=false;} renderTimetable();">전체 보기</button>' +
+                    '<button class="tab-btn' + (myOnly ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableMyOnly=true;} renderTimetable();">내 반 보기</button>' +
+                '</div>' +
             '</div>' +
             '<div id="timetable-grid-wrapper"></div>' +
         '</div>';
@@ -448,6 +470,10 @@ function renderTimetableGrid(section) {
         return getTimetableSectionForClass(cls) === section;
     });
 
+    if (typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly) {
+        sClasses = sClasses.filter(isTimetableMyClass);
+    }
+
     if (section === 'middle') {
         _renderMiddleGrid(sClasses, wrapper);
     } else {
@@ -468,14 +494,12 @@ function _renderMiddleGrid(sClasses, wrapper) {
     var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
     var cellBase     = 'padding:6px 6px; border:1px solid var(--border); font-size:12px; vertical-align:top;';
 
-    // Header 1: Time + Day Groups
     var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         var lbl = dg === 'mwf' ? '월수금' : '화목금';
         hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
     });
 
-    // Header 2: Teachers
     var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
@@ -483,7 +507,6 @@ function _renderMiddleGrid(sClasses, wrapper) {
         });
     });
 
-    // Body Rows
     var bodyHtml = '';
     TIMETABLE_MIDDLE_PERIODS.forEach(function(p) {
         var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' min-width:72px; text-align:center; vertical-align:middle; padding:8px 4px;">' +
@@ -510,7 +533,6 @@ function _renderMiddleGrid(sClasses, wrapper) {
         bodyHtml += '<tr>' + cells + '</tr>';
     });
 
-    // Unmapped Error Warning
     var unmappedCount = sClasses.filter(function(cls) {
         var dg = getTimetableDayGroup(cls);
         var t = (cls.teacher_name || '').trim();
@@ -519,13 +541,13 @@ function _renderMiddleGrid(sClasses, wrapper) {
         return getTimetablePeriodKey(cls) === 'unknown';
     }).length;
 
-    var warnHtml = unmappedCount > 0 
-        ? '<div style="color:var(--error); font-size:12px; font-weight:700; padding:10px 14px; background:rgba(255,71,87,0.08); border-radius:10px; margin-bottom:12px; border:1px solid rgba(255,71,87,0.15);">⚠️ 시간대(교시)를 판정할 수 없는 중등부 반이 ' + unmappedCount + '개 있습니다. 반 관리 메뉴에서 시간(예: 4:50~6:20, 6:30~8:00, 8:00~9:30)을 정확히 입력해주세요.</div>' 
+    var warnHtml = unmappedCount > 0
+        ? '<div style="color:var(--error); font-size:12px; font-weight:700; padding:10px 14px; background:rgba(255,71,87,0.08); border-radius:10px; margin-bottom:12px; border:1px solid rgba(255,71,87,0.15);">⚠️ 시간대(교시)를 판정할 수 없는 중등부 반이 ' + unmappedCount + '개 있습니다. 반 관리 메뉴에서 시간(예: 4:50~6:20, 6:30~8:00, 8:00~9:30)을 정확히 입력해주세요.</div>'
         : '';
 
-    wrapper.innerHTML = warnHtml + 
-        '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px;">' +
-            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%;">' +
+    wrapper.innerHTML = warnHtml +
+        '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px; -webkit-overflow-scrolling:touch;">' +
+            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%; min-width:980px;">' +
                 '<thead><tr>' + hr1 + '</tr><tr>' + hr2 + '</tr></thead>' +
                 '<tbody>' + bodyHtml + '</tbody>' +
             '</table>' +
@@ -571,8 +593,8 @@ function _renderHighGrid(sClasses, wrapper) {
     });
 
     wrapper.innerHTML =
-        '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px;">' +
-            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%;">' +
+        '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px; -webkit-overflow-scrolling:touch;">' +
+            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%; min-width:760px;">' +
                 '<thead><tr>' + hr + '</tr></thead>' +
                 '<tbody>' + bodyHtml + '</tbody>' +
             '</table>' +
