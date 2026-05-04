@@ -317,7 +317,7 @@ async function handleEditClass(cid) {
     const periodTime = document.getElementById('edit-cls-period')?.value || '';
     const manualTime = document.getElementById('edit-cls-timelabel')?.value.trim() || '';
     const time_label = periodTime || manualTime;
-    const payload = { name, grade, subject, teacher_name, schedule_days, is_active: c.is_active !== undefined ? Number(c.is_active) : 1, time_label };
+    const payload = { name, grade, subject, teacher_name, schedule_days, time_label };
 
     try {
         const r = await api.patch(`classes/${cid}`, payload);
