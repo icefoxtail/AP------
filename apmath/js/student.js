@@ -121,11 +121,14 @@ function renderStudentDetailTab(sid, tab) {
     else if (tab === 'cns') bodyHtml += renderCnsTab(sid);
     bodyHtml += `</div>`;
 
-    // 4. 하단 액션바 (큰 CTA 버튼 규격: Min-H 52px / 14px)
+    // 4. 하단 액션바
     const footerHtml = `
-        <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px;">
-            <button class="btn btn-primary" style="flex: 1.5; min-height: 52px; font-size: 15px; font-weight:700; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="openReportPreview('${sid}')">알림톡 문구 생성</button>
-            <button class="btn" style="flex: 1; min-height: 52px; font-size: 15px; font-weight:700; color: var(--primary); border: 1px solid var(--primary); background: transparent; border-radius: 16px; cursor: pointer;" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
+        <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn btn-primary" style="width: 100%; min-height: 52px; font-size: 15px; font-weight:700; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="openParentReport('${sid}')">📋 학부모 리포트 생성</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" style="flex: 1.5; min-height: 52px; font-size: 15px; font-weight:700; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="openReportPreview('${sid}')">알림톡 문구 생성</button>
+                <button class="btn" style="flex: 1; min-height: 52px; font-size: 15px; font-weight:700; color: var(--primary); border: 1px solid var(--primary); background: transparent; border-radius: 16px; cursor: pointer;" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
+            </div>
         </div>
     `;
 
@@ -401,7 +404,6 @@ async function handleEditConsultation(cid, sid) {
     }
 }
 
-
 async function handleDeleteConsultation(cid, sid) {
     if (!confirm('삭제하시겠습니까?')) return;
 
@@ -419,7 +421,6 @@ async function handleDeleteConsultation(cid, sid) {
         toast('상담 기록 삭제 중 오류가 발생했습니다.', 'error');
     }
 }
-
 
 async function handleDelete(sid) {
     if (!confirm('이 학생을 퇴원 처리하시겠습니까?')) return;
@@ -440,7 +441,6 @@ async function handleDelete(sid) {
     }
 }
 
-
 async function handleRestore(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
@@ -460,7 +460,6 @@ async function handleRestore(sid) {
     }
 }
 
-
 async function handleDeleteSession(eid, sid) {
     if (!confirm('시험 기록을 삭제하시겠습니까?')) return;
 
@@ -479,7 +478,6 @@ async function handleDeleteSession(eid, sid) {
     }
 }
 
-
 async function handleResetSessionWrongs(eid, sid) {
     if (!confirm('오답만 초기화하시겠습니까?')) return;
 
@@ -497,7 +495,6 @@ async function handleResetSessionWrongs(eid, sid) {
         toast('오답 초기화 중 오류가 발생했습니다.', 'error');
     }
 }
-
 
 function sortClassesForStudentModal(classes = []) {
     const gradeRank = (cls) => {
@@ -536,7 +533,6 @@ function syncEditStudentGrade() {
     }
 }
 
-
 function openEditStudent(sid, options = {}) {
     const s = state.db.students.find(st => st.id === sid);
     if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
@@ -545,7 +541,6 @@ function openEditStudent(sid, options = {}) {
 
     const isNew = isStudentNewMember(s);
     const isLeave = isStudentOnLeave(s);
-    // memo에서 태그 제거하여 실제 메모만 표시
     const cleanMemo = String(s.memo || '').replace(/#신입/g, '').replace(/#휴원/g, '').trim();
 
     showModal('학생 정보 수정', `
@@ -590,7 +585,6 @@ async function handleEditStudent(sid) {
     const editGrade = document.getElementById('edit-grade')?.value || '';
     const grade = editGrade;
 
-    // 신입/휴원 태그를 memo에 반영
     const rawMemo = document.getElementById('edit-memo')?.value || '';
     const isNewChecked = document.getElementById('edit-is-new')?.checked || false;
     const isLeaveChecked = document.getElementById('edit-is-leave')?.checked || false;
@@ -628,7 +622,6 @@ async function handleEditStudent(sid) {
     }
 }
 
-
 function openAddStudent(defaultCid = '', options = {}) {
     if (options.returnTo && typeof setModalReturnView === 'function') setModalReturnView(options.returnTo);
     const opts = sortClassesForStudentModal(state.db.classes.filter(c => Number(c.is_active) !== 0)).map(c => `<option value="${apEscapeHtml(String(c.id))}" ${String(c.id)===String(defaultCid)?'selected':''}>${apEscapeHtml(String(c.name || ''))}</option>`).join('');
@@ -662,20 +655,12 @@ async function handleAddStudent() {
     if (!cls) { toast('반 정보를 찾을 수 없습니다.', 'warn'); return; }
     const grade = inferGradeFromClass(cls);
     const payload = {
-        name: n,
-        school_name: sc,
-        schoolName: sc,
-        grade: grade || '',
-        class_id: classId,
-        classId: classId,
-        student_pin: pin || '',
-        studentPin: pin || '',
-        student_phone: studentPhone,
-        studentPhone: studentPhone,
-        parent_phone: parentPhone,
-        parentPhone: parentPhone,
-        guardian_relation: guardianRelation,
-        guardianRelation: guardianRelation,
+        name: n, school_name: sc, schoolName: sc, grade: grade || '',
+        class_id: classId, classId: classId,
+        student_pin: pin || '', studentPin: pin || '',
+        student_phone: studentPhone, studentPhone: studentPhone,
+        parent_phone: parentPhone, parentPhone: parentPhone,
+        guardian_relation: guardianRelation, guardianRelation: guardianRelation,
         memo: ''
     };
 
@@ -693,7 +678,6 @@ async function handleAddStudent() {
         toast('학생 추가 중 오류가 발생했습니다.', 'error');
     }
 }
-
 
 function openDischargedStudents() {
     const discharged = state.db.students.filter(s => s.status === '제적');
