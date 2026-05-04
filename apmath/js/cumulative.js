@@ -296,6 +296,7 @@ function renderAttendanceCellContent(studentId, date) {
     if (att === '지각') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#f59f00;">△</span>';
     if (att === '보강') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--primary);">＋</span>';
     if (att === '상담') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#7c3aed;">★</span>';
+    if (att === '수업 없음') return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
 
     return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
 }
@@ -454,10 +455,12 @@ async function toggleAttendanceCellStatus(studentId, date) {
     const current = existing?.status || '등원';
 
     let next;
+    // 수정됨: 루틴 마지막에 '수업 없음' 추가
     if (current === '등원' || current === '미기록' || !current) next = '결석';
     else if (current === '결석') next = '지각';
     else if (current === '지각') next = '보강';
     else if (current === '보강') next = '상담';
+    else if (current === '상담') next = '수업 없음';
     else next = '등원';
 
     if (existing) {
