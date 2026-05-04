@@ -11,7 +11,7 @@
  * - 모바일/PC 공통으로 JS 실측 기반으로 화면 하단까지 표를 꽉 채우도록 통합 (applyTimetableFit)
  * - 중등부/고등부는 표시 교사 목록 기준으로 열을 생성
  * - 내 반 보기는 현재 로그인 교사 열만 남기고 다른 교사 열 제거
- * - 고등부 모바일은 화면폭 기준으로 3열이 균형 있게 들어오도록 별도 폭 계산
+ * - 고등부 모바일은 화면폭 기준으로 3열이 균형 있게 들어오도록 별도 폭 계산 고정형 148px
  * - 내 반 보기는 teacher_name과 현재 로그인 이름(t1->박준성 명시적 매핑 포함)만으로 필터링
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
  */
@@ -321,28 +321,25 @@ function getTimetableColumnPlan(section, visibleTeachers) {
     var teacherWidth = 220;
 
     if (isMobile) {
-        if (section === 'high') {
-            teacherWidth = teacherSlots > 0
-                ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                : 110;
-            if (teacherWidth < 96) teacherWidth = 96;
-            if (!isMyOnly && teacherWidth > 118) teacherWidth = 118;
-            if (isMyOnly && teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
-        } else if (isMyOnly) {
-            teacherWidth = teacherSlots > 0
-                ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
-                : 150;
-            if (teacherWidth < 130) teacherWidth = 130;
-            if (teacherWidth > 190) teacherWidth = 190;
+        if (!isMyOnly) {
+            teacherWidth = 148;
         } else {
-            teacherWidth = 220;
+            if (section === 'high') {
+                teacherWidth = teacherSlots > 0
+                    ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
+                    : 110;
+                if (teacherWidth < 220) teacherWidth = Math.max(220, viewportWidth - labelWidth - 4);
+            } else {
+                teacherWidth = teacherSlots > 0
+                    ? Math.floor((viewportWidth - labelWidth - 4) / teacherSlots)
+                    : 150;
+                if (teacherWidth < 130) teacherWidth = 130;
+                if (teacherWidth > 190) teacherWidth = 190;
+            }
         }
     }
 
     var tableWidth = labelWidth + teacherWidth * teacherSlots;
-    if (isMobile && section === 'high' && !isMyOnly) {
-        tableWidth = Math.max(tableWidth, Math.min(viewportWidth, 420));
-    }
 
     return {
         labelWidth: labelWidth,
@@ -582,25 +579,25 @@ function _ttIsStudentLeave(s) {
 
 function getTimetableClassStudentsWithInfo(classId) {
     var db = _getAllDb();
-    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
 
     var csSource =
-        allDb.timetable_class_students ||
         mainDb.timetable_class_students ||
         db.timetable_class_students ||
-        allDb.class_students ||
+        allDb.timetable_class_students ||
         mainDb.class_students ||
         db.class_students ||
+        allDb.class_students ||
         [];
 
     var stSource =
-        allDb.timetable_students ||
         mainDb.timetable_students ||
         db.timetable_students ||
-        allDb.students ||
+        allDb.timetable_students ||
         mainDb.students ||
         db.students ||
+        allDb.students ||
         [];
 
     var sIds = csSource
