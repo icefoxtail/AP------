@@ -449,7 +449,7 @@ function getTimetableRecentProgress(classId) {
     var items = progresses.map(function(p) {
         var t = String(p.textbook_title_snapshot || '').trim();
         var prog = String(p.progress_text || '').trim();
-        var cleanProg = prog.replace(/^단원선택[^\n]*\n?/, '').trim();
+        var cleanProg = prog.replace(/^\[단원선택\][^\n]*\n?/, '').trim();
         if (t && cleanProg) return t + ' ' + cleanProg;
         return t || cleanProg;
     }).filter(Boolean);
@@ -582,4 +582,265 @@ function buildTimetableCard(cls) {
         : '<div class="tt-book"><span class="tt-book-line">교재 미등록</span></div>';
 
     var progressHtml = progress
-        ? '<div class="tt-progress" title="' + ap
+        ? '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>'
+        : '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
+
+    return '<div class="tt-card">' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
+}
+
+function getTimetableHighScheduleLines(cls) {
+    var raw = String(
+        cls.schedule_text || cls.schedule_note || cls.schedule_detail || cls.high_schedule || cls.timetable_note || ''
+    ).trim();
+
+    if (raw) {
+        return raw
+            .replace(/\r\n/g, '\n')
+            .replace(/\s*[\/|,]\s*/g, '\n')
+            .split('\n')
+            .map(function(line) { return String(line || '').trim(); })
+            .filter(Boolean);
+    }
+
+    var dayFields = [
+        { key: 'mon_time', label: '월' },
+        { key: 'tue_time', label: '화' },
+        { key: 'wed_time', label: '수' },
+        { key: 'thu_time', label: '목' },
+        { key: 'fri_time', label: '금' },
+        { key: 'sat_time', label: '토' },
+        { key: 'sun_time', label: '일' }
+    ];
+    var grouped = {};
+
+    dayFields.forEach(function(item) {
+        var time = String(cls[item.key] || '').trim();
+        if (!time) return;
+        if (!grouped[time]) grouped[time] = [];
+        grouped[time].push(item.label);
+    });
+
+    var lines = Object.keys(grouped).map(function(time) {
+        return grouped[time].join('·') + ' ' + time;
+    });
+
+    if (lines.length > 0) return lines;
+
+    var fallbackTime = String(cls.time_label || '').trim();
+    if (fallbackTime && fallbackTime !== '시간 미지정') return ['시간표 미세정보 없음 · ' + fallbackTime];
+
+    return ['시간 미지정'];
+}
+
+function buildTimetableHighCardBlock(cls) {
+    var lines = getTimetableHighScheduleLines(cls);
+    var metaHtml = lines.map(function(line) {
+        return '<span class="tt-high-class-meta-line">' + apEscapeHtml(line) + '</span>';
+    }).join('');
+
+    return '<div class="tt-high-class-wrap">' +
+        '<div class="tt-high-class-meta">' + metaHtml + '</div>' +
+        buildTimetableCard(cls) +
+    '</div>';
+}
+
+// ────────────────────────────────────────────
+// 메인 렌더링 및 탭 전역 함수
+// ────────────────────────────────────────────
+
+window.ttSetSection = function(sec) {
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        state.ui.timetableSection = sec;
+    }
+    renderTimetable();
+};
+
+window.ttSetMyOnly = function(isMy) {
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        state.ui.timetableMyOnly = isMy;
+    }
+    renderTimetable();
+};
+
+function renderTimetable() {
+    var root = document.getElementById('app-root');
+    if (!root) return;
+
+    installTimetableStyle();
+    bindTimetableMobileFitEvents();
+    enterTimetableWideMode();
+
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        if (!state.ui.timetableSection) state.ui.timetableSection = 'middle';
+        if (typeof state.ui.timetableMyOnly === 'undefined') state.ui.timetableMyOnly = false;
+    }
+
+    var section = (typeof state !== 'undefined' && state.ui && state.ui.timetableSection) || 'middle';
+    var myOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
+    var title = getTimetableDateTitle();
+    var isMid = section === 'middle';
+
+    root.innerHTML =
+        '<div id="timetable-root" style="width:100%; padding:0 0 32px; box-sizing:border-box;">' +
+            '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
+                '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
+            '</div>' +
+            '<div class="tt-tab-scroll">' +
+                '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
+                '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'high\')">고등부</button>' +
+                '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" onclick="window.ttSetMyOnly(false)">전체 보기</button>' +
+                '<button class="tab-btn' + (myOnly ? ' active' : '') + '" onclick="window.ttSetMyOnly(true)">내 반 보기</button>' +
+            '</div>' +
+            '<div id="timetable-grid-wrapper"></div>' +
+        '</div>';
+
+    renderTimetableGrid(section);
+}
+
+function renderTimetableGrid(section) {
+    var wrapper = document.getElementById('timetable-grid-wrapper');
+    if (!wrapper) return;
+
+    var db = _getAllDb();
+    var timetableSource = (Array.isArray(db.timetable_classes) && db.timetable_classes.length > 0)
+        ? db.timetable_classes
+        : (db.classes || []);
+    var allClasses = timetableSource.filter(function(c) { return Number(c.is_active) !== 0; });
+
+    var sClasses = allClasses.filter(function(cls) { return getTimetableSectionForClass(cls) === section; });
+    if (typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly) {
+        sClasses = sClasses.filter(isTimetableMyClass);
+    }
+
+    if (section === 'middle') _renderMiddleGrid(sClasses, wrapper);
+    else _renderHighGrid(sClasses, wrapper);
+
+    scheduleTimetableMobileFit();
+}
+
+// ────────────────────────────────────────────
+// 중등부 그리드
+// ────────────────────────────────────────────
+
+function _renderMiddleGrid(sClasses, wrapper) {
+    var dgBg  = { mwf: 'rgba(255,71,87,0.015)', ttf: 'rgba(26,92,255,0.015)' };
+    var dgHdr = { mwf: 'rgba(255,71,87,0.03)',  ttf: 'rgba(26,92,255,0.03)' };
+
+    var firstCol = 'width:70px; min-width:70px; max-width:70px; white-space:nowrap;';
+    var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
+    var stickyTop    = 'position:sticky; top:0; z-index:20;';
+    var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
+    var cellBase     = 'padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:12px; vertical-align:top;';
+
+    var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
+    TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
+        var lbl = dg === 'mwf' ? '월수금' : '화목금';
+        hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
+    });
+
+    var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
+    TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
+        TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+            hr2 += '<th style="' + stickyTop + ' background:' + dgBg[dg] + '; ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+        });
+    });
+
+    var bodyHtml = '';
+    TIMETABLE_MIDDLE_PERIODS.forEach(function(p) {
+        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:6px 2px;">' +
+            '<div class="tt-row-label">' + apEscapeHtml(p.label) + '</div>' +
+            '<div class="tt-row-sublabel">' + apEscapeHtml(p.time) + '</div>' +
+        '</td>';
+
+        TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
+            TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+                var matched = sClasses.filter(function(cls) {
+                    return getTimetableDayGroup(cls) === dg &&
+                           getTimetableClassTeacherName(cls) === t &&
+                           getTimetablePeriodKey(cls) === p.key;
+                });
+
+                if (matched.length === 0) {
+                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + '"></td>';
+                } else {
+                    var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
+                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + '">' + cards + '</td>';
+                }
+            });
+        });
+        bodyHtml += '<tr class="tt-row-fixed">' + cells + '</tr>';
+    });
+
+    var unmappedCount = sClasses.filter(function(cls) {
+        var dg = getTimetableDayGroup(cls);
+        var teacher = getTimetableClassTeacherName(cls);
+        if (TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(dg) === -1) return false;
+        if (TIMETABLE_FIXED_TEACHERS.indexOf(teacher) === -1) return false;
+        return getTimetablePeriodKey(cls) === 'unknown';
+    }).length;
+
+    var warnHtml = unmappedCount > 0
+        ? '<div style="color:var(--error); font-size:12px; font-weight:700; padding:10px 14px; background:rgba(255,71,87,0.06); border-radius:8px; margin-bottom:10px; border:1px solid rgba(255,71,87,0.1);">⚠️ 시간대(교시) 미지정 반: ' + unmappedCount + '개</div>'
+        : '';
+
+    wrapper.innerHTML = warnHtml +
+        '<div class="tt-table-wrap">' +
+            '<table class="tt-table tt-table-middle">' +
+                '<thead><tr>' + hr1 + '</tr><tr>' + hr2 + '</tr></thead>' +
+                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="7">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
+            '</table>' +
+        '</div>';
+}
+
+// ────────────────────────────────────────────
+// 고등부 그리드
+// ────────────────────────────────────────────
+
+function _renderHighGrid(sClasses, wrapper) {
+    var highBg = 'rgba(0,0,0,0.01)';
+    var highHdr = 'rgba(0,0,0,0.02)';
+
+    var firstCol = 'width:60px; min-width:60px; max-width:60px; white-space:nowrap;';
+    var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
+    var stickyTop    = 'position:sticky; top:0; z-index:20; background:' + highHdr + ';';
+    var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
+    var cellBase     = 'padding:4px 6px; border:1px solid rgba(0,0,0,0.05); font-size:12px; vertical-align:top;';
+
+    var hr = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
+    TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+        hr += '<th style="' + stickyTop + ' ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
+    });
+
+    var bodyHtml = '';
+    TIMETABLE_HIGH_GRADES.forEach(function(grade) {
+        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:6px 2px;">' +
+            '<div class="tt-row-label" style="font-size:14px;">' + apEscapeHtml(grade) + '</div>' +
+        '</td>';
+
+        TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
+            var matched = sClasses.filter(function(cls) {
+                return getTimetableClassTeacherName(cls) === t && getTimetableHighGrade(cls) === grade;
+            });
+
+            if (matched.length === 0) {
+                cells += '<td style="background:' + highBg + '; ' + cellBase + '"></td>';
+            } else {
+                var cards = matched.map(function(cls) { return buildTimetableHighCardBlock(cls); }).join('');
+                cells += '<td style="background:' + highBg + '; ' + cellBase + '">' + cards + '</td>';
+            }
+        });
+
+        bodyHtml += '<tr class="tt-row-fixed">' + cells + '</tr>';
+    });
+
+    wrapper.innerHTML =
+        '<div class="tt-table-wrap">' +
+            '<table class="tt-table tt-table-high">' +
+                '<thead><tr>' + hr + '</tr></thead>' +
+                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="4">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
+            '</table>' +
+        '</div>';
+}
