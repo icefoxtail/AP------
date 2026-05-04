@@ -2,7 +2,6 @@
  * AP Math OS [cumulative.js]
  * 출석부 장부 + 학교 성적표 일괄입력 장부.
  * QR/OMR exam_sessions 와 완전히 별도.
- * [UI Standard Applied]: 대시보드 헤더 규격 완벽 이식 (40x40 뒤로가기, 20px 타이틀, max-width:850px, 44px 컨트롤)
  */
 
 // ── 공통 헬퍼 ─────────────────────────────────────────────────────
@@ -168,10 +167,6 @@ function getAttendanceStudentNameStyle(student) {
 function goAttendanceHome() {
     closeAttendanceLedger();
 
-    if (typeof leaveTimetableWideMode === 'function') {
-        leaveTimetableWideMode();
-    }
-
     if (typeof state !== 'undefined' && state.ui) {
         state.ui.currentClassId = null;
         state.ui.returnView = null;
@@ -206,35 +201,34 @@ function _attDayStyle(dateStr) {
 
 function renderAttendanceCellContent(studentId, date) {
     const schedule = getMonthlyScheduleBadges(studentId, date);
-    const baseStyle = 'display:inline-flex;align-items:center;justify-content:center;width:24px;height:22px;border-radius:5px;font-weight:700;';
     if (schedule.globalClosed || schedule.studentClosed) {
-        return '<span style="' + baseStyle + 'font-size:10.5px;color:#e53935;background:rgba(229,57,53,0.08);">휴</span>';
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:11px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
     }
 
     const status = getMonthlyAttendanceStatus(studentId, date);
     const att = status.attendance || '';
 
     if (att === '등원') {
-        return '<span style="' + baseStyle + 'font-size:13px;color:var(--success);">○</span>';
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:var(--success);">○</span>';
     }
 
     if (att === '결석') {
-        return '<span style="' + baseStyle + 'font-size:13px;color:#e53935;">×</span>';
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#e53935;">×</span>';
     }
 
     if (att === '지각') {
-        return '<span style="' + baseStyle + 'font-size:13px;color:#f59f00;">△</span>';
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#f59f00;">△</span>';
     }
 
     if (att === '보강') {
-        return '<span style="' + baseStyle + 'font-size:13px;color:var(--primary);">＋</span>';
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:16px;font-weight:700;color:var(--primary);">＋</span>';
     }
 
     if (att === '상담') {
-        return '<span style="' + baseStyle + 'font-size:13px;color:#7c3aed;">★</span>';
+        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#7c3aed;">★</span>';
     }
 
-    return '<span style="' + baseStyle + 'font-size:12px;font-weight:600;color:var(--border);">-</span>';
+    return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:13px;font-weight:600;color:var(--border);">-</span>';
 }
 
 function _ensureAttOverlay() {
@@ -260,51 +254,53 @@ function openAttendanceLedger() {
     ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;';
     ov.innerHTML = `
 <style>
-#att-ledger-overlay * { box-sizing:border-box; }
-.att-ctrl { height:44px; min-height:44px; padding:0 14px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:13px; font-weight:600; font-family:inherit; cursor:pointer; flex:1; min-width:120px; }
-#att-body { flex:1; overflow:auto; position:relative; background:var(--surface); border:1px solid var(--border); border-radius:16px; margin-bottom:24px; }
-#att-tbl { border-collapse:collapse; width:max-content; background:var(--surface); }
-#att-tbl th, #att-tbl td { border-bottom:1px solid var(--border); }
-#att-tbl thead th { position:sticky; top:0; z-index:2; background:var(--surface); box-shadow:0 1px 0 var(--border); }
-#att-tbl .att-nc { position:sticky; left:0; z-index:1; background:var(--surface); box-shadow:1px 0 0 var(--border); }
-#att-tbl thead .att-nc { z-index:3; }
-.att-dc { padding:2px 1px; text-align:center; width:31px; min-width:31px; cursor:pointer; user-select:none; }
-.att-dc:active { opacity:.7; }
-.att-hol { cursor:default; }
-.att-grp td { background:var(--bg) !important; font-size:12px; font-weight:700; color:var(--text); padding:8px 12px; }
-#att-legend { padding:8px 0; font-size:11px; font-weight:600; color:var(--secondary); display:flex; gap:12px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; flex-shrink:0; scrollbar-width:none; margin-bottom:8px; }
-#att-legend::-webkit-scrollbar { display:none; }
-#att-legend span { flex:0 0 auto; white-space:nowrap; }
+#att-ledger-overlay *{box-sizing:border-box;}
+#att-hdr{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-wrap:wrap;}
+#att-hdr h2{margin:0;font-size:15px;font-weight:700;color:var(--text);flex-shrink:0;}
+.att-home-logo{height:36px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-weight:900;letter-spacing:-0.3px;font-family:inherit;cursor:pointer;flex-shrink:0;}
+.att-home-logo:hover{background:var(--surface-2);color:var(--primary);}
+.att-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
+#att-hdr,#att-legend,#att-body{width:100%;max-width:none;margin-left:0;margin-right:0;}
+#att-body{flex:1;overflow:auto;position:relative;}
+#att-tbl-root{width:100%;}
+#att-tbl{border-collapse:collapse;width:max-content;}
+#att-tbl th,#att-tbl td{border-bottom:1px solid var(--border);}
+#att-tbl thead th{position:sticky;top:0;z-index:2;background:var(--surface);}
+#att-tbl .att-nc{position:sticky;left:0;z-index:1;background:var(--surface);}
+#att-tbl thead .att-nc{z-index:3;}
+.att-dc{padding:4px 1px;text-align:center;width:34px;min-width:34px;cursor:pointer;user-select:none;}
+.att-dc:active{opacity:.7;}
+.att-hol{cursor:default;}
+.att-grp td{background:var(--surface-2) !important;font-size:12px;font-weight:700;color:var(--text);padding:5px 10px;}
+#att-legend{padding:6px 14px;font-size:11px;font-weight:600;color:var(--secondary);display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid var(--border);background:var(--surface);}
 </style>
-<div style="width:100%; max-width:850px; margin:0 auto; padding:16px 16px 0; display:flex; flex-direction:column; height:100%;">
-  <!-- Header: 대시보드 규격 완벽 동기화 (40x40 뒤로가기 버튼) -->
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-shrink:0;">
-      <div style="display:flex; align-items:center; gap:10px;">
-          <button class="btn" style="width:40px; height:40px; padding:0; font-size:22px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="goAttendanceHome()">←</button>
-          <div>
-              <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">출석부</div>
-          </div>
-      </div>
-  </div>
-  <!-- Controls -->
-  <div style="display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap; flex-shrink:0;">
-    <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
-    <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
-      <option value="">전체 (중/고)</option>
-      <option value="middle">중등부</option>
-      <option value="high">고등부</option>
-    </select>
-    <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
-      <option value="">전체 반</option>${classOptions}
-    </select>
-  </div>
-  <div id="att-legend">
-    <span>○ 등원</span><span>× 결석</span><span>△ 지각</span><span>＋ 보강</span><span>★ 상담</span><span>- 미기록</span><span>휴 휴무</span>
-  </div>
-  <!-- Body -->
-  <div id="att-body">
-    <div id="att-tbl-root"></div>
-  </div>
+<div id="att-hdr">
+  <button class="att-home-logo" onclick="goAttendanceHome()">AP MATH</button>
+  <h2>출석부</h2>
+  <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
+    onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
+  <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
+    <option value="">전체 (중/고)</option>
+    <option value="middle">중등부</option>
+    <option value="high">고등부</option>
+  </select>
+  <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
+    <option value="">전체 반</option>${classOptions}
+  </select>
+  <div style="flex:1;"></div>
+  <button class="att-ctrl" onclick="closeAttendanceLedger()">닫기</button>
+</div>
+<div id="att-legend">
+  <span>○ 등원</span>
+  <span>× 결석</span>
+  <span>△ 지각</span>
+  <span>＋ 보강</span>
+  <span>★ 상담</span>
+  <span>- 미기록</span>
+  <span>휴 휴무</span>
+</div>
+<div id="att-body">
+  <div id="att-tbl-root"></div>
 </div>`;
 
     loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(() => renderAttendanceLedgerTable());
@@ -340,6 +336,7 @@ function renderAttendanceLedgerTable() {
 
     let activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
 
+    // 중등/고등 필터링 적용
     if (section) {
         activeClasses = activeClasses.filter(c => {
             const isHigh = /고1|고2|고3|고등/.test(String(c.grade || '') + ' ' + String(c.name || ''));
@@ -361,11 +358,11 @@ function renderAttendanceLedgerTable() {
         const num = Number(d.slice(-2));
         const dayName = _attDayName(d);
         const style = _attDayStyle(d);
-        return `<th style="padding:4px 1px;width:31px;min-width:31px;text-align:center;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;">${num}</div><div style="font-size:9.5px;font-weight:600;line-height:1.2;">${dayName}</div></th>`;
+        return `<th style="padding:5px 1px;width:34px;min-width:34px;text-align:center;${style}"><div style="font-size:12px;font-weight:700;line-height:1.3;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.3;">${dayName}</div></th>`;
     }).join('');
 
     const bodyRows = grouped.map(g => {
-        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;">${apEscapeHtml(g.cls.name)}</td></tr>`;
+        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;">${apEscapeHtml(g.cls.name)}<button onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid var(--primary);color:var(--primary);background:transparent;cursor:pointer;flex-shrink:0;">+</button></td></tr>`;
         const sRows = g.students.map(s => {
             const sid = String(s.id);
             const dateCells = days.map(d => {
@@ -375,17 +372,17 @@ function renderAttendanceLedgerTable() {
                 const click = isHol ? '' : `onclick="toggleAttendanceCellStatus('${sid}','${d}')"`;
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
-
+            
             const nameStyle = getAttendanceStudentNameStyle(s);
             return `<tr>
-<td class="att-nc" style="padding:4px 8px;min-width:88px;white-space:nowrap;text-align:center;">
-  <div style="font-size:12px;font-weight:700;line-height:1.2;text-align:center;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
+  <div style="font-size:13px;font-weight:700;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
 </td>${dateCells}</tr>`;
         }).join('');
         const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
         const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''">
-<td class="att-nc" style="padding:4px 8px;min-width:88px;white-space:nowrap;text-align:center;">
-  <div style="font-size:12px;font-weight:600;color:var(--secondary);text-align:center;line-height:1.2;">+</div>
+<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;">
+  <div style="font-size:12px;font-weight:600;color:var(--secondary);">+</div>
 </td>${emptyCols}</tr>`;
         return groupRow + sRows + emptyRow;
     }).join('');
@@ -394,7 +391,7 @@ function renderAttendanceLedgerTable() {
 
     root.innerHTML = `<table id="att-tbl">
 <thead><tr>
-  <th class="att-nc" style="padding:5px 8px;min-width:88px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
+  <th class="att-nc" style="padding:6px 10px;min-width:96px;text-align:left;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
   ${headerCells}
 </tr></thead>
 <tbody>${bodyRows || empty}</tbody>
@@ -420,6 +417,7 @@ async function toggleAttendanceCellStatus(studentId, date) {
     else if (current === '보강') next = '상담';
     else next = '미기록';
 
+    // 낙관적 업데이트
     if (existing) {
         existing.status = next;
     } else {
@@ -433,6 +431,7 @@ async function toggleAttendanceCellStatus(studentId, date) {
         const r = await api.patch('attendance', { studentId, date, status: next });
         if (!r?.success) throw new Error(r?.message || 'fail');
     } catch {
+        // 실패 시 롤백
         if (existing) {
             existing.status = current;
         } else {
@@ -443,184 +442,320 @@ async function toggleAttendanceCellStatus(studentId, date) {
     }
 }
 
-// ── 학교 성적표 장부 ─────────────────────────────────────────────
+// ── 성적표 장부 (개편) ─────────────────────────────────────────────
+
+var SEB_COLS = [
+    { semester: '1학기', examType: 'midterm', key: '1H-mid', label: '중간' },
+    { semester: '1학기', examType: 'final',   key: '1H-fin', label: '기말' },
+    { semester: '2학기', examType: 'midterm', key: '2H-mid', label: '중간' },
+    { semester: '2학기', examType: 'final',   key: '2H-fin', label: '기말' }
+];
 
 function _ensureSebOverlay() {
-    let ov = document.getElementById('seb-ledger-overlay');
-    if (!ov) {
-        ov = document.createElement('div');
-        ov.id = 'seb-ledger-overlay';
-        document.body.appendChild(ov);
-    }
+    var ov = document.getElementById('seb-ledger-overlay');
+    if (!ov) { ov = document.createElement('div'); ov.id = 'seb-ledger-overlay'; document.body.appendChild(ov); }
     return ov;
 }
 
+function getSebExamRecord(studentId, year, semester, examType) {
+    return (state.db.school_exam_records || []).find(function(r) {
+        return String(r.student_id) === String(studentId) &&
+               Number(r.exam_year) === Number(year) &&
+               String(r.semester || '') === semester &&
+               String(r.exam_type || '') === examType &&
+               String(r.subject || '') === '수학' &&
+               String(r.is_deleted || 0) !== '1';
+    });
+}
+
+function getSebVisibleStudents() {
+    var section = state.ui.schoolExamSection || 'middle';
+    var classId = state.ui.schoolExamClassId || '';
+    var teacherFilter = state.ui.schoolExamTeacher || '';
+
+    var students = getCumulativeVisibleStudents({ classId: classId });
+
+    if (teacherFilter) {
+        var tClassIds = (state.db.classes || [])
+            .filter(function(c) { return c.teacher_name === teacherFilter; })
+            .map(function(c) { return String(c.id); });
+        students = students.filter(function(s) {
+            return tClassIds.indexOf(getCumulativeClassIdForStudent(s.id)) !== -1;
+        });
+    }
+
+    students = students.filter(function(s) {
+        var grade = String(s.grade || '');
+        var isHigh = /고1|고2|고3/.test(grade);
+        return section === 'high' ? isHigh : !isHigh;
+    });
+
+    return students;
+}
+
+function _sebToggleSortCol() {
+    var el = document.getElementById('seb-sort-col');
+    var sortEl = document.getElementById('seb-sort');
+    if (el && sortEl) el.style.display = sortEl.value === 'score-desc' ? '' : 'none';
+}
+
 function openSchoolExamLedger() {
-    const ov = _ensureSebOverlay();
-    const currentYear = new Date().getFullYear();
-    const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
-    const classOptions = activeClasses.map(c =>
-        `<option value="${apEscapeHtml(c.id)}">${apEscapeHtml(c.name)}</option>`
-    ).join('');
+    var ov = _ensureSebOverlay();
+    var currentYear = new Date().getFullYear();
+    var isAdmin = !!(state.auth && state.auth.role === 'admin');
+
+    if (!state.ui.schoolExamYear) state.ui.schoolExamYear = currentYear;
+    if (!state.ui.schoolExamSection) state.ui.schoolExamSection = 'middle';
+    if (!state.ui.schoolExamClassId) state.ui.schoolExamClassId = '';
+    if (!state.ui.schoolExamTeacher) state.ui.schoolExamTeacher = '';
+    if (!state.ui.schoolExamSort) state.ui.schoolExamSort = 'default';
+    if (!state.ui.schoolExamSortCol) state.ui.schoolExamSortCol = '1H-mid';
+
+    var section = state.ui.schoolExamSection;
+    var sort = state.ui.schoolExamSort;
+    var sortCol = state.ui.schoolExamSortCol;
+    var year = Number(state.ui.schoolExamYear) || currentYear;
+    var teacherFilter = state.ui.schoolExamTeacher;
+
+    var activeClasses = sortCumulativeClasses((state.db.classes || []).filter(function(c) {
+        return Number(c.is_active) !== 0;
+    }));
+    var sectionClasses = activeClasses.filter(function(c) {
+        var isHigh = /고1|고2|고3/.test(String(c.grade || '') + ' ' + String(c.name || ''));
+        return section === 'high' ? isHigh : !isHigh;
+    });
+    var filteredClasses = teacherFilter
+        ? sectionClasses.filter(function(c) { return c.teacher_name === teacherFilter; })
+        : sectionClasses;
+
+    var classOptions = '<option value="">전체</option>' + filteredClasses.map(function(c) {
+        return '<option value="' + apEscapeHtml(c.id) + '"' +
+            (String(c.id) === String(state.ui.schoolExamClassId) ? ' selected' : '') +
+            '>' + apEscapeHtml(c.name) + '</option>';
+    }).join('');
+
+    var yearOptions = Array.from({length: 5}, function(_, i) { return currentYear - 2 + i; }).map(function(y) {
+        return '<option value="' + y + '"' + (y === year ? ' selected' : '') + '>' + y + '</option>';
+    }).join('');
+
+    var teacherHtml = '';
+    if (isAdmin) {
+        var teachers = [];
+        var seen = {};
+        (state.db.classes || []).forEach(function(c) {
+            var t = c.teacher_name || '';
+            if (t && !seen[t]) { seen[t] = true; teachers.push(t); }
+        });
+        teachers.sort();
+        var tOpts = '<option value="">전체 선생님</option>' + teachers.map(function(t) {
+            return '<option value="' + apEscapeHtml(t) + '"' + (t === teacherFilter ? ' selected' : '') + '>' + apEscapeHtml(t) + '</option>';
+        }).join('');
+        teacherHtml = '<select class="seb-ctrl" id="seb-teacher" onchange="state.ui.schoolExamTeacher=this.value;state.ui.schoolExamClassId=\'\';openSchoolExamLedger()">' + tOpts + '</select>';
+    }
 
     ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;';
-    ov.innerHTML = `
-<style>
-#seb-ledger-overlay * { box-sizing:border-box; }
-.seb-ctrl { height:44px; min-height:44px; padding:0 14px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:13px; font-weight:600; font-family:inherit; cursor:pointer; flex:1; min-width:90px; }
-#seb-body { flex:1; overflow:auto; position:relative; background:var(--surface); border:1px solid var(--border); border-radius:16px; margin-bottom:16px; }
-#seb-tbl { border-collapse:collapse; width:100%; }
-#seb-tbl th { position:sticky; top:0; background:var(--surface); z-index:1; font-size:12px; font-weight:700; color:var(--secondary); padding:12px 16px; text-align:left; border-bottom:1px solid var(--border); }
-#seb-tbl td { padding:10px 16px; border-bottom:1px solid var(--border); }
-.seb-inp { width:100%; max-width:110px; height:44px; padding:0 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:600; text-align:center; font-family:inherit; }
-</style>
-<div style="width:100%; max-width:850px; margin:0 auto; padding:16px 16px 0; display:flex; flex-direction:column; height:100%;">
-  <!-- Header: 대시보드 규격 완벽 동기화 (40x40 뒤로가기 버튼) -->
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-shrink:0;">
-      <div style="display:flex; align-items:center; gap:10px;">
-          <button class="btn" style="width:40px; height:40px; padding:0; font-size:22px; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--text);" onclick="closeSchoolExamLedger()">←</button>
-          <div>
-              <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">학교 성적표</div>
-          </div>
-      </div>
-  </div>
-  <!-- Controls -->
-  <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; flex-shrink:0;">
-    <select class="seb-ctrl" id="seb-cls" onchange="renderSchoolExamBatchTable()">
-      <option value="">반 선택</option>${classOptions}
-    </select>
-    <input type="number" class="seb-ctrl" id="seb-yr" value="${currentYear}" min="2020" max="2035" style="min-width:80px; flex:0.5;" oninput="renderSchoolExamBatchTable()">
-    <select class="seb-ctrl" id="seb-sem" onchange="renderSchoolExamBatchTable()" style="min-width:80px; flex:0.5;">
-      <option value="1학기">1학기</option>
-      <option value="2학기">2학기</option>
-    </select>
-    <select class="seb-ctrl" id="seb-typ" onchange="renderSchoolExamBatchTable()" style="min-width:80px; flex:0.5;">
-      <option value="midterm">중간</option>
-      <option value="final">기말</option>
-      <option value="performance">수행</option>
-      <option value="etc">기타</option>
-    </select>
-    <input type="text" class="seb-ctrl" id="seb-subj" value="수학" placeholder="과목" style="min-width:80px; flex:0.5;" oninput="renderSchoolExamBatchTable()">
-  </div>
-  <!-- Body -->
-  <div id="seb-body">
-    <div id="seb-tbl-root"></div>
-  </div>
-  <!-- Footer (저장 버튼 영역) -->
-  <div style="flex-shrink:0; display:flex; align-items:center; justify-content:space-between; padding:0 0 24px;">
-    <span id="seb-cnt" style="font-size:13px; font-weight:600; color:var(--secondary);"></span>
-    <button id="seb-save-btn" class="btn btn-primary" onclick="saveSchoolExamBatch()" style="height:48px; padding:0 32px; border-radius:14px; font-size:14px; font-weight:700; border:none; box-shadow:none;">
-      전체 저장
-    </button>
-  </div>
-</div>`;
+    ov.innerHTML = '\
+<style>\
+#seb-ledger-overlay *{box-sizing:border-box;}\
+.seb-ctrl{height:44px;min-height:44px;padding:0 10px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}\
+#seb-body{flex:1;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;margin-bottom:12px;}\
+#seb-tbl{border-collapse:collapse;width:max-content;min-width:100%;background:var(--surface);}\
+#seb-tbl th{position:sticky;top:0;background:var(--surface);z-index:2;font-size:12px;font-weight:700;color:var(--secondary);padding:10px 4px;text-align:center;white-space:nowrap;box-shadow:0 1px 0 var(--border);}\
+#seb-tbl td{padding:5px 3px;border-bottom:1px solid var(--border);vertical-align:middle;}\
+.seb-sticky-g{position:sticky;left:0;z-index:1;background:var(--surface);width:36px;min-width:36px;font-size:12px;font-weight:700;color:var(--secondary);text-align:center;border-right:1px solid var(--border);}\
+.seb-sticky-c{position:sticky;left:36px;z-index:1;background:var(--surface);width:64px;min-width:64px;font-size:12px;font-weight:800;color:var(--primary);padding:6px 8px;border-right:1px solid var(--border);white-space:nowrap;}\
+.seb-sticky-n{position:sticky;left:100px;z-index:1;background:var(--surface);width:76px;min-width:76px;font-size:13px;font-weight:700;color:var(--text);padding:6px 8px;border-right:1px solid var(--border);white-space:nowrap;}\
+#seb-tbl thead .seb-sticky-g,#seb-tbl thead .seb-sticky-c,#seb-tbl thead .seb-sticky-n{z-index:3;}\
+.seb-inp{width:70px;height:38px;padding:0 4px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;font-weight:700;text-align:center;font-family:inherit;}\
+.seb-inp:focus{outline:none;border-color:var(--primary);background:var(--surface);}\
+.seb-tab-wrap{display:flex;gap:4px;background:var(--bg);padding:4px;border-radius:14px;}\
+.seb-tab{flex:1;height:40px;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;}\
+.seb-tab.active{background:var(--text);color:var(--surface);}\
+.seb-tab:not(.active){background:transparent;color:var(--secondary);}\
+.seb-border2{border-left:2px solid rgba(0,0,0,0.08)!important;}\
+</style>\
+<div style="width:100%;max-width:850px;margin:0 auto;padding:16px 16px 0;display:flex;flex-direction:column;height:100%;">\
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;">\
+    <div style="font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;cursor:pointer;" onclick="closeSchoolExamLedger()">성적표</div>\
+    <select class="seb-ctrl" id="seb-yr" style="width:86px;" onchange="state.ui.schoolExamYear=Number(this.value);renderSchoolExamBatchTable()">' + yearOptions + '</select>\
+  </div>\
+  <div class="seb-tab-wrap" style="margin-bottom:10px;flex-shrink:0;">\
+    <button class="seb-tab ' + (section === 'middle' ? 'active' : '') + '" onclick="state.ui.schoolExamSection=\'middle\';state.ui.schoolExamClassId=\'\';openSchoolExamLedger()">중등</button>\
+    <button class="seb-tab ' + (section === 'high' ? 'active' : '') + '" onclick="state.ui.schoolExamSection=\'high\';state.ui.schoolExamClassId=\'\';openSchoolExamLedger()">고등</button>\
+  </div>\
+  <div style="display:flex;gap:8px;margin-bottom:10px;flex-shrink:0;flex-wrap:wrap;">\
+    ' + teacherHtml + '\
+    <select class="seb-ctrl" id="seb-cls" style="flex:2;" onchange="state.ui.schoolExamClassId=this.value;renderSchoolExamBatchTable()">' + classOptions + '</select>\
+    <select class="seb-ctrl" id="seb-sort" style="flex:1;" onchange="state.ui.schoolExamSort=this.value;_sebToggleSortCol();renderSchoolExamBatchTable()">\
+      <option value="default"' + (sort === 'default' ? ' selected' : '') + '>기본순</option>\
+      <option value="score-desc"' + (sort === 'score-desc' ? ' selected' : '') + '>성적순 ↓</option>\
+      <option value="name-desc"' + (sort === 'name-desc' ? ' selected' : '') + '>이름순 ↓</option>\
+    </select>\
+    <select class="seb-ctrl" id="seb-sort-col" style="flex:1;display:' + (sort === 'score-desc' ? '' : 'none') + ';" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">\
+      <option value="1H-mid"' + (sortCol === '1H-mid' ? ' selected' : '') + '>1학기 중간</option>\
+      <option value="1H-fin"' + (sortCol === '1H-fin' ? ' selected' : '') + '>1학기 기말</option>\
+      <option value="2H-mid"' + (sortCol === '2H-mid' ? ' selected' : '') + '>2학기 중간</option>\
+      <option value="2H-fin"' + (sortCol === '2H-fin' ? ' selected' : '') + '>2학기 기말</option>\
+    </select>\
+  </div>\
+  <div id="seb-body"><div id="seb-tbl-root"></div></div>\
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 0 24px;">\
+    <span id="seb-cnt" style="font-size:13px;font-weight:600;color:var(--secondary);"></span>\
+    <button class="btn btn-primary" id="seb-save-btn" onclick="saveSchoolExamBatch()" style="height:48px;padding:0 32px;border-radius:14px;font-size:14px;font-weight:700;border:none;box-shadow:none;">전체 저장</button>\
+  </div>\
+</div>';
 
     renderSchoolExamBatchTable();
 }
 
 function closeSchoolExamLedger() {
-    const ov = document.getElementById('seb-ledger-overlay');
+    var ov = document.getElementById('seb-ledger-overlay');
     if (ov) ov.style.display = 'none';
 }
 
 function renderSchoolExamBatchTable() {
-    const root = document.getElementById('seb-tbl-root');
+    var root = document.getElementById('seb-tbl-root');
     if (!root) return;
 
-    const classId = document.getElementById('seb-cls')?.value || '';
-    const examYear = Number(document.getElementById('seb-yr')?.value || 0);
-    const semester = document.getElementById('seb-sem')?.value || '1학기';
-    const examType = document.getElementById('seb-typ')?.value || 'midterm';
-    const subject = (document.getElementById('seb-subj')?.value || '').trim();
+    var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
+    var sort = state.ui.schoolExamSort || 'default';
+    var sortColKey = state.ui.schoolExamSortCol || '1H-mid';
+    var cntEl = document.getElementById('seb-cnt');
 
-    const cntEl = document.getElementById('seb-cnt');
+    var students = getSebVisibleStudents();
 
-    if (!classId) {
-        root.innerHTML = '<div style="padding:48px;text-align:center;color:var(--secondary);font-size:14px;font-weight:600;">반을 선택하면 학생 목록이 표시됩니다.</div>';
-        if (cntEl) cntEl.textContent = '';
-        return;
+    if (sort === 'name-desc') {
+        students = students.slice().sort(function(a, b) {
+            return String(b.name || '').localeCompare(String(a.name || ''), 'ko');
+        });
+    } else if (sort === 'score-desc') {
+        var sc = null;
+        SEB_COLS.forEach(function(c) { if (c.key === sortColKey) sc = c; });
+        students = students.slice().sort(function(a, b) {
+            var ra = sc ? getSebExamRecord(a.id, year, sc.semester, sc.examType) : null;
+            var rb = sc ? getSebExamRecord(b.id, year, sc.semester, sc.examType) : null;
+            var sa = (ra && ra.score !== null && ra.score !== '' && ra.score !== undefined) ? Number(ra.score) : -1;
+            var sb = (rb && rb.score !== null && rb.score !== '' && rb.score !== undefined) ? Number(rb.score) : -1;
+            return sb - sa;
+        });
     }
 
-    const students = getCumulativeVisibleStudents({ classId });
-    if (cntEl) cntEl.textContent = `${students.length}명`;
+    if (cntEl) cntEl.textContent = students.length + '명';
 
     if (!students.length) {
-        root.innerHTML = '<div style="padding:48px;text-align:center;color:var(--secondary);font-size:14px;font-weight:600;">해당 반에 재원 학생이 없습니다.</div>';
+        root.innerHTML = '<div style="padding:48px;text-align:center;color:var(--secondary);font-size:14px;font-weight:600;">표시할 학생이 없습니다.</div>';
         return;
     }
 
-    const records = (state.db.school_exam_records || []).filter(r =>
-        String(r.is_deleted || 0) !== '1' &&
-        Number(r.exam_year) === examYear &&
-        String(r.semester || '') === semester &&
-        String(r.exam_type || '') === examType &&
-        String(r.subject || '') === subject
-    );
+    var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>' +
+        '<th rowspan="2" class="seb-sticky-c">반</th>' +
+        '<th rowspan="2" class="seb-sticky-n" style="text-align:left;">이름</th>' +
+        '<th colspan="2" class="seb-border2" style="padding:8px;">1학기</th>' +
+        '<th colspan="2" class="seb-border2" style="padding:8px;">2학기</th>';
+    var hRow2 = '<th class="seb-border2">중간</th><th>기말</th><th class="seb-border2">중간</th><th>기말</th>';
 
-    const rows = students.map(s => {
-        const existing = records.find(r => String(r.student_id) === String(s.id));
-        const score = existing?.score !== null && existing?.score !== undefined ? existing.score : '';
-        const clsName = getCumulativeClassName(getCumulativeClassIdForStudent(s.id));
-        return `<tr>
-<td style="min-width:110px;">
-  <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;">${apEscapeHtml(s.name)}</div>
-  <div style="font-size:11px;font-weight:600;color:var(--secondary);margin-top:2px;">${apEscapeHtml(clsName)} ${apEscapeHtml(s.grade || '')}</div>
-</td>
-<td style="min-width:130px;text-align:right;">
-  <input type="number" class="seb-inp" id="seb-score-${apEscapeHtml(String(s.id))}"
-    value="${score}" placeholder="미응시" min="0" max="100">
-</td>
-</tr>`;
+    var bodyRows = '';
+    var classFilter = state.ui.schoolExamClassId || '';
+
+    if (sort === 'default') {
+        var gradeOrder = ['중1','중2','중3','고1','고2','고3'];
+        var byGrade = {};
+        students.forEach(function(s) {
+            var g = String(s.grade || '기타');
+            if (!byGrade[g]) byGrade[g] = [];
+            byGrade[g].push(s);
+        });
+
+        gradeOrder.forEach(function(grade) {
+            var gs = byGrade[grade];
+            if (!gs || !gs.length) return;
+
+            var byClass = {};
+            var classOrder = [];
+            gs.forEach(function(s) {
+                var cid = getCumulativeClassIdForStudent(s.id);
+                var cn = getCumulativeClassName(cid) || '미배정';
+                if (!byClass[cn]) { byClass[cn] = []; classOrder.push(cn); }
+                byClass[cn].push(s);
+            });
+
+            var gradePrinted = false;
+            classOrder.forEach(function(cn) {
+                var list = byClass[cn] || [];
+                list.forEach(function(s, idx) {
+                    var gradeText = gradePrinted ? '' : grade;
+                    var classText = idx === 0 ? cn : '';
+                    bodyRows += _buildSebRow(s, year, gradeText, classText);
+                    gradePrinted = true;
+                });
+            });
+        });
+    } else {
+        students.forEach(function(s) {
+            var cn = getCumulativeClassName(getCumulativeClassIdForStudent(s.id)) || '';
+            bodyRows += _buildSebRow(s, year, String(s.grade || ''), cn);
+        });
+    }
+
+    root.innerHTML = '<table id="seb-tbl">' +
+        '<thead><tr>' + hRow1 + '</tr><tr>' + hRow2 + '</tr></thead>' +
+        '<tbody>' + (bodyRows || '<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>') +
+        '</tbody></table>';
+}
+
+function _buildSebRow(s, year, gradeText, classText) {
+    var sid = String(s.id);
+    var cols = SEB_COLS.map(function(col, i) {
+        var rec = getSebExamRecord(sid, year, col.semester, col.examType);
+        var val = (rec && rec.score !== null && rec.score !== undefined && rec.score !== '') ? rec.score : '';
+        var border = (i === 0 || i === 2) ? ' class="seb-border2"' : '';
+        return '<td' + border + ' style="text-align:center;">' +
+            '<input type="number" class="seb-inp" id="seb-inp-' + sid + '-' + col.key + '" value="' + val + '" min="0" max="100"></td>';
     }).join('');
-
-    root.innerHTML = `<table id="seb-tbl">
-<thead><tr><th>학생</th><th style="text-align:right;">점수 (0–100)</th></tr></thead>
-<tbody>${rows}</tbody>
-</table>`;
+    return '<tr>' +
+        '<td class="seb-sticky-g">' + apEscapeHtml(gradeText || '') + '</td>' +
+        '<td class="seb-sticky-c">' + apEscapeHtml(classText || '') + '</td>' +
+        '<td class="seb-sticky-n">' + apEscapeHtml(s.name) + '</td>' +
+        cols + '</tr>';
 }
 
 async function saveSchoolExamBatch() {
-    const classId = document.getElementById('seb-cls')?.value || '';
-    const examYear = Number(document.getElementById('seb-yr')?.value || 0);
-    const semester = document.getElementById('seb-sem')?.value || '1학기';
-    const examType = document.getElementById('seb-typ')?.value || 'midterm';
-    const subject = (document.getElementById('seb-subj')?.value || '').trim();
+    var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
+    var students = getSebVisibleStudents();
+    if (!students.length) return toast('저장할 학생이 없습니다.', 'warn');
 
-    if (!classId) return toast('반을 선택하세요.', 'warn');
-    if (!examYear) return toast('연도를 입력하세요.', 'warn');
-    if (!subject) return toast('과목을 입력하세요.', 'warn');
-
-    const students = getCumulativeVisibleStudents({ classId });
-    if (!students.length) return toast('재원 학생이 없습니다.', 'warn');
-
-    const records = [];
-    for (const s of students) {
-        const inp = document.getElementById(`seb-score-${s.id}`);
-        const val = (inp?.value ?? '').trim();
-        if (val !== '') {
-            const n = Number(val);
-            if (!Number.isFinite(n) || n < 0 || n > 100) {
-                return toast(`${s.name}: 점수는 0~100 범위의 숫자여야 합니다.`, 'warn');
+    for (var i = 0; i < students.length; i++) {
+        for (var j = 0; j < SEB_COLS.length; j++) {
+            var inp = document.getElementById('seb-inp-' + students[i].id + '-' + SEB_COLS[j].key);
+            if (!inp) continue;
+            var val = (inp.value || '').trim();
+            if (val !== '') {
+                var n = Number(val);
+                if (!Number.isFinite(n) || n < 0 || n > 100)
+                    return toast(students[i].name + ': 0~100 사이 숫자여야 합니다.', 'warn');
             }
         }
-        records.push({ studentId: s.id, score: val === '' ? null : Number(val) });
     }
 
-    const btn = document.getElementById('seb-save-btn');
+    var btn = document.getElementById('seb-save-btn');
     if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
 
     try {
-        const r = await api.post('school-exam-records/batch', {
-            classId, examYear, semester, examType, subject, records
-        });
-        if (r?.success) {
-            toast('저장되었습니다.', 'success');
-            await loadData();
-            renderSchoolExamBatchTable();
-        } else {
-            toast(r?.message || '저장에 실패했습니다.', 'warn');
+        for (var ci = 0; ci < SEB_COLS.length; ci++) {
+            var col = SEB_COLS[ci];
+            var records = students.map(function(s) {
+                var inp2 = document.getElementById('seb-inp-' + s.id + '-' + col.key);
+                var v = inp2 ? (inp2.value || '').trim() : '';
+                return { studentId: s.id, score: v === '' ? null : Number(v) };
+            });
+            await api.post('school-exam-records/batch', {
+                examYear: year, semester: col.semester, examType: col.examType, subject: '수학', records: records
+            });
         }
-    } catch {
+        toast('저장되었습니다.', 'success');
+        await loadData();
+        renderSchoolExamBatchTable();
+    } catch(e) {
         toast('저장에 실패했습니다.', 'warn');
     } finally {
         if (btn) { btn.disabled = false; btn.textContent = '전체 저장'; }
@@ -777,28 +912,4 @@ async function deleteSchoolExamRecord(recordId) {
     } else {
         toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
     }
-}
-
-// ── 기존 메뉴/사이드바 호출 호환 래퍼 ─────────────────────────────
-// 기존 UI 쪽 버튼이 어떤 이름으로 출석부를 호출하더라도
-// 월간 출석부 장부(openAttendanceLedger)로 진입하도록 유지한다.
-
-function openCumulativeAttendanceLedger() {
-    openAttendanceLedger();
-}
-
-function openMonthlyAttendanceLedger() {
-    openAttendanceLedger();
-}
-
-function openAttendanceBook() {
-    openAttendanceLedger();
-}
-
-function openAttendanceLedgerFromMenu() {
-    openAttendanceLedger();
-}
-
-function openAttendanceOpsLedger() {
-    openAttendanceLedger();
 }
