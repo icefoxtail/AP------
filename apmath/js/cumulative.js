@@ -1,6 +1,6 @@
 /**
  * AP Math OS [cumulative.js]
- * 출석부 장부 + 성적표 일괄입력 장부.
+ * 출석부 + 성적표
  * QR/OMR exam_sessions 와 완전히 별도.
  *
  * 화면 규칙:
@@ -8,9 +8,8 @@
  * - 별도 뒤로가기 버튼과 닫기 버튼을 두지 않는다.
  * - AP MATH 로고 클릭으로 대시보드로 나간다.
  * - 날짜/필터/반 선택 컨트롤은 헤더 안에 두지 않고 헤더 아래 본문 상단에 둔다.
- * - 출석부 반명 옆 + 버튼을 두지 않는다.
- * - 반명과 학생명은 가운데 정렬한다.
- * - 학생 추가용 빈 행 + 는 유지한다.
+ * - 반명과 학생명 등 좌측 주요 정보는 스티키(Sticky)로 고정한다.
+ * - 와이드 모드를 통해 화면 공간을 최대로 활용하는 컴팩트(Compact) UI를 지향한다.
  */
 
 // ── 공통 헬퍼 ─────────────────────────────────────────────────────
@@ -173,27 +172,6 @@ function getAttendanceStudentNameStyle(student) {
     return 'color:var(--text);';
 }
 
-function goAttendanceHome() {
-    closeAttendanceLedger();
-
-    if (typeof state !== 'undefined' && state.ui) {
-        state.ui.currentClassId = null;
-        state.ui.returnView = null;
-    }
-
-    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
-        renderAdminControlCenter();
-        return;
-    }
-
-    if (typeof renderDashboard === 'function') {
-        renderDashboard();
-        return;
-    }
-
-    if (typeof toast === 'function') toast('홈 화면을 불러오지 못했습니다.', 'warn');
-}
-
 // ── 출석부 장부 ──────────────────────────────────────────────────
 
 function _attDayName(dateStr) {
@@ -208,91 +186,113 @@ function _attDayStyle(dateStr) {
     return 'color:var(--secondary);';
 }
 
+function goAttendanceHome() {
+    closeAttendanceLedger();
+    closeSchoolExamLedger();
+
+    if (typeof state !== 'undefined' && state.ui) {
+        state.ui.currentClassId = null;
+        state.ui.returnView = null;
+    }
+
+    if (typeof goHome === 'function') {
+        goHome();
+        return;
+    }
+
+    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
+        renderAdminControlCenter();
+        return;
+    }
+
+    if (typeof renderDashboard === 'function') {
+        renderDashboard();
+        return;
+    }
+}
+
+function closeAttendanceLedger() {
+    if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+}
+
+function openEditStudentFromAttendance(sid) {
+    state.ui.returnView = { type: 'attendance' };
+    if (typeof openEditStudent === 'function') openEditStudent(sid, { returnTo: { type: 'attendance' } });
+}
+
+function openAddStudentFromAttendance(classId) {
+    state.ui.returnView = { type: 'attendance' };
+    if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
+}
+
 function renderAttendanceCellContent(studentId, date) {
     const schedule = getMonthlyScheduleBadges(studentId, date);
     if (schedule.globalClosed || schedule.studentClosed) {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:11px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
+        return '<span class="att-sign" style="font-size:10px;font-weight:700;color:#e53935;background:rgba(229,57,53,0.09);">휴</span>';
     }
 
     const status = getMonthlyAttendanceStatus(studentId, date);
     const att = status.attendance || '';
 
-    if (att === '등원') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:var(--success);">○</span>';
-    }
+    if (att === '등원') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
+    if (att === '결석') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
+    if (att === '지각') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#f59f00;">△</span>';
+    if (att === '보강') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--primary);">＋</span>';
+    if (att === '상담') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#7c3aed;">★</span>';
 
-    if (att === '결석') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#e53935;">×</span>';
-    }
-
-    if (att === '지각') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#f59f00;">△</span>';
-    }
-
-    if (att === '보강') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:16px;font-weight:700;color:var(--primary);">＋</span>';
-    }
-
-    if (att === '상담') {
-        return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:15px;font-weight:700;color:#7c3aed;">★</span>';
-    }
-
-    return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;border-radius:6px;font-size:13px;font-weight:600;color:var(--border);">-</span>';
-}
-
-function _ensureAttOverlay() {
-    let ov = document.getElementById('att-ledger-overlay');
-    if (!ov) {
-        ov = document.createElement('div');
-        ov.id = 'att-ledger-overlay';
-        document.body.appendChild(ov);
-    }
-    return ov;
+    return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
 }
 
 function openAttendanceLedger() {
     if (!state.ui.attendanceLedgerMonth) {
         state.ui.attendanceLedgerMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
     }
-    const ov = _ensureAttOverlay();
-    const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
-    const classOptions = activeClasses.map(c =>
-        `<option value="${apEscapeHtml(c.id)}">${apEscapeHtml(c.name)}</option>`
-    ).join('');
+    
+    // 시간표처럼 좌우 패딩을 없애고 화면을 넓게 쓰기 위한 와이드 모드 진입
+    if (typeof enterTimetableWideMode === 'function') enterTimetableWideMode();
 
-    ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;';
-    ov.innerHTML = `
+    var root = document.getElementById('app-root');
+    if (!root) return;
+
+    var activeClasses = sortCumulativeClasses((state.db.classes || []).filter(function(c) { return Number(c.is_active) !== 0; }));
+    var classOptions = activeClasses.map(function(c) {
+        return '<option value="' + apEscapeHtml(c.id) + '">' + apEscapeHtml(c.name) + '</option>';
+    }).join('');
+
+    root.innerHTML = `
 <style>
-#att-ledger-overlay *{box-sizing:border-box;}
-#att-dash-hdr{height:56px;min-height:56px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;}
-#att-dash-logo{font-size:15px;font-weight:900;color:var(--text);letter-spacing:-0.3px;cursor:pointer;user-select:none;white-space:nowrap;}
-#att-dash-logo:hover{color:var(--primary);}
-#att-main{width:100%;padding:12px 14px 0;display:flex;flex-direction:column;flex:1;min-height:0;}
-#att-title{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px;margin-bottom:10px;flex-shrink:0;}
-#att-controls{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;flex-shrink:0;}
-.att-ctrl{height:36px;padding:0 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}
-#att-body{width:100%;max-width:none;margin-left:0;margin-right:0;flex:1;overflow:auto;position:relative;}
-#att-tbl-root{width:100%;}
-#att-tbl{border-collapse:collapse;width:max-content;}
-#att-tbl th,#att-tbl td{border-bottom:1px solid var(--border);}
-#att-tbl thead th{position:sticky;top:0;z-index:2;background:var(--surface);}
-#att-tbl .att-nc{position:sticky;left:0;z-index:1;background:var(--surface);}
-#att-tbl thead .att-nc{z-index:3;}
-.att-dc{padding:4px 1px;text-align:center;width:34px;min-width:34px;cursor:pointer;user-select:none;}
-.att-dc:active{opacity:.7;}
-.att-hol{cursor:default;}
-.att-grp td{background:var(--surface-2) !important;font-size:12px;font-weight:700;color:var(--text);padding:5px 10px;text-align:center;vertical-align:middle;}
-#att-legend{width:100%;max-width:none;margin-left:0;margin-right:0;padding:6px 0;font-size:11px;font-weight:600;color:var(--secondary);display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid var(--border);background:var(--surface);}
+/* 컴팩트 와이드 UI: 출석부 전용 스타일 */
+#att-main { width: 100%; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 12px 16px 0; box-sizing: border-box; }
+#att-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-shrink: 0; }
+#att-title { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+#att-controls { display: flex; gap: 6px; flex-wrap: wrap; }
+.att-ctrl { height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 12px; font-weight: 600; font-family: inherit; cursor: pointer; }
+#att-legend { font-size: 11px; font-weight: 600; color: var(--secondary); display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; flex-shrink: 0; }
+#att-tbl-wrap { flex: 1; overflow: auto; border: 1px solid var(--border); border-radius: 12px 12px 0 0; background: var(--surface); }
+#att-tbl { border-collapse: collapse; width: max-content; }
+#att-tbl th, #att-tbl td { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+#att-tbl thead th { position: sticky; top: 0; z-index: 10; background: var(--surface); box-shadow: 0 1px 0 var(--border); padding: 6px 0; }
+/* 스티키 컬럼 공통 (좌측 고정) */
+.att-nc { position: sticky; left: 0; z-index: 11; background: var(--surface); border-right: 2px solid var(--border) !important; }
+#att-tbl thead .att-nc { z-index: 12; }
+/* 출결 기호 셀 */
+.att-dc { padding: 3px; text-align: center; width: 32px; min-width: 32px; cursor: pointer; user-select: none; }
+.att-dc:active { opacity: .7; }
+.att-hol { cursor: default; }
+/* 반명 그룹 행 (위아래 폭 압축) */
+.att-grp-row td { background: var(--surface-2); }
+.att-grp-nc { position: sticky; left: 0; z-index: 11; background: var(--surface-2); font-size: 12px; font-weight: 800; color: var(--text); padding: 5px 12px; text-align: left; border-right: 2px solid var(--border) !important; box-shadow: inset 0 -1px 0 rgba(0,0,0,0.02); }
+/* 학생명 셀 */
+.att-student-nc { padding: 4px 12px; min-width: 90px; text-align: left; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.att-student-nc:hover { background: var(--surface-2); }
+/* 기호 배경/크기 조정 (컴팩트) */
+.att-sign { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; }
 </style>
-<div style="width:100%;height:100%;display:flex;flex-direction:column;">
-  <div id="att-dash-hdr">
-    <div id="att-dash-logo" onclick="goAttendanceHome()">AP MATH</div>
-  </div>
-  <div id="att-main">
+<div id="att-main">
+  <div id="att-header-row">
     <div id="att-title">출석부</div>
     <div id="att-controls">
-      <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}"
-        onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
+      <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
       <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
         <option value="">전체 (중/고)</option>
         <option value="middle">중등부</option>
@@ -302,41 +302,16 @@ function openAttendanceLedger() {
         <option value="">전체 반</option>${classOptions}
       </select>
     </div>
-    <div id="att-legend">
-      <span>○ 등원</span>
-      <span>× 결석</span>
-      <span>△ 지각</span>
-      <span>＋ 보강</span>
-      <span>★ 상담</span>
-      <span>- 미기록</span>
-      <span>휴 휴무</span>
-    </div>
-    <div id="att-body">
-      <div id="att-tbl-root"></div>
-    </div>
+  </div>
+  <div id="att-legend">
+    <span>○ 등원</span><span>× 결석</span><span>△ 지각</span><span>＋ 보강</span><span>★ 상담</span><span>- 미기록</span><span>휴 휴무</span>
+  </div>
+  <div id="att-tbl-wrap">
+    <div id="att-tbl-root"></div>
   </div>
 </div>`;
 
-    loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(() => renderAttendanceLedgerTable());
-}
-
-function closeAttendanceLedger() {
-    const ov = document.getElementById('att-ledger-overlay');
-    if (ov) ov.style.display = 'none';
-}
-
-function openEditStudentFromAttendance(sid) {
-    const ov = document.getElementById('att-ledger-overlay');
-    if (ov) ov.style.display = 'none';
-    state.ui.returnView = { type: 'attendance' };
-    if (typeof openEditStudent === 'function') openEditStudent(sid, { returnTo: { type: 'attendance' } });
-}
-
-function openAddStudentFromAttendance(classId) {
-    const ov = document.getElementById('att-ledger-overlay');
-    if (ov) ov.style.display = 'none';
-    state.ui.returnView = { type: 'attendance' };
-    if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
+    loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(function() { renderAttendanceLedgerTable(); });
 }
 
 function renderAttendanceLedgerTable() {
@@ -350,7 +325,6 @@ function renderAttendanceLedgerTable() {
 
     let activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
 
-    // 중등/고등 필터링 적용
     if (section) {
         activeClasses = activeClasses.filter(c => {
             const isHigh = /고1|고2|고3|고등/.test(String(c.grade || '') + ' ' + String(c.name || ''));
@@ -372,11 +346,13 @@ function renderAttendanceLedgerTable() {
         const num = Number(d.slice(-2));
         const dayName = _attDayName(d);
         const style = _attDayStyle(d);
-        return `<th style="padding:5px 1px;width:34px;min-width:34px;text-align:center;${style}"><div style="font-size:12px;font-weight:700;line-height:1.3;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.3;">${dayName}</div></th>`;
+        return `<th style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;">${dayName}</div></th>`;
     }).join('');
 
     const bodyRows = grouped.map(g => {
-        const groupRow = `<tr class="att-grp"><td colspan="${days.length + 1}" style="position:sticky;left:0;z-index:1;text-align:center;vertical-align:middle;">${apEscapeHtml(g.cls.name)}</td></tr>`;
+        const classEmptyCols = days.map(() => '<td></td>').join('');
+        const groupRow = `<tr class="att-grp-row"><td class="att-grp-nc">${apEscapeHtml(g.cls.name)}</td>${classEmptyCols}</tr>`;
+        
         const sRows = g.students.map(s => {
             const sid = String(s.id);
             const dateCells = days.map(d => {
@@ -388,24 +364,21 @@ function renderAttendanceLedgerTable() {
             }).join('');
             
             const nameStyle = getAttendanceStudentNameStyle(s);
-            return `<tr>
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
-  <div style="font-size:13px;font-weight:700;text-align:center;${nameStyle}cursor:pointer;" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</div>
-</td>${dateCells}</tr>`;
+            return `<tr><td class="att-nc att-student-nc" style="${nameStyle}" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</td>${dateCells}</tr>`;
         }).join('');
-        const emptyCols = days.map(() => '<td style="border-bottom:1px solid var(--border);"></td>').join('');
+        
+        const emptyCols = days.map(() => '<td></td>').join('');
         const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''">
-<td class="att-nc" style="padding:6px 10px;min-width:96px;white-space:nowrap;text-align:center;">
-  <div style="font-size:12px;font-weight:600;color:var(--secondary);text-align:center;">+</div>
-</td>${emptyCols}</tr>`;
+            <td class="att-nc att-student-nc" style="color:var(--secondary);text-align:center;font-size:15px;font-weight:800;">+</td>${emptyCols}</tr>`;
+        
         return groupRow + sRows + emptyRow;
     }).join('');
 
-    const empty = `<tr><td colspan="${days.length + 1}" style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;">표시할 학생이 없습니다.</td></tr>`;
+    const empty = `<tr><td colspan="${days.length + 1}" style="padding:40px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;">표시할 학생이 없습니다.</td></tr>`;
 
     root.innerHTML = `<table id="att-tbl">
 <thead><tr>
-  <th class="att-nc" style="padding:6px 10px;min-width:96px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">학생</th>
+  <th class="att-nc" style="padding:6px 12px;min-width:90px;text-align:left;font-size:11px;font-weight:700;color:var(--secondary);">이름</th>
   ${headerCells}
 </tr></thead>
 <tbody>${bodyRows || empty}</tbody>
@@ -431,7 +404,6 @@ async function toggleAttendanceCellStatus(studentId, date) {
     else if (current === '보강') next = '상담';
     else next = '미기록';
 
-    // 낙관적 업데이트
     if (existing) {
         existing.status = next;
     } else {
@@ -445,7 +417,6 @@ async function toggleAttendanceCellStatus(studentId, date) {
         const r = await api.patch('attendance', { studentId, date, status: next });
         if (!r?.success) throw new Error(r?.message || 'fail');
     } catch {
-        // 실패 시 롤백
         if (existing) {
             existing.status = current;
         } else {
@@ -464,12 +435,6 @@ var SEB_COLS = [
     { semester: '2학기', examType: 'midterm', key: '2H-mid', label: '중간' },
     { semester: '2학기', examType: 'final',   key: '2H-fin', label: '기말' }
 ];
-
-function _ensureSebOverlay() {
-    var ov = document.getElementById('seb-ledger-overlay');
-    if (!ov) { ov = document.createElement('div'); ov.id = 'seb-ledger-overlay'; document.body.appendChild(ov); }
-    return ov;
-}
 
 function getSebExamRecord(studentId, year, semester, examType) {
     return (state.db.school_exam_records || []).find(function(r) {
@@ -513,8 +478,11 @@ function _sebToggleSortCol() {
     if (el && sortEl) el.style.display = sortEl.value === 'score-desc' ? '' : 'none';
 }
 
+function closeSchoolExamLedger() {
+    if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+}
+
 function openSchoolExamLedger() {
-    var ov = _ensureSebOverlay();
     var currentYear = new Date().getFullYear();
     var isAdmin = !!(state.auth && state.auth.role === 'admin');
 
@@ -524,6 +492,11 @@ function openSchoolExamLedger() {
     if (!state.ui.schoolExamTeacher) state.ui.schoolExamTeacher = '';
     if (!state.ui.schoolExamSort) state.ui.schoolExamSort = 'default';
     if (!state.ui.schoolExamSortCol) state.ui.schoolExamSortCol = '1H-mid';
+
+    if (typeof enterTimetableWideMode === 'function') enterTimetableWideMode();
+
+    var root = document.getElementById('app-root');
+    if (!root) return;
 
     var section = state.ui.schoolExamSection;
     var sort = state.ui.schoolExamSort;
@@ -567,64 +540,59 @@ function openSchoolExamLedger() {
         teacherHtml = '<select class="seb-ctrl" id="seb-teacher" onchange="state.ui.schoolExamTeacher=this.value;state.ui.schoolExamClassId=\'\';openSchoolExamLedger()">' + tOpts + '</select>';
     }
 
-    ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;';
-    ov.innerHTML = '\
-<style>\
-#seb-ledger-overlay *{box-sizing:border-box;}\
-.seb-ctrl{height:44px;min-height:44px;padding:0 10px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;}\
-#seb-body{flex:1;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;margin-bottom:12px;}\
-#seb-tbl{border-collapse:collapse;width:max-content;min-width:100%;background:var(--surface);}\
-#seb-tbl th{position:sticky;top:0;background:var(--surface);z-index:2;font-size:12px;font-weight:700;color:var(--secondary);padding:10px 4px;text-align:center;white-space:nowrap;box-shadow:0 1px 0 var(--border);}\
-#seb-tbl td{padding:5px 3px;border-bottom:1px solid var(--border);vertical-align:middle;}\
-.seb-sticky-g{position:sticky;left:0;z-index:1;background:var(--surface);width:36px;min-width:36px;font-size:12px;font-weight:700;color:var(--secondary);text-align:center;border-right:1px solid var(--border);}\
-.seb-sticky-c{position:sticky;left:36px;z-index:1;background:var(--surface);width:64px;min-width:64px;font-size:12px;font-weight:800;color:var(--primary);padding:6px 8px;border-right:1px solid var(--border);white-space:nowrap;}\
-.seb-sticky-n{position:sticky;left:100px;z-index:1;background:var(--surface);width:76px;min-width:76px;font-size:13px;font-weight:700;color:var(--text);padding:6px 8px;border-right:1px solid var(--border);white-space:nowrap;}\
-#seb-tbl thead .seb-sticky-g,#seb-tbl thead .seb-sticky-c,#seb-tbl thead .seb-sticky-n{z-index:3;}\
-.seb-inp{width:70px;height:38px;padding:0 4px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:14px;font-weight:700;text-align:center;font-family:inherit;}\
-.seb-inp:focus{outline:none;border-color:var(--primary);background:var(--surface);}\
-.seb-tab-wrap{display:flex;gap:4px;background:var(--bg);padding:4px;border-radius:14px;}\
-.seb-tab{flex:1;height:40px;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;}\
-.seb-tab.active{background:var(--text);color:var(--surface);}\
-.seb-tab:not(.active){background:transparent;color:var(--secondary);}\
-.seb-border2{border-left:2px solid rgba(0,0,0,0.08)!important;}\
-</style>\
-<div style="width:100%;max-width:850px;margin:0 auto;padding:16px 16px 0;display:flex;flex-direction:column;height:100%;">\
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;">\
-    <div style="font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;cursor:pointer;" onclick="closeSchoolExamLedger()">성적표</div>\
-    <select class="seb-ctrl" id="seb-yr" style="width:86px;" onchange="state.ui.schoolExamYear=Number(this.value);renderSchoolExamBatchTable()">' + yearOptions + '</select>\
-  </div>\
-  <div class="seb-tab-wrap" style="margin-bottom:10px;flex-shrink:0;">\
-    <button class="seb-tab ' + (section === 'middle' ? 'active' : '') + '" onclick="state.ui.schoolExamSection=\'middle\';state.ui.schoolExamClassId=\'\';openSchoolExamLedger()">중등</button>\
-    <button class="seb-tab ' + (section === 'high' ? 'active' : '') + '" onclick="state.ui.schoolExamSection=\'high\';state.ui.schoolExamClassId=\'\';openSchoolExamLedger()">고등</button>\
-  </div>\
-  <div style="display:flex;gap:8px;margin-bottom:10px;flex-shrink:0;flex-wrap:wrap;">\
-    ' + teacherHtml + '\
-    <select class="seb-ctrl" id="seb-cls" style="flex:2;" onchange="state.ui.schoolExamClassId=this.value;renderSchoolExamBatchTable()">' + classOptions + '</select>\
-    <select class="seb-ctrl" id="seb-sort" style="flex:1;" onchange="state.ui.schoolExamSort=this.value;_sebToggleSortCol();renderSchoolExamBatchTable()">\
-      <option value="default"' + (sort === 'default' ? ' selected' : '') + '>기본순</option>\
-      <option value="score-desc"' + (sort === 'score-desc' ? ' selected' : '') + '>성적순 ↓</option>\
-      <option value="name-desc"' + (sort === 'name-desc' ? ' selected' : '') + '>이름순 ↓</option>\
-    </select>\
-    <select class="seb-ctrl" id="seb-sort-col" style="flex:1;display:' + (sort === 'score-desc' ? '' : 'none') + ';" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">\
-      <option value="1H-mid"' + (sortCol === '1H-mid' ? ' selected' : '') + '>1학기 중간</option>\
-      <option value="1H-fin"' + (sortCol === '1H-fin' ? ' selected' : '') + '>1학기 기말</option>\
-      <option value="2H-mid"' + (sortCol === '2H-mid' ? ' selected' : '') + '>2학기 중간</option>\
-      <option value="2H-fin"' + (sortCol === '2H-fin' ? ' selected' : '') + '>2학기 기말</option>\
-    </select>\
-  </div>\
-  <div id="seb-body"><div id="seb-tbl-root"></div></div>\
-  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 0 24px;">\
-    <span id="seb-cnt" style="font-size:13px;font-weight:600;color:var(--secondary);"></span>\
-    <button class="btn btn-primary" id="seb-save-btn" onclick="saveSchoolExamBatch()" style="height:48px;padding:0 32px;border-radius:14px;font-size:14px;font-weight:700;border:none;box-shadow:none;">전체 저장</button>\
-  </div>\
-</div>';
+    root.innerHTML = `
+<style>
+/* 성적표 스타일 복구 (기준본 수치 적용) */
+#seb-main { width: 100%; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 16px 16px 0; box-sizing: border-box; }
+.seb-ctrl { height: 44px; min-height: 44px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
+#seb-body { flex: 1; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; }
+#seb-tbl { border-collapse: collapse; width: max-content; min-width: 100%; background: var(--surface); }
+#seb-tbl th { position: sticky; top: 0; background: var(--surface); z-index: 2; font-size: 12px; font-weight: 700; color: var(--secondary); padding: 10px 4px; text-align: center; white-space: nowrap; box-shadow: 0 1px 0 var(--border); }
+#seb-tbl td { padding: 5px 3px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.seb-sticky-g { position: sticky; left: 0; z-index: 1; background: var(--surface); width: 36px; min-width: 36px; font-size: 12px; font-weight: 700; color: var(--secondary); text-align: center; border-right: 1px solid var(--border); }
+.seb-sticky-c { position: sticky; left: 36px; z-index: 1; background: var(--surface); width: 64px; min-width: 64px; font-size: 12px; font-weight: 800; color: var(--primary); padding: 6px 8px; border-right: 1px solid var(--border); white-space: nowrap; }
+.seb-sticky-n { position: sticky; left: 100px; z-index: 1; background: var(--surface); width: 76px; min-width: 76px; font-size: 13px; font-weight: 700; color: var(--text); padding: 6px 8px; border-right: 1px solid var(--border); white-space: nowrap; }
+#seb-tbl thead .seb-sticky-g, #seb-tbl thead .seb-sticky-c, #seb-tbl thead .seb-sticky-n { z-index: 3; }
+.seb-inp { width: 70px; height: 38px; padding: 0 4px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 14px; font-weight: 700; text-align: center; font-family: inherit; }
+.seb-inp:focus { outline: none; border-color: var(--primary); background: var(--surface); }
+.seb-tab-wrap { display: flex; gap: 4px; background: var(--bg); padding: 4px; border-radius: 14px; }
+.seb-tab { flex: 1; height: 40px; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+.seb-tab.active { background: var(--text); color: var(--surface); }
+.seb-tab:not(.active) { background: transparent; color: var(--secondary); }
+.seb-border2 { border-left: 2px solid rgba(0,0,0,0.08) !important; }
+</style>
+<div id="seb-main">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;">
+    <div style="font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;cursor:pointer;" onclick="closeSchoolExamLedger()">성적표</div>
+    <select class="seb-ctrl" id="seb-yr" style="width:86px;" onchange="state.ui.schoolExamYear=Number(this.value);renderSchoolExamBatchTable()">${yearOptions}</select>
+  </div>
+  <div class="seb-tab-wrap" style="margin-bottom:10px;flex-shrink:0;">
+    <button class="seb-tab ${section === 'middle' ? 'active' : ''}" onclick="state.ui.schoolExamSection='middle';state.ui.schoolExamClassId='';openSchoolExamLedger()">중등</button>
+    <button class="seb-tab ${section === 'high' ? 'active' : ''}" onclick="state.ui.schoolExamSection='high';state.ui.schoolExamClassId='';openSchoolExamLedger()">고등</button>
+  </div>
+  <div style="display:flex;gap:8px;margin-bottom:10px;flex-shrink:0;flex-wrap:wrap;">
+    ${teacherHtml}
+    <select class="seb-ctrl" id="seb-cls" style="flex:2;" onchange="state.ui.schoolExamClassId=this.value;renderSchoolExamBatchTable()">${classOptions}</select>
+    <select class="seb-ctrl" id="seb-sort" style="flex:1;" onchange="state.ui.schoolExamSort=this.value;_sebToggleSortCol();renderSchoolExamBatchTable()">
+      <option value="default"${sort === 'default' ? ' selected' : ''}>기본순</option>
+      <option value="score-desc"${sort === 'score-desc' ? ' selected' : ''}>성적순 ↓</option>
+      <option value="name-desc"${sort === 'name-desc' ? ' selected' : ''}>이름순 ↓</option>
+    </select>
+    <select class="seb-ctrl" id="seb-sort-col" style="flex:1;display:${sort === 'score-desc' ? '' : 'none'};" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">
+      <option value="1H-mid"${sortCol === '1H-mid' ? ' selected' : ''}>1학기 중간</option>
+      <option value="1H-fin"${sortCol === '1H-fin' ? ' selected' : ''}>1학기 기말</option>
+      <option value="2H-mid"${sortCol === '2H-mid' ? ' selected' : ''}>2학기 중간</option>
+      <option value="2H-fin"${sortCol === '2H-fin' ? ' selected' : ''}>2학기 기말</option>
+    </select>
+  </div>
+  <div id="seb-body"><div id="seb-tbl-root"></div></div>
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 0 24px;">
+    <span id="seb-cnt" style="font-size:13px;font-weight:600;color:var(--secondary);"></span>
+    <button class="btn btn-primary" id="seb-save-btn" onclick="saveSchoolExamBatch()" style="height:48px;padding:0 32px;border-radius:14px;font-size:14px;font-weight:700;border:none;box-shadow:none;">전체 저장</button>
+  </div>
+</div>`;
 
     renderSchoolExamBatchTable();
-}
-
-function closeSchoolExamLedger() {
-    var ov = document.getElementById('seb-ledger-overlay');
-    if (ov) ov.style.display = 'none';
 }
 
 function renderSchoolExamBatchTable() {
