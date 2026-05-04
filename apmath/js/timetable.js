@@ -4,19 +4,18 @@
  * 원본 데이터: state.allDb / state.db
  * 새 DB 테이블 없음. timetable_cells / timetable_cell_students 생성 금지.
  *
- * v2 개편:
- * - 데이터 조회: state.allDb 기반 전체 조회, 클릭 시 권한 검사 (Scope)
- * - 중등부: 1교시/2교시/3교시 고정 3행 압축 (시간 미지정은 WARN 표시)
- * - 고등부: 고1/고2/고3 학년별 고정 3행 분류
- * - 열 구조: [시간/학년] + [월수금 3인] + [화목금 3인] (무조건 7열 고정)
- * - 신입 표시: 파란색 + (신), 휴원 표시: 주황색
- * - 학생명은 반 카드 안에서 세로 목록으로 표시
- * - 학생 수 8명 초과 시 +N 항목으로 대체
- * - 학생칸 클릭 → 학생 수정, 빈칸 클릭 → 학생 추가 (권한 통제)
+ * 반영 사항:
+ * - 시간표 내부 햄버거 제거
+ * - 모바일 가로 드래그 유지
+ * - 전체 보기 / 내 반 보기 토글 추가
+ * - 중등부/고등부 표 색감 통일
+ * - 첫 번째 열은 글자 크기에 맞게 축소
+ * - 고등부 행 높이는 중등부 1교시/2교시/3교시 행 높이와 동일 적용
+ * - 고등부 각 반 카드 위에 요일/시간 상세 2~3줄 표시 가능
  */
 
 // ────────────────────────────────────────────
-// 설정 (고정 레이아웃 데이터)
+// 설정
 // ────────────────────────────────────────────
 
 var TIMETABLE_STUDENT_SLOT_COUNT = 8;
@@ -30,7 +29,7 @@ var TIMETABLE_MIDDLE_PERIODS = [
 var TIMETABLE_HIGH_GRADES = ['고1', '고2', '고3'];
 
 // ────────────────────────────────────────────
-// 와이드 모드 및 CSS 스타일
+// 와이드 모드 및 CSS
 // ────────────────────────────────────────────
 
 function enterTimetableWideMode() {
@@ -50,20 +49,27 @@ function installTimetableStyle() {
     var style = document.createElement('style');
     style.id = 'ap-timetable-style';
     style.textContent = [
+        ':root { --tt-row-height: 330px; }',
         '@media (min-width:901px) {',
         '  main.ap-timetable-wide-main { max-width:none !important; width:calc(100vw - 56px) !important; margin:0 !important; padding-left:24px !important; padding-right:24px !important; }',
         '  body.ap-drawer-expanded main.ap-timetable-wide-main { width:calc(100vw - 260px) !important; }',
         '}',
         '#timetable-root { max-width:none !important; width:100% !important; }',
-
+        '.tt-page-title { font-size:16px; font-weight:700; color:var(--text); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
+        '.tt-tab-scroll { display:flex; align-items:center; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:0 0 12px; white-space:nowrap; scrollbar-width:none; }',
+        '.tt-tab-scroll::-webkit-scrollbar { display:none; }',
+        '.tt-tab-scroll .tab-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 18px; }',
+        '.tt-table-wrap { overflow:auto; -webkit-overflow-scrolling:touch; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px; }',
+        '.tt-table { border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%; }',
+        '.tt-table-middle { min-width:980px; }',
+        '.tt-table-high { min-width:760px; }',
+        '.tt-row-fixed { height:var(--tt-row-height); }',
         '.tt-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin-bottom:6px; width:100%; min-height:148px; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; }',
         '.tt-card-hdr { display:flex; align-items:center; gap:4px; margin-bottom:3px; flex-shrink:0; }',
         '.tt-cls-name { font-size:15px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
         '.tt-cls-name:hover { color:var(--primary); text-decoration:underline; }',
-        '.tt-time { display:none; }',
         '.tt-book { font-size:10px; color:var(--secondary); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; }',
         '.tt-progress { font-size:10px; color:var(--primary); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; }',
-
         '.tt-std-list { display:grid; grid-template-columns:1fr 1fr; row-gap:2px; column-gap:4px; margin-top:4px; flex:1 1 auto; min-height:0; }',
         '.tt-std-slot { min-width:0; min-height:18px; display:flex; align-items:center; justify-content:flex-start; border-radius:4px; overflow:hidden; }',
         '.tt-std-name { display:block; width:100%; min-width:0; font-size:13px; font-weight:600; color:var(--text-soft); cursor:pointer; padding:1px 3px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left; line-height:1.25; }',
@@ -74,11 +80,14 @@ function installTimetableStyle() {
         '.tt-std-empty:hover { color:var(--primary); border-color:var(--primary); background:rgba(26,92,255,0.06); }',
         '.tt-std-slot-more { display:flex; align-items:center; justify-content:flex-start; width:100%; min-height:20px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.08); border-radius:4px; cursor:pointer; padding:0 4px; box-sizing:border-box; grid-column:span 2; }',
         '.tt-std-slot-more:hover { background:rgba(26,92,255,0.15); }',
-
         '.tt-row-label { font-weight:700; font-size:13px; color:var(--text); text-align:center; white-space:nowrap; }',
         '.tt-row-sublabel { font-size:10px; color:var(--secondary); text-align:center; margin-top:2px; white-space:nowrap; }',
-
+        '.tt-high-class-wrap { display:flex; flex-direction:column; gap:4px; margin-bottom:8px; }',
+        '.tt-high-class-wrap:last-child { margin-bottom:0; }',
+        '.tt-high-class-meta { font-size:11px; font-weight:700; color:var(--secondary); line-height:1.45; padding:0 2px 4px; white-space:normal; word-break:keep-all; }',
+        '.tt-high-class-meta-line { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
         '@media (max-width:900px) {',
+        '  :root { --tt-row-height: 300px; }',
         '  .tt-card { min-height:132px; }',
         '  .tt-std-list { gap:2px; }',
         '  .tt-std-slot { min-height:20px; }',
@@ -92,11 +101,43 @@ function installTimetableStyle() {
 }
 
 // ────────────────────────────────────────────
-// 전역 데이터 접근 및 권한 관리
+// 전역 데이터 접근 및 권한
 // ────────────────────────────────────────────
 
 function _getAllDb() {
     return (typeof state !== 'undefined') ? (state.allDb || state.db || {}) : {};
+}
+
+function _ttNormalizeTeacherName(name) {
+    return String(name || '').replace(/\s*선생님\s*$/g, '').trim();
+}
+
+function _ttGetCurrentTeacherName() {
+    if (typeof getTeacherNameForUI === 'function') return _ttNormalizeTeacherName(getTeacherNameForUI());
+    if (typeof state !== 'undefined') {
+        if (state.ui && state.ui.userName) return _ttNormalizeTeacherName(state.ui.userName);
+        if (state.auth && state.auth.name) return _ttNormalizeTeacherName(state.auth.name);
+    }
+    try {
+        var session = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+        if (session && session.name) return _ttNormalizeTeacherName(session.name);
+    } catch (e) {}
+    return '';
+}
+
+function isTimetableMyClass(cls) {
+    if (!cls) return false;
+    if (typeof canCurrentUserAccessClass === 'function') return !!canCurrentUserAccessClass(cls.id);
+
+    var current = _ttGetCurrentTeacherName();
+    var classTeacher = _ttNormalizeTeacherName(cls.teacher_name || '');
+
+    if (!current) {
+        if (typeof state !== 'undefined' && state.auth && state.auth.role === 'admin') return true;
+        return true;
+    }
+    if (!classTeacher) return true;
+    return classTeacher === current;
 }
 
 function openTimetableClass(classId) {
@@ -121,9 +162,7 @@ function openEditStudentFromTimetable(studentId) {
         return;
     }
 
-    if (typeof state !== 'undefined' && state.ui) {
-        state.ui.returnView = { type: 'timetable' };
-    }
+    if (typeof state !== 'undefined' && state.ui) state.ui.returnView = { type: 'timetable' };
 
     if (typeof openEditStudent === 'function') {
         openEditStudent(String(studentId), { returnTo: { type: 'timetable' } });
@@ -136,9 +175,7 @@ function openAddStudentToClass(classId) {
         return;
     }
 
-    if (typeof state !== 'undefined' && state.ui) {
-        state.ui.returnView = { type: 'timetable' };
-    }
+    if (typeof state !== 'undefined' && state.ui) state.ui.returnView = { type: 'timetable' };
 
     if (typeof openAddStudent === 'function') {
         openAddStudent(String(classId), { returnTo: { type: 'timetable' } });
@@ -182,8 +219,23 @@ function getTimetableDayGroup(cls) {
 
     if (has1 && has3) return 'mwf';
     if (has2 && has4) return 'ttf';
-
     return 'custom';
+}
+
+function getTimetableDayGroupLabel(dayGroup) {
+    if (dayGroup === 'mwf') return '월수금';
+    if (dayGroup === 'ttf') return '화목금';
+    return '기타';
+}
+
+function getTimetableScheduleDaysLabel(cls) {
+    var days = String(cls.schedule_days || '');
+    if (!days) return '요일 미지정';
+
+    var map = { '0': '일', '1': '월', '2': '화', '3': '수', '4': '목', '5': '금', '6': '토' };
+    var arr = days.split(',').map(function(d) { return d.trim(); }).filter(Boolean);
+    var labels = arr.map(function(d) { return map[d] || ''; }).filter(Boolean);
+    return labels.length ? labels.join('·') : '요일 미지정';
 }
 
 function getTimetablePeriodKey(cls) {
@@ -213,15 +265,14 @@ function getTimetableActiveTextbooks(classId) {
 
     var cls = (db.classes || []).find(function(c) { return String(c.id) === String(classId); });
     if (cls && cls.textbook) return [cls.textbook];
-
-    return [];
+    return ['교재 미등록'];
 }
 
 function getTimetableRecentProgress(classId) {
     var db = _getAllDb();
     var records = (db.class_daily_records || [])
         .filter(function(r) { return String(r.class_id) === String(classId); })
-        .sort(function(a, b) { return String(b.date).localeCompare(String(a.date)); });
+        .sort(function(a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
 
     if (records.length === 0) return null;
 
@@ -235,7 +286,6 @@ function getTimetableRecentProgress(classId) {
         var t = String(p.textbook_title_snapshot || '').trim();
         var prog = String(p.progress_text || '').trim();
         var cleanProg = prog.replace(/^\[단원선택\][^\n]*\n?/, '').trim();
-
         if (t && cleanProg) return t + ' ' + cleanProg;
         return t || cleanProg;
     }).filter(Boolean);
@@ -243,25 +293,8 @@ function getTimetableRecentProgress(classId) {
     return items.length > 0 ? { date: latest.date, text: items.join(' / ') } : null;
 }
 
-function getTimetableCurrentTeacherName() {
-    var raw = '';
-    if (typeof getTeacherNameForUI === 'function') raw = getTeacherNameForUI() || '';
-    if (!raw && typeof state !== 'undefined') raw = (state.ui && state.ui.userName) || (state.auth && state.auth.name) || '';
-    return String(raw || '').replace(/\s*선생님\s*$/g, '').trim();
-}
-
-function isTimetableMyClass(cls) {
-    if (!cls) return false;
-    if (typeof canCurrentUserAccessClass === 'function') return !!canCurrentUserAccessClass(cls.id);
-
-    var teacher = getTimetableCurrentTeacherName();
-    var classTeacher = String(cls.teacher_name || '').replace(/\s*선생님\s*$/g, '').trim();
-    if (!teacher || !classTeacher) return true;
-    return teacher === classTeacher;
-}
-
 // ────────────────────────────────────────────
-// 학생 정보 및 배지 처리
+// 학생 정보 및 배지
 // ────────────────────────────────────────────
 
 function _ttNormalizeDateString(value) {
@@ -269,11 +302,7 @@ function _ttNormalizeDateString(value) {
     if (!raw) return '';
     var m = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
     if (!m) return '';
-    return [
-        m[1],
-        String(m[2]).padStart(2, '0'),
-        String(m[3]).padStart(2, '0')
-    ].join('-');
+    return [m[1], String(m[2]).padStart(2, '0'), String(m[3]).padStart(2, '0')].join('-');
 }
 
 function _ttGetStudentJoinDate(s) {
@@ -288,8 +317,7 @@ function _ttIsStudentNewByJuneFirst(s) {
     var joinDate = _ttGetStudentJoinDate(s);
     if (!joinDate) return false;
     var year = new Date().getFullYear();
-    var cutoff = String(year) + '-06-01';
-    return joinDate >= cutoff;
+    return joinDate >= String(year) + '-06-01';
 }
 
 function _ttIsStudentNew(s) {
@@ -319,20 +347,13 @@ function getTimetableClassStudentsWithInfo(classId) {
             return false;
         })
         .map(function(s) {
-            return {
-                id: s.id,
-                name: s.name,
-                isNew: _ttIsStudentNew(s),
-                isLeave: _ttIsStudentLeave(s)
-            };
+            return { id: s.id, name: s.name, isNew: _ttIsStudentNew(s), isLeave: _ttIsStudentLeave(s) };
         })
-        .sort(function(a, b) {
-            return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
-        });
+        .sort(function(a, b) { return String(a.name || '').localeCompare(String(b.name || ''), 'ko'); });
 }
 
 // ────────────────────────────────────────────
-// 반 카드 빌더
+// 반 카드
 // ────────────────────────────────────────────
 
 function buildTimetableStudentSlot(student, classId) {
@@ -357,16 +378,16 @@ function buildTimetableStudentSlot(student, classId) {
 }
 
 function buildTimetableStudentSlots(students, classId) {
-    var MAX_VISIBLE = TIMETABLE_STUDENT_SLOT_COUNT;
+    var maxVisible = TIMETABLE_STUDENT_SLOT_COUNT;
     var slots = [];
-    var displayCount = Math.min(students.length, MAX_VISIBLE);
+    var displayCount = Math.min(students.length, maxVisible);
 
     for (var i = 0; i < displayCount; i++) {
         slots.push(buildTimetableStudentSlot(students[i], classId));
     }
 
-    if (students.length > MAX_VISIBLE) {
-        var remain = students.length - MAX_VISIBLE;
+    if (students.length > maxVisible) {
+        var remain = students.length - maxVisible;
         slots.push(
             '<div class="tt-std-slot tt-std-slot-more" onclick="event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')" title="클릭 시 반 상세로 이동">' +
                 '+' + remain +
@@ -375,7 +396,6 @@ function buildTimetableStudentSlots(students, classId) {
     }
 
     slots.push(buildTimetableStudentSlot(null, classId));
-
     return '<div class="tt-std-list">' + slots.join('') + '</div>';
 }
 
@@ -384,29 +404,78 @@ function buildTimetableCard(cls) {
     var books = getTimetableActiveTextbooks(classId);
     var progress = getTimetableRecentProgress(classId);
     var students = getTimetableClassStudentsWithInfo(classId);
+
     var hdrHtml = '<div class="tt-card-hdr">' +
         '<span class="tt-cls-name" onclick="event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')">' +
             apEscapeHtml(cls.name) +
         '</span>' +
     '</div>';
 
-    var bookHtml = '';
-    if (books.length > 0) {
-        bookHtml = '<div class="tt-book">' + books.map(function(b) { return apEscapeHtml(b); }).join(' · ') + '</div>';
-    } else {
-        bookHtml = '<div class="tt-book">교재 미등록</div>';
+    var bookHtml = books.length > 0
+        ? '<div class="tt-book">' + books.map(function(b) { return apEscapeHtml(b); }).join(' · ') + '</div>'
+        : '<div class="tt-book">교재 미등록</div>';
+
+    var progressHtml = progress
+        ? '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>'
+        : '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
+
+    return '<div class="tt-card">' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
+}
+
+function getTimetableHighScheduleLines(cls) {
+    var raw = String(
+        cls.schedule_text || cls.schedule_note || cls.schedule_detail || cls.high_schedule || cls.timetable_note || ''
+    ).trim();
+
+    if (raw) {
+        return raw
+            .replace(/\r\n/g, '\n')
+            .replace(/\s*[\/|,]\s*/g, '\n')
+            .split('\n')
+            .map(function(line) { return String(line || '').trim(); })
+            .filter(Boolean);
     }
 
-    var progressHtml = '';
-    if (progress) {
-        progressHtml = '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>';
-    } else {
-        progressHtml = '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
-    }
+    var dayFields = [
+        { key: 'mon_time', label: '월' },
+        { key: 'tue_time', label: '화' },
+        { key: 'wed_time', label: '수' },
+        { key: 'thu_time', label: '목' },
+        { key: 'fri_time', label: '금' },
+        { key: 'sat_time', label: '토' },
+        { key: 'sun_time', label: '일' }
+    ];
+    var grouped = {};
 
-    var stuHtml = buildTimetableStudentSlots(students, classId);
+    dayFields.forEach(function(item) {
+        var time = String(cls[item.key] || '').trim();
+        if (!time) return;
+        if (!grouped[time]) grouped[time] = [];
+        grouped[time].push(item.label);
+    });
 
-    return '<div class="tt-card">' + hdrHtml + bookHtml + progressHtml + stuHtml + '</div>';
+    var lines = Object.keys(grouped).map(function(time) {
+        return grouped[time].join('·') + ' ' + time;
+    });
+
+    if (lines.length > 0) return lines;
+
+    var fallbackTime = String(cls.time_label || '').trim();
+    if (fallbackTime && fallbackTime !== '시간 미지정') return ['시간표 미세정보 없음 · ' + fallbackTime];
+
+    return ['시간 미지정'];
+}
+
+function buildTimetableHighCardBlock(cls) {
+    var lines = getTimetableHighScheduleLines(cls);
+    var metaHtml = lines.map(function(line) {
+        return '<span class="tt-high-class-meta-line">' + apEscapeHtml(line) + '</span>';
+    }).join('');
+
+    return '<div class="tt-high-class-wrap">' +
+        '<div class="tt-high-class-meta">' + metaHtml + '</div>' +
+        buildTimetableCard(cls) +
+    '</div>';
 }
 
 // ────────────────────────────────────────────
@@ -434,27 +503,19 @@ function renderTimetable() {
     root.innerHTML =
         '<div id="timetable-root" style="width:100%; padding:0 0 48px; box-sizing:border-box;">' +
             '<div style="display:flex; align-items:center; gap:10px; padding:4px 0 12px;">' +
-                '<div style="font-size:16px; font-weight:700; color:var(--text); flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + title + '</div>' +
+                '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
             '</div>' +
-            '<div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:0 0 16px;">' +
-                '<div class="tab-bar" style="max-width:220px; margin:0;">' +
-                    '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'middle\';} renderTimetable();">중등부</button>' +
-                    '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'high\';} renderTimetable();">고등부</button>' +
-                '</div>' +
-                '<div class="tab-bar" style="max-width:220px; margin:0;">' +
-                    '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableMyOnly=false;} renderTimetable();">전체 보기</button>' +
-                    '<button class="tab-btn' + (myOnly ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableMyOnly=true;} renderTimetable();">내 반 보기</button>' +
-                '</div>' +
+            '<div class="tt-tab-scroll">' +
+                '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'middle\';} renderTimetable();">중등부</button>' +
+                '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableSection=\'high\';} renderTimetable();">고등부</button>' +
+                '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableMyOnly=false;} renderTimetable();">전체 보기</button>' +
+                '<button class="tab-btn' + (myOnly ? ' active' : '') + '" onclick="if(typeof state!==\'undefined\'&&state.ui){state.ui.timetableMyOnly=true;} renderTimetable();">내 반 보기</button>' +
             '</div>' +
             '<div id="timetable-grid-wrapper"></div>' +
         '</div>';
 
     renderTimetableGrid(section);
 }
-
-// ────────────────────────────────────────────
-// 그리드 진입
-// ────────────────────────────────────────────
 
 function renderTimetableGrid(section) {
     var wrapper = document.getElementById('timetable-grid-wrapper');
@@ -466,41 +527,36 @@ function renderTimetableGrid(section) {
         : (db.classes || []);
     var allClasses = timetableSource.filter(function(c) { return Number(c.is_active) !== 0; });
 
-    var sClasses = allClasses.filter(function(cls) {
-        return getTimetableSectionForClass(cls) === section;
-    });
-
+    var sClasses = allClasses.filter(function(cls) { return getTimetableSectionForClass(cls) === section; });
     if (typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly) {
         sClasses = sClasses.filter(isTimetableMyClass);
     }
 
-    if (section === 'middle') {
-        _renderMiddleGrid(sClasses, wrapper);
-    } else {
-        _renderHighGrid(sClasses, wrapper);
-    }
+    if (section === 'middle') _renderMiddleGrid(sClasses, wrapper);
+    else _renderHighGrid(sClasses, wrapper);
 }
 
 // ────────────────────────────────────────────
-// 중등부 그리드: 행=고정 3교시, 열=고정 6인 (총 7칸)
+// 중등부 그리드
 // ────────────────────────────────────────────
 
 function _renderMiddleGrid(sClasses, wrapper) {
     var dgBg  = { mwf: 'rgba(255,71,87,0.06)',  ttf: 'rgba(26,92,255,0.06)' };
     var dgHdr = { mwf: 'rgba(255,71,87,0.13)',  ttf: 'rgba(26,92,255,0.13)' };
 
+    var firstCol = 'width:1%; min-width:max-content; white-space:nowrap;';
     var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
     var stickyTop    = 'position:sticky; top:0; z-index:20;';
     var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
     var cellBase     = 'padding:6px 6px; border:1px solid var(--border); font-size:12px; vertical-align:top;';
 
-    var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
+    var hr1 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">교시</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         var lbl = dg === 'mwf' ? '월수금' : '화목금';
         hr1 += '<th colspan="3" style="' + stickyTop + ' background:' + dgHdr[dg] + '; ' + cellBase + ' font-size:13px; font-weight:700; color:var(--text); text-align:center;">' + lbl + '</th>';
     });
 
-    var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:72px; font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
+    var hr2 = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-size:11px; font-weight:600; color:var(--secondary); text-align:center;">담당 교사</th>';
     TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
             hr2 += '<th style="' + stickyTop + ' background:' + dgBg[dg] + '; ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
@@ -509,7 +565,7 @@ function _renderMiddleGrid(sClasses, wrapper) {
 
     var bodyHtml = '';
     TIMETABLE_MIDDLE_PERIODS.forEach(function(p) {
-        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' min-width:72px; text-align:center; vertical-align:middle; padding:8px 4px;">' +
+        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:8px 6px;">' +
             '<div class="tt-row-label">' + apEscapeHtml(p.label) + '</div>' +
             '<div class="tt-row-sublabel">' + apEscapeHtml(p.time) + '</div>' +
         '</td>';
@@ -523,14 +579,14 @@ function _renderMiddleGrid(sClasses, wrapper) {
                 });
 
                 if (matched.length === 0) {
-                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + ' min-height:104px;"></td>';
+                    cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + '"></td>';
                 } else {
                     var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
                     cells += '<td style="background:' + dgBg[dg] + '; ' + cellBase + '">' + cards + '</td>';
                 }
             });
         });
-        bodyHtml += '<tr>' + cells + '</tr>';
+        bodyHtml += '<tr class="tt-row-fixed">' + cells + '</tr>';
     });
 
     var unmappedCount = sClasses.filter(function(cls) {
@@ -546,57 +602,60 @@ function _renderMiddleGrid(sClasses, wrapper) {
         : '';
 
     wrapper.innerHTML = warnHtml +
-        '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px; -webkit-overflow-scrolling:touch;">' +
-            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%; min-width:980px;">' +
+        '<div class="tt-table-wrap">' +
+            '<table class="tt-table tt-table-middle">' +
                 '<thead><tr>' + hr1 + '</tr><tr>' + hr2 + '</tr></thead>' +
-                '<tbody>' + bodyHtml + '</tbody>' +
+                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="7">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
             '</table>' +
         '</div>';
 }
 
 // ────────────────────────────────────────────
-// 고등부 그리드: 행=고1/고2/고3, 열=고정 6인 (총 7칸)
+// 고등부 그리드
 // ────────────────────────────────────────────
 
 function _renderHighGrid(sClasses, wrapper) {
+    var highBg = 'rgba(26,92,255,0.06)';
+    var highHdr = 'rgba(26,92,255,0.13)';
+
+    var firstCol = 'width:1%; min-width:max-content; white-space:nowrap;';
     var stickyCorner = 'position:sticky; left:0; top:0; z-index:31; background:var(--surface);';
-    var stickyTop    = 'position:sticky; top:0; z-index:20; background:var(--surface);';
+    var stickyTop    = 'position:sticky; top:0; z-index:20; background:' + highHdr + ';';
     var stickyLeft   = 'position:sticky; left:0; z-index:10; background:var(--surface);';
     var cellBase     = 'padding:6px 6px; border:1px solid var(--border); font-size:12px; vertical-align:top;';
 
-    var hr = '<th style="' + stickyCorner + ' ' + cellBase + ' min-width:60px; font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
+    var hr = '<th style="' + stickyCorner + ' ' + cellBase + ' ' + firstCol + ' font-weight:700; color:var(--secondary); text-align:center;">학년</th>';
     TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
         hr += '<th style="' + stickyTop + ' ' + cellBase + ' font-weight:700; color:var(--text); text-align:center;">' + apEscapeHtml(t) + '</th>';
     });
 
     var bodyHtml = '';
     TIMETABLE_HIGH_GRADES.forEach(function(grade) {
-        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' min-width:60px; text-align:center; vertical-align:middle; padding:8px 4px;">' +
+        var cells = '<td style="' + stickyLeft + ' ' + cellBase + ' ' + firstCol + ' text-align:center; vertical-align:middle; padding:8px 6px;">' +
             '<div class="tt-row-label" style="font-size:15px;">' + apEscapeHtml(grade) + '</div>' +
         '</td>';
 
         TIMETABLE_FIXED_TEACHERS.forEach(function(t) {
             var matched = sClasses.filter(function(cls) {
-                return (cls.teacher_name || '').trim() === t &&
-                       getTimetableHighGrade(cls) === grade;
+                return (cls.teacher_name || '').trim() === t && getTimetableHighGrade(cls) === grade;
             });
 
             if (matched.length === 0) {
-                cells += '<td style="background:var(--surface); ' + cellBase + ' min-height:118px;"></td>';
+                cells += '<td style="background:' + highBg + '; ' + cellBase + '"></td>';
             } else {
-                var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
-                cells += '<td style="background:var(--surface); ' + cellBase + '">' + cards + '</td>';
+                var cards = matched.map(function(cls) { return buildTimetableHighCardBlock(cls); }).join('');
+                cells += '<td style="background:' + highBg + '; ' + cellBase + '">' + cards + '</td>';
             }
         });
 
-        bodyHtml += '<tr>' + cells + '</tr>';
+        bodyHtml += '<tr class="tt-row-fixed">' + cells + '</tr>';
     });
 
     wrapper.innerHTML =
-        '<div style="overflow:auto; max-height:calc(100vh - 175px); border:1px solid var(--border); border-radius:10px; -webkit-overflow-scrolling:touch;">' +
-            '<table style="border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%; min-width:760px;">' +
+        '<div class="tt-table-wrap">' +
+            '<table class="tt-table tt-table-high">' +
                 '<thead><tr>' + hr + '</tr></thead>' +
-                '<tbody>' + bodyHtml + '</tbody>' +
+                '<tbody>' + (bodyHtml || '<tr><td style="padding:32px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;" colspan="4">표시할 반이 없습니다.</td></tr>') + '</tbody>' +
             '</table>' +
         '</div>';
 }
