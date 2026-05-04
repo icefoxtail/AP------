@@ -146,14 +146,14 @@ function sortClassesForManagement(classes) {
     });
 }
 
-function getMiddlePeriodOptions(selectedTime) {
+function getTimeLabelOptions(selectedTime) {
     const periods = [
-        { value: '4:50~6:20', label: '1교시 4:50~6:20' },
-        { value: '6:30~8:00', label: '2교시 6:30~8:00' },
-        { value: '8:00~9:30', label: '3교시 8:00~9:30' }
+        { value: '4:50~6:20', label: '4:50~6:20 (1교시)' },
+        { value: '6:30~8:00', label: '6:30~8:00 (2교시)' },
+        { value: '8:00~9:30', label: '8:00~9:30 (3교시)' }
     ];
 
-    return `<option value="">교시 선택 안 함</option>` + periods.map(p =>
+    return `<option value="">선택 안 함</option>` + periods.map(p =>
         `<option value="${mgmtEscape(p.value)}" ${String(selectedTime || '') === p.value ? 'selected' : ''}>${mgmtEscape(p.label)}</option>`
     ).join('');
 }
@@ -184,7 +184,6 @@ function renderClassManageRow(c) {
                     <div><b style="color:var(--text);">담당</b> ${mgmtEscape(c.teacher_name || '-')}</div>
                     <div><b style="color:var(--text);">요일</b> ${mgmtEscape(formatClassScheduleDaysForUI(c.schedule_days))}</div>
                     <div><b style="color:var(--text);">시간</b> ${mgmtEscape(timeLabel)}</div>
-                    <div><b style="color:var(--text);">교재</b> ${mgmtEscape(c.textbook || '-')}</div>
                     <div><b style="color:var(--text);">학생</b> ${studentCount}명</div>
                 </div>
             </div>
@@ -207,8 +206,7 @@ function openClassManageModal() {
     const hiddenClasses = sortClassesForManagement((state.db.classes || []).filter(c => Number(c.is_active) === 0));
 
     showModal('학급관리', `
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:16px;">
-            <button class="btn" style="padding:10px 14px; font-size:12px; color:var(--primary); background:rgba(26,92,255,0.1); border:none; font-weight:800;" onclick="openTextbookManageModal({ returnTo: { type: 'classManage' } });">교재 관리</button>
+        <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-bottom:16px;">
             <button class="btn btn-primary" style="padding:10px 14px; font-size:12px; font-weight:800;" onclick="openAddClassModal()">새 반 추가</button>
         </div>
         <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">활성 반 (${activeClasses.length})</h4>
@@ -233,16 +231,15 @@ function openAddClassModal() {
             </select>
             <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="add-cls-teacher" class="btn" value="${mgmtEscape(state.ui.userName || '')}" placeholder="담당 선생님" style="text-align:left; background:var(--surface-2); border:none;">
-            <input id="add-cls-textbook" class="btn" placeholder="교재" style="text-align:left; background:var(--surface-2); border:none;">
             <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
             </div>
-            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">중등 교시</label>
+            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">시간</label>
             <select id="add-cls-period" class="btn" style="background:var(--surface-2); border:none;" onchange="syncClassPeriodTime('add')">
-                ${getMiddlePeriodOptions('')}
+                ${getTimeLabelOptions('')}
             </select>
-            <input id="add-cls-timelabel" class="btn" placeholder="시간 예: 4:50~6:20" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="add-cls-timelabel" class="btn" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
         </div>
     `, '추가', handleAddClass);
 }
@@ -254,13 +251,12 @@ async function handleAddClass() {
     const grade = document.getElementById('add-cls-grade')?.value || '';
     const subject = document.getElementById('add-cls-subject')?.value.trim() || '';
     const teacher_name = document.getElementById('add-cls-teacher')?.value.trim() || state.ui.userName || '';
-    const textbook = document.getElementById('add-cls-textbook')?.value.trim() || '';
     const schedule_days = Array.from(document.querySelectorAll('.add-cls-days:checked')).map(e => e.value).join(',');
     const periodTime = document.getElementById('add-cls-period')?.value || '';
     const manualTime = document.getElementById('add-cls-timelabel')?.value.trim() || '';
     const time_label = periodTime || manualTime;
 
-    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: 1, day_group: '', time_label };
+    const payload = { name, grade, subject, teacher_name, schedule_days, is_active: 1, time_label };
 
     try {
         const r = await api.post('classes', payload);
@@ -284,8 +280,8 @@ function openEditClassModal(cid) {
     if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
     const selectedDays = c.schedule_days ? String(c.schedule_days).split(',') : [];
     const currentTime = c.time_label || '';
-    const middleTimes = ['4:50~6:20', '6:30~8:00', '8:00~9:30'];
-    const selectedPeriod = middleTimes.includes(currentTime) ? currentTime : '';
+    const periodTimes = ['4:50~6:20', '6:30~8:00', '8:00~9:30'];
+    const selectedPeriod = periodTimes.includes(currentTime) ? currentTime : '';
 
     showModal('반 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
@@ -295,16 +291,15 @@ function openEditClassModal(cid) {
             </select>
             <input id="edit-cls-subject" class="btn" value="${mgmtEscape(c.subject || '')}" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="edit-cls-teacher" class="btn" value="${mgmtEscape(c.teacher_name || '')}" placeholder="담당 선생님" style="text-align:left; background:var(--surface-2); border:none;">
-            <input id="edit-cls-textbook" class="btn" value="${mgmtEscape(c.textbook || '')}" placeholder="교재" style="text-align:left; background:var(--surface-2); border:none;">
             <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
             </div>
-            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">중등 교시</label>
+            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">시간</label>
             <select id="edit-cls-period" class="btn" style="background:var(--surface-2); border:none;" onchange="syncClassPeriodTime('edit')">
-                ${getMiddlePeriodOptions(selectedPeriod)}
+                ${getTimeLabelOptions(selectedPeriod)}
             </select>
-            <input id="edit-cls-timelabel" class="btn" value="${mgmtEscape(c.time_label || '')}" placeholder="시간 예: 4:50~6:20" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-timelabel" class="btn" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
             <button class="btn" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(255,71,87,0.08); border:1px solid rgba(255,71,87,0.16); font-weight:800;" onclick="handleDeleteClass('${c.id}')">반 삭제</button>
         </div>
     `, '저장', () => handleEditClass(cid));
@@ -318,12 +313,11 @@ async function handleEditClass(cid) {
     const grade = document.getElementById('edit-cls-grade')?.value || '';
     const subject = document.getElementById('edit-cls-subject')?.value.trim() || '';
     const teacher_name = document.getElementById('edit-cls-teacher')?.value.trim() || '';
-    const textbook = document.getElementById('edit-cls-textbook')?.value.trim() || '';
     const schedule_days = Array.from(document.querySelectorAll('.edit-cls-days:checked')).map(e => e.value).join(',');
     const periodTime = document.getElementById('edit-cls-period')?.value || '';
     const manualTime = document.getElementById('edit-cls-timelabel')?.value.trim() || '';
     const time_label = periodTime || manualTime;
-    const payload = { name, grade, subject, teacher_name, schedule_days, textbook, is_active: c.is_active !== undefined ? Number(c.is_active) : 1, day_group: '', time_label };
+    const payload = { name, grade, subject, teacher_name, schedule_days, is_active: c.is_active !== undefined ? Number(c.is_active) : 1, time_label };
 
     try {
         const r = await api.patch(`classes/${cid}`, payload);
@@ -344,7 +338,7 @@ async function toggleClassActive(cid, status) {
     if (!confirm(status === 0 ? '이 반을 숨김 처리하시겠습니까?' : '이 반을 복구하시겠습니까?')) return;
     const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
     if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
-    const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, textbook: c.textbook || '', is_active: status, day_group: '', time_label: c.time_label || '' };
+    const payload = { name: c.name, grade: c.grade, subject: c.subject, teacher_name: c.teacher_name, schedule_days: c.schedule_days, is_active: status, time_label: c.time_label || '' };
 
     try {
         const r = await api.patch(`classes/${cid}`, payload);
