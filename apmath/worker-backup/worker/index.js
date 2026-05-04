@@ -175,7 +175,7 @@ export default {
         if (resource === 'auth' && path[2] === 'login' && method === 'POST') {
           const { login_id, password } = await request.json();
           const hash = await sha256hex(password);
-          const teacher = await env.DB.prepare('SELECT id, name, role FROM teachers WHERE login_id = ? AND password_hash = ?').bind(loginId, hash).first();
+          const teacher = await env.DB.prepare('SELECT id, name, role FROM teachers WHERE login_id = ? AND password_hash = ?').bind(login_id, hash).first();
           if (!teacher) return new Response(JSON.stringify({ success: false, message: '아이디 또는 비밀번호 오류' }), { status: 401, headers });
           return new Response(JSON.stringify({ success: true, id: teacher.id, name: teacher.name, role: teacher.role }), { headers });
         }
@@ -293,19 +293,13 @@ export default {
             const tcls = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
             const classIds = tcls.results.map(r => r.class_id);
             timetableClasses = await env.DB.prepare('SELECT id, name, grade, subject, teacher_name, schedule_days, time_label, textbook, is_active FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name').all();
-            
-            // 시간표 전용 전체 학생 데이터 (권한 범위와 분리)
-            const ttClassIds = (timetableClasses.results || []).map(r => r.id);
-            if (ttClassIds.length > 0) {
-              const ttCM = ttClassIds.map(() => '?').join(',');
-              ttAllClassStudents = await env.DB.prepare(`SELECT * FROM class_students WHERE class_id IN (${ttCM})`).bind(...ttClassIds).all();
-              const ttStudentIds = [...new Set((ttAllClassStudents.results || []).map(r => r.student_id))];
-              if (ttStudentIds.length > 0) {
-                const ttSM = ttStudentIds.map(() => '?').join(',');
-                ttAllStudents = await env.DB.prepare(`SELECT id, name, status, memo, start_date FROM students WHERE id IN (${ttSM})`).bind(...ttStudentIds).all();
-              }
-            }
-            
+
+            // 시간표 전용 전체 학생 데이터 (D1 바인딩 100개 제한 우회 - 전체 조회)
+            [ttAllClassStudents, ttAllStudents] = await Promise.all([
+              env.DB.prepare('SELECT * FROM class_students').all(),
+              env.DB.prepare('SELECT id, name, status, memo, created_at FROM students').all()
+            ]);
+
             opm = await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(teacher.name).all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
             if (classIds.length) {

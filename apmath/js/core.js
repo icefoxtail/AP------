@@ -32,7 +32,8 @@ let state = {
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
         exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
-        class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: []
+        class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
+        timetable_class_students: [], timetable_students: []
     }
 };
 
@@ -179,6 +180,8 @@ async function loadData(isInitial = false) {
     state.db = {
         classes: Array.isArray(data.classes) ? data.classes : [],
         timetable_classes: Array.isArray(data.timetable_classes) ? data.timetable_classes : [],
+        timetable_class_students: Array.isArray(data.timetable_class_students) ? data.timetable_class_students : [],
+        timetable_students: Array.isArray(data.timetable_students) ? data.timetable_students : [],
         students: Array.isArray(data.students) ? data.students : [],
         class_students: Array.isArray(data.class_students) ? data.class_students : [],
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
@@ -219,6 +222,8 @@ async function refreshDataOnly() {
     state.db = { 
         ...state.db, 
         timetable_classes: Array.isArray(data.timetable_classes) ? data.timetable_classes : (state.db.timetable_classes || []),
+        timetable_class_students: Array.isArray(data.timetable_class_students) ? data.timetable_class_students : (state.db.timetable_class_students || []),
+        timetable_students: Array.isArray(data.timetable_students) ? data.timetable_students : (state.db.timetable_students || []),
         attendance: Array.isArray(data.attendance) ? data.attendance : [], 
         homework: Array.isArray(data.homework) ? data.homework : [], 
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [], 
