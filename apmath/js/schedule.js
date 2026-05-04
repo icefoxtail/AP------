@@ -110,28 +110,14 @@ function getUnifiedSchedules() {
 
 function handleUnifiedScheduleTypeChange(prefix) {
     const typeEl = document.getElementById(`${prefix}-kind`);
-    const scopeEl = document.getElementById(`${prefix}-scope`);
-    const studentEl = document.getElementById(`${prefix}-student`);
     const schoolEl = document.getElementById(`${prefix}-school`);
     const gradeEl = document.getElementById(`${prefix}-grade`);
-    const startEl = document.getElementById(`${prefix}-start`);
-    const endEl = document.getElementById(`${prefix}-end`);
 
     if (!typeEl) return;
 
     const isExam = typeEl.value === 'exam';
-
     if (schoolEl) schoolEl.disabled = !isExam;
     if (gradeEl) gradeEl.disabled = !isExam;
-
-    if (startEl) startEl.disabled = isExam;
-    if (endEl) endEl.disabled = isExam;
-
-    if (scopeEl) scopeEl.disabled = isExam;
-    if (studentEl) {
-        studentEl.disabled = isExam || (scopeEl && scopeEl.value !== 'student');
-        if (studentEl.disabled) studentEl.value = '';
-    }
 }
 
 function handleUnifiedScheduleScopeChange(prefix) {
@@ -165,28 +151,17 @@ function collectUnifiedSchedulePayload(prefix) {
         };
     }
 
-    const startTime = document.getElementById(`${prefix}-start`)?.value || '';
-    const endTime = document.getElementById(`${prefix}-end`)?.value || '';
-    const targetScope = document.getElementById(`${prefix}-scope`)?.value || 'global';
-    const studentId = document.getElementById(`${prefix}-student`)?.value || '';
-    const teacherName = document.getElementById(`${prefix}-teacher`)?.value.trim() || (state.auth?.name || '');
-
-    if (targetScope === 'student' && !studentId) {
-        toast('학생 대상 일정은 학생을 선택하세요.', 'warn');
-        return null;
-    }
-
     return {
         kind,
         etcPayload: {
             scheduleType: 'etc',
             title,
             scheduleDate: date,
-            startTime,
-            endTime,
-            targetScope,
-            studentId,
-            teacherName,
+            startTime: '',
+            endTime: '',
+            targetScope: 'global',
+            studentId: '',
+            teacherName: state.auth?.name || '',
             memo,
             isClosed: false
         }
@@ -259,11 +234,6 @@ function renderUnifiedScheduleForm(prefix = 'new-sch', item = null) {
     const memo = item?.memo || '';
     const schoolName = item?.school_name || '';
     const grade = item?.grade || '';
-    const startTime = item?.start_time || '';
-    const endTime = item?.end_time || '';
-    const targetScope = item?.target_scope || 'global';
-    const studentId = item?.student_id || '';
-    const teacherName = item?.teacher_name || (state.auth?.name || '');
 
     return `
         <div class="exam-schedule-form">
@@ -290,23 +260,6 @@ function renderUnifiedScheduleForm(prefix = 'new-sch', item = null) {
                     <option value="고2" ${grade === '고2' ? 'selected' : ''}>고2</option>
                     <option value="고3" ${grade === '고3' ? 'selected' : ''}>고3</option>
                 </select>
-                <input type="text" id="${prefix}-teacher" class="btn" value="${apEscapeHtml(teacherName)}" placeholder="담당자 (기타 선택 시)" style="text-align:left; border:none; background:var(--surface);">
-            </div>
-
-            <div class="exam-schedule-row">
-                <input type="time" id="${prefix}-start" class="btn" value="${startTime}" style="border:none; background:var(--surface);">
-                <input type="time" id="${prefix}-end" class="btn" value="${endTime}" style="border:none; background:var(--surface);">
-            </div>
-
-            <div class="exam-schedule-row">
-                <select id="${prefix}-scope" class="btn" style="border:none; background:var(--surface);" onchange="handleUnifiedScheduleScopeChange('${prefix}')">
-                    <option value="global" ${targetScope === 'global' ? 'selected' : ''}>학원 전체</option>
-                    <option value="student" ${targetScope === 'student' ? 'selected' : ''}>학생</option>
-                </select>
-                <select id="${prefix}-student" class="btn" style="border:none; background:var(--surface);">
-                    <option value="">학생 선택</option>
-                    ${getScheduleStudentOptions(studentId)}
-                </select>
             </div>
 
             <textarea id="${prefix}-memo" class="btn" placeholder="메모" style="width:100%; min-height:86px; text-align:left; border:none; background:var(--surface); resize:vertical; font-size:14px; font-weight:400; line-height:1.7;">${apEscapeHtml(memo)}</textarea>
@@ -329,9 +282,6 @@ function renderUnifiedScheduleList() {
 
         if (s.kind === 'exam') {
             if (s.school_name || s.grade) subParts.push(`${s.school_name || '일반'} ${s.grade || ''}`.trim());
-        } else {
-            subParts.push(s.target_scope === 'student' ? `학생: ${studentName || s.student_id || ''}` : '학원 전체');
-            if (s.teacher_name) subParts.push(`담당: ${s.teacher_name}`);
         }
 
         return `
