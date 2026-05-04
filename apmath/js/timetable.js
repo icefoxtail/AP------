@@ -9,6 +9,7 @@
  * - 모바일 가로 드래그 유지
  * - 탭 토글 전역 함수(window.ttSetSection, window.ttSetMyOnly) 분리로 호출 오류 해결
  * - 모바일에서 상단 영역과 표 내부 헤더 2줄(월수금/화목금 + 담당 교사)을 뺀 뒤 1~3교시 균등 분할
+ * - 모바일 시간표 영역 세로 스크롤 제거: 가로 드래그만 허용
  * - 답답한 뷰 해소: 여백 및 간격(Padding/Gap/Line-height) 프리미엄 수준으로 복원
  * - 내 반 보기는 teacher_name과 현재 로그인 이름만으로 필터링 (DB Classes Fallback 반영)
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
@@ -60,14 +61,16 @@ function installTimetableStyle() {
         '.tt-tab-scroll .tab-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 16px; font-size:13px; font-weight:600; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:var(--surface); color:var(--secondary); transition:all 0.2s; cursor:pointer; }',
         '.tt-tab-scroll .tab-btn.active { background:var(--text); color:var(--surface); border-color:var(--text); font-weight:700; }',
 
-        '.tt-table-wrap { overflow:auto; -webkit-overflow-scrolling:touch; max-height:calc(100vh - 140px); border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); }',
+        '.tt-table-wrap { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; max-height:calc(100vh - 140px); border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); }',
         '.tt-table { border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:100%; }',
         '.tt-table-middle, .tt-table-high { min-width:860px; }',
         '.tt-row-fixed { height:auto; min-height:0; }',
 
         '@media (max-width:900px) {',
-        '  .tt-table-wrap { height:calc(100dvh - 320px); max-height:none; min-height:0; }',
+        '  #timetable-root { height:calc(100dvh - 96px); overflow:hidden; padding-bottom:0 !important; }',
+        '  .tt-table-wrap { height:calc(100dvh - 320px); max-height:none; min-height:0; overflow-x:auto; overflow-y:hidden; }',
         '  .tt-table { height:100%; }',
+        '  .tt-table tbody { overflow:hidden; }',
         '  .tt-row-fixed { height:calc((100dvh - 436px) / 3); min-height:0; }',
         '}',
 
