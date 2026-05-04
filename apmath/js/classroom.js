@@ -37,20 +37,21 @@ function getAttendanceDisplayStatus(status) {
 
 function getNextAttendanceStatus(status) {
     const cur = getAttendanceDisplayStatus(status);
+    // [1안 적용]: 클래스룸은 심플하게 3단계로만 순환
     if (cur === '등원') return '결석';
-    if (cur === '결석') return '지각';
-    if (cur === '지각') return '보강';
-    if (cur === '보강') return '상담';
-    return '등원';
+    if (cur === '결석') return '수업 없음';
+    return '등원'; // '수업 없음', '지각', '보강', '상담' 등 기타 모든 상태에서 클릭 시 '등원'으로 리셋
 }
 
 function getAttendanceStatusLabel(status) {
     const cur = getAttendanceDisplayStatus(status);
     if (cur === '등원') return '○ 등원';
     if (cur === '결석') return '× 결석';
+    // 장부에서 지정된 상세 상태는 라벨 정상 표시
     if (cur === '지각') return '△ 지각';
     if (cur === '보강') return '＋ 보강';
     if (cur === '상담') return '★ 상담';
+    if (cur === '수업 없음') return '- 수업 없음';
     return '○ 등원';
 }
 
@@ -70,6 +71,9 @@ function getAttendanceStatusStyle(status) {
     }
     if (cur === '상담') {
         return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 800; border: 1px solid rgba(124,58,237,0.18);';
+    }
+    if (cur === '수업 없음') {
+        return 'background: var(--bg); color: var(--secondary); font-weight: 700; border: 1px solid var(--border);';
     }
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
@@ -236,8 +240,6 @@ function renderClass(cid) {
 }
 
 // 학년별 소단원 마스터 테이블 — 2022 개정 교육과정 기준
-// 중학교: 2022 개정 (M1/M2/M3)
-// 고등학교: 학년별 2022 개정 과정 통합 (고1=공통수학1+공통수학2, 고2=대수+미적분I, 고3=미적분II+확통+기하)
 var MATH_CURRICULUM_UNITS = {
     '중1': [
         '소인수분해','정수와 유리수','문자와 식','좌표평면과 그래프',
@@ -251,7 +253,6 @@ var MATH_CURRICULUM_UNITS = {
         '실수와 그 계산','다항식의 곱셈과 인수분해','이차방정식',
         '이차함수와 그래프','삼각비','원의 성질','통계'
     ],
-    // 공통수학1 (H22-C) + 공통수학2 (H22-C2)
     '고1': [
         '다항식의 연산','항등식과 나머지 정리','인수분해',
         '복소수와 이차방정식','이차방정식과 이차함수','여러 가지 방정식과 부등식',
@@ -259,7 +260,6 @@ var MATH_CURRICULUM_UNITS = {
         '평면좌표','직선의 방정식','원의 방정식','도형의 이동',
         '집합','명제','함수','유리함수','무리함수'
     ],
-    // 대수 (H22-A) + 미적분I (H22-M1)
     '고2': [
         '지수와 로그','지수함수','로그함수',
         '삼각함수','사인법칙과 코사인법칙',
@@ -268,7 +268,6 @@ var MATH_CURRICULUM_UNITS = {
         '미분계수','도함수','도함수의 활용',
         '부정적분','정적분','정적분의 활용'
     ],
-    // 미적분II (H22-M2) + 확률과 통계 (H22-PS) + 기하 (H22-GE)
     '고3': [
         '수열의 극한','급수',
         '지수함수와 로그함수의 미분','삼각함수의 미분','여러 가지 미분법','도함수의 활용',
@@ -318,14 +317,12 @@ function openClassRecordModal(cid) {
     }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight: 700; line-height: 1.5;">활성 교재 없음</div>`;
 
     const rawNote = existingRecord ? (existingRecord.special_note || '') : '';
-    // [단원선택] 줄 파싱 후 나머지를 special note 영역에 표시
     const unitLineMatch = rawNote.match(/^\[단원선택\]([^\n]*)\n?/);
     const prevSelectedUnits = unitLineMatch
         ? unitLineMatch[1].split(',').map(u => u.trim()).filter(Boolean)
         : [];
     const prevNote = rawNote.replace(/^\[단원선택\][^\n]*\n?/, '').trim();
 
-    // 단원 선택 UI 생성
     const gradeKey = _getClassGradeKey(cls);
     const units = gradeKey ? (MATH_CURRICULUM_UNITS[gradeKey] || []) : [];
     let unitsHtml = '';
@@ -376,7 +373,6 @@ async function saveClassRecord(cid, dateStr) {
         const progText = progInput ? progInput.value.trim() : '';
         progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: tbTitle, progress_text: progText });
     });
-    // 선택된 단원을 special_note 앞에 [단원선택] 줄로 저장 (임시; 정식 DB 컬럼 확장 필요)
     const selectedUnits = Array.from(document.querySelectorAll('.record-unit-check:checked')).map(cb => cb.value);
     let specialNote = document.getElementById('record-special-note')?.value.trim() || '';
     if (selectedUnits.length > 0) {
@@ -400,7 +396,6 @@ async function saveClassRecord(cid, dateStr) {
         toast('수업 기록 저장 중 오류가 발생했습니다.', 'error');
     }
 }
-
 
 // [UI Standard Applied]: 출석부(Ledger) 엔진 수동 보정
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
