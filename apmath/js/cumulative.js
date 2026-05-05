@@ -206,6 +206,8 @@ function renderAttendanceCellContent(studentId, date) {
     if (att === '수업 없음') return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
     return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
 }
+
+// [DESIGN UPDATE] openAttendanceLedger: 오늘 날짜 강조 CSS, hover CSS 추가
 function openAttendanceLedger() {
     if (!state.ui.attendanceLedgerMonth) state.ui.attendanceLedgerMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
     var root = document.getElementById('app-root');
@@ -227,6 +229,7 @@ function openAttendanceLedger() {
 .att-nc { position: sticky; left: 0; z-index: 11; background: var(--surface); border-right: 2px solid var(--border) !important; text-align: center; }
 #att-tbl thead .att-nc { z-index: 12; }
 .att-dc { padding: 3px; text-align: center; width: 32px; min-width: 32px; cursor: pointer; user-select: none; }
+.att-dc:not(.att-no-class):hover { background: rgba(26,92,255,0.04); }
 .att-dc:active { opacity: .7; }
 .att-no-class { cursor: default; background: var(--surface); }
 .att-grp-row td { background: var(--surface-2); }
@@ -234,6 +237,9 @@ function openAttendanceLedger() {
 .att-student-nc { padding: 4px 12px; min-width: 90px; text-align: center; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
 .att-student-nc:hover { background: var(--surface-2); }
 .att-sign { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; }
+.att-th-today { background: rgba(26,92,255,0.04) !important; color: var(--primary) !important; }
+.att-th-mon { border-left: 2px solid rgba(0,0,0,0.06) !important; }
+.att-td-mon { border-left: 2px solid rgba(0,0,0,0.06) !important; }
 </style>
 <div id="att-main">
   <div id="att-header-row">
@@ -257,11 +263,14 @@ function openAttendanceLedger() {
 </div>`;
     loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(function() { renderAttendanceLedgerTable(); });
 }
+
+// [DESIGN UPDATE] renderAttendanceLedgerTable: 오늘 날짜 th 강조, 월요일 주 구분선 적용
 function renderAttendanceLedgerTable() {
     const root = document.getElementById('att-tbl-root');
     if (!root) return;
     const month = state.ui.attendanceLedgerMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
     const days = getMonthDays(month);
+    const today = new Date().toLocaleDateString('sv-SE');
     const classId = document.getElementById('att-cls')?.value || '';
     const section = document.getElementById('att-sec')?.value || '';
     let activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
@@ -279,8 +288,14 @@ function renderAttendanceLedgerTable() {
     const headerCells = days.map(d => {
         const num = Number(d.slice(-2));
         const dayName = _attDayName(d);
-        const style = _attDayStyle(d);
-        return `<th style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;text-align:center;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;text-align:center;">${dayName}</div></th>`;
+        const dayOfWeek = new Date(d + 'T00:00:00').getDay();
+        const isToday = d === today;
+        const isMon = dayOfWeek === 1;
+        // 오늘 강조: att-th-today 클래스, 월요일 구분선: att-th-mon 클래스
+        const extraClass = (isToday ? ' att-th-today' : '') + (isMon ? ' att-th-mon' : '');
+        let style = _attDayStyle(d);
+        if (isToday) style = ''; // att-th-today가 color 처리
+        return `<th class="${extraClass.trim()}" style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;text-align:center;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;text-align:center;">${dayName}</div></th>`;
     }).join('');
     const bodyRows = grouped.map(g => {
         const classEmptyCols = days.map(() => '<td></td>').join('');
@@ -288,10 +303,13 @@ function renderAttendanceLedgerTable() {
         const sRows = g.students.map(s => {
             const sid = String(s.id);
             const dateCells = days.map(d => {
+                const dayOfWeek = new Date(d + 'T00:00:00').getDay();
+                const isMon = dayOfWeek === 1;
                 const sched = getMonthlyScheduleBadges(sid, d);
                 const isHol = sched.globalClosed || sched.studentClosed;
                 const isClassDay = isAttendanceClassDay(sid, d);
-                const cls = (isHol || isClassDay) ? 'att-dc' : 'att-dc att-no-class';
+                let cls = (isHol || isClassDay) ? 'att-dc' : 'att-dc att-no-class';
+                if (isMon) cls += ' att-td-mon';
                 const click = (isHol || isClassDay) ? `onclick="toggleAttendanceCellStatus('${sid}','${d}')"` : '';
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
@@ -306,8 +324,6 @@ function renderAttendanceLedgerTable() {
     root.innerHTML = `<table id="att-tbl"><thead><tr><th class="att-nc" style="padding:6px 12px;min-width:90px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">이름</th>${headerCells}</tr></thead><tbody>${bodyRows || empty}</tbody></table>`;
 }
 
-// [FIX] 출석부 ↔ 클래스룸 양방향 동기화
-// monthlyAttendanceCache와 state.db.attendance를 동시에 갱신/롤백
 async function toggleAttendanceCellStatus(studentId, date) {
     const today = new Date().toLocaleDateString('sv-SE');
     if (date > today) return;
@@ -338,17 +354,14 @@ async function toggleAttendanceCellStatus(studentId, date) {
         else next = '등원';
     }
 
-    // [1] 월간 캐시 낙관적 업데이트
     if (existing) { existing.status = next; }
     else { data.attendance.push({ student_id: sid, date, status: next }); }
 
-    // [2] state.db.attendance 동기화 → 클래스룸 뷰와 즉시 일치
     if (!state.db.attendance) state.db.attendance = [];
     const dbRec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
     if (dbRec) { dbRec.status = next; }
     else { state.db.attendance.push({ student_id: sid, date, status: next }); }
 
-    // [3] 셀 즉시 렌더링
     const cellEl = document.getElementById(`att-cell-${studentId}-${date}`);
     if (cellEl) cellEl.innerHTML = renderAttendanceCellContent(sid, date);
 
@@ -356,10 +369,8 @@ async function toggleAttendanceCellStatus(studentId, date) {
         const r = await api.patch('attendance', { studentId, date, status: next });
         if (!r?.success) throw new Error(r?.message || 'fail');
     } catch {
-        // [4] 롤백 — 월간 캐시
         if (existing) { existing.status = current; }
         else { data.attendance = data.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date)); }
-        // [4] 롤백 — state.db.attendance
         if (dbRec) { dbRec.status = current; }
         else { state.db.attendance = state.db.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date)); }
         if (cellEl) cellEl.innerHTML = renderAttendanceCellContent(sid, date);
@@ -400,6 +411,12 @@ function _sebToggleSortCol() {
     if (el && sortEl) el.style.display = sortEl.value === 'score-desc' ? 'block' : 'none';
 }
 function closeSchoolExamLedger() { if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode(); }
+
+// [DESIGN UPDATE] openSchoolExamLedger:
+//   - 전체 저장 버튼 상단 1행 오른쪽으로 이동
+//   - 하단 저장 버튼 영역 삭제
+//   - 탭 선택색 완화 (흰 카드형)
+//   - 1학기/2학기 헤더 약한 배경 구분은 renderSchoolExamBatchTable에서 처리
 function openSchoolExamLedger() {
     var currentYear = new Date().getFullYear();
     var isAdmin = !!(state.auth && state.auth.role === 'admin');
@@ -441,25 +458,30 @@ function openSchoolExamLedger() {
 #seb-main { width: 100%; max-width: 850px; margin: 0 auto; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 16px 16px 0; box-sizing: border-box; }
 .seb-ctrl { height: 44px; min-height: 44px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
 #seb-body { flex: 1; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; }
-#seb-tbl { border-collapse: collapse; width: max-content; min-width: 100%; background: var(--surface); }
-#seb-tbl th { position: sticky; top: 0; background: var(--surface); z-index: 2; font-size: 12px; font-weight: 700; color: var(--secondary); padding: 10px 4px; text-align: center; white-space: nowrap; box-shadow: 0 1px 0 var(--border); }
-#seb-tbl td { padding: 5px 3px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; }
-.seb-sticky-g { position: sticky; left: 0; z-index: 1; background: var(--surface); width: 36px; min-width: 36px; font-size: 12px; font-weight: 700; color: var(--secondary); text-align: center; border-right: 1px solid var(--border); }
-.seb-sticky-c { position: sticky; left: 36px; z-index: 1; background: var(--surface); width: 64px; min-width: 64px; font-size: 12px; font-weight: 800; color: var(--primary); text-align: center; border-right: 1px solid var(--border); white-space: nowrap; }
-.seb-sticky-n { position: sticky; left: 100px; z-index: 1; background: var(--surface); width: 76px; min-width: 76px; font-size: 13px; font-weight: 700; color: var(--text); padding: 6px 8px; border-right: 1px solid var(--border); white-space: nowrap; text-align: center; }
+#seb-tbl { border-collapse: collapse; width: 100%; min-width: 100%; table-layout: fixed; background: var(--surface); }
+#seb-tbl th { position: sticky; top: 0; background: var(--surface); z-index: 2; font-size: 12px; font-weight: 700; color: var(--secondary); padding: 10px 3px; text-align: center; white-space: nowrap; box-shadow: 0 1px 0 var(--border); }
+#seb-tbl td { padding: 5px 2px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; }
+.seb-sticky-g { position: sticky; left: 0; z-index: 1; background: var(--surface); width: 34px; min-width: 34px; max-width: 34px; font-size: 12px; font-weight: 700; color: var(--secondary); text-align: center; border-right: 1px solid var(--border); }
+.seb-sticky-c { position: sticky; left: 34px; z-index: 1; background: var(--surface); width: 58px; min-width: 58px; max-width: 58px; font-size: 12px; font-weight: 700; color: var(--primary); text-align: center; border-right: 1px solid var(--border); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seb-sticky-n { position: sticky; left: 92px; z-index: 1; background: var(--surface); width: 70px; min-width: 70px; max-width: 70px; font-size: 13px; font-weight: 700; color: var(--text); padding: 6px 6px; border-right: 1px solid var(--border); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
 #seb-tbl thead .seb-sticky-g, #seb-tbl thead .seb-sticky-c, #seb-tbl thead .seb-sticky-n { z-index: 3; }
-.seb-inp { width: 70px; height: 38px; padding: 0 4px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 14px; font-weight: 700; text-align: center; font-family: inherit; }
+.seb-inp { width: 58px; max-width: 100%; height: 38px; padding: 0 4px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 14px; font-weight: 700; text-align: center; font-family: inherit; box-sizing: border-box; }
 .seb-inp:focus { outline: none; border-color: var(--primary); background: var(--surface); }
-.seb-tab-wrap { display: flex; gap: 4px; background: var(--bg); padding: 4px; border-radius: 14px; }
+.seb-tab-wrap { display: flex; gap: 4px; background: var(--surface-2); padding: 4px; border-radius: 14px; }
 .seb-tab { flex: 1; height: 40px; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; }
-.seb-tab.active { background: var(--text); color: var(--surface); }
+.seb-tab.active { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
 .seb-tab:not(.active) { background: transparent; color: var(--secondary); }
 .seb-border2 { border-left: 2px solid rgba(0,0,0,0.08) !important; }
+.seb-grade-header td { background: var(--surface-2); font-size: 12px; font-weight: 700; color: var(--secondary); padding: 7px 12px; text-align: left; }
+.seb-grade-header .seb-sticky-g, .seb-grade-header .seb-sticky-c, .seb-grade-header .seb-sticky-n { background: var(--surface-2); }
 </style>
 <div id="seb-main">
   <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-shrink:0;">
     <div style="font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.5px;cursor:pointer;white-space:nowrap;" onclick="closeSchoolExamLedger()">성적표</div>
-    <select class="seb-ctrl" id="seb-yr" style="width:86px;" onchange="state.ui.schoolExamYear=Number(this.value);renderSchoolExamBatchTable()">${yearOptions}</select>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <select class="seb-ctrl" id="seb-yr" style="width:86px;" onchange="state.ui.schoolExamYear=Number(this.value);renderSchoolExamBatchTable()">${yearOptions}</select>
+      <button class="btn" id="seb-save-btn" onclick="saveSchoolExamBatch()" style="height:44px;min-height:44px;padding:0 16px;border-radius:12px;font-size:13px;font-weight:700;background:var(--surface);color:var(--text);border:1px solid var(--border);box-shadow:none;">전체 저장</button>
+    </div>
   </div>
   <div class="seb-tab-wrap" style="margin-bottom:10px;flex-shrink:0;">
     <button class="seb-tab ${section === 'middle' ? 'active' : ''}" onclick="state.ui.schoolExamSection='middle';state.ui.schoolExamClassId='';openSchoolExamLedger()">중등</button>
@@ -481,20 +503,20 @@ function openSchoolExamLedger() {
     </select>
   </div>
   <div id="seb-body"><div id="seb-tbl-root"></div></div>
-  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 0 24px;">
-    <span id="seb-cnt" style="font-size:13px;font-weight:600;color:var(--secondary);"></span>
-    <button class="btn btn-primary" id="seb-save-btn" onclick="saveSchoolExamBatch()" style="height:48px;padding:0 32px;border-radius:14px;font-size:14px;font-weight:700;border:none;box-shadow:none;">전체 저장</button>
-  </div>
 </div>`;
     renderSchoolExamBatchTable();
 }
+
+// [DESIGN UPDATE] renderSchoolExamBatchTable:
+//   - default 정렬 시 학년별 헤더 행 별도 삽입
+//   - 학생 행의 gradeText는 '' 로 넘김
+//   - 1학기/2학기 헤더 약한 배경 구분 추가
 function renderSchoolExamBatchTable() {
     var root = document.getElementById('seb-tbl-root');
     if (!root) return;
     var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
     var sort = state.ui.schoolExamSort || 'default';
     var sortColKey = state.ui.schoolExamSortCol || '1H-mid';
-    var cntEl = document.getElementById('seb-cnt');
     var students = getSebVisibleStudents();
     if (sort === 'name-desc') {
         students = students.slice().sort(function(a, b) { return String(b.name || '').localeCompare(String(a.name || ''), 'ko'); });
@@ -509,10 +531,19 @@ function renderSchoolExamBatchTable() {
             return sb - sa;
         });
     }
-    if (cntEl) cntEl.textContent = students.length + '명';
     if (!students.length) { root.innerHTML = '<div style="padding:48px;text-align:center;color:var(--secondary);font-size:14px;font-weight:600;">표시할 학생이 없습니다.</div>'; return; }
-    var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th><th rowspan="2" class="seb-sticky-c">반</th><th rowspan="2" class="seb-sticky-n">이름</th><th colspan="2" class="seb-border2" style="padding:8px;">1학기</th><th colspan="2" class="seb-border2" style="padding:8px;">2학기</th>';
-    var hRow2 = '<th class="seb-border2">중간</th><th>기말</th><th class="seb-border2">중간</th><th>기말</th>';
+
+    // 1학기/2학기 헤더 약한 배경 구분
+    var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
+        + '<th rowspan="2" class="seb-sticky-c">반</th>'
+        + '<th rowspan="2" class="seb-sticky-n">이름</th>'
+        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(26,92,255,0.03);">1학기</th>'
+        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>';
+    var hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
+        + '<th style="background:rgba(26,92,255,0.03);">기말</th>'
+        + '<th class="seb-border2" style="background:rgba(5,150,105,0.03);">중간</th>'
+        + '<th style="background:rgba(5,150,105,0.03);">기말</th>';
+
     var bodyRows = '';
     if (sort === 'default') {
         var gradeOrder = ['중1','중2','중3','고1','고2','고3'];
@@ -521,12 +552,22 @@ function renderSchoolExamBatchTable() {
         gradeOrder.forEach(function(grade) {
             var gs = byGrade[grade];
             if (!gs || !gs.length) return;
+            // 학년 헤더 행 (colspan=7)
+            bodyRows += '<tr class="seb-grade-header">'
+                + '<td class="seb-sticky-g" style="background:var(--surface-2);font-size:12px;font-weight:700;color:var(--secondary);padding:7px 0;text-align:center;border-right:1px solid var(--border);"></td>'
+                + '<td class="seb-sticky-c" style="background:var(--surface-2);border-right:1px solid var(--border);"></td>'
+                + '<td class="seb-sticky-n" style="background:var(--surface-2);border-right:1px solid var(--border);"></td>'
+                + '<td colspan="4" style="background:var(--surface-2);font-size:12px;font-weight:700;color:var(--secondary);padding:7px 12px;text-align:left;">' + apEscapeHtml(grade) + '</td>'
+                + '</tr>';
             var byClass = {}; var classOrder = [];
             gs.forEach(function(s) { var cid = getCumulativeClassIdForStudent(s.id); var cn = getCumulativeClassName(cid) || '미배정'; if (!byClass[cn]) { byClass[cn] = []; classOrder.push(cn); } byClass[cn].push(s); });
-            var gradePrinted = false;
             classOrder.forEach(function(cn) {
                 var list = byClass[cn] || [];
-                list.forEach(function(s, idx) { var gradeText = gradePrinted ? '' : grade; var classText = idx === 0 ? cn : ''; bodyRows += _buildSebRow(s, year, gradeText, classText); gradePrinted = true; });
+                list.forEach(function(s, idx) {
+                    var classText = idx === 0 ? cn : '';
+                    // gradeText는 '' 로 넘겨 학생 행 학년칸을 비움
+                    bodyRows += _buildSebRow(s, year, '', classText);
+                });
             });
         });
     } else {
@@ -534,6 +575,7 @@ function renderSchoolExamBatchTable() {
     }
     root.innerHTML = '<table id="seb-tbl"><thead><tr>' + hRow1 + '</tr><tr>' + hRow2 + '</tr></thead><tbody>' + (bodyRows || '<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>') + '</tbody></table>';
 }
+
 function _buildSebRow(s, year, gradeText, classText) {
     var sid = String(s.id);
     var cols = SEB_COLS.map(function(col, i) {
@@ -544,6 +586,7 @@ function _buildSebRow(s, year, gradeText, classText) {
     }).join('');
     return '<tr><td class="seb-sticky-g">' + apEscapeHtml(gradeText || '') + '</td><td class="seb-sticky-c">' + apEscapeHtml(classText || '') + '</td><td class="seb-sticky-n">' + apEscapeHtml(s.name) + '</td>' + cols + '</tr>';
 }
+
 async function saveSchoolExamBatch() {
     var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
     var students = getSebVisibleStudents();
