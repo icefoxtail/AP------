@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS student_plans (
   subject TEXT,
   is_done INTEGER DEFAULT 0,
   repeat_rule TEXT,
-  created_at TEXT DEFAULT (datetime('now','localtime')),
-  updated_at TEXT DEFAULT (datetime('now','localtime')),
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now')),
   FOREIGN KEY (student_id) REFERENCES students(id)
 );
 
@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS planner_feedback (
   teacher_comment TEXT,
   badge TEXT,
   completion_rate INTEGER,
-  created_at TEXT DEFAULT (datetime('now','localtime')),
-  updated_at TEXT DEFAULT (datetime('now','localtime')),
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now')),
   FOREIGN KEY (student_id) REFERENCES students(id)
 );
 

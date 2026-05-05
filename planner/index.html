@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>AP Math Planner</title>
+  <style>
+    :root {
+      --primary:#1A5CFF;
+      --primary-dark:#0040D6;
+      --secondary:#6B7684;
+      --success:#00B894;
+      --error:#E8414F;
+      --warning:#F59F00;
+      --bg:#F2F4F6;
+      --surface:#FFFFFF;
+      --surface-2:#F8FAFC;
+      --border:#E5E8EB;
+      --text:#191F28;
+      --text-soft:#333D4B;
+      --shadow:0 2px 8px rgba(0,0,0,0.03);
+    }
+    * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; outline:none; }
+    body {
+      margin:0;
+      font-family:'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    button, input, select, textarea { font-family:inherit; }
+    .app {
+      width:100%;
+      max-width:1040px;
+      margin:0 auto;
+      padding:16px 14px calc(92px + env(safe-area-inset-bottom));
+    }
+    .top {
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(242,244,246,0.92);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+    .top-inner {
+      max-width:1040px;
+      margin:0 auto;
+      height:58px;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand {
+      font-size:19px;
+      font-weight:700;
+      letter-spacing:-0.3px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .student-chip {
+      min-width:0;
+      max-width:50%;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:13px;
+      font-weight:700;
+      color:var(--secondary);
+      text-align:right;
+    }
+    .card {
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .btn {
+      min-height:44px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--text);
+      padding:10px 14px;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      transition:transform .12s ease, background .12s ease;
+    }
+    .btn:active { transform:scale(0.98); }
+    .btn-primary {
+      background:var(--primary);
+      border-color:var(--primary);
+      color:#fff;
+      box-shadow:0 4px 12px rgba(26,92,255,0.20);
+    }
+    .input {
+      width:100%;
+      min-height:46px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--text);
+      padding:11px 13px;
+      font-size:15px;
+      font-weight:600;
+    }
+    .muted {
+      color:var(--secondary);
+      font-size:12px;
+      font-weight:700;
+    }
+    .pin-wrap {
+      min-height:calc(100vh - 58px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 14px;
+    }
+    .pin-card {
+      width:100%;
+      max-width:380px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px 22px;
+      box-shadow:var(--shadow);
+    }
+    .pin-logo {
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--primary);
+      color:#fff;
+      font-size:24px;
+      font-weight:700;
+      margin:0 auto 16px;
+    }
+    .pin-title {
+      margin:0;
+      text-align:center;
+      font-size:20px;
+      font-weight:700;
+      color:var(--text);
+      letter-spacing:-0.5px;
+    }
+    .pin-desc {
+      margin:8px 0 24px;
+      text-align:center;
+      color:var(--secondary);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.5;
+    }
+    .dashboard {
+      display:grid;
+      grid-template-columns:320px minmax(0,1fr);
+      gap:16px;
+      align-items:start;
+    }
+    .hero {
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:10px;
+      margin-bottom:16px;
+    }
+    .stat {
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:15px 12px;
+    }
+    .stat-label {
+      font-size:11px;
+      font-weight:700;
+      color:var(--secondary);
+      margin-bottom:5px;
+    }
+    .stat-value {
+      font-size:22px;
+      font-weight:700;
+      color:var(--text);
+      line-height:1.15;
+      letter-spacing:-0.5px;
+    }
+    .progress-wrap {
+      height:10px;
+      background:var(--surface-2);
+      border:1px solid var(--border);
+      border-radius:999px;
+      overflow:hidden;
+      margin-top:10px;
+    }
+    .progress-bar {
+      height:100%;
+      background:var(--primary);
+      border-radius:999px;
+      transition:width .2s ease;
+    }
+    .feedback {
+      margin-bottom:16px;
+      border-radius:18px;
+      border:1px solid rgba(26,92,255,0.16);
+      background:rgba(26,92,255,0.06);
+      padding:14px;
+    }
+    .feedback-title {
+      font-size:13px;
+      font-weight:700;
+      color:var(--primary);
+      margin-bottom:5px;
+    }
+    .feedback-text {
+      font-size:14px;
+      font-weight:700;
+      color:var(--text);
+      line-height:1.5;
+      white-space:pre-wrap;
+    }
+    .calendar-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .calendar-title {
+      font-size:17px;
+      font-weight:700;
+      color:var(--text);
+    }
+    .calendar-grid {
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:5px;
+    }
+    .weekday {
+      text-align:center;
+      font-size:11px;
+      font-weight:700;
+      color:var(--secondary);
+      padding:5px 0;
+    }
+    .day {
+      min-height:40px;
+      border:1px solid transparent;
+      border-radius:12px;
+      background:transparent;
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+      position:relative;
+    }
+    .day.out { color:var(--border); cursor:default; }
+    .day.selected {
+      border-color:var(--primary);
+      background:rgba(26,92,255,0.08);
+      color:var(--primary);
+    }
+    .day.today::after {
+      content:'';
+      position:absolute;
+      left:50%;
+      bottom:5px;
+      width:4px;
+      height:4px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:var(--primary);
+    }
+    .day.done-full { background:rgba(0,184,148,0.10); }
+    .day.done-part { background:rgba(245,159,0,0.12); }
+    .plan-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .plan-title {
+      font-size:19px;
+      font-weight:700;
+      color:var(--text);
+      letter-spacing:-0.4px;
+      line-height:1.25;
+    }
+    .plan-date {
+      font-size:12px;
+      font-weight:700;
+      color:var(--secondary);
+      margin-top:4px;
+    }
+    .plan-list {
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+    }
+    .plan-item {
+      min-height:54px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      border-radius:16px;
+      padding:12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .check {
+      width:30px;
+      height:30px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:var(--surface-2);
+      color:var(--surface-2);
+      font-size:17px;
+      font-weight:700;
+      flex:0 0 auto;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .check.done {
+      background:var(--primary);
+      border-color:var(--primary);
+      color:#fff;
+    }
+    .plan-main {
+      min-width:0;
+      flex:1;
+    }
+    .plan-main.done { opacity:.5; text-decoration:line-through; }
+    .plan-item-title {
+      font-size:15px;
+      font-weight:700;
+      color:var(--text);
+      line-height:1.35;
+      word-break:break-word;
+    }
+    .plan-sub {
+      margin-top:3px;
+      font-size:11px;
+      font-weight:700;
+      color:var(--secondary);
+    }
+    .delete {
+      border:0;
+      background:transparent;
+      color:var(--secondary);
+      font-size:12px;
+      font-weight:700;
+      padding:8px;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+    .empty {
+      padding:34px 12px;
+      text-align:center;
+      color:var(--secondary);
+      font-size:13px;
+      font-weight:700;
+      border:1px dashed var(--border);
+      border-radius:16px;
+      background:var(--surface-2);
+    }
+    .quick-form {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 110px 86px;
+      gap:8px;
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid var(--border);
+    }
+    .mobile-add {
+      display:none;
+      position:fixed;
+      left:14px;
+      right:14px;
+      bottom:calc(14px + env(safe-area-inset-bottom));
+      z-index:40;
+      min-height:54px;
+      border-radius:18px;
+      box-shadow:0 10px 24px rgba(26,92,255,0.24);
+    }
+    .modal-overlay {
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+      background:rgba(0,0,0,0.32);
+      z-index:100;
+      padding:14px;
+    }
+    .modal-overlay.show { display:flex; }
+    .modal {
+      width:100%;
+      max-width:420px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.16);
+    }
+    .modal-title {
+      font-size:18px;
+      font-weight:700;
+      color:var(--text);
+      margin-bottom:14px;
+    }
+    .toast {
+      position:fixed;
+      left:50%;
+      bottom:calc(82px + env(safe-area-inset-bottom));
+      transform:translateX(-50%);
+      background:#191F28;
+      color:#fff;
+      border-radius:999px;
+      padding:10px 15px;
+      font-size:13px;
+      font-weight:700;
+      z-index:200;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    .toast.show {
+      opacity:1;
+      transform:translateX(-50%) translateY(-4px);
+    }
+    @media (max-width:767px) {
+      .app { padding:14px 12px calc(88px + env(safe-area-inset-bottom)); }
+      .dashboard { display:block; }
+      .side { margin-bottom:14px; }
+      .hero { grid-template-columns:1fr 1fr; }
+      .hero .stat:last-child { grid-column:span 2; }
+      .calendar-card { display:none; }
+      .quick-form { display:none; }
+      .mobile-add { display:flex; }
+      .top-inner { height:56px; }
+      .brand { font-size:18px; }
+      .student-chip { max-width:48%; font-size:12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand">AP Math Planner</div>
+      <div id="student-chip" class="student-chip"></div>
+    </div>
+  </header>
+
+  <main id="app" class="app"></main>
+
+  <button id="mobile-add-btn" class="btn btn-primary mobile-add" onclick="openAddModal(selectedDate)">+ 할 일 추가</button>
+
+  <div id="modal-overlay" class="modal-overlay" onclick="if(event.target.id==='modal-overlay')closeModal()">
+    <div class="modal">
+      <div id="modal-title" class="modal-title"></div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
+    // TODO: 고1A 기말고사 확정일. 전체 반 확장 시 반별 설정값으로 분리한다.
+    const EXAM_DATE = '2026-07-11';
+
+    const params = new URLSearchParams(location.search);
+    const studentId = String(params.get('student_id') || '').trim();
+
+    let pin = '';
+    let student = null;
+    let plans = [];
+    let feedback = [];
+    let selectedDate = todayStr();
+    let currentMonth = selectedDate.slice(0, 7);
+
+    function $(id) { return document.getElementById(id); }
+    function todayStr() { return new Date().toLocaleDateString('sv-SE'); }
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+    }
+    function toast(message) {
+      const el = $('toast');
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
+    }
+    function authKey() { return `planner_auth_${studentId}`; }
+    function pinKey() { return `planner_pin_${studentId}`; }
+    function isMobile() { return window.innerWidth < 768; }
+    function addDays(date, days) {
+      const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      d.setDate(d.getDate() + days);
+      return d;
+    }
+    function formatDate(date) { return date.toLocaleDateString('sv-SE'); }
+    function monthBounds(month) {
+      const [y, m] = month.split('-').map(Number);
+      const first = new Date(y, m - 1, 1);
+      const last = new Date(y, m, 0);
+      return { from: formatDate(first), to: formatDate(last), year: y, monthNo: m };
+    }
+    function getPlanDateMap() {
+      const map = {};
+      plans.forEach(p => {
+        const d = p.plan_date;
+        if (!map[d]) map[d] = { total:0, done:0 };
+        map[d].total++;
+        if (Number(p.is_done || 0) === 1) map[d].done++;
+      });
+      return map;
+    }
+    function plansForDate(date) {
+      return plans.filter(p => String(p.plan_date) === String(date)).sort((a,b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
+    }
+    function feedbackForDate(date) {
+      return feedback.find(f => String(f.feedback_date) === String(date)) || null;
+    }
+    function calcDDay() {
+      const today = new Date(todayStr() + 'T00:00:00');
+      const exam = new Date(EXAM_DATE + 'T00:00:00');
+      return Math.ceil((exam - today) / 86400000);
+    }
+    function getMonthCompletionRate() {
+      const monthPlans = plans.filter(p => String(p.plan_date || '').slice(0, 7) === currentMonth);
+      if (!monthPlans.length) return 0;
+      const done = monthPlans.filter(p => Number(p.is_done || 0) === 1).length;
+      return Math.round((done / monthPlans.length) * 100);
+    }
+
+    async function apiGet(path) {
+      const r = await fetch(`${API_BASE}/${path}`, { headers: { 'Content-Type': 'application/json' } });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error || data.message || '요청 실패');
+      return data;
+    }
+    async function apiSend(path, method, body) {
+      const r = await fetch(`${API_BASE}/${path}`, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: body ? JSON.stringify(body) : undefined
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) throw new Error(data.error || data.message || '요청 실패');
+      return data;
+    }
+
+    async function initPlanner() {
+      if (!studentId) {
+        renderError('학생 링크가 올바르지 않습니다.');
+        return;
+      }
+
+      const savedAuth = sessionStorage.getItem(authKey());
+      const savedPin = sessionStorage.getItem(pinKey());
+
+      if (savedAuth === 'true' && savedPin) {
+        pin = savedPin;
+        try {
+          await verifyPin(true);
+          return;
+        } catch (e) {
+          sessionStorage.removeItem(authKey());
+          sessionStorage.removeItem(pinKey());
+        }
+      }
+
+      renderPinGate();
+    }
+
+    function renderError(message) {
+      $('student-chip').textContent = '';
+      $('app').innerHTML = `
+        <div class="pin-wrap">
+          <div class="pin-card">
+            <div class="pin-logo">!</div>
+            <h1 class="pin-title">접속 오류</h1>
+            <p class="pin-desc">${escapeHtml(message)}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPinGate() {
+      $('student-chip').textContent = '';
+      $('mobile-add-btn').style.display = 'none';
+      $('app').innerHTML = `
+        <div class="pin-wrap">
+          <div class="pin-card">
+            <div class="pin-logo">A</div>
+            <h1 class="pin-title">개인 PIN 확인</h1>
+            <p class="pin-desc">장기 플래너는 학생 개인 공간입니다.<br>본인 PIN을 입력하면 열립니다.</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <input id="pin-input" class="input" type="password" inputmode="numeric" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')verifyPin(false)">
+              <button class="btn btn-primary" onclick="verifyPin(false)">확인</button>
+            </div>
+            <div class="muted" style="margin-top:16px; text-align:center;">공용 기기에서는 사용 후 브라우저를 닫아주세요.</div>
+          </div>
+        </div>
+      `;
+      setTimeout(() => $('pin-input')?.focus(), 80);
+    }
+
+    async function verifyPin(fromSession) {
+      if (!fromSession) {
+        pin = String($('pin-input')?.value || '').trim();
+      }
+      if (!pin) {
+        toast('PIN을 입력하세요.');
+        return;
+      }
+
+      try {
+        const data = await apiGet(`planner-auth?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`);
+        if (!data?.success || !data?.student) {
+          sessionStorage.removeItem(authKey());
+          sessionStorage.removeItem(pinKey());
+          if (fromSession) {
+            throw new Error(data?.error || 'session expired');
+          }
+          const input = $('pin-input');
+          if (input) {
+            input.value = '';
+            input.focus();
+          }
+          toast(data?.error || 'PIN이 올바르지 않습니다.');
+          return;
+        }
+
+        student = data.student;
+        sessionStorage.setItem(authKey(), 'true');
+        sessionStorage.setItem(pinKey(), pin);
+        $('student-chip').textContent = student.name || '';
+        await loadPlannerData();
+        renderPlanner();
+      } catch (e) {
+        sessionStorage.removeItem(authKey());
+        sessionStorage.removeItem(pinKey());
+        toast('인증 중 오류가 발생했습니다.');
+      }
+    }
+
+    async function loadPlannerData() {
+      const { from, to } = monthBounds(currentMonth);
+      const data = await apiGet(`planner?student_id=${encodeURIComponent(studentId)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&pin=${encodeURIComponent(pin)}`);
+      plans = Array.isArray(data.plans) ? data.plans : [];
+      feedback = Array.isArray(data.feedback) ? data.feedback : [];
+    }
+
+    function renderPlanner() {
+      if (isMobile()) renderMobilePlanner();
+      else renderPCPlanner();
+      $('mobile-add-btn').style.display = isMobile() ? 'flex' : 'none';
+    }
+
+    function renderStats() {
+      const dday = calcDDay();
+      const rate = getMonthCompletionRate();
+      const todayPlans = plansForDate(todayStr());
+      const todayDone = todayPlans.filter(p => Number(p.is_done || 0) === 1).length;
+      return `
+        <div class="hero">
+          <div class="stat">
+            <div class="stat-label">기말고사</div>
+            <div class="stat-value">${dday >= 0 ? `D-${dday}` : `D+${Math.abs(dday)}`}</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">오늘 완료</div>
+            <div class="stat-value">${todayDone}/${todayPlans.length}</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">월 이행률</div>
+            <div class="stat-value">${rate}%</div>
+            <div class="progress-wrap"><div class="progress-bar" style="width:${rate}%"></div></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFeedbackBanner() {
+      const f = feedbackForDate(selectedDate);
+      if (!f) return '';
+      const badge = f.badge ? `<span style="font-size:18px; margin-right:4px;">${escapeHtml(f.badge)}</span>` : '';
+      const text = f.teacher_comment || '피드백이 도착했습니다.';
+      return `
+        <div class="feedback">
+          <div class="feedback-title">${badge}담임 피드백</div>
+          <div class="feedback-text">${escapeHtml(text)}</div>
+        </div>
+      `;
+    }
+
+    function renderPCPlanner() {
+      $('app').innerHTML = `
+        ${renderStats()}
+        ${renderFeedbackBanner()}
+        <div class="dashboard">
+          <section class="side">
+            <div class="card calendar-card">
+              ${renderCalendar(Number(currentMonth.slice(0,4)), Number(currentMonth.slice(5,7)))}
+            </div>
+          </section>
+          <section>
+            <div class="card">
+              ${renderPlanPanel()}
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderMobilePlanner() {
+      $('app').innerHTML = `
+        ${renderStats()}
+        ${renderFeedbackBanner()}
+        <div class="card">
+          ${renderPlanPanel()}
+        </div>
+      `;
+    }
+
+    function renderCalendar(year, monthNo) {
+      const first = new Date(year, monthNo - 1, 1);
+      const last = new Date(year, monthNo, 0);
+      const startDay = first.getDay();
+      const total = last.getDate();
+      const planMap = getPlanDateMap();
+
+      const cells = [];
+      for (let i = 0; i < startDay; i++) cells.push(`<button class="day out" disabled></button>`);
+      for (let d = 1; d <= total; d++) {
+        const date = `${year}-${String(monthNo).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const p = planMap[date];
+        const cls = [
+          'day',
+          date === selectedDate ? 'selected' : '',
+          date === todayStr() ? 'today' : '',
+          p && p.total > 0 && p.done === p.total ? 'done-full' : '',
+          p && p.total > 0 && p.done < p.total ? 'done-part' : ''
+        ].filter(Boolean).join(' ');
+        cells.push(`<button class="${cls}" onclick="selectDate('${date}')">${d}</button>`);
+      }
+
+      const prev = new Date(year, monthNo - 2, 1);
+      const next = new Date(year, monthNo, 1);
+
+      return `
+        <div class="calendar-head">
+          <button class="btn" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(prev).slice(0,7)}')">‹</button>
+          <div class="calendar-title">${year}년 ${monthNo}월</div>
+          <button class="btn" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(next).slice(0,7)}')">›</button>
+        </div>
+        <div class="calendar-grid">
+          ${['일','월','화','수','목','금','토'].map(w => `<div class="weekday">${w}</div>`).join('')}
+          ${cells.join('')}
+        </div>
+      `;
+    }
+
+    function renderPlanPanel() {
+      const datePlans = plansForDate(selectedDate);
+      return `
+        <div class="plan-head">
+          <div>
+            <div class="plan-title">${selectedDate === todayStr() ? '오늘 할 일' : '선택 날짜 할 일'}</div>
+            <div class="plan-date">${selectedDate}</div>
+          </div>
+          <button class="btn" style="min-height:40px; padding:8px 12px; font-size:12px;" onclick="resetAuth()">잠금</button>
+        </div>
+        <div class="plan-list">
+          ${datePlans.length ? datePlans.map(renderPlanItem).join('') : `<div class="empty">등록된 할 일이 없습니다.</div>`}
+        </div>
+        <div class="quick-form">
+          <input id="quick-title" class="input" placeholder="할 일 입력">
+          <input id="quick-subject" class="input" placeholder="과목" value="수학">
+          <button class="btn btn-primary" onclick="saveQuickPlan()">추가</button>
+        </div>
+      `;
+    }
+
+    function renderPlanItem(plan) {
+      const done = Number(plan.is_done || 0) === 1;
+      return `
+        <div class="plan-item">
+          <button class="check ${done ? 'done' : ''}" onclick="toggleDone('${plan.id}', ${done ? 0 : 1}, '${plan.updated_at || ''}')">✓</button>
+          <div class="plan-main ${done ? 'done' : ''}">
+            <div class="plan-item-title">${escapeHtml(plan.title)}</div>
+            <div class="plan-sub">${escapeHtml(plan.subject || '수학')}${plan.repeat_rule ? ` · ${plan.repeat_rule === 'daily' ? '매일' : '매주'}` : ''}</div>
+          </div>
+          <button class="delete" onclick="deletePlan('${plan.id}')">삭제</button>
+        </div>
+      `;
+    }
+
+    async function selectDate(date) {
+      selectedDate = date;
+      if (selectedDate.slice(0,7) !== currentMonth) {
+        currentMonth = selectedDate.slice(0,7);
+        await loadPlannerData();
+      }
+      renderPlanner();
+    }
+
+    async function changeMonth(month) {
+      currentMonth = month;
+      const bounds = monthBounds(month);
+      selectedDate = bounds.from;
+      await loadPlannerData();
+      renderPlanner();
+    }
+
+    async function saveQuickPlan() {
+      const title = String($('quick-title')?.value || '').trim();
+      const subject = String($('quick-subject')?.value || '수학').trim();
+      if (!title) {
+        toast('할 일을 입력하세요.');
+        return;
+      }
+      await savePlan({ title, subject, repeat_rule: null });
+    }
+
+    function openAddModal(date) {
+      $('modal-title').textContent = '할 일 추가';
+      $('modal-body').innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <input id="modal-title-input" class="input" placeholder="할 일">
+          <input id="modal-subject-input" class="input" placeholder="과목" value="수학">
+          <select id="modal-repeat-input" class="input">
+            <option value="">반복 없음</option>
+            <option value="daily">매일 반복</option>
+            <option value="weekly">매주 반복</option>
+          </select>
+          <div class="muted">반복은 ${EXAM_DATE}까지만 생성됩니다.</div>
+          <button class="btn btn-primary" onclick="saveModalPlan('${date}')">저장</button>
+        </div>
+      `;
+      $('modal-overlay').classList.add('show');
+      setTimeout(() => $('modal-title-input')?.focus(), 80);
+    }
+
+    function closeModal() {
+      $('modal-overlay').classList.remove('show');
+    }
+
+    async function saveModalPlan(date) {
+      const title = String($('modal-title-input')?.value || '').trim();
+      const subject = String($('modal-subject-input')?.value || '수학').trim();
+      const repeat_rule = String($('modal-repeat-input')?.value || '').trim() || null;
+      if (!title) {
+        toast('할 일을 입력하세요.');
+        return;
+      }
+      await savePlan({ title, subject, repeat_rule, date });
+      closeModal();
+    }
+
+    async function savePlan(data) {
+      try {
+        await apiSend('planner', 'POST', {
+          student_id: studentId,
+          pin,
+          plan_date: data.date || selectedDate,
+          title: data.title,
+          subject: data.subject || '수학',
+          repeat_rule: data.repeat_rule || null,
+          exam_date: EXAM_DATE
+        });
+        toast('저장되었습니다.');
+        await loadPlannerData();
+        renderPlanner();
+      } catch (e) {
+        toast(e.message || '저장 실패');
+      }
+    }
+
+    async function toggleDone(planId, isDone, updatedAt) {
+      try {
+        await apiSend(`planner/${encodeURIComponent(planId)}`, 'PATCH', {
+          student_id: studentId,
+          pin,
+          is_done: isDone,
+          updated_at: updatedAt || ''
+        });
+        await loadPlannerData();
+        renderPlanner();
+      } catch (e) {
+        toast(e.message || '변경 실패');
+      }
+    }
+
+    async function deletePlan(planId) {
+      if (!confirm('삭제하시겠습니까?')) return;
+      try {
+        await apiSend(`planner/${encodeURIComponent(planId)}?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`, 'DELETE');
+        toast('삭제되었습니다.');
+        await loadPlannerData();
+        renderPlanner();
+      } catch (e) {
+        toast(e.message || '삭제 실패');
+      }
+    }
+
+    function resetAuth() {
+      sessionStorage.removeItem(authKey());
+      sessionStorage.removeItem(pinKey());
+      pin = '';
+      student = null;
+      plans = [];
+      feedback = [];
+      renderPinGate();
+    }
+
+    window.addEventListener('resize', () => {
+      clearTimeout(window.__resizeTimer);
+      window.__resizeTimer = setTimeout(() => {
+        if (student) renderPlanner();
+      }, 150);
+    });
+
+    initPlanner();
+  </script>
+</body>
+</html>

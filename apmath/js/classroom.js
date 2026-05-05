@@ -225,6 +225,10 @@ function openClassHomework(cid) {
     else renderClass(cid);
 }
 
+function isPlannerTargetClassName(className) {
+    return String(className || '').includes('고1A');
+}
+
 // [UI Standard Applied]: 학급 메인 화면
 function renderClass(cid) {
     injectClassroomStyles();
@@ -236,6 +240,10 @@ function renderClass(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     
     const summary = computeClassTodaySummary(cid);
+    const isPlannerTargetClass = isPlannerTargetClassName(cls?.name);
+    const plannerButtonHtml = isPlannerTargetClass
+        ? `<button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.16); color: var(--text); box-shadow: none; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="renderPlannerControl('${cid}')">플래너</button>`
+        : '';
 
     const statusBarHtml = summary.isScheduled
         ? `<div style="display: flex; gap: 6px; align-items: center; flex-shrink: 0;">
@@ -253,11 +261,12 @@ function renderClass(cid) {
             ${statusBarHtml}
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 32px; padding: 0 16px;">
+        <div style="display: grid; grid-template-columns: repeat(${isPlannerTargetClass ? 5 : 4}, minmax(0, 1fr)); gap: 10px; margin-bottom: 32px; padding: 0 16px;">
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(26,92,255,0.05); border: 1px solid rgba(26,92,255,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(225,29,72,0.05); border: 1px solid rgba(225,29,72,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(5,150,105,0.05); border: 1px solid rgba(5,150,105,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(99,102,241,0.05); border: 1px solid rgba(99,102,241,0.15); color: var(--text); box-shadow: none; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openClassRecordModal('${cid}')">진도관리</button>
+            ${plannerButtonHtml}
         </div>
     `;
 
@@ -754,4 +763,222 @@ async function deleteExamByClass(classId, examTitle, examDate) {
         toast('시험 전체 기록이 삭제되었습니다.', 'info');
         closeModal(true); await refreshDataOnly(); openExamGradeView(classId);
     } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
+}
+
+// ── 고1A 장기 플래너 관제 ─────────────────────────────────────────────
+function getPlannerBaseUrl() {
+    const origin = window.location.origin;
+    let path = window.location.pathname || '/';
+    path = path.replace(/\/index\.html$/, '/');
+    if (!path.endsWith('/')) path = path.substring(0, path.lastIndexOf('/') + 1);
+    return origin + path + 'planner/';
+}
+
+async function copyPlannerStudentLink(studentId) {
+    const url = `${getPlannerBaseUrl()}?student_id=${encodeURIComponent(studentId)}`;
+    try {
+        await navigator.clipboard.writeText(url);
+        toast('플래너 링크가 복사되었습니다.', 'info');
+    } catch (e) {
+        showModal('플래너 링크', `
+            <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-bottom:8px;">아래 링크를 복사하세요. PIN은 포함되지 않습니다.</div>
+            <div style="word-break:break-all; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:12px; font-size:13px; font-weight:700; color:var(--text);">${apEscapeHtml(url)}</div>
+        `);
+    }
+}
+
+async function loadPlannerOverview(classId, date) {
+    if (api.getPlannerOverview) return api.getPlannerOverview(classId, date);
+    return api.get(`planner/overview?class_id=${encodeURIComponent(classId)}&date=${encodeURIComponent(date)}`);
+}
+
+function renderPlannerRateBar(rate) {
+    const safeRate = Math.max(0, Math.min(100, Math.round(Number(rate || 0))));
+    return `
+        <div style="display:flex; align-items:center; gap:8px; min-width:96px;">
+            <div style="flex:1; height:7px; background:var(--surface-2); border:1px solid var(--border); border-radius:999px; overflow:hidden;">
+                <div style="height:100%; width:${safeRate}%; background:var(--primary); border-radius:999px;"></div>
+            </div>
+            <span style="width:34px; text-align:right; font-size:12px; font-weight:700; color:var(--text);">${safeRate}%</span>
+        </div>
+    `;
+}
+
+function renderPlannerOverviewTable(classId, date, rows) {
+    const root = document.getElementById('planner-control-body');
+    if (!root) return;
+
+    const list = Array.isArray(rows) ? rows : [];
+    if (!list.length) {
+        root.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">조회 대상 학생이 없습니다.</div>`;
+        return;
+    }
+
+    const desktopRows = list.map(row => {
+        const fb = row.feedback || null;
+        const fbText = fb ? `${fb.badge || ''} ${fb.teacher_comment || '피드백 저장됨'}`.trim() : '미작성';
+        return `
+            <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:12px 10px; font-size:14px; font-weight:700; color:var(--text);">${apEscapeHtml(row.name)}</td>
+                <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--text);">${Number(row.total || 0)}</td>
+                <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--primary);">${Number(row.done || 0)}</td>
+                <td style="padding:12px 10px;">${renderPlannerRateBar(row.rate)}</td>
+                <td style="padding:12px 10px; font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${apEscapeHtml(fbText)}</td>
+                <td style="padding:12px 10px; text-align:right;">
+                    <div style="display:flex; gap:6px; justify-content:flex-end;">
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    const mobileCards = list.map(row => {
+        const fb = row.feedback || null;
+        const fbText = fb ? `${fb.badge || ''} ${fb.teacher_comment || '피드백 저장됨'}`.trim() : '피드백 미작성';
+        return `
+            <div style="border:1px solid var(--border); border-radius:16px; padding:14px; background:var(--surface); margin-bottom:10px;">
+                <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:10px;">
+                    <div style="min-width:0;">
+                        <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(row.name)}</div>
+                        <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">할 일 ${Number(row.total || 0)} · 완료 ${Number(row.done || 0)}</div>
+                    </div>
+                    <div style="font-size:15px; font-weight:700; color:var(--primary);">${Number(row.rate || 0)}%</div>
+                </div>
+                ${renderPlannerRateBar(row.rate)}
+                <div style="font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; margin-top:10px; line-height:1.5;">${apEscapeHtml(fbText)}</div>
+                <div style="display:flex; gap:8px; margin-top:12px;">
+                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
+                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    root.innerHTML = `
+        <style>
+            @media (max-width:700px) {
+                #planner-desktop-table { display:none !important; }
+                #planner-mobile-list { display:block !important; }
+            }
+            @media (min-width:701px) {
+                #planner-desktop-table { display:block !important; }
+                #planner-mobile-list { display:none !important; }
+            }
+        </style>
+        <div id="planner-desktop-table" style="overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
+            <table style="width:100%; border-collapse:collapse; min-width:720px;">
+                <thead>
+                    <tr style="background:var(--surface-2); border-bottom:1px solid var(--border);">
+                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">학생</th>
+                        <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:700; color:var(--secondary);">할 일</th>
+                        <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:700; color:var(--secondary);">완료</th>
+                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">이행률</th>
+                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">피드백</th>
+                        <th style="padding:10px; text-align:right; font-size:12px; font-weight:700; color:var(--secondary);">관리</th>
+                    </tr>
+                </thead>
+                <tbody>${desktopRows}</tbody>
+            </table>
+        </div>
+        <div id="planner-mobile-list">${mobileCards}</div>
+    `;
+}
+
+async function renderPlannerControl(classId) {
+    if (!state.ui) state.ui = {};
+    state.ui.plannerControlClassId = String(classId || '');
+    const cls = state.db.classes.find(c => String(c.id) === String(classId));
+    if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
+    if (!isPlannerTargetClassName(cls.name)) return toast('고1A 전용 기능입니다.', 'warn');
+
+    const today = new Date().toLocaleDateString('sv-SE');
+    showModal('플래너 관제', `
+        <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:14px; background:var(--surface-2); border-radius:16px;">
+                <div style="min-width:0;">
+                    <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(cls.name)}</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">고1A 장기 플래너</div>
+                </div>
+                <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:10px; background:var(--surface); border:1px solid var(--border);" onclick="renderClass('${classId}'); closeModal(true);">반 화면</button>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <input type="date" id="planner-control-date" class="btn" value="${today}" style="flex:1; text-align:left; background:var(--surface); border:1px solid var(--border);">
+                <button class="btn btn-primary" style="min-height:44px; padding:10px 14px; font-size:12px; font-weight:700;" onclick="refreshPlannerControl('${classId}')">조회</button>
+            </div>
+            <div id="planner-control-body">
+                <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>
+            </div>
+        </div>
+    `);
+    await refreshPlannerControl(classId);
+}
+
+async function refreshPlannerControl(classId) {
+    const date = document.getElementById('planner-control-date')?.value || new Date().toLocaleDateString('sv-SE');
+    const body = document.getElementById('planner-control-body');
+    if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>`;
+
+    try {
+        const data = await loadPlannerOverview(classId, date);
+        if (!data?.success) {
+            if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 관제를 불러오지 못했습니다.</div>`;
+            toast(data?.message || data?.error || '플래너 관제 조회 실패', 'warn');
+            return;
+        }
+        renderPlannerOverviewTable(classId, date, data.students || []);
+    } catch (e) {
+        console.error('[refreshPlannerControl] failed:', e);
+        if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 관제 조회 중 오류가 발생했습니다.</div>`;
+        toast('플래너 관제 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function openPlannerFeedbackModal(studentId, date, currentRate) {
+    const s = state.db.students.find(st => String(st.id) === String(studentId));
+    const safeRate = Math.max(0, Math.min(100, Math.round(Number(currentRate || 0))));
+    showModal('플래너 피드백', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
+                <div style="font-size:15px; font-weight:700; color:var(--text);">${apEscapeHtml(s?.name || '학생')}</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(date)} · 현재 이행률 ${safeRate}%</div>
+            </div>
+            <select id="planner-feedback-badge" class="btn" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border);">
+                <option value="">배지 없음</option>
+                <option value="⭐">⭐ 잘함</option>
+                <option value="🔥">🔥 집중</option>
+                <option value="👍">👍 좋아요</option>
+            </select>
+            <textarea id="planner-feedback-comment" class="cls-input" rows="5" placeholder="학생에게 보일 피드백을 입력하세요." style="resize:none;"></textarea>
+            <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:700;" onclick="savePlannerFeedback('${studentId}', '${date}', ${safeRate})">저장</button>
+        </div>
+    `);
+}
+
+async function savePlannerFeedback(studentId, date, currentRate) {
+    const badge = document.getElementById('planner-feedback-badge')?.value || '';
+    const teacherComment = document.getElementById('planner-feedback-comment')?.value.trim() || '';
+    const payload = {
+        student_id: studentId,
+        feedback_date: date,
+        teacher_comment: teacherComment,
+        badge,
+        completion_rate: Math.max(0, Math.min(100, Math.round(Number(currentRate || 0))))
+    };
+
+    try {
+        const r = api.savePlannerFeedback ? await api.savePlannerFeedback(payload) : await api.post('planner/feedback', payload);
+        if (!r?.success) {
+            toast(r?.message || r?.error || '피드백 저장 실패', 'warn');
+            return;
+        }
+        toast('피드백이 저장되었습니다.', 'success');
+        closeModal(true);
+        const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+        if (classId) await renderPlannerControl(classId);
+    } catch (e) {
+        console.error('[savePlannerFeedback] failed:', e);
+        toast('피드백 저장 중 오류가 발생했습니다.', 'error');
+    }
 }
