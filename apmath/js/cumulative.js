@@ -57,7 +57,7 @@ function buildTrendHtml(curr, prev) {
 // ─────────────────────────────────────────────
 function buildSebScoreCell(score, rank, trendHtml, borderClass) {
     const scoreText = score === null ? '<span style="color:var(--border);font-size:12px;">-</span>'
-        : `<span style="font-size:14px;font-weight:700;color:var(--text);">${score}</span>`;
+        : `<span style="font-size:14px;font-weight:800;color:var(--text);">${score}</span>`;
     const rankHtml = (rank !== null && score !== null)
         ? `<div style="font-size:10px;font-weight:600;color:var(--secondary);line-height:1.2;">${rank}등</div>`
         : '';
@@ -96,7 +96,6 @@ function buildSebAvgRow(label, students, year, isGradeAvg) {
 function openSchoolExamLedger() {
     var currentYear = new Date().getFullYear();
     var isAdmin = !!(state.auth && state.auth.role === 'admin');
-    if (!isAdmin) state.ui.schoolExamTeacher = '';
     if (!state.ui.schoolExamYear) state.ui.schoolExamYear = currentYear;
     if (!state.ui.schoolExamSection) state.ui.schoolExamSection = 'middle';
     if (!state.ui.schoolExamClassId) state.ui.schoolExamClassId = '';
@@ -268,7 +267,7 @@ function renderSchoolExamBatchTable() {
                     // 읽기 전용 표시 (성적순 정렬 시에도 입력 가능)
                     var val = score !== null ? score : '';
                     var scoreDisplay = score !== null
-                        ? `<span style="font-size:14px;font-weight:700;color:var(--text);">${score}</span>`
+                        ? `<span style="font-size:14px;font-weight:800;color:var(--text);">${score}</span>`
                         : `<span style="color:var(--border);font-size:12px;">-</span>`;
                     var rankHtml = (rank !== null && score !== null)
                         ? `<div style="font-size:10px;font-weight:600;color:var(--secondary);line-height:1.2;">${rank}등</div>`
@@ -301,19 +300,14 @@ function renderSchoolExamBatchTable() {
                 byClass[cn].push(s);
             });
 
-            // 반 오름차순
-            classOrder.sort(function(a, b) {
-                return String(a || '').localeCompare(String(b || ''), 'ko', { numeric: true });
-            });
+            // 학년 내 등수 계산 (기본순에서도 각 컬럼별 등수)
+            // → 기본순에서는 등수 미표시 (성적순 정렬 시에만)
 
             var isFirstGrade2 = Object.keys(byGrade).filter(g => byGrade[g] && byGrade[g].length).indexOf(grade) === 0;
             var gradeFirstRow = true;
 
             classOrder.forEach(function(cn, clsIdx) {
-                // 이름 오름차순
-                var clsStudents = (byClass[cn] || []).slice().sort(function(a, b) {
-                    return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
-                });
+                var clsStudents = byClass[cn];
                 var classFirstRow = true;
 
                 clsStudents.forEach(function(s, idx) {
