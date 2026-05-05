@@ -1,9 +1,9 @@
 /**
  * AP Math OS 1.0 [js/classroom.js]
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
- * [Minimalism Polish]: 52px 카드 높이 통일, 아이콘 제거, 오늘 현황 레이아웃 분리
- * [Standard UI]: font-weight 700 상한선 준수, 영문 한글화 및 테이블 4열 수직 완벽 정렬
- * [Update]: 넓이 850px 고정, 닫기버튼 삭제 및 현황 배지 인라인 통합, 테이블 글자 +1px
+ * [Minimalism Polish]&#58; 52px 카드 높이 통일, 아이콘 제거, 오늘 현황 레이아웃 분리
+ * [Standard UI]&#58; font-weight 700 상한선 준수, 영문 한글화 및 테이블 4열 수직 완벽 정렬
+ * [Update]&#58; 넓이 850px 고정, 닫기버튼 삭제 및 현황 배지 인라인 통합, 테이블 글자 +1px
  */
 
 // ── 필수 유틸리티 (중복 선언 방어) ──────────────────────────────────
@@ -229,6 +229,23 @@ function isPlannerTargetClassName(className) {
     return String(className || '').includes('고1A');
 }
 
+function isPlannerTargetClass(cls) {
+    if (!cls) return false;
+
+    const className = String(cls.name || '').trim();
+    const teacherRaw = String(cls.teacher_name || '').trim();
+
+    const teacher = teacherRaw
+        .replace(/\s*선생님\s*$/g, '')
+        .trim()
+        .toLowerCase();
+
+    const teacherAliases = ['박준성', '선생님1', 'teacher1', 't1']
+        .map(v => String(v).toLowerCase());
+
+    return className.includes('고1A') && teacherAliases.includes(teacher);
+}
+
 // [UI Standard Applied]: 학급 메인 화면
 function renderClass(cid) {
     injectClassroomStyles();
@@ -240,8 +257,8 @@ function renderClass(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     
     const summary = computeClassTodaySummary(cid);
-    const isPlannerTargetClass = isPlannerTargetClassName(cls?.name);
-    const plannerButtonHtml = isPlannerTargetClass
+    const plannerEnabled = isPlannerTargetClass(cls);
+    const plannerButtonHtml = plannerEnabled
         ? `<button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.16); color: var(--text); box-shadow: none; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="renderPlannerControl('${cid}')">플래너</button>`
         : '';
 
@@ -261,7 +278,7 @@ function renderClass(cid) {
             ${statusBarHtml}
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(${isPlannerTargetClass ? 5 : 4}, minmax(0, 1fr)); gap: 10px; margin-bottom: 32px; padding: 0 16px;">
+        <div style="display: grid; grid-template-columns: repeat(${plannerEnabled ? 5 : 4}, minmax(0, 1fr)); gap: 10px; margin-bottom: 32px; padding: 0 16px;">
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(26,92,255,0.05); border: 1px solid rgba(26,92,255,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(225,29,72,0.05); border: 1px solid rgba(225,29,72,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(5,150,105,0.05); border: 1px solid rgba(5,150,105,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
@@ -765,7 +782,7 @@ async function deleteExamByClass(classId, examTitle, examDate) {
     } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
 }
 
-// ── 고1A 장기 플래너 관제 ─────────────────────────────────────────────
+// ── 고1A 플래너 확인 ─────────────────────────────────────────────
 function getPlannerBaseUrl() {
     const origin = window.location.origin;
     let path = window.location.pathname || '/';
@@ -891,15 +908,15 @@ async function renderPlannerControl(classId) {
     state.ui.plannerControlClassId = String(classId || '');
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
-    if (!isPlannerTargetClassName(cls.name)) return toast('고1A 전용 기능입니다.', 'warn');
+    if (!isPlannerTargetClass(cls)) return toast('고1A 전용 기능입니다.', 'warn');
 
     const today = new Date().toLocaleDateString('sv-SE');
-    showModal('플래너 관제', `
+    showModal('플래너 확인', `
         <div style="display:flex; flex-direction:column; gap:14px;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:14px; background:var(--surface-2); border-radius:16px;">
                 <div style="min-width:0;">
                     <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(cls.name)}</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">고1A 장기 플래너</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">고1A 플래너 확인</div>
                 </div>
                 <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:10px; background:var(--surface); border:1px solid var(--border);" onclick="renderClass('${classId}'); closeModal(true);">반 화면</button>
             </div>
@@ -923,15 +940,15 @@ async function refreshPlannerControl(classId) {
     try {
         const data = await loadPlannerOverview(classId, date);
         if (!data?.success) {
-            if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 관제를 불러오지 못했습니다.</div>`;
-            toast(data?.message || data?.error || '플래너 관제 조회 실패', 'warn');
+            if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 정보를 불러오지 못했습니다.</div>`;
+            toast(data?.message || data?.error || '플래너 조회 실패', 'warn');
             return;
         }
         renderPlannerOverviewTable(classId, date, data.students || []);
     } catch (e) {
         console.error('[refreshPlannerControl] failed:', e);
-        if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 관제 조회 중 오류가 발생했습니다.</div>`;
-        toast('플래너 관제 조회 중 오류가 발생했습니다.', 'error');
+        if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 조회 중 오류가 발생했습니다.</div>`;
+        toast('플래너 조회 중 오류가 발생했습니다.', 'error');
     }
 }
 
