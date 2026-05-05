@@ -2,7 +2,7 @@
  * AP Math OS 1.0 [js/classroom.js]
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Minimalism Polish]: 52px 카드 높이 통일, 아이콘 제거, 오늘 현황 레이아웃 분리
- * [Standard UI]: font-weight 700 상한선 준수, table 구조 보존 기반 UI 언어 통일
+ * [Standard UI]: font-weight 700 상한선 준수, 영문 한글화 및 테이블 4열 수직 완벽 정렬
  */
 
 // ── 필수 유틸리티 (중복 선언 방어) ──────────────────────────────────
@@ -234,8 +234,6 @@ function renderClass(cid) {
     const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
     const today = new Date().toLocaleDateString('sv-SE');
     
-    const hasActiveAttendance = state.db.attendance.some(a => a.date === today && mIds.includes(String(a.student_id)) && a.status === '등원');
-    const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(cid, today) && !isClassroomHoliday(today));
     const summary = computeClassTodaySummary(cid);
 
     const opToolsPanel = `
@@ -274,7 +272,7 @@ function renderClass(cid) {
                 <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘 현황</h3>
             </div>
             <div style="margin: 0 16px 24px; height: 52px; min-height: 52px; padding: 0 16px; ${statusCardStyle} border-radius: 16px; font-size: 13px; color: var(--primary); font-weight:700; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
-                <span style="${!summary.isScheduled ? 'color: var(--secondary);' : ''}">Daily Status</span>
+                <span style="${!summary.isScheduled ? 'color: var(--secondary);' : ''}">오늘 현황</span>
                 ${statusBarHtml}
             </div>
             
@@ -283,12 +281,13 @@ function renderClass(cid) {
             </div>
             <div style="margin: 0 16px 32px;">
                 <div class="card" style="padding: 8px 0; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
-                    <table style="width: 100%; border-collapse: collapse;">
+                    <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
                         <thead>
                             <tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
-                                <th style="padding: 10px 16px; font-size: 11px; color: var(--secondary); text-transform: uppercase; font-weight: 700; text-align: left;">Name</th>
-                                <th style="padding: 10px 4px; font-size: 11px; color: var(--secondary); text-transform: uppercase; font-weight: 700; text-align: left;">School</th>
-                                <th style="padding: 10px 16px; font-size: 11px; color: var(--secondary); text-align: right; text-transform: uppercase; font-weight: 700;">Status</th>
+                                <th style="width: 28%; padding: 10px 16px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: left;">이름</th>
+                                <th style="width: 32%; padding: 10px 4px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: center;">학교</th>
+                                <th style="width: 20%; padding: 10px 4px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: center;">출결</th>
+                                <th style="width: 20%; padding: 10px 16px 10px 4px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: center;">숙제</th>
                             </tr>
                         </thead>
                         <tbody id="class-std-list"></tbody>
@@ -317,11 +316,13 @@ function renderClass(cid) {
         const hwLabel = getHomeworkStatusLabel(todayHwMap[s.id], summary.isScheduled);
 
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 6px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.2;">${apEscapeHtml(s.name)}</td>
-            <td style="padding: 6px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.2;">${apEscapeHtml(s.school_name)}</td>
-            <td style="padding: 6px 16px; text-align: right; white-space: nowrap;">
-                <button class="btn class-att-toggle" style="padding: 0 8px; height: 38px; min-height: 38px; max-height: 38px; min-width: 72px; font-size: 12px; font-weight:700; border-radius: 10px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
-                <button class="btn class-hw-toggle" style="padding: 0 8px; height: 38px; min-height: 38px; max-height: 38px; min-width: 58px; font-size: 13px; font-weight:700; border-radius: 10px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
+            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 6px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.2; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${apEscapeHtml(s.name)}</td>
+            <td style="padding: 6px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.2; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${apEscapeHtml(s.school_name)}</td>
+            <td style="padding: 6px 4px; text-align: center; vertical-align: middle;">
+                <button class="btn class-att-toggle" style="padding: 0; width: 100%; max-width: 64px; height: 38px; min-height: 38px; max-height: 38px; font-size: 12px; font-weight:700; border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
+            </td>
+            <td style="padding: 6px 16px 6px 4px; text-align: center; vertical-align: middle;">
+                <button class="btn class-hw-toggle" style="padding: 0; width: 100%; max-width: 56px; height: 38px; min-height: 38px; max-height: 38px; font-size: 12px; font-weight:700; border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
             </td>
         </tr>`;
     }).join('');
@@ -466,17 +467,23 @@ function renderLedgerTable() {
         const label = isAtt ? getAttendanceStatusLabel(recStatus, isScheduled) : getHomeworkStatusLabel(recStatus, isScheduled);
         const style = isAtt ? getAttendanceStatusStyle(recStatus, isScheduled) : getHomeworkStatusStyle(recStatus, isScheduled);
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4;">${apEscapeHtml(s.name)}</td>
-            <td style="padding: 14px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.5;">${apEscapeHtml(s.school_name)}</td>
-            <td style="padding: 14px 12px; text-align: right;">
-                <button class="btn" style="padding: 4px 10px; font-size: 12px; min-width: ${isAtt ? '76px' : '60px'}; font-weight:700; border-radius: 8px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${label}</button>
+            <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4; text-align: left;">${apEscapeHtml(s.name)}</td>
+            <td style="padding: 14px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.5; text-align: center;">${apEscapeHtml(s.school_name)}</td>
+            <td style="padding: 14px 12px; text-align: center; vertical-align: middle;">
+                <button class="btn" style="padding: 4px 10px; font-size: 12px; min-width: ${isAtt ? '76px' : '60px'}; font-weight:700; border-radius: 8px; margin: 0 auto; display: flex; align-items: center; justify-content: center; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${label}</button>
             </td>
         </tr>`;
     }).join('');
     
+    const headerTitle = isAtt ? '출결' : '숙제';
+    
     document.getElementById('ledger-table-wrap').innerHTML = `<div class="card" style="padding: 8px 0; border-radius: 18px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead><tr style="background: var(--bg);"><th style="padding: 10px 12px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: left;">STUDENT</th><th style="padding: 10px 4px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: left;">SCHOOL</th><th style="padding: 10px 12px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: right;">STATUS</th></tr></thead>
+            <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+                <thead><tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
+                <th style="width: 30%; padding: 10px 12px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: left;">이름</th>
+                <th style="width: 40%; padding: 10px 4px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: center;">학교</th>
+                <th style="width: 30%; padding: 10px 12px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: center;">${headerTitle}</th>
+                </tr></thead>
                 <tbody>${rows || '<tr><td colspan="3" style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:700;">조회 대상 없음</td></tr>'}</tbody>
             </table></div>`;
 }
@@ -724,13 +731,13 @@ async function openExamDetail(classId, examTitle, examDate) {
         <div style="margin-bottom: 12px; text-align: right;">
             <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 10px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}')">시험 기록 전체 삭제</button>
         </div>
-        <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+        <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
             <thead>
                 <tr style="border-bottom: 2px solid var(--border); background: var(--bg);">
-                    <th style="text-align: left; padding: 10px 12px; color: var(--secondary); font-weight: 700; font-size: 11px; text-transform: uppercase;">Name</th>
-                    <th style="text-align: center; padding: 10px 4px; color: var(--secondary); font-weight: 700; font-size: 11px; text-transform: uppercase;">Score</th>
-                    <th style="text-align: left; padding: 10px 4px; color: var(--secondary); font-weight: 700; font-size: 11px; text-transform: uppercase;">Wrong</th>
-                    <th style="text-align: right; padding: 10px 12px; color: var(--secondary); font-weight: 700; font-size: 11px; text-transform: uppercase;">Action</th>
+                    <th style="width: 25%; text-align: left; padding: 10px 12px; color: var(--secondary); font-weight: 700; font-size: 12px;">이름</th>
+                    <th style="width: 20%; text-align: center; padding: 10px 4px; color: var(--secondary); font-weight: 700; font-size: 12px;">점수</th>
+                    <th style="width: 35%; text-align: left; padding: 10px 4px; color: var(--secondary); font-weight: 700; font-size: 12px;">오답</th>
+                    <th style="width: 20%; text-align: right; padding: 10px 12px; color: var(--secondary); font-weight: 700; font-size: 12px;">관리</th>
                 </tr>
             </thead>
             <tbody>${submittedHTML}${pendingHTML}</tbody>
