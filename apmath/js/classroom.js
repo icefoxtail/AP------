@@ -2,8 +2,16 @@
  * AP Math OS 1.0 [js/classroom.js]
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Fixed Standard UI]: Typography(Fixed) & Spacing(Fixed) 전면 적용본
- * [Master Review Patch]: 공휴일 감지 로직 이식 (충돌 없는 참조 방식)
+ * [Master Review Patch]: 공휴일 감지 로직 이식 및 월간 출석부 캐시 동기화 패치 (중복 선언 완전 제거)
  */
+
+// ── 필수 유틸리티 (중복 선언 방어) ──────────────────────────────────
+if (typeof apEscapeHtml !== 'function') {
+    window.apEscapeHtml = function(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
+}
 
 // [UI Standard]: 클래스룸 전용 스타일 주입 (애니메이션 및 입력창 규격)
 function injectClassroomStyles() {
@@ -22,6 +30,28 @@ function formatClassScheduleDays(daysStr) {
     if (!daysStr) return '매일';
     const map = ['일','월','화','수','목','금','토'];
     return daysStr.split(',').map(d => map[parseInt(d)]).join('');
+}
+
+// [Master Review Patch] 공휴일 판별 (재선언 없이 기존 전역 변수 참조)
+function isClassroomHoliday(dateStr) {
+    // dashboard.js의 DASH_HOLIDAYS 참조 (재선언 금지)
+    if (typeof DASH_HOLIDAYS !== 'undefined' && Array.isArray(DASH_HOLIDAYS)) {
+        if (DASH_HOLIDAYS.includes(dateStr)) return true;
+    }
+    // cumulative.js의 HOLIDAYS_2026 참조 (재선언 금지)
+    if (typeof HOLIDAYS_2026 !== 'undefined' && Array.isArray(HOLIDAYS_2026)) {
+        if (HOLIDAYS_2026.includes(dateStr)) return true;
+    }
+    // DB 학원 전체 휴무일 체크
+    if (state.db.academy_schedules) {
+        return state.db.academy_schedules.some(s =>
+            String(s.is_deleted || 0) !== '1' &&
+            s.schedule_date === dateStr &&
+            s.schedule_type === 'closed' &&
+            s.target_scope !== 'student'
+        );
+    }
+    return false;
 }
 
 function isClassScheduledOnDate(clsId, dateStr) {
@@ -47,27 +77,6 @@ function isClassScheduledOnDate(clsId, dateStr) {
     return cls.schedule_days.split(',').includes(dayIdx);
 }
 
-function isClassroomHoliday(dateStr) {
-    // dashboard.js의 DASH_HOLIDAYS 참조 (재선언 금지)
-    if (typeof DASH_HOLIDAYS !== 'undefined' && Array.isArray(DASH_HOLIDAYS)) {
-        if (DASH_HOLIDAYS.includes(dateStr)) return true;
-    }
-    // cumulative.js의 HOLIDAYS_2026 참조 (재선언 금지)
-    if (typeof HOLIDAYS_2026 !== 'undefined' && Array.isArray(HOLIDAYS_2026)) {
-        if (HOLIDAYS_2026.includes(dateStr)) return true;
-    }
-    // DB 학원 전체 휴무일 체크
-    if (state.db.academy_schedules) {
-        return state.db.academy_schedules.some(s =>
-            String(s.is_deleted || 0) !== '1' &&
-            s.schedule_date === dateStr &&
-            s.schedule_type === 'closed' &&
-            s.target_scope !== 'student'
-        );
-    }
-    return false;
-}
-
 // ── 출석 상태 헬퍼 ──────────────────────────────────────────────
 function getAttendanceDisplayStatus(status, isClassDay = true) {
     const safe = String(status || '').trim();
@@ -89,7 +98,7 @@ function getAttendanceStatusLabel(status, isClassDay = true) {
     if (cur === '지각') return '△ 지각';
     if (cur === '보강') return '＋ 보강';
     if (cur === '상담') return '★ 상담';
-    if (cur === '수업 없음') return '-'; // 텅 빈 모양 텍스트
+    if (cur === '수업 없음') return '-'; 
     return '○ 등원';
 }
 
@@ -111,7 +120,7 @@ function getAttendanceStatusStyle(status, isClassDay = true) {
         return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 800; border: 1px solid rgba(124,58,237,0.18);';
     }
     if (cur === '수업 없음') {
-        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; // 텅 빈 스타일
+        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
     }
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
@@ -134,7 +143,7 @@ function getHomeworkStatusLabel(status, isClassDay = true) {
     const cur = getHomeworkDisplayStatus(status, isClassDay);
     if (cur === '완료') return '완료';
     if (cur === '미완료') return '미완료';
-    if (cur === '공란') return '-'; // 텅 빈 모양 텍스트
+    if (cur === '공란') return '-'; 
     return '완료';
 }
 
@@ -147,7 +156,7 @@ function getHomeworkStatusStyle(status, isClassDay = true) {
         return 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(255,165,2,0.15);';
     }
     if (cur === '공란') {
-        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; // 텅 빈 스타일
+        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
     }
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
@@ -164,7 +173,7 @@ async function handleBatchGeneratePins(classId) {
     }
 }
 
-// [Phase 4/5] 요약 계산 (상태 기반 정확한 덧셈 로직으로 수정)
+// [Phase 4/5] 요약 계산 (상태 기반 정확한 덧셈 및 휴일 감지 연동)
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
@@ -172,41 +181,31 @@ function computeClassTodaySummary(classId) {
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
     const aIds = new Set(active.map(s => String(s.id)));
     const total = active.length;
-    const isScheduled = isClassScheduledOnDate(classId, today);
+
+    // [Smart Active] 실제 '등원' 기록이 있으면 휴무 무시하고 활성화
+    const hasActiveAttendance = state.db.attendance.some(a => a.date === today && ids.includes(String(a.student_id)) && a.status === '등원');
+    const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(classId, today) && !isClassroomHoliday(today));
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
 
-    // 1. 빠른 검색용 Map 생성
     const todayAttMap = {};
     for (let i = 0; i < state.db.attendance.length; i++) {
         let a = state.db.attendance[i];
-        if (a.date === today && aIds.has(String(a.student_id))) {
-            todayAttMap[a.student_id] = a.status;
-        }
+        if (a.date === today && aIds.has(String(a.student_id))) todayAttMap[a.student_id] = a.status;
     }
-    
     const todayHwMap = {};
     for (let i = 0; i < state.db.homework.length; i++) {
         let h = state.db.homework[i];
-        if (h.date === today && aIds.has(String(h.student_id))) {
-            todayHwMap[h.student_id] = h.status;
-        }
+        if (h.date === today && aIds.has(String(h.student_id))) todayHwMap[h.student_id] = h.status;
     }
 
-    // 2. 화면에 보이는 상태값을 기준으로 정확하게 카운트
-    let attCount = 0;
-    let hwCount = 0;
-    
+    let attCount = 0; let hwCount = 0;
     active.forEach(s => {
         const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id], isScheduled);
-        if (['등원', '지각', '보강', '상담'].includes(attStatus)) {
-            attCount++;
-        }
-        
+        // [Master Policy] 오직 '등원' 상태만 합산
+        if (attStatus === '등원') attCount++;
         const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id], isScheduled);
-        if (hwStatus === '완료') {
-            hwCount++;
-        }
+        if (hwStatus === '완료') hwCount++;
     });
 
     let test = 0;
@@ -214,13 +213,10 @@ function computeClassTodaySummary(classId) {
         let testedIds = new Set();
         for (let i = 0; i < state.db.exam_sessions.length; i++) {
             let es = state.db.exam_sessions[i];
-            if (es.exam_date === today && es.exam_title === todayExam.title && aIds.has(String(es.student_id))) {
-                testedIds.add(String(es.student_id));
-            }
+            if (es.exam_date === today && es.exam_title === todayExam.title && aIds.has(String(es.student_id))) testedIds.add(String(es.student_id));
         }
         test = testedIds.size;
     }
-    
     return { att: attCount, hw: hwCount, test, total, isScheduled };
 }
 
@@ -245,7 +241,9 @@ function renderClass(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
     const today = new Date().toLocaleDateString('sv-SE');
-    const isScheduled = isClassScheduledOnDate(cid, today);
+    
+    const hasActiveAttendance = state.db.attendance.some(a => a.date === today && mIds.includes(String(a.student_id)) && a.status === '등원');
+    const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(cid, today) && !isClassroomHoliday(today));
     const summary = computeClassTodaySummary(cid);
 
     const icons = {
@@ -336,8 +334,8 @@ function renderClass(cid) {
         const hwLabel = getHomeworkStatusLabel(todayHwMap[s.id], isScheduled);
 
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
-            <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
+            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${apEscapeHtml(s.name)}</td>
+            <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${apEscapeHtml(s.school_name)}</td>
             <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
                 <button class="btn class-att-toggle" style="padding: 4px 8px; font-size: 12px; min-width: 68px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
                 <button class="btn class-hw-toggle" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
@@ -349,50 +347,19 @@ function renderClass(cid) {
         setTimeout(() => {
             const selector = defaultTab === 'att' ? '.class-att-toggle' : '.class-hw-toggle';
             const target = document.querySelector(selector);
-            if (!target) return;
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            target.focus({ preventScroll: true });
+            if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'center' }); target.focus({ preventScroll: true }); }
         }, 0);
     }
 }
 
 // 학년별 소단원 마스터 테이블
 var MATH_CURRICULUM_UNITS = {
-    '중1': [
-        '소인수분해','정수와 유리수','문자와 식','좌표평면과 그래프',
-        '기본도형','평면도형의 성질','입체도형의 성질','자료의 정리와 해석'
-    ],
-    '중2': [
-        '수와 식','일차부등식','연립일차방정식','일차함수와 그래프',
-        '도형의 성질','도형의 닮음','피타고라스 정리','확률'
-    ],
-    '중3': [
-        '실수와 그 계산','다항식의 곱셈과 인수분해','이차방정식',
-        '이차함수와 그래프','삼각비','원의 성질','통계'
-    ],
-    '고1': [
-        '다항식의 연산','항등식과 나머지 정리','인수분해',
-        '복소수와 이차방정식','이차방정식과 이차함수','여러 가지 방정식과 부등식',
-        '합의 법칙과 곱의 법칙','순열과 조합','행렬과 그 연산',
-        '평면좌표','직선의 방정식','원의 방정식','도형의 이동',
-        '집합','명제','함수','유리함수','무리함수'
-    ],
-    '고2': [
-        '지수와 로그','지수함수','로그함수',
-        '삼각함수','사인법칙과 코사인법칙',
-        '등차수열과 등비수열','수열의 합','수학적 귀납법',
-        '함수의 극한','함수의 연속',
-        '미분계수','도함수','도함수의 활용',
-        '부정적분','정적분','정적분의 활용'
-    ],
-    '고3': [
-        '수열의 극한','급수',
-        '지수함수와 로그함수의 미분','삼각함수의 미분','여러 가지 미분법','도함수의 활용',
-        '여러 가지 적분법','정적분의 활용',
-        '순열과 조합','이항정리','확률의 뜻과 활용','조건부확률','확률분포','통계적 추정',
-        '이차곡선','이차곡선의 접선','공간도형','공간좌표',
-        '벡터의 연산','벡터의 성분','벡터의 내적','도형의 방정식'
-    ]
+    '중1': ['소인수분해','정수와 유리수','문자와 식','좌표평면과 그래프','기본도형','평면도형의 성질','입체도형의 성질','자료의 정리와 해석'],
+    '중2': ['수와 식','일차부등식','연립일차방정식','일차함수와 그래프','도형의 성질','도형의 닮음','피타고라스 정리','확률'],
+    '중3': ['실수와 그 계산','다항식의 곱셈과 인수분해','이차방정식','이차함수와 그래프','삼각비','원의 성질','통계'],
+    '고1': ['다항식의 연산','항등식과 나머지 정리','인수분해','복소수와 이차방정식','이차방정식과 이차함수','여러 가지 방정식과 부등식','합의 법칙과 곱의 법칙','순열과 조합','행렬과 그 연산','평면좌표','직선의 방정식','원의 방정식','도형의 이동','집합','명제','함수','유리함수','무리함수'],
+    '고2': ['지수와 로그','지수함수','로그함수','삼각함수','사인법칙과 코사인법칙','등차수열과 등비수열','수열의 합','수학적 귀납법','함수의 극한','함수의 연속','미분계수','도함수','도함수의 활용','부정적분','정적분','정적분의 활용'],
+    '고3': ['수열의 극한','급수','지수함수와 로그함수의 미분','삼각함수의 미분','여러 가지 미분법','도함수의 활용','여러 가지 적분법','정적분의 활용','순열과 조합','이항정리','확률의 뜻과 활용','조건부확률','확률분포','통계적 추정','이차곡선','이차곡선의 접선','공간도형','공간좌표','벡터의 연산','벡터의 성분','벡터의 내적','도형의 방정식']
 };
 
 function _getClassGradeKey(cls) {
@@ -402,17 +369,13 @@ function _getClassGradeKey(cls) {
     return match ? match[1] : '';
 }
 
-// [UI Standard Applied]: 진도관리 모달 수동 보정
 function openClassRecordModal(cid) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId: cid });
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const allTextbooks = state.db.class_textbooks || [];
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
-
-    if (activeBooks.length === 0 && cls.textbook) {
-        activeBooks = [{ id: 'fallback', title: cls.textbook }];
-    }
+    if (activeBooks.length === 0 && cls.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
 
     const existingRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cid) && r.date === todayStr);
     const existingProgress = existingRecord ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id)) : [];
@@ -421,63 +384,47 @@ function openClassRecordModal(cid) {
         const prevP = existingProgress.find(p => String(p.textbook_id) === String(tb.id) || (tb.id === 'fallback' && p.textbook_title_snapshot === tb.title));
         const progVal = prevP ? prevP.progress_text : '';
         const isChecked = (prevP || progVal) ? 'checked' : '';
-        
-        return `
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+        return `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
             <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight:700; min-width: 120px; color: var(--text); cursor: pointer; line-height: 1.5;">
                 <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${String(tb.title).replace(/"/g, '&quot;')}" ${isChecked} style="transform: scale(1.1); accent-color: var(--primary);">
-                ${String(tb.title)}
+                ${apEscapeHtml(tb.title)}
             </label>
             <input type="text" class="cls-input record-tb-progress" id="progress_${tb.id}" value="${progVal}" placeholder="예: p.10~25" style="flex: 1; min-height: 44px;">
-        </div>
-        `;
+        </div>`;
     }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight: 700; line-height: 1.5;">활성 교재 없음</div>`;
 
     const rawNote = existingRecord ? (existingRecord.special_note || '') : '';
     const unitLineMatch = rawNote.match(/^\[단원선택\]([^\n]*)\n?/);
-    const prevSelectedUnits = unitLineMatch
-        ? unitLineMatch[1].split(',').map(u => u.trim()).filter(Boolean)
-        : [];
+    const prevSelectedUnits = unitLineMatch ? unitLineMatch[1].split(',').map(u => u.trim()).filter(Boolean) : [];
     const prevNote = rawNote.replace(/^\[단원선택\][^\n]*\n?/, '').trim();
 
     const gradeKey = _getClassGradeKey(cls);
     const units = gradeKey ? (MATH_CURRICULUM_UNITS[gradeKey] || []) : [];
     let unitsHtml = '';
     if (units.length > 0) {
-        const unitChecks = units.map(u => {
-            const checked = prevSelectedUnits.indexOf(u) !== -1 ? 'checked' : '';
-            const safeU = u.replace(/"/g, '&quot;');
-            return `<label style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;cursor:pointer;padding:4px 8px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);white-space:nowrap;color:var(--text);">
-                <input type="checkbox" class="record-unit-check" value="${safeU}" ${checked} style="accent-color:var(--primary);cursor:pointer;">
-                ${safeU}
-            </label>`;
-        }).join('');
-        unitsHtml = `
-        <div style="margin-bottom: 20px;">
+        unitsHtml = `<div style="margin-bottom: 20px;">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
                 <h4 style="margin:0;font-size:16px;font-weight:700;color:var(--text);line-height:1.3;">오늘 수업 단원 <span style="font-size:11px;font-weight:600;color:var(--secondary);">${gradeKey}</span></h4>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">${unitChecks}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">${units.map(u => {
+                const checked = prevSelectedUnits.indexOf(u) !== -1 ? 'checked' : '';
+                return `<label style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;cursor:pointer;padding:4px 8px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);white-space:nowrap;color:var(--text);">
+                    <input type="checkbox" class="record-unit-check" value="${apEscapeHtml(u)}" ${checked} style="accent-color:var(--primary);cursor:pointer;">${apEscapeHtml(u)}</label>`;
+            }).join('')}</div>
         </div>`;
     }
 
-    showModal('진도관리', `
-        ${unitsHtml}
-        <div style="margin-bottom: 24px;">
+    showModal('진도관리', `${unitsHtml}<div style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
                 <h4 style="margin: 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">교재별 진도</h4>
                 <span style="font-size: 11px; font-weight: 700; color: var(--secondary); line-height: 1.5;">${todayStr}</span>
             </div>
-            <div style="background: var(--surface); padding: 4px 0;">
-                ${booksHtml}
-            </div>
+            <div style="background: var(--surface); padding: 4px 0;">${booksHtml}</div>
         </div>
-        <div style="margin-bottom: 32px;">
-            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">특이사항</h4>
+        <div style="margin-bottom: 32px;"><h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">특이사항</h4>
             <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 100px; resize: none; padding: 14px; line-height: 1.6;">${apEscapeHtml(prevNote)}</textarea>
         </div>
-        <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:700; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>
-    `);
+        <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:700; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>`);
 }
 
 async function saveClassRecord(cid, dateStr) {
@@ -485,211 +432,144 @@ async function saveClassRecord(cid, dateStr) {
     const progresses = [];
     checks.forEach(chk => {
         const tbId = chk.value;
-        const tbTitle = chk.getAttribute('data-title');
         const progInput = document.getElementById(`progress_${tbId}`);
-        const progText = progInput ? progInput.value.trim() : '';
-        progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: tbTitle, progress_text: progText });
+        progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: chk.getAttribute('data-title'), progress_text: progInput ? progInput.value.trim() : '' });
     });
     const selectedUnits = Array.from(document.querySelectorAll('.record-unit-check:checked')).map(cb => cb.value);
     let specialNote = document.getElementById('record-special-note')?.value.trim() || '';
-    if (selectedUnits.length > 0) {
-        specialNote = '[단원선택] ' + selectedUnits.join(', ') + (specialNote ? '\n' + specialNote : '');
-    }
-    let actualTeacherName = typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당');
-    const payload = { class_id: cid, date: dateStr, teacher_name: actualTeacherName, special_note: specialNote, progress: progresses };
+    if (selectedUnits.length > 0) specialNote = '[단원선택] ' + selectedUnits.join(', ') + (specialNote ? '\n' + specialNote : '');
+    const payload = { class_id: cid, date: dateStr, teacher_name: (typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당')), special_note: specialNote, progress: progresses };
 
-    try {
-        const r = await api.post('class-daily-records', payload);
-        if (r?.success) {
-            toast('저장 완료', 'success');
-            closeModal(true);
-            await loadData();
-            renderClass(cid);
-            return;
-        }
-        toast(r?.message || r?.error || '수업 기록 저장에 실패했습니다.', 'error');
-    } catch (e) {
-        console.error('[saveClassRecord] failed:', e);
-        toast('수업 기록 저장 중 오류가 발생했습니다.', 'error');
-    }
+    const r = await api.post('class-daily-records', payload);
+    if (r?.success) { toast('저장 완료', 'success'); closeModal(true); await loadData(); renderClass(cid); }
 }
 
-// [UI Standard Applied]: 출석부(Ledger) 엔진 수동 보정
 let ledgerState = { date: new Date().toLocaleDateString('sv-SE'), classId: '', attendance: [], homework: [], mode: 'att' };
-
 async function loadLedger() {
     try {
         const r = await fetch(`${CONFIG.API_BASE}/attendance-history?date=${ledgerState.date}`, { headers: getAuthHeader() });
         const data = await r.json();
-        ledgerState.attendance = data.attendance || [];
-        ledgerState.homework = data.homework || [];
-        renderLedgerTable();
+        ledgerState.attendance = data.attendance || []; ledgerState.homework = data.homework || []; renderLedgerTable();
     } catch (e) { toast('데이터 로드 실패', 'warn'); }
 }
 
-async function goDashboardFromLedger() { await refreshDataOnly(); state.ui.currentClassId = null; renderDashboard(); }
-
 function renderAttendanceLedger() {
     const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${String(c.id) === String(ledgerState.classId) ? 'selected' : ''}>${c.name}</option>`).join('');
-    showModal('출석부', `
-        <div style="display: flex; gap: 12px; flex-direction: column; margin-bottom: 16px; background: var(--surface-2); padding: 12px; border: 1px solid var(--border); border-radius: 16px;">
+    showModal('출석부', `<div style="display: flex; gap: 12px; flex-direction: column; margin-bottom: 16px; background: var(--surface-2); padding: 12px; border: 1px solid var(--border); border-radius: 16px;">
             <div style="display: flex; gap: 8px;">
                 <input type="date" id="ledger-date" class="cls-input" value="${ledgerState.date}" style="flex: 1.2; background: var(--surface); border: 1px solid var(--border);" onchange="ledgerState.date=this.value;loadLedger();">
-                <select id="ledger-class" class="cls-input" style="flex: 1; background: var(--surface); border: 1px solid var(--border);" onchange="ledgerState.classId=this.value;renderLedgerTable();">
-                    <option value="">전체 학급</option>${classOptions}
-                </select>
+                <select id="ledger-class" class="cls-input" style="flex: 1; background: var(--surface); border: 1px solid var(--border);" onchange="ledgerState.classId=this.value;renderLedgerTable();"><option value="">전체 학급</option>${classOptions}</select>
             </div>
             <div style="display: flex; gap: 6px; background: var(--surface); padding: 4px; border: 1px solid var(--border); border-radius: 12px;">
                 <button id="ledger-mode-att" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
                 <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
             </div>
-        </div>
-        <div id="ledger-table-wrap" style="max-height: 55vh; overflow-y: auto; padding-right: 4px;"></div>
-    `);
+        </div><div id="ledger-table-wrap" style="max-height: 55vh; overflow-y: auto; padding-right: 4px;"></div>`);
     loadLedger();
 }
 
 function renderLedgerTable() {
-    const attBtn = document.getElementById('ledger-mode-att');
-    const hwBtn = document.getElementById('ledger-mode-hw');
     const isAtt = ledgerState.mode === 'att';
-    if (attBtn) { attBtn.style.background = isAtt ? 'var(--surface-2)' : 'transparent'; attBtn.style.color = isAtt ? 'var(--primary)' : 'var(--secondary)'; attBtn.style.fontWeight = isAtt ? '950' : '700'; }
-    if (hwBtn) { hwBtn.style.background = !isAtt ? 'var(--surface-2)' : 'transparent'; hwBtn.style.color = !isAtt ? 'var(--primary)' : 'var(--secondary)'; hwBtn.style.fontWeight = !isAtt ? '950' : '700'; }
-
     const cid = ledgerState.classId;
     const mIds = cid ? state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id)) : state.db.students.map(s => String(s.id));
     const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원');
     const records = isAtt ? ledgerState.attendance : ledgerState.homework;
-
-    const recordMap = {};
-    for (let i = 0; i < records.length; i++) {
-        if (!records[i].date || records[i].date === ledgerState.date) {
-            recordMap[records[i].student_id] = records[i].status;
-        }
-    }
+    const recordMap = {}; records.forEach(r => { if (!r.date || r.date === ledgerState.date) recordMap[r.student_id] = r.status; });
 
     const rows = stds.map(s => {
         const sCid = cid || state.db.class_students.find(m => String(m.student_id) === String(s.id))?.class_id;
         const isScheduled = sCid ? isClassScheduledOnDate(sCid, ledgerState.date) : true;
-        
         const recStatus = recordMap[s.id];
-        const status = isAtt ? getAttendanceDisplayStatus(recStatus, isScheduled) : getHomeworkDisplayStatus(recStatus, isScheduled);
         const label = isAtt ? getAttendanceStatusLabel(recStatus, isScheduled) : getHomeworkStatusLabel(recStatus, isScheduled);
         const style = isAtt ? getAttendanceStatusStyle(recStatus, isScheduled) : getHomeworkStatusStyle(recStatus, isScheduled);
-        
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4;">${s.name}</td>
-            <td style="padding: 14px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.5;">${s.school_name}</td>
+            <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4;">${apEscapeHtml(s.name)}</td>
+            <td style="padding: 14px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.5;">${apEscapeHtml(s.school_name)}</td>
             <td style="padding: 14px 12px; text-align: right;">
                 <button class="btn" style="padding: 4px 10px; font-size: 12px; min-width: ${isAtt ? '76px' : '60px'}; font-weight:700; border-radius: 8px; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${label}</button>
             </td>
         </tr>`;
     }).join('');
     
-    document.getElementById('ledger-table-wrap').innerHTML = `
-        <div class="card" style="padding: 8px 0; border-radius: 18px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
+    document.getElementById('ledger-table-wrap').innerHTML = `<div class="card" style="padding: 8px 0; border-radius: 18px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
             <table style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background: var(--bg);">
-                        <th style="padding: 10px 12px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: left;">STUDENT</th>
-                        <th style="padding: 10px 4px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: left;">SCHOOL</th>
-                        <th style="padding: 10px 12px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: right;">STATUS</th>
-                    </tr>
-                </thead>
+                <thead><tr style="background: var(--bg);"><th style="padding: 10px 12px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: left;">STUDENT</th><th style="padding: 10px 4px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: left;">SCHOOL</th><th style="padding: 10px 12px; font-size: 11px; color: var(--secondary); font-weight: 700; text-align: right;">STATUS</th></tr></thead>
                 <tbody>${rows || '<tr><td colspan="3" style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:700;">조회 대상 없음</td></tr>'}</tbody>
-            </table>
-        </div>
-    `;
+            </table></div>`;
 }
 
-// ★ 낙관적 업데이트 적용: 누르자마자 메모리와 화면부터 즉각 변경
+// ★ 낙관적 업데이트 및 월간 캐시 동기화 적용
 async function toggleAtt(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
     const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => String(a.student_id) === String(sid) && a.date === today);
-    
     const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
     const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
-    
     const next = getNextAttendanceStatus(cur?.status, isScheduled);
     const prevStatus = cur ? cur.status : undefined;
 
-    // [1] 메모리 즉시 변경
-    if (cur) {
-        cur.status = next;
-    } else {
-        list.push({ student_id: sid, date: today, status: next });
-    }
+    if (cur) cur.status = next; else list.push({ student_id: sid, date: today, status: next });
+    if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
 
-    // [2] 화면 즉시 렌더링 (서버 응답 대기 안 함)
-    if (isLedger) renderLedgerTable(); 
-    else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
-    else renderDashboard();
-
-    // [3] 뒷단에서 백그라운드 API 전송
     try {
         const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
-        // 성공 시 조용히 데이터 동기화
-        if (typeof refreshDataOnly === 'function') refreshDataOnly().catch(() => {});
+        if (typeof refreshDataOnly === 'function') {
+            refreshDataOnly()
+                .then(() => {
+                    const month = today.slice(0, 7);
+                    if (state.ui?.monthlyAttendanceCache) {
+                        delete state.ui.monthlyAttendanceCache[month];
+                    }
+                })
+                .catch(() => {});
+        }
     } catch (e) {
-        // [4] 통신 실패 시에만 원상복구(롤백) 후 에러 메시지
-        if (cur) {
-            cur.status = prevStatus;
-        } else {
+        if (cur) cur.status = prevStatus;
+        else {
             const idx = list.findIndex(a => String(a.student_id) === String(sid) && a.date === today);
             if (idx > -1) list.splice(idx, 1);
         }
-        if (isLedger) renderLedgerTable(); 
-        else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
-        else renderDashboard();
+        if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
         toast('저장 실패', 'warn');
     }
 }
 
-// ★ 낙관적 업데이트 적용: 누르자마자 메모리와 화면부터 즉각 변경
+// ★ 낙관적 업데이트 및 월간 캐시 동기화 적용
 async function toggleHw(sid, date) {
     const today = date || new Date().toLocaleDateString('sv-SE');
     const isLedger = !!date;
     const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => String(h.student_id) === String(sid) && h.date === today);
-    
     const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
     const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
-    
     const next = getNextHomeworkStatus(cur?.status, isScheduled);
     const prevStatus = cur ? cur.status : undefined;
 
-    // [1] 메모리 즉시 변경
-    if (cur) {
-        cur.status = next;
-    } else {
-        list.push({ student_id: sid, date: today, status: next });
-    }
+    if (cur) cur.status = next; else list.push({ student_id: sid, date: today, status: next });
+    if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
 
-    // [2] 화면 즉시 렌더링 (서버 응답 대기 안 함)
-    if (isLedger) renderLedgerTable(); 
-    else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
-    else renderDashboard();
-
-    // [3] 뒷단에서 백그라운드 API 전송
     try {
         const r = await api.patch('homework', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
-        // 성공 시 조용히 데이터 동기화
-        if (typeof refreshDataOnly === 'function') refreshDataOnly().catch(() => {});
+        if (typeof refreshDataOnly === 'function') {
+            refreshDataOnly()
+                .then(() => {
+                    const month = today.slice(0, 7);
+                    if (state.ui?.monthlyAttendanceCache) {
+                        delete state.ui.monthlyAttendanceCache[month];
+                    }
+                })
+                .catch(() => {});
+        }
     } catch (e) {
-        // [4] 통신 실패 시에만 원상복구(롤백) 후 에러 메시지
-        if (cur) {
-            cur.status = prevStatus;
-        } else {
+        if (cur) cur.status = prevStatus;
+        else {
             const idx = list.findIndex(h => String(h.student_id) === String(sid) && h.date === today);
             if (idx > -1) list.splice(idx, 1);
         }
-        if (isLedger) renderLedgerTable(); 
-        else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); 
-        else renderDashboard();
+        if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
         toast('저장 실패', 'warn');
     }
 }
@@ -706,7 +586,6 @@ function makeExamDetailKey(title, date) {
     return `${String(title || '')}||${String(date || '')}`;
 }
 
-// [UI Standard Applied]: 시험 성적 리스트 수동 보정
 async function openExamGradeView(classId) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId });
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
@@ -747,7 +626,7 @@ async function openExamGradeView(classId) {
     const rows = exams.map(exam => {
         const cnt = exam.sessions.length;
         const qCount = exam.questionCount || exam.sessions[0]?.question_count || exam.assignment?.question_count || 0;
-        const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(sum, s.score || 0), 0) / cnt) : '-';
+        const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
         const pct = activeCountForAssignment ? Math.round((cnt / activeCountForAssignment) * 100) : 0;
         const archiveArg = String(exam.archiveFile || '').replace(/'/g, "\\'");
         return `<div onclick="openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}')" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
