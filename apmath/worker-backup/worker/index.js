@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AP Math OS v26.1.2 [IRONCLAD - Phase 4/5 FINAL RECOVERY]
  * Cloudflare Worker 통합 API 엔진 - 절대 축약 없음, 모든 기존 API 복구 완료본
  * Phase 4/5 Add-on: class_textbooks / class_daily_records / class_daily_progress API 추가
@@ -2011,6 +2011,39 @@ export default {
             return new Response(JSON.stringify({ success: true, count: stmts.length }), { headers });
           }
 
+          if (method === 'PATCH' && id === 'settings') {
+            const d = await request.json();
+            const studentId = String(d.student_id || '').trim();
+            const pin = String(d.pin || '').trim();
+            const examDateStr = String(d.planner_exam_date || '').trim();
+
+            if (!studentId || !examDateStr) {
+              return new Response(JSON.stringify({ success: false, error: 'student_id, planner_exam_date required' }), { status: 400, headers });
+            }
+
+            const parsedExamDate = parsePlannerDate(examDateStr);
+            if (!parsedExamDate) {
+              return new Response(JSON.stringify({ success: false, error: 'planner_exam_date must be YYYY-MM-DD' }), { status: 400, headers });
+            }
+
+            const today = parsePlannerDate(todayKstDateString());
+            if (today && parsedExamDate < today) {
+              return new Response(JSON.stringify({ success: false, error: 'planner_exam_date must be today or later' }), { status: 400, headers });
+            }
+
+            const auth = await checkPlannerAccess(request, studentId, pin);
+            if (!auth.authorized) {
+              return new Response(JSON.stringify({ success: false, error: auth.error }), { status: auth.status || 403, headers });
+            }
+
+            await env.DB.prepare(`
+              UPDATE students
+              SET planner_exam_date = ?
+              WHERE id = ?
+            `).bind(examDateStr, studentId).run();
+
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
           if (method === 'PATCH' && id) {
             const d = await request.json();
             const existing = await env.DB.prepare(`
