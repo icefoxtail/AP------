@@ -45,16 +45,44 @@ function apFormatMonthDay(value) {
     return `${m}월 ${d}일`;
 }
 
-// [Partner B] 해당 반이 오늘 수업이 있는 날인지 판정하는 헬퍼
-function isClassScheduledToday(cid) {
+const DASH_HOLIDAYS = [
+    '2026-01-01', '2026-02-16', '2026-02-17', '2026-02-18', '2026-03-01', '2026-03-02',
+    '2026-05-01', '2026-05-05', '2026-05-24', '2026-05-25', '2026-06-06', '2026-07-17',
+    '2026-08-15', '2026-08-17', '2026-09-24', '2026-09-25', '2026-09-26', '2026-10-03',
+    '2026-10-05', '2026-10-09', '2026-12-25'
+];
+
+function isDashboardHoliday(dateStr) {
+    if (DASH_HOLIDAYS.includes(dateStr)) return true;
+    if (state.db.academy_schedules) {
+        return state.db.academy_schedules.some(s =>
+            String(s.is_deleted || 0) !== '1' &&
+            s.schedule_date === dateStr &&
+            s.schedule_type === 'closed' &&
+            s.target_scope !== 'student'
+        );
+    }
+    return false;
+}
+
+function isClassScheduledTodayForDashboard(cid) {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
-    // 수업 요일 설정이 없으면 매일 수업으로 간주
+
+    const cIds = state.db.class_students
+        .filter(m => String(m.class_id) === String(cid))
+        .map(m => String(m.student_id));
+    const hasActiveAttendance = state.db.attendance.some(
+        a => a.date === todayStr && cIds.includes(String(a.student_id)) && a.status === '등원'
+    );
+    if (hasActiveAttendance) return true;
+
+    if (isDashboardHoliday(todayStr)) return false;
+
     if (!cls.schedule_days) return true;
-    
-    const today = new Date().getDay(); // 0(일) ~ 6(토)
-    const days = String(cls.schedule_days).split(',').map(d => d.trim());
-    return days.includes(String(today));
+    const today = new Date().getDay();
+    return String(cls.schedule_days).split(',').map(d => d.trim()).includes(String(today));
 }
 
 function isMiddleSchoolClass(c) {
@@ -199,42 +227,28 @@ function openDischargedStudents() {
     openAdminStudentList('discharged');
 }
 
-const HIDDEN_DISCHARGED_STUDENTS_KEY = 'APMATH_HIDDEN_DISCHARGED_STUDENTS';
-
-function getHiddenDischargedStudentIds() {
-    try {
-        const parsed = JSON.parse(localStorage.getItem(HIDDEN_DISCHARGED_STUDENTS_KEY) || '[]');
-        return Array.isArray(parsed) ? parsed.map(String) : [];
-    } catch (e) {
-        return [];
+function openRiskStudentReport(studentId) {
+    const risks = typeof computeRiskStudents === 'function' ? computeRiskStudents() : [];
+    const risk = risks.find(r => String(r.student?.id) === String(studentId));
+    if (typeof openStudentReportModal === 'function') {
+        openStudentReportModal(studentId, { riskInfo: risk || null, title: '관리필요 학생 문구 생성' });
+        return;
     }
-}
-
-function setHiddenDischargedStudentIds(ids) {
-    localStorage.setItem(HIDDEN_DISCHARGED_STUDENTS_KEY, JSON.stringify([...new Set(ids.map(String))]));
+    toast('보고 문구 모듈을 불러오지 못했습니다.', 'warn');
 }
 
 async function restoreDischargedStudent(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const r = await api.patch(`students/${sid}/restore`, {});
-    if (r?.success) {
-        setHiddenDischargedStudentIds(getHiddenDischargedStudentIds().filter(id => id !== String(sid)));
-        await loadData();
-        openAdminStudentList('discharged');
-    } else {
-        toast(r?.message || r?.error || '복구에 실패했습니다.', 'error');
-    }
+    if (r?.success) { await loadData(); openAdminStudentList('discharged'); }
+    else toast(r?.message || r?.error || '복구에 실패했습니다.', 'error');
 }
 
-function hideDischargedStudent(sid) {
+async function hideDischargedStudent(sid) {
     if (!confirm('이 퇴원생을 목록에서 숨기시겠습니까?')) return;
-    setHiddenDischargedStudentIds([...getHiddenDischargedStudentIds(), String(sid)]);
-    openAdminStudentList('discharged');
-}
-
-function resetHiddenDischargedStudents() {
-    localStorage.removeItem(HIDDEN_DISCHARGED_STUDENTS_KEY);
-    openAdminStudentList('discharged');
+    const r = await api.patch(`students/${sid}/hide`, {});
+    if (r?.success) { await loadData(); openAdminStudentList('discharged'); }
+    else toast(r?.message || r?.error || '숨김 처리에 실패했습니다.', 'error');
 }
 
 function openAdminStudentList(type) {
@@ -254,8 +268,7 @@ function openAdminStudentList(type) {
         }); 
         title = "신규생 목록"; 
     } else if (type === 'discharged') { 
-        const hiddenIds = new Set(getHiddenDischargedStudentIds());
-        list = state.db.students.filter(s => s.status === '제적' && !hiddenIds.has(String(s.id))); 
+        list = state.db.students.filter(s => s.status === '제적'); 
         title = "퇴원생 목록"; 
     } else if (type === 'risk') { 
         list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
@@ -288,11 +301,7 @@ function openAdminStudentList(type) {
         `;
     }).join('');
 
-    const hiddenReset = type === 'discharged' && getHiddenDischargedStudentIds().length
-        ? `<div style="display:flex; justify-content:flex-end; padding:0 4px 8px;"><button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="resetHiddenDischargedStudents()">숨김 목록 초기화</button></div>`
-        : '';
-
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenReset}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 function renderAdminControlCenter() {
@@ -482,13 +491,9 @@ function getClassGradeRank(grade) {
 }
 
 function sortClassesForDashboard(classes) {
-    const todayStr = new Date().toLocaleDateString('sv-SE');
-    const parts = todayStr.split('-');
-    const today = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
-
     return [...classes].sort((a, b) => {
-        const aToday = (!a.schedule_days || a.schedule_days.split(',').includes(today)) ? 0 : 1;
-        const bToday = (!b.schedule_days || b.schedule_days.split(',').includes(today)) ? 0 : 1;
+        const aToday = isClassScheduledTodayForDashboard(a.id) ? 0 : 1;
+        const bToday = isClassScheduledTodayForDashboard(b.id) ? 0 : 1;
         if (aToday !== bToday) return aToday - bToday;
         const aRank = getClassGradeRank(a.grade);
         const bRank = getClassGradeRank(b.grade);
@@ -505,7 +510,7 @@ function computeDashboardData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
-        return isClassScheduledToday(cid); // [Partner B] 요일 필터 적용
+        return isClassScheduledTodayForDashboard(cid);
     });
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
@@ -536,7 +541,7 @@ function computeDashboardData() {
         });
         
         let cPre = cActiveIds.length - cAbs;
-        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledToday(c.id) };
+        classSummaries[c.id] = { activeCount: cActiveIds.length, present: cPre, absent: cAbs, hwNotDone: cMiss, isScheduled: isClassScheduledTodayForDashboard(c.id) };
     });
 
     return { 
@@ -822,7 +827,7 @@ function computeTodayCloseData() {
         const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cls = state.db.classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
-        return isClassScheduledToday(cid);
+        return isClassScheduledTodayForDashboard(cid);
     });
 
     const absents = [];
