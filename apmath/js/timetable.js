@@ -15,6 +15,7 @@
  * - 모바일은 중등/고등, 전체보기/내반보기 모두 148px 고정
  * - 내 반 보기는 teacher_name과 현재 로그인 이름(t1->박준성 명시적 매핑 포함)만으로 필터링
  * - 전체보기 버튼 좌측 마진(margin-left: auto) 제거로 탭 스크롤 간섭 방지
+ * - 와이드 모니터 해상도 대응(1440px 상한 및 가운데 정렬) 적용
  */
 
 // ────────────────────────────────────────────
@@ -55,8 +56,8 @@ function installTimetableStyle() {
     style.id = 'ap-timetable-style';
     style.textContent = [
         '@media (min-width:901px) {',
-        '  main.ap-timetable-wide-main { max-width:none !important; width:calc(100vw - 56px) !important; margin:0 !important; padding-left:24px !important; padding-right:24px !important; }',
-        '  body.ap-drawer-expanded main.ap-timetable-wide-main { width:calc(100vw - 260px) !important; }',
+        '  main.ap-timetable-wide-main { max-width: 1440px !important; width:calc(100vw - 56px) !important; margin: 0 auto !important; padding-left:24px !important; padding-right:24px !important; }',
+        '  body.ap-drawer-expanded main.ap-timetable-wide-main { width:calc(100vw - 260px) !important; margin: 0 auto !important; }',
         '}',
         '#timetable-root { max-width:none !important; width:100% !important; overflow:hidden; padding-bottom:0 !important; }',
         '.tt-page-title { font-size:17px; font-weight:700; color:var(--text); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
@@ -134,7 +135,11 @@ function applyTimetableFit() {
 
     var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
     var wrapTop = wrap.getBoundingClientRect().top;
-    var bottomPadding = 0;
+    
+    // [Fix] 가로 스크롤바가 화면 하단에 너무 딱 붙지 않도록 안전 여백 확보 (미세 세로 스크롤/드래그 방지)
+    var isMobile = window.innerWidth <= 900;
+    var bottomPadding = isMobile ? 10 : 14;
+    
     var availableHeight = Math.floor(viewportHeight - wrapTop - bottomPadding);
 
     if (!Number.isFinite(availableHeight) || availableHeight < 280) {
