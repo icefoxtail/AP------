@@ -31,3 +31,5 @@ CREATE INDEX IF NOT EXISTS idx_planner_feedback_student_date
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_planner_feedback_unique_student_date
   ON planner_feedback(student_id, feedback_date);
+
+ALTER TABLE students ADD COLUMN planner_exam_date TEXT;
