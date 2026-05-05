@@ -1,5 +1,5 @@
 /**
- * AP Math OS v1.0
+ * AP Math OS v26.1.2 [IRONCLAD - Phase 4/5 FINAL RECOVERY]
  * Cloudflare Worker 통합 API 엔진 - 절대 축약 없음, 모든 기존 API 복구 완료본
  * Phase 4/5 Add-on: class_textbooks / class_daily_records / class_daily_progress API 추가
  * Planner Add-on: student_plans / planner_feedback API 추가
