@@ -2,6 +2,7 @@
  * AP Math OS 1.0 [js/classroom.js]
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Fixed Standard UI]: Typography(Fixed) & Spacing(Fixed) 전면 적용본
+ * [Master Review Patch]: 공휴일 감지 로직 이식 (충돌 없는 참조 방식)
  */
 
 // [UI Standard]: 클래스룸 전용 스타일 주입 (애니메이션 및 입력창 규격)
@@ -25,9 +26,46 @@ function formatClassScheduleDays(daysStr) {
 
 function isClassScheduledOnDate(clsId, dateStr) {
     const cls = state.db.classes.find(c => String(c.id) === String(clsId));
-    if (!cls || !cls.schedule_days) return true;
+    if (!cls) return true;
+
+    // 공휴일이면 — 명시적 '등원' 기록이 단 1개라도 있어야만 수업 있음으로 판정
+    if (isClassroomHoliday(dateStr)) {
+        const cIds = state.db.class_students
+            .filter(m => String(m.class_id) === String(clsId))
+            .map(m => String(m.student_id));
+        return state.db.attendance.some(
+            a => a.date === dateStr &&
+                 cIds.includes(String(a.student_id)) &&
+                 a.status === '등원'
+        );
+    }
+
+    // 수업 요일 미설정 → 매일 수업
+    if (!cls.schedule_days) return true;
+
     const dayIdx = String(new Date(dateStr + 'T00:00:00').getDay());
     return cls.schedule_days.split(',').includes(dayIdx);
+}
+
+function isClassroomHoliday(dateStr) {
+    // dashboard.js의 DASH_HOLIDAYS 참조 (재선언 금지)
+    if (typeof DASH_HOLIDAYS !== 'undefined' && Array.isArray(DASH_HOLIDAYS)) {
+        if (DASH_HOLIDAYS.includes(dateStr)) return true;
+    }
+    // cumulative.js의 HOLIDAYS_2026 참조 (재선언 금지)
+    if (typeof HOLIDAYS_2026 !== 'undefined' && Array.isArray(HOLIDAYS_2026)) {
+        if (HOLIDAYS_2026.includes(dateStr)) return true;
+    }
+    // DB 학원 전체 휴무일 체크
+    if (state.db.academy_schedules) {
+        return state.db.academy_schedules.some(s =>
+            String(s.is_deleted || 0) !== '1' &&
+            s.schedule_date === dateStr &&
+            s.schedule_type === 'closed' &&
+            s.target_scope !== 'student'
+        );
+    }
+    return false;
 }
 
 // ── 출석 상태 헬퍼 ──────────────────────────────────────────────
@@ -709,7 +747,7 @@ async function openExamGradeView(classId) {
     const rows = exams.map(exam => {
         const cnt = exam.sessions.length;
         const qCount = exam.questionCount || exam.sessions[0]?.question_count || exam.assignment?.question_count || 0;
-        const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
+        const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(sum, s.score || 0), 0) / cnt) : '-';
         const pct = activeCountForAssignment ? Math.round((cnt / activeCountForAssignment) * 100) : 0;
         const archiveArg = String(exam.archiveFile || '').replace(/'/g, "\\'");
         return `<div onclick="openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}')" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
