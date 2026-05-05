@@ -280,7 +280,7 @@ export default {
               env.DB.prepare("SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
               env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
               env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC').all(),
-              env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all(),
+              env.DB.prepare('SELECT * FROM operation_memos WHERE teacher_name = ? ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').bind(teacher.name).all(),
               env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(),
               env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 ORDER BY schedule_date ASC, start_time ASC, created_at ASC').all(),
               env.DB.prepare('SELECT * FROM school_exam_records WHERE is_deleted = 0 ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 1000').all(),
@@ -302,7 +302,7 @@ export default {
               env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all()
             ]);
 
-            opm = await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(teacher.name).all();
+            opm = await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(teacher.name).all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
             if (classIds.length) {
               const cMark = classIds.map(() => '?').join(',');
@@ -907,11 +907,9 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          // admin은 전체 조회, teacher는 본인 메모만
+          // 메모/오늘일정은 모든 role 공통으로 본인 메모만 조회한다.
           if (method === 'GET') {
-            const res = isAdminUser(teacher)
-              ? await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all()
-              : await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(teacher.name).all();
+            const res = await env.DB.prepare('SELECT * FROM operation_memos WHERE teacher_name = ? ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').bind(teacher.name).all();
             return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
           }
           if (method === 'POST') {
@@ -921,18 +919,16 @@ export default {
             return new Response(JSON.stringify({ success: true, id: mid }), { headers });
           }
           if (method === 'PATCH' && id) {
-            const existing = await env.DB.prepare('SELECT teacher_name FROM operation_memos WHERE id = ?').bind(id).first();
-            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
-            if (!isAdminUser(teacher) && existing.teacher_name && existing.teacher_name !== teacher.name) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const d = await request.json();
-            await env.DB.prepare("UPDATE operation_memos SET memo_date=?, content=?, is_pinned=?, is_done=? WHERE id=?").bind(d.memoDate, d.content, d.isPinned ? 1 : 0, d.isDone ? 1 : 0, id).run();
+            const result = await env.DB.prepare("UPDATE operation_memos SET memo_date=?, content=?, is_pinned=?, is_done=? WHERE id=? AND teacher_name=?")
+              .bind(d.memoDate, d.content, d.isPinned ? 1 : 0, d.isDone ? 1 : 0, id, teacher.name)
+              .run();
+            if (!result?.meta?.changes) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
             return new Response(JSON.stringify({ success: true }), { headers });
           }
           if (method === 'DELETE' && id) {
-            const existing = await env.DB.prepare('SELECT teacher_name FROM operation_memos WHERE id = ?').bind(id).first();
-            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
-            if (!isAdminUser(teacher) && existing.teacher_name && existing.teacher_name !== teacher.name) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
-            await env.DB.prepare("DELETE FROM operation_memos WHERE id=?").bind(id).run();
+            const result = await env.DB.prepare("DELETE FROM operation_memos WHERE id=? AND teacher_name=?").bind(id, teacher.name).run();
+            if (!result?.meta?.changes) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
             return new Response(JSON.stringify({ success: true }), { headers });
           }
         }
