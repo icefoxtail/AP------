@@ -800,7 +800,7 @@ function ensureDrawerStyle() {
         }
         #app-drawer .drw-hamburger {
             position:absolute !important;
-            left:10px !important;
+            left:16px !important;
             top:11px !important;
             width:36px !important;
             height:36px !important;
@@ -880,7 +880,7 @@ function ensureDrawerStyle() {
             height:36px !important;
             min-width:36px !important;
             min-height:36px !important;
-            margin:11px 0 0 10px !important;
+            margin:16px 0 0 10px !important;
             box-sizing:border-box !important;
             padding:0 !important;
             align-items:center !important;
