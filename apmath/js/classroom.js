@@ -225,8 +225,21 @@ function openClassHomework(cid) {
     else renderClass(cid);
 }
 
-function isPlannerTargetClassName(className) {
-    return String(className || '').includes('고1A');
+function isPlannerTargetClass(cls) {
+    if (!cls) return false;
+
+    const className = String(cls.name || '').trim();
+    const teacherRaw = String(cls.teacher_name || '').trim();
+
+    const teacher = teacherRaw
+        .replace(/\s*선생님\s*$/g, '')
+        .trim()
+        .toLowerCase();
+
+    const teacherAliases = ['박준성', '선생님1', 'teacher1', 't1']
+        .map(v => String(v).toLowerCase());
+
+    return className.includes('고1A') && teacherAliases.includes(teacher);
 }
 
 // [UI Standard Applied]: 학급 메인 화면
@@ -240,8 +253,8 @@ function renderClass(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     
     const summary = computeClassTodaySummary(cid);
-    const isPlannerTargetClass = isPlannerTargetClassName(cls?.name);
-    const plannerButtonHtml = isPlannerTargetClass
+    const plannerEnabled = isPlannerTargetClass(cls);
+    const plannerButtonHtml = plannerEnabled
         ? `<button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.16); color: var(--text); box-shadow: none; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="renderPlannerControl('${cid}')">플래너</button>`
         : '';
 
@@ -261,7 +274,7 @@ function renderClass(cid) {
             ${statusBarHtml}
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(${isPlannerTargetClass ? 5 : 4}, minmax(0, 1fr)); gap: 10px; margin-bottom: 32px; padding: 0 16px;">
+        <div style="display: grid; grid-template-columns: repeat(${plannerEnabled ? 5 : 4}, minmax(0, 1fr)); gap: 10px; margin-bottom: 32px; padding: 0 16px;">
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(26,92,255,0.05); border: 1px solid rgba(26,92,255,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(225,29,72,0.05); border: 1px solid rgba(225,29,72,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(5,150,105,0.05); border: 1px solid rgba(5,150,105,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
@@ -891,7 +904,7 @@ async function renderPlannerControl(classId) {
     state.ui.plannerControlClassId = String(classId || '');
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
-    if (!isPlannerTargetClassName(cls.name)) return toast('고1A 전용 기능입니다.', 'warn');
+    if (!isPlannerTargetClass(cls)) return toast('고1A 전용 기능입니다.', 'warn');
 
     const today = new Date().toLocaleDateString('sv-SE');
     showModal('플래너 관제', `
