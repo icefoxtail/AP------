@@ -208,14 +208,13 @@ function renderAttendanceCellContent(studentId, date) {
 }
 function openAttendanceLedger() {
     if (!state.ui.attendanceLedgerMonth) state.ui.attendanceLedgerMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
-    if (typeof enterTimetableWideMode === 'function') enterTimetableWideMode();
     var root = document.getElementById('app-root');
     if (!root) return;
     var activeClasses = sortCumulativeClasses((state.db.classes || []).filter(function(c) { return Number(c.is_active) !== 0; }));
     var classOptions = activeClasses.map(function(c) { return '<option value="' + apEscapeHtml(c.id) + '">' + apEscapeHtml(c.name) + '</option>'; }).join('');
     root.innerHTML = `
 <style>
-#att-main { width: 100%; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 12px 16px 0; box-sizing: border-box; }
+#att-main { width: 100%; max-width: 1150px; margin: 0 auto; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 12px 16px 0; box-sizing: border-box; }
 #att-header-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-shrink: 0; }
 #att-title { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; white-space: nowrap; }
 #att-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
@@ -410,7 +409,6 @@ function openSchoolExamLedger() {
     if (!state.ui.schoolExamTeacher) state.ui.schoolExamTeacher = '';
     if (!state.ui.schoolExamSort) state.ui.schoolExamSort = 'default';
     if (!state.ui.schoolExamSortCol) state.ui.schoolExamSortCol = '1H-mid';
-    if (typeof enterTimetableWideMode === 'function') enterTimetableWideMode();
     var root = document.getElementById('app-root');
     if (!root) return;
     var section = state.ui.schoolExamSection;
@@ -440,7 +438,7 @@ function openSchoolExamLedger() {
     }
     root.innerHTML = `
 <style>
-#seb-main { width: 100%; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 16px 16px 0; box-sizing: border-box; }
+#seb-main { width: 100%; max-width: 850px; margin: 0 auto; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 16px 16px 0; box-sizing: border-box; }
 .seb-ctrl { height: 44px; min-height: 44px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
 #seb-body { flex: 1; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; }
 #seb-tbl { border-collapse: collapse; width: max-content; min-width: 100%; background: var(--surface); }
