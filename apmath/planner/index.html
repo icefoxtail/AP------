@@ -552,6 +552,7 @@
       if (!r.ok) throw new Error(data.error || data.message || '요청 실패');
       return data;
     }
+
     async function apiSend(path, method, body) {
       const r = await fetch(`${API_BASE}/${path}`, {
         method,
@@ -623,38 +624,68 @@
       if (!fromSession) {
         pin = String($('pin-input')?.value || '').trim();
       }
+
       if (!pin) {
         toast('PIN을 입력하세요.');
         return;
       }
 
       try {
-        const data = await apiGet(`planner-auth?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`);
-        if (!data?.success || !data?.student) {
+        const data = await apiSend('check-pin', 'POST', {
+          student_id: studentId,
+          pin
+        });
+
+        if (!data?.success) {
           sessionStorage.removeItem(authKey());
           sessionStorage.removeItem(pinKey());
+
           if (fromSession) {
-            throw new Error(data?.error || 'session expired');
+            throw new Error(data?.error || data?.message || 'session expired');
           }
+
           const input = $('pin-input');
           if (input) {
             input.value = '';
             input.focus();
           }
-          toast(data?.error || 'PIN이 올바르지 않습니다.');
+
+          toast(data?.error || data?.message || 'PIN이 올바르지 않습니다.');
           return;
         }
 
-        student = data.student;
+        student = {
+          id: studentId,
+          name: ''
+        };
+
         sessionStorage.setItem(authKey(), 'true');
         sessionStorage.setItem(pinKey(), pin);
-        $('student-chip').textContent = student.name || '';
+
         await loadPlannerData();
+
+        if (!student.name) {
+          $('student-chip').textContent = 'Planner';
+        } else {
+          $('student-chip').textContent = student.name;
+        }
+
         renderPlanner();
       } catch (e) {
         sessionStorage.removeItem(authKey());
         sessionStorage.removeItem(pinKey());
-        toast('인증 중 오류가 발생했습니다.');
+
+        if (fromSession) {
+          throw e;
+        }
+
+        const input = $('pin-input');
+        if (input) {
+          input.value = '';
+          input.focus();
+        }
+
+        toast(e.message || '인증 중 오류가 발생했습니다.');
       }
     }
 
@@ -663,6 +694,11 @@
       const data = await apiGet(`planner?student_id=${encodeURIComponent(studentId)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&pin=${encodeURIComponent(pin)}`);
       plans = Array.isArray(data.plans) ? data.plans : [];
       feedback = Array.isArray(data.feedback) ? data.feedback : [];
+
+      if (data.student && typeof data.student === 'object') {
+        student = data.student;
+        if (student.name) $('student-chip').textContent = student.name;
+      }
     }
 
     function renderPlanner() {
