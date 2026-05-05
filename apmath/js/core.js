@@ -89,6 +89,12 @@ const api = {
         if (!navigator.onLine) return addToSyncQueue('POST', res, d);
         const r = await fetch(`${CONFIG.API_BASE}/${res}`, { method: 'POST', body: JSON.stringify(d), headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
         return await r.json();
+    },
+    getPlannerOverview(classId, date) {
+        return this.get(`planner/overview?class_id=${encodeURIComponent(classId)}&date=${encodeURIComponent(date)}`);
+    },
+    savePlannerFeedback(data) {
+        return this.post('planner/feedback', data);
     }
 };
 

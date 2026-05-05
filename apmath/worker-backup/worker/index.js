@@ -1,7 +1,8 @@
 /**
- * AP Math OS v26.1.2 [IRONCLAD - Phase 4/5 FINAL RECOVERY]
+ * AP Math OS v1.0
  * Cloudflare Worker 통합 API 엔진 - 절대 축약 없음, 모든 기존 API 복구 완료본
  * Phase 4/5 Add-on: class_textbooks / class_daily_records / class_daily_progress API 추가
+ * Planner Add-on: student_plans / planner_feedback API 추가
  */
 
 const headers = {
@@ -907,9 +908,11 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          // 메모/오늘일정은 모든 role 공통으로 본인 메모만 조회한다.
+          // admin은 전체 조회, teacher는 본인 메모만
           if (method === 'GET') {
-            const res = await env.DB.prepare('SELECT * FROM operation_memos WHERE teacher_name = ? ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').bind(teacher.name).all();
+            const res = isAdminUser(teacher)
+              ? await env.DB.prepare('SELECT * FROM operation_memos ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').all()
+              : await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? OR teacher_name = '' OR teacher_name IS NULL ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(teacher.name).all();
             return new Response(JSON.stringify({ success: true, data: res.results }), { headers });
           }
           if (method === 'POST') {
@@ -919,16 +922,18 @@ export default {
             return new Response(JSON.stringify({ success: true, id: mid }), { headers });
           }
           if (method === 'PATCH' && id) {
+            const existing = await env.DB.prepare('SELECT teacher_name FROM operation_memos WHERE id = ?').bind(id).first();
+            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            if (!isAdminUser(teacher) && existing.teacher_name && existing.teacher_name !== teacher.name) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
             const d = await request.json();
-            const result = await env.DB.prepare("UPDATE operation_memos SET memo_date=?, content=?, is_pinned=?, is_done=? WHERE id=? AND teacher_name=?")
-              .bind(d.memoDate, d.content, d.isPinned ? 1 : 0, d.isDone ? 1 : 0, id, teacher.name)
-              .run();
-            if (!result?.meta?.changes) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            await env.DB.prepare("UPDATE operation_memos SET memo_date=?, content=?, is_pinned=?, is_done=? WHERE id=?").bind(d.memoDate, d.content, d.isPinned ? 1 : 0, d.isDone ? 1 : 0, id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
           if (method === 'DELETE' && id) {
-            const result = await env.DB.prepare("DELETE FROM operation_memos WHERE id=? AND teacher_name=?").bind(id, teacher.name).run();
-            if (!result?.meta?.changes) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            const existing = await env.DB.prepare('SELECT teacher_name FROM operation_memos WHERE id = ?').bind(id).first();
+            if (!existing) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+            if (!isAdminUser(teacher) && existing.teacher_name && existing.teacher_name !== teacher.name) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            await env.DB.prepare("DELETE FROM operation_memos WHERE id=?").bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
         }
@@ -1680,6 +1685,397 @@ export default {
                 .run();
             }
 
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+        }
+
+        // --- 14. 장기 플래너 (Student Plans & Feedback) ---
+        if (resource === 'planner-auth' && method === 'GET') {
+          const studentId = String(url.searchParams.get('student_id') || '').trim();
+          const pin = String(url.searchParams.get('pin') || '').trim();
+
+          if (!studentId) {
+            return new Response(JSON.stringify({ success: false, error: 'student_id required' }), { status: 400, headers });
+          }
+
+          const student = await env.DB.prepare(`
+            SELECT id, name, school_name, grade, student_pin, status
+            FROM students
+            WHERE id = ?
+          `).bind(studentId).first();
+
+          if (!student) {
+            return new Response(JSON.stringify({ success: false, error: 'Student not found' }), { status: 404, headers });
+          }
+
+          if (student.status !== '재원') {
+            return new Response(JSON.stringify({ success: false, error: 'Not active student' }), { status: 403, headers });
+          }
+
+          if (student.student_pin && String(student.student_pin) !== pin) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            return new Response(JSON.stringify({ success: false, error: 'PIN mismatch' }), { status: 401, headers });
+          }
+
+          return new Response(JSON.stringify({
+            success: true,
+            student: {
+              id: student.id,
+              name: student.name,
+              school_name: student.school_name,
+              grade: student.grade
+            }
+          }), { headers });
+        }
+
+        if (resource === 'planner') {
+          const checkPlannerAccess = async (req, studentId, pin, expectedStudentId = null) => {
+            const sid = String(studentId || '').trim();
+            const expected = expectedStudentId === null || expectedStudentId === undefined ? '' : String(expectedStudentId || '').trim();
+
+            if (!sid) return { authorized: false, status: 400, error: 'student_id required' };
+            if (expected && sid !== expected) return { authorized: false, status: 403, error: 'student mismatch' };
+
+            const teacher = await verifyAuth(req, env);
+            if (teacher) {
+              if (await canAccessStudent(teacher, sid, env)) return { authorized: true, teacher };
+              return { authorized: false, status: 403, error: 'Forbidden' };
+            }
+
+            const student = await env.DB.prepare(`
+              SELECT student_pin, status
+              FROM students
+              WHERE id = ?
+            `).bind(sid).first();
+
+            if (!student) return { authorized: false, status: 404, error: 'Student not found' };
+            if (student.status !== '재원') return { authorized: false, status: 403, error: 'Not active student' };
+            if (student.student_pin && String(student.student_pin) !== String(pin || '').trim()) {
+              await new Promise(resolve => setTimeout(resolve, 1000));
+              return { authorized: false, status: 401, error: 'PIN mismatch' };
+            }
+
+            return { authorized: true, student: true };
+          };
+
+          const formatPlannerDate = (date) => {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+          };
+
+          const parsePlannerDate = (value) => {
+            const str = String(value || '').trim();
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(str)) return null;
+            const [y, m, d] = str.split('-').map(Number);
+            const date = new Date(y, m - 1, d);
+            if (!Number.isFinite(date.getTime())) return null;
+            if (formatPlannerDate(date) !== str) return null;
+            return date;
+          };
+
+          if (method === 'POST' && id === 'feedback') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) {
+              return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+            }
+
+            const d = await request.json();
+            const studentId = String(d.student_id || '').trim();
+            const feedbackDate = String(d.feedback_date || '').trim();
+
+            if (!studentId || !feedbackDate) {
+              return new Response(JSON.stringify({ success: false, error: 'student_id, feedback_date required' }), { status: 400, headers });
+            }
+
+            if (!(await canAccessStudent(teacher, studentId, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            const completionRate = Math.max(0, Math.min(100, Math.round(Number(d.completion_rate || 0) || 0)));
+            const existing = await env.DB.prepare(`
+              SELECT id
+              FROM planner_feedback
+              WHERE student_id = ? AND feedback_date = ?
+            `).bind(studentId, feedbackDate).first();
+
+            if (existing) {
+              await env.DB.prepare(`
+                UPDATE planner_feedback
+                SET teacher_comment = ?,
+                    badge = ?,
+                    completion_rate = ?,
+                    updated_at = DATETIME('now')
+                WHERE id = ?
+              `).bind(
+                String(d.teacher_comment || '').trim(),
+                String(d.badge || '').trim(),
+                completionRate,
+                existing.id
+              ).run();
+            } else {
+              await env.DB.prepare(`
+                INSERT INTO planner_feedback (
+                  id, student_id, feedback_date, teacher_comment, badge, completion_rate, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+              `).bind(
+                `pfb_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+                studentId,
+                feedbackDate,
+                String(d.teacher_comment || '').trim(),
+                String(d.badge || '').trim(),
+                completionRate
+              ).run();
+            }
+
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+
+          if (method === 'GET' && id === 'overview') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) {
+              return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+            }
+
+            const classId = String(url.searchParams.get('class_id') || '').trim();
+            const date = String(url.searchParams.get('date') || '').trim();
+
+            if (!classId || !date) {
+              return new Response(JSON.stringify({ success: false, error: 'class_id, date required' }), { status: 400, headers });
+            }
+
+            if (!(await canAccessClass(teacher, classId, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
+
+            const stds = await env.DB.prepare(`
+              SELECT id, name
+              FROM students
+              WHERE status = '재원'
+                AND id IN (SELECT student_id FROM class_students WHERE class_id = ?)
+              ORDER BY name ASC
+            `).bind(classId).all();
+
+            const studentList = stds.results || [];
+            if (!studentList.length) {
+              return new Response(JSON.stringify({ success: true, students: [] }), { headers });
+            }
+
+            const studentIds = studentList.map(s => s.id);
+            const markers = studentIds.map(() => '?').join(',');
+
+            const [plans, feedbacks] = await Promise.all([
+              env.DB.prepare(`
+                SELECT student_id, is_done
+                FROM student_plans
+                WHERE plan_date = ? AND student_id IN (${markers})
+              `).bind(date, ...studentIds).all(),
+              env.DB.prepare(`
+                SELECT *
+                FROM planner_feedback
+                WHERE feedback_date = ? AND student_id IN (${markers})
+              `).bind(date, ...studentIds).all()
+            ]);
+
+            const feedbackMap = new Map((feedbacks.results || []).map(f => [String(f.student_id), f]));
+            const planGroups = {};
+
+            for (const p of (plans.results || [])) {
+              const sid = String(p.student_id);
+              if (!planGroups[sid]) planGroups[sid] = { total: 0, done: 0 };
+              planGroups[sid].total += 1;
+              if (Number(p.is_done || 0) === 1) planGroups[sid].done += 1;
+            }
+
+            const students = studentList.map(s => {
+              const group = planGroups[String(s.id)] || { total: 0, done: 0 };
+              const rate = group.total > 0 ? Math.round((group.done / group.total) * 100) : 0;
+              return {
+                student_id: s.id,
+                name: s.name,
+                total: group.total,
+                done: group.done,
+                rate,
+                feedback: feedbackMap.get(String(s.id)) || null
+              };
+            });
+
+            return new Response(JSON.stringify({ success: true, students }), { headers });
+          }
+
+          if (method === 'GET' && !id) {
+            const studentId = String(url.searchParams.get('student_id') || '').trim();
+            const from = String(url.searchParams.get('from') || '').trim();
+            const to = String(url.searchParams.get('to') || '').trim();
+            const pin = String(url.searchParams.get('pin') || '').trim();
+
+            if (!studentId || !from || !to) {
+              return new Response(JSON.stringify({ success: false, error: 'student_id, from, to required' }), { status: 400, headers });
+            }
+
+            const auth = await checkPlannerAccess(request, studentId, pin);
+            if (!auth.authorized) {
+              return new Response(JSON.stringify({ success: false, error: auth.error }), { status: auth.status || 403, headers });
+            }
+
+            const [plans, feedback] = await Promise.all([
+              env.DB.prepare(`
+                SELECT *
+                FROM student_plans
+                WHERE student_id = ? AND plan_date BETWEEN ? AND ?
+                ORDER BY plan_date ASC, created_at ASC
+              `).bind(studentId, from, to).all(),
+              env.DB.prepare(`
+                SELECT *
+                FROM planner_feedback
+                WHERE student_id = ? AND feedback_date BETWEEN ? AND ?
+                ORDER BY feedback_date ASC
+              `).bind(studentId, from, to).all()
+            ]);
+
+            return new Response(JSON.stringify({
+              success: true,
+              plans: plans.results,
+              feedback: feedback.results
+            }), { headers });
+          }
+
+          if (method === 'POST' && !id) {
+            const d = await request.json();
+            const studentId = String(d.student_id || '').trim();
+            const planDate = String(d.plan_date || '').trim();
+            const title = String(d.title || '').trim();
+            const subject = String(d.subject || '').trim();
+            const rule = String(d.repeat_rule || '').trim() || null;
+
+            if (!studentId || !planDate || !title) {
+              return new Response(JSON.stringify({ success: false, error: 'student_id, plan_date, title required' }), { status: 400, headers });
+            }
+
+            const auth = await checkPlannerAccess(request, studentId, d.pin);
+            if (!auth.authorized) {
+              return new Response(JSON.stringify({ success: false, error: auth.error }), { status: auth.status || 403, headers });
+            }
+
+            const startDate = parsePlannerDate(planDate);
+            if (!startDate) {
+              return new Response(JSON.stringify({ success: false, error: 'invalid plan_date' }), { status: 400, headers });
+            }
+
+            let endDate = startDate;
+            if (rule === 'daily' || rule === 'weekly') {
+              if (d.exam_date) {
+                const parsedEnd = parsePlannerDate(d.exam_date);
+                if (!parsedEnd) {
+                  return new Response(JSON.stringify({ success: false, error: 'invalid exam_date' }), { status: 400, headers });
+                }
+                const today = parsePlannerDate(todayKstDateString());
+                if (today && parsedEnd < today) {
+                  return new Response(JSON.stringify({ success: false, error: 'exam_date is in the past' }), { status: 400, headers });
+                }
+                if (parsedEnd < startDate) {
+                  return new Response(JSON.stringify({ success: false, error: 'exam_date must be after plan_date' }), { status: 400, headers });
+                }
+                endDate = parsedEnd;
+              }
+            }
+
+            const stmts = [];
+            const current = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+            let count = 0;
+
+            while (current <= endDate && count < 100) {
+              const currentDate = formatPlannerDate(current);
+              stmts.push(env.DB.prepare(`
+                INSERT INTO student_plans (
+                  id, student_id, plan_date, title, subject, is_done, repeat_rule, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, 0, ?, DATETIME('now'), DATETIME('now'))
+              `).bind(
+                `plan_${Date.now()}_${count}_${Math.random().toString(36).slice(2, 8)}`,
+                studentId,
+                currentDate,
+                title,
+                subject,
+                rule
+              ));
+
+              if (rule === 'daily') current.setDate(current.getDate() + 1);
+              else if (rule === 'weekly') current.setDate(current.getDate() + 7);
+              else break;
+
+              count += 1;
+            }
+
+            if (stmts.length) await env.DB.batch(stmts);
+            return new Response(JSON.stringify({ success: true, count: stmts.length }), { headers });
+          }
+
+          if (method === 'PATCH' && id) {
+            const d = await request.json();
+            const existing = await env.DB.prepare(`
+              SELECT id, student_id, updated_at
+              FROM student_plans
+              WHERE id = ?
+            `).bind(id).first();
+
+            if (!existing) {
+              return new Response(JSON.stringify({ success: false, error: 'Not found' }), { status: 404, headers });
+            }
+
+            const auth = await checkPlannerAccess(request, existing.student_id, d.pin, d.student_id || existing.student_id);
+            if (!auth.authorized) {
+              return new Response(JSON.stringify({ success: false, error: auth.error }), { status: auth.status || 403, headers });
+            }
+
+            if (d.updated_at && existing.updated_at) {
+              const existingTime = new Date(String(existing.updated_at).replace(' ', 'T')).getTime();
+              const requestTime = new Date(String(d.updated_at).replace(' ', 'T')).getTime();
+
+              if (Number.isFinite(existingTime) && Number.isFinite(requestTime) && existingTime > requestTime) {
+                return new Response(JSON.stringify({ success: false, error: 'Conflict: Data modified elsewhere' }), { status: 409, headers });
+              }
+            }
+
+            await env.DB.prepare(`
+              UPDATE student_plans
+              SET title = COALESCE(?, title),
+                  subject = COALESCE(?, subject),
+                  plan_date = COALESCE(?, plan_date),
+                  is_done = COALESCE(?, is_done),
+                  updated_at = DATETIME('now')
+              WHERE id = ?
+            `).bind(
+              d.title !== undefined ? String(d.title).trim() : null,
+              d.subject !== undefined ? String(d.subject).trim() : null,
+              d.plan_date !== undefined ? String(d.plan_date).trim() : null,
+              d.is_done !== undefined ? (d.is_done ? 1 : 0) : null,
+              id
+            ).run();
+
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+
+          if (method === 'DELETE' && id) {
+            const studentId = String(url.searchParams.get('student_id') || '').trim();
+            const pin = String(url.searchParams.get('pin') || '').trim();
+
+            const existing = await env.DB.prepare(`
+              SELECT id, student_id
+              FROM student_plans
+              WHERE id = ?
+            `).bind(id).first();
+
+            if (!existing) {
+              return new Response(JSON.stringify({ success: false, error: 'Not found' }), { status: 404, headers });
+            }
+
+            const auth = await checkPlannerAccess(request, existing.student_id, pin, studentId || existing.student_id);
+            if (!auth.authorized) {
+              return new Response(JSON.stringify({ success: false, error: auth.error }), { status: auth.status || 403, headers });
+            }
+
+            await env.DB.prepare('DELETE FROM student_plans WHERE id = ?').bind(id).run();
             return new Response(JSON.stringify({ success: true }), { headers });
           }
         }
