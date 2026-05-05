@@ -1,8 +1,8 @@
 /**
  * AP Math OS 1.0 [js/classroom.js]
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
- * [Fixed Standard UI]: Typography(Fixed) & Spacing(Fixed) 전면 적용본
- * [Master Review Patch]: 공휴일 감지 로직 이식 및 월간 출석부 캐시 동기화 패치 (중복 선언 완전 제거)
+ * [Minimalism Polish]: 52px 카드 높이 통일, 아이콘 제거, 오늘 현황 레이아웃 분리
+ * [Standard UI]: font-weight 700 상한선 준수, table 구조 보존 기반 UI 언어 통일
  */
 
 // ── 필수 유틸리티 (중복 선언 방어) ──────────────────────────────────
@@ -13,7 +13,7 @@ if (typeof apEscapeHtml !== 'function') {
     };
 }
 
-// [UI Standard]: 클래스룸 전용 스타일 주입 (애니메이션 및 입력창 규격)
+// [UI Standard]: 클래스룸 전용 스타일 주입
 function injectClassroomStyles() {
     if (document.getElementById('classroom-style')) return;
     const style = document.createElement('style');
@@ -34,15 +34,12 @@ function formatClassScheduleDays(daysStr) {
 
 // [Master Review Patch] 공휴일 판별 (재선언 없이 기존 전역 변수 참조)
 function isClassroomHoliday(dateStr) {
-    // dashboard.js의 DASH_HOLIDAYS 참조 (재선언 금지)
     if (typeof DASH_HOLIDAYS !== 'undefined' && Array.isArray(DASH_HOLIDAYS)) {
         if (DASH_HOLIDAYS.includes(dateStr)) return true;
     }
-    // cumulative.js의 HOLIDAYS_2026 참조 (재선언 금지)
     if (typeof HOLIDAYS_2026 !== 'undefined' && Array.isArray(HOLIDAYS_2026)) {
         if (HOLIDAYS_2026.includes(dateStr)) return true;
     }
-    // DB 학원 전체 휴무일 체크
     if (state.db.academy_schedules) {
         return state.db.academy_schedules.some(s =>
             String(s.is_deleted || 0) !== '1' &&
@@ -58,7 +55,6 @@ function isClassScheduledOnDate(clsId, dateStr) {
     const cls = state.db.classes.find(c => String(c.id) === String(clsId));
     if (!cls) return true;
 
-    // 공휴일이면 — 명시적 '등원' 기록이 단 1개라도 있어야만 수업 있음으로 판정
     if (isClassroomHoliday(dateStr)) {
         const cIds = state.db.class_students
             .filter(m => String(m.class_id) === String(clsId))
@@ -70,9 +66,7 @@ function isClassScheduledOnDate(clsId, dateStr) {
         );
     }
 
-    // 수업 요일 미설정 → 매일 수업
     if (!cls.schedule_days) return true;
-
     const dayIdx = String(new Date(dateStr + 'T00:00:00').getDay());
     return cls.schedule_days.split(',').includes(dayIdx);
 }
@@ -108,16 +102,16 @@ function getAttendanceStatusStyle(status, isClassDay = true) {
         return 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);';
     }
     if (cur === '결석') {
-        return 'background: rgba(255,71,87,0.08); color: var(--error); font-weight: 800; border: 1px solid rgba(255,71,87,0.15);';
+        return 'background: rgba(255,71,87,0.08); color: var(--error); font-weight: 700; border: 1px solid rgba(255,71,87,0.15);';
     }
     if (cur === '지각') {
-        return 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 800; border: 1px solid rgba(255,165,2,0.18);';
+        return 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(255,165,2,0.18);';
     }
     if (cur === '보강') {
-        return 'background: rgba(26,92,255,0.08); color: var(--primary); font-weight: 800; border: 1px solid rgba(26,92,255,0.15);';
+        return 'background: rgba(26,92,255,0.08); color: var(--primary); font-weight: 700; border: 1px solid rgba(26,92,255,0.15);';
     }
     if (cur === '상담') {
-        return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 800; border: 1px solid rgba(124,58,237,0.18);';
+        return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 700; border: 1px solid rgba(124,58,237,0.18);';
     }
     if (cur === '수업 없음') {
         return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
@@ -173,7 +167,7 @@ async function handleBatchGeneratePins(classId) {
     }
 }
 
-// [Phase 4/5] 요약 계산 (상태 기반 정확한 덧셈 및 휴일 감지 연동)
+// [Phase 4/5] 요약 계산
 function computeClassTodaySummary(classId) {
     const today = new Date().toLocaleDateString('sv-SE');
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
@@ -182,7 +176,6 @@ function computeClassTodaySummary(classId) {
     const aIds = new Set(active.map(s => String(s.id)));
     const total = active.length;
 
-    // [Smart Active] 실제 '등원' 기록이 있으면 휴무 무시하고 활성화
     const hasActiveAttendance = state.db.attendance.some(a => a.date === today && ids.includes(String(a.student_id)) && a.status === '등원');
     const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(classId, today) && !isClassroomHoliday(today));
 
@@ -202,7 +195,6 @@ function computeClassTodaySummary(classId) {
     let attCount = 0; let hwCount = 0;
     active.forEach(s => {
         const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id], isScheduled);
-        // [Master Policy] 오직 '등원' 상태만 합산
         if (attStatus === '등원') attCount++;
         const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id], isScheduled);
         if (hwStatus === '완료') hwCount++;
@@ -220,7 +212,6 @@ function computeClassTodaySummary(classId) {
     return { att: attCount, hw: hwCount, test, total, isScheduled };
 }
 
-// [UI Standard Applied]: 학급 메인 화면
 function openClassAttendance(cid) {
     state.ui.classDefaultTab = 'att';
     if (typeof openDashboardClass === 'function') openDashboardClass(cid);
@@ -233,6 +224,7 @@ function openClassHomework(cid) {
     else renderClass(cid);
 }
 
+// [UI Standard Applied]: 학급 메인 화면
 function renderClass(cid) {
     injectClassroomStyles();
     const defaultTab = state.ui.classDefaultTab || '';
@@ -246,15 +238,8 @@ function renderClass(cid) {
     const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(cid, today) && !isClassroomHoliday(today));
     const summary = computeClassTodaySummary(cid);
 
-    const icons = {
-        qr: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`,
-        grade: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>`,
-        clinic: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path></svg>`,
-        edit: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path></svg>`
-    };
-
     const opToolsPanel = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 16px 14px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 16px 16px 0;">
             <div style="min-width: 0;">
                 <div style="font-size: 20px; font-weight:700; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${cls.name}</div>
                 <div style="font-size: 11px; font-weight: 600; color: var(--secondary); margin-top: 2px; line-height: 1.5;">${formatClassScheduleDays(cls.schedule_days)}</div>
@@ -262,21 +247,17 @@ function renderClass(cid) {
             <button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--secondary); line-height: 1.2;" onclick="goHome()">닫기</button>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; padding: 0 14px;">
-            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openQrGenerator('${cid}')">
-                <span style="color: var(--primary);">${icons.qr}</span> <span>QR/OMR</span>
-            </button>
-            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="openExamGradeView('${cid}')">
-                <span style="color: var(--primary);">${icons.grade}</span> <span>시험성적</span>
-            </button>
-            <button class="btn" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); color: var(--text); line-height: 1.2;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">
-                <span style="color: var(--primary);">${icons.clinic}</span> <span>클리닉</span>
-            </button>
-            <button class="btn btn-primary" style="padding: 16px 4px; font-size: 11px; font-weight:700; display: flex; flex-direction: column; align-items: center; gap: 8px; border-radius: 18px; line-height: 1.2;" onclick="openClassRecordModal('${cid}')">
-                <span style="color: #fff;">${icons.edit}</span> <span>진도관리</span>
-            </button>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; padding: 0 16px;">
+            <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight:700; border-radius: 16px; background: rgba(26,92,255,0.05); border: 1px solid rgba(26,92,255,0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openQrGenerator('${cid}')">QR/OMR</button>
+            <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight:700; border-radius: 16px; background: rgba(225,29,72,0.05); border: 1px solid rgba(225,29,72,0.15); color: #e11d48; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openExamGradeView('${cid}')">시험성적</button>
+            <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight:700; border-radius: 16px; background: rgba(5,150,105,0.05); border: 1px solid rgba(5,150,105,0.15); color: #059669; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
+            <button class="btn btn-primary" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight:700; border-radius: 16px; box-shadow: none; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openClassRecordModal('${cid}')">진도관리</button>
         </div>
     `;
+
+    const statusCardStyle = summary.isScheduled 
+        ? 'background: rgba(26,92,255,0.06); border: 1px solid rgba(26,92,255,0.1);' 
+        : 'background: var(--surface-2); border: 1px dashed var(--border); opacity: 0.68; filter: grayscale(18%);';
 
     const statusBarHtml = summary.isScheduled
         ? `<div style="display: flex; gap: 12px; align-items: center;">
@@ -289,18 +270,22 @@ function renderClass(cid) {
     document.getElementById('app-root').innerHTML = `
         <div class="cls-fade-in">
             ${opToolsPanel}
-            <div style="margin: 0 14px 18px; padding: 14px 16px; background: rgba(26,92,255,0.06); border: 1px solid rgba(26,92,255,0.1); border-radius: 16px; font-size: 12px; color: var(--primary); font-weight:700; display: flex; justify-content: space-between; align-items: center; line-height: 1.5;">
-                <span>오늘 현황</span>
+            <div style="margin: 0 16px 8px; padding: 0 4px;">
+                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘 현황</h3>
+            </div>
+            <div style="margin: 0 16px 24px; height: 52px; min-height: 52px; padding: 0 16px; ${statusCardStyle} border-radius: 16px; font-size: 13px; color: var(--primary); font-weight:700; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+                <span style="${!summary.isScheduled ? 'color: var(--secondary);' : ''}">Daily Status</span>
                 ${statusBarHtml}
             </div>
-            <div style="margin: 0 14px 32px;">
+            
+            <div style="margin: 0 16px 8px; padding: 0 4px;">
+                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">학생 명단</h3>
+            </div>
+            <div style="margin: 0 16px 32px;">
                 <div class="card" style="padding: 8px 0; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
-                    <div style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
-                        <h2 style="font-size: 16px; font-weight:700; color: var(--text); margin: 0; line-height: 1.3;">학생 명단</h2>
-                    </div>
                     <table style="width: 100%; border-collapse: collapse;">
                         <thead>
-                            <tr style="background: var(--bg);">
+                            <tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
                                 <th style="padding: 10px 16px; font-size: 11px; color: var(--secondary); text-transform: uppercase; font-weight: 700; text-align: left;">Name</th>
                                 <th style="padding: 10px 4px; font-size: 11px; color: var(--secondary); text-transform: uppercase; font-weight: 700; text-align: left;">School</th>
                                 <th style="padding: 10px 16px; font-size: 11px; color: var(--secondary); text-align: right; text-transform: uppercase; font-weight: 700;">Status</th>
@@ -313,7 +298,6 @@ function renderClass(cid) {
         </div>
     `;
 
-    // 빠른 검색을 위한 Hash Map 구성 (속도 대폭 향상)
     const todayAttMap = {};
     const todayHwMap = {};
     for (let i = 0; i < state.db.attendance.length; i++) {
@@ -327,18 +311,17 @@ function renderClass(cid) {
     const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원');
     
     listRoot.innerHTML = stds.map(s => {
-        const attStyle = getAttendanceStatusStyle(todayAttMap[s.id], isScheduled);
-        const attLabel = getAttendanceStatusLabel(todayAttMap[s.id], isScheduled);
-        
-        const hwStyle = getHomeworkStatusStyle(todayHwMap[s.id], isScheduled);
-        const hwLabel = getHomeworkStatusLabel(todayHwMap[s.id], isScheduled);
+        const attStyle = getAttendanceStatusStyle(todayAttMap[s.id], summary.isScheduled);
+        const attLabel = getAttendanceStatusLabel(todayAttMap[s.id], summary.isScheduled);
+        const hwStyle = getHomeworkStatusStyle(todayHwMap[s.id], summary.isScheduled);
+        const hwLabel = getHomeworkStatusLabel(todayHwMap[s.id], summary.isScheduled);
 
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 14px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${apEscapeHtml(s.name)}</td>
-            <td style="padding: 14px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.5;">${apEscapeHtml(s.school_name)}</td>
-            <td style="padding: 14px 16px; text-align: right; white-space: nowrap;">
-                <button class="btn class-att-toggle" style="padding: 4px 8px; font-size: 12px; min-width: 68px; font-weight:700; border-radius: 8px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
-                <button class="btn class-hw-toggle" style="padding: 4px 8px; font-size: 13px; min-width: 56px; font-weight:700; border-radius: 8px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
+            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 6px 16px; cursor: pointer; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.2;">${apEscapeHtml(s.name)}</td>
+            <td style="padding: 6px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.2;">${apEscapeHtml(s.school_name)}</td>
+            <td style="padding: 6px 16px; text-align: right; white-space: nowrap;">
+                <button class="btn class-att-toggle" style="padding: 0 8px; height: 38px; min-height: 38px; max-height: 38px; min-width: 72px; font-size: 12px; font-weight:700; border-radius: 10px; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
+                <button class="btn class-hw-toggle" style="padding: 0 8px; height: 38px; min-height: 38px; max-height: 38px; min-width: 58px; font-size: 13px; font-weight:700; border-radius: 10px; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
             </td>
         </tr>`;
     }).join('');
