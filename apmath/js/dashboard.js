@@ -1,13 +1,8 @@
 /**
  * AP Math OS 1.0 [js/dashboard.js]
- * 운영센터 및 선생님별 관제 엔진 (Partner B 보정판)
- * [Minimalism Polish]: 학급 카드 및 마감 배너 은은한 테두리 기반 디자인 적용
- * [Claude Precision Fix]: Safari Date 파싱 버그, Timezone 어긋남, is_active 타입 캐스팅 완벽 방어
- * [Master Review Patch]: 14일 필터 적용, XSS 방어, 달력 상태 동기화, 중등부 필터 통합
- * [3rd Stabilization]: 날짜 파싱 헬퍼 통일(apParseLocalDateTime), 중등반 필터 완전 통일
- * [Partner B Fix]: 오늘 수업 요일 필터링 적용 및 시험 일정 필수 입력 해제
- * [Partner B Hotfix]: 학급 진입 시 state.ui.currentClassId 전역 상태 누락 버그 해결
- * [Dashboard Smart Active]: 공휴일 스캐너 및 엄격한 등원 감지 덧셈 로직 적용 (문구 원상복구)
+ * 운영센터 및 선생님별 관제 엔진
+ * [Minimalism Polish]: 52px 카드 규격 통일, 독립된 헤더 레이아웃, 공휴일 비활성 UI 적용
+ * [Smart Architecture]: 중등/고등 탭 필터링 및 오늘일지 부분 렌더링(고속 업데이트) 기능 추가
  */
 
 function copyPhoneNumber(text) {
@@ -237,6 +232,7 @@ function openRiskStudentReport(studentId) {
     }
     toast('\uBCF4\uACE0 \uBB38\uAD6C \uBAA8\uB4C8\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.', 'warn');
 }
+
 async function restoreDischargedStudent(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const r = await api.patch(`students/${sid}/restore`, {});
@@ -581,15 +577,20 @@ function openDashboardClass(cid) {
     toast('학급 화면 모듈을 불러오지 못했습니다.', 'error');
 }
 
-// 오리지널 UI 유지
+// [Minimalism Polish]: 학급 요약 카드 디자인 폴리싱 및 52px 높이 통일, 공휴일 비활성 UI 적용
 function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id]; if (!s) return '';
 
+    const baseStyle = `cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-radius:16px; gap:12px; min-height:52px; box-sizing:border-box; transition:all 0.2s ease;`;
+
     if (!s.isScheduled) {
+        const holidayLabel = '수업 없음';
+        const dimStyle = `opacity:0.68; filter:grayscale(18%); background:var(--surface-2); border:1px dashed var(--border);`;
+        
         return `
-            <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border); gap:12px;">
+            <div onclick="openDashboardClass('${cls.id}')" style="${baseStyle} ${dimStyle}">
                 <div style="font-weight:700; font-size:15px; color:var(--secondary);">${apEscapeHtml(cls.name)}</div>
-                <div style="font-size:12px; font-weight:600; color:var(--secondary); white-space:nowrap;">수업 없음</div>
+                <div style="font-size:12px; font-weight:600; color:var(--secondary); white-space:nowrap;">${holidayLabel}</div>
             </div>
         `;
     }
@@ -598,7 +599,7 @@ function renderClassSummaryCard(cls, data) {
     const borderColor = 'rgba(225,29,72,0.18)';
 
     return `
-        <div onclick="openDashboardClass('${cls.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-radius:16px; background:${gradientBg}; border:1px solid ${borderColor}; gap:12px;">
+        <div onclick="openDashboardClass('${cls.id}')" style="${baseStyle} background:${gradientBg}; border:1px solid ${borderColor};">
             <div style="font-weight:700; font-size:15px; color:var(--text);">${apEscapeHtml(cls.name)}</div>
             <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;">
                 <div style="background:var(--bg); border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border);">재원 <span style="color:var(--text);">${s.activeCount}</span></div>
@@ -609,6 +610,7 @@ function renderClassSummaryCard(cls, data) {
     `;
 }
 
+// [Minimalism Polish]: 독립된 헤더 레이아웃 구성
 function renderTodoSections() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
@@ -658,64 +660,56 @@ function renderTodoSections() {
             if (u.type === 'exam') {
                 const e = u.item;
                 const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
-                return `<div onclick="openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:#059669; background:rgba(5,150,105,0.08); padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
+                return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${displayTitle}</div><span style="font-size:11px; color:#059669; background:rgba(5,150,105,0.08); padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
             } else {
-                return `<div onclick="openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(5,150,105,0.08); color:#059669; padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
+                return `<div onclick="event.stopPropagation(); openTodoMemoModal()" style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); display:flex; justify-content:space-between; align-items:center; background:transparent;"><div>${apEscapeHtml(u.item.content)}</div><span style="font-size:11px; background:rgba(5,150,105,0.08); color:#059669; padding:4px 8px; border-radius:10px; font-weight:700;">${dDay}</span></div>`;
             }
         }).join('');
     }
 
     return `
         <div style="margin-bottom:18px;">
-            <div onclick="openTodoMemoModal()" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px; cursor:pointer;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일정</h3>
-                <span style="font-size:11px; font-weight:700; color:var(--secondary);">관리</span>
+                <span onclick="event.stopPropagation(); openTodoMemoModal()" style="font-size:11px; font-weight:700; color:var(--primary); cursor:pointer;">관리</span>
             </div>
-            <div onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(99,102,241,0.2); background:rgba(99,102,241,0.04);">${todayHtml}</div>
+            <div onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(99,102,241,0.2); background:rgba(99,102,241,0.04);">
+                ${todayHtml}
+            </div>
             
             ${upcomingHtml ? `
-                <div onclick="openExamScheduleModal()" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px; cursor:pointer;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                     <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">주간일정</h3>
-                    <span style="font-size:11px; font-weight:700; color:var(--secondary);">관리</span>
+                    <span onclick="event.stopPropagation(); openExamScheduleModal()" style="font-size:11px; font-weight:700; color:var(--primary); cursor:pointer;">관리</span>
                 </div>
-<div style="overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">${upcomingHtml}</div>            ` : ''}
+                <div onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">
+                    ${upcomingHtml}
+                </div>
+            ` : ''}
         </div>
     `;
 }
 
-function renderTodayJournalCard(data) {
+// [Smart Architecture] 부분 업데이트 렌더러
+function updateDashboardJournalCardFast() {
+    const contentEl = document.getElementById('dashboard-journal-content');
+    if (!contentEl) return;
+    
+    const data = computeDashboardData();
     const todayClasses = state.db.classes.filter(c => {
         if (Number(c.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
         if (!isClassVisibleForCurrentTeacher(c)) return false;
-
         const summary = data.classSummaries[c.id];
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
         return true;
     });
-
-    let contentHtml = '';
-    if (todayClasses.length === 0) {
-        contentHtml = `<div style="font-size:13px; font-weight:600; color:var(--secondary); text-align:center; padding:18px 12px;">수업 없음</div>`;
-    } else {
-        const classStrings = todayClasses.map(c => {
-            const summary = data.classSummaries[c.id];
-            return `${apEscapeHtml(c.name)} ${summary.present}/${summary.activeCount}`;
-        });
-        contentHtml = `<div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.55;">${classStrings.join(' · ')}</div>`;
-    }
-
-    return `
-        <div style="margin-bottom:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일지</h3>
-            </div>
-            <div onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('일지 기능을 불러오지 못했습니다.', 'warn');" style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:var(--shadow); display:flex; justify-content:space-between; align-items:center; gap:12px;">
-                <div style="min-width:0; flex:1;">${contentHtml}</div>
-                <span style="font-size:18px; font-weight:700; color:var(--primary); line-height:1; flex:0 0 auto;">›</span>
-            </div>
-        </div>
-    `;
+    
+    const journalContent = todayClasses.length === 0
+        ? `<span style="font-size:14px; font-weight:600; color:var(--secondary);">수업 없음</span>`
+        : `<span style="font-size:14px; font-weight:700; color:var(--text);">${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
+    
+    contentEl.innerHTML = journalContent;
 }
 
 function renderDashboard() {
@@ -732,34 +726,33 @@ function renderDashboard() {
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
         return true;
     });
+    
     const journalContent = todayClasses.length === 0
         ? `<span style="font-size:14px; font-weight:600; color:var(--secondary);">수업 없음</span>`
         : `<span style="font-size:14px; font-weight:700; color:var(--text);">${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
 
     const shortcutRow = `
         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
-            <div onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');"
-                 style="background:rgba(37,99,235,0.06); border:1px solid rgba(37,99,235,0.2); border-radius:16px; padding:14px 10px; cursor:pointer;
-                         display:flex; align-items:center; justify-content:center;">
+            <div onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');"
+                 style="background:rgba(37,99,235,0.06); border:1px solid rgba(37,99,235,0.2); border-radius:16px; padding:12px 10px; min-height:52px; cursor:pointer; display:flex; align-items:center; justify-content:center;">
                 <span style="font-size:14px; font-weight:700; color:#2563eb;">시간표</span>
             </div>
-            <div onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');"
-                 style="background:rgba(8,145,178,0.06); border:1px solid rgba(8,145,178,0.2); border-radius:16px; padding:14px 10px; cursor:pointer;
-                         display:flex; align-items:center; justify-content:center;">
+            <div onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');"
+                 style="background:rgba(8,145,178,0.06); border:1px solid rgba(8,145,178,0.2); border-radius:16px; padding:12px 10px; min-height:52px; cursor:pointer; display:flex; align-items:center; justify-content:center;">
                 <span style="font-size:14px; font-weight:700; color:#0891b2;">출석부</span>
             </div>
             <div onclick="window.open('../archive/index.html', '_blank')"
-                 style="background:rgba(15,23,42,0.06); border:1px solid rgba(15,23,42,0.15); border-radius:16px; padding:14px 10px; cursor:pointer;
-                         display:flex; align-items:center; justify-content:center;">
+                 style="background:rgba(15,23,42,0.06); border:1px solid rgba(15,23,42,0.15); border-radius:16px; padding:12px 10px; min-height:52px; cursor:pointer; display:flex; align-items:center; justify-content:center;">
                 <span style="font-size:14px; font-weight:700; color:#0f172a;">아카이브</span>
             </div>
         </div>
-        <div onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('일지 기능을 불러오지 못했습니다.', 'warn');"
-             style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.2); border-radius:16px; padding:14px 16px; cursor:pointer; margin-bottom:18px;
-                     display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <div id="dashboard-journal-card" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');"
+             style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.2); border-radius:16px; padding:14px 16px; min-height:52px; cursor:pointer; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; gap:12px;">
             <div style="min-width:0; flex:1;">
                 <div style="font-size:11px; font-weight:700; color:#d97706; margin-bottom:3px;">오늘일지</div>
-                <div style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${journalContent}</div>
+                <div id="dashboard-journal-content" style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                    ${journalContent}
+                </div>
             </div>
             <span style="font-size:18px; font-weight:700; color:#d97706; flex-shrink:0;">›</span>
         </div>
@@ -767,12 +760,31 @@ function renderDashboard() {
 
     const todoSections = renderTodoSections();
     
-    const classes = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
+    // [Smart Architecture] 탭 필터링 로직
+    if (!state.ui.dashboardClassTab) state.ui.dashboardClassTab = 'all';
+    const tab = state.ui.dashboardClassTab;
+
+    const tabHtml = `
+        <div style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:12px;">
+            <button class="btn" style="flex:1; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='all'?'var(--surface)':'transparent'}; color:${tab==='all'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='all'?'0 1px 2px rgba(0,0,0,0.05)':'none'};" onclick="state.ui.dashboardClassTab='all'; renderDashboard()">전체</button>
+            <button class="btn" style="flex:1; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='middle'?'var(--surface)':'transparent'}; color:${tab==='middle'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='middle'?'0 1px 2px rgba(0,0,0,0.05)':'none'};" onclick="state.ui.dashboardClassTab='middle'; renderDashboard()">중등</button>
+            <button class="btn" style="flex:1; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='high'?'var(--surface)':'transparent'}; color:${tab==='high'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='high'?'0 1px 2px rgba(0,0,0,0.05)':'none'};" onclick="state.ui.dashboardClassTab='high'; renderDashboard()">고등</button>
+        </div>
+    `;
+
+    let filteredClasses = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
+    filteredClasses = filteredClasses.filter(c => {
+        if (tab === 'middle') return isMiddleSchoolClass(c);
+        if (tab === 'high') return !isMiddleSchoolClass(c);
+        return true;
+    });
+
     const classStatus = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
             <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">학급관리</h3>
         </div>
-        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${classes.map(c => renderClassSummaryCard(c, data)).join('')}</div>
+        ${tabHtml}
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
     root.innerHTML = `<div style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
@@ -962,10 +974,8 @@ function buildJournalContent(dateStr) {
         if (!isMiddleSchoolClass(c)) return false;
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
-        // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
         if (!c.schedule_days) return true;
 
-        // 제출일/선택일 기준 해당 요일 반만 출력한다.
         return String(c.schedule_days)
             .split(',')
             .map(v => v.trim())
