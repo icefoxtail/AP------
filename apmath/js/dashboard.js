@@ -364,15 +364,41 @@ function renderAdminControlCenter() {
 
     const nextWeekTime = todayTime + 7 * 24 * 60 * 60 * 1000;
     const nextWeekStr = new Date(nextWeekTime).toLocaleDateString('sv-SE');
-    const upcomingSchedules = (state.db.exam_schedules || []).filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr).sort((a,b) => a.exam_date.localeCompare(b.exam_date));
+    const adminWeeklyItems = [];
+
+    (state.db.exam_schedules || [])
+        .filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr)
+        .forEach(e => adminWeeklyItems.push({ type: 'exam', date: e.exam_date, item: e }));
+
+    (state.db.academy_schedules || [])
+        .filter(s =>
+            String(s.is_deleted || 0) !== '1' &&
+            String(s.target_scope || 'global') === 'global' &&
+            s.schedule_date >= todayStr &&
+            s.schedule_date <= nextWeekStr
+        )
+        .forEach(s => adminWeeklyItems.push({ type: 'academy', date: s.schedule_date, item: s }));
+
+    adminWeeklyItems.sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+
     const adminScheduleHtml = `
         <div style="margin-bottom:32px;">
             <h3 style="margin:0 0 12px 0; font-size:15px; font-weight:700; color:var(--secondary);">주간일정</h3>
             <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                ${upcomingSchedules.length > 0 ? upcomingSchedules.map(e => { 
-                    const dateLabel = apFormatMonthDay(e.exam_date) || e.exam_date; 
-                    const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:600;">학교공통</span> '; 
-                    return `<div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px;"><div><b style="font-weight:700; color:var(--text);">${apEscapeHtml(e.school_name)}</b> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`; 
+                ${adminWeeklyItems.length > 0 ? adminWeeklyItems.map(w => {
+                    const dateLabel = apFormatMonthDay(w.date) || w.date;
+                    if (w.type === 'exam') {
+                        const e = w.item;
+                        const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:600;">학교공통</span> ';
+                        return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:700; color:var(--error); background:rgba(255,71,87,0.08); padding:3px 8px; border-radius:8px; margin-right:6px;">시험</span><b style="font-weight:700; color:var(--text);">${apEscapeHtml(e.school_name)}</b> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
+                    }
+                    const s = w.item;
+                    const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
+                    const label = isClosed ? '휴무' : '기타';
+                    const labelColor = isClosed ? 'var(--warning)' : 'var(--primary)';
+                    const labelBg = isClosed ? 'rgba(255,165,2,0.12)' : 'rgba(26,92,255,0.08)';
+                    const title = s.title || (isClosed ? '휴무' : '일정');
+                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:700; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><b style="font-weight:700; color:var(--text);">${apEscapeHtml(title)}</b>${s.memo ? ` <span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
                 }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:600;">이번 주 예정된 일정이 없습니다.</div>`}
             </div>
         </div>
@@ -653,12 +679,13 @@ function renderTodoSections() {
         return !isMemoDone(m) && (isMemoPinned(m) || memoDate === todayStr);
     });
     
-    const upcomingMemos = state.db.operation_memos.filter(m => {
-        const memoDate = getMemoDate(m);
-        return !isMemoDone(m) && !isMemoPinned(m) && memoDate > todayStr && memoDate <= nextWeekStr;
-    });
-    
     const upcomingExams = state.db.exam_schedules.filter(e => e.exam_date >= todayStr && e.exam_date <= nextWeekStr);
+    const upcomingAcademySchedules = (state.db.academy_schedules || []).filter(s =>
+        String(s.is_deleted || 0) !== '1' &&
+        String(s.target_scope || 'global') === 'global' &&
+        s.schedule_date >= todayStr &&
+        s.schedule_date <= nextWeekStr
+    );
 
     const todayHtml = todayMemos.length ? todayMemos.map(m => {
         const isPinned = isMemoPinned(m);
@@ -675,8 +702,8 @@ function renderTodoSections() {
 
     let upcomingHtml = '';
     const upcomingItems = [];
-    upcomingMemos.forEach(m => upcomingItems.push({ type: 'memo', date: getMemoDate(m), item: m }));
     upcomingExams.forEach(e => upcomingItems.push({ type: 'exam', date: e.exam_date, item: e }));
+    upcomingAcademySchedules.forEach(s => upcomingItems.push({ type: 'academy', date: s.schedule_date, item: s }));
     
     upcomingItems.sort((a,b) => a.date.localeCompare(b.date));
 
@@ -696,8 +723,14 @@ function renderTodoSections() {
                 </div>`;
             }
 
-            return `<div onclick="event.stopPropagation(); openTodoMemoModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(u.item.content)}</div>
+            const s = u.item;
+            const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
+            const label = isClosed ? '휴무' : '기타';
+            const labelColor = isClosed ? 'var(--warning)' : 'var(--primary)';
+            const labelBg = isClosed ? 'rgba(255,165,2,0.12)' : 'rgba(26,92,255,0.08)';
+            const title = s.title || (isClosed ? '휴무' : '일정');
+            return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
+                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
                 <span style="font-size:11px; background:rgba(5,150,105,0.08); color:#059669; padding:4px 8px; border-radius:10px; font-weight:700; white-space:nowrap; flex-shrink:0;">${dDay}</span>
             </div>`;
         }).join('');
