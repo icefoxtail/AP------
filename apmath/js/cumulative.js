@@ -269,27 +269,28 @@ function openAddStudentFromAttendance(classId) {
     if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
 }
 
+// [FIX] 공휴일 셀: 기본 공란, 클릭 가능, 기록 있으면 표시
 function renderAttendanceCellContent(studentId, date) {
     const schedule = getMonthlyScheduleBadges(studentId, date);
-    
-    // 1. 학원 휴무일이나 공휴일이면 빈칸(공란) 처리
-    if (schedule.globalClosed || schedule.studentClosed) {
-        return ''; 
-    }
+    const isHol = schedule.globalClosed || schedule.studentClosed;
 
-    // 2. 수업일이 아니면 '-' 표시
-    if (!isAttendanceClassDay(studentId, date)) {
+    // 미래 날짜 → 공란
+    const today = new Date().toLocaleDateString('sv-SE');
+    if (date > today) return '';
+
+    // 수업일 아닌 날 (공휴일 제외) → '-'
+    if (!isHol && !isAttendanceClassDay(studentId, date)) {
         return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
     }
 
-    // 3. 미래 날짜 확인 (오늘 날짜까지만 출결 마크 표시, 미래는 공란)
-    const today = new Date().toLocaleDateString('sv-SE');
-    if (date > today) {
-        return ''; 
-    }
+    // getMonthlyAttendanceStatus는 기본값을 채워넣으므로, 실제 DB 기록만 직접 조회
+    const data = getMonthlyAttendanceData();
+    const sid = String(studentId);
+    const attRecord = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
+    const att = attRecord?.status || '';
 
-    const status = getMonthlyAttendanceStatus(studentId, date);
-    const att = status.attendance || '';
+    // 공휴일: 기록 없으면 공란
+    if (isHol && (!att || att === '미기록')) return '';
 
     if (att === '등원') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
     if (att === '결석') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
@@ -332,7 +333,6 @@ function openAttendanceLedger() {
 #att-tbl thead .att-nc { z-index: 12; }
 .att-dc { padding: 3px; text-align: center; width: 32px; min-width: 32px; cursor: pointer; user-select: none; }
 .att-dc:active { opacity: .7; }
-.att-hol { cursor: default; }
 .att-no-class { cursor: default; background: var(--surface); }
 .att-grp-row td { background: var(--surface-2); }
 .att-grp-nc { position: sticky; left: 0; z-index: 11; background: var(--surface-2); font-size: 12px; font-weight: 800; color: var(--text); padding: 5px 12px; text-align: center; border-right: 2px solid var(--border) !important; } 
@@ -411,8 +411,9 @@ function renderAttendanceLedgerTable() {
                 const sched = getMonthlyScheduleBadges(sid, d);
                 const isHol = sched.globalClosed || sched.studentClosed;
                 const isClassDay = isAttendanceClassDay(sid, d);
-                const cls = isHol ? 'att-dc att-hol' : (isClassDay ? 'att-dc' : 'att-dc att-no-class');
-                const click = (isHol || !isClassDay) ? '' : `onclick="toggleAttendanceCellStatus('${sid}','${d}')"`;
+                // [FIX] 공휴일도 클릭 가능 — att-hol 클래스 제거, cursor:pointer 유지
+                const cls = (isHol || isClassDay) ? 'att-dc' : 'att-dc att-no-class';
+                const click = (isHol || isClassDay) ? `onclick="toggleAttendanceCellStatus('${sid}','${d}')"` : '';
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
             
@@ -438,30 +439,43 @@ function renderAttendanceLedgerTable() {
 </table>`;
 }
 
+// [FIX] 공휴일 셀 클릭 가능 — 기본 공란, 사이클: 공란→○→×→△→＋→★→공란
 async function toggleAttendanceCellStatus(studentId, date) {
-    // 미래 날짜 클릭(토글) 원천 차단
     const today = new Date().toLocaleDateString('sv-SE');
     if (date > today) return;
 
     const sched = getMonthlyScheduleBadges(studentId, date);
-    if (sched.globalClosed || sched.studentClosed) return;
-    if (!isAttendanceClassDay(studentId, date)) return;
+    const isHol = sched.globalClosed || sched.studentClosed;
+
+    // 공휴일이 아닌 경우만 수업일 체크
+    if (!isHol && !isAttendanceClassDay(studentId, date)) return;
 
     const data = getMonthlyAttendanceData();
     if (!data.attendance) data.attendance = [];
 
     const sid = String(studentId);
     const existing = data.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
-    const current = existing?.status || '등원';
+
+    // 공휴일: 기록 없으면 blank 시작, 평일: 기록 없으면 '등원'으로 간주
+    const current = existing?.status || (isHol ? '' : '등원');
 
     let next;
-    // 수정됨: 루틴 마지막에 '수업 없음' 추가
-    if (current === '등원' || current === '미기록' || !current) next = '결석';
-    else if (current === '결석') next = '지각';
-    else if (current === '지각') next = '보강';
-    else if (current === '보강') next = '상담';
-    else if (current === '상담') next = '수업 없음';
-    else next = '등원';
+    if (isHol) {
+        // 공휴일 사이클: blank → 등원 → 결석 → 지각 → 보강 → 상담 → blank(미기록)
+        if (!current || current === '미기록') next = '등원';
+        else if (current === '등원') next = '결석';
+        else if (current === '결석') next = '지각';
+        else if (current === '지각') next = '보강';
+        else if (current === '보강') next = '상담';
+        else next = '미기록';
+    } else {
+        if (current === '등원' || current === '미기록' || !current) next = '결석';
+        else if (current === '결석') next = '지각';
+        else if (current === '지각') next = '보강';
+        else if (current === '보강') next = '상담';
+        else if (current === '상담') next = '수업 없음';
+        else next = '등원';
+    }
 
     if (existing) {
         existing.status = next;
