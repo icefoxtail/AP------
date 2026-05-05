@@ -1,65 +1,85 @@
 /**
  * AP Math OS [cumulative.js]
  * 출석부 + 성적표
- * [FIX] toggleAttendanceCellStatus: monthlyAttendanceCache ↔ state.db.attendance 양방향 동기화
+ * [Attendance] 월간 출석부 / 출석 셀 클릭 저장 / 클래스룸 상태 동기화
+ * [School Exam] 성적표: 기본/성적 정렬, 학년 필터, 평균 규칙, 직전 학기 대비 표시
  */
 
 function getCumulativeClassIdForStudent(studentId) {
     const mapping = (state.db.class_students || []).find(m => String(m.student_id) === String(studentId));
     return mapping ? String(mapping.class_id) : '';
 }
+
 function getCumulativeClassName(classId) {
     const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
     return cls ? cls.name : '';
 }
+
 function getCumulativeStudent(studentId) {
     return (state.db.students || []).find(s => String(s.id) === String(studentId));
 }
+
 function getCumulativeExamTypeLabel(type) {
     const map = { midterm: '중간', final: '기말', performance: '수행', etc: '기타' };
     return map[type] || type || '기타';
 }
+
 function getCumulativeGradeRankText(value) {
     const text = String(value || '');
     const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
     const idx = order.findIndex(g => text.includes(g));
     return idx === -1 ? order.length : idx;
 }
+
 function getCumulativeVisibleStudents(filters = {}) {
     let students = (state.db.students || []).filter(s => s.status === '재원');
+
     if (filters.classId) {
-        const ids = (state.db.class_students || []).filter(m => String(m.class_id) === String(filters.classId)).map(m => String(m.student_id));
+        const ids = (state.db.class_students || [])
+            .filter(m => String(m.class_id) === String(filters.classId))
+            .map(m => String(m.student_id));
         students = students.filter(s => ids.includes(String(s.id)));
     }
-    if (filters.grade) students = students.filter(s => String(s.grade || '').includes(filters.grade));
+
+    if (filters.grade) {
+        students = students.filter(s => String(s.grade || '').includes(filters.grade));
+    }
+
     return students.sort((a, b) => {
         const gradeDiff = getCumulativeGradeRankText(a.grade) - getCumulativeGradeRankText(b.grade);
         if (gradeDiff !== 0) return gradeDiff;
+
         const aClass = getCumulativeClassName(getCumulativeClassIdForStudent(a.id));
         const bClass = getCumulativeClassName(getCumulativeClassIdForStudent(b.id));
-        const classDiff = String(aClass || '').localeCompare(String(bClass || ''), 'ko');
+        const classDiff = String(aClass || '').localeCompare(String(bClass || ''), 'ko', { numeric: true });
         if (classDiff !== 0) return classDiff;
-        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
     });
 }
+
 function sortCumulativeClasses(classes = []) {
     return [...classes].sort((a, b) => {
         const gradeDiff = getCumulativeGradeRankText(a.grade || a.name) - getCumulativeGradeRankText(b.grade || b.name);
         if (gradeDiff !== 0) return gradeDiff;
-        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
     });
 }
+
 function sortCumulativeStudents(students = []) {
     return [...students].sort((a, b) => {
         const aClass = getCumulativeClassName(getCumulativeClassIdForStudent(a.id));
         const bClass = getCumulativeClassName(getCumulativeClassIdForStudent(b.id));
-        const classDiff = String(aClass || '').localeCompare(String(bClass || ''), 'ko');
+        const classDiff = String(aClass || '').localeCompare(String(bClass || ''), 'ko', { numeric: true });
         if (classDiff !== 0) return classDiff;
+
         const gradeDiff = getCumulativeGradeRankText(a.grade) - getCumulativeGradeRankText(b.grade);
         if (gradeDiff !== 0) return gradeDiff;
-        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
     });
 }
+
 function getMonthDays(month) {
     const m = String(month || '').trim();
     if (!/^\d{4}-\d{2}$/.test(m)) return [];
@@ -67,44 +87,70 @@ function getMonthDays(month) {
     const endDay = new Date(year, monthNo, 0).getDate();
     return Array.from({ length: endDay }, (_, idx) => `${m}-${String(idx + 1).padStart(2, '0')}`);
 }
+
 async function loadMonthlyAttendance(month, force = false) {
     const safeMonth = String(month || new Date().toLocaleDateString('sv-SE').slice(0, 7)).trim();
+
     if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
-    if (!force && state.ui.monthlyAttendanceCache[safeMonth]) return state.ui.monthlyAttendanceCache[safeMonth];
+    if (!force && state.ui.monthlyAttendanceCache[safeMonth]) {
+        return state.ui.monthlyAttendanceCache[safeMonth];
+    }
+
     const data = await api.get(`attendance-month?month=${encodeURIComponent(safeMonth)}`);
     const payload = data?.success ? {
         month: safeMonth,
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
         homework: Array.isArray(data.homework) ? data.homework : [],
         academy_schedules: Array.isArray(data.academy_schedules) ? data.academy_schedules : []
-    } : { month: safeMonth, attendance: [], homework: [], academy_schedules: [] };
+    } : {
+        month: safeMonth,
+        attendance: [],
+        homework: [],
+        academy_schedules: []
+    };
+
     state.ui.monthlyAttendanceCache[safeMonth] = payload;
     return payload;
 }
+
 function getMonthlyAttendanceData() {
-    const month = state.ui.attendanceLedgerMonth || state.ui.monthlyAttendanceMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    const month = state.ui.attendanceLedgerMonth ||
+        state.ui.monthlyAttendanceMonth ||
+        new Date().toLocaleDateString('sv-SE').slice(0, 7);
+
     if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
-    return state.ui.monthlyAttendanceCache[month] || { month, attendance: [], homework: [], academy_schedules: [] };
+    return state.ui.monthlyAttendanceCache[month] || {
+        month,
+        attendance: [],
+        homework: [],
+        academy_schedules: []
+    };
 }
+
 function isAttendanceClassDay(studentId, date) {
     const classId = getCumulativeClassIdForStudent(studentId);
     const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
     if (!cls) return false;
+
     const days = String(cls.schedule_days || '').split(',').map(v => v.trim()).filter(Boolean);
     if (!days.length) return false;
+
     const day = new Date(date + 'T00:00:00').getDay();
     return days.includes(String(day));
 }
+
 function getMonthlyAttendanceStatus(studentId, date) {
     const data = getMonthlyAttendanceData();
     const sid = String(studentId);
     const attendance = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
     const homework = (data.homework || []).find(h => String(h.student_id) === sid && String(h.date || '') === date);
+
     return {
         attendance: attendance?.status || (isAttendanceClassDay(studentId, date) ? '등원' : ''),
         homework: homework?.status || ''
     };
 }
+
 const HOLIDAYS_2026 = [
     '2026-01-01',
     '2026-02-16', '2026-02-17', '2026-02-18',
@@ -120,7 +166,11 @@ const HOLIDAYS_2026 = [
     '2026-10-09',
     '2026-12-25'
 ];
-function isFixedHoliday(dateStr) { return HOLIDAYS_2026.includes(dateStr); }
+
+function isFixedHoliday(dateStr) {
+    return HOLIDAYS_2026.includes(dateStr);
+}
+
 function getMonthlyScheduleBadges(studentId, date) {
     const data = getMonthlyAttendanceData();
     const sid = String(studentId);
@@ -130,6 +180,7 @@ function getMonthlyScheduleBadges(studentId, date) {
         if (s.target_scope === 'student') return String(s.student_id || '') === sid;
         return true;
     });
+
     const isFixed = isFixedHoliday(date);
     return {
         globalClosed: isFixed || schedules.some(s => s.schedule_type === 'closed' && s.target_scope !== 'student'),
@@ -138,65 +189,112 @@ function getMonthlyScheduleBadges(studentId, date) {
         consultation: schedules.some(s => s.schedule_type === 'consultation' && s.target_scope === 'student')
     };
 }
+
 function getAttendanceStudentJoinedDate(student) {
     if (!student) return '';
-    const raw = String(student.join_date || student.joined_at || student.enrolled_at || student.enrollment_date || student.registered_at || student.registration_date || student.created_at || student.createdAt || '').trim();
+
+    const raw = String(
+        student.join_date ||
+        student.joined_at ||
+        student.enrolled_at ||
+        student.enrollment_date ||
+        student.registered_at ||
+        student.registration_date ||
+        student.created_at ||
+        student.createdAt ||
+        ''
+    ).trim();
+
     const m = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
     if (!m) return '';
+
     return [m[1], String(m[2]).padStart(2, '0'), String(m[3]).padStart(2, '0')].join('-');
 }
+
 function isAttendanceNewStudent(student) {
     const joined = getAttendanceStudentJoinedDate(student);
     if (!joined) return false;
     return joined >= `${new Date().getFullYear()}-06-01`;
 }
+
 function isAttendanceLeaveStudent(student) {
     return !!(student && (student.status === '휴원' || String(student.memo || '').includes('#휴원')));
 }
+
 function getAttendanceStudentNameStyle(student) {
     if (isAttendanceLeaveStudent(student)) return 'color:#FF8C00;';
     if (isAttendanceNewStudent(student)) return 'color:var(--primary);';
     return 'color:var(--text);';
 }
+
 function _attDayName(dateStr) {
     const d = new Date(dateStr + 'T00:00:00');
     return ['일', '월', '화', '수', '목', '금', '토'][d.getDay()];
 }
+
 function _attDayStyle(dateStr) {
     const day = new Date(dateStr + 'T00:00:00').getDay();
     if (day === 0) return 'color:#e53935;';
     if (day === 6) return 'color:#1565c0;';
     return 'color:var(--secondary);';
 }
+
 function goAttendanceHome() {
     closeAttendanceLedger();
     closeSchoolExamLedger();
-    if (typeof state !== 'undefined' && state.ui) { state.ui.currentClassId = null; state.ui.returnView = null; }
-    if (typeof goHome === 'function') { goHome(); return; }
-    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') { renderAdminControlCenter(); return; }
+
+    if (typeof state !== 'undefined' && state.ui) {
+        state.ui.currentClassId = null;
+        state.ui.returnView = null;
+    }
+
+    if (typeof goHome === 'function') {
+        goHome();
+        return;
+    }
+
+    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
+        renderAdminControlCenter();
+        return;
+    }
+
     if (typeof renderDashboard === 'function') renderDashboard();
 }
-function closeAttendanceLedger() { if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode(); }
+
+function closeAttendanceLedger() {
+    if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+}
+
 function openEditStudentFromAttendance(sid) {
     state.ui.returnView = { type: 'attendance' };
-    if (typeof openEditStudent === 'function') openEditStudent(sid, { returnTo: { type: 'attendance' } });
+    if (typeof openEditStudent === 'function') {
+        openEditStudent(sid, { returnTo: { type: 'attendance' } });
+    }
 }
+
 function openAddStudentFromAttendance(classId) {
     state.ui.returnView = { type: 'attendance' };
-    if (typeof openAddStudent === 'function') openAddStudent(classId, { returnTo: { type: 'attendance' } });
+    if (typeof openAddStudent === 'function') {
+        openAddStudent(classId, { returnTo: { type: 'attendance' } });
+    }
 }
+
 function renderAttendanceCellContent(studentId, date) {
     const schedule = getMonthlyScheduleBadges(studentId, date);
     const isHol = schedule.globalClosed || schedule.studentClosed;
     const today = new Date().toLocaleDateString('sv-SE');
+
     if (date > today) return '';
+
     if (!isHol && !isAttendanceClassDay(studentId, date)) {
         return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
     }
+
     const data = getMonthlyAttendanceData();
     const sid = String(studentId);
     const attRecord = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
     const att = attRecord?.status || '';
+
     if (isHol && (!att || att === '미기록')) return '';
     if (att === '등원') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
     if (att === '결석') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
@@ -204,14 +302,23 @@ function renderAttendanceCellContent(studentId, date) {
     if (att === '보강') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--primary);">＋</span>';
     if (att === '상담') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#7c3aed;">★</span>';
     if (att === '수업 없음') return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
+
     return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
 }
+
 function openAttendanceLedger() {
-    if (!state.ui.attendanceLedgerMonth) state.ui.attendanceLedgerMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
-    var root = document.getElementById('app-root');
+    if (!state.ui.attendanceLedgerMonth) {
+        state.ui.attendanceLedgerMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    }
+
+    const root = document.getElementById('app-root');
     if (!root) return;
-    var activeClasses = sortCumulativeClasses((state.db.classes || []).filter(function(c) { return Number(c.is_active) !== 0; }));
-    var classOptions = activeClasses.map(function(c) { return '<option value="' + apEscapeHtml(c.id) + '">' + apEscapeHtml(c.name) + '</option>'; }).join('');
+
+    const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+    const classOptions = activeClasses
+        .map(c => `<option value="${apEscapeHtml(c.id)}">${apEscapeHtml(c.name)}</option>`)
+        .join('');
+
     root.innerHTML = `
 <style>
 #att-main { width: 100%; max-width: 1150px; margin: 0 auto; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 12px 16px 0; box-sizing: border-box; }
@@ -255,15 +362,21 @@ function openAttendanceLedger() {
   </div>
   <div id="att-tbl-wrap"><div id="att-tbl-root"></div></div>
 </div>`;
-    loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(function() { renderAttendanceLedgerTable(); });
+
+    loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(function() {
+        renderAttendanceLedgerTable();
+    });
 }
+
 function renderAttendanceLedgerTable() {
     const root = document.getElementById('att-tbl-root');
     if (!root) return;
+
     const month = state.ui.attendanceLedgerMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
     const days = getMonthDays(month);
     const classId = document.getElementById('att-cls')?.value || '';
     const section = document.getElementById('att-sec')?.value || '';
+
     let activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
     if (section) {
         activeClasses = activeClasses.filter(c => {
@@ -271,20 +384,27 @@ function renderAttendanceLedgerTable() {
             return section === 'high' ? isHigh : !isHigh;
         });
     }
+
     const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId }));
     const grouped = activeClasses
         .filter(c => !classId || String(c.id) === String(classId))
-        .map(cls => ({ cls, students: students.filter(s => String(getCumulativeClassIdForStudent(s.id)) === String(cls.id)) }))
+        .map(cls => ({
+            cls,
+            students: students.filter(s => String(getCumulativeClassIdForStudent(s.id)) === String(cls.id))
+        }))
         .filter(g => g.students.length);
+
     const headerCells = days.map(d => {
         const num = Number(d.slice(-2));
         const dayName = _attDayName(d);
         const style = _attDayStyle(d);
         return `<th style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;text-align:center;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;text-align:center;">${dayName}</div></th>`;
     }).join('');
+
     const bodyRows = grouped.map(g => {
         const classEmptyCols = days.map(() => '<td></td>').join('');
         const groupRow = `<tr class="att-grp-row"><td class="att-grp-nc">${apEscapeHtml(g.cls.name)}</td>${classEmptyCols}</tr>`;
+
         const sRows = g.students.map(s => {
             const sid = String(s.id);
             const dateCells = days.map(d => {
@@ -295,28 +415,32 @@ function renderAttendanceLedgerTable() {
                 const click = (isHol || isClassDay) ? `onclick="toggleAttendanceCellStatus('${sid}','${d}')"` : '';
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
+
             const nameStyle = getAttendanceStudentNameStyle(s);
             return `<tr><td class="att-nc att-student-nc" style="${nameStyle}" onclick="openEditStudentFromAttendance('${sid}')">${apEscapeHtml(s.name)}</td>${dateCells}</tr>`;
         }).join('');
+
         const emptyCols = days.map(() => '<td></td>').join('');
         const emptyRow = `<tr onclick="openAddStudentFromAttendance('${apEscapeHtml(String(g.cls.id))}')" style="cursor:pointer;" onmouseover="this.style.background='rgba(26,92,255,0.04)'" onmouseout="this.style.background=''"><td class="att-nc att-student-nc" style="color:var(--secondary);text-align:center;font-size:15px;font-weight:800;">+</td>${emptyCols}</tr>`;
+
         return groupRow + sRows + emptyRow;
     }).join('');
+
     const empty = `<tr><td colspan="${days.length + 1}" style="padding:40px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;">표시할 학생이 없습니다.</td></tr>`;
     root.innerHTML = `<table id="att-tbl"><thead><tr><th class="att-nc" style="padding:6px 12px;min-width:90px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">이름</th>${headerCells}</tr></thead><tbody>${bodyRows || empty}</tbody></table>`;
 }
 
-// [FIX] 출석부 ↔ 클래스룸 양방향 동기화
-// monthlyAttendanceCache와 state.db.attendance를 동시에 갱신/롤백
 async function toggleAttendanceCellStatus(studentId, date) {
     const today = new Date().toLocaleDateString('sv-SE');
     if (date > today) return;
+
     const sched = getMonthlyScheduleBadges(studentId, date);
     const isHol = sched.globalClosed || sched.studentClosed;
     if (!isHol && !isAttendanceClassDay(studentId, date)) return;
 
     const data = getMonthlyAttendanceData();
     if (!data.attendance) data.attendance = [];
+
     const sid = String(studentId);
     const existing = data.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
     const current = existing?.status || (isHol ? '' : '등원');
@@ -338,17 +462,14 @@ async function toggleAttendanceCellStatus(studentId, date) {
         else next = '등원';
     }
 
-    // [1] 월간 캐시 낙관적 업데이트
-    if (existing) { existing.status = next; }
-    else { data.attendance.push({ student_id: sid, date, status: next }); }
+    if (existing) existing.status = next;
+    else data.attendance.push({ student_id: sid, date, status: next });
 
-    // [2] state.db.attendance 동기화 → 클래스룸 뷰와 즉시 일치
     if (!state.db.attendance) state.db.attendance = [];
     const dbRec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
-    if (dbRec) { dbRec.status = next; }
-    else { state.db.attendance.push({ student_id: sid, date, status: next }); }
+    if (dbRec) dbRec.status = next;
+    else state.db.attendance.push({ student_id: sid, date, status: next });
 
-    // [3] 셀 즉시 렌더링
     const cellEl = document.getElementById(`att-cell-${studentId}-${date}`);
     if (cellEl) cellEl.innerHTML = renderAttendanceCellContent(sid, date);
 
@@ -356,12 +477,12 @@ async function toggleAttendanceCellStatus(studentId, date) {
         const r = await api.patch('attendance', { studentId, date, status: next });
         if (!r?.success) throw new Error(r?.message || 'fail');
     } catch {
-        // [4] 롤백 — 월간 캐시
-        if (existing) { existing.status = current; }
-        else { data.attendance = data.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date)); }
-        // [4] 롤백 — state.db.attendance
-        if (dbRec) { dbRec.status = current; }
-        else { state.db.attendance = state.db.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date)); }
+        if (existing) existing.status = current;
+        else data.attendance = data.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date));
+
+        if (dbRec) dbRec.status = current;
+        else state.db.attendance = state.db.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date));
+
         if (cellEl) cellEl.innerHTML = renderAttendanceCellContent(sid, date);
         toast('출석 저장에 실패했습니다.', 'warn');
     }
@@ -369,67 +490,99 @@ async function toggleAttendanceCellStatus(studentId, date) {
 
 var SEB_COLS = [
     { semester: '1학기', examType: 'midterm', key: '1H-mid', label: '중간' },
-    { semester: '1학기', examType: 'final',   key: '1H-fin', label: '기말' },
+    { semester: '1학기', examType: 'final', key: '1H-fin', label: '기말' },
     { semester: '2학기', examType: 'midterm', key: '2H-mid', label: '중간' },
-    { semester: '2학기', examType: 'final',   key: '2H-fin', label: '기말' }
+    { semester: '2학기', examType: 'final', key: '2H-fin', label: '기말' }
 ];
+
 function getSebExamRecord(studentId, year, semester, examType) {
     return (state.db.school_exam_records || []).find(function(r) {
-        return String(r.student_id) === String(studentId) && Number(r.exam_year) === Number(year) && String(r.semester || '') === semester && String(r.exam_type || '') === examType && String(r.subject || '') === '수학' && String(r.is_deleted || 0) !== '1';
+        return String(r.student_id) === String(studentId) &&
+            Number(r.exam_year) === Number(year) &&
+            String(r.semester || '') === semester &&
+            String(r.exam_type || '') === examType &&
+            String(r.subject || '') === '수학' &&
+            String(r.is_deleted || 0) !== '1';
     });
 }
+
 function getSebVisibleStudents() {
-    var section = state.ui.schoolExamSection || 'middle';
-    var classId = state.ui.schoolExamClassId || '';
-    var teacherFilter = state.ui.schoolExamTeacher || '';
-    var students = getCumulativeVisibleStudents({ classId: classId });
+    const section = state.ui.schoolExamSection || 'middle';
+    const classId = state.ui.schoolExamClassId || '';
+    const teacherFilter = state.ui.schoolExamTeacher || '';
+    const gradeTab = state.ui.schoolExamGradeTab || '';
+
+    let students = getCumulativeVisibleStudents({ classId });
+
     if (teacherFilter) {
-        var tClassIds = (state.db.classes || []).filter(function(c) { return c.teacher_name === teacherFilter; }).map(function(c) { return String(c.id); });
-        students = students.filter(function(s) { return tClassIds.indexOf(getCumulativeClassIdForStudent(s.id)) !== -1; });
+        const tClassIds = (state.db.classes || [])
+            .filter(c => c.teacher_name === teacherFilter)
+            .map(c => String(c.id));
+        students = students.filter(s => tClassIds.includes(getCumulativeClassIdForStudent(s.id)));
     }
-    students = students.filter(function(s) {
-        var grade = String(s.grade || '');
-        var isHigh = /고1|고2|고3/.test(grade);
+
+    students = students.filter(s => {
+        const grade = String(s.grade || '');
+        const text = grade + ' ' + String(s.school_name || '') + ' ' + String(s.name || '');
+        const isHigh = /고1|고2|고3/.test(text);
         return section === 'high' ? isHigh : !isHigh;
     });
+
+    if (gradeTab) {
+        students = students.filter(s => String(s.grade || '').includes(gradeTab));
+    }
+
     return students;
 }
+
 function getPrevSebColKey(key) {
     const order = ['1H-mid', '1H-fin', '2H-mid', '2H-fin'];
     const idx = order.indexOf(key);
     return idx > 0 ? order[idx - 1] : null;
 }
+
 function getSebScore(studentId, year, colKey) {
     const col = SEB_COLS.find(c => c.key === colKey);
     if (!col) return null;
+
     const rec = getSebExamRecord(studentId, year, col.semester, col.examType);
     if (!rec || rec.score === null || rec.score === undefined || rec.score === '') return null;
+
     const score = Number(rec.score);
     return Number.isFinite(score) ? score : null;
 }
+
 function calcSebAvg(scores) {
     const valid = scores.filter(s => s !== null && Number.isFinite(s));
     if (!valid.length) return null;
     return Math.round(valid.reduce((a, b) => a + b, 0) / valid.length * 10) / 10;
 }
+
 function buildSebTrendHtml(curr, prev) {
     if (curr === null || prev === null) return '';
+
     const diff = curr - prev;
     if (diff === 0) return '';
+
     const color = diff > 0 ? 'var(--success)' : '#e53935';
     const arrow = diff > 0 ? '▲' : '▼';
+
     return `<div style="font-size:10px;font-weight:700;color:${color};line-height:1.2;margin-top:1px;">${arrow}${Math.abs(diff)}</div>`;
 }
+
 function buildSebAvgRow(label, students, year, isGradeAvg) {
     const bg = isGradeAvg ? 'rgba(26,92,255,0.06)' : 'rgba(0,0,0,0.03)';
     const fontSize = isGradeAvg ? '12px' : '11px';
+
     const cols = SEB_COLS.map((col, i) => {
         const scores = students.map(s => getSebScore(s.id, year, col.key)).filter(s => s !== null);
         const avg = calcSebAvg(scores);
         const borderClass = (i === 0 || i === 2) ? 'seb-border2' : '';
         const text = avg !== null ? avg : '<span style="color:var(--border);font-size:12px;">-</span>';
+
         return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;background:${bg};padding:4px 2px;"><span style="font-size:${fontSize};font-weight:700;color:var(--secondary);">${text}</span></td>`;
     }).join('');
+
     return `<tr>
         <td class="seb-sticky-g" style="background:${bg};font-size:11px;font-weight:700;color:var(--secondary);"></td>
         <td class="seb-sticky-c" style="background:${bg};font-size:11px;font-weight:700;color:var(--secondary);"></td>
@@ -437,50 +590,90 @@ function buildSebAvgRow(label, students, year, isGradeAvg) {
         ${cols}
     </tr>`;
 }
+
 function _sebToggleSortCol() {
-    var el = document.getElementById('seb-sort-col');
-    var sortEl = document.getElementById('seb-sort');
+    const el = document.getElementById('seb-sort-col');
+    const sortEl = document.getElementById('seb-sort');
     if (el && sortEl) el.style.display = sortEl.value === 'score-desc' ? 'block' : 'none';
 }
-function closeSchoolExamLedger() { if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode(); }
+
+function closeSchoolExamLedger() {
+    if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+}
+
 function openSchoolExamLedger() {
-    var currentYear = new Date().getFullYear();
-    var isAdmin = !!(state.auth && state.auth.role === 'admin');
+    const currentYear = new Date().getFullYear();
+    const isAdmin = !!(state.auth && state.auth.role === 'admin');
+
     if (!isAdmin) state.ui.schoolExamTeacher = '';
     if (!state.ui.schoolExamYear) state.ui.schoolExamYear = currentYear;
     if (!state.ui.schoolExamSection) state.ui.schoolExamSection = 'middle';
+    if (state.ui.schoolExamGradeTab === undefined || state.ui.schoolExamGradeTab === null) state.ui.schoolExamGradeTab = '';
     if (!state.ui.schoolExamClassId) state.ui.schoolExamClassId = '';
     if (!state.ui.schoolExamTeacher) state.ui.schoolExamTeacher = '';
     if (!state.ui.schoolExamSort) state.ui.schoolExamSort = 'default';
     if (!state.ui.schoolExamSortCol) state.ui.schoolExamSortCol = '1H-mid';
-    var root = document.getElementById('app-root');
+
+    const root = document.getElementById('app-root');
     if (!root) return;
-    var section = state.ui.schoolExamSection;
-    var sort = state.ui.schoolExamSort;
-    var sortCol = state.ui.schoolExamSortCol;
-    var year = Number(state.ui.schoolExamYear) || currentYear;
-    var teacherFilter = state.ui.schoolExamTeacher;
-    var activeClasses = sortCumulativeClasses((state.db.classes || []).filter(function(c) { return Number(c.is_active) !== 0; }));
-    var sectionClasses = activeClasses.filter(function(c) {
-        var isHigh = /고1|고2|고3/.test(String(c.grade || '') + ' ' + String(c.name || ''));
+
+    const section = state.ui.schoolExamSection;
+    const gradeTab = state.ui.schoolExamGradeTab || '';
+    const sort = state.ui.schoolExamSort;
+    const sortCol = state.ui.schoolExamSortCol;
+    const year = Number(state.ui.schoolExamYear) || currentYear;
+    const teacherFilter = state.ui.schoolExamTeacher;
+
+    const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+    const sectionClasses = activeClasses.filter(c => {
+        const isHigh = /고1|고2|고3/.test(String(c.grade || '') + ' ' + String(c.name || ''));
         return section === 'high' ? isHigh : !isHigh;
     });
-    var filteredClasses = teacherFilter ? sectionClasses.filter(function(c) { return c.teacher_name === teacherFilter; }) : sectionClasses;
-    var classOptions = '<option value="">전체</option>' + filteredClasses.map(function(c) {
+
+    let filteredClasses = teacherFilter ? sectionClasses.filter(c => c.teacher_name === teacherFilter) : sectionClasses;
+    if (gradeTab) {
+        filteredClasses = filteredClasses.filter(c => String(c.grade || '').includes(gradeTab) || String(c.name || '').includes(gradeTab));
+    }
+
+    const gradeOptions = section === 'high' ? ['고1', '고2', '고3'] : ['중1', '중2', '중3'];
+    const gradeSelectOptions = '<option value="">전체</option>' + gradeOptions
+        .map(g => `<option value="${g}"${gradeTab === g ? ' selected' : ''}>${g}</option>`)
+        .join('');
+
+    const classOptions = '<option value="">전체 반</option>' + filteredClasses.map(c => {
         return '<option value="' + apEscapeHtml(c.id) + '"' + (String(c.id) === String(state.ui.schoolExamClassId) ? ' selected' : '') + '>' + apEscapeHtml(c.name) + '</option>';
     }).join('');
-    var yearOptions = Array.from({length: 5}, function(_, i) { return currentYear - 2 + i; }).map(function(y) {
+
+    const yearOptions = Array.from({ length: 5 }, function(_, i) {
+        return currentYear - 2 + i;
+    }).map(function(y) {
         return '<option value="' + y + '"' + (y === year ? ' selected' : '') + '>' + y + '</option>';
     }).join('');
-    var teacherHtml = '';
+
+    let teacherHtml = '';
     if (isAdmin) {
-        var teachers = []; var seen = {};
-        (state.db.classes || []).forEach(function(c) { var t = c.teacher_name || ''; if (t && !seen[t]) { seen[t] = true; teachers.push(t); } });
+        const teachers = [];
+        const seen = {};
+
+        (state.db.classes || []).forEach(function(c) {
+            const t = c.teacher_name || '';
+            if (t && !seen[t]) {
+                seen[t] = true;
+                teachers.push(t);
+            }
+        });
+
         teachers.sort();
-        var tOpts = '<option value="">전체 선생님</option>' + teachers.map(function(t) { return '<option value="' + apEscapeHtml(t) + '"' + (t === teacherFilter ? ' selected' : '') + '>' + apEscapeHtml(t) + '</option>'; }).join('');
-        teacherHtml = '<select class="seb-ctrl" id="seb-teacher" onchange="state.ui.schoolExamTeacher=this.value;state.ui.schoolExamClassId=\'\';openSchoolExamLedger()">' + tOpts + '</select>';
+
+        const tOpts = '<option value="">전체 선생님</option>' + teachers.map(function(t) {
+            return '<option value="' + apEscapeHtml(t) + '"' + (t === teacherFilter ? ' selected' : '') + '>' + apEscapeHtml(t) + '</option>';
+        }).join('');
+
+        teacherHtml = `<select class="seb-ctrl" id="seb-teacher" onchange="state.ui.schoolExamTeacher=this.value;state.ui.schoolExamClassId='';openSchoolExamLedger()">${tOpts}</select>`;
     }
+
     const showSortCol = sort === 'score-desc';
+
     root.innerHTML = `
 <style>
 #seb-main { width: 100%; max-width: 850px; margin: 0 auto; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 16px 16px 0; box-sizing: border-box; }
@@ -511,17 +704,18 @@ function openSchoolExamLedger() {
     </div>
   </div>
   <div class="seb-tab-wrap" style="margin-bottom:10px;flex-shrink:0;">
-    <button class="seb-tab ${section === 'middle' ? 'active' : ''}" onclick="state.ui.schoolExamSection='middle';state.ui.schoolExamClassId='';openSchoolExamLedger()">중등</button>
-    <button class="seb-tab ${section === 'high' ? 'active' : ''}" onclick="state.ui.schoolExamSection='high';state.ui.schoolExamClassId='';openSchoolExamLedger()">고등</button>
+    <button class="seb-tab ${section === 'middle' ? 'active' : ''}" onclick="state.ui.schoolExamSection='middle';state.ui.schoolExamGradeTab='';state.ui.schoolExamClassId='';openSchoolExamLedger()">중등</button>
+    <button class="seb-tab ${section === 'high' ? 'active' : ''}" onclick="state.ui.schoolExamSection='high';state.ui.schoolExamGradeTab='';state.ui.schoolExamClassId='';openSchoolExamLedger()">고등</button>
   </div>
   <div style="display:flex;gap:8px;margin-bottom:10px;flex-shrink:0;flex-wrap:wrap;">
     ${teacherHtml}
-    <select class="seb-ctrl" id="seb-cls" style="flex:2;" onchange="state.ui.schoolExamClassId=this.value;renderSchoolExamBatchTable()">${classOptions}</select>
-    <select class="seb-ctrl" id="seb-sort" style="flex:1;" onchange="state.ui.schoolExamSort=this.value;_sebToggleSortCol();renderSchoolExamBatchTable()">
-      <option value="default"${sort === 'default' ? ' selected' : ''}>기본순</option>
-      <option value="score-desc"${sort === 'score-desc' ? ' selected' : ''}>학년별 성적순</option>
+    <select class="seb-ctrl" id="seb-grade" style="flex:0.9;" onchange="state.ui.schoolExamGradeTab=this.value;state.ui.schoolExamClassId='';openSchoolExamLedger()">${gradeSelectOptions}</select>
+    <select class="seb-ctrl" id="seb-cls" style="flex:1.5;" onchange="state.ui.schoolExamClassId=this.value;renderSchoolExamBatchTable()">${classOptions}</select>
+    <select class="seb-ctrl" id="seb-sort" style="flex:0.9;" onchange="state.ui.schoolExamSort=this.value;_sebToggleSortCol();renderSchoolExamBatchTable()">
+      <option value="default"${sort === 'default' ? ' selected' : ''}>기본</option>
+      <option value="score-desc"${sort === 'score-desc' ? ' selected' : ''}>성적</option>
     </select>
-    <select class="seb-ctrl" id="seb-sort-col" style="flex:1;display:${showSortCol ? 'block' : 'none'};" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">
+    <select class="seb-ctrl" id="seb-sort-col" style="flex:1.2;display:${showSortCol ? 'block' : 'none'};" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">
       <option value="1H-mid"${sortCol === '1H-mid' ? ' selected' : ''}>1학기 중간</option>
       <option value="1H-fin"${sortCol === '1H-fin' ? ' selected' : ''}>1학기 기말</option>
       <option value="2H-mid"${sortCol === '2H-mid' ? ' selected' : ''}>2학기 중간</option>
@@ -530,181 +724,304 @@ function openSchoolExamLedger() {
   </div>
   <div id="seb-body"><div id="seb-tbl-root"></div></div>
 </div>`;
+
     renderSchoolExamBatchTable();
 }
+
 function renderSchoolExamBatchTable() {
-    var root = document.getElementById('seb-tbl-root');
+    const root = document.getElementById('seb-tbl-root');
     if (!root) return;
-    var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
-    var sort = state.ui.schoolExamSort || 'default';
-    var sortColKey = state.ui.schoolExamSortCol || '1H-mid';
-    var students = getSebVisibleStudents();
+
+    const year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
+    const sort = state.ui.schoolExamSort || 'default';
+    const sortColKey = state.ui.schoolExamSortCol || '1H-mid';
+    const gradeTab = state.ui.schoolExamGradeTab || '';
+    const classId = state.ui.schoolExamClassId || '';
+    const students = getSebVisibleStudents();
+
     if (!students.length) {
         root.innerHTML = '<div style="padding:48px;text-align:center;color:var(--secondary);font-size:14px;font-weight:600;">표시할 학생이 없습니다.</div>';
         return;
     }
-    var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
+
+    const hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
         + '<th rowspan="2" class="seb-sticky-c">반</th>'
         + '<th rowspan="2" class="seb-sticky-n">이름</th>'
         + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(26,92,255,0.03);">1학기</th>'
         + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>';
-    var hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
+
+    const hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
         + '<th style="background:rgba(26,92,255,0.03);">기말</th>'
         + '<th class="seb-border2" style="background:rgba(5,150,105,0.03);">중간</th>'
         + '<th style="background:rgba(5,150,105,0.03);">기말</th>';
-    var bodyRows = '';
-    var gradeOrder = ['중1','중2','중3','고1','고2','고3'];
-    var byGrade = {};
+
+    let bodyRows = '';
+    const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    const byGrade = {};
+
     students.forEach(function(s) {
-        var g = String(s.grade || '기타');
+        const g = String(s.grade || '기타');
         if (!byGrade[g]) byGrade[g] = [];
         byGrade[g].push(s);
     });
-    var activeGrades = gradeOrder.filter(function(g) { return byGrade[g] && byGrade[g].length; });
+
+    const activeGrades = gradeOrder.filter(function(g) {
+        return byGrade[g] && byGrade[g].length;
+    });
+
     gradeOrder.forEach(function(grade) {
-        var gradeStudents = byGrade[grade];
+        let gradeStudents = byGrade[grade];
         if (!gradeStudents || !gradeStudents.length) return;
-        var isFirstGrade = activeGrades[0] === grade;
+
+        const isFirstGrade = activeGrades[0] === grade;
+
         if (sort === 'score-desc') {
             gradeStudents = gradeStudents.slice().sort(function(a, b) {
-                var sa = getSebScore(a.id, year, sortColKey);
-                var sb = getSebScore(b.id, year, sortColKey);
+                const sa = getSebScore(a.id, year, sortColKey);
+                const sb = getSebScore(b.id, year, sortColKey);
+
                 if (sa === null && sb === null) return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
                 if (sa === null) return 1;
                 if (sb === null) return -1;
                 if (sb !== sa) return sb - sa;
+
                 return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
             });
-            var rankMap = {};
-            var prevScore = null, prevRank = 0, sameCount = 0;
-            gradeStudents.forEach(function(s) {
-                var sc = getSebScore(s.id, year, sortColKey);
-                if (sc === null) { rankMap[s.id] = null; return; }
-                if (sc === prevScore) { sameCount++; rankMap[s.id] = prevRank; }
-                else { prevRank = prevRank + sameCount + 1; sameCount = 0; prevScore = sc; rankMap[s.id] = prevRank; }
-            });
+
             gradeStudents.forEach(function(s, idx) {
-                var gradeText = idx === 0 ? grade : '';
-                var dividerClass = idx === 0 && !isFirstGrade ? ' seb-grade-divider' : '';
-                var cols = SEB_COLS.map(function(col, ci) {
-                    var score = getSebScore(s.id, year, col.key);
-                    var rank = col.key === sortColKey ? rankMap[s.id] : null;
-                    var prevKey = getPrevSebColKey(col.key);
-                    var prevScore2 = prevKey ? getSebScore(s.id, year, prevKey) : null;
-                    var trendHtml = buildSebTrendHtml(score, prevScore2);
-                    var borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
-                    var val = score !== null ? score : '';
-                    var rankHtml = (rank !== null && score !== null) ? `<div style="font-size:10px;font-weight:600;color:var(--secondary);line-height:1.2;">${rank}등</div>` : '';
-                    return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${rankHtml}${trendHtml}</td>`;
+                const gradeText = idx === 0 ? grade : '';
+                const dividerClass = idx === 0 && !isFirstGrade ? ' seb-grade-divider' : '';
+
+                const cols = SEB_COLS.map(function(col, ci) {
+                    const score = getSebScore(s.id, year, col.key);
+                    const prevKey = getPrevSebColKey(col.key);
+                    const prevScore = prevKey ? getSebScore(s.id, year, prevKey) : null;
+                    const trendHtml = buildSebTrendHtml(score, prevScore);
+                    const borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
+                    const val = score !== null ? score : '';
+
+                    return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${trendHtml}</td>`;
                 }).join('');
+
                 bodyRows += `<tr class="${dividerClass}"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">${apEscapeHtml(gradeText)}</td><td class="seb-sticky-c"></td><td class="seb-sticky-n">${apEscapeHtml(s.name)}</td>${cols}</tr>`;
             });
-            bodyRows += buildSebAvgRow('평균', gradeStudents, year, true);
-        } else {
-            var byClass = {}, classOrder = [];
-            gradeStudents.forEach(function(s) {
-                var cid = getCumulativeClassIdForStudent(s.id);
-                var cn = getCumulativeClassName(cid) || '미배정';
-                if (!byClass[cn]) { byClass[cn] = []; classOrder.push(cn); }
-                byClass[cn].push(s);
+
+            bodyRows += buildSebAvgRow(classId ? '평균' : '학년평균', gradeStudents, year, true);
+            return;
+        }
+
+        const byClass = {};
+        const classOrder = [];
+
+        gradeStudents.forEach(function(s) {
+            const cid = getCumulativeClassIdForStudent(s.id);
+            const cn = getCumulativeClassName(cid) || '미배정';
+
+            if (!byClass[cn]) {
+                byClass[cn] = [];
+                classOrder.push(cn);
+            }
+
+            byClass[cn].push(s);
+        });
+
+        classOrder.sort(function(a, b) {
+            return String(a || '').localeCompare(String(b || ''), 'ko', { numeric: true });
+        });
+
+        const showClassAverage = !gradeTab || !!classId;
+        const showGradeAverage = !classId;
+        let gradeFirstRow = true;
+
+        classOrder.forEach(function(cn) {
+            const clsStudents = (byClass[cn] || []).slice().sort(function(a, b) {
+                return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
             });
-            classOrder.sort(function(a, b) {
-                return String(a || '').localeCompare(String(b || ''), 'ko', { numeric: true });
+
+            let classFirstRow = true;
+
+            clsStudents.forEach(function(s) {
+                const isFirstInGrade = gradeFirstRow;
+                const isFirstInClass = classFirstRow;
+                const gradeText = isFirstInGrade ? grade : '';
+                const classText = isFirstInClass ? cn : '';
+                const dividerClass = isFirstInGrade && !isFirstGrade ? ' seb-grade-divider' : '';
+
+                gradeFirstRow = false;
+                classFirstRow = false;
+
+                const cols = SEB_COLS.map(function(col, ci) {
+                    const score = getSebScore(s.id, year, col.key);
+                    const prevKey = getPrevSebColKey(col.key);
+                    const prevScore = prevKey ? getSebScore(s.id, year, prevKey) : null;
+                    const trendHtml = buildSebTrendHtml(score, prevScore);
+                    const borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
+                    const val = score !== null ? score : '';
+
+                    return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${trendHtml}</td>`;
+                }).join('');
+
+                bodyRows += `<tr class="${dividerClass}"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">${apEscapeHtml(gradeText)}</td><td class="seb-sticky-c">${apEscapeHtml(classText)}</td><td class="seb-sticky-n">${apEscapeHtml(s.name)}</td>${cols}</tr>`;
             });
-            var gradeFirstRow = true;
-            classOrder.forEach(function(cn) {
-                var clsStudents = (byClass[cn] || []).slice().sort(function(a, b) {
-                    return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
-                });
-                var classFirstRow = true;
-                clsStudents.forEach(function(s) {
-                    var isFirstInGrade = gradeFirstRow;
-                    var isFirstInClass = classFirstRow;
-                    var gradeText = isFirstInGrade ? grade : '';
-                    var classText = isFirstInClass ? cn : '';
-                    var dividerClass = isFirstInGrade && !isFirstGrade ? ' seb-grade-divider' : '';
-                    gradeFirstRow = false;
-                    classFirstRow = false;
-                    var cols = SEB_COLS.map(function(col, ci) {
-                        var score = getSebScore(s.id, year, col.key);
-                        var prevKey = getPrevSebColKey(col.key);
-                        var prevScore3 = prevKey ? getSebScore(s.id, year, prevKey) : null;
-                        var trendHtml = buildSebTrendHtml(score, prevScore3);
-                        var borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
-                        var val = score !== null ? score : '';
-                        return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${trendHtml}</td>`;
-                    }).join('');
-                    bodyRows += `<tr class="${dividerClass}"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">${apEscapeHtml(gradeText)}</td><td class="seb-sticky-c">${apEscapeHtml(classText)}</td><td class="seb-sticky-n">${apEscapeHtml(s.name)}</td>${cols}</tr>`;
-                });
+
+            if (showClassAverage) {
                 bodyRows += buildSebAvgRow('반평균', clsStudents, year, false);
-            });
+            }
+        });
+
+        if (showGradeAverage) {
             bodyRows += buildSebAvgRow('학년평균', gradeStudents, year, true);
         }
     });
+
     root.innerHTML = `<table id="seb-tbl"><thead><tr>${hRow1}</tr><tr>${hRow2}</tr></thead><tbody>${bodyRows || '<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>'}</tbody></table>`;
 }
+
 function _buildSebRow(s, year, gradeText, classText) {
     const cols = SEB_COLS.map(function(col, i) {
-        var sid = String(s.id);
-        var rec = getSebExamRecord(sid, year, col.semester, col.examType);
-        var val = (rec && rec.score !== null && rec.score !== undefined && rec.score !== '') ? rec.score : '';
-        var border = (i === 0 || i === 2) ? ' class="seb-border2"' : '';
+        const sid = String(s.id);
+        const rec = getSebExamRecord(sid, year, col.semester, col.examType);
+        const val = (rec && rec.score !== null && rec.score !== undefined && rec.score !== '') ? rec.score : '';
+        const border = (i === 0 || i === 2) ? ' class="seb-border2"' : '';
         return '<td' + border + ' style="text-align:center;"><input type="number" class="seb-inp" id="seb-inp-' + sid + '-' + col.key + '" value="' + val + '" min="0" max="100"></td>';
     }).join('');
+
     return '<tr><td class="seb-sticky-g">' + apEscapeHtml(gradeText || '') + '</td><td class="seb-sticky-c">' + apEscapeHtml(classText || '') + '</td><td class="seb-sticky-n">' + apEscapeHtml(s.name) + '</td>' + cols + '</tr>';
 }
+
 async function saveSchoolExamBatch() {
-    var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
-    var students = getSebVisibleStudents();
+    const year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
+    const students = getSebVisibleStudents();
+
     if (!students.length) return toast('저장할 학생이 없습니다.', 'warn');
-    for (var i = 0; i < students.length; i++) {
-        for (var j = 0; j < SEB_COLS.length; j++) {
-            var inp = document.getElementById('seb-inp-' + students[i].id + '-' + SEB_COLS[j].key);
+
+    for (let i = 0; i < students.length; i++) {
+        for (let j = 0; j < SEB_COLS.length; j++) {
+            const inp = document.getElementById('seb-inp-' + students[i].id + '-' + SEB_COLS[j].key);
             if (!inp) continue;
-            var val = (inp.value || '').trim();
-            if (val !== '') { var n = Number(val); if (!Number.isFinite(n) || n < 0 || n > 100) return toast(students[i].name + ': 0~100 사이 숫자여야 합니다.', 'warn'); }
+
+            const val = (inp.value || '').trim();
+            if (val !== '') {
+                const n = Number(val);
+                if (!Number.isFinite(n) || n < 0 || n > 100) {
+                    return toast(students[i].name + ': 0~100 사이 숫자여야 합니다.', 'warn');
+                }
+            }
         }
     }
-    var btn = document.getElementById('seb-save-btn');
-    if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
+
+    const btn = document.getElementById('seb-save-btn');
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+    }
+
     try {
-        for (var ci = 0; ci < SEB_COLS.length; ci++) {
-            var col = SEB_COLS[ci];
-            var records = students.map(function(s) { var inp2 = document.getElementById('seb-inp-' + s.id + '-' + col.key); var v = inp2 ? (inp2.value || '').trim() : ''; return { studentId: s.id, score: v === '' ? null : Number(v) }; });
-            await api.post('school-exam-records/batch', { examYear: year, semester: col.semester, examType: col.examType, subject: '수학', records: records });
+        for (let ci = 0; ci < SEB_COLS.length; ci++) {
+            const col = SEB_COLS[ci];
+            const records = students.map(function(s) {
+                const inp = document.getElementById('seb-inp-' + s.id + '-' + col.key);
+                const v = inp ? (inp.value || '').trim() : '';
+                return { studentId: s.id, score: v === '' ? null : Number(v) };
+            });
+
+            await api.post('school-exam-records/batch', {
+                examYear: year,
+                semester: col.semester,
+                examType: col.examType,
+                subject: '수학',
+                records
+            });
         }
+
         toast('저장되었습니다.', 'success');
         await loadData();
         renderSchoolExamBatchTable();
-    } catch(e) { toast('저장에 실패했습니다.', 'warn'); }
-    finally { if (btn) { btn.disabled = false; btn.textContent = '전체 저장'; } }
+    } catch (e) {
+        toast('저장에 실패했습니다.', 'warn');
+    } finally {
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = '전체 저장';
+        }
+    }
 }
-function openCumulativeOpsModal(mode = 'attendance') { if (mode === 'school') openSchoolExamLedger(); else openAttendanceLedger(); }
-function switchCumulativeOpsTab(tab) { if (tab === 'school') openSchoolExamLedger(); else openAttendanceLedger(); }
-function getCumulativeRecordKey(record) { return [record.exam_year || '', record.semester || '', record.exam_type || '', record.subject || ''].join('|'); }
+
+function openCumulativeOpsModal(mode = 'attendance') {
+    if (mode === 'school') openSchoolExamLedger();
+    else openAttendanceLedger();
+}
+
+function switchCumulativeOpsTab(tab) {
+    if (tab === 'school') openSchoolExamLedger();
+    else openAttendanceLedger();
+}
+
+function getCumulativeRecordKey(record) {
+    return [record.exam_year || '', record.semester || '', record.exam_type || '', record.subject || ''].join('|');
+}
+
 function getRecentSchoolExamColumns(records, limit = 4) {
-    const seen = new Set(); const columns = [];
-    [...records].filter(r => String(r.is_deleted || 0) !== '1').sort((a, b) => { const yd = Number(b.exam_year || 0) - Number(a.exam_year || 0); if (yd !== 0) return yd; return String(b.created_at || '').localeCompare(String(a.created_at || '')); }).forEach(r => { const key = getCumulativeRecordKey(r); if (seen.has(key)) return; seen.add(key); columns.push({ key, examYear: r.exam_year, semester: r.semester || '', examType: r.exam_type || '', subject: r.subject || '' }); });
+    const seen = new Set();
+    const columns = [];
+
+    [...records]
+        .filter(r => String(r.is_deleted || 0) !== '1')
+        .sort((a, b) => {
+            const yd = Number(b.exam_year || 0) - Number(a.exam_year || 0);
+            if (yd !== 0) return yd;
+            return String(b.created_at || '').localeCompare(String(a.created_at || ''));
+        })
+        .forEach(r => {
+            const key = getCumulativeRecordKey(r);
+            if (seen.has(key)) return;
+
+            seen.add(key);
+            columns.push({
+                key,
+                examYear: r.exam_year,
+                semester: r.semester || '',
+                examType: r.exam_type || '',
+                subject: r.subject || ''
+            });
+        });
+
     return columns.slice(0, limit);
 }
-function getSchoolExamRecordForCell(records, studentId, column) { return records.find(r => String(r.student_id) === String(studentId) && getCumulativeRecordKey(r) === column.key); }
+
+function getSchoolExamRecordForCell(records, studentId, column) {
+    return records.find(r => String(r.student_id) === String(studentId) && getCumulativeRecordKey(r) === column.key);
+}
+
 function renderSchoolExamScoreCell(record) {
     if (!record) return '<span style="color:var(--secondary);font-weight:600;">-</span>';
+
     const score = record.score;
     const scoreText = score === null || score === undefined || score === '' ? '미응시' : `${score}`;
     const target = record.target_score_snapshot;
     const diff = (score !== null && score !== undefined && score !== '' && target !== null && target !== undefined && target !== '') ? Number(score) - Number(target) : null;
     const diffText = (diff === null || !Number.isFinite(diff)) ? '' : `<div style="font-size:10px;font-weight:600;color:${diff >= 0 ? 'var(--success)' : 'var(--error)'};margin-top:2px;">목표 ${diff >= 0 ? '+' : ''}${diff}</div>`;
+
     return `<span style="font-size:13px;font-weight:700;color:var(--text);">${scoreText}${diffText}</span>`;
 }
+
 function computeSchoolExamTrend(records, studentId) {
-    const list = records.filter(r => String(r.student_id) === String(studentId) && r.score !== null && r.score !== undefined && r.score !== '').sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
+    const list = records
+        .filter(r => String(r.student_id) === String(studentId) && r.score !== null && r.score !== undefined && r.score !== '')
+        .sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
+
     if (!list.length) return { avg: '-', trend: '-' };
+
     const scores = list.map(r => Number(r.score)).filter(Number.isFinite);
     const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : '-';
     const trend = scores.length >= 2 ? scores[scores.length - 1] - scores[scores.length - 2] : null;
-    return { avg, trend: trend === null ? '-' : `${trend >= 0 ? '+' : ''}${trend}` };
+
+    return {
+        avg,
+        trend: trend === null ? '-' : `${trend >= 0 ? '+' : ''}${trend}`
+    };
 }
+
 function openSchoolExamRecordModal(recordId = '', studentId = '') {
     const record = recordId ? (state.db.school_exam_records || []).find(r => String(r.id) === String(recordId)) : null;
     const selectedStudentId = studentId || record?.student_id || '';
@@ -712,6 +1029,7 @@ function openSchoolExamRecordModal(recordId = '', studentId = '') {
     const studentOptions = getCumulativeVisibleStudents({}).map(s => `<option value="${apEscapeHtml(s.id)}" ${String(s.id) === String(selectedStudentId) ? 'selected' : ''}>${apEscapeHtml(s.name || '')} ${s.school_name ? `(${apEscapeHtml(s.school_name)})` : ''}</option>`).join('');
     const student = selectedStudentId ? getCumulativeStudent(selectedStudentId) : null;
     const targetScore = record?.target_score_snapshot ?? student?.target_score ?? '';
+
     showModal(record ? '학교시험 성적 수정' : '학교시험 성적 추가', `
 <div style="display:flex;flex-direction:column;gap:10px;">
   <select id="ser-student" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);" onchange="openSchoolExamRecordModal('${recordId}',this.value)"><option value="">학생 선택</option>${studentOptions}</select>
@@ -736,20 +1054,54 @@ function openSchoolExamRecordModal(recordId = '', studentId = '') {
   ${record ? `<button class="btn" style="width:100%;min-height:42px;font-size:13px;font-weight:700;color:var(--error);background:rgba(255,71,87,0.08);border:1px solid rgba(255,71,87,0.16);border-radius:12px;" onclick="deleteSchoolExamRecord('${record.id}')">삭제</button>` : ''}
 </div>`);
 }
+
 async function saveSchoolExamRecord(recordId = '') {
     const studentId = document.getElementById('ser-student')?.value || '';
     if (!studentId) return toast('학생을 선택하세요.', 'warn');
+
     const student = getCumulativeStudent(studentId);
-    const payload = { studentId, classId: getCumulativeClassIdForStudent(studentId), schoolName: document.getElementById('ser-school')?.value.trim() || student?.school_name || '', grade: document.getElementById('ser-grade')?.value.trim() || student?.grade || '', examYear: Number(document.getElementById('ser-year')?.value || 0), semester: document.getElementById('ser-semester')?.value || '', examType: document.getElementById('ser-type')?.value || 'midterm', subject: document.getElementById('ser-subject')?.value.trim() || '수학', score: document.getElementById('ser-score')?.value ?? '', targetScoreSnapshot: document.getElementById('ser-target')?.value ?? '', memo: document.getElementById('ser-memo')?.value.trim() || '' };
-    if (!payload.examYear || !payload.examType || !payload.subject) return toast('연도, 시험유형, 과목을 확인하세요.', 'warn');
-    const r = recordId ? await api.patch(`school-exam-records/${recordId}`, payload) : await api.post('school-exam-records', payload);
-    if (r?.success) { toast('학교시험 성적이 저장되었습니다.', 'success'); await loadData(); closeModal(); }
-    else toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
+    const payload = {
+        studentId,
+        classId: getCumulativeClassIdForStudent(studentId),
+        schoolName: document.getElementById('ser-school')?.value.trim() || student?.school_name || '',
+        grade: document.getElementById('ser-grade')?.value.trim() || student?.grade || '',
+        examYear: Number(document.getElementById('ser-year')?.value || 0),
+        semester: document.getElementById('ser-semester')?.value || '',
+        examType: document.getElementById('ser-type')?.value || 'midterm',
+        subject: document.getElementById('ser-subject')?.value.trim() || '수학',
+        score: document.getElementById('ser-score')?.value ?? '',
+        targetScoreSnapshot: document.getElementById('ser-target')?.value ?? '',
+        memo: document.getElementById('ser-memo')?.value.trim() || ''
+    };
+
+    if (!payload.examYear || !payload.examType || !payload.subject) {
+        return toast('연도, 시험유형, 과목을 확인하세요.', 'warn');
+    }
+
+    const r = recordId
+        ? await api.patch(`school-exam-records/${recordId}`, payload)
+        : await api.post('school-exam-records', payload);
+
+    if (r?.success) {
+        toast('학교시험 성적이 저장되었습니다.', 'success');
+        await loadData();
+        closeModal();
+    } else {
+        toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
+    }
 }
+
 async function deleteSchoolExamRecord(recordId) {
     if (!recordId) return;
     if (!confirm('학교시험 성적 기록을 삭제할까요?')) return;
+
     const r = await api.delete('school-exam-records', recordId);
-    if (r?.success) { toast('학교시험 성적 기록이 삭제되었습니다.', 'info'); await loadData(); closeModal(); }
-    else toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
+
+    if (r?.success) {
+        toast('학교시험 성적 기록이 삭제되었습니다.', 'info');
+        await loadData();
+        closeModal();
+    } else {
+        toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
+    }
 }
