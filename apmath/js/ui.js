@@ -457,16 +457,14 @@ function openExamScoreMenu() {
 
 function buildDrawerMenu(roleKey) {
     return `
-        ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '일지', "closeAppDrawer(); openDailyJournalModal();")}
         ${drawerItem('', '메모', "closeAppDrawer(); openTodoMemoModal();")}
         ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
-        ${drawerItem('', '학급관리', "closeAppDrawer(); openClassManageModal();")}
+        ${drawerItem('', '학급·교재', "closeAppDrawer(); openClassManageModal();")}
+        ${drawerItem('', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '교재관리', "closeAppDrawer(); if(typeof openTextbookManageModal==='function') openTextbookManageModal(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('school'); else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '시험성적', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('시험성적 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('', '시험성적', "closeAppDrawer(); openExamScoreMenu();")}
         ${drawerItem('', '클리닉', "closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
@@ -578,7 +576,7 @@ function ensureDrawerStyle() {
             width:20px;
             height:20px;
             line-height:1;
-            transform: none;
+            transform:translateX(-1px);
             pointer-events:none;
         }
 
@@ -800,7 +798,7 @@ function ensureDrawerStyle() {
         }
         #app-drawer .drw-hamburger {
             position:absolute !important;
-            left:11px !important;
+            left:10px !important;
             top:11px !important;
             width:36px !important;
             height:36px !important;
@@ -880,7 +878,7 @@ function ensureDrawerStyle() {
             height:36px !important;
             min-width:36px !important;
             min-height:36px !important;
-            margin:16px 0 0 11px !important;
+            margin:11px 0 0 10px !important;
             box-sizing:border-box !important;
             padding:0 !important;
             align-items:center !important;
@@ -1145,7 +1143,7 @@ function installDrawerSizeLock() {
 
         #app-drawer .drw-hamburger {
             position: absolute !important;
-            left: 11px !important;
+            left: 10px !important;
             top: 11px !important;
             width: 36px !important;
             height: 36px !important;
@@ -1217,7 +1215,7 @@ function installDrawerSizeLock() {
                 height: 36px !important;
                 min-width: 36px !important;
                 min-height: 36px !important;
-                margin: 11px 0 0 11px !important;
+                margin: 11px 0 0 10px !important;
                 padding: 0 !important;
                 box-sizing: border-box !important;
                 align-items: center !important;
