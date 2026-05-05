@@ -578,7 +578,7 @@ function ensureDrawerStyle() {
             width:20px;
             height:20px;
             line-height:1;
-            transform:translateX(-1px);
+            transform: none;
             pointer-events:none;
         }
 
