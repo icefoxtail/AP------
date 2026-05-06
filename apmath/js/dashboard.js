@@ -1129,6 +1129,56 @@ function handleSetTodayExam() {
     else renderDashboard();
 }
 
+function extractJournalUnitAndNote(rawNote) {
+    const raw = String(rawNote || '').trim();
+    const result = { units: '', note: '' };
+    if (!raw) return result;
+
+    const match = raw.match(/^\[단원선택\]\s*([^\n]*)\n?/);
+    if (!match) {
+        result.note = raw;
+        return result;
+    }
+
+    result.units = String(match[1] || '').trim();
+    result.note = raw.replace(/^\[단원선택\]\s*[^\n]*\n?/, '').trim();
+    return result;
+}
+
+function compactJournalUnitText(text) {
+    return String(text || '').replace(/\s+/g, '').trim();
+}
+
+function formatJournalProgressLine(progress, unitText) {
+    const title = String(progress?.textbook_title_snapshot || '교재').trim() || '교재';
+    const progressText = String(progress?.progress_text || '').trim() || '(기록 없음)';
+    const compactUnit = compactJournalUnitText(unitText);
+
+    if (compactUnit) {
+        return `  * ${title} ${compactUnit}-${progressText}`;
+    }
+
+    return `  * ${title}: ${progressText}`;
+}
+
+function appendJournalNote(text, note) {
+    const clean = String(note || '').trim();
+    if (!clean) return text;
+
+    const lines = clean.split('\n').map(v => v.trim()).filter(Boolean);
+    if (lines.length === 0) return text;
+
+    if (lines.length === 1) {
+        return text + `- 특이사항: ${lines[0]}\n`;
+    }
+
+    text += `- 특이사항:\n`;
+    lines.forEach(line => {
+        text += `  ${line}\n`;
+    });
+    return text;
+}
+
 function buildJournalContent(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
     let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
@@ -1161,34 +1211,50 @@ function buildJournalContent(dateStr) {
 
         const memberIds = state.db.class_students.filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
         const students = state.db.students.filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const total = students.length;
 
         const absents = [];
+        const lates = [];
+        const makeups = [];
         const hwMiss = [];
-        
+
         students.forEach(s => {
             const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
             const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
-            if (att?.status === '결석') absents.push(s.name);
+            const attStatus = String(att?.status || '').trim();
+            const tagList = String(att?.tags || '')
+                .split(',')
+                .map(v => v.trim())
+                .filter(Boolean);
+
+            if (attStatus === '결석') absents.push(s.name);
+            if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
+            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(s.name);
             if (hw?.status === '미완료') hwMiss.push(s.name);
         });
 
-        if (absents.length === 0 && hwMiss.length === 0) text += `- 출결/숙제: 전원 출석 / 전원 완료\n`;
-        else {
-            if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
-            if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
-        }
+        const attendanceCount = Math.max(0, total - absents.length);
+        const homeworkCount = Math.max(0, total - hwMiss.length);
+
+        text += `- 출석: ${attendanceCount}/${total}\n`;
+        text += `- 숙제: ${homeworkCount}/${total}\n`;
+        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
+        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
+        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}\n`;
+        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
 
         const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
         if (dailyRecord) {
+            const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
             const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
             if (progresses.length > 0) {
                 text += `- 진도:\n`;
                 progresses.forEach(p => {
-                    text += `  * ${p.textbook_title_snapshot || '교재'}: ${p.progress_text || '(기록 없음)'}\n`;
+                    text += formatJournalProgressLine(p, noteData.units) + `\n`;
                 });
             } else text += `- 진도: (기록 없음)\n`;
 
-            if (dailyRecord.special_note) text += `- 특이사항: ${dailyRecord.special_note}\n`;
+            text = appendJournalNote(text, noteData.note);
         } else {
             text += `- 진도: (수업 기록 미입력)\n`;
         }
