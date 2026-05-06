@@ -74,7 +74,7 @@ function injectClassroomStyles() {
             .cls-v4-badges { display:contents; }
             .cls-v4-status { width:54px; min-width:54px; height:38px; }
             .cls-v4-status.hw { width:54px; min-width:54px; }
-            .cls-v4-pad-btns { display:flex; }
+            .cls-v4-pad-btns { display:none; }
             .cls-v4-more { display:none; }
         }
         @media (max-width:380px) {
@@ -142,10 +142,9 @@ function getAttendanceDisplayStatus(status, isClassDay = true) {
 }
 
 function getNextAttendanceStatus(status, isClassDay = true) {
-    const safe = String(status || '').trim();
-    if (!safe || safe === '미기록' || safe === '수업 없음') return '등원';
-    if (safe === '등원') return '결석';
-    if (safe === '결석') return '수업 없음';
+    const cur = getAttendanceDisplayStatus(status, isClassDay);
+    if (cur === '등원') return '결석';
+    if (cur === '결석') return '수업 없음';
     return '등원'; 
 }
 
@@ -191,10 +190,9 @@ function getHomeworkDisplayStatus(status, isClassDay = true) {
 }
 
 function getNextHomeworkStatus(status, isClassDay = true) {
-    const safe = String(status || '').trim();
-    if (!safe || safe === '미기록' || safe === '공란') return '완료';
-    if (safe === '완료') return '미완료';
-    if (safe === '미완료') return '공란';
+    const cur = getHomeworkDisplayStatus(status, isClassDay);
+    if (cur === '완료') return '미완료';
+    if (cur === '미완료') return '공란';
     return '완료';
 }
 
@@ -222,14 +220,14 @@ function getHomeworkStatusStyle(status, isClassDay = true) {
 
 
 function getV4CompactAttendanceLabel(status, isClassDay = true) {
-    const cur = String(status || '').trim();
+    const cur = getAttendanceDisplayStatus(status, isClassDay);
     if (cur === '등원') return '○';
     if (cur === '결석') return '×';
     return '';
 }
 
 function getV4CompactHomeworkLabel(status, isClassDay = true) {
-    const cur = String(status || '').trim();
+    const cur = getHomeworkDisplayStatus(status, isClassDay);
     if (cur === '완료') return '○';
     if (cur === '미완료') return '×';
     return '';
@@ -237,7 +235,11 @@ function getV4CompactHomeworkLabel(status, isClassDay = true) {
 
 function getV4BadgeStyle(type, status, isClassDay = true) {
     const safeType = String(type || '').trim();
-    const cur = String(status || '').trim();
+    const cur = safeType === 'att'
+        ? getAttendanceDisplayStatus(status, isClassDay)
+        : safeType === 'hw'
+            ? getHomeworkDisplayStatus(status, isClassDay)
+            : String(status || '').trim();
 
     if (safeType === 'att') {
         if (cur === '등원') return 'background:rgba(0,184,148,0.10); color:#008F72; border:1px solid transparent;';
@@ -265,7 +267,8 @@ function stringifyAttendanceTags(tags) {
 
 function getAttendanceMetaForStudentDate(studentId, date) {
     const sid = String(studentId);
-    const rec = (state.db.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === String(date || ''));
+    const d = String(date || '');
+    const rec = (state.db.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === d);
     return {
         record: rec || null,
         tags: normalizeAttendanceTags(rec?.tags || ''),
@@ -279,9 +282,8 @@ function hasAttendanceTag(studentId, date, tag) {
 
 function renderAttendanceTagButton(studentId, date, tag) {
     const on = hasAttendanceTag(studentId, date, tag);
-    const label = on ? '○' : '';
     const safeTag = apEscapeHtml(tag);
-    return `<button class="btn cls-v4-status tag ${on ? 'on' : ''}" title="${safeTag}" onclick="toggleAttendanceTag('${studentId}', '${date}', '${safeTag}')">${label}</button>`;
+    return `<button class="btn cls-v4-status tag ${on ? 'on' : ''}" title="${safeTag}" onclick="toggleAttendanceTag('${studentId}', '${date}', '${safeTag}')">${on ? '○' : ''}</button>`;
 }
 
 function hasConsultationForStudentDate(studentId, date) {
@@ -289,7 +291,7 @@ function hasConsultationForStudentDate(studentId, date) {
     const d = String(date || '').slice(0, 10);
     return (state.db.consultations || []).some(c =>
         String(c.student_id) === sid &&
-        String(c.date || '').slice(0, 10) === d
+        String(c.date || c.consultation_date || c.created_at || '').slice(0, 10) === d
     );
 }
 
@@ -303,15 +305,12 @@ function openClassroomConsultation(studentId, classId, date) {
         setManagementReturnView({ type: 'classDetail', classId: String(classId) });
     }
 
-    if (hasConsultationForStudentDate(studentId, date) && typeof renderStudentDetailTab === 'function') {
-        renderStudentDetailTab(String(studentId), 'cns');
-        return;
-    }
-
     if (typeof openAddConsultationModal === 'function') {
         openAddConsultationModal(String(studentId));
-        const dateInput = document.getElementById('cns-date');
-        if (dateInput) dateInput.value = String(date || '').slice(0, 10);
+        requestAnimationFrame(() => {
+            const dateInput = document.getElementById('cns-date') || document.getElementById('consultation-date');
+            if (dateInput) dateInput.value = String(date || '').slice(0, 10);
+        });
         return;
     }
 
@@ -320,55 +319,118 @@ function openClassroomConsultation(studentId, classId, date) {
 
 function syncAttendanceMetaToState(studentId, date, tags, memo) {
     const sid = String(studentId);
+    const d = String(date || '');
     const tagText = stringifyAttendanceTags(tags);
     const memoText = memo === undefined ? undefined : String(memo || '');
+
     if (!state.db.attendance) state.db.attendance = [];
-    let rec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === String(date || ''));
+    let rec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === d);
     if (!rec) {
-        rec = { student_id: sid, date, status: '미기록' };
+        rec = { student_id: sid, date: d, status: '미기록' };
         state.db.attendance.push(rec);
     }
+
     rec.tags = tagText;
     if (memoText !== undefined) rec.memo = memoText;
     rec.updated_at = new Date().toISOString();
 
-    const month = String(date || '').slice(0, 7);
+    const month = d.slice(0, 7);
     const cache = state.ui?.monthlyAttendanceCache?.[month];
     if (cache && Array.isArray(cache.attendance)) {
-        let mRec = cache.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === String(date || ''));
+        let mRec = cache.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === d);
         if (!mRec) {
-            mRec = { student_id: sid, date, status: rec.status || '미기록' };
+            mRec = { student_id: sid, date: d, status: rec.status || '미기록' };
             cache.attendance.push(mRec);
         }
+        mRec.status = rec.status || mRec.status || '미기록';
         mRec.tags = tagText;
         if (memoText !== undefined) mRec.memo = memoText;
         mRec.updated_at = rec.updated_at;
     }
+
     return rec;
 }
 
 async function toggleAttendanceTag(studentId, date, tag) {
     const sid = String(studentId);
-    const meta = getAttendanceMetaForStudentDate(sid, date);
+    const d = String(date || new Date().toLocaleDateString('sv-SE'));
+    const meta = getAttendanceMetaForStudentDate(sid, d);
     const prevTags = stringifyAttendanceTags(meta.tags);
+    const prevMemo = meta.memo;
     const nextTags = meta.tags.includes(tag)
         ? meta.tags.filter(v => v !== tag)
         : meta.tags.concat(tag);
     const nextTagText = stringifyAttendanceTags(nextTags);
 
-    syncAttendanceMetaToState(sid, date, nextTags, meta.memo);
+    syncAttendanceMetaToState(sid, d, nextTags, prevMemo);
     if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
 
     try {
-        const r = await api.patch('attendance', { studentId: sid, date, tags: nextTagText });
+        const r = await api.patch('attendance', { studentId: sid, date: d, tags: nextTagText });
         if (!r?.success) throw new Error('fail');
     } catch (e) {
-        syncAttendanceMetaToState(sid, date, prevTags, meta.memo);
+        syncAttendanceMetaToState(sid, d, prevTags, prevMemo);
         if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
         toast('저장 실패', 'warn');
     }
 }
 
+function openAttendanceMetaModal(studentId, date, options = {}) {
+    const sid = String(studentId);
+    const d = String(date || new Date().toLocaleDateString('sv-SE'));
+    const student = (state.db.students || []).find(s => String(s.id) === sid);
+    const meta = getAttendanceMetaForStudentDate(sid, d);
+    const status = meta.record?.status || '미기록';
+    const tagSet = new Set(meta.tags);
+
+    const tagInput = function(tag, label) {
+        const checked = tagSet.has(tag) ? 'checked' : '';
+        return `<label style="display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);font-size:13px;font-weight:700;color:var(--text);">
+            <input type="checkbox" class="att-meta-tag" value="${apEscapeHtml(tag)}" ${checked} style="accent-color:var(--primary);">${label}
+        </label>`;
+    };
+
+    showModal('출결 메모', `
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="padding:12px;border-radius:14px;background:var(--surface-2);border:1px solid var(--border);">
+                <div style="font-size:15px;font-weight:700;color:var(--text);line-height:1.4;">${apEscapeHtml(student?.name || '학생')}</div>
+                <div style="font-size:12px;font-weight:700;color:var(--secondary);margin-top:4px;line-height:1.4;">${apEscapeHtml(d)} · 현재 출결 ${apEscapeHtml(status)}</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                ${tagInput('지각', '지각')}
+                ${tagInput('보강', '보강')}
+            </div>
+            <textarea id="att-meta-memo" class="cls-input" placeholder="출결 관련 메모" style="height:110px;resize:none;line-height:1.6;">${apEscapeHtml(meta.memo)}</textarea>
+            <button class="btn btn-primary" style="width:100%;min-height:50px;font-size:14px;font-weight:700;border-radius:14px;" onclick="saveAttendanceMeta('${sid}', '${d}', { source: '${apEscapeHtml(options.source || 'classroom')}' })">저장</button>
+        </div>
+    `);
+}
+
+async function saveAttendanceMeta(studentId, date, options = {}) {
+    const sid = String(studentId);
+    const d = String(date || new Date().toLocaleDateString('sv-SE'));
+    const prev = getAttendanceMetaForStudentDate(sid, d);
+    const tags = Array.from(document.querySelectorAll('.att-meta-tag:checked')).map(el => el.value);
+    const memo = document.getElementById('att-meta-memo')?.value.trim() || '';
+    const tagText = stringifyAttendanceTags(tags);
+
+    syncAttendanceMetaToState(sid, d, tags, memo);
+    if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+    const cell = document.getElementById(`att-cell-${sid}-${d}`);
+    if (cell && typeof renderAttendanceCellContent === 'function') cell.innerHTML = renderAttendanceCellContent(sid, d);
+
+    try {
+        const r = await api.patch('attendance', { studentId: sid, date: d, tags: tagText, memo });
+        if (!r?.success) throw new Error('fail');
+        toast('저장 완료', 'success');
+        closeModal(true);
+    } catch (e) {
+        syncAttendanceMetaToState(sid, d, prev.tags, prev.memo);
+        if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+        if (cell && typeof renderAttendanceCellContent === 'function') cell.innerHTML = renderAttendanceCellContent(sid, d);
+        toast('저장 실패', 'warn');
+    }
+}
 
 function rerenderClassPreserveScroll(classId) {
     const y = window.scrollY || window.pageYOffset || 0;
@@ -415,8 +477,10 @@ function computeClassTodaySummary(classId) {
 
     let attCount = 0; let hwCount = 0;
     active.forEach(s => {
-        if (String(todayAttMap[s.id] || '').trim() === '등원') attCount++;
-        if (String(todayHwMap[s.id] || '').trim() === '완료') hwCount++;
+        const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id], isScheduled);
+        if (attStatus === '등원') attCount++;
+        const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id], isScheduled);
+        if (hwStatus === '완료') hwCount++;
     });
 
     let test = 0;
@@ -457,22 +521,18 @@ function getClassroomActiveStudents(cid) {
 function buildClassroomTodayMaps(students, today) {
     const idSet = new Set(students.map(s => String(s.id)));
     const todayAttMap = {};
-    const todayAttRecordMap = {};
     const todayHwMap = {};
 
     for (let i = 0; i < state.db.attendance.length; i++) {
         const a = state.db.attendance[i];
-        if (a.date === today && idSet.has(String(a.student_id))) {
-            todayAttMap[a.student_id] = a.status;
-            todayAttRecordMap[a.student_id] = a;
-        }
+        if (a.date === today && idSet.has(String(a.student_id))) todayAttMap[a.student_id] = a.status;
     }
     for (let i = 0; i < state.db.homework.length; i++) {
         const h = state.db.homework[i];
         if (h.date === today && idSet.has(String(h.student_id))) todayHwMap[h.student_id] = h.status;
     }
 
-    return { todayAttMap, todayAttRecordMap, todayHwMap };
+    return { todayAttMap, todayHwMap };
 }
 
 function renderClassTopBarV4B(cls, summary, today) {
@@ -526,10 +586,8 @@ function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isSc
     `;
 }
 
-function renderClassStudentRowV4B(cid, s, attRecordOrStatus, hwStatus, isScheduled, plannerEnabled) {
+function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plannerEnabled) {
     const today = new Date().toLocaleDateString('sv-SE');
-    const attRecord = attRecordOrStatus && typeof attRecordOrStatus === 'object' ? attRecordOrStatus : null;
-    const attStatus = attRecord ? attRecord.status : attRecordOrStatus;
     const attStyle = getV4BadgeStyle('att', attStatus, isScheduled);
     const attLabel = getV4CompactAttendanceLabel(attStatus, isScheduled);
     const hwStyle = getV4BadgeStyle('hw', hwStatus, isScheduled);
@@ -575,7 +633,7 @@ function updateStudentRowDOM(sid, cid) {
     const attCur = state.db.attendance.find(a => String(a.student_id) === String(sid) && a.date === today);
     const hwCur = state.db.homework.find(h => String(h.student_id) === String(sid) && h.date === today);
     const plannerEnabled = isPlannerTargetClass(cls);
-    const newHtml = renderClassStudentRowV4B(cid, student, attCur || null, hwCur?.status, summary.isScheduled, plannerEnabled);
+    const newHtml = renderClassStudentRowV4B(cid, student, attCur?.status, hwCur?.status, summary.isScheduled, plannerEnabled);
 
     row.insertAdjacentHTML('afterend', newHtml);
     row.remove();
@@ -614,7 +672,7 @@ function renderClass(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     const summary = computeClassTodaySummary(cid);
     const students = getClassroomActiveStudents(cid);
-    const { todayAttMap, todayAttRecordMap, todayHwMap } = buildClassroomTodayMaps(students, today);
+    const { todayAttMap, todayHwMap } = buildClassroomTodayMaps(students, today);
     const plannerEnabled = isPlannerTargetClass(cls);
 
     document.getElementById('app-root').innerHTML = `
@@ -623,9 +681,8 @@ function renderClass(cid) {
             ${renderClassToolBarV4B(cid, plannerEnabled)}
             <div class="cls-v4-section">
                 <h3>학생 명단</h3>
-                <span>${students.length}명</span>
             </div>
-            ${renderClassStudentBoardV4B(cid, students, todayAttRecordMap, todayHwMap, summary.isScheduled, plannerEnabled)}
+            ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled)}
         </div>
     `;
 

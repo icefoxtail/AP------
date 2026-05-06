@@ -1,7 +1,7 @@
 /**
  * AP Math OS [cumulative.js]
  * 출석부 + 성적표
- * [Attendance] 월간 출석부 / 출석 셀 클릭 저장 / 클래스룸 상태 동기화
+ * [Attendance] 월간 출석부 / 출석 셀 클릭 저장 / 클래스룸 상태 동기화 / 인디케이터(Dot) 시스템
  * [School Exam] 성적표: 기본/성적 정렬, 학년 필터, 평균 규칙, 직전 학기 대비 표시
  */
 
@@ -151,20 +151,99 @@ function getMonthlyAttendanceStatus(studentId, date) {
     };
 }
 
+/**
+ * attendance.tags / attendance.memo / 상담 여부를 통합 조회한다.
+ */
+function getAttendanceMetaForCumulative(studentId, date) {
+    const sid = String(studentId);
+    const data = getMonthlyAttendanceData();
+
+    const monthlyRecord = (data.attendance || []).find(a =>
+        String(a.student_id) === sid &&
+        String(a.date || '') === String(date)
+    );
+
+    const todayRecord = (state.db.attendance || []).find(a =>
+        String(a.student_id) === sid &&
+        String(a.date || '') === String(date)
+    );
+
+    const record = monthlyRecord || todayRecord || null;
+
+    const tags = String(record?.tags || '')
+        .split(',')
+        .map(v => v.trim())
+        .filter(Boolean);
+
+    const memo = String(record?.memo || '').trim();
+
+    const hasConsultation = (state.db.consultations || []).some(c =>
+        String(c.student_id) === sid &&
+        String(c.date || '').slice(0, 10) === String(date)
+    );
+
+    return {
+        record,
+        tags,
+        memo,
+        hasLate: tags.includes('지각'),
+        hasMakeup: tags.includes('보강'),
+        hasMemo: !!memo,
+        hasConsultation
+    };
+}
+
+/**
+ * 셀 내부에 표시할 4색 dot 인디케이터를 렌더링한다.
+ */
+function renderAttendanceMetaDotsForCumulative(studentId, date) {
+    const meta = getAttendanceMetaForCumulative(studentId, date);
+    const dots = [];
+
+    if (meta.hasLate) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#D97706;display:inline-block;"></span>');
+    if (meta.hasMakeup) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:var(--primary);display:inline-block;"></span>');
+    if (meta.hasMemo) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:var(--secondary);display:inline-block;"></span>');
+    if (meta.hasConsultation) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#7c3aed;display:inline-block;"></span>');
+
+    if (!dots.length) return '';
+
+    return `<span style="position:absolute;right:2px;bottom:2px;display:flex;gap:2px;align-items:center;justify-content:flex-end;pointer-events:none;">${dots.join('')}</span>`;
+}
+
+function syncMonthlyAttendanceMetaToState(studentId, date, patch = {}) {
+    const sid = String(studentId);
+    const applyPatch = function(list) {
+        if (!Array.isArray(list)) return null;
+        let rec = list.find(a => String(a.student_id) === sid && String(a.date || '') === date);
+        if (!rec) {
+            rec = { student_id: sid, date, status: patch.status || '미기록', tags: '', memo: '' };
+            list.push(rec);
+        }
+        if (patch.hasOwnProperty('status')) rec.status = patch.status;
+        if (patch.hasOwnProperty('tags')) rec.tags = patch.tags;
+        if (patch.hasOwnProperty('memo')) rec.memo = patch.memo;
+        if (patch.hasOwnProperty('updated_at')) rec.updated_at = patch.updated_at;
+        return rec;
+    };
+
+    if (!state.db.attendance) state.db.attendance = [];
+    const dbRec = applyPatch(state.db.attendance);
+
+    const month = String(date || '').slice(0, 7);
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+    if (state.ui.monthlyAttendanceCache[month]) {
+        if (!state.ui.monthlyAttendanceCache[month].attendance) state.ui.monthlyAttendanceCache[month].attendance = [];
+        applyPatch(state.ui.monthlyAttendanceCache[month].attendance);
+    }
+
+    return dbRec;
+}
+
 const HOLIDAYS_2026 = [
-    '2026-01-01',
-    '2026-02-16', '2026-02-17', '2026-02-18',
-    '2026-03-01', '2026-03-02',
-    '2026-05-01',
-    '2026-05-05',
-    '2026-05-24', '2026-05-25',
-    '2026-06-06',
-    '2026-07-17',
-    '2026-08-15', '2026-08-17',
-    '2026-09-24', '2026-09-25', '2026-09-26',
-    '2026-10-03', '2026-10-05',
-    '2026-10-09',
-    '2026-12-25'
+    '2026-01-01', '2026-02-16', '2026-02-17', '2026-02-18', '2026-03-01', '2026-03-02',
+    '2026-05-01', '2026-05-05', '2026-05-24', '2026-05-25', '2026-06-06', '2026-07-17',
+    '2026-08-15', '2026-08-17', '2026-09-24', '2026-09-25', '2026-09-26', '2026-10-03',
+    '2026-10-05', '2026-10-09', '2026-12-25'
 ];
 
 function isFixedHoliday(dateStr) {
@@ -192,22 +271,9 @@ function getMonthlyScheduleBadges(studentId, date) {
 
 function getAttendanceStudentJoinedDate(student) {
     if (!student) return '';
-
-    const raw = String(
-        student.join_date ||
-        student.joined_at ||
-        student.enrolled_at ||
-        student.enrollment_date ||
-        student.registered_at ||
-        student.registration_date ||
-        student.created_at ||
-        student.createdAt ||
-        ''
-    ).trim();
-
+    const raw = String(student.created_at || '').trim();
     const m = raw.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
     if (!m) return '';
-
     return [m[1], String(m[2]).padStart(2, '0'), String(m[3]).padStart(2, '0')].join('-');
 }
 
@@ -242,22 +308,12 @@ function _attDayStyle(dateStr) {
 function goAttendanceHome() {
     closeAttendanceLedger();
     closeSchoolExamLedger();
-
     if (typeof state !== 'undefined' && state.ui) {
         state.ui.currentClassId = null;
         state.ui.returnView = null;
     }
-
-    if (typeof goHome === 'function') {
-        goHome();
-        return;
-    }
-
-    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') {
-        renderAdminControlCenter();
-        return;
-    }
-
+    if (typeof goHome === 'function') return goHome();
+    if (state?.auth?.role === 'admin' && typeof renderAdminControlCenter === 'function') return renderAdminControlCenter();
     if (typeof renderDashboard === 'function') renderDashboard();
 }
 
@@ -279,6 +335,9 @@ function openAddStudentFromAttendance(classId) {
     }
 }
 
+/**
+ * 출석 기호와 dot 인디케이터를 결합하여 반환한다.
+ */
 function renderAttendanceCellContent(studentId, date) {
     const schedule = getMonthlyScheduleBadges(studentId, date);
     const isHol = schedule.globalClosed || schedule.studentClosed;
@@ -286,24 +345,28 @@ function renderAttendanceCellContent(studentId, date) {
 
     if (date > today) return '';
 
+    let statusHtml = '';
+
     if (!isHol && !isAttendanceClassDay(studentId, date)) {
-        return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
+        statusHtml = '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
+    } else {
+        const data = getMonthlyAttendanceData();
+        const sid = String(studentId);
+        const attRecord = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
+        const att = attRecord?.status || '';
+
+        if (isHol && (!att || att === '미기록')) statusHtml = '';
+        else if (att === '등원') statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
+        else if (att === '결석') statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
+        else if (att === '지각') statusHtml = '<span class="att-sign" style="font-size:13px;font-weight:800;color:#f59f00;">△</span>';
+        else if (att === '보강') statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--primary);">＋</span>';
+        else if (att === '상담') statusHtml = '<span class="att-sign" style="font-size:13px;font-weight:800;color:#7c3aed;">★</span>';
+        else if (att === '수업 없음') statusHtml = '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
+        else statusHtml = '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
     }
 
-    const data = getMonthlyAttendanceData();
-    const sid = String(studentId);
-    const attRecord = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
-    const att = attRecord?.status || '';
-
-    if (isHol && (!att || att === '미기록')) return '';
-    if (att === '등원') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
-    if (att === '결석') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
-    if (att === '지각') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#f59f00;">△</span>';
-    if (att === '보강') return '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--primary);">＋</span>';
-    if (att === '상담') return '<span class="att-sign" style="font-size:13px;font-weight:800;color:#7c3aed;">★</span>';
-    if (att === '수업 없음') return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
-
-    return '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
+    const dots = renderAttendanceMetaDotsForCumulative(studentId, date);
+    return `<span style="position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:24px;">${statusHtml}${dots}</span>`;
 }
 
 function openAttendanceLedger() {
@@ -333,7 +396,7 @@ function openAttendanceLedger() {
 #att-tbl thead th { position: sticky; top: 0; z-index: 10; background: var(--surface); box-shadow: 0 1px 0 var(--border); padding: 6px 0; }
 .att-nc { position: sticky; left: 0; z-index: 11; background: var(--surface); border-right: 2px solid var(--border) !important; text-align: center; }
 #att-tbl thead .att-nc { z-index: 12; }
-.att-dc { padding: 3px; text-align: center; width: 32px; min-width: 32px; cursor: pointer; user-select: none; }
+.att-dc { position: relative; padding: 3px; text-align: center; width: 32px; min-width: 32px; cursor: pointer; user-select: none; }
 .att-dc:active { opacity: .7; }
 .att-no-class { cursor: default; background: var(--surface); }
 .att-grp-row td { background: var(--surface-2); }
@@ -355,10 +418,11 @@ function openAttendanceLedger() {
       <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
         <option value="">전체 반</option>${classOptions}
       </select>
+      <button class="att-ctrl" onclick="openCumulativeAttendanceMetaPicker()">출결메모</button>
     </div>
   </div>
   <div id="att-legend">
-    <span>○ 등원</span><span>× 결석</span><span>△ 지각</span><span>＋ 보강</span><span>★ 상담</span><span>- 수업 없음</span><span>휴 휴무</span>
+    <span>○ 등원</span><span>× 결석</span><span>△ 지각</span><span>＋ 보강</span><span>★ 상담</span><span>- 수업 없음</span><span>휴 휴무</span><span>● 메모/태그</span>
   </div>
   <div id="att-tbl-wrap"><div id="att-tbl-root"></div></div>
 </div>`;
@@ -430,6 +494,9 @@ function renderAttendanceLedgerTable() {
     root.innerHTML = `<table id="att-tbl"><thead><tr><th class="att-nc" style="padding:6px 12px;min-width:90px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">이름</th>${headerCells}</tr></thead><tbody>${bodyRows || empty}</tbody></table>`;
 }
 
+/**
+ * [Safety Patch] 출결 셀 토글 시 메타데이터 보존 및 정밀 롤백을 수행한다.
+ */
 async function toggleAttendanceCellStatus(studentId, date) {
     const today = new Date().toLocaleDateString('sv-SE');
     if (date > today) return;
@@ -438,37 +505,45 @@ async function toggleAttendanceCellStatus(studentId, date) {
     const isHol = sched.globalClosed || sched.studentClosed;
     if (!isHol && !isAttendanceClassDay(studentId, date)) return;
 
+    const sid = String(studentId);
     const data = getMonthlyAttendanceData();
     if (!data.attendance) data.attendance = [];
 
-    const sid = String(studentId);
-    const existing = data.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
-    const current = existing?.status || (isHol ? '' : '등원');
+    // [1] 클릭 전 상태 백업 (캐시 + DB 통합 조회)
+    const prevMeta = getAttendanceMetaForCumulative(sid, date);
+    const wasInCache = (data.attendance || []).some(a => String(a.student_id) === sid && String(a.date) === date);
+    const wasInDB = (state.db.attendance || []).some(a => String(a.student_id) === sid && String(a.date) === date);
+    
+    const currentStatus = prevMeta.record?.status || (isHol ? '' : '등원');
+    const prevTags = String(prevMeta.record?.tags || '');
+    const prevMemo = String(prevMeta.record?.memo || '');
+    const prevUpdatedAt = String(prevMeta.record?.updated_at || '');
 
+    // [2] 다음 상태 결정
     let next;
     if (isHol) {
-        if (!current || current === '미기록') next = '등원';
-        else if (current === '등원') next = '결석';
-        else if (current === '결석') next = '지각';
-        else if (current === '지각') next = '보강';
-        else if (current === '보강') next = '상담';
+        if (!currentStatus || currentStatus === '미기록') next = '등원';
+        else if (currentStatus === '등원') next = '결석';
+        else if (currentStatus === '결석') next = '지각';
+        else if (currentStatus === '지각') next = '보강';
+        else if (currentStatus === '보강') next = '상담';
         else next = '미기록';
     } else {
-        if (current === '등원' || current === '미기록' || !current) next = '결석';
-        else if (current === '결석') next = '지각';
-        else if (current === '지각') next = '보강';
-        else if (current === '보강') next = '상담';
-        else if (current === '상담') next = '수업 없음';
+        if (currentStatus === '등원' || currentStatus === '미기록' || !currentStatus) next = '결석';
+        else if (currentStatus === '결석') next = '지각';
+        else if (currentStatus === '지각') next = '보강';
+        else if (currentStatus === '보강') next = '상담';
+        else if (currentStatus === '상담') next = '수업 없음';
         else next = '등원';
     }
 
-    if (existing) existing.status = next;
-    else data.attendance.push({ student_id: sid, date, status: next });
-
-    if (!state.db.attendance) state.db.attendance = [];
-    const dbRec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
-    if (dbRec) dbRec.status = next;
-    else state.db.attendance.push({ student_id: sid, date, status: next });
+    // [3] 낙관적 업데이트 (메타데이터 tags, memo 보존)
+    syncMonthlyAttendanceMetaToState(sid, date, {
+        status: next,
+        tags: prevTags,
+        memo: prevMemo,
+        updated_at: prevUpdatedAt
+    });
 
     const cellEl = document.getElementById(`att-cell-${studentId}-${date}`);
     if (cellEl) cellEl.innerHTML = renderAttendanceCellContent(sid, date);
@@ -477,15 +552,71 @@ async function toggleAttendanceCellStatus(studentId, date) {
         const r = await api.patch('attendance', { studentId, date, status: next });
         if (!r?.success) throw new Error(r?.message || 'fail');
     } catch {
-        if (existing) existing.status = current;
-        else data.attendance = data.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date));
+        // [4] 정밀 롤백 로직
+        if (!wasInCache) {
+            data.attendance = data.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date));
+        } else {
+            const cacheRec = data.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
+            if (cacheRec) cacheRec.status = currentStatus;
+        }
 
-        if (dbRec) dbRec.status = current;
-        else state.db.attendance = state.db.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date));
+        if (!wasInDB) {
+            state.db.attendance = state.db.attendance.filter(a => !(String(a.student_id) === sid && String(a.date) === date));
+        } else {
+            const dbRec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date) === date);
+            if (dbRec) dbRec.status = currentStatus;
+        }
 
         if (cellEl) cellEl.innerHTML = renderAttendanceCellContent(sid, date);
         toast('출석 저장에 실패했습니다.', 'warn');
     }
+}
+
+function openCumulativeAttendanceMetaPicker() {
+    const today = new Date().toLocaleDateString('sv-SE');
+    const classId = document.getElementById('att-cls')?.value || '';
+    const section = document.getElementById('att-sec')?.value || '';
+
+    let students = getCumulativeVisibleStudents({ classId });
+
+    if (section) {
+        students = students.filter(s => {
+            const text = String(s.grade || '') + ' ' + String(s.school_name || '') + ' ' + String(s.name || '');
+            const isHigh = /고1|고2|고3/.test(text);
+            return section === 'high' ? isHigh : !isHigh;
+        });
+    }
+
+    const options = students.map(s => {
+        const clsName = getCumulativeClassName(getCumulativeClassIdForStudent(s.id));
+        return `<option value="${apEscapeHtml(s.id)}">${apEscapeHtml(s.name)} ${clsName ? `(${apEscapeHtml(clsName)})` : ''}</option>`;
+    }).join('');
+
+    showModal('출결 메모', `
+        <div style="display:flex;flex-direction:column;gap:10px;">
+            <select id="cum-meta-student" class="btn" style="width:100%;text-align:left;background:var(--surface-2);border:1px solid var(--border);">
+                <option value="">학생 선택</option>
+                ${options}
+            </select>
+            <input type="date" id="cum-meta-date" class="btn" value="${today}" style="width:100%;text-align:left;background:var(--surface-2);border:1px solid var(--border);">
+            <button class="btn btn-primary" style="width:100%;min-height:48px;font-size:14px;font-weight:700;" onclick="openCumulativeAttendanceMetaModalFromPicker()">열기</button>
+        </div>
+    `);
+}
+
+function openCumulativeAttendanceMetaModalFromPicker() {
+    const sid = document.getElementById('cum-meta-student')?.value || '';
+    const date = document.getElementById('cum-meta-date')?.value || '';
+
+    if (!sid) return toast('학생을 선택하세요.', 'warn');
+    if (!date) return toast('날짜를 선택하세요.', 'warn');
+
+    if (typeof openAttendanceMetaModal !== 'function') {
+        toast('출결 메모 기능이 아직 연결되지 않았습니다.', 'warn');
+        return;
+    }
+
+    openAttendanceMetaModal(sid, date, { source: 'cumulative' });
 }
 
 var SEB_COLS = [
@@ -553,20 +684,17 @@ function getSebScore(studentId, year, colKey) {
 }
 
 function calcSebAvg(scores) {
-    const valid = scores.filter(s => s !== null && Number.isFinite(s));
+    const valid = scores.filter(s => s !== null && Number(isFinite(s)));
     if (!valid.length) return null;
     return Math.round(valid.reduce((a, b) => a + b, 0) / valid.length * 10) / 10;
 }
 
 function buildSebTrendHtml(curr, prev) {
     if (curr === null || prev === null) return '';
-
     const diff = curr - prev;
     if (diff === 0) return '';
-
     const color = diff > 0 ? 'var(--success)' : '#e53935';
     const arrow = diff > 0 ? '▲' : '▼';
-
     return `<div style="font-size:10px;font-weight:700;color:${color};line-height:1.2;margin-top:1px;">${arrow}${Math.abs(diff)}</div>`;
 }
 
@@ -579,7 +707,6 @@ function buildSebAvgRow(label, students, year, isGradeAvg) {
         const avg = calcSebAvg(scores);
         const borderClass = (i === 0 || i === 2) ? 'seb-border2' : '';
         const text = avg !== null ? avg : '<span style="color:var(--border);font-size:12px;">-</span>';
-
         return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;background:${bg};padding:4px 2px;"><span style="font-size:${fontSize};font-weight:700;color:var(--secondary);">${text}</span></td>`;
     }).join('');
 
@@ -626,7 +753,7 @@ function openSchoolExamLedger() {
 
     const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
     const sectionClasses = activeClasses.filter(c => {
-        const isHigh = /고1|고2|고3/.test(String(c.grade || '') + ' ' + String(c.name || ''));
+        const isHigh = /고1|고2|고3|고등/.test(String(c.grade || '') + ' ' + String(c.name || ''));
         return section === 'high' ? isHigh : !isHigh;
     });
 
@@ -654,21 +781,14 @@ function openSchoolExamLedger() {
     if (isAdmin) {
         const teachers = [];
         const seen = {};
-
         (state.db.classes || []).forEach(function(c) {
             const t = c.teacher_name || '';
-            if (t && !seen[t]) {
-                seen[t] = true;
-                teachers.push(t);
-            }
+            if (t && !seen[t]) { seen[t] = true; teachers.push(t); }
         });
-
         teachers.sort();
-
         const tOpts = '<option value="">전체 선생님</option>' + teachers.map(function(t) {
             return '<option value="' + apEscapeHtml(t) + '"' + (t === teacherFilter ? ' selected' : '') + '>' + apEscapeHtml(t) + '</option>';
         }).join('');
-
         teacherHtml = `<select class="seb-ctrl" id="seb-teacher" onchange="state.ui.schoolExamTeacher=this.value;state.ui.schoolExamClassId='';openSchoolExamLedger()">${tOpts}</select>`;
     }
 
@@ -735,7 +855,6 @@ function renderSchoolExamBatchTable() {
     const year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
     const sort = state.ui.schoolExamSort || 'default';
     const sortColKey = state.ui.schoolExamSortCol || '1H-mid';
-    const gradeTab = state.ui.schoolExamGradeTab || '';
     const classId = state.ui.schoolExamClassId || '';
     const students = getSebVisibleStudents();
 
@@ -744,16 +863,8 @@ function renderSchoolExamBatchTable() {
         return;
     }
 
-    const hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
-        + '<th rowspan="2" class="seb-sticky-c">반</th>'
-        + '<th rowspan="2" class="seb-sticky-n">이름</th>'
-        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(26,92,255,0.03);">1학기</th>'
-        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>';
-
-    const hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
-        + '<th style="background:rgba(26,92,255,0.03);">기말</th>'
-        + '<th class="seb-border2" style="background:rgba(5,150,105,0.03);">중간</th>'
-        + '<th style="background:rgba(5,150,105,0.03);">기말</th>';
+    const hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th><th rowspan="2" class="seb-sticky-c">반</th><th rowspan="2" class="seb-sticky-n">이름</th><th colspan="2" class="seb-border2" style="padding:8px;background:rgba(26,92,255,0.03);">1학기</th><th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>';
+    const hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th><th style="background:rgba(26,92,255,0.03);">기말</th><th class="seb-border2" style="background:rgba(5,150,105,0.03);">중간</th><th style="background:rgba(5,150,105,0.03);">기말</th>';
 
     let bodyRows = '';
     const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3'];
@@ -765,33 +876,26 @@ function renderSchoolExamBatchTable() {
         byGrade[g].push(s);
     });
 
-    const activeGrades = gradeOrder.filter(function(g) {
-        return byGrade[g] && byGrade[g].length;
-    });
+    const activeGrades = gradeOrder.filter(g => byGrade[g] && byGrade[g].length);
 
     gradeOrder.forEach(function(grade) {
         let gradeStudents = byGrade[grade];
         if (!gradeStudents || !gradeStudents.length) return;
-
         const isFirstGrade = activeGrades[0] === grade;
 
         if (sort === 'score-desc') {
             gradeStudents = gradeStudents.slice().sort(function(a, b) {
                 const sa = getSebScore(a.id, year, sortColKey);
                 const sb = getSebScore(b.id, year, sortColKey);
-
                 if (sa === null && sb === null) return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
                 if (sa === null) return 1;
                 if (sb === null) return -1;
                 if (sb !== sa) return sb - sa;
-
                 return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
             });
-
             gradeStudents.forEach(function(s, idx) {
                 const gradeText = idx === 0 ? grade : '';
                 const dividerClass = idx === 0 && !isFirstGrade ? ' seb-grade-divider' : '';
-
                 const cols = SEB_COLS.map(function(col, ci) {
                     const score = getSebScore(s.id, year, col.key);
                     const prevKey = getPrevSebColKey(col.key);
@@ -799,57 +903,33 @@ function renderSchoolExamBatchTable() {
                     const trendHtml = buildSebTrendHtml(score, prevScore);
                     const borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
                     const val = score !== null ? score : '';
-
                     return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${trendHtml}</td>`;
                 }).join('');
-
                 bodyRows += `<tr class="${dividerClass}"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">${apEscapeHtml(gradeText)}</td><td class="seb-sticky-c"></td><td class="seb-sticky-n">${apEscapeHtml(s.name)}</td>${cols}</tr>`;
             });
-
             bodyRows += buildSebAvgRow(classId ? '평균' : '학년평균', gradeStudents, year, true);
             return;
         }
 
         const byClass = {};
         const classOrder = [];
-
         gradeStudents.forEach(function(s) {
             const cid = getCumulativeClassIdForStudent(s.id);
             const cn = getCumulativeClassName(cid) || '미배정';
-
-            if (!byClass[cn]) {
-                byClass[cn] = [];
-                classOrder.push(cn);
-            }
-
+            if (!byClass[cn]) { byClass[cn] = []; classOrder.push(cn); }
             byClass[cn].push(s);
         });
+        classOrder.sort((a, b) => String(a || '').localeCompare(String(b || ''), 'ko', { numeric: true }));
 
-        classOrder.sort(function(a, b) {
-            return String(a || '').localeCompare(String(b || ''), 'ko', { numeric: true });
-        });
-
-        const showClassAverage = !gradeTab || !!classId;
-        const showGradeAverage = !classId;
         let gradeFirstRow = true;
-
         classOrder.forEach(function(cn) {
-            const clsStudents = (byClass[cn] || []).slice().sort(function(a, b) {
-                return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
-            });
-
+            const clsStudents = (byClass[cn] || []).slice().sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true }));
             let classFirstRow = true;
-
             clsStudents.forEach(function(s) {
-                const isFirstInGrade = gradeFirstRow;
-                const isFirstInClass = classFirstRow;
-                const gradeText = isFirstInGrade ? grade : '';
-                const classText = isFirstInClass ? cn : '';
-                const dividerClass = isFirstInGrade && !isFirstGrade ? ' seb-grade-divider' : '';
-
-                gradeFirstRow = false;
-                classFirstRow = false;
-
+                const gradeText = gradeFirstRow ? grade : '';
+                const classText = classFirstRow ? cn : '';
+                const dividerClass = gradeFirstRow && !isFirstGrade ? ' seb-grade-divider' : '';
+                gradeFirstRow = false; classFirstRow = false;
                 const cols = SEB_COLS.map(function(col, ci) {
                     const score = getSebScore(s.id, year, col.key);
                     const prevKey = getPrevSebColKey(col.key);
@@ -857,65 +937,35 @@ function renderSchoolExamBatchTable() {
                     const trendHtml = buildSebTrendHtml(score, prevScore);
                     const borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
                     const val = score !== null ? score : '';
-
                     return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${trendHtml}</td>`;
                 }).join('');
-
                 bodyRows += `<tr class="${dividerClass}"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">${apEscapeHtml(gradeText)}</td><td class="seb-sticky-c">${apEscapeHtml(classText)}</td><td class="seb-sticky-n">${apEscapeHtml(s.name)}</td>${cols}</tr>`;
             });
-
-            if (showClassAverage) {
-                bodyRows += buildSebAvgRow('반평균', clsStudents, year, false);
-            }
+            if (!state.ui.schoolExamGradeTab || classId) bodyRows += buildSebAvgRow('반평균', clsStudents, year, false);
         });
-
-        if (showGradeAverage) {
-            bodyRows += buildSebAvgRow('학년평균', gradeStudents, year, true);
-        }
+        if (!classId) bodyRows += buildSebAvgRow('학년평균', gradeStudents, year, true);
     });
 
     root.innerHTML = `<table id="seb-tbl"><thead><tr>${hRow1}</tr><tr>${hRow2}</tr></thead><tbody>${bodyRows || '<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>'}</tbody></table>`;
 }
 
-function _buildSebRow(s, year, gradeText, classText) {
-    const cols = SEB_COLS.map(function(col, i) {
-        const sid = String(s.id);
-        const rec = getSebExamRecord(sid, year, col.semester, col.examType);
-        const val = (rec && rec.score !== null && rec.score !== undefined && rec.score !== '') ? rec.score : '';
-        const border = (i === 0 || i === 2) ? ' class="seb-border2"' : '';
-        return '<td' + border + ' style="text-align:center;"><input type="number" class="seb-inp" id="seb-inp-' + sid + '-' + col.key + '" value="' + val + '" min="0" max="100"></td>';
-    }).join('');
-
-    return '<tr><td class="seb-sticky-g">' + apEscapeHtml(gradeText || '') + '</td><td class="seb-sticky-c">' + apEscapeHtml(classText || '') + '</td><td class="seb-sticky-n">' + apEscapeHtml(s.name) + '</td>' + cols + '</tr>';
-}
-
 async function saveSchoolExamBatch() {
     const year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
     const students = getSebVisibleStudents();
-
     if (!students.length) return toast('저장할 학생이 없습니다.', 'warn');
-
     for (let i = 0; i < students.length; i++) {
         for (let j = 0; j < SEB_COLS.length; j++) {
             const inp = document.getElementById('seb-inp-' + students[i].id + '-' + SEB_COLS[j].key);
             if (!inp) continue;
-
             const val = (inp.value || '').trim();
             if (val !== '') {
                 const n = Number(val);
-                if (!Number.isFinite(n) || n < 0 || n > 100) {
-                    return toast(students[i].name + ': 0~100 사이 숫자여야 합니다.', 'warn');
-                }
+                if (!Number.isFinite(n) || n < 0 || n > 100) return toast(students[i].name + ': 0~100 사이 숫자여야 합니다.', 'warn');
             }
         }
     }
-
     const btn = document.getElementById('seb-save-btn');
-    if (btn) {
-        btn.disabled = true;
-        btn.textContent = '저장 중...';
-    }
-
+    if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
     try {
         for (let ci = 0; ci < SEB_COLS.length; ci++) {
             const col = SEB_COLS[ci];
@@ -924,27 +974,10 @@ async function saveSchoolExamBatch() {
                 const v = inp ? (inp.value || '').trim() : '';
                 return { studentId: s.id, score: v === '' ? null : Number(v) };
             });
-
-            await api.post('school-exam-records/batch', {
-                examYear: year,
-                semester: col.semester,
-                examType: col.examType,
-                subject: '수학',
-                records
-            });
+            await api.post('school-exam-records/batch', { examYear: year, semester: col.semester, examType: col.examType, subject: '수학', records });
         }
-
-        toast('저장되었습니다.', 'success');
-        await loadData();
-        renderSchoolExamBatchTable();
-    } catch (e) {
-        toast('저장에 실패했습니다.', 'warn');
-    } finally {
-        if (btn) {
-            btn.disabled = false;
-            btn.textContent = '전체 저장';
-        }
-    }
+        toast('저장되었습니다.', 'success'); await loadData(); renderSchoolExamBatchTable();
+    } catch (e) { toast('저장에 실패했습니다.', 'warn'); } finally { if (btn) { btn.disabled = false; btn.textContent = '전체 저장'; } }
 }
 
 function openCumulativeOpsModal(mode = 'attendance') {
@@ -964,28 +997,16 @@ function getCumulativeRecordKey(record) {
 function getRecentSchoolExamColumns(records, limit = 4) {
     const seen = new Set();
     const columns = [];
-
-    [...records]
-        .filter(r => String(r.is_deleted || 0) !== '1')
-        .sort((a, b) => {
-            const yd = Number(b.exam_year || 0) - Number(a.exam_year || 0);
-            if (yd !== 0) return yd;
-            return String(b.created_at || '').localeCompare(String(a.created_at || ''));
-        })
-        .forEach(r => {
-            const key = getCumulativeRecordKey(r);
-            if (seen.has(key)) return;
-
-            seen.add(key);
-            columns.push({
-                key,
-                examYear: r.exam_year,
-                semester: r.semester || '',
-                examType: r.exam_type || '',
-                subject: r.subject || ''
-            });
-        });
-
+    [...records].filter(r => String(r.is_deleted || 0) !== '1').sort((a, b) => {
+        const yd = Number(b.exam_year || 0) - Number(a.exam_year || 0);
+        if (yd !== 0) return yd;
+        return String(b.created_at || '').localeCompare(String(a.created_at || ''));
+    }).forEach(r => {
+        const key = getCumulativeRecordKey(r);
+        if (seen.has(key)) return;
+        seen.add(key);
+        columns.push({ key, examYear: r.exam_year, semester: r.semester || '', examType: r.exam_type || '', subject: r.subject || '' });
+    });
     return columns.slice(0, limit);
 }
 
@@ -995,31 +1016,21 @@ function getSchoolExamRecordForCell(records, studentId, column) {
 
 function renderSchoolExamScoreCell(record) {
     if (!record) return '<span style="color:var(--secondary);font-weight:600;">-</span>';
-
     const score = record.score;
     const scoreText = score === null || score === undefined || score === '' ? '미응시' : `${score}`;
     const target = record.target_score_snapshot;
     const diff = (score !== null && score !== undefined && score !== '' && target !== null && target !== undefined && target !== '') ? Number(score) - Number(target) : null;
     const diffText = (diff === null || !Number.isFinite(diff)) ? '' : `<div style="font-size:10px;font-weight:600;color:${diff >= 0 ? 'var(--success)' : 'var(--error)'};margin-top:2px;">목표 ${diff >= 0 ? '+' : ''}${diff}</div>`;
-
     return `<span style="font-size:13px;font-weight:700;color:var(--text);">${scoreText}${diffText}</span>`;
 }
 
 function computeSchoolExamTrend(records, studentId) {
-    const list = records
-        .filter(r => String(r.student_id) === String(studentId) && r.score !== null && r.score !== undefined && r.score !== '')
-        .sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
-
+    const list = records.filter(r => String(r.student_id) === String(studentId) && r.score !== null && r.score !== undefined && r.score !== '').sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
     if (!list.length) return { avg: '-', trend: '-' };
-
     const scores = list.map(r => Number(r.score)).filter(Number.isFinite);
-    const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : '-';
+    const avg = scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : '-';
     const trend = scores.length >= 2 ? scores[scores.length - 1] - scores[scores.length - 2] : null;
-
-    return {
-        avg,
-        trend: trend === null ? '-' : `${trend >= 0 ? '+' : ''}${trend}`
-    };
+    return { avg, trend: trend === null ? '-' : `${trend >= 0 ? '+' : ''}${trend}` };
 }
 
 function openSchoolExamRecordModal(recordId = '', studentId = '') {
@@ -1058,11 +1069,9 @@ function openSchoolExamRecordModal(recordId = '', studentId = '') {
 async function saveSchoolExamRecord(recordId = '') {
     const studentId = document.getElementById('ser-student')?.value || '';
     if (!studentId) return toast('학생을 선택하세요.', 'warn');
-
     const student = getCumulativeStudent(studentId);
     const payload = {
-        studentId,
-        classId: getCumulativeClassIdForStudent(studentId),
+        studentId, classId: getCumulativeClassIdForStudent(studentId),
         schoolName: document.getElementById('ser-school')?.value.trim() || student?.school_name || '',
         grade: document.getElementById('ser-grade')?.value.trim() || student?.grade || '',
         examYear: Number(document.getElementById('ser-year')?.value || 0),
@@ -1073,35 +1082,16 @@ async function saveSchoolExamRecord(recordId = '') {
         targetScoreSnapshot: document.getElementById('ser-target')?.value ?? '',
         memo: document.getElementById('ser-memo')?.value.trim() || ''
     };
-
-    if (!payload.examYear || !payload.examType || !payload.subject) {
-        return toast('연도, 시험유형, 과목을 확인하세요.', 'warn');
-    }
-
-    const r = recordId
-        ? await api.patch(`school-exam-records/${recordId}`, payload)
-        : await api.post('school-exam-records', payload);
-
-    if (r?.success) {
-        toast('학교시험 성적이 저장되었습니다.', 'success');
-        await loadData();
-        closeModal();
-    } else {
-        toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
-    }
+    if (!payload.examYear || !payload.examType || !payload.subject) return toast('연도, 시험유형, 과목을 확인하세요.', 'warn');
+    const r = recordId ? await api.patch(`school-exam-records/${recordId}`, payload) : await api.post('school-exam-records', payload);
+    if (r?.success) { toast('학교시험 성적이 저장되었습니다.', 'success'); await loadData(); closeModal(); }
+    else toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
 }
 
 async function deleteSchoolExamRecord(recordId) {
     if (!recordId) return;
     if (!confirm('학교시험 성적 기록을 삭제할까요?')) return;
-
     const r = await api.delete('school-exam-records', recordId);
-
-    if (r?.success) {
-        toast('학교시험 성적 기록이 삭제되었습니다.', 'info');
-        await loadData();
-        closeModal();
-    } else {
-        toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
-    }
+    if (r?.success) { toast('학교시험 성적 기록이 삭제되었습니다.', 'info'); await loadData(); closeModal(); }
+    else toast('학교시험 성적 삭제에 실패했습니다.', 'warn');
 }
