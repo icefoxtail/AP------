@@ -456,6 +456,18 @@ function openExamScoreMenu() {
 }
 
 function buildDrawerMenu(roleKey) {
+    const isAdminDrawer = roleKey === 'admin';
+
+    if (isAdminDrawer) {
+        return `
+            ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
+            ${drawerItem('', '학급관리', "closeAppDrawer(); openClassManageModal();")}
+            ${drawerItem('', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+        `;
+    }
+
     return `
         ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
