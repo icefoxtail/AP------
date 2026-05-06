@@ -347,22 +347,22 @@ function renderAdminControlCenter() {
     `;
 
     const summaryHtml = `
-        <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:8px; margin-bottom:22px;">
-            <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 1px 2px rgba(0,0,0,0.03);">
-                <div style="font-size:20px; font-weight:700; color:var(--primary); line-height:1.1;">${activeStudents.length}</div>
+        <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:10px; margin-bottom:32px;">
+            <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
+                <div style="font-size:20px; font-weight:700; color:var(--primary);">${activeStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">재원생</div>
             </div>
-            <div class="card" onclick="openAdminStudentList('new')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 1px 2px rgba(0,0,0,0.03);">
-                <div style="font-size:20px; font-weight:700; color:var(--success); line-height:1.1;">${newStudents.length}</div>
+            <div class="card" onclick="openAdminStudentList('new')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
+                <div style="font-size:20px; font-weight:700; color:var(--success);">${newStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">신규</div>
             </div>
-            <div class="card" onclick="openAdminStudentList('discharged')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 1px 2px rgba(0,0,0,0.03);">
-                <div style="font-size:20px; font-weight:700; color:var(--secondary); line-height:1.1;">${dischargedStudents.length}</div>
+            <div class="card" onclick="openAdminStudentList('discharged')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
+                <div style="font-size:20px; font-weight:700; color:var(--secondary);">${dischargedStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">퇴원생</div>
             </div>
-            <div class="card" onclick="openAdminStudentList('risk')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid ${risks.length > 0 ? 'rgba(255,71,87,0.28)' : 'var(--border)'}; border-radius:16px; background:${risks.length > 0 ? 'rgba(255,71,87,0.05)' : 'var(--surface)'}; box-shadow:0 1px 2px rgba(0,0,0,0.03);">
-                <div style="font-size:20px; font-weight:700; color:var(--error); line-height:1.1;">${risks.length}</div>
-                <div style="font-size:11px; color:${risks.length > 0 ? 'var(--error)' : 'var(--secondary)'}; font-weight:600; margin-top:4px;">관리필요</div>
+            <div class="card" onclick="openAdminStudentList('risk')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid ${risks.length > 0 ? 'rgba(255,71,87,0.3)' : 'var(--border)'}; border-radius:16px; background:${risks.length > 0 ? 'rgba(255,71,87,0.05)' : 'var(--surface)'};">
+                <div style="font-size:20px; font-weight:700; color:var(--error);">${risks.length}</div>
+                <div style="font-size:11px; color:var(--error); font-weight:600; margin-top:4px;">관리필요</div>
             </div>
         </div>
     `;
