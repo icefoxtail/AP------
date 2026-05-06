@@ -1,9 +1,9 @@
 /**
- * AP Math OS 1.0 [js/classroom.js]
+ * AP Math OS 1.0 [js/classroom.js] - Classroom v4 FINAL
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
- * [Minimalism Polish]&#58; 52px 카드 높이 통일, 아이콘 제거, 오늘 현황 레이아웃 분리
- * [Standard UI]&#58; font-weight 700 상한선 준수, 영문 한글화 및 테이블 4열 수직 완벽 정렬
- * [Update]&#58; 넓이 850px 고정, 닫기버튼 삭제 및 현황 배지 인라인 통합, 테이블 글자 +1px
+ * [Minimalism Polish]: 46px 1줄 압축 뷰, 파스텔 상태 뱃지, 모바일 핀포인트 렌더링
+ * [Core Logic Preserved]: 기존 API 통신, 낙관적 롤백 방어, 상태 관리 보존
+ * [V4 FINAL-3]: Summary ID 고정, insertAdjacentHTML 안정 렌더링, 플래너 관리 함수 포함
  */
 
 // ── 필수 유틸리티 (중복 선언 방어) ──────────────────────────────────
@@ -23,6 +23,61 @@ function injectClassroomStyles() {
         .cls-fade-in { animation: clsFadeIn 0.25s ease-out; }
         @keyframes clsFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
         .cls-input { width: 100%; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; color: var(--text); padding: 12px 14px; font-family: inherit; outline: none; font-size: 15px; font-weight: 600; line-height: 1.4; }
+        .cls-v4-wrap { width: 100%; max-width: 1080px; margin: 0 auto; box-sizing: border-box; padding: 0 0 28px; background: var(--surface); min-height: 100vh; }
+        .cls-v4-top { position: sticky; top: 0; z-index: 50; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 16px; min-height:54px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+        .dark .cls-v4-top, [data-theme="dark"] .cls-v4-top { background:rgba(28,28,30,0.92); }
+        .cls-v4-title { min-width:0; flex:1; }
+        .cls-v4-title-main { font-size:16px; font-weight:700; color:var(--text); letter-spacing:-0.35px; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .cls-v4-title-sub { margin-top:3px; font-size:11px; font-weight:600; color:var(--secondary); line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .cls-v4-summary { display:flex; gap:5px; justify-content:flex-end; flex:0 0 auto; }
+        .cls-v4-pill { height:25px; display:inline-flex; align-items:center; justify-content:center; gap:4px; padding:0 8px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:700; white-space:nowrap; }
+        .cls-v4-pill b { color:var(--text); font-weight:700; }
+        .cls-v4-pill.warn { color:var(--warning); background:rgba(255,165,2,0.08); border-color:rgba(255,165,2,0.18); }
+        .cls-v4-tools { display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; touch-action:pan-x; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--surface); }
+        .cls-v4-tools::-webkit-scrollbar { display:none; }
+        .cls-v4-tool { flex:0 0 auto; min-height:36px; padding:0 13px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; box-shadow:none; }
+        .cls-v4-tool.primary { background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); color:var(--primary); }
+        .cls-v4-tool.highlight { background:rgba(124,58,237,0.07); border-color:rgba(124,58,237,0.16); color:#7c3aed; }
+        .cls-v4-section { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px 7px; }
+        .cls-v4-section h3 { margin:0; font-size:14px; font-weight:700; color:var(--text); letter-spacing:-0.2px; }
+        .cls-v4-section span { font-size:11px; font-weight:700; color:var(--secondary); }
+        .cls-v4-board { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--surface); box-shadow:none; }
+        .cls-v4-row { display:flex; align-items:center; gap:8px; min-height:48px; padding:6px 16px; border-bottom:1px solid var(--border); background:var(--surface); }
+        .cls-v4-row:last-child { border-bottom:none; }
+        .cls-v4-row:active { background:var(--surface-2); }
+        .cls-v4-name-col { flex:1 1 auto; min-width:96px; max-width:42%; display:flex; flex-direction:column; align-items:flex-start; gap:2px; cursor:pointer; overflow:hidden; }
+        .cls-v4-student { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:700; color:var(--text); line-height:1.2; }
+        .cls-v4-meta-mobile { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:10.5px; font-weight:600; color:var(--secondary); line-height:1.2; }
+        .cls-v4-badges { flex:0 0 auto; display:flex; gap:7px; align-items:center; }
+        .cls-v4-status { min-width:58px; height:38px; min-height:38px; padding:0 8px; border-radius:10px; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none; }
+        .cls-v4-status.hw { min-width:54px; }
+        .cls-v4-actions { flex:0 0 auto; display:flex; gap:6px; align-items:center; justify-content:flex-end; }
+        .cls-v4-pad-btns { display:none; gap:6px; }
+        .cls-v4-pad-btn { height:32px; min-height:32px; padding:0 10px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--text-soft); font-size:11px; font-weight:700; }
+        .cls-v4-more { width:36px; height:38px; min-height:38px; padding:0; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--secondary); font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+        .cls-v4-empty { padding:34px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; }
+        .cls-v4-legacy-table { padding:8px 0; border-radius:18px; border:1px solid var(--border); background:var(--surface); box-shadow:none; }
+        .cls-v4-ledger-mode-active { background:var(--primary) !important; color:#fff !important; }
+        @media (min-width:800px) {
+            .cls-v4-wrap { max-width:1080px; padding-bottom:32px; }
+            .cls-v4-top { border-left:1px solid var(--border); border-right:1px solid var(--border); border-radius:0 0 18px 18px; }
+            .cls-v4-board { margin:0 16px; border:1px solid var(--border); border-radius:18px; overflow:hidden; }
+            .cls-v4-tools { padding-left:16px; padding-right:16px; }
+            .cls-v4-row { min-height:50px; padding:7px 18px; }
+            .cls-v4-name-col { max-width:none; flex:1 1 240px; }
+            .cls-v4-badges { gap:8px; }
+            .cls-v4-status { min-width:66px; height:38px; }
+            .cls-v4-status.hw { min-width:60px; }
+            .cls-v4-pad-btns { display:flex; }
+            .cls-v4-more { display:none; }
+        }
+        @media (max-width:380px) {
+            .cls-v4-row { padding-left:12px; padding-right:12px; gap:6px; }
+            .cls-v4-name-col { min-width:86px; max-width:38%; }
+            .cls-v4-status { min-width:52px; padding:0 6px; font-size:11.5px; }
+            .cls-v4-status.hw { min-width:50px; }
+            .cls-v4-more { width:32px; }
+        }
     `;
     document.head.appendChild(style);
 }
@@ -156,6 +211,51 @@ function getHomeworkStatusStyle(status, isClassDay = true) {
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
 
+
+function getV4CompactAttendanceLabel(status, isClassDay = true) {
+    const cur = getAttendanceDisplayStatus(status, isClassDay);
+    if (cur === '등원') return '등원';
+    if (cur === '결석') return '결석';
+    if (cur === '지각') return '지각';
+    if (cur === '보강') return '보강';
+    if (cur === '상담') return '상담';
+    if (cur === '수업 없음') return '-';
+    return cur || '-';
+}
+
+function getV4CompactHomeworkLabel(status, isClassDay = true) {
+    const cur = getHomeworkDisplayStatus(status, isClassDay);
+    if (cur === '완료') return '완료';
+    if (cur === '미완료') return '미완료';
+    if (cur === '공란') return '-';
+    return cur || '-';
+}
+
+function getV4BadgeStyle(type, status, isClassDay = true) {
+    const safeType = String(type || '').trim();
+    const cur = safeType === 'att'
+        ? getAttendanceDisplayStatus(status, isClassDay)
+        : safeType === 'hw'
+            ? getHomeworkDisplayStatus(status, isClassDay)
+            : String(status || '').trim();
+
+    if (cur === '등원') return 'background: rgba(0,184,148,0.12); color: #008F72; border: 1px solid transparent;';
+    if (cur === '완료') return 'background: rgba(26,92,255,0.10); color: var(--primary); border: 1px solid transparent;';
+    if (cur === '결석') return 'background: rgba(232,65,79,0.12); color: #D92D3A; border: 1px solid transparent;';
+    if (cur === '미완료') return 'background: rgba(255,165,2,0.14); color: #D97706; border: 1px solid transparent;';
+    if (cur === '지각') return 'background: rgba(255,165,2,0.14); color: #D97706; border: 1px solid transparent;';
+    if (cur === '보강') return 'background: rgba(26,92,255,0.10); color: var(--primary); border: 1px solid transparent;';
+    if (cur === '상담') return 'background: rgba(124,58,237,0.12); color: #6D28D9; border: 1px solid transparent;';
+    if (cur === '수업 없음' || cur === '공란' || !cur) return 'background: transparent; color: var(--secondary); border: 1px dashed var(--border);';
+    return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
+}
+
+function rerenderClassPreserveScroll(classId) {
+    const y = window.scrollY || window.pageYOffset || 0;
+    renderClass(classId);
+    requestAnimationFrame(() => window.scrollTo(0, y));
+}
+
 // [5G-2] PIN 일괄 배분 기능
 async function handleBatchGeneratePins(classId) {
     if (!confirm('이 반에서 PIN이 아직 없는 학생들에게 고유 PIN을 일괄 배분하시겠습니까? (기존 PIN은 유지됨)')) return;
@@ -178,7 +278,7 @@ function computeClassTodaySummary(classId) {
     const total = active.length;
 
     const hasActiveAttendance = state.db.attendance.some(a => a.date === today && ids.includes(String(a.student_id)) && a.status === '등원');
-    const isScheduled = hasActiveAttendance || (isClassScheduledOnDate(classId, today) && !isClassroomHoliday(today));
+    const isScheduled = hasActiveAttendance || isClassScheduledOnDate(classId, today);
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
 
@@ -225,129 +325,197 @@ function openClassHomework(cid) {
     else renderClass(cid);
 }
 
-function isPlannerTargetClassName(className) {
-    return String(className || '').includes('고1A');
-}
-
-function isPlannerTargetClass(cls) {
-    if (!cls) return false;
-
-    const className = String(cls.name || '').trim();
-    const teacherRaw = String(cls.teacher_name || '').trim();
-
-    const teacher = teacherRaw
-        .replace(/\s*선생님\s*$/g, '')
-        .trim()
-        .toLowerCase();
-
-    const teacherAliases = ['박준성', '선생님1', 'teacher1', 't1']
-        .map(v => String(v).toLowerCase());
-
-    return className.includes('고1A') && teacherAliases.includes(teacher);
-}
-
 // [UI Standard Applied]: 학급 메인 화면
+function getClassroomActiveStudents(cid) {
+    const mIds = state.db.class_students
+        .filter(m => String(m.class_id) === String(cid))
+        .map(m => String(m.student_id));
+    const orderMap = new Map(mIds.map((id, idx) => [String(id), idx]));
+    return state.db.students
+        .filter(s => mIds.includes(String(s.id)) && s.status === '재원')
+        .sort((a, b) => (orderMap.get(String(a.id)) ?? 9999) - (orderMap.get(String(b.id)) ?? 9999));
+}
+
+function buildClassroomTodayMaps(students, today) {
+    const idSet = new Set(students.map(s => String(s.id)));
+    const todayAttMap = {};
+    const todayHwMap = {};
+
+    for (let i = 0; i < state.db.attendance.length; i++) {
+        const a = state.db.attendance[i];
+        if (a.date === today && idSet.has(String(a.student_id))) todayAttMap[a.student_id] = a.status;
+    }
+    for (let i = 0; i < state.db.homework.length; i++) {
+        const h = state.db.homework[i];
+        if (h.date === today && idSet.has(String(h.student_id))) todayHwMap[h.student_id] = h.status;
+    }
+
+    return { todayAttMap, todayHwMap };
+}
+
+function renderClassTopBarV4B(cls, summary, today) {
+    const statusHtml = summary.isScheduled
+        ? `<div class="cls-v4-summary" id="v4-summary-root">
+            <span class="cls-v4-pill">출석 <b>${summary.att}/${summary.total}</b></span>
+            <span class="cls-v4-pill">숙제 <b>${summary.hw}/${summary.total}</b></span>
+          </div>`
+        : `<div class="cls-v4-summary" id="v4-summary-root"><span class="cls-v4-pill warn">정규 수업일 아님</span></div>`;
+
+    return `
+        <div class="cls-v4-top">
+            <div class="cls-v4-title">
+                <div class="cls-v4-title-main">${apEscapeHtml(cls.name)}</div>
+                <div class="cls-v4-title-sub">${today} · ${formatClassScheduleDays(cls.schedule_days)}</div>
+            </div>
+            ${statusHtml}
+        </div>
+    `;
+}
+
+function renderClassToolBarV4B(cid, plannerEnabled) {
+    return `
+        <div class="cls-v4-tools">
+            <button class="btn cls-v4-tool primary" onclick="openQrGenerator('${cid}')">QR/OMR</button>
+            <button class="btn cls-v4-tool" onclick="openExamGradeView('${cid}')">시험성적</button>
+            <button class="btn cls-v4-tool" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
+            <button class="btn cls-v4-tool" onclick="openClassRecordModal('${cid}')">진도관리</button>
+            <button class="btn cls-v4-tool" onclick="ledgerState.classId='${cid}'; renderAttendanceLedger();">출석부</button>
+            ${plannerEnabled ? `<button class="btn cls-v4-tool highlight" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
+        </div>
+    `;
+}
+
+function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isScheduled, plannerEnabled) {
+    if (!students.length) {
+        return `<div class="cls-v4-board"><div class="cls-v4-empty">재원생이 없습니다.</div></div>`;
+    }
+
+    return `
+        <div class="cls-v4-board">
+            ${students.map(s => renderClassStudentRowV4B(cid, s, todayAttMap[s.id], todayHwMap[s.id], isScheduled, plannerEnabled)).join('')}
+        </div>
+    `;
+}
+
+function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plannerEnabled) {
+    const attStyle = getV4BadgeStyle('att', attStatus, isScheduled);
+    const attLabel = getV4CompactAttendanceLabel(attStatus, isScheduled);
+    const hwStyle = getV4BadgeStyle('hw', hwStatus, isScheduled);
+    const hwLabel = getV4CompactHomeworkLabel(hwStatus, isScheduled);
+    const schoolText = [s.school_name, s.grade].filter(Boolean).join(' ');
+    const safePlanner = plannerEnabled ? 'true' : 'false';
+
+    return `
+        <div class="cls-v4-row" id="class-row-${s.id}">
+            <div class="cls-v4-name-col" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">
+                <div class="cls-v4-student">${apEscapeHtml(s.name)}</div>
+                <div class="cls-v4-meta-mobile">${apEscapeHtml(schoolText || '-')}</div>
+            </div>
+            <div class="cls-v4-badges">
+                <button class="btn cls-v4-status class-att-toggle" style="${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
+                <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
+            </div>
+            <div class="cls-v4-actions">
+                <div class="cls-v4-pad-btns">
+                    <button class="btn cls-v4-pad-btn" onclick="if(typeof openOMR==='function') openOMR('${s.id}', '단원평가', 20, '${cid}', '', '', 'class')">OMR</button>
+                    ${plannerEnabled ? `<button class="btn cls-v4-pad-btn" style="color:var(--primary);" onclick="copyPlannerStudentLink('${s.id}')">플래너</button>` : ''}
+                    <button class="btn cls-v4-pad-btn" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">상세</button>
+                </div>
+                <button class="btn cls-v4-more" onclick="openStudentActionSheetV4('${s.id}', '${cid}', ${safePlanner})">⋮</button>
+            </div>
+        </div>
+    `;
+}
+
+
+function updateClassSummaryDOM(cid) {
+    const root = document.getElementById('v4-summary-root');
+    if (!root) return;
+    const summary = computeClassTodaySummary(cid);
+    root.innerHTML = summary.isScheduled
+        ? `<span class="cls-v4-pill">출석 <b>${summary.att}/${summary.total}</b></span>
+           <span class="cls-v4-pill">숙제 <b>${summary.hw}/${summary.total}</b></span>`
+        : `<span class="cls-v4-pill warn">정규 수업일 아님</span>`;
+}
+
+function updateStudentRowDOM(sid, cid) {
+    const row = document.getElementById('class-row-' + sid);
+    if (!row) return false;
+
+    const cls = state.db.classes.find(c => String(c.id) === String(cid));
+    const student = state.db.students.find(st => String(st.id) === String(sid));
+    if (!cls || !student) return false;
+
+    const today = new Date().toLocaleDateString('sv-SE');
+    const summary = computeClassTodaySummary(cid);
+    const attCur = state.db.attendance.find(a => String(a.student_id) === String(sid) && a.date === today);
+    const hwCur = state.db.homework.find(h => String(h.student_id) === String(sid) && h.date === today);
+    const plannerEnabled = isPlannerTargetClass(cls);
+    const newHtml = renderClassStudentRowV4B(cid, student, attCur?.status, hwCur?.status, summary.isScheduled, plannerEnabled);
+
+    row.insertAdjacentHTML('afterend', newHtml);
+    row.remove();
+    updateClassSummaryDOM(cid);
+    return true;
+}
+
+window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
+    const plannerOn = hasPlanner === true || String(hasPlanner) === 'true';
+    const s = state.db.students.find(st => String(st.id) === String(sid));
+    const sname = s?.name || '학생';
+    const html = `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} 학생 관리</div>
+            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${sid}')">상세 정보 열기</button>
+            <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('${sid}', '단원평가', 20, '${cid}', '', '', 'class')">OMR / 성적 입력</button>
+            ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(26,92,255,0.2);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">플래너 링크 복사</button>` : ''}
+        </div>
+    `;
+    showModal('학생 관리', html);
+};
+
+// [Classroom v4-B]: 안정형 현장 운영판
 function renderClass(cid) {
     injectClassroomStyles();
     const defaultTab = state.ui.classDefaultTab || '';
     state.ui.classDefaultTab = null;
     state.ui.currentClassId = String(cid);
+
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cid)).map(m => String(m.student_id));
+    if (!cls) {
+        document.getElementById('app-root').innerHTML = `<div class="card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">반 정보를 찾을 수 없습니다.</div>`;
+        return;
+    }
+
     const today = new Date().toLocaleDateString('sv-SE');
-    
     const summary = computeClassTodaySummary(cid);
+    const students = getClassroomActiveStudents(cid);
+    const { todayAttMap, todayHwMap } = buildClassroomTodayMaps(students, today);
     const plannerEnabled = isPlannerTargetClass(cls);
-    const plannerButtonHtml = plannerEnabled
-        ? `<button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.16); color: var(--text); box-shadow: none; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="renderPlannerControl('${cid}')">플래너</button>`
-        : '';
-
-    const statusBarHtml = summary.isScheduled
-        ? `<div style="display: flex; gap: 6px; align-items: center; flex-shrink: 0;">
-             <div style="height: 26px; display: inline-flex; align-items: center; background: var(--bg); border-radius: 8px; padding: 0 8px; font-size: 11px; font-weight: 700; color: var(--secondary); border: 1px solid var(--border); white-space: nowrap;">출석 <span style="color: var(--text); margin-left: 4px;">${summary.att}/${summary.total}</span></div>
-             <div style="height: 26px; display: inline-flex; align-items: center; background: var(--bg); border-radius: 8px; padding: 0 8px; font-size: 11px; font-weight: 700; color: var(--secondary); border: 1px solid var(--border); white-space: nowrap;">숙제 <span style="color: var(--text); margin-left: 4px;">${summary.hw}/${summary.total}</span></div>
-           </div>`
-        : `<span style="color: var(--warning); font-size: 13px; font-weight: 700; flex-shrink: 0;">정규 수업일 아님</span>`;
-
-    const opToolsPanel = `
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding: 16px 16px 0; gap: 12px;">
-            <div style="min-width: 0; flex: 1;">
-                <div style="font-size: 19px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; line-height: 1.2;">${apEscapeHtml(cls.name)}</div>
-                <div style="font-size: 11px; font-weight: 600; color: var(--secondary); margin-top: 4px; line-height: 1.5;">${formatClassScheduleDays(cls.schedule_days)}</div>
-            </div>
-            ${statusBarHtml}
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(${plannerEnabled ? 5 : 4}, minmax(0, 1fr)); gap: 10px; margin-bottom: 32px; padding: 0 16px;">
-            <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(26,92,255,0.05); border: 1px solid rgba(26,92,255,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openQrGenerator('${cid}')">QR/OMR</button>
-            <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(225,29,72,0.05); border: 1px solid rgba(225,29,72,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openExamGradeView('${cid}')">시험성적</button>
-            <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(5,150,105,0.05); border: 1px solid rgba(5,150,105,0.15); color: var(--text); display: flex; align-items: center; justify-content: center; padding: 0;" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
-            <button class="btn" style="height: 52px; min-height: 52px; max-height: 52px; font-size: 13px; font-weight: 700; border-radius: 16px; background: rgba(99,102,241,0.05); border: 1px solid rgba(99,102,241,0.15); color: var(--text); box-shadow: none; display: flex; align-items: center; justify-content: center; padding: 0;" onclick="openClassRecordModal('${cid}')">진도관리</button>
-            ${plannerButtonHtml}
-        </div>
-    `;
 
     document.getElementById('app-root').innerHTML = `
-        <div class="cls-fade-in" style="width: 100%; max-width: 850px; margin: 0 auto; box-sizing: border-box; padding-bottom: 24px;">
-            ${opToolsPanel}
-            
-            <div style="margin: 0 16px 8px; padding: 0 4px; display: flex; justify-content: space-between; align-items: flex-end;">
-                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">학생 명단</h3>
+        <div class="cls-fade-in cls-v4-wrap">
+            ${renderClassTopBarV4B(cls, summary, today)}
+            ${renderClassToolBarV4B(cid, plannerEnabled)}
+            <div class="cls-v4-section">
+                <h3>학생 명단</h3>
+                <span>${students.length}명</span>
             </div>
-            <div style="margin: 0 16px 32px;">
-                <div class="card" style="padding: 8px 0; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
-                    <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
-                        <thead>
-                            <tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
-                                <th style="width: 28%; padding: 10px 16px; font-size: 13px; color: var(--secondary); font-weight: 700; text-align: left;">이름</th>
-                                <th style="width: 32%; padding: 10px 4px; font-size: 13px; color: var(--secondary); font-weight: 700; text-align: center;">학교</th>
-                                <th style="width: 20%; padding: 10px 4px; font-size: 13px; color: var(--secondary); font-weight: 700; text-align: center;">출결</th>
-                                <th style="width: 20%; padding: 10px 16px 10px 4px; font-size: 13px; color: var(--secondary); font-weight: 700; text-align: center;">숙제</th>
-                            </tr>
-                        </thead>
-                        <tbody id="class-std-list"></tbody>
-                    </table>
-                </div>
-            </div>
+            ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled)}
         </div>
     `;
 
-    const todayAttMap = {};
-    const todayHwMap = {};
-    for (let i = 0; i < state.db.attendance.length; i++) {
-        if (state.db.attendance[i].date === today) todayAttMap[state.db.attendance[i].student_id] = state.db.attendance[i].status;
-    }
-    for (let i = 0; i < state.db.homework.length; i++) {
-        if (state.db.homework[i].date === today) todayHwMap[state.db.homework[i].student_id] = state.db.homework[i].status;
-    }
-
-    const listRoot = document.getElementById('class-std-list');
-    const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원');
-    
-    listRoot.innerHTML = stds.map(s => {
-        const attStyle = getAttendanceStatusStyle(todayAttMap[s.id], summary.isScheduled);
-        const attLabel = getAttendanceStatusLabel(todayAttMap[s.id], summary.isScheduled);
-        const hwStyle = getHomeworkStatusStyle(todayHwMap[s.id], summary.isScheduled);
-        const hwLabel = getHomeworkStatusLabel(todayHwMap[s.id], summary.isScheduled);
-
-        return `<tr style="border-bottom: 1px solid var(--border);">
-            <td onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')" style="padding: 8px 16px; cursor: pointer; font-weight:700; color: var(--text); font-size: 15px; line-height: 1.3; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${apEscapeHtml(s.name)}</td>
-            <td style="padding: 8px 4px; color: var(--secondary); font-size: 13px; font-weight: 600; line-height: 1.3; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${apEscapeHtml(s.school_name)}</td>
-            <td style="padding: 8px 4px; text-align: center; vertical-align: middle;">
-                <button class="btn class-att-toggle" style="padding: 0; width: 100%; max-width: 64px; height: 38px; min-height: 38px; max-height: 38px; font-size: 13px; font-weight:700; border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; ${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
-            </td>
-            <td style="padding: 8px 16px 8px 4px; text-align: center; vertical-align: middle;">
-                <button class="btn class-hw-toggle" style="padding: 0; width: 100%; max-width: 56px; height: 38px; min-height: 38px; max-height: 38px; font-size: 13px; font-weight:700; border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; ${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
-            </td>
-        </tr>`;
-    }).join('');
-
     if (defaultTab === 'att' || defaultTab === 'hw') {
-        setTimeout(() => {
-            const selector = defaultTab === 'att' ? '.class-att-toggle' : '.class-hw-toggle';
-            const target = document.querySelector(selector);
-            if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'center' }); target.focus({ preventScroll: true }); }
-        }, 0);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                const selector = defaultTab === 'att' ? '.class-att-toggle' : '.class-hw-toggle';
+                const target = document.querySelector(selector);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    target.focus({ preventScroll: true });
+                }
+            });
+        });
     }
 }
 
@@ -374,7 +542,7 @@ function openClassRecordModal(cid) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const allTextbooks = state.db.class_textbooks || [];
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
-    if (activeBooks.length === 0 && cls.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
+    if (activeBooks.length === 0 && cls?.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
 
     const existingRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cid) && r.date === todayStr);
     const existingProgress = existingRecord ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id)) : [];
@@ -453,6 +621,7 @@ async function loadLedger() {
 }
 
 function renderAttendanceLedger() {
+    ledgerState.mode = 'att';
     const classOptions = state.db.classes.filter(c => c.is_active !== 0).map(c => `<option value="${c.id}" ${String(c.id) === String(ledgerState.classId) ? 'selected' : ''}>${c.name}</option>`).join('');
     showModal('출석부', `<div style="display: flex; gap: 12px; flex-direction: column; margin-bottom: 16px; background: var(--surface-2); padding: 12px; border: 1px solid var(--border); border-radius: 16px;">
             <div style="display: flex; gap: 8px;">
@@ -460,7 +629,7 @@ function renderAttendanceLedger() {
                 <select id="ledger-class" class="cls-input" style="flex: 1; background: var(--surface); border: 1px solid var(--border);" onchange="ledgerState.classId=this.value;renderLedgerTable();"><option value="">전체 학급</option>${classOptions}</select>
             </div>
             <div style="display: flex; gap: 6px; background: var(--surface); padding: 4px; border: 1px solid var(--border); border-radius: 12px;">
-                <button id="ledger-mode-att" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
+                <button id="ledger-mode-att" class="btn cls-v4-ledger-mode-active" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
                 <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
             </div>
         </div><div id="ledger-table-wrap" style="max-height: 55vh; overflow-y: auto; padding-right: 4px;"></div>`);
@@ -492,7 +661,9 @@ function renderLedgerTable() {
     
     const headerTitle = isAtt ? '출결' : '숙제';
     
-    document.getElementById('ledger-table-wrap').innerHTML = `<div class="card" style="padding: 8px 0; border-radius: 18px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
+    const ledgerWrap = document.getElementById('ledger-table-wrap');
+    if (!ledgerWrap) return;
+    ledgerWrap.innerHTML = `<div class="card" style="padding: 8px 0; border-radius: 18px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
             <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
                 <thead><tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
                 <th style="width: 30%; padding: 10px 12px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: left;">이름</th>
@@ -501,6 +672,12 @@ function renderLedgerTable() {
                 </tr></thead>
                 <tbody>${rows || '<tr><td colspan="3" style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:700;">조회 대상 없음</td></tr>'}</tbody>
             </table></div>`;
+    const attBtn = document.getElementById('ledger-mode-att');
+    const hwBtn = document.getElementById('ledger-mode-hw');
+    if (attBtn && hwBtn) {
+        attBtn.classList.toggle('cls-v4-ledger-mode-active', isAtt);
+        hwBtn.classList.toggle('cls-v4-ledger-mode-active', !isAtt);
+    }
 }
 
 // ★ 낙관적 업데이트 및 월간 캐시 동기화 적용
@@ -509,13 +686,21 @@ async function toggleAtt(sid, date) {
     const isLedger = !!date;
     const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => String(a.student_id) === String(sid) && a.date === today);
+    const hadRecord = !!cur;
     const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
     const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
     const next = getNextAttendanceStatus(cur?.status, isScheduled);
     const prevStatus = cur ? cur.status : undefined;
 
-    if (cur) cur.status = next; else list.push({ student_id: sid, date: today, status: next });
-    if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
+    if (cur) cur.status = next;
+    else list.push({ student_id: sid, date: today, status: next });
+
+    if (isLedger) renderLedgerTable();
+    else if (state.ui.currentClassId) {
+        const updated = updateStudentRowDOM(sid, state.ui.currentClassId);
+        if (!updated) rerenderClassPreserveScroll(state.ui.currentClassId);
+    }
+    else renderDashboard();
 
     try {
         const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
@@ -531,12 +716,17 @@ async function toggleAtt(sid, date) {
                 .catch(() => {});
         }
     } catch (e) {
-        if (cur) cur.status = prevStatus;
+        if (hadRecord && cur) cur.status = prevStatus;
         else {
             const idx = list.findIndex(a => String(a.student_id) === String(sid) && a.date === today);
             if (idx > -1) list.splice(idx, 1);
         }
-        if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
+        if (isLedger) renderLedgerTable();
+        else if (state.ui.currentClassId) {
+            const updated = updateStudentRowDOM(sid, state.ui.currentClassId);
+            if (!updated) rerenderClassPreserveScroll(state.ui.currentClassId);
+        }
+        else renderDashboard();
         toast('저장 실패', 'warn');
     }
 }
@@ -547,13 +737,21 @@ async function toggleHw(sid, date) {
     const isLedger = !!date;
     const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => String(h.student_id) === String(sid) && h.date === today);
+    const hadRecord = !!cur;
     const sCid = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id;
     const isScheduled = sCid ? isClassScheduledOnDate(sCid, today) : true;
     const next = getNextHomeworkStatus(cur?.status, isScheduled);
     const prevStatus = cur ? cur.status : undefined;
 
-    if (cur) cur.status = next; else list.push({ student_id: sid, date: today, status: next });
-    if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
+    if (cur) cur.status = next;
+    else list.push({ student_id: sid, date: today, status: next });
+
+    if (isLedger) renderLedgerTable();
+    else if (state.ui.currentClassId) {
+        const updated = updateStudentRowDOM(sid, state.ui.currentClassId);
+        if (!updated) rerenderClassPreserveScroll(state.ui.currentClassId);
+    }
+    else renderDashboard();
 
     try {
         const r = await api.patch('homework', { studentId: sid, status: next, date: today });
@@ -569,12 +767,17 @@ async function toggleHw(sid, date) {
                 .catch(() => {});
         }
     } catch (e) {
-        if (cur) cur.status = prevStatus;
+        if (hadRecord && cur) cur.status = prevStatus;
         else {
             const idx = list.findIndex(h => String(h.student_id) === String(sid) && h.date === today);
             if (idx > -1) list.splice(idx, 1);
         }
-        if (isLedger) renderLedgerTable(); else if (state.ui.currentClassId) renderClass(state.ui.currentClassId); else renderDashboard();
+        if (isLedger) renderLedgerTable();
+        else if (state.ui.currentClassId) {
+            const updated = updateStudentRowDOM(sid, state.ui.currentClassId);
+            if (!updated) rerenderClassPreserveScroll(state.ui.currentClassId);
+        }
+        else renderDashboard();
         toast('저장 실패', 'warn');
     }
 }
@@ -770,8 +973,7 @@ async function deleteExamSession(sessionId, classId, examTitle, examDate) {
 }
 
 async function deleteExamByClass(classId, examTitle, examDate) {
-    if (!confirm('이 시험의 제출 기록 전체를 삭제할까요?')) return;
-    if (!confirm('오답 기록도 모두 삭제됩니다. 정말 삭제하시겠습니까?')) return;
+    if (!confirm('이 시험의 제출 기록 전체를 삭제할까요?\n오답 기록도 모두 삭제됩니다.')) return;
     try {
         const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}`;
         const r = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
@@ -783,6 +985,22 @@ async function deleteExamByClass(classId, examTitle, examDate) {
 }
 
 // ── 고1A 플래너 확인 ─────────────────────────────────────────────
+function isPlannerTargetClass(cls) {
+    if (!cls) return false;
+
+    const className = String(cls.name || '').trim();
+    const teacherRaw = String(cls.teacher_name || '').trim();
+    const teacher = teacherRaw
+        .replace(/\s*선생님\s*$/g, '')
+        .trim()
+        .toLowerCase();
+
+    const teacherAliases = ['박준성', '선생님1', 'teacher1', 't1']
+        .map(v => String(v).toLowerCase());
+
+    return className.includes('고1A') && teacherAliases.includes(teacher);
+}
+
 function getPlannerBaseUrl() {
     const origin = window.location.origin;
     let path = window.location.pathname || '/';
