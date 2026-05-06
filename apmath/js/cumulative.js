@@ -32,34 +32,31 @@ function getCumulativeGradeRankText(value) {
 }
 
 function normalizeSebTeacherName(name) {
-    const clean = String(name || '').trim().replace(/\s*선생님\s*$/g, '');
-    const t = clean.toLowerCase();
-    const map = {
-        '선생님1': '박준성',
-        'teacher1': '박준성',
-        't1': '박준성',
-        '박준성': '박준성',
-        '선생님2': '정겨운',
-        'teacher2': '정겨운',
-        't2': '정겨운',
-        '정겨운': '정겨운',
-        '선생님3': '정의한',
-        'teacher3': '정의한',
-        't3': '정의한',
-        '정의한': '정의한'
-    };
-    return map[t] || clean;
+    const t = String(name || '').trim().replace(/\s*선생님\s*$/g, '').toLowerCase();
+    if (t === '선생님1' || t === 'teacher1' || t === 't1') return '박준성';
+    if (t === '박준성') return '박준성';
+    return String(name || '').trim().replace(/\s*선생님\s*$/g, '');
 }
+
 
 var CUMULATIVE_ATTENDANCE_TEACHERS = ['박준성', '정겨운', '정의한'];
 
-function isCumulativeHighClass(cls) {
-    return /고1|고2|고3|고등/.test(String(cls?.grade || '') + ' ' + String(cls?.name || ''));
+function isCumulativeAdminUser() {
+    return !!(state && state.auth && (
+        state.auth.role === 'admin' ||
+        state.auth.id === 't_admin' ||
+        state.auth.login_id === 'admin' ||
+        state.auth.loginId === 'admin'
+    ));
 }
 
 function getCumulativeAttendanceTeacherFilter() {
-    if (!(state?.auth && state.auth.role === 'admin')) return '';
+    if (!isCumulativeAdminUser()) return '';
     return normalizeSebTeacherName(state.ui?.attendanceLedgerTeacher || '');
+}
+
+function isCumulativeHighClass(cls) {
+    return /고1|고2|고3|고등/.test(String(cls?.grade || '') + ' ' + String(cls?.name || ''));
 }
 
 function isCumulativeAttendanceClassForTeacher(cls, teacherName) {
@@ -483,10 +480,10 @@ function openAttendanceLedger() {
     const root = document.getElementById('app-root');
     if (!root) return;
 
-    const isAdmin = !!(state.auth && state.auth.role === 'admin');
+    const isAdmin = isCumulativeAdminUser();
     if (!isAdmin) state.ui.attendanceLedgerTeacher = '';
-    if (!state.ui.attendanceLedgerSection) state.ui.attendanceLedgerSection = '';
-    if (!state.ui.attendanceLedgerClassId) state.ui.attendanceLedgerClassId = '';
+    if (state.ui.attendanceLedgerSection === undefined || state.ui.attendanceLedgerSection === null) state.ui.attendanceLedgerSection = '';
+    if (state.ui.attendanceLedgerClassId === undefined || state.ui.attendanceLedgerClassId === null) state.ui.attendanceLedgerClassId = '';
 
     const teacherFilter = getCumulativeAttendanceTeacherFilter();
     const sectionFilter = state.ui.attendanceLedgerSection || '';
@@ -583,7 +580,10 @@ function renderAttendanceLedgerTable() {
     const safeClassId = classAllowed ? classId : '';
     if (!classAllowed) state.ui.attendanceLedgerClassId = '';
 
-    const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId: safeClassId }));
+    const allowedClassIds = new Set(activeClasses.map(c => String(c.id)));
+    const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId: safeClassId }))
+        .filter(s => allowedClassIds.has(String(getCumulativeClassIdForStudent(s.id))));
+
     const grouped = activeClasses
         .filter(c => !safeClassId || String(c.id) === String(safeClassId))
         .map(cls => ({
