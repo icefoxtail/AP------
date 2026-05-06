@@ -222,7 +222,7 @@ function computeRiskStudents() {
     return risks;
 }
 
-// [Final Fix] 운영메뉴 퇴원생 버튼과 연동
+// [Final Fix] 관리 메뉴 퇴원생 버튼과 연동
 function openDischargedStudents() {
     openAdminStudentList('discharged');
 }
@@ -245,10 +245,10 @@ async function restoreDischargedStudent(sid) {
 }
 
 async function hideDischargedStudent(sid) {
-    if (!confirm('이 퇴원생을 목록에서 숨기시겠습니까?')) return;
+    if (!confirm('퇴원생 목록에서 숨길까요?')) return;
     const r = await api.patch(`students/${sid}/hide`, {});
     if (r?.success) { await loadData(); openAdminStudentList('discharged'); }
-    else toast(r?.message || r?.error || '숨김 처리에 실패했습니다.', 'error');
+    else toast(r?.message || r?.error || '목록숨김 처리에 실패했습니다.', 'error');
 }
 
 function openAdminStudentList(type) {
@@ -284,8 +284,8 @@ function openAdminStudentList(type) {
             ? `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
                     <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
-                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">재원 복구</button>
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">숨김</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">목록숨김</button>
                 </div>
             `
             : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>`;
@@ -311,23 +311,23 @@ function openAdminOperationMenu() {
     const titleStyle = 'font-size:14px; font-weight:800; color:var(--text); line-height:1.35;';
     const descStyle = 'font-size:12px; font-weight:650; color:var(--secondary); line-height:1.5; margin-top:4px;';
 
-    showModal('원장 운영 메뉴', `
+    showModal('관리', `
         <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
             <button class="btn" style="${cardStyle}" onclick="openAdminTeacherAccountManage()">
-                <div style="${titleStyle}">교사 계정 관리</div>
-                <div style="${descStyle}">선생님 계정 생성, 이름/권한 수정, 비밀번호 초기화</div>
+                <div style="${titleStyle}">선생님 계정</div>
+                <div style="${descStyle}">선생님 계정 생성, 권한 수정, 비밀번호 초기화</div>
             </button>
             <button class="btn" style="${cardStyle}" onclick="renderAdminJournalList('${todayStr}')">
-                <div style="${titleStyle}">일지 결재</div>
+                <div style="${titleStyle}">일지 확인</div>
                 <div style="${descStyle}">제출된 일지를 날짜별로 확인하고 피드백 작성</div>
             </button>
             <button class="btn" style="${cardStyle}" onclick="openAdminStudentList('discharged')">
                 <div style="${titleStyle}">퇴원생 관리</div>
-                <div style="${descStyle}">퇴원생 조회, 재원 복구, 숨김 처리</div>
+                <div style="${descStyle}">퇴원생 조회, 복구, 목록숨김 처리</div>
             </button>
             <button class="btn" style="${cardStyle}" onclick="openAdminPinBatchModal()">
-                <div style="${titleStyle}">PIN 일괄 생성</div>
-                <div style="${descStyle}">전체 재원생 중 PIN 없는 학생에게만 자동 부여</div>
+                <div style="${titleStyle}">PIN 생성</div>
+                <div style="${descStyle}">전체 재원생 중 PIN 없는 재원생에게만 자동 부여</div>
             </button>
         </div>
         <div style="margin-top:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
@@ -356,22 +356,22 @@ function openAdminPinBatchModal() {
         </div>
     `).join('');
 
-    showModal('PIN 일괄 생성', `
+    showModal('PIN 생성', `
         <div style="display:flex; flex-direction:column; gap:14px;">
             <div style="padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
-                전체 재원생 중 <b style="color:var(--text);">PIN이 없는 학생</b>에게만 학년 규칙에 맞춰 자동 부여합니다. 기존 PIN은 변경되지 않습니다.
+                PIN 없는 재원생에게만 학년 규칙에 맞춰 번호를 부여합니다. 기존 PIN은 바뀌지 않습니다.
             </div>
 
             <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:14px;">
                 <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px; margin-bottom:10px;">
                     <div>
-                        <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">전체 미발급 PIN</div>
+                        <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">미발급 PIN</div>
                         <div style="font-size:12px; font-weight:700; color:var(--secondary); line-height:1.45; margin-top:2px;">대상 ${missingPins.length}명 / 재원 ${activeStudents.length}명</div>
                     </div>
                     <div style="font-size:20px; font-weight:800; color:var(--primary); line-height:1;">${missingPins.length}</div>
                 </div>
                 <button class="btn btn-primary" style="width:100%; min-height:52px; border-radius:14px; font-size:14px; font-weight:800; box-shadow:none;" onclick="handleAdminBatchGeneratePins()" ${missingPins.length ? '' : 'disabled'}>
-                    전체 미발급 PIN 생성
+                    미발급 PIN 생성
                 </button>
             </div>
 
@@ -399,7 +399,7 @@ async function handleAdminBatchGeneratePins() {
         return;
     }
 
-    if (!confirm(`전체 재원생 중 PIN이 없는 ${missingPins.length}명에게 자동 PIN을 생성할까요?\n기존 PIN은 변경되지 않습니다.`)) return;
+    if (!confirm(`PIN 없는 학생 ${missingPins.length}명에게 번호를 생성할까요?\n기존 PIN은 바뀌지 않습니다.`)) return;
 
     try {
         const r = await api.post('students/batch-pins', {});
@@ -425,17 +425,17 @@ function adminTeacherRoleLabel(role) {
 }
 
 async function openAdminTeacherAccountManage() {
-    showModal('교사 계정 관리', `<div style="text-align:center; padding:36px; color:var(--secondary); font-size:13px; font-weight:700;">교사 계정을 불러오는 중입니다.</div>`);
+    showModal('선생님 계정', `<div style="text-align:center; padding:36px; color:var(--secondary); font-size:13px; font-weight:700;">선생님 계정을 불러오는 중입니다.</div>`);
 
     try {
         const data = await api.get('teachers');
-        if (data?.error) return toast(data.error || '교사 계정을 불러오지 못했습니다.', 'error');
+        if (data?.error) return toast(data.error || '선생님 계정을 불러오지 못했습니다.', 'error');
         if (!state.ui) state.ui = {};
         state.ui.adminTeacherRows = Array.isArray(data.teachers) ? data.teachers : [];
         renderAdminTeacherAccountManage();
     } catch (e) {
         console.error('[openAdminTeacherAccountManage] failed:', e);
-        toast('교사 계정 조회 중 오류가 발생했습니다.', 'error');
+        toast('선생님 계정 조회 중 오류가 발생했습니다.', 'error');
     }
 }
 
@@ -469,16 +469,16 @@ function renderAdminTeacherAccountManage() {
         `;
     }).join('');
 
-    showModal('교사 계정 관리', `
-        <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800; margin-bottom:14px;" onclick="openAdminCreateTeacherModal()">새 교사 계정 생성</button>
+    showModal('선생님 계정', `
+        <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800; margin-bottom:14px;" onclick="openAdminCreateTeacherModal()">새 선생님 계정</button>
         <div style="max-height:58vh; overflow-y:auto; padding-right:4px;">
-            ${rows || `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:700;">등록된 교사 계정이 없습니다.</div>`}
+            ${rows || `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:700;">등록된 선생님 계정이 없습니다.</div>`}
         </div>
     `);
 }
 
 function openAdminCreateTeacherModal() {
-    showModal('새 교사 계정', `
+    showModal('새 선생님 계정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input id="admin-new-teacher-name" class="btn" placeholder="이름" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
             <input id="admin-new-teacher-login" class="btn" placeholder="로그인 ID" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
@@ -505,22 +505,22 @@ async function handleAdminCreateTeacher() {
     try {
         const r = await api.post('teachers', { name, login_id: loginId, password, role });
         if (r?.success) {
-            toast('교사 계정이 생성되었습니다.', 'success');
+            toast('선생님 계정이 생성되었습니다.', 'success');
             await openAdminTeacherAccountManage();
             return;
         }
-        toast(r?.message || r?.error || '교사 계정 생성에 실패했습니다.', 'error');
+        toast(r?.message || r?.error || '선생님 계정 생성에 실패했습니다.', 'error');
     } catch (e) {
         console.error('[handleAdminCreateTeacher] failed:', e);
-        toast('교사 계정 생성 중 오류가 발생했습니다.', 'error');
+        toast('선생님 계정 생성 중 오류가 발생했습니다.', 'error');
     }
 }
 
 function openAdminEditTeacherModal(teacherId) {
     const teacher = getAdminTeacherRows().find(t => String(t.id) === String(teacherId));
-    if (!teacher) return toast('교사 계정을 찾을 수 없습니다.', 'warn');
+    if (!teacher) return toast('선생님 계정을 찾을 수 없습니다.', 'warn');
 
-    showModal('교사 계정 수정', `
+    showModal('선생님 계정 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <div style="font-size:12px; color:var(--secondary); font-weight:800; padding:0 4px;">로그인 ID: ${apEscapeHtml(teacher.login_id || '')}</div>
             <input id="admin-edit-teacher-name" class="btn" value="${apEscapeHtml(teacher.name || '')}" placeholder="이름" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
@@ -541,20 +541,20 @@ async function handleAdminUpdateTeacher(teacherId) {
     try {
         const r = await api.patch(`teachers/${teacherId}`, { name, role });
         if (r?.success) {
-            toast('교사 계정이 수정되었습니다.', 'success');
+            toast('선생님 계정이 수정되었습니다.', 'success');
             await openAdminTeacherAccountManage();
             return;
         }
-        toast(r?.message || r?.error || '교사 계정 수정에 실패했습니다.', 'error');
+        toast(r?.message || r?.error || '선생님 계정 수정에 실패했습니다.', 'error');
     } catch (e) {
         console.error('[handleAdminUpdateTeacher] failed:', e);
-        toast('교사 계정 수정 중 오류가 발생했습니다.', 'error');
+        toast('선생님 계정 수정 중 오류가 발생했습니다.', 'error');
     }
 }
 
 function openAdminResetTeacherPasswordModal(teacherId) {
     const teacher = getAdminTeacherRows().find(t => String(t.id) === String(teacherId));
-    if (!teacher) return toast('교사 계정을 찾을 수 없습니다.', 'warn');
+    if (!teacher) return toast('선생님 계정을 찾을 수 없습니다.', 'warn');
 
     showModal('비밀번호 초기화', `
         <div style="display:flex; flex-direction:column; gap:10px;">
@@ -622,12 +622,12 @@ function renderAdminControlCenter() {
             <button class="btn"
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
-                학교성적
+                성적표
             </button>
             <button class="btn"
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#7c3aed; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="openAdminOperationMenu()">
-                운영메뉴
+                관리
             </button>
         </div>
     `;
@@ -1198,7 +1198,7 @@ function renderDashboard() {
             <button class="btn" 
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
-                학교성적
+                성적표
             </button>
         </div>
     `;
