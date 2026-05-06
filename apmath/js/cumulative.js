@@ -32,10 +32,65 @@ function getCumulativeGradeRankText(value) {
 }
 
 function normalizeSebTeacherName(name) {
-    const t = String(name || '').trim().replace(/\s*선생님\s*$/g, '').toLowerCase();
-    if (t === '선생님1' || t === 'teacher1' || t === 't1') return '박준성';
-    if (t === '박준성') return '박준성';
-    return String(name || '').trim().replace(/\s*선생님\s*$/g, '');
+    const clean = String(name || '').trim().replace(/\s*선생님\s*$/g, '');
+    const t = clean.toLowerCase();
+    const map = {
+        '선생님1': '박준성',
+        'teacher1': '박준성',
+        't1': '박준성',
+        '박준성': '박준성',
+        '선생님2': '정겨운',
+        'teacher2': '정겨운',
+        't2': '정겨운',
+        '정겨운': '정겨운',
+        '선생님3': '정의한',
+        'teacher3': '정의한',
+        't3': '정의한',
+        '정의한': '정의한'
+    };
+    return map[t] || clean;
+}
+
+var CUMULATIVE_ATTENDANCE_TEACHERS = ['박준성', '정겨운', '정의한'];
+
+function isCumulativeHighClass(cls) {
+    return /고1|고2|고3|고등/.test(String(cls?.grade || '') + ' ' + String(cls?.name || ''));
+}
+
+function getCumulativeAttendanceTeacherFilter() {
+    if (!(state?.auth && state.auth.role === 'admin')) return '';
+    return normalizeSebTeacherName(state.ui?.attendanceLedgerTeacher || '');
+}
+
+function isCumulativeAttendanceClassForTeacher(cls, teacherName) {
+    const teacher = normalizeSebTeacherName(teacherName || '');
+    if (!teacher) return true;
+    return normalizeSebTeacherName(cls?.teacher_name || '') === teacher;
+}
+
+function getCumulativeAttendanceFilteredClasses(section = '', teacherName = '') {
+    let classes = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+    const teacher = normalizeSebTeacherName(teacherName || '');
+
+    if (teacher) {
+        classes = classes.filter(c => isCumulativeAttendanceClassForTeacher(c, teacher));
+    }
+
+    if (section) {
+        classes = classes.filter(c => {
+            const isHigh = isCumulativeHighClass(c);
+            return section === 'high' ? isHigh : !isHigh;
+        });
+    }
+
+    return classes;
+}
+
+function buildCumulativeAttendanceTeacherOptions(selectedTeacher = '') {
+    const selected = normalizeSebTeacherName(selectedTeacher || '');
+    return '<option value="">전체 선생님</option>' + CUMULATIVE_ATTENDANCE_TEACHERS
+        .map(t => `<option value="${apEscapeHtml(t)}"${selected === t ? ' selected' : ''}>${apEscapeHtml(t)}</option>`)
+        .join('');
 }
 
 function getCumulativeVisibleStudents(filters = {}) {
@@ -428,10 +483,27 @@ function openAttendanceLedger() {
     const root = document.getElementById('app-root');
     if (!root) return;
 
-    const activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+    const isAdmin = !!(state.auth && state.auth.role === 'admin');
+    if (!isAdmin) state.ui.attendanceLedgerTeacher = '';
+    if (!state.ui.attendanceLedgerSection) state.ui.attendanceLedgerSection = '';
+    if (!state.ui.attendanceLedgerClassId) state.ui.attendanceLedgerClassId = '';
+
+    const teacherFilter = getCumulativeAttendanceTeacherFilter();
+    const sectionFilter = state.ui.attendanceLedgerSection || '';
+    let activeClasses = getCumulativeAttendanceFilteredClasses(sectionFilter, teacherFilter);
+
+    if (state.ui.attendanceLedgerClassId && !activeClasses.some(c => String(c.id) === String(state.ui.attendanceLedgerClassId))) {
+        state.ui.attendanceLedgerClassId = '';
+    }
+
+    const selectedClassId = state.ui.attendanceLedgerClassId || '';
     const classOptions = activeClasses
-        .map(c => `<option value="${apEscapeHtml(c.id)}">${apEscapeHtml(c.name)}</option>`)
+        .map(c => `<option value="${apEscapeHtml(c.id)}"${String(c.id) === String(selectedClassId) ? ' selected' : ''}>${apEscapeHtml(c.name)}</option>`)
         .join('');
+
+    const teacherHtml = isAdmin
+        ? `<select class="att-ctrl" id="att-teacher" onchange="state.ui.attendanceLedgerTeacher=this.value;state.ui.attendanceLedgerClassId='';openAttendanceLedger()">${buildCumulativeAttendanceTeacherOptions(teacherFilter)}</select>`
+        : '';
 
     root.innerHTML = `
 <style>
@@ -469,12 +541,13 @@ function openAttendanceLedger() {
     <div id="att-title">출석부</div>
     <div id="att-controls">
       <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
-      <select class="att-ctrl" id="att-sec" onchange="renderAttendanceLedgerTable()">
-        <option value="">전체 (중/고)</option>
-        <option value="middle">중등부</option>
-        <option value="high">고등부</option>
+      ${teacherHtml}
+      <select class="att-ctrl" id="att-sec" onchange="state.ui.attendanceLedgerSection=this.value;state.ui.attendanceLedgerClassId='';openAttendanceLedger()">
+        <option value=""${sectionFilter === '' ? ' selected' : ''}>전체 (중/고)</option>
+        <option value="middle"${sectionFilter === 'middle' ? ' selected' : ''}>중등부</option>
+        <option value="high"${sectionFilter === 'high' ? ' selected' : ''}>고등부</option>
       </select>
-      <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
+      <select class="att-ctrl" id="att-cls" onchange="state.ui.attendanceLedgerClassId=this.value;renderAttendanceLedgerTable()">
         <option value="">전체 반</option>${classOptions}
       </select>
     </div>
@@ -501,20 +574,18 @@ function renderAttendanceLedgerTable() {
 
     const month = state.ui.attendanceLedgerMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
     const days = getMonthDays(month);
-    const classId = document.getElementById('att-cls')?.value || '';
-    const section = document.getElementById('att-sec')?.value || '';
+    const classId = state.ui.attendanceLedgerClassId || document.getElementById('att-cls')?.value || '';
+    const section = state.ui.attendanceLedgerSection || document.getElementById('att-sec')?.value || '';
+    const teacherFilter = getCumulativeAttendanceTeacherFilter();
 
-    let activeClasses = sortCumulativeClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
-    if (section) {
-        activeClasses = activeClasses.filter(c => {
-            const isHigh = /고1|고2|고3|고등/.test(String(c.grade || '') + ' ' + String(c.name || ''));
-            return section === 'high' ? isHigh : !isHigh;
-        });
-    }
+    let activeClasses = getCumulativeAttendanceFilteredClasses(section, teacherFilter);
+    const classAllowed = !classId || activeClasses.some(c => String(c.id) === String(classId));
+    const safeClassId = classAllowed ? classId : '';
+    if (!classAllowed) state.ui.attendanceLedgerClassId = '';
 
-    const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId }));
+    const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId: safeClassId }));
     const grouped = activeClasses
-        .filter(c => !classId || String(c.id) === String(classId))
+        .filter(c => !safeClassId || String(c.id) === String(safeClassId))
         .map(cls => ({
             cls,
             students: students.filter(s => String(getCumulativeClassIdForStudent(s.id)) === String(cls.id))
