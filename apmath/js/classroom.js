@@ -221,7 +221,7 @@ function getHomeworkStatusStyle(status, isClassDay = true) {
 
 function getV4CompactAttendanceLabel(status, isClassDay = true) {
     const cur = getAttendanceDisplayStatus(status, isClassDay);
-    if (cur === '등원') return '○';
+    if (cur === '등원' || cur === '지각' || cur === '보강' || cur === '상담') return '○';
     if (cur === '결석') return '×';
     return '';
 }
@@ -242,7 +242,9 @@ function getV4BadgeStyle(type, status, isClassDay = true) {
             : String(status || '').trim();
 
     if (safeType === 'att') {
-        if (cur === '등원') return 'background:rgba(0,184,148,0.10); color:#008F72; border:1px solid transparent;';
+        if (cur === '등원' || cur === '지각' || cur === '보강' || cur === '상담') {
+            return 'background:rgba(0,184,148,0.10); color:#008F72; border:1px solid transparent;';
+        }
         if (cur === '결석') return 'background:rgba(232,65,79,0.10); color:#D92D3A; border:1px solid transparent;';
         return 'background:transparent; color:var(--secondary); border:1px solid var(--border);';
     }
