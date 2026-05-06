@@ -304,6 +304,267 @@ function openAdminStudentList(type) {
     showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
+
+function openAdminOperationMenu() {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const cardStyle = 'padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); text-align:left; cursor:pointer; box-shadow:none; min-height:92px; align-items:flex-start; justify-content:flex-start; flex-direction:column; gap:6px;';
+    const titleStyle = 'font-size:14px; font-weight:800; color:var(--text); line-height:1.35;';
+    const descStyle = 'font-size:12px; font-weight:650; color:var(--secondary); line-height:1.5; margin-top:4px;';
+
+    showModal('원장 운영 메뉴', `
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
+            <button class="btn" style="${cardStyle}" onclick="openAdminTeacherAccountManage()">
+                <div style="${titleStyle}">교사 계정 관리</div>
+                <div style="${descStyle}">선생님 계정 생성, 이름/권한 수정, 비밀번호 초기화</div>
+            </button>
+            <button class="btn" style="${cardStyle}" onclick="renderAdminJournalList('${todayStr}')">
+                <div style="${titleStyle}">일지 결재</div>
+                <div style="${descStyle}">제출된 일지를 날짜별로 확인하고 피드백 작성</div>
+            </button>
+            <button class="btn" style="${cardStyle}" onclick="openAdminStudentList('discharged')">
+                <div style="${titleStyle}">퇴원생 관리</div>
+                <div style="${descStyle}">퇴원생 조회, 재원 복구, 숨김 처리</div>
+            </button>
+            <button class="btn" style="${cardStyle}" onclick="openAdminPinBatchModal()">
+                <div style="${titleStyle}">PIN 일괄 생성</div>
+                <div style="${descStyle}">반별로 PIN 없는 학생에게만 자동 부여</div>
+            </button>
+        </div>
+        <div style="margin-top:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
+            반 담당 변경과 담임 일괄 변경은 Worker 구조분리 이후 별도 연결합니다.
+        </div>
+    `);
+}
+
+function openAdminPinBatchModal() {
+    const classes = (state.db.classes || [])
+        .filter(c => Number(c.is_active) !== 0)
+        .sort((a, b) => {
+            const ra = getAdminClassGradeRank(a);
+            const rb = getAdminClassGradeRank(b);
+            if (ra !== rb) return ra - rb;
+            return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
+        });
+
+    const rows = classes.map(c => {
+        const count = (state.db.class_students || []).filter(m => String(m.class_id) === String(c.id)).length;
+        return `
+            <button class="btn" style="width:100%; min-height:52px; justify-content:space-between; padding:12px 14px; margin-bottom:8px; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:none;" onclick="handleAdminBatchGeneratePins('${apEscapeHtml(String(c.id))}')">
+                <span style="min-width:0; text-align:left;">
+                    <b style="display:block; font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(c.name || '')}</b>
+                    <span style="display:block; margin-top:2px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.4;">${apEscapeHtml(c.grade || '')} · ${count}명</span>
+                </span>
+                <span style="font-size:11px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.09); padding:5px 8px; border-radius:8px; white-space:nowrap;">PIN 생성</span>
+            </button>
+        `;
+    }).join('');
+
+    showModal('PIN 일괄 생성', `
+        <div style="margin-bottom:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
+            선택한 반에서 <b style="color:var(--text);">PIN이 없는 학생</b>에게만 자동 부여합니다. 기존 PIN은 유지됩니다.
+        </div>
+        <div style="max-height:58vh; overflow-y:auto; padding-right:4px;">
+            ${rows || `<div style="text-align:center; color:var(--secondary); padding:28px; font-size:13px; font-weight:700;">관리할 반이 없습니다.</div>`}
+        </div>
+    `);
+}
+
+function getAdminClassGradeRank(cls) {
+    const text = `${cls?.grade || ''} ${cls?.name || ''}`;
+    const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    const idx = order.findIndex(g => text.includes(g));
+    return idx === -1 ? order.length : idx;
+}
+
+async function handleAdminBatchGeneratePins(classId) {
+    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
+    const clsName = cls?.name || '선택한 반';
+    if (!confirm(`${clsName}에서 PIN이 없는 학생에게만 자동 PIN을 생성할까요?\n기존 PIN은 변경되지 않습니다.`)) return;
+
+    try {
+        const r = await api.post('students/batch-pins', { class_id: classId });
+        if (r?.success) {
+            toast(`PIN ${r.count || 0}개 생성 완료`, 'success');
+            await loadData();
+            openAdminPinBatchModal();
+            return;
+        }
+        toast(r?.message || r?.error || 'PIN 생성에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleAdminBatchGeneratePins] failed:', e);
+        toast('PIN 생성 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function getAdminTeacherRows() {
+    return Array.isArray(state?.ui?.adminTeacherRows) ? state.ui.adminTeacherRows : [];
+}
+
+function adminTeacherRoleLabel(role) {
+    return String(role || '') === 'admin' ? '원장' : '선생님';
+}
+
+async function openAdminTeacherAccountManage() {
+    showModal('교사 계정 관리', `<div style="text-align:center; padding:36px; color:var(--secondary); font-size:13px; font-weight:700;">교사 계정을 불러오는 중입니다.</div>`);
+
+    try {
+        const data = await api.get('teachers');
+        if (data?.error) return toast(data.error || '교사 계정을 불러오지 못했습니다.', 'error');
+        if (!state.ui) state.ui = {};
+        state.ui.adminTeacherRows = Array.isArray(data.teachers) ? data.teachers : [];
+        renderAdminTeacherAccountManage();
+    } catch (e) {
+        console.error('[openAdminTeacherAccountManage] failed:', e);
+        toast('교사 계정 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function renderAdminTeacherAccountManage() {
+    const teachers = getAdminTeacherRows().slice().sort((a, b) => {
+        const ar = String(a.role || '') === 'admin' ? 0 : 1;
+        const br = String(b.role || '') === 'admin' ? 0 : 1;
+        if (ar !== br) return ar - br;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+    });
+
+    const rows = teachers.map(t => {
+        const safeId = apEscapeHtml(String(t.id || ''));
+        const role = String(t.role || 'teacher');
+        const roleColor = role === 'admin' ? 'var(--error)' : 'var(--primary)';
+        const roleBg = role === 'admin' ? 'rgba(255,71,87,0.08)' : 'rgba(26,92,255,0.08)';
+        return `
+            <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                <div style="min-width:0; flex:1;">
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <b style="font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(t.name || '')}</b>
+                        <span style="font-size:11px; font-weight:800; color:${roleColor}; background:${roleBg}; padding:3px 8px; border-radius:999px;">${adminTeacherRoleLabel(role)}</span>
+                    </div>
+                    <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:4px; line-height:1.4;">ID ${apEscapeHtml(t.login_id || '')}</div>
+                </div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;">
+                    <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); border:none;" onclick="openAdminEditTeacherModal('${safeId}')">수정</button>
+                    <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(255,165,2,0.10); color:var(--warning); border:none;" onclick="openAdminResetTeacherPasswordModal('${safeId}')">PW 초기화</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    showModal('교사 계정 관리', `
+        <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800; margin-bottom:14px;" onclick="openAdminCreateTeacherModal()">새 교사 계정 생성</button>
+        <div style="max-height:58vh; overflow-y:auto; padding-right:4px;">
+            ${rows || `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:700;">등록된 교사 계정이 없습니다.</div>`}
+        </div>
+    `);
+}
+
+function openAdminCreateTeacherModal() {
+    showModal('새 교사 계정', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <input id="admin-new-teacher-name" class="btn" placeholder="이름" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+            <input id="admin-new-teacher-login" class="btn" placeholder="로그인 ID" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+            <input id="admin-new-teacher-password" type="password" class="btn" placeholder="초기 비밀번호" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+            <select id="admin-new-teacher-role" class="btn" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+                <option value="teacher">선생님</option>
+                <option value="admin">원장</option>
+            </select>
+            <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5; background:var(--surface-2); padding:10px 12px; border-radius:12px;">계정 생성 후 담당반 배정은 반 관리/담당 변경 메뉴에서 별도로 진행합니다.</div>
+            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800;" onclick="handleAdminCreateTeacher()">생성</button>
+        </div>
+    `);
+}
+
+async function handleAdminCreateTeacher() {
+    const name = document.getElementById('admin-new-teacher-name')?.value.trim() || '';
+    const loginId = document.getElementById('admin-new-teacher-login')?.value.trim() || '';
+    const password = document.getElementById('admin-new-teacher-password')?.value.trim() || '';
+    const role = document.getElementById('admin-new-teacher-role')?.value || 'teacher';
+
+    if (!name || !loginId || !password) return toast('이름, ID, 비밀번호를 모두 입력하세요.', 'warn');
+    if (password.length < 4) return toast('비밀번호는 4자 이상으로 입력하세요.', 'warn');
+
+    try {
+        const r = await api.post('teachers', { name, login_id: loginId, password, role });
+        if (r?.success) {
+            toast('교사 계정이 생성되었습니다.', 'success');
+            await openAdminTeacherAccountManage();
+            return;
+        }
+        toast(r?.message || r?.error || '교사 계정 생성에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleAdminCreateTeacher] failed:', e);
+        toast('교사 계정 생성 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function openAdminEditTeacherModal(teacherId) {
+    const teacher = getAdminTeacherRows().find(t => String(t.id) === String(teacherId));
+    if (!teacher) return toast('교사 계정을 찾을 수 없습니다.', 'warn');
+
+    showModal('교사 계정 수정', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:12px; color:var(--secondary); font-weight:800; padding:0 4px;">로그인 ID: ${apEscapeHtml(teacher.login_id || '')}</div>
+            <input id="admin-edit-teacher-name" class="btn" value="${apEscapeHtml(teacher.name || '')}" placeholder="이름" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+            <select id="admin-edit-teacher-role" class="btn" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+                <option value="teacher" ${String(teacher.role || '') !== 'admin' ? 'selected' : ''}>선생님</option>
+                <option value="admin" ${String(teacher.role || '') === 'admin' ? 'selected' : ''}>원장</option>
+            </select>
+            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800;" onclick="handleAdminUpdateTeacher('${apEscapeHtml(String(teacher.id || ''))}')">저장</button>
+        </div>
+    `);
+}
+
+async function handleAdminUpdateTeacher(teacherId) {
+    const name = document.getElementById('admin-edit-teacher-name')?.value.trim() || '';
+    const role = document.getElementById('admin-edit-teacher-role')?.value || 'teacher';
+    if (!name) return toast('이름을 입력하세요.', 'warn');
+
+    try {
+        const r = await api.patch(`teachers/${teacherId}`, { name, role });
+        if (r?.success) {
+            toast('교사 계정이 수정되었습니다.', 'success');
+            await openAdminTeacherAccountManage();
+            return;
+        }
+        toast(r?.message || r?.error || '교사 계정 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleAdminUpdateTeacher] failed:', e);
+        toast('교사 계정 수정 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function openAdminResetTeacherPasswordModal(teacherId) {
+    const teacher = getAdminTeacherRows().find(t => String(t.id) === String(teacherId));
+    if (!teacher) return toast('교사 계정을 찾을 수 없습니다.', 'warn');
+
+    showModal('비밀번호 초기화', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:13px; color:var(--text); font-weight:800; line-height:1.5; background:var(--surface-2); padding:12px; border-radius:12px;">${apEscapeHtml(teacher.name || '')} 선생님의 비밀번호를 새 값으로 초기화합니다.</div>
+            <input id="admin-reset-teacher-password" type="password" class="btn" placeholder="새 비밀번호" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800;" onclick="handleAdminResetTeacherPassword('${apEscapeHtml(String(teacher.id || ''))}')">초기화</button>
+        </div>
+    `);
+}
+
+async function handleAdminResetTeacherPassword(teacherId) {
+    const newPassword = document.getElementById('admin-reset-teacher-password')?.value.trim() || '';
+    if (!newPassword) return toast('새 비밀번호를 입력하세요.', 'warn');
+    if (newPassword.length < 4) return toast('비밀번호는 4자 이상으로 입력하세요.', 'warn');
+    if (!confirm('비밀번호를 초기화할까요?')) return;
+
+    try {
+        const r = await api.patch(`teachers/${teacherId}/reset-password`, { new_password: newPassword });
+        if (r?.success) {
+            toast('비밀번호가 초기화되었습니다.', 'success');
+            await openAdminTeacherAccountManage();
+            return;
+        }
+        toast(r?.message || r?.error || '비밀번호 초기화에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleAdminResetTeacherPassword] failed:', e);
+        toast('비밀번호 초기화 중 오류가 발생했습니다.', 'error');
+    }
+}
+
 function renderAdminControlCenter() {
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const root = document.getElementById('app-root');
@@ -342,6 +603,11 @@ function renderAdminControlCenter() {
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
                 학교성적
+            </button>
+            <button class="btn"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#7c3aed; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    onclick="openAdminOperationMenu()">
+                운영메뉴
             </button>
         </div>
     `;
@@ -464,7 +730,7 @@ function renderAdminControlCenter() {
             }
             #ap-admin-dashboard .ap-admin-shortcuts {
                 display:grid !important;
-                grid-template-columns:repeat(3, minmax(0, 1fr));
+                grid-template-columns:repeat(4, minmax(0, 1fr));
                 gap:8px !important;
                 padding:4px !important;
                 border:1px solid var(--border) !important;
