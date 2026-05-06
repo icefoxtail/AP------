@@ -1075,19 +1075,39 @@ function buildJournalContent(dateStr) {
             if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
         }
 
-        const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
-        if (dailyRecord) {
-            const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
-            if (progresses.length > 0) {
-                text += `- 진도:\n`;
-                progresses.forEach(p => {
-                    text += `  * ${p.textbook_title_snapshot || '교재'}: ${p.progress_text || '(기록 없음)'}\n`;
-                });
-            } else text += `- 진도: (기록 없음)\n`;
+        const classRecords = (state.db.class_daily_records || [])
+            .filter(r => String(r.class_id) === String(cls.id) && String(r.date || '') <= targetDate)
+            .sort((a, b) =>
+                String(b.date || '').localeCompare(String(a.date || '')) ||
+                String(b.created_at || '').localeCompare(String(a.created_at || ''))
+            );
 
-            if (dailyRecord.special_note) text += `- 특이사항: ${dailyRecord.special_note}\n`;
+        const dailyRecord = classRecords[0] || null;
+        const isSameDateRecord = !!dailyRecord && String(dailyRecord.date || '') === targetDate;
+
+        if (dailyRecord) {
+            const progresses = (state.db.class_daily_progress || [])
+                .filter(p => String(p.record_id) === String(dailyRecord.id));
+
+            if (progresses.length > 0) {
+                text += `- 진도:
+`;
+                progresses.forEach(p => {
+                    text += `  * ${p.textbook_title_snapshot || '교재'}: ${p.progress_text || '(기록 없음)'}
+`;
+                });
+            } else {
+                text += `- 진도: (기록 없음)
+`;
+            }
+
+            if (isSameDateRecord && dailyRecord.special_note) {
+                text += `- 특이사항: ${dailyRecord.special_note}
+`;
+            }
         } else {
-            text += `- 진도: (수업 기록 미입력)\n`;
+            text += `- 진도: (수업 기록 미입력)
+`;
         }
 
         const cns = (state.db.consultations || []).filter(c => c.date === targetDate && memberIds.includes(String(c.student_id)));
