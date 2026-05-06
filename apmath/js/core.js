@@ -108,27 +108,142 @@ function renderLogin() {
     if (logoutBtn) logoutBtn.remove();
 
     root.innerHTML = `
-        <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); padding:20px;">
-            <div style="width:100%; max-width:380px; background:var(--surface); border-radius:24px; padding:40px 28px; border:1px solid var(--border); box-shadow:none;">
-                <div style="text-align:center; margin-bottom:32px;">
-                    <div style="display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; background:var(--primary); border-radius:16px; margin-bottom:16px; border:1.5px solid rgba(26,92,255,0.3);">
-                        <span style="color:#fff; font-size:24px; font-weight:700;">A</span>
+        <div class="ap-login-fullscreen" style="position:fixed; inset:0; z-index:3000; min-height:100vh; min-height:100dvh; overflow:hidden; display:flex; align-items:stretch; justify-content:center; background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 46%,#DB2777 100%); color:#fff;">
+            <div style="position:absolute; inset:0; background:
+                radial-gradient(circle at 18% 18%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%),
+                radial-gradient(circle at 88% 12%, rgba(255,255,255,0.20) 0, transparent 36%),
+                radial-gradient(circle at 72% 86%, rgba(15,23,42,0.20) 0, transparent 42%); pointer-events:none;"></div>
+            <div style="position:absolute; inset:0; background:rgba(15,23,42,0.08); pointer-events:none;"></div>
+
+            <div style="position:relative; width:100%; max-width:1120px; min-height:100vh; min-height:100dvh; display:grid; grid-template-columns:minmax(0,1fr) 390px; align-items:center; gap:54px; padding:clamp(28px,5vw,72px); box-sizing:border-box;">
+                <section style="min-width:0; display:flex; flex-direction:column; justify-content:center; gap:26px;">
+                    <div style="display:flex; align-items:center; gap:18px;">
+                        <img src="icon-192.png" alt="AP Math OS" style="width:82px; height:82px; border-radius:22px; box-shadow:0 18px 46px rgba(15,23,42,0.24); display:block;">
+                        <div style="min-width:0;">
+                            <div style="font-size:clamp(34px,5.2vw,64px); font-weight:800; line-height:0.95; letter-spacing:-2.8px; color:#fff;">AP Math</div>
+                            <div style="margin-top:9px; font-size:clamp(18px,2.2vw,27px); font-weight:750; line-height:1.1; letter-spacing:-0.9px; color:rgba(255,255,255,0.88);">Operations System</div>
+                        </div>
                     </div>
-                    <h2 style="color:var(--text); margin:0 0 6px; font-size:20px; font-weight:700; line-height:1.2; letter-spacing:-0.5px;">AP Math OS</h2>
-                    <p style="color:var(--secondary); font-size:13px; margin:0; font-weight:700; line-height:1.5;">선생님 계정으로 로그인하세요</p>
-                </div>
-                <div style="display:flex; flex-direction:column; gap:10px;">
-                    <div>
-                        <label style="display:block; font-size:13px; font-weight:700; color:var(--secondary); margin-bottom:6px; margin-left:4px; line-height:1.5;">아이디</label>
-                        <input id="login-id" type="text" class="btn" placeholder="아이디 입력" style="width:100%; text-align:left; cursor:text; padding:14px 16px; font-size:15px; font-weight:600; line-height:1.4; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text);">
+
+                    <div style="max-width:560px;">
+                        <div style="font-size:clamp(18px,2.2vw,28px); font-weight:800; line-height:1.28; letter-spacing:-1px; color:#fff;">
+                            선생님과 원장님을 위한<br>AP수학 운영 로그인
+                        </div>
+                        <div style="margin-top:16px; font-size:15px; font-weight:650; line-height:1.7; color:rgba(255,255,255,0.74);">
+                            출결, 숙제, 성적, 시간표를 한 화면에서 관리합니다.
+                        </div>
                     </div>
-                    <div>
-                        <label style="display:block; font-size:13px; font-weight:700; color:var(--secondary); margin-bottom:6px; margin-left:4px; line-height:1.5;">비밀번호</label>
-                        <input id="login-pw" type="password" class="btn" placeholder="비밀번호 입력" style="width:100%; text-align:left; cursor:text; padding:14px 16px; font-size:15px; font-weight:600; line-height:1.4; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); color:var(--text);" onkeyup="if(event.key==='Enter')handleLogin()">
+                </section>
+
+                <section style="width:100%; background:rgba(255,255,255,0.94); color:#191F28; border:1px solid rgba(255,255,255,0.42); border-radius:30px; padding:30px 26px 26px; box-shadow:0 26px 70px rgba(15,23,42,0.28); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);">
+                    <div style="margin-bottom:24px;">
+                        <div style="font-size:22px; font-weight:800; line-height:1.25; letter-spacing:-0.8px; color:#191F28;">로그인</div>
+                        <div style="margin-top:6px; font-size:13px; font-weight:700; line-height:1.5; color:#6B7684;">선생님 / 원장님 계정으로 접속하세요</div>
                     </div>
-                    <button class="btn btn-primary" style="width:100%; margin-top:12px; min-height:52px; padding:14px 16px; font-size:14px; font-weight:700; line-height:1.2; border-radius:14px; box-shadow:none;" onclick="handleLogin()">로그인</button>
-                </div>
+
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <div>
+                            <label style="display:block; font-size:12px; font-weight:800; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;">아이디</label>
+                            <input id="login-id" type="text" class="btn" autocomplete="username" placeholder="아이디 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:700; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none;">
+                        </div>
+                        <div>
+                            <label style="display:block; font-size:12px; font-weight:800; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;">비밀번호</label>
+                            <input id="login-pw" type="password" class="btn" autocomplete="current-password" placeholder="비밀번호 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:700; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none;" onkeyup="if(event.key==='Enter')handleLogin()">
+                        </div>
+                        <button class="btn btn-primary" style="width:100%; margin-top:10px; min-height:56px; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.2; border-radius:18px; border:none; background:linear-gradient(135deg,#4F46E5 0%,#DB2777 100%); color:#fff; box-shadow:0 14px 28px rgba(79,70,229,0.26);" onclick="handleLogin()">로그인</button>
+                    </div>
+
+                    <div style="margin-top:18px; padding-top:16px; border-top:1px solid #E5E8EB; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                        <span style="font-size:11px; font-weight:800; color:#8B95A1;">AP MATH OS</span>
+                        <span style="font-size:11px; font-weight:800; color:#8B95A1;">Teacher · Admin</span>
+                    </div>
+                </section>
             </div>
+
+            <style>
+                @keyframes apLoginFluidBG {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .ap-login-fullscreen {
+                    background:
+                        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.28) 0, rgba(255,255,255,0.08) 28%, transparent 56%),
+                        radial-gradient(circle at 100% 0%, rgba(255,255,255,0.18) 0, transparent 48%),
+                        radial-gradient(circle at 100% 100%, rgba(15,23,42,0.22) 0, transparent 54%),
+                        linear-gradient(135deg,#4F46E5 0%,#7C3AED 46%,#DB2777 100%) !important;
+                    background-size:220% 220% !important;
+                    animation:apLoginFluidBG 25s ease infinite;
+                }
+                .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(34px"] {
+                    text-shadow:0 8px 24px rgba(15,23,42,0.20) !important;
+                }
+                .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(18px"] {
+                    color:rgba(255,255,255,0.94) !important;
+                    text-shadow:0 5px 18px rgba(15,23,42,0.16) !important;
+                }
+                .ap-login-fullscreen section:first-of-type > div:last-child div:first-child {
+                    text-shadow:0 7px 22px rgba(15,23,42,0.18) !important;
+                }
+                .ap-login-fullscreen section:first-of-type > div:last-child div:last-child {
+                    color:rgba(255,255,255,0.84) !important;
+                }
+                .ap-login-fullscreen section:last-of-type {
+                    border:1px solid rgba(255,255,255,0.60) !important;
+                    box-shadow:0 28px 72px rgba(15,23,42,0.30), 0 0 0 1px rgba(124,58,237,0.06) !important;
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .ap-login-fullscreen { animation:none !important; }
+                }
+                @media (max-width: 760px) {
+                    .ap-login-fullscreen > div:nth-child(3) {
+                        display:flex !important;
+                        flex-direction:column !important;
+                        justify-content:space-between !important;
+                        gap:0 !important;
+                        padding:calc(34px + env(safe-area-inset-top)) 20px calc(22px + env(safe-area-inset-bottom)) !important;
+                    }
+                    .ap-login-fullscreen section:first-of-type {
+                        gap:18px !important;
+                        padding-top:18px !important;
+                    }
+                    .ap-login-fullscreen section:first-of-type > div:first-child {
+                        flex-direction:column !important;
+                        align-items:flex-start !important;
+                        gap:16px !important;
+                    }
+                    .ap-login-fullscreen section:first-of-type img {
+                        width:76px !important;
+                        height:76px !important;
+                        border-radius:21px !important;
+                    }
+                    .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(34px"] {
+                        font-size:42px !important;
+                        letter-spacing:-2.2px !important;
+                    }
+                    .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(18px"] {
+                        font-size:20px !important;
+                    }
+                    .ap-login-fullscreen section:first-of-type > div:last-child {
+                        display:none !important;
+                    }
+                    .ap-login-fullscreen section:last-of-type {
+                        border-radius:28px !important;
+                        padding:26px 20px 22px !important;
+                        background:rgba(255,255,255,0.96) !important;
+                    }
+                }
+                @media (max-width: 380px) {
+                    .ap-login-fullscreen > div:nth-child(3) {
+                        padding-left:16px !important;
+                        padding-right:16px !important;
+                    }
+                    .ap-login-fullscreen section:last-of-type {
+                        padding-left:18px !important;
+                        padding-right:18px !important;
+                    }
+                }
+            </style>
         </div>
     `;
 }

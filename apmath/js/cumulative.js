@@ -205,7 +205,6 @@ function getAttendanceMetaForCumulative(studentId, date) {
         memo,
         hasLate: tags.includes('지각') || status === '지각',
         hasMakeup: tags.includes('보강') || status === '보강',
-        hasMemo: !!memo,
         hasConsultation
     };
 }
@@ -221,7 +220,6 @@ function renderAttendanceMetaDotsForCumulative(studentId, date) {
     if (meta.hasLate) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#f59f00;display:inline-block;"></span>');
     if (meta.hasMakeup) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:var(--primary);display:inline-block;"></span>');
     if (meta.hasConsultation) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#7c3aed;display:inline-block;"></span>');
-    if (meta.hasMemo) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:var(--secondary);display:inline-block;"></span>');
 
     if (!dots.length) return '';
 
@@ -442,7 +440,13 @@ function openAttendanceLedger() {
 #att-title { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; white-space: nowrap; }
 #att-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .att-ctrl { height: 36px; padding: 0 10px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
-#att-legend { font-size: 11px; font-weight: 600; color: var(--secondary); display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; flex-shrink: 0; }
+#att-legend { font-size: 11px; font-weight: 700; color: var(--secondary); display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; flex-shrink: 0; }
+.att-legend-item { display: inline-flex; align-items: center; gap: 4px; min-height: 22px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); white-space: nowrap; line-height: 1; }
+.att-legend-item b { font-size: 12px; font-weight: 800; color: var(--text); line-height: 1; }
+.att-legend-dot { display: inline-block; width: 6px; height: 6px; border-radius: 999px; flex: 0 0 auto; box-shadow: 0 0 0 1px rgba(0,0,0,0.04); }
+.att-legend-dot.late { background: #f59f00; }
+.att-legend-dot.makeup { background: var(--primary); }
+.att-legend-dot.consult { background: #7c3aed; }
 #att-tbl-wrap { flex: 1; overflow: auto; border: 1px solid var(--border); border-radius: 12px 12px 0 0; background: var(--surface); }
 #att-tbl { border-collapse: collapse; width: max-content; }
 #att-tbl th, #att-tbl td { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); text-align: center; }
@@ -473,11 +477,15 @@ function openAttendanceLedger() {
       <select class="att-ctrl" id="att-cls" onchange="renderAttendanceLedgerTable()">
         <option value="">전체 반</option>${classOptions}
       </select>
-      <button class="att-ctrl" style="border-color:var(--primary); color:var(--primary);" onclick="openCumulativeAttendanceMetaPicker()">출결메모</button>
     </div>
   </div>
   <div id="att-legend">
-    <span>[출결] ○ 등원</span><span>× 결석</span><span>- 수업 없음</span><span style="margin-left:8px;">[표시] 주황● 지각</span><span>파랑● 보강</span><span>보라● 상담</span><span>회색● 메모</span>
+    <span class="att-legend-item"><b>○</b> 등원</span>
+    <span class="att-legend-item"><b>×</b> 결석</span>
+    <span class="att-legend-item"><b>-</b> 수업 없음</span>
+    <span class="att-legend-item"><i class="att-legend-dot late"></i> 지각</span>
+    <span class="att-legend-item"><i class="att-legend-dot makeup"></i> 보강</span>
+    <span class="att-legend-item"><i class="att-legend-dot consult"></i> 상담</span>
   </div>
   <div id="att-tbl-wrap"><div id="att-tbl-root"></div></div>
 </div>`;
@@ -625,59 +633,14 @@ async function toggleAttendanceCellStatus(studentId, date) {
  * [Picker] 월간 출석부용 대상 선택 모달
  */
 function openCumulativeAttendanceMetaPicker() {
-    const today = new Date().toLocaleDateString('sv-SE');
-    const classId = document.getElementById('att-cls')?.value || '';
-    const section = document.getElementById('att-sec')?.value || '';
-
-    let students = getCumulativeVisibleStudents({ classId });
-
-    if (section) {
-        students = students.filter(s => {
-            const cid = getCumulativeClassIdForStudent(s.id);
-            const cls = (state.db.classes || []).find(c => String(c.id) === String(cid));
-            const text = [s.grade, s.school_name, s.name, cls?.grade, cls?.name].join(' ');
-            const isHigh = /고1|고2|고3|고등/.test(text);
-            return section === 'high' ? isHigh : !isHigh;
-        });
-    }
-
-    const options = students.map(s => {
-        const clsName = getCumulativeClassName(getCumulativeClassIdForStudent(s.id));
-        return `<option value="${apEscapeHtml(s.id)}">${apEscapeHtml(s.name)} ${clsName ? `(${apEscapeHtml(clsName)})` : ''}</option>`;
-    }).join('');
-
-    showModal('출결 메모 선택', `
-        <div style="display:flex;flex-direction:column;gap:12px;">
-            <div style="font-size:12px;color:var(--secondary);font-weight:600;line-height:1.5;background:var(--surface-2);padding:10px;border-radius:10px;">
-                특정 날짜의 지각/보강 태그 및 메모를 관리합니다. 대상 학생과 날짜를 선택하세요.
-            </div>
-            <select id="cum-meta-student" class="btn" style="width:100%;text-align:left;background:var(--surface-2);border:1px solid var(--border);font-weight:700;">
-                <option value="">대상 학생 선택</option>
-                ${options}
-            </select>
-            <input type="date" id="cum-meta-date" class="btn" value="${today}" style="width:100%;text-align:left;background:var(--surface-2);border:1px solid var(--border);font-weight:700;">
-            <button class="btn btn-primary" style="width:100%;min-height:52px;font-size:15px;font-weight:700;border-radius:14px;" onclick="openCumulativeAttendanceMetaModalFromPicker()">메모 관리창 열기</button>
-        </div>
-    `);
+    toast('출결메모 기능은 사용하지 않습니다.', 'info');
 }
 
 /**
- * [Picker] 선택된 정보를 바탕으로 classroom.js 공용 모달 연결
+ * [Disabled] 출결메모 기능은 출석부 화면에서 사용하지 않는다.
  */
 function openCumulativeAttendanceMetaModalFromPicker() {
-    const sid = document.getElementById('cum-meta-student')?.value || '';
-    const date = document.getElementById('cum-meta-date')?.value || '';
-
-    if (!sid) return toast('학생을 선택하세요.', 'warn');
-    if (!date) return toast('날짜를 선택하세요.', 'warn');
-
-    if (typeof openAttendanceMetaModal !== 'function') {
-        toast('출결 메모 기능 모듈이 로드되지 않았습니다.', 'warn');
-        return;
-    }
-
-    // classroom.js에서 정의한 공용 모달 호출
-    openAttendanceMetaModal(sid, date, { source: 'cumulative' });
+    toast('출결메모 기능은 사용하지 않습니다.', 'info');
 }
 
 var SEB_COLS = [
@@ -687,15 +650,52 @@ var SEB_COLS = [
     { semester: '2학기', examType: 'final', key: '2H-fin', label: '기말' }
 ];
 
-function getSebExamRecord(studentId, year, semester, examType) {
+function getSebExamRecord(studentId, year, semester, examType, subject) {
+    var subj = subject || '수학';
     return (state.db.school_exam_records || []).find(function(r) {
         return String(r.student_id) === String(studentId) &&
             Number(r.exam_year) === Number(year) &&
             String(r.semester || '') === semester &&
             String(r.exam_type || '') === examType &&
-            String(r.subject || '') === '수학' &&
+            String(r.subject || '') === subj &&
             String(r.is_deleted || 0) !== '1';
     });
+}
+
+/* 고등 전용: 해당 학생+연도에 성적이 입력된 과목 목록 반환 (SEB_HIGH_SUBJECTS 순 정렬) */
+var SEB_HIGH_SUBJECTS = ['공통수학1', '공통수학2', '대수', '확률과통계', '미적분1', '미적분2', '기하와벡터'];
+
+function getSebHighSubjectsForStudent(studentId, year) {
+    var records = (state.db.school_exam_records || []).filter(function(r) {
+        return String(r.student_id) === String(studentId) &&
+            Number(r.exam_year) === Number(year) &&
+            String(r.is_deleted || 0) !== '1' &&
+            (r.score !== null && r.score !== undefined && r.score !== '');
+    });
+    var seen = {};
+    var subjects = [];
+    records.forEach(function(r) {
+        var s = String(r.subject || '').trim();
+        if (s && !seen[s]) { seen[s] = true; subjects.push(s); }
+    });
+    /* SEB_HIGH_SUBJECTS 순으로 정렬, 나머지는 뒤에 */
+    subjects.sort(function(a, b) {
+        var ai = SEB_HIGH_SUBJECTS.indexOf(a);
+        var bi = SEB_HIGH_SUBJECTS.indexOf(b);
+        if (ai === -1 && bi === -1) return a.localeCompare(b, 'ko');
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+    });
+    return subjects;
+}
+
+/* 고등 여부 판별 */
+function isSebHighStudent(student) {
+    var cid = getCumulativeClassIdForStudent(student?.id);
+    var cls = (state.db.classes || []).find(function(c) { return String(c.id) === String(cid); });
+    var text = [student?.grade, student?.school_name, cls?.grade, cls?.name].join(' ');
+    return /고1|고2|고3|고등/.test(text);
 }
 
 function getSebStudentDisplayGrade(student) {
@@ -764,14 +764,14 @@ function getPrevSebColKey(key) {
     return idx > 0 ? order[idx - 1] : null;
 }
 
-function getSebScore(studentId, year, colKey) {
-    const col = SEB_COLS.find(c => c.key === colKey);
+function getSebScore(studentId, year, colKey, subject) {
+    var col = SEB_COLS.find(function(c) { return c.key === colKey; });
     if (!col) return null;
 
-    const rec = getSebExamRecord(studentId, year, col.semester, col.examType);
+    var rec = getSebExamRecord(studentId, year, col.semester, col.examType, subject || '수학');
     if (!rec || rec.score === null || rec.score === undefined || rec.score === '') return null;
 
-    const score = Number(rec.score);
+    var score = Number(rec.score);
     return Number.isFinite(score) ? score : null;
 }
 
@@ -966,11 +966,11 @@ function openSchoolExamLedger() {
     ${teacherHtml}
     <select class="seb-ctrl" id="seb-grade" style="flex:0.9;" onchange="state.ui.schoolExamGradeTab=this.value;state.ui.schoolExamClassId='';openSchoolExamLedger()">${gradeSelectOptions}</select>
     <select class="seb-ctrl" id="seb-cls" style="flex:1.5;" onchange="state.ui.schoolExamClassId=this.value;renderSchoolExamBatchTable()">${classOptions}</select>
-    <select class="seb-ctrl" id="seb-sort" style="flex:0.9;" onchange="state.ui.schoolExamSort=this.value;_sebToggleSortCol();renderSchoolExamBatchTable()">
+    <select class="seb-ctrl" id="seb-sort" style="flex:0.9;${section === 'high' ? 'display:none;' : ''}" onchange="state.ui.schoolExamSort=this.value;_sebToggleSortCol();renderSchoolExamBatchTable()">
       <option value="default"${sort === 'default' ? ' selected' : ''}>기본</option>
       <option value="score-desc"${sort === 'score-desc' ? ' selected' : ''}>성적</option>
     </select>
-    <select class="seb-ctrl" id="seb-sort-col" style="flex:1.2;display:${showSortCol ? 'block' : 'none'};" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">
+    <select class="seb-ctrl" id="seb-sort-col" style="flex:1.2;display:${showSortCol && section !== 'high' ? 'block' : 'none'};" onchange="state.ui.schoolExamSortCol=this.value;renderSchoolExamBatchTable()">
       <option value="1H-mid"${sortCol === '1H-mid' ? ' selected' : ''}>1학기 중간</option>
       <option value="1H-fin"${sortCol === '1H-fin' ? ' selected' : ''}>1학기 기말</option>
       <option value="2H-mid"${sortCol === '2H-mid' ? ' selected' : ''}>2학기 중간</option>
@@ -984,99 +984,97 @@ function openSchoolExamLedger() {
 }
 
 function renderSchoolExamBatchTable() {
-    const root = document.getElementById('seb-tbl-root');
+    var root = document.getElementById('seb-tbl-root');
     if (!root) return;
 
-    const year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
-    const sort = state.ui.schoolExamSort || 'default';
-    const sortColKey = state.ui.schoolExamSortCol || '1H-mid';
-    const gradeTab = state.ui.schoolExamGradeTab || '';
-    const classId = state.ui.schoolExamClassId || '';
-    const students = getSebVisibleStudents();
+    var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
+    var sort = state.ui.schoolExamSort || 'default';
+    var sortColKey = state.ui.schoolExamSortCol || '1H-mid';
+    var gradeTab = state.ui.schoolExamGradeTab || '';
+    var classId = state.ui.schoolExamClassId || '';
+    var section = state.ui.schoolExamSection || 'middle';
+    var students = getSebVisibleStudents();
 
     if (!students.length) {
         root.innerHTML = '<div style="padding:48px;text-align:center;color:var(--secondary);font-size:14px;font-weight:600;">표시할 학생이 없습니다.</div>';
         return;
     }
 
-    const hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
+    /* ── 고등: 학생×과목 행 ── */
+    if (section === 'high') {
+        _renderHighExamTable(root, students, year, gradeTab, classId);
+        return;
+    }
+
+    /* ── 중등: 기존 로직 ── */
+    var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
         + '<th rowspan="2" class="seb-sticky-c">반</th>'
         + '<th rowspan="2" class="seb-sticky-n">이름</th>'
         + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(26,92,255,0.03);">1학기</th>'
         + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>';
 
-    const hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
+    var hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
         + '<th style="background:rgba(26,92,255,0.03);">기말</th>'
         + '<th class="seb-border2" style="background:rgba(5,150,105,0.03);">중간</th>'
         + '<th style="background:rgba(5,150,105,0.03);">기말</th>';
 
-    let bodyRows = '';
-    const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3'];
-    const byGrade = {};
+    var bodyRows = '';
+    var gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    var byGrade = {};
 
     students.forEach(function(s) {
-        const g = getSebStudentDisplayGrade(s);
+        var g = getSebStudentDisplayGrade(s);
         if (!byGrade[g]) byGrade[g] = [];
         byGrade[g].push(s);
     });
 
-    const activeGrades = gradeOrder.filter(function(g) {
+    var activeGrades = gradeOrder.filter(function(g) {
         return byGrade[g] && byGrade[g].length;
     });
 
     gradeOrder.forEach(function(grade) {
-        let gradeStudents = byGrade[grade];
+        var gradeStudents = byGrade[grade];
         if (!gradeStudents || !gradeStudents.length) return;
 
-        const isFirstGrade = activeGrades[0] === grade;
+        var isFirstGrade = activeGrades[0] === grade;
 
         if (sort === 'score-desc') {
             gradeStudents = gradeStudents.slice().sort(function(a, b) {
-                const sa = getSebScore(a.id, year, sortColKey);
-                const sb = getSebScore(b.id, year, sortColKey);
-
+                var sa = getSebScore(a.id, year, sortColKey, '수학');
+                var sb = getSebScore(b.id, year, sortColKey, '수학');
                 if (sa === null && sb === null) return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
                 if (sa === null) return 1;
                 if (sb === null) return -1;
                 if (sb !== sa) return sb - sa;
-
                 return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
             });
 
             gradeStudents.forEach(function(s, idx) {
-                const gradeText = idx === 0 ? grade : '';
-                const dividerClass = idx === 0 && !isFirstGrade ? ' seb-grade-divider' : '';
-
-                const cols = SEB_COLS.map(function(col, ci) {
-                    const score = getSebScore(s.id, year, col.key);
-                    const prevKey = getPrevSebColKey(col.key);
-                    const prevScore = prevKey ? getSebScore(s.id, year, prevKey) : null;
-                    const trendHtml = buildSebTrendHtml(score, prevScore);
-                    const borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
-                    const val = score !== null ? score : '';
-
-                    return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${trendHtml}</td>`;
+                var gradeText = idx === 0 ? grade : '';
+                var dividerClass = idx === 0 && !isFirstGrade ? ' seb-grade-divider' : '';
+                var cols = SEB_COLS.map(function(col, ci) {
+                    var score = getSebScore(s.id, year, col.key, '수학');
+                    var prevKey = getPrevSebColKey(col.key);
+                    var prevScore = prevKey ? getSebScore(s.id, year, prevKey, '수학') : null;
+                    var trendHtml = buildSebTrendHtml(score, prevScore);
+                    var borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
+                    var val = score !== null ? score : '';
+                    return '<td' + (borderClass ? ' class="' + borderClass + '"' : '') + ' style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-' + s.id + '-' + col.key + '" value="' + val + '" min="0" max="100">' + trendHtml + '</td>';
                 }).join('');
-
-                bodyRows += `<tr class="${dividerClass}"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">${apEscapeHtml(gradeText)}</td><td class="seb-sticky-c"></td><td class="seb-sticky-n">${apEscapeHtml(s.name)}</td>${cols}</tr>`;
+                bodyRows += '<tr class="' + dividerClass + '"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">' + apEscapeHtml(gradeText) + '</td><td class="seb-sticky-c"></td><td class="seb-sticky-n">' + apEscapeHtml(s.name) + '</td>' + cols + '</tr>';
             });
 
             bodyRows += buildSebAvgRow(classId ? '평균' : '학년평균', gradeStudents, year, true);
             return;
         }
 
-        const byClass = {};
-        const classOrder = [];
+        var byClass = {};
+        var classOrder = [];
 
         gradeStudents.forEach(function(s) {
-            const cid = getCumulativeClassIdForStudent(s.id);
-            const cn = getCumulativeClassName(cid) || '미배정';
-
-            if (!byClass[cn]) {
-                byClass[cn] = [];
-                classOrder.push(cn);
-            }
-
+            var cid = getCumulativeClassIdForStudent(s.id);
+            var cn = getCumulativeClassName(cid) || '미배정';
+            if (!byClass[cn]) { byClass[cn] = []; classOrder.push(cn); }
             byClass[cn].push(s);
         });
 
@@ -1084,39 +1082,37 @@ function renderSchoolExamBatchTable() {
             return String(a || '').localeCompare(String(b || ''), 'ko', { numeric: true });
         });
 
-        const showClassAverage = !gradeTab || !!classId;
-        const showGradeAverage = !classId;
-        let gradeFirstRow = true;
+        var showClassAverage = !gradeTab || !!classId;
+        var showGradeAverage = !classId;
+        var gradeFirstRow = true;
 
         classOrder.forEach(function(cn) {
-            const clsStudents = (byClass[cn] || []).slice().sort(function(a, b) {
+            var clsStudents = (byClass[cn] || []).slice().sort(function(a, b) {
                 return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
             });
-
-            let classFirstRow = true;
+            var classFirstRow = true;
 
             clsStudents.forEach(function(s) {
-                const isFirstInGrade = gradeFirstRow;
-                const isFirstInClass = classFirstRow;
-                const gradeText = isFirstInGrade ? grade : '';
-                const classText = isFirstInClass ? cn : '';
-                const dividerClass = isFirstInGrade && !isFirstGrade ? ' seb-grade-divider' : '';
+                var isFirstInGrade = gradeFirstRow;
+                var isFirstInClass = classFirstRow;
+                var gradeText = isFirstInGrade ? grade : '';
+                var classText = isFirstInClass ? cn : '';
+                var dividerClass = isFirstInGrade && !isFirstGrade ? ' seb-grade-divider' : '';
 
                 gradeFirstRow = false;
                 classFirstRow = false;
 
-                const cols = SEB_COLS.map(function(col, ci) {
-                    const score = getSebScore(s.id, year, col.key);
-                    const prevKey = getPrevSebColKey(col.key);
-                    const prevScore = prevKey ? getSebScore(s.id, year, prevKey) : null;
-                    const trendHtml = buildSebTrendHtml(score, prevScore);
-                    const borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
-                    const val = score !== null ? score : '';
-
-                    return `<td${borderClass ? ` class="${borderClass}"` : ''} style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-${s.id}-${col.key}" value="${val}" min="0" max="100">${trendHtml}</td>`;
+                var cols = SEB_COLS.map(function(col, ci) {
+                    var score = getSebScore(s.id, year, col.key, '수학');
+                    var prevKey = getPrevSebColKey(col.key);
+                    var prevScore = prevKey ? getSebScore(s.id, year, prevKey, '수학') : null;
+                    var trendHtml = buildSebTrendHtml(score, prevScore);
+                    var borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
+                    var val = score !== null ? score : '';
+                    return '<td' + (borderClass ? ' class="' + borderClass + '"' : '') + ' style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="seb-inp-' + s.id + '-' + col.key + '" value="' + val + '" min="0" max="100">' + trendHtml + '</td>';
                 }).join('');
 
-                bodyRows += `<tr class="${dividerClass}"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">${apEscapeHtml(gradeText)}</td><td class="seb-sticky-c">${apEscapeHtml(classText)}</td><td class="seb-sticky-n">${apEscapeHtml(s.name)}</td>${cols}</tr>`;
+                bodyRows += '<tr class="' + dividerClass + '"><td class="seb-sticky-g" style="font-size:11px;font-weight:700;color:var(--secondary);">' + apEscapeHtml(gradeText) + '</td><td class="seb-sticky-c">' + apEscapeHtml(classText) + '</td><td class="seb-sticky-n">' + apEscapeHtml(s.name) + '</td>' + cols + '</tr>';
             });
 
             if (showClassAverage) {
@@ -1129,7 +1125,145 @@ function renderSchoolExamBatchTable() {
         }
     });
 
-    root.innerHTML = `<table id="seb-tbl"><thead><tr>${hRow1}</tr><tr>${hRow2}</tr></thead><tbody>${bodyRows || '<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>'}</tbody></table>`;
+    root.innerHTML = '<table id="seb-tbl"><thead><tr>' + hRow1 + '</tr><tr>' + hRow2 + '</tr></thead><tbody>' + (bodyRows || '<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>') + '</tbody></table>';
+}
+
+/* ── 고등 성적표 렌더링 ── */
+function _renderHighExamTable(root, students, year, gradeTab, classId) {
+    /* 헤더: 학년 | 반 | 이름 | 과목 | 1학기중간 | 1학기기말 | 2학기중간 | 2학기기말 | 추가 */
+    var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
+        + '<th rowspan="2" class="seb-sticky-c">반</th>'
+        + '<th rowspan="2" class="seb-sticky-n">이름</th>'
+        + '<th rowspan="2" class="seb-sticky-s" style="position:sticky;left:144px;z-index:2;background:var(--surface);width:80px;min-width:80px;max-width:80px;font-size:11px;font-weight:700;color:var(--secondary);text-align:center;border-right:1px solid var(--border);padding:4px 2px;">과목</th>'
+        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(26,92,255,0.03);">1학기</th>'
+        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>'
+        + '<th rowspan="2" style="width:48px;min-width:48px;padding:4px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);"></th>';
+
+    var hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
+        + '<th style="background:rgba(26,92,255,0.03);">기말</th>'
+        + '<th class="seb-border2" style="background:rgba(5,150,105,0.03);">중간</th>'
+        + '<th style="background:rgba(5,150,105,0.03);">기말</th>';
+
+    var gradeOrder = ['고1', '고2', '고3'];
+    var byGrade = {};
+    students.forEach(function(s) {
+        var g = getSebStudentDisplayGrade(s);
+        if (!byGrade[g]) byGrade[g] = [];
+        byGrade[g].push(s);
+    });
+
+    var activeGrades = gradeOrder.filter(function(g) { return byGrade[g] && byGrade[g].length; });
+    var bodyRows = '';
+
+    gradeOrder.forEach(function(grade) {
+        var gradeStudents = byGrade[grade];
+        if (!gradeStudents || !gradeStudents.length) return;
+
+        var isFirstGrade = activeGrades[0] === grade;
+
+        var byClass = {};
+        var classOrder = [];
+        gradeStudents.forEach(function(s) {
+            var cid = getCumulativeClassIdForStudent(s.id);
+            var cn = getCumulativeClassName(cid) || '미배정';
+            if (!byClass[cn]) { byClass[cn] = []; classOrder.push(cn); }
+            byClass[cn].push(s);
+        });
+        classOrder.sort(function(a, b) { return String(a||'').localeCompare(String(b||''), 'ko', {numeric:true}); });
+
+        var gradeFirstRow = true;
+
+        classOrder.forEach(function(cn) {
+            var clsStudents = (byClass[cn]||[]).slice().sort(function(a,b) {
+                return String(a.name||'').localeCompare(String(b.name||''), 'ko', {numeric:true});
+            });
+            var classFirstRow = true;
+
+            clsStudents.forEach(function(s) {
+                var subjects = getSebHighSubjectsForStudent(s.id, year);
+
+                /* 과목이 하나도 없어도 1행(빈 행 + 추가 버튼)은 보여줌 */
+                var rowCount = subjects.length || 1;
+
+                for (var si = 0; si < rowCount; si++) {
+                    var subj = subjects[si] || null;
+                    var isFirstSubj = si === 0;
+                    var isFirstInGrade = gradeFirstRow && isFirstSubj;
+                    var isFirstInClass = classFirstRow && isFirstSubj;
+
+                    var gradeText = isFirstInGrade ? grade : '';
+                    var classText = isFirstInClass ? cn : '';
+                    var dividerClass = isFirstInGrade && !isFirstGrade ? ' seb-grade-divider' : '';
+
+                    if (isFirstSubj) { gradeFirstRow = false; classFirstRow = false; }
+
+                    /* 과목 뱃지 */
+                    var subjColor = _sebSubjectColor(subj);
+                    var subjCell = subj
+                        ? '<span style="display:inline-block;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:700;background:' + subjColor.bg + ';color:' + subjColor.text + ';">' + apEscapeHtml(subj) + '</span>'
+                        : '<span style="color:var(--border);font-size:11px;">-</span>';
+
+                    /* 점수 셀 4개 */
+                    var scoreCols = SEB_COLS.map(function(col, ci) {
+                        var borderClass = (ci === 0 || ci === 2) ? 'seb-border2' : '';
+                        if (!subj) {
+                            return '<td' + (borderClass ? ' class="' + borderClass + '"' : '') + ' style="text-align:center;padding:4px 2px;"><span style="color:var(--border);">-</span></td>';
+                        }
+                        var score = getSebScore(s.id, year, col.key, subj);
+                        var prevKey = getPrevSebColKey(col.key);
+                        var prevScore = prevKey ? getSebScore(s.id, year, prevKey, subj) : null;
+                        var trendHtml = buildSebTrendHtml(score, prevScore);
+                        var val = score !== null ? score : '';
+                        var inpId = 'seb-inp-' + s.id + '-' + col.key + '-' + subj.replace(/\s/g,'_');
+                        return '<td' + (borderClass ? ' class="' + borderClass + '"' : '') + ' style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="' + apEscapeHtml(inpId) + '" value="' + val + '" min="0" max="100">' + trendHtml + '</td>';
+                    }).join('');
+
+                    /* 마지막 과목 행에만 추가 버튼 */
+                    var addCell = '';
+                    if (si === rowCount - 1) {
+                        addCell = '<td style="text-align:center;padding:4px 2px;"><button onclick="openSchoolExamRecordModal(\'\',\'' + apEscapeHtml(String(s.id)) + '\')" style="width:28px;height:28px;border-radius:8px;border:1px dashed var(--border);background:none;cursor:pointer;font-size:16px;color:var(--secondary);display:inline-flex;align-items:center;justify-content:center;line-height:1;">+</button></td>';
+                    } else {
+                        addCell = '<td></td>';
+                    }
+
+                    /* 이름 셀: 첫 과목 행에만, rowspan으로 묶기 */
+                    var nameCell = '';
+                    var gradeCell = '';
+                    var classCell = '';
+                    if (isFirstSubj) {
+                        var rs = rowCount > 1 ? ' rowspan="' + rowCount + '"' : '';
+                        gradeCell = '<td class="seb-sticky-g"' + rs + ' style="font-size:11px;font-weight:700;color:var(--secondary);vertical-align:middle;">' + apEscapeHtml(gradeText) + '</td>';
+                        classCell = '<td class="seb-sticky-c"' + rs + ' style="vertical-align:middle;">' + apEscapeHtml(classText) + '</td>';
+                        nameCell = '<td class="seb-sticky-n"' + rs + ' style="vertical-align:middle;">' + apEscapeHtml(s.name) + '</td>';
+                    }
+
+                    bodyRows += '<tr class="' + dividerClass + '">' + gradeCell + classCell + nameCell
+                        + '<td class="seb-sticky-s" style="position:sticky;left:144px;z-index:2;background:var(--surface);text-align:center;padding:4px 6px;border-right:1px solid var(--border);">' + subjCell + '</td>'
+                        + scoreCols + addCell + '</tr>';
+                }
+            });
+        });
+    });
+
+    /* 고등 thead sticky: seb-sticky-s도 z-index 맞춤 */
+    root.innerHTML = '<style>#seb-tbl thead .seb-sticky-s{top:0;height:68px;min-height:68px;z-index:6;position:sticky;left:144px;}</style>'
+        + '<table id="seb-tbl"><thead><tr>' + hRow1 + '</tr><tr>' + hRow2 + '</tr></thead><tbody>'
+        + (bodyRows || '<tr><td colspan="9" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>')
+        + '</tbody></table>';
+}
+
+/* 과목별 뱃지 색상 */
+function _sebSubjectColor(subj) {
+    var map = {
+        '공통수학1':     { bg: 'rgba(26,92,255,0.10)', text: '#1746C7' },
+        '공통수학2':     { bg: 'rgba(0,184,148,0.10)', text: '#008F72' },
+        '대수':         { bg: 'rgba(83,74,183,0.12)', text: '#3C3489' },
+        '확률과통계':   { bg: 'rgba(186,117,23,0.13)', text: '#854F0B' },
+        '미적분1':      { bg: 'rgba(24,95,165,0.12)', text: '#0C447C' },
+        '미적분2':      { bg: 'rgba(15,110,86,0.12)', text: '#085041' },
+        '기하와벡터':   { bg: 'rgba(153,53,86,0.12)', text: '#72243E' }
+    };
+    return map[subj] || { bg: 'rgba(136,135,128,0.13)', text: '#444441' };
 }
 
 function _buildSebRow(s, year, gradeText, classText) {
@@ -1145,19 +1279,83 @@ function _buildSebRow(s, year, gradeText, classText) {
 }
 
 async function saveSchoolExamBatch() {
-    const year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
-    const students = getSebVisibleStudents();
+    var year = Number(state.ui.schoolExamYear) || new Date().getFullYear();
+    var section = state.ui.schoolExamSection || 'middle';
+    var students = getSebVisibleStudents();
 
     if (!students.length) return toast('저장할 학생이 없습니다.', 'warn');
 
-    for (let i = 0; i < students.length; i++) {
-        for (let j = 0; j < SEB_COLS.length; j++) {
-            const inp = document.getElementById('seb-inp-' + students[i].id + '-' + SEB_COLS[j].key);
-            if (!inp) continue;
+    /* ── 고등: 과목별 입력값 수집 ── */
+    if (section === 'high') {
+        var highRecords = [];
+        var hasError = false;
 
-            const val = (inp.value || '').trim();
+        students.forEach(function(s) {
+            var subjects = getSebHighSubjectsForStudent(s.id, year);
+            subjects.forEach(function(subj) {
+                SEB_COLS.forEach(function(col) {
+                    var inpId = 'seb-inp-' + s.id + '-' + col.key + '-' + subj.replace(/\s/g, '_');
+                    var inp = document.getElementById(inpId);
+                    if (!inp) return;
+                    var v = (inp.value || '').trim();
+                    if (v !== '') {
+                        var n = Number(v);
+                        if (!Number.isFinite(n) || n < 0 || n > 100) {
+                            toast(s.name + ' / ' + subj + ': 0~100 사이 숫자여야 합니다.', 'warn');
+                            hasError = true;
+                            return;
+                        }
+                    }
+                    highRecords.push({ studentId: s.id, subject: subj, semester: col.semester, examType: col.examType, score: v === '' ? null : Number(v) });
+                });
+            });
+        });
+
+        if (hasError) return;
+
+        var btn = document.getElementById('seb-save-btn');
+        if (btn) { btn.disabled = true; btn.textContent = '저장 중...'; }
+
+        try {
+            /* 과목×학기×유형 조합별로 batch 요청 */
+            var combos = {};
+            highRecords.forEach(function(rec) {
+                var key = rec.subject + '|' + rec.semester + '|' + rec.examType;
+                if (!combos[key]) combos[key] = { subject: rec.subject, semester: rec.semester, examType: rec.examType, records: [] };
+                combos[key].records.push({ studentId: rec.studentId, score: rec.score });
+            });
+
+            var keys = Object.keys(combos);
+            for (var ki = 0; ki < keys.length; ki++) {
+                var combo = combos[keys[ki]];
+                await api.post('school-exam-records/batch', {
+                    examYear: year,
+                    semester: combo.semester,
+                    examType: combo.examType,
+                    subject: combo.subject,
+                    records: combo.records
+                });
+            }
+
+            toast('저장되었습니다.', 'success');
+            await loadData();
+            renderSchoolExamBatchTable();
+        } catch (e) {
+            toast('저장에 실패했습니다.', 'warn');
+        } finally {
+            if (btn) { btn.disabled = false; btn.textContent = '전체 저장'; }
+        }
+        return;
+    }
+
+    /* ── 중등: 기존 로직 (subject='수학' 고정) ── */
+    for (var i = 0; i < students.length; i++) {
+        for (var j = 0; j < SEB_COLS.length; j++) {
+            var inp = document.getElementById('seb-inp-' + students[i].id + '-' + SEB_COLS[j].key);
+            if (!inp) continue;
+            var val = (inp.value || '').trim();
             if (val !== '') {
-                const n = Number(val);
+                var n = Number(val);
                 if (!Number.isFinite(n) || n < 0 || n > 100) {
                     return toast(students[i].name + ': 0~100 사이 숫자여야 합니다.', 'warn');
                 }
@@ -1165,18 +1363,15 @@ async function saveSchoolExamBatch() {
         }
     }
 
-    const btn = document.getElementById('seb-save-btn');
-    if (btn) {
-        btn.disabled = true;
-        btn.textContent = '저장 중...';
-    }
+    var btn2 = document.getElementById('seb-save-btn');
+    if (btn2) { btn2.disabled = true; btn2.textContent = '저장 중...'; }
 
     try {
-        for (let ci = 0; ci < SEB_COLS.length; ci++) {
-            const col = SEB_COLS[ci];
-            const records = students.map(function(s) {
-                const inp = document.getElementById('seb-inp-' + s.id + '-' + col.key);
-                const v = inp ? (inp.value || '').trim() : '';
+        for (var ci = 0; ci < SEB_COLS.length; ci++) {
+            var col = SEB_COLS[ci];
+            var records = students.map(function(s) {
+                var inp = document.getElementById('seb-inp-' + s.id + '-' + col.key);
+                var v = inp ? (inp.value || '').trim() : '';
                 return { studentId: s.id, score: v === '' ? null : Number(v) };
             });
 
@@ -1185,7 +1380,7 @@ async function saveSchoolExamBatch() {
                 semester: col.semester,
                 examType: col.examType,
                 subject: '수학',
-                records
+                records: records
             });
         }
 
@@ -1195,10 +1390,7 @@ async function saveSchoolExamBatch() {
     } catch (e) {
         toast('저장에 실패했습니다.', 'warn');
     } finally {
-        if (btn) {
-            btn.disabled = false;
-            btn.textContent = '전체 저장';
-        }
+        if (btn2) { btn2.disabled = false; btn2.textContent = '전체 저장'; }
     }
 }
 
@@ -1277,13 +1469,33 @@ function computeSchoolExamTrend(records, studentId) {
     };
 }
 
-function openSchoolExamRecordModal(recordId = '', studentId = '') {
-    const record = recordId ? (state.db.school_exam_records || []).find(r => String(r.id) === String(recordId)) : null;
-    const selectedStudentId = studentId || record?.student_id || '';
-    const currentYear = new Date().getFullYear();
-    const studentOptions = getCumulativeVisibleStudents({}).map(s => `<option value="${apEscapeHtml(s.id)}" ${String(s.id) === String(selectedStudentId) ? 'selected' : ''}>${apEscapeHtml(s.name || '')} ${s.school_name ? `(${apEscapeHtml(s.school_name)})` : ''}</option>`).join('');
-    const student = selectedStudentId ? getCumulativeStudent(selectedStudentId) : null;
-    const targetScore = record?.target_score_snapshot ?? student?.target_score ?? '';
+function openSchoolExamRecordModal(recordId, studentId) {
+    recordId = recordId || '';
+    studentId = studentId || '';
+    var record = recordId ? (state.db.school_exam_records || []).find(function(r) { return String(r.id) === String(recordId); }) : null;
+    var selectedStudentId = studentId || record?.student_id || '';
+    var currentYear = new Date().getFullYear();
+    var studentOptions = getCumulativeVisibleStudents({}).map(function(s) {
+        return '<option value="' + apEscapeHtml(s.id) + '"' + (String(s.id) === String(selectedStudentId) ? ' selected' : '') + '>' + apEscapeHtml(s.name || '') + (s.school_name ? ' (' + apEscapeHtml(s.school_name) + ')' : '') + '</option>';
+    }).join('');
+    var student = selectedStudentId ? getCumulativeStudent(selectedStudentId) : null;
+    var targetScore = record?.target_score_snapshot ?? student?.target_score ?? '';
+
+    /* 고등 여부 판별 */
+    var isHigh = student ? isSebHighStudent(student) : false;
+    var curSubject = record?.subject || (isHigh ? '대수' : '수학');
+
+    /* 과목 필드: 고등=선택박스, 중등=텍스트입력 */
+    var subjectField = '';
+    if (isHigh) {
+        var subjOptions = SEB_HIGH_SUBJECTS.map(function(s) {
+            return '<option value="' + apEscapeHtml(s) + '"' + (curSubject === s ? ' selected' : '') + '>' + apEscapeHtml(s) + '</option>';
+        }).join('');
+        subjOptions += '<option value="__custom__"' + (!SEB_HIGH_SUBJECTS.includes(curSubject) && curSubject ? ' selected' : '') + '>직접입력...</option>';
+        subjectField = '<select id="ser-subject" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);text-align:left;" onchange="if(this.value===\'__custom__\'){var v=prompt(\'과목명 직접입력\',\'\');if(v){var o=document.createElement(\'option\');o.value=v;o.text=v;this.insertBefore(o,this.lastElementChild);this.value=v;}else{this.value=\'' + apEscapeHtml(SEB_HIGH_SUBJECTS[0]) + '\';}}">'+subjOptions+'</select>';
+    } else {
+        subjectField = '<input id="ser-subject" class="btn" value="' + apEscapeHtml(curSubject) + '" placeholder="과목" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">';
+    }
 
     showModal(record ? '학교시험 성적 수정' : '학교시험 성적 추가', `
 <div style="display:flex;flex-direction:column;gap:10px;">
@@ -1298,7 +1510,7 @@ function openSchoolExamRecordModal(recordId = '', studentId = '') {
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
     <select id="ser-type" class="btn" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">${[['midterm','중간'],['final','기말'],['performance','수행'],['etc','기타']].map(([v,l]) => `<option value="${v}" ${String(record?.exam_type || 'midterm') === v ? 'selected' : ''}>${l}</option>`).join('')}</select>
-    <input id="ser-subject" class="btn" value="${apEscapeHtml(record?.subject || '수학')}" placeholder="과목" style="min-height:44px;text-align:left;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
+    ${subjectField}
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
     <input id="ser-score" type="number" class="btn" value="${record?.score ?? ''}" placeholder="점수/미응시 공란" style="min-height:44px;font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--border);">
@@ -1310,20 +1522,25 @@ function openSchoolExamRecordModal(recordId = '', studentId = '') {
 </div>`);
 }
 
-async function saveSchoolExamRecord(recordId = '') {
-    const studentId = document.getElementById('ser-student')?.value || '';
+async function saveSchoolExamRecord(recordId) {
+    recordId = recordId || '';
+    var studentId = document.getElementById('ser-student')?.value || '';
     if (!studentId) return toast('학생을 선택하세요.', 'warn');
 
-    const student = getCumulativeStudent(studentId);
-    const payload = {
-        studentId,
+    var student = getCumulativeStudent(studentId);
+    var rawSubject = document.getElementById('ser-subject')?.value || '';
+    /* __custom__ 이 남아있으면 빈 값으로 처리 */
+    var subject = (rawSubject === '__custom__' ? '' : rawSubject.trim()) || (isSebHighStudent(student) ? '대수' : '수학');
+
+    var payload = {
+        studentId: studentId,
         classId: getCumulativeClassIdForStudent(studentId),
         schoolName: document.getElementById('ser-school')?.value.trim() || student?.school_name || '',
         grade: document.getElementById('ser-grade')?.value.trim() || student?.grade || '',
         examYear: Number(document.getElementById('ser-year')?.value || 0),
         semester: document.getElementById('ser-semester')?.value || '',
         examType: document.getElementById('ser-type')?.value || 'midterm',
-        subject: document.getElementById('ser-subject')?.value.trim() || '수학',
+        subject: subject,
         score: document.getElementById('ser-score')?.value ?? '',
         targetScoreSnapshot: document.getElementById('ser-target')?.value ?? '',
         memo: document.getElementById('ser-memo')?.value.trim() || ''
@@ -1333,14 +1550,15 @@ async function saveSchoolExamRecord(recordId = '') {
         return toast('연도, 시험유형, 과목을 확인하세요.', 'warn');
     }
 
-    const r = recordId
-        ? await api.patch(`school-exam-records/${recordId}`, payload)
+    var r = recordId
+        ? await api.patch('school-exam-records/' + recordId, payload)
         : await api.post('school-exam-records', payload);
 
     if (r?.success) {
         toast('학교시험 성적이 저장되었습니다.', 'success');
         await loadData();
         closeModal();
+        renderSchoolExamBatchTable();
     } else {
         toast(r?.message || '학교시험 성적 저장에 실패했습니다.', 'warn');
     }
