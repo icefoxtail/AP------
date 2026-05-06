@@ -734,23 +734,49 @@ function getSebExamRecord(studentId, year, semester, examType, subject) {
 }
 
 /* 고등 전용: 해당 학생+연도에 성적이 입력된 과목 목록 반환 (SEB_HIGH_SUBJECTS 순 정렬) */
-var SEB_HIGH_SUBJECTS = ['공통수학1', '공통수학2', '대수', '확률과통계', '미적분1', '미적분2', '기하와벡터'];
+var SEB_HIGH_SUBJECTS = ['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'];
 
-function getSebHighSubjectsForStudent(studentId, year) {
-    var records = (state.db.school_exam_records || []).filter(function(r) {
-        return String(r.student_id) === String(studentId) &&
-            Number(r.exam_year) === Number(year) &&
-            String(r.is_deleted || 0) !== '1' &&
-            (r.score !== null && r.score !== undefined && r.score !== '');
-    });
+function normalizeSebHighSubjectName(subject) {
+    var s = String(subject || '').trim();
+    if (s === '미적분1') return '미적분Ⅰ';
+    if (s === '미적분2') return '미적분Ⅱ';
+    if (s === '기하와벡터') return '기하';
+    return s;
+}
+
+function parseSebHighSubjects(value) {
+    if (Array.isArray(value)) {
+        return value.map(normalizeSebHighSubjectName).filter(Boolean);
+    }
+    var raw = String(value || '').trim();
+    if (!raw) return [];
+    try {
+        var parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed.map(normalizeSebHighSubjectName).filter(Boolean);
+    } catch (e) {}
+    return raw.split(',').map(normalizeSebHighSubjectName).filter(Boolean);
+}
+
+function isSebSubjectManagedGrade(student) {
+    var grade = getSebStudentDisplayGrade(student);
+    return grade === '고2' || grade === '고3';
+}
+
+function getSebInputId(studentId, colKey, subject) {
+    return 'seb-inp-' + String(studentId) + '-' + String(colKey) + '-' + encodeURIComponent(String(subject || '')).replace(/%/g, '_');
+}
+
+function sortSebSubjects(subjects) {
     var seen = {};
-    var subjects = [];
-    records.forEach(function(r) {
-        var s = String(r.subject || '').trim();
-        if (s && !seen[s]) { seen[s] = true; subjects.push(s); }
+    var list = [];
+    subjects.forEach(function(subject) {
+        var s = normalizeSebHighSubjectName(subject);
+        if (s && !seen[s]) {
+            seen[s] = true;
+            list.push(s);
+        }
     });
-    /* SEB_HIGH_SUBJECTS 순으로 정렬, 나머지는 뒤에 */
-    subjects.sort(function(a, b) {
+    list.sort(function(a, b) {
         var ai = SEB_HIGH_SUBJECTS.indexOf(a);
         var bi = SEB_HIGH_SUBJECTS.indexOf(b);
         if (ai === -1 && bi === -1) return a.localeCompare(b, 'ko');
@@ -758,7 +784,30 @@ function getSebHighSubjectsForStudent(studentId, year) {
         if (bi === -1) return -1;
         return ai - bi;
     });
-    return subjects;
+    return list;
+}
+
+function getSebHighSubjectsForStudent(studentId, year) {
+    var student = getCumulativeStudent(studentId);
+
+    if (isSebSubjectManagedGrade(student)) {
+        return sortSebSubjects(parseSebHighSubjects(student?.high_subjects));
+    }
+
+    var records = (state.db.school_exam_records || []).filter(function(r) {
+        return String(r.student_id) === String(studentId) &&
+            Number(r.exam_year) === Number(year) &&
+            String(r.is_deleted || 0) !== '1' &&
+            (r.score !== null && r.score !== undefined && r.score !== '');
+    });
+    var subjects = records.map(function(r) { return r.subject || ''; });
+
+    if (!subjects.length) {
+        var grade = getSebStudentDisplayGrade(student);
+        if (grade === '고1') subjects = ['공통수학1'];
+    }
+
+    return sortSebSubjects(subjects);
 }
 
 /* 고등 여부 판별 */
@@ -1201,14 +1250,13 @@ function renderSchoolExamBatchTable() {
 
 /* ── 고등 성적표 렌더링 ── */
 function _renderHighExamTable(root, students, year, gradeTab, classId) {
-    /* 헤더: 학년 | 반 | 이름 | 과목 | 1학기중간 | 1학기기말 | 2학기중간 | 2학기기말 | 추가 */
+    /* 헤더: 학년 | 반 | 이름 | 과목 | 1학기중간 | 1학기기말 | 2학기중간 | 2학기기말 */
     var hRow1 = '<th rowspan="2" class="seb-sticky-g">학년</th>'
         + '<th rowspan="2" class="seb-sticky-c">반</th>'
         + '<th rowspan="2" class="seb-sticky-n">이름</th>'
         + '<th rowspan="2" class="seb-sticky-s" style="position:sticky;left:144px;z-index:2;background:var(--surface);width:80px;min-width:80px;max-width:80px;font-size:11px;font-weight:700;color:var(--secondary);text-align:center;border-right:1px solid var(--border);padding:4px 2px;">과목</th>'
         + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(26,92,255,0.03);">1학기</th>'
-        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>'
-        + '<th rowspan="2" style="width:48px;min-width:48px;padding:4px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);"></th>';
+        + '<th colspan="2" class="seb-border2" style="padding:8px;background:rgba(5,150,105,0.03);">2학기</th>';
 
     var hRow2 = '<th class="seb-border2" style="background:rgba(26,92,255,0.03);">중간</th>'
         + '<th style="background:rgba(26,92,255,0.03);">기말</th>'
@@ -1253,7 +1301,7 @@ function _renderHighExamTable(root, students, year, gradeTab, classId) {
             clsStudents.forEach(function(s) {
                 var subjects = getSebHighSubjectsForStudent(s.id, year);
 
-                /* 과목이 하나도 없어도 1행(빈 행 + 추가 버튼)은 보여줌 */
+                /* 과목이 하나도 없어도 1행(과목 미지정 안내)은 보여줌 */
                 var rowCount = subjects.length || 1;
 
                 for (var si = 0; si < rowCount; si++) {
@@ -1285,17 +1333,9 @@ function _renderHighExamTable(root, students, year, gradeTab, classId) {
                         var prevScore = prevKey ? getSebScore(s.id, year, prevKey, subj) : null;
                         var trendHtml = buildSebTrendHtml(score, prevScore);
                         var val = score !== null ? score : '';
-                        var inpId = 'seb-inp-' + s.id + '-' + col.key + '-' + subj.replace(/\s/g,'_');
+                        var inpId = getSebInputId(s.id, col.key, subj);
                         return '<td' + (borderClass ? ' class="' + borderClass + '"' : '') + ' style="text-align:center;padding:4px 2px;"><input type="number" class="seb-inp" id="' + apEscapeHtml(inpId) + '" value="' + val + '" min="0" max="100">' + trendHtml + '</td>';
                     }).join('');
-
-                    /* 마지막 과목 행에만 추가 버튼 */
-                    var addCell = '';
-                    if (si === rowCount - 1) {
-                        addCell = '<td style="text-align:center;padding:4px 2px;"><button onclick="openSchoolExamRecordModal(\'\',\'' + apEscapeHtml(String(s.id)) + '\')" style="width:28px;height:28px;border-radius:8px;border:1px dashed var(--border);background:none;cursor:pointer;font-size:16px;color:var(--secondary);display:inline-flex;align-items:center;justify-content:center;line-height:1;">+</button></td>';
-                    } else {
-                        addCell = '<td></td>';
-                    }
 
                     /* 이름 셀: 첫 과목 행에만, rowspan으로 묶기 */
                     var nameCell = '';
@@ -1310,7 +1350,7 @@ function _renderHighExamTable(root, students, year, gradeTab, classId) {
 
                     bodyRows += '<tr class="' + dividerClass + '">' + gradeCell + classCell + nameCell
                         + '<td class="seb-sticky-s" style="position:sticky;left:144px;z-index:2;background:var(--surface);text-align:center;padding:4px 6px;border-right:1px solid var(--border);">' + subjCell + '</td>'
-                        + scoreCols + addCell + '</tr>';
+                        + scoreCols + '</tr>';
                 }
             });
         });
@@ -1319,7 +1359,7 @@ function _renderHighExamTable(root, students, year, gradeTab, classId) {
     /* 고등 thead sticky: seb-sticky-s도 z-index 맞춤 */
     root.innerHTML = '<style>#seb-tbl thead .seb-sticky-s{top:0;height:68px;min-height:68px;z-index:6;position:sticky;left:144px;}</style>'
         + '<table id="seb-tbl"><thead><tr>' + hRow1 + '</tr><tr>' + hRow2 + '</tr></thead><tbody>'
-        + (bodyRows || '<tr><td colspan="9" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>')
+        + (bodyRows || '<tr><td colspan="8" style="padding:32px;text-align:center;color:var(--secondary);">학생 없음</td></tr>')
         + '</tbody></table>';
 }
 
@@ -1330,9 +1370,9 @@ function _sebSubjectColor(subj) {
         '공통수학2':     { bg: 'rgba(0,184,148,0.10)', text: '#008F72' },
         '대수':         { bg: 'rgba(83,74,183,0.12)', text: '#3C3489' },
         '확률과통계':   { bg: 'rgba(186,117,23,0.13)', text: '#854F0B' },
-        '미적분1':      { bg: 'rgba(24,95,165,0.12)', text: '#0C447C' },
-        '미적분2':      { bg: 'rgba(15,110,86,0.12)', text: '#085041' },
-        '기하와벡터':   { bg: 'rgba(153,53,86,0.12)', text: '#72243E' }
+        '미적분Ⅰ':      { bg: 'rgba(24,95,165,0.12)', text: '#0C447C' },
+        '미적분Ⅱ':      { bg: 'rgba(15,110,86,0.12)', text: '#085041' },
+        '기하':         { bg: 'rgba(153,53,86,0.12)', text: '#72243E' }
     };
     return map[subj] || { bg: 'rgba(136,135,128,0.13)', text: '#444441' };
 }
@@ -1365,7 +1405,7 @@ async function saveSchoolExamBatch() {
             var subjects = getSebHighSubjectsForStudent(s.id, year);
             subjects.forEach(function(subj) {
                 SEB_COLS.forEach(function(col) {
-                    var inpId = 'seb-inp-' + s.id + '-' + col.key + '-' + subj.replace(/\s/g, '_');
+                    var inpId = getSebInputId(s.id, col.key, subj);
                     var inp = document.getElementById(inpId);
                     if (!inp) return;
                     var v = (inp.value || '').trim();
@@ -1554,7 +1594,7 @@ function openSchoolExamRecordModal(recordId, studentId) {
 
     /* 고등 여부 판별 */
     var isHigh = student ? isSebHighStudent(student) : false;
-    var curSubject = record?.subject || (isHigh ? '대수' : '수학');
+    var curSubject = normalizeSebHighSubjectName(record?.subject || (isHigh ? '대수' : '수학'));
 
     /* 과목 필드: 고등=선택박스, 중등=텍스트입력 */
     var subjectField = '';
