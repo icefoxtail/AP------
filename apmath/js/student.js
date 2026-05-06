@@ -525,12 +525,76 @@ function studentAttr(value) {
     return apEscapeHtml(String(value ?? ''));
 }
 
+
+var AP_HIGH_SUBJECTS = ['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'];
+
+function parseHighSubjects(value) {
+    if (Array.isArray(value)) {
+        return value.map(v => String(v || '').trim()).filter(Boolean);
+    }
+    const raw = String(value || '').trim();
+    if (!raw) return [];
+    try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed.map(v => String(v || '').trim()).filter(Boolean);
+    } catch (e) {}
+    return raw.split(',').map(v => v.trim()).filter(Boolean);
+}
+
+function isHighSubjectGrade(grade) {
+    return String(grade || '').includes('고2') || String(grade || '').includes('고3');
+}
+
+function renderHighSubjectChecks(prefix, grade, selectedSubjects) {
+    const selected = new Set(parseHighSubjects(selectedSubjects));
+    const visible = isHighSubjectGrade(grade);
+    return `
+        <div id="${prefix}-high-subjects-wrap" style="display:${visible ? 'block' : 'none'}; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:12px 14px;">
+            <div style="font-size:12px; font-weight:800; color:var(--secondary); margin-bottom:9px; line-height:1.4;">내신 과목</div>
+            <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 10px;">
+                ${AP_HIGH_SUBJECTS.map((subject, idx) => `
+                    <label style="display:flex; align-items:center; gap:7px; min-height:28px; font-size:13px; font-weight:700; color:var(--text); cursor:pointer;">
+                        <input type="checkbox" class="${prefix}-high-subject" value="${apEscapeHtml(subject)}" ${selected.has(subject) ? 'checked' : ''} style="width:15px; height:15px; accent-color:var(--primary); cursor:pointer;">
+                        <span>${apEscapeHtml(subject)}</span>
+                    </label>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function syncHighSubjectWrap(prefix, grade) {
+    const wrap = document.getElementById(`${prefix}-high-subjects-wrap`);
+    if (!wrap) return;
+    wrap.style.display = isHighSubjectGrade(grade) ? 'block' : 'none';
+}
+
+function syncEditStudentHighSubjects() {
+    const grade = document.getElementById('edit-grade')?.value || '';
+    syncHighSubjectWrap('edit', grade);
+}
+
+function syncAddStudentHighSubjects() {
+    const classId = document.getElementById('add-class')?.value || '';
+    const cls = state.db.classes.find(c => String(c.id) === String(classId));
+    const grade = inferGradeFromClass(cls);
+    syncHighSubjectWrap('add', grade);
+}
+
+function collectHighSubjects(prefix, grade) {
+    if (!isHighSubjectGrade(grade)) return [];
+    return Array.from(document.querySelectorAll(`.${prefix}-high-subject:checked`))
+        .map(el => String(el.value || '').trim())
+        .filter(Boolean);
+}
+
 function syncEditStudentGrade() {
     const classId = document.getElementById('edit-class')?.value || '';
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (cls?.grade) {
         document.getElementById('edit-grade').value = cls.grade;
     }
+    syncEditStudentHighSubjects();
 }
 
 function openEditStudent(sid, options = {}) {
@@ -548,12 +612,13 @@ function openEditStudent(sid, options = {}) {
             <input id="edit-name" class="std-input-base" value="${studentAttr(s.name)}" placeholder="이름">
             <input id="edit-school" class="std-input-base" value="${studentAttr(s.school_name)}" placeholder="학교">
             <div style="display: flex; gap: 8px;">
-                <select id="edit-grade" class="std-input-base" style="flex: 1;">
+                <select id="edit-grade" class="std-input-base" style="flex: 1;" onchange="syncEditStudentHighSubjects()">
                     <option value="중1" ${s.grade==='중1'?'selected':''}>중1</option><option value="중2" ${s.grade==='중2'?'selected':''}>중2</option><option value="중3" ${s.grade==='중3'?'selected':''}>중3</option>
                     <option value="고1" ${s.grade==='고1'?'selected':''}>고1</option><option value="고2" ${s.grade==='고2'?'selected':''}>고2</option><option value="고3" ${s.grade==='고3'?'selected':''}>고3</option>
                 </select>
                 <select id="edit-class" class="std-input-base" style="flex: 1.5;" onchange="syncEditStudentGrade()"><option value="">반 미배정</option>${opts}</select>
             </div>
+            ${renderHighSubjectChecks('edit', s.grade, s.high_subjects)}
             <input id="edit-student-phone" class="std-input-base" value="${studentAttr(s.student_phone || '')}" placeholder="학생 전화번호">
             <input id="edit-parent-phone" class="std-input-base" value="${studentAttr(s.parent_phone || '')}" placeholder="학부모 전화번호">
             <input id="edit-guardian-rel" class="std-input-base" value="${studentAttr(s.guardian_relation || '')}" placeholder="보호자 관계">
@@ -594,6 +659,7 @@ async function handleEditStudent(sid) {
     if (isLeaveChecked) memoParts.push('#휴원');
     if (cleanMemo) memoParts.push(cleanMemo);
     const finalMemo = memoParts.join(' ').trim();
+    const highSubjects = collectHighSubjects('edit', grade);
 
     const payload = {
         name: document.getElementById('edit-name')?.value || '',
@@ -604,7 +670,9 @@ async function handleEditStudent(sid) {
         parent_phone: document.getElementById('edit-parent-phone')?.value || '',
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
         memo: finalMemo,
-        student_pin: pin
+        student_pin: pin,
+        high_subjects: JSON.stringify(highSubjects),
+        highSubjects: highSubjects
     };
 
     try {
@@ -629,11 +697,12 @@ function openAddStudent(defaultCid = '', options = {}) {
         <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px 4px; box-sizing: border-box;">
             <input id="add-name" class="std-input-base" placeholder="이름 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-school" class="std-input-base" placeholder="학교 (필수)" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
-            <select id="add-class" class="std-input-base" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;"><option value="">반 선택</option>${opts}</select>
+            <select id="add-class" class="std-input-base" onchange="syncAddStudentHighSubjects()" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;"><option value="">반 선택</option>${opts}</select>
             <input id="add-student-phone" class="std-input-base" placeholder="학생 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-parent-phone" class="std-input-base" placeholder="학부모 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-guardian-rel" class="std-input-base" placeholder="보호자 관계" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-student-pin" class="std-input-base" placeholder="PIN (4자리 숫자, 선택)" maxlength="4" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
+            ${renderHighSubjectChecks('add', inferGradeFromClass(state.db.classes.find(c => String(c.id) === String(defaultCid))), [])}
         </div>
     `, '추가', handleAddStudent);
 }
@@ -654,6 +723,7 @@ async function handleAddStudent() {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) { toast('반 정보를 찾을 수 없습니다.', 'warn'); return; }
     const grade = inferGradeFromClass(cls);
+    const highSubjects = collectHighSubjects('add', grade);
     const payload = {
         name: n, school_name: sc, schoolName: sc, grade: grade || '',
         class_id: classId, classId: classId,
@@ -661,6 +731,7 @@ async function handleAddStudent() {
         student_phone: studentPhone, studentPhone: studentPhone,
         parent_phone: parentPhone, parentPhone: parentPhone,
         guardian_relation: guardianRelation, guardianRelation: guardianRelation,
+        high_subjects: JSON.stringify(highSubjects), highSubjects: highSubjects,
         memo: ''
     };
 
