@@ -648,7 +648,7 @@ function buildTimetableStudentSlot(student, classId) {
         return '' +
             '<div class="tt-std-slot">' +
                 '<button class="tt-std-empty" onclick="event.stopPropagation();openAddStudentToClass(\'' + apEscapeHtml(String(classId)) + '\')" title="빈칸 클릭 → 새 학생 추가">' +
-                    '+ 추가' +
+                    '+' +
                 '</button>' +
             '</div>';
     }
