@@ -320,33 +320,49 @@ function renderAdminControlCenter() {
     const risks = computeRiskStudents();
 
     const headerHtml = `
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <button class="btn" style="width:40px; height:40px; padding:0; font-size:24px; border:none; background:transparent; color:var(--text);" onclick="openAppDrawer()">☰</button>
-                <div>
-                    <div style="font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">운영센터</div>
-                </div>
-            </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+            <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">운영센터</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--secondary);">원장님</span>
+        </div>
+    `;
+
+    const adminShortcutRow = `
+        <div style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
+            <button class="btn"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
+                출석부
+            </button>
+            <button class="btn"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
+                시간표
+            </button>
+            <button class="btn"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
+                학교성적
+            </button>
         </div>
     `;
 
     const summaryHtml = `
-        <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:10px; margin-bottom:32px;">
-            <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                <div style="font-size:20px; font-weight:700; color:var(--primary);">${activeStudents.length}</div>
+        <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:8px; margin-bottom:22px;">
+            <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 1px 2px rgba(0,0,0,0.03);">
+                <div style="font-size:20px; font-weight:700; color:var(--primary); line-height:1.1;">${activeStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">재원생</div>
             </div>
-            <div class="card" onclick="openAdminStudentList('new')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                <div style="font-size:20px; font-weight:700; color:var(--success);">${newStudents.length}</div>
+            <div class="card" onclick="openAdminStudentList('new')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 1px 2px rgba(0,0,0,0.03);">
+                <div style="font-size:20px; font-weight:700; color:var(--success); line-height:1.1;">${newStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">신규</div>
             </div>
-            <div class="card" onclick="openAdminStudentList('discharged')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                <div style="font-size:20px; font-weight:700; color:var(--secondary);">${dischargedStudents.length}</div>
+            <div class="card" onclick="openAdminStudentList('discharged')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 1px 2px rgba(0,0,0,0.03);">
+                <div style="font-size:20px; font-weight:700; color:var(--secondary); line-height:1.1;">${dischargedStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">퇴원생</div>
             </div>
-            <div class="card" onclick="openAdminStudentList('risk')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid ${risks.length > 0 ? 'rgba(255,71,87,0.3)' : 'var(--border)'}; border-radius:16px; background:${risks.length > 0 ? 'rgba(255,71,87,0.05)' : 'var(--surface)'};">
-                <div style="font-size:20px; font-weight:700; color:var(--error);">${risks.length}</div>
-                <div style="font-size:11px; color:var(--error); font-weight:600; margin-top:4px;">관리필요</div>
+            <div class="card" onclick="openAdminStudentList('risk')" style="cursor:pointer; padding:14px 8px; text-align:center; margin:0; border:1px solid ${risks.length > 0 ? 'rgba(255,71,87,0.28)' : 'var(--border)'}; border-radius:16px; background:${risks.length > 0 ? 'rgba(255,71,87,0.05)' : 'var(--surface)'}; box-shadow:0 1px 2px rgba(0,0,0,0.03);">
+                <div style="font-size:20px; font-weight:700; color:var(--error); line-height:1.1;">${risks.length}</div>
+                <div style="font-size:11px; color:${risks.length > 0 ? 'var(--error)' : 'var(--secondary)'}; font-weight:600; margin-top:4px;">관리필요</div>
             </div>
         </div>
     `;
@@ -423,7 +439,14 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    root.innerHTML = headerHtml + summaryHtml + teacherCardsHtml + adminScheduleHtml + riskSectionHtml;
+    root.innerHTML = `<div style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
+        ${headerHtml}
+        ${adminShortcutRow}
+        ${summaryHtml}
+        ${teacherCardsHtml}
+        ${adminScheduleHtml}
+        ${riskSectionHtml}
+    </div>`;
 }
 
 function renderAdminStudentSearch() {
@@ -808,8 +831,8 @@ function renderDashboard() {
             </button>
             <button class="btn" 
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
-                    onclick="window.open('../archive/index.html', '_blank')">
-                아카이브
+                    onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
+                학교성적
             </button>
         </div>
     `;
@@ -1075,39 +1098,19 @@ function buildJournalContent(dateStr) {
             if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
         }
 
-        const classRecords = (state.db.class_daily_records || [])
-            .filter(r => String(r.class_id) === String(cls.id) && String(r.date || '') <= targetDate)
-            .sort((a, b) =>
-                String(b.date || '').localeCompare(String(a.date || '')) ||
-                String(b.created_at || '').localeCompare(String(a.created_at || ''))
-            );
-
-        const dailyRecord = classRecords[0] || null;
-        const isSameDateRecord = !!dailyRecord && String(dailyRecord.date || '') === targetDate;
-
+        const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
         if (dailyRecord) {
-            const progresses = (state.db.class_daily_progress || [])
-                .filter(p => String(p.record_id) === String(dailyRecord.id));
-
+            const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
             if (progresses.length > 0) {
-                text += `- 진도:
-`;
+                text += `- 진도:\n`;
                 progresses.forEach(p => {
-                    text += `  * ${p.textbook_title_snapshot || '교재'}: ${p.progress_text || '(기록 없음)'}
-`;
+                    text += `  * ${p.textbook_title_snapshot || '교재'}: ${p.progress_text || '(기록 없음)'}\n`;
                 });
-            } else {
-                text += `- 진도: (기록 없음)
-`;
-            }
+            } else text += `- 진도: (기록 없음)\n`;
 
-            if (isSameDateRecord && dailyRecord.special_note) {
-                text += `- 특이사항: ${dailyRecord.special_note}
-`;
-            }
+            if (dailyRecord.special_note) text += `- 특이사항: ${dailyRecord.special_note}\n`;
         } else {
-            text += `- 진도: (수업 기록 미입력)
-`;
+            text += `- 진도: (수업 기록 미입력)\n`;
         }
 
         const cns = (state.db.consultations || []).filter(c => c.date === targetDate && memberIds.includes(String(c.student_id)));
