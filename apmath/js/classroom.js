@@ -3,7 +3,7 @@
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Minimalism Polish]: 46px 1줄 압축 뷰, 파스텔 상태 뱃지, 모바일 핀포인트 렌더링
  * [Core Logic Preserved]: 기존 API 통신, 낙관적 롤백 방어, 상태 관리 보존
- * [V4 DESIGN RESET]: 이름 | 출결 | 숙제 | 지각 | 보강 5열 재구성, 학교/상세/출석부 버튼 제거
+ * [V4 DESIGN RESET]: 이름 | 출결 | 숙제 | 지각 | 보강 | 상담 6열 재구성, 학교/상세/출석부 버튼 제거
  */
 
 // ── 필수 유틸리티 (중복 선언 방어) ──────────────────────────────────
@@ -42,7 +42,9 @@ function injectClassroomStyles() {
         .cls-v4-section h3 { margin:0; font-size:14px; font-weight:700; color:var(--text); letter-spacing:-0.2px; }
         .cls-v4-section span { font-size:11px; font-weight:700; color:var(--secondary); }
         .cls-v4-board { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--surface); box-shadow:none; }
-        .cls-v4-row { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px; align-items:center; gap:6px; min-height:46px; padding:5px 12px; border-bottom:1px solid var(--border); background:var(--surface); }
+        .cls-v4-board-head { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px 42px; align-items:center; gap:6px; min-height:30px; padding:4px 12px; border-bottom:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:10px; font-weight:700; text-align:center; }
+        .cls-v4-board-head .name-spacer { text-align:left; }
+        .cls-v4-row { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px 42px; align-items:center; gap:6px; min-height:46px; padding:5px 12px; border-bottom:1px solid var(--border); background:var(--surface); }
         .cls-v4-row:last-child { border-bottom:none; }
         .cls-v4-row:active { background:var(--surface-2); }
         .cls-v4-name-col { min-width:0; display:flex; align-items:center; cursor:pointer; overflow:hidden; }
@@ -53,6 +55,7 @@ function injectClassroomStyles() {
         .cls-v4-status.hw { width:42px; min-width:42px; }
         .cls-v4-status.tag { background:transparent; color:var(--secondary); border:1px solid var(--border); font-size:14px; }
         .cls-v4-status.tag.on { background:rgba(26,92,255,0.10); color:var(--primary); border-color:rgba(26,92,255,0.18); }
+        .cls-v4-status.consult.on { background:rgba(124,58,237,0.10); color:#7c3aed; border-color:rgba(124,58,237,0.18); }
         .cls-v4-actions { display:none; }
         .cls-v4-pad-btns { display:none; gap:6px; }
         .cls-v4-pad-btn { height:32px; min-height:32px; padding:0 10px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--text-soft); font-size:11px; font-weight:700; }
@@ -65,7 +68,8 @@ function injectClassroomStyles() {
             .cls-v4-top { border-left:1px solid var(--border); border-right:1px solid var(--border); border-radius:0 0 18px 18px; }
             .cls-v4-board { margin:0 16px; border:1px solid var(--border); border-radius:18px; overflow:hidden; }
             .cls-v4-tools { padding-left:16px; padding-right:16px; }
-            .cls-v4-row { grid-template-columns:minmax(120px,1fr) 54px 54px 54px 54px; min-height:50px; padding:7px 18px; gap:8px; }
+            .cls-v4-board-head { grid-template-columns:minmax(120px,1fr) 54px 54px 54px 54px 54px; padding-left:18px; padding-right:18px; gap:8px; }
+            .cls-v4-row { grid-template-columns:minmax(120px,1fr) 54px 54px 54px 54px 54px; min-height:50px; padding:7px 18px; gap:8px; }
             .cls-v4-name-col { max-width:none; }
             .cls-v4-badges { display:contents; }
             .cls-v4-status { width:54px; min-width:54px; height:38px; }
@@ -74,7 +78,8 @@ function injectClassroomStyles() {
             .cls-v4-more { display:none; }
         }
         @media (max-width:380px) {
-            .cls-v4-row { grid-template-columns:minmax(58px,1fr) 39px 39px 39px 39px; padding-left:10px; padding-right:10px; gap:5px; }
+            .cls-v4-board-head { grid-template-columns:minmax(58px,1fr) 39px 39px 39px 39px 39px; padding-left:10px; padding-right:10px; gap:5px; }
+            .cls-v4-row { grid-template-columns:minmax(58px,1fr) 39px 39px 39px 39px 39px; padding-left:10px; padding-right:10px; gap:5px; }
             .cls-v4-name-col { min-width:0; max-width:none; }
             .cls-v4-status { width:39px; min-width:39px; padding:0; font-size:14px; }
             .cls-v4-status.hw { width:39px; min-width:39px; }
@@ -279,6 +284,40 @@ function renderAttendanceTagButton(studentId, date, tag) {
     return `<button class="btn cls-v4-status tag ${on ? 'on' : ''}" title="${safeTag}" onclick="toggleAttendanceTag('${studentId}', '${date}', '${safeTag}')">${label}</button>`;
 }
 
+function hasConsultationForStudentDate(studentId, date) {
+    const sid = String(studentId);
+    const d = String(date || '').slice(0, 10);
+    return (state.db.consultations || []).some(c =>
+        String(c.student_id) === sid &&
+        String(c.date || '').slice(0, 10) === d
+    );
+}
+
+function renderClassroomConsultationButton(studentId, classId, date) {
+    const on = hasConsultationForStudentDate(studentId, date);
+    return `<button class="btn cls-v4-status tag consult ${on ? 'on' : ''}" title="상담" onclick="openClassroomConsultation('${studentId}', '${classId}', '${date}')">${on ? '○' : ''}</button>`;
+}
+
+function openClassroomConsultation(studentId, classId, date) {
+    if (typeof setManagementReturnView === 'function') {
+        setManagementReturnView({ type: 'classDetail', classId: String(classId) });
+    }
+
+    if (hasConsultationForStudentDate(studentId, date) && typeof renderStudentDetailTab === 'function') {
+        renderStudentDetailTab(String(studentId), 'cns');
+        return;
+    }
+
+    if (typeof openAddConsultationModal === 'function') {
+        openAddConsultationModal(String(studentId));
+        const dateInput = document.getElementById('cns-date');
+        if (dateInput) dateInput.value = String(date || '').slice(0, 10);
+        return;
+    }
+
+    if (typeof renderStudentDetail === 'function') renderStudentDetail(String(studentId));
+}
+
 function syncAttendanceMetaToState(studentId, date, tags, memo) {
     const sid = String(studentId);
     const tagText = stringifyAttendanceTags(tags);
@@ -474,6 +513,14 @@ function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isSc
 
     return `
         <div class="cls-v4-board">
+            <div class="cls-v4-board-head">
+                <div class="name-spacer"></div>
+                <div>출결</div>
+                <div>숙제</div>
+                <div>지각</div>
+                <div>보강</div>
+                <div>상담</div>
+            </div>
             ${students.map(s => renderClassStudentRowV4B(cid, s, todayAttMap[s.id], todayHwMap[s.id], isScheduled, plannerEnabled)).join('')}
         </div>
     `;
@@ -498,6 +545,7 @@ function renderClassStudentRowV4B(cid, s, attRecordOrStatus, hwStatus, isSchedul
                 <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
                 ${renderAttendanceTagButton(s.id, today, '지각')}
                 ${renderAttendanceTagButton(s.id, today, '보강')}
+                ${renderClassroomConsultationButton(s.id, cid, today)}
             </div>
         </div>
     `;
