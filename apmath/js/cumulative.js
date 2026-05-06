@@ -1051,7 +1051,7 @@ function openSchoolExamLedger() {
     min-height: 34px;
     z-index: 3;
 }
-#seb-tbl td { padding: 5px 2px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; }
+#seb-tbl td { padding: 5px 2px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; background: var(--surface); }
 .seb-sticky-g { position: sticky; left: 0; background: var(--surface); width: 28px; min-width: 28px; max-width: 28px; font-size: 11px; font-weight: 700; color: var(--secondary); text-align: center; border-right: 1px solid var(--border); }
 .seb-sticky-c { position: sticky; left: 28px; background: var(--surface); width: 52px; min-width: 52px; max-width: 52px; font-size: 11px; font-weight: 700; color: var(--primary); text-align: center; border-right: 1px solid var(--border); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .seb-sticky-n { position: sticky; left: 80px; background: var(--surface); width: 64px; min-width: 64px; max-width: 64px; font-size: 13px; font-weight: 700; color: var(--text); padding: 6px 4px; border-right: 1px solid var(--border); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
