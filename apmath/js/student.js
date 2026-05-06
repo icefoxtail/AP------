@@ -71,9 +71,7 @@ function renderStudentDetailTab(sid, tab) {
     const cls = state.db.classes.find(c => String(c.id) === String(mIds?.class_id));
     const returnCtx = state.ui.returnView || {};
     if (returnCtx.type && typeof setModalReturnView === 'function') setModalReturnView(returnCtx);
-    const backButton = returnCtx.type
-        ? `<button class="btn" style="min-height: 44px; padding: 10px 14px; font-size: 13px; font-weight:700; line-height: 1.2; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); color: var(--secondary); cursor: pointer; white-space: nowrap;" onclick="returnFromStudentFlow(state.ui.returnView)">뒤로</button>`
-        : '';
+    const backButton = '';
 
     // 1. 프로필 헤더 (22px 대제목 및 고정 배지 규격)
     const headerHtml = `
