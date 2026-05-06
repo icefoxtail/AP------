@@ -66,7 +66,8 @@ function installTimetableStyle() {
         '.tt-tab-scroll .tab-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 16px; font-size:13px; font-weight:600; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:var(--surface); color:var(--secondary); transition:all 0.2s; cursor:pointer; }',
         '.tt-tab-scroll .tab-btn.active { background:var(--text); color:var(--surface); border-color:var(--text); font-weight:700; }',
 
-        '.tt-table-wrap { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); }',
+        '.tt-table-wrap { overflow-x:hidden; overflow-y:hidden; border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); }',
+        '@media (max-width:900px) { .tt-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; } }',
         '.tt-table { border-collapse:collapse; background:var(--surface); font-family:inherit; table-layout:fixed; width:auto; height:100%; }',
         '.tt-table tbody { overflow:hidden; }',
         '.tt-table-middle, .tt-table-high { width:auto; min-width:auto; }',
@@ -148,7 +149,7 @@ function applyTimetableFit() {
 
     wrap.style.height = availableHeight + 'px';
     wrap.style.maxHeight = availableHeight + 'px';
-    wrap.style.overflowX = 'auto';
+    wrap.style.overflowX = isMobile ? 'auto' : 'hidden';
     wrap.style.overflowY = 'hidden';
     table.style.height = availableHeight + 'px';
 
@@ -325,7 +326,7 @@ function getTimetableColumnPlan(section, visibleTeachers) {
     var teacherSlots = section === 'middle'
         ? TIMETABLE_MIDDLE_DAY_GROUPS.length * teachers.length
         : teachers.length;
-    var teacherWidth = 220;
+    var teacherWidth = 200;
 
     if (isMobile) {
         teacherWidth = 148;
