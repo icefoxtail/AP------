@@ -177,16 +177,6 @@
         .day-count { font-size: 11px; font-weight: 600; color: var(--secondary); min-height: 13px; line-height: 1.1; }
         .day-pill.is-today .day-name,
         .day-pill.is-today .day-num { color: var(--primary); }
-        .day-pill.is-today .day-num::before {
-            content: '●';
-            position: absolute;
-            top: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 7px;
-            line-height: 1;
-            color: var(--primary);
-        }
         .day-pill.selected .day-num { border-bottom: 2px solid var(--primary); padding-bottom: 2px; }
 
         .subject-strip {
@@ -533,13 +523,128 @@
             else verifyPin();
         }
 
+        // [프리미엄 로그인 화면 적용 부분]
         function renderAuth() {
             $('app').innerHTML = `
-                <div style="width:100%; max-width:340px; margin:60px auto 0; background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:24px; box-shadow:var(--shadow-sm);">
-                    <h3 style="margin:0 0 20px; font-size:18px; font-weight:800; letter-spacing:-0.5px; text-align:center;">플래너 접속</h3>
-                    <input type="text" id="auth-sid" class="input" placeholder="학생 ID" value="${escapeHtml(studentId)}">
-                    <input type="password" id="auth-pin" class="input" placeholder="PIN 번호" onkeyup="if(event.key==='Enter') doAuth()" style="margin-bottom:20px;">
-                    <button class="btn btn-primary" style="width:100%; min-height:48px;" onclick="doAuth()">입장하기</button>
+                <style>
+                    @keyframes fluidBG {
+                        0% { background-position: 0% 50%; }
+                        50% { background-position: 100% 50%; }
+                        100% { background-position: 0% 50%; }
+                    }
+                    .ap-login-fullscreen {
+                        background: radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.18) 0px, transparent 55%),
+                                    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 55%),
+                                    radial-gradient(at 100% 100%, rgba(167, 139, 250, 0.18) 0px, transparent 55%),
+                                    radial-gradient(at 0% 100%, rgba(196, 181, 253, 0.12) 0px, transparent 55%),
+                                    linear-gradient(135deg, #4F46E5 0%, #7C3AED 46%, #DB2777 100%);
+                        background-size: 200% 200%;
+                        animation: fluidBG 25s ease infinite;
+                    }
+                    .login-card {
+                        border: 1px solid rgba(255, 255, 255, 0.6);
+                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(124, 58, 237, 0.03);
+                    }
+                    @media (max-width: 760px) {
+                        .ap-login-fullscreen > div:nth-child(3) {
+                            display:flex !important;
+                            flex-direction:column !important;
+                            justify-content:space-between !important;
+                            gap:0 !important;
+                            padding:calc(34px + env(safe-area-inset-top)) 20px calc(22px + env(safe-area-inset-bottom)) !important;
+                        }
+                        .ap-login-fullscreen section:first-of-type {
+                            gap:18px !important;
+                            padding-top:18px !important;
+                        }
+                        .ap-login-fullscreen section:first-of-type > div:first-child {
+                            flex-direction:column !important;
+                            align-items:flex-start !important;
+                            gap:16px !important;
+                        }
+                        .ap-login-fullscreen section:first-of-type img {
+                            width:76px !important;
+                            height:76px !important;
+                            border-radius:21px !important;
+                        }
+                        .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(34px"] {
+                            font-size:42px !important;
+                            letter-spacing:-2.2px !important;
+                        }
+                        .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(18px"] {
+                            font-size:20px !important;
+                        }
+                        .ap-login-fullscreen section:first-of-type > div:last-child {
+                            display:none !important;
+                        }
+                        .ap-login-fullscreen section:last-of-type {
+                            border-radius:28px !important;
+                            padding:26px 20px 22px !important;
+                            background:rgba(255,255,255,0.96) !important;
+                        }
+                    }
+                    @media (max-width: 380px) {
+                        .ap-login-fullscreen > div:nth-child(3) {
+                            padding-left:16px !important;
+                            padding-right:16px !important;
+                        }
+                        .ap-login-fullscreen section:last-of-type {
+                            padding-left:18px !important;
+                            padding-right:18px !important;
+                        }
+                    }
+                </style>
+                <div class="ap-login-fullscreen" style="position:fixed; inset:0; z-index:3000; min-height:100vh; min-height:100dvh; overflow:hidden; display:flex; align-items:stretch; justify-content:center; color:#fff;">
+                    <div style="position:absolute; inset:0; background:
+                        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%),
+                        radial-gradient(circle at 88% 12%, rgba(255,255,255,0.20) 0, transparent 36%),
+                        radial-gradient(circle at 72% 86%, rgba(15,23,42,0.20) 0, transparent 42%); pointer-events:none;"></div>
+                    <div style="position:absolute; inset:0; background:rgba(15,23,42,0.08); pointer-events:none;"></div>
+
+                    <div style="position:relative; width:100%; max-width:1120px; min-height:100vh; min-height:100dvh; display:grid; grid-template-columns:minmax(0,1fr) 390px; align-items:center; gap:54px; padding:clamp(28px,5vw,72px); box-sizing:border-box;">
+                        <section style="min-width:0; display:flex; flex-direction:column; justify-content:center; gap:26px;">
+                            <div style="display:flex; align-items:center; gap:18px;">
+                                <img src="icon-192.png" alt="AP Math Planner" style="width:82px; height:82px; border-radius:22px; box-shadow:0 18px 46px rgba(15,23,42,0.24); display:block;">
+                                <div style="min-width:0;">
+                                    <div style="font-size:clamp(34px,5.2vw,64px); font-weight:800; line-height:0.95; letter-spacing:-2.8px; color:#fff; text-shadow:0 4px 12px rgba(124,58,237,0.08);">AP Math</div>
+                                    <div style="margin-top:9px; font-size:clamp(18px,2.2vw,27px); font-weight:750; line-height:1.1; letter-spacing:-0.9px; color:rgba(255,255,255,0.88);">Study Planner</div>
+                                </div>
+                            </div>
+
+                            <div style="max-width:560px;">
+                                <div style="font-size:clamp(18px,2.2vw,28px); font-weight:800; line-height:1.28; letter-spacing:-1px; color:#fff;">
+                                    스스로 계획하고 성취하는<br>나만의 학습 관리 플래너
+                                </div>
+                                <div style="margin-top:16px; font-size:15px; font-weight:650; line-height:1.7; color:rgba(255,255,255,0.74);">
+                                    목표를 설정하고, 매일의 학습을 기록하며 성장하세요.
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="login-card" style="width:100%; background:rgba(255,255,255,0.94); color:#191F28; border-radius:30px; padding:30px 26px 26px; backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);">
+                            <div style="margin-bottom:24px;">
+                                <div style="font-size:22px; font-weight:800; line-height:1.25; letter-spacing:-0.8px; color:#191F28;">플래너 접속</div>
+                                <div style="margin-top:6px; font-size:13px; font-weight:700; line-height:1.5; color:#4b5563;">학생 아이디와 PIN 번호를 입력하세요</div>
+                            </div>
+
+                            <div style="display:flex; flex-direction:column; gap:12px;">
+                                <div>
+                                    <label style="display:block; font-size:12px; font-weight:800; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;">학생 ID</label>
+                                    <input id="auth-sid" type="text" class="input" autocomplete="username" placeholder="아이디 입력" value="${escapeHtml(studentId)}" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:700; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; margin:0;">
+                                </div>
+                                <div>
+                                    <label style="display:block; font-size:12px; font-weight:800; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;">PIN 번호</label>
+                                    <input id="auth-pin" type="password" class="input" autocomplete="current-password" placeholder="PIN 4자리 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:700; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; margin:0;" onkeyup="if(event.key==='Enter')doAuth()">
+                                </div>
+                                <button class="btn btn-primary" style="width:100%; margin-top:10px; min-height:56px; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.2; border-radius:18px; border:none; background:linear-gradient(135deg,#4F46E5 0%,#DB2777 100%); color:#fff; box-shadow:0 14px 28px rgba(79,70,229,0.26);" onclick="doAuth()">입장하기</button>
+                            </div>
+
+                            <div style="margin-top:18px; padding-top:16px; border-top:1px solid #E5E8EB; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                                <span style="font-size:11px; font-weight:800; color:#8B95A1;">AP MATH STUDENT</span>
+                                <span style="font-size:11px; font-weight:800; color:#8B95A1;">Study Planner</span>
+                            </div>
+                        </section>
+                    </div>
                 </div>
             `;
             $('fab-add')?.classList.add('hidden');
