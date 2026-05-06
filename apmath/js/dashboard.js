@@ -327,7 +327,7 @@ function openAdminOperationMenu() {
             </button>
             <button class="btn" style="${cardStyle}" onclick="openAdminPinBatchModal()">
                 <div style="${titleStyle}">PIN 일괄 생성</div>
-                <div style="${descStyle}">반별로 PIN 없는 학생에게만 자동 부여</div>
+                <div style="${descStyle}">전체 재원생 중 PIN 없는 학생에게만 자동 부여</div>
             </button>
         </div>
         <div style="margin-top:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
@@ -337,34 +337,48 @@ function openAdminOperationMenu() {
 }
 
 function openAdminPinBatchModal() {
-    const classes = (state.db.classes || [])
-        .filter(c => Number(c.is_active) !== 0)
-        .sort((a, b) => {
-            const ra = getAdminClassGradeRank(a);
-            const rb = getAdminClassGradeRank(b);
-            if (ra !== rb) return ra - rb;
-            return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
-        });
+    const activeStudents = (state.db.students || []).filter(s => String(s.status || '재원') === '재원');
+    const missingPins = activeStudents.filter(s => !String(s.student_pin || '').trim());
 
-    const rows = classes.map(c => {
-        const count = (state.db.class_students || []).filter(m => String(m.class_id) === String(c.id)).length;
-        return `
-            <button class="btn" style="width:100%; min-height:52px; justify-content:space-between; padding:12px 14px; margin-bottom:8px; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:none;" onclick="handleAdminBatchGeneratePins('${apEscapeHtml(String(c.id))}')">
-                <span style="min-width:0; text-align:left;">
-                    <b style="display:block; font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(c.name || '')}</b>
-                    <span style="display:block; margin-top:2px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.4;">${apEscapeHtml(c.grade || '')} · ${count}명</span>
-                </span>
-                <span style="font-size:11px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.09); padding:5px 8px; border-radius:8px; white-space:nowrap;">PIN 생성</span>
-            </button>
-        `;
-    }).join('');
+    const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    const gradeCounts = gradeOrder
+        .map(grade => {
+            const total = activeStudents.filter(s => String(s.grade || '').includes(grade)).length;
+            const missing = missingPins.filter(s => String(s.grade || '').includes(grade)).length;
+            return { grade, total, missing };
+        })
+        .filter(row => row.total > 0 || row.missing > 0);
+
+    const gradeHtml = gradeCounts.map(row => `
+        <div style="display:flex; justify-content:space-between; align-items:center; min-height:32px; padding:6px 0; border-bottom:1px solid var(--border);">
+            <span style="font-size:13px; font-weight:800; color:var(--text);">${apEscapeHtml(row.grade)}</span>
+            <span style="font-size:12px; font-weight:700; color:var(--secondary);">미발급 ${row.missing}명 / 재원 ${row.total}명</span>
+        </div>
+    `).join('');
 
     showModal('PIN 일괄 생성', `
-        <div style="margin-bottom:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
-            선택한 반에서 <b style="color:var(--text);">PIN이 없는 학생</b>에게만 자동 부여합니다. 기존 PIN은 유지됩니다.
-        </div>
-        <div style="max-height:58vh; overflow-y:auto; padding-right:4px;">
-            ${rows || `<div style="text-align:center; color:var(--secondary); padding:28px; font-size:13px; font-weight:700;">관리할 반이 없습니다.</div>`}
+        <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
+                전체 재원생 중 <b style="color:var(--text);">PIN이 없는 학생</b>에게만 학년 규칙에 맞춰 자동 부여합니다. 기존 PIN은 변경되지 않습니다.
+            </div>
+
+            <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:14px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px; margin-bottom:10px;">
+                    <div>
+                        <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">전체 미발급 PIN</div>
+                        <div style="font-size:12px; font-weight:700; color:var(--secondary); line-height:1.45; margin-top:2px;">대상 ${missingPins.length}명 / 재원 ${activeStudents.length}명</div>
+                    </div>
+                    <div style="font-size:20px; font-weight:800; color:var(--primary); line-height:1;">${missingPins.length}</div>
+                </div>
+                <button class="btn btn-primary" style="width:100%; min-height:52px; border-radius:14px; font-size:14px; font-weight:800; box-shadow:none;" onclick="handleAdminBatchGeneratePins()" ${missingPins.length ? '' : 'disabled'}>
+                    전체 미발급 PIN 생성
+                </button>
+            </div>
+
+            <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:12px 14px;">
+                <div style="font-size:12px; font-weight:800; color:var(--secondary); margin-bottom:6px;">학년별 현황</div>
+                ${gradeHtml || `<div style="font-size:13px; color:var(--secondary); font-weight:700; text-align:center; padding:16px 0;">재원생 정보가 없습니다.</div>`}
+            </div>
         </div>
     `);
 }
@@ -376,13 +390,19 @@ function getAdminClassGradeRank(cls) {
     return idx === -1 ? order.length : idx;
 }
 
-async function handleAdminBatchGeneratePins(classId) {
-    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
-    const clsName = cls?.name || '선택한 반';
-    if (!confirm(`${clsName}에서 PIN이 없는 학생에게만 자동 PIN을 생성할까요?\n기존 PIN은 변경되지 않습니다.`)) return;
+async function handleAdminBatchGeneratePins() {
+    const activeStudents = (state.db.students || []).filter(s => String(s.status || '재원') === '재원');
+    const missingPins = activeStudents.filter(s => !String(s.student_pin || '').trim());
+
+    if (!missingPins.length) {
+        toast('PIN 미발급 학생이 없습니다.', 'info');
+        return;
+    }
+
+    if (!confirm(`전체 재원생 중 PIN이 없는 ${missingPins.length}명에게 자동 PIN을 생성할까요?\n기존 PIN은 변경되지 않습니다.`)) return;
 
     try {
-        const r = await api.post('students/batch-pins', { class_id: classId });
+        const r = await api.post('students/batch-pins', {});
         if (r?.success) {
             toast(`PIN ${r.count || 0}개 생성 완료`, 'success');
             await loadData();
