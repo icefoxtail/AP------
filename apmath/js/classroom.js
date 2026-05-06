@@ -3,7 +3,7 @@
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Minimalism Polish]: 46px 1줄 압축 뷰, 파스텔 상태 뱃지, 모바일 핀포인트 렌더링
  * [Core Logic Preserved]: 기존 API 통신, 낙관적 롤백 방어, 상태 관리 보존
- * [V4 FINAL-3]: Summary ID 고정, insertAdjacentHTML 안정 렌더링, 플래너 관리 함수 포함
+ * [V4 DESIGN RESET]: 이름 | 출결 | 숙제 | 지각 | 보강 5열 재구성, 학교/상세/출석부 버튼 제거
  */
 
 // ── 필수 유틸리티 (중복 선언 방어) ──────────────────────────────────
@@ -42,19 +42,21 @@ function injectClassroomStyles() {
         .cls-v4-section h3 { margin:0; font-size:14px; font-weight:700; color:var(--text); letter-spacing:-0.2px; }
         .cls-v4-section span { font-size:11px; font-weight:700; color:var(--secondary); }
         .cls-v4-board { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--surface); box-shadow:none; }
-        .cls-v4-row { display:flex; align-items:center; gap:8px; min-height:48px; padding:6px 16px; border-bottom:1px solid var(--border); background:var(--surface); }
+        .cls-v4-row { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px; align-items:center; gap:6px; min-height:46px; padding:5px 12px; border-bottom:1px solid var(--border); background:var(--surface); }
         .cls-v4-row:last-child { border-bottom:none; }
         .cls-v4-row:active { background:var(--surface-2); }
-        .cls-v4-name-col { flex:1 1 auto; min-width:96px; max-width:42%; display:flex; flex-direction:column; align-items:flex-start; gap:2px; cursor:pointer; overflow:hidden; }
+        .cls-v4-name-col { min-width:0; display:flex; align-items:center; cursor:pointer; overflow:hidden; }
         .cls-v4-student { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:700; color:var(--text); line-height:1.2; }
-        .cls-v4-meta-mobile { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:10.5px; font-weight:600; color:var(--secondary); line-height:1.2; }
-        .cls-v4-badges { flex:0 0 auto; display:flex; gap:7px; align-items:center; }
-        .cls-v4-status { min-width:58px; height:38px; min-height:38px; padding:0 8px; border-radius:10px; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none; }
-        .cls-v4-status.hw { min-width:54px; }
-        .cls-v4-actions { flex:0 0 auto; display:flex; gap:6px; align-items:center; justify-content:flex-end; }
+        .cls-v4-meta-mobile { display:none; }
+        .cls-v4-badges { display:contents; }
+        .cls-v4-status { width:42px; min-width:42px; height:36px; min-height:36px; padding:0; border-radius:10px; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none; }
+        .cls-v4-status.hw { width:42px; min-width:42px; }
+        .cls-v4-status.tag { background:transparent; color:var(--secondary); border:1px solid var(--border); font-size:14px; }
+        .cls-v4-status.tag.on { background:rgba(26,92,255,0.10); color:var(--primary); border-color:rgba(26,92,255,0.18); }
+        .cls-v4-actions { display:none; }
         .cls-v4-pad-btns { display:none; gap:6px; }
         .cls-v4-pad-btn { height:32px; min-height:32px; padding:0 10px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--text-soft); font-size:11px; font-weight:700; }
-        .cls-v4-more { width:36px; height:38px; min-height:38px; padding:0; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--secondary); font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+        .cls-v4-more { display:none; }
         .cls-v4-empty { padding:34px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; }
         .cls-v4-legacy-table { padding:8px 0; border-radius:18px; border:1px solid var(--border); background:var(--surface); box-shadow:none; }
         .cls-v4-ledger-mode-active { background:var(--primary) !important; color:#fff !important; }
@@ -63,19 +65,19 @@ function injectClassroomStyles() {
             .cls-v4-top { border-left:1px solid var(--border); border-right:1px solid var(--border); border-radius:0 0 18px 18px; }
             .cls-v4-board { margin:0 16px; border:1px solid var(--border); border-radius:18px; overflow:hidden; }
             .cls-v4-tools { padding-left:16px; padding-right:16px; }
-            .cls-v4-row { min-height:50px; padding:7px 18px; }
-            .cls-v4-name-col { max-width:none; flex:1 1 240px; }
-            .cls-v4-badges { gap:8px; }
-            .cls-v4-status { min-width:66px; height:38px; }
-            .cls-v4-status.hw { min-width:60px; }
+            .cls-v4-row { grid-template-columns:minmax(120px,1fr) 54px 54px 54px 54px; min-height:50px; padding:7px 18px; gap:8px; }
+            .cls-v4-name-col { max-width:none; }
+            .cls-v4-badges { display:contents; }
+            .cls-v4-status { width:54px; min-width:54px; height:38px; }
+            .cls-v4-status.hw { width:54px; min-width:54px; }
             .cls-v4-pad-btns { display:flex; }
             .cls-v4-more { display:none; }
         }
         @media (max-width:380px) {
-            .cls-v4-row { padding-left:12px; padding-right:12px; gap:6px; }
-            .cls-v4-name-col { min-width:86px; max-width:38%; }
-            .cls-v4-status { min-width:52px; padding:0 6px; font-size:11.5px; }
-            .cls-v4-status.hw { min-width:50px; }
+            .cls-v4-row { grid-template-columns:minmax(58px,1fr) 39px 39px 39px 39px; padding-left:10px; padding-right:10px; gap:5px; }
+            .cls-v4-name-col { min-width:0; max-width:none; }
+            .cls-v4-status { width:39px; min-width:39px; padding:0; font-size:14px; }
+            .cls-v4-status.hw { width:39px; min-width:39px; }
             .cls-v4-more { width:32px; }
         }
     `;
@@ -135,9 +137,10 @@ function getAttendanceDisplayStatus(status, isClassDay = true) {
 }
 
 function getNextAttendanceStatus(status, isClassDay = true) {
-    const cur = getAttendanceDisplayStatus(status, isClassDay);
-    if (cur === '등원') return '결석';
-    if (cur === '결석') return '수업 없음';
+    const safe = String(status || '').trim();
+    if (!safe || safe === '미기록' || safe === '수업 없음') return '등원';
+    if (safe === '등원') return '결석';
+    if (safe === '결석') return '수업 없음';
     return '등원'; 
 }
 
@@ -183,9 +186,10 @@ function getHomeworkDisplayStatus(status, isClassDay = true) {
 }
 
 function getNextHomeworkStatus(status, isClassDay = true) {
-    const cur = getHomeworkDisplayStatus(status, isClassDay);
-    if (cur === '완료') return '미완료';
-    if (cur === '미완료') return '공란';
+    const safe = String(status || '').trim();
+    if (!safe || safe === '미기록' || safe === '공란') return '완료';
+    if (safe === '완료') return '미완료';
+    if (safe === '미완료') return '공란';
     return '완료';
 }
 
@@ -213,42 +217,119 @@ function getHomeworkStatusStyle(status, isClassDay = true) {
 
 
 function getV4CompactAttendanceLabel(status, isClassDay = true) {
-    const cur = getAttendanceDisplayStatus(status, isClassDay);
-    if (cur === '등원') return '등원';
-    if (cur === '결석') return '결석';
-    if (cur === '지각') return '지각';
-    if (cur === '보강') return '보강';
-    if (cur === '상담') return '상담';
-    if (cur === '수업 없음') return '-';
-    return cur || '-';
+    const cur = String(status || '').trim();
+    if (cur === '등원') return '○';
+    if (cur === '결석') return '×';
+    return '';
 }
 
 function getV4CompactHomeworkLabel(status, isClassDay = true) {
-    const cur = getHomeworkDisplayStatus(status, isClassDay);
-    if (cur === '완료') return '완료';
-    if (cur === '미완료') return '미완료';
-    if (cur === '공란') return '-';
-    return cur || '-';
+    const cur = String(status || '').trim();
+    if (cur === '완료') return '○';
+    if (cur === '미완료') return '×';
+    return '';
 }
 
 function getV4BadgeStyle(type, status, isClassDay = true) {
     const safeType = String(type || '').trim();
-    const cur = safeType === 'att'
-        ? getAttendanceDisplayStatus(status, isClassDay)
-        : safeType === 'hw'
-            ? getHomeworkDisplayStatus(status, isClassDay)
-            : String(status || '').trim();
+    const cur = String(status || '').trim();
 
-    if (cur === '등원') return 'background: rgba(0,184,148,0.12); color: #008F72; border: 1px solid transparent;';
-    if (cur === '완료') return 'background: rgba(26,92,255,0.10); color: var(--primary); border: 1px solid transparent;';
-    if (cur === '결석') return 'background: rgba(232,65,79,0.12); color: #D92D3A; border: 1px solid transparent;';
-    if (cur === '미완료') return 'background: rgba(255,165,2,0.14); color: #D97706; border: 1px solid transparent;';
-    if (cur === '지각') return 'background: rgba(255,165,2,0.14); color: #D97706; border: 1px solid transparent;';
-    if (cur === '보강') return 'background: rgba(26,92,255,0.10); color: var(--primary); border: 1px solid transparent;';
-    if (cur === '상담') return 'background: rgba(124,58,237,0.12); color: #6D28D9; border: 1px solid transparent;';
-    if (cur === '수업 없음' || cur === '공란' || !cur) return 'background: transparent; color: var(--secondary); border: 1px dashed var(--border);';
-    return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
+    if (safeType === 'att') {
+        if (cur === '등원') return 'background:rgba(0,184,148,0.10); color:#008F72; border:1px solid transparent;';
+        if (cur === '결석') return 'background:rgba(232,65,79,0.10); color:#D92D3A; border:1px solid transparent;';
+        return 'background:transparent; color:var(--secondary); border:1px solid var(--border);';
+    }
+
+    if (safeType === 'hw') {
+        if (cur === '완료') return 'background:rgba(0,184,148,0.10); color:#008F72; border:1px solid transparent;';
+        if (cur === '미완료') return 'background:rgba(232,65,79,0.10); color:#D92D3A; border:1px solid transparent;';
+        return 'background:transparent; color:var(--secondary); border:1px solid var(--border);';
+    }
+
+    return 'background:transparent; color:var(--secondary); border:1px solid var(--border);';
 }
+
+function normalizeAttendanceTags(tags) {
+    if (Array.isArray(tags)) return tags.map(v => String(v).trim()).filter(Boolean);
+    return String(tags || '').split(',').map(v => v.trim()).filter(Boolean);
+}
+
+function stringifyAttendanceTags(tags) {
+    return Array.from(new Set(normalizeAttendanceTags(tags))).join(',');
+}
+
+function getAttendanceMetaForStudentDate(studentId, date) {
+    const sid = String(studentId);
+    const rec = (state.db.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === String(date || ''));
+    return {
+        record: rec || null,
+        tags: normalizeAttendanceTags(rec?.tags || ''),
+        memo: String(rec?.memo || '')
+    };
+}
+
+function hasAttendanceTag(studentId, date, tag) {
+    return getAttendanceMetaForStudentDate(studentId, date).tags.includes(tag);
+}
+
+function renderAttendanceTagButton(studentId, date, tag) {
+    const on = hasAttendanceTag(studentId, date, tag);
+    const label = on ? '○' : '';
+    const safeTag = apEscapeHtml(tag);
+    return `<button class="btn cls-v4-status tag ${on ? 'on' : ''}" title="${safeTag}" onclick="toggleAttendanceTag('${studentId}', '${date}', '${safeTag}')">${label}</button>`;
+}
+
+function syncAttendanceMetaToState(studentId, date, tags, memo) {
+    const sid = String(studentId);
+    const tagText = stringifyAttendanceTags(tags);
+    const memoText = memo === undefined ? undefined : String(memo || '');
+    if (!state.db.attendance) state.db.attendance = [];
+    let rec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === String(date || ''));
+    if (!rec) {
+        rec = { student_id: sid, date, status: '미기록' };
+        state.db.attendance.push(rec);
+    }
+    rec.tags = tagText;
+    if (memoText !== undefined) rec.memo = memoText;
+    rec.updated_at = new Date().toISOString();
+
+    const month = String(date || '').slice(0, 7);
+    const cache = state.ui?.monthlyAttendanceCache?.[month];
+    if (cache && Array.isArray(cache.attendance)) {
+        let mRec = cache.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === String(date || ''));
+        if (!mRec) {
+            mRec = { student_id: sid, date, status: rec.status || '미기록' };
+            cache.attendance.push(mRec);
+        }
+        mRec.tags = tagText;
+        if (memoText !== undefined) mRec.memo = memoText;
+        mRec.updated_at = rec.updated_at;
+    }
+    return rec;
+}
+
+async function toggleAttendanceTag(studentId, date, tag) {
+    const sid = String(studentId);
+    const meta = getAttendanceMetaForStudentDate(sid, date);
+    const prevTags = stringifyAttendanceTags(meta.tags);
+    const nextTags = meta.tags.includes(tag)
+        ? meta.tags.filter(v => v !== tag)
+        : meta.tags.concat(tag);
+    const nextTagText = stringifyAttendanceTags(nextTags);
+
+    syncAttendanceMetaToState(sid, date, nextTags, meta.memo);
+    if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+
+    try {
+        const r = await api.patch('attendance', { studentId: sid, date, tags: nextTagText });
+        if (!r?.success) throw new Error('fail');
+    } catch (e) {
+        syncAttendanceMetaToState(sid, date, prevTags, meta.memo);
+        if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+        toast('저장 실패', 'warn');
+    }
+}
+
 
 function rerenderClassPreserveScroll(classId) {
     const y = window.scrollY || window.pageYOffset || 0;
@@ -295,10 +376,8 @@ function computeClassTodaySummary(classId) {
 
     let attCount = 0; let hwCount = 0;
     active.forEach(s => {
-        const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id], isScheduled);
-        if (attStatus === '등원') attCount++;
-        const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id], isScheduled);
-        if (hwStatus === '완료') hwCount++;
+        if (String(todayAttMap[s.id] || '').trim() === '등원') attCount++;
+        if (String(todayHwMap[s.id] || '').trim() === '완료') hwCount++;
     });
 
     let test = 0;
@@ -339,18 +418,22 @@ function getClassroomActiveStudents(cid) {
 function buildClassroomTodayMaps(students, today) {
     const idSet = new Set(students.map(s => String(s.id)));
     const todayAttMap = {};
+    const todayAttRecordMap = {};
     const todayHwMap = {};
 
     for (let i = 0; i < state.db.attendance.length; i++) {
         const a = state.db.attendance[i];
-        if (a.date === today && idSet.has(String(a.student_id))) todayAttMap[a.student_id] = a.status;
+        if (a.date === today && idSet.has(String(a.student_id))) {
+            todayAttMap[a.student_id] = a.status;
+            todayAttRecordMap[a.student_id] = a;
+        }
     }
     for (let i = 0; i < state.db.homework.length; i++) {
         const h = state.db.homework[i];
         if (h.date === today && idSet.has(String(h.student_id))) todayHwMap[h.student_id] = h.status;
     }
 
-    return { todayAttMap, todayHwMap };
+    return { todayAttMap, todayAttRecordMap, todayHwMap };
 }
 
 function renderClassTopBarV4B(cls, summary, today) {
@@ -379,7 +462,6 @@ function renderClassToolBarV4B(cid, plannerEnabled) {
             <button class="btn cls-v4-tool" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn cls-v4-tool" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
             <button class="btn cls-v4-tool" onclick="openClassRecordModal('${cid}')">진도관리</button>
-            <button class="btn cls-v4-tool" onclick="ledgerState.classId='${cid}'; renderAttendanceLedger();">출석부</button>
             ${plannerEnabled ? `<button class="btn cls-v4-tool highlight" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
         </div>
     `;
@@ -397,31 +479,25 @@ function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isSc
     `;
 }
 
-function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plannerEnabled) {
+function renderClassStudentRowV4B(cid, s, attRecordOrStatus, hwStatus, isScheduled, plannerEnabled) {
+    const today = new Date().toLocaleDateString('sv-SE');
+    const attRecord = attRecordOrStatus && typeof attRecordOrStatus === 'object' ? attRecordOrStatus : null;
+    const attStatus = attRecord ? attRecord.status : attRecordOrStatus;
     const attStyle = getV4BadgeStyle('att', attStatus, isScheduled);
     const attLabel = getV4CompactAttendanceLabel(attStatus, isScheduled);
     const hwStyle = getV4BadgeStyle('hw', hwStatus, isScheduled);
     const hwLabel = getV4CompactHomeworkLabel(hwStatus, isScheduled);
-    const schoolText = [s.school_name, s.grade].filter(Boolean).join(' ');
-    const safePlanner = plannerEnabled ? 'true' : 'false';
 
     return `
         <div class="cls-v4-row" id="class-row-${s.id}">
             <div class="cls-v4-name-col" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">
                 <div class="cls-v4-student">${apEscapeHtml(s.name)}</div>
-                <div class="cls-v4-meta-mobile">${apEscapeHtml(schoolText || '-')}</div>
             </div>
             <div class="cls-v4-badges">
                 <button class="btn cls-v4-status class-att-toggle" style="${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
                 <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
-            </div>
-            <div class="cls-v4-actions">
-                <div class="cls-v4-pad-btns">
-                    <button class="btn cls-v4-pad-btn" onclick="if(typeof openOMR==='function') openOMR('${s.id}', '단원평가', 20, '${cid}', '', '', 'class')">OMR</button>
-                    ${plannerEnabled ? `<button class="btn cls-v4-pad-btn" style="color:var(--primary);" onclick="copyPlannerStudentLink('${s.id}')">플래너</button>` : ''}
-                    <button class="btn cls-v4-pad-btn" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">상세</button>
-                </div>
-                <button class="btn cls-v4-more" onclick="openStudentActionSheetV4('${s.id}', '${cid}', ${safePlanner})">⋮</button>
+                ${renderAttendanceTagButton(s.id, today, '지각')}
+                ${renderAttendanceTagButton(s.id, today, '보강')}
             </div>
         </div>
     `;
@@ -451,7 +527,7 @@ function updateStudentRowDOM(sid, cid) {
     const attCur = state.db.attendance.find(a => String(a.student_id) === String(sid) && a.date === today);
     const hwCur = state.db.homework.find(h => String(h.student_id) === String(sid) && h.date === today);
     const plannerEnabled = isPlannerTargetClass(cls);
-    const newHtml = renderClassStudentRowV4B(cid, student, attCur?.status, hwCur?.status, summary.isScheduled, plannerEnabled);
+    const newHtml = renderClassStudentRowV4B(cid, student, attCur || null, hwCur?.status, summary.isScheduled, plannerEnabled);
 
     row.insertAdjacentHTML('afterend', newHtml);
     row.remove();
@@ -490,7 +566,7 @@ function renderClass(cid) {
     const today = new Date().toLocaleDateString('sv-SE');
     const summary = computeClassTodaySummary(cid);
     const students = getClassroomActiveStudents(cid);
-    const { todayAttMap, todayHwMap } = buildClassroomTodayMaps(students, today);
+    const { todayAttMap, todayAttRecordMap, todayHwMap } = buildClassroomTodayMaps(students, today);
     const plannerEnabled = isPlannerTargetClass(cls);
 
     document.getElementById('app-root').innerHTML = `
@@ -501,7 +577,7 @@ function renderClass(cid) {
                 <h3>학생 명단</h3>
                 <span>${students.length}명</span>
             </div>
-            ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled)}
+            ${renderClassStudentBoardV4B(cid, students, todayAttRecordMap, todayHwMap, summary.isScheduled, plannerEnabled)}
         </div>
     `;
 

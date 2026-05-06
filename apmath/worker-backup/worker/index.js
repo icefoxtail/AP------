@@ -583,15 +583,26 @@ export default {
         if (resource === 'attendance-batch' && method === 'POST') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
           const data = await request.json();
-          const entries = data.entries || [];
+          const entries = Array.isArray(data.entries) ? data.entries : [];
+
           for (const { studentId } of entries) {
-            if (!(await canAccessStudent(teacher, studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            if (!(await canAccessStudent(teacher, studentId, env))) {
+              return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+            }
           }
+
           const stmts = entries.map(({ studentId, status, date }) =>
-            env.DB.prepare("INSERT INTO attendance (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status")
-              .bind(`${studentId}_${date}`, studentId, status, date)
+            env.DB.prepare(`
+              INSERT INTO attendance (id, student_id, status, date, created_at, updated_at)
+              VALUES (?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+              ON CONFLICT(id) DO UPDATE SET
+                status = excluded.status,
+                updated_at = DATETIME('now')
+            `).bind(`${studentId}_${date}`, studentId, status, date)
           );
+
           if (stmts.length) await env.DB.batch(stmts);
           return new Response(JSON.stringify({ success: true }), { headers });
         }
@@ -612,13 +623,95 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        if (method === 'PATCH' && (resource === 'attendance' || resource === 'homework')) {
+        if (method === 'PATCH' && resource === 'attendance') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
           const d = await request.json();
-          if (!(await canAccessStudent(teacher, d.studentId, env))) return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
-          const table = resource === 'attendance' ? 'attendance' : 'homework';
-          await env.DB.prepare(`INSERT INTO ${table} (id, student_id, status, date, created_at) VALUES (?, ?, ?, ?, DATETIME('now')) ON CONFLICT(id) DO UPDATE SET status=excluded.status`).bind(`${d.studentId}_${d.date}`, d.studentId, d.status, d.date).run();
+          const studentId = d.studentId;
+          const date = d.date;
+
+          if (!studentId || !date) {
+            return new Response(JSON.stringify({ success: false, message: 'studentId and date are required' }), { status: 400, headers });
+          }
+
+          if (!(await canAccessStudent(teacher, studentId, env))) {
+            return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          }
+
+          const hasStatus = Object.prototype.hasOwnProperty.call(d, 'status');
+          const hasTags = Object.prototype.hasOwnProperty.call(d, 'tags');
+          const hasMemo = Object.prototype.hasOwnProperty.call(d, 'memo');
+
+          if (!hasStatus && !hasTags && !hasMemo) {
+            return new Response(JSON.stringify({ success: false, message: 'status, tags, or memo is required' }), { status: 400, headers });
+          }
+
+          const normalizeText = value => {
+            if (Array.isArray(value)) {
+              return value.map(v => String(v || '').trim()).filter(Boolean).join(',');
+            }
+            return String(value ?? '').trim();
+          };
+
+          const id = `${studentId}_${date}`;
+          const existing = await env.DB.prepare('SELECT id FROM attendance WHERE id = ?').bind(id).first();
+
+          if (!existing) {
+            const insertStatus = hasStatus ? normalizeText(d.status) : '미기록';
+            const insertTags = hasTags ? normalizeText(d.tags) : '';
+            const insertMemo = hasMemo ? normalizeText(d.memo) : '';
+
+            await env.DB.prepare(`
+              INSERT INTO attendance (id, student_id, status, date, tags, memo, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+            `).bind(id, studentId, insertStatus, date, insertTags, insertMemo).run();
+
+            return new Response(JSON.stringify({ success: true }), { headers });
+          }
+
+          const sets = [];
+          const binds = [];
+
+          if (hasStatus) {
+            sets.push('status = ?');
+            binds.push(normalizeText(d.status));
+          }
+
+          if (hasTags) {
+            sets.push('tags = ?');
+            binds.push(normalizeText(d.tags));
+          }
+
+          if (hasMemo) {
+            sets.push('memo = ?');
+            binds.push(normalizeText(d.memo));
+          }
+
+          sets.push("updated_at = DATETIME('now')");
+          binds.push(id);
+
+          await env.DB.prepare(`UPDATE attendance SET ${sets.join(', ')} WHERE id = ?`).bind(...binds).run();
+
+          return new Response(JSON.stringify({ success: true }), { headers });
+        }
+
+        if (method === 'PATCH' && resource === 'homework') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          const d = await request.json();
+
+          if (!(await canAccessStudent(teacher, d.studentId, env))) {
+            return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          }
+
+          await env.DB.prepare(`
+            INSERT INTO homework (id, student_id, status, date, created_at)
+            VALUES (?, ?, ?, ?, DATETIME('now'))
+            ON CONFLICT(id) DO UPDATE SET status = excluded.status
+          `).bind(`${d.studentId}_${d.date}`, d.studentId, d.status, d.date).run();
+
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
