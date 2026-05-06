@@ -590,28 +590,35 @@ function _ttIsStudentLeave(s) {
     return !!(s && (s.status === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
 }
 
+function _ttFirstNonEmptyArray() {
+    for (var i = 0; i < arguments.length; i++) {
+        if (Array.isArray(arguments[i]) && arguments[i].length > 0) return arguments[i];
+    }
+    return [];
+}
+
 function getTimetableClassStudentsWithInfo(classId) {
     var db = _getAllDb();
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
     var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
 
-    var csSource =
-        mainDb.timetable_class_students ||
-        db.timetable_class_students ||
-        allDb.timetable_class_students ||
-        mainDb.class_students ||
-        db.class_students ||
-        allDb.class_students ||
-        [];
+    var csSource = _ttFirstNonEmptyArray(
+        mainDb.timetable_class_students,
+        db.timetable_class_students,
+        allDb.timetable_class_students,
+        mainDb.class_students,
+        db.class_students,
+        allDb.class_students
+    );
 
-    var stSource =
-        mainDb.timetable_students ||
-        db.timetable_students ||
-        allDb.timetable_students ||
-        mainDb.students ||
-        db.students ||
-        allDb.students ||
-        [];
+    var stSource = _ttFirstNonEmptyArray(
+        mainDb.timetable_students,
+        db.timetable_students,
+        allDb.timetable_students,
+        mainDb.students,
+        db.students,
+        allDb.students
+    );
 
     var sIds = csSource
         .filter(function(cs) { return String(cs.class_id) === String(classId); })
