@@ -1030,7 +1030,7 @@ async function openExamGradeView(classId) {
                     <div style="font-size: 20px; font-weight:700; color: var(--primary); line-height: 1;">${avg}</div>
                     <div style="font-size: 10px; color: var(--secondary); font-weight:700; margin-top:4px;">평균</div>
                 </div>
-                <button class="btn" onclick="event.stopPropagation(); closeModal(true); if(typeof openOMR==='function') openOMR('', '${String(exam.title || '').replace(/'/g, "\\'")}', ${qCount || 20}, '${classId}', '', '${archiveArg}', 'examList', '${exam.date}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">입력</button>
+               <button class="btn" onclick="event.stopPropagation(); openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
             </div>
         </div>`;
     }).join('');
