@@ -135,31 +135,51 @@ function buildUserText(systemPrompt, userPrompt, payload, schema) {
   return sections.join('\n');
 }
 
-async function callGeminiOnce({ apiKey, model, systemPrompt, userPrompt, payload, schema }) {
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-goog-api-key': apiKey
-    },
-    body: JSON.stringify({
-      contents: [
-        {
-          role: 'user',
-          parts: [
-            {
-              text: buildUserText(systemPrompt, userPrompt, payload, schema)
-            }
-          ]
+async function callGeminiOnce({ apiKey, model, systemPrompt, userPrompt, payload, schema, startedAt }) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 18000);
+  let response;
+
+  try {
+    response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': apiKey
+      },
+      signal: controller.signal,
+      body: JSON.stringify({
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              {
+                text: buildUserText(systemPrompt, userPrompt, payload, schema)
+              }
+            ]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.25,
+          maxOutputTokens: 4500,
+          responseMimeType: 'application/json'
         }
-      ],
-      generationConfig: {
-        temperature: 0.25,
-        maxOutputTokens: 6000,
-        responseMimeType: 'application/json'
-      }
-    })
-  });
+      })
+    });
+  } catch (error) {
+    if (error?.name === 'AbortError') {
+      console.error('[REPORT_AI_PROXY_TIMEOUT]', {
+        model,
+        elapsedMs: Date.now() - startedAt
+      });
+      const timeoutError = new Error(`Gemini timeout: ${model}`);
+      timeoutError.retryNextModel = true;
+      throw timeoutError;
+    }
+    throw error;
+  } finally {
+    clearTimeout(timer);
+  }
 
   if (!response.ok) {
     const detail = await response.text().catch(() => '');
@@ -202,6 +222,8 @@ async function callGeminiReportAnalysis({ systemPrompt, userPrompt, payload, sch
   if (!apiKey) {
     throw new Error('GEMINI_API_KEY missing');
   }
+  const startedAt = Date.now();
+  const overallTimeoutMs = 28000;
 
   const modelCandidates = [
     process.env.GEMINI_REPORT_MODEL || 'gemini-3-flash-preview',
@@ -211,16 +233,27 @@ async function callGeminiReportAnalysis({ systemPrompt, userPrompt, payload, sch
 
   let lastErrorMessage = 'unknown error';
 
-  for (const model of modelCandidates) {
+  for (let i = 0; i < modelCandidates.length; i++) {
+    if (Date.now() - startedAt > overallTimeoutMs) {
+      lastErrorMessage = `Gemini timeout: overall retry limit exceeded (${Date.now() - startedAt}ms)`;
+      break;
+    }
+
+    const model = modelCandidates[i];
     try {
-      return await callGeminiOnce({ apiKey, model, systemPrompt, userPrompt, payload, schema });
+      return await callGeminiOnce({ apiKey, model, systemPrompt, userPrompt, payload, schema, startedAt });
     } catch (error) {
       lastErrorMessage = String(error?.message || error || 'unknown error');
       console.error('[REPORT_AI_PROXY_GEMINI_ERROR]', {
         message: lastErrorMessage,
-        model
+        model,
+        elapsedMs: Date.now() - startedAt
       });
       if (!(error?.retryNextModel || error?.skipModel)) break;
+      if (Date.now() - startedAt > overallTimeoutMs) break;
+      if (Date.now() - startedAt > 22000 && i < modelCandidates.length - 2) {
+        i = modelCandidates.length - 2;
+      }
     }
   }
 
