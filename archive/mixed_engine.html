@@ -385,6 +385,8 @@ function shouldRenderSubmitQr() {
 function buildSubmitQrTargetUrl() {
     const params = new URLSearchParams(window.location.search);
     const classId = params.get('class') || '';
+    const teacherName = params.get('teacher') || '';
+    const className = params.get('className') || '';
 
     let date = params.get('date') || '';
     if (!date) {
@@ -400,6 +402,8 @@ function buildSubmitQrTargetUrl() {
 
     const url = new URL('../check/', window.location.href);
     if (classId) url.searchParams.set('class', classId);
+    if (teacherName) url.searchParams.set('teacher', teacherName);
+    if (className) url.searchParams.set('className', className);
     url.searchParams.set('exam', exam);
     url.searchParams.set('date', date);
     url.searchParams.set('q', q);
