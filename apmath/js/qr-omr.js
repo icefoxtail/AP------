@@ -295,25 +295,30 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 /**
  * 성적 직접 입력 모달 (OMR) 오픈
  */
-function openOMR(sid, presetTitle = '') {
+function openOMR(sid, presetTitle = '', presetQ = '', presetClassId = '', sessionId = '', presetArchiveFile = '', returnSource = '', presetExamDate = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
     
-    const mapObj = state.db.class_students.find(m => m.student_id === sid);
-    const classId = mapObj ? mapObj.class_id : '';
+    const mapObj = state.db.class_students.find(m => String(m.student_id) === String(sid));
+    const classId = presetClassId || (mapObj ? mapObj.class_id : '');
     
-    // [Fix 1] 동적 문항수(q) 처리 로직 (시그니처 확장 없이)
-    const inferredQ = todayExam?.q || findExamQuestionCount(presetTitle, classId) || 20;
+    // [Archive Link Fix] 시험성적 화면에서 넘어온 문항 수/반/아카이브/날짜 컨텍스트를 우선 사용한다.
+    const inferredQ = presetQ || todayExam?.q || findExamQuestionCount(presetTitle, classId) || 20;
     const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
 
     const defaultArchiveFile = normalizeQrArchiveFile(
-        localStorage.getItem('AP_LAST_ARCHIVE_FILE') || ''
+        presetArchiveFile || localStorage.getItem('AP_LAST_ARCHIVE_FILE') || ''
     );
+    const defaultExamDate = presetExamDate || new Date().toLocaleDateString('sv-SE');
 
     const checkedWrongIds = [];
 
     showModal('성적 직접 입력', `
         <div style="display:flex;flex-direction:column;gap:18px;">
+            <input type="hidden" id="omr-classId" value="${String(classId || '').replace(/"/g, '&quot;')}">
+            <input type="hidden" id="omr-sessionId" value="${String(sessionId || '').replace(/"/g, '&quot;')}">
+            <input type="hidden" id="omr-returnSource" value="${String(returnSource || '').replace(/"/g, '&quot;')}">
+            <input type="hidden" id="omr-date" value="${String(defaultExamDate || '').replace(/"/g, '&quot;')}">
             <div style="display:flex; gap:12px;">
                 <div style="flex:2;">
                     <label style="font-size:12px;font-weight:700;color:var(--secondary);margin-bottom:8px;display:block;">시험명</label>
@@ -399,14 +404,17 @@ async function handleOMRSave(sid) {
     const score = Math.round((q - wrs.length) * (100 / q));
     
     let archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
+    const contextClassId = document.getElementById('omr-classId')?.value || '';
+    const contextSessionId = document.getElementById('omr-sessionId')?.value || '';
+    const returnSource = document.getElementById('omr-returnSource')?.value || '';
     
-    let classId = state.ui?.currentClassId;
+    let classId = contextClassId || state.ui?.currentClassId;
     if (!classId) {
-        const mapObj = state.db.class_students.find(m => m.student_id === sid);
+        const mapObj = state.db.class_students.find(m => String(m.student_id) === String(sid));
         classId = mapObj ? mapObj.class_id : null;
     }
 
-    const savedExamDate = new Date().toLocaleDateString('sv-SE');
+    const savedExamDate = document.getElementById('omr-date')?.value || new Date().toLocaleDateString('sv-SE');
 
     const payload = {
         student_id: sid, 
@@ -417,6 +425,11 @@ async function handleOMRSave(sid) {
         question_count: q, 
         class_id: classId
     };
+
+    if (contextSessionId) {
+        payload.id = contextSessionId;
+        payload.session_id = contextSessionId;
+    }
 
     if (archiveFile) {
         payload.archive_file = archiveFile;
@@ -437,7 +450,11 @@ async function handleOMRSave(sid) {
     // 전체 loadData() 대신 부분 갱신 및 가벼운 라우팅으로 성능 최적화
     await refreshDataOnly();
 
-    if (state.ui.currentClassId) {
+    if (returnSource === 'examDetail' && classId && typeof openExamDetail === 'function') {
+        openExamDetail(classId, title, savedExamDate, archiveFile);
+    } else if (returnSource === 'examList' && classId && typeof openExamGradeView === 'function') {
+        openExamGradeView(classId);
+    } else if (state.ui.currentClassId) {
         renderClass(state.ui.currentClassId);
     } else {
         renderDashboard();
