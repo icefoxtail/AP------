@@ -973,8 +973,12 @@ function makeExamListKey(title, date, archiveFile = '') {
     return `${safeTitle}||${safeDate}`;
 }
 
-function makeExamDetailKey(title, date) {
-    return `${String(title || '')}||${String(date || '')}`;
+function makeExamDetailKey(title, date, archiveFile = '') {
+    const safeTitle = String(title || '');
+    const safeDate = String(date || '');
+    const safeArchive = String(archiveFile || '');
+    if (safeArchive) return `${safeTitle}||${safeDate}||${safeArchive}`;
+    return `${safeTitle}||${safeDate}`;
 }
 
 async function openExamGradeView(classId) {
@@ -1020,7 +1024,7 @@ async function openExamGradeView(classId) {
         const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
         const pct = activeCountForAssignment ? Math.round((cnt / activeCountForAssignment) * 100) : 0;
         const archiveArg = String(exam.archiveFile || '').replace(/'/g, "\\'");
-        return `<div onclick="openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}')" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
+        return `<div onclick="openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}', '${archiveArg}')" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
             <div>
                 <div style="font-weight:700; color: var(--text); font-size: 15px; line-height: 1.4;">${exam.title}</div>
                 <div style="font-size: 11px; color: var(--secondary); margin-top: 4px; font-weight: 600; line-height: 1.5;">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${activeCountForAssignment}명 (${pct}%)</div>
@@ -1030,7 +1034,7 @@ async function openExamGradeView(classId) {
                     <div style="font-size: 20px; font-weight:700; color: var(--primary); line-height: 1;">${avg}</div>
                     <div style="font-size: 10px; color: var(--secondary); font-weight:700; margin-top:4px;">평균</div>
                 </div>
-               <button class="btn" onclick="event.stopPropagation(); openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
+               <button class="btn" onclick="event.stopPropagation(); openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}', '${archiveArg}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
             </div>
         </div>`;
     }).join('');
@@ -1043,7 +1047,7 @@ async function openExamGradeView(classId) {
     `);
 }
 
-async function openExamDetail(classId, examTitle, examDate) {
+async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId });
     let sessionSource = state.db.exam_sessions || [];
     let wrongSource = state.db.wrong_answers || [];
@@ -1059,8 +1063,15 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
-    const sessions = sessionSource.filter(es => String(es.exam_title || '') === String(examTitle || '') && String(es.exam_date || '') === String(examDate || '') && ids.includes(String(es.student_id)));
-    const matchedAssignment = assignmentSource.find(a => String(a.exam_title || '') === String(examTitle || '') && String(a.exam_date || '') === String(examDate || ''));
+    const archiveFilter = String(archiveFile || '').trim();
+    const matchesExamIdentity = function(row) {
+        if (String(row.exam_title || '') !== String(examTitle || '')) return false;
+        if (String(row.exam_date || '') !== String(examDate || '')) return false;
+        if (archiveFilter && String(row.archive_file || '') !== archiveFilter) return false;
+        return true;
+    };
+    const sessions = sessionSource.filter(es => matchesExamIdentity(es) && ids.includes(String(es.student_id)));
+    const matchedAssignment = assignmentSource.find(a => matchesExamIdentity(a));
 
     const sessionsWithArchive = sessions.filter(s => s.archive_file);
     if (sessionsWithArchive.length > 0 && typeof ensureBlueprintsForSessions === 'function') {
@@ -1074,7 +1085,7 @@ async function openExamDetail(classId, examTitle, examDate) {
 
     const prevSessions = state.db.exam_sessions;
     const prevWrongs = state.db.wrong_answers;
-    state.db.exam_sessions = sessionSource;
+    state.db.exam_sessions = sessions;
     state.db.wrong_answers = wrongSource;
     let classWeakUnits = [];
     if (typeof computeClassWeakUnits === 'function') classWeakUnits = computeClassWeakUnits(classId, examTitle, examDate);
@@ -1104,7 +1115,7 @@ async function openExamDetail(classId, examTitle, examDate) {
             <td style="text-align: right; padding: 14px 12px;">
                 <div style="display: flex; gap: 6px; justify-content: flex-end;">
                     <button class="btn" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
-                    <button class="btn" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}')">삭제</button>
+                    <button class="btn" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${sArchive}')">삭제</button>
                 </div>
             </td>
         </tr>`;
@@ -1130,7 +1141,7 @@ async function openExamDetail(classId, examTitle, examDate) {
             ${weakUnitHtml}
         </div>
         <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 10px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}')">시험 기록 전체 삭제</button>
+            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 10px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${examArchiveFile}')">시험 기록 전체 삭제</button>
         </div>
         <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
             <thead>
@@ -1146,19 +1157,20 @@ async function openExamDetail(classId, examTitle, examDate) {
     `);
 }
 
-async function deleteExamSession(sessionId, classId, examTitle, examDate) {
+async function deleteExamSession(sessionId, classId, examTitle, examDate, archiveFile = '') {
     if (!sessionId) return;
     if (!confirm('이 성적 기록을 삭제하시겠습니까? 오답 정보도 함께 삭제됩니다.')) return;
     const r = await api.delete('exam-sessions', sessionId);
     if (!r?.success) { toast('삭제 실패', 'warn'); return; }
     toast('기록이 삭제되었습니다.', 'info');
-    closeModal(true); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate);
+    closeModal(true); await refreshDataOnly(); openExamDetail(classId, examTitle, examDate, archiveFile);
 }
 
-async function deleteExamByClass(classId, examTitle, examDate) {
+async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '') {
     if (!confirm('이 시험의 제출 기록 전체를 삭제할까요?\n오답 기록도 모두 삭제됩니다.')) return;
     try {
-        const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}`;
+        const archiveQuery = archiveFile ? `&archive=${encodeURIComponent(archiveFile)}` : '';
+        const url = `${CONFIG.API_BASE}/exam-sessions/by-exam?class=${encodeURIComponent(classId)}&exam=${encodeURIComponent(examTitle)}&date=${encodeURIComponent(examDate)}${archiveQuery}`;
         const r = await fetch(url, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
         const data = await r.json();
         if (!r.ok || !data.success) { toast('시험 전체삭제 실패', 'warn'); return; }
