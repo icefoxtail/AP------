@@ -210,21 +210,29 @@ const REPORT_ANALYSIS_JSON_SCHEMA = {
 };
 
 const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `
-너는 AP Math 학원의 학부모 평가 리포트 전담 작성 AI다.
+너는 AP Math 학원의 학부모 평가 리포트 전담 AI 편집자다.
 
-목표는 오답을 지적하는 보고서가 아니라, 학부모가 신뢰할 수 있는 "성취 확인서 + 학습 진단서 + 다음 수업 관리 계획서"를 작성하는 것이다.
-학생의 실제 평가 데이터, 점수, 평균, 문항별 정답률, 단원, 선생님 메모만 근거로 사용한다.
-없는 사실을 만들지 않고, 부족한 데이터가 있어도 학부모용 문장에는 내부 시스템 사정이나 원문 확인 제한을 드러내지 않는다.
+이번 작업의 핵심은 "새 리포트를 처음부터 다시 쓰는 것"이 아니라, 이미 제공된 기본 리포트 초안을 학부모 발송용으로 더 자연스럽고 신뢰감 있게 개선하는 것이다.
+기본 리포트가 가진 성취 중심 톤, 점수/정답률/평균 해석, 우선 보완 문항, 다음 수업 계획을 유지하되, 반복 문장과 딱딱한 표현을 줄이고 문장을 더 전문적으로 다듬는다.
 
 ────────────────────────────────────────
-[핵심 작성 순서]
+[역할 원칙]
 ────────────────────────────────────────
-1. 첫 문단은 반드시 성취와 안정적인 부분부터 시작한다.
-2. 점수, 정답률, 전체 평균, 반 평균, 최근 흐름을 자연스럽게 해석한다.
-3. 오답은 "틀린 문제"가 아니라 "다음 수업에서 확인할 포인트"로 표현한다.
-4. 오답이 많으면 전부 나열하지 말고 우선 보완 문항과 단원 중심으로 정리한다.
-5. 오답이 없으면 오답 분석 대신 우수 해결 문항, 정확도 유지, 심화 확장 계획을 작성한다.
-6. 마지막에는 학원에서 다음 수업에 무엇을 할지 구체적으로 제시한다.
+1. 기본 리포트를 갈아엎지 말고, 더 좋은 학부모용 문장으로 업그레이드한다.
+2. 기본 리포트보다 짧거나 허술하게 만들지 않는다.
+3. 점수와 오답을 숨기지 않되, 첫인상은 반드시 성취와 안정감으로 시작한다.
+4. 오답은 "틀림"이 아니라 "다음 수업에서 확인할 포인트"로 표현한다.
+5. 같은 문장, 같은 의미, 같은 단원 나열을 여러 섹션에서 반복하지 않는다.
+6. 학부모가 읽었을 때 "학원이 학생을 구체적으로 관리하고 있다"는 느낌이 들어야 한다.
+
+────────────────────────────────────────
+[입력 데이터 사용 기준]
+────────────────────────────────────────
+- student, exam, cohort, questionAnalysis, wrongAnalysis, baseReportDraft, teacherMemo만 근거로 사용한다.
+- baseReportDraft가 있으면 반드시 참고한다.
+- baseReportDraft의 핵심 사실, 점수, 평균, 정답률, 문항 번호, 단원, 다음 수업 계획을 유지한다.
+- 없는 사실을 만들지 않는다.
+- 내부 시스템 사정이나 원문 확인 제한을 학부모용 문장에 드러내지 않는다.
 
 ────────────────────────────────────────
 [절대 금지 표현]
@@ -242,9 +250,11 @@ const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `
 - 심각하다
 - 많이 부족하다
 - 완전히 틀렸다
+- 하위권
+- 킬러
 
 위 표현은 학부모용 결과물의 어떤 필드에도 쓰지 않는다.
-내부적으로 정보가 부족하더라도, 문항 번호·단원·정답률·난이도·풀이 포인트 기준으로 자연스럽게 작성한다.
+내부적으로 정보가 부족하더라도 문항 번호, 단원, 정답률, 난도, 풀이 포인트 기준으로 자연스럽게 작성한다.
 
 ────────────────────────────────────────
 [문항 정답률 해석 기준]
@@ -270,34 +280,39 @@ const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `
 오답이 6개 이상:
 - 모든 오답을 길게 나열하지 않는다.
 - 맞출 수 있었던 문항과 핵심 보완 문항을 우선 정리한다.
-- 학부모가 좌절감을 느끼지 않도록 "우선순위를 정해 차근차근 보완하겠다"는 방향으로 작성한다.
+- 학부모가 좌절감을 느끼지 않도록 우선순위를 정해 차근차근 보완한다는 방향으로 작성한다.
 - 클리닉, 오답 노트, 유사 문제를 통한 순차 관리 계획을 포함한다.
 
 ────────────────────────────────────────
 [출력 필드별 기준]
 ────────────────────────────────────────
 summary:
-- 2~3문장, 100자 이상.
-- 학생 이름, 평가명, 점수를 포함하고 성취를 먼저 언급한다.
+- 2~3문장, 120자 이상.
+- 학생 이름, 평가명, 점수를 포함한다.
+- 성취를 먼저 말하고, 마지막에 다음 수업 연결을 짧게 제시한다.
 
 diagnosis:
-- 4~6문장, 250자 이상.
+- 4~6문장, 260자 이상.
 - 점수 위치, 평균 비교, 정답률 구조, 성취 포인트, 보완 포인트를 균형 있게 작성한다.
+- summary와 같은 문장을 그대로 반복하지 않는다.
 
 wrongAnalysis:
-- 250자 이상.
+- 220자 이상.
 - 오답이 있으면 핵심 문항 번호와 단원을 언급하되 부정적으로 몰아가지 않는다.
 - 오답이 없으면 우수 해결 문항과 안정적인 풀이 습관을 분석한다.
+- diagnosis와 같은 문장으로 시작하지 않는다.
 
 nextPlan:
-- 4~6문장, 250자 이상.
+- 4~6문장, 240자 이상.
 - 다음 수업에서 실제로 할 조치를 순서 있게 작성한다.
+- nextActions를 그대로 이어붙인 문장이 아니라 자연스러운 문단이어야 한다.
 - 풀이 과정 확인, 조건 표시, 식 세우기, 검산, 유사 문제, 클리닉 중 필요한 조치를 포함한다.
 
 parentMessage:
-- 6~9문장, 400자 이상.
+- 6~9문장, 420자 이상.
 - 순서: 성취 확인 → 평가 해석 → 우선 보완 포인트 → 학원 조치 → 가정 확인 1개 → 마무리.
 - 학부모가 안심하고 맡길 수 있는 정중한 문체로 작성한다.
+- 같은 문장을 diagnosis나 nextPlan에서 복사하지 않는다.
 
 kakaoSummary:
 - 반드시 "안녕하세요, AP수학입니다."로 시작한다.
@@ -314,10 +329,13 @@ riskLevel:
 - 단, 학부모용 문장에서는 위험하다는 식의 표현을 쓰지 않는다.
 
 mainWeaknesses:
-- 2~5개. "약점"이라기보다 확인 포인트를 구체적인 구 형태로 작성한다.
+- 2~5개.
+- "약점"이라기보다 확인 포인트를 구체적인 구 형태로 작성한다.
 
 nextActions:
-- 3~5개. 실제 수업 행동으로 작성한다.
+- 3~5개.
+- 실제 수업 행동으로 작성한다.
+- nextPlan과 같은 문장을 복사하지 말고, 짧은 실행 항목으로 작성한다.
 
 출력은 반드시 JSON 객체만 한다.
 마크다운, 코드블록, 설명 문장, 주석은 출력하지 않는다.
@@ -370,8 +388,33 @@ function normalizeReportAnalysisResult(raw = {}) {
   };
 }
 
-
 function buildFallbackReportAnalysis(payload = {}) {
+  const draft = payload?.baseReportDraft || null;
+  if (draft && typeof draft === 'object') {
+    const studentName = payload?.student?.name || payload?.student?.id || '학생';
+    const examTitle = payload?.exam?.title || '평가';
+    const summary = String(draft.achievementSummary || '').trim() || `${studentName} 학생의 「${examTitle}」 평가 결과를 기준으로 기본 리포트를 유지합니다.`;
+    const diagnosis = Array.isArray(draft.diagnosis) ? draft.diagnosis.join(' ') : String(draft.diagnosis || summary);
+    const nextPlanItems = Array.isArray(draft.nextPlanItems) ? draft.nextPlanItems : [];
+    const parentMessage = String(draft.parentMessage || '').trim() || `${studentName} 학생의 평가 결과와 다음 수업 보완 방향을 기본 리포트 기준으로 안내드립니다.`;
+    return normalizeReportAnalysisResult({
+      summary,
+      diagnosis,
+      wrongAnalysis: Array.isArray(draft.evaluationMeaning) ? draft.evaluationMeaning.slice(1).join(' ') : diagnosis,
+      nextPlan: nextPlanItems.join(' '),
+      parentMessage,
+      kakaoSummary: String(draft.kakaoSummary || '').trim() || `안녕하세요, AP수학입니다.
+
+${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.
+기본 리포트 기준으로 성취와 보완 방향을 안내드립니다.
+
+감사합니다.`,
+      teacherMemo: String(draft.teacherMemo || '').trim() || '기본 리포트 기준으로 다음 수업 보완 포인트를 확인합니다.',
+      riskLevel: 'stable',
+      mainWeaknesses: Array.isArray(payload?.wrongAnalysis) && payload.wrongAnalysis.length ? ['풀이 흐름 확인', '조건 표시와 검산 습관'] : ['정확도 유지', '심화 응용 확장'],
+      nextActions: nextPlanItems.length ? nextPlanItems.slice(0, 5) : ['기본 리포트 기준으로 다음 수업을 이어갑니다.']
+    });
+  }
   const studentName = payload?.student?.name || payload?.student?.id || '학생';
   const examTitle = payload?.exam?.title || '평가';
   const score = payload?.exam?.score;
@@ -382,46 +425,25 @@ function buildFallbackReportAnalysis(payload = {}) {
   const overallAverage = payload?.cohort?.overallAverage;
   const classAverage = payload?.cohort?.classAverage;
   const hard = wrongRows.filter(r => Number.isFinite(Number(r.correctRate)) && Number(r.correctRate) < 65);
+  const personal = wrongRows.filter(r => Number.isFinite(Number(r.correctRate)) && Number(r.correctRate) >= 85);
   const units = [...new Set(wrongRows.map(r => r.unit || r.unitKey).filter(Boolean))].slice(0, 3);
   const comparison = [];
   if (Number.isFinite(Number(overallAverage))) comparison.push(`전체 평균 ${overallAverage}점`);
   if (Number.isFinite(Number(classAverage))) comparison.push(`반 평균 ${classAverage}점`);
-
-  const summary = wrongCount
-    ? `${studentName} 학생은 「${examTitle}」에서 ${score ?? '-'}점을 기록했습니다.${correctRate !== null ? ` 정답률은 ${correctRate}%입니다.` : ''} 이번 결과는 점수와 함께 우선 보완할 문항을 정리해 다음 수업에 연결하겠습니다.`
-    : `${studentName} 학생은 「${examTitle}」에서 ${score ?? '-'}점을 기록했고, 전 문항을 안정적으로 해결했습니다.${correctRate !== null ? ` 정답률은 ${correctRate}%입니다.` : ''}`;
-
-  const diagnosis = wrongCount
-    ? `${summary}${comparison.length ? ` 비교 기준은 ${comparison.join(', ')}입니다.` : ''} 이번 리포트는 성취한 부분을 먼저 확인하고, 다음 수업에서 우선적으로 볼 문항과 단원을 정리한 자료입니다.`
-    : `${summary}${comparison.length ? ` 비교 기준은 ${comparison.join(', ')}입니다.` : ''} 현재 풀이 정확도가 잘 유지되고 있어 다음 단계에서는 심화 응용과 풀이 속도를 함께 확장하겠습니다.`;
-
+  const summary = `${studentName} 학생은 「${examTitle}」에서 ${score ?? '-'}점을 기록했습니다.${correctRate !== null ? ` 정답률은 ${correctRate}%입니다.` : ''}`;
+  const diagnosis = `${summary}${comparison.length ? ` 비교 기준은 ${comparison.join(', ')}입니다.` : ''} 이번 리포트는 오답 번호와 정답률을 기준으로 보완 방향을 정리했습니다.`;
   const wrongAnalysis = wrongCount
-    ? `우선 확인할 문항은 ${wrongRows.slice(0, 5).map(r => `${r.questionNo}번`).join(', ')}입니다.${hard.length ? ` 난도가 있었던 문항은 개념 연결 과정과 접근 순서를 함께 정리하겠습니다.` : ''}`
-    : '이번 평가는 전 문항을 정확하게 해결했습니다. 꼼꼼한 조건 확인과 풀이 마무리가 안정적으로 이루어진 결과로 볼 수 있습니다.';
-
-  const nextActions = wrongCount
-    ? [
-        `${wrongRows.slice(0, 5).map(r => `${r.questionNo}번`).join(', ')} 문항 풀이 과정을 확인합니다.`,
-        '조건 표시와 식 세우기 과정을 점검합니다.',
-        '유사 문제로 풀이 흐름을 한 번 더 확인합니다.'
-      ]
-    : [
-        '현재 정확도를 유지하며 다음 단원으로 이어갑니다.',
-        '난도 있는 응용 문항으로 사고 폭을 넓힙니다.',
-        '풀이 속도와 서술 정리를 함께 점검합니다.'
-      ];
-  if (wrongCount && units.length) nextActions.unshift(`${units.join(', ')} 단원을 우선 확인합니다.`);
-
-  const nextPlan = wrongCount
-    ? `${nextActions.slice(0, 4).join(' ')} 필요하면 클리닉과 오답 노트로 순차적으로 관리하겠습니다.`
-    : `${nextActions.join(' ')} 현재의 좋은 흐름을 유지하면서 심화 단계로 자연스럽게 이어가겠습니다.`;
-
-  const parentMessage = wrongCount
-    ? `${studentName} 학생의 이번 평가는 점수뿐 아니라 어떤 문항에서 확인할 부분이 있었는지를 함께 보는 것이 중요합니다. 학원에서는 다음 수업에서 우선 보완 문항의 풀이 흐름을 확인하고, 같은 실수가 반복되지 않도록 조건 표시와 검산 습관을 함께 잡아가겠습니다. 가정에서는 문제를 풀 때 조건에 표시하는 습관과 풀이 후 한 번 더 확인하는 것만 가볍게 격려해 주시면 좋겠습니다.`
-    : `${studentName} 학생은 이번 평가에서 매우 안정적인 성취를 보여주었습니다. 학원에서는 현재의 정확도를 유지하면서 다음 단원과 심화 응용 학습으로 자연스럽게 연결하겠습니다. 가정에서는 지금처럼 학습 흐름을 유지할 수 있도록 편안하게 격려해 주시면 충분합니다.`;
-
-  const kakaoSummary = `안녕하세요, AP수학입니다.\n\n${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.\n- 점수: ${score ?? '-'}점\n- 문항 수: ${qCount || '-'}문항${correctRate !== null ? `\n- 정답률: ${correctRate}%` : ''}\n- 확인 포인트: ${wrongCount ? `${wrongCount}문항을 다음 수업에서 순차적으로 보완하겠습니다.` : '전 문항을 정확하게 해결했습니다.'}\n\n자세한 내용은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.\n\n감사합니다.`;
-
+    ? `오답은 ${wrongRows.map(r => `${r.questionNo}번`).join(', ')}에서 확인됩니다.${hard.length ? ` 이 중 ${hard.length}문항은 전체 정답률이 낮아 다수 학생이 어려워한 문항으로 볼 수 있습니다.` : ''}${personal.length ? ` ${personal.length}문항은 전체 정답률이 높은 편이라 조건 확인, 계산 정리, 검산 습관을 우선 점검하겠습니다.` : ''}`
+    : '이번 평가는 오답 없이 안정적으로 마무리했습니다.';
+  const nextActions = [
+    '오답 문항의 풀이 과정을 다시 확인합니다.',
+    '조건 표시와 식 세우기 과정을 점검합니다.',
+    '계산 후 검산 습관을 짧은 확인문제로 보완합니다.'
+  ];
+  if (units.length) nextActions.unshift(`${units.join(', ')} 단원을 우선 보완합니다.`);
+  const nextPlan = `${nextActions.slice(0, 4).join(' ')} 필요하면 유사문항과 상승문제로 연결하겠습니다.`;
+  const parentMessage = `${studentName} 학생의 이번 평가는 점수뿐 아니라 오답이 나온 문항의 정답률과 단원을 함께 확인하는 것이 중요합니다. 학원에서는 다음 수업에서 오답 원인을 다시 확인하고, 같은 실수가 반복되지 않도록 풀이 순서와 검산 습관을 잡아가겠습니다. 가정에서는 문제 조건 표시와 숙제 마무리 여부만 가볍게 확인해 주시면 좋겠습니다.`;
+  const kakaoSummary = `안녕하세요, AP수학입니다.\n\n${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.\n- 점수: ${score ?? '-'}점\n- 문항 수: ${qCount || '-'}문항\n- 오답: ${wrongCount}문항${correctRate !== null ? `\n- 정답률: ${correctRate}%` : ''}\n\n자세한 오답 의미와 보완 계획은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.\n\n감사합니다.`;
   return normalizeReportAnalysisResult({
     summary,
     diagnosis,
@@ -429,9 +451,9 @@ function buildFallbackReportAnalysis(payload = {}) {
     nextPlan,
     parentMessage,
     kakaoSummary,
-    teacherMemo: units.length ? `우선 확인 단원: ${units.join(', ')}` : (wrongCount ? '풀이 과정과 검산 습관 확인' : '심화 응용 연결 가능'),
-    riskLevel: wrongCount >= 6 || hard.length >= 3 ? 'focus' : wrongCount >= 2 ? 'watch' : 'stable',
-    mainWeaknesses: units.length ? units : (wrongCount ? ['풀이 과정 확인', '검산 습관 점검'] : ['정확도 유지', '심화 응용 확장']),
+    teacherMemo: units.length ? `우선 보완 단원: ${units.join(', ')}` : '특이 단원 쏠림 없음',
+    riskLevel: wrongCount >= 5 || hard.length >= 3 ? 'focus' : wrongCount >= 2 ? 'watch' : 'stable',
+    mainWeaknesses: units.length ? units : (wrongCount ? ['오답 풀이 과정 점검'] : ['정확도 유지']),
     nextActions
   });
 }
@@ -449,11 +471,11 @@ function isWeakAiReportResult(result) {
 
   if (summary.length < 80) return true;
   if (diagnosis.length < 200) return true;
-  if (wrongAnalysis.length < 200) return true;
-  if (nextPlan.length < 200) return true;
-  if (parentMessage.length < 400) return true;
-  if (kakaoSummary.length < 160) return true;
-  if (teacherMemo.length < 80) return true;
+  if (wrongAnalysis.length < 180) return true;
+  if (nextPlan.length < 180) return true;
+  if (parentMessage.length < 360) return true;
+  if (kakaoSummary.length < 140) return true;
+  if (teacherMemo.length < 50) return true;
 
   if (!Array.isArray(result.mainWeaknesses) || result.mainWeaknesses.length < 1) return true;
   if (!Array.isArray(result.nextActions) || result.nextActions.length < 2) return true;
@@ -461,17 +483,16 @@ function isWeakAiReportResult(result) {
   return false;
 }
 
-
 function mergeReportAnalysisWithFallback(result, fallback) {
   const merged = normalizeReportAnalysisResult({ ...(fallback || {}), ...(result || {}) });
   const min = {
     summary: 80,
-    diagnosis: 180,
+    diagnosis: 200,
     wrongAnalysis: 180,
     nextPlan: 180,
-    parentMessage: 400,
+    parentMessage: 360,
     kakaoSummary: 140,
-    teacherMemo: 60
+    teacherMemo: 50
   };
   for (const key of Object.keys(min)) {
     if (String(merged[key] || '').trim().length < min[key]) {
@@ -483,79 +504,78 @@ function mergeReportAnalysisWithFallback(result, fallback) {
   return merged;
 }
 
+
 async function callOpenAiReportAnalysis(env, payload) {
   const apiKey = env.OPENAI_API_KEY;
   if (!apiKey) return { source: 'fallback', analysis: buildFallbackReportAnalysis(payload) };
 
   const model = env.OPENAI_REPORT_MODEL || env.OPENAI_MODEL || 'gpt-5.2';
+  const hasBaseDraft = !!payload?.baseReportDraft;
   const userPrompt = [
-    '아래 학생 평가 데이터를 바탕으로 학부모 평가 리포트 문장을 작성하라.',
+    hasBaseDraft
+      ? '아래 학생 평가 데이터와 기본 리포트 초안을 바탕으로, 기본 리포트를 더 자연스럽고 신뢰감 있는 학부모 발송용 리포트로 개선하라.'
+      : '아래 학생 평가 데이터를 바탕으로 학부모 평가 리포트 문장을 작성하라.',
+    '',
+    '[중요 작업 방식]',
+    '- 기본 리포트 초안이 있으면 절대 무시하지 않는다.',
+    '- 새 리포트를 처음부터 다시 쓰지 말고, 기본 리포트를 더 좋게 다듬는다.',
+    '- 기본 리포트보다 더 짧거나 딱딱하게 만들지 않는다.',
+    '- 반복 문장을 제거하고, 섹션별 역할을 분리한다.',
+    '- summary는 성취 중심, diagnosis는 평가 해석, wrongAnalysis는 문항별 확인 포인트, nextPlan은 다음 수업 조치, parentMessage는 학부모 발송문 역할을 맡는다.',
     '',
     '입력 데이터:',
-    clampText(JSON.stringify(payload, null, 2), 18000),
+    clampText(JSON.stringify(payload, null, 2), 22000),
     '',
     '작성 필수 기준:',
     '- 첫 문단은 반드시 성취와 안정적인 부분부터 시작한다.',
     '- 오답은 부정적 지적이 아니라 다음 수업에서 확인할 포인트로 표현한다.',
     '- 오답이 많으면 전부 길게 나열하지 말고 우선 보완 문항과 단원 중심으로 정리한다.',
     '- 오답이 없으면 우수 해결 문항, 정확도 유지, 심화 확장 계획을 작성한다.',
-    '- parentMessage는 400자 이상, 6문장 이상으로 작성한다.',
+    '- parentMessage는 420자 이상, 6문장 이상으로 작성한다.',
     '- kakaoSummary는 카카오톡 발송 문구처럼 6~10줄 내외로 작성한다.',
     '- 다음 수업에서 실제로 할 조치를 구체적으로 작성한다.',
     '- 학부모용 결과물에는 확인 불가, 자료 없음, 아카이브, 시스템, 함수, 코드 같은 표현을 절대 쓰지 않는다.',
     '- 없는 사실은 만들지 않는다.',
-    '- 짧게 요약하지 않는다.'
+    '- 짧게 요약하지 않는다.',
+    '- 같은 문장을 여러 필드에 복사하지 않는다.'
   ].join('\n');
 
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify({
       model,
       instructions: AP_REPORT_ANALYSIS_SYSTEM_PROMPT,
-      input: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'input_text',
-              text: userPrompt
-            }
-          ]
-        }
-      ],
+      input: userPrompt,
       max_output_tokens: 4500,
       text: {
-        verbosity: 'high',
         format: {
           type: 'json_schema',
           name: REPORT_ANALYSIS_JSON_SCHEMA.name,
-          strict: REPORT_ANALYSIS_JSON_SCHEMA.strict,
-          schema: REPORT_ANALYSIS_JSON_SCHEMA.schema
+          schema: REPORT_ANALYSIS_JSON_SCHEMA.schema,
+          strict: REPORT_ANALYSIS_JSON_SCHEMA.strict
         }
       }
     })
   });
 
-  const data = await response.json();
-
   if (!response.ok) {
-    throw new Error(data?.error?.message || `OpenAI HTTP ${response.status}`);
+    const detail = await response.text().catch(() => '');
+    throw new Error(`OpenAI ${response.status}: ${detail.slice(0, 300)}`);
   }
 
+  const data = await response.json();
   const parsed = safeJsonParse(extractResponseText(data));
   if (!parsed) throw new Error('AI JSON parse failed');
-
   const normalized = normalizeReportAnalysisResult(parsed);
   const fallback = buildFallbackReportAnalysis(payload);
-  const merged = isWeakAiReportResult(normalized)
+  const analysis = isWeakAiReportResult(normalized)
     ? mergeReportAnalysisWithFallback(normalized, fallback)
     : normalized;
-
-  return { source: 'ai', analysis: merged };
+  return { source: 'ai', analysis };
 }
 
 export default {

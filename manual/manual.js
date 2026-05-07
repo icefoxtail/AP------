@@ -1,6 +1,6 @@
 (function () {
     const DATA = window.APMATH_MANUAL_DATA || { categories: ['전체'], sections: [], quickStart: [], hotKeywords: [] };
-    const state = { query: '', category: '전체', openId: decodeURIComponent((window.location.hash || '').replace(/^#/, '')) };
+    const state = { query: '', category: '전체', openId: decodeURIComponent((window.location.hash || '').replace(/^#/, '')), focusId: decodeURIComponent((window.location.hash || '').replace(/^#/, '')) };
 
     const $ = (id) => document.getElementById(id);
     const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -78,9 +78,40 @@
                 state.query = btn.dataset.keyword || '';
                 const input = $('manual-search');
                 if (input) input.value = state.query;
+                state.focusId = '';
+                history.replaceState(null, '', window.location.pathname);
                 renderAll();
                 scrollToResults();
             });
+        });
+    }
+
+    const JUMP_LINKS = [
+        { id: 'qr-omr-basic', title: 'QR/OMR', desc: 'QR 생성과 오답 제출' },
+        { id: 'archive-qr-print', title: '아카이브 QR 출력', desc: '선생님·반 선택 후 출력' },
+        { id: 'archive-manual-file-name', title: '아카이브 파일명 입력', desc: 'exams/ 파일명 넣는 법' },
+        { id: 'teacher-direct-input', title: '학생별 직접 입력', desc: 'QR 제출 못 했을 때' },
+        { id: 'exam-grade-list', title: '시험성적', desc: '제출률·평균·수정' },
+        { id: 'attendance-homework', title: '출석·숙제', desc: '○ × 지각 보강 상담' },
+        { id: 'report-create', title: '레포트 문구', desc: '학부모·학생·상담용' },
+        { id: 'trouble-duplicate-exam', title: '시험 중복', desc: '카드가 두 개 보일 때' }
+    ];
+
+    function findSection(id) {
+        return (DATA.sections || []).find(section => section.id === id) || null;
+    }
+
+    function renderJumpLinks() {
+        const root = $('manual-jump-grid');
+        if (!root) return;
+        root.innerHTML = JUMP_LINKS.map(item => `
+            <button class="jump-card" type="button" data-jump-id="${escapeHtml(item.id)}">
+                <b>${escapeHtml(item.title)}</b>
+                <span>${escapeHtml(item.desc)}</span>
+            </button>
+        `).join('');
+        root.querySelectorAll('[data-jump-id]').forEach(btn => {
+            btn.addEventListener('click', () => openSection(btn.dataset.jumpId || '', { focus: true, scroll: true }));
         });
     }
 
@@ -93,6 +124,8 @@
         root.querySelectorAll('.cat-tab').forEach(btn => {
             btn.addEventListener('click', () => {
                 state.category = btn.dataset.category || '전체';
+                state.focusId = '';
+                history.replaceState(null, '', window.location.pathname);
                 renderAll();
             });
         });
@@ -162,6 +195,7 @@
                         <h3>${escapeHtml(section.title)}</h3>
                         <p class="summary">${escapeHtml(section.summary)}</p>
                         <div class="keyword-row">${keywords}</div>
+                        ${!isOpen ? `<button class="detail-open-btn" type="button" data-detail-id="${escapeHtml(section.id)}">바로 보기</button>` : ''}
                     </div>
                     <span class="open-indicator">⌄</span>
                 </button>
@@ -183,22 +217,50 @@
     }
 
     function renderResults() {
-        const sections = getFilteredSections();
+        const allSections = getFilteredSections();
+        const focusSection = state.focusId ? findSection(state.focusId) : null;
+        const sections = focusSection ? [focusSection] : allSections;
         const title = $('result-title');
         const count = $('result-count');
         const root = $('manual-results');
-        if (title) title.textContent = state.category === '전체' ? '전체 설명' : state.category;
-        if (count) count.textContent = `${sections.length}개`;
-        renderToc(sections);
+        if (title) title.textContent = focusSection ? focusSection.title : (state.category === '전체' ? '전체 설명' : state.category);
+        if (count) count.textContent = focusSection ? '바로보기' : `${sections.length}개`;
+        renderToc(allSections);
         if (!root) return;
         if (!sections.length) {
             root.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><div><b>'${escapeHtml(state.query || state.category)}'</b>에 대한 검색 결과가 없습니다.</div><p>다른 키워드로 검색하거나 카테고리를 전체로 바꿔 보세요.</p></div>`;
             return;
         }
-        if (!sections.some(s => s.id === state.openId)) state.openId = sections[0]?.id || '';
-        root.innerHTML = sections.map(renderCard).join('');
+        if (focusSection) state.openId = focusSection.id;
+        else if (!sections.some(s => s.id === state.openId)) state.openId = sections[0]?.id || '';
+        const focusNotice = focusSection
+            ? `<div class="focus-return"><strong>선택한 설명만 바로 보고 있습니다.</strong><button type="button" id="btn-show-all-results">목록으로 돌아가기</button></div>`
+            : '';
+        root.innerHTML = focusNotice + sections.map(renderCard).join('');
+        const showAllBtn = $('btn-show-all-results');
+        if (showAllBtn) {
+            showAllBtn.addEventListener('click', () => {
+                state.focusId = '';
+                history.replaceState(null, '', window.location.pathname);
+                renderResults();
+                scrollToResults();
+            });
+        }
         root.querySelectorAll('.manual-card-head').forEach(btn => {
-            btn.addEventListener('click', () => openSection(btn.dataset.id || ''));
+            btn.addEventListener('click', (event) => {
+                const id = btn.dataset.id || '';
+                if (event.target && event.target.closest && event.target.closest('.detail-open-btn')) {
+                    openSection(id, { focus: true, scroll: true });
+                    return;
+                }
+                openSection(id, { focus: true, scroll: true });
+            });
+        });
+        root.querySelectorAll('[data-detail-id]').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                event.stopPropagation();
+                openSection(btn.dataset.detailId || '', { focus: true, scroll: true });
+            });
         });
         root.querySelectorAll('[data-copy-id]').forEach(btn => {
             btn.addEventListener('click', (event) => {
@@ -208,14 +270,19 @@
         });
     }
 
-    function openSection(id) {
-        state.openId = state.openId === id ? '' : id;
-        if (state.openId) history.replaceState(null, '', `#${encodeURIComponent(state.openId)}`);
+    function openSection(id, options = {}) {
+        if (!id) return;
+        const section = findSection(id);
+        if (!section) return;
+        state.openId = id;
+        state.focusId = options.focus === false ? '' : id;
+        if (options.syncCategory) state.category = section.category || state.category;
+        history.replaceState(null, '', `#${encodeURIComponent(id)}`);
         renderResults();
-        if (state.openId) {
+        if (options.scroll !== false) {
             requestAnimationFrame(() => {
-                const card = $(`card-${state.openId}`);
-                if (card && window.innerWidth <= 900) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const card = $(`card-${id}`) || document.querySelector('.result-panel');
+                if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         }
     }
@@ -230,6 +297,8 @@
         if (input) {
             input.addEventListener('input', () => {
                 state.query = input.value || '';
+                state.focusId = '';
+                history.replaceState(null, '', window.location.pathname);
                 renderResults();
             });
         }
@@ -237,7 +306,9 @@
         if (clearBtn) {
             clearBtn.addEventListener('click', () => {
                 state.query = '';
+                state.focusId = '';
                 if (input) input.value = '';
+                history.replaceState(null, '', window.location.pathname);
                 renderResults();
                 input?.focus();
             });
@@ -263,6 +334,7 @@
         renderUpdated();
         renderQuickStart();
         renderHints();
+        renderJumpLinks();
         renderCategories();
         renderResults();
     }
@@ -272,7 +344,9 @@
         renderAll();
         window.addEventListener('hashchange', () => {
             state.openId = decodeURIComponent((window.location.hash || '').replace(/^#/, ''));
+            state.focusId = state.openId;
             renderResults();
+            if (state.openId) requestAnimationFrame(() => { const card = document.getElementById('card-' + state.openId); if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
         });
     });
 })();

@@ -241,3 +241,31 @@ body.dark .hero-stat { background:rgba(255,255,255,0.08); }
     .manual-detail { padding:12px !important; }
     .keyword-row { display:none !important; }
 }
+
+
+.jump-panel { max-width: 1160px; margin: -18px auto 18px; padding: 0 20px; }
+.section-heading.compact { margin-bottom: 12px; }
+.jump-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.jump-card { min-height:76px; padding:14px 14px; border-radius:18px; border:1px solid var(--border); background:rgba(255,255,255,0.88); box-shadow:var(--shadow-soft); text-align:left; cursor:pointer; display:flex; flex-direction:column; gap:6px; color:var(--text); }
+.jump-card:hover { border-color:var(--primary-border); transform:translateY(-1px); }
+.jump-card b { font-size:13px; font-weight:850; line-height:1.25; letter-spacing:-0.02em; }
+.jump-card span { font-size:11px; font-weight:700; color:var(--text-soft); line-height:1.35; }
+.focus-return { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 14px; margin-bottom:12px; border-radius:16px; background:var(--primary-soft); border:1px solid var(--primary-border); }
+.focus-return strong { font-size:13px; color:var(--primary); line-height:1.4; }
+.focus-return button { border:0; border-radius:999px; padding:8px 12px; background:var(--primary); color:#fff; font-size:12px; font-weight:800; cursor:pointer; white-space:nowrap; }
+.detail-open-btn { margin-top:12px; width:fit-content; border:0; border-radius:999px; padding:9px 13px; background:var(--primary); color:#fff; font-size:12px; font-weight:800; cursor:pointer; }
+.manual-card.open { scroll-margin-top: 18px; }
+body.dark .jump-card { background:rgba(30,41,59,0.9); }
+body.dark .focus-return { background:rgba(37,99,235,0.13); }
+
+@media (max-width: 900px) {
+  .jump-panel { margin:-12px auto 14px; padding:0 16px; }
+  .jump-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .jump-card { min-height:70px; padding:12px; border-radius:16px; }
+  .focus-return { flex-direction:column; align-items:flex-start; }
+  .focus-return button { width:100%; min-height:38px; }
+}
+
+@media print {
+  .jump-panel, .detail-actions, .detail-open-btn, .focus-return, .top-button { display:none !important; }
+}

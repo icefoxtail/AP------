@@ -455,7 +455,6 @@ function openExamScoreMenu() {
     `);
 }
 
-
 function openManualCenter() {
     const url = new URL('../manual/', window.location.href);
     const opened = window.open(url.toString(), '_blank', 'noopener');
@@ -1115,7 +1114,6 @@ window.setModalBody = setModalBody;
 window.setModalLoading = setModalLoading;
 window.safeToastError = safeToastError;
 window.setButtonBusy = setButtonBusy;
-window.openManualCenter = openManualCenter;
 window.renderAppDrawer = renderAppDrawer;
 window.openAppDrawer = openAppDrawer;
 window.closeAppDrawer = closeAppDrawer;
