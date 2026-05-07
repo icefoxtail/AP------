@@ -444,6 +444,407 @@ function buildGeminiReportAnalysisSchema() {
   };
 }
 
+function buildReportWritingSeeds(payload = {}) {
+  const asNumber = (value) => {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : null;
+  };
+  const hashText = (text) => {
+    let hash = 0;
+    const raw = String(text || '');
+    for (let i = 0; i < raw.length; i++) {
+      hash = ((hash << 5) - hash + raw.charCodeAt(i)) | 0;
+    }
+    return Math.abs(hash);
+  };
+  const pick = (items, seed, fallback = '') => {
+    if (!items.length) return fallback;
+    return items[Math.abs(seed) % items.length];
+  };
+  const addUnique = (arr, value) => {
+    if (value && !arr.includes(value)) arr.push(value);
+  };
+  const unique = (arr) => [...new Set((arr || []).filter(Boolean))];
+  const shuffleSeeded = (items, seed) => {
+    const arr = [...items];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = (seed + i * 31 + hashText(arr[i])) % (i + 1);
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  };
+
+  const wrongRows = Array.isArray(payload?.wrongAnalysis) && payload.wrongAnalysis.length
+    ? payload.wrongAnalysis
+    : (Array.isArray(payload?.questionAnalysis) ? payload.questionAnalysis.filter(r => r?.isStudentWrong) : []);
+  const wrongCount = wrongRows.length;
+  const studentId = payload?.student?.id || payload?.student?.name || '';
+  const examId = payload?.exam?.id || '';
+  const examDate = payload?.exam?.date || '';
+  const examTitle = payload?.exam?.title || '';
+  const today = new Date().toISOString().slice(0, 10);
+  const seedSource = `${studentId}|${examId}|${examDate}|${examTitle}|${today}`;
+  const variabilitySeed = hashText(seedSource);
+  const score = asNumber(payload?.exam?.score);
+  const overallAverage = asNumber(payload?.cohort?.overallAverage);
+  const classAverage = asNumber(payload?.cohort?.classAverage);
+  const recentAverage = asNumber(payload?.baseReportDraft?.metrics?.recentAverage);
+
+  const buckets = {
+    careless: 0,
+    conceptApply: 0,
+    interpretation: 0,
+    strategy: 0,
+    unknown: 0
+  };
+  for (const row of wrongRows) {
+    const rate = asNumber(row?.correctRate);
+    if (rate === null) buckets.unknown += 1;
+    else if (rate >= 85) buckets.careless += 1;
+    else if (rate >= 65) buckets.conceptApply += 1;
+    else if (rate >= 45) buckets.interpretation += 1;
+    else buckets.strategy += 1;
+  }
+
+  const unitCounts = {};
+  for (const row of wrongRows) {
+    const unit = String(row?.unit || row?.unitKey || row?.course || '').trim();
+    if (unit) unitCounts[unit] = (unitCounts[unit] || 0) + 1;
+  }
+  const unitFocus = Object.entries(unitCounts).sort((a, b) => b[1] - a[1]).map(([unit]) => unit).slice(0, 3);
+  const topUnitCount = unitFocus.length ? unitCounts[unitFocus[0]] : 0;
+  const spreadType = wrongCount && (unitFocus.length <= 2 || topUnitCount >= Math.max(2, Math.ceil(wrongCount * 0.55)))
+    ? 'concentrated'
+    : 'distributed';
+  const unitFocusMessage = !wrongCount
+    ? '오답 없이 안정적으로 해결해 정확도 유지와 심화 확장에 초점을 둡니다.'
+    : spreadType === 'concentrated'
+      ? `${unitFocus.slice(0, 2).join(', ') || '핵심 단원'}에서 확인 포인트가 모여 있어 해당 단원 흐름을 우선 정리하겠습니다.`
+      : '여러 단원에 오답이 분산되어 있어 풀이 습관과 조건 정리를 함께 확인하겠습니다.';
+
+  const compareText = (label, average) => {
+    if (score === null || average === null) return `${label} 비교 기준 없음`;
+    if (score > average + 5) return `${label}보다 안정적으로 높음`;
+    if (score < average - 5) return `${label}보다 낮아 우선 보완 필요`;
+    return `${label}과 비슷한 수준`;
+  };
+  const scorePosition = [
+    compareText('전체 평균', overallAverage),
+    compareText('반 평균', classAverage)
+  ].join(' / ');
+  const isAboveAverage = score !== null && (
+    (overallAverage !== null && score > overallAverage + 5) ||
+    (classAverage !== null && score > classAverage + 5)
+  );
+  const isBelowAverage = score !== null && (
+    (overallAverage !== null && score < overallAverage - 5) ||
+    (classAverage !== null && score < classAverage - 5)
+  );
+  const isClassBelowOverallSimilar = score !== null && classAverage !== null && overallAverage !== null
+    && score < classAverage - 5
+    && Math.abs(score - overallAverage) <= 5;
+  const isHighScore = score !== null && score >= 90;
+
+  let recentTrend = '최근 흐름 비교 기준 없음';
+  if (score !== null && recentAverage !== null) {
+    if (score > recentAverage + 3) recentTrend = `최근 평균 ${recentAverage}점 대비 상승 흐름`;
+    else if (score < recentAverage - 3) recentTrend = `최근 평균 ${recentAverage}점 대비 하락 흐름`;
+    else recentTrend = `최근 평균 ${recentAverage}점과 비슷하게 유지`;
+  }
+
+  const errorCounts = {
+    careless: buckets.careless,
+    conceptGap: buckets.conceptApply,
+    interpretation: buckets.interpretation,
+    strategy: buckets.strategy
+  };
+  const topError = Object.entries(errorCounts).sort((a, b) => b[1] - a[1])[0] || ['mixed', 0];
+  const activeErrorTypes = Object.values(errorCounts).filter(v => v > 0).length;
+  const errorType = !wrongCount ? 'careless' : activeErrorTypes > 1 ? 'mixed' : topError[0];
+  let difficultyBias = 'mixedDifficulty';
+  if (wrongCount && buckets.careless && buckets.careless >= wrongCount * 0.6) difficultyBias = 'easyMistake';
+  else if (wrongCount && (buckets.conceptApply + buckets.interpretation) >= wrongCount * 0.6) difficultyBias = 'midWeak';
+  else if (wrongCount && buckets.strategy >= wrongCount * 0.6) difficultyBias = 'hardOnly';
+
+  const wrongPatternSummaryParts = [];
+  if (!wrongCount) wrongPatternSummaryParts.push('오답 없이 안정적으로 해결');
+  if (buckets.careless) wrongPatternSummaryParts.push(`careless ${buckets.careless}문항: 조건 확인과 검산`);
+  if (buckets.conceptApply) wrongPatternSummaryParts.push(`conceptApply ${buckets.conceptApply}문항: 개념 적용과 풀이 과정`);
+  if (buckets.interpretation) wrongPatternSummaryParts.push(`interpretation ${buckets.interpretation}문항: 조건 해석과 개념 연결`);
+  if (buckets.strategy) wrongPatternSummaryParts.push(`strategy ${buckets.strategy}문항: 고난도 접근 순서`);
+  if (buckets.unknown && wrongCount) wrongPatternSummaryParts.push(`정답률 미확정 ${buckets.unknown}문항: 풀이 흔적 중심 확인`);
+  const wrongPattern = {
+    errorType,
+    spreadType,
+    difficultyBias,
+    summary: wrongPatternSummaryParts.join(' / ')
+  };
+
+  let toneCandidates = [];
+  if (!wrongCount) toneCandidates = ['achievement', 'growth'];
+  else if (wrongCount <= 3) toneCandidates = ['stable', 'counseling'];
+  else if (wrongCount <= 5) toneCandidates = ['counseling', 'management'];
+  else toneCandidates = ['management'];
+  if (isAboveAverage) toneCandidates = ['growth', 'achievement', ...toneCandidates];
+  if (isBelowAverage) toneCandidates = ['counseling', 'management', ...toneCandidates];
+  const toneVariant = pick(unique(toneCandidates), variabilitySeed, 'stable');
+
+  let expressionCandidates = [];
+  if (!wrongCount) expressionCandidates = ['achievementHighlight', 'growthNarrative'];
+  else if (wrongCount <= 3) expressionCandidates = ['conciseWarm', 'parentCounselStyle', 'preciseDiagnostic'];
+  else if (wrongCount <= 5) expressionCandidates = ['parentCounselStyle', 'calmManagement'];
+  else expressionCandidates = ['calmManagement', 'recoveryPlan'];
+  if (isAboveAverage) expressionCandidates = ['achievementHighlight', 'growthNarrative', ...expressionCandidates];
+  if (isBelowAverage) expressionCandidates = ['calmManagement', 'recoveryPlan', ...expressionCandidates];
+  if (isClassBelowOverallSimilar) expressionCandidates = ['parentCounselStyle', 'preciseDiagnostic', ...expressionCandidates];
+  const expressionVariant = pick(unique(expressionCandidates), variabilitySeed + wrongCount, 'parentCounselStyle');
+
+  const patternByExpression = {
+    achievementHighlight: ['resultFirst', 'progressFirst'],
+    growthNarrative: ['progressFirst', 'learningFlowFirst'],
+    conciseWarm: ['resultFirst', 'learningFlowFirst'],
+    teacherMemoStyle: ['learningFlowFirst', 'actionPlanFirst'],
+    parentCounselStyle: ['progressFirst', 'comparisonFirst'],
+    preciseDiagnostic: ['comparisonFirst', 'resultFirst'],
+    calmManagement: ['actionPlanFirst', 'learningFlowFirst'],
+    recoveryPlan: ['actionPlanFirst', 'progressFirst']
+  };
+  const sentencePatternSeed = pick(patternByExpression[expressionVariant] || ['resultFirst'], variabilitySeed + 7, 'resultFirst');
+  const openingHookType = pick({
+    resultFirst: ['scoreHighlight', 'effortObservation'],
+    progressFirst: ['effortObservation', 'scoreHighlight'],
+    comparisonFirst: ['comparisonInsight', 'effortObservation'],
+    learningFlowFirst: ['unitFocusStart', 'effortObservation'],
+    actionPlanFirst: ['mistakeInsight', 'unitFocusStart']
+  }[sentencePatternSeed] || ['scoreHighlight'], variabilitySeed + 11, 'scoreHighlight');
+  const connectorStyle = pick(['direct', 'explanatory', 'contrastive', 'stepwise'], variabilitySeed + wrongCount + 17, 'direct');
+  let detailDensityCandidates = wrongCount <= 3 ? ['balanced', 'detailed'] : ['balanced'];
+  if (wrongCount >= 6) detailDensityCandidates = ['compact', 'balanced'];
+  if (isHighScore || isAboveAverage) detailDensityCandidates = ['detailed', ...detailDensityCandidates];
+  if (isBelowAverage || wrongCount >= 6) detailDensityCandidates = ['compact', 'balanced', ...detailDensityCandidates];
+  const detailDensity = pick(unique(detailDensityCandidates), variabilitySeed + 19, 'balanced');
+
+  const repetitionGuard = [];
+  if (buckets.careless) {
+    addUnique(repetitionGuard, '조건 확인');
+    addUnique(repetitionGuard, '계산 정확도');
+  }
+  if (buckets.conceptApply) addUnique(repetitionGuard, '개념 적용');
+  if (buckets.interpretation) {
+    addUnique(repetitionGuard, '조건 해석');
+    addUnique(repetitionGuard, '개념 연결');
+  }
+  if (buckets.strategy) addUnique(repetitionGuard, '접근 순서');
+  if (spreadType === 'concentrated' && wrongCount) addUnique(repetitionGuard, '단원 집중');
+  if (spreadType === 'distributed' && wrongCount) addUnique(repetitionGuard, '풀이 습관');
+  if (!wrongCount) {
+    addUnique(repetitionGuard, '정확도 유지');
+    addUnique(repetitionGuard, '심화 확장');
+  }
+
+  const actionWeights = {
+    careless: ['조건 표시 훈련', '계산 검산 루틴 점검', '풀이 과정 재확인', '유사 문제 2~3개 확인'],
+    conceptGap: ['식 세우기 훈련', '유사 문제 2~3개 확인', '오답노트 정리', '풀이 과정 재확인'],
+    interpretation: ['조건 표시 훈련', '식 세우기 훈련', '풀이 과정 재확인', '유사 문제 2~3개 확인'],
+    strategy: ['풀이 과정 재확인', '유사 문제 2~3개 확인', '클리닉 연계', '오답노트 정리'],
+    mixed: ['풀이 과정 재확인', '조건 표시 훈련', '유사 문제 2~3개 확인', '오답노트 정리']
+  };
+  const actionPool = unique([
+    ...(actionWeights[errorType] || actionWeights.mixed),
+    ...(wrongCount ? [] : ['다음 단원 연결', '유사 문제 2~3개 확인']),
+    ...(wrongCount >= 4 ? ['오답노트 정리', '클리닉 연계'] : []),
+    '다음 단원 연결'
+  ]);
+  const actionLimit = wrongCount >= 6 ? 5 : wrongCount >= 4 ? 4 : 3;
+  const priorityActions = shuffleSeeded(actionPool, variabilitySeed + 23).slice(0, actionLimit);
+  while (priorityActions.length < 3) addUnique(priorityActions, ['풀이 과정 재확인', '조건 표시 훈련', '유사 문제 2~3개 확인'][priorityActions.length]);
+
+  const parentGuideMap = {
+    careless: ['문제 조건에 표시하는 습관만 가볍게 확인', '풀이 후 검산 여부만 격려'],
+    conceptGap: ['오답을 다시 풀게 하기보다 풀이 흔적을 확인', '가정 부담 없이 학원에서 보완 예정임을 안내'],
+    interpretation: ['문제 조건에 표시하는 습관만 가볍게 확인', '오답을 다시 풀게 하기보다 풀이 흔적을 확인'],
+    strategy: ['가정 부담 없이 학원에서 보완 예정임을 안내', '오답을 다시 풀게 하기보다 풀이 흔적을 확인'],
+    mixed: ['가정 부담 없이 학원에서 보완 예정임을 안내', '풀이 후 검산 여부만 격려']
+  };
+  const parentGuide = pick(parentGuideMap[errorType] || parentGuideMap.mixed, variabilitySeed + 29, '가정 부담 없이 학원에서 보완 예정임을 안내');
+  const parentGuideTone = pick(
+    wrongCount >= 6 ? ['reassurance', 'academyLead'] : errorType === 'careless' ? ['lightCheck', 'habitFocus'] : ['habitFocus', 'academyLead', 'reassurance'],
+    variabilitySeed + 31,
+    'reassurance'
+  );
+  const openingStyle = pick({
+    achievement: ['achievementStart', 'learningFlowStart'],
+    growth: ['achievementStart', 'learningFlowStart'],
+    stable: ['calmStart', 'learningFlowStart'],
+    counseling: ['counselingStart', 'comparisonStart'],
+    management: ['counselingStart', 'learningFlowStart']
+  }[toneVariant] || ['calmStart'], variabilitySeed + 37, 'calmStart');
+  const closingStyle = pick(
+    !wrongCount ? ['achievementWrap', 'forwardPlan'] : wrongCount >= 6 ? ['reassurance', 'parentTrust'] : ['forwardPlan', 'parentTrust'],
+    variabilitySeed + 41,
+    'forwardPlan'
+  );
+
+  return {
+    variabilitySeed,
+    toneVariant,
+    expressionVariant,
+    sentencePatternSeed,
+    openingHookType,
+    connectorStyle,
+    detailDensity,
+    repetitionGuard: repetitionGuard.slice(0, 4),
+    scorePosition,
+    recentTrend,
+    wrongPattern,
+    unitFocus,
+    unitFocusMessage,
+    priorityActions: priorityActions.slice(0, 5),
+    parentGuide,
+    parentGuideTone,
+    openingStyle,
+    closingStyle,
+    sentenceAvoidList: [
+      '이번 평가는',
+      '다음 수업에서는',
+      '학원에서는',
+      '오답은',
+      '부족합니다',
+      '확인 불가',
+      '자료 없음',
+      '아카이브',
+      '시스템',
+      '함수',
+      '코드',
+      'AI',
+      'Gemini',
+      '분석 엔진'
+    ],
+    microVariationRules: [
+      '같은 접속어를 두 문장 연속 사용하지 않는다.',
+      '동일 어휘를 반복하지 않는다. 예: 안정적으로, 전반적으로, 확인, 보완',
+      '짧은 문장과 긴 문장을 섞는다.',
+      'summary와 parentMessage는 같은 문장 구조로 시작하지 않는다.',
+      'diagnosis와 nextPlan은 같은 내용을 반복하지 않는다.',
+      '최소 1문장은 수식이나 수치 없이 직관적으로 표현한다.',
+      '학부모에게 부담을 주는 지시는 1개만 쓴다.'
+    ]
+  };
+}
+
+function buildLearningLifeSeeds(payload = {}) {
+  const asNumber = (value) => {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : null;
+  };
+  const textIncludesAny = (text, words) => words.some(word => text.includes(word));
+  const studentName = payload?.student?.name || payload?.student?.id || '학생';
+  const score = asNumber(payload?.exam?.score);
+  const overallAverage = asNumber(payload?.cohort?.overallAverage);
+  const wrongRows = Array.isArray(payload?.wrongAnalysis) ? payload.wrongAnalysis : [];
+  const wrongCount = asNumber(payload?.baseReportDraft?.metrics?.wrongCount) ?? wrongRows.length;
+  const teacherMemo = String(payload?.teacherMemo || payload?.baseReportDraft?.teacherMemo || '').trim();
+  const draftText = [
+    payload?.baseReportDraft?.parentMessage,
+    payload?.baseReportDraft?.teacherMemo,
+    payload?.baseReportDraft?.kakaoSummary,
+    Array.isArray(payload?.baseReportDraft?.diagnosis) ? payload.baseReportDraft.diagnosis.join(' ') : payload?.baseReportDraft?.diagnosis,
+    teacherMemo
+  ].filter(Boolean).join(' ');
+  const lowerTier = (score !== null && overallAverage !== null && score <= overallAverage - 10) || wrongCount >= 6;
+  const highScore = score !== null && score >= 90 && wrongCount <= 1;
+  const midScore = !highScore && !lowerTier;
+
+  const attendanceTone = textIncludesAny(draftText, ['결석', '지각', '빠진', '늦게', '조퇴'])
+    ? '빠진 부분은 다음 수업에서 보완하겠습니다.'
+    : textIncludesAny(draftText, ['등원', '출석', '참여'])
+      ? '수업 참여 흐름은 유지되고 있습니다.'
+      : '수업 안에서 필요한 부분을 계속 확인하겠습니다.';
+
+  const homeworkTone = textIncludesAny(draftText, ['숙제 완료', '숙제도 잘', '과제 완료', '잘 챙겨'])
+    ? '숙제 흐름은 비교적 잘 이어가고 있습니다.'
+    : textIncludesAny(draftText, ['숙제는 일부', '미완료', '숙제 부족', '과제 미완'])
+      ? '숙제 완성도는 조금씩 다시 잡아가겠습니다.'
+      : '과제와 풀이 습관을 함께 확인하겠습니다.';
+
+  const effortTone = teacherMemo && textIncludesAny(teacherMemo, ['열심', '성실', '집중', '노력', '좋', '적극'])
+    ? `담당 선생님 메모에 확인된 ${studentName} 학생의 긍정적인 수업 태도를 자연스럽게 반영합니다.`
+    : lowerTier
+      ? '학습 루틴을 다시 세울 수 있는 단계로 보고 차근차근 관리하겠습니다.'
+      : '현재 흐름을 바탕으로 풀이 습관을 더 안정적으로 다듬겠습니다.';
+
+  const clinicTone = textIncludesAny(draftText, ['클리닉', '보강', '오답노트'])
+    ? '필요한 부분은 클리닉과 오답노트를 통해 순차적으로 관리하겠습니다.'
+    : '필요 시 클리닉과 오답노트로 보완하겠습니다.';
+
+  const classParticipationTone = teacherMemo && textIncludesAny(teacherMemo, ['참여', '발표', '질문', '집중', '수업'])
+    ? '수업 중 확인된 참여 흐름을 결과 해석과 함께 연결합니다.'
+    : '수업 안에서 풀이 습관을 다시 잡아가겠습니다.';
+
+  const growthPotential = highScore
+    ? '심화 확장 가능성'
+    : midScore
+      ? '실수 교정 후 상승 가능성'
+      : '기본 루틴 회복 후 점진적 향상 가능성';
+
+  const positiveAnchors = lowerTier ? [
+    '점수만으로 학습 가능성을 판단하기보다, 지금은 풀이 습관을 다시 잡기 좋은 시점입니다.',
+    '현재 결과는 다음 수업에서 정리할 부분이 있지만, 수업 안에서 다시 확인할 지점이 분명하게 보입니다.',
+    '이번 리포트는 지적보다 다음 수업에서 어떤 순서로 회복할지 정리한 자료입니다.',
+    '기본 개념과 풀이 루틴을 다시 잡으면 충분히 개선될 수 있는 단계입니다.'
+  ] : highScore ? [
+    '현재 성취를 바탕으로 심화 확장까지 자연스럽게 이어갈 수 있습니다.',
+    '정확도를 유지하면서 난도 있는 유형까지 넓혀갈 수 있는 흐름입니다.'
+  ] : [
+    '지금은 실수 교정과 풀이 습관 정리만으로도 상승 여지를 만들 수 있는 단계입니다.',
+    '현재 흐름을 유지하면서 확인 포인트를 줄이면 더 안정적인 결과로 이어질 수 있습니다.'
+  ];
+
+  const parentReassurances = lowerTier ? [
+    '가정에서 부담을 크게 주시기보다, 학원에서 정리할 부분을 믿고 맡겨주시면 됩니다.',
+    '틀린 문제를 많이 다시 풀리기보다, 조건을 표시하며 천천히 푸는 습관만 가볍게 봐주시면 좋겠습니다.',
+    '학원에서 우선순위를 정해 차근차근 보완하겠습니다.',
+    '현재는 결과를 질책하기보다 풀이 과정을 다시 세우는 것이 더 중요합니다.'
+  ] : [
+    '가정에서는 풀이 흔적을 가볍게 확인해 주시는 정도면 충분합니다.',
+    '학원에서 다음 학습 흐름까지 이어서 관리하겠습니다.'
+  ];
+
+  const teacherCareMessages = lowerTier ? [
+    '다음 수업에서 확인 문항을 한꺼번에 몰아붙이기보다, 맞출 수 있었던 문항부터 회복하겠습니다.',
+    '기본 문항의 정확도를 먼저 회복한 뒤 난도 있는 문항으로 이어가겠습니다.',
+    '조건 표시, 식 세우기, 계산 정리 순서로 풀이 루틴을 다시 잡겠습니다.',
+    '필요한 경우 클리닉과 오답노트를 통해 순차적으로 관리하겠습니다.'
+  ] : [
+    '풀이 과정 확인과 유사 문제를 병행하며 다음 단원으로 안정적으로 연결하겠습니다.',
+    '현재 성취를 유지하면서 확인이 필요한 유형만 짧게 보완하겠습니다.'
+  ];
+
+  const pickIndex = Math.abs(String(studentName + score + wrongCount).split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0));
+  const pick = (items, offset = 0) => items[(pickIndex + offset) % items.length];
+  const positiveAnchor = pick(positiveAnchors);
+  const parentReassurance = pick(parentReassurances, 3);
+  const teacherCareMessage = pick(teacherCareMessages, 7);
+  const lifeBasedNextStep = lowerTier
+    ? '풀이 과정 확인 → 조건 표시 → 유사 문제 → 오답노트 순서로 관리하겠습니다.'
+    : highScore
+      ? '정확도 유지 → 심화 유형 확인 → 다음 단원 연결 순서로 관리하겠습니다.'
+      : '확인 문항 정리 → 풀이 습관 점검 → 유사 문제 연결 순서로 관리하겠습니다.';
+
+  return {
+    attendanceTone,
+    homeworkTone,
+    effortTone,
+    clinicTone,
+    classParticipationTone,
+    growthPotential,
+    teacherCareMessage,
+    positiveAnchor,
+    parentReassurance,
+    lifeBasedNextStep
+  };
+}
+
 function buildReportAnalysisUserPrompt(payload) {
   const hasBaseDraft = !!payload?.baseReportDraft;
   return [
@@ -460,6 +861,61 @@ function buildReportAnalysisUserPrompt(payload) {
     '- 성취 → 평가 해석 → 핵심 보완 → 다음 수업 계획 → 학부모 메시지 순서를 유지할 것.',
     '- 반복 문장을 줄이고, 딱딱한 내부 보고서 문체를 부드럽게 바꿀 것.',
     '- summary는 성취 중심, diagnosis는 평가 해석, wrongAnalysis는 문항별 확인 포인트, nextPlan은 다음 수업 조치, parentMessage는 학부모 발송문 역할을 맡는다.',
+    '- parentMessage는 반드시 "어머님, 안녕하세요."로 시작한다.',
+    '- "학부모님, 안녕하세요.", "안녕하세요, ○○ 학부모님.", "○○ 어머님."으로 시작하지 않는다.',
+    '- 학생 이름은 parentMessage 첫 문장 이후 자연스럽게 사용한다.',
+    '',
+    '[문장 다양화 seed 사용 규칙]',
+    '- payload.reportWritingSeeds를 반드시 참고하라.',
+    '- payload.learningLifeSeeds를 반드시 참고하라.',
+    '- toneVariant, expressionVariant, sentencePatternSeed, openingHookType, connectorStyle, detailDensity, openingStyle에 맞춰 문장 구조를 바꾸라.',
+    '- 리포트는 점수표가 아니라 "성취 확인 + 학습 회복 계획 + 학원 관리 안내"여야 한다.',
+    '- 점수, 정답률, 평균, 오답 개수, 퍼센트 표현을 과도하게 반복하지 말라.',
+    '- 퍼센트와 평균 비교는 필요한 곳에서만 1~2회 사용하고, parentMessage에서는 가능하면 줄여라.',
+    '- 하위권 학생의 경우 결과를 강조하기보다 "회복 순서, 수업 관리, 긍정적 가능성"을 중심으로 작성하라.',
+    '- "못했다", "낮은 수치", "아쉬운 결과", "부족합니다", "오답 처리" 같은 표현은 쓰지 말라.',
+    '- 하위권 학생 parentMessage에는 반드시 안심 문장을 포함하라.',
+    '- 학부모가 "우리 아이가 못한다고 혼나는 느낌"을 받지 않도록 표현하라.',
+    '- 학생이 현재 열심히 하고 있다는 근거가 teacherMemo나 payload에 있으면 반드시 자연스럽게 반영하라.',
+    '- 근거가 없으면 "수업 안에서 다시 잡아가겠습니다"처럼 학원의 관리 계획으로 표현하라.',
+    '- 가정 요청은 1개만 제시하고, 부담스럽지 않게 쓴다.',
+    '- 학원에서 관리할 부분을 선생님이 책임지고 안내하는 문체로 작성하라.',
+    '- 첫 문장은 openingHookType에 맞춰 시작하라.',
+    '- 같은 데이터라도 문장 시작과 흐름이 매번 똑같아 보이지 않게 작성하라.',
+    '- 매번 "이번 평가는", "다음 수업에서는", "학원에서는"으로 문단을 시작하지 말라.',
+    '- sentenceAvoidList의 시스템성 표현은 학부모 리포트에 쓰지 말라.',
+    '- "이번 평가는", "다음 수업에서는", "학원에서는"은 필요하면 한 번만 쓰고 모든 섹션 첫머리에 반복하지 말라.',
+    '- repetitionGuard의 핵심 키워드를 섹션별로 분산해서 사용하라.',
+    '- summary, diagnosis, nextPlan에서 connectorStyle이 같은 방식으로만 반복되지 않게 하라.',
+    '- summary, diagnosis, wrongAnalysis, nextPlan, parentMessage는 서로 다른 문장 구조를 사용하라.',
+    '- 같은 의미를 여러 섹션에 반복하지 말라.',
+    '- parentMessage는 선생님이 직접 쓴 학부모 안내문처럼 자연스럽게 작성하라.',
+    '- parentMessage는 반드시 "어머님, 안녕하세요."로 시작한다.',
+    '- "학부모님, 안녕하세요.", "안녕하세요, ○○ 학부모님.", "○○ 어머님."으로 시작하지 않는다.',
+    '- 학생 이름은 parentMessage 첫 문장 이후 자연스럽게 사용한다.',
+    '- 기본 리포트 초안보다 짧게 쓰지 말고, 더 자연스럽고 구체적으로 개선하라.',
+    '- 단, 과장하거나 없는 사실을 만들지 말라.',
+    '- 표현은 다양화하되, 학부모가 보기에 안정적이고 정중한 톤은 유지하라.',
+    '- microVariationRules를 반드시 지켜라.',
+    '',
+    '[문체별 가이드]',
+    '- conciseWarm: 짧고 따뜻한 안내문. 부담 없이 읽히되 핵심 조치는 분명히 쓴다.',
+    '- teacherMemoStyle: 담당 선생님이 직접 설명하는 느낌. "수업에서 이렇게 이어가겠습니다"의 신뢰감을 준다.',
+    '- parentCounselStyle: 상담 문체. 결과 해석과 가정에서 볼 포인트를 부드럽게 연결한다.',
+    '- growthNarrative: 학생의 성장 흐름을 강조한다. 현재 성취가 다음 단계로 이어진다는 느낌을 준다.',
+    '- preciseDiagnostic: 정답률과 문항 성격을 근거로 차분하게 분석한다. 단, 딱딱한 내부 보고서처럼 쓰지 않는다.',
+    '- calmManagement: 오답이 많은 경우 사용한다. 불안감을 주지 않고 우선순위 관리와 순차 보완을 강조한다.',
+    '- achievementHighlight: 만점자/고득점자용. 우수 해결 문항과 정확도 유지, 심화 확장을 강조한다.',
+    '- recoveryPlan: 점수가 낮거나 오답이 많은 경우 사용한다. 좌절감보다 회복 경로와 구체적 조치를 강조한다.',
+    '',
+    '[하위권 또는 오답 다수 리포트 구조]',
+    '- score가 전체 평균보다 10점 이상 낮거나 wrongCount가 6 이상이면 아래 구조를 따른다.',
+    '- summary는 점수를 짧게 1회만 언급하고, 회복 가능성과 우선 관리 포인트를 중심으로 쓴다.',
+    '- diagnosis는 쉬운 문항 실수와 고난도 문항을 구분하되, 관리 순서 중심으로 표현한다.',
+    '- wrongAnalysis는 문항별 해석을 간단히 쓰고 퍼센트 표현을 남발하지 않는다.',
+    '- nextPlan은 수업에서 어떤 순서로 보완할지 구체적으로 작성한다.',
+    '- parentMessage는 안심 → 현재 관리 방향 → 가정에서 가볍게 볼 것 1개 순서로 작성한다.',
+    '- parentMessage에서 수치 반복은 최소화하고, 학생을 비난하는 느낌을 주지 않는다.',
     '',
     '입력 데이터:',
     clampText(JSON.stringify(payload, null, 2), 22000),
@@ -479,6 +935,28 @@ function buildReportAnalysisUserPrompt(payload) {
   ].join('\n');
 }
 
+function normalizeParentMessageOpening(value) {
+  const softenParentMessageText = (raw) => String(raw || '')
+    .replace(/못했다/g, '확인할 부분이 있었다')
+    .replace(/아쉬운 결과/g, '다음 수업에서 정리할 부분')
+    .replace(/낮은 수치/g, '우선 확인할 지점')
+    .replace(/부족합니다/g, '보완할 부분이 있습니다')
+    .replace(/오답 처리/g, '확인할 문항');
+  const text = softenParentMessageText(value).trim();
+  if (!text) return '';
+  if (text.startsWith('어머님, 안녕하세요.')) return text;
+
+  const cleaned = text
+    .replace(/^안녕하세요[,.]?\s*/u, '')
+    .replace(/^안녕하세요[,\s]+.*?학부모님[,.]?\s*/u, '')
+    .replace(/^.*?학부모님[,.\s]*(안녕하세요[,.]?)?\s*/u, '')
+    .replace(/^.*?어머님[,.\s]*(안녕하세요[,.]?)?\s*/u, '')
+    .replace(/^안녕하세요[,.]?\s*/u, '')
+    .trim();
+
+  return `어머님, 안녕하세요.${cleaned ? `\n${cleaned}` : ''}`;
+}
+
 function normalizeReportAnalysisResult(raw = {}) {
   const cleanString = (v) => String(v || '').trim();
   const cleanArray = (v) => Array.isArray(v) ? v.map(x => cleanString(x)).filter(Boolean).slice(0, 8) : [];
@@ -488,7 +966,7 @@ function normalizeReportAnalysisResult(raw = {}) {
     diagnosis: cleanString(raw.diagnosis),
     wrongAnalysis: cleanString(raw.wrongAnalysis),
     nextPlan: cleanString(raw.nextPlan),
-    parentMessage: cleanString(raw.parentMessage),
+    parentMessage: normalizeParentMessageOpening(raw.parentMessage),
     kakaoSummary: cleanString(raw.kakaoSummary),
     teacherMemo: cleanString(raw.teacherMemo),
     riskLevel: ['stable', 'watch', 'focus'].includes(risk) ? risk : 'stable',
@@ -498,6 +976,14 @@ function normalizeReportAnalysisResult(raw = {}) {
 }
 
 function buildFallbackReportAnalysis(payload = {}) {
+  const seeds = payload?.reportWritingSeeds || {};
+  const lifeSeeds = payload?.learningLifeSeeds || {};
+  const seededActions = Array.isArray(seeds.priorityActions) ? seeds.priorityActions.filter(Boolean).slice(0, 5) : [];
+  const seededParentGuide = String(seeds.parentGuide || '').trim();
+  const positiveAnchor = String(lifeSeeds.positiveAnchor || '').trim();
+  const parentReassurance = String(lifeSeeds.parentReassurance || '').trim();
+  const teacherCareMessage = String(lifeSeeds.teacherCareMessage || '').trim();
+  const lifeBasedNextStep = String(lifeSeeds.lifeBasedNextStep || '').trim();
   const draft = payload?.baseReportDraft || null;
   if (draft && typeof draft === 'object') {
     const studentName = payload?.student?.name || payload?.student?.id || '학생';
@@ -506,22 +992,25 @@ function buildFallbackReportAnalysis(payload = {}) {
     const diagnosis = Array.isArray(draft.diagnosis) ? draft.diagnosis.join(' ') : String(draft.diagnosis || summary);
     const nextPlanItems = Array.isArray(draft.nextPlanItems) ? draft.nextPlanItems : [];
     const parentMessage = String(draft.parentMessage || '').trim() || `${studentName} 학생의 평가 결과와 다음 수업 보완 방향을 기본 리포트 기준으로 안내드립니다.`;
+    const nextActions = seededActions.length ? seededActions : (nextPlanItems.length ? nextPlanItems.slice(0, 5) : ['기본 리포트 기준으로 다음 수업을 이어갑니다.']);
+    const lifeMessage = [positiveAnchor, teacherCareMessage, parentReassurance].filter(Boolean).join(' ');
+    const mergedParentMessage = [parentMessage, lifeMessage].filter(Boolean).join(' ');
     return normalizeReportAnalysisResult({
       summary,
       diagnosis,
       wrongAnalysis: Array.isArray(draft.evaluationMeaning) ? draft.evaluationMeaning.slice(1).join(' ') : diagnosis,
-      nextPlan: nextPlanItems.join(' '),
-      parentMessage,
+      nextPlan: [nextPlanItems.join(' '), lifeBasedNextStep].filter(Boolean).join(' '),
+      parentMessage: seededParentGuide && !mergedParentMessage.includes(seededParentGuide) ? `${mergedParentMessage} 가정에서는 ${seededParentGuide}해 주시면 좋겠습니다.` : mergedParentMessage,
       kakaoSummary: String(draft.kakaoSummary || '').trim() || `안녕하세요, AP수학입니다.
 
 ${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.
 기본 리포트 기준으로 성취와 보완 방향을 안내드립니다.
 
 감사합니다.`,
-      teacherMemo: String(draft.teacherMemo || '').trim() || '기본 리포트 기준으로 다음 수업 보완 포인트를 확인합니다.',
+      teacherMemo: String(draft.teacherMemo || '').trim() || teacherCareMessage || '기본 리포트 기준으로 다음 수업 보완 포인트를 확인합니다.',
       riskLevel: 'stable',
       mainWeaknesses: Array.isArray(payload?.wrongAnalysis) && payload.wrongAnalysis.length ? ['풀이 흐름 확인', '조건 표시와 검산 습관'] : ['정확도 유지', '심화 응용 확장'],
-      nextActions: nextPlanItems.length ? nextPlanItems.slice(0, 5) : ['기본 리포트 기준으로 다음 수업을 이어갑니다.']
+      nextActions
     });
   }
   const studentName = payload?.student?.name || payload?.student?.id || '학생';
@@ -544,14 +1033,15 @@ ${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니�
   const wrongAnalysis = wrongCount
     ? `오답은 ${wrongRows.map(r => `${r.questionNo}번`).join(', ')}에서 확인됩니다.${hard.length ? ` 이 중 ${hard.length}문항은 전체 정답률이 낮아 다수 학생이 어려워한 문항으로 볼 수 있습니다.` : ''}${personal.length ? ` ${personal.length}문항은 전체 정답률이 높은 편이라 조건 확인, 계산 정리, 검산 습관을 우선 점검하겠습니다.` : ''}`
     : '이번 평가는 오답 없이 안정적으로 마무리했습니다.';
-  const nextActions = [
+  const nextActions = seededActions.length ? seededActions : [
     '오답 문항의 풀이 과정을 다시 확인합니다.',
     '조건 표시와 식 세우기 과정을 점검합니다.',
     '계산 후 검산 습관을 짧은 확인문제로 보완합니다.'
   ];
-  if (units.length) nextActions.unshift(`${units.join(', ')} 단원을 우선 보완합니다.`);
-  const nextPlan = `${nextActions.slice(0, 4).join(' ')} 필요하면 유사문항과 상승문제로 연결하겠습니다.`;
-  const parentMessage = `${studentName} 학생의 이번 평가는 점수뿐 아니라 오답이 나온 문항의 정답률과 단원을 함께 확인하는 것이 중요합니다. 학원에서는 다음 수업에서 오답 원인을 다시 확인하고, 같은 실수가 반복되지 않도록 풀이 순서와 검산 습관을 잡아가겠습니다. 가정에서는 문제 조건 표시와 숙제 마무리 여부만 가볍게 확인해 주시면 좋겠습니다.`;
+  if (!seededActions.length && units.length) nextActions.unshift(`${units.join(', ')} 단원을 우선 보완합니다.`);
+  const nextPlan = `${nextActions.slice(0, 4).join(' ')} ${lifeBasedNextStep || '필요하면 유사문항과 상승문제로 연결하겠습니다.'}`;
+  const parentGuideText = seededParentGuide || '문제 조건 표시와 숙제 마무리 여부만 가볍게 확인';
+  const parentMessage = `${positiveAnchor ? `${positiveAnchor} ` : ''}${studentName} 학생의 이번 평가는 점수뿐 아니라 확인할 문항의 단원을 함께 보는 것이 중요합니다. ${teacherCareMessage || '학원에서는 다음 수업에서 원인을 다시 확인하고, 같은 실수가 반복되지 않도록 풀이 순서와 검산 습관을 잡아가겠습니다.'} ${parentReassurance || `가정에서는 ${parentGuideText}해 주시면 좋겠습니다.`}`;
   const kakaoSummary = `안녕하세요, AP수학입니다.\n\n${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.\n- 점수: ${score ?? '-'}점\n- 문항 수: ${qCount || '-'}문항\n- 오답: ${wrongCount}문항${correctRate !== null ? `\n- 정답률: ${correctRate}%` : ''}\n\n자세한 오답 의미와 보완 계획은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.\n\n감사합니다.`;
   return normalizeReportAnalysisResult({
     summary,
@@ -560,7 +1050,7 @@ ${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니�
     nextPlan,
     parentMessage,
     kakaoSummary,
-    teacherMemo: units.length ? `우선 보완 단원: ${units.join(', ')}` : '특이 단원 쏠림 없음',
+    teacherMemo: teacherCareMessage || (units.length ? `우선 보완 단원: ${units.join(', ')}` : '특이 단원 쏠림 없음'),
     riskLevel: wrongCount >= 5 || hard.length >= 3 ? 'focus' : wrongCount >= 2 ? 'watch' : 'stable',
     mainWeaknesses: units.length ? units : (wrongCount ? ['오답 풀이 과정 점검'] : ['정확도 유지']),
     nextActions
@@ -585,6 +1075,8 @@ function isWeakAiReportResult(result) {
   if (parentMessage.length < 360) return true;
   if (kakaoSummary.length < 140) return true;
   if (teacherMemo.length < 50) return true;
+  if ((parentMessage.match(/%/g) || []).length > 2) return true;
+  if (/아쉬운 결과|낮은 수치|부족합니다|오답 처리/.test(parentMessage)) return true;
 
   if (!Array.isArray(result.mainWeaknesses) || result.mainWeaknesses.length < 1) return true;
   if (!Array.isArray(result.nextActions) || result.nextActions.length < 2) return true;
@@ -607,6 +1099,9 @@ function mergeReportAnalysisWithFallback(result, fallback) {
     if (String(merged[key] || '').trim().length < min[key]) {
       merged[key] = String(fallback?.[key] || merged[key] || '').trim();
     }
+  }
+  if ((String(merged.parentMessage || '').match(/%/g) || []).length > 2) {
+    merged.parentMessage = normalizeParentMessageOpening(fallback?.parentMessage || merged.parentMessage);
   }
   if (!merged.mainWeaknesses.length) merged.mainWeaknesses = fallback?.mainWeaknesses || [];
   if (merged.nextActions.length < 2) merged.nextActions = fallback?.nextActions || merged.nextActions;
@@ -788,6 +1283,11 @@ async function callOpenAiReportAnalysis(env, payload) {
     '- 기본 리포트보다 더 짧거나 딱딱하게 만들지 않는다.',
     '- 반복 문장을 제거하고, 섹션별 역할을 분리한다.',
     '- summary는 성취 중심, diagnosis는 평가 해석, wrongAnalysis는 문항별 확인 포인트, nextPlan은 다음 수업 조치, parentMessage는 학부모 발송문 역할을 맡는다.',
+    '- parentMessage는 반드시 "어머님, 안녕하세요."로 시작한다.',
+    '- payload.learningLifeSeeds를 참고해 점수표가 아니라 성취 확인, 학습 회복 계획, 학원 관리 안내가 드러나게 쓴다.',
+    '- 점수, 정답률, 평균, 퍼센트 표현은 과도하게 반복하지 않는다.',
+    '- 하위권 학생은 결과보다 회복 순서, 수업 관리, 긍정적 가능성을 중심으로 작성한다.',
+    '- 가정 요청은 1개만 제시하고 부담스럽지 않게 쓴다.',
     '',
     '입력 데이터:',
     clampText(JSON.stringify(payload, null, 2), 22000),
@@ -2428,6 +2928,8 @@ export default {
           if (studentId && !(await canAccessStudent(teacher, studentId, env))) {
             return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
           }
+          payload.reportWritingSeeds = buildReportWritingSeeds(payload);
+          payload.learningLifeSeeds = buildLearningLifeSeeds(payload);
 
           try {
             const result = await callReportAiProxyAnalysis(env, payload);
