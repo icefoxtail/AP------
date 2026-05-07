@@ -23,7 +23,10 @@ function renderAddressBookList() {
     const listRoot = document.getElementById('ab-list');
     if (!listRoot) return;
 
-    let stds = [...(state.db.students || [])];
+    let stds = (state.db.students || []).filter(s => {
+        const status = String(s.status || '재원').trim();
+        return status === '재원';
+    });
 
     if (cid) {
         const ids = new Set((state.db.class_students || [])
@@ -103,7 +106,7 @@ function openAddressBook() {
             <input id="ab-search" class="btn" placeholder="이름/학교/반 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="renderAddressBookList()">
             <select id="ab-class" class="btn" style="width:100%; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체 학생</option>${classOptions}</select>
         </div>
-        <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">전체 학생을 우선 표시하고, 반 선택은 보조 필터로 사용합니다.</div>
+        <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">재원생만 표시하고, 반 선택은 보조 필터로 사용합니다.</div>
         <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px; padding-right:4px;"></div>
     `);
     renderAddressBookList();
