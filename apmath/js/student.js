@@ -123,10 +123,7 @@ function renderStudentDetailTab(sid, tab) {
     const footerHtml = `
         <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px;">
             <button class="btn btn-primary" style="width: 100%; min-height: 52px; font-size: 15px; font-weight:700; border-radius: 16px; box-shadow: none; cursor: pointer;" onclick="if(typeof openReportCenterModal==='function') openReportCenterModal('${sid}', 'daily'); else openStudentReportModal('${sid}')">리포트 센터</button>
-            <div style="display: flex; gap: 10px;">
-                <button class="btn" style="flex: 1; min-height: 52px; font-size: 14px; font-weight:700; color: var(--primary); border: 1px solid rgba(26,92,255,0.22); background: rgba(26,92,255,0.06); border-radius: 16px; cursor: pointer;" onclick="if(typeof openReportCenterModal==='function') openReportCenterModal('${sid}', 'exam'); else openParentReport('${sid}')">평가 리포트</button>
-                <button class="btn" style="flex: 1; min-height: 52px; font-size: 14px; font-weight:700; color: var(--primary); border: 1px solid var(--primary); background: transparent; border-radius: 16px; cursor: pointer;" onclick="openClinicBasketForStudent('${sid}')">클리닉 바구니</button>
-            </div>
+            <button class="btn" style="width: 100%; min-height: 52px; font-size: 14px; font-weight:700; color: var(--primary); border: 1px solid rgba(26,92,255,0.22); background: rgba(26,92,255,0.06); border-radius: 16px; cursor: pointer;" onclick="renderStudentDetailTab('${sid}','weak')">클리닉 센터</button>
         </div>
     `;
 

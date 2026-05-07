@@ -136,28 +136,36 @@ function buildExamSummary(ctx) {
     if (!ctx.latestExam) return '';
 
     const exam = ctx.latestExam;
+    const score = exam.score;
     const avgText = ctx.avg !== null ? ` 최근 3회 평균은 ${ctx.avg}점입니다.` : '';
-    const wrongText = ctx.wrongIds.length
-        ? ` 오답은 ${ctx.wrongIds.length}개로, ${ctx.wrongIds.join(', ')}번을 다시 확인하면 좋겠습니다.`
-        : ' 오답 없이 잘 마무리했습니다.';
 
-    return `최근 평가인 「${exam.exam_title}」에서는 ${exam.score}점을 기록했습니다.${avgText}${wrongText}`;
+    if (!ctx.wrongIds.length) {
+        return `최근 평가인 「${exam.exam_title}」에서 ${score}점을 기록했습니다.${avgText} 모든 문항을 빠짐없이 맞혀 이번 단원 내용을 탄탄하게 소화하고 있습니다.`;
+    }
+
+    const wrongStr = ctx.wrongIds.length === 1
+        ? `${ctx.wrongIds[0]}번 문항`
+        : `${ctx.wrongIds.join(', ')}번 문항`;
+
+    return `최근 평가인 「${exam.exam_title}」에서 ${score}점을 기록했습니다.${avgText} ${wrongStr}은 다음 수업에서 풀이 흐름을 함께 확인하고 유사 문제 풀이로 안정적으로 보완하겠습니다.`;
 }
 
 function buildNextPoint(ctx) {
-    if (ctx.wrongIds.length) {
-        return `오답 문항 ${ctx.wrongIds.join(', ')}번의 풀이 과정을 다시 점검`;
+    if (!ctx.wrongIds.length) {
+        if (ctx.progressText) {
+            return `${ctx.progressText} 이후 내용으로 학습을 이어가는 것`;
+        }
+        return '오늘 다룬 개념을 바탕으로 응용력을 한 단계 높이는 것';
     }
 
-    if (ctx.homework === '미완료') {
-        return '미완료된 숙제 보완';
-    }
+    const wrongStr = ctx.wrongIds.length === 1
+        ? `${ctx.wrongIds[0]}번 문항 풀이 흐름 확인`
+        : `${ctx.wrongIds.join(', ')}번 문항 풀이 흐름 확인`;
 
     if (ctx.progressText) {
-        return `${ctx.progressText} 범위의 핵심 개념 확인`;
+        return `${wrongStr} 및 ${ctx.progressText} 흐름을 이어가는 것`;
     }
-
-    return '오늘 다룬 개념의 계산 과정과 풀이 습관 점검';
+    return wrongStr;
 }
 
 /**
@@ -209,48 +217,43 @@ function buildParentReportText(ctx) {
     const s = ctx.student;
     if (!s) return '';
 
-    const attText = describeAttendance(ctx.attendance);
     const nextPoint = buildNextPoint(ctx);
 
     if (ctx.attendance === '결석') {
         return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
-오늘 ${s.name} 학생은 결석으로 확인되었습니다.
-수업에서 다룬 내용은 다음 시간에 흐름이 끊기지 않도록 필요한 부분부터 다시 확인하겠습니다.
+오늘 ${s.name} 학생은 결석으로 수업에 참여하지 못했습니다.
+빠진 수업 내용은 다음 시간에 진도 흐름에 맞춰 필요한 부분부터 차근차근 보충하겠습니다.
 
-가정에서도 다음 등원 전까지 교재와 숙제 준비만 한 번 확인 부탁드립니다.
+다음 수업 전까지 이전 숙제와 교재 준비만 가볍게 확인해 주시면 됩니다.
 
 감사합니다.`, ctx);
     }
 
     if (ctx.attendance === '지각') {
-        const progressSentenceForLate = ctx.progressText
-            ? `수업에서는 ${ctx.progressText} 범위를 중심으로 진행했습니다.`
-            : '수업에서는 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
+        const progressSentence = ctx.progressText
+            ? `오늘은 ${ctx.progressText} 범위를 중심으로 수업을 진행했습니다.`
+            : '오늘은 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
 
         return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
-오늘 ${s.name} 학생은 지각 후 수업에 참여했습니다.
-${progressSentenceForLate}
-
-늦게 참여한 만큼 다음 시간에는 수업 초반 흐름부터 다시 확인하겠습니다.
-가정에서도 다음 등원 전 준비물과 숙제만 한 번 확인 부탁드립니다.
+오늘 ${s.name} 학생은 늦게 도착했지만 수업에 참여했습니다.
+${progressSentence}
+늦게 합류하며 놓쳤을 수 있는 부분은 다음 시간 초반에 짧게 확인하고 이어가겠습니다.
 
 감사합니다.`, ctx);
     }
 
     if (ctx.attendance === '조퇴') {
-        const progressSentenceForEarlyLeave = ctx.progressText
-            ? `수업에서는 ${ctx.progressText} 범위를 중심으로 진행했습니다.`
-            : '수업에서는 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
+        const progressSentence = ctx.progressText
+            ? `오늘은 ${ctx.progressText} 범위를 중심으로 수업을 진행했습니다.`
+            : '오늘은 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
 
         return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
-오늘 ${s.name} 학생은 수업 도중 조기 하원으로 확인되었습니다.
-${progressSentenceForEarlyLeave}
-
-마무리하지 못한 부분은 다음 시간에 흐름이 끊기지 않도록 다시 확인하겠습니다.
-가정에서도 다음 등원 전 교재와 숙제 준비만 한 번 확인 부탁드립니다.
+오늘 ${s.name} 학생은 수업 중간에 일찍 귀가하였습니다.
+${progressSentence}
+마무리하지 못한 내용은 다음 시간 초반에 자연스럽게 연결해 진행하겠습니다.
 
 감사합니다.`, ctx);
     }
@@ -260,22 +263,21 @@ ${progressSentenceForEarlyLeave}
         : '오늘은 현재 진도에 맞춰 개념 확인과 문제 풀이를 진행했습니다.';
 
     const homeworkSentence = ctx.homework === '완료'
-        ? '숙제는 잘 챙겨온 상태였습니다.'
+        ? '숙제도 잘 챙겨온 모습이었습니다.'
         : ctx.homework === '미완료'
-            ? '숙제는 일부 보완이 필요하여 다음 시간 전까지 마무리하면 좋겠습니다.'
-            : '숙제 상태는 수업 중 추가로 확인하겠습니다.';
+            ? '숙제는 일부 남은 부분이 있어 다음 수업 전까지 마무리하도록 안내했습니다.'
+            : '';
 
     const examSentence = buildExamSummary(ctx);
     const examBlock = examSentence ? `\n\n${examSentence}` : '';
+    const homeworkBlock = homeworkSentence ? `\n${homeworkSentence}` : '';
 
     return appendRiskSummaryToReportText(`안녕하세요, AP수학입니다.
 
-오늘 ${s.name} 학생은 ${attText}하여 수업에 참여했습니다.
-${progressSentence}
-${homeworkSentence}${examBlock}
+오늘 ${s.name} 학생은 수업에 참여했습니다.
+${progressSentence}${homeworkBlock}${examBlock}
 
-다음 시간에는 ${nextPoint}을 중심으로 다시 점검하겠습니다.
-가정에서도 해당 부분만 가볍게 확인해 주시면 학습 흐름 유지에 도움이 됩니다.
+다음 시간에는 ${nextPoint}에 집중하겠습니다.
 
 감사합니다.`, ctx);
 }
@@ -982,6 +984,12 @@ function reportCenterLimitText(value, limit = 220) {
     return text.length > limit ? `${text.slice(0, limit).trim()}...` : text;
 }
 
+function reportCenterTrimText(value, limit = 120) {
+    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    if (!text) return '';
+    return text.length > limit ? `${text.slice(0, limit).trim()}...` : text;
+}
+
 function reportCenterExtractQuestionBankFromText(jsText) {
     const sandboxWindow = { questionBank: null, __questionBank: null };
     const sandboxDocument = {
@@ -1335,59 +1343,70 @@ function reportCenterBuildExamPreview(studentId, sessionId = '') {
 
     if (!student || !selected) return '';
 
-    const wrongSummary = reportCenterBuildWrongSummary(selected);
     const stats = reportCenterBuildQuestionStats(selected);
-    const wrongText = wrongSummary.length
-        ? wrongSummary.map(w => {
-            const unitText = w.unit ? `(${w.unit})` : '';
-            return `${w.questionNo}번${unitText}`;
-        }).join(', ')
-        : '오답 없음';
+    const wrongRows = stats.wrongRows || [];
+    const wrongSummary = reportCenterBuildWrongSummary(selected);
     const avg = getRecentAverage(studentId, 3);
+    const qCount = Number(selected.question_count || 0);
+    const wrongCount = wrongRows.length;
+    const correctRate = qCount ? Math.round(((qCount - wrongCount) / qCount) * 100) : null;
     const targetProgress = typeof computeStudentTargetProgress === 'function'
         ? computeStudentTargetProgress(studentId)
         : null;
-    const targetText = targetProgress && targetProgress.targetScore !== null
-        ? `목표점수 ${targetProgress.targetScore}점 대비 현재 흐름을 함께 확인하겠습니다.`
+
+    const compareParts = [];
+    if (stats.overallAvg !== null) compareParts.push(`전체 평균 ${stats.overallAvg}점`);
+    if (stats.classAvg !== null) compareParts.push(`${stats.className || '반'} 평균 ${stats.classAvg}점`);
+    const compareText = compareParts.length ? ` (${compareParts.join(', ')})` : '';
+
+    const targetLine = targetProgress && targetProgress.targetScore !== null && targetProgress.currentAverage !== null
+        ? `목표 ${targetProgress.targetScore}점까지 ${targetProgress.remainScore}점 남았습니다. 현재 흐름을 유지할 수 있도록 학원에서 계속 관리하겠습니다.`
         : '';
+
+    if (!wrongCount) {
+        return `안녕하세요, AP수학입니다.
+
+${student.name} 학생의 「${selected.exam_title || '평가'}」 결과를 안내드립니다.
+
+이번 평가에서 ${selected.score}점을 기록했습니다.${compareText ? ` ${compareText}` : ''}${avg !== null ? ` 최근 3회 평균은 ${avg}점입니다.` : ''}${correctRate !== null ? ` 정답률 ${correctRate}%입니다.` : ''}
+모든 문항을 빠짐없이 맞혀 이번 범위를 매우 안정적으로 소화하고 있습니다.
+
+${targetLine ? `${targetLine}\n\n` : ''}다음 수업에서는 이번 성취를 바탕으로 다음 단원과 심화 응용 학습을 이어가겠습니다.
+
+자세한 내용은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.
+
+감사합니다.`;
+    }
+
+    const displayRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
     const mainUnits = Array.from(new Set(wrongSummary.map(w => w.unit).filter(Boolean))).slice(0, 3);
-    const unitText = mainUnits.length ? mainUnits.join(', ') : '특정 단원 쏠림 없음';
-    const cohortLine = stats.totalSessions
-        ? `전체 제출 ${stats.totalSessions}명 평균 ${stats.overallAvg === null ? '-' : `${stats.overallAvg}점`}${stats.classSessions ? ` / ${stats.className} 제출 ${stats.classSessions}명 평균 ${stats.classAvg === null ? '-' : `${stats.classAvg}점`}` : ''}`
-        : '동일 평가 비교 자료 부족';
-    const difficultyLine = reportCenterGetQuestionStatsSummary(stats);
-    const wrongAnalysisText = stats.wrongRows.length
-        ? stats.wrongRows.map(r => {
-            const unit = r.unit ? ` / ${r.unit}` : '';
-            const rate = Number.isFinite(r.correctRate) ? `${r.correctRate}%` : '-';
-            const classRate = Number.isFinite(r.classCorrectRate) ? ` / 반 정답률 ${r.classCorrectRate}%` : '';
-            return `- ${r.questionNo}번${unit}: 전체 정답률 ${rate}${classRate} · ${r.meaning}`;
-        }).join('\n')
-        : '- 오답 문항 없음';
+    const wrongDetailLines = displayRows.map(r => {
+        const unit = r.unit ? ` (${r.unit})` : '';
+        if (!Number.isFinite(r.correctRate)) return `${r.questionNo}번${unit} — 풀이 과정을 함께 확인하겠습니다.`;
+        if (r.correctRate >= 85) return `${r.questionNo}번${unit} — 대부분 맞힌 문항으로, 조건 확인과 검산 습관을 점검하겠습니다.`;
+        if (r.correctRate >= 65) return `${r.questionNo}번${unit} — 보통 난도 문항으로, 개념 적용 과정을 다시 확인하겠습니다.`;
+        return `${r.questionNo}번${unit} — 난도가 있었던 문항으로, 개념 연결과 접근 순서를 함께 정리하겠습니다.`;
+    });
+    const hiddenText = wrongRows.length > displayRows.length
+        ? `\n그 외 ${wrongRows.length - displayRows.length}개 문항은 클리닉 시간과 개별 오답 노트로 순차적으로 확인하겠습니다.`
+        : '';
+    const unitComment = mainUnits.length
+        ? `이번에 우선적으로 보완할 단원은 ${mainUnits.join(', ')}입니다.`
+        : '특정 단원에만 치우치기보다 풀이 과정 전반을 함께 점검하겠습니다.';
 
     return `안녕하세요, AP수학입니다.
 
 ${student.name} 학생의 「${selected.exam_title || '평가'}」 결과를 안내드립니다.
 
-[평가 요약]
-평가일: ${selected.exam_date || '-'}
-점수: ${selected.score}점
-문항 수: ${selected.question_count || '-'}문항
-오답: ${wrongText}${avg !== null ? `\n최근 3회 평균: ${avg}점` : ''}
-비교 기준: ${cohortLine}
-${targetText ? `${targetText}\n` : ''}
-[정답률 기반 해석]
-${difficultyLine}
+이번 평가에서 ${selected.score}점을 기록했습니다.${compareText ? ` ${compareText}` : ''}${avg !== null ? ` 최근 3회 평균은 ${avg}점입니다.` : ''}${correctRate !== null ? ` 정답률 ${correctRate}%입니다.` : ''}
 
-[오답 문항 상세]
-${wrongAnalysisText}
+${targetLine ? `${targetLine}\n\n` : ''}이번 평가에서 우선 확인할 문항은 다음과 같습니다.
+${wrongDetailLines.map(l => `• ${l}`).join('\n')}${hiddenText}
 
-이번 평가는 오답 번호만 단순히 확인하는 것이 아니라, 오답이 나온 단원과 전체 정답률을 함께 보면서 해석하는 것이 중요합니다.
-현재 확인되는 주요 보완 단원은 ${unitText}입니다.
+${unitComment}
+다음 수업에서 풀이 흐름을 함께 확인하고, 유사 문제 풀이로 같은 실수가 반복되지 않도록 보완하겠습니다.
 
-전체 정답률이 낮은 문항은 학년 전체가 어려워한 문항으로 보고 개념 연결을 다시 잡고, 전체 정답률이 높은데 틀린 문항은 개인 풀이 습관이나 계산 실수 가능성을 우선 점검하겠습니다.
-
-다음 수업에서는 오답 문항의 풀이 과정을 다시 확인하고, 같은 실수가 반복되지 않도록 확인문제와 유사 유형을 함께 진행하겠습니다.
+자세한 분석 내용은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.
 
 감사합니다.`;
 }
@@ -1481,6 +1500,82 @@ function reportCenterPrintText(textareaId, title = 'AP Math Report') {
     win.document.close();
 }
 
+
+function reportCenterEnsureWideOverlay() {
+    let overlay = document.getElementById('report-center-wide-overlay');
+    if (overlay) return overlay;
+
+    const style = document.createElement('style');
+    style.id = 'report-center-wide-style';
+    style.textContent = `
+        #report-center-wide-overlay { position:fixed; inset:0; z-index:1400; background:rgba(15,23,42,0.48); display:none; align-items:center; justify-content:center; padding:18px; box-sizing:border-box; backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); }
+        #report-center-wide-overlay.show { display:flex; }
+        .report-center-wide-content { width:min(1120px, 100%); height:min(92vh, 980px); background:var(--surface); border:1px solid var(--border); border-radius:24px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 24px 80px rgba(15,23,42,0.22); }
+        .report-center-wide-header { display:grid; grid-template-columns:84px 1fr 84px; align-items:center; gap:8px; min-height:58px; padding:12px 18px; border-bottom:1px solid var(--border); background:var(--surface); flex-shrink:0; }
+        .report-center-wide-title { margin:0; text-align:center; font-size:20px; font-weight:700; color:var(--text); letter-spacing:-0.4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .report-center-wide-close { border:0; background:transparent; color:var(--secondary); font-size:15px; font-weight:700; font-family:inherit; text-align:left; cursor:pointer; padding:8px 0; }
+        .report-center-wide-spacer { width:84px; }
+        .report-center-wide-body { flex:1; min-height:0; overflow:auto; overflow-x:auto; padding:20px 22px 24px; box-sizing:border-box; -webkit-overflow-scrolling:touch; }
+        .report-center-wide-body #report-center-premium-preview { max-width:100%; }
+        .report-center-wide-body .aprc-document { min-width:760px; }
+        @media (max-width:760px) {
+            #report-center-wide-overlay { align-items:stretch; justify-content:stretch; padding:0; }
+            .report-center-wide-content { width:100%; height:100%; max-height:none; border-radius:0; border:0; }
+            .report-center-wide-header { grid-template-columns:56px 1fr 56px; min-height:56px; padding:10px 14px; }
+            .report-center-wide-title { font-size:18px; }
+            .report-center-wide-spacer { width:56px; }
+            .report-center-wide-body { padding:16px 12px 22px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+            .report-center-wide-body #report-center-premium-preview { min-width:760px; width:760px; }
+            .report-center-wide-body .aprc-document { min-width:760px; max-width:760px; }
+        }
+    `;
+    if (!document.getElementById('report-center-wide-style')) document.head.appendChild(style);
+
+    overlay = document.createElement('div');
+    overlay.id = 'report-center-wide-overlay';
+    overlay.innerHTML = `
+        <div class="report-center-wide-content" onclick="event.stopPropagation()">
+            <div class="report-center-wide-header">
+                <button class="report-center-wide-close" onclick="reportCenterCloseWideOverlay()">취소</button>
+                <h2 class="report-center-wide-title" id="report-center-wide-title">리포트 센터</h2>
+                <div class="report-center-wide-spacer"></div>
+            </div>
+            <div class="report-center-wide-body" id="report-center-wide-body"></div>
+        </div>
+    `;
+    overlay.onclick = function(event) {
+        if (event.target === overlay) reportCenterCloseWideOverlay();
+    };
+    document.body.appendChild(overlay);
+    return overlay;
+}
+
+function reportCenterShowWideModal(title, html) {
+    const overlay = reportCenterEnsureWideOverlay();
+    const titleEl = document.getElementById('report-center-wide-title');
+    const bodyEl = document.getElementById('report-center-wide-body');
+    overlay.classList.remove('show');
+    overlay.style.pointerEvents = 'auto';
+    if (titleEl) titleEl.innerText = title || '리포트 센터';
+    if (bodyEl) {
+        bodyEl.innerHTML = '';
+        bodyEl.scrollTop = 0;
+        bodyEl.innerHTML = html || '';
+    }
+    requestAnimationFrame(() => overlay.classList.add('show'));
+}
+
+function reportCenterCloseWideOverlay() {
+    const overlay = document.getElementById('report-center-wide-overlay');
+    const bodyEl = document.getElementById('report-center-wide-body');
+    if (overlay) {
+        overlay.classList.remove('show');
+        overlay.style.pointerEvents = 'auto';
+    }
+    if (bodyEl) bodyEl.innerHTML = '';
+    window.AP_REPORT_CENTER_RENDER_TOKEN = (window.AP_REPORT_CENTER_RENDER_TOKEN || 0) + 1;
+}
+
 function reportCenterBaseShell(studentId, activeTab, bodyHtml) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const name = student?.name || '학생';
@@ -1547,7 +1642,7 @@ function openReportCenterDaily(studentId) {
         </div>
     `;
 
-    showModal('리포트 센터', reportCenterBaseShell(studentId, 'daily', body));
+    reportCenterShowWideModal('리포트 센터', reportCenterBaseShell(studentId, 'daily', body));
 }
 
 
@@ -1639,27 +1734,35 @@ function reportCenterBuildExamDiagnosisLines(data, teacherMemo = '') {
     const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
     const personalWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate >= 85);
     const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 3);
+    const excellentRows = reportCenterSelectExcellentRows(stats, 3);
     const lines = [];
 
     if (!wrongRows.length) {
-        lines.push('이번 평가는 오답 없이 안정적으로 마무리했습니다. 다음 단계에서는 현재 정확도를 유지하면서 풀이 속도와 서술 정리를 함께 점검하겠습니다.');
+        const excellentNums = excellentRows.length ? excellentRows.map(r => `${r.questionNo}번`).join(', ') : '';
+        lines.push(excellentNums
+            ? `이번 평가는 전 문항을 정확하게 풀어내며 매우 안정적인 성취를 보여주었습니다. 특히 전체 정답률이 낮았던 ${excellentNums} 문항까지 흔들림 없이 해결한 점에서 개념 이해와 풀이 집중도가 잘 유지되고 있음을 확인할 수 있습니다.`
+            : '이번 평가는 전 문항을 정확하게 풀어내며 매우 안정적인 성취를 보여주었습니다. 꼼꼼한 풀이 습관이 결과로 나타나고 있으며, 다음 단원에서도 이 흐름을 이어가겠습니다.');
+        lines.push('다음 수업에서는 현재의 정확도를 유지하면서 심화 응용 문제로 학습 폭을 넓혀가겠습니다.');
     } else {
+        if (wrongRows.length > 5) {
+            lines.push('이번 리포트에서는 맞출 수 있었던 문항과 핵심 보완 문항을 우선으로 정리했습니다. 전체 오답 개수보다 우선 교정할 풀이 습관과 단원 흐름을 차근차근 잡는 것이 중요합니다.');
+        }
         if (hardWrongs.length) {
-            lines.push(`전체 정답률이 낮은 고난도 문항 오답이 ${hardWrongs.length}개 확인됩니다. 이는 개인 실수만으로 보기보다, 해당 개념의 연결 과정과 문제 해석을 함께 점검할 필요가 있는 흐름입니다.`);
+            lines.push(`전체적으로 난도가 있었던 문항이 ${hardWrongs.length}개 포함되어 있습니다. 단순 실수로만 보기보다 해당 개념의 연결 과정과 문제 접근 순서를 함께 점검하겠습니다.`);
         }
         if (personalWrongs.length) {
-            lines.push(`전체 정답률이 높은 문항에서의 오답이 ${personalWrongs.length}개 있어, 개념 부족보다 조건 누락·계산 정리·검산 부족 같은 개인 풀이 습관을 우선 확인하겠습니다.`);
+            lines.push(`대부분 학생이 맞힌 문항에서 ${personalWrongs.length}개 확인 포인트가 있었습니다. 개념보다 조건 확인, 계산 정리, 검산 습관을 먼저 점검하겠습니다.`);
         }
         if (unitNames.length) {
-            lines.push(`현재 우선 보완 단원은 ${unitNames.join(', ')}입니다. 다음 수업에서는 이 단원의 대표 오답 유형을 짧게 재확인한 뒤 유사문항으로 연결하겠습니다.`);
+            lines.push(`이번에 집중적으로 보완할 단원은 ${unitNames.join(', ')}입니다. 다음 수업에서 핵심 유형을 짧게 재확인한 뒤 유사 문제로 연결하겠습니다.`);
         }
         if (!hardWrongs.length && !personalWrongs.length && !unitNames.length) {
-            lines.push('오답 수가 많지는 않지만, 보통 난도 문항에서 실수가 확인됩니다. 풀이 과정의 안정성과 문제 조건 확인 습관을 함께 점검하겠습니다.');
+            lines.push('오답 수가 많지는 않지만 풀이 과정의 세밀한 부분에서 확인할 지점이 있었습니다. 조건 표시와 검산 습관을 함께 점검하겠습니다.');
         }
     }
 
     if (teacherMemo) {
-        lines.push(`담당 선생님 메모: ${teacherMemo}`);
+        lines.push(`담당 선생님 확인 사항: ${teacherMemo}`);
     }
 
     return lines;
@@ -1672,21 +1775,154 @@ function reportCenterGetQuestionDetailMap(data) {
     return map;
 }
 
-function reportCenterBuildPremiumQuestionRows(data, forPrint = false) {
-    const wrongRows = data.stats?.wrongRows || [];
-    const detailMap = reportCenterGetQuestionDetailMap(data);
+
+function reportCenterLooksLikeCodeText(value) {
+    const text = String(value || '').trim();
+    if (!text) return false;
+    if (/function\s*\(|=>|\breturn\b|document\.|window\.|createElement|appendChild|querySelector|<script|onclick=|<svg|<canvas/i.test(text)) return true;
+    if (/[{};]\s*(const|let|var|function)\b/i.test(text)) return true;
+    return false;
+}
+
+function reportCenterSafeQuestionText(value, limit = 110) {
+    if (typeof value === 'function') return '';
+    if (value && typeof value === 'object') return '';
+    const stripped = reportCenterStripHtml(value);
+    if (!stripped || reportCenterLooksLikeCodeText(stripped)) return '';
+    return reportCenterTrimText(stripped, limit);
+}
+
+function reportCenterBuildParentQuestionInsight(row, detail = null) {
+    const qNo = row?.questionNo || detail?.questionNo || '';
+    const unit = row?.unit || detail?.unit || '해당 단원';
+    const rate = Number.isFinite(row?.correctRate) ? row.correctRate : null;
+
+    if (rate !== null && rate >= 85) {
+        return `${qNo}번 문항은 ${unit}의 기본 개념과 풀이 정확도를 확인하는 유형입니다. 전체 정답률이 높은 편이어서 조건 확인, 계산 정리, 검산 습관을 우선 점검하겠습니다.`;
+    }
+    if (rate !== null && rate >= 65) {
+        return `${qNo}번 문항은 ${unit} 개념을 실제 풀이 과정에 적용하는 유형입니다. 풀이 방향을 잡은 뒤 중간 조건을 정확히 연결하는 과정을 함께 확인하겠습니다.`;
+    }
+    if (rate !== null && rate >= 45) {
+        return `${qNo}번 문항은 ${unit}에서 조건 해석과 개념 적용을 함께 요구하는 유형입니다. 다음 수업에서 문제 조건을 정리하고 풀이 순서를 세우는 과정을 다시 확인하겠습니다.`;
+    }
+    if (rate !== null) {
+        return `${qNo}번 문항은 ${unit}에서 난도가 있었던 문항입니다. 개념 연결과 심화 적용 과정을 함께 정리하며 안정적으로 보완하겠습니다.`;
+    }
+    return `${qNo}번 문항은 ${unit} 관련 확인 문항입니다. 다음 수업에서 풀이 과정을 다시 점검하고 같은 유형의 확인문제로 개념 적용 과정을 보완하겠습니다.`;
+}
+
+function reportCenterSelectPriorityWrongRows(wrongRows = [], limit = 5) {
+    return [...(wrongRows || [])].sort((a, b) => {
+        const ar = Number.isFinite(a.correctRate) ? a.correctRate : -1;
+        const br = Number.isFinite(b.correctRate) ? b.correctRate : -1;
+        if (br !== ar) return br - ar;
+        const acr = Number.isFinite(a.classCorrectRate) ? a.classCorrectRate : -1;
+        const bcr = Number.isFinite(b.classCorrectRate) ? b.classCorrectRate : -1;
+        if (bcr !== acr) return bcr - acr;
+        const au = a.unit || a.unitKey ? 1 : 0;
+        const bu = b.unit || b.unitKey ? 1 : 0;
+        if (bu !== au) return bu - au;
+        return Number(a.questionNo || 0) - Number(b.questionNo || 0);
+    }).slice(0, limit);
+}
+
+function reportCenterSelectExcellentRows(stats, limit = 3) {
+    const rows = Array.isArray(stats?.rows) ? stats.rows : [];
+    return [...rows]
+        .filter(r => Number.isFinite(r.correctRate))
+        .sort((a, b) => {
+            if (a.correctRate !== b.correctRate) return a.correctRate - b.correctRate;
+            return Number(a.questionNo || 0) - Number(b.questionNo || 0);
+        })
+        .slice(0, limit);
+}
+
+function reportCenterGetPremiumTableMeta(data) {
+    const wrongRows = data?.stats?.wrongRows || [];
     if (!wrongRows.length) {
-        return `<tr><td colspan="7" class="aprc-empty-cell">오답 문항이 없습니다.</td></tr>`;
+        return {
+            mode: 'excellent',
+            title: '우수 해결 문항 분석',
+            note: '이번 평가는 전 문항을 정확하게 해결했습니다. 아래에는 전체 기준에서 난도가 있었던 핵심 문항을 중심으로 성취 포인트를 정리했습니다.'
+        };
+    }
+    if (wrongRows.length > 5) {
+        return {
+            mode: 'priority',
+            title: '핵심 보완 문항 분석표',
+            note: `이번 리포트에서는 우선적으로 점검할 핵심 문항 5개를 중심으로 정리했습니다. 그 외 ${wrongRows.length - 5}개 문항은 클리닉 시간과 개별 오답 노트를 통해 순차적으로 확인하겠습니다.`
+        };
+    }
+    return {
+        mode: 'wrong',
+        title: '오답 문항 분석표',
+        note: '문항별 정답률과 단원 정보를 함께 확인하여 다음 수업에서 보완할 흐름을 정리했습니다.'
+    };
+}
+
+function reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnalysis = null) {
+    const stats = data.stats;
+    const wrongRows = stats?.wrongRows || [];
+    const excellentRows = reportCenterSelectExcellentRows(stats, 3);
+    const units = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
+    const score = data.session?.score ?? '-';
+    const studentName = data.student?.name || '학생';
+    let achievement = wrongRows.length
+        ? `${studentName} 학생은 이번 평가에서 ${score}점을 기록했습니다. 점수와 함께 문항별 정답률을 확인해 다음 보완 방향을 정리했습니다.`
+        : `${studentName} 학생은 이번 평가에서 전 문항을 정확하게 해결했습니다. 현재 학습 흐름이 매우 안정적으로 유지되고 있습니다.`;
+    let focus = wrongRows.length
+        ? (units.length ? `${units.join(', ')} 단원과 우선 보완 문항을 중심으로 풀이 흐름을 확인합니다.` : '우선 보완 문항을 중심으로 풀이 흐름을 확인합니다.')
+        : (excellentRows.length ? `${excellentRows.map(r => `${r.questionNo}번`).join(', ')} 등 난도 있는 문항까지 안정적으로 해결한 점을 바탕으로 심화 응용으로 이어갑니다.` : '현재 정확도를 유지하며 다음 단원과 심화 응용으로 이어갑니다.');
+    const plan = wrongRows.length
+        ? '다음 수업에서는 풀이 과정 확인, 조건 표시, 유사 문제 풀이를 순서대로 진행하겠습니다.'
+        : '다음 수업에서는 현재 성취를 바탕으로 사고력을 넓히는 문제까지 연결하겠습니다.';
+
+    if (aiAnalysis?.summary) achievement = aiAnalysis.summary;
+
+    return `
+        <section class="aprc-core-summary">
+            <div class="aprc-core-item"><b>성취</b><span>${reportCenterEscape(achievement)}</span></div>
+            <div class="aprc-core-item"><b>보완</b><span>${reportCenterEscape(focus)}</span></div>
+            <div class="aprc-core-item"><b>계획</b><span>${reportCenterEscape(plan)}</span></div>
+        </section>
+    `;
+}
+
+function reportCenterBuildPremiumQuestionRows(data, forPrint = false) {
+    const stats = data.stats || {};
+    const wrongRows = stats.wrongRows || [];
+    const detailMap = reportCenterGetQuestionDetailMap(data);
+
+    if (!wrongRows.length) {
+        const excellentRows = reportCenterSelectExcellentRows(stats, 3);
+        if (!excellentRows.length) {
+            return `<tr><td colspan="7" class="aprc-empty-cell">이번 평가는 전 문항을 정확하게 해결했습니다.</td></tr>`;
+        }
+        return excellentRows.map(row => {
+            const detail = detailMap.get(String(row.questionNo));
+            const insight = `전체 정답률이 낮았던 문항까지 정확하게 해결했습니다. 조건 해석과 풀이 마무리가 안정적으로 이루어진 문항입니다.`;
+            const questionText = reportCenterSafeQuestionText(detail?.content, forPrint ? 110 : 80) || reportCenterBuildParentQuestionInsight(row, detail);
+            return `
+                <tr>
+                    <td class="aprc-qno">${reportCenterEscape(row.questionNo)}번</td>
+                    <td>${reportCenterEscape(row.unit || row.unitKey || '-')}</td>
+                    <td>${reportCenterEscape(row.difficulty || '-')}</td>
+                    <td>${reportCenterSafePercent(row.correctRate)}</td>
+                    <td>${reportCenterSafePercent(row.classCorrectRate)}</td>
+                    <td>${reportCenterEscape(insight)}</td>
+                    <td><div class="aprc-question-summary">${reportCenterEscape(questionText)}</div></td>
+                </tr>
+            `;
+        }).join('');
     }
 
-    return wrongRows.map(row => {
+    const displayRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
+    return displayRows.map(row => {
         const detail = detailMap.get(String(row.questionNo));
-        const questionText = detail?.content
-            ? reportCenterTrimText(reportCenterStripHtml(detail.content), forPrint ? 110 : 80)
-            : '문항 원문 확인 전 또는 원문 연결 불가';
-        const solutionText = detail?.solution
-            ? reportCenterTrimText(reportCenterStripHtml(detail.solution), forPrint ? 90 : 65)
-            : '';
+        const safeContent = reportCenterSafeQuestionText(detail?.content, forPrint ? 110 : 80);
+        const safeSolution = reportCenterSafeQuestionText(detail?.solution, forPrint ? 90 : 65);
+        const questionText = safeContent || reportCenterBuildParentQuestionInsight(row, detail);
         const answerText = detail?.answer ? `정답 ${detail.answer}` : '';
         return `
             <tr>
@@ -1698,7 +1934,7 @@ function reportCenterBuildPremiumQuestionRows(data, forPrint = false) {
                 <td>${reportCenterEscape(row.meaning || '-')}</td>
                 <td>
                     <div class="aprc-question-summary">${reportCenterEscape(questionText)}</div>
-                    ${(answerText || solutionText) ? `<div class="aprc-question-sub">${reportCenterEscape([answerText, solutionText].filter(Boolean).join(' · '))}</div>` : ''}
+                    ${(answerText || safeSolution) ? `<div class="aprc-question-sub">${reportCenterEscape([answerText, safeSolution].filter(Boolean).join(' · '))}</div>` : ''}
                 </td>
             </tr>
         `;
@@ -1766,17 +2002,37 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
         : baseDiagnosisLines;
     const nextPlanItems = aiAnalysis?.nextActions?.length
         ? aiAnalysis.nextActions
-        : [
-            '오답 문항의 풀이 과정을 다시 확인합니다.',
-            '전체 정답률이 높은데 틀린 문항은 조건 확인·계산 검산 습관을 점검합니다.',
-            '전체 정답률이 낮은 문항은 개념 연결과 유형 접근법을 다시 잡습니다.',
-            '필요 시 확인문제와 상승문제를 이어서 제공하겠습니다.'
-        ];
+        : (() => {
+            const wrongRows = stats?.wrongRows || [];
+            const items = [];
+            if (wrongRows.length) {
+                const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
+                const wrongNums = priorityRows.map(r => `${r.questionNo}번`).join(', ');
+                items.push(`${wrongNums} 문항의 풀이 과정을 함께 다시 확인합니다.`);
+                const personalWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate >= 85);
+                const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
+                if (personalWrongs.length) items.push('대부분 맞힌 문항의 확인 포인트는 조건 표시와 검산 습관 중심으로 점검합니다.');
+                if (hardWrongs.length) items.push('난도가 있었던 문항은 개념 연결 과정을 다시 잡고 유사 문제로 연결합니다.');
+            } else {
+                items.push('이번 성취를 바탕으로 다음 단원 학습과 심화 응용 문제를 이어갑니다.');
+                items.push('전체 정답률이 낮았던 핵심 문항의 풀이 흐름을 다시 확인해 강점을 유지합니다.');
+            }
+            items.push('필요 시 확인문제와 유사 유형 문제를 추가로 제공하겠습니다.');
+            return items;
+        })();
     const nextPlanText = aiAnalysis?.nextPlan || '';
-    const parentMessageText = aiAnalysis?.parentMessage || `이번 리포트는 단순 점수 안내가 아니라, ${student.name || '학생'} 학생이 어떤 문항에서 흔들렸는지와 그 오답이 전체 기준에서 어떤 의미인지 함께 정리한 자료입니다. 가정에서는 풀이를 길게 설명해주시기보다, 숙제나 복습 시 문제 조건 표시와 마지막 검산 여부만 가볍게 확인해 주시면 좋겠습니다. 학원에서는 다음 수업에서 오답 원인을 다시 확인하고 같은 실수가 반복되지 않도록 보완하겠습니다.`;
-    const archiveMessage = data.archiveDetails
-        ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
-        : '문항 원문 확인 전입니다. 오답 번호·단원·정답률 기준으로 분석합니다.';
+    const parentMessageText = aiAnalysis?.parentMessage || (() => {
+        const wrongRows = stats?.wrongRows || [];
+        const studentName = student.name || '학생';
+        if (!wrongRows.length) {
+            return `${studentName} 학생이 이번 평가에서 모든 문항을 정확하게 맞혔습니다. 꾸준한 노력이 결과로 나타나고 있으며, 학원에서는 이 흐름을 이어갈 수 있도록 다음 단원과 심화 응용 학습을 차근차근 준비하겠습니다. 가정에서는 지금처럼 학습 환경을 유지해 주시면 충분합니다.`;
+        }
+        const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
+        const unitText = unitNames.length ? `${unitNames.join(', ')} 단원` : '이번 평가의 핵심 확인 문항';
+        return `이번 리포트는 점수뿐 아니라 ${studentName} 학생이 어떤 문항에서 확인할 부분이 있었는지, 그리고 그 문항이 어느 정도 난도의 문항이었는지를 함께 정리한 자료입니다. 학원에서는 다음 수업에서 ${unitText}의 풀이 흐름을 확인하고, 같은 실수가 반복되지 않도록 유사 문제 풀이까지 함께 진행하겠습니다. 가정에서는 문제를 풀 때 조건에 표시하는 습관과 풀이 후 한 번 더 확인하는 것만 가볍게 격려해 주시면 큰 도움이 됩니다.`;
+    })();
+    const tableMeta = reportCenterGetPremiumTableMeta(data);
+    const archiveMessage = tableMeta.note;
     const issued = new Date().toLocaleDateString('sv-SE').replace(/-/g, '.');
     const examDate = String(session.exam_date || '').replace(/-/g, '.');
     const safeTitle = reportCenterEscape(session.exam_title || '평가');
@@ -1788,7 +2044,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                 <div>
                     <div class="aprc-brand">AP MATH REPORT</div>
                     <div class="aprc-title">평가 분석 리포트</div>
-                    <div class="aprc-subtitle">점수보다 오답의 의미와 다음 보완 방향을 우선 확인합니다.</div>
+                    <div class="aprc-subtitle">성취를 확인하고, 보완할 부분을 함께 준비합니다.</div>
                     ${aiBadgeHtml}
                 </div>
                 <div class="aprc-issued">
@@ -1817,7 +2073,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                 <div class="aprc-score-card">
                     <div class="aprc-card-label">정답률</div>
                     <div class="aprc-metric-value">${correctRate === null ? '-' : `${correctRate}%`}</div>
-                    <div class="aprc-card-note">${qCount || '-'}문항 중 오답 ${wrongCount}문항</div>
+                    <div class="aprc-card-note">${qCount || '-'}문항 중 확인 ${wrongCount}문항</div>
                 </div>
                 <div class="aprc-score-card">
                     <div class="aprc-card-label">비교 평균</div>
@@ -1831,13 +2087,15 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                 </div>
             </section>
 
+            ${reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnalysis)}
+
             <section class="aprc-two-col">
                 <div class="aprc-panel">
                     <div class="aprc-section-title">문항 난이도 분포</div>
                     ${reportCenterBuildDifficultyBarsForPremium(stats)}
                 </div>
                 <div class="aprc-panel">
-                    <div class="aprc-section-title">이번 오답의 의미</div>
+                    <div class="aprc-section-title">이번 평가의 의미</div>
                     <div class="aprc-insight-list">
                         ${diagnosisLines.slice(0, 3).map(line => `<div class="aprc-insight-item">${reportCenterEscape(line)}</div>`).join('')}
                     </div>
@@ -1845,7 +2103,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
             </section>
 
             <section class="aprc-panel aprc-table-panel">
-                <div class="aprc-section-title">오답 문항 분석표</div>
+                <div class="aprc-section-title">${reportCenterEscape(tableMeta.title)}</div>
                 <div class="aprc-table-wrap">
                     <table class="aprc-table">
                         <thead>
@@ -1856,7 +2114,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                                 <th>전체 정답률</th>
                                 <th>반 정답률</th>
                                 <th>해석</th>
-                                <th>문항 원문/해설 요약</th>
+                                <th>학습 포인트</th>
                             </tr>
                         </thead>
                         <tbody>${reportCenterBuildPremiumQuestionRows(data, isPrint)}</tbody>
@@ -1894,8 +2152,8 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
 function reportCenterPremiumReportStyle() {
     return `
         <style>
-            .aprc-document { width:100%; max-width:794px; margin:0 auto; background:#ffffff; color:#111827; border:1px solid #e5e7eb; border-radius:22px; overflow:hidden; box-shadow:0 18px 60px rgba(15,23,42,0.10); font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
-            .aprc-document * { box-sizing:border-box; }
+            .aprc-document { width:100%; max-width:794px; margin:0 auto; background:#ffffff; color:#111827; border:1px solid #e5e7eb; border-radius:22px; overflow:hidden; box-shadow:0 18px 60px rgba(15,23,42,0.10); font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+            .aprc-document * { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-report-header { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; padding:30px 34px 24px; background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%); color:#fff; }
             .aprc-brand { font-size:12px; font-weight:800; letter-spacing:0.16em; color:rgba(255,255,255,0.72); }
             .aprc-title { margin-top:8px; font-size:28px; font-weight:800; letter-spacing:-0.8px; line-height:1.15; }
@@ -1916,6 +2174,10 @@ function reportCenterPremiumReportStyle() {
             .aprc-score-value span { font-size:20px; font-weight:850; color:#475569; margin-left:2px; }
             .aprc-metric-value { margin-top:10px; font-size:25px; font-weight:900; color:#0f172a; letter-spacing:-0.8px; }
             .aprc-card-note { margin-top:9px; font-size:11px; font-weight:700; color:#64748b; line-height:1.45; word-break:keep-all; }
+            .aprc-core-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:12px 34px 0; }
+            .aprc-core-item { min-width:0; padding:15px 16px; border:1px solid #dbeafe; border-radius:18px; background:#f8fbff; }
+            .aprc-core-item b { display:block; margin-bottom:7px; color:#1d4ed8; font-size:12px; font-weight:900; letter-spacing:-0.2px; }
+            .aprc-core-item span { display:block; color:#334155; font-size:12.5px; font-weight:700; line-height:1.6; word-break:keep-all; }
             .aprc-two-col { display:grid; grid-template-columns:1fr 1.05fr; gap:12px; padding:12px 34px; }
             .aprc-panel { border:1px solid #e5e7eb; border-radius:18px; background:#fff; padding:18px; min-width:0; }
             .aprc-section-title { margin:0 0 13px; font-size:15px; font-weight:850; color:#0f172a; letter-spacing:-0.35px; }
@@ -1933,7 +2195,7 @@ function reportCenterPremiumReportStyle() {
             .aprc-table td { padding:11px 9px; border-bottom:1px solid #e5e7eb; vertical-align:top; color:#334155; font-weight:650; }
             .aprc-table tr:last-child td { border-bottom:none; }
             .aprc-qno { color:#1d4ed8 !important; font-weight:900 !important; white-space:nowrap; }
-            .aprc-question-summary { max-width:230px; line-height:1.45; }
+            .aprc-question-summary { max-width:230px; line-height:1.45; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; word-break:keep-all; white-space:normal; }
             .aprc-question-sub { margin-top:5px; color:#64748b; font-size:10.5px; font-weight:700; line-height:1.4; }
             .aprc-empty-cell { padding:20px !important; text-align:center; color:#64748b !important; font-weight:800 !important; }
             .aprc-source-note { margin-top:10px; padding:9px 11px; border-radius:11px; background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; line-height:1.45; }
@@ -1946,8 +2208,8 @@ function reportCenterPremiumReportStyle() {
             .aprc-footer { padding:14px 34px 24px; color:#94a3b8; font-size:10px; font-weight:850; letter-spacing:0.14em; text-align:center; }
             .aprc-muted { color:#64748b; font-size:12px; font-weight:700; }
             .aprc-empty-box { padding:36px; text-align:center; color:#64748b; font-weight:800; }
-            @media (max-width:760px) {
-                .aprc-document { border-radius:18px; }
+            @media screen and (max-width:760px) {
+                .aprc-document { width:760px; max-width:760px; border-radius:18px; }
                 .aprc-report-header, .aprc-student-band { padding-left:22px; padding-right:22px; }
                 .aprc-report-header { flex-direction:column; gap:16px; }
                 .aprc-issued { text-align:left; }
@@ -1974,12 +2236,17 @@ function reportCenterBuildPrintDocument(studentId, sessionId = '', teacherMemo =
 ${reportCenterPremiumReportStyle()}
 <style>
     html, body { margin:0; padding:0; background:#f1f5f9; color:#111827; }
-    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:24px; }
+    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:24px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
     .aprc-document { box-shadow:none; border-radius:0; max-width:794px; min-height:1122px; }
+    .aprc-document, .aprc-document * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+    @media screen and (max-width:760px) {
+        body { padding:10px; }
+        .aprc-document { width:760px; max-width:760px; min-width:760px; }
+    }
     @page { size:A4; margin:12mm; }
     @media print {
-        html, body { background:#fff; padding:0; }
-        .aprc-document { width:100%; max-width:none; min-height:auto; border:none; box-shadow:none; }
+        html, body { background:#fff; padding:0; overflow:visible; }
+        .aprc-document { width:100%; max-width:none; min-width:0; min-height:auto; border:none; box-shadow:none; }
         .aprc-report-header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
         .aprc-table-wrap { overflow:visible; }
         .aprc-table { min-width:0; font-size:10.5px; }
@@ -1999,15 +2266,45 @@ ${reportHtml}
 }
 
 function reportCenterPrintPremiumExamReport(studentId, sessionId = '') {
-    const teacherMemo = reportCenterGetExamReportTeacherMemo();
-    const win = window.open('', '_blank');
+    const win = window.open('', '_blank', 'noopener,noreferrer');
     if (!win) {
         toast('팝업 차단을 해제한 뒤 다시 시도하세요.', 'warn');
         return;
     }
-    win.document.open();
-    win.document.write(reportCenterBuildPrintDocument(studentId, sessionId, teacherMemo));
-    win.document.close();
+
+    try {
+        win.document.open();
+        win.document.write(`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AP Math 평가 리포트</title><style>body{margin:0;padding:32px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#334155;text-align:center;} .box{max-width:420px;margin:12vh auto;padding:24px;border:1px solid #e5e7eb;border-radius:18px;background:#fff;} b{display:block;color:#0f172a;font-size:17px;margin-bottom:8px;}</style></head><body><div class="box"><b>리포트를 생성 중입니다.</b><div>잠시만 기다려 주세요.</div></div></body></html>`);
+        win.document.close();
+    } catch (e) {
+        console.error('[reportCenterPrintPremiumExamReport] pre-open write failed:', e);
+    }
+
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    if (!data.student || !data.session) {
+        try {
+            win.document.open();
+            win.document.write(`<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>AP Math 평가 리포트</title></head><body style="font-family:sans-serif;padding:32px;">출력할 평가 기록이 없습니다.</body></html>`);
+            win.document.close();
+        } catch (e) {}
+        toast('출력할 평가 기록이 없습니다.', 'warn');
+        return;
+    }
+
+    const teacherMemo = reportCenterGetExamReportTeacherMemo();
+    const html = reportCenterBuildPrintDocument(studentId, sessionId, teacherMemo);
+
+    try {
+        win.document.open();
+        win.document.write(html);
+        win.document.close();
+        try { win.focus(); } catch (e) {}
+        toast('PDF 출력 창을 열었습니다.', 'success');
+    } catch (e) {
+        console.error('[reportCenterPrintPremiumExamReport] failed:', e);
+        toast('PDF 출력 창을 여는 중 오류가 발생했습니다.', 'warn');
+        try { win.close(); } catch (closeErr) {}
+    }
 }
 
 function reportCenterCopyExamKakaoSummary(studentId, sessionId = '') {
@@ -2017,21 +2314,13 @@ function reportCenterCopyExamKakaoSummary(studentId, sessionId = '') {
         return;
     }
     const aiAnalysis = reportCenterGetCachedAiAnalysis(sessionId);
-    if (aiAnalysis?.kakaoSummary) {
-        navigator.clipboard.writeText(aiAnalysis.kakaoSummary).then(() => {
-            toast('AI 카톡 요약문이 복사되었습니다.', 'success');
-        }).catch(() => {
-            toast('복사에 실패했습니다.', 'warn');
-        });
+    const text = aiAnalysis?.kakaoSummary || reportCenterBuildExamPreview(studentId, sessionId);
+    if (!String(text || '').trim()) {
+        toast('복사할 카톡 문구가 없습니다.', 'warn');
         return;
     }
-    const wrongCount = data.stats?.wrongRows?.length || 0;
-    const qCount = Number(data.session.question_count || 0);
-    const correctRate = qCount ? Math.round(((qCount - wrongCount) / qCount) * 100) : null;
-    const summary = reportCenterGetQuestionStatsSummary(data.stats);
-    const text = `안녕하세요, AP수학입니다.\n\n${data.student.name} 학생의 「${data.session.exam_title || '평가'}」 분석 리포트를 전달드립니다.\n\n- 점수: ${data.session.score}점\n- 문항 수: ${qCount || '-'}문항\n- 오답: ${wrongCount}문항${correctRate !== null ? `\n- 정답률: ${correctRate}%` : ''}\n- 비교 해석: ${summary}\n\n자세한 오답 의미와 다음 보완 계획은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.\n\n감사합니다.`;
     navigator.clipboard.writeText(text).then(() => {
-        toast('카톡 요약문이 복사되었습니다.', 'success');
+        toast(aiAnalysis?.kakaoSummary ? 'AI 카톡 요약문이 복사되었습니다.' : '카톡 요약문이 복사되었습니다.', 'success');
     }).catch(() => {
         toast('복사에 실패했습니다.', 'warn');
     });
@@ -2044,6 +2333,8 @@ function reportCenterRefreshPremiumExamPreview(studentId, sessionId = '') {
 }
 
 function openReportCenterExam(studentId, selectedSessionId = '') {
+    window.AP_REPORT_CENTER_RENDER_TOKEN = (window.AP_REPORT_CENTER_RENDER_TOKEN || 0) + 1;
+    const renderToken = window.AP_REPORT_CENTER_RENDER_TOKEN;
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     if (!student) {
         toast('학생 정보를 찾을 수 없습니다.', 'warn');
@@ -2081,7 +2372,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
 
     const body = sessions.length ? `
         <div style="display:flex; flex-direction:column; gap:14px;">
-            <select class="btn" style="width:100%; min-height:46px; text-align:left; background:var(--surface); border:1px solid var(--border); font-weight:700;" onchange="openReportCenterExam('${escapeReportJsString(studentId)}', this.value)">
+            <select class="btn" style="width:100%; min-height:46px; text-align:left; background:var(--surface); border:1px solid var(--border); font-weight:700;" onchange="event.stopPropagation(); openReportCenterExam('${escapeReportJsString(studentId)}', this.value)">
                 ${sessions.map(e => `<option value="${reportCenterAttr(e.id)}" ${String(e.id) === String(selected?.id) ? 'selected' : ''}>${reportCenterEscape(e.exam_date || '-')} · ${reportCenterEscape(e.exam_title || '평가')} · ${reportCenterEscape(e.score)}점</option>`).join('')}
             </select>
 
@@ -2113,7 +2404,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
                 <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterPrintPremiumExamReport('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">PDF/출력</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
                 <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="openParentReport('${escapeReportJsString(studentId)}')">기존 카드 리포트</button>
                 <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:#7c3aed; background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.16);" onclick="reportCenterRequestExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', this)">AI 분석 생성</button>
                 <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="reportCenterCopyExamAiPayload('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">AI 분석 자료 복사</button>
@@ -2130,10 +2421,12 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
         </div>
     `;
 
-    showModal('리포트 센터', reportCenterBaseShell(studentId, 'exam', body));
+    reportCenterShowWideModal('리포트 센터', reportCenterBaseShell(studentId, 'exam', body));
     if (selected) {
         setTimeout(() => {
+            if (window.AP_REPORT_CENTER_RENDER_TOKEN !== renderToken) return;
             reportCenterLoadArchiveQuestionDetails(studentId, selected.id, { silent: true }).then(() => {
+                if (window.AP_REPORT_CENTER_RENDER_TOKEN !== renderToken) return;
                 reportCenterRefreshPremiumExamPreview(studentId, selected.id);
             }).catch(() => {});
         }, 80);
@@ -2222,7 +2515,7 @@ function openReportCenterCounsel(studentId) {
         </div>
     `;
 
-    showModal('리포트 센터', reportCenterBaseShell(studentId, 'counsel', body));
+    reportCenterShowWideModal('리포트 센터', reportCenterBaseShell(studentId, 'counsel', body));
 }
 
 
@@ -2231,13 +2524,26 @@ function openReportCenterCounsel(studentId) {
 // ─────────────────────────────────────────
 
 function buildReportCardNextPoint(wrongAnswers, weakUnits) {
-    if (weakUnits.length > 0) {
-        return `오답 문항 복습과 함께 ${weakUnits[0]} 단원을 중점적으로 점검하면 좋겠습니다.`;
+    const wrongs = Array.isArray(wrongAnswers) ? wrongAnswers.filter(v => v !== null && v !== undefined && String(v).trim() !== '') : [];
+    const units = Array.isArray(weakUnits) ? weakUnits.filter(Boolean) : [];
+
+    if (!wrongs.length && !units.length) {
+        return '이번 시험 내용을 안정적으로 소화했습니다. 현재 흐름을 유지하면서 다음 단원 학습으로 자신감 있게 이어가겠습니다.';
     }
-    if (wrongAnswers.length > 0) {
-        return `오답 ${wrongAnswers.join('번, ')}번 풀이 과정을 다시 점검해 보면 좋겠습니다.`;
+
+    if (!wrongs.length && units.length > 0) {
+        return `이번 평가를 잘 마무리했습니다. 다음 수업에서는 ${units[0]} 단원의 심화 내용까지 자연스럽게 확장하겠습니다.`;
     }
-    return `이번 시험 내용을 바탕으로 다음 단원 학습을 이어가겠습니다.`;
+
+    const wrongStr = wrongs.length === 1
+        ? `${wrongs[0]}번 문항`
+        : `${wrongs.join('번 · ')}번 문항`;
+
+    if (units.length > 0) {
+        return `${wrongStr}의 풀이 흐름을 함께 확인하고, ${units[0]} 단원 핵심 개념을 유사 문제로 한 번 더 안정적으로 정리하겠습니다.`;
+    }
+
+    return `${wrongStr}의 풀이 과정을 함께 확인하고, 다음 단원으로 자신감 있게 이어가겠습니다.`;
 }
 
 function openParentReport(sid) {
