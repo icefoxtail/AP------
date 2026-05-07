@@ -186,6 +186,185 @@ function normalizeHighSubjects(value) {
   return JSON.stringify(clean);
 }
 
+
+const REPORT_ANALYSIS_JSON_SCHEMA = {
+  name: 'ap_math_report_analysis',
+  schema: {
+    type: 'object',
+    additionalProperties: false,
+    properties: {
+      summary: { type: 'string' },
+      diagnosis: { type: 'string' },
+      wrongAnalysis: { type: 'string' },
+      nextPlan: { type: 'string' },
+      parentMessage: { type: 'string' },
+      kakaoSummary: { type: 'string' },
+      teacherMemo: { type: 'string' },
+      riskLevel: { type: 'string', enum: ['stable', 'watch', 'focus'] },
+      mainWeaknesses: { type: 'array', items: { type: 'string' } },
+      nextActions: { type: 'array', items: { type: 'string' } }
+    },
+    required: ['summary', 'diagnosis', 'wrongAnalysis', 'nextPlan', 'parentMessage', 'kakaoSummary', 'teacherMemo', 'riskLevel', 'mainWeaknesses', 'nextActions']
+  },
+  strict: true
+};
+
+const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `너는 AP Math OS의 수학 평가 리포트 작성 보조 AI다.
+
+너의 임무는 학생의 실제 평가 데이터만 근거로 하여, 학부모에게 전달 가능한 전문적이고 정중한 평가 리포트 문장을 생성하는 것이다.
+
+반드시 입력 데이터에 있는 사실만 사용한다. 점수, 평균, 오답 번호, 문항 수, 정답률, 단원명, 문항 내용은 절대 임의로 만들지 않는다. 문항 원문이나 해설이 없으면 "문항 원문 확인 불가" 상태로 판단하고, 오답 번호, 단원, 정답률 정보만 기준으로 분석한다.
+
+학생을 비난하거나 학부모를 불안하게 만드는 표현은 금지한다. 대신 학원에서 어떤 방식으로 보완할 것인지 구체적으로 설명한다.
+
+분석 순서:
+1. 평가 결과 요약
+2. 전체/반 기준에서의 위치 해석
+3. 오답 문항의 정답률 기반 의미 분석
+4. 오답 원인 분류
+5. 반복 약점 진단
+6. 다음 수업 보완 계획
+7. 학부모님께 드리는 말씀
+
+정답률 해석 기준:
+- 전체 정답률 80% 이상인데 틀림: 개인 실수, 조건 확인, 계산, 검산 습관 점검
+- 전체 정답률 50% 이상 80% 미만: 보통 난도, 개념 적용이나 풀이 과정 점검
+- 전체 정답률 30% 이상 50% 미만: 난도 있는 문항, 심화 적용력 또는 조건 해석 보완
+- 전체 정답률 30% 미만: 대부분 학생이 어려워한 문항, 고난도 문항 대응력 보완
+정답률 정보가 없으면 정답률 기반 해석을 하지 않는다.
+
+출력은 반드시 지정된 JSON 형식으로만 한다.`;
+
+function clampText(value, max = 12000) {
+  const text = String(value || '');
+  return text.length > max ? text.slice(0, max) : text;
+}
+
+function safeJsonParse(text) {
+  try { return JSON.parse(text); } catch (e) {}
+  const raw = String(text || '').trim();
+  const start = raw.indexOf('{');
+  const end = raw.lastIndexOf('}');
+  if (start >= 0 && end > start) {
+    try { return JSON.parse(raw.slice(start, end + 1)); } catch (e) {}
+  }
+  return null;
+}
+
+function extractResponseText(data) {
+  if (!data) return '';
+  if (typeof data.output_text === 'string') return data.output_text;
+  const parts = [];
+  for (const item of (data.output || [])) {
+    for (const c of (item.content || [])) {
+      if (typeof c.text === 'string') parts.push(c.text);
+      else if (typeof c.output_text === 'string') parts.push(c.output_text);
+    }
+  }
+  return parts.join('\n').trim();
+}
+
+function normalizeReportAnalysisResult(raw = {}) {
+  const cleanString = (v) => String(v || '').trim();
+  const cleanArray = (v) => Array.isArray(v) ? v.map(x => cleanString(x)).filter(Boolean).slice(0, 8) : [];
+  const risk = cleanString(raw.riskLevel || 'stable');
+  return {
+    summary: cleanString(raw.summary),
+    diagnosis: cleanString(raw.diagnosis),
+    wrongAnalysis: cleanString(raw.wrongAnalysis),
+    nextPlan: cleanString(raw.nextPlan),
+    parentMessage: cleanString(raw.parentMessage),
+    kakaoSummary: cleanString(raw.kakaoSummary),
+    teacherMemo: cleanString(raw.teacherMemo),
+    riskLevel: ['stable', 'watch', 'focus'].includes(risk) ? risk : 'stable',
+    mainWeaknesses: cleanArray(raw.mainWeaknesses),
+    nextActions: cleanArray(raw.nextActions)
+  };
+}
+
+function buildFallbackReportAnalysis(payload = {}) {
+  const studentName = payload?.student?.name || payload?.student?.id || '학생';
+  const examTitle = payload?.exam?.title || '평가';
+  const score = payload?.exam?.score;
+  const qCount = Number(payload?.exam?.questionCount || 0);
+  const wrongRows = Array.isArray(payload?.wrongAnalysis) ? payload.wrongAnalysis : [];
+  const wrongCount = wrongRows.length;
+  const correctRate = qCount ? Math.round(((qCount - wrongCount) / qCount) * 100) : null;
+  const overallAverage = payload?.cohort?.overallAverage;
+  const classAverage = payload?.cohort?.classAverage;
+  const hard = wrongRows.filter(r => Number.isFinite(Number(r.correctRate)) && Number(r.correctRate) < 65);
+  const personal = wrongRows.filter(r => Number.isFinite(Number(r.correctRate)) && Number(r.correctRate) >= 85);
+  const units = [...new Set(wrongRows.map(r => r.unit || r.unitKey).filter(Boolean))].slice(0, 3);
+  const comparison = [];
+  if (Number.isFinite(Number(overallAverage))) comparison.push(`전체 평균 ${overallAverage}점`);
+  if (Number.isFinite(Number(classAverage))) comparison.push(`반 평균 ${classAverage}점`);
+  const summary = `${studentName} 학생은 「${examTitle}」에서 ${score ?? '-'}점을 기록했습니다.${correctRate !== null ? ` 정답률은 ${correctRate}%입니다.` : ''}`;
+  const diagnosis = `${summary}${comparison.length ? ` 비교 기준은 ${comparison.join(', ')}입니다.` : ''} 이번 리포트는 오답 번호와 정답률을 기준으로 보완 방향을 정리했습니다.`;
+  const wrongAnalysis = wrongCount
+    ? `오답은 ${wrongRows.map(r => `${r.questionNo}번`).join(', ')}에서 확인됩니다.${hard.length ? ` 이 중 ${hard.length}문항은 전체 정답률이 낮아 다수 학생이 어려워한 문항으로 볼 수 있습니다.` : ''}${personal.length ? ` ${personal.length}문항은 전체 정답률이 높은 편이라 조건 확인, 계산 정리, 검산 습관을 우선 점검하겠습니다.` : ''}`
+    : '이번 평가는 오답 없이 안정적으로 마무리했습니다.';
+  const nextActions = [
+    '오답 문항의 풀이 과정을 다시 확인합니다.',
+    '조건 표시와 식 세우기 과정을 점검합니다.',
+    '계산 후 검산 습관을 짧은 확인문제로 보완합니다.'
+  ];
+  if (units.length) nextActions.unshift(`${units.join(', ')} 단원을 우선 보완합니다.`);
+  const nextPlan = `${nextActions.slice(0, 4).join(' ')} 필요하면 유사문항과 상승문제로 연결하겠습니다.`;
+  const parentMessage = `${studentName} 학생의 이번 평가는 점수뿐 아니라 오답이 나온 문항의 정답률과 단원을 함께 확인하는 것이 중요합니다. 학원에서는 다음 수업에서 오답 원인을 다시 확인하고, 같은 실수가 반복되지 않도록 풀이 순서와 검산 습관을 잡아가겠습니다. 가정에서는 문제 조건 표시와 숙제 마무리 여부만 가볍게 확인해 주시면 좋겠습니다.`;
+  const kakaoSummary = `안녕하세요, AP수학입니다.\n\n${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.\n- 점수: ${score ?? '-'}점\n- 문항 수: ${qCount || '-'}문항\n- 오답: ${wrongCount}문항${correctRate !== null ? `\n- 정답률: ${correctRate}%` : ''}\n\n자세한 오답 의미와 보완 계획은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.\n\n감사합니다.`;
+  return normalizeReportAnalysisResult({
+    summary,
+    diagnosis,
+    wrongAnalysis,
+    nextPlan,
+    parentMessage,
+    kakaoSummary,
+    teacherMemo: units.length ? `우선 보완 단원: ${units.join(', ')}` : '특이 단원 쏠림 없음',
+    riskLevel: wrongCount >= 5 || hard.length >= 3 ? 'focus' : wrongCount >= 2 ? 'watch' : 'stable',
+    mainWeaknesses: units.length ? units : (wrongCount ? ['오답 풀이 과정 점검'] : ['정확도 유지']),
+    nextActions
+  });
+}
+
+async function callOpenAiReportAnalysis(env, payload) {
+  const apiKey = env.OPENAI_API_KEY;
+  if (!apiKey) return { source: 'fallback', analysis: buildFallbackReportAnalysis(payload) };
+
+  const model = env.OPENAI_REPORT_MODEL || env.OPENAI_MODEL || 'gpt-5.2';
+  const userPrompt = `아래 학생 평가 데이터를 바탕으로 학부모 평가 리포트 문장을 작성하라.\n\n입력 데이터:\n${clampText(JSON.stringify(payload, null, 2), 18000)}\n\n작성 기준:\n- 학부모에게 전달 가능한 정중한 문체\n- 점수보다 오답 원인과 보완 계획 중심\n- 전체 정답률과 반 정답률을 활용해 오답 의미 분석\n- 쉬운 문제를 틀렸으면 개인 실수/풀이 습관 가능성으로 표현\n- 어려운 문제를 틀렸으면 고난도 적용력 보완으로 표현\n- 학원에서 다음 수업에 무엇을 할지 구체적으로 작성\n- 가정에서 확인할 것은 1~2개만 간단히 제시\n- 없는 데이터는 절대 만들지 말 것`;
+
+  const response = await fetch('https://api.openai.com/v1/responses', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model,
+      instructions: AP_REPORT_ANALYSIS_SYSTEM_PROMPT,
+      input: userPrompt,
+      text: {
+        format: {
+          type: 'json_schema',
+          name: REPORT_ANALYSIS_JSON_SCHEMA.name,
+          schema: REPORT_ANALYSIS_JSON_SCHEMA.schema,
+          strict: REPORT_ANALYSIS_JSON_SCHEMA.strict
+        }
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const detail = await response.text().catch(() => '');
+    throw new Error(`OpenAI ${response.status}: ${detail.slice(0, 300)}`);
+  }
+
+  const data = await response.json();
+  const parsed = safeJsonParse(extractResponseText(data));
+  if (!parsed) throw new Error('AI JSON parse failed');
+  return { source: 'ai', analysis: normalizeReportAnalysisResult(parsed) };
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -1761,6 +1940,33 @@ export default {
         }
 
         // --- 12. AI 리포트 ---
+        if (resource === 'ai' && path[2] === 'report-analysis' && method === 'POST') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+          const payload = await request.json();
+          const studentId = String(payload?.student?.id || payload?.exam?.student_id || '').trim();
+          if (studentId && !(await canAccessStudent(teacher, studentId, env))) {
+            return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
+          }
+
+          try {
+            const result = await callOpenAiReportAnalysis(env, payload);
+            return new Response(JSON.stringify({
+              success: true,
+              source: result.source,
+              analysis: result.analysis
+            }), { headers });
+          } catch (e) {
+            return new Response(JSON.stringify({
+              success: true,
+              source: 'fallback',
+              warning: e.message,
+              analysis: buildFallbackReportAnalysis(payload)
+            }), { headers });
+          }
+        }
+
         if (resource === 'ai' && path[2] === 'student-report' && method === 'POST') {
           const p = await request.json();
           const { type, student, today: td } = p;
