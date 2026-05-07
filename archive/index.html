@@ -751,6 +751,43 @@
             background: rgba(255,255,255,0.92);
         }
 
+        .teacher-class-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .teacher-class-label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-sub);
+        }
+
+        .teacher-class-select {
+            width: 100%;
+            height: 44px;
+            padding: 0 12px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            font-size: 14px;
+            font-weight: 700;
+            outline: none;
+            background: rgba(255,255,255,0.92);
+            color: var(--text-main);
+        }
+
+        .teacher-class-note {
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: var(--text-sub);
+        }
+
         @media (max-width: 768px) {
             .top-nav {
                 justify-content: flex-start;
@@ -1375,6 +1412,85 @@ function confirmQpp(qpp) {
     }
 }
 
+/* AP Math OS 선생님 → 반 선택 헬퍼 */
+let _indexQrClassRows = [];
+let _indexQrGroupedByTeacher = {};
+
+function escapeModalText(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function getQrTeacherName(row) {
+    const raw = row?.teacher_name || row?.teacherName || row?.teacher || row?.owner_name || row?.ownerName || '';
+    const name = String(raw || '').replace(/\s*선생님\s*$/g, '').trim();
+    return name || '담당 미지정';
+}
+
+function sortQrClassesForSelect(list) {
+    const gradeRank = { '중1': 1, '중2': 2, '중3': 3, '고1': 4, '고2': 5, '고3': 6 };
+    return [...list].sort((a, b) => {
+        const ag = gradeRank[String(a.grade || '').trim()] || 99;
+        const bg = gradeRank[String(b.grade || '').trim()] || 99;
+        if (ag !== bg) return ag - bg;
+        const an = String(a.name || '');
+        const bn = String(b.name || '');
+        const nameDiff = an.localeCompare(bn, 'ko');
+        if (nameDiff !== 0) return nameDiff;
+        return String(a.id || '').localeCompare(String(b.id || ''), 'ko');
+    });
+}
+
+function renderIndexTeacherClassSelector(classes) {
+    _indexQrClassRows = Array.isArray(classes) ? classes : [];
+    _indexQrGroupedByTeacher = {};
+
+    _indexQrClassRows.forEach(c => {
+        const teacher = getQrTeacherName(c);
+        if (!_indexQrGroupedByTeacher[teacher]) _indexQrGroupedByTeacher[teacher] = [];
+        _indexQrGroupedByTeacher[teacher].push(c);
+    });
+
+    const teachers = Object.keys(_indexQrGroupedByTeacher).sort((a, b) => a.localeCompare(b, 'ko'));
+    if (!teachers.length) {
+        return '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">등록된 반이 없습니다. AP Math OS에서 반을 먼저 생성하세요.</div>';
+    }
+
+    const teacherOptions = teachers.map(t => `<option value="${escapeModalText(t)}">${escapeModalText(t)} 선생님</option>`).join('');
+
+    return `
+        <div class="teacher-class-stack">
+            <div>
+                <label class="teacher-class-label" for="index-teacher-select">1. 선생님 선택</label>
+                <select id="index-teacher-select" class="teacher-class-select" onchange="renderIndexClassSelectByTeacher()">${teacherOptions}</select>
+            </div>
+            <div>
+                <label class="teacher-class-label" for="index-class-select">2. 반 선택</label>
+                <select id="index-class-select" class="teacher-class-select"></select>
+                <div class="teacher-class-note">같은 반명이라도 선택한 선생님의 class_id로 분리되어 QR에 연결됩니다.</div>
+            </div>
+            <button class="modal-btn-primary" onclick="confirmClassSelectionForIndex()">확인</button>
+        </div>`;
+}
+
+function renderIndexClassSelectByTeacher() {
+    const teacherSelect = document.getElementById('index-teacher-select');
+    const classSelect = document.getElementById('index-class-select');
+    if (!teacherSelect || !classSelect) return;
+
+    const teacher = teacherSelect.value || Object.keys(_indexQrGroupedByTeacher)[0] || '';
+    const rows = sortQrClassesForSelect(_indexQrGroupedByTeacher[teacher] || []);
+
+    classSelect.innerHTML = rows.map(c => {
+        const labelParts = [c.name || '이름 없는 반', c.grade ? `(${c.grade})` : ''].filter(Boolean).join(' ');
+        return `<option value="${escapeModalText(c.id)}" data-teacher="${escapeModalText(teacher)}" data-class-name="${escapeModalText(c.name || '')}">${escapeModalText(labelParts)}</option>`;
+    }).join('');
+}
+
 /* API 기반 학급 선택 모달 */
 async function openClassSelectionModalForIndex(item, qpp) {
     const overlay = document.getElementById('classModalOverlay');
@@ -1394,7 +1510,7 @@ async function openClassSelectionModalForIndex(item, qpp) {
                     <input id="apmath-login-id" type="text" placeholder="아이디" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
                     <input id="apmath-login-pw" type="password" placeholder="비밀번호" style="padding:10px 12px; border:1px solid var(--card-border); border-radius:8px; font-size:14px; width:100%; box-sizing:border-box;">
                     <div id="apmath-login-err" style="color:var(--warn-text); font-size:12px; min-height:16px;"></div>
-                    <button class="modal-btn-primary" onclick="doApmathLoginAndLoadClasses(arguments[0])">로그인 후 반 목록 불러오기</button>
+                    <button class="modal-btn-primary" onclick="doApmathLoginAndLoadClasses(event)">로그인 후 반 목록 불러오기</button>
                 </div>`;
             return;
         }
@@ -1419,14 +1535,8 @@ async function openClassSelectionModalForIndex(item, qpp) {
                 return;
             }
 
-            let selectHtml = '<select id="index-class-select" class="class-select">';
-            data.classes.forEach(c => {
-                selectHtml += `<option value="${c.id}">${c.name} (${c.grade})</option>`;
-            });
-            selectHtml += '</select>';
-            selectHtml += '<button class="modal-btn-primary" onclick="confirmClassSelectionForIndex()">확인</button>';
-
-            body.innerHTML = selectHtml;
+            body.innerHTML = renderIndexTeacherClassSelector(data.classes);
+            renderIndexClassSelectByTeacher();
         } else {
             throw new Error('Invalid data format');
         }
@@ -1467,15 +1577,20 @@ function closeModal() {
 
 function confirmClassSelectionForIndex() {
     const select = document.getElementById('index-class-select');
-    if (!select) return;
+    if (!select || !select.value) return;
+    const selectedOption = select.options[select.selectedIndex];
     const selectedClassId = select.value;
+    const selectedTeacherName = selectedOption?.dataset?.teacher || document.getElementById('index-teacher-select')?.value || '';
+    const selectedClassName = selectedOption?.dataset?.className || '';
     closeModal();
     
     const item = normalizedExams().find(e => e.file === _pendingFile);
     if (item) {
         goEngine(item, "exam", _pendingQpp, {
             submitQr: true,
-            classId: selectedClassId
+            classId: selectedClassId,
+            teacherName: selectedTeacherName,
+            className: selectedClassName
         });
     }
 }
@@ -1493,6 +1608,8 @@ function goEngine(item, action, qpp, options = {}) {
 
     if (options.submitQr) url.searchParams.set('submitQr', '1');
     if (options.classId) url.searchParams.set('class', options.classId);
+    if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
+    if (options.className) url.searchParams.set('className', options.className);
 
     window.open(url.toString(), '_blank');
 }
