@@ -209,31 +209,119 @@ const REPORT_ANALYSIS_JSON_SCHEMA = {
   strict: true
 };
 
-const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `너는 AP Math OS의 수학 평가 리포트 작성 보조 AI다.
+const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `
+너는 AP Math 학원의 학부모 평가 리포트 전담 작성 AI다.
 
-너의 임무는 학생의 실제 평가 데이터만 근거로 하여, 학부모에게 전달 가능한 전문적이고 정중한 평가 리포트 문장을 생성하는 것이다.
+목표는 오답을 지적하는 보고서가 아니라, 학부모가 신뢰할 수 있는 "성취 확인서 + 학습 진단서 + 다음 수업 관리 계획서"를 작성하는 것이다.
+학생의 실제 평가 데이터, 점수, 평균, 문항별 정답률, 단원, 선생님 메모만 근거로 사용한다.
+없는 사실을 만들지 않고, 부족한 데이터가 있어도 학부모용 문장에는 내부 시스템 사정이나 원문 확인 제한을 드러내지 않는다.
 
-반드시 입력 데이터에 있는 사실만 사용한다. 점수, 평균, 오답 번호, 문항 수, 정답률, 단원명, 문항 내용은 절대 임의로 만들지 않는다. 문항 원문이나 해설이 없으면 "문항 원문 확인 불가" 상태로 판단하고, 오답 번호, 단원, 정답률 정보만 기준으로 분석한다.
+────────────────────────────────────────
+[핵심 작성 순서]
+────────────────────────────────────────
+1. 첫 문단은 반드시 성취와 안정적인 부분부터 시작한다.
+2. 점수, 정답률, 전체 평균, 반 평균, 최근 흐름을 자연스럽게 해석한다.
+3. 오답은 "틀린 문제"가 아니라 "다음 수업에서 확인할 포인트"로 표현한다.
+4. 오답이 많으면 전부 나열하지 말고 우선 보완 문항과 단원 중심으로 정리한다.
+5. 오답이 없으면 오답 분석 대신 우수 해결 문항, 정확도 유지, 심화 확장 계획을 작성한다.
+6. 마지막에는 학원에서 다음 수업에 무엇을 할지 구체적으로 제시한다.
 
-학생을 비난하거나 학부모를 불안하게 만드는 표현은 금지한다. 대신 학원에서 어떤 방식으로 보완할 것인지 구체적으로 설명한다.
+────────────────────────────────────────
+[절대 금지 표현]
+────────────────────────────────────────
+- 확인 불가
+- 자료 없음
+- 데이터 부족
+- 아카이브
+- 시스템
+- 함수
+- 코드
+- 원문을 불러오지 못함
+- 기초가 없다
+- 공부를 안 했다
+- 심각하다
+- 많이 부족하다
+- 완전히 틀렸다
 
-분석 순서:
-1. 평가 결과 요약
-2. 전체/반 기준에서의 위치 해석
-3. 오답 문항의 정답률 기반 의미 분석
-4. 오답 원인 분류
-5. 반복 약점 진단
-6. 다음 수업 보완 계획
-7. 학부모님께 드리는 말씀
+위 표현은 학부모용 결과물의 어떤 필드에도 쓰지 않는다.
+내부적으로 정보가 부족하더라도, 문항 번호·단원·정답률·난이도·풀이 포인트 기준으로 자연스럽게 작성한다.
 
-정답률 해석 기준:
-- 전체 정답률 80% 이상인데 틀림: 개인 실수, 조건 확인, 계산, 검산 습관 점검
-- 전체 정답률 50% 이상 80% 미만: 보통 난도, 개념 적용이나 풀이 과정 점검
-- 전체 정답률 30% 이상 50% 미만: 난도 있는 문항, 심화 적용력 또는 조건 해석 보완
-- 전체 정답률 30% 미만: 대부분 학생이 어려워한 문항, 고난도 문항 대응력 보완
-정답률 정보가 없으면 정답률 기반 해석을 하지 않는다.
+────────────────────────────────────────
+[문항 정답률 해석 기준]
+────────────────────────────────────────
+- 전체 정답률 85% 이상인데 학생이 틀림: 개념 부족으로 단정하지 말고 조건 확인, 계산 정리, 검산 습관을 우선 점검한다.
+- 전체 정답률 65% 이상 85% 미만: 보통 난도의 적용 문항으로 보고 풀이 과정과 조건 적용을 확인한다.
+- 전체 정답률 45% 이상 65% 미만: 조건 해석과 개념 연결이 필요한 문항으로 본다.
+- 전체 정답률 45% 미만: 난도가 있었던 문항으로 보고 단순 실수로만 보지 않는다.
 
-출력은 반드시 지정된 JSON 형식으로만 한다.`;
+────────────────────────────────────────
+[오답 수에 따른 처리]
+────────────────────────────────────────
+오답이 0개:
+- 전 문항을 정확하게 해결한 성취를 분명히 칭찬한다.
+- 전체 정답률이 낮았던 문항까지 해결했다면 깊이 있는 개념 이해와 풀이 집중도를 언급한다.
+- 다음 계획은 심화 응용, 풀이 속도, 서술 정리, 다음 단원 확장으로 작성한다.
+
+오답이 1~5개:
+- 문항 번호를 자연스럽게 언급한다.
+- 각 문항의 의미를 정답률과 단원 기준으로 해석한다.
+- 다음 수업에서 풀이 흐름 확인, 조건 표시, 유사 문제 풀이를 진행한다고 작성한다.
+
+오답이 6개 이상:
+- 모든 오답을 길게 나열하지 않는다.
+- 맞출 수 있었던 문항과 핵심 보완 문항을 우선 정리한다.
+- 학부모가 좌절감을 느끼지 않도록 "우선순위를 정해 차근차근 보완하겠다"는 방향으로 작성한다.
+- 클리닉, 오답 노트, 유사 문제를 통한 순차 관리 계획을 포함한다.
+
+────────────────────────────────────────
+[출력 필드별 기준]
+────────────────────────────────────────
+summary:
+- 2~3문장, 100자 이상.
+- 학생 이름, 평가명, 점수를 포함하고 성취를 먼저 언급한다.
+
+diagnosis:
+- 4~6문장, 250자 이상.
+- 점수 위치, 평균 비교, 정답률 구조, 성취 포인트, 보완 포인트를 균형 있게 작성한다.
+
+wrongAnalysis:
+- 250자 이상.
+- 오답이 있으면 핵심 문항 번호와 단원을 언급하되 부정적으로 몰아가지 않는다.
+- 오답이 없으면 우수 해결 문항과 안정적인 풀이 습관을 분석한다.
+
+nextPlan:
+- 4~6문장, 250자 이상.
+- 다음 수업에서 실제로 할 조치를 순서 있게 작성한다.
+- 풀이 과정 확인, 조건 표시, 식 세우기, 검산, 유사 문제, 클리닉 중 필요한 조치를 포함한다.
+
+parentMessage:
+- 6~9문장, 400자 이상.
+- 순서: 성취 확인 → 평가 해석 → 우선 보완 포인트 → 학원 조치 → 가정 확인 1개 → 마무리.
+- 학부모가 안심하고 맡길 수 있는 정중한 문체로 작성한다.
+
+kakaoSummary:
+- 반드시 "안녕하세요, AP수학입니다."로 시작한다.
+- 6~10줄 내외.
+- 점수, 성취, 핵심 보완, 다음 수업 계획, PDF 확인 안내를 포함한다.
+- 내부 보고서식 제목이나 딱딱한 항목 나열만으로 끝내지 않는다.
+
+teacherMemo:
+- 내부 교사용으로 2~4문장.
+- 다음 수업에서 볼 핵심 포인트를 압축한다.
+
+riskLevel:
+- stable, watch, focus 중 하나.
+- 단, 학부모용 문장에서는 위험하다는 식의 표현을 쓰지 않는다.
+
+mainWeaknesses:
+- 2~5개. "약점"이라기보다 확인 포인트를 구체적인 구 형태로 작성한다.
+
+nextActions:
+- 3~5개. 실제 수업 행동으로 작성한다.
+
+출력은 반드시 JSON 객체만 한다.
+마크다운, 코드블록, 설명 문장, 주석은 출력하지 않는다.
+`;
 
 function clampText(value, max = 12000) {
   const text = String(value || '');
@@ -282,6 +370,7 @@ function normalizeReportAnalysisResult(raw = {}) {
   };
 }
 
+
 function buildFallbackReportAnalysis(payload = {}) {
   const studentName = payload?.student?.name || payload?.student?.id || '학생';
   const examTitle = payload?.exam?.title || '평가';
@@ -293,25 +382,46 @@ function buildFallbackReportAnalysis(payload = {}) {
   const overallAverage = payload?.cohort?.overallAverage;
   const classAverage = payload?.cohort?.classAverage;
   const hard = wrongRows.filter(r => Number.isFinite(Number(r.correctRate)) && Number(r.correctRate) < 65);
-  const personal = wrongRows.filter(r => Number.isFinite(Number(r.correctRate)) && Number(r.correctRate) >= 85);
   const units = [...new Set(wrongRows.map(r => r.unit || r.unitKey).filter(Boolean))].slice(0, 3);
   const comparison = [];
   if (Number.isFinite(Number(overallAverage))) comparison.push(`전체 평균 ${overallAverage}점`);
   if (Number.isFinite(Number(classAverage))) comparison.push(`반 평균 ${classAverage}점`);
-  const summary = `${studentName} 학생은 「${examTitle}」에서 ${score ?? '-'}점을 기록했습니다.${correctRate !== null ? ` 정답률은 ${correctRate}%입니다.` : ''}`;
-  const diagnosis = `${summary}${comparison.length ? ` 비교 기준은 ${comparison.join(', ')}입니다.` : ''} 이번 리포트는 오답 번호와 정답률을 기준으로 보완 방향을 정리했습니다.`;
+
+  const summary = wrongCount
+    ? `${studentName} 학생은 「${examTitle}」에서 ${score ?? '-'}점을 기록했습니다.${correctRate !== null ? ` 정답률은 ${correctRate}%입니다.` : ''} 이번 결과는 점수와 함께 우선 보완할 문항을 정리해 다음 수업에 연결하겠습니다.`
+    : `${studentName} 학생은 「${examTitle}」에서 ${score ?? '-'}점을 기록했고, 전 문항을 안정적으로 해결했습니다.${correctRate !== null ? ` 정답률은 ${correctRate}%입니다.` : ''}`;
+
+  const diagnosis = wrongCount
+    ? `${summary}${comparison.length ? ` 비교 기준은 ${comparison.join(', ')}입니다.` : ''} 이번 리포트는 성취한 부분을 먼저 확인하고, 다음 수업에서 우선적으로 볼 문항과 단원을 정리한 자료입니다.`
+    : `${summary}${comparison.length ? ` 비교 기준은 ${comparison.join(', ')}입니다.` : ''} 현재 풀이 정확도가 잘 유지되고 있어 다음 단계에서는 심화 응용과 풀이 속도를 함께 확장하겠습니다.`;
+
   const wrongAnalysis = wrongCount
-    ? `오답은 ${wrongRows.map(r => `${r.questionNo}번`).join(', ')}에서 확인됩니다.${hard.length ? ` 이 중 ${hard.length}문항은 전체 정답률이 낮아 다수 학생이 어려워한 문항으로 볼 수 있습니다.` : ''}${personal.length ? ` ${personal.length}문항은 전체 정답률이 높은 편이라 조건 확인, 계산 정리, 검산 습관을 우선 점검하겠습니다.` : ''}`
-    : '이번 평가는 오답 없이 안정적으로 마무리했습니다.';
-  const nextActions = [
-    '오답 문항의 풀이 과정을 다시 확인합니다.',
-    '조건 표시와 식 세우기 과정을 점검합니다.',
-    '계산 후 검산 습관을 짧은 확인문제로 보완합니다.'
-  ];
-  if (units.length) nextActions.unshift(`${units.join(', ')} 단원을 우선 보완합니다.`);
-  const nextPlan = `${nextActions.slice(0, 4).join(' ')} 필요하면 유사문항과 상승문제로 연결하겠습니다.`;
-  const parentMessage = `${studentName} 학생의 이번 평가는 점수뿐 아니라 오답이 나온 문항의 정답률과 단원을 함께 확인하는 것이 중요합니다. 학원에서는 다음 수업에서 오답 원인을 다시 확인하고, 같은 실수가 반복되지 않도록 풀이 순서와 검산 습관을 잡아가겠습니다. 가정에서는 문제 조건 표시와 숙제 마무리 여부만 가볍게 확인해 주시면 좋겠습니다.`;
-  const kakaoSummary = `안녕하세요, AP수학입니다.\n\n${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.\n- 점수: ${score ?? '-'}점\n- 문항 수: ${qCount || '-'}문항\n- 오답: ${wrongCount}문항${correctRate !== null ? `\n- 정답률: ${correctRate}%` : ''}\n\n자세한 오답 의미와 보완 계획은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.\n\n감사합니다.`;
+    ? `우선 확인할 문항은 ${wrongRows.slice(0, 5).map(r => `${r.questionNo}번`).join(', ')}입니다.${hard.length ? ` 난도가 있었던 문항은 개념 연결 과정과 접근 순서를 함께 정리하겠습니다.` : ''}`
+    : '이번 평가는 전 문항을 정확하게 해결했습니다. 꼼꼼한 조건 확인과 풀이 마무리가 안정적으로 이루어진 결과로 볼 수 있습니다.';
+
+  const nextActions = wrongCount
+    ? [
+        `${wrongRows.slice(0, 5).map(r => `${r.questionNo}번`).join(', ')} 문항 풀이 과정을 확인합니다.`,
+        '조건 표시와 식 세우기 과정을 점검합니다.',
+        '유사 문제로 풀이 흐름을 한 번 더 확인합니다.'
+      ]
+    : [
+        '현재 정확도를 유지하며 다음 단원으로 이어갑니다.',
+        '난도 있는 응용 문항으로 사고 폭을 넓힙니다.',
+        '풀이 속도와 서술 정리를 함께 점검합니다.'
+      ];
+  if (wrongCount && units.length) nextActions.unshift(`${units.join(', ')} 단원을 우선 확인합니다.`);
+
+  const nextPlan = wrongCount
+    ? `${nextActions.slice(0, 4).join(' ')} 필요하면 클리닉과 오답 노트로 순차적으로 관리하겠습니다.`
+    : `${nextActions.join(' ')} 현재의 좋은 흐름을 유지하면서 심화 단계로 자연스럽게 이어가겠습니다.`;
+
+  const parentMessage = wrongCount
+    ? `${studentName} 학생의 이번 평가는 점수뿐 아니라 어떤 문항에서 확인할 부분이 있었는지를 함께 보는 것이 중요합니다. 학원에서는 다음 수업에서 우선 보완 문항의 풀이 흐름을 확인하고, 같은 실수가 반복되지 않도록 조건 표시와 검산 습관을 함께 잡아가겠습니다. 가정에서는 문제를 풀 때 조건에 표시하는 습관과 풀이 후 한 번 더 확인하는 것만 가볍게 격려해 주시면 좋겠습니다.`
+    : `${studentName} 학생은 이번 평가에서 매우 안정적인 성취를 보여주었습니다. 학원에서는 현재의 정확도를 유지하면서 다음 단원과 심화 응용 학습으로 자연스럽게 연결하겠습니다. 가정에서는 지금처럼 학습 흐름을 유지할 수 있도록 편안하게 격려해 주시면 충분합니다.`;
+
+  const kakaoSummary = `안녕하세요, AP수학입니다.\n\n${studentName} 학생의 「${examTitle}」 평가 리포트를 전달드립니다.\n- 점수: ${score ?? '-'}점\n- 문항 수: ${qCount || '-'}문항${correctRate !== null ? `\n- 정답률: ${correctRate}%` : ''}\n- 확인 포인트: ${wrongCount ? `${wrongCount}문항을 다음 수업에서 순차적으로 보완하겠습니다.` : '전 문항을 정확하게 해결했습니다.'}\n\n자세한 내용은 함께 전달드리는 PDF 리포트에서 확인하실 수 있습니다.\n\n감사합니다.`;
+
   return normalizeReportAnalysisResult({
     summary,
     diagnosis,
@@ -319,11 +429,58 @@ function buildFallbackReportAnalysis(payload = {}) {
     nextPlan,
     parentMessage,
     kakaoSummary,
-    teacherMemo: units.length ? `우선 보완 단원: ${units.join(', ')}` : '특이 단원 쏠림 없음',
-    riskLevel: wrongCount >= 5 || hard.length >= 3 ? 'focus' : wrongCount >= 2 ? 'watch' : 'stable',
-    mainWeaknesses: units.length ? units : (wrongCount ? ['오답 풀이 과정 점검'] : ['정확도 유지']),
+    teacherMemo: units.length ? `우선 확인 단원: ${units.join(', ')}` : (wrongCount ? '풀이 과정과 검산 습관 확인' : '심화 응용 연결 가능'),
+    riskLevel: wrongCount >= 6 || hard.length >= 3 ? 'focus' : wrongCount >= 2 ? 'watch' : 'stable',
+    mainWeaknesses: units.length ? units : (wrongCount ? ['풀이 과정 확인', '검산 습관 점검'] : ['정확도 유지', '심화 응용 확장']),
     nextActions
   });
+}
+
+function isWeakAiReportResult(result) {
+  if (!result || typeof result !== 'object') return true;
+
+  const summary = String(result.summary || '').trim();
+  const diagnosis = String(result.diagnosis || '').trim();
+  const wrongAnalysis = String(result.wrongAnalysis || '').trim();
+  const nextPlan = String(result.nextPlan || '').trim();
+  const parentMessage = String(result.parentMessage || '').trim();
+  const kakaoSummary = String(result.kakaoSummary || '').trim();
+  const teacherMemo = String(result.teacherMemo || '').trim();
+
+  if (summary.length < 80) return true;
+  if (diagnosis.length < 200) return true;
+  if (wrongAnalysis.length < 200) return true;
+  if (nextPlan.length < 200) return true;
+  if (parentMessage.length < 400) return true;
+  if (kakaoSummary.length < 160) return true;
+  if (teacherMemo.length < 80) return true;
+
+  if (!Array.isArray(result.mainWeaknesses) || result.mainWeaknesses.length < 1) return true;
+  if (!Array.isArray(result.nextActions) || result.nextActions.length < 2) return true;
+
+  return false;
+}
+
+
+function mergeReportAnalysisWithFallback(result, fallback) {
+  const merged = normalizeReportAnalysisResult({ ...(fallback || {}), ...(result || {}) });
+  const min = {
+    summary: 80,
+    diagnosis: 180,
+    wrongAnalysis: 180,
+    nextPlan: 180,
+    parentMessage: 400,
+    kakaoSummary: 140,
+    teacherMemo: 60
+  };
+  for (const key of Object.keys(min)) {
+    if (String(merged[key] || '').trim().length < min[key]) {
+      merged[key] = String(fallback?.[key] || merged[key] || '').trim();
+    }
+  }
+  if (!merged.mainWeaknesses.length) merged.mainWeaknesses = fallback?.mainWeaknesses || [];
+  if (merged.nextActions.length < 2) merged.nextActions = fallback?.nextActions || merged.nextActions;
+  return merged;
 }
 
 async function callOpenAiReportAnalysis(env, payload) {
@@ -331,38 +488,74 @@ async function callOpenAiReportAnalysis(env, payload) {
   if (!apiKey) return { source: 'fallback', analysis: buildFallbackReportAnalysis(payload) };
 
   const model = env.OPENAI_REPORT_MODEL || env.OPENAI_MODEL || 'gpt-5.2';
-  const userPrompt = `아래 학생 평가 데이터를 바탕으로 학부모 평가 리포트 문장을 작성하라.\n\n입력 데이터:\n${clampText(JSON.stringify(payload, null, 2), 18000)}\n\n작성 기준:\n- 학부모에게 전달 가능한 정중한 문체\n- 점수보다 오답 원인과 보완 계획 중심\n- 전체 정답률과 반 정답률을 활용해 오답 의미 분석\n- 쉬운 문제를 틀렸으면 개인 실수/풀이 습관 가능성으로 표현\n- 어려운 문제를 틀렸으면 고난도 적용력 보완으로 표현\n- 학원에서 다음 수업에 무엇을 할지 구체적으로 작성\n- 가정에서 확인할 것은 1~2개만 간단히 제시\n- 없는 데이터는 절대 만들지 말 것`;
+  const userPrompt = [
+    '아래 학생 평가 데이터를 바탕으로 학부모 평가 리포트 문장을 작성하라.',
+    '',
+    '입력 데이터:',
+    clampText(JSON.stringify(payload, null, 2), 18000),
+    '',
+    '작성 필수 기준:',
+    '- 첫 문단은 반드시 성취와 안정적인 부분부터 시작한다.',
+    '- 오답은 부정적 지적이 아니라 다음 수업에서 확인할 포인트로 표현한다.',
+    '- 오답이 많으면 전부 길게 나열하지 말고 우선 보완 문항과 단원 중심으로 정리한다.',
+    '- 오답이 없으면 우수 해결 문항, 정확도 유지, 심화 확장 계획을 작성한다.',
+    '- parentMessage는 400자 이상, 6문장 이상으로 작성한다.',
+    '- kakaoSummary는 카카오톡 발송 문구처럼 6~10줄 내외로 작성한다.',
+    '- 다음 수업에서 실제로 할 조치를 구체적으로 작성한다.',
+    '- 학부모용 결과물에는 확인 불가, 자료 없음, 아카이브, 시스템, 함수, 코드 같은 표현을 절대 쓰지 않는다.',
+    '- 없는 사실은 만들지 않는다.',
+    '- 짧게 요약하지 않는다.'
+  ].join('\n');
 
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       model,
       instructions: AP_REPORT_ANALYSIS_SYSTEM_PROMPT,
-      input: userPrompt,
+      input: [
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'input_text',
+              text: userPrompt
+            }
+          ]
+        }
+      ],
+      max_output_tokens: 4500,
       text: {
+        verbosity: 'high',
         format: {
           type: 'json_schema',
           name: REPORT_ANALYSIS_JSON_SCHEMA.name,
-          schema: REPORT_ANALYSIS_JSON_SCHEMA.schema,
-          strict: REPORT_ANALYSIS_JSON_SCHEMA.strict
+          strict: REPORT_ANALYSIS_JSON_SCHEMA.strict,
+          schema: REPORT_ANALYSIS_JSON_SCHEMA.schema
         }
       }
     })
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    const detail = await response.text().catch(() => '');
-    throw new Error(`OpenAI ${response.status}: ${detail.slice(0, 300)}`);
+    throw new Error(data?.error?.message || `OpenAI HTTP ${response.status}`);
   }
 
-  const data = await response.json();
   const parsed = safeJsonParse(extractResponseText(data));
   if (!parsed) throw new Error('AI JSON parse failed');
-  return { source: 'ai', analysis: normalizeReportAnalysisResult(parsed) };
+
+  const normalized = normalizeReportAnalysisResult(parsed);
+  const fallback = buildFallbackReportAnalysis(payload);
+  const merged = isWeakAiReportResult(normalized)
+    ? mergeReportAnalysisWithFallback(normalized, fallback)
+    : normalized;
+
+  return { source: 'ai', analysis: merged };
 }
 
 export default {
