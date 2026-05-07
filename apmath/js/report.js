@@ -2166,7 +2166,9 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     const issued = new Date().toLocaleDateString('sv-SE').replace(/-/g, '.');
     const examDate = String(session.exam_date || '').replace(/-/g, '.');
     const safeTitle = reportCenterEscape(session.exam_title || '평가');
-    const aiBadgeHtml = '';
+    const aiBadgeHtml = aiAnalysis
+        ? '<span class="aprc-premium-badge">프리미엄 분석</span>'
+        : '';
 
     return `
         <div class="aprc-document ${isPrint ? 'aprc-print-document' : ''}">
@@ -2178,6 +2180,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                 </div>
                 <div class="aprc-issued">
                     <b>${reportCenterEscape(issued)}</b>
+                    ${aiBadgeHtml}
                 </div>
             </div>
 
@@ -2286,6 +2289,7 @@ function reportCenterPremiumReportStyle() {
             .aprc-ai-badge { display:inline-flex; margin-top:12px; padding:5px 9px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.86); font-size:10.5px; font-weight:850; letter-spacing:-0.1px; }
             .aprc-issued { text-align:right; font-size:11px; font-weight:700; color:rgba(255,255,255,0.64); white-space:nowrap; }
             .aprc-issued b { display:block; margin-top:5px; font-size:14px; color:#fff; }
+            .aprc-premium-badge { display:inline-flex; align-items:center; justify-content:center; margin-top:7px; padding:3px 8px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.82); font-size:10px; font-weight:800; letter-spacing:-0.1px; white-space:nowrap; }
             .aprc-student-band { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 34px; background:#f8fafc; border-bottom:1px solid #e5e7eb; }
             .aprc-student-name { font-size:24px; font-weight:850; letter-spacing:-0.7px; color:#0f172a; }
             .aprc-student-meta { margin-top:4px; font-size:13px; font-weight:700; color:#64748b; }
@@ -2578,7 +2582,8 @@ async function reportCenterRequestExamAiAnalysis(studentId, sessionId, buttonEl 
             throw new Error(r?.message || r?.error || '프리미엄 분석 실패');
         }
         const source = String(r.source || '').toLowerCase();
-        if (source !== 'ai') {
+        const isPremiumSource = source === 'ai' || source === 'gemini';
+        if (!isPremiumSource) {
             reportCenterClearCachedAiAnalysis(sessionId);
             reportCenterRefreshPremiumExamPreview(studentId, sessionId);
             const warning = reportCenterTrimText(r.warning || r.message || r.error || '분석 결과가 기준에 맞지 않았습니다.', 140);

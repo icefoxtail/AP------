@@ -370,6 +370,115 @@ function extractResponseText(data) {
   return parts.join('\n').trim();
 }
 
+function extractGeminiText(data) {
+  const parts = data?.candidates?.[0]?.content?.parts || [];
+  return parts
+    .map(p => {
+      if (typeof p?.text === 'string') return p.text;
+      return '';
+    })
+    .join('\n')
+    .trim();
+}
+
+function parseGeminiJsonText(text) {
+  const raw = String(text || '')
+    .replace(/^\uFEFF/, '')
+    .trim()
+    .replace(/^```(?:json)?\s*/i, '')
+    .replace(/```$/i, '')
+    .trim();
+
+  let parsed = safeJsonParse(raw);
+  if (parsed) return parsed;
+
+  const start = raw.indexOf('{');
+  const end = raw.lastIndexOf('}');
+  if (start >= 0 && end > start) {
+    parsed = safeJsonParse(raw.slice(start, end + 1));
+    if (parsed) return parsed;
+  }
+
+  return null;
+}
+
+function buildGeminiReportAnalysisSchema() {
+  return {
+    type: 'OBJECT',
+    properties: {
+      summary: { type: 'STRING' },
+      diagnosis: { type: 'STRING' },
+      wrongAnalysis: { type: 'STRING' },
+      nextPlan: { type: 'STRING' },
+      parentMessage: { type: 'STRING' },
+      kakaoSummary: { type: 'STRING' },
+      teacherMemo: { type: 'STRING' },
+      riskLevel: { type: 'STRING', enum: ['stable', 'watch', 'focus'] },
+      mainWeaknesses: { type: 'ARRAY', items: { type: 'STRING' } },
+      nextActions: { type: 'ARRAY', items: { type: 'STRING' } }
+    },
+    required: [
+      'summary',
+      'diagnosis',
+      'wrongAnalysis',
+      'nextPlan',
+      'parentMessage',
+      'kakaoSummary',
+      'teacherMemo',
+      'riskLevel',
+      'mainWeaknesses',
+      'nextActions'
+    ],
+    propertyOrdering: [
+      'summary',
+      'diagnosis',
+      'wrongAnalysis',
+      'nextPlan',
+      'parentMessage',
+      'kakaoSummary',
+      'teacherMemo',
+      'riskLevel',
+      'mainWeaknesses',
+      'nextActions'
+    ]
+  };
+}
+
+function buildReportAnalysisUserPrompt(payload) {
+  const hasBaseDraft = !!payload?.baseReportDraft;
+  return [
+    hasBaseDraft
+      ? '아래 기본 리포트 초안을 완전히 갈아엎지 말고, 학부모 발송용으로 더 자연스럽고 신뢰감 있게 고도화하라.'
+      : '아래 학생 평가 데이터를 바탕으로 학부모 평가 리포트 문장을 작성하라.',
+    '',
+    '[중요 작업 방식]',
+    '- 현재 목적은 새 분석 생성이 아니라 기본 리포트 개선이다.',
+    '- payload.baseReportDraft가 있으면 반드시 프롬프트의 핵심 근거로 사용한다.',
+    '- 기본 리포트 초안이 있으면 절대 무시하지 않는다.',
+    '- 새 리포트를 처음부터 다시 쓰지 말고, 기본 리포트를 더 좋게 다듬는다.',
+    '- 기본 리포트보다 짧게 쓰지 말 것.',
+    '- 성취 → 평가 해석 → 핵심 보완 → 다음 수업 계획 → 학부모 메시지 순서를 유지할 것.',
+    '- 반복 문장을 줄이고, 딱딱한 내부 보고서 문체를 부드럽게 바꿀 것.',
+    '- summary는 성취 중심, diagnosis는 평가 해석, wrongAnalysis는 문항별 확인 포인트, nextPlan은 다음 수업 조치, parentMessage는 학부모 발송문 역할을 맡는다.',
+    '',
+    '입력 데이터:',
+    clampText(JSON.stringify(payload, null, 2), 22000),
+    '',
+    '작성 필수 기준:',
+    '- 첫 문단은 반드시 성취와 안정적인 부분부터 시작한다.',
+    '- 오답은 "틀렸다"가 아니라 "다음 수업에서 확인할 포인트"로 표현할 것.',
+    '- 오답이 많으면 전부 길게 나열하지 말고 우선 보완 문항과 단원 중심으로 정리한다.',
+    '- 오답이 없으면 우수 해결 문항, 정확도 유지, 심화 확장 계획을 작성한다.',
+    '- parentMessage는 420자 이상, 6문장 이상으로 작성한다.',
+    '- kakaoSummary는 카카오톡 발송 문구처럼 6~10줄 내외로 작성한다.',
+    '- 다음 수업에서 실제로 할 조치를 구체적으로 작성한다.',
+    '- AI, 시스템, 아카이브, 함수, 코드, 확인 불가, 자료 없음 같은 표현은 절대 쓰지 말 것.',
+    '- 없는 사실은 만들지 말 것.',
+    '- 짧게 요약하지 않는다.',
+    '- 같은 문장을 여러 필드에 복사하지 않는다.'
+  ].join('\n');
+}
+
 function normalizeReportAnalysisResult(raw = {}) {
   const cleanString = (v) => String(v || '').trim();
   const cleanArray = (v) => Array.isArray(v) ? v.map(x => cleanString(x)).filter(Boolean).slice(0, 8) : [];
@@ -504,6 +613,163 @@ function mergeReportAnalysisWithFallback(result, fallback) {
   return merged;
 }
 
+
+async function callGeminiReportAnalysis(env, payload) {
+  const apiKey = env.GEMINI_API_KEY;
+  const fallback = buildFallbackReportAnalysis(payload);
+
+  if (!apiKey) {
+    return { source: 'fallback', analysis: fallback, warning: 'Gemini failed: GEMINI_API_KEY missing' };
+  }
+
+  const userPrompt = buildReportAnalysisUserPrompt(payload);
+  const geminiModelCandidates = [
+    env.GEMINI_REPORT_MODEL || 'gemini-3-flash-preview',
+    'gemini-2.5-flash',
+    'gemini-2.5-flash-lite'
+  ];
+  const models = geminiModelCandidates.filter((model, index, arr) => arr.indexOf(model) === index);
+  let lastErrorMessage = 'unknown error';
+
+  for (const model of models) {
+    try {
+      return await callGeminiReportAnalysisOnce(apiKey, model, payload, fallback, userPrompt);
+    } catch (e) {
+      lastErrorMessage = String(e?.message || e || 'unknown error');
+      console.error('[AI_REPORT_GEMINI_ERROR]', {
+        message: lastErrorMessage,
+        model
+      });
+      if (!(e?.retryNextModel || e?.skipModel)) break;
+    }
+  }
+
+  return {
+    source: 'fallback',
+    analysis: fallback,
+    warning: `Gemini failed: ${lastErrorMessage.slice(0, 500)}`
+  };
+}
+
+async function callGeminiReportAnalysisOnce(apiKey, model, payload, fallback, userPrompt) {
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-key': apiKey
+    },
+    body: JSON.stringify({
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            {
+              text: `${AP_REPORT_ANALYSIS_SYSTEM_PROMPT}\n\n${userPrompt}`
+            }
+          ]
+        }
+      ],
+      generationConfig: {
+        temperature: 0.25,
+        maxOutputTokens: 6000,
+        responseMimeType: 'application/json'
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const detail = await response.text().catch(() => '');
+    const status = response.status;
+    const retryStatuses = new Set([429, 500, 502, 503, 504]);
+    const error = new Error(`Gemini ${status}: ${detail.slice(0, 300)}`);
+    error.status = status;
+    error.retryNextModel = retryStatuses.has(status);
+    error.skipModel = status === 404;
+    throw error;
+  }
+
+  const data = await response.json();
+  const text = extractGeminiText(data);
+  const parsed = parseGeminiJsonText(text);
+  if (!parsed) {
+    const finishReason = data?.candidates?.[0]?.finishReason || '';
+    const blockReason = data?.promptFeedback?.blockReason || '';
+    console.error('[AI_REPORT_GEMINI_PARSE_DEBUG]', {
+      model,
+      textSample: text.slice(0, 1000),
+      candidateCount: Array.isArray(data?.candidates) ? data.candidates.length : 0,
+      finishReason,
+      blockReason,
+      safetyRatings: data?.candidates?.[0]?.safetyRatings || data?.promptFeedback?.safetyRatings || []
+    });
+    const error = new Error(`Gemini JSON parse failed (finishReason=${finishReason}, blockReason=${blockReason}): ${text.slice(0, 1000)}`);
+    error.retryNextModel = true;
+    throw error;
+  }
+
+  const normalized = normalizeReportAnalysisResult(parsed);
+  if (isWeakAiReportResult(normalized)) {
+    const merged = mergeReportAnalysisWithFallback(normalized, fallback);
+    return { source: 'gemini', analysis: merged };
+  }
+
+  return { source: 'gemini', analysis: normalized };
+}
+
+async function callReportAiProxyAnalysis(env, payload) {
+  const proxyUrl = String(env.REPORT_AI_PROXY_URL || '').trim();
+  const proxySecret = String(env.REPORT_AI_PROXY_SECRET || '').trim();
+  const fallback = buildFallbackReportAnalysis(payload);
+
+  if (!proxyUrl) {
+    return { source: 'fallback', analysis: fallback, warning: 'AI proxy failed: REPORT_AI_PROXY_URL missing' };
+  }
+
+  try {
+    const response = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(proxySecret ? { 'X-Report-AI-Proxy-Secret': proxySecret } : {})
+      },
+      body: JSON.stringify({
+        payload,
+        systemPrompt: AP_REPORT_ANALYSIS_SYSTEM_PROMPT,
+        userPrompt: buildReportAnalysisUserPrompt(payload),
+        schema: REPORT_ANALYSIS_JSON_SCHEMA.schema
+      })
+    });
+
+    if (!response.ok) {
+      const detail = await response.text().catch(() => '');
+      throw new Error(`AI proxy ${response.status}: ${detail.slice(0, 300)}`);
+    }
+
+    const data = await response.json();
+    const rawAnalysis = data?.analysis || data?.result || data;
+    const normalized = normalizeReportAnalysisResult(rawAnalysis);
+    const analysis = isWeakAiReportResult(normalized)
+      ? mergeReportAnalysisWithFallback(normalized, fallback)
+      : normalized;
+    const source = String(data?.source || 'proxy').trim() || 'proxy';
+
+    return {
+      source,
+      analysis,
+      warning: data?.warning ? String(data.warning).slice(0, 500) : ''
+    };
+  } catch (e) {
+    console.error('[AI_REPORT_PROXY_ERROR]', {
+      message: String(e?.message || e),
+      hasProxyUrl: !!proxyUrl
+    });
+    return {
+      source: 'fallback',
+      analysis: fallback,
+      warning: `AI proxy failed: ${String(e?.message || e).slice(0, 500)}`
+    };
+  }
+}
 
 async function callOpenAiReportAnalysis(env, payload) {
   const apiKey = env.OPENAI_API_KEY;
@@ -2164,11 +2430,12 @@ export default {
           }
 
           try {
-            const result = await callOpenAiReportAnalysis(env, payload);
+            const result = await callReportAiProxyAnalysis(env, payload);
             return new Response(JSON.stringify({
               success: true,
               source: result.source,
-              analysis: result.analysis
+              analysis: result.analysis,
+              warning: result.warning || ''
             }), { headers });
           } catch (e) {
             return new Response(JSON.stringify({
