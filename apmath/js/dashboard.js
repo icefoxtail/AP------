@@ -1197,8 +1197,8 @@ function renderDashboard() {
             </button>
             <button class="btn" 
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
-                    onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
-                성적표
+                    onclick="window.location.href='../index.html';">
+                아카이브
             </button>
         </div>
     `;
