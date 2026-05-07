@@ -1277,13 +1277,81 @@ function reportCenterBuildArchiveStatusHtml(session) {
     `;
 }
 
+
+function reportCenterBuildBaseReportDraft(studentId, sessionId, teacherMemo = '') {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    if (!data.student || !data.session || !data.stats) return null;
+
+    const stats = data.stats;
+    const wrongRows = stats.wrongRows || [];
+    const wrongCount = wrongRows.length;
+    const qCount = Number(data.session.question_count || 0);
+    const correctRate = qCount ? Math.round(((qCount - wrongCount) / qCount) * 100) : null;
+    const baseDiagnosisLines = reportCenterBuildExamDiagnosisLines(data, teacherMemo);
+    const meaningLines = reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, null);
+    const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
+    const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 3);
+    const recentAvg = getRecentAverage(data.student.id, 3);
+
+    const nextActions = [];
+    if (wrongRows.length) {
+        const wrongNums = priorityRows.map(r => `${r.questionNo}번`).join(', ');
+        if (unitNames.length) nextActions.push(`${unitNames.join(', ')} 단원을 우선 확인합니다.`);
+        if (wrongNums) nextActions.push(`${wrongNums} 문항의 풀이 과정을 함께 다시 확인합니다.`);
+        nextActions.push('조건 표시, 식 세우기, 계산 정리, 검산 습관을 순서대로 점검합니다.');
+        nextActions.push('유사 문제로 같은 유형의 풀이 흐름을 한 번 더 확인합니다.');
+    } else {
+        nextActions.push('현재 정확도를 유지하며 다음 단원 학습으로 이어갑니다.');
+        nextActions.push('전체 정답률이 낮았던 핵심 문항의 풀이 흐름을 다시 확인해 강점을 유지합니다.');
+        nextActions.push('심화 응용 문항으로 사고 폭을 넓힙니다.');
+    }
+    nextActions.push('필요 시 확인문제와 유사 유형 문제를 추가로 제공하겠습니다.');
+
+    const studentName = data.student.name || '학생';
+    const parentMessage = wrongRows.length
+        ? `이번 리포트는 점수뿐 아니라 ${studentName} 학생이 어떤 문항에서 확인할 부분이 있었는지, 그리고 그 문항이 어느 정도 난도의 문항이었는지를 함께 정리한 자료입니다. 학원에서는 다음 수업에서 우선 보완 문항의 풀이 흐름을 확인하고, 같은 실수가 반복되지 않도록 유사 문제 풀이까지 함께 진행하겠습니다. 가정에서는 문제를 풀 때 조건에 표시하는 습관과 풀이 후 한 번 더 확인하는 것만 가볍게 격려해 주시면 큰 도움이 됩니다.`
+        : `${studentName} 학생이 이번 평가에서 모든 문항을 정확하게 맞혔습니다. 꾸준한 노력이 결과로 나타나고 있으며, 학원에서는 이 흐름을 이어갈 수 있도록 다음 단원과 심화 응용 학습을 차근차근 준비하겠습니다. 가정에서는 지금처럼 학습 환경을 유지해 주시면 충분합니다.`;
+
+    return {
+        purpose: 'AI must improve this existing base report, not replace it from scratch.',
+        achievementSummary: meaningLines[0] || '',
+        evaluationMeaning: meaningLines,
+        diagnosis: baseDiagnosisLines,
+        nextPlanItems: nextActions,
+        parentMessage,
+        kakaoSummary: reportCenterBuildExamPreview(studentId, sessionId),
+        teacherMemo: teacherMemo || '',
+        constraints: [
+            '기본 리포트보다 더 짧거나 딱딱하게 만들지 않는다.',
+            '같은 문장을 반복하지 않는다.',
+            '성취 확인으로 시작하고 보완은 관리 계획으로 표현한다.',
+            'nextPlan과 nextActions는 중복되지 않게 역할을 분리한다.',
+            '학부모용 문장에 확인 불가, 자료 없음, 아카이브, 시스템, 함수, 코드라는 표현을 쓰지 않는다.'
+        ],
+        metrics: {
+            score: data.session.score,
+            correctRate,
+            recentAverage: recentAvg,
+            overallAverage: stats.overallAvg,
+            classAverage: stats.classAvg,
+            totalSubmitted: stats.totalSessions,
+            classSubmitted: stats.classSessions,
+            wrongCount
+        }
+    };
+}
+
 function reportCenterBuildExamAiPayload(studentId, sessionId) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const session = (state.db.exam_sessions || []).find(e => String(e.id) === String(sessionId));
     const stats = reportCenterBuildQuestionStats(session);
     const archiveQuestionDetails = session ? reportCenterGetCachedArchiveDetails(session.id) : null;
+    const teacherMemo = reportCenterGetExamReportTeacherMemo();
+    const baseReportDraft = reportCenterBuildBaseReportDraft(studentId, sessionId, teacherMemo);
     return {
-        reportType: 'exam',
+        reportType: 'exam_revision',
+        revisionMode: true,
+        instruction: '기존 기본 리포트를 처음부터 갈아엎지 말고, 중복을 줄이고 문장을 더 자연스럽고 신뢰감 있게 다듬어라.',
         student: student ? {
             id: student.id,
             name: student.name,
@@ -1308,6 +1376,7 @@ function reportCenterBuildExamAiPayload(studentId, sessionId) {
         },
         questionAnalysis: stats.rows,
         wrongAnalysis: stats.wrongRows,
+        baseReportDraft,
         archiveQuestionDetails: archiveQuestionDetails ? {
             status: archiveQuestionDetails.status,
             message: archiveQuestionDetails.message,
@@ -1315,7 +1384,7 @@ function reportCenterBuildExamAiPayload(studentId, sessionId) {
             archiveUrl: archiveQuestionDetails.archiveInfo?.url || '',
             details: archiveQuestionDetails.details || []
         } : null,
-        teacherMemo: ''
+        teacherMemo
     };
 }
 
@@ -1699,8 +1768,24 @@ function reportCenterGetCachedAiAnalysis(sessionId) {
 
 function reportCenterSetCachedAiAnalysis(sessionId, payload) {
     if (!sessionId || !payload) return payload;
-    reportCenterAiAnalysisCache()[String(sessionId)] = payload;
-    return payload;
+    const normalized = reportCenterNormalizeAiAnalysis(payload);
+    if (String(normalized.source || '').toLowerCase() !== 'ai') {
+        delete reportCenterAiAnalysisCache()[String(sessionId)];
+        return normalized;
+    }
+    reportCenterAiAnalysisCache()[String(sessionId)] = normalized;
+    return normalized;
+}
+
+function reportCenterClearCachedAiAnalysis(sessionId) {
+    if (!sessionId) return;
+    delete reportCenterAiAnalysisCache()[String(sessionId)];
+}
+
+function reportCenterResetExamAiAnalysis(studentId, sessionId = '') {
+    reportCenterClearCachedAiAnalysis(sessionId);
+    reportCenterRefreshPremiumExamPreview(studentId, sessionId);
+    toast('기본 리포트 문구로 복귀했습니다.', 'success');
 }
 
 function reportCenterNormalizeAiAnalysis(raw = {}) {
@@ -1724,8 +1809,9 @@ function reportCenterNormalizeAiAnalysis(raw = {}) {
 }
 
 function reportCenterGetAiAnalysisForReport(sessionId, options = {}) {
-    if (options.aiAnalysis) return reportCenterNormalizeAiAnalysis(options.aiAnalysis);
-    return reportCenterGetCachedAiAnalysis(sessionId);
+    const candidate = options.aiAnalysis ? reportCenterNormalizeAiAnalysis(options.aiAnalysis) : reportCenterGetCachedAiAnalysis(sessionId);
+    if (!candidate) return null;
+    return String(candidate.source || '').toLowerCase() === 'ai' ? candidate : null;
 }
 
 function reportCenterBuildExamDiagnosisLines(data, teacherMemo = '') {
@@ -1892,17 +1978,13 @@ function reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnaly
 function reportCenterBuildPremiumQuestionRows(data, forPrint = false) {
     const stats = data.stats || {};
     const wrongRows = stats.wrongRows || [];
-    const detailMap = reportCenterGetQuestionDetailMap(data);
-
     if (!wrongRows.length) {
         const excellentRows = reportCenterSelectExcellentRows(stats, 3);
         if (!excellentRows.length) {
-            return `<tr><td colspan="7" class="aprc-empty-cell">이번 평가는 전 문항을 정확하게 해결했습니다.</td></tr>`;
+            return `<tr><td colspan="6" class="aprc-empty-cell">이번 평가는 전 문항을 정확하게 해결했습니다.</td></tr>`;
         }
         return excellentRows.map(row => {
-            const detail = detailMap.get(String(row.questionNo));
             const insight = `전체 정답률이 낮았던 문항까지 정확하게 해결했습니다. 조건 해석과 풀이 마무리가 안정적으로 이루어진 문항입니다.`;
-            const questionText = reportCenterSafeQuestionText(detail?.content, forPrint ? 110 : 80) || reportCenterBuildParentQuestionInsight(row, detail);
             return `
                 <tr>
                     <td class="aprc-qno">${reportCenterEscape(row.questionNo)}번</td>
@@ -1911,7 +1993,6 @@ function reportCenterBuildPremiumQuestionRows(data, forPrint = false) {
                     <td>${reportCenterSafePercent(row.correctRate)}</td>
                     <td>${reportCenterSafePercent(row.classCorrectRate)}</td>
                     <td>${reportCenterEscape(insight)}</td>
-                    <td><div class="aprc-question-summary">${reportCenterEscape(questionText)}</div></td>
                 </tr>
             `;
         }).join('');
@@ -1919,11 +2000,6 @@ function reportCenterBuildPremiumQuestionRows(data, forPrint = false) {
 
     const displayRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
     return displayRows.map(row => {
-        const detail = detailMap.get(String(row.questionNo));
-        const safeContent = reportCenterSafeQuestionText(detail?.content, forPrint ? 110 : 80);
-        const safeSolution = reportCenterSafeQuestionText(detail?.solution, forPrint ? 90 : 65);
-        const questionText = safeContent || reportCenterBuildParentQuestionInsight(row, detail);
-        const answerText = detail?.answer ? `정답 ${detail.answer}` : '';
         return `
             <tr>
                 <td class="aprc-qno">${reportCenterEscape(row.questionNo)}번</td>
@@ -1932,10 +2008,6 @@ function reportCenterBuildPremiumQuestionRows(data, forPrint = false) {
                 <td>${reportCenterSafePercent(row.correctRate)}</td>
                 <td>${reportCenterSafePercent(row.classCorrectRate)}</td>
                 <td>${reportCenterEscape(row.meaning || '-')}</td>
-                <td>
-                    <div class="aprc-question-summary">${reportCenterEscape(questionText)}</div>
-                    ${(answerText || safeSolution) ? `<div class="aprc-question-sub">${reportCenterEscape([answerText, safeSolution].filter(Boolean).join(' · '))}</div>` : ''}
-                </td>
             </tr>
         `;
     }).join('');
@@ -1975,6 +2047,64 @@ function reportCenterBuildScorePositionText(data) {
     return parts.length ? parts.join(' · ') : '동일 평가 비교 자료가 부족합니다.';
 }
 
+
+function reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, aiAnalysis = null) {
+    const student = data?.student || {};
+    const session = data?.session || {};
+    const stats = data?.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const score = session.score ?? '-';
+    const studentName = student.name || '학생';
+    const items = [];
+    const scoreBits = [`${studentName} 학생은 이번 평가에서 ${score}점을 기록했습니다.`];
+
+    if (correctRate !== null && correctRate !== undefined) scoreBits.push(`정답률은 ${correctRate}%입니다.`);
+    if (stats.overallAvg !== null && stats.overallAvg !== undefined) scoreBits.push(`전체 평균은 ${stats.overallAvg}점입니다.`);
+    if (stats.classAvg !== null && stats.classAvg !== undefined) scoreBits.push(`${stats.className || '소속 반'} 평균은 ${stats.classAvg}점입니다.`);
+    items.push(scoreBits.join(' '));
+
+    if (!wrongRows.length) {
+        const excellentRows = reportCenterSelectExcellentRows(stats, 3);
+        if (excellentRows.length) {
+            items.push(`${excellentRows.map(r => `${r.questionNo}번`).join(', ')}처럼 전체 정답률이 낮았던 문항까지 안정적으로 해결했습니다.`);
+        } else {
+            items.push('전 문항을 정확하게 해결해 이번 범위의 기본 흐름과 풀이 정확도가 안정적으로 유지되고 있습니다.');
+        }
+        items.push('다음 수업에서는 현재 성취를 유지하면서 심화 응용과 다음 단원 학습으로 자연스럽게 확장하겠습니다.');
+        return items;
+    }
+
+    const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
+    const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
+    const personalWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate >= 85);
+    const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
+    const priorityText = priorityRows.length ? priorityRows.map(r => `${r.questionNo}번`).join(', ') : '';
+
+    if (wrongRows.length > 5) {
+        items.push(`확인할 문항이 여러 개 있어 리포트에는 ${priorityText} 등 우선 점검 문항 5개를 중심으로 정리했습니다.`);
+    } else {
+        items.push(`${priorityText} 문항을 중심으로 풀이 흐름을 확인하면 이번 평가의 보완 방향을 잡을 수 있습니다.`);
+    }
+
+    if (personalWrongs.length && hardWrongs.length) {
+        items.push('맞출 수 있었던 문항의 확인 습관과 난도가 있었던 문항의 개념 연결 과정을 나누어 점검하겠습니다.');
+    } else if (personalWrongs.length) {
+        items.push('대부분 학생이 맞힌 문항은 조건 표시와 계산 검산 습관을 먼저 점검하겠습니다.');
+    } else if (hardWrongs.length) {
+        items.push('난도가 있었던 문항은 개념 연결과 접근 순서를 다시 정리해 유사 문제로 이어가겠습니다.');
+    } else if (unitNames.length) {
+        items.push(`${unitNames.join(', ')} 단원의 핵심 유형을 짧게 재확인하고 유사 문제로 안정화하겠습니다.`);
+    } else {
+        items.push('풀이 과정의 세밀한 부분을 확인하고 같은 유형에서 안정적으로 마무리할 수 있도록 지도하겠습니다.');
+    }
+
+    if (aiAnalysis?.summary) {
+        items[0] = reportCenterTrimText(aiAnalysis.summary, 150);
+    }
+
+    return items;
+}
+
 function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', options = {}) {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     const student = data.student;
@@ -2000,27 +2130,27 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     const diagnosisLines = aiAnalysis?.diagnosis
         ? [aiAnalysis.diagnosis, aiAnalysis.wrongAnalysis].filter(Boolean)
         : baseDiagnosisLines;
-    const nextPlanItems = aiAnalysis?.nextActions?.length
-        ? aiAnalysis.nextActions
-        : (() => {
-            const wrongRows = stats?.wrongRows || [];
-            const items = [];
-            if (wrongRows.length) {
-                const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
-                const wrongNums = priorityRows.map(r => `${r.questionNo}번`).join(', ');
-                items.push(`${wrongNums} 문항의 풀이 과정을 함께 다시 확인합니다.`);
-                const personalWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate >= 85);
-                const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
-                if (personalWrongs.length) items.push('대부분 맞힌 문항의 확인 포인트는 조건 표시와 검산 습관 중심으로 점검합니다.');
-                if (hardWrongs.length) items.push('난도가 있었던 문항은 개념 연결 과정을 다시 잡고 유사 문제로 연결합니다.');
-            } else {
-                items.push('이번 성취를 바탕으로 다음 단원 학습과 심화 응용 문제를 이어갑니다.');
-                items.push('전체 정답률이 낮았던 핵심 문항의 풀이 흐름을 다시 확인해 강점을 유지합니다.');
-            }
-            items.push('필요 시 확인문제와 유사 유형 문제를 추가로 제공하겠습니다.');
-            return items;
-        })();
+    const meaningLines = reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, aiAnalysis);
+    const baseNextPlanItems = (() => {
+        const wrongRows = stats?.wrongRows || [];
+        const items = [];
+        if (wrongRows.length) {
+            const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
+            const wrongNums = priorityRows.map(r => `${r.questionNo}번`).join(', ');
+            items.push(`${wrongNums} 문항의 풀이 과정을 함께 다시 확인합니다.`);
+            const personalWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate >= 85);
+            const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
+            if (personalWrongs.length) items.push('대부분 맞힌 문항의 확인 포인트는 조건 표시와 검산 습관 중심으로 점검합니다.');
+            if (hardWrongs.length) items.push('난도가 있었던 문항은 개념 연결 과정을 다시 잡고 유사 문제로 연결합니다.');
+        } else {
+            items.push('이번 성취를 바탕으로 다음 단원 학습과 심화 응용 문제를 이어갑니다.');
+            items.push('전체 정답률이 낮았던 핵심 문항의 풀이 흐름을 다시 확인해 강점을 유지합니다.');
+        }
+        items.push('필요 시 확인문제와 유사 유형 문제를 추가로 제공하겠습니다.');
+        return items;
+    })();
     const nextPlanText = aiAnalysis?.nextPlan || '';
+    const nextPlanItems = nextPlanText ? [] : (aiAnalysis?.nextActions?.length ? aiAnalysis.nextActions.slice(0, 4) : baseNextPlanItems);
     const parentMessageText = aiAnalysis?.parentMessage || (() => {
         const wrongRows = stats?.wrongRows || [];
         const studentName = student.name || '학생';
@@ -2036,7 +2166,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     const issued = new Date().toLocaleDateString('sv-SE').replace(/-/g, '.');
     const examDate = String(session.exam_date || '').replace(/-/g, '.');
     const safeTitle = reportCenterEscape(session.exam_title || '평가');
-    const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">AI 분석 반영 · ${reportCenterEscape(aiAnalysis.source || 'report-analysis')}</div>` : '';
+    const aiBadgeHtml = '';
 
     return `
         <div class="aprc-document ${isPrint ? 'aprc-print-document' : ''}">
@@ -2045,10 +2175,8 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                     <div class="aprc-brand">AP MATH REPORT</div>
                     <div class="aprc-title">평가 분석 리포트</div>
                     <div class="aprc-subtitle">성취를 확인하고, 보완할 부분을 함께 준비합니다.</div>
-                    ${aiBadgeHtml}
                 </div>
                 <div class="aprc-issued">
-                    <div>발행일</div>
                     <b>${reportCenterEscape(issued)}</b>
                 </div>
             </div>
@@ -2095,9 +2223,9 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                     ${reportCenterBuildDifficultyBarsForPremium(stats)}
                 </div>
                 <div class="aprc-panel">
-                    <div class="aprc-section-title">이번 평가의 의미</div>
+                    <div class="aprc-section-title">리포트 핵심 요약</div>
                     <div class="aprc-insight-list">
-                        ${diagnosisLines.slice(0, 3).map(line => `<div class="aprc-insight-item">${reportCenterEscape(line)}</div>`).join('')}
+                        ${meaningLines.map(line => `<div class="aprc-insight-item">${reportCenterEscape(line)}</div>`).join('')}
                     </div>
                 </div>
             </section>
@@ -2114,7 +2242,6 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                                 <th>전체 정답률</th>
                                 <th>반 정답률</th>
                                 <th>해석</th>
-                                <th>학습 포인트</th>
                             </tr>
                         </thead>
                         <tbody>${reportCenterBuildPremiumQuestionRows(data, isPrint)}</tbody>
@@ -2133,9 +2260,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                 <div class="aprc-panel">
                     <div class="aprc-section-title">다음 수업 보완 계획</div>
                     ${nextPlanText ? `<div class="aprc-paragraph"><p>${reportCenterEscape(nextPlanText)}</p></div>` : ''}
-                    <ol class="aprc-plan-list">
-                        ${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
-                    </ol>
+                    ${nextPlanItems.length ? `<ol class="aprc-plan-list">${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}</ol>` : ''}
                 </div>
             </section>
 
@@ -2313,14 +2438,14 @@ function reportCenterCopyExamKakaoSummary(studentId, sessionId = '') {
         toast('복사할 평가 기록이 없습니다.', 'warn');
         return;
     }
-    const aiAnalysis = reportCenterGetCachedAiAnalysis(sessionId);
+    const aiAnalysis = reportCenterGetAiAnalysisForReport(sessionId);
     const text = aiAnalysis?.kakaoSummary || reportCenterBuildExamPreview(studentId, sessionId);
     if (!String(text || '').trim()) {
         toast('복사할 카톡 문구가 없습니다.', 'warn');
         return;
     }
     navigator.clipboard.writeText(text).then(() => {
-        toast(aiAnalysis?.kakaoSummary ? 'AI 카톡 요약문이 복사되었습니다.' : '카톡 요약문이 복사되었습니다.', 'success');
+        toast(aiAnalysis?.kakaoSummary ? '정리된 카톡 요약문이 복사되었습니다.' : '카톡 요약문이 복사되었습니다.', 'success');
     }).catch(() => {
         toast('복사에 실패했습니다.', 'warn');
     });
@@ -2404,10 +2529,9 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
                 <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterPrintPremiumExamReport('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">PDF/출력</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
                 <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="openParentReport('${escapeReportJsString(studentId)}')">기존 카드 리포트</button>
-                <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:#7c3aed; background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.16);" onclick="reportCenterRequestExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', this)">AI 분석 생성</button>
-                <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="reportCenterCopyExamAiPayload('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">AI 분석 자료 복사</button>
+                <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:#7c3aed; background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.16);" onclick="reportCenterRequestExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', this)">프리미엄 분석</button>
             </div>
 
             <div style="font-size:13px; font-weight:800; color:var(--text); margin-top:4px;">PDF 미리보기</div>
@@ -2437,7 +2561,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
 async function reportCenterRequestExamAiAnalysis(studentId, sessionId, buttonEl = null) {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     if (!data.student || !data.session) {
-        toast('AI 분석을 만들 평가 기록이 없습니다.', 'warn');
+        toast('정리할 평가 기록이 없습니다.', 'warn');
         return;
     }
 
@@ -2445,22 +2569,31 @@ async function reportCenterRequestExamAiAnalysis(studentId, sessionId, buttonEl 
     payload.teacherMemo = reportCenterGetExamReportTeacherMemo();
     payload.generatedFrom = 'AP_MATH_OS_REPORT_CENTER_4D5';
 
-    if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, true, 'AI 분석 중');
-    else toast('AI 분석을 생성 중입니다.', 'info');
+    if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, true, '분석 중');
+    else toast('리포트 문장을 정리하는 중입니다.', 'info');
 
     try {
         const r = await api.post('ai/report-analysis', payload);
         if (!r || r.success === false) {
-            throw new Error(r?.message || r?.error || 'AI 분석 생성 실패');
+            throw new Error(r?.message || r?.error || '프리미엄 분석 실패');
+        }
+        const source = String(r.source || '').toLowerCase();
+        if (source !== 'ai') {
+            reportCenterClearCachedAiAnalysis(sessionId);
+            reportCenterRefreshPremiumExamPreview(studentId, sessionId);
+            const warning = reportCenterTrimText(r.warning || r.message || r.error || '분석 결과가 기준에 맞지 않았습니다.', 140);
+            console.warn('[reportCenterRequestExamAiAnalysis] fallback ignored:', r);
+            toast(`분석 결과가 기준에 맞지 않아 기본 리포트를 유지합니다. ${warning}`, 'warn');
+            return;
         }
         const analysis = reportCenterNormalizeAiAnalysis(r.analysis || r.data || r);
-        analysis.source = r.source || analysis.source || 'ai';
+        analysis.source = 'ai';
         reportCenterSetCachedAiAnalysis(sessionId, analysis);
         reportCenterRefreshPremiumExamPreview(studentId, sessionId);
-        toast(r.source === 'fallback' ? 'AI 연결 전 기본 분석을 반영했습니다.' : 'AI 분석이 리포트에 반영되었습니다.', r.source === 'fallback' ? 'warn' : 'success');
+        toast('리포트 문장이 정리되어 반영되었습니다.', 'success');
     } catch (e) {
         console.error('[reportCenterRequestExamAiAnalysis] failed:', e);
-        toast('AI 분석 생성에 실패했습니다. 기본 리포트 문구를 유지합니다.', 'warn');
+        toast('프리미엄 분석에 실패했습니다. 기본 리포트를 유지합니다.', 'warn');
     } finally {
         if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, false);
     }
@@ -2471,7 +2604,7 @@ function reportCenterCopyExamAiPayload(studentId, sessionId) {
     const memo = document.getElementById('report-center-exam-teacher-memo')?.value || '';
     payload.teacherMemo = memo;
     navigator.clipboard.writeText(JSON.stringify(payload, null, 2)).then(() => {
-        toast('AI 분석용 자료가 복사되었습니다.', 'success');
+        toast('분석 자료가 복사되었습니다.', 'success');
     }).catch(() => {
         toast('복사에 실패했습니다.', 'warn');
     });
