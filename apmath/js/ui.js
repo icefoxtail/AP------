@@ -455,6 +455,15 @@ function openExamScoreMenu() {
     `);
 }
 
+
+function openManualCenter() {
+    const url = new URL('../manual/', window.location.href);
+    const opened = window.open(url.toString(), '_blank', 'noopener');
+    if (!opened) {
+        window.location.href = url.toString();
+    }
+}
+
 function buildDrawerMenu(roleKey) {
     const isAdminDrawer = roleKey === 'admin';
 
@@ -464,6 +473,7 @@ function buildDrawerMenu(roleKey) {
             ${drawerItem('', '학급관리', "closeAppDrawer(); openClassManageModal();")}
             ${drawerItem('', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('', '사용설명서', "closeAppDrawer(); openManualCenter();")}
             ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
         `;
     }
@@ -481,6 +491,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('', '시험성적', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('시험성적 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '클리닉', "closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('', '사용설명서', "closeAppDrawer(); openManualCenter();")}
         ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
     `;
 }
@@ -1104,6 +1115,7 @@ window.setModalBody = setModalBody;
 window.setModalLoading = setModalLoading;
 window.safeToastError = safeToastError;
 window.setButtonBusy = setButtonBusy;
+window.openManualCenter = openManualCenter;
 window.renderAppDrawer = renderAppDrawer;
 window.openAppDrawer = openAppDrawer;
 window.closeAppDrawer = closeAppDrawer;
