@@ -2049,8 +2049,6 @@ function reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnaly
         ? '다음 수업에서는 풀이 과정 확인, 조건 표시, 유사 문제 풀이를 순서대로 진행하겠습니다.'
         : '다음 수업에서는 현재 성취를 바탕으로 사고력을 넓히는 문제까지 연결하겠습니다.';
 
-    if (aiAnalysis?.summary) achievement = aiAnalysis.summary;
-
     return `
         <section class="aprc-core-summary">
             <div class="aprc-core-item"><b>성취</b><span>${reportCenterEscape(achievement)}</span></div>
@@ -2132,6 +2130,130 @@ function reportCenterBuildScorePositionText(data) {
     return parts.length ? parts.join(' · ') : '동일 평가 비교 자료가 부족합니다.';
 }
 
+function reportCenterFirstSentence(value, limit = 72) {
+    const text = reportCenterStripHtml(value).replace(/\s+/g, ' ').trim();
+    if (!text) return '';
+    const match = text.match(/^(.+?[.!?。！？]|.+?(?:습니다|합니다|됩니다|입니다|겠습니다)\.)/);
+    return reportCenterTrimText(match ? match[1] : text, limit);
+}
+
+function reportCenterShortQuestionList(rows = [], limit = 5) {
+    const nums = rows
+        .map(r => r?.questionNo)
+        .filter(v => v !== null && v !== undefined && String(v).trim() !== '')
+        .slice(0, limit)
+        .map(v => `${v}번`);
+    return nums.length ? nums.join(', ') : '';
+}
+
+function reportCenterBuildShortReportSummaryItems(data, aiAnalysis = null) {
+    const stats = data?.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
+    const excellentRows = reportCenterSelectExcellentRows(stats, 3);
+    const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
+    const metricTextPattern = /(점수|평균|정답률|반 평균|전체 평균|\d+\s*점|\d+\s*%)/;
+    const rawAiSummary = reportCenterFirstSentence(aiAnalysis?.summary, 82);
+    const rawAiWrong = reportCenterFirstSentence(aiAnalysis?.wrongAnalysis, 92);
+    const rawAiPlan = reportCenterFirstSentence(aiAnalysis?.nextPlan, 92);
+    const aiSummary = metricTextPattern.test(rawAiSummary) ? '' : rawAiSummary;
+    const aiWrong = metricTextPattern.test(rawAiWrong) ? '' : rawAiWrong;
+    const aiPlan = metricTextPattern.test(rawAiPlan) ? '' : rawAiPlan;
+    const priorityText = reportCenterShortQuestionList(priorityRows, 5);
+
+    const position = aiSummary || (wrongRows.length
+        ? '이번 평가에서 확인된 성취 흐름을 기준으로 다음 보완 방향을 정리했습니다.'
+        : '이번 평가의 안정적인 풀이 흐름을 바탕으로 다음 확장 방향을 정리했습니다.');
+    const focus = aiWrong || (wrongRows.length
+        ? `${priorityText || '우선 확인 문항'}을 중심으로 풀이 흐름을 확인합니다.`
+        : `${reportCenterShortQuestionList(excellentRows, 3) || '난도 있는 문항'}까지 해결한 흐름을 확인합니다.`);
+    const plan = aiPlan || (wrongRows.length
+        ? `${unitNames.length ? `${unitNames.join(', ')} 단원의 ` : ''}조건 확인과 풀이 순서를 다시 잡고 유사 문제로 연결하겠습니다.`
+        : '현재 정확도를 유지하면서 심화 응용과 다음 단원으로 연결하겠습니다.');
+
+    return [
+        { title: '현재 위치', text: reportCenterTrimText(position, 96) },
+        { title: '우선 확인 문항', text: reportCenterTrimText(focus, 96) },
+        { title: '다음 수업 방향', text: reportCenterTrimText(plan, 96) }
+    ];
+}
+
+function reportCenterSoftenDiagnosisText(value) {
+    let text = reportCenterStripHtml(value).replace(/\s+/g, ' ').trim();
+    if (!text) return '';
+    const sentences = (text.match(/[^.!?。！？]+[.!?。！？]?/g) || [text])
+        .map(s => s.trim())
+        .filter(Boolean)
+        .filter(s => !/(점수|평균|정답률|반 평균|전체 평균|\d+\s*점|\d+\s*%)/.test(s));
+    if (!sentences.length) return '';
+    text = sentences.join(' ')
+        .replace(/틀렸/g, '확인할 부분이 보였')
+        .replace(/부족/g, '보완이 필요')
+        .replace(/낮은/g, '관리할')
+        .replace(/못한/g, '흔들린');
+    return reportCenterTrimText(text, 260);
+}
+
+function reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo = '', aiAnalysis = null) {
+    const aiDiagnosis = reportCenterSoftenDiagnosisText(aiAnalysis?.diagnosis);
+    if (aiDiagnosis) return [aiDiagnosis];
+
+    const stats = data?.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 3);
+    const personalWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate >= 85);
+    const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
+    const parts = [];
+
+    if (!wrongRows.length) {
+        parts.push('풀이 흐름이 전반적으로 안정적이며 조건 확인과 마무리 과정도 잘 유지되고 있습니다. 다음 수업에서는 현재의 정확도를 유지하면서 낯선 조건이 섞인 심화 응용으로 확장하겠습니다.');
+    } else {
+        const typeText = personalWrongs.length && hardWrongs.length
+            ? '조건 확인 습관과 개념 연결 과정이 함께 확인되었습니다'
+            : personalWrongs.length
+                ? '조건 표시, 계산 정리, 검산처럼 실수로 이어질 수 있는 풀이 습관이 확인되었습니다'
+                : hardWrongs.length
+                    ? '개념을 문제 조건에 연결하고 접근 순서를 잡는 과정에서 확인할 부분이 보였습니다'
+                    : '풀이 과정의 세부 순서를 정리하면 안정화할 수 있는 부분이 보였습니다';
+        const unitText = unitNames.length ? `${unitNames.join(', ')} 단원에서 ` : '';
+        parts.push(`${unitText}${typeText}. 다음 수업에서는 바로 결과를 맞히는 연습보다 조건을 표시하고 필요한 개념을 고른 뒤 풀이 순서를 세우는 습관을 먼저 잡겠습니다.`);
+        parts.push('이 순서로 관리하면 같은 유형의 유사 문제에서 흔들림을 줄이고, 이후 난도가 올라간 문항에서도 풀이 흐름을 스스로 점검할 수 있습니다.');
+    }
+
+    if (teacherMemo) parts.push(`담당 선생님 확인 사항은 다음 수업 관리에 반영하겠습니다: ${teacherMemo}`);
+    return parts.map(line => reportCenterTrimText(line, 260));
+}
+
+function reportCenterBuildNextPlanItems(data, aiAnalysis = null) {
+    const stats = data?.stats || {};
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
+    const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
+    const aiItems = Array.isArray(aiAnalysis?.nextActions) ? aiAnalysis.nextActions : [];
+    const splitAiPlan = aiAnalysis?.nextPlan
+        ? (reportCenterStripHtml(aiAnalysis.nextPlan).match(/[^.!?。！？]+[.!?。！？]?/g) || []).map(s => s.trim()).filter(Boolean)
+        : [];
+    const items = [...aiItems, ...splitAiPlan].map(item => reportCenterTrimText(item, 110)).filter(Boolean);
+
+    if (items.length) return items.slice(0, 4);
+    if (!wrongRows.length) {
+        return [
+            '현재 풀이 정확도를 유지하며 다음 단원 핵심 개념으로 연결합니다.',
+            '난도 있는 문항은 풀이 조건과 마무리 과정을 다시 확인합니다.',
+            '심화 응용 문제를 통해 사고 흐름을 넓힙니다.'
+        ];
+    }
+
+    const wrongNums = reportCenterShortQuestionList(priorityRows, 5) || '우선 확인 문항';
+    const plan = [
+        `${wrongNums}의 조건 표시와 풀이 과정을 함께 다시 확인합니다.`,
+        '풀이 순서를 말로 정리한 뒤 같은 유형의 유사 문제로 연결합니다.',
+        '계산 정리와 검산 습관을 오답노트에 짧게 남기도록 지도합니다.'
+    ];
+    if (unitNames.length) plan.splice(1, 0, `${unitNames.join(', ')} 단원의 핵심 개념을 짧게 재확인합니다.`);
+    return plan.slice(0, 4);
+}
+
 
 function reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, aiAnalysis = null) {
     const student = data?.student || {};
@@ -2211,31 +2333,9 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     const targetText = target && target.targetScore !== null
         ? `${target.targetScore}점 목표${target.currentAverage !== null ? ` · 최근 평균 ${target.currentAverage}점` : ''}${target.remainScore !== undefined && target.currentAverage !== null ? ` · 목표까지 ${target.remainScore}점` : ''}`
         : '목표점수 미설정';
-    const baseDiagnosisLines = reportCenterBuildExamDiagnosisLines(data, teacherMemo);
-    const diagnosisLines = aiAnalysis?.diagnosis
-        ? [aiAnalysis.diagnosis, aiAnalysis.wrongAnalysis].filter(Boolean)
-        : baseDiagnosisLines;
-    const meaningLines = reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, aiAnalysis);
-    const baseNextPlanItems = (() => {
-        const wrongRows = stats?.wrongRows || [];
-        const items = [];
-        if (wrongRows.length) {
-            const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
-            const wrongNums = priorityRows.map(r => `${r.questionNo}번`).join(', ');
-            items.push(`${wrongNums} 문항의 풀이 과정을 함께 다시 확인합니다.`);
-            const personalWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate >= 85);
-            const hardWrongs = wrongRows.filter(r => Number.isFinite(r.correctRate) && r.correctRate < 65);
-            if (personalWrongs.length) items.push('대부분 맞힌 문항의 확인 포인트는 조건 표시와 검산 습관 중심으로 점검합니다.');
-            if (hardWrongs.length) items.push('난도가 있었던 문항은 개념 연결 과정을 다시 잡고 유사 문제로 연결합니다.');
-        } else {
-            items.push('이번 성취를 바탕으로 다음 단원 학습과 심화 응용 문제를 이어갑니다.');
-            items.push('전체 정답률이 낮았던 핵심 문항의 풀이 흐름을 다시 확인해 강점을 유지합니다.');
-        }
-        items.push('필요 시 확인문제와 유사 유형 문제를 추가로 제공하겠습니다.');
-        return items;
-    })();
-    const nextPlanText = aiAnalysis?.nextPlan || '';
-    const nextPlanItems = nextPlanText ? [] : (aiAnalysis?.nextActions?.length ? aiAnalysis.nextActions.slice(0, 4) : baseNextPlanItems);
+    const diagnosisLines = reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo, aiAnalysis);
+    const summaryItems = reportCenterBuildShortReportSummaryItems(data, aiAnalysis);
+    const nextPlanItems = reportCenterBuildNextPlanItems(data, aiAnalysis);
     const parentMessageText = aiAnalysis?.parentMessage || (() => {
         const wrongRows = stats?.wrongRows || [];
         const studentName = student.name || '학생';
@@ -2257,107 +2357,117 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
 
     return `
         <div class="aprc-document ${isPrint ? 'aprc-print-document' : ''}">
-            <div class="aprc-report-header">
-                <div>
-                    <div class="aprc-brand">AP MATH REPORT</div>
-                    <div class="aprc-title">평가 분석 리포트</div>
-                    <div class="aprc-subtitle">성취를 확인하고, 보완할 부분을 함께 준비합니다.</div>
-                </div>
-                <div class="aprc-issued">
-                    <b>${reportCenterEscape(issued)}</b>
-                    ${aiBadgeHtml}
-                </div>
-            </div>
-
-            <section class="aprc-student-band">
-                <div>
-                    <div class="aprc-student-name">${reportCenterEscape(student.name || '')}</div>
-                    <div class="aprc-student-meta">${reportCenterEscape(`${student.school_name || ''} ${student.grade || ''}`.trim() || '-')} · ${reportCenterEscape(data.classInfo.className || '-')}</div>
-                </div>
-                <div class="aprc-exam-meta">
-                    <div>${safeTitle}</div>
-                    <b>${reportCenterEscape(examDate || '-')}</b>
-                </div>
-            </section>
-
-            <section class="aprc-score-grid">
-                <div class="aprc-score-card aprc-main-score">
-                    <div class="aprc-card-label">이번 평가 점수</div>
-                    <div class="aprc-score-value">${reportCenterEscape(session.score ?? '-')}<span>점</span></div>
-                    <div class="aprc-card-note">${reportCenterEscape(reportCenterBuildScorePositionText(data))}</div>
-                </div>
-                <div class="aprc-score-card">
-                    <div class="aprc-card-label">정답률</div>
-                    <div class="aprc-metric-value">${correctRate === null ? '-' : `${correctRate}%`}</div>
-                    <div class="aprc-card-note">${qCount || '-'}문항 중 확인 ${wrongCount}문항</div>
-                </div>
-                <div class="aprc-score-card">
-                    <div class="aprc-card-label">비교 평균</div>
-                    <div class="aprc-metric-value">${stats.overallAvg === null ? '-' : `${stats.overallAvg}점`}</div>
-                    <div class="aprc-card-note">전체 ${stats.totalSessions || 0}명 · 반 ${stats.classSessions || 0}명</div>
-                </div>
-                <div class="aprc-score-card">
-                    <div class="aprc-card-label">최근 흐름</div>
-                    <div class="aprc-metric-value">${recentAvg === null ? '-' : `${recentAvg}점`}</div>
-                    <div class="aprc-card-note">${reportCenterEscape(targetText)}</div>
-                </div>
-            </section>
-
-            ${reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnalysis)}
-
-            <section class="aprc-two-col">
-                <div class="aprc-panel">
-                    <div class="aprc-section-title">문항 난이도 분포</div>
-                    ${reportCenterBuildDifficultyBarsForPremium(stats)}
-                </div>
-                <div class="aprc-panel">
-                    <div class="aprc-section-title">리포트 핵심 요약</div>
-                    <div class="aprc-insight-list">
-                        ${meaningLines.map(line => `<div class="aprc-insight-item">${reportCenterEscape(line)}</div>`).join('')}
+            <section class="aprc-page aprc-page-1">
+                <div class="aprc-report-header">
+                    <div>
+                        <div class="aprc-brand">AP MATH REPORT</div>
+                        <div class="aprc-title">평가 분석 리포트</div>
+                        <div class="aprc-subtitle">성취를 확인하고, 보완할 부분을 함께 준비합니다.</div>
+                    </div>
+                    <div class="aprc-issued">
+                        <b>${reportCenterEscape(issued)}</b>
+                        ${aiBadgeHtml}
                     </div>
                 </div>
-            </section>
 
-            <section class="aprc-panel aprc-table-panel">
-                <div class="aprc-section-title">${reportCenterEscape(tableMeta.title)}</div>
-                <div class="aprc-table-wrap">
-                    <table class="aprc-table">
-                        <thead>
-                            <tr>
-                                <th>문항</th>
-                                <th>단원</th>
-                                <th>난도</th>
-                                <th>전체 정답률</th>
-                                <th>반 정답률</th>
-                                <th>해석</th>
-                            </tr>
-                        </thead>
-                        <tbody>${reportCenterBuildPremiumQuestionRows(data, isPrint)}</tbody>
-                    </table>
-                </div>
-                <div class="aprc-source-note">${reportCenterEscape(archiveMessage)}</div>
-            </section>
-
-            <section class="aprc-two-col aprc-bottom-grid">
-                <div class="aprc-panel">
-                    <div class="aprc-section-title">종합 진단</div>
-                    <div class="aprc-paragraph">
-                        ${diagnosisLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
+                <section class="aprc-student-band">
+                    <div>
+                        <div class="aprc-student-name">${reportCenterEscape(student.name || '')}</div>
+                        <div class="aprc-student-meta">${reportCenterEscape(`${student.school_name || ''} ${student.grade || ''}`.trim() || '-')} · ${reportCenterEscape(data.classInfo.className || '-')}</div>
                     </div>
-                </div>
-                <div class="aprc-panel">
-                    <div class="aprc-section-title">다음 수업 보완 계획</div>
-                    ${nextPlanText ? `<div class="aprc-paragraph"><p>${reportCenterEscape(nextPlanText)}</p></div>` : ''}
-                    ${nextPlanItems.length ? `<ol class="aprc-plan-list">${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}</ol>` : ''}
-                </div>
+                    <div class="aprc-exam-meta">
+                        <div>${safeTitle}</div>
+                        <b>${reportCenterEscape(examDate || '-')}</b>
+                    </div>
+                </section>
+
+                <section class="aprc-score-grid">
+                    <div class="aprc-score-card aprc-main-score">
+                        <div class="aprc-card-label">이번 평가 점수</div>
+                        <div class="aprc-score-value">${reportCenterEscape(session.score ?? '-')}<span>점</span></div>
+                        <div class="aprc-card-note">${reportCenterEscape(reportCenterBuildScorePositionText(data))}</div>
+                    </div>
+                    <div class="aprc-score-card">
+                        <div class="aprc-card-label">정답률</div>
+                        <div class="aprc-metric-value">${correctRate === null ? '-' : `${correctRate}%`}</div>
+                        <div class="aprc-card-note">${qCount || '-'}문항 중 확인 ${wrongCount}문항</div>
+                    </div>
+                    <div class="aprc-score-card">
+                        <div class="aprc-card-label">비교 평균</div>
+                        <div class="aprc-metric-value">${stats.overallAvg === null ? '-' : `${stats.overallAvg}점`}</div>
+                        <div class="aprc-card-note">전체 ${stats.totalSessions || 0}명 · 반 ${stats.classSessions || 0}명</div>
+                    </div>
+                    <div class="aprc-score-card">
+                        <div class="aprc-card-label">최근 흐름</div>
+                        <div class="aprc-metric-value">${recentAvg === null ? '-' : `${recentAvg}점`}</div>
+                        <div class="aprc-card-note">${reportCenterEscape(targetText)}</div>
+                    </div>
+                </section>
+
+                ${reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnalysis)}
+
+                <section class="aprc-two-col">
+                    <div class="aprc-panel">
+                        <div class="aprc-section-title">문항 난이도 분포</div>
+                        ${reportCenterBuildDifficultyBarsForPremium(stats)}
+                    </div>
+                    <div class="aprc-panel">
+                        <div class="aprc-section-title">리포트 핵심 요약</div>
+                        <div class="aprc-summary-list">
+                            ${summaryItems.map(item => `
+                                <div class="aprc-summary-item">
+                                    <b>${reportCenterEscape(item.title)}</b>
+                                    <span>${reportCenterEscape(item.text)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
             </section>
 
-            <section class="aprc-parent-message">
-                <div class="aprc-section-title">학부모님께 드리는 말씀</div>
-                <p>${reportCenterEscape(parentMessageText)}</p>
+            <section class="aprc-page aprc-page-2">
+                <section class="aprc-panel aprc-table-panel">
+                    <div class="aprc-section-title">${reportCenterEscape(tableMeta.title)}</div>
+                    <div class="aprc-table-wrap">
+                        <table class="aprc-table">
+                            <thead>
+                                <tr>
+                                    <th>문항</th>
+                                    <th>단원</th>
+                                    <th>난도</th>
+                                    <th>전체 정답률</th>
+                                    <th>반 정답률</th>
+                                    <th>해석</th>
+                                </tr>
+                            </thead>
+                            <tbody>${reportCenterBuildPremiumQuestionRows(data, isPrint)}</tbody>
+                        </table>
+                    </div>
+                    <div class="aprc-source-note">${reportCenterEscape(archiveMessage)}</div>
+                </section>
+
+                <section class="aprc-two-col aprc-bottom-grid">
+                    <div class="aprc-panel">
+                        <div class="aprc-section-title">종합 진단</div>
+                        <div class="aprc-paragraph">
+                            ${diagnosisLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
+                        </div>
+                    </div>
+                    <div class="aprc-panel">
+                        <div class="aprc-section-title">다음 수업 보완 계획</div>
+                        ${nextPlanItems.length ? `<ol class="aprc-plan-list">${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}</ol>` : ''}
+                    </div>
+                </section>
             </section>
 
-            <div class="aprc-footer">AP MATH · Student Learning Report</div>
+            <section class="aprc-page aprc-page-3">
+                <section class="aprc-parent-message">
+                    <div class="aprc-section-title">학부모님께 드리는 말씀</div>
+                    <p>${reportCenterEscape(parentMessageText)}</p>
+                </section>
+
+                <div class="aprc-footer">AP MATH · Student Learning Report</div>
+            </section>
         </div>
     `;
 }
@@ -2402,6 +2512,10 @@ function reportCenterPremiumReportStyle() {
             .aprc-bar-count { font-size:12px; font-weight:850; color:#0f172a; text-align:right; }
             .aprc-insight-list { display:flex; flex-direction:column; gap:8px; }
             .aprc-insight-item { padding:10px 12px; border-radius:12px; background:#f8fafc; border:1px solid #e5e7eb; color:#334155; font-size:12.5px; font-weight:700; line-height:1.55; word-break:keep-all; }
+            .aprc-summary-list { display:grid; grid-template-columns:1fr; gap:8px; }
+            .aprc-summary-item { padding:10px 12px; border-radius:12px; background:#f8fafc; border:1px solid #e5e7eb; }
+            .aprc-summary-item b { display:block; margin-bottom:4px; color:#1d4ed8; font-size:11.5px; font-weight:900; letter-spacing:-0.1px; }
+            .aprc-summary-item span { display:block; color:#334155; font-size:12.5px; font-weight:700; line-height:1.55; word-break:keep-all; }
             .aprc-table-panel { margin:12px 34px; padding:18px; }
             .aprc-table-wrap { overflow-x:auto; border:1px solid #e5e7eb; border-radius:14px; }
             .aprc-table { width:100%; border-collapse:collapse; min-width:760px; font-size:11.5px; }
@@ -2457,18 +2571,39 @@ ${reportCenterPremiumReportStyle()}
         body { padding:10px; }
         .aprc-document { width:760px; max-width:760px; min-width:760px; }
     }
-    @page { size:A4; margin:12mm; }
+    @page { size: A4; margin: 9mm; }
     @media print {
         html, body { background:#fff; padding:0; overflow:visible; }
-        .aprc-document { width:100%; max-width:none; min-width:0; min-height:auto; border:none; box-shadow:none; }
+        .aprc-document { width:100%; max-width:none; min-width:0; min-height:auto; border:none; box-shadow:none; overflow:visible; }
+        .aprc-page {
+            break-after: page !important;
+            page-break-after: always !important;
+            box-sizing: border-box !important;
+            min-height: calc(297mm - 18mm) !important;
+            padding: 0 !important;
+        }
+        .aprc-page:last-child {
+            break-after: auto !important;
+            page-break-after: auto !important;
+        }
         .aprc-report-header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-        .aprc-table-wrap { overflow:visible; }
-        .aprc-table { min-width:0; font-size:10.5px; }
+        .aprc-table-wrap { overflow: visible !important; max-width: 100% !important; }
+        .aprc-table { width: 100% !important; min-width: 0 !important; font-size: 10px !important; }
+        .aprc-table th, .aprc-table td { padding: 7px 6px !important; word-break: keep-all !important; }
         .aprc-score-grid { grid-template-columns:1.35fr 1fr 1fr 1fr; }
         .aprc-score-value { font-size:42px; }
         .aprc-metric-value { font-size:22px; }
-        .aprc-two-col { break-inside:avoid; page-break-inside:avoid; }
-        .aprc-panel, .aprc-parent-message, .aprc-table-panel { break-inside:avoid; page-break-inside:avoid; }
+        .aprc-panel,
+        .aprc-score-grid,
+        .aprc-score-card,
+        .aprc-core-summary,
+        .aprc-core-item,
+        .aprc-table-panel,
+        .aprc-bottom-grid,
+        .aprc-parent-message {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+        }
     }
 </style>
 </head>
@@ -2710,6 +2845,49 @@ function reportCenterInjectPrintViewStyle() {
                 border:none !important;
                 box-shadow:none !important;
                 border-radius:0 !important;
+                overflow:visible !important;
+            }
+
+            .aprc-page {
+                break-after: page !important;
+                page-break-after: always !important;
+                box-sizing: border-box !important;
+                min-height: calc(297mm - 18mm) !important;
+                padding: 0 !important;
+            }
+
+            .aprc-page:last-child {
+                break-after: auto !important;
+                page-break-after: auto !important;
+            }
+
+            .aprc-panel,
+            .aprc-score-grid,
+            .aprc-score-card,
+            .aprc-core-summary,
+            .aprc-core-item,
+            .aprc-table-panel,
+            .aprc-bottom-grid,
+            .aprc-parent-message {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            .aprc-table-wrap {
+                overflow: visible !important;
+                max-width: 100% !important;
+            }
+
+            .aprc-table {
+                width: 100% !important;
+                min-width: 0 !important;
+                font-size: 10px !important;
+            }
+
+            .aprc-table th,
+            .aprc-table td {
+                padding: 7px 6px !important;
+                word-break: keep-all !important;
             }
 
             .aprc-report-header {
@@ -2736,8 +2914,8 @@ function reportCenterInjectPrintViewStyle() {
             }
 
             @page {
-                size:A4;
-                margin:12mm;
+                size: A4;
+                margin: 9mm;
             }
         }
     `;
