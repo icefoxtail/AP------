@@ -295,30 +295,25 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 /**
  * 성적 직접 입력 모달 (OMR) 오픈
  */
-function openOMR(sid, presetTitle = '', presetQ = '', presetClassId = '', sessionId = '', presetArchiveFile = '', returnSource = '', presetExamDate = '') {
+function openOMR(sid, presetTitle = '') {
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
     
-    const mapObj = state.db.class_students.find(m => String(m.student_id) === String(sid));
-    const classId = presetClassId || (mapObj ? mapObj.class_id : '');
+    const mapObj = state.db.class_students.find(m => m.student_id === sid);
+    const classId = mapObj ? mapObj.class_id : '';
     
-    // [Archive Link Fix] 시험성적 화면에서 넘어온 문항 수/반/아카이브/날짜 컨텍스트를 우선 사용한다.
-    const inferredQ = presetQ || todayExam?.q || findExamQuestionCount(presetTitle, classId) || 20;
+    // [Fix 1] 동적 문항수(q) 처리 로직 (시그니처 확장 없이)
+    const inferredQ = todayExam?.q || findExamQuestionCount(presetTitle, classId) || 20;
     const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
 
     const defaultArchiveFile = normalizeQrArchiveFile(
-        presetArchiveFile || localStorage.getItem('AP_LAST_ARCHIVE_FILE') || ''
+        localStorage.getItem('AP_LAST_ARCHIVE_FILE') || ''
     );
-    const defaultExamDate = presetExamDate || new Date().toLocaleDateString('sv-SE');
 
     const checkedWrongIds = [];
 
     showModal('성적 직접 입력', `
         <div style="display:flex;flex-direction:column;gap:18px;">
-            <input type="hidden" id="omr-classId" value="${String(classId || '').replace(/"/g, '&quot;')}">
-            <input type="hidden" id="omr-sessionId" value="${String(sessionId || '').replace(/"/g, '&quot;')}">
-            <input type="hidden" id="omr-returnSource" value="${String(returnSource || '').replace(/"/g, '&quot;')}">
-            <input type="hidden" id="omr-date" value="${String(defaultExamDate || '').replace(/"/g, '&quot;')}">
             <div style="display:flex; gap:12px;">
                 <div style="flex:2;">
                     <label style="font-size:12px;font-weight:700;color:var(--secondary);margin-bottom:8px;display:block;">시험명</label>
@@ -404,17 +399,14 @@ async function handleOMRSave(sid) {
     const score = Math.round((q - wrs.length) * (100 / q));
     
     let archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
-    const contextClassId = document.getElementById('omr-classId')?.value || '';
-    const contextSessionId = document.getElementById('omr-sessionId')?.value || '';
-    const returnSource = document.getElementById('omr-returnSource')?.value || '';
     
-    let classId = contextClassId || state.ui?.currentClassId;
+    let classId = state.ui?.currentClassId;
     if (!classId) {
-        const mapObj = state.db.class_students.find(m => String(m.student_id) === String(sid));
+        const mapObj = state.db.class_students.find(m => m.student_id === sid);
         classId = mapObj ? mapObj.class_id : null;
     }
 
-    const savedExamDate = document.getElementById('omr-date')?.value || new Date().toLocaleDateString('sv-SE');
+    const savedExamDate = new Date().toLocaleDateString('sv-SE');
 
     const payload = {
         student_id: sid, 
@@ -425,11 +417,6 @@ async function handleOMRSave(sid) {
         question_count: q, 
         class_id: classId
     };
-
-    if (contextSessionId) {
-        payload.id = contextSessionId;
-        payload.session_id = contextSessionId;
-    }
 
     if (archiveFile) {
         payload.archive_file = archiveFile;
@@ -450,13 +437,447 @@ async function handleOMRSave(sid) {
     // 전체 loadData() 대신 부분 갱신 및 가벼운 라우팅으로 성능 최적화
     await refreshDataOnly();
 
-    if (returnSource === 'examDetail' && classId && typeof openExamDetail === 'function') {
-        openExamDetail(classId, title, savedExamDate, archiveFile);
-    } else if (returnSource === 'examList' && classId && typeof openExamGradeView === 'function') {
-        openExamGradeView(classId);
-    } else if (state.ui.currentClassId) {
+    if (state.ui.currentClassId) {
         renderClass(state.ui.currentClassId);
     } else {
         renderDashboard();
     }
 }
+// ─────────────────────────────────────────────
+// [OMR 입력] 선생님용 일괄 오답 입력 화면
+// - 사이드바 독립 메뉴 진입
+// - 출석부형 전체 화면 구조
+// - 기본 O / 클릭 시 X / 저장 시 X만 wrong_answers 반영
+// ─────────────────────────────────────────────
+function omrEscape(value) {
+    if (typeof apEscapeHtml === 'function') return apEscapeHtml(value);
+    return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+function omrGradeRank(value) {
+    const text = String(value || '');
+    const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    const idx = order.findIndex(g => text.includes(g));
+    return idx === -1 ? order.length : idx;
+}
+
+function omrClassGrade(cls) {
+    const text = `${cls?.grade || ''} ${cls?.name || ''}`;
+    const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
+    return order.find(g => text.includes(g)) || String(cls?.grade || '').trim();
+}
+
+function sortOmrClasses(classes = []) {
+    return [...classes].sort((a, b) => {
+        const gradeDiff = omrGradeRank(a.grade || a.name) - omrGradeRank(b.grade || b.name);
+        if (gradeDiff !== 0) return gradeDiff;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
+    });
+}
+
+function sortOmrStudents(students = []) {
+    return [...students].sort((a, b) => {
+        const aClass = getOmrClassName(getOmrClassIdForStudent(a.id));
+        const bClass = getOmrClassName(getOmrClassIdForStudent(b.id));
+        const classDiff = String(aClass || '').localeCompare(String(bClass || ''), 'ko', { numeric: true });
+        if (classDiff !== 0) return classDiff;
+
+        const gradeDiff = omrGradeRank(a.grade) - omrGradeRank(b.grade);
+        if (gradeDiff !== 0) return gradeDiff;
+
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
+    });
+}
+
+function getOmrClassIdForStudent(studentId) {
+    const map = (state.db.class_students || []).find(m => String(m.student_id) === String(studentId));
+    return map ? String(map.class_id) : '';
+}
+
+function getOmrClassName(classId) {
+    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
+    return cls ? String(cls.name || '') : '';
+}
+
+function getOmrVisibleClasses() {
+    return sortOmrClasses((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
+}
+
+function getOmrAvailableGrades() {
+    const grades = new Set();
+    getOmrVisibleClasses().forEach(c => {
+        const g = omrClassGrade(c);
+        if (g) grades.add(g);
+    });
+    (state.db.students || []).forEach(s => {
+        const g = String(s.grade || '').trim();
+        if (g) grades.add(g);
+    });
+    return ['중1', '중2', '중3', '고1', '고2', '고3'].filter(g => grades.has(g));
+}
+
+function getOmrFilteredClasses() {
+    const ui = state.ui.omrInput || {};
+    const grade = String(ui.grade || '').trim();
+    let classes = getOmrVisibleClasses();
+    if (grade) {
+        classes = classes.filter(c => `${c.grade || ''} ${c.name || ''}`.includes(grade));
+    }
+    return classes;
+}
+
+function getOmrVisibleStudents() {
+    const ui = state.ui.omrInput || {};
+    const grade = String(ui.grade || '').trim();
+    const classId = String(ui.classId || '').trim();
+    const activeStudents = (state.db.students || []).filter(s => String(s.status || '재원') === '재원');
+    const allowedClasses = getOmrFilteredClasses();
+    const allowedClassIds = new Set(allowedClasses.map(c => String(c.id)));
+
+    let allowedStudentIds = new Set((state.db.class_students || [])
+        .filter(m => allowedClassIds.has(String(m.class_id)))
+        .map(m => String(m.student_id)));
+
+    if (classId) {
+        allowedStudentIds = new Set((state.db.class_students || [])
+            .filter(m => String(m.class_id) === classId)
+            .map(m => String(m.student_id)));
+    }
+
+    let students = activeStudents.filter(s => allowedStudentIds.has(String(s.id)));
+    if (grade) students = students.filter(s => `${s.grade || ''} ${getOmrClassName(getOmrClassIdForStudent(s.id))}`.includes(grade));
+    return sortOmrStudents(students);
+}
+
+function getOmrExistingSession(studentId) {
+    const ui = state.ui.omrInput || {};
+    const examTitle = String(ui.examTitle || '').trim();
+    const examDate = String(ui.examDate || '').trim();
+    if (!examTitle || !examDate) return null;
+
+    const classId = getOmrClassIdForStudent(studentId);
+    return (state.db.exam_sessions || [])
+        .filter(e =>
+            String(e.student_id) === String(studentId) &&
+            String(e.exam_title || '') === examTitle &&
+            String(e.exam_date || '') === examDate &&
+            (!e.class_id || !classId || String(e.class_id) === String(classId))
+        )
+        .sort((a, b) => String(b.updated_at || b.created_at || '').localeCompare(String(a.updated_at || a.created_at || '')))[0] || null;
+}
+
+function getOmrExistingWrongSet(studentId) {
+    const sess = getOmrExistingSession(studentId);
+    if (!sess) return new Set();
+    return new Set((state.db.wrong_answers || [])
+        .filter(w => String(w.session_id) === String(sess.id))
+        .map(w => String(w.question_id)));
+}
+
+function ensureOmrInputState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.omrInput) {
+        state.ui.omrInput = {
+            examTitle: localStorage.getItem('AP_LAST_EXAM_NAME') || '단원평가',
+            examDate: new Date().toLocaleDateString('sv-SE'),
+            questionCount: 25,
+            grade: '',
+            classId: '',
+            archiveFile: localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '',
+            answers: {}
+        };
+    }
+    if (!state.ui.omrInput.answers) state.ui.omrInput.answers = {};
+    return state.ui.omrInput;
+}
+
+function resetOmrAnswerDraft() {
+    const ui = ensureOmrInputState();
+    ui.answers = {};
+}
+
+function getOmrWrongSet(studentId) {
+    const ui = ensureOmrInputState();
+    const sid = String(studentId);
+    if (!ui.answers[sid]) {
+        ui.answers[sid] = {};
+        getOmrExistingWrongSet(sid).forEach(q => { ui.answers[sid][String(q)] = true; });
+    }
+    return ui.answers[sid];
+}
+
+function isOmrWrong(studentId, questionNo) {
+    return !!getOmrWrongSet(studentId)[String(questionNo)];
+}
+
+function installOmrInputStyle() {
+    if (document.getElementById('ap-omr-input-style')) return;
+    const style = document.createElement('style');
+    style.id = 'ap-omr-input-style';
+    style.textContent = `
+        #omr-main { width:100%; max-width:1150px; margin:0 auto; height:calc(100vh - 56px); display:flex; flex-direction:column; padding:12px 16px 0; box-sizing:border-box; }
+        #omr-header-row { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; flex-shrink:0; }
+        #omr-title { font-size:18px; font-weight:800; color:var(--text); letter-spacing:-0.5px; white-space:nowrap; }
+        #omr-controls { display:grid; grid-template-columns:1.4fr 140px 118px 120px 1fr; gap:8px; margin-bottom:8px; flex-shrink:0; }
+        .omr-ctrl { height:36px; min-height:36px; padding:0 10px; border-radius:9px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:13px; font-weight:700; font-family:inherit; }
+        .omr-ctrl.omr-text { text-align:left; }
+        #omr-sub-controls { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px; flex-shrink:0; }
+        #omr-guide { font-size:11px; font-weight:700; color:var(--secondary); display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; flex-shrink:0; }
+        .omr-guide-item { display:inline-flex; align-items:center; gap:4px; min-height:22px; padding:2px 7px; border-radius:999px; border:1px solid var(--border); background:var(--surface); white-space:nowrap; line-height:1; }
+        #omr-tbl-wrap { flex:1; overflow:auto; border:1px solid var(--border); border-radius:12px 12px 0 0; background:var(--surface); -webkit-overflow-scrolling:touch; }
+        #omr-tbl { border-collapse:separate; border-spacing:0; width:max-content; min-width:100%; margin:0; }
+        #omr-tbl th, #omr-tbl td { border-right:1px solid var(--border); border-bottom:1px solid var(--border); padding:0; text-align:center; vertical-align:middle; height:34px; min-width:38px; color:var(--text); background:var(--surface); }
+        #omr-tbl th { position:sticky; top:0; z-index:5; height:34px; background:var(--surface-2); font-size:11px; font-weight:800; color:var(--secondary); }
+        #omr-tbl .omr-name-head, #omr-tbl .omr-name-cell { position:sticky; left:0; z-index:6; min-width:116px; max-width:116px; width:116px; text-align:left; padding:0 8px; box-shadow:1px 0 0 var(--border); }
+        #omr-tbl .omr-name-head { z-index:9; background:var(--surface-2); }
+        #omr-tbl .omr-name-cell { background:var(--surface); }
+        .omr-name-main { font-size:13px; font-weight:800; color:var(--text); line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .omr-name-sub { margin-top:2px; font-size:10px; font-weight:700; color:var(--secondary); line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .omr-cell-btn { width:100%; height:100%; min-height:34px; border:0; background:transparent; color:var(--success); font-size:13px; font-weight:800; font-family:inherit; cursor:pointer; border-radius:0; display:flex; align-items:center; justify-content:center; }
+        .omr-cell-btn.wrong { color:var(--error); background:rgba(232,65,79,0.08); }
+        .omr-footer { display:flex; gap:8px; justify-content:space-between; align-items:center; padding:10px 0 calc(10px + env(safe-area-inset-bottom)); flex-shrink:0; }
+        .omr-footer-info { font-size:12px; font-weight:700; color:var(--secondary); line-height:1.4; }
+        .omr-save-btn { min-height:42px; padding:0 18px; border-radius:12px; font-size:13px; font-weight:800; }
+        @media (max-width:900px) {
+            #omr-main { height:calc(100vh - 58px); padding:10px 10px 0; }
+            #omr-controls { grid-template-columns:1fr 108px; gap:7px; }
+            #omr-sub-controls { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+            .omr-ctrl { width:100%; font-size:12px; }
+            #omr-tbl .omr-name-head, #omr-tbl .omr-name-cell { min-width:92px; max-width:92px; width:92px; padding:0 6px; }
+            #omr-tbl th, #omr-tbl td { min-width:34px; height:32px; }
+            .omr-cell-btn { min-height:32px; font-size:12px; }
+            .omr-name-main { font-size:12px; }
+            .omr-name-sub { font-size:9px; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+function updateOmrInputFromControls({ resetAnswers = true } = {}) {
+    const ui = ensureOmrInputState();
+    const prevKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.grade}|${ui.classId}`;
+    ui.examTitle = document.getElementById('omr-exam-title')?.value.trim() || ui.examTitle || '단원평가';
+    ui.examDate = document.getElementById('omr-exam-date')?.value || ui.examDate || new Date().toLocaleDateString('sv-SE');
+    ui.questionCount = Math.max(1, Math.min(80, parseInt(document.getElementById('omr-question-count')?.value, 10) || 25));
+    ui.grade = document.getElementById('omr-grade')?.value || '';
+    ui.classId = document.getElementById('omr-class')?.value || '';
+    ui.archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archive-file')?.value || '');
+    const nextKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.grade}|${ui.classId}`;
+    if (resetAnswers && prevKey !== nextKey) ui.answers = {};
+    localStorage.setItem('AP_LAST_EXAM_NAME', ui.examTitle);
+    if (ui.archiveFile) localStorage.setItem('AP_LAST_ARCHIVE_FILE', ui.archiveFile);
+}
+
+function handleOmrGradeChange() {
+    const ui = ensureOmrInputState();
+    updateOmrInputFromControls({ resetAnswers: true });
+    ui.classId = '';
+    ui.answers = {};
+    renderOmrInput();
+}
+
+function handleOmrClassChange() {
+    updateOmrInputFromControls({ resetAnswers: true });
+    renderOmrInput();
+}
+
+function handleOmrMetaChange() {
+    updateOmrInputFromControls({ resetAnswers: true });
+    renderOmrInput();
+}
+
+function buildOmrGradeOptions(selectedGrade) {
+    const grades = getOmrAvailableGrades();
+    return `<option value="">전체 학년</option>` + grades.map(g => `<option value="${omrEscape(g)}"${String(selectedGrade || '') === g ? ' selected' : ''}>${omrEscape(g)}</option>`).join('');
+}
+
+function buildOmrClassOptions(selectedClassId) {
+    const classes = getOmrFilteredClasses();
+    return `<option value="">전체 반</option>` + classes.map(c => `<option value="${omrEscape(c.id)}"${String(selectedClassId || '') === String(c.id) ? ' selected' : ''}>${omrEscape(c.name)}</option>`).join('');
+}
+
+function renderOmrInputTable(students, questionCount) {
+    const head = Array.from({ length: questionCount }, (_, idx) => `<th>${idx + 1}</th>`).join('');
+    const rows = students.map(s => {
+        const className = getOmrClassName(getOmrClassIdForStudent(s.id));
+        const cells = Array.from({ length: questionCount }, (_, idx) => {
+            const q = idx + 1;
+            const wrong = isOmrWrong(s.id, q);
+            return `<td><button type="button" id="omr-cell-${omrEscape(s.id)}-${q}" class="omr-cell-btn ${wrong ? 'wrong' : ''}" onclick="toggleOmrCell('${omrEscape(s.id)}', ${q})">${wrong ? 'X' : 'O'}</button></td>`;
+        }).join('');
+        return `
+            <tr>
+                <td class="omr-name-cell">
+                    <div class="omr-name-main">${omrEscape(s.name)}</div>
+                    <div class="omr-name-sub">${omrEscape(className || '미배정')}</div>
+                </td>
+                ${cells}
+            </tr>
+        `;
+    }).join('');
+
+    return `
+        <table id="omr-tbl">
+            <thead>
+                <tr><th class="omr-name-head">학생명</th>${head}</tr>
+            </thead>
+            <tbody>
+                ${rows || `<tr><td class="omr-name-cell" style="height:72px;">대상 없음</td><td colspan="${questionCount}" style="font-size:13px;font-weight:700;color:var(--secondary);min-width:260px;">선택된 학생이 없습니다.</td></tr>`}
+            </tbody>
+        </table>
+    `;
+}
+
+function openOmrInput() {
+    if (state?.auth?.role === 'admin') {
+        toast('OMR 입력은 선생님 계정에서 사용합니다.', 'warn');
+        return;
+    }
+    ensureOmrInputState();
+    renderOmrInput();
+}
+
+function renderOmrInput() {
+    installOmrInputStyle();
+    if (typeof enterTimetableWideMode === 'function') enterTimetableWideMode();
+
+    const root = document.getElementById('app-root');
+    if (!root) return;
+
+    const ui = ensureOmrInputState();
+    const today = new Date().toLocaleDateString('sv-SE');
+    if (!ui.examDate) ui.examDate = today;
+    if (!ui.examTitle) ui.examTitle = '단원평가';
+    if (!ui.questionCount) ui.questionCount = 25;
+
+    const students = getOmrVisibleStudents();
+    const wrongTotal = students.reduce((sum, s) => {
+        const set = getOmrWrongSet(s.id);
+        return sum + Object.keys(set).filter(k => set[k]).length;
+    }, 0);
+
+    root.innerHTML = `
+        <div id="omr-main">
+            <div id="omr-header-row">
+                <div id="omr-title">OMR 입력</div>
+                <button class="btn" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:800; border-radius:9px;" onclick="goOmrInputHome()">AP MATH</button>
+            </div>
+
+            <div id="omr-controls">
+                <input id="omr-exam-title" class="omr-ctrl omr-text" value="${omrEscape(ui.examTitle)}" placeholder="시험명" onchange="handleOmrMetaChange()">
+                <input id="omr-exam-date" type="date" class="omr-ctrl" value="${omrEscape(ui.examDate)}" onchange="handleOmrMetaChange()">
+                <input id="omr-question-count" type="number" min="1" max="80" class="omr-ctrl" value="${Number(ui.questionCount) || 25}" onchange="handleOmrMetaChange()">
+                <select id="omr-grade" class="omr-ctrl" onchange="handleOmrGradeChange()">${buildOmrGradeOptions(ui.grade)}</select>
+                <select id="omr-class" class="omr-ctrl" onchange="handleOmrClassChange()">${buildOmrClassOptions(ui.classId)}</select>
+            </div>
+
+            <div id="omr-sub-controls">
+                <input id="omr-archive-file" class="omr-ctrl omr-text" value="${omrEscape(ui.archiveFile || '')}" placeholder="JS아카이브 파일명 선택 입력" onchange="handleOmrMetaChange()">
+                <button class="btn" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:800; border-radius:9px;" onclick="resetOmrAnswerDraft(); renderOmrInput();">기록 다시 불러오기</button>
+            </div>
+
+            <div id="omr-guide">
+                <span class="omr-guide-item"><b style="color:var(--success);">O</b> 맞음</span>
+                <span class="omr-guide-item"><b style="color:var(--error);">X</b> 틀림</span>
+                <span class="omr-guide-item">틀린 문제만 눌러 X로 바꾼 뒤 저장</span>
+            </div>
+
+            <div id="omr-tbl-wrap">${renderOmrInputTable(students, Number(ui.questionCount) || 25)}</div>
+
+            <div class="omr-footer">
+                <div class="omr-footer-info">대상 ${students.length}명 · X ${wrongTotal}개</div>
+                <button class="btn btn-primary omr-save-btn" onclick="saveOmrInputBulk(this)">전체 저장</button>
+            </div>
+        </div>
+    `;
+}
+
+function toggleOmrCell(studentId, questionNo) {
+    const set = getOmrWrongSet(studentId);
+    const key = String(questionNo);
+    set[key] = !set[key];
+
+    const btn = document.getElementById(`omr-cell-${studentId}-${questionNo}`);
+    if (btn) {
+        btn.classList.toggle('wrong', !!set[key]);
+        btn.textContent = set[key] ? 'X' : 'O';
+    }
+
+    const students = getOmrVisibleStudents();
+    const wrongTotal = students.reduce((sum, s) => sum + Object.keys(getOmrWrongSet(s.id)).filter(k => getOmrWrongSet(s.id)[k]).length, 0);
+    const info = document.querySelector('.omr-footer-info');
+    if (info) info.textContent = `대상 ${students.length}명 · X ${wrongTotal}개`;
+}
+
+async function saveOmrInputBulk(button) {
+    updateOmrInputFromControls({ resetAnswers: false });
+    const ui = ensureOmrInputState();
+    const students = getOmrVisibleStudents();
+
+    if (!ui.examTitle || !ui.examDate) {
+        toast('시험명과 시험일을 입력하세요.', 'warn');
+        return;
+    }
+    if (!students.length) {
+        toast('저장할 학생이 없습니다.', 'warn');
+        return;
+    }
+
+    const qCount = Math.max(1, Math.min(80, Number(ui.questionCount) || 25));
+    const rows = students.map(s => {
+        const wrongSet = getOmrWrongSet(s.id);
+        const wrongIds = Object.keys(wrongSet)
+            .filter(k => wrongSet[k])
+            .map(k => Number(k))
+            .filter(n => Number.isFinite(n) && n >= 1 && n <= qCount)
+            .sort((a, b) => a - b)
+            .map(String);
+        return {
+            student_id: String(s.id),
+            class_id: getOmrClassIdForStudent(s.id),
+            wrong_ids: wrongIds
+        };
+    });
+
+    if (typeof setButtonBusy === 'function') setButtonBusy(button, true, '저장 중');
+
+    try {
+        const r = await api.post('exam-sessions/bulk-omr', {
+            exam_title: ui.examTitle,
+            exam_date: ui.examDate,
+            question_count: qCount,
+            archive_file: ui.archiveFile || '',
+            rows
+        });
+
+        if (r?.success) {
+            toast(`OMR 입력이 저장되었습니다. (${r.saved || rows.length}명)`, 'success');
+            if (typeof refreshDataOnly === 'function') await refreshDataOnly();
+            resetOmrAnswerDraft();
+            renderOmrInput();
+            return;
+        }
+
+        toast(r?.message || r?.error || 'OMR 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[saveOmrInputBulk] failed:', e);
+        toast('OMR 저장 중 오류가 발생했습니다.', 'error');
+    } finally {
+        if (typeof setButtonBusy === 'function') setButtonBusy(button, false);
+    }
+}
+
+function goOmrInputHome() {
+    if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+    if (typeof goHome === 'function') return goHome();
+    if (typeof renderDashboard === 'function') return renderDashboard();
+}
+
+window.openOmrInput = openOmrInput;
+window.renderOmrInput = renderOmrInput;
+window.toggleOmrCell = toggleOmrCell;
+window.saveOmrInputBulk = saveOmrInputBulk;
+window.handleOmrGradeChange = handleOmrGradeChange;
+window.handleOmrClassChange = handleOmrClassChange;
+window.handleOmrMetaChange = handleOmrMetaChange;
+window.goOmrInputHome = goOmrInputHome;

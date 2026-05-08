@@ -2406,6 +2406,90 @@ export default {
             }), { headers });
           }
 
+          if (method === 'POST' && id === 'bulk-omr') {
+            const teacher = await verifyAuth(request, env);
+            if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
+
+            const d = await request.json();
+            const examTitle = String(d.exam_title || '').trim();
+            const examDate = String(d.exam_date || '').trim();
+            const questionCount = Math.max(1, Math.min(80, parseInt(d.question_count, 10) || 0));
+            const archiveFile = String(d.archive_file || '').trim();
+            const rows = Array.isArray(d.rows) ? d.rows : [];
+
+            if (!examTitle || !examDate || !questionCount) {
+              return new Response(JSON.stringify({ success: false, error: 'exam_title, exam_date, question_count required' }), { status: 400, headers });
+            }
+            if (!rows.length) {
+              return new Response(JSON.stringify({ success: false, error: 'rows required' }), { status: 400, headers });
+            }
+
+            const sessionRows = [];
+            for (let i = 0; i < rows.length; i++) {
+              const row = rows[i] || {};
+              const studentId = String(row.student_id || '').trim();
+              if (!studentId) continue;
+
+              if (!(await canAccessStudent(teacher, studentId, env))) {
+                return new Response(JSON.stringify({ error: 'Forbidden', student_id: studentId }), { status: 403, headers });
+              }
+
+              const classId = String(row.class_id || '').trim() || null;
+              if (classId && !(await canAccessClass(teacher, classId, env))) {
+                return new Response(JSON.stringify({ error: 'Forbidden', class_id: classId }), { status: 403, headers });
+              }
+
+              const wrongIds = Array.from(new Set((Array.isArray(row.wrong_ids) ? row.wrong_ids : [])
+                .map(v => String(v).trim())
+                .filter(v => /^\d+$/.test(v))
+                .map(v => parseInt(v, 10))
+                .filter(v => v >= 1 && v <= questionCount)
+                .sort((a, b) => a - b)
+                .map(v => String(v))));
+
+              const existing = await env.DB.prepare(`
+                SELECT id
+                FROM exam_sessions
+                WHERE student_id = ?
+                  AND exam_title = ?
+                  AND exam_date = ?
+                ORDER BY updated_at DESC, created_at DESC
+                LIMIT 1
+              `).bind(studentId, examTitle, examDate).first();
+
+              const sessionId = existing?.id || `ex_${Date.now()}_${i}_${Math.random().toString(36).slice(2, 8)}`;
+              const score = Math.round(((questionCount - wrongIds.length) / questionCount) * 100);
+              sessionRows.push({ sessionId, studentId, classId, wrongIds, score });
+            }
+
+            if (!sessionRows.length) {
+              return new Response(JSON.stringify({ success: false, error: 'valid rows required' }), { status: 400, headers });
+            }
+
+            const stmts = [];
+            for (const row of sessionRows) {
+              stmts.push(env.DB.prepare(`
+                INSERT INTO exam_sessions (id, student_id, exam_title, score, exam_date, question_count, class_id, archive_file, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
+                ON CONFLICT(id) DO UPDATE SET
+                  exam_title=excluded.exam_title,
+                  score=excluded.score,
+                  exam_date=excluded.exam_date,
+                  question_count=excluded.question_count,
+                  class_id=excluded.class_id,
+                  archive_file=COALESCE(excluded.archive_file, exam_sessions.archive_file),
+                  updated_at=excluded.updated_at
+              `).bind(row.sessionId, row.studentId, examTitle, row.score, examDate, questionCount, row.classId, archiveFile || null));
+              stmts.push(env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(row.sessionId));
+              for (const qId of row.wrongIds) {
+                stmts.push(env.DB.prepare('INSERT INTO wrong_answers (session_id, question_id, student_id) VALUES (?, ?, ?)').bind(row.sessionId, qId, row.studentId));
+              }
+            }
+
+            await env.DB.batch(stmts);
+            return new Response(JSON.stringify({ success: true, saved: sessionRows.length }), { headers });
+          }
+
           if (method === 'PATCH') {
             const teacher = await verifyAuth(request, env);
             if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
