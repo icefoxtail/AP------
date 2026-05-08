@@ -990,6 +990,22 @@ function reportCenterTrimText(value, limit = 120) {
     return text.length > limit ? `${text.slice(0, limit).trim()}...` : text;
 }
 
+function reportCenterClampText(value, limit = 220) {
+    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    if (!text) return '';
+    const max = Number(limit);
+    if (!Number.isFinite(max) || max <= 0) return text;
+    return text.length > max ? `${text.slice(0, Math.max(1, max - 1)).trim()}…` : text;
+}
+
+function reportCenterEnsureParentOpening(value) {
+    const text = String(value || '').replace(/\s+/g, ' ').trim();
+    if (!text) return '';
+    if (/^어머님[,，]?\s*안녕하세요[.!?。！？]?/.test(text)) return text;
+    if (/^안녕하세요[,.]?\s*/.test(text)) return text.replace(/^안녕하세요[,.]?\s*/, '어머님, 안녕하세요. ');
+    return `어머님, 안녕하세요. ${text}`;
+}
+
 function reportCenterExtractQuestionBankFromText(jsText) {
     const sandboxWindow = { questionBank: null, __questionBank: null };
     const sandboxDocument = {
@@ -2039,15 +2055,22 @@ function reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnaly
     const units = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
     const score = data.session?.score ?? '-';
     const studentName = data.student?.name || '학생';
-    let achievement = wrongRows.length
-        ? `${studentName} 학생은 이번 평가에서 ${score}점을 기록했습니다. 점수와 함께 문항별 정답률을 확인해 다음 보완 방향을 정리했습니다.`
-        : `${studentName} 학생은 이번 평가에서 전 문항을 정확하게 해결했습니다. 현재 학습 흐름이 매우 안정적으로 유지되고 있습니다.`;
-    let focus = wrongRows.length
+
+    const fallbackAchievement = wrongRows.length
+        ? `${studentName} 학생은 이번 평가에서 ${score}점을 기록했습니다. 점수만 보는 것이 아니라 문항별 정답률과 오답 성격을 함께 확인하여 다음 보완 방향을 정리했습니다.`
+        : `${studentName} 학생은 이번 평가에서 전 문항을 정확하게 해결했습니다. 현재 학습 흐름이 매우 안정적으로 유지되고 있으며, 심화 응용으로 확장하기 좋은 상태입니다.`;
+
+    const fallbackFocus = wrongRows.length
         ? (units.length ? `${units.join(', ')} 단원과 우선 보완 문항을 중심으로 풀이 흐름을 확인합니다.` : '우선 보완 문항을 중심으로 풀이 흐름을 확인합니다.')
         : (excellentRows.length ? `${excellentRows.map(r => `${r.questionNo}번`).join(', ')} 등 난도 있는 문항까지 안정적으로 해결한 점을 바탕으로 심화 응용으로 이어갑니다.` : '현재 정확도를 유지하며 다음 단원과 심화 응용으로 이어갑니다.');
-    const plan = wrongRows.length
+
+    const fallbackPlan = wrongRows.length
         ? '다음 수업에서는 풀이 과정 확인, 조건 표시, 유사 문제 풀이를 순서대로 진행하겠습니다.'
         : '다음 수업에서는 현재 성취를 바탕으로 사고력을 넓히는 문제까지 연결하겠습니다.';
+
+    const achievement = reportCenterTrimText(aiAnalysis?.summary || fallbackAchievement, 260);
+    const focus = reportCenterTrimText(aiAnalysis?.wrongAnalysis || fallbackFocus, 190);
+    const plan = reportCenterTrimText(aiAnalysis?.nextPlan || fallbackPlan, 190);
 
     return `
         <section class="aprc-core-summary">
@@ -2152,51 +2175,60 @@ function reportCenterBuildShortReportSummaryItems(data, aiAnalysis = null) {
     const priorityRows = reportCenterSelectPriorityWrongRows(wrongRows, 5);
     const excellentRows = reportCenterSelectExcellentRows(stats, 3);
     const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
-    const metricTextPattern = /(점수|평균|정답률|반 평균|전체 평균|\d+\s*점|\d+\s*%)/;
-    const rawAiSummary = reportCenterFirstSentence(aiAnalysis?.summary, 82);
-    const rawAiWrong = reportCenterFirstSentence(aiAnalysis?.wrongAnalysis, 92);
-    const rawAiPlan = reportCenterFirstSentence(aiAnalysis?.nextPlan, 92);
-    const aiSummary = metricTextPattern.test(rawAiSummary) ? '' : rawAiSummary;
-    const aiWrong = metricTextPattern.test(rawAiWrong) ? '' : rawAiWrong;
-    const aiPlan = metricTextPattern.test(rawAiPlan) ? '' : rawAiPlan;
+    const rawAiSummary = reportCenterFirstSentence(aiAnalysis?.summary, 180);
+    const rawAiWrong = reportCenterFirstSentence(aiAnalysis?.wrongAnalysis, 180);
+    const rawAiPlan = reportCenterFirstSentence(aiAnalysis?.nextPlan, 180);
     const priorityText = reportCenterShortQuestionList(priorityRows, 5);
 
-    const position = aiSummary || (wrongRows.length
-        ? '이번 평가에서 확인된 성취 흐름을 기준으로 다음 보완 방향을 정리했습니다.'
-        : '이번 평가의 안정적인 풀이 흐름을 바탕으로 다음 확장 방향을 정리했습니다.');
-    const focus = aiWrong || (wrongRows.length
-        ? `${priorityText || '우선 확인 문항'}을 중심으로 풀이 흐름을 확인합니다.`
-        : `${reportCenterShortQuestionList(excellentRows, 3) || '난도 있는 문항'}까지 해결한 흐름을 확인합니다.`);
-    const plan = aiPlan || (wrongRows.length
+    const position = rawAiSummary || (wrongRows.length
+        ? '이번 평가에서 확인된 성취와 보완 포인트를 함께 정리했습니다. 점수보다 풀이 흐름과 다음 수업에서 바로 잡을 순서를 중심으로 보겠습니다.'
+        : '이번 평가의 안정적인 풀이 흐름을 바탕으로 다음 확장 방향을 정리했습니다. 현재 성취를 유지하면서 심화 응용으로 이어가겠습니다.');
+    const focus = rawAiWrong || (wrongRows.length
+        ? `${priorityText || '우선 확인 문항'}을 중심으로 풀이 흐름을 확인합니다. 문항별 난도와 단원 흐름을 함께 보며 우선순위를 잡겠습니다.`
+        : `${reportCenterShortQuestionList(excellentRows, 3) || '난도 있는 문항'}까지 해결한 흐름을 확인합니다. 정확도 유지와 심화 확장을 함께 준비하겠습니다.`);
+    const plan = rawAiPlan || (wrongRows.length
         ? `${unitNames.length ? `${unitNames.join(', ')} 단원의 ` : ''}조건 확인과 풀이 순서를 다시 잡고 유사 문제로 연결하겠습니다.`
         : '현재 정확도를 유지하면서 심화 응용과 다음 단원으로 연결하겠습니다.');
 
     return [
-        { title: '현재 위치', text: reportCenterTrimText(position, 96) },
-        { title: '우선 확인 문항', text: reportCenterTrimText(focus, 96) },
-        { title: '다음 수업 방향', text: reportCenterTrimText(plan, 96) }
+        { title: '현재 위치', text: reportCenterTrimText(position, 170) },
+        { title: '우선 확인 문항', text: reportCenterTrimText(focus, 170) },
+        { title: '다음 수업 방향', text: reportCenterTrimText(plan, 170) }
     ];
 }
 
 function reportCenterSoftenDiagnosisText(value) {
     let text = reportCenterStripHtml(value).replace(/\s+/g, ' ').trim();
     if (!text) return '';
-    const sentences = (text.match(/[^.!?。！？]+[.!?。！？]?/g) || [text])
-        .map(s => s.trim())
-        .filter(Boolean)
-        .filter(s => !/(점수|평균|정답률|반 평균|전체 평균|\d+\s*점|\d+\s*%)/.test(s));
-    if (!sentences.length) return '';
-    text = sentences.join(' ')
+    text = text
         .replace(/틀렸/g, '확인할 부분이 보였')
         .replace(/부족/g, '보완이 필요')
         .replace(/낮은/g, '관리할')
         .replace(/못한/g, '흔들린');
-    return reportCenterTrimText(text, 260);
+    return reportCenterTrimText(text, 950);
 }
 
 function reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo = '', aiAnalysis = null) {
     const aiDiagnosis = reportCenterSoftenDiagnosisText(aiAnalysis?.diagnosis);
-    if (aiDiagnosis) return [aiDiagnosis];
+    if (aiDiagnosis) {
+        const paragraphs = String(aiDiagnosis)
+            .split(/\n{2,}/)
+            .map(v => v.trim())
+            .filter(Boolean);
+        if (paragraphs.length) return paragraphs.slice(0, 2).map(v => reportCenterTrimText(v, 520));
+
+        const sentences = (aiDiagnosis.match(/[^.!?。！？]+[.!?。！？]?/g) || [aiDiagnosis])
+            .map(s => s.trim())
+            .filter(Boolean);
+        if (sentences.length > 3) {
+            const mid = Math.ceil(sentences.length / 2);
+            return [
+                reportCenterTrimText(sentences.slice(0, mid).join(' '), 520),
+                reportCenterTrimText(sentences.slice(mid).join(' '), 520)
+            ].filter(Boolean);
+        }
+        return [reportCenterTrimText(aiDiagnosis, 650)];
+    }
 
     const stats = data?.stats || {};
     const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
@@ -2206,22 +2238,30 @@ function reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo = '', aiA
     const parts = [];
 
     if (!wrongRows.length) {
-        parts.push('풀이 흐름이 전반적으로 안정적이며 조건 확인과 마무리 과정도 잘 유지되고 있습니다. 다음 수업에서는 현재의 정확도를 유지하면서 낯선 조건이 섞인 심화 응용으로 확장하겠습니다.');
+        const excellentRows = reportCenterSelectExcellentRows(stats, 3);
+        const excellentNums = excellentRows.length ? excellentRows.map(r => `${r.questionNo}번`).join(', ') : '';
+        parts.push(excellentNums
+            ? `이번 평가에서는 전 문항을 정확하게 해결했으며, 특히 ${excellentNums}처럼 전체 정답률이 낮았던 문항까지 안정적으로 마무리했습니다. 단순히 맞힌 결과뿐 아니라 조건을 끝까지 확인하고 풀이를 정리하는 흐름이 잘 유지되고 있다는 점에서 의미가 있습니다.`
+            : '이번 평가는 전 문항을 정확하게 풀어내며 매우 안정적인 성취를 보여주었습니다. 꼼꼼한 풀이 습관이 결과로 나타나고 있으며, 다음 단원에서도 이 흐름을 이어가겠습니다.');
+        parts.push('다음 수업에서는 현재의 정확도를 유지하면서 낯선 조건이 섞인 심화 응용 문제로 학습 폭을 넓히겠습니다.');
     } else {
         const typeText = personalWrongs.length && hardWrongs.length
-            ? '조건 확인 습관과 개념 연결 과정이 함께 확인되었습니다'
+            ? '맞출 수 있었던 문항의 확인 습관과 난도가 있었던 문항의 개념 연결 과정을 함께 볼 필요가 있습니다'
             : personalWrongs.length
-                ? '조건 표시, 계산 정리, 검산처럼 실수로 이어질 수 있는 풀이 습관이 확인되었습니다'
+                ? '대부분 학생이 맞힌 문항에서 확인 포인트가 보여, 조건 표시와 계산 정리, 검산 루틴을 먼저 다듬는 것이 좋겠습니다'
                 : hardWrongs.length
-                    ? '개념을 문제 조건에 연결하고 접근 순서를 잡는 과정에서 확인할 부분이 보였습니다'
-                    : '풀이 과정의 세부 순서를 정리하면 안정화할 수 있는 부분이 보였습니다';
+                    ? '난도가 있었던 문항에서 조건을 해석하고 필요한 개념을 연결하는 과정이 확인 포인트로 보입니다'
+                    : '풀이 과정의 세부 순서를 조금 더 정리하면 안정화할 수 있는 부분이 보였습니다';
         const unitText = unitNames.length ? `${unitNames.join(', ')} 단원에서 ` : '';
-        parts.push(`${unitText}${typeText}. 다음 수업에서는 바로 결과를 맞히는 연습보다 조건을 표시하고 필요한 개념을 고른 뒤 풀이 순서를 세우는 습관을 먼저 잡겠습니다.`);
-        parts.push('이 순서로 관리하면 같은 유형의 유사 문제에서 흔들림을 줄이고, 이후 난도가 올라간 문항에서도 풀이 흐름을 스스로 점검할 수 있습니다.');
+        parts.push(`${unitText}${typeText}. 다음 수업에서는 바로 정답을 맞히는 연습보다 문제 조건을 표시하고, 필요한 개념을 고른 뒤 풀이 순서를 세우는 과정을 먼저 확인하겠습니다.`);
+        parts.push('이 과정을 차근차근 잡아가면 같은 유형의 유사 문제에서 흔들림을 줄일 수 있고, 이후 난도가 올라간 문항에서도 스스로 풀이 흐름을 점검하는 힘을 기를 수 있습니다.');
     }
 
-    if (teacherMemo) parts.push(`담당 선생님 확인 사항은 다음 수업 관리에 반영하겠습니다: ${teacherMemo}`);
-    return parts.map(line => reportCenterTrimText(line, 260));
+    if (teacherMemo) {
+        parts.push(`담당 선생님 확인 사항은 다음 수업 관리에 반영하겠습니다: ${teacherMemo}`);
+    }
+
+    return parts.map(line => reportCenterTrimText(line, 520));
 }
 
 function reportCenterBuildNextPlanItems(data, aiAnalysis = null) {
@@ -2233,14 +2273,16 @@ function reportCenterBuildNextPlanItems(data, aiAnalysis = null) {
     const splitAiPlan = aiAnalysis?.nextPlan
         ? (reportCenterStripHtml(aiAnalysis.nextPlan).match(/[^.!?。！？]+[.!?。！？]?/g) || []).map(s => s.trim()).filter(Boolean)
         : [];
-    const items = [...aiItems, ...splitAiPlan].map(item => reportCenterTrimText(item, 110)).filter(Boolean);
+    const items = [...aiItems, ...splitAiPlan]
+        .map(item => reportCenterTrimText(item, 180))
+        .filter(Boolean);
 
     if (items.length) return items.slice(0, 4);
     if (!wrongRows.length) {
         return [
-            '현재 풀이 정확도를 유지하며 다음 단원 핵심 개념으로 연결합니다.',
-            '난도 있는 문항은 풀이 조건과 마무리 과정을 다시 확인합니다.',
-            '심화 응용 문제를 통해 사고 흐름을 넓힙니다.'
+            '현재 풀이 정확도를 유지하며 다음 단원 핵심 개념으로 자연스럽게 연결합니다.',
+            '난도 있는 문항은 풀이 조건과 마무리 과정을 다시 확인해 강점을 안정적으로 유지합니다.',
+            '심화 응용 문제를 통해 사고 흐름을 넓히고 서술형 풀이까지 함께 준비합니다.'
         ];
     }
 
@@ -2322,7 +2364,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     const aiAnalysis = reportCenterGetAiAnalysisForReport(session?.id, options);
 
     if (!student || !session || !stats) {
-        return `<div class="aprc-document"><div class="aprc-empty-box">평가 리포트를 만들 시험 기록이 없습니다.</div></div>`;
+        return `<div class="aprc-document aprc-fixed-document"><section class="aprc-fixed-page"><div class="aprc-empty-box">평가 리포트를 만들 시험 기록이 없습니다.</div></section></div>`;
     }
 
     const wrongCount = stats.wrongRows.length;
@@ -2333,10 +2375,24 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     const targetText = target && target.targetScore !== null
         ? `${target.targetScore}점 목표${target.currentAverage !== null ? ` · 최근 평균 ${target.currentAverage}점` : ''}${target.remainScore !== undefined && target.currentAverage !== null ? ` · 목표까지 ${target.remainScore}점` : ''}`
         : '목표점수 미설정';
-    const diagnosisLines = reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo, aiAnalysis);
-    const summaryItems = reportCenterBuildShortReportSummaryItems(data, aiAnalysis);
-    const nextPlanItems = reportCenterBuildNextPlanItems(data, aiAnalysis);
-    const parentMessageText = aiAnalysis?.parentMessage || (() => {
+    const baseDiagnosisLines = reportCenterBuildExamDiagnosisLines(data, teacherMemo);
+    const diagnosisLines = aiAnalysis?.diagnosis
+        ? [aiAnalysis.diagnosis, aiAnalysis.wrongAnalysis].filter(Boolean)
+        : baseDiagnosisLines;
+    const diagnosisPrintLines = diagnosisLines
+        .map(line => reportCenterClampText(line, 390))
+        .filter(Boolean)
+        .slice(0, 3);
+    const nextPlanItems = (aiAnalysis?.nextActions?.length
+        ? aiAnalysis.nextActions
+        : [
+            '오답 문항의 풀이 과정을 다시 확인합니다.',
+            '전체 정답률이 높은데 틀린 문항은 조건 확인·계산 검산 습관을 점검합니다.',
+            '전체 정답률이 낮은 문항은 개념 연결과 유형 접근법을 다시 잡습니다.',
+            '필요 시 확인문제와 상승문제를 이어서 제공하겠습니다.'
+        ]).map(item => reportCenterClampText(item, 115)).filter(Boolean).slice(0, 4);
+    const nextPlanText = aiAnalysis?.nextPlan ? reportCenterClampText(aiAnalysis.nextPlan, 280) : '';
+    const parentMessageText = reportCenterClampText(reportCenterEnsureParentOpening(aiAnalysis?.parentMessage || (() => {
         const wrongRows = stats?.wrongRows || [];
         const studentName = student.name || '학생';
         if (!wrongRows.length) {
@@ -2344,29 +2400,30 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
         }
         const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
         const unitText = unitNames.length ? `${unitNames.join(', ')} 단원` : '이번 평가의 핵심 확인 문항';
-        return `이번 리포트는 점수뿐 아니라 ${studentName} 학생이 어떤 문항에서 확인할 부분이 있었는지, 그리고 그 문항이 어느 정도 난도의 문항이었는지를 함께 정리한 자료입니다. 학원에서는 다음 수업에서 ${unitText}의 풀이 흐름을 확인하고, 같은 실수가 반복되지 않도록 유사 문제 풀이까지 함께 진행하겠습니다. 가정에서는 문제를 풀 때 조건에 표시하는 습관과 풀이 후 한 번 더 확인하는 것만 가볍게 격려해 주시면 큰 도움이 됩니다.`;
-    })();
+        return `이번 리포트는 단순 점수 안내가 아니라, ${studentName} 학생이 어떤 문항에서 흔들렸는지와 그 오답이 전체 기준에서 어떤 의미인지 함께 정리한 자료입니다. 가정에서는 풀이를 길게 설명해주시기보다, 숙제나 복습 시 문제 조건 표시와 마지막 검산 여부만 가볍게 확인해 주시면 좋겠습니다. 학원에서는 다음 수업에서 ${unitText}의 풀이 흐름을 다시 확인하고 같은 실수가 반복되지 않도록 유사 문제 풀이까지 함께 진행하겠습니다.`;
+    })()), 900);
     const tableMeta = reportCenterGetPremiumTableMeta(data);
-    const archiveMessage = tableMeta.note;
+    const archiveMessage = data.archiveDetails
+        ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
+        : (tableMeta.note || '문항 원문 확인 전입니다. 오답 번호·단원·정답률 기준으로 분석합니다.');
     const issued = new Date().toLocaleDateString('sv-SE').replace(/-/g, '.');
     const examDate = String(session.exam_date || '').replace(/-/g, '.');
     const safeTitle = reportCenterEscape(session.exam_title || '평가');
-    const aiBadgeHtml = aiAnalysis
-        ? '<span class="aprc-premium-badge">프리미엄 분석</span>'
-        : '';
+    const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석 반영 · ${reportCenterEscape(aiAnalysis.source || 'report-analysis')}</div>` : '';
 
     return `
-        <div class="aprc-document ${isPrint ? 'aprc-print-document' : ''}">
-            <section class="aprc-page aprc-page-1">
+        <div class="aprc-document aprc-fixed-document ${isPrint ? 'aprc-print-document' : ''}">
+            <section class="aprc-fixed-page aprc-fixed-page-1">
                 <div class="aprc-report-header">
                     <div>
                         <div class="aprc-brand">AP MATH REPORT</div>
                         <div class="aprc-title">평가 분석 리포트</div>
-                        <div class="aprc-subtitle">성취를 확인하고, 보완할 부분을 함께 준비합니다.</div>
+                        <div class="aprc-subtitle">점수보다 오답의 의미와 다음 보완 방향을 우선 확인합니다.</div>
+                        ${aiBadgeHtml}
                     </div>
                     <div class="aprc-issued">
+                        <div>발행일</div>
                         <b>${reportCenterEscape(issued)}</b>
-                        ${aiBadgeHtml}
                     </div>
                 </div>
 
@@ -2390,7 +2447,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                     <div class="aprc-score-card">
                         <div class="aprc-card-label">정답률</div>
                         <div class="aprc-metric-value">${correctRate === null ? '-' : `${correctRate}%`}</div>
-                        <div class="aprc-card-note">${qCount || '-'}문항 중 확인 ${wrongCount}문항</div>
+                        <div class="aprc-card-note">${qCount || '-'}문항 중 오답 ${wrongCount}문항</div>
                     </div>
                     <div class="aprc-score-card">
                         <div class="aprc-card-label">비교 평균</div>
@@ -2406,26 +2463,22 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
 
                 ${reportCenterBuildCoreSummaryHtml(data, correctRate, wrongCount, aiAnalysis)}
 
-                <section class="aprc-two-col">
+                <section class="aprc-two-col aprc-page-one-bottom">
                     <div class="aprc-panel">
                         <div class="aprc-section-title">문항 난이도 분포</div>
                         ${reportCenterBuildDifficultyBarsForPremium(stats)}
                     </div>
                     <div class="aprc-panel">
-                        <div class="aprc-section-title">리포트 핵심 요약</div>
-                        <div class="aprc-summary-list">
-                            ${summaryItems.map(item => `
-                                <div class="aprc-summary-item">
-                                    <b>${reportCenterEscape(item.title)}</b>
-                                    <span>${reportCenterEscape(item.text)}</span>
-                                </div>
-                            `).join('')}
+                        <div class="aprc-section-title">이번 평가의 의미</div>
+                        <div class="aprc-insight-list">
+                            ${diagnosisPrintLines.slice(0, 3).map(line => `<div class="aprc-insight-item">${reportCenterEscape(line)}</div>`).join('')}
                         </div>
                     </div>
                 </section>
             </section>
 
-            <section class="aprc-page aprc-page-2">
+            <section class="aprc-fixed-page aprc-fixed-page-2">
+                <div class="aprc-page-kicker">문항 분석 및 수업 계획</div>
                 <section class="aprc-panel aprc-table-panel">
                     <div class="aprc-section-title">${reportCenterEscape(tableMeta.title)}</div>
                     <div class="aprc-table-wrap">
@@ -2438,32 +2491,45 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                                     <th>전체 정답률</th>
                                     <th>반 정답률</th>
                                     <th>해석</th>
+                                    <th>학습 포인트</th>
                                 </tr>
                             </thead>
                             <tbody>${reportCenterBuildPremiumQuestionRows(data, isPrint)}</tbody>
                         </table>
                     </div>
-                    <div class="aprc-source-note">${reportCenterEscape(archiveMessage)}</div>
+                    <div class="aprc-source-note">${reportCenterEscape(archiveMessage || '')}</div>
                 </section>
 
                 <section class="aprc-two-col aprc-bottom-grid">
                     <div class="aprc-panel">
                         <div class="aprc-section-title">종합 진단</div>
                         <div class="aprc-paragraph">
-                            ${diagnosisLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
+                            ${diagnosisPrintLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
                         </div>
                     </div>
                     <div class="aprc-panel">
                         <div class="aprc-section-title">다음 수업 보완 계획</div>
-                        ${nextPlanItems.length ? `<ol class="aprc-plan-list">${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}</ol>` : ''}
+                        ${nextPlanText ? `<div class="aprc-paragraph"><p>${reportCenterEscape(nextPlanText)}</p></div>` : ''}
+                        <ol class="aprc-plan-list">
+                            ${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
+                        </ol>
                     </div>
                 </section>
+            </section>
 
-                <section class="aprc-parent-message">
+            <section class="aprc-fixed-page aprc-fixed-page-3">
+                <div class="aprc-parent-page-head">
+                    <div class="aprc-brand">AP MATH REPORT</div>
+                    <div class="aprc-parent-title">학부모님께 드리는 말씀</div>
+                    <div class="aprc-parent-subtitle">${reportCenterEscape(student.name || '학생')} 학생의 다음 수업 관리 방향</div>
+                </div>
+                <section class="aprc-parent-message aprc-parent-message-fixed">
                     <div class="aprc-section-title">학부모님께 드리는 말씀</div>
                     <p>${reportCenterEscape(parentMessageText)}</p>
                 </section>
-
+                <div class="aprc-parent-bottom-note">
+                    학원에서는 위 내용을 바탕으로 다음 수업에서 풀이 과정 확인, 유사 문제 적용, 필요한 클리닉을 순서대로 진행하겠습니다.
+                </div>
                 <div class="aprc-footer">AP MATH · Student Learning Report</div>
             </section>
         </div>
@@ -2475,77 +2541,85 @@ function reportCenterPremiumReportStyle() {
         <style>
             .aprc-document { width:100%; max-width:794px; margin:0 auto; background:#ffffff; color:#111827; border:1px solid #e5e7eb; border-radius:22px; overflow:hidden; box-shadow:0 18px 60px rgba(15,23,42,0.10); font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-document * { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-            .aprc-report-header { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; padding:30px 34px 24px; background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%); color:#fff; }
-            .aprc-brand { font-size:12px; font-weight:800; letter-spacing:0.16em; color:rgba(255,255,255,0.72); }
-            .aprc-title { margin-top:8px; font-size:28px; font-weight:800; letter-spacing:-0.8px; line-height:1.15; }
-            .aprc-subtitle { margin-top:8px; font-size:13px; font-weight:650; color:rgba(255,255,255,0.74); }
-            .aprc-ai-badge { display:inline-flex; margin-top:12px; padding:5px 9px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.86); font-size:10.5px; font-weight:850; letter-spacing:-0.1px; }
+            .aprc-fixed-document { width:210mm; max-width:210mm; border:0; border-radius:0; overflow:visible; box-shadow:none; background:transparent; display:flex; flex-direction:column; gap:18px; align-items:center; }
+            .aprc-fixed-page { width:210mm; height:297mm; padding:10mm; background:#fff; border:1px solid #e5e7eb; border-radius:12px; box-shadow:0 10px 34px rgba(15,23,42,0.12); overflow:hidden; position:relative; }
+            .aprc-report-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin:-10mm -10mm 0; padding:10mm 10mm 8mm; background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%); color:#fff; }
+            .aprc-brand { font-size:11px; font-weight:800; letter-spacing:0.16em; color:rgba(255,255,255,0.72); }
+            .aprc-title { margin-top:6px; font-size:24px; font-weight:800; letter-spacing:-0.8px; line-height:1.15; }
+            .aprc-subtitle { margin-top:6px; font-size:12px; font-weight:650; color:rgba(255,255,255,0.74); }
+            .aprc-ai-badge { display:inline-flex; margin-top:9px; padding:4px 8px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.86); font-size:10px; font-weight:850; letter-spacing:-0.1px; }
             .aprc-issued { text-align:right; font-size:11px; font-weight:700; color:rgba(255,255,255,0.64); white-space:nowrap; }
             .aprc-issued b { display:block; margin-top:5px; font-size:14px; color:#fff; }
-            .aprc-premium-badge { display:inline-flex; align-items:center; justify-content:center; margin-top:7px; padding:3px 8px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.82); font-size:10px; font-weight:800; letter-spacing:-0.1px; white-space:nowrap; }
-            .aprc-student-band { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 34px; background:#f8fafc; border-bottom:1px solid #e5e7eb; }
-            .aprc-student-name { font-size:24px; font-weight:850; letter-spacing:-0.7px; color:#0f172a; }
-            .aprc-student-meta { margin-top:4px; font-size:13px; font-weight:700; color:#64748b; }
-            .aprc-exam-meta { text-align:right; font-size:13px; font-weight:750; color:#334155; }
+            .aprc-student-band { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:8mm 0 5mm; background:#fff; border-bottom:1px solid #e5e7eb; }
+            .aprc-student-name { font-size:22px; font-weight:850; letter-spacing:-0.7px; color:#0f172a; }
+            .aprc-student-meta { margin-top:3px; font-size:12.5px; font-weight:700; color:#64748b; }
+            .aprc-exam-meta { text-align:right; font-size:12.5px; font-weight:750; color:#334155; max-width:96mm; }
             .aprc-exam-meta b { display:block; margin-top:4px; color:#2563eb; }
-            .aprc-score-grid { display:grid; grid-template-columns:1.45fr 1fr 1fr 1fr; gap:12px; padding:24px 34px 10px; }
-            .aprc-score-card { min-width:0; padding:18px 16px; border:1px solid #e5e7eb; border-radius:18px; background:#fff; }
+            .aprc-score-grid { display:grid; grid-template-columns:1.45fr 1fr 1fr 1fr; gap:4mm; padding:6mm 0 0; }
+            .aprc-score-card { min-width:0; padding:4.2mm; border:1px solid #e5e7eb; border-radius:14px; background:#fff; min-height:30mm; }
             .aprc-main-score { background:#eff6ff; border-color:#bfdbfe; }
-            .aprc-card-label { font-size:11px; font-weight:850; color:#64748b; letter-spacing:-0.1px; }
-            .aprc-score-value { margin-top:9px; font-size:48px; font-weight:900; color:#1d4ed8; line-height:0.95; letter-spacing:-2px; }
-            .aprc-score-value span { font-size:20px; font-weight:850; color:#475569; margin-left:2px; }
-            .aprc-metric-value { margin-top:10px; font-size:25px; font-weight:900; color:#0f172a; letter-spacing:-0.8px; }
-            .aprc-card-note { margin-top:9px; font-size:11px; font-weight:700; color:#64748b; line-height:1.45; word-break:keep-all; }
-            .aprc-core-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:12px 34px 0; }
-            .aprc-core-item { min-width:0; padding:15px 16px; border:1px solid #dbeafe; border-radius:18px; background:#f8fbff; }
-            .aprc-core-item b { display:block; margin-bottom:7px; color:#1d4ed8; font-size:12px; font-weight:900; letter-spacing:-0.2px; }
-            .aprc-core-item span { display:block; color:#334155; font-size:12.5px; font-weight:700; line-height:1.6; word-break:keep-all; }
-            .aprc-two-col { display:grid; grid-template-columns:1fr 1.05fr; gap:12px; padding:12px 34px; }
-            .aprc-panel { border:1px solid #e5e7eb; border-radius:18px; background:#fff; padding:18px; min-width:0; }
-            .aprc-section-title { margin:0 0 13px; font-size:15px; font-weight:850; color:#0f172a; letter-spacing:-0.35px; }
-            .aprc-bar-row { display:grid; grid-template-columns:70px 1fr 34px; gap:9px; align-items:center; margin:9px 0; }
-            .aprc-bar-label { font-size:12px; font-weight:800; color:#64748b; }
-            .aprc-bar-track { height:10px; background:#f1f5f9; border-radius:999px; overflow:hidden; border:1px solid #e2e8f0; }
+            .aprc-card-label { font-size:10.5px; font-weight:850; color:#64748b; letter-spacing:-0.1px; }
+            .aprc-score-value { margin-top:7px; font-size:38px; font-weight:900; color:#1d4ed8; line-height:0.95; letter-spacing:-2px; }
+            .aprc-score-value span { font-size:17px; font-weight:850; color:#475569; margin-left:2px; }
+            .aprc-metric-value { margin-top:8px; font-size:22px; font-weight:900; color:#0f172a; letter-spacing:-0.8px; }
+            .aprc-card-note { margin-top:7px; font-size:10.5px; font-weight:700; color:#64748b; line-height:1.35; word-break:keep-all; }
+            .aprc-core-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4mm; padding:5mm 0 0; }
+            .aprc-core-item { min-width:0; padding:4mm; border:1px solid #dbeafe; border-radius:14px; background:#f8fbff; min-height:37mm; overflow:hidden; }
+            .aprc-core-item b { display:block; margin-bottom:5px; color:#1d4ed8; font-size:11.5px; font-weight:900; letter-spacing:-0.2px; }
+            .aprc-core-item span { display:block; color:#334155; font-size:11.6px; font-weight:700; line-height:1.55; word-break:keep-all; }
+            .aprc-two-col { display:grid; grid-template-columns:1fr 1.05fr; gap:4mm; padding:5mm 0 0; }
+            .aprc-panel { border:1px solid #e5e7eb; border-radius:14px; background:#fff; padding:4.5mm; min-width:0; overflow:hidden; }
+            .aprc-section-title { margin:0 0 9px; font-size:14px; font-weight:850; color:#0f172a; letter-spacing:-0.35px; }
+            .aprc-page-kicker { margin-bottom:5mm; font-size:18px; font-weight:850; color:#0f172a; letter-spacing:-0.5px; }
+            .aprc-bar-row { display:grid; grid-template-columns:60px 1fr 28px; gap:7px; align-items:center; margin:7px 0; }
+            .aprc-bar-label { font-size:11px; font-weight:800; color:#64748b; }
+            .aprc-bar-track { height:9px; background:#f1f5f9; border-radius:999px; overflow:hidden; border:1px solid #e2e8f0; }
             .aprc-bar-fill { height:100%; background:#2563eb; border-radius:999px; }
-            .aprc-bar-count { font-size:12px; font-weight:850; color:#0f172a; text-align:right; }
-            .aprc-insight-list { display:flex; flex-direction:column; gap:8px; }
-            .aprc-insight-item { padding:10px 12px; border-radius:12px; background:#f8fafc; border:1px solid #e5e7eb; color:#334155; font-size:12.5px; font-weight:700; line-height:1.55; word-break:keep-all; }
-            .aprc-summary-list { display:grid; grid-template-columns:1fr; gap:8px; }
-            .aprc-summary-item { padding:10px 12px; border-radius:12px; background:#f8fafc; border:1px solid #e5e7eb; }
-            .aprc-summary-item b { display:block; margin-bottom:4px; color:#1d4ed8; font-size:11.5px; font-weight:900; letter-spacing:-0.1px; }
-            .aprc-summary-item span { display:block; color:#334155; font-size:12.5px; font-weight:700; line-height:1.55; word-break:keep-all; }
-            .aprc-table-panel { margin:12px 34px; padding:18px; }
-            .aprc-table-wrap { overflow-x:auto; border:1px solid #e5e7eb; border-radius:14px; }
-            .aprc-table { width:100%; border-collapse:collapse; min-width:760px; font-size:11.5px; }
-            .aprc-table th { padding:10px 9px; background:#f8fafc; color:#64748b; text-align:left; font-weight:850; border-bottom:1px solid #e5e7eb; white-space:nowrap; }
-            .aprc-table td { padding:11px 9px; border-bottom:1px solid #e5e7eb; vertical-align:top; color:#334155; font-weight:650; }
+            .aprc-bar-count { font-size:11px; font-weight:850; color:#0f172a; text-align:right; }
+            .aprc-insight-list { display:flex; flex-direction:column; gap:6px; }
+            .aprc-insight-item { padding:8px 10px; border-radius:11px; background:#f8fafc; border:1px solid #e5e7eb; color:#334155; font-size:11.4px; font-weight:700; line-height:1.5; word-break:keep-all; }
+            .aprc-table-panel { margin:0; padding:4.5mm; }
+            .aprc-table-wrap { overflow:hidden; border:1px solid #e5e7eb; border-radius:12px; }
+            .aprc-table { width:100%; border-collapse:collapse; table-layout:fixed; min-width:0; font-size:9.6px; }
+            .aprc-table th { padding:6px 5px; background:#f8fafc; color:#64748b; text-align:left; font-weight:850; border-bottom:1px solid #e5e7eb; white-space:nowrap; }
+            .aprc-table td { padding:6px 5px; border-bottom:1px solid #e5e7eb; vertical-align:top; color:#334155; font-weight:650; line-height:1.38; }
             .aprc-table tr:last-child td { border-bottom:none; }
+            .aprc-table th:nth-child(1), .aprc-table td:nth-child(1) { width:9%; }
+            .aprc-table th:nth-child(2), .aprc-table td:nth-child(2) { width:15%; }
+            .aprc-table th:nth-child(3), .aprc-table td:nth-child(3) { width:11%; }
+            .aprc-table th:nth-child(4), .aprc-table td:nth-child(4) { width:12%; }
+            .aprc-table th:nth-child(5), .aprc-table td:nth-child(5) { width:11%; }
+            .aprc-table th:nth-child(6), .aprc-table td:nth-child(6) { width:17%; }
+            .aprc-table th:nth-child(7), .aprc-table td:nth-child(7) { width:25%; }
             .aprc-qno { color:#1d4ed8 !important; font-weight:900 !important; white-space:nowrap; }
-            .aprc-question-summary { max-width:230px; line-height:1.45; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; word-break:keep-all; white-space:normal; }
-            .aprc-question-sub { margin-top:5px; color:#64748b; font-size:10.5px; font-weight:700; line-height:1.4; }
-            .aprc-empty-cell { padding:20px !important; text-align:center; color:#64748b !important; font-weight:800 !important; }
-            .aprc-source-note { margin-top:10px; padding:9px 11px; border-radius:11px; background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; line-height:1.45; }
-            .aprc-bottom-grid { align-items:stretch; padding-top:0; }
-            .aprc-paragraph p { margin:0 0 10px; color:#334155; font-size:13px; font-weight:650; line-height:1.7; word-break:keep-all; }
-            .aprc-plan-list { margin:0; padding-left:19px; color:#334155; font-size:13px; font-weight:700; line-height:1.75; }
-            .aprc-plan-list li { margin:0 0 5px; }
-            .aprc-parent-message { margin:0 34px 24px; padding:18px 20px; border-radius:18px; background:#eff6ff; border:1px solid #bfdbfe; }
-            .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:13px; font-weight:700; line-height:1.75; word-break:keep-all; }
-            .aprc-footer { padding:14px 34px 24px; color:#94a3b8; font-size:10px; font-weight:850; letter-spacing:0.14em; text-align:center; }
+            .aprc-question-summary { max-height:38px; line-height:1.35; overflow:hidden; word-break:keep-all; }
+            .aprc-question-sub { margin-top:4px; color:#64748b; font-size:9px; font-weight:700; line-height:1.3; max-height:26px; overflow:hidden; }
+            .aprc-empty-cell { padding:16px !important; text-align:center; color:#64748b !important; font-weight:800 !important; }
+            .aprc-source-note { margin-top:7px; padding:7px 9px; border-radius:10px; background:#f8fafc; color:#64748b; font-size:10.3px; font-weight:700; line-height:1.4; max-height:32px; overflow:hidden; }
+            .aprc-bottom-grid { align-items:stretch; padding-top:4mm; }
+            .aprc-paragraph p { margin:0 0 8px; color:#334155; font-size:11.7px; font-weight:650; line-height:1.62; word-break:keep-all; }
+            .aprc-plan-list { margin:0; padding-left:18px; color:#334155; font-size:11.8px; font-weight:700; line-height:1.65; }
+            .aprc-plan-list li { margin:0 0 4px; }
+            .aprc-parent-page-head { padding-bottom:9mm; border-bottom:2px solid #0f172a; }
+            .aprc-parent-page-head .aprc-brand { color:#64748b; }
+            .aprc-parent-title { margin-top:7px; font-size:26px; font-weight:900; color:#0f172a; letter-spacing:-0.8px; }
+            .aprc-parent-subtitle { margin-top:5px; font-size:13px; font-weight:750; color:#64748b; }
+            .aprc-parent-message { margin:9mm 0 0; padding:8mm; border-radius:18px; background:#eff6ff; border:1px solid #bfdbfe; }
+            .aprc-parent-message-fixed { min-height:150mm; max-height:180mm; overflow:hidden; }
+            .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:14px; font-weight:700; line-height:1.9; word-break:keep-all; white-space:pre-wrap; }
+            .aprc-parent-bottom-note { margin-top:7mm; padding:5mm 6mm; border:1px solid #e5e7eb; border-radius:14px; background:#f8fafc; color:#334155; font-size:12.2px; font-weight:750; line-height:1.6; }
+            .aprc-footer { position:absolute; left:10mm; right:10mm; bottom:8mm; color:#94a3b8; font-size:10px; font-weight:850; letter-spacing:0.14em; text-align:center; }
             .aprc-muted { color:#64748b; font-size:12px; font-weight:700; }
             .aprc-empty-box { padding:36px; text-align:center; color:#64748b; font-weight:800; }
             @media screen and (max-width:760px) {
-                .aprc-document { width:760px; max-width:760px; border-radius:18px; }
-                .aprc-report-header, .aprc-student-band { padding-left:22px; padding-right:22px; }
-                .aprc-report-header { flex-direction:column; gap:16px; }
-                .aprc-issued { text-align:left; }
-                .aprc-student-band { flex-direction:column; align-items:flex-start; }
-                .aprc-exam-meta { text-align:left; }
-                .aprc-score-grid { grid-template-columns:1fr 1fr; padding-left:22px; padding-right:22px; }
-                .aprc-two-col { grid-template-columns:1fr; padding-left:22px; padding-right:22px; }
-                .aprc-table-panel, .aprc-parent-message { margin-left:22px; margin-right:22px; }
-                .aprc-title { font-size:24px; }
-                .aprc-score-value { font-size:42px; }
+                .aprc-fixed-document { width:760px; max-width:760px; align-items:flex-start; }
+                .aprc-fixed-page { width:760px; height:1075px; padding:38px; border-radius:18px; }
+                .aprc-report-header { margin:-38px -38px 0; padding:38px 38px 30px; }
+            }
+            @media print {
+                .aprc-fixed-document { width:210mm !important; max-width:210mm !important; gap:0 !important; margin:0 !important; }
+                .aprc-fixed-page { width:210mm !important; height:297mm !important; padding:10mm !important; margin:0 !important; border:none !important; border-radius:0 !important; box-shadow:none !important; page-break-after:always !important; break-after:page !important; overflow:hidden !important; }
+                .aprc-fixed-page:last-child { page-break-after:auto !important; break-after:auto !important; }
             }
         </style>
     `;
@@ -2562,65 +2636,10 @@ function reportCenterBuildPrintDocument(studentId, sessionId = '', teacherMemo =
 ${reportCenterPremiumReportStyle()}
 <style>
     html, body { margin:0; padding:0; background:#f1f5f9; color:#111827; }
-    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:24px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-    .aprc-document { box-shadow:none; border-radius:0; max-width:794px; min-height:1122px; }
-    .aprc-document, .aprc-document * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
-    @media screen and (max-width:760px) {
-        body { padding:10px; }
-        .aprc-document { width:760px; max-width:760px; min-width:760px; }
-    }
-    @page { size: A4; margin: 8mm; }
+    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:18px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    @page { size:A4; margin:0; }
     @media print {
-        html, body { background:#fff; padding:0; overflow:visible; }
-        .aprc-document { width:100%; max-width:none; min-width:0; min-height:auto; margin:0; padding:0; border:none; box-shadow:none; border-radius:0; overflow:visible; }
-        .aprc-page {
-            box-sizing: border-box !important;
-            min-height: auto !important;
-            height: auto !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        .aprc-page-1 {
-            break-after: page !important;
-            page-break-after: always !important;
-        }
-        .aprc-page-2,
-        .aprc-page-3 {
-            break-after: auto !important;
-            page-break-after: auto !important;
-        }
-        .aprc-report-header { margin-bottom:10mm !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-        .aprc-student-band { margin-bottom:7mm !important; }
-        .aprc-score-grid { margin-bottom:7mm !important; gap:4mm !important; grid-template-columns:1.35fr 1fr 1fr 1fr; }
-        .aprc-core-grid,
-        .aprc-two-col,
-        .aprc-bottom-grid { gap:5mm !important; }
-        .aprc-table-wrap { overflow: visible !important; max-width: 100% !important; }
-        .aprc-table { width: 100% !important; min-width: 0 !important; font-size: 10px !important; }
-        .aprc-table th, .aprc-table td { padding: 7px 6px !important; word-break: keep-all !important; }
-        .aprc-score-card { padding:10px 12px !important; min-height:28mm !important; }
-        .aprc-score-value { font-size:28px !important; line-height:1.05 !important; }
-        .aprc-metric-value { font-size:22px; }
-        .aprc-core-card { padding:12px 14px !important; min-height:34mm !important; }
-        .aprc-panel { padding:13px 14px !important; }
-        .aprc-core-item { padding:10px 12px !important; }
-        .aprc-section-title { margin-bottom:8px !important; }
-        .aprc-table-panel { margin-bottom:6mm !important; }
-        .aprc-bottom-grid { margin-bottom:6mm !important; }
-        .aprc-parent-message { margin-top:6mm !important; margin-bottom:5mm !important; }
-        .aprc-footer { margin-top:7mm !important; }
-        .aprc-panel,
-        .aprc-score-grid,
-        .aprc-score-card,
-        .aprc-core-summary,
-        .aprc-core-card,
-        .aprc-core-item,
-        .aprc-table-panel,
-        .aprc-bottom-grid,
-        .aprc-parent-message {
-            break-inside: avoid !important;
-            page-break-inside: avoid !important;
-        }
+        html, body { background:#fff !important; margin:0 !important; padding:0 !important; overflow:visible !important; }
     }
 </style>
 </head>
@@ -2809,26 +2828,14 @@ function reportCenterInjectPrintViewStyle() {
             padding-bottom:24px;
         }
 
-        .report-print-stage .aprc-document {
+        .report-print-stage .aprc-fixed-document {
             margin:0 auto;
-            width:794px;
-            max-width:794px;
         }
 
         @media (max-width:840px) {
-            .report-print-view {
-                padding:10px;
-            }
-
-            .report-print-toolbar {
-                margin-bottom:10px;
-            }
-
-            .report-print-stage .aprc-document {
-                width:794px;
-                max-width:794px;
-                min-width:794px;
-            }
+            .report-print-view { padding:10px; }
+            .report-print-toolbar { margin-bottom:10px; }
+            .report-print-stage .aprc-fixed-document { min-width:760px; }
         }
 
         @media print {
@@ -2842,6 +2849,7 @@ function reportCenterInjectPrintViewStyle() {
                 background:#fff !important;
                 margin:0 !important;
                 padding:0 !important;
+                overflow:visible !important;
             }
 
             .report-print-view {
@@ -2855,156 +2863,17 @@ function reportCenterInjectPrintViewStyle() {
                 padding:0 !important;
             }
 
-            .report-print-stage .aprc-document {
-                width:100% !important;
-                max-width:none !important;
-                min-width:0 !important;
+            .report-print-stage .aprc-fixed-document {
+                width:210mm !important;
+                max-width:210mm !important;
+                min-width:210mm !important;
                 margin:0 !important;
-                padding:0 !important;
-                border:none !important;
-                box-shadow:none !important;
-                border-radius:0 !important;
-                overflow:visible !important;
-            }
-
-            .aprc-page {
-                box-sizing: border-box !important;
-                min-height: auto !important;
-                height: auto !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
-            .aprc-page-1 {
-                break-after: page !important;
-                page-break-after: always !important;
-            }
-
-            .aprc-page-2,
-            .aprc-page-3 {
-                break-after: auto !important;
-                page-break-after: auto !important;
-            }
-
-            .aprc-panel,
-            .aprc-score-grid,
-            .aprc-score-card,
-            .aprc-core-summary,
-            .aprc-core-card,
-            .aprc-core-item,
-            .aprc-table-panel,
-            .aprc-bottom-grid,
-            .aprc-parent-message {
-                break-inside: avoid !important;
-                page-break-inside: avoid !important;
-            }
-
-            .aprc-report-header {
-                margin-bottom:10mm !important;
-            }
-
-            .aprc-student-band {
-                margin-bottom:7mm !important;
-            }
-
-            .aprc-score-grid {
-                margin-bottom:7mm !important;
-                gap:4mm !important;
-            }
-
-            .aprc-core-grid,
-            .aprc-two-col,
-            .aprc-bottom-grid {
-                gap:5mm !important;
-            }
-
-            .aprc-score-card {
-                padding:10px 12px !important;
-                min-height:28mm !important;
-            }
-
-            .aprc-score-value {
-                font-size:28px !important;
-                line-height:1.05 !important;
-            }
-
-            .aprc-core-card {
-                padding:12px 14px !important;
-                min-height:34mm !important;
-            }
-
-            .aprc-panel {
-                padding:13px 14px !important;
-            }
-
-            .aprc-core-item {
-                padding:10px 12px !important;
-            }
-
-            .aprc-section-title {
-                margin-bottom:8px !important;
-            }
-
-            .aprc-table-panel {
-                margin-bottom:6mm !important;
-            }
-
-            .aprc-bottom-grid {
-                margin-bottom:6mm !important;
-            }
-
-            .aprc-parent-message {
-                margin-top:6mm !important;
-                margin-bottom:5mm !important;
-            }
-
-            .aprc-footer {
-                margin-top:7mm !important;
-            }
-
-            .aprc-table-wrap {
-                overflow: visible !important;
-                max-width: 100% !important;
-            }
-
-            .aprc-table {
-                width: 100% !important;
-                min-width: 0 !important;
-                font-size: 10px !important;
-            }
-
-            .aprc-table th,
-            .aprc-table td {
-                padding: 7px 6px !important;
-                word-break: keep-all !important;
-            }
-
-            .aprc-report-header {
-                background:#ffffff !important;
-                color:#111827 !important;
-                border-bottom:2px solid #111827 !important;
-            }
-
-            .aprc-brand,
-            .aprc-subtitle,
-            .aprc-issued {
-                color:#374151 !important;
-            }
-
-            .aprc-title,
-            .aprc-issued b {
-                color:#111827 !important;
-            }
-
-            .aprc-premium-badge {
-                background:#ffffff !important;
-                border:1px solid #6b7280 !important;
-                color:#111827 !important;
+                gap:0 !important;
             }
 
             @page {
-                size: A4;
-                margin: 8mm;
+                size:A4;
+                margin:0;
             }
         }
     `;
@@ -3085,7 +2954,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
             </div>
 
             <div style="padding:13px 14px; border:1px solid rgba(26,92,255,0.16); border-radius:14px; background:rgba(26,92,255,0.06); color:var(--primary); font-size:12px; font-weight:700; line-height:1.55;">
-                출력용 리포트는 전체화면 검수 화면에서 확인한 뒤 PDF 저장/인쇄합니다. 학부모 전달용 문서 기준으로 점수, 평균, 정답률, 확인 문항 의미, 다음 보완 계획을 한 장 안에 정리합니다.
+                출력용 리포트는 A4 3페이지 고정 틀로 PDF 저장/인쇄합니다. 1페이지는 성취 요약, 2페이지는 문항 분석과 수업 계획, 3페이지는 학부모 안내문으로 구성됩니다.
             </div>
 
             ${archiveStatusHtml}
