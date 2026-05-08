@@ -2458,9 +2458,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                         ${nextPlanItems.length ? `<ol class="aprc-plan-list">${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}</ol>` : ''}
                     </div>
                 </section>
-            </section>
 
-            <section class="aprc-page aprc-page-3">
                 <section class="aprc-parent-message">
                     <div class="aprc-section-title">학부모님께 드리는 말씀</div>
                     <p>${reportCenterEscape(parentMessageText)}</p>
@@ -2571,32 +2569,51 @@ ${reportCenterPremiumReportStyle()}
         body { padding:10px; }
         .aprc-document { width:760px; max-width:760px; min-width:760px; }
     }
-    @page { size: A4; margin: 9mm; }
+    @page { size: A4; margin: 8mm; }
     @media print {
         html, body { background:#fff; padding:0; overflow:visible; }
-        .aprc-document { width:100%; max-width:none; min-width:0; min-height:auto; border:none; box-shadow:none; overflow:visible; }
+        .aprc-document { width:100%; max-width:none; min-width:0; min-height:auto; margin:0; padding:0; border:none; box-shadow:none; border-radius:0; overflow:visible; }
         .aprc-page {
+            box-sizing: border-box !important;
+            min-height: auto !important;
+            height: auto !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .aprc-page-1 {
             break-after: page !important;
             page-break-after: always !important;
-            box-sizing: border-box !important;
-            min-height: calc(297mm - 18mm) !important;
-            padding: 0 !important;
         }
-        .aprc-page:last-child {
+        .aprc-page-2,
+        .aprc-page-3 {
             break-after: auto !important;
             page-break-after: auto !important;
         }
-        .aprc-report-header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .aprc-report-header { margin-bottom:10mm !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .aprc-student-band { margin-bottom:7mm !important; }
+        .aprc-score-grid { margin-bottom:7mm !important; gap:4mm !important; grid-template-columns:1.35fr 1fr 1fr 1fr; }
+        .aprc-core-grid,
+        .aprc-two-col,
+        .aprc-bottom-grid { gap:5mm !important; }
         .aprc-table-wrap { overflow: visible !important; max-width: 100% !important; }
         .aprc-table { width: 100% !important; min-width: 0 !important; font-size: 10px !important; }
         .aprc-table th, .aprc-table td { padding: 7px 6px !important; word-break: keep-all !important; }
-        .aprc-score-grid { grid-template-columns:1.35fr 1fr 1fr 1fr; }
-        .aprc-score-value { font-size:42px; }
+        .aprc-score-card { padding:10px 12px !important; min-height:28mm !important; }
+        .aprc-score-value { font-size:28px !important; line-height:1.05 !important; }
         .aprc-metric-value { font-size:22px; }
+        .aprc-core-card { padding:12px 14px !important; min-height:34mm !important; }
+        .aprc-panel { padding:13px 14px !important; }
+        .aprc-core-item { padding:10px 12px !important; }
+        .aprc-section-title { margin-bottom:8px !important; }
+        .aprc-table-panel { margin-bottom:6mm !important; }
+        .aprc-bottom-grid { margin-bottom:6mm !important; }
+        .aprc-parent-message { margin-top:6mm !important; margin-bottom:5mm !important; }
+        .aprc-footer { margin-top:7mm !important; }
         .aprc-panel,
         .aprc-score-grid,
         .aprc-score-card,
         .aprc-core-summary,
+        .aprc-core-card,
         .aprc-core-item,
         .aprc-table-panel,
         .aprc-bottom-grid,
@@ -2834,6 +2851,7 @@ function reportCenterInjectPrintViewStyle() {
 
             .report-print-stage {
                 overflow:visible !important;
+                background:#fff !important;
                 padding:0 !important;
             }
 
@@ -2842,6 +2860,7 @@ function reportCenterInjectPrintViewStyle() {
                 max-width:none !important;
                 min-width:0 !important;
                 margin:0 !important;
+                padding:0 !important;
                 border:none !important;
                 box-shadow:none !important;
                 border-radius:0 !important;
@@ -2849,14 +2868,20 @@ function reportCenterInjectPrintViewStyle() {
             }
 
             .aprc-page {
-                break-after: page !important;
-                page-break-after: always !important;
                 box-sizing: border-box !important;
-                min-height: calc(297mm - 18mm) !important;
+                min-height: auto !important;
+                height: auto !important;
                 padding: 0 !important;
+                margin: 0 !important;
             }
 
-            .aprc-page:last-child {
+            .aprc-page-1 {
+                break-after: page !important;
+                page-break-after: always !important;
+            }
+
+            .aprc-page-2,
+            .aprc-page-3 {
                 break-after: auto !important;
                 page-break-after: auto !important;
             }
@@ -2865,12 +2890,76 @@ function reportCenterInjectPrintViewStyle() {
             .aprc-score-grid,
             .aprc-score-card,
             .aprc-core-summary,
+            .aprc-core-card,
             .aprc-core-item,
             .aprc-table-panel,
             .aprc-bottom-grid,
             .aprc-parent-message {
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
+            }
+
+            .aprc-report-header {
+                margin-bottom:10mm !important;
+            }
+
+            .aprc-student-band {
+                margin-bottom:7mm !important;
+            }
+
+            .aprc-score-grid {
+                margin-bottom:7mm !important;
+                gap:4mm !important;
+            }
+
+            .aprc-core-grid,
+            .aprc-two-col,
+            .aprc-bottom-grid {
+                gap:5mm !important;
+            }
+
+            .aprc-score-card {
+                padding:10px 12px !important;
+                min-height:28mm !important;
+            }
+
+            .aprc-score-value {
+                font-size:28px !important;
+                line-height:1.05 !important;
+            }
+
+            .aprc-core-card {
+                padding:12px 14px !important;
+                min-height:34mm !important;
+            }
+
+            .aprc-panel {
+                padding:13px 14px !important;
+            }
+
+            .aprc-core-item {
+                padding:10px 12px !important;
+            }
+
+            .aprc-section-title {
+                margin-bottom:8px !important;
+            }
+
+            .aprc-table-panel {
+                margin-bottom:6mm !important;
+            }
+
+            .aprc-bottom-grid {
+                margin-bottom:6mm !important;
+            }
+
+            .aprc-parent-message {
+                margin-top:6mm !important;
+                margin-bottom:5mm !important;
+            }
+
+            .aprc-footer {
+                margin-top:7mm !important;
             }
 
             .aprc-table-wrap {
@@ -2915,7 +3004,7 @@ function reportCenterInjectPrintViewStyle() {
 
             @page {
                 size: A4;
-                margin: 9mm;
+                margin: 8mm;
             }
         }
     `;
