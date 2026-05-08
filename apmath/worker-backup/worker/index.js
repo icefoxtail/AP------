@@ -2453,7 +2453,6 @@ export default {
                 WHERE student_id = ?
                   AND exam_title = ?
                   AND exam_date = ?
-                ORDER BY updated_at DESC, created_at DESC
                 LIMIT 1
               `).bind(studentId, examTitle, examDate).first();
 
