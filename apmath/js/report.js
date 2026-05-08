@@ -749,8 +749,13 @@ function reportCenterGetSameExamSessions(session) {
     return (state.db.exam_sessions || []).filter(e => {
         if (String(e.exam_title || '').trim() !== title) return false;
         if (String(e.exam_date || '').trim() !== date) return false;
-        if (archiveFile && String(e.archive_file || '').trim() !== archiveFile) return false;
-        if (qCount && Number(e.question_count || 0) && Number(e.question_count || 0) !== qCount) return false;
+
+        const eArchiveFile = String(e.archive_file || '').trim();
+        if (archiveFile && eArchiveFile && eArchiveFile !== archiveFile) return false;
+
+        const eQCount = Number(e.question_count || 0);
+        if (qCount && eQCount && eQCount !== qCount) return false;
+
         return true;
     });
 }
@@ -761,6 +766,7 @@ function reportCenterGetClassExamSessions(session, classId) {
     const classStudentIds = new Set((state.db.class_students || [])
         .filter(m => String(m.class_id) === String(classId))
         .map(m => String(m.student_id)));
+    if (!classStudentIds.size) return [];
     return same.filter(e => classStudentIds.has(String(e.student_id)));
 }
 
@@ -1863,24 +1869,54 @@ function reportCenterAiAnalysisCache() {
     return window.AP_REPORT_AI_ANALYSIS_CACHE;
 }
 
+function reportCenterAiAnalysisStorageKey(sessionId) {
+    return `AP_REPORT_AI_ANALYSIS_CACHE_${String(sessionId || '')}`;
+}
+
+function reportCenterIsPremiumAiSource(source) {
+    const safe = String(source || '').toLowerCase();
+    return safe === 'ai' || safe === 'gemini';
+}
+
 function reportCenterGetCachedAiAnalysis(sessionId) {
-    return reportCenterAiAnalysisCache()[String(sessionId || '')] || null;
+    const key = String(sessionId || '');
+    if (!key) return null;
+
+    const memory = reportCenterAiAnalysisCache()[key] || null;
+    if (memory && reportCenterIsPremiumAiSource(memory.source)) return memory;
+
+    try {
+        const raw = localStorage.getItem(reportCenterAiAnalysisStorageKey(key));
+        if (!raw) return null;
+        const saved = reportCenterNormalizeAiAnalysis(JSON.parse(raw));
+        if (!reportCenterIsPremiumAiSource(saved.source)) return null;
+        reportCenterAiAnalysisCache()[key] = saved;
+        return saved;
+    } catch (e) {
+        try { localStorage.removeItem(reportCenterAiAnalysisStorageKey(key)); } catch (removeErr) {}
+        return null;
+    }
 }
 
 function reportCenterSetCachedAiAnalysis(sessionId, payload) {
     if (!sessionId || !payload) return payload;
+    const key = String(sessionId);
     const normalized = reportCenterNormalizeAiAnalysis(payload);
-    if (String(normalized.source || '').toLowerCase() !== 'ai') {
-        delete reportCenterAiAnalysisCache()[String(sessionId)];
+    if (!reportCenterIsPremiumAiSource(normalized.source)) {
+        delete reportCenterAiAnalysisCache()[key];
+        try { localStorage.removeItem(reportCenterAiAnalysisStorageKey(key)); } catch (e) {}
         return normalized;
     }
-    reportCenterAiAnalysisCache()[String(sessionId)] = normalized;
+    reportCenterAiAnalysisCache()[key] = normalized;
+    try { localStorage.setItem(reportCenterAiAnalysisStorageKey(key), JSON.stringify(normalized)); } catch (e) {}
     return normalized;
 }
 
 function reportCenterClearCachedAiAnalysis(sessionId) {
     if (!sessionId) return;
-    delete reportCenterAiAnalysisCache()[String(sessionId)];
+    const key = String(sessionId);
+    delete reportCenterAiAnalysisCache()[key];
+    try { localStorage.removeItem(reportCenterAiAnalysisStorageKey(key)); } catch (e) {}
 }
 
 function reportCenterResetExamAiAnalysis(studentId, sessionId = '') {
@@ -1912,7 +1948,7 @@ function reportCenterNormalizeAiAnalysis(raw = {}) {
 function reportCenterGetAiAnalysisForReport(sessionId, options = {}) {
     const candidate = options.aiAnalysis ? reportCenterNormalizeAiAnalysis(options.aiAnalysis) : reportCenterGetCachedAiAnalysis(sessionId);
     if (!candidate) return null;
-    return String(candidate.source || '').toLowerCase() === 'ai' ? candidate : null;
+    return reportCenterIsPremiumAiSource(candidate.source) ? candidate : null;
 }
 
 function reportCenterBuildExamDiagnosisLines(data, teacherMemo = '') {
@@ -2401,7 +2437,7 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
         const unitNames = Array.from(new Set(wrongRows.map(r => r.unit).filter(Boolean))).slice(0, 2);
         const unitText = unitNames.length ? `${unitNames.join(', ')} 단원` : '이번 평가의 핵심 확인 문항';
         return `이번 리포트는 단순 점수 안내가 아니라, ${studentName} 학생이 어떤 문항에서 흔들렸는지와 그 오답이 전체 기준에서 어떤 의미인지 함께 정리한 자료입니다. 가정에서는 풀이를 길게 설명해주시기보다, 숙제나 복습 시 문제 조건 표시와 마지막 검산 여부만 가볍게 확인해 주시면 좋겠습니다. 학원에서는 다음 수업에서 ${unitText}의 풀이 흐름을 다시 확인하고 같은 실수가 반복되지 않도록 유사 문제 풀이까지 함께 진행하겠습니다.`;
-    })()), 900);
+    })()), 620);
     const tableMeta = reportCenterGetPremiumTableMeta(data);
     const archiveMessage = data.archiveDetails
         ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
@@ -2491,7 +2527,6 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                                     <th>전체 정답률</th>
                                     <th>반 정답률</th>
                                     <th>해석</th>
-                                    <th>학습 포인트</th>
                                 </tr>
                             </thead>
                             <tbody>${reportCenterBuildPremiumQuestionRows(data, isPrint)}</tbody>
@@ -2504,32 +2539,21 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
                     <div class="aprc-panel">
                         <div class="aprc-section-title">종합 진단</div>
                         <div class="aprc-paragraph">
-                            ${diagnosisPrintLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
+                            ${diagnosisPrintLines.slice(0, 2).map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
                         </div>
                     </div>
                     <div class="aprc-panel">
                         <div class="aprc-section-title">다음 수업 보완 계획</div>
                         ${nextPlanText ? `<div class="aprc-paragraph"><p>${reportCenterEscape(nextPlanText)}</p></div>` : ''}
                         <ol class="aprc-plan-list">
-                            ${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
+                            ${nextPlanItems.slice(0, 4).map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
                         </ol>
                     </div>
                 </section>
-            </section>
-
-            <section class="aprc-fixed-page aprc-fixed-page-3">
-                <div class="aprc-parent-page-head">
-                    <div class="aprc-brand">AP MATH REPORT</div>
-                    <div class="aprc-parent-title">학부모님께 드리는 말씀</div>
-                    <div class="aprc-parent-subtitle">${reportCenterEscape(student.name || '학생')} 학생의 다음 수업 관리 방향</div>
-                </div>
-                <section class="aprc-parent-message aprc-parent-message-fixed">
+                <section class="aprc-parent-message">
                     <div class="aprc-section-title">학부모님께 드리는 말씀</div>
                     <p>${reportCenterEscape(parentMessageText)}</p>
                 </section>
-                <div class="aprc-parent-bottom-note">
-                    학원에서는 위 내용을 바탕으로 다음 수업에서 풀이 과정 확인, 유사 문제 적용, 필요한 클리닉을 순서대로 진행하겠습니다.
-                </div>
                 <div class="aprc-footer">AP MATH · Student Learning Report</div>
             </section>
         </div>
@@ -2541,9 +2565,9 @@ function reportCenterPremiumReportStyle() {
         <style>
             .aprc-document { width:100%; max-width:794px; margin:0 auto; background:#ffffff; color:#111827; border:1px solid #e5e7eb; border-radius:22px; overflow:hidden; box-shadow:0 18px 60px rgba(15,23,42,0.10); font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-document * { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-            .aprc-fixed-document { width:210mm; max-width:210mm; border:0; border-radius:0; overflow:visible; box-shadow:none; background:transparent; display:flex; flex-direction:column; gap:18px; align-items:center; }
-            .aprc-fixed-page { width:210mm; height:297mm; padding:10mm; background:#fff; border:1px solid #e5e7eb; border-radius:12px; box-shadow:0 10px 34px rgba(15,23,42,0.12); overflow:hidden; position:relative; }
-            .aprc-report-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin:-10mm -10mm 0; padding:10mm 10mm 8mm; background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%); color:#fff; }
+            .aprc-fixed-document { width:210mm; max-width:210mm; margin:0 auto; border:0; border-radius:0; overflow:visible; box-shadow:none; background:transparent; display:flex; flex-direction:column; gap:18px; align-items:center; }
+            .aprc-fixed-page { width:210mm; height:297mm; padding:9mm; background:#fff; border:1px solid #e5e7eb; border-radius:12px; box-shadow:0 10px 34px rgba(15,23,42,0.12); overflow:hidden; position:relative; }
+            .aprc-report-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin:-9mm -9mm 0; padding:9mm 9mm 7mm; background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%); color:#fff; }
             .aprc-brand { font-size:11px; font-weight:800; letter-spacing:0.16em; color:rgba(255,255,255,0.72); }
             .aprc-title { margin-top:6px; font-size:24px; font-weight:800; letter-spacing:-0.8px; line-height:1.15; }
             .aprc-subtitle { margin-top:6px; font-size:12px; font-weight:650; color:rgba(255,255,255,0.74); }
@@ -2584,13 +2608,12 @@ function reportCenterPremiumReportStyle() {
             .aprc-table th { padding:6px 5px; background:#f8fafc; color:#64748b; text-align:left; font-weight:850; border-bottom:1px solid #e5e7eb; white-space:nowrap; }
             .aprc-table td { padding:6px 5px; border-bottom:1px solid #e5e7eb; vertical-align:top; color:#334155; font-weight:650; line-height:1.38; }
             .aprc-table tr:last-child td { border-bottom:none; }
-            .aprc-table th:nth-child(1), .aprc-table td:nth-child(1) { width:9%; }
-            .aprc-table th:nth-child(2), .aprc-table td:nth-child(2) { width:15%; }
-            .aprc-table th:nth-child(3), .aprc-table td:nth-child(3) { width:11%; }
-            .aprc-table th:nth-child(4), .aprc-table td:nth-child(4) { width:12%; }
-            .aprc-table th:nth-child(5), .aprc-table td:nth-child(5) { width:11%; }
-            .aprc-table th:nth-child(6), .aprc-table td:nth-child(6) { width:17%; }
-            .aprc-table th:nth-child(7), .aprc-table td:nth-child(7) { width:25%; }
+            .aprc-table th:nth-child(1), .aprc-table td:nth-child(1) { width:10%; }
+            .aprc-table th:nth-child(2), .aprc-table td:nth-child(2) { width:18%; }
+            .aprc-table th:nth-child(3), .aprc-table td:nth-child(3) { width:13%; }
+            .aprc-table th:nth-child(4), .aprc-table td:nth-child(4) { width:14%; }
+            .aprc-table th:nth-child(5), .aprc-table td:nth-child(5) { width:13%; }
+            .aprc-table th:nth-child(6), .aprc-table td:nth-child(6) { width:32%; }
             .aprc-qno { color:#1d4ed8 !important; font-weight:900 !important; white-space:nowrap; }
             .aprc-question-summary { max-height:38px; line-height:1.35; overflow:hidden; word-break:keep-all; }
             .aprc-question-sub { margin-top:4px; color:#64748b; font-size:9px; font-weight:700; line-height:1.3; max-height:26px; overflow:hidden; }
@@ -2600,25 +2623,31 @@ function reportCenterPremiumReportStyle() {
             .aprc-paragraph p { margin:0 0 8px; color:#334155; font-size:11.7px; font-weight:650; line-height:1.62; word-break:keep-all; }
             .aprc-plan-list { margin:0; padding-left:18px; color:#334155; font-size:11.8px; font-weight:700; line-height:1.65; }
             .aprc-plan-list li { margin:0 0 4px; }
-            .aprc-parent-page-head { padding-bottom:9mm; border-bottom:2px solid #0f172a; }
-            .aprc-parent-page-head .aprc-brand { color:#64748b; }
-            .aprc-parent-title { margin-top:7px; font-size:26px; font-weight:900; color:#0f172a; letter-spacing:-0.8px; }
-            .aprc-parent-subtitle { margin-top:5px; font-size:13px; font-weight:750; color:#64748b; }
-            .aprc-parent-message { margin:9mm 0 0; padding:8mm; border-radius:18px; background:#eff6ff; border:1px solid #bfdbfe; }
-            .aprc-parent-message-fixed { min-height:150mm; max-height:180mm; overflow:hidden; }
-            .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:14px; font-weight:700; line-height:1.9; word-break:keep-all; white-space:pre-wrap; }
-            .aprc-parent-bottom-note { margin-top:7mm; padding:5mm 6mm; border:1px solid #e5e7eb; border-radius:14px; background:#f8fafc; color:#334155; font-size:12.2px; font-weight:750; line-height:1.6; }
-            .aprc-footer { position:absolute; left:10mm; right:10mm; bottom:8mm; color:#94a3b8; font-size:10px; font-weight:850; letter-spacing:0.14em; text-align:center; }
+            .aprc-parent-message { margin:4mm 0 0; padding:4.5mm 5mm; border-radius:14px; background:#eff6ff; border:1px solid #bfdbfe; max-height:48mm; overflow:hidden; }
+            .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:11.5px; font-weight:700; line-height:1.58; word-break:keep-all; white-space:normal; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:8; overflow:hidden; }
+            .aprc-parent-bottom-note { margin-top:3.5mm; padding:3.5mm 4.5mm; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc; color:#334155; font-size:10.8px; font-weight:750; line-height:1.45; }
+            .aprc-footer { position:absolute; left:9mm; right:9mm; bottom:7mm; color:#94a3b8; font-size:10px; font-weight:850; letter-spacing:0.14em; text-align:center; }
             .aprc-muted { color:#64748b; font-size:12px; font-weight:700; }
             .aprc-empty-box { padding:36px; text-align:center; color:#64748b; font-weight:800; }
+
+            .aprc-fixed-page-2 .aprc-page-kicker { margin-bottom:4mm; }
+            .aprc-fixed-page-2 .aprc-table-panel { padding:3.8mm; max-height:82mm; overflow:hidden; }
+            .aprc-fixed-page-2 .aprc-table-wrap { max-height:56mm; overflow:hidden; }
+            .aprc-fixed-page-2 .aprc-source-note { max-height:18px; padding:5px 8px; }
+            .aprc-fixed-page-2 .aprc-bottom-grid { padding-top:4mm; gap:4mm; }
+            .aprc-fixed-page-2 .aprc-bottom-grid .aprc-panel { max-height:94mm; overflow:hidden; }
+            .aprc-fixed-page-2 .aprc-paragraph p { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:8; overflow:hidden; }
+            .aprc-fixed-page-2 .aprc-plan-list { max-height:48mm; overflow:hidden; }
+            .aprc-core-item span { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:5; overflow:hidden; }
+            .aprc-insight-item { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:5; overflow:hidden; }
             @media screen and (max-width:760px) {
                 .aprc-fixed-document { width:760px; max-width:760px; align-items:flex-start; }
-                .aprc-fixed-page { width:760px; height:1075px; padding:38px; border-radius:18px; }
-                .aprc-report-header { margin:-38px -38px 0; padding:38px 38px 30px; }
+                .aprc-fixed-page { width:760px; height:1075px; padding:34px; border-radius:18px; }
+                .aprc-report-header { margin:-34px -34px 0; padding:34px 34px 26px; }
             }
             @media print {
-                .aprc-fixed-document { width:210mm !important; max-width:210mm !important; gap:0 !important; margin:0 !important; }
-                .aprc-fixed-page { width:210mm !important; height:297mm !important; padding:10mm !important; margin:0 !important; border:none !important; border-radius:0 !important; box-shadow:none !important; page-break-after:always !important; break-after:page !important; overflow:hidden !important; }
+                .aprc-fixed-document { width:210mm !important; max-width:210mm !important; gap:0 !important; margin:0 auto !important; }
+                .aprc-fixed-page { width:210mm !important; height:297mm !important; padding:9mm !important; margin:0 !important; border:none !important; border-radius:0 !important; box-shadow:none !important; page-break-after:always !important; break-after:page !important; overflow:hidden !important; }
                 .aprc-fixed-page:last-child { page-break-after:auto !important; break-after:auto !important; }
             }
         </style>
@@ -2867,7 +2896,7 @@ function reportCenterInjectPrintViewStyle() {
                 width:210mm !important;
                 max-width:210mm !important;
                 min-width:210mm !important;
-                margin:0 !important;
+                margin:0 auto !important;
                 gap:0 !important;
             }
 
