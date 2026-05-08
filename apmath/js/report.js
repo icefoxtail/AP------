@@ -2521,7 +2521,10 @@ function reportCenterPrintPremiumExamReport(studentId, sessionId = '') {
     }
 }
 
-function reportCenterOpenPrintView(studentId, sessionId = '') {
+function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
+    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+    console.log('[reportCenterOpenPrintView] open', { studentId, sessionId });
     const data = reportCenterGetExamReportData(studentId, sessionId);
     if (!data.student || !data.session) {
         toast('출력할 평가 기록이 없습니다.', 'warn');
@@ -2536,14 +2539,14 @@ function reportCenterOpenPrintView(studentId, sessionId = '') {
     });
 
     const root = document.getElementById('app-root') || document.body;
+    const overlay = document.querySelector('.report-center-wide-overlay, #report-center-wide-overlay, .wide-overlay, .modal-overlay');
+    if (overlay) overlay.remove();
 
     window.AP_REPORT_PRINT_RETURN = {
         studentId,
         sessionId,
         scrollY: window.scrollY || 0
     };
-
-    reportCenterCloseWideOverlay();
 
     root.innerHTML = `
         <div id="report-print-view" class="report-print-view">
@@ -2559,6 +2562,7 @@ function reportCenterOpenPrintView(studentId, sessionId = '') {
 
     reportCenterInjectPrintViewStyle();
     window.scrollTo(0, 0);
+    console.log('[reportCenterOpenPrintView] rendered');
 }
 
 function reportCenterClosePrintView() {
@@ -2803,7 +2807,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
             <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 가정 전달 포인트" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">리포트 크게 보기/출력</button>
+                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트 크게 보기/출력</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
