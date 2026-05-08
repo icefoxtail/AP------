@@ -2539,8 +2539,32 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     });
 
     const root = document.getElementById('app-root') || document.body;
-    const overlay = document.querySelector('.report-center-wide-overlay, #report-center-wide-overlay, .wide-overlay, .modal-overlay');
-    if (overlay) overlay.remove();
+    [
+        '#report-center-wide-overlay',
+        '.report-center-wide-overlay',
+        '.wide-overlay'
+    ].forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => el.remove());
+    });
+
+    [
+        '#modal-overlay',
+        '.modal-overlay',
+        '#student-profile-modal',
+        '.student-profile-modal',
+        '.profile-modal',
+        '.modal'
+    ].forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('hidden');
+            el.classList.remove('show');
+            el.style.display = 'none';
+            el.setAttribute('aria-hidden', 'true');
+        });
+    });
+
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
 
     window.AP_REPORT_PRINT_RETURN = {
         studentId,
@@ -2559,6 +2583,8 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
             </div>
         </div>
     `;
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
 
     reportCenterInjectPrintViewStyle();
     window.scrollTo(0, 0);
@@ -2590,6 +2616,8 @@ function reportCenterInjectPrintViewStyle() {
     style.id = 'report-print-view-style';
     style.textContent = `
         .report-print-view {
+            position:relative;
+            z-index:3000;
             min-height:100vh;
             background:#f1f5f9;
             padding:18px;
