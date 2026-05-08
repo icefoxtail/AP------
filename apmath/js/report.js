@@ -1161,6 +1161,83 @@ function reportCenterBuildArchiveSummaryText(detailsPayload) {
     return `[아카이브 문항 원문 확인]\n${lines.join('\n')}`;
 }
 
+function reportCenterPreserveArchiveText(value) {
+    if (typeof value === 'function') return '';
+    if (value && typeof value === 'object') return '';
+
+    let text = String(value || '');
+
+    text = text
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<\/p>/gi, '\n')
+        .replace(/<\/div>/gi, '\n')
+        .replace(/<\/li>/gi, '\n')
+        .replace(/<li[^>]*>/gi, '\n')
+        .replace(/<[^>]*>/g, ' ');
+
+    text = text
+        .replace(/([.?!\]）\)])\s*(ㄱ\.)/g, '$1\n$2')
+        .replace(/\s*(ㄱ\.|ㄴ\.|ㄷ\.|ㄹ\.|ㅁ\.|ㅂ\.|ㅅ\.|ㅇ\.)\s*/g, '\n$1 ')
+        .replace(/\n{3,}/g, '\n\n')
+        .replace(/[ \t]{2,}/g, ' ')
+        .trim();
+
+    return text;
+}
+
+function reportCenterArchiveTextToHtml(value) {
+    const text = reportCenterPreserveArchiveText(value);
+    if (!text || reportCenterLooksLikeCodeText(text)) return '';
+    return reportCenterEscape(text).replace(/\n/g, '<br>');
+}
+
+function reportCenterEnsureMathJax() {
+    return new Promise(resolve => {
+        if (window.MathJax?.typesetPromise) {
+            resolve(window.MathJax);
+            return;
+        }
+
+        if (document.getElementById('report-center-mathjax-script')) {
+            const wait = () => {
+                if (window.MathJax?.typesetPromise) resolve(window.MathJax);
+                else setTimeout(wait, 80);
+            };
+            wait();
+            return;
+        }
+
+        window.MathJax = window.MathJax || {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+
+        const script = document.createElement('script');
+        script.id = 'report-center-mathjax-script';
+        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+        script.async = true;
+        script.onload = () => resolve(window.MathJax);
+        script.onerror = () => resolve(null);
+        document.head.appendChild(script);
+    });
+}
+
+async function reportCenterRenderMathInArchiveDetails() {
+    const root = document.getElementById('report-center-archive-details');
+    if (!root) return;
+    const mj = await reportCenterEnsureMathJax();
+    if (mj?.typesetPromise) {
+        try {
+            await mj.typesetPromise([root]);
+        } catch (e) {
+            console.warn('[reportCenterRenderMathInArchiveDetails] MathJax failed:', e);
+        }
+    }
+}
+
 function reportCenterRenderArchiveDetails(detailsPayload) {
     const root = document.getElementById('report-center-archive-details');
     if (!root) return;
@@ -1172,7 +1249,13 @@ function reportCenterRenderArchiveDetails(detailsPayload) {
 
     const archiveInfo = detailsPayload.archiveInfo || {};
     const detailRows = Array.isArray(detailsPayload.details) && detailsPayload.details.length
-        ? detailsPayload.details.map(d => `
+        ? detailsPayload.details.map(d => {
+            const contentHtml = reportCenterArchiveTextToHtml(d.content);
+            const answerHtml = reportCenterArchiveTextToHtml(d.answer);
+            const answerRowHtml = answerHtml
+                ? `<div style="font-size:12px; color:var(--primary); font-weight:700; margin-top:7px;">정답: <span class="report-archive-answer">${answerHtml}</span></div>`
+                : '';
+            return `
             <div style="padding:12px 0; border-bottom:1px solid var(--border);">
                 <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; flex-wrap:wrap;">
                     <div style="font-size:13px; font-weight:700; color:var(--text);">${reportCenterEscape(d.questionNo)}번 ${d.unit ? `· ${reportCenterEscape(d.unit)}` : ''}</div>
@@ -1181,11 +1264,12 @@ function reportCenterRenderArchiveDetails(detailsPayload) {
                 <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:6px; line-height:1.55;">
                     ${Number.isFinite(d.correctRate) ? `전체 정답률 ${d.correctRate}%` : '전체 정답률 -'}${Number.isFinite(d.classCorrectRate) ? ` · 반 정답률 ${d.classCorrectRate}%` : ''} · ${reportCenterEscape(d.meaning || '-')}
                 </div>
-                ${d.contentText ? `<div style="font-size:12px; color:var(--text); line-height:1.65; margin-top:8px; background:var(--surface-2); border-radius:10px; padding:9px 10px;">${reportCenterEscape(d.contentText)}</div>` : ''}
-                ${d.answer !== '' && d.answer !== null && d.answer !== undefined ? `<div style="font-size:12px; color:var(--primary); font-weight:700; margin-top:7px;">정답: ${reportCenterEscape(d.answer)}</div>` : ''}
+                ${contentHtml ? `<div class="report-archive-question-text" style="font-size:12px; color:var(--text); line-height:1.65; margin-top:8px; background:var(--surface-2); border-radius:10px; padding:9px 10px; white-space:normal;">${contentHtml}</div>` : ''}
+                ${answerRowHtml}
                 ${d.solutionText ? `<div style="font-size:12px; color:var(--secondary); line-height:1.6; margin-top:7px;">해설 요약: ${reportCenterEscape(d.solutionText)}</div>` : ''}
             </div>
-        `).join('')
+        `;
+        }).join('')
         : `<div style="padding:16px; text-align:center; color:var(--secondary); font-size:12px; font-weight:700;">표시할 오답 문항이 없습니다.</div>`;
 
     root.innerHTML = `
@@ -1202,6 +1286,7 @@ function reportCenterRenderArchiveDetails(detailsPayload) {
             <button class="btn" style="width:100%; min-height:42px; margin-top:10px; font-size:12px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14); color:var(--primary);" onclick="reportCenterAppendArchiveSummaryToExamText('${reportCenterAttr(detailsPayload.sessionId || '')}')">원문 분석 요약을 본문에 추가</button>
         </div>
     `;
+    reportCenterRenderMathInArchiveDetails();
 }
 
 async function reportCenterLoadArchiveQuestionDetails(studentId, sessionId, options = {}) {
@@ -2436,6 +2521,197 @@ function reportCenterPrintPremiumExamReport(studentId, sessionId = '') {
     }
 }
 
+function reportCenterOpenPrintView(studentId, sessionId = '') {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    if (!data.student || !data.session) {
+        toast('출력할 평가 기록이 없습니다.', 'warn');
+        return;
+    }
+
+    const teacherMemo = reportCenterGetExamReportTeacherMemo();
+    const reportHtml = reportCenterPremiumReportStyle() + reportCenterBuildPremiumExamReportHtml(studentId, sessionId, {
+        print: true,
+        teacherMemo,
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+    });
+
+    const root = document.getElementById('app-root') || document.body;
+
+    window.AP_REPORT_PRINT_RETURN = {
+        studentId,
+        sessionId,
+        scrollY: window.scrollY || 0
+    };
+
+    reportCenterCloseWideOverlay();
+
+    root.innerHTML = `
+        <div id="report-print-view" class="report-print-view">
+            <div class="report-print-toolbar no-print">
+                <button class="btn" onclick="reportCenterClosePrintView()">리포트 센터로 돌아가기</button>
+                <button class="btn btn-primary" onclick="window.print()">인쇄하기</button>
+            </div>
+            <div class="report-print-stage">
+                ${reportHtml}
+            </div>
+        </div>
+    `;
+
+    reportCenterInjectPrintViewStyle();
+    window.scrollTo(0, 0);
+}
+
+function reportCenterClosePrintView() {
+    const ret = window.AP_REPORT_PRINT_RETURN || {};
+
+    if (typeof renderDashboard === 'function') {
+        renderDashboard();
+    } else if (typeof renderApp === 'function') {
+        renderApp();
+    } else {
+        location.reload();
+        return;
+    }
+
+    setTimeout(() => {
+        if (ret.studentId) openReportCenterExam(ret.studentId, ret.sessionId || '');
+        if (Number.isFinite(Number(ret.scrollY))) window.scrollTo(0, Number(ret.scrollY));
+    }, 100);
+}
+
+function reportCenterInjectPrintViewStyle() {
+    if (document.getElementById('report-print-view-style')) return;
+
+    const style = document.createElement('style');
+    style.id = 'report-print-view-style';
+    style.textContent = `
+        .report-print-view {
+            min-height:100vh;
+            background:#f1f5f9;
+            padding:18px;
+            box-sizing:border-box;
+        }
+
+        .report-print-toolbar {
+            position:sticky;
+            top:0;
+            z-index:20;
+            display:flex;
+            gap:8px;
+            justify-content:space-between;
+            align-items:center;
+            max-width:900px;
+            margin:0 auto 14px;
+            padding:10px;
+            background:rgba(255,255,255,0.94);
+            border:1px solid var(--border);
+            border-radius:14px;
+            backdrop-filter:blur(8px);
+            -webkit-backdrop-filter:blur(8px);
+        }
+
+        .report-print-toolbar .btn {
+            min-height:42px;
+            font-size:13px;
+            font-weight:700;
+            border-radius:12px;
+            flex:1;
+        }
+
+        .report-print-stage {
+            width:100%;
+            overflow-x:auto;
+            -webkit-overflow-scrolling:touch;
+            padding-bottom:24px;
+        }
+
+        .report-print-stage .aprc-document {
+            margin:0 auto;
+            width:794px;
+            max-width:794px;
+        }
+
+        @media (max-width:840px) {
+            .report-print-view {
+                padding:10px;
+            }
+
+            .report-print-toolbar {
+                margin-bottom:10px;
+            }
+
+            .report-print-stage .aprc-document {
+                width:794px;
+                max-width:794px;
+                min-width:794px;
+            }
+        }
+
+        @media print {
+            .no-print,
+            .report-print-toolbar {
+                display:none !important;
+            }
+
+            html,
+            body {
+                background:#fff !important;
+                margin:0 !important;
+                padding:0 !important;
+            }
+
+            .report-print-view {
+                padding:0 !important;
+                background:#fff !important;
+            }
+
+            .report-print-stage {
+                overflow:visible !important;
+                padding:0 !important;
+            }
+
+            .report-print-stage .aprc-document {
+                width:100% !important;
+                max-width:none !important;
+                min-width:0 !important;
+                margin:0 !important;
+                border:none !important;
+                box-shadow:none !important;
+                border-radius:0 !important;
+            }
+
+            .aprc-report-header {
+                background:#ffffff !important;
+                color:#111827 !important;
+                border-bottom:2px solid #111827 !important;
+            }
+
+            .aprc-brand,
+            .aprc-subtitle,
+            .aprc-issued {
+                color:#374151 !important;
+            }
+
+            .aprc-title,
+            .aprc-issued b {
+                color:#111827 !important;
+            }
+
+            .aprc-premium-badge {
+                background:#ffffff !important;
+                border:1px solid #6b7280 !important;
+                color:#111827 !important;
+            }
+
+            @page {
+                size:A4;
+                margin:12mm;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 function reportCenterCopyExamKakaoSummary(studentId, sessionId = '') {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     if (!data.student || !data.session) {
@@ -2495,9 +2771,6 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
         : `<tr><td colspan="5" style="padding:14px; text-align:center; color:var(--secondary); font-weight:700;">오답 문항이 없거나 비교 자료가 없습니다.</td></tr>`;
 
     const selectedId = selected?.id || '';
-    const premiumPreview = selected
-        ? reportCenterPremiumReportStyle() + reportCenterBuildPremiumExamReportHtml(studentId, selected.id, { aiAnalysis: reportCenterGetCachedAiAnalysis(selected.id) })
-        : '';
 
     const body = sessions.length ? `
         <div style="display:flex; flex-direction:column; gap:14px;">
@@ -2513,7 +2786,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
             </div>
 
             <div style="padding:13px 14px; border:1px solid rgba(26,92,255,0.16); border-radius:14px; background:rgba(26,92,255,0.06); color:var(--primary); font-size:12px; font-weight:700; line-height:1.55;">
-                출력용 리포트는 아래 미리보기 그대로 PDF 저장/인쇄됩니다. 학부모 전달용 문서 기준으로 점수, 평균, 정답률, 오답 의미, 다음 보완 계획을 한 장 안에 정리합니다.
+                출력용 리포트는 전체화면 검수 화면에서 확인한 뒤 PDF 저장/인쇄합니다. 학부모 전달용 문서 기준으로 점수, 평균, 정답률, 확인 문항 의미, 다음 보완 계획을 한 장 안에 정리합니다.
             </div>
 
             ${archiveStatusHtml}
@@ -2530,7 +2803,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
             <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 가정 전달 포인트" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterPrintPremiumExamReport('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">PDF/출력</button>
+                <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">리포트 크게 보기/출력</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
@@ -2538,9 +2811,8 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
                 <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:#7c3aed; background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.16);" onclick="reportCenterRequestExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', this)">프리미엄 분석</button>
             </div>
 
-            <div style="font-size:13px; font-weight:800; color:var(--text); margin-top:4px;">PDF 미리보기</div>
-            <div id="report-center-premium-preview" style="background:var(--surface-2); border:1px solid var(--border); border-radius:18px; padding:14px; overflow-x:auto;">
-                ${premiumPreview}
+            <div style="padding:14px; border:1px solid var(--border); border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.6;">
+                프리미엄 리포트 문구와 출력 상태는 전체화면에서 정확히 확인합니다.
             </div>
         </div>
     ` : `
