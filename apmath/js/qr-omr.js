@@ -733,6 +733,8 @@ function installOmrInputStyle() {
         .omr-name-sub { margin-top:2px; font-size:10px; font-weight:700; color:var(--secondary); line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
         .omr-cell-btn { width:100%; height:100%; min-height:34px; border:0; background:transparent; color:var(--success); font-size:13px; font-weight:800; font-family:inherit; cursor:pointer; border-radius:0; display:flex; align-items:center; justify-content:center; }
         .omr-cell-btn.wrong { color:var(--error); background:rgba(232,65,79,0.08); }
+        .omr-cell-btn.blank { cursor:default; color:transparent; background:transparent; }
+        .omr-cell-btn:disabled { opacity:1; }
         .omr-footer { display:flex; gap:8px; justify-content:space-between; align-items:center; padding:10px 0 calc(10px + env(safe-area-inset-bottom)); flex-shrink:0; }
         .omr-footer-info { font-size:12px; font-weight:700; color:var(--secondary); line-height:1.4; }
         .omr-save-btn { min-height:42px; padding:0 18px; border-radius:12px; font-size:13px; font-weight:800; }
@@ -798,12 +800,24 @@ function buildOmrClassOptions(selectedClassId) {
     return `<option value="">${omrEscape(grade)} 전체</option>` + classes.map(c => `<option value="${omrEscape(c.id)}"${String(selectedClassId || '') === String(c.id) ? ' selected' : ''}>${omrEscape(c.name)}</option>`).join('');
 }
 
+function isOmrExamReady() {
+    const ui = ensureOmrInputState();
+    const title = String(ui.examTitle || '').trim();
+    const date = String(ui.examDate || '').trim();
+    const qCount = Number(ui.questionCount || 0);
+    return !!(title && date && Number.isFinite(qCount) && qCount > 0);
+}
+
 function renderOmrInputTable(students, questionCount) {
+    const ready = isOmrExamReady();
     const head = Array.from({ length: questionCount }, (_, idx) => `<th>${idx + 1}</th>`).join('');
     const rows = students.map(s => {
         const className = getOmrClassName(getOmrClassIdForStudent(s.id));
         const cells = Array.from({ length: questionCount }, (_, idx) => {
             const q = idx + 1;
+            if (!ready) {
+                return `<td><button type="button" id="omr-cell-${omrEscape(s.id)}-${q}" class="omr-cell-btn blank" disabled></button></td>`;
+            }
             const wrong = isOmrWrong(s.id, q);
             return `<td><button type="button" id="omr-cell-${omrEscape(s.id)}-${q}" class="omr-cell-btn ${wrong ? 'wrong' : ''}" onclick="toggleOmrCell('${omrEscape(s.id)}', ${q})">${wrong ? 'X' : 'O'}</button></td>`;
         }).join('');
@@ -852,10 +866,12 @@ function renderOmrInput() {
     if (!ui.questionCount) ui.questionCount = 25;
 
     const students = getOmrVisibleStudents();
-    const wrongTotal = students.reduce((sum, s) => {
+    const examReady = isOmrExamReady();
+    const wrongTotal = examReady ? students.reduce((sum, s) => {
         const set = getOmrWrongSet(s.id);
         return sum + Object.keys(set).filter(k => set[k]).length;
-    }, 0);
+    }, 0) : 0;
+    const footerInfoText = examReady ? `대상 ${students.length}명 · X ${wrongTotal}개` : `대상 ${students.length}명 · 시험 선택 전`;
 
     root.innerHTML = `
         <div id="omr-main">
@@ -888,7 +904,7 @@ function renderOmrInput() {
             <div id="omr-tbl-wrap">${renderOmrInputTable(students, Number(ui.questionCount) || 25)}</div>
 
             <div class="omr-footer">
-                <div class="omr-footer-info">대상 ${students.length}명 · X ${wrongTotal}개</div>
+                <div class="omr-footer-info">${omrEscape(footerInfoText)}</div>
                 <button class="btn btn-primary omr-save-btn" onclick="saveOmrInputBulk(this)">전체 저장</button>
             </div>
         </div>
@@ -896,6 +912,11 @@ function renderOmrInput() {
 }
 
 function toggleOmrCell(studentId, questionNo) {
+    if (!isOmrExamReady()) {
+        toast('시험명을 먼저 선택하거나 입력하세요.', 'warn');
+        return;
+    }
+
     const set = getOmrWrongSet(studentId);
     const key = String(questionNo);
     set[key] = !set[key];

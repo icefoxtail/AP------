@@ -446,6 +446,12 @@ function drawerSection() {
     return '';
 }
 
+function openManualCenter() {
+    const url = '../manual/';
+    const opened = window.open(url, '_blank', 'noopener');
+    if (!opened) window.location.href = url;
+}
+
 function openExamScoreMenu() {
     showModal('시험성적', `
         <div style="display:flex; flex-direction:column; gap:10px;">
@@ -465,6 +471,7 @@ function buildDrawerMenu(roleKey) {
             ${drawerItem('', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
             ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+            ${drawerItem('', '사용설명서', "closeAppDrawer(); openManualCenter();")}
         `;
     }
 
@@ -483,6 +490,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('', '클리닉', "closeAppDrawer(); if(typeof openClinicBasket==='function') openClinicBasket(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+        ${drawerItem('', '사용설명서', "closeAppDrawer(); openManualCenter();")}
     `;
 }
 
@@ -1107,6 +1115,7 @@ window.safeToastError = safeToastError;
 window.setButtonBusy = setButtonBusy;
 window.renderAppDrawer = renderAppDrawer;
 window.openAppDrawer = openAppDrawer;
+window.openManualCenter = openManualCenter;
 window.closeAppDrawer = closeAppDrawer;
 window.removeAppDrawer = removeAppDrawer;
 window.goHome = goHome;

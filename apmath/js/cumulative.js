@@ -147,6 +147,132 @@ function getMonthDays(month) {
     return Array.from({ length: endDay }, (_, idx) => `${m}-${String(idx + 1).padStart(2, '0')}`);
 }
 
+
+function getAttendanceLedgerTodayStr() {
+    return typeof getTodayStr === 'function' ? getTodayStr() : new Date().toLocaleDateString('sv-SE');
+}
+
+function normalizeAttendanceLedgerDate(value) {
+    if (typeof normalizeDateStr === 'function') return normalizeDateStr(value);
+    const s = String(value || '').trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : '';
+}
+
+function getAttendanceLedgerSelectedDate() {
+    const today = getAttendanceLedgerTodayStr();
+    const safe = normalizeAttendanceLedgerDate(state.ui?.attendanceLedgerDate || '');
+    return safe || today;
+}
+
+function setAttendanceLedgerDate(dateStr) {
+    const safe = normalizeAttendanceLedgerDate(dateStr) || getAttendanceLedgerTodayStr();
+    if (!state.ui) state.ui = {};
+    state.ui.attendanceLedgerDate = safe;
+    state.ui.attendanceLedgerMonth = safe.slice(0, 7);
+}
+
+function mergeAttendanceLedgerDateRecords(date, attendanceRows = [], homeworkRows = []) {
+    const d = normalizeAttendanceLedgerDate(date);
+    if (!d) return;
+
+    if (!state.db.attendance) state.db.attendance = [];
+    if (!state.db.homework) state.db.homework = [];
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+
+    const month = d.slice(0, 7);
+    if (!state.ui.monthlyAttendanceCache[month]) {
+        state.ui.monthlyAttendanceCache[month] = { month, attendance: [], homework: [], academy_schedules: [] };
+    }
+    const cache = state.ui.monthlyAttendanceCache[month];
+    if (!Array.isArray(cache.attendance)) cache.attendance = [];
+    if (!Array.isArray(cache.homework)) cache.homework = [];
+
+    const mergeRows = function(target, rows) {
+        if (!Array.isArray(target) || !Array.isArray(rows)) return;
+        rows.forEach(row => {
+            if (!row || String(row.date || '') !== d) return;
+            const sid = String(row.student_id || row.studentId || '');
+            if (!sid) return;
+            const idx = target.findIndex(item => String(item.student_id) === sid && String(item.date || '') === d);
+            const nextRow = { ...row, student_id: sid, date: d };
+            if (idx > -1) target[idx] = { ...target[idx], ...nextRow };
+            else target.push(nextRow);
+        });
+    };
+
+    mergeRows(state.db.attendance, attendanceRows);
+    mergeRows(state.db.homework, homeworkRows);
+    mergeRows(cache.attendance, attendanceRows);
+    mergeRows(cache.homework, homeworkRows);
+}
+
+async function loadAttendanceLedgerDateData(date, force = false) {
+    const d = normalizeAttendanceLedgerDate(date);
+    if (!d) return false;
+    const month = d.slice(0, 7);
+
+    await loadMonthlyAttendance(month, force);
+
+    if (!state.ui) state.ui = {};
+    if (!state.ui.attendanceLedgerDateCache) state.ui.attendanceLedgerDateCache = {};
+    if (!force && state.ui.attendanceLedgerDateCache[d]) return true;
+
+    try {
+        const data = await api.get(`attendance-history?date=${encodeURIComponent(d)}`);
+        const attendanceRows = Array.isArray(data.attendance) ? data.attendance : [];
+        const homeworkRows = Array.isArray(data.homework) ? data.homework : [];
+        mergeAttendanceLedgerDateRecords(d, attendanceRows, homeworkRows);
+        state.ui.attendanceLedgerDateCache[d] = true;
+        return true;
+    } catch (e) {
+        console.warn('[loadAttendanceLedgerDateData] failed:', e);
+        return false;
+    }
+}
+
+function scrollAttendanceLedgerToSelectedDate() {
+    const date = getAttendanceLedgerSelectedDate();
+    const wrap = document.getElementById('att-tbl-wrap');
+    const target = document.querySelector(`#att-tbl th[data-date="${date}"]`);
+    if (!wrap || !target) return;
+
+    const targetLeft = target.offsetLeft;
+    const stickyWidth = document.querySelector('#att-tbl .att-nc')?.offsetWidth || 90;
+    wrap.scrollLeft = Math.max(targetLeft - stickyWidth - 12, 0);
+}
+
+async function changeAttendanceLedgerDate(dateStr) {
+    const safeDate = normalizeAttendanceLedgerDate(dateStr);
+    if (!safeDate) {
+        toast('날짜를 선택하세요.', 'warn');
+        return;
+    }
+
+    setAttendanceLedgerDate(safeDate);
+
+    const monthInput = document.getElementById('att-mon');
+    if (monthInput) monthInput.value = safeDate.slice(0, 7);
+
+    await loadAttendanceLedgerDateData(safeDate, true);
+    renderAttendanceLedgerTable();
+}
+
+async function changeAttendanceLedgerMonth(monthStr) {
+    const safeMonth = String(monthStr || '').trim();
+    if (!/^\d{4}-\d{2}$/.test(safeMonth)) return;
+
+    if (!state.ui) state.ui = {};
+    state.ui.attendanceLedgerMonth = safeMonth;
+
+    const selected = normalizeAttendanceLedgerDate(state.ui.attendanceLedgerDate || '');
+    if (!selected || selected.slice(0, 7) !== safeMonth) {
+        state.ui.attendanceLedgerDate = `${safeMonth}-01`;
+    }
+
+    await loadAttendanceLedgerDateData(state.ui.attendanceLedgerDate, true);
+    renderAttendanceLedgerTable();
+}
+
 async function loadMonthlyAttendance(month, force = false) {
     const safeMonth = String(month || new Date().toLocaleDateString('sv-SE').slice(0, 7)).trim();
 
@@ -473,8 +599,10 @@ function renderAttendanceCellContent(studentId, date) {
 }
 
 function openAttendanceLedger() {
-    if (!state.ui.attendanceLedgerMonth) {
-        state.ui.attendanceLedgerMonth = new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    if (!state.ui.attendanceLedgerDate) {
+        setAttendanceLedgerDate(getAttendanceLedgerTodayStr());
+    } else if (!state.ui.attendanceLedgerMonth) {
+        state.ui.attendanceLedgerMonth = getAttendanceLedgerSelectedDate().slice(0, 7);
     }
 
     const root = document.getElementById('app-root');
@@ -501,6 +629,8 @@ function openAttendanceLedger() {
     const teacherHtml = isAdmin
         ? `<select class="att-ctrl" id="att-teacher" onchange="state.ui.attendanceLedgerTeacher=this.value;state.ui.attendanceLedgerClassId='';openAttendanceLedger()">${buildCumulativeAttendanceTeacherOptions(teacherFilter)}</select>`
         : '';
+    const selectedDate = getAttendanceLedgerSelectedDate();
+    const todayStr = getAttendanceLedgerTodayStr();
 
     root.innerHTML = `
 <style>
@@ -509,6 +639,11 @@ function openAttendanceLedger() {
 #att-title { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; white-space: nowrap; }
 #att-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .att-ctrl { height: 36px; padding: 0 10px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
+.att-date-ctrl { min-width: 136px; }
+.att-today-btn { color: var(--primary); background: rgba(26,92,255,0.07); border-color: rgba(26,92,255,0.16); font-weight: 800; }
+.att-selected-date { background: rgba(26,92,255,0.08) !important; box-shadow: inset 0 0 0 1px rgba(26,92,255,0.16); }
+.att-selected-date .att-sign { background: rgba(26,92,255,0.06); }
+@media (max-width: 640px) { #att-controls { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .att-ctrl { width: 100%; min-width: 0; } .att-date-ctrl { min-width: 0; } .att-today-btn { padding-left: 8px; padding-right: 8px; } }
 #att-legend { font-size: 11px; font-weight: 700; color: var(--secondary); display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; flex-shrink: 0; }
 .att-legend-item { display: inline-flex; align-items: center; gap: 4px; min-height: 22px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); white-space: nowrap; line-height: 1; }
 .att-legend-item b { font-size: 12px; font-weight: 800; color: var(--text); line-height: 1; }
@@ -537,7 +672,9 @@ function openAttendanceLedger() {
   <div id="att-header-row">
     <div id="att-title">출석부</div>
     <div id="att-controls">
-      <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="state.ui.attendanceLedgerMonth=this.value; loadMonthlyAttendance(this.value, true).then(()=>renderAttendanceLedgerTable());">
+      <input type="date" class="att-ctrl att-date-ctrl" id="att-date" value="${apEscapeHtml(selectedDate)}" onchange="changeAttendanceLedgerDate(this.value)" title="출석부 기준일">
+      <button type="button" class="att-ctrl att-today-btn" onclick="changeAttendanceLedgerDate('${apEscapeHtml(todayStr)}')">오늘</button>
+      <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="changeAttendanceLedgerMonth(this.value)">
       ${teacherHtml}
       <select class="att-ctrl" id="att-sec" onchange="state.ui.attendanceLedgerSection=this.value;state.ui.attendanceLedgerClassId='';openAttendanceLedger()">
         <option value=""${sectionFilter === '' ? ' selected' : ''}>전체 (중/고)</option>
@@ -560,7 +697,7 @@ function openAttendanceLedger() {
   <div id="att-tbl-wrap"><div id="att-tbl-root"></div></div>
 </div>`;
 
-    loadMonthlyAttendance(state.ui.attendanceLedgerMonth, true).then(function() {
+    loadAttendanceLedgerDateData(selectedDate, true).then(function() {
         renderAttendanceLedgerTable();
     });
 }
@@ -569,8 +706,9 @@ function renderAttendanceLedgerTable() {
     const root = document.getElementById('att-tbl-root');
     if (!root) return;
 
-    const month = state.ui.attendanceLedgerMonth || new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    const month = state.ui.attendanceLedgerMonth || getAttendanceLedgerSelectedDate().slice(0, 7);
     const days = getMonthDays(month);
+    const selectedDate = getAttendanceLedgerSelectedDate();
     const classId = state.ui.attendanceLedgerClassId || document.getElementById('att-cls')?.value || '';
     const section = state.ui.attendanceLedgerSection || document.getElementById('att-sec')?.value || '';
     const teacherFilter = getCumulativeAttendanceTeacherFilter();
@@ -596,7 +734,8 @@ function renderAttendanceLedgerTable() {
         const num = Number(d.slice(-2));
         const dayName = _attDayName(d);
         const style = _attDayStyle(d);
-        return `<th style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;text-align:center;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;text-align:center;">${dayName}</div></th>`;
+        const selectedClass = d === selectedDate ? ' class="att-selected-date"' : '';
+        return `<th${selectedClass} data-date="${apEscapeHtml(d)}" style="width:32px;min-width:32px;${style}"><div style="font-size:11px;font-weight:700;line-height:1.2;text-align:center;">${num}</div><div style="font-size:10px;font-weight:600;line-height:1.2;text-align:center;">${dayName}</div></th>`;
     }).join('');
 
     const bodyRows = grouped.map(g => {
@@ -609,9 +748,10 @@ function renderAttendanceLedgerTable() {
                 const sched = getMonthlyScheduleBadges(sid, d);
                 const isHol = sched.globalClosed || sched.studentClosed;
                 const isClassDay = isAttendanceClassDay(sid, d);
-                const cls = (isHol || isClassDay) ? 'att-dc' : 'att-dc att-no-class';
+                const baseCls = (isHol || isClassDay) ? 'att-dc' : 'att-dc att-no-class';
+                const cls = d === selectedDate ? `${baseCls} att-selected-date` : baseCls;
                 const click = (isHol || isClassDay) ? `onclick="toggleAttendanceCellStatus('${sid}','${d}')"` : '';
-                return `<td class="${cls}" id="att-cell-${sid}-${d}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
+                return `<td class="${cls}" id="att-cell-${sid}-${d}" data-date="${apEscapeHtml(d)}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
 
             const nameStyle = getAttendanceStudentNameStyle(s);
@@ -626,10 +766,11 @@ function renderAttendanceLedgerTable() {
 
     const empty = `<tr><td colspan="${days.length + 1}" style="padding:40px;text-align:center;color:var(--secondary);font-size:13px;font-weight:600;">표시할 학생이 없습니다.</td></tr>`;
     root.innerHTML = `<table id="att-tbl"><thead><tr><th class="att-nc" style="padding:6px 12px;min-width:90px;text-align:center;font-size:11px;font-weight:700;color:var(--secondary);">이름</th>${headerCells}</tr></thead><tbody>${bodyRows || empty}</tbody></table>`;
+    requestAnimationFrame(scrollAttendanceLedgerToSelectedDate);
 }
 
 async function toggleAttendanceCellStatus(studentId, date) {
-    const today = new Date().toLocaleDateString('sv-SE');
+    const today = getAttendanceLedgerTodayStr();
     if (date > today) return;
 
     const sched = getMonthlyScheduleBadges(studentId, date);

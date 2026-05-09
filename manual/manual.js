@@ -87,13 +87,15 @@
     }
 
     const JUMP_LINKS = [
+        { id: 'manual-search-direct', title: '설명서 검색', desc: '원하는 설명 바로 찾기' },
         { id: 'qr-omr-basic', title: 'QR/OMR', desc: 'QR 생성과 오답 제출' },
         { id: 'archive-qr-print', title: '아카이브 QR 출력', desc: '선생님·반 선택 후 출력' },
         { id: 'archive-manual-file-name', title: '아카이브 파일명 입력', desc: 'exams/ 파일명 넣는 법' },
         { id: 'teacher-direct-input', title: '학생별 직접 입력', desc: 'QR 제출 못 했을 때' },
         { id: 'exam-grade-list', title: '시험성적', desc: '제출률·평균·수정' },
-        { id: 'attendance-homework', title: '출석·숙제', desc: '○ × 지각 보강 상담' },
-        { id: 'report-create', title: '레포트 문구', desc: '학부모·학생·상담용' },
+        { id: 'report-center-overview', title: '리포트 센터', desc: '오늘·평가·상담 리포트' },
+        { id: 'report-print-pdf', title: 'PDF 출력', desc: '리포트 크게 보기/출력' },
+        { id: 'report-archive-detail', title: '문항 원문 확인', desc: '아카이브 원문 분석' },
         { id: 'trouble-duplicate-exam', title: '시험 중복', desc: '카드가 두 개 보일 때' }
     ];
 

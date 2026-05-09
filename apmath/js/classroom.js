@@ -38,6 +38,9 @@ function injectClassroomStyles() {
         .cls-v4-tool { flex:0 0 auto; min-height:36px; padding:0 13px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; box-shadow:none; }
         .cls-v4-tool.primary { background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); color:var(--primary); }
         .cls-v4-tool.highlight { background:rgba(124,58,237,0.07); border-color:rgba(124,58,237,0.16); color:#7c3aed; }
+        .cls-v4-date-input { flex:0 0 auto; width:138px; min-height:36px; height:36px; padding:0 10px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; font-family:inherit; box-shadow:none; }
+        .cls-v4-date-input::-webkit-calendar-picker-indicator { opacity:0.75; cursor:pointer; }
+        .cls-v4-date-reset { flex:0 0 auto; min-height:36px; height:36px; padding:0 12px; border-radius:999px; border:1px solid rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); color:var(--primary); font-size:12px; font-weight:700; box-shadow:none; }
         .cls-v4-section { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px 7px; }
         .cls-v4-section h3 { margin:0; font-size:14px; font-weight:700; color:var(--text); letter-spacing:-0.2px; }
         .cls-v4-section span { font-size:11px; font-weight:700; color:var(--secondary); }
@@ -297,9 +300,79 @@ function hasConsultationForStudentDate(studentId, date) {
     );
 }
 
-function renderClassroomConsultationButton(studentId, classId, date) {
+function renderClassroomMoreButton(studentId, classId, date) {
     const on = hasConsultationForStudentDate(studentId, date);
-    return `<button class="btn cls-v4-status tag consult ${on ? 'on' : ''}" title="상담" onclick="openClassroomConsultation('${studentId}', '${classId}', '${date}')">${on ? '○' : ''}</button>`;
+    return `<button class="btn cls-v4-status tag consult ${on ? 'on' : ''}" title="관리" onclick="openClassroomMoreMenu('${studentId}', '${classId}', '${date}')">…</button>`;
+}
+
+function openClassroomMoreMenu(studentId, classId, date) {
+    const sid = String(studentId);
+    const cid = String(classId);
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const student = (state.db.students || []).find(s => String(s.id) === sid);
+    const studentName = student?.name || '학생';
+
+    showModal('관리', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="padding:12px 14px; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);">
+                <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.35;">${apEscapeHtml(studentName)}</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.4;">${apEscapeHtml(d)}</div>
+            </div>
+            <button class="btn cls-input" style="min-height:50px; justify-content:center; cursor:pointer;" onclick="closeModal(true); openClassroomConsultation('${sid}', '${cid}', '${d}')">상담 기록</button>
+        </div>
+    `);
+}
+
+function renderClassroomConsultationButton(studentId, classId, date) {
+    return renderClassroomMoreButton(studentId, classId, date);
+}
+
+function renderAttendanceLedgerCellIfOpen(studentId, date) {
+    const sid = String(studentId);
+    const d = String(date || '');
+    const cell = document.getElementById(`att-cell-${sid}-${d}`);
+    if (cell && typeof renderAttendanceCellContent === 'function') {
+        cell.innerHTML = renderAttendanceCellContent(sid, d);
+    }
+}
+
+function syncClassroomAttendanceStatusToState(studentId, date, status) {
+    const sid = String(studentId);
+    const d = String(date || '');
+    if (!d) return null;
+
+    if (!state.db.attendance) state.db.attendance = [];
+    let rec = state.db.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === d);
+    if (!rec) {
+        rec = { student_id: sid, date: d, status: status || '미기록', tags: '', memo: '' };
+        state.db.attendance.push(rec);
+    } else {
+        rec.status = status;
+    }
+    rec.updated_at = new Date().toISOString();
+
+    const month = d.slice(0, 7);
+    const cache = state.ui?.monthlyAttendanceCache?.[month];
+    if (cache && Array.isArray(cache.attendance)) {
+        let mRec = cache.attendance.find(a => String(a.student_id) === sid && String(a.date || '') === d);
+        if (!mRec) {
+            mRec = {
+                student_id: sid,
+                date: d,
+                status: rec.status || '미기록',
+                tags: rec.tags || '',
+                memo: rec.memo || ''
+            };
+            cache.attendance.push(mRec);
+        }
+        mRec.status = rec.status;
+        mRec.tags = rec.tags || mRec.tags || '';
+        mRec.memo = rec.memo || mRec.memo || '';
+        mRec.updated_at = rec.updated_at;
+    }
+
+    renderAttendanceLedgerCellIfOpen(sid, d);
+    return rec;
 }
 
 function openClassroomConsultation(studentId, classId, date) {
@@ -355,7 +428,7 @@ function syncAttendanceMetaToState(studentId, date, tags, memo) {
 
 async function toggleAttendanceTag(studentId, date, tag) {
     const sid = String(studentId);
-    const d = String(date || new Date().toLocaleDateString('sv-SE'));
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
     const meta = getAttendanceMetaForStudentDate(sid, d);
     const prevTags = stringifyAttendanceTags(meta.tags);
     const prevMemo = meta.memo;
@@ -365,6 +438,7 @@ async function toggleAttendanceTag(studentId, date, tag) {
     const nextTagText = stringifyAttendanceTags(nextTags);
 
     syncAttendanceMetaToState(sid, d, nextTags, prevMemo);
+    renderAttendanceLedgerCellIfOpen(sid, d);
     if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
 
     try {
@@ -372,6 +446,7 @@ async function toggleAttendanceTag(studentId, date, tag) {
         if (!r?.success) throw new Error('fail');
     } catch (e) {
         syncAttendanceMetaToState(sid, d, prevTags, prevMemo);
+        renderAttendanceLedgerCellIfOpen(sid, d);
         if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
         toast('저장 실패', 'warn');
     }
@@ -379,7 +454,7 @@ async function toggleAttendanceTag(studentId, date, tag) {
 
 function openAttendanceMetaModal(studentId, date, options = {}) {
     const sid = String(studentId);
-    const d = String(date || new Date().toLocaleDateString('sv-SE'));
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
     const student = (state.db.students || []).find(s => String(s.id) === sid);
     const meta = getAttendanceMetaForStudentDate(sid, d);
     const status = meta.record?.status || '미기록';
@@ -410,7 +485,7 @@ function openAttendanceMetaModal(studentId, date, options = {}) {
 
 async function saveAttendanceMeta(studentId, date, options = {}) {
     const sid = String(studentId);
-    const d = String(date || new Date().toLocaleDateString('sv-SE'));
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
     const prev = getAttendanceMetaForStudentDate(sid, d);
     const tags = Array.from(document.querySelectorAll('.att-meta-tag:checked')).map(el => el.value);
     const memo = document.getElementById('att-meta-memo')?.value.trim() || '';
@@ -440,6 +515,82 @@ function rerenderClassPreserveScroll(classId) {
     requestAnimationFrame(() => window.scrollTo(0, y));
 }
 
+function getClassroomOperationDate() {
+    if (typeof getOperationDate === 'function') return getOperationDate();
+    if (typeof getBaseDate === 'function') return getBaseDate();
+    return new Date().toLocaleDateString('sv-SE');
+}
+
+function getClassroomTodayDate() {
+    return typeof getTodayStr === 'function' ? getTodayStr() : new Date().toLocaleDateString('sv-SE');
+}
+
+function normalizeClassroomDate(value) {
+    if (typeof normalizeDateStr === 'function') return normalizeDateStr(value);
+    const s = String(value || '').trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : '';
+}
+
+function mergeClassroomDateRecords(date, attendanceRows = [], homeworkRows = []) {
+    const d = normalizeClassroomDate(date);
+    if (!d) return;
+
+    if (!state.db.attendance) state.db.attendance = [];
+    if (!state.db.homework) state.db.homework = [];
+
+    const mergeRows = function(target, rows) {
+        if (!Array.isArray(rows)) return;
+        rows.forEach(row => {
+            if (!row || String(row.date || '') !== d) return;
+            const sid = String(row.student_id || row.studentId || '');
+            if (!sid) return;
+            const idx = target.findIndex(item => String(item.student_id) === sid && String(item.date || '') === d);
+            if (idx > -1) target[idx] = { ...target[idx], ...row, student_id: sid, date: d };
+            else target.push({ ...row, student_id: sid, date: d });
+        });
+    };
+
+    mergeRows(state.db.attendance, attendanceRows);
+    mergeRows(state.db.homework, homeworkRows);
+}
+
+async function loadClassroomOperationDateData(date, force = false) {
+    const d = normalizeClassroomDate(date);
+    if (!d) return false;
+    if (!state.ui) state.ui = {};
+    if (!state.ui.classOperationDateCache) state.ui.classOperationDateCache = {};
+    if (!force && state.ui.classOperationDateCache[d]) return true;
+
+    try {
+        const data = await api.get(`attendance-history?date=${encodeURIComponent(d)}`);
+        const attendanceRows = Array.isArray(data.attendance) ? data.attendance : [];
+        const homeworkRows = Array.isArray(data.homework) ? data.homework : [];
+        mergeClassroomDateRecords(d, attendanceRows, homeworkRows);
+        state.ui.classOperationDateCache[d] = true;
+        return true;
+    } catch (e) {
+        console.warn('[loadClassroomOperationDateData] failed:', e);
+        return false;
+    }
+}
+
+async function changeClassOperationDate(cid, dateStr) {
+    const safeDate = normalizeClassroomDate(dateStr);
+    if (!safeDate) {
+        toast('날짜를 선택하세요.', 'warn');
+        return;
+    }
+
+    if (typeof setBaseDate === 'function') setBaseDate(safeDate);
+    else {
+        if (!state.ui) state.ui = {};
+        state.ui.baseDate = safeDate;
+    }
+
+    await loadClassroomOperationDateData(safeDate, true);
+    renderClass(cid);
+}
+
 // [5G-2] PIN 일괄 배분 기능
 async function handleBatchGeneratePins(classId) {
     if (!confirm('이 반에서 PIN이 아직 없는 학생들에게 고유 PIN을 일괄 배분하시겠습니까? (기존 PIN은 유지됨)')) return;
@@ -453,8 +604,8 @@ async function handleBatchGeneratePins(classId) {
 }
 
 // [Phase 4/5] 요약 계산
-function computeClassTodaySummary(classId) {
-    const today = new Date().toLocaleDateString('sv-SE');
+function computeClassTodaySummary(classId, dateStr = '') {
+    const today = normalizeClassroomDate(dateStr) || getClassroomOperationDate();
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
     const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
     const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
@@ -538,6 +689,8 @@ function buildClassroomTodayMaps(students, today) {
 }
 
 function renderClassTopBarV4B(cls, summary, today) {
+    const realToday = getClassroomTodayDate();
+    const dateLabel = today === realToday ? '오늘 운영' : '선택일 운영';
     const statusHtml = summary.isScheduled
         ? `<div class="cls-v4-summary" id="v4-summary-root">
             <span class="cls-v4-pill">출석 <b>${summary.att}/${summary.total}</b></span>
@@ -549,16 +702,19 @@ function renderClassTopBarV4B(cls, summary, today) {
         <div class="cls-v4-top">
             <div class="cls-v4-title">
                 <div class="cls-v4-title-main">${apEscapeHtml(cls.name)}</div>
-                <div class="cls-v4-title-sub">${today} · ${formatClassScheduleDays(cls.schedule_days)}</div>
+                <div class="cls-v4-title-sub">${dateLabel} · ${today} · ${formatClassScheduleDays(cls.schedule_days)}</div>
             </div>
             ${statusHtml}
         </div>
     `;
 }
 
-function renderClassToolBarV4B(cid, plannerEnabled) {
+function renderClassToolBarV4B(cid, plannerEnabled, today) {
+    const realToday = getClassroomTodayDate();
     return `
         <div class="cls-v4-tools">
+            <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
+            <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
             <button class="btn cls-v4-tool primary" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn cls-v4-tool" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn cls-v4-tool" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
@@ -568,7 +724,7 @@ function renderClassToolBarV4B(cid, plannerEnabled) {
     `;
 }
 
-function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isScheduled, plannerEnabled) {
+function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isScheduled, plannerEnabled, today) {
     if (!students.length) {
         return `<div class="cls-v4-board"><div class="cls-v4-empty">재원생이 없습니다.</div></div>`;
     }
@@ -581,15 +737,15 @@ function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isSc
                 <div>숙제</div>
                 <div>지각</div>
                 <div>보강</div>
-                <div>상담</div>
+                <div>…</div>
             </div>
-            ${students.map(s => renderClassStudentRowV4B(cid, s, todayAttMap[s.id], todayHwMap[s.id], isScheduled, plannerEnabled)).join('')}
+            ${students.map(s => renderClassStudentRowV4B(cid, s, todayAttMap[s.id], todayHwMap[s.id], isScheduled, plannerEnabled, today)).join('')}
         </div>
     `;
 }
 
-function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plannerEnabled) {
-    const today = new Date().toLocaleDateString('sv-SE');
+function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plannerEnabled, today) {
+    const rowDate = normalizeClassroomDate(today) || getClassroomOperationDate();
     const attStyle = getV4BadgeStyle('att', attStatus, isScheduled);
     const attLabel = getV4CompactAttendanceLabel(attStatus, isScheduled);
     const hwStyle = getV4BadgeStyle('hw', hwStatus, isScheduled);
@@ -601,11 +757,11 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
                 <div class="cls-v4-student">${apEscapeHtml(s.name)}</div>
             </div>
             <div class="cls-v4-badges">
-                <button class="btn cls-v4-status class-att-toggle" style="${attStyle}" onclick="toggleAtt('${s.id}')">${attLabel}</button>
-                <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}')">${hwLabel}</button>
-                ${renderAttendanceTagButton(s.id, today, '지각')}
-                ${renderAttendanceTagButton(s.id, today, '보강')}
-                ${renderClassroomConsultationButton(s.id, cid, today)}
+                <button class="btn cls-v4-status class-att-toggle" style="${attStyle}" onclick="toggleAtt('${s.id}', '${rowDate}')">${attLabel}</button>
+                <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}', '${rowDate}')">${hwLabel}</button>
+                ${renderAttendanceTagButton(s.id, rowDate, '지각')}
+                ${renderAttendanceTagButton(s.id, rowDate, '보강')}
+                ${renderClassroomMoreButton(s.id, cid, rowDate)}
             </div>
         </div>
     `;
@@ -615,7 +771,7 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
 function updateClassSummaryDOM(cid) {
     const root = document.getElementById('v4-summary-root');
     if (!root) return;
-    const summary = computeClassTodaySummary(cid);
+    const summary = computeClassTodaySummary(cid, getClassroomOperationDate());
     root.innerHTML = summary.isScheduled
         ? `<span class="cls-v4-pill">출석 <b>${summary.att}/${summary.total}</b></span>
            <span class="cls-v4-pill">숙제 <b>${summary.hw}/${summary.total}</b></span>`
@@ -630,12 +786,12 @@ function updateStudentRowDOM(sid, cid) {
     const student = state.db.students.find(st => String(st.id) === String(sid));
     if (!cls || !student) return false;
 
-    const today = new Date().toLocaleDateString('sv-SE');
-    const summary = computeClassTodaySummary(cid);
+    const today = getClassroomOperationDate();
+    const summary = computeClassTodaySummary(cid, today);
     const attCur = state.db.attendance.find(a => String(a.student_id) === String(sid) && a.date === today);
     const hwCur = state.db.homework.find(h => String(h.student_id) === String(sid) && h.date === today);
     const plannerEnabled = isPlannerTargetClass(cls);
-    const newHtml = renderClassStudentRowV4B(cid, student, attCur?.status, hwCur?.status, summary.isScheduled, plannerEnabled);
+    const newHtml = renderClassStudentRowV4B(cid, student, attCur?.status, hwCur?.status, summary.isScheduled, plannerEnabled, today);
 
     row.insertAdjacentHTML('afterend', newHtml);
     row.remove();
@@ -671,8 +827,8 @@ function renderClass(cid) {
         return;
     }
 
-    const today = new Date().toLocaleDateString('sv-SE');
-    const summary = computeClassTodaySummary(cid);
+    const today = getClassroomOperationDate();
+    const summary = computeClassTodaySummary(cid, today);
     const students = getClassroomActiveStudents(cid);
     const { todayAttMap, todayHwMap } = buildClassroomTodayMaps(students, today);
     const plannerEnabled = isPlannerTargetClass(cls);
@@ -680,11 +836,11 @@ function renderClass(cid) {
     document.getElementById('app-root').innerHTML = `
         <div class="cls-fade-in cls-v4-wrap">
             ${renderClassTopBarV4B(cls, summary, today)}
-            ${renderClassToolBarV4B(cid, plannerEnabled)}
+            ${renderClassToolBarV4B(cid, plannerEnabled, today)}
             <div class="cls-v4-section">
                 <h3>학생 명단</h3>
             </div>
-            ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled)}
+            ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled, today)}
         </div>
     `;
 
@@ -722,7 +878,7 @@ function _getClassGradeKey(cls) {
 function openClassRecordModal(cid) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId: cid });
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayStr = getClassroomOperationDate();
     const allTextbooks = state.db.class_textbooks || [];
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
     if (activeBooks.length === 0 && cls?.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
@@ -865,8 +1021,8 @@ function renderLedgerTable() {
 
 // ★ 낙관적 업데이트 및 월간 캐시 동기화 적용
 async function toggleAtt(sid, date) {
-    const today = date || new Date().toLocaleDateString('sv-SE');
-    const isLedger = !!date;
+    const today = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const isLedger = !!date && !!document.getElementById('ledger-table-wrap');
     const list = isLedger ? ledgerState.attendance : state.db.attendance;
     const cur = list.find(a => String(a.student_id) === String(sid) && a.date === today);
     const hadRecord = !!cur;
@@ -877,6 +1033,7 @@ async function toggleAtt(sid, date) {
 
     if (cur) cur.status = next;
     else list.push({ student_id: sid, date: today, status: next });
+    syncClassroomAttendanceStatusToState(sid, today, next);
 
     if (isLedger) renderLedgerTable();
     else if (state.ui.currentClassId) {
@@ -891,18 +1048,23 @@ async function toggleAtt(sid, date) {
         if (typeof refreshDataOnly === 'function') {
             refreshDataOnly()
                 .then(() => {
-                    const month = today.slice(0, 7);
-                    if (state.ui?.monthlyAttendanceCache) {
-                        delete state.ui.monthlyAttendanceCache[month];
+                    renderAttendanceLedgerCellIfOpen(sid, today);
+                    if (!isLedger && typeof loadClassroomOperationDateData === 'function') {
+                        return loadClassroomOperationDateData(today, true).then(() => {
+                            if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+                        });
                     }
                 })
                 .catch(() => {});
         }
     } catch (e) {
-        if (hadRecord && cur) cur.status = prevStatus;
-        else {
+        if (hadRecord && cur) {
+            cur.status = prevStatus;
+            syncClassroomAttendanceStatusToState(sid, today, prevStatus || '미기록');
+        } else {
             const idx = list.findIndex(a => String(a.student_id) === String(sid) && a.date === today);
             if (idx > -1) list.splice(idx, 1);
+            syncClassroomAttendanceStatusToState(sid, today, '미기록');
         }
         if (isLedger) renderLedgerTable();
         else if (state.ui.currentClassId) {
@@ -916,8 +1078,8 @@ async function toggleAtt(sid, date) {
 
 // ★ 낙관적 업데이트 및 월간 캐시 동기화 적용
 async function toggleHw(sid, date) {
-    const today = date || new Date().toLocaleDateString('sv-SE');
-    const isLedger = !!date;
+    const today = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const isLedger = !!date && !!document.getElementById('ledger-table-wrap');
     const list = isLedger ? ledgerState.homework : state.db.homework;
     const cur = list.find(h => String(h.student_id) === String(sid) && h.date === today);
     const hadRecord = !!cur;
@@ -945,6 +1107,11 @@ async function toggleHw(sid, date) {
                     const month = today.slice(0, 7);
                     if (state.ui?.monthlyAttendanceCache) {
                         delete state.ui.monthlyAttendanceCache[month];
+                    }
+                    if (!isLedger && typeof loadClassroomOperationDateData === 'function') {
+                        return loadClassroomOperationDateData(today, true).then(() => {
+                            if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+                        });
                     }
                 })
                 .catch(() => {});
