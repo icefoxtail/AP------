@@ -250,8 +250,6 @@ async function changeAttendanceLedgerDate(dateStr) {
 
     setAttendanceLedgerDate(safeDate);
 
-    const monthInput = document.getElementById('att-mon');
-    if (monthInput) monthInput.value = safeDate.slice(0, 7);
 
     await loadAttendanceLedgerDateData(safeDate, true);
     renderAttendanceLedgerTable();
@@ -674,7 +672,6 @@ function openAttendanceLedger() {
     <div id="att-controls">
       <input type="date" class="att-ctrl att-date-ctrl" id="att-date" value="${apEscapeHtml(selectedDate)}" onchange="changeAttendanceLedgerDate(this.value)" title="출석부 기준일">
       <button type="button" class="att-ctrl att-today-btn" onclick="changeAttendanceLedgerDate('${apEscapeHtml(todayStr)}')">오늘</button>
-      <input type="month" class="att-ctrl" id="att-mon" value="${apEscapeHtml(state.ui.attendanceLedgerMonth)}" onchange="changeAttendanceLedgerMonth(this.value)">
       ${teacherHtml}
       <select class="att-ctrl" id="att-sec" onchange="state.ui.attendanceLedgerSection=this.value;state.ui.attendanceLedgerClassId='';openAttendanceLedger()">
         <option value=""${sectionFilter === '' ? ' selected' : ''}>전체 (중/고)</option>

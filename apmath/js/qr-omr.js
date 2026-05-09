@@ -668,6 +668,7 @@ function handleOmrHistoryChange() {
     ui.questionCount = item.questionCount || 25;
     ui.archiveFile = item.archiveFile || '';
     ui.answers = {};
+    ui.examSelected = true;
 
     renderOmrInput();
 }
@@ -682,7 +683,8 @@ function ensureOmrInputState() {
             grade: '',
             classId: '',
             archiveFile: localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '',
-            answers: {}
+            answers: {},
+            examSelected: false
         };
     }
     if (!state.ui.omrInput.answers) state.ui.omrInput.answers = {};
@@ -753,36 +755,46 @@ function installOmrInputStyle() {
     document.head.appendChild(style);
 }
 
-function updateOmrInputFromControls({ resetAnswers = true } = {}) {
+function updateOmrInputFromControls({ resetAnswers = true, resetExamSelection = false } = {}) {
     const ui = ensureOmrInputState();
     const prevKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.grade}|${ui.classId}`;
-    ui.examTitle = document.getElementById('omr-exam-title')?.value.trim() || ui.examTitle || '';
+    const prevExamKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.archiveFile || ''}`;
+
+    ui.examTitle = document.getElementById('omr-exam-title')?.value.trim() || '';
     ui.examDate = document.getElementById('omr-exam-date')?.value || ui.examDate || new Date().toLocaleDateString('sv-SE');
     ui.questionCount = Math.max(1, Math.min(80, parseInt(document.getElementById('omr-question-count')?.value, 10) || 25));
     ui.grade = document.getElementById('omr-grade')?.value || '';
     ui.classId = document.getElementById('omr-class')?.value || '';
     ui.archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archive-file')?.value || '');
+
     const nextKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.grade}|${ui.classId}`;
+    const nextExamKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.archiveFile || ''}`;
+
     if (resetAnswers && prevKey !== nextKey) ui.answers = {};
+    if (resetExamSelection && prevExamKey !== nextExamKey) {
+        ui.examSelected = false;
+        ui.answers = {};
+    }
+
     if (ui.examTitle) localStorage.setItem('AP_LAST_EXAM_NAME', ui.examTitle);
     if (ui.archiveFile) localStorage.setItem('AP_LAST_ARCHIVE_FILE', ui.archiveFile);
 }
 
 function handleOmrGradeChange() {
     const ui = ensureOmrInputState();
-    updateOmrInputFromControls({ resetAnswers: true });
+    updateOmrInputFromControls({ resetAnswers: true, resetExamSelection: false });
     ui.classId = '';
     ui.answers = {};
     renderOmrInput();
 }
 
 function handleOmrClassChange() {
-    updateOmrInputFromControls({ resetAnswers: true });
+    updateOmrInputFromControls({ resetAnswers: true, resetExamSelection: false });
     renderOmrInput();
 }
 
 function handleOmrMetaChange() {
-    updateOmrInputFromControls({ resetAnswers: true });
+    updateOmrInputFromControls({ resetAnswers: true, resetExamSelection: true });
     renderOmrInput();
 }
 
@@ -805,7 +817,19 @@ function isOmrExamReady() {
     const title = String(ui.examTitle || '').trim();
     const date = String(ui.examDate || '').trim();
     const qCount = Number(ui.questionCount || 0);
-    return !!(title && date && Number.isFinite(qCount) && qCount > 0);
+    return !!(ui.examSelected && title && date && Number.isFinite(qCount) && qCount > 0);
+}
+
+function activateCurrentOmrExam() {
+    updateOmrInputFromControls({ resetAnswers: true, resetExamSelection: false });
+    const ui = ensureOmrInputState();
+    if (!String(ui.examTitle || '').trim() || !String(ui.examDate || '').trim()) {
+        toast('시험명과 시험일을 먼저 입력하세요.', 'warn');
+        return;
+    }
+    ui.examSelected = true;
+    ui.answers = {};
+    renderOmrInput();
 }
 
 function renderOmrInputTable(students, questionCount) {
@@ -891,7 +915,7 @@ function renderOmrInput() {
             <div id="omr-sub-controls">
                 <select id="omr-history" class="omr-ctrl" style="min-width:220px;" onchange="handleOmrHistoryChange()">${buildOmrHistoryOptions()}</select>
                 <input id="omr-archive-file" class="omr-ctrl omr-text" value="${omrEscape(ui.archiveFile || '')}" placeholder="JS아카이브 파일명 선택 입력" onchange="handleOmrMetaChange()">
-                <button class="btn" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:800; border-radius:9px;" onclick="resetOmrAnswerDraft(); renderOmrInput();">현재 시험 다시 불러오기</button>
+                <button class="btn" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:800; border-radius:9px;" onclick="activateCurrentOmrExam()">현재 시험 다시 불러오기</button>
             </div>
 
             <div id="omr-guide">
@@ -1005,4 +1029,5 @@ window.handleOmrGradeChange = handleOmrGradeChange;
 window.handleOmrClassChange = handleOmrClassChange;
 window.handleOmrMetaChange = handleOmrMetaChange;
 window.handleOmrHistoryChange = handleOmrHistoryChange;
+window.activateCurrentOmrExam = activateCurrentOmrExam;
 window.goOmrInputHome = goOmrInputHome;
