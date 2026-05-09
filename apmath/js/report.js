@@ -2390,6 +2390,11 @@ function reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, 
     return items;
 }
 
+/**
+ * Legacy premium preview renderer.
+ * PDF 출력/인쇄 경로에서는 사용하지 않는다.
+ * PDF 출력은 reportCenterBuildCleanPdfDocument()를 사용한다.
+ */
 function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', options = {}) {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     const student = data.student;
@@ -2560,13 +2565,159 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     `;
 }
 
+function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    const student = data.student;
+    const session = data.session;
+    const stats = data.stats;
+    const teacherMemo = options.teacherMemo !== undefined ? String(options.teacherMemo || '').trim() : reportCenterGetExamReportTeacherMemo();
+    const aiAnalysis = reportCenterGetAiAnalysisForReport(session?.id, options);
+
+    if (!student || !session || !stats) {
+        return `<main class="aprc-pdf-document"><section class="aprc-pdf-panel aprc-empty-box">평가 리포트를 만들 시험 기록이 없습니다.</section></main>`;
+    }
+
+    const wrongRows = Array.isArray(stats.wrongRows) ? stats.wrongRows : [];
+    const wrongCount = wrongRows.length;
+    const qCount = Number(session.question_count || 0);
+    const correctRate = qCount ? Math.round(((qCount - wrongCount) / qCount) * 100) : null;
+    const recentAvg = getRecentAverage(student.id, 3);
+    const target = data.targetProgress;
+    const targetText = target && target.targetScore !== null
+        ? `${target.targetScore}점 목표${target.currentAverage !== null ? ` · 최근 평균 ${target.currentAverage}점` : ''}${target.remainScore !== undefined && target.currentAverage !== null ? ` · 목표까지 ${target.remainScore}점` : ''}`
+        : '목표점수 미설정';
+    const issued = new Date().toLocaleDateString('sv-SE').replace(/-/g, '.');
+    const examDate = String(session.exam_date || '').replace(/-/g, '.');
+    const safeTitle = reportCenterEscape(session.exam_title || '평가');
+    const tableMeta = reportCenterGetPremiumTableMeta(data);
+    const summaryItems = reportCenterBuildShortReportSummaryItems(data, aiAnalysis);
+    const meaningItems = reportCenterBuildEvaluationMeaningItems(data, correctRate, wrongCount, aiAnalysis);
+    const coreItems = [
+        { title: '성취', text: reportCenterTrimText(aiAnalysis?.summary || meaningItems[0] || summaryItems[0]?.text || '', 360) },
+        { title: '보완', text: reportCenterTrimText(aiAnalysis?.wrongAnalysis || meaningItems[1] || summaryItems[1]?.text || '', 320) },
+        { title: '계획', text: reportCenterTrimText(aiAnalysis?.nextPlan || meaningItems[2] || summaryItems[2]?.text || '', 320) }
+    ];
+    const diagnosisLines = reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo, aiAnalysis).slice(0, 2);
+    const nextPlanItems = reportCenterBuildNextPlanItems(data, aiAnalysis).slice(0, 4);
+    const parentMessageText = reportCenterEnsureParentOpening(aiAnalysis?.parentMessage || reportCenterBuildBaseReportDraft(studentId, sessionId, teacherMemo)?.parentMessage || '');
+    const archiveMessage = data.archiveDetails
+        ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
+        : (tableMeta.note || '문항 원문 확인 전입니다. 오답 번호·단원·정답률 기준으로 분석합니다.');
+    const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석 반영 · ${reportCenterEscape(aiAnalysis.source || 'report-analysis')}</div>` : '';
+
+    return `
+        <main class="aprc-pdf-document">
+            <header class="aprc-pdf-header">
+                <div>
+                    <div class="aprc-brand">AP MATH REPORT</div>
+                    <div class="aprc-title">평가 분석 리포트</div>
+                    <div class="aprc-subtitle">점수보다 오답의 흐름과 다음 보완 방향을 우선 확인합니다.</div>
+                    ${aiBadgeHtml}
+                </div>
+                <div class="aprc-issued">
+                    <div>발행일</div>
+                    <b>${reportCenterEscape(issued)}</b>
+                </div>
+            </header>
+
+            <section class="aprc-pdf-section aprc-pdf-student-band">
+                <div>
+                    <div class="aprc-student-name">${reportCenterEscape(student.name || '')}</div>
+                    <div class="aprc-student-meta">${reportCenterEscape(`${student.school_name || ''} ${student.grade || ''}`.trim() || '-')} · ${reportCenterEscape(data.classInfo.className || '-')}</div>
+                </div>
+                <div class="aprc-exam-meta">
+                    <div>${safeTitle}</div>
+                    <b>${reportCenterEscape(examDate || '-')}</b>
+                </div>
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-score-grid">
+                <div class="aprc-pdf-score-card aprc-main-score">
+                    <div class="aprc-card-label">이번 평가 점수</div>
+                    <div class="aprc-score-value">${reportCenterEscape(session.score ?? '-')}<span>점</span></div>
+                    <div class="aprc-card-note">${reportCenterEscape(reportCenterBuildScorePositionText(data))}</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">정답률</div>
+                    <div class="aprc-metric-value">${correctRate === null ? '-' : `${correctRate}%`}</div>
+                    <div class="aprc-card-note">${qCount || '-'}문항 중 오답 ${wrongCount}문항</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">비교 평균</div>
+                    <div class="aprc-metric-value">${stats.overallAvg === null ? '-' : `${stats.overallAvg}점`}</div>
+                    <div class="aprc-card-note">전체 ${stats.totalSessions || 0}명 · 반 ${stats.classSessions || 0}명</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">최근 흐름</div>
+                    <div class="aprc-metric-value">${recentAvg === null ? '-' : `${recentAvg}점`}</div>
+                    <div class="aprc-card-note">${reportCenterEscape(targetText)}</div>
+                </div>
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-core-grid">
+                ${coreItems.map(item => `
+                    <article class="aprc-pdf-panel">
+                        <div class="aprc-section-title">${reportCenterEscape(item.title)}</div>
+                        <p>${reportCenterEscape(item.text)}</p>
+                    </article>
+                `).join('')}
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-panel">
+                <div class="aprc-section-title">문항 난이도 분포</div>
+                ${reportCenterBuildDifficultyBarsForPremium(stats)}
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-summary aprc-pdf-panel">
+                <div class="aprc-section-title">리포트 핵심 요약</div>
+                ${meaningItems.slice(0, 3).map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-table-panel">
+                <div class="aprc-section-title">${reportCenterEscape(tableMeta.title)}</div>
+                <table class="aprc-pdf-table aprc-table">
+                    <thead>
+                        <tr>
+                            <th>문항</th>
+                            <th>단원</th>
+                            <th>난도</th>
+                            <th>전체 정답률</th>
+                            <th>반 정답률</th>
+                            <th>해석</th>
+                        </tr>
+                    </thead>
+                    <tbody>${reportCenterBuildPremiumQuestionRows(data, true)}</tbody>
+                </table>
+                <div class="aprc-source-note">${reportCenterEscape(archiveMessage || '')}</div>
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-diagnosis aprc-pdf-panel">
+                <div class="aprc-section-title">종합 진단</div>
+                ${diagnosisLines.map(line => `<p>${reportCenterEscape(line)}</p>`).join('')}
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">
+                <div class="aprc-section-title">다음 수업 보완 계획</div>
+                <ol class="aprc-plan-list">
+                    ${nextPlanItems.map(item => `<li>${reportCenterEscape(item)}</li>`).join('')}
+                </ol>
+            </section>
+
+            <section class="aprc-pdf-section aprc-pdf-parent-message">
+                <div class="aprc-section-title">학부모님께 드리는 말씀</div>
+                <p>${reportCenterEscape(parentMessageText)}</p>
+            </section>
+
+            <footer class="aprc-pdf-footer">AP MATH · Student Learning Report</footer>
+        </main>
+    `;
+}
+
 function reportCenterPremiumReportStyle() {
     return `
         <style>
             .aprc-document { width:100%; max-width:794px; margin:0 auto; background:#ffffff; color:#111827; border:1px solid #e5e7eb; border-radius:22px; overflow:hidden; box-shadow:0 18px 60px rgba(15,23,42,0.10); font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-document * { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-            .aprc-fixed-document { width:210mm; max-width:210mm; margin:0 auto; border:0; border-radius:0; overflow:visible; box-shadow:none; background:transparent; display:flex; flex-direction:column; gap:18px; align-items:center; }
-            .aprc-fixed-page { width:210mm; height:297mm; padding:9mm; background:#fff; border:1px solid #e5e7eb; border-radius:12px; box-shadow:0 10px 34px rgba(15,23,42,0.12); overflow:hidden; position:relative; }
             .aprc-report-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin:-9mm -9mm 0; padding:9mm 9mm 7mm; background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%); color:#fff; }
             .aprc-brand { font-size:11px; font-weight:800; letter-spacing:0.16em; color:rgba(255,255,255,0.72); }
             .aprc-title { margin-top:6px; font-size:24px; font-weight:800; letter-spacing:-0.8px; line-height:1.15; }
@@ -2615,68 +2766,162 @@ function reportCenterPremiumReportStyle() {
             .aprc-table th:nth-child(5), .aprc-table td:nth-child(5) { width:13%; }
             .aprc-table th:nth-child(6), .aprc-table td:nth-child(6) { width:32%; }
             .aprc-qno { color:#1d4ed8 !important; font-weight:900 !important; white-space:nowrap; }
-            .aprc-question-summary { max-height:38px; line-height:1.35; overflow:hidden; word-break:keep-all; }
-            .aprc-question-sub { margin-top:4px; color:#64748b; font-size:9px; font-weight:700; line-height:1.3; max-height:26px; overflow:hidden; }
+            .aprc-question-summary { line-height:1.35; word-break:keep-all; }
+            .aprc-question-sub { margin-top:4px; color:#64748b; font-size:9px; font-weight:700; line-height:1.3; }
             .aprc-empty-cell { padding:16px !important; text-align:center; color:#64748b !important; font-weight:800 !important; }
-            .aprc-source-note { margin-top:7px; padding:7px 9px; border-radius:10px; background:#f8fafc; color:#64748b; font-size:10.3px; font-weight:700; line-height:1.4; max-height:32px; overflow:hidden; }
+            .aprc-source-note { margin-top:7px; padding:7px 9px; border-radius:10px; background:#f8fafc; color:#64748b; font-size:10.3px; font-weight:700; line-height:1.4; }
             .aprc-bottom-grid { align-items:stretch; padding-top:4mm; }
             .aprc-paragraph p { margin:0 0 8px; color:#334155; font-size:11.7px; font-weight:650; line-height:1.62; word-break:keep-all; }
             .aprc-plan-list { margin:0; padding-left:18px; color:#334155; font-size:11.8px; font-weight:700; line-height:1.65; }
             .aprc-plan-list li { margin:0 0 4px; }
-            .aprc-parent-message { margin:4mm 0 0; padding:4.5mm 5mm; border-radius:14px; background:#eff6ff; border:1px solid #bfdbfe; max-height:48mm; overflow:hidden; }
-            .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:11.5px; font-weight:700; line-height:1.58; word-break:keep-all; white-space:normal; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:8; overflow:hidden; }
+            .aprc-parent-message { margin:4mm 0 0; padding:4.5mm 5mm; border-radius:14px; background:#eff6ff; border:1px solid #bfdbfe; }
+            .aprc-parent-message p { margin:0; color:#1e3a8a; font-size:11.5px; font-weight:700; line-height:1.58; word-break:keep-all; white-space:normal; }
             .aprc-parent-bottom-note { margin-top:3.5mm; padding:3.5mm 4.5mm; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc; color:#334155; font-size:10.8px; font-weight:750; line-height:1.45; }
             .aprc-footer { position:absolute; left:9mm; right:9mm; bottom:7mm; color:#94a3b8; font-size:10px; font-weight:850; letter-spacing:0.14em; text-align:center; }
             .aprc-muted { color:#64748b; font-size:12px; font-weight:700; }
             .aprc-empty-box { padding:36px; text-align:center; color:#64748b; font-weight:800; }
 
-            .aprc-fixed-page-2 .aprc-page-kicker { margin-bottom:4mm; }
-            .aprc-fixed-page-2 .aprc-table-panel { padding:3.8mm; max-height:82mm; overflow:hidden; }
-            .aprc-fixed-page-2 .aprc-table-wrap { max-height:56mm; overflow:hidden; }
-            .aprc-fixed-page-2 .aprc-source-note { max-height:18px; padding:5px 8px; }
-            .aprc-fixed-page-2 .aprc-bottom-grid { padding-top:4mm; gap:4mm; }
-            .aprc-fixed-page-2 .aprc-bottom-grid .aprc-panel { max-height:94mm; overflow:hidden; }
-            .aprc-fixed-page-2 .aprc-paragraph p { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:8; overflow:hidden; }
-            .aprc-fixed-page-2 .aprc-plan-list { max-height:48mm; overflow:hidden; }
-            .aprc-core-item span { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:5; overflow:hidden; }
-            .aprc-insight-item { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:5; overflow:hidden; }
+            .aprc-pdf-document { width:100%; max-width:190mm; margin:0 auto; padding:0; box-sizing:border-box; background:#fff; color:#111827; font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.56; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+            .aprc-pdf-document * { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+            .aprc-pdf-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; padding:11mm 0 8mm; border-bottom:2px solid #0f172a; color:#111827; }
+            .aprc-pdf-header .aprc-brand { color:#2563eb; }
+            .aprc-pdf-header .aprc-title { color:#0f172a; font-size:25px; }
+            .aprc-pdf-header .aprc-subtitle { color:#475569; }
+            .aprc-pdf-header .aprc-ai-badge { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
+            .aprc-pdf-header .aprc-issued { color:#64748b; }
+            .aprc-pdf-header .aprc-issued b { color:#0f172a; }
+            .aprc-pdf-section, .aprc-pdf-panel, .aprc-pdf-table-panel, .aprc-pdf-parent-message { box-sizing:border-box; }
+            .aprc-pdf-section { margin-top:6mm; }
+            .aprc-pdf-student-band { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:5mm 0; border-bottom:1px solid #e5e7eb; }
+            .aprc-pdf-score-grid { display:grid; grid-template-columns:1.35fr repeat(3,minmax(0,1fr)); gap:4mm; }
+            .aprc-pdf-score-card { min-width:0; padding:4.2mm; border:1px solid #e5e7eb; border-radius:12px; background:#fff; }
+            .aprc-pdf-core-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4mm; }
+            .aprc-pdf-panel, .aprc-pdf-table-panel, .aprc-pdf-parent-message { padding:4.5mm; border:1px solid #e5e7eb; border-radius:12px; background:#fff; }
+            .aprc-pdf-panel p, .aprc-pdf-parent-message p { margin:0 0 8px; color:#334155; font-size:12px; font-weight:650; line-height:1.62; word-break:keep-all; overflow-wrap:break-word; }
+            .aprc-pdf-panel p:last-child, .aprc-pdf-parent-message p:last-child { margin-bottom:0; }
+            .aprc-pdf-parent-message { background:#eff6ff; border-color:#bfdbfe; }
+            .aprc-pdf-parent-message p { color:#1e3a8a; font-weight:700; }
+            .aprc-pdf-table { width:100%; min-width:0; border-collapse:collapse; table-layout:fixed; font-size:10px; }
+            .aprc-pdf-table th, .aprc-pdf-table td { word-break:keep-all; overflow-wrap:break-word; }
+            .aprc-pdf-table th { white-space:normal; }
+            .aprc-pdf-table tr { break-inside:avoid; page-break-inside:avoid; }
+            .aprc-pdf-document .aprc-source-note { max-height:none; overflow:visible; }
+            .aprc-pdf-footer { margin:8mm 0 0; padding-top:4mm; border-top:1px solid #e5e7eb; color:#94a3b8; font-size:10px; font-weight:850; letter-spacing:0.14em; text-align:center; }
+
             @media screen and (max-width:760px) {
-                .aprc-fixed-document { width:760px; max-width:760px; align-items:flex-start; }
-                .aprc-fixed-page { width:760px; height:1075px; padding:34px; border-radius:18px; }
                 .aprc-report-header { margin:-34px -34px 0; padding:34px 34px 26px; }
             }
             @media print {
-                .aprc-fixed-document { width:210mm !important; max-width:210mm !important; gap:0 !important; margin:0 auto !important; }
-                .aprc-fixed-page { width:210mm !important; height:297mm !important; padding:9mm !important; margin:0 !important; border:none !important; border-radius:0 !important; box-shadow:none !important; page-break-after:always !important; break-after:page !important; overflow:hidden !important; }
-                .aprc-fixed-page:last-child { page-break-after:auto !important; break-after:auto !important; }
+                @page { size:A4; margin:10mm; }
+                html, body { margin:0 !important; padding:0 !important; background:#fff !important; overflow:visible !important; }
+                .report-print-toolbar, .report-print-actions, .no-print { display:none !important; }
+                .report-print-stage { padding:0 !important; margin:0 !important; background:#fff !important; overflow:visible !important; }
+                .aprc-pdf-document { width:100% !important; max-width:190mm !important; margin:0 auto !important; padding:0 !important; box-shadow:none !important; border:none !important; border-radius:0 !important; overflow:visible !important; }
+                .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-core-grid, .aprc-pdf-summary, .aprc-pdf-diagnosis, .aprc-pdf-next-plan { break-inside:avoid !important; page-break-inside:avoid !important; }
+                .aprc-pdf-table-panel .aprc-section-title { break-after:avoid !important; page-break-after:avoid !important; }
+                .aprc-pdf-table { width:100% !important; min-width:0 !important; table-layout:fixed !important; }
+                .aprc-pdf-table tr { break-inside:avoid !important; page-break-inside:avoid !important; }
             }
         </style>
     `;
 }
 
-function reportCenterBuildPrintDocument(studentId, sessionId = '', teacherMemo = '') {
-    const reportHtml = reportCenterBuildPremiumExamReportHtml(studentId, sessionId, { print: true, teacherMemo, aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId) });
+function reportCenterBuildCleanPdfShell(reportHtml) {
     return `<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AP Math 평가 리포트</title>
+<title>AP Math 평가 리포트 PDF</title>
 ${reportCenterPremiumReportStyle()}
 <style>
-    html, body { margin:0; padding:0; background:#f1f5f9; color:#111827; }
-    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:18px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-    @page { size:A4; margin:0; }
+    @page { size:A4; margin:10mm; }
+    html, body { margin:0; padding:0; background:#fff; color:#111827; }
+    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:0; overflow:visible; -webkit-overflow-scrolling:touch; }
     @media print {
         html, body { background:#fff !important; margin:0 !important; padding:0 !important; overflow:visible !important; }
+        .aprc-pdf-document { width:100% !important; max-width:190mm !important; margin:0 auto !important; padding:0 !important; overflow:visible !important; }
+        .aprc-pdf-table tr { break-inside:avoid !important; page-break-inside:avoid !important; }
     }
 </style>
+<script>
+    window.__AP_REPORT_PRINT_TRIGGERED = false;
+    window.__AP_REPORT_TRIGGER_PRINT = function() {
+        if (window.__AP_REPORT_PRINT_TRIGGERED) return;
+        window.__AP_REPORT_PRINT_TRIGGERED = true;
+        setTimeout(function() {
+            try { window.focus(); } catch (e) {}
+            window.print();
+        }, 200);
+    };
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+            displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
+        },
+        svg: { fontCache: 'global' },
+        startup: {
+            pageReady: function() {
+                return MathJax.startup.defaultPageReady().then(function() {
+                    window.__AP_REPORT_TRIGGER_PRINT();
+                }).catch(function() {
+                    window.__AP_REPORT_TRIGGER_PRINT();
+                });
+            }
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" onerror="setTimeout(window.__AP_REPORT_TRIGGER_PRINT, 800)"></script>
 </head>
 <body>
 ${reportHtml}
-<script>window.onload=function(){setTimeout(function(){window.print();},250);};<\/script>
+<script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            if (!window.__AP_REPORT_PRINT_TRIGGERED) window.__AP_REPORT_TRIGGER_PRINT();
+        }, 1200);
+    });
+</script>
 </body>
 </html>`;
+}
+
+function reportCenterBuildPrintDocument(studentId, sessionId = '', teacherMemo = '') {
+    const reportHtml = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
+        teacherMemo,
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+    });
+    return reportCenterBuildCleanPdfShell(reportHtml);
+}
+
+function reportCenterPrintCleanPdf(studentId, sessionId = '') {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    if (!data.student || !data.session) {
+        toast('출력할 평가 기록이 없습니다.', 'warn');
+        return;
+    }
+
+    const html = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
+        teacherMemo: reportCenterGetExamReportTeacherMemo(),
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+    });
+    const win = window.open('', '_blank');
+    if (!win) {
+        toast('팝업 차단을 해제해 주세요.', 'warn');
+        return;
+    }
+
+    try {
+        win.document.open();
+        win.document.write(reportCenterBuildCleanPdfShell(html));
+        win.document.close();
+        try { win.focus(); } catch (e) {}
+        toast('PDF 전용 출력 창을 열었습니다.', 'success');
+    } catch (e) {
+        console.error('[reportCenterPrintCleanPdf] failed:', e);
+        toast('PDF 출력 창을 여는 중 오류가 발생했습니다.', 'warn');
+        try { win.close(); } catch (closeErr) {}
+    }
 }
 
 function reportCenterPrintPremiumExamReport(studentId, sessionId = '') {
@@ -2732,8 +2977,7 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     }
 
     const teacherMemo = reportCenterGetExamReportTeacherMemo();
-    const reportHtml = reportCenterPremiumReportStyle() + reportCenterBuildPremiumExamReportHtml(studentId, sessionId, {
-        print: true,
+    const reportHtml = reportCenterPremiumReportStyle() + reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
         aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
     });
@@ -2776,7 +3020,7 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
         <div id="report-print-view" class="report-print-view">
             <div class="report-print-toolbar no-print">
                 <button class="btn" onclick="reportCenterClosePrintView()">리포트 센터로 돌아가기</button>
-                <button class="btn btn-primary" onclick="window.print()">인쇄하기</button>
+                <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄하기</button>
             </div>
             <div class="report-print-stage">
                 ${reportHtml}
@@ -2857,14 +3101,13 @@ function reportCenterInjectPrintViewStyle() {
             padding-bottom:24px;
         }
 
-        .report-print-stage .aprc-fixed-document {
+        .report-print-stage .aprc-pdf-document {
             margin:0 auto;
         }
 
         @media (max-width:840px) {
             .report-print-view { padding:10px; }
             .report-print-toolbar { margin-bottom:10px; }
-            .report-print-stage .aprc-fixed-document { min-width:760px; }
         }
 
         @media print {
@@ -2892,17 +3135,15 @@ function reportCenterInjectPrintViewStyle() {
                 padding:0 !important;
             }
 
-            .report-print-stage .aprc-fixed-document {
-                width:210mm !important;
-                max-width:210mm !important;
-                min-width:210mm !important;
+            .report-print-stage .aprc-pdf-document {
+                width:100% !important;
+                max-width:190mm !important;
                 margin:0 auto !important;
-                gap:0 !important;
             }
 
             @page {
                 size:A4;
-                margin:0;
+                margin:10mm;
             }
         }
     `;
@@ -2983,7 +3224,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
             </div>
 
             <div style="padding:13px 14px; border:1px solid rgba(26,92,255,0.16); border-radius:14px; background:rgba(26,92,255,0.06); color:var(--primary); font-size:12px; font-weight:700; line-height:1.55;">
-                출력용 리포트는 A4 3페이지 고정 틀로 PDF 저장/인쇄합니다. 1페이지는 성취 요약, 2페이지는 문항 분석과 수업 계획, 3페이지는 학부모 안내문으로 구성됩니다.
+                출력용 리포트는 A4 자연 흐름형 PDF로 저장/인쇄합니다. 브라우저가 페이지를 나누되, 표와 주요 안내 문구가 중간에서 잘리지 않도록 구성됩니다.
             </div>
 
             ${archiveStatusHtml}
