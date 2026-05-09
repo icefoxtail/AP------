@@ -36,8 +36,11 @@ function injectClassroomStyles() {
         .cls-v4-tools { display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; touch-action:pan-x; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--surface); }
         .cls-v4-tools::-webkit-scrollbar { display:none; }
         .cls-v4-tool { flex:0 0 auto; min-height:36px; padding:0 13px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; box-shadow:none; }
-        .cls-v4-tool.primary { background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); color:var(--primary); }
-        .cls-v4-tool.highlight { background:rgba(124,58,237,0.07); border-color:rgba(124,58,237,0.16); color:#7c3aed; }
+        .cls-v4-tool.primary, .cls-v4-tool.blue { background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); color:var(--primary); }
+        .cls-v4-tool.orange { background:rgba(255,165,2,0.10); border-color:rgba(255,165,2,0.20); color:var(--warning); }
+        .cls-v4-tool.purple, .cls-v4-tool.highlight { background:rgba(124,58,237,0.07); border-color:rgba(124,58,237,0.16); color:#7c3aed; }
+        .cls-v4-tool.red { background:rgba(255,71,87,0.08); border-color:rgba(255,71,87,0.18); color:var(--error); }
+        .cls-v4-tool.green { background:rgba(0,208,132,0.08); border-color:rgba(0,208,132,0.16); color:var(--success); }
         .cls-v4-date-input { flex:0 0 auto; width:138px; min-height:36px; height:36px; padding:0 10px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; font-family:inherit; box-shadow:none; }
         .cls-v4-date-input::-webkit-calendar-picker-indicator { opacity:0.75; cursor:pointer; }
         .cls-v4-date-reset { flex:0 0 auto; min-height:36px; height:36px; padding:0 12px; border-radius:999px; border:1px solid rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); color:var(--primary); font-size:12px; font-weight:700; box-shadow:none; }
@@ -300,31 +303,18 @@ function hasConsultationForStudentDate(studentId, date) {
     );
 }
 
-function renderClassroomMoreButton(studentId, classId, date) {
+function renderClassroomConsultationButton(studentId, classId, date) {
     const on = hasConsultationForStudentDate(studentId, date);
-    return `<button class="btn cls-v4-status tag consult ${on ? 'on' : ''}" title="관리" onclick="openClassroomMoreMenu('${studentId}', '${classId}', '${date}')">…</button>`;
+    return `<button class="btn cls-v4-status tag consult ${on ? 'on' : ''}" title="상담" onclick="openClassroomConsultation('${studentId}', '${classId}', '${date}')">${on ? '○' : ''}</button>`;
+}
+
+// 구버전 호환: 이전 패치의 … 버튼 호출이 남아 있어도 상담으로 바로 연결한다.
+function renderClassroomMoreButton(studentId, classId, date) {
+    return renderClassroomConsultationButton(studentId, classId, date);
 }
 
 function openClassroomMoreMenu(studentId, classId, date) {
-    const sid = String(studentId);
-    const cid = String(classId);
-    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
-    const student = (state.db.students || []).find(s => String(s.id) === sid);
-    const studentName = student?.name || '학생';
-
-    showModal('관리', `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="padding:12px 14px; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);">
-                <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.35;">${apEscapeHtml(studentName)}</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.4;">${apEscapeHtml(d)}</div>
-            </div>
-            <button class="btn cls-input" style="min-height:50px; justify-content:center; cursor:pointer;" onclick="closeModal(true); openClassroomConsultation('${sid}', '${cid}', '${d}')">상담 기록</button>
-        </div>
-    `);
-}
-
-function renderClassroomConsultationButton(studentId, classId, date) {
-    return renderClassroomMoreButton(studentId, classId, date);
+    openClassroomConsultation(studentId, classId, date);
 }
 
 function renderAttendanceLedgerCellIfOpen(studentId, date) {
@@ -715,11 +705,11 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
         <div class="cls-v4-tools">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
-            <button class="btn cls-v4-tool primary" onclick="openQrGenerator('${cid}')">QR/OMR</button>
-            <button class="btn cls-v4-tool" onclick="openExamGradeView('${cid}')">시험성적</button>
-            <button class="btn cls-v4-tool" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
-            <button class="btn cls-v4-tool" onclick="openClassRecordModal('${cid}')">진도관리</button>
-            ${plannerEnabled ? `<button class="btn cls-v4-tool highlight" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
+            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도관리</button>
+            <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
+            <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
+            <button class="btn cls-v4-tool purple" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
+            ${plannerEnabled ? `<button class="btn cls-v4-tool green" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
         </div>
     `;
 }
@@ -737,7 +727,7 @@ function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isSc
                 <div>숙제</div>
                 <div>지각</div>
                 <div>보강</div>
-                <div>…</div>
+                <div>상담</div>
             </div>
             ${students.map(s => renderClassStudentRowV4B(cid, s, todayAttMap[s.id], todayHwMap[s.id], isScheduled, plannerEnabled, today)).join('')}
         </div>
@@ -761,7 +751,7 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
                 <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}', '${rowDate}')">${hwLabel}</button>
                 ${renderAttendanceTagButton(s.id, rowDate, '지각')}
                 ${renderAttendanceTagButton(s.id, rowDate, '보강')}
-                ${renderClassroomMoreButton(s.id, cid, rowDate)}
+                ${renderClassroomConsultationButton(s.id, cid, rowDate)}
             </div>
         </div>
     `;
