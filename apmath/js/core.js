@@ -93,6 +93,9 @@ const api = {
     getPlannerOverview(classId, date) {
         return this.get(`planner/overview?class_id=${encodeURIComponent(classId)}&date=${encodeURIComponent(date)}`);
     },
+    getPlannerStudentPlans(studentId, from, to) {
+        return this.get(`planner?student_id=${encodeURIComponent(studentId)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
+    },
     savePlannerFeedback(data) {
         return this.post('planner/feedback', data);
     }
