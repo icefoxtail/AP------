@@ -512,10 +512,12 @@
             catch (e) { return { error: e.message }; }
         }
 
+        function authStore() { return window.localStorage; }
+
         async function init() {
-            studentId = new URLSearchParams(location.search).get('student_id') || sessionStorage.getItem('PLANNER_SID') || '';
-            pin = new URLSearchParams(location.search).get('pin') || sessionStorage.getItem('PLANNER_PIN') || '';
-            const savedSubject = sessionStorage.getItem('PLANNER_SUBJECT') || '전체';
+            studentId = new URLSearchParams(location.search).get('student_id') || authStore().getItem('PLANNER_SID') || sessionStorage.getItem('PLANNER_SID') || '';
+            pin = new URLSearchParams(location.search).get('pin') || authStore().getItem('PLANNER_PIN') || sessionStorage.getItem('PLANNER_PIN') || '';
+            const savedSubject = authStore().getItem('PLANNER_SUBJECT') || sessionStorage.getItem('PLANNER_SUBJECT') || '전체';
             if (SUBJECTS.includes(savedSubject)) activeSubject = savedSubject;
             selectedDate = todayStr();
             currentWeekStart = getWeekStart(selectedDate);
@@ -658,15 +660,23 @@
             if (res.success) {
                 studentId = sid;
                 pin = p;
-                sessionStorage.setItem('PLANNER_SID', sid);
-                sessionStorage.setItem('PLANNER_PIN', p);
+                authStore().setItem('PLANNER_SID', sid);
+                authStore().setItem('PLANNER_PIN', p);
                 await verifyPin();
             } else {
                 toast('PIN이 일치하지 않습니다.');
             }
         }
 
-        function resetAuth() { sessionStorage.clear(); location.reload(); }
+        function resetAuth() {
+            authStore().removeItem('PLANNER_SID');
+            authStore().removeItem('PLANNER_PIN');
+            authStore().removeItem('PLANNER_SUBJECT');
+            sessionStorage.removeItem('PLANNER_SID');
+            sessionStorage.removeItem('PLANNER_PIN');
+            sessionStorage.removeItem('PLANNER_SUBJECT');
+            location.reload();
+        }
         async function verifyPin() {
             if (!studentId || !pin) {
                 renderAuth();
@@ -674,6 +684,8 @@
             }
             const res = await apiGet(`planner-auth?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`);
             if (!res.success) {
+                authStore().removeItem('PLANNER_SID');
+                authStore().removeItem('PLANNER_PIN');
                 sessionStorage.removeItem('PLANNER_SID');
                 sessionStorage.removeItem('PLANNER_PIN');
                 studentId = '';
@@ -726,7 +738,7 @@
         
         function setSubject(subject) {
             activeSubject = subject;
-            sessionStorage.setItem('PLANNER_SUBJECT', subject);
+            authStore().setItem('PLANNER_SUBJECT', subject);
             renderPlanner();
         }
 
