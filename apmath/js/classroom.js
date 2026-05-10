@@ -1417,6 +1417,112 @@ function renderPlannerRateBar(rate) {
     `;
 }
 
+function getPlannerMonthBounds(month) {
+    const safeMonth = /^\d{4}-\d{2}$/.test(String(month || '')) ? String(month) : new Date().toLocaleDateString('sv-SE').slice(0, 7);
+    const [year, monthNo] = safeMonth.split('-').map(Number);
+    const first = new Date(year, monthNo - 1, 1);
+    const last = new Date(year, monthNo, 0);
+    const fmt = d => d.toLocaleDateString('sv-SE');
+    return { month: safeMonth, from: fmt(first), to: fmt(last) };
+}
+
+function renderPlannerPlanList(plans, feedback) {
+    const list = Array.isArray(plans) ? plans : [];
+    if (!list.length) {
+        return `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; border:1px dashed var(--border); border-radius:14px; background:var(--surface-2);">해당 기간에 등록된 계획이 없습니다.</div>`;
+    }
+
+    const feedbackMap = new Map((Array.isArray(feedback) ? feedback : []).map(f => [String(f.feedback_date), f]));
+    const groups = {};
+    list.forEach(plan => {
+        const date = String(plan.plan_date || '');
+        if (!groups[date]) groups[date] = [];
+        groups[date].push(plan);
+    });
+
+    return Object.keys(groups).sort().map(date => {
+        const items = groups[date];
+        const done = items.filter(p => Number(p.is_done || 0) === 1).length;
+        const rate = items.length ? Math.round((done / items.length) * 100) : 0;
+        const fb = feedbackMap.get(date);
+        const feedbackHtml = fb && String(fb.teacher_comment || fb.badge || '').trim()
+            ? `<div style="margin-top:10px; padding:10px 12px; border-radius:12px; background:rgba(26,92,255,0.06); color:var(--text); font-size:12px; font-weight:700; line-height:1.5;">${apEscapeHtml(`${fb.badge || ''} ${fb.teacher_comment || ''}`.trim())}</div>`
+            : '';
+
+        return `
+            <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 14px; background:var(--surface-2); border-bottom:1px solid var(--border);">
+                    <div style="font-size:13px; font-weight:800; color:var(--text);">${apEscapeHtml(date)}</div>
+                    <div style="display:flex; align-items:center; gap:8px; min-width:150px;">
+                        ${renderPlannerRateBar(rate)}
+                    </div>
+                </div>
+                <div style="padding:10px 14px;">
+                    ${items.map(plan => {
+                        const isDone = Number(plan.is_done || 0) === 1;
+                        const subject = String(plan.subject || '수학').trim();
+                        const repeat = String(plan.repeat_rule || '').trim();
+                        return `
+                            <div style="display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid var(--border);">
+                                <span style="flex:0 0 auto; width:22px; height:22px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; background:${isDone ? 'var(--primary)' : 'var(--surface-2)'}; color:${isDone ? '#fff' : 'var(--secondary)'}; border:1px solid ${isDone ? 'var(--primary)' : 'var(--border)'};">${isDone ? '✓' : ''}</span>
+                                <div style="min-width:0; flex:1;">
+                                    <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.45; ${isDone ? 'opacity:.55; text-decoration:line-through;' : ''}">${apEscapeHtml(plan.title || '')}</div>
+                                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px;">${apEscapeHtml(subject)}${repeat ? ` · ${repeat === 'daily' ? '매일 반복' : repeat === 'weekly' ? '매주 반복' : repeat}` : ''}</div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                    ${feedbackHtml}
+                </div>
+            </div>
+        `;
+    }).join('<div style="height:10px;"></div>');
+}
+
+async function openPlannerStudentPlans(studentId, monthOrDate) {
+    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
+    const bounds = getPlannerMonthBounds(String(monthOrDate || '').slice(0, 7));
+    const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+
+    showModal('플래너 상세', `
+        <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:14px; background:var(--surface-2); border-radius:16px;">
+                <div style="min-width:0;">
+                    <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.3;">${apEscapeHtml(student?.name || '학생')}</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(bounds.month)} 전체 계획</div>
+                </div>
+                <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:10px; background:var(--surface); border:1px solid var(--border);" onclick="${classId ? `renderPlannerControl('${classId}')` : 'closeModal(true)'}">목록</button>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <input type="month" id="planner-student-month" class="btn" value="${bounds.month}" style="flex:1; text-align:left; background:var(--surface); border:1px solid var(--border);">
+                <button class="btn btn-primary" style="min-height:44px; padding:10px 14px; font-size:12px; font-weight:700;" onclick="openPlannerStudentPlans('${studentId}', document.getElementById('planner-student-month')?.value)">조회</button>
+            </div>
+            <div id="planner-student-plans-body">
+                <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>
+            </div>
+        </div>
+    `);
+
+    try {
+        const data = api.getPlannerStudentPlans
+            ? await api.getPlannerStudentPlans(studentId, bounds.from, bounds.to)
+            : await api.get(`planner?student_id=${encodeURIComponent(studentId)}&from=${encodeURIComponent(bounds.from)}&to=${encodeURIComponent(bounds.to)}`);
+        const body = document.getElementById('planner-student-plans-body');
+        if (!body) return;
+        if (!data?.success) {
+            body.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">계획을 불러오지 못했습니다.</div>`;
+            toast(data?.message || data?.error || '플래너 상세 조회 실패', 'warn');
+            return;
+        }
+        body.innerHTML = renderPlannerPlanList(data.plans || [], data.feedback || []);
+    } catch (e) {
+        console.error('[openPlannerStudentPlans] failed:', e);
+        const body = document.getElementById('planner-student-plans-body');
+        if (body) body.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">계획 조회 중 오류가 발생했습니다.</div>`;
+        toast('계획 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
 function renderPlannerOverviewTable(classId, date, rows) {
     const root = document.getElementById('planner-control-body');
     if (!root) return;
@@ -1439,6 +1545,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
                 <td style="padding:12px 10px; font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${apEscapeHtml(fbText)}</td>
                 <td style="padding:12px 10px; text-align:right;">
                     <div style="display:flex; gap:6px; justify-content:flex-end;">
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
                         <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
                         <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
                     </div>
@@ -1462,6 +1569,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
                 ${renderPlannerRateBar(row.rate)}
                 <div style="font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; margin-top:10px; line-height:1.5;">${apEscapeHtml(fbText)}</div>
                 <div style="display:flex; gap:8px; margin-top:12px;">
+                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
                     <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
                     <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
                 </div>
