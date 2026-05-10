@@ -288,3 +288,67 @@ CREATE INDEX IF NOT EXISTS idx_class_textbooks_status ON class_textbooks(status)
 CREATE INDEX IF NOT EXISTS idx_class_daily_records_class_date ON class_daily_records(class_id, date);
 CREATE INDEX IF NOT EXISTS idx_class_daily_progress_record ON class_daily_progress(record_id);
 CREATE INDEX IF NOT EXISTS idx_class_daily_progress_class ON class_daily_progress(class_id);
+
+CREATE TABLE IF NOT EXISTS homework_photo_assignments (
+  id TEXT PRIMARY KEY,
+  class_id TEXT NOT NULL,
+  teacher_id TEXT NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT,
+  due_date TEXT NOT NULL,
+  due_time TEXT,
+  status TEXT DEFAULT 'active',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (class_id) REFERENCES classes(id),
+  FOREIGN KEY (teacher_id) REFERENCES teachers(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_homework_photo_assignments_class_due
+  ON homework_photo_assignments(class_id, due_date);
+CREATE INDEX IF NOT EXISTS idx_homework_photo_assignments_teacher
+  ON homework_photo_assignments(teacher_id);
+CREATE INDEX IF NOT EXISTS idx_homework_photo_assignments_status
+  ON homework_photo_assignments(status);
+
+CREATE TABLE IF NOT EXISTS homework_photo_submissions (
+  id TEXT PRIMARY KEY,
+  assignment_id TEXT NOT NULL,
+  student_id TEXT NOT NULL,
+  is_submitted INTEGER DEFAULT 0,
+  submitted_at TEXT,
+  synced_homework_date TEXT,
+  synced_homework_status TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (assignment_id) REFERENCES homework_photo_assignments(id),
+  FOREIGN KEY (student_id) REFERENCES students(id),
+  UNIQUE(assignment_id, student_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_homework_photo_submissions_assignment
+  ON homework_photo_submissions(assignment_id);
+CREATE INDEX IF NOT EXISTS idx_homework_photo_submissions_student
+  ON homework_photo_submissions(student_id);
+CREATE INDEX IF NOT EXISTS idx_homework_photo_submissions_submitted
+  ON homework_photo_submissions(is_submitted);
+
+CREATE TABLE IF NOT EXISTS homework_photo_files (
+  id TEXT PRIMARY KEY,
+  submission_id TEXT NOT NULL,
+  file_key TEXT NOT NULL,
+  file_name TEXT,
+  file_type TEXT,
+  file_size INTEGER DEFAULT 0,
+  expires_at TEXT NOT NULL,
+  deleted_at TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (submission_id) REFERENCES homework_photo_submissions(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_homework_photo_files_submission
+  ON homework_photo_files(submission_id);
+CREATE INDEX IF NOT EXISTS idx_homework_photo_files_expires
+  ON homework_photo_files(expires_at);
+CREATE INDEX IF NOT EXISTS idx_homework_photo_files_deleted
+  ON homework_photo_files(deleted_at);
