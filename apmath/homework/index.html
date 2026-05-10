@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>AP Math Homework</title>
+  <style>
+    :root {
+      --primary:#1A5CFF;
+      --success:#00B894;
+      --error:#E8414F;
+      --bg:#F2F4F6;
+      --surface:#FFFFFF;
+      --surface-2:#F8FAFC;
+      --border:#E5E8EB;
+      --text:#191F28;
+      --secondary:#6B7684;
+    }
+    * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; outline:none; }
+    body {
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    button, input { font-family:inherit; }
+    .top {
+      position:sticky;
+      top:0;
+      z-index:20;
+      height:56px;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(242,244,246,0.92);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+    .brand { font-size:17px; font-weight:800; color:var(--text); }
+    .chip { min-width:0; max-width:48%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px; font-weight:800; color:var(--secondary); text-align:right; }
+    .app { width:100%; max-width:520px; margin:0 auto; padding:16px 14px calc(28px + env(safe-area-inset-bottom)); }
+    .card {
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:18px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.03);
+      margin-bottom:14px;
+    }
+    .title { margin:0; font-size:21px; font-weight:850; line-height:1.25; letter-spacing:-0.4px; color:var(--text); }
+    .meta { margin-top:8px; font-size:12px; font-weight:800; color:var(--secondary); }
+    .desc { margin-top:16px; padding:14px; border-radius:14px; background:var(--surface-2); color:var(--text); font-size:14px; font-weight:700; white-space:pre-wrap; word-break:break-word; }
+    .input {
+      width:100%;
+      min-height:50px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:var(--surface);
+      color:var(--text);
+      padding:12px 14px;
+      font-size:16px;
+      font-weight:800;
+    }
+    .btn {
+      width:100%;
+      min-height:50px;
+      border:0;
+      border-radius:14px;
+      background:var(--surface-2);
+      color:var(--text);
+      font-size:15px;
+      font-weight:850;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .btn-primary { background:var(--primary); color:#fff; box-shadow:0 8px 20px rgba(26,92,255,0.22); }
+    .btn:active { transform:scale(0.99); }
+    .stack { display:flex; flex-direction:column; gap:10px; }
+    .notice { font-size:12px; font-weight:800; color:var(--secondary); line-height:1.5; }
+    .done-mark {
+      width:60px;
+      height:60px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,184,148,0.12);
+      color:var(--success);
+      font-size:30px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+    .toast {
+      position:fixed;
+      left:50%;
+      bottom:calc(24px + env(safe-area-inset-bottom));
+      transform:translateX(-50%);
+      background:#191F28;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+      z-index:100;
+      white-space:nowrap;
+    }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">AP Math Homework</div>
+    <div id="student-chip" class="chip"></div>
+  </header>
+  <main id="app" class="app"></main>
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
+    const params = new URLSearchParams(location.search);
+    const assignmentId = String(params.get('assignment_id') || '').trim();
+    const studentId = String(params.get('student_id') || '').trim();
+
+    let pin = '';
+    let assignment = null;
+    let student = null;
+    let submission = null;
+
+    function $(id) { return document.getElementById(id); }
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+    }
+    function toast(message) {
+      const el = $('toast');
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
+    }
+    function authKey() { return `homework_photo_pin_${assignmentId}_${studentId}`; }
+    async function apiGet(path) {
+      const r = await fetch(`${API_BASE}/${path}`, { headers: { 'Content-Type': 'application/json' } });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) throw new Error(data.error || data.message || '요청 실패');
+      return data;
+    }
+    async function apiPost(path, body) {
+      const r = await fetch(`${API_BASE}/${path}`, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify(body || {})
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) throw new Error(data.error || data.message || '요청 실패');
+      return data;
+    }
+    function renderError(message) {
+      $('student-chip').textContent = '';
+      $('app').innerHTML = `
+        <section class="card">
+          <h1 class="title">접속 오류</h1>
+          <div class="desc">${escapeHtml(message)}</div>
+        </section>
+      `;
+    }
+    function renderAssignmentCard() {
+      if (!assignment) return '';
+      const due = `${assignment.due_date || ''}${assignment.due_time ? ` ${assignment.due_time}` : ''}`.trim();
+      return `
+        <section class="card">
+          <h1 class="title">${escapeHtml(assignment.title || '숙제')}</h1>
+          <div class="meta">${escapeHtml(assignment.class_name || '')}${due ? ` · 마감 ${escapeHtml(due)}` : ''}</div>
+          ${assignment.description ? `<div class="desc">${escapeHtml(assignment.description)}</div>` : ''}
+        </section>
+      `;
+    }
+    function renderPinGate() {
+      $('student-chip').textContent = student?.name || '';
+      $('app').innerHTML = `
+        ${renderAssignmentCard()}
+        <section class="card">
+          <div class="stack">
+            <div class="notice">본인 확인을 위해 개인 PIN을 입력하세요.</div>
+            <input id="pin-input" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')verifyPin(false)">
+            <button class="btn btn-primary" onclick="verifyPin(false)">확인</button>
+          </div>
+        </section>
+      `;
+      setTimeout(() => $('pin-input')?.focus(), 80);
+    }
+    function renderSubmit() {
+      $('student-chip').textContent = student?.name || '';
+      if (Number(submission?.is_submitted || 0) === 1) {
+        renderDone(submission?.submitted_at);
+        return;
+      }
+      $('app').innerHTML = `
+        ${renderAssignmentCard()}
+        <section class="card">
+          <div class="stack">
+            <div class="notice">1차 제출 버전입니다. 사진 업로드는 다음 단계에서 붙고, 지금은 제출 완료 상태가 선생님 클래스룸 숙제 칸에 자동 반영됩니다.</div>
+            <button class="btn btn-primary" onclick="submitHomework()">제출하기</button>
+          </div>
+        </section>
+      `;
+    }
+    function renderDone(submittedAt) {
+      $('app').innerHTML = `
+        ${renderAssignmentCard()}
+        <section class="card">
+          <div class="done-mark">✓</div>
+          <h1 class="title">제출 완료</h1>
+          <div class="meta">${escapeHtml(submittedAt || '방금 제출됨')}</div>
+          <div class="desc">선생님 클래스룸 숙제 상태에 완료로 반영되었습니다.</div>
+        </section>
+      `;
+    }
+    async function loadAssignment() {
+      if (!assignmentId || !studentId) {
+        renderError('숙제 링크가 올바르지 않습니다.');
+        return;
+      }
+      try {
+        const data = await apiGet(`homework-photo/assignment?assignment_id=${encodeURIComponent(assignmentId)}&student_id=${encodeURIComponent(studentId)}`);
+        assignment = data.assignment;
+        student = data.student;
+        submission = data.submission;
+        const savedPin = localStorage.getItem(authKey());
+        if (savedPin) {
+          pin = savedPin;
+          try {
+            await verifyPin(true);
+            return;
+          } catch (e) {
+            localStorage.removeItem(authKey());
+          }
+        }
+        renderPinGate();
+      } catch (e) {
+        renderError(e.message || '숙제 정보를 불러오지 못했습니다.');
+      }
+    }
+    async function verifyPin(fromStorage) {
+      if (!fromStorage) pin = String($('pin-input')?.value || '').trim();
+      if (!pin) {
+        toast('PIN을 입력하세요.');
+        return;
+      }
+      try {
+        await apiPost('homework-photo/auth', { assignment_id: assignmentId, student_id: studentId, pin });
+        localStorage.setItem(authKey(), pin);
+        renderSubmit();
+      } catch (e) {
+        localStorage.removeItem(authKey());
+        if (!fromStorage) toast(e.message || 'PIN이 일치하지 않습니다.');
+        else throw e;
+      }
+    }
+    async function submitHomework() {
+      try {
+        const data = await apiPost('homework-photo/submit', { assignment_id: assignmentId, student_id: studentId, pin });
+        submission = { ...(submission || {}), is_submitted: 1, submitted_at: data.submitted_at || '방금 제출됨' };
+        toast('제출되었습니다.');
+        renderDone(submission.submitted_at);
+      } catch (e) {
+        toast(e.message || '제출 실패');
+      }
+    }
+    loadAssignment();
+  </script>
+</body>
+</html>

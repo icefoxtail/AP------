@@ -98,6 +98,21 @@ const api = {
     },
     savePlannerFeedback(data) {
         return this.post('planner/feedback', data);
+    },
+    createHomeworkPhotoAssignment(data) {
+        return this.post('homework-photo/assignments', data);
+    },
+    getHomeworkPhotoAssignments(classId) {
+        return this.get(`homework-photo/assignments?class_id=${encodeURIComponent(classId)}`);
+    },
+    getHomeworkPhotoOverview(assignmentId) {
+        return this.get(`homework-photo/overview?assignment_id=${encodeURIComponent(assignmentId)}`);
+    },
+    getHomeworkPhotoStudentLinks(assignmentId) {
+        return this.get(`homework-photo/student-links?assignment_id=${encodeURIComponent(assignmentId)}`);
+    },
+    closeHomeworkPhotoAssignment(assignmentId) {
+        return this.patch(`homework-photo/${encodeURIComponent(assignmentId)}/close`, {});
     }
 };
 

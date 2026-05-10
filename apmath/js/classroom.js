@@ -644,6 +644,229 @@ function openClassAttendance(cid) {
     else renderClass(cid);
 }
 
+function getHomeworkPhotoQrSrc(url) {
+    return `https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=${encodeURIComponent(url)}`;
+}
+
+function getHomeworkPhotoBaseUrl() {
+    const origin = window.location.origin;
+    let path = window.location.pathname || '/';
+    path = path.replace(/\/index\.html$/, '/');
+    if (!path.endsWith('/')) path = path.substring(0, path.lastIndexOf('/') + 1);
+    return origin + path + 'homework/';
+}
+
+function buildHomeworkPhotoStudentUrl(assignmentId, studentId, fallbackUrl = '') {
+    if (!assignmentId || !studentId) return fallbackUrl || '';
+    const params = new URLSearchParams();
+    params.set('assignment_id', assignmentId);
+    params.set('student_id', studentId);
+    return `${getHomeworkPhotoBaseUrl()}?${params.toString()}`;
+}
+
+async function copyHomeworkPhotoText(text, successMessage = '복사되었습니다.') {
+    try {
+        await navigator.clipboard.writeText(String(text || ''));
+        toast(successMessage, 'info');
+    } catch (e) {
+        toast('복사에 실패했습니다.', 'warn');
+    }
+}
+
+function openHomeworkPhotoAssignmentModal(classId) {
+    const cls = state.db.classes.find(c => String(c.id) === String(classId));
+    const today = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
+    showModal('숙제등록', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
+                <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">학생별 제출 링크와 QR이 생성됩니다.</div>
+            </div>
+            <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
+            <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
+            <div style="display:grid; grid-template-columns:1fr 120px; gap:8px;">
+                <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(today)}">
+                <input id="hw-photo-time" type="time" class="cls-input" value="23:00">
+            </div>
+            <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:800;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장하고 링크 생성</button>
+            <button class="btn" style="min-height:44px; font-size:13px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+        </div>
+    `);
+}
+
+async function handleCreateHomeworkPhotoAssignment(classId) {
+    const title = document.getElementById('hw-photo-title')?.value.trim() || '';
+    const description = document.getElementById('hw-photo-desc')?.value.trim() || '';
+    const dueDate = document.getElementById('hw-photo-date')?.value || '';
+    const dueTime = document.getElementById('hw-photo-time')?.value || '';
+    if (!title || !dueDate) return toast('숙제 제목과 마감일을 입력하세요.', 'warn');
+
+    try {
+        const res = api.createHomeworkPhotoAssignment
+            ? await api.createHomeworkPhotoAssignment({ class_id: classId, title, description, due_date: dueDate, due_time: dueTime })
+            : await api.post('homework-photo/assignments', { class_id: classId, title, description, due_date: dueDate, due_time: dueTime });
+        if (!res?.success) return toast(res?.message || res?.error || '숙제 등록 실패', 'warn');
+        toast('숙제가 등록되었습니다.', 'success');
+        openHomeworkPhotoLinksModal(res.assignment_id, res.links || []);
+    } catch (e) {
+        console.error('[handleCreateHomeworkPhotoAssignment] failed:', e);
+        toast('숙제 등록 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function openHomeworkPhotoAssignmentList(classId) {
+    showModal('숙제 목록', `<div id="hw-photo-assignment-list" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    try {
+        const data = api.getHomeworkPhotoAssignments
+            ? await api.getHomeworkPhotoAssignments(classId)
+            : await api.get(`homework-photo/assignments?class_id=${encodeURIComponent(classId)}`);
+        const root = document.getElementById('hw-photo-assignment-list');
+        if (!root) return;
+        const list = Array.isArray(data.assignments) ? data.assignments : [];
+        if (!data?.success || !list.length) {
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">등록된 숙제가 없습니다.</div>`;
+            return;
+        }
+        root.innerHTML = `<div style="display:flex; flex-direction:column; gap:10px;">${list.map(a => {
+            const total = Number(a.total || 0);
+            const submitted = Number(a.submitted || 0);
+            return `
+                <div style="border:1px solid var(--border); border-radius:14px; padding:13px; background:var(--surface);">
+                    <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
+                        <div style="min-width:0;">
+                            <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(a.title || '숙제')}</div>
+                            <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">마감 ${apEscapeHtml(a.due_date || '')}${a.due_time ? ` ${apEscapeHtml(a.due_time)}` : ''} · 제출 ${submitted}/${total}</div>
+                        </div>
+                        <div style="font-size:12px; font-weight:800; color:${a.status === 'closed' ? 'var(--secondary)' : 'var(--primary)'};">${a.status === 'closed' ? '마감' : '진행'}</div>
+                    </div>
+                    <div style="display:flex; gap:8px; margin-top:12px;">
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="loadHomeworkPhotoLinksModal('${a.id}')">링크</button>
+                    </div>
+                </div>
+            `;
+        }).join('')}</div>`;
+    } catch (e) {
+        console.error('[openHomeworkPhotoAssignmentList] failed:', e);
+        toast('숙제 목록 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function loadHomeworkPhotoLinksModal(assignmentId) {
+    showModal('학생별 링크', `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    try {
+        const data = api.getHomeworkPhotoStudentLinks
+            ? await api.getHomeworkPhotoStudentLinks(assignmentId)
+            : await api.get(`homework-photo/student-links?assignment_id=${encodeURIComponent(assignmentId)}`);
+        if (!data?.success) return toast(data?.message || data?.error || '링크 조회 실패', 'warn');
+        openHomeworkPhotoLinksModal(assignmentId, data.links || []);
+    } catch (e) {
+        console.error('[loadHomeworkPhotoLinksModal] failed:', e);
+        toast('링크 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function openHomeworkPhotoLinksModal(assignmentId, links) {
+    const list = Array.isArray(links) ? links : [];
+    const normalized = list.map(x => ({
+        ...x,
+        url: buildHomeworkPhotoStudentUrl(assignmentId, x.student_id, x.url)
+    }));
+    const allText = normalized.map(x => `${x.name}: ${x.url}`).join('\n');
+    showModal('학생별 링크', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; gap:8px;">
+                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="openHomeworkPhotoOverviewModal('${assignmentId}')">제출 현황</button>
+                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="copyHomeworkPhotoText(document.getElementById('hw-photo-all-links')?.value || '', '전체 링크가 복사되었습니다.')">전체 복사</button>
+            </div>
+            <textarea id="hw-photo-all-links" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(allText)}</textarea>
+            ${normalized.length ? normalized.map(item => {
+                const safeUrl = String(item.url || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                return `
+                    <div style="border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
+                        <div style="display:flex; justify-content:space-between; gap:10px; align-items:center;">
+                            <div style="min-width:0;">
+                                <div style="font-size:14px; font-weight:800; color:var(--text);">${apEscapeHtml(item.name || '학생')}</div>
+                                <div style="font-size:11px; font-weight:700; color:var(--secondary); word-break:break-all; margin-top:4px;">${apEscapeHtml(item.url || '')}</div>
+                            </div>
+                            <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">복사</button>
+                        </div>
+                        <div style="margin-top:10px; text-align:center;">
+                            <img src="${getHomeworkPhotoQrSrc(item.url || '')}" alt="QR" style="width:128px; height:128px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:8px;">
+                        </div>
+                    </div>
+                `;
+            }).join('') : `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">생성된 링크가 없습니다.</div>`}
+        </div>
+    `);
+}
+
+async function openHomeworkPhotoOverviewModal(assignmentId) {
+    showModal('제출 현황', `<div id="hw-photo-overview" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    try {
+        const data = api.getHomeworkPhotoOverview
+            ? await api.getHomeworkPhotoOverview(assignmentId)
+            : await api.get(`homework-photo/overview?assignment_id=${encodeURIComponent(assignmentId)}`);
+        const root = document.getElementById('hw-photo-overview');
+        if (!root) return;
+        if (!data?.success) {
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:800;">현황을 불러오지 못했습니다.</div>`;
+            return toast(data?.message || data?.error || '현황 조회 실패', 'warn');
+        }
+        const rows = Array.isArray(data.students) ? data.students : [];
+        const total = rows.length;
+        const submitted = rows.filter(r => Number(r.is_submitted || 0) === 1).length;
+        root.innerHTML = `
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
+                    <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(data.assignment?.title || '숙제')}</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">전체 ${total} · 제출 ${submitted} · 미제출 ${total - submitted}</div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
+                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
+                </div>
+                ${rows.map(r => {
+                    const done = Number(r.is_submitted || 0) === 1;
+                    const studentUrl = buildHomeworkPhotoStudentUrl(assignmentId, r.student_id, r.url);
+                    const safeUrl = String(studentUrl || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    return `
+                        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
+                            <div style="min-width:0;">
+                                <div style="font-size:14px; font-weight:800; color:var(--text);">${apEscapeHtml(r.name || '')}</div>
+                                <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:4px;">${done ? `제출 ${apEscapeHtml(r.submitted_at || '')}` : '미제출'} · 사진 ${Number(r.file_count || 0)}장</div>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="font-size:13px; font-weight:900; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
+                                <button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        `;
+    } catch (e) {
+        console.error('[openHomeworkPhotoOverviewModal] failed:', e);
+        toast('제출 현황 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function closeHomeworkPhotoAssignment(assignmentId) {
+    if (!confirm('미제출 학생을 기존 숙제 칸에 미완료로 반영하고 마감할까요?')) return;
+    try {
+        const res = api.closeHomeworkPhotoAssignment
+            ? await api.closeHomeworkPhotoAssignment(assignmentId)
+            : await api.patch(`homework-photo/${encodeURIComponent(assignmentId)}/close`, {});
+        if (!res?.success) return toast(res?.message || res?.error || '마감 처리 실패', 'warn');
+        toast('마감 처리되었습니다.', 'success');
+        if (typeof refreshDataOnly === 'function') await refreshDataOnly();
+        openHomeworkPhotoOverviewModal(assignmentId);
+    } catch (e) {
+        console.error('[closeHomeworkPhotoAssignment] failed:', e);
+        toast('마감 처리 중 오류가 발생했습니다.', 'error');
+    }
+}
+
 function openClassHomework(cid) {
     state.ui.classDefaultTab = 'hw';
     if (typeof openDashboardClass === 'function') openDashboardClass(cid);
@@ -706,6 +929,7 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
             <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도관리</button>
+            <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제등록</button>
             <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn cls-v4-tool purple" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
