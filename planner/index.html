@@ -503,6 +503,7 @@
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
     }
+    function authStore() { return window.localStorage; }
     function authKey() { return `planner_auth_${studentId}`; }
     function pinKey() { return `planner_pin_${studentId}`; }
     function isMobile() { return window.innerWidth < 768; }
@@ -569,8 +570,8 @@
         return;
       }
 
-      const savedAuth = sessionStorage.getItem(authKey());
-      const savedPin = sessionStorage.getItem(pinKey());
+      const savedAuth = authStore().getItem(authKey());
+      const savedPin = authStore().getItem(pinKey());
 
       if (savedAuth === 'true' && savedPin) {
         pin = savedPin;
@@ -578,8 +579,8 @@
           await verifyPin(true);
           return;
         } catch (e) {
-          sessionStorage.removeItem(authKey());
-          sessionStorage.removeItem(pinKey());
+          authStore().removeItem(authKey());
+          authStore().removeItem(pinKey());
         }
       }
 
@@ -631,8 +632,8 @@
       try {
         const data = await apiGet(`planner-auth?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`);
         if (!data?.success || !data?.student) {
-          sessionStorage.removeItem(authKey());
-          sessionStorage.removeItem(pinKey());
+          authStore().removeItem(authKey());
+          authStore().removeItem(pinKey());
           if (fromSession) {
             throw new Error(data?.error || 'session expired');
           }
@@ -646,14 +647,14 @@
         }
 
         student = data.student;
-        sessionStorage.setItem(authKey(), 'true');
-        sessionStorage.setItem(pinKey(), pin);
+        authStore().setItem(authKey(), 'true');
+        authStore().setItem(pinKey(), pin);
         $('student-chip').textContent = student.name || '';
         await loadPlannerData();
         renderPlanner();
       } catch (e) {
-        sessionStorage.removeItem(authKey());
-        sessionStorage.removeItem(pinKey());
+        authStore().removeItem(authKey());
+        authStore().removeItem(pinKey());
         toast('인증 중 오류가 발생했습니다.');
       }
     }
@@ -919,8 +920,8 @@
     }
 
     function resetAuth() {
-      sessionStorage.removeItem(authKey());
-      sessionStorage.removeItem(pinKey());
+      authStore().removeItem(authKey());
+      authStore().removeItem(pinKey());
       pin = '';
       student = null;
       plans = [];
