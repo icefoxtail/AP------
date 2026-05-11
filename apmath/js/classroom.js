@@ -1317,7 +1317,7 @@ function openClassRecordModal(cid) {
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
     if (activeBooks.length === 0 && cls?.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
 
-const existingRecord = (state.db.class_daily_records || [])
+    const existingRecord = (state.db.class_daily_records || [])
     .filter(r =>
         String(r.class_id) === String(cid) &&
         String(r.date || '') <= String(todayStr)
@@ -1327,7 +1327,7 @@ const existingRecord = (state.db.class_daily_records || [])
         String(b.id || '').localeCompare(String(a.id || ''))
     )[0] || null;
 
-const existingProgress = existingRecord
+    const existingProgress = existingRecord
     ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id))
     : [];
     
@@ -1842,8 +1842,47 @@ function getPlannerBaseUrl() {
     return origin + path + 'planner/';
 }
 
+function ensureTeacherPlannerReturnBridge() {
+    if (window.__apTeacherPlannerReturnBridgeInstalled) return;
+    if (typeof returnToPreviousManagementView !== 'function') return;
+
+    const originalReturnToPreviousManagementView = returnToPreviousManagementView;
+    const patchedReturnToPreviousManagementView = function(fallback = 'dashboard', ctx = null) {
+        if (!state.ui) state.ui = {};
+        const view = ctx || state.ui.returnView || {};
+        state.ui.modalReturnView = null;
+
+        if (view.type === 'plannerControl' && view.classId && typeof renderPlannerControl === 'function') {
+            closeModal(true);
+            return renderPlannerControl(String(view.classId));
+        }
+
+        return originalReturnToPreviousManagementView(fallback, ctx);
+    };
+
+    returnToPreviousManagementView = patchedReturnToPreviousManagementView;
+    window.returnToPreviousManagementView = patchedReturnToPreviousManagementView;
+    window.__apTeacherPlannerReturnBridgeInstalled = true;
+}
+
+function setTeacherPlannerReturnContext(classId) {
+    if (!state.ui) state.ui = {};
+    if (!classId) return;
+
+    ensureTeacherPlannerReturnBridge();
+    state.ui.plannerControlClassId = String(classId);
+    state.ui.plannerReturnMode = 'teacherPlanner';
+
+    if (typeof setModalReturnView === 'function') {
+        setModalReturnView({ type: 'plannerControl', classId: String(classId) });
+    }
+}
+
 async function copyPlannerStudentLink(studentId) {
     const url = `${getPlannerBaseUrl()}?student_id=${encodeURIComponent(studentId)}`;
+    const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+    if (classId) setTeacherPlannerReturnContext(classId);
+
     try {
         await navigator.clipboard.writeText(url);
         toast('플래너 링크가 복사되었습니다.', 'info');
@@ -1938,6 +1977,7 @@ async function openPlannerStudentPlans(studentId, monthOrDate) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const bounds = getPlannerMonthBounds(String(monthOrDate || '').slice(0, 7));
     const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+    if (classId) setTeacherPlannerReturnContext(classId);
 
     showModal('플래너 상세', `
         <div style="display:flex; flex-direction:column; gap:14px;">
@@ -2064,6 +2104,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
 
 async function renderPlannerControl(classId) {
     if (!state.ui) state.ui = {};
+    ensureTeacherPlannerReturnBridge();
     state.ui.plannerControlClassId = String(classId || '');
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
@@ -2114,6 +2155,9 @@ async function refreshPlannerControl(classId) {
 function openPlannerFeedbackModal(studentId, date, currentRate) {
     const s = state.db.students.find(st => String(st.id) === String(studentId));
     const safeRate = Math.max(0, Math.min(100, Math.round(Number(currentRate || 0))));
+    const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+    if (classId) setTeacherPlannerReturnContext(classId);
+
     showModal('플래너 피드백', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
