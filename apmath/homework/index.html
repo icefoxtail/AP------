@@ -3,98 +3,274 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>AP Math Homework</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>AP Math OS | 숙제 제출</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <style>
     :root {
       --primary:#1A5CFF;
       --success:#00B894;
       --error:#E8414F;
+      --warning:#FFA502;
       --bg:#F2F4F6;
       --surface:#FFFFFF;
       --surface-2:#F8FAFC;
       --border:#E5E8EB;
       --text:#191F28;
+      --text-soft:#4E5968;
       --secondary:#6B7684;
     }
     * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; outline:none; }
+    html { min-height:100%; background:var(--bg); }
     body {
       margin:0;
-      font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background:var(--bg);
+      min-height:100vh;
+      min-height:100dvh;
+      font-family:Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at 18% -8%, rgba(26,92,255,0.12) 0, rgba(26,92,255,0.04) 34%, transparent 58%),
+        linear-gradient(180deg, #F8FAFC 0%, var(--bg) 52%, #EEF2F7 100%);
       color:var(--text);
       line-height:1.5;
+      word-break:keep-all;
     }
     button, input { font-family:inherit; }
+    button { cursor:pointer; }
     .top {
       position:sticky;
       top:0;
       z-index:20;
-      height:56px;
+      min-height:58px;
       padding:0 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      background:rgba(242,244,246,0.92);
-      border-bottom:1px solid var(--border);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
+      background:rgba(248,250,252,0.92);
+      border-bottom:1px solid rgba(229,232,235,0.82);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
     }
-    .brand { font-size:17px; font-weight:800; color:var(--text); }
-    .chip { min-width:0; max-width:48%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px; font-weight:800; color:var(--secondary); text-align:right; }
-    .app { width:100%; max-width:520px; margin:0 auto; padding:16px 14px calc(28px + env(safe-area-inset-bottom)); }
+    .brand { display:flex; flex-direction:column; gap:1px; min-width:0; }
+    .brand-main { font-size:17px; font-weight:700; color:var(--text); letter-spacing:-0.35px; line-height:1.2; }
+    .brand-sub { font-size:11px; font-weight:700; color:var(--secondary); letter-spacing:-0.1px; line-height:1.2; }
+    .chip {
+      min-width:0;
+      max-width:48%;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:12px;
+      font-weight:700;
+      color:var(--primary);
+      text-align:right;
+      background:rgba(26,92,255,0.08);
+      border:1px solid rgba(26,92,255,0.14);
+      border-radius:999px;
+      padding:6px 10px;
+    }
+    .chip:empty { display:none; }
+    .app { width:100%; max-width:520px; margin:0 auto; padding:18px 14px calc(30px + env(safe-area-inset-bottom)); }
+    .hero {
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding:6px 2px 16px;
+    }
+    .hero-kicker { font-size:12px; font-weight:700; color:var(--primary); line-height:1.4; }
+    .hero-title { margin:0; font-size:25px; font-weight:700; letter-spacing:-0.8px; line-height:1.18; color:var(--text); }
+    .hero-desc { margin:0; font-size:13px; font-weight:700; color:var(--secondary); line-height:1.55; }
+
+    .visual-wrap {
+      position:relative;
+      min-height:150px;
+      margin:2px 0 8px;
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.50) 16%, transparent 34%),
+        linear-gradient(135deg, rgba(26,92,255,0.12) 0%, rgba(124,58,237,0.10) 52%, rgba(0,184,148,0.12) 100%);
+      border:1px solid rgba(229,232,235,0.86);
+      box-shadow:0 12px 32px rgba(25,31,40,0.045);
+    }
+    .visual-orb {
+      position:absolute;
+      border-radius:999px;
+      opacity:.86;
+      pointer-events:none;
+    }
+    .visual-orb.one { width:82px; height:82px; right:-18px; top:-20px; background:rgba(26,92,255,0.15); }
+    .visual-orb.two { width:58px; height:58px; left:22px; bottom:-20px; background:rgba(0,184,148,0.16); }
+    .visual-orb.three { width:22px; height:22px; right:96px; bottom:22px; background:rgba(255,165,2,0.22); }
+    .visual-book {
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:176px;
+      height:100px;
+      transform:translate(-50%, -48%) rotate(-2deg);
+      border-radius:24px;
+      background:#fff;
+      border:1px solid rgba(229,232,235,0.95);
+      box-shadow:0 20px 46px rgba(25,31,40,0.10);
+    }
+    .visual-book:before {
+      content:'';
+      position:absolute;
+      left:50%;
+      top:14px;
+      bottom:14px;
+      width:1px;
+      background:rgba(229,232,235,0.95);
+    }
+    .visual-line {
+      position:absolute;
+      left:22px;
+      height:7px;
+      border-radius:999px;
+      background:#E5E8EB;
+    }
+    .visual-line.a { top:26px; width:52px; }
+    .visual-line.b { top:44px; width:38px; }
+    .visual-line.c { top:62px; width:56px; }
+    .visual-line.d { top:26px; left:104px; width:46px; }
+    .visual-line.e { top:44px; left:104px; width:34px; }
+    .visual-check {
+      position:absolute;
+      right:22px;
+      bottom:18px;
+      width:42px;
+      height:42px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#00B894 0%,#12C99B 100%);
+      color:#fff;
+      font-size:25px;
+      font-weight:700;
+      box-shadow:0 12px 24px rgba(0,184,148,0.24);
+    }
+    .visual-pencil {
+      position:absolute;
+      left:calc(50% - 112px);
+      top:38px;
+      width:62px;
+      height:14px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#FFA502 0%,#FFA502 72%,#F8D9A6 72%,#F8D9A6 100%);
+      transform:rotate(-24deg);
+      box-shadow:0 10px 22px rgba(255,165,2,0.20);
+    }
+    .visual-pencil:after {
+      content:'';
+      position:absolute;
+      right:-10px;
+      top:1px;
+      border-left:12px solid #4E5968;
+      border-top:6px solid transparent;
+      border-bottom:6px solid transparent;
+    }
     .card {
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:20px;
+      background:rgba(255,255,255,0.96);
+      border:1px solid rgba(229,232,235,0.92);
+      border-radius:22px;
       padding:18px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.03);
+      box-shadow:0 8px 26px rgba(25,31,40,0.045);
       margin-bottom:14px;
     }
-    .title { margin:0; font-size:21px; font-weight:850; line-height:1.25; letter-spacing:-0.4px; color:var(--text); }
-    .meta { margin-top:8px; font-size:12px; font-weight:800; color:var(--secondary); }
-    .desc { margin-top:16px; padding:14px; border-radius:14px; background:var(--surface-2); color:var(--text); font-size:14px; font-weight:700; white-space:pre-wrap; word-break:break-word; }
+    .title { margin:0; font-size:21px; font-weight:700; line-height:1.25; letter-spacing:-0.45px; color:var(--text); }
+    .meta { margin-top:9px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:12px; font-weight:700; color:var(--secondary); }
+    .meta-pill { display:inline-flex; align-items:center; min-height:26px; padding:4px 9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); color:var(--text-soft); }
+    .meta-pill.primary { color:var(--primary); background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.14); }
+    .desc {
+      margin-top:15px;
+      padding:14px;
+      border-radius:16px;
+      background:var(--surface-2);
+      border:1px solid rgba(229,232,235,0.72);
+      color:var(--text);
+      font-size:14px;
+      font-weight:700;
+      line-height:1.65;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
     .input {
       width:100%;
-      min-height:50px;
+      min-height:52px;
       border:1px solid var(--border);
-      border-radius:14px;
+      border-radius:16px;
       background:var(--surface);
       color:var(--text);
-      padding:12px 14px;
+      padding:13px 15px;
       font-size:16px;
-      font-weight:800;
+      font-weight:700;
+      box-shadow:none;
     }
+    .input::placeholder { color:#A0A8B2; }
     .btn {
       width:100%;
-      min-height:50px;
-      border:0;
-      border-radius:14px;
+      min-height:52px;
+      border:1px solid var(--border);
+      border-radius:16px;
       background:var(--surface-2);
       color:var(--text);
       font-size:15px;
-      font-weight:850;
-      cursor:pointer;
+      font-weight:700;
       display:flex;
       align-items:center;
       justify-content:center;
       gap:8px;
+      transition:transform .12s ease, opacity .12s ease, background .12s ease;
     }
-    .btn-primary { background:var(--primary); color:#fff; box-shadow:0 8px 20px rgba(26,92,255,0.22); }
+    .btn-primary { background:linear-gradient(135deg,#1A5CFF 0%,#4F46E5 100%); color:#fff; border:none; box-shadow:0 12px 24px rgba(26,92,255,0.22); }
     .btn:active { transform:scale(0.99); }
-    .stack { display:flex; flex-direction:column; gap:10px; }
-    .notice { font-size:12px; font-weight:800; color:var(--secondary); line-height:1.5; }
+    .btn[disabled] { opacity:.58; pointer-events:none; }
+    .stack { display:flex; flex-direction:column; gap:11px; }
+    .notice {
+      font-size:13px;
+      font-weight:700;
+      color:var(--secondary);
+      line-height:1.58;
+      padding:12px 13px;
+      background:var(--surface-2);
+      border:1px solid rgba(229,232,235,0.72);
+      border-radius:16px;
+    }
+    .notice strong { color:var(--text); font-weight:700; }
     .done-mark {
-      width:60px;
-      height:60px;
-      border-radius:20px;
+      width:62px;
+      height:62px;
+      border-radius:22px;
       display:flex;
       align-items:center;
       justify-content:center;
       background:rgba(0,184,148,0.12);
       color:var(--success);
-      font-size:30px;
-      font-weight:900;
+      font-size:31px;
+      font-weight:700;
       margin-bottom:14px;
+      border:1px solid rgba(0,184,148,0.18);
+    }
+    .status-box {
+      margin-top:15px;
+      padding:14px;
+      border-radius:16px;
+      background:rgba(0,184,148,0.08);
+      border:1px solid rgba(0,184,148,0.16);
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.6;
+    }
+    .footer-note {
+      padding:2px 4px 0;
+      font-size:11px;
+      font-weight:700;
+      color:var(--secondary);
+      text-align:center;
+      line-height:1.5;
     }
     .toast {
       position:fixed;
@@ -103,22 +279,32 @@
       transform:translateX(-50%);
       background:#191F28;
       color:#fff;
-      padding:10px 14px;
+      padding:11px 15px;
       border-radius:999px;
       font-size:13px;
-      font-weight:800;
+      font-weight:700;
       opacity:0;
       pointer-events:none;
       transition:opacity .18s ease, transform .18s ease;
       z-index:100;
       white-space:nowrap;
+      box-shadow:0 10px 28px rgba(25,31,40,0.18);
     }
     .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
+    @media (max-width:380px) {
+      .app { padding-left:12px; padding-right:12px; }
+      .card { padding:16px; border-radius:20px; }
+      .hero-title { font-size:23px; }
+      .title { font-size:20px; }
+    }
   </style>
 </head>
 <body>
   <header class="top">
-    <div class="brand">AP Math Homework</div>
+    <div class="brand">
+      <div class="brand-main">AP Math OS</div>
+      <div class="brand-sub">숙제 제출</div>
+    </div>
     <div id="student-chip" class="chip"></div>
   </header>
   <main id="app" class="app"></main>
@@ -134,6 +320,7 @@
     let assignment = null;
     let student = null;
     let submission = null;
+    let isSubmitting = false;
 
     function $(id) { return document.getElementById(id); }
     function escapeHtml(value) {
@@ -163,13 +350,38 @@
       if (!r.ok || data.success === false) throw new Error(data.error || data.message || '요청 실패');
       return data;
     }
+    function renderHero() {
+      return `
+        <section class="hero">
+          <div class="visual-wrap" aria-hidden="true">
+            <span class="visual-orb one"></span>
+            <span class="visual-orb two"></span>
+            <span class="visual-orb three"></span>
+            <span class="visual-pencil"></span>
+            <div class="visual-book">
+              <span class="visual-line a"></span>
+              <span class="visual-line b"></span>
+              <span class="visual-line c"></span>
+              <span class="visual-line d"></span>
+              <span class="visual-line e"></span>
+              <span class="visual-check">✓</span>
+            </div>
+          </div>
+          <div class="hero-kicker">AP수학 숙제 확인</div>
+          <h1 class="hero-title">오늘 숙제를<br>완료했는지 제출해 주세요.</h1>
+          <p class="hero-desc">PIN으로 본인 확인 후 제출하면 선생님 클래스룸에 숙제 완료 상태가 기록됩니다.</p>
+        </section>
+      `;
+    }
     function renderError(message) {
       $('student-chip').textContent = '';
       $('app').innerHTML = `
+        ${renderHero()}
         <section class="card">
           <h1 class="title">접속 오류</h1>
           <div class="desc">${escapeHtml(message)}</div>
         </section>
+        <div class="footer-note">링크가 계속 열리지 않으면 선생님께 다시 받아 주세요.</div>
       `;
     }
     function renderAssignmentCard() {
@@ -178,7 +390,10 @@
       return `
         <section class="card">
           <h1 class="title">${escapeHtml(assignment.title || '숙제')}</h1>
-          <div class="meta">${escapeHtml(assignment.class_name || '')}${due ? ` · 마감 ${escapeHtml(due)}` : ''}</div>
+          <div class="meta">
+            ${assignment.class_name ? `<span class="meta-pill">${escapeHtml(assignment.class_name)}</span>` : ''}
+            ${due ? `<span class="meta-pill primary">마감 ${escapeHtml(due)}</span>` : ''}
+          </div>
           ${assignment.description ? `<div class="desc">${escapeHtml(assignment.description)}</div>` : ''}
         </section>
       `;
@@ -186,10 +401,11 @@
     function renderPinGate() {
       $('student-chip').textContent = student?.name || '';
       $('app').innerHTML = `
+        ${renderHero()}
         ${renderAssignmentCard()}
         <section class="card">
           <div class="stack">
-            <div class="notice">본인 확인을 위해 개인 PIN을 입력하세요.</div>
+            <div class="notice"><strong>본인 확인</strong><br>학생 개인 PIN을 입력해 주세요.</div>
             <input id="pin-input" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')verifyPin(false)">
             <button class="btn btn-primary" onclick="verifyPin(false)">확인</button>
           </div>
@@ -204,23 +420,27 @@
         return;
       }
       $('app').innerHTML = `
+        ${renderHero()}
         ${renderAssignmentCard()}
         <section class="card">
           <div class="stack">
-            <div class="notice">1차 제출 버전입니다. 사진 업로드는 다음 단계에서 붙고, 지금은 제출 완료 상태가 선생님 클래스룸 숙제 칸에 자동 반영됩니다.</div>
-            <button class="btn btn-primary" onclick="submitHomework()">제출하기</button>
+            <div class="notice"><strong>제출 전 확인</strong><br>숙제를 완료했다면 아래 버튼을 눌러 제출 상태를 선생님께 보내 주세요. 실제 숙제 확인은 수업 시간에 진행됩니다.</div>
+            <button id="submit-btn" class="btn btn-primary" onclick="submitHomework()">숙제 완료로 제출</button>
           </div>
         </section>
+        <div class="footer-note">사진 제출 기능은 다음 단계에서 추가됩니다.</div>
       `;
     }
     function renderDone(submittedAt) {
+      $('student-chip').textContent = student?.name || '';
       $('app').innerHTML = `
+        ${renderHero()}
         ${renderAssignmentCard()}
         <section class="card">
           <div class="done-mark">✓</div>
           <h1 class="title">제출 완료</h1>
           <div class="meta">${escapeHtml(submittedAt || '방금 제출됨')}</div>
-          <div class="desc">선생님 클래스룸 숙제 상태에 완료로 반영되었습니다.</div>
+          <div class="status-box">선생님 클래스룸에 숙제 완료 상태가 기록되었습니다. 수업 시간에 실제 숙제를 확인받아 주세요.</div>
         </section>
       `;
     }
@@ -266,6 +486,13 @@
       }
     }
     async function submitHomework() {
+      if (isSubmitting) return;
+      isSubmitting = true;
+      const btn = $('submit-btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '제출 중...';
+      }
       try {
         const data = await apiPost('homework-photo/submit', { assignment_id: assignmentId, student_id: studentId, pin });
         submission = { ...(submission || {}), is_submitted: 1, submitted_at: data.submitted_at || '방금 제출됨' };
@@ -273,6 +500,12 @@
         renderDone(submission.submitted_at);
       } catch (e) {
         toast(e.message || '제출 실패');
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '숙제 완료로 제출';
+        }
+      } finally {
+        isSubmitting = false;
       }
     }
     loadAssignment();
