@@ -638,12 +638,6 @@ function computeClassTodaySummary(classId, dateStr = '') {
     return { att: attCount, hw: hwCount, test, total, isScheduled };
 }
 
-function openClassAttendance(cid) {
-    state.ui.classDefaultTab = 'att';
-    if (typeof openDashboardClass === 'function') openDashboardClass(cid);
-    else renderClass(cid);
-}
-
 function getHomeworkPhotoQrSrc(url) {
     return `https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=${encodeURIComponent(url)}`;
 }
@@ -664,13 +658,77 @@ function buildHomeworkPhotoStudentUrl(assignmentId, studentId, fallbackUrl = '')
     return `${getHomeworkPhotoBaseUrl()}?${params.toString()}`;
 }
 
+function normalizeHomeworkPhotoLinkItems(assignmentId, items = []) {
+    const list = Array.isArray(items) ? items : [];
+    return list
+        .filter(item => item && (item.student_id || item.studentId))
+        .map((item, index) => {
+            const studentId = item.student_id || item.studentId || '';
+            const name = item.name || item.student_name || item.studentName || '학생';
+            return {
+                ...item,
+                _order: Number.isFinite(Number(item.sort_order ?? item.sortOrder ?? item.order)) ? Number(item.sort_order ?? item.sortOrder ?? item.order) : index,
+                student_id: studentId,
+                name,
+                url: buildHomeworkPhotoStudentUrl(assignmentId, studentId, item.url || item.link || '')
+            };
+        })
+        .filter(item => item.student_id && item.url)
+        .sort((a, b) => {
+            const oa = Number(a._order);
+            const ob = Number(b._order);
+            if (Number.isFinite(oa) && Number.isFinite(ob) && oa !== ob) return oa - ob;
+            return String(a.name || '').localeCompare(String(b.name || ''), 'ko', { numeric: true });
+        });
+}
+
+function buildHomeworkPhotoStudentLinkText(assignment = {}, items = [], options = {}) {
+    const mode = options.mode === 'missing' ? 'missing' : 'all';
+    const list = Array.isArray(items) ? items : [];
+    if (!list.length) return '';
+
+    const title = mode === 'missing' ? '[AP수학 숙제 미제출 안내]' : '[AP수학 숙제 제출 안내]';
+    const intro = mode === 'missing'
+        ? '아래 학생은 아직 숙제 사진 제출이 확인되지 않았습니다.\n본인 이름 아래 링크로 들어가서 숙제 사진을 올려주세요.'
+        : '오늘 숙제 사진 제출 링크입니다.\n본인 이름 아래 링크로 들어가서 PIN 입력 후 숙제 사진을 올려주세요.';
+    const assignmentTitle = String(assignment?.title || '').trim();
+    const dueDate = String(assignment?.due_date || assignment?.dueDate || '').trim();
+    const dueTime = String(assignment?.due_time || assignment?.dueTime || '').trim();
+    const meta = [assignmentTitle ? `숙제: ${assignmentTitle}` : '', dueDate ? `마감: ${dueDate}${dueTime ? ` ${dueTime}` : ''}` : ''].filter(Boolean).join('\n');
+    const body = list.map(item => `${item.name || '학생'}\n${item.url || ''}`).join('\n\n');
+
+    return [
+        title,
+        '',
+        intro,
+        meta ? `\n${meta}` : '',
+        '',
+        body,
+        '',
+        '사진은 제출 후 24시간 뒤 자동 삭제됩니다.'
+    ].filter(part => part !== '').join('\n');
+}
+
+function sanitizeHomeworkPhotoDomId(value) {
+    return String(value || '').replace(/[^a-zA-Z0-9_-]/g, '_');
+}
+
 async function copyHomeworkPhotoText(text, successMessage = '복사되었습니다.') {
     try {
         await navigator.clipboard.writeText(String(text || ''));
-        toast(successMessage, 'info');
+        toast(successMessage, 'success');
     } catch (e) {
         toast('복사에 실패했습니다.', 'warn');
     }
+}
+
+async function copyHomeworkPhotoAnnouncement(textareaId, emptyMessage, successMessage) {
+    const text = (document.getElementById(textareaId)?.value || '').trim();
+    if (!text) {
+        toast(emptyMessage || '복사할 대상이 없습니다.', 'info');
+        return;
+    }
+    await copyHomeworkPhotoText(text, successMessage || '복사되었습니다.');
 }
 
 function openHomeworkPhotoAssignmentModal(classId) {
@@ -680,7 +738,7 @@ function openHomeworkPhotoAssignmentModal(classId) {
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
                 <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">학생별 제출 링크와 QR이 생성됩니다.</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">저장하면 학생별 숙제 제출 링크가 자동 생성됩니다.</div>
             </div>
             <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
             <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
@@ -707,7 +765,7 @@ async function handleCreateHomeworkPhotoAssignment(classId) {
             : await api.post('homework-photo/assignments', { class_id: classId, title, description, due_date: dueDate, due_time: dueTime });
         if (!res?.success) return toast(res?.message || res?.error || '숙제 등록 실패', 'warn');
         toast('숙제가 등록되었습니다.', 'success');
-        openHomeworkPhotoLinksModal(res.assignment_id, res.links || []);
+        openHomeworkPhotoLinksModal(res.assignment_id, res.links || [], res.assignment || { title, due_date: dueDate, due_time: dueTime });
     } catch (e) {
         console.error('[handleCreateHomeworkPhotoAssignment] failed:', e);
         toast('숙제 등록 중 오류가 발생했습니다.', 'error');
@@ -759,27 +817,28 @@ async function loadHomeworkPhotoLinksModal(assignmentId) {
             ? await api.getHomeworkPhotoStudentLinks(assignmentId)
             : await api.get(`homework-photo/student-links?assignment_id=${encodeURIComponent(assignmentId)}`);
         if (!data?.success) return toast(data?.message || data?.error || '링크 조회 실패', 'warn');
-        openHomeworkPhotoLinksModal(assignmentId, data.links || []);
+        openHomeworkPhotoLinksModal(assignmentId, data.links || [], data.assignment || {});
     } catch (e) {
         console.error('[loadHomeworkPhotoLinksModal] failed:', e);
         toast('링크 조회 중 오류가 발생했습니다.', 'error');
     }
 }
 
-function openHomeworkPhotoLinksModal(assignmentId, links) {
-    const list = Array.isArray(links) ? links : [];
-    const normalized = list.map(x => ({
-        ...x,
-        url: buildHomeworkPhotoStudentUrl(assignmentId, x.student_id, x.url)
-    }));
-    const allText = normalized.map(x => `${x.name}: ${x.url}`).join('\n');
+function openHomeworkPhotoLinksModal(assignmentId, links, assignment = {}) {
+    const normalized = normalizeHomeworkPhotoLinkItems(assignmentId, links);
+    const textareaId = `hw-photo-all-links-${sanitizeHomeworkPhotoDomId(assignmentId)}`;
+    const allText = buildHomeworkPhotoStudentLinkText(assignment || {}, normalized, { mode: 'all' });
     showModal('학생별 링크', `
         <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:flex; gap:8px;">
-                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="openHomeworkPhotoOverviewModal('${assignmentId}')">제출 현황</button>
-                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="copyHomeworkPhotoText(document.getElementById('hw-photo-all-links')?.value || '', '전체 링크가 복사되었습니다.')">전체 복사</button>
+            <div style="display:flex; flex-direction:column; gap:8px; background:var(--surface-2); border:1px solid var(--border); border-radius:16px; padding:12px;">
+                <button class="btn btn-primary" style="width:100%; min-height:48px; font-size:14px; font-weight:900; border-radius:14px;" onclick="copyHomeworkPhotoAnnouncement('${textareaId}', '복사할 학생 링크가 없습니다.', '단톡방용 전체 안내문이 복사되었습니다.')">전체 안내문 복사</button>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; background:var(--surface); border:1px solid var(--border);" onclick="openHomeworkPhotoOverviewModal('${assignmentId}')">제출 현황</button>
+                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; background:var(--surface); border:1px solid var(--border);" onclick="copyHomeworkPhotoAnnouncement('${textareaId}', '복사할 학생 링크가 없습니다.', '단톡방용 전체 안내문이 복사되었습니다.')">안내문 다시 복사</button>
+                </div>
+                <div style="font-size:11px; font-weight:700; color:var(--secondary); line-height:1.5;">버튼 한 번으로 반 전체 학생 이름과 개인 링크가 단톡방용 문구로 복사됩니다.</div>
             </div>
-            <textarea id="hw-photo-all-links" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(allText)}</textarea>
+            <textarea id="${textareaId}" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(allText)}</textarea>
             ${normalized.length ? normalized.map(item => {
                 const safeUrl = String(item.url || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
                 return `
@@ -789,7 +848,7 @@ function openHomeworkPhotoLinksModal(assignmentId, links) {
                                 <div style="font-size:14px; font-weight:800; color:var(--text);">${apEscapeHtml(item.name || '학생')}</div>
                                 <div style="font-size:11px; font-weight:700; color:var(--secondary); word-break:break-all; margin-top:4px;">${apEscapeHtml(item.url || '')}</div>
                             </div>
-                            <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">복사</button>
+                            <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크복사</button>
                         </div>
                         <div style="margin-top:10px; text-align:center;">
                             <img src="${getHomeworkPhotoQrSrc(item.url || '')}" alt="QR" style="width:128px; height:128px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:8px;">
@@ -816,16 +875,21 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
         const rows = Array.isArray(data.students) ? data.students : [];
         const total = rows.length;
         const submitted = rows.filter(r => Number(r.is_submitted || 0) === 1).length;
+        const missingLinks = normalizeHomeworkPhotoLinkItems(assignmentId, rows.filter(r => Number(r.is_submitted || 0) !== 1));
+        const missingTextareaId = `hw-photo-missing-links-${sanitizeHomeworkPhotoDomId(assignmentId)}`;
+        const missingText = buildHomeworkPhotoStudentLinkText(data.assignment || {}, missingLinks, { mode: 'missing' });
         root.innerHTML = `
             <div style="display:flex; flex-direction:column; gap:12px;">
                 <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
                     <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(data.assignment?.title || '숙제')}</div>
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">전체 ${total} · 제출 ${submitted} · 미제출 ${total - submitted}</div>
                 </div>
-                <div style="display:flex; gap:8px;">
-                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
-                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
+                    <button class="btn" style="flex:1 1 150px; min-height:40px; font-size:12px; font-weight:800; background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.16); color:var(--primary);" onclick="copyHomeworkPhotoAnnouncement('${missingTextareaId}', '미제출 학생이 없습니다.', '미제출자 안내문이 복사되었습니다.')">미제출자 안내문 복사</button>
+                    <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
                 </div>
+                <textarea id="${missingTextareaId}" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(missingText)}</textarea>
                 ${rows.map(r => {
                     const done = Number(r.is_submitted || 0) === 1;
                     const studentUrl = buildHomeworkPhotoStudentUrl(assignmentId, r.student_id, r.url);
@@ -865,6 +929,12 @@ async function closeHomeworkPhotoAssignment(assignmentId) {
         console.error('[closeHomeworkPhotoAssignment] failed:', e);
         toast('마감 처리 중 오류가 발생했습니다.', 'error');
     }
+}
+
+function openClassAttendance(cid) {
+    state.ui.classDefaultTab = 'att';
+    if (typeof openDashboardClass === 'function') openDashboardClass(cid);
+    else renderClass(cid);
 }
 
 function openClassHomework(cid) {
@@ -1097,20 +1167,9 @@ function openClassRecordModal(cid) {
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
     if (activeBooks.length === 0 && cls?.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
 
-const existingRecord = (state.db.class_daily_records || [])
-    .filter(r =>
-        String(r.class_id) === String(cid) &&
-        String(r.date || '') <= String(todayStr)
-    )
-    .sort((a, b) =>
-        String(b.date || '').localeCompare(String(a.date || '')) ||
-        String(b.id || '').localeCompare(String(a.id || ''))
-    )[0] || null;
+    const existingRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cid) && r.date === todayStr);
+    const existingProgress = existingRecord ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id)) : [];
 
-const existingProgress = existingRecord
-    ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id))
-    : [];
-    
     const booksHtml = activeBooks.length > 0 ? activeBooks.map((tb) => {
         const prevP = existingProgress.find(p => String(p.textbook_id) === String(tb.id) || (tb.id === 'fallback' && p.textbook_title_snapshot === tb.title));
         const progVal = prevP ? prevP.progress_text : '';
