@@ -1,7 +1,100 @@
 window.mainDB = {
   "exams": [
     {
-      "file": "26_효천고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "c",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-05",
+      "rangeEndUnit": "이차방정식과 이차함수",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-05",
+          "rangeEndUnit": "이차방정식과 이차함수",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "c",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-05",
+      "rangeEndUnit": "이차방정식과 이차함수",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-05",
+          "rangeEndUnit": "이차방정식과 이차함수",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "c",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-06",
+      "rangeEndUnit": "여러 가지 방정식과 부등식",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출.js",
       "school": "효천고",
       "topic": "",
       "grade": "고1",
@@ -32,7 +125,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "26_삼산중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js",
       "school": "삼산중",
       "topic": "",
       "grade": "중3",
@@ -63,7 +156,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "25_매산고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
       "school": "매산고",
       "topic": "",
       "grade": "고2",
@@ -94,7 +187,7 @@ window.mainDB = {
       "primaryStandardCourse": "수학I"
     },
     {
-      "file": "25_수피아여고_1학기_중간_고2_확률과통계.js",
+      "file": "original/high/h2/1mid/25_수피아여고_1학기_중간_고2_확률과통계.js",
       "school": "수피아여고",
       "topic": "",
       "grade": "고2",
@@ -125,7 +218,7 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
-      "file": "25_순천고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js",
       "school": "순천고",
       "topic": "",
       "grade": "고2",
@@ -156,7 +249,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "25_순천여고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js",
       "school": "순천여고",
       "topic": "",
       "grade": "고2",
@@ -197,7 +290,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "25_순천여고_1학기_중간_고2_확률과통계.js",
+      "file": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js",
       "school": "순천여고",
       "topic": "",
       "grade": "고2",
@@ -228,7 +321,7 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
-      "file": "25_제일고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/25_제일고_1학기_중간_고2_대수.js",
       "school": "제일고",
       "topic": "",
       "grade": "고2",
@@ -269,89 +362,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "25_제일고_1학기_중간_고2_심화.js",
-      "school": "제일고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2025,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "심화",
-      "contentType": "기출",
-      "qCount": 25,
-      "rangeStartUnitKey": "",
-      "rangeStartUnit": "",
-      "rangeStartUnitOrder": 999,
-      "rangeEndUnitKey": "",
-      "rangeEndUnit": "",
-      "rangeEndUnitOrder": 999,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학1",
-          "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-02",
-          "rangeStartUnit": "항등식과 나머지 정리",
-          "rangeStartUnitOrder": 2,
-          "rangeEndUnitKey": "H22-C-02",
-          "rangeEndUnit": "항등식과 나머지 정리",
-          "rangeEndUnitOrder": 2
-        },
-        {
-          "standardCourse": "대수",
-          "courseCode": "H22-A",
-          "rangeStartUnitKey": "H22-A-04",
-          "rangeStartUnit": "삼각함수",
-          "rangeStartUnitOrder": 4,
-          "rangeEndUnitKey": "H22-A-08",
-          "rangeEndUnit": "수학적 귀납법",
-          "rangeEndUnitOrder": 8
-        }
-      ],
-      "primaryStandardCourse": ""
-    },
-    {
-      "file": "25_제일고_1학기_중간_고2_유사.js",
-      "school": "제일고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2025,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 25,
-      "rangeStartUnitKey": "",
-      "rangeStartUnit": "",
-      "rangeStartUnitOrder": 999,
-      "rangeEndUnitKey": "",
-      "rangeEndUnit": "",
-      "rangeEndUnitOrder": 999,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학1",
-          "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-02",
-          "rangeStartUnit": "항등식과 나머지 정리",
-          "rangeStartUnitOrder": 2,
-          "rangeEndUnitKey": "H22-C-02",
-          "rangeEndUnit": "항등식과 나머지 정리",
-          "rangeEndUnitOrder": 2
-        },
-        {
-          "standardCourse": "대수",
-          "courseCode": "H22-A",
-          "rangeStartUnitKey": "H22-A-04",
-          "rangeStartUnit": "삼각함수",
-          "rangeStartUnitOrder": 4,
-          "rangeEndUnitKey": "H22-A-08",
-          "rangeEndUnit": "수학적 귀납법",
-          "rangeEndUnitOrder": 8
-        }
-      ],
-      "primaryStandardCourse": ""
-    },
-    {
-      "file": "25_제일고_1학기_중간_고2_확률과통계.js",
+      "file": "original/high/h2/1mid/25_제일고_1학기_중간_고2_확률과통계.js",
       "school": "제일고",
       "topic": "",
       "grade": "고2",
@@ -382,7 +393,7 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
-      "file": "25_효천고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js",
       "school": "효천고",
       "topic": "",
       "grade": "고2",
@@ -413,7 +424,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "25_효천고_1학기_중간_고2_확률과통계.js",
+      "file": "original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js",
       "school": "효천고",
       "topic": "",
       "grade": "고2",
@@ -444,16 +455,16 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
-      "file": "25_강남여고_1학기_기말_고1_기출.js",
-      "school": "강남여고",
+      "file": "types/high/h2/25_제일고_1학기_중간_고2_심화.js",
+      "school": "제일고",
       "topic": "",
-      "grade": "고1",
+      "grade": "고2",
       "year": 2025,
       "semester": "1",
-      "examType": "final",
+      "examType": "mid",
       "subject": "",
-      "contentType": "기출",
-      "qCount": 24,
+      "contentType": "유형",
+      "qCount": 25,
       "rangeStartUnitKey": "",
       "rangeStartUnit": "",
       "rangeStartUnitOrder": 999,
@@ -464,28 +475,131 @@ window.mainDB = {
         {
           "standardCourse": "공통수학1",
           "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-02",
+          "rangeStartUnit": "항등식과 나머지 정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C-02",
+          "rangeEndUnit": "항등식과 나머지 정리",
+          "rangeEndUnitOrder": 2
+        },
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-08",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "types/high/h2/25_제일고_1학기_중간_고2_유사.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 25,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-02",
+          "rangeStartUnit": "항등식과 나머지 정리",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C-02",
+          "rangeEndUnit": "항등식과 나머지 정리",
+          "rangeEndUnitOrder": 2
+        },
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-08",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "types/high/h2/25_제일고_1학기_중간_고2_확률과통계_유형확인.js",
+      "school": "제일고",
+      "topic": "확률과통계_유형",
+      "grade": "고2",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-PS-03",
+      "rangeEndUnit": "확률의 뜻과 활용",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H22-PS",
+          "rangeStartUnitKey": "H22-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-PS-03",
+          "rangeEndUnit": "확률의 뜻과 활용",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "기출c",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
           "rangeStartUnitKey": "H22-C-01",
           "rangeStartUnit": "다항식의 연산",
           "rangeStartUnitOrder": 1,
           "rangeEndUnitKey": "H22-C-09",
           "rangeEndUnit": "행렬과 그 연산",
           "rangeEndUnitOrder": 9
-        },
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-04",
-          "rangeStartUnit": "이차함수와 그래프",
-          "rangeStartUnitOrder": 4,
-          "rangeEndUnitKey": "M3-04",
-          "rangeEndUnit": "이차함수와 그래프",
-          "rangeEndUnitOrder": 4
         }
       ],
-      "primaryStandardCourse": ""
+      "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_강남여고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
       "school": "강남여고",
       "topic": "",
       "grade": "고1",
@@ -516,38 +630,7 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
-      "file": "25_강남여고_1학기_중간_고1_유사.js",
-      "school": "강남여고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2025,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 24,
-      "rangeStartUnitKey": "H15-SA-01",
-      "rangeStartUnit": "다항식의 연산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H15-SA-05",
-      "rangeEndUnit": "이차방정식",
-      "rangeEndUnitOrder": 5,
-      "courseRanges": [
-        {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-01",
-          "rangeStartUnit": "다항식의 연산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H15-SA-05",
-          "rangeEndUnit": "이차방정식",
-          "rangeEndUnitOrder": 5
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
-    },
-    {
-      "file": "25_금당고_1학기_기말_고1_기출.js",
+      "file": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출.js",
       "school": "금당고",
       "topic": "",
       "grade": "고1",
@@ -578,7 +661,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_금당고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
       "school": "금당고",
       "topic": "",
       "grade": "고1",
@@ -609,7 +692,7 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
-      "file": "25_매산고_1학기_기말_고1_기출.js",
+      "file": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출.js",
       "school": "매산고",
       "topic": "",
       "grade": "고1",
@@ -640,7 +723,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_매산고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js",
       "school": "매산고",
       "topic": "",
       "grade": "고1",
@@ -671,7 +754,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_매산여고_1학기_기말_고1_기출.js",
+      "file": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출.js",
       "school": "매산여고",
       "topic": "",
       "grade": "고1",
@@ -702,7 +785,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_순천고_1학기_기말_고1_기출.js",
+      "file": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출.js",
       "school": "순천고",
       "topic": "",
       "grade": "고1",
@@ -733,7 +816,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_순천여고_1학기_기말_고1_기출.js",
+      "file": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출.js",
       "school": "순천여고",
       "topic": "",
       "grade": "고1",
@@ -764,7 +847,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_순천여고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js",
       "school": "순천여고",
       "topic": "",
       "grade": "고1",
@@ -795,19 +878,19 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_순천여고_1학기_중간_고1_유사.js",
-      "school": "순천여고",
+      "file": "original/high/h1/1final/25_제일고_1학기_기말_고1_기출.js",
+      "school": "제일고",
       "topic": "",
       "grade": "고1",
       "year": 2025,
       "semester": "1",
-      "examType": "mid",
+      "examType": "final",
       "subject": "",
-      "contentType": "유형",
+      "contentType": "기출",
       "qCount": 22,
-      "rangeStartUnitKey": "H22-C-01",
-      "rangeStartUnit": "다항식의 연산",
-      "rangeStartUnitOrder": 1,
+      "rangeStartUnitKey": "H22-C-05",
+      "rangeStartUnit": "이차방정식과 이차함수",
+      "rangeStartUnitOrder": 5,
       "rangeEndUnitKey": "H22-C-09",
       "rangeEndUnit": "행렬과 그 연산",
       "rangeEndUnitOrder": 9,
@@ -815,9 +898,9 @@ window.mainDB = {
         {
           "standardCourse": "공통수학1",
           "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-01",
-          "rangeStartUnit": "다항식의 연산",
-          "rangeStartUnitOrder": 1,
+          "rangeStartUnitKey": "H22-C-05",
+          "rangeStartUnit": "이차방정식과 이차함수",
+          "rangeStartUnitOrder": 5,
           "rangeEndUnitKey": "H22-C-09",
           "rangeEndUnit": "행렬과 그 연산",
           "rangeEndUnitOrder": 9
@@ -826,7 +909,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_제일고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js",
       "school": "제일고",
       "topic": "",
       "grade": "고1",
@@ -857,38 +940,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_제일고_1학기_중간_고1_유사.js",
-      "school": "제일고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2025,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 22,
-      "rangeStartUnitKey": "H22-C-01",
-      "rangeStartUnit": "다항식의 연산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C-06",
-      "rangeEndUnit": "여러 가지 방정식과 부등식",
-      "rangeEndUnitOrder": 6,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학1",
-          "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-01",
-          "rangeStartUnit": "다항식의 연산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C-06",
-          "rangeEndUnit": "여러 가지 방정식과 부등식",
-          "rangeEndUnitOrder": 6
-        }
-      ],
-      "primaryStandardCourse": "공통수학1"
-    },
-    {
-      "file": "25_팔마고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js",
       "school": "팔마고",
       "topic": "",
       "grade": "고1",
@@ -919,38 +971,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_팔마고_1학기_중간_고1_유사.js",
-      "school": "팔마고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2025,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 23,
-      "rangeStartUnitKey": "H22-C-01",
-      "rangeStartUnit": "다항식의 연산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C-07",
-      "rangeEndUnit": "합의 법칙과 곱의 법칙",
-      "rangeEndUnitOrder": 7,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학1",
-          "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-01",
-          "rangeStartUnit": "다항식의 연산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C-07",
-          "rangeEndUnit": "합의 법칙과 곱의 법칙",
-          "rangeEndUnitOrder": 7
-        }
-      ],
-      "primaryStandardCourse": "공통수학1"
-    },
-    {
-      "file": "25_효천고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js",
       "school": "효천고",
       "topic": "",
       "grade": "고1",
@@ -981,7 +1002,337 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "25_금당중_1학기_중간_중3_기출.js",
+      "file": "types/high/h1/25_강남여고_1학기_기말_고1_유사1.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "types/high/h1/25_강남여고_1학기_기말_고1_유사2.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "types/high/h1/25_강남여고_1학기_중간_고1_유사.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-05",
+      "rangeEndUnit": "이차방정식",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-05",
+          "rangeEndUnit": "이차방정식",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "types/high/h1/25_순천여고_1학기_중간_고1_유사.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "types/high/h1/25_제일고_1학기_중간_고1_유사.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-06",
+      "rangeEndUnit": "여러 가지 방정식과 부등식",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "types/high/h1/25_팔마고_1학기_기말_고1_유사1.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-06",
+          "rangeStartUnit": "여러 가지 방정식과 부등식",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        },
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "types/high/h1/25_팔마고_1학기_기말_고1_유사2.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-05",
+          "rangeStartUnit": "이차방정식과 이차함수",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        },
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "types/high/h1/25_팔마고_1학기_중간_고1_유사.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-07",
+      "rangeEndUnit": "합의 법칙과 곱의 법칙",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-07",
+          "rangeEndUnit": "합의 법칙과 곱의 법칙",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "types/high/h1/25_효천고_1학기_기말_고1_유사1.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C-04",
+      "rangeStartUnit": "복소수와 이차방정식",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-04",
+          "rangeStartUnit": "복소수와 이차방정식",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "types/high/h1/25_효천고_1학기_기말_고1_유사2.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "1",
+      "examType": "final",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C-04",
+      "rangeStartUnit": "복소수와 이차방정식",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-04",
+          "rangeStartUnit": "복소수와 이차방정식",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/middle/m3/1mid/25_금당중_1학기_중간_중3_기출.js",
       "school": "금당중",
       "topic": "",
       "grade": "중3",
@@ -1012,7 +1363,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "25_신흥중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
       "school": "신흥중",
       "topic": "",
       "grade": "중3",
@@ -1043,7 +1394,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "25_왕운중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중3",
@@ -1074,7 +1425,69 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "25_매산중_1학기_중간_중2_기출.js",
+      "file": "types/middle/m3/25_왕운중_1학기_중간_중3_유사1.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "types/middle/m3/25_왕운중_1학기_중간_중3_유사2.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2025,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
       "school": "매산중",
       "topic": "",
       "grade": "중2",
@@ -1105,7 +1518,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "25_연향중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
       "school": "연향중",
       "topic": "",
       "grade": "중2",
@@ -1136,7 +1549,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "25_왕운중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중2",
@@ -1167,7 +1580,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "25_진남중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js",
       "school": "진남중",
       "topic": "",
       "grade": "중2",
@@ -1198,7 +1611,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "24_금당고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js",
       "school": "금당고",
       "topic": "",
       "grade": "고2",
@@ -1229,38 +1642,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "24_금당고_1학기_중간_고2_유사.js",
-      "school": "금당고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2024,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 21,
-      "rangeStartUnitKey": "H22-C-01",
-      "rangeStartUnit": "다항식의 연산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C-09",
-      "rangeEndUnit": "행렬과 그 연산",
-      "rangeEndUnitOrder": 9,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학1",
-          "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-01",
-          "rangeStartUnit": "다항식의 연산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C-09",
-          "rangeEndUnit": "행렬과 그 연산",
-          "rangeEndUnitOrder": 9
-        }
-      ],
-      "primaryStandardCourse": "공통수학1"
-    },
-    {
-      "file": "24_수피아여고_1학기_중간_고2_확률과통계.js",
+      "file": "original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js",
       "school": "수피아여고",
       "topic": "",
       "grade": "고2",
@@ -1291,7 +1673,38 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
-      "file": "24_여수고_1학기_중간_고1_기출.js",
+      "file": "types/high/h2/24_금당고_1학기_중간_고2_유사.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2024,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js",
       "school": "여수고",
       "topic": "",
       "grade": "고1",
@@ -1322,7 +1735,7 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
-      "file": "24_제일고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
       "school": "제일고",
       "topic": "",
       "grade": "고1",
@@ -1363,7 +1776,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "24_한영고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
       "school": "한영고",
       "topic": "",
       "grade": "고1",
@@ -1394,7 +1807,7 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
-      "file": "24_효천고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js",
       "school": "효천고",
       "topic": "",
       "grade": "고1",
@@ -1425,7 +1838,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "24_금당중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
       "school": "금당중",
       "topic": "",
       "grade": "중3",
@@ -1456,7 +1869,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "24_왕운중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/24_왕운중_1학기_중간_중3_기출.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중3",
@@ -1487,7 +1900,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "24_왕운중_1학기_중간_중3_유사.js",
+      "file": "types/middle/m3/24_왕운중_1학기_중간_중3_유사.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중3",
@@ -1518,7 +1931,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "24_문성중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
       "school": "문성중",
       "topic": "",
       "grade": "중2",
@@ -1549,14 +1962,14 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "24_신흥중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
       "school": "신흥중",
       "topic": "",
       "grade": "중2",
       "year": 2024,
       "semester": "1",
       "examType": "mid",
-      "subject": "",
+      "subject": "기출c",
       "contentType": "기출",
       "qCount": 23,
       "rangeStartUnitKey": "M2-01",
@@ -1580,7 +1993,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "24_연향중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js",
       "school": "연향중",
       "topic": "",
       "grade": "중2",
@@ -1611,7 +2024,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "23_부영여고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js",
       "school": "부영여고",
       "topic": "",
       "grade": "고2",
@@ -1642,7 +2055,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "23_중앙여고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/23_중앙여고_1학기_중간_고2_대수.js",
       "school": "중앙여고",
       "topic": "",
       "grade": "고2",
@@ -1673,7 +2086,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "23_한영고_1학기_중간_고2_대수.js",
+      "file": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
       "school": "한영고",
       "topic": "",
       "grade": "고2",
@@ -1704,7 +2117,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "23_매산고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js",
       "school": "매산고",
       "topic": "",
       "grade": "고1",
@@ -1735,38 +2148,7 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
-      "file": "23_매산고_1학기_중간_고1_유사.js",
-      "school": "매산고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2023,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 20,
-      "rangeStartUnitKey": "H15-SA-01",
-      "rangeStartUnit": "다항식의 연산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H15-SA-05",
-      "rangeEndUnit": "이차방정식",
-      "rangeEndUnitOrder": 5,
-      "courseRanges": [
-        {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-01",
-          "rangeStartUnit": "다항식의 연산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H15-SA-05",
-          "rangeEndUnit": "이차방정식",
-          "rangeEndUnitOrder": 5
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
-    },
-    {
-      "file": "23_부영여고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
       "school": "부영여고",
       "topic": "",
       "grade": "고1",
@@ -1797,7 +2179,7 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
-      "file": "23_여수여고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
       "school": "여수여고",
       "topic": "",
       "grade": "고1",
@@ -1838,7 +2220,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "23_여천고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js",
       "school": "여천고",
       "topic": "",
       "grade": "고1",
@@ -1879,7 +2261,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "23_충무고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
       "school": "충무고",
       "topic": "",
       "grade": "고1",
@@ -1920,7 +2302,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "23_한영고_1학기_중간_고1_기출.js",
+      "file": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js",
       "school": "한영고",
       "topic": "",
       "grade": "고1",
@@ -1951,7 +2333,38 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
-      "file": "23_왕운중_1학기_중간_중3_기출.js",
+      "file": "types/high/h1/23_매산고_1학기_중간_고1_유사.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-SA-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-SA-05",
+      "rangeEndUnit": "이차방정식",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-SA-05",
+          "rangeEndUnit": "이차방정식",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/middle/m3/1mid/23_왕운중_1학기_중간_중3_기출.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중3",
@@ -1982,100 +2395,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "23_왕운중_1학기_중간_중3_유사1.js",
-      "school": "왕운중",
-      "topic": "",
-      "grade": "중3",
-      "year": 2023,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 24,
-      "rangeStartUnitKey": "M3-01",
-      "rangeStartUnit": "실수와 그 계산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M3-02",
-      "rangeEndUnit": "다항식의 곱셈과 인수분해",
-      "rangeEndUnitOrder": 2,
-      "courseRanges": [
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-01",
-          "rangeStartUnit": "실수와 그 계산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-02",
-          "rangeEndUnit": "다항식의 곱셈과 인수분해",
-          "rangeEndUnitOrder": 2
-        }
-      ],
-      "primaryStandardCourse": "중3 수학"
-    },
-    {
-      "file": "23_왕운중_1학기_중간_중3_유사2.js",
-      "school": "왕운중",
-      "topic": "",
-      "grade": "중3",
-      "year": 2023,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 24,
-      "rangeStartUnitKey": "M3-01",
-      "rangeStartUnit": "실수와 그 계산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M3-02",
-      "rangeEndUnit": "다항식의 곱셈과 인수분해",
-      "rangeEndUnitOrder": 2,
-      "courseRanges": [
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-01",
-          "rangeStartUnit": "실수와 그 계산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-02",
-          "rangeEndUnit": "다항식의 곱셈과 인수분해",
-          "rangeEndUnitOrder": 2
-        }
-      ],
-      "primaryStandardCourse": "중3 수학"
-    },
-    {
-      "file": "23_왕운중_1학기_중간_중3_유사3.js",
-      "school": "왕운중",
-      "topic": "",
-      "grade": "중3",
-      "year": 2023,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "",
-      "contentType": "유형",
-      "qCount": 24,
-      "rangeStartUnitKey": "M3-01",
-      "rangeStartUnit": "실수와 그 계산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "M3-02",
-      "rangeEndUnit": "다항식의 곱셈과 인수분해",
-      "rangeEndUnitOrder": 2,
-      "courseRanges": [
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-01",
-          "rangeStartUnit": "실수와 그 계산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "M3-02",
-          "rangeEndUnit": "다항식의 곱셈과 인수분해",
-          "rangeEndUnitOrder": 2
-        }
-      ],
-      "primaryStandardCourse": "중3 수학"
-    },
-    {
-      "file": "23_풍덕중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/23_풍덕중_1학기_중간_중3_기출.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중3",
@@ -2106,7 +2426,100 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "23_풍덕중_1학기_중간_중3_유사1.js",
+      "file": "types/middle/m3/23_왕운중_1학기_중간_중3_유사1.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "types/middle/m3/23_왕운중_1학기_중간_중3_유사2.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "types/middle/m3/23_왕운중_1학기_중간_중3_유사3.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "types/middle/m3/23_풍덕중_1학기_중간_중3_유사1.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중3",
@@ -2137,7 +2550,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "23_풍덕중_1학기_중간_중3_유사2.js",
+      "file": "types/middle/m3/23_풍덕중_1학기_중간_중3_유사2.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중3",
@@ -2168,7 +2581,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "23_풍덕중_1학기_중간_중3_유사3.js",
+      "file": "types/middle/m3/23_풍덕중_1학기_중간_중3_유사3.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중3",
@@ -2199,7 +2612,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "22_왕운중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중3",
@@ -2230,7 +2643,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "22_팔마중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/22_팔마중_1학기_중간_중3_기출.js",
       "school": "팔마중",
       "topic": "",
       "grade": "중3",
@@ -2261,7 +2674,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "22_풍덕중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중3",
@@ -2292,7 +2705,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_금당중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/21_금당중_1학기_중간_중3_기출.js",
       "school": "금당중",
       "topic": "",
       "grade": "중3",
@@ -2323,7 +2736,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_동산중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/21_동산중_1학기_중간_중3_기출.js",
       "school": "동산중",
       "topic": "",
       "grade": "중3",
@@ -2354,7 +2767,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_매산중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js",
       "school": "매산중",
       "topic": "",
       "grade": "중3",
@@ -2385,7 +2798,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_신흥중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js",
       "school": "신흥중",
       "topic": "",
       "grade": "중3",
@@ -2416,7 +2829,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_연향중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/21_연향중_1학기_중간_중3_기출.js",
       "school": "연향중",
       "topic": "",
       "grade": "중3",
@@ -2447,7 +2860,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_왕운중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/21_왕운중_1학기_중간_중3_기출.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중3",
@@ -2478,7 +2891,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_팔마중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/21_팔마중_1학기_중간_중3_기출.js",
       "school": "팔마중",
       "topic": "",
       "grade": "중3",
@@ -2509,7 +2922,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "21_금당중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
       "school": "금당중",
       "topic": "",
       "grade": "중2",
@@ -2540,7 +2953,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "21_신흥중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
       "school": "신흥중",
       "topic": "",
       "grade": "중2",
@@ -2571,7 +2984,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "21_연향중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
       "school": "연향중",
       "topic": "",
       "grade": "중2",
@@ -2602,7 +3015,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "21_왕운중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js",
       "school": "왕운중",
       "topic": "",
       "grade": "중2",
@@ -2633,7 +3046,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "21_팔마중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
       "school": "팔마중",
       "topic": "",
       "grade": "중2",
@@ -2664,7 +3077,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "21_풍덕중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중2",
@@ -2695,7 +3108,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "20_풍덕중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중2",
@@ -2726,7 +3139,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "19_금당중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/19_금당중_1학기_중간_중3_기출.js",
       "school": "금당중",
       "topic": "",
       "grade": "중3",
@@ -2757,7 +3170,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "19_동산중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/19_동산중_1학기_중간_중3_기출.js",
       "school": "동산중",
       "topic": "",
       "grade": "중3",
@@ -2788,7 +3201,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "19_연향중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/19_연향중_1학기_중간_중3_기출.js",
       "school": "연향중",
       "topic": "",
       "grade": "중3",
@@ -2819,7 +3232,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "19_풍덕중_1학기_중간_중3_기출.js",
+      "file": "original/middle/m3/1mid/19_풍덕중_1학기_중간_중3_기출.js",
       "school": "풍덕중",
       "topic": "",
       "grade": "중3",
@@ -2850,7 +3263,7 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
-      "file": "19_동산중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
       "school": "동산중",
       "topic": "",
       "grade": "중2",
@@ -2881,7 +3294,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "19_연향중_1학기_중간_중2_기출.js",
+      "file": "original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
       "school": "연향중",
       "topic": "",
       "grade": "중2",
@@ -2912,7 +3325,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "비상_대수_사인코사인법칙_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_사인코사인법칙_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_사인코사인법칙_유형심화",
       "grade": "고2",
@@ -2943,7 +3356,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_사인코사인법칙_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_사인코사인법칙_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_사인코사인법칙_유형확인",
       "grade": "고2",
@@ -2974,7 +3387,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_사인코사인법칙_익힘책_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_사인코사인법칙_익힘책_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_사인코사인법칙_익힘책_유형심화",
       "grade": "고2",
@@ -3005,7 +3418,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_사인코사인법칙_익힘책_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_사인코사인법칙_익힘책_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_사인코사인법칙_익힘책_유형확인",
       "grade": "고2",
@@ -3036,7 +3449,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_삼각함수_대단원_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_삼각함수_대단원_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_삼각함수_대단원_유형심화",
       "grade": "고2",
@@ -3067,7 +3480,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_삼각함수_대단원_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_삼각함수_대단원_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_삼각함수_대단원_유형확인",
       "grade": "고2",
@@ -3098,7 +3511,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_삼각함수_익힘책_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_삼각함수_익힘책_유형심화",
       "grade": "고2",
@@ -3129,7 +3542,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_삼각함수_익힘책_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_삼각함수_익힘책_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_삼각함수_익힘책_유형확인",
       "grade": "고2",
@@ -3160,7 +3573,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_삼각함수_중단원_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_삼각함수_중단원_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_삼각함수_중단원_유형심화",
       "grade": "고2",
@@ -3191,7 +3604,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_삼각함수_중단원_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_삼각함수_중단원_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_삼각함수_중단원_유형확인",
       "grade": "고2",
@@ -3222,7 +3635,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그_대단원_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_지수로그_대단원_유형심화",
       "grade": "고2",
@@ -3253,7 +3666,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그_대단원_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_지수로그_대단원_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_지수로그_대단원_유형확인",
       "grade": "고2",
@@ -3284,7 +3697,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그_익힘책_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_지수로그_익힘책_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_지수로그_익힘책_유형심화",
       "grade": "고2",
@@ -3325,7 +3738,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "비상_대수_지수로그_익힘책_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_지수로그_익힘책_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_지수로그_익힘책_유형확인",
       "grade": "고2",
@@ -3366,7 +3779,7 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
-      "file": "비상_대수_지수로그_중단원_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_지수로그_중단원_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_지수로그_중단원_유형심화",
       "grade": "고2",
@@ -3397,7 +3810,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그_중단원_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_지수로그_중단원_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_지수로그_중단원_유형확인",
       "grade": "고2",
@@ -3428,7 +3841,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그함수_익힘책_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_지수로그함수_익힘책_유형심화",
       "grade": "고2",
@@ -3459,7 +3872,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그함수_익힘책_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_지수로그함수_익힘책_유형확인",
       "grade": "고2",
@@ -3490,7 +3903,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그함수_중단원_고2_유형심화.js",
+      "file": "types/high/h2/비상_대수_지수로그함수_중단원_고2_유형심화.js",
       "school": "비상",
       "topic": "비상_지수로그함수_중단원_유형심화",
       "grade": "고2",
@@ -3521,7 +3934,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "비상_대수_지수로그함수_중단원_고2_유형확인.js",
+      "file": "types/high/h2/비상_대수_지수로그함수_중단원_고2_유형확인.js",
       "school": "비상",
       "topic": "비상_지수로그함수_중단원_유형확인",
       "grade": "고2",
@@ -3552,7 +3965,7 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "항등식과나머지정리_고1_유형.js",
+      "file": "types/high/h1/항등식과나머지정리_고1_유형.js",
       "school": "",
       "topic": "항등식과나머지정리",
       "grade": "고1",
@@ -3583,7 +3996,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "항등식과나머지정리_고1_유형1.js",
+      "file": "types/high/h1/항등식과나머지정리_고1_유형1.js",
       "school": "",
       "topic": "항등식과나머지정리",
       "grade": "고1",
@@ -3614,9 +4027,9 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "단항식의계산_중2_유형1.js",
+      "file": "types/middle/m2/수와식_중2_유리수와순환소수_유형1.js",
       "school": "",
-      "topic": "단항식의계산",
+      "topic": "수와식",
       "grade": "중2",
       "year": "",
       "semester": "",
@@ -3645,9 +4058,9 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "유리수와순환소수_중2_유형.js",
+      "file": "types/middle/m2/수와식_중2_유리수와순환소수_유형2.js",
       "school": "",
-      "topic": "유리수와순환소수",
+      "topic": "수와식",
       "grade": "중2",
       "year": "",
       "semester": "",
@@ -3676,7 +4089,7 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
-      "file": "1학기_기말평가_중1_단원평가.js",
+      "file": "similar/middle/m1/1final/1학기_기말평가_중1_단원평가.js",
       "school": "",
       "topic": "기말평가",
       "grade": "중1",
@@ -3707,7 +4120,7 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
-      "file": "1학기_중간평가_중1_단원평가.js",
+      "file": "similar/middle/m1/1mid/1학기_중간평가_중1_단원평가.js",
       "school": "",
       "topic": "중간평가",
       "grade": "중1",
@@ -3738,7 +4151,7 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
-      "file": "1학기_중간평가_중1_단원평가유사1.js",
+      "file": "similar/middle/m1/1mid/1학기_중간평가_중1_단원평가유사1.js",
       "school": "",
       "topic": "중간평가",
       "grade": "중1",
@@ -3769,7 +4182,7 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
-      "file": "1학기_중간평가_중1_단원평가유사2.js",
+      "file": "similar/middle/m1/1mid/1학기_중간평가_중1_단원평가유사2.js",
       "school": "",
       "topic": "중간평가",
       "grade": "중1",
@@ -3800,9 +4213,9 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
-      "file": "일차방정식활용_중1_유형.js",
+      "file": "types/middle/m1/문자와식_중1_일차방정식활용_유형.js",
       "school": "",
-      "topic": "일차방정식활용",
+      "topic": "문자와식",
       "grade": "중1",
       "year": "",
       "semester": "",
@@ -3810,19 +4223,30 @@ window.mainDB = {
       "subject": "",
       "contentType": "유형",
       "qCount": 20,
-      "rangeStartUnitKey": "",
-      "rangeStartUnit": "",
-      "rangeStartUnitOrder": 999,
-      "rangeEndUnitKey": "",
-      "rangeEndUnit": "",
-      "rangeEndUnitOrder": 999,
-      "courseRanges": [],
-      "primaryStandardCourse": ""
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-03",
+      "rangeEndUnit": "문자와 식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-03",
+          "rangeEndUnit": "문자와 식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
     },
     {
-      "file": "일차방정식활용_중1_유형1.js",
+      "file": "types/middle/m1/문자와식_중1_일차방정식활용_유형1.js",
       "school": "",
-      "topic": "일차방정식활용",
+      "topic": "문자와식",
       "grade": "중1",
       "year": "",
       "semester": "",
@@ -3830,19 +4254,30 @@ window.mainDB = {
       "subject": "",
       "contentType": "유형",
       "qCount": 20,
-      "rangeStartUnitKey": "",
-      "rangeStartUnit": "",
-      "rangeStartUnitOrder": 999,
-      "rangeEndUnitKey": "",
-      "rangeEndUnit": "",
-      "rangeEndUnitOrder": 999,
-      "courseRanges": [],
-      "primaryStandardCourse": ""
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-03",
+      "rangeEndUnit": "문자와 식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-03",
+          "rangeEndUnit": "문자와 식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
     },
     {
-      "file": "일차방정식활용_중1_유형3.js",
+      "file": "types/middle/m1/문자와식_중1_일차방정식활용_유형2.js",
       "school": "",
-      "topic": "일차방정식활용",
+      "topic": "문자와식",
       "grade": "중1",
       "year": "",
       "semester": "",
