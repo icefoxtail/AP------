@@ -731,20 +731,62 @@ async function copyHomeworkPhotoAnnouncement(textareaId, emptyMessage, successMe
     await copyHomeworkPhotoText(text, successMessage || '복사되었습니다.');
 }
 
+function addDaysForHomeworkPhoto(dateStr, days) {
+    const safe = normalizeClassroomDate(dateStr) || new Date().toLocaleDateString('sv-SE');
+    const parts = safe.split('-').map(Number);
+    if (parts.length !== 3 || parts.some(v => !Number.isFinite(v))) return '';
+    const d = new Date(parts[0], parts[1] - 1, parts[2]);
+    d.setDate(d.getDate() + Number(days || 0));
+    return d.toLocaleDateString('sv-SE');
+}
+
+function getNextClassLessonDate(classId, baseDate) {
+    const safeBase = normalizeClassroomDate(baseDate) || new Date().toLocaleDateString('sv-SE');
+    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
+    const rawDays = String(cls?.schedule_days || '').trim();
+    const fallback = addDaysForHomeworkPhoto(safeBase, 2);
+    if (!rawDays) return fallback;
+
+    const daySet = new Set(rawDays
+        .split(',')
+        .map(v => String(v).trim())
+        .filter(v => /^[0-6]$/.test(v)));
+    if (!daySet.size) return fallback;
+
+    for (let offset = 1; offset <= 14; offset++) {
+        const candidate = addDaysForHomeworkPhoto(safeBase, offset);
+        if (!candidate) continue;
+        const dayIdx = String(new Date(candidate + 'T00:00:00').getDay());
+        if (!daySet.has(dayIdx)) continue;
+        if (typeof isClassroomHoliday === 'function' && isClassroomHoliday(candidate)) continue;
+        return candidate;
+    }
+
+    return fallback;
+}
+
+function getDefaultHomeworkPhotoDue(classId, baseDate) {
+    return {
+        dueDate: getNextClassLessonDate(classId, baseDate),
+        dueTime: '12:00'
+    };
+}
+
 function openHomeworkPhotoAssignmentModal(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
-    const today = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
+    const baseDate = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
+    const due = getDefaultHomeworkPhotoDue(classId, baseDate);
     showModal('숙제등록', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
                 <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">저장하면 학생별 숙제 제출 링크가 자동 생성됩니다.</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">저장하면 학생별 숙제 제출 링크가 자동 생성됩니다.<br>마감 기본값은 다음 수업일 낮 12시로 자동 설정됩니다.</div>
             </div>
             <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
             <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
             <div style="display:grid; grid-template-columns:1fr 120px; gap:8px;">
-                <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(today)}">
-                <input id="hw-photo-time" type="time" class="cls-input" value="23:00">
+                <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(due.dueDate)}">
+                <input id="hw-photo-time" type="time" class="cls-input" value="${apEscapeHtml(due.dueTime)}">
             </div>
             <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:800;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장하고 링크 생성</button>
             <button class="btn" style="min-height:44px; font-size:13px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
