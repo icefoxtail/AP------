@@ -2441,7 +2441,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const archiveMessage = data.archiveDetails
         ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
         : (tableMeta.note || '문항 원문 확인 전입니다. 오답 번호·단원·정답률 기준으로 분석합니다.');
-    const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석 반영 · ${reportCenterEscape(aiAnalysis.source || 'report-analysis')}</div>` : '';
+    const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석</div>` : '';
 
     return `
         <main class="aprc-pdf-document">
@@ -2916,12 +2916,15 @@ function reportCenterInjectPrintViewStyle() {
     style.id = 'report-print-view-style';
     style.textContent = `
         .report-print-view {
-            position:relative;
+            position:fixed;
+            inset:0;
             z-index:3000;
             min-height:100vh;
             background:#f1f5f9;
             padding:18px;
             box-sizing:border-box;
+            overflow:auto;
+            -webkit-overflow-scrolling:touch;
         }
 
         .report-print-toolbar {
@@ -2932,7 +2935,7 @@ function reportCenterInjectPrintViewStyle() {
             gap:8px;
             justify-content:space-between;
             align-items:center;
-            max-width:900px;
+            width:min(900px, 100%);
             margin:0 auto 14px;
             padding:10px;
             background:rgba(255,255,255,0.94);
@@ -2952,12 +2955,16 @@ function reportCenterInjectPrintViewStyle() {
 
         .report-print-stage {
             width:100%;
-            overflow-x:auto;
+            min-width:190mm;
+            overflow:visible;
             -webkit-overflow-scrolling:touch;
             padding-bottom:24px;
+            box-sizing:border-box;
         }
 
         .report-print-stage .aprc-pdf-document {
+            width:190mm;
+            max-width:190mm;
             margin:0 auto;
         }
 
@@ -2981,11 +2988,17 @@ function reportCenterInjectPrintViewStyle() {
             }
 
             .report-print-view {
+                position:static !important;
+                inset:auto !important;
+                min-height:auto !important;
                 padding:0 !important;
                 background:#fff !important;
+                overflow:visible !important;
             }
 
             .report-print-stage {
+                width:100% !important;
+                min-width:0 !important;
                 overflow:visible !important;
                 background:#fff !important;
                 padding:0 !important;
