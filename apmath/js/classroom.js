@@ -1097,9 +1097,20 @@ function openClassRecordModal(cid) {
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
     if (activeBooks.length === 0 && cls?.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
 
-    const existingRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cid) && r.date === todayStr);
-    const existingProgress = existingRecord ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id)) : [];
+const existingRecord = (state.db.class_daily_records || [])
+    .filter(r =>
+        String(r.class_id) === String(cid) &&
+        String(r.date || '') <= String(todayStr)
+    )
+    .sort((a, b) =>
+        String(b.date || '').localeCompare(String(a.date || '')) ||
+        String(b.id || '').localeCompare(String(a.id || ''))
+    )[0] || null;
 
+const existingProgress = existingRecord
+    ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id))
+    : [];
+    
     const booksHtml = activeBooks.length > 0 ? activeBooks.map((tb) => {
         const prevP = existingProgress.find(p => String(p.textbook_id) === String(tb.id) || (tb.id === 'fallback' && p.textbook_title_snapshot === tb.title));
         const progVal = prevP ? prevP.progress_text : '';
