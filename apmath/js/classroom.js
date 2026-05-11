@@ -687,14 +687,14 @@ function buildHomeworkPhotoStudentLinkText(assignment = {}, items = [], options 
     const list = Array.isArray(items) ? items : [];
     if (!list.length) return '';
 
-    const title = mode === 'missing' ? '[AP수학 숙제 미제출 안내]' : '[AP수학 숙제 제출 안내]';
+    const title = mode === 'missing' ? '[AP수학 과제 미제출 안내]' : '[AP수학 과제 제출 안내]';
     const intro = mode === 'missing'
-        ? '아래 학생은 아직 숙제 사진 제출이 확인되지 않았습니다.\n본인 이름 아래 링크로 들어가서 숙제 사진을 올려주세요.'
-        : '오늘 숙제 사진 제출 링크입니다.\n본인 이름 아래 링크로 들어가서 PIN 입력 후 숙제 사진을 올려주세요.';
+        ? '아래 학생은 아직 과제 제출이 확인되지 않았습니다.\n본인 이름 아래 링크로 들어가서 과제을 올려주세요.'
+        : '오늘 과제 제출 링크입니다.\n본인 이름 아래 링크로 들어가서 PIN 입력 후 과제을 올려주세요.';
     const assignmentTitle = String(assignment?.title || '').trim();
     const dueDate = String(assignment?.due_date || assignment?.dueDate || '').trim();
     const dueTime = String(assignment?.due_time || assignment?.dueTime || '').trim();
-    const meta = [assignmentTitle ? `숙제: ${assignmentTitle}` : '', dueDate ? `마감: ${dueDate}${dueTime ? ` ${dueTime}` : ''}` : ''].filter(Boolean).join('\n');
+    const meta = [assignmentTitle ? `과제: ${assignmentTitle}` : '', dueDate ? `마감: ${dueDate}${dueTime ? ` ${dueTime}` : ''}` : ''].filter(Boolean).join('\n');
     const body = list.map(item => `${item.name || '학생'}\n${item.url || ''}`).join('\n\n');
 
     return [
@@ -705,7 +705,7 @@ function buildHomeworkPhotoStudentLinkText(assignment = {}, items = [], options 
         '',
         body,
         '',
-        '사진은 제출 후 24시간 뒤 자동 삭제됩니다.'
+        '제출 확인 기록은 선생님 화면에 반영됩니다.'
     ].filter(part => part !== '').join('\n');
 }
 
@@ -772,24 +772,132 @@ function getDefaultHomeworkPhotoDue(classId, baseDate) {
     };
 }
 
+
+function renderHomeworkPhotoStudentPills(rows, done) {
+    const filtered = (Array.isArray(rows) ? rows : []).filter(r => (Number(r.is_submitted || 0) === 1) === !!done);
+    if (!filtered.length) {
+        return `<div style="font-size:12px; font-weight:700; color:var(--secondary); padding:10px 0;">${done ? '제출 학생 없음' : '미제출 학생 없음'}</div>`;
+    }
+    return `<div style="display:flex; flex-wrap:wrap; gap:6px;">${filtered.map(r => {
+        const safeName = apEscapeHtml(r.name || r.student_name || '학생');
+        const submittedAt = done && r.submitted_at ? `<span style="opacity:.72; font-size:10px; margin-left:4px;">${apEscapeHtml(String(r.submitted_at).slice(11, 16) || '')}</span>` : '';
+        const bg = done ? 'rgba(0,184,148,0.10)' : 'rgba(232,65,79,0.10)';
+        const color = done ? '#008F72' : '#D92D3A';
+        return `<span style="display:inline-flex; align-items:center; min-height:28px; padding:6px 9px; border-radius:999px; background:${bg}; color:${color}; font-size:12px; font-weight:800; line-height:1;">${safeName}${submittedAt}</span>`;
+    }).join('')}</div>`;
+}
+
+function renderHomeworkPhotoOverviewInlineCard(assignmentId, data) {
+    const rows = Array.isArray(data?.students) ? data.students : [];
+    const assignment = data?.assignment || {};
+    const total = rows.length;
+    const submitted = rows.filter(r => Number(r.is_submitted || 0) === 1).length;
+    const missing = total - submitted;
+    const missingLinks = normalizeHomeworkPhotoLinkItems(assignmentId, rows.filter(r => Number(r.is_submitted || 0) !== 1));
+    const missingTextareaId = `hw-photo-hub-missing-${sanitizeHomeworkPhotoDomId(assignmentId)}`;
+    const missingText = buildHomeworkPhotoStudentLinkText(assignment, missingLinks, { mode: 'missing' });
+    const due = `${assignment.due_date || ''}${assignment.due_time ? ` ${assignment.due_time}` : ''}`.trim();
+
+    return `
+        <div style="border:1px solid var(--border); border-radius:18px; padding:14px; background:var(--surface); box-shadow:none;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:12px;">
+                <div style="min-width:0;">
+                    <div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(assignment.title || '과제')}</div>
+                    <div style="font-size:11px; font-weight:700; color:var(--secondary); line-height:1.45; margin-top:4px;">${due ? `마감 ${apEscapeHtml(due)} · ` : ''}제출 ${submitted}/${total}</div>
+                </div>
+                <div style="flex:0 0 auto; display:flex; gap:6px; align-items:center;">
+                    <span style="display:inline-flex; align-items:center; justify-content:center; min-height:26px; padding:0 8px; border-radius:999px; background:rgba(0,184,148,0.10); color:#008F72; font-size:11px; font-weight:800;">제출 ${submitted}</span>
+                    <span style="display:inline-flex; align-items:center; justify-content:center; min-height:26px; padding:0 8px; border-radius:999px; background:rgba(232,65,79,0.10); color:#D92D3A; font-size:11px; font-weight:800;">미제출 ${missing}</span>
+                </div>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+                <button class="btn btn-primary" style="flex:1 1 150px; min-height:40px; font-size:12px; font-weight:800; border-radius:12px;" onclick="copyHomeworkPhotoAnnouncement('${missingTextareaId}', '미제출 학생이 없습니다.', '미제출자 안내문이 복사되었습니다.')">미제출자 안내문 복사</button>
+                <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border); border-radius:12px;" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크</button>
+                <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16); border-radius:12px;" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감</button>
+            </div>
+            <textarea id="${missingTextareaId}" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(missingText)}</textarea>
+            <div style="display:grid; grid-template-columns:1fr; gap:12px;">
+                <div style="border:1px solid rgba(232,65,79,0.12); background:rgba(232,65,79,0.035); border-radius:14px; padding:12px;">
+                    <div style="font-size:12px; font-weight:900; color:#D92D3A; margin-bottom:8px;">미제출</div>
+                    ${renderHomeworkPhotoStudentPills(rows, false)}
+                </div>
+                <div style="border:1px solid rgba(0,184,148,0.12); background:rgba(0,184,148,0.035); border-radius:14px; padding:12px;">
+                    <div style="font-size:12px; font-weight:900; color:#008F72; margin-bottom:8px;">제출</div>
+                    ${renderHomeworkPhotoStudentPills(rows, true)}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+async function openHomeworkPhotoHubModal(classId) {
+    const cls = state.db.classes.find(c => String(c.id) === String(classId));
+    showModal('과제 관리', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:16px; padding:14px;">
+                <div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(cls?.name || '반')}</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">새 과제를 내고, 제출/미제출 현황을 바로 확인합니다.</div>
+            </div>
+            <button class="btn btn-primary" style="width:100%; min-height:50px; font-size:14px; font-weight:800; border-radius:14px;" onclick="openHomeworkPhotoAssignmentModal('${classId}')">새 과제</button>
+            <div id="hw-photo-hub-list" style="display:flex; flex-direction:column; gap:12px;">
+                <div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">제출 확인을 불러오는 중...</div>
+            </div>
+        </div>
+    `);
+    await renderHomeworkPhotoHubList(classId);
+}
+
+async function renderHomeworkPhotoHubList(classId) {
+    const root = document.getElementById('hw-photo-hub-list');
+    if (!root) return;
+    try {
+        const data = api.getHomeworkPhotoAssignments
+            ? await api.getHomeworkPhotoAssignments(classId)
+            : await api.get(`homework-photo/assignments?class_id=${encodeURIComponent(classId)}`);
+        const list = Array.isArray(data.assignments) ? data.assignments : [];
+        if (!data?.success || !list.length) {
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800; border:1px dashed var(--border); border-radius:16px; background:var(--surface-2);">확인할 과제가 없습니다.<br>먼저 새 과제를 내 주세요.</div>`;
+            return;
+        }
+
+        root.innerHTML = `<div style="padding:10px 2px 0; font-size:13px; font-weight:900; color:var(--text);">제출 확인</div><div style="display:flex; flex-direction:column; gap:12px;">${list.slice(0, 5).map(a => `<div id="hw-photo-hub-card-${sanitizeHomeworkPhotoDomId(a.id)}" style="padding:18px 12px; text-align:center; color:var(--secondary); font-size:12px; font-weight:800; border:1px solid var(--border); border-radius:16px; background:var(--surface);">${apEscapeHtml(a.title || '과제')} 확인 중...</div>`).join('')}</div>`;
+
+        for (const a of list.slice(0, 5)) {
+            const card = document.getElementById(`hw-photo-hub-card-${sanitizeHomeworkPhotoDomId(a.id)}`);
+            if (!card) continue;
+            try {
+                const ov = api.getHomeworkPhotoOverview
+                    ? await api.getHomeworkPhotoOverview(a.id)
+                    : await api.get(`homework-photo/overview?assignment_id=${encodeURIComponent(a.id)}`);
+                card.outerHTML = renderHomeworkPhotoOverviewInlineCard(a.id, ov?.success ? ov : { assignment: a, students: [] });
+            } catch (e) {
+                card.innerHTML = `<div style="color:var(--error); font-size:12px; font-weight:800;">${apEscapeHtml(a.title || '과제')} 현황을 불러오지 못했습니다.</div>`;
+            }
+        }
+    } catch (e) {
+        console.error('[renderHomeworkPhotoHubList] failed:', e);
+        root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:800;">과제 현황 조회 중 오류가 발생했습니다.</div>`;
+    }
+}
+
 function openHomeworkPhotoAssignmentModal(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     const baseDate = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
     const due = getDefaultHomeworkPhotoDue(classId, baseDate);
-    showModal('숙제등록', `
+    showModal('새 과제', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
                 <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">저장하면 학생별 숙제 제출 링크가 자동 생성됩니다.<br>마감 기본값은 다음 수업일 낮 12시로 자동 설정됩니다.</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">저장하면 학생별 과제 제출 링크가 자동 생성됩니다.<br>마감 기본값은 다음 수업일 낮 12시로 자동 설정됩니다.</div>
             </div>
-            <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
-            <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
+            <input id="hw-photo-title" class="cls-input" placeholder="과제 제목">
+            <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="과제 설명" style="resize:vertical;"></textarea>
             <div style="display:grid; grid-template-columns:1fr 120px; gap:8px;">
                 <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(due.dueDate)}">
                 <input id="hw-photo-time" type="time" class="cls-input" value="${apEscapeHtml(due.dueTime)}">
             </div>
             <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:800;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장하고 링크 생성</button>
-            <button class="btn" style="min-height:44px; font-size:13px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+            <button class="btn" style="min-height:44px; font-size:13px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoHubModal('${classId}')">과제 관리</button>
         </div>
     `);
 }
@@ -799,23 +907,23 @@ async function handleCreateHomeworkPhotoAssignment(classId) {
     const description = document.getElementById('hw-photo-desc')?.value.trim() || '';
     const dueDate = document.getElementById('hw-photo-date')?.value || '';
     const dueTime = document.getElementById('hw-photo-time')?.value || '';
-    if (!title || !dueDate) return toast('숙제 제목과 마감일을 입력하세요.', 'warn');
+    if (!title || !dueDate) return toast('과제 제목과 마감일을 입력하세요.', 'warn');
 
     try {
         const res = api.createHomeworkPhotoAssignment
             ? await api.createHomeworkPhotoAssignment({ class_id: classId, title, description, due_date: dueDate, due_time: dueTime })
             : await api.post('homework-photo/assignments', { class_id: classId, title, description, due_date: dueDate, due_time: dueTime });
-        if (!res?.success) return toast(res?.message || res?.error || '숙제 등록 실패', 'warn');
-        toast('숙제가 등록되었습니다.', 'success');
+        if (!res?.success) return toast(res?.message || res?.error || '과제 등록 실패', 'warn');
+        toast('과제가 등록되었습니다.', 'success');
         openHomeworkPhotoLinksModal(res.assignment_id, res.links || [], res.assignment || { title, due_date: dueDate, due_time: dueTime });
     } catch (e) {
         console.error('[handleCreateHomeworkPhotoAssignment] failed:', e);
-        toast('숙제 등록 중 오류가 발생했습니다.', 'error');
+        toast('과제 등록 중 오류가 발생했습니다.', 'error');
     }
 }
 
 async function openHomeworkPhotoAssignmentList(classId) {
-    showModal('숙제 목록', `<div id="hw-photo-assignment-list" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    showModal('과제 목록', `<div id="hw-photo-assignment-list" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
     try {
         const data = api.getHomeworkPhotoAssignments
             ? await api.getHomeworkPhotoAssignments(classId)
@@ -824,7 +932,7 @@ async function openHomeworkPhotoAssignmentList(classId) {
         if (!root) return;
         const list = Array.isArray(data.assignments) ? data.assignments : [];
         if (!data?.success || !list.length) {
-            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">등록된 숙제가 없습니다.</div>`;
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">등록된 과제가 없습니다.</div>`;
             return;
         }
         root.innerHTML = `<div style="display:flex; flex-direction:column; gap:10px;">${list.map(a => {
@@ -834,7 +942,7 @@ async function openHomeworkPhotoAssignmentList(classId) {
                 <div style="border:1px solid var(--border); border-radius:14px; padding:13px; background:var(--surface);">
                     <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
                         <div style="min-width:0;">
-                            <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(a.title || '숙제')}</div>
+                            <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(a.title || '과제')}</div>
                             <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">마감 ${apEscapeHtml(a.due_date || '')}${a.due_time ? ` ${apEscapeHtml(a.due_time)}` : ''} · 제출 ${submitted}/${total}</div>
                         </div>
                         <div style="font-size:12px; font-weight:800; color:${a.status === 'closed' ? 'var(--secondary)' : 'var(--primary)'};">${a.status === 'closed' ? '마감' : '진행'}</div>
@@ -1041,7 +1149,7 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
             <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도관리</button>
-            <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제등록</button>
+            <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoHubModal('${cid}')">과제</button>
             <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn cls-v4-tool purple" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>

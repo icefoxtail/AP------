@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>AP Math OS | 숙제 제출</title>
+  <title>AP Math OS | 과제 제출</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <style>
     :root {
@@ -303,7 +303,7 @@
   <header class="top">
     <div class="brand">
       <div class="brand-main">AP Math OS</div>
-      <div class="brand-sub">숙제 제출</div>
+      <div class="brand-sub">과제 제출</div>
     </div>
     <div id="student-chip" class="chip"></div>
   </header>
@@ -367,9 +367,9 @@
               <span class="visual-check">✓</span>
             </div>
           </div>
-          <div class="hero-kicker">AP수학 숙제 확인</div>
-          <h1 class="hero-title">오늘 숙제를<br>완료했는지 제출해 주세요.</h1>
-          <p class="hero-desc">PIN으로 본인 확인 후 제출하면 선생님 클래스룸에 숙제 완료 상태가 기록됩니다.</p>
+          <div class="hero-kicker">AP수학 과제 확인</div>
+          <h1 class="hero-title">오늘 과제를<br>완료했는지 제출해 주세요.</h1>
+          <p class="hero-desc">PIN으로 본인 확인 후 제출하면 선생님 클래스룸에 과제 완료 상태가 기록됩니다.</p>
         </section>
       `;
     }
@@ -389,7 +389,7 @@
       const due = `${assignment.due_date || ''}${assignment.due_time ? ` ${assignment.due_time}` : ''}`.trim();
       return `
         <section class="card">
-          <h1 class="title">${escapeHtml(assignment.title || '숙제')}</h1>
+          <h1 class="title">${escapeHtml(assignment.title || '과제')}</h1>
           <div class="meta">
             ${assignment.class_name ? `<span class="meta-pill">${escapeHtml(assignment.class_name)}</span>` : ''}
             ${due ? `<span class="meta-pill primary">마감 ${escapeHtml(due)}</span>` : ''}
@@ -424,8 +424,8 @@
         ${renderAssignmentCard()}
         <section class="card">
           <div class="stack">
-            <div class="notice"><strong>제출 전 확인</strong><br>숙제를 완료했다면 아래 버튼을 눌러 제출 상태를 선생님께 보내 주세요. 실제 숙제 확인은 수업 시간에 진행됩니다.</div>
-            <button id="submit-btn" class="btn btn-primary" onclick="submitHomework()">숙제 완료로 제출</button>
+            <div class="notice"><strong>제출 전 확인</strong><br>과제를 완료했다면 아래 버튼을 눌러 제출 상태를 선생님께 보내 주세요. 실제 과제 확인은 수업 시간에 진행됩니다.</div>
+            <button id="submit-btn" class="btn btn-primary" onclick="submitHomework()">과제 완료로 제출</button>
           </div>
         </section>
         <div class="footer-note">사진 제출 기능은 다음 단계에서 추가됩니다.</div>
@@ -440,13 +440,13 @@
           <div class="done-mark">✓</div>
           <h1 class="title">제출 완료</h1>
           <div class="meta">${escapeHtml(submittedAt || '방금 제출됨')}</div>
-          <div class="status-box">선생님 클래스룸에 숙제 완료 상태가 기록되었습니다. 수업 시간에 실제 숙제를 확인받아 주세요.</div>
+          <div class="status-box">선생님 클래스룸에 과제 완료 상태가 기록되었습니다. 수업 시간에 실제 과제를 확인받아 주세요.</div>
         </section>
       `;
     }
     async function loadAssignment() {
       if (!assignmentId || !studentId) {
-        renderError('숙제 링크가 올바르지 않습니다.');
+        renderError('과제 링크가 올바르지 않습니다.');
         return;
       }
       try {
@@ -466,7 +466,7 @@
         }
         renderPinGate();
       } catch (e) {
-        renderError(e.message || '숙제 정보를 불러오지 못했습니다.');
+        renderError(e.message || '과제 정보를 불러오지 못했습니다.');
       }
     }
     async function verifyPin(fromStorage) {
@@ -502,7 +502,7 @@
         toast(e.message || '제출 실패');
         if (btn) {
           btn.disabled = false;
-          btn.textContent = '숙제 완료로 제출';
+          btn.textContent = '과제 완료로 제출';
         }
       } finally {
         isSubmitting = false;
