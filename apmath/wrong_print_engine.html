@@ -428,7 +428,9 @@ function switchMode(mode) {
 
 function boot() {
     try {
-        state.payload = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null');
+        const payloadJson = sessionStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY) || 'null';
+        state.payload = JSON.parse(payloadJson);
+        console.log('[wrong_print_engine] payload loaded', !!state.payload);
     } catch (e) {
         state.payload = null;
     }
