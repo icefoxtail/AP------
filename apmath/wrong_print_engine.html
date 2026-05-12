@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Math 오답 클리닉</title>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
+            options: { enableMenu: false },
+            startup: { typeset: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        @page { size: A4; margin: 0; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding-top: 56px;
+            background: #eef2f7;
+            color: #111827;
+            font-family: "Nanum Myeongjo", "Noto Serif KR", serif;
+            font-size: 10pt;
+            line-height: 1.58;
+        }
+        #mode-ctrl {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 0 22px;
+            background: #111827;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        #ctrl-title { font-size: 14px; font-weight: 800; white-space: nowrap; }
+        .mode-tabs { display: flex; gap: 4px; padding: 4px; border-radius: 10px; background: rgba(255,255,255,.08); }
+        .mode-tab {
+            border: 0;
+            border-radius: 7px;
+            padding: 6px 14px;
+            background: transparent;
+            color: rgba(255,255,255,.62);
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .mode-tab.active { background: #fff; color: #111827; }
+        #btn-print {
+            border: 0;
+            border-radius: 8px;
+            padding: 8px 16px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        #print-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #fff;
+            padding: 14mm 15mm 18mm;
+            box-shadow: 0 0 12px rgba(0,0,0,.12);
+            page-break-after: always;
+        }
+        .page:last-child { page-break-after: avoid; }
+        .page-header {
+            border: 1px solid #111;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+        }
+        .page-title {
+            font-size: 16pt;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+        .page-meta {
+            margin-top: 5px;
+            font-size: 9pt;
+            font-weight: 700;
+            color: #4b5563;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        .q-box {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            padding: 10px 0 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .q-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .q-num { font-size: 11pt; font-weight: 800; }
+        .q-source {
+            text-align: right;
+            font-size: 7.8pt;
+            font-weight: 700;
+            color: #64748b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        .wrong-students {
+            margin: 4px 0 8px;
+            padding: 6px 8px;
+            border: 1px dashed #94a3b8;
+            border-radius: 4px;
+            color: #334155;
+            font-size: 8pt;
+            font-weight: 700;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        .q-content { word-break: keep-all; overflow-wrap: anywhere; }
+        .q-content img, .q-image-wrap img {
+            display: block;
+            max-width: 100%;
+            max-height: 115px;
+            height: auto;
+            margin: 8px auto;
+        }
+        .choices { margin-top: 9px; }
+        .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
+        .choice-no { width: 22px; flex: 0 0 22px; font-weight: 800; }
+        .choice-text { flex: 1; word-break: keep-all; overflow-wrap: anywhere; }
+        table { border-collapse: collapse; max-width: 100%; margin: 8px 0; }
+        th, td { border: 1px solid #111; padding: 3px 5px; text-align: center; }
+        .homework-check {
+            margin-top: 14px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            font-size: 9pt;
+            font-weight: 800;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        .notice {
+            width: min(720px, calc(100% - 32px));
+            margin: 32px auto;
+            padding: 18px;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 0 12px rgba(0,0,0,.08);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        @media print {
+            body { padding: 0; background: #fff; }
+            #mode-ctrl { display: none; }
+            #print-area { display: block; padding: 0; }
+            .page { box-shadow: none; min-height: 296.5mm; page-break-after: always; }
+            .page:last-child { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div id="mode-ctrl">
+        <span id="ctrl-title">AP Math 오답 클리닉</span>
+        <div class="mode-tabs">
+            <button class="mode-tab active" type="button" data-mode="exam">문제지</button>
+            <button class="mode-tab" type="button" data-mode="ans">정답표</button>
+            <button class="mode-tab" type="button" data-mode="sol">해설지</button>
+        </div>
+        <button id="btn-print" type="button" onclick="window.print()">인쇄 / PDF 저장</button>
+    </div>
+    <div id="print-area"></div>
+
+<script>
+const STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
+const FALLBACK_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+const state = { payload: null, banks: {}, questions: {}, mode: 'exam' };
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, ch => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[ch]));
+}
+
+function normalizeArchiveFile(file) {
+    const raw = String(file || '').trim();
+    if (!raw) return '';
+    if (/^https?:\/\//i.test(raw)) return raw;
+    if (raw.startsWith('exams/')) return raw;
+    return `exams/${raw.replace(/^\.\//, '')}`;
+}
+
+function getArchiveCandidateUrls(file) {
+    const path = normalizeArchiveFile(file);
+    if (!path) return [];
+    if (/^https?:\/\//i.test(path)) return [path];
+    return [
+        new URL(`../archive/${path}`, window.location.href).href,
+        new URL(path, FALLBACK_ARCHIVE_BASE_URL).href
+    ];
+}
+
+async function fetchArchiveText(file) {
+    const urls = getArchiveCandidateUrls(file);
+    let lastError = null;
+    for (const url of urls) {
+        try {
+            const res = await fetch(url, { cache: 'force-cache' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.text();
+        } catch (e) {
+            lastError = e;
+        }
+    }
+    throw lastError || new Error('archive file missing');
+}
+
+function extractQuestionBank(jsText) {
+    const sandboxWindow = { questionBank: null, __questionBank: null };
+    const sandboxDocument = {
+        createElement: () => ({ style: {}, setAttribute() {}, appendChild() {}, innerHTML: '' }),
+        head: { appendChild() {} },
+        body: { appendChild() {} },
+        addEventListener() {},
+        querySelector: () => null,
+        querySelectorAll: () => []
+    };
+    try {
+        const fn = new Function('window', 'document', `${jsText}\n;return window.questionBank || window.__questionBank || (typeof questionBank !== 'undefined' ? questionBank : null);`);
+        return fn(sandboxWindow, sandboxDocument);
+    } catch (e) {
+        console.warn('[wrong_print_engine] questionBank extract failed:', e);
+        return null;
+    }
+}
+
+function normalizeQuestionBank(bank) {
+    if (Array.isArray(bank)) return bank;
+    if (!bank || typeof bank !== 'object') return [];
+    if (Array.isArray(bank.questions)) return bank.questions;
+    if (Array.isArray(bank.items)) return bank.items;
+    if (Array.isArray(bank.data)) return bank.data;
+    return Object.values(bank).filter(item => item && typeof item === 'object');
+}
+
+function getQuestionNoValue(question, fallbackIndex) {
+    const values = [question?.questionNo, question?.question_no, question?.no, question?.number, question?.qno, question?.qid, question?.id];
+    for (const value of values) {
+        const match = String(value ?? '').match(/\d+/);
+        if (match) return Number(match[0]);
+    }
+    return fallbackIndex + 1;
+}
+
+function findQuestionInBank(bank, questionNo) {
+    const list = normalizeQuestionBank(bank);
+    const qNo = Number(questionNo);
+    if (!qNo || !list.length) return null;
+    return list.find((q, idx) => getQuestionNoValue(q, idx) === qNo) || list[qNo - 1] || null;
+}
+
+function getAllPrintItems(payload) {
+    const items = [];
+    (payload.students || []).forEach(student => {
+        (student.wrongItems || []).forEach(item => {
+            items.push({ ...item, studentId: student.studentId, studentName: student.studentName });
+        });
+    });
+    (payload.classWrongItems || []).forEach(item => items.push(item));
+    return items;
+}
+
+async function loadAllQuestionBanks(payload) {
+    const files = [...new Set(getAllPrintItems(payload).map(item => normalizeArchiveFile(item.archiveFile)).filter(Boolean))];
+    for (const file of files) {
+        try {
+            const text = await fetchArchiveText(file);
+            state.banks[file] = extractQuestionBank(text);
+        } catch (e) {
+            console.warn('[wrong_print_engine] archive load failed:', file, e);
+            state.banks[file] = null;
+        }
+    }
+}
+
+function resolveQuestion(item) {
+    const file = normalizeArchiveFile(item.archiveFile);
+    const key = `${file}|${Number(item.questionNo)}`;
+    if (key in state.questions) return state.questions[key];
+    const q = findQuestionInBank(state.banks[file], item.questionNo);
+    state.questions[key] = q;
+    return q;
+}
+
+function getQuestionContent(q) {
+    return q?.content || q?.question || q?.text || q?.prompt || '';
+}
+
+function getQuestionChoices(q) {
+    if (Array.isArray(q?.choices)) return q.choices;
+    if (Array.isArray(q?.options)) return q.options;
+    return [];
+}
+
+function getQuestionImage(q) {
+    return q?.image || q?.imageUrl || q?.img || '';
+}
+
+function getQuestionAnswer(q) {
+    return q?.answer ?? q?.correctAnswer ?? q?.correct ?? q?.ans ?? '';
+}
+
+function getQuestionSolution(q) {
+    return q?.solution || q?.explanation || q?.commentary || q?.sol || '';
+}
+
+function renderChoices(q) {
+    const choices = getQuestionChoices(q);
+    if (!choices.length) return '<div style="height:26px;"></div>';
+    const circled = ['①', '②', '③', '④', '⑤'];
+    return `<div class="choices">${choices.map((choice, idx) => `
+        <div class="choice-item"><span class="choice-no">${circled[idx] || ''}</span><span class="choice-text">${choice}</span></div>
+    `).join('')}</div>`;
+}
+
+function renderQuestionBox(item, outputNo, extra = '') {
+    const q = resolveQuestion(item);
+    const content = q ? getQuestionContent(q) : '<span style="color:#dc2626;font-weight:800;">문항 원문을 불러오지 못했습니다.</span>';
+    const image = q ? getQuestionImage(q) : '';
+    const unit = item.unit || item.unitKey ? ` · ${escapeHtml(item.unit || item.unitKey)}` : '';
+    const answer = state.mode === 'ans' || state.mode === 'sol' ? `<div style="margin-top:8px; font-weight:800; color:#dc2626;">[정답] ${escapeHtml(getQuestionAnswer(q)) || '-'}</div>` : '';
+    const solution = state.mode === 'sol' ? `<div style="margin-top:6px; padding:8px; border:1px solid #e5e7eb; background:#f8fafc;">${getQuestionSolution(q) || '해설이 없습니다.'}</div>` : '';
+
+    return `
+        <div class="q-box">
+            <div class="q-head">
+                <div class="q-num">${outputNo}.</div>
+                <div class="q-source">${escapeHtml(item.examTitle || '')} · 원본 ${escapeHtml(item.questionNo)}번${unit}</div>
+            </div>
+            ${extra}
+            <div class="q-content">${content}</div>
+            ${image ? `<div class="q-image-wrap"><img src="${escapeHtml(image)}" alt=""></div>` : ''}
+            ${state.mode === 'exam' ? renderChoices(q) : ''}
+            ${answer}
+            ${solution}
+        </div>
+    `;
+}
+
+function renderStudentPages(payload) {
+    return (payload.students || []).map(student => `
+        <section class="page">
+            <header class="page-header">
+                <div class="page-title">${escapeHtml(student.studentName)} 오답지</div>
+                <div class="page-meta">${escapeHtml(payload.className || '')} · ${escapeHtml(payload.printTitle || '오답 클리닉')} · ${escapeHtml(payload.createdDate || '')}</div>
+            </header>
+            ${(student.wrongItems || []).map((item, idx) => renderQuestionBox(item, idx + 1)).join('')}
+            ${payload.options?.includeHomeworkCheckBox !== false ? `
+                <div class="homework-check">
+                    <span>□ 다시 풀기 완료</span>
+                    <span>□ 풀이 과정 확인</span>
+                    <span>□ 선생님 확인</span>
+                </div>
+            ` : ''}
+        </section>
+    `).join('');
+}
+
+function renderClassPages(payload) {
+    const items = payload.classWrongItems || [];
+    return `
+        <section class="page">
+            <header class="page-header">
+                <div class="page-title">${escapeHtml(payload.className || '반')} 반별 공통 오답지</div>
+                <div class="page-meta">${escapeHtml(payload.printTitle || '오답 클리닉')} · ${escapeHtml(payload.createdDate || '')}</div>
+            </header>
+            ${items.map((item, idx) => {
+                const names = (item.wrongStudents || []).map(student => student.studentName).join(', ');
+                const extra = `<div class="wrong-students">오답 학생: ${escapeHtml(names || '-')} / 총 ${escapeHtml(item.wrongCount || 0)}명</div>`;
+                return renderQuestionBox(item, idx + 1, extra);
+            }).join('')}
+        </section>
+    `;
+}
+
+async function render() {
+    const area = document.getElementById('print-area');
+    const payload = state.payload;
+    area.innerHTML = '<div class="notice">오답 문항을 불러오는 중입니다.</div>';
+    await loadAllQuestionBanks(payload);
+
+    if (payload.mode === 'class') {
+        area.innerHTML = renderClassPages(payload);
+    } else {
+        area.innerHTML = renderStudentPages(payload);
+    }
+
+    if (!area.textContent.trim()) {
+        area.innerHTML = '<div class="notice">출력할 오답 문항이 없습니다.</div>';
+    }
+
+    if (window.MathJax?.typesetPromise) {
+        try { await MathJax.typesetPromise([area]); } catch (e) { console.warn(e); }
+    }
+}
+
+function switchMode(mode) {
+    state.mode = mode;
+    document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+    render();
+}
+
+function boot() {
+    try {
+        state.payload = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null');
+    } catch (e) {
+        state.payload = null;
+    }
+
+    document.querySelectorAll('.mode-tab').forEach(btn => {
+        btn.addEventListener('click', () => switchMode(btn.dataset.mode || 'exam'));
+    });
+
+    if (!state.payload || typeof state.payload !== 'object') {
+        document.getElementById('print-area').innerHTML = '<div class="notice">오답지 데이터를 찾을 수 없습니다. AP Math OS에서 다시 열어주세요.</div>';
+        return;
+    }
+
+    render();
+}
+
+boot();
+</script>
+</body>
+</html>
