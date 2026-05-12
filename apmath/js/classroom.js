@@ -422,7 +422,8 @@ async function toggleAttendanceTag(studentId, date, tag) {
     const meta = getAttendanceMetaForStudentDate(sid, d);
     const prevTags = stringifyAttendanceTags(meta.tags);
     const prevMemo = meta.memo;
-    const nextTags = meta.tags.includes(tag)
+    const wasOn = meta.tags.includes(tag);
+    const nextTags = wasOn
         ? meta.tags.filter(v => v !== tag)
         : meta.tags.concat(tag);
     const nextTagText = stringifyAttendanceTags(nextTags);
@@ -434,11 +435,69 @@ async function toggleAttendanceTag(studentId, date, tag) {
     try {
         const r = await api.patch('attendance', { studentId: sid, date: d, tags: nextTagText });
         if (!r?.success) throw new Error('fail');
+        if (tag === '보강' && !wasOn) {
+            openClassroomAttendanceMemoModal(sid, d, {
+                title: '보강 메모',
+                subtitle: '어떤 보강인지 간단히 적어두세요.',
+                placeholder: '예: 5/10 결석 보강, 함수 문제풀이 보강, 시험 전 보충 등',
+                requiredTag: '보강'
+            });
+        }
     } catch (e) {
         syncAttendanceMetaToState(sid, d, prevTags, prevMemo);
         renderAttendanceLedgerCellIfOpen(sid, d);
         if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
         toast('저장 실패', 'warn');
+    }
+}
+
+
+function openClassroomAttendanceMemoModal(studentId, date, options = {}) {
+    const sid = String(studentId);
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const student = (state.db.students || []).find(s => String(s.id) === sid);
+    const meta = getAttendanceMetaForStudentDate(sid, d);
+    const title = options.title || '출결 메모';
+    const subtitle = options.subtitle || '출결 관련 메모를 남겨두세요.';
+    const placeholder = options.placeholder || '메모를 입력하세요.';
+    const requiredTag = String(options.requiredTag || '').trim();
+
+    showModal(title, `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="padding:12px; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);">
+                <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.4;">${apEscapeHtml(student?.name || '학생')}</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.45;">${apEscapeHtml(d)} · ${apEscapeHtml(subtitle)}</div>
+            </div>
+            <textarea id="classroom-attendance-quick-memo" class="cls-input" placeholder="${apEscapeHtml(placeholder)}" style="height:120px; resize:none; line-height:1.6;">${apEscapeHtml(meta.memo)}</textarea>
+            <button class="btn btn-primary" style="width:100%; min-height:50px; font-size:14px; font-weight:700; border-radius:14px;" onclick="saveClassroomAttendanceQuickMemo('${sid}', '${d}', '${apEscapeHtml(requiredTag)}')">저장</button>
+        </div>
+    `);
+}
+
+async function saveClassroomAttendanceQuickMemo(studentId, date, requiredTag = '') {
+    const sid = String(studentId);
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const prev = getAttendanceMetaForStudentDate(sid, d);
+    const memo = document.getElementById('classroom-attendance-quick-memo')?.value.trim() || '';
+    let tags = prev.tags.slice();
+    const tag = String(requiredTag || '').trim();
+    if (tag && !tags.includes(tag)) tags.push(tag);
+    const tagText = stringifyAttendanceTags(tags);
+
+    syncAttendanceMetaToState(sid, d, tags, memo);
+    renderAttendanceLedgerCellIfOpen(sid, d);
+    if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+
+    try {
+        const r = await api.patch('attendance', { studentId: sid, date: d, tags: tagText, memo });
+        if (!r?.success) throw new Error('fail');
+        toast('메모 저장 완료', 'success');
+        closeModal(true);
+    } catch (e) {
+        syncAttendanceMetaToState(sid, d, prev.tags, prev.memo);
+        renderAttendanceLedgerCellIfOpen(sid, d);
+        if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+        toast('메모 저장 실패', 'warn');
     }
 }
 
@@ -1148,11 +1207,15 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
         <div class="cls-v4-tools">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
+<<<<<<< HEAD
             <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도관리</button>
+=======
+            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도</button>
+>>>>>>> 940381f772a50f93f61a2796fb2243827fe4b4fc
             <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoHubModal('${cid}')">과제</button>
             <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
-            <button class="btn cls-v4-tool purple" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
+            <button class="btn cls-v4-tool purple" onclick="openClinicCenter('${cid}')">클리닉</button>
             ${plannerEnabled ? `<button class="btn cls-v4-tool green" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
         </div>
     `;
@@ -1317,9 +1380,20 @@ function openClassRecordModal(cid) {
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
     if (activeBooks.length === 0 && cls?.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
 
-    const existingRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cid) && r.date === todayStr);
-    const existingProgress = existingRecord ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id)) : [];
+    const existingRecord = (state.db.class_daily_records || [])
+    .filter(r =>
+        String(r.class_id) === String(cid) &&
+        String(r.date || '') <= String(todayStr)
+    )
+    .sort((a, b) =>
+        String(b.date || '').localeCompare(String(a.date || '')) ||
+        String(b.id || '').localeCompare(String(a.id || ''))
+    )[0] || null;
 
+    const existingProgress = existingRecord
+    ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id))
+    : [];
+    
     const booksHtml = activeBooks.length > 0 ? activeBooks.map((tb) => {
         const prevP = existingProgress.find(p => String(p.textbook_id) === String(tb.id) || (tb.id === 'fallback' && p.textbook_title_snapshot === tb.title));
         const progVal = prevP ? prevP.progress_text : '';
@@ -1479,6 +1553,13 @@ async function toggleAtt(sid, date) {
     try {
         const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
+        if (next === '결석') {
+            openClassroomAttendanceMemoModal(sid, today, {
+                title: '결석 사유',
+                subtitle: '결석 사유를 간단히 적어두세요.',
+                placeholder: '예: 감기, 가족 일정, 학교 행사, 무단 결석 등'
+            });
+        }
         if (typeof refreshDataOnly === 'function') {
             refreshDataOnly()
                 .then(() => {
@@ -1831,8 +1912,47 @@ function getPlannerBaseUrl() {
     return origin + path + 'planner/';
 }
 
+function ensureTeacherPlannerReturnBridge() {
+    if (window.__apTeacherPlannerReturnBridgeInstalled) return;
+    if (typeof returnToPreviousManagementView !== 'function') return;
+
+    const originalReturnToPreviousManagementView = returnToPreviousManagementView;
+    const patchedReturnToPreviousManagementView = function(fallback = 'dashboard', ctx = null) {
+        if (!state.ui) state.ui = {};
+        const view = ctx || state.ui.returnView || {};
+        state.ui.modalReturnView = null;
+
+        if (view.type === 'plannerControl' && view.classId && typeof renderPlannerControl === 'function') {
+            closeModal(true);
+            return renderPlannerControl(String(view.classId));
+        }
+
+        return originalReturnToPreviousManagementView(fallback, ctx);
+    };
+
+    returnToPreviousManagementView = patchedReturnToPreviousManagementView;
+    window.returnToPreviousManagementView = patchedReturnToPreviousManagementView;
+    window.__apTeacherPlannerReturnBridgeInstalled = true;
+}
+
+function setTeacherPlannerReturnContext(classId) {
+    if (!state.ui) state.ui = {};
+    if (!classId) return;
+
+    ensureTeacherPlannerReturnBridge();
+    state.ui.plannerControlClassId = String(classId);
+    state.ui.plannerReturnMode = 'teacherPlanner';
+
+    if (typeof setModalReturnView === 'function') {
+        setModalReturnView({ type: 'plannerControl', classId: String(classId) });
+    }
+}
+
 async function copyPlannerStudentLink(studentId) {
     const url = `${getPlannerBaseUrl()}?student_id=${encodeURIComponent(studentId)}`;
+    const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+    if (classId) setTeacherPlannerReturnContext(classId);
+
     try {
         await navigator.clipboard.writeText(url);
         toast('플래너 링크가 복사되었습니다.', 'info');
@@ -1927,6 +2047,7 @@ async function openPlannerStudentPlans(studentId, monthOrDate) {
     const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
     const bounds = getPlannerMonthBounds(String(monthOrDate || '').slice(0, 7));
     const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+    if (classId) setTeacherPlannerReturnContext(classId);
 
     showModal('플래너 상세', `
         <div style="display:flex; flex-direction:column; gap:14px;">
@@ -1982,17 +2103,13 @@ function renderPlannerOverviewTable(classId, date, rows) {
         const fbText = fb ? `${fb.badge || ''} ${fb.teacher_comment || '피드백 저장됨'}`.trim() : '미작성';
         return `
             <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:12px 10px; font-size:14px; font-weight:700; color:var(--text);">${apEscapeHtml(row.name)}</td>
+                <td style="padding:12px 10px; font-size:14px; font-weight:700; color:var(--primary); cursor:pointer; text-decoration:none;" title="플래너 상세 보기" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">${apEscapeHtml(row.name)}</td>
                 <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--text);">${Number(row.total || 0)}</td>
                 <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--primary);">${Number(row.done || 0)}</td>
                 <td style="padding:12px 10px;">${renderPlannerRateBar(row.rate)}</td>
                 <td style="padding:12px 10px; font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${apEscapeHtml(fbText)}</td>
                 <td style="padding:12px 10px; text-align:right;">
-                    <div style="display:flex; gap:6px; justify-content:flex-end;">
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
-                    </div>
+                    <button class="btn" style="min-height:36px; padding:8px 12px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
                 </td>
             </tr>
         `;
@@ -2005,7 +2122,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
             <div style="border:1px solid var(--border); border-radius:16px; padding:14px; background:var(--surface); margin-bottom:10px;">
                 <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:10px;">
                     <div style="min-width:0;">
-                        <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(row.name)}</div>
+                        <div style="font-size:15px; font-weight:700; color:var(--primary); line-height:1.3; cursor:pointer;" title="플래너 상세 보기" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">${apEscapeHtml(row.name)}</div>
                         <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">할 일 ${Number(row.total || 0)} · 완료 ${Number(row.done || 0)}</div>
                     </div>
                     <div style="font-size:15px; font-weight:700; color:var(--primary);">${Number(row.rate || 0)}%</div>
@@ -2013,9 +2130,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
                 ${renderPlannerRateBar(row.rate)}
                 <div style="font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; margin-top:10px; line-height:1.5;">${apEscapeHtml(fbText)}</div>
                 <div style="display:flex; gap:8px; margin-top:12px;">
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
                     <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
                 </div>
             </div>
         `;
@@ -2041,7 +2156,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
                         <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:700; color:var(--secondary);">완료</th>
                         <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">이행률</th>
                         <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">피드백</th>
-                        <th style="padding:10px; text-align:right; font-size:12px; font-weight:700; color:var(--secondary);">관리</th>
+                        <th style="padding:10px; text-align:right; font-size:12px; font-weight:700; color:var(--secondary);">피드백</th>
                     </tr>
                 </thead>
                 <tbody>${desktopRows}</tbody>
@@ -2053,6 +2168,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
 
 async function renderPlannerControl(classId) {
     if (!state.ui) state.ui = {};
+    ensureTeacherPlannerReturnBridge();
     state.ui.plannerControlClassId = String(classId || '');
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
@@ -2103,6 +2219,9 @@ async function refreshPlannerControl(classId) {
 function openPlannerFeedbackModal(studentId, date, currentRate) {
     const s = state.db.students.find(st => String(st.id) === String(studentId));
     const safeRate = Math.max(0, Math.min(100, Math.round(Number(currentRate || 0))));
+    const classId = state?.ui?.plannerControlClassId || state?.ui?.currentClassId || '';
+    if (classId) setTeacherPlannerReturnContext(classId);
+
     showModal('플래너 피드백', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">

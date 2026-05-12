@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>AP Math OS | 학생 포털</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    :root {
+      --primary:#1A5CFF;
+      --primary-2:#4F46E5;
+      --accent:#DB2777;
+      --success:#00B894;
+      --error:#E8414F;
+      --warning:#FFA502;
+      --bg:#F2F4F6;
+      --surface:#FFFFFF;
+      --surface-2:#F8FAFC;
+      --border:#E5E8EB;
+      --text:#191F28;
+      --text-soft:#4E5968;
+      --secondary:#6B7684;
+      --shadow:0 22px 60px rgba(15,23,42,0.13);
+      --soft-shadow:0 12px 30px rgba(25,31,40,0.075);
+    }
+    * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; outline:none; }
+    html { min-height:100%; background:#F2F4F6; }
+    body {
+      margin:0;
+      min-height:100vh;
+      min-height:100dvh;
+      font-family:Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color:var(--text);
+      line-height:1.5;
+      word-break:keep-all;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(255,255,255,0.34) 0, rgba(255,255,255,0.12) 25%, transparent 46%),
+        radial-gradient(circle at 88% 8%, rgba(255,255,255,0.22) 0, transparent 34%),
+        radial-gradient(circle at 74% 92%, rgba(15,23,42,0.14) 0, transparent 42%),
+        linear-gradient(135deg,#4F46E5 0%,#7C3AED 47%,#DB2777 100%);
+      background-size:220% 220%;
+      animation:apStudentBg 26s ease infinite;
+    }
+    @keyframes apStudentBg {
+      0% { background-position:0% 50%; }
+      50% { background-position:100% 50%; }
+      100% { background-position:0% 50%; }
+    }
+    @media (prefers-reduced-motion: reduce) { body { animation:none; } }
+    button, input { font-family:inherit; }
+    button { cursor:pointer; }
+    .top {
+      position:sticky;
+      top:0;
+      z-index:20;
+      min-height:58px;
+      padding:0 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(255,255,255,0.12);
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      color:#fff;
+    }
+    .brand { display:flex; flex-direction:column; gap:1px; min-width:0; }
+    .brand-main { font-size:17px; font-weight:700; color:#fff; letter-spacing:-0.35px; line-height:1.2; text-shadow:0 8px 22px rgba(15,23,42,0.20); }
+    .brand-sub { font-size:11px; font-weight:700; color:rgba(255,255,255,0.76); letter-spacing:-0.1px; line-height:1.2; }
+    .top-actions { display:flex; align-items:center; gap:8px; min-width:0; }
+    .chip {
+      max-width:150px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:12px;
+      font-weight:700;
+      color:#fff;
+      text-align:right;
+      background:rgba(255,255,255,0.16);
+      border:1px solid rgba(255,255,255,0.22);
+      border-radius:999px;
+      padding:6px 10px;
+      backdrop-filter:blur(10px);
+    }
+    .chip:empty { display:none; }
+    .logout {
+      border:1px solid rgba(255,255,255,0.24);
+      background:rgba(255,255,255,0.14);
+      color:#fff;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      font-weight:700;
+    }
+    .logout.hidden { display:none; }
+    .app {
+      width:100%;
+      max-width:1120px;
+      min-height:calc(100vh - 58px);
+      margin:0 auto;
+      padding:clamp(22px,5vw,58px) clamp(18px,5vw,68px) calc(34px + env(safe-area-inset-bottom));
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(320px,430px);
+      gap:clamp(26px,6vw,70px);
+      align-items:center;
+    }
+    .hero { display:flex; flex-direction:column; gap:22px; min-width:0; color:#fff; }
+    .hero-kicker {
+      width:fit-content;
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.20);
+      color:rgba(255,255,255,0.88);
+      font-size:12px;
+      font-weight:700;
+      line-height:1.2;
+      backdrop-filter:blur(10px);
+    }
+    .hero-title { margin:0; font-size:clamp(38px,5.8vw,68px); font-weight:700; letter-spacing:-2.8px; line-height:0.98; color:#fff; text-shadow:0 10px 26px rgba(15,23,42,0.22); }
+    .hero-desc { margin:0; max-width:520px; font-size:clamp(15px,1.45vw,18px); font-weight:700; color:rgba(255,255,255,0.82); line-height:1.7; }
+    .visual-wrap {
+      position:relative;
+      width:min(100%,450px);
+      min-height:188px;
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.48) 18%, transparent 42%),
+        linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.12) 100%);
+      border:1px solid rgba(255,255,255,0.30);
+      box-shadow:0 24px 64px rgba(15,23,42,0.18);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+    .visual-orb { position:absolute; border-radius:999px; opacity:.9; pointer-events:none; }
+    .visual-orb.one { width:92px; height:92px; right:-20px; top:-24px; background:rgba(255,255,255,0.22); }
+    .visual-orb.two { width:62px; height:62px; left:22px; bottom:-18px; background:rgba(0,184,148,0.22); }
+    .visual-orb.three { width:24px; height:24px; right:84px; bottom:38px; background:rgba(255,210,94,0.45); }
+    .visual-card {
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:186px;
+      min-height:110px;
+      transform:translate(-50%, -50%) rotate(-2deg);
+      border-radius:26px;
+      background:rgba(255,255,255,0.96);
+      border:1px solid rgba(255,255,255,0.72);
+      box-shadow:0 24px 54px rgba(15,23,42,0.18);
+      padding:24px 22px;
+    }
+    .visual-line { height:8px; border-radius:999px; background:#DDE3EA; margin-bottom:11px; }
+    .visual-line.a { width:92px; }
+    .visual-line.b { width:132px; }
+    .visual-line.c { width:74px; margin-bottom:0; }
+    .visual-check {
+      position:absolute;
+      right:18px;
+      bottom:16px;
+      width:44px;
+      height:44px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#00B894 0%,#12C99B 100%);
+      color:#fff;
+      font-size:25px;
+      font-weight:700;
+      box-shadow:0 12px 24px rgba(0,184,148,0.24);
+    }
+    .card {
+      background:rgba(255,255,255,0.95);
+      border:1px solid rgba(255,255,255,0.58);
+      border-radius:30px;
+      padding:26px 24px 24px;
+      box-shadow:var(--shadow);
+      margin-bottom:14px;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+    .login-card { width:100%; }
+    .card-title { margin:0; font-size:22px; font-weight:700; line-height:1.25; letter-spacing:-0.65px; color:var(--text); }
+    .card-desc { margin:8px 0 0; font-size:13px; font-weight:700; color:var(--secondary); line-height:1.6; }
+    .input {
+      width:100%;
+      min-height:58px;
+      border:1px solid rgba(229,232,235,0.96);
+      border-radius:18px;
+      background:#F8FAFC;
+      color:var(--text);
+      padding:15px 16px;
+      font-size:16px;
+      font-weight:700;
+      box-shadow:none;
+    }
+    .input::placeholder { color:#A0A8B2; }
+    .btn {
+      width:100%;
+      min-height:56px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:var(--surface-2);
+      color:var(--text);
+      font-size:15px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:transform .12s ease, opacity .12s ease, background .12s ease;
+    }
+    .btn-primary { background:linear-gradient(135deg,#1A5CFF 0%,#4F46E5 58%,#7C3AED 100%); color:#fff; border:none; box-shadow:0 14px 28px rgba(26,92,255,0.26); }
+    .btn:active { transform:scale(0.985); }
+    .btn[disabled] { opacity:.58; pointer-events:none; }
+    .stack { display:flex; flex-direction:column; gap:12px; }
+    .notice {
+      font-size:13px;
+      font-weight:700;
+      color:var(--secondary);
+      line-height:1.58;
+      padding:13px 14px;
+      background:var(--surface-2);
+      border:1px solid rgba(229,232,235,0.80);
+      border-radius:18px;
+    }
+    .notice strong { color:var(--text); font-weight:700; }
+    .student-shell { width:100%; max-width:760px; margin:0 auto; grid-column:1 / -1; align-self:start; }
+    .student-profile-card {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:18px;
+      align-items:center;
+      background:rgba(255,255,255,0.95);
+    }
+    .profile-name { margin:0; font-size:25px; font-weight:700; letter-spacing:-0.8px; line-height:1.18; color:var(--text); }
+    .profile-sub { margin:7px 0 0; font-size:13px; font-weight:700; color:var(--secondary); }
+    .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; min-width:190px; }
+    .summary-box { border:1px solid var(--border); border-radius:18px; background:var(--surface-2); padding:13px; text-align:center; }
+    .summary-value { font-size:24px; font-weight:700; color:var(--primary); line-height:1; }
+    .summary-label { margin-top:6px; font-size:11px; font-weight:700; color:var(--secondary); }
+    .portal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .portal-card { display:flex; flex-direction:column; gap:14px; min-height:218px; }
+    .portal-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex:1; }
+    .portal-mark { flex:0 0 auto; width:42px; height:42px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:rgba(26,92,255,0.08); color:var(--primary); }
+    .portal-mark svg { width:22px; height:22px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .portal-mark.green { background:rgba(0,184,148,0.10); color:var(--success); }
+    .portal-mark.orange { background:rgba(255,165,2,0.12); color:var(--warning); }
+    .omr-list { display:flex; flex-direction:column; gap:10px; }
+    .omr-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
+    .omr-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .omr-title { font-size:15px; font-weight:700; color:var(--text); line-height:1.35; }
+    .omr-meta { margin-top:6px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; }
+    .omr-status { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:700; }
+    .omr-status.pending { background:rgba(26,92,255,0.09); color:var(--primary); }
+    .omr-status.done { background:rgba(0,184,148,0.10); color:#008F72; }
+    .omr-sheet { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:14px; }
+    .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .omr-no.wrong { background:rgba(232,65,79,0.10); border-color:rgba(232,65,79,0.22); color:var(--error); }
+    .omr-submit-bar { position:sticky; bottom:0; z-index:10; padding:12px 0 calc(12px + env(safe-area-inset-bottom)); background:linear-gradient(180deg,rgba(242,244,246,0),rgba(242,244,246,0.92) 28%,rgba(242,244,246,0.98)); }
+    .assignment-list { display:flex; flex-direction:column; gap:10px; }
+    .assignment-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
+    .assignment-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .assignment-title { font-size:15px; font-weight:700; color:var(--text); line-height:1.35; }
+    .assignment-meta { margin-top:6px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; }
+    .status-pill { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:700; }
+    .status-pill.missing { background:rgba(232,65,79,0.10); color:#D92D3A; }
+    .status-pill.done { background:rgba(0,184,148,0.10); color:#008F72; }
+    .section-title { margin:18px 4px 10px; font-size:14px; font-weight:700; color:#fff; }
+    .empty { padding:24px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; background:rgba(255,255,255,0.92); border:1px dashed rgba(229,232,235,0.96); border-radius:22px; }
+    .row-actions { display:flex; gap:8px; margin-top:13px; }
+    .row-actions .btn { min-height:44px; border-radius:15px; font-size:13px; }
+    .back-btn { width:auto; min-height:40px; padding:8px 13px; font-size:12px; border-radius:999px; margin-bottom:12px; background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.24); color:#fff; }
+    .toast {
+      position:fixed;
+      left:50%;
+      bottom:calc(24px + env(safe-area-inset-bottom));
+      transform:translateX(-50%);
+      background:#191F28;
+      color:#fff;
+      padding:11px 15px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+      z-index:100;
+      white-space:nowrap;
+      box-shadow:0 10px 28px rgba(25,31,40,0.18);
+    }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
+    @media (max-width:860px) {
+      body { background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%),
+        linear-gradient(180deg,#4F46E5 0%,#7C3AED 44%,#EEF2F7 44%,#F2F4F6 100%); animation:none; }
+      .app {
+        max-width:520px;
+        min-height:auto;
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+        padding:24px 16px calc(32px + env(safe-area-inset-bottom));
+        align-items:stretch;
+      }
+      .hero { gap:15px; }
+      .hero-title { font-size:34px; letter-spacing:-1.8px; line-height:1.04; }
+      .hero-desc { font-size:14px; line-height:1.6; }
+      .visual-wrap { width:100%; min-height:132px; border-radius:28px; box-shadow:0 18px 42px rgba(15,23,42,0.16); }
+      .visual-card { width:158px; min-height:94px; padding:20px 18px; border-radius:24px; }
+      .visual-line { height:7px; margin-bottom:9px; }
+      .visual-line.a { width:82px; }
+      .visual-line.b { width:116px; }
+      .visual-line.c { width:66px; }
+      .visual-check { width:40px; height:40px; border-radius:15px; font-size:23px; }
+      .card { border-radius:28px; padding:22px 16px 18px; }
+      .student-shell { max-width:520px; }
+      .student-profile-card { grid-template-columns:1fr; }
+      .summary-grid { min-width:0; width:100%; }
+      .portal-grid { grid-template-columns:1fr; gap:12px; }
+      .portal-card { min-height:auto; }
+      .omr-sheet { grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
+      .omr-no { min-height:44px; }
+
+      .section-title { color:var(--text); }
+    }
+    @media (max-width:380px) {
+      .app { padding-left:12px; padding-right:12px; }
+      .card { padding:20px 16px 17px; border-radius:26px; }
+      .hero-title { font-size:31px; }
+      .chip { max-width:120px; }
+      .top { padding-left:14px; padding-right:14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="brand-main">AP Math OS</div>
+      <div class="brand-sub">학생 포털</div>
+    </div>
+    <div class="top-actions">
+      <div id="student-chip" class="chip"></div>
+      <button id="logout-btn" class="logout hidden" onclick="logoutStudent()">로그아웃</button>
+    </div>
+  </header>
+  <main id="app" class="app"></main>
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
+    const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
+
+    let session = null;
+    let homeData = null;
+    let omrData = null;
+    let omrDraft = null;
+    let isLoading = false;
+
+    function $(id) { return document.getElementById(id); }
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+    }
+    function toast(message) {
+      const el = $('toast');
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1900);
+    }
+    function setTopStudent(name) {
+      $('student-chip').textContent = name || '';
+      $('logout-btn').classList.toggle('hidden', !name);
+    }
+    function saveSession(next) {
+      session = next;
+      localStorage.setItem(SESSION_KEY, JSON.stringify(next));
+    }
+    function readSession() {
+      try { return JSON.parse(localStorage.getItem(SESSION_KEY)) || null; } catch (e) { return null; }
+    }
+    function clearSession() {
+      localStorage.removeItem(SESSION_KEY);
+      session = null;
+      homeData = null;
+    }
+    async function apiPost(path, body) {
+      const r = await fetch(`${API_BASE}/${path}`, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify(body || {})
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) throw new Error(data.message || data.error || '요청 실패');
+      return data;
+    }
+    async function apiGet(path, token) {
+      const headers = { 'Content-Type':'application/json' };
+      if (token) headers['X-Student-Token'] = token;
+      const r = await fetch(`${API_BASE}/${path}`, { headers });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) throw new Error(data.message || data.error || '요청 실패');
+      return data;
+    }
+    function renderHero() {
+      return `
+        <section class="hero">
+          <div class="visual-wrap" aria-hidden="true">
+            <span class="visual-orb one"></span>
+            <span class="visual-orb two"></span>
+            <span class="visual-orb three"></span>
+            <div class="visual-card">
+              <div class="visual-line a"></div>
+              <div class="visual-line b"></div>
+              <div class="visual-line c"></div>
+              <div class="visual-check">✓</div>
+            </div>
+          </div>
+          <div class="hero-kicker">AP수학 학생 포털</div>
+          <h1 class="hero-title">AP Math OS</h1>
+          <p class="hero-desc">과제, 플래너, OMR을 한곳에서 확인해요.</p>
+        </section>
+      `;
+    }
+    function renderLogin(message = '') {
+      setTopStudent('');
+      $('app').innerHTML = `
+        ${renderHero()}
+        <section class="card login-card">
+          <div class="stack">
+            <div>
+              <h1 class="card-title">학생 로그인</h1>
+              <p class="card-desc">이름과 PIN은 선생님께 받은 정보로 입력하세요.</p>
+            </div>
+            ${message ? `<div class="notice"><strong>확인 필요</strong><br>${escapeHtml(message)}</div>` : ''}
+            <input id="student-name" class="input" type="text" autocomplete="name" placeholder="이름 입력" onkeydown="if(event.key==='Enter')$('student-pin').focus()">
+            <input id="student-pin" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')loginStudent()">
+            <button id="login-btn" class="btn btn-primary" onclick="loginStudent()">로그인</button>
+          </div>
+        </section>
+      `;
+      setTimeout(() => $('student-name')?.focus(), 80);
+    }
+    async function loginStudent() {
+      if (isLoading) return;
+      const name = String($('student-name')?.value || '').trim();
+      const pin = String($('student-pin')?.value || '').trim();
+      if (!name || !pin) {
+        toast('이름과 PIN을 입력하세요.');
+        return;
+      }
+      isLoading = true;
+      const btn = $('login-btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '확인 중...';
+      }
+      try {
+        const data = await apiPost('student-portal/auth', { name, pin });
+        const next = {
+          student_id: data.student.id,
+          name: data.student.name,
+          grade: data.student.grade || '',
+          school_name: data.student.school_name || '',
+          student_token: data.student_token,
+          login_at: new Date().toISOString()
+        };
+        saveSession(next);
+        await loadHome();
+      } catch (e) {
+        toast(e.message || '이름 또는 PIN을 확인하세요.');
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '로그인';
+        }
+      } finally {
+        isLoading = false;
+      }
+    }
+    async function loadHome() {
+      if (!session?.student_id || !session?.student_token) {
+        clearSession();
+        renderLogin();
+        return;
+      }
+      try {
+        homeData = await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+        renderHome();
+      } catch (e) {
+        clearSession();
+        renderLogin(e.message || '학생 로그인이 만료되었습니다. 다시 로그인하세요.');
+      }
+    }
+    function getAssignments() {
+      return Array.isArray(homeData?.assignments) ? homeData.assignments : [];
+    }
+    function splitAssignments() {
+      const list = getAssignments();
+      return {
+        missing: list.filter(item => Number(item.is_submitted || 0) !== 1),
+        done: list.filter(item => Number(item.is_submitted || 0) === 1)
+      };
+    }
+    function renderIcon(type) {
+      if (type === 'task') return '<svg viewBox="0 0 24 24"><path d="M8 6h11"/><path d="M8 12h11"/><path d="M8 18h11"/><path d="M4 6l1 1 2-2"/><path d="M4 12l1 1 2-2"/><path d="M4 18l1 1 2-2"/></svg>';
+      if (type === 'planner') return '<svg viewBox="0 0 24 24"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4 8h16"/><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 13h3"/><path d="M8 17h6"/></svg>';
+      return '<svg viewBox="0 0 24 24"><path d="M5 5h14v14H5z"/><path d="M9 9h6"/><path d="M9 13h6"/><path d="M9 17h3"/></svg>';
+    }
+    function renderHome() {
+      const student = homeData?.student || session || {};
+      const { missing, done } = splitAssignments();
+      const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
+      setTopStudent(student.name || session?.name || '');
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <section class="card student-profile-card">
+            <div>
+              <p class="hero-kicker" style="margin:0 0 12px;color:var(--primary);background:rgba(26,92,255,0.07);border-color:rgba(26,92,255,0.12);">AP수학 학생 화면</p>
+              <h1 class="profile-name">${escapeHtml(student.name || '학생')} 학생</h1>
+              <p class="profile-sub">${escapeHtml(schoolGrade || 'AP수학 학생 포털')}</p>
+            </div>
+            <div class="summary-grid">
+              <div class="summary-box">
+                <div class="summary-value">${missing.length}</div>
+                <div class="summary-label">미제출 과제</div>
+              </div>
+              <div class="summary-box">
+                <div class="summary-value">${done.length}</div>
+                <div class="summary-label">제출 완료</div>
+              </div>
+            </div>
+          </section>
+          <div class="portal-grid">
+            <section class="card portal-card">
+              <div class="portal-head">
+                <div>
+                  <h2 class="card-title">과제</h2>
+                  <p class="card-desc">진행 중인 과제와 제출 상태를 확인합니다.</p>
+                </div>
+                <div class="portal-mark green">${renderIcon('task')}</div>
+              </div>
+              <button class="btn btn-primary" onclick="renderAssignments()">과제 보기</button>
+            </section>
+            <section class="card portal-card">
+              <div class="portal-head">
+                <div>
+                  <h2 class="card-title">플래너</h2>
+                  <p class="card-desc">오늘 계획을 확인하고 완료 체크를 합니다.</p>
+                </div>
+                <div class="portal-mark">${renderIcon('planner')}</div>
+              </div>
+              <button class="btn" onclick="openPlanner()">플래너 열기</button>
+            </section>
+            <section class="card portal-card">
+              <div class="portal-head">
+                <div>
+                  <h2 class="card-title">OMR 입력</h2>
+                  <p class="card-desc">선생님이 출제한 시험지를 선택하고 틀린 번호만 체크합니다.</p>
+                </div>
+                <div class="portal-mark orange">${renderIcon('omr')}</div>
+              </div>
+              <button class="btn" onclick="renderOmrExams()">OMR 입력</button>
+            </section>
+          </div>
+        </div>
+      `;
+    }
+    function renderAssignments() {
+      const { missing, done } = splitAssignments();
+      setTopStudent(homeData?.student?.name || session?.name || '');
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <button class="btn back-btn" onclick="renderHome()">← 홈</button>
+          <section class="card">
+            <h1 class="card-title">과제 목록</h1>
+            <p class="card-desc">미제출 과제를 먼저 확인하세요.</p>
+          </section>
+          <div class="section-title">미제출 과제</div>
+          <div class="assignment-list">
+            ${missing.length ? missing.map(item => renderAssignmentCard(item, false)).join('') : '<div class="empty">현재 미제출 과제가 없습니다.</div>'}
+          </div>
+          <div class="section-title">제출 완료</div>
+          <div class="assignment-list">
+            ${done.length ? done.map(item => renderAssignmentCard(item, true)).join('') : '<div class="empty">제출 완료 과제가 없습니다.</div>'}
+          </div>
+        </div>
+      `;
+    }
+    function renderAssignmentCard(item, done) {
+      const due = `${item.due_date || ''}${item.due_time ? ` ${item.due_time}` : ''}`.trim();
+      const meta = done
+        ? `제출 ${item.submitted_at || ''}`.trim()
+        : `마감 ${due || '-'}`;
+      const buttonText = done ? '확인' : '제출하기';
+      const statusText = done ? '완료' : '미제출';
+      const url = `../homework/?assignment_id=${encodeURIComponent(item.assignment_id)}&student_id=${encodeURIComponent(session.student_id)}`;
+      return `
+        <article class="assignment-card">
+          <div class="assignment-top">
+            <div style="min-width:0;">
+              <div class="assignment-title">${escapeHtml(item.title || '과제')}</div>
+              <div class="assignment-meta">${escapeHtml(item.class_name || '')}${item.class_name ? ' · ' : ''}${escapeHtml(meta)}</div>
+            </div>
+            <span class="status-pill ${done ? 'done' : 'missing'}">${statusText}</span>
+          </div>
+          <div class="row-actions">
+            <button class="btn ${done ? '' : 'btn-primary'}" onclick="location.href='${url}'">${buttonText}</button>
+          </div>
+        </article>
+      `;
+    }
+    function openPlanner() {
+      if (!session?.student_id) return toast('로그인이 필요합니다.');
+      location.href = `../planner/?student_id=${encodeURIComponent(session.student_id)}`;
+    }
+    async function loadOmrExams(force = false) {
+      if (!session?.student_id || !session?.student_token) throw new Error('로그인이 필요합니다.');
+      if (!force && omrData?.exams) return omrData;
+      omrData = await apiGet(`student-portal/exams?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      return omrData;
+    }
+    function getOmrExams() {
+      return Array.isArray(omrData?.exams) ? omrData.exams : [];
+    }
+    async function renderOmrExams() {
+      setTopStudent(homeData?.student?.name || session?.name || '');
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <button class="btn back-btn" onclick="renderHome()">← 홈</button>
+          <section class="card">
+            <h1 class="card-title">OMR 입력</h1>
+            <p class="card-desc">선생님이 출제한 시험지를 선택하고, 틀린 번호만 체크해서 제출하세요.</p>
+          </section>
+          <div class="omr-list"><div class="empty">시험지를 불러오는 중입니다.</div></div>
+        </div>
+      `;
+      try {
+        await loadOmrExams(true);
+        const exams = getOmrExams();
+        const root = document.querySelector('.omr-list');
+        if (!root) return;
+        root.innerHTML = exams.length
+          ? exams.map(renderOmrExamCard).join('')
+          : '<div class="empty">아직 입력할 시험지가 없습니다.</div>';
+      } catch (e) {
+        toast(e.message || '시험지를 불러오지 못했습니다.');
+        const root = document.querySelector('.omr-list');
+        if (root) root.innerHTML = '<div class="empty">시험지를 불러오지 못했습니다.</div>';
+      }
+    }
+    function renderOmrExamCard(exam) {
+      const submitted = Number(exam.is_submitted || 0) === 1;
+      const count = Number(exam.question_count || 0);
+      const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
+      const status = submitted ? `제출 완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '입력 전';
+      return `
+        <article class="omr-card">
+          <div class="omr-top">
+            <div style="min-width:0;">
+              <div class="omr-title">${escapeHtml(exam.exam_title || '시험지')}</div>
+              <div class="omr-meta">${escapeHtml(meta || 'AP수학 시험')}</div>
+            </div>
+            <span class="omr-status ${submitted ? 'done' : 'pending'}">${escapeHtml(status)}</span>
+          </div>
+          <div class="row-actions">
+            <button class="btn ${submitted ? '' : 'btn-primary'}" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">${submitted ? '수정하기' : '입력하기'}</button>
+          </div>
+        </article>
+      `;
+    }
+    function findOmrExam(assignmentId) {
+      return getOmrExams().find(exam => String(exam.assignment_id) === String(assignmentId));
+    }
+    function normalizeOmrWrongIds(values) {
+      return Array.from(new Set((Array.isArray(values) ? values : [])
+        .map(v => parseInt(v, 10))
+        .filter(v => Number.isFinite(v) && v > 0)))
+        .sort((a, b) => a - b);
+    }
+    function renderOmrInput(assignmentId) {
+      const exam = findOmrExam(assignmentId);
+      if (!exam) {
+        toast('시험지를 찾을 수 없습니다.');
+        return;
+      }
+      const count = Number(exam.question_count || 0);
+      if (!count) {
+        toast('문항 수가 없어 입력할 수 없습니다.');
+        return;
+      }
+      omrDraft = {
+        assignment_id: exam.assignment_id,
+        wrong_ids: normalizeOmrWrongIds(exam.wrong_ids)
+      };
+      drawOmrInput(exam);
+    }
+    function drawOmrInput(exam) {
+      const count = Number(exam.question_count || 0);
+      const wrongSet = new Set(normalizeOmrWrongIds(omrDraft?.wrong_ids));
+      const meta = [exam.class_name || '', exam.exam_date || '', `${count}문항`].filter(Boolean).join(' · ');
+      const buttons = Array.from({ length: count }, (_, idx) => {
+        const no = idx + 1;
+        return `<button class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" onclick="toggleOmrWrong(${no})">${no}</button>`;
+      }).join('');
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <button class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
+          <section class="card">
+            <h1 class="card-title">${escapeHtml(exam.exam_title || 'OMR 입력')}</h1>
+            <p class="card-desc">${escapeHtml(meta)}<br>틀린 번호만 눌러 빨간색으로 표시한 뒤 제출하세요.</p>
+            <div class="notice" style="margin-top:14px;">현재 선택한 오답 <strong>${wrongSet.size}개</strong> · 예상 점수 <strong>${Math.round(((count - wrongSet.size) / count) * 100)}점</strong></div>
+            <div class="omr-sheet">${buttons}</div>
+          </section>
+          <div class="omr-submit-bar">
+            <button id="omr-submit-btn" class="btn btn-primary" onclick="submitOmr()">OMR 제출</button>
+          </div>
+        </div>
+      `;
+    }
+    function toggleOmrWrong(no) {
+      if (!omrDraft) return;
+      const wrong = new Set(normalizeOmrWrongIds(omrDraft.wrong_ids));
+      if (wrong.has(no)) wrong.delete(no);
+      else wrong.add(no);
+      omrDraft.wrong_ids = Array.from(wrong).sort((a, b) => a - b);
+      const exam = findOmrExam(omrDraft.assignment_id);
+      if (exam) drawOmrInput(exam);
+    }
+    async function submitOmr() {
+      if (isLoading || !omrDraft) return;
+      const exam = findOmrExam(omrDraft.assignment_id);
+      if (!exam) return toast('시험지를 찾을 수 없습니다.');
+      const btn = $('omr-submit-btn');
+      isLoading = true;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '제출 중...';
+      }
+      try {
+        const data = await apiPost('student-portal/omr-submit', {
+          student_id: session.student_id,
+          student_token: session.student_token,
+          assignment_id: omrDraft.assignment_id,
+          wrong_ids: normalizeOmrWrongIds(omrDraft.wrong_ids)
+        });
+        const sessionResult = data.session || {};
+        exam.is_submitted = 1;
+        exam.session_id = sessionResult.id || exam.session_id;
+        exam.score = sessionResult.score;
+        exam.submitted_at = new Date().toISOString();
+        exam.wrong_ids = normalizeOmrWrongIds(sessionResult.wrong_ids || omrDraft.wrong_ids);
+        toast('OMR이 제출되었습니다.');
+        await renderOmrExams();
+      } catch (e) {
+        toast(e.message || 'OMR 제출에 실패했습니다.');
+      } finally {
+        isLoading = false;
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'OMR 제출';
+        }
+      }
+    }
+    function logoutStudent() {
+      clearSession();
+      toast('로그아웃 되었습니다.');
+      renderLogin();
+    }
+    async function boot() {
+      session = readSession();
+      if (session?.student_id && session?.student_token) {
+        setTopStudent(session.name || '');
+        $('app').innerHTML = `${renderHero()}<section class="card login-card"><div class="notice"><strong>불러오는 중</strong><br>학생 정보를 확인하고 있습니다.</div></section>`;
+        await loadHome();
+      } else {
+        renderLogin();
+      }
+    }
+    boot();
+  </script>
+</body>
+</html>

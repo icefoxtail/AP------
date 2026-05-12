@@ -1503,6 +1503,11 @@ function buildJournalContent(dateStr) {
         const lates = [];
         const makeups = [];
         const hwMiss = [];
+        const formatAttendanceMemoName = function(student, attendanceRecord) {
+            const memo = String(attendanceRecord?.memo || '').trim();
+            if (!memo) return student.name;
+            return `${student.name}(${memo})`;
+        };
 
         students.forEach(s => {
             const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
@@ -1513,21 +1518,27 @@ function buildJournalContent(dateStr) {
                 .map(v => v.trim())
                 .filter(Boolean);
 
-            if (attStatus === '결석') absents.push(s.name);
+            if (attStatus === '결석') absents.push(formatAttendanceMemoName(s, att));
             if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
-            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(s.name);
+            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(formatAttendanceMemoName(s, att));
             if (hw?.status === '미완료') hwMiss.push(s.name);
         });
 
         const attendanceCount = Math.max(0, total - absents.length);
         const homeworkCount = Math.max(0, total - hwMiss.length);
 
-        text += `- 출석: ${attendanceCount}/${total}\n`;
-        text += `- 숙제: ${homeworkCount}/${total}\n`;
-        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
-        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
-        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}\n`;
-        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
+        text += `- 출석: ${attendanceCount}/${total}
+`;
+        text += `- 숙제: ${homeworkCount}/${total}
+`;
+        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}
+`;
+        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}
+`;
+        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}
+`;
+        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}
+`;
 
         const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
         if (dailyRecord) {

@@ -1291,6 +1291,17 @@ function buildMetaBadge(text, variant = '') {
     return `<span class="meta-badge ${variant}">${text}</span>`;
 }
 
+function formatArchiveDisplayName(file) {
+    const raw = String(file || '').trim();
+    if (!raw) return '';
+    const last = raw.split('/').filter(Boolean).pop() || raw;
+    return last
+        .replace(/\.js$/i, '')
+        .replace(/_/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
 function buildCard(ex) {
     const card = document.createElement('div');
     const fileName = (ex.file || '파일정보없음').replace(/\.js$/i, '');
@@ -1354,7 +1365,7 @@ function buildCard(ex) {
             <div class="card-main-title">${title}</div>
             <div class="card-sub-title">${subtitle || '상세 정보 없음'}</div>
             <div class="card-meta-line">${metaHTML}</div>
-            <div class="card-file-name">${fileName}</div>
+            <div class="card-file-name">${formatArchiveDisplayName(ex.file || fileName)}</div>
         </div>
         <div class="card-actions">
             <div class="action-btn" data-action="exam">시험</div>
