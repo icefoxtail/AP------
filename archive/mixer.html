@@ -428,6 +428,17 @@ function getStandardizedUnit(q) {
 
 let engineDB = { exams: [] }, cart = [], currentDisplayQuestions = [], selectedFiles = new Set(), currentViewingSource = null;
 
+function formatArchiveDisplayName(file) {
+    const raw = String(file || '').trim();
+    if (!raw) return '';
+    const last = raw.split('/').filter(Boolean).pop() || raw;
+    return last
+        .replace(/\.js$/i, '')
+        .replace(/_/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
 function resetMixerState() {
     selectedFiles.clear(); currentViewingSource = null; currentDisplayQuestions = []; cart = [];
     document.getElementById('paperSearch').value = ''; document.getElementById('gradeFilter').value = ''; document.getElementById('axisFilter').value = '';
@@ -474,7 +485,7 @@ function renderExamList() {
         div.onclick = () => loadSingleExam(ex);
         div.innerHTML = `<div class="card-title">${ex.school || ex.topic || ex.file}</div>
             <div class="card-meta"><span class="m-badge">${ex.grade}</span><span class="m-badge blue">${getAxisLabel(ex._axis)}</span><span class="m-badge">${ex.subject || '수학'}</span></div>
-            <div class="card-file">${ex.file}</div>
+            <div class="card-file">${formatArchiveDisplayName(ex.file)}</div>
             <button class="btn-card-select" onclick="event.stopPropagation(); toggleFileSelection('${ex.file}')"><i class="fa-solid ${isSelected ? 'fa-check-square' : 'fa-square'}"></i></button>`;
         container.appendChild(div);
     });

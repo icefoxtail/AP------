@@ -9,7 +9,7 @@ const headers = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token'
 };
 
 // SHA-256 헬퍼
@@ -2543,6 +2543,358 @@ export default {
             }
             await env.DB.batch(stmts);
             return new Response(JSON.stringify({ success: true, closed_count: (pending.results || []).length }), { headers });
+          }
+        }
+
+
+        // --- 학생 개인 포털 1차 (student-portal) ---
+        if (resource === 'student-portal') {
+          const buildStudentPortalToken = async (studentId, studentPin) => {
+            return await sha256hex(`${studentId}:${studentPin || ''}:student-portal:v1`);
+          };
+
+          const pickStudentPortalToken = (reqUrl, req) => {
+            return String(
+              reqUrl.searchParams.get('token') ||
+              req.headers.get('X-Student-Token') ||
+              ''
+            ).trim();
+          };
+
+          const verifyStudentPortalSession = async (studentId, studentToken) => {
+            const sid = String(studentId || '').trim();
+            const token = String(studentToken || '').trim();
+
+            if (!sid || !token) {
+              return { ok: false, status: 401, message: '학생 로그인이 필요합니다.' };
+            }
+
+            const student = await env.DB.prepare(`
+              SELECT id, name, grade, school_name, student_pin, status
+              FROM students
+              WHERE id = ?
+            `).bind(sid).first();
+
+            if (!student || student.status !== '재원') {
+              return { ok: false, status: 404, message: '학생 정보를 확인할 수 없습니다.' };
+            }
+
+            const expectedToken = await buildStudentPortalToken(student.id, student.student_pin);
+            if (token !== expectedToken) {
+              await new Promise(resolve => setTimeout(resolve, 800));
+              return { ok: false, status: 401, message: '학생 로그인이 만료되었습니다.' };
+            }
+
+            return { ok: true, student };
+          };
+
+          if (method === 'POST' && id === 'auth') {
+            const d = await request.json();
+            const name = String(d.name || '').trim();
+            const pin = String(d.pin || '').trim();
+
+            if (!name || !pin) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: '이름 또는 PIN을 확인하세요.'
+              }), { status: 400, headers });
+            }
+
+            const found = await env.DB.prepare(`
+              SELECT id, name, grade, school_name, student_pin, status
+              FROM students
+              WHERE TRIM(name) = ?
+                AND student_pin = ?
+                AND status = '재원'
+            `).bind(name, pin).all();
+
+            const rows = found.results || [];
+            if (!rows.length) {
+              await new Promise(resolve => setTimeout(resolve, 800));
+              return new Response(JSON.stringify({
+                success: false,
+                message: '이름 또는 PIN을 확인하세요.'
+              }), { status: 401, headers });
+            }
+
+            if (rows.length > 1) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: '동명이인 정보가 있습니다. 선생님께 문의하세요.'
+              }), { status: 409, headers });
+            }
+
+            const student = rows[0];
+            const studentToken = await buildStudentPortalToken(student.id, student.student_pin);
+
+            return new Response(JSON.stringify({
+              success: true,
+              student: {
+                id: student.id,
+                name: student.name,
+                grade: student.grade,
+                school_name: student.school_name
+              },
+              student_token: studentToken
+            }), { headers });
+          }
+
+          if (method === 'GET' && id === 'home') {
+            const studentId = String(url.searchParams.get('student_id') || '').trim();
+            const studentToken = pickStudentPortalToken(url, request);
+
+            const auth = await verifyStudentPortalSession(studentId, studentToken);
+            if (!auth.ok) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: auth.message
+              }), { status: auth.status, headers });
+            }
+
+            const student = auth.student;
+
+            const assignments = await env.DB.prepare(`
+              SELECT
+                hpa.id AS assignment_id,
+                hpa.title,
+                hpa.class_id,
+                c.name AS class_name,
+                hpa.due_date,
+                hpa.due_time,
+                COALESCE(hpa.status, 'active') AS status,
+                COALESCE(hps.is_submitted, 0) AS is_submitted,
+                hps.submitted_at
+              FROM homework_photo_submissions hps
+              JOIN homework_photo_assignments hpa ON hpa.id = hps.assignment_id
+              LEFT JOIN classes c ON c.id = hpa.class_id
+              WHERE hps.student_id = ?
+                AND COALESCE(hpa.status, 'active') != 'deleted'
+              ORDER BY
+                CASE WHEN COALESCE(hps.is_submitted, 0) = 1 THEN 1 ELSE 0 END ASC,
+                hpa.due_date ASC,
+                hpa.created_at DESC
+              LIMIT 30
+            `).bind(studentId).all();
+
+            return new Response(JSON.stringify({
+              success: true,
+              student: {
+                id: student.id,
+                name: student.name,
+                grade: student.grade,
+                school_name: student.school_name
+              },
+              assignments: (assignments.results || []).map(row => ({
+                assignment_id: row.assignment_id,
+                title: row.title,
+                class_id: row.class_id,
+                class_name: row.class_name,
+                due_date: row.due_date,
+                due_time: row.due_time,
+                status: row.status,
+                is_submitted: Number(row.is_submitted || 0),
+                submitted_at: row.submitted_at || null
+              })),
+              planner: {
+                enabled: true,
+                url: `/apmath/planner/?student_id=${encodeURIComponent(student.id)}`
+              },
+              omr: {
+                enabled: true,
+                status: 'ready'
+              }
+            }), { headers });
+
+
+          if (method === 'GET' && id === 'exams') {
+            const studentId = String(url.searchParams.get('student_id') || '').trim();
+            const studentToken = pickStudentPortalToken(url, request);
+            const auth = await verifyStudentPortalSession(studentId, studentToken);
+
+            if (!auth.ok) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: auth.message
+              }), { status: auth.status, headers });
+            }
+
+            const res = await env.DB.prepare(`
+              SELECT
+                cea.id AS assignment_id,
+                cea.class_id,
+                c.name AS class_name,
+                cea.exam_title,
+                cea.exam_date,
+                COALESCE(cea.question_count, 0) AS question_count,
+                COALESCE(cea.archive_file, '') AS archive_file,
+                COALESCE(cea.source_type, 'archive') AS source_type,
+                cea.updated_at AS assigned_at,
+                es.id AS session_id,
+                es.score,
+                es.updated_at AS submitted_at,
+                GROUP_CONCAT(wa.question_id) AS wrong_ids
+              FROM class_students cs
+              JOIN class_exam_assignments cea ON cea.class_id = cs.class_id
+              LEFT JOIN classes c ON c.id = cea.class_id
+              LEFT JOIN exam_sessions es
+                ON es.student_id = cs.student_id
+               AND es.class_id = cea.class_id
+               AND es.exam_title = cea.exam_title
+               AND es.exam_date = cea.exam_date
+              LEFT JOIN wrong_answers wa
+                ON wa.session_id = es.id
+               AND wa.student_id = cs.student_id
+              WHERE cs.student_id = ?
+              GROUP BY cea.id, es.id
+              ORDER BY
+                CASE WHEN es.id IS NULL THEN 0 ELSE 1 END ASC,
+                cea.exam_date DESC,
+                cea.updated_at DESC
+              LIMIT 50
+            `).bind(studentId).all();
+
+            const exams = (res.results || []).map(row => {
+              const wrongIds = String(row.wrong_ids || '')
+                .split(',')
+                .map(v => parseInt(v, 10))
+                .filter(v => Number.isFinite(v) && v > 0)
+                .sort((a, b) => a - b);
+
+              return {
+                assignment_id: row.assignment_id,
+                class_id: row.class_id,
+                class_name: row.class_name || '',
+                exam_title: row.exam_title || '시험명 없음',
+                exam_date: row.exam_date || '',
+                question_count: Number(row.question_count || 0),
+                archive_file: row.archive_file || '',
+                source_type: row.source_type || 'archive',
+                assigned_at: row.assigned_at || '',
+                session_id: row.session_id || null,
+                is_submitted: row.session_id ? 1 : 0,
+                score: row.score === null || row.score === undefined ? null : Number(row.score),
+                submitted_at: row.submitted_at || null,
+                wrong_ids: Array.from(new Set(wrongIds))
+              };
+            });
+
+            return new Response(JSON.stringify({
+              success: true,
+              student: {
+                id: auth.student.id,
+                name: auth.student.name,
+                grade: auth.student.grade,
+                school_name: auth.student.school_name
+              },
+              exams
+            }), { headers });
+          }
+
+          if (method === 'POST' && id === 'omr-submit') {
+            const d = await request.json();
+            const studentId = String(d.student_id || '').trim();
+            const studentToken = String(d.student_token || pickStudentPortalToken(url, request) || '').trim();
+            const assignmentId = String(d.assignment_id || '').trim();
+
+            const auth = await verifyStudentPortalSession(studentId, studentToken);
+            if (!auth.ok) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: auth.message
+              }), { status: auth.status, headers });
+            }
+
+            if (!assignmentId) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: '시험 정보를 찾을 수 없습니다.'
+              }), { status: 400, headers });
+            }
+
+            const assignment = await env.DB.prepare(`
+              SELECT
+                cea.*,
+                c.name AS class_name
+              FROM class_exam_assignments cea
+              JOIN class_students cs ON cs.class_id = cea.class_id
+              LEFT JOIN classes c ON c.id = cea.class_id
+              WHERE cea.id = ?
+                AND cs.student_id = ?
+              LIMIT 1
+            `).bind(assignmentId, studentId).first();
+
+            if (!assignment) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: '응시 가능한 시험을 찾을 수 없습니다.'
+              }), { status: 404, headers });
+            }
+
+            const questionCount = Math.max(1, Math.min(100, parseInt(assignment.question_count || d.question_count || 0, 10) || 0));
+            if (!questionCount) {
+              return new Response(JSON.stringify({
+                success: false,
+                message: '문항 수가 없어 OMR을 제출할 수 없습니다.'
+              }), { status: 400, headers });
+            }
+
+            const wrongIds = Array.from(new Set((Array.isArray(d.wrong_ids) ? d.wrong_ids : [])
+              .map(v => parseInt(v, 10))
+              .filter(v => Number.isFinite(v) && v >= 1 && v <= questionCount)))
+              .sort((a, b) => a - b);
+
+            const existing = await env.DB.prepare(`
+              SELECT id
+              FROM exam_sessions
+              WHERE student_id = ?
+                AND class_id = ?
+                AND exam_title = ?
+                AND exam_date = ?
+              LIMIT 1
+            `).bind(studentId, assignment.class_id, assignment.exam_title, assignment.exam_date).first();
+
+            const sessionId = existing?.id || `ex_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+            const score = Math.round(((questionCount - wrongIds.length) / questionCount) * 100);
+            const archiveFile = String(assignment.archive_file || '').trim() || null;
+
+            const stmts = [
+              env.DB.prepare(`
+                INSERT INTO exam_sessions (id, student_id, exam_title, score, exam_date, question_count, class_id, archive_file, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
+                ON CONFLICT(id) DO UPDATE SET
+                  exam_title=excluded.exam_title,
+                  score=excluded.score,
+                  exam_date=excluded.exam_date,
+                  question_count=excluded.question_count,
+                  class_id=excluded.class_id,
+                  archive_file=COALESCE(excluded.archive_file, exam_sessions.archive_file),
+                  updated_at=excluded.updated_at
+              `).bind(sessionId, studentId, assignment.exam_title, score, assignment.exam_date, questionCount, assignment.class_id, archiveFile),
+              env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId)
+            ];
+
+            for (const qId of wrongIds) {
+              stmts.push(env.DB.prepare('INSERT INTO wrong_answers (session_id, question_id, student_id) VALUES (?, ?, ?)').bind(sessionId, qId, studentId));
+            }
+
+            await env.DB.batch(stmts);
+
+            return new Response(JSON.stringify({
+              success: true,
+              session: {
+                id: sessionId,
+                student_id: studentId,
+                class_id: assignment.class_id,
+                class_name: assignment.class_name || '',
+                exam_title: assignment.exam_title,
+                exam_date: assignment.exam_date,
+                question_count: questionCount,
+                archive_file: archiveFile,
+                wrong_ids: wrongIds,
+                score
+              }
+            }), { headers });
+          }
           }
         }
 

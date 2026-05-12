@@ -3,6 +3,7 @@ import re
 import json
 import sys
 import io
+from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
@@ -15,6 +16,10 @@ OUTPUT_FILE = "db.js"
 # =========================================================
 def compact_text(value):
     return re.sub(r"\s+", "", str(value or "")).strip()
+
+
+def normalize_slash(path):
+    return str(path or "").replace("\\", "/")
 
 
 def normalize_year(value):
@@ -43,6 +48,17 @@ def normalize_grade(value):
     return grade_map.get(v, str(value or "").strip())
 
 
+def grade_to_folder(grade):
+    return {
+        "고1": "high/h1",
+        "고2": "high/h2",
+        "고3": "high/h3",
+        "중1": "middle/m1",
+        "중2": "middle/m2",
+        "중3": "middle/m3",
+    }.get(str(grade or "").strip(), "")
+
+
 def normalize_semester(value, filename=""):
     v = compact_text(value)
     if v in ("1", "1학기"):
@@ -50,7 +66,7 @@ def normalize_semester(value, filename=""):
     if v in ("2", "2학기"):
         return "2"
 
-    stem = os.path.splitext(filename)[0]
+    stem = os.path.splitext(os.path.basename(filename))[0]
     if "_1학기_" in stem or stem.startswith("1학기_"):
         return "1"
     if "_2학기_" in stem or stem.startswith("2학기_"):
@@ -65,7 +81,7 @@ def normalize_exam_type(value, filename=""):
     if v in ("final", "기말", "기말고사"):
         return "final"
 
-    stem = os.path.splitext(filename)[0]
+    stem = os.path.splitext(os.path.basename(filename))[0]
     if "_중간_" in stem or stem.startswith("중간_"):
         return "mid"
     if "_기말_" in stem or stem.startswith("기말_"):
@@ -73,31 +89,50 @@ def normalize_exam_type(value, filename=""):
     return ""
 
 
+def exam_type_to_folder(exam_type):
+    if exam_type == "mid":
+        return "mid"
+    if exam_type == "final":
+        return "final"
+    return ""
+
+
+def semester_exam_folder(semester, exam_type):
+    if not semester or not exam_type:
+        return ""
+    suffix = exam_type_to_folder(exam_type)
+    if not suffix:
+        return ""
+    return f"{semester}{suffix}"
+
+
 def strip_suffixes(text):
     t = str(text or "").strip()
     if not t:
         return ""
-    t = re.sub(r"_(유형\d*|유사\d*|단원평가유사\d*|단원평가\d*|쪽지\d*)$", "", t)
-    t = re.sub(r"(유형\d*|유사\d*|단원평가유사\d*|단원평가\d*|쪽지\d*)$", "", t)
+    t = re.sub(r"_(유형\d*|유사\d*|단원평가유사\d*|단원평가\d*|쪽지\d*|확인\d*|심화\d*)$", "", t)
+    t = re.sub(r"(유형\d*|유사\d*|단원평가유사\d*|단원평가\d*|쪽지\d*|확인\d*|심화\d*)$", "", t)
     return t.strip("_").strip()
 
 
 def detect_content_type(filename, raw_subject="", school=""):
-    stem = os.path.splitext(filename)[0]
+    stem = os.path.splitext(os.path.basename(filename))[0]
     subject_raw = str(raw_subject or "").strip()
 
     if "단원평가유사" in stem or "단원평가" in stem:
         return "단원평가"
     if "쪽지" in stem:
         return "쪽지"
-    if "유형" in stem or "유사" in stem:
+    if "유형" in stem:
+        return "유형"
+    if "유사" in stem:
         return "유형"
 
     if subject_raw in ("단원평가", "단원평가유사"):
         return "단원평가"
     if subject_raw == "쪽지":
         return "쪽지"
-    if subject_raw in ("유형", "유사"):
+    if subject_raw in ("유형", "유사", "확인", "심화"):
         return "유형"
     if subject_raw == "기출":
         return "기출"
@@ -115,6 +150,26 @@ def read_text_file(filepath):
     except UnicodeDecodeError:
         with open(filepath, "r", encoding="cp949") as f:
             return f.read()
+
+
+def resolve_project_paths():
+    script_dir = Path(__file__).resolve().parent
+
+    if (script_dir / EXAMS_DIR).is_dir():
+        archive_dir = script_dir
+        exams_path = script_dir / EXAMS_DIR
+        output_path = script_dir / OUTPUT_FILE
+        return archive_dir, exams_path, output_path
+
+    if (script_dir / "archive" / EXAMS_DIR).is_dir():
+        archive_dir = script_dir / "archive"
+        exams_path = archive_dir / EXAMS_DIR
+        output_path = archive_dir / OUTPUT_FILE
+        return archive_dir, exams_path, output_path
+
+    raise FileNotFoundError(
+        "exams 폴더를 찾을 수 없습니다. build_db.py는 archive 폴더 또는 AP------ 루트에서 실행하세요."
+    )
 
 
 # =========================================================
@@ -338,7 +393,8 @@ for course in COURSE_TABLES:
 # 2. 파일명 파서
 # =========================================================
 def parse_standard_exam_filename(filename):
-    stem = os.path.splitext(filename)[0]
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
     parts = stem.split("_")
     if len(parts) < 2:
         return None
@@ -361,7 +417,7 @@ def parse_standard_exam_filename(filename):
         if gm:
             grade = normalize_grade(gm.group())
         elif "학기" in p:
-            semester = normalize_semester(p, filename)
+            semester = normalize_semester(p, base)
         elif "중간" in p:
             exam_type = "mid"
         elif "기말" in p:
@@ -370,7 +426,7 @@ def parse_standard_exam_filename(filename):
             subject_parts.append(p)
 
     raw_subject = "_".join([x for x in subject_parts if x]).strip("_")
-    content_type = detect_content_type(filename, raw_subject, school)
+    content_type = detect_content_type(base, raw_subject, school)
 
     subject = ""
     topic = ""
@@ -385,20 +441,21 @@ def parse_standard_exam_filename(filename):
         topic = strip_suffixes(raw_subject)
 
     return {
-        "file": filename,
+        "file": base,
         "school": school,
         "topic": topic,
         "grade": grade,
         "year": year,
-        "semester": semester or normalize_semester("", filename),
-        "examType": exam_type or normalize_exam_type("", filename),
+        "semester": semester or normalize_semester("", base),
+        "examType": exam_type or normalize_exam_type("", base),
         "subject": subject,
         "contentType": content_type,
     }
 
 
 def parse_unit_type_filename(filename):
-    stem = os.path.splitext(filename)[0]
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
     parts = stem.split("_")
     if len(parts) < 3:
         return None
@@ -416,7 +473,7 @@ def parse_unit_type_filename(filename):
         content_type = "쪽지"
 
     return {
-        "file": filename,
+        "file": base,
         "school": "",
         "topic": topic,
         "grade": grade,
@@ -429,7 +486,8 @@ def parse_unit_type_filename(filename):
 
 
 def parse_eval_type_filename(filename):
-    stem = os.path.splitext(filename)[0]
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
     parts = stem.split("_")
     if len(parts) < 4:
         return None
@@ -438,7 +496,7 @@ def parse_eval_type_filename(filename):
     if not re.fullmatch(r"[중고][123]", parts[2]):
         return None
 
-    semester = normalize_semester(parts[0], filename)
+    semester = normalize_semester(parts[0], base)
     eval_name = parts[1].strip()
     grade = normalize_grade(parts[2].strip())
     tail = "_".join(parts[3:]).strip()
@@ -456,7 +514,7 @@ def parse_eval_type_filename(filename):
         exam_type = "final"
 
     return {
-        "file": filename,
+        "file": base,
         "school": "",
         "topic": eval_name,
         "grade": grade,
@@ -469,7 +527,8 @@ def parse_eval_type_filename(filename):
 
 
 def parse_publisher_unit_type_filename(filename):
-    stem = os.path.splitext(filename)[0]
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
     parts = stem.split("_")
 
     if len(parts) < 5:
@@ -520,7 +579,7 @@ def parse_publisher_unit_type_filename(filename):
     topic_parts.append(suffix)
 
     return {
-        "file": filename,
+        "file": base,
         "school": publisher,
         "topic": "_".join(topic_parts),
         "grade": grade,
@@ -533,7 +592,8 @@ def parse_publisher_unit_type_filename(filename):
 
 
 def parse_apmath_legacy_filename(filename):
-    stem = os.path.splitext(filename)[0]
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
     parts = stem.split("_")
     if len(parts) < 3:
         return None
@@ -545,8 +605,8 @@ def parse_apmath_legacy_filename(filename):
 
     year = normalize_year(parts[0])
     school = "AP수학"
-    semester = normalize_semester("", filename)
-    exam_type = normalize_exam_type("", filename)
+    semester = normalize_semester("", base)
+    exam_type = normalize_exam_type("", base)
     grade = ""
     tail = []
 
@@ -555,18 +615,18 @@ def parse_apmath_legacy_filename(filename):
         if gm:
             grade = normalize_grade(gm.group())
         elif "학기" in p:
-            semester = normalize_semester(p, filename)
+            semester = normalize_semester(p, base)
         elif "중간" in p or "기말" in p:
             continue
         else:
             tail.append(p)
 
     raw_subject = "_".join(tail).strip("_")
-    content_type = detect_content_type(filename, raw_subject, school)
+    content_type = detect_content_type(base, raw_subject, school)
     topic = "중간평가" if "중간평가" in stem else strip_suffixes(raw_subject)
 
     return {
-        "file": filename,
+        "file": base,
         "school": school,
         "topic": topic,
         "grade": grade,
@@ -579,7 +639,8 @@ def parse_apmath_legacy_filename(filename):
 
 
 def parse_rpm_filename(filename):
-    stem = os.path.splitext(filename)[0]
+    base = os.path.basename(filename)
+    stem = os.path.splitext(base)[0]
     parts = stem.split("_")
     if len(parts) < 3:
         return None
@@ -591,8 +652,8 @@ def parse_rpm_filename(filename):
 
     year = normalize_year(parts[0])
     school = "RPM"
-    semester = normalize_semester("", filename)
-    exam_type = normalize_exam_type("", filename)
+    semester = normalize_semester("", base)
+    exam_type = normalize_exam_type("", base)
     grade = ""
     tail = []
 
@@ -601,14 +662,14 @@ def parse_rpm_filename(filename):
         if gm:
             grade = normalize_grade(gm.group())
         elif "학기" in p:
-            semester = normalize_semester(p, filename)
+            semester = normalize_semester(p, base)
         elif "중간" in p or "기말" in p:
             continue
         else:
             tail.append(p)
 
     return {
-        "file": filename,
+        "file": base,
         "school": school,
         "topic": strip_suffixes("_".join(tail).strip("_")),
         "grade": grade,
@@ -621,6 +682,7 @@ def parse_rpm_filename(filename):
 
 
 def parse_filename(filename):
+    base = os.path.basename(filename)
     for parser in (
         parse_eval_type_filename,
         parse_unit_type_filename,
@@ -629,7 +691,7 @@ def parse_filename(filename):
         parse_publisher_unit_type_filename,
         parse_standard_exam_filename,
     ):
-        meta = parser(filename)
+        meta = parser(base)
         if meta:
             return meta
     return None
@@ -1013,6 +1075,10 @@ def resolve_units_from_topic(topic, grade):
         "확률의개념과활용": "확률의 뜻과 활용",
         "미분계수와도함수": "도함수",
         "벡터": "벡터의 연산",
+        "지수로그": "지수와 로그",
+        "지수로그함수": "지수와 로그",
+        "삼각함수": "삼각함수",
+        "사인코사인법칙": "사인법칙과 코사인법칙",
     }
 
     target = aliases.get(topic_compact, topic_compact)
@@ -1026,12 +1092,12 @@ def resolve_units_from_topic(topic, grade):
 
 
 def is_exam_similar_file(filename):
-    stem = os.path.splitext(filename)[0]
+    stem = os.path.splitext(os.path.basename(filename))[0]
     return bool(re.fullmatch(r"\d{2,4}_.+_[12]학기_(중간|기말)_[중고][123]_유사\d*", stem))
 
 
 def build_origin_exam_filename(filename):
-    stem = os.path.splitext(filename)[0]
+    stem = os.path.splitext(os.path.basename(filename))[0]
     origin_stem = re.sub(r"_유사\d*$", "_기출", stem)
     return origin_stem + ".js"
 
@@ -1073,13 +1139,95 @@ def extract_range_meta_from_js(filepath, meta, origin_range_map=None):
 
 
 # =========================================================
-# 5. 정렬/검증/빌드
+# 5. 하위 폴더 스캔 / 경로 분류
+# =========================================================
+def collect_js_files_recursive(exams_path):
+    results = []
+
+    for path in exams_path.rglob("*.js"):
+        if not path.is_file():
+            continue
+
+        rel_path = normalize_slash(path.relative_to(exams_path))
+        name = path.name
+
+        if name.lower() in ("db.js", "concept_map.js"):
+            continue
+
+        results.append({
+            "abs_path": path,
+            "rel_path": rel_path,
+            "filename": name,
+        })
+
+    results.sort(key=lambda x: x["rel_path"])
+    return results
+
+
+def is_already_classified_relpath(rel_path):
+    first = normalize_slash(rel_path).split("/")[0]
+    return first in ("original", "similar", "types")
+
+
+def infer_folder_relpath(meta):
+    grade_folder = grade_to_folder(meta.get("grade", ""))
+
+    if meta.get("contentType") == "기출":
+        term_folder = semester_exam_folder(meta.get("semester", ""), meta.get("examType", ""))
+        if grade_folder and term_folder:
+            return normalize_slash(f"original/{grade_folder}/{term_folder}/{os.path.basename(meta.get('file', ''))}")
+        if grade_folder:
+            return normalize_slash(f"original/{grade_folder}/unsorted/{os.path.basename(meta.get('file', ''))}")
+        return normalize_slash(f"original/unsorted/{os.path.basename(meta.get('file', ''))}")
+
+    if meta.get("contentType") in ("단원평가", "쪽지"):
+        term_folder = semester_exam_folder(meta.get("semester", ""), meta.get("examType", ""))
+        if grade_folder and term_folder:
+            return normalize_slash(f"similar/{grade_folder}/{term_folder}/{os.path.basename(meta.get('file', ''))}")
+        if grade_folder:
+            return normalize_slash(f"similar/{grade_folder}/unsorted/{os.path.basename(meta.get('file', ''))}")
+        return normalize_slash(f"similar/unsorted/{os.path.basename(meta.get('file', ''))}")
+
+    if meta.get("contentType") == "유형":
+        if grade_folder:
+            return normalize_slash(f"types/{grade_folder}/{os.path.basename(meta.get('file', ''))}")
+        return normalize_slash(f"types/unsorted/{os.path.basename(meta.get('file', ''))}")
+
+    if grade_folder:
+        return normalize_slash(f"types/{grade_folder}/{os.path.basename(meta.get('file', ''))}")
+    return normalize_slash(f"types/unsorted/{os.path.basename(meta.get('file', ''))}")
+
+
+def normalize_meta_file_path(meta, rel_path):
+    rel_path = normalize_slash(rel_path)
+    filename = os.path.basename(rel_path)
+
+    if is_already_classified_relpath(rel_path):
+        meta["file"] = rel_path
+    else:
+        meta["file"] = infer_folder_relpath({**meta, "file": filename})
+
+    return meta
+
+
+# =========================================================
+# 6. 정렬/검증/빌드
 # =========================================================
 def sort_key(item):
     grade_order = {"고3": 0, "고2": 1, "고1": 2, "중3": 3, "중2": 4, "중1": 5}
+    type_order = {"기출": 0, "단원평가": 1, "쪽지": 2, "유형": 3}
     year = item.get("year")
     year_key = int(year) if isinstance(year, int) else -1
-    return (-year_key, grade_order.get(item.get("grade", ""), 99), item.get("school", ""), item.get("file", ""))
+    return (
+        -year_key,
+        grade_order.get(item.get("grade", ""), 99),
+        type_order.get(item.get("contentType", ""), 99),
+        item.get("school", ""),
+        item.get("examType", ""),
+        item.get("subject", ""),
+        item.get("topic", ""),
+        item.get("file", "")
+    )
 
 
 def validate_db_js_content(content):
@@ -1089,6 +1237,8 @@ def validate_db_js_content(content):
         r'"시험"\s*:',
         r'\d{2,4}년\s*,',
         r'window\.mainDB\s*=\s*\{\s*"시험"',
+        r'"file"\s*:\s*"exams/',
+        r'"file"\s*:\s*"\\',
     ]
 
     for pattern in bad_patterns:
@@ -1100,15 +1250,17 @@ def validate_db_js_content(content):
 
 
 def build_engine_db():
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    exams_path = os.path.join(base_path, EXAMS_DIR)
-    output_path = os.path.join(base_path, OUTPUT_FILE)
+    try:
+        archive_dir, exams_path, output_path = resolve_project_paths()
+    except Exception as e:
+        print(f"❌ 오류: {e}")
+        return
 
-    if not os.path.exists(exams_path):
+    if not exams_path.exists():
         print(f"❌ 오류: '{exams_path}' 폴더를 찾을 수 없습니다.")
         return
 
-    all_files = sorted([f for f in os.listdir(exams_path) if f.lower().endswith(".js")])
+    all_files = collect_js_files_recursive(exams_path)
 
     exams_list = []
     skipped = []
@@ -1117,25 +1269,32 @@ def build_engine_db():
 
     parsed_meta_map = {}
 
-    for filename in all_files:
+    for file_info in all_files:
+        filename = file_info["filename"]
+        rel_path = file_info["rel_path"]
+
         meta = parse_filename(filename)
         if meta and meta.get("file"):
-            parsed_meta_map[filename] = meta
+            meta = normalize_meta_file_path(meta, rel_path)
+            parsed_meta_map[rel_path] = meta
         else:
-            skipped.append(filename)
+            skipped.append(rel_path)
 
     origin_range_map = {}
 
-    for filename in all_files:
-        meta = parsed_meta_map.get(filename)
+    for file_info in all_files:
+        rel_path = file_info["rel_path"]
+        filename = file_info["filename"]
+        meta = parsed_meta_map.get(rel_path)
+
         if not meta or meta.get("contentType") != "기출":
             continue
 
-        filepath = os.path.join(exams_path, filename)
+        filepath = file_info["abs_path"]
         range_meta = extract_range_meta_from_js(filepath, meta, origin_range_map={})
 
         if range_meta.get("courseRanges") or range_meta.get("rangeStartUnitKey"):
-            origin_range_map[filename] = {
+            payload = {
                 "rangeStartUnitKey": range_meta.get("rangeStartUnitKey", ""),
                 "rangeStartUnit": range_meta.get("rangeStartUnit", ""),
                 "rangeStartUnitOrder": range_meta.get("rangeStartUnitOrder", 999),
@@ -1146,23 +1305,27 @@ def build_engine_db():
                 "primaryStandardCourse": range_meta.get("primaryStandardCourse", ""),
             }
 
-    for filename in all_files:
-        meta = parsed_meta_map.get(filename)
+            origin_range_map[filename] = payload
+            origin_range_map[os.path.basename(meta.get("file", filename))] = payload
+
+    for file_info in all_files:
+        rel_path = file_info["rel_path"]
+        meta = parsed_meta_map.get(rel_path)
         if not meta:
             continue
 
-        filepath = os.path.join(exams_path, filename)
+        filepath = file_info["abs_path"]
         qcount = extract_qcount_from_js(filepath)
         meta["qCount"] = qcount
 
         if qcount == 0:
-            qcount_failed.append(filename)
+            qcount_failed.append(rel_path)
 
         range_meta = extract_range_meta_from_js(filepath, meta, origin_range_map)
         meta.update({k: v for k, v in range_meta.items() if not k.startswith("_")})
 
         if not range_meta.get("courseRanges") and not range_meta.get("rangeStartUnitKey"):
-            range_failed.append(f'{filename} ({range_meta.get("_rangeReason", "unknown")})')
+            range_failed.append(f'{rel_path} ({range_meta.get("_rangeReason", "unknown")})')
 
         exams_list.append(meta)
 
@@ -1180,9 +1343,14 @@ def build_engine_db():
         f.write(output_text)
 
     print(f"✅ db.js 생성 완료: 총 {len(exams_list)}개 파일 등록")
+    print(f"✅ archive 기준 위치: {archive_dir}")
+    print(f"✅ exams 기준 위치: {exams_path}")
+    print(f"✅ db.js 출력 위치: {output_path}")
     print("✅ 출력 구조: window.mainDB.exams")
-    print("✅ 연도 필드: year 숫자 또는 빈 문자열")
-    print("✅ 금지 구조 검사 통과: \"시험\", \"연도\", \"학교\", 2026년 패턴 없음")
+    print("✅ file 경로: exams/ 제외, exams 내부 상대경로")
+    print("✅ 하위 폴더 스캔: original / similar / types 포함")
+    print("✅ 유형 폴더 학년 구분 대응: types/high/h1~h3, types/middle/m1~m3")
+    print("✅ 금지 구조 검사 통과: \"시험\", \"연도\", \"학교\", 2026년 패턴, file: exams/ 없음")
 
     if skipped:
         print(f"⚠️ 파일명 규칙 미매칭으로 건너뜀({len(skipped)}개):")

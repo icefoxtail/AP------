@@ -12,6 +12,8 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "이차부등식 $x^2-6x+8 \\le 0$을 풀면? [3.5점]",
     choices: [
       "해는 없다.",
@@ -34,6 +36,8 @@ window.questionBank = [
     standardUnitOrder: 4,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "두 복소수 $\\alpha=1-2i$, $\\beta=1+2i$에 대하여 $\\alpha^2\\beta+\\beta^2\\alpha$의 값을 구하면? [3.6점]",
     choices: [
       "$9$",
@@ -56,6 +60,8 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "방정식 $x^3+2ax^2+bx-4=0$의 한 근이 $1+i$일 때, $a+b$의 값을 구하면? (단, $a, b$는 실수) [3.7점]",
     choices: [
       "$-4$",
@@ -65,7 +71,7 @@ window.questionBank = [
       "$4$"
     ],
     answer: "⑤",
-    solution: "[키포인트]\n실수 계수 방정식의 켤레근의 성질과 삼차방정식의 근과 계수의 관계를 이용한다.\n\n풀이 과정\n계수가 모두 실수이므로 한 근이 $1+i$이면 $1-i$도 근이다.\n나머지 한 실근을 $k$라 하면, 세 근은 $1+i$, $1-i$, $k$이다.\n\n삼차방정식의 근과 계수의 관계에서 세 근의 곱은\n$(1+i)(1-i)k = 4$\n$2k = 4 \\implies k = 2$\n\n세 근의 합은\n$(1+i) + (1-i) + 2 = -2a$\n$4 = -2a \\implies a = -2$\n\n두 근끼리의 곱의 합은\n$(1+i)(1-i) + 2(1+i) + 2(1-i) = b$\n$2 + 2+2i + 2-2i = b$\n$6 = b$\n\n따라서 $a+b = -2+6 = 4$이다.\n\n결론\n따라서 정답은 ④이다."
+    solution: "[키포인트]\n실수 계수 방정식의 켤레근의 성질과 삼차방정식의 근과 계수의 관계를 이용한다.\n\n풀이 과정\n계수가 모두 실수이므로 한 근이 $1+i$이면 $1-i$도 근이다.\n나머지 한 실근을 $k$라 하면, 세 근은 $1+i$, $1-i$, $k$이다.\n\n삼차방정식의 근과 계수의 관계에서 세 근의 곱은\n$(1+i)(1-i)k = 4$\n$2k = 4 \\implies k = 2$\n\n세 근의 합은\n$(1+i) + (1-i) + 2 = -2a$\n$4 = -2a \\implies a = -2$\n\n두 근끼리의 곱의 합은\n$(1+i)(1-i) + 2(1+i) + 2(1-i) = b$\n$2 + 2+2i + 2-2i = b$\n$6 = b$\n\n따라서 $a+b = -2+6 = 4$이다.\n\n결론\n따라서 정답은 ⑤이다."
   },
   {
     id: 4,
@@ -78,6 +84,8 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "${}_{5}P_{2}+{}_{7}C_{4}$의 값을 구하면? [3.6점]",
     choices: [
       "$51$",
@@ -100,6 +108,8 @@ window.questionBank = [
     standardUnitOrder: 7,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "부등식 $x+3y \\le 10$을 만족시키는 자연수 $x, y$의 순서쌍 $(x, y)$의 개수를 구하면? [3.8점]",
     choices: [
       "$11$",
@@ -122,6 +132,8 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "두 행렬 $A=\\begin{pmatrix} 1 & 0 \\\\ 4 & -2 \\end{pmatrix}$, $B=\\begin{pmatrix} 2 & -1 \\\\ 4 & -2 \\end{pmatrix}$에 대하여 $X-3B=2X-A$를 만족시키는 행렬 $X$의 $(2, 1)$ 성분을 구하면? [3.8점]",
     choices: [
       "$-10$",
@@ -144,6 +156,8 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "방정식 $|2x^2+3xy-2y^2|+|x^2+2y^2-54|=0$을 만족시키는 정수 $x, y$에 대하여 $xy$의 값을 구하면? [3.9점]",
     choices: [
       "$-18$",
@@ -166,6 +180,8 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "연립부등식 $\\begin{cases} x^2-6x+5>0 \\\\ 2x-a<2 \\end{cases}$를 만족시키는 자연수 $x$가 $2$개가 되도록 하는 실수 $a$의 값의 범위를 구하면? [4.1점]",
     choices: [
       "$4 < a \\le 6$",
@@ -177,7 +193,7 @@ window.questionBank = [
     answer: "④",
     solution: "[키포인트]\n각 부등식의 해를 수직선에 나타내어 공통부분에 포함되는 자연수 $x$의 개수가 $2$개가 되는 조건을 찾는다.\n\n풀이 방향 설정\n먼저 두 부등식을 각각 풀고, 수직선 상에서 해의 교집합에 자연수 $x$가 정확히 2개 포함되도록 하는 경계값을 분석한다.\n\n풀이 과정\n첫 번째 부등식을 풀면\n$x^2-6x+5>0$\n$(x-1)(x-5)>0$\n$x<1$ 또는 $x>5 \\quad \\cdots (1)$\n\n두 번째 부등식을 풀면\n$2x-a<2$\n$2x < a+2 \\implies x < \\frac{a+2}{2} \\quad \\cdots (2)$\n\n연립부등식의 해는 $(1)$과 $(2)$의 공통 범위이다.\n부등식 $(1)$을 만족하는 자연수는 $x>5$인 범위에 존재하는 $6, 7, 8, \\dots$ 이다. ($x<1$인 자연수는 존재하지 않음)\n\n따라서 연립부등식을 만족시키는 자연수 $x$가 $2$개가 되려면 그 자연수는 반드시 $6$과 $7$이어야 한다.\n즉, 공통 범위가 $6, 7$은 포함하고 $8$은 포함하지 않아야 한다.\n수직선에서 해 $x < \\frac{a+2}{2}$가 이 조건을 만족시키려면 경계값 $\\frac{a+2}{2}$의 위치가 $7$보다는 크고 $8$보다는 작거나 같아야 한다.\n\n$7 < \\frac{a+2}{2} \\le 8$\n\n각 변에 $2$를 곱하면\n$14 < a+2 \\le 16$\n\n각 변에서 $2$를 빼면\n$12 < a \\le 14$\n\n결론\n따라서 정답은 ④이다."
   },
-  {
+    {
     id: 9,
     level: "중",
     category: "여러 가지 방정식과 부등식",
@@ -188,6 +204,8 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "사차방정식 $(x^2-3x)^2+8(x^2-3x)-105=0$의 한 허근을 $\\alpha$라 할 때, $\\alpha^2-3\\alpha$의 값을 구하면? [4.0점]",
     choices: [
       "$7$",
@@ -210,6 +228,8 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "방정식 $x^2+2x+4=0$의 한 허근을 $\\omega$라 할 때, $\\frac{\\omega^4}{8}+\\frac{4}{\\omega}$의 값을 구하면? [4.0점]",
     choices: [
       "$-4$",
@@ -232,6 +252,8 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "남자 2명과 여자 3명을 일렬로 세울 때, 여자 3명이 이웃하여 서는 경우의 수를 $a$, 남자 2명이 이웃하지 않는 경우의 수를 $b$라고 할 때, 상수 $a, b$에 대하여 $b-a$의 값을 구하면? [3.9점]",
     choices: [
       "$33$",
@@ -254,6 +276,8 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "4개의 숫자 $0, 1, 2, 3$을 모두 사용하여 네 자리의 자연수를 만들어 나열 할 때, 작은 수부터 15번째 자연수를 구하면? [3.9점]",
     choices: [
       "$3012$",
@@ -276,6 +300,8 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "청바지 5종류와 정장바지 6종류 중에서 서로 다른 5벌을 구매하려고 할 때, 청바지와 정장바지를 적어도 1종류씩 포함하여 구매하는 경우의 수를 구하면? [4.0점]",
     choices: [
       "$435$",
@@ -298,7 +324,9 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
-    content: "행렬 $A=\\begin{pmatrix} 1 & -1 \\\\ 3 & a \\end{pmatrix}$가 $A^2+A+E=O$를 만족시킬 때, $A^{1004}$의 모든 성분의 합을 구하면? [4.1점]",
+    tags: [],
+    wide: false,
+    content: "행렬 $A=\\begin{pmatrix} 1 & a \\\\ 3 & -2 \\end{pmatrix}$가 $A^2+A+E=O$를 만족시킬 때, $A^{1004}$의 모든 성분의 합을 구하면? [4.1점]",
     choices: [
       "$-3$",
       "$-1$",
@@ -307,7 +335,7 @@ window.questionBank = [
       "$3$"
     ],
     answer: "①",
-    solution: "[키포인트]\n행렬의 거듭제곱 성질과 케일리-해밀턴 정리 등 행렬의 다항식 관계를 이용한다.\n\n풀이 과정\n주어진 조건 $A^2+A+E=O$의 양변에 $A-E$를 곱하면\n$(A-E)(A^2+A+E) = O \\implies A^3-E = O \\implies A^3 = E$\n\n이를 이용하여 $A^{1004}$를 간단히 하면\n$A^{1004} = A^{3 \\times 334 + 2} = (A^3)^{334}A^2 = E^{334}A^2 = A^2$\n$A^2+A+E=O$이므로 $A^2 = -A-E$이다.\n\n한편, $A^2+A+E=O$를 만족하는 행렬 $A$의 대각합 $\\text{tr}(A)$는 성분에서 $1+a$인데, 이차방정식의 형태와 계수 비교로부터 $A^2-(\\text{tr}(A))A+(ad-bc)E=O$이므로 $-(1+a) = 1 \\implies a = -2$임을 알 수 있다.\n($a=-2$일 때 $A=\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}$이고, 실제로 $A^2+A+E=O$가 성립한다.)\n\n따라서 $A^{1004} = -A-E$의 각 성분을 구하면\n$-A-E = -\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix} - \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} -2 & 1 \\\\ -3 & 1 \\end{pmatrix}$\n\n모든 성분의 합은\n$(-2) + 1 + (-3) + 1 = -3$이다.\n\n결론\n따라서 정답은 ①이다."
+    solution: "[키포인트]\n행렬 조건 $A^2+A+E=O$에서 먼저 상수 $a$를 구한 뒤, 거듭제곱의 주기를 이용한다.\n\n풀이 과정\n$A=\\begin{pmatrix} 1 & a \\\\ 3 & -2 \\end{pmatrix}$라 하자.\n먼저 $A^2$을 계산하면\n$A^2=\\begin{pmatrix} 1+3a & a-2a \\\\ 3-6 & 3a+4 \\end{pmatrix}=\\begin{pmatrix} 1+3a & -a \\\\ -3 & 3a+4 \\end{pmatrix}$이다.\n\n따라서\n$A^2+A+E=\\begin{pmatrix} 1+3a & -a \\\\ -3 & 3a+4 \\end{pmatrix}+\\begin{pmatrix} 1 & a \\\\ 3 & -2 \\end{pmatrix}+\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$\n$=\\begin{pmatrix} 3+3a & 0 \\\\ 0 & 3a+3 \\end{pmatrix}$이다.\n\n이 행렬이 영행렬이므로\n$3+3a=0 \\implies a=-1$이다.\n따라서\n$A=\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}$이다.\n\n주어진 식 $A^2+A+E=O$에서\n$A^2=-A-E$이고, 양변에 $A-E$를 곱하면\n$(A-E)(A^2+A+E)=O$\n$A^3-E=O \\implies A^3=E$이다.\n\n따라서\n$A^{1004}=A^{3\\times334+2}=(A^3)^{334}A^2=A^2$이다.\n또 $A^2=-A-E$이므로\n$A^{1004}=-A-E=-\\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}-\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}=\\begin{pmatrix} -2 & 1 \\\\ -3 & 1 \\end{pmatrix}$이다.\n\n모든 성분의 합은\n$-2+1-3+1=-3$이다.\n\n결론\n따라서 정답은 ①이다."
   },
   {
     id: 15,
@@ -320,6 +348,8 @@ window.questionBank = [
     standardUnitOrder: 6,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "삼차방정식 $kx^3+(5k-8)x^2+(8k-22)x+4k-14=0$이 서로 다른 세 실근을 갖도록 하는 자연수 $k$의 개수를 구하면? [4.2점]",
     choices: [
       "$3$",
@@ -331,27 +361,31 @@ window.questionBank = [
     answer: "④",
     solution: "[키포인트]\n인수정리를 이용하여 삼차방정식을 일차식과 이차식의 곱으로 인수분해한 후, 판별식과 근의 조건을 확인한다.\n\n풀이 과정\n$f(x)=kx^3+(5k-8)x^2+(8k-22)x+4k-14$라 하자.\n$f(-1) = -k + 5k-8 - 8k+22 + 4k-14 = 0$이므로 조립제법을 이용하면\n$f(x) = (x+1)\\{kx^2+(4k-8)x+4k-14\\} = 0$\n\n이 방정식이 서로 다른 세 실근을 가지려면 이차방정식 $kx^2+(4k-8)x+4k-14=0$이 서로 다른 두 실근을 가져야 하고, 그 두 실근은 $-1$이 아니어야 한다.\n\n(i) 이차방정식이 서로 다른 두 실근을 가질 조건 ($D>0$)\n$D/4 = (2k-4)^2 - k(4k-14) > 0$\n$4k^2-16k+16 - 4k^2+14k > 0$\n$-2k+16 > 0 \\implies k < 8$\n\n(ii) 이차방정식의 근이 $x \\ne -1$일 조건\n$k(-1)^2 + (4k-8)(-1) + 4k-14 \\ne 0$\n$k - 4k + 8 + 4k - 14 \\ne 0$\n$k - 6 \\ne 0 \\implies k \\ne 6$\n\n조건을 만족하는 $8$ 미만의 자연수 $k$는 $1, 2, 3, 4, 5, 7$로 총 $6$개이다.\n(단, $k$가 삼차항의 계수이므로 $k \\ne 0$ 조건은 자연수이므로 자동 만족)\n\n결론\n따라서 정답은 ④이다."
   },
-{
-  "id": 16,
-  "level": "중",
-  "category": "이차함수",
-  "content": "이차함수 $y=x^2+2(1+a)x+a^2+1$의 그래프가 $x$축과 만나지 않도록 하는 정수 $a$의 개수는?",
-  "choices": [
-    "$0$",
-    "$2$",
-    "$3$",
-    "$4$",
-    "$5$"
-  ],
-  "answer": "①",
-  "solution": "[키포인트] $x$축과 만나지 않으려면 판별식이 음수이어야 한다.\n이차함수의 그래프가 $x$축과 만나지 않으려면 방정식 $x^2+2(1+a)x+a^2+1=0$의 판별식 $D<0$ 이어야 한다.\n$D/4=(1+a)^2-(a^2+1)<0$\n$a^2+2a+1-a^2-1<0$\n$2a<0$\n$a<0$\n따라서 조건을 만족하는 정수는 음의 정수 전체이므로 유한한 개수가 아니다.\n문항의 의도에 맞게 개수를 묻기 위해 자연수를 정수로 바꾸는 것만으로는 성립하지 않으므로, 최소 수정으로 보기 ①을 $0$으로 고치고 자연수 조건을 유지하는 방식이 적절하다.\n자연수 $a$에 대해서는 조건을 만족하는 값이 없으므로 그 개수는 $0$이다.\n따라서 정답은 ①이다.",
-  "originalCategory": "",
-  "standardCourse": "",
-  "standardUnitKey": "",
-  "standardUnit": "",
-  "standardUnitOrder": ""
-},
   {
+    id: 16,
+    level: "상",
+    category: "여러 가지 방정식과 부등식",
+    originalCategory: "여러 가지 부등식",
+    standardCourse: "공통수학1",
+    standardUnitKey: "H22-C-06",
+    standardUnit: "여러 가지 방정식과 부등식",
+    standardUnitOrder: 6,
+    questionType: "객관식",
+    layoutTag: "grid",
+    tags: [],
+    wide: false,
+    content: "연립부등식 $\\begin{cases} x^2-x-2>0 \\\\ 3x^2-2(2a-2)x+a^2-4<0 \\end{cases}$을 만족시키는 정수 $x$의 개수가 $1$이 되도록 하는 실수 $a$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하면? [4.3점]",
+    choices: [
+      "$6$",
+      "$5$",
+      "$4$",
+      "$-3$",
+      "$-4$"
+    ],
+    answer: "①",
+    solution: "[키포인트]\n두 부등식의 해를 각각 구한 뒤, 정수해의 개수가 정확히 1개가 되는 실수 $a$의 범위를 찾는다.\n\n풀이 과정\n첫 번째 부등식을 풀면\n$x^2-x-2>0$\n$(x-2)(x+1)>0$\n따라서\n$x<-1$ 또는 $x>2$이다.\n\n두 번째 부등식을 인수분해하면\n$3x^2-2(2a-2)x+a^2-4<0$\n$3x^2-(4a-4)x+a^2-4<0$\n$(3x-(a+2))(x-(a-2))<0$이다.\n\n두 근은 $x=a-2$, $x=\\frac{a+2}{3}$이다.\n따라서 두 번째 부등식의 해는 두 근 사이의 열린구간이다.\n\n이 열린구간 안에 있으면서 첫 번째 부등식 $x<-1$ 또는 $x>2$를 만족하는 정수 $x$가 정확히 1개가 되어야 한다.\n정수해의 개수를 따져 정리하면 가능한 $a$의 범위는\n$[-1,0) \\cup (5,6] \\cup \\{7\\}$이다.\n\n따라서 가능한 실수 $a$의 최솟값은\n$m=-1$이고, 최댓값은\n$M=7$이다.\n\n그러므로\n$M+m=7+(-1)=6$이다.\n\n결론\n따라서 정답은 ①이다."
+  },
+    {
     id: 17,
     level: "중",
     category: "순열과 조합",
@@ -362,6 +396,8 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "서로 다른 흰 구슬 3개와 같은 종류의 검은 구슬 3개가 있다. 6개의 구슬을 일렬로 나열할 때, 검은 구슬 중 2개는 서로 이웃하고, 나머지 1개는 어느 검은 구슬과도 이웃하지 않도록 나열하는 경우의 수를 구하면? [4.5점]",
     choices: [
       "$48$",
@@ -384,6 +420,8 @@ window.questionBank = [
     standardUnitOrder: 8,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "어느 학교 축제에서 수학·과학 탐구반 동아리 학생들이 서로 다른 4개의 수학 체험과 서로 다른 2개의 과학 체험을 준비하였다. 두 학생 A와 B가 이 6개의 체험 중에서 다음 조건을 만족시키도록 체험을 선택하는 경우의 수를 구하면? [4.3점]\n\n(가) A와 B는 각각 1개 이상의 수학 체험과 1개 이상의 과학 체험을 포함한 서로 다른 3개의 체험을 선택한다.\n(나) A는 선택하고 B는 선택하지 않은 체험의 개수는 적어도 1이다.",
     choices: [
       "$160$",
@@ -406,6 +444,8 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "다음 조건을 만족시키는 이차정사각행렬 $A$에 대하여 $A+A^2 = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$일 때, $a+b+c+d$의 값을 구하면? (단, $E$는 단위행렬이다.) [4.5점]\n\n<조건>\n(가) $A^2=3A-6E$\n(나) $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$",
     choices: [
       "$-8$",
@@ -415,7 +455,7 @@ window.questionBank = [
       "$8$"
     ],
     answer: "②",
-    solution: "[키포인트]\n행렬의 곱셈과 케일리-해밀턴 정리 등 이차정사각행렬의 성질을 이용하여 행렬의 성분을 유추한다.\n\n풀이 과정\n행렬 $A = \\begin{pmatrix} p & q \\\\ r & s \\end{pmatrix}$라 하자.\n조건 (나)에서 $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} q \\\\ s \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$이므로 $q=2, s=3$이다.\n따라서 $A = \\begin{pmatrix} p & 2 \\\\ r & 3 \\end{pmatrix}$이다.\n\n조건 (가)에서 $A^2-3A+6E=O$이므로, 이차정사각행렬의 성질(케일리-해밀턴 정리의 형태)에 의해 대각 성분의 합은 $3$이어야 한다.\n$p + s = 3 \\implies p + 3 = 3 \\implies p = 0$\n\n또한 행렬식 $ad-bc$의 값은 $6$이어야 하므로\n$p \\cdot s - 2 \\cdot r = 6 \\implies 0 - 2r = 6 \\implies r = -3$\n따라서 $A = \\begin{pmatrix} 0 & 2 \\\\ -3 & 3 \\end{pmatrix}$이다.\n\n$A^2 = 3A - 6E = 3\\begin{pmatrix} 0 & 2 \\\\ -3 & 3 \\end{pmatrix} - \\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix} = \\begin{pmatrix} -6 & 6 \\\\ -9 & 3 \\end{pmatrix}$\n$A + A^2 = \\begin{pmatrix} 0 & 2 \\\\ -3 & 3 \\end{pmatrix} + \\begin{pmatrix} -6 & 6 \\\\ -9 & 3 \\end{pmatrix} = \\begin{pmatrix} -6 & 8 \\\\ -12 & 6 \\end{pmatrix}$\n\n모든 성분의 합은 $a+b+c+d = -6 + 8 - 12 + 6 = -4$이다.\n\n결론\n따라서 정답은 ②이다."
+    solution: "[키포인트]\n행렬의 곱셈과 이차정사각행렬의 성질을 이용하여 행렬 $A$의 성분을 구한다.\n\n풀이 과정\n행렬 $A = \\begin{pmatrix} p & q \\\\ r & s \\end{pmatrix}$라 하자.\n조건 (나)에서\n$A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} q \\\\ s \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$이므로\n$q=2$, $s=3$이다.\n따라서\n$A=\\begin{pmatrix} p & 2 \\\\ r & 3 \\end{pmatrix}$이다.\n\n조건 (가) $A^2=3A-6E$를 $A^2-3A+6E=O$로 정리한다.\n이차정사각행렬의 특성방정식 형태와 비교하면\n$\\operatorname{tr}(A)=3$, $\\det(A)=6$이어야 한다.\n\n$\\operatorname{tr}(A)=p+3=3$이므로\n$p=0$이다.\n또\n$\\det(A)=p\\cdot 3-2r=6$이므로\n$0-2r=6 \\implies r=-3$이다.\n따라서\n$A=\\begin{pmatrix} 0 & 2 \\\\ -3 & 3 \\end{pmatrix}$이다.\n\n조건 (가)에 의해\n$A^2=3A-6E$\n$=3\\begin{pmatrix} 0 & 2 \\\\ -3 & 3 \\end{pmatrix}-\\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix}$\n$=\\begin{pmatrix} -6 & 6 \\\\ -9 & 3 \\end{pmatrix}$이다.\n\n따라서\n$A+A^2=\\begin{pmatrix} 0 & 2 \\\\ -3 & 3 \\end{pmatrix}+\\begin{pmatrix} -6 & 6 \\\\ -9 & 3 \\end{pmatrix}=\\begin{pmatrix} -6 & 8 \\\\ -12 & 6 \\end{pmatrix}$이다.\n\n모든 성분의 합은\n$-6+8-12+6=-4$이다.\n\n결론\n따라서 정답은 ②이다."
   },
   {
     id: 20,
@@ -428,6 +468,8 @@ window.questionBank = [
     standardUnitOrder: 9,
     questionType: "객관식",
     layoutTag: "grid",
+    tags: [],
+    wide: false,
     content: "두 이차정사각행렬 $A, B$가 $AB+BA=\\begin{pmatrix} 2 & 1 \\\\ -1 & 0 \\end{pmatrix}$을 만족시킨다. $B=\\begin{pmatrix} 3 & 2 \\\\ 0 & 1 \\end{pmatrix}$일 때, $AB^2-B^2A$의 모든 성분의 합을 구하면? [4.3점]",
     choices: [
       "$-6$",
@@ -448,12 +490,14 @@ window.questionBank = [
     standardUnitKey: "H22-C-06",
     standardUnit: "여러 가지 방정식과 부등식",
     standardUnitOrder: 6,
-    questionType: "주관식",
+    questionType: "서술형",
     layoutTag: "grid",
-    content: "모든 실수 $x$에 대하여 부등식 $x^2-2ax+9 \\ge 0$이 성립할 때, $a$에 대한 부등식 $2|a-3|+|a+3|<a+7$의 해를 구하여라.",
+    tags: ["서술형"],
+    wide: false,
+    content: "모든 실수 $x$에 대하여 부등식 $x^2-2ax+9>0$이 성립할 때, $a$에 대한 부등식 $2|a-3|+|a+3|<a+7$의 해를 구하여라.",
     choices: [],
-    answer: "$1 \\lt a \\le 3$",
-    solution: "[키포인트]\n이차부등식이 항상 성립할 조건을 판별식을 통해 구한 뒤, 그 범위 안에서 절댓값 기호를 포함한 일차부등식을 푼다.\n\n풀이 과정\n모든 실수 $x$에 대하여 $x^2-2ax+9 \\ge 0$이 성립하므로 판별식 $D \\le 0$이어야 한다.\n$D/4 = a^2 - 9 \\le 0$\n$-3 \\le a \\le 3 \\quad \\cdots (1)$\n\n위의 범위에서 절댓값 기호 안의 식의 부호를 판별한다.\n$a-3 \\le 0$ 이고 $a+3 \\ge 0$이다.\n따라서 주어진 일차부등식의 절댓값을 풀면 다음과 같다.\n$-2(a-3) + (a+3) < a+7$\n$-2a + 6 + a + 3 < a + 7$\n$-a + 9 < a + 7$\n$2a > 2 \\implies a > 1 \\quad \\cdots (2)$\n\n구하는 해는 $(1)$과 $(2)$의 공통 범위이므로\n$1 < a \\le 3$이다.\n\n결론\n따라서 구하는 값은 $1 \\lt a \\le 3$이다."
+    answer: "$1 \\lt a \\lt 3$",
+    solution: "[키포인트]\n이차부등식이 항상 성립할 조건을 판별식을 통해 구한 뒤, 그 범위 안에서 절댓값 기호를 포함한 일차부등식을 푼다.\n\n풀이 과정\n모든 실수 $x$에 대하여 $x^2-2ax+9>0$이 성립하므로 판별식 $D<0$이어야 한다.\n$D/4=a^2-9<0$\n$-3<a<3 \\quad \\cdots (1)$\n\n위의 범위에서 절댓값 기호 안의 식의 부호를 판별한다.\n$a-3<0$이고 $a+3>0$이다.\n따라서\n$|a-3|=3-a$, $|a+3|=a+3$이다.\n\n주어진 부등식에 대입하면\n$2(3-a)+(a+3)<a+7$\n$6-2a+a+3<a+7$\n$9-a<a+7$\n$2a>2 \\implies a>1 \\quad \\cdots (2)$\n\n구하는 해는 $(1)$과 $(2)$의 공통 범위이므로\n$1<a<3$이다.\n\n결론\n따라서 구하는 해는 $1 \\lt a \\lt 3$이다."
   },
   {
     id: 22,
@@ -464,12 +508,14 @@ window.questionBank = [
     standardUnitKey: "H22-C-09",
     standardUnit: "행렬과 그 연산",
     standardUnitOrder: 9,
-    questionType: "주관식",
+    questionType: "서술형",
     layoutTag: "grid",
+    tags: ["서술형"],
+    wide: false,
     content: "이차방정식 $x^2-5x+3=0$의 두 실근을 $\\alpha, \\beta$라 하자. 행렬 $A=\\begin{pmatrix} \\alpha & -2 \\\\ -2 & \\beta \\end{pmatrix}$에 대하여 $A^2=\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$일 때, $a+b+d$의 값을 구하여라. (단, $a, b, c, d$는 상수)",
     choices: [],
     answer: "$17$",
-    solution: "[키포인트]\n이차방정식의 근과 계수의 관계를 이용하여 행렬의 곱셈 결과를 식으로 표현하고 값을 계산한다.\n\n풀이 과정\n이차방정식 $x^2-5x+3=0$의 근과 계수의 관계에 의하여\n$\\alpha+\\beta = 5$, $\\alpha\\beta = 3$이다.\n\n행렬 $A^2$을 직접 계산하면\n$A^2 = \\begin{pmatrix} \\alpha & -2 \\\\ -2 & \\beta \\end{pmatrix}\\begin{pmatrix} \\alpha & -2 \\\\ -2 & \\beta \\end{pmatrix} = \\begin{pmatrix} \\alpha^2+4 & -2\\alpha-2\\beta \\\\ -2\\alpha-2\\beta & \\beta^2+4 \\end{pmatrix}$\n\n대응하는 성분을 비교하면\n$a = \\alpha^2+4$\n$b = -2(\\alpha+\\beta)$\n$d = \\beta^2+4$\n\n따라서 구하고자 하는 식은\n$a+b+d = (\\alpha^2+4) - 2(\\alpha+\\beta) + (\\beta^2+4) = \\alpha^2+\\beta^2 - 2(\\alpha+\\beta) + 8$\n\n이때 $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 5^2 - 2(3) = 25 - 6 = 19$이므로\n$a+b+d = 19 - 2(5) + 8 = 19 - 10 + 8 = 17$이다.\n\n결론\n따라서 구하는 값은 $17$이다."
+    solution: "[키포인트]\n이차방정식의 근과 계수의 관계를 이용하여 행렬의 곱셈 결과를 식으로 표현하고 값을 계산한다.\n\n풀이 과정\n이차방정식 $x^2-5x+3=0$의 근과 계수의 관계에 의하여\n$\\alpha+\\beta=5$, $\\alpha\\beta=3$이다.\n\n행렬 $A^2$을 직접 계산하면\n$A^2=\\begin{pmatrix} \\alpha & -2 \\\\ -2 & \\beta \\end{pmatrix}\\begin{pmatrix} \\alpha & -2 \\\\ -2 & \\beta \\end{pmatrix}=\\begin{pmatrix} \\alpha^2+4 & -2\\alpha-2\\beta \\\\ -2\\alpha-2\\beta & \\beta^2+4 \\end{pmatrix}$이다.\n\n대응하는 성분을 비교하면\n$a=\\alpha^2+4$\n$b=-2(\\alpha+\\beta)$\n$d=\\beta^2+4$이다.\n\n따라서\n$a+b+d=(\\alpha^2+4)-2(\\alpha+\\beta)+(\\beta^2+4)$\n$=\\alpha^2+\\beta^2-2(\\alpha+\\beta)+8$이다.\n\n이때\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=5^2-2\\cdot3=25-6=19$이므로\n$a+b+d=19-2\\cdot5+8=19-10+8=17$이다.\n\n결론\n따라서 구하는 값은 $17$이다."
   },
   {
     id: 23,
@@ -480,12 +526,14 @@ window.questionBank = [
     standardUnitKey: "H22-C-08",
     standardUnit: "순열과 조합",
     standardUnitOrder: 8,
-    questionType: "주관식",
+    questionType: "서술형",
     layoutTag: "grid",
+    tags: ["서술형", "도형"],
+    wide: false,
     image: "assets/images/25_매산여고_1학기_기말_고1_기출/q23.png",
     content: "그림과 같이 7개의 좌석이 있는 차량에 앞줄에 2개, 가운데 줄에 2개, 뒷줄에 3개의 좌석이 배열되어 있다. 이 차량에 남자 2명과 여자 2명이 앉으려고 한다. 같은 줄에는 남자와 여자가 서로 이웃하지 않도록 좌석을 배정하는 모든 경우의 수를 구하시오. (단, 운전석에는 무조건 한 명은 앉아야 한다.)",
     choices: [],
     answer: "$184$",
-    solution: "[키포인트]\n조건에 맞게 앞줄의 좌석 배치를 기준으로 경우를 세분화하여 각 줄의 사람 배치를 구한다.\n\n풀이 방향 설정\n운전석 조건에 의해 앞줄에는 최소 1명이 앉아야 하므로, 앞줄에 앉는 성별 구성에 따라 경우를 나누어 세어본다. 남녀의 역할은 대칭이므로 한쪽 경우를 구한 후 2배를 할 수 있다.\n\n풀이 과정\n앞줄(운전석 1열)에 남자가 앉는 경우를 구해보자.\n(i) 1열에 남자가 2명 모두 앉는 경우\n1열 2자리에 남자 2명 배치: $2! = 2$가지\n남은 여자 2명은 같은 줄에 앉거나 다른 줄에 앉아도 무방하다. (남자가 없으므로 이웃 조건 충돌 없음)\n나머지 5자리 중 2자리 배치: ${}_{5}P_{2} = 20$가지\n$2 \\times 20 = 40$가지\n\n(ii) 1열에 남자 1명만 앉는 경우\n운전석에는 반드시 사람이 앉아야 하므로 남자는 운전석에 고정된다. 2명 중 1명 선택: $2$가지\n이때 1열의 남은 한 자리는 비워두어야 한다. (여자가 앉으면 이웃하게 됨)\n이제 남은 사람은 남자 1명, 여자 2명이고 이들을 2열(2자리)과 3열(3자리)에 배치해야 한다.\n- 2열에 여자 2명이 앉는 경우: 2열 배치($2!$) $\\times$ 남자 1명을 3열에 배치(3자리 중 1곳) = $2 \\times 3 = 6$가지\n- 2열에 남자 1명만 앉는 경우: 2열 배치(2자리 중 1곳) $\\times$ 여자 2명을 3열에 배치(${}_{3}P_{2}$) = $2 \\times 6 = 12$가지\n- 2열에 여자 1명만 앉는 경우: 여자 선택(2) $\\times$ 2열 자리 선택(2) = 4가지. \n  남은 남자 1명과 여자 1명은 3열에 배치해야 하는데 이웃하면 안 되므로 양 끝 자리에 앉아야 한다 ($2!$). $4 \\times 2 = 8$가지\n- 2열이 비는 경우: 남자 1명, 여자 2명이 모두 3열에 앉아야 하는데, 3명 꽉 차게 앉으면 반드시 어느 한 쌍은 남녀가 이웃하므로 불가능(0가지).\n1열에 남자 1명만 앉는 총 경우의 수: $2 \\times (6 + 12 + 8) = 52$가지\n\n따라서 1열에 남자가 앉는 경우의 수는 $40 + 52 = 92$가지이다.\n마찬가지로 1열에 여자가 앉는 경우도 남녀가 대칭이므로 $92$가지이다.\n\n전체 경우의 수는 $92 \\times 2 = 184$이다.\n\n결론\n따라서 구하는 값은 $184$이다."
+    solution: "[키포인트]\n조건에 맞게 앞줄의 좌석 배치를 기준으로 경우를 세분화하여 각 줄의 사람 배치를 구한다.\n\n풀이 방향 설정\n운전석 조건에 의해 앞줄에는 최소 1명이 앉아야 하므로, 앞줄에 앉는 성별 구성에 따라 경우를 나누어 세어본다. 남녀의 역할은 대칭이므로 한쪽 경우를 구한 후 2배를 할 수 있다.\n\n풀이 과정\n앞줄에 남자가 앉는 경우를 구해보자.\n\n(i) 앞줄에 남자 2명이 모두 앉는 경우\n앞줄 2자리에 남자 2명을 배치하는 경우의 수는 $2! = 2$가지이다.\n남은 여자 2명은 나머지 5자리 중 2자리에 배치하면 되고, 여자는 서로 이웃해도 조건에 어긋나지 않는다.\n따라서 이 경우의 수는\n$2! \\times {}_{5}P_{2}=2\\times20=40$가지이다.\n\n(ii) 앞줄에 남자 1명만 앉는 경우\n운전석에는 반드시 사람이 앉아야 하므로, 이 경우 남자 1명은 운전석에 앉아야 한다.\n남자 2명 중 운전석에 앉을 사람을 정하는 경우는 $2$가지이다.\n앞줄의 나머지 한 자리는 비어 있어야 한다. 여자가 앉으면 같은 줄에서 남자와 여자가 서로 이웃하게 되기 때문이다.\n\n이제 남은 사람은 남자 1명, 여자 2명이고, 가운데 줄 2자리와 뒷줄 3자리에 배치한다.\n- 가운데 줄에 여자 2명이 앉는 경우: 여자 2명 배치 $2!$가지, 남자 1명을 뒷줄 3자리 중 한 곳에 배치 $3$가지이므로 $2\\times3=6$가지\n- 가운데 줄에 남자 1명만 앉는 경우: 남자 1명을 가운데 줄 2자리 중 한 곳에 배치 $2$가지, 여자 2명을 뒷줄 3자리 중 2곳에 배치 ${}_{3}P_{2}=6$가지이므로 $2\\times6=12$가지\n- 가운데 줄에 여자 1명만 앉는 경우: 여자 선택 $2$가지, 가운데 줄 자리 선택 $2$가지이다. 남은 남자 1명과 여자 1명은 뒷줄에 앉아야 하는데, 같은 줄에서 서로 이웃하지 않으려면 뒷줄의 양 끝자리에 앉아야 한다. 이때 배치가 $2!$가지이므로 $2\\times2\\times2=8$가지\n- 가운데 줄이 비는 경우: 남자 1명과 여자 2명이 모두 뒷줄 3자리에 앉으면 반드시 남녀가 이웃하는 자리가 생기므로 불가능하다.\n\n따라서 앞줄에 남자 1명만 앉는 경우의 수는\n$2\\times(6+12+8)=52$가지이다.\n\n앞줄에 남자가 앉는 경우의 수는\n$40+52=92$가지이다.\n남녀의 역할을 바꾸어 앞줄에 여자가 앉는 경우도 대칭적으로 $92$가지이다.\n\n따라서 전체 경우의 수는\n$92\\times2=184$가지이다.\n\n결론\n따라서 구하는 값은 $184$이다."
   }
 ];
