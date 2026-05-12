@@ -277,14 +277,21 @@ function clinicPrintBuildPayload(classId, config) {
 
 function clinicPrintOpenEngine(payload) {
     try {
-        sessionStorage.setItem(AP_CLINIC_PRINT_STORAGE_KEY, JSON.stringify(payload));
+        const payloadJson = JSON.stringify(payload);
+        sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', payloadJson);
+        localStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', payloadJson);
+        console.log('[clinic-print] payload saved', {
+            sessionStorage: !!sessionStorage.getItem('AP_CLINIC_PRINT_PAYLOAD'),
+            localStorage: !!localStorage.getItem('AP_CLINIC_PRINT_PAYLOAD')
+        });
     } catch (e) {
         toast('오답지 데이터를 저장하지 못했습니다.', 'error');
         return;
     }
 
-    const popup = window.open('wrong_print_engine.html', '_blank', 'noopener');
-    if (!popup) {
+    const engineUrl = new URL('wrong_print_engine.html', window.location.href).toString();
+    const win = window.open(engineUrl, '_blank', 'noopener');
+    if (!win) {
         toast('팝업 차단을 해제하세요', 'warn');
     }
 }
