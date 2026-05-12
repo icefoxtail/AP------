@@ -1,919 +1,932 @@
+기준 파일 확인했습니다. Worker에는 기존 `homework-photo` 과제 등록/학생별 제출칸/링크/제출 API가 있고 , 플래너는 기존 `planner`와 PIN 검증 구조가 이미 있습니다 . `core.js`의 API_BASE도 현재 Worker 주소 기준입니다 .
+
 ````markdown
 # CODEX_TASK.md
 
-## 작업명
-AP Math OS — 오답 클리닉 출력 센터 1차 설계/구현
+# AP Math OS 학생 개인 포털 1차 — 사전 검토 지시서
 
----
+## 0. 이번 Codex 작업 방식
 
-## 0. 실행 환경 고정
+아직 파일을 수정하지 마라.
 
-이 프로젝트의 Codex 작업은 반드시 VS Code의 Ubuntu(WSL) 터미널에서 실행한다.
+이 문서는 학생 개인 포털 1차 구현을 위한 세부 지시서다.  
+하지만 이번 Codex 실행에서는 먼저 검토만 한다.
 
-Windows PowerShell에서 `codex` 실행 금지.
+Codex는 아래 항목만 보고해야 한다.
 
-정상 실행 경로:
+1. 이해한 작업 목표
+2. 수정/신규 파일 목록
+3. 수정 위치
+4. 구현 방식
+5. 위험하거나 확인 필요한 지점
+6. 기존 기능 회귀 가능성
+7. Worker/DB 수정이 필요한지 여부
+8. 최종 구현 전 추가로 확인해야 할 파일 또는 함수
 
-```bash
-cd /mnt/c/Users/USER/Desktop/AP------
-codex
-````
-
-현재 프로젝트 루트:
-
-```bash
-/mnt/c/Users/USER/Desktop/AP------
-```
+내 승인 전까지 파일 수정 금지.
 
 ---
 
 ## 1. 작업 목표
 
-AP Math OS 반 화면에서 선생님이 원클릭에 가깝게 오답지를 출력할 수 있는 **오답 클리닉 출력 센터**를 만든다.
+AP Math OS에 학생 개인 포털 1차를 만든다.
 
-핵심 목표는 다음과 같다.
+학생은 앞으로 학생코드 링크를 찾지 않고 아래 주소로 접속한다.
 
-1. 선생님이 반 화면에서 `[오답지 출력]` 버튼을 누른다.
-2. 특정 시험 1개, 여러 시험, 기간 기준으로 오답 데이터를 선택한다.
-3. 학생별 오답지 또는 반별 공통 오답지를 선택한다.
-4. 시스템이 `exam_sessions`, `wrong_answers`, `archive_file`, `exam_blueprints` 데이터를 이용해 오답 문항을 자동 수집한다.
-5. `wrong_print_engine.html` 전용 출력 엔진이 JS아카이브 원문을 자동 로드한다.
-6. 선생님이 믹서나 아카이브에 들어가지 않아도 바로 출력한다.
+```text
+/apmath/student/
+````
+
+학생은 이름 + PIN으로 로그인한다.
+
+로그인 성공 후 학생 홈에서 본인이 사용할 수 있는 기능만 볼 수 있다.
+
+1차에서 열 기능:
+
+```text
+1. 과제
+2. 플래너
+3. OMR 입구
+```
+
+1차에서 열지 않을 기능:
+
+```text
+1. 출결 입력
+2. 과제 O/X 직접 수정
+3. 성적 수정
+4. 성적 삭제
+5. 오답 삭제
+6. 상담 기록
+7. 학생관리
+8. 반 전체 학생 목록
+9. 다른 학생 정보
+10. 선생님/원장 대시보드
+```
+
+핵심 원칙:
+
+```text
+학생포털은 새 기능 본체가 아니다.
+기존 과제 / 플래너 / OMR 기능으로 들어가는 학생용 입구다.
+
+기존 선생님 화면 연동 구조는 그대로 유지한다.
+기존 homework-photo, planner, OMR API 흐름은 삭제하거나 리팩터링하지 않는다.
+```
 
 ---
 
-## 2. 최종 기능명
+## 2. 수정 가능 파일
 
-기능명:
+### 신규 생성
 
 ```text
-오답 클리닉 출력 센터
+apmath/student/index.html
 ```
 
-반 화면 버튼명:
+역할:
 
 ```text
-오답지 출력
+- 학생 로그인 화면
+- 이름 + PIN 입력
+- 로그인 성공 후 학생 홈
+- 과제 목록 표시
+- 플래너 이동
+- OMR 입구 표시
+- 로그아웃
 ```
 
-신규 출력 엔진명:
+### 수정 가능
 
 ```text
-wrong_print_engine.html
+apmath/worker-backup/worker/index.js
 ```
 
-신규 프론트 모듈명:
+추가할 API:
 
 ```text
-apmath/js/clinic-print.js
+POST /api/student-portal/auth
+GET /api/student-portal/home?student_id=...
 ```
 
 ---
 
-## 3. 절대 원칙
+## 3. 수정 금지 파일
 
-아래 사항은 반드시 지킨다.
-
-1. `mixed_engine.html` 직접 수정 금지
-2. `engine.html` 직접 수정 금지
-3. `mixer.html` 직접 수정 금지
-4. `worker/index.js` 수정 금지
-5. `schema.sql` 수정 금지
-6. DB 신규 테이블 생성 금지
-7. 기존 QR/OMR 저장 로직 변경 금지
-8. 기존 리포트 출력/AI 리포트 로직 변경 금지
-9. 기존 출석/숙제/상담/진도 기능 변경 금지
-10. 기존 안정 파일을 불필요하게 리팩터링하지 말 것
-
-이번 1차 작업은 **프론트 기능 추가**로 한정한다.
-
----
-
-## 4. 수정/신규 파일 범위
-
-### 신규 파일
+아래 파일은 이번 1차에서 수정하지 마라.
 
 ```text
-apmath/js/clinic-print.js
-apmath/wrong_print_engine.html
-```
-
-### 수정 파일
-
-```text
+apmath/worker-backup/worker/schema.sql
+apmath/homework/index.html
+apmath/planner/index.html
 apmath/js/classroom.js
+apmath/js/core.js
 apmath/index.html
-```
-
-### 참고만 할 파일
-
-```text
+apmath/js/dashboard.js
+apmath/js/cumulative.js
 apmath/js/qr-omr.js
 apmath/js/report.js
-apmath/js/core.js
-apmath/mixed_engine.html
 apmath/engine.html
+apmath/mixed_engine.html
+archive/mixer.html
 ```
-
-참고 파일은 필요한 함수/구조를 확인하기 위한 용도다. 직접 수정하지 않는다.
-
----
-
-## 5. 기존 구조 참고 기준
-
-### 5-1. qr-omr.js 참고 사항
-
-`qr-omr.js`에는 이미 성적/오답 저장 구조가 있다.
-
-활용할 데이터 흐름:
-
-```text
-exam_title
-exam_date
-question_count
-archive_file
-class_id
-student_id
-wrong_ids
-```
-
-`exam_sessions`와 `wrong_answers`를 기반으로 오답지 데이터를 구성한다.
-
-기존 QR/OMR 입력 및 저장 로직은 건드리지 않는다.
-
----
-
-### 5-2. report.js 참고 사항
-
-`report.js`에는 이미 JS아카이브 원문 연결에 필요한 로직이 있다.
-
-참고할 로직:
-
-```text
-archiveFile 정규화
-아카이브 JS fetch
-questionBank 추출
-문항 번호로 questionBank에서 문항 찾기
-```
-
-단, `report.js`를 직접 수정하지 말고, 필요한 로직은 `wrong_print_engine.html` 내부에 독립 구현하거나 안전하게 참고한다.
-
----
-
-### 5-3. mixed_engine.html 참고 사항
-
-`mixed_engine.html`은 수정하지 않는다.
-
-참고할 부분:
-
-```text
-A4 출력 스타일
-문항 렌더링 구조
-MathJax 설정
-보기 출력 방식
-정답표/해설지 모드 구조
-인쇄 버튼 구조
-```
-
-`wrong_print_engine.html`은 독립 엔진이어야 한다.
-
----
-
-### 5-4. core.js 참고 사항
-
-`core.js`의 `state.db`에는 다음 데이터가 이미 들어온다.
-
-```text
-students
-classes
-class_students
-exam_sessions
-wrong_answers
-exam_blueprints
-```
-
-1차 구현은 이 데이터를 사용한다.
-
-Worker API 추가는 하지 않는다.
-
----
-
-## 6. classroom.js 수정 지시
-
-### 목표
-
-반 화면 툴바에 `[오답지 출력]` 버튼을 추가한다.
-
-### 위치
-
-`classroom.js`의 반 화면 툴바 영역에 추가한다.
-
-현재 반 화면에는 다음 성격의 버튼들이 있다.
-
-```text
-QR/OMR
-시험성적
-클리닉
-진도관리
-플래너
-```
-
-이 근처에 `[오답지 출력]` 버튼을 추가한다.
-
-### 버튼 동작
-
-```js
-openClinicPrintCenter(classId)
-```
-
-을 호출한다.
-
-### 스타일
-
-기존 `cls-v4-tool` 버튼 스타일을 사용한다.
-
-추천:
-
-```html
-<button class="btn cls-v4-tool red" onclick="openClinicPrintCenter('${classId}')">오답지 출력</button>
-```
-
-단, 실제 변수명과 문자열 이스케이프는 기존 classroom.js 방식에 맞춘다.
-
-### 주의
-
-* classroom.js 전체 구조를 대개편하지 말 것
-* 버튼 추가 외 기존 로직 수정 금지
-* 출석/숙제 상태 순환 로직 절대 변경 금지
-* 상담 버튼/진도관리/플래너/QR 버튼 기능 변경 금지
-
----
-
-## 7. index.html 수정 지시
-
-`apmath/index.html`에 신규 스크립트를 추가한다.
-
-추가 대상:
-
-```html
-<script src="js/clinic-print.js"></script>
-```
-
-위치는 `qr-omr.js`, `report.js`, `classroom.js` 등 주요 모듈들이 로드되는 기존 script 목록 근처에 둔다.
 
 주의:
 
-* 기존 script 순서를 무리하게 재정렬하지 말 것
-* 다른 script 제거 금지
-* CSS 대개편 금지
-
----
-
-## 8. clinic-print.js 신규 파일 설계
-
-파일 경로:
-
 ```text
-apmath/js/clinic-print.js
-```
-
-### 역할
-
-`clinic-print.js`는 AP Math OS 안에서 오답 출력 데이터를 만드는 전용 모듈이다.
-
-담당 기능:
-
-1. 반별 시험 목록 생성
-2. 시험 1개 선택
-3. 여러 시험 선택
-4. 기간 선택
-5. 학생별 오답 수 계산
-6. 반별 공통 오답 중복 제거
-7. 오답 출력 센터 모달 생성
-8. `wrongPrintPayload` 생성
-9. `sessionStorage`에 payload 저장
-10. `wrong_print_engine.html` 새 창 열기
-
----
-
-## 9. clinic-print.js 필수 함수
-
-아래 함수들을 구현한다.
-
-```js
-function openClinicPrintCenter(classId) {}
-```
-
-반 화면에서 호출되는 진입 함수.
-
-```js
-function clinicPrintGetClassStudents(classId) {}
-```
-
-해당 반의 재원생 목록 반환.
-
-```js
-function clinicPrintGetClassExamGroups(classId) {}
-```
-
-해당 반의 시험 이력 그룹 반환.
-
-그룹 기준:
-
-```text
-exam_date + exam_title + archive_file + question_count
-```
-
-```js
-function clinicPrintGetSessionsForExamGroup(classId, examGroupKey) {}
-```
-
-선택된 시험 그룹에 해당하는 학생별 session 목록 반환.
-
-```js
-function clinicPrintGetWrongIdsBySession(sessionId) {}
-```
-
-해당 session의 wrong_answers.question_id 목록 반환.
-
-```js
-function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, options) {}
-```
-
-학생별 오답지용 데이터 생성.
-
-```js
-function clinicPrintBuildClassWrongItems(studentWrongItems) {}
-```
-
-반별 공통 오답지용 데이터 생성.
-
-중복 제거 기준:
-
-```text
-archiveFile + questionNo
-```
-
-```js
-function clinicPrintBuildPayload(classId, config) {}
-```
-
-`wrong_print_engine.html`에 넘길 최종 payload 생성.
-
-```js
-function clinicPrintOpenEngine(payload) {}
-```
-
-`sessionStorage`에 저장 후 `wrong_print_engine.html` 새 창 열기.
-
----
-
-## 10. 오답 출력 센터 UI
-
-`openClinicPrintCenter(classId)` 호출 시 모달을 띄운다.
-
-모달 제목:
-
-```text
-오답 클리닉 출력 센터
-```
-
-### UI 구성
-
-```text
-[빠른 출력]
-- 최근 시험 학생별 오답
-- 최근 시험 반별 오답
-
-[상세 설정]
-출력 기준:
-○ 시험 1개
-○ 여러 시험 선택
-○ 기간 선택
-
-출력 방식:
-○ 학생별 오답지
-○ 반별 공통 오답지
-○ 학생별 + 반별
-
-시험 목록:
-□ 2026-05-03 금당고 기출 22문항
-□ 2026-05-06 매산고 기출 21문항
-□ 2026-05-09 단원평가 20문항
-
-학생:
-☑ 오답 있는 학생 전체
-☑ 김민준 5문항
-☑ 이서연 3문항
-☑ 박지후 1문항
-
-옵션:
-☑ 오답 없는 학생 제외
-☑ 학생별 페이지 분리
-☑ 문항별 오답 학생 표시
-☐ 정답 포함
-☐ 해설 포함
-
-[오답지 만들기]
-```
-
-### 1차 필수 UI
-
-너무 복잡하게 만들지 않는다.
-
-1차에서는 최소한 아래가 동작하면 된다.
-
-```text
-1. 시험 목록 체크
-2. 출력 방식 선택
-3. 학생 체크
-4. 오답지 만들기
+schema.sql 수정 금지
+D1 마이그레이션 생성 금지
+기존 API 응답 구조 임의 변경 금지
+기존 안정 기능 리팩터링 금지
 ```
 
 ---
 
-## 11. 출력 모드 정의
+## 4. 기존 구조 유지 조건
 
-### 11-1. 학생별 오답지
+### 4-1. 과제 구조 유지
 
-mode:
+기존 과제 제출 구조는 유지한다.
 
-```text
-student
-```
-
-출력 방식:
+현재 과제 제출 화면:
 
 ```text
-김민준 오답지
-- 금당고 기출 3번
-- 금당고 기출 7번
-
-다음 페이지
-
-이서연 오답지
-- 금당고 기출 1번
-- 매산고 기출 3번
+apmath/homework/index.html
 ```
 
-특징:
+기존 이동 URL:
 
-* 학생마다 페이지 분리
-* 학생이 실제로 틀린 문제만 출력
-* 오답 없는 학생은 기본 제외
+```text
+/apmath/homework/?assignment_id=과제ID&student_id=학생ID
+```
+
+학생포털에서는 로그인된 학생의 student_id를 내부에서 사용해 위 URL을 자동 생성한다.
+
+학생이 student_id를 직접 입력하거나 외우게 만들지 않는다.
+
+기존 homework-photo API는 유지한다.
+
+```text
+GET  /api/homework-photo/assignment?assignment_id=...&student_id=...
+POST /api/homework-photo/auth
+POST /api/homework-photo/submit
+```
+
+이번 작업에서 위 API를 삭제하거나 변경하지 마라.
 
 ---
 
-### 11-2. 반별 공통 오답지
+### 4-2. 플래너 구조 유지
 
-mode:
-
-```text
-class
-```
-
-출력 방식:
+기존 플래너 화면:
 
 ```text
-중2A 반별 공통 오답지
-
-금당고 기출 3번
-오답 학생: 김민준, 이서연, 박지후 / 총 3명
-
-금당고 기출 7번
-오답 학생: 김민준 / 총 1명
+apmath/planner/index.html
 ```
 
-특징:
+기존 이동 URL:
 
-* 같은 문항은 한 번만 출력
-* 문항별 오답 학생명 표시
-* 중복 제거 기준은 `archiveFile + questionNo`
-* 오답 많은 문항 순으로 정렬 가능하면 적용
+```text
+/apmath/planner/?student_id=학생ID
+```
+
+학생포털에서는 로그인된 학생의 student_id를 붙여 자동 이동한다.
+
+이번 작업에서는 planner/index.html을 수정하지 않는다.
+
+기존 planner API는 유지한다.
+
+```text
+planner
+planner-auth
+planner/overview
+planner/feedback
+```
 
 ---
 
-### 11-3. 하이브리드
+### 4-3. OMR 구조 유지
 
-mode:
+1차에서는 OMR 완전 연결을 하지 않는다.
 
-```text
-hybrid
-```
+학생포털 홈에 OMR 카드는 표시한다.
 
-출력 방식:
+버튼 문구:
 
 ```text
-1부. 반별 공통 오답
-2부. 학생별 개인 오답
+OMR 입력
 ```
 
-1차에서 완전 구현이 어렵다면 payload 구조만 대비하고 UI 옵션은 남겨도 된다.
+1차 동작은 아래 중 하나로 한다.
+
+기본 권장:
+
+```text
+클릭 시 toast 또는 안내 카드:
+"OMR 입력은 준비 중입니다. 선생님이 안내한 시험 QR 또는 코드를 사용해 주세요."
+```
+
+주의:
+
+```text
+이번 1차에서 qr-omr.js 수정 금지
+학생용 OMR 전용 API 신설 금지
+기존 OMR 구조 변경 금지
+```
 
 ---
 
-## 12. wrongPrintPayload 구조
+## 5. 신규 Worker API 설계
 
-`clinic-print.js`가 생성해서 `sessionStorage`에 저장할 구조는 아래를 기준으로 한다.
+## 5-1. POST /api/student-portal/auth
 
-```js
+### 목적
+
+학생 이름 + PIN으로 로그인한다.
+
+### 요청
+
+```json
 {
-  version: "1.0",
-  mode: "student", 
-  // student | class | hybrid
-
-  printTitle: "중2A 오답 클리닉",
-  classId: "class_001",
-  className: "중2A",
-
-  range: {
-    type: "multi_exam",
-    from: "",
-    to: ""
-  },
-
-  options: {
-    groupByStudent: true,
-    groupByExam: true,
-    dedupeByQuestion: true,
-    showWrongStudents: true,
-    pageBreakByStudent: true,
-    includeAnswer: false,
-    includeSolution: false,
-    includeHomeworkCheckBox: true
-  },
-
-  exams: [
-    {
-      examKey: "2026-05-03|금당고 기출|exams/25_금당고.js|22",
-      examTitle: "금당고 기출",
-      examDate: "2026-05-03",
-      archiveFile: "exams/25_금당고.js",
-      questionCount: 22
-    }
-  ],
-
-  students: [
-    {
-      studentId: "stu_001",
-      studentName: "김민준",
-      wrongItems: [
-        {
-          examKey: "2026-05-03|금당고 기출|exams/25_금당고.js|22",
-          examTitle: "금당고 기출",
-          examDate: "2026-05-03",
-          archiveFile: "exams/25_금당고.js",
-          questionNo: 3,
-          unitKey: "H22-C-03",
-          unit: "인수분해"
-        }
-      ]
-    }
-  ],
-
-  classWrongItems: [
-    {
-      itemKey: "exams/25_금당고.js|3",
-      examTitle: "금당고 기출",
-      examDate: "2026-05-03",
-      archiveFile: "exams/25_금당고.js",
-      questionNo: 3,
-      wrongCount: 3,
-      wrongStudents: [
-        { studentId: "stu_001", studentName: "김민준" },
-        { studentId: "stu_002", studentName: "이서연" },
-        { studentId: "stu_003", studentName: "박지후" }
-      ],
-      unitKey: "H22-C-03",
-      unit: "인수분해"
-    }
-  ]
+  "name": "김민준",
+  "pin": "1234"
 }
 ```
 
----
-
-## 13. sessionStorage 저장 규칙
-
-저장 key:
+### 검증 조건
 
 ```text
-AP_CLINIC_PRINT_PAYLOAD
+1. name 필수
+2. pin 필수
+3. students.name = name
+4. students.student_pin = pin
+5. students.status = '재원'
 ```
 
-저장 후 열 경로:
+### 성공 응답
+
+```json
+{
+  "success": true,
+  "student": {
+    "id": "STU001",
+    "name": "김민준",
+    "grade": "중1",
+    "school_name": "금당중"
+  }
+}
+```
+
+### 실패 응답
+
+```json
+{
+  "success": false,
+  "message": "이름 또는 PIN을 확인하세요."
+}
+```
+
+### 보안 주의
+
+절대 반환 금지:
 
 ```text
-wrong_print_engine.html
+student_pin
+student_phone
+parent_phone
+guardian_name
+memo
+address
+상담 정보
+성적 정보
+다른 학생 정보
 ```
 
-`clinicPrintOpenEngine(payload)` 동작:
+### 동명이인 처리
 
-```js
-sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', JSON.stringify(payload));
-window.open('wrong_print_engine.html', '_blank', 'noopener');
-```
+이름이 같은 학생이 있어도 PIN으로 구분한다.
 
-경로는 `apmath/index.html` 기준에서 `apmath/wrong_print_engine.html`로 열리게 맞춘다.
-
----
-
-## 14. wrong_print_engine.html 신규 파일 설계
-
-파일 경로:
+단, 이름 + PIN 조합으로 2명 이상 조회되는 상황이 생기면 로그인 실패로 처리하고 아래 메시지를 반환한다.
 
 ```text
-apmath/wrong_print_engine.html
+동명이인 정보가 있습니다. 선생님께 문의하세요.
 ```
-
-### 역할
-
-1. `sessionStorage.AP_CLINIC_PRINT_PAYLOAD` 읽기
-2. payload 검증
-3. `archiveFile`별 JS아카이브 파일 fetch
-4. questionBank 추출
-5. `archiveFile + questionNo`로 원문 문항 찾기
-6. 학생별 오답지 렌더링
-7. 반별 공통 오답지 렌더링
-8. 인쇄 가능 화면 제공
-
----
-
-## 15. wrong_print_engine.html 필수 기능
-
-### 15-1. 상단 컨트롤바
-
-```text
-AP Math 오답 클리닉
-[문제지] [정답표] [해설지]
-[인쇄 / PDF 저장]
-```
-
-1차에서는 `[문제지]`만 완성해도 된다.
-
-정답표/해설지는 버튼만 두고, 가능하면 기본 구현한다.
 
 ---
 
-### 15-2. 아카이브 로딩
+## 5-2. GET /api/student-portal/home?student_id=...
 
-`archiveFile` 정규화 규칙:
+### 목적
+
+학생 홈에 필요한 본인 정보만 조회한다.
+
+### 요청
 
 ```text
-exams/파일명.js → archive/exams/파일명.js 또는 현재 상대경로 기준 확인
-파일명.js → exams/파일명.js
-http URL → 그대로 fetch
+GET /api/student-portal/home?student_id=STU001
+```
+
+### 검증 조건
+
+```text
+1. student_id 필수
+2. students.id = student_id
+3. students.status = '재원'
+```
+
+### 조회할 데이터
+
+학생 본인 기본 정보:
+
+```text
+students.id
+students.name
+students.grade
+students.school_name
+```
+
+학생 소속 반:
+
+```text
+class_students
+classes
+```
+
+진행 중 과제:
+
+```text
+homework_photo_assignments
+homework_photo_submissions
+classes
+```
+
+조회 조건:
+
+```text
+- 학생이 속한 class_id의 과제만
+- homework_photo_assignments.status != 'deleted'
+- 학생 본인의 homework_photo_submissions만
+- 최근/진행 과제 우선
+```
+
+권장 조건:
+
+```text
+WHERE hpa.status != 'deleted'
+AND hpa.class_id IN (학생 소속 반)
+AND hps.student_id = student_id
+ORDER BY hpa.due_date ASC, hpa.created_at DESC
+LIMIT 30
+```
+
+### 응답 예시
+
+```json
+{
+  "success": true,
+  "student": {
+    "id": "STU001",
+    "name": "김민준",
+    "grade": "중1",
+    "school_name": "금당중"
+  },
+  "assignments": [
+    {
+      "assignment_id": "HW001",
+      "title": "일차방정식 과제",
+      "class_id": "CLASS001",
+      "class_name": "중1A",
+      "due_date": "2026-05-13",
+      "due_time": "12:00",
+      "status": "active",
+      "is_submitted": 0,
+      "submitted_at": null
+    }
+  ],
+  "planner": {
+    "enabled": true,
+    "url": "/apmath/planner/?student_id=STU001"
+  },
+  "omr": {
+    "enabled": true,
+    "status": "coming_soon"
+  }
+}
+```
+
+### 절대 금지
+
+student-portal/home은 아래 데이터를 반환하면 안 된다.
+
+```text
+다른 학생 목록
+다른 학생 과제 제출 여부
+반 전체 명단
+student_pin
+전화번호
+보호자 정보
+상담 기록
+성적 기록
+오답 기록
+출결 기록
+```
+
+---
+
+## 6. apmath/student/index.html 설계
+
+## 6-1. 파일 위치
+
+신규 생성:
+
+```text
+apmath/student/index.html
+```
+
+단독 페이지로 만든다.
+
+core.js에 의존하지 않아도 된다.
+
+API_BASE는 현재 프로젝트 기준과 동일하게 둔다.
+
+```javascript
+const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
+```
+
+---
+
+## 6-2. 로그인 전 화면
+
+상단:
+
+```text
+AP Math OS
+학생 포털
+```
+
+본문:
+
+```text
+이름
+PIN
+로그인 버튼
+```
+
+안내 문구:
+
+```text
+이름과 PIN은 선생님께 받은 정보로 입력하세요.
+```
+
+오류 문구:
+
+```text
+이름 또는 PIN을 확인하세요.
+```
+
+---
+
+## 6-3. 로그인 성공 후 저장
+
+localStorage 사용.
+
+저장 키:
+
+```text
+APMATH_STUDENT_PORTAL_SESSION
+```
+
+저장 데이터:
+
+```json
+{
+  "student_id": "STU001",
+  "name": "김민준",
+  "grade": "중1",
+  "school_name": "금당중",
+  "login_at": "2026-05-12T00:00:00.000Z"
+}
+```
+
+저장 금지:
+
+```text
+PIN 원문 저장 금지
+전화번호 저장 금지
+보호자 정보 저장 금지
+```
+
+로그아웃 버튼을 제공하고, 누르면 위 localStorage 키를 삭제한다.
+
+---
+
+## 6-4. 로그인 후 홈 화면
+
+상단:
+
+```text
+김민준 학생
+금당중 · 중1
+로그아웃
+```
+
+카드 1 — 과제
+
+표시:
+
+```text
+과제
+미제출 n개
+제출 완료 n개
+```
+
+버튼:
+
+```text
+과제 보기
+```
+
+카드 2 — 플래너
+
+표시:
+
+```text
+플래너
+오늘 계획을 확인하고 체크하세요.
+```
+
+버튼:
+
+```text
+플래너 열기
+```
+
+동작:
+
+```javascript
+location.href = `../planner/?student_id=${encodeURIComponent(studentId)}`
+```
+
+카드 3 — OMR
+
+표시:
+
+```text
+OMR 입력
+시험 답안 입력은 준비 중입니다.
+```
+
+버튼:
+
+```text
+OMR 입력
+```
+
+1차 동작:
+
+```text
+안내 toast 또는 안내 박스 표시
+"OMR 입력은 준비 중입니다. 선생님이 안내한 시험 QR 또는 코드를 사용해 주세요."
+```
+
+---
+
+## 6-5. 과제 목록 화면
+
+과제 보기 클릭 시 같은 페이지 안에서 목록을 보여준다.
+
+섹션 1:
+
+```text
+미제출 과제
+```
+
+각 카드:
+
+```text
+과제 제목
+반 이름
+마감일
+제출하기 버튼
+```
+
+제출하기 버튼 이동:
+
+```javascript
+../homework/?assignment_id=과제ID&student_id=로그인학생ID
+```
+
+섹션 2:
+
+```text
+제출 완료
+```
+
+각 카드:
+
+```text
+과제 제목
+반 이름
+제출 시각
+확인 버튼
+```
+
+확인 버튼도 기존 homework 화면으로 이동해도 된다.
+
+과제가 없을 때:
+
+```text
+현재 진행 중인 과제가 없습니다.
+```
+
+---
+
+## 6-6. UI 기준
+
+AP Math OS 학생용 보조 화면 톤으로 만든다.
+
+권장:
+
+```text
+- 모바일 우선
+- 최대 너비 520px
+- Pretendard 적용
+- 상단 sticky header
+- 카드형 UI
+- font-weight 700 이하
+- 기존 homework/index.html과 비슷한 미니멀 톤
+```
+
+이미지 파일 추가하지 않는다.
+
+그래픽은 CSS로만 처리한다.
+
+---
+
+## 7. 구현 세부 흐름
+
+### 7-1. 학생포털 로딩
+
+```text
+1. localStorage에서 APMATH_STUDENT_PORTAL_SESSION 확인
+2. 세션 있으면 student_id로 student-portal/home 호출
+3. 성공하면 홈 렌더링
+4. 실패하면 세션 삭제 후 로그인 화면
+5. 세션 없으면 로그인 화면
+```
+
+### 7-2. 로그인
+
+```text
+1. 이름 입력
+2. PIN 입력
+3. POST student-portal/auth 호출
+4. 성공하면 localStorage 저장
+5. student-portal/home 호출
+6. 홈 렌더링
+```
+
+### 7-3. 과제 보기
+
+```text
+1. home API의 assignments 배열 사용
+2. is_submitted 기준으로 미제출 / 제출 완료 분리
+3. due_date 오름차순 또는 미제출 우선 정렬
+4. 제출하기 클릭 시 homework/index.html로 이동
+```
+
+---
+
+## 8. 기존 기능 회귀 방지
+
+반드시 지킬 것:
+
+```text
+1. 기존 homework/index.html 수정 금지
+2. 기존 planner/index.html 수정 금지
+3. 기존 classroom.js 수정 금지
+4. 기존 core.js 수정 금지
+5. 기존 QR/OMR 파일 수정 금지
+6. 기존 Worker API 삭제 금지
+7. 기존 API 응답 구조 변경 금지
+8. schema.sql 수정 금지
+9. D1 migration 추가 금지
+10. 불필요한 리팩터링 금지
+```
+
+특히 건드리지 말 것:
+
+```text
+verifyAuth
+canAccessStudent
+canAccessClass
+homework-photo/*
+planner/*
+check-pin
+check-init
+initial-data
+exam-sessions
+wrong_answers
+attendance
+homework
+```
+
+---
+
+## 9. 검토 시 확인할 Worker 위치
+
+Codex는 index.js에서 현재 라우팅 구조를 확인한다.
+
+확인할 기존 resource:
+
+```text
+auth
+homework-photo
+planner
+check-pin
+check-init
+initial-data
+```
+
+student-portal은 새 resource로 추가한다.
+
+예상 구조:
+
+```javascript
+if (resource === 'student-portal') {
+  if (method === 'POST' && id === 'auth') { ... }
+  if (method === 'GET' && id === 'home') { ... }
+}
+```
+
+단, 실제 index.js 라우팅 구조에 맞춰 가장 안전한 위치에 추가한다.
+
+기존 라우팅을 깨지 마라.
+
+---
+
+## 10. SQL 설계 주의
+
+학생 로그인:
+
+```sql
+SELECT id, name, grade, school_name, status
+FROM students
+WHERE name = ?
+  AND student_pin = ?
+  AND status = '재원'
+```
+
+동명이인 중복 확인을 위해 all()로 조회하는 것이 안전하다.
+
+학생 홈 기본 정보:
+
+```sql
+SELECT id, name, grade, school_name, status
+FROM students
+WHERE id = ?
+  AND status = '재원'
+```
+
+과제 목록 조회 예시:
+
+```sql
+SELECT
+  hpa.id AS assignment_id,
+  hpa.title,
+  hpa.class_id,
+  c.name AS class_name,
+  hpa.due_date,
+  hpa.due_time,
+  hpa.status,
+  hps.is_submitted,
+  hps.submitted_at
+FROM homework_photo_assignments hpa
+JOIN homework_photo_submissions hps ON hps.assignment_id = hpa.id
+LEFT JOIN classes c ON c.id = hpa.class_id
+WHERE hps.student_id = ?
+  AND hpa.status != 'deleted'
+ORDER BY hpa.due_date ASC, hpa.created_at DESC
+LIMIT 30
 ```
 
 주의:
 
-현재 AP Math OS에서 JS아카이브 경로는 배포 구조에 따라 다를 수 있다.
-
-우선 `report.js`의 archive base URL 구조를 참고한다.
-
-필요하면 아래 base URL을 사용한다.
-
-```js
-const ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+```text
+student_id로 본인 제출 row만 조회한다.
+class 전체 제출 현황 조회 금지.
 ```
 
 ---
 
-### 15-3. questionBank 추출
+## 11. node 검사 기준
 
-아카이브 JS 파일은 `window.questionBank` 구조일 수 있다.
+수정 또는 신규 JS 파일은 검사한다.
 
-다음 형태를 지원한다.
-
-```text
-window.questionBank = [...]
-window.questionBank = { questions: [...] }
-window.questionBank = { items: [...] }
-window.questionBank = { data: [...] }
-```
-
-문항 번호 후보:
-
-```text
-questionNo
-question_no
-no
-number
-qno
-qid
-id
-배열 index + 1
-```
-
----
-
-### 15-4. 문항 렌더링
-
-`mixed_engine.html`의 출력 스타일을 참고한다.
-
-필수 출력:
-
-```text
-문항 번호
-발문 content
-보기 choices
-이미지/image 필드
-표/table HTML
-```
-
-지원 필드 후보:
-
-```text
-content
-question
-text
-prompt
-choices
-options
-answer
-solution
-explanation
-image
-imageUrl
-```
-
----
-
-### 15-5. 학생별 출력
-
-학생별 오답지는 다음 구조로 출력한다.
-
-```text
-[학생명] 오답지
-반명 · 시험명 또는 오답 클리닉 · 날짜
-
-문제 1
-문제 2
-문제 3
-
-숙제 체크란:
-□ 다시 풀기 완료
-□ 풀이 과정 확인
-□ 선생님 확인
-```
-
-학생별 페이지 분리 적용.
-
----
-
-### 15-6. 반별 공통 오답 출력
-
-반별 공통 오답지는 다음 구조로 출력한다.
-
-```text
-[반명] 반별 공통 오답지
-
-문항 정보:
-시험명 · 원본 번호
-
-오답 학생:
-김민준, 이서연, 박지후 / 총 3명
-
-문제 본문
-보기
-```
-
-정렬 기준:
-
-1. wrongCount 내림차순
-2. examDate 오름차순 또는 내림차순
-3. questionNo 오름차순
-
----
-
-## 16. 단원 정보 연결
-
-가능하면 `exam_blueprints` 정보를 활용한다.
-
-각 wrongItem 생성 시 다음 정보를 넣는다.
-
-```text
-unitKey
-unit
-course
-cluster
-```
-
-찾는 기준:
-
-```text
-archive_file === session.archive_file
-question_no === wrong_answers.question_id
-```
-
-없으면 빈 값으로 둔다.
-
----
-
-## 17. 1차 제외 항목
-
-아래는 이번에 구현하지 않는다.
-
-```text
-재풀이 완료 저장
-반복 오답 DB 저장
-오답 출력 이력 저장
-AI 코멘트 생성
-학부모용 요약지
-카카오톡 자동 발송
-Worker API 추가
-D1 schema 변경
-```
-
----
-
-## 18. 구현 전 먼저 보고할 것
-
-Codex는 파일 수정 전에 먼저 아래를 보고한다.
-
-```text
-1. 이해한 작업 범위
-2. 수정/신규 생성할 파일 목록
-3. classroom.js에서 버튼을 넣을 정확한 위치
-4. clinic-print.js 내부 함수 설계
-5. wrong_print_engine.html 내부 렌더링 설계
-6. mixed_engine.html에서 참고할 함수/스타일
-7. report.js에서 참고할 archive 로딩 로직
-8. qr-omr.js에서 참고할 시험 이력 로직
-9. 예상 위험 지점
-10. Worker 수정 없이 가능한지 최종 판단
-```
-
-파일 수정은 이 보고 이후 승인받고 진행한다.
-
----
-
-## 19. 구현 후 검수 조건
-
-구현 완료 후 반드시 아래를 보고한다.
-
-```text
-1. 신규 파일 목록
-2. 수정 파일 목록
-3. 각 파일별 변경 요약
-4. 기존 기능 영향 여부
-5. node --check 결과
-6. 브라우저 수동 테스트 체크리스트
-7. 미구현/2차 확장 항목
-```
-
-필수 명령:
+이번 작업에서 검사 대상:
 
 ```bash
-node --check apmath/js/classroom.js
-node --check apmath/js/clinic-print.js
+node --check apmath/worker-backup/worker/index.js
 ```
 
-HTML 파일은 `node --check` 대상이 아니므로 `wrong_print_engine.html` 내부 `<script>` 문법을 자체 점검한다.
+HTML 내부 script는 별도 파일이 아니므로 node --check 직접 대상은 아니다.
+
+다만 Codex는 `apmath/student/index.html` 내부 script 문법을 자체 점검해야 한다.
+
+가능하면 임시로 script 부분을 추출해 문법 오류가 없는지 확인한다.
 
 ---
 
-## 20. 수동 테스트 체크리스트
+## 12. 구현 전 Codex 보고 형식
 
-브라우저에서 아래 흐름을 확인한다.
+이번 실행에서는 아직 구현하지 않는다.
+
+아래 형식으로만 보고한다.
 
 ```text
-1. AP Math OS 로그인
-2. 반 화면 진입
-3. [오답지 출력] 버튼 표시 확인
-4. 버튼 클릭 시 오답 클리닉 출력 센터 모달 표시
-5. 시험 목록 표시 확인
-6. 오답 있는 학생 표시 확인
-7. 학생별 오답지 생성
-8. wrong_print_engine.html 새 창 열림
-9. 학생별 페이지 분리 확인
-10. 반별 공통 오답지 생성
-11. 같은 문제 중복 제거 확인
-12. 문항별 오답 학생명/인원 표시 확인
-13. 인쇄 버튼 동작 확인
-14. 기존 QR/OMR 입력 기능 정상 확인
-15. 기존 반 화면 출석/숙제 버튼 정상 확인
+1. 이해한 작업 목표
+
+2. 수정/신규 파일 목록
+- 신규:
+- 수정:
+- 수정 금지:
+
+3. 수정 위치
+- worker/index.js 어디에 student-portal을 넣을지
+- student/index.html 구조
+
+4. 구현 방식
+- auth API
+- home API
+- student/index.html 흐름
+
+5. 위험하거나 확인 필요한 지점
+- 학생 이름 중복
+- student_pin 컬럼명
+- homework_photo_* 컬럼명
+- 기존 router 구조
+- OMR 1차 처리 방식
+
+6. 기존 기능 회귀 가능성
+- homework-photo
+- planner
+- OMR
+- initial-data
+
+7. Worker/DB 수정 여부
+- Worker 수정 필요
+- D1 schema 변경 없음
+- migration 없음
+
+8. 구현 승인 후 실행할 검사
+- node --check apmath/worker-backup/worker/index.js
+- student/index.html 내부 script 점검
 ```
 
 ---
 
-## 21. 최종 주의
+## 13. 완료 보고 방식
 
-이 작업의 핵심은 “선생님 원클릭 오답지 출력”이다.
+이번은 검토 전용이므로 CODEX_RESULT.md를 만들지 않아도 된다.
 
-선생님이 직접 믹서에 들어가 문제를 고르게 만들면 실패다.
+다만 구현 단계로 넘어갈 때는 반드시 아래 원칙을 적용한다.
 
-정답은 다음 구조다.
+완료 보고는 터미널에 길게 출력하지 마라.
+
+프로젝트 루트에 CODEX_RESULT.md 파일을 만들고, 아래 내용만 정리해서 저장해라.
 
 ```text
-반 화면
-→ 오답지 출력
-→ 시험/학생 자동 선택
-→ wrong_print_engine.html
-→ 바로 인쇄
+1. 수정/신규 파일 목록
+2. 구현 완료 기능
+3. node --check 결과
+4. 수동 테스트 체크리스트
+5. 미구현/주의 항목
 ```
 
-최대한 기존 시스템을 건드리지 말고, 신규 기능은 `clinic-print.js`와 `wrong_print_engine.html`에 격리한다.
+터미널에는 아래 한 줄만 출력해라.
 
+```text
+CODEX_RESULT.md에 완료 보고를 저장했습니다.
 ```
-```
+
+````
+
+```text
+Codex에 입력할 문구:
+
+CODEX_TASK.md를 읽어라.
+
+아직 파일을 수정하지 마라.
+먼저 아래만 보고해라.
+
+1. 이해한 작업 목표
+2. 수정/신규 파일 목록
+3. 수정 위치
+4. 구현 방식
+5. 위험하거나 확인 필요한 지점
+6. 기존 기능 회귀 가능성
+7. Worker/DB 수정이 필요한지 여부
+8. 구현 승인 후 실행할 검사
+
+내 승인 전까지 파일 수정 금지.
+````
