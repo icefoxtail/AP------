@@ -2499,7 +2499,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
 
             <section class="aprc-pdf-section aprc-pdf-point-grid">
                 <article class="aprc-pdf-panel">
-                    <div class="aprc-section-title">잘한 점</div>
+                    <div class="aprc-section-title">현재 위치</div>
                     <p>${reportCenterEscape(coreItems[0].text || '이번 평가에서 안정적인 풀이 흐름을 보여주었습니다.')}</p>
                 </article>
                 <article class="aprc-pdf-panel">
