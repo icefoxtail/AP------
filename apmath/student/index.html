@@ -253,6 +253,18 @@
     .portal-mark svg { width:22px; height:22px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     .portal-mark.green { background:rgba(0,184,148,0.10); color:var(--success); }
     .portal-mark.orange { background:rgba(255,165,2,0.12); color:var(--warning); }
+    .omr-list { display:flex; flex-direction:column; gap:10px; }
+    .omr-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
+    .omr-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .omr-title { font-size:15px; font-weight:700; color:var(--text); line-height:1.35; }
+    .omr-meta { margin-top:6px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; }
+    .omr-status { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:700; }
+    .omr-status.pending { background:rgba(26,92,255,0.09); color:var(--primary); }
+    .omr-status.done { background:rgba(0,184,148,0.10); color:#008F72; }
+    .omr-sheet { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:14px; }
+    .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .omr-no.wrong { background:rgba(232,65,79,0.10); border-color:rgba(232,65,79,0.22); color:var(--error); }
+    .omr-submit-bar { position:sticky; bottom:0; z-index:10; padding:12px 0 calc(12px + env(safe-area-inset-bottom)); background:linear-gradient(180deg,rgba(242,244,246,0),rgba(242,244,246,0.92) 28%,rgba(242,244,246,0.98)); }
     .assignment-list { display:flex; flex-direction:column; gap:10px; }
     .assignment-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
     .assignment-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
@@ -314,6 +326,9 @@
       .summary-grid { min-width:0; width:100%; }
       .portal-grid { grid-template-columns:1fr; gap:12px; }
       .portal-card { min-height:auto; }
+      .omr-sheet { grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
+      .omr-no { min-height:44px; }
+
       .section-title { color:var(--text); }
     }
     @media (max-width:380px) {
@@ -345,6 +360,8 @@
 
     let session = null;
     let homeData = null;
+    let omrData = null;
+    let omrDraft = null;
     let isLoading = false;
 
     function $(id) { return document.getElementById(id); }
@@ -545,11 +562,11 @@
               <div class="portal-head">
                 <div>
                   <h2 class="card-title">OMR 입력</h2>
-                  <p class="card-desc">시험 답안 입력은 준비 중입니다.</p>
+                  <p class="card-desc">선생님이 출제한 시험지를 선택하고 틀린 번호만 체크합니다.</p>
                 </div>
                 <div class="portal-mark orange">${renderIcon('omr')}</div>
               </div>
-              <button class="btn" onclick="openOmrNotice()">OMR 입력</button>
+              <button class="btn" onclick="renderOmrExams()">OMR 입력</button>
             </section>
           </div>
         </div>
@@ -603,8 +620,153 @@
       if (!session?.student_id) return toast('로그인이 필요합니다.');
       location.href = `../planner/?student_id=${encodeURIComponent(session.student_id)}`;
     }
-    function openOmrNotice() {
-      toast('OMR 입력은 준비 중입니다. 선생님이 안내한 시험 QR 또는 코드를 사용해 주세요.');
+    async function loadOmrExams(force = false) {
+      if (!session?.student_id || !session?.student_token) throw new Error('로그인이 필요합니다.');
+      if (!force && omrData?.exams) return omrData;
+      omrData = await apiGet(`student-portal/exams?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      return omrData;
+    }
+    function getOmrExams() {
+      return Array.isArray(omrData?.exams) ? omrData.exams : [];
+    }
+    async function renderOmrExams() {
+      setTopStudent(homeData?.student?.name || session?.name || '');
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <button class="btn back-btn" onclick="renderHome()">← 홈</button>
+          <section class="card">
+            <h1 class="card-title">OMR 입력</h1>
+            <p class="card-desc">선생님이 출제한 시험지를 선택하고, 틀린 번호만 체크해서 제출하세요.</p>
+          </section>
+          <div class="omr-list"><div class="empty">시험지를 불러오는 중입니다.</div></div>
+        </div>
+      `;
+      try {
+        await loadOmrExams(true);
+        const exams = getOmrExams();
+        const root = document.querySelector('.omr-list');
+        if (!root) return;
+        root.innerHTML = exams.length
+          ? exams.map(renderOmrExamCard).join('')
+          : '<div class="empty">아직 입력할 시험지가 없습니다.</div>';
+      } catch (e) {
+        toast(e.message || '시험지를 불러오지 못했습니다.');
+        const root = document.querySelector('.omr-list');
+        if (root) root.innerHTML = '<div class="empty">시험지를 불러오지 못했습니다.</div>';
+      }
+    }
+    function renderOmrExamCard(exam) {
+      const submitted = Number(exam.is_submitted || 0) === 1;
+      const count = Number(exam.question_count || 0);
+      const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
+      const status = submitted ? `제출 완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '입력 전';
+      return `
+        <article class="omr-card">
+          <div class="omr-top">
+            <div style="min-width:0;">
+              <div class="omr-title">${escapeHtml(exam.exam_title || '시험지')}</div>
+              <div class="omr-meta">${escapeHtml(meta || 'AP수학 시험')}</div>
+            </div>
+            <span class="omr-status ${submitted ? 'done' : 'pending'}">${escapeHtml(status)}</span>
+          </div>
+          <div class="row-actions">
+            <button class="btn ${submitted ? '' : 'btn-primary'}" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">${submitted ? '수정하기' : '입력하기'}</button>
+          </div>
+        </article>
+      `;
+    }
+    function findOmrExam(assignmentId) {
+      return getOmrExams().find(exam => String(exam.assignment_id) === String(assignmentId));
+    }
+    function normalizeOmrWrongIds(values) {
+      return Array.from(new Set((Array.isArray(values) ? values : [])
+        .map(v => parseInt(v, 10))
+        .filter(v => Number.isFinite(v) && v > 0)))
+        .sort((a, b) => a - b);
+    }
+    function renderOmrInput(assignmentId) {
+      const exam = findOmrExam(assignmentId);
+      if (!exam) {
+        toast('시험지를 찾을 수 없습니다.');
+        return;
+      }
+      const count = Number(exam.question_count || 0);
+      if (!count) {
+        toast('문항 수가 없어 입력할 수 없습니다.');
+        return;
+      }
+      omrDraft = {
+        assignment_id: exam.assignment_id,
+        wrong_ids: normalizeOmrWrongIds(exam.wrong_ids)
+      };
+      drawOmrInput(exam);
+    }
+    function drawOmrInput(exam) {
+      const count = Number(exam.question_count || 0);
+      const wrongSet = new Set(normalizeOmrWrongIds(omrDraft?.wrong_ids));
+      const meta = [exam.class_name || '', exam.exam_date || '', `${count}문항`].filter(Boolean).join(' · ');
+      const buttons = Array.from({ length: count }, (_, idx) => {
+        const no = idx + 1;
+        return `<button class="omr-no ${wrongSet.has(no) ? 'wrong' : ''}" onclick="toggleOmrWrong(${no})">${no}</button>`;
+      }).join('');
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <button class="btn back-btn" onclick="renderOmrExams()">← 시험 목록</button>
+          <section class="card">
+            <h1 class="card-title">${escapeHtml(exam.exam_title || 'OMR 입력')}</h1>
+            <p class="card-desc">${escapeHtml(meta)}<br>틀린 번호만 눌러 빨간색으로 표시한 뒤 제출하세요.</p>
+            <div class="notice" style="margin-top:14px;">현재 선택한 오답 <strong>${wrongSet.size}개</strong> · 예상 점수 <strong>${Math.round(((count - wrongSet.size) / count) * 100)}점</strong></div>
+            <div class="omr-sheet">${buttons}</div>
+          </section>
+          <div class="omr-submit-bar">
+            <button id="omr-submit-btn" class="btn btn-primary" onclick="submitOmr()">OMR 제출</button>
+          </div>
+        </div>
+      `;
+    }
+    function toggleOmrWrong(no) {
+      if (!omrDraft) return;
+      const wrong = new Set(normalizeOmrWrongIds(omrDraft.wrong_ids));
+      if (wrong.has(no)) wrong.delete(no);
+      else wrong.add(no);
+      omrDraft.wrong_ids = Array.from(wrong).sort((a, b) => a - b);
+      const exam = findOmrExam(omrDraft.assignment_id);
+      if (exam) drawOmrInput(exam);
+    }
+    async function submitOmr() {
+      if (isLoading || !omrDraft) return;
+      const exam = findOmrExam(omrDraft.assignment_id);
+      if (!exam) return toast('시험지를 찾을 수 없습니다.');
+      const btn = $('omr-submit-btn');
+      isLoading = true;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '제출 중...';
+      }
+      try {
+        const data = await apiPost('student-portal/omr-submit', {
+          student_id: session.student_id,
+          student_token: session.student_token,
+          assignment_id: omrDraft.assignment_id,
+          wrong_ids: normalizeOmrWrongIds(omrDraft.wrong_ids)
+        });
+        const sessionResult = data.session || {};
+        exam.is_submitted = 1;
+        exam.session_id = sessionResult.id || exam.session_id;
+        exam.score = sessionResult.score;
+        exam.submitted_at = new Date().toISOString();
+        exam.wrong_ids = normalizeOmrWrongIds(sessionResult.wrong_ids || omrDraft.wrong_ids);
+        toast('OMR이 제출되었습니다.');
+        await renderOmrExams();
+      } catch (e) {
+        toast(e.message || 'OMR 제출에 실패했습니다.');
+      } finally {
+        isLoading = false;
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'OMR 제출';
+        }
+      }
     }
     function logoutStudent() {
       clearSession();
