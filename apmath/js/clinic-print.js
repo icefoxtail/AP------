@@ -24,8 +24,10 @@ function clinicPrintNormalizeArchiveFile(file) {
     const raw = String(file || '').trim();
     if (!raw) return '';
     if (/^https?:\/\//i.test(raw)) return raw;
-    if (raw.startsWith('exams/')) return raw;
-    return `exams/${raw.replace(/^\.\//, '')}`;
+    let path = raw.replace(/^archive\//, '').replace(/^\.\//, '').replace(/^\//, '');
+    if (!path.endsWith('.js')) path += '.js';
+    if (!/^(exams|assets|data)\//.test(path)) path = `exams/${path}`;
+    return path;
 }
 
 function clinicPrintMakeExamKey(examDate, examTitle, archiveFile, questionCount) {
@@ -62,7 +64,7 @@ function clinicPrintGetClassStudents(classId) {
 }
 
 function clinicPrintGetSessionArchiveFile(session) {
-    return clinicPrintNormalizeArchiveFile(session?.archive_file || '');
+    return String(session?.archive_file || '').trim();
 }
 
 function clinicPrintGetClassExamGroups(classId) {
@@ -73,6 +75,7 @@ function clinicPrintGetClassExamGroups(classId) {
         if (!studentIds.has(String(session.student_id))) return;
 
         const archiveFile = clinicPrintGetSessionArchiveFile(session);
+        console.log('[clinic-print] archiveFile', archiveFile);
         const questionCount = Number(session.question_count || 0);
         const key = clinicPrintMakeExamKey(session.exam_date, session.exam_title, archiveFile, questionCount);
 
@@ -108,7 +111,7 @@ function clinicPrintGetSessionsForExamGroup(classId, examGroupKey) {
         return key === examGroupKey || (
             String(session.exam_date || '') === group.examDate &&
             String(session.exam_title || '') === group.examTitle &&
-            clinicPrintGetSessionArchiveFile(session) === group.archiveFile &&
+            String(clinicPrintGetSessionArchiveFile(session) || '') === String(group.archiveFile || '') &&
             Number(session.question_count || 0) === group.questionCount
         );
     });
@@ -145,6 +148,7 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
             if (!student || (selectedStudents.size && !selectedStudents.has(studentId))) return;
 
             const archiveFile = clinicPrintGetSessionArchiveFile(session);
+            console.log('[clinic-print] archiveFile', archiveFile);
             if (!archiveFile) return;
 
             const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
@@ -264,7 +268,7 @@ function clinicPrintBuildPayload(classId, config) {
                 examKey: key,
                 examTitle: group.examTitle || '',
                 examDate: group.examDate || '',
-                archiveFile: clinicPrintNormalizeArchiveFile(group.archiveFile || ''),
+                archiveFile: group.archiveFile || '',
                 questionCount: Number(group.questionCount || 0)
             };
         }),
@@ -361,6 +365,42 @@ function clinicPrintSubmit(classId) {
     }
 
     clinicPrintOpenEngine(payload);
+}
+
+function openClinicCenter(classId = '') {
+    const hasClassId = !!String(classId || '').trim();
+
+    showModal('클리닉', `
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
+            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="if('${clinicPrintEscapeAttr(classId)}'){ openClinicPrintCenter('${clinicPrintEscapeAttr(classId)}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
+            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="clinicPrintOpenSimilarMenu('${clinicPrintEscapeAttr(classId)}')">유사문항</button>
+        </div>
+        <style>
+            @media (max-width:520px) {
+                #modal-body > div { grid-template-columns:1fr !important; }
+            }
+        </style>
+    `);
+}
+
+function clinicPrintOpenSimilarMenu(classId = '') {
+    const hasClassId = !!String(classId || '').trim();
+
+    if (hasClassId) {
+        if (typeof openClinicBasketForClass === 'function') {
+            openClinicBasketForClass(classId);
+            return;
+        }
+        toast('준비 중입니다.', 'info');
+        return;
+    }
+
+    if (typeof openClinicBasket === 'function') {
+        openClinicBasket();
+        return;
+    }
+
+    toast('준비 중입니다.', 'info');
 }
 
 function openClinicPrintCenter(classId) {
