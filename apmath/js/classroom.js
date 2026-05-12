@@ -422,7 +422,8 @@ async function toggleAttendanceTag(studentId, date, tag) {
     const meta = getAttendanceMetaForStudentDate(sid, d);
     const prevTags = stringifyAttendanceTags(meta.tags);
     const prevMemo = meta.memo;
-    const nextTags = meta.tags.includes(tag)
+    const wasOn = meta.tags.includes(tag);
+    const nextTags = wasOn
         ? meta.tags.filter(v => v !== tag)
         : meta.tags.concat(tag);
     const nextTagText = stringifyAttendanceTags(nextTags);
@@ -434,11 +435,69 @@ async function toggleAttendanceTag(studentId, date, tag) {
     try {
         const r = await api.patch('attendance', { studentId: sid, date: d, tags: nextTagText });
         if (!r?.success) throw new Error('fail');
+        if (tag === '보강' && !wasOn) {
+            openClassroomAttendanceMemoModal(sid, d, {
+                title: '보강 메모',
+                subtitle: '어떤 보강인지 간단히 적어두세요.',
+                placeholder: '예: 5/10 결석 보강, 함수 문제풀이 보강, 시험 전 보충 등',
+                requiredTag: '보강'
+            });
+        }
     } catch (e) {
         syncAttendanceMetaToState(sid, d, prevTags, prevMemo);
         renderAttendanceLedgerCellIfOpen(sid, d);
         if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
         toast('저장 실패', 'warn');
+    }
+}
+
+
+function openClassroomAttendanceMemoModal(studentId, date, options = {}) {
+    const sid = String(studentId);
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const student = (state.db.students || []).find(s => String(s.id) === sid);
+    const meta = getAttendanceMetaForStudentDate(sid, d);
+    const title = options.title || '출결 메모';
+    const subtitle = options.subtitle || '출결 관련 메모를 남겨두세요.';
+    const placeholder = options.placeholder || '메모를 입력하세요.';
+    const requiredTag = String(options.requiredTag || '').trim();
+
+    showModal(title, `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="padding:12px; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);">
+                <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.4;">${apEscapeHtml(student?.name || '학생')}</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.45;">${apEscapeHtml(d)} · ${apEscapeHtml(subtitle)}</div>
+            </div>
+            <textarea id="classroom-attendance-quick-memo" class="cls-input" placeholder="${apEscapeHtml(placeholder)}" style="height:120px; resize:none; line-height:1.6;">${apEscapeHtml(meta.memo)}</textarea>
+            <button class="btn btn-primary" style="width:100%; min-height:50px; font-size:14px; font-weight:700; border-radius:14px;" onclick="saveClassroomAttendanceQuickMemo('${sid}', '${d}', '${apEscapeHtml(requiredTag)}')">저장</button>
+        </div>
+    `);
+}
+
+async function saveClassroomAttendanceQuickMemo(studentId, date, requiredTag = '') {
+    const sid = String(studentId);
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const prev = getAttendanceMetaForStudentDate(sid, d);
+    const memo = document.getElementById('classroom-attendance-quick-memo')?.value.trim() || '';
+    let tags = prev.tags.slice();
+    const tag = String(requiredTag || '').trim();
+    if (tag && !tags.includes(tag)) tags.push(tag);
+    const tagText = stringifyAttendanceTags(tags);
+
+    syncAttendanceMetaToState(sid, d, tags, memo);
+    renderAttendanceLedgerCellIfOpen(sid, d);
+    if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+
+    try {
+        const r = await api.patch('attendance', { studentId: sid, date: d, tags: tagText, memo });
+        if (!r?.success) throw new Error('fail');
+        toast('메모 저장 완료', 'success');
+        closeModal(true);
+    } catch (e) {
+        syncAttendanceMetaToState(sid, d, prev.tags, prev.memo);
+        renderAttendanceLedgerCellIfOpen(sid, d);
+        if (state.ui.currentClassId) updateStudentRowDOM(sid, state.ui.currentClassId);
+        toast('메모 저장 실패', 'warn');
     }
 }
 
@@ -1490,6 +1549,13 @@ async function toggleAtt(sid, date) {
     try {
         const r = await api.patch('attendance', { studentId: sid, status: next, date: today });
         if (!r?.success) throw new Error('fail');
+        if (next === '결석') {
+            openClassroomAttendanceMemoModal(sid, today, {
+                title: '결석 사유',
+                subtitle: '결석 사유를 간단히 적어두세요.',
+                placeholder: '예: 감기, 가족 일정, 학교 행사, 무단 결석 등'
+            });
+        }
         if (typeof refreshDataOnly === 'function') {
             refreshDataOnly()
                 .then(() => {
