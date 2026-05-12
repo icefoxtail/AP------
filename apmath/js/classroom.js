@@ -2033,17 +2033,13 @@ function renderPlannerOverviewTable(classId, date, rows) {
         const fbText = fb ? `${fb.badge || ''} ${fb.teacher_comment || '피드백 저장됨'}`.trim() : '미작성';
         return `
             <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:12px 10px; font-size:14px; font-weight:700; color:var(--text);">${apEscapeHtml(row.name)}</td>
+                <td style="padding:12px 10px; font-size:14px; font-weight:700; color:var(--primary); cursor:pointer; text-decoration:none;" title="플래너 상세 보기" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">${apEscapeHtml(row.name)}</td>
                 <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--text);">${Number(row.total || 0)}</td>
                 <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--primary);">${Number(row.done || 0)}</td>
                 <td style="padding:12px 10px;">${renderPlannerRateBar(row.rate)}</td>
                 <td style="padding:12px 10px; font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${apEscapeHtml(fbText)}</td>
                 <td style="padding:12px 10px; text-align:right;">
-                    <div style="display:flex; gap:6px; justify-content:flex-end;">
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
-                    </div>
+                    <button class="btn" style="min-height:36px; padding:8px 12px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
                 </td>
             </tr>
         `;
@@ -2056,7 +2052,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
             <div style="border:1px solid var(--border); border-radius:16px; padding:14px; background:var(--surface); margin-bottom:10px;">
                 <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:10px;">
                     <div style="min-width:0;">
-                        <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(row.name)}</div>
+                        <div style="font-size:15px; font-weight:700; color:var(--primary); line-height:1.3; cursor:pointer;" title="플래너 상세 보기" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">${apEscapeHtml(row.name)}</div>
                         <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">할 일 ${Number(row.total || 0)} · 완료 ${Number(row.done || 0)}</div>
                     </div>
                     <div style="font-size:15px; font-weight:700; color:var(--primary);">${Number(row.rate || 0)}%</div>
@@ -2064,9 +2060,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
                 ${renderPlannerRateBar(row.rate)}
                 <div style="font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; margin-top:10px; line-height:1.5;">${apEscapeHtml(fbText)}</div>
                 <div style="display:flex; gap:8px; margin-top:12px;">
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
                     <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
                 </div>
             </div>
         `;
@@ -2092,7 +2086,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
                         <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:700; color:var(--secondary);">완료</th>
                         <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">이행률</th>
                         <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">피드백</th>
-                        <th style="padding:10px; text-align:right; font-size:12px; font-weight:700; color:var(--secondary);">관리</th>
+                        <th style="padding:10px; text-align:right; font-size:12px; font-weight:700; color:var(--secondary);">피드백</th>
                     </tr>
                 </thead>
                 <tbody>${desktopRows}</tbody>
