@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AP Math OS 1.0 [js/classroom.js] - Classroom v4 FINAL
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Minimalism Polish]: 46px 1줄 압축 뷰, 파스텔 상태 뱃지, 모바일 핀포인트 렌더링
@@ -1207,11 +1207,7 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
         <div class="cls-v4-tools">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
-<<<<<<< HEAD
             <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도관리</button>
-=======
-            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도</button>
->>>>>>> 940381f772a50f93f61a2796fb2243827fe4b4fc
             <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoHubModal('${cid}')">과제</button>
             <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
@@ -2266,3 +2262,4 @@ async function savePlannerFeedback(studentId, date, currentRate) {
         toast('피드백 저장 중 오류가 발생했습니다.', 'error');
     }
 }
+
