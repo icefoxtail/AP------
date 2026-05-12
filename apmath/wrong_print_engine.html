@@ -185,7 +185,7 @@
 
 <script>
 const STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
-const FALLBACK_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+const ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
 const state = { payload: null, banks: {}, questions: {}, mode: 'exam' };
 
 function escapeHtml(value) {
@@ -202,33 +202,28 @@ function normalizeArchiveFile(file) {
     const raw = String(file || '').trim();
     if (!raw) return '';
     if (/^https?:\/\//i.test(raw)) return raw;
-    if (raw.startsWith('exams/')) return raw;
-    return `exams/${raw.replace(/^\.\//, '')}`;
+    let path = raw.replace(/^archive\//, '').replace(/^\.\//, '').replace(/^\//, '');
+    if (!path.endsWith('.js')) path += '.js';
+    if (!/^(exams|assets|data)\//.test(path)) path = `exams/${path}`;
+    return path;
 }
 
-function getArchiveCandidateUrls(file) {
+function getArchiveUrl(file) {
     const path = normalizeArchiveFile(file);
-    if (!path) return [];
-    if (/^https?:\/\//i.test(path)) return [path];
-    return [
-        new URL(`../archive/${path}`, window.location.href).href,
-        new URL(path, FALLBACK_ARCHIVE_BASE_URL).href
-    ];
+    if (!path) return '';
+    if (/^https?:\/\//i.test(path)) return path;
+    const encodedPath = path.split('/').map(part => encodeURIComponent(part)).join('/');
+    return ARCHIVE_BASE_URL + encodedPath;
 }
 
 async function fetchArchiveText(file) {
-    const urls = getArchiveCandidateUrls(file);
-    let lastError = null;
-    for (const url of urls) {
-        try {
-            const res = await fetch(url, { cache: 'force-cache' });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            return await res.text();
-        } catch (e) {
-            lastError = e;
-        }
-    }
-    throw lastError || new Error('archive file missing');
+    console.log('[wrong_print_engine] loading archiveFile', file);
+    const url = getArchiveUrl(file);
+    console.log('[wrong_print_engine] archive url', url);
+    if (!url) throw new Error('archive file missing');
+    const res = await fetch(url, { cache: 'force-cache' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.text();
 }
 
 function extractQuestionBank(jsText) {
@@ -287,14 +282,14 @@ function getAllPrintItems(payload) {
 }
 
 async function loadAllQuestionBanks(payload) {
-    const files = [...new Set(getAllPrintItems(payload).map(item => normalizeArchiveFile(item.archiveFile)).filter(Boolean))];
+    const files = [...new Set(getAllPrintItems(payload).map(item => item.archiveFile).filter(Boolean))];
     for (const file of files) {
         try {
             const text = await fetchArchiveText(file);
-            state.banks[file] = extractQuestionBank(text);
+            state.banks[normalizeArchiveFile(file)] = extractQuestionBank(text);
         } catch (e) {
             console.warn('[wrong_print_engine] archive load failed:', file, e);
-            state.banks[file] = null;
+            state.banks[normalizeArchiveFile(file)] = null;
         }
     }
 }
