@@ -27,6 +27,86 @@ function normalizeQrArchiveFile(raw = '') {
     const s = String(raw || '').trim();
     if (!s) return '';
     if (s.startsWith('MIXED:')) return s;
+    if (/^https?:\/\//i.test(s)) return s;
+    let path = s.replace(/^archive\//, '').replace(/^\.\//, '').replace(/^\//, '');
+    if (!path.endsWith('.js')) path += '.js';
+    if (/^(exams|assets|data)\//.test(path)) return path;
+    return 'exams/' + path;
+}
+
+function getQrClassStudentIds(classId) {
+    return (state.db.class_students || [])
+        .filter(m => String(m.class_id) === String(classId))
+        .map(m => String(m.student_id));
+}
+
+function findQrAssignmentArchiveFile(classId, examTitle, examDate, questionCount) {
+    const title = String(examTitle || '').trim();
+    const date = String(examDate || '').trim();
+    const qCount = Number(questionCount || 0);
+    return (state.db.class_exam_assignments || state.db.exam_assignments || [])
+        .filter(a => String(a.class_id || '') === String(classId || ''))
+        .find(a => {
+            if (String(a.exam_title || '').trim() !== title) return false;
+            if (date && String(a.exam_date || '').trim() !== date) return false;
+            const aq = Number(a.question_count || 0);
+            return !aq || !qCount || aq === qCount;
+        })?.archive_file || '';
+}
+
+function resolveOmrArchiveFile({ presetArchiveFile = '', classId = '', examTitle = '', examDate = '', questionCount = '', sessionId = '' } = {}) {
+    const preset = normalizeQrArchiveFile(presetArchiveFile || '');
+    if (preset) return preset;
+
+    const title = String(examTitle || '').trim();
+    const date = String(examDate || '').trim();
+    const qCount = Number(questionCount || 0);
+    const classStudentIds = new Set(getQrClassStudentIds(classId));
+
+    const sessions = (state.db.exam_sessions || []).filter(es => {
+        if (sessionId && String(es.id || '') === String(sessionId) && es.archive_file) return true;
+        if (classId && String(es.class_id || '') && String(es.class_id || '') !== String(classId)) return false;
+        if (classId && !String(es.class_id || '') && classStudentIds.size && !classStudentIds.has(String(es.student_id || ''))) return false;
+        if (title && String(es.exam_title || '').trim() !== title) return false;
+        return !!es.archive_file;
+    });
+
+    const sameDate = sessions.find(es => {
+        if (date && String(es.exam_date || '').trim() !== date) return false;
+        const sq = Number(es.question_count || 0);
+        return !sq || !qCount || sq === qCount;
+    });
+    if (sameDate?.archive_file) return normalizeQrArchiveFile(sameDate.archive_file);
+
+    const recent = sessions
+        .filter(es => String(es.exam_title || '').trim() === title)
+        .sort((a, b) =>
+            String(b.exam_date || '').localeCompare(String(a.exam_date || '')) ||
+            String(b.updated_at || b.created_at || '').localeCompare(String(a.updated_at || a.created_at || ''))
+        )[0];
+    if (recent?.archive_file) return normalizeQrArchiveFile(recent.archive_file);
+
+    return normalizeQrArchiveFile(findQrAssignmentArchiveFile(classId, title, date, qCount));
+}
+
+function getOmrArchiveStatusLabel(archiveFile) {
+    return archiveFile ? '원문 연결됨' : '원문 연결 없음';
+}
+
+function getOmrArchiveStatusColor(archiveFile) {
+    return archiveFile ? 'var(--success)' : 'var(--secondary)';
+}
+
+function isQrArchiveLike(value = '') {
+    const s = String(value || '').trim();
+    return !!s && (/^https?:\/\//i.test(s) || /^archive\//.test(s) || /^(exams|assets|data)\//.test(s) || /\.js$/i.test(s));
+}
+
+/* legacy */
+function normalizeQrArchiveFileLegacy(raw = '') {
+    const s = String(raw || '').trim();
+    if (!s) return '';
+    if (s.startsWith('MIXED:')) return s;
     if (s.startsWith('exams/')) return s;
     if (s.endsWith('.js')) return 'exams/' + s;
     return s;
@@ -257,6 +337,14 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 
     const { submitted, pending } = computeQrSubmitStatus(classId, examTitle, safeDate);
     const safeExamTitleForJs = String(examTitle).replace(/'/g, "\\'");
+    const qCount = findExamQuestionCount(examTitle, classId) || 20;
+    const archiveFile = resolveOmrArchiveFile({
+        classId,
+        examTitle,
+        examDate: safeDate,
+        questionCount: qCount
+    });
+    const safeArchiveFileForJs = String(archiveFile || '').replace(/'/g, "\\'");
 
     showModal('제출 현황', `
         <div style="background:var(--bg);padding:14px 18px;border-radius:14px;font-size:13px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
@@ -286,7 +374,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;">
             <table style="width:100%;font-size:14px;">
-                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:700;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:700;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}')">\uC131\uC801 \uC785\uB825</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
+                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:700;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:700;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${qCount}, '${classId}', '', '${safeArchiveFileForJs}', 'qrStatus', '${safeDate}')">\uC131\uC801 \uC785\uB825</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
             </table>
         </div>
     `);
@@ -295,20 +383,34 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 /**
  * 성적 직접 입력 모달 (OMR) 오픈
  */
-function openOMR(sid, presetTitle = '') {
+function openOMR(sid, presetTitle = '', presetQuestionCount = null, presetClassId = '', presetSessionId = '', presetArchiveFile = '', returnMode = '', presetExamDate = '') {
+    if (returnMode && isQrArchiveLike(presetSessionId) && /^\d{4}-\d{2}-\d{2}$/.test(String(presetArchiveFile || ''))) {
+        presetExamDate = presetArchiveFile;
+        presetArchiveFile = presetSessionId;
+        presetSessionId = '';
+    } else if (!presetArchiveFile && isQrArchiveLike(presetSessionId)) {
+        presetArchiveFile = presetSessionId;
+        presetSessionId = '';
+    }
+
     const todayExam = getTodayExamConfig();
     const defaultTitle = presetTitle || todayExam?.title || '단원평가';
     
     const mapObj = state.db.class_students.find(m => m.student_id === sid);
-    const classId = mapObj ? mapObj.class_id : '';
+    const classId = presetClassId || (mapObj ? mapObj.class_id : '');
     
     // [Fix 1] 동적 문항수(q) 처리 로직 (시그니처 확장 없이)
-    const inferredQ = todayExam?.q || findExamQuestionCount(presetTitle, classId) || 20;
+    const inferredQ = presetQuestionCount || todayExam?.q || findExamQuestionCount(presetTitle, classId) || 20;
     const defaultQ = Math.min(Math.max(parseInt(inferredQ) || 20, 1), 50);
-
-    const defaultArchiveFile = normalizeQrArchiveFile(
-        localStorage.getItem('AP_LAST_ARCHIVE_FILE') || ''
-    );
+    const defaultExamDate = presetExamDate || new Date().toLocaleDateString('sv-SE');
+    const defaultArchiveFile = resolveOmrArchiveFile({
+        presetArchiveFile,
+        classId,
+        examTitle: defaultTitle,
+        examDate: defaultExamDate,
+        questionCount: defaultQ,
+        sessionId: presetSessionId
+    });
 
     const checkedWrongIds = [];
 
@@ -326,8 +428,10 @@ function openOMR(sid, presetTitle = '') {
             </div>
             
             <div>
-                <label style="font-size:12px;font-weight:700;color:var(--secondary);margin-bottom:8px;display:block;">아카이브 파일명 (선택)</label>
-                <input id="omr-archiveFile" class="btn" value="${defaultArchiveFile}" placeholder="exams/기출.js" style="width:100%;text-align:left;background:var(--bg);border:none;padding:14px;border-radius:12px;font-size:13px;">
+                <input id="omr-archiveFile" type="hidden" value="${omrEscape(defaultArchiveFile)}">
+                <input id="omr-exam-date-hidden" type="hidden" value="${omrEscape(defaultExamDate)}">
+                <input id="omr-session-id-hidden" type="hidden" value="${omrEscape(presetSessionId || '')}">
+                <div style="font-size:12px;font-weight:800;color:${getOmrArchiveStatusColor(defaultArchiveFile)};background:var(--bg);border-radius:12px;padding:11px 13px;">${getOmrArchiveStatusLabel(defaultArchiveFile)}</div>
             </div>
 
             <div style="margin-top:14px;">
@@ -398,7 +502,7 @@ async function handleOMRSave(sid) {
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const score = Math.round((q - wrs.length) * (100 / q));
     
-    let archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archiveFile')?.value || '');
+    const savedExamDate = document.getElementById('omr-exam-date-hidden')?.value || new Date().toLocaleDateString('sv-SE');
     
     let classId = state.ui?.currentClassId;
     if (!classId) {
@@ -406,7 +510,14 @@ async function handleOMRSave(sid) {
         classId = mapObj ? mapObj.class_id : null;
     }
 
-    const savedExamDate = new Date().toLocaleDateString('sv-SE');
+    const archiveFile = resolveOmrArchiveFile({
+        presetArchiveFile: document.getElementById('omr-archiveFile')?.value || '',
+        classId,
+        examTitle: title,
+        examDate: savedExamDate,
+        questionCount: q,
+        sessionId: document.getElementById('omr-session-id-hidden')?.value || ''
+    });
 
     const payload = {
         student_id: sid, 
@@ -420,7 +531,6 @@ async function handleOMRSave(sid) {
 
     if (archiveFile) {
         payload.archive_file = archiveFile;
-        localStorage.setItem('AP_LAST_ARCHIVE_FILE', archiveFile);
     }
     
     const endpoint = 'exam-sessions/new';
@@ -666,7 +776,7 @@ function handleOmrHistoryChange() {
     ui.examTitle = item.examTitle || '';
     ui.examDate = item.examDate || new Date().toLocaleDateString('sv-SE');
     ui.questionCount = item.questionCount || 25;
-    ui.archiveFile = item.archiveFile || '';
+    ui.archiveFile = normalizeQrArchiveFile(item.archiveFile || '');
     ui.answers = {};
     ui.examSelected = true;
 
@@ -682,7 +792,7 @@ function ensureOmrInputState() {
             questionCount: 25,
             grade: '',
             classId: '',
-            archiveFile: localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '',
+            archiveFile: '',
             answers: {},
             examSelected: false
         };
@@ -765,7 +875,13 @@ function updateOmrInputFromControls({ resetAnswers = true, resetExamSelection = 
     ui.questionCount = Math.max(1, Math.min(80, parseInt(document.getElementById('omr-question-count')?.value, 10) || 25));
     ui.grade = document.getElementById('omr-grade')?.value || '';
     ui.classId = document.getElementById('omr-class')?.value || '';
-    ui.archiveFile = normalizeQrArchiveFile(document.getElementById('omr-archive-file')?.value || '');
+    ui.archiveFile = resolveOmrArchiveFile({
+        presetArchiveFile: document.getElementById('omr-archive-file')?.value || ui.archiveFile || '',
+        classId: ui.classId,
+        examTitle: ui.examTitle,
+        examDate: ui.examDate,
+        questionCount: ui.questionCount
+    });
 
     const nextKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.grade}|${ui.classId}`;
     const nextExamKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.archiveFile || ''}`;
@@ -777,7 +893,6 @@ function updateOmrInputFromControls({ resetAnswers = true, resetExamSelection = 
     }
 
     if (ui.examTitle) localStorage.setItem('AP_LAST_EXAM_NAME', ui.examTitle);
-    if (ui.archiveFile) localStorage.setItem('AP_LAST_ARCHIVE_FILE', ui.archiveFile);
 }
 
 function handleOmrGradeChange() {
@@ -888,6 +1003,13 @@ function renderOmrInput() {
     const today = new Date().toLocaleDateString('sv-SE');
     if (!ui.examDate) ui.examDate = today;
     if (!ui.questionCount) ui.questionCount = 25;
+    ui.archiveFile = resolveOmrArchiveFile({
+        presetArchiveFile: ui.archiveFile || '',
+        classId: ui.classId || '',
+        examTitle: ui.examTitle || '',
+        examDate: ui.examDate || '',
+        questionCount: ui.questionCount || 0
+    });
 
     const students = getOmrVisibleStudents();
     const examReady = isOmrExamReady();
@@ -914,7 +1036,8 @@ function renderOmrInput() {
 
             <div id="omr-sub-controls">
                 <select id="omr-history" class="omr-ctrl" style="min-width:220px;" onchange="handleOmrHistoryChange()">${buildOmrHistoryOptions()}</select>
-                <input id="omr-archive-file" class="omr-ctrl omr-text" value="${omrEscape(ui.archiveFile || '')}" placeholder="JS아카이브 파일명 선택 입력" onchange="handleOmrMetaChange()">
+                <input id="omr-archive-file" type="hidden" value="${omrEscape(ui.archiveFile || '')}">
+                <div class="omr-ctrl" style="display:flex;align-items:center;color:${getOmrArchiveStatusColor(ui.archiveFile)};">${omrEscape(getOmrArchiveStatusLabel(ui.archiveFile))}</div>
                 <button class="btn" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:800; border-radius:9px;" onclick="activateCurrentOmrExam()">현재 시험 다시 불러오기</button>
             </div>
 
@@ -990,13 +1113,15 @@ async function saveOmrInputBulk(button) {
     if (typeof setButtonBusy === 'function') setButtonBusy(button, true, '저장 중');
 
     try {
-        const r = await api.post('exam-sessions/bulk-omr', {
+        const payload = {
             exam_title: ui.examTitle,
             exam_date: ui.examDate,
             question_count: qCount,
-            archive_file: ui.archiveFile || '',
             rows
-        });
+        };
+        if (ui.archiveFile) payload.archive_file = ui.archiveFile;
+
+        const r = await api.post('exam-sessions/bulk-omr', payload);
 
         if (r?.success) {
             toast(`OMR 입력이 저장되었습니다. (${r.saved || rows.length}명)`, 'success');
