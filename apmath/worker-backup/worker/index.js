@@ -3991,6 +3991,55 @@ export default {
         }
 
         // --- 14. 장기 플래너 (Student Plans & Feedback) ---
+
+        if (resource === 'planner-auth-by-name' && method === 'POST') {
+          const d = await request.json();
+          const name = String(d.name || '').trim();
+          const pin = String(d.pin || '').trim();
+
+          if (!name || !pin) {
+            return new Response(JSON.stringify({
+              success: false,
+              message: '이름 또는 PIN을 확인하세요.'
+            }), { status: 400, headers });
+          }
+
+          const found = await env.DB.prepare(`
+            SELECT id, name, school_name, grade, status
+            FROM students
+            WHERE TRIM(name) = ?
+              AND student_pin = ?
+              AND status = '재원'
+          `).bind(name, pin).all();
+
+          const rows = found.results || [];
+          if (!rows.length) {
+            await new Promise(resolve => setTimeout(resolve, 800));
+            return new Response(JSON.stringify({
+              success: false,
+              message: '이름 또는 PIN을 확인하세요.'
+            }), { status: 401, headers });
+          }
+
+          if (rows.length > 1) {
+            return new Response(JSON.stringify({
+              success: false,
+              message: '동명이인 정보가 있습니다. 선생님께 문의하세요.'
+            }), { status: 409, headers });
+          }
+
+          const student = rows[0];
+          return new Response(JSON.stringify({
+            success: true,
+            student: {
+              id: student.id,
+              name: student.name,
+              school_name: student.school_name,
+              grade: student.grade
+            }
+          }), { headers });
+        }
+
         if (resource === 'planner-auth' && method === 'GET') {
           const studentId = String(url.searchParams.get('student_id') || '').trim();
           const pin = String(url.searchParams.get('pin') || '').trim();
