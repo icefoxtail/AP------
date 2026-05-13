@@ -1197,7 +1197,7 @@ function renderDashboard() {
             </button>
             <button class="btn" 
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
-                    onclick="window.location.href='../archive/index';">
+                    onclick="window.open('../archive/index', '_blank', 'noopener');">
                 아카이브
             </button>
         </div>

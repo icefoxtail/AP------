@@ -1,932 +1,252 @@
-기준 파일 확인했습니다. Worker에는 기존 `homework-photo` 과제 등록/학생별 제출칸/링크/제출 API가 있고 , 플래너는 기존 `planner`와 PIN 검증 구조가 이미 있습니다 . `core.js`의 API_BASE도 현재 Worker 주소 기준입니다 .
+[Codex 지시서 — report.js 평가 리포트 2차 안정화: 학부모 표현 보정 + 아카이브 404 방어]
 
-````markdown
-# CODEX_TASK.md
+작업 위치:
+C:\Users\USER\Desktop\AP------
 
-# AP Math OS 학생 개인 포털 1차 — 사전 검토 지시서
-
-## 0. 이번 Codex 작업 방식
-
-아직 파일을 수정하지 마라.
-
-이 문서는 학생 개인 포털 1차 구현을 위한 세부 지시서다.  
-하지만 이번 Codex 실행에서는 먼저 검토만 한다.
-
-Codex는 아래 항목만 보고해야 한다.
-
-1. 이해한 작업 목표
-2. 수정/신규 파일 목록
-3. 수정 위치
-4. 구현 방식
-5. 위험하거나 확인 필요한 지점
-6. 기존 기능 회귀 가능성
-7. Worker/DB 수정이 필요한지 여부
-8. 최종 구현 전 추가로 확인해야 할 파일 또는 함수
-
-내 승인 전까지 파일 수정 금지.
-
----
-
-## 1. 작업 목표
-
-AP Math OS에 학생 개인 포털 1차를 만든다.
-
-학생은 앞으로 학생코드 링크를 찾지 않고 아래 주소로 접속한다.
-
-```text
-/apmath/student/
-````
-
-학생은 이름 + PIN으로 로그인한다.
-
-로그인 성공 후 학생 홈에서 본인이 사용할 수 있는 기능만 볼 수 있다.
-
-1차에서 열 기능:
-
-```text
-1. 과제
-2. 플래너
-3. OMR 입구
-```
-
-1차에서 열지 않을 기능:
-
-```text
-1. 출결 입력
-2. 과제 O/X 직접 수정
-3. 성적 수정
-4. 성적 삭제
-5. 오답 삭제
-6. 상담 기록
-7. 학생관리
-8. 반 전체 학생 목록
-9. 다른 학생 정보
-10. 선생님/원장 대시보드
-```
-
-핵심 원칙:
-
-```text
-학생포털은 새 기능 본체가 아니다.
-기존 과제 / 플래너 / OMR 기능으로 들어가는 학생용 입구다.
-
-기존 선생님 화면 연동 구조는 그대로 유지한다.
-기존 homework-photo, planner, OMR API 흐름은 삭제하거나 리팩터링하지 않는다.
-```
-
----
-
-## 2. 수정 가능 파일
-
-### 신규 생성
-
-```text
-apmath/student/index.html
-```
-
-역할:
-
-```text
-- 학생 로그인 화면
-- 이름 + PIN 입력
-- 로그인 성공 후 학생 홈
-- 과제 목록 표시
-- 플래너 이동
-- OMR 입구 표시
-- 로그아웃
-```
-
-### 수정 가능
-
-```text
-apmath/worker-backup/worker/index.js
-```
-
-추가할 API:
-
-```text
-POST /api/student-portal/auth
-GET /api/student-portal/home?student_id=...
-```
-
----
-
-## 3. 수정 금지 파일
-
-아래 파일은 이번 1차에서 수정하지 마라.
-
-```text
-apmath/worker-backup/worker/schema.sql
-apmath/homework/index.html
-apmath/planner/index.html
-apmath/js/classroom.js
-apmath/js/core.js
-apmath/index.html
-apmath/js/dashboard.js
-apmath/js/cumulative.js
-apmath/js/qr-omr.js
+수정 대상 파일:
 apmath/js/report.js
-apmath/engine.html
-apmath/mixed_engine.html
-archive/mixer.html
-```
+
+수정 금지 파일:
+- worker/index.js
+- worker/schema.sql
+- apmath/js/core.js
+- apmath/js/dashboard.js
+- apmath/js/classroom.js
+- apmath/index.html
+- 기타 report.js 외 모든 파일
+
+절대 원칙:
+- report.js 외 파일 수정 금지
+- DB/API/Worker/R2 구조 변경 금지
+- 기존 프리미엄 리포트 디자인 전체 갈아엎기 금지
+- Clean PDF 자연 흐름형 구조 유지
+- MathJax 출력 구조 유지
+- reportCenterBuildQuestionStats() 수정 금지
+- reportCenterGetSameExamSessions() 수정 금지
+- reportCenterGetClassExamSessions() 수정 금지
+- reportCenterBuildPremiumQuestionRows() 수정 금지
+- reportCenterPrintCleanPdf()의 MathJax 기반 print 흐름 수정 금지
+- stable 함수 대량 리팩터링 금지
+- 이번 요청 외 기능 추가 금지
+
+목표:
+평가 리포트에서 학부모에게 오해를 줄 수 있는 “잘한 점” 표현을 제거하고,
+아카이브 파일 404가 콘솔에 에러처럼 크게 남거나 리포트 흐름을 깨지 않도록 방어한다.
+
+────────────────────────────────
+수정 1 — “잘한 점” 카드 제거 및 중립 표현으로 변경
+────────────────────────────────
+
+문제:
+현재 PDF/크게보기 리포트에서 학생 점수가 전체 평균/반 평균보다 낮아도 “잘한 점” 섹션에 성적 요약이 들어간다.
+예:
+- 학생 83점
+- 전체 평균 84점
+- 반 평균 92점
+인데 “잘한 점”에 성적 요약이 들어가면 학부모 입장에서 신뢰도 문제가 생긴다.
+
+수정 대상 함수:
+reportCenterBuildCleanPdfDocument()
+
+현재 구조에서 아래 섹션을 찾는다.
+
+<section class="aprc-pdf-section aprc-pdf-point-grid">
+    <article class="aprc-pdf-panel">
+        <div class="aprc-section-title">잘한 점</div>
+        ...
+    </article>
+    <article class="aprc-pdf-panel">
+        <div class="aprc-section-title">확인할 점</div>
+        ...
+    </article>
+</section>
+
+수정 방향:
+- “잘한 점” → “현재 위치”
+- “확인할 점” → “우선 확인할 점”
+- 첫 번째 카드 내용은 칭찬형이 아니라 현재 점수와 평균 비교를 반영한 중립형 문구로 출력
+- 두 번째 카드는 기존 보완/확인 문구 유지하되 제목만 “우선 확인할 점”으로 변경
+
+필수 구현:
+reportCenterBuildCleanPdfDocument() 내부에서 coreItems 선언 이후 또는 point-grid 출력 전에 아래 성격의 중립 문구를 생성한다.
+
+예시 함수명은 자유지만 report.js 내부에만 추가할 것:
+reportCenterBuildCurrentPositionText(data, correctRate, wrongCount)
+
+구현 기준:
+- data.session.score
+- data.stats.overallAvg
+- data.stats.classAvg
+- data.stats.className
+- correctRate
+- wrongCount
+를 사용한다.
+
+문구 기준:
+
+1. 전체 평균과 반 평균이 모두 있고, 학생 점수가 둘 다 이상이면:
+“OO 학생은 이번 평가에서 N점을 기록했습니다. 전체 평균과 소속 반 평균 이상을 기록해 현재 범위의 풀이 흐름이 안정적으로 유지되고 있습니다.”
+
+2. 전체 평균 이상이지만 반 평균보다 낮으면:
+“OO 학생은 이번 평가에서 N점을 기록했습니다. 전체 평균과는 비슷하거나 높은 수준이나, 소속 반 평균과 비교하면 추가 확인이 필요한 문항이 있어 풀이 흐름을 함께 점검하겠습니다.”
+
+3. 전체 평균보다 낮으면:
+“OO 학생은 이번 평가에서 N점을 기록했습니다. 전체 평균과 비교해 보완할 지점이 확인되어, 우선 확인 문항과 풀이 과정을 중심으로 다시 점검하겠습니다.”
+
+4. 평균 자료가 부족하면:
+“OO 학생은 이번 평가에서 N점을 기록했습니다. 이번 리포트에서는 점수뿐 아니라 문항별 정답률과 오답 흐름을 함께 보며 다음 수업 보완 방향을 정리했습니다.”
 
 주의:
-
-```text
-schema.sql 수정 금지
-D1 마이그레이션 생성 금지
-기존 API 응답 구조 임의 변경 금지
-기존 안정 기능 리팩터링 금지
-```
-
----
-
-## 4. 기존 구조 유지 조건
-
-### 4-1. 과제 구조 유지
-
-기존 과제 제출 구조는 유지한다.
-
-현재 과제 제출 화면:
-
-```text
-apmath/homework/index.html
-```
-
-기존 이동 URL:
-
-```text
-/apmath/homework/?assignment_id=과제ID&student_id=학생ID
-```
-
-학생포털에서는 로그인된 학생의 student_id를 내부에서 사용해 위 URL을 자동 생성한다.
-
-학생이 student_id를 직접 입력하거나 외우게 만들지 않는다.
-
-기존 homework-photo API는 유지한다.
-
-```text
-GET  /api/homework-photo/assignment?assignment_id=...&student_id=...
-POST /api/homework-photo/auth
-POST /api/homework-photo/submit
-```
-
-이번 작업에서 위 API를 삭제하거나 변경하지 마라.
-
----
-
-### 4-2. 플래너 구조 유지
-
-기존 플래너 화면:
-
-```text
-apmath/planner/index.html
-```
-
-기존 이동 URL:
-
-```text
-/apmath/planner/?student_id=학생ID
-```
-
-학생포털에서는 로그인된 학생의 student_id를 붙여 자동 이동한다.
-
-이번 작업에서는 planner/index.html을 수정하지 않는다.
-
-기존 planner API는 유지한다.
-
-```text
-planner
-planner-auth
-planner/overview
-planner/feedback
-```
-
----
-
-### 4-3. OMR 구조 유지
-
-1차에서는 OMR 완전 연결을 하지 않는다.
-
-학생포털 홈에 OMR 카드는 표시한다.
-
-버튼 문구:
-
-```text
-OMR 입력
-```
-
-1차 동작은 아래 중 하나로 한다.
-
-기본 권장:
-
-```text
-클릭 시 toast 또는 안내 카드:
-"OMR 입력은 준비 중입니다. 선생님이 안내한 시험 QR 또는 코드를 사용해 주세요."
-```
-
-주의:
-
-```text
-이번 1차에서 qr-omr.js 수정 금지
-학생용 OMR 전용 API 신설 금지
-기존 OMR 구조 변경 금지
-```
-
----
-
-## 5. 신규 Worker API 설계
-
-## 5-1. POST /api/student-portal/auth
-
-### 목적
-
-학생 이름 + PIN으로 로그인한다.
-
-### 요청
-
-```json
-{
-  "name": "김민준",
-  "pin": "1234"
-}
-```
-
-### 검증 조건
-
-```text
-1. name 필수
-2. pin 필수
-3. students.name = name
-4. students.student_pin = pin
-5. students.status = '재원'
-```
-
-### 성공 응답
-
-```json
-{
-  "success": true,
-  "student": {
-    "id": "STU001",
-    "name": "김민준",
-    "grade": "중1",
-    "school_name": "금당중"
-  }
-}
-```
-
-### 실패 응답
-
-```json
-{
-  "success": false,
-  "message": "이름 또는 PIN을 확인하세요."
-}
-```
-
-### 보안 주의
-
-절대 반환 금지:
-
-```text
-student_pin
-student_phone
-parent_phone
-guardian_name
-memo
-address
-상담 정보
-성적 정보
-다른 학생 정보
-```
-
-### 동명이인 처리
-
-이름이 같은 학생이 있어도 PIN으로 구분한다.
-
-단, 이름 + PIN 조합으로 2명 이상 조회되는 상황이 생기면 로그인 실패로 처리하고 아래 메시지를 반환한다.
-
-```text
-동명이인 정보가 있습니다. 선생님께 문의하세요.
-```
-
----
-
-## 5-2. GET /api/student-portal/home?student_id=...
-
-### 목적
-
-학생 홈에 필요한 본인 정보만 조회한다.
-
-### 요청
-
-```text
-GET /api/student-portal/home?student_id=STU001
-```
-
-### 검증 조건
-
-```text
-1. student_id 필수
-2. students.id = student_id
-3. students.status = '재원'
-```
-
-### 조회할 데이터
-
-학생 본인 기본 정보:
-
-```text
-students.id
-students.name
-students.grade
-students.school_name
-```
-
-학생 소속 반:
-
-```text
-class_students
-classes
-```
-
-진행 중 과제:
-
-```text
-homework_photo_assignments
-homework_photo_submissions
-classes
-```
-
-조회 조건:
-
-```text
-- 학생이 속한 class_id의 과제만
-- homework_photo_assignments.status != 'deleted'
-- 학생 본인의 homework_photo_submissions만
-- 최근/진행 과제 우선
-```
-
-권장 조건:
-
-```text
-WHERE hpa.status != 'deleted'
-AND hpa.class_id IN (학생 소속 반)
-AND hps.student_id = student_id
-ORDER BY hpa.due_date ASC, hpa.created_at DESC
-LIMIT 30
-```
-
-### 응답 예시
-
-```json
-{
-  "success": true,
-  "student": {
-    "id": "STU001",
-    "name": "김민준",
-    "grade": "중1",
-    "school_name": "금당중"
-  },
-  "assignments": [
-    {
-      "assignment_id": "HW001",
-      "title": "일차방정식 과제",
-      "class_id": "CLASS001",
-      "class_name": "중1A",
-      "due_date": "2026-05-13",
-      "due_time": "12:00",
-      "status": "active",
-      "is_submitted": 0,
-      "submitted_at": null
+아래 표현은 평균 이상인 경우가 아니면 사용 금지:
+- 잘했습니다
+- 우수합니다
+- 안정적입니다
+- 좋은 흐름입니다
+- 강점입니다
+- 성취가 좋습니다
+
+단, 점수가 전체 평균/반 평균 이상인 경우에는 “안정적” 정도만 허용.
+
+수정 후 point-grid 구조는 반드시 아래처럼 되어야 한다.
+
+<section class="aprc-pdf-section aprc-pdf-point-grid">
+    <article class="aprc-pdf-panel">
+        <div class="aprc-section-title">현재 위치</div>
+        <p>...</p>
+    </article>
+    <article class="aprc-pdf-panel">
+        <div class="aprc-section-title">우선 확인할 점</div>
+        <p>...</p>
+    </article>
+</section>
+
+기존 “잘한 점” 문자열은 report.js 안에서 PDF 리포트 영역에 남기지 말 것.
+
+────────────────────────────────
+수정 2 — 아카이브 404 방어 및 콘솔 에러성 출력 완화
+────────────────────────────────
+
+문제:
+크게보기 진입 시 콘솔에 아래와 같은 404가 뜬다.
+
+Failed to load resource: the server responded with a status of 404
+[reportCenterFetchArchiveQuestionDetails] failed: Error: HTTP 404
+
+이 문제는 아카이브 파일 경로가 없는 경우에도 문항 원문 확인을 시도하면서 발생한다.
+리포트 본문은 오답 번호/단원/정답률 기준으로 표시 가능하므로, 404를 치명 오류처럼 처리하면 안 된다.
+
+수정 대상 함수:
+reportCenterFetchArchiveQuestionDetails(session)
+
+현재 catch 안에 아래 계열이 있으면:
+
+console.warn('[reportCenterFetchArchiveQuestionDetails] failed:', e);
+
+수정 방향:
+- HTTP 404는 예상 가능한 “원문 미연결” 상태로 처리
+- 404일 때는 console.warn 대신 console.info 또는 조용한 처리
+- 사용자에게는 기존 메시지 “문항 원문 확인 불가 — 오답 번호/단원/정답률 기준 분석으로 표시합니다.” 유지
+- 리포트 생성/출력 흐름 중단 금지
+
+구현 예시:
+
+catch (e) {
+    const message = String(e?.message || '');
+    const isNotFound = message.includes('HTTP 404');
+
+    if (!isNotFound) {
+        console.warn('[reportCenterFetchArchiveQuestionDetails] failed:', e);
+    } else {
+        console.info('[reportCenterFetchArchiveQuestionDetails] archive file not found; fallback to stats-only analysis.');
     }
-  ],
-  "planner": {
-    "enabled": true,
-    "url": "/apmath/planner/?student_id=STU001"
-  },
-  "omr": {
-    "enabled": true,
-    "status": "coming_soon"
-  }
+
+    return reportCenterSetCachedArchiveDetails(session.id, {
+        ok: false,
+        status: isNotFound ? 'not-found' : 'fetch-failed',
+        archiveInfo,
+        message: '문항 원문 확인 불가 — 오답 번호/단원/정답률 기준 분석으로 표시합니다.',
+        details: wrongRows.map(row => reportCenterNormalizeQuestionDetail(null, row.questionNo, row))
+    });
 }
-```
-
-### 절대 금지
-
-student-portal/home은 아래 데이터를 반환하면 안 된다.
-
-```text
-다른 학생 목록
-다른 학생 과제 제출 여부
-반 전체 명단
-student_pin
-전화번호
-보호자 정보
-상담 기록
-성적 기록
-오답 기록
-출결 기록
-```
-
----
-
-## 6. apmath/student/index.html 설계
-
-## 6-1. 파일 위치
-
-신규 생성:
-
-```text
-apmath/student/index.html
-```
-
-단독 페이지로 만든다.
-
-core.js에 의존하지 않아도 된다.
-
-API_BASE는 현재 프로젝트 기준과 동일하게 둔다.
-
-```javascript
-const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
-```
-
----
-
-## 6-2. 로그인 전 화면
-
-상단:
-
-```text
-AP Math OS
-학생 포털
-```
-
-본문:
-
-```text
-이름
-PIN
-로그인 버튼
-```
-
-안내 문구:
-
-```text
-이름과 PIN은 선생님께 받은 정보로 입력하세요.
-```
-
-오류 문구:
-
-```text
-이름 또는 PIN을 확인하세요.
-```
-
----
-
-## 6-3. 로그인 성공 후 저장
-
-localStorage 사용.
-
-저장 키:
-
-```text
-APMATH_STUDENT_PORTAL_SESSION
-```
-
-저장 데이터:
-
-```json
-{
-  "student_id": "STU001",
-  "name": "김민준",
-  "grade": "중1",
-  "school_name": "금당중",
-  "login_at": "2026-05-12T00:00:00.000Z"
-}
-```
-
-저장 금지:
-
-```text
-PIN 원문 저장 금지
-전화번호 저장 금지
-보호자 정보 저장 금지
-```
-
-로그아웃 버튼을 제공하고, 누르면 위 localStorage 키를 삭제한다.
-
----
-
-## 6-4. 로그인 후 홈 화면
-
-상단:
-
-```text
-김민준 학생
-금당중 · 중1
-로그아웃
-```
-
-카드 1 — 과제
-
-표시:
-
-```text
-과제
-미제출 n개
-제출 완료 n개
-```
-
-버튼:
-
-```text
-과제 보기
-```
-
-카드 2 — 플래너
-
-표시:
-
-```text
-플래너
-오늘 계획을 확인하고 체크하세요.
-```
-
-버튼:
-
-```text
-플래너 열기
-```
-
-동작:
-
-```javascript
-location.href = `../planner/?student_id=${encodeURIComponent(studentId)}`
-```
-
-카드 3 — OMR
-
-표시:
-
-```text
-OMR 입력
-시험 답안 입력은 준비 중입니다.
-```
-
-버튼:
-
-```text
-OMR 입력
-```
-
-1차 동작:
-
-```text
-안내 toast 또는 안내 박스 표시
-"OMR 입력은 준비 중입니다. 선생님이 안내한 시험 QR 또는 코드를 사용해 주세요."
-```
-
----
-
-## 6-5. 과제 목록 화면
-
-과제 보기 클릭 시 같은 페이지 안에서 목록을 보여준다.
-
-섹션 1:
-
-```text
-미제출 과제
-```
-
-각 카드:
-
-```text
-과제 제목
-반 이름
-마감일
-제출하기 버튼
-```
-
-제출하기 버튼 이동:
-
-```javascript
-../homework/?assignment_id=과제ID&student_id=로그인학생ID
-```
-
-섹션 2:
-
-```text
-제출 완료
-```
-
-각 카드:
-
-```text
-과제 제목
-반 이름
-제출 시각
-확인 버튼
-```
-
-확인 버튼도 기존 homework 화면으로 이동해도 된다.
-
-과제가 없을 때:
-
-```text
-현재 진행 중인 과제가 없습니다.
-```
-
----
-
-## 6-6. UI 기준
-
-AP Math OS 학생용 보조 화면 톤으로 만든다.
-
-권장:
-
-```text
-- 모바일 우선
-- 최대 너비 520px
-- Pretendard 적용
-- 상단 sticky header
-- 카드형 UI
-- font-weight 700 이하
-- 기존 homework/index.html과 비슷한 미니멀 톤
-```
-
-이미지 파일 추가하지 않는다.
-
-그래픽은 CSS로만 처리한다.
-
----
-
-## 7. 구현 세부 흐름
-
-### 7-1. 학생포털 로딩
-
-```text
-1. localStorage에서 APMATH_STUDENT_PORTAL_SESSION 확인
-2. 세션 있으면 student_id로 student-portal/home 호출
-3. 성공하면 홈 렌더링
-4. 실패하면 세션 삭제 후 로그인 화면
-5. 세션 없으면 로그인 화면
-```
-
-### 7-2. 로그인
-
-```text
-1. 이름 입력
-2. PIN 입력
-3. POST student-portal/auth 호출
-4. 성공하면 localStorage 저장
-5. student-portal/home 호출
-6. 홈 렌더링
-```
-
-### 7-3. 과제 보기
-
-```text
-1. home API의 assignments 배열 사용
-2. is_submitted 기준으로 미제출 / 제출 완료 분리
-3. due_date 오름차순 또는 미제출 우선 정렬
-4. 제출하기 클릭 시 homework/index.html로 이동
-```
-
----
-
-## 8. 기존 기능 회귀 방지
-
-반드시 지킬 것:
-
-```text
-1. 기존 homework/index.html 수정 금지
-2. 기존 planner/index.html 수정 금지
-3. 기존 classroom.js 수정 금지
-4. 기존 core.js 수정 금지
-5. 기존 QR/OMR 파일 수정 금지
-6. 기존 Worker API 삭제 금지
-7. 기존 API 응답 구조 변경 금지
-8. schema.sql 수정 금지
-9. D1 migration 추가 금지
-10. 불필요한 리팩터링 금지
-```
-
-특히 건드리지 말 것:
-
-```text
-verifyAuth
-canAccessStudent
-canAccessClass
-homework-photo/*
-planner/*
-check-pin
-check-init
-initial-data
-exam-sessions
-wrong_answers
-attendance
-homework
-```
-
----
-
-## 9. 검토 시 확인할 Worker 위치
-
-Codex는 index.js에서 현재 라우팅 구조를 확인한다.
-
-확인할 기존 resource:
-
-```text
-auth
-homework-photo
-planner
-check-pin
-check-init
-initial-data
-```
-
-student-portal은 새 resource로 추가한다.
-
-예상 구조:
-
-```javascript
-if (resource === 'student-portal') {
-  if (method === 'POST' && id === 'auth') { ... }
-  if (method === 'GET' && id === 'home') { ... }
-}
-```
-
-단, 실제 index.js 라우팅 구조에 맞춰 가장 안전한 위치에 추가한다.
-
-기존 라우팅을 깨지 마라.
-
----
-
-## 10. SQL 설계 주의
-
-학생 로그인:
-
-```sql
-SELECT id, name, grade, school_name, status
-FROM students
-WHERE name = ?
-  AND student_pin = ?
-  AND status = '재원'
-```
-
-동명이인 중복 확인을 위해 all()로 조회하는 것이 안전하다.
-
-학생 홈 기본 정보:
-
-```sql
-SELECT id, name, grade, school_name, status
-FROM students
-WHERE id = ?
-  AND status = '재원'
-```
-
-과제 목록 조회 예시:
-
-```sql
-SELECT
-  hpa.id AS assignment_id,
-  hpa.title,
-  hpa.class_id,
-  c.name AS class_name,
-  hpa.due_date,
-  hpa.due_time,
-  hpa.status,
-  hps.is_submitted,
-  hps.submitted_at
-FROM homework_photo_assignments hpa
-JOIN homework_photo_submissions hps ON hps.assignment_id = hpa.id
-LEFT JOIN classes c ON c.id = hpa.class_id
-WHERE hps.student_id = ?
-  AND hpa.status != 'deleted'
-ORDER BY hpa.due_date ASC, hpa.created_at DESC
-LIMIT 30
-```
 
 주의:
+- fetch 자체는 유지
+- 아카이브 원문 확인 기능 삭제 금지
+- reportCenterNormalizeArchiveFile() 대량 수정 금지
+- 404 fallback에서도 details 배열은 반드시 유지
+- 리포트 출력은 계속 가능해야 함
 
-```text
-student_id로 본인 제출 row만 조회한다.
-class 전체 제출 현황 조회 금지.
-```
+────────────────────────────────
+추가 확인 — 상단 날짜/발행일 겹침 여부
+────────────────────────────────
 
----
+현재 크게보기 화면에서 상단 발행일/시험명 영역이 좁은 폭에서 겹칠 수 있다.
+다만 이번 작업의 핵심은 문구 오류와 404 방어이므로, 큰 CSS 리디자인은 금지한다.
 
-## 11. node 검사 기준
+reportCenterPremiumReportStyle() 안에서 아래 정도의 최소 보정만 허용한다.
 
-수정 또는 신규 JS 파일은 검사한다.
+- .aprc-pdf-header 의 gap 유지 또는 확대
+- .aprc-issued 에 min-width 부여 가능
+- .aprc-title 이 발행일 영역과 겹치지 않도록 max-width 또는 flex 보정 가능
+- 기존 프리미엄 디자인 유지
 
-이번 작업에서 검사 대상:
+권장 보정:
+.aprc-pdf-header > div:first-child { min-width:0; padding-right:8mm; }
+.aprc-issued { flex-shrink:0; min-width:28mm; }
 
-```bash
-node --check apmath/worker-backup/worker/index.js
-```
+이 보정은 겹침이 실제 CSS상 발생할 수 있는 경우에만 적용한다.
 
-HTML 내부 script는 별도 파일이 아니므로 node --check 직접 대상은 아니다.
+────────────────────────────────
+검증 명령
+────────────────────────────────
 
-다만 Codex는 `apmath/student/index.html` 내부 script 문법을 자체 점검해야 한다.
+작업 후 반드시 실행:
 
-가능하면 임시로 script 부분을 추출해 문법 오류가 없는지 확인한다.
+node --check apmath/js/report.js
 
----
+검색 검증:
 
-## 12. 구현 전 Codex 보고 형식
+PowerShell 기준:
 
-이번 실행에서는 아직 구현하지 않는다.
+Select-String -Path apmath/js/report.js -Pattern "잘한 점"
+Select-String -Path apmath/js/report.js -Pattern "현재 위치"
+Select-String -Path apmath/js/report.js -Pattern "우선 확인할 점"
+Select-String -Path apmath/js/report.js -Pattern "프리미엄 분석 반영"
+Select-String -Path apmath/js/report.js -Pattern "프리미엄 분석 ·"
+Select-String -Path apmath/js/report.js -Pattern "aprc-fixed-page"
+Select-String -Path apmath/js/report.js -Pattern "width:210mm"
+Select-String -Path apmath/js/report.js -Pattern "height:297mm"
 
-아래 형식으로만 보고한다.
+정상 기준:
+- “잘한 점”은 PDF 리포트 point-grid 영역에서 없어야 함
+- “현재 위치” 있어야 함
+- “우선 확인할 점” 있어야 함
+- “프리미엄 분석 반영” 없어야 함
+- “프리미엄 분석 ·” 없어야 함
+- aprc-fixed-page 없어야 함
+- width:210mm 없어야 함
+- height:297mm 없어야 함
 
-```text
-1. 이해한 작업 목표
+브라우저 수동 검수:
+1. 평균보다 낮은 학생 리포트 생성
+2. “잘한 점”이라는 제목이 없는지 확인
+3. 첫 카드 제목이 “현재 위치”인지 확인
+4. 현재 위치 문구가 칭찬형이 아니라 중립형/비교형인지 확인
+5. 두 번째 카드 제목이 “우선 확인할 점”인지 확인
+6. 아카이브 404가 있어도 리포트 화면이 깨지지 않는지 확인
+7. 콘솔에서 404가 치명적인 warn/error처럼 반복 출력되지 않는지 확인
+8. 인쇄하기 진입 시 PDF 화면이 깨끗하게 나오는지 확인
 
-2. 수정/신규 파일 목록
-- 신규:
-- 수정:
-- 수정 금지:
+완료 보고:
+작업 완료 후 프로젝트 루트에 CODEX_RESULT.md 파일을 생성/수정하고 아래만 적어라.
 
-3. 수정 위치
-- worker/index.js 어디에 student-portal을 넣을지
-- student/index.html 구조
+- 수정 파일 목록
+- 구현 완료 항목
+- node --check 결과
+- 검색 검증 결과
+- 수동 테스트 체크리스트
+- 미구현/주의 항목
 
-4. 구현 방식
-- auth API
-- home API
-- student/index.html 흐름
+터미널에는 완료 보고를 길게 출력하지 말고 아래 한 줄만 출력하라.
 
-5. 위험하거나 확인 필요한 지점
-- 학생 이름 중복
-- student_pin 컬럼명
-- homework_photo_* 컬럼명
-- 기존 router 구조
-- OMR 1차 처리 방식
-
-6. 기존 기능 회귀 가능성
-- homework-photo
-- planner
-- OMR
-- initial-data
-
-7. Worker/DB 수정 여부
-- Worker 수정 필요
-- D1 schema 변경 없음
-- migration 없음
-
-8. 구현 승인 후 실행할 검사
-- node --check apmath/worker-backup/worker/index.js
-- student/index.html 내부 script 점검
-```
-
----
-
-## 13. 완료 보고 방식
-
-이번은 검토 전용이므로 CODEX_RESULT.md를 만들지 않아도 된다.
-
-다만 구현 단계로 넘어갈 때는 반드시 아래 원칙을 적용한다.
-
-완료 보고는 터미널에 길게 출력하지 마라.
-
-프로젝트 루트에 CODEX_RESULT.md 파일을 만들고, 아래 내용만 정리해서 저장해라.
-
-```text
-1. 수정/신규 파일 목록
-2. 구현 완료 기능
-3. node --check 결과
-4. 수동 테스트 체크리스트
-5. 미구현/주의 항목
-```
-
-터미널에는 아래 한 줄만 출력해라.
-
-```text
 CODEX_RESULT.md에 완료 보고를 저장했습니다.
-```
-
-````
-
-```text
-Codex에 입력할 문구:
-
-CODEX_TASK.md를 읽어라.
-
-아직 파일을 수정하지 마라.
-먼저 아래만 보고해라.
-
-1. 이해한 작업 목표
-2. 수정/신규 파일 목록
-3. 수정 위치
-4. 구현 방식
-5. 위험하거나 확인 필요한 지점
-6. 기존 기능 회귀 가능성
-7. Worker/DB 수정이 필요한지 여부
-8. 구현 승인 후 실행할 검사
-
-내 승인 전까지 파일 수정 금지.
-````
