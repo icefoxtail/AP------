@@ -301,6 +301,54 @@
         .btn-danger { background: transparent; color: var(--error); border: 1px solid rgba(232,65,79,0.3); }
         .btn-icon { width: 32px; height: 32px; background: transparent; font-size: 20px; color: var(--text); padding: 0; }
         .toast { position: fixed; bottom: calc(86px + var(--safe-bottom)); left: 50%; transform: translateX(-50%); background: rgba(25, 31, 40, 0.9); color: #fff; padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 700; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity .2s ease; white-space: nowrap; backdrop-filter: blur(4px); }
+
+
+        .planner-install-card {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(79,70,229,0.08), rgba(219,39,119,0.08));
+            border: 1px solid rgba(79,70,229,0.14);
+            display: none;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .planner-install-card.show { display: flex; }
+        .planner-install-icon {
+            flex: 0 0 auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 15px;
+            background: linear-gradient(135deg,#4F46E5 0%,#DB2777 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(79,70,229,0.22);
+        }
+        .planner-install-body { min-width: 0; flex: 1; }
+        .planner-install-title { font-size: 13px; font-weight: 800; color: #191F28; line-height: 1.35; }
+        .planner-install-desc { margin-top: 4px; font-size: 12px; font-weight: 700; color: #6B7684; line-height: 1.55; }
+        .planner-install-actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+        .planner-install-btn {
+            min-height: 36px;
+            padding: 0 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(79,70,229,0.16);
+            background: #fff;
+            color: #4F46E5;
+            font-size: 12px;
+            font-weight: 800;
+            font-family: inherit;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .planner-install-btn.primary { background: #4F46E5; color: #fff; border-color: #4F46E5; }
+
         .hidden { display: none !important; }
     </style>
 </head>
@@ -400,6 +448,7 @@
         let pomoTime = 25 * 60;
         let pomoActive = false;
         let pomoPlanTitle = '';
+        let deferredInstallPrompt = null;
 
         function $(id) { return document.getElementById(id); }
         function todayStr() { return new Date().toLocaleDateString('sv-SE'); }
@@ -463,6 +512,72 @@
             t.textContent = msg;
             t.style.opacity = '1';
             setTimeout(() => { t.style.opacity = '0'; }, 1800);
+        }
+
+
+        function isStandalonePwa() {
+            return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        }
+
+        function isIosSafari() {
+            const ua = window.navigator.userAgent || '';
+            const isIos = /iphone|ipad|ipod/i.test(ua);
+            const isSafari = /safari/i.test(ua) && !/crios|fxios|edgios|kakaotalk|naver/i.test(ua);
+            return isIos && isSafari;
+        }
+
+        function shouldShowInstallCard() {
+            if (isStandalonePwa()) return false;
+            return !!deferredInstallPrompt || isIosSafari();
+        }
+
+        function renderPlannerInstallCard() {
+            const visible = shouldShowInstallCard();
+            const ios = isIosSafari() && !deferredInstallPrompt;
+            const desc = ios
+                ? '아이폰은 Safari 공유 버튼을 누른 뒤 “홈 화면에 추가”를 선택하면 됩니다.'
+                : '홈 화면에 추가하면 다음부터 AP 플래너 앱처럼 바로 들어올 수 있습니다.';
+            const button = deferredInstallPrompt
+                ? '<button class="planner-install-btn primary" onclick="installPlannerApp()">플래너 앱 설치</button>'
+                : '';
+            return `
+                <div id="planner-install-card" class="planner-install-card ${visible ? 'show' : ''}">
+                    <div class="planner-install-icon">AP</div>
+                    <div class="planner-install-body">
+                        <div class="planner-install-title">AP 플래너 앱으로 홈 화면에 추가</div>
+                        <div class="planner-install-desc">${desc}</div>
+                        <div class="planner-install-actions">
+                            ${button}
+                            <button class="planner-install-btn" onclick="dismissPlannerInstallGuide()">나중에</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function refreshPlannerInstallCards() {
+            document.querySelectorAll('#planner-install-card').forEach(el => {
+                const wrap = document.createElement('div');
+                wrap.innerHTML = renderPlannerInstallCard().trim();
+                el.replaceWith(wrap.firstElementChild);
+            });
+        }
+
+        async function installPlannerApp() {
+            if (!deferredInstallPrompt) {
+                toast(isIosSafari() ? '공유 버튼 → 홈 화면에 추가를 눌러주세요.' : '브라우저 메뉴에서 홈 화면에 추가를 눌러주세요.');
+                return;
+            }
+            const promptEvent = deferredInstallPrompt;
+            deferredInstallPrompt = null;
+            promptEvent.prompt();
+            try { await promptEvent.userChoice; } catch (e) {}
+            refreshPlannerInstallCards();
+        }
+
+        function dismissPlannerInstallGuide() {
+            document.querySelectorAll('#planner-install-card').forEach(el => el.classList.remove('show'));
+            toast('나중에 브라우저 메뉴에서 홈 화면에 추가할 수 있습니다.');
         }
 
         async function apiGet(path) { try { const r = await fetch(`${API_BASE}/${path}`); return await r.json(); } catch (e) { return { error: e.message }; } }
@@ -537,6 +652,7 @@
                                     <input id="auth-pin" type="password" class="input" autocomplete="current-password" placeholder="PIN 번호 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:700; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; margin:0;" onkeyup="if(event.key==='Enter')doAuth()">
                                 </div>
                                 <button class="btn btn-primary" style="width:100%; margin-top:10px; min-height:56px; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.2; border-radius:18px; border:none; background:linear-gradient(135deg,#4F46E5 0%,#DB2777 100%); color:#fff; box-shadow:0 14px 28px rgba(79,70,229,0.26);" onclick="doAuth()">입장하기</button>
+                                ${renderPlannerInstallCard()}
                             </div>
                             <div style="margin-top:18px; padding-top:16px; border-top:1px solid #E5E8EB; display:flex; align-items:center; justify-content:space-between; gap:10px;">
                                 <span style="font-size:11px; font-weight:800; color:#8B95A1;">AP MATH STUDENT</span>
@@ -1110,6 +1226,24 @@
         }
 
         window.onload = init;
+
+        window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault();
+            deferredInstallPrompt = event;
+            refreshPlannerInstallCards();
+        });
+
+        window.addEventListener('appinstalled', () => {
+            deferredInstallPrompt = null;
+            refreshPlannerInstallCards();
+            toast('AP 플래너 앱이 설치되었습니다.');
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+            });
+        }
     </script>
 </body>
 </html>
