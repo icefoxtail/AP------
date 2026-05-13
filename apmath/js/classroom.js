@@ -1207,7 +1207,7 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
         <div class="cls-v4-tools">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
-            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도관리</button>
+            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도</button>
             <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoHubModal('${cid}')">과제</button>
             <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
