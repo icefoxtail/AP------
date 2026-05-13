@@ -598,8 +598,6 @@ function renderAdminControlCenter() {
         if (createdTime === null) return false;
         return (todayTime - createdTime) / (1000*3600*24) <= 30; 
     });
-    const risks = computeRiskStudents();
-
     const headerHtml = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
             <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">운영센터</h3>
@@ -633,7 +631,7 @@ function renderAdminControlCenter() {
     `;
 
     const summaryHtml = `
-        <div class="ap-admin-summary-grid" style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:10px; margin-bottom:32px;">
+        <div class="ap-admin-summary-grid" style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px; margin-bottom:32px;">
             <div class="card" onclick="openAdminStudentList('active')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
                 <div style="font-size:20px; font-weight:700; color:var(--primary);">${activeStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">재원생</div>
@@ -645,10 +643,6 @@ function renderAdminControlCenter() {
             <div class="card" onclick="openAdminStudentList('discharged')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
                 <div style="font-size:20px; font-weight:700; color:var(--secondary);">${dischargedStudents.length}</div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:600; margin-top:4px;">퇴원생</div>
-            </div>
-            <div class="card" onclick="openAdminStudentList('risk')" style="cursor:pointer; padding:16px 8px; text-align:center; margin:0; border:1px solid ${risks.length > 0 ? 'rgba(255,71,87,0.3)' : 'var(--border)'}; border-radius:16px; background:${risks.length > 0 ? 'rgba(255,71,87,0.05)' : 'var(--surface)'};">
-                <div style="font-size:20px; font-weight:700; color:var(--error);">${risks.length}</div>
-                <div style="font-size:11px; color:var(--error); font-weight:600; margin-top:4px;">관리필요</div>
             </div>
         </div>
     `;
@@ -706,25 +700,6 @@ function renderAdminControlCenter() {
         </div>
     `;
     
-    const riskRows = risks.slice(0, 5).map(r => `
-        <div class="card ap-admin-risk-card" style="padding:14px 16px; border:1px solid rgba(255,71,87,0.2); border-radius:14px; margin-bottom:10px; background:rgba(255,71,87,0.05); cursor:pointer; transition:background 0.2s;" onclick="renderStudentDetail('${r.student.id}')">
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
-                <div style="min-width:0;">
-                    <div style="font-weight:700; color:var(--text); font-size:14px;">${apEscapeHtml(r.student.name)}</div>
-                    <div style="font-size:12px; color:var(--error); font-weight:600; margin-top:4px;">${apEscapeHtml(r.className)} · ${apEscapeHtml(r.reasons.slice(0,2).join(' · '))}</div>
-                </div>
-                <span style="font-size:12px; color:var(--error); font-weight:700; white-space:nowrap;">상세 보기</span>
-            </div>
-        </div>
-    `).join('');
-    
-    const riskSectionHtml = `
-        <div class="ap-admin-section ap-admin-risk-section" style="margin-bottom:40px;">
-            <h3 class="ap-admin-section-title" style="margin:0 0 12px 0; font-size:15px; font-weight:700; color:var(--error);">관리필요 학생 ${risks.length}명</h3>
-            ${risks.length > 0 ? riskRows : `<div class="ap-admin-card ap-admin-empty-card" style="text-align:center; padding:20px; color:var(--success); font-weight:600; background:rgba(0,208,132,0.08); border-radius:18px;">현재 관리 필요 징후를 보이는 학생이 없습니다.</div>`}
-        </div>
-    `;
-
     const adminUnifiedStyle = `
         <style>
             #ap-admin-dashboard { width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box; }
@@ -811,7 +786,6 @@ function renderAdminControlCenter() {
         ${summaryHtml}
         ${teacherCardsHtml}
         ${adminScheduleHtml}
-        ${riskSectionHtml}
     </div>`;
 }
 
@@ -1197,7 +1171,7 @@ function renderDashboard() {
             </button>
             <button class="btn" 
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
-                    onclick="window.open('../archive/index', '_blank', 'noopener');">
+                    onclick="window.location.href='../archive/index';">
                 아카이브
             </button>
         </div>
@@ -1503,11 +1477,6 @@ function buildJournalContent(dateStr) {
         const lates = [];
         const makeups = [];
         const hwMiss = [];
-        const formatAttendanceMemoName = function(student, attendanceRecord) {
-            const memo = String(attendanceRecord?.memo || '').trim();
-            if (!memo) return student.name;
-            return `${student.name}(${memo})`;
-        };
 
         students.forEach(s => {
             const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
@@ -1518,27 +1487,21 @@ function buildJournalContent(dateStr) {
                 .map(v => v.trim())
                 .filter(Boolean);
 
-            if (attStatus === '결석') absents.push(formatAttendanceMemoName(s, att));
+            if (attStatus === '결석') absents.push(s.name);
             if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
-            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(formatAttendanceMemoName(s, att));
+            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(s.name);
             if (hw?.status === '미완료') hwMiss.push(s.name);
         });
 
         const attendanceCount = Math.max(0, total - absents.length);
         const homeworkCount = Math.max(0, total - hwMiss.length);
 
-        text += `- 출석: ${attendanceCount}/${total}
-`;
-        text += `- 숙제: ${homeworkCount}/${total}
-`;
-        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}
-`;
-        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}
-`;
-        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}
-`;
-        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}
-`;
+        text += `- 출석: ${attendanceCount}/${total}\n`;
+        text += `- 숙제: ${homeworkCount}/${total}\n`;
+        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
+        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
+        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}\n`;
+        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
 
         const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
         if (dailyRecord) {
