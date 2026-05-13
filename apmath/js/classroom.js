@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AP Math OS 1.0 [js/classroom.js] - Classroom v4 FINAL
  * 학급 운영 관리, 개별 출결/숙제 처리 및 출석부(Ledger) 엔진
  * [Minimalism Polish]: 46px 1줄 압축 뷰, 파스텔 상태 뱃지, 모바일 핀포인트 렌더링
@@ -832,7 +832,7 @@ function getDefaultHomeworkPhotoDue(classId, baseDate) {
 }
 
 
-function renderHomeworkPhotoStudentPills(rows, done) {
+function renderHomeworkPhotoStudentPills(rows, done, assignmentId = '') {
     const filtered = (Array.isArray(rows) ? rows : []).filter(r => (Number(r.is_submitted || 0) === 1) === !!done);
     if (!filtered.length) {
         return `<div style="font-size:12px; font-weight:700; color:var(--secondary); padding:10px 0;">${done ? '제출 학생 없음' : '미제출 학생 없음'}</div>`;
@@ -842,7 +842,10 @@ function renderHomeworkPhotoStudentPills(rows, done) {
         const submittedAt = done && r.submitted_at ? `<span style="opacity:.72; font-size:10px; margin-left:4px;">${apEscapeHtml(String(r.submitted_at).slice(11, 16) || '')}</span>` : '';
         const bg = done ? 'rgba(0,184,148,0.10)' : 'rgba(232,65,79,0.10)';
         const color = done ? '#008F72' : '#D92D3A';
-        return `<span style="display:inline-flex; align-items:center; min-height:28px; padding:6px 9px; border-radius:999px; background:${bg}; color:${color}; font-size:12px; font-weight:800; line-height:1;">${safeName}${submittedAt}</span>`;
+        const cancelBtn = done && assignmentId && r.student_id
+            ? `<button type="button" style="margin-left:6px; min-height:22px; padding:0 7px; border:none; border-radius:999px; background:rgba(232,65,79,0.10); color:#D92D3A; font-size:10px; font-weight:900; cursor:pointer;" onclick="cancelHomeworkPhotoSubmission('${assignmentId}', '${apEscapeHtml(String(r.student_id))}')">취소</button>`
+            : '';
+        return `<span style="display:inline-flex; align-items:center; min-height:28px; padding:6px 9px; border-radius:999px; background:${bg}; color:${color}; font-size:12px; font-weight:800; line-height:1;">${safeName}${submittedAt}${cancelBtn}</span>`;
     }).join('')}</div>`;
 }
 
@@ -856,6 +859,7 @@ function renderHomeworkPhotoOverviewInlineCard(assignmentId, data) {
     const missingTextareaId = `hw-photo-hub-missing-${sanitizeHomeworkPhotoDomId(assignmentId)}`;
     const missingText = buildHomeworkPhotoStudentLinkText(assignment, missingLinks, { mode: 'missing' });
     const due = `${assignment.due_date || ''}${assignment.due_time ? ` ${assignment.due_time}` : ''}`.trim();
+    const desc = String(assignment.description || '').trim();
 
     return `
         <div style="border:1px solid var(--border); border-radius:18px; padding:14px; background:var(--surface); box-shadow:none;">
@@ -863,6 +867,7 @@ function renderHomeworkPhotoOverviewInlineCard(assignmentId, data) {
                 <div style="min-width:0;">
                     <div style="font-size:15px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(assignment.title || '과제')}</div>
                     <div style="font-size:11px; font-weight:700; color:var(--secondary); line-height:1.45; margin-top:4px;">${due ? `마감 ${apEscapeHtml(due)} · ` : ''}제출 ${submitted}/${total}</div>
+                    ${desc ? `<div style="margin-top:8px; padding:9px 10px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); color:var(--text); font-size:12px; font-weight:700; line-height:1.55; white-space:pre-wrap; word-break:break-word;">${apEscapeHtml(desc)}</div>` : ''}
                 </div>
                 <div style="flex:0 0 auto; display:flex; gap:6px; align-items:center;">
                     <span style="display:inline-flex; align-items:center; justify-content:center; min-height:26px; padding:0 8px; border-radius:999px; background:rgba(0,184,148,0.10); color:#008F72; font-size:11px; font-weight:800;">제출 ${submitted}</span>
@@ -871,6 +876,7 @@ function renderHomeworkPhotoOverviewInlineCard(assignmentId, data) {
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
                 <button class="btn btn-primary" style="flex:1 1 150px; min-height:40px; font-size:12px; font-weight:800; border-radius:12px;" onclick="copyHomeworkPhotoAnnouncement('${missingTextareaId}', '미제출 학생이 없습니다.', '미제출자 안내문이 복사되었습니다.')">미제출자 안내문 복사</button>
+                <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border); border-radius:12px;" onclick="openHomeworkPhotoEditModal('${assignmentId}')">수정</button>
                 <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border); border-radius:12px;" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크</button>
                 <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16); border-radius:12px;" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감</button>
             </div>
@@ -882,7 +888,7 @@ function renderHomeworkPhotoOverviewInlineCard(assignmentId, data) {
                 </div>
                 <div style="border:1px solid rgba(0,184,148,0.12); background:rgba(0,184,148,0.035); border-radius:14px; padding:12px;">
                     <div style="font-size:12px; font-weight:900; color:#008F72; margin-bottom:8px;">제출</div>
-                    ${renderHomeworkPhotoStudentPills(rows, true)}
+                    ${renderHomeworkPhotoStudentPills(rows, true, assignmentId)}
                 </div>
             </div>
         </div>
@@ -1008,6 +1014,7 @@ async function openHomeworkPhotoAssignmentList(classId) {
                     </div>
                     <div style="display:flex; gap:8px; margin-top:12px;">
                         <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:rgba(0,184,148,0.08); border:none; color:var(--success);" onclick="openHomeworkPhotoEditModal('${a.id}')">수정</button>
                         <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="loadHomeworkPhotoLinksModal('${a.id}')">링크</button>
                     </div>
                 </div>
@@ -1092,8 +1099,10 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                 <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
                     <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(data.assignment?.title || '숙제')}</div>
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">전체 ${total} · 제출 ${submitted} · 미제출 ${total - submitted}</div>
+                    ${data.assignment?.description ? `<div style="margin-top:8px; padding:9px 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--text); font-size:12px; font-weight:700; line-height:1.55; white-space:pre-wrap; word-break:break-word;">${apEscapeHtml(data.assignment.description)}</div>` : ''}
                 </div>
                 <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoEditModal('${assignmentId}')">과제 수정</button>
                     <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
                     <button class="btn" style="flex:1 1 150px; min-height:40px; font-size:12px; font-weight:800; background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.16); color:var(--primary);" onclick="copyHomeworkPhotoAnnouncement('${missingTextareaId}', '미제출 학생이 없습니다.', '미제출자 안내문이 복사되었습니다.')">미제출자 안내문 복사</button>
                     <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
@@ -1111,6 +1120,7 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                             </div>
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <span style="font-size:13px; font-weight:900; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
+                                ${done ? `<button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:rgba(232,65,79,0.08); border:none; color:var(--error);" onclick="cancelHomeworkPhotoSubmission('${assignmentId}', '${apEscapeHtml(String(r.student_id || ''))}')">취소</button>` : ''}
                                 <button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
                             </div>
                         </div>
@@ -1121,6 +1131,69 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
     } catch (e) {
         console.error('[openHomeworkPhotoOverviewModal] failed:', e);
         toast('제출 현황 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+
+async function openHomeworkPhotoEditModal(assignmentId) {
+    showModal('과제 수정', `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    try {
+        const data = api.getHomeworkPhotoOverview
+            ? await api.getHomeworkPhotoOverview(assignmentId)
+            : await api.get(`homework-photo/overview?assignment_id=${encodeURIComponent(assignmentId)}`);
+        if (!data?.success || !data.assignment) return toast(data?.message || data?.error || '과제 정보를 불러오지 못했습니다.', 'warn');
+        const a = data.assignment;
+        showModal('과제 수정', `
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:14px; padding:12px;">
+                    <div style="font-size:14px; font-weight:900; color:var(--text); line-height:1.35;">${apEscapeHtml(a.class_name || '과제')}</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.5;">제목, 상세 설명, 마감일만 수정합니다. 제출/미제출 상태와 학생별 링크는 유지됩니다.</div>
+                </div>
+                <input id="hw-photo-edit-title" class="cls-input" placeholder="과제 제목" value="${apEscapeHtml(a.title || '')}">
+                <textarea id="hw-photo-edit-desc" class="cls-input" rows="5" placeholder="과제 상세 설명" style="resize:vertical; line-height:1.6;">${apEscapeHtml(a.description || '')}</textarea>
+                <div style="display:grid; grid-template-columns:1fr 120px; gap:8px;">
+                    <input id="hw-photo-edit-date" type="date" class="cls-input" value="${apEscapeHtml(a.due_date || '')}">
+                    <input id="hw-photo-edit-time" type="time" class="cls-input" value="${apEscapeHtml(a.due_time || '')}">
+                </div>
+                <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:900; border-radius:14px;" onclick="handleUpdateHomeworkPhotoAssignment('${assignmentId}')">수정 저장</button>
+                <button class="btn" style="min-height:44px; font-size:13px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoOverviewModal('${assignmentId}')">제출 현황으로 돌아가기</button>
+            </div>
+        `);
+    } catch (e) {
+        console.error('[openHomeworkPhotoEditModal] failed:', e);
+        toast('과제 수정 화면을 불러오지 못했습니다.', 'error');
+    }
+}
+
+async function handleUpdateHomeworkPhotoAssignment(assignmentId) {
+    const title = document.getElementById('hw-photo-edit-title')?.value.trim() || '';
+    const description = document.getElementById('hw-photo-edit-desc')?.value.trim() || '';
+    const dueDate = document.getElementById('hw-photo-edit-date')?.value || '';
+    const dueTime = document.getElementById('hw-photo-edit-time')?.value || '';
+    if (!title || !dueDate) return toast('과제 제목과 마감일을 입력하세요.', 'warn');
+    try {
+        const res = await api.patch(`homework-photo/${encodeURIComponent(assignmentId)}`, { title, description, due_date: dueDate, due_time: dueTime });
+        if (!res?.success) return toast(res?.message || res?.error || '과제 수정 실패', 'warn');
+        toast('과제가 수정되었습니다.', 'success');
+        openHomeworkPhotoOverviewModal(assignmentId);
+    } catch (e) {
+        console.error('[handleUpdateHomeworkPhotoAssignment] failed:', e);
+        toast('과제 수정 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function cancelHomeworkPhotoSubmission(assignmentId, studentId) {
+    if (!assignmentId || !studentId) return toast('제출 정보를 찾을 수 없습니다.', 'warn');
+    if (!confirm('이 학생의 제출을 취소하고 미제출 상태로 되돌릴까요?')) return;
+    try {
+        const res = await api.post('homework-photo/cancel', { assignment_id: assignmentId, student_id: studentId });
+        if (!res?.success) return toast(res?.message || res?.error || '제출취소 실패', 'warn');
+        toast('제출이 취소되었습니다.', 'success');
+        if (typeof refreshDataOnly === 'function') await refreshDataOnly();
+        openHomeworkPhotoOverviewModal(assignmentId);
+    } catch (e) {
+        console.error('[cancelHomeworkPhotoSubmission] failed:', e);
+        toast('제출취소 중 오류가 발생했습니다.', 'error');
     }
 }
 
@@ -1424,7 +1497,7 @@ function openClassRecordModal(cid) {
         </div>`;
     }
 
-    showModal('진도', `${unitsHtml}<div style="margin-bottom: 24px;">
+    showModal('진도관리', `${unitsHtml}<div style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
                 <h4 style="margin: 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">교재별 진도</h4>
                 <span style="font-size: 11px; font-weight: 700; color: var(--secondary); line-height: 1.5;">${todayStr}</span>
@@ -2262,4 +2335,3 @@ async function savePlannerFeedback(studentId, date, currentRate) {
         toast('피드백 저장 중 오류가 발생했습니다.', 'error');
     }
 }
-
