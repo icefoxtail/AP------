@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#4F46E5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="AP 학생">
+  <meta name="apple-mobile-web-app-title" content="AP 학생">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
   <title>AP Math OS | 학생 포털</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <style>
@@ -278,6 +286,54 @@
     .row-actions { display:flex; gap:8px; margin-top:13px; }
     .row-actions .btn { min-height:44px; border-radius:15px; font-size:13px; }
     .back-btn { width:auto; min-height:40px; padding:8px 13px; font-size:12px; border-radius:999px; margin-bottom:12px; background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.24); color:#fff; }
+
+    .install-card {
+      margin-top:2px;
+      padding:14px;
+      border-radius:20px;
+      background:linear-gradient(135deg, rgba(26,92,255,0.08), rgba(124,58,237,0.08));
+      border:1px solid rgba(26,92,255,0.14);
+      display:none;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .install-card.show { display:flex; }
+    .install-card.compact { margin:0 0 14px; background:rgba(255,255,255,0.94); box-shadow:var(--soft-shadow); }
+    .install-icon {
+      flex:0 0 auto;
+      width:40px;
+      height:40px;
+      border-radius:15px;
+      background:linear-gradient(135deg,#1A5CFF 0%,#7C3AED 100%);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:700;
+      box-shadow:0 10px 20px rgba(26,92,255,0.22);
+    }
+    .install-body { min-width:0; flex:1; }
+    .install-title { font-size:13px; font-weight:700; color:var(--text); line-height:1.35; }
+    .install-desc { margin-top:4px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.55; }
+    .install-actions { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
+    .install-mini-btn {
+      width:auto;
+      min-height:36px;
+      padding:0 12px;
+      border-radius:12px;
+      border:1px solid rgba(26,92,255,0.14);
+      background:#fff;
+      color:var(--primary);
+      font-size:12px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:none;
+    }
+    .install-mini-btn.primary { background:var(--primary); color:#fff; border-color:var(--primary); }
+
     .toast {
       position:fixed;
       left:50%;
@@ -363,6 +419,7 @@
     let omrData = null;
     let omrDraft = null;
     let isLoading = false;
+    let deferredInstallPrompt = null;
 
     function $(id) { return document.getElementById(id); }
     function escapeHtml(value) {
@@ -378,6 +435,65 @@
     function setTopStudent(name) {
       $('student-chip').textContent = name || '';
       $('logout-btn').classList.toggle('hidden', !name);
+    }
+    function isStandalonePwa() {
+      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    }
+    function isIosSafari() {
+      const ua = window.navigator.userAgent || '';
+      const isIos = /iphone|ipad|ipod/i.test(ua);
+      const isSafari = /safari/i.test(ua) && !/crios|fxios|edgios|kakaotalk|naver/i.test(ua);
+      return isIos && isSafari;
+    }
+    function shouldShowInstallCard() {
+      if (isStandalonePwa()) return false;
+      return !!deferredInstallPrompt || isIosSafari();
+    }
+    function renderInstallCard(compact = false) {
+      const visible = shouldShowInstallCard();
+      const ios = isIosSafari() && !deferredInstallPrompt;
+      const desc = ios
+        ? '아이폰은 Safari 공유 버튼을 누른 뒤 “홈 화면에 추가”를 선택하면 됩니다.'
+        : '홈 화면에 추가하면 다음부터 AP 학생 앱처럼 바로 들어올 수 있습니다.';
+      const button = deferredInstallPrompt
+        ? '<button class="install-mini-btn primary" onclick="installStudentApp()">앱 설치하기</button>'
+        : '';
+      return `
+        <div id="install-card" class="install-card ${compact ? 'compact' : ''} ${visible ? 'show' : ''}">
+          <div class="install-icon">AP</div>
+          <div class="install-body">
+            <div class="install-title">홈 화면에 추가</div>
+            <div class="install-desc">${desc}</div>
+            <div class="install-actions">
+              ${button}
+              <button class="install-mini-btn" onclick="dismissInstallGuide()">나중에</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    function refreshInstallCards() {
+      document.querySelectorAll('#install-card').forEach((el, idx) => {
+        const compact = el.classList.contains('compact');
+        const wrap = document.createElement('div');
+        wrap.innerHTML = renderInstallCard(compact).trim();
+        el.replaceWith(wrap.firstElementChild);
+      });
+    }
+    async function installStudentApp() {
+      if (!deferredInstallPrompt) {
+        toast(isIosSafari() ? '공유 버튼 → 홈 화면에 추가를 눌러주세요.' : '브라우저 메뉴에서 홈 화면에 추가를 눌러주세요.');
+        return;
+      }
+      const promptEvent = deferredInstallPrompt;
+      deferredInstallPrompt = null;
+      promptEvent.prompt();
+      try { await promptEvent.userChoice; } catch (e) {}
+      refreshInstallCards();
+    }
+    function dismissInstallGuide() {
+      document.querySelectorAll('#install-card').forEach(el => el.classList.remove('show'));
+      toast('나중에 브라우저 메뉴에서 추가할 수 있습니다.');
     }
     function saveSession(next) {
       session = next;
@@ -443,6 +559,7 @@
             <input id="student-name" class="input" type="text" autocomplete="name" placeholder="이름 입력" onkeydown="if(event.key==='Enter')$('student-pin').focus()">
             <input id="student-pin" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')loginStudent()">
             <button id="login-btn" class="btn btn-primary" onclick="loginStudent()">로그인</button>
+            ${renderInstallCard()}
           </div>
         </section>
       `;
@@ -537,6 +654,7 @@
               </div>
             </div>
           </section>
+          ${renderInstallCard(true)}
           <div class="portal-grid">
             <section class="card portal-card">
               <div class="portal-head">
@@ -784,6 +902,21 @@
       }
     }
     boot();
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      refreshInstallCards();
+    });
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPrompt = null;
+      refreshInstallCards();
+      toast('AP 학생 앱이 설치되었습니다.');
+    });
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
   </script>
 </body>
 </html>
