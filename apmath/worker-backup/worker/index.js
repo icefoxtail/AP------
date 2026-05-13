@@ -2425,6 +2425,8 @@ export default {
                 hps.submitted_at,
                 hps.synced_homework_status,
                 s.name,
+                s.parent_phone,
+                s.guardian_name,
                 COUNT(hpf.id) AS file_count
               FROM homework_photo_submissions hps
               JOIN students s ON s.id = hps.student_id

@@ -790,6 +790,195 @@ async function copyHomeworkPhotoAnnouncement(textareaId, emptyMessage, successMe
     await copyHomeworkPhotoText(text, successMessage || '복사되었습니다.');
 }
 
+
+function normalizeHomeworkPhotoPhone(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    const digits = raw.replace(/[^0-9]/g, '');
+    if (digits.length === 11) return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+    if (digits.length === 10) return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+    return raw;
+}
+
+function getHomeworkPhotoAssignmentTitle(assignment = {}) {
+    return String(assignment?.title || '과제').trim() || '과제';
+}
+
+function getHomeworkPhotoDueText(assignment = {}) {
+    const dueDate = String(assignment?.due_date || assignment?.dueDate || '').trim();
+    const dueTime = String(assignment?.due_time || assignment?.dueTime || '').trim();
+    if (!dueDate && !dueTime) return '';
+    return `${dueDate}${dueTime ? ` ${dueTime}` : ''}`.trim();
+}
+
+function getHomeworkPhotoStudentName(row = {}) {
+    return String(row?.name || row?.student_name || row?.studentName || '학생').trim() || '학생';
+}
+
+function getHomeworkPhotoParentPhone(row = {}) {
+    return normalizeHomeworkPhotoPhone(row?.parent_phone || row?.parentPhone || row?.guardian_phone || row?.guardianPhone || '');
+}
+
+function buildHomeworkPhotoParentMessageShort(assignment = {}, row = {}) {
+    const studentName = getHomeworkPhotoStudentName(row);
+    return `어머님, ${studentName} 과제 미완료로 보강 진행하겠습니다.`;
+}
+
+function buildHomeworkPhotoParentMessageDetail(assignment = {}, row = {}) {
+    const studentName = getHomeworkPhotoStudentName(row);
+    return [
+        '어머님, 안녕하세요. AP수학입니다.',
+        '',
+        `${studentName} 학생이 과제를 하지 않아 안내드립니다.`,
+        '',
+        '학원에서 수업 후 보강하거나, 추후 보강 시간 잡아 마무리하겠습니다.',
+        '',
+        '감사합니다.'
+    ].join('\n');
+}
+
+function buildHomeworkPhotoParentMessage(assignment = {}, row = {}, variant = 'short') {
+    return variant === 'detail'
+        ? buildHomeworkPhotoParentMessageDetail(assignment, row)
+        : buildHomeworkPhotoParentMessageShort(assignment, row);
+}
+
+function buildHomeworkPhotoParentBulkText(assignment = {}, rows = [], variant = 'short') {
+    const missingRows = (Array.isArray(rows) ? rows : []).filter(r => Number(r.is_submitted || 0) !== 1);
+    return missingRows.map(row => {
+        const name = getHomeworkPhotoStudentName(row);
+        const phone = getHomeworkPhotoParentPhone(row);
+        const header = `[${name}${phone ? ` / ${phone}` : ' / 보호자 연락처 없음'}]`;
+        return `${header}\n${buildHomeworkPhotoParentMessage(assignment, row, variant)}`;
+    }).join('\n\n────────────────────\n\n');
+}
+
+function escapeHomeworkPhotoCopyTemplate(text) {
+    return String(text || '')
+        .replace(/\\/g, '\\\\')
+        .replace(/`/g, '\\`')
+        .replace(/\$/g, '\\$');
+}
+
+function buildHomeworkPhotoParentMessagePreviewCard(assignment = {}, row = {}) {
+    const phone = getHomeworkPhotoParentPhone(row);
+    const studentName = getHomeworkPhotoStudentName(row);
+    const shortText = buildHomeworkPhotoParentMessage(assignment, row, 'short');
+    const detailText = buildHomeworkPhotoParentMessage(assignment, row, 'detail');
+    const safeShort = escapeHomeworkPhotoCopyTemplate(shortText);
+    const safeDetail = escapeHomeworkPhotoCopyTemplate(detailText);
+
+    return `
+        <div style="border:1px solid var(--border); border-radius:16px; padding:13px 14px; background:var(--surface); box-shadow:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;">
+                <div style="min-width:0;">
+                    <div style="font-size:14px; font-weight:900; color:var(--text); line-height:1.35;">${apEscapeHtml(studentName)}</div>
+                    <div style="font-size:11px; font-weight:700; color:${phone ? 'var(--secondary)' : 'var(--error)'}; margin-top:3px; line-height:1.35;">${phone ? apEscapeHtml(phone) : '보호자 연락처 없음'}</div>
+                </div>
+                <span style="flex:0 0 auto; display:inline-flex; align-items:center; min-height:28px; padding:0 9px; border-radius:999px; background:rgba(26,92,255,0.08); color:var(--primary); font-size:11px; font-weight:900;">문구 선택</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+                <button class="btn" style="width:100%; height:auto; min-height:0; padding:0; text-align:left; display:block; border:none; background:transparent;" onclick="copyHomeworkPhotoText(\`${safeShort}\`, '${apEscapeHtml(studentName)} 짧은 문자가 복사되었습니다.')">
+                    <div style="padding:11px 12px; border-radius:13px; background:rgba(26,92,255,0.06); border:1px solid rgba(26,92,255,0.14); color:var(--text); font-size:12px; font-weight:800; line-height:1.58; white-space:pre-wrap; word-break:break-word;">
+                        <div style="font-size:11px; font-weight:900; color:var(--primary); margin-bottom:6px;">짧은 문자</div>${apEscapeHtml(shortText)}
+                    </div>
+                </button>
+                <button class="btn" style="width:100%; height:auto; min-height:0; padding:0; text-align:left; display:block; border:none; background:transparent;" onclick="copyHomeworkPhotoText(\`${safeDetail}\`, '${apEscapeHtml(studentName)} 상세 문자가 복사되었습니다.')">
+                    <div style="padding:11px 12px; border-radius:13px; background:var(--surface-2); border:1px solid var(--border); color:var(--text); font-size:12px; font-weight:700; line-height:1.62; white-space:pre-wrap; word-break:break-word;">
+                        <div style="font-size:11px; font-weight:900; color:var(--secondary); margin-bottom:6px;">상세 문자</div>${apEscapeHtml(detailText)}
+                    </div>
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function buildHomeworkPhotoParentMessageCard(assignment = {}, row = {}, variant = 'short') {
+    const phone = getHomeworkPhotoParentPhone(row);
+    const studentName = getHomeworkPhotoStudentName(row);
+    const oneText = buildHomeworkPhotoParentMessage(assignment, row, variant);
+    const safeCopyText = escapeHomeworkPhotoCopyTemplate(oneText);
+    const label = variant === 'detail' ? '상세 문자' : '짧은 문자';
+    return `
+        <button class="btn" style="width:100%; height:auto; min-height:0; padding:0; text-align:left; display:block; border:none; background:transparent;" onclick="copyHomeworkPhotoText(\`${safeCopyText}\`, '${apEscapeHtml(studentName)} 문자 문구가 복사되었습니다.')">
+            <div style="border:1px solid var(--border); border-radius:16px; padding:13px 14px; background:var(--surface); box-shadow:none;">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:9px;">
+                    <div style="min-width:0;">
+                        <div style="font-size:14px; font-weight:900; color:var(--text); line-height:1.35;">${apEscapeHtml(studentName)}</div>
+                        <div style="font-size:11px; font-weight:700; color:${phone ? 'var(--secondary)' : 'var(--error)'}; margin-top:3px; line-height:1.35;">${phone ? apEscapeHtml(phone) : '보호자 연락처 없음'}</div>
+                    </div>
+                    <span style="flex:0 0 auto; display:inline-flex; align-items:center; min-height:28px; padding:0 9px; border-radius:999px; background:rgba(26,92,255,0.08); color:var(--primary); font-size:11px; font-weight:900;">${label} 복사</span>
+                </div>
+                <div style="padding:11px 12px; border-radius:13px; background:var(--surface-2); border:1px solid var(--border); color:var(--text); font-size:12px; font-weight:700; line-height:1.62; white-space:pre-wrap; word-break:break-word;">${apEscapeHtml(oneText)}</div>
+            </div>
+        </button>
+    `;
+}
+
+async function shareHomeworkPhotoParentMessage(text, fallbackMessage = '문구가 복사되었습니다.') {
+    const safeText = String(text || '').trim();
+    if (!safeText) return toast('공유할 문구가 없습니다.', 'info');
+    if (navigator.share) {
+        try {
+            await navigator.share({ text: safeText });
+            return;
+        } catch (e) {
+            if (String(e?.name || '') === 'AbortError') return;
+        }
+    }
+    await copyHomeworkPhotoText(safeText, fallbackMessage);
+}
+
+async function openHomeworkPhotoParentMessageModal(assignmentId, mode = 'send') {
+    const isPreview = mode === 'preview';
+    showModal(isPreview ? '문자미리보기' : '문자발송', `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">문구를 만드는 중...</div>`);
+    try {
+        const data = api.getHomeworkPhotoOverview
+            ? await api.getHomeworkPhotoOverview(assignmentId)
+            : await api.get(`homework-photo/overview?assignment_id=${encodeURIComponent(assignmentId)}`);
+        if (!data?.success) return toast(data?.message || data?.error || '과제 현황을 불러오지 못했습니다.', 'warn');
+
+        const assignment = data.assignment || {};
+        const rows = Array.isArray(data.students) ? data.students : [];
+        const missingRows = rows.filter(r => Number(r.is_submitted || 0) !== 1);
+        const bulkText = buildHomeworkPhotoParentBulkText(assignment, missingRows, 'short');
+        const textareaId = `hw-photo-parent-msg-${sanitizeHomeworkPhotoDomId(assignmentId)}-${mode}`;
+        const title = isPreview ? '문자미리보기' : '문자발송';
+        const guide = isPreview
+            ? '학생별 짧은 문자와 상세 문자를 확인하고, 원하는 문구를 클릭하면 바로 복사됩니다.'
+            : '문자 API 연결 전입니다. 현재는 짧은 문자 기준으로 복사하거나 공유해서 발송합니다.';
+
+        showModal(title, `
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:16px; padding:14px;">
+                    <div style="font-size:15px; font-weight:900; color:var(--text); line-height:1.35;">${apEscapeHtml(assignment.title || '과제')}</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.55;">${apEscapeHtml(guide)}<br>대상 ${missingRows.length}명 · 문자발송 기본값은 짧은 문자입니다.</div>
+                </div>
+                ${missingRows.length ? `
+                    ${isPreview ? '' : `
+                        <textarea id="${textareaId}" class="cls-input" style="height:210px; resize:vertical; line-height:1.58; font-size:12px; white-space:pre-wrap;">${apEscapeHtml(bulkText)}</textarea>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                            <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:900; border-radius:14px;" onclick="copyHomeworkPhotoAnnouncement('${textareaId}', '복사할 문구가 없습니다.', '문자 문구가 복사되었습니다.')">전체 복사</button>
+                            <button class="btn" style="min-height:46px; font-size:13px; font-weight:900; border-radius:14px; background:var(--surface-2); border:1px solid var(--border);" onclick="shareHomeworkPhotoParentMessage(document.getElementById('${textareaId}')?.value || '', '공유 대신 문구를 복사했습니다.')">공유</button>
+                        </div>
+                        <button class="btn" style="min-height:44px; font-size:12px; font-weight:900; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); border-radius:14px;" onclick="toast('문자 API는 아직 연결 전입니다. 현재는 문구 복사/공유 단계입니다.', 'info')">문자발송 준비</button>
+                    `}
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        ${missingRows.map(row => isPreview ? buildHomeworkPhotoParentMessagePreviewCard(assignment, row) : buildHomeworkPhotoParentMessageCard(assignment, row, 'short')).join('')}
+                    </div>
+                    ${isPreview ? `
+                        <textarea id="${textareaId}" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(bulkText)}</textarea>
+                        <button class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:900; border-radius:14px;" onclick="copyHomeworkPhotoAnnouncement('${textareaId}', '복사할 문구가 없습니다.', '전체 문자 문구가 복사되었습니다.')">전체 짧은 문자 복사</button>
+                    ` : ''}
+                ` : `<div style="padding:28px 12px; text-align:center; color:var(--success); font-size:13px; font-weight:900; border:1px dashed rgba(0,184,148,0.22); border-radius:16px; background:rgba(0,184,148,0.06);">미제출 학생이 없습니다.</div>`}
+            </div>
+        `);
+    } catch (e) {
+        console.error('[openHomeworkPhotoParentMessageModal] failed:', e);
+        toast('문자 문구 생성 중 오류가 발생했습니다.', 'error');
+    }
+}
+
 function addDaysForHomeworkPhoto(dateStr, days) {
     const safe = normalizeClassroomDate(dateStr) || new Date().toLocaleDateString('sv-SE');
     const parts = safe.split('-').map(Number);
@@ -876,6 +1065,8 @@ function renderHomeworkPhotoOverviewInlineCard(assignmentId, data) {
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
                 <button class="btn btn-primary" style="flex:1 1 150px; min-height:40px; font-size:12px; font-weight:800; border-radius:12px;" onclick="copyHomeworkPhotoAnnouncement('${missingTextareaId}', '미제출 학생이 없습니다.', '미제출자 안내문이 복사되었습니다.')">미제출자 안내문 복사</button>
+                <button class="btn" style="flex:1 1 130px; min-height:40px; font-size:12px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.16); border-radius:12px;" onclick="openHomeworkPhotoParentMessageModal('${assignmentId}', 'send')">문자발송</button>
+                <button class="btn" style="flex:1 1 150px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16); border-radius:12px;" onclick="openHomeworkPhotoParentMessageModal('${assignmentId}', 'preview')">문자미리보기</button>
                 <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border); border-radius:12px;" onclick="openHomeworkPhotoEditModal('${assignmentId}')">수정</button>
                 <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border); border-radius:12px;" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크</button>
                 <button class="btn" style="flex:1 1 88px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16); border-radius:12px;" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감</button>
@@ -1105,6 +1296,8 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                     <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoEditModal('${assignmentId}')">과제 수정</button>
                     <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
                     <button class="btn" style="flex:1 1 150px; min-height:40px; font-size:12px; font-weight:800; background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.16); color:var(--primary);" onclick="copyHomeworkPhotoAnnouncement('${missingTextareaId}', '미제출 학생이 없습니다.', '미제출자 안내문이 복사되었습니다.')">미제출자 안내문 복사</button>
+                    <button class="btn" style="flex:1 1 130px; min-height:40px; font-size:12px; font-weight:800; background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.16); color:var(--primary);" onclick="openHomeworkPhotoParentMessageModal('${assignmentId}', 'send')">문자발송</button>
+                    <button class="btn" style="flex:1 1 140px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="openHomeworkPhotoParentMessageModal('${assignmentId}', 'preview')">문자미리보기</button>
                     <button class="btn" style="flex:1 1 120px; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
                 </div>
                 <textarea id="${missingTextareaId}" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(missingText)}</textarea>
@@ -1956,21 +2149,9 @@ async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '')
     } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
 }
 
-// ── 고1A 플래너 확인 ─────────────────────────────────────────────
+// ──  플래너 확인 ─────────────────────────────────────────────
 function isPlannerTargetClass(cls) {
-    if (!cls) return false;
-
-    const className = String(cls.name || '').trim();
-    const teacherRaw = String(cls.teacher_name || '').trim();
-    const teacher = teacherRaw
-        .replace(/\s*선생님\s*$/g, '')
-        .trim()
-        .toLowerCase();
-
-    const teacherAliases = ['박준성', '선생님1', 'teacher1', 't1']
-        .map(v => String(v).toLowerCase());
-
-    return className.includes('고1A') && teacherAliases.includes(teacher);
+    return !!cls;
 }
 
 function getPlannerBaseUrl() {
@@ -2241,7 +2422,7 @@ async function renderPlannerControl(classId) {
     state.ui.plannerControlClassId = String(classId || '');
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
-    if (!isPlannerTargetClass(cls)) return toast('고1A 전용 기능입니다.', 'warn');
+    if (!isPlannerTargetClass(cls)) return toast('플래너를 불러올 수 없습니다.', 'warn');
 
     const today = new Date().toLocaleDateString('sv-SE');
     showModal('플래너 확인', `
@@ -2249,7 +2430,7 @@ async function renderPlannerControl(classId) {
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:14px; background:var(--surface-2); border-radius:16px;">
                 <div style="min-width:0;">
                     <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(cls.name)}</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">고1A 플래너 확인</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">플래너 확인</div>
                 </div>
                 <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:10px; background:var(--surface); border:1px solid var(--border);" onclick="renderClass('${classId}'); closeModal(true);">반 화면</button>
             </div>
