@@ -1424,7 +1424,7 @@ function openClassRecordModal(cid) {
         </div>`;
     }
 
-    showModal('진도관리', `${unitsHtml}<div style="margin-bottom: 24px;">
+    showModal('진도', `${unitsHtml}<div style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
                 <h4 style="margin: 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">교재별 진도</h4>
                 <span style="font-size: 11px; font-weight: 700; color: var(--secondary); line-height: 1.5;">${todayStr}</span>

@@ -1159,10 +1159,16 @@ async function reportCenterFetchArchiveQuestionDetails(session) {
             details
         });
     } catch (e) {
-        console.warn('[reportCenterFetchArchiveQuestionDetails] failed:', e);
+        const message = String(e?.message || '');
+        const isNotFound = message.includes('HTTP 404');
+        if (isNotFound) {
+            console.info('[reportCenterFetchArchiveQuestionDetails] archive file not found; fallback to stats-only analysis.');
+        } else {
+            console.warn('[reportCenterFetchArchiveQuestionDetails] failed:', e);
+        }
         return reportCenterSetCachedArchiveDetails(session.id, {
             ok: false,
-            status: 'fetch-failed',
+            status: isNotFound ? 'not-found' : 'fetch-failed',
             archiveInfo,
             message: '문항 원문 확인 불가 — 오답 번호/단원/정답률 기준 분석으로 표시합니다.',
             details: wrongRows.map(row => reportCenterNormalizeQuestionDetail(null, row.questionNo, row))
@@ -2399,6 +2405,50 @@ function reportCenterBuildPremiumExamReportHtml(studentId, sessionId = '', optio
     return reportCenterBuildCleanPdfDocument(studentId, sessionId, options);
 }
 
+function reportCenterBuildCurrentPositionText(data, correctRate, wrongCount) {
+    const student = data?.student || {};
+    const session = data?.session || {};
+    const stats = data?.stats || {};
+    const studentName = student.name || '학생';
+    const score = Number(session.score);
+    const scoreText = Number.isFinite(score) ? `${score}점` : `${session.score ?? '-'}점`;
+    const overallAvg = Number(stats.overallAvg);
+    const classAvg = Number(stats.classAvg);
+    const hasOverall = Number.isFinite(overallAvg);
+    const hasClass = Number.isFinite(classAvg);
+    const classLabel = stats.className || '소속 반';
+    const correctRateText = correctRate !== null && correctRate !== undefined ? ` 정답률은 ${correctRate}%이며,` : '';
+    const wrongText = Number(wrongCount || 0) > 0
+        ? ` 오답 ${wrongCount}문항을 중심으로 풀이 흐름을 다시 확인하겠습니다.`
+        : ' 오답 없이 마무리한 문항 흐름은 유지하겠습니다.';
+
+    if (Number.isFinite(score) && hasOverall && hasClass) {
+        if (score >= overallAvg && score >= classAvg) {
+            return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} 전체 평균과 ${classLabel} 평균 이상을 기록해 현재 범위의 풀이 흐름이 안정적으로 유지되고 있습니다.`;
+        }
+        if (score >= overallAvg && score < classAvg) {
+            return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} 전체 평균과는 비슷하거나 높은 수준이나, ${classLabel} 평균과 비교하면 추가 확인이 필요한 문항이 있어 풀이 과정을 함께 점검하겠습니다.`;
+        }
+        return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} 전체 평균과 ${classLabel} 평균을 함께 기준으로 볼 때 보완할 지점이 확인되어, 우선 확인 문항과 풀이 과정을 중심으로 다시 점검하겠습니다.`;
+    }
+
+    if (Number.isFinite(score) && hasOverall) {
+        if (score >= overallAvg) {
+            return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} 전체 평균 이상을 기록했으며, 다음 수업에서는 우선 확인 문항과 풀이 습관을 함께 점검하겠습니다.`;
+        }
+        return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} 전체 평균과 비교해 보완할 지점이 확인되어, 우선 확인 문항과 풀이 과정을 중심으로 다시 점검하겠습니다.`;
+    }
+
+    if (Number.isFinite(score) && hasClass) {
+        if (score >= classAvg) {
+            return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} ${classLabel} 평균 이상을 기록했으며, 다음 수업에서는 우선 확인 문항과 풀이 습관을 함께 점검하겠습니다.`;
+        }
+        return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} ${classLabel} 평균과 비교해 보완할 지점이 확인되어, 우선 확인 문항과 풀이 과정을 중심으로 다시 점검하겠습니다.`;
+    }
+
+    return `${studentName} 학생은 이번 평가에서 ${scoreText}을 기록했습니다.${correctRateText} 이번 리포트에서는 점수뿐 아니라 문항별 정답률과 오답 흐름을 함께 보며 다음 수업 보완 방향을 정리했습니다.${wrongText}`;
+}
+
 function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const data = reportCenterGetExamReportData(studentId, sessionId);
     const student = data.student;
@@ -2435,6 +2485,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         aiAnalysis?.summary || meaningItems.slice(0, 2).filter(Boolean).join(' ') || summaryItems[0]?.text || '',
         520
     );
+    const currentPositionText = reportCenterBuildCurrentPositionText(data, correctRate, wrongCount);
     const diagnosisLines = reportCenterBuildInterpretiveDiagnosisLines(data, teacherMemo, aiAnalysis).slice(0, 2);
     const nextPlanItems = reportCenterBuildNextPlanItems(data, aiAnalysis).slice(0, 4);
     const parentMessageText = reportCenterEnsureParentOpening(aiAnalysis?.parentMessage || reportCenterBuildBaseReportDraft(studentId, sessionId, teacherMemo)?.parentMessage || '');
@@ -2500,10 +2551,10 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
             <section class="aprc-pdf-section aprc-pdf-point-grid">
                 <article class="aprc-pdf-panel">
                     <div class="aprc-section-title">현재 위치</div>
-                    <p>${reportCenterEscape(coreItems[0].text || '이번 평가에서 안정적인 풀이 흐름을 보여주었습니다.')}</p>
+                    <p>${reportCenterEscape(currentPositionText)}</p>
                 </article>
                 <article class="aprc-pdf-panel">
-                    <div class="aprc-section-title">확인할 점</div>
+                    <div class="aprc-section-title">우선 확인할 점</div>
                     <p>${reportCenterEscape(coreItems[1].text || '다음 수업에서 확인할 문항과 풀이 습관을 함께 점검하겠습니다.')}</p>
                 </article>
             </section>
@@ -2620,11 +2671,12 @@ function reportCenterPremiumReportStyle() {
             .aprc-pdf-document { width:100%; max-width:190mm; margin:0 auto; padding:0; box-sizing:border-box; background:#fff; color:#111827; font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.56; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-pdf-document * { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-pdf-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; padding:11mm 0 8mm; border-bottom:2px solid #0f172a; color:#111827; }
+            .aprc-pdf-header > div:first-child { min-width:0; padding-right:8mm; }
             .aprc-pdf-header .aprc-brand { color:#2563eb; }
             .aprc-pdf-header .aprc-title { color:#0f172a; font-size:25px; }
             .aprc-pdf-header .aprc-subtitle { color:#475569; }
             .aprc-pdf-header .aprc-ai-badge { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
-            .aprc-pdf-header .aprc-issued { color:#64748b; }
+            .aprc-pdf-header .aprc-issued { color:#64748b; flex-shrink:0; min-width:28mm; }
             .aprc-pdf-header .aprc-issued b { color:#0f172a; }
             .aprc-pdf-section, .aprc-pdf-panel, .aprc-pdf-table-panel, .aprc-pdf-parent-message { box-sizing:border-box; }
             .aprc-pdf-section { margin-top:6mm; }
@@ -2916,15 +2968,12 @@ function reportCenterInjectPrintViewStyle() {
     style.id = 'report-print-view-style';
     style.textContent = `
         .report-print-view {
-            position:fixed;
-            inset:0;
+            position:relative;
             z-index:3000;
             min-height:100vh;
             background:#f1f5f9;
             padding:18px;
             box-sizing:border-box;
-            overflow:auto;
-            -webkit-overflow-scrolling:touch;
         }
 
         .report-print-toolbar {
@@ -2935,7 +2984,7 @@ function reportCenterInjectPrintViewStyle() {
             gap:8px;
             justify-content:space-between;
             align-items:center;
-            width:min(900px, 100%);
+            max-width:900px;
             margin:0 auto 14px;
             padding:10px;
             background:rgba(255,255,255,0.94);
@@ -2955,16 +3004,12 @@ function reportCenterInjectPrintViewStyle() {
 
         .report-print-stage {
             width:100%;
-            min-width:190mm;
-            overflow:visible;
+            overflow-x:auto;
             -webkit-overflow-scrolling:touch;
             padding-bottom:24px;
-            box-sizing:border-box;
         }
 
         .report-print-stage .aprc-pdf-document {
-            width:190mm;
-            max-width:190mm;
             margin:0 auto;
         }
 
@@ -2988,17 +3033,11 @@ function reportCenterInjectPrintViewStyle() {
             }
 
             .report-print-view {
-                position:static !important;
-                inset:auto !important;
-                min-height:auto !important;
                 padding:0 !important;
                 background:#fff !important;
-                overflow:visible !important;
             }
 
             .report-print-stage {
-                width:100% !important;
-                min-width:0 !important;
                 overflow:visible !important;
                 background:#fff !important;
                 padding:0 !important;
