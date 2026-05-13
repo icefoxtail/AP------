@@ -369,7 +369,7 @@
           </div>
           <div class="hero-kicker">AP수학 과제 확인</div>
           <h1 class="hero-title">오늘 과제를<br>완료했는지 제출해 주세요.</h1>
-          <p class="hero-desc">PIN으로 본인 확인 후 제출하면 선생님 클래스룸에 과제 완료 상태가 기록됩니다.</p>
+          <p class="hero-desc">PIN으로 본인 확인 후 제출하면 선생님 클래스룸에 숙제 완료 상태가 기록됩니다.</p>
         </section>
       `;
     }
@@ -389,7 +389,7 @@
       const due = `${assignment.due_date || ''}${assignment.due_time ? ` ${assignment.due_time}` : ''}`.trim();
       return `
         <section class="card">
-          <h1 class="title">${escapeHtml(assignment.title || '과제')}</h1>
+          <h1 class="title">${escapeHtml(assignment.title || '숙제')}</h1>
           <div class="meta">
             ${assignment.class_name ? `<span class="meta-pill">${escapeHtml(assignment.class_name)}</span>` : ''}
             ${due ? `<span class="meta-pill primary">마감 ${escapeHtml(due)}</span>` : ''}
@@ -424,7 +424,7 @@
         ${renderAssignmentCard()}
         <section class="card">
           <div class="stack">
-            <div class="notice"><strong>제출 전 확인</strong><br>과제를 완료했다면 아래 버튼을 눌러 제출 상태를 선생님께 보내 주세요. 실제 과제 확인은 수업 시간에 진행됩니다.</div>
+            <div class="notice"><strong>제출 전 확인</strong><br>숙제를 완료했다면 아래 버튼을 눌러 제출 상태를 선생님께 보내 주세요. 실제 과제 확인은 수업 시간에 진행됩니다.</div>
             <button id="submit-btn" class="btn btn-primary" onclick="submitHomework()">과제 완료로 제출</button>
           </div>
         </section>
@@ -441,12 +441,41 @@
           <h1 class="title">제출 완료</h1>
           <div class="meta">${escapeHtml(submittedAt || '방금 제출됨')}</div>
           <div class="status-box">선생님 클래스룸에 과제 완료 상태가 기록되었습니다. 수업 시간에 실제 과제를 확인받아 주세요.</div>
+          <div class="stack" style="margin-top:14px;">
+            <button id="cancel-submit-btn" class="btn" style="color:var(--error); background:rgba(232,65,79,0.08); border-color:rgba(232,65,79,0.16);" onclick="cancelHomeworkSubmission()">제출취소</button>
+          </div>
         </section>
       `;
     }
+    async function cancelHomeworkSubmission() {
+      if (isSubmitting) return;
+      if (!assignmentId || !studentId) return toast('과제 정보를 찾을 수 없습니다.');
+      if (!pin) return toast('PIN 확인 후 취소할 수 있습니다.');
+      if (!confirm('제출을 취소하고 미제출 상태로 되돌릴까요?')) return;
+      isSubmitting = true;
+      const btn = $('cancel-submit-btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '취소 중...';
+      }
+      try {
+        await apiPost('homework-photo/cancel', { assignment_id: assignmentId, student_id: studentId, pin });
+        submission = { ...(submission || {}), is_submitted: 0, submitted_at: null };
+        toast('제출이 취소되었습니다.');
+        renderSubmit();
+      } catch (e) {
+        toast(e.message || '제출취소 실패');
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '제출취소';
+        }
+      } finally {
+        isSubmitting = false;
+      }
+    }
     async function loadAssignment() {
       if (!assignmentId || !studentId) {
-        renderError('과제 링크가 올바르지 않습니다.');
+        renderError('숙제 링크가 올바르지 않습니다.');
         return;
       }
       try {
