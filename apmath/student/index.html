@@ -254,6 +254,43 @@
     .summary-box { border:1px solid var(--border); border-radius:18px; background:var(--surface-2); padding:13px; text-align:center; }
     .summary-value { font-size:24px; font-weight:700; color:var(--primary); line-height:1; }
     .summary-label { margin-top:6px; font-size:11px; font-weight:700; color:var(--secondary); }
+    .portal-assignments-card { padding:18px 18px 16px; }
+    .portal-assignments-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+    .portal-assignments-note { margin-top:2px; font-size:11px; font-weight:700; color:var(--secondary); }
+    .portal-assignments-list { display:flex; flex-direction:column; gap:8px; margin-top:14px; }
+    .portal-assignment-row {
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:var(--surface-2);
+      padding:12px 13px;
+      box-shadow:none;
+      text-align:left;
+    }
+    .portal-assignment-row.is-clickable { cursor:pointer; }
+    .portal-assignment-line { font-size:13px; font-weight:700; color:var(--text); line-height:1.5; }
+    .portal-assignment-line .muted { color:var(--secondary); }
+    .portal-assignment-meta { margin-top:7px; display:flex; flex-wrap:wrap; gap:6px; }
+    .portal-assignment-pill {
+      display:inline-flex;
+      align-items:center;
+      min-height:22px;
+      padding:0 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--secondary);
+      font-size:11px;
+      font-weight:700;
+    }
+    .portal-assignment-pill.type-mixed { color:var(--primary); border-color:rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); }
+    .portal-assignment-pill.type-clinic { color:#7C3AED; border-color:rgba(124,58,237,0.16); background:rgba(124,58,237,0.07); }
+    .portal-assignment-pill.status-pending { color:var(--primary); border-color:rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); }
+    .portal-assignment-pill.status-done { color:#008F72; border-color:rgba(0,184,148,0.18); background:rgba(0,184,148,0.10); }
+    .portal-assignment-pill.status-muted { color:var(--secondary); border-color:var(--border); background:var(--surface); }
+    .portal-assignment-actions { margin-top:10px; display:flex; gap:8px; }
+    .portal-assignment-actions .btn { width:auto; min-height:36px; padding:0 12px; border-radius:12px; font-size:12px; }
+    .portal-assignments-more { margin-top:10px; text-align:right; font-size:11px; font-weight:700; color:var(--secondary); }
     .portal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .portal-card { display:flex; flex-direction:column; gap:14px; min-height:218px; }
     .portal-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex:1; }
@@ -638,6 +675,147 @@
         done: list.filter(item => Number(item.is_submitted || 0) === 1)
       };
     }
+    function getStudentPortalClassId() {
+      try {
+        const student = homeData?.student || session || {};
+        if (student?.class_id) return String(student.class_id);
+        const rows = Array.isArray(homeData?.class_students) ? homeData.class_students : [];
+        const match = rows.find(row => String(row?.student_id || '') === String(student?.student_id || session?.student_id || ''));
+        return match?.class_id ? String(match.class_id) : '';
+      } catch (e) {
+        return '';
+      }
+    }
+    function getStudentPortalAssignments() {
+      const classId = getStudentPortalClassId();
+      if (!classId) return [];
+      const rows = Array.isArray(homeData?.class_exam_assignments) ? homeData.class_exam_assignments : [];
+      return rows
+        .filter(row => String(row?.class_id || '') === String(classId))
+        .sort((a, b) =>
+          String(b?.exam_date || '').localeCompare(String(a?.exam_date || '')) ||
+          String(b?.created_at || '').localeCompare(String(a?.created_at || '')) ||
+          String(b?.id || '').localeCompare(String(a?.id || ''))
+        );
+    }
+    function formatStudentPortalAssignmentType(row) {
+      const sourceType = String(row?.source_type || '').trim().toLowerCase();
+      const archiveFile = String(row?.archive_file || '').trim();
+      if (sourceType === 'clinic') return '클리닉';
+      if (sourceType === 'mixed' || archiveFile.startsWith('MIXED:')) return '믹서';
+      if (archiveFile) return '아카이브';
+      return '자료';
+    }
+    function getStudentPortalAssignmentTypeClassName(row) {
+      const type = formatStudentPortalAssignmentType(row);
+      if (type === '믹서') return 'type-mixed';
+      if (type === '클리닉') return 'type-clinic';
+      return '';
+    }
+    function findStudentPortalOmrExamForAssignment(row) {
+      const exams = Array.isArray(omrData?.exams) ? omrData.exams : [];
+      const title = String(row?.exam_title || '');
+      const date = String(row?.exam_date || '');
+      const archiveFile = String(row?.archive_file || '').trim();
+      const questionCount = Number(row?.question_count || 0);
+      return exams.find(exam => {
+        if (String(exam?.exam_title || '') !== title) return false;
+        if (String(exam?.exam_date || '') !== date) return false;
+        const examQuestionCount = Number(exam?.question_count || 0);
+        if (questionCount && examQuestionCount && questionCount !== examQuestionCount) return false;
+        const examArchiveFile = String(exam?.archive_file || '').trim();
+        if (archiveFile && examArchiveFile) return examArchiveFile === archiveFile;
+        return true;
+      }) || null;
+    }
+    function getStudentPortalAssignmentOmrStatus(exam) {
+      if (!exam) return { label: 'OMR 미연결', className: 'status-muted' };
+      if (Number(exam?.is_submitted || 0) === 1) return { label: '제출 완료', className: 'status-done' };
+      return { label: '입력 필요', className: 'status-pending' };
+    }
+    function openStudentPortalAssignmentOmr(assignmentId) {
+      if (!assignmentId || typeof renderOmrInput !== 'function') return;
+      renderOmrInput(assignmentId);
+    }
+    function notifyStudentPortalAssignment() {
+      if (typeof toast === 'function') toast('선생님이 안내한 방식으로 제출하세요.');
+    }
+    async function refreshStudentPortalAssignmentOmrStatus() {
+      if (!session?.student_id || !session?.student_token) return;
+      const root = $('student-portal-assignments-section');
+      if (!root) return;
+      try {
+        await loadOmrExams(false);
+      } catch (e) {
+        return;
+      }
+      const nextRoot = $('student-portal-assignments-section');
+      if (!nextRoot) return;
+      nextRoot.outerHTML = renderStudentPortalAssignments();
+    }
+    function renderStudentPortalAssignments() {
+      const list = getStudentPortalAssignments();
+      const visible = list.slice(0, 5);
+      const canClick = typeof toast === 'function';
+      if (!visible.length) {
+        return `
+          <section id="student-portal-assignments-section" class="card portal-assignments-card">
+            <div class="portal-assignments-head">
+              <div>
+                <h2 class="card-title">배정 자료</h2>
+                <p class="card-desc">선생님이 최근 배정한 자료를 확인합니다.</p>
+              </div>
+            </div>
+            <div class="empty" style="margin-top:14px;">아직 배정된 자료가 없습니다.</div>
+          </section>
+        `;
+      }
+      const rows = visible.map(row => {
+        const exam = findStudentPortalOmrExamForAssignment(row);
+        const status = getStudentPortalAssignmentOmrStatus(exam);
+        const assignmentId = exam?.assignment_id ? String(exam.assignment_id) : '';
+        const isSubmitted = Number(exam?.is_submitted || 0) === 1;
+        const showOmrButton = !!assignmentId && !isSubmitted && typeof renderOmrInput === 'function';
+        const examDate = escapeHtml(String(row?.exam_date || ''));
+        const examTitle = escapeHtml(String(row?.exam_title || '').trim() || '시험명 없음');
+        const questionCount = Number(row?.question_count || 0);
+        const questionLabel = questionCount ? `${questionCount}문항` : '-문항';
+        const typeLabel = formatStudentPortalAssignmentType(row);
+        const typeClass = getStudentPortalAssignmentTypeClassName(row);
+        const clickAttrs = canClick
+          ? ` role="button" tabindex="0" onclick="notifyStudentPortalAssignment()" onkeydown="if(event.key==='Enter'||event.key===' '){ event.preventDefault(); notifyStudentPortalAssignment(); }"`
+          : '';
+        return `
+          <div class="portal-assignment-row ${canClick ? 'is-clickable' : ''}"${clickAttrs}>
+            <div class="portal-assignment-line">
+              <span>${examDate || '-'}</span>
+              <span class="muted"> · </span>
+              <span>${examTitle}</span>
+            </div>
+            <div class="portal-assignment-meta">
+              <span class="portal-assignment-pill">${escapeHtml(questionLabel)}</span>
+              <span class="portal-assignment-pill ${typeClass}">${escapeHtml(typeLabel)}</span>
+              <span class="portal-assignment-pill ${status.className}">${status.label}</span>
+            </div>
+            ${showOmrButton ? `<div class="portal-assignment-actions"><button type="button" class="btn btn-primary" onclick="event.stopPropagation(); openStudentPortalAssignmentOmr('${escapeHtml(assignmentId)}')">OMR 입력</button></div>` : ''}
+          </div>
+        `;
+      }).join('');
+      const hiddenCount = list.length - visible.length;
+      return `
+        <section id="student-portal-assignments-section" class="card portal-assignments-card">
+          <div class="portal-assignments-head">
+            <div>
+              <h2 class="card-title">배정 자료</h2>
+              <p class="card-desc">선생님이 최근 배정한 자료를 확인합니다.</p>
+            </div>
+          </div>
+          <div class="portal-assignments-list">${rows}</div>
+          ${canClick ? '<div class="portal-assignments-note">자료를 눌러도 시험지는 바로 열리지 않습니다.</div>' : ''}
+          ${hiddenCount > 0 ? `<div class="portal-assignments-more">외 ${hiddenCount}개 자료</div>` : ''}
+        </section>
+      `;
+    }
     function renderIcon(type) {
       if (type === 'task') return '<svg viewBox="0 0 24 24"><path d="M8 6h11"/><path d="M8 12h11"/><path d="M8 18h11"/><path d="M4 6l1 1 2-2"/><path d="M4 12l1 1 2-2"/><path d="M4 18l1 1 2-2"/></svg>';
       if (type === 'planner') return '<svg viewBox="0 0 24 24"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4 8h16"/><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 13h3"/><path d="M8 17h6"/></svg>';
@@ -668,6 +846,7 @@
             </div>
           </section>
           ${renderInstallCard(true)}
+          ${renderStudentPortalAssignments()}
           <div class="portal-grid">
             <section class="card portal-card">
               <div class="portal-head">
@@ -702,6 +881,7 @@
           </div>
         </div>
       `;
+      if (typeof refreshStudentPortalAssignmentOmrStatus === 'function') refreshStudentPortalAssignmentOmrStatus();
     }
     function renderAssignments() {
       const { missing, done } = splitAssignments();
@@ -832,9 +1012,7 @@
             </div>
             <span class="omr-status ${submitted ? 'done' : 'pending'}">${escapeHtml(status)}</span>
           </div>
-          <div class="row-actions">
-            <button class="btn ${submitted ? '' : 'btn-primary'}" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">${submitted ? '수정하기' : '입력하기'}</button>
-          </div>
+          ${submitted ? '' : `<div class="row-actions"><button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">입력하기</button></div>`}
         </article>
       `;
     }
@@ -851,6 +1029,10 @@
       const exam = findOmrExam(assignmentId);
       if (!exam) {
         toast('시험지를 찾을 수 없습니다.');
+        return;
+      }
+      if (Number(exam.is_submitted || 0) === 1) {
+        toast('이미 제출한 OMR은 수정할 수 없습니다.');
         return;
       }
       const count = Number(exam.question_count || 0);
@@ -900,6 +1082,7 @@
       if (isLoading || !omrDraft) return;
       const exam = findOmrExam(omrDraft.assignment_id);
       if (!exam) return toast('시험지를 찾을 수 없습니다.');
+      if (Number(exam.is_submitted || 0) === 1) return toast('이미 제출한 OMR은 다시 제출할 수 없습니다.');
       const btn = $('omr-submit-btn');
       isLoading = true;
       if (btn) {

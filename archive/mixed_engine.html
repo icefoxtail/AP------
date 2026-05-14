@@ -16,6 +16,7 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -518,6 +519,83 @@ async function registerClassExamAssignmentToOS() {
     }
 }
 
+
+// =========================================================================
+// [3B-MIXED] exam_blueprints 자동 등록 (AP 제출 QR 모드 전용, 믹서 원본 추적)
+// =========================================================================
+let _mixedBlueprintRegisteredSig = '';
+
+function getMixedArchiveFileKey() {
+    return AppState.key ? ('MIXED:' + AppState.key) : '';
+}
+
+function getMixedQuestionSourceFile(q) {
+    return q?._sourceFile || q?.source_archive_file || q?.sourceArchiveFile || '';
+}
+
+function getMixedQuestionSourceNo(q, fallbackNo) {
+    const raw = q?._sourceQuestionNo || q?.source_question_no || q?.sourceQuestionNo || q?._originalIndex || q?.originalIndex || q?.id || fallbackNo;
+    const n = parseInt(raw, 10);
+    return Number.isFinite(n) && n > 0 ? n : fallbackNo;
+}
+
+async function registerBlueprintToOS() {
+    if (!shouldRenderSubmitQr()) return;
+    if (!AppState.data.length || !AppState.key) return;
+
+    const archiveFile = getMixedArchiveFileKey();
+    if (!archiveFile) return;
+
+    const sig = archiveFile + '|' + AppState.data.map((q, i) => [
+        i + 1,
+        getMixedQuestionSourceFile(q),
+        getMixedQuestionSourceNo(q, i + 1),
+        q?.standardUnitKey || ''
+    ].join(':')).join(',');
+    if (sig === _mixedBlueprintRegisteredSig) return;
+
+    const authHeader = getAssignmentAuthHeader();
+    if (!authHeader) return;
+
+    const getKey = window.getConceptClusterKey || (() => '__UNMAPPED__');
+    const items = AppState.data.map((q, i) => {
+        const fallbackNo = i + 1;
+        const sourceFile = getMixedQuestionSourceFile(q);
+        if (!sourceFile) {
+            console.warn('[3B-MIXED] blueprint 저장 건너뜀: 원본 파일 없음', { questionNo: fallbackNo, item: q });
+            return null;
+        }
+        const sourceNo = getMixedQuestionSourceNo(q, fallbackNo);
+        const unitKey = q?.standardUnitKey || '';
+        return {
+            question_no: fallbackNo,
+            source_archive_file: sourceFile,
+            source_question_no: sourceNo,
+            standard_unit_key: unitKey,
+            standard_unit: q?.standardUnit || '',
+            standard_course: q?.standardCourse || '',
+            concept_cluster_key: getKey(unitKey)
+        };
+    }).filter(Boolean);
+
+    if (!items.length) return;
+
+    try {
+        const res = await fetch('https://ap-math-os-v2612.js-pdf.workers.dev/api/exam-blueprints', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', ...authHeader },
+            body: JSON.stringify({ archive_file: archiveFile, items })
+        });
+        if (!res.ok) {
+            console.warn('[3B-MIXED] blueprint 등록 실패:', res.status);
+            return;
+        }
+        _mixedBlueprintRegisteredSig = sig;
+    } catch (e) {
+        console.warn('[3B-MIXED] blueprint 등록 오류:', e);
+    }
+}
+
 const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '' };
 let pageCount = 0;
 
@@ -957,6 +1035,7 @@ async function render() {
     if (window.MathJax?.typesetPromise) await MathJax.typesetPromise([area]);
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
+    registerBlueprintToOS(); // [3B-MIXED] 믹서 원본 문항 매핑 등록 — 비동기
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 — 비동기
 }
 

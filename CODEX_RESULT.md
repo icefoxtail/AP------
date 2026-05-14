@@ -1,28 +1,25 @@
-1. 수정 파일
+# CODEX_RESULT
+
+## 1. 생성/수정 파일
 - apmath/student/index.html
 
-2. 수정한 함수
-- saveSession()
-- clearSession()
-- loginStudent()
-- openPlanner()
+## 2. 구현 완료
+- 배정 자료 제출 완료 OMR 버튼 제거: 제출 완료 자료는 `OMR 입력` 버튼이 렌더링되지 않도록 수정
+- OMR 목록 제출 완료 수정 버튼 제거: 제출 완료 OMR 카드에서 버튼 영역 자체를 제거
+- renderOmrInput 제출 완료 진입 차단: 제출 완료 exam이면 `이미 제출한 OMR은 수정할 수 없습니다.` toast 후 종료
+- submitOmr 중복 제출 차단: 제출 직전 제출 완료 상태를 다시 확인하고 `이미 제출한 OMR은 다시 제출할 수 없습니다.` toast 후 종료
+- 시험지 직접 열기 금지 유지: archive/mixed/archive exams 직접 이동 로직 추가 없이 유지
+- 기존 로그인/플래너/과제/최초 OMR 제출 흐름 보존: 로그인, 세션, 과제, 플래너, 미제출 OMR 최초 제출 흐름 유지
 
-3. 구현 완료 내용
-- 학생포털 로그인 성공 시 세션 객체에 `pin`을 함께 저장하도록 수정함.
-- 학생포털 세션 저장 시 `APMATH_STUDENT_PORTAL_SESSION`과 함께 `PLANNER_SID`, `PLANNER_PIN`을 `localStorage`와 `sessionStorage`에 저장하도록 수정함.
-- 플래너 열기 시 `PLANNER_SID`, `PLANNER_PIN`을 다시 보장 저장한 뒤 `student_id`와 `pin`을 함께 포함한 쿼리스트링으로 이동하도록 수정함.
-- 학생포털 로그아웃 시 `APMATH_STUDENT_PORTAL_SESSION`, `PLANNER_SID`, `PLANNER_PIN`을 모두 삭제하도록 수정함.
+## 3. 실행 결과
+- apmath/student/index.html script 검증: `<script>` 블록을 `/tmp/apmath_student_index_script_check.js`로 임시 추출 후 `node --check` 통과, 검증 후 임시 파일 삭제
+- OMR 수정 문구 검색: `수정하기` 검색 0건 확인
+- 직접 시험지 열기 문자열 검색: `archive/engine.html`, `mixed_engine.html`, `archive/exams` 검색 0건, `location.href`는 기존 homework/planner 이동만 확인, `fetch(`는 기존 API 호출만 확인
 
-4. 문법 검증 결과
-- `apmath/student/index.html` 내부 `<script>`를 `/tmp/apmath_student_index_script.js`로 추출 후 `node --check /tmp/apmath_student_index_script.js` 실행: 통과
+## 4. 결과 요약
+- 새 DB/API: 추가하지 않음
+- 수정하지 않은 파일: `archive/**`, `apmath/js/**`, `apmath/planner/**`, `schema.sql`, `index.js`, `worker/**`
+- 보류한 항목: 서버 측 재제출 차단 여부는 이번 작업 범위 밖
 
-5. 수동 테스트 체크리스트
-- 학생포털에서 이름 + PIN으로 로그인한다.
-- 브라우저 저장소에서 `APMATH_STUDENT_PORTAL_SESSION`, `PLANNER_SID`, `PLANNER_PIN` 저장 여부를 확인한다.
-- 학생포털에서 플래너 열기를 눌렀을 때 URL에 `student_id`와 `pin`이 함께 붙는지 확인한다.
-- 플래너 진입 시 PIN 재로그인 화면 없이 바로 들어가는지 확인한다.
-- 학생포털 로그아웃 후 `PLANNER_SID`, `PLANNER_PIN`이 삭제되는지 확인한다.
-
-6. 미해결/주의 항목
-- 실제 브라우저에서의 `localStorage`/`sessionStorage` 저장 결과와 플래너 자동 로그인 동작은 이 터미널 환경에서 직접 실행 확인하지 못했고, 수동 테스트가 필요함.
-- `apmath/planner/index.html`, Worker, DB/schema, 과제, OMR, UI 디자인, `API_BASE`는 수정하지 않음.
+## 5. 다음 조치
+- 실제 테스트 후 문제 발생 시 재수정

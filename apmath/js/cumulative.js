@@ -393,9 +393,9 @@ function renderAttendanceMetaDotsForCumulative(studentId, date) {
     const dots = [];
 
     // 태그 및 상담 상태별 점 색상 정의
-    if (meta.hasLate) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#f59f00;display:inline-block;"></span>');
-    if (meta.hasMakeup) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:var(--primary);display:inline-block;"></span>');
-    if (meta.hasConsultation) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#7c3aed;display:inline-block;"></span>');
+    if (meta.hasLate) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#E8414F;display:inline-block;"></span>');
+    if (meta.hasMakeup) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#1A5CFF;display:inline-block;"></span>');
+    if (meta.hasConsultation) dots.push('<span style="width:4px;height:4px;border-radius:999px;background:#00B894;display:inline-block;"></span>');
 
     if (!dots.length) return '';
 
@@ -646,9 +646,9 @@ function openAttendanceLedger() {
 .att-legend-item { display: inline-flex; align-items: center; gap: 4px; min-height: 22px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); white-space: nowrap; line-height: 1; }
 .att-legend-item b { font-size: 12px; font-weight: 800; color: var(--text); line-height: 1; }
 .att-legend-dot { display: inline-block; width: 6px; height: 6px; border-radius: 999px; flex: 0 0 auto; box-shadow: 0 0 0 1px rgba(0,0,0,0.04); }
-.att-legend-dot.late { background: #f59f00; }
-.att-legend-dot.makeup { background: var(--primary); }
-.att-legend-dot.consult { background: #7c3aed; }
+.att-legend-dot.late { background: #E8414F; }
+.att-legend-dot.makeup { background: #1A5CFF; }
+.att-legend-dot.consult { background: #00B894; }
 #att-tbl-wrap { flex: 1; overflow: auto; border: 1px solid var(--border); border-radius: 12px 12px 0 0; background: var(--surface); }
 #att-tbl { border-collapse: collapse; width: max-content; }
 #att-tbl th, #att-tbl td { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); text-align: center; }
