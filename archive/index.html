@@ -369,6 +369,35 @@
             filter: brightness(1.02);
         }
 
+        .fb-original-toggle {
+            display: none;
+            height: 44px;
+            background: rgba(255,255,255,0.92);
+            color: #334155;
+            border: 1px solid #e4ebf5;
+            border-radius: 12px;
+            padding: 0 14px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
+            transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s, color 0.15s, background 0.15s;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .fb-original-toggle:hover {
+            border-color: #bfd3f8;
+            box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
+            transform: translateY(-1px);
+        }
+
+        .fb-original-toggle.active {
+            background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
+            color: #9a3412;
+            border-color: #fed7aa;
+        }
+
         .content-wrap {
             background: linear-gradient(180deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0) 100%);
         }
@@ -836,7 +865,8 @@
             }
 
             .fb-sel,
-            .fb-mixer {
+            .fb-mixer,
+            .fb-original-toggle {
                 flex: 1 1 calc(50% - 5px);
             }
 
@@ -956,11 +986,14 @@
         </select>
         <select class="fb-sel" id="contentTypeFilter">
             <option value="">전체 분류</option>
-            <option value="기출">기출</option>
+            <option value="기출" id="contentTypeOriginalOption">기출</option>
             <option value="유형">유형</option>
             <option value="단원평가">단원평가</option>
             <option value="쪽지">쪽지</option>
         </select>
+        <button type="button" class="fb-original-toggle" id="originalArchiveToggle" onclick="toggleOriginalArchiveVisibility()">
+            <i class="fa-solid fa-lock"></i><span>기출 보기 OFF</span>
+        </button>
         <button class="fb-mixer" onclick="location.href='mixer.html'">믹서 출제</button>
     </div>
 </div>
@@ -982,6 +1015,7 @@
 <script>
 let engineDB = { exams: [] };
 let selectedGrade = '';
+let includeOriginalArchiveItems = false;
 
 function compactText(value) {
     return String(value || '').replace(/\s+/g, '').trim();
@@ -993,9 +1027,11 @@ function normalizeContentType(value) {
 
     if (!compact) return '';
     if (compact.includes('단원평가')) return '단원평가';
-    if (compact.includes('기출')) return '기출';
+    if (compact.includes('기출유사')) return '유형';
+    if (compact.includes('기출심화')) return '유형';
     if (compact.includes('유형')) return '유형';
     if (compact.includes('쪽지')) return '쪽지';
+    if (compact === '기출') return '기출';
 
     return raw;
 }
@@ -1055,6 +1091,68 @@ function normalizedExams() {
     return Array.isArray(engineDB.exams) ? engineDB.exams.map(normalizeExamMeta).filter(e => e.file) : [];
 }
 
+function getApmathSession() {
+    try {
+        return JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+    } catch (e) {
+        return null;
+    }
+}
+
+function isTeacherArchiveSession() {
+    const session = getApmathSession();
+    if (!session) return false;
+
+    const role = compactText(session.role || session.user?.role || session.auth?.role || '').toLowerCase();
+    const id = compactText(session.id || session.user?.id || session.auth?.id || '').toLowerCase();
+    const loginId = compactText(session.login_id || session.loginId || session.user?.login_id || session.user?.loginId || '').toLowerCase();
+
+    return role === 'teacher' || role === 'admin' || role === 'owner' || id === 't_admin' || loginId === 'admin';
+}
+
+function isOriginalArchiveItem(ex) {
+    const file = String(ex?.file || '').trim().replace(/^exams\//, '');
+    return file.startsWith('original/');
+}
+
+function shouldShowOriginalArchiveItems() {
+    return isTeacherArchiveSession() && includeOriginalArchiveItems;
+}
+
+function visibleExams() {
+    return normalizedExams().filter(ex => !isOriginalArchiveItem(ex) || shouldShowOriginalArchiveItems());
+}
+
+function updateOriginalArchiveToggleUI() {
+    const canUse = isTeacherArchiveSession();
+    const btn = document.getElementById('originalArchiveToggle');
+    const originalOption = document.getElementById('contentTypeOriginalOption');
+
+    if (btn) {
+        btn.style.display = canUse ? 'inline-flex' : 'none';
+        btn.classList.toggle('active', canUse && includeOriginalArchiveItems);
+        btn.innerHTML = canUse && includeOriginalArchiveItems
+            ? '<i class="fa-solid fa-unlock"></i><span>기출 보기 ON</span>'
+            : '<i class="fa-solid fa-lock"></i><span>기출 보기 OFF</span>';
+    }
+
+    if (originalOption) {
+        originalOption.hidden = !canUse;
+        originalOption.disabled = !canUse;
+    }
+
+    const typeSelect = document.getElementById('contentTypeFilter');
+    if (!canUse && typeSelect && typeSelect.value === '기출') typeSelect.value = '';
+}
+
+function toggleOriginalArchiveVisibility() {
+    if (!isTeacherArchiveSession()) return;
+    includeOriginalArchiveItems = !includeOriginalArchiveItems;
+    updateOriginalArchiveToggleUI();
+    populateYearFilter();
+    onFilterChange();
+}
+
 function examTypeLabel(examType) {
     if (examType === 'mid') return '중간';
     if (examType === 'final') return '기말';
@@ -1076,6 +1174,7 @@ async function init() {
         document.body.appendChild(s);
     });
 
+    updateOriginalArchiveToggleUI();
     populateYearFilter();
     initGradeBar();
 
@@ -1088,7 +1187,7 @@ async function init() {
 }
 
 function populateYearFilter() {
-    const years = [...new Set(normalizedExams().map(e => e.year))].filter(Boolean).sort((a, b) => b - a);
+    const years = [...new Set(visibleExams().map(e => e.year))].filter(Boolean).sort((a, b) => b - a);
     const sel = document.getElementById('yearFilter');
     sel.innerHTML = '<option value="">전체 연도</option>';
 
@@ -1188,7 +1287,7 @@ function renderFeatured() {
     const section = document.getElementById('featured-section');
     section.innerHTML = '';
 
-    const all = normalizedExams();
+    const all = visibleExams();
     if (!all.length) {
         showEmptyState('db.js를 불러오지 못했거나 등록된 자료가 없습니다.');
         return;
@@ -1248,7 +1347,7 @@ function renderFullList() {
     const container = document.getElementById('full-grid');
     container.innerHTML = '';
 
-    let filtered = normalizedExams().filter(ex => {
+    let filtered = visibleExams().filter(ex => {
         const searchBase = [
             ex.school || '',
             ex.subject || '',
