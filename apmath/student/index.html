@@ -499,12 +499,23 @@
     function saveSession(next) {
       session = next;
       localStorage.setItem(SESSION_KEY, JSON.stringify(next));
+
+      if (next?.student_id && next?.pin) {
+        localStorage.setItem('PLANNER_SID', String(next.student_id));
+        localStorage.setItem('PLANNER_PIN', String(next.pin));
+        sessionStorage.setItem('PLANNER_SID', String(next.student_id));
+        sessionStorage.setItem('PLANNER_PIN', String(next.pin));
+      }
     }
     function readSession() {
       try { return JSON.parse(localStorage.getItem(SESSION_KEY)) || null; } catch (e) { return null; }
     }
     function clearSession() {
       localStorage.removeItem(SESSION_KEY);
+      localStorage.removeItem('PLANNER_SID');
+      localStorage.removeItem('PLANNER_PIN');
+      sessionStorage.removeItem('PLANNER_SID');
+      sessionStorage.removeItem('PLANNER_PIN');
       session = null;
       homeData = null;
     }
@@ -588,6 +599,7 @@
           grade: data.student.grade || '',
           school_name: data.student.school_name || '',
           student_token: data.student_token,
+          pin,
           login_at: new Date().toISOString()
         };
         saveSession(next);
@@ -757,7 +769,19 @@
     }
     function openPlanner() {
       if (!session?.student_id) return toast('로그인이 필요합니다.');
-      location.href = `../planner/?student_id=${encodeURIComponent(session.student_id)}`;
+
+      if (session?.pin) {
+        localStorage.setItem('PLANNER_SID', String(session.student_id));
+        localStorage.setItem('PLANNER_PIN', String(session.pin));
+        sessionStorage.setItem('PLANNER_SID', String(session.student_id));
+        sessionStorage.setItem('PLANNER_PIN', String(session.pin));
+      }
+
+      const params = new URLSearchParams();
+      params.set('student_id', String(session.student_id));
+      if (session?.pin) params.set('pin', String(session.pin));
+
+      location.href = `../planner/?${params.toString()}`;
     }
     async function loadOmrExams(force = false) {
       if (!session?.student_id || !session?.student_token) throw new Error('로그인이 필요합니다.');

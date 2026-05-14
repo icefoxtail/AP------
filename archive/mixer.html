@@ -43,6 +43,7 @@
             color: var(--gray-500); font-size: 11.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; flex: 0 0 auto; transition: 0.2s;
         }
         .btn-filter-toggle:hover { background: var(--gray-50); color: var(--text-main); border-color: var(--gray-300); }
+        .btn-filter-toggle.original-toggle.active { background: #fff7ed; color: #9a3412; border-color: #fed7aa; }
 
         .search-box { position: relative; }
         .search-box i { position: absolute; left: 12px; top: 12px; color: var(--gray-300); }
@@ -166,6 +167,9 @@
             
             <div id="filter-panel-content" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
                 <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="paperSearch" placeholder="학교명, 파일명 검색..."></div>
+                <button id="originalArchiveToggle" class="btn-filter-toggle original-toggle" type="button" style="display:none; align-self:flex-start;" onclick="toggleOriginalArchiveVisibility()">
+                    <i class="fa-solid fa-lock"></i> 기출 포함 OFF
+                </button>
                 <div class="filter-row">
                     <select id="gradeFilter" class="form-select">
                         <option value="">학년 선택</option>
@@ -427,6 +431,7 @@ function getStandardizedUnit(q) {
 }
 
 let engineDB = { exams: [] }, cart = [], currentDisplayQuestions = [], selectedFiles = new Set(), currentViewingSource = null;
+let includeOriginalArchiveItems = false;
 
 function formatArchiveDisplayName(file) {
     const raw = String(file || '').trim();
@@ -449,7 +454,7 @@ function resetMixerState() {
     const panel = document.getElementById('filter-panel-content');
     if (panel.style.display === 'none') toggleFilterPanel();
 
-    renderExamList(); updateBulkStatus(); updateCartUI();
+    updateOriginalArchiveToggleUI(); renderExamList(); updateBulkStatus(); updateCartUI();
     document.getElementById('cur-source-name').innerText = '준비됨'; document.getElementById('cur-q-count').innerText = '0'; document.getElementById('cur-unit-name').innerText = '전체';
     document.getElementById('question-list').innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-file-circle-plus"></i><p>왼쪽에서 시험지를 클릭하거나 여러 개 선택 후 불러오기를 누르세요.</p></div>';
 }
@@ -461,6 +466,7 @@ function normalizeExamMeta(ex) {
     n.grade = (ex.grade || "").replace(/[^중고\d]/g, "");
     n.semester = String(ex.semester || "");
     n.examType = (ex.examType || "").toLowerCase();
+    n.file = String(ex.file || "").trim();
     let axis = "other";
     if(n.semester === "1" && n.examType.includes("mid")) axis = "1-mid";
     else if(n.semester === "1" && n.examType.includes("final")) axis = "1-final";
@@ -469,11 +475,83 @@ function normalizeExamMeta(ex) {
     n._axis = axis; return n;
 }
 
+function compactText(value) {
+    return String(value || '').replace(/\s+/g, '').trim();
+}
+
+function getApmathSession() {
+    try {
+        return JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
+    } catch (e) {
+        return null;
+    }
+}
+
+function isTeacherArchiveSession() {
+    const session = getApmathSession();
+    if (!session) return false;
+
+    const role = compactText(session.role || session.user?.role || session.auth?.role || '').toLowerCase();
+    const id = compactText(session.id || session.user?.id || session.auth?.id || '').toLowerCase();
+    const loginId = compactText(session.login_id || session.loginId || session.user?.login_id || session.user?.loginId || '').toLowerCase();
+
+    return role === 'teacher' || role === 'admin' || role === 'owner' || id === 't_admin' || loginId === 'admin';
+}
+
+function isOriginalArchiveItem(ex) {
+    const file = String(ex?.file || '').trim().replace(/^exams\//, '');
+    return file.startsWith('original/');
+}
+
+function shouldShowOriginalArchiveItems() {
+    return isTeacherArchiveSession() && includeOriginalArchiveItems;
+}
+
+function visibleMixerExams() {
+    return engineDB.exams.filter(ex => !isOriginalArchiveItem(ex) || shouldShowOriginalArchiveItems());
+}
+
+function updateOriginalArchiveToggleUI() {
+    const canUse = isTeacherArchiveSession();
+    const btn = document.getElementById('originalArchiveToggle');
+    if (!btn) return;
+
+    btn.style.display = canUse ? 'inline-flex' : 'none';
+    btn.classList.toggle('active', canUse && includeOriginalArchiveItems);
+    btn.innerHTML = canUse && includeOriginalArchiveItems
+        ? '<i class="fa-solid fa-unlock"></i> 기출 포함 ON'
+        : '<i class="fa-solid fa-lock"></i> 기출 포함 OFF';
+}
+
+function toggleOriginalArchiveVisibility() {
+    if (!isTeacherArchiveSession()) return;
+    includeOriginalArchiveItems = !includeOriginalArchiveItems;
+
+    if (!includeOriginalArchiveItems) {
+        Array.from(selectedFiles).forEach(file => {
+            if (String(file || '').trim().replace(/^exams\//, '').startsWith('original/')) selectedFiles.delete(file);
+        });
+        if (currentViewingSource && isOriginalArchiveItem(currentViewingSource)) {
+            currentViewingSource = null;
+            currentDisplayQuestions = [];
+            document.getElementById('cur-source-name').innerText = '준비됨';
+            document.getElementById('cur-q-count').innerText = '0';
+            document.getElementById('cur-unit-name').innerText = '전체';
+            document.getElementById('q-unit-filter').innerHTML = '<option value="">전체 표준단원</option>';
+            document.getElementById('question-list').innerHTML = '<div class="empty-placeholder"><i class="fa-solid fa-file-circle-plus"></i><p>왼쪽에서 시험지를 클릭하거나 여러 개 선택 후 불러오기를 누르세요.</p></div>';
+        }
+    }
+
+    updateOriginalArchiveToggleUI();
+    renderExamList();
+    updateBulkStatus();
+}
+
 function renderExamList() {
     const keyword = document.getElementById('paperSearch').value.toLowerCase();
     const grade = document.getElementById('gradeFilter').value;
     const axis = document.getElementById('axisFilter').value;
-    const filtered = engineDB.exams.filter(ex => {
+    const filtered = visibleMixerExams().filter(ex => {
         const searchBase = `${ex.school} ${ex.topic} ${ex.file}`.toLowerCase();
         return (!keyword || searchBase.includes(keyword)) && (!grade || ex.grade === grade) && (!axis || ex._axis === axis);
     });
@@ -744,7 +822,7 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
  */
 window.onload = async () => {
     const s = document.createElement('script'); s.src = 'db.js?v=' + Date.now();
-    s.onload = () => { if(window.mainDB) { engineDB.exams = window.mainDB.exams.map(normalizeExamMeta); renderExamList(); } };
+    s.onload = () => { if(window.mainDB) { engineDB.exams = window.mainDB.exams.map(normalizeExamMeta); updateOriginalArchiveToggleUI(); renderExamList(); } };
     document.body.appendChild(s);
     document.getElementById('paperSearch').oninput = renderExamList;
     document.getElementById('gradeFilter').onchange = renderExamList;
