@@ -47,6 +47,20 @@ function injectClassroomStyles() {
         .cls-v4-section { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px 7px; }
         .cls-v4-section h3 { margin:0; font-size:14px; font-weight:700; color:var(--text); letter-spacing:-0.2px; }
         .cls-v4-section span { font-size:11px; font-weight:700; color:var(--secondary); }
+        .cls-v4-assignment-box { margin:8px 16px 0; padding:10px 12px 12px; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:none; }
+        .cls-v4-assignment-list { display:flex; flex-direction:column; gap:8px; }
+        .cls-v4-assignment-item { display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; padding:10px 11px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); text-align:left; box-shadow:none; cursor:pointer; }
+        .cls-v4-assignment-item.is-disabled { cursor:default; }
+        .cls-v4-assignment-copy { min-width:0; flex:1; }
+        .cls-v4-assignment-line { font-size:12px; font-weight:700; color:var(--text); line-height:1.5; word-break:keep-all; }
+        .cls-v4-assignment-line .muted { color:var(--secondary); }
+        .cls-v4-assignment-meta { margin-top:5px; display:flex; flex-wrap:wrap; gap:6px; }
+        .cls-v4-assignment-pill { display:inline-flex; align-items:center; min-height:22px; padding:0 8px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--secondary); font-size:11px; font-weight:700; }
+        .cls-v4-assignment-pill.type-mixed { color:var(--primary); border-color:rgba(26,92,255,0.18); background:rgba(26,92,255,0.07); }
+        .cls-v4-assignment-pill.type-clinic { color:#7c3aed; border-color:rgba(124,58,237,0.16); background:rgba(124,58,237,0.07); }
+        .cls-v4-assignment-action { flex:0 0 auto; min-height:32px; padding:0 10px; border-radius:10px; font-size:11px; font-weight:700; }
+        .cls-v4-assignment-action[disabled] { cursor:default; opacity:0.55; }
+        .cls-v4-assignment-more { margin-top:8px; font-size:11px; font-weight:700; color:var(--secondary); text-align:right; }
         .cls-v4-board { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--surface); box-shadow:none; }
         .cls-v4-board-head { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px 42px; align-items:center; gap:6px; min-height:30px; padding:4px 12px; border-bottom:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:10px; font-weight:700; text-align:center; }
         .cls-v4-board-head .name-spacer { text-align:left; }
@@ -72,6 +86,7 @@ function injectClassroomStyles() {
         @media (min-width:800px) {
             .cls-v4-wrap { max-width:1080px; padding-bottom:32px; }
             .cls-v4-top { border-left:1px solid var(--border); border-right:1px solid var(--border); border-radius:0 0 18px 18px; }
+            .cls-v4-assignment-box { margin-left:16px; margin-right:16px; }
             .cls-v4-board { margin:0 16px; border:1px solid var(--border); border-radius:18px; overflow:hidden; }
             .cls-v4-tools { padding-left:16px; padding-right:16px; }
             .cls-v4-board-head { grid-template-columns:minmax(120px,1fr) 54px 54px 54px 54px 54px; padding-left:18px; padding-right:18px; gap:8px; }
@@ -1526,6 +1541,132 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
     `;
 }
 
+function getClassArchiveAssignments(classId) {
+    const rows = Array.isArray(state.db.class_exam_assignments) ? state.db.class_exam_assignments : [];
+    return rows
+        .filter(row => String(row?.class_id || '') === String(classId || ''))
+        .sort((a, b) =>
+            String(b?.exam_date || '').localeCompare(String(a?.exam_date || '')) ||
+            String(b?.created_at || '').localeCompare(String(a?.created_at || '')) ||
+            String(b?.id || '').localeCompare(String(a?.id || ''))
+        );
+}
+
+function formatClassAssignmentType(row) {
+    const sourceType = String(row?.source_type || '').trim().toLowerCase();
+    const archiveFile = String(row?.archive_file || '').trim();
+    if (sourceType === 'clinic') return '클리닉';
+    if (sourceType === 'mixed' || archiveFile.startsWith('MIXED:')) return '믹서';
+    if (sourceType) return '아카이브';
+    return archiveFile ? '아카이브' : '자료';
+}
+
+function getClassAssignmentTypeClassName(row) {
+    const typeLabel = formatClassAssignmentType(row);
+    if (typeLabel === '믹서') return 'type-mixed';
+    if (typeLabel === '클리닉') return 'type-clinic';
+    return '';
+}
+
+function hasClassAssignmentSubmissions(classId, row) {
+    const studentIds = new Set(
+        (state.db.class_students || [])
+            .filter(link => String(link?.class_id || '') === String(classId || ''))
+            .map(link => String(link?.student_id || ''))
+    );
+    if (!studentIds.size) return false;
+
+    const title = String(row?.exam_title || '');
+    const date = String(row?.exam_date || '');
+    const archiveFile = String(row?.archive_file || '').trim();
+    const questionCount = Number(row?.question_count || 0);
+
+    return (state.db.exam_sessions || []).some(session => {
+        if (!studentIds.has(String(session?.student_id || ''))) return false;
+        if (String(session?.exam_title || '') !== title) return false;
+        if (String(session?.exam_date || '') !== date) return false;
+        const sessionArchiveFile = String(session?.archive_file || '').trim();
+        if (archiveFile && sessionArchiveFile && sessionArchiveFile !== archiveFile) return false;
+        const sessionQuestionCount = Number(session?.question_count || 0);
+        return !questionCount || !sessionQuestionCount || questionCount === sessionQuestionCount;
+    });
+}
+
+function openClassAssignmentClinic(classId, hasSubmission) {
+    if (typeof openClinicPrintCenter !== 'function') {
+        toast('오답 출력 센터를 아직 사용할 수 없습니다.', 'info');
+        return;
+    }
+    if (!hasSubmission) {
+        toast('제출된 시험 기록이 아직 없습니다.', 'info');
+        return;
+    }
+    openClinicPrintCenter(classId);
+}
+
+function renderClassArchiveAssignments(classId) {
+    const assignments = getClassArchiveAssignments(classId);
+    const visibleAssignments = assignments.slice(0, 5);
+
+    if (!visibleAssignments.length) {
+        return `
+            <div class="cls-v4-section">
+                <h3>배정 자료</h3>
+            </div>
+            <div class="cls-v4-assignment-box">
+                <div class="cls-v4-empty">아직 배정된 자료가 없습니다.</div>
+            </div>
+        `;
+    }
+
+    const canOpenClinic = typeof openClinicPrintCenter === 'function';
+    const rowsHtml = visibleAssignments.map(row => {
+        const hasSubmission = hasClassAssignmentSubmissions(classId, row);
+        const safeClassId = String(classId || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        const typeLabel = formatClassAssignmentType(row);
+        const typeClassName = getClassAssignmentTypeClassName(row);
+        const examDate = apEscapeHtml(String(row?.exam_date || ''));
+        const examTitle = apEscapeHtml(String(row?.exam_title || '') || '시험명 없음');
+        const questionCount = Number(row?.question_count || 0);
+        const questionLabel = `${Number.isFinite(questionCount) ? questionCount : 0}문항`;
+        const disabledAttr = canOpenClinic && hasSubmission ? '' : 'disabled';
+        const buttonTitle = !canOpenClinic
+            ? '오답 출력 센터를 아직 사용할 수 없습니다.'
+            : hasSubmission
+                ? '오답 만들기'
+                : '제출된 시험 기록이 아직 없습니다.';
+
+        return `
+            <div class="cls-v4-assignment-item ${canOpenClinic && hasSubmission ? '' : 'is-disabled'}" role="button" tabindex="0" onclick="openClassAssignmentClinic('${safeClassId}', ${hasSubmission ? 'true' : 'false'})" onkeydown="if(event.key==='Enter'||event.key===' '){ event.preventDefault(); openClassAssignmentClinic('${safeClassId}', ${hasSubmission ? 'true' : 'false'}'); }">
+                <div class="cls-v4-assignment-copy">
+                    <div class="cls-v4-assignment-line">
+                        <span>${examDate || '-'}</span>
+                        <span class="muted"> · </span>
+                        <span>${examTitle}</span>
+                    </div>
+                    <div class="cls-v4-assignment-meta">
+                        <span class="cls-v4-assignment-pill">${apEscapeHtml(questionLabel)}</span>
+                        <span class="cls-v4-assignment-pill ${typeClassName}">${apEscapeHtml(typeLabel)}</span>
+                    </div>
+                </div>
+                <button type="button" class="btn cls-v4-assignment-action" ${disabledAttr} title="${apEscapeHtml(buttonTitle)}" onclick="event.stopPropagation(); openClassAssignmentClinic('${safeClassId}', ${hasSubmission ? 'true' : 'false'})">오답 만들기</button>
+            </div>
+        `;
+    }).join('');
+
+    const hiddenCount = assignments.length - visibleAssignments.length;
+
+    return `
+        <div class="cls-v4-section">
+            <h3>배정 자료</h3>
+        </div>
+        <div class="cls-v4-assignment-box">
+            <div class="cls-v4-assignment-list">${rowsHtml}</div>
+            ${hiddenCount > 0 ? `<div class="cls-v4-assignment-more">외 ${hiddenCount}개 자료</div>` : ''}
+        </div>
+    `;
+}
+
 
 function updateClassSummaryDOM(cid) {
     const root = document.getElementById('v4-summary-root');
@@ -1596,6 +1737,7 @@ function renderClass(cid) {
         <div class="cls-fade-in cls-v4-wrap">
             ${renderClassTopBarV4B(cls, summary, today)}
             ${renderClassToolBarV4B(cid, plannerEnabled, today)}
+            ${renderClassArchiveAssignments(cid)}
             <div class="cls-v4-section">
                 <h3>학생 명단</h3>
             </div>

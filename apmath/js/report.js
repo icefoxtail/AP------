@@ -713,6 +713,14 @@ function reportCenterFindBlueprint(session, questionNo) {
     ) || null;
 }
 
+function reportCenterGetBlueprintSource(session, questionNo) {
+    const bp = reportCenterFindBlueprint(session, questionNo);
+    const sourceArchiveFile = String(bp?.source_archive_file || '').trim();
+    const sourceQuestionNo = Number(bp?.source_question_no || 0);
+    if (!sourceArchiveFile || !sourceQuestionNo) return null;
+    return { blueprint: bp, sourceArchiveFile, sourceQuestionNo };
+}
+
 function reportCenterBuildWrongSummary(session) {
     if (!session) return [];
     const wrongIds = reportCenterGetWrongIds(session.id);
@@ -911,6 +919,11 @@ const REPORT_CENTER_ARCHIVE_MIXER_URL = 'https://icefoxtail.github.io/AP------/a
 function reportCenterArchiveCache() {
     window.AP_REPORT_ARCHIVE_CACHE = window.AP_REPORT_ARCHIVE_CACHE || {};
     return window.AP_REPORT_ARCHIVE_CACHE;
+}
+
+function reportCenterArchiveBankCache() {
+    window.AP_REPORT_ARCHIVE_BANK_CACHE = window.AP_REPORT_ARCHIVE_BANK_CACHE || {};
+    return window.AP_REPORT_ARCHIVE_BANK_CACHE;
 }
 
 function reportCenterGetCachedArchiveDetails(sessionId) {
@@ -1115,6 +1128,95 @@ function reportCenterNormalizeQuestionDetail(question, questionNo, statRow = nul
     };
 }
 
+async function reportCenterFetchArchiveBankByFile(rawArchiveFile) {
+    const archiveInfo = reportCenterNormalizeArchiveFile(rawArchiveFile || '');
+    if (!archiveInfo.ok) {
+        return {
+            ok: false,
+            archiveInfo,
+            list: [],
+            message: archiveInfo.message || '아카이브 파일을 확인할 수 없습니다.'
+        };
+    }
+
+    const cacheKey = archiveInfo.url || archiveInfo.path || archiveInfo.original;
+    const cached = reportCenterArchiveBankCache()[cacheKey];
+    if (cached) return cached;
+
+    try {
+        const res = await fetch(archiveInfo.url, { cache: 'force-cache' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const jsText = await res.text();
+        const bank = reportCenterExtractQuestionBankFromText(jsText);
+        const list = reportCenterNormalizeQuestionBank(bank);
+        if (!list.length) throw new Error('questionBank empty');
+
+        const payload = {
+            ok: true,
+            archiveInfo,
+            list,
+            totalQuestions: list.length,
+            message: '아카이브 문항 원문을 불러왔습니다.'
+        };
+        reportCenterArchiveBankCache()[cacheKey] = payload;
+        return payload;
+    } catch (e) {
+        const message = String(e?.message || '');
+        const isNotFound = message.includes('HTTP 404');
+        if (isNotFound) {
+            console.info('[reportCenterFetchArchiveBankByFile] archive file not found:', archiveInfo.original || archiveInfo.path || archiveInfo.url);
+        } else {
+            console.warn('[reportCenterFetchArchiveBankByFile] failed:', e);
+        }
+        const payload = {
+            ok: false,
+            archiveInfo,
+            list: [],
+            message: isNotFound ? '문항 원문 파일을 찾을 수 없습니다.' : '문항 원문 로드 중 오류가 발생했습니다.'
+        };
+        reportCenterArchiveBankCache()[cacheKey] = payload;
+        return payload;
+    }
+}
+
+async function reportCenterBuildMixedArchiveQuestionDetails(session, wrongRows, archiveInfo) {
+    let mappedCount = 0;
+    let loadedCount = 0;
+
+    const details = await Promise.all((wrongRows || []).map(async row => {
+        const source = reportCenterGetBlueprintSource(session, row.questionNo);
+        if (!source) {
+            return reportCenterNormalizeQuestionDetail(null, row.questionNo, row);
+        }
+
+        mappedCount += 1;
+        const sourcePayload = await reportCenterFetchArchiveBankByFile(source.sourceArchiveFile);
+        if (!sourcePayload.ok) {
+            return reportCenterNormalizeQuestionDetail(null, row.questionNo, row);
+        }
+
+        const question = reportCenterFindQuestionInBank(sourcePayload.list, source.sourceQuestionNo);
+        if (!question) {
+            return reportCenterNormalizeQuestionDetail(null, row.questionNo, row);
+        }
+
+        loadedCount += 1;
+        return reportCenterNormalizeQuestionDetail(question, row.questionNo, row);
+    }));
+
+    return {
+        ok: loadedCount > 0,
+        status: loadedCount > 0 ? 'mixed-loaded' : 'mixed',
+        archiveInfo,
+        message: loadedCount > 0
+            ? '믹서 출제물 원본 문항을 매핑을 통해 불러왔습니다.'
+            : archiveInfo.message,
+        details,
+        mappedCount,
+        loadedCount
+    };
+}
+
 async function reportCenterFetchArchiveQuestionDetails(session) {
     if (!session) {
         return { ok: false, status: 'no-session', message: '평가 기록을 찾을 수 없습니다.', details: [] };
@@ -1127,6 +1229,11 @@ async function reportCenterFetchArchiveQuestionDetails(session) {
     const stats = reportCenterBuildQuestionStats(session);
     const wrongRows = stats.wrongRows || [];
 
+    if (archiveInfo.type === 'mixed') {
+        const payload = await reportCenterBuildMixedArchiveQuestionDetails(session, wrongRows, archiveInfo);
+        return reportCenterSetCachedArchiveDetails(session.id, payload);
+    }
+
     if (!archiveInfo.ok) {
         return reportCenterSetCachedArchiveDetails(session.id, {
             ok: false,
@@ -1138,13 +1245,9 @@ async function reportCenterFetchArchiveQuestionDetails(session) {
     }
 
     try {
-        const res = await fetch(archiveInfo.url, { cache: 'force-cache' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const jsText = await res.text();
-        const bank = reportCenterExtractQuestionBankFromText(jsText);
-        const list = reportCenterNormalizeQuestionBank(bank);
-        if (!list.length) throw new Error('questionBank empty');
-
+        const sourcePayload = await reportCenterFetchArchiveBankByFile(session.archive_file || '');
+        if (!sourcePayload.ok) throw new Error(sourcePayload.message || 'archive load failed');
+        const list = sourcePayload.list;
         const details = wrongRows.map(row => {
             const q = reportCenterFindQuestionInBank(list, row.questionNo);
             return reportCenterNormalizeQuestionDetail(q, row.questionNo, row);
@@ -1153,8 +1256,8 @@ async function reportCenterFetchArchiveQuestionDetails(session) {
         return reportCenterSetCachedArchiveDetails(session.id, {
             ok: true,
             status: 'loaded',
-            archiveInfo,
-            message: '아카이브 문항 원문을 불러왔습니다.',
+            archiveInfo: sourcePayload.archiveInfo || archiveInfo,
+            message: sourcePayload.message || '아카이브 문항 원문을 불러왔습니다.',
             totalQuestions: list.length,
             details
         });

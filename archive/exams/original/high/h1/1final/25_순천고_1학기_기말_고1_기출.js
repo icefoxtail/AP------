@@ -1,4 +1,4 @@
-Window.examTitle = "25_순천고_1학기_기말_고1_기출";
+window.examTitle = "25_순천고_1학기_기말_고1_기출";
 
 window.questionBank = [
   {

@@ -23,6 +23,7 @@ function clinicPrintEscapeAttr(value) {
 function clinicPrintNormalizeArchiveFile(file) {
     const raw = String(file || '').trim();
     if (!raw) return '';
+    if (/^MIXED:/i.test(raw)) return raw;
     if (/^https?:\/\//i.test(raw)) return raw;
     let path = raw.replace(/^archive\//, '').replace(/^\.\//, '').replace(/^\//, '');
     if (!path.endsWith('.js')) path += '.js';
