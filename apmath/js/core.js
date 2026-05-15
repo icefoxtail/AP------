@@ -115,7 +115,7 @@ const api = {
         return this.patch(`homework-photo/${encodeURIComponent(assignmentId)}/close`, {});
     },
     deleteHomeworkPhotoAssignment(assignmentId) {
-        return this.delete('homework-photo', encodeURIComponent(assignmentId));
+        return this.delete('homework-photo', assignmentId);
     }
 };
 
