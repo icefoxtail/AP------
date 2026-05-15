@@ -2,229 +2,270 @@ cat > CODEX_TASK.md <<'EOF'
 # CODEX_TASK.md
 
 ## 작업명
-긴급 수정 — students/classes route 분리 후 API Endpoint Not Found 복구
-
-## 상황
-Worker route/helper 분리 2단계 배포 후 smoke test에서 아래 문제가 발생했다.
-
-정상:
-- GET /api/teachers 정상 응답
-
-실패:
-- GET /api/students -> {"error":"API Endpoint Not Found"}
-- GET /api/classes -> {"error":"API Endpoint Not Found"}
-
-따라서 teachers route는 정상이고, students/classes route 위임 또는 route 내부 path 분기가 기존 실제 엔드포인트와 맞지 않는 상태다.
-
-이번 작업은 긴급 복구 작업이다.
+Worker route/helper 분리 3단계 — attendance/homework 계열 API 분리
 
 ## 목표
-배포 후 `/api/students`, `/api/classes` 또는 기존 UI가 실제로 사용하는 학생/반 API가 다시 정상 응답하도록 복구한다.
+Worker route/helper 분리 1단계에서 foundation 계열 API를 분리했고, 2단계에서 students/classes/teachers 계열 API를 분리했다.
 
-핵심:
-- 기존 route 분리 전 동작과 응답 구조를 유지한다.
-- teachers route는 건드리지 않는다.
-- UI는 수정하지 않는다.
-- schema/migration은 수정하지 않는다.
+이번 3단계에서는 기존 AP Math 본체 API 중 출결/숙제 계열 API만 route 파일로 분리한다.
+
+이번 작업은 기능 추가가 아니다.
+
+목표:
+- index.js 비대화 완화
+- attendance/homework 관련 API를 기능별 route로 이동
+- 기존 API 응답과 동작 유지
+- 기존 UI 변경 없음
+- DB/schema/migration 변경 없음
 
 ## 실제 작업 기준
-프로젝트 루트의 현재 파일 기준으로 확인한다.
+프로젝트 루트의 현재 파일 기준으로 작업한다.
 
-주요 확인 파일:
+주요 파일:
 - apmath/worker-backup/worker/index.js
-- apmath/worker-backup/worker/routes/students.js
-- apmath/worker-backup/worker/routes/classes.js
-- apmath/worker-backup/worker/routes/teachers.js
-- apmath/worker-backup/worker/helpers/admin-db.js
+- apmath/worker-backup/worker/routes/
+- apmath/worker-backup/worker/helpers/
 - CODEX_RESULT.md
 
 ## 절대 금지
+- index.js 전체 재작성 금지
+- 기존 initial-data 본체 분리 금지
+- 기존 initial-data 응답 구조 변경 금지
+- 기존 API 응답 필드 삭제 금지
+- 기존 DB 테이블/컬럼 변경 금지
+- DB migration 추가 금지
+- schema.sql 수정 금지
 - UI 파일 수정 금지
 - dashboard.js 수정 금지
 - timetable.js 수정 금지
 - student.js 수정 금지
 - management.js 수정 금지
 - core.js 수정 금지
-- schema.sql 수정 금지
-- migrations 추가/수정 금지
-- teachers route 수정 금지
-- 기존 initial-data 구조 변경 금지
-- 기존 API 응답 필드 삭제 금지
-- 학생 포털 시험지 직접 열기 기능 추가 금지
-- 제출 완료 OMR 수정 기능 추가 금지
-- 출석/과제/리포트/OMR/QR/planner/archive API 수정 금지
-- index.js 전체 재작성 금지
+- students/classes/teachers route 수정 금지
+- foundation routes 수정 금지
+- exam/report/OMR/QR/planner/archive API 분리 금지
+- homework-photo API 분리 금지
+- 수납·출납 foundation 추가 금지
+- 출결 알림톡/문자 발송 기능 추가 금지
+- 숙제 사진 제출 흐름 변경 금지
 
 ## 허용 범위
-- index.js의 students/classes route 위임 위치/조건 최소 수정
-- routes/students.js의 path/resource 분기 최소 수정
-- routes/classes.js의 path/resource 분기 최소 수정
-- 필요 시 기존 index.js에 남아 있는 students/classes 관련 legacy 분기를 정확히 route로 연결
+- attendance/homework route 파일 추가
+- 기존 index.js의 출결/숙제 관련 API 처리 로직을 route 파일로 이동
+- index.js에서 새 route로 위임하도록 최소 수정
+- 필요한 공통 helper 추가 또는 기존 helper 재사용
 - CODEX_RESULT.md 작성
 
 ---
 
-## 1. 원인 확인
+## 1. 이번 분리 대상
 
-먼저 route 분리 전후 기준으로 아래를 확인한다.
+이번 작업에서 분리할 대상은 출결/숙제 기본 API만이다.
 
-### 1-1. index.js 라우팅 확인
-index.js에서 API resource를 어떻게 계산하는지 확인한다.
+분리 대상 API:
+- /api/attendance-history
+- /api/attendance-month
+- /api/attendance-batch
+- /api/homework-batch
+- PATCH /api/attendance
+- PATCH /api/homework
 
-예:
-- resource = path[1]
-- resource = pathParts[1]
-- path[0] === 'api' 이후 resource 처리
+가능하면 아래처럼 파일을 나눈다.
 
-확인할 것:
-- `students` resource가 실제로 handleStudents로 위임되는지
-- `classes` resource가 실제로 handleClasses로 위임되는지
-- 위임 코드가 API 처리 블록 내부에 있는지
-- 위임 코드가 Not Found return보다 앞에 있는지
-- 인증 완료 후 teacher 객체를 전달하는지
+- apmath/worker-backup/worker/routes/attendance-homework.js
 
-### 1-2. students.js 내부 확인
-routes/students.js에서 GET 요청을 어떻게 처리하는지 확인한다.
+또는 두 파일로 나누어도 된다.
 
-확인할 것:
-- GET /api/students 에서 path 길이 조건 때문에 빠지는지
-- resource 이름이 잘못 가정되어 있는지
-- `path[2]` 같은 세부 path가 없을 때 목록 조회를 반환하는지
-- admin/teacher 권한 처리 후 응답하는지
+- apmath/worker-backup/worker/routes/attendance.js
+- apmath/worker-backup/worker/routes/homework.js
 
-### 1-3. classes.js 내부 확인
-routes/classes.js에서 GET 요청을 어떻게 처리하는지 확인한다.
+권장:
+- attendance-homework.js 하나로 묶는다.
+- 이유: 현재 attendance-history, attendance-month가 attendance와 homework를 같이 반환한다.
 
-확인할 것:
-- GET /api/classes 에서 path 길이 조건 때문에 빠지는지
-- GET /api/class-students 가 필요한 경우 같이 처리되는지
-- resource 이름이 잘못 가정되어 있는지
-- 목록 조회 응답이 기존 구조와 같은지
+## 1-1. 이번에 분리하지 않을 것
 
-### 1-4. 기존 UI 호출명 확인
-가능하면 프론트에서 실제 호출하는 엔드포인트 이름을 검색한다.
+아래는 이번 작업에서 절대 분리하지 않는다.
 
-검색 대상:
-- apmath/js/core.js
-- apmath/js/dashboard.js
-- apmath/js/management.js
-- apmath/js/student.js
-- apmath/js/timetable.js
+- /api/homework-photo
+- /api/student-portal
+- /api/exam-sessions
+- /api/class-exam-assignments
+- /api/exam-blueprints
+- /api/consultations
+- /api/operation-memos
+- /api/academy-schedules
+- /api/daily-journals
+- /api/class-textbooks
+- /api/class-daily-records
+- /api/report-ai-proxy
+- archive/check/QR/OMR 관련 API
 
-검색어:
-- `/api/students`
-- `api/students`
-- `/api/classes`
-- `api/classes`
-- `students`
-- `classes`
-
-단, UI 파일은 읽기만 하고 수정하지 않는다.
+특히 homework-photo는 제출/취소/학생 토큰/숙제 동기화가 섞여 있으므로 이번에 건드리지 않는다.
 
 ---
 
-## 2. 수정 기준
+## 2. route 파일 책임
 
-## 2-1. GET /api/students 정상화
-아래 호출은 반드시 정상 응답해야 한다.
+## 2-1. routes/attendance-homework.js
 
-GET /api/students
+담당:
+- attendance-history
+- attendance-month
+- attendance-batch
+- homework-batch
+- attendance PATCH
+- homework PATCH
 
-응답 형태는 기존 구현과 동일해야 한다.
+export 함수명 권장:
 
-기대:
-- admin이면 전체 학생 배열 또는 기존 wrapper 구조
-- teacher면 담당 범위 학생 배열 또는 기존 wrapper 구조
-- 기존 UI가 깨지지 않는 구조
+export async function handleAttendanceHomework(request, env, teacher, path, url) { ... }
 
-만약 기존 API가 `{ success: true, students: [...] }` 구조였다면 그대로 유지한다.
-만약 기존 API가 배열 직접 반환이었다면 그대로 유지한다.
+또는 현재 route 스타일에 맞춘다.
 
-절대 응답 형태를 새로 바꾸지 않는다.
+반드시 유지할 기존 동작:
 
-## 2-2. GET /api/classes 정상화
-아래 호출은 반드시 정상 응답해야 한다.
+### attendance-history
+- GET /api/attendance-history
+- admin: 해당 날짜 전체 attendance/homework 반환
+- teacher: 담당 반 학생의 attendance/homework만 반환
+- date 기본값은 todayKstDateString()
+- 응답 구조 유지:
+  - { attendance, homework, date }
 
-GET /api/classes
+### attendance-month
+- GET /api/attendance-month?month=YYYY-MM
+- month 검증 유지
+- admin: 해당 월 전체 attendance/homework/academy_schedules 반환
+- teacher: 담당 학생 범위 attendance/homework + 해당 범위 academy_schedules 반환
+- 응답 구조 유지:
+  - { success: true, month, attendance, homework, academy_schedules }
 
-응답 형태는 기존 구현과 동일해야 한다.
+### attendance-batch
+- POST /api/attendance-batch
+- teacher 인증 필요
+- entries 내 모든 studentId에 canAccessStudent 검사
+- INSERT ... ON CONFLICT 기존 방식 유지
+- 응답 구조 유지:
+  - { success: true }
 
-기대:
-- admin이면 전체 반 배열 또는 기존 wrapper 구조
-- teacher면 담당 범위 반 배열 또는 기존 wrapper 구조
-- 기존 UI가 깨지지 않는 구조
+### homework-batch
+- POST /api/homework-batch
+- teacher 인증 필요
+- entries 내 모든 studentId에 canAccessStudent 검사
+- INSERT ... ON CONFLICT 기존 방식 유지
+- 응답 구조 유지:
+  - { success: true }
 
-## 2-3. teachers는 건드리지 않기
-GET /api/teachers는 이미 정상이다.
+### PATCH /api/attendance
+- teacher 인증 필요
+- studentId/date 필수
+- status/tags/memo 중 하나 이상 필수
+- 기존 normalizeText 방식 유지
+- 기존 id = `${studentId}_${date}` 유지
+- 없는 경우 INSERT, 있는 경우 UPDATE
+- tags/memo/status 기존 동작 유지
+- 응답 구조 유지:
+  - { success: true }
 
-teachers route, teachers 위임, teachers helper는 수정하지 않는다.
-
-## 2-4. class-students / teacher-classes 주의
-만약 classes.js가 class-students도 같이 담당한다면 기존 엔드포인트가 유지되어야 한다.
-
-확인 대상:
-- GET/POST/PATCH/DELETE /api/class-students
-- GET/POST/PATCH/DELETE /api/teacher-classes
-
-단, 이번 smoke test 실패 원인은 students/classes 목록이므로 우선 목록 조회부터 복구한다.
-
----
-
-## 3. 권장 수정 방식
-
-## 3-1. index.js 위임 확인 예시
-API routing block 안에서 Not Found보다 앞에 아래와 같은 위임이 있어야 한다.
-
-if (resource === 'students') {
-  return handleStudents(request, env, teacher, path, url);
-}
-
-if (resource === 'classes' || resource === 'class-students') {
-  return handleClasses(request, env, teacher, path, url);
-}
-
-if (resource === 'teachers' || resource === 'teacher-classes') {
-  return handleTeachers(request, env, teacher, path, url);
-}
-
-실제 변수명이 resource가 아니면 기존 코드 변수명에 맞춘다.
-
-## 3-2. route 내부 기본 GET 처리 예시
-students.js에서 path 세부값이 없으면 목록 조회로 처리해야 한다.
-
-개념 예시:
-
-if (request.method === 'GET' && resource === 'students' && !path[2]) {
-  return listStudents(request, env, teacher, url);
-}
-
-classes.js도 동일:
-
-if (request.method === 'GET' && resource === 'classes' && !path[2]) {
-  return listClasses(request, env, teacher, url);
-}
-
-단, 실제 path 배열 구조는 index.js 기준에 맞춘다.
-
-## 3-3. 빠른 복구 우선
-route 파일 내부 구조가 복잡하게 꼬였으면, 우선 기존 index.js에 있던 students/classes 처리 로직을 그대로 route 파일 안에 옮겼는지 확인하고, 빠진 return 조건만 복구한다.
-
-이번 작업은 구조 미화가 아니라 장애 복구다.
+### PATCH /api/homework
+- teacher 인증 필요
+- canAccessStudent 검사
+- id = `${studentId}_${date}` 유지
+- INSERT ... ON CONFLICT 기존 방식 유지
+- 응답 구조 유지:
+  - { success: true }
 
 ---
 
-## 4. 검증 명령
+## 3. index.js 수정 기준
+
+index.js에는 import 추가:
+
+import { handleAttendanceHomework } from './routes/attendance-homework.js';
+
+기존 API routing block에서 Not Found보다 앞에 아래 위임을 추가한다.
+
+개념:
+
+if (
+  resource === 'attendance-history' ||
+  resource === 'attendance-month' ||
+  resource === 'attendance-batch' ||
+  resource === 'homework-batch' ||
+  resource === 'attendance' ||
+  resource === 'homework'
+) {
+  const response = await handleAttendanceHomework(request, env, teacher, path, url);
+  if (response) return response;
+}
+
+주의:
+- 기존 코드 스타일에 맞게 작성한다.
+- teacher를 index.js에서 미리 verifyAuth하는 구조인지, route 안에서 verifyAuth하는 구조인지 기존 분리 route 패턴에 맞춘다.
+- 현재 코드에서 해당 API들이 각자 verifyAuth를 수행하고 있으므로 route 안에서 verifyAuth를 호출해도 된다.
+- 단, verifyAuth/canAccessStudent/todayKstDateString을 route에서 사용할 수 있어야 한다.
+
+## 3-1. 인증/helper 처리
+
+attendance-homework.js에서 필요한 함수:
+- verifyAuth
+- isAdminUser
+- canAccessStudent
+- todayKstDateString
+- headers 또는 json response helper
+
+이미 helpers/admin-db.js 또는 기존 helpers에 해당 함수가 있으면 재사용한다.
+
+없다면 아래 중 하나로 처리한다.
+
+권장:
+- 현재 students/classes/teachers 분리 때 만든 helpers/admin-db.js에 있는 공통 권한 helper를 재사용한다.
+- 만약 verifyAuth가 아직 index.js에만 있다면 이번 작업에서 최소 범위로 helper 이동을 검토한다.
+
+단, helper 이동이 위험하면:
+- attendance-homework.js 안에 필요한 최소 helper만 중복 없이 이동한다.
+- index.js의 기존 helper를 삭제할 때 기존 레거시 API가 참조하는지 반드시 확인한다.
+
+중요:
+- verifyAuth, canAccessStudent, canAccessClass, isAdminUser는 기존 레거시 API가 아직 많이 사용한다.
+- 이동 후 index.js에서 import/export 누락으로 기존 API가 깨지면 실패다.
+- 확실하지 않으면 기존 index.js helper는 남기고 route 파일에 필요한 helper를 별도 import 또는 최소 복사한다.
+
+---
+
+## 4. 기존 코드 제거 기준
+
+index.js에서 아래 기존 블록은 route로 옮긴 뒤 제거하거나 위임 뒤 도달하지 않게 한다.
+
+대상 블록:
+- if (resource === 'attendance-history' && method === 'GET') { ... }
+- if (resource === 'attendance-month' && method === 'GET') { ... }
+- if (resource === 'attendance-batch' && method === 'POST') { ... }
+- if (resource === 'homework-batch' && method === 'POST') { ... }
+- if (method === 'PATCH' && resource === 'attendance') { ... }
+- if (method === 'PATCH' && resource === 'homework') { ... }
+
+주의:
+- 기존 로직을 route 파일에 옮길 때 SQL, 응답 구조, status code를 바꾸지 않는다.
+- route 파일로 옮긴 뒤 index.js에 중복으로 남아도 당장은 동작할 수 있으나, 정리 효과가 떨어진다.
+- 가능하면 중복 제거한다.
+- 단, 제거하다가 다른 로직까지 같이 삭제하지 않는다.
+
+---
+
+## 5. 검증 명령
 
 반드시 실행한다.
 
 node --check apmath/worker-backup/worker/index.js
+node --check apmath/worker-backup/worker/routes/attendance-homework.js
+
+기존 route 안전 확인:
+
 node --check apmath/worker-backup/worker/routes/students.js
 node --check apmath/worker-backup/worker/routes/classes.js
 node --check apmath/worker-backup/worker/routes/teachers.js
-node --check apmath/worker-backup/worker/helpers/admin-db.js
-
-기존 분리 route도 안전 확인:
-
 node --check apmath/worker-backup/worker/routes/enrollments.js
 node --check apmath/worker-backup/worker/routes/class-time-slots.js
 node --check apmath/worker-backup/worker/routes/timetable-conflicts.js
@@ -233,7 +274,15 @@ node --check apmath/worker-backup/worker/routes/billing-foundation.js
 node --check apmath/worker-backup/worker/routes/parent-foundation.js
 node --check apmath/worker-backup/worker/routes/foundation-logs.js
 
-프론트는 수정하지 않았는지 확인만 한다.
+helper 안전 확인:
+
+node --check apmath/worker-backup/worker/helpers/admin-db.js
+node --check apmath/worker-backup/worker/helpers/response.js
+node --check apmath/worker-backup/worker/helpers/foundation-db.js
+node --check apmath/worker-backup/worker/helpers/branch.js
+node --check apmath/worker-backup/worker/helpers/time.js
+
+프론트 안전 확인:
 
 node --check apmath/js/core.js
 node --check apmath/js/wangji-foundation.js
@@ -244,8 +293,8 @@ git diff --name-only
 
 정상 변경 파일:
 - apmath/worker-backup/worker/index.js
-- apmath/worker-backup/worker/routes/students.js
-- apmath/worker-backup/worker/routes/classes.js
+- apmath/worker-backup/worker/routes/attendance-homework.js
+- 필요 시 apmath/worker-backup/worker/helpers/admin-db.js
 - CODEX_RESULT.md
 - CODEX_TASK.md는 현재 지시 파일 갱신 때문에 포함될 수 있음
 
@@ -261,28 +310,51 @@ git diff --name-only
 
 ---
 
-## 5. 배포 후 수동 확인 항목
+## 6. 배포 후 수동 확인 항목
 
 이번 작업에서는 배포하지 않는다.
 CODEX_RESULT.md에는 배포 가능 여부만 적는다.
 
 배포 후 직접 확인할 명령은 아래와 같다.
 
-GET /api/students:
+### 6-1. attendance-history
+
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/attendance-history" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+
+기대:
+- attendance 배열
+- homework 배열
+- date
+
+### 6-2. attendance-month
+
+현재 월 기준 예시:
+
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/attendance-month?month=2026-05" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+
+기대:
+- success true
+- attendance 배열
+- homework 배열
+- academy_schedules 배열
+
+### 6-3. 기존 smoke test 유지
 
 Invoke-RestMethod `
   -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/students" `
   -Headers @{ Authorization = "Basic $basic" } `
   -Method GET
 
-GET /api/classes:
-
 Invoke-RestMethod `
   -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/classes" `
   -Headers @{ Authorization = "Basic $basic" } `
   -Method GET
-
-GET /api/teachers:
 
 Invoke-RestMethod `
   -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/teachers" `
@@ -290,40 +362,43 @@ Invoke-RestMethod `
   -Method GET
 
 기대:
-- students 정상
-- classes 정상
-- teachers 정상 유지
+- students/classes/teachers 정상 유지
 
-추가:
-- 기존 AP Math 로그인/대시보드 진입 정상
-- 학생관리 정상
-- 반관리 정상
+### 6-4. UI 수동 확인
+
+- 대시보드 진입
+- 출석부 오늘 날짜 표시
+- 출석/숙제 저장
+- 월간 출석부 표시
+- 학생관리/반관리 정상
 
 ---
 
-## 6. 배포 판단
+## 7. 배포 판단
 
 CODEX_RESULT.md에 아래 중 하나로 판정한다.
 
 배포 가능:
-- node --check 통과
-- GET /api/students 경로 복구 코드 확인
-- GET /api/classes 경로 복구 코드 확인
-- GET /api/teachers 기존 정상 유지
+- 모든 node --check 통과
+- attendance/homework route 분리 완료
+- 기존 attendance-history 응답 구조 유지
+- 기존 attendance-month 응답 구조 유지
+- 기존 batch/PATCH 저장 로직 유지
+- 기존 students/classes/teachers route 영향 없음
 - UI 파일 변경 없음
 - schema/migration 변경 없음
-- initial-data 구조 변경 없음
 
 배포 보류:
 - node --check 실패
-- students/classes 목록 조회 조건 불명확
-- teachers route에 영향 있음
+- attendance-history/month 응답 구조 변경 가능성 있음
+- PATCH attendance/homework 저장 로직 변경 가능성 있음
+- students/classes/teachers route 영향 있음
 - UI 파일 변경 있음
 - schema/migration 변경 있음
 
 ---
 
-## 7. 완료 보고
+## 8. 완료 보고
 
 루트에 CODEX_RESULT.md를 작성한다.
 
@@ -335,12 +410,16 @@ CODEX_RESULT.md에 아래 중 하나로 판정한다.
 - 파일 목록
 
 ## 2. 구현 완료 또는 확인 완료
-- students API Not Found 원인 확인
-- classes API Not Found 원인 확인
-- GET /api/students 복구
-- GET /api/classes 복구
-- teachers route 변경 없음 확인
-- initial-data 구조 유지 확인
+- attendance-homework route 추가
+- attendance-history 분리
+- attendance-month 분리
+- attendance-batch 분리
+- homework-batch 분리
+- PATCH attendance 분리
+- PATCH homework 분리
+- index.js route 위임 구조 반영
+- 기존 students/classes/teachers route 영향 없음 확인
+- 기존 initial-data 구조 유지 확인
 - UI 파일 변경 없음 확인
 - schema/migration 변경 없음 확인
 
@@ -351,16 +430,18 @@ CODEX_RESULT.md에 아래 중 하나로 판정한다.
 - schema/migration 변경 여부
 
 ## 4. 결과 요약
-- 장애 원인
-- 수정 방식
+- index.js 추가 정리 효과
+- 분리된 route 목록
 - 기존 기능 영향 여부
 - 배포 가능 여부
 
 ## 5. 다음 조치
 - Worker 배포
-- students/classes/teachers smoke test
-- 기존 UI 수동 확인
+- attendance-history smoke test
+- attendance-month smoke test
+- 출석/숙제 UI 수동 확인
 - 정상 확인 후 커밋/푸시
+- 이후 homework-photo 또는 exam route 분리 여부 결정
 
 터미널 마지막 출력은 반드시 아래 한 줄로 끝낸다.
 
