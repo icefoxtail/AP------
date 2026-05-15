@@ -15,6 +15,7 @@ import { handleFoundationLogs } from './routes/foundation-logs.js';
 import { handleStudents } from './routes/students.js';
 import { handleClasses } from './routes/classes.js';
 import { handleTeachers } from './routes/teachers.js';
+import { handleAttendanceHomework } from './routes/attendance-homework.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -2693,6 +2694,14 @@ export default {
             (resource === 'teachers' || resource === 'teacher-classes') ? handleTeachers :
             null;
           const routed = adminRoute ? await adminRoute(request, env, teacher, path, url, body) : null;
+          if (routed) return routed;
+        }
+
+        if (['attendance-history', 'attendance-month', 'attendance-batch', 'homework-batch', 'attendance', 'homework'].includes(resource)) {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
+          const routed = await handleAttendanceHomework(request, env, teacher, path, url, body);
           if (routed) return routed;
         }
 
