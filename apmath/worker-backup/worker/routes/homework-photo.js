@@ -47,12 +47,27 @@ function normalizeHomeworkPhotoTime(value) {
   return /^\d{2}:\d{2}$/.test(str) ? str : '';
 }
 
+function buildHomeworkPhotoStatusStatements(env, studentId, date, status) {
+  const sid = String(studentId || '').trim();
+  const safeDate = normalizeHomeworkPhotoDate(date);
+  const safeStatus = String(status || '').trim();
+  if (!sid || !safeDate || !safeStatus) return [];
+
+  return [
+    env.DB.prepare(`
+      DELETE FROM homework
+      WHERE student_id = ? AND date = ?
+    `).bind(sid, safeDate),
+    env.DB.prepare(`
+      INSERT INTO homework (id, student_id, status, date, created_at)
+      VALUES (?, ?, ?, ?, DATETIME('now'))
+    `).bind(`${sid}_${safeDate}`, sid, safeStatus, safeDate)
+  ];
+}
+
 async function syncHomeworkPhotoStatus(env, studentId, date, status) {
-  await env.DB.prepare(`
-    INSERT INTO homework (id, student_id, status, date, created_at)
-    VALUES (?, ?, ?, ?, DATETIME('now'))
-    ON CONFLICT(id) DO UPDATE SET status = excluded.status
-  `).bind(`${studentId}_${date}`, studentId, status, date).run();
+  const stmts = buildHomeworkPhotoStatusStatements(env, studentId, date, status);
+  if (stmts.length) await env.DB.batch(stmts);
 }
 
 function getHomeworkPhotoAssignment(env, assignmentId) {
@@ -488,11 +503,7 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
             updated_at = DATETIME('now')
         WHERE id = ?
       `).bind(assignment.due_date, s.id));
-      stmts.push(env.DB.prepare(`
-        INSERT INTO homework (id, student_id, status, date, created_at)
-        VALUES (?, ?, '미완료', ?, DATETIME('now'))
-        ON CONFLICT(id) DO UPDATE SET status = excluded.status
-      `).bind(`${s.student_id}_${assignment.due_date}`, s.student_id, assignment.due_date));
+      stmts.push(...buildHomeworkPhotoStatusStatements(env, s.student_id, assignment.due_date, '미완료'));
     }
     await env.DB.batch(stmts);
     return responseJson({ success: true, closed_count: (pending.results || []).length });
