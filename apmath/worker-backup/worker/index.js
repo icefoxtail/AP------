@@ -159,6 +159,258 @@ function normalizeTargetScore(value) {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
 
+function makeId(prefix) {
+  return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function jsonResponse(data, status = 200) {
+  return new Response(JSON.stringify(data), { status, headers });
+}
+
+function normalizeBranch(value) {
+  const raw = String(value || '').trim().toLowerCase();
+  if (raw === 'cmath' || raw === 'cma' || raw === 'cmath-elementary') return 'cmath';
+  if (raw === 'eie') return 'eie';
+  return 'apmath';
+}
+
+function timeToMinutes(value) {
+  const [h, m] = String(value || '').split(':').map(Number);
+  if (!Number.isFinite(h) || !Number.isFinite(m)) return null;
+  return h * 60 + m;
+}
+
+function isTimeOverlap(aStart, aEnd, bStart, bEnd) {
+  const as = timeToMinutes(aStart);
+  const ae = timeToMinutes(aEnd);
+  const bs = timeToMinutes(bStart);
+  const be = timeToMinutes(bEnd);
+  if ([as, ae, bs, be].some(v => v === null)) return false;
+  return as < be && bs < ae;
+}
+
+function overlapRange(a, b) {
+  return {
+    start: a.start_time > b.start_time ? a.start_time : b.start_time,
+    end: a.end_time < b.end_time ? a.end_time : b.end_time
+  };
+}
+
+function uniqSortedPair(a, b) {
+  return [String(a || ''), String(b || '')].sort();
+}
+
+async function readJsonBody(request) {
+  try { return await request.json(); } catch (e) { return {}; }
+}
+
+async function safeAll(env, sql, params = []) {
+  try {
+    const res = await env.DB.prepare(sql).bind(...params).all();
+    return res.results || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+async function getAllowedClassIds(env, teacher) {
+  if (isAdminUser(teacher)) return null;
+  const res = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(teacher.id).all();
+  return (res.results || []).map(r => String(r.class_id));
+}
+
+async function foundationSelect(env, table, where = [], params = [], order = 'created_at DESC') {
+  const sql = `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''}${order ? ` ORDER BY ${order}` : ''}`;
+  const res = await env.DB.prepare(sql).bind(...params).all();
+  return res.results || [];
+}
+
+async function foundationInsert(env, table, row) {
+  const keys = Object.keys(row);
+  const placeholders = keys.map(() => '?').join(', ');
+  await env.DB.prepare(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${placeholders})`).bind(...keys.map(k => row[k])).run();
+  return row;
+}
+
+async function foundationPatch(env, table, id, data, allowedKeys) {
+  const row = {};
+  for (const key of allowedKeys) {
+    if (Object.prototype.hasOwnProperty.call(data, key) && data[key] !== undefined) row[key] = data[key];
+  }
+  row.updated_at = new Date().toISOString();
+  const keys = Object.keys(row);
+  if (!keys.length) return null;
+  await env.DB.prepare(`UPDATE ${table} SET ${keys.map(k => `${k} = ?`).join(', ')} WHERE id = ?`).bind(...keys.map(k => row[k]), id).run();
+  return { id, ...row };
+}
+
+async function loadFoundationInitialData(env, teacher) {
+  const empty = {
+    student_enrollments: [],
+    class_time_slots: [],
+    timetable_conflict_logs: [],
+    timetable_conflict_overrides: [],
+    billing_templates: [],
+    payments: [],
+    payment_items: [],
+    billing_adjustments: [],
+    billing_runs: [],
+    parent_contacts: [],
+    message_logs: [],
+    student_status_history: [],
+    class_transfer_history: [],
+    staff_permissions: []
+  };
+
+  if (isAdminUser(teacher)) {
+    const rows = await Promise.all([
+      safeAll(env, 'SELECT * FROM student_enrollments ORDER BY created_at DESC'),
+      safeAll(env, 'SELECT * FROM class_time_slots ORDER BY day_of_week ASC, start_time ASC'),
+      safeAll(env, 'SELECT * FROM timetable_conflict_logs ORDER BY created_at DESC LIMIT 500'),
+      safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
+      safeAll(env, 'SELECT * FROM billing_templates ORDER BY branch ASC, name ASC'),
+      safeAll(env, 'SELECT * FROM payments ORDER BY year DESC, month DESC, created_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM payment_items ORDER BY created_at DESC LIMIT 2000'),
+      safeAll(env, 'SELECT * FROM billing_adjustments ORDER BY created_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM billing_runs ORDER BY year DESC, month DESC, created_at DESC'),
+      safeAll(env, 'SELECT * FROM parent_contacts ORDER BY created_at DESC'),
+      safeAll(env, 'SELECT * FROM message_logs ORDER BY created_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM student_status_history ORDER BY changed_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM class_transfer_history ORDER BY changed_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM staff_permissions ORDER BY teacher_id ASC, permission_key ASC')
+    ]);
+    return Object.fromEntries(Object.keys(empty).map((key, i) => [key, rows[i]]));
+  }
+
+  const classIds = await getAllowedClassIds(env, teacher);
+  if (!classIds?.length) return empty;
+  const cMarkers = classIds.map(() => '?').join(',');
+  const studentRows = await safeAll(env, `SELECT DISTINCT student_id FROM class_students WHERE class_id IN (${cMarkers})`, classIds);
+  const studentIds = studentRows.map(r => r.student_id);
+  const sMarkers = studentIds.map(() => '?').join(',');
+
+  const studentScoped = studentIds.length
+    ? {
+        payments: await safeAll(env, `SELECT * FROM payments WHERE student_id IN (${sMarkers}) ORDER BY year DESC, month DESC, created_at DESC LIMIT 500`, studentIds),
+        parent_contacts: await safeAll(env, `SELECT * FROM parent_contacts WHERE student_id IN (${sMarkers}) ORDER BY created_at DESC`, studentIds),
+        message_logs: await safeAll(env, `SELECT * FROM message_logs WHERE student_id IN (${sMarkers}) ORDER BY created_at DESC LIMIT 500`, studentIds),
+        student_status_history: await safeAll(env, `SELECT * FROM student_status_history WHERE student_id IN (${sMarkers}) ORDER BY changed_at DESC LIMIT 500`, studentIds),
+        class_transfer_history: await safeAll(env, `SELECT * FROM class_transfer_history WHERE student_id IN (${sMarkers}) ORDER BY changed_at DESC LIMIT 500`, studentIds)
+      }
+    : {};
+
+  return {
+    ...empty,
+    student_enrollments: await safeAll(env, `SELECT * FROM student_enrollments WHERE class_id IN (${cMarkers}) ORDER BY created_at DESC`, classIds),
+    class_time_slots: await safeAll(env, `SELECT * FROM class_time_slots WHERE class_id IN (${cMarkers}) ORDER BY day_of_week ASC, start_time ASC`, classIds),
+    timetable_conflict_logs: await safeAll(env, `SELECT * FROM timetable_conflict_logs WHERE class_a_id IN (${cMarkers}) OR class_b_id IN (${cMarkers}) ORDER BY created_at DESC LIMIT 500`, [...classIds, ...classIds]),
+    timetable_conflict_overrides: await safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
+    billing_templates: await safeAll(env, `SELECT * FROM billing_templates WHERE class_id IS NULL OR class_id IN (${cMarkers}) ORDER BY branch ASC, name ASC`, classIds),
+    payment_items: [],
+    billing_adjustments: [],
+    staff_permissions: await safeAll(env, 'SELECT * FROM staff_permissions WHERE teacher_id = ? ORDER BY permission_key ASC', [teacher.id]),
+    ...studentScoped
+  };
+}
+
+function pushConflict(conflicts, type, targetId, classA, classB, branchPair, dayOfWeek, start, end) {
+  const [a, b] = uniqSortedPair(classA, classB);
+  conflicts.push({
+    conflict_type: type,
+    target_id: targetId || '',
+    branch_pair: branchPair || '',
+    class_a_id: a,
+    class_b_id: b,
+    day_of_week: dayOfWeek,
+    overlap_start: start,
+    overlap_end: end,
+    severity: 'warning',
+    status: 'open'
+  });
+}
+
+async function scanTimetableConflicts(env) {
+  const [slotsRes, enrollmentsRes, classesRes] = await Promise.all([
+    env.DB.prepare('SELECT * FROM class_time_slots ORDER BY day_of_week, start_time').all(),
+    env.DB.prepare("SELECT * FROM student_enrollments WHERE status = 'active'").all(),
+    env.DB.prepare('SELECT id, teacher_name FROM classes').all()
+  ]);
+  const slots = slotsRes.results || [];
+  const enrollments = enrollmentsRes.results || [];
+  const classes = classesRes.results || [];
+  const classMap = new Map(classes.map(c => [c.id, c]));
+  const slotsByClass = new Map();
+  const conflicts = [];
+
+  for (const slot of slots) {
+    const list = slotsByClass.get(slot.class_id) || [];
+    list.push(slot);
+    slotsByClass.set(slot.class_id, list);
+  }
+
+  const enrollmentsByStudent = new Map();
+  for (const en of enrollments) {
+    const list = enrollmentsByStudent.get(en.student_id) || [];
+    list.push(en);
+    enrollmentsByStudent.set(en.student_id, list);
+  }
+
+  for (const [studentId, list] of enrollmentsByStudent.entries()) {
+    for (let i = 0; i < list.length; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        for (const a of (slotsByClass.get(list[i].class_id) || [])) {
+          for (const b of (slotsByClass.get(list[j].class_id) || [])) {
+            if (a.day_of_week !== b.day_of_week || !isTimeOverlap(a.start_time, a.end_time, b.start_time, b.end_time)) continue;
+            const r = overlapRange(a, b);
+            const branches = uniqSortedPair(normalizeBranch(list[i].branch), normalizeBranch(list[j].branch)).join('+');
+            pushConflict(conflicts, 'student', studentId, a.class_id, b.class_id, branches, a.day_of_week, r.start, r.end);
+          }
+        }
+      }
+    }
+  }
+
+  for (let i = 0; i < slots.length; i++) {
+    for (let j = i + 1; j < slots.length; j++) {
+      const a = slots[i];
+      const b = slots[j];
+      if (a.class_id === b.class_id || a.day_of_week !== b.day_of_week || !isTimeOverlap(a.start_time, a.end_time, b.start_time, b.end_time)) continue;
+      const range = overlapRange(a, b);
+      const teacherA = String(classMap.get(a.class_id)?.teacher_name || '').trim();
+      const teacherB = String(classMap.get(b.class_id)?.teacher_name || '').trim();
+      if (teacherA && teacherA === teacherB) pushConflict(conflicts, 'teacher', teacherA, a.class_id, b.class_id, '', a.day_of_week, range.start, range.end);
+      if (a.room_name && a.room_name === b.room_name) pushConflict(conflicts, 'room', a.room_name, a.class_id, b.class_id, '', a.day_of_week, range.start, range.end);
+    }
+  }
+
+  const existingRows = await safeAll(env, "SELECT id, memo FROM timetable_conflict_logs WHERE status = 'open'");
+  const existing = new Map(existingRows.map(r => [String(r.memo || ''), r.id]));
+  const stmts = [];
+
+  for (const conflict of conflicts) {
+    const key = [
+      conflict.conflict_type,
+      conflict.target_id,
+      conflict.class_a_id,
+      conflict.class_b_id,
+      conflict.day_of_week,
+      conflict.overlap_start,
+      conflict.overlap_end
+    ].join('|');
+    if (existing.has(key)) {
+      stmts.push(env.DB.prepare("UPDATE timetable_conflict_logs SET updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(existing.get(key)));
+    } else {
+      stmts.push(env.DB.prepare(`
+        INSERT INTO timetable_conflict_logs
+        (id, conflict_type, target_id, branch_pair, class_a_id, class_b_id, day_of_week, overlap_start, overlap_end, severity, status, memo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `).bind(makeId('tcl'), conflict.conflict_type, conflict.target_id, conflict.branch_pair, conflict.class_a_id, conflict.class_b_id, conflict.day_of_week, conflict.overlap_start, conflict.overlap_end, conflict.severity, conflict.status, key));
+    }
+  }
+  if (stmts.length) await env.DB.batch(stmts);
+  return conflicts;
+}
+
 function normalizeHighSubjects(value) {
   const allowed = new Set(['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하']);
   let arr = [];
@@ -1672,6 +1924,234 @@ export default {
         const resource = path[1];
         const id = path[2];
 
+        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'billing-foundation', 'parent-foundation', 'foundation-logs'].includes(resource)) {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
+
+          if (resource === 'enrollments') {
+            if (method === 'GET') {
+              const where = [];
+              const params = [];
+              if (url.searchParams.get('student_id')) { where.push('student_id = ?'); params.push(url.searchParams.get('student_id')); }
+              if (url.searchParams.get('class_id')) { where.push('class_id = ?'); params.push(url.searchParams.get('class_id')); }
+              if (!isAdminUser(teacher)) {
+                const classIds = await getAllowedClassIds(env, teacher);
+                if (!classIds?.length) return jsonResponse({ success: true, enrollments: [] });
+                where.push(`class_id IN (${classIds.map(() => '?').join(',')})`);
+                params.push(...classIds);
+              }
+              return jsonResponse({ success: true, enrollments: await foundationSelect(env, 'student_enrollments', where, params) });
+            }
+            if (method === 'POST') {
+              if (!(await canAccessStudent(teacher, body.student_id, env)) || !(await canAccessClass(teacher, body.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              const row = {
+                id: makeId('enr'),
+                student_id: String(body.student_id || '').trim(),
+                branch: normalizeBranch(body.branch),
+                class_id: String(body.class_id || '').trim(),
+                status: String(body.status || 'active').trim(),
+                start_date: body.start_date || null,
+                end_date: body.end_date || null,
+                tuition_amount: Number.isFinite(Number(body.tuition_amount)) ? Number(body.tuition_amount) : null,
+                memo: body.memo || null
+              };
+              if (!row.student_id || !row.class_id) return jsonResponse({ success: false, error: 'student_id and class_id required' }, 400);
+              return jsonResponse({ success: true, enrollment: await foundationInsert(env, 'student_enrollments', row) });
+            }
+            if (method === 'PATCH' && id) {
+              const existing = await env.DB.prepare('SELECT * FROM student_enrollments WHERE id = ?').bind(id).first();
+              if (!existing) return jsonResponse({ error: 'Not found' }, 404);
+              if (!(await canAccessClass(teacher, existing.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              if (body.class_id && !(await canAccessClass(teacher, body.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              const changed = await foundationPatch(env, 'student_enrollments', id, { ...body, branch: body.branch ? normalizeBranch(body.branch) : undefined }, ['student_id', 'branch', 'class_id', 'status', 'start_date', 'end_date', 'tuition_amount', 'memo']);
+              return jsonResponse({ success: true, enrollment: changed });
+            }
+            if (method === 'DELETE' && id) {
+              const existing = await env.DB.prepare('SELECT * FROM student_enrollments WHERE id = ?').bind(id).first();
+              if (!existing) return jsonResponse({ error: 'Not found' }, 404);
+              if (!(await canAccessClass(teacher, existing.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              await env.DB.prepare("UPDATE student_enrollments SET status = 'ended', end_date = COALESCE(end_date, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(id).run();
+              return jsonResponse({ success: true });
+            }
+          }
+
+          if (resource === 'class-time-slots') {
+            if (method === 'GET') {
+              const where = [];
+              const params = [];
+              if (url.searchParams.get('class_id')) { where.push('class_id = ?'); params.push(url.searchParams.get('class_id')); }
+              if (!isAdminUser(teacher)) {
+                const classIds = await getAllowedClassIds(env, teacher);
+                if (!classIds?.length) return jsonResponse({ success: true, class_time_slots: [] });
+                where.push(`class_id IN (${classIds.map(() => '?').join(',')})`);
+                params.push(...classIds);
+              }
+              return jsonResponse({ success: true, class_time_slots: await foundationSelect(env, 'class_time_slots', where, params, 'day_of_week ASC, start_time ASC') });
+            }
+            if (method === 'POST') {
+              if (!(await canAccessClass(teacher, body.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              const row = {
+                id: makeId('cts'),
+                class_id: String(body.class_id || '').trim(),
+                day_of_week: String(body.day_of_week || '').trim(),
+                start_time: String(body.start_time || '').trim(),
+                end_time: String(body.end_time || '').trim(),
+                room_name: body.room_name || null,
+                memo: body.memo || null
+              };
+              if (!row.class_id || !row.day_of_week || !row.start_time || !row.end_time) return jsonResponse({ success: false, error: 'class_id, day_of_week, start_time, end_time required' }, 400);
+              return jsonResponse({ success: true, class_time_slot: await foundationInsert(env, 'class_time_slots', row) });
+            }
+            if (method === 'PATCH' && id) {
+              const existing = await env.DB.prepare('SELECT * FROM class_time_slots WHERE id = ?').bind(id).first();
+              if (!existing) return jsonResponse({ error: 'Not found' }, 404);
+              if (!(await canAccessClass(teacher, existing.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              if (body.class_id && !(await canAccessClass(teacher, body.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              return jsonResponse({ success: true, class_time_slot: await foundationPatch(env, 'class_time_slots', id, body, ['class_id', 'day_of_week', 'start_time', 'end_time', 'room_name', 'memo']) });
+            }
+            if (method === 'DELETE' && id) {
+              const existing = await env.DB.prepare('SELECT * FROM class_time_slots WHERE id = ?').bind(id).first();
+              if (!existing) return jsonResponse({ error: 'Not found' }, 404);
+              if (!(await canAccessClass(teacher, existing.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+              await env.DB.prepare('DELETE FROM class_time_slots WHERE id = ?').bind(id).run();
+              return jsonResponse({ success: true });
+            }
+          }
+
+          if (resource === 'timetable-conflicts') {
+            if (method === 'GET') {
+              const where = [];
+              const params = [];
+              if (url.searchParams.get('status')) { where.push('status = ?'); params.push(url.searchParams.get('status')); }
+              if (!isAdminUser(teacher)) {
+                const classIds = await getAllowedClassIds(env, teacher);
+                if (!classIds?.length) return jsonResponse({ success: true, conflicts: [] });
+                const markers = classIds.map(() => '?').join(',');
+                where.push(`(class_a_id IN (${markers}) OR class_b_id IN (${markers}))`);
+                params.push(...classIds, ...classIds);
+              }
+              return jsonResponse({ success: true, conflicts: await foundationSelect(env, 'timetable_conflict_logs', where, params) });
+            }
+            if (method === 'POST' && id === 'scan') {
+              if (!isStaffUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              const conflicts = await scanTimetableConflicts(env);
+              return jsonResponse({ success: true, conflicts, count: conflicts.length });
+            }
+            if (method === 'PATCH' && id) {
+              const row = await foundationPatch(env, 'timetable_conflict_logs', id, body, ['severity', 'status', 'resolved_by', 'resolved_at', 'memo']);
+              return jsonResponse({ success: true, conflict: row });
+            }
+          }
+
+          if (resource === 'timetable-conflict-overrides') {
+            if (method === 'GET') return jsonResponse({ success: true, overrides: await foundationSelect(env, 'timetable_conflict_overrides') });
+            if (method === 'POST') {
+              if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              const row = {
+                id: makeId('tco'),
+                conflict_type: String(body.conflict_type || '').trim(),
+                target_id: body.target_id || null,
+                conflict_key: String(body.conflict_key || '').trim(),
+                reason: body.reason || null,
+                allowed_by: teacher.id,
+                expires_at: body.expires_at || null
+              };
+              if (!row.conflict_type || !row.conflict_key) return jsonResponse({ success: false, error: 'conflict_type and conflict_key required' }, 400);
+              return jsonResponse({ success: true, override: await foundationInsert(env, 'timetable_conflict_overrides', row) });
+            }
+            if (method === 'DELETE' && id) {
+              if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              await env.DB.prepare('DELETE FROM timetable_conflict_overrides WHERE id = ?').bind(id).run();
+              return jsonResponse({ success: true });
+            }
+          }
+
+          if (resource === 'billing-foundation') {
+            const sub = path[2];
+            const subId = path[3];
+            if (sub === 'templates') {
+              if (method === 'GET') return jsonResponse({ success: true, templates: await foundationSelect(env, 'billing_templates', [], [], 'branch ASC, name ASC') });
+              if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              if (method === 'POST') return jsonResponse({ success: true, template: await foundationInsert(env, 'billing_templates', { id: makeId('bt'), branch: normalizeBranch(body.branch), class_id: body.class_id || null, name: String(body.name || '').trim(), default_amount: Number(body.default_amount || 0), item_type: body.item_type || null, is_active: body.is_active ?? 1, memo: body.memo || null }) });
+              if (method === 'PATCH' && subId) return jsonResponse({ success: true, template: await foundationPatch(env, 'billing_templates', subId, { ...body, branch: body.branch ? normalizeBranch(body.branch) : undefined }, ['branch', 'class_id', 'name', 'default_amount', 'item_type', 'is_active', 'memo']) });
+            }
+            if (sub === 'payments') {
+              if (method === 'GET') {
+                if (isAdminUser(teacher)) return jsonResponse({ success: true, payments: await foundationSelect(env, 'payments', [], [], 'year DESC, month DESC, created_at DESC') });
+                const classIds = await getAllowedClassIds(env, teacher);
+                if (!classIds?.length) return jsonResponse({ success: true, payments: [] });
+                const cMarkers = classIds.map(() => '?').join(',');
+                const payments = await safeAll(env, `SELECT * FROM payments WHERE student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})) ORDER BY year DESC, month DESC, created_at DESC`, classIds);
+                return jsonResponse({ success: true, payments });
+              }
+              if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              if (method === 'POST') return jsonResponse({ success: true, payment: await foundationInsert(env, 'payments', { id: makeId('pay'), student_id: body.student_id, billing_run_id: body.billing_run_id || null, year: Number(body.year), month: Number(body.month), total_amount: Number(body.total_amount || 0), paid_amount: Number(body.paid_amount || 0), due_date: body.due_date || null, paid_date: body.paid_date || null, status: body.status || 'unpaid', payment_method: body.payment_method || null, note: body.note || null, invoice_sent_at: body.invoice_sent_at || null, receipt_sent_at: body.receipt_sent_at || null }) });
+              if (method === 'PATCH' && subId) return jsonResponse({ success: true, payment: await foundationPatch(env, 'payments', subId, body, ['billing_run_id', 'year', 'month', 'total_amount', 'paid_amount', 'due_date', 'paid_date', 'status', 'payment_method', 'note', 'invoice_sent_at', 'receipt_sent_at']) });
+            }
+            if (sub === 'runs') {
+              if (method === 'GET') return jsonResponse({ success: true, runs: await foundationSelect(env, 'billing_runs', [], [], 'year DESC, month DESC, created_at DESC') });
+              if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              if (method === 'POST') return jsonResponse({ success: true, run: await foundationInsert(env, 'billing_runs', { id: makeId('br'), year: Number(body.year), month: Number(body.month), branch: body.branch || 'all', status: body.status || 'draft', total_amount: Number(body.total_amount || 0), issued_count: Number(body.issued_count || 0), created_by: teacher.id, issued_at: body.issued_at || null }) });
+            }
+          }
+
+          if (resource === 'parent-foundation') {
+            const sub = path[2];
+            const subId = path[3];
+            if (sub === 'contacts') {
+              if (method === 'GET') {
+                if (isAdminUser(teacher)) return jsonResponse({ success: true, contacts: await foundationSelect(env, 'parent_contacts') });
+                const classIds = await getAllowedClassIds(env, teacher);
+                if (!classIds?.length) return jsonResponse({ success: true, contacts: [] });
+                const cMarkers = classIds.map(() => '?').join(',');
+                const contacts = await safeAll(env, `SELECT * FROM parent_contacts WHERE student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})) ORDER BY created_at DESC`, classIds);
+                return jsonResponse({ success: true, contacts });
+              }
+              if (method === 'POST') {
+                if (!(await canAccessStudent(teacher, body.student_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+                return jsonResponse({ success: true, contact: await foundationInsert(env, 'parent_contacts', { id: makeId('pc'), student_id: body.student_id, name: body.name || null, relation: body.relation || null, phone: String(body.phone || '').trim(), is_primary: body.is_primary ?? 1, receive_attendance: body.receive_attendance ?? 1, receive_payment: body.receive_payment ?? 1, receive_notice: body.receive_notice ?? 1, receive_report: body.receive_report ?? 1, receive_marketing: body.receive_marketing ?? 0, memo: body.memo || null }) });
+              }
+              if (method === 'PATCH' && subId) return jsonResponse({ success: true, contact: await foundationPatch(env, 'parent_contacts', subId, body, ['name', 'relation', 'phone', 'is_primary', 'receive_attendance', 'receive_payment', 'receive_notice', 'receive_report', 'receive_marketing', 'memo']) });
+              if (method === 'DELETE' && subId) return jsonResponse({ success: false, error: 'DELETE not implemented for parent contacts in phase1' }, 405);
+            }
+            if (sub === 'messages') {
+              if (method === 'GET') {
+                if (isAdminUser(teacher)) return jsonResponse({ success: true, messages: await foundationSelect(env, 'message_logs') });
+                const classIds = await getAllowedClassIds(env, teacher);
+                if (!classIds?.length) return jsonResponse({ success: true, messages: [] });
+                const cMarkers = classIds.map(() => '?').join(',');
+                const messages = await safeAll(env, `SELECT * FROM message_logs WHERE student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})) ORDER BY created_at DESC`, classIds);
+                return jsonResponse({ success: true, messages });
+              }
+              if (method === 'POST') return jsonResponse({ success: true, message: await foundationInsert(env, 'message_logs', { id: makeId('msg'), student_id: body.student_id || null, parent_contact_id: body.parent_contact_id || null, branch: body.branch ? normalizeBranch(body.branch) : null, message_type: body.message_type || 'manual', channel: body.channel || 'log', title: body.title || null, content: body.content || null, status: body.status || 'pending', provider_message_id: body.provider_message_id || null, error_message: body.error_message || null, sent_at: body.sent_at || null }) });
+            }
+          }
+
+          if (resource === 'foundation-logs') {
+            const sub = path[2];
+            const tables = { 'status-history': 'student_status_history', 'class-transfers': 'class_transfer_history', audit: 'audit_logs', privacy: 'privacy_access_logs' };
+            const table = tables[sub];
+            if (!table) return jsonResponse({ error: 'API Endpoint Not Found' }, 404);
+            if (method === 'GET') {
+              if (isAdminUser(teacher) || sub === 'audit' || sub === 'privacy') return jsonResponse({ success: true, data: isAdminUser(teacher) ? await foundationSelect(env, table) : [] });
+              const classIds = await getAllowedClassIds(env, teacher);
+              if (!classIds?.length) return jsonResponse({ success: true, data: [] });
+              const cMarkers = classIds.map(() => '?').join(',');
+              const data = await safeAll(env, `SELECT * FROM ${table} WHERE student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})) ORDER BY changed_at DESC`, classIds);
+              return jsonResponse({ success: true, data });
+            }
+            if (method === 'POST' && sub === 'audit') {
+              if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              return jsonResponse({ success: true, log: await foundationInsert(env, 'audit_logs', { id: makeId('aud'), actor_id: teacher.id, actor_role: teacher.role, action: body.action, target_type: body.target_type || null, target_id: body.target_id || null, before_json: body.before_json || null, after_json: body.after_json || null, ip_address: request.headers.get('CF-Connecting-IP') || null }) });
+            }
+            if (method === 'POST' && sub === 'privacy') {
+              if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+              return jsonResponse({ success: true, log: await foundationInsert(env, 'privacy_access_logs', { id: makeId('pal'), actor_id: teacher.id, student_id: body.student_id || null, access_type: body.access_type || 'manual' }) });
+            }
+          }
+        }
+
         // --- 1. 인증 및 계정 관리 ---
         if (resource === 'auth' && path[2] === 'login' && method === 'POST') {
           const { login_id, password } = await request.json();
@@ -1768,6 +2248,7 @@ export default {
           let ttAllClassStudents = { results: [] };
           let ttAllStudents = { results: [] };
           let ttAllClassTextbooks = { results: [] };
+          const foundationData = await loadFoundationInitialData(env, teacher);
 
           if (isAdminUser(teacher)) {
             [stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses] = await Promise.all([
@@ -1836,7 +2317,8 @@ export default {
                 timetable_classes: timetableClasses.results,
                 timetable_class_students: ttAllClassStudents.results,
                 timetable_students: ttAllStudents.results,
-                timetable_class_textbooks: ttAllClassTextbooks.results
+                timetable_class_textbooks: ttAllClassTextbooks.results,
+                ...foundationData
               }), { headers });
             }
             
@@ -1898,7 +2380,8 @@ export default {
             timetable_classes: timetableClasses.results,
             timetable_class_students: ttAllClassStudents.results,
             timetable_students: ttAllStudents.results,
-            timetable_class_textbooks: isAdminUser(teacher) ? txt.results : ttAllClassTextbooks.results
+            timetable_class_textbooks: isAdminUser(teacher) ? txt.results : ttAllClassTextbooks.results,
+            ...foundationData
           }), { headers });
         }
 
