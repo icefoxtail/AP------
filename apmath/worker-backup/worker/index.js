@@ -25,6 +25,7 @@ import { handleReportsAi } from './routes/reports-ai.js';
 import { handleCheckOmr } from './routes/check-omr.js';
 import { handleHomeworkPhoto } from './routes/homework-photo.js';
 import { handlePlanner } from './routes/planner.js';
+import { handleAuth } from './routes/auth.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -2485,22 +2486,17 @@ export default {
           if (routed) return routed;
         }
 
-        // --- 1. 인증 및 계정 관리 ---
-        if (resource === 'auth' && path[2] === 'login' && method === 'POST') {
-          const { login_id, password } = await request.json();
-          const hash = await sha256hex(password);
-          const teacher = await env.DB.prepare('SELECT id, name, role FROM teachers WHERE login_id = ? AND password_hash = ?').bind(login_id, hash).first();
-          if (!teacher) return new Response(JSON.stringify({ success: false, message: '아이디 또는 비밀번호 오류' }), { status: 401, headers });
-          return new Response(JSON.stringify({ success: true, id: teacher.id, name: teacher.name, role: teacher.role }), { headers });
-        }
-
-        if (resource === 'auth' && path[2] === 'change-password' && method === 'POST') {
-          const teacher = await verifyAuth(request, env);
-          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
-          const { new_password } = await request.json();
-          const hash = await sha256hex(new_password);
-          await env.DB.prepare('UPDATE teachers SET password_hash = ? WHERE id = ?').bind(hash, teacher.id).run();
-          return new Response(JSON.stringify({ success: true }), { headers });
+        if (resource === 'auth') {
+          const routed = await handleAuth(request, env, {
+            headers,
+            path,
+            method,
+            helpers: {
+              sha256hex,
+              verifyAuth
+            }
+          });
+          if (routed) return routed;
         }
 
         if (

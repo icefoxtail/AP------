@@ -201,6 +201,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 
 | Route file | 담당 기능 | 주요 API/resource | 관련 DB | 주의 |
 |---|---|---|---|---|
+| `routes/auth.js` | login/change-password | `/api/auth/login`, `/api/auth/change-password` | `teachers` | response JSON and SHA-256 hash preserved |
 | `routes/student-portal.js` | 학생 포털 | `/api/student-portal/*` | `students`, `homework_photo_*` | 시험지 직접 열기 금지, OMR 재수정 금지 |
 | `routes/planner.js` | 플래너 | `/api/planner`, `/api/planner-auth`, `/api/planner-auth-by-name` | `students`, `student_plans`, `planner_feedback` | 학생포털 SSO 흐름 보존 |
 | `routes/homework-photo.js` | 숙제 사진 확인/배정 | `/api/homework-photo/*`, `DELETE /api/homework-photo/assignments/:id` | `homework_photo_assignments`, `homework_photo_submissions`, `homework_photo_files` | “숙제” 용어 유지, 배정 삭제는 `status='deleted'` soft delete, 제출 완료 흐름 임의 변경 금지 |
@@ -228,8 +229,8 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 
 | API/resource | 담당 파일 | 상태 | 기본 smoke |
 |---|---|---|---|
-| `/api/auth/login` | `index.js` | 유지 | 로그인 |
-| `/api/auth/change-password` | `index.js` | 유지 | 비밀번호 변경 |
+| `/api/auth/login` | `routes/auth.js` | split complete | login |
+| `/api/auth/change-password` | `routes/auth.js` | split complete | change-password |
 | `/api/initial-data` | `index.js` | 유지 | GET initial-data |
 | `/api/students` | `routes/students.js` | 분리 완료 | GET students |
 | `/api/classes`, `/api/class-students` | `routes/classes.js` | 분리 완료 | GET classes |
@@ -548,9 +549,12 @@ Invoke-RestMethod `
 
 ## 8.2 다음 후보
 
+### completed
+
+- auth route split
+
 ### 안정화/정리
 
-- auth route 분리
 - initial-data 분리 여부 분석
 - 기준 문서 업데이트 자동 루틴화
 - route map 최신성 점검
