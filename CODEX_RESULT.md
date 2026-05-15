@@ -2,26 +2,30 @@
 
 ## 1. 생성/수정 파일
 - apmath/worker-backup/worker/index.js
-- apmath/worker-backup/worker/routes/class-daily.js
+- apmath/worker-backup/worker/routes/student-portal.js
 - CODEX_RESULT.md
 - CODEX_TASK.md는 현재 지시 파일 갱신 상태로 작업 전부터 수정 상태였음
 
-## 2. 구현/확인 완료
-- class-daily route 추가
-- class-textbooks 분리
-- class-daily-records 분리
-- class-daily-progress는 기존처럼 class-daily-records 조회/저장 흐름 안에서 처리되며, 별도 독립 API 동작은 추가하지 않음
+## 2. 구현 완료 또는 확인 완료
+- student-portal route 추가
+- 학생 로그인 계열 분리
+- 학생 배정 자료 계열 분리
+- 학생 포털 OMR 연결 계열 분리
 - index.js route 위임 구조 반영
 - 기존 students/classes/teachers route 영향 없음 확인
 - 기존 attendance-homework route 영향 없음 확인
 - 기존 exams route 영향 없음 확인
-- 기존 operations route 영향 없음 확인
-- 기존 initial-data 구조 변경 없음 확인
+- 기존 operations/class-daily/foundation route 영향 없음 확인
+- 기존 initial-data 구조 유지 확인
+- 제출 완료 OMR 수정 차단 유지 확인
+- 시험지 직접 열기 기능 추가 없음 확인
 - UI 파일 변경 없음 확인
 - schema/migration 변경 없음 확인
 
 ## 3. 실행 결과
 - node --check apmath/worker-backup/worker/index.js: 통과
+- node --check apmath/worker-backup/worker/routes/student-portal.js: 통과
+- node --check apmath/worker-backup/worker/routes/billing-accounting-foundation.js: 통과
 - node --check apmath/worker-backup/worker/routes/class-daily.js: 통과
 - node --check apmath/worker-backup/worker/routes/operations.js: 통과
 - node --check apmath/worker-backup/worker/routes/exams.js: 통과
@@ -43,25 +47,24 @@
 - node --check apmath/worker-backup/worker/helpers/time.js: 통과
 - node --check apmath/js/core.js: 통과
 - node --check apmath/js/wangji-foundation.js: 통과
-- git diff --name-only 결과: CODEX_RESULT.md, CODEX_TASK.md, apmath/worker-backup/worker/index.js
-- git status --short 결과: CODEX_RESULT.md 수정, CODEX_TASK.md 수정, index.js 수정, routes/class-daily.js 신규
-- UI 파일 변경 여부: 변경 없음
-- schema/migration 변경 여부: 변경 없음
+- node --check apmath/student/index.html: 불가. Node는 `.html` 확장자를 지원하지 않아 문법 검사 생략
+- git diff --name-only 결과: 작업 범위 기준으로는 CODEX_RESULT.md, CODEX_TASK.md, apmath/worker-backup/worker/index.js가 표시됨. 저장소 전체 기준으로는 작업 전부터 다수의 기존 변경 파일이 존재함
+- UI 파일 변경 여부: 이번 작업으로 인한 UI 파일 변경 없음
+- schema/migration 변경 여부: 이번 작업으로 인한 schema/migration 변경 없음
+- HTML 파일 수정 없음
 
 ## 4. 결과 요약
-- index.js의 반별 교재/일일기록/진도 계열 API 처리 블록을 routes/class-daily.js로 분리했다.
-- 분리된 route 목록은 class-textbooks, class-daily-records이다.
-- class-daily-progress 테이블 처리 로직은 기존과 동일하게 class-daily-records 내부의 progress 조회/저장으로 유지했다.
-- 기존 응답 구조, SQL, status code, 권한 검증 흐름을 유지했다.
-- daily-journals/operation-memos/homework-photo/student-portal/report/exam/archive/planner/QR/OMR/check/foundation API는 변경하지 않았다.
-- 배포 가능 판단: 가능
+- index.js의 학생 포털 API 처리 블록을 routes/student-portal.js로 분리했다.
+- 분리된 route 목록은 student-portal(auth, home)이다.
+- 학생 로그인, 학생 홈, 배정 자료 조회, 플래너 진입용 `student_id` 전달, `X-Student-Token` 검증 흐름을 기존과 동일하게 유지했다.
+- 학생 포털 응답에 시험지 직접 열기 URL을 추가하지 않았고, OMR은 기존처럼 `coming_soon` 상태만 유지했다.
+- 배포 가능 여부: 이번 작업 자체는 조건 충족. 다만 저장소 전체 `git diff --name-only`에는 작업 전부터 존재하던 광범위한 기존 변경이 있으므로 실제 배포 전 워크트리 정리가 필요하다.
 
 ## 5. 다음 조치
 - Worker 배포
-- class-textbooks smoke test
-- class-daily-records smoke test
-- class-daily-progress smoke test 또는 기존 지원 방식 확인
-- initial-data class_textbooks/class_daily_records/class_daily_progress 확인
-- 반별 교재/진도 UI 수동 확인
-- 정상 확인 후 커밋/태그
-- 이후 homework-photo 또는 student-portal route 분리 여부 결정
+- 학생 포털 로그인 수동 확인
+- 학생 배정 자료 수동 확인
+- 제출 완료 OMR 수정 차단 수동 확인
+- 기존 route smoke test
+- 정상 확인 후 커밋/푸시
+- 이후 homework-photo 또는 report/AI route 분리 여부 결정
