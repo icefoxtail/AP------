@@ -75,8 +75,17 @@ function getHomeworkPhotoAssignment(env, assignmentId) {
     SELECT hpa.*, c.name AS class_name
     FROM homework_photo_assignments hpa
     LEFT JOIN classes c ON c.id = hpa.class_id
-    WHERE hpa.id = ? AND hpa.status != 'deleted'
+    WHERE hpa.id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
   `).bind(assignmentId).first();
+}
+
+function getHomeworkPhotoDeleteAssignmentId(method, id, path) {
+  if (method !== 'DELETE') return '';
+  if (id === 'assignments' && path[3] && !path[4]) return String(path[3]).trim();
+  if (id && !['assignments', 'overview', 'student-links', 'assignment', 'auth', 'submit', 'cancel'].includes(id)) {
+    return String(id).trim();
+  }
+  return '';
 }
 
 async function checkHomeworkPhotoStudent(env, assignmentId, studentId, pin = '') {
@@ -100,7 +109,7 @@ async function checkHomeworkPhotoStudent(env, assignmentId, studentId, pin = '')
     JOIN homework_photo_submissions hps ON hps.assignment_id = hpa.id
     JOIN students s ON s.id = hps.student_id
     LEFT JOIN classes c ON c.id = hpa.class_id
-    WHERE hpa.id = ? AND hps.student_id = ? AND hpa.status != 'deleted'
+    WHERE hpa.id = ? AND hps.student_id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
   `).bind(assignmentId, studentId).first();
 
   if (!row) return { authorized: false, status: 404, error: 'Not found' };
@@ -186,11 +195,12 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
     return responseJson({ success: true, assignment_id: assignmentId, links });
   }
 
-  if (method === 'DELETE' && id && id !== 'assignments' && id !== 'overview' && id !== 'student-links' && id !== 'assignment' && id !== 'auth' && id !== 'submit' && id !== 'cancel') {
+  const deleteAssignmentId = getHomeworkPhotoDeleteAssignmentId(method, id, path);
+  if (deleteAssignmentId) {
     const currentTeacher = teacher || await verifyAuth(request, env);
     if (!currentTeacher) return responseJson({ error: 'Unauthorized' }, 401);
 
-    const assignmentId = String(id || '').trim();
+    const assignmentId = deleteAssignmentId;
     const assignment = await getHomeworkPhotoAssignment(env, assignmentId);
     if (!assignment) return responseJson({ success: false, error: 'Not found' }, 404);
     if (!(await canAccessClass(currentTeacher, assignment.class_id, env))) {
@@ -256,7 +266,7 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
              SUM(CASE WHEN hps.is_submitted = 1 THEN 1 ELSE 0 END) AS submitted
       FROM homework_photo_assignments hpa
       LEFT JOIN homework_photo_submissions hps ON hps.assignment_id = hpa.id
-      WHERE hpa.class_id = ? AND hpa.status != 'deleted'
+      WHERE hpa.class_id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
       GROUP BY hpa.id
       ORDER BY hpa.due_date DESC, hpa.created_at DESC
       LIMIT 30
@@ -353,7 +363,7 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
       JOIN homework_photo_submissions hps ON hps.assignment_id = hpa.id
       JOIN students s ON s.id = hps.student_id
       LEFT JOIN classes c ON c.id = hpa.class_id
-      WHERE hpa.id = ? AND hps.student_id = ? AND hpa.status != 'deleted'
+      WHERE hpa.id = ? AND hps.student_id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
     `).bind(assignmentId, studentId).first();
 
     if (!row) return responseJson({ success: false, error: 'Not found' }, 404);
