@@ -224,6 +224,73 @@ function normalizeWrongNumbers(values, startNo, endNo) {
   return out.sort((a, b) => a - b);
 }
 
+async function replaceSubmissionWrongs(env, assignment, submission, student, wrongNumbers, isNoWrong, teacherId = null) {
+  const submittedAt = nowIso();
+  const stmts = [
+    env.DB.prepare(`
+      UPDATE student_material_submissions
+      SET is_submitted = 1, is_no_wrong = ?, submitted_at = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(isNoWrong ? 1 : 0, submittedAt, submission.id),
+    env.DB.prepare(`
+      UPDATE student_material_wrong_answers
+      SET status = 'deleted', updated_at = CURRENT_TIMESTAMP
+      WHERE submission_id = ? AND COALESCE(status, 'active') != 'deleted'
+    `).bind(submission.id)
+  ];
+  for (const no of wrongNumbers) {
+    stmts.push(env.DB.prepare(`
+      INSERT INTO student_material_wrong_answers
+        (id, submission_id, assignment_id, material_id, student_id, class_id, teacher_id, grade, wrong_date, question_no)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(
+      makeId('smw'),
+      submission.id,
+      assignment.id,
+      assignment.material_id,
+      student.id || student.student_id,
+      assignment.class_id,
+      teacherId,
+      student.grade || assignment.class_grade || assignment.material_grade || null,
+      today(),
+      no
+    ));
+  }
+  await env.DB.batch(stmts);
+  return { submitted_at: submittedAt, wrong_count: wrongNumbers.length };
+}
+
+async function getLatestAssignmentForClassMaterial(env, classId, materialId) {
+  return env.DB.prepare(`
+    SELECT
+      cma.*,
+      COALESCE(cma.assignment_title, sm.title) AS title,
+      sm.title AS material_title,
+      sm.material_type,
+      sm.grade AS material_grade,
+      sm.semester,
+      sm.numbering_type,
+      sm.number_start,
+      sm.number_end,
+      c.name AS class_name,
+      c.grade AS class_grade,
+      c.teacher_name
+    FROM class_material_assignments cma
+    JOIN study_materials sm ON sm.id = cma.material_id
+    LEFT JOIN classes c ON c.id = cma.class_id
+    WHERE cma.class_id = ?
+      AND cma.material_id = ?
+      AND COALESCE(cma.status, 'active') = 'active'
+      AND COALESCE(sm.status, 'active') = 'active'
+    ORDER BY cma.assigned_date DESC, cma.created_at DESC
+    LIMIT 1
+  `).bind(classId, materialId).first();
+}
+
+function parseWrongNumbersCsv(value) {
+  return text(value).split(',').map(Number).filter(Number.isFinite).sort((a, b) => a - b);
+}
+
 async function attachQuestionMeta(env, materialId, wrongRows) {
   const numbers = [...new Set(wrongRows.map(r => Number(r.question_no)).filter(Number.isFinite))];
   if (!numbers.length) return wrongRows.map(r => ({ ...r, unit_text: '', type_text: '', tags: '' }));
@@ -402,7 +469,7 @@ async function scopedWrongRows(env, user, scope) {
   return { forbidden: false, rows, scope };
 }
 
-function scopedWrongPayload(scope, rows) {
+function scopedWrongPayload(scope, rows, submissions = []) {
   const qMap = new Map();
   const sMap = new Map();
   for (const row of rows) {
@@ -413,8 +480,21 @@ function scopedWrongPayload(scope, rows) {
     if (Number.isFinite(no)) item.wrong_numbers.push(no);
     sMap.set(key, item);
   }
+  for (const sub of submissions) {
+    if (!sMap.has(sub.student_id) && Number(sub.is_submitted || 0) === 1) {
+      sMap.set(sub.student_id, { student_id: sub.student_id, student_name: sub.student_name || '', wrong_numbers: parseWrongNumbersCsv(sub.wrong_numbers_csv) });
+    }
+  }
   return {
     scope,
+    submissions: submissions.map(row => ({
+      student_id: row.student_id,
+      student_name: row.student_name,
+      is_submitted: Number(row.is_submitted || 0),
+      is_no_wrong: Number(row.is_no_wrong || 0),
+      status: Number(row.is_submitted || 0) !== 1 ? '-' : Number(row.is_no_wrong || 0) === 1 ? 'O' : parseWrongNumbersCsv(row.wrong_numbers_csv).length ? 'X' : '제출',
+      wrong_numbers: parseWrongNumbersCsv(row.wrong_numbers_csv)
+    })),
     items: scope.type === 'student' ? rows : [],
     top_wrong_numbers: [...qMap.entries()]
       .map(([question_no, count]) => ({ question_no: Number(question_no), count }))
@@ -426,6 +506,50 @@ function scopedWrongPayload(scope, rows) {
     })),
     unit_counts: buildUnitCounts(rows)
   };
+}
+
+async function scopedSubmissionRows(env, user, scope) {
+  const where = ["COALESCE(sms.status, 'active') != 'deleted'"];
+  const params = [];
+  if (scope.student_id) {
+    if (!(await canAccessStudent(user, scope.student_id, env))) return { forbidden: true, rows: [] };
+    where.push('sms.student_id = ?');
+    params.push(scope.student_id);
+  } else if (scope.class_id) {
+    if (!(await canAccessClass(user, scope.class_id, env))) return { forbidden: true, rows: [] };
+    where.push('cma.class_id = ?');
+    params.push(scope.class_id);
+  } else if (scope.grade) {
+    where.push('(s.grade = ? OR c.grade = ? OR sm.grade = ?)');
+    params.push(scope.grade, scope.grade, scope.grade);
+    if (!isAdminUser(user)) {
+      const allowed = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(user.id).all();
+      const classIds = (allowed.results || []).map(r => String(r.class_id || '')).filter(Boolean);
+      if (!classIds.length) return { forbidden: false, rows: [] };
+      where.push(`cma.class_id IN (${classIds.map(() => '?').join(',')})`);
+      params.push(...classIds);
+    }
+  }
+  if (scope.material_id) {
+    where.push('cma.material_id = ?');
+    params.push(scope.material_id);
+  }
+  const res = await env.DB.prepare(`
+    SELECT
+      sms.*,
+      s.name AS student_name,
+      GROUP_CONCAT(CASE WHEN COALESCE(sma.status, 'active') != 'deleted' THEN sma.question_no END) AS wrong_numbers_csv
+    FROM student_material_submissions sms
+    JOIN class_material_assignments cma ON cma.id = sms.assignment_id
+    JOIN study_materials sm ON sm.id = cma.material_id
+    JOIN students s ON s.id = sms.student_id
+    LEFT JOIN classes c ON c.id = cma.class_id
+    LEFT JOIN student_material_wrong_answers sma ON sma.submission_id = sms.id
+    WHERE ${where.join(' AND ')}
+    GROUP BY sms.id
+    ORDER BY s.name ASC
+  `).bind(...params).all();
+  return { forbidden: false, rows: res.results || [] };
 }
 
 export async function handleStudyMaterialWrongs(request, env, teacher, path, url, body = {}) {
@@ -507,7 +631,7 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
         is_no_wrong: Number(submission.is_no_wrong || 0),
         submitted_at: submission.submitted_at || null,
         wrong_numbers: (wrongs.results || []).map(r => Number(r.question_no)),
-        can_submit: Number(submission.is_submitted || 0) !== 1
+        can_submit: true
       }
     });
   }
@@ -525,7 +649,6 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
       WHERE assignment_id = ? AND student_id = ?
     `).bind(assignmentId, student.id).first();
     if (!submission) return fail('Submission not found', 404);
-    if (Number(submission.is_submitted || 0) === 1) return fail('Already submitted', 409);
     const isNoWrong = Number(body.is_no_wrong || 0) === 1 ? 1 : 0;
     let wrongNumbers;
     try {
@@ -534,27 +657,108 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
       return fail(e.message || 'Invalid wrong_numbers');
     }
     const teacherId = await findAssignmentTeacherId(env, assignment);
-    const submittedAt = nowIso();
-    const stmts = [
-      env.DB.prepare(`
-        UPDATE student_material_submissions
-        SET is_submitted = 1, is_no_wrong = ?, submitted_at = ?, updated_at = CURRENT_TIMESTAMP
-        WHERE id = ?
-      `).bind(isNoWrong, submittedAt, submission.id)
-    ];
-    for (const no of wrongNumbers) {
-      stmts.push(env.DB.prepare(`
-        INSERT INTO student_material_wrong_answers
-          (id, submission_id, assignment_id, material_id, student_id, class_id, teacher_id, grade, wrong_date, question_no)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `).bind(makeId('smw'), submission.id, assignmentId, assignment.material_id, student.id, assignment.class_id, teacherId, student.grade || assignment.class_grade || assignment.material_grade || null, today(), no));
-    }
-    await env.DB.batch(stmts);
-    return ok({ submitted: true, wrong_count: wrongNumbers.length });
+    const saved = await replaceSubmissionWrongs(env, assignment, submission, student, wrongNumbers, isNoWrong, teacherId);
+    return ok({ submitted: true, wrong_count: saved.wrong_count, submitted_at: saved.submitted_at });
   }
 
   const user = await requireTeacher(request, env, teacher);
   if (!user) return fail('Unauthorized', 401);
+
+  if (resource === 'material-omr' && method === 'GET' && id === 'entry-sheet') {
+    const classId = text(url.searchParams.get('class_id'));
+    const materialId = text(url.searchParams.get('material_id'));
+    if (!classId || !materialId) return fail('class_id/material_id required');
+    if (!(await canAccessClass(user, classId, env))) return fail('Forbidden', 403);
+    const assignment = await getLatestAssignmentForClassMaterial(env, classId, materialId);
+    if (!assignment) return fail('Assignment not found', 404);
+    const rows = await env.DB.prepare(`
+      SELECT
+        s.id AS student_id,
+        s.name AS student_name,
+        s.grade,
+        sms.id AS submission_id,
+        COALESCE(sms.is_submitted, 0) AS is_submitted,
+        COALESCE(sms.is_no_wrong, 0) AS is_no_wrong,
+        sms.submitted_at,
+        GROUP_CONCAT(CASE WHEN COALESCE(sma.status, 'active') != 'deleted' THEN sma.question_no END) AS wrong_numbers_csv
+      FROM class_students cs
+      JOIN students s ON s.id = cs.student_id
+      LEFT JOIN student_material_submissions sms ON sms.student_id = s.id AND sms.assignment_id = ?
+      LEFT JOIN student_material_wrong_answers sma ON sma.submission_id = sms.id
+      WHERE cs.class_id = ?
+        AND COALESCE(s.status, '재원') = '재원'
+      GROUP BY s.id
+      ORDER BY s.name ASC
+    `).bind(assignment.id, classId).all();
+    return ok({
+      assignment: {
+        id: assignment.id,
+        class_id: assignment.class_id,
+        material_id: assignment.material_id,
+        title: assignment.title
+      },
+      material: materialPublic({
+        id: assignment.material_id,
+        title: assignment.material_title,
+        material_type: assignment.material_type,
+        grade: assignment.material_grade,
+        semester: assignment.semester,
+        numbering_type: assignment.numbering_type,
+        number_start: assignment.number_start,
+        number_end: assignment.number_end
+      }),
+      students: (rows.results || []).map(row => ({
+        student_id: row.student_id,
+        student_name: row.student_name,
+        submission_id: row.submission_id || null,
+        is_submitted: Number(row.is_submitted || 0),
+        is_no_wrong: Number(row.is_no_wrong || 0),
+        submitted_at: row.submitted_at || '',
+        wrong_numbers: parseWrongNumbersCsv(row.wrong_numbers_csv)
+      }))
+    });
+  }
+
+  if (resource === 'material-omr' && method === 'POST' && id === 'teacher-batch-save') {
+    const assignmentId = text(body.assignment_id);
+    const rows = Array.isArray(body.rows) ? body.rows : [];
+    if (!assignmentId || !rows.length) return fail('assignment_id/rows required');
+    const assignment = await getMaterialWithAssignment(env, assignmentId);
+    if (!assignment) return fail('Assignment not found', 404);
+    if (!(await canAccessClass(user, assignment.class_id, env))) return fail('Forbidden', 403);
+    const teacherId = await findAssignmentTeacherId(env, assignment) || user.id;
+    let saved = 0;
+    let skippedEmpty = 0;
+    for (const row of rows) {
+      const studentId = text(row.student_id);
+      if (!studentId) { skippedEmpty += 1; continue; }
+      const student = await env.DB.prepare('SELECT id, name, grade FROM students WHERE id = ?').bind(studentId).first();
+      if (!student) { skippedEmpty += 1; continue; }
+      const isNoWrong = Number(row.is_no_wrong || 0) === 1 ? 1 : 0;
+      let wrongNumbers;
+      try {
+        wrongNumbers = isNoWrong ? [] : normalizeWrongNumbers(row.wrong_numbers, intOrNull(assignment.number_start), intOrNull(assignment.number_end));
+      } catch (e) {
+        return fail(e.message || 'Invalid wrong_numbers');
+      }
+      if (!isNoWrong && !wrongNumbers.length) { skippedEmpty += 1; continue; }
+      let submission = await env.DB.prepare(`
+        SELECT *
+        FROM student_material_submissions
+        WHERE assignment_id = ? AND student_id = ?
+      `).bind(assignmentId, studentId).first();
+      if (!submission) {
+        submission = { id: makeId('sms'), assignment_id: assignmentId, student_id: studentId };
+        await env.DB.prepare(`
+          INSERT INTO student_material_submissions (id, assignment_id, student_id)
+          VALUES (?, ?, ?)
+        `).bind(submission.id, assignmentId, studentId).run();
+      }
+      await replaceSubmissionWrongs(env, assignment, submission, student, wrongNumbers, isNoWrong, teacherId);
+      saved += 1;
+    }
+    return ok({ saved, skipped_empty: skippedEmpty });
+  }
 
   if (resource === 'material-wrongs' && method === 'GET' && id === 'scope') {
     const rawScope = buildScope(url);
@@ -562,7 +766,9 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
     const scope = await enrichScopeLabel(env, rawScope);
     const scoped = await scopedWrongRows(env, user, scope);
     if (scoped.forbidden) return fail('Forbidden', 403);
-    return ok(scopedWrongPayload(scope, scoped.rows));
+    const submissions = await scopedSubmissionRows(env, user, scope);
+    if (submissions.forbidden) return fail('Forbidden', 403);
+    return ok(scopedWrongPayload(scope, scoped.rows, submissions.rows));
   }
 
   if (resource === 'material-review' && method === 'GET' && id === 'scope') {
