@@ -447,27 +447,66 @@ function parseFoundationDays(scheduleDays, dayGroup) {
   return days;
 }
 
+function normalizeFoundationHour(hour) {
+  if (!Number.isFinite(hour)) return null;
+  if (hour >= 1 && hour <= 11) return hour + 12;
+  if (hour === 12) return 12;
+  if (hour >= 13 && hour <= 23) return hour;
+  return null;
+}
+
+function formatFoundationTime(hour, minute) {
+  if (!Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+  if (minute < 0 || minute > 59) return null;
+  return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+}
+
+function normalizeFoundationTimeRange(first, second) {
+  const startHour = normalizeFoundationHour(Number(first?.hour));
+  const endHour = normalizeFoundationHour(Number(second?.hour));
+  const startMinute = Number(first?.minute);
+  const endMinute = Number(second?.minute);
+
+  if (startHour === null || endHour === null) return null;
+
+  const start = formatFoundationTime(startHour, startMinute);
+  const end = formatFoundationTime(endHour, endMinute);
+
+  if (!start || !end || start >= end) return null;
+
+  return { start_time: start, end_time: end };
+}
+
 function normalizeFoundationTimePart(value) {
   const match = String(value || '').trim().match(/(\d{1,2})\s*:\s*(\d{1,2})/);
   if (!match) return null;
-  let hour = Number(match[1]);
+
+  const normalizedHour = normalizeFoundationHour(Number(match[1]));
   const minute = Number(match[2]);
-  if (!Number.isFinite(hour) || !Number.isFinite(minute) || minute < 0 || minute > 59) return null;
-  if (hour >= 1 && hour <= 7) hour += 12;
-  if (hour < 0 || hour > 23) return null;
-  return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+
+  if (normalizedHour === null) return null;
+
+  return formatFoundationTime(normalizedHour, minute);
 }
 
 function parseFoundationTimeLabel(timeLabel) {
   const raw = String(timeLabel || '').trim();
   if (!raw) return null;
-  const clean = raw.replace(/오전|오후|AM|PM|am|pm/g, ' ').replace(/[~～−–—]/g, '-');
-  const match = clean.match(/(\d{1,2}\s*:\s*\d{1,2})\s*-\s*(\d{1,2}\s*:\s*\d{1,2})/);
-  if (!match) return null;
-  const start = normalizeFoundationTimePart(match[1]);
-  const end = normalizeFoundationTimePart(match[2]);
-  if (!start || !end || start >= end) return null;
-  return { start_time: start, end_time: end };
+
+  const matches = [...raw.matchAll(/(\d{1,2})\s*:\s*(\d{1,2})/g)];
+  if (matches.length < 2) return null;
+
+  const first = {
+    hour: Number(matches[0][1]),
+    minute: Number(matches[0][2])
+  };
+
+  const second = {
+    hour: Number(matches[1][1]),
+    minute: Number(matches[1][2])
+  };
+
+  return normalizeFoundationTimeRange(first, second);
 }
 
 async function previewFoundationSync(env) {
