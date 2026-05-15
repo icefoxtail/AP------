@@ -676,7 +676,7 @@ async function copyHomeworkPhotoText(text, successMessage = '복사되었습니�
 function openHomeworkPhotoAssignmentModal(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     const today = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
-    showModal('숙제등록', `
+    showModal('숙제', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
                 <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
@@ -873,6 +873,7 @@ async function deleteHomeworkPhotoAssignment(assignmentId, classId = '') {
     const safeClassId = String(classId || '').trim();
     if (!assignmentId) return toast('삭제할 숙제를 찾을 수 없습니다.', 'warn');
     if (!confirm('이 숙제를 삭제할까요? 학생 제출 링크와 목록에서 더 이상 보이지 않습니다.')) return;
+
     try {
         const res = api.deleteHomeworkPhotoAssignment
             ? await api.deleteHomeworkPhotoAssignment(assignmentId)
@@ -949,8 +950,8 @@ function renderClassToolBarV4B(cid, plannerEnabled, today) {
         <div class="cls-v4-tools">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
-            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도관리</button>
-            <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제등록</button>
+            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도</button>
+            <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제</button>
             <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
             <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
             <button class="btn cls-v4-tool purple" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
