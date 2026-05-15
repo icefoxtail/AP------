@@ -329,11 +329,52 @@ function pushConflict(conflicts, type, targetId, classA, classB, branchPair, day
   });
 }
 
+function isMiddleGrade(grade) {
+  return /^중[123]?/.test(String(grade || '').trim());
+}
+
+function isHighGrade(grade) {
+  return /^고[123]?/.test(String(grade || '').trim());
+}
+
+function getClassGradeType(cls) {
+  if (isMiddleGrade(cls?.grade)) return 'middle';
+  if (isHighGrade(cls?.grade)) return 'high';
+  return 'unknown';
+}
+
+function getTeacherConflictExceptionReason(classA, classB, dayOfWeek) {
+  const aType = getClassGradeType(classA);
+  const bType = getClassGradeType(classB);
+
+  if (aType === 'middle' && bType === 'middle' && dayOfWeek === 'fri') {
+    return 'middle_friday_combined_or_clinic';
+  }
+
+  if (aType === 'high' && bType === 'high') {
+    return 'high_combined_class';
+  }
+
+  return '';
+}
+
+function buildConflictKey(conflict) {
+  return [
+    conflict.conflict_type,
+    conflict.target_id,
+    conflict.class_a_id,
+    conflict.class_b_id,
+    conflict.day_of_week,
+    conflict.overlap_start,
+    conflict.overlap_end
+  ].join('|');
+}
+
 async function scanTimetableConflicts(env) {
   const [slotsRes, enrollmentsRes, classesRes] = await Promise.all([
     env.DB.prepare('SELECT * FROM class_time_slots ORDER BY day_of_week, start_time').all(),
     env.DB.prepare("SELECT * FROM student_enrollments WHERE status = 'active'").all(),
-    env.DB.prepare('SELECT id, teacher_name FROM classes').all()
+    env.DB.prepare('SELECT id, name, grade, subject, teacher_name, day_group, schedule_days, time_label FROM classes').all()
   ]);
   const slots = slotsRes.results || [];
   const enrollments = enrollmentsRes.results || [];
@@ -341,6 +382,7 @@ async function scanTimetableConflicts(env) {
   const classMap = new Map(classes.map(c => [c.id, c]));
   const slotsByClass = new Map();
   const conflicts = [];
+  const ignoredTeacherConflicts = [];
 
   for (const slot of slots) {
     const list = slotsByClass.get(slot.class_id) || [];
@@ -378,7 +420,29 @@ async function scanTimetableConflicts(env) {
       const range = overlapRange(a, b);
       const teacherA = String(classMap.get(a.class_id)?.teacher_name || '').trim();
       const teacherB = String(classMap.get(b.class_id)?.teacher_name || '').trim();
-      if (teacherA && teacherA === teacherB) pushConflict(conflicts, 'teacher', teacherA, a.class_id, b.class_id, '', a.day_of_week, range.start, range.end);
+      if (teacherA && teacherA === teacherB) {
+        const classA = classMap.get(a.class_id);
+        const classB = classMap.get(b.class_id);
+        const exceptionReason = getTeacherConflictExceptionReason(classA, classB, a.day_of_week);
+
+        if (exceptionReason) {
+          const [classAId, classBId] = uniqSortedPair(a.class_id, b.class_id);
+          ignoredTeacherConflicts.push({
+            conflict_type: 'teacher',
+            target_id: teacherA,
+            class_a_id: classAId,
+            class_b_id: classBId,
+            day_of_week: a.day_of_week,
+            overlap_start: range.start,
+            overlap_end: range.end,
+            severity: 'info',
+            status: 'ignored',
+            reason: exceptionReason
+          });
+        } else {
+          pushConflict(conflicts, 'teacher', teacherA, a.class_id, b.class_id, '', a.day_of_week, range.start, range.end);
+        }
+      }
       if (a.room_name && a.room_name === b.room_name) pushConflict(conflicts, 'room', a.room_name, a.class_id, b.class_id, '', a.day_of_week, range.start, range.end);
     }
   }
@@ -388,15 +452,7 @@ async function scanTimetableConflicts(env) {
   const stmts = [];
 
   for (const conflict of conflicts) {
-    const key = [
-      conflict.conflict_type,
-      conflict.target_id,
-      conflict.class_a_id,
-      conflict.class_b_id,
-      conflict.day_of_week,
-      conflict.overlap_start,
-      conflict.overlap_end
-    ].join('|');
+    const key = buildConflictKey(conflict);
     if (existing.has(key)) {
       stmts.push(env.DB.prepare("UPDATE timetable_conflict_logs SET updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(existing.get(key)));
     } else {
@@ -407,15 +463,27 @@ async function scanTimetableConflicts(env) {
       `).bind(makeId('tcl'), conflict.conflict_type, conflict.target_id, conflict.branch_pair, conflict.class_a_id, conflict.class_b_id, conflict.day_of_week, conflict.overlap_start, conflict.overlap_end, conflict.severity, conflict.status, key));
     }
   }
+
+  for (const ignored of ignoredTeacherConflicts) {
+    const key = buildConflictKey(ignored);
+    if (existing.has(key)) {
+      stmts.push(env.DB.prepare(`
+        UPDATE timetable_conflict_logs
+        SET severity = 'info', status = 'ignored', memo = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `).bind(ignored.reason, existing.get(key)));
+    }
+  }
+
   if (stmts.length) await env.DB.batch(stmts);
-  return conflicts;
+  return { conflicts, ignored_teacher_conflicts: ignoredTeacherConflicts };
 }
 
 function parseFoundationDays(scheduleDays, dayGroup) {
   const source = String(scheduleDays || dayGroup || '').trim();
   if (!source) return [];
   const dayMap = {
-    '1': 'mon', '2': 'tue', '3': 'wed', '4': 'thu', '5': 'fri', '6': 'sat', '7': 'sun',
+    '0': 'sun', '1': 'mon', '2': 'tue', '3': 'wed', '4': 'thu', '5': 'fri', '6': 'sat', '7': 'sun',
     mon: 'mon', monday: 'mon', m: 'mon', 월: 'mon',
     tue: 'tue', tuesday: 'tue', tu: 'tue', 화: 'tue',
     wed: 'wed', wednesday: 'wed', w: 'wed', 수: 'wed',
@@ -447,6 +515,19 @@ function parseFoundationDays(scheduleDays, dayGroup) {
   return days;
 }
 
+function getMathLessonDurationMinutes(cls) {
+  const grade = String(cls?.grade || '').trim();
+  if (/중[123]?/.test(grade) || grade === '중') return 90;
+  if (/고[123]?/.test(grade) || grade === '고') return 120;
+  return null;
+}
+
+function isFoundationMathClass(cls) {
+  const subject = String(cls?.subject || '').trim();
+  if (subject && subject !== '수학') return false;
+  return getMathLessonDurationMinutes(cls) !== null;
+}
+
 function normalizeFoundationHour(hour) {
   if (!Number.isFinite(hour)) return null;
   if (hour >= 1 && hour <= 11) return hour + 12;
@@ -459,6 +540,19 @@ function formatFoundationTime(hour, minute) {
   if (!Number.isFinite(hour) || !Number.isFinite(minute)) return null;
   if (minute < 0 || minute > 59) return null;
   return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+}
+
+function addMinutesToTime(time, minutes) {
+  const match = String(time || '').trim().match(/^(\d{1,2}):(\d{2})$/);
+  if (!match || !Number.isFinite(Number(minutes))) return null;
+  const hour = Number(match[1]);
+  const minute = Number(match[2]);
+  if (hour < 0 || hour > 23 || minute < 0 || minute > 59) return null;
+  const total = hour * 60 + minute + Number(minutes);
+  if (total > 24 * 60) return null;
+  const endHour = Math.floor(total / 60);
+  const endMinute = total % 60;
+  return formatFoundationTime(endHour, endMinute);
 }
 
 function normalizeFoundationTimeRange(first, second) {
@@ -489,10 +583,37 @@ function normalizeFoundationTimePart(value) {
   return formatFoundationTime(normalizedHour, minute);
 }
 
-function parseFoundationTimeLabel(timeLabel) {
-  const raw = String(timeLabel || '').trim();
-  if (!raw) return null;
+function extractStartTimeFromText(text) {
+  return normalizeFoundationTimePart(text);
+}
 
+function parseDaysFromText(text) {
+  const source = String(text || '').trim();
+  if (!source) return [];
+  const dayMap = {
+    월: 'mon', 화: 'tue', 수: 'wed', 목: 'thu', 금: 'fri', 토: 'sat', 일: 'sun',
+    mon: 'mon', monday: 'mon',
+    tue: 'tue', tuesday: 'tue',
+    wed: 'wed', wednesday: 'wed',
+    thu: 'thu', thursday: 'thu',
+    fri: 'fri', friday: 'fri',
+    sat: 'sat', saturday: 'sat',
+    sun: 'sun', sunday: 'sun'
+  };
+  const days = [];
+  const add = (day) => {
+    if (day && !days.includes(day)) days.push(day);
+  };
+  for (const char of source) add(dayMap[char]);
+  for (const token of source.toLowerCase().split(/[,/|·\s]+/).map(v => v.trim()).filter(Boolean)) {
+    add(dayMap[token]);
+  }
+  return days;
+}
+
+function extractExplicitFoundationTimeRange(text) {
+  const raw = String(text || '').trim();
+  if (!raw) return null;
   const matches = [...raw.matchAll(/(\d{1,2})\s*:\s*(\d{1,2})/g)];
   if (matches.length < 2) return null;
 
@@ -509,10 +630,119 @@ function parseFoundationTimeLabel(timeLabel) {
   return normalizeFoundationTimeRange(first, second);
 }
 
+function parseLabeledTimeSegments(timeLabel) {
+  const raw = String(timeLabel || '').trim();
+  if (!raw) return [];
+  const segments = [];
+  const pushSegment = (text) => {
+    const days = parseDaysFromText(text);
+    const startTime = extractStartTimeFromText(text);
+    if (days.length && startTime) {
+      segments.push({ days, start_time: startTime, source: String(text || '').trim() });
+    }
+  };
+
+  for (const part of raw.split(/[,/]+/).map(v => v.trim()).filter(Boolean)) {
+    pushSegment(part);
+  }
+  if (segments.length) return segments;
+
+  const labeledPattern = /([월화수목금토일]+)\s*[^0-9월화수목금토일]*(\d{1,2}\s*:\s*\d{1,2})/g;
+  for (const match of raw.matchAll(labeledPattern)) {
+    pushSegment(`${match[1]} ${match[2]}`);
+  }
+  return segments;
+}
+
+function parseFoundationTimeLabel(timeLabel, cls) {
+  const duration = getMathLessonDurationMinutes(cls);
+  const startTime = extractStartTimeFromText(timeLabel);
+  const endTime = startTime && duration !== null ? addMinutesToTime(startTime, duration) : null;
+  if (!startTime || !endTime) return null;
+  return { start_time: startTime, end_time: endTime, explicit_range: extractExplicitFoundationTimeRange(timeLabel) };
+}
+
+function buildClassTimeSlotPreviewRows(cls, existingSlots) {
+  if (!cls?.id) return { rows: [], skipped: [{ reason: 'missing class id', class_id: cls?.id || null }] };
+  if (String(cls.is_active ?? '1') === '0') {
+    return { rows: [], skipped: [{ reason: 'inactive class', class_id: cls.id, class_name: cls.name || '' }] };
+  }
+  if (!isFoundationMathClass(cls)) {
+    return {
+      rows: [],
+      skipped: [{
+        reason: 'not middle/high math class',
+        class_id: cls.id,
+        class_name: cls.name || '',
+        grade: cls.grade || '',
+        subject: cls.subject || ''
+      }]
+    };
+  }
+
+  const duration = getMathLessonDurationMinutes(cls);
+  const labeledSegments = parseLabeledTimeSegments(cls.time_label);
+  const sources = labeledSegments.length
+    ? labeledSegments
+    : [{ days: parseFoundationDays(cls.schedule_days, cls.day_group), start_time: extractStartTimeFromText(cls.time_label), source: String(cls.time_label || '').trim() }];
+  const rows = [];
+  const skipped = [];
+
+  for (const source of sources) {
+    const days = source.days || [];
+    const startTime = source.start_time || null;
+    const endTime = startTime ? addMinutesToTime(startTime, duration) : null;
+    if (!days.length || !startTime || !endTime) {
+      skipped.push({
+        reason: !days.length ? 'day parse failed' : (!startTime ? 'time parse failed' : 'end time exceeds 24:00'),
+        class_id: cls.id,
+        class_name: cls.name || '',
+        grade: cls.grade || '',
+        subject: cls.subject || '',
+        schedule_days: cls.schedule_days || '',
+        day_group: cls.day_group || '',
+        time_label: cls.time_label || '',
+        source: source.source || ''
+      });
+      continue;
+    }
+    const explicitRange = extractExplicitFoundationTimeRange(source.source || cls.time_label);
+    const mismatch = explicitRange && explicitRange.end_time !== endTime;
+    for (const day of days) {
+      const key = `${cls.id}|${day}|${startTime}|${endTime}`;
+      rows.push({
+        row: {
+          id: makeId('cts'),
+          class_id: cls.id,
+          day_of_week: day,
+          start_time: startTime,
+          end_time: endTime,
+          room_name: null,
+          memo: 'foundation sync from classes.time_label'
+        },
+        detail: {
+          class_id: cls.id,
+          class_name: cls.name || '',
+          grade: cls.grade || '',
+          source: source.source || cls.time_label || '',
+          day_of_week: day,
+          start_time: startTime,
+          end_time: endTime,
+          duration_minutes: duration,
+          reason: existingSlots?.has(key)
+            ? 'duplicate existing class/day/time'
+            : (mismatch ? `insertable; source end ${explicitRange.end_time} recalculated by grade duration` : 'insertable')
+        }
+      });
+    }
+  }
+  return { rows, skipped };
+}
+
 async function previewFoundationSync(env) {
   const [classStudentsRes, classesRes, studentsRes, enrollmentsRes, slotsRes] = await Promise.all([
     env.DB.prepare('SELECT class_id, student_id FROM class_students').all(),
-    env.DB.prepare('SELECT id, schedule_days, day_group, time_label, teacher_name FROM classes').all(),
+    env.DB.prepare('SELECT id, name, grade, subject, teacher_name, schedule_days, day_group, time_label, is_active FROM classes').all(),
     env.DB.prepare('SELECT id, status FROM students').all(),
     env.DB.prepare("SELECT student_id, class_id, branch FROM student_enrollments WHERE branch = 'apmath'").all(),
     env.DB.prepare('SELECT class_id, day_of_week, start_time, end_time FROM class_time_slots').all()
@@ -527,6 +757,7 @@ async function previewFoundationSync(env) {
   const skippedDetails = [];
   const enrollmentRows = [];
   const timeSlotRows = [];
+  const timeSlotPreviewDetails = [];
   let enrollmentsSkipped = 0;
   let timeSlotsSkipped = 0;
 
@@ -558,37 +789,38 @@ async function previewFoundationSync(env) {
   }
 
   for (const cls of classes) {
-    const days = parseFoundationDays(cls.schedule_days, cls.day_group);
-    const parsedTime = parseFoundationTimeLabel(cls.time_label);
-    if (!days.length || !parsedTime) {
+    const previewRows = buildClassTimeSlotPreviewRows(cls, existingSlots);
+    for (const skipped of previewRows.skipped) {
       timeSlotsSkipped++;
-      skippedDetails.push({
-        type: 'time_slot',
-        reason: !days.length ? 'day parse failed' : 'time parse failed',
-        class_id: cls.id,
-        schedule_days: cls.schedule_days || '',
-        day_group: cls.day_group || '',
-        time_label: cls.time_label || ''
-      });
-      continue;
+      skippedDetails.push({ type: 'time_slot', ...skipped });
+      if (timeSlotPreviewDetails.length < 200) {
+        timeSlotPreviewDetails.push({
+          class_id: skipped.class_id || cls.id,
+          class_name: skipped.class_name || cls.name || '',
+          grade: skipped.grade || cls.grade || '',
+          source: skipped.source || cls.time_label || '',
+          day_of_week: null,
+          start_time: null,
+          end_time: null,
+          duration_minutes: getMathLessonDurationMinutes(cls),
+          reason: skipped.reason
+        });
+      }
     }
-    for (const day of days) {
-      const key = `${cls.id}|${day}|${parsedTime.start_time}|${parsedTime.end_time}`;
+    for (const built of previewRows.rows) {
+      const row = built.row;
+      const key = `${row.class_id}|${row.day_of_week}|${row.start_time}|${row.end_time}`;
       if (existingSlots.has(key) || pendingSlots.has(key)) {
         timeSlotsSkipped++;
-        skippedDetails.push({ type: 'time_slot', reason: 'duplicate class/day/time', class_id: cls.id, day_of_week: day });
+        skippedDetails.push({ type: 'time_slot', reason: 'duplicate class/day/time', class_id: row.class_id, day_of_week: row.day_of_week });
+        if (timeSlotPreviewDetails.length < 200) {
+          timeSlotPreviewDetails.push({ ...built.detail, reason: 'duplicate class/day/time' });
+        }
         continue;
       }
       pendingSlots.add(key);
-      timeSlotRows.push({
-        id: makeId('cts'),
-        class_id: cls.id,
-        day_of_week: day,
-        start_time: parsedTime.start_time,
-        end_time: parsedTime.end_time,
-        room_name: null,
-        memo: 'foundation sync from classes.schedule_days/time_label'
-      });
+      timeSlotRows.push(row);
+      if (timeSlotPreviewDetails.length < 200) timeSlotPreviewDetails.push(built.detail);
     }
   }
 
@@ -598,6 +830,7 @@ async function previewFoundationSync(env) {
     enrollments: { insertable: enrollmentRows.length, skipped: enrollmentsSkipped },
     time_slots: { insertable: timeSlotRows.length, skipped: timeSlotsSkipped },
     skipped_details: skippedDetails,
+    time_slot_preview_details: timeSlotPreviewDetails,
     _rows: { enrollments: enrollmentRows, time_slots: timeSlotRows }
   };
 }
@@ -623,7 +856,7 @@ async function insertFoundationSyncLog(env, teacher, result, dryRun) {
 
 async function runFoundationSync(env, teacher, options = {}) {
   const syncEnrollments = options.sync_enrollments !== false;
-  const syncTimeSlots = options.sync_time_slots !== false;
+  const syncTimeSlots = options.sync_time_slots === true;
   const preview = await previewFoundationSync(env);
   const enrollmentRows = syncEnrollments ? preview._rows.enrollments : [];
   const timeSlotRows = syncTimeSlots ? preview._rows.time_slots : [];
@@ -2305,8 +2538,14 @@ export default {
             }
             if (method === 'POST' && id === 'scan') {
               if (!isStaffUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
-              const conflicts = await scanTimetableConflicts(env);
-              return jsonResponse({ success: true, conflicts, count: conflicts.length });
+              const result = await scanTimetableConflicts(env);
+              return jsonResponse({
+                success: true,
+                conflicts: result.conflicts,
+                count: result.conflicts.length,
+                ignored_teacher_conflicts: result.ignored_teacher_conflicts,
+                ignored_teacher_count: result.ignored_teacher_conflicts.length
+              });
             }
             if (method === 'PATCH' && id) {
               const row = await foundationPatch(env, 'timetable_conflict_logs', id, body, ['severity', 'status', 'resolved_by', 'resolved_at', 'memo']);
