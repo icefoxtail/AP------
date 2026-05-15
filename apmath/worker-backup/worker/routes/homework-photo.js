@@ -171,6 +171,27 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
     return responseJson({ success: true, assignment_id: assignmentId, links });
   }
 
+  if (method === 'DELETE' && id && id !== 'assignments' && id !== 'overview' && id !== 'student-links' && id !== 'assignment' && id !== 'auth' && id !== 'submit' && id !== 'cancel') {
+    const currentTeacher = teacher || await verifyAuth(request, env);
+    if (!currentTeacher) return responseJson({ error: 'Unauthorized' }, 401);
+
+    const assignmentId = String(id || '').trim();
+    const assignment = await getHomeworkPhotoAssignment(env, assignmentId);
+    if (!assignment) return responseJson({ success: false, error: 'Not found' }, 404);
+    if (!(await canAccessClass(currentTeacher, assignment.class_id, env))) {
+      return responseJson({ error: 'Forbidden' }, 403);
+    }
+
+    await env.DB.prepare(`
+      UPDATE homework_photo_assignments
+      SET status = 'deleted',
+          updated_at = DATETIME('now')
+      WHERE id = ?
+    `).bind(assignmentId).run();
+
+    return responseJson({ success: true, deleted_id: assignmentId });
+  }
+
   if (method === 'PATCH' && id && id !== 'assignments' && id !== 'overview' && id !== 'student-links' && id !== 'assignment' && id !== 'auth' && id !== 'submit' && id !== 'cancel' && path[3] !== 'close') {
     const currentTeacher = teacher || await verifyAuth(request, env);
     if (!currentTeacher) return responseJson({ error: 'Unauthorized' }, 401);

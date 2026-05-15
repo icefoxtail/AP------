@@ -33,10 +33,7 @@ let state = {
         exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
-        timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
-        student_enrollments: [], class_time_slots: [], timetable_conflict_logs: [], timetable_conflict_overrides: [],
-        billing_templates: [], payments: [], payment_items: [], billing_adjustments: [], billing_runs: [],
-        parent_contacts: [], message_logs: [], student_status_history: [], class_transfer_history: [], staff_permissions: []
+        timetable_class_students: [], timetable_students: [], timetable_class_textbooks: []
     }
 };
 
@@ -116,6 +113,9 @@ const api = {
     },
     closeHomeworkPhotoAssignment(assignmentId) {
         return this.patch(`homework-photo/${encodeURIComponent(assignmentId)}/close`, {});
+    },
+    deleteHomeworkPhotoAssignment(assignmentId) {
+        return this.delete('homework-photo', encodeURIComponent(assignmentId));
     }
 };
 
@@ -342,21 +342,7 @@ async function loadData(isInitial = false) {
         journals: Array.isArray(data.journals) ? data.journals : [],
         class_textbooks: Array.isArray(data.class_textbooks) ? data.class_textbooks : [],
         class_daily_records: Array.isArray(data.class_daily_records) ? data.class_daily_records : [],
-        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : [],
-        student_enrollments: Array.isArray(data.student_enrollments) ? data.student_enrollments : [],
-        class_time_slots: Array.isArray(data.class_time_slots) ? data.class_time_slots : [],
-        timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : [],
-        timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : [],
-        billing_templates: Array.isArray(data.billing_templates) ? data.billing_templates : [],
-        payments: Array.isArray(data.payments) ? data.payments : [],
-        payment_items: Array.isArray(data.payment_items) ? data.payment_items : [],
-        billing_adjustments: Array.isArray(data.billing_adjustments) ? data.billing_adjustments : [],
-        billing_runs: Array.isArray(data.billing_runs) ? data.billing_runs : [],
-        parent_contacts: Array.isArray(data.parent_contacts) ? data.parent_contacts : [],
-        message_logs: Array.isArray(data.message_logs) ? data.message_logs : [],
-        student_status_history: Array.isArray(data.student_status_history) ? data.student_status_history : [],
-        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : [],
-        staff_permissions: Array.isArray(data.staff_permissions) ? data.staff_permissions : []
+        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : []
     };
     
     if (state.ui.currentClassId) {
@@ -397,21 +383,7 @@ async function refreshDataOnly() {
         journals: Array.isArray(data.journals) ? data.journals : (state.db.journals || []),
         class_textbooks: Array.isArray(data.class_textbooks) ? data.class_textbooks : (state.db.class_textbooks || []),
         class_daily_records: Array.isArray(data.class_daily_records) ? data.class_daily_records : (state.db.class_daily_records || []),
-        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : (state.db.class_daily_progress || []),
-        student_enrollments: Array.isArray(data.student_enrollments) ? data.student_enrollments : (state.db.student_enrollments || []),
-        class_time_slots: Array.isArray(data.class_time_slots) ? data.class_time_slots : (state.db.class_time_slots || []),
-        timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : (state.db.timetable_conflict_logs || []),
-        timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : (state.db.timetable_conflict_overrides || []),
-        billing_templates: Array.isArray(data.billing_templates) ? data.billing_templates : (state.db.billing_templates || []),
-        payments: Array.isArray(data.payments) ? data.payments : (state.db.payments || []),
-        payment_items: Array.isArray(data.payment_items) ? data.payment_items : (state.db.payment_items || []),
-        billing_adjustments: Array.isArray(data.billing_adjustments) ? data.billing_adjustments : (state.db.billing_adjustments || []),
-        billing_runs: Array.isArray(data.billing_runs) ? data.billing_runs : (state.db.billing_runs || []),
-        parent_contacts: Array.isArray(data.parent_contacts) ? data.parent_contacts : (state.db.parent_contacts || []),
-        message_logs: Array.isArray(data.message_logs) ? data.message_logs : (state.db.message_logs || []),
-        student_status_history: Array.isArray(data.student_status_history) ? data.student_status_history : (state.db.student_status_history || []),
-        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : (state.db.class_transfer_history || []),
-        staff_permissions: Array.isArray(data.staff_permissions) ? data.staff_permissions : (state.db.staff_permissions || [])
+        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : (state.db.class_daily_progress || [])
     };
 }
 
