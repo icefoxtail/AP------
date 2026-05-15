@@ -21,6 +21,7 @@ import { handleExams } from './routes/exams.js';
 import { handleOperations } from './routes/operations.js';
 import { handleClassDaily } from './routes/class-daily.js';
 import { handleStudentPortal } from './routes/student-portal.js';
+import { handleReportsAi } from './routes/reports-ai.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -3903,43 +3904,9 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // --- 12. AI 리포트 ---
-        if (resource === 'ai' && path[2] === 'report-analysis' && method === 'POST') {
-          const teacher = await verifyAuth(request, env);
-          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
-
-          const payload = await request.json();
-          const studentId = String(payload?.student?.id || payload?.exam?.student_id || '').trim();
-          if (studentId && !(await canAccessStudent(teacher, studentId, env))) {
-            return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers });
-          }
-          payload.reportWritingSeeds = buildReportWritingSeeds(payload);
-          payload.learningLifeSeeds = buildLearningLifeSeeds(payload);
-
-          try {
-            const result = await callReportAiProxyAnalysis(env, payload);
-            return new Response(JSON.stringify({
-              success: true,
-              source: result.source,
-              analysis: result.analysis,
-              warning: result.warning || ''
-            }), { headers });
-          } catch (e) {
-            return new Response(JSON.stringify({
-              success: true,
-              source: 'fallback',
-              warning: e.message,
-              analysis: buildFallbackReportAnalysis(payload)
-            }), { headers });
-          }
-        }
-
-        if (resource === 'ai' && path[2] === 'student-report' && method === 'POST') {
-          const p = await request.json();
-          const { type, student, today: td } = p;
-          const examStr = td?.exam ? `${td.exam.title} ${td.exam.score}점` : '없음';
-          let fallback = type === 'parent' ? `[AP Math] ${student.name} 학생 오늘 수업 안내\n출결: ${td.att}\n숙제: ${td.hw}\n성적: ${examStr}` : type === 'student' ? `${student.name}아 수고했어!` : `상담메모: ${student.name}`;
-          return new Response(JSON.stringify({ success: true, message: fallback, source: 'fallback' }), { headers });
+        if (resource === 'ai') {
+          const routed = await handleReportsAi(request, env, teacher, path, url);
+          if (routed) return routed;
         }
         
         // --- 14. 장기 플래너 (Student Plans & Feedback) ---
