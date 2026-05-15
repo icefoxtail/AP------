@@ -6,19 +6,23 @@
         assignments: [],
         overview: null,
         wrongs: null,
-        review: null
+        review: null,
+        wrongFilters: { grade: '', class_id: '', student_id: '', material_id: '' },
+        reviewFilters: { grade: '', class_id: '', student_id: '', material_id: '' }
     };
 
     function st() { return window[stateKey]; }
     function h(value) {
-        const esc = typeof apEscapeHtml === 'function' ? apEscapeHtml : (v) => String(v ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+        const esc = typeof apEscapeHtml === 'function'
+            ? apEscapeHtml
+            : (v) => String(v ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
         return esc(value);
     }
     function today() {
         return new Date().toLocaleDateString('sv-SE');
     }
-    function optionRows(rows, labelKey = 'name') {
-        return (rows || []).map(row => `<option value="${h(row.id)}">${h(row[labelKey] || row.title || row.name || row.id)}</option>`).join('');
+    function notify(message, type = 'info') {
+        if (typeof toast === 'function') toast(message, type);
     }
     async function call(method, path, body) {
         const headers = { 'Content-Type': 'application/json', ...(typeof getAuthHeader === 'function' ? getAuthHeader() : {}) };
@@ -34,6 +38,27 @@
     const get = (path) => call('GET', path);
     const post = (path, body) => call('POST', path, body);
     const patch = (path, body) => call('PATCH', path, body);
+
+    function statusLabel(value) {
+        const map = {
+            active: '사용 중',
+            inactive: '사용 안 함',
+            deleted: '삭제됨'
+        };
+        return map[String(value || '').trim()] || String(value || '');
+    }
+    function materialTypeLabel(value) {
+        const map = {
+            textbook: '교과서',
+            problem_book: '문제기본서',
+            progress_book: '진도교재',
+            test_prep: '시험대비교재',
+            review_print: '복습프린트',
+            clinic_print: '클리닉프린트',
+            school_material: '학교자료'
+        };
+        return map[String(value || '').trim()] || String(value || '');
+    }
 
     function injectStyle() {
         if (document.getElementById('study-material-wrong-style')) return;
@@ -60,24 +85,71 @@
         document.head.appendChild(style);
     }
 
-    function materialOptions() {
-        return optionRows(st().materials, 'title');
+    function activeClasses() {
+        return (state?.db?.classes || []).filter(c => Number(c.is_active ?? 1) !== 0);
     }
-    function classOptions() {
-        return optionRows((state?.db?.classes || []).filter(c => Number(c.is_active ?? 1) !== 0), 'name');
+    function activeStudents() {
+        return (state?.db?.students || []).filter(s => String(s.status || '재원') !== '퇴원');
     }
-    function studentOptions() {
-        return optionRows(state?.db?.students || [], 'name');
+    function gradeSortValue(value) {
+        const order = ['중1', '중2', '중3', '고1', '고2', '고3'];
+        const idx = order.indexOf(String(value || '').trim());
+        return idx >= 0 ? idx : 99;
+    }
+    function gradeOptions(selected = '') {
+        const grades = new Set();
+        activeClasses().forEach(c => { if (c.grade) grades.add(String(c.grade).trim()); });
+        activeStudents().forEach(s => { if (s.grade) grades.add(String(s.grade).trim()); });
+        return ['<option value="">학년 선택</option>'].concat(
+            [...grades].sort((a, b) => gradeSortValue(a) - gradeSortValue(b) || a.localeCompare(b, 'ko'))
+                .map(g => `<option value="${h(g)}" ${String(selected) === String(g) ? 'selected' : ''}>${h(g)}</option>`)
+        ).join('');
+    }
+    function filteredClassRows(grade = '') {
+        const g = String(grade || '').trim();
+        return activeClasses()
+            .filter(c => !g || String(c.grade || '').trim() === g)
+            .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+    }
+    function filteredClassOptions(grade = '', selected = '') {
+        return ['<option value="">전체 반</option>'].concat(
+            filteredClassRows(grade).map(c => `<option value="${h(c.id)}" ${String(selected) === String(c.id) ? 'selected' : ''}>${h(c.name || c.id)}</option>`)
+        ).join('');
+    }
+    function classStudentIds(classId) {
+        return new Set((state?.db?.class_students || [])
+            .filter(m => String(m.class_id) === String(classId))
+            .map(m => String(m.student_id)));
+    }
+    function filteredStudentRows(grade = '', classId = '') {
+        const g = String(grade || '').trim();
+        const ids = classId ? classStudentIds(classId) : null;
+        return activeStudents()
+            .filter(s => !ids || ids.has(String(s.id)))
+            .filter(s => !g || String(s.grade || '').trim() === g)
+            .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+    }
+    function filteredStudentOptions(grade = '', classId = '', selected = '') {
+        return ['<option value="">전체 학생</option>'].concat(
+            filteredStudentRows(grade, classId).map(s => `<option value="${h(s.id)}" ${String(selected) === String(s.id) ? 'selected' : ''}>${h(s.name || s.id)}</option>`)
+        ).join('');
+    }
+    function materialOptions(selected = '', includeAll = false) {
+        const first = includeAll ? ['<option value="">전체 자료</option>'] : [];
+        return first.concat((st().materials || []).map(m => `<option value="${h(m.id)}" ${String(selected) === String(m.id) ? 'selected' : ''}>${h(m.title || m.id)}</option>`)).join('');
+    }
+    function optionRows(rows, labelKey = 'name') {
+        return (rows || []).map(row => `<option value="${h(row.id)}">${h(row[labelKey] || row.title || row.name || row.id)}</option>`).join('');
     }
 
     function tabs() {
         const items = [
-            ['materials', '수업자료 관리'],
-            ['ranges', '단원 번호'],
-            ['assign', '배정'],
-            ['overview', '제출 현황'],
-            ['wrongs', '오답 조회'],
-            ['review', '복습 지시표']
+            ['materials', '자료 등록'],
+            ['ranges', '단원 설정'],
+            ['assign', '반 배정'],
+            ['overview', '제출 확인'],
+            ['wrongs', '오답 확인'],
+            ['review', '복습 출력']
         ];
         return `<div class="smw-tabs">${items.map(([key, label]) => `<button class="smw-tab ${st().tab === key ? 'active' : ''}" onclick="setStudyMaterialWrongTab('${key}')">${label}</button>`).join('')}</div>`;
     }
@@ -95,15 +167,15 @@
                 <div class="smw-field"><label>끝번호</label><input id="smw-end" type="number" inputmode="numeric"></div>
             </div>
             <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterial()">등록</button><button class="btn" onclick="loadStudyMaterialWrongData()">새로고침</button></div>
-            <div class="smw-list">${(st().materials || []).map(m => `<div class="smw-row"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(m.material_type)} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')} · ${h(m.status || 'active')}</div><div class="smw-actions" style="margin-top:8px;"><button class="btn" onclick="disableStudyMaterial('${h(m.id)}')">비활성화</button></div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 수업자료가 없습니다.</div></div>'}</div>
+            <div class="smw-list">${(st().materials || []).map(m => `<div class="smw-row"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')} · ${h(statusLabel(m.status || 'active'))}</div><div class="smw-actions" style="margin-top:8px;"><button class="btn" onclick="disableStudyMaterial('${h(m.id)}')">비활성화</button></div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 자료가 없습니다.</div></div>'}</div>
         `;
     }
 
     function rangesForm() {
         return `
             <div class="smw-field"><label>수업자료</label><select id="smw-range-material">${materialOptions()}</select></div>
-            <div class="smw-field"><label>CSV 붙여넣기</label><textarea id="smw-range-csv" placeholder="unit_order,unit_text,subunit_text,start_no,end_no"></textarea></div>
-            <div class="smw-actions"><button class="btn btn-primary" onclick="importStudyMaterialRanges()">CSV import</button><button class="btn" onclick="loadStudyMaterialRanges()">목록 조회</button></div>
+            <div class="smw-field"><label>범위 붙여넣기</label><textarea id="smw-range-csv" placeholder="순서,대단원,소단원,시작번호,끝번호"></textarea></div>
+            <div class="smw-actions"><button class="btn btn-primary" onclick="importStudyMaterialRanges()">등록</button><button class="btn" onclick="loadStudyMaterialRanges()">보기</button></div>
             <div id="smw-range-list" class="smw-list"></div>
         `;
     }
@@ -111,104 +183,155 @@
     function assignForm() {
         return `
             <div class="smw-grid">
-                <div class="smw-field"><label>반</label><select id="smw-assign-class">${classOptions()}</select></div>
+                <div class="smw-field"><label>반</label><select id="smw-assign-class">${optionRows(activeClasses(), 'name')}</select></div>
                 <div class="smw-field"><label>수업자료</label><select id="smw-assign-material">${materialOptions()}</select></div>
                 <div class="smw-field"><label>배정일</label><input id="smw-assign-date" type="date" value="${today()}"></div>
                 <div class="smw-field"><label>배정명</label><input id="smw-assign-title" placeholder="비워두면 자료명 기반"></div>
             </div>
-            <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterialAssignment()">배정 생성</button><button class="btn" onclick="loadStudyMaterialAssignments()">배정 목록</button></div>
+            <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterialAssignment()">열기</button><button class="btn" onclick="loadStudyMaterialAssignments()">보기</button></div>
             <div class="smw-list">${assignmentRows()}</div>
         `;
     }
 
     function assignmentRows() {
-        return (st().assignments || []).map(a => `<div class="smw-row"><div class="smw-title">${h(a.assignment_title || a.material_title)}</div><div class="smw-meta">${h(a.class_name || a.class_id)} · ${h(a.material_title || a.material_id)} · ${h(a.assigned_date)} · ${h(a.status || 'active')}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">조회된 배정이 없습니다.</div></div>';
+        return (st().assignments || []).map(a => `<div class="smw-row"><div class="smw-title">${h(a.assignment_title || a.material_title)}</div><div class="smw-meta">${h(a.class_name || a.class_id)} · ${h(a.material_title || a.material_id)} · ${h(a.assigned_date)} · ${h(statusLabel(a.status || 'active'))}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">열린 자료가 없습니다.</div></div>';
     }
 
     function overviewForm() {
         return `
             <div class="smw-field"><label>배정</label><select id="smw-overview-assignment">${optionRows(st().assignments, 'assignment_title')}</select></div>
-            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialOverview()">제출 현황 조회</button></div>
+            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialOverview()">조회</button></div>
             <div class="smw-output">${renderOverviewText()}</div>
         `;
     }
-
     function renderOverviewText() {
         const data = st().overview;
-        if (!data) return '배정을 선택한 뒤 제출 현황을 조회하세요.';
-        return (data.students || []).map(s => `${s.student_name || s.student_id} · ${s.status} · ${Array.isArray(s.wrong_numbers) ? s.wrong_numbers.join(', ') : ''}`).join('\n') || '조회 결과가 없습니다.';
+        if (!data) return '조건을 선택하세요.';
+        return (data.students || []).map(s => `${s.student_name || s.student_id} · ${s.status} · ${Array.isArray(s.wrong_numbers) ? s.wrong_numbers.join(', ') : ''}`).join('\n') || '결과가 없습니다.';
     }
 
-    function wrongsForm() {
+    function scopeControls(prefix, filters) {
         return `
             <div class="smw-grid">
-                <div class="smw-field"><label>학생</label><select id="smw-wrong-student">${studentOptions()}</select></div>
-                <div class="smw-field"><label>반</label><select id="smw-wrong-class">${classOptions()}</select></div>
-                <div class="smw-field"><label>수업자료</label><select id="smw-wrong-material">${materialOptions()}</select></div>
+                <div class="smw-field"><label>학년</label><select id="smw-${prefix}-grade" onchange="onStudyMaterialScopeChange('${prefix}', 'grade')">${gradeOptions(filters.grade)}</select></div>
+                <div class="smw-field"><label>반</label><select id="smw-${prefix}-class" onchange="onStudyMaterialScopeChange('${prefix}', 'class')">${filteredClassOptions(filters.grade, filters.class_id)}</select></div>
+                <div class="smw-field"><label>학생</label><select id="smw-${prefix}-student" onchange="onStudyMaterialScopeChange('${prefix}', 'student')">${filteredStudentOptions(filters.grade, filters.class_id, filters.student_id)}</select></div>
+                <div class="smw-field"><label>수업자료</label><select id="smw-${prefix}-material" onchange="onStudyMaterialScopeChange('${prefix}', 'material')">${materialOptions(filters.material_id, true)}</select></div>
             </div>
-            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialStudentWrongs()">학생별 오답</button><button class="btn" onclick="loadStudyMaterialClassWrongs()">반별 오답</button></div>
+        `;
+    }
+    function wrongsForm() {
+        const filters = st().wrongFilters;
+        return `
+            ${scopeControls('wrong', filters)}
+            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialWrongs()">조회</button></div>
             <div class="smw-output">${renderWrongsText()}</div>
         `;
+    }
+    function reviewForm() {
+        const filters = st().reviewFilters;
+        return `
+            ${scopeControls('review', filters)}
+            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialReview()">복습지 보기</button></div>
+            <div class="smw-output">${renderReviewText()}</div>
+        `;
+    }
+    function getStudyMaterialScope(prefix) {
+        const scope = {
+            grade: String(document.getElementById(`smw-${prefix}-grade`)?.value || '').trim(),
+            class_id: String(document.getElementById(`smw-${prefix}-class`)?.value || '').trim(),
+            student_id: String(document.getElementById(`smw-${prefix}-student`)?.value || '').trim(),
+            material_id: String(document.getElementById(`smw-${prefix}-material`)?.value || '').trim()
+        };
+        scope.type = scope.student_id ? 'student' : scope.class_id ? 'class' : scope.grade ? 'grade' : '';
+        return scope;
+    }
+    function scopeQuery(scope) {
+        const params = new URLSearchParams();
+        ['grade', 'class_id', 'student_id', 'material_id'].forEach(key => {
+            if (scope[key]) params.set(key, scope[key]);
+        });
+        return params.toString();
+    }
+    function renderScopeText(scope) {
+        if (!scope) return '현재 범위: -';
+        if (scope.label) return `현재 범위: ${scope.label}`;
+        const parts = [];
+        if (scope.grade) parts.push(scope.grade);
+        const cls = activeClasses().find(c => String(c.id) === String(scope.class_id));
+        if (cls) parts.push(cls.name);
+        const student = activeStudents().find(s => String(s.id) === String(scope.student_id));
+        if (student) parts.push(student.name);
+        const material = st().materials.find(m => String(m.id) === String(scope.material_id));
+        if (material) parts.push(material.title);
+        return `현재 범위: ${parts.join(' / ') || '-'}`;
     }
 
     function renderWrongsText() {
         const data = st().wrongs;
-        if (!data) return '조회 조건을 선택하세요.';
-        if (data.items) return data.items.map(x => `${x.question_no}번 · ${x.unit_text || '단원 미지정'} · ${x.type_text || ''} ${x.tags || ''}`).join('\n') || '오답이 없습니다.';
-        return [
-            'TOP 오답',
-            ...(data.top_wrong_numbers || []).map(x => `${x.question_no}번 ${x.count}회`),
-            '',
-            '단원별',
-            ...(data.unit_counts || []).map(x => `${x.unit_text} ${x.count}개`)
-        ].join('\n');
-    }
-
-    function reviewForm() {
-        return `
-            <div class="smw-grid">
-                <div class="smw-field"><label>학생</label><select id="smw-review-student">${studentOptions()}</select></div>
-                <div class="smw-field"><label>반</label><select id="smw-review-class">${classOptions()}</select></div>
-                <div class="smw-field"><label>수업자료</label><select id="smw-review-material">${materialOptions()}</select></div>
-            </div>
-            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialStudentReview()">학생 지시표</button><button class="btn" onclick="loadStudyMaterialClassReview()">반 지시표</button></div>
-            <div class="smw-output">${renderReviewText()}</div>
-        `;
+        if (!data) return '조건을 선택하세요.';
+        const lines = [renderScopeText(data.scope), ''];
+        if (data.scope?.type === 'student') {
+            lines.push('오답 번호');
+            const items = data.items || [];
+            lines.push(...(items.length ? items.map(x => `${x.question_no}번 · ${x.unit_text || '단원 미지정'}`) : ['결과가 없습니다.']));
+            return lines.join('\n');
+        }
+        lines.push('자주 틀린 번호');
+        lines.push(...((data.top_wrong_numbers || []).length ? data.top_wrong_numbers.map(x => `${x.question_no}번 ${x.count}회`) : ['결과가 없습니다.']));
+        lines.push('', '단원별 오답');
+        lines.push(...((data.unit_counts || []).length ? data.unit_counts.map(x => `${x.unit_text || '단원 미지정'} ${x.count}개`) : ['결과가 없습니다.']));
+        lines.push('', '학생별 오답');
+        lines.push(...((data.student_wrongs || []).length ? data.student_wrongs.map(x => `${x.student_name || x.student_id}: ${(x.wrong_numbers || []).join(', ')}`) : ['결과가 없습니다.']));
+        return lines.join('\n');
     }
 
     function renderReviewText() {
-        const rows = st().review?.items || [];
-        if (!rows.length) return '복습 지시표를 조회하세요.';
-        const title = rows[0].material_title || '수업자료';
+        const data = st().review;
+        const rows = data?.items || [];
+        if (!data) return '조건을 선택하세요.';
         const byStudent = new Map();
         rows.forEach(r => {
-            const list = byStudent.get(r.student_name || r.student_id) || [];
+            const key = r.student_name || r.student_id || '학생';
+            const list = byStudent.get(key) || [];
             list.push(r);
-            byStudent.set(r.student_name || r.student_id, list);
+            byStudent.set(key, list);
         });
-        return [...byStudent.entries()].map(([name, list]) => {
+        const blocks = [...byStudent.entries()].map(([name, list]) => {
+            const title = list[0]?.material_title || '수업자료';
             const lines = list.map(r => `- ${r.question_no}번${r.unit_text ? ` (${r.unit_text})` : ''}`).join('\n');
-            return `${name} 복습 지시표\n\n${title}\n\n${lines}\n\n복습 방법\n1. 위 번호만 다시 풀기\n2. 풀이 과정을 표시하기\n3. 다음 수업 때 선생님께 확인`;
-        }).join('\n\n---\n\n');
+            return `${name} 복습지\n\n${title}\n${lines}\n\n복습 방법\n1. 위 번호만 다시 풀기\n2. 풀이 과정을 표시하기\n3. 다음 수업 때 확인`;
+        });
+        return [renderScopeText(data.scope), '', ...(blocks.length ? blocks : ['결과가 없습니다.'])].join('\n');
     }
 
     function body() {
         const current = st().tab;
         return `<div class="smw-wrap">${tabs()}${current === 'materials' ? materialForm() : current === 'ranges' ? rangesForm() : current === 'assign' ? assignForm() : current === 'overview' ? overviewForm() : current === 'wrongs' ? wrongsForm() : reviewForm()}</div>`;
     }
-
     function render() {
         injectStyle();
-        showModal('수업자료 오답', body());
+        showModal('수업자료', body());
     }
 
     window.openStudyMaterialWrongCenter = async function () {
         injectStyle();
-        showModal('수업자료 오답', '<div class="smw-output">불러오는 중입니다.</div>');
+        showModal('수업자료', '<div class="smw-output">불러오는 중입니다.</div>');
         await loadStudyMaterialWrongData();
     };
     window.setStudyMaterialWrongTab = function (tab) {
         st().tab = tab;
+        render();
+    };
+    window.onStudyMaterialScopeChange = function (prefix, field) {
+        const key = prefix === 'review' ? 'reviewFilters' : 'wrongFilters';
+        const next = getStudyMaterialScope(prefix);
+        if (field === 'grade') {
+            next.class_id = '';
+            next.student_id = '';
+        }
+        if (field === 'class') next.student_id = '';
+        st()[key] = next;
         render();
     };
     window.loadStudyMaterialWrongData = async function () {
@@ -230,30 +353,30 @@
             number_start: Number(document.getElementById('smw-start')?.value || 0) || null,
             number_end: Number(document.getElementById('smw-end')?.value || 0) || null
         });
-        toast('수업자료를 등록했습니다.');
+        notify('자료를 등록했습니다.');
         await loadStudyMaterialWrongData();
     };
     window.disableStudyMaterial = async function (id) {
         await patch(`study-materials/${encodeURIComponent(id)}/disable`, {});
-        toast('비활성화했습니다.');
+        notify('비활성화했습니다.');
         await loadStudyMaterialWrongData();
     };
     window.importStudyMaterialRanges = async function () {
         const materialId = document.getElementById('smw-range-material')?.value;
         const lines = String(document.getElementById('smw-range-csv')?.value || '').split(/\r?\n/).map(v => v.trim()).filter(Boolean);
-        const items = lines.filter(line => !/^unit_order\s*,/i.test(line)).map(line => {
+        const items = lines.filter(line => !/^순서\s*,|^unit_order\s*,/i.test(line)).map(line => {
             const [unit_order, unit_text, subunit_text, start_no, end_no] = line.split(',').map(v => v.trim());
             return { unit_order: Number(unit_order) || 0, unit_text, subunit_text, start_no: Number(start_no), end_no: Number(end_no) };
         });
         const res = await post('material-unit-ranges/import', { material_id: materialId, items });
-        toast(`저장 ${res.inserted || 0} · 갱신 ${res.updated || 0} · 제외 ${res.skipped || 0}`);
+        notify(`저장 ${res.inserted || 0} · 갱신 ${res.updated || 0} · 제외 ${res.skipped || 0}`);
         await loadStudyMaterialRanges();
     };
     window.loadStudyMaterialRanges = async function () {
         const materialId = document.getElementById('smw-range-material')?.value;
         const res = await get(`material-unit-ranges?material_id=${encodeURIComponent(materialId)}`);
         const root = document.getElementById('smw-range-list');
-        if (root) root.innerHTML = (res.items || []).map(r => `<div class="smw-row"><div class="smw-title">${h(r.unit_text)}</div><div class="smw-meta">${h(r.subunit_text || '')} · ${r.start_no}-${r.end_no}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 범위가 없습니다.</div></div>';
+        if (root) root.innerHTML = (res.items || []).map(r => `<div class="smw-row"><div class="smw-title">${h(r.unit_text)}</div><div class="smw-meta">${h(r.subunit_text || '')} · ${r.start_no}-${r.end_no}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 단원이 없습니다.</div></div>';
     };
     window.createStudyMaterialAssignment = async function () {
         await post('class-material-assignments', {
@@ -262,7 +385,7 @@
             assigned_date: document.getElementById('smw-assign-date')?.value || today(),
             assignment_title: document.getElementById('smw-assign-title')?.value
         });
-        toast('배정을 생성했습니다.');
+        notify('배정을 생성했습니다.');
         await loadStudyMaterialAssignments();
     };
     window.loadStudyMaterialAssignments = async function () {
@@ -275,28 +398,28 @@
         st().overview = await get(`material-omr/overview?assignment_id=${encodeURIComponent(id)}`);
         render();
     };
-    window.loadStudyMaterialStudentWrongs = async function () {
-        const studentId = document.getElementById('smw-wrong-student')?.value;
-        const materialId = document.getElementById('smw-wrong-material')?.value;
-        st().wrongs = await get(`material-wrongs/student?student_id=${encodeURIComponent(studentId)}&material_id=${encodeURIComponent(materialId)}`);
+    window.loadStudyMaterialWrongs = async function () {
+        const scope = getStudyMaterialScope('wrong');
+        if (!scope.type) {
+            notify('학년을 선택하세요.', 'warn');
+            return;
+        }
+        st().wrongFilters = scope;
+        st().wrongs = await get(`material-wrongs/scope?${scopeQuery(scope)}`);
         render();
     };
-    window.loadStudyMaterialClassWrongs = async function () {
-        const classId = document.getElementById('smw-wrong-class')?.value;
-        const materialId = document.getElementById('smw-wrong-material')?.value;
-        st().wrongs = await get(`material-wrongs/class?class_id=${encodeURIComponent(classId)}&material_id=${encodeURIComponent(materialId)}`);
+    window.loadStudyMaterialReview = async function () {
+        const scope = getStudyMaterialScope('review');
+        if (!scope.type) {
+            notify('학년을 선택하세요.', 'warn');
+            return;
+        }
+        st().reviewFilters = scope;
+        st().review = await get(`material-review/scope?${scopeQuery(scope)}`);
         render();
     };
-    window.loadStudyMaterialStudentReview = async function () {
-        const studentId = document.getElementById('smw-review-student')?.value;
-        const materialId = document.getElementById('smw-review-material')?.value;
-        st().review = await get(`material-review/student?student_id=${encodeURIComponent(studentId)}&material_id=${encodeURIComponent(materialId)}`);
-        render();
-    };
-    window.loadStudyMaterialClassReview = async function () {
-        const classId = document.getElementById('smw-review-class')?.value;
-        const materialId = document.getElementById('smw-review-material')?.value;
-        st().review = await get(`material-review/class?class_id=${encodeURIComponent(classId)}&material_id=${encodeURIComponent(materialId)}`);
-        render();
-    };
+    window.loadStudyMaterialStudentWrongs = function () { return window.loadStudyMaterialWrongs(); };
+    window.loadStudyMaterialClassWrongs = function () { return window.loadStudyMaterialWrongs(); };
+    window.loadStudyMaterialStudentReview = function () { return window.loadStudyMaterialReview(); };
+    window.loadStudyMaterialClassReview = function () { return window.loadStudyMaterialReview(); };
 })();

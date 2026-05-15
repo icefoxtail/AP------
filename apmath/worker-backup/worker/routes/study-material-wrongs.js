@@ -313,6 +313,121 @@ async function materialReviewRows(env, filters) {
   }));
 }
 
+function buildScope(url) {
+  const scope = {
+    grade: text(url.searchParams.get('grade')),
+    class_id: text(url.searchParams.get('class_id')),
+    student_id: text(url.searchParams.get('student_id')),
+    material_id: text(url.searchParams.get('material_id'))
+  };
+  scope.type = scope.student_id ? 'student' : scope.class_id ? 'class' : scope.grade ? 'grade' : '';
+  return scope;
+}
+
+async function enrichScopeLabel(env, scope) {
+  const parts = [];
+  if (scope.grade) parts.push(scope.grade);
+  if (scope.class_id) {
+    const row = await env.DB.prepare('SELECT name FROM classes WHERE id = ?').bind(scope.class_id).first();
+    parts.push(row?.name || scope.class_id);
+  }
+  if (scope.student_id) {
+    const row = await env.DB.prepare('SELECT name FROM students WHERE id = ?').bind(scope.student_id).first();
+    parts.push(row?.name || scope.student_id);
+  }
+  if (scope.material_id) {
+    const row = await env.DB.prepare('SELECT title FROM study_materials WHERE id = ?').bind(scope.material_id).first();
+    parts.push(row?.title || scope.material_id);
+  }
+  return { ...scope, label: parts.join(' / ') };
+}
+
+async function scopedWrongRows(env, user, scope) {
+  if (!scope.type) return { forbidden: false, rows: [], scope };
+
+  const where = ["COALESCE(sma.status, 'active') != 'deleted'"];
+  const params = [];
+
+  if (scope.student_id) {
+    if (!(await canAccessStudent(user, scope.student_id, env))) return { forbidden: true, rows: [], scope };
+    where.push('sma.student_id = ?');
+    params.push(scope.student_id);
+  } else if (scope.class_id) {
+    if (!(await canAccessClass(user, scope.class_id, env))) return { forbidden: true, rows: [], scope };
+    where.push('sma.class_id = ?');
+    params.push(scope.class_id);
+  } else if (scope.grade) {
+    where.push('sma.grade = ?');
+    params.push(scope.grade);
+    if (!isAdminUser(user)) {
+      const allowed = await env.DB.prepare('SELECT class_id FROM teacher_classes WHERE teacher_id = ?').bind(user.id).all();
+      const classIds = (allowed.results || []).map(r => String(r.class_id || '')).filter(Boolean);
+      if (!classIds.length) return { forbidden: false, rows: [], scope };
+      where.push(`sma.class_id IN (${classIds.map(() => '?').join(',')})`);
+      params.push(...classIds);
+    }
+  }
+
+  if (scope.material_id) {
+    where.push('sma.material_id = ?');
+    params.push(scope.material_id);
+  }
+
+  const res = await env.DB.prepare(`
+    SELECT
+      sma.*,
+      sm.title AS material_title,
+      s.name AS student_name,
+      c.name AS class_name
+    FROM student_material_wrong_answers sma
+    LEFT JOIN study_materials sm ON sm.id = sma.material_id
+    LEFT JOIN students s ON s.id = sma.student_id
+    LEFT JOIN classes c ON c.id = sma.class_id
+    WHERE ${where.join(' AND ')}
+    ORDER BY s.name ASC, sm.title ASC, sma.question_no ASC
+  `).bind(...params).all();
+
+  const grouped = new Map();
+  for (const row of (res.results || [])) {
+    const materialId = row.material_id || '';
+    const list = grouped.get(materialId) || [];
+    list.push(row);
+    grouped.set(materialId, list);
+  }
+
+  const rows = [];
+  for (const [materialId, list] of grouped.entries()) {
+    rows.push(...await attachQuestionMeta(env, materialId, list));
+  }
+  return { forbidden: false, rows, scope };
+}
+
+function scopedWrongPayload(scope, rows) {
+  const qMap = new Map();
+  const sMap = new Map();
+  for (const row of rows) {
+    const no = Number(row.question_no);
+    if (Number.isFinite(no)) qMap.set(no, (qMap.get(no) || 0) + 1);
+    const key = row.student_id || '';
+    const item = sMap.get(key) || { student_id: row.student_id, student_name: row.student_name || '', wrong_numbers: [] };
+    if (Number.isFinite(no)) item.wrong_numbers.push(no);
+    sMap.set(key, item);
+  }
+  return {
+    scope,
+    items: scope.type === 'student' ? rows : [],
+    top_wrong_numbers: [...qMap.entries()]
+      .map(([question_no, count]) => ({ question_no: Number(question_no), count }))
+      .sort((a, b) => b.count - a.count || a.question_no - b.question_no)
+      .slice(0, 10),
+    student_wrongs: [...sMap.values()].map(row => ({
+      ...row,
+      wrong_numbers: [...new Set(row.wrong_numbers)].sort((a, b) => a - b)
+    })),
+    unit_counts: buildUnitCounts(rows)
+  };
+}
+
 export async function handleStudyMaterialWrongs(request, env, teacher, path, url, body = {}) {
   const method = request.method;
   const resource = path[1];
@@ -440,6 +555,30 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
 
   const user = await requireTeacher(request, env, teacher);
   if (!user) return fail('Unauthorized', 401);
+
+  if (resource === 'material-wrongs' && method === 'GET' && id === 'scope') {
+    const rawScope = buildScope(url);
+    if (!rawScope.type) return fail('grade/class/student required');
+    const scope = await enrichScopeLabel(env, rawScope);
+    const scoped = await scopedWrongRows(env, user, scope);
+    if (scoped.forbidden) return fail('Forbidden', 403);
+    return ok(scopedWrongPayload(scope, scoped.rows));
+  }
+
+  if (resource === 'material-review' && method === 'GET' && id === 'scope') {
+    const rawScope = buildScope(url);
+    if (!rawScope.type) return fail('grade/class/student required');
+    const scope = await enrichScopeLabel(env, rawScope);
+    const scoped = await scopedWrongRows(env, user, scope);
+    if (scoped.forbidden) return fail('Forbidden', 403);
+    return ok({
+      scope,
+      items: scoped.rows.map(row => ({
+        ...row,
+        review_guide: '위 번호만 다시 풀고, 풀이 과정을 표시한 뒤 다음 수업 때 확인합니다.'
+      }))
+    });
+  }
 
   if (resource === 'study-materials') {
     if (method === 'GET' && !id) return listMaterials(env, url);
