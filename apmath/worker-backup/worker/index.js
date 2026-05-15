@@ -26,6 +26,7 @@ import { handleCheckOmr } from './routes/check-omr.js';
 import { handleHomeworkPhoto } from './routes/homework-photo.js';
 import { handlePlanner } from './routes/planner.js';
 import { handleAuth } from './routes/auth.js';
+import { handleStudyMaterialWrongs } from './routes/study-material-wrongs.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -2669,6 +2670,20 @@ export default {
 
         if (resource === 'student-portal') {
           const routed = await handleStudentPortal(request, env, null, path, url);
+          if (routed) return routed;
+        }
+
+        if (
+          resource === 'study-materials' ||
+          resource === 'material-unit-ranges' ||
+          resource === 'material-question-tags' ||
+          resource === 'class-material-assignments' ||
+          resource === 'material-omr' ||
+          resource === 'material-wrongs' ||
+          resource === 'material-review'
+        ) {
+          const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
+          const routed = await handleStudyMaterialWrongs(request, env, null, path, url, body);
           if (routed) return routed;
         }
 

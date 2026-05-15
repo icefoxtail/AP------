@@ -310,6 +310,14 @@
     .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
     .omr-no.wrong { background:rgba(232,65,79,0.10); border-color:rgba(232,65,79,0.22); color:var(--error); }
     .omr-submit-bar { position:sticky; bottom:0; z-index:10; padding:12px 0 calc(12px + env(safe-area-inset-bottom)); background:linear-gradient(180deg,rgba(242,244,246,0),rgba(242,244,246,0.92) 28%,rgba(242,244,246,0.98)); }
+    .material-wrong-tools { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .material-range-tabs { display:flex; gap:8px; overflow-x:auto; padding:4px 0 10px; scrollbar-width:none; }
+    .material-range-tabs::-webkit-scrollbar { display:none; }
+    .material-range-tab { flex:0 0 auto; min-height:36px; padding:0 12px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:800; }
+    .material-range-tab.active { background:rgba(26,92,255,0.08); border-color:rgba(26,92,255,0.20); color:var(--primary); }
+    .material-quick-input { width:100%; min-height:46px; border-radius:14px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); padding:0 14px; font-size:14px; font-weight:700; box-sizing:border-box; }
+    .material-selected { margin-top:12px; font-size:12px; font-weight:800; color:var(--secondary); line-height:1.5; word-break:break-word; }
+    .material-no-wrong { background:rgba(0,184,148,0.10) !important; color:#008F72 !important; border-color:rgba(0,184,148,0.18) !important; }
     .assignment-list { display:flex; flex-direction:column; gap:10px; }
     .assignment-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
     .assignment-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
@@ -456,6 +464,8 @@
     let homeData = null;
     let omrData = null;
     let omrDraft = null;
+    let materialWrongData = null;
+    let materialWrongDraft = null;
     let isLoading = false;
     let deferredInstallPrompt = null;
 
@@ -816,6 +826,213 @@
         </section>
       `;
     }
+    async function loadMaterialWrongAssignments(force = false) {
+      if (!session?.student_id || !session?.student_token) return { items: [] };
+      if (!force && materialWrongData?.items) return materialWrongData;
+      materialWrongData = await apiGet(`material-omr/student-assignments?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      return materialWrongData;
+    }
+    function getMaterialWrongAssignments() {
+      return Array.isArray(materialWrongData?.items) ? materialWrongData.items : [];
+    }
+    function getMaterialWrongStatus(item) {
+      if (Number(item?.is_submitted || 0) !== 1) return { label: '미제출', className: 'status-pending' };
+      if (Number(item?.is_no_wrong || 0) === 1) return { label: '오답 없음', className: 'status-done' };
+      return { label: '제출 완료', className: 'status-done' };
+    }
+    async function refreshMaterialWrongAssignments() {
+      if (!session?.student_id || !session?.student_token) return;
+      const root = $('material-wrong-section');
+      if (!root) return;
+      try {
+        await loadMaterialWrongAssignments(true);
+        const nextRoot = $('material-wrong-section');
+        if (nextRoot) nextRoot.outerHTML = renderMaterialWrongAssignments();
+      } catch (e) {
+        const nextRoot = $('material-wrong-section');
+        if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty">수업자료 오답을 불러오지 못했습니다.</div>';
+      }
+    }
+    function renderMaterialWrongAssignments() {
+      const list = getMaterialWrongAssignments();
+      const visible = list.slice(0, 6);
+      const rows = visible.length ? visible.map(item => {
+        const status = getMaterialWrongStatus(item);
+        const isSubmitted = Number(item.is_submitted || 0) === 1;
+        const title = item.assignment_title || item.material_title || '수업자료';
+        const meta = [item.class_name, item.assigned_date].filter(Boolean).join(' · ');
+        return `
+          <div class="portal-assignment-row">
+            <div class="portal-assignment-line">${escapeHtml(title)}</div>
+            <div class="portal-assignment-meta">
+              <span class="portal-assignment-pill">${escapeHtml(meta || '-')}</span>
+              <span class="portal-assignment-pill ${status.className}">${escapeHtml(status.label)}</span>
+            </div>
+            ${isSubmitted ? '' : `<div class="portal-assignment-actions"><button type="button" class="btn btn-primary" onclick="openMaterialWrongOmr('${escapeHtml(item.assignment_id)}')">오답 입력</button></div>`}
+          </div>
+        `;
+      }).join('') : '<div class="empty">배정된 수업자료 오답이 없습니다.</div>';
+      return `
+        <section id="material-wrong-section" class="card portal-assignments-card">
+          <div class="portal-assignments-head">
+            <div>
+              <h2 class="card-title">수업자료 오답</h2>
+              <p class="card-desc">배정된 수업자료의 오답 번호만 입력합니다.</p>
+            </div>
+          </div>
+          <div class="portal-assignments-list">${rows}</div>
+          <div class="portal-assignments-note">수업자료 원문은 열리지 않습니다.</div>
+        </section>
+      `;
+    }
+    async function openMaterialWrongOmr(assignmentId) {
+      if (!assignmentId || !session?.student_id || !session?.student_token) return;
+      try {
+        const data = await apiGet(`material-omr/assignment?assignment_id=${encodeURIComponent(assignmentId)}&student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+        if (Number(data.submission?.is_submitted || 0) === 1) {
+          toast('이미 제출한 수업자료 오답은 수정할 수 없습니다.');
+          await refreshMaterialWrongAssignments();
+          return;
+        }
+        materialWrongDraft = {
+          assignment_id: assignmentId,
+          material: data.material,
+          assignment: data.assignment,
+          wrong_numbers: new Set((data.submission?.wrong_numbers || []).map(Number).filter(Number.isFinite)),
+          range_start: Number(data.material?.number_start || 1),
+          range_size: 100,
+          is_no_wrong: 0
+        };
+        drawMaterialWrongOmr();
+      } catch (e) {
+        toast(e.message || '수업자료 오답을 불러오지 못했습니다.');
+      }
+    }
+    function getMaterialWrongBounds() {
+      const material = materialWrongDraft?.material || {};
+      const start = Number(material.number_start || 1);
+      const end = Number(material.number_end || start);
+      return { start, end: Math.max(start, end) };
+    }
+    function materialWrongRanges() {
+      const { start, end } = getMaterialWrongBounds();
+      const ranges = [];
+      for (let s = start; s <= end; s += 100) ranges.push({ start: s, end: Math.min(end, s + 99) });
+      return ranges;
+    }
+    function drawMaterialWrongOmr() {
+      if (!materialWrongDraft) return;
+      const { start, end } = getMaterialWrongBounds();
+      const currentStart = Math.min(Math.max(Number(materialWrongDraft.range_start || start), start), end);
+      const currentEnd = Math.min(end, currentStart + 99);
+      const ranges = materialWrongRanges().map(r => `
+        <button class="material-range-tab ${r.start === currentStart ? 'active' : ''}" onclick="setMaterialWrongRange(${r.start})">${r.start}-${r.end}</button>
+      `).join('');
+      const buttons = [];
+      for (let no = currentStart; no <= currentEnd; no += 1) {
+        const selected = materialWrongDraft.wrong_numbers.has(no);
+        buttons.push(`<button class="omr-no ${selected ? 'wrong' : ''}" onclick="toggleMaterialWrongNo(${no})">${no}</button>`);
+      }
+      const selected = Array.from(materialWrongDraft.wrong_numbers).sort((a, b) => a - b);
+      $('app').innerHTML = `
+        <div class="student-shell">
+          <button class="btn back-btn" onclick="renderHome()">← 홈</button>
+          <section class="card">
+            <h1 class="card-title">${escapeHtml(materialWrongDraft.material?.title || '수업자료 오답')}</h1>
+            <p class="card-desc">${escapeHtml(materialWrongDraft.assignment?.title || '')}</p>
+            <div class="material-range-tabs">${ranges}</div>
+            <div class="omr-sheet">${buttons.join('')}</div>
+            <div class="material-wrong-tools">
+              <input id="material-quick-input" class="material-quick-input" placeholder="빠른 입력: 123,124,130 또는 123-128" onkeydown="if(event.key==='Enter')applyMaterialQuickInput()">
+              <button class="btn" onclick="applyMaterialQuickInput()">빠른 입력</button>
+              <button class="btn material-no-wrong" onclick="markMaterialNoWrong()">오답 없음</button>
+            </div>
+            <div class="material-selected">선택됨: ${selected.length ? selected.join(', ') : '없음'}</div>
+          </section>
+          <div class="omr-submit-bar">
+            <button id="material-submit-btn" class="btn btn-primary" onclick="submitMaterialWrongOmr()">제출</button>
+          </div>
+        </div>
+      `;
+    }
+    function setMaterialWrongRange(start) {
+      if (!materialWrongDraft) return;
+      materialWrongDraft.range_start = Number(start);
+      drawMaterialWrongOmr();
+    }
+    function toggleMaterialWrongNo(no) {
+      if (!materialWrongDraft) return;
+      const n = Number(no);
+      materialWrongDraft.is_no_wrong = 0;
+      if (materialWrongDraft.wrong_numbers.has(n)) materialWrongDraft.wrong_numbers.delete(n);
+      else materialWrongDraft.wrong_numbers.add(n);
+      drawMaterialWrongOmr();
+    }
+    function parseMaterialQuickInput(raw) {
+      const { start, end } = getMaterialWrongBounds();
+      const out = [];
+      String(raw || '').split(',').map(v => v.trim()).filter(Boolean).forEach(part => {
+        const range = part.match(/^(\d+)\s*-\s*(\d+)$/);
+        if (range) {
+          const a = Number(range[1]);
+          const b = Number(range[2]);
+          for (let n = Math.min(a, b); n <= Math.max(a, b); n += 1) out.push(n);
+        } else {
+          out.push(Number(part));
+        }
+      });
+      return [...new Set(out.filter(n => Number.isFinite(n) && n >= start && n <= end))].sort((a, b) => a - b);
+    }
+    function applyMaterialQuickInput() {
+      if (!materialWrongDraft) return;
+      const input = $('material-quick-input');
+      const parsed = parseMaterialQuickInput(input?.value || '');
+      if (!parsed.length) {
+        toast('입력할 오답 번호를 확인해 주세요.');
+        return;
+      }
+      parsed.forEach(no => materialWrongDraft.wrong_numbers.add(no));
+      materialWrongDraft.is_no_wrong = 0;
+      drawMaterialWrongOmr();
+    }
+    function markMaterialNoWrong() {
+      if (!materialWrongDraft) return;
+      materialWrongDraft.wrong_numbers.clear();
+      materialWrongDraft.is_no_wrong = 1;
+      drawMaterialWrongOmr();
+      toast('오답 없음으로 선택했습니다.');
+    }
+    async function submitMaterialWrongOmr() {
+      if (isLoading || !materialWrongDraft) return;
+      const btn = $('material-submit-btn');
+      isLoading = true;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '제출 중...';
+      }
+      try {
+        const wrongNumbers = Array.from(materialWrongDraft.wrong_numbers).sort((a, b) => a - b);
+        await apiPost('material-omr/submit', {
+          assignment_id: materialWrongDraft.assignment_id,
+          student_id: session.student_id,
+          token: session.student_token,
+          wrong_numbers: wrongNumbers,
+          is_no_wrong: materialWrongDraft.is_no_wrong ? 1 : 0
+        });
+        toast('수업자료 오답이 제출되었습니다.');
+        materialWrongData = null;
+        materialWrongDraft = null;
+        renderHome();
+      } catch (e) {
+        toast(e.message || '제출에 실패했습니다.');
+      } finally {
+        isLoading = false;
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '제출';
+        }
+      }
+    }
     function renderIcon(type) {
       if (type === 'task') return '<svg viewBox="0 0 24 24"><path d="M8 6h11"/><path d="M8 12h11"/><path d="M8 18h11"/><path d="M4 6l1 1 2-2"/><path d="M4 12l1 1 2-2"/><path d="M4 18l1 1 2-2"/></svg>';
       if (type === 'planner') return '<svg viewBox="0 0 24 24"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4 8h16"/><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 13h3"/><path d="M8 17h6"/></svg>';
@@ -847,6 +1064,7 @@
           </section>
           ${renderInstallCard(true)}
           ${renderStudentPortalAssignments()}
+          ${renderMaterialWrongAssignments()}
           <div class="portal-grid">
             <section class="card portal-card">
               <div class="portal-head">
@@ -882,6 +1100,7 @@
         </div>
       `;
       if (typeof refreshStudentPortalAssignmentOmrStatus === 'function') refreshStudentPortalAssignmentOmrStatus();
+      if (typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
     }
     function renderAssignments() {
       const { missing, done } = splitAssignments();
