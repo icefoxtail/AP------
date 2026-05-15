@@ -12,6 +12,9 @@ import { handleFoundationSync } from './routes/foundation-sync.js';
 import { handleBillingFoundation } from './routes/billing-foundation.js';
 import { handleParentFoundation } from './routes/parent-foundation.js';
 import { handleFoundationLogs } from './routes/foundation-logs.js';
+import { handleStudents } from './routes/students.js';
+import { handleClasses } from './routes/classes.js';
+import { handleTeachers } from './routes/teachers.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -2678,6 +2681,19 @@ export default {
               return jsonResponse({ success: true, log: await foundationInsert(env, 'privacy_access_logs', { id: makeId('pal'), actor_id: teacher.id, student_id: body.student_id || null, access_type: body.access_type || 'manual' }) });
             }
           }
+        }
+
+        if (['students', 'classes', 'class-students', 'teachers', 'teacher-classes'].includes(resource)) {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          const body = ['POST', 'PATCH', 'DELETE'].includes(method) ? await readJsonBody(request) : {};
+          const adminRoute =
+            resource === 'students' ? handleStudents :
+            (resource === 'classes' || resource === 'class-students') ? handleClasses :
+            (resource === 'teachers' || resource === 'teacher-classes') ? handleTeachers :
+            null;
+          const routed = adminRoute ? await adminRoute(request, env, teacher, path, url, body) : null;
+          if (routed) return routed;
         }
 
         // --- 1. 인증 및 계정 관리 ---
