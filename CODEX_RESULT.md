@@ -1,67 +1,45 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- apmath/worker-backup/worker/index.js
-- apmath/worker-backup/worker/routes/reports-ai.js
-- CODEX_RESULT.md
-- CODEX_TASK.md는 현재 지시 파일 갱신 상태로 작업 전부터 수정 상태였음
+- `CODEX_RESULT.md`
+- `apmath/worker-backup/worker/routes/check-omr.js`
 
 ## 2. 구현 완료 또는 확인 완료
-- reports-ai route 추가
-- report-ai-proxy 분리
-- report/AI 계열 API 분리
-- index.js route 위임 구조 반영
-- 기존 students/classes/teachers route 영향 없음 확인
-- 기존 attendance-homework route 영향 없음 확인
-- 기존 exams route 영향 없음 확인
-- 기존 operations/class-daily/student-portal/foundation route 영향 없음 확인
-- 기존 initial-data 구조 유지 확인
-- 기존 report.js 호출 구조 영향 없음 확인
-- UI 파일 변경 없음 확인
-- schema/migration 변경 없음 확인
+- 실제 원인은 `qr-classes` 분기가 `handleCheckOmr` 본문 안에 직접 들어 있어, 추후 분리/이동 시 `teacher` 참조가 다시 섞일 여지가 남아 있던 구조였다.
+- `apmath/worker-backup/worker/routes/check-omr.js`에서 `qr-classes`를 `handleQrClasses(request, env, teacher, url)` helper로 분리했다.
+- `handleQrClasses` 내부 인증 객체는 `const currentTeacher = teacher || await verifyAuth(request, env);`로 통일했다.
+- `handleQrClasses` 내부 bare `teacher.role`, `teacher.name`, `teacher.id`, `teacher.teacher_name` 참조는 없다.
+- `verifyAuth` 내부 지역변수명도 `teacher`에서 `authTeacher`로 바꿔 `routes/check-omr.js`의 `teacher` 검색 결과를 안전한 인자 전달 위치만 남기도록 정리했다.
+- `qr-classes` 응답 구조는 그대로 `jsonResponse({ success: true, classes: res.results })`를 유지한다.
+- `check-init`, `check-pin` 로직과 응답 구조는 변경하지 않았다.
+- 학생 시험지 직접 열기 URL 추가는 없다.
+- 제출 완료 OMR 수정 경로 추가는 없다.
+- UI 파일, `schema.sql`, `migrations` 변경은 없다.
 
 ## 3. 실행 결과
-- node --check apmath/worker-backup/worker/index.js: 통과
-- node --check apmath/worker-backup/worker/routes/reports-ai.js: 통과
-- node --check apmath/worker-backup/worker/routes/student-portal.js: 통과
-- node --check apmath/worker-backup/worker/routes/billing-accounting-foundation.js: 통과
-- node --check apmath/worker-backup/worker/routes/class-daily.js: 통과
-- node --check apmath/worker-backup/worker/routes/operations.js: 통과
-- node --check apmath/worker-backup/worker/routes/exams.js: 통과
-- node --check apmath/worker-backup/worker/routes/attendance-homework.js: 통과
-- node --check apmath/worker-backup/worker/routes/students.js: 통과
-- node --check apmath/worker-backup/worker/routes/classes.js: 통과
-- node --check apmath/worker-backup/worker/routes/teachers.js: 통과
-- node --check apmath/worker-backup/worker/routes/enrollments.js: 통과
-- node --check apmath/worker-backup/worker/routes/class-time-slots.js: 통과
-- node --check apmath/worker-backup/worker/routes/timetable-conflicts.js: 통과
-- node --check apmath/worker-backup/worker/routes/foundation-sync.js: 통과
-- node --check apmath/worker-backup/worker/routes/billing-foundation.js: 통과
-- node --check apmath/worker-backup/worker/routes/parent-foundation.js: 통과
-- node --check apmath/worker-backup/worker/routes/foundation-logs.js: 통과
-- node --check apmath/worker-backup/worker/helpers/admin-db.js: 통과
-- node --check apmath/worker-backup/worker/helpers/response.js: 통과
-- node --check apmath/worker-backup/worker/helpers/foundation-db.js: 통과
-- node --check apmath/worker-backup/worker/helpers/branch.js: 통과
-- node --check apmath/worker-backup/worker/helpers/time.js: 통과
-- node --check apmath/js/core.js: 통과
-- node --check apmath/js/wangji-foundation.js: 통과
-- node --check apmath/js/report.js: 통과
-- git diff --name-only 결과: 저장소 전체 기준으로 작업 전부터 다수의 기존 변경 파일이 존재함. 작업 범위 직접 확인 기준으로는 CODEX_TASK.md, apmath/worker-backup/worker/index.js가 diff에 표시되었고, `apmath/worker-backup/worker/routes/reports-ai.js`는 신규 untracked 파일로 `git status --short`에서 확인됨
-- UI 파일 변경 여부: 이번 작업으로 인한 UI 파일 변경 없음
-- schema/migration 변경 여부: 이번 작업으로 인한 schema/migration 변경 없음
+- `node --check apmath/worker-backup/worker/index.js` 통과
+- `node --check apmath/worker-backup/worker/routes/check-omr.js` 통과
+- `node --check apmath/worker-backup/worker/routes/reports-ai.js` 통과
+- `node --check apmath/worker-backup/worker/routes/student-portal.js` 통과
+- `node --check apmath/worker-backup/worker/routes/exams.js` 통과
+- `node --check apmath/worker-backup/worker/routes/attendance-homework.js` 통과
+- `rg -n "\\bteacher\\b" apmath/worker-backup/worker/routes/check-omr.js` 결과:
+- `24:async function handleQrClasses(request, env, teacher, url) {`
+- `25:  const currentTeacher = teacher || await verifyAuth(request, env);`
+- `45:export async function handleCheckOmr(request, env, teacher, path, url) {`
+- `97:    return handleQrClasses(request, env, teacher, url);`
+- `git diff --name-only -- apmath/worker-backup/worker/routes/check-omr.js apmath/worker-backup/worker/index.js CODEX_RESULT.md CODEX_TASK.md` 결과:
+- `CODEX_RESULT.md`
+- `CODEX_TASK.md`
+- `apmath/worker-backup/worker/index.js`
 
 ## 4. 결과 요약
-- index.js의 AI 리포트 처리 블록을 routes/reports-ai.js로 분리했다.
-- 분리된 route 목록은 `ai/report-analysis`, `ai/student-report`이다.
-- `report-analysis`의 teacher 인증, `canAccessStudent` 검사, report seed 생성, AI proxy 호출, fallback 응답 구조를 기존과 동일하게 유지했다.
-- `student-report` fallback 메시지 구조도 기존과 동일하게 유지했다.
-- 배포 가능 여부: 이번 작업 자체는 조건 충족. 다만 저장소 전체 워크트리가 이미 크게 dirty하고, 작업 전부터 `apmath/js/core.js`, `apmath/worker-backup/worker/schema.sql` 등 금지 대상 파일도 수정 상태이므로 전체 저장소 상태 기준 즉시 배포 판단은 보수적으로 확인이 필요하다.
+- 장애 원인은 `qr-classes` 처리에서 `teacher` 사용 범위를 구조적으로 고정하지 않아 분리 이후 다시 `teacher is not defined`가 재발할 수 있던 점이다.
+- 수정 방식은 `qr-classes` 전용 helper를 만들고, 내부 인증 객체를 `currentTeacher` 하나로 고정해 bare `teacher` 사용 가능성을 제거하는 방식이다.
+- 로컬 기준 문법 검증은 통과했고, `routes/check-omr.js`의 `teacher` 검색 결과도 안전한 인자 선언/전달부만 남았다. 배포 가능 상태다.
 
 ## 5. 다음 조치
 - Worker 배포
-- report-ai-proxy smoke test
-- 리포트 UI 수동 확인
+- `qr-classes` smoke test
 - 기존 route smoke test
 - 정상 확인 후 커밋/푸시
-- 이후 homework-photo 또는 check/QR/OMR route 분리 여부 결정
