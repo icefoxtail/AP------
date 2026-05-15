@@ -5,6 +5,14 @@
  * Planner Add-on: student_plans / planner_feedback API 추가
  */
 
+import { handleEnrollments } from './routes/enrollments.js';
+import { handleClassTimeSlots } from './routes/class-time-slots.js';
+import { handleTimetableConflicts } from './routes/timetable-conflicts.js';
+import { handleFoundationSync } from './routes/foundation-sync.js';
+import { handleBillingFoundation } from './routes/billing-foundation.js';
+import { handleParentFoundation } from './routes/parent-foundation.js';
+import { handleFoundationLogs } from './routes/foundation-logs.js';
+
 const headers = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
@@ -2413,6 +2421,17 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
           const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
+          const foundationRoute =
+            resource === 'enrollments' ? handleEnrollments :
+            resource === 'class-time-slots' ? handleClassTimeSlots :
+            (resource === 'timetable-conflicts' || resource === 'timetable-conflict-overrides') ? handleTimetableConflicts :
+            resource === 'foundation-sync' ? handleFoundationSync :
+            resource === 'billing-foundation' ? handleBillingFoundation :
+            resource === 'parent-foundation' ? handleParentFoundation :
+            resource === 'foundation-logs' ? handleFoundationLogs :
+            null;
+          const routed = foundationRoute ? await foundationRoute(request, env, teacher, path, url, body) : null;
+          if (routed) return routed;
 
           if (resource === 'foundation-sync') {
             if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);

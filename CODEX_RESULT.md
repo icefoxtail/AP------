@@ -1,60 +1,106 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- apmath/worker-backup/worker/index.js
-- CODEX_RESULT.md
+
+* apmath/worker-backup/worker/index.js
+* apmath/worker-backup/worker/routes/enrollments.js
+* apmath/worker-backup/worker/routes/class-time-slots.js
+* apmath/worker-backup/worker/routes/timetable-conflicts.js
+* apmath/worker-backup/worker/routes/foundation-sync.js
+* apmath/worker-backup/worker/routes/billing-foundation.js
+* apmath/worker-backup/worker/routes/parent-foundation.js
+* apmath/worker-backup/worker/routes/foundation-logs.js
+* apmath/worker-backup/worker/helpers/response.js
+* apmath/worker-backup/worker/helpers/foundation-db.js
+* apmath/worker-backup/worker/helpers/branch.js
+* apmath/worker-backup/worker/helpers/time.js
+* CODEX_RESULT.md
 
 ## 2. 구현 완료 또는 확인 완료
-- teacher 충돌 예외 기준 추가
-  - 중등/중등 동일 선생님 금요일 겹침: middle_friday_combined_or_clinic
-  - 고등/고등 동일 선생님 겹침: high_combined_class
-- 중등 금요일 teacher 충돌 예외 처리 구현
-- 고등 teacher 충돌 합반 예외 처리 구현
-- 중등/고등 혼합 teacher 충돌은 기존처럼 open conflict로 유지
-- student 충돌은 예외 처리하지 않고 기존처럼 open conflict로 유지
-- room 충돌은 예외 처리하지 않고 room_name이 있을 때만 기존처럼 open conflict로 유지
-- scan 응답 보강 완료
-  - 기존 success, conflicts, count 유지
-  - ignored_teacher_conflicts 추가
-  - ignored_teacher_count 추가
-- 기존 open teacher conflict logs 정리 구현
-  - 동일 key의 기존 open teacher log가 ignored 대상이면 severity=info, status=ignored, memo=exception reason으로 갱신
-  - student/room log는 ignored 처리하지 않음
-- UI 파일 변경 없음 확인
-- schema.sql, migrations, timetable.js, core.js 변경 없음 확인
-- /api/foundation-sync/run 실행하지 않음
+
+* routes 폴더 추가
+* helpers 폴더 추가
+* enrollments route 분리
+* class-time-slots route 분리
+* timetable-conflicts route 분리
+* foundation-sync route 분리
+* billing-foundation route 분리
+* parent-foundation route 분리
+* foundation-logs route 분리
+* 공통 helper 분리
+  * response helper
+  * branch helper
+  * foundation DB/권한 helper
+  * time/foundation-sync/timetable conflict helper
+* index.js route 위임 구조 반영
+* 기존 AP Math API는 route 분리 대상에서 제외하고 그대로 유지
+* initial-data 본체 구조는 변경하지 않음
+* schema.sql 변경 없음 확인
+* migrations 변경 없음 확인
+* UI 파일 변경 없음 확인
+* /api/foundation-sync/run 실행하지 않음
+* /api/timetable-conflicts/scan 실행하지 않음
 
 ## 3. 실행 결과
-- node --check apmath/worker-backup/worker/index.js
-  - 통과
-- helper 판정 테스트
-  - middle friday -> middle_friday_combined_or_clinic
-  - middle mon -> 예외 없음
-  - high overlap -> high_combined_class
-  - mixed -> 예외 없음
-- git diff --name-only 결과
-  - CODEX_RESULT.md
-  - CODEX_TASK.md
-  - apmath/worker-backup/worker/index.js
+
+* node --check apmath/worker-backup/worker/index.js: 통과
+* node --check apmath/worker-backup/worker/routes/enrollments.js: 통과
+* node --check apmath/worker-backup/worker/routes/class-time-slots.js: 통과
+* node --check apmath/worker-backup/worker/routes/timetable-conflicts.js: 통과
+* node --check apmath/worker-backup/worker/routes/foundation-sync.js: 통과
+* node --check apmath/worker-backup/worker/routes/billing-foundation.js: 통과
+* node --check apmath/worker-backup/worker/routes/parent-foundation.js: 통과
+* node --check apmath/worker-backup/worker/routes/foundation-logs.js: 통과
+* node --check apmath/worker-backup/worker/helpers/response.js: 통과
+* node --check apmath/worker-backup/worker/helpers/foundation-db.js: 통과
+* node --check apmath/worker-backup/worker/helpers/branch.js: 통과
+* node --check apmath/worker-backup/worker/helpers/time.js: 통과
+* node --check apmath/js/core.js: 통과
+* node --check apmath/js/wangji-foundation.js: 통과
+* git diff --name-only 결과
+  * CODEX_RESULT.md
+  * CODEX_TASK.md
+  * apmath/worker-backup/worker/index.js
+* git status --short 기준 새 파일
+  * apmath/worker-backup/worker/helpers/
+  * apmath/worker-backup/worker/routes/
+* UI 파일 변경 여부
+  * 변경 없음
+* schema/migration 변경 여부
+  * 변경 없음
 
 ## 4. 결과 요약
-- 실제 위험 충돌 판단 기준
-  - student 충돌은 계속 위험 충돌로 기록
-  - room 충돌은 room_name이 있는 경우 계속 위험 충돌로 기록
-  - 중등/고등 혼합 teacher 충돌은 계속 위험 충돌로 기록
-- 현재 teacher 충돌 처리 방식
-  - AP Math 운영상 정상 예외로 확인된 중등 금요일/고등 합반 teacher 충돌은 conflicts 배열에 넣지 않고 ignored_teacher_conflicts에만 포함
-- 배포 가능 여부
-  - 배포 가능
+
+* index.js 감소/정리 효과
+  * foundation 계열 API의 실제 처리 책임을 routes/helpers 파일로 분리하고 index.js는 해당 route로 위임하도록 변경
+* 분리한 route 목록
+  * enrollments
+  * class-time-slots
+  * timetable-conflicts / timetable-conflict-overrides
+  * foundation-sync
+  * billing-foundation
+  * parent-foundation
+  * foundation-logs
+* 기존 기능 영향 여부
+  * 기존 AP Math 본체 API와 initial-data 본체는 그대로 유지
+  * foundation-sync의 sync_time_slots 명시 true 규칙 유지
+  * timetable-conflicts의 ignored_teacher_conflicts 응답 유지
+* 배포 가능 여부
+  * 배포 가능
 
 ## 5. 다음 조치
-- Worker 배포
-- /api/timetable-conflicts/scan 재확인
-- count / ignored_teacher_count 확인
-- 이후 room_name 입력 설계 또는 통합 시간표 UI 설계
+
+* Worker 배포
+* initial-data 확인
+* foundation-sync preview 확인
+* timetable-conflicts scan 확인
+* foundation route smoke test
+* 이후 수납/출납 foundation 0단계 진행
 
 배포 가능:
-- node --check 통과
-- teacher 예외 helper 구현 완료
-- student/room 충돌은 기존처럼 유지
-- UI 파일 변경 없음
+* 모든 node --check 통과
+* index.js route 위임 정상
+* foundation API 분리 완료
+* 기존 initial-data 구조 유지
+* UI 파일 변경 없음
+* DB/schema/migration 변경 없음
