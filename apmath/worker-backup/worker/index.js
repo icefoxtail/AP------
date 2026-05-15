@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AP Math OS v26.1.2 [IRONCLAD - Phase 4/5 FINAL RECOVERY]
  * Cloudflare Worker 통합 API 엔진 - 절대 축약 없음, 모든 기존 API 복구 완료본
  * Phase 4/5 Add-on: class_textbooks / class_daily_records / class_daily_progress API 추가
@@ -10,6 +10,7 @@ import { handleClassTimeSlots } from './routes/class-time-slots.js';
 import { handleTimetableConflicts } from './routes/timetable-conflicts.js';
 import { handleFoundationSync } from './routes/foundation-sync.js';
 import { handleBillingFoundation } from './routes/billing-foundation.js';
+import { handleBillingAccountingFoundation } from './routes/billing-accounting-foundation.js';
 import { handleParentFoundation } from './routes/parent-foundation.js';
 import { handleFoundationLogs } from './routes/foundation-logs.js';
 import { handleStudents } from './routes/students.js';
@@ -270,6 +271,14 @@ async function loadFoundationInitialData(env, teacher) {
     payment_items: [],
     billing_adjustments: [],
     billing_runs: [],
+    payment_methods: [],
+    payment_transactions: [],
+    cashbook_entries: [],
+    refund_records: [],
+    carryover_records: [],
+    billing_policy_rules: [],
+    accounting_daily_summaries: [],
+    accounting_monthly_summaries: [],
     parent_contacts: [],
     message_logs: [],
     student_status_history: [],
@@ -288,6 +297,14 @@ async function loadFoundationInitialData(env, teacher) {
       safeAll(env, 'SELECT * FROM payment_items ORDER BY created_at DESC LIMIT 2000'),
       safeAll(env, 'SELECT * FROM billing_adjustments ORDER BY created_at DESC LIMIT 1000'),
       safeAll(env, 'SELECT * FROM billing_runs ORDER BY year DESC, month DESC, created_at DESC'),
+      safeAll(env, 'SELECT * FROM payment_methods ORDER BY sort_order ASC, method_key ASC'),
+      safeAll(env, 'SELECT * FROM payment_transactions ORDER BY transaction_date DESC, created_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM cashbook_entries ORDER BY entry_date DESC, created_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM refund_records ORDER BY refund_date DESC, created_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM carryover_records ORDER BY created_at DESC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM billing_policy_rules ORDER BY branch ASC, rule_type ASC, rule_key ASC'),
+      safeAll(env, 'SELECT * FROM accounting_daily_summaries ORDER BY summary_date DESC, branch ASC LIMIT 1000'),
+      safeAll(env, 'SELECT * FROM accounting_monthly_summaries ORDER BY year DESC, month DESC, branch ASC LIMIT 1000'),
       safeAll(env, 'SELECT * FROM parent_contacts ORDER BY created_at DESC'),
       safeAll(env, 'SELECT * FROM message_logs ORDER BY created_at DESC LIMIT 1000'),
       safeAll(env, 'SELECT * FROM student_status_history ORDER BY changed_at DESC LIMIT 1000'),
@@ -2424,7 +2441,7 @@ export default {
         const resource = path[1];
         const id = path[2];
 
-        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'billing-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync'].includes(resource)) {
+        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync'].includes(resource)) {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
           const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
@@ -2434,6 +2451,7 @@ export default {
             (resource === 'timetable-conflicts' || resource === 'timetable-conflict-overrides') ? handleTimetableConflicts :
             resource === 'foundation-sync' ? handleFoundationSync :
             resource === 'billing-foundation' ? handleBillingFoundation :
+            resource === 'billing-accounting-foundation' ? handleBillingAccountingFoundation :
             resource === 'parent-foundation' ? handleParentFoundation :
             resource === 'foundation-logs' ? handleFoundationLogs :
             null;
