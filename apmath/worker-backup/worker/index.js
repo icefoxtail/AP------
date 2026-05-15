@@ -22,6 +22,7 @@ import { handleOperations } from './routes/operations.js';
 import { handleClassDaily } from './routes/class-daily.js';
 import { handleStudentPortal } from './routes/student-portal.js';
 import { handleReportsAi } from './routes/reports-ai.js';
+import { handleCheckOmr } from './routes/check-omr.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -2746,71 +2747,13 @@ export default {
           return new Response(JSON.stringify({ success: true }), { headers });
         }
 
-        // --- 2. 학생용 QR 인증 및 초기화 (check-pin / check-init) ---
-        if (resource === 'check-pin' && method === 'POST') {
-          const { student_id, pin } = await request.json();
-          const student = await env.DB.prepare('SELECT student_pin FROM students WHERE id = ?').bind(student_id).first();
-          if (!student?.student_pin || student.student_pin === String(pin)) {
-            return new Response(JSON.stringify({ success: true }), { headers });
-          }
-          return new Response(JSON.stringify({ success: false, message: 'PIN 번호가 일치하지 않습니다.' }), { status: 401, headers });
-        }
-
-        if (resource === 'check-init' && method === 'GET') {
-          const classId = url.searchParams.get('class');
-          const examTitle = url.searchParams.get('exam') || '';
-          const examDate = url.searchParams.get('date') || '';
-          const qCount = parseInt(url.searchParams.get('q')) || 0;
-          
-          const archiveFile = 
-            url.searchParams.get('archiveFile') || 
-            url.searchParams.get('archive_file') || 
-            url.searchParams.get('archive') || 
-            '';
-
-          if (!classId) return new Response(JSON.stringify({ error: 'class required', students: [], submitted_sessions: [] }), { status: 400, headers });
-
-          const todayKST = todayKstDateString();
-          const targetDate = examDate || todayKST;
-
-          const [clsInfo, stds, sessions] = await Promise.all([
-            env.DB.prepare('SELECT name FROM classes WHERE id = ?').bind(classId).first(),
-            env.DB.prepare("SELECT id, name, school_name, grade, student_pin FROM students WHERE id IN (SELECT student_id FROM class_students WHERE class_id = ?) AND status = '재원'").bind(classId).all(),
-            env.DB.prepare("SELECT id, student_id, exam_title, exam_date, score FROM exam_sessions WHERE exam_title = ? AND exam_date = ? AND student_id IN (SELECT student_id FROM class_students WHERE class_id = ?)").bind(examTitle, targetDate, classId).all()
-          ]);
-
-          return new Response(JSON.stringify({ 
-            success: true,
-            class_id: classId, 
-            class_name: clsInfo?.name || '알 수 없는 반', 
-            exam_title: examTitle, 
-            exam_date: targetDate,
-            question_count: qCount,
-            archive_file: archiveFile,
-            students: stds.results, 
-            submitted_sessions: sessions.results 
-          }), { headers });
-        }
-
-        // --- 3. QR 출제용 반 목록 ---
-        if (resource === 'qr-classes' && method === 'GET') {
-          const teacher = await verifyAuth(request, env);
-          if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
-
-          let query, params = [];
-          if (isAdminUser(teacher)) {
-            query = `SELECT id, name, grade, teacher_name FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name`;
-          } else {
-            query = `
-              SELECT c.id, c.name, c.grade, c.teacher_name 
-              FROM classes c
-              JOIN teacher_classes tc ON tc.class_id = c.id
-              WHERE tc.teacher_id = ? AND (c.is_active != 0 OR c.is_active IS NULL)
-              ORDER BY c.grade, c.name`;
-            params.push(teacher.id);
-          }
-          const res = await env.DB.prepare(query).bind(...params).all();
-          return new Response(JSON.stringify({ success: true, classes: res.results }), { headers });
+        if (
+          resource === 'check-pin' ||
+          resource === 'check-init' ||
+          resource === 'qr-classes'
+        ) {
+          const routed = await handleCheckOmr(request, env, null, path, url);
+          if (routed) return routed;
         }
 
         // --- 4. 메인 데이터 로드 (initial-data) ---
