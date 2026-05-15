@@ -39,14 +39,6 @@
     const post = (path, body) => call('POST', path, body);
     const patch = (path, body) => call('PATCH', path, body);
 
-    function statusLabel(value) {
-        const map = {
-            active: '사용 중',
-            inactive: '사용 안 함',
-            deleted: '삭제됨'
-        };
-        return map[String(value || '').trim()] || String(value || '');
-    }
     function materialTypeLabel(value) {
         const map = {
             textbook: '교과서',
@@ -149,7 +141,7 @@
             ['assign', '반 배정'],
             ['overview', '제출 확인'],
             ['wrongs', '오답 확인'],
-            ['review', '복습 출력']
+            ['review', '오답번호 출력']
         ];
         return `<div class="smw-tabs">${items.map(([key, label]) => `<button class="smw-tab ${st().tab === key ? 'active' : ''}" onclick="setStudyMaterialWrongTab('${key}')">${label}</button>`).join('')}</div>`;
     }
@@ -167,7 +159,7 @@
                 <div class="smw-field"><label>끝번호</label><input id="smw-end" type="number" inputmode="numeric"></div>
             </div>
             <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterial()">등록</button><button class="btn" onclick="loadStudyMaterialWrongData()">새로고침</button></div>
-            <div class="smw-list">${(st().materials || []).map(m => `<div class="smw-row"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')} · ${h(statusLabel(m.status || 'active'))}</div><div class="smw-actions" style="margin-top:8px;"><button class="btn" onclick="disableStudyMaterial('${h(m.id)}')">비활성화</button></div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 자료가 없습니다.</div></div>'}</div>
+            <div class="smw-list">${(st().materials || []).map(m => `<div class="smw-row"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 자료가 없습니다.</div></div>'}</div>
         `;
     }
 
@@ -194,7 +186,7 @@
     }
 
     function assignmentRows() {
-        return (st().assignments || []).map(a => `<div class="smw-row"><div class="smw-title">${h(a.assignment_title || a.material_title)}</div><div class="smw-meta">${h(a.class_name || a.class_id)} · ${h(a.material_title || a.material_id)} · ${h(a.assigned_date)} · ${h(statusLabel(a.status || 'active'))}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">열린 자료가 없습니다.</div></div>';
+        return (st().assignments || []).map(a => `<div class="smw-row"><div class="smw-title">${h(a.assignment_title || a.material_title)}</div><div class="smw-meta">${h(a.class_name || a.class_id)} · ${h(a.material_title || a.material_id)} · ${h(a.assigned_date)}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">열린 자료가 없습니다.</div></div>';
     }
 
     function overviewForm() {
@@ -232,7 +224,7 @@
         const filters = st().reviewFilters;
         return `
             ${scopeControls('review', filters)}
-            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialReview()">복습지 보기</button></div>
+            <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialReview()">오답번호 보기</button></div>
             <div class="smw-output">${renderReviewText()}</div>
         `;
     }
@@ -300,7 +292,7 @@
         const blocks = [...byStudent.entries()].map(([name, list]) => {
             const title = list[0]?.material_title || '수업자료';
             const lines = list.map(r => `- ${r.question_no}번${r.unit_text ? ` (${r.unit_text})` : ''}`).join('\n');
-            return `${name} 복습지\n\n${title}\n${lines}\n\n복습 방법\n1. 위 번호만 다시 풀기\n2. 풀이 과정을 표시하기\n3. 다음 수업 때 확인`;
+            return `${name} 오답번호\n\n${title}\n${lines}\n\n확인 방법\n1. 위 번호만 다시 풀기\n2. 풀이 과정을 표시하기\n3. 다음 수업 때 확인`;
         });
         return [renderScopeText(data.scope), '', ...(blocks.length ? blocks : ['결과가 없습니다.'])].join('\n');
     }
@@ -358,7 +350,7 @@
     };
     window.disableStudyMaterial = async function (id) {
         await patch(`study-materials/${encodeURIComponent(id)}/disable`, {});
-        notify('비활성화했습니다.');
+        notify('처리했습니다.');
         await loadStudyMaterialWrongData();
     };
     window.importStudyMaterialRanges = async function () {
