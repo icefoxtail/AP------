@@ -2665,23 +2665,11 @@ export default {
 
         // --- 6. 출결 및 숙제 ---
 
-
-
-
-
-
-
-
-
-
-
-
         // --- 6B. 숙제 사진 확인 QR 시스템 ---
         if (resource === 'homework-photo') {
           const routed = await handleHomeworkPhoto(request, env, null, path, url);
           if (routed) return routed;
         }
-
 
         if (resource === 'student-portal') {
           const routed = await handleStudentPortal(request, env, null, path, url);
@@ -2717,20 +2705,6 @@ export default {
           const routed = await handleClassDaily(request, env, null, path, url);
           if (routed) return routed;
         }
-
-        // --- 10. 반 관리 (classes) ---
-
-
-        // --- 11. 선생님 및 담당반 관리 (Staff Only) ---
-
-
-
-
-        // --- 11b. 선생님 계정 생성 (Staff Only) ---
-
-
-        // --- 11c. 선생님 정보 수정 / 비밀번호 초기화 (Staff Only) ---
-
 
         if (resource === 'ai') {
           const routed = await handleReportsAi(request, env, null, path, url);
