@@ -1,519 +1,457 @@
+````bash
 cat > CODEX_TASK.md <<'EOF'
-# CODEX_TASK.md
+# CODEX_TASK
 
-## 작업명
-Worker route/helper 분리 10단계 — homework-photo 계열 API 분리
+## 0. 작업명
+AP Math OS / 왕지교육 Worker 최종 단계 — index.js 남은 legacy 블록 재평가 및 최종 정리
 
-## 목표
-Worker index.js 비대화 정리 작업을 계속한다.
+## 1. 작업 목표
+현재까지 route 분리가 완료된 Worker에서 `apmath/worker-backup/worker/index.js`에 남아 있는 API 본문을 최종 재평가한다.
 
-이번 10단계에서는 homework-photo 계열 API만 route 파일로 분리한다.
+목표는 다음 4가지다.
 
-이번 작업은 기능 추가가 아니다.
+1. `index.js`에 남은 API 블록을 전체 스캔한다.
+2. 이미 route 파일로 분리된 기능의 legacy fallback 본문이 남아 있으면 제거한다.
+3. 아직 분리하지 않는 것이 안전한 블록은 명확히 남긴다.
+4. 최종적으로 `index.js`를 “공통 helper + route 위임 + 남겨야 하는 핵심 블록” 중심으로 정리한다.
 
-목표:
-- index.js 비대화 완화
-- homework-photo 관련 API를 route 파일로 이동
-- 기존 숙제사진 배정/제출/조회/취소/R2 흐름 유지
-- 기존 API 응답과 동작 유지
-- 기존 UI 변경 없음
-- DB/schema/migration 변경 없음
+## 2. 현재 완료된 route 분리 현황
+아래 계열은 이미 route 파일로 분리된 상태다.
 
-## 실제 작업 기준
-현재 프로젝트 루트 기준으로 작업한다.
+- foundation 계열
+- students/classes/teachers 계열
+- attendance/homework 계열
+- exams 계열
+- operations 계열
+- class-daily 계열
+- student-portal 계열
+- reports-ai 계열
+- check-omr 계열
+- homework-photo 계열
+- planner 계열
 
-주요 파일:
-- apmath/worker-backup/worker/index.js
-- apmath/worker-backup/worker/routes/
-- apmath/worker-backup/worker/helpers/
-- CODEX_RESULT.md
+따라서 위 계열의 legacy API 본문이 `index.js`에 중복으로 남아 있으면 제거 대상이다.
 
-## 절대 금지
-- index.js 전체 재작성 금지
-- 기존 initial-data 본체 분리 금지
-- 기존 initial-data 응답 구조 변경 금지
-- 기존 API 응답 필드 삭제 금지
-- 기존 DB 테이블/컬럼 변경 금지
-- DB migration 추가 금지
-- schema.sql 수정 금지
+## 3. 작업 대상 파일
+프로젝트 루트 기준:
+
+- `apmath/worker-backup/worker/index.js`
+- 필요 시 `apmath/worker-backup/worker/CODEX_RESULT.md`
+- 필요 시 현재 route 파일은 읽기만 한다.
+
+## 4. 절대 금지
+아래 항목은 절대 하지 않는다.
+
 - UI 파일 수정 금지
-- apmath/student/index.html 수정 금지
-- apmath/js/report.js 수정 금지
-- apmath/js/dashboard.js 수정 금지
-- apmath/js/timetable.js 수정 금지
-- apmath/js/student.js 수정 금지
-- apmath/js/management.js 수정 금지
-- apmath/js/core.js 수정 금지
-- 기존 분리 route 수정 금지
-- foundation routes 수정 금지
-- billing-accounting-foundation 수정 금지
-- student-portal API 수정 금지
-- reports-ai API 수정 금지
-- check-omr API 수정 금지
-- archive API 분리 금지
-- planner API 분리 금지
-- 수납·출납 foundation 추가 금지
-- R2 bucket 이름 변경 금지
-- R2 object key 구조 변경 금지
-- 기존 학생 제출 토큰 구조 변경 금지
-- 숙제 제출 완료/취소 상태 정책 변경 금지
+- DB schema 수정 금지
+- migration 추가 금지
+- route 파일 동작 변경 금지
+- route 파일 리팩터링 금지
+- API 응답 구조 변경 금지
+- 인증 정책 변경 금지
+- 학생 포털 기능 변경 금지
+- 플래너 기능 변경 금지
+- OMR 기능 변경 금지
+- 시험지를 학생이 직접 여는 기능 추가 금지
+- OMR 수정/재제출/재입력 기능 추가 금지
+- 관리자/원장 대시보드 기능 추가 금지
+- 수납/출납 실제 운영 기능 추가 금지
+- 새로운 기능 선행 구현 금지
+- 추정으로 삭제 금지
+- 확실히 route 위임된 legacy 본문이 아니면 삭제 금지
+- git add . 금지
 
-## homework-photo 절대 원칙
-- 기존 숙제사진 배정 생성 흐름 유지
-- 기존 학생 제출 링크/토큰 흐름 유지
-- 기존 R2 업로드/다운로드/삭제 흐름 유지
-- 기존 제출 상태값 유지
-- 기존 숙제 완료 연동이 있으면 그대로 유지
-- 학생이 다른 학생 제출물에 접근할 수 없게 기존 제한 유지
-- 선생님/원장 조회 권한 기존 방식 유지
-- 실제 파일 삭제/정리 정책 변경 금지
-- 24시간 삭제/보관 정책 관련 코드가 있으면 그대로 유지
-- UI 노출 방식 변경 금지
+## 5. 먼저 해야 할 확인
+작업 시작 전에 반드시 현재 `index.js`와 route 목록을 확인한다.
 
-## 허용 범위
-- homework-photo route 파일 추가
-- 기존 index.js의 homework-photo 관련 API 처리 로직을 route 파일로 이동
-- index.js에서 새 route로 위임하도록 최소 수정
-- 필요한 공통 helper 추가 또는 기존 helper 재사용
-- CODEX_RESULT.md 작성
+```powershell
+cd "$env:USERPROFILE\Desktop\AP------"
 
----
+Get-ChildItem apmath\worker-backup\worker\routes -Filter *.js | Select-Object Name
+node --check apmath\worker-backup\worker\index.js
+Get-Content apmath\worker-backup\worker\index.js | Measure-Object -Line
+````
 
-## 1. 이번 분리 대상
+이후 `index.js`에서 아래 패턴을 검색한다.
 
-이번 작업에서 분리할 대상은 homework-photo 계열 API만이다.
+```powershell
+Select-String -Path apmath\worker-backup\worker\index.js -Pattern "resource ===|path\[|student_plans|planner_feedback|homework_photo|exam_sessions|class_daily|operation_memos|attendance-history|attendance-month|students|classes|teachers|check-pin|check-init|qr-classes|ai/report|billing-accounting|foundation"
+```
 
-분리 대상 후보 API:
-- /api/homework-photo
-- /api/homework-photo/assignments
-- /api/homework-photo/submissions
-- /api/homework-photo/files
-- /api/homework-photo/student
-- /api/homework-photo/submit
-- /api/homework-photo/cancel
-- /api/homework-photo/delete
-- /api/homework-photo/download
-- index.js 안에서 homework_photo_assignments / homework_photo_submissions / homework_photo_files / R2 관련으로 묶인 모든 API
+## 6. index.js에 남겨도 되는 블록
 
-현재 index.js에서 실제 resource 이름이 다르면 실제 코드 기준으로 동일 기능만 분리한다.
+아래는 마지막까지 `index.js`에 남겨도 된다.
 
-권장 route 파일:
-- apmath/worker-backup/worker/routes/homework-photo.js
+### 6-1. 공통 상수 / 공통 helper
 
-담당 기능:
-- 숙제사진 배정 생성/조회
-- 학생별 제출 슬롯 생성/조회
-- 학생 제출 링크/토큰 검증
-- 학생 사진 업로드
-- 제출 파일 조회
-- 제출 취소/삭제
-- R2 파일 저장/조회/삭제
-- 숙제 완료 상태 연동이 기존에 있으면 그대로 유지
+* headers
+* sha256hex
+* verifyAuth
+* canAccessStudent
+* canAccessClass
+* isAdminUser
+* isStaffUser
+* isTeacherUser
+* normalizeTeacherName
+* normalizeTeacherAlias
+* findTeacherByAlias
+* repairTeacherClassMappings
+* getTeacherClassIds
+* canAccessStudentRecord
+* generateStudentPin
+* todayKstDateString
+* normalizeTargetScore
+* normalizeHighSubjects
 
-## 1-1. 이번에 분리하지 않을 것
+단, 실제 route 파일에서 helper import 방식으로 이미 완전히 대체되어 있고 `index.js`에서 더 이상 필요 없는 helper는 삭제 후보로 표시만 한다.
+이번 작업에서 helper 대량 삭제는 하지 않는다.
 
-아래는 이번 작업에서 절대 분리하지 않는다.
+### 6-2. auth
 
-- /api/student-portal
-- /api/check-init
-- /api/check-pin
-- /api/qr-classes
-- /api/report-ai-proxy
-- /api/ai/report-analysis
-- /api/ai/student-report
-- archive 관련 API
-- planner 관련 API
-- 수납·출납 foundation API
-- class-daily API
-- attendance/homework 일반 API
-- exam-sessions API
+아직 별도 분리하지 않았다면 남긴다.
 
-주의:
-- attendance-homework route의 일반 homework 상태 저장 API는 수정하지 않는다.
-- homework-photo route는 사진 제출 전용 API만 담당한다.
-- 학생 포털 route는 수정하지 않는다.
-- check/QR/OMR route는 수정하지 않는다.
+* `/api/auth/login`
+* `/api/auth/change-password`
 
----
+### 6-3. initial-data
 
-## 2. route 파일 책임
+아직 분리하지 않는다.
+`initial-data`는 크고 핵심이므로 이번 최종 정리에서는 유지한다.
 
-## 2-1. routes/homework-photo.js
+* `/api/initial-data`
 
-export 함수명 권장:
+### 6-4. 루트/기본 응답
 
-export async function handleHomeworkPhoto(request, env, teacher, path, url) { ... }
+* OPTIONS
+* Not Found
+* try/catch
+* 기본 Response
+* route 위임부
 
-또는 현재 route 스타일에 맞춘다.
+## 7. 제거 대상 판정 기준
 
-담당 resource:
-- homework-photo
-- 실제 index.js에서 homework-photo 관련으로 처리하던 resource들
+아래 기준을 모두 만족할 때만 삭제한다.
 
-반드시 유지할 기존 동작:
+1. 같은 resource가 `index.js` 상단에서 route handler로 위임되어 있다.
+2. 해당 route 파일 안에 실제 구현 본문이 존재한다.
+3. `index.js` 안에 남은 본문이 동일 API의 legacy fallback이다.
+4. 삭제해도 `node --check`가 통과한다.
+5. 삭제 후 route 위임부가 먼저 실행되어 기존 API가 계속 처리된다.
 
-### 배정 생성/조회
-- teacher 인증 필요 여부 기존 방식 유지
-- admin/teacher 접근 범위 기존 방식 유지
-- class_id 접근권한 canAccessClass 기존 방식 유지
-- 학생 슬롯 자동 생성 기존 방식 유지
-- due_date 기본 계산 방식이 있으면 그대로 유지
-- 응답 구조 유지
+## 8. route 위임부 최종 검수
 
-### 학생 제출 링크/토큰
-- 기존 토큰 검증 방식 유지
-- 학생 본인 제출 슬롯만 접근 가능
-- 토큰 없는 접근 차단 기존 방식 유지
-- 만료/취소/제출완료 상태 처리 기존 방식 유지
-- 응답 구조 유지
+`index.js` 안에 아래 route 위임부가 모두 존재하는지 확인한다.
 
-### 사진 업로드
-- 기존 multipart/form-data 또는 base64 처리 방식 유지
-- 기존 파일 크기/확장자/mime 제한 유지
-- 기존 R2 object key 생성 방식 유지
-- 기존 homework_photo_files insert 방식 유지
-- 제출 상태 변경 기존 방식 유지
-- 응답 구조 유지
+예상 계열:
 
-### 파일 조회/다운로드
-- 기존 R2 get 방식 유지
-- 기존 권한 확인 유지
-- 기존 content-type / filename 처리 유지
-- 학생이 타 학생 파일에 접근하지 못하도록 기존 제한 유지
+* `handleFoundationRoutes`
+* `handleStudentsRoutes`
+* `handleClassesRoutes`
+* `handleTeachersRoutes`
+* `handleAttendanceHomework`
+* `handleExams`
+* `handleOperations`
+* `handleClassDaily`
+* `handleStudentPortal`
+* `handleReportsAi`
+* `handleCheckOmr`
+* `handleHomeworkPhoto`
+* `handlePlanner`
+* `handleBillingAccountingFoundation`
+* 기타 현재 실제 route 파일에 대응하는 handler
 
-### 삭제/취소
-- 기존 soft delete/hard delete 방식 유지
-- 기존 R2 delete 호출이 있으면 그대로 유지
-- homework_photo_files / submissions 상태 변경 방식 유지
-- 응답 구조 유지
-
-### 숙제 완료 연동
-- 사진 제출 완료 시 일반 homework 상태를 완료로 바꾸는 기존 로직이 있으면 그대로 유지
-- 연동이 없으면 새로 만들지 않는다
-- 기존 homework-batch / PATCH homework route는 수정하지 않는다
-
----
-
-## 3. index.js 수정 기준
-
-index.js에는 import 추가:
-
-import { handleHomeworkPhoto } from './routes/homework-photo.js';
-
-기존 API routing block에서 Not Found보다 앞에 아래 위임을 추가한다.
-
-개념:
-
-if (resource === 'homework-photo') {
-  const response = await handleHomeworkPhoto(request, env, teacher, path, url);
-  if (response) return response;
-}
+이름은 실제 파일 기준으로 확인한다.
 
 주의:
-- 실제 resource 이름은 index.js 기준으로 맞춘다.
-- 존재하지 않는 resource를 억지로 만들지 않는다.
-- 기존 분리 route 패턴과 맞춘다.
-- Not Found보다 앞에 있어야 한다.
-- initial-data 본체는 건드리지 않는다.
-- student-portal/check-omr/attendance-homework route보다 순서를 잘못 바꿔 기존 흐름을 깨지 않는다.
 
----
+* 없는 handler 이름을 새로 만들지 않는다.
+* route 파일 export 이름과 import 이름이 정확히 일치해야 한다.
+* 위임부에서 스코프에 없는 `teacher` 변수를 넘기지 않는다.
+* 필요한 경우 handler 내부에서 `verifyAuth(request, env)`를 호출하게 한다.
+* `teacher is not defined` 재발 금지.
 
-## 4. helper 처리
+## 9. 중복 제거 우선순위
 
-homework-photo.js에서 필요한 함수:
-- verifyAuth
-- isAdminUser
-- canAccessStudent
-- canAccessClass
-- headers 또는 json response helper
-- makeId
-- todayKstDateString
-- normalizeText
-- R2 put/get/delete helper가 있으면 기존 방식 유지
+아래 순서로 제거한다.
 
-현재 helpers/admin-db.js 또는 기존 helper에 필요한 함수가 있으면 재사용한다.
+### 9-1. 이미 분리 완료된 명확한 legacy 본문 제거
 
-주의:
-- verifyAuth, canAccessStudent, canAccessClass는 index.js의 기존 레거시 API도 계속 사용한다.
-- helper 이동으로 index.js가 깨지면 실패다.
-- 학생용 토큰 검증에 admin/teacher 인증을 억지로 적용하지 않는다.
-- 확실하지 않으면 기존 helper는 index.js에 남기고 route에서는 필요한 최소 helper만 가져간다.
-- 중복 제거보다 안전한 동작 유지가 우선이다.
+다음 resource 본문이 `index.js`에 남아 있으면 route 파일 존재 확인 후 제거한다.
 
----
+* `students`
+* `classes`
+* `class-students`
+* `teachers`
+* `teacher-classes`
+* `attendance-history`
+* `attendance-month`
+* `attendance-batch`
+* `homework-batch`
+* `attendance` PATCH
+* `homework` PATCH
+* `exam-blueprints`
+* `class-exam-assignments`
+* `exam-sessions`
+* `bulk-omr`
+* `wrong_answers`
+* `consultations`
+* `operation-memos`
+* `exam-schedules`
+* `academy-schedules`
+* `school-exam-records`
+* `daily-journals`
+* `class-textbooks`
+* `class-daily-records`
+* `class-daily-progress`
+* `student-portal`
+* `check-pin`
+* `check-init`
+* `qr-classes`
+* `homework-photo`
+* `planner-auth-by-name`
+* `planner-auth`
+* `planner`
+* `student_plans`
+* `planner_feedback`
+* `billing-accounting-foundation`
+* `foundation-sync`
+* `timetable-conflicts`
+* `class-time-slots`
+* `student-enrollments`
+* 기타 route 파일에 이미 분리된 foundation 계열
 
-## 5. 기존 코드 제거 기준
+### 9-2. 안전하지 않은 블록은 유지
 
-index.js에서 homework-photo 관련 기존 블록은 route로 옮긴 뒤 제거하거나 위임 뒤 도달하지 않게 한다.
+다음은 route 대응 여부가 불명확하면 삭제하지 않는다.
 
-대상 블록 예시:
-- if (resource === 'homework-photo') { ... }
-- if (pathname.includes('homework-photo')) { ... }
-- homework_photo_assignments 관련 API 블록
-- homework_photo_submissions 관련 API 블록
-- homework_photo_files 관련 API 블록
-- R2 homework photo 파일 처리 블록
+* `initial-data`
+* `auth`
+* AI prompt/helper 공통부 중 route가 import해서 쓰지 않는 것
+* 아직 route 파일이 없는 단독 API
+* 주석만 보고 추정되는 블록
+* 현재 smoke 대상이 아닌데 영향 범위가 큰 블록
 
-주의:
-- 기존 로직을 route 파일에 옮길 때 SQL, 응답 구조, status code를 바꾸지 않는다.
-- route 파일로 옮긴 뒤 index.js에 중복으로 남아도 당장은 동작할 수 있으나 정리 효과가 떨어진다.
-- 가능하면 중복 제거한다.
-- 단, attendance-homework/student-portal/check-omr/report/archive/planner 관련 블록까지 같이 삭제하지 않는다.
+## 10. 삭제 후 필수 검색
 
----
+정리 후 아래 검색 결과를 확인한다.
 
-## 6. R2 관련 주의
+```powershell
+Select-String -Path apmath\worker-backup\worker\index.js -Pattern "student_plans|planner_feedback|homework_photo_assignments|homework_photo_submissions|resource === 'students'|resource === 'classes'|resource === 'attendance-history'|resource === 'exam-sessions'|resource === 'student-portal'|resource === 'planner-auth-by-name'|resource === 'planner-auth'|resource === 'planner'"
+```
 
-Cloudflare Worker binding 이름을 반드시 기존 코드 기준으로 유지한다.
+기대:
 
-확인할 것:
-- env.R2
-- env.BUCKET
-- env.HOMEWORK_PHOTO_BUCKET
-- 실제 사용 중인 binding 이름
+* route 위임 조건 외 legacy 본문이 없어야 한다.
+* 단, 문자열이 helper, import, 위임부, comments에만 남는 것은 허용한다.
+* `initial-data` 내부에서 필요한 테이블명 문자열은 허용한다.
 
-기존 binding 이름을 바꾸지 않는다.
+## 11. 문법 검증
 
-R2 object key 생성 방식도 기존과 동일하게 유지한다.
+수정 후 반드시 실행한다.
 
-예:
-- assignment_id
-- submission_id
-- student_id
-- filename
-- created_at
-등을 섞어 만든 기존 key가 있으면 그대로 유지.
+```powershell
+cd "$env:USERPROFILE\Desktop\AP------"
 
-주의:
-- 새 bucket 만들지 않는다.
-- wrangler.toml 수정 금지.
-- R2 public URL 구조 변경 금지.
-- signed URL 구조가 있으면 변경 금지.
+node --check apmath\worker-backup\worker\index.js
+Get-ChildItem apmath\worker-backup\worker\routes -Filter *.js | ForEach-Object { node --check $_.FullName }
+Get-ChildItem apmath\worker-backup\worker\helpers -Filter *.js | ForEach-Object { node --check $_.FullName }
+```
 
----
+## 12. 배포
 
-## 7. 검증 명령
+문법 검증이 모두 PASS이면 배포한다.
 
-반드시 실행한다.
+```powershell
+cd "$env:USERPROFILE\Desktop\AP------\apmath\worker-backup\worker"
+npx wrangler deploy
+```
 
-node --check apmath/worker-backup/worker/index.js
-node --check apmath/worker-backup/worker/routes/homework-photo.js
+## 13. smoke test
 
-기존 route 안전 확인:
+배포 후 아래를 확인한다.
 
-node --check apmath/worker-backup/worker/routes/check-omr.js
-node --check apmath/worker-backup/worker/routes/reports-ai.js
-node --check apmath/worker-backup/worker/routes/student-portal.js
-node --check apmath/worker-backup/worker/routes/billing-accounting-foundation.js
-node --check apmath/worker-backup/worker/routes/class-daily.js
-node --check apmath/worker-backup/worker/routes/operations.js
-node --check apmath/worker-backup/worker/routes/exams.js
-node --check apmath/worker-backup/worker/routes/attendance-homework.js
-node --check apmath/worker-backup/worker/routes/students.js
-node --check apmath/worker-backup/worker/routes/classes.js
-node --check apmath/worker-backup/worker/routes/teachers.js
-node --check apmath/worker-backup/worker/routes/enrollments.js
-node --check apmath/worker-backup/worker/routes/class-time-slots.js
-node --check apmath/worker-backup/worker/routes/timetable-conflicts.js
-node --check apmath/worker-backup/worker/routes/foundation-sync.js
-node --check apmath/worker-backup/worker/routes/billing-foundation.js
-node --check apmath/worker-backup/worker/routes/parent-foundation.js
-node --check apmath/worker-backup/worker/routes/foundation-logs.js
+기본 인증:
 
-helper 안전 확인:
+```powershell
+$pair = "admin:admin1234"
+$bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
+$basic = [Convert]::ToBase64String($bytes)
+```
 
-node --check apmath/worker-backup/worker/helpers/admin-db.js
-node --check apmath/worker-backup/worker/helpers/response.js
-node --check apmath/worker-backup/worker/helpers/foundation-db.js
-node --check apmath/worker-backup/worker/helpers/branch.js
-node --check apmath/worker-backup/worker/helpers/time.js
+### 13-1. initial-data 생존 확인
 
-프론트 안전 확인:
-
-node --check apmath/js/core.js
-node --check apmath/js/wangji-foundation.js
-node --check apmath/js/report.js
-
-학생 포털 프론트는 수정하지 말고, HTML 파일은 node --check 대상이 아니면 생략한다.
-apmath/student/index.html 수정 여부만 확인한다.
-
-변경 파일 확인:
-
-git diff --name-only
-
-정상 변경 파일:
-- apmath/worker-backup/worker/index.js
-- apmath/worker-backup/worker/routes/homework-photo.js
-- 필요 시 apmath/worker-backup/worker/helpers/*.js
-- CODEX_RESULT.md
-- CODEX_TASK.md는 현재 지시 파일 갱신 때문에 포함될 수 있음
-
-아래 파일이 변경되면 실패:
-- apmath/student/index.html
-- apmath/js/report.js
-- apmath/js/dashboard.js
-- apmath/js/timetable.js
-- apmath/js/student.js
-- apmath/js/management.js
-- apmath/js/core.js
-- apmath/index.html
-- apmath/worker-backup/worker/schema.sql
-- apmath/worker-backup/worker/migrations/*
-- archive/**/*
-- wrangler.toml
-
----
-
-## 8. 배포 후 수동 확인 항목
-
-이번 작업에서는 배포하지 않는다.
-CODEX_RESULT.md에는 배포 가능 여부만 적는다.
-
-배포 후 직접 확인할 항목은 아래와 같다.
-
-### 8-1. 기존 route smoke test
-
-Invoke-RestMethod `
-  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/students" `
-  -Headers @{ Authorization = "Basic $basic" } `
-  -Method GET
-
+```powershell
 Invoke-RestMethod `
   -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/initial-data" `
   -Headers @{ Authorization = "Basic $basic" } `
   -Method GET
-
-Invoke-RestMethod `
-  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/billing-accounting-foundation/payment-methods" `
-  -Headers @{ Authorization = "Basic $basic" } `
-  -Method GET
+```
 
 기대:
-- 기존 route 정상 유지
 
-### 8-2. homework-photo 기본 조회 smoke test
+* 정상 JSON
+* students/classes/attendance/homework/exam_sessions/journals/class_textbooks 등 기본 필드 유지
 
-실제 기존 endpoint 방식에 맞춰 확인한다.
+### 13-2. students route 확인
 
-예시:
-
+```powershell
 Invoke-RestMethod `
-  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/homework-photo/assignments" `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/students" `
   -Headers @{ Authorization = "Basic $basic" } `
   -Method GET
-
-또는 기존 방식이 `/api/homework-photo?action=assignments`라면 기존 방식으로 확인한다.
+```
 
 기대:
-- 404 아님
-- 기존 응답 구조 유지
-- 권한 실패가 기존 동작이면 기존 status 유지
 
-### 8-3. 숙제사진 UI 수동 확인
+* Not Found 아님
+* Unauthorized 아님
+* 기존 students 응답 유지
 
-확인:
-- 선생님 숙제사진 배정 화면 정상
-- 배정 생성 정상
-- 학생 제출 링크 생성 정상
-- 학생 제출 화면 정상
-- 사진 업로드 정상
-- 제출 완료 상태 정상
-- 선생님 제출물 조회 정상
-- 파일 열람 정상
-- 취소/삭제 기존 동작 정상
+### 13-3. qr-classes 확인
 
-### 8-4. 보안/권한 확인
+```powershell
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/qr-classes" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+```
 
-확인:
-- 학생 토큰 없이 제출물 접근 불가
-- 학생이 다른 학생 제출물 접근 불가
-- teacher는 담당 반/학생 범위 유지
-- admin은 기존 범위 유지
-- R2 파일 직접 노출 정책 기존과 동일
+기대:
 
----
+* Not Found 아님
+* `teacher is not defined` 오류 없음
+* class 목록 응답
 
-## 9. 배포 판단
+### 13-4. homework-photo route 확인
 
-CODEX_RESULT.md에 아래 중 하나로 판정한다.
+```powershell
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/homework-photo/assignments?class_id=m1_a" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+```
 
-배포 가능:
-- 모든 node --check 통과
-- homework-photo route 분리 완료
-- 기존 homework-photo 응답 구조 유지
-- 기존 학생 토큰 검증 유지
-- 기존 R2 key/binding 구조 유지
-- 기존 제출/취소/조회/파일 처리 흐름 유지
-- 기존 routes 영향 없음
-- UI 파일 변경 없음
-- schema/migration 변경 없음
-- wrangler.toml 변경 없음
+기대:
 
-배포 보류:
-- node --check 실패
-- homework-photo 응답 구조 변경 가능성 있음
-- 학생 토큰 검증 약화 가능성 있음
-- R2 binding/key 구조 변경 가능성 있음
-- 파일 삭제/보관 정책 변경 가능성 있음
-- 기존 route 영향 있음
-- UI 파일 변경 있음
-- schema/migration 변경 있음
-- wrangler.toml 변경 있음
+* Not Found 아님
+* 권한 또는 데이터 기준 기존 응답 유지
 
----
+### 13-5. planner route 확인
 
-## 10. 완료 보고
+```powershell
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/planner-auth-by-name" `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body '{"name":"","pin":""}'
+```
 
-루트에 CODEX_RESULT.md를 작성한다.
+기대:
 
-형식:
+* Not Found 아님
+* 기존 검증 응답:
+  `{"success":false,"message":"이름 또는 PIN을 확인하세요."}`
 
+### 13-6. foundation-sync 확인
+
+```powershell
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/foundation-sync/preview" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+```
+
+기대:
+
+* Not Found 아님
+* 기존 preview 응답 유지
+
+## 14. CODEX_RESULT.md 작성
+
+작업 완료 후 `CODEX_RESULT.md`를 아래 형식으로 작성한다.
+
+```md
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- 파일 목록
+- apmath/worker-backup/worker/index.js
+- CODEX_RESULT.md
 
 ## 2. 구현 완료 또는 확인 완료
-- homework-photo route 추가
-- homework-photo 배정 API 분리
-- homework-photo 제출 API 분리
-- homework-photo 파일/R2 처리 API 분리
-- index.js route 위임 구조 반영
-- 기존 students/classes/teachers route 영향 없음 확인
-- 기존 attendance-homework route 영향 없음 확인
-- 기존 exams route 영향 없음 확인
-- 기존 operations/class-daily/student-portal/reports-ai/check-omr/foundation route 영향 없음 확인
-- 기존 initial-data 구조 유지 확인
-- 학생 토큰 검증 유지 확인
-- R2 binding/key 구조 유지 확인
-- UI 파일 변경 없음 확인
-- schema/migration 변경 없음 확인
-- wrangler.toml 변경 없음 확인
+- index.js 남은 legacy API 블록 전체 재평가 완료
+- 이미 route 분리된 중복 legacy fallback 제거 완료
+- auth / initial-data / 공통 helper 유지 확인
+- route 위임부 최종 확인 완료
+- teacher 스코프 위험 없음 확인
+- UI/schema/migration 변경 없음
 
 ## 3. 실행 결과
-- node --check 결과
-- git diff --name-only 결과
-- UI 파일 변경 여부
-- schema/migration/wrangler 변경 여부
+- index.js 수정 전 라인 수:
+- index.js 수정 후 라인 수:
+- node --check apmath/worker-backup/worker/index.js:
+- routes/*.js node --check:
+- helpers/*.js node --check:
+- 배포 결과:
+- smoke initial-data:
+- smoke students:
+- smoke qr-classes:
+- smoke homework-photo:
+- smoke planner-auth-by-name:
+- smoke foundation-sync:
 
 ## 4. 결과 요약
-- index.js 추가 정리 효과
-- 분리된 route 목록
-- 기존 기능 영향 여부
-- 배포 가능 여부
+- index.js에서 route 분리 완료된 legacy fallback을 최종 정리했다.
+- index.js는 공통 helper, route 위임부, auth, initial-data 중심으로 축소했다.
+- 기존 route API 동작과 응답 구조는 변경하지 않았다.
 
-## 5. 다음 조
-- Worker 배포
-- homework-photo smoke test
-- 숙제사진 UI 수동 확인
-- 기존 route smoke test
-- 정상 확인 후 커밋/푸시
-- 이후 남은 index.js 정리 범위 재평가
+## 5. 다음 조치
+- auth route 분리 여부 판단
+- initial-data route 분리 여부는 마지막 단계에서 별도 판단
+- 숙제 배정 삭제 버튼 등 실제 기능 추가는 별도 작업으로 진행
+```
 
-터미널 마지막 출력은 반드시 아래 한 줄로 끝낸다.
+## 15. git 주의
 
-CODEX_RESULT.md에 완료 보고를 저장했습니다.
+절대 `git add .` 하지 않는다.
+
+커밋 전 상태 확인:
+
+```powershell
+cd "$env:USERPROFILE\Desktop\AP------"
+git status --short
+git diff --name-only
+```
+
+이번 커밋 대상은 원칙적으로 아래만 허용한다.
+
+```powershell
+git add apmath\worker-backup\worker\index.js CODEX_RESULT.md
+git commit -m "Finalize worker index route cleanup"
+git push
+```
+
+만약 다른 route 파일을 수정했다면 그 이유를 CODEX_RESULT.md에 명확히 쓰고, 실제 필요한 파일만 add한다.
+
+## 16. 최종 자체검수
+
+완료 전 반드시 확인한다.
+
+* index.js에 이미 route 분리된 API 본문이 중복으로 남아 있지 않은가?
+* route 위임부가 모든 분리 route를 정상 호출하는가?
+* route handler export/import 이름이 정확한가?
+* teacher undefined 위험이 없는가?
+* auth는 그대로 살아 있는가?
+* initial-data는 그대로 살아 있는가?
+* student-portal / planner SSO 흐름이 바뀌지 않았는가?
+* OMR 수정/재제출 경로가 생기지 않았는가?
+* 숙제 사진 제출/취소/마감 흐름이 바뀌지 않았는가?
+* 새 기능이 몰래 추가되지 않았는가?
+* node --check가 모두 PASS인가?
+* smoke가 Not Found 없이 route 진입하는가?
+* CODEX_RESULT.md가 지정 형식으로 작성되었는가?
 
 현재 프로젝트 루트의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라. 이전 작업 결과로 대체하지 마라.
 EOF
+
+```
+```
