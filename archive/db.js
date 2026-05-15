@@ -4069,6 +4069,37 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "types/high/h1/여러가지방정식과부등식_고1_유형_모의고사.js",
+      "school": "",
+      "topic": "여러가지방정식과부등식",
+      "grade": "고1",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 27,
+      "rangeStartUnitKey": "H22-C-06",
+      "rangeStartUnit": "여러 가지 방정식과 부등식",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-C-06",
+      "rangeEndUnit": "여러 가지 방정식과 부등식",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-06",
+          "rangeStartUnit": "여러 가지 방정식과 부등식",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-C-06",
+          "rangeEndUnit": "여러 가지 방정식과 부등식",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
       "file": "types/high/h1/항등식과나머지정리_고1_유형.js",
       "school": "",
       "topic": "항등식과나머지정리",
