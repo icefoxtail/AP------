@@ -403,6 +403,7 @@ function getBillingAccountingFoundationState() {
             carryovers: [],
             dailySummaries: [],
             monthlySummaries: [],
+            accountingSummary: null,
             methodForm: { id: '', method_key: 'card', name: '', category: '', is_active: 1, sort_order: 0, memo: '' },
             policyForm: { id: '', branch: 'all', rule_type: 'tuition', rule_key: '', name: '', value_json: '{\n  "amount": 0\n}', is_active: 1, memo: '' },
             transactionForm: { id: '', payment_id: '', student_id: '', branch: 'apmath', transaction_type: 'payment', method_key: 'card', amount: '', transaction_date: '', status: 'completed', receipt_no: '', external_provider: '', external_transaction_id: '', note: '' },
@@ -511,34 +512,43 @@ async function billingAccountingFetchAll() {
     });
     if (ui.branch && ui.branch !== 'all') summaryParams.set('branch', ui.branch);
     try {
-        const [
-            methodsRes,
-            policiesRes,
-            transactionsRes,
-            cashbookRes,
-            refundsRes,
-            carryoversRes,
-            dailyRes,
-            monthlyRes
-        ] = await Promise.all([
-            api.get('billing-accounting-foundation/payment-methods?limit=100'),
-            api.get('billing-accounting-foundation/billing-policy-rules?limit=100'),
-            api.get('billing-accounting-foundation/payment-transactions?limit=20'),
-            api.get('billing-accounting-foundation/cashbook-entries?limit=20'),
-            api.get('billing-accounting-foundation/refund-records?limit=20'),
-            api.get('billing-accounting-foundation/carryover-records?limit=20'),
-            api.get(`billing-accounting-foundation/daily-summaries?${summaryParams.toString()}`),
-            api.get(`billing-accounting-foundation/monthly-summaries?${summaryParams.toString()}`)
-        ]);
+        const requests = [
+            ['methods', api.get('billing-accounting-foundation/payment-methods?limit=100')],
+            ['policies', api.get('billing-accounting-foundation/billing-policy-rules?limit=100')],
+            ['transactions', api.get('billing-accounting-foundation/payment-transactions?limit=20')],
+            ['cashbook', api.get('billing-accounting-foundation/cashbook-entries?limit=20')],
+            ['refunds', api.get('billing-accounting-foundation/refund-records?limit=20')],
+            ['carryovers', api.get('billing-accounting-foundation/carryover-records?limit=20')],
+            ['daily', api.get(`billing-accounting-foundation/daily-summaries?${summaryParams.toString()}`)],
+            ['monthly', api.get(`billing-accounting-foundation/monthly-summaries?${summaryParams.toString()}`)],
+            ['summary', api.get(`billing-accounting-foundation/accounting-summary?${summaryParams.toString()}`)]
+        ];
+        const results = await Promise.allSettled(requests.map(item => item[1]));
+        const resolved = {};
+        let failedCount = 0;
 
-        ui.methods = Array.isArray(methodsRes?.payment_methods) ? methodsRes.payment_methods : [];
-        ui.policies = Array.isArray(policiesRes?.policy_rules) ? policiesRes.policy_rules : [];
-        ui.transactions = Array.isArray(transactionsRes?.transactions) ? transactionsRes.transactions : [];
-        ui.cashbookEntries = Array.isArray(cashbookRes?.cashbook_entries) ? cashbookRes.cashbook_entries : [];
-        ui.refunds = Array.isArray(refundsRes?.refunds) ? refundsRes.refunds : [];
-        ui.carryovers = Array.isArray(carryoversRes?.carryovers) ? carryoversRes.carryovers : [];
-        ui.dailySummaries = Array.isArray(dailyRes?.daily_summaries) ? dailyRes.daily_summaries : [];
-        ui.monthlySummaries = Array.isArray(monthlyRes?.monthly_summaries) ? monthlyRes.monthly_summaries : [];
+        results.forEach((result, index) => {
+            const key = requests[index][0];
+            if (result.status === 'fulfilled') {
+                resolved[key] = result.value;
+            } else {
+                failedCount += 1;
+                resolved[key] = null;
+            }
+        });
+
+        ui.methods = Array.isArray(resolved.methods?.payment_methods) ? resolved.methods.payment_methods : [];
+        ui.policies = Array.isArray(resolved.policies?.policy_rules) ? resolved.policies.policy_rules : [];
+        ui.transactions = Array.isArray(resolved.transactions?.transactions) ? resolved.transactions.transactions : [];
+        ui.cashbookEntries = Array.isArray(resolved.cashbook?.cashbook_entries) ? resolved.cashbook.cashbook_entries : [];
+        ui.refunds = Array.isArray(resolved.refunds?.refunds) ? resolved.refunds.refunds : [];
+        ui.carryovers = Array.isArray(resolved.carryovers?.carryovers) ? resolved.carryovers.carryovers : [];
+        ui.dailySummaries = Array.isArray(resolved.daily?.daily_summaries) ? resolved.daily.daily_summaries : [];
+        ui.monthlySummaries = Array.isArray(resolved.monthly?.monthly_summaries) ? resolved.monthly.monthly_summaries : [];
+        ui.accountingSummary = resolved.summary?.success ? resolved.summary : null;
+        if (failedCount > 0) {
+            ui.error = '일부 수납·출납 foundation 자료를 불러오지 못했습니다.';
+        }
     } catch (e) {
         ui.error = '수납·출납 foundation 조회 중 오류가 발생했습니다.';
     } finally {
@@ -921,9 +931,12 @@ async function saveBillingAccountingCarryover() {
 
 async function reloadBillingAccountingSummaries() {
     const ui = getBillingAccountingFoundationState();
+    const today = new Date();
     ui.branch = document.getElementById('baf-summary-branch')?.value || ui.branch;
-    ui.year = Number(document.getElementById('baf-summary-year')?.value || ui.year);
-    ui.month = Number(document.getElementById('baf-summary-month')?.value || ui.month);
+    const year = Number(document.getElementById('baf-summary-year')?.value || ui.year);
+    const month = Number(document.getElementById('baf-summary-month')?.value || ui.month);
+    ui.year = Number.isFinite(year) && year >= 2000 && year <= 2100 ? Math.round(year) : today.getFullYear();
+    ui.month = Number.isFinite(month) && month >= 1 && month <= 12 ? Math.round(month) : today.getMonth() + 1;
     await billingAccountingFetchAll();
 }
 
@@ -945,7 +958,32 @@ function renderBillingAccountingSimpleRows(rows, fields) {
     `).join('');
 }
 
+function renderBillingAccountingGroupedAmounts(grouped) {
+    const entries = Object.entries(grouped || {});
+    if (!entries.length) return renderBillingAccountingEmpty('조회 결과가 없습니다.');
+    return entries.map(([key, value]) => `
+        <div style="display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid var(--border); font-size:12px; line-height:1.5;">
+            <span style="color:var(--secondary); font-weight:700;">${billingAccountingEscape(key)}</span>
+            <span style="color:var(--text); font-weight:800; text-align:right; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatAmount(value))}</span>
+        </div>
+    `).join('');
+}
+
 function renderBillingAccountingSummaryTab(ui) {
+    const summary = ui.accountingSummary || {};
+    const metricCards = [
+        { label: '청구', value: summary.total_billed },
+        { label: '수납', value: summary.total_paid },
+        { label: '환불', value: summary.total_refunded },
+        { label: '이월', value: summary.total_carryover },
+        { label: '입금', value: summary.cashbook_income },
+        { label: '출금', value: summary.cashbook_expense }
+    ].map(item => `
+        <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); min-width:0;">
+            <div style="font-size:11px; color:var(--secondary); font-weight:800; margin-bottom:6px;">${billingAccountingEscape(item.label)}</div>
+            <div style="font-size:16px; color:var(--text); font-weight:900; line-height:1.3; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatAmount(item.value))}</div>
+        </div>
+    `).join('');
     const dailyRows = renderBillingAccountingSimpleRows(ui.dailySummaries || [], [
         { key: 'summary_date', label: '일자' },
         { key: 'branch', label: 'branch' },
@@ -962,7 +1000,7 @@ function renderBillingAccountingSummaryTab(ui) {
     ]);
 
     return `
-        <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-bottom:12px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px; margin-bottom:12px;">
             <select id="baf-summary-branch" class="btn" style="width:100%; background:var(--surface-2); border:none;">${billingAccountingBranchOptions(ui.branch)}</select>
             <input id="baf-summary-year" class="btn" type="number" value="${billingAccountingEscape(ui.year)}" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
             <input id="baf-summary-month" class="btn" type="number" min="1" max="12" value="${billingAccountingEscape(ui.month)}" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
@@ -970,6 +1008,23 @@ function renderBillingAccountingSummaryTab(ui) {
         <div style="display:flex; gap:8px; margin-bottom:14px;">
             <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="reloadBillingAccountingSummaries()">조회</button>
             <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="billingAccountingFetchAll()">새로고침</button>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:8px; margin-bottom:12px;">
+            ${metricCards}
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:14px;">
+            <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
+                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">결제수단별</div>
+                ${renderBillingAccountingGroupedAmounts(summary.by_method)}
+            </div>
+            <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
+                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">상태별</div>
+                ${renderBillingAccountingGroupedAmounts(summary.by_status)}
+            </div>
+            <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
+                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">브랜치별</div>
+                ${renderBillingAccountingGroupedAmounts(summary.by_branch)}
+            </div>
         </div>
         <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
             <div>
@@ -998,7 +1053,7 @@ function renderBillingAccountingMethodsTab(ui) {
             <div style="font-size:12px; color:var(--secondary); margin-bottom:10px; line-height:1.5;">${billingAccountingEscape(item.memo || '메모 없음')}</div>
             <div style="display:flex; gap:8px;">
                 <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingMethod('${billingAccountingEscape(item.id)}')">수정</button>
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingMethodActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '저장' : '비활성화'}</button>
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingMethodActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '활성화' : '비활성화'}</button>
             </div>
         </div>
     `).join('');
@@ -1039,7 +1094,7 @@ function renderBillingAccountingPoliciesTab(ui) {
             <div style="font-size:12px; color:var(--secondary); margin-bottom:10px; line-height:1.5;">${billingAccountingEscape(item.memo || '메모 없음')}</div>
             <div style="display:flex; gap:8px;">
                 <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingPolicy('${billingAccountingEscape(item.id)}')">수정</button>
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingPolicyActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '저장' : '비활성화'}</button>
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingPolicyActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '활성화' : '비활성화'}</button>
             </div>
         </div>
     `).join('');

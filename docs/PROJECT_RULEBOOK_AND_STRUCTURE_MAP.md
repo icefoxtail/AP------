@@ -934,3 +934,61 @@ docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
 - 학생은 제출 후 수업자료 오답을 수정할 수 없다.
 - 원장/관리자 대시보드 요약 카드에는 노출하지 않는다.
 - 기존 버튼명, 화면명, 운영 용어는 기존 기능에서 변경하지 않는다.
+
+---
+
+# 2026-05-16 수납·출납 foundation 1단계-E 진행
+
+## Route 보강
+
+- `apmath/worker-backup/worker/routes/billing-accounting-foundation.js`
+- admin 전용 접근 차단은 유지한다.
+- `date_from`, `date_to` query alias를 기존 날짜 필터에 추가한다.
+- `branch=all`은 전체 조회로 처리하고, 특정 branch만 필터링한다.
+- `accounting-daily-summaries`, `accounting-monthly-summaries` alias를 기존 summary 조회로 연결한다.
+- `accounting-summary`는 DB에 summary를 insert/update하지 않고, 기존 `payments`, `payment_items`, `payment_transactions`, `refund_records`, `carryover_records`, `cashbook_entries`를 읽어 계산 결과만 응답한다.
+- 계산 응답은 `total_paid`, `total_refunded`, `total_carryover`, `cashbook_income`, `cashbook_expense`, `by_method`, `by_status`, `by_branch` 확인에 사용한다.
+
+## UI 보강
+
+- `apmath/js/management.js`
+- 기존 숨김 진입 상태를 유지한 채, 이미 존재하는 `수납·출납 foundation` 모달 내부의 월별 확인 탭만 보강한다.
+- 조회 시 `accounting-summary`를 함께 불러와 월별 검산 카드와 결제수단별/상태별/브랜치별 그룹을 표시한다.
+- year/month 입력이 비정상 값이면 현재 연월로 되돌려 화면 렌더링이 깨지지 않도록 한다.
+- 데이터가 없거나 null/undefined인 경우 빈 상태로 표시한다.
+
+## 계속 유지할 제한
+
+- 대시보드/관리 메뉴에 새 카드, 새 버튼, 새 메뉴를 노출하지 않는다.
+- `showBillingAccountingFoundationEntry = false`를 유지한다.
+- 실제 청구 생성, 실제 결제 연동, 실제 문자/알림 발송, 실제 payments 데이터 자동 생성은 하지 않는다.
+- Worker 배포, 운영 API smoke test, git commit, git push는 사용자가 직접 실행한다.
+
+---
+
+# 2026-05-16 수납·출납 foundation 1단계-E 안정화 보정
+
+## Backend 보정
+
+- `apmath/worker-backup/worker/routes/billing-accounting-foundation.js`
+- `normalizeJsonString`은 빈 값은 `null`로 유지하고, 잘못된 JSON 또는 stringify 실패는 `invalid_json` 오류로 명확히 던진다.
+- `billing_policy_rules`의 기존 `value_json must be valid JSON` 400 응답 흐름은 유지한다.
+- 월별 summary의 환불 집계 기준은 `refund_records`를 우선한다.
+- `refund_records` 합계가 없을 때만 기존 행 호환을 위해 `payment_transactions.transaction_type='refund'` 합계를 fallback으로 사용한다.
+- `total_outstanding`은 환불 금액이 paid balance에서 빠져나가므로 남은 미수에 다시 더한다는 주석을 코드에 남겼다.
+- `branch IS NULL`은 기존 AP Math 데이터 호환을 위해 `apmath`로 처리한다는 주석을 `pushBranchFilter`에 남겼다.
+
+## Frontend 보정
+
+- `apmath/js/management.js`
+- 결제수단/수납 정책 목록에서 비활성 row의 토글 버튼 라벨을 `저장`이 아니라 `활성화`로 표시한다.
+- `billingAccountingFetchAll`은 `Promise.allSettled`를 사용해 일부 API가 실패해도 성공한 API 결과는 화면에 반영한다.
+- 일부 조회 실패 시 간단한 안내만 표시하고, 빈 배열/빈 summary 상태로 모달 렌더링을 유지한다.
+- summary 조회 컨트롤, metric 카드, 그룹 카드 grid는 `auto-fit/minmax`로 보정해 좁은 화면에서 줄바꿈되도록 했다.
+
+## 계속 유지할 제한
+
+- `apmath/js/dashboard.js`는 수정하지 않고 `showBillingAccountingFoundationEntry = false` 상태만 확인했다.
+- 수납·출납 foundation 진입점은 계속 숨김 상태다.
+- 실제 청구 생성, 실제 결제 연동, 실제 문자/알림 발송, 실제 payments 자동 생성은 계속 금지한다.
+- Worker 배포, 운영 API smoke test, git commit, git push는 사용자가 직접 실행한다.
