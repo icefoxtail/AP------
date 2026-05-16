@@ -256,7 +256,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `routes/foundation-sync.js` | foundation 동기화 | `/api/foundation-sync/*` | `foundation_sync_logs`, `student_enrollments`, `class_time_slots` | preview/run 구분 |
 | `routes/foundation-logs.js` | audit/privacy 로그 | `/api/foundation-logs/*` | `audit_logs`, `privacy_access_logs` | 개인정보 접근 로그 |
 | `routes/billing-foundation.js` | 청구 foundation | `/api/billing-foundation/*` | `billing_templates`, `payments`, `billing_runs` | 실제 운영 기능과 foundation 구분 |
-| `routes/billing-accounting-foundation.js` | 수납·출납 foundation | `/api/billing-accounting-foundation/*` | payment/accounting 계열 | 실제 수납 운영은 별도 승인 |
+| `routes/billing-accounting-foundation.js` | 수납·출납 foundation | `/api/billing-accounting-foundation/*` | payment/accounting 계열 조회·설정 foundation | 실제 수납 운영은 별도 승인 |
 | `routes/parent-foundation.js` | 학부모 연락 foundation | `/api/parent-foundation/*` | `parent_contacts`, `message_logs` | 연락처/문자 개인정보 주의 |
 
 새 route 파일을 만들면 이 표를 반드시 업데이트한다.
@@ -286,7 +286,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `/api/foundation-sync/*` | `routes/foundation-sync.js` | 분리 완료 | preview |
 | `/api/foundation-logs/*` | `routes/foundation-logs.js` | 분리 완료 | logs |
 | `/api/billing-foundation/*` | `routes/billing-foundation.js` | 분리 완료 | templates |
-| `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | 분리 완료 | payment-methods |
+| `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | 분리 완료 | payment-methods, billing-policy-rules, payment-transactions |
 | `/api/parent-foundation/*` | `routes/parent-foundation.js` | 분리 완료 | contacts/messages |
 
 ---
@@ -340,7 +340,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | 리포트/AI | `report.js` | `/api/ai/*`, `/api/consultations` | `routes/reports-ai.js`, `routes/operations.js` | 시험/오답/상담 | 학부모 문구 품질 유지 |
 | 수업일지 | `classroom.js`, `textbook.js`, `dashboard.js` | class-daily/daily-journals 계열 | `routes/class-daily.js`, `routes/operations.js` | `class_daily_*`, `daily_journals` | 기존 일지 문구 보존 |
 | 시간표 foundation | foundation UI, 시간표 관련 JS | timetable/foundation 계열 | timetable/foundation route | `class_time_slots`, conflict logs | 중등 90분, 고등 120분 |
-| 수납·출납 foundation | 수납/출납 준비 UI | billing foundation 계열 | billing route | payment/accounting tables | 실제 결제 기능은 별도 승인 |
+| 수납·출납 foundation | 프론트 진입점 없음, backend foundation coverage만 존재 | `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | payment/accounting tables | 실제 결제 기능은 별도 승인 |
 | 학부모 연락 foundation | 연락/문자 준비 UI | parent-foundation 계열 | `routes/parent-foundation.js` | `parent_contacts`, `message_logs` | 개인정보/문자 발송 주의 |
 | 아카이브/시험지 출력 | archive HTML/JS | archive/exam data | 정적 파일 + 일부 Worker 연계 | exam_blueprints 등 | 원본 기출 노출 정책 주의 |
 
@@ -406,14 +406,14 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `audit_logs` | 감사 로그 | foundation-logs | 관리자/foundation | privileged action 기록 |
 | `privacy_access_logs` | 개인정보 접근 로그 | foundation-logs | 관리자/foundation | 개인정보 접근 추적 |
 | `foundation_sync_logs` | foundation sync 로그 | foundation-sync | foundation UI | preview/run 기록 |
-| `payment_methods` | 결제 수단 설정 | billing-accounting-foundation | 수납/출납 UI | 설정 테이블 |
-| `payment_transactions` | 수납 거래 | billing-accounting-foundation | 수납/출납 UI | 학생/결제수단/일자 |
-| `cashbook_entries` | 출납 장부 | billing-accounting-foundation | 출납 UI | ledger 성격 |
-| `refund_records` | 환불 기록 | billing-accounting-foundation | 수납/출납 UI | 원결제 연결 |
-| `carryover_records` | 이월 기록 | billing-accounting-foundation | 수납/출납 UI | 결제 연결 |
-| `billing_policy_rules` | 수납 정책 rule | billing-accounting-foundation | 수납 정책 UI | 운영 정책 입력 전 검수 |
-| `accounting_daily_summaries` | 일별 회계 요약 | billing-accounting-foundation | 회계 UI | summary table |
-| `accounting_monthly_summaries` | 월별 회계 요약 | billing-accounting-foundation | 회계 UI | summary table |
+| `payment_methods` | 결제 수단 설정 | billing-accounting-foundation | backend foundation coverage | `active` 필터, `sort_order` 정렬, `method_key` 중복 방지 |
+| `payment_transactions` | 수납 거래 | billing-accounting-foundation | backend foundation coverage | `student_id/branch/status/date range/limit` 조회 |
+| `cashbook_entries` | 출납 장부 | billing-accounting-foundation | backend foundation coverage | `student_id/branch/entry_type/date range/limit` 조회 |
+| `refund_records` | 환불 기록 | billing-accounting-foundation | backend foundation coverage | `student_id/branch/status/date range/limit` 조회 |
+| `carryover_records` | 이월 기록 | billing-accounting-foundation | backend foundation coverage | `student_id/branch/status/created_at date range/limit` 조회 |
+| `billing_policy_rules` | 수납 정책 rule | billing-accounting-foundation | backend foundation coverage | `branch/rule_type/active` 조회, `value_json` JSON 문자열 안정화 |
+| `accounting_daily_summaries` | 일별 회계 요약 | billing-accounting-foundation | backend foundation coverage | `branch/date range/limit` 조회 전용 |
+| `accounting_monthly_summaries` | 월별 회계 요약 | billing-accounting-foundation | backend foundation coverage | `branch/year/month/limit` 조회 전용 |
 
 ## 5.2 DB 변경 규칙
 
@@ -507,6 +507,21 @@ Invoke-RestMethod `
 
 Invoke-RestMethod `
   -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/billing-accounting-foundation/payment-methods" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/billing-accounting-foundation/billing-policy-rules" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/billing-accounting-foundation/payment-transactions" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Method GET
+
+Invoke-RestMethod `
+  -Uri "https://ap-math-os-v2612.js-pdf.workers.dev/api/billing-accounting-foundation/cashbook-entries" `
   -Headers @{ Authorization = "Basic $basic" } `
   -Method GET
 ```
@@ -616,6 +631,7 @@ Invoke-RestMethod `
 - students/classes/teachers route 분리
 - foundation/time-slot/conflict 계열 구축
 - 수납·출납 foundation 0단계
+- 수납·출납 foundation 1단계-A
 - OMR 제출 완료 수정 금지 정책 반영
 - 학생 포털 시험지 직접 열기 금지 정책 반영
 - 숙제 사진 확인 시스템 기본 구축
@@ -632,7 +648,7 @@ Invoke-RestMethod `
 
 ### 운영 기능
 
-- 수납·출납 foundation 1단계-A
+- 수납·출납 foundation 다음 단계-B
 - 학부모 연락/문자 foundation
 - 숙제 사진 관리 UI 개선
 - 숙제 제출 현황 개선
