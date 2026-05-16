@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'apmath-cache-20260516-index-restore-ffafa7c';
+const CACHE_NAME = 'apmath-os-shell-v1';
 
 self.addEventListener('install', function (event) {
     self.skipWaiting();
@@ -11,4 +11,3 @@ self.addEventListener('activate', function (event) {
 self.addEventListener('fetch', function (event) {
     event.respondWith(fetch(event.request));
 });
-
