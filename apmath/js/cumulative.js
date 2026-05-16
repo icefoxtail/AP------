@@ -737,7 +737,7 @@ function renderAttendanceLedgerTable() {
 
     const bodyRows = grouped.map(g => {
         const classEmptyCols = days.map(() => '<td></td>').join('');
-        const groupRow = `<tr class="att-grp-row"><td class="att-grp-nc">${apEscapeHtml(g.cls.name)}</td>${classEmptyCols}</tr>`;
+        const groupRow = `<tr class="att-grp-row"><td class="att-grp-nc" style="cursor:pointer;" onclick="if(typeof renderClass==='function')renderClass('${apEscapeHtml(String(g.cls.id))}')">${apEscapeHtml(g.cls.name)}</td>${classEmptyCols}</tr>`;
 
         const sRows = g.students.map(s => {
             const sid = String(s.id);
