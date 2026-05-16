@@ -6,6 +6,7 @@ const PAYMENT_METHOD_KEYS = new Set(['card', 'cash', 'bank_transfer', 'kakaopay'
 const TRANSACTION_TYPES = new Set(['payment', 'partial_payment', 'refund', 'cancel', 'correction', 'carryover_in', 'carryover_out']);
 const TRANSACTION_STATUSES = new Set(['pending', 'completed', 'cancelled', 'failed', 'corrected']);
 const CASHBOOK_ENTRY_TYPES = new Set(['income', 'expense', 'refund', 'adjustment', 'transfer']);
+const CASHBOOK_STATUSES = new Set(['active', 'cancelled', 'inactive', 'corrected']);
 
 function normalizeBranchForAccounting(value, fallback = 'apmath') {
   const raw = String(value || '').trim().toLowerCase();
@@ -33,6 +34,11 @@ function normalizeTransactionStatus(value) {
 function normalizeCashbookEntryType(value) {
   const raw = String(value || '').trim().toLowerCase();
   return CASHBOOK_ENTRY_TYPES.has(raw) ? raw : 'income';
+}
+
+function normalizeCashbookStatus(value) {
+  const raw = String(value || '').trim().toLowerCase();
+  return CASHBOOK_STATUSES.has(raw) ? raw : 'active';
 }
 
 function toInt(value, fallback = 0) {
@@ -600,6 +606,8 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         category,
         branch: normalizeBranchForAccounting(data.branch, 'all'),
         amount,
+        status: normalizeCashbookStatus(data.status),
+        is_active: data.is_active === undefined ? 1 : toInt(data.is_active, 1) ? 1 : 0,
         payment_transaction_id: validateRequiredText(data.payment_transaction_id) || null,
         student_id: validateRequiredText(data.student_id) || null,
         title,
@@ -611,6 +619,11 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
     }
 
     if (method === 'PATCH' && id) {
+      if (action === 'cancel') {
+        const result = await patchExistingRow(env, 'cashbook_entries', id, { status: 'cancelled', is_active: 0 }, ['status', 'is_active']);
+        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'cashbook entry not found' }, 404);
+        return jsonResponse({ success: true, id, status: 'cancelled', is_active: 0, cashbook_entry: result.updated });
+      }
       const patch = { ...data };
       if (Object.prototype.hasOwnProperty.call(patch, 'entry_date')) {
         patch.entry_date = normalizeIsoDate(patch.entry_date);
@@ -618,6 +631,8 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       }
       if (Object.prototype.hasOwnProperty.call(patch, 'entry_type')) patch.entry_type = normalizeCashbookEntryType(patch.entry_type);
       if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'all');
+      if (Object.prototype.hasOwnProperty.call(patch, 'status')) patch.status = normalizeCashbookStatus(patch.status);
+      if (Object.prototype.hasOwnProperty.call(patch, 'is_active')) patch.is_active = toInt(patch.is_active, 1) ? 1 : 0;
       if (Object.prototype.hasOwnProperty.call(patch, 'amount')) {
         patch.amount = positiveAmountOrNull(patch.amount);
         if (!patch.amount) return jsonResponse({ success: false, error: 'amount must be positive number' }, 400);
@@ -629,7 +644,7 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         return jsonResponse({ success: false, error: 'category required' }, 400);
       }
       if (Object.prototype.hasOwnProperty.call(patch, 'method_key') && patch.method_key) patch.method_key = normalizeMethodKey(patch.method_key);
-      const result = await patchExistingRow(env, 'cashbook_entries', id, patch, ['entry_date', 'entry_type', 'category', 'branch', 'amount', 'payment_transaction_id', 'student_id', 'title', 'description', 'method_key']);
+      const result = await patchExistingRow(env, 'cashbook_entries', id, patch, ['entry_date', 'entry_type', 'category', 'branch', 'amount', 'status', 'is_active', 'payment_transaction_id', 'student_id', 'title', 'description', 'method_key']);
       if (result.error === 'not_found') return jsonResponse({ success: false, error: 'cashbook entry not found' }, 404);
       return jsonResponse({ success: true, cashbook_entry: result.updated });
     }
@@ -639,7 +654,9 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       const bindings = [];
       const studentId = String(url.searchParams.get('student_id') || '').trim();
       const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
-      const entryType = String(url.searchParams.get('entry_type') || url.searchParams.get('status') || '').trim().toLowerCase();
+      const entryType = String(url.searchParams.get('entry_type') || '').trim().toLowerCase();
+      const status = String(url.searchParams.get('status') || '').trim().toLowerCase();
+      const includeInactive = url.searchParams.get('include_inactive') === '1';
       if (studentId) {
         whereParts.push('student_id = ?');
         bindings.push(studentId);
@@ -648,6 +665,12 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       if (entryType) {
         whereParts.push('LOWER(entry_type) = ?');
         bindings.push(entryType);
+      }
+      if (status) {
+        whereParts.push('LOWER(COALESCE(status, ?)) = ?');
+        bindings.push('active', status);
+      } else if (!includeInactive) {
+        whereParts.push('COALESCE(is_active, 1) = 1');
       }
       pushDateRangeFilter(whereParts, bindings, 'entry_date', url);
       const cashbookEntries = await safeAll(

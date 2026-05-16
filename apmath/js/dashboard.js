@@ -307,6 +307,8 @@ function openAdminStudentList(type) {
 
 function openAdminOperationMenu() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
+    const isAdmin = String(state?.auth?.role || '') === 'admin';
+    const showBillingAccountingFoundationEntry = false;
     const cardStyle = 'padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); text-align:left; cursor:pointer; box-shadow:none; min-height:92px; align-items:flex-start; justify-content:flex-start; flex-direction:column; gap:6px;';
     const titleStyle = 'font-size:14px; font-weight:800; color:var(--text); line-height:1.35;';
     const descStyle = 'font-size:12px; font-weight:650; color:var(--secondary); line-height:1.5; margin-top:4px;';
@@ -329,10 +331,12 @@ function openAdminOperationMenu() {
                 <div style="${titleStyle}">PIN 생성</div>
                 <div style="${descStyle}">전체 재원생 중 PIN 없는 재원생에게만 자동 부여</div>
             </button>
+            ${isAdmin && showBillingAccountingFoundationEntry ? `
             <button class="btn" style="${cardStyle}" onclick="if(typeof openBillingAccountingFoundationModal==='function') openBillingAccountingFoundationModal(); else toast('수납·출납 foundation 화면을 불러오지 못했습니다.', 'warn');">
                 <div style="${titleStyle}">수납·출납 foundation</div>
                 <div style="${descStyle}">결제수단, 수납 정책, 요약, 조회 목록 확인</div>
             </button>
+            ` : ''}
         </div>
         <div style="margin-top:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
             반 담당 변경과 담임 일괄 변경은 Worker 구조분리 이후 별도 연결합니다.
