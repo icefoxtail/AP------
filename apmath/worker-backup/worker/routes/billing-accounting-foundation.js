@@ -41,6 +41,64 @@ function toInt(value, fallback = 0) {
   return Math.round(n);
 }
 
+function parseLimit(url, fallback = 100, max = 1000) {
+  const raw = toInt(url.searchParams.get('limit'), fallback);
+  return Math.max(1, Math.min(max, raw));
+}
+
+function normalizeIsoDate(value) {
+  const raw = String(value || '').trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(raw) ? raw : '';
+}
+
+function normalizeJsonString(value) {
+  if (value === undefined || value === null || value === '') return null;
+  if (typeof value === 'string') {
+    const parsed = JSON.parse(value);
+    return JSON.stringify(parsed);
+  }
+  return JSON.stringify(value);
+}
+
+function normalizeFoundationSub(value) {
+  const raw = String(value || '').trim().toLowerCase();
+  if (raw === 'billing-policy-rules') return 'policy-rules';
+  if (raw === 'payment-transactions') return 'transactions';
+  if (raw === 'cashbook-entries') return 'cashbook';
+  if (raw === 'refund-records') return 'refunds';
+  if (raw === 'carryover-records') return 'carryovers';
+  if (raw === 'accounting-summary') return 'summary';
+  return raw;
+}
+
+function pushBranchFilter(whereParts, bindings, branch) {
+  if (!branch) return;
+  whereParts.push('COALESCE(branch, ?) = ?');
+  bindings.push('apmath', branch);
+}
+
+function pushDateRangeFilter(whereParts, bindings, column, url) {
+  const from = normalizeIsoDate(url.searchParams.get('from') || url.searchParams.get('start_date'));
+  const to = normalizeIsoDate(url.searchParams.get('to') || url.searchParams.get('end_date'));
+  if (from) {
+    whereParts.push(`${column} >= ?`);
+    bindings.push(from);
+  }
+  if (to) {
+    whereParts.push(`${column} <= ?`);
+    bindings.push(to);
+  }
+}
+
+function buildWhereClause(whereParts) {
+  return whereParts.length ? ` WHERE ${whereParts.join(' AND ')}` : '';
+}
+
+async function findExistingRow(env, sql, bindings = []) {
+  const rows = await safeAll(env, sql, bindings);
+  return rows[0] || null;
+}
+
 function parseYearMonth(url) {
   const now = new Date();
   const year = toInt(url.searchParams.get('year'), now.getUTCFullYear());
@@ -262,13 +320,22 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
   if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
 
   const method = request.method;
-  const sub = path[2] || '';
+  const sub = normalizeFoundationSub(path[2] || '');
   const id = path[3] || '';
   const data = body || (['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {});
 
   if (sub === 'payment-methods') {
     if (method === 'GET') {
-      const paymentMethods = await safeAll(env, 'SELECT * FROM payment_methods ORDER BY sort_order ASC, method_key ASC');
+      const whereParts = [];
+      const bindings = [];
+      if (url.searchParams.get('active') === '1') {
+        whereParts.push('is_active = 1');
+      }
+      const paymentMethods = await safeAll(
+        env,
+        `SELECT * FROM payment_methods${buildWhereClause(whereParts)} ORDER BY sort_order ASC, method_key ASC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, payment_methods: paymentMethods });
     }
 
@@ -277,6 +344,8 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       const name = String(data.name || '').trim();
       const category = String(data.category || methodKey).trim().toLowerCase() || methodKey;
       if (!name) return jsonResponse({ success: false, error: 'name required' }, 400);
+      const existingMethod = await findExistingRow(env, 'SELECT id FROM payment_methods WHERE method_key = ? LIMIT 1', [methodKey]);
+      if (existingMethod) return jsonResponse({ success: false, error: 'method_key already exists' }, 409);
       const row = {
         id: data.id || makeId('pm'),
         method_key: methodKey,
@@ -294,13 +363,36 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       if (Object.prototype.hasOwnProperty.call(patch, 'method_key')) patch.method_key = normalizeMethodKey(patch.method_key);
       if (Object.prototype.hasOwnProperty.call(patch, 'is_active')) patch.is_active = toInt(patch.is_active, 1);
       if (Object.prototype.hasOwnProperty.call(patch, 'sort_order')) patch.sort_order = toInt(patch.sort_order, 0);
+      if (patch.method_key) {
+        const existingMethod = await findExistingRow(env, 'SELECT id FROM payment_methods WHERE method_key = ? AND id != ? LIMIT 1', [patch.method_key, id]);
+        if (existingMethod) return jsonResponse({ success: false, error: 'method_key already exists' }, 409);
+      }
       return jsonResponse({ success: true, payment_method: await patchById(env, 'payment_methods', id, patch, ['method_key', 'name', 'category', 'is_active', 'sort_order', 'memo']) });
     }
   }
 
   if (sub === 'policy-rules') {
     if (method === 'GET') {
-      const policyRules = await safeAll(env, 'SELECT * FROM billing_policy_rules ORDER BY branch ASC, rule_type ASC, rule_key ASC');
+      const whereParts = [];
+      const bindings = [];
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
+      const ruleType = String(url.searchParams.get('rule_type') || '').trim().toLowerCase();
+      if (branch) {
+        whereParts.push('branch = ?');
+        bindings.push(branch);
+      }
+      if (ruleType) {
+        whereParts.push('LOWER(rule_type) = ?');
+        bindings.push(ruleType);
+      }
+      if (url.searchParams.get('active') === '1') {
+        whereParts.push('is_active = 1');
+      }
+      const policyRules = await safeAll(
+        env,
+        `SELECT * FROM billing_policy_rules${buildWhereClause(whereParts)} ORDER BY branch ASC, rule_type ASC, rule_key ASC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, policy_rules: policyRules });
     }
 
@@ -308,15 +400,24 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       const ruleKey = String(data.rule_key || '').trim();
       const ruleType = String(data.rule_type || '').trim();
       const name = String(data.name || '').trim();
-      const valueJson = data.value_json === undefined || data.value_json === null ? null : String(data.value_json);
+      let valueJson = null;
       if (!ruleKey || !ruleType || !name) return jsonResponse({ success: false, error: 'rule_key, rule_type and name required' }, 400);
-      if (valueJson) {
-        try { JSON.parse(valueJson); } catch (e) { return jsonResponse({ success: false, error: 'value_json must be valid JSON string' }, 400); }
+      try {
+        valueJson = normalizeJsonString(data.value_json);
+      } catch (e) {
+        return jsonResponse({ success: false, error: 'value_json must be valid JSON' }, 400);
       }
+      const branch = normalizeBranchForAccounting(data.branch, 'all');
+      const existingRule = await findExistingRow(
+        env,
+        'SELECT id FROM billing_policy_rules WHERE rule_key = ? AND branch = ? AND rule_type = ? LIMIT 1',
+        [ruleKey, branch, ruleType]
+      );
+      if (existingRule) return jsonResponse({ success: false, error: 'rule_key already exists for branch/rule_type' }, 409);
       const row = {
         id: data.id || makeId('bpr'),
         rule_key: ruleKey,
-        branch: normalizeBranchForAccounting(data.branch, 'all'),
+        branch,
         rule_type: ruleType,
         name,
         value_json: valueJson,
@@ -330,8 +431,25 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       const patch = { ...data };
       if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'all');
       if (Object.prototype.hasOwnProperty.call(patch, 'is_active')) patch.is_active = toInt(patch.is_active, 1);
-      if (Object.prototype.hasOwnProperty.call(patch, 'value_json') && patch.value_json) {
-        try { JSON.parse(String(patch.value_json)); } catch (e) { return jsonResponse({ success: false, error: 'value_json must be valid JSON string' }, 400); }
+      if (Object.prototype.hasOwnProperty.call(patch, 'value_json')) {
+        try {
+          patch.value_json = normalizeJsonString(patch.value_json);
+        } catch (e) {
+          return jsonResponse({ success: false, error: 'value_json must be valid JSON' }, 400);
+        }
+      }
+      if (patch.rule_key || patch.branch || patch.rule_type) {
+        const currentRule = await findExistingRow(env, 'SELECT rule_key, branch, rule_type FROM billing_policy_rules WHERE id = ? LIMIT 1', [id]);
+        if (!currentRule) return jsonResponse({ success: false, error: 'policy rule not found' }, 404);
+        const nextRuleKey = String(patch.rule_key || currentRule.rule_key || '').trim();
+        const nextBranch = normalizeBranchForAccounting(patch.branch || currentRule.branch, 'all');
+        const nextRuleType = String(patch.rule_type || currentRule.rule_type || '').trim();
+        const existingRule = await findExistingRow(
+          env,
+          'SELECT id FROM billing_policy_rules WHERE rule_key = ? AND branch = ? AND rule_type = ? AND id != ? LIMIT 1',
+          [nextRuleKey, nextBranch, nextRuleType, id]
+        );
+        if (existingRule) return jsonResponse({ success: false, error: 'rule_key already exists for branch/rule_type' }, 409);
       }
       return jsonResponse({ success: true, policy_rule: await patchById(env, 'billing_policy_rules', id, patch, ['rule_key', 'branch', 'rule_type', 'name', 'value_json', 'is_active', 'memo']) });
     }
@@ -346,7 +464,26 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
 
   if (sub === 'transactions') {
     if (method === 'GET') {
-      const transactions = await safeAll(env, 'SELECT * FROM payment_transactions ORDER BY transaction_date DESC, created_at DESC LIMIT 1000');
+      const whereParts = [];
+      const bindings = [];
+      const studentId = String(url.searchParams.get('student_id') || '').trim();
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'apmath') : '';
+      const status = String(url.searchParams.get('status') || '').trim().toLowerCase();
+      if (studentId) {
+        whereParts.push('student_id = ?');
+        bindings.push(studentId);
+      }
+      pushBranchFilter(whereParts, bindings, branch);
+      if (status) {
+        whereParts.push('LOWER(status) = ?');
+        bindings.push(status);
+      }
+      pushDateRangeFilter(whereParts, bindings, 'transaction_date', url);
+      const transactions = await safeAll(
+        env,
+        `SELECT * FROM payment_transactions${buildWhereClause(whereParts)} ORDER BY transaction_date DESC, created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, transactions });
     }
     return jsonResponse({ error: 'Method Not Allowed' }, 405);
@@ -354,7 +491,26 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
 
   if (sub === 'cashbook') {
     if (method === 'GET') {
-      const cashbookEntries = await safeAll(env, 'SELECT * FROM cashbook_entries ORDER BY entry_date DESC, created_at DESC LIMIT 1000');
+      const whereParts = [];
+      const bindings = [];
+      const studentId = String(url.searchParams.get('student_id') || '').trim();
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
+      const entryType = String(url.searchParams.get('entry_type') || url.searchParams.get('status') || '').trim().toLowerCase();
+      if (studentId) {
+        whereParts.push('student_id = ?');
+        bindings.push(studentId);
+      }
+      pushBranchFilter(whereParts, bindings, branch);
+      if (entryType) {
+        whereParts.push('LOWER(entry_type) = ?');
+        bindings.push(entryType);
+      }
+      pushDateRangeFilter(whereParts, bindings, 'entry_date', url);
+      const cashbookEntries = await safeAll(
+        env,
+        `SELECT * FROM cashbook_entries${buildWhereClause(whereParts)} ORDER BY entry_date DESC, created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, cashbook_entries: cashbookEntries });
     }
     return jsonResponse({ error: 'Method Not Allowed' }, 405);
@@ -369,7 +525,26 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
 
   if (sub === 'refunds') {
     if (method === 'GET') {
-      const refunds = await safeAll(env, 'SELECT * FROM refund_records ORDER BY refund_date DESC, created_at DESC LIMIT 1000');
+      const whereParts = [];
+      const bindings = [];
+      const studentId = String(url.searchParams.get('student_id') || '').trim();
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'apmath') : '';
+      const status = String(url.searchParams.get('status') || '').trim().toLowerCase();
+      if (studentId) {
+        whereParts.push('student_id = ?');
+        bindings.push(studentId);
+      }
+      pushBranchFilter(whereParts, bindings, branch);
+      if (status) {
+        whereParts.push('LOWER(status) = ?');
+        bindings.push(status);
+      }
+      pushDateRangeFilter(whereParts, bindings, 'refund_date', url);
+      const refunds = await safeAll(
+        env,
+        `SELECT * FROM refund_records${buildWhereClause(whereParts)} ORDER BY refund_date DESC, created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, refunds });
     }
     return jsonResponse({ error: 'Method Not Allowed' }, 405);
@@ -377,7 +552,26 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
 
   if (sub === 'carryovers') {
     if (method === 'GET') {
-      const carryovers = await safeAll(env, 'SELECT * FROM carryover_records ORDER BY created_at DESC LIMIT 1000');
+      const whereParts = [];
+      const bindings = [];
+      const studentId = String(url.searchParams.get('student_id') || '').trim();
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'apmath') : '';
+      const status = String(url.searchParams.get('status') || '').trim().toLowerCase();
+      if (studentId) {
+        whereParts.push('student_id = ?');
+        bindings.push(studentId);
+      }
+      pushBranchFilter(whereParts, bindings, branch);
+      if (status) {
+        whereParts.push('LOWER(status) = ?');
+        bindings.push(status);
+      }
+      pushDateRangeFilter(whereParts, bindings, 'DATE(created_at)', url);
+      const carryovers = await safeAll(
+        env,
+        `SELECT * FROM carryover_records${buildWhereClause(whereParts)} ORDER BY created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, carryovers });
     }
     return jsonResponse({ error: 'Method Not Allowed' }, 405);
@@ -385,7 +579,19 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
 
   if (sub === 'daily-summaries') {
     if (method === 'GET') {
-      const dailySummaries = await safeAll(env, 'SELECT * FROM accounting_daily_summaries ORDER BY summary_date DESC, branch ASC LIMIT 1000');
+      const whereParts = [];
+      const bindings = [];
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
+      if (branch) {
+        whereParts.push('branch = ?');
+        bindings.push(branch);
+      }
+      pushDateRangeFilter(whereParts, bindings, 'summary_date', url);
+      const dailySummaries = await safeAll(
+        env,
+        `SELECT * FROM accounting_daily_summaries${buildWhereClause(whereParts)} ORDER BY summary_date DESC, branch ASC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, daily_summaries: dailySummaries });
     }
     return jsonResponse({ error: 'Method Not Allowed' }, 405);
@@ -393,7 +599,31 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
 
   if (sub === 'monthly-summaries') {
     if (method === 'GET') {
-      const monthlySummaries = await safeAll(env, 'SELECT * FROM accounting_monthly_summaries ORDER BY year DESC, month DESC, branch ASC LIMIT 1000');
+      const whereParts = [];
+      const bindings = [];
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
+      const year = url.searchParams.get('year');
+      const month = url.searchParams.get('month');
+      if (branch) {
+        whereParts.push('branch = ?');
+        bindings.push(branch);
+      }
+      if (year && /^\d{4}$/.test(String(year).trim())) {
+        whereParts.push('year = ?');
+        bindings.push(toInt(year, 0));
+      }
+      if (month) {
+        const monthValue = toInt(month, 0);
+        if (monthValue >= 1 && monthValue <= 12) {
+          whereParts.push('month = ?');
+          bindings.push(monthValue);
+        }
+      }
+      const monthlySummaries = await safeAll(
+        env,
+        `SELECT * FROM accounting_monthly_summaries${buildWhereClause(whereParts)} ORDER BY year DESC, month DESC, branch ASC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
       return jsonResponse({ success: true, monthly_summaries: monthlySummaries });
     }
     return jsonResponse({ error: 'Method Not Allowed' }, 405);

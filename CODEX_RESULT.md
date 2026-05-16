@@ -1,33 +1,51 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- 수정: `apmath/js/classroom.js`
+- `apmath/worker-backup/worker/routes/billing-accounting-foundation.js`
+- `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`
+- `CODEX_RESULT.md`
 
 ## 2. 구현 완료 또는 확인 완료
-- 반 화면의 기존 `플래너` 버튼 호출 흐름 유지
-- 선생님용 반 플래너 확인 화면을 학생별 실제 계획 목록 중심으로 업그레이드
-- 모바일에서 선택 요일 기준 반 전체 학생 목록 표시
-- 모바일에서 계획 없는 학생을 `등록된 계획 없음`으로 유지
-- PC에서 `요일별 / 주간별` 보기 지원
-- PC 주간별 보기에서 학생 × 월~일 표 렌더링
-- 주간별 셀에 실제 계획 제목 전체 표시
-- 완료 항목과 미완료 항목을 시각적으로 구분
-- 기존 학생 개인 플래너 저장/수정/삭제 로직 변경 없음
-- 백엔드 신규 API 추가 없이 프론트에서 주간 데이터 병합
+- `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md` 확인 완료
+- 수납·출납 foundation 1단계-A 범위 확인 완료
+- `routes/billing-accounting-foundation.js` endpoint coverage 확인 완료
+- `payment_methods` 조회/설정 흐름 보강 완료
+- `billing_policy_rules` 조회/설정 흐름 보강 완료
+- `payment_transactions` 조회 흐름 보강 완료
+- `cashbook_entries` 조회 흐름 보강 완료
+- `refund_records` 조회 흐름 보강 완료
+- `carryover_records` 조회 흐름 보강 완료
+- `daily/monthly summaries` 조회 흐름 보강 완료
+- 실제 수납/환불/이월/장부 자동 반영 기능은 구현하지 않음 확인
+- `index.js`에 API 본문 추가 없음 확인
+- 기존 UI 문구·버튼명·화면명·메뉴명·운영 용어 변경 없음 확인
+- 학생 포털/OMR 흐름 변경 없음 확인
+- 관리자/원장 화면은 이번 수납·출납 foundation 범위 외 변경 없음 확인
+- `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md` 업데이트 완료
 
 ## 3. 실행 결과
-- `node --check apmath/js/classroom.js`: PASS
+- `node --check apmath/worker-backup/worker/index.js`: PASS
+- `node --check apmath/worker-backup/worker/routes/billing-accounting-foundation.js`: PASS
+- `routes/*.js node --check`: PASS
+- 프론트 수정 파일 node --check 또는 수동 검증: 해당 없음
+- 배포 실행 여부: 미실행 - 사용자 직접 실행 대상
+- 운영 smoke 실행 여부: 미실행 - 사용자 직접 실행 대상
+- git commit 실행 여부: 미실행 - 사용자 직접 실행 대상
+- git push 실행 여부: 미실행 - 사용자 직접 실행 대상
+- `git diff --name-only`: 워크트리 전체에 기존 수정 파일 다수 존재, 이번 작업 관련 파일은 `apmath/worker-backup/worker/routes/billing-accounting-foundation.js`, `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`, `CODEX_RESULT.md`
+- `git status --short`: 워크트리 전체가 이미 dirty 상태이며, 이번 작업 관련 파일은 `M apmath/worker-backup/worker/routes/billing-accounting-foundation.js`, `M docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`, `M CODEX_RESULT.md`
 
 ## 4. 결과 요약
-- 반 플래너 확인 화면을 통계 중심 요약에서 학생별 실제 계획 열람 화면으로 변경
-- 모바일은 요일별 전체 목록, PC는 요일별/주간별 전환 구조로 정리
-- 기존 플래너 버튼 위치와 학생 개인 플래너 API는 유지한 채 반 전체 조회만 확장
+- 수납·출납 foundation 1단계-A로 결제수단, 수납 정책, 거래/장부/환불/이월/요약 조회 기반을 정리했다.
+- `/api/billing-accounting-foundation/billing-policy-rules`, `payment-transactions`, `cashbook-entries`, `refund-records`, `carryover-records` 경로명을 실제 route에서 그대로 받을 수 있게 alias를 보강했다.
+- 실제 운영 수납 처리, 환불 처리, 이월 처리, 장부 자동 반영은 이번 단계에서 구현하지 않았다.
+- 기존 Worker route 분리 원칙과 UI 문구 보존 원칙을 유지했다.
 
-## 5. 잘못한 점/위험했던 점/보존해야 할 점
-- 잘못한 점: 기존 구현이 특정 반 전용 요약 화면에 머물러 반 전체 실제 계획 확인 용도에 맞지 않았음
-- 위험했던 점: 신규 백엔드 API 없이 학생별 주간 데이터를 프론트에서 병합하므로 학생 수가 많은 반에서는 호출량이 늘 수 있음
-- 보존해야 할 점: 기존 출결/숙제/진도/QR/OMR/시험성적/클리닉 흐름과 학생 개인 플래너 저장/수정/삭제 로직은 유지해야 함
-
-## 6. 다음 조치
-- 반 화면에서 모바일/PC 각각 요일별/주간별 렌더와 실제 계획 누락 여부를 수동 검수할 필요가 있음
-- 학생 수가 많은 반에서 주간 조회 체감 속도를 확인한 뒤 필요 시 주간 전용 백엔드 API를 검토할 수 있음
+## 5. 다음 조치
+- 사용자가 직접 변경 파일 확인
+- 사용자가 직접 필요 시 `npx wrangler deploy`
+- 사용자가 직접 필요 시 운영 API smoke test
+- 사용자가 직접 지정 파일만 `git add`
+- 사용자가 직접 `git commit`
+- 사용자가 직접 `git push`
+- 다음 후보: 수납·출납 foundation 다음 단계-B 또는 `initial-data` 분리 여부 분석
