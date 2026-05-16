@@ -1,525 +1,478 @@
-````bash
 cat > CODEX_TASK.md <<'EOF'
 # CODEX_TASK
 
 ## 작업명
-수납·출납 foundation 1단계-E 안정화 보정
+수납·출납 foundation blocked key read-only API 보강
 
 ## 작업 목적
-수납·출납 foundation 1단계-E 작업 후 코드 리뷰에서 확인된 안정성 문제를 보정한다.
+`docs/INITIAL_DATA_SPLIT_ANALYSIS.md`의 수납·출납 foundation 1차 분리 준비 평가에서 `blocked`로 남은 key들을 initial-data 밖에서도 조회할 수 있도록 read-only API를 보강한다.
 
-이번 작업은 신규 기능 확장이 아니라 안정화 보정이다.
+이번 작업은 `/api/initial-data` 실제 축소 작업이 아니다.
+이번 작업은 initial-data에서 수납·출납 foundation 데이터를 제거하기 전 필요한 replacement API coverage를 채우는 작업이다.
 
-핵심 보정 대상:
+보강 대상 blocked key:
 
-1. `normalizeJsonString` JSON 파싱 안정화
-2. 환불 합산 기준 정리
-3. `total_outstanding` 계산 의도 주석 명확화
-4. `COALESCE(branch, 'apmath')` 기존 데이터 호환 의도 주석 명확화
-5. 비활성 결제수단/수납 정책 버튼 레이블 `저장` → `활성화` 수정
-6. summary 영역의 병렬 조회 실패 허용 보강
-7. 모바일에서 summary 3열 고정 그리드가 깨지지 않도록 최소 CSS 보강
+- billing_templates
+- payments
+- payment_items
+- billing_adjustments
+- billing_runs
 
-이번 작업에서도 수납·출납 foundation 진입점은 계속 숨김 상태로 유지한다.
+핵심 목표:
 
----
+- 기존 `/api/initial-data` 응답 구조는 그대로 유지한다.
+- `routes/billing-accounting-foundation.js` 안에 위 key들을 대체할 GET 전용 조회 API를 추가한다.
+- 기존 route 스타일, admin 권한 차단, 필터 방식, limit 방어 방식을 따른다.
+- `management.js`의 수납·출납 foundation lazy loader가 해당 API를 함께 조회할 수 있도록 최소 보강한다.
+- `state.db` 구조는 변경하지 않는다.
+- 대시보드/관리 메뉴 노출은 계속 금지한다.
 
 ## 반드시 먼저 읽을 문서
-
 작업 전 반드시 아래 문서를 처음부터 끝까지 읽고, 그 원칙을 우선 적용하라.
 
-```text
-docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
-````
+- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
+- docs/INITIAL_DATA_SPLIT_ANALYSIS.md
 
 있다면 아래 문서도 함께 읽어라.
 
-```text
-docs/WANGJI_OS_ROADMAP.md
-docs/WANGJI_OS_STRUCTURE.md
-```
+- docs/WANGJI_OS_ROADMAP.md
+- docs/WANGJI_OS_STRUCTURE.md
 
----
+문서가 없으면 새로 추정해서 만들지 말고, 현재 레포에 존재하는 문서 기준으로만 작업한다.
 
 ## 절대 원칙
+- 이번 작업은 blocked key read-only API 보강 작업이다.
+- `/api/initial-data` 응답 구조를 아직 줄이지 않는다.
+- initial-data에서 수납·출납 foundation key를 삭제하지 않는다.
+- initial-data SQL query를 삭제하거나 축소하지 않는다.
+- `apmath/worker-backup/worker/index.js`는 수정하지 않는다.
+- 새 route 파일을 만들지 않는다.
+- 기존 `routes/billing-accounting-foundation.js` 안에서만 API coverage를 보강한다.
+- POST/PATCH/DELETE 신규 기능은 만들지 않는다.
+- 이번 blocked key는 GET read-only 조회만 추가한다.
+- 기존 AP Math OS 화면을 깨지 않는다.
+- 기존 UI 문구·버튼명·화면명·메뉴명·운영 용어를 임의로 변경하지 않는다.
+- “숙제”를 “과제”로 바꾸는 식의 용어 변경 금지.
+- 원장/관리자 대시보드에 새 카드, 새 버튼, 새 메뉴를 노출하지 않는다.
+- 수납·출납 foundation 진입점은 계속 숨김 상태로 유지한다.
+- `showBillingAccountingFoundationEntry = false` 상태를 유지한다.
+- 대시보드 또는 관리 메뉴에 수납·출납 버튼을 다시 노출하지 않는다.
+- 실제 청구 생성 금지.
+- 실제 결제 연동 금지.
+- 실제 카드사/카카오페이 연동 금지.
+- 실제 알림톡/문자 발송 금지.
+- 실제 payments 대량 생성 금지.
+- 운영 DB에 테스트 데이터를 생성하는 smoke test 금지.
+- DB schema 변경 금지.
+- migration 추가 금지.
+- 사용자가 명시하지 않았으므로 Worker 배포 금지.
+- 사용자가 명시하지 않았으므로 운영 API smoke test 금지.
+- 사용자가 명시하지 않았으므로 git add / git commit / git push 금지.
+- git add . 금지.
 
-* 요청받은 안정화 항목만 수정한다.
-* 기존 AP Math OS 화면을 깨지 않는다.
-* 기존 UI 문구·버튼명·화면명·메뉴명·운영 용어를 임의로 변경하지 않는다.
-* 단, 이번 작업에서 명시한 `저장` → `활성화`는 버그성 오표기 수정으로 허용한다.
-* “숙제”를 “과제”로 바꾸는 식의 용어 변경 금지.
-* 원장/관리자 대시보드에 새 카드, 새 버튼, 새 메뉴를 노출하지 않는다.
-* 수납·출납 foundation 진입점은 계속 숨김 상태로 유지한다.
-* `showBillingAccountingFoundationEntry = false` 상태를 유지한다.
-* 대시보드 또는 관리 메뉴에 수납·출납 버튼을 다시 노출하지 않는다.
-* 실제 청구 생성 금지.
-* 실제 결제 연동 금지.
-* 실제 카드사/카카오페이 연동 금지.
-* 실제 알림톡/문자 발송 금지.
-* 실제 payments 대량 생성 금지.
-* 운영 DB에 테스트 데이터를 생성하는 smoke test 금지.
-* 사용자가 명시하지 않았으므로 Worker 배포 금지.
-* 사용자가 명시하지 않았으므로 운영 API smoke test 금지.
-* 사용자가 명시하지 않았으므로 git add / git commit / git push 금지.
-* `git add .` 금지.
-* `index.js`에 API 본문을 직접 추가하지 않는다.
+## 현재 기준
+`docs/INITIAL_DATA_SPLIT_ANALYSIS.md`의 14장 기준:
 
----
+ready:
+- payment_methods
+- billing_policy_rules
+- accounting_daily_summaries
+- accounting_monthly_summaries
 
-## 수정 대상 파일
+almost ready:
+- payment_transactions
+- cashbook_entries
+- refund_records
+- carryover_records
 
+blocked:
+- billing_templates
+- payments
+- payment_items
+- billing_adjustments
+- billing_runs
+
+이번 작업은 blocked 항목만 read-only API coverage를 채우는 것이 목적이다.
+
+## 수정 가능 파일
 필요한 경우에만 아래 파일을 수정한다.
 
-```text
-apmath/worker-backup/worker/routes/billing-accounting-foundation.js
-apmath/js/management.js
-docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
-CODEX_RESULT.md
-```
+- apmath/worker-backup/worker/routes/billing-accounting-foundation.js
+- apmath/js/management.js
+- docs/INITIAL_DATA_SPLIT_ANALYSIS.md
+- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
+- CODEX_RESULT.md
 
-`apmath/js/dashboard.js`는 이번 작업에서 수정하지 않는다.
-단, 숨김 상태 확인만 하고 CODEX_RESULT에 기록한다.
+## 수정 금지 파일
+아래 파일은 수정하지 않는다.
 
----
+- apmath/worker-backup/worker/index.js
+- apmath/js/core.js
+- apmath/js/dashboard.js
+- apmath/student/index.html
+- apmath/planner/index.html
+- apmath/worker-backup/worker/schema.sql
+- apmath/worker-backup/worker/migrations/
 
-## 1. backend 안정화: normalizeJsonString
-
+## 1. route alias 추가 또는 확인
 대상 파일:
 
-```text
-apmath/worker-backup/worker/routes/billing-accounting-foundation.js
-```
+- apmath/worker-backup/worker/routes/billing-accounting-foundation.js
 
-현재 문제:
+`normalizeFoundationSub`에서 blocked key API alias를 처리한다.
 
-```js
-function normalizeJsonString(value) {
-  if (value === undefined || value === null || value === '') return null;
-  if (typeof value === 'string') {
-    const parsed = JSON.parse(value);
-    return JSON.stringify(parsed);
-  }
-  return JSON.stringify(value);
-}
-```
+추가 또는 확인할 alias:
 
-보정 기준:
+- billing-templates -> billing-templates
+- payments -> payments
+- payment-items -> payment-items
+- billing-adjustments -> billing-adjustments
+- billing-runs -> billing-runs
 
-* 함수 내부에서 JSON.parse / JSON.stringify 예외가 발생해도 Worker 전체가 예기치 않게 500으로 무너지지 않게 한다.
-* 호출부에서 try-catch를 이미 하고 있더라도 함수 자체를 안정화한다.
-* 잘못된 JSON 문자열은 호출부가 400으로 응답할 수 있도록 명확한 Error를 throw한다.
-* 빈 값은 기존처럼 `null`을 반환한다.
-* 객체/배열 값도 JSON.stringify 가능 여부를 검증한다.
+이미 raw sub 그대로 처리 가능하면 별도 alias는 최소화한다.
+다만 initial-data key와 URL resource가 헷갈리지 않도록 필요한 경우 아래 alias도 허용한다.
 
-권장 구현 방향:
-
-```js
-function normalizeJsonString(value) {
-  if (value === undefined || value === null || value === '') return null;
-  try {
-    if (typeof value === 'string') {
-      const parsed = JSON.parse(value);
-      return JSON.stringify(parsed);
-    }
-    return JSON.stringify(value);
-  } catch (e) {
-    throw new Error('invalid_json');
-  }
-}
-```
+- billing_templates -> billing-templates
+- payment_items -> payment-items
+- billing_adjustments -> billing-adjustments
+- billing_runs -> billing-runs
 
 주의:
+- 기존 alias를 삭제하지 않는다.
+- 기존 payment-methods, policy-rules, transactions, cashbook, refunds, carryovers, summaries 흐름을 깨지 않는다.
 
-* 기존 `POST/PATCH billing_policy_rules`의 `value_json must be valid JSON` 400 응답 흐름은 유지한다.
-* 응답 문구를 임의로 바꾸지 않는다.
+## 2. GET /billing-templates 추가
+대상 resource:
 
----
+- /api/billing-accounting-foundation/billing-templates
 
-## 2. backend 안정화: 환불 합산 기준 정리
+GET 전용으로 구현한다.
 
-대상 함수:
+조회 테이블:
 
-```text
-getAccountingSummary
-```
+- billing_templates
 
-현재 문제:
+필터 후보:
 
-```js
-const totalRefunded = toInt(paidRows[0]?.total_refunded, 0) + toInt(refundRows[0]?.total_refunded, 0);
-```
+- branch
+- active 또는 is_active
+- template_type
+- limit
 
-문제점:
+정렬 후보:
 
-* `payment_transactions.transaction_type = 'refund'`와 `refund_records`가 같은 환불을 동시에 표현하면 이중 합산될 수 있다.
+- branch ASC
+- template_type ASC
+- name ASC
+- created_at DESC
 
-보정 기준:
+응답 예시 형태:
 
-* `refund_records`를 환불 기준 원장으로 우선 사용한다.
-* `refund_records`에 해당 월 환불 합계가 있으면 그 값을 `total_refunded` 기준으로 사용한다.
-* `refund_records`가 0인 경우에만 기존 호환을 위해 `payment_transactions.transaction_type='refund'` 합계를 fallback으로 사용한다.
-* 실제 DB에 쓰기 작업은 하지 않는다.
-* 계산 기준을 코드 주석으로 남긴다.
-
-권장 구현 방향:
-
-```js
-const transactionRefunded = toInt(paidRows[0]?.total_refunded, 0);
-const recordedRefunded = toInt(refundRows[0]?.total_refunded, 0);
-
-// refund_records is the canonical refund ledger.
-// payment_transactions.transaction_type='refund' is kept as a compatibility fallback
-// for older rows that may not yet have a refund_records row.
-const totalRefunded = recordedRefunded > 0 ? recordedRefunded : transactionRefunded;
-```
+- { success: true, billing_templates: rows }
 
 주의:
+- 테이블 컬럼명은 실제 schema.sql 기준으로 확인한다.
+- 존재하지 않는 컬럼을 SELECT/WHERE에 넣지 않는다.
+- is_active 컬럼이 없으면 active 필터는 적용하지 않는다.
+- name/template_type 컬럼이 없으면 실제 컬럼 기준으로 정렬한다.
+- schema 확인 없이 추정 SQL 작성 금지.
 
-* 기존 응답 필드명 `total_refunded`는 유지한다.
-* 새 필드를 무리하게 추가하지 않는다.
-* 필요하면 내부 변수만 추가한다.
+## 3. GET /payments 추가
+대상 resource:
 
----
+- /api/billing-accounting-foundation/payments
 
-## 3. backend 안정화: total_outstanding 계산 의도 주석
+GET 전용으로 구현한다.
 
-대상:
+조회 테이블:
 
-```js
-total_outstanding: Math.max(0, totalBilled - totalPaid + totalRefunded)
-```
+- payments
 
-보정 기준:
+필터 후보:
 
-* 계산식은 그대로 유지한다.
-* 환불 금액을 더하는 이유를 주석으로 명확히 적는다.
-* 의도는 “환불 완료 금액은 이미 납부된 금액에서 다시 빠져나간 돈이므로, 미수 계산에서는 다시 청구 잔액으로 돌아온다”는 의미다.
-* 주석은 짧고 명확하게 작성한다.
-* 응답 구조는 변경하지 않는다.
+- student_id
+- branch
+- year
+- month
+- status
+- date_from/date_to 또는 created_at 범위
+- limit
 
-예시:
+응답 예시 형태:
 
-```js
-// Refunded money leaves the paid balance again, so it increases the remaining outstanding amount.
-const totalOutstanding = Math.max(0, totalBilled - totalPaid + totalRefunded);
-```
+- { success: true, payments: rows }
 
-그리고 반환부는 아래처럼 사용한다.
+주의:
+- payments에 branch가 직접 없고 payment_items를 통해 branch를 판단해야 하면, 기존 initial-data 쿼리 방식을 참고한다.
+- branch 필터가 애매하면 무리하게 잘못된 필터를 만들지 말고 문서에 제한사항을 적는다.
+- admin 전용 route이므로 현재 handler 상단 admin 차단을 유지한다.
+- 실제 청구 생성은 절대 하지 않는다.
 
-```js
-total_outstanding: totalOutstanding,
-```
+## 4. GET /payment-items 추가
+대상 resource:
 
----
+- /api/billing-accounting-foundation/payment-items
 
-## 4. backend 안정화: branch null fallback 주석
+GET 전용으로 구현한다.
 
-대상 함수:
+조회 테이블:
 
-```js
-function pushBranchFilter(whereParts, bindings, branch) {
-  if (!branch || branch === 'all') return;
-  whereParts.push('COALESCE(branch, ?) = ?');
-  bindings.push('apmath', branch);
-}
-```
+- payment_items
 
-보정 기준:
+필터 후보:
 
-* 기존 동작은 유지한다.
-* `branch IS NULL`을 AP Math 기존 데이터로 보는 호환 정책임을 주석으로 명확히 적는다.
-* SQL을 과하게 바꾸지 않는다.
-* 단, 주석 위치는 `pushBranchFilter` 함수 바로 위 또는 함수 내부에 둔다.
+- payment_id
+- student_id는 직접 컬럼이 없으면 payments join으로만 가능
+- branch
+- item_type
+- limit
 
-예시:
+응답 예시 형태:
 
-```js
-// Legacy AP Math rows may have NULL branch.
-// Treat NULL as apmath for filtered accounting reads.
-```
+- { success: true, payment_items: rows }
 
----
+주의:
+- payment_items에 student_id가 직접 없으면 payments와 join해야 한다.
+- join이 필요하면 기존 payments schema를 확인하고 안전하게 작성한다.
+- payment_id 필터는 반드시 지원하는 것을 우선한다.
+- 존재하지 않는 컬럼 추정 금지.
 
-## 5. frontend 안정화: 비활성 항목 버튼 레이블 수정
+## 5. GET /billing-adjustments 추가
+대상 resource:
 
+- /api/billing-accounting-foundation/billing-adjustments
+
+GET 전용으로 구현한다.
+
+조회 테이블:
+
+- billing_adjustments
+
+필터 후보:
+
+- payment_id
+- student_id는 직접 컬럼이 없으면 payments join으로만 가능
+- adjustment_type
+- created_at date range
+- limit
+
+응답 예시 형태:
+
+- { success: true, billing_adjustments: rows }
+
+주의:
+- 실제 조정 생성/수정은 만들지 않는다.
+- 조회만 구현한다.
+- 컬럼은 schema.sql 기준으로 확인한다.
+
+## 6. GET /billing-runs 추가
+대상 resource:
+
+- /api/billing-accounting-foundation/billing-runs
+
+GET 전용으로 구현한다.
+
+조회 테이블:
+
+- billing_runs
+
+필터 후보:
+
+- branch
+- year
+- month
+- status
+- limit
+
+응답 예시 형태:
+
+- { success: true, billing_runs: rows }
+
+주의:
+- 실행 버튼, 자동 청구 생성, run 생성은 만들지 않는다.
+- 조회만 구현한다.
+
+## 7. 공통 필터 helper 재사용
+가능하면 기존 helper를 재사용한다.
+
+- parseLimit
+- normalizeBranchForAccounting
+- pushBranchFilter
+- pushDateRangeFilter
+- buildWhereClause
+- safeAll
+- toInt
+- normalizeIsoDate
+
+필요하면 read-only 조회용 helper를 작게 추가할 수 있다.
+
+허용 helper 예시:
+
+- hasColumn 관련 동적 introspection은 이번 작업에서 과하면 하지 않는다.
+- schema.sql을 기준으로 정적으로 안전한 SQL을 작성한다.
+- 단순 query param 정규화 helper는 허용한다.
+
+## 8. management.js lazy loader 보강
 대상 파일:
 
-```text
-apmath/js/management.js
-```
+- apmath/js/management.js
 
-대상 함수:
+현재 `billingAccountingFetchAll()`은 기존 ready/almost ready API를 조회한다.
+이번 작업에서 blocked key API가 추가되면 함께 조회하도록 최소 보강한다.
 
-```text
-renderBillingAccountingMethodsTab
-renderBillingAccountingPoliciesTab
-```
+추가 상태 후보:
 
-현재 문제:
+- ui.billingTemplates
+- ui.payments
+- ui.paymentItems
+- ui.billingAdjustments
+- ui.billingRuns
 
-비활성화된 결제수단/수납 정책의 토글 버튼 레이블이 `저장`으로 표시된다.
+`getBillingAccountingFoundationState()` 기본 상태에 위 배열을 추가한다.
 
-현재 형태:
+`billingAccountingFetchAll()` 요청 목록에 아래를 추가한다.
 
-```js
-${Number(item.is_active) === 0 ? '저장' : '비활성화'}
-```
-
-보정 기준:
-
-* 비활성 상태에서 다시 켜는 버튼은 `활성화`로 표시한다.
-* 활성 상태에서 끄는 버튼은 기존처럼 `비활성화`로 유지한다.
-* 저장 버튼 자체의 `저장` 문구는 변경하지 않는다.
-* toast 문구는 기존 흐름을 크게 바꾸지 않는다.
-* 버튼 색상은 기존 스타일 유지.
-
-수정 기준:
-
-```js
-${Number(item.is_active) === 0 ? '활성화' : '비활성화'}
-```
-
-적용 위치:
-
-* 결제수단 row 버튼
-* 수납 정책 row 버튼
-
----
-
-## 6. frontend 안정화: billingAccountingFetchAll 부분 실패 허용
-
-대상 함수:
-
-```text
-billingAccountingFetchAll
-```
-
-현재 문제:
-
-`Promise.all` 구조라 하나의 API만 실패해도 전체 조회가 실패한다.
-
-보정 기준:
-
-* `Promise.allSettled`로 변경한다.
-* 일부 API가 실패해도 성공한 API 결과는 화면에 반영한다.
-* 실패한 API가 있으면 `ui.error`에 간단한 안내를 표시한다.
-* 전체가 실패한 경우에도 화면이 깨지지 않고 빈 배열/빈 summary로 유지되게 한다.
-* 기존 API 경로는 변경하지 않는다.
-* 새 API를 추가하지 않는다.
-
-권장 구현 방향:
-
-1. 요청 목록을 배열로 만든다.
-
-```js
-const requests = [
-  ['methods', api.get('billing-accounting-foundation/payment-methods?limit=100')],
-  ['policies', api.get('billing-accounting-foundation/billing-policy-rules?limit=100')],
-  ...
-];
-```
-
-2. `Promise.allSettled` 결과를 key별로 정리한다.
-
-3. 성공한 것만 반영한다.
-
-예시 구조:
-
-```js
-const results = await Promise.allSettled(requests.map(item => item[1]));
-const resolved = {};
-let failedCount = 0;
-
-results.forEach((result, index) => {
-  const key = requests[index][0];
-  if (result.status === 'fulfilled') {
-    resolved[key] = result.value;
-  } else {
-    failedCount += 1;
-    resolved[key] = null;
-  }
-});
-```
-
-4. 기존 반영 로직은 resolved 기준으로 안전하게 바꾼다.
-
-```js
-ui.methods = Array.isArray(resolved.methods?.payment_methods) ? resolved.methods.payment_methods : [];
-```
-
-5. 실패가 일부라도 있으면 안내한다.
-
-```js
-if (failedCount > 0) {
-  ui.error = '일부 수납·출납 foundation 자료를 불러오지 못했습니다.';
-}
-```
+- billing-accounting-foundation/billing-templates?limit=100
+- billing-accounting-foundation/payments?limit=50
+- billing-accounting-foundation/payment-items?limit=100
+- billing-accounting-foundation/billing-adjustments?limit=50
+- billing-accounting-foundation/billing-runs?limit=50
 
 주의:
+- 모달 UI에 새 탭이나 새 버튼을 노출하지 않는다.
+- 이번 작업은 lazy loader coverage 확인용 상태 보강이다.
+- 데이터를 받아도 화면에 새 섹션을 만들지 않는다.
+- 일부 실패 시 기존 allSettled 흐름으로 오류 안내만 표시한다.
+- 기존 성공 데이터 유지 흐름을 깨지 않는다.
+- state.db에 병합하지 않는다.
 
-* 기존 `ui.error = '수납·출납 foundation 조회 중 오류가 발생했습니다.';` 문구는 전체 예외 catch용으로 유지 가능하다.
-* `finally`에서 `ui.loading = false`와 `renderBillingAccountingFoundationModal()` 흐름은 유지한다.
-
----
-
-## 7. frontend 안정화: summary 3열 고정 그리드 최소 보강
-
-대상 함수:
-
-```text
-renderBillingAccountingSummaryTab
-```
-
-현재 문제:
-
-summary 영역이 3열 고정이라 좁은 화면에서 깨질 수 있다.
-
-보정 기준:
-
-* 큰 UI 재설계 금지.
-* 새 CSS 파일 생성 금지.
-* 기존 모달 구조 유지.
-* inline style만 최소 보강한다.
-* 3열 고정 대신 좁은 화면에서도 자연스럽게 줄바꿈되도록 `repeat(auto-fit,minmax(...))` 또는 유사한 형태로 바꾼다.
-* 문구 변경 금지.
-
-적용 후보:
-
-현재:
-
-```html
-grid-template-columns:repeat(3,minmax(0,1fr));
-```
-
-수정:
-
-```html
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-```
-
-summary group 카드의 경우:
-
-```html
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-```
-
-상단 조회 컨트롤 3개도 가능하면 다음처럼 바꾼다.
-
-```html
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-```
-
-주의:
-
-* 기존 색상, 문구, 버튼명, 탭명은 변경하지 않는다.
-
----
-
-## 8. 문서 업데이트
-
-대상 파일:
-
-```text
-docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
-```
-
-문서에는 이번 안정화 보정 내용을 짧게 반영한다.
+## 9. docs/INITIAL_DATA_SPLIT_ANALYSIS.md 업데이트
+14장 또는 관련 섹션을 갱신한다.
 
 반영할 내용:
 
-```text
-- 수납·출납 foundation 1단계-E 안정화 보정 완료 또는 진행 내용
-- value_json JSON 안정화
-- 환불 집계 기준: refund_records 우선, payment_transactions refund는 호환 fallback
-- branch NULL은 기존 AP Math 데이터 호환으로 apmath 처리
-- summary 조회는 일부 API 실패 시에도 가능한 데이터 표시
-- 수납·출납 foundation 진입점은 계속 숨김 유지
-- 실제 청구/결제/발송은 계속 금지
-```
+- blocked였던 billing_templates, payments, payment_items, billing_adjustments, billing_runs에 read-only API가 추가되었는지
+- replacement API 표의 removal readiness 변경
+- management.js lazy loader가 해당 key를 조회할 수 있는지
+- 아직 initial-data에서 제거하지 않았다는 점
+- 실제 제거 전 남은 검증 항목
+
+readiness 기준:
+
+- API가 있고 management.js lazy loader도 연결되었지만 아직 initial-data 제거 전 수동 검증이 남았으면 almost ready
+- API가 있고 사용처가 명확히 모달 내부로 제한되며 제거 전 검증만 남았으면 ready
+- API가 부족하거나 join/권한 문제가 남아 있으면 blocked 유지
 
 주의:
+- 검증하지 않은 것을 완료로 쓰지 않는다.
+- 운영 화면 노출 상태를 바꾸지 않았음을 명시한다.
 
-* 문서를 과하게 재작성하지 않는다.
-* 기존 룰북 원칙은 변경하지 않는다.
-* 완료되지 않은 내용을 완료로 쓰지 않는다.
+## 10. docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md 업데이트
+룰북에 짧게 반영한다.
 
----
+반영할 내용:
 
-## 9. 검증
+- 수납·출납 foundation blocked key read-only API 보강 진행
+- initial-data 실제 축소는 아직 하지 않음
+- read-only API와 management.js lazy loader 검증 후 별도 작업에서 initial-data 축소 가능
+- dashboard/관리 메뉴 노출은 계속 숨김
+- 실제 청구/결제/발송 금지 유지
 
+주의:
+- 룰북 전체를 과하게 재작성하지 않는다.
+- 기존 금지 원칙을 삭제하지 않는다.
+- 기존 수납·출납 foundation 숨김 원칙을 변경하지 않는다.
+
+## 11. 검증
 수정한 JS 파일에 대해 문법 검증을 실행한다.
 
 필수:
 
-```bash
-node --check apmath/worker-backup/worker/routes/billing-accounting-foundation.js
-node --check apmath/js/management.js
-```
+- node --check apmath/worker-backup/worker/routes/billing-accounting-foundation.js
+- node --check apmath/js/management.js
 
-확인만 할 경우:
+dashboard.js는 수정하지 않았더라도 숨김 상태 확인 차원에서 선택적으로 실행 가능:
 
-```bash
-node --check apmath/js/dashboard.js
-```
+- node --check apmath/js/dashboard.js
 
 운영 API smoke test는 실행하지 않는다.
 Worker 배포도 실행하지 않는다.
 git add / commit / push도 실행하지 않는다.
 
----
+반드시 확인:
 
-## 10. 완료 보고
+- git diff --name-only
+- git status --short
 
+허용 변경 파일:
+
+- apmath/worker-backup/worker/routes/billing-accounting-foundation.js
+- apmath/js/management.js
+- docs/INITIAL_DATA_SPLIT_ANALYSIS.md
+- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
+- CODEX_RESULT.md
+
+CODEX_TASK.md가 기존 dirty 상태라면 CODEX_RESULT에 별도 확인 대상으로 적고, 커밋 대상에서는 제외하라.
+
+## 12. 완료 보고
 작업 완료 후 프로젝트 루트에 `CODEX_RESULT.md`를 작성한다.
 
 반드시 아래 형식을 사용한다.
 
-```md
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- 수정/생성한 파일 목록
+- 생성/수정한 파일 목록
 
 ## 2. 구현 완료 또는 확인 완료
-- normalizeJsonString 안정화 여부
-- 환불 합산 기준 정리 여부
-- total_outstanding 계산 주석 추가 여부
-- branch NULL fallback 주석 추가 여부
-- 결제수단/수납 정책 버튼 레이블 수정 여부
-- billingAccountingFetchAll 부분 실패 허용 보강 여부
-- summary grid 모바일 대응 보강 여부
-- 수납·출납 foundation 진입점 숨김 유지 여부
-- 기존 UI 문구·버튼명·화면명·메뉴명·운영 용어 변경 여부
+- billing_templates read-only API 추가 여부
+- payments read-only API 추가 여부
+- payment_items read-only API 추가 여부
+- billing_adjustments read-only API 추가 여부
+- billing_runs read-only API 추가 여부
+- management.js lazy loader blocked key 조회 추가 여부
+- state.db 구조 유지 여부
+- initial-data 응답 구조 유지 여부
+- dashboard.js 숨김 상태 유지 여부
+- docs/INITIAL_DATA_SPLIT_ANALYSIS.md 업데이트 여부
+- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md 업데이트 여부
 
 ## 3. 실행 결과
 - node --check 실행 결과
+- git diff --name-only 결과
+- git status --short 결과
 - Worker 배포 실행 여부: 미실행 - 사용자 직접 실행 대상
 - 운영 smoke 실행 여부: 미실행 - 사용자 직접 실행 대상
 - git commit 실행 여부: 미실행 - 사용자 직접 실행 대상
 - git push 실행 여부: 미실행 - 사용자 직접 실행 대상
 
 ## 4. 결과 요약
-- 이번 안정화 보정 요약
-- 아직 운영 화면에 노출하지 않았다는 점
-- 실제 청구/결제/발송을 실행하지 않았다는 점
+- blocked key가 ready/almost ready로 이동했는지
+- 아직 initial-data에서 제거하지 않았다는 점
+- 실제 initial-data 축소 전 남은 검증
+- 운영 화면 노출은 계속 금지라는 점
 
 ## 5. 다음 조치
-- 사용자가 직접 확인할 항목
-- 필요 시 사용자가 직접 Worker 배포
-- 필요 시 사용자가 직접 운영 API smoke test
+- 사용자가 직접 문서 확인
+- 필요 시 다음 단계 initial-data 실제 축소 지시서 작성
 - 필요 시 사용자가 직접 지정 파일만 git add
 - 권장 커밋 메시지
-```
+- 커밋 대상 파일
 
 완료 보고에는 반드시 아래 항목을 포함한다.
 
-```text
 - 기존 문구 변경 여부:
 - 기존 버튼명 변경 여부:
 - 기존 화면명 변경 여부:
 - 기존 메뉴명 변경 여부:
 - 기존 운영 용어 변경 여부:
+- initial-data 응답 구조 변경 여부:
+- initial-data SQL query 변경 여부:
+- 프론트 로딩 흐름 변경 여부:
+- 대시보드/관리 메뉴 노출 변경 여부:
 - 수납·출납 foundation 진입점 숨김 유지 여부:
+- DB schema 변경 여부:
+- migration 추가 여부:
 - 실제 청구 생성 여부:
 - 실제 결제 연동 여부:
 - 실제 알림톡/문자 발송 여부:
@@ -527,26 +480,16 @@ git add / commit / push도 실행하지 않는다.
 - 운영 smoke 실행 여부:
 - git commit 실행 여부:
 - git push 실행 여부:
-```
 
-버튼명 변경 여부에는 다음처럼 명확히 적는다.
+## 13. 권장 커밋 메시지
+작업 완료 후 사용자가 직접 커밋할 경우 권장 메시지:
 
-```text
-기존 버튼명 변경 여부: 버그성 오표기 `저장` 2곳을 `활성화`로 수정. 그 외 기존 버튼명 변경 없음.
-```
+Add billing accounting read-only split APIs
 
----
-
-## 최종 출력
-
+## 14. 최종 출력
 터미널 마지막 출력은 아래 문장으로 끝낸다.
 
-```text
 CODEX_RESULT.md에 완료 보고를 저장했습니다.
-```
 
 현재 프로젝트 루트의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라. 이전 작업 결과로 대체하지 마라.
 EOF
-
-```
-```

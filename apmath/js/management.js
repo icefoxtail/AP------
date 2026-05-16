@@ -392,6 +392,7 @@ function getBillingAccountingFoundationState() {
             tab: 'summary',
             loading: false,
             error: '',
+            loadedAt: '',
             branch: 'all',
             year: today.getFullYear(),
             month: today.getMonth() + 1,
@@ -403,6 +404,11 @@ function getBillingAccountingFoundationState() {
             carryovers: [],
             dailySummaries: [],
             monthlySummaries: [],
+            billingTemplates: [],
+            payments: [],
+            paymentItems: [],
+            billingAdjustments: [],
+            billingRuns: [],
             accountingSummary: null,
             methodForm: { id: '', method_key: 'card', name: '', category: '', is_active: 1, sort_order: 0, memo: '' },
             policyForm: { id: '', branch: 'all', rule_type: 'tuition', rule_key: '', name: '', value_json: '{\n  "amount": 0\n}', is_active: 1, memo: '' },
@@ -513,6 +519,11 @@ async function billingAccountingFetchAll() {
     if (ui.branch && ui.branch !== 'all') summaryParams.set('branch', ui.branch);
     try {
         const requests = [
+            ['billingTemplates', api.get('billing-accounting-foundation/billing-templates?limit=100')],
+            ['payments', api.get('billing-accounting-foundation/payments?limit=50')],
+            ['paymentItems', api.get('billing-accounting-foundation/payment-items?limit=100')],
+            ['billingAdjustments', api.get('billing-accounting-foundation/billing-adjustments?limit=50')],
+            ['billingRuns', api.get('billing-accounting-foundation/billing-runs?limit=50')],
             ['methods', api.get('billing-accounting-foundation/payment-methods?limit=100')],
             ['policies', api.get('billing-accounting-foundation/billing-policy-rules?limit=100')],
             ['transactions', api.get('billing-accounting-foundation/payment-transactions?limit=20')],
@@ -526,10 +537,11 @@ async function billingAccountingFetchAll() {
         const results = await Promise.allSettled(requests.map(item => item[1]));
         const resolved = {};
         let failedCount = 0;
+        const isOkResponse = response => response && !response.error && response.success !== false;
 
         results.forEach((result, index) => {
             const key = requests[index][0];
-            if (result.status === 'fulfilled') {
+            if (result.status === 'fulfilled' && isOkResponse(result.value)) {
                 resolved[key] = result.value;
             } else {
                 failedCount += 1;
@@ -537,15 +549,21 @@ async function billingAccountingFetchAll() {
             }
         });
 
-        ui.methods = Array.isArray(resolved.methods?.payment_methods) ? resolved.methods.payment_methods : [];
-        ui.policies = Array.isArray(resolved.policies?.policy_rules) ? resolved.policies.policy_rules : [];
-        ui.transactions = Array.isArray(resolved.transactions?.transactions) ? resolved.transactions.transactions : [];
-        ui.cashbookEntries = Array.isArray(resolved.cashbook?.cashbook_entries) ? resolved.cashbook.cashbook_entries : [];
-        ui.refunds = Array.isArray(resolved.refunds?.refunds) ? resolved.refunds.refunds : [];
-        ui.carryovers = Array.isArray(resolved.carryovers?.carryovers) ? resolved.carryovers.carryovers : [];
-        ui.dailySummaries = Array.isArray(resolved.daily?.daily_summaries) ? resolved.daily.daily_summaries : [];
-        ui.monthlySummaries = Array.isArray(resolved.monthly?.monthly_summaries) ? resolved.monthly.monthly_summaries : [];
-        ui.accountingSummary = resolved.summary?.success ? resolved.summary : null;
+        if (resolved.methods) ui.methods = Array.isArray(resolved.methods.payment_methods) ? resolved.methods.payment_methods : [];
+        if (resolved.policies) ui.policies = Array.isArray(resolved.policies.policy_rules) ? resolved.policies.policy_rules : [];
+        if (resolved.transactions) ui.transactions = Array.isArray(resolved.transactions.transactions) ? resolved.transactions.transactions : [];
+        if (resolved.cashbook) ui.cashbookEntries = Array.isArray(resolved.cashbook.cashbook_entries) ? resolved.cashbook.cashbook_entries : [];
+        if (resolved.refunds) ui.refunds = Array.isArray(resolved.refunds.refunds) ? resolved.refunds.refunds : [];
+        if (resolved.carryovers) ui.carryovers = Array.isArray(resolved.carryovers.carryovers) ? resolved.carryovers.carryovers : [];
+        if (resolved.daily) ui.dailySummaries = Array.isArray(resolved.daily.daily_summaries) ? resolved.daily.daily_summaries : [];
+        if (resolved.monthly) ui.monthlySummaries = Array.isArray(resolved.monthly.monthly_summaries) ? resolved.monthly.monthly_summaries : [];
+        if (resolved.billingTemplates) ui.billingTemplates = Array.isArray(resolved.billingTemplates.billing_templates) ? resolved.billingTemplates.billing_templates : [];
+        if (resolved.payments) ui.payments = Array.isArray(resolved.payments.payments) ? resolved.payments.payments : [];
+        if (resolved.paymentItems) ui.paymentItems = Array.isArray(resolved.paymentItems.payment_items) ? resolved.paymentItems.payment_items : [];
+        if (resolved.billingAdjustments) ui.billingAdjustments = Array.isArray(resolved.billingAdjustments.billing_adjustments) ? resolved.billingAdjustments.billing_adjustments : [];
+        if (resolved.billingRuns) ui.billingRuns = Array.isArray(resolved.billingRuns.billing_runs) ? resolved.billingRuns.billing_runs : [];
+        if (resolved.summary) ui.accountingSummary = resolved.summary?.success ? resolved.summary : null;
+        if (Object.values(resolved).some(Boolean)) ui.loadedAt = new Date().toISOString();
         if (failedCount > 0) {
             ui.error = '일부 수납·출납 foundation 자료를 불러오지 못했습니다.';
         }

@@ -72,6 +72,10 @@ function normalizeJsonString(value) {
 
 function normalizeFoundationSub(value) {
   const raw = String(value || '').trim().toLowerCase();
+  if (raw === 'billing_templates') return 'billing-templates';
+  if (raw === 'payment_items') return 'payment-items';
+  if (raw === 'billing_adjustments') return 'billing-adjustments';
+  if (raw === 'billing_runs') return 'billing-runs';
   if (raw === 'billing-policy-rules') return 'policy-rules';
   if (raw === 'payment-transactions') return 'transactions';
   if (raw === 'cashbook-entries') return 'cashbook';
@@ -428,6 +432,168 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
   const id = path[3] || '';
   const action = String(path[4] || '').trim().toLowerCase();
   const data = body || (['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {});
+
+  if (sub === 'billing-templates') {
+    if (method === 'GET') {
+      const whereParts = [];
+      const bindings = [];
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
+      const itemType = String(url.searchParams.get('item_type') || url.searchParams.get('template_type') || '').trim().toLowerCase();
+      pushBranchFilter(whereParts, bindings, branch);
+      if (url.searchParams.get('active') === '1' || url.searchParams.get('is_active') === '1') {
+        whereParts.push('is_active = 1');
+      }
+      if (itemType) {
+        whereParts.push('LOWER(COALESCE(item_type, ?)) = ?');
+        bindings.push('', itemType);
+      }
+      const billingTemplates = await safeAll(
+        env,
+        `SELECT * FROM billing_templates${buildWhereClause(whereParts)} ORDER BY branch ASC, item_type ASC, name ASC, created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
+      return jsonResponse({ success: true, billing_templates: billingTemplates });
+    }
+    return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  }
+
+  if (sub === 'payments') {
+    if (method === 'GET') {
+      const whereParts = [];
+      const bindings = [];
+      const studentId = String(url.searchParams.get('student_id') || '').trim();
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'apmath') : '';
+      const status = String(url.searchParams.get('status') || '').trim().toLowerCase();
+      const year = url.searchParams.get('year');
+      const month = url.searchParams.get('month');
+      if (studentId) {
+        whereParts.push('student_id = ?');
+        bindings.push(studentId);
+      }
+      if (branch && branch !== 'all') {
+        whereParts.push("EXISTS (SELECT 1 FROM payment_items pi WHERE pi.payment_id = payments.id AND COALESCE(pi.branch, 'apmath') = ?)");
+        bindings.push(branch);
+      }
+      if (year && /^\d{4}$/.test(String(year).trim())) {
+        whereParts.push('year = ?');
+        bindings.push(toInt(year, 0));
+      }
+      if (month) {
+        const monthValue = toInt(month, 0);
+        if (monthValue >= 1 && monthValue <= 12) {
+          whereParts.push('month = ?');
+          bindings.push(monthValue);
+        }
+      }
+      if (status) {
+        whereParts.push('LOWER(status) = ?');
+        bindings.push(status);
+      }
+      pushDateRangeFilter(whereParts, bindings, 'DATE(created_at)', url);
+      const payments = await safeAll(
+        env,
+        `SELECT * FROM payments${buildWhereClause(whereParts)} ORDER BY year DESC, month DESC, created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
+      return jsonResponse({ success: true, payments });
+    }
+    return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  }
+
+  if (sub === 'payment-items') {
+    if (method === 'GET') {
+      const whereParts = [];
+      const bindings = [];
+      const paymentId = String(url.searchParams.get('payment_id') || '').trim();
+      const studentId = String(url.searchParams.get('student_id') || '').trim();
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'apmath') : '';
+      const itemType = String(url.searchParams.get('item_type') || '').trim().toLowerCase();
+      if (paymentId) {
+        whereParts.push('payment_id = ?');
+        bindings.push(paymentId);
+      }
+      if (studentId) {
+        whereParts.push('EXISTS (SELECT 1 FROM payments p WHERE p.id = payment_items.payment_id AND p.student_id = ?)');
+        bindings.push(studentId);
+      }
+      pushBranchFilter(whereParts, bindings, branch);
+      if (itemType) {
+        whereParts.push('LOWER(COALESCE(item_type, ?)) = ?');
+        bindings.push('', itemType);
+      }
+      const paymentItems = await safeAll(
+        env,
+        `SELECT * FROM payment_items${buildWhereClause(whereParts)} ORDER BY created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
+      return jsonResponse({ success: true, payment_items: paymentItems });
+    }
+    return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  }
+
+  if (sub === 'billing-adjustments') {
+    if (method === 'GET') {
+      const whereParts = [];
+      const bindings = [];
+      const paymentId = String(url.searchParams.get('payment_id') || '').trim();
+      const studentId = String(url.searchParams.get('student_id') || '').trim();
+      const adjustmentType = String(url.searchParams.get('adjustment_type') || '').trim().toLowerCase();
+      if (paymentId) {
+        whereParts.push('payment_id = ?');
+        bindings.push(paymentId);
+      }
+      if (studentId) {
+        whereParts.push('EXISTS (SELECT 1 FROM payments p WHERE p.id = billing_adjustments.payment_id AND p.student_id = ?)');
+        bindings.push(studentId);
+      }
+      if (adjustmentType) {
+        whereParts.push('LOWER(adjustment_type) = ?');
+        bindings.push(adjustmentType);
+      }
+      pushDateRangeFilter(whereParts, bindings, 'DATE(created_at)', url);
+      const billingAdjustments = await safeAll(
+        env,
+        `SELECT * FROM billing_adjustments${buildWhereClause(whereParts)} ORDER BY created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
+      return jsonResponse({ success: true, billing_adjustments: billingAdjustments });
+    }
+    return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  }
+
+  if (sub === 'billing-runs') {
+    if (method === 'GET') {
+      const whereParts = [];
+      const bindings = [];
+      const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
+      const status = String(url.searchParams.get('status') || '').trim().toLowerCase();
+      const year = url.searchParams.get('year');
+      const month = url.searchParams.get('month');
+      pushBranchFilter(whereParts, bindings, branch);
+      if (year && /^\d{4}$/.test(String(year).trim())) {
+        whereParts.push('year = ?');
+        bindings.push(toInt(year, 0));
+      }
+      if (month) {
+        const monthValue = toInt(month, 0);
+        if (monthValue >= 1 && monthValue <= 12) {
+          whereParts.push('month = ?');
+          bindings.push(monthValue);
+        }
+      }
+      if (status) {
+        whereParts.push('LOWER(status) = ?');
+        bindings.push(status);
+      }
+      const billingRuns = await safeAll(
+        env,
+        `SELECT * FROM billing_runs${buildWhereClause(whereParts)} ORDER BY year DESC, month DESC, created_at DESC LIMIT ?`,
+        [...bindings, parseLimit(url)]
+      );
+      return jsonResponse({ success: true, billing_runs: billingRuns });
+    }
+    return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  }
 
   if (sub === 'payment-methods') {
     if (method === 'GET') {

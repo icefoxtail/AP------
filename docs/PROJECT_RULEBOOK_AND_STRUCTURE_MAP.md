@@ -992,3 +992,31 @@ docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
 - 수납·출납 foundation 진입점은 계속 숨김 상태다.
 - 실제 청구 생성, 실제 결제 연동, 실제 문자/알림 발송, 실제 payments 자동 생성은 계속 금지한다.
 - Worker 배포, 운영 API smoke test, git commit, git push는 사용자가 직접 실행한다.
+
+---
+
+# 2026-05-16 initial-data 분리 사전 분석 문서
+
+- `/api/initial-data` 응답을 분리하거나 축소하기 전에는 `docs/INITIAL_DATA_SPLIT_ANALYSIS.md`를 먼저 확인한다.
+- 첫 화면 필수 데이터, 화면 진입 후 로드 가능한 데이터, 분리 보류 데이터를 문서 기준으로 재확인한 뒤 작업한다.
+- read-only API와 프론트 lazy loader를 먼저 준비하고, `/api/initial-data` 응답 키 제거는 별도 검증 작업으로 진행한다.
+
+---
+
+# 2026-05-16 수납·출납 foundation initial-data 1차 분리 준비
+
+- initial-data 1차 분리 준비는 먼저 수납·출납 foundation 묶음부터 진행한다.
+- 실제 `/api/initial-data` 응답 축소와 key 제거는 별도 작업에서만 진행한다.
+- 수납·출납 foundation key를 제거하려면 기존 `routes/billing-accounting-foundation.js` API와 `management.js` lazy loader가 대체 조회를 끝낸 뒤 검토한다.
+- 제거 전에는 `dashboard.js`, `classroom.js`, `student.js`, `report.js`, `management.js` 화면 검증이 필수다.
+- 수납·출납 foundation 진입점은 계속 숨김 상태로 유지한다.
+
+---
+
+# 2026-05-16 수납·출납 foundation blocked key read-only API 보강
+
+- `billing_templates`, `payments`, `payment_items`, `billing_adjustments`, `billing_runs`는 기존 `routes/billing-accounting-foundation.js` 안에서 GET 전용 replacement API로 조회할 수 있게 보강한다.
+- 이 보강은 `/api/initial-data` 실제 축소가 아니며, initial-data key 제거는 별도 작업에서만 진행한다.
+- `management.js` lazy loader는 해당 key를 모달 내부 상태로만 받으며 `state.db` 구조는 유지한다.
+- 대시보드/관리 메뉴의 수납·출납 foundation 진입점은 계속 숨김 상태로 둔다.
+- 실제 청구 생성, 결제 연동, 알림·문자 발송, payments 자동 생성은 계속 금지한다.
