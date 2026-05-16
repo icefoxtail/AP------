@@ -1619,21 +1619,9 @@ async function deleteExamByClass(classId, examTitle, examDate, archiveFile = '')
     } catch (e) { console.warn(e); toast('시험 전체삭제 실패', 'warn'); }
 }
 
-// ── 고1A 플래너 확인 ─────────────────────────────────────────────
+// ── 선생님용 반 플래너 확인 ─────────────────────────────────────────────
 function isPlannerTargetClass(cls) {
-    if (!cls) return false;
-
-    const className = String(cls.name || '').trim();
-    const teacherRaw = String(cls.teacher_name || '').trim();
-    const teacher = teacherRaw
-        .replace(/\s*선생님\s*$/g, '')
-        .trim()
-        .toLowerCase();
-
-    const teacherAliases = ['박준성', '선생님1', 'teacher1', 't1']
-        .map(v => String(v).toLowerCase());
-
-    return className.includes('고1A') && teacherAliases.includes(teacher);
+    return !!cls;
 }
 
 function getPlannerBaseUrl() {
@@ -1660,6 +1648,241 @@ async function copyPlannerStudentLink(studentId) {
 async function loadPlannerOverview(classId, date) {
     if (api.getPlannerOverview) return api.getPlannerOverview(classId, date);
     return api.get(`planner/overview?class_id=${encodeURIComponent(classId)}&date=${encodeURIComponent(date)}`);
+}
+
+function getClassPlannerToday() {
+    try {
+        return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+    } catch (e) {
+        return new Date().toLocaleDateString('sv-SE');
+    }
+}
+
+function parseClassPlannerDate(dateStr) {
+    const safe = String(dateStr || '').trim();
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(safe)) return null;
+    const date = new Date(`${safe}T00:00:00`);
+    if (!Number.isFinite(date.getTime())) return null;
+    return date;
+}
+
+function addClassPlannerDays(dateStr, days) {
+    const base = parseClassPlannerDate(dateStr) || parseClassPlannerDate(getClassPlannerToday());
+    if (!base) return getClassPlannerToday();
+    base.setDate(base.getDate() + Number(days || 0));
+    return base.toLocaleDateString('sv-SE');
+}
+
+function getClassPlannerWeekStart(dateStr) {
+    const base = parseClassPlannerDate(dateStr) || parseClassPlannerDate(getClassPlannerToday());
+    if (!base) return getClassPlannerToday();
+    const day = base.getDay();
+    const offset = day === 0 ? -6 : 1 - day;
+    return addClassPlannerDays(base.toLocaleDateString('sv-SE'), offset);
+}
+
+function getClassPlannerWeekDates(weekStart) {
+    return Array.from({ length: 7 }, (_, idx) => addClassPlannerDays(weekStart, idx));
+}
+
+function getClassPlannerDayName(dateStr, longLabel = false) {
+    const date = parseClassPlannerDate(dateStr) || parseClassPlannerDate(getClassPlannerToday());
+    const shortNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const longNames = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+    const index = date ? date.getDay() : 0;
+    return longLabel ? longNames[index] : shortNames[index];
+}
+
+function formatClassPlannerDayLabel(dateStr) {
+    return `${getClassPlannerDayName(dateStr)} ${String(dateStr || '').slice(5)}`;
+}
+
+function getClassPlannerPlanDate(plan) {
+    return String(plan?.plan_date || plan?.date || plan?.feedback_date || '').slice(0, 10);
+}
+
+function getClassPlannerPlanTitle(plan) {
+    return String(plan?.title || plan?.content || plan?.plan_title || '').trim();
+}
+
+function getClassPlannerPlanSubject(plan) {
+    return String(plan?.subject || '').trim();
+}
+
+function isClassPlannerDone(plan) {
+    return Number(plan?.is_done || plan?.done || 0) === 1;
+}
+
+function ensureClassPlannerState() {
+    if (!state.ui) state.ui = {};
+    const today = getClassPlannerToday();
+    if (!state.ui.classPlannerMode) state.ui.classPlannerMode = 'day';
+    if (!state.ui.classPlannerSelectedDate) state.ui.classPlannerSelectedDate = today;
+    if (!state.ui.classPlannerWeekStart) state.ui.classPlannerWeekStart = getClassPlannerWeekStart(state.ui.classPlannerSelectedDate);
+    if (!state.ui.classPlannerWeekCache || typeof state.ui.classPlannerWeekCache !== 'object') state.ui.classPlannerWeekCache = {};
+    const dates = getClassPlannerWeekDates(state.ui.classPlannerWeekStart);
+    if (!dates.includes(state.ui.classPlannerSelectedDate)) {
+        state.ui.classPlannerSelectedDate = dates.includes(today) ? today : dates[0];
+    }
+    if (window.innerWidth <= 700) state.ui.classPlannerMode = 'day';
+}
+
+function buildClassPlannerWeekCacheKey(classId, weekStart) {
+    return `${String(classId || '')}::${String(weekStart || '')}`;
+}
+
+async function loadClassPlannerStudentRange(studentId, from, to) {
+    return api.getPlannerStudentPlans
+        ? api.getPlannerStudentPlans(studentId, from, to)
+        : api.get(`planner?student_id=${encodeURIComponent(studentId)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
+}
+
+async function loadClassPlannerWeek(classId, weekStart, force = false) {
+    ensureClassPlannerState();
+    const cacheKey = buildClassPlannerWeekCacheKey(classId, weekStart);
+    if (!force && state.ui.classPlannerWeekCache[cacheKey]) return state.ui.classPlannerWeekCache[cacheKey];
+
+    const students = getClassroomActiveStudents(classId);
+    const dates = getClassPlannerWeekDates(weekStart);
+    const from = dates[0];
+    const to = dates[dates.length - 1];
+
+    const studentWeeks = await Promise.all(students.map(async student => {
+        const byDate = {};
+        dates.forEach(date => { byDate[date] = []; });
+        try {
+            const data = await loadClassPlannerStudentRange(student.id, from, to);
+            const plans = Array.isArray(data?.plans) ? data.plans : [];
+            plans.forEach(plan => {
+                const date = getClassPlannerPlanDate(plan);
+                if (!byDate[date]) return;
+                byDate[date].push(plan);
+            });
+        } catch (e) {
+            console.error('[loadClassPlannerWeek] student load failed:', student.id, e);
+        }
+        dates.forEach(date => {
+            byDate[date].sort((a, b) => {
+                const at = String(a.sort_order ?? a.created_at ?? a.id ?? '');
+                const bt = String(b.sort_order ?? b.created_at ?? b.id ?? '');
+                return at.localeCompare(bt);
+            });
+        });
+        return { student, plansByDate: byDate };
+    }));
+
+    const weekData = { classId, weekStart, dates, students: studentWeeks };
+    state.ui.classPlannerWeekCache[cacheKey] = weekData;
+    return weekData;
+}
+
+function renderClassPlannerStudentPlanList(plans) {
+    const list = Array.isArray(plans) ? plans : [];
+    if (!list.length) return `<div class="cls-planner-empty">등록된 계획 없음</div>`;
+    return `
+        <div class="cls-planner-plan-list">
+            ${list.map(plan => {
+                const done = isClassPlannerDone(plan);
+                const subject = getClassPlannerPlanSubject(plan);
+                const title = getClassPlannerPlanTitle(plan);
+                return `
+                    <div class="cls-planner-plan-item ${done ? 'done' : ''}">
+                        <div class="cls-planner-plan-mark">${done ? '✓' : '-'}</div>
+                        <div class="cls-planner-plan-main">
+                            <div class="cls-planner-plan-title">${apEscapeHtml(title || '제목 없음')}</div>
+                            ${subject ? `<div class="cls-planner-plan-meta"><span class="cls-planner-subject">${apEscapeHtml(subject)}</span></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
+function renderClassPlannerDayList(classId, date, weekData) {
+    const students = Array.isArray(weekData?.students) ? weekData.students : [];
+    if (!students.length) return `<div class="cls-planner-empty">조회 대상 학생이 없습니다.</div>`;
+    return `
+        <div class="cls-planner-list">
+            <div class="cls-planner-date-title">${apEscapeHtml(getClassPlannerDayName(date, true))} ${apEscapeHtml(date)}</div>
+            ${students.map(row => `
+                <div class="cls-planner-student-card">
+                    <div class="cls-planner-student-name">${apEscapeHtml(row.student?.name || '학생')}</div>
+                    ${renderClassPlannerStudentPlanList(row.plansByDate?.[date] || [])}
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderClassPlannerWeekCell(plans) {
+    const list = Array.isArray(plans) ? plans : [];
+    if (!list.length) return `<div class="cls-planner-cell-empty">없음</div>`;
+    return `
+        <div class="cls-planner-cell-list">
+            ${list.map(plan => {
+                const done = isClassPlannerDone(plan);
+                const subject = getClassPlannerPlanSubject(plan);
+                const title = getClassPlannerPlanTitle(plan) || '제목 없음';
+                const text = subject ? `${subject} · ${title}` : title;
+                return `<div class="cls-planner-cell-item ${done ? 'done' : ''}">${done ? '✓ ' : ''}${apEscapeHtml(text)}</div>`;
+            }).join('')}
+        </div>
+    `;
+}
+
+function renderClassPlannerWeekTable(classId, weekStart, weekData) {
+    const dates = Array.isArray(weekData?.dates) ? weekData.dates : getClassPlannerWeekDates(weekStart);
+    const students = Array.isArray(weekData?.students) ? weekData.students : [];
+    if (!students.length) return `<div class="cls-planner-empty">조회 대상 학생이 없습니다.</div>`;
+    return `
+        <div class="cls-planner-week-wrap">
+            <table class="cls-planner-week-table">
+                <thead>
+                    <tr>
+                        <th>학생</th>
+                        ${dates.map(date => `<th>${apEscapeHtml(formatClassPlannerDayLabel(date))}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+                    ${students.map(row => `
+                        <tr>
+                            <td class="cls-planner-week-student">${apEscapeHtml(row.student?.name || '학생')}</td>
+                            ${dates.map(date => `<td>${renderClassPlannerWeekCell(row.plansByDate?.[date] || [])}</td>`).join('')}
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderClassPlannerModeTabs(classId) {
+    if (window.innerWidth <= 700) return '';
+    const mode = state.ui.classPlannerMode || 'day';
+    return `
+        <div class="cls-planner-mode-tabs">
+            <button class="cls-planner-btn ${mode === 'day' ? 'active' : ''}" onclick="setClassPlannerMode('${classId}', 'day')">요일별</button>
+            <button class="cls-planner-btn ${mode === 'week' ? 'active' : ''}" onclick="setClassPlannerMode('${classId}', 'week')">주간별</button>
+        </div>
+    `;
+}
+
+function renderClassPlannerDayTabs(classId, weekStart, selectedDate) {
+    const dates = getClassPlannerWeekDates(weekStart);
+    return `
+        <div class="cls-planner-day-tabs">
+            ${dates.map(date => `<button class="cls-planner-btn ${String(selectedDate) === String(date) ? 'active' : ''}" onclick="setClassPlannerSelectedDate('${classId}', '${date}')">${apEscapeHtml(formatClassPlannerDayLabel(date))}</button>`).join('')}
+        </div>
+    `;
+}
+
+function renderClassPlannerContent(classId, weekData) {
+    const mode = window.innerWidth <= 700 ? 'day' : (state.ui.classPlannerMode || 'day');
+    const date = state.ui.classPlannerSelectedDate;
+    return mode === 'week'
+        ? renderClassPlannerWeekTable(classId, state.ui.classPlannerWeekStart, weekData)
+        : renderClassPlannerDayList(classId, date, weekData);
 }
 
 function renderPlannerRateBar(rate) {
@@ -1865,26 +2088,34 @@ function renderPlannerOverviewTable(classId, date, rows) {
 }
 
 async function renderPlannerControl(classId) {
+    ensureClassPlannerState();
     if (!state.ui) state.ui = {};
     state.ui.plannerControlClassId = String(classId || '');
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
-    if (!isPlannerTargetClass(cls)) return toast('고1A 전용 기능입니다.', 'warn');
+    if (!isPlannerTargetClass(cls)) return toast('플래너 확인 대상 반이 아닙니다.', 'warn');
 
-    const today = new Date().toLocaleDateString('sv-SE');
+    const today = getClassPlannerToday();
+    if (!state.ui.classPlannerSelectedDate) state.ui.classPlannerSelectedDate = today;
+    state.ui.classPlannerWeekStart = getClassPlannerWeekStart(state.ui.classPlannerSelectedDate);
+    if (window.innerWidth <= 700) state.ui.classPlannerMode = 'day';
+
     showModal('플래너 확인', `
-        <div style="display:flex; flex-direction:column; gap:14px;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:14px; background:var(--surface-2); border-radius:16px;">
+        <div class="cls-planner-wrap">
+            <div class="cls-planner-hero">
                 <div style="min-width:0;">
-                    <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(cls.name)}</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">고1A 플래너 확인</div>
+                    <div class="cls-planner-hero-title">${apEscapeHtml(cls.name)}</div>
+                    <div class="cls-planner-hero-sub">반 전체 학생 플래너 확인</div>
                 </div>
-                <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:10px; background:var(--surface); border:1px solid var(--border);" onclick="renderClass('${classId}'); closeModal(true);">반 화면</button>
+                <button class="cls-planner-btn" onclick="renderClass('${classId}'); closeModal(true);">반 화면</button>
             </div>
-            <div style="display:flex; gap:8px; align-items:center;">
-                <input type="date" id="planner-control-date" class="btn" value="${today}" style="flex:1; text-align:left; background:var(--surface); border:1px solid var(--border);">
-                <button class="btn btn-primary" style="min-height:44px; padding:10px 14px; font-size:12px; font-weight:700;" onclick="refreshPlannerControl('${classId}')">조회</button>
+            <div class="cls-planner-nav">
+                <button class="cls-planner-btn" onclick="moveClassPlannerWeek('${classId}', -1)">지난 주</button>
+                <button class="cls-planner-btn" onclick="resetClassPlannerWeek('${classId}')">이번 주</button>
+                <button class="cls-planner-btn" onclick="moveClassPlannerWeek('${classId}', 1)">다음 주</button>
             </div>
+            ${renderClassPlannerModeTabs(classId)}
+            ${renderClassPlannerDayTabs(classId, state.ui.classPlannerWeekStart, state.ui.classPlannerSelectedDate)}
             <div id="planner-control-body">
                 <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>
             </div>
@@ -1894,24 +2125,49 @@ async function renderPlannerControl(classId) {
 }
 
 async function refreshPlannerControl(classId) {
-    const date = document.getElementById('planner-control-date')?.value || new Date().toLocaleDateString('sv-SE');
+    ensureClassPlannerState();
     const body = document.getElementById('planner-control-body');
     if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>`;
 
     try {
-        const data = await loadPlannerOverview(classId, date);
-        if (!data?.success) {
-            if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 정보를 불러오지 못했습니다.</div>`;
-            toast(data?.message || data?.error || '플래너 조회 실패', 'warn');
-            return;
-        }
-        renderPlannerOverviewTable(classId, date, data.students || []);
+        const weekData = await loadClassPlannerWeek(classId, state.ui.classPlannerWeekStart, true);
+        if (body) body.innerHTML = renderClassPlannerContent(classId, weekData);
     } catch (e) {
         console.error('[refreshPlannerControl] failed:', e);
         if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 조회 중 오류가 발생했습니다.</div>`;
         toast('플래너 조회 중 오류가 발생했습니다.', 'error');
     }
 }
+
+window.setClassPlannerMode = async function(classId, mode) {
+    ensureClassPlannerState();
+    state.ui.classPlannerMode = String(mode) === 'week' ? 'week' : 'day';
+    await renderPlannerControl(classId);
+};
+
+window.setClassPlannerSelectedDate = async function(classId, dateStr) {
+    ensureClassPlannerState();
+    const date = normalizeClassroomDate(dateStr) || getClassPlannerToday();
+    state.ui.classPlannerSelectedDate = date;
+    state.ui.classPlannerWeekStart = getClassPlannerWeekStart(date);
+    await renderPlannerControl(classId);
+};
+
+window.moveClassPlannerWeek = async function(classId, direction) {
+    ensureClassPlannerState();
+    const move = Number(direction || 0) * 7;
+    state.ui.classPlannerWeekStart = addClassPlannerDays(state.ui.classPlannerWeekStart, move);
+    state.ui.classPlannerSelectedDate = addClassPlannerDays(state.ui.classPlannerSelectedDate, move);
+    await renderPlannerControl(classId);
+};
+
+window.resetClassPlannerWeek = async function(classId) {
+    ensureClassPlannerState();
+    const today = getClassPlannerToday();
+    state.ui.classPlannerSelectedDate = today;
+    state.ui.classPlannerWeekStart = getClassPlannerWeekStart(today);
+    await renderPlannerControl(classId);
+};
 
 function openPlannerFeedbackModal(studentId, date, currentRate) {
     const s = state.db.students.find(st => String(st.id) === String(studentId));
