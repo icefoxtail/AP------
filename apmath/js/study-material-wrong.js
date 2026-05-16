@@ -4,6 +4,7 @@
     Object.assign(window[stateKey], {
         tab: window[stateKey].tab || 'prepare',
         materials: window[stateKey].materials || [],
+        allMaterials: window[stateKey].allMaterials || [],
         selectedMaterialId: window[stateKey].selectedMaterialId || '',
         assignments: window[stateKey].assignments || [],
         ranges: window[stateKey].ranges || [],
@@ -11,6 +12,9 @@
         view: window[stateKey].view || null,
         output: window[stateKey].output || null,
         numberPicker: window[stateKey].numberPicker || null,
+        manageOpen: window[stateKey].manageOpen || false,
+        manageSelectedId: window[stateKey].manageSelectedId || '',
+        manageEditId: window[stateKey].manageEditId || '',
         entryFilters: window[stateKey].entryFilters || { grade: '', class_id: '', material_id: '' },
         viewFilters: window[stateKey].viewFilters || { grade: '', class_id: '', student_id: '', material_id: '' }
     });
@@ -46,6 +50,16 @@
         };
         return map[String(value || '').trim()] || String(value || '');
     }
+    function isHiddenMaterial(row) {
+        const status = String(row?.status || 'active').trim();
+        return status === 'inactive' || status === 'deleted';
+    }
+    function visibleMaterials(rows = st().materials || []) {
+        return (rows || []).filter(row => !isHiddenMaterial(row));
+    }
+    function allManageMaterials() {
+        return st().allMaterials?.length ? st().allMaterials : st().materials || [];
+    }
 
     function injectStyle() {
         if (document.getElementById('study-material-wrong-style')) return;
@@ -57,7 +71,7 @@
             .smw-tab { flex:0 0 auto; min-height:34px; padding:0 14px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:13px; font-weight:800; }
             .smw-tab.active { background:rgba(26,92,255,.08); border-color:rgba(26,92,255,.20); color:var(--primary); }
             .smw-section { border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:12px; display:flex; flex-direction:column; gap:10px; }
-            .smw-section-title { font-size:14px; font-weight:900; color:var(--text); line-height:1.3; }
+            .smw-section-title { font-size:14px; font-weight:900; color:var(--text); line-height:1.3; border-left:3px solid var(--primary); padding-left:9px; }
             .smw-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
             .smw-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
             .smw-field { display:flex; flex-direction:column; gap:5px; min-width:0; }
@@ -72,16 +86,18 @@
             .smw-title { font-size:13px; font-weight:900; color:var(--text); line-height:1.35; }
             .smw-meta { margin-top:5px; font-size:11px; font-weight:700; color:var(--secondary); line-height:1.45; }
             .smw-output { white-space:pre-wrap; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; line-height:1.6; max-height:360px; overflow:auto; }
-            .smw-help { font-size:11px; font-weight:800; color:var(--secondary); line-height:1.45; }
+            .smw-help { font-size:11px; font-weight:800; color:var(--secondary); line-height:1.45; background:rgba(26,92,255,.06); border-radius:8px; padding:6px 10px; }
             .smw-table-wrap { overflow:auto; border:1px solid var(--border); border-radius:14px; }
             .smw-entry-table { width:100%; border-collapse:collapse; min-width:520px; }
             .smw-entry-table th, .smw-entry-table td { border-bottom:1px solid var(--border); padding:8px; font-size:12px; vertical-align:middle; }
             .smw-entry-table th { color:var(--secondary); font-weight:900; background:var(--surface-2); white-space:nowrap; }
             .smw-entry-table td { color:var(--text); font-weight:800; }
-            .smw-status-btn { min-width:38px; min-height:34px; border-radius:10px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-weight:900; cursor:pointer; }
+            .smw-status-btn { min-width:40px; min-height:36px; border-radius:10px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-weight:900; cursor:pointer; font-size:13px; }
             .smw-status-btn.ok { color:var(--success); }
             .smw-status-btn.wrong { color:var(--error); }
             .smw-entry-input { width:100%; min-width:160px; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); padding:9px 10px; font-size:13px; font-weight:800; font-family:inherit; }
+            .smw-manage-note { font-size:12px; font-weight:800; color:var(--secondary); }
+            .smw-manage-tag { display:inline-flex; align-items:center; min-height:20px; margin-left:6px; padding:0 8px; border-radius:999px; background:rgba(232,65,79,.10); color:var(--error); font-size:10px; font-weight:900; vertical-align:middle; }
             .smw-picker-overlay { position:fixed; inset:0; z-index:1500; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; padding:16px; }
             .smw-picker { width:min(720px,100%); max-height:86vh; overflow:auto; background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:16px; box-shadow:0 12px 34px rgba(0,0,0,.20); }
             .smw-picker-head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:12px; }
@@ -144,16 +160,16 @@
     }
     function materialOptions(selected = '', includeAll = false) {
         const first = includeAll ? ['<option value="">전체 자료</option>'] : [];
-        return first.concat((st().materials || []).map(m => `<option value="${h(m.id)}" ${String(selected) === String(m.id) ? 'selected' : ''}>${h(m.title || m.id)}</option>`)).join('');
-    }
-    function optionRows(rows, labelKey = 'name') {
-        return (rows || []).map(row => `<option value="${h(row.id)}">${h(row[labelKey] || row.title || row.name || row.id)}</option>`).join('');
+        return first.concat(visibleMaterials().map(m => `<option value="${h(m.id)}" ${String(selected) === String(m.id) ? 'selected' : ''}>${h(m.title || m.id)}</option>`)).join('');
     }
     function getSelectedMaterialById(materialId) {
-        return (st().materials || []).find(m => String(m.id) === String(materialId));
+        return allManageMaterials().find(m => String(m.id) === String(materialId));
+    }
+    function getManageSelectedMaterial() {
+        return getSelectedMaterialById(st().manageSelectedId);
     }
     function ensureSelectedMaterialState() {
-        const materials = st().materials || [];
+        const materials = visibleMaterials();
         const selectedId = String(st().selectedMaterialId || '');
         if (selectedId && materials.some(m => String(m.id) === selectedId)) return selectedId;
         const fallback = materials[0] ? String(materials[0].id) : '';
@@ -170,64 +186,63 @@
         st().selectedMaterialId = nextId;
         if (st().entryFilters) st().entryFilters.material_id = nextId;
         if (st().viewFilters) st().viewFilters.material_id = nextId;
-        const ids = ['smw-range-material', 'smw-assign-material', 'smw-entry-material', 'smw-view-material'];
-        ids.forEach(id => {
+        ['smw-range-material', 'smw-assign-material', 'smw-entry-material', 'smw-view-material'].forEach(id => {
             const el = document.getElementById(id);
             if (el) el.value = nextId;
         });
     }
 
     function tabs() {
-        const items = [['prepare', '준비'], ['entry', '입력'], ['view', '보기']];
+        const items = [['prepare', '자료 설정'], ['entry', '오답 입력'], ['view', '오답 현황']];
         return `<div class="smw-tabs">${items.map(([key, label]) => `<button class="smw-tab ${st().tab === key ? 'active' : ''}" onclick="setStudyMaterialWrongTab('${key}')">${label}</button>`).join('')}</div>`;
     }
 
     function materialSection() {
         return `
             <div class="smw-section">
-                <div class="smw-section-title">자료 등록</div>
+                <div class="smw-section-title">교재 등록</div>
                 <div class="smw-grid">
-                    <div class="smw-field"><label>자료 종류</label><select id="smw-material-type">
+                    <div class="smw-field"><label>교재 종류</label><select id="smw-material-type">
                         <option value="textbook">교과서</option><option value="problem_book">문제기본서</option><option value="progress_book">진도교재</option><option value="test_prep">시험대비교재</option><option value="review_print">복습프린트</option><option value="clinic_print">클리닉프린트</option><option value="school_material">학교자료</option>
                     </select></div>
-                    <div class="smw-field"><label>자료명</label><input id="smw-title" placeholder="예: 쎈 중3-1"></div>
+                    <div class="smw-field"><label>교재명</label><input id="smw-title" placeholder="예: 쎈 중3-1"></div>
                     <div class="smw-field"><label>학년</label><input id="smw-grade" placeholder="예: 중3"></div>
                     <div class="smw-field"><label>학기</label><input id="smw-semester" placeholder="예: 1학기"></div>
-                    <div class="smw-field"><label>시작 번호</label><input id="smw-start" type="number" inputmode="numeric"></div>
-                    <div class="smw-field"><label>끝 번호</label><input id="smw-end" type="number" inputmode="numeric"></div>
+                    <div class="smw-field"><label>시작 문항</label><input id="smw-start" type="number" inputmode="numeric"></div>
+                    <div class="smw-field"><label>끝 문항</label><input id="smw-end" type="number" inputmode="numeric"></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterial()">등록</button><button class="btn" onclick="loadStudyMaterialWrongData()">새로고침</button></div>
-                <div class="smw-list">${(st().materials || []).map(m => `<button type="button" class="smw-row smw-material-card ${selectedMaterialIdFor() === String(m.id) ? 'active' : ''}" data-material-id="${h(m.id)}" onclick="selectStudyMaterialByCard(this)"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')}</div></button>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 자료가 없습니다.</div></div>'}</div>
+                <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterial()">등록하기</button><button class="btn" onclick="loadStudyMaterialWrongData()">새로고침</button><button class="btn" onclick="openStudyMaterialManage()">관리</button></div>
+                <div class="smw-list">${visibleMaterials().map(m => `<button type="button" class="smw-row smw-material-card ${selectedMaterialIdFor() === String(m.id) ? 'active' : ''}" data-material-id="${h(m.id)}" onclick="selectStudyMaterialByCard(this)"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')}</div></button>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 교재가 없습니다.</div></div>'}</div>
             </div>
         `;
     }
     function rangeSection() {
         return `
             <div class="smw-section">
-                <div class="smw-section-title">단원 설정</div>
-                <div class="smw-field"><label>수업자료</label><select id="smw-range-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor())}</select></div>
-                <div class="smw-field"><label>범위 붙여넣기</label><textarea id="smw-range-csv" placeholder="순서,대단원,소단원,시작번호,끝번호"></textarea></div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="importStudyMaterialRanges()">등록</button><button class="btn" onclick="loadStudyMaterialRanges()">보기</button></div>
+                <div class="smw-section-title">단원 범위 설정</div>
+                <div class="smw-field"><label>교재</label><select id="smw-range-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor())}</select></div>
+                <div class="smw-field"><label>단원 범위 붙여넣기</label><textarea id="smw-range-csv" placeholder="순서,대단원,소단원,시작번호,끝번호"></textarea></div>
+                <div class="smw-actions"><button class="btn btn-primary" onclick="importStudyMaterialRanges()">등록하기</button><button class="btn" onclick="loadStudyMaterialRanges()">목록 보기</button></div>
                 <div id="smw-range-list" class="smw-list"></div>
             </div>
         `;
     }
     function assignmentRows() {
-        return (st().assignments || []).map(a => `<div class="smw-row"><div class="smw-title">${h(a.assignment_title || a.material_title)}</div><div class="smw-meta">${h(a.class_name || a.class_id)} · ${h(a.material_title || a.material_id)} · ${h(a.assigned_date)}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">열린 자료가 없습니다.</div></div>';
+        return (st().assignments || []).map(a => `<div class="smw-row"><div class="smw-title">${h(a.assignment_title || a.material_title)}</div><div class="smw-meta">${h(a.class_name || a.class_id)} · ${h(a.material_title || a.material_id)} · ${h(a.assigned_date)}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">배정된 교재가 없습니다.</div></div>';
     }
     function assignSection() {
         const f = st().entryFilters || {};
         return `
             <div class="smw-section">
-                <div class="smw-section-title">반 배정</div>
+                <div class="smw-section-title">반별 교재 배정</div>
                 <div class="smw-grid">
                     <div class="smw-field"><label>학년</label><select id="smw-assign-grade" onchange="onStudyMaterialAssignGradeChange()">${gradeOptions(f.grade)}</select></div>
                     <div class="smw-field"><label>반</label><select id="smw-assign-class">${filteredClassOptions(f.grade, f.class_id, '반 선택')}</select></div>
-                    <div class="smw-field"><label>수업자료</label><select id="smw-assign-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
-                    <div class="smw-field"><label>날짜</label><input id="smw-assign-date" type="date" value="${today()}"></div>
-                    <div class="smw-field"><label>이름</label><input id="smw-assign-title" placeholder="비워두면 자료명"></div>
+                    <div class="smw-field"><label>교재</label><select id="smw-assign-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
+                    <div class="smw-field"><label>배정일</label><input id="smw-assign-date" type="date" value="${today()}"></div>
+                    <div class="smw-field"><label>배정명 <span style="font-weight:700;opacity:.6;">(비워두면 교재명)</span></label><input id="smw-assign-title" placeholder="선택 입력"></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterialAssignment()">배정</button><button class="btn" onclick="loadStudyMaterialAssignments()">보기</button></div>
+                <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterialAssignment()">배정하기</button><button class="btn" onclick="loadStudyMaterialAssignments()">목록 보기</button></div>
                 <div class="smw-list">${assignmentRows()}</div>
             </div>
         `;
@@ -238,13 +253,13 @@
         const f = st().entryFilters || { grade: '', class_id: '', material_id: '' };
         return `
             <div class="smw-section">
-                <div class="smw-section-title">입력</div>
+                <div class="smw-section-title">오답 입력</div>
                 <div class="smw-grid three">
                     <div class="smw-field"><label>학년</label><select id="smw-entry-grade" onchange="onStudyMaterialEntryChange('grade')">${gradeOptions(f.grade)}</select></div>
                     <div class="smw-field"><label>반</label><select id="smw-entry-class" onchange="onStudyMaterialEntryChange('class')">${filteredClassOptions(f.grade, f.class_id, '반 선택')}</select></div>
-                    <div class="smw-field"><label>수업자료</label><select id="smw-entry-material" onchange="onStudyMaterialEntryChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
+                    <div class="smw-field"><label>교재</label><select id="smw-entry-material" onchange="onStudyMaterialEntryChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialEntrySheet()">불러오기</button><span class="smw-help">- 미입력 · O 정답 · X 오답 · 제출</span></div>
+                <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialEntrySheet()">불러오기</button><span class="smw-help">미입력(−) · O 전부 맞음 · X 오답 있음</span></div>
                 ${renderEntryRows()}
             </div>
             ${renderWrongNumberPicker()}
@@ -257,13 +272,13 @@
     }
     function renderEntryRows() {
         const entry = st().entry;
-        if (!entry) return '<div class="smw-output">조건을 선택한 뒤 불러오세요.</div>';
+        if (!entry) return '<div class="smw-output">학년·반·교재 선택 후 [불러오기]를 누르세요.</div>';
         const rows = entry.students || [];
-        if (!rows.length) return '<div class="smw-output">학생이 없습니다.</div>';
+        if (!rows.length) return '<div class="smw-output">해당 반에 학생이 없습니다.</div>';
         return `
             <div class="smw-table-wrap">
                 <table class="smw-entry-table">
-                    <thead><tr><th>학생명</th><th>상태</th><th>오답번호</th><th>선택</th></tr></thead>
+                    <thead><tr><th>학생명</th><th>상태</th><th>오답 번호</th><th>번호 선택</th></tr></thead>
                     <tbody>${rows.map(row => {
                         const status = rowStatus(row);
                         const nums = (row.wrong_numbers || []).join(', ');
@@ -319,10 +334,10 @@
         return `
             <div id="smw-number-picker-overlay" class="smw-picker-overlay" onclick="if(event.target===this) closeWrongNumberPicker()">
                 <div class="smw-picker" onclick="event.stopPropagation()">
-                    <div class="smw-picker-head"><div><div class="smw-picker-title">${h(picker.studentName)} 번호 선택</div><div class="smw-meta">선택: ${(picker.selected || []).length ? (picker.selected || []).join(', ') : '-'}</div></div><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
+                    <div class="smw-picker-head"><div><div class="smw-picker-title">${h(picker.studentName)} - 오답 번호 선택</div><div class="smw-meta">선택된 번호: ${(picker.selected || []).length ? (picker.selected || []).join(', ') : '없음'}</div></div><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
                     <div class="smw-groups">${groups.map(g => `<button type="button" class="smw-group-btn ${g.start === group.start ? 'active' : ''}" onclick="setWrongNumberPickerGroup(${g.start}, ${g.end})">${g.label}</button>`).join('')}</div>
                     <div class="smw-num-grid">${buttons.join('')}</div>
-                    <div class="smw-actions" style="margin-top:12px;"><button class="btn btn-primary" onclick="applyWrongNumberPicker()">적용</button><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
+                    <div class="smw-actions" style="margin-top:12px;"><button class="btn btn-primary" onclick="applyWrongNumberPicker()">저장</button><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
                 </div>
             </div>
         `;
@@ -352,7 +367,7 @@
         if (cls) parts.push(cls.name);
         const student = activeStudents().find(s => String(s.id) === String(scope.student_id));
         if (student) parts.push(student.name);
-        const material = st().materials.find(m => String(m.id) === String(scope.material_id));
+        const material = getSelectedMaterialById(scope.material_id);
         if (material) parts.push(material.title);
         return `현재 범위: ${parts.join(' / ') || '-'}`;
     }
@@ -360,14 +375,14 @@
         const f = st().viewFilters || { grade: '', class_id: '', student_id: '', material_id: '' };
         return `
             <div class="smw-section">
-                <div class="smw-section-title">보기</div>
+                <div class="smw-section-title">오답 현황</div>
                 <div class="smw-grid">
                     <div class="smw-field"><label>학년</label><select id="smw-view-grade" onchange="onStudyMaterialViewChange('grade')">${gradeOptions(f.grade)}</select></div>
                     <div class="smw-field"><label>반</label><select id="smw-view-class" onchange="onStudyMaterialViewChange('class')">${filteredClassOptions(f.grade, f.class_id)}</select></div>
                     <div class="smw-field"><label>학생</label><select id="smw-view-student" onchange="onStudyMaterialViewChange('student')">${filteredStudentOptions(f.grade, f.class_id, f.student_id)}</select></div>
-                    <div class="smw-field"><label>수업자료</label><select id="smw-view-material" onchange="onStudyMaterialViewChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id), true)}</select></div>
+                    <div class="smw-field"><label>교재</label><select id="smw-view-material" onchange="onStudyMaterialViewChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id), true)}</select></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialView()">조회</button>${st().view ? '<button class="btn" onclick="showStudyMaterialOutput()">출력</button>' : ''}</div>
+                <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialView()">조회</button></div>
                 <div class="smw-output">${renderViewText()}</div>
                 ${st().output ? `<div class="smw-output">${h(st().output)}</div>` : ''}
             </div>
@@ -381,20 +396,20 @@
     }
     function renderViewText() {
         const data = st().view;
-        if (!data) return '조건을 선택하세요.';
+        if (!data) return '학년·반·교재 선택 후 [조회]를 누르세요.';
         const lines = [renderScopeText(data.scope), ''];
         const submissions = data.submissions || [];
-        lines.push('제출');
+        lines.push('▸ 제출 현황');
         lines.push(...(submissions.length ? submissions.map(s => `${s.student_name || s.student_id} ${s.status || submissionStatusText(s)}`) : ['결과가 없습니다.']));
-        lines.push('', '오답');
+        lines.push('', '▸ 오답 집계');
         lines.push(...((data.top_wrong_numbers || []).length ? data.top_wrong_numbers.map(x => `${x.question_no}번 ${x.count}회`) : ['결과가 없습니다.']));
-        lines.push('', '단원');
+        lines.push('', '▸ 단원별 오답');
         lines.push(...((data.unit_counts || []).length ? data.unit_counts.map(x => `${x.unit_text || '단원 미지정'} ${x.count}개`) : ['결과가 없습니다.']));
-        lines.push('', '학생별');
+        lines.push('', '▸ 학생별 오답');
         const students = data.student_wrongs || [];
         lines.push(...(students.length ? students.map(x => `${x.student_name || x.student_id}: ${(x.wrong_numbers || []).length ? x.wrong_numbers.join(', ') : 'O'}`) : ['결과가 없습니다.']));
         if (data.scope?.type === 'student' && (data.items || []).length) {
-            lines.push('', '오답번호');
+            lines.push('', '▸ 오답 목록');
             lines.push(...data.items.map(x => `${x.question_no}번${x.unit_text ? ` (${x.unit_text})` : ''}`));
         }
         return lines.join('\n');
@@ -402,7 +417,7 @@
     function renderOutputText() {
         const data = st().view;
         if (!data) return '';
-        const title = `${(data.scope?.label || '수업자료')} 오답번호`;
+        const title = `${(data.scope?.label || '교재')} 오답번호`;
         const rows = data.student_wrongs || [];
         if (!rows.length && data.scope?.type === 'student' && (data.items || []).length) {
             const name = data.items[0].student_name || '학생';
@@ -410,21 +425,116 @@
         }
         return [title, '', ...(rows.length ? rows.map(r => `${r.student_name || r.student_id}\n${(r.wrong_numbers || []).length ? r.wrong_numbers.join(', ') : 'O'}`) : ['결과가 없습니다.'])].join('\n');
     }
+    function manageFormValues(material) {
+        return {
+            material_type: document.getElementById('smw-manage-material-type')?.value || material?.material_type || 'textbook',
+            title: document.getElementById('smw-manage-title')?.value || material?.title || '',
+            grade: document.getElementById('smw-manage-grade')?.value || material?.grade || '',
+            semester: document.getElementById('smw-manage-semester')?.value || material?.semester || '',
+            number_start: Number(document.getElementById('smw-manage-start')?.value || 0) || null,
+            number_end: Number(document.getElementById('smw-manage-end')?.value || 0) || null
+        };
+    }
+    function manageSection() {
+        const items = allManageMaterials();
+        const selected = getManageSelectedMaterial();
+        const editing = selected && String(st().manageEditId) === String(selected.id);
+        return `
+            <div class="smw-wrap">
+                <div class="smw-section">
+                    <div class="smw-section-title">교재 관리</div>
+                    <div class="smw-manage-note">교재를 선택하세요.</div>
+                    <div class="smw-list">${items.map(m => {
+                        const isSelected = String(st().manageSelectedId) === String(m.id);
+                        const tag = isHiddenMaterial(m) ? '<span class="smw-manage-tag">삭제됨</span>' : '';
+                        return `<button type="button" class="smw-row smw-material-card ${isSelected ? 'active' : ''}" data-material-id="${h(m.id)}" onclick="selectStudyMaterialManageItem(this)"><div class="smw-title">${h(m.title)}${tag}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')}</div></button>`;
+                    }).join('') || '<div class="smw-row"><div class="smw-meta">등록된 교재가 없습니다.</div></div>'}</div>
+                    ${editing ? `
+                        <div class="smw-grid">
+                            <div class="smw-field"><label>교재 종류</label><select id="smw-manage-material-type">
+                                <option value="textbook" ${selected.material_type === 'textbook' ? 'selected' : ''}>교과서</option><option value="problem_book" ${selected.material_type === 'problem_book' ? 'selected' : ''}>문제기본서</option><option value="progress_book" ${selected.material_type === 'progress_book' ? 'selected' : ''}>진도교재</option><option value="test_prep" ${selected.material_type === 'test_prep' ? 'selected' : ''}>시험대비교재</option><option value="review_print" ${selected.material_type === 'review_print' ? 'selected' : ''}>복습프린트</option><option value="clinic_print" ${selected.material_type === 'clinic_print' ? 'selected' : ''}>클리닉프린트</option><option value="school_material" ${selected.material_type === 'school_material' ? 'selected' : ''}>학교자료</option>
+                            </select></div>
+                            <div class="smw-field"><label>교재명</label><input id="smw-manage-title" value="${h(selected.title || '')}"></div>
+                            <div class="smw-field"><label>학년</label><input id="smw-manage-grade" value="${h(selected.grade || '')}"></div>
+                            <div class="smw-field"><label>학기</label><input id="smw-manage-semester" value="${h(selected.semester || '')}"></div>
+                            <div class="smw-field"><label>시작 문항</label><input id="smw-manage-start" type="number" inputmode="numeric" value="${h(selected.number_start || '')}"></div>
+                            <div class="smw-field"><label>끝 문항</label><input id="smw-manage-end" type="number" inputmode="numeric" value="${h(selected.number_end || '')}"></div>
+                        </div>
+                        <div class="smw-actions"><button class="btn btn-primary" onclick="saveStudyMaterialManageEdit()">저장</button><button class="btn" onclick="cancelStudyMaterialManageEdit()">취소</button></div>
+                    ` : `
+                        <div class="smw-actions"><button class="btn btn-primary" onclick="openStudyMaterialManageEdit()">수정</button><button class="btn" onclick="deleteStudyMaterialManageItem()">삭제</button><button class="btn" onclick="closeStudyMaterialManage()">닫기</button></div>
+                    `}
+                </div>
+            </div>
+        `;
+    }
 
     function body() {
+        if (st().manageOpen) return manageSection();
         return `<div class="smw-wrap">${tabs()}${st().tab === 'prepare' ? prepareForm() : st().tab === 'entry' ? entryForm() : viewForm()}</div>`;
     }
-    function render() { injectStyle(); showModal('수업자료', body()); }
+    function render() { injectStyle(); showModal(st().manageOpen ? '교재 관리' : '교재', body()); }
 
     window.openStudyMaterialWrongCenter = async function () {
         injectStyle();
-        showModal('수업자료', '<div class="smw-output">불러오는 중입니다.</div>');
+        showModal('교재', '<div class="smw-output">불러오는 중입니다.</div>');
         await loadStudyMaterialWrongData();
     };
     window.setStudyMaterialWrongTab = function (tab) { st().tab = tab; st().output = null; render(); };
+    window.openStudyMaterialManage = async function () {
+        const deleted = await get('study-materials?status=deleted');
+        const merged = [...(st().allMaterials || st().materials || [])];
+        (deleted.items || []).forEach(item => {
+            if (!merged.some(row => String(row.id) === String(item.id))) merged.push(item);
+        });
+        st().allMaterials = merged;
+        st().manageOpen = true;
+        st().manageEditId = '';
+        st().manageSelectedId = st().manageSelectedId || st().selectedMaterialId || merged[0]?.id || '';
+        render();
+    };
+    window.closeStudyMaterialManage = function () {
+        st().manageOpen = false;
+        st().manageEditId = '';
+        render();
+    };
+    window.selectStudyMaterialManageItem = function (button) {
+        st().manageSelectedId = button?.dataset?.materialId || '';
+        st().manageEditId = '';
+        render();
+    };
+    window.openStudyMaterialManageEdit = function () {
+        if (!st().manageSelectedId) return notify('교재를 선택하세요.', 'warn');
+        st().manageEditId = st().manageSelectedId;
+        render();
+    };
+    window.cancelStudyMaterialManageEdit = function () {
+        st().manageEditId = '';
+        render();
+    };
+    window.saveStudyMaterialManageEdit = async function () {
+        const material = getManageSelectedMaterial();
+        if (!material) return notify('교재를 선택하세요.', 'warn');
+        await call('PATCH', `study-materials/${encodeURIComponent(material.id)}`, manageFormValues(material));
+        notify('교재를 수정했습니다.');
+        st().manageEditId = '';
+        await loadStudyMaterialWrongData();
+        await openStudyMaterialManage();
+    };
+    window.deleteStudyMaterialManageItem = async function () {
+        const material = getManageSelectedMaterial();
+        if (!material) return notify('교재를 선택하세요.', 'warn');
+        if (!confirm('이 교재를 삭제할까요?')) return;
+        await call('PATCH', `study-materials/${encodeURIComponent(material.id)}`, { status: 'deleted' });
+        notify('교재를 삭제했습니다.');
+        st().manageSelectedId = '';
+        st().manageEditId = '';
+        await loadStudyMaterialWrongData();
+        await openStudyMaterialManage();
+    };
     window.selectStudyMaterial = function (materialId) {
         const nextId = String(materialId || '');
-        if (!nextId || !getSelectedMaterialById(nextId)) return;
+        if (!nextId || !getSelectedMaterialById(nextId) || isHiddenMaterial(getSelectedMaterialById(nextId))) return;
         syncSelectedMaterialAcrossSections(nextId);
         render();
     };
@@ -434,12 +544,14 @@
     };
     window.onStudyMaterialSelectChange = function (materialId) {
         const nextId = String(materialId || '');
-        if (!nextId || !getSelectedMaterialById(nextId)) return;
+        const material = getSelectedMaterialById(nextId);
+        if (!nextId || !material || isHiddenMaterial(material)) return;
         syncSelectedMaterialAcrossSections(nextId);
     };
     window.loadStudyMaterialWrongData = async function () {
         const [materials, assignments] = await Promise.all([get('study-materials'), get('class-material-assignments')]);
-        st().materials = materials.items || [];
+        st().allMaterials = materials.items || [];
+        st().materials = visibleMaterials(materials.items || []);
         st().assignments = assignments.items || [];
         ensureSelectedMaterialState();
         render();
@@ -454,7 +566,7 @@
             number_start: Number(document.getElementById('smw-start')?.value || 0) || null,
             number_end: Number(document.getElementById('smw-end')?.value || 0) || null
         });
-        notify('등록했습니다.');
+        notify('교재를 등록했습니다.');
         await loadStudyMaterialWrongData();
     };
     window.importStudyMaterialRanges = async function () {
@@ -470,7 +582,7 @@
     };
     window.loadStudyMaterialRanges = async function () {
         const materialId = document.getElementById('smw-range-material')?.value;
-        if (!materialId) return notify('수업자료를 선택하세요.', 'warn');
+        if (!materialId) return notify('교재를 선택하세요.', 'warn');
         const res = await get(`material-unit-ranges?material_id=${encodeURIComponent(materialId)}`);
         const root = document.getElementById('smw-range-list');
         if (root) root.innerHTML = (res.items || []).map(r => `<div class="smw-row"><div class="smw-title">${h(r.unit_text)}</div><div class="smw-meta">${h(r.subunit_text || '')} · ${r.start_no}-${r.end_no}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 단원이 없습니다.</div></div>';
@@ -487,7 +599,7 @@
             assigned_date: document.getElementById('smw-assign-date')?.value || today(),
             assignment_title: document.getElementById('smw-assign-title')?.value
         });
-        notify('배정했습니다.');
+        notify('반 배정을 완료했습니다.');
         await loadStudyMaterialAssignments();
     };
     window.loadStudyMaterialAssignments = async function () {
@@ -515,7 +627,7 @@
             material_id: document.getElementById('smw-entry-material')?.value || ''
         };
         if (!f.class_id) return notify('반을 선택하세요.', 'warn');
-        if (!f.material_id) return notify('수업자료를 선택하세요.', 'warn');
+        if (!f.material_id) return notify('교재를 선택하세요.', 'warn');
         st().entryFilters = f;
         const res = await get(`material-omr/entry-sheet?class_id=${encodeURIComponent(f.class_id)}&material_id=${encodeURIComponent(f.material_id)}`);
         st().entry = res;
@@ -593,7 +705,7 @@
     window.closeWrongNumberPicker = function () { st().numberPicker = null; render(); };
     window.saveStudyMaterialTeacherBatch = async function () {
         const entry = st().entry;
-        if (!entry?.assignment?.id) return notify('먼저 불러오세요.', 'warn');
+        if (!entry?.assignment?.id) return notify('먼저 학생 목록을 불러오세요.', 'warn');
         const { start, end } = getEntryBounds();
         const rows = [];
         let empty = 0;
@@ -610,10 +722,10 @@
             if (isOk) okCount += 1;
             rows.push({ student_id: row.student_id, wrong_numbers: isOk ? [] : nums, is_no_wrong: isOk ? 1 : 0 });
         }
-        if (!rows.length) return notify('저장할 내용이 없습니다.', 'warn');
-        if (!confirm(`저장 ${rows.length}명\n정답 ${okCount}명\n미입력 ${empty}명\n\n저장할까요?`)) return;
+        if (!rows.length) return notify('저장할 내용이 없습니다. 오답 번호를 입력하거나 O(정답)로 표시하세요.', 'warn');
+        if (!confirm(`총 ${rows.length}명 저장\n　· 정답: ${okCount}명\n　· 오답 입력: ${rows.length - okCount}명\n　· 미입력 제외: ${empty}명\n\n저장하시겠습니까?`)) return;
         const res = await post('material-omr/teacher-batch-save', { assignment_id: entry.assignment.id, rows });
-        notify(`저장했습니다. (${res.saved || 0}명)`);
+        notify(`${res.saved || 0}명 저장 완료`);
         await loadStudyMaterialEntrySheet();
     };
 
