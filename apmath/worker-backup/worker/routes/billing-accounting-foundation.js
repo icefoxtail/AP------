@@ -59,11 +59,15 @@ function normalizeIsoDate(value) {
 
 function normalizeJsonString(value) {
   if (value === undefined || value === null || value === '') return null;
-  if (typeof value === 'string') {
-    const parsed = JSON.parse(value);
-    return JSON.stringify(parsed);
+  try {
+    if (typeof value === 'string') {
+      const parsed = JSON.parse(value);
+      return JSON.stringify(parsed);
+    }
+    return JSON.stringify(value);
+  } catch (e) {
+    throw new Error('invalid_json');
   }
-  return JSON.stringify(value);
 }
 
 function normalizeFoundationSub(value) {
@@ -74,18 +78,22 @@ function normalizeFoundationSub(value) {
   if (raw === 'refund-records') return 'refunds';
   if (raw === 'carryover-records') return 'carryovers';
   if (raw === 'accounting-summary') return 'summary';
+  if (raw === 'accounting-daily-summaries') return 'daily-summaries';
+  if (raw === 'accounting-monthly-summaries') return 'monthly-summaries';
   return raw;
 }
 
 function pushBranchFilter(whereParts, bindings, branch) {
-  if (!branch) return;
+  if (!branch || branch === 'all') return;
+  // Legacy AP Math rows may have NULL branch.
+  // Treat NULL as apmath for filtered accounting reads.
   whereParts.push('COALESCE(branch, ?) = ?');
   bindings.push('apmath', branch);
 }
 
 function pushDateRangeFilter(whereParts, bindings, column, url) {
-  const from = normalizeIsoDate(url.searchParams.get('from') || url.searchParams.get('start_date'));
-  const to = normalizeIsoDate(url.searchParams.get('to') || url.searchParams.get('end_date'));
+  const from = normalizeIsoDate(url.searchParams.get('date_from') || url.searchParams.get('from') || url.searchParams.get('start_date'));
+  const to = normalizeIsoDate(url.searchParams.get('date_to') || url.searchParams.get('to') || url.searchParams.get('end_date'));
   if (from) {
     whereParts.push(`${column} >= ?`);
     bindings.push(from);
@@ -252,74 +260,134 @@ async function getBillingPreview(env, year, month) {
   };
 }
 
-async function getAccountingSummary(env, year, month) {
+async function getAccountingSummary(env, year, month, branch = '') {
   const ym = `${String(year).padStart(4, '0')}-${String(month).padStart(2, '0')}`;
+  const branchFilter = branch && branch !== 'all' ? normalizeBranchForAccounting(branch, 'apmath') : '';
 
+  const paymentWhere = ['p.year = ?', 'p.month = ?'];
+  const paymentBindings = [year, month];
+  if (branchFilter) {
+    paymentWhere.push("EXISTS (SELECT 1 FROM payment_items pi WHERE pi.payment_id = p.id AND COALESCE(pi.branch, 'apmath') = ?)");
+    paymentBindings.push(branchFilter);
+  }
   const billedRows = await safeAll(env, `
     SELECT COALESCE(SUM(total_amount), 0) AS total_billed
-    FROM payments
-    WHERE year = ? AND month = ?
-  `, [year, month]);
+    FROM payments p
+    WHERE ${paymentWhere.join(' AND ')}
+  `, paymentBindings);
 
+  const itemWhere = ['p.year = ?', 'p.month = ?'];
+  const itemBindings = [year, month];
+  if (branchFilter) {
+    itemWhere.push("COALESCE(pi.branch, 'apmath') = ?");
+    itemBindings.push(branchFilter);
+  }
   const itemBranchRows = await safeAll(env, `
-    SELECT COALESCE(branch, 'apmath') AS branch, COALESCE(SUM(amount), 0) AS amount
+    SELECT COALESCE(pi.branch, 'apmath') AS branch, COALESCE(SUM(pi.amount), 0) AS amount
     FROM payment_items pi
     JOIN payments p ON p.id = pi.payment_id
-    WHERE p.year = ? AND p.month = ?
-    GROUP BY COALESCE(branch, 'apmath')
-  `, [year, month]);
+    WHERE ${itemWhere.join(' AND ')}
+    GROUP BY COALESCE(pi.branch, 'apmath')
+  `, itemBindings);
 
+  const transactionWhere = ['transaction_date LIKE ?'];
+  const transactionBindings = [`${ym}%`];
+  if (branchFilter) {
+    transactionWhere.push('COALESCE(branch, ?) = ?');
+    transactionBindings.push('apmath', branchFilter);
+  }
   const paidRows = await safeAll(env, `
     SELECT
       COALESCE(SUM(CASE WHEN transaction_type IN ('payment', 'partial_payment', 'carryover_in') AND status = 'completed' THEN amount ELSE 0 END), 0) AS total_paid,
       COALESCE(SUM(CASE WHEN transaction_type = 'refund' AND status = 'completed' THEN amount ELSE 0 END), 0) AS total_refunded
     FROM payment_transactions
-    WHERE transaction_date LIKE ?
-  `, [`${ym}%`]);
+    WHERE ${transactionWhere.join(' AND ')}
+  `, transactionBindings);
 
+  const refundWhere = ['refund_date LIKE ?', "status = 'completed'"];
+  const refundBindings = [`${ym}%`];
+  if (branchFilter) {
+    refundWhere.push('COALESCE(branch, ?) = ?');
+    refundBindings.push('apmath', branchFilter);
+  }
   const refundRows = await safeAll(env, `
     SELECT COALESCE(SUM(refund_amount), 0) AS total_refunded
     FROM refund_records
-    WHERE refund_date LIKE ? AND status = 'completed'
-  `, [`${ym}%`]);
+    WHERE ${refundWhere.join(' AND ')}
+  `, refundBindings);
 
   const methodRows = await safeAll(env, `
     SELECT method_key, COALESCE(SUM(amount), 0) AS amount
     FROM payment_transactions
-    WHERE transaction_date LIKE ? AND status = 'completed'
+    WHERE ${transactionWhere.join(' AND ')} AND status = 'completed'
     GROUP BY method_key
-  `, [`${ym}%`]);
+  `, transactionBindings);
+
+  const statusRows = await safeAll(env, `
+    SELECT COALESCE(status, 'unknown') AS status, COALESCE(SUM(amount), 0) AS amount
+    FROM payment_transactions
+    WHERE ${transactionWhere.join(' AND ')}
+    GROUP BY COALESCE(status, 'unknown')
+  `, transactionBindings);
 
   const transactionBranchRows = await safeAll(env, `
     SELECT COALESCE(branch, 'apmath') AS branch, COALESCE(SUM(amount), 0) AS amount
     FROM payment_transactions
-    WHERE transaction_date LIKE ? AND status = 'completed'
+    WHERE ${transactionWhere.join(' AND ')} AND status = 'completed'
     GROUP BY COALESCE(branch, 'apmath')
-  `, [`${ym}%`]);
+  `, transactionBindings);
 
+  const carryoverWhere = ['created_at LIKE ?', "status != 'cancelled'"];
+  const carryoverBindings = [`${ym}%`];
+  if (branchFilter) {
+    carryoverWhere.push('COALESCE(branch, ?) = ?');
+    carryoverBindings.push('apmath', branchFilter);
+  }
+  const carryoverRows = await safeAll(env, `
+    SELECT COALESCE(SUM(amount), 0) AS total_carryover
+    FROM carryover_records
+    WHERE ${carryoverWhere.join(' AND ')}
+  `, carryoverBindings);
+
+  const cashbookWhere = ['entry_date LIKE ?', 'COALESCE(is_active, 1) = 1', "COALESCE(status, 'active') != 'cancelled'"];
+  const cashbookBindings = [`${ym}%`];
+  if (branchFilter) {
+    cashbookWhere.push('COALESCE(branch, ?) = ?');
+    cashbookBindings.push('apmath', branchFilter);
+  }
   const cashRows = await safeAll(env, `
     SELECT
       COALESCE(SUM(CASE WHEN entry_type = 'income' THEN amount ELSE 0 END), 0) AS cashbook_income,
       COALESCE(SUM(CASE WHEN entry_type = 'expense' THEN amount ELSE 0 END), 0) AS cashbook_expense
     FROM cashbook_entries
-    WHERE entry_date LIKE ?
-  `, [`${ym}%`]);
+    WHERE ${cashbookWhere.join(' AND ')}
+  `, cashbookBindings);
 
   const categoryRows = await safeAll(env, `
     SELECT category, COALESCE(SUM(amount), 0) AS amount
     FROM cashbook_entries
-    WHERE entry_date LIKE ?
+    WHERE ${cashbookWhere.join(' AND ')}
     GROUP BY category
-  `, [`${ym}%`]);
+  `, cashbookBindings);
 
   const totalBilled = toInt(billedRows[0]?.total_billed, 0);
   const totalPaid = toInt(paidRows[0]?.total_paid, 0);
-  const totalRefunded = toInt(paidRows[0]?.total_refunded, 0) + toInt(refundRows[0]?.total_refunded, 0);
+  const transactionRefunded = toInt(paidRows[0]?.total_refunded, 0);
+  const recordedRefunded = toInt(refundRows[0]?.total_refunded, 0);
+
+  // refund_records is the canonical refund ledger.
+  // payment_transactions.transaction_type='refund' is kept as a compatibility fallback
+  // for older rows that may not yet have a refund_records row.
+  const totalRefunded = recordedRefunded > 0 ? recordedRefunded : transactionRefunded;
+  const totalCarryover = toInt(carryoverRows[0]?.total_carryover, 0);
   const cashbookIncome = toInt(cashRows[0]?.cashbook_income, 0);
   const cashbookExpense = toInt(cashRows[0]?.cashbook_expense, 0);
 
   const byMethod = {};
   for (const row of methodRows) addGrouped(byMethod, row.method_key, row.amount);
+
+  const byStatus = {};
+  for (const row of statusRows) addGrouped(byStatus, row.status, row.amount);
 
   const byBranch = {};
   for (const row of itemBranchRows) addGrouped(byBranch, row.branch, row.amount);
@@ -330,6 +398,9 @@ async function getAccountingSummary(env, year, month) {
   const byCategory = {};
   for (const row of categoryRows) addGrouped(byCategory, row.category, row.amount);
 
+  // Refunded money leaves the paid balance again, so it increases the remaining outstanding amount.
+  const totalOutstanding = Math.max(0, totalBilled - totalPaid + totalRefunded);
+
   return {
     success: true,
     year,
@@ -337,11 +408,13 @@ async function getAccountingSummary(env, year, month) {
     total_billed: totalBilled,
     total_paid: totalPaid,
     total_refunded: totalRefunded,
-    total_outstanding: Math.max(0, totalBilled - totalPaid + totalRefunded),
+    total_carryover: totalCarryover,
+    total_outstanding: totalOutstanding,
     cashbook_income: cashbookIncome,
     cashbook_expense: cashbookExpense,
     net_cashflow: cashbookIncome - cashbookExpense,
     by_method: byMethod,
+    by_status: byStatus,
     by_branch: byBranch,
     by_category: byCategory
   };
@@ -687,7 +760,8 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
     if (method !== 'GET') return jsonResponse({ error: 'Method Not Allowed' }, 405);
     const ym = parseYearMonth(url);
     if (!ym) return jsonResponse({ success: false, error: 'invalid year/month' }, 400);
-    return jsonResponse(await getAccountingSummary(env, ym.year, ym.month));
+    const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
+    return jsonResponse(await getAccountingSummary(env, ym.year, ym.month, branch));
   }
 
   if (sub === 'refunds') {
@@ -843,10 +917,7 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       const whereParts = [];
       const bindings = [];
       const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
-      if (branch) {
-        whereParts.push('branch = ?');
-        bindings.push(branch);
-      }
+      pushBranchFilter(whereParts, bindings, branch);
       pushDateRangeFilter(whereParts, bindings, 'summary_date', url);
       const dailySummaries = await safeAll(
         env,
@@ -865,10 +936,7 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
       const branch = url.searchParams.get('branch') ? normalizeBranchForAccounting(url.searchParams.get('branch'), 'all') : '';
       const year = url.searchParams.get('year');
       const month = url.searchParams.get('month');
-      if (branch) {
-        whereParts.push('branch = ?');
-        bindings.push(branch);
-      }
+      pushBranchFilter(whereParts, bindings, branch);
       if (year && /^\d{4}$/.test(String(year).trim())) {
         whereParts.push('year = ?');
         bindings.push(toInt(year, 0));
