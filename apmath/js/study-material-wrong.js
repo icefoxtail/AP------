@@ -334,7 +334,7 @@
         return `
             <div id="smw-number-picker-overlay" class="smw-picker-overlay" onclick="if(event.target===this) closeWrongNumberPicker()">
                 <div class="smw-picker" onclick="event.stopPropagation()">
-                    <div class="smw-picker-head"><div><div class="smw-picker-title">${h(picker.studentName)} - 오답 번호 선택</div><div class="smw-meta">선택된 번호: ${(picker.selected || []).length ? (picker.selected || []).join(', ') : '없음'}</div></div><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
+                    <div class="smw-picker-head"><div><div class="smw-picker-title">${h(picker.studentName)} — 오답 번호 선택</div><div class="smw-meta">선택된 번호: ${(picker.selected || []).length ? (picker.selected || []).join(', ') : '없음'}</div></div><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
                     <div class="smw-groups">${groups.map(g => `<button type="button" class="smw-group-btn ${g.start === group.start ? 'active' : ''}" onclick="setWrongNumberPickerGroup(${g.start}, ${g.end})">${g.label}</button>`).join('')}</div>
                     <div class="smw-num-grid">${buttons.join('')}</div>
                     <div class="smw-actions" style="margin-top:12px;"><button class="btn btn-primary" onclick="applyWrongNumberPicker()">저장</button><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
