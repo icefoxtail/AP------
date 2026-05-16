@@ -99,6 +99,31 @@ async function findExistingRow(env, sql, bindings = []) {
   return rows[0] || null;
 }
 
+function getActorId(teacher) {
+  return teacher?.id || teacher?.login_id || teacher?.name || 'admin';
+}
+
+function positiveAmountOrNull(value) {
+  const amount = Number(value);
+  if (!Number.isFinite(amount) || amount <= 0) return null;
+  return Math.round(amount);
+}
+
+async function getRowById(env, table, id) {
+  return findExistingRow(env, `SELECT * FROM ${table} WHERE id = ? LIMIT 1`, [id]);
+}
+
+async function patchExistingRow(env, table, id, data, allowedKeys) {
+  const existing = await getRowById(env, table, id);
+  if (!existing) return { error: 'not_found' };
+  const updated = await patchById(env, table, id, data, allowedKeys);
+  return { existing, updated };
+}
+
+function validateRequiredText(value) {
+  return String(value || '').trim();
+}
+
 function parseYearMonth(url) {
   const now = new Date();
   const year = toInt(url.searchParams.get('year'), now.getUTCFullYear());
@@ -322,6 +347,7 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
   const method = request.method;
   const sub = normalizeFoundationSub(path[2] || '');
   const id = path[3] || '';
+  const action = String(path[4] || '').trim().toLowerCase();
   const data = body || (['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {});
 
   if (sub === 'payment-methods') {
@@ -359,6 +385,11 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
     }
 
     if (method === 'PATCH' && id) {
+      if (action === 'deactivate') {
+        const result = await patchExistingRow(env, 'payment_methods', id, { is_active: 0 }, ['is_active']);
+        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'payment method not found' }, 404);
+        return jsonResponse({ success: true, id, is_active: 0, payment_method: result.updated });
+      }
       const patch = { ...data };
       if (Object.prototype.hasOwnProperty.call(patch, 'method_key')) patch.method_key = normalizeMethodKey(patch.method_key);
       if (Object.prototype.hasOwnProperty.call(patch, 'is_active')) patch.is_active = toInt(patch.is_active, 1);
@@ -367,7 +398,9 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         const existingMethod = await findExistingRow(env, 'SELECT id FROM payment_methods WHERE method_key = ? AND id != ? LIMIT 1', [patch.method_key, id]);
         if (existingMethod) return jsonResponse({ success: false, error: 'method_key already exists' }, 409);
       }
-      return jsonResponse({ success: true, payment_method: await patchById(env, 'payment_methods', id, patch, ['method_key', 'name', 'category', 'is_active', 'sort_order', 'memo']) });
+      const result = await patchExistingRow(env, 'payment_methods', id, patch, ['method_key', 'name', 'category', 'is_active', 'sort_order', 'memo']);
+      if (result.error === 'not_found') return jsonResponse({ success: false, error: 'payment method not found' }, 404);
+      return jsonResponse({ success: true, payment_method: result.updated });
     }
   }
 
@@ -428,6 +461,11 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
     }
 
     if (method === 'PATCH' && id) {
+      if (action === 'deactivate') {
+        const result = await patchExistingRow(env, 'billing_policy_rules', id, { is_active: 0 }, ['is_active']);
+        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'policy rule not found' }, 404);
+        return jsonResponse({ success: true, id, is_active: 0, policy_rule: result.updated });
+      }
       const patch = { ...data };
       if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'all');
       if (Object.prototype.hasOwnProperty.call(patch, 'is_active')) patch.is_active = toInt(patch.is_active, 1);
@@ -451,7 +489,9 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
         );
         if (existingRule) return jsonResponse({ success: false, error: 'rule_key already exists for branch/rule_type' }, 409);
       }
-      return jsonResponse({ success: true, policy_rule: await patchById(env, 'billing_policy_rules', id, patch, ['rule_key', 'branch', 'rule_type', 'name', 'value_json', 'is_active', 'memo']) });
+      const result = await patchExistingRow(env, 'billing_policy_rules', id, patch, ['rule_key', 'branch', 'rule_type', 'name', 'value_json', 'is_active', 'memo']);
+      if (result.error === 'not_found') return jsonResponse({ success: false, error: 'policy rule not found' }, 404);
+      return jsonResponse({ success: true, policy_rule: result.updated });
     }
   }
 
@@ -463,6 +503,60 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
   }
 
   if (sub === 'transactions') {
+    if (method === 'POST') {
+      const studentId = validateRequiredText(data.student_id);
+      const methodKey = normalizeMethodKey(data.method_key);
+      const amount = positiveAmountOrNull(data.amount);
+      const transactionDate = normalizeIsoDate(data.transaction_date);
+      if (!studentId || !methodKey || !amount || !transactionDate) {
+        return jsonResponse({ success: false, error: 'student_id, method_key, amount and transaction_date required' }, 400);
+      }
+      const row = {
+        id: data.id || makeId('ptx'),
+        payment_id: validateRequiredText(data.payment_id) || null,
+        student_id: studentId,
+        branch: normalizeBranchForAccounting(data.branch, 'apmath'),
+        transaction_type: normalizeTransactionType(data.transaction_type),
+        method_key: methodKey,
+        amount,
+        transaction_date: transactionDate,
+        status: normalizeTransactionStatus(data.status),
+        receipt_no: validateRequiredText(data.receipt_no) || null,
+        external_provider: validateRequiredText(data.external_provider) || null,
+        external_transaction_id: validateRequiredText(data.external_transaction_id) || null,
+        note: validateRequiredText(data.note) || null,
+        created_by: getActorId(teacher)
+      };
+      return jsonResponse({ success: true, id: row.id, transaction: await insertRow(env, 'payment_transactions', row) });
+    }
+
+    if (method === 'PATCH' && id) {
+      if (action === 'cancel') {
+        const result = await patchExistingRow(env, 'payment_transactions', id, { status: 'cancelled' }, ['status']);
+        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'transaction not found' }, 404);
+        return jsonResponse({ success: true, id, status: 'cancelled', transaction: result.updated });
+      }
+      const patch = { ...data };
+      if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'apmath');
+      if (Object.prototype.hasOwnProperty.call(patch, 'transaction_type')) patch.transaction_type = normalizeTransactionType(patch.transaction_type);
+      if (Object.prototype.hasOwnProperty.call(patch, 'method_key')) patch.method_key = normalizeMethodKey(patch.method_key);
+      if (Object.prototype.hasOwnProperty.call(patch, 'status')) patch.status = normalizeTransactionStatus(patch.status);
+      if (Object.prototype.hasOwnProperty.call(patch, 'amount')) {
+        patch.amount = positiveAmountOrNull(patch.amount);
+        if (!patch.amount) return jsonResponse({ success: false, error: 'amount must be positive number' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'transaction_date')) {
+        patch.transaction_date = normalizeIsoDate(patch.transaction_date);
+        if (!patch.transaction_date) return jsonResponse({ success: false, error: 'transaction_date required' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'student_id') && !validateRequiredText(patch.student_id)) {
+        return jsonResponse({ success: false, error: 'student_id required' }, 400);
+      }
+      const result = await patchExistingRow(env, 'payment_transactions', id, patch, ['payment_id', 'student_id', 'branch', 'transaction_type', 'method_key', 'amount', 'transaction_date', 'status', 'receipt_no', 'external_provider', 'external_transaction_id', 'note']);
+      if (result.error === 'not_found') return jsonResponse({ success: false, error: 'transaction not found' }, 404);
+      return jsonResponse({ success: true, transaction: result.updated });
+    }
+
     if (method === 'GET') {
       const whereParts = [];
       const bindings = [];
@@ -490,6 +584,56 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
   }
 
   if (sub === 'cashbook') {
+    if (method === 'POST') {
+      const entryDate = normalizeIsoDate(data.entry_date);
+      const entryType = normalizeCashbookEntryType(data.entry_type);
+      const category = validateRequiredText(data.category);
+      const amount = positiveAmountOrNull(data.amount);
+      const title = validateRequiredText(data.title);
+      if (!entryDate || !category || !amount || !title) {
+        return jsonResponse({ success: false, error: 'entry_date, entry_type, category, amount and title required' }, 400);
+      }
+      const row = {
+        id: data.id || makeId('cbe'),
+        entry_date: entryDate,
+        entry_type: entryType,
+        category,
+        branch: normalizeBranchForAccounting(data.branch, 'all'),
+        amount,
+        payment_transaction_id: validateRequiredText(data.payment_transaction_id) || null,
+        student_id: validateRequiredText(data.student_id) || null,
+        title,
+        description: validateRequiredText(data.description) || null,
+        method_key: validateRequiredText(data.method_key) ? normalizeMethodKey(data.method_key) : null,
+        created_by: getActorId(teacher)
+      };
+      return jsonResponse({ success: true, id: row.id, cashbook_entry: await insertRow(env, 'cashbook_entries', row) });
+    }
+
+    if (method === 'PATCH' && id) {
+      const patch = { ...data };
+      if (Object.prototype.hasOwnProperty.call(patch, 'entry_date')) {
+        patch.entry_date = normalizeIsoDate(patch.entry_date);
+        if (!patch.entry_date) return jsonResponse({ success: false, error: 'entry_date required' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'entry_type')) patch.entry_type = normalizeCashbookEntryType(patch.entry_type);
+      if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'all');
+      if (Object.prototype.hasOwnProperty.call(patch, 'amount')) {
+        patch.amount = positiveAmountOrNull(patch.amount);
+        if (!patch.amount) return jsonResponse({ success: false, error: 'amount must be positive number' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'title') && !validateRequiredText(patch.title)) {
+        return jsonResponse({ success: false, error: 'title required' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'category') && !validateRequiredText(patch.category)) {
+        return jsonResponse({ success: false, error: 'category required' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'method_key') && patch.method_key) patch.method_key = normalizeMethodKey(patch.method_key);
+      const result = await patchExistingRow(env, 'cashbook_entries', id, patch, ['entry_date', 'entry_type', 'category', 'branch', 'amount', 'payment_transaction_id', 'student_id', 'title', 'description', 'method_key']);
+      if (result.error === 'not_found') return jsonResponse({ success: false, error: 'cashbook entry not found' }, 404);
+      return jsonResponse({ success: true, cashbook_entry: result.updated });
+    }
+
     if (method === 'GET') {
       const whereParts = [];
       const bindings = [];
@@ -524,6 +668,55 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
   }
 
   if (sub === 'refunds') {
+    if (method === 'POST') {
+      const studentId = validateRequiredText(data.student_id);
+      const refundAmount = positiveAmountOrNull(data.refund_amount);
+      const refundDate = normalizeIsoDate(data.refund_date);
+      if (!studentId || !refundAmount || !refundDate) {
+        return jsonResponse({ success: false, error: 'student_id, refund_amount and refund_date required' }, 400);
+      }
+      const row = {
+        id: data.id || makeId('rr'),
+        payment_id: validateRequiredText(data.payment_id) || null,
+        payment_transaction_id: validateRequiredText(data.payment_transaction_id) || null,
+        student_id: studentId,
+        branch: normalizeBranchForAccounting(data.branch, 'apmath'),
+        refund_amount: refundAmount,
+        refund_method_key: validateRequiredText(data.refund_method_key) ? normalizeMethodKey(data.refund_method_key) : null,
+        refund_date: refundDate,
+        reason: validateRequiredText(data.reason) || null,
+        status: normalizeTransactionStatus(data.status === 'refund' ? 'completed' : data.status),
+        created_by: getActorId(teacher)
+      };
+      return jsonResponse({ success: true, id: row.id, refund: await insertRow(env, 'refund_records', row) });
+    }
+
+    if (method === 'PATCH' && id) {
+      if (action === 'cancel') {
+        const result = await patchExistingRow(env, 'refund_records', id, { status: 'cancelled' }, ['status']);
+        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'refund not found' }, 404);
+        return jsonResponse({ success: true, id, status: 'cancelled', refund: result.updated });
+      }
+      const patch = { ...data };
+      if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'apmath');
+      if (Object.prototype.hasOwnProperty.call(patch, 'refund_amount')) {
+        patch.refund_amount = positiveAmountOrNull(patch.refund_amount);
+        if (!patch.refund_amount) return jsonResponse({ success: false, error: 'refund_amount must be positive number' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'refund_date')) {
+        patch.refund_date = normalizeIsoDate(patch.refund_date);
+        if (!patch.refund_date) return jsonResponse({ success: false, error: 'refund_date required' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'refund_method_key') && patch.refund_method_key) patch.refund_method_key = normalizeMethodKey(patch.refund_method_key);
+      if (Object.prototype.hasOwnProperty.call(patch, 'status')) patch.status = normalizeTransactionStatus(patch.status);
+      if (Object.prototype.hasOwnProperty.call(patch, 'student_id') && !validateRequiredText(patch.student_id)) {
+        return jsonResponse({ success: false, error: 'student_id required' }, 400);
+      }
+      const result = await patchExistingRow(env, 'refund_records', id, patch, ['payment_id', 'payment_transaction_id', 'student_id', 'branch', 'refund_amount', 'refund_method_key', 'refund_date', 'reason', 'status']);
+      if (result.error === 'not_found') return jsonResponse({ success: false, error: 'refund not found' }, 404);
+      return jsonResponse({ success: true, refund: result.updated });
+    }
+
     if (method === 'GET') {
       const whereParts = [];
       const bindings = [];
@@ -551,6 +744,51 @@ export async function handleBillingAccountingFoundation(request, env, teacher, p
   }
 
   if (sub === 'carryovers') {
+    if (method === 'POST') {
+      const studentId = validateRequiredText(data.student_id);
+      const amount = positiveAmountOrNull(data.amount);
+      const carryoverType = validateRequiredText(data.carryover_type);
+      if (!studentId || !amount || !carryoverType) {
+        return jsonResponse({ success: false, error: 'student_id, amount and carryover_type required' }, 400);
+      }
+      const row = {
+        id: data.id || makeId('cor'),
+        student_id: studentId,
+        from_payment_id: validateRequiredText(data.from_payment_id) || null,
+        to_payment_id: validateRequiredText(data.to_payment_id) || null,
+        branch: normalizeBranchForAccounting(data.branch, 'apmath'),
+        amount,
+        carryover_type: carryoverType,
+        reason: validateRequiredText(data.reason) || null,
+        status: validateRequiredText(data.status) || 'active',
+        created_by: getActorId(teacher)
+      };
+      return jsonResponse({ success: true, id: row.id, carryover: await insertRow(env, 'carryover_records', row) });
+    }
+
+    if (method === 'PATCH' && id) {
+      if (action === 'cancel') {
+        const result = await patchExistingRow(env, 'carryover_records', id, { status: 'cancelled' }, ['status']);
+        if (result.error === 'not_found') return jsonResponse({ success: false, error: 'carryover not found' }, 404);
+        return jsonResponse({ success: true, id, status: 'cancelled', carryover: result.updated });
+      }
+      const patch = { ...data };
+      if (Object.prototype.hasOwnProperty.call(patch, 'branch')) patch.branch = normalizeBranchForAccounting(patch.branch, 'apmath');
+      if (Object.prototype.hasOwnProperty.call(patch, 'amount')) {
+        patch.amount = positiveAmountOrNull(patch.amount);
+        if (!patch.amount) return jsonResponse({ success: false, error: 'amount must be positive number' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'student_id') && !validateRequiredText(patch.student_id)) {
+        return jsonResponse({ success: false, error: 'student_id required' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(patch, 'carryover_type') && !validateRequiredText(patch.carryover_type)) {
+        return jsonResponse({ success: false, error: 'carryover_type required' }, 400);
+      }
+      const result = await patchExistingRow(env, 'carryover_records', id, patch, ['student_id', 'from_payment_id', 'to_payment_id', 'branch', 'amount', 'carryover_type', 'reason', 'status']);
+      if (result.error === 'not_found') return jsonResponse({ success: false, error: 'carryover not found' }, 404);
+      return jsonResponse({ success: true, carryover: result.updated });
+    }
+
     if (method === 'GET') {
       const whereParts = [];
       const bindings = [];
