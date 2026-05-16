@@ -383,3 +383,877 @@ async function handleDeleteClass(classId) {
         toast('반 삭제 중 오류가 발생했습니다.', 'warn');
     }
 }
+
+function getBillingAccountingFoundationState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.billingAccountingFoundation) {
+        const today = new Date();
+        state.ui.billingAccountingFoundation = {
+            tab: 'summary',
+            loading: false,
+            error: '',
+            branch: 'all',
+            year: today.getFullYear(),
+            month: today.getMonth() + 1,
+            methods: [],
+            policies: [],
+            transactions: [],
+            cashbookEntries: [],
+            refunds: [],
+            carryovers: [],
+            dailySummaries: [],
+            monthlySummaries: [],
+            methodForm: { id: '', method_key: 'card', name: '', category: '', is_active: 1, sort_order: 0, memo: '' },
+            policyForm: { id: '', branch: 'all', rule_type: 'tuition', rule_key: '', name: '', value_json: '{\n  "amount": 0\n}', is_active: 1, memo: '' },
+            transactionForm: { id: '', payment_id: '', student_id: '', branch: 'apmath', transaction_type: 'payment', method_key: 'card', amount: '', transaction_date: '', status: 'completed', receipt_no: '', external_provider: '', external_transaction_id: '', note: '' },
+            cashbookForm: { id: '', entry_date: '', entry_type: 'income', category: '', branch: 'all', amount: '', payment_transaction_id: '', student_id: '', title: '', description: '', method_key: '' },
+            refundForm: { id: '', payment_id: '', payment_transaction_id: '', student_id: '', branch: 'apmath', refund_amount: '', refund_method_key: 'card', refund_date: '', reason: '', status: 'completed' },
+            carryoverForm: { id: '', student_id: '', from_payment_id: '', to_payment_id: '', branch: 'apmath', amount: '', carryover_type: 'credit', reason: '', status: 'active' }
+        };
+    }
+    return state.ui.billingAccountingFoundation;
+}
+
+function billingAccountingResetMethodForm() {
+    const ui = getBillingAccountingFoundationState();
+    ui.methodForm = { id: '', method_key: 'card', name: '', category: '', is_active: 1, sort_order: 0, memo: '' };
+}
+
+function billingAccountingResetPolicyForm() {
+    const ui = getBillingAccountingFoundationState();
+    ui.policyForm = { id: '', branch: 'all', rule_type: 'tuition', rule_key: '', name: '', value_json: '{\n  "amount": 0\n}', is_active: 1, memo: '' };
+}
+
+function billingAccountingResetTransactionForm() {
+    const ui = getBillingAccountingFoundationState();
+    ui.transactionForm = { id: '', payment_id: '', student_id: '', branch: 'apmath', transaction_type: 'payment', method_key: 'card', amount: '', transaction_date: '', status: 'completed', receipt_no: '', external_provider: '', external_transaction_id: '', note: '' };
+}
+
+function billingAccountingResetCashbookForm() {
+    const ui = getBillingAccountingFoundationState();
+    ui.cashbookForm = { id: '', entry_date: '', entry_type: 'income', category: '', branch: 'all', amount: '', payment_transaction_id: '', student_id: '', title: '', description: '', method_key: '' };
+}
+
+function billingAccountingResetRefundForm() {
+    const ui = getBillingAccountingFoundationState();
+    ui.refundForm = { id: '', payment_id: '', payment_transaction_id: '', student_id: '', branch: 'apmath', refund_amount: '', refund_method_key: 'card', refund_date: '', reason: '', status: 'completed' };
+}
+
+function billingAccountingResetCarryoverForm() {
+    const ui = getBillingAccountingFoundationState();
+    ui.carryoverForm = { id: '', student_id: '', from_payment_id: '', to_payment_id: '', branch: 'apmath', amount: '', carryover_type: 'credit', reason: '', status: 'active' };
+}
+
+function billingAccountingEscape(value) {
+    return mgmtEscape(value);
+}
+
+function billingAccountingFormatAmount(value) {
+    const amount = Number(value || 0);
+    if (!Number.isFinite(amount)) return '0';
+    return amount.toLocaleString('ko-KR');
+}
+
+function billingAccountingBranchOptions(selected = 'all') {
+    const options = [
+        { value: 'all', label: 'all' },
+        { value: 'apmath', label: 'AP Math' },
+        { value: 'cmath', label: '씨매쓰 초등' },
+        { value: 'eie', label: 'EIE 영어학원' }
+    ];
+    return options.map(option => `<option value="${option.value}" ${String(selected) === option.value ? 'selected' : ''}>${billingAccountingEscape(option.label)}</option>`).join('');
+}
+
+function billingAccountingMethodKeyOptions(selected = 'card') {
+    const options = ['card', 'cash', 'bank_transfer', 'kakaopay', 'local_voucher', 'mixed', 'other'];
+    return options.map(option => `<option value="${option}" ${String(selected) === option ? 'selected' : ''}>${billingAccountingEscape(option)}</option>`).join('');
+}
+
+function billingAccountingTransactionTypeOptions(selected = 'payment') {
+    const options = ['payment', 'partial_payment', 'refund', 'cancel', 'correction', 'carryover_in', 'carryover_out'];
+    return options.map(option => `<option value="${option}" ${String(selected) === option ? 'selected' : ''}>${billingAccountingEscape(option)}</option>`).join('');
+}
+
+function billingAccountingTransactionStatusOptions(selected = 'completed') {
+    const options = ['pending', 'completed', 'cancelled', 'failed', 'corrected'];
+    return options.map(option => `<option value="${option}" ${String(selected) === option ? 'selected' : ''}>${billingAccountingEscape(option)}</option>`).join('');
+}
+
+function billingAccountingEntryTypeOptions(selected = 'income') {
+    const options = ['income', 'expense', 'refund', 'adjustment', 'transfer'];
+    return options.map(option => `<option value="${option}" ${String(selected) === option ? 'selected' : ''}>${billingAccountingEscape(option)}</option>`).join('');
+}
+
+function billingAccountingCarryoverStatusOptions(selected = 'active') {
+    const options = ['active', 'cancelled', 'inactive'];
+    return options.map(option => `<option value="${option}" ${String(selected) === option ? 'selected' : ''}>${billingAccountingEscape(option)}</option>`).join('');
+}
+
+function billingAccountingFormatJsonForEditor(value) {
+    if (value === undefined || value === null || value === '') return '{\n  "amount": 0\n}';
+    try {
+        return JSON.stringify(typeof value === 'string' ? JSON.parse(value) : value, null, 2);
+    } catch (e) {
+        return String(value);
+    }
+}
+
+async function billingAccountingFetchAll() {
+    const ui = getBillingAccountingFoundationState();
+    ui.loading = true;
+    ui.error = '';
+    renderBillingAccountingFoundationModal();
+
+    const summaryParams = new URLSearchParams({
+        year: String(ui.year),
+        month: String(ui.month),
+        limit: '20'
+    });
+    if (ui.branch && ui.branch !== 'all') summaryParams.set('branch', ui.branch);
+    try {
+        const [
+            methodsRes,
+            policiesRes,
+            transactionsRes,
+            cashbookRes,
+            refundsRes,
+            carryoversRes,
+            dailyRes,
+            monthlyRes
+        ] = await Promise.all([
+            api.get('billing-accounting-foundation/payment-methods?limit=100'),
+            api.get('billing-accounting-foundation/billing-policy-rules?limit=100'),
+            api.get('billing-accounting-foundation/payment-transactions?limit=20'),
+            api.get('billing-accounting-foundation/cashbook-entries?limit=20'),
+            api.get('billing-accounting-foundation/refund-records?limit=20'),
+            api.get('billing-accounting-foundation/carryover-records?limit=20'),
+            api.get(`billing-accounting-foundation/daily-summaries?${summaryParams.toString()}`),
+            api.get(`billing-accounting-foundation/monthly-summaries?${summaryParams.toString()}`)
+        ]);
+
+        ui.methods = Array.isArray(methodsRes?.payment_methods) ? methodsRes.payment_methods : [];
+        ui.policies = Array.isArray(policiesRes?.policy_rules) ? policiesRes.policy_rules : [];
+        ui.transactions = Array.isArray(transactionsRes?.transactions) ? transactionsRes.transactions : [];
+        ui.cashbookEntries = Array.isArray(cashbookRes?.cashbook_entries) ? cashbookRes.cashbook_entries : [];
+        ui.refunds = Array.isArray(refundsRes?.refunds) ? refundsRes.refunds : [];
+        ui.carryovers = Array.isArray(carryoversRes?.carryovers) ? carryoversRes.carryovers : [];
+        ui.dailySummaries = Array.isArray(dailyRes?.daily_summaries) ? dailyRes.daily_summaries : [];
+        ui.monthlySummaries = Array.isArray(monthlyRes?.monthly_summaries) ? monthlyRes.monthly_summaries : [];
+    } catch (e) {
+        ui.error = '수납·출납 foundation 조회 중 오류가 발생했습니다.';
+    } finally {
+        ui.loading = false;
+        renderBillingAccountingFoundationModal();
+    }
+}
+
+function setBillingAccountingFoundationTab(tab) {
+    const ui = getBillingAccountingFoundationState();
+    ui.tab = tab;
+    renderBillingAccountingFoundationModal();
+}
+
+function editBillingAccountingMethod(id) {
+    const ui = getBillingAccountingFoundationState();
+    const item = (ui.methods || []).find(row => String(row.id) === String(id));
+    if (!item) return;
+    ui.methodForm = {
+        id: item.id || '',
+        method_key: item.method_key || 'card',
+        name: item.name || '',
+        category: item.category || '',
+        is_active: Number(item.is_active) === 0 ? 0 : 1,
+        sort_order: Number(item.sort_order || 0),
+        memo: item.memo || ''
+    };
+    ui.tab = 'methods';
+    renderBillingAccountingFoundationModal();
+}
+
+function editBillingAccountingPolicy(id) {
+    const ui = getBillingAccountingFoundationState();
+    const item = (ui.policies || []).find(row => String(row.id) === String(id));
+    if (!item) return;
+    ui.policyForm = {
+        id: item.id || '',
+        branch: item.branch || 'all',
+        rule_type: item.rule_type || 'tuition',
+        rule_key: item.rule_key || '',
+        name: item.name || '',
+        value_json: billingAccountingFormatJsonForEditor(item.value_json),
+        is_active: Number(item.is_active) === 0 ? 0 : 1,
+        memo: item.memo || ''
+    };
+    ui.tab = 'policies';
+    renderBillingAccountingFoundationModal();
+}
+
+function editBillingAccountingTransaction(id) {
+    const ui = getBillingAccountingFoundationState();
+    const item = (ui.transactions || []).find(row => String(row.id) === String(id));
+    if (!item) return;
+    ui.transactionForm = {
+        id: item.id || '',
+        payment_id: item.payment_id || '',
+        student_id: item.student_id || '',
+        branch: item.branch || 'apmath',
+        transaction_type: item.transaction_type || 'payment',
+        method_key: item.method_key || 'card',
+        amount: item.amount ?? '',
+        transaction_date: item.transaction_date || '',
+        status: item.status || 'completed',
+        receipt_no: item.receipt_no || '',
+        external_provider: item.external_provider || '',
+        external_transaction_id: item.external_transaction_id || '',
+        note: item.note || ''
+    };
+    ui.tab = 'transactions';
+    renderBillingAccountingFoundationModal();
+}
+
+function editBillingAccountingCashbook(id) {
+    const ui = getBillingAccountingFoundationState();
+    const item = (ui.cashbookEntries || []).find(row => String(row.id) === String(id));
+    if (!item) return;
+    ui.cashbookForm = {
+        id: item.id || '',
+        entry_date: item.entry_date || '',
+        entry_type: item.entry_type || 'income',
+        category: item.category || '',
+        branch: item.branch || 'all',
+        amount: item.amount ?? '',
+        payment_transaction_id: item.payment_transaction_id || '',
+        student_id: item.student_id || '',
+        title: item.title || '',
+        description: item.description || '',
+        method_key: item.method_key || ''
+    };
+    ui.tab = 'cashbook';
+    renderBillingAccountingFoundationModal();
+}
+
+function editBillingAccountingRefund(id) {
+    const ui = getBillingAccountingFoundationState();
+    const item = (ui.refunds || []).find(row => String(row.id) === String(id));
+    if (!item) return;
+    ui.refundForm = {
+        id: item.id || '',
+        payment_id: item.payment_id || '',
+        payment_transaction_id: item.payment_transaction_id || '',
+        student_id: item.student_id || '',
+        branch: item.branch || 'apmath',
+        refund_amount: item.refund_amount ?? '',
+        refund_method_key: item.refund_method_key || 'card',
+        refund_date: item.refund_date || '',
+        reason: item.reason || '',
+        status: item.status || 'completed'
+    };
+    ui.tab = 'refunds';
+    renderBillingAccountingFoundationModal();
+}
+
+function editBillingAccountingCarryover(id) {
+    const ui = getBillingAccountingFoundationState();
+    const item = (ui.carryovers || []).find(row => String(row.id) === String(id));
+    if (!item) return;
+    ui.carryoverForm = {
+        id: item.id || '',
+        student_id: item.student_id || '',
+        from_payment_id: item.from_payment_id || '',
+        to_payment_id: item.to_payment_id || '',
+        branch: item.branch || 'apmath',
+        amount: item.amount ?? '',
+        carryover_type: item.carryover_type || 'credit',
+        reason: item.reason || '',
+        status: item.status || 'active'
+    };
+    ui.tab = 'carryovers';
+    renderBillingAccountingFoundationModal();
+}
+
+async function toggleBillingAccountingMethodActive(id, nextActive) {
+    const result = await api.patch(`billing-accounting-foundation/payment-methods/${encodeURIComponent(id)}`, { is_active: nextActive });
+    if (result?.success) {
+        toast(nextActive ? '저장되었습니다.' : '비활성화되었습니다.', 'success');
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function toggleBillingAccountingPolicyActive(id, nextActive) {
+    const result = await api.patch(`billing-accounting-foundation/billing-policy-rules/${encodeURIComponent(id)}`, { is_active: nextActive });
+    if (result?.success) {
+        toast(nextActive ? '저장되었습니다.' : '비활성화되었습니다.', 'success');
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function cancelBillingAccountingTransaction(id) {
+    const result = await api.patch(`billing-accounting-foundation/payment-transactions/${encodeURIComponent(id)}/cancel`, {});
+    if (result?.success) {
+        toast('취소되었습니다.', 'success');
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '취소에 실패했습니다.', 'warn');
+}
+
+async function cancelBillingAccountingRefund(id) {
+    const result = await api.patch(`billing-accounting-foundation/refund-records/${encodeURIComponent(id)}/cancel`, {});
+    if (result?.success) {
+        toast('취소되었습니다.', 'success');
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '취소에 실패했습니다.', 'warn');
+}
+
+async function cancelBillingAccountingCarryover(id) {
+    const result = await api.patch(`billing-accounting-foundation/carryover-records/${encodeURIComponent(id)}/cancel`, {});
+    if (result?.success) {
+        toast('취소되었습니다.', 'success');
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '취소에 실패했습니다.', 'warn');
+}
+
+async function saveBillingAccountingMethod() {
+    const ui = getBillingAccountingFoundationState();
+    const form = ui.methodForm || {};
+    const payload = {
+        method_key: document.getElementById('baf-method-key')?.value || form.method_key,
+        name: (document.getElementById('baf-method-name')?.value || '').trim(),
+        category: (document.getElementById('baf-method-category')?.value || '').trim(),
+        is_active: Number(document.getElementById('baf-method-active')?.value || 1),
+        sort_order: Number(document.getElementById('baf-method-sort')?.value || 0),
+        memo: (document.getElementById('baf-method-memo')?.value || '').trim()
+    };
+    if (!payload.name) return toast('결제수단 이름을 입력하세요.', 'warn');
+    const endpoint = form.id
+        ? `billing-accounting-foundation/payment-methods/${encodeURIComponent(form.id)}`
+        : 'billing-accounting-foundation/payment-methods';
+    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    if (result?.success) {
+        toast('저장되었습니다.', 'success');
+        billingAccountingResetMethodForm();
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function saveBillingAccountingPolicy() {
+    const ui = getBillingAccountingFoundationState();
+    const form = ui.policyForm || {};
+    const valueJson = (document.getElementById('baf-policy-value-json')?.value || '').trim();
+    try {
+        if (valueJson) JSON.parse(valueJson);
+    } catch (e) {
+        toast('value_json 형식이 올바르지 않습니다.', 'warn');
+        return;
+    }
+    const payload = {
+        branch: document.getElementById('baf-policy-branch')?.value || form.branch,
+        rule_type: (document.getElementById('baf-policy-type')?.value || '').trim(),
+        rule_key: (document.getElementById('baf-policy-key')?.value || '').trim(),
+        name: (document.getElementById('baf-policy-name')?.value || '').trim(),
+        value_json: valueJson,
+        is_active: Number(document.getElementById('baf-policy-active')?.value || 1),
+        memo: (document.getElementById('baf-policy-memo')?.value || '').trim()
+    };
+    if (!payload.rule_type || !payload.rule_key || !payload.name) {
+        toast('수납 정책 필수값을 입력하세요.', 'warn');
+        return;
+    }
+    const endpoint = form.id
+        ? `billing-accounting-foundation/billing-policy-rules/${encodeURIComponent(form.id)}`
+        : 'billing-accounting-foundation/billing-policy-rules';
+    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    if (result?.success) {
+        toast('저장되었습니다.', 'success');
+        billingAccountingResetPolicyForm();
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function saveBillingAccountingTransaction() {
+    const ui = getBillingAccountingFoundationState();
+    const form = ui.transactionForm || {};
+    const payload = {
+        payment_id: (document.getElementById('baf-transaction-payment-id')?.value || '').trim(),
+        student_id: (document.getElementById('baf-transaction-student-id')?.value || '').trim(),
+        branch: document.getElementById('baf-transaction-branch')?.value || form.branch,
+        transaction_type: document.getElementById('baf-transaction-type')?.value || form.transaction_type,
+        method_key: document.getElementById('baf-transaction-method-key')?.value || form.method_key,
+        amount: Number(document.getElementById('baf-transaction-amount')?.value || 0),
+        transaction_date: (document.getElementById('baf-transaction-date')?.value || '').trim(),
+        status: document.getElementById('baf-transaction-status')?.value || form.status,
+        receipt_no: (document.getElementById('baf-transaction-receipt')?.value || '').trim(),
+        external_provider: (document.getElementById('baf-transaction-provider')?.value || '').trim(),
+        external_transaction_id: (document.getElementById('baf-transaction-external-id')?.value || '').trim(),
+        note: (document.getElementById('baf-transaction-note')?.value || '').trim()
+    };
+    if (!payload.student_id || !payload.method_key || !payload.amount || !payload.transaction_date) {
+        return toast('수납 거래 필수값을 입력하세요.', 'warn');
+    }
+    const endpoint = form.id
+        ? `billing-accounting-foundation/payment-transactions/${encodeURIComponent(form.id)}`
+        : 'billing-accounting-foundation/payment-transactions';
+    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    if (result?.success) {
+        toast('저장되었습니다.', 'success');
+        billingAccountingResetTransactionForm();
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function saveBillingAccountingCashbook() {
+    const ui = getBillingAccountingFoundationState();
+    const form = ui.cashbookForm || {};
+    const payload = {
+        entry_date: (document.getElementById('baf-cashbook-date')?.value || '').trim(),
+        entry_type: document.getElementById('baf-cashbook-type')?.value || form.entry_type,
+        category: (document.getElementById('baf-cashbook-category')?.value || '').trim(),
+        branch: document.getElementById('baf-cashbook-branch')?.value || form.branch,
+        amount: Number(document.getElementById('baf-cashbook-amount')?.value || 0),
+        payment_transaction_id: (document.getElementById('baf-cashbook-transaction-id')?.value || '').trim(),
+        student_id: (document.getElementById('baf-cashbook-student-id')?.value || '').trim(),
+        title: (document.getElementById('baf-cashbook-title')?.value || '').trim(),
+        description: (document.getElementById('baf-cashbook-description')?.value || '').trim(),
+        method_key: document.getElementById('baf-cashbook-method-key')?.value || ''
+    };
+    if (!payload.entry_date || !payload.category || !payload.amount || !payload.title) {
+        return toast('출납 장부 필수값을 입력하세요.', 'warn');
+    }
+    const endpoint = form.id
+        ? `billing-accounting-foundation/cashbook-entries/${encodeURIComponent(form.id)}`
+        : 'billing-accounting-foundation/cashbook-entries';
+    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    if (result?.success) {
+        toast('저장되었습니다.', 'success');
+        billingAccountingResetCashbookForm();
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function saveBillingAccountingRefund() {
+    const ui = getBillingAccountingFoundationState();
+    const form = ui.refundForm || {};
+    const payload = {
+        payment_id: (document.getElementById('baf-refund-payment-id')?.value || '').trim(),
+        payment_transaction_id: (document.getElementById('baf-refund-transaction-id')?.value || '').trim(),
+        student_id: (document.getElementById('baf-refund-student-id')?.value || '').trim(),
+        branch: document.getElementById('baf-refund-branch')?.value || form.branch,
+        refund_amount: Number(document.getElementById('baf-refund-amount')?.value || 0),
+        refund_method_key: document.getElementById('baf-refund-method-key')?.value || form.refund_method_key,
+        refund_date: (document.getElementById('baf-refund-date')?.value || '').trim(),
+        reason: (document.getElementById('baf-refund-reason')?.value || '').trim(),
+        status: document.getElementById('baf-refund-status')?.value || form.status
+    };
+    if (!payload.student_id || !payload.refund_amount || !payload.refund_date) {
+        return toast('환불 기록 필수값을 입력하세요.', 'warn');
+    }
+    const endpoint = form.id
+        ? `billing-accounting-foundation/refund-records/${encodeURIComponent(form.id)}`
+        : 'billing-accounting-foundation/refund-records';
+    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    if (result?.success) {
+        toast('저장되었습니다.', 'success');
+        billingAccountingResetRefundForm();
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function saveBillingAccountingCarryover() {
+    const ui = getBillingAccountingFoundationState();
+    const form = ui.carryoverForm || {};
+    const payload = {
+        student_id: (document.getElementById('baf-carryover-student-id')?.value || '').trim(),
+        from_payment_id: (document.getElementById('baf-carryover-from-payment-id')?.value || '').trim(),
+        to_payment_id: (document.getElementById('baf-carryover-to-payment-id')?.value || '').trim(),
+        branch: document.getElementById('baf-carryover-branch')?.value || form.branch,
+        amount: Number(document.getElementById('baf-carryover-amount')?.value || 0),
+        carryover_type: (document.getElementById('baf-carryover-type')?.value || '').trim(),
+        reason: (document.getElementById('baf-carryover-reason')?.value || '').trim(),
+        status: document.getElementById('baf-carryover-status')?.value || form.status
+    };
+    if (!payload.student_id || !payload.amount || !payload.carryover_type) {
+        return toast('이월 기록 필수값을 입력하세요.', 'warn');
+    }
+    const endpoint = form.id
+        ? `billing-accounting-foundation/carryover-records/${encodeURIComponent(form.id)}`
+        : 'billing-accounting-foundation/carryover-records';
+    const result = form.id ? await api.patch(endpoint, payload) : await api.post(endpoint, payload);
+    if (result?.success) {
+        toast('저장되었습니다.', 'success');
+        billingAccountingResetCarryoverForm();
+        await billingAccountingFetchAll();
+        return;
+    }
+    toast(result?.error || result?.message || '저장에 실패했습니다.', 'warn');
+}
+
+async function reloadBillingAccountingSummaries() {
+    const ui = getBillingAccountingFoundationState();
+    ui.branch = document.getElementById('baf-summary-branch')?.value || ui.branch;
+    ui.year = Number(document.getElementById('baf-summary-year')?.value || ui.year);
+    ui.month = Number(document.getElementById('baf-summary-month')?.value || ui.month);
+    await billingAccountingFetchAll();
+}
+
+function renderBillingAccountingEmpty(message) {
+    return `<div style="padding:24px 12px; text-align:center; color:var(--secondary); font-size:12px; font-weight:700; background:var(--surface-2); border:1px dashed var(--border); border-radius:14px;">${billingAccountingEscape(message)}</div>`;
+}
+
+function renderBillingAccountingSimpleRows(rows, fields) {
+    if (!rows.length) return renderBillingAccountingEmpty('조회 결과가 없습니다.');
+    return rows.map(row => `
+        <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
+            ${fields.map(field => `
+                <div style="display:flex; justify-content:space-between; gap:12px; margin-bottom:6px; font-size:12px; line-height:1.5;">
+                    <span style="color:var(--secondary); font-weight:700;">${billingAccountingEscape(field.label)}</span>
+                    <span style="color:var(--text); font-weight:700; text-align:right; word-break:break-word;">${billingAccountingEscape(field.format ? field.format(row[field.key], row) : (row[field.key] ?? '-'))}</span>
+                </div>
+            `).join('')}
+        </div>
+    `).join('');
+}
+
+function renderBillingAccountingSummaryTab(ui) {
+    const dailyRows = renderBillingAccountingSimpleRows(ui.dailySummaries || [], [
+        { key: 'summary_date', label: '일자' },
+        { key: 'branch', label: 'branch' },
+        { key: 'total_paid', label: '수납', format: value => billingAccountingFormatAmount(value) },
+        { key: 'total_refunded', label: '환불', format: value => billingAccountingFormatAmount(value) },
+        { key: 'total_outstanding', label: '미수', format: value => billingAccountingFormatAmount(value) }
+    ]);
+    const monthlyRows = renderBillingAccountingSimpleRows(ui.monthlySummaries || [], [
+        { key: 'year', label: '연도' },
+        { key: 'month', label: '월' },
+        { key: 'branch', label: 'branch' },
+        { key: 'total_paid', label: '수납', format: value => billingAccountingFormatAmount(value) },
+        { key: 'total_refunded', label: '환불', format: value => billingAccountingFormatAmount(value) }
+    ]);
+
+    return `
+        <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-bottom:12px;">
+            <select id="baf-summary-branch" class="btn" style="width:100%; background:var(--surface-2); border:none;">${billingAccountingBranchOptions(ui.branch)}</select>
+            <input id="baf-summary-year" class="btn" type="number" value="${billingAccountingEscape(ui.year)}" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-summary-month" class="btn" type="number" min="1" max="12" value="${billingAccountingEscape(ui.month)}" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
+        </div>
+        <div style="display:flex; gap:8px; margin-bottom:14px;">
+            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="reloadBillingAccountingSummaries()">조회</button>
+            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="billingAccountingFetchAll()">새로고침</button>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
+            <div>
+                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">일별 요약</div>
+                ${dailyRows}
+            </div>
+            <div>
+                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">월별 요약</div>
+                ${monthlyRows}
+            </div>
+        </div>
+    `;
+}
+
+function renderBillingAccountingMethodsTab(ui) {
+    const form = ui.methodForm || {};
+    const rows = (ui.methods || []).map(item => `
+        <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
+                <div>
+                    <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.name || item.method_key || '-')}</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:700;">${billingAccountingEscape(item.method_key || '-')} · ${billingAccountingEscape(item.category || '-')} · sort ${billingAccountingEscape(item.sort_order ?? 0)}</div>
+                </div>
+                <div style="font-size:11px; font-weight:800; color:${Number(item.is_active) === 0 ? 'var(--secondary)' : 'var(--success)'};">${Number(item.is_active) === 0 ? '비활성화' : '사용중'}</div>
+            </div>
+            <div style="font-size:12px; color:var(--secondary); margin-bottom:10px; line-height:1.5;">${billingAccountingEscape(item.memo || '메모 없음')}</div>
+            <div style="display:flex; gap:8px;">
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingMethod('${billingAccountingEscape(item.id)}')">수정</button>
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingMethodActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '저장' : '비활성화'}</button>
+            </div>
+        </div>
+    `).join('');
+
+    return `
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:8px;">
+            <select id="baf-method-key" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingMethodKeyOptions(form.method_key)}</select>
+            <input id="baf-method-name" class="btn" value="${billingAccountingEscape(form.name)}" placeholder="결제수단" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-method-category" class="btn" value="${billingAccountingEscape(form.category)}" placeholder="category" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-method-sort" class="btn" type="number" value="${billingAccountingEscape(form.sort_order ?? 0)}" placeholder="sort_order" style="text-align:left; background:var(--surface-2); border:none;">
+            <select id="baf-method-active" class="btn" style="background:var(--surface-2); border:none;">
+                <option value="1" ${Number(form.is_active) === 0 ? '' : 'selected'}>사용중</option>
+                <option value="0" ${Number(form.is_active) === 0 ? 'selected' : ''}>비활성화</option>
+            </select>
+            <div></div>
+        </div>
+        <textarea id="baf-method-memo" class="btn" placeholder="memo" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.memo)}</textarea>
+        <div style="display:flex; gap:8px; margin-bottom:14px;">
+            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingMethod()">저장</button>
+            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetMethodForm(); renderBillingAccountingFoundationModal();">초기화</button>
+        </div>
+        <div>${rows || renderBillingAccountingEmpty('결제수단이 없습니다.')}</div>
+    `;
+}
+
+function renderBillingAccountingPoliciesTab(ui) {
+    const form = ui.policyForm || {};
+    const rows = (ui.policies || []).map(item => `
+        <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
+                <div>
+                    <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.name || item.rule_key || '-')}</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:700;">${billingAccountingEscape(item.branch || 'all')} · ${billingAccountingEscape(item.rule_type || '-')} · ${billingAccountingEscape(item.rule_key || '-')}</div>
+                </div>
+                <div style="font-size:11px; font-weight:800; color:${Number(item.is_active) === 0 ? 'var(--secondary)' : 'var(--success)'};">${Number(item.is_active) === 0 ? '비활성화' : '사용중'}</div>
+            </div>
+            <pre style="margin:0 0 10px 0; padding:10px; background:var(--surface-2); border-radius:12px; font-size:11px; line-height:1.5; color:var(--text); white-space:pre-wrap; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatJsonForEditor(item.value_json))}</pre>
+            <div style="font-size:12px; color:var(--secondary); margin-bottom:10px; line-height:1.5;">${billingAccountingEscape(item.memo || '메모 없음')}</div>
+            <div style="display:flex; gap:8px;">
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingPolicy('${billingAccountingEscape(item.id)}')">수정</button>
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingPolicyActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '저장' : '비활성화'}</button>
+            </div>
+        </div>
+    `).join('');
+
+    return `
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:8px;">
+            <select id="baf-policy-branch" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingBranchOptions(form.branch)}</select>
+            <input id="baf-policy-type" class="btn" value="${billingAccountingEscape(form.rule_type)}" placeholder="rule_type" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-policy-key" class="btn" value="${billingAccountingEscape(form.rule_key)}" placeholder="rule_key" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-policy-name" class="btn" value="${billingAccountingEscape(form.name)}" placeholder="수납 정책" style="text-align:left; background:var(--surface-2); border:none;">
+            <select id="baf-policy-active" class="btn" style="background:var(--surface-2); border:none;">
+                <option value="1" ${Number(form.is_active) === 0 ? '' : 'selected'}>사용중</option>
+                <option value="0" ${Number(form.is_active) === 0 ? 'selected' : ''}>비활성화</option>
+            </select>
+            <div></div>
+        </div>
+        <textarea id="baf-policy-value-json" class="btn" placeholder="value_json" style="width:100%; min-height:104px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.value_json)}</textarea>
+        <textarea id="baf-policy-memo" class="btn" placeholder="memo" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.memo)}</textarea>
+        <div style="display:flex; gap:8px; margin-bottom:14px;">
+            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingPolicy()">저장</button>
+            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetPolicyForm(); renderBillingAccountingFoundationModal();">초기화</button>
+        </div>
+        <div>${rows || renderBillingAccountingEmpty('수납 정책이 없습니다.')}</div>
+    `;
+}
+
+function renderBillingAccountingListTab(ui, tab) {
+    if (tab === 'transactions') {
+        const form = ui.transactionForm || {};
+        const list = renderBillingAccountingSimpleRows(ui.transactions || [], [
+            { key: 'transaction_date', label: '일자' },
+            { key: 'student_id', label: 'student_id' },
+            { key: 'branch', label: 'branch' },
+            { key: 'method_key', label: '결제수단' },
+            { key: 'amount', label: '금액', format: value => billingAccountingFormatAmount(value) },
+            { key: 'status', label: 'status' }
+        ]);
+        const rows = (ui.transactions || []).map(item => `
+            <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
+                <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:8px;">
+                    <div>
+                        <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
+                        <div style="font-size:11px; color:var(--secondary); font-weight:700;">${billingAccountingEscape(item.transaction_date || '-')} · ${billingAccountingEscape(item.transaction_type || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">수정</button>
+                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">취소</button>
+                </div>
+            </div>
+        `).join('');
+        return `
+            <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:8px;">
+                <input id="baf-transaction-student-id" class="btn" value="${billingAccountingEscape(form.student_id)}" placeholder="student_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-transaction-payment-id" class="btn" value="${billingAccountingEscape(form.payment_id)}" placeholder="payment_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <select id="baf-transaction-branch" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingBranchOptions(form.branch)}</select>
+                <select id="baf-transaction-type" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingTransactionTypeOptions(form.transaction_type)}</select>
+                <select id="baf-transaction-method-key" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingMethodKeyOptions(form.method_key)}</select>
+                <input id="baf-transaction-amount" class="btn" type="number" value="${billingAccountingEscape(form.amount)}" placeholder="amount" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-transaction-date" class="btn" type="date" value="${billingAccountingEscape(form.transaction_date)}" style="text-align:left; background:var(--surface-2); border:none;">
+                <select id="baf-transaction-status" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingTransactionStatusOptions(form.status)}</select>
+                <input id="baf-transaction-receipt" class="btn" value="${billingAccountingEscape(form.receipt_no)}" placeholder="receipt_no" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-transaction-provider" class="btn" value="${billingAccountingEscape(form.external_provider)}" placeholder="external_provider" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-transaction-external-id" class="btn" value="${billingAccountingEscape(form.external_transaction_id)}" placeholder="external_transaction_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <div></div>
+            </div>
+            <textarea id="baf-transaction-note" class="btn" placeholder="note" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.note)}</textarea>
+            <div style="display:flex; gap:8px; margin-bottom:14px;">
+                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingTransaction()">저장</button>
+                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetTransactionForm(); renderBillingAccountingFoundationModal();">초기화</button>
+            </div>
+            <div>${rows || list}</div>
+        `;
+    }
+    if (tab === 'cashbook') {
+        const form = ui.cashbookForm || {};
+        const rows = (ui.cashbookEntries || []).map(item => `
+            <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
+                <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.title || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
+                <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">${billingAccountingEscape(item.entry_date || '-')} · ${billingAccountingEscape(item.entry_type || '-')} · ${billingAccountingEscape(item.category || '-')}</div>
+                <button class="btn" style="width:100%; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">수정</button>
+            </div>
+        `).join('');
+        return `
+            <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:8px;">
+                <input id="baf-cashbook-date" class="btn" type="date" value="${billingAccountingEscape(form.entry_date)}" style="text-align:left; background:var(--surface-2); border:none;">
+                <select id="baf-cashbook-type" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingEntryTypeOptions(form.entry_type)}</select>
+                <input id="baf-cashbook-category" class="btn" value="${billingAccountingEscape(form.category)}" placeholder="category" style="text-align:left; background:var(--surface-2); border:none;">
+                <select id="baf-cashbook-branch" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingBranchOptions(form.branch)}</select>
+                <input id="baf-cashbook-amount" class="btn" type="number" value="${billingAccountingEscape(form.amount)}" placeholder="amount" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-cashbook-method-key" class="btn" value="${billingAccountingEscape(form.method_key)}" placeholder="method_key" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-cashbook-title" class="btn" value="${billingAccountingEscape(form.title)}" placeholder="title" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-cashbook-student-id" class="btn" value="${billingAccountingEscape(form.student_id)}" placeholder="student_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-cashbook-transaction-id" class="btn" value="${billingAccountingEscape(form.payment_transaction_id)}" placeholder="payment_transaction_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <div></div>
+            </div>
+            <textarea id="baf-cashbook-description" class="btn" placeholder="description" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.description)}</textarea>
+            <div style="display:flex; gap:8px; margin-bottom:6px;">
+                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingCashbook()">저장</button>
+                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetCashbookForm(); renderBillingAccountingFoundationModal();">초기화</button>
+            </div>
+            <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5; margin-bottom:12px;">출납 장부 취소/비활성화는 status/is_active schema 보강 후 가능합니다.</div>
+            <div>${rows || renderBillingAccountingSimpleRows(ui.cashbookEntries || [], [
+            { key: 'entry_date', label: '일자' },
+            { key: 'branch', label: 'branch' },
+            { key: 'entry_type', label: 'entry_type' },
+            { key: 'title', label: '제목' },
+            { key: 'amount', label: '금액', format: value => billingAccountingFormatAmount(value) }
+        ])}</div>
+        `;
+    }
+    if (tab === 'refunds') {
+        const form = ui.refundForm || {};
+        const rows = (ui.refunds || []).map(item => `
+            <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
+                <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.refund_amount)}</div>
+                <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">${billingAccountingEscape(item.refund_date || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingRefund('${billingAccountingEscape(item.id)}')">수정</button>
+                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingRefund('${billingAccountingEscape(item.id)}')">취소</button>
+                </div>
+            </div>
+        `).join('');
+        return `
+            <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:8px;">
+                <input id="baf-refund-student-id" class="btn" value="${billingAccountingEscape(form.student_id)}" placeholder="student_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-refund-payment-id" class="btn" value="${billingAccountingEscape(form.payment_id)}" placeholder="payment_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <input id="baf-refund-transaction-id" class="btn" value="${billingAccountingEscape(form.payment_transaction_id)}" placeholder="payment_transaction_id" style="text-align:left; background:var(--surface-2); border:none;">
+                <select id="baf-refund-branch" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingBranchOptions(form.branch)}</select>
+                <input id="baf-refund-amount" class="btn" type="number" value="${billingAccountingEscape(form.refund_amount)}" placeholder="refund_amount" style="text-align:left; background:var(--surface-2); border:none;">
+                <select id="baf-refund-method-key" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingMethodKeyOptions(form.refund_method_key)}</select>
+                <input id="baf-refund-date" class="btn" type="date" value="${billingAccountingEscape(form.refund_date)}" style="text-align:left; background:var(--surface-2); border:none;">
+                <select id="baf-refund-status" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingTransactionStatusOptions(form.status)}</select>
+            </div>
+            <textarea id="baf-refund-reason" class="btn" placeholder="reason" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.reason)}</textarea>
+            <div style="display:flex; gap:8px; margin-bottom:14px;">
+                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingRefund()">저장</button>
+                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetRefundForm(); renderBillingAccountingFoundationModal();">초기화</button>
+            </div>
+            <div>${rows || renderBillingAccountingSimpleRows(ui.refunds || [], [
+            { key: 'refund_date', label: '일자' },
+            { key: 'student_id', label: 'student_id' },
+            { key: 'branch', label: 'branch' },
+            { key: 'refund_amount', label: '환불', format: value => billingAccountingFormatAmount(value) },
+            { key: 'status', label: 'status' }
+        ])}</div>
+        `;
+    }
+    const form = ui.carryoverForm || {};
+    const rows = (ui.carryovers || []).map(item => `
+        <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
+            <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
+            <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">${billingAccountingEscape(item.carryover_type || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
+            <div style="display:flex; gap:8px;">
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">수정</button>
+                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">취소</button>
+            </div>
+        </div>
+    `).join('');
+    return `
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:8px;">
+            <input id="baf-carryover-student-id" class="btn" value="${billingAccountingEscape(form.student_id)}" placeholder="student_id" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-carryover-amount" class="btn" type="number" value="${billingAccountingEscape(form.amount)}" placeholder="amount" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-carryover-from-payment-id" class="btn" value="${billingAccountingEscape(form.from_payment_id)}" placeholder="from_payment_id" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="baf-carryover-to-payment-id" class="btn" value="${billingAccountingEscape(form.to_payment_id)}" placeholder="to_payment_id" style="text-align:left; background:var(--surface-2); border:none;">
+            <select id="baf-carryover-branch" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingBranchOptions(form.branch)}</select>
+            <input id="baf-carryover-type" class="btn" value="${billingAccountingEscape(form.carryover_type)}" placeholder="carryover_type" style="text-align:left; background:var(--surface-2); border:none;">
+            <select id="baf-carryover-status" class="btn" style="background:var(--surface-2); border:none;">${billingAccountingCarryoverStatusOptions(form.status)}</select>
+            <div></div>
+        </div>
+        <textarea id="baf-carryover-reason" class="btn" placeholder="reason" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.reason)}</textarea>
+        <div style="display:flex; gap:8px; margin-bottom:14px;">
+            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingCarryover()">저장</button>
+            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetCarryoverForm(); renderBillingAccountingFoundationModal();">초기화</button>
+        </div>
+        <div>${rows || renderBillingAccountingSimpleRows(ui.carryovers || [], [
+        { key: 'created_at', label: '생성일' },
+        { key: 'student_id', label: 'student_id' },
+        { key: 'branch', label: 'branch' },
+        { key: 'carryover_type', label: 'carryover_type' },
+        { key: 'amount', label: '금액', format: value => billingAccountingFormatAmount(value) },
+        { key: 'status', label: 'status' }
+    ])}</div>
+    `;
+}
+
+function renderBillingAccountingFoundationModal() {
+    const ui = getBillingAccountingFoundationState();
+    const tabs = [
+        { key: 'summary', label: '일별 요약 / 월별 요약' },
+        { key: 'methods', label: '결제수단' },
+        { key: 'policies', label: '수납 정책' },
+        { key: 'transactions', label: '수납 거래' },
+        { key: 'cashbook', label: '출납 장부' },
+        { key: 'refunds', label: '환불 기록' },
+        { key: 'carryovers', label: '이월 기록' }
+    ];
+
+    const tabButtons = tabs.map(tab => `
+        <button class="btn" style="padding:9px 12px; border-radius:10px; border:none; font-size:12px; font-weight:800; background:${ui.tab === tab.key ? 'var(--surface)' : 'transparent'}; color:${ui.tab === tab.key ? 'var(--text)' : 'var(--secondary)'}; box-shadow:${ui.tab === tab.key ? '0 1px 2px rgba(0,0,0,0.05)' : 'none'};" onclick="setBillingAccountingFoundationTab('${tab.key}')">${billingAccountingEscape(tab.label)}</button>
+    `).join('');
+
+    let body = '';
+    if (ui.loading) {
+        body = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`;
+    } else if (ui.tab === 'summary') {
+        body = renderBillingAccountingSummaryTab(ui);
+    } else if (ui.tab === 'methods') {
+        body = renderBillingAccountingMethodsTab(ui);
+    } else if (ui.tab === 'policies') {
+        body = renderBillingAccountingPoliciesTab(ui);
+    } else {
+        body = renderBillingAccountingListTab(ui, ui.tab);
+    }
+
+    showModal('수납·출납 foundation', `
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; background:var(--surface-2); padding:4px; border-radius:12px;">
+            ${tabButtons}
+        </div>
+        ${ui.error ? `<div style="margin-bottom:12px; padding:10px 12px; border-radius:12px; background:rgba(255,71,87,0.08); color:var(--error); font-size:12px; font-weight:700;">${billingAccountingEscape(ui.error)}</div>` : ''}
+        <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5; margin-bottom:12px;">실제 수납 등록, 환불 처리, 이월 처리, 장부 자동 반영은 이번 단계에서 연결하지 않습니다.</div>
+        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${body}</div>
+    `);
+}
+
+async function openBillingAccountingFoundationModal() {
+    const ui = getBillingAccountingFoundationState();
+    ui.tab = ui.tab || 'summary';
+    renderBillingAccountingFoundationModal();
+    await billingAccountingFetchAll();
+}

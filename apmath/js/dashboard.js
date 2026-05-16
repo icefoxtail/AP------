@@ -329,6 +329,10 @@ function openAdminOperationMenu() {
                 <div style="${titleStyle}">PIN 생성</div>
                 <div style="${descStyle}">전체 재원생 중 PIN 없는 재원생에게만 자동 부여</div>
             </button>
+            <button class="btn" style="${cardStyle}" onclick="if(typeof openBillingAccountingFoundationModal==='function') openBillingAccountingFoundationModal(); else toast('수납·출납 foundation 화면을 불러오지 못했습니다.', 'warn');">
+                <div style="${titleStyle}">수납·출납 foundation</div>
+                <div style="${descStyle}">결제수단, 수납 정책, 요약, 조회 목록 확인</div>
+            </button>
         </div>
         <div style="margin-top:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
             반 담당 변경과 담임 일괄 변경은 Worker 구조분리 이후 별도 연결합니다.
