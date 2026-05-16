@@ -701,6 +701,8 @@ CREATE TABLE IF NOT EXISTS cashbook_entries (
   category TEXT NOT NULL,
   branch TEXT DEFAULT 'all',
   amount INTEGER NOT NULL DEFAULT 0,
+  status TEXT DEFAULT 'active',
+  is_active INTEGER DEFAULT 1,
   payment_transaction_id TEXT,
   student_id TEXT,
   title TEXT NOT NULL,
@@ -714,6 +716,8 @@ CREATE INDEX IF NOT EXISTS idx_cashbook_entries_date ON cashbook_entries(entry_d
 CREATE INDEX IF NOT EXISTS idx_cashbook_entries_type ON cashbook_entries(entry_type);
 CREATE INDEX IF NOT EXISTS idx_cashbook_entries_category ON cashbook_entries(category);
 CREATE INDEX IF NOT EXISTS idx_cashbook_entries_branch ON cashbook_entries(branch);
+CREATE INDEX IF NOT EXISTS idx_cashbook_entries_status ON cashbook_entries(status);
+CREATE INDEX IF NOT EXISTS idx_cashbook_entries_active ON cashbook_entries(is_active);
 CREATE INDEX IF NOT EXISTS idx_cashbook_entries_transaction ON cashbook_entries(payment_transaction_id);
 CREATE INDEX IF NOT EXISTS idx_cashbook_entries_student ON cashbook_entries(student_id);
 
