@@ -4,6 +4,7 @@
     Object.assign(window[stateKey], {
         tab: window[stateKey].tab || 'prepare',
         materials: window[stateKey].materials || [],
+        selectedMaterialId: window[stateKey].selectedMaterialId || '',
         assignments: window[stateKey].assignments || [],
         ranges: window[stateKey].ranges || [],
         entry: window[stateKey].entry || null,
@@ -66,6 +67,8 @@
             .smw-actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
             .smw-list { display:flex; flex-direction:column; gap:8px; max-height:260px; overflow:auto; }
             .smw-row { border:1px solid var(--border); border-radius:14px; padding:11px; background:var(--surface); }
+            .smw-material-card { width:100%; text-align:left; cursor:pointer; }
+            .smw-material-card.active { border-color:rgba(26,92,255,.28); background:rgba(26,92,255,.08); box-shadow:inset 0 0 0 1px rgba(26,92,255,.10); }
             .smw-title { font-size:13px; font-weight:900; color:var(--text); line-height:1.35; }
             .smw-meta { margin-top:5px; font-size:11px; font-weight:700; color:var(--secondary); line-height:1.45; }
             .smw-output { white-space:pre-wrap; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; line-height:1.6; max-height:360px; overflow:auto; }
@@ -149,6 +152,30 @@
     function getSelectedMaterialById(materialId) {
         return (st().materials || []).find(m => String(m.id) === String(materialId));
     }
+    function ensureSelectedMaterialState() {
+        const materials = st().materials || [];
+        const selectedId = String(st().selectedMaterialId || '');
+        if (selectedId && materials.some(m => String(m.id) === selectedId)) return selectedId;
+        const fallback = materials[0] ? String(materials[0].id) : '';
+        st().selectedMaterialId = fallback;
+        if (st().entryFilters) st().entryFilters.material_id = fallback;
+        if (st().viewFilters) st().viewFilters.material_id = fallback;
+        return fallback;
+    }
+    function selectedMaterialIdFor(selected = '') {
+        return String(selected || st().selectedMaterialId || ensureSelectedMaterialState() || '');
+    }
+    function syncSelectedMaterialAcrossSections(materialId) {
+        const nextId = String(materialId || '');
+        st().selectedMaterialId = nextId;
+        if (st().entryFilters) st().entryFilters.material_id = nextId;
+        if (st().viewFilters) st().viewFilters.material_id = nextId;
+        const ids = ['smw-range-material', 'smw-assign-material', 'smw-entry-material', 'smw-view-material'];
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = nextId;
+        });
+    }
 
     function tabs() {
         const items = [['prepare', '준비'], ['entry', '입력'], ['view', '보기']];
@@ -170,7 +197,7 @@
                     <div class="smw-field"><label>끝 번호</label><input id="smw-end" type="number" inputmode="numeric"></div>
                 </div>
                 <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterial()">등록</button><button class="btn" onclick="loadStudyMaterialWrongData()">새로고침</button></div>
-                <div class="smw-list">${(st().materials || []).map(m => `<div class="smw-row"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')}</div></div>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 자료가 없습니다.</div></div>'}</div>
+                <div class="smw-list">${(st().materials || []).map(m => `<button type="button" class="smw-row smw-material-card ${selectedMaterialIdFor() === String(m.id) ? 'active' : ''}" data-material-id="${h(m.id)}" onclick="selectStudyMaterialByCard(this)"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')}</div></button>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 자료가 없습니다.</div></div>'}</div>
             </div>
         `;
     }
@@ -178,7 +205,7 @@
         return `
             <div class="smw-section">
                 <div class="smw-section-title">단원 설정</div>
-                <div class="smw-field"><label>수업자료</label><select id="smw-range-material">${materialOptions()}</select></div>
+                <div class="smw-field"><label>수업자료</label><select id="smw-range-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor())}</select></div>
                 <div class="smw-field"><label>범위 붙여넣기</label><textarea id="smw-range-csv" placeholder="순서,대단원,소단원,시작번호,끝번호"></textarea></div>
                 <div class="smw-actions"><button class="btn btn-primary" onclick="importStudyMaterialRanges()">등록</button><button class="btn" onclick="loadStudyMaterialRanges()">보기</button></div>
                 <div id="smw-range-list" class="smw-list"></div>
@@ -196,7 +223,7 @@
                 <div class="smw-grid">
                     <div class="smw-field"><label>학년</label><select id="smw-assign-grade" onchange="onStudyMaterialAssignGradeChange()">${gradeOptions(f.grade)}</select></div>
                     <div class="smw-field"><label>반</label><select id="smw-assign-class">${filteredClassOptions(f.grade, f.class_id, '반 선택')}</select></div>
-                    <div class="smw-field"><label>수업자료</label><select id="smw-assign-material">${materialOptions(f.material_id)}</select></div>
+                    <div class="smw-field"><label>수업자료</label><select id="smw-assign-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
                     <div class="smw-field"><label>날짜</label><input id="smw-assign-date" type="date" value="${today()}"></div>
                     <div class="smw-field"><label>이름</label><input id="smw-assign-title" placeholder="비워두면 자료명"></div>
                 </div>
@@ -215,7 +242,7 @@
                 <div class="smw-grid three">
                     <div class="smw-field"><label>학년</label><select id="smw-entry-grade" onchange="onStudyMaterialEntryChange('grade')">${gradeOptions(f.grade)}</select></div>
                     <div class="smw-field"><label>반</label><select id="smw-entry-class" onchange="onStudyMaterialEntryChange('class')">${filteredClassOptions(f.grade, f.class_id, '반 선택')}</select></div>
-                    <div class="smw-field"><label>수업자료</label><select id="smw-entry-material" onchange="onStudyMaterialEntryChange('material')">${materialOptions(f.material_id)}</select></div>
+                    <div class="smw-field"><label>수업자료</label><select id="smw-entry-material" onchange="onStudyMaterialEntryChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
                 </div>
                 <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialEntrySheet()">불러오기</button><span class="smw-help">- 미입력 · O 정답 · X 오답 · 제출</span></div>
                 ${renderEntryRows()}
@@ -338,7 +365,7 @@
                     <div class="smw-field"><label>학년</label><select id="smw-view-grade" onchange="onStudyMaterialViewChange('grade')">${gradeOptions(f.grade)}</select></div>
                     <div class="smw-field"><label>반</label><select id="smw-view-class" onchange="onStudyMaterialViewChange('class')">${filteredClassOptions(f.grade, f.class_id)}</select></div>
                     <div class="smw-field"><label>학생</label><select id="smw-view-student" onchange="onStudyMaterialViewChange('student')">${filteredStudentOptions(f.grade, f.class_id, f.student_id)}</select></div>
-                    <div class="smw-field"><label>수업자료</label><select id="smw-view-material" onchange="onStudyMaterialViewChange('material')">${materialOptions(f.material_id, true)}</select></div>
+                    <div class="smw-field"><label>수업자료</label><select id="smw-view-material" onchange="onStudyMaterialViewChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id), true)}</select></div>
                 </div>
                 <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialView()">조회</button>${st().view ? '<button class="btn" onclick="showStudyMaterialOutput()">출력</button>' : ''}</div>
                 <div class="smw-output">${renderViewText()}</div>
@@ -395,10 +422,26 @@
         await loadStudyMaterialWrongData();
     };
     window.setStudyMaterialWrongTab = function (tab) { st().tab = tab; st().output = null; render(); };
+    window.selectStudyMaterial = function (materialId) {
+        const nextId = String(materialId || '');
+        if (!nextId || !getSelectedMaterialById(nextId)) return;
+        syncSelectedMaterialAcrossSections(nextId);
+        render();
+    };
+    window.selectStudyMaterialByCard = function (button) {
+        const materialId = button?.dataset?.materialId || '';
+        window.selectStudyMaterial(materialId);
+    };
+    window.onStudyMaterialSelectChange = function (materialId) {
+        const nextId = String(materialId || '');
+        if (!nextId || !getSelectedMaterialById(nextId)) return;
+        syncSelectedMaterialAcrossSections(nextId);
+    };
     window.loadStudyMaterialWrongData = async function () {
         const [materials, assignments] = await Promise.all([get('study-materials'), get('class-material-assignments')]);
         st().materials = materials.items || [];
         st().assignments = assignments.items || [];
+        ensureSelectedMaterialState();
         render();
     };
     window.createStudyMaterial = async function () {
@@ -461,6 +504,7 @@
         };
         if (field === 'grade') next.class_id = '';
         st().entryFilters = next;
+        if (field === 'material') syncSelectedMaterialAcrossSections(next.material_id);
         st().entry = null;
         render();
     };
@@ -578,6 +622,7 @@
         if (field === 'grade') { next.class_id = ''; next.student_id = ''; }
         if (field === 'class') next.student_id = '';
         st().viewFilters = next;
+        if (field === 'material') syncSelectedMaterialAcrossSections(next.material_id);
         st().view = null;
         st().output = null;
         render();
