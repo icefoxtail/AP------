@@ -8,7 +8,43 @@
  */
 
 function copyPhoneNumber(text) {
-    navigator.clipboard.writeText(text).then(() => toast('전화번호가 복사되었습니다.', 'info')).catch(() => toast('복사 실패', 'warn'));
+    const value = String(text || '').trim();
+    if (!value) return;
+
+    const showCopied = () => toast('전화번호가 복사되었습니다.', 'info');
+    const showCopyFailed = (err) => {
+        console.warn('[AP Math OS] phone copy failed:', err);
+        toast('복사 실패', 'warn');
+    };
+    const fallbackCopy = () => {
+        const textarea = document.createElement('textarea');
+        textarea.value = value;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        textarea.style.top = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        let copied = false;
+        try {
+            copied = document.execCommand('copy');
+        } catch (err) {
+            document.body.removeChild(textarea);
+            showCopyFailed(err);
+            return;
+        }
+
+        document.body.removeChild(textarea);
+        if (copied) showCopied();
+        else showCopyFailed(new Error('fallback copy returned false'));
+    };
+
+    if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(value).then(showCopied).catch(fallbackCopy);
+    } else {
+        fallbackCopy();
+    }
 }
 
 function apEscapeHtml(str) {

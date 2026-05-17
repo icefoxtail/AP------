@@ -8,16 +8,21 @@
  * [5G-3] 학생용 QR 접속 기본 URL 계산 (경로 안정화)
  */
 function getCheckBaseUrl() {
-    const origin = window.location.origin;
-    let path = window.location.pathname;
-
-    path = path.replace(/\/index\.html$/, '/');
-
-    if (!path.endsWith('/')) {
-        path = path.substring(0, path.lastIndexOf('/') + 1);
+    try {
+        const current = new URL(window.location.href);
+        const base = new URL('.', current);
+        return new URL('check/', base).toString();
+    } catch (e) {
+        const origin = window.location.origin || '';
+        let path = String(window.location.pathname || '/').split('?')[0].split('#')[0];
+        path = path.replace(/\/index\.html$/i, '/');
+        if (!path.endsWith('/')) {
+            const slashIndex = path.lastIndexOf('/');
+            path = slashIndex >= 0 ? path.substring(0, slashIndex + 1) : '/';
+        }
+        path = path.replace(/\/{2,}/g, '/');
+        return `${origin}${path}check/`;
     }
-
-    return origin + path + 'check/';
 }
 
 /**

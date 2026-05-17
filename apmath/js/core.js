@@ -170,6 +170,17 @@ const api = {
     }
 };
 
+const SYNC_QUEUE_TERMINAL_STATUSES = new Set([400, 401, 403, 404, 409, 422]);
+
+function persistSyncQueue() {
+    localStorage.setItem('AP_SYNC_QUEUE', JSON.stringify(syncQueue));
+}
+
+function removeSyncQueueTask(task) {
+    syncQueue = syncQueue.filter(t => t.id !== task.id);
+    persistSyncQueue();
+}
+
 // [UI Standard Applied]: 로그인 화면
 function renderLogin() {
     const root = document.getElementById('app-root');
@@ -1469,7 +1480,7 @@ async function openClinicWorksheet(contextKey = '') {
 
 function addToSyncQueue(method, resource, data) {
     syncQueue.push({ id: Date.now(), method, resource, data });
-    localStorage.setItem('AP_SYNC_QUEUE', JSON.stringify(syncQueue));
+    persistSyncQueue();
     toast('오프라인: 대기열 저장', 'warn');
     return { success: true, offline: true };
 }
@@ -1491,11 +1502,14 @@ async function processSyncQueue() {
             if (!r.ok) {
                 failedCount += 1;
                 console.warn('[AP Math OS] syncQueue server rejected task:', task, r.status);
+                if (SYNC_QUEUE_TERMINAL_STATUSES.has(r.status)) {
+                    removeSyncQueueTask(task);
+                    continue;
+                }
                 break;
             }
 
-            syncQueue = syncQueue.filter(t => t.id !== task.id);
-            localStorage.setItem('AP_SYNC_QUEUE', JSON.stringify(syncQueue));
+            removeSyncQueueTask(task);
             syncedCount += 1;
         } catch (e) {
             failedCount += 1;
