@@ -1,67 +1,106 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- `apmath/js/report.js`
-- `apmath/js/clinic-print.js`
-- `apmath/js/qr-omr.js`
-- `CODEX_RESULT.md`
+
+* `apmath/js/report.js`
+* `CODEX_RESULT.md`
 
 ## 2. 구현 완료 또는 확인 완료
-- report.js report payload 누적 제한 완료: `window.AP_REPORT_CONTEXT_OPTIONS` 저장소를 유지하되 최대 30개로 제한하는 helper를 추가하고, 새 payload 등록 직후 오래된 항목을 정리하도록 보강.
-- report.js html2canvas 실패 처리 보강 완료: `window.html2canvas`/전역 `html2canvas` 존재 여부를 안전하게 확인하고, 저장 버튼 disabled 상태를 `finally`에서 복원하며 실패 로그를 `console.warn`으로 남김.
-- clinic-print.js JS 문자열 escape 분리 완료: 기존 `clinicPrintEscapeAttr()`는 HTML attribute escape 용도로 유지하고, inline JS 문자열 인자용 `clinicPrintEscapeJsString()`을 별도 추가해 classId 기반 onclick/onchange 인자에 적용.
-- qr-omr.js getCheckBaseUrl 안전화 완료: `new URL()` 기반으로 query/hash가 섞이지 않는 `check/` base URL을 계산하고, URL 계산 실패 시 pathname fallback으로 정리.
-- 기존 UI 문구/버튼명/화면명 보존 여부: 보존. 새 버튼/카드/메뉴 추가 없음.
-- 학생 시험지 직접 열기 금지 원칙 보존 여부: 보존. QR/OMR 링크 구조와 파라미터는 변경하지 않음.
-- 학생 OMR 제출 완료 후 재수정 금지 원칙 보존 여부: 보존. OMR 제출 흐름 변경 없음.
-- 세션 토큰 인증 구조 보존 여부: 보존. 인증/Basic fallback 변경 없음.
-- initial-data 축소 결과 보존 여부: 보존. initial-data, Worker, DB schema, migration 변경 없음.
-- 실제 청구/결제/발송 미실행 여부: 미실행.
-- 코드 수정 범위 준수 여부: 이번 B묶음 허용 파일만 수정. `core.js`, `dashboard.js`, `management.js`, `schedule.js`는 이번 작업에서 수정하지 않음.
+
+* 크게 보기 화면 검토/분석/출력 통합 여부: 완료
+* 크게 보기 화면 선생님 메모 입력/반영 여부: 완료
+* 크게 보기 화면 프리미엄 분석 적용/즉시 갱신 여부: 완료
+* 크게 보기 화면 기본 리포트 복귀 여부: 완료
+* 인쇄하기가 현재 상태를 반영하는지 여부: 완료
+* 통달 결과 카드 label 변경 여부: 완료
+* 섹션 제목 변경 여부: 완료
+* 헤더/학생·시험 정보/footer 보존 여부: 완료
+* 실제 출력 shell 보존 여부: 완료
+* 기존 리포트 센터 흐름 보존 여부: 완료
+* AI 분석 로직 보존 여부: 완료
+* 학생 OMR/시험지 직접 열기 금지 위치 보존 여부: 완료
+* 세션 토큰 인증 구조 보존 여부: 완료
+* 수납·출납 initial-data 축소 결과 보존 여부: 완료
+* 코드 수정 범위 준수 여부: 완료
 
 ## 3. 실행 결과
-- `node --check apmath/js/report.js`: 통과
-- `node --check apmath/js/clinic-print.js`: 통과
-- `node --check apmath/js/qr-omr.js`: 통과
-- `Select-String -Path "apmath/js/report.js" -Pattern "AP_REPORT_CONTEXT_OPTIONS","html2canvas"`: payload 제한 helper와 html2canvas 안전 처리 위치 확인.
-- `Select-String -Path "apmath/js/clinic-print.js" -Pattern "clinicPrintEscapeAttr","clinicPrintEscapeJsString","onclick"`: HTML attribute escape와 JS string escape 분리 및 onclick/onchange 적용 확인.
-- `Select-String -Path "apmath/js/qr-omr.js" -Pattern "getCheckBaseUrl"`: 함수 정의와 QR URL 생성 호출 위치 확인.
-- `git diff --name-only`: `CODEX_RESULT.md`, `CODEX_TASK.md`, `apmath/js/clinic-print.js`, `apmath/js/core.js`, `apmath/js/dashboard.js`, `apmath/js/management.js`, `apmath/js/qr-omr.js`, `apmath/js/report.js`, `apmath/js/schedule.js`
-- `git status --short`: 위 modified 파일과 `apmath/js/1.zip` untracked 확인. `core.js`, `dashboard.js`, `management.js`, `schedule.js`, `CODEX_TASK.md`, `apmath/js/1.zip`는 이번 B묶음 수정 대상이 아니며 기존 dirty 상태로 남김.
-- Worker 배포 실행 여부: 미실행 - 사용자 직접 실행 대상
-- 운영 smoke 실행 여부: 미실행 - 사용자 직접 실행 대상
-- git commit 실행 여부: 미실행 - 사용자 직접 실행 대상
-- git push 실행 여부: 미실행 - 사용자 직접 실행 대상
+
+* `node --check apmath/js/report.js` 결과
+  * 통과
+* `Select-String` 검색 결과 요약
+  * `reportCenterOpenPrintView` 확인
+  * `reportCenterRefreshPrintViewReport` 추가 확인
+  * `reportCenterRequestPrintViewAiAnalysis` 추가 확인
+  * `이번 점수`, `맞힌 문항`, `우리 반 평균`, `최근 3회 평균` 확인
+  * `이번 시험, 이렇게 봤습니다`, `지금 어디쯤 있나요`, `다음에 꼭 짚어볼 부분`, `다음 수업에서 이렇게 합니다`, `문항별 분석`, `선생님 종합 의견` 확인
+* `git diff --name-only` 결과
+  * `CODEX_RESULT.md`
+  * `CODEX_TASK.md`
+  * `apmath/js/report.js`
+* `git status --short` 결과
+  * `M CODEX_RESULT.md`
+  * `M CODEX_TASK.md`
+  * `M apmath/js/report.js`
+* Worker 배포 실행 여부: 미실행 - 사용자 직접 실행 대상
+* 운영 smoke 실행 여부: 미실행 - 사용자 직접 실행 대상
+* git commit 실행 여부: 미실행 - 사용자 직접 실행 대상
+* git push 실행 여부: 미실행 - 사용자 직접 실행 대상
 
 ## 4. 결과 요약
-- 이번 B묶음 안정화 4건은 리포트 payload/이미지 저장, clinic print inline JS 안전성, QR check base URL 계산만 보강했다.
-- 기존 리포트 생성/출력 결과, 버튼명, 화면 구조, QR 파라미터, OMR 흐름은 변경하지 않았다.
-- 2차 작업 안정화 A/B 묶음 기준으로 이번 B묶음 대상은 완료했다.
+
+* 이번 작업으로 바뀐 실제 사용 흐름
+  * `리포트 크게 보기/출력` 화면에서 리포트를 확인하면서 선생님 메모를 수정할 수 있습니다.
+  * 같은 화면에서 `프리미엄 분석 적용`을 실행하면 현재 메모를 포함해 분석 요청 후 리포트 본문을 즉시 갱신합니다.
+  * `기본 리포트로 복귀`를 누르면 현재 화면을 유지한 채 AI 분석 캐시를 지우고 기본 리포트로 다시 렌더링합니다.
+  * `인쇄하기`는 현재 크게 보기 화면의 메모와 AI 분석 상태를 반영해 기존 출력 창 흐름으로 동작합니다.
+* 평가 리포트 카드/섹션 문구 정리 결과
+  * 통달 결과 카드가 `이번 점수`, `맞힌 문항`, `전체 평균`, `우리 반 평균`, `최근 3회 평균` 기준으로 보이도록 정리했습니다.
+  * 섹션 제목을 학부모가 읽기 쉬운 표현으로 정리했습니다.
+* 기존 출력 흐름 영향 여부
+  * `reportCenterBuildCleanPdfShell()`과 `window.print()` 타이밍은 변경하지 않았습니다.
+* 수동 확인 필요 항목
+  * 실제 브라우저에서 크게 보기 화면, 프리미엄 분석 적용, 기본 리포트 복귀, 인쇄 창 표시를 직접 확인해야 합니다.
 
 ## 5. 다음 조치
-- 사용자가 직접 코드 diff 확인
-- 필요 시 Gemini 또는 다른 리뷰어에게 B묶음 검토 요청
-- 필요 시 사용자가 직접 지정 파일만 git add
-- 권장 커밋 메시지: `Stabilize report export and QR helpers`
-- 커밋 대상 파일: `apmath/js/report.js`, `apmath/js/clinic-print.js`, `apmath/js/qr-omr.js`, `CODEX_RESULT.md`
 
-- 기존 문구 변경 여부: 없음
-- 기존 버튼명 변경 여부: 없음
-- 기존 화면명 변경 여부: 없음
-- 기존 메뉴명 변경 여부: 없음
-- 기존 운영 용어 변경 여부: 없음
-- 학생 시험지 직접 열기 금지 원칙 변경 여부: 없음
-- 학생 OMR 제출 완료 후 재수정 금지 원칙 변경 여부: 없음
-- 세션 토큰 인증 구조 변경 여부: 없음
-- Basic fallback 변경 여부: 없음
-- initial-data 응답 구조 변경 여부: 없음
-- 수납/출납 foundation 진입점 숨김 유지 여부: 유지
-- DB schema 변경 여부: 없음
-- migration 추가 여부: 없음
-- 실제 청구 생성 여부: 없음
-- 실제 결제 연동 여부: 없음
-- 실제 알림/문자 발송 여부: 없음
-- 배포 실행 여부: 없음
-- 운영 smoke 실행 여부: 없음
-- git commit 실행 여부: 없음
-- git push 실행 여부: 없음
+* 사용자가 직접 크게 보기 화면 확인
+* 사용자가 직접 프리미엄 분석 적용 확인
+* 사용자가 직접 인쇄하기 확인
+* 문제 없으면 사용자가 직접 지정 파일만 git add
+* 권장 커밋 메시지
+  * `Improve report review and print workflow`
+* 커밋 대상 파일
+  * `apmath/js/report.js`
+  * `CODEX_RESULT.md`
+
+* 기존 문구 변경 여부: 요청된 리포트 카드/섹션 문구만 변경
+* 기존 버튼명 변경 여부: 크게 보기 화면 내부 작업 버튼 추가 및 해당 화면 버튼 문구 정리
+* 기존 화면명 변경 여부: 없음
+* 기존 메뉴명 변경 여부: 없음
+* 기존 운영 용어 변경 여부: 없음
+* 리포트 본문 생성 로직 변경 여부: 대규모 재작성 없음, 카드/섹션 표시 보정만 수행
+* AI 분석 로직 변경 여부: payload 구조 변경 없음, 크게 보기 화면 wrapper 추가
+* 실제 출력 shell 변경 여부: 없음
+* 세션 토큰 인증 구조 변경 여부: 없음
+* Basic fallback 변경 여부: 없음
+* initial-data 응답 구조 변경 여부: 없음
+* 수납·출납 foundation 진입부 잠금 유지 여부: 유지
+* 학생 시험지 직접 열기 금지 위치 변경 여부: 없음
+* 학생 OMR 제출 완료 후 재수강 금지 위치 변경 여부: 없음
+* DB schema 변경 여부: 없음
+* migration 추가 여부: 없음
+* 실제 청구 생성 여부: 없음
+* 실제 결제 연동 여부: 없음
+* 실제 알림톡 문자 발송 여부: 없음
+* 배포 실행 여부: 없음
+* 운영 smoke 실행 여부: 없음
+* git commit 실행 여부: 없음
+* git push 실행 여부: 없음
+
+## 9. 권장 커밋 메시지
+
+Improve report review and print workflow
+
+## 10. 최종 출력
+
+CODEX_RESULT.md에 완료 보고서를 저장했습니다.
