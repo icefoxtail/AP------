@@ -868,7 +868,7 @@
               <span class="portal-assignment-pill">${escapeHtml(meta || '-')}</span>
               <span class="portal-assignment-pill ${status.className}">${escapeHtml(status.label)}</span>
             </div>
-            ${isSubmitted ? '' : `<div class="portal-assignment-actions"><button type="button" class="btn btn-primary" onclick="openMaterialWrongOmr('${escapeHtml(item.assignment_id)}')">오답 입력</button></div>`}
+            <div class="portal-assignment-actions"><button type="button" class="btn btn-primary" onclick="openMaterialWrongOmr('${escapeHtml(item.assignment_id)}')">${isSubmitted ? '오답 수정' : '오답 입력'}</button></div>
           </div>
         `;
       }).join('') : '<div class="empty">배정된 수업자료 오답이 없습니다.</div>';
@@ -889,11 +889,6 @@
       if (!assignmentId || !session?.student_id || !session?.student_token) return;
       try {
         const data = await apiGet(`material-omr/assignment?assignment_id=${encodeURIComponent(assignmentId)}&student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
-        if (Number(data.submission?.is_submitted || 0) === 1) {
-          toast('이미 제출한 수업자료 오답은 수정할 수 없습니다.');
-          await refreshMaterialWrongAssignments();
-          return;
-        }
         materialWrongDraft = {
           assignment_id: assignmentId,
           material: data.material,
@@ -901,7 +896,7 @@
           wrong_numbers: new Set((data.submission?.wrong_numbers || []).map(Number).filter(Number.isFinite)),
           range_start: Number(data.material?.number_start || 1),
           range_size: 100,
-          is_no_wrong: 0
+          is_no_wrong: Number(data.submission?.is_no_wrong || 0) === 1 ? 1 : 0
         };
         drawMaterialWrongOmr();
       } catch (e) {
