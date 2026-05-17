@@ -1983,7 +1983,9 @@ function reportCenterGetExamReportData(studentId, sessionId = '') {
 }
 
 function reportCenterGetExamReportTeacherMemo() {
-    return String(document.getElementById('report-center-exam-teacher-memo')?.value || '').trim();
+    const printMemo = document.getElementById('report-print-teacher-memo');
+    if (printMemo) return String(printMemo.value || '').trim();
+    return String(document.getElementById('report-center-exam-teacher-memo')?.value || window.AP_REPORT_PENDING_TEACHER_MEMO || '').trim();
 }
 
 
@@ -2611,7 +2613,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
         : (tableMeta.note || '문항 원문 확인 전입니다. 오답 번호·단원·정답률 기준으로 분석합니다.');
     const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석</div>` : '';
 
-    return `
+    let html = `
         <main class="aprc-pdf-document">
             <header class="aprc-pdf-header">
                 <div>
@@ -2715,6 +2717,52 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
             <footer class="aprc-pdf-footer">AP MATH · Student Learning Report</footer>
         </main>
     `;
+
+    html = reportCenterPolishCleanPdfDocumentHtml(html, { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText });
+    return html;
+}
+
+function reportCenterPolishCleanPdfDocumentHtml(html, context = {}) {
+    const { data, session, stats, qCount, wrongCount, correctRate, recentAvg, targetText } = context;
+    const score = session?.score ?? '-';
+    const safeTargetText = reportCenterEscape(targetText || '');
+    const scorePositionText = data ? reportCenterEscape(reportCenterBuildScorePositionText(data)) : '';
+    const scoreGridHtml = `
+            <section class="aprc-pdf-section aprc-pdf-score-grid">
+                <div class="aprc-pdf-score-card aprc-main-score">
+                    <div class="aprc-card-label">이번 점수</div>
+                    <div class="aprc-score-value">${reportCenterEscape(score)}<span>점</span></div>
+                    <div class="aprc-card-note">${scorePositionText}</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">맞힌 문항</div>
+                    <div class="aprc-metric-value">${qCount ? `${Math.max(0, qCount - wrongCount)} / ${qCount}` : '-'}</div>
+                    <div class="aprc-card-note">${correctRate === null ? '정답률 확인 전입니다.' : `정답률 ${correctRate}%`}</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">전체 평균</div>
+                    <div class="aprc-metric-value">${stats?.overallAvg == null ? '-' : `${stats.overallAvg}점`}</div>
+                    <div class="aprc-card-note">전체 ${stats?.totalSessions || 0}명 기준</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">우리 반 평균</div>
+                    <div class="aprc-metric-value">${stats?.classAvg == null ? '-' : `${stats.classAvg}점`}</div>
+                    <div class="aprc-card-note">반 ${stats?.classSessions || 0}명 기준</div>
+                </div>
+                <div class="aprc-pdf-score-card">
+                    <div class="aprc-card-label">최근 3회 평균</div>
+                    <div class="aprc-metric-value">${recentAvg === null ? '-' : `${recentAvg}점`}</div>
+                    <div class="aprc-card-note">${safeTargetText}</div>
+                </div>
+            </section>`;
+
+    return String(html || '')
+        .replace(/<section class="aprc-pdf-section aprc-pdf-score-grid">[\s\S]*?<\/section>/, scoreGridHtml)
+        .replace(/(<section class="aprc-pdf-section aprc-pdf-parent-summary aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1이번 시험, 이렇게 봤습니다$2')
+        .replace(/(<article class="aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)(\s*<p>[\s\S]*?<\/p>\s*<\/article>\s*<article class="aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1지금 어디쯤 있나요$2$3다음에 꼭 짚어볼 부분$4')
+        .replace(/(<section class="aprc-pdf-section aprc-pdf-next-plan aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1다음 수업에서 이렇게 합니다$2')
+        .replace(/(<section class="aprc-pdf-section aprc-pdf-table-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1문항별 분석$2')
+        .replace(/(<section class="aprc-pdf-section aprc-pdf-diagnosis aprc-pdf-panel">\s*<div class="aprc-section-title">)[\s\S]*?(<\/div>)/, '$1선생님 종합 의견$2');
 }
 
 function reportCenterPremiumReportStyle() {
@@ -2738,9 +2786,9 @@ function reportCenterPremiumReportStyle() {
             .aprc-score-card { min-width:0; padding:4.2mm; border:1px solid #e5e7eb; border-radius:14px; background:#fff; min-height:30mm; }
             .aprc-main-score { background:#eff6ff; border-color:#bfdbfe; }
             .aprc-card-label { font-size:10.5px; font-weight:850; color:#64748b; letter-spacing:-0.1px; }
-            .aprc-score-value { margin-top:7px; font-size:38px; font-weight:900; color:#1d4ed8; line-height:0.95; letter-spacing:-2px; }
+            .aprc-score-value { margin-top:7px; font-size:34px; font-weight:900; color:#1d4ed8; line-height:0.95; letter-spacing:-1px; }
             .aprc-score-value span { font-size:17px; font-weight:850; color:#475569; margin-left:2px; }
-            .aprc-metric-value { margin-top:8px; font-size:22px; font-weight:900; color:#0f172a; letter-spacing:-0.8px; }
+            .aprc-metric-value { margin-top:8px; font-size:20px; font-weight:900; color:#0f172a; letter-spacing:-0.4px; }
             .aprc-card-note { margin-top:7px; font-size:10.5px; font-weight:700; color:#64748b; line-height:1.35; word-break:keep-all; }
             .aprc-core-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4mm; padding:5mm 0 0; }
             .aprc-core-item { min-width:0; padding:4mm; border:1px solid #dbeafe; border-radius:14px; background:#f8fbff; min-height:37mm; overflow:hidden; }
@@ -2798,7 +2846,7 @@ function reportCenterPremiumReportStyle() {
             .aprc-pdf-section, .aprc-pdf-panel, .aprc-pdf-table-panel, .aprc-pdf-parent-message { box-sizing:border-box; }
             .aprc-pdf-section { margin-top:6mm; }
             .aprc-pdf-student-band { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:5mm 0; border-bottom:1px solid #e5e7eb; }
-            .aprc-pdf-score-grid { display:grid; grid-template-columns:1.35fr repeat(3,minmax(0,1fr)); gap:4mm; }
+            .aprc-pdf-score-grid { display:grid; grid-template-columns:1.25fr repeat(4,minmax(0,1fr)); gap:3mm; }
             .aprc-pdf-score-card { min-width:0; padding:4.2mm; border:1px solid #e5e7eb; border-radius:12px; background:#fff; }
             .aprc-pdf-core-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4mm; }
             .aprc-pdf-point-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4mm; }
@@ -2840,6 +2888,19 @@ function reportCenterPremiumReportStyle() {
             }
         </style>
     `;
+}
+
+function reportCenterEnsurePremiumReportStyle() {
+    let style = document.getElementById('report-center-premium-report-style');
+    if (!style) {
+        style = document.createElement('style');
+        style.id = 'report-center-premium-report-style';
+        document.head.appendChild(style);
+    }
+
+    const styleShell = reportCenterPremiumReportStyle();
+    const styleMatch = String(styleShell).match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+    style.textContent = styleMatch ? styleMatch[1] : styleShell;
 }
 
 function reportCenterBuildCleanPdfShell(reportHtml) {
@@ -3002,7 +3063,8 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     }
 
     const teacherMemo = reportCenterGetExamReportTeacherMemo();
-    const reportHtml = reportCenterPremiumReportStyle() + reportCenterBuildCleanPdfDocument(studentId, sessionId, {
+    reportCenterEnsurePremiumReportStyle();
+    const reportHtml = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
         aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
     });
@@ -3052,6 +3114,25 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
             </div>
         </div>
     `;
+    const printToolbar = root.querySelector('.report-print-toolbar');
+    if (printToolbar) {
+        printToolbar.innerHTML = `
+            <button class="btn" onclick="reportCenterClosePrintView()">리포트 센터로 돌아가기</button>
+            <button class="btn" onclick="reportCenterResetPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">기본 리포트로 복귀</button>
+            <button class="btn" onclick="reportCenterRequestPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}', this)">프리미엄 분석 적용</button>
+            <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄하기</button>
+        `;
+    }
+    const printStage = root.querySelector('.report-print-stage');
+    if (printStage) {
+        printStage.insertAdjacentHTML('beforebegin', `
+            <section class="report-print-control-panel no-print">
+                <label for="report-print-teacher-memo">선생님 추가 메모</label>
+                <textarea id="report-print-teacher-memo" oninput="reportCenterHandlePrintViewMemoInput('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">${reportCenterEscape(teacherMemo)}</textarea>
+            </section>
+        `);
+        printStage.innerHTML = `<div id="report-print-document-root">${reportHtml}</div>`;
+    }
     document.body.style.overflow = '';
     document.documentElement.style.overflow = '';
 
@@ -3060,8 +3141,87 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     console.log('[reportCenterOpenPrintView] rendered');
 }
 
+function reportCenterSyncPrintMemoToCenter() {
+    const memo = String(document.getElementById('report-print-teacher-memo')?.value || '').trim();
+    window.AP_REPORT_PENDING_TEACHER_MEMO = memo;
+    const centerMemo = document.getElementById('report-center-exam-teacher-memo');
+    if (centerMemo) centerMemo.value = memo;
+    return memo;
+}
+
+function reportCenterRefreshPrintViewReport(studentId, sessionId = '') {
+    const root = document.getElementById('report-print-document-root') || document.querySelector('.report-print-stage');
+    if (!root) return;
+    reportCenterEnsurePremiumReportStyle();
+    reportCenterInjectPrintViewStyle();
+    const teacherMemo = reportCenterSyncPrintMemoToCenter();
+    root.innerHTML = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
+        teacherMemo,
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+    });
+}
+
+function reportCenterHandlePrintViewMemoInput(studentId, sessionId = '') {
+    reportCenterSyncPrintMemoToCenter();
+    clearTimeout(window.AP_REPORT_PRINT_MEMO_TIMER);
+    window.AP_REPORT_PRINT_MEMO_TIMER = setTimeout(() => {
+        reportCenterRefreshPrintViewReport(studentId, sessionId);
+    }, 180);
+}
+
+async function reportCenterRequestPrintViewAiAnalysis(studentId, sessionId, buttonEl = null) {
+    const data = reportCenterGetExamReportData(studentId, sessionId);
+    if (!data.student || !data.session) {
+        toast('정리할 평가 기록이 없습니다.', 'warn');
+        return;
+    }
+
+    reportCenterSyncPrintMemoToCenter();
+    const payload = reportCenterBuildExamAiPayload(studentId, sessionId);
+    payload.teacherMemo = reportCenterGetExamReportTeacherMemo();
+    payload.generatedFrom = 'AP_MATH_OS_REPORT_CENTER_PRINT_VIEW';
+
+    if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, true, '분석 중');
+    else toast('리포트 문장을 정리하는 중입니다.', 'info');
+
+    try {
+        const r = await api.post('ai/report-analysis', payload);
+        if (!r || r.success === false) {
+            throw new Error(r?.message || r?.error || '프리미엄 분석 실패');
+        }
+        const source = String(r.source || '').toLowerCase();
+        const isPremiumSource = source === 'ai' || source === 'gemini';
+        if (!isPremiumSource) {
+            reportCenterClearCachedAiAnalysis(sessionId);
+            reportCenterRefreshPrintViewReport(studentId, sessionId);
+            const warning = reportCenterTrimText(r.warning || r.message || r.error || '분석 결과가 기준에 맞지 않았습니다.', 140);
+            console.warn('[reportCenterRequestPrintViewAiAnalysis] fallback ignored:', r);
+            toast(`분석 결과가 기준에 맞지 않아 기본 리포트를 유지합니다. ${warning}`, 'warn');
+            return;
+        }
+        const analysis = reportCenterNormalizeAiAnalysis(r.analysis || r.data || r);
+        analysis.source = 'ai';
+        reportCenterSetCachedAiAnalysis(sessionId, analysis);
+        reportCenterRefreshPrintViewReport(studentId, sessionId);
+        toast('리포트 문장이 정리되어 반영되었습니다.', 'success');
+    } catch (e) {
+        console.error('[reportCenterRequestPrintViewAiAnalysis] failed:', e);
+        toast('프리미엄 분석에 실패했습니다. 기본 리포트를 유지합니다.', 'warn');
+    } finally {
+        if (typeof setButtonBusy === 'function' && buttonEl) setButtonBusy(buttonEl, false);
+    }
+}
+
+function reportCenterResetPrintViewAiAnalysis(studentId, sessionId = '') {
+    reportCenterSyncPrintMemoToCenter();
+    reportCenterClearCachedAiAnalysis(sessionId);
+    reportCenterRefreshPrintViewReport(studentId, sessionId);
+    toast('기본 리포트 문구로 복귀했습니다.', 'success');
+}
+
 function reportCenterClosePrintView() {
     const ret = window.AP_REPORT_PRINT_RETURN || {};
+    const memo = reportCenterSyncPrintMemoToCenter();
 
     if (typeof renderDashboard === 'function') {
         renderDashboard();
@@ -3074,15 +3234,25 @@ function reportCenterClosePrintView() {
 
     setTimeout(() => {
         if (ret.studentId) openReportCenterExam(ret.studentId, ret.sessionId || '');
-        if (Number.isFinite(Number(ret.scrollY))) window.scrollTo(0, Number(ret.scrollY));
+        setTimeout(() => {
+            const centerMemo = document.getElementById('report-center-exam-teacher-memo');
+            if (centerMemo) {
+                centerMemo.value = memo;
+                reportCenterRefreshPremiumExamPreview(ret.studentId, ret.sessionId || '');
+            }
+            if (Number.isFinite(Number(ret.scrollY))) window.scrollTo(0, Number(ret.scrollY));
+        }, 160);
     }, 100);
 }
 
 function reportCenterInjectPrintViewStyle() {
-    if (document.getElementById('report-print-view-style')) return;
+    let style = document.getElementById('report-print-view-style');
+    if (!style) {
+        style = document.createElement('style');
+        style.id = 'report-print-view-style';
+        document.head.appendChild(style);
+    }
 
-    const style = document.createElement('style');
-    style.id = 'report-print-view-style';
     style.textContent = `
         .report-print-view {
             position:relative;
@@ -3098,6 +3268,7 @@ function reportCenterInjectPrintViewStyle() {
             top:0;
             z-index:20;
             display:flex;
+            flex-wrap:wrap;
             gap:8px;
             justify-content:space-between;
             align-items:center;
@@ -3119,6 +3290,39 @@ function reportCenterInjectPrintViewStyle() {
             flex:1;
         }
 
+        .report-print-control-panel {
+            max-width:900px;
+            margin:0 auto 14px;
+            padding:12px;
+            background:#ffffff;
+            border:1px solid var(--border);
+            border-radius:14px;
+            box-sizing:border-box;
+        }
+
+        .report-print-control-panel label {
+            display:block;
+            margin-bottom:7px;
+            color:#334155;
+            font-size:12px;
+            font-weight:800;
+        }
+
+        .report-print-control-panel textarea {
+            width:100%;
+            min-height:76px;
+            padding:12px;
+            border:1px solid var(--border);
+            border-radius:12px;
+            background:var(--surface);
+            color:var(--text);
+            box-sizing:border-box;
+            resize:vertical;
+            font:inherit;
+            font-size:13px;
+            line-height:1.55;
+        }
+
         .report-print-stage {
             width:100%;
             overflow-x:auto;
@@ -3127,7 +3331,42 @@ function reportCenterInjectPrintViewStyle() {
         }
 
         .report-print-stage .aprc-pdf-document {
+            width:190mm;
+            min-width:190mm;
+            max-width:190mm;
             margin:0 auto;
+            background:#fff;
+        }
+
+        .report-print-stage .aprc-pdf-header {
+            display:grid;
+            grid-template-columns:minmax(0,1fr) 34mm;
+            align-items:start;
+            column-gap:12mm;
+        }
+
+        .report-print-stage .aprc-pdf-header > div:first-child {
+            min-width:0;
+            padding-right:0;
+        }
+
+        .report-print-stage .aprc-pdf-header .aprc-title {
+            line-height:1.25;
+        }
+
+        .report-print-stage .aprc-pdf-header .aprc-subtitle {
+            line-height:1.45;
+        }
+
+        .report-print-stage .aprc-pdf-header .aprc-issued {
+            padding-top:7mm;
+            text-align:right;
+            white-space:nowrap;
+            min-width:30mm;
+        }
+
+        .report-print-stage .aprc-pdf-header .aprc-issued b {
+            line-height:1.2;
         }
 
         @media (max-width:840px) {
@@ -3172,7 +3411,6 @@ function reportCenterInjectPrintViewStyle() {
             }
         }
     `;
-    document.head.appendChild(style);
 }
 
 function reportCenterCopyExamKakaoSummary(studentId, sessionId = '') {
@@ -3197,7 +3435,10 @@ function reportCenterCopyExamKakaoSummary(studentId, sessionId = '') {
 function reportCenterRefreshPremiumExamPreview(studentId, sessionId = '') {
     const root = document.getElementById('report-center-premium-preview');
     if (!root) return;
-    root.innerHTML = reportCenterPremiumReportStyle() + reportCenterBuildPremiumExamReportHtml(studentId, sessionId, { teacherMemo: reportCenterGetExamReportTeacherMemo(), aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId) });
+
+    reportCenterEnsurePremiumReportStyle();
+
+    root.innerHTML = reportCenterBuildPremiumExamReportHtml(studentId, sessionId, { teacherMemo: reportCenterGetExamReportTeacherMemo(), aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId) });
 }
 
 function openReportCenterExam(studentId, selectedSessionId = '') {
