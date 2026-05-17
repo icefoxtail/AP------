@@ -3106,10 +3106,10 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     root.innerHTML = `
         <div id="report-print-view" class="report-print-view">
             <div class="report-print-toolbar no-print">
-                <button class="btn" onclick="reportCenterClosePrintView()">리포트 센터</button>
+                <button class="btn report-print-premium-btn" onclick="reportCenterRequestPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}', this)">프리미엄 분석</button>
                 <button class="btn" onclick="reportCenterResetPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">기본 리포트</button>
-                <button class="btn" onclick="reportCenterRequestPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}', this)">프리미엄 분석</button>
-                <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄</button>
+                <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄하기</button>
+                <button class="btn" onclick="reportCenterClosePrintView()">돌아가기</button>
             </div>
             <div class="report-print-stage">
                 ${reportHtml}
@@ -3280,6 +3280,17 @@ function reportCenterInjectPrintViewStyle() {
             flex:1;
         }
 
+        .report-print-toolbar .report-print-premium-btn {
+            background:linear-gradient(135deg,#6d28d9,#2563eb);
+            color:#fff;
+            border-color:transparent;
+            box-shadow:0 10px 22px rgba(37,99,235,.22);
+        }
+
+        .report-print-toolbar .report-print-premium-btn:hover {
+            filter:brightness(1.03);
+        }
+
         .report-print-control-panel {
             max-width:190mm;
             margin:0 auto 14px;
@@ -3326,6 +3337,8 @@ function reportCenterInjectPrintViewStyle() {
             max-width:190mm;
             margin:0 auto;
             background:#fff;
+            padding:8mm 9mm;
+            box-sizing:border-box;
         }
 
         .report-print-stage .aprc-pdf-header {
@@ -3358,6 +3371,24 @@ function reportCenterInjectPrintViewStyle() {
 
         .report-print-stage .aprc-pdf-header .aprc-issued b {
             line-height:1.2;
+        }
+
+        .report-print-stage .aprc-pdf-student-band {
+            display:grid;
+            grid-template-columns:minmax(0,1fr) minmax(38mm,72mm);
+            align-items:start;
+            column-gap:8mm;
+        }
+
+        .report-print-stage .aprc-pdf-student-band > div:first-child {
+            min-width:0;
+        }
+
+        .report-print-stage .aprc-exam-meta {
+            text-align:right;
+            max-width:none;
+            word-break:keep-all;
+            overflow-wrap:break-word;
         }
 
         @media (max-width:840px) {
@@ -3394,6 +3425,7 @@ function reportCenterInjectPrintViewStyle() {
                 width:100% !important;
                 max-width:190mm !important;
                 margin:0 auto !important;
+                padding:0 !important;
             }
 
             @page {
@@ -3498,10 +3530,9 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
             <textarea id="report-center-exam-teacher-memo" class="btn" placeholder="선생님 추가 메모: 수업 태도, 시험 당시 특이사항, 가정 전달 포인트" style="width:100%; min-height:74px; text-align:left; background:var(--surface); border:1px solid var(--border); padding:13px; font-size:13px; line-height:1.6; resize:vertical; font-family:inherit;" oninput="reportCenterRefreshPremiumExamPreview('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')"></textarea>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트 크게 보기/출력</button>
+                <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트보기/프리미엄분석</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
-            <button class="btn" style="width:100%; min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:#7c3aed; background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.16);" onclick="reportCenterRequestExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', this)">프리미엄 분석</button>
         </div>
     ` : `
         <div style="padding:34px 16px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; background:var(--surface-2); border-radius:16px;">
