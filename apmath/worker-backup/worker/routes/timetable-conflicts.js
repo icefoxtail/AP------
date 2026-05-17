@@ -3,6 +3,22 @@ import { foundationInsert, foundationPatch, foundationSelect, getAllowedClassIds
 import { buildConflictKey, getTeacherConflictExceptionReason, isTimeOverlap, overlapRange, uniqSortedPair } from '../helpers/time.js';
 import { normalizeBranch } from '../helpers/branch.js';
 
+
+function parseLimit(url, fallback = 500, max = 1000) {
+  const raw = url.searchParams.get('limit');
+  if (raw === null || raw === '') return fallback;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) return fallback;
+  return Math.min(Math.floor(n), max);
+}
+
+function addOptionalEquals(url, where, params, queryKey, column = queryKey) {
+  const value = url.searchParams.get(queryKey);
+  if (value === null || value === '') return;
+  where.push(`${column} = ?`);
+  params.push(value);
+}
+
 function pushConflict(conflicts, type, targetId, classA, classB, branchPair, dayOfWeek, start, end) {
   const [a, b] = uniqSortedPair(classA, classB);
   conflicts.push({
@@ -134,7 +150,14 @@ export async function handleTimetableConflicts(request, env, teacher, path, url,
     if (method === 'GET') {
       const where = [];
       const params = [];
-      if (url.searchParams.get('status')) { where.push('status = ?'); params.push(url.searchParams.get('status')); }
+      addOptionalEquals(url, where, params, 'status');
+      addOptionalEquals(url, where, params, 'conflict_type');
+      addOptionalEquals(url, where, params, 'target_id');
+      const classId = url.searchParams.get('class_id');
+      if (classId) {
+        where.push('(class_a_id = ? OR class_b_id = ?)');
+        params.push(classId, classId);
+      }
       if (!isAdminUser(teacher)) {
         const classIds = await getAllowedClassIds(env, teacher);
         if (!classIds?.length) return jsonResponse({ success: true, conflicts: [] });
@@ -142,7 +165,9 @@ export async function handleTimetableConflicts(request, env, teacher, path, url,
         where.push(`(class_a_id IN (${markers}) OR class_b_id IN (${markers}))`);
         params.push(...classIds, ...classIds);
       }
-      return jsonResponse({ success: true, conflicts: await foundationSelect(env, 'timetable_conflict_logs', where, params) });
+      const limit = parseLimit(url, 500, 1000);
+      const conflicts = await foundationSelect(env, 'timetable_conflict_logs', where, params, `created_at DESC LIMIT ${limit}`);
+      return jsonResponse({ success: true, conflicts });
     }
     if (method === 'POST' && id === 'scan') {
       if (!isStaffUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
