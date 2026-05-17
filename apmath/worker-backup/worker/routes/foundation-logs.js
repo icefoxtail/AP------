@@ -1,5 +1,33 @@
 import { jsonResponse } from '../helpers/response.js';
-import { foundationInsert, foundationSelect, getAllowedClassIds, isAdminUser, makeId, safeAll } from '../helpers/foundation-db.js';
+import { foundationInsert, getAllowedClassIds, isAdminUser, makeId, safeAll } from '../helpers/foundation-db.js';
+
+function parseLimit(url, fallback = 500, max = 1000) {
+  const raw = url.searchParams.get('limit');
+  if (raw === null || raw === '') return fallback;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) return fallback;
+  return Math.min(Math.floor(n), max);
+}
+
+function addOptionalEquals(url, where, params, queryKey, column = queryKey) {
+  const value = url.searchParams.get(queryKey);
+  if (value === null || value === '') return;
+  where.push(`${column} = ?`);
+  params.push(value);
+}
+
+function addOptionalDateRange(url, where, params) {
+  const from = url.searchParams.get('changed_from');
+  const to = url.searchParams.get('changed_to');
+  if (from) {
+    where.push('changed_at >= ?');
+    params.push(from);
+  }
+  if (to) {
+    where.push('changed_at <= ?');
+    params.push(to);
+  }
+}
 
 export async function handleFoundationLogs(request, env, teacher, path, url, body = {}) {
   const method = request.method;
@@ -9,13 +37,36 @@ export async function handleFoundationLogs(request, env, teacher, path, url, bod
   if (!table) return jsonResponse({ error: 'API Endpoint Not Found' }, 404);
 
   if (method === 'GET') {
-    if (isAdminUser(teacher) || sub === 'audit' || sub === 'privacy') {
-      return jsonResponse({ success: true, data: isAdminUser(teacher) ? await foundationSelect(env, table) : [] });
+    if (sub === 'audit' || sub === 'privacy') {
+      if (!isAdminUser(teacher)) return jsonResponse({ success: true, data: [] });
+      const limit = parseLimit(url, 1000, 1000);
+      const data = await safeAll(env, `SELECT * FROM ${table} ORDER BY created_at DESC LIMIT ${limit}`);
+      return jsonResponse({ success: true, data });
     }
-    const classIds = await getAllowedClassIds(env, teacher);
-    if (!classIds?.length) return jsonResponse({ success: true, data: [] });
-    const cMarkers = classIds.map(() => '?').join(',');
-    const data = await safeAll(env, `SELECT * FROM ${table} WHERE student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers})) ORDER BY changed_at DESC`, classIds);
+
+    const where = [];
+    const params = [];
+    addOptionalEquals(url, where, params, 'student_id');
+    addOptionalDateRange(url, where, params);
+
+    if (sub === 'class-transfers') {
+      const classId = url.searchParams.get('class_id');
+      if (classId) {
+        where.push('(from_class_id = ? OR to_class_id = ?)');
+        params.push(classId, classId);
+      }
+    }
+
+    if (!isAdminUser(teacher)) {
+      const classIds = await getAllowedClassIds(env, teacher);
+      if (!classIds?.length) return jsonResponse({ success: true, data: [] });
+      const cMarkers = classIds.map(() => '?').join(',');
+      where.push(`student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers}))`);
+      params.push(...classIds);
+    }
+
+    const limit = parseLimit(url, isAdminUser(teacher) ? 1000 : 500, 1000);
+    const data = await safeAll(env, `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY changed_at DESC LIMIT ${limit}`, params);
     return jsonResponse({ success: true, data });
   }
 
