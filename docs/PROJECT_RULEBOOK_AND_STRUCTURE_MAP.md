@@ -1020,3 +1020,34 @@ docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
 - `management.js` lazy loader는 해당 key를 모달 내부 상태로만 받으며 `state.db` 구조는 유지한다.
 - 대시보드/관리 메뉴의 수납·출납 foundation 진입점은 계속 숨김 상태로 둔다.
 - 실제 청구 생성, 결제 연동, 알림·문자 발송, payments 자동 생성은 계속 금지한다.
+ 
+---
+
+# 2026-05-16 수납·출납 foundation initial-data 실제 축소 전 최종 검증
+
+- 이번 검증은 `/api/initial-data` 응답이나 SQL을 변경하지 않고, 실제 축소 직전 제거 후보와 보류 후보만 문서로 확정한다.
+- 수납·출납 foundation 1차 축소 대상은 `billing_templates`, `payments`, `payment_items`, `billing_adjustments`, `billing_runs`, `payment_methods`, `payment_transactions`, `cashbook_entries`, `refund_records`, `carryover_records`, `billing_policy_rules`, `accounting_daily_summaries`, `accounting_monthly_summaries`로 제한한다.
+- `student_enrollments`, `class_time_slots`, `timetable_conflict_logs`, `timetable_conflict_overrides`, `parent_contacts`, `message_logs`, `student_status_history`, `class_transfer_history`, `staff_permissions`는 학생/시간표/학부모 연락/권한 phase와 연결되어 이번 수납·출납 initial-data 1차 축소에서는 보류한다.
+- 실제 축소는 별도 지시서에서만 진행하며, `apmath/worker-backup/worker/index.js` 변경은 그 작업 범위에서만 허용한다.
+- 수납·출납 foundation 진입점은 계속 숨김 상태로 유지하고 `showBillingAccountingFoundationEntry = false`를 바꾸지 않는다.
+- 실제 청구 생성, 실제 결제 연동, 실제 알림·문자 발송, 실제 payments 자동 생성은 계속 금지한다.
+- Worker 배포, 운영 API smoke test, git add/commit/push는 사용자가 직접 실행한다.
+---
+
+# 2026-05-16 수납·출납 foundation initial-data 축소 전 재검증
+
+- `/api/initial-data` 응답 구조와 SQL은 이번 검증 작업에서 변경하지 않는다.
+- 수납·출납 foundation 1차 축소 후보 13개는 코드 검색 기준으로 직접 initial-data 의존이 없고, `management.js` 모달 lazy loader 및 `billing-accounting-foundation` replacement API로 대체 가능하다.
+- 보류 후보 9개는 학생/시간표/학부모 연락/권한 phase와 연결되어 이번 수납·출납 1차 축소 범위에서 제외한다.
+- `showBillingAccountingFoundationEntry = false`를 유지하고 대시보드/관리 메뉴 노출을 변경하지 않는다.
+- 실제 청구 생성, 실제 결제 연동, 실제 알림·문자 발송, 실제 payments 자동 생성은 계속 금지한다.
+- Worker 배포, 운영 API smoke test, git add/commit/push는 사용자가 직접 실행한다.
+## 수납·출납 foundation initial-data 1차 축소 반영
+
+- `/api/initial-data`의 수납·출납 foundation 13개 key는 1차 축소 대상으로 실제 제거되었다.
+- 제거된 key는 `billing_templates`, `payments`, `payment_items`, `billing_adjustments`, `billing_runs`, `payment_methods`, `payment_transactions`, `cashbook_entries`, `refund_records`, `carryover_records`, `billing_policy_rules`, `accounting_daily_summaries`, `accounting_monthly_summaries`다.
+- 위 데이터는 첫 화면 공통 payload가 아니라 전용 `billing-accounting-foundation` route와 `management.js` lazy loader를 통해 조회한다.
+- `student_enrollments`, `class_time_slots`, `timetable_conflict_logs`, `timetable_conflict_overrides`, `parent_contacts`, `message_logs`, `student_status_history`, `class_transfer_history`, `staff_permissions`는 이번 축소 범위에서 보류한다.
+- 실제 청구 생성, 결제 연동, 카드/카카오페이 연동, 알림톡/문자 발송 기능은 만들거나 실행하지 않는다.
+- 수납·출납 foundation 진입점은 계속 숨김 상태를 유지하며, dashboard/admin menu 노출을 되살리지 않는다.
+- 다음 initial-data 축소는 남은 foundation key별 화면 의존성 분석 후 별도 작업으로 진행한다.

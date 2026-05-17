@@ -279,3 +279,128 @@
 - 프론트 문법 검증: `node --check apmath/js/management.js`
 - 운영 API smoke test와 Worker 배포는 사용자가 직접 지시할 때만 진행한다.
 - 실제 initial-data 축소 지시서에서는 신규 API 5개 응답과 initial-data 제거 후 모달 로딩을 비교 검증해야 한다.
+ 
+## 16. 수납·출납 foundation initial-data 실제 축소 전 최종 검증
+
+이번 검증은 `/api/initial-data` 응답을 실제로 축소하지 않고, 다음 별도 작업에서 제거할 수 있는 key와 보류할 key를 코드 검색 기준으로 최종 분리한 기록이다. `apmath/worker-backup/worker/index.js`, `apmath/js/core.js`, `apmath/js/management.js`, `apmath/js/dashboard.js`, `apmath/js/classroom.js`, `apmath/js/student.js`, `apmath/js/report.js`, `apmath/js/cumulative.js`, `apmath/js/qr-omr.js`, `apmath/js/schedule.js`, `apmath/js/textbook.js`, `apmath/student`, `apmath/planner`, `apmath/homework`, `apmath/index.html`을 검색 대상으로 확인했다.
+
+### 16-1. 최종 제거 후보
+
+| key | replacement API | frontend dependency | first screen dependency | readiness | final decision | note |
+| --- | --- | --- | --- | --- | --- | --- |
+| `billing_templates` | `billing-accounting-foundation/billing-templates` | `management.js` 모달 내부 `billingTemplates` | 없음 | almost ready | remove in phase 1 | GET only, `branch`, `active`, `item_type` alias 조회 가능 |
+| `payments` | `billing-accounting-foundation/payments` | `management.js` 모달 내부 `payments` | 없음 | almost ready | remove in phase 1 | `branch`는 `payment_items` 기준 `EXISTS` 필터 |
+| `payment_items` | `billing-accounting-foundation/payment-items` | `management.js` 모달 내부 `paymentItems` | 없음 | almost ready | remove in phase 1 | `payment_id`, `student_id`, `branch`, `item_type` 조회 가능 |
+| `billing_adjustments` | `billing-accounting-foundation/billing-adjustments` | `management.js` 모달 내부 `billingAdjustments` | 없음 | almost ready | remove in phase 1 | 생성/수정/삭제 API 없음 |
+| `billing_runs` | `billing-accounting-foundation/billing-runs` | `management.js` 모달 내부 `billingRuns` | 없음 | almost ready | remove in phase 1 | 실행/자동 생성 API 없음 |
+| `payment_methods` | `billing-accounting-foundation/payment-methods` | `management.js` 모달 내부 `methods` | 없음 | ready | remove in phase 1 | 기존 설정 조회 API와 lazy loader 존재 |
+| `payment_transactions` | `billing-accounting-foundation/payment-transactions` | `management.js` 모달 내부 `transactions` | 없음 | almost ready | remove in phase 1 | 기존 alias `transactions` 유지 |
+| `cashbook_entries` | `billing-accounting-foundation/cashbook-entries` | `management.js` 모달 내부 `cashbookEntries` | 없음 | almost ready | remove in phase 1 | 기존 alias `cashbook` 유지 |
+| `refund_records` | `billing-accounting-foundation/refund-records` | `management.js` 모달 내부 `refunds` | 없음 | almost ready | remove in phase 1 | 기존 alias `refunds` 유지 |
+| `carryover_records` | `billing-accounting-foundation/carryover-records` | `management.js` 모달 내부 `carryovers` | 없음 | almost ready | remove in phase 1 | 기존 alias `carryovers` 유지 |
+| `billing_policy_rules` | `billing-accounting-foundation/billing-policy-rules` | `management.js` 모달 내부 `policies` | 없음 | ready | remove in phase 1 | 기존 alias `policy-rules` 유지 |
+| `accounting_daily_summaries` | `billing-accounting-foundation/accounting-daily-summaries` | `management.js` 모달 내부 `dailySummaries` | 없음 | ready | remove in phase 1 | 기존 alias `daily-summaries` 유지 |
+| `accounting_monthly_summaries` | `billing-accounting-foundation/accounting-monthly-summaries` | `management.js` 모달 내부 `monthlySummaries` | 없음 | ready | remove in phase 1 | 기존 alias `monthly-summaries` 유지 |
+
+### 16-2. 보류 후보
+
+| key | reason to keep | related phase | risk | note |
+| --- | --- | --- | --- | --- |
+| `student_enrollments` | 학생 수강 foundation과 연결되어 수납·출납 1차 축소 범위가 아님 | enrollment/foundation phase | 중간 | 학생/반/수강 구조 검증 후 분리 |
+| `class_time_slots` | 시간표 foundation 및 충돌 판단과 연결됨 | timetable phase | 중간 | 시간표 표시와 `refreshDataOnly()` 영향 검증 필요 |
+| `timetable_conflict_logs` | 시간표 충돌 로그 데이터 | timetable conflict phase | 낮음 | 로그성 데이터지만 수납·출납 묶음이 아님 |
+| `timetable_conflict_overrides` | 시간표 충돌 예외 판단과 연결됨 | timetable conflict phase | 중간 | 즉시 판단 로직 영향 확인 필요 |
+| `parent_contacts` | 학부모 연락 foundation과 연결됨 | parent/contact phase | 중간 | 개인정보 및 연락처 화면 범위 검증 필요 |
+| `message_logs` | 알림/문자 발송 기록 foundation과 연결됨 | parent/message phase | 중간 | 실제 발송 금지와 별도 로그 조회 설계 필요 |
+| `student_status_history` | 학생 상태 이력 관리와 연결됨 | student history phase | 중간 | 학생 상세/관리 화면에서 별도 검증 필요 |
+| `class_transfer_history` | 반 이동 이력 관리와 연결됨 | student/class history phase | 중간 | 학생 상세/관리 화면에서 별도 검증 필요 |
+| `staff_permissions` | 직원/권한/관리 화면 제어와 연결됨 | staff permission phase | 높음 | 권한 guard 없이 제거 금지 |
+
+### 16-3. 프론트 직접 참조 검색 결과
+
+- 제거 후보 key의 `state.db.<key>` 또는 `state.db['<key>']` 직접 참조는 검색 결과 발견되지 않았다.
+- 제거 후보 key의 `data.<key>` 또는 `initialData.<key>` 직접 참조는 검색 결과 발견되지 않았다.
+- 제거 후보 key 문자열은 `management.js`의 `state.ui.billingAccountingFoundation` 모달 내부 배열과 `billingAccountingFetchAll()` API 요청/응답 매핑에서 확인된다.
+- `dashboard.js`는 `showBillingAccountingFoundationEntry = false` 상태이며, 수납·출납 foundation 버튼은 조건부 템플릿 안에 남아 있으나 노출되지 않는다.
+- `apmath/student`, `apmath/planner`, `apmath/homework`, `apmath/index.html` 범위에서 제거 후보 key의 initial-data 직접 의존은 발견되지 않았다.
+- 보류 후보는 이번 수납·출납 1차 축소 대상이 아니며, 시간표/학부모 연락/학생 이력/권한 phase에서 별도 검증한다.
+
+### 16-4. 실제 축소 작업 전제 조건
+
+- 다음 작업에서 initial-data에서 제거해도 되는 key: `billing_templates`, `payments`, `payment_items`, `billing_adjustments`, `billing_runs`, `payment_methods`, `payment_transactions`, `cashbook_entries`, `refund_records`, `carryover_records`, `billing_policy_rules`, `accounting_daily_summaries`, `accounting_monthly_summaries`.
+- 다음 작업에서 제거하면 안 되는 key: `student_enrollments`, `class_time_slots`, `timetable_conflict_logs`, `timetable_conflict_overrides`, `parent_contacts`, `message_logs`, `student_status_history`, `class_transfer_history`, `staff_permissions`.
+- 제거 후 반드시 실행할 node check: `node --check apmath/worker-backup/worker/index.js`, `node --check apmath/js/core.js`, `node --check apmath/js/management.js`, `node --check apmath/js/dashboard.js`, `node --check apmath/js/classroom.js`, `node --check apmath/js/student.js`, `node --check apmath/js/report.js`.
+- 제거 후 화면 수동 검증 목록: admin 첫 화면, teacher 첫 화면, dashboard, classroom, student detail, report, management, 수납·출납 foundation 모달.
+- 제거 후 API smoke 목록: `/api/initial-data`, `/api/billing-accounting-foundation/billing-templates`, `/api/billing-accounting-foundation/payments`, `/api/billing-accounting-foundation/payment-items`, `/api/billing-accounting-foundation/billing-adjustments`, `/api/billing-accounting-foundation/billing-runs`, 기존 payment/accounting foundation GET 계열.
+- 배포 전 확인 순서: 로컬 diff 확인, node check, 화면별 수동 검증, 사용자가 직접 Worker 배포, 사용자가 직접 운영 API smoke test.
+
+### 16-5. 다음 작업 추천
+
+- 다음 작업 제목: `수납·출납 foundation initial-data 1차 축소`
+- 다음 작업에서도 실제 청구 생성, 실제 결제 연동, 실제 알림/문자 발송, 실제 payments 자동 생성은 금지한다.
+- 다음 작업은 `apmath/worker-backup/worker/index.js`의 `/api/initial-data` 응답과 SQL에서 위 13개 수납·출납 foundation key만 제거하는 범위로 제한한다.
+## 16-6. 2026-05-16 수납·출납 foundation initial-data 축소 전 재검증
+
+- `apmath/js`, `apmath/student`, `apmath/planner`, `apmath/index.html`, `apmath/homework` 범위에서 제거 후보 13개 key의 직접 `state.db.<key>`, `state.db['<key>']`, `data.<key>`, `initialData.<key>` 참조를 다시 검색했다.
+- 검색 결과 제거 후보 13개 key의 직접 initial-data 의존은 발견되지 않았고, `management.js`의 `state.ui.billingAccountingFoundation` 모달 내부 상태 및 `billingAccountingFetchAll()` 응답 매핑만 확인됐다.
+- `billing_templates`, `payments`, `payment_items`, `billing_adjustments`, `billing_runs`는 `billing-accounting-foundation` route 안에서 GET replacement API가 확인됐다.
+- `payment_methods`, `payment_transactions`, `cashbook_entries`, `refund_records`, `carryover_records`, `billing_policy_rules`, `accounting_daily_summaries`, `accounting_monthly_summaries`, `accounting-summary`도 기존 route coverage가 확인됐다.
+- `apmath/worker-backup/worker/index.js`에는 아직 initial-data foundation SQL과 응답 key가 남아 있으며, 이번 검증 작업에서는 변경하지 않았다.
+- `dashboard.js`는 `showBillingAccountingFoundationEntry = false` 상태를 유지한다.
+- 결론은 유지한다: 다음 별도 작업에서 제거 가능한 key는 13개 수납·출납 foundation key이며, 보류 key 9개는 학생/시간표/학부모 연락/권한 phase에서 별도 검증한다.
+## 17. 수납·출납 foundation initial-data 1차 축소 결과
+
+이번 작업에서 `/api/initial-data`의 `loadFoundationInitialData()` 응답에서 수납·출납 foundation 13개 key를 실제로 제거했다. 제거 대상은 빈 배열로 남기지 않고 SQL query와 response property를 함께 제거했다.
+
+### 제거된 key 13개
+
+- `billing_templates`
+- `payments`
+- `payment_items`
+- `billing_adjustments`
+- `billing_runs`
+- `payment_methods`
+- `payment_transactions`
+- `cashbook_entries`
+- `refund_records`
+- `carryover_records`
+- `billing_policy_rules`
+- `accounting_daily_summaries`
+- `accounting_monthly_summaries`
+
+### 보류된 key 9개
+
+- `student_enrollments`
+- `class_time_slots`
+- `timetable_conflict_logs`
+- `timetable_conflict_overrides`
+- `parent_contacts`
+- `message_logs`
+- `student_status_history`
+- `class_transfer_history`
+- `staff_permissions`
+
+### 제거 이유와 대체 조회 경로
+
+- 제거된 13개 key는 첫 화면 공통 initial-data에 계속 포함될 필요가 없는 수납·출납 foundation 데이터다.
+- 기존 `billing-accounting-foundation` route의 read-only GET API와 alias mapping을 유지했다.
+- `management.js`의 `billingAccountingFetchAll()` lazy loader는 기존처럼 replacement API를 통해 foundation modal 내부 상태를 채운다.
+- route 파일과 lazy loader 파일은 이번 작업 범위에서 수정하지 않았다.
+
+### 첫 화면 영향 판단
+
+- 제거 대상 key에 대한 `state.db.<key>`, `state.db['<key>']`, `data.<key>`, `initialData.<key>` 직접 참조 검색 결과는 발견되지 않았다.
+- dashboard의 `showBillingAccountingFoundationEntry = false` 숨김 상태는 변경하지 않았다.
+- 실제 청구 생성, 결제 연동, 카드/카카오페이 연동, 알림톡/문자 발송, 운영 DB smoke test는 수행하지 않았다.
+
+### 실제 축소 후 검증 항목
+
+- `apmath/worker-backup/worker/index.js`에서 제거 대상 13개 key의 SQL query와 response property가 제거되었는지 검색했다.
+- `apmath/js`, `apmath/student`, `apmath/planner`, `apmath/homework`, `apmath/index.html` 범위에서 제거 대상 key의 initial-data 직접 의존성을 검색했다.
+- 필수 `node --check` 대상과 선택 `node --check` 대상을 실행해 문법을 확인했다.
+- `git diff --name-only`, `git status --short`로 변경 범위와 기존 dirty 파일을 확인했다.
+
+### 다음 분리 후보
+
+- 이번에 보류한 9개 key는 시간표 foundation, 학부모 연락, 학생 이력, 직원 권한과 연결되어 있어 별도 phase에서 화면별 의존성 검증 후 분리한다.
+- 다음 initial-data 축소는 `student_enrollments`, `class_time_slots`, `timetable_conflict_logs`, `timetable_conflict_overrides`, `parent_contacts`, `message_logs`, `student_status_history`, `class_transfer_history`, `staff_permissions`를 각각 별도 분석 대상으로 삼는다.

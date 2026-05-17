@@ -5,7 +5,14 @@ export async function handleAuth(request, env, ctx = {}) {
     method = request.method,
     helpers = {}
   } = ctx;
-  const { sha256hex, verifyAuth } = helpers;
+  const {
+    sha256hex,
+    verifyAuth,
+    createTeacherSession,
+    revokeTeacherSession,
+    getBearerToken,
+    cleanupExpiredTeacherSessions
+  } = helpers;
 
   if (path[1] !== 'auth') return null;
 
@@ -13,7 +20,7 @@ export async function handleAuth(request, env, ctx = {}) {
     const { login_id, password } = await request.json();
     const hash = await sha256hex(password);
     const teacher = await env.DB.prepare(
-      'SELECT id, name, role FROM teachers WHERE login_id = ? AND password_hash = ?'
+      'SELECT id, login_id, name, role FROM teachers WHERE login_id = ? AND password_hash = ?'
     ).bind(login_id, hash).first();
 
     if (!teacher) {
@@ -23,12 +30,31 @@ export async function handleAuth(request, env, ctx = {}) {
       });
     }
 
+    if (cleanupExpiredTeacherSessions) {
+      await cleanupExpiredTeacherSessions(env).catch(() => {});
+    }
+
+    const session = createTeacherSession
+      ? await createTeacherSession(env, teacher)
+      : { session_token: '', expires_at: '' };
+
     return new Response(JSON.stringify({
       success: true,
       id: teacher.id,
       name: teacher.name,
-      role: teacher.role
+      role: teacher.role,
+      login_id: teacher.login_id,
+      session_token: session.session_token,
+      expires_at: session.expires_at
     }), { headers });
+  }
+
+  if (path[2] === 'logout' && method === 'POST') {
+    const token = getBearerToken ? getBearerToken(request) : '';
+    if (token && revokeTeacherSession) {
+      await revokeTeacherSession(env, token).catch(() => {});
+    }
+    return new Response(JSON.stringify({ success: true }), { headers });
   }
 
   if (path[2] === 'change-password' && method === 'POST') {

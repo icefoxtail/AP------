@@ -35,21 +35,114 @@ const headers = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token'
 };
 
+const TEACHER_SESSION_TTL_SECONDS = 7 * 24 * 60 * 60;
+const TEACHER_SESSION_TOKEN_BYTES = 32;
+
 // SHA-256 헬퍼
 async function sha256hex(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+function makeSessionToken() {
+  const bytes = new Uint8Array(TEACHER_SESSION_TOKEN_BYTES);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function getSessionExpiryDate() {
+  return new Date(Date.now() + (TEACHER_SESSION_TTL_SECONDS * 1000)).toISOString();
+}
+
+function makeSessionId() {
+  return `ts_${Date.now()}_${crypto.randomUUID ? crypto.randomUUID() : makeSessionToken().slice(0, 16)}`;
+}
+
+async function createTeacherSession(env, teacher) {
+  const sessionToken = makeSessionToken();
+  const expiresAt = getSessionExpiryDate();
+  await env.DB.prepare(`
+    INSERT INTO teacher_sessions (id, teacher_id, login_id, session_token, expires_at, created_at, last_used_at)
+    VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(makeSessionId(), teacher.id, teacher.login_id || null, sessionToken, expiresAt).run();
+  return { session_token: sessionToken, expires_at: expiresAt };
+}
+
+async function revokeTeacherSession(env, token) {
+  if (!token) return;
+  await env.DB.prepare(`
+    UPDATE teacher_sessions
+    SET revoked_at = CURRENT_TIMESTAMP
+    WHERE session_token = ? AND revoked_at IS NULL
+  `).bind(token).run();
+}
+
+async function verifyTeacherSession(env, token) {
+  if (!token) return null;
+  const session = await env.DB.prepare(`
+    SELECT ts.id AS session_id, ts.teacher_id, ts.session_token, ts.expires_at,
+           t.id, t.login_id, t.name, t.role
+    FROM teacher_sessions ts
+    JOIN teachers t ON t.id = ts.teacher_id
+    WHERE ts.session_token = ?
+      AND ts.revoked_at IS NULL
+      AND ts.expires_at > ?
+    LIMIT 1
+  `).bind(token, new Date().toISOString()).first();
+  if (!session) return null;
+  env.DB.prepare('UPDATE teacher_sessions SET last_used_at = CURRENT_TIMESTAMP WHERE session_token = ?')
+    .bind(token)
+    .run()
+    .catch(() => {});
+  return {
+    id: session.id,
+    login_id: session.login_id,
+    name: session.name,
+    role: session.role
+  };
+}
+
+function getBearerToken(request) {
+  const auth = request.headers.get('Authorization') || '';
+  return auth.startsWith('Bearer ') ? auth.slice(7).trim() : '';
+}
+
+function decodeBasicAuthValue(value) {
+  const raw = atob(value);
+  try {
+    const bytes = Uint8Array.from(raw, ch => ch.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  } catch (e) {
+    return raw;
+  }
+}
+
+async function cleanupExpiredTeacherSessions(env) {
+  await env.DB.prepare(`
+    DELETE FROM teacher_sessions
+    WHERE expires_at <= datetime('now', '-7 days')
+       OR (revoked_at IS NOT NULL AND revoked_at <= datetime('now', '-7 days'))
+  `).run();
+}
+
 // Basic Auth 파싱 및 검증
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
+
+  if (auth.startsWith('Bearer ')) {
+    return verifyTeacherSession(env, auth.slice(7).trim());
+  }
+
   if (!auth.startsWith('Basic ')) return null;
   try {
-    const [loginId, password] = atob(auth.slice(6)).split(':');
+    const decoded = decodeBasicAuthValue(auth.slice(6));
+    const separator = decoded.indexOf(':');
+    if (separator < 0) return null;
+    const loginId = decoded.slice(0, separator);
+    const password = decoded.slice(separator + 1);
     const hash = await sha256hex(password);
     const teacher = await env.DB.prepare(
-      'SELECT id, name, role FROM teachers WHERE login_id = ? AND password_hash = ?'
+      'SELECT id, login_id, name, role FROM teachers WHERE login_id = ? AND password_hash = ?'
     ).bind(loginId, hash).first();
     return teacher || null;
   } catch (e) { return null; }
@@ -273,19 +366,6 @@ async function loadFoundationInitialData(env, teacher) {
     class_time_slots: [],
     timetable_conflict_logs: [],
     timetable_conflict_overrides: [],
-    billing_templates: [],
-    payments: [],
-    payment_items: [],
-    billing_adjustments: [],
-    billing_runs: [],
-    payment_methods: [],
-    payment_transactions: [],
-    cashbook_entries: [],
-    refund_records: [],
-    carryover_records: [],
-    billing_policy_rules: [],
-    accounting_daily_summaries: [],
-    accounting_monthly_summaries: [],
     parent_contacts: [],
     message_logs: [],
     student_status_history: [],
@@ -299,19 +379,6 @@ async function loadFoundationInitialData(env, teacher) {
       safeAll(env, 'SELECT * FROM class_time_slots ORDER BY day_of_week ASC, start_time ASC'),
       safeAll(env, 'SELECT * FROM timetable_conflict_logs ORDER BY created_at DESC LIMIT 500'),
       safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
-      safeAll(env, 'SELECT * FROM billing_templates ORDER BY branch ASC, name ASC'),
-      safeAll(env, 'SELECT * FROM payments ORDER BY year DESC, month DESC, created_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM payment_items ORDER BY created_at DESC LIMIT 2000'),
-      safeAll(env, 'SELECT * FROM billing_adjustments ORDER BY created_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM billing_runs ORDER BY year DESC, month DESC, created_at DESC'),
-      safeAll(env, 'SELECT * FROM payment_methods ORDER BY sort_order ASC, method_key ASC'),
-      safeAll(env, 'SELECT * FROM payment_transactions ORDER BY transaction_date DESC, created_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM cashbook_entries ORDER BY entry_date DESC, created_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM refund_records ORDER BY refund_date DESC, created_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM carryover_records ORDER BY created_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM billing_policy_rules ORDER BY branch ASC, rule_type ASC, rule_key ASC'),
-      safeAll(env, 'SELECT * FROM accounting_daily_summaries ORDER BY summary_date DESC, branch ASC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM accounting_monthly_summaries ORDER BY year DESC, month DESC, branch ASC LIMIT 1000'),
       safeAll(env, 'SELECT * FROM parent_contacts ORDER BY created_at DESC'),
       safeAll(env, 'SELECT * FROM message_logs ORDER BY created_at DESC LIMIT 1000'),
       safeAll(env, 'SELECT * FROM student_status_history ORDER BY changed_at DESC LIMIT 1000'),
@@ -330,7 +397,6 @@ async function loadFoundationInitialData(env, teacher) {
 
   const studentScoped = studentIds.length
     ? {
-        payments: await safeAll(env, `SELECT * FROM payments WHERE student_id IN (${sMarkers}) ORDER BY year DESC, month DESC, created_at DESC LIMIT 500`, studentIds),
         parent_contacts: await safeAll(env, `SELECT * FROM parent_contacts WHERE student_id IN (${sMarkers}) ORDER BY created_at DESC`, studentIds),
         message_logs: await safeAll(env, `SELECT * FROM message_logs WHERE student_id IN (${sMarkers}) ORDER BY created_at DESC LIMIT 500`, studentIds),
         student_status_history: await safeAll(env, `SELECT * FROM student_status_history WHERE student_id IN (${sMarkers}) ORDER BY changed_at DESC LIMIT 500`, studentIds),
@@ -344,9 +410,6 @@ async function loadFoundationInitialData(env, teacher) {
     class_time_slots: await safeAll(env, `SELECT * FROM class_time_slots WHERE class_id IN (${cMarkers}) ORDER BY day_of_week ASC, start_time ASC`, classIds),
     timetable_conflict_logs: await safeAll(env, `SELECT * FROM timetable_conflict_logs WHERE class_a_id IN (${cMarkers}) OR class_b_id IN (${cMarkers}) ORDER BY created_at DESC LIMIT 500`, [...classIds, ...classIds]),
     timetable_conflict_overrides: await safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
-    billing_templates: await safeAll(env, `SELECT * FROM billing_templates WHERE class_id IS NULL OR class_id IN (${cMarkers}) ORDER BY branch ASC, name ASC`, classIds),
-    payment_items: [],
-    billing_adjustments: [],
     staff_permissions: await safeAll(env, 'SELECT * FROM staff_permissions WHERE teacher_id = ? ORDER BY permission_key ASC', [teacher.id]),
     ...studentScoped
   };
@@ -2494,10 +2557,19 @@ export default {
             method,
             helpers: {
               sha256hex,
-              verifyAuth
+              verifyAuth,
+              createTeacherSession,
+              revokeTeacherSession,
+              getBearerToken,
+              cleanupExpiredTeacherSessions
             }
           });
           if (routed) return routed;
+        }
+
+        if (resource === 'logout' && method === 'POST') {
+          await revokeTeacherSession(env, getBearerToken(request)).catch(() => {});
+          return jsonResponse({ success: true });
         }
 
         if (
@@ -2664,7 +2736,8 @@ export default {
 
         // --- 6B. 숙제 사진 확인 QR 시스템 ---
         if (resource === 'homework-photo') {
-          const routed = await handleHomeworkPhoto(request, env, null, path, url);
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleHomeworkPhoto(request, env, teacher, path, url);
           if (routed) return routed;
         }
 
@@ -2683,7 +2756,8 @@ export default {
           resource === 'material-review'
         ) {
           const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
-          const routed = await handleStudyMaterialWrongs(request, env, null, path, url, body);
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleStudyMaterialWrongs(request, env, teacher, path, url, body);
           if (routed) return routed;
         }
 
@@ -2692,7 +2766,8 @@ export default {
           resource === 'class-exam-assignments' ||
           resource === 'exam-sessions'
         ) {
-          const routed = await handleExams(request, env, null, path, url);
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleExams(request, env, teacher, path, url);
           if (routed) return routed;
         }
 
@@ -2704,7 +2779,8 @@ export default {
           resource === 'school-exam-records' ||
           resource === 'daily-journals'
         ) {
-          const routed = await handleOperations(request, env, null, path, url);
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleOperations(request, env, teacher, path, url);
           if (routed) return routed;
         }
 
@@ -2713,12 +2789,14 @@ export default {
           resource === 'class-daily-records' ||
           resource === 'class-daily-progress'
         ) {
-          const routed = await handleClassDaily(request, env, null, path, url);
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleClassDaily(request, env, teacher, path, url);
           if (routed) return routed;
         }
 
         if (resource === 'ai') {
-          const routed = await handleReportsAi(request, env, null, path, url);
+          const teacher = await verifyAuth(request, env);
+          const routed = await handleReportsAi(request, env, teacher, path, url);
           if (routed) return routed;
         }
         

@@ -1,495 +1,522 @@
+````bash
 cat > CODEX_TASK.md <<'EOF'
 # CODEX_TASK
 
-## 작업명
-수납·출납 foundation blocked key read-only API 보강
+## 0. 재작업 사유
 
-## 작업 목적
-`docs/INITIAL_DATA_SPLIT_ANALYSIS.md`의 수납·출납 foundation 1차 분리 준비 평가에서 `blocked`로 남은 key들을 initial-data 밖에서도 조회할 수 있도록 read-only API를 보강한다.
+이전 작업 결과는 완료 보고와 실제 코드가 불일치했다.
 
-이번 작업은 `/api/initial-data` 실제 축소 작업이 아니다.
-이번 작업은 initial-data에서 수납·출납 foundation 데이터를 제거하기 전 필요한 replacement API coverage를 채우는 작업이다.
+업로드된 실제 파일 기준 검수 결과:
 
-보강 대상 blocked key:
+- `20260516_teacher_sessions.sql`: 세션 테이블 migration은 일부 존재
+- `schema.sql`: `teacher_sessions` 최종 구조 반영 누락
+- `index.js`: Bearer 인증 검증, 세션 테이블 조회, 로그인/로그아웃 라우팅 연결 누락
+- `auth.js`: 세션 토큰 로직 일부는 있으나 `index.js`에 연결되지 않은 고립 파일
+- `core.js`: `raw_password` localStorage 저장이 그대로 남아 있음
+- `core.js`: `btoa(`${s.login_id}:${s.raw_password}`)` 직접 호출이 그대로 남아 있음
+- `CODEX_RESULT.md`: 실제 코드와 다른 완료 보고 작성됨
 
-- billing_templates
-- payments
-- payment_items
-- billing_adjustments
-- billing_runs
+이번 재작업은 이전 `CODEX_RESULT.md`를 신뢰하지 말고, 실제 파일을 처음부터 다시 열어 확인한 뒤 진행한다.
 
-핵심 목표:
+---
 
-- 기존 `/api/initial-data` 응답 구조는 그대로 유지한다.
-- `routes/billing-accounting-foundation.js` 안에 위 key들을 대체할 GET 전용 조회 API를 추가한다.
-- 기존 route 스타일, admin 권한 차단, 필터 방식, limit 방어 방식을 따른다.
-- `management.js`의 수납·출납 foundation lazy loader가 해당 API를 함께 조회할 수 있도록 최소 보강한다.
-- `state.db` 구조는 변경하지 않는다.
-- 대시보드/관리 메뉴 노출은 계속 금지한다.
+## 1. 절대 규칙
 
-## 반드시 먼저 읽을 문서
-작업 전 반드시 아래 문서를 처음부터 끝까지 읽고, 그 원칙을 우선 적용하라.
+- 현재 프로젝트 루트에서 작업한다.
+- 먼저 `CODEX_TASK.md`를 처음부터 끝까지 다시 읽고 작업한다.
+- 이전 완료 보고 내용으로 대체하지 않는다.
+- 실제 파일을 열어 확인하지 않은 상태로 완료 처리하지 않는다.
+- 기존 문구, 버튼명, 화면명, 모달명, 안내문을 임의로 변경하지 않는다.
+- 원장님/관리자 대시보드 UI를 새로 추가하거나 바꾸지 않는다.
+- 학생 포털, 학생 OMR, 플래너 흐름은 이번 작업에서 건드리지 않는다.
+- 학생의 시험지 직접 열기 금지 원칙을 건드리지 않는다.
+- 학생 OMR 제출 완료 후 재수정 금지 원칙을 건드리지 않는다.
+- 이번 작업은 선생님/원장님 로그인 인증 안정화만 목표로 한다.
+- `git add`, `git commit`, `git push`는 하지 않는다.
+- 기존 Basic Auth는 즉시 삭제하지 않는다.
+- 새 구조는 Bearer 토큰 우선, Basic Auth fallback 임시 유지 방식으로 구현한다.
+- `localStorage`에 `raw_password`, `password`, `pw`를 저장하지 않는다.
+- `CODEX_RESULT.md`는 실제 코드 검증 결과와 일치해야 한다.
 
-- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
-- docs/INITIAL_DATA_SPLIT_ANALYSIS.md
+---
 
-있다면 아래 문서도 함께 읽어라.
+## 2. 반드시 먼저 열어볼 파일
 
-- docs/WANGJI_OS_ROADMAP.md
-- docs/WANGJI_OS_STRUCTURE.md
+아래 파일을 실제로 열어서 현재 상태를 확인한다.
 
-문서가 없으면 새로 추정해서 만들지 말고, 현재 레포에 존재하는 문서 기준으로만 작업한다.
+- `schema.sql`
+- `migrations/20260516_teacher_sessions.sql` 또는 실제 migration 파일명
+- `index.js`
+- `auth.js` 또는 실제 인증 라우트 파일
+- `apmath/js/core.js`
+- `CODEX_RESULT.md`
 
-## 절대 원칙
-- 이번 작업은 blocked key read-only API 보강 작업이다.
-- `/api/initial-data` 응답 구조를 아직 줄이지 않는다.
-- initial-data에서 수납·출납 foundation key를 삭제하지 않는다.
-- initial-data SQL query를 삭제하거나 축소하지 않는다.
-- `apmath/worker-backup/worker/index.js`는 수정하지 않는다.
-- 새 route 파일을 만들지 않는다.
-- 기존 `routes/billing-accounting-foundation.js` 안에서만 API coverage를 보강한다.
-- POST/PATCH/DELETE 신규 기능은 만들지 않는다.
-- 이번 blocked key는 GET read-only 조회만 추가한다.
-- 기존 AP Math OS 화면을 깨지 않는다.
-- 기존 UI 문구·버튼명·화면명·메뉴명·운영 용어를 임의로 변경하지 않는다.
-- “숙제”를 “과제”로 바꾸는 식의 용어 변경 금지.
-- 원장/관리자 대시보드에 새 카드, 새 버튼, 새 메뉴를 노출하지 않는다.
-- 수납·출납 foundation 진입점은 계속 숨김 상태로 유지한다.
-- `showBillingAccountingFoundationEntry = false` 상태를 유지한다.
-- 대시보드 또는 관리 메뉴에 수납·출납 버튼을 다시 노출하지 않는다.
-- 실제 청구 생성 금지.
-- 실제 결제 연동 금지.
-- 실제 카드사/카카오페이 연동 금지.
-- 실제 알림톡/문자 발송 금지.
-- 실제 payments 대량 생성 금지.
-- 운영 DB에 테스트 데이터를 생성하는 smoke test 금지.
-- DB schema 변경 금지.
-- migration 추가 금지.
-- 사용자가 명시하지 않았으므로 Worker 배포 금지.
-- 사용자가 명시하지 않았으므로 운영 API smoke test 금지.
-- 사용자가 명시하지 않았으므로 git add / git commit / git push 금지.
-- git add . 금지.
+확인 후 아래를 메모하면서 작업한다.
 
-## 현재 기준
-`docs/INITIAL_DATA_SPLIT_ANALYSIS.md`의 14장 기준:
+1. Worker 엔트리 파일이 실제로 `index.js`인지
+2. 로그인 API 경로가 실제로 무엇인지
+3. 기존 Basic Auth 검증 함수 이름과 위치
+4. 기존 `auth.js`가 실제로 사용되는 구조인지
+5. D1 바인딩 이름
+6. `teacher_sessions` migration이 실제 migrations 폴더에 있는지
+7. `schema.sql`에 `teacher_sessions`가 반영되어 있는지
+8. `core.js`의 `setSession`, `getAuthHeader`, `handleLogin`, `logout`, `api.get/post/patch/delete`, `loadData` 구조
 
-ready:
-- payment_methods
-- billing_policy_rules
-- accounting_daily_summaries
-- accounting_monthly_summaries
+---
 
-almost ready:
-- payment_transactions
-- cashbook_entries
-- refund_records
-- carryover_records
+## 3. 이전 실패 지점 강제 수정
 
-blocked:
-- billing_templates
-- payments
-- payment_items
-- billing_adjustments
-- billing_runs
+### 3-1. `schema.sql` 반영
 
-이번 작업은 blocked 항목만 read-only API coverage를 채우는 것이 목적이다.
+`schema.sql`에 `teacher_sessions` 테이블이 없으면 반드시 추가한다.
 
-## 수정 가능 파일
-필요한 경우에만 아래 파일을 수정한다.
+기준 구조:
 
-- apmath/worker-backup/worker/routes/billing-accounting-foundation.js
-- apmath/js/management.js
-- docs/INITIAL_DATA_SPLIT_ANALYSIS.md
-- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
-- CODEX_RESULT.md
+```sql
+CREATE TABLE IF NOT EXISTS teacher_sessions (
+    id TEXT PRIMARY KEY,
+    teacher_id TEXT NOT NULL,
+    login_id TEXT,
+    session_token TEXT NOT NULL UNIQUE,
+    expires_at TEXT NOT NULL,
+    revoked_at TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    last_used_at TEXT
+);
 
-## 수정 금지 파일
-아래 파일은 수정하지 않는다.
+CREATE INDEX IF NOT EXISTS idx_teacher_sessions_token ON teacher_sessions(session_token);
+CREATE INDEX IF NOT EXISTS idx_teacher_sessions_teacher ON teacher_sessions(teacher_id);
+CREATE INDEX IF NOT EXISTS idx_teacher_sessions_expires ON teacher_sessions(expires_at);
+````
 
-- apmath/worker-backup/worker/index.js
-- apmath/js/core.js
-- apmath/js/dashboard.js
-- apmath/student/index.html
-- apmath/planner/index.html
-- apmath/worker-backup/worker/schema.sql
-- apmath/worker-backup/worker/migrations/
+이미 migration에 컬럼명이 다르게 들어가 있다면, migration과 `schema.sql`을 일치시킨다.
+단, 운영 데이터 파괴성 변경은 하지 않는다.
 
-## 1. route alias 추가 또는 확인
-대상 파일:
+### 3-2. migration 위치 확인
 
-- apmath/worker-backup/worker/routes/billing-accounting-foundation.js
+`20260516_teacher_sessions.sql`이 루트에만 있고 `migrations/`에 없으면, 프로젝트의 기존 migration 규칙에 맞게 `migrations/` 아래에 배치한다.
 
-`normalizeFoundationSub`에서 blocked key API alias를 처리한다.
+이미 `migrations/`에 같은 내용이 있으면 중복 생성하지 않는다.
 
-추가 또는 확인할 alias:
+---
 
-- billing-templates -> billing-templates
-- payments -> payments
-- payment-items -> payment-items
-- billing-adjustments -> billing-adjustments
-- billing-runs -> billing-runs
+## 4. Worker 인증 연결 재작업
 
-이미 raw sub 그대로 처리 가능하면 별도 alias는 최소화한다.
-다만 initial-data key와 URL resource가 헷갈리지 않도록 필요한 경우 아래 alias도 허용한다.
+### 4-1. 고립된 `auth.js` 금지
 
-- billing_templates -> billing-templates
-- payment_items -> payment-items
-- billing_adjustments -> billing-adjustments
-- billing_runs -> billing-runs
+`auth.js`에 토큰 발급/검증/로그아웃 코드가 있어도 `index.js`에서 실제로 호출되지 않으면 실패다.
 
-주의:
-- 기존 alias를 삭제하지 않는다.
-- 기존 payment-methods, policy-rules, transactions, cashbook, refunds, carryovers, summaries 흐름을 깨지 않는다.
+둘 중 하나로 정리한다.
 
-## 2. GET /billing-templates 추가
-대상 resource:
+#### 선택 A: 기존 Worker가 단일 `index.js` 구조라면
 
-- /api/billing-accounting-foundation/billing-templates
+* `auth.js`에 만든 코드를 `index.js`에서 import하지 말고, 실제 기존 구조에 맞게 `index.js` 내부 인증 흐름에 직접 연결한다.
+* 사용하지 않는 고립 파일은 남기지 않는다. 단, 삭제가 위험하면 `CODEX_RESULT.md`에 “미사용 파일로 남아 있음”을 명시한다.
 
-GET 전용으로 구현한다.
+#### 선택 B: Worker가 라우트 분리 구조라면
 
-조회 테이블:
+* `index.js`에서 `auth.js`를 실제 import한다.
+* `/api/auth/login`, `/api/logout` 또는 기존 로그인/로그아웃 경로가 실제로 `auth.js` 핸들러를 타도록 라우팅한다.
+* 라우팅 연결이 없는 `auth.js`는 실패로 간주한다.
 
-- billing_templates
+### 4-2. 로그인 성공 시 세션 토큰 발급
 
-필터 후보:
+기존 로그인 API에서 아이디/비밀번호 검증 성공 후 `teacher_sessions`에 새 세션을 저장한다.
 
-- branch
-- active 또는 is_active
-- template_type
-- limit
+응답에는 최소 아래 필드를 포함한다.
 
-정렬 후보:
-
-- branch ASC
-- template_type ASC
-- name ASC
-- created_at DESC
-
-응답 예시 형태:
-
-- { success: true, billing_templates: rows }
+```json
+{
+  "success": true,
+  "id": "...",
+  "name": "...",
+  "role": "...",
+  "login_id": "...",
+  "session_token": "...",
+  "expires_at": "..."
+}
+```
 
 주의:
-- 테이블 컬럼명은 실제 schema.sql 기준으로 확인한다.
-- 존재하지 않는 컬럼을 SELECT/WHERE에 넣지 않는다.
-- is_active 컬럼이 없으면 active 필터는 적용하지 않는다.
-- name/template_type 컬럼이 없으면 실제 컬럼 기준으로 정렬한다.
-- schema 확인 없이 추정 SQL 작성 금지.
 
-## 3. GET /payments 추가
-대상 resource:
+* 응답에 `password`, `raw_password`, `pw`를 절대 포함하지 않는다.
+* 기존 프론트가 사용하던 `id`, `name`, `role`은 유지한다.
+* 기존 로그인 실패 문구는 임의 변경하지 않는다.
 
-- /api/billing-accounting-foundation/payments
+### 4-3. 토큰 생성 헬퍼
 
-GET 전용으로 구현한다.
+Worker에 안전한 토큰 생성 헬퍼를 둔다.
 
-조회 테이블:
+요구사항:
 
-- payments
+* `crypto.getRandomValues` 또는 `crypto.randomUUID` 기반
+* 예측 불가능한 긴 문자열
+* 기본 만료 7일
+* 상수로 TTL 관리
 
-필터 후보:
+권장 함수명:
 
-- student_id
-- branch
-- year
-- month
-- status
-- date_from/date_to 또는 created_at 범위
-- limit
+```js
+const TEACHER_SESSION_TTL_SECONDS = 7 * 24 * 60 * 60;
 
-응답 예시 형태:
+function makeSessionToken() {}
+function makeSessionExpiryIso() {}
+async function createTeacherSession(env, teacher) {}
+async function verifyTeacherSession(env, token) {}
+async function revokeTeacherSession(env, token) {}
+```
 
-- { success: true, payments: rows }
+실제 프로젝트 코드 스타일에 맞게 함수명은 조정 가능하나 역할은 반드시 분리한다.
 
-주의:
-- payments에 branch가 직접 없고 payment_items를 통해 branch를 판단해야 하면, 기존 initial-data 쿼리 방식을 참고한다.
-- branch 필터가 애매하면 무리하게 잘못된 필터를 만들지 말고 문서에 제한사항을 적는다.
-- admin 전용 route이므로 현재 handler 상단 admin 차단을 유지한다.
-- 실제 청구 생성은 절대 하지 않는다.
+### 4-4. Bearer 인증 검증 연결
 
-## 4. GET /payment-items 추가
-대상 resource:
+기존 인증 미들웨어 또는 인증 함수에서 다음 순서로 처리한다.
 
-- /api/billing-accounting-foundation/payment-items
+1. `Authorization: Bearer <token>`이 있으면 `teacher_sessions`에서 검증
+2. Bearer가 없으면 기존 Basic Auth 검증
+3. 둘 다 없거나 실패하면 기존 방식대로 401 Unauthorized
 
-GET 전용으로 구현한다.
+Bearer 검증 조건:
 
-조회 테이블:
+* `session_token` 일치
+* `revoked_at IS NULL`
+* `expires_at`이 현재시각보다 미래
+* 연결된 teacher/admin 계정이 유효함
+* 성공 시 기존 인증 객체와 동일한 형태로 반환
 
-- payment_items
+중요:
 
-필터 후보:
+* Bearer 검증 로직이 있어도 기존 API 라우트들이 그 인증 함수를 실제로 사용하지 않으면 실패다.
+* 실제 API 요청에서 Bearer 토큰이 통과되는지 코드 경로를 확인한다.
 
-- payment_id
-- student_id는 직접 컬럼이 없으면 payments join으로만 가능
-- branch
-- item_type
-- limit
+### 4-5. 로그아웃 API 연결
 
-응답 예시 형태:
+로그아웃 API가 없으면 추가한다.
 
-- { success: true, payment_items: rows }
+권장 경로:
 
-주의:
-- payment_items에 student_id가 직접 없으면 payments와 join해야 한다.
-- join이 필요하면 기존 payments schema를 확인하고 안전하게 작성한다.
-- payment_id 필터는 반드시 지원하는 것을 우선한다.
-- 존재하지 않는 컬럼 추정 금지.
+```text
+POST /api/logout
+```
 
-## 5. GET /billing-adjustments 추가
-대상 resource:
+동작:
 
-- /api/billing-accounting-foundation/billing-adjustments
+* Bearer 토큰이 있으면 해당 세션의 `revoked_at`을 현재시각으로 업데이트
+* Basic Auth만 있거나 토큰이 없으면 프론트 로그아웃을 막지 않도록 `{ success: true }` 반환
+* 실패해도 프론트 세션 정리를 막지 않는다
 
-GET 전용으로 구현한다.
+응답:
 
-조회 테이블:
+```json
+{ "success": true }
+```
 
-- billing_adjustments
+---
 
-필터 후보:
+## 5. `apmath/js/core.js` 강제 수정
 
-- payment_id
-- student_id는 직접 컬럼이 없으면 payments join으로만 가능
-- adjustment_type
-- created_at date range
-- limit
+### 5-1. `setSession()` 민감정보 제거
 
-응답 예시 형태:
+현재 아래처럼 되어 있으면 실패다.
 
-- { success: true, billing_adjustments: rows }
+```js
+function setSession(data) { localStorage.setItem(AUTH_KEY, JSON.stringify(data)); }
+```
 
-주의:
-- 실제 조정 생성/수정은 만들지 않는다.
-- 조회만 구현한다.
-- 컬럼은 schema.sql 기준으로 확인한다.
-
-## 6. GET /billing-runs 추가
-대상 resource:
-
-- /api/billing-accounting-foundation/billing-runs
-
-GET 전용으로 구현한다.
-
-조회 테이블:
-
-- billing_runs
-
-필터 후보:
-
-- branch
-- year
-- month
-- status
-- limit
-
-응답 예시 형태:
-
-- { success: true, billing_runs: rows }
-
-주의:
-- 실행 버튼, 자동 청구 생성, run 생성은 만들지 않는다.
-- 조회만 구현한다.
-
-## 7. 공통 필터 helper 재사용
-가능하면 기존 helper를 재사용한다.
-
-- parseLimit
-- normalizeBranchForAccounting
-- pushBranchFilter
-- pushDateRangeFilter
-- buildWhereClause
-- safeAll
-- toInt
-- normalizeIsoDate
-
-필요하면 read-only 조회용 helper를 작게 추가할 수 있다.
-
-허용 helper 예시:
-
-- hasColumn 관련 동적 introspection은 이번 작업에서 과하면 하지 않는다.
-- schema.sql을 기준으로 정적으로 안전한 SQL을 작성한다.
-- 단순 query param 정규화 helper는 허용한다.
-
-## 8. management.js lazy loader 보강
-대상 파일:
-
-- apmath/js/management.js
-
-현재 `billingAccountingFetchAll()`은 기존 ready/almost ready API를 조회한다.
-이번 작업에서 blocked key API가 추가되면 함께 조회하도록 최소 보강한다.
-
-추가 상태 후보:
-
-- ui.billingTemplates
-- ui.payments
-- ui.paymentItems
-- ui.billingAdjustments
-- ui.billingRuns
-
-`getBillingAccountingFoundationState()` 기본 상태에 위 배열을 추가한다.
-
-`billingAccountingFetchAll()` 요청 목록에 아래를 추가한다.
-
-- billing-accounting-foundation/billing-templates?limit=100
-- billing-accounting-foundation/payments?limit=50
-- billing-accounting-foundation/payment-items?limit=100
-- billing-accounting-foundation/billing-adjustments?limit=50
-- billing-accounting-foundation/billing-runs?limit=50
-
-주의:
-- 모달 UI에 새 탭이나 새 버튼을 노출하지 않는다.
-- 이번 작업은 lazy loader coverage 확인용 상태 보강이다.
-- 데이터를 받아도 화면에 새 섹션을 만들지 않는다.
-- 일부 실패 시 기존 allSettled 흐름으로 오류 안내만 표시한다.
-- 기존 성공 데이터 유지 흐름을 깨지 않는다.
-- state.db에 병합하지 않는다.
-
-## 9. docs/INITIAL_DATA_SPLIT_ANALYSIS.md 업데이트
-14장 또는 관련 섹션을 갱신한다.
-
-반영할 내용:
-
-- blocked였던 billing_templates, payments, payment_items, billing_adjustments, billing_runs에 read-only API가 추가되었는지
-- replacement API 표의 removal readiness 변경
-- management.js lazy loader가 해당 key를 조회할 수 있는지
-- 아직 initial-data에서 제거하지 않았다는 점
-- 실제 제거 전 남은 검증 항목
-
-readiness 기준:
-
-- API가 있고 management.js lazy loader도 연결되었지만 아직 initial-data 제거 전 수동 검증이 남았으면 almost ready
-- API가 있고 사용처가 명확히 모달 내부로 제한되며 제거 전 검증만 남았으면 ready
-- API가 부족하거나 join/권한 문제가 남아 있으면 blocked 유지
-
-주의:
-- 검증하지 않은 것을 완료로 쓰지 않는다.
-- 운영 화면 노출 상태를 바꾸지 않았음을 명시한다.
-
-## 10. docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md 업데이트
-룰북에 짧게 반영한다.
-
-반영할 내용:
-
-- 수납·출납 foundation blocked key read-only API 보강 진행
-- initial-data 실제 축소는 아직 하지 않음
-- read-only API와 management.js lazy loader 검증 후 별도 작업에서 initial-data 축소 가능
-- dashboard/관리 메뉴 노출은 계속 숨김
-- 실제 청구/결제/발송 금지 유지
-
-주의:
-- 룰북 전체를 과하게 재작성하지 않는다.
-- 기존 금지 원칙을 삭제하지 않는다.
-- 기존 수납·출납 foundation 숨김 원칙을 변경하지 않는다.
-
-## 11. 검증
-수정한 JS 파일에 대해 문법 검증을 실행한다.
+반드시 저장 전 민감정보 제거 함수를 둔다.
 
 필수:
 
-- node --check apmath/worker-backup/worker/routes/billing-accounting-foundation.js
-- node --check apmath/js/management.js
+```js
+function sanitizeSessionForStorage(data) {
+    const safe = { ...(data || {}) };
+    delete safe.raw_password;
+    delete safe.password;
+    delete safe.pw;
+    return safe;
+}
 
-dashboard.js는 수정하지 않았더라도 숨김 상태 확인 차원에서 선택적으로 실행 가능:
+function setSession(data) {
+    localStorage.setItem(AUTH_KEY, JSON.stringify(sanitizeSessionForStorage(data)));
+}
+```
 
-- node --check apmath/js/dashboard.js
+동등하게 안전한 구현은 허용한다.
 
-운영 API smoke test는 실행하지 않는다.
-Worker 배포도 실행하지 않는다.
-git add / commit / push도 실행하지 않는다.
+### 5-2. 로그인 성공 처리에서 `raw_password` 저장 제거
 
-반드시 확인:
+현재 아래와 같은 코드가 남아 있으면 실패다.
 
-- git diff --name-only
-- git status --short
+```js
+setSession({ login_id: lid, raw_password: lpw, id: data.id, name: data.name, role: data.role });
+```
 
-허용 변경 파일:
+반드시 아래 방향으로 바꾼다.
 
-- apmath/worker-backup/worker/routes/billing-accounting-foundation.js
-- apmath/js/management.js
-- docs/INITIAL_DATA_SPLIT_ANALYSIS.md
-- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
-- CODEX_RESULT.md
+```js
+setSession({
+    login_id: lid,
+    id: data.id,
+    name: data.name,
+    role: data.role,
+    session_token: data.session_token || '',
+    expires_at: data.expires_at || ''
+});
+```
 
-CODEX_TASK.md가 기존 dirty 상태라면 CODEX_RESULT에 별도 확인 대상으로 적고, 커밋 대상에서는 제외하라.
+구버전 Basic fallback이 필요하면 로그인 직후 현재 탭 메모리에만 보관한다.
 
-## 12. 완료 보고
-작업 완료 후 프로젝트 루트에 `CODEX_RESULT.md`를 작성한다.
+```js
+window.__APMATH_AUTH_MEMORY = {
+    login_id: lid,
+    raw_password: lpw
+};
+```
 
-반드시 아래 형식을 사용한다.
+단, 이 메모리 값은 localStorage에 저장하면 안 된다.
 
+### 5-3. `btoa()` 직접 호출 제거
+
+현재 아래 코드가 남아 있으면 실패다.
+
+```js
+btoa(`${s.login_id}:${s.raw_password}`)
+```
+
+Basic fallback용 안전 인코딩 헬퍼를 둔다.
+
+```js
+function encodeBasicAuthUnicodeSafe(value) {
+    const str = String(value || '');
+    try {
+        return btoa(unescape(encodeURIComponent(str)));
+    } catch (e) {
+        return btoa(str);
+    }
+}
+```
+
+더 안전한 TextEncoder 기반 구현도 허용한다.
+단, `btoa()` 직접 호출은 이 헬퍼 내부 외에는 남기지 않는다.
+
+### 5-4. `getAuthHeader()` Bearer 우선
+
+`getAuthHeader()`는 반드시 아래 순서로 동작한다.
+
+1. 저장 세션에 `session_token`이 있으면 Bearer 반환
+2. 메모리 전용 `raw_password`가 있으면 Basic fallback 반환
+3. 구버전 세션에 `raw_password`가 남아 있으면 임시 Basic fallback 가능
+4. 아무 인증 정보가 없으면 `{}` 반환
+
+기준 구현:
+
+```js
+function getAuthHeader() {
+    const s = getSession();
+    if (!s) return {};
+
+    if (s.session_token) {
+        return { 'Authorization': 'Bearer ' + s.session_token };
+    }
+
+    const mem = window.__APMATH_AUTH_MEMORY || {};
+    const loginId = mem.login_id || s.login_id;
+    const rawPassword = mem.raw_password || s.raw_password;
+
+    if (loginId && rawPassword) {
+        return { 'Authorization': 'Basic ' + encodeBasicAuthUnicodeSafe(`${loginId}:${rawPassword}`) };
+    }
+
+    return {};
+}
+```
+
+프로젝트 코드 스타일에 맞게 조정 가능하나 Bearer 우선은 반드시 지킨다.
+
+### 5-5. 401 공통 처리
+
+`api.get`, `api.post`, `api.patch`, `api.delete`에 401 공통 처리를 연결한다.
+
+요구사항:
+
+* 401이면 `clearSession()`
+* `state.auth` 초기화
+* 가능하면 toast로 “로그인이 만료되었습니다. 다시 로그인해주세요.” 표시
+* 가능하면 `renderLogin()` 호출
+* `window.location.href = '/'` 강제 이동 금지
+* API 결과 형태를 기존 코드와 최대한 유지
+
+권장 헬퍼:
+
+```js
+function handleUnauthorizedResponse() {
+    clearSession();
+    if (state && state.auth) state.auth = { id: null, name: null, role: null };
+    if (typeof toast === 'function') toast('로그인이 만료되었습니다. 다시 로그인해주세요.', 'warn');
+    if (typeof renderLogin === 'function') renderLogin();
+}
+
+async function parseApiResponse(r) {
+    const data = await r.json().catch(() => ({}));
+    if (r.status === 401) {
+        handleUnauthorizedResponse();
+        return { success: false, error: 'unauthorized', status: 401 };
+    }
+    return data;
+}
+```
+
+### 5-6. 로그아웃 처리
+
+기존 logout 함수가 있으면 수정한다.
+
+요구사항:
+
+* `clearSession()` 전에 현재 `session_token` 확보
+* 있으면 `POST /api/logout` 호출 시도
+* 실패해도 프론트 로그아웃은 계속 진행
+* localStorage 세션 제거
+* 메모리 인증 정보 제거
+* 로그인 화면 표시
+
+---
+
+## 6. 이번 재작업에서 제외할 것
+
+아래는 이번 작업에 넣지 않는다.
+
+* syncQueue 데드락 수정
+* dashboard clipboard fallback
+* management 주소록 디바운스
+* schedule 이벤트 중복 방지
+* report payload 누적 제한
+* html2canvas 실패 처리
+* clinic-print JS escape 분리
+* qr-omr 경로 안전화
+* 학생 포털 PIN 저장 방식 개편
+* JWT/HttpOnly Cookie 전면 전환
+* 관리자 대시보드 UI 변경
+
+이번 재작업은 오직 “세션 토큰 인증 연결 + raw_password localStorage 제거”만 완성한다.
+
+---
+
+## 7. 검증 명령
+
+작업 후 반드시 실행한다.
+
+```bash
+node --check index.js
+node --check apmath/js/core.js
+```
+
+`auth.js`를 실제로 사용하는 구조라면:
+
+```bash
+node --check auth.js
+```
+
+또는 실제 경로에 맞게 실행한다.
+
+아래 검색도 반드시 실행한다.
+
+```bash
+grep -R "raw_password" -n index.js auth.js apmath/js/core.js schema.sql migrations 2>/dev/null || true
+grep -R "btoa" -n index.js auth.js apmath/js/core.js 2>/dev/null || true
+grep -R "session_token" -n index.js auth.js apmath/js/core.js schema.sql migrations 2>/dev/null || true
+grep -R "teacher_sessions" -n index.js auth.js schema.sql migrations 2>/dev/null || true
+grep -R "Authorization" -n index.js auth.js apmath/js/core.js 2>/dev/null || true
+```
+
+Windows PowerShell 환경이면 동등한 `Select-String` 명령으로 확인해도 된다.
+
+검증 기준:
+
+* `core.js`에서 `setSession({ ..., raw_password: ... })` 형태가 남아 있으면 실패
+* `core.js`에서 `setSession(data)`가 민감정보 제거 없이 그대로 저장하면 실패
+* `core.js`에서 `btoa(`${s.login_id}:${s.raw_password}`)` 직접 호출이 남아 있으면 실패
+* `index.js` 또는 실제 Worker 인증 경로에 Bearer 검증이 연결되어 있지 않으면 실패
+* `auth.js`에만 구현되고 `index.js`에서 호출되지 않으면 실패
+* `schema.sql`에 `teacher_sessions`가 없으면 실패
+* migration과 schema가 불일치하면 실패
+* 로그인 응답에 `session_token`, `expires_at`이 없으면 실패
+* 로그아웃 토큰 폐기 경로가 없으면 실패
+
+---
+
+## 8. 수동 테스트 체크리스트
+
+`CODEX_RESULT.md`에 아래 수동 테스트 체크리스트를 반드시 적는다.
+
+* 선생님/원장님 로그인 성공
+* 로그인 응답에 `session_token`, `expires_at` 포함 확인
+* 로그인 후 localStorage의 `APMATH_SESSION`에 `raw_password`, `password`, `pw`가 없는지 확인
+* localStorage의 `APMATH_SESSION`에 `session_token`, `expires_at`이 있는지 확인
+* 새로고침 후 재로그인 없이 데이터 로드되는지 확인
+* API 요청 헤더가 `Authorization: Bearer ...`를 우선 사용하는지 확인
+* 로그아웃 후 localStorage 세션 제거 확인
+* 로그아웃 후 같은 토큰으로 API 호출 시 실패하는지 확인
+* 토큰 만료/폐기 시 로그인 화면으로 돌아가는지 확인
+* 기존 Basic Auth fallback이 임시로 동작하는지 확인
+* 학생 포털/플래너/OMR 흐름을 수정하지 않았는지 확인
+
+---
+
+## 9. 완료 보고서 작성
+
+작업 완료 후 루트의 `CODEX_RESULT.md`를 새로 작성한다.
+
+반드시 아래 구조를 사용한다.
+
+```md
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- 생성/수정한 파일 목록
+- ...
 
 ## 2. 구현 완료 또는 확인 완료
-- billing_templates read-only API 추가 여부
-- payments read-only API 추가 여부
-- payment_items read-only API 추가 여부
-- billing_adjustments read-only API 추가 여부
-- billing_runs read-only API 추가 여부
-- management.js lazy loader blocked key 조회 추가 여부
-- state.db 구조 유지 여부
-- initial-data 응답 구조 유지 여부
-- dashboard.js 숨김 상태 유지 여부
-- docs/INITIAL_DATA_SPLIT_ANALYSIS.md 업데이트 여부
-- docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md 업데이트 여부
+- ...
 
 ## 3. 실행 결과
-- node --check 실행 결과
-- git diff --name-only 결과
-- git status --short 결과
-- Worker 배포 실행 여부: 미실행 - 사용자 직접 실행 대상
-- 운영 smoke 실행 여부: 미실행 - 사용자 직접 실행 대상
-- git commit 실행 여부: 미실행 - 사용자 직접 실행 대상
-- git push 실행 여부: 미실행 - 사용자 직접 실행 대상
+- ...
 
 ## 4. 결과 요약
-- blocked key가 ready/almost ready로 이동했는지
-- 아직 initial-data에서 제거하지 않았다는 점
-- 실제 initial-data 축소 전 남은 검증
-- 운영 화면 노출은 계속 금지라는 점
+- ...
 
 ## 5. 다음 조치
-- 사용자가 직접 문서 확인
-- 필요 시 다음 단계 initial-data 실제 축소 지시서 작성
-- 필요 시 사용자가 직접 지정 파일만 git add
-- 권장 커밋 메시지
-- 커밋 대상 파일
+- ...
 
-완료 보고에는 반드시 아래 항목을 포함한다.
+## 6. 잘못한 점 / 위험했던 점 / 보존해야 할 점
+- 잘못한 점:
+- 위험했던 점:
+- 보존해야 할 점:
+```
 
-- 기존 문구 변경 여부:
-- 기존 버튼명 변경 여부:
-- 기존 화면명 변경 여부:
-- 기존 메뉴명 변경 여부:
-- 기존 운영 용어 변경 여부:
-- initial-data 응답 구조 변경 여부:
-- initial-data SQL query 변경 여부:
-- 프론트 로딩 흐름 변경 여부:
-- 대시보드/관리 메뉴 노출 변경 여부:
-- 수납·출납 foundation 진입점 숨김 유지 여부:
-- DB schema 변경 여부:
-- migration 추가 여부:
-- 실제 청구 생성 여부:
-- 실제 결제 연동 여부:
-- 실제 알림톡/문자 발송 여부:
-- 배포 실행 여부:
-- 운영 smoke 실행 여부:
-- git commit 실행 여부:
-- git push 실행 여부:
+보고서에 반드시 포함할 내용:
 
-## 13. 권장 커밋 메시지
-작업 완료 후 사용자가 직접 커밋할 경우 권장 메시지:
+* 이전 결과물의 어떤 점이 실제 코드와 불일치했는지
+* `schema.sql`에 `teacher_sessions`를 반영했는지
+* migration 위치와 파일명
+* Worker에서 Bearer 인증이 실제 API 인증 흐름에 연결되었는지
+* `auth.js`가 있다면 실제로 `index.js`에서 사용되는지
+* 로그인 성공 시 세션 토큰이 발급되는지
+* 로그아웃 시 세션 토큰이 폐기되는지
+* `core.js`에서 `raw_password`가 localStorage에 저장되지 않는지
+* `getAuthHeader()`가 Bearer 우선인지
+* `btoa()` 유니코드 방어가 적용되었는지
+* 401 공통 처리가 적용되었는지
+* 기존 문구·버튼명·화면명·모달명·안내문을 임의 변경하지 않았는지
+* 학생 포털/OMR/플래너 흐름을 건드리지 않았는지
+* git add/commit/push를 하지 않았는지
 
-Add billing accounting read-only split APIs
+마지막 터미널 출력은 반드시 아래 한 줄로 끝낸다.
 
-## 14. 최종 출력
-터미널 마지막 출력은 아래 문장으로 끝낸다.
-
+```text
 CODEX_RESULT.md에 완료 보고를 저장했습니다.
+```
 
 현재 프로젝트 루트의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라. 이전 작업 결과로 대체하지 마라.
 EOF
+
+```
+```
