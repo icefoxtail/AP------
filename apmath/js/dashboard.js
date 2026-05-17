@@ -302,7 +302,7 @@ function openAdminStudentList(type) {
             if (createdTime === null) return false;
             return (todayTime - createdTime) / (1000*3600*24) <= 30; 
         }); 
-        title = "신규생 목록"; 
+        title = "최근 등록 원생"; 
     } else if (type === 'discharged') { 
         list = state.db.students.filter(s => s.status === '제적'); 
         title = "퇴원생 목록"; 
@@ -756,15 +756,13 @@ function renderAdminStudentOverviewPanel(data) {
     return `
         <div class="ap-admin-section" style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">원생 현황</h3>
+                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘 운영</h3>
             </div>
-            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:18px; background:var(--surface-2);">
+            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:18px; background:var(--surface-2);">
                 ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentList('active')")}
-                ${renderAdminMiniMetric('신규', data.recentStudents.length, 'success', "openAdminStudentList('new')")}
+                ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentList('new')")}
                 ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')")}
                 ${renderAdminMiniMetric('휴원', data.leaveStudents.length, 'warning', "openAdminLeaveStudentList()")}
-                ${renderAdminMiniMetric('PIN 미발급', data.missingPinStudents.length, data.missingPinStudents.length ? 'error' : 'secondary', "openAdminPinBatchModal()")}
-                ${renderAdminMiniMetric('반 배정 필요', data.unassignedStudents.length, data.unassignedStudents.length ? 'error' : 'secondary', "openAdminUnassignedStudentList()")}
             </div>
         </div>
     `;
@@ -772,8 +770,8 @@ function renderAdminStudentOverviewPanel(data) {
 
 function renderAdminNeedCheckPanel(data) {
     const items = [
-        { label: 'PIN 미발급', value: data.missingPinStudents.length, action: 'openAdminPinBatchModal()' },
         { label: '반 배정 필요', value: data.unassignedStudents.length, action: 'openAdminUnassignedStudentList()' },
+        { label: 'PIN 미발급', value: data.missingPinStudents.length, action: 'openAdminPinBatchModal()' },
         { label: '담당 선생님 미지정', value: data.teacherlessClasses.length, unit: '개', action: 'openAdminTeacherlessClassList()' },
         { label: '반 정리 필요', value: data.cleanupStudents.length, action: 'openAdminClassCleanupList()' }
     ];
@@ -827,11 +825,11 @@ function renderAdminNewStudentPanel(data) {
     return `
         <div class="ap-admin-section" style="margin-bottom:28px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">신규생 확인</h3>
+                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">최근 등록 원생</h3>
                 <span style="font-size:12px; font-weight:700; color:var(--secondary);">최근 30일 ${data.recentStudents.length}명</span>
             </div>
             <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                ${rows || `<div style="height:52px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:700;">최근 신규생이 없습니다.</div>`}
+                ${rows || `<div style="height:52px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:700;">최근 등록 원생이 없습니다.</div>`}
             </div>
         </div>
     `;
@@ -1154,18 +1152,16 @@ function renderAdminControlCenter() {
 
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
 
-    const summaryHtml = `
-        ${renderAdminStudentOverviewPanel(adminOverviewData)}
-        ${renderAdminNeedCheckPanel(adminOverviewData)}
-        ${renderAdminNewStudentPanel(adminOverviewData)}
-    `;
+    const todayOverviewHtml = renderAdminStudentOverviewPanel(adminOverviewData);
+    const needCheckHtml = renderAdminNeedCheckPanel(adminOverviewData);
+    const recentStudentsHtml = renderAdminNewStudentPanel(adminOverviewData);
 
     const teacherCardsHtml = `
-        <div class="ap-admin-section" style="margin-bottom:32px;">
+        <div class="ap-admin-section" style="margin-bottom:28px;">
             <div style="margin-bottom:12px;">
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:16px; font-weight:700; color:var(--text);">선생님 현황</h3>
             </div>
-            <div class="ap-admin-teacher-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; align-items:stretch;">
+            <div class="ap-admin-teacher-grid" style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; align-items:stretch;">
                 ${renderAdminTeacherCards(todayStr)}
             </div>
         </div>
@@ -1274,7 +1270,7 @@ function renderAdminControlCenter() {
                 padding:14px 8px !important;
             }
             #ap-admin-dashboard .ap-admin-teacher-grid .card {
-                min-height:148px !important;
+                min-height:190px !important;
                 height:100% !important;
                 display:flex !important;
                 flex-direction:column !important;
@@ -1284,13 +1280,17 @@ function renderAdminControlCenter() {
             #ap-admin-dashboard .ap-admin-section-title { letter-spacing:-0.2px; }
 
             #ap-admin-dashboard .ap-admin-overview-grid {
-                grid-template-columns:repeat(6, minmax(0, 1fr)) !important;
+                grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+            }
+            @media (max-width:1024px) and (min-width:721px) {
+                #ap-admin-dashboard .ap-admin-teacher-grid { grid-template-columns:repeat(2, minmax(0, 1fr)) !important; }
             }
             #ap-admin-dashboard .ap-admin-check-item {
                 -webkit-tap-highlight-color:transparent;
             }
             @media (max-width:720px) {
-                #ap-admin-dashboard .ap-admin-overview-grid { grid-template-columns:repeat(3, minmax(0, 1fr)) !important; }
+                #ap-admin-dashboard .ap-admin-overview-grid { grid-template-columns:repeat(2, minmax(0, 1fr)) !important; }
+                #ap-admin-dashboard .ap-admin-teacher-grid { grid-template-columns:1fr !important; }
                 #ap-admin-dashboard .ap-admin-check-item { min-height:50px !important; }
             }
             @media (max-width:480px) {
@@ -1307,10 +1307,12 @@ function renderAdminControlCenter() {
         ${adminUnifiedStyle}
         ${headerHtml}
         ${adminShortcutRow}
-        ${adminGlobalSearchPanel}
-        ${summaryHtml}
+        ${todayOverviewHtml}
         ${teacherCardsHtml}
         ${adminScheduleHtml}
+        ${needCheckHtml}
+        ${recentStudentsHtml}
+        ${adminGlobalSearchPanel}
     </div>`;
 }
 
@@ -1677,6 +1679,13 @@ function renderTodayJournalCard(data) {
 
 // [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
 function renderDashboard() {
+    if (state?.auth?.role === 'admin') {
+        if (typeof renderAdminControlCenter === 'function') {
+            return renderAdminControlCenter();
+        }
+        return;
+    }
+
     state.ui.currentClassId = null;
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const data = computeDashboardData();
@@ -2194,10 +2203,11 @@ function renderAdminTeacherCards(todayStr) {
     const teacherMap = {};
     activeClasses.forEach(c => {
         const tName = String(c.teacher_name || '담당').trim();
+        if (!tName || tName === '담당') return;
         if (!teacherMap[tName]) teacherMap[tName] = [];
         teacherMap[tName].push(c);
     });
-    const teacherNames = Object.keys(teacherMap).filter(Boolean);
+    const teacherNames = Object.keys(teacherMap).filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko'));
     if (!teacherNames.length) return `<div style="text-align:center; padding:24px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">등록된 선생님이 없습니다.</div>`;
     
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
@@ -2207,21 +2217,23 @@ function renderAdminTeacherCards(todayStr) {
         const myStudentIds = [...new Set(state.db.class_students.filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
         const activeStudents = state.db.students.filter(s => myStudentIds.includes(String(s.id)) && s.status === '재원');
         const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
-        const classPreview = myClasses.slice(0, 3).map(c => c.name).join(' · ');
-        const moreText = myClasses.length > 3 ? ` 외 ${myClasses.length - 3}개` : '';
-        const safeName = String(tName).replace(/'/g, "\\'");
+        const scheduledClasses = myClasses.filter(c => isClassScheduledTodayForDashboard(c.id));
+        const safeName = String(tName).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        const initial = apEscapeHtml(String(tName || '').charAt(0));
         
         return `
-            <div class="card" onclick="renderAdminTeacherStudents('${safeName}')" style="cursor:pointer; padding:16px; margin:0; min-height:148px; height:100%; border:1px solid var(--border); border-radius:20px; background:var(--surface); box-shadow:var(--shadow); transition:transform 0.2s; display:flex; flex-direction:column; justify-content:space-between; box-sizing:border-box;">
-                <div style="display:flex; align-items:center; gap:14px; min-height:56px;">
-                    <div style="width:46px; height:46px; border-radius:14px; background:var(--surface-2); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; flex-shrink:0;">${tName.charAt(0)}</div>
+            <div class="card ap-admin-teacher-card" style="padding:16px; margin:0; min-height:190px; height:100%; border:1px solid var(--border); border-radius:20px; background:var(--surface); box-shadow:var(--shadow); display:flex; flex-direction:column; justify-content:space-between; gap:14px; box-sizing:border-box;">
+                <div style="display:flex; align-items:flex-start; gap:12px; min-width:0;">
+                    <div style="width:42px; height:42px; border-radius:14px; background:var(--surface-2); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; flex-shrink:0;">${initial}</div>
                     <div style="min-width:0; flex:1;">
-                        <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.2;">${apEscapeHtml(tName)} 선생님</div>
-                        <div style="font-size:12px; color:var(--secondary); font-weight:600; margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">담당반 ${myClasses.length}개 · 재원 ${activeStudents.length}명 · 신규 ${recentStudents.length}명</div>
+                        <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(tName)} 선생님</div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:4px; line-height:1.45;">담당반 ${myClasses.length}개 · 재원 ${activeStudents.length}명 · 최근 등록 ${recentStudents.length}명</div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:2px; line-height:1.45;">오늘 수업 ${scheduledClasses.length}개</div>
                     </div>
                 </div>
-                <div style="background:var(--surface-2); border-radius:10px; padding:10px 12px; margin-top:14px; min-height:38px; display:flex; align-items:center; box-sizing:border-box;">
-                    <span style="font-size:12px; color:var(--secondary); font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(classPreview || '담당반 없음')}${moreText}</span>
+                <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
+                    <button class="btn btn-primary" style="width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; box-shadow:none;" onclick="event.stopPropagation(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
+                    <button class="btn" style="width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
                 </div>
             </div>`;
     }).join('');
@@ -2229,41 +2241,91 @@ function renderAdminTeacherCards(todayStr) {
 
 function openAdminTeacherPanel(teacherName) {
     state.ui.currentAdminTeacherName = teacherName;
-    const safeName = String(teacherName || '').replace(/'/g, "\'");
+    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
     renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), safeName);
 }
-function renderAdminTeacherStudents(teacherName) {
-    const safeName = String(teacherName || '').replace(/'/g, "\\'");
+
+function renderAdminTeacherAllStudents(teacherName) {
+    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
     const myClasses = state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
-    
-    let html = `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:700; background:var(--surface-2); border:none; color:var(--text);" onclick="openAdminTeacherPanel('${safeName}')">← 선생님 메뉴</button><div style="max-height:60vh; overflow-y:auto; display:flex; flex-direction:column; gap:16px; padding-right:4px;">`;
-    
-    if (!myClasses.length) {
-        html += `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">담당 학급 또는 재원생이 없습니다.</div>`;
-    } else {
-        myClasses.forEach(cls => { 
-            const mIds = state.db.class_students.filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id)); 
-            const stds = state.db.students.filter(s => mIds.includes(String(s.id)) && s.status === '재원'); 
-            
-            html += `<div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                        <div style="padding:14px 16px; background:var(--surface-2); font-weight:700; color:var(--text); display:flex; justify-content:space-between; border-bottom:1px solid var(--border);">
-                            <span>${apEscapeHtml(cls.name)}</span>
-                            <span style="font-size:12px; color:var(--secondary); font-weight:700;">${stds.length}명</span>
-                        </div>
-                        ${stds.length ? stds.map(s => `
-                            <div style="padding:14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:8px;">
-                                <div>
-                                    <b style="font-size:14px; color:var(--text);">${apEscapeHtml(s.name)}</b>
-                                    <span style="font-size:11px; color:var(--secondary); margin-left:6px; font-weight:600;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span>
-                                </div>
-                                <button class="btn" style="padding:6px 12px; font-size:11px; font-weight:700; border-radius:8px; color:var(--primary); background:rgba(26,92,255,0.1); border:none;" onclick="closeModal(true); renderStudentDetail('${s.id}')">상세 보기</button>
-                            </div>
-                        `).join('') : `<div style="padding:20px; text-align:center; color:var(--secondary); font-size:12px; font-weight:600;">재원생이 없습니다.</div>`}
-                    </div>`; 
-        });
-    }
-    html += '</div>';
-    showModal(`${apEscapeHtml(teacherName)} 선생님 학생`, html);
+    const myClassIds = myClasses.map(c => String(c.id));
+    const myStudentIds = [...new Set((state.db.class_students || [])
+        .filter(m => myClassIds.includes(String(m.class_id)))
+        .map(m => String(m.student_id)))];
+    const students = (state.db.students || [])
+        .filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원')
+        .sort((a, b) => String(a.grade || '').localeCompare(String(b.grade || ''), 'ko') || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+
+    const rows = students.map(s => {
+        const cls = adminGetStudentClass(s.id);
+        return `
+            <button class="btn" style="width:100%; min-height:48px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left;" onclick="closeModal(true); renderStudentDetail('${String(s.id).replace(/'/g, "\\'")}')">
+                <div style="min-width:0; flex:1;">
+                    <div style="font-size:13px; font-weight:800; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(s.name || '')}</div>
+                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</div>
+                </div>
+                <span style="font-size:11px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.08); padding:4px 8px; border-radius:999px; white-space:nowrap;">${apEscapeHtml(cls?.name || '미배정')}</span>
+            </button>
+        `;
+    }).join('');
+
+    showModal(`${apEscapeHtml(teacherName)} 선생님 전체 학생 (${students.length}명)`, `
+        <button class="btn" style="width:100%; margin-bottom:12px; min-height:42px; border-radius:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
+        <div style="max-height:62vh; overflow-y:auto; display:flex; flex-direction:column; gap:7px; padding-right:4px;">
+            ${rows || `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:700; background:var(--surface-2); border-radius:16px;">재원생이 없습니다.</div>`}
+        </div>
+    `);
 }
+
+function renderAdminTeacherStudents(teacherName) {
+    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const myClasses = sortClassesForDashboard(state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0));
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    const myClassIds = myClasses.map(c => String(c.id));
+    const myStudentIds = [...new Set((state.db.class_students || [])
+        .filter(m => myClassIds.includes(String(m.class_id)))
+        .map(m => String(m.student_id)))];
+    const activeStudents = (state.db.students || []).filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원');
+    const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
+
+    const rows = myClasses.map(cls => {
+        const safeClassId = String(cls.id || '').replace(/'/g, "\\'");
+        const studentIds = adminGetClassStudentIds(cls.id);
+        const activeCount = (state.db.students || []).filter(s => studentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원').length;
+        const isToday = isClassScheduledTodayForDashboard(cls.id);
+        return `
+            <button class="btn" style="width:100%; min-height:50px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left;" onclick="closeModal(true); if(typeof renderClass==='function') renderClass('${safeClassId}'); else toast('반 화면을 불러오지 못했습니다.', 'warn');">
+                <div style="min-width:0; flex:1;">
+                    <div style="font-size:14px; font-weight:800; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.name || '')}</div>
+                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.grade || '')}${cls.time_label ? ` · ${apEscapeHtml(cls.time_label)}` : ''}</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                    <span style="font-size:11px; font-weight:800; color:${isToday ? 'var(--primary)' : 'var(--secondary)'}; background:${isToday ? 'rgba(26,92,255,0.08)' : 'var(--surface-2)'}; padding:4px 8px; border-radius:999px; white-space:nowrap;">${isToday ? '오늘 수업' : '수업 없음'}</span>
+                    <span style="font-size:12px; font-weight:800; color:var(--text); white-space:nowrap;">${activeCount}명</span>
+                    <span style="font-size:18px; font-weight:800; color:var(--secondary); line-height:1;">›</span>
+                </div>
+            </button>
+        `;
+    }).join('');
+
+    showModal(`${apEscapeHtml(teacherName)} 선생님 담당반`, `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="padding:14px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
+                <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.4;">${apEscapeHtml(teacherName)} 선생님</div>
+                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.45;">담당반 ${myClasses.length}개 · 재원 ${activeStudents.length}명 · 최근 등록 ${recentStudents.length}명</div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <button class="btn btn-primary" style="min-height:42px; border-radius:12px; font-size:12px; font-weight:800; box-shadow:none;" onclick="renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
+                <button class="btn" style="min-height:42px; border-radius:12px; font-size:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="renderAdminTeacherAllStudents('${safeName}')">전체 학생 보기</button>
+            </div>
+            <div style="font-size:12px; font-weight:800; color:var(--secondary); padding:0 2px;">담당반</div>
+            <div style="max-height:56vh; overflow-y:auto; display:flex; flex-direction:column; gap:7px; padding-right:4px;">
+                ${rows || `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:700; background:var(--surface-2); border-radius:16px;">담당반이 없습니다.</div>`}
+            </div>
+        </div>
+    `);
+}
+
 // [Button Audit Patch] Split-module duplicate handlers removed from dashboard.js.
 // Source of truth: management.js, textbook.js, memo.js, schedule.js.
