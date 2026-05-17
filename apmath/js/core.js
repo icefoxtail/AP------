@@ -14,13 +14,61 @@ const AUTH_KEY = 'APMATH_SESSION';
 function getSession() {
     try { return JSON.parse(localStorage.getItem(AUTH_KEY)) || null; } catch { return null; }
 }
-function setSession(data) { localStorage.setItem(AUTH_KEY, JSON.stringify(data)); }
-function clearSession() { localStorage.removeItem(AUTH_KEY); }
+function sanitizeSessionForStorage(data) {
+    const safe = { ...(data || {}) };
+    delete safe.raw_password;
+    delete safe.password;
+    delete safe.pw;
+    return safe;
+}
+function setSession(data) { localStorage.setItem(AUTH_KEY, JSON.stringify(sanitizeSessionForStorage(data))); }
+function clearSession() {
+    localStorage.removeItem(AUTH_KEY);
+    if (window.__APMATH_AUTH_MEMORY) window.__APMATH_AUTH_MEMORY = {};
+}
+
+function encodeBasicAuthUnicodeSafe(value) {
+    const str = String(value || '');
+    try {
+        return btoa(unescape(encodeURIComponent(str)));
+    } catch (e) {
+        return btoa(str);
+    }
+}
 
 function getAuthHeader() {
     const s = getSession();
     if (!s) return {};
-    return { 'Authorization': 'Basic ' + btoa(`${s.login_id}:${s.raw_password}`) };
+
+    if (s.session_token) {
+        return { 'Authorization': 'Bearer ' + s.session_token };
+    }
+
+    const mem = window.__APMATH_AUTH_MEMORY || {};
+    const loginId = mem.login_id || s.login_id;
+    const rawPassword = mem.raw_password || s.raw_password;
+
+    if (loginId && rawPassword) {
+        return { 'Authorization': 'Basic ' + encodeBasicAuthUnicodeSafe(`${loginId}:${rawPassword}`) };
+    }
+
+    return {};
+}
+
+function handleUnauthorizedResponse() {
+    clearSession();
+    if (state && state.auth) state.auth = { id: null, name: null, role: null };
+    if (typeof toast === 'function') toast('로그인이 만료되었습니다. 다시 로그인해주세요.', 'warn');
+    if (typeof renderLogin === 'function') renderLogin();
+}
+
+async function parseApiResponse(r) {
+    const data = await r.json().catch(() => ({}));
+    if (r.status === 401) {
+        handleUnauthorizedResponse();
+        return { success: false, error: 'unauthorized', status: 401 };
+    }
+    return data;
 }
 
 const SEED_DATA = { classes: [], students: [], map: [] };
@@ -73,22 +121,25 @@ const RISK_MUTE_KEY = 'APMATH_MUTED_RISKS';
 
 const api = {
     async get(res) {
-        try { const r = await fetch(`${CONFIG.API_BASE}/${res}`, { headers: { 'Content-Type': 'application/json', ...getAuthHeader() } }); return await r.json(); } catch (e) { return {}; }
+        try {
+            const r = await fetch(`${CONFIG.API_BASE}/${res}`, { headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
+            return await parseApiResponse(r);
+        } catch (e) { return {}; }
     },
     async patch(res, d) {
         if (!navigator.onLine) return addToSyncQueue('PATCH', res, d);
         const r = await fetch(`${CONFIG.API_BASE}/${res}`, { method: 'PATCH', body: JSON.stringify(d), headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
-        return await r.json();
+        return await parseApiResponse(r);
     },
     async delete(res, id) {
         if (!navigator.onLine) return addToSyncQueue('DELETE', `${res}/${id}`, {});
         const r = await fetch(`${CONFIG.API_BASE}/${res}/${id}`, { method: 'DELETE', headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
-        return await r.json();
+        return await parseApiResponse(r);
     },
     async post(res, d) {
         if (!navigator.onLine) return addToSyncQueue('POST', res, d);
         const r = await fetch(`${CONFIG.API_BASE}/${res}`, { method: 'POST', body: JSON.stringify(d), headers: { 'Content-Type': 'application/json', ...getAuthHeader() } });
-        return await r.json();
+        return await parseApiResponse(r);
     },
     getPlannerOverview(classId, date) {
         return this.get(`planner/overview?class_id=${encodeURIComponent(classId)}&date=${encodeURIComponent(date)}`);
@@ -283,7 +334,15 @@ async function handleLogin() {
         const data = await r.json();
 
         if (r.ok && data.success) {
-            setSession({ login_id: lid, raw_password: lpw, id: data.id, name: data.name, role: data.role });
+            window.__APMATH_AUTH_MEMORY = { login_id: lid, raw_password: lpw };
+            setSession({
+                login_id: data.login_id || lid,
+                id: data.id,
+                name: data.name,
+                role: data.role,
+                session_token: data.session_token || '',
+                expires_at: data.expires_at || ''
+            });
             toast(`${data.name} 님, 환영합니다.`, 'info');
             await loadData(true);
         } else {
@@ -294,7 +353,14 @@ async function handleLogin() {
     }
 }
 
-function logout() {
+async function logout() {
+    const authHeader = getAuthHeader();
+    if (authHeader.Authorization) {
+        fetch(`${CONFIG.API_BASE}/logout`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', ...authHeader }
+        }).catch(() => {});
+    }
     clearSession();
     state.auth = { id: null, name: null, role: null };
     state.ui.userName = '';
