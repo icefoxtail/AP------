@@ -186,7 +186,7 @@ window.APMATH_MANUAL_DATA = {
       "id": "dashboard-overview",
       "category": "대시보드",
       "title": "대시보드에서 오늘 운영 흐름 보기",
-      "summary": "오늘 수업 반, 주요 장부, 아카이브, 사용설명서로 들어가는 첫 화면입니다.",
+      "summary": "오늘 수업 반, 주요 메뉴, 아카이브, 사용설명서로 들어가는 첫 화면입니다.",
       "keywords": [
         "대시보드",
         "오늘",
@@ -202,7 +202,7 @@ window.APMATH_MANUAL_DATA = {
         "반 카드를 눌러 출석·숙제·시험성적을 처리합니다.",
         "아카이브 버튼을 누르면 JS아카이브가 새 탭으로 열립니다.",
         "사이드바의 사용설명서를 누르면 이 설명서 센터가 새 탭으로 열립니다.",
-        "필요한 장부는 출석부, 시간표, 학교성적 메뉴에서 확인합니다."
+        "필요한 메뉴는 출석부, 시간표, 학교성적 메뉴에서 확인합니다."
       ],
       "cautions": [
         "아카이브는 새 탭으로 열리므로 AP Math OS 화면은 닫지 않아도 됩니다.",
@@ -299,7 +299,7 @@ window.APMATH_MANUAL_DATA = {
         }
       ],
       "related": [
-        "출석부 장부",
+        "출석부",
         "레포트",
         "반 화면"
       ]
@@ -611,12 +611,12 @@ window.APMATH_MANUAL_DATA = {
     {
       "id": "attendance-ledger",
       "category": "출석부/성적표",
-      "title": "월간 출석부 장부 확인하기",
+      "title": "월간 출석부 확인하기",
       "summary": "날짜별 출석, 숙제, 지각, 보강, 상담 흐름을 월 단위로 확인합니다.",
       "keywords": [
         "출석부",
         "월간",
-        "장부",
+        "출결",
         "지각",
         "보강",
         "상담",
@@ -651,7 +651,7 @@ window.APMATH_MANUAL_DATA = {
     {
       "id": "school-grade-ledger",
       "category": "출석부/성적표",
-      "title": "학교 성적표 장부 입력하기",
+      "title": "학교 성적표 입력하기",
       "summary": "학생들의 학교 시험 성적을 학년별, 반별로 입력하고 확인합니다.",
       "keywords": [
         "학교성적",
@@ -1459,8 +1459,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "school-exam-ledger-current",
-      "category": "장부",
-      "title": "학교 성적표 장부 입력하기",
+      "category": "메뉴",
+      "title": "학교 성적표 입력하기",
       "summary": "중·고등 학교 시험 성적을 표 형태로 관리합니다.",
       "whenToUse": "내신 성적 흐름을 누적 관리할 때",
       "entry": "사이드바 → 학교성적 또는 시험성적 메뉴 → 학교 성적표",
@@ -1472,7 +1472,7 @@ window.APMATH_MANUAL_DATA = {
         "필요하면 학년 필터와 성적 정렬을 사용합니다."
       ],
       "cautions": [
-        "원내 OMR 시험성적과 학교 성적표는 다른 장부입니다. 메뉴를 구분해서 사용하세요."
+        "원내 OMR 시험성적과 학교 성적표는 다른 메뉴입니다. 메뉴를 구분해서 사용하세요."
       ],
       "faq": [],
       "related": [
@@ -1483,7 +1483,7 @@ window.APMATH_MANUAL_DATA = {
         "학교성적",
         "성적표",
         "내신",
-        "장부"
+        "메뉴"
       ]
     },
     {
