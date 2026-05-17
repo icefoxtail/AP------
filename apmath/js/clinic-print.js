@@ -20,6 +20,19 @@ function clinicPrintEscapeAttr(value) {
     return clinicPrintEscapeHtml(value).replace(/`/g, '&#96;');
 }
 
+function clinicPrintEscapeJsString(value) {
+    return String(value ?? '')
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, '\\x27')
+        .replace(/"/g, '\\x22')
+        .replace(/\r/g, '\\r')
+        .replace(/\n/g, '\\n')
+        .replace(/</g, '\\x3C')
+        .replace(/>/g, '\\x3E')
+        .replace(/&/g, '\\x26')
+        .replace(/`/g, '\\x60');
+}
+
 function clinicPrintNormalizeArchiveFile(file) {
     const raw = String(file || '').trim();
     if (!raw) return '';
@@ -370,11 +383,12 @@ function clinicPrintSubmit(classId) {
 
 function openClinicCenter(classId = '') {
     const hasClassId = !!String(classId || '').trim();
+    const safeClassIdForJs = clinicPrintEscapeJsString(classId);
 
     showModal('클리닉', `
         <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
-            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="if('${clinicPrintEscapeAttr(classId)}'){ openClinicPrintCenter('${clinicPrintEscapeAttr(classId)}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
-            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="clinicPrintOpenSimilarMenu('${clinicPrintEscapeAttr(classId)}')">유사문항</button>
+            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="if('${safeClassIdForJs}'){ openClinicPrintCenter('${safeClassIdForJs}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
+            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="clinicPrintOpenSimilarMenu('${safeClassIdForJs}')">유사문항</button>
         </div>
         <style>
             @media (max-width:520px) {
@@ -409,6 +423,7 @@ function openClinicPrintCenter(classId) {
     const groups = clinicPrintGetClassExamGroups(classId);
     const printableGroups = groups.filter(group => group.printable);
     const initialKeys = printableGroups.length ? [printableGroups[0].examKey] : [];
+    const safeClassIdForJs = clinicPrintEscapeJsString(classId);
 
     const examHtml = groups.length
         ? groups.map((group, idx) => {
@@ -420,7 +435,7 @@ function openClinicPrintCenter(classId) {
             const tone = group.printable ? 'var(--secondary)' : 'var(--error)';
             return `
                 <label style="display:flex; align-items:flex-start; gap:10px; padding:12px; border:1px solid var(--border); border-radius:12px; background:${group.printable ? 'var(--surface)' : 'var(--bg)'}; opacity:${group.printable ? '1' : '0.62'};">
-                    <input type="checkbox" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintUpdateStudentList('${clinicPrintEscapeAttr(classId)}')" style="margin-top:3px;">
+                    <input type="checkbox" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')" style="margin-top:3px;">
                     <span style="min-width:0; display:block;">
                         <span style="display:block; font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
                         <span style="display:block; margin-top:3px; font-size:11px; font-weight:700; color:${tone}; line-height:1.45;">${clinicPrintEscapeHtml(status)}</span>
@@ -452,7 +467,7 @@ function openClinicPrintCenter(classId) {
             <section>
                 <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">
                     <div style="font-size:12px; font-weight:800; color:var(--secondary);">시험 목록</div>
-                    <button class="btn" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintUpdateStudentList('${clinicPrintEscapeAttr(classId)}');">전체 선택</button>
+                    <button class="btn" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintUpdateStudentList('${safeClassIdForJs}');">전체 선택</button>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:8px; max-height:230px; overflow:auto;">${examHtml}</div>
             </section>
@@ -465,7 +480,7 @@ function openClinicPrintCenter(classId) {
                 <div id="clinic-print-student-list" style="display:flex; flex-direction:column; gap:8px; max-height:250px; overflow:auto;"></div>
             </section>
 
-            <button class="btn btn-primary" style="width:100%; min-height:48px; border-radius:14px; font-size:14px; font-weight:800;" onclick="clinicPrintSubmit('${clinicPrintEscapeAttr(classId)}')">오답지 만들기</button>
+            <button class="btn btn-primary" style="width:100%; min-height:48px; border-radius:14px; font-size:14px; font-weight:800;" onclick="clinicPrintSubmit('${safeClassIdForJs}')">오답지 만들기</button>
         </div>
     `);
 

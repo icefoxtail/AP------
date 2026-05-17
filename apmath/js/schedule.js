@@ -27,6 +27,8 @@ function selectExamCalendarDate(dateStr) {
 
 function bindExamCalendarDateClicks() {
     document.querySelectorAll('.exam-calendar-day').forEach((el) => {
+        if (el.dataset.bound === '1') return;
+        el.dataset.bound = '1';
         el.addEventListener('click', () => selectExamCalendarDate(el.getAttribute('data-date')));
     });
 }

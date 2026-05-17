@@ -17,6 +17,13 @@ function getStudentClass(studentId) {
     return (state.db.classes || []).find(c => String(c.id) === String(map?.class_id));
 }
 
+let addressBookSearchTimer = null;
+
+function debounceRenderAddressBookList() {
+    clearTimeout(addressBookSearchTimer);
+    addressBookSearchTimer = setTimeout(renderAddressBookList, 180);
+}
+
 function renderAddressBookList() {
     const search = (document.getElementById('ab-search')?.value || '').trim().toLowerCase();
     const cid = document.getElementById('ab-class')?.value || '';
@@ -103,7 +110,7 @@ function openAddressBook() {
             <button class="btn" style="padding:10px; flex:1; font-size:12px; color:var(--primary); background:rgba(26,92,255,0.1); border:none; font-weight:800;" onclick="setModalReturnView({ type: 'addressBook' }); openGlobalPinManagement()">PIN관리</button>
         </div>
         <div style="display:grid; grid-template-columns:1fr 150px; gap:8px; margin-bottom:14px;">
-            <input id="ab-search" class="btn" placeholder="이름/학교/반 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="renderAddressBookList()">
+            <input id="ab-search" class="btn" placeholder="이름/학교/반 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="debounceRenderAddressBookList()">
             <select id="ab-class" class="btn" style="width:100%; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체 학생</option>${classOptions}</select>
         </div>
         <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">재원생만 표시하고, 반 선택은 보조 필터로 사용합니다.</div>

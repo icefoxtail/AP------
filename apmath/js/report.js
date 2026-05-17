@@ -22,10 +22,24 @@ function getRecentAverage(studentId, limit = 3) {
 /**
  * 보고 문구 생성용 기본 데이터 수집
  */
+const AP_REPORT_CONTEXT_OPTIONS_LIMIT = 30;
+
+function limitReportContextOptions(keepKey = '') {
+    window.AP_REPORT_CONTEXT_OPTIONS = window.AP_REPORT_CONTEXT_OPTIONS || {};
+    const keys = Object.keys(window.AP_REPORT_CONTEXT_OPTIONS);
+    if (keys.length <= AP_REPORT_CONTEXT_OPTIONS_LIMIT) return;
+
+    keys
+        .filter(key => key !== keepKey)
+        .slice(0, Math.max(0, keys.length - AP_REPORT_CONTEXT_OPTIONS_LIMIT))
+        .forEach(key => delete window.AP_REPORT_CONTEXT_OPTIONS[key]);
+}
+
 function registerReportPayload(payload = {}) {
     window.AP_REPORT_CONTEXT_OPTIONS = window.AP_REPORT_CONTEXT_OPTIONS || {};
     const key = `report_${Date.now()}_${Math.random().toString(36).slice(2)}`;
     window.AP_REPORT_CONTEXT_OPTIONS[key] = payload || {};
+    limitReportContextOptions(key);
     return key;
 }
 
@@ -3616,13 +3630,17 @@ function showParentReportModal(ctx) {
 
 async function saveParentReportImage(name, examTitle) {
     const card = document.getElementById('parent-report-card');
-    if (!card || typeof html2canvas === 'undefined') {
+    const html2canvasFn = window.html2canvas || (typeof html2canvas !== 'undefined' ? html2canvas : null);
+    const saveBtn = document.getElementById('report-save-btn');
+
+    if (!card || !html2canvasFn) {
         toast('이미지 저장 기능을 불러오지 못했습니다.', 'warn');
         return;
     }
     try {
+        if (saveBtn) saveBtn.disabled = true;
         toast('이미지 생성 중...', 'info');
-        const canvas = await html2canvas(card, {
+        const canvas = await html2canvasFn(card, {
             scale: 2,
             useCORS: true,
             backgroundColor: '#ffffff',
@@ -3634,6 +3652,9 @@ async function saveParentReportImage(name, examTitle) {
         link.click();
         toast('이미지가 저장되었습니다. 카카오톡에서 전송하세요!', 'info');
     } catch (e) {
+        console.warn('[saveParentReportImage] html2canvas failed:', e);
         toast('이미지 저장에 실패했습니다.', 'warn');
+    } finally {
+        if (saveBtn) saveBtn.disabled = false;
     }
 }
