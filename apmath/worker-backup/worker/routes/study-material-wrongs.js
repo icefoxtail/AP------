@@ -334,7 +334,7 @@ function buildUnitCounts(rows) {
 }
 
 async function materialReviewRows(env, filters) {
-  const where = ["sma.status != 'deleted'"];
+  const where = ["COALESCE(sma.status, 'active') != 'deleted'"];
   const params = [];
   if (filters.student_id) {
     where.push('sma.student_id = ?');
@@ -605,7 +605,7 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
     const wrongs = await env.DB.prepare(`
       SELECT question_no
       FROM student_material_wrong_answers
-      WHERE submission_id = ? AND status != 'deleted'
+      WHERE submission_id = ? AND COALESCE(status, 'active') != 'deleted'
       ORDER BY question_no ASC
     `).bind(submission.id).all();
     return ok({
@@ -631,7 +631,8 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
         is_no_wrong: Number(submission.is_no_wrong || 0),
         submitted_at: submission.submitted_at || null,
         wrong_numbers: (wrongs.results || []).map(r => Number(r.question_no)),
-        can_submit: true
+        can_submit: true,
+        can_edit: true
       }
     });
   }
@@ -657,8 +658,15 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
       return fail(e.message || 'Invalid wrong_numbers');
     }
     const teacherId = await findAssignmentTeacherId(env, assignment);
+    const wasSubmitted = Number(submission.is_submitted || 0) === 1;
     const saved = await replaceSubmissionWrongs(env, assignment, submission, student, wrongNumbers, isNoWrong, teacherId);
-    return ok({ submitted: true, wrong_count: saved.wrong_count, submitted_at: saved.submitted_at });
+    return ok({
+      submitted: true,
+      updated_existing_submission: wasSubmitted,
+      can_edit: true,
+      wrong_count: saved.wrong_count,
+      submitted_at: saved.submitted_at
+    });
   }
 
   const user = await requireTeacher(request, env, teacher);
@@ -1036,7 +1044,7 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
         GROUP_CONCAT(sma.question_no) AS wrong_numbers_csv
       FROM student_material_submissions sms
       JOIN students s ON s.id = sms.student_id
-      LEFT JOIN student_material_wrong_answers sma ON sma.submission_id = sms.id AND sma.status != 'deleted'
+      LEFT JOIN student_material_wrong_answers sma ON sma.submission_id = sms.id AND COALESCE(sma.status, 'active') != 'deleted'
       WHERE sms.assignment_id = ?
       GROUP BY sms.id
       ORDER BY s.name ASC
@@ -1079,7 +1087,7 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
       const res = await env.DB.prepare(`
         SELECT *
         FROM student_material_wrong_answers
-        WHERE student_id = ? AND material_id = ? AND status != 'deleted'
+        WHERE student_id = ? AND material_id = ? AND COALESCE(status, 'active') != 'deleted'
         ORDER BY wrong_date DESC, question_no ASC
       `).bind(studentId, materialId).all();
       const items = await attachQuestionMeta(env, materialId, res.results || []);
@@ -1088,7 +1096,7 @@ export async function handleStudyMaterialWrongs(request, env, teacher, path, url
     if (id === 'class' || id === 'grade') {
       const materialId = text(url.searchParams.get('material_id'));
       if (!materialId) return fail('material_id required');
-      const where = ['material_id = ?', "status != 'deleted'"];
+      const where = ['material_id = ?', "COALESCE(status, 'active') != 'deleted'"];
       const params = [materialId];
       if (id === 'class') {
         const classId = text(url.searchParams.get('class_id'));

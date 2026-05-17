@@ -1314,3 +1314,55 @@ docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
 - 실제 청구 생성, 결제 연동, 카드/카카오페이 연동, 알림톡/문자 발송 기능은 만들거나 실행하지 않는다.
 - 수납·출납 foundation 진입점은 계속 숨김 상태를 유지하며, dashboard/admin menu 노출을 되살리지 않는다.
 - 다음 initial-data 축소는 남은 foundation key별 화면 의존성 분석 후 별도 작업으로 진행한다.
+
+---
+
+# 2026-05-18 report.js 리포트 센터 버튼/크게 보기 레이아웃 기준 최신화
+
+## 적용 파일
+
+- `apmath/js/report.js`
+
+## 현재 기준
+
+- 평가 리포트 센터의 바깥 주요 버튼 문구는 `리포트보기/프리미엄분석`이다.
+- 바깥 리포트 센터에는 별도 `프리미엄 분석` 버튼을 복구하지 않는다.
+- 크게 보기 화면 상단 `.report-print-toolbar` 버튼 순서는 아래 기준을 유지한다.
+  1. `프리미엄 분석`
+  2. `기본 리포트`
+  3. `인쇄하기`
+  4. `돌아가기`
+- 크게 보기 화면의 `프리미엄 분석` 버튼에는 `report-print-premium-btn` class를 유지한다.
+- `report-print-premium-btn` 강조 색상은 `reportCenterInjectPrintViewStyle()` 안에서만 관리한다.
+
+## 크게 보기 리포트 본문 레이아웃 기준
+
+- 크게 보기 화면에서 리포트 본문은 인쇄본과 같은 기준 폭을 사용한다.
+- `.report-print-stage`는 화면 wrapper이며, `width:100%`, `overflow-x:auto`, `padding-bottom:24px` 기준을 유지한다.
+- `.report-print-stage .aprc-pdf-document`는 `width:190mm`, `min-width:190mm`, `max-width:190mm`, `margin:0 auto`, `padding:8mm 9mm`, `box-sizing:border-box` 기준을 유지한다.
+- `@media print` 안의 `.report-print-stage .aprc-pdf-document`는 `padding:0 !important`를 유지한다.
+- 크게 보기 화면의 헤더는 `.report-print-stage .aprc-pdf-header`에서 `grid-template-columns:minmax(0,1fr) 34mm`, `padding:8mm 0 6mm` 기준을 유지한다.
+- `.report-print-stage .aprc-pdf-header .aprc-issued`는 `padding-top:0`을 유지하며 `padding-top:7mm`로 되돌리지 않는다.
+- 학생 정보 band는 `.report-print-stage .aprc-pdf-student-band`에서 `grid-template-columns:minmax(0,1fr) minmax(38mm,72mm)` 기준을 유지한다.
+- 시험 정보 영역 `.report-print-stage .aprc-exam-meta`는 `text-align:right`, `max-width:none`, `word-break:keep-all`, `overflow-wrap:break-word` 기준을 유지한다.
+
+## 금지/주의
+
+- 버튼 문구/순서/기능은 사용자 지시 없이 변경하지 않는다.
+- `리포트보기 프리미엄분석`처럼 슬래시가 빠진 문구로 되돌리지 않는다.
+- `리포트 크게 보기/출력`, `리포트 센터`, `인쇄`, `기본 리포트로 복귀`, `프리미엄 분석 적용`, `리포트 센터로 돌아가기`를 크게 보기 상단 버튼 문구로 복구하지 않는다.
+- `reportCenterBuildCleanPdfShell()`, `reportCenterPrintCleanPdf()`, `reportCenterBuildCleanPdfDocument()`, `reportCenterRequestPrintViewAiAnalysis()`, `reportCenterResetPrintViewAiAnalysis()`, `reportCenterPremiumReportStyle()`는 리포트 보기 CSS 보정 작업에서 구조 변경하지 않는다.
+- 인쇄 새 창 CSS와 print media 출력 기준은 별도 지시 없이 수정하지 않는다.
+- 리포트 본문 문구, AI 분석 로직, AI 캐시 로직, OMR/학생 포털/관리자 화면은 리포트 버튼/레이아웃 보정 작업 범위에 포함하지 않는다.
+
+## 검증 기준
+
+- `node --check apmath/js/report.js`
+- `git status --short`
+- PowerShell 확인:
+  - `Select-String -Path apmath/js/report.js -Pattern "리포트보기/프리미엄분석|리포트보기 프리미엄분석|report-print-stage|aprc-pdf-document|width:190mm|min-width:190mm|max-width:190mm|padding:8mm 9mm|padding:0 !important|aprc-pdf-header|padding:8mm 0 6mm|aprc-issued|padding-top:7mm|padding-top:0|aprc-pdf-student-band|aprc-exam-meta|report-print-premium-btn"`
+
+## 관련 완료 보고
+
+- `CODEX_RESULT_REPORT_BUTTONS.md`
+- `CODEX_RESULT_REPORT_LAYOUT.md`
