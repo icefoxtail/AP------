@@ -44,6 +44,9 @@ async function renderStudentDetail(sid) {
     if (!s) { toast('학생 정보 없음', 'warn'); return; }
 
     const exs = (state.db.exam_sessions || []).filter(e => e.student_id === sid).sort((a,b)=>b.exam_date.localeCompare(a.exam_date));
+    if (typeof loadEnrollmentFoundation === 'function') {
+        await loadEnrollmentFoundation({ student_id: sid }, { silent: true });
+    }
     await ensureBlueprintsForSessions(exs);
 
     renderStudentDetailTab(sid, 'grade');

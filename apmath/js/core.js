@@ -75,7 +75,13 @@ const SEED_DATA = { classes: [], students: [], map: [] };
 
 let state = {
     auth: { id: null, name: null, role: null },
-    ui: { viewScope: 'teacher', userName: '', currentClassId: null, baseDate: null },
+    ui: {
+        viewScope: 'teacher',
+        userName: '',
+        currentClassId: null,
+        baseDate: null,
+        enrollmentFoundation: { byScope: {}, inFlight: {} }
+    },
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
         exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
@@ -111,6 +117,93 @@ function getOperationDate() {
     return getBaseDate();
 }
 // ─────────────────────────────────────────────────────────────────────
+
+function ensureEnrollmentFoundationState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.enrollmentFoundation) {
+        state.ui.enrollmentFoundation = { byScope: {}, inFlight: {} };
+    }
+    if (!state.ui.enrollmentFoundation.byScope) state.ui.enrollmentFoundation.byScope = {};
+    if (!state.ui.enrollmentFoundation.inFlight) state.ui.enrollmentFoundation.inFlight = {};
+    return state.ui.enrollmentFoundation;
+}
+
+function normalizeEnrollmentFoundationScope(scope = {}) {
+    const studentId = String(scope.student_id || scope.studentId || '').trim();
+    const classId = String(scope.class_id || scope.classId || '').trim();
+    if (studentId) return { type: 'student', key: `student:${studentId}`, query: `student_id=${encodeURIComponent(studentId)}` };
+    if (classId) return { type: 'class', key: `class:${classId}`, query: `class_id=${encodeURIComponent(classId)}` };
+    return { type: 'all', key: 'all', query: '' };
+}
+
+function getEnrollmentFoundationCache(scope = {}) {
+    const store = ensureEnrollmentFoundationState();
+    const normalized = normalizeEnrollmentFoundationScope(scope);
+    return store.byScope[normalized.key] || null;
+}
+
+function getEnrollmentFoundationRows(scope = {}) {
+    const cached = getEnrollmentFoundationCache(scope);
+    return Array.isArray(cached?.rows) ? cached.rows : [];
+}
+
+async function loadEnrollmentFoundation(scope = {}, options = {}) {
+    const store = ensureEnrollmentFoundationState();
+    const normalized = normalizeEnrollmentFoundationScope(scope);
+    const cached = store.byScope[normalized.key];
+    const force = !!options.force;
+    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 5 * 60 * 1000;
+
+    if (!force && cached?.loadedAt && (Date.now() - cached.loadedAt) < maxAgeMs) {
+        return cached.rows || [];
+    }
+
+    if (store.inFlight[normalized.key]) return store.inFlight[normalized.key];
+
+    store.byScope[normalized.key] = {
+        ...(cached || {}),
+        scopeKey: normalized.key,
+        scopeType: normalized.type,
+        loading: true,
+        error: ''
+    };
+
+    const requestPath = normalized.query ? `enrollments?${normalized.query}` : 'enrollments';
+    const promise = api.get(requestPath)
+        .then(res => {
+            if (res?.error || res?.success === false) {
+                throw new Error(res?.error || 'enrollments load failed');
+            }
+            const rows = Array.isArray(res?.enrollments) ? res.enrollments : [];
+            store.byScope[normalized.key] = {
+                scopeKey: normalized.key,
+                scopeType: normalized.type,
+                rows,
+                loading: false,
+                loadedAt: Date.now(),
+                error: ''
+            };
+            return rows;
+        })
+        .catch(err => {
+            store.byScope[normalized.key] = {
+                ...(store.byScope[normalized.key] || {}),
+                scopeKey: normalized.key,
+                scopeType: normalized.type,
+                rows: Array.isArray(cached?.rows) ? cached.rows : [],
+                loading: false,
+                loadedAt: cached?.loadedAt || 0,
+                error: String(err?.message || err || 'enrollments load failed')
+            };
+            return store.byScope[normalized.key].rows;
+        })
+        .finally(() => {
+            delete store.inFlight[normalized.key];
+        });
+
+    store.inFlight[normalized.key] = promise;
+    return promise;
+}
 
 const RISK_LOOKBACK_DAYS = 14;
 const RISK_ABSENCE_THRESHOLD = 2;
