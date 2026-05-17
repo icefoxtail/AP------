@@ -2,45 +2,48 @@
 
 ## 1. 생성/수정 파일
 
-* 수정한 파일 목록
-  * `apmath/js/report.js`
-  * `CODEX_RESULT.md`
-* 읽기 전용 확인 파일 목록
-  * `CODEX_TASK.md`
-  * `apmath/index.html`
-  * `apmath/js/ui.js`
-  * `apmath/js/classroom.js`
+- 수정한 파일 목록
+  - `apmath/js/report.js`
+  - `CODEX_RESULT.md`
+- 읽기 전용 확인 파일 목록
+  - `CODEX_TASK.md`
+  - `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`
 
 ## 2. 구현 완료 또는 확인 완료
 
-* 배경 평가 리포트 센터 `프리미엄 분석` 버튼 제거 여부
-  * 완료. `openReportCenterExam()`의 `reportCenterRequestExamAiAnalysis(...)` 버튼 렌더링을 제거했다.
-* 배경 평가 리포트 센터 `기존 카드 리포트` 버튼 제거 여부
-  * 완료. `openReportCenterExam()`의 `openParentReport(...)` 버튼 렌더링을 제거했다.
-* 배경 평가 리포트 센터 프리미엄 안내 박스 제거 여부
-  * 완료. `openReportCenterExam()`의 프리미엄 안내 박스 렌더링을 제거했다.
-* 크게 보기 탑바 정리 여부
-  * 완료. `reportCenterOpenPrintView()`에서 탑바가 `리포트 센터로 돌아가기`, `인쇄하기` 2개 버튼만 유지되도록 정리했다.
-* 크게 보기 왼쪽 선생님 메모 패널 제거 여부
-  * 완료. `reportCenterOpenPrintView()`에서 `section.report-print-control-panel`과 `textarea#report-print-teacher-memo` 삽입을 제거했다.
-* 배경 선생님 추가 메모 유지 여부
-  * 완료. `openReportCenterExam()`의 `textarea#report-center-exam-teacher-memo`는 유지했다.
-  * 크게 보기 진입 시 배경 메모 값을 `teacherMemo`로 읽어 기본 리포트 본문에 반영하는 흐름도 유지했다.
-* 리포트 본문 `프리미엄 분석` 배지 제거 여부
-  * 완료. `reportCenterBuildCleanPdfDocument()`에서 `aiBadgeHtml`을 빈 문자열로 고정했다.
-* 평가 리포트 출력에서 AI 캐시 반영 차단 여부
-  * 완료. `reportCenterBuildCleanPdfDocument()` 내부의 `aiAnalysis`를 `null`로 고정했다.
-  * `reportCenterBuildPrintDocument()`, `reportCenterPrintCleanPdf()`, `reportCenterOpenPrintView()`, `reportCenterRefreshPrintViewReport()`, `reportCenterRefreshPremiumExamPreview()` 호출부도 `aiAnalysis: null`을 전달하도록 정리했다.
-* 인쇄하기 흐름 보존 여부
-  * 완료. `reportCenterPrintCleanPdf()`와 `reportCenterBuildCleanPdfShell()`의 출력 창/MathJax/print 흐름은 보존했다.
-* 기존 리포트 본문 보존 여부
-  * 완료. 본문 문장 생성 함수와 문항 분석/계획/학부모 메시지 구조는 변경하지 않았다. AI 분석 반영만 차단했다.
+- 크게 보기 버튼 문구 4개 확정 반영 여부
+  - 완료. `reportCenterOpenPrintView()` 상단 버튼을 `리포트 센터`, `기본 리포트`, `프리미엄 분석`, `인쇄` 4개로 복구했다.
+- 배경 평가 리포트 센터 `프리미엄 분석` 버튼 복구 여부
+  - 완료. `openReportCenterExam()`에 `reportCenterRequestExamAiAnalysis(studentId, selectedId, this)`로 연결되는 `프리미엄 분석` 버튼을 복구했다.
+- `기존 카드 리포트` 버튼 제거 유지 여부
+  - 유지. 해당 버튼은 다시 넣지 않았다.
+- 크게 보기 왼쪽 선생님 메모 패널 제거 유지 여부
+  - 유지. `report-print-control-panel` section과 `report-print-teacher-memo` textarea를 크게 보기 HTML에 다시 만들지 않았다.
+- 배경 선생님 추가 메모 유지 여부
+  - 유지. `report-center-exam-teacher-memo` textarea는 그대로 남아 있다.
+- AI 분석 적용 흐름 복구 여부
+  - 완료. `reportCenterBuildCleanPdfDocument()`가 다시 `reportCenterGetAiAnalysisForReport(session?.id, options)`를 사용한다.
+  - `reportCenterOpenPrintView()`, `reportCenterRefreshPrintViewReport()`, `reportCenterRefreshPremiumExamPreview()`, `reportCenterPrintCleanPdf()`, `reportCenterBuildPrintDocument()`가 캐시된 AI 분석을 다시 전달한다.
+- 기본 리포트 복귀 흐름 복구 여부
+  - 완료. 크게 보기 상단 `기본 리포트` 버튼이 `reportCenterResetPrintViewAiAnalysis(studentId, sessionId)`에 연결된다.
+- `.report-print-toolbar` max-width 190mm 변경 여부
+  - 완료. `reportCenterInjectPrintViewStyle()` 내부 값을 `max-width:190mm`로 변경했다.
+- `.report-print-control-panel` max-width 190mm 변경 여부
+  - 완료. CSS 정의는 유지하되 `max-width:190mm`로 변경했다. HTML 패널은 생성하지 않는다.
+- `.report-print-stage .aprc-pdf-header` padding 보정 여부
+  - 완료. 해당 블록에 `padding:8mm 0 6mm;`를 추가했다.
+- `.aprc-issued` padding-top 0 변경 여부
+  - 완료. `.report-print-stage .aprc-pdf-header .aprc-issued`의 `padding-top`을 `0`으로 변경했다.
+- 인쇄하기 흐름 보존 여부
+  - 완료. `reportCenterPrintCleanPdf()`와 `reportCenterBuildCleanPdfShell()` 구조는 변경하지 않았다.
+- 기존 본문 문구 임의 변경 여부
+  - 없음. 리포트 본문 문장 생성 로직은 AI 분석 반영 복구 외에는 바꾸지 않았다.
 
 ## 3. 실행 결과
 
-* `node --check apmath/js/report.js`: PASS
+- `node --check apmath/js/report.js`: PASS
 
-* `git status --short` 결과
+- `git status --short` 결과
 
 ```text
  M CODEX_RESULT.md
@@ -50,52 +53,57 @@ warning: unable to access 'C:\Users\USER/.config/git/ignore': Permission denied
 warning: unable to access 'C:\Users\USER/.config/git/ignore': Permission denied
 ```
 
-* `프리미엄 분석`/`기본 리포트로 복귀`/`기존 카드 리포트` 검색 결과 요약
-  * 사용자 진입 버튼/본문/배지 경로의 `프리미엄 분석`, `프리미엄 분석 적용`, `기본 리포트로 복귀`, `기존 카드 리포트`, `프리미엄 리포트 문구` 노출은 제거했다.
-  * `프리미엄 분석 실패`, `프리미엄 분석에 실패했습니다. 기본 리포트를 유지합니다.` 문자열은 삭제 금지된 AI 함수 내부 에러/토스트 경로에만 남아 있다.
-  * `reportCenterRequestExamAiAnalysis()`, `reportCenterRequestPrintViewAiAnalysis()`, `reportCenterResetPrintViewAiAnalysis()`, `openParentReport()` 함수 자체는 삭제하지 않았다.
-  * `report-print-control-panel` CSS와 `report-print-teacher-memo` 조회 코드는 남아 있지만, 크게 보기 화면에서 해당 패널/textarea를 더 이상 렌더링하지 않는다. 기존 함수 보존 조건과 호환된다.
+- 문구/CSS 검색 결과 요약
+  - 크게 보기 버튼 HTML에 `리포트 센터`, `기본 리포트`, `프리미엄 분석`, `인쇄`가 존재한다.
+  - `리포트 센터로 돌아가기`, `프리미엄 분석 적용`, `인쇄하기`, `기존 카드 리포트`, `max-width:900px`, `padding-top:7mm`, `aiAnalysis: null`, `const aiAnalysis = null` 검색 결과는 없음.
+  - `기본 리포트로 복귀했습니다`, `프리미엄 분석 실패` 등은 버튼명이 아니라 기존 함수 내부 toast/error 문구로만 남아 있다.
+  - `report-print-control-panel`은 CSS 정의에만 남아 있고, 크게 보기 HTML section으로 생성하지 않는다.
+  - `report-print-teacher-memo`는 기존 조회 함수 안에만 남아 있고, 크게 보기 HTML textarea로 생성하지 않는다.
 
 ## 4. 결과 요약
 
-* 화면에서 사라진 것
-  * 평가 리포트 센터의 `기존 카드 리포트` 버튼
-  * 평가 리포트 센터의 `프리미엄 분석` 버튼
-  * 평가 리포트 센터의 프리미엄 안내 박스
-  * 크게 보기 탑바의 `기본 리포트로 복귀` 버튼
-  * 크게 보기 탑바의 `프리미엄 분석 적용` 버튼
-  * 크게 보기 화면의 별도 선생님 메모 패널
-  * 리포트 본문 헤더의 `프리미엄 분석` 배지
-* 레이아웃에서 정리된 것
-  * 크게 보기 화면 상단은 2개 버튼만 남아 버튼 밀도와 폭이 단순해졌다.
-  * 별도 메모 패널이 제거되어 리포트 문서가 바로 이어진다.
-  * A4 본문 폭, `report-print-stage`, `#report-print-document-root`, 인쇄용 shell은 유지했다.
-* 인쇄 흐름 보존 방식
-  * `인쇄하기`는 기존처럼 새 창을 열고 `reportCenterBuildCleanPdfShell()`을 통해 출력한다.
-  * 인쇄 본문은 캐시된 AI 분석을 받지 않는 기본 리포트 기준으로 생성된다.
-  * 배경 리포트 센터 메모는 계속 본문 생성에 사용된다.
+- 복구한 기능
+  - 크게 보기 상단의 4개 버튼과 연결 함수
+  - 배경 평가 리포트 센터의 `프리미엄 분석` 버튼
+  - AI 분석 적용 후 리포트 본문/미리보기/인쇄에 반영되는 흐름
+  - `기본 리포트` 버튼으로 캐시를 지우고 기본 리포트로 돌아가는 흐름
+- 보정한 CSS
+  - 크게 보기 툴바 폭을 A4 문서 폭과 맞추기 위해 `190mm`로 조정
+  - control panel CSS도 같은 폭으로 조정
+  - 크게 보기 리포트 헤더 padding과 발행일 영역 padding-top 충돌 제거
+- 일부러 복구하지 않은 것
+  - 크게 보기 왼쪽 선생님 메모 패널
+  - 배경 평가 리포트 센터의 `기존 카드 리포트` 버튼
+  - 프리미엄 안내 박스
+- 보존한 흐름
+  - 인쇄 창 생성, MathJax 로딩, `window.print()` 트리거
+  - 카톡 요약 복사
+  - AI/API/cache 관련 함수 자체
 
 ## 5. 하지 않은 일 / 위험했던 점 / 보존해야 할 점
 
-* 기존 문구·버튼명·화면명을 요청 범위 밖에서 임의 변경하지 않았다.
-* 선생님 메모란을 새로 만들지 않았다.
-* 배경 선생님 추가 메모는 유지했다.
-* 본문 리포트와 인쇄 흐름을 망가뜨리지 않도록 `reportCenterBuildCleanPdfShell()`, MathJax 로딩, `window.print()` 트리거는 건드리지 않았다.
-* AI 관련 함수는 삭제하지 않고 UI 진입점과 출력 반영만 정리했다.
-* `openParentReport()` 함수 자체는 삭제하지 않았다.
-* 브라우저 수동 확인은 이 환경에서 별도 앱 구동 없이 수행하지 않았다. 코드 경로와 정적 검증 기준으로 확인했다.
+- 이전 작업에서 `프리미엄 분석`/`기본 리포트` 버튼이 과하게 제거된 점을, 이번 지시 범위 안에서 크게 보기와 배경 리포트 센터에 한해 복구했다.
+- 사용자 확정 버튼명 4개를 임의로 늘리거나 바꾸지 않았다.
+- 기존 리포트 본문 문구를 임의 변경하지 않았다.
+- 크게 보기 왼쪽 메모 패널을 다시 만들지 않았다.
+- 인쇄 흐름은 건드리지 않고 호출 시 현재 캐시된 리포트 상태를 전달하도록만 복구했다.
+- `reportCenterPremiumReportStyle()`와 `reportCenterBuildCleanPdfShell()`은 수정하지 않았다.
 
 ## 6. 다음 조치
 
-* 실제 브라우저에서 확인할 체크리스트
-  * 평가 리포트 센터에서 버튼이 `리포트 크게 보기/출력`, `카톡 요약 복사` 2개만 보이는지
-  * 평가 리포트 센터에서 `기존 카드 리포트`, `프리미엄 분석`, 프리미엄 안내 박스가 사라졌는지
-  * 배경 리포트 센터의 선생님 추가 메모가 그대로 보이고 입력 가능한지
-  * 크게 보기 화면에서 `리포트 센터로 돌아가기`, `인쇄하기`만 보이는지
-  * 크게 보기 화면에 별도 선생님 메모 패널이 없는지
-  * 리포트 본문 헤더에 `프리미엄 분석` 배지가 없는지
-  * 인쇄하기가 정상적으로 새 창을 여는지
-  * 인쇄 본문에 탑바, 메모 패널, 프리미엄 UI가 포함되지 않는지
-* 추가 수정이 필요한 경우 다음 후보
-  * 실제 화면에서 빈 여백이 남으면 `reportCenterInjectPrintViewStyle()`의 `.report-print-toolbar` 간격만 최소 조정한다.
-  * 인쇄 창에서만 여백 문제가 보이면 `reportCenterBuildCleanPdfShell()`의 print CSS만 제한적으로 확인한다.
+- 실제 브라우저에서 확인할 체크리스트
+  - 크게 보기 상단에 `리포트 센터`, `기본 리포트`, `프리미엄 분석`, `인쇄`만 보이는지
+  - 배경 평가 리포트 센터에 `프리미엄 분석` 버튼이 보이고 `기존 카드 리포트` 버튼은 보이지 않는지
+  - 크게 보기 왼쪽 메모 패널이 다시 생기지 않았는지
+  - 프리미엄 분석 적용 후 리포트 본문이 갱신되는지
+  - 기본 리포트 버튼 클릭 후 기본 문구로 돌아가는지
+  - 인쇄 버튼 클릭 후 출력 창이 정상적으로 열리는지
+  - 상단 툴바와 A4 문서 좌우 폭이 맞는지
+  - 발행일 영역과 헤더 텍스트가 세로로 눌리거나 겹치지 않는지
+- 추가 보정이 필요한 경우 후보
+  - 실제 화면에서 버튼 줄바꿈이 과하면 `reportCenterInjectPrintViewStyle()`의 버튼 flex 세부값만 추가 확인한다.
+
+- 배포 실행 여부: 미실행 - 사용자 직접 실행 대상
+- 운영 smoke 실행 여부: 미실행 - 사용자 직접 실행 대상
+- git commit 실행 여부: 미실행 - 사용자 직접 실행 대상
+- git push 실행 여부: 미실행 - 사용자 직접 실행 대상

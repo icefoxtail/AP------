@@ -2574,7 +2574,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const session = data.session;
     const stats = data.stats;
     const teacherMemo = options.teacherMemo !== undefined ? String(options.teacherMemo || '').trim() : reportCenterGetExamReportTeacherMemo();
-    const aiAnalysis = null;
+    const aiAnalysis = reportCenterGetAiAnalysisForReport(session?.id, options);
 
     if (!student || !session || !stats) {
         return `<main class="aprc-pdf-document"><section class="aprc-pdf-panel aprc-empty-box">평가 리포트를 만들 시험 기록이 없습니다.</section></main>`;
@@ -2611,7 +2611,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const archiveMessage = data.archiveDetails
         ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
         : (tableMeta.note || '문항 원문 확인 전입니다. 오답 번호·단원·정답률 기준으로 분석합니다.');
-    const aiBadgeHtml = '';
+    const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석</div>` : '';
 
     let html = `
         <main class="aprc-pdf-document">
@@ -2975,7 +2975,7 @@ ${reportHtml}
 function reportCenterBuildPrintDocument(studentId, sessionId = '', teacherMemo = '') {
     const reportHtml = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
-        aiAnalysis: null
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
     });
     return reportCenterBuildCleanPdfShell(reportHtml);
 }
@@ -2989,7 +2989,7 @@ function reportCenterPrintCleanPdf(studentId, sessionId = '') {
 
     const html = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo: reportCenterGetExamReportTeacherMemo(),
-        aiAnalysis: null
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
     });
     const win = window.open('', '_blank');
     if (!win) {
@@ -3066,7 +3066,7 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     reportCenterEnsurePremiumReportStyle();
     const reportHtml = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
-        aiAnalysis: null
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
     });
 
     const root = document.getElementById('app-root') || document.body;
@@ -3106,8 +3106,10 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     root.innerHTML = `
         <div id="report-print-view" class="report-print-view">
             <div class="report-print-toolbar no-print">
-                <button class="btn" onclick="reportCenterClosePrintView()">리포트 센터로 돌아가기</button>
-                <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄하기</button>
+                <button class="btn" onclick="reportCenterClosePrintView()">리포트 센터</button>
+                <button class="btn" onclick="reportCenterResetPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">기본 리포트</button>
+                <button class="btn" onclick="reportCenterRequestPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}', this)">프리미엄 분석</button>
+                <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄</button>
             </div>
             <div class="report-print-stage">
                 ${reportHtml}
@@ -3145,7 +3147,7 @@ function reportCenterRefreshPrintViewReport(studentId, sessionId = '') {
     const teacherMemo = reportCenterSyncPrintMemoToCenter();
     root.innerHTML = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
-        aiAnalysis: null
+        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
     });
 }
 
@@ -3260,7 +3262,7 @@ function reportCenterInjectPrintViewStyle() {
             gap:8px;
             justify-content:space-between;
             align-items:center;
-            max-width:900px;
+            max-width:190mm;
             margin:0 auto 14px;
             padding:10px;
             background:rgba(255,255,255,0.94);
@@ -3279,7 +3281,7 @@ function reportCenterInjectPrintViewStyle() {
         }
 
         .report-print-control-panel {
-            max-width:900px;
+            max-width:190mm;
             margin:0 auto 14px;
             padding:12px;
             background:#ffffff;
@@ -3331,6 +3333,7 @@ function reportCenterInjectPrintViewStyle() {
             grid-template-columns:minmax(0,1fr) 34mm;
             align-items:start;
             column-gap:12mm;
+            padding:8mm 0 6mm;
         }
 
         .report-print-stage .aprc-pdf-header > div:first-child {
@@ -3347,7 +3350,7 @@ function reportCenterInjectPrintViewStyle() {
         }
 
         .report-print-stage .aprc-pdf-header .aprc-issued {
-            padding-top:7mm;
+            padding-top:0;
             text-align:right;
             white-space:nowrap;
             min-width:30mm;
@@ -3426,7 +3429,7 @@ function reportCenterRefreshPremiumExamPreview(studentId, sessionId = '') {
 
     reportCenterEnsurePremiumReportStyle();
 
-    root.innerHTML = reportCenterBuildPremiumExamReportHtml(studentId, sessionId, { teacherMemo: reportCenterGetExamReportTeacherMemo(), aiAnalysis: null });
+    root.innerHTML = reportCenterBuildPremiumExamReportHtml(studentId, sessionId, { teacherMemo: reportCenterGetExamReportTeacherMemo(), aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId) });
 }
 
 function openReportCenterExam(studentId, selectedSessionId = '') {
@@ -3498,6 +3501,7 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
                 <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트 크게 보기/출력</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
             </div>
+            <button class="btn" style="width:100%; min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:#7c3aed; background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.16);" onclick="reportCenterRequestExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', this)">프리미엄 분석</button>
         </div>
     ` : `
         <div style="padding:34px 16px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; background:var(--surface-2); border-radius:16px;">
