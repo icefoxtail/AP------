@@ -2574,7 +2574,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const session = data.session;
     const stats = data.stats;
     const teacherMemo = options.teacherMemo !== undefined ? String(options.teacherMemo || '').trim() : reportCenterGetExamReportTeacherMemo();
-    const aiAnalysis = reportCenterGetAiAnalysisForReport(session?.id, options);
+    const aiAnalysis = null;
 
     if (!student || !session || !stats) {
         return `<main class="aprc-pdf-document"><section class="aprc-pdf-panel aprc-empty-box">평가 리포트를 만들 시험 기록이 없습니다.</section></main>`;
@@ -2611,7 +2611,7 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const archiveMessage = data.archiveDetails
         ? (data.archiveDetails.status === 'loaded' ? '아카이브 문항 원문 일부를 확인했습니다.' : data.archiveDetails.message)
         : (tableMeta.note || '문항 원문 확인 전입니다. 오답 번호·단원·정답률 기준으로 분석합니다.');
-    const aiBadgeHtml = aiAnalysis ? `<div class="aprc-ai-badge">프리미엄 분석</div>` : '';
+    const aiBadgeHtml = '';
 
     let html = `
         <main class="aprc-pdf-document">
@@ -2975,7 +2975,7 @@ ${reportHtml}
 function reportCenterBuildPrintDocument(studentId, sessionId = '', teacherMemo = '') {
     const reportHtml = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
-        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+        aiAnalysis: null
     });
     return reportCenterBuildCleanPdfShell(reportHtml);
 }
@@ -2989,7 +2989,7 @@ function reportCenterPrintCleanPdf(studentId, sessionId = '') {
 
     const html = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo: reportCenterGetExamReportTeacherMemo(),
-        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+        aiAnalysis: null
     });
     const win = window.open('', '_blank');
     if (!win) {
@@ -3066,7 +3066,7 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
     reportCenterEnsurePremiumReportStyle();
     const reportHtml = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
-        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+        aiAnalysis: null
     });
 
     const root = document.getElementById('app-root') || document.body;
@@ -3114,23 +3114,8 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
             </div>
         </div>
     `;
-    const printToolbar = root.querySelector('.report-print-toolbar');
-    if (printToolbar) {
-        printToolbar.innerHTML = `
-            <button class="btn" onclick="reportCenterClosePrintView()">리포트 센터로 돌아가기</button>
-            <button class="btn" onclick="reportCenterResetPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">기본 리포트로 복귀</button>
-            <button class="btn" onclick="reportCenterRequestPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}', this)">프리미엄 분석 적용</button>
-            <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄하기</button>
-        `;
-    }
     const printStage = root.querySelector('.report-print-stage');
     if (printStage) {
-        printStage.insertAdjacentHTML('beforebegin', `
-            <section class="report-print-control-panel no-print">
-                <label for="report-print-teacher-memo">선생님 추가 메모</label>
-                <textarea id="report-print-teacher-memo" oninput="reportCenterHandlePrintViewMemoInput('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">${reportCenterEscape(teacherMemo)}</textarea>
-            </section>
-        `);
         printStage.innerHTML = `<div id="report-print-document-root">${reportHtml}</div>`;
     }
     document.body.style.overflow = '';
@@ -3142,7 +3127,10 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
 }
 
 function reportCenterSyncPrintMemoToCenter() {
-    const memo = String(document.getElementById('report-print-teacher-memo')?.value || '').trim();
+    const printMemo = document.getElementById('report-print-teacher-memo');
+    const memo = printMemo
+        ? String(printMemo.value || '').trim()
+        : reportCenterGetExamReportTeacherMemo();
     window.AP_REPORT_PENDING_TEACHER_MEMO = memo;
     const centerMemo = document.getElementById('report-center-exam-teacher-memo');
     if (centerMemo) centerMemo.value = memo;
@@ -3157,7 +3145,7 @@ function reportCenterRefreshPrintViewReport(studentId, sessionId = '') {
     const teacherMemo = reportCenterSyncPrintMemoToCenter();
     root.innerHTML = reportCenterBuildCleanPdfDocument(studentId, sessionId, {
         teacherMemo,
-        aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId)
+        aiAnalysis: null
     });
 }
 
@@ -3438,7 +3426,7 @@ function reportCenterRefreshPremiumExamPreview(studentId, sessionId = '') {
 
     reportCenterEnsurePremiumReportStyle();
 
-    root.innerHTML = reportCenterBuildPremiumExamReportHtml(studentId, sessionId, { teacherMemo: reportCenterGetExamReportTeacherMemo(), aiAnalysis: reportCenterGetCachedAiAnalysis(sessionId) });
+    root.innerHTML = reportCenterBuildPremiumExamReportHtml(studentId, sessionId, { teacherMemo: reportCenterGetExamReportTeacherMemo(), aiAnalysis: null });
 }
 
 function openReportCenterExam(studentId, selectedSessionId = '') {
@@ -3509,14 +3497,6 @@ function openReportCenterExam(studentId, selectedSessionId = '') {
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
                 <button type="button" class="btn btn-primary" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px;" onclick="reportCenterOpenPrintView('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', event)">리포트 크게 보기/출력</button>
                 <button class="btn" style="min-height:46px; font-size:13px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border); color:var(--primary);" onclick="reportCenterCopyExamKakaoSummary('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}')">카톡 요약 복사</button>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:var(--primary); background:rgba(26,92,255,0.08); border:1px solid rgba(26,92,255,0.14);" onclick="openParentReport('${escapeReportJsString(studentId)}')">기존 카드 리포트</button>
-                <button class="btn" style="min-height:44px; font-size:12px; font-weight:700; border-radius:12px; color:#7c3aed; background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.16);" onclick="reportCenterRequestExamAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(selectedId)}', this)">프리미엄 분석</button>
-            </div>
-
-            <div style="padding:14px; border:1px solid var(--border); border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.6;">
-                프리미엄 리포트 문구와 출력 상태는 전체화면에서 정확히 확인합니다.
             </div>
         </div>
     ` : `
