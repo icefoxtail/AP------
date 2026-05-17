@@ -1057,6 +1057,10 @@ function renderClass(cid) {
     state.ui.classDefaultTab = null;
     state.ui.currentClassId = String(cid);
 
+    if (typeof loadEnrollmentFoundation === 'function') {
+        loadEnrollmentFoundation({ class_id: cid }, { silent: true }).catch(() => {});
+    }
+
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) {
         document.getElementById('app-root').innerHTML = `<div class="card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">반 정보를 찾을 수 없습니다.</div>`;
