@@ -454,13 +454,13 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `apmath/js/qr-omr.js` | OMR 입력/QR | `/api/exam-sessions/bulk-omr`, exam 관련 endpoint | `routes/exams.js`, `routes/check-omr.js` | 제출 완료 후 재수정 금지 |
 | `apmath/js/report.js` | 리포트/AI 분석/상담 | `/api/consultations`, `/api/ai/report-analysis`, `/api/ai/student-report` | `routes/operations.js`, `routes/reports-ai.js` | 학부모 문구 품질 주의 |
 | `apmath/js/schedule.js` | 시험/학원 일정 | `/api/exam-schedules`, `/api/academy-schedules` | `routes/operations.js` | 일정 용어 보존 |
-| `apmath/js/student.js` | 학생 상세/상담/시험 | `/api/students`, `/api/consultations`, `/api/exam-sessions` | students, operations, exams | 개인정보/PIN 주의 |
+| `apmath/js/student.js` | 학생 상세/상담/시험 | `/api/students`, `/api/consultations`, `/api/exam-sessions`, `/api/ai/consultation-*` | students, operations, exams, reports-ai | 상담 AI는 학생 상세 상담기록 탭 내부 미리보기/수동 반영만 허용, 개인정보/PIN 주의 |
 | `apmath/js/study-material-wrong.js` | 수업자료 오답 강사용 화면 | `/api/study-materials`, `/api/material-*`, `/api/class-material-assignments` | `routes/study-material-wrongs.js` | 일반 시험 OMR 정책과 혼동 금지 |
 | `apmath/js/textbook.js` | 교재/진도 | `/api/class-textbooks` | `routes/class-daily.js` | 수업일지 흐름 보존 |
 | `apmath/js/timetable.js` | 시간표/시간표 버전 UI | `/api/class-time-slots`, `/api/timetable-conflicts*`, `/api/timetable-versions/*` | `routes/class-time-slots.js`, `routes/timetable-conflicts.js`, `routes/timetable-versions.js` | active/draft 저장 경로 분리, 학생 전반/반 추가 제한 주의 |
 | `apmath/js/wangji-foundation.js` | 왕지교육 foundation 공통 보조 UI | foundation 계산 helper | 기존 route/helper와 연동 | 공통 시간 충돌 계산 의미 보존 |
 | `apmath/student/index.html` | 학생 포털 | `/api/student-portal/auth`, `/api/student-portal/home`, `/api/homework-photo/cancel` 등 | student-portal, homework-photo | 시험지 직접 열기 금지 |
-| `apmath/planner/index.html` | 플래너 | `/api/planner-auth-by-name`, `/api/planner-auth`, `/api/planner`, `/api/planner/settings` | `routes/planner.js` | SSO/이름+PIN 흐름 보존 |
+| `apmath/planner/index.html` | 플래너 | `/api/planner-auth-by-name`, `/api/planner-auth`, `/api/planner`, `/api/planner/settings` | `routes/planner.js` | SSO/이름+PIN 흐름 보존, AI 코치 1차는 로컬 규칙 기반만 허용 |
 | `apmath/homework/index.html` | 숙제 사진 제출 | `/api/homework-photo/assignment`, `/api/homework-photo/auth`, `/api/homework-photo/submit`, `/api/homework-photo/cancel` | `routes/homework-photo.js` | 제출 상태/PIN 주의 |
 
 ## 4.3 기능별 프론트 진입점 기준
@@ -821,7 +821,9 @@ Invoke-RestMethod `
 - 시간표 버전 foundation/원장모드 UI 연동
 - 상담 이력 UI 1차: 학생 상세 상담 이력/추가/수정/삭제
 - 상담 AI 요약/다음 조치 초안 1차: 학생 상세 내부 미리보기/수동 반영
+- 상담 AI 2차: 학생 상세 상담기록 탭 내부 상담 흐름 요약, 최근 상담 이력 참고, 내부 미리보기/수동 반영
 - 학부모 연락처/수신동의 UI 1차: 학생 상세 상담기록 탭 내부 조회/추가/수정/삭제/동의 변경/연락 이력 조회
+- 학생 플래너 실시간 코치 1차: 학생 플래너 작성 화면 내부 상시 카드, 로컬 규칙 기반 조언
 - 숙제 사진 확인/뷰어 UI 1차: 반별 숙제 목록/제출 현황/학생별 파일 뷰어
 - 수납·출납 foundation 0단계
 - 수납·출납 foundation 1단계-A
@@ -886,6 +888,10 @@ Invoke-RestMethod `
 - 학생 포털은 배정 확인과 OMR 입력 연결까지만 허용
 - 제출 완료 OMR 수정/재입력/재제출 금지
 - 상담 AI는 내부 미리보기/수동 반영만 허용하고, 실제 발송 없음
+- 상담 AI 2차는 학생 상세 상담기록 탭 내부에서만 동작하고, 자동 저장/자동 발송 없이 버튼/모달로만 연다.
+- 학생 플래너 실시간 코치는 학생 플래너 작성 화면 내부에서만 동작하고, API 호출 없이 로컬 규칙 기반으로만 동작한다.
+- 학생 플래너 실시간 코치는 자동 저장/자동 수정하지 않고, 상담/성적/수납/출결 데이터를 사용하지 않는다.
+- 학생 플래너 Claude API 연동은 2차까지 보류한다.
 - 학부모 연락 UI는 학생 상세 내부 조회/수정까지만 허용하고, 기본 화면은 이름/관계/연락처/대표 여부 중심으로 간략 표시한다.
 - 학부모 연락 UI의 수신동의와 연락 이력은 기본 펼침 금지이며, 버튼/모달/접힘으로 필요할 때만 확인하게 한다.
 - 학부모 연락 UI의 홍보성 동의는 실제 발송 기능 전까지 기본 화면에 노출하지 않는다.
