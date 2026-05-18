@@ -16,6 +16,37 @@ export async function handleClassTimeSlots(request, env, teacher, path, url, bod
     }
     return jsonResponse({ success: true, class_time_slots: await foundationSelect(env, 'class_time_slots', where, params, 'day_of_week ASC, start_time ASC') });
   }
+  if (method === 'POST' && id === 'replace-class-slots') {
+    if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
+    const classId = String(body.class_id || '').trim();
+    const slots = Array.isArray(body.slots) ? body.slots : [];
+    if (!classId) return jsonResponse({ success: false, error: 'class_id required' }, 400);
+    const cls = await env.DB.prepare('SELECT id FROM classes WHERE id = ?').bind(classId).first();
+    if (!cls) return jsonResponse({ success: false, error: 'class not found' }, 404);
+
+    const rows = slots.map(slot => ({
+      id: makeId('cts'),
+      class_id: classId,
+      day_of_week: String(slot.day_of_week || '').trim(),
+      start_time: String(slot.start_time || '').trim(),
+      end_time: String(slot.end_time || '').trim(),
+      room_name: slot.room_name || null,
+      memo: slot.memo || null
+    }));
+    if (!rows.length) return jsonResponse({ success: false, error: 'slots required' }, 400);
+    if (rows.some(row => !row.day_of_week || !row.start_time || !row.end_time)) {
+      return jsonResponse({ success: false, error: 'day_of_week, start_time, end_time required' }, 400);
+    }
+
+    await env.DB.batch([
+      env.DB.prepare('DELETE FROM class_time_slots WHERE class_id = ?').bind(classId),
+      ...rows.map(row => env.DB.prepare(`
+        INSERT INTO class_time_slots (id, class_id, day_of_week, start_time, end_time, room_name, memo)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `).bind(row.id, row.class_id, row.day_of_week, row.start_time, row.end_time, row.room_name, row.memo))
+    ]);
+    return jsonResponse({ success: true, class_id: classId, class_time_slots: rows });
+  }
   if (method === 'POST') {
     if (!(await canAccessClass(teacher, body.class_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
     const row = {
