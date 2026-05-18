@@ -88,7 +88,8 @@ let state = {
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
         timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
-        parent_contacts: [], message_logs: [], student_status_history: [], class_transfer_history: []
+        parent_contacts: [], message_logs: [], student_status_history: [], class_transfer_history: [],
+        timetable_conflict_logs: [], timetable_conflict_overrides: []
     }
 };
 
@@ -329,6 +330,92 @@ async function loadStudentFoundationDetails(studentId, options = {}) {
         });
 
     store.inFlight[sid] = promise;
+    return promise;
+}
+
+function ensureTimetableConflictFoundationState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.timetableConflictFoundation) {
+        state.ui.timetableConflictFoundation = { loadedAt: 0, loading: false, inFlight: null, error: '' };
+    }
+    return state.ui.timetableConflictFoundation;
+}
+
+async function loadTimetableConflictFoundation(options = {}) {
+    const store = ensureTimetableConflictFoundationState();
+    const force = !!options.force;
+    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 5 * 60 * 1000;
+
+    if (!force && store.loadedAt && (Date.now() - store.loadedAt) < maxAgeMs) {
+        return {
+            timetable_conflict_logs: Array.isArray(state.db.timetable_conflict_logs) ? state.db.timetable_conflict_logs : [],
+            timetable_conflict_overrides: Array.isArray(state.db.timetable_conflict_overrides) ? state.db.timetable_conflict_overrides : []
+        };
+    }
+
+    if (store.inFlight) return store.inFlight;
+
+    store.loading = true;
+    store.error = '';
+
+    const promise = Promise.allSettled([
+        api.get('timetable-conflicts?limit=500'),
+        api.get('timetable-conflict-overrides')
+    ])
+        .then(results => {
+            const currentLogs = Array.isArray(state.db.timetable_conflict_logs) ? state.db.timetable_conflict_logs : [];
+            const currentOverrides = Array.isArray(state.db.timetable_conflict_overrides) ? state.db.timetable_conflict_overrides : [];
+            const errors = [];
+
+            const conflictRes = results[0];
+            const hasConflictRows = conflictRes.status === 'fulfilled' && (
+                Array.isArray(conflictRes.value?.conflicts) ||
+                Array.isArray(conflictRes.value?.timetable_conflict_logs)
+            );
+            if (hasConflictRows && !conflictRes.value?.error && conflictRes.value?.success !== false) {
+                state.db.timetable_conflict_logs = readApiArray(conflictRes.value, ['conflicts', 'timetable_conflict_logs']);
+            } else {
+                errors.push('timetable_conflict_logs');
+                state.db.timetable_conflict_logs = currentLogs;
+            }
+
+            const overrideRes = results[1];
+            const hasOverrideRows = overrideRes.status === 'fulfilled' && (
+                Array.isArray(overrideRes.value?.overrides) ||
+                Array.isArray(overrideRes.value?.timetable_conflict_overrides)
+            );
+            if (hasOverrideRows && !overrideRes.value?.error && overrideRes.value?.success !== false) {
+                state.db.timetable_conflict_overrides = readApiArray(overrideRes.value, ['overrides', 'timetable_conflict_overrides']);
+            } else {
+                errors.push('timetable_conflict_overrides');
+                state.db.timetable_conflict_overrides = currentOverrides;
+            }
+
+            store.loading = false;
+            store.loadedAt = Date.now();
+            store.error = errors.join(',');
+
+            return {
+                timetable_conflict_logs: state.db.timetable_conflict_logs,
+                timetable_conflict_overrides: state.db.timetable_conflict_overrides
+            };
+        })
+        .catch(err => {
+            state.db.timetable_conflict_logs = Array.isArray(state.db.timetable_conflict_logs) ? state.db.timetable_conflict_logs : [];
+            state.db.timetable_conflict_overrides = Array.isArray(state.db.timetable_conflict_overrides) ? state.db.timetable_conflict_overrides : [];
+            store.loading = false;
+            store.loadedAt = store.loadedAt || 0;
+            store.error = String(err?.message || err || 'timetable conflict foundation load failed');
+            return {
+                timetable_conflict_logs: state.db.timetable_conflict_logs,
+                timetable_conflict_overrides: state.db.timetable_conflict_overrides
+            };
+        })
+        .finally(() => {
+            store.inFlight = null;
+        });
+
+    store.inFlight = promise;
     return promise;
 }
 
@@ -643,7 +730,9 @@ async function loadData(isInitial = false) {
         parent_contacts: Array.isArray(data.parent_contacts) ? data.parent_contacts : [],
         message_logs: Array.isArray(data.message_logs) ? data.message_logs : [],
         student_status_history: Array.isArray(data.student_status_history) ? data.student_status_history : [],
-        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : []
+        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : [],
+        timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : [],
+        timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : []
     };
     
     if (state.ui.currentClassId) {
@@ -688,7 +777,9 @@ async function refreshDataOnly() {
         parent_contacts: Array.isArray(data.parent_contacts) ? data.parent_contacts : (state.db.parent_contacts || []),
         message_logs: Array.isArray(data.message_logs) ? data.message_logs : (state.db.message_logs || []),
         student_status_history: Array.isArray(data.student_status_history) ? data.student_status_history : (state.db.student_status_history || []),
-        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : (state.db.class_transfer_history || [])
+        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : (state.db.class_transfer_history || []),
+        timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : (state.db.timetable_conflict_logs || []),
+        timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : (state.db.timetable_conflict_overrides || [])
     };
 }
 
