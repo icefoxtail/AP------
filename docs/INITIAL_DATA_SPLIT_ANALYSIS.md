@@ -166,6 +166,16 @@
 
 다음 작업 지시는 “`/api/initial-data`를 줄여라”가 아니라 “1차 분리 후보에 대한 read-only API와 lazy loader를 추가하되 initial-data 응답은 유지하라”로 두는 것이 안전하다.
 
+## 13-1. 학생 상세 lazy loader 1차 구현
+
+- `routes/students.js`에 `GET /api/students/:id/detail-data` read-only API를 추가했다.
+- 1차 응답 범위는 `parent_contacts`, `student_status_history`, `class_transfer_history` 세 배열만 포함한다.
+- `message_logs`는 1차 응답과 1차 lazy cache에서 제외한다.
+- `student.js`는 `state.ui.studentDetailLazyData` 화면 캐시를 사용하고, `state.db` 전체에는 병합하지 않는다.
+- 이번 단계에서는 `/api/initial-data`에서 `parent_contacts`, `student_status_history`, `class_transfer_history` key를 제거하지 않는다.
+- 기존 학생 상세 화면 흐름은 유지하고, 새 큰 섹션이나 새 기본 노출 UI는 추가하지 않는다.
+- 이 패턴은 이후 `message_logs` 또는 다른 학생 상세 부가 데이터 lazy loader의 표준 기반으로 재사용한다.
+
 ## 14. 수납·출납 foundation 1차 분리 준비 평가
 
 이번 평가는 `/api/initial-data`에서 수납·출납 foundation key를 실제로 제거하지 않고, 다음 작업에서 제거 판단이 가능한 준비 상태만 확인했다. `/api/initial-data` 응답 구조와 SQL query는 유지되어야 하며, `apmath/worker-backup/worker/index.js`의 initial-data 반환부는 이번 단계에서 수정하지 않는다.

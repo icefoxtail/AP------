@@ -41,6 +41,54 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     return jsonResponse({ success: true, students: res.results || [] });
   }
 
+  if (method === 'GET' && id && path[3] === 'detail-data') {
+    const studentId = String(id || '').trim();
+    if (!studentId) return jsonResponse({ success: false, error: 'student_id required' }, 400);
+
+    const student = await env.DB.prepare(`
+      SELECT id
+      FROM students
+      WHERE id = ?
+      LIMIT 1
+    `).bind(studentId).first();
+    if (!student) return jsonResponse({ success: false, error: 'Not found' }, 404);
+    if (!(await canAccessStudent(teacher, studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+
+    const [parentContactsRes, statusHistoryRes, transferHistoryRes] = await Promise.all([
+      env.DB.prepare(`
+        SELECT *
+        FROM parent_contacts
+        WHERE student_id = ?
+        ORDER BY is_primary DESC, created_at DESC, id DESC
+      `).bind(studentId).all(),
+      env.DB.prepare(`
+        SELECT *
+        FROM student_status_history
+        WHERE student_id = ?
+        ORDER BY changed_at DESC, id DESC
+      `).bind(studentId).all(),
+      env.DB.prepare(`
+        SELECT
+          cth.*,
+          from_cls.name AS from_class_name,
+          to_cls.name AS to_class_name
+        FROM class_transfer_history cth
+        LEFT JOIN classes from_cls ON from_cls.id = cth.from_class_id
+        LEFT JOIN classes to_cls ON to_cls.id = cth.to_class_id
+        WHERE cth.student_id = ?
+        ORDER BY cth.changed_at DESC, cth.id DESC
+      `).bind(studentId).all()
+    ]);
+
+    return jsonResponse({
+      success: true,
+      student_id: studentId,
+      parent_contacts: parentContactsRes.results || [],
+      student_status_history: statusHistoryRes.results || [],
+      class_transfer_history: transferHistoryRes.results || []
+    });
+  }
+
   if (method === 'POST' && id === 'batch-pins') {
     const { class_id } = body;
     if (!class_id && !isAdminUser(teacher)) return jsonResponse({ error: 'Class ID required' }, 403);

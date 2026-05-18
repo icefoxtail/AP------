@@ -402,6 +402,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `/api/auth/change-password` | `routes/auth.js` | 분리 완료 | change-password |
 | `/api/initial-data` | `index.js` | 유지 | GET initial-data |
 | `/api/students` | `routes/students.js` | 분리 완료 | GET students |
+| `/api/students/:id/detail-data` | `routes/students.js` | 분리 완료 | detail-data |
 | `/api/classes`, `/api/class-students` | `routes/classes.js` | 분리 완료 | GET classes |
 | `/api/teachers`, `/api/teacher-classes` | `routes/teachers.js` | 분리 완료 | GET teachers |
 | `/api/attendance*`, `/api/homework*` | `routes/attendance-homework.js` | 분리 완료 | attendance-history |
@@ -469,6 +470,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 |---|---|---|---|---|---|
 | 운영센터 초기 로딩 | `apmath/js/core.js`, 운영센터 HTML | `GET /api/initial-data` | `index.js` | 대부분의 운영 테이블 | 응답 구조 변경 금지 |
 | 학생 관리 | `dashboard.js`, `student.js`, `management.js` | `/api/students/*` | `routes/students.js` | `students`, `class_students` | PIN/개인정보 주의 |
+| 학생 상세 lazy data | `student.js` | `/api/students/:id/detail-data` | `routes/students.js` | `parent_contacts`, `student_status_history`, `class_transfer_history` | read-only, `message_logs` 1차 제외, `state.ui.studentDetailLazyData` 캐시 사용 |
 | 반 관리 | `management.js`, `dashboard.js` | `/api/classes/*` | `routes/classes.js` | `classes`, `class_students` | 기존 반명/화면명 보존 |
 | 출결/숙제 체크 | `classroom.js`, `dashboard.js`, `cumulative.js` | attendance/homework 계열 | `routes/attendance-homework.js` | `attendance`, `homework` | “숙제” 용어 유지 |
 | 시험/OMR/오답 | `qr-omr.js`, `classroom.js`, `student.js` | exam/check-omr 계열 | `routes/exams.js`, `routes/check-omr.js` | `exam_sessions`, `wrong_answers`, `questions` | 제출 완료 재수정 금지 |
