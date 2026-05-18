@@ -321,6 +321,7 @@
     let student = null;
     let submission = null;
     let isSubmitting = false;
+    let selectedFiles = [];
 
     function $(id) { return document.getElementById(id); }
     function escapeHtml(value) {
@@ -332,6 +333,24 @@
       el.classList.add('show');
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
+    }
+    function getStudentErrorMessage(error) {
+      const raw = String(error?.message || error || '').trim();
+      if (!raw) return '요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+      if (raw === 'r2_not_configured') return '사진 저장 준비가 아직 완료되지 않았습니다. 선생님께 말씀해주세요.';
+      if (raw === 'PIN mismatch') return 'PIN이 일치하지 않습니다.';
+      if (raw === 'Not found') return '숙제 정보를 찾을 수 없습니다.';
+      if (raw === 'already_submitted') return '이미 제출이 완료되었습니다.';
+      if (raw === 'assignment_closed') return '마감된 숙제입니다.';
+      if (raw === 'assignment_deleted') return '삭제된 숙제입니다.';
+      if (raw === 'files_required') return '사진 파일을 선택해 주세요.';
+      if (raw === 'too_many_files') return '사진은 최대 3장까지 업로드할 수 있습니다.';
+      if (raw === 'invalid_file_type') return '이미지 파일만 업로드할 수 있습니다.';
+      if (raw === 'invalid_file_size') return '비어 있는 파일은 업로드할 수 없습니다.';
+      if (raw === 'file_too_large') return '파일당 최대 6MB까지 업로드할 수 있습니다.';
+      if (raw === 'total_size_exceeded') return '전체 파일 용량은 최대 18MB까지 업로드할 수 있습니다.';
+      if (raw === 'upload_failed') return '사진 업로드 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+      return raw;
     }
     function authKey() { return `homework_photo_pin_${assignmentId}_${studentId}`; }
     async function apiGet(path) {
@@ -348,6 +367,12 @@
       });
       const data = await r.json().catch(() => ({}));
       if (!r.ok || data.success === false) throw new Error(data.error || data.message || '요청 실패');
+      return data;
+    }
+    async function apiUpload(path, formData) {
+      const r = await fetch(`${API_BASE}/${path}`, { method:'POST', body: formData });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) throw new Error(data.message || data.error || '업로드 실패');
       return data;
     }
     function renderHero() {
@@ -368,8 +393,8 @@
             </div>
           </div>
           <div class="hero-kicker">AP수학 과제 확인</div>
-          <h1 class="hero-title">오늘 과제를<br>완료했는지 제출해 주세요.</h1>
-          <p class="hero-desc">PIN으로 본인 확인 후 제출하면 선생님 클래스룸에 숙제 완료 상태가 기록됩니다.</p>
+          <h1 class="hero-title">숙제 사진을<br>제출해 주세요.</h1>
+          <p class="hero-desc">PIN으로 본인 확인 후 사진을 올리면 선생님 클래스룸에서 바로 확인할 수 있어요.</p>
         </section>
       `;
     }
@@ -405,7 +430,7 @@
         ${renderAssignmentCard()}
         <section class="card">
           <div class="stack">
-            <div class="notice"><strong>본인 확인</strong><br>학생 개인 PIN을 입력해 주세요.</div>
+            <div class="notice"><strong>숙제 사진 제출</strong><br>PIN 번호를 입력하면 숙제 사진을 제출할 수 있어요.</div>
             <input id="pin-input" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')verifyPin(false)">
             <button class="btn btn-primary" onclick="verifyPin(false)">확인</button>
           </div>
@@ -413,22 +438,59 @@
       `;
       setTimeout(() => $('pin-input')?.focus(), 80);
     }
+    function formatBytes(size) {
+      const value = Number(size || 0);
+      if (!Number.isFinite(value) || value <= 0) return '0B';
+      if (value < 1024) return `${value}B`;
+      if (value < 1024 * 1024) return `${(value / 1024).toFixed(1)}KB`;
+      return `${(value / (1024 * 1024)).toFixed(2)}MB`;
+    }
+    function renderSelectedFiles() {
+      if (!selectedFiles.length) return `<div class="notice">사진은 최대 3장까지 올릴 수 있어요.</div>`;
+      return `
+        <div class="stack">
+          ${selectedFiles.map((file, index) => `
+            <div class="notice" style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+              <div style="min-width:0;">
+                <div style="font-size:13px; font-weight:700; color:var(--text); overflow-wrap:anywhere;">${escapeHtml(file.name || `사진 ${index + 1}`)}</div>
+                <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px;">${escapeHtml(file.type || 'image')} · ${formatBytes(file.size)}</div>
+              </div>
+              <button class="btn" style="width:auto; min-height:36px; padding:0 12px; font-size:12px; border-color:rgba(232,65,79,0.16); color:var(--error); background:rgba(232,65,79,0.08);" onclick="removeSelectedFile(${index})">삭제</button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+    function renderUploadGuide() {
+      return `
+        <div class="notice">
+          <strong>제출 전 확인</strong><br>
+          사진은 최대 3장까지 올릴 수 있어요.<br>
+          이미지 파일만 제출할 수 있고, 파일당 최대 6MB까지 가능합니다.
+        </div>
+      `;
+    }
     function renderSubmit() {
       $('student-chip').textContent = student?.name || '';
       if (Number(submission?.is_submitted || 0) === 1) {
         renderDone(submission?.submitted_at);
         return;
       }
+      const isClosed = String(assignment?.status || '').trim() === 'closed';
       $('app').innerHTML = `
         ${renderHero()}
         ${renderAssignmentCard()}
         <section class="card">
           <div class="stack">
-            <div class="notice"><strong>제출 전 확인</strong><br>숙제를 완료했다면 아래 버튼을 눌러 제출 상태를 선생님께 보내 주세요. 실제 과제 확인은 수업 시간에 진행됩니다.</div>
-            <button id="submit-btn" class="btn btn-primary" onclick="submitHomework()">과제 완료로 제출</button>
+            ${isClosed ? `<div class="notice"><strong>마감 안내</strong><br>마감된 숙제입니다.</div>` : renderUploadGuide()}
+            ${isClosed ? '' : `
+              <input id="photo-input" class="input" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple onchange="handleFileChange(event)">
+              <div id="file-list">${renderSelectedFiles()}</div>
+              <button id="submit-btn" class="btn btn-primary" onclick="submitHomeworkPhotos()">제출하기</button>
+            `}
           </div>
         </section>
-        <div class="footer-note">사진 제출 기능은 다음 단계에서 추가됩니다.</div>
+        <div class="footer-note">제출 완료 후에는 선생님이 다시 제출 요청을 열어준 경우에만 다시 제출할 수 있어요.</div>
       `;
     }
     function renderDone(submittedAt) {
@@ -440,38 +502,79 @@
           <div class="done-mark">✓</div>
           <h1 class="title">제출 완료</h1>
           <div class="meta">${escapeHtml(submittedAt || '방금 제출됨')}</div>
-          <div class="status-box">선생님 클래스룸에 과제 완료 상태가 기록되었습니다. 수업 시간에 실제 과제를 확인받아 주세요.</div>
-          <div class="stack" style="margin-top:14px;">
-            <button id="cancel-submit-btn" class="btn" style="color:var(--error); background:rgba(232,65,79,0.08); border-color:rgba(232,65,79,0.16);" onclick="cancelHomeworkSubmission()">제출취소</button>
-          </div>
+          <div class="status-box">선생님이 숙제 사진을 확인할 수 있어요.</div>
         </section>
       `;
     }
-    async function cancelHomeworkSubmission() {
-      if (isSubmitting) return;
-      if (!assignmentId || !studentId) return toast('과제 정보를 찾을 수 없습니다.');
-      if (!pin) return toast('PIN 확인 후 취소할 수 있습니다.');
-      if (!confirm('제출을 취소하고 미제출 상태로 되돌릴까요?')) return;
-      isSubmitting = true;
-      const btn = $('cancel-submit-btn');
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = '취소 중...';
+    function updateFileList() {
+      const list = $('file-list');
+      if (list) list.innerHTML = renderSelectedFiles();
+    }
+    function removeSelectedFile(index) {
+      selectedFiles = selectedFiles.filter((_, i) => i !== index);
+      updateFileList();
+    }
+    async function compressImageFile(file) {
+      const fileType = String(file.type || '').toLowerCase();
+      if (!fileType.startsWith('image/') || fileType === 'image/gif' || fileType === 'image/heic' || fileType === 'image/heif') {
+        return file;
       }
       try {
-        await apiPost('homework-photo/cancel', { assignment_id: assignmentId, student_id: studentId, pin });
-        submission = { ...(submission || {}), is_submitted: 0, submitted_at: null };
-        toast('제출이 취소되었습니다.');
-        renderSubmit();
+        const bitmap = await createImageBitmap(file);
+        const maxSide = 1600;
+        const ratio = Math.min(1, maxSide / Math.max(bitmap.width, bitmap.height));
+        const width = Math.max(1, Math.round(bitmap.width * ratio));
+        const height = Math.max(1, Math.round(bitmap.height * ratio));
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return file;
+        ctx.drawImage(bitmap, 0, 0, width, height);
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.82));
+        bitmap.close?.();
+        if (!blob) return file;
+        const nextName = String(file.name || 'photo').replace(/\.[a-z0-9]+$/i, '') + '.jpg';
+        return new File([blob], nextName, { type: 'image/jpeg' });
       } catch (e) {
-        toast(e.message || '제출취소 실패');
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = '제출취소';
-        }
-      } finally {
-        isSubmitting = false;
+        return file;
       }
+    }
+    async function handleFileChange(event) {
+      const files = Array.from(event?.target?.files || []);
+      if (!files.length) {
+        selectedFiles = [];
+        updateFileList();
+        return;
+      }
+      if (files.length > 3) {
+        toast('사진은 최대 3장까지 올릴 수 있어요.');
+        event.target.value = '';
+        return;
+      }
+      const normalized = [];
+      for (const file of files) {
+        if (!String(file.type || '').toLowerCase().startsWith('image/')) {
+          toast('이미지 파일만 제출할 수 있어요.');
+          event.target.value = '';
+          return;
+        }
+        const compressed = await compressImageFile(file);
+        if (Number(compressed.size || 0) > 6 * 1024 * 1024) {
+          toast('파일당 최대 6MB까지 업로드할 수 있어요.');
+          event.target.value = '';
+          return;
+        }
+        normalized.push(compressed);
+      }
+      const totalSize = normalized.reduce((sum, file) => sum + Number(file.size || 0), 0);
+      if (totalSize > 18 * 1024 * 1024) {
+        toast('전체 파일 용량은 최대 18MB까지 가능해요.');
+        event.target.value = '';
+        return;
+      }
+      selectedFiles = normalized;
+      updateFileList();
     }
     async function loadAssignment() {
       if (!assignmentId || !studentId) {
@@ -510,12 +613,13 @@
         renderSubmit();
       } catch (e) {
         localStorage.removeItem(authKey());
-        if (!fromStorage) toast(e.message || 'PIN이 일치하지 않습니다.');
+        if (!fromStorage) toast(getStudentErrorMessage(e));
         else throw e;
       }
     }
-    async function submitHomework() {
+    async function submitHomeworkPhotos() {
       if (isSubmitting) return;
+      if (!selectedFiles.length) return toast('사진을 1장 이상 선택해 주세요.');
       isSubmitting = true;
       const btn = $('submit-btn');
       if (btn) {
@@ -523,15 +627,21 @@
         btn.textContent = '제출 중...';
       }
       try {
-        const data = await apiPost('homework-photo/submit', { assignment_id: assignmentId, student_id: studentId, pin });
+        const formData = new FormData();
+        formData.set('assignment_id', assignmentId);
+        formData.set('student_id', studentId);
+        formData.set('pin', pin);
+        selectedFiles.forEach(file => formData.append('files', file, file.name));
+        const data = await apiUpload('homework-photo/upload', formData);
         submission = { ...(submission || {}), is_submitted: 1, submitted_at: data.submitted_at || '방금 제출됨' };
+        selectedFiles = [];
         toast('제출되었습니다.');
         renderDone(submission.submitted_at);
       } catch (e) {
-        toast(e.message || '제출 실패');
+        toast(getStudentErrorMessage(e));
         if (btn) {
           btn.disabled = false;
-          btn.textContent = '과제 완료로 제출';
+          btn.textContent = '제출하기';
         }
       } finally {
         isSubmitting = false;

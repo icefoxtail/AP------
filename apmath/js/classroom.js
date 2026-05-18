@@ -2051,12 +2051,101 @@ function injectClassPlannerReviewStyles() {
         .class-planner-review .cls-planner-cell-item.done {
             opacity: 0.68;
         }
+        .modal-overlay:has(.class-planner-review) .modal-content,
+        #modal-overlay:has(.class-planner-review) .modal-content,
+        .ap-modal-overlay:has(.class-planner-review) .modal-content,
+        .modal:has(.class-planner-review) .modal-content {
+            width: min(1560px, 98vw) !important;
+            max-width: min(1560px, 98vw) !important;
+        }
+        .modal-overlay:has(.class-planner-review) #modal-body,
+        #modal-overlay:has(.class-planner-review) #modal-body,
+        .modal:has(.class-planner-review) #modal-body {
+            max-height: min(78vh, 860px) !important;
+            overflow: auto !important;
+        }
+        .class-planner-review .cls-planner-month-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+        }
+        .class-planner-review .cls-planner-month-table {
+            width: max-content;
+            min-width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .class-planner-review .cls-planner-month-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid rgba(15,23,42,0.05);
+            background: var(--surface-2);
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--secondary);
+            text-align: left;
+            vertical-align: bottom;
+            min-width: 126px;
+        }
+        .class-planner-review .cls-planner-month-table tbody td {
+            padding: 10px 8px;
+            min-width: 126px;
+            max-width: 190px;
+            border-bottom: 1px solid rgba(15,23,42,0.06);
+            border-right: 1px solid rgba(15,23,42,0.05);
+            vertical-align: top;
+        }
+        .class-planner-review .cls-planner-month-table thead th:first-child,
+        .class-planner-review .cls-planner-month-table tbody td:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 3;
+            min-width: 100px;
+            max-width: 120px;
+            background: var(--surface);
+            border-right: 2px solid var(--border);
+        }
+        .class-planner-review .cls-planner-month-table thead th:first-child {
+            z-index: 4;
+            background: var(--surface-2);
+        }
+        .class-planner-review .cls-planner-month-head-day,
+        .class-planner-review .cls-planner-month-head-date {
+            display: block;
+        }
+        .class-planner-review .cls-planner-month-head-day {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        .class-planner-review .cls-planner-month-head-date {
+            margin-top: 2px;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text);
+        }
         .class-planner-review #planner-control-body {
             min-height: 180px;
+        }
+        @media (min-width: 701px) {
+            .class-planner-review .cls-planner-mode-tabs {
+                display: flex !important;
+            }
+            .class-planner-review .cls-planner-week-wrap {
+                display: block !important;
+            }
         }
         @media (max-width: 700px) {
             .class-planner-review {
                 gap: 12px;
+            }
+            .class-planner-review .cls-planner-mode-tabs {
+                display: none !important;
             }
             .class-planner-review .cls-planner-hero {
                 padding: 16px;
@@ -2068,8 +2157,7 @@ function injectClassPlannerReviewStyles() {
             .class-planner-review .cls-planner-mode-tabs .cls-planner-btn {
                 flex: 1 1 calc(50% - 4px);
             }
-            .class-planner-review .cls-planner-nav,
-            .class-planner-review .cls-planner-mode-tabs {
+            .class-planner-review .cls-planner-nav {
                 display: grid;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -2107,9 +2195,12 @@ function ensureClassPlannerState() {
     if (!state.ui) state.ui = {};
     const today = getClassPlannerToday();
     if (!state.ui.classPlannerMode) state.ui.classPlannerMode = 'day';
+    if (typeof window !== 'undefined' && window.innerWidth <= 700) state.ui.classPlannerMode = 'day';
     if (!state.ui.classPlannerSelectedDate) state.ui.classPlannerSelectedDate = today;
     if (!state.ui.classPlannerWeekStart) state.ui.classPlannerWeekStart = getClassPlannerWeekStart(state.ui.classPlannerSelectedDate);
     if (!state.ui.classPlannerWeekCache || typeof state.ui.classPlannerWeekCache !== 'object') state.ui.classPlannerWeekCache = {};
+    if (!state.ui.classPlannerMonthCache || typeof state.ui.classPlannerMonthCache !== 'object') state.ui.classPlannerMonthCache = {};
+    if (window.innerWidth <= 700) state.ui.classPlannerMode = 'day';
     const dates = getClassPlannerWeekDates(state.ui.classPlannerWeekStart);
     if (!dates.includes(state.ui.classPlannerSelectedDate)) {
         state.ui.classPlannerSelectedDate = dates.includes(today) ? today : dates[0];
@@ -2163,6 +2254,94 @@ async function loadClassPlannerWeek(classId, weekStart, force = false) {
     const weekData = { classId, weekStart, dates, students: studentWeeks };
     state.ui.classPlannerWeekCache[cacheKey] = weekData;
     return weekData;
+}
+
+function getClassPlannerMonthStart(dateStr) {
+    const safe = normalizeClassroomDate(dateStr) || getClassPlannerToday();
+    return `${safe.slice(0, 7)}-01`;
+}
+
+function getClassPlannerMonthDates(monthStart) {
+    const start = parseClassPlannerDate(monthStart) || parseClassPlannerDate(getClassPlannerMonthStart(getClassPlannerToday()));
+    const year = start.getFullYear();
+    const month = start.getMonth();
+    const last = new Date(year, month + 1, 0).getDate();
+    return Array.from({ length: last }, (_, idx) => new Date(year, month, idx + 1).toLocaleDateString('sv-SE'));
+}
+
+function buildClassPlannerMonthCacheKey(classId, monthStart) {
+    return `${String(classId || '')}::${String(monthStart || '')}`;
+}
+
+async function loadClassPlannerMonth(classId, monthStart, force = false) {
+    ensureClassPlannerState();
+    const safeMonthStart = getClassPlannerMonthStart(monthStart);
+    const cacheKey = buildClassPlannerMonthCacheKey(classId, safeMonthStart);
+    if (!force && state.ui.classPlannerMonthCache[cacheKey]) return state.ui.classPlannerMonthCache[cacheKey];
+
+    const students = getClassroomActiveStudents(classId);
+    const dates = getClassPlannerMonthDates(safeMonthStart);
+    const from = dates[0];
+    const to = dates[dates.length - 1];
+
+    const studentMonths = await Promise.all(students.map(async student => {
+        const byDate = {};
+        dates.forEach(date => { byDate[date] = []; });
+        try {
+            const data = await loadClassPlannerStudentRange(student.id, from, to);
+            const plans = Array.isArray(data?.plans) ? data.plans : [];
+            plans.forEach(plan => {
+                const date = getClassPlannerPlanDate(plan);
+                if (!byDate[date]) return;
+                byDate[date].push(plan);
+            });
+        } catch (e) {
+            console.error('[loadClassPlannerMonth] student load failed:', student.id, e);
+        }
+        dates.forEach(date => {
+            byDate[date].sort((a, b) => {
+                const at = String(a.sort_order ?? a.created_at ?? a.id ?? '');
+                const bt = String(b.sort_order ?? b.created_at ?? b.id ?? '');
+                return at.localeCompare(bt);
+            });
+        });
+        return { student, plansByDate: byDate };
+    }));
+
+    const monthData = { classId, monthStart: safeMonthStart, dates, students: studentMonths };
+    state.ui.classPlannerMonthCache[cacheKey] = monthData;
+    return monthData;
+}
+
+function renderClassPlannerMonthTable(classId, monthStart, monthData) {
+    const dates = Array.isArray(monthData?.dates) ? monthData.dates : getClassPlannerMonthDates(monthStart);
+    const students = Array.isArray(monthData?.students) ? monthData.students : [];
+    if (!students.length) return `<div class="cls-planner-empty">조회 대상 학생이 없습니다.</div>`;
+    return `
+        <div class="cls-planner-month-wrap">
+            <table class="cls-planner-month-table">
+                <thead>
+                    <tr>
+                        <th>학생</th>
+                        ${dates.map(date => `
+                            <th>
+                                <span class="cls-planner-month-head-day">${apEscapeHtml(getClassPlannerDayName(date))}</span>
+                                <span class="cls-planner-month-head-date">${apEscapeHtml(String(date || '').slice(5))}</span>
+                            </th>
+                        `).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+                    ${students.map(row => `
+                        <tr>
+                            <td class="cls-planner-week-student">${apEscapeHtml(row.student?.name || '학생')}</td>
+                            ${dates.map(date => `<td>${renderClassPlannerWeekCell(row.plansByDate?.[date] || [])}</td>`).join('')}
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
 }
 
 function renderClassPlannerStudentPlanList(plans) {
@@ -2252,11 +2431,13 @@ function renderClassPlannerWeekTable(classId, weekStart, weekData) {
 }
 
 function renderClassPlannerModeTabs(classId) {
+    if (typeof window !== 'undefined' && window.innerWidth <= 700) return '';
     const mode = state.ui.classPlannerMode || 'day';
     return `
-        <div class="cls-planner-mode-tabs">
+        <div class="cls-planner-mode-tabs" data-class-planner-pc-mode-tabs="1">
             <button class="cls-planner-btn ${mode === 'day' ? 'active' : ''}" onclick="setClassPlannerMode('${classId}', 'day')">요일별</button>
             <button class="cls-planner-btn ${mode === 'week' ? 'active' : ''}" onclick="setClassPlannerMode('${classId}', 'week')">주간별</button>
+            <button class="cls-planner-btn ${mode === 'month' ? 'active' : ''}" onclick="setClassPlannerMode('${classId}', 'month')">월간별</button>
         </div>
     `;
 }
@@ -2274,12 +2455,45 @@ function renderClassPlannerDayTabs(classId, weekStart, selectedDate) {
     `;
 }
 
-function renderClassPlannerContent(classId, weekData) {
-    const mode = state.ui.classPlannerMode || 'day';
+function renderClassPlannerContent(classId, periodData) {
+    const mode = window.innerWidth <= 700 ? 'day' : (state.ui.classPlannerMode || 'day');
     const date = state.ui.classPlannerSelectedDate;
-    return mode === 'week'
-        ? renderClassPlannerWeekTable(classId, state.ui.classPlannerWeekStart, weekData)
-        : renderClassPlannerDayList(classId, date, weekData);
+    if (mode === 'month') return renderClassPlannerMonthTable(classId, getClassPlannerMonthStart(date), periodData);
+    if (mode === 'week') return renderClassPlannerWeekTable(classId, state.ui.classPlannerWeekStart, periodData);
+    return renderClassPlannerDayList(classId, date, periodData);
+}
+
+function renderClassPlannerPeriodNav(classId) {
+    const mode = window.innerWidth <= 700 ? 'day' : (state.ui.classPlannerMode || 'day');
+    if (mode === 'month') {
+        return `
+            <div class="cls-planner-nav">
+                <button class="cls-planner-btn" onclick="moveClassPlannerMonth('${classId}', -1)">지난 달</button>
+                <button class="cls-planner-btn" onclick="resetClassPlannerMonth('${classId}')">이번 달</button>
+                <button class="cls-planner-btn" onclick="moveClassPlannerMonth('${classId}', 1)">다음 달</button>
+            </div>
+        `;
+    }
+    return `
+        <div class="cls-planner-nav">
+            <button class="cls-planner-btn" onclick="moveClassPlannerWeek('${classId}', -1)">지난 주</button>
+            <button class="cls-planner-btn" onclick="resetClassPlannerWeek('${classId}')">이번 주</button>
+            <button class="cls-planner-btn" onclick="moveClassPlannerWeek('${classId}', 1)">다음 주</button>
+        </div>
+    `;
+}
+
+function expandClassPlannerModalForPc() {
+    const body = document.getElementById('modal-body');
+    if (!body) return;
+    const content = body.closest('.modal-content') || body.parentElement;
+    if (!content) return;
+    if (typeof window !== 'undefined' && window.innerWidth > 700) {
+        content.style.width = 'min(1560px, 98vw)';
+        content.style.maxWidth = 'min(1560px, 98vw)';
+        body.style.maxHeight = 'min(78vh, 860px)';
+        body.style.overflow = 'auto';
+    }
 }
 
 function renderPlannerRateBar(rate) {
@@ -2506,18 +2720,15 @@ async function renderPlannerControl(classId) {
                 </div>
                 <button class="cls-planner-btn" onclick="renderClass('${classId}'); closeModal(true);">반 화면</button>
             </div>
-            <div class="cls-planner-nav">
-                <button class="cls-planner-btn" onclick="moveClassPlannerWeek('${classId}', -1)">지난 주</button>
-                <button class="cls-planner-btn" onclick="resetClassPlannerWeek('${classId}')">이번 주</button>
-                <button class="cls-planner-btn" onclick="moveClassPlannerWeek('${classId}', 1)">다음 주</button>
-            </div>
+            ${renderClassPlannerPeriodNav(classId)}
             ${renderClassPlannerModeTabs(classId)}
-            ${renderClassPlannerDayTabs(classId, state.ui.classPlannerWeekStart, state.ui.classPlannerSelectedDate)}
+            ${(window.innerWidth <= 700 || state.ui.classPlannerMode !== 'month') ? renderClassPlannerDayTabs(classId, state.ui.classPlannerWeekStart, state.ui.classPlannerSelectedDate) : ''}
             <div id="planner-control-body">
                 <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>
             </div>
         </div>
     `);
+    expandClassPlannerModalForPc();
     await refreshPlannerControl(classId);
 }
 
@@ -2527,8 +2738,11 @@ async function refreshPlannerControl(classId) {
     if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>`;
 
     try {
-        const weekData = await loadClassPlannerWeek(classId, state.ui.classPlannerWeekStart, true);
-        if (body) body.innerHTML = renderClassPlannerContent(classId, weekData);
+        const mode = window.innerWidth <= 700 ? 'day' : (state.ui.classPlannerMode || 'day');
+        const periodData = mode === 'month'
+            ? await loadClassPlannerMonth(classId, getClassPlannerMonthStart(state.ui.classPlannerSelectedDate), true)
+            : await loadClassPlannerWeek(classId, state.ui.classPlannerWeekStart, true);
+        if (body) body.innerHTML = renderClassPlannerContent(classId, periodData);
     } catch (e) {
         console.error('[refreshPlannerControl] failed:', e);
         if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 조회 중 오류가 발생했습니다.</div>`;
@@ -2538,7 +2752,9 @@ async function refreshPlannerControl(classId) {
 
 window.setClassPlannerMode = async function(classId, mode) {
     ensureClassPlannerState();
-    state.ui.classPlannerMode = String(mode) === 'week' ? 'week' : 'day';
+    const safeMode = String(mode) === 'month' ? 'month' : String(mode) === 'week' ? 'week' : 'day';
+    state.ui.classPlannerMode = window.innerWidth <= 700 ? 'day' : safeMode;
+    state.ui.classPlannerWeekStart = getClassPlannerWeekStart(state.ui.classPlannerSelectedDate);
     await renderPlannerControl(classId);
 };
 
@@ -2559,6 +2775,23 @@ window.moveClassPlannerWeek = async function(classId, direction) {
 };
 
 window.resetClassPlannerWeek = async function(classId) {
+    ensureClassPlannerState();
+    const today = getClassPlannerToday();
+    state.ui.classPlannerSelectedDate = today;
+    state.ui.classPlannerWeekStart = getClassPlannerWeekStart(today);
+    await renderPlannerControl(classId);
+};
+
+window.moveClassPlannerMonth = async function(classId, direction) {
+    ensureClassPlannerState();
+    const base = parseClassPlannerDate(getClassPlannerMonthStart(state.ui.classPlannerSelectedDate)) || parseClassPlannerDate(getClassPlannerMonthStart(getClassPlannerToday()));
+    base.setMonth(base.getMonth() + Number(direction || 0));
+    state.ui.classPlannerSelectedDate = base.toLocaleDateString('sv-SE');
+    state.ui.classPlannerWeekStart = getClassPlannerWeekStart(state.ui.classPlannerSelectedDate);
+    await renderPlannerControl(classId);
+};
+
+window.resetClassPlannerMonth = async function(classId) {
     ensureClassPlannerState();
     const today = getClassPlannerToday();
     state.ui.classPlannerSelectedDate = today;
