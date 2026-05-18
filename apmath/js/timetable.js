@@ -682,12 +682,96 @@ function openTimetableTransferConfirmModal(ctx) {
     }
 }
 
-function confirmTimetableStudentTransfer() {
+function updateTimetableTransferClassRows(tableName, studentId, sourceClassId, targetClassId, serverRows) {
+    if (typeof state === 'undefined' || !state.db) return;
+    var sid = String(studentId || '');
+    var sourceCid = String(sourceClassId || '');
+    var targetCid = String(targetClassId || '');
+    var applyRows = function(dbObj) {
+        if (!dbObj) return;
+        var fallback = state.allDb && Array.isArray(state.allDb[tableName]) ? state.allDb[tableName] : [];
+        var existing = Array.isArray(dbObj[tableName]) && dbObj[tableName].length ? dbObj[tableName] : fallback;
+        var otherRows = existing.filter(function(row) {
+            if (String(row.student_id) !== sid) return true;
+            return String(row.class_id) !== sourceCid && String(row.class_id) !== targetCid;
+        });
+        var transferRows = Array.isArray(serverRows)
+            ? serverRows.filter(function(row) {
+                return String(row.student_id) === sid && (String(row.class_id) === targetCid || String(row.class_id) === sourceCid);
+            })
+            : [];
+
+        if (!transferRows.some(function(row) { return String(row.class_id) === targetCid; })) {
+            transferRows.push({ class_id: targetCid, student_id: sid });
+        }
+        transferRows = transferRows.filter(function(row) { return String(row.class_id) !== sourceCid; });
+        dbObj[tableName] = otherRows.concat(transferRows);
+    };
+
+    applyRows(state.db);
+    if (state.allDb) applyRows(state.allDb);
+}
+
+function updateTimetableTransferEnrollmentRows(studentId, serverRows) {
+    if (typeof state === 'undefined' || !state.db || !Array.isArray(serverRows)) return;
+    var sid = String(studentId || '');
+    var applyRows = function(dbObj) {
+        if (!dbObj) return;
+        var existing = Array.isArray(dbObj.student_enrollments) ? dbObj.student_enrollments : [];
+        dbObj.student_enrollments = existing
+            .filter(function(row) { return String(row.student_id || '') !== sid; })
+            .concat(serverRows);
+    };
+    applyRows(state.db);
+    if (state.allDb) applyRows(state.allDb);
+}
+
+async function confirmTimetableStudentTransfer() {
     if (!isTimetableAdminMode()) {
         if (typeof toast === 'function') toast('원장모드에서만 전반할 수 있습니다.', 'warn');
         return;
     }
-    if (typeof toast === 'function') toast('안전한 전반 저장 API가 없어 이번 1차 구현에서는 저장하지 않습니다.', 'warn');
+
+    var pending = (typeof state !== 'undefined' && state.ui) ? state.ui.pendingTimetableTransfer : null;
+    var studentId = pending ? String(pending.studentId || '').trim() : '';
+    var sourceClassId = pending ? String(pending.sourceClassId || '').trim() : '';
+    var targetClassId = pending ? String(pending.targetClassId || '').trim() : '';
+    if (!studentId || !sourceClassId || !targetClassId || sourceClassId === targetClassId) {
+        if (typeof toast === 'function') toast('전반 처리에 실패했습니다.', 'warn');
+        return;
+    }
+
+    var actionBtn = document.querySelector('#modal-body .btn-primary');
+    if (actionBtn && actionBtn.disabled) return;
+    if (actionBtn) actionBtn.disabled = true;
+    if (typeof toast === 'function') toast('전반 처리 중입니다.', 'info');
+
+    try {
+        var result = await api.post('enrollments/transfer', {
+            student_id: studentId,
+            source_class_id: sourceClassId,
+            target_class_id: targetClassId,
+            memo: '전체시간표 드래그 전반'
+        });
+
+        if (result && result.success) {
+            updateTimetableTransferClassRows('class_students', studentId, sourceClassId, targetClassId, result.class_students);
+            updateTimetableTransferClassRows('timetable_class_students', studentId, sourceClassId, targetClassId, result.class_students);
+            updateTimetableTransferEnrollmentRows(studentId, result.student_enrollments);
+            if (state && state.ui) state.ui.pendingTimetableTransfer = null;
+            if (typeof closeModal === 'function') closeModal(true);
+            if (typeof toast === 'function') toast('전반이 완료되었습니다.', 'info');
+            renderTimetable();
+            return;
+        }
+
+        if (typeof toast === 'function') toast('전반 처리에 실패했습니다.', 'warn');
+        if (actionBtn) actionBtn.disabled = false;
+    } catch (e) {
+        console.error('[confirmTimetableStudentTransfer] failed:', e);
+        if (typeof toast === 'function') toast('전반 처리에 실패했습니다.', 'warn');
+        if (actionBtn) actionBtn.disabled = false;
+    }
 }
 
 function getTimetableDateTitle() {
