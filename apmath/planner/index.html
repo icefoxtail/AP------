@@ -832,7 +832,7 @@
         }
 
         function renderViewTabs() {
-            const tabs = [['weekly', '주간 시간표'], ['monthly', '월간 출석부'], ['list', '리스트']];
+            const tabs = [['weekly', '주간플래너'], ['monthly', '월간플래너'], ['list', '리스트']];
             return `<div class="planner-view-tabs">${tabs.map(([key, label]) => `<button class="planner-view-tab ${plannerView === key ? 'active' : ''}" onclick="setPlannerView('${key}')">${label}</button>`).join('')}</div>`;
         }
 
