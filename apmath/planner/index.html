@@ -104,7 +104,6 @@
         .top-status button { border:0; background:transparent; padding:0; font:inherit; cursor:pointer; }
         #top-dday { color:var(--primary); }
         .top-rate { color:var(--secondary); }
-        .logout-mini { display: none; }
 
         .app {
             width: 100%;
@@ -290,10 +289,16 @@
         .feedback-title { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
         .feedback-text { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; white-space: pre-wrap; }
         .planner-coach-slot { margin-top: 14px; }
+        .planner-coach-side { display: none; }
+        .planner-coach-main { display: block; }
         .planner-coach-card { border: 1px solid rgba(26,92,255,0.14); background: rgba(26,92,255,0.05); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
         .planner-coach-title { font-size: 12px; font-weight: 800; color: var(--primary); line-height: 1.3; }
         .planner-coach-line { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.5; }
         .planner-coach-line.sub { color: var(--secondary); font-size: 11px; }
+        @media (min-width: 800px) {
+            .planner-coach-side { display: block; }
+            .planner-coach-main { display: none; }
+        }
 
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; visibility: hidden; transition: .2s ease; }
         .modal-overlay:not(.hidden) { opacity: 1; visibility: visible; }
@@ -364,9 +369,8 @@
             <span id="student-chip"></span>
         </div>
         <div class="top-status">
-            <button id="top-dday" onclick="openExamDateModal()" aria-label="시험 변경">D-</button>
+            <button id="top-dday" onclick="resetAuth()" aria-label="로그아웃">로그아웃</button>
             <span id="top-rate" class="top-rate">0%</span>
-            <button class="logout-mini" onclick="resetAuth()">로그아웃</button>
         </div>
     </div>
 
@@ -1088,7 +1092,7 @@
             const topDday = $('top-dday');
             const topRate = $('top-rate');
             const chip = $('student-chip');
-            if (topDday) topDday.textContent = dday !== null && dday >= 0 ? `D-${dday}` : '시험 변경';
+            if (topDday) topDday.textContent = '로그아웃';
             if (topRate) topRate.textContent = `${rate}%`;
             if (chip) chip.textContent = student?.name || '';
             
@@ -1110,12 +1114,12 @@
                         <button class="btn btn-primary" style="padding: 6px 12px;" onclick="openExamDateModal()">변경</button>
                     </div>
                     ${assistSummaryHtml}
-                    <div class="planner-coach-slot" data-planner-coach-slot>${coachHtml}</div>
+                    <div class="planner-coach-slot planner-coach-side" data-planner-coach-slot>${coachHtml}</div>
                 </div>
                 <div class="main-panel">
                     ${feedbackHtml}
                     <div class="mobile-assist-card">${assistSummaryHtml}</div>
-                    <div class="planner-coach-slot" data-planner-coach-slot>${coachHtml}</div>
+                    <div class="planner-coach-slot planner-coach-main" data-planner-coach-slot>${coachHtml}</div>
                     ${renderViewTabs()}
                     <div class="planner-view-body" id="planner-view-body">
                         ${renderActiveView(weekDates)}

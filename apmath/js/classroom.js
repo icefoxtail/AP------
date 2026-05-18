@@ -1782,6 +1782,311 @@ function formatClassPlannerDayLabel(dateStr) {
     return `${getClassPlannerDayName(dateStr)} ${String(dateStr || '').slice(5)}`;
 }
 
+function renderClassPlannerDayTabLabel(dateStr) {
+    return `
+        <span class="cls-planner-tab-day">${apEscapeHtml(getClassPlannerDayName(dateStr))}</span>
+        <span class="cls-planner-tab-date">${apEscapeHtml(String(dateStr || '').slice(5))}</span>
+    `;
+}
+
+function injectClassPlannerReviewStyles() {
+    if (document.getElementById('class-planner-review-style')) return;
+    const style = document.createElement('style');
+    style.id = 'class-planner-review-style';
+    style.textContent = `
+        .class-planner-review {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            color: var(--text);
+        }
+        .class-planner-review .cls-planner-hero,
+        .class-planner-review .cls-planner-nav,
+        .class-planner-review .cls-planner-mode-tabs,
+        .class-planner-review .cls-planner-day-tabs,
+        .class-planner-review .cls-planner-list,
+        .class-planner-review .cls-planner-week-wrap {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .class-planner-review .cls-planner-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background:
+                linear-gradient(180deg, rgba(26,92,255,0.08), rgba(26,92,255,0.02)),
+                var(--surface);
+        }
+        .class-planner-review .cls-planner-hero-title {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+        .class-planner-review .cls-planner-hero-sub {
+            margin-top: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .class-planner-review .cls-planner-nav,
+        .class-planner-review .cls-planner-mode-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .class-planner-review .cls-planner-day-tabs {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 2px;
+            scrollbar-width: thin;
+        }
+        .class-planner-review .cls-planner-btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-height: 38px;
+            padding: 9px 14px;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1.2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease, transform .16s ease;
+            box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
+        }
+        .class-planner-review .cls-planner-btn:hover {
+            border-color: rgba(26,92,255,0.24);
+            background: rgba(26,92,255,0.05);
+        }
+        .class-planner-review .cls-planner-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(26,92,255,0.18);
+        }
+        .class-planner-review .cls-planner-day-tabs .cls-planner-btn {
+            flex: 0 0 auto;
+            min-width: 72px;
+            min-height: 40px;
+            padding: 8px 12px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .class-planner-review .cls-planner-tab-day,
+        .class-planner-review .cls-planner-tab-date {
+            display: block;
+        }
+        .class-planner-review .cls-planner-tab-day {
+            font-size: 11px;
+            font-weight: 800;
+            opacity: 0.78;
+        }
+        .class-planner-review .cls-planner-tab-date {
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .class-planner-review .cls-planner-list {
+            display: grid;
+            gap: 10px;
+        }
+        .class-planner-review .cls-planner-date-title {
+            padding: 0 4px;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        .class-planner-review .cls-planner-student-card {
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--surface);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+        }
+        .class-planner-review .cls-planner-student-name {
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text);
+        }
+        .class-planner-review .cls-planner-plan-list,
+        .class-planner-review .cls-planner-cell-list {
+            display: grid;
+            gap: 8px;
+        }
+        .class-planner-review .cls-planner-plan-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: var(--surface-2);
+            border: 1px solid rgba(26,92,255,0.08);
+        }
+        .class-planner-review .cls-planner-plan-item.done {
+            opacity: 0.7;
+        }
+        .class-planner-review .cls-planner-plan-mark {
+            flex: 0 0 22px;
+            width: 22px;
+            height: 22px;
+            border-radius: 8px;
+            background: rgba(26,92,255,0.08);
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 900;
+        }
+        .class-planner-review .cls-planner-plan-item.done .cls-planner-plan-mark {
+            background: var(--primary);
+            color: #fff;
+        }
+        .class-planner-review .cls-planner-plan-main {
+            min-width: 0;
+            flex: 1;
+        }
+        .class-planner-review .cls-planner-plan-title {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.45;
+            word-break: break-word;
+        }
+        .class-planner-review .cls-planner-plan-meta {
+            margin-top: 4px;
+        }
+        .class-planner-review .cls-planner-subject {
+            display: inline-flex;
+            align-items: center;
+            min-height: 24px;
+            padding: 0 8px;
+            border-radius: 999px;
+            background: rgba(26,92,255,0.08);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+        }
+        .class-planner-review .cls-planner-empty,
+        .class-planner-review .cls-planner-cell-empty {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .class-planner-review .cls-planner-empty {
+            padding: 2px 0;
+        }
+        .class-planner-review .cls-planner-week-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+        }
+        .class-planner-review .cls-planner-week-table {
+            width: 100%;
+            min-width: 860px;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .class-planner-review .cls-planner-week-table thead th {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-2);
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--secondary);
+            text-align: left;
+            vertical-align: bottom;
+        }
+        .class-planner-review .cls-planner-week-table tbody td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(15,23,42,0.06);
+            vertical-align: top;
+        }
+        .class-planner-review .cls-planner-week-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .class-planner-review .cls-planner-week-student {
+            min-width: 92px;
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .class-planner-review .cls-planner-week-head-day,
+        .class-planner-review .cls-planner-week-head-date {
+            display: block;
+        }
+        .class-planner-review .cls-planner-week-head-day {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        .class-planner-review .cls-planner-week-head-date {
+            margin-top: 2px;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text);
+        }
+        .class-planner-review .cls-planner-cell-item {
+            padding: 8px 10px;
+            border-radius: 12px;
+            background: var(--surface-2);
+            border: 1px solid rgba(26,92,255,0.08);
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--text);
+            word-break: break-word;
+        }
+        .class-planner-review .cls-planner-cell-item.done {
+            opacity: 0.68;
+        }
+        .class-planner-review #planner-control-body {
+            min-height: 180px;
+        }
+        @media (max-width: 700px) {
+            .class-planner-review {
+                gap: 12px;
+            }
+            .class-planner-review .cls-planner-hero {
+                padding: 16px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .class-planner-review .cls-planner-hero .cls-planner-btn,
+            .class-planner-review .cls-planner-nav .cls-planner-btn,
+            .class-planner-review .cls-planner-mode-tabs .cls-planner-btn {
+                flex: 1 1 calc(50% - 4px);
+            }
+            .class-planner-review .cls-planner-nav,
+            .class-planner-review .cls-planner-mode-tabs {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .class-planner-review .cls-planner-nav .cls-planner-btn:first-child {
+                grid-column: span 2;
+            }
+            .class-planner-review .cls-planner-day-tabs .cls-planner-btn {
+                min-width: 68px;
+            }
+            .class-planner-review .cls-planner-week-wrap {
+                margin-right: -2px;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 function getClassPlannerPlanDate(plan) {
     return String(plan?.plan_date || plan?.date || plan?.feedback_date || '').slice(0, 10);
 }
@@ -1809,7 +2114,6 @@ function ensureClassPlannerState() {
     if (!dates.includes(state.ui.classPlannerSelectedDate)) {
         state.ui.classPlannerSelectedDate = dates.includes(today) ? today : dates[0];
     }
-    if (window.innerWidth <= 700) state.ui.classPlannerMode = 'day';
 }
 
 function buildClassPlannerWeekCacheKey(classId, weekStart) {
@@ -1926,7 +2230,12 @@ function renderClassPlannerWeekTable(classId, weekStart, weekData) {
                 <thead>
                     <tr>
                         <th>학생</th>
-                        ${dates.map(date => `<th>${apEscapeHtml(formatClassPlannerDayLabel(date))}</th>`).join('')}
+                        ${dates.map(date => `
+                            <th>
+                                <span class="cls-planner-week-head-day">${apEscapeHtml(getClassPlannerDayName(date))}</span>
+                                <span class="cls-planner-week-head-date">${apEscapeHtml(String(date || '').slice(5))}</span>
+                            </th>
+                        `).join('')}
                     </tr>
                 </thead>
                 <tbody>
@@ -1943,7 +2252,6 @@ function renderClassPlannerWeekTable(classId, weekStart, weekData) {
 }
 
 function renderClassPlannerModeTabs(classId) {
-    if (window.innerWidth <= 700) return '';
     const mode = state.ui.classPlannerMode || 'day';
     return `
         <div class="cls-planner-mode-tabs">
@@ -1957,13 +2265,17 @@ function renderClassPlannerDayTabs(classId, weekStart, selectedDate) {
     const dates = getClassPlannerWeekDates(weekStart);
     return `
         <div class="cls-planner-day-tabs">
-            ${dates.map(date => `<button class="cls-planner-btn ${String(selectedDate) === String(date) ? 'active' : ''}" onclick="setClassPlannerSelectedDate('${classId}', '${date}')">${apEscapeHtml(formatClassPlannerDayLabel(date))}</button>`).join('')}
+            ${dates.map(date => `
+                <button class="cls-planner-btn ${String(selectedDate) === String(date) ? 'active' : ''}" onclick="setClassPlannerSelectedDate('${classId}', '${date}')">
+                    ${renderClassPlannerDayTabLabel(date)}
+                </button>
+            `).join('')}
         </div>
     `;
 }
 
 function renderClassPlannerContent(classId, weekData) {
-    const mode = window.innerWidth <= 700 ? 'day' : (state.ui.classPlannerMode || 'day');
+    const mode = state.ui.classPlannerMode || 'day';
     const date = state.ui.classPlannerSelectedDate;
     return mode === 'week'
         ? renderClassPlannerWeekTable(classId, state.ui.classPlannerWeekStart, weekData)
@@ -2174,6 +2486,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
 
 async function renderPlannerControl(classId) {
     ensureClassPlannerState();
+    injectClassPlannerReviewStyles();
     if (!state.ui) state.ui = {};
     state.ui.plannerControlClassId = String(classId || '');
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
@@ -2183,10 +2496,9 @@ async function renderPlannerControl(classId) {
     const today = getClassPlannerToday();
     if (!state.ui.classPlannerSelectedDate) state.ui.classPlannerSelectedDate = today;
     state.ui.classPlannerWeekStart = getClassPlannerWeekStart(state.ui.classPlannerSelectedDate);
-    if (window.innerWidth <= 700) state.ui.classPlannerMode = 'day';
 
     showModal('플래너 확인', `
-        <div class="cls-planner-wrap">
+        <div class="class-planner-review cls-planner-wrap">
             <div class="cls-planner-hero">
                 <div style="min-width:0;">
                     <div class="cls-planner-hero-title">${apEscapeHtml(cls.name)}</div>
