@@ -673,6 +673,84 @@ async function copyHomeworkPhotoText(text, successMessage = '복사되었습니�
     }
 }
 
+function formatHomeworkPhotoFileSize(value) {
+    const size = Number(value || 0);
+    if (!Number.isFinite(size) || size <= 0) return '-';
+    if (size < 1024) return `${size}B`;
+    if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)}KB`;
+    return `${(size / (1024 * 1024)).toFixed(1)}MB`;
+}
+
+function isHomeworkPhotoImage(file = {}) {
+    const kind = String(file.kind || '').trim().toLowerCase();
+    if (kind === 'image') return true;
+    const fileType = String(file.file_type || '').trim().toLowerCase();
+    if (fileType.startsWith('image/')) return true;
+    return /\.(png|jpe?g|gif|webp|bmp|svg|heic|heif)$/i.test(String(file.file_name || '').trim().toLowerCase());
+}
+
+async function openHomeworkPhotoSubmissionFilesModal(submissionId) {
+    if (!submissionId) return toast('제출 정보를 찾을 수 없습니다.', 'warn');
+    showModal('숙제 사진', `<div id="hw-photo-files" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    try {
+        const data = await api.get(`homework-photo/files?submission_id=${encodeURIComponent(submissionId)}`);
+        const root = document.getElementById('hw-photo-files');
+        if (!root) return;
+        if (!data?.success) {
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:800;">숙제 사진을 불러오지 못했습니다.</div>`;
+            return toast(data?.message || data?.error || '숙제 사진 조회 실패', 'warn');
+        }
+        const files = Array.isArray(data.files) ? data.files : [];
+        const submission = data.submission || {};
+        root.innerHTML = `
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="background:var(--surface-2); border-radius:14px; padding:12px; text-align:left;">
+                    <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(submission.student_name || '학생')}</div>
+                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(submission.title || '숙제')} · ${submission.submitted_at ? `제출 ${apEscapeHtml(submission.submitted_at)}` : '제출 시각 없음'}</div>
+                </div>
+                ${files.length ? files.map((file, index) => {
+                    const image = isHomeworkPhotoImage(file);
+                    const safeUrl = String(file.url || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    const safeTitle = String(file.file_name || `파일 ${index + 1}`).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    return `
+                        <div style="border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
+                            ${image ? `
+                                <button type="button" style="display:block; width:100%; padding:0; border:none; background:transparent; cursor:pointer;" onclick="openHomeworkPhotoImageViewer('${safeUrl}', '${safeTitle}')">
+                                    <img src="${apEscapeHtml(file.url || '')}" alt="${apEscapeHtml(file.file_name || `숙제 사진 ${index + 1}`)}" style="width:100%; max-height:240px; object-fit:contain; border-radius:12px; background:var(--surface-2); border:1px solid var(--border);">
+                                </button>
+                            ` : `
+                                <div style="display:flex; align-items:center; justify-content:center; min-height:120px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); color:var(--secondary); font-size:13px; font-weight:800;">이미지 미리보기를 지원하지 않는 파일</div>
+                            `}
+                            <div style="display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:10px;">
+                                <div style="min-width:0;">
+                                    <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(file.file_name || `파일 ${index + 1}`)}</div>
+                                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(file.file_type || '타입 미기록')} · ${apEscapeHtml(formatHomeworkPhotoFileSize(file.file_size))}</div>
+                                </div>
+                                <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); color:var(--primary); border:none;" onclick="window.open('${safeUrl}', '_blank', 'noopener')">열기</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('') : `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">등록된 사진 파일이 없습니다.</div>`}
+            </div>
+        `;
+    } catch (e) {
+        console.error('[openHomeworkPhotoSubmissionFilesModal] failed:', e);
+        toast('숙제 사진 조회 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function openHomeworkPhotoImageViewer(url, title = '') {
+    if (!url) return toast('이미지 주소를 찾을 수 없습니다.', 'warn');
+    showModal(title || '숙제 사진', `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="width:100%; min-height:240px; max-height:72vh; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
+                <img src="${apEscapeHtml(url)}" alt="${apEscapeHtml(title || '숙제 사진')}" style="max-width:100%; max-height:72vh; object-fit:contain; background:#fff;">
+            </div>
+            <button class="btn" style="min-height:42px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="window.open('${String(url).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}', '_blank', 'noopener')">새 창에서 열기</button>
+        </div>
+    `);
+}
+
 function openHomeworkPhotoAssignmentModal(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     const today = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
@@ -832,6 +910,8 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                     const done = Number(r.is_submitted || 0) === 1;
                     const studentUrl = buildHomeworkPhotoStudentUrl(assignmentId, r.student_id, r.url);
                     const safeUrl = String(studentUrl || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    const safeSubmissionId = String(r.submission_id || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    const canViewFiles = done && Number(r.file_count || 0) > 0 && String(r.submission_id || '').trim();
                     return `
                         <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
                             <div style="min-width:0;">
@@ -840,6 +920,7 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                             </div>
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <span style="font-size:13px; font-weight:900; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
+                                ${canViewFiles ? `<button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="openHomeworkPhotoSubmissionFilesModal('${safeSubmissionId}')">사진</button>` : ''}
                                 <button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
                             </div>
                         </div>
