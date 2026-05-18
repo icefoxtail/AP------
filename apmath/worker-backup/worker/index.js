@@ -375,43 +375,30 @@ async function loadFoundationInitialData(env, teacher) {
 
   if (isAdminUser(teacher)) {
     const rows = await Promise.all([
-      safeAll(env, 'SELECT * FROM student_enrollments ORDER BY created_at DESC'),
       safeAll(env, 'SELECT * FROM class_time_slots ORDER BY day_of_week ASC, start_time ASC'),
       safeAll(env, 'SELECT * FROM timetable_conflict_logs ORDER BY created_at DESC LIMIT 500'),
       safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
-      safeAll(env, 'SELECT * FROM parent_contacts ORDER BY created_at DESC'),
-      safeAll(env, 'SELECT * FROM message_logs ORDER BY created_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM student_status_history ORDER BY changed_at DESC LIMIT 1000'),
-      safeAll(env, 'SELECT * FROM class_transfer_history ORDER BY changed_at DESC LIMIT 1000'),
       safeAll(env, 'SELECT * FROM staff_permissions ORDER BY teacher_id ASC, permission_key ASC')
     ]);
-    return Object.fromEntries(Object.keys(empty).map((key, i) => [key, rows[i]]));
+    return {
+      ...empty,
+      class_time_slots: rows[0],
+      timetable_conflict_logs: rows[1],
+      timetable_conflict_overrides: rows[2],
+      staff_permissions: rows[3]
+    };
   }
 
   const classIds = await getAllowedClassIds(env, teacher);
   if (!classIds?.length) return empty;
   const cMarkers = classIds.map(() => '?').join(',');
-  const studentRows = await safeAll(env, `SELECT DISTINCT student_id FROM class_students WHERE class_id IN (${cMarkers})`, classIds);
-  const studentIds = studentRows.map(r => r.student_id);
-  const sMarkers = studentIds.map(() => '?').join(',');
-
-  const studentScoped = studentIds.length
-    ? {
-        parent_contacts: await safeAll(env, `SELECT * FROM parent_contacts WHERE student_id IN (${sMarkers}) ORDER BY created_at DESC`, studentIds),
-        message_logs: await safeAll(env, `SELECT * FROM message_logs WHERE student_id IN (${sMarkers}) ORDER BY created_at DESC LIMIT 500`, studentIds),
-        student_status_history: await safeAll(env, `SELECT * FROM student_status_history WHERE student_id IN (${sMarkers}) ORDER BY changed_at DESC LIMIT 500`, studentIds),
-        class_transfer_history: await safeAll(env, `SELECT * FROM class_transfer_history WHERE student_id IN (${sMarkers}) ORDER BY changed_at DESC LIMIT 500`, studentIds)
-      }
-    : {};
 
   return {
     ...empty,
-    student_enrollments: await safeAll(env, `SELECT * FROM student_enrollments WHERE class_id IN (${cMarkers}) ORDER BY created_at DESC`, classIds),
     class_time_slots: await safeAll(env, `SELECT * FROM class_time_slots WHERE class_id IN (${cMarkers}) ORDER BY day_of_week ASC, start_time ASC`, classIds),
     timetable_conflict_logs: await safeAll(env, `SELECT * FROM timetable_conflict_logs WHERE class_a_id IN (${cMarkers}) OR class_b_id IN (${cMarkers}) ORDER BY created_at DESC LIMIT 500`, [...classIds, ...classIds]),
     timetable_conflict_overrides: await safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
-    staff_permissions: await safeAll(env, 'SELECT * FROM staff_permissions WHERE teacher_id = ? ORDER BY permission_key ASC', [teacher.id]),
-    ...studentScoped
+    staff_permissions: await safeAll(env, 'SELECT * FROM staff_permissions WHERE teacher_id = ? ORDER BY permission_key ASC', [teacher.id])
   };
 }
 
