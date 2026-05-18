@@ -296,7 +296,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `routes/foundation-logs.js` | audit/privacy 로그 | `/api/foundation-logs/*` | `audit_logs`, `privacy_access_logs` | 개인정보 접근 로그 |
 | `routes/billing-foundation.js` | 청구 foundation | `/api/billing-foundation/*` | `billing_templates`, `payments`, `billing_runs` | 실제 운영 기능과 foundation 구분 |
 | `routes/billing-accounting-foundation.js` | 수납·출납 foundation | `/api/billing-accounting-foundation/*` | payment/accounting 계열 조회·설정 foundation | admin 전용, `cashbook-entries` POST/PATCH/cancel 지원 |
-| `routes/parent-foundation.js` | 학부모 연락 foundation | `/api/parent-foundation/*` | `parent_contacts`, `message_logs` | 연락처/문자 개인정보 주의 |
+| `routes/parent-foundation.js` | 학부모 연락 foundation | `/api/parent-foundation/*` | `parent_contacts`, `parent_contact_consents`, `message_logs` | 연락처/문자 개인정보 주의 |
 
 새 route 파일을 만들면 이 표를 반드시 업데이트한다.
 
@@ -328,7 +328,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `/api/foundation-logs/*` | `routes/foundation-logs.js` | 분리 완료 | logs |
 | `/api/billing-foundation/*` | `routes/billing-foundation.js` | 분리 완료 | templates |
 | `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | 분리 완료 | payment-methods, billing-policy-rules, payment-transactions |
-| `/api/parent-foundation/*` | `routes/parent-foundation.js` | 분리 완료 | contacts/messages |
+| `/api/parent-foundation/*` | `routes/parent-foundation.js` | 분리 완료 | contacts/consents/messages/message-preview |
 
 ---
 
@@ -387,7 +387,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | 시간표 버전 관리 | `timetable.js` | `/api/timetable-versions/*` | `routes/timetable-versions.js` | `timetable_versions`, `timetable_version_slots`, `class_time_slots` | draft/scheduled/active/cancelled 흐름, 기존 시간표 화면 갈아엎기 금지 |
 | 수업자료 오답 | `study-material-wrong.js`, `student/index.html` | `/api/study-materials`, `/api/material-*`, `/api/class-material-assignments` | `routes/study-material-wrongs.js` | `study_materials`, `class_material_assignments`, `student_material_submissions`, `student_material_wrong_answers` | 일반 시험 OMR 재수정 금지와 별개 정책 |
 | 수납·출납 foundation | `dashboard.js` 관리 진입점 숨김, `management.js` 설정/요약 모달 유지 | `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | `payment_methods`, `payment_transactions`, `cashbook_entries`, `refund_records`, `carryover_records`, `billing_policy_rules`, `accounting_daily_summaries`, `accounting_monthly_summaries` | 운영 노출 숨김, 실제 수납 처리 금지 |
-| 학부모 연락 foundation | 연락/문자 준비 UI | parent-foundation 계열 | `routes/parent-foundation.js` | `parent_contacts`, `message_logs` | 개인정보/문자 발송 주의 |
+| 학부모 연락 foundation | 학생 상세 보호자 연락처/수신동의/연락 이력 UI | parent-foundation 계열 | `routes/parent-foundation.js` | `parent_contacts`, `parent_contact_consents`, `message_logs` | 개인정보/실제 발송 금지 주의 |
 | 아카이브/시험지 출력 | archive HTML/JS | archive/exam data | 정적 파일 + 일부 Worker 연계 | exam_blueprints 등 | 원본 기출 노출 정책 주의 |
 
 ## 4.4 버튼 수정 시 규칙
@@ -412,8 +412,8 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | 회수 대상 | 프론트 후보 | 주요 API | 담당 route | 1차 위치 | 주의 |
 |---|---|---|---|---|---|
 | 상담 이력 UI | `apmath/js/student.js` | `/api/consultations`, `/api/ai/consultation-summary` | `routes/operations.js`, `routes/reports-ai.js` | 학생 상세 탭 | 기존 학생 상세 문구 변경 금지, AI는 내부 미리보기/수동 반영만 허용 |
-| 학부모 연락처/수신동의 UI | `apmath/js/parent.js` 또는 `student.js` | `/api/parent-foundation/*` | `routes/parent-foundation.js` | 학생 상세/학부모 관리 | 실제 문자/카카오 발송 금지, 개인정보 주의 |
-| 숙제 사진 확인/뷰어 UI | `classroom.js` 또는 숙제 전용 UI | `/api/homework-photo/*` | `routes/homework-photo.js` | 반별 운영 화면 | “숙제” 용어 유지, 제출 상태 임의 변경 금지 |
+| 학부모 연락처/수신동의 UI | `apmath/js/student.js` | `/api/parent-foundation/contacts`, `/api/parent-foundation/consents`, `/api/parent-foundation/messages` | `routes/parent-foundation.js` | 학생 상세 `상담기록` 탭 | 실제 문자/카카오 발송 금지, message-preview UI 노출 금지, 개인정보 주의 |
+| 숙제 사진 확인/뷰어 UI | `classroom.js` | `/api/homework-photo/assignments`, `/api/homework-photo/overview`, `/api/homework-photo/student-links`, `/api/homework-photo/files`, `/api/homework-photo/*` | `routes/homework-photo.js` | 반별 운영 화면 | “숙제” 용어 유지, 제출 상태 임의 변경 금지, 확인 처리 필드/API 없으면 조회/뷰어까지만 |
 | 시간표 버전 관리 UI | `apmath/js/timetable.js` | `/api/timetable-versions/*` | `routes/timetable-versions.js` | 시간표 화면 상단 버전 배너/초안 모드 | 기존 시간표 화면 갈아엎기 금지, active/draft 저장 경로 분리 유지 |
 | 시간표 충돌 결과 UI | 시간표 관련 JS | `/api/timetable-conflicts*` | `routes/timetable-conflicts.js` | 시간표 관리 | student 충돌은 위험, teacher 충돌은 운영 예외 분리 |
 | 이력/로그 뷰어 UI | `apmath/js/foundation-logs-viewer.js` 후보 | `/api/foundation-logs/*` | `routes/foundation-logs.js` | 원장 전용 | 처음에는 조회 전용, 개인정보 로그 권한 주의 |
@@ -490,6 +490,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `billing_adjustments` | 청구 조정 | billing-foundation | 수납/출납 준비 UI | 조정 사유 기록 |
 | `billing_runs` | 청구 batch | billing-foundation | 수납/출납 준비 UI | 월/branch 기준 |
 | `parent_contacts` | 학부모 연락처 foundation | parent-foundation | 학부모 연락 UI | 전화번호 개인정보 주의 |
+| `parent_contact_consents` | 학부모 수신동의 foundation | parent-foundation | 학부모 연락 UI | branch/type별 동의 상태 주의 |
 | `message_logs` | 문자/메시지 로그 | parent-foundation | 학부모 연락 UI | 발송 이력 주의 |
 | `student_status_history` | 학생 상태 변경 기록 | foundation | foundation UI | audit 성격 |
 | `class_transfer_history` | 반 이동 기록 | foundation | foundation UI | audit 성격 |
@@ -726,6 +727,8 @@ Invoke-RestMethod `
 - 시간표 버전 foundation/원장모드 UI 연동
 - 상담 이력 UI 1차: 학생 상세 상담 이력/추가/수정/삭제
 - 상담 AI 요약/다음 조치 초안 1차: 학생 상세 내부 미리보기/수동 반영
+- 학부모 연락처/수신동의 UI 1차: 학생 상세 상담기록 탭 내부 조회/추가/수정/삭제/동의 변경/연락 이력 조회
+- 숙제 사진 확인/뷰어 UI 1차: 반별 숙제 목록/제출 현황/학생별 파일 뷰어
 - 수납·출납 foundation 0단계
 - 수납·출납 foundation 1단계-A
 - 수납·출납 foundation 1단계-B
@@ -761,8 +764,8 @@ Invoke-RestMethod `
 
 ### 운영 기능
 
-- 학부모 연락처/수신동의 UI 1차: 학생별 보호자 연락처, 대표 연락처, 수신동의 현황, 연락 이력
-- 숙제 사진 확인/뷰어 UI 보강: 반별 제출 현황, 학생별 사진 보기
+- 학부모 연락처/수신동의 UI 2차 후보: 원장 통합 연락 화면 또는 별도 학부모 관리 화면 검토
+- 숙제 사진 확인/뷰어 UI 2차 후보: 확인 처리 필드/API 보강 시 확인 완료 상태까지 연결
 - 시간표 충돌 결과 UI: student/teacher/room 충돌과 teacher 예외 분리 표시
 - 이력/로그 뷰어 UI: 학생 상태 변경 이력, 반 이동 이력, 감사 로그, 개인정보 접근 로그
 - 수납·출납 foundation 운영 노출 전 수동 테스트 및 진입점 재오픈 판단
@@ -789,6 +792,8 @@ Invoke-RestMethod `
 - 학생 포털은 배정 확인과 OMR 입력 연결까지만 허용
 - 제출 완료 OMR 수정/재입력/재제출 금지
 - 상담 AI는 내부 미리보기/수동 반영만 허용하고, 실제 발송 없음
+- 학부모 연락 UI는 학생 상세 내부 조회/수정까지만 허용하고, 실제 SMS/카카오/이메일 발송과 message-preview UI 노출은 보류한다.
+- 숙제 사진 UI는 반별 제출 현황과 파일 조회/뷰어까지만 허용하고, 학생 제출 페이지의 실제 사진 업로드 흐름과 확인 처리 정책 보강은 별도 단계로 둔다.
 - 원장/관리자 화면은 명시 허락 없이 변경 금지
 - 새 기능 선행 구현 금지
 - 연결되지 않는 함수 미리 추가 금지

@@ -82,6 +82,280 @@ function ensureConsultationAiUiState() {
     return state.ui.consultationAi;
 }
 
+const PARENT_CONTACT_CONSENT_BRANCH = 'apmath';
+const PARENT_CONTACT_BASE_CONSENT_TYPES = ['attendance', 'payment', 'notice', 'report', 'marketing'];
+const PARENT_CONTACT_CONSENT_ORDER = ['attendance', 'payment', 'notice', 'report', 'consultation', 'homework', 'exam', 'marketing'];
+const PARENT_CONTACT_CONSENT_LABELS = {
+    attendance: '출결 알림',
+    payment: '수납 알림',
+    notice: '공지 알림',
+    report: '리포트 알림',
+    consultation: '상담 알림',
+    homework: '숙제/과제 알림',
+    exam: '시험 알림',
+    marketing: '홍보성 동의'
+};
+
+function sortParentContacts(rows = []) {
+    return [...rows].sort((a, b) => {
+        const primaryDiff = Number(b?.is_primary || 0) - Number(a?.is_primary || 0);
+        if (primaryDiff !== 0) return primaryDiff;
+        const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
+        if (createdDiff !== 0) return createdDiff;
+        return String(b?.id || '').localeCompare(String(a?.id || ''));
+    });
+}
+
+function ensureParentContactUiState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.parentContactUi) {
+        state.ui.parentContactUi = { byStudent: {} };
+    }
+    return state.ui.parentContactUi;
+}
+
+function getStudentParentContactsFromState(sid) {
+    return sortParentContacts((state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === String(sid)));
+}
+
+function getStudentMessageLogsFromState(sid) {
+    return [...(state.db.message_logs || []).filter(row => String(row?.student_id || '') === String(sid))]
+        .sort((a, b) => {
+            const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
+            if (createdDiff !== 0) return createdDiff;
+            return String(b?.id || '').localeCompare(String(a?.id || ''));
+        });
+}
+
+function mergeStudentRows(tableName, sid, rows) {
+    const key = String(sid || '');
+    const existing = Array.isArray(state.db?.[tableName]) ? state.db[tableName] : [];
+    const others = existing.filter(row => String(row?.student_id || '') !== key);
+    const scopedRows = (Array.isArray(rows) ? rows : []).filter(row => String(row?.student_id || '') === key);
+    state.db[tableName] = others.concat(scopedRows);
+    return scopedRows;
+}
+
+function getStudentParentContactBundle(sid) {
+    const store = ensureParentContactUiState();
+    const entry = store.byStudent[String(sid)] || {};
+    return {
+        contacts: getStudentParentContactsFromState(sid),
+        consents: Array.isArray(entry.consents) ? entry.consents : [],
+        messages: getStudentMessageLogsFromState(sid),
+        loading: !!entry.loading,
+        error: entry.error || ''
+    };
+}
+
+async function ensureStudentParentContactDataLoaded(sid, options = {}) {
+    const store = ensureParentContactUiState();
+    const key = String(sid || '');
+    if (!key) return getStudentParentContactBundle(key);
+
+    if (!store.byStudent[key]) {
+        store.byStudent[key] = { loadedAt: 0, loading: false, inFlight: null, error: '', consents: [] };
+    }
+    const entry = store.byStudent[key];
+    const force = !!options.force;
+    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
+    if (!force && entry.loadedAt && (Date.now() - entry.loadedAt) < maxAgeMs) {
+        return getStudentParentContactBundle(key);
+    }
+    if (entry.inFlight) return entry.inFlight;
+
+    entry.loading = true;
+    entry.error = '';
+    const query = `student_id=${encodeURIComponent(key)}&limit=200`;
+
+    const promise = Promise.allSettled([
+        api.get(`parent-foundation/contacts?${query}`),
+        api.get(`parent-foundation/consents?${query}`),
+        api.get(`parent-foundation/messages?${query}`)
+    ]).then(results => {
+        const [contactsRes, consentsRes, messagesRes] = results;
+        const errors = [];
+
+        if (contactsRes.status === 'fulfilled' && contactsRes.value?.success && Array.isArray(contactsRes.value.contacts)) {
+            mergeStudentRows('parent_contacts', key, contactsRes.value.contacts);
+        } else {
+            errors.push('contacts');
+        }
+
+        if (consentsRes.status === 'fulfilled' && consentsRes.value?.success && Array.isArray(consentsRes.value.consents)) {
+            entry.consents = consentsRes.value.consents.filter(row => String(row?.student_id || '') === key);
+        } else {
+            errors.push('consents');
+        }
+
+        if (messagesRes.status === 'fulfilled' && messagesRes.value?.success && Array.isArray(messagesRes.value.messages)) {
+            mergeStudentRows('message_logs', key, messagesRes.value.messages);
+        } else {
+            errors.push('messages');
+        }
+
+        entry.loadedAt = Date.now();
+        entry.loading = false;
+        entry.error = errors.join(',');
+        if (state.ui.currentStudentDetailId === key && state.ui.currentStudentDetailTab === 'cns') {
+            renderStudentDetailTab(key, 'cns');
+        }
+        return getStudentParentContactBundle(key);
+    }).catch(err => {
+        entry.loading = false;
+        entry.error = String(err?.message || err || 'parent contact load failed');
+        return getStudentParentContactBundle(key);
+    }).finally(() => {
+        entry.inFlight = null;
+    });
+
+    entry.inFlight = promise;
+    return promise;
+}
+
+function buildEffectiveConsentMap(contact, consentRows = []) {
+    const scopedRows = consentRows.filter(row => String(row?.parent_contact_id || '') === String(contact?.id || ''));
+    const explicitTypes = [...new Set(scopedRows.map(row => String(row?.consent_type || '').trim()).filter(Boolean))];
+    const types = PARENT_CONTACT_CONSENT_ORDER.filter(type => explicitTypes.includes(type) || PARENT_CONTACT_BASE_CONSENT_TYPES.includes(type));
+    return types.map(type => {
+        const exact = scopedRows.find(row => String(row?.branch || 'all') === PARENT_CONTACT_CONSENT_BRANCH && String(row?.consent_type || '') === type);
+        const all = scopedRows.find(row => String(row?.branch || 'all') === 'all' && String(row?.consent_type || '') === type);
+        const row = exact || all || null;
+        let isAllowed;
+        let source = 'legacy';
+
+        if (row) {
+            isAllowed = Number(row.is_allowed) ? 1 : 0;
+            source = exact ? 'scoped' : 'all';
+        } else {
+            if (type === 'attendance') isAllowed = Number(contact?.receive_attendance ?? 1) ? 1 : 0;
+            else if (type === 'payment') isAllowed = Number(contact?.receive_payment ?? 1) ? 1 : 0;
+            else if (type === 'notice') isAllowed = Number(contact?.receive_notice ?? 1) ? 1 : 0;
+            else if (type === 'report') isAllowed = Number(contact?.receive_report ?? 1) ? 1 : 0;
+            else if (type === 'marketing') isAllowed = Number(contact?.receive_marketing ?? 0) ? 1 : 0;
+            else isAllowed = Number(contact?.receive_notice ?? 1) ? 1 : 0;
+        }
+
+        return {
+            type,
+            label: PARENT_CONTACT_CONSENT_LABELS[type] || type,
+            is_allowed: isAllowed ? 1 : 0,
+            source,
+            row
+        };
+    });
+}
+
+function formatParentMessageDate(row) {
+    return String(row?.sent_at || row?.delivered_at || row?.queued_at || row?.created_at || '').trim();
+}
+
+function summarizeParentMessage(row) {
+    const title = String(row?.title || '').trim();
+    if (title) return title;
+    const content = String(row?.content || '').trim().replace(/\s+/g, ' ');
+    return content.length > 80 ? `${content.slice(0, 80)}...` : content;
+}
+
+function renderParentContactSection(sid) {
+    const student = state.db.students.find(st => String(st.id) === String(sid));
+    const bundle = getStudentParentContactBundle(sid);
+    const fallbackPhone = String(student?.parent_phone || '').trim();
+    const fallbackRelation = String(student?.guardian_relation || '').trim();
+    const fallbackCard = !bundle.contacts.length && fallbackPhone ? `
+        <div class="card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface-2);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:10px;">
+                <div>
+                    <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.5;">기본 보호자 연락처</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">students.parent_phone 기준 표시</div>
+                </div>
+                <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">기본값</span>
+            </div>
+            <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">관계</div>
+            <div style="font-size:13px; color:var(--text); font-weight:700; line-height:1.5; margin-bottom:10px;">${apEscapeHtml(fallbackRelation || '미지정')}</div>
+            <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">연락처</div>
+            <div style="font-size:13px; color:var(--primary); font-weight:800; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(fallbackPhone)}')">${apEscapeHtml(fallbackPhone)}</div>
+            <div style="margin-top:10px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">이 값은 자동으로 parent_contacts에 저장되지 않습니다.</div>
+        </div>
+    ` : '';
+
+    const contactCards = bundle.contacts.map(contact => {
+        const consentItems = buildEffectiveConsentMap(contact, bundle.consents);
+        const consentHtml = consentItems.map(item => `
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 0; border-top:1px solid rgba(0,0,0,0.04);">
+                <div style="min-width:0;">
+                    <div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.5;">${apEscapeHtml(item.label)}</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">${item.is_allowed ? '동의' : '미동의'}${item.source === 'legacy' ? ' · 기본값' : item.source === 'all' ? ' · 전체 공통' : ''}</div>
+                </div>
+                <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="toggleParentConsent('${sid}','${contact.id}','${item.type}',${item.is_allowed ? 0 : 1})">${item.is_allowed ? '미동의' : '동의'}</button>
+            </div>
+        `).join('');
+
+        return `
+            <div class="card" style="padding:16px; margin-bottom:12px; border:1px solid var(--border); border-radius:16px; box-shadow:none; background:var(--surface);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px;">
+                    <div style="min-width:0;">
+                        <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+                            <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
+                            ${Number(contact.is_primary) ? '<span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">대표 연락처</span>' : '<span class="std-badge" style="background:var(--surface-2); color:var(--secondary); border:1px solid var(--border);">등록됨</span>'}
+                        </div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}</div>
+                    </div>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <span style="cursor:pointer; color:var(--primary); font-size:12px; font-weight:700;" onclick="openEditParentContactModal('${sid}','${contact.id}')">수정</span>
+                        <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:700;" onclick="handleDeleteParentContact('${sid}','${contact.id}')">삭제</span>
+                    </div>
+                </div>
+                <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">연락처</div>
+                <div style="font-size:13px; color:var(--primary); font-weight:800; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(String(contact.phone || ''))}')">${apEscapeHtml(contact.phone || '미등록')}</div>
+                ${contact.memo ? `<div style="margin-top:10px; font-size:12px; color:var(--secondary); font-weight:700; line-height:1.6; white-space:pre-wrap;">비고: ${apEscapeHtml(contact.memo)}</div>` : ''}
+                <div style="margin-top:12px; padding:12px; background:var(--surface-2); border:1px solid var(--border); border-radius:12px;">
+                    <div style="font-size:12px; color:var(--secondary); font-weight:800; line-height:1.5; margin-bottom:4px;">수신동의</div>
+                    ${consentHtml || '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">확인 가능한 수신동의 항목이 없습니다.</div>'}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    const messageRows = bundle.messages.map(row => `
+        <div style="padding:12px 0; border-top:1px solid rgba(0,0,0,0.05);">
+            <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:6px;">
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                    <span class="std-badge" style="background:var(--surface-2); color:var(--secondary); border:1px solid var(--border);">${apEscapeHtml(row.channel || '기록')}</span>
+                    <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">${apEscapeHtml(row.message_type || '기타')}</span>
+                    <span class="std-badge" style="background:rgba(255,165,2,0.08); color:var(--warning); border:1px solid rgba(255,165,2,0.15);">${apEscapeHtml(row.status || '확인 필요')}</span>
+                </div>
+                <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(formatParentMessageDate(row) || '시각 없음')}</div>
+            </div>
+            <div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.6;">${apEscapeHtml(summarizeParentMessage(row) || '기록 내용 없음')}</div>
+            <div style="margin-top:6px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">
+                수신자 ${apEscapeHtml(row.recipient_name_snapshot || row.relation_snapshot || '미기록')}
+                ${row.recipient_phone_snapshot ? ` · ${apEscapeHtml(row.recipient_phone_snapshot)}` : ''}
+            </div>
+            ${row.error_message ? `<div style="margin-top:6px; font-size:11px; color:var(--error); font-weight:700; line-height:1.5;">실패 사유: ${apEscapeHtml(row.error_message)}</div>` : ''}
+        </div>
+    `).join('');
+
+    return `
+        <div style="margin-top:24px; display:flex; flex-direction:column; gap:20px;">
+            <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+                    <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3;">보호자 연락처</div>
+                    <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:12px;" onclick="openAddParentContactModal('${sid}')">보호자 연락처 추가</button>
+                </div>
+                ${bundle.loading ? '<div style="margin-bottom:10px; font-size:12px; color:var(--secondary); font-weight:700;">보호자 연락처 데이터를 불러오는 중입니다.</div>' : ''}
+                ${bundle.error ? '<div style="margin-bottom:10px; font-size:12px; color:var(--warning); font-weight:700;">일부 보호자 연락 데이터를 다시 확인해 주세요.</div>' : ''}
+                ${contactCards || fallbackCard || '<div style="padding:24px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">등록된 보호자 연락처가 없습니다.</div>'}
+            </div>
+            <div style="padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
+                <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:12px;">연락 이력</div>
+                <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5; margin-bottom:10px;">연락 이력은 조회만 가능하며, 실제 발송 버튼은 제공하지 않습니다.</div>
+                ${messageRows || '<div style="padding:20px 4px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">연락 이력이 없습니다.</div>'}
+            </div>
+        </div>
+    `;
+}
+
 function resetConsultationAiUiState(mode = '', studentId = '', consultationId = '') {
     const store = ensureConsultationAiUiState();
     store.mode = mode;
@@ -199,6 +473,7 @@ async function renderStudentDetail(sid) {
     if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
     if (foundationLoads.length) await Promise.all(foundationLoads);
     await ensureBlueprintsForSessions(exs);
+    void ensureStudentParentContactDataLoaded(sid);
 
     renderStudentDetailTab(sid, 'grade');
 }
@@ -288,6 +563,7 @@ function renderStudentDetailTab(sid, tab) {
     if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
     if (tab === 'cns') {
         void ensureStudentConsultationsLoaded(sid);
+        void ensureStudentParentContactDataLoaded(sid);
     }
 }
 
@@ -392,6 +668,7 @@ function renderCnsTab(sid) {
             <div style="max-height: 450px; overflow-y: auto; padding-right: 4px;">
                 ${cnsCards || '<div style="text-align: center; padding: 40px; color: var(--secondary); font-size: 13px; font-weight: 700;">상담 기록이 없습니다.</div>'}
             </div>
+            ${renderParentContactSection(sid)}
         </div>
     `;
 }
@@ -488,6 +765,145 @@ function openReportPreview(sid) {
             toast('복사에 실패했습니다.', 'warn');
         });
     });
+}
+
+function openAddParentContactModal(sid) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
+    showModal('보호자 연락처 추가', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <input id="parent-contact-name" class="std-input-base" placeholder="보호자 이름">
+            <input id="parent-contact-relation" class="std-input-base" placeholder="관계">
+            <input id="parent-contact-phone" class="std-input-base" placeholder="연락처 (필수)">
+            <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); cursor:pointer;">
+                <input type="checkbox" id="parent-contact-primary" checked style="width:16px; height:16px; accent-color:var(--primary); cursor:pointer;">
+                <span>대표 연락처</span>
+            </label>
+            <textarea id="parent-contact-memo" class="std-input-base" placeholder="비고 (선택)" style="height:80px;"></textarea>
+        </div>
+    `, '저장', () => handleSaveParentContact(sid));
+}
+
+async function handleSaveParentContact(sid) {
+    const payload = {
+        student_id: sid,
+        name: document.getElementById('parent-contact-name')?.value.trim() || '',
+        relation: document.getElementById('parent-contact-relation')?.value.trim() || '',
+        phone: document.getElementById('parent-contact-phone')?.value.trim() || '',
+        is_primary: document.getElementById('parent-contact-primary')?.checked ? 1 : 0,
+        memo: document.getElementById('parent-contact-memo')?.value.trim() || ''
+    };
+    if (!payload.phone) return toast('연락처를 입력하세요.', 'warn');
+
+    try {
+        const result = await api.post('parent-foundation/contacts', payload);
+        if (result?.success) {
+            toast('보호자 연락처가 저장되었습니다.', 'success');
+            closeModal(true);
+            await ensureStudentParentContactDataLoaded(sid, { force: true });
+            renderStudentDetailTab(sid, 'cns');
+            return;
+        }
+        toast(result?.message || result?.error || '보호자 연락처 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleSaveParentContact] failed:', e);
+        toast('보호자 연락처 저장 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+function openEditParentContactModal(sid, contactId) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
+    const contact = (state.db.parent_contacts || []).find(row => String(row.id) === String(contactId));
+    if (!contact) return toast('보호자 연락처를 찾을 수 없습니다.', 'warn');
+
+    showModal('보호자 연락처 수정', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <input id="edit-parent-contact-name" class="std-input-base" value="${studentAttr(contact.name || '')}" placeholder="보호자 이름">
+            <input id="edit-parent-contact-relation" class="std-input-base" value="${studentAttr(contact.relation || '')}" placeholder="관계">
+            <input id="edit-parent-contact-phone" class="std-input-base" value="${studentAttr(contact.phone || '')}" placeholder="연락처 (필수)">
+            <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); cursor:pointer;">
+                <input type="checkbox" id="edit-parent-contact-primary" ${Number(contact.is_primary) ? 'checked' : ''} style="width:16px; height:16px; accent-color:var(--primary); cursor:pointer;">
+                <span>대표 연락처</span>
+            </label>
+            <textarea id="edit-parent-contact-memo" class="std-input-base" placeholder="비고 (선택)" style="height:80px;">${apEscapeHtml(contact.memo || '')}</textarea>
+        </div>
+    `, '수정 완료', () => handleEditParentContact(sid, contactId));
+}
+
+async function handleEditParentContact(sid, contactId) {
+    const payload = {
+        name: document.getElementById('edit-parent-contact-name')?.value.trim() || '',
+        relation: document.getElementById('edit-parent-contact-relation')?.value.trim() || '',
+        phone: document.getElementById('edit-parent-contact-phone')?.value.trim() || '',
+        is_primary: document.getElementById('edit-parent-contact-primary')?.checked ? 1 : 0,
+        memo: document.getElementById('edit-parent-contact-memo')?.value.trim() || ''
+    };
+    if (!payload.phone) return toast('연락처를 입력하세요.', 'warn');
+
+    try {
+        const result = await api.patch(`parent-foundation/contacts/${contactId}`, payload);
+        if (result?.success) {
+            toast('보호자 연락처가 수정되었습니다.', 'info');
+            closeModal(true);
+            await ensureStudentParentContactDataLoaded(sid, { force: true });
+            renderStudentDetailTab(sid, 'cns');
+            return;
+        }
+        toast(result?.message || result?.error || '보호자 연락처 수정에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleEditParentContact] failed:', e);
+        toast('보호자 연락처 수정 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function handleDeleteParentContact(sid, contactId) {
+    if (!confirm('보호자 연락처를 삭제하시겠습니까?')) return;
+
+    try {
+        const result = await api.delete('parent-foundation/contacts', contactId);
+        if (result?.success) {
+            toast('보호자 연락처가 삭제되었습니다.', 'info');
+            await ensureStudentParentContactDataLoaded(sid, { force: true });
+            renderStudentDetailTab(sid, 'cns');
+            return;
+        }
+        toast(result?.message || result?.error || '보호자 연락처 삭제에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleDeleteParentContact] failed:', e);
+        toast('보호자 연락처 삭제 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function toggleParentConsent(sid, contactId, consentType, nextValue) {
+    const bundle = getStudentParentContactBundle(sid);
+    const existing = (bundle.consents || []).find(row =>
+        String(row?.parent_contact_id || '') === String(contactId) &&
+        String(row?.consent_type || '') === String(consentType) &&
+        String(row?.branch || 'all') === PARENT_CONTACT_CONSENT_BRANCH
+    );
+
+    const payload = {
+        parent_contact_id: contactId,
+        student_id: sid,
+        branch: PARENT_CONTACT_CONSENT_BRANCH,
+        consent_type: consentType,
+        is_allowed: nextValue ? 1 : 0
+    };
+
+    try {
+        const result = existing?.id
+            ? await api.patch(`parent-foundation/consents/${existing.id}`, payload)
+            : await api.post('parent-foundation/consents', payload);
+        if (result?.success) {
+            toast('수신동의 상태가 저장되었습니다.', 'success');
+            await ensureStudentParentContactDataLoaded(sid, { force: true });
+            renderStudentDetailTab(sid, 'cns');
+            return;
+        }
+        toast(result?.message || result?.error || '수신동의 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[toggleParentConsent] failed:', e);
+        toast('수신동의 저장 중 오류가 발생했습니다.', 'error');
+    }
 }
 
 /**

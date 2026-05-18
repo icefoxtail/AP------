@@ -82,6 +82,11 @@ function normalizeBooleanFlag(value, fallback = 1) {
   return Number.isFinite(n) ? (n ? 1 : 0) : (fallback ? 1 : 0);
 }
 
+function normalizeTextOrNull(value) {
+  const text = String(value ?? '').trim();
+  return text || null;
+}
+
 async function findParentContact(env, contactId) {
   const id = String(contactId || '').trim();
   if (!id) return null;
@@ -473,22 +478,25 @@ export async function handleParentFoundation(request, env, teacher, path, url, b
     }
 
     if (method === 'POST') {
-      if (!(await canAccessStudent(teacher, body.student_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      const studentId = String(body.student_id || '').trim();
+      const phone = String(body.phone || '').trim();
+      if (!studentId || !phone) return jsonResponse({ success: false, error: 'student_id and phone are required' }, 400);
+      if (!(await canAccessStudent(teacher, studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
       return jsonResponse({
         success: true,
         contact: await foundationInsert(env, 'parent_contacts', {
           id: makeId('pc'),
-          student_id: body.student_id,
-          name: body.name || null,
-          relation: body.relation || null,
-          phone: String(body.phone || '').trim(),
-          is_primary: body.is_primary ?? 1,
-          receive_attendance: body.receive_attendance ?? 1,
-          receive_payment: body.receive_payment ?? 1,
-          receive_notice: body.receive_notice ?? 1,
-          receive_report: body.receive_report ?? 1,
-          receive_marketing: body.receive_marketing ?? 0,
-          memo: body.memo || null
+          student_id: studentId,
+          name: normalizeTextOrNull(body.name),
+          relation: normalizeTextOrNull(body.relation),
+          phone,
+          is_primary: normalizeBooleanFlag(body.is_primary, 1),
+          receive_attendance: normalizeBooleanFlag(body.receive_attendance, 1),
+          receive_payment: normalizeBooleanFlag(body.receive_payment, 1),
+          receive_notice: normalizeBooleanFlag(body.receive_notice, 1),
+          receive_report: normalizeBooleanFlag(body.receive_report, 1),
+          receive_marketing: normalizeBooleanFlag(body.receive_marketing, 0),
+          memo: normalizeTextOrNull(body.memo)
         })
       });
     }
@@ -496,10 +504,29 @@ export async function handleParentFoundation(request, env, teacher, path, url, b
     if (method === 'PATCH' && subId) {
       const access = await assertCanAccessParentContact(env, teacher, subId);
       if (access.error) return access.error;
+      if (Object.prototype.hasOwnProperty.call(body, 'phone') && !String(body.phone || '').trim()) {
+        return jsonResponse({ success: false, error: 'phone is required' }, 400);
+      }
+      if (Object.prototype.hasOwnProperty.call(body, 'name')) body.name = normalizeTextOrNull(body.name);
+      if (Object.prototype.hasOwnProperty.call(body, 'relation')) body.relation = normalizeTextOrNull(body.relation);
+      if (Object.prototype.hasOwnProperty.call(body, 'phone')) body.phone = String(body.phone || '').trim();
+      if (Object.prototype.hasOwnProperty.call(body, 'memo')) body.memo = normalizeTextOrNull(body.memo);
+      if (Object.prototype.hasOwnProperty.call(body, 'is_primary')) body.is_primary = normalizeBooleanFlag(body.is_primary, Number(access.contact?.is_primary || 0));
+      if (Object.prototype.hasOwnProperty.call(body, 'receive_attendance')) body.receive_attendance = normalizeBooleanFlag(body.receive_attendance, Number(access.contact?.receive_attendance || 0));
+      if (Object.prototype.hasOwnProperty.call(body, 'receive_payment')) body.receive_payment = normalizeBooleanFlag(body.receive_payment, Number(access.contact?.receive_payment || 0));
+      if (Object.prototype.hasOwnProperty.call(body, 'receive_notice')) body.receive_notice = normalizeBooleanFlag(body.receive_notice, Number(access.contact?.receive_notice || 0));
+      if (Object.prototype.hasOwnProperty.call(body, 'receive_report')) body.receive_report = normalizeBooleanFlag(body.receive_report, Number(access.contact?.receive_report || 0));
+      if (Object.prototype.hasOwnProperty.call(body, 'receive_marketing')) body.receive_marketing = normalizeBooleanFlag(body.receive_marketing, Number(access.contact?.receive_marketing || 0));
       return jsonResponse({ success: true, contact: await foundationPatch(env, 'parent_contacts', subId, body, CONTACT_PATCH_KEYS) });
     }
 
-    if (method === 'DELETE' && subId) return jsonResponse({ success: false, error: 'DELETE not implemented for parent contacts in phase1' }, 405);
+    if (method === 'DELETE' && subId) {
+      const access = await assertCanAccessParentContact(env, teacher, subId);
+      if (access.error) return access.error;
+      await env.DB.prepare('DELETE FROM parent_contact_consents WHERE parent_contact_id = ?').bind(subId).run();
+      await env.DB.prepare('DELETE FROM parent_contacts WHERE id = ?').bind(subId).run();
+      return jsonResponse({ success: true });
+    }
   }
 
   if (sub === 'consents') {

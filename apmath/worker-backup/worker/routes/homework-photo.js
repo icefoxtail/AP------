@@ -88,6 +88,21 @@ function getHomeworkPhotoDeleteAssignmentId(method, id, path) {
   return '';
 }
 
+function normalizeHomeworkPhotoFileUrl(env, fileKey) {
+  const key = String(fileKey || '').trim().replace(/^\/+/, '');
+  if (!key) return '';
+  const base = String(env.R2_PUBLIC_BASE_URL || 'https://r2.ap-math.com').replace(/\/+$/, '');
+  return `${base}/${key.split('/').map(part => encodeURIComponent(part)).join('/')}`;
+}
+
+function detectHomeworkPhotoFileKind(file = {}) {
+  const fileType = String(file.file_type || '').trim().toLowerCase();
+  const fileName = String(file.file_name || '').trim().toLowerCase();
+  if (fileType.startsWith('image/')) return 'image';
+  if (/\.(png|jpe?g|gif|webp|bmp|svg|heic|heif)$/i.test(fileName)) return 'image';
+  return 'file';
+}
+
 async function checkHomeworkPhotoStudent(env, assignmentId, studentId, pin = '') {
   const row = await env.DB.prepare(`
     SELECT
@@ -311,6 +326,88 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
       url: buildHomeworkPhotoLink(url, path, assignmentId, r.student_id)
     }));
     return responseJson({ success: true, assignment, students });
+  }
+
+  if (method === 'GET' && id === 'files') {
+    const currentTeacher = teacher || await verifyAuth(request, env);
+    if (!currentTeacher) return responseJson({ error: 'Unauthorized' }, 401);
+
+    const submissionId = String(url.searchParams.get('submission_id') || '').trim();
+    const assignmentId = String(url.searchParams.get('assignment_id') || '').trim();
+    const studentId = String(url.searchParams.get('student_id') || '').trim();
+
+    let submission = null;
+    if (submissionId) {
+      submission = await env.DB.prepare(`
+        SELECT
+          hps.id AS submission_id,
+          hps.assignment_id,
+          hps.student_id,
+          hps.is_submitted,
+          hps.submitted_at,
+          hpa.class_id,
+          hpa.title,
+          hpa.due_date,
+          hpa.due_time,
+          s.name AS student_name
+        FROM homework_photo_submissions hps
+        JOIN homework_photo_assignments hpa ON hpa.id = hps.assignment_id
+        JOIN students s ON s.id = hps.student_id
+        WHERE hps.id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
+      `).bind(submissionId).first();
+    } else if (assignmentId && studentId) {
+      submission = await env.DB.prepare(`
+        SELECT
+          hps.id AS submission_id,
+          hps.assignment_id,
+          hps.student_id,
+          hps.is_submitted,
+          hps.submitted_at,
+          hpa.class_id,
+          hpa.title,
+          hpa.due_date,
+          hpa.due_time,
+          s.name AS student_name
+        FROM homework_photo_submissions hps
+        JOIN homework_photo_assignments hpa ON hpa.id = hps.assignment_id
+        JOIN students s ON s.id = hps.student_id
+        WHERE hps.assignment_id = ? AND hps.student_id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
+      `).bind(assignmentId, studentId).first();
+    } else {
+      return responseJson({ success: false, error: 'submission_id or assignment_id, student_id required' }, 400);
+    }
+
+    if (!submission) return responseJson({ success: false, error: 'Not found' }, 404);
+    if (!(await canAccessClass(currentTeacher, submission.class_id, env))) return responseJson({ error: 'Forbidden' }, 403);
+
+    const rows = await env.DB.prepare(`
+      SELECT id, submission_id, file_key, file_name, file_type, file_size, expires_at, created_at
+      FROM homework_photo_files
+      WHERE submission_id = ? AND deleted_at IS NULL
+      ORDER BY created_at ASC, id ASC
+    `).bind(submission.submission_id).all();
+
+    const files = (rows.results || []).map(file => ({
+      ...file,
+      kind: detectHomeworkPhotoFileKind(file),
+      url: normalizeHomeworkPhotoFileUrl(env, file.file_key || file.file_name || '')
+    }));
+
+    return responseJson({
+      success: true,
+      submission: {
+        id: submission.submission_id,
+        assignment_id: submission.assignment_id,
+        student_id: submission.student_id,
+        student_name: submission.student_name,
+        is_submitted: submission.is_submitted,
+        submitted_at: submission.submitted_at,
+        title: submission.title,
+        due_date: submission.due_date,
+        due_time: submission.due_time
+      },
+      files
+    });
   }
 
   if (method === 'GET' && id === 'student-links') {
