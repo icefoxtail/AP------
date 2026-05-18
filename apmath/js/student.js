@@ -257,67 +257,12 @@ function summarizeParentMessage(row) {
     return content.length > 80 ? `${content.slice(0, 80)}...` : content;
 }
 
-function renderParentContactSection(sid) {
-    const student = state.db.students.find(st => String(st.id) === String(sid));
-    const bundle = getStudentParentContactBundle(sid);
-    const fallbackPhone = String(student?.parent_phone || '').trim();
-    const fallbackRelation = String(student?.guardian_relation || '').trim();
-    const fallbackCard = !bundle.contacts.length && fallbackPhone ? `
-        <div class="card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface-2);">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:10px;">
-                <div>
-                    <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.5;">기본 보호자 연락처</div>
-                    <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">students.parent_phone 기준 표시</div>
-                </div>
-                <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">기본값</span>
-            </div>
-            <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">관계</div>
-            <div style="font-size:13px; color:var(--text); font-weight:700; line-height:1.5; margin-bottom:10px;">${apEscapeHtml(fallbackRelation || '미지정')}</div>
-            <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">연락처</div>
-            <div style="font-size:13px; color:var(--primary); font-weight:800; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(fallbackPhone)}')">${apEscapeHtml(fallbackPhone)}</div>
-            <div style="margin-top:10px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">이 값은 자동으로 parent_contacts에 저장되지 않습니다.</div>
-        </div>
-    ` : '';
+function getParentContactMessages(contactId, messageRows = []) {
+    return [...(Array.isArray(messageRows) ? messageRows : [])].filter(row => String(row?.parent_contact_id || '') === String(contactId || ''));
+}
 
-    const contactCards = bundle.contacts.map(contact => {
-        const consentItems = buildEffectiveConsentMap(contact, bundle.consents);
-        const consentHtml = consentItems.map(item => `
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 0; border-top:1px solid rgba(0,0,0,0.04);">
-                <div style="min-width:0;">
-                    <div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.5;">${apEscapeHtml(item.label)}</div>
-                    <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">${item.is_allowed ? '동의' : '미동의'}${item.source === 'legacy' ? ' · 기본값' : item.source === 'all' ? ' · 전체 공통' : ''}</div>
-                </div>
-                <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="toggleParentConsent('${sid}','${contact.id}','${item.type}',${item.is_allowed ? 0 : 1})">${item.is_allowed ? '미동의' : '동의'}</button>
-            </div>
-        `).join('');
-
-        return `
-            <div class="card" style="padding:16px; margin-bottom:12px; border:1px solid var(--border); border-radius:16px; box-shadow:none; background:var(--surface);">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px;">
-                    <div style="min-width:0;">
-                        <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-                            <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
-                            ${Number(contact.is_primary) ? '<span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">대표 연락처</span>' : '<span class="std-badge" style="background:var(--surface-2); color:var(--secondary); border:1px solid var(--border);">등록됨</span>'}
-                        </div>
-                        <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}</div>
-                    </div>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <span style="cursor:pointer; color:var(--primary); font-size:12px; font-weight:700;" onclick="openEditParentContactModal('${sid}','${contact.id}')">수정</span>
-                        <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:700;" onclick="handleDeleteParentContact('${sid}','${contact.id}')">삭제</span>
-                    </div>
-                </div>
-                <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">연락처</div>
-                <div style="font-size:13px; color:var(--primary); font-weight:800; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(String(contact.phone || ''))}')">${apEscapeHtml(contact.phone || '미등록')}</div>
-                ${contact.memo ? `<div style="margin-top:10px; font-size:12px; color:var(--secondary); font-weight:700; line-height:1.6; white-space:pre-wrap;">비고: ${apEscapeHtml(contact.memo)}</div>` : ''}
-                <div style="margin-top:12px; padding:12px; background:var(--surface-2); border:1px solid var(--border); border-radius:12px;">
-                    <div style="font-size:12px; color:var(--secondary); font-weight:800; line-height:1.5; margin-bottom:4px;">수신동의</div>
-                    ${consentHtml || '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">확인 가능한 수신동의 항목이 없습니다.</div>'}
-                </div>
-            </div>
-        `;
-    }).join('');
-
-    const messageRows = bundle.messages.map(row => `
+function renderParentMessageHistoryRows(rows = []) {
+    return rows.map(row => `
         <div style="padding:12px 0; border-top:1px solid rgba(0,0,0,0.05);">
             <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:6px;">
                 <div style="display:flex; gap:6px; flex-wrap:wrap;">
@@ -327,30 +272,153 @@ function renderParentContactSection(sid) {
                 </div>
                 <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(formatParentMessageDate(row) || '시각 없음')}</div>
             </div>
-            <div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.6;">${apEscapeHtml(summarizeParentMessage(row) || '기록 내용 없음')}</div>
-            <div style="margin-top:6px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">
-                수신자 ${apEscapeHtml(row.recipient_name_snapshot || row.relation_snapshot || '미기록')}
-                ${row.recipient_phone_snapshot ? ` · ${apEscapeHtml(row.recipient_phone_snapshot)}` : ''}
-            </div>
+            <div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.5; margin-bottom:6px;">${apEscapeHtml(summarizeParentMessage(row) || '기록 내용 없음')}</div>
+            <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">수신자 ${apEscapeHtml(row.recipient_name_snapshot || row.relation_snapshot || '미기록')}${row.recipient_phone_snapshot ? ` · ${apEscapeHtml(row.recipient_phone_snapshot)}` : ''}</div>
             ${row.error_message ? `<div style="margin-top:6px; font-size:11px; color:var(--error); font-weight:700; line-height:1.5;">실패 사유: ${apEscapeHtml(row.error_message)}</div>` : ''}
         </div>
     `).join('');
+}
+
+function openParentConsentModal(sid, contactId) {
+    const bundle = getStudentParentContactBundle(sid);
+    const contact = (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''));
+    if (!contact) {
+        toast('보호자 연락처 정보를 다시 불러와 주세요.', 'warn');
+        return;
+    }
+
+    const consentItems = buildEffectiveConsentMap(contact, bundle.consents);
+    const primaryTypes = ['attendance', 'payment', 'notice', 'report'];
+    const primaryItems = primaryTypes
+        .map(type => consentItems.find(item => item.type === type))
+        .filter(Boolean);
+    const scopedTypes = new Set((bundle.consents || [])
+        .filter(row => String(row?.parent_contact_id || '') === String(contact.id || ''))
+        .map(row => String(row?.consent_type || '').trim())
+        .filter(Boolean));
+    const extraItems = consentItems.filter(item => scopedTypes.has(item.type) && !primaryTypes.includes(item.type));
+
+    const primaryHtml = primaryItems.map(item => `
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-top:1px solid rgba(0,0,0,0.05);">
+            <div style="min-width:0;">
+                <div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.5;">${apEscapeHtml(item.label)}</div>
+                <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">현재 ${item.is_allowed ? '동의' : '미동의'}${item.source === 'legacy' ? ' · 기본값' : item.source === 'all' ? ' · 전체 공통' : ''}</div>
+            </div>
+            <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="toggleParentConsent('${sid}','${contact.id}','${item.type}',${item.is_allowed ? 0 : 1},'consent')">${item.is_allowed ? '미동의' : '동의'}</button>
+        </div>
+    `).join('');
+
+    const extraHtml = extraItems.map(item => `
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-top:1px solid rgba(0,0,0,0.05);">
+            <div style="min-width:0;">
+                <div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.5;">${apEscapeHtml(item.label)}</div>
+                <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">현재 ${item.is_allowed ? '동의' : '미동의'}</div>
+            </div>
+            <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="toggleParentConsent('${sid}','${contact.id}','${item.type}',${item.is_allowed ? 0 : 1},'consent')">${item.is_allowed ? '미동의' : '동의'}</button>
+        </div>
+    `).join('');
+
+    showModal('연락 설정', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
+                <div style="font-size:13px; color:var(--text); font-weight:800; line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
+                <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}${contact.phone ? ` · ${apEscapeHtml(contact.phone)}` : ''}</div>
+            </div>
+            <div style="padding:2px 0;">
+                ${primaryHtml || '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">확인 가능한 연락 설정이 없습니다.</div>'}
+            </div>
+            ${extraHtml ? `
+                <details style="border:1px solid var(--border); border-radius:12px; background:var(--surface-2); padding:10px 12px;">
+                    <summary style="cursor:pointer; font-size:12px; color:var(--secondary); font-weight:800; line-height:1.5;">기타 설정</summary>
+                    <div style="margin-top:8px;">${extraHtml}</div>
+                </details>
+            ` : ''}
+        </div>
+    `);
+}
+
+function openParentMessageHistoryModal(sid, contactId = '') {
+    const bundle = getStudentParentContactBundle(sid);
+    const contact = contactId
+        ? (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''))
+        : null;
+    const rows = contactId ? getParentContactMessages(contactId, bundle.messages) : [...(bundle.messages || [])];
+    showModal('연락 이력', `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            ${contact ? `
+                <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
+                    <div style="font-size:13px; color:var(--text); font-weight:800; line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
+                    <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}${contact.phone ? ` · ${apEscapeHtml(contact.phone)}` : ''}</div>
+                </div>
+            ` : ''}
+            <div>
+                ${rows.length ? renderParentMessageHistoryRows(rows) : '<div style="padding:20px 4px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">연락 이력이 없습니다.</div>'}
+            </div>
+        </div>
+    `);
+}
+
+function renderParentContactSection(sid) {
+    const student = state.db.students.find(st => String(st.id) === String(sid));
+    const bundle = getStudentParentContactBundle(sid);
+    const fallbackPhone = String(student?.parent_phone || '').trim();
+    const fallbackRelation = String(student?.guardian_relation || '').trim();
+    const fallbackCard = !bundle.contacts.length && fallbackPhone ? `
+        <div class="card" style="padding:12px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface-2);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;">
+                <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.5;">기본 보호자 연락처</div>
+                <span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">기본 연락처</span>
+            </div>
+            <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5; margin-bottom:2px;">관계 ${apEscapeHtml(fallbackRelation || '미지정')}</div>
+            <div style="font-size:13px; color:var(--primary); font-weight:800; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(fallbackPhone)}')">${apEscapeHtml(fallbackPhone)}</div>
+        </div>
+    ` : '';
+
+    const contactCards = bundle.contacts.map(contact => {
+        const contactMessages = getParentContactMessages(contact.id, bundle.messages);
+        const historyButtonHtml = contactMessages.length
+            ? `<button class="btn" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="openParentMessageHistoryModal('${sid}','${contact.id}')">연락 이력 보기</button>`
+            : `<span style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">연락 이력 0건</span>`;
+
+        return `
+            <div class="card" style="padding:12px; margin-bottom:10px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:8px;">
+                    <div style="min-width:0;">
+                        <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+                            <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
+                            ${Number(contact.is_primary) ? '<span class="std-badge" style="background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(26,92,255,0.15);">대표 연락처</span>' : ''}
+                        </div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}</div>
+                    </div>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <span style="cursor:pointer; color:var(--primary); font-size:12px; font-weight:700;" onclick="openEditParentContactModal('${sid}','${contact.id}')">수정</span>
+                        <span style="cursor:pointer; color:var(--error); font-size:12px; font-weight:700;" onclick="handleDeleteParentContact('${sid}','${contact.id}')">삭제</span>
+                    </div>
+                </div>
+                <div style="font-size:13px; color:var(--primary); font-weight:800; line-height:1.5; cursor:pointer; overflow-wrap:anywhere;" onclick="copyPhoneNumber('${apEscapeHtml(String(contact.phone || ''))}')">${apEscapeHtml(contact.phone || '미등록')}</div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px;">
+                    <button class="btn" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="openParentConsentModal('${sid}','${contact.id}')">연락 설정</button>
+                    ${historyButtonHtml}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    const historySummaryHtml = bundle.messages.length
+        ? `<div style="display:flex; justify-content:flex-end; margin-top:8px;"><button class="btn" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="openParentMessageHistoryModal('${sid}')">연락 이력 보기</button></div>`
+        : '';
 
     return `
-        <div style="margin-top:24px; display:flex; flex-direction:column; gap:20px;">
+        <div style="margin-top:24px; display:flex; flex-direction:column; gap:16px;">
             <div>
-                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
                     <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3;">보호자 연락처</div>
                     <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:12px;" onclick="openAddParentContactModal('${sid}')">보호자 연락처 추가</button>
                 </div>
                 ${bundle.loading ? '<div style="margin-bottom:10px; font-size:12px; color:var(--secondary); font-weight:700;">보호자 연락처 데이터를 불러오는 중입니다.</div>' : ''}
                 ${bundle.error ? '<div style="margin-bottom:10px; font-size:12px; color:var(--warning); font-weight:700;">일부 보호자 연락 데이터를 다시 확인해 주세요.</div>' : ''}
-                ${contactCards || fallbackCard || '<div style="padding:24px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">등록된 보호자 연락처가 없습니다.</div>'}
-            </div>
-            <div style="padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:12px;">연락 이력</div>
-                <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5; margin-bottom:10px;">연락 이력은 조회만 가능하며, 실제 발송 버튼은 제공하지 않습니다.</div>
-                ${messageRows || '<div style="padding:20px 4px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">연락 이력이 없습니다.</div>'}
+                ${contactCards || fallbackCard || '<div style="padding:18px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; border:1px solid var(--border); border-radius:14px; background:var(--surface-2);">등록된 보호자 연락처가 없습니다.</div>'}
+                ${historySummaryHtml}
             </div>
         </div>
     `;
@@ -873,7 +941,7 @@ async function handleDeleteParentContact(sid, contactId) {
     }
 }
 
-async function toggleParentConsent(sid, contactId, consentType, nextValue) {
+async function toggleParentConsent(sid, contactId, consentType, nextValue, returnModal = '') {
     const bundle = getStudentParentContactBundle(sid);
     const existing = (bundle.consents || []).find(row =>
         String(row?.parent_contact_id || '') === String(contactId) &&
@@ -896,6 +964,11 @@ async function toggleParentConsent(sid, contactId, consentType, nextValue) {
         if (result?.success) {
             toast('수신동의 상태가 저장되었습니다.', 'success');
             await ensureStudentParentContactDataLoaded(sid, { force: true });
+            if (returnModal === 'consent') {
+                renderStudentDetailTab(sid, 'cns');
+                openParentConsentModal(sid, contactId);
+                return;
+            }
             renderStudentDetailTab(sid, 'cns');
             return;
         }
