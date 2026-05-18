@@ -87,9 +87,12 @@ function installTimetableStyle() {
         '@media (hover: hover) { .tt-std-name:hover { background:var(--surface-2); color:var(--text); } }',
         '.tt-std-name.tt-new { color:#1A5CFF !important; }',
         '.tt-std-name.tt-leave { color:#FF8C00 !important; }',
+        '.tt-std-name[draggable="true"] { cursor:grab; }',
+        '.tt-std-name[draggable="true"]:active { cursor:grabbing; }',
         '.tt-std-empty { display:block; width:100%; min-height:18px; border:1px dashed rgba(0,0,0,0.1); border-radius:4px; cursor:pointer; background:transparent; color:var(--secondary); font-size:10.5px; font-weight:600; line-height:16px; text-align:left; padding:0 3px; font-family:inherit; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; grid-column:span 2; letter-spacing:-0.2px; }',
         '@media (hover: hover) { .tt-std-empty:hover { color:var(--primary); border-color:rgba(26,92,255,0.3); background:rgba(26,92,255,0.03); } }',
         '.tt-std-slot-more { display:flex; align-items:center; justify-content:flex-start; width:100%; min-height:18px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.05); border-radius:4px; cursor:pointer; padding:0 3px; box-sizing:border-box; grid-column:span 2; letter-spacing:-0.2px; }',
+        '.tt-card.tt-drop-ready { border-color:rgba(26,92,255,0.45); background:rgba(26,92,255,0.03); }',
         '.tt-row-label { font-weight:700; font-size:13px; color:var(--text); text-align:center; white-space:nowrap; letter-spacing:-0.3px; line-height:1.3; }',
         '.tt-row-sublabel { font-size:10px; color:var(--secondary); text-align:center; margin-top:2px; white-space:nowrap; letter-spacing:-0.2px; line-height:1.3; }',
         '.tt-high-class-wrap { display:flex; flex-direction:column; gap:2px; margin-bottom:4px; }',
@@ -440,6 +443,253 @@ function openAddStudentToClass(classId) {
 // 유틸리티
 // ────────────────────────────────────────────
 
+function isTimetableAdminMode() {
+    return !!(typeof state !== 'undefined' && state.auth && state.auth.role === 'admin');
+}
+
+function getTimetableClassList() {
+    var db = _getAllDb();
+    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+    return _ttFirstNonEmptyArray(
+        mainDb.timetable_classes,
+        db.timetable_classes,
+        allDb.timetable_classes,
+        mainDb.classes,
+        db.classes,
+        allDb.classes
+    ).map(getTimetableMergedClass);
+}
+
+function findTimetableClassById(classId) {
+    var cid = String(classId || '');
+    return getTimetableClassList().find(function(c) { return String(c.id) === cid; }) || null;
+}
+
+function findTimetableStudentById(studentId) {
+    var db = _getAllDb();
+    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+    var source = _ttFirstNonEmptyArray(
+        mainDb.timetable_students,
+        db.timetable_students,
+        allDb.timetable_students,
+        mainDb.students,
+        db.students,
+        allDb.students
+    );
+    var sid = String(studentId || '');
+    return source.find(function(s) { return String(s.id) === sid; }) || null;
+}
+
+function getTimetableClassStudentRows() {
+    var db = _getAllDb();
+    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+    return _ttFirstNonEmptyArray(
+        mainDb.timetable_class_students,
+        db.timetable_class_students,
+        allDb.timetable_class_students,
+        mainDb.class_students,
+        db.class_students,
+        allDb.class_students
+    );
+}
+
+function getTimetableStudentClassIds(studentId) {
+    var sid = String(studentId || '');
+    var seen = {};
+    return getTimetableClassStudentRows()
+        .filter(function(row) { return String(row.student_id) === sid; })
+        .map(function(row) { return String(row.class_id || ''); })
+        .filter(function(classId) {
+            if (!classId || seen[classId]) return false;
+            seen[classId] = true;
+            return true;
+        });
+}
+
+function getTimetableClassSlots(classId) {
+    var db = _getAllDb();
+    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+    var slots = _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots)
+        .filter(function(slot) { return String(slot.class_id) === String(classId); })
+        .map(function(slot) {
+            return {
+                day: String(slot.day_of_week || slot.day || '').trim(),
+                start: String(slot.start_time || '').trim(),
+                end: String(slot.end_time || '').trim()
+            };
+        })
+        .filter(function(slot) { return slot.day && slot.start && slot.end; });
+
+    if (slots.length) return slots;
+
+    var cls = findTimetableClassById(classId);
+    if (!cls) return [];
+    return getTimetableClassFallbackDays(cls).map(function(day) {
+        return {
+            day: day,
+            start: getTimetablePeriodKey(cls),
+            end: getTimetablePeriodKey(cls),
+            fallback: true
+        };
+    }).filter(function(slot) { return slot.day && slot.start && slot.start !== 'unknown'; });
+}
+
+function getTimetableClassFallbackDays(cls) {
+    var raw = String(cls && cls.schedule_days || '').trim();
+    if (!raw) return [];
+    return raw.split(/[,\s\/|]+/)
+        .map(function(day) { return String(day || '').trim(); })
+        .filter(Boolean);
+}
+
+function parseTimetableMinutes(value) {
+    var m = String(value || '').match(/(\d{1,2}):(\d{2})/);
+    if (!m) return null;
+    return Number(m[1]) * 60 + Number(m[2]);
+}
+
+function doTimetableSlotsOverlap(a, b) {
+    if (!a || !b || String(a.day) !== String(b.day)) return false;
+    if (a.fallback || b.fallback) return String(a.start || '') === String(b.start || '');
+    var aStart = parseTimetableMinutes(a.start);
+    var aEnd = parseTimetableMinutes(a.end);
+    var bStart = parseTimetableMinutes(b.start);
+    var bEnd = parseTimetableMinutes(b.end);
+    if (aStart === null || aEnd === null || bStart === null || bEnd === null) return false;
+    return aStart < bEnd && bStart < aEnd;
+}
+
+function hasTimetableTransferTimeConflict(studentId, sourceClassId, targetClassId) {
+    var targetSlots = getTimetableClassSlots(targetClassId);
+    if (!targetSlots.length) return false;
+    return getTimetableStudentClassIds(studentId)
+        .filter(function(classId) {
+            return String(classId) !== String(sourceClassId) && String(classId) !== String(targetClassId);
+        })
+        .some(function(classId) {
+            var otherSlots = getTimetableClassSlots(classId);
+            return targetSlots.some(function(targetSlot) {
+                return otherSlots.some(function(otherSlot) {
+                    return doTimetableSlotsOverlap(targetSlot, otherSlot);
+                });
+            });
+        });
+}
+
+function handleTimetableStudentDragStart(event) {
+    if (!isTimetableAdminMode()) {
+        if (event && event.preventDefault) event.preventDefault();
+        return false;
+    }
+    var el = event && event.currentTarget;
+    if (!el || !event.dataTransfer) return true;
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', JSON.stringify({
+        student_id: el.getAttribute('data-student-id') || '',
+        source_class_id: el.getAttribute('data-source-class-id') || ''
+    }));
+    return true;
+}
+
+function handleTimetableClassDragOver(event) {
+    if (!isTimetableAdminMode()) return false;
+    var targetClassId = event && event.currentTarget ? event.currentTarget.getAttribute('data-drop-class-id') : '';
+    if (!targetClassId) return false;
+    event.preventDefault();
+    if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+    event.currentTarget.classList.add('tt-drop-ready');
+    return false;
+}
+
+function handleTimetableClassDragLeave(event) {
+    if (event && event.currentTarget) event.currentTarget.classList.remove('tt-drop-ready');
+}
+
+function readTimetableDropPayload(event) {
+    if (!event || !event.dataTransfer) return {};
+    try {
+        return JSON.parse(event.dataTransfer.getData('text/plain') || '{}') || {};
+    } catch (e) {
+        return {};
+    }
+}
+
+function handleTimetableClassDrop(event) {
+    if (!isTimetableAdminMode()) return false;
+    if (event && event.preventDefault) event.preventDefault();
+    if (event && event.currentTarget) event.currentTarget.classList.remove('tt-drop-ready');
+
+    var payload = readTimetableDropPayload(event);
+    var studentId = String(payload.student_id || '').trim();
+    var sourceClassId = String(payload.source_class_id || '').trim();
+    var targetClassId = event && event.currentTarget ? String(event.currentTarget.getAttribute('data-drop-class-id') || '').trim() : '';
+
+    if (!studentId || !sourceClassId || !targetClassId) return false;
+    if (sourceClassId === targetClassId) return false;
+
+    var student = findTimetableStudentById(studentId);
+    var sourceClass = findTimetableClassById(sourceClassId);
+    var targetClass = findTimetableClassById(targetClassId);
+    if (!student || !sourceClass || !targetClass) {
+        if (typeof toast === 'function') toast('전반할 학생 또는 반 정보를 찾을 수 없습니다.', 'warn');
+        return false;
+    }
+
+    openTimetableTransferConfirmModal({
+        studentId: studentId,
+        sourceClassId: sourceClassId,
+        targetClassId: targetClassId,
+        student: student,
+        sourceClass: sourceClass,
+        targetClass: targetClass,
+        hasConflict: hasTimetableTransferTimeConflict(studentId, sourceClassId, targetClassId)
+    });
+    return false;
+}
+
+function openTimetableTransferConfirmModal(ctx) {
+    var warningHtml = ctx.hasConflict
+        ? '<div style="padding:10px 12px; border:1px solid rgba(255,149,0,0.25); background:rgba(255,149,0,0.08); color:var(--text); border-radius:8px; font-size:13px; font-weight:700; line-height:1.5;">시간이 겹칠 수 있습니다. 이동 전 한 번 더 확인해주세요.</div>'
+        : '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); color:var(--secondary); border-radius:8px; font-size:13px; font-weight:700; line-height:1.5;">확인된 시간 충돌은 없습니다.</div>';
+
+    showModal('전반 확인', '' +
+        '<div style="display:flex; flex-direction:column; gap:12px; padding:0 4px 4px;">' +
+            '<div style="font-size:14px; font-weight:700; color:var(--text); line-height:1.5;">' + apEscapeHtml(ctx.student.name || '') + '</div>' +
+            '<div style="display:grid; grid-template-columns:78px 1fr; gap:8px 10px; font-size:13px; line-height:1.5;">' +
+                '<div style="color:var(--secondary); font-weight:700;">현재 반</div>' +
+                '<div style="color:var(--text); font-weight:700;">' + apEscapeHtml(ctx.sourceClass.name || '') + '</div>' +
+                '<div style="color:var(--secondary); font-weight:700;">이동할 반</div>' +
+                '<div style="color:var(--text); font-weight:700;">' + apEscapeHtml(ctx.targetClass.name || '') + '</div>' +
+            '</div>' +
+            warningHtml +
+            '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +
+                '<button class="btn" onclick="closeModal(true)">취소</button>' +
+                '<button class="btn btn-primary" onclick="confirmTimetableStudentTransfer()">전반하기</button>' +
+            '</div>' +
+        '</div>');
+
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        state.ui.pendingTimetableTransfer = {
+            studentId: ctx.studentId,
+            sourceClassId: ctx.sourceClassId,
+            targetClassId: ctx.targetClassId
+        };
+    }
+}
+
+function confirmTimetableStudentTransfer() {
+    if (!isTimetableAdminMode()) {
+        if (typeof toast === 'function') toast('원장모드에서만 전반할 수 있습니다.', 'warn');
+        return;
+    }
+    if (typeof toast === 'function') toast('안전한 전반 저장 API가 없어 이번 1차 구현에서는 저장하지 않습니다.', 'warn');
+}
+
 function getTimetableDateTitle() {
     var now = new Date();
     var yy = String(now.getFullYear()).slice(2);
@@ -655,10 +905,13 @@ function buildTimetableStudentSlot(student, classId) {
 
     var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '');
     var nameText = apEscapeHtml(student.name) + (student.isNew ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(신)</span>' : '');
+    var dragAttrs = isTimetableAdminMode()
+        ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)"'
+        : '';
 
     return '' +
         '<div class="tt-std-slot">' +
-            '<span class="' + cls + '" onclick="event.stopPropagation();openEditStudentFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')" title="클릭 → 정보 수정">' +
+            '<span class="' + cls + '"' + dragAttrs + ' onclick="event.stopPropagation();openEditStudentFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')" title="클릭 → 정보 수정">' +
                 nameText +
             '</span>' +
         '</div>';
@@ -707,8 +960,11 @@ function buildTimetableCard(cls) {
     var progressHtml = progress
         ? '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>'
         : '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
+    var dropAttrs = isTimetableAdminMode()
+        ? ' data-drop-class-id="' + apEscapeHtml(String(classId)) + '" ondragover="handleTimetableClassDragOver(event)" ondragleave="handleTimetableClassDragLeave(event)" ondrop="handleTimetableClassDrop(event)"'
+        : '';
 
-    return '<div class="tt-card">' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
+    return '<div class="tt-card"' + dropAttrs + '>' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
 }
 
 function getTimetableHighScheduleLines(cls) {
