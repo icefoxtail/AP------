@@ -5,8 +5,102 @@
 Codex, ChatGPT, Gemini, Claude, 사람 작업자는 기능 구현, 검수, 리팩터링, 문서화, 배포 지시를 하기 전에 반드시 이 문서를 먼저 기준으로 삼는다.
 
 이 문서의 원칙은 개별 작업 지시보다 우선한다. 단, 사용자가 특정 작업에서 명시적으로 예외를 허용한 경우에만 그 작업 범위 안에서 예외가 가능하다.
-
 ---
+
+# 0. 최상위 UI 노출 승인 원칙
+
+이 원칙은 모든 작업자에게 적용되는 최상위 원칙이다.
+
+백엔드, foundation, route, DB, helper, 숨김 함수, 숨김 모달, 숨김 진입점, 실험 기능, 준비된 기능이 이미 존재하더라도, 그것을 운영 화면에 새로 노출하거나 기본 화면으로 꺼내는 작업은 반드시 사용자에게 먼저 확인받는다.
+
+## 0.1 기본 원칙
+
+- 화면은 항상 간략하게 만든다.
+- 될 수 있는 한 안 보이게 만든다.
+- 운영자가 매번 볼 필요 없는 정보는 기본 화면에 노출하지 않는다.
+- 설정성 정보는 기본 화면에 펼치지 않는다.
+- 고급 기능, foundation 기능, 숨겨진 기능은 버튼, 접힘, 모달, 별도 화면 뒤에 둔다.
+- 실제 운영 필요성이 애매한 기능은 구현 전에 사용자에게 먼저 묻는다.
+- 백엔드에 구현되어 있다는 이유만으로 프론트에 꺼내지 않는다.
+- 문서에 후보로 적혀 있다는 이유만으로 프론트에 꺼내지 않는다.
+- 작업자가 보기 좋다고 판단한 요약 카드, 관리 카드, 통합 피드, 설정 패널을 임의로 만들지 않는다.
+
+## 0.2 UI로 꺼내기 전 필수 확인
+
+다음 중 하나라도 해당하면 반드시 사용자 확인 후 진행한다.
+
+- 기존 화면에 없던 새 섹션을 추가하는 경우
+- 숨겨져 있던 foundation 기능을 UI에 노출하는 경우
+- 백엔드에만 있던 기능을 버튼/카드/탭/모달로 꺼내는 경우
+- 관리자/원장 화면에 새 카드나 새 요약을 추가하는 경우
+- 학생 상세, 반 화면, 대시보드, 관리 화면에 새 관리 영역을 추가하는 경우
+- 설정성 정보나 고급 옵션을 기본 화면에 표시하는 경우
+- 수신동의, 로그, 이력, 감사 정보, 개인정보, 금전 정보처럼 운영자가 매번 볼 필요 없는 정보를 펼쳐 보이게 하는 경우
+- 실제 발송, 결제, 청구, 대량 처리, 자동 처리로 이어질 수 있는 진입점을 만드는 경우
+
+## 0.3 기본 노출 금지 항목
+
+아래 항목은 사용자가 명시적으로 승인하기 전까지 기본 화면에 펼쳐 노출하지 않는다.
+
+- 수신동의 전체 항목
+- 홍보성 동의
+- 연락 이력 상세 목록
+- message-preview
+- 실제 발송 후보 목록
+- 감사 로그
+- 개인정보 접근 로그
+- 수납·출납 foundation 화면
+- 결제/청구 고급 설정
+- 관리자/원장 통합 요약 카드
+- 운영자가 매번 보지 않아도 되는 설정성 정보
+- 추후 사용할 가능성만 있는 기능
+
+## 0.4 권장 UI 방식
+
+기본 화면에는 핵심 정보만 둔다.
+
+- 이름
+- 상태
+- 연락처
+- 주요 날짜
+- 현재 처리 상태
+- 수정/삭제처럼 즉시 필요한 최소 버튼
+
+세부 정보는 아래 방식으로 숨긴다.
+
+- `상세 보기`
+- `설정`
+- `연락 설정`
+- `이력 보기`
+- 접힘 영역
+- 모달
+- 별도 관리 화면
+- 승인 후 열리는 숨김 진입점
+
+## 0.5 실패 기준
+
+아래는 작업 실패로 본다.
+
+- 사용자 확인 없이 숨김 기능을 운영 화면에 꺼냄
+- 백엔드 foundation이 있다는 이유로 기본 화면에 새 섹션을 추가함
+- 설정성 정보를 기본 화면에 길게 펼쳐 놓음
+- 원장/관리자 화면에 승인 없는 카드나 요약을 추가함
+- 실제 운영 필요성이 불명확한 기능을 “미리” 노출함
+- 기존 화면을 간략하게 유지해야 하는데 복잡한 관리 패널을 추가함
+- 사용자가 요청하지 않은 고급 기능을 “추후 대비” 명목으로 노출함
+
+## 0.6 완료 보고 필수 항목
+
+UI 관련 작업 완료 보고에는 반드시 아래를 적는다.
+
+- 새로 화면에 노출한 기능이 있는지
+- 숨김/foundation 기능을 꺼냈는지
+- 사용자에게 사전 확인받은 범위인지
+- 기본 화면에 불필요한 설정성 정보를 노출하지 않았는지
+- 접힘/모달/버튼 뒤로 숨긴 정보가 무엇인지
+- 원장/관리자 화면에 새 카드나 새 요약을 추가하지 않았는지
+- 실제 발송/결제/청구/자동 처리 진입점을 만들지 않았는지
+
 
 # 1. 최상위 작업 원칙
 
@@ -387,7 +481,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | 시간표 버전 관리 | `timetable.js` | `/api/timetable-versions/*` | `routes/timetable-versions.js` | `timetable_versions`, `timetable_version_slots`, `class_time_slots` | draft/scheduled/active/cancelled 흐름, 기존 시간표 화면 갈아엎기 금지 |
 | 수업자료 오답 | `study-material-wrong.js`, `student/index.html` | `/api/study-materials`, `/api/material-*`, `/api/class-material-assignments` | `routes/study-material-wrongs.js` | `study_materials`, `class_material_assignments`, `student_material_submissions`, `student_material_wrong_answers` | 일반 시험 OMR 재수정 금지와 별개 정책 |
 | 수납·출납 foundation | `dashboard.js` 관리 진입점 숨김, `management.js` 설정/요약 모달 유지 | `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | `payment_methods`, `payment_transactions`, `cashbook_entries`, `refund_records`, `carryover_records`, `billing_policy_rules`, `accounting_daily_summaries`, `accounting_monthly_summaries` | 운영 노출 숨김, 실제 수납 처리 금지 |
-| 학부모 연락 foundation | 학생 상세 보호자 연락처/수신동의/연락 이력 UI | parent-foundation 계열 | `routes/parent-foundation.js` | `parent_contacts`, `parent_contact_consents`, `message_logs` | 개인정보/실제 발송 금지 주의 |
+| 학부모 연락 foundation | 학생 상세 보호자 연락처/수신동의/연락 이력 UI | parent-foundation 계열 | `routes/parent-foundation.js` | `parent_contacts`, `parent_contact_consents`, `message_logs` | 기본 화면은 간략 표시, 수신동의/연락 이력은 버튼·모달 뒤로 숨김, 개인정보/실제 발송 금지 주의 |
 | 아카이브/시험지 출력 | archive HTML/JS | archive/exam data | 정적 파일 + 일부 Worker 연계 | exam_blueprints 등 | 원본 기출 노출 정책 주의 |
 
 ## 4.4 버튼 수정 시 규칙
@@ -412,7 +506,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | 회수 대상 | 프론트 후보 | 주요 API | 담당 route | 1차 위치 | 주의 |
 |---|---|---|---|---|---|
 | 상담 이력 UI | `apmath/js/student.js` | `/api/consultations`, `/api/ai/consultation-summary` | `routes/operations.js`, `routes/reports-ai.js` | 학생 상세 탭 | 기존 학생 상세 문구 변경 금지, AI는 내부 미리보기/수동 반영만 허용 |
-| 학부모 연락처/수신동의 UI | `apmath/js/student.js` | `/api/parent-foundation/contacts`, `/api/parent-foundation/consents`, `/api/parent-foundation/messages` | `routes/parent-foundation.js` | 학생 상세 `상담기록` 탭 | 실제 문자/카카오 발송 금지, message-preview UI 노출 금지, 개인정보 주의 |
+| 학부모 연락처/수신동의 UI | `apmath/js/student.js` | `/api/parent-foundation/contacts`, `/api/parent-foundation/consents`, `/api/parent-foundation/messages` | `routes/parent-foundation.js` | 학생 상세 `상담기록` 탭 | 이름/관계/연락처/대표 여부만 기본 노출, 수신동의·연락 이력은 기본 펼침 금지, 홍보성 동의 기본 노출 금지, 실제 문자/카카오 발송 금지, message-preview UI 노출 금지, 개인정보 주의 |
 | 숙제 사진 확인/뷰어 UI | `classroom.js` | `/api/homework-photo/assignments`, `/api/homework-photo/overview`, `/api/homework-photo/student-links`, `/api/homework-photo/files`, `/api/homework-photo/*` | `routes/homework-photo.js` | 반별 운영 화면 | “숙제” 용어 유지, 제출 상태 임의 변경 금지, 확인 처리 필드/API 없으면 조회/뷰어까지만 |
 | 시간표 버전 관리 UI | `apmath/js/timetable.js` | `/api/timetable-versions/*` | `routes/timetable-versions.js` | 시간표 화면 상단 버전 배너/초안 모드 | 기존 시간표 화면 갈아엎기 금지, active/draft 저장 경로 분리 유지 |
 | 시간표 충돌 결과 UI | 시간표 관련 JS | `/api/timetable-conflicts*` | `routes/timetable-conflicts.js` | 시간표 관리 | student 충돌은 위험, teacher 충돌은 운영 예외 분리 |
@@ -792,7 +886,10 @@ Invoke-RestMethod `
 - 학생 포털은 배정 확인과 OMR 입력 연결까지만 허용
 - 제출 완료 OMR 수정/재입력/재제출 금지
 - 상담 AI는 내부 미리보기/수동 반영만 허용하고, 실제 발송 없음
-- 학부모 연락 UI는 학생 상세 내부 조회/수정까지만 허용하고, 실제 SMS/카카오/이메일 발송과 message-preview UI 노출은 보류한다.
+- 학부모 연락 UI는 학생 상세 내부 조회/수정까지만 허용하고, 기본 화면은 이름/관계/연락처/대표 여부 중심으로 간략 표시한다.
+- 학부모 연락 UI의 수신동의와 연락 이력은 기본 펼침 금지이며, 버튼/모달/접힘으로 필요할 때만 확인하게 한다.
+- 학부모 연락 UI의 홍보성 동의는 실제 발송 기능 전까지 기본 화면에 노출하지 않는다.
+- 학부모 연락 UI는 실제 SMS/카카오/이메일 발송과 message-preview UI 노출을 계속 보류한다.
 - 숙제 사진 UI는 반별 제출 현황과 파일 조회/뷰어까지만 허용하고, 학생 제출 페이지의 실제 사진 업로드 흐름과 확인 처리 정책 보강은 별도 단계로 둔다.
 - 원장/관리자 화면은 명시 허락 없이 변경 금지
 - 새 기능 선행 구현 금지
