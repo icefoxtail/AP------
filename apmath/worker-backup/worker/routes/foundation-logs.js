@@ -32,7 +32,7 @@ function addOptionalDateRange(url, where, params) {
 export async function handleFoundationLogs(request, env, teacher, path, url, body = {}) {
   const method = request.method;
   const sub = path[2];
-  const tables = { 'status-history': 'student_status_history', 'class-transfers': 'class_transfer_history', audit: 'audit_logs', privacy: 'privacy_access_logs' };
+  const tables = { messages: 'message_logs', 'status-history': 'student_status_history', 'class-transfers': 'class_transfer_history', audit: 'audit_logs', privacy: 'privacy_access_logs' };
   const table = tables[sub];
   if (!table) return jsonResponse({ error: 'API Endpoint Not Found' }, 404);
 
@@ -41,6 +41,29 @@ export async function handleFoundationLogs(request, env, teacher, path, url, bod
       if (!isAdminUser(teacher)) return jsonResponse({ success: true, data: [] });
       const limit = parseLimit(url, 1000, 1000);
       const data = await safeAll(env, `SELECT * FROM ${table} ORDER BY created_at DESC LIMIT ${limit}`);
+      return jsonResponse({ success: true, data });
+    }
+
+    if (sub === 'messages') {
+      const where = [];
+      const params = [];
+      addOptionalEquals(url, where, params, 'student_id');
+      addOptionalEquals(url, where, params, 'parent_contact_id');
+      addOptionalEquals(url, where, params, 'branch');
+      addOptionalEquals(url, where, params, 'message_type');
+      addOptionalEquals(url, where, params, 'channel');
+      addOptionalEquals(url, where, params, 'status');
+
+      if (!isAdminUser(teacher)) {
+        const classIds = await getAllowedClassIds(env, teacher);
+        if (!classIds?.length) return jsonResponse({ success: true, data: [] });
+        const cMarkers = classIds.map(() => '?').join(',');
+        where.push(`student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMarkers}))`);
+        params.push(...classIds);
+      }
+
+      const limit = parseLimit(url, isAdminUser(teacher) ? 1000 : 500, 1000);
+      const data = await safeAll(env, `SELECT * FROM ${table}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} ORDER BY created_at DESC LIMIT ${limit}`, params);
       return jsonResponse({ success: true, data });
     }
 
