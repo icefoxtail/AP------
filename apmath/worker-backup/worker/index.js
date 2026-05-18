@@ -8,6 +8,7 @@
 import { handleEnrollments } from './routes/enrollments.js';
 import { handleClassTimeSlots } from './routes/class-time-slots.js';
 import { handleTimetableConflicts } from './routes/timetable-conflicts.js';
+import { handleTimetableVersions } from './routes/timetable-versions.js';
 import { handleFoundationSync } from './routes/foundation-sync.js';
 import { handleBillingFoundation } from './routes/billing-foundation.js';
 import { handleBillingAccountingFoundation } from './routes/billing-accounting-foundation.js';
@@ -2492,7 +2493,7 @@ export default {
         const resource = path[1];
         const id = path[2];
 
-        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync'].includes(resource)) {
+        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'timetable-versions', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync'].includes(resource)) {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
           const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
@@ -2500,6 +2501,7 @@ export default {
             resource === 'enrollments' ? handleEnrollments :
             resource === 'class-time-slots' ? handleClassTimeSlots :
             (resource === 'timetable-conflicts' || resource === 'timetable-conflict-overrides') ? handleTimetableConflicts :
+            resource === 'timetable-versions' ? handleTimetableVersions :
             resource === 'foundation-sync' ? handleFoundationSync :
             resource === 'billing-foundation' ? handleBillingFoundation :
             resource === 'billing-accounting-foundation' ? handleBillingAccountingFoundation :
