@@ -36,6 +36,156 @@ function isStudentOnLeave(s) {
     return !!(s && (s.status === '휴원' || String(s.memo || '').indexOf('#휴원') !== -1));
 }
 
+function sortConsultationsByLatest(rows = []) {
+    return [...rows].sort((a, b) => {
+        const dateDiff = String(b?.date || '').localeCompare(String(a?.date || ''));
+        if (dateDiff !== 0) return dateDiff;
+        const createdDiff = String(b?.created_at || '').localeCompare(String(a?.created_at || ''));
+        if (createdDiff !== 0) return createdDiff;
+        return String(b?.id || '').localeCompare(String(a?.id || ''));
+    });
+}
+
+function getStudentConsultationsFromState(sid) {
+    return sortConsultationsByLatest((state.db.consultations || []).filter(c => String(c.student_id) === String(sid)));
+}
+
+function syncStudentConsultationsInState(sid, rows) {
+    const safeRows = sortConsultationsByLatest(Array.isArray(rows) ? rows : []);
+    const others = (state.db.consultations || []).filter(c => String(c.student_id) !== String(sid));
+    state.db.consultations = [...others, ...safeRows];
+    return safeRows;
+}
+
+function ensureStudentConsultationUiState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.studentConsultations) {
+        state.ui.studentConsultations = { byStudent: {} };
+    }
+    return state.ui.studentConsultations;
+}
+
+function ensureConsultationAiUiState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.consultationAi) {
+        state.ui.consultationAi = {
+            mode: '',
+            studentId: '',
+            consultationId: '',
+            loading: false,
+            result: null,
+            error: '',
+            warning: '',
+            source: ''
+        };
+    }
+    return state.ui.consultationAi;
+}
+
+function resetConsultationAiUiState(mode = '', studentId = '', consultationId = '') {
+    const store = ensureConsultationAiUiState();
+    store.mode = mode;
+    store.studentId = String(studentId || '');
+    store.consultationId = String(consultationId || '');
+    store.loading = false;
+    store.result = null;
+    store.error = '';
+    store.warning = '';
+    store.source = '';
+    return store;
+}
+
+function consultationAiPanelHtml(mode) {
+    const ai = ensureConsultationAiUiState();
+    const disabled = ai.loading ? 'disabled' : '';
+    const loadingText = ai.loading ? 'AI 요약 생성 중입니다.' : '';
+    const result = ai.result || null;
+    const keyIssuesHtml = Array.isArray(result?.key_issues) && result.key_issues.length
+        ? `<ul style="margin: 8px 0 0 18px; padding: 0; color: var(--text); font-size: 12px; font-weight: 700; line-height: 1.6;">
+                ${result.key_issues.map(item => `<li>${apEscapeHtml(item)}</li>`).join('')}
+           </ul>`
+        : '';
+    const applyButton = result?.next_action_draft
+        ? `<button type="button" class="btn" style="min-height: 38px; padding: 8px 12px; font-size: 12px; font-weight:700; border-radius: 12px; color: var(--primary); border: 1px solid rgba(26,92,255,0.2); background: rgba(26,92,255,0.06);" onclick="applyConsultationAiNextAction('${mode}')">다음 조치 반영</button>`
+        : '';
+
+    return `
+        <div id="consultation-ai-panel" style="display:flex; flex-direction:column; gap:10px; padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+                <div style="font-size:12px; color:var(--secondary); font-weight:800; line-height:1.5;">상담 AI 요약/다음 조치 초안</div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button type="button" id="consultation-ai-generate-btn" class="btn" ${disabled} style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:12px;" onclick="generateConsultationAiSummary('${mode}')">AI 요약</button>
+                    ${applyButton}
+                </div>
+            </div>
+            ${loadingText ? `<div style="font-size:12px; color:var(--secondary); font-weight:700;">${loadingText}</div>` : ''}
+            ${ai.error ? `<div style="font-size:12px; color:var(--error); font-weight:700; line-height:1.5;">${apEscapeHtml(ai.error)}</div>` : ''}
+            ${ai.warning ? `<div style="font-size:11px; color:var(--warning); font-weight:700; line-height:1.5;">${apEscapeHtml(ai.warning)}</div>` : ''}
+            ${result ? `
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="font-size:12px; color:var(--secondary); font-weight:800;">AI 요약</div>
+                    <div style="font-size:13px; color:var(--text); font-weight:700; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(result.summary || '')}</div>
+                    ${keyIssuesHtml ? `<div><div style="font-size:12px; color:var(--secondary); font-weight:800;">핵심 이슈</div>${keyIssuesHtml}</div>` : ''}
+                    ${result.next_action_draft ? `<div><div style="font-size:12px; color:var(--secondary); font-weight:800;">다음 조치 초안</div><div style="font-size:13px; color:var(--text); font-weight:700; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(result.next_action_draft)}</div></div>` : ''}
+                </div>
+            ` : '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">상담 내용을 입력한 뒤 AI 요약을 눌러 내부 기록용 요약과 다음 조치 초안을 확인할 수 있습니다.</div>'}
+        </div>
+    `;
+}
+
+function renderConsultationAiPanel(mode) {
+    const panel = document.getElementById('consultation-ai-panel-wrap');
+    if (panel) panel.innerHTML = consultationAiPanelHtml(mode);
+}
+
+async function ensureStudentConsultationsLoaded(sid, options = {}) {
+    const store = ensureStudentConsultationUiState();
+    const key = String(sid || '');
+    if (!key) return getStudentConsultationsFromState(key);
+
+    if (!store.byStudent[key]) {
+        store.byStudent[key] = { loadedAt: 0, loading: false, inFlight: null, error: '' };
+    }
+    const entry = store.byStudent[key];
+    const force = !!options.force;
+    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
+    if (!force && entry.loadedAt && (Date.now() - entry.loadedAt) < maxAgeMs) {
+        return getStudentConsultationsFromState(key);
+    }
+    if (entry.inFlight) return entry.inFlight;
+
+    entry.loading = true;
+    entry.error = '';
+
+    const promise = api.get(`consultations?student_id=${encodeURIComponent(key)}`)
+        .then(res => {
+            if (res?.success && Array.isArray(res.data)) {
+                const rows = syncStudentConsultationsInState(key, res.data);
+                entry.loadedAt = Date.now();
+                entry.loading = false;
+                entry.error = '';
+                if (state.ui.currentStudentDetailId === key && state.ui.currentStudentDetailTab === 'cns') {
+                    renderStudentDetailTab(key, 'cns');
+                }
+                return rows;
+            }
+            entry.loading = false;
+            entry.error = String(res?.message || res?.error || 'consultations load failed');
+            return getStudentConsultationsFromState(key);
+        })
+        .catch(err => {
+            entry.loading = false;
+            entry.error = String(err?.message || err || 'consultations load failed');
+            return getStudentConsultationsFromState(key);
+        })
+        .finally(() => {
+            entry.inFlight = null;
+        });
+
+    entry.inFlight = promise;
+    return promise;
+}
+
 /**
  * 학생 상세 진입점 (기존 유지)
  */
@@ -70,6 +220,9 @@ function returnFromStudentFlow(ctx = null) {
  */
 function renderStudentDetailTab(sid, tab) {
     injectStudentStyles();
+    if (!state.ui) state.ui = {};
+    state.ui.currentStudentDetailId = String(sid);
+    state.ui.currentStudentDetailTab = tab;
     const s = state.db.students.find(st => st.id === sid);
     const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
     const cls = state.db.classes.find(c => String(c.id) === String(mIds?.class_id));
@@ -133,6 +286,9 @@ function renderStudentDetailTab(sid, tab) {
 
     showModal(`${s.name} 프로필`, `<div style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
     if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
+    if (tab === 'cns') {
+        void ensureStudentConsultationsLoaded(sid);
+    }
 }
 
 /**
@@ -204,7 +360,8 @@ function renderWeakTab(sid) {
  * [Tab 3] 상담기록 (18px 라운드 및 13px 본문 규격)
  */
 function renderCnsTab(sid) {
-    const cnsList = (state.db.consultations || []).filter(c => c.student_id === sid).sort((a,b) => String(b.date).localeCompare(String(a.date)));
+    const cnsState = ensureStudentConsultationUiState().byStudent[String(sid)] || {};
+    const cnsList = getStudentConsultationsFromState(sid);
 
     const cnsCards = cnsList.map(c => `
         <div class="card" style="padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 16px; box-shadow: none; background: var(--surface);">
@@ -223,12 +380,15 @@ function renderCnsTab(sid) {
                 <div style="margin-top: 12px; padding: 10px; background: rgba(255,165,2,0.06); border: 1px solid rgba(255,165,2,0.1); border-radius: 10px; font-size: 12px; color: var(--warning); font-weight: 700; line-height: 1.5;">
                     <b style="color: var(--warning);">조치:</b> ${apEscapeHtml(c.next_action)}
                 </div>` : ''}
+            ${c.created_at ? `<div style="margin-top: 10px; font-size: 11px; color: var(--secondary); font-weight: 700; line-height: 1.5;">등록 시각 ${apEscapeHtml(c.created_at)}</div>` : ''}
         </div>
     `).join('');
 
     return `
         <div style="padding: 0 4px;">
+            <div style="margin: 0 0 12px 2px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">상담 이력</div>
             <button class="btn btn-primary" style="width: 100%; margin-bottom: 20px; min-height: 52px; font-size: 14px; font-weight:700; border-radius: 16px; box-shadow: none;" onclick="openAddConsultationModal('${sid}')">+ 새 상담 기록하기</button>
+            ${cnsState.loading ? '<div style="margin-bottom: 12px; font-size: 12px; color: var(--secondary); font-weight: 700;">상담 기록을 불러오는 중입니다.</div>' : ''}
             <div style="max-height: 450px; overflow-y: auto; padding-right: 4px;">
                 ${cnsCards || '<div style="text-align: center; padding: 40px; color: var(--secondary); font-size: 13px; font-weight: 700;">상담 기록이 없습니다.</div>'}
             </div>
@@ -335,6 +495,7 @@ function openReportPreview(sid) {
  */
 function openAddConsultationModal(sid) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
+    resetConsultationAiUiState('add', sid, '');
     const todayStr = new Date().toLocaleDateString('sv-SE');
     showModal('상담 기록 추가', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -346,22 +507,100 @@ function openAddConsultationModal(sid) {
             </div>
             <textarea id="cns-content" class="std-input-base" placeholder="상담 내용을 입력하세요." style="height: 140px;"></textarea>
             <textarea id="cns-action" class="std-input-base" placeholder="조치 사항 (선택)" style="height: 70px;"></textarea>
+            <div id="consultation-ai-panel-wrap">${consultationAiPanelHtml('add')}</div>
         </div>
     `, '저장', () => handleSaveConsultation(sid));
 }
 
 async function handleSaveConsultation(sid) {
-    const date = document.getElementById('cns-date').value;
+    const date = document.getElementById('cns-date').value || new Date().toLocaleDateString('sv-SE');
     const type = document.getElementById('cns-type').value;
     const content = document.getElementById('cns-content').value.trim();
     const nextAction = document.getElementById('cns-action').value.trim();
-    if (!content) { toast('내용을 입력하세요.', 'warn'); return; }
-    const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction });
-    if (r.success) { toast('저장완료', 'success'); closeModal(true); await loadData(); renderStudentDetailTab(sid, 'cns'); }
+    if (!content) { toast('상담 내용을 입력하세요.', 'warn'); return; }
+
+    try {
+        const r = await api.post('consultations', { studentId: sid, date, type, content, nextAction });
+        if (r?.success) {
+            toast('상담 기록이 저장되었습니다.', 'success');
+            closeModal(true);
+            await ensureStudentConsultationsLoaded(sid, { force: true });
+            renderStudentDetailTab(sid, 'cns');
+            return;
+        }
+        toast(r?.message || r?.error || '상담 기록 저장에 실패했습니다.', 'error');
+    } catch (e) {
+        console.error('[handleSaveConsultation] failed:', e);
+        toast('상담 기록 저장 중 오류가 발생했습니다.', 'error');
+    }
+}
+
+async function generateConsultationAiSummary(mode) {
+    const ai = ensureConsultationAiUiState();
+    if (ai.loading) return;
+
+    const studentId = String(ai.studentId || '');
+    const student = state.db.students.find(row => String(row.id) === studentId);
+    const dateInput = document.getElementById(mode === 'edit' ? 'edit-cns-date' : 'cns-date');
+    const typeInput = document.getElementById(mode === 'edit' ? 'edit-cns-type' : 'cns-type');
+    const contentInput = document.getElementById(mode === 'edit' ? 'edit-cns-content' : 'cns-content');
+    const actionInput = document.getElementById(mode === 'edit' ? 'edit-cns-action' : 'cns-action');
+    const content = String(contentInput?.value || '').trim();
+    if (!content) {
+        toast('상담 내용을 입력한 뒤 AI 요약을 실행하세요.', 'warn');
+        return;
+    }
+
+    ai.loading = true;
+    ai.error = '';
+    ai.warning = '';
+    renderConsultationAiPanel(mode);
+
+    try {
+        const result = await api.post('ai/consultation-summary', {
+            student_id: studentId,
+            student_name: student?.name || '',
+            grade: student?.grade || '',
+            consultation_type: String(typeInput?.value || '').trim(),
+            consultation_date: String(dateInput?.value || '').trim() || new Date().toLocaleDateString('sv-SE'),
+            content,
+            next_action: String(actionInput?.value || '').trim()
+        });
+
+        if (result?.success) {
+            ai.result = {
+                summary: String(result.summary || '').trim(),
+                key_issues: Array.isArray(result.key_issues) ? result.key_issues : [],
+                next_action_draft: String(result.next_action_draft || '').trim()
+            };
+            ai.warning = String(result.warning || '').trim();
+            ai.source = String(result.source || '').trim();
+            toast(ai.source === 'fallback' ? 'AI 초안이 대체 모드로 생성되었습니다.' : 'AI 요약이 생성되었습니다.', 'info');
+        } else {
+            ai.error = String(result?.message || result?.error || 'AI 요약 생성에 실패했습니다.');
+        }
+    } catch (e) {
+        console.error('[generateConsultationAiSummary] failed:', e);
+        ai.error = 'AI 요약 생성 중 오류가 발생했습니다.';
+    } finally {
+        ai.loading = false;
+        renderConsultationAiPanel(mode);
+    }
+}
+
+function applyConsultationAiNextAction(mode) {
+    const ai = ensureConsultationAiUiState();
+    const draft = String(ai.result?.next_action_draft || '').trim();
+    if (!draft) return;
+    const actionInput = document.getElementById(mode === 'edit' ? 'edit-cns-action' : 'cns-action');
+    if (!actionInput) return;
+    actionInput.value = draft;
+    toast('다음 조치 초안을 반영했습니다.', 'success');
 }
 
 function openEditConsultation(cid, sid) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
+    resetConsultationAiUiState('edit', sid, cid);
     const c = state.db.consultations.find(x => x.id === cid);
     if (!c) return;
     showModal('상담 수정', `
@@ -372,10 +611,12 @@ function openEditConsultation(cid, sid) {
                     <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
                     <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
                     <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
+                    <option value="기타" ${c.type==='기타'?'selected':''}>기타</option>
                 </select>
             </div>
-            <textarea id="edit-cns-content" class="std-input-base" style="height: 140px;">${c.content}</textarea>
-            <textarea id="edit-cns-action" class="std-input-base" style="height: 70px;">${c.next_action||''}</textarea>
+            <textarea id="edit-cns-content" class="std-input-base" style="height: 140px;">${apEscapeHtml(c.content || '')}</textarea>
+            <textarea id="edit-cns-action" class="std-input-base" style="height: 70px;">${apEscapeHtml(c.next_action || '')}</textarea>
+            <div id="consultation-ai-panel-wrap">${consultationAiPanelHtml('edit')}</div>
         </div>
     `, '수정 완료', () => handleEditConsultation(cid, sid));
 }
@@ -392,7 +633,7 @@ async function handleEditConsultation(cid, sid) {
         if (r?.success) {
             toast('상담 기록이 수정되었습니다.', 'info');
             closeModal(true);
-            await loadData();
+            await ensureStudentConsultationsLoaded(sid, { force: true });
             renderStudentDetailTab(sid, 'cns');
             return;
         }
@@ -404,13 +645,13 @@ async function handleEditConsultation(cid, sid) {
 }
 
 async function handleDeleteConsultation(cid, sid) {
-    if (!confirm('삭제하시겠습니까?')) return;
+    if (!confirm('상담 기록을 삭제하시겠습니까?')) return;
 
     try {
         const r = await api.delete('consultations', cid);
         if (r?.success) {
             toast('상담 기록이 삭제되었습니다.', 'info');
-            await loadData();
+            await ensureStudentConsultationsLoaded(sid, { force: true });
             renderStudentDetailTab(sid, 'cns');
             return;
         }
