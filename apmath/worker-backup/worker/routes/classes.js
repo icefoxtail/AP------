@@ -54,12 +54,29 @@ export async function handleClasses(request, env, teacher, path, url, body = {})
   }
 
   if (method === 'POST') {
+    if (body.timetable_cell_create && !isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
     const d = normalizeClassPayload(body, {}, teacher);
     if (!d.name) return jsonResponse({ error: 'name required' }, 400);
     const cid = `cls_${Date.now()}`;
     await env.DB.prepare('INSERT INTO classes (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active, day_group, time_label) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)').bind(cid, d.name, d.grade, d.subject, d.teacherName, d.scheduleDays, d.textbook, d.isActive, d.dayGroup, d.timeLabel).run();
     const mappingUpdated = await syncTeacherClassMapping(env, cid, d.teacherName);
-    return jsonResponse({ success: true, id: cid, mappingUpdated });
+    return jsonResponse({
+      success: true,
+      id: cid,
+      class: {
+        id: cid,
+        name: d.name,
+        grade: d.grade,
+        subject: d.subject,
+        teacher_name: d.teacherName,
+        schedule_days: d.scheduleDays,
+        textbook: d.textbook,
+        is_active: d.isActive,
+        day_group: d.dayGroup,
+        time_label: d.timeLabel
+      },
+      mappingUpdated
+    });
   }
 
   if (method === 'PATCH' && id) {

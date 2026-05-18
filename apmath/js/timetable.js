@@ -30,6 +30,15 @@ var TIMETABLE_MIDDLE_PERIODS = [
     { key: '2교시', label: '2교시', time: '6:30~8:00' },
     { key: '3교시', label: '3교시', time: '8:00~9:30' }
 ];
+var TIMETABLE_MIDDLE_DAY_GROUP_DAYS = {
+    mwf: ['mon', 'wed', 'fri'],
+    ttf: ['tue', 'thu', 'fri']
+};
+var TIMETABLE_MIDDLE_PERIOD_TIMES = {
+    '1교시': { start: '16:50', end: '18:20', legacy: '1교시 4:50~6:20' },
+    '2교시': { start: '18:30', end: '20:00', legacy: '2교시 6:30~8:00' },
+    '3교시': { start: '20:00', end: '21:30', legacy: '3교시 8:00~9:30' }
+};
 var TIMETABLE_HIGH_GRADES = ['고1', '고2', '고3'];
 var TIMETABLE_FIT_BOUND = false;
 var TIMETABLE_FIT_TIMER = null;
@@ -93,6 +102,11 @@ function installTimetableStyle() {
         '@media (hover: hover) { .tt-std-empty:hover { color:var(--primary); border-color:rgba(26,92,255,0.3); background:rgba(26,92,255,0.03); } }',
         '.tt-std-slot-more { display:flex; align-items:center; justify-content:flex-start; width:100%; min-height:18px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.05); border-radius:4px; cursor:pointer; padding:0 3px; box-sizing:border-box; grid-column:span 2; letter-spacing:-0.2px; }',
         '.tt-card.tt-drop-ready { border-color:rgba(26,92,255,0.45); background:rgba(26,92,255,0.03); }',
+        '.tt-card[draggable="true"] { cursor:grab; }',
+        '.tt-card[draggable="true"]:active { cursor:grabbing; }',
+        '.tt-cell-drop-ready { outline:2px solid rgba(26,92,255,0.32); outline-offset:-2px; background:rgba(26,92,255,0.04) !important; }',
+        '.tt-add-class-cell { width:100%; min-height:30px; border:1px dashed rgba(26,92,255,0.28); border-radius:6px; background:rgba(26,92,255,0.035); color:var(--primary); font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; }',
+        '@media (hover: hover) { .tt-add-class-cell:hover { background:rgba(26,92,255,0.08); } }',
         '.tt-row-label { font-weight:700; font-size:13px; color:var(--text); text-align:center; white-space:nowrap; letter-spacing:-0.3px; line-height:1.3; }',
         '.tt-row-sublabel { font-size:10px; color:var(--secondary); text-align:center; margin-top:2px; white-space:nowrap; letter-spacing:-0.2px; line-height:1.3; }',
         '.tt-high-class-wrap { display:flex; flex-direction:column; gap:2px; margin-bottom:4px; }',
@@ -538,6 +552,139 @@ function getTimetableClassSlots(classId) {
     }).filter(function(slot) { return slot.day && slot.start && slot.start !== 'unknown'; });
 }
 
+function ensureTimetableClassTimeSlotsLoaded() {
+    if (typeof state === 'undefined' || !state.db || typeof api === 'undefined' || typeof api.get !== 'function') return;
+    if (state.ui && state.ui.timetableSlotsLoaded) return;
+    if (state.ui && state.ui.timetableSlotsLoading) return;
+    if (Array.isArray(state.db.class_time_slots) && state.db.class_time_slots.length) return;
+
+    if (!state.ui) state.ui = {};
+    state.ui.timetableSlotsLoading = true;
+    api.get('class-time-slots')
+        .then(function(res) {
+            var rows = Array.isArray(res && res.class_time_slots) ? res.class_time_slots : [];
+            state.db.class_time_slots = rows;
+            if (state.allDb) state.allDb.class_time_slots = rows;
+            state.ui.timetableSlotsLoaded = true;
+            state.ui.timetableSlotsLoading = false;
+            if (typeof renderTimetable === 'function') renderTimetable();
+        })
+        .catch(function(e) {
+            console.warn('[ensureTimetableClassTimeSlotsLoaded] failed:', e);
+            state.ui.timetableSlotsLoading = false;
+        });
+}
+
+function getTimetableClassSlotRows(classId) {
+    var db = _getAllDb();
+    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+    return _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots)
+        .filter(function(slot) { return String(slot.class_id) === String(classId); })
+        .map(function(slot) {
+            return {
+                id: slot.id || '',
+                class_id: slot.class_id,
+                day_of_week: normalizeTimetableSlotDay(slot.day_of_week || slot.day || ''),
+                start_time: normalizeTimetableTime(slot.start_time || ''),
+                end_time: normalizeTimetableTime(slot.end_time || ''),
+                room_name: slot.room_name || null,
+                memo: slot.memo || null
+            };
+        })
+        .filter(function(slot) { return slot.day_of_week && slot.start_time && slot.end_time; });
+}
+
+function normalizeTimetableSlotDay(day) {
+    var raw = String(day || '').trim().toLowerCase();
+    var map = {
+        '1': 'mon', '2': 'tue', '3': 'wed', '4': 'thu', '5': 'fri', '6': 'sat', '0': 'sun', '7': 'sun',
+        monday: 'mon', mon: 'mon',
+        tuesday: 'tue', tue: 'tue',
+        wednesday: 'wed', wed: 'wed',
+        thursday: 'thu', thu: 'thu',
+        friday: 'fri', fri: 'fri',
+        saturday: 'sat', sat: 'sat',
+        sunday: 'sun', sun: 'sun'
+    };
+    return map[raw] || raw;
+}
+
+function normalizeTimetableTime(value) {
+    var m = String(value || '').trim().match(/^(\d{1,2}):(\d{2})/);
+    if (!m) return '';
+    return String(Number(m[1])).padStart(2, '0') + ':' + m[2];
+}
+
+function getTimetableMiddlePeriodFromSlot(slot) {
+    var start = normalizeTimetableTime(slot && slot.start_time);
+    var end = normalizeTimetableTime(slot && slot.end_time);
+    if ((start === '16:50' || start === '04:50') && (end === '18:20' || end === '06:20')) return '1교시';
+    if ((start === '18:30' || start === '06:30') && (end === '20:00' || end === '08:00')) return '2교시';
+    if ((start === '20:00' || start === '08:00') && (end === '21:30' || end === '09:30')) return '3교시';
+    if (start === '16:50' || start === '04:50') return '1교시';
+    if (start === '18:30' || start === '06:30') return '2교시';
+    if (start === '20:00' || start === '08:00') return '3교시';
+    return '';
+}
+
+function getTimetableMiddleGroupFromSlotDays(days) {
+    var set = {};
+    days.forEach(function(day) { set[normalizeTimetableSlotDay(day)] = true; });
+    if (set.mon && set.wed && set.fri) return 'mwf';
+    if (set.tue && set.thu && set.fri) return 'ttf';
+    return '';
+}
+
+function getTimetableFallbackPlacementRows(cls) {
+    var dg = getTimetableDayGroup(cls);
+    var period = getTimetablePeriodKey(cls);
+    if (TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(dg) === -1 || period === 'unknown') return [];
+    return [{
+        class_id: cls.id,
+        section: getTimetableSectionForClass(cls),
+        day_group: dg,
+        period_key: period,
+        teacher_name: getTimetableClassTeacherName(cls),
+        source: 'fallback'
+    }];
+}
+
+function getTimetablePlacementRows(cls) {
+    var slots = getTimetableClassSlotRows(cls && cls.id);
+    if (!slots.length) return getTimetableFallbackPlacementRows(cls);
+
+    var grouped = {};
+    slots.forEach(function(slot) {
+        var period = getTimetableMiddlePeriodFromSlot(slot);
+        if (!period) return;
+        var key = period;
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(slot.day_of_week);
+    });
+
+    var rows = Object.keys(grouped).map(function(period) {
+        var dg = getTimetableMiddleGroupFromSlotDays(grouped[period]);
+        if (!dg) return null;
+        return {
+            class_id: cls.id,
+            section: 'middle',
+            day_group: dg,
+            period_key: period,
+            teacher_name: getTimetableClassTeacherName(cls),
+            source: 'class_time_slots'
+        };
+    }).filter(Boolean);
+
+    if (!rows.length) return getTimetableFallbackPlacementRows(cls);
+    if (rows.length > 1 && typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        if (!state.ui.timetablePlacementWarnings) state.ui.timetablePlacementWarnings = {};
+        state.ui.timetablePlacementWarnings[String(cls.id)] = rows.length;
+    }
+    return [rows[0]];
+}
+
 function getTimetableClassFallbackDays(cls) {
     var raw = String(cls && cls.schedule_days || '').trim();
     if (!raw) return [];
@@ -624,6 +771,20 @@ function handleTimetableClassDrop(event) {
     if (event && event.currentTarget) event.currentTarget.classList.remove('tt-drop-ready');
 
     var payload = readTimetableDropPayload(event);
+    if (payload.drag_type === 'class-card') {
+        var cellEl = event && event.currentTarget && event.currentTarget.closest
+            ? event.currentTarget.closest('[data-timetable-cell]')
+            : null;
+        if (cellEl) {
+            var target = getTimetableCellContext(cellEl);
+            var movingClassId = String(payload.class_id || '').trim();
+            var movingClass = findTimetableClassById(movingClassId);
+            if (movingClassId && target && movingClass) {
+                openTimetableClassMoveConfirmModal({ classId: movingClassId, cls: movingClass, target: target });
+            }
+        }
+        return false;
+    }
     var studentId = String(payload.student_id || '').trim();
     var sourceClassId = String(payload.source_class_id || '').trim();
     var targetClassId = event && event.currentTarget ? String(event.currentTarget.getAttribute('data-drop-class-id') || '').trim() : '';
@@ -649,6 +810,327 @@ function handleTimetableClassDrop(event) {
         hasConflict: hasTimetableTransferTimeConflict(studentId, sourceClassId, targetClassId)
     });
     return false;
+}
+
+function handleTimetableClassCardDragStart(event) {
+    if (!isTimetableAdminMode()) {
+        if (event && event.preventDefault) event.preventDefault();
+        return false;
+    }
+    if (event && event.target && event.target.closest && event.target.closest('.tt-std-name')) return true;
+    var el = event && event.currentTarget;
+    if (!el || !event.dataTransfer) return true;
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', JSON.stringify({
+        drag_type: 'class-card',
+        class_id: el.getAttribute('data-drag-class-id') || ''
+    }));
+    return true;
+}
+
+function handleTimetableCellDragOver(event) {
+    if (!isTimetableAdminMode()) return false;
+    event.preventDefault();
+    if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+    if (event.currentTarget) event.currentTarget.classList.add('tt-cell-drop-ready');
+    return false;
+}
+
+function handleTimetableCellDragLeave(event) {
+    if (event && event.currentTarget) event.currentTarget.classList.remove('tt-cell-drop-ready');
+}
+
+function getTimetableCellContext(el) {
+    if (!el) return null;
+    return {
+        section: el.getAttribute('data-section') || '',
+        day_group: el.getAttribute('data-day-group') || '',
+        period_key: el.getAttribute('data-period-key') || '',
+        teacher_name: el.getAttribute('data-teacher-name') || '',
+        grade: el.getAttribute('data-grade') || '',
+        start_time: el.getAttribute('data-start-time') || '',
+        end_time: el.getAttribute('data-end-time') || ''
+    };
+}
+
+function handleTimetableCellDrop(event) {
+    if (!isTimetableAdminMode()) {
+        if (typeof toast === 'function') toast('원장모드에서만 시간표를 이동할 수 있습니다.', 'warn');
+        return false;
+    }
+    if (event && event.preventDefault) event.preventDefault();
+    if (event && event.currentTarget) event.currentTarget.classList.remove('tt-cell-drop-ready');
+    var payload = readTimetableDropPayload(event);
+    if (payload.drag_type !== 'class-card') return false;
+    var classId = String(payload.class_id || '').trim();
+    var target = getTimetableCellContext(event.currentTarget);
+    var cls = findTimetableClassById(classId);
+    if (!classId || !target || !cls) return false;
+    if (target.section !== 'middle') {
+        if (typeof toast === 'function') toast('고등부 시간표 이동은 별도 설계가 필요합니다.', 'warn');
+        return false;
+    }
+    openTimetableClassMoveConfirmModal({ classId: classId, cls: cls, target: target });
+    return false;
+}
+
+function describeTimetablePlacement(row) {
+    if (!row) return '-';
+    var dg = row.day_group === 'mwf' ? '월수금' : (row.day_group === 'ttf' ? '화목금' : row.day_group || '-');
+    return [dg, row.period_key || '-', row.teacher_name || '-'].join(' / ');
+}
+
+function openTimetableClassMoveConfirmModal(ctx) {
+    var current = getTimetablePlacementRows(ctx.cls)[0] || null;
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        state.ui.pendingTimetableClassMove = {
+            classId: ctx.classId,
+            target: ctx.target
+        };
+    }
+    showModal('반 시간표 이동 확인', '' +
+        '<div style="display:flex; flex-direction:column; gap:12px; padding:0 4px 4px;">' +
+            '<div style="font-size:14px; font-weight:800; color:var(--text);">' + apEscapeHtml(ctx.cls.name || '') + '</div>' +
+            '<div style="display:grid; grid-template-columns:86px 1fr; gap:8px 10px; font-size:13px; line-height:1.5;">' +
+                '<div style="color:var(--secondary); font-weight:700;">현재 위치</div>' +
+                '<div style="font-weight:700;">' + apEscapeHtml(describeTimetablePlacement(current)) + '</div>' +
+                '<div style="color:var(--secondary); font-weight:700;">이동할 위치</div>' +
+                '<div style="font-weight:700;">' + apEscapeHtml(describeTimetablePlacement({ day_group: ctx.target.day_group, period_key: ctx.target.period_key, teacher_name: ctx.target.teacher_name })) + '</div>' +
+                '<div style="color:var(--secondary); font-weight:700;">담당 선생님</div>' +
+                '<div style="font-weight:700;">' + apEscapeHtml(ctx.target.teacher_name || '') + '</div>' +
+            '</div>' +
+            '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); color:var(--secondary); border-radius:8px; font-size:13px; font-weight:700; line-height:1.5;">시간 충돌 확인은 저장 후 실행됩니다.</div>' +
+            '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +
+                '<button class="btn" onclick="closeModal(true)">취소</button>' +
+                '<button class="btn btn-primary" onclick="confirmTimetableClassMove()">이동하기</button>' +
+            '</div>' +
+        '</div>');
+}
+
+function buildTimetableSlotsForCell(classId, target) {
+    var time = TIMETABLE_MIDDLE_PERIOD_TIMES[target.period_key] || null;
+    var days = TIMETABLE_MIDDLE_DAY_GROUP_DAYS[target.day_group] || [];
+    if (!time || !days.length) return [];
+    return days.map(function(day) {
+        return {
+            class_id: classId,
+            day_of_week: day,
+            start_time: time.start,
+            end_time: time.end,
+            room_name: null,
+            memo: 'timetable cell placement'
+        };
+    });
+}
+
+function syncTimetableClassSlotsInState(classId, slots) {
+    if (typeof state === 'undefined' || !state.db) return;
+    var applyRows = function(dbObj) {
+        if (!dbObj) return;
+        var existing = Array.isArray(dbObj.class_time_slots) ? dbObj.class_time_slots : [];
+        dbObj.class_time_slots = existing.filter(function(row) {
+            return String(row.class_id) !== String(classId);
+        }).concat(slots || []);
+    };
+    applyRows(state.db);
+    if (state.allDb) applyRows(state.allDb);
+}
+
+function syncTimetableClassCompatInState(classId, target) {
+    if (typeof state === 'undefined' || !state.db) return;
+    var days = target.day_group === 'mwf' ? '1,3,5' : '2,4,5';
+    var time = TIMETABLE_MIDDLE_PERIOD_TIMES[target.period_key] || {};
+    var patchClass = function(dbObj) {
+        if (!dbObj || !Array.isArray(dbObj.classes)) return;
+        dbObj.classes.forEach(function(cls) {
+            if (String(cls.id) === String(classId)) {
+                cls.schedule_days = days;
+                cls.day_group = target.day_group;
+                cls.time_label = time.legacy || cls.time_label || '';
+                cls.teacher_name = target.teacher_name || cls.teacher_name || '';
+            }
+        });
+    };
+    patchClass(state.db);
+    if (state.allDb) patchClass(state.allDb);
+}
+
+async function updateTimetableClassCompat(classId, target) {
+    var cls = findTimetableClassById(classId);
+    if (!cls || typeof api === 'undefined' || typeof api.patch !== 'function') return;
+    var time = TIMETABLE_MIDDLE_PERIOD_TIMES[target.period_key] || {};
+    await api.patch('classes/' + encodeURIComponent(classId), {
+        name: cls.name || '',
+        grade: cls.grade || '',
+        subject: cls.subject || '수학',
+        teacher_name: target.teacher_name || cls.teacher_name || '',
+        schedule_days: target.day_group === 'mwf' ? '1,3,5' : '2,4,5',
+        day_group: target.day_group,
+        time_label: time.legacy || cls.time_label || ''
+    });
+}
+
+async function confirmTimetableClassMove() {
+    if (!isTimetableAdminMode()) {
+        if (typeof toast === 'function') toast('원장모드에서만 시간표를 이동할 수 있습니다.', 'warn');
+        return;
+    }
+    var pending = (typeof state !== 'undefined' && state.ui) ? state.ui.pendingTimetableClassMove : null;
+    if (!pending || !pending.classId || !pending.target) return;
+    var slots = buildTimetableSlotsForCell(pending.classId, pending.target);
+    if (!slots.length) {
+        if (typeof toast === 'function') toast('시간표 이동에 실패했습니다.', 'warn');
+        return;
+    }
+    var actionBtn = document.querySelector('#modal-body .btn-primary');
+    if (actionBtn && actionBtn.disabled) return;
+    if (actionBtn) actionBtn.disabled = true;
+
+    try {
+        var result = await api.post('class-time-slots/replace-class-slots', {
+            class_id: pending.classId,
+            slots: slots
+        });
+        if (!result || !result.success) throw new Error((result && result.error) || 'replace failed');
+        await updateTimetableClassCompat(pending.classId, pending.target);
+        syncTimetableClassSlotsInState(pending.classId, result.class_time_slots || slots);
+        syncTimetableClassCompatInState(pending.classId, pending.target);
+        try {
+            var scan = await api.post('timetable-conflicts/scan', {});
+            if (scan && Number(scan.count || 0) > 0 && typeof toast === 'function') toast('시간표 충돌을 확인했습니다.', 'warn');
+        } catch (scanError) {
+            console.warn('[confirmTimetableClassMove] conflict scan failed:', scanError);
+        }
+        if (state && state.ui) state.ui.pendingTimetableClassMove = null;
+        if (typeof closeModal === 'function') closeModal(true);
+        if (typeof toast === 'function') toast('시간표 이동이 완료되었습니다.', 'info');
+        renderTimetable();
+    } catch (e) {
+        console.error('[confirmTimetableClassMove] failed:', e);
+        if (typeof toast === 'function') toast('시간표 이동에 실패했습니다.', 'warn');
+        if (actionBtn) actionBtn.disabled = false;
+    }
+}
+
+function buildTimetableCellAttrs(section, data) {
+    if (!isTimetableAdminMode()) return '';
+    return ' data-timetable-cell="1"' +
+        ' data-section="' + apEscapeHtml(section || '') + '"' +
+        ' data-day-group="' + apEscapeHtml(data.day_group || '') + '"' +
+        ' data-period-key="' + apEscapeHtml(data.period_key || '') + '"' +
+        ' data-teacher-name="' + apEscapeHtml(data.teacher_name || '') + '"' +
+        ' data-grade="' + apEscapeHtml(data.grade || '') + '"' +
+        ' data-start-time="' + apEscapeHtml(data.start_time || '') + '"' +
+        ' data-end-time="' + apEscapeHtml(data.end_time || '') + '"' +
+        ' ondragover="handleTimetableCellDragOver(event)"' +
+        ' ondragleave="handleTimetableCellDragLeave(event)"' +
+        ' ondrop="handleTimetableCellDrop(event)"';
+}
+
+function buildTimetableAddClassButton(cell) {
+    if (!isTimetableAdminMode() || cell.section !== 'middle') return '';
+    var encoded = encodeURIComponent(JSON.stringify(cell));
+    return '<button class="tt-add-class-cell" onclick="event.stopPropagation();openTimetableAddClassModal(\'' + encoded + '\')">+ 반 추가</button>';
+}
+
+function openTimetableAddClassModal(encodedCell) {
+    if (!isTimetableAdminMode()) return;
+    var cell = null;
+    try {
+        cell = JSON.parse(decodeURIComponent(encodedCell || ''));
+    } catch (e) {
+        cell = null;
+    }
+    if (!cell) return;
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        state.ui.pendingTimetableAddClass = cell;
+    }
+    var suggested = suggestTimetableClassName('중1');
+    var dgLabel = cell.day_group === 'mwf' ? '월수금' : '화목금';
+    showModal('반 추가', '' +
+        '<div style="display:flex; flex-direction:column; gap:10px;">' +
+            '<input id="tt-add-class-name" class="btn" value="' + apEscapeHtml(suggested) + '" placeholder="반 이름" style="text-align:left; background:var(--surface-2); border:none;">' +
+            '<select id="tt-add-class-grade" class="btn" style="background:var(--surface-2); border:none;">' +
+                ['중1','중2','중3'].map(function(g) { return '<option value="' + g + '"' + (g === '중1' ? ' selected' : '') + '>' + g + '</option>'; }).join('') +
+            '</select>' +
+            '<input id="tt-add-class-teacher" class="btn" value="' + apEscapeHtml(cell.teacher_name || '') + '" placeholder="담당 선생님" style="text-align:left; background:var(--surface-2); border:none;">' +
+            '<input id="tt-add-class-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">' +
+            '<div style="display:grid; grid-template-columns:80px 1fr; gap:8px 10px; font-size:13px; font-weight:700; color:var(--secondary);">' +
+                '<div>요일 그룹</div><div style="color:var(--text);">' + apEscapeHtml(dgLabel) + '</div>' +
+                '<div>교시</div><div style="color:var(--text);">' + apEscapeHtml(cell.period_key || '') + '</div>' +
+            '</div>' +
+        '</div>',
+        '추가',
+        confirmTimetableAddClass
+    );
+}
+
+function suggestTimetableClassName(grade) {
+    var db = _getAllDb();
+    var existing = (db.classes || []).map(function(c) { return String(c.name || ''); });
+    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    for (var i = 0; i < letters.length; i++) {
+        var name = String(grade || '중1') + letters[i];
+        if (existing.indexOf(name) === -1) return name;
+    }
+    return '';
+}
+
+async function confirmTimetableAddClass() {
+    if (!isTimetableAdminMode()) return;
+    var cell = (typeof state !== 'undefined' && state.ui) ? state.ui.pendingTimetableAddClass : null;
+    if (!cell) return;
+    var name = (document.getElementById('tt-add-class-name') || {}).value || '';
+    var grade = (document.getElementById('tt-add-class-grade') || {}).value || '중1';
+    var teacherName = (document.getElementById('tt-add-class-teacher') || {}).value || cell.teacher_name || '';
+    var subject = (document.getElementById('tt-add-class-subject') || {}).value || '수학';
+    name = String(name).trim();
+    if (!name) {
+        if (typeof toast === 'function') toast('반 이름을 입력하세요.', 'warn');
+        return;
+    }
+    var time = TIMETABLE_MIDDLE_PERIOD_TIMES[cell.period_key] || {};
+    var payload = {
+        name: name,
+        grade: grade,
+        subject: subject,
+        teacher_name: teacherName,
+        schedule_days: cell.day_group === 'mwf' ? '1,3,5' : '2,4,5',
+        day_group: cell.day_group,
+        time_label: time.legacy || '',
+        is_active: 1,
+        timetable_cell_create: true
+    };
+    var actionBtn = document.querySelector('#modal-body .btn-primary');
+    if (actionBtn && actionBtn.disabled) return;
+    if (actionBtn) actionBtn.disabled = true;
+    try {
+        var created = await api.post('classes', payload);
+        var classId = created && (created.id || (created.class && created.class.id));
+        if (!created || !created.success || !classId) throw new Error((created && created.error) || 'class create failed');
+        var slots = buildTimetableSlotsForCell(classId, cell);
+        var slotResult = await api.post('class-time-slots/replace-class-slots', { class_id: classId, slots: slots });
+        if (!slotResult || !slotResult.success) throw new Error((slotResult && slotResult.error) || 'slot create failed');
+        if (!state.db.classes) state.db.classes = [];
+        state.db.classes.push(created.class || Object.assign({ id: classId }, payload));
+        syncTimetableClassSlotsInState(classId, slotResult.class_time_slots || slots);
+        try {
+            var scan = await api.post('timetable-conflicts/scan', {});
+            if (scan && Number(scan.count || 0) > 0 && typeof toast === 'function') toast('시간표 충돌을 확인했습니다.', 'warn');
+        } catch (scanError) {
+            console.warn('[confirmTimetableAddClass] conflict scan failed:', scanError);
+        }
+        if (state && state.ui) state.ui.pendingTimetableAddClass = null;
+        if (typeof closeModal === 'function') closeModal(true);
+        if (typeof toast === 'function') toast('시간표 이동이 완료되었습니다.', 'info');
+        renderTimetable();
+    } catch (e) {
+        console.error('[confirmTimetableAddClass] failed:', e);
+        if (typeof toast === 'function') toast('시간표 이동에 실패했습니다.', 'warn');
+        if (actionBtn) actionBtn.disabled = false;
+    }
 }
 
 function openTimetableTransferConfirmModal(ctx) {
@@ -682,30 +1164,25 @@ function openTimetableTransferConfirmModal(ctx) {
     }
 }
 
-function updateTimetableTransferClassRows(tableName, studentId, sourceClassId, targetClassId, serverRows) {
+function updateTimetableTransferClassRows(tableName, studentId, sourceClassId, targetClassId, serverRows, options) {
+    options = options || {};
     if (typeof state === 'undefined' || !state.db) return;
+    var skipCreateWhenEmpty = !!options.skipCreateWhenEmpty;
     var sid = String(studentId || '');
     var sourceCid = String(sourceClassId || '');
     var targetCid = String(targetClassId || '');
     var applyRows = function(dbObj) {
         if (!dbObj) return;
-        var fallback = state.allDb && Array.isArray(state.allDb[tableName]) ? state.allDb[tableName] : [];
-        var existing = Array.isArray(dbObj[tableName]) && dbObj[tableName].length ? dbObj[tableName] : fallback;
+        if (skipCreateWhenEmpty && (!Array.isArray(dbObj[tableName]) || dbObj[tableName].length === 0)) return;
+        var existing = Array.isArray(dbObj[tableName]) ? dbObj[tableName] : [];
         var otherRows = existing.filter(function(row) {
             if (String(row.student_id) !== sid) return true;
             return String(row.class_id) !== sourceCid && String(row.class_id) !== targetCid;
         });
-        var transferRows = Array.isArray(serverRows)
-            ? serverRows.filter(function(row) {
-                return String(row.student_id) === sid && (String(row.class_id) === targetCid || String(row.class_id) === sourceCid);
-            })
-            : [];
-
-        if (!transferRows.some(function(row) { return String(row.class_id) === targetCid; })) {
-            transferRows.push({ class_id: targetCid, student_id: sid });
-        }
-        transferRows = transferRows.filter(function(row) { return String(row.class_id) !== sourceCid; });
-        dbObj[tableName] = otherRows.concat(transferRows);
+        var targetRow = Array.isArray(serverRows)
+            ? serverRows.find(function(row) { return String(row.student_id) === sid && String(row.class_id) === targetCid; })
+            : null;
+        dbObj[tableName] = otherRows.concat(targetRow || { class_id: targetCid, student_id: sid });
     };
 
     applyRows(state.db);
@@ -756,7 +1233,7 @@ async function confirmTimetableStudentTransfer() {
 
         if (result && result.success) {
             updateTimetableTransferClassRows('class_students', studentId, sourceClassId, targetClassId, result.class_students);
-            updateTimetableTransferClassRows('timetable_class_students', studentId, sourceClassId, targetClassId, result.class_students);
+            updateTimetableTransferClassRows('timetable_class_students', studentId, sourceClassId, targetClassId, null, { skipCreateWhenEmpty: true });
             updateTimetableTransferEnrollmentRows(studentId, result.student_enrollments);
             if (state && state.ui) state.ui.pendingTimetableTransfer = null;
             if (typeof closeModal === 'function') closeModal(true);
@@ -1023,7 +1500,8 @@ function buildTimetableStudentSlots(students, classId) {
     return '<div class="tt-std-list">' + slots.join('') + '</div>';
 }
 
-function buildTimetableCard(cls) {
+function buildTimetableCard(cls, options) {
+    options = options || {};
     var classId = cls.id;
     var books = getTimetableActiveTextbooks(classId);
     var progress = getTimetableRecentProgress(classId);
@@ -1044,14 +1522,30 @@ function buildTimetableCard(cls) {
     var progressHtml = progress
         ? '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>'
         : '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
+    var cardDragAttrs = isTimetableAdminMode() && options.enableClassDrag !== false
+        ? ' draggable="true" data-drag-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableClassCardDragStart(event)"'
+        : '';
     var dropAttrs = isTimetableAdminMode()
         ? ' data-drop-class-id="' + apEscapeHtml(String(classId)) + '" ondragover="handleTimetableClassDragOver(event)" ondragleave="handleTimetableClassDragLeave(event)" ondrop="handleTimetableClassDrop(event)"'
         : '';
 
-    return '<div class="tt-card"' + dropAttrs + '>' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
+    return '<div class="tt-card"' + cardDragAttrs + dropAttrs + '>' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
 }
 
 function getTimetableHighScheduleLines(cls) {
+    var slotRows = getTimetableClassSlotRows(cls && cls.id);
+    if (slotRows.length) {
+        var dayLabel = { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' };
+        var groupedSlots = {};
+        slotRows.forEach(function(slot) {
+            var key = slot.start_time + '~' + slot.end_time;
+            if (!groupedSlots[key]) groupedSlots[key] = [];
+            groupedSlots[key].push(dayLabel[slot.day_of_week] || slot.day_of_week);
+        });
+        return Object.keys(groupedSlots).map(function(time) {
+            return groupedSlots[time].join('·') + ' ' + time;
+        });
+    }
     var raw = String(
         cls.schedule_text || cls.schedule_note || cls.schedule_detail || cls.high_schedule || cls.timetable_note || ''
     ).trim();
@@ -1103,7 +1597,7 @@ function buildTimetableHighCardBlock(cls) {
 
     return '<div class="tt-high-class-wrap">' +
         '<div class="tt-high-class-meta">' + metaHtml + '</div>' +
-        buildTimetableCard(cls) +
+        buildTimetableCard(cls, { enableClassDrag: false }) +
     '</div>';
 }
 
@@ -1134,10 +1628,12 @@ function renderTimetable() {
     installTimetableStyle();
     bindTimetableFitEvents();
     enterTimetableWideMode();
+    ensureTimetableClassTimeSlotsLoaded();
 
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
         if (!state.ui.timetableSection) state.ui.timetableSection = 'middle';
+        state.ui.timetablePlacementWarnings = {};
 
         var isAdmin = !!(state.auth && state.auth.role === 'admin');
         if (isAdmin) {
@@ -1236,16 +1732,30 @@ function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
         TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
             teachers.forEach(function(t) {
                 var matched = sClasses.filter(function(cls) {
-                    return getTimetableDayGroup(cls) === dg &&
-                           getTimetableClassTeacherName(cls) === t &&
-                           getTimetablePeriodKey(cls) === p.key;
+                    return getTimetablePlacementRows(cls).some(function(row) {
+                        return row.day_group === dg &&
+                               row.teacher_name === t &&
+                               row.period_key === p.key;
+                    });
                 });
+                var time = TIMETABLE_MIDDLE_PERIOD_TIMES[p.key] || {};
+                var cell = {
+                    section: 'middle',
+                    day_group: dg,
+                    period_key: p.key,
+                    teacher_name: t,
+                    grade: '',
+                    start_time: time.start || '',
+                    end_time: time.end || ''
+                };
+                var cellAttrs = buildTimetableCellAttrs('middle', cell);
+                var addBtn = matched.length === 0 ? buildTimetableAddClassButton(cell) : '';
 
                 if (matched.length === 0) {
-                    cells += '<td style="width:' + plan.teacherWidth + 'px; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;"></td>';
+                    cells += '<td' + cellAttrs + ' style="width:' + plan.teacherWidth + 'px; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;">' + addBtn + '</td>';
                 } else {
                     var cards = matched.map(function(cls) { return buildTimetableCard(cls); }).join('');
-                    cells += '<td style="width:' + plan.teacherWidth + 'px; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;">' + cards + '</td>';
+                    cells += '<td' + cellAttrs + ' style="width:' + plan.teacherWidth + 'px; background:' + dgBg[dg] + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;">' + cards + '</td>';
                 }
             });
         });
@@ -1253,11 +1763,13 @@ function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
     });
 
     var unmappedCount = sClasses.filter(function(cls) {
-        var dg = getTimetableDayGroup(cls);
-        var teacher = getTimetableClassTeacherName(cls);
-        if (TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(dg) === -1) return false;
-        if (teachers.indexOf(teacher) === -1) return false;
-        return getTimetablePeriodKey(cls) === 'unknown';
+        var rows = getTimetablePlacementRows(cls);
+        if (!rows.length) return true;
+        return rows.some(function(row) {
+            return TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(row.day_group) === -1 ||
+                teachers.indexOf(row.teacher_name) === -1 ||
+                !row.period_key;
+        });
     }).length;
 
     var warnHtml = unmappedCount > 0
