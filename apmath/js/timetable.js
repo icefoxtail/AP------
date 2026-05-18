@@ -461,6 +461,321 @@ function isTimetableAdminMode() {
     return !!(typeof state !== 'undefined' && state.auth && state.auth.role === 'admin');
 }
 
+function ensureTimetableVersionUiState() {
+    if (typeof state === 'undefined') return {};
+    if (!state.ui) state.ui = {};
+    if (!Array.isArray(state.ui.timetableVersions)) state.ui.timetableVersions = [];
+    if (!Array.isArray(state.ui.draftTimetableVersions)) state.ui.draftTimetableVersions = [];
+    if (!Array.isArray(state.ui.selectedTimetableVersionSlots)) state.ui.selectedTimetableVersionSlots = [];
+    if (!state.ui.timetableViewMode) state.ui.timetableViewMode = 'active';
+    if (typeof state.ui.selectedTimetableVersionId === 'undefined') state.ui.selectedTimetableVersionId = null;
+    if (typeof state.ui.selectedTimetableVersion === 'undefined') state.ui.selectedTimetableVersion = null;
+    if (typeof state.ui.activeTimetableVersion === 'undefined') state.ui.activeTimetableVersion = null;
+    if (typeof state.ui.timetableDraftPreviewResult === 'undefined') state.ui.timetableDraftPreviewResult = null;
+    if (typeof state.ui.timetableVersionsLoadFailedAt === 'undefined') state.ui.timetableVersionsLoadFailedAt = 0;
+    if (typeof state.ui.timetableVersionsLoadError === 'undefined') state.ui.timetableVersionsLoadError = '';
+    return state.ui;
+}
+
+function getTimetableTodayString() {
+    if (typeof getTodayStr === 'function') return getTodayStr();
+    return new Date().toLocaleDateString('sv-SE');
+}
+
+function isTimetableDraftMode() {
+    var ui = ensureTimetableVersionUiState();
+    return isTimetableAdminMode() && ui.timetableViewMode === 'draft' && !!ui.selectedTimetableVersionId;
+}
+
+function isTimetableDraftSection(section) {
+    return isTimetableDraftMode() && String(section || '') === 'middle';
+}
+
+function getTimetableVersionList() {
+    return ensureTimetableVersionUiState().timetableVersions || [];
+}
+
+function getActiveTimetableVersionForView() {
+    var ui = ensureTimetableVersionUiState();
+    if (ui.activeTimetableVersion) return ui.activeTimetableVersion;
+    return getTimetableVersionList().find(function(version) {
+        return String(version && version.status || '') === 'active';
+    }) || null;
+}
+
+function getDraftTimetableVersionsForView() {
+    return getTimetableVersionList()
+        .filter(function(version) {
+            var status = String(version && version.status || '');
+            return status === 'draft' || status === 'scheduled';
+        })
+        .sort(function(a, b) {
+            return Number(a && a.school_year || 0) - Number(b && b.school_year || 0);
+        });
+}
+
+function getSelectedTimetableVersionForView() {
+    var ui = ensureTimetableVersionUiState();
+    if (ui.selectedTimetableVersion && String(ui.selectedTimetableVersion.id || '') === String(ui.selectedTimetableVersionId || '')) {
+        return ui.selectedTimetableVersion;
+    }
+    return getTimetableVersionList().find(function(version) {
+        return String(version && version.id || '') === String(ui.selectedTimetableVersionId || '');
+    }) || null;
+}
+
+function getTimetableDraftSlotRows(classId) {
+    var ui = ensureTimetableVersionUiState();
+    return (ui.selectedTimetableVersionSlots || [])
+        .filter(function(slot) { return String(slot.class_id) === String(classId); })
+        .map(function(slot) {
+            return {
+                id: slot.id || '',
+                class_id: slot.class_id,
+                version_id: slot.version_id || '',
+                day_of_week: normalizeTimetableSlotDay(slot.day_of_week || slot.day || ''),
+                start_time: normalizeTimetableTime(slot.start_time || ''),
+                end_time: normalizeTimetableTime(slot.end_time || ''),
+                room_name: slot.room_name || null,
+                memo: slot.memo || null
+            };
+        })
+        .filter(function(slot) { return slot.day_of_week && slot.start_time && slot.end_time; });
+}
+
+function getTimetableStatusLabel(status) {
+    var map = {
+        active: '운영 중',
+        draft: '초안',
+        scheduled: '예약',
+        cancelled: '취소됨',
+        archived: '보관'
+    };
+    return map[String(status || '').toLowerCase()] || String(status || '-');
+}
+
+function shouldShowNextYearDraftPrompt(now) {
+    var date = now instanceof Date ? now : new Date();
+    return date.getMonth() === 11;
+}
+
+function getNextTimetableDraftYear(now) {
+    var date = now instanceof Date ? now : new Date();
+    return date.getFullYear() + 1;
+}
+
+function getTimetableDueDraftVersions(now) {
+    var today = (now instanceof Date ? now : new Date()).toLocaleDateString('sv-SE');
+    return getDraftTimetableVersionsForView().filter(function(version) {
+        var effectiveFrom = String(version && version.effective_from || '').trim();
+        return !!effectiveFrom && effectiveFrom <= today;
+    });
+}
+
+async function loadTimetableVersionsForView(options) {
+    options = options || {};
+    var ui = ensureTimetableVersionUiState();
+    var shouldRerender = false;
+    if (!isTimetableAdminMode()) return [];
+    if (ui.timetableVersionsLoading) return ui.timetableVersionsLoading;
+    if (!options.force && ui.timetableVersionsLoaded && Array.isArray(ui.timetableVersions)) {
+        return ui.timetableVersions;
+    }
+
+    ui.timetableVersionsLoading = api.get('timetable-versions')
+        .then(function(res) {
+            if (!res || res.success === false || !Array.isArray(res.timetable_versions)) {
+                throw new Error((res && res.error) || 'timetable versions load failed');
+            }
+            var rows = Array.isArray(res && res.timetable_versions) ? res.timetable_versions : [];
+            ui.timetableVersions = rows;
+            ui.activeTimetableVersion = rows.find(function(version) { return String(version && version.status || '') === 'active'; }) || null;
+            ui.draftTimetableVersions = getDraftTimetableVersionsForView();
+            if (ui.selectedTimetableVersionId) {
+                ui.selectedTimetableVersion = rows.find(function(version) {
+                    return String(version && version.id || '') === String(ui.selectedTimetableVersionId || '');
+                }) || ui.selectedTimetableVersion || null;
+            }
+            ui.timetableVersionsLoaded = true;
+            ui.timetableVersionsLoadFailedAt = 0;
+            ui.timetableVersionsLoadError = '';
+            shouldRerender = true;
+            return rows;
+        })
+        .catch(function(err) {
+            console.warn('[loadTimetableVersionsForView] failed:', err);
+            ui.timetableVersionsLoadFailedAt = Date.now();
+            ui.timetableVersionsLoadError = String(err && err.message ? err.message : err || 'timetable versions load failed');
+            return ui.timetableVersions || [];
+        })
+        .finally(function() {
+            ui.timetableVersionsLoading = null;
+            if (shouldRerender && typeof renderTimetable === 'function') renderTimetable();
+        });
+
+    return ui.timetableVersionsLoading;
+}
+
+function ensureTimetableVersionsLoaded() {
+    var ui = ensureTimetableVersionUiState();
+    var failedAt = Number(ui.timetableVersionsLoadFailedAt || 0);
+    if (!isTimetableAdminMode()) return Promise.resolve([]);
+    if (ui.timetableVersionsLoading) return ui.timetableVersionsLoading;
+    if (ui.timetableVersionsLoaded && Array.isArray(ui.timetableVersions)) return Promise.resolve(ui.timetableVersions);
+    if (failedAt && Date.now() - failedAt < 60000) return Promise.resolve(ui.timetableVersions || []);
+    return loadTimetableVersionsForView();
+}
+
+async function openTimetableDraftVersion(versionId) {
+    var ui = ensureTimetableVersionUiState();
+    var targetId = String(versionId || '').trim();
+    if (!targetId || !isTimetableAdminMode()) return;
+    var res = await api.get('timetable-versions/' + encodeURIComponent(targetId));
+    if (!res || res.success === false || !res.timetable_version) return;
+    ui.timetableViewMode = 'draft';
+    ui.selectedTimetableVersionId = res.timetable_version.id;
+    ui.selectedTimetableVersion = res.timetable_version;
+    ui.selectedTimetableVersionSlots = Array.isArray(res.timetable_version_slots) ? res.timetable_version_slots : [];
+    ui.timetableDraftPreviewResult = null;
+    renderTimetable();
+}
+
+function returnToActiveTimetableView() {
+    var ui = ensureTimetableVersionUiState();
+    ui.timetableViewMode = 'active';
+    ui.selectedTimetableVersionId = null;
+    ui.selectedTimetableVersion = null;
+    ui.selectedTimetableVersionSlots = [];
+    ui.timetableDraftPreviewResult = null;
+    renderTimetable();
+}
+
+function syncSelectedTimetableVersionSlotsInState(classId, slots) {
+    var ui = ensureTimetableVersionUiState();
+    var versionId = String(ui.selectedTimetableVersionId || '');
+    var classRows = Array.isArray(slots) ? slots : [];
+    ui.selectedTimetableVersionSlots = (ui.selectedTimetableVersionSlots || [])
+        .filter(function(row) {
+            return !(String(row.version_id || versionId) === versionId && String(row.class_id) === String(classId));
+        })
+        .concat(classRows.map(function(row) {
+            return Object.assign({}, row, { version_id: row.version_id || versionId });
+        }));
+}
+
+async function createNextYearTimetableDraft() {
+    if (!isTimetableAdminMode()) return;
+    var targetYear = getNextTimetableDraftYear(new Date());
+    var res = await api.post('timetable-versions/create-next-draft', { school_year: targetYear });
+    if (!res || res.success === false || !res.timetable_version) return;
+    await loadTimetableVersionsForView({ force: true });
+    await openTimetableDraftVersion(res.timetable_version.id);
+}
+
+async function runTimetableDraftScanPreview() {
+    var ui = ensureTimetableVersionUiState();
+    if (!isTimetableAdminMode() || !isTimetableDraftMode() || !ui.selectedTimetableVersionId) return;
+    var res = await api.post('timetable-versions/' + encodeURIComponent(ui.selectedTimetableVersionId) + '/scan-preview', {});
+    if (!res || res.success === false) return;
+    ui.timetableDraftPreviewResult = {
+        version_id: res.version_id || ui.selectedTimetableVersionId,
+        counts: res.counts || { student: 0, teacher: 0, room: 0, total: 0 },
+        conflicts: Array.isArray(res.conflicts) ? res.conflicts : []
+    };
+    var counts = ui.timetableDraftPreviewResult.counts || {};
+    if (typeof toast === 'function') {
+        toast(
+            '충돌 확인 결과: 학생 ' + Number(counts.student || 0) + '건 · 선생님 ' + Number(counts.teacher || 0) + '건 · 교실 ' + Number(counts.room || 0) + '건',
+            Number(counts.student || 0) > 0 ? 'warn' : 'info'
+        );
+    }
+    renderTimetable();
+}
+
+function buildTimetableVersionBannerHtml() {
+    if (!isTimetableAdminMode()) return '';
+
+    var ui = ensureTimetableVersionUiState();
+    var activeVersion = getActiveTimetableVersionForView();
+    var draftVersions = getDraftTimetableVersionsForView();
+    var selectedVersion = getSelectedTimetableVersionForView();
+    var primaryDraft = draftVersions[0] || null;
+    var dueVersions = getTimetableDueDraftVersions(new Date());
+    var previewCounts = ui.timetableDraftPreviewResult && ui.timetableDraftPreviewResult.counts
+        ? ui.timetableDraftPreviewResult.counts
+        : null;
+    var nextYear = getNextTimetableDraftYear(new Date());
+    var hasNextYearDraft = draftVersions.some(function(version) {
+        return Number(version && version.school_year || 0) === nextYear;
+    });
+    var shouldShowCreate = shouldShowNextYearDraftPrompt(new Date()) && !hasNextYearDraft;
+    var html = '<div style="display:flex; flex-direction:column; gap:10px; margin-bottom:12px;">';
+
+    if (isTimetableDraftMode() && selectedVersion) {
+        html += '' +
+            '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:12px 14px; border:1px solid rgba(26,92,255,0.16); background:rgba(26,92,255,0.05); border-radius:10px;">' +
+                '<div style="font-size:14px; font-weight:800; color:var(--text);">' + apEscapeHtml(selectedVersion.title || '시간표 초안') + '</div>' +
+                '<div style="font-size:12px; font-weight:700; color:var(--secondary);">상태: ' + apEscapeHtml(getTimetableStatusLabel(selectedVersion.status)) + '</div>' +
+                '<div style="font-size:12px; font-weight:700; color:var(--secondary);">적용 예정일: ' + apEscapeHtml(selectedVersion.effective_from || '-') + '</div>' +
+                '<div style="margin-left:auto; display:flex; flex-wrap:wrap; gap:8px;">' +
+                    '<button class="btn" onclick="window.ttReturnActiveView()">운영 시간표로 돌아가기</button>' +
+                    '<button class="btn btn-primary" onclick="window.ttScanDraftPreview()">충돌 확인</button>' +
+                '</div>' +
+            '</div>';
+    } else {
+        html += '' +
+            '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:12px 14px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); border-radius:10px;">' +
+                '<div style="font-size:14px; font-weight:800; color:var(--text);">현재 운영 시간표: ' + apEscapeHtml(activeVersion && activeVersion.school_year ? String(activeVersion.school_year) : '-') + '</div>';
+
+        if (primaryDraft) {
+            html += '<button class="btn btn-primary" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(primaryDraft.id || '')) + '\')">' + apEscapeHtml(String(primaryDraft.school_year || '')) + '년 1월 개편 초안 열기</button>';
+        } else if (shouldShowCreate) {
+            html += '<button class="btn btn-primary" onclick="window.ttCreateNextDraft()">다음 해 1월 개편 초안 만들기</button>';
+        }
+
+        html += '</div>';
+    }
+
+    if (dueVersions.length > 0) {
+        var dueVersion = dueVersions[0];
+        html += '' +
+            '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:12px 14px; border:1px solid rgba(255,149,0,0.24); background:rgba(255,149,0,0.08); border-radius:10px;">' +
+                '<div style="font-size:13px; font-weight:800; color:var(--text);">적용 예정일이 지난 시간표 초안이 있습니다. 내용을 확인한 뒤 운영 시간표 적용 작업을 진행해주세요.</div>' +
+                '<button class="btn" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(dueVersion.id || '')) + '\')">초안 열기</button>' +
+            '</div>';
+    }
+
+    if (previewCounts) {
+        html += '' +
+            '<div style="display:flex; flex-wrap:wrap; gap:8px 12px; padding:12px 14px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); border-radius:10px; font-size:13px; font-weight:700; color:var(--text);">' +
+                '<span>충돌 확인 결과</span>' +
+                '<span>학생 충돌 ' + apEscapeHtml(String(Number(previewCounts.student || 0))) + '건</span>' +
+                '<span>선생님 확인 ' + apEscapeHtml(String(Number(previewCounts.teacher || 0))) + '건</span>' +
+                '<span>교실 확인 ' + apEscapeHtml(String(Number(previewCounts.room || 0))) + '건</span>' +
+                (Number(previewCounts.student || 0) > 0 ? '<span style="color:#C2410C;">확인 필요</span>' : '') +
+            '</div>';
+    }
+
+    html += '</div>';
+    return html;
+}
+
+window.ttOpenDraftVersion = function(versionId) {
+    openTimetableDraftVersion(versionId);
+};
+
+window.ttReturnActiveView = function() {
+    returnToActiveTimetableView();
+};
+
+window.ttCreateNextDraft = function() {
+    createNextYearTimetableDraft();
+};
+
+window.ttScanDraftPreview = function() {
+    runTimetableDraftScanPreview();
+};
+
 function getTimetableClassList() {
     var db = _getAllDb();
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
@@ -524,23 +839,35 @@ function getTimetableStudentClassIds(studentId) {
 }
 
 function getTimetableClassSlots(classId) {
+    var cls = findTimetableClassById(classId);
     var db = _getAllDb();
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
     var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
-    var slots = _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots)
-        .filter(function(slot) { return String(slot.class_id) === String(classId); })
-        .map(function(slot) {
+    var slots = [];
+
+    if (isTimetableDraftSection(getTimetableSectionForClass(cls))) {
+        slots = getTimetableDraftSlotRows(classId).map(function(slot) {
             return {
-                day: String(slot.day_of_week || slot.day || '').trim(),
+                day: String(slot.day_of_week || '').trim(),
                 start: String(slot.start_time || '').trim(),
                 end: String(slot.end_time || '').trim()
             };
-        })
-        .filter(function(slot) { return slot.day && slot.start && slot.end; });
+        });
+    } else {
+        slots = _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots)
+            .filter(function(slot) { return String(slot.class_id) === String(classId); })
+            .map(function(slot) {
+                return {
+                    day: String(slot.day_of_week || slot.day || '').trim(),
+                    start: String(slot.start_time || '').trim(),
+                    end: String(slot.end_time || '').trim()
+                };
+            })
+            .filter(function(slot) { return slot.day && slot.start && slot.end; });
+    }
 
     if (slots.length) return slots;
-
-    var cls = findTimetableClassById(classId);
+    if (isTimetableDraftSection(getTimetableSectionForClass(cls))) return [];
     if (!cls) return [];
     return getTimetableClassFallbackDays(cls).map(function(day) {
         return {
@@ -576,6 +903,10 @@ function ensureTimetableClassTimeSlotsLoaded() {
 }
 
 function getTimetableClassSlotRows(classId) {
+    var cls = findTimetableClassById(classId);
+    if (isTimetableDraftSection(getTimetableSectionForClass(cls))) {
+        return getTimetableDraftSlotRows(classId);
+    }
     var db = _getAllDb();
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
     var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
@@ -652,7 +983,10 @@ function getTimetableFallbackPlacementRows(cls) {
 
 function getTimetablePlacementRows(cls) {
     var slots = getTimetableClassSlotRows(cls && cls.id);
-    if (!slots.length) return getTimetableFallbackPlacementRows(cls);
+    if (!slots.length) {
+        if (isTimetableDraftSection(getTimetableSectionForClass(cls))) return [];
+        return getTimetableFallbackPlacementRows(cls);
+    }
 
     var grouped = {};
     slots.forEach(function(slot) {
@@ -676,7 +1010,10 @@ function getTimetablePlacementRows(cls) {
         };
     }).filter(Boolean);
 
-    if (!rows.length) return getTimetableFallbackPlacementRows(cls);
+    if (!rows.length) {
+        if (isTimetableDraftSection(getTimetableSectionForClass(cls))) return [];
+        return getTimetableFallbackPlacementRows(cls);
+    }
     if (rows.length > 1 && typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
         if (!state.ui.timetablePlacementWarnings) state.ui.timetablePlacementWarnings = {};
@@ -728,7 +1065,7 @@ function hasTimetableTransferTimeConflict(studentId, sourceClassId, targetClassI
 }
 
 function handleTimetableStudentDragStart(event) {
-    if (!isTimetableAdminMode()) {
+    if (!isTimetableAdminMode() || isTimetableDraftMode()) {
         if (event && event.preventDefault) event.preventDefault();
         return false;
     }
@@ -785,6 +1122,7 @@ function handleTimetableClassDrop(event) {
         }
         return false;
     }
+    if (isTimetableDraftMode()) return false;
     var studentId = String(payload.student_id || '').trim();
     var sourceClassId = String(payload.source_class_id || '').trim();
     var targetClassId = event && event.currentTarget ? String(event.currentTarget.getAttribute('data-drop-class-id') || '').trim() : '';
@@ -919,7 +1257,7 @@ function buildTimetableSlotsForCell(classId, target) {
             start_time: time.start,
             end_time: time.end,
             room_name: null,
-            memo: 'timetable cell placement'
+            memo: isTimetableDraftMode() ? 'draft timetable placement' : 'timetable cell placement'
         };
     });
 }
@@ -988,27 +1326,41 @@ async function confirmTimetableClassMove() {
     if (actionBtn) actionBtn.disabled = true;
 
     try {
-        var result = await api.post('class-time-slots/replace-class-slots', {
-            class_id: pending.classId,
-            slots: slots
-        });
+        var result = null;
+        if (isTimetableDraftMode()) {
+            var ui = ensureTimetableVersionUiState();
+            if (!ui.selectedTimetableVersionId) throw new Error('draft version id missing');
+            result = await api.post('timetable-versions/' + encodeURIComponent(ui.selectedTimetableVersionId) + '/slots/replace-class-slots', {
+                class_id: pending.classId,
+                slots: slots
+            });
+        } else {
+            result = await api.post('class-time-slots/replace-class-slots', {
+                class_id: pending.classId,
+                slots: slots
+            });
+        }
         if (!result || !result.success) throw new Error((result && result.error) || 'replace failed');
-        await updateTimetableClassCompat(pending.classId, pending.target);
-        syncTimetableClassSlotsInState(pending.classId, result.class_time_slots || slots);
-        syncTimetableClassCompatInState(pending.classId, pending.target);
-        try {
-            var scan = await api.post('timetable-conflicts/scan', {});
-            if (scan && Number(scan.count || 0) > 0 && typeof toast === 'function') toast('시간표 충돌을 확인했습니다.', 'warn');
-        } catch (scanError) {
-            console.warn('[confirmTimetableClassMove] conflict scan failed:', scanError);
+        if (isTimetableDraftMode()) {
+            syncSelectedTimetableVersionSlotsInState(pending.classId, result.timetable_version_slots || slots);
+        } else {
+            await updateTimetableClassCompat(pending.classId, pending.target);
+            syncTimetableClassSlotsInState(pending.classId, result.class_time_slots || slots);
+            syncTimetableClassCompatInState(pending.classId, pending.target);
+            try {
+                var scan = await api.post('timetable-conflicts/scan', {});
+                if (scan && Number(scan.count || 0) > 0 && typeof toast === 'function') toast('시간표 충돌을 확인했습니다.', 'warn');
+            } catch (scanError) {
+                console.warn('[confirmTimetableClassMove] conflict scan failed:', scanError);
+            }
         }
         if (state && state.ui) state.ui.pendingTimetableClassMove = null;
         if (typeof closeModal === 'function') closeModal(true);
-        if (typeof toast === 'function') toast('시간표 이동이 완료되었습니다.', 'info');
+        if (typeof toast === 'function') toast(isTimetableDraftMode() ? '초안 시간표가 수정되었습니다.' : '시간표 이동이 완료되었습니다.', 'info');
         renderTimetable();
     } catch (e) {
         console.error('[confirmTimetableClassMove] failed:', e);
-        if (typeof toast === 'function') toast('시간표 이동에 실패했습니다.', 'warn');
+        if (typeof toast === 'function') toast(isTimetableDraftMode() ? '초안 시간표 수정에 실패했습니다.' : '시간표 이동에 실패했습니다.', 'warn');
         if (actionBtn) actionBtn.disabled = false;
     }
 }
@@ -1029,6 +1381,7 @@ function buildTimetableCellAttrs(section, data) {
 }
 
 function buildTimetableAddClassButton(cell) {
+    if (isTimetableDraftMode()) return '';
     if (!isTimetableAdminMode() || cell.section !== 'middle') return '';
     var encoded = encodeURIComponent(JSON.stringify(cell));
     return '<button class="tt-add-class-cell" onclick="event.stopPropagation();openTimetableAddClassModal(\'' + encoded + '\')">+ 반 추가</button>';
@@ -1036,6 +1389,7 @@ function buildTimetableAddClassButton(cell) {
 
 function openTimetableAddClassModal(encodedCell) {
     if (!isTimetableAdminMode()) return;
+    if (isTimetableDraftMode()) return;
     var cell = null;
     try {
         cell = JSON.parse(decodeURIComponent(encodedCell || ''));
@@ -1080,6 +1434,7 @@ function suggestTimetableClassName(grade) {
 
 async function confirmTimetableAddClass() {
     if (!isTimetableAdminMode()) return;
+    if (isTimetableDraftMode()) return;
     var cell = (typeof state !== 'undefined' && state.ui) ? state.ui.pendingTimetableAddClass : null;
     if (!cell) return;
     var name = (document.getElementById('tt-add-class-name') || {}).value || '';
@@ -1204,7 +1559,7 @@ function updateTimetableTransferEnrollmentRows(studentId, serverRows) {
 }
 
 async function confirmTimetableStudentTransfer() {
-    if (!isTimetableAdminMode()) {
+    if (!isTimetableAdminMode() || isTimetableDraftMode()) {
         if (typeof toast === 'function') toast('원장모드에서만 전반할 수 있습니다.', 'warn');
         return;
     }
@@ -1456,6 +1811,9 @@ function getTimetableClassStudentsWithInfo(classId) {
 
 function buildTimetableStudentSlot(student, classId) {
     if (!student) {
+        if (isTimetableDraftMode()) {
+            return '<div class="tt-std-slot"></div>';
+        }
         return '' +
             '<div class="tt-std-slot">' +
                 '<button class="tt-std-empty" onclick="event.stopPropagation();openAddStudentToClass(\'' + apEscapeHtml(String(classId)) + '\')" title="빈칸 클릭 → 새 학생 추가">' +
@@ -1466,7 +1824,7 @@ function buildTimetableStudentSlot(student, classId) {
 
     var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '');
     var nameText = apEscapeHtml(student.name) + (student.isNew ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(신)</span>' : '');
-    var dragAttrs = isTimetableAdminMode()
+    var dragAttrs = isTimetableAdminMode() && !isTimetableDraftMode()
         ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)"'
         : '';
 
@@ -1496,7 +1854,9 @@ function buildTimetableStudentSlots(students, classId) {
         );
     }
 
-    slots.push(buildTimetableStudentSlot(null, classId));
+    if (!isTimetableDraftMode()) {
+        slots.push(buildTimetableStudentSlot(null, classId));
+    }
     return '<div class="tt-std-list">' + slots.join('') + '</div>';
 }
 
@@ -1629,6 +1989,8 @@ function renderTimetable() {
     bindTimetableFitEvents();
     enterTimetableWideMode();
     ensureTimetableClassTimeSlotsLoaded();
+    ensureTimetableVersionUiState();
+    if (isTimetableAdminMode()) ensureTimetableVersionsLoaded();
 
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
@@ -1654,6 +2016,7 @@ function renderTimetable() {
             '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
                 '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
             '</div>' +
+            buildTimetableVersionBannerHtml() +
             '<div class="tt-tab-scroll">' +
                 '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
                 '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'high\')">고등부</button>' +

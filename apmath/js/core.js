@@ -80,7 +80,15 @@ let state = {
         userName: '',
         currentClassId: null,
         baseDate: null,
-        enrollmentFoundation: { byScope: {}, inFlight: {} }
+        enrollmentFoundation: { byScope: {}, inFlight: {} },
+        timetableVersions: [],
+        activeTimetableVersion: null,
+        draftTimetableVersions: [],
+        timetableViewMode: 'active',
+        selectedTimetableVersionId: null,
+        selectedTimetableVersion: null,
+        selectedTimetableVersionSlots: [],
+        timetableDraftPreviewResult: null
     },
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 

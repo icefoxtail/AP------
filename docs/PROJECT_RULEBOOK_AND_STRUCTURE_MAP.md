@@ -287,6 +287,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `routes/enrollments.js` | 수강 등록 foundation | `/api/enrollments` | `student_enrollments` | AP Math/씨매쓰 초등/EIE 구분 주의 |
 | `routes/class-time-slots.js` | 수업 시간대 foundation | `/api/class-time-slots` | `class_time_slots` | 중등 90분, 고등 120분 기준 |
 | `routes/timetable-conflicts.js` | 시간표 충돌/예외 | `/api/timetable-conflicts`, `/api/timetable-conflict-overrides` | `timetable_conflict_logs`, `timetable_conflict_overrides` | teacher 충돌 예외 정책 주의 |
+| `routes/timetable-versions.js` | 시간표 버전 관리 | `/api/timetable-versions/*` | `timetable_versions`, `class_time_slots`, `timetable_conflict_logs` | draft/scheduled/active/cancelled 흐름 보존, 기존 시간표 화면 갈아엎기 금지 |
 | `routes/foundation-sync.js` | foundation 동기화 | `/api/foundation-sync/*` | `foundation_sync_logs`, `student_enrollments`, `class_time_slots` | preview/run 구분 |
 | `routes/foundation-logs.js` | audit/privacy 로그 | `/api/foundation-logs/*` | `audit_logs`, `privacy_access_logs` | 개인정보 접근 로그 |
 | `routes/billing-foundation.js` | 청구 foundation | `/api/billing-foundation/*` | `billing_templates`, `payments`, `billing_runs` | 실제 운영 기능과 foundation 구분 |
@@ -317,6 +318,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `/api/enrollments` | `routes/enrollments.js` | 분리 완료 | GET enrollments |
 | `/api/class-time-slots` | `routes/class-time-slots.js` | 분리 완료 | GET slots |
 | `/api/timetable-conflicts`, `/api/timetable-conflict-overrides` | `routes/timetable-conflicts.js` | 분리 완료 | GET conflicts |
+| `/api/timetable-versions/*` | `routes/timetable-versions.js` | 분리 완료 기준 | versions, scan-preview |
 | `/api/foundation-sync/*` | `routes/foundation-sync.js` | 분리 완료 | preview |
 | `/api/foundation-logs/*` | `routes/foundation-logs.js` | 분리 완료 | logs |
 | `/api/billing-foundation/*` | `routes/billing-foundation.js` | 분리 완료 | templates |
@@ -374,6 +376,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | 리포트/AI | `report.js` | `/api/ai/*`, `/api/consultations` | `routes/reports-ai.js`, `routes/operations.js` | 시험/오답/상담 | 학부모 문구 품질 유지 |
 | 수업일지 | `classroom.js`, `textbook.js`, `dashboard.js` | class-daily/daily-journals 계열 | `routes/class-daily.js`, `routes/operations.js` | `class_daily_*`, `daily_journals` | 기존 일지 문구 보존 |
 | 시간표 foundation | foundation UI, 시간표 관련 JS | timetable/foundation 계열 | timetable/foundation route | `class_time_slots`, conflict logs | 중등 90분, 고등 120분 |
+| 시간표 버전 관리 | 시간표 버전 관련 JS | `/api/timetable-versions/*` | `routes/timetable-versions.js` | `timetable_versions`, `class_time_slots` | draft/scheduled/active/cancelled 흐름, 기존 시간표 화면 갈아엎기 금지 |
 | 수납·출납 foundation | `dashboard.js` 관리 진입점 숨김, `management.js` 설정/요약 모달 유지 | `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | `payment_methods`, `payment_transactions`, `cashbook_entries`, `refund_records`, `carryover_records`, `billing_policy_rules`, `accounting_daily_summaries`, `accounting_monthly_summaries` | 운영 노출 숨김, 실제 수납 처리 금지 |
 | 학부모 연락 foundation | 연락/문자 준비 UI | parent-foundation 계열 | `routes/parent-foundation.js` | `parent_contacts`, `message_logs` | 개인정보/문자 발송 주의 |
 | 아카이브/시험지 출력 | archive HTML/JS | archive/exam data | 정적 파일 + 일부 Worker 연계 | exam_blueprints 등 | 원본 기출 노출 정책 주의 |
@@ -388,6 +391,43 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 - 기능 추가 중 기존 버튼명/문구/화면명을 임의로 바꾸지 않는다.
 - 버튼 삭제 작업이라도 기존 주변 문구를 정리하지 않는다.
 - 삭제 버튼을 추가할 때도 기존 “숙제” 문구를 “과제”로 바꾸지 않는다.
+
+
+## 4.5 백엔드 완료 기능 프론트 회수 후보
+
+아래 항목은 2026-05-18 기준으로 백엔드가 화면보다 앞선 영역이다.
+
+새 프론트 파일명은 후보이며, 실제 작업 전 현재 레포의 기존 파일과 함수명을 먼저 확인한다.
+기존 화면에 자연스럽게 붙일 수 있으면 새 파일을 만들지 않고 기존 파일에 최소 수정한다.
+
+| 회수 대상 | 프론트 후보 | 주요 API | 담당 route | 1차 위치 | 주의 |
+|---|---|---|---|---|---|
+| 상담 이력 UI | `apmath/js/counsel.js` 또는 `student.js` | `/api/consultations` | `routes/operations.js` | 학생 상세 탭 | 기존 학생 상세 문구 변경 금지, 원장 통합 피드는 보류 |
+| 학부모 연락처/수신동의 UI | `apmath/js/parent.js` 또는 `student.js` | `/api/parent-foundation/*` | `routes/parent-foundation.js` | 학생 상세/학부모 관리 | 실제 문자/카카오 발송 금지, 개인정보 주의 |
+| 숙제 사진 확인/뷰어 UI | `classroom.js` 또는 숙제 전용 UI | `/api/homework-photo/*` | `routes/homework-photo.js` | 반별 운영 화면 | “숙제” 용어 유지, 제출 상태 임의 변경 금지 |
+| 시간표 버전 관리 UI | `apmath/js/timetable-versions.js` 후보 | `/api/timetable-versions/*` | `routes/timetable-versions.js` | 원장 승인 후 시간표 관리 | 기존 시간표 화면 갈아엎기 금지 |
+| 시간표 충돌 결과 UI | 시간표 관련 JS | `/api/timetable-conflicts*` | `routes/timetable-conflicts.js` | 시간표 관리 | student 충돌은 위험, teacher 충돌은 운영 예외 분리 |
+| 이력/로그 뷰어 UI | `apmath/js/foundation-logs-viewer.js` 후보 | `/api/foundation-logs/*` | `routes/foundation-logs.js` | 원장 전용 | 처음에는 조회 전용, 개인정보 로그 권한 주의 |
+| 수납·출납 제한 UI | `billing.js` 후보 또는 `management.js` 숨김 모달 | `/api/billing-accounting-foundation/*` | `routes/billing-accounting-foundation.js` | 숨김 진입점/승인 후 제한 화면 | 기본 노출 금지, 실제 결제/문자/청구 자동 실행 금지 |
+
+### 회수 순서 기준
+
+```text
+1. 기존 AP Math 화면 영향이 가장 작은 상담/학부모/숙제 사진부터 검토한다.
+2. 원장 화면을 건드리는 시간표 버전/로그/수납은 사용자 승인 후 진행한다.
+3. 수납·출납은 운영 데이터와 금전 기록이므로 조회만으로 끝내지 않되, 실제 운영 노출은 별도 승인 전까지 숨긴다.
+4. 실제 발송, 실제 결제, 자동 청구는 만들지 않는다.
+```
+
+### STOP RULES
+
+```text
+- 기존 UI 문구 변경이 필요하면 멈춘다.
+- 원장/관리자 대시보드 변경이 필요하면 멈춘다.
+- 새 DB migration이 필요하면 별도 지시서로 분리한다.
+- 실제 문자/카카오/결제 연동이 필요하면 멈춘다.
+- 이미 있는 API 범위를 넘어서는 기능이면 백엔드 작업으로 분리한다.
+```
 
 ---
 
@@ -427,6 +467,7 @@ route 파일이 여러 개로 쪼개져 있어도 배포 방식은 동일하다.
 | `class_time_slots` | 수업 시간대 | timetable foundation | 시간표 | 중등 90분, 고등 120분 |
 | `timetable_conflict_logs` | 시간표 충돌 로그 | timetable foundation | 시간표 | teacher 충돌 예외 정책 주의 |
 | `timetable_conflict_overrides` | 충돌 예외 | timetable foundation | 시간표 | 예외 사유 기록 |
+| `timetable_versions` | 시간표 버전 관리 | timetable-versions | 시간표 버전 UI | draft/scheduled/active/cancelled 상태 흐름 보존, 기존 시간표 적용 흐름 주의 |
 | `billing_templates` | 청구 템플릿 foundation | billing-foundation | 수납/출납 준비 UI | 실제 청구와 구분 |
 | `payments` | 결제/청구 records | billing-foundation | 수납/출납 준비 UI | 실제 운영 전 검수 필요 |
 | `payment_items` | 결제 항목 | billing-foundation | 수납/출납 준비 UI | payment 연결 주의 |
@@ -676,6 +717,10 @@ Invoke-RestMethod `
 - 학생 포털 시험지 직접 열기 금지 정책 반영
 - 숙제 사진 확인 시스템 기본 구축
 - auth route 분리
+- foundation-logs 감사/개인정보 로그 foundation 구축
+- enrollments 재원 이력/반 이동 foundation 구축
+- billing-accounting-foundation 월별 수납/출납 foundation 보강
+- parent-foundation 수신동의 모델 기준 반영
 
 ## 8.2 다음 후보
 
@@ -696,11 +741,14 @@ Invoke-RestMethod `
 
 ### 운영 기능
 
-- 수납·출납 foundation 1단계-E: 운영 수동 테스트 결과 반영 및 월별 수납 화면 고도화
+- 상담 이력 UI 1차: 학생 상세 상담 타임라인, 상담 유형/내용/다음조치 입력
+- 학부모 연락처/수신동의 UI 1차: 학생별 보호자 연락처, 대표 연락처, 수신동의 현황, 연락 이력
+- 숙제 사진 확인/뷰어 UI 보강: 반별 제출 현황, 학생별 사진 보기
+- 시간표 버전 관리 UI: draft/scheduled/active/cancelled 확인, scan-preview 결과 표시
+- 시간표 충돌 결과 UI: student/teacher/room 충돌과 teacher 예외 분리 표시
+- 이력/로그 뷰어 UI: 학생 상태 변경 이력, 반 이동 이력, 감사 로그, 개인정보 접근 로그
 - 수납·출납 foundation 운영 노출 전 수동 테스트 및 진입점 재오픈 판단
-- 학부모 연락/문자 foundation
-- 숙제 사진 관리 UI 개선
-- 숙제 제출 현황 개선
+- 수납·출납 제한 UI: 숨김 진입점 유지 상태에서 월별 수납/출납 확인
 - 실제 운영 수납 정책 입력
 - 시간표 room_name 입력 후 room conflict 판단
 
@@ -711,6 +759,9 @@ Invoke-RestMethod `
 - 학생 시험지 직접 접근
 - 제출 완료 OMR 재수정 기능
 - 실제 결제/문자 발송 운영 기능
+- 실제 카카오/SMS 발송 연동
+- 분석/통계 대시보드 신규 구현
+- PWA 오프라인 모드
 
 ## 8.3 계속 유지할 금지/주의
 
@@ -1371,3 +1422,75 @@ docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
 
 - `CODEX_RESULT_REPORT_BUTTONS.md`
 - `CODEX_RESULT_REPORT_LAYOUT.md`
+
+---
+
+# 2026-05-18 백엔드 완료 기능 프론트 회수 기준
+
+## 현재 판단
+
+현재 AP Math OS / 왕지교육 OS는 일부 영역에서 백엔드가 프론트보다 앞서 있다.
+
+작업 판단 기준은 다음과 같이 변경한다.
+
+```text
+이전:
+foundation을 먼저 만든다.
+
+현재:
+이미 만들어진 foundation을 기존 화면을 깨지 않으면서 필요한 UI로 꺼낸다.
+```
+
+## 백엔드 완료 + 프론트 회수 필요
+
+```text
+- 수납·출납 foundation
+- 상담 CRUD
+- 학부모 연락처/수신동의/메시지 로그
+- 학생 포털
+- 플래너
+- 숙제 사진
+- 시간표 충돌 감지
+- 시간표 버전 관리
+- 재원 이력/반 이동
+- 감사 로그/개인정보 로그
+```
+
+## 프론트 회수 원칙
+
+```text
+1. 기존 AP Math 화면을 갈아엎지 않는다.
+2. 기존 문구·버튼명·화면명·메뉴명·운영 용어를 임의 변경하지 않는다.
+3. 원장/관리자 화면 변경은 사용자 명시 승인 후 진행한다.
+4. 학생 포털에서 시험지 직접 열기 기능을 만들지 않는다.
+5. 제출 완료 OMR 수정 기능을 만들지 않는다.
+6. 수납·출납은 기본 노출하지 않고 승인 후 제한 회수한다.
+7. 실제 결제, 실제 문자, 실제 카카오 발송, 자동 청구 실행은 만들지 않는다.
+8. API가 이미 있으면 프론트만 연결한다.
+9. API가 없으면 백엔드 작업으로 분리한다.
+10. 새 DB migration이 필요하면 별도 지시서로 분리한다.
+```
+
+## 우선 회수 후보
+
+```text
+1. 상담 이력 UI
+2. 학부모 연락처/수신동의 UI
+3. 숙제 사진 확인/뷰어 UI
+4. 시간표 버전 관리 UI
+5. 시간표 충돌 결과 UI
+6. 이력/로그 뷰어 UI
+7. 수납·출납 제한 UI
+```
+
+## 계속 보류
+
+```text
+- 분석/통계 대시보드
+- 실제 카카오/SMS 발송
+- 실제 결제 연동
+- 데이터 내보내기/xlsx/csv 백업
+- PWA 오프라인 모드
+- 원장 통합 대시보드 전면 개편
+```
+
