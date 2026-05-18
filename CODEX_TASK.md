@@ -1,669 +1,574 @@
 cat > CODEX_TASK.md <<'EOF'
 # CODEX_TASK
 
-## GOAL
+## 0. 작업 제목
 
-아직 실행 전이므로, 학생 플래너/선생님용 플래너 확인 화면의 현재 문제를 한 번에 정리한다.
+AP Math OS 숙제 사진 1.5 운영 안정화
 
-이번 작업은 아래 3개를 한 번에 처리한다.
+이번 작업의 목표:
+- 숙제 사진 1차 업로드 기능을 운영에서 덜 터지게 안정화한다.
+- 사진 만료/보관/삭제 정책을 코드와 문구에 반영한다.
+- 선생님이 필요한 경우 학생에게 다시 제출할 수 있게 하는 최소 흐름을 판단하고 적용한다.
+- 4장 초과, 용량 초과, R2 오류, 이미 제출, 마감 등 실패 케이스 문구를 정리한다.
+- 이 작업까지만 하고 숙제 사진 기능 확장은 멈춘다.
+- AI 자동 판독, 자동 채점, 학부모 공개, 알림 자동 발송은 하지 않는다.
+- 이 작업 후 다음 큰 흐름은 4순위 구조 정리로 넘어갈 수 있게 닫는다.
 
-1. 선생님용 반 플래너 확인 화면 UI 복구
-2. 학생 플래너 AI 코치 중복 노출 제거
-3. 학생 플래너 우상단 `시험 변경`을 `로그아웃`으로 변경
+## 1. 최상위 원칙
 
-이번 작업은 UI 회귀 복구 + 플래너 화면 정리 작업이다.
-백엔드, DB, route, schema, migration은 건드리지 않는다.
+1. 이번 작업은 “숙제 사진 1.5 안정화”까지만 한다.
+2. 새 기능을 크게 확장하지 않는다.
+3. 학습 포트폴리오를 만들지 않는다.
+4. 댓글 기능을 만들지 않는다.
+5. 학부모 공개 기능을 만들지 않는다.
+6. AI 자동 판독을 만들지 않는다.
+7. AI 자동 채점을 만들지 않는다.
+8. 리포트 자동 반영을 만들지 않는다.
+9. 알림/카카오/문자 자동 발송을 만들지 않는다.
+10. 기존 OMR/시험지 흐름은 절대 건드리지 않는다.
+11. 학생 포털에서 시험지 직접 열기 흐름을 추가하지 않는다.
+12. 기존 문구·버튼명·화면명은 요청 범위 밖에서 임의 변경하지 않는다.
+13. route/schema/migration 변경은 필요한 경우만 최소화한다.
+14. schema 변경 없이 가능한 안정화는 schema 변경 없이 처리한다.
+15. git add, git commit, git push는 하지 않는다.
+16. 브라우저 실기 확인은 사용자 직접 확인 항목으로 남긴다.
 
-## CURRENT PROBLEMS
+## 2. 작업 대상 파일
 
-### 문제 1. 선생님용 반 플래너 확인 화면 UI 깨짐
+우선 확인 파일:
 
-현재 `반 화면 > 플래너 확인` 화면이 브라우저 기본 HTML처럼 보인다.
+1. `apmath/worker-backup/worker/routes/homework-photo.js`
+2. `apmath/homework/index.html`
+3. `apmath/js/classroom.js`
+4. `apmath/worker-backup/worker/wrangler.jsonc`
+5. `schema.sql`
+6. `CODEX_RESULT.md`
 
-증상:
+수정 예상 파일:
 
-- `플래너 확인` 모달은 뜨지만 전체 UI가 허접하게 보임
-- `반 화면`, `지난 주`, `이번 주`, `다음 주`, `요일별`, `주간별` 버튼이 기본 버튼처럼 보임
-- 날짜 버튼도 기본 table/button처럼 보임
-- 학생 이름과 `등록된 계획 없음`이 단순 텍스트로 나열됨
-- 카드/간격/배경/테두리/스크롤/반응형 스타일이 적용되지 않은 상태
+1. `apmath/worker-backup/worker/routes/homework-photo.js`
+2. `apmath/homework/index.html`
+3. `apmath/js/classroom.js`
+4. `CODEX_RESULT.md`
 
-대상 화면:
+원칙적으로 수정하지 않을 파일:
 
-- 반 화면
-- 플래너 확인
-- 반 전체 학생 플래너 확인 모달
-- 요일별 보기
-- 주간별 보기
-- 이번 주 / 다음 주 이동
-- 학생별 `등록된 계획 없음` 표시
+1. `apmath/js/student.js`
+2. `apmath/planner/index.html`
+3. `apmath/worker-backup/worker/routes/reports-ai.js`
+4. `apmath/worker-backup/worker/routes/planner.js`
+5. `schema.sql`
+6. `migrations/*`
+7. 시험지/OMR/archive 관련 파일
+8. 상담 AI 관련 파일
+9. 수납/출납 관련 파일
+10. 학부모 연락 foundation 관련 파일
 
-### 문제 2. 학생 플래너 AI 코치 중복 노출
+## 3. 안정화 범위 확정
 
-현재 PC 화면에서 `AI 코치`가 아래 두 위치에 동시에 나온다.
+이번 작업에서 처리할 항목은 아래 5개다.
 
-- 왼쪽 사이드 패널
-- 본문 상단
+1. 사진 만료 정책 정리
+2. 제출 완료 후 선생님 “다시 제출 요청” 가능 여부 판단 및 최소 구현
+3. 제출 사진 삭제/보관 정책 정리
+4. 실패 케이스 문구 정리
+5. 4장 초과, 용량 초과, R2 오류 대응 확인/보강
 
-한 화면에 같은 문구가 두 번 보일 필요가 없다.
+이 5개 외에는 하지 않는다.
 
-정리 기준:
+## 4. 사진 만료/보관 정책
 
-- PC 화면: 왼쪽 사이드 AI 코치만 유지
-- PC 화면: 본문 상단 AI 코치 숨김
-- 모바일 화면: 사이드 패널이 안 보이므로 본문 상단 AI 코치만 유지
-- 한 화면에 `AI 코치`는 1개만 보여야 함
+### 4.1 정책 결정
 
-### 문제 3. 학생 플래너 우상단 `시험 변경` 중복
+1차의 24시간 만료는 운영상 선생님 확인 시간이 부족할 수 있다.
+1.5부터는 아래 정책으로 정리한다.
 
-현재 우상단 `시험 변경`은 왼쪽 사이드의 `시험 일정 > 변경`과 역할이 겹친다.
+1. 제출 사진 보관 기간 기본값: 7일
+2. 시간 기준: 업로드 시점 기준 168시간
+3. DB metadata는 남긴다.
+4. 실제 이미지 파일은 만료 후 열리지 않게 한다.
+5. R2 실제 삭제 자동화는 이번 작업에서 만들지 않는다.
+6. 만료된 사진은 선생님 화면에서 “만료됨” 또는 “사진 보관 기간이 지났습니다.” 수준으로 표시한다.
+7. 학생 화면에는 보관 정책을 길게 설명하지 않는다.
+8. 선생님 화면에서만 간단히 “사진은 제출 후 7일간 확인할 수 있습니다.” 정도로 안내한다.
 
-정리 기준:
+### 4.2 코드 기준
 
-- 우상단 `시험 변경`은 `로그아웃`으로 바꾼다.
-- 시험 일정 변경 기능은 왼쪽 `시험 일정` 카드의 `변경` 버튼으로만 유지한다.
-- `openExamDateModal()`과 시험일 변경 모달은 삭제하지 않는다.
-- 기존 `resetAuth()`를 재사용한다.
+`homework-photo.js`에 상수 또는 helper를 둔다.
 
-## RULEBOOK
+예:
+- `HOMEWORK_PHOTO_RETENTION_HOURS = 24 * 7`
+- `getHomeworkPhotoExpiresAt()`
 
-작업 전 반드시 아래 문서를 읽고 원칙을 적용한다.
+기존 코드에 24시간 하드코딩이 있으면 7일 기준으로 교체한다.
 
-- `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`
-- `docs/WANGJI_OS_ROADMAP.md`
-- `docs/WANGJI_OS_STRUCTURE.md`
+### 4.3 만료 처리
 
-반드시 지킬 것:
+`GET /api/homework-photo/file?file_id=...`
 
-- 기존 문구·버튼명·화면명 임의 변경 금지
-- 화면은 간략하게, 한 화면에 중복 노출하지 않기
-- 숨겨진 기능이나 foundation 기능을 UI로 새로 꺼내지 않기
-- 이번 작업 범위 밖 신규 기능 추가 금지
-- 학생용 플래너 AI 코치 문구 세트 임의 변경 금지
-- 상담 AI 수정 금지
-- 학생 포털 수정 금지
-- OMR/시험지/archive 흐름 수정 금지
-- 대시보드 신규 카드 추가 금지
-- schema.sql 수정 금지
-- migration 생성 금지
-- Worker route 수정 금지
-- git add 금지
-- git commit 금지
-- git push 금지
+1. deleted_at이 있으면 404
+2. expires_at이 현재보다 과거면 410
+3. 410 응답 body는 JSON이 아니라 이미지 요청에서도 깨지지 않게 단순 text 응답 가능
+4. 파일 목록 API에서는 만료 파일을 아예 제외하지 말고, 가능하면 expired flag를 내려준다.
+5. 선생님 화면에서 expired file은 이미지 미리보기 대신 “사진 보관 기간이 지났습니다.” 표시한다.
 
-## SCOPE
+## 5. R2 binding 안정화
 
-### 수정 대상
+현재 실제 binding 이름이 환경에 따라 달라질 수 있다.
 
-- `apmath/js/classroom.js`
-- `apmath/planner/index.html`
-- `CODEX_RESULT.md`
+반드시 `getHomeworkPhotoBucket(env)`를 확인하고 아래 binding 이름을 모두 지원하게 보강한다.
 
-### 필요 시 확인만 가능
+우선순위:
 
-- `apmath/js/student.js`
-- `apmath/js/core.js`
-- `apmath/worker-backup/worker/routes/reports-ai.js`
-- `apmath/worker-backup/worker/routes/planner.js`
+1. `env.HOMEWORK_PHOTO_BUCKET`
+2. `env.apmath_homework_photo`
+3. 필요 시 현재 코드에 이미 사용된 기존 binding 이름
 
-### 수정 금지
+주의:
+- wrangler.jsonc를 임의로 대폭 변경하지 않는다.
+- 현재 binding이 `apmath_homework_photo`로 들어갔다면 코드가 그것도 인식해야 한다.
+- 현재 binding이 `HOMEWORK_PHOTO_BUCKET`이면 그대로 동작해야 한다.
+- R2 binding이 없을 때는 기존처럼 `r2_not_configured` 500 응답을 반환한다.
+- 오류 메시지는 학생/선생님 화면에서 자연스럽게 보이도록 정리한다.
 
-- `apmath/js/student.js`
-- `apmath/worker-backup/worker/routes/reports-ai.js`
-- `apmath/worker-backup/worker/routes/planner.js`
-- `apmath/worker-backup/worker/schema.sql`
-- `apmath/worker-backup/worker/migrations/*`
-- `apmath/student/index.html`
-- `apmath/js/dashboard.js`
-- `apmath/js/report.js`
-- `apmath/js/management.js`
-- `apmath/js/timetable.js`
-- archive 관련 파일
-- 학생 포털 OMR route
-- 수납·출납 route
-- 실제 발송 provider 관련 파일
+권장 에러 문구:
+- 학생 화면: `사진 저장 준비가 아직 완료되지 않았습니다. 선생님께 말씀해주세요.`
+- 선생님 화면: `사진 저장소 설정이 필요합니다. R2 binding을 확인해주세요.`
 
-## PART A. 선생님용 반 플래너 확인 화면 UI 복구
+## 6. 다시 제출 요청 정책
 
-## A-1. 관련 렌더 함수 찾기
+### 6.1 정책 결정
 
-`apmath/js/classroom.js`에서 아래 키워드로 관련 함수를 찾는다.
+1차에서는 학생 재제출을 막았다.
+운영에서는 학생이 잘못된 사진을 올렸거나 흐린 사진을 올릴 수 있으므로, 선생님만 “다시 제출 요청”을 할 수 있게 한다.
 
-- `플래너 확인`
-- `반 전체 학생 플래너 확인`
-- `요일별`
-- `주간별`
-- `등록된 계획 없음`
-- `planner`
-- `weekly`
-- `daily`
+단, 알림 발송은 하지 않는다.
 
-확인할 것:
+정책:
 
-- 어떤 함수가 현재 화면을 렌더하는지
-- 모달 body HTML을 어디서 만드는지
-- 버튼/날짜 탭/학생 목록이 어떤 class로 렌더되는지
-- 스타일 주입 함수가 있는지
-- 최근 수정으로 class가 빠졌는지
-- 기존 showModal 구조와 충돌하는지
+1. 학생은 스스로 재제출할 수 없다.
+2. 선생님만 제출 현황에서 다시 제출 요청 가능하다.
+3. 다시 제출 요청 시 기존 제출 사진은 soft delete 처리한다.
+4. 기존 submission은 유지하고 `is_submitted = 0`, `submitted_at = NULL`로 되돌린다.
+5. 같은 학생 링크로 다시 제출할 수 있게 한다.
+6. 기존 homework 완료 sync는 되돌리지 않는다.
+7. 마감 처리 전이면 학생은 다시 제출 가능하다.
+8. 마감된 숙제는 다시 제출 요청을 막는다.
+9. 자동 알림/문자/카카오 발송은 하지 않는다.
+10. 화면 문구는 “다시 제출 요청”으로 한다.
 
-## A-2. 전용 스타일 주입 함수 추가 또는 복구
+### 6.2 Worker endpoint 추가
 
-`classroom.js` 안에 선생님용 플래너 확인 화면 전용 스타일 주입 함수를 만든다.
+추가 endpoint:
 
-권장 함수명:
+- `PATCH /api/homework-photo/submissions/:submission_id/reopen`
 
-- `injectClassPlannerReviewStyles()`
+또는 기존 router 구조에 맞춰 아래 중 하나로 구현한다.
+
+- `PATCH /api/homework-photo/reopen`
+- body: `{ submission_id }`
+
+기존 route 패턴에 가장 안전한 방식으로 구현한다.
+
+권한:
+
+1. 선생님 인증 필요
+2. admin은 가능
+3. 담당 선생님은 해당 assignment.class_id 접근 권한이 있을 때만 가능
+4. 기존 `canAccessClass()` helper 또는 동일 권한 검증 재사용
+
+처리:
+
+1. submission_id 확인
+2. submission + assignment + student 조회
+3. assignment status가 closed/deleted면 차단
+4. 권한 확인
+5. 기존 homework_photo_files 중 해당 submission_id 파일은 deleted_at = CURRENT_TIMESTAMP 처리
+6. submission은 is_submitted = 0, submitted_at = NULL, updated_at = CURRENT_TIMESTAMP
+7. synced_homework_status는 null 또는 기존 정책에 맞게 비움
+8. R2 object 실제 삭제는 하지 않는다.
+9. 성공 응답 반환
+
+응답 예시:
+
+성공:
+- success: true
+- reopened: true
+
+마감:
+- success: false
+- error: `assignment_closed`
+- message: `마감된 숙제는 다시 제출 요청을 할 수 없습니다.`
+
+권한 없음:
+- 403
+- success: false
+- error: `forbidden`
+
+### 6.3 선생님 화면 연결
+
+`apmath/js/classroom.js`의 숙제 사진 제출 현황 모달에 최소 버튼을 추가한다.
 
 조건:
 
-- 이미 비슷한 함수가 있으면 새로 만들지 말고 보강한다.
-- style id 중복 방지한다.
-- 예: `class-planner-review-style`
-- 전역 공통 스타일을 깨지 않는다.
-- 다른 모달에 영향을 최소화한다.
-- selector는 전용 wrapper class 아래로 제한한다.
+1. 제출 완료 학생
+2. assignment status가 closed가 아님
+3. submission_id가 있음
 
-전용 wrapper class 예:
+버튼:
 
-- `.class-planner-review`
-- `.cpr-toolbar`
-- `.cpr-nav`
-- `.cpr-toggle`
-- `.cpr-date-tabs`
-- `.cpr-date-btn`
-- `.cpr-student-card`
-- `.cpr-student-name`
-- `.cpr-empty`
-- `.cpr-plan-chip`
-- `.cpr-week-grid`
+- `다시 제출 요청`
 
-## A-3. 모달 전체 구조 복구
+클릭 시:
 
-현재 화면을 아래 구조로 정리한다.
+1. confirm 표시
+2. Worker reopen endpoint 호출
+3. 성공 시 toast
+4. 제출 현황 모달 재조회
+5. 기존 큰 UI 추가 없음
+6. 버튼은 사진/링크 버튼 옆에 작게 둔다.
 
-상단:
+confirm 문구 예시:
 
-- 반 이름
-- `반 전체 학생 플래너 확인`
+- `기존 제출 사진을 숨기고 학생이 다시 제출할 수 있게 할까요?`
 
-그 아래 toolbar:
+toast 문구 예시:
 
-- `반 화면`
-- `지난 주`
-- `이번 주`
-- `다음 주`
+- 성공: `다시 제출할 수 있게 열어두었습니다.`
+- 실패: `다시 제출 요청에 실패했습니다.`
 
-그 아래 보기 전환:
+학생 화면:
 
-- `요일별`
-- `주간별`
+1. 다시 제출 요청 상태가 되면 기존 링크/PIN으로 들어왔을 때 제출 화면이 다시 보여야 한다.
+2. 이미 제출 완료 상태면 계속 완료 화면을 보여야 한다.
+3. 학생 화면에 “다시 제출 요청” 버튼은 절대 만들지 않는다.
 
-그 아래 날짜 탭:
+## 7. 제출 사진 삭제/보관 정책 정리
 
-- 월 05-18
-- 화 05-19
-- 수 05-20
-- 목 05-21
-- 금 05-22
-- 토 05-23
-- 일 05-24
+### 7.1 삭제 정책
 
-그 아래 학생 목록:
+1. 학생은 삭제할 수 없다.
+2. 선생님이 “다시 제출 요청”할 때만 기존 사진을 soft delete 처리한다.
+3. assignment 삭제 시 관련 사진 파일 row도 deleted_at 처리할 수 있으면 처리한다.
+4. R2 실제 object 삭제는 이번 작업에서 강제 구현하지 않는다.
+5. R2 object 삭제 helper가 이미 있으면 실패해도 DB soft delete는 유지한다.
+6. 물리 삭제 실패는 사용자 화면에 과하게 노출하지 않고 console/error 기록만 남긴다.
 
-- 학생 카드 단위
-- 학생 이름 굵게
-- 등록된 계획이 없으면 조용한 빈 상태 표시
-- 계획이 있으면 과목/완료 여부/계획 제목을 chip 또는 리스트로 표시
+### 7.2 선생님 표시 정책
 
-중요:
+1. 제출 완료 + 사진 있음: `사진` 버튼 표시
+2. 제출 완료 + 사진 만료: `사진 만료` 또는 `보관 기간 만료` 표시
+3. 제출 완료 + 파일 없음: 기존 상태 유지
+4. 다시 제출 요청 상태: 미제출로 표시
+5. 삭제된 파일은 목록에 표시하지 않는다.
+6. 선생님이 사진 보기 모달을 열었을 때 만료 파일이 있으면 안내 문구 표시
 
-- 기본 button/table 느낌 제거
-- 카드형 UI 적용
-- 날짜 탭은 가로 스크롤 가능하게
-- 모바일에서도 화면 밖으로 깨지지 않게
-- PC에서는 적당한 폭과 grid 사용
-- 모달 내부에서만 스크롤되게
+문구 예시:
 
-## A-4. 요일별 UI 기준
+- `사진 보관 기간이 지났습니다.`
+- `다시 제출 요청 후 새 사진을 받을 수 있습니다.`
+- `사진은 제출 후 7일간 확인할 수 있습니다.`
 
-요일별 보기에서는 선택된 날짜 기준으로 반 학생 전체를 보여준다.
+## 8. 실패 케이스 문구 정리
 
-디자인 기준:
+### 8.1 학생 화면 문구
 
-- 선택 날짜 헤더는 작게 표시
-- 학생별 카드 반복
-- 학생 이름과 계획 상태가 한눈에 보여야 함
-- `등록된 계획 없음`은 회색/보조 텍스트로 작게 표시
-- 불필요하게 큰 빈 박스 금지
-- 학생 카드 간격 8~10px
-- 전체가 너무 길면 모달 내부 스크롤
+`apmath/homework/index.html`에서 아래 실패 케이스 문구를 자연스럽게 정리한다.
 
-기존 문구 유지:
+1. 링크 오류
+   - `숙제 링크를 확인해주세요.`
 
-- `등록된 계획 없음`
+2. PIN 오류
+   - `PIN 번호를 확인해주세요.`
 
-## A-5. 주간별 UI 기준
+3. 이미 제출
+   - `이미 제출이 완료되었습니다.`
 
-주간별 보기가 이미 구현되어 있으면 스타일만 복구한다.
+4. 마감됨
+   - `마감된 숙제입니다.`
 
-주간별 보기 기준:
+5. 사진 없음
+   - `제출할 사진을 선택해주세요.`
 
-- 학생명 왼쪽
-- 월~일 열
-- 각 칸에 계획 chip 표시
-- 계획 없음은 `-` 또는 빈칸처럼 조용히
-- 모바일에서는 가로 스크롤 허용
-- table 기본 테두리 느낌 말고 AP Math 카드형 표 느낌으로 정리
+6. 4장 이상
+   - `사진은 최대 3장까지 올릴 수 있어요.`
 
-주의:
+7. 이미지 아님
+   - `사진 파일만 올릴 수 있어요.`
 
-- 주간별 기능 자체를 새로 갈아엎지 않는다.
-- 기존 데이터 병합 로직 유지
-- 완료/미완료 구분 로직 유지
+8. 파일당 용량 초과
+   - `사진 1장당 6MB 이하로 올려주세요.`
 
-## A-6. 버튼 스타일 기준
+9. 전체 용량 초과
+   - `사진 전체 용량이 너무 큽니다. 사진 수를 줄이거나 다시 찍어주세요.`
 
-기본 버튼처럼 보이면 FAIL이다.
+10. R2 저장소 미설정
+   - `사진 저장 준비가 아직 완료되지 않았습니다. 선생님께 말씀해주세요.`
 
-버튼 스타일:
+11. 네트워크 오류
+   - `인터넷 연결을 확인한 뒤 다시 시도해주세요.`
 
-- border-radius 10~14px
-- min-height 34~40px
-- font-size 12~13px
-- font-weight 700
-- active 상태 명확히
-- primary 버튼은 `var(--primary)` 계열 사용
-- 보조 버튼은 surface/border 계열 사용
-- 모바일에서 터치 영역 충분히 확보
+12. 알 수 없는 오류
+   - `제출 중 문제가 생겼습니다. 잠시 후 다시 시도해주세요.`
 
-문구 변경 금지:
-
-- `반 화면`
-- `지난 주`
-- `이번 주`
-- `다음 주`
-- `요일별`
-- `주간별`
-
-## A-7. 날짜 탭 스타일 기준
-
-날짜 탭은 기본 table/button처럼 보이면 FAIL이다.
-
-기준:
-
-- flex row
-- gap 6px
-- overflow-x auto
-- 선택 날짜 active 스타일
-- 요일과 날짜가 한 버튼 안에서 보기 좋게 표시
-- 모바일에서 가로 스크롤
-- 버튼 높이 36~42px
-
-## A-8. 학생 카드 스타일 기준
-
-학생별 항목은 기본 텍스트 나열이면 FAIL이다.
-
-기준:
-
-- 학생별 카드 또는 row
-- 이름은 14px 정도 굵게
-- 계획 없음은 12~13px 보조색
-- 계획 있으면 chip/list
-- 완료 계획은 opacity 또는 체크 표시
-- 미완료 계획은 일반 강조
-- 카드 padding 12px 내외
-- border-radius 14~16px
-- border var(--border)
-- background var(--surface)
-
-## A-9. 선생님용 반 플래너 기존 기능 보존
-
-반드시 보존:
-
-- 반 화면으로 돌아가기
-- 지난 주 이동
-- 이번 주 이동
-- 다음 주 이동
-- 요일별 보기
-- 주간별 보기
-- 날짜 선택
-- 학생별 플래너 조회
-- 계획 없음 표시
-- 계획 제목 표시
-- 완료/미완료 구분
-- 모바일/PC 표시
-
-절대 금지:
-
-- 학생용 플래너 AI 코치 수정
-- 학생용 planner/index.html의 코치 문구 세트 수정
-- planner route 수정
-- 새 API 생성
-- schema/migration 변경
-- 문구 변경
-- 대시보드 변경
-
-## PART B. 학생 플래너 AI 코치 중복 노출 제거
-
-## B-1. 현재 AI 코치 렌더 위치 확인
-
-`apmath/planner/index.html`에서 아래를 확인한다.
-
-- `AI 코치`
-- `planner-coach-slot`
-- `renderPlannerCoach`
-- `updatePlannerCoach`
-- `schedulePlannerCoachUpdate`
-- side-panel 내부 렌더 위치
-- main-panel 내부 렌더 위치
-
-현재 PC 화면에서 좌측 사이드와 본문 상단에 같은 코치가 중복 노출된다.
-이 중복을 제거한다.
-
-## B-2. 표시 기준
-
-PC 화면:
-
-- 왼쪽 사이드 패널의 `AI 코치`만 표시
-- 본문 상단 `AI 코치`는 숨김
-
-모바일 화면:
-
-- 사이드 패널이 보이지 않으므로 본문 상단 `AI 코치`만 표시
-
-공통:
-
-- 한 화면에 `AI 코치`는 1개만 보이게 한다.
-- `PLANNER_COACH_MESSAGES`는 수정하지 않는다.
-- 코치 상태 계산 로직은 수정하지 않는다.
-- 코치 카드가 있는 slot이 하나든 둘이든 update 함수가 정상 갱신되게 한다.
-- API 호출 추가 금지.
-- Claude API 호출 금지.
-- 자동 저장/자동 수정 금지.
-
-권장 class:
-
-- `.planner-coach-side`
-- `.planner-coach-main`
-
-권장 CSS:
-
-- `.planner-coach-side`: PC에서만 표시
-- `.planner-coach-main`: 모바일에서만 표시
-
-## B-3. 기존 플래너 코치 기능 보존
-
-반드시 보존:
-
-- `AI 코치` 카드
-- 로컬 규칙 기반 피드백
-- 계획 입력값 반영
-- 완료 체크 상태 반영
-- 확정 문구 세트
-- API 호출 없음
-- Claude API 호출 없음
-- 자동 저장/자동 수정 없음
-- 상담/성적/수납/출결 데이터 미사용
-
-금지:
-
-- `PLANNER_COACH_MESSAGES` 문구 수정
-- 새로운 AI 호출 추가
-- 코치 클릭으로 계획 자동 변경
-- 저장 API 호출
-
-## PART C. 학생 플래너 우상단 `시험 변경`을 `로그아웃`으로 변경
-
-## C-1. 우상단 시험 변경 제거
-
-현재 우상단에 표시되는 `시험 변경` 버튼은 제거하거나 로그아웃으로 교체한다.
-
-기준:
-
-- 우상단에서 `시험 변경` 문구가 보이면 FAIL
-- 시험 일정 변경 기능 자체는 삭제하지 않는다.
-- 왼쪽 사이드 `시험 일정` 카드의 `변경` 버튼은 그대로 유지한다.
-- `openExamDateModal()` 함수는 유지한다.
-- 시험일 변경 모달도 유지한다.
-
-## C-2. 우상단을 로그아웃으로 변경
-
-우상단 버튼 문구를 `로그아웃`으로 표시한다.
-
-기준:
-
-- 우상단 `로그아웃` 클릭 시 기존 `resetAuth()`를 호출한다.
-- 새 로그아웃 로직을 따로 만들지 않는다.
-- 기존 `resetAuth()`가 localStorage/sessionStorage의 `PLANNER_SID`, `PLANNER_PIN`, `PLANNER_SUBJECT`를 제거하고 로그인 화면으로 돌아가면 그대로 사용한다.
-- 로그아웃 버튼은 너무 크지 않게 한다.
-- 기존 완료율 표시를 과하게 밀어내지 않는다.
-
-권장 구조:
-
-- 상단 오른쪽:
-  - `로그아웃`
-  - `0%` 또는 기존 완료율
-
-현재 top 영역에 있는 `top-dday` 버튼이 `시험 변경` 역할이면, 그 버튼은 로그아웃 버튼으로 바꾼다.
-
-예시:
-
-- 기존: `<button id="top-dday" onclick="openExamDateModal()">시험 변경</button>`
-- 변경: `<button id="top-dday" onclick="resetAuth()">로그아웃</button>`
-
-단, id 이름을 꼭 바꿀 필요는 없다.
-기존 CSS/JS 영향이 크면 id는 유지하고 역할만 바꿔도 된다.
-다만 D-day 표시 갱신 함수가 `top-dday`에 다시 `시험 변경` 또는 D-day 문구를 넣고 있으면 그 로직도 함께 보정한다.
-
-## C-3. 시험 일정 변경은 왼쪽 카드만 사용
-
-시험일 변경 기능은 왼쪽 `시험 일정` 카드에서만 접근하게 한다.
-
-확인할 것:
-
-- 왼쪽 `시험 일정` 카드에 `변경` 버튼이 있는지
-- `변경` 버튼이 `openExamDateModal()`을 호출하는지
-- 시험 일정이 미설정이면 기존처럼 `미설정` 표시 유지
-- 시험일 저장 기능 유지
-
-금지:
-
-- 시험 일정 변경 기능 삭제 금지
-- `openExamDateModal()` 삭제 금지
-- 시험 일정 카드 삭제 금지
-- 시험 일정 문구 변경 금지
-
-## PART D. 기존 기능 보존
-
-반드시 보존:
-
-- 학생 로그인
-- 학생포털 SSO 흐름
-- 학생용 플래너 진입
-- 주간플래너
-- 월간플래너
-- 리스트
-- 계획 추가/수정/삭제
-- 완료 체크
-- 시험 일정 카드
-- 시험 일정 변경 모달
-- AI 코치 로컬 피드백
-- AI 코치 문구 세트
-- 선생님용 반 플래너 확인
-- 요일별/주간별 반 플래너 확인
-- 학생별 등록 계획 없음 표시
-
-금지:
-
-- planner route 수정
-- reports-ai.js 수정
-- student.js 수정
-- schema/migration 수정
-- 학생포털/OMR/archive 흐름 수정
-- 새 API 생성
-- 대시보드 수정
-- 상담 AI 수정
-- 수납·출납 수정
-
-## VERIFY
+### 8.2 선생님 화면 문구
+
+`classroom.js`에서 아래 문구를 정리한다.
+
+1. 사진 조회 실패
+   - `숙제 사진을 불러오지 못했습니다.`
+
+2. 사진 만료
+   - `사진 보관 기간이 지났습니다.`
+
+3. R2 설정 필요
+   - `사진 저장소 설정이 필요합니다. R2 binding을 확인해주세요.`
+
+4. 다시 제출 요청 성공
+   - `다시 제출할 수 있게 열어두었습니다.`
+
+5. 다시 제출 요청 실패
+   - `다시 제출 요청에 실패했습니다.`
+
+6. 마감된 숙제 reopen 차단
+   - `마감된 숙제는 다시 제출 요청을 할 수 없습니다.`
+
+## 9. 업로드 제한 재확인/보강
+
+Worker와 학생 화면에서 둘 다 확인한다.
+
+### 9.1 Worker 제한
+
+1. 파일 최소 1장
+2. 파일 최대 3장
+3. 파일당 6MB 이하
+4. 전체 18MB 이하
+5. image MIME만 허용
+6. 확장자만 믿지 말고 type 우선 확인
+7. type이 비어 있는 일부 모바일 파일은 확장자 fallback 허용 가능
+8. R2 업로드 실패 시 DB 제출 완료 처리 금지
+9. 일부 파일 업로드 후 실패하면 가능한 범위에서 R2 object cleanup
+10. 이미 제출된 상태면 409
+11. 다시 제출 요청 상태에서는 재업로드 가능
+
+### 9.2 학생 화면 제한
+
+1. 파일 input accept는 image 계열
+2. 선택 즉시 3장 초과 차단
+3. 6MB 초과 안내
+4. 전체 18MB 초과 안내
+5. 제출 버튼 중복 클릭 방지
+6. 업로드 중 문구 표시
+7. 실패 후 다시 시도 가능
+8. 성공 후 제출 완료 화면 표시
+
+## 10. 기존 흐름 보존
+
+다음은 절대 깨뜨리지 않는다.
+
+1. 기존 숙제 등록
+2. 기존 숙제 목록
+3. 기존 학생별 링크/QR
+4. 기존 제출 현황
+5. 기존 사진 보기 모달
+6. 기존 마감 처리
+7. 기존 숙제 O/X 토글
+8. 기존 QR/OMR
+9. 기존 시험성적
+10. 기존 플래너
+11. 기존 상담 AI
+12. 기존 리포트 AI
+13. 기존 학생 포털
+14. 기존 시험지 직접 열기 금지
+
+## 11. 검증
+
+### 11.1 정적 문법 검증
 
 반드시 실행한다.
 
-### classroom.js 문법 확인
+1. `node --check apmath/worker-backup/worker/routes/homework-photo.js`
+2. `node --check apmath/js/classroom.js` if modified
+3. `apmath/homework/index.html` inline script 정확히 추출 후 `node --check`
 
-- `node --check apmath/js/classroom.js`
+HTML script 추출 시 주의:
 
-### planner inline script 검증
+1. `<script>` 개수 확인
+2. `</script>` 개수 확인
+3. 전체 script 블록만 정확히 추출
+4. 일부만 잘라서 `Unexpected end of input` 만들지 말 것
+5. 임시 파일은 프로젝트에 남기지 말 것
 
-- `awk '/<script>/{flag=1;next}/<\\/script>/{flag=0}flag' apmath/planner/index.html > /tmp/planner-inline.js`
-- `node --check /tmp/planner-inline.js`
+### 11.2 검색 검증
 
-### 검색 확인
+아래 검색을 수행하고 CODEX_RESULT에 요약한다.
 
-- `Select-String -Path apmath/js/classroom.js -Pattern "플래너 확인|요일별|주간별|등록된 계획 없음|class-planner-review|injectClassPlannerReviewStyles"`
-- `Select-String -Path apmath/planner/index.html -Pattern "시험 변경|시험 일정|변경|로그아웃|resetAuth|openExamDateModal|top-dday|logout-mini|planner-coach-side|planner-coach-main|AI 코치|PLANNER_COACH_MESSAGES"`
-- `Select-String -Path apmath/planner/index.html -Pattern "Claude|ai/|consultation|exam_sessions|wrong_answers|attendance|billing"`
-- `Select-String -Path apmath/js/student.js -Pattern "상담 흐름 요약|consultation-thread-summary"`
-- `Select-String -Path apmath/worker-backup/worker/routes/reports-ai.js -Pattern "consultation-thread-summary|planner-coach"`
+1. `HOMEWORK_PHOTO_BUCKET`
+2. `apmath_homework_photo`
+3. `r2_not_configured`
+4. `HOMEWORK_PHOTO_RETENTION`
+5. `homework-photo/upload`
+6. `homework-photo/files`
+7. `homework-photo/file`
+8. `reopen`
+9. `다시 제출 요청`
+10. `homework_photo_files`
+11. `deleted_at`
+12. `expires_at`
+13. `OMR`
+14. `archive`
+15. `exam_sessions`
+16. `student-portal`
+17. `PLANNER_COACH_MESSAGES`
+18. `consultation-thread-summary`
 
-### git 확인
+확인 기준:
 
-- `git status --short`
-- `git diff --name-only`
+1. 숙제 사진 관련 검색어는 의도한 파일에만 있어야 한다.
+2. OMR/archive/student-portal/planner/consultation 관련 파일이 이번 작업에서 수정되면 실패다.
+3. `PLANNER_COACH_MESSAGES`는 변경 없어야 한다.
+4. `consultation-thread-summary`는 변경 없어야 한다.
 
-## FAIL 기준
+### 11.3 Git diff 검증
 
-아래 중 하나라도 해당하면 FAIL이다.
+아래를 확인한다.
 
-### 선생님용 반 플래너 확인 화면
+1. `git diff --name-only -- apmath/worker-backup/worker/routes/homework-photo.js apmath/homework/index.html apmath/js/classroom.js CODEX_RESULT.md`
+2. 실제 수정 파일이 예상 범위 안인지 확인
+3. `schema.sql`이나 `migrations/*`가 수정되면 이유를 CODEX_RESULT에 명확히 기록
+4. 불필요한 파일이 수정되면 되돌린다.
 
-- 현재 화면처럼 기본 HTML 버튼/table 느낌이 남아 있으면 FAIL
-- `플래너 확인` 문구 변경 시 FAIL
-- `반 화면/지난 주/이번 주/다음 주/요일별/주간별` 문구 변경 시 FAIL
-- `등록된 계획 없음` 문구 변경 시 FAIL
-- 요일별 보기 기능이 깨지면 FAIL
-- 주간별 보기 기능이 깨지면 FAIL
+### 11.4 브라우저 실기 확인은 하지 않는다
 
-### 학생 플래너 AI 코치
+사용자 직접 확인 항목으로 남긴다.
 
-- PC에서 AI 코치가 두 번 보이면 FAIL
-- 모바일에서 AI 코치가 안 보이면 FAIL
-- `PLANNER_COACH_MESSAGES` 문구를 임의 변경하면 FAIL
-- Claude/API 호출이 추가되면 FAIL
-- 자동 저장/자동 수정이 생기면 FAIL
+사용자 직접 확인 항목:
 
-### 우상단 로그아웃
+1. 학생 링크 접속
+2. PIN 입력
+3. 사진 1장 제출
+4. 사진 3장 제출
+5. 4장 제출 차단
+6. 6MB 초과 차단
+7. 제출 완료 후 재제출 버튼이 없는지 확인
+8. 선생님 제출 현황에서 사진 보기
+9. 선생님 다시 제출 요청 버튼 확인
+10. 다시 제출 요청 후 학생 링크에서 다시 제출 가능 여부 확인
+11. 마감된 숙제에서 다시 제출 요청이 막히는지 확인
+12. 사진 만료 문구 확인은 실제 7일 대기 대신 코드/임시 데이터 기준으로 사용자 확인 필요로 남김
+13. 기존 숙제 O/X 유지
+14. 기존 QR/OMR 유지
+15. 기존 시험성적 유지
+16. 기존 플래너 유지
 
-- 우상단에 `시험 변경`이 계속 보이면 FAIL
-- 로그아웃 버튼이 화면 어디에도 안 보이면 FAIL
-- 로그아웃이 `resetAuth()`를 사용하지 않으면 FAIL
-- 왼쪽 시험 일정 변경 기능이 사라지면 FAIL
+## 12. 배포/운영 기록
 
-### 공통
+이번 작업은 Worker route가 바뀔 가능성이 높다.
 
-- route/schema/migration이 바뀌면 FAIL
-- student.js 수정 시 FAIL
-- reports-ai.js 수정 시 FAIL
-- 학생포털/OMR/archive 흐름이 바뀌면 FAIL
-- 대시보드가 바뀌면 FAIL
+CODEX_RESULT에 반드시 기록한다.
 
-## OUTPUT
+1. Worker deploy 필요 여부
+2. R2 binding 이름 확인 결과
+3. `HOMEWORK_PHOTO_BUCKET` 지원 여부
+4. `apmath_homework_photo` 지원 여부
+5. D1 migration 필요 여부
+6. 새 migration 생성 여부
+7. wrangler deploy는 실행하지 않았는지 여부
+8. remote D1 apply는 실행하지 않았는지 여부
 
-루트의 `CODEX_RESULT.md`를 작성한다.
+주의:
+- 사용자가 명시하지 않았으므로 `wrangler deploy`는 하지 않는다.
+- 사용자가 명시하지 않았으므로 D1 remote migration apply도 하지 않는다.
+- 기존 pending migration 전체 apply를 지시하지 않는다.
 
-형식:
+## 13. CODEX_RESULT.md 작성 형식
+
+작업 완료 후 루트의 `CODEX_RESULT.md`에 아래 형식으로 짧고 정확하게 작성한다.
 
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
 
-실제 수정 파일만 적는다.
+- 수정/생성 파일 목록
 
 ## 2. 구현 완료 또는 확인 완료
 
-### 선생님용 반 플래너 확인 UI
+### 숙제 사진 1.5 안정화
 
-- 선생님용 반 플래너 확인 UI 스타일 복구 여부
-- 기본 HTML 버튼/table 느낌 제거 여부
-- 전용 스타일 주입 함수 추가/복구 여부
-- 요일별 보기 카드형 UI 복구 여부
-- 주간별 보기 표/카드형 UI 복구 여부
-- 날짜 탭 스타일 복구 여부
-- 학생별 카드 스타일 복구 여부
-- `등록된 계획 없음` 표시 보존 여부
-- `반 화면/지난 주/이번 주/다음 주/요일별/주간별` 기능 보존 여부
+- 사진 보관 기간 7일 정책 반영 여부
+- 만료 파일 처리 보강 여부
+- 삭제/보관 정책 정리 여부
+- 다시 제출 요청 정책 반영 여부
+- 다시 제출 요청 endpoint 구현 여부
+- 선생님 화면 다시 제출 요청 버튼 연결 여부
+- 학생 재제출 직접 노출 없음 확인
+- 실패 케이스 문구 정리 여부
 
-### 학생 플래너 AI 코치
+### R2 / Worker
 
-- AI 코치 PC 중복 노출 제거 여부
-- PC에서는 사이드 AI 코치만 표시되는지 여부
-- 모바일에서는 본문 AI 코치만 표시되는지 여부
-- AI 코치 문구/로직 보존 여부
-- API/Claude 호출 추가 없음 확인
-- 자동 저장/자동 수정 없음 확인
+- `HOMEWORK_PHOTO_BUCKET` binding 지원 여부
+- `apmath_homework_photo` binding 지원 여부
+- R2 미설정 시 `r2_not_configured` 처리 여부
+- 업로드 실패 시 DB 제출 완료 방지 여부
+- 일부 업로드 실패 시 가능한 R2 cleanup 여부
 
-### 우상단 로그아웃
+### 업로드 제한
 
-- 우상단 `시험 변경` 제거 여부
-- 우상단 `로그아웃` 표시 여부
-- 로그아웃이 기존 `resetAuth()`를 사용하는지 여부
-- 로그아웃 시 PLANNER_SID/PLANNER_PIN 제거 여부
-- 왼쪽 `시험 일정` 카드의 `변경` 버튼 유지 여부
-- 시험 일정 변경 모달 유지 여부
+- 1장 미만 차단 여부
+- 3장 초과 차단 여부
+- 파일당 6MB 초과 차단 여부
+- 전체 18MB 초과 차단 여부
+- 이미지 파일 제한 여부
+- 이미 제출 상태 409 차단 여부
+- 다시 제출 요청 상태 재업로드 가능 여부
+- 마감 상태 업로드 차단 여부
 
-### 공통 보존
+### 보존 확인
 
-- 학생용 planner/index.html 기존 저장/수정/삭제 흐름 보존 여부
-- 학생 로그인/SSO 흐름 보존 여부
-- 주간플래너/월간플래너/리스트 보존 여부
-- 계획 추가/수정/삭제/완료 체크 보존 여부
-- 상담 AI 미수정 확인
-- student.js 미수정 확인
-- reports-ai.js 미수정 확인
-- route/schema/migration 미수정 확인
-- 기존 문구·버튼명·화면명 임의 변경 없음 확인
+- OMR/시험지 흐름 미수정
+- 학생 포털 시험지 직접 열기 금지 유지
+- 플래너 미수정
+- 상담 AI 미수정
+- 리포트 AI 미수정
+- route/schema/migration 변경 범위 확인
+- 기존 문구·버튼명·화면명 임의 변경 없음
 
 ## 3. 실행 결과
 
-- `node --check apmath/js/classroom.js` 결과
-- planner inline script `node --check` 결과
-- 검색 확인 결과
-- `git status --short` 결과
-- `git diff --name-only` 결과
+- 실행한 검증 명령
+- PASS/FAIL
+- 실패한 검증이 있으면 원인
+- 실행하지 못한 검증이 있으면 이유
 
 ## 4. 결과 요약
 
-짧게 정리한다.
+- 3~6줄 요약
 
-## 5. 다음 조치
+## 5. 잘못한 점 / 위험했던 점 / 보존한 점
 
-- 사용자가 직접 반 화면 → 플래너 확인 화면 확인
-- 사용자가 직접 요일별 보기 확인
-- 사용자가 직접 주간별 보기 확인
-- 사용자가 직접 PC에서 AI 코치가 1개만 보이는지 확인
-- 사용자가 직접 모바일에서 AI 코치가 보이는지 확인
-- 사용자가 직접 PC에서 우상단이 로그아웃으로 보이는지 확인
-- 사용자가 직접 로그아웃 후 로그인 화면으로 돌아가는지 확인
-- 사용자가 직접 왼쪽 시험 일정 변경 버튼이 정상인지 확인
-- 사용자가 직접 계획 추가/수정/삭제/완료 체크 확인
-- 사용자가 직접 git add/commit/push
+- 잘못한 점: 없으면 없음
+- 위험했던 점: R2 binding명 불일치, 제출 상태 sync, 파일 만료, 다시 제출 요청, 기존 숙제 O/X 덮어쓰기 위험 기록
+- 보존한 점: 기존 OMR/시험지/학생포털/플래너/상담AI/리포트AI/문구 보존 기록
 
-## 6. 위험했던 점 / 보존한 점
+## 6. 배포/운영 필요 사항
 
-반드시 적는다.
+- Worker deploy 필요 여부
+- R2 binding 설정 필요 여부
+- D1 migration 필요 여부
+- 사용자가 직접 확인해야 할 브라우저 항목
+- 이 작업 후 다음 큰 흐름은 4순위 구조 정리로 넘어가면 되는지 기록
 
-- 선생님용 반 플래너 확인 UI가 기본 HTML처럼 깨진 점
-- 기존 문구를 보존한 점
-- AI 코치가 중복 노출되어 화면이 과했던 점
-- 한 화면에 AI 코치를 하나만 보이게 줄인 점
-- 우상단 시험 변경과 왼쪽 시험 일정 변경이 중복이었던 점
-- 우상단을 로그아웃으로 바꿔 접근성을 보강한 점
-- 시험 일정 변경 기능은 왼쪽 카드에 보존한 점
-- 기존 플래너 코치 문구/로직을 건드리지 않은 점
-- 기존 학생 SSO/저장/수정/삭제 흐름을 보존한 점
-- 상담 AI를 건드리지 않은 점
-- route/schema/migration을 건드리지 않은 점
+## 14. 다음 단계 메모
+
+이 작업이 끝나면 숙제 사진 기능은 1.5 안정화로 닫는다.
+
+다음 큰 흐름:
+- AI 자동 판독/자동 채점으로 가지 않는다.
+- 숙제 사진 추가 확장으로 가지 않는다.
+- 4순위 구조 정리로 넘어간다.
+- 후보: AP Math OS 전체 구조 정리, initial-data 분리 사전 분석, 홈페이지/왕지교육 통합 준비 중 사용자 지시에 따라 진행한다.
+
+## 15. 마지막 지시
 
 현재 프로젝트 루트의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라. 이전 작업 결과로 대체하지 마라.
 EOF

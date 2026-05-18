@@ -2,6 +2,8 @@ import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass } from '../helpers/foundation-db.js';
 import { headers } from '../helpers/response.js';
 
+const HOMEWORK_PHOTO_RETENTION_HOURS = 24 * 7;
+
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
   if (!auth.startsWith('Basic ')) return null;
@@ -82,17 +84,22 @@ function getHomeworkPhotoAssignment(env, assignmentId) {
 function getHomeworkPhotoDeleteAssignmentId(method, id, path) {
   if (method !== 'DELETE') return '';
   if (id === 'assignments' && path[3] && !path[4]) return String(path[3]).trim();
-  if (id && !['assignments', 'overview', 'student-links', 'assignment', 'auth', 'submit', 'cancel'].includes(id)) {
+  if (id && !['assignments', 'overview', 'student-links', 'assignment', 'auth', 'submit', 'cancel', 'submissions'].includes(id)) {
     return String(id).trim();
   }
   return '';
 }
 
-function normalizeHomeworkPhotoFileUrl(env, fileKey) {
-  const key = String(fileKey || '').trim().replace(/^\/+/, '');
-  if (!key) return '';
-  const base = String(env.R2_PUBLIC_BASE_URL || 'https://r2.ap-math.com').replace(/\/+$/, '');
-  return `${base}/${key.split('/').map(part => encodeURIComponent(part)).join('/')}`;
+function getHomeworkPhotoBucket(env) {
+  if (env?.HOMEWORK_PHOTO_BUCKET) return env.HOMEWORK_PHOTO_BUCKET;
+  if (env?.apmath_homework_photo) return env.apmath_homework_photo;
+  if (env?.HOMEWORK_PHOTOS_BUCKET) return env.HOMEWORK_PHOTOS_BUCKET;
+  return null;
+}
+
+function getHomeworkPhotoFileUrl(fileId) {
+  const safeId = String(fileId || '').trim();
+  return safeId ? `/api/homework-photo/file?file_id=${encodeURIComponent(safeId)}` : '';
 }
 
 function detectHomeworkPhotoFileKind(file = {}) {
@@ -148,6 +155,76 @@ async function checkHomeworkPhotoStudentToken(env, studentId, token = '') {
   if (!student || student.status !== '재원') return false;
   const expectedToken = await sha256hex(`${student.id}:${student.student_pin || ''}:student-portal:v1`);
   return safeToken === expectedToken;
+}
+
+function sanitizeHomeworkPhotoFileName(fileName = '', fallbackExt = 'jpg') {
+  const raw = String(fileName || '').trim();
+  const safe = raw.replace(/[^a-zA-Z0-9._-]/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
+  if (safe) return safe;
+  return `file.${fallbackExt}`;
+}
+
+function getHomeworkPhotoFileExt(fileName = '', fileType = '') {
+  const byName = String(fileName || '').trim().toLowerCase().match(/\.([a-z0-9]+)$/);
+  if (byName?.[1]) return byName[1];
+  const mime = String(fileType || '').trim().toLowerCase();
+  if (mime === 'image/jpeg') return 'jpg';
+  if (mime === 'image/png') return 'png';
+  if (mime === 'image/webp') return 'webp';
+  if (mime === 'image/gif') return 'gif';
+  if (mime === 'image/heic') return 'heic';
+  if (mime === 'image/heif') return 'heif';
+  return 'jpg';
+}
+
+function buildHomeworkPhotoObjectKey(assignmentId, submissionId, fileId, fileName, fileType) {
+  const ext = getHomeworkPhotoFileExt(fileName, fileType);
+  const safeName = sanitizeHomeworkPhotoFileName(fileName, ext);
+  return `homework-photo/${assignmentId}/${submissionId}/${fileId}-${safeName}`;
+}
+
+function isAllowedHomeworkPhotoMime(fileType = '') {
+  const safe = String(fileType || '').trim().toLowerCase();
+  return ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/heic', 'image/heif'].includes(safe);
+}
+
+function getHomeworkPhotoNowIso() {
+  return new Date().toISOString();
+}
+
+function getHomeworkPhotoExpiresAt(hours = HOMEWORK_PHOTO_RETENTION_HOURS) {
+  return new Date(Date.now() + hours * 60 * 60 * 1000).toISOString();
+}
+
+function isHomeworkPhotoExpired(file = {}) {
+  if (!file?.expires_at) return false;
+  const expiresAt = new Date(file.expires_at).getTime();
+  return Number.isFinite(expiresAt) && expiresAt <= Date.now();
+}
+
+async function getHomeworkPhotoSubmissionWithAssignment(env, submissionId) {
+  const safeSubmissionId = String(submissionId || '').trim();
+  if (!safeSubmissionId) return null;
+  return env.DB.prepare(`
+    SELECT
+      hps.id AS submission_id,
+      hps.assignment_id,
+      hps.student_id,
+      hps.is_submitted,
+      hps.submitted_at,
+      hps.synced_homework_date,
+      hps.synced_homework_status,
+      hpa.class_id,
+      hpa.title,
+      hpa.due_date,
+      hpa.due_time,
+      hpa.status AS assignment_status,
+      s.name AS student_name
+    FROM homework_photo_submissions hps
+    JOIN homework_photo_assignments hpa ON hpa.id = hps.assignment_id
+    JOIN students s ON s.id = hps.student_id
+    WHERE hps.id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
+  `).bind(safeSubmissionId).first();
 }
 
 export async function handleHomeworkPhoto(request, env, teacher, path, url) {
@@ -222,17 +299,90 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
       return responseJson({ error: 'Forbidden' }, 403);
     }
 
-    await env.DB.prepare(`
-      UPDATE homework_photo_assignments
-      SET status = 'deleted',
-          updated_at = DATETIME('now')
-      WHERE id = ?
-    `).bind(assignmentId).run();
+    await env.DB.batch([
+      env.DB.prepare(`
+        UPDATE homework_photo_files
+        SET deleted_at = COALESCE(deleted_at, DATETIME('now'))
+        WHERE submission_id IN (
+          SELECT id
+          FROM homework_photo_submissions
+          WHERE assignment_id = ?
+        ) AND deleted_at IS NULL
+      `).bind(assignmentId),
+      env.DB.prepare(`
+        UPDATE homework_photo_assignments
+        SET status = 'deleted',
+            updated_at = DATETIME('now')
+        WHERE id = ?
+      `).bind(assignmentId)
+    ]);
 
     return responseJson({ success: true, deleted_id: assignmentId });
   }
 
-  if (method === 'PATCH' && id && id !== 'assignments' && id !== 'overview' && id !== 'student-links' && id !== 'assignment' && id !== 'auth' && id !== 'submit' && id !== 'cancel' && path[3] !== 'close') {
+  if (method === 'PATCH' && id === 'submissions' && path[3] && path[4] === 'reopen') {
+    const currentTeacher = teacher || await verifyAuth(request, env);
+    if (!currentTeacher) return responseJson({ error: 'Unauthorized' }, 401);
+
+    const submission = await env.DB.prepare(`
+      SELECT
+        hps.id AS submission_id,
+        hps.assignment_id,
+        hps.student_id,
+        hps.is_submitted,
+        hps.submitted_at,
+        hps.synced_homework_date,
+        hps.synced_homework_status,
+        hpa.class_id,
+        hpa.title,
+        hpa.due_date,
+        hpa.due_time,
+        hpa.status AS assignment_status,
+        s.name AS student_name
+      FROM homework_photo_submissions hps
+      JOIN homework_photo_assignments hpa ON hpa.id = hps.assignment_id
+      JOIN students s ON s.id = hps.student_id
+      WHERE hps.id = ?
+    `).bind(path[3]).first();
+    if (!submission) return responseJson({ success: false, error: 'Not found' }, 404);
+    if (!(await canAccessClass(currentTeacher, submission.class_id, env))) {
+      return responseJson({ success: false, error: 'forbidden' }, 403);
+    }
+    if (String(submission.assignment_status || '').trim() === 'closed') {
+      return responseJson({
+        success: false,
+        error: 'assignment_closed',
+        message: '마감된 숙제는 다시 제출 요청을 할 수 없습니다.'
+      }, 409);
+    }
+    if (String(submission.assignment_status || '').trim() === 'deleted') {
+      return responseJson({
+        success: false,
+        error: 'assignment_deleted',
+        message: '삭제된 숙제에는 다시 제출 요청을 할 수 없습니다.'
+      }, 410);
+    }
+
+    await env.DB.batch([
+      env.DB.prepare(`
+        UPDATE homework_photo_files
+        SET deleted_at = COALESCE(deleted_at, DATETIME('now'))
+        WHERE submission_id = ? AND deleted_at IS NULL
+      `).bind(submission.submission_id),
+      env.DB.prepare(`
+        UPDATE homework_photo_submissions
+        SET is_submitted = 0,
+            submitted_at = NULL,
+            synced_homework_status = NULL,
+            updated_at = DATETIME('now')
+        WHERE id = ?
+      `).bind(submission.submission_id)
+    ]);
+
+    return responseJson({ success: true, reopened: true, submission_id: submission.submission_id });
+  }
+
+  if (method === 'PATCH' && id && id !== 'assignments' && id !== 'overview' && id !== 'student-links' && id !== 'assignment' && id !== 'auth' && id !== 'submit' && id !== 'cancel' && id !== 'submissions' && path[3] !== 'close') {
     const currentTeacher = teacher || await verifyAuth(request, env);
     if (!currentTeacher) return responseJson({ error: 'Unauthorized' }, 401);
 
@@ -311,7 +461,8 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
         s.name,
         s.parent_phone,
         s.guardian_name,
-        COUNT(hpf.id) AS file_count
+        COUNT(hpf.id) AS file_count,
+        SUM(CASE WHEN hpf.expires_at IS NOT NULL AND hpf.expires_at <= DATETIME('now') THEN 1 ELSE 0 END) AS expired_file_count
       FROM homework_photo_submissions hps
       JOIN students s ON s.id = hps.student_id
       LEFT JOIN homework_photo_files hpf
@@ -338,23 +489,7 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
 
     let submission = null;
     if (submissionId) {
-      submission = await env.DB.prepare(`
-        SELECT
-          hps.id AS submission_id,
-          hps.assignment_id,
-          hps.student_id,
-          hps.is_submitted,
-          hps.submitted_at,
-          hpa.class_id,
-          hpa.title,
-          hpa.due_date,
-          hpa.due_time,
-          s.name AS student_name
-        FROM homework_photo_submissions hps
-        JOIN homework_photo_assignments hpa ON hpa.id = hps.assignment_id
-        JOIN students s ON s.id = hps.student_id
-        WHERE hps.id = ? AND COALESCE(hpa.status, 'active') != 'deleted'
-      `).bind(submissionId).first();
+      submission = await getHomeworkPhotoSubmissionWithAssignment(env, submissionId);
     } else if (assignmentId && studentId) {
       submission = await env.DB.prepare(`
         SELECT
@@ -383,14 +518,16 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
     const rows = await env.DB.prepare(`
       SELECT id, submission_id, file_key, file_name, file_type, file_size, expires_at, created_at
       FROM homework_photo_files
-      WHERE submission_id = ? AND deleted_at IS NULL
+      WHERE submission_id = ?
+        AND deleted_at IS NULL
       ORDER BY created_at ASC, id ASC
     `).bind(submission.submission_id).all();
 
     const files = (rows.results || []).map(file => ({
       ...file,
+      expired: isHomeworkPhotoExpired(file),
       kind: detectHomeworkPhotoFileKind(file),
-      url: normalizeHomeworkPhotoFileUrl(env, file.file_key || file.file_name || '')
+      url: getHomeworkPhotoFileUrl(file.id)
     }));
 
     return responseJson({
@@ -408,6 +545,38 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
       },
       files
     });
+  }
+
+  if (method === 'GET' && id === 'file') {
+    const fileId = String(url.searchParams.get('file_id') || '').trim();
+    if (!fileId) return responseJson({ success: false, error: 'file_id required' }, 400);
+
+    const file = await env.DB.prepare(`
+      SELECT id, file_key, file_name, file_type, expires_at, deleted_at
+      FROM homework_photo_files
+      WHERE id = ?
+    `).bind(fileId).first();
+
+    if (!file || file.deleted_at) {
+      return new Response('Not found', { status: 404 });
+    }
+    if (file.expires_at && new Date(file.expires_at).getTime() <= Date.now()) {
+      return new Response('Expired', { status: 410 });
+    }
+
+    const bucket = getHomeworkPhotoBucket(env);
+    if (!bucket) return responseJson({ success: false, error: 'r2_not_configured' }, 500);
+
+    const object = await bucket.get(String(file.file_key || '').trim());
+    if (!object) return new Response('Not found', { status: 404 });
+
+    const fileHeaders = new Headers();
+    fileHeaders.set('Content-Type', String(file.file_type || object.httpMetadata?.contentType || 'application/octet-stream'));
+    fileHeaders.set('Cache-Control', 'private, max-age=300');
+    if (file.file_name) {
+      fileHeaders.set('Content-Disposition', `inline; filename="${sanitizeHomeworkPhotoFileName(file.file_name)}"`);
+    }
+    return new Response(object.body, { status: 200, headers: fileHeaders });
   }
 
   if (method === 'GET' && id === 'student-links') {
@@ -525,6 +694,127 @@ export async function handleHomeworkPhoto(request, env, teacher, path, url) {
     await syncHomeworkPhotoStatus(env, studentId, row.due_date, '완료');
 
     return responseJson({ success: true });
+  }
+
+  if (method === 'POST' && id === 'upload') {
+    const form = await request.formData();
+    const assignmentId = String(form.get('assignment_id') || '').trim();
+    const studentId = String(form.get('student_id') || '').trim();
+    const pin = String(form.get('pin') || '').trim();
+    const auth = await checkHomeworkPhotoStudent(env, assignmentId, studentId, pin);
+    if (!auth.authorized) {
+      return responseJson({ success: false, error: auth.error }, auth.status || 403);
+    }
+
+    const row = auth.row;
+    if (row.assignment_status === 'deleted') {
+      return responseJson({ success: false, error: 'assignment_deleted', message: '삭제된 숙제입니다.' }, 410);
+    }
+    if (row.assignment_status === 'closed') {
+      return responseJson({ success: false, error: 'assignment_closed', message: '마감된 숙제입니다.' }, 409);
+    }
+    if (Number(row.is_submitted || 0) === 1) {
+      return responseJson({ success: false, error: 'already_submitted', message: '이미 제출이 완료되었습니다.' }, 409);
+    }
+
+    const entries = [];
+    for (const value of form.getAll('files')) entries.push(value);
+    for (const value of form.getAll('file')) entries.push(value);
+    const files = entries.filter(file => file && typeof file.arrayBuffer === 'function');
+    if (!files.length) {
+      return responseJson({ success: false, error: 'files_required', message: '사진 파일을 선택해 주세요.' }, 400);
+    }
+    if (files.length > 3) {
+      return responseJson({ success: false, error: 'too_many_files', message: '사진은 최대 3장까지 업로드할 수 있습니다.' }, 400);
+    }
+
+    let totalSize = 0;
+    for (const file of files) {
+      const size = Number(file.size || 0);
+      totalSize += size;
+      if (!isAllowedHomeworkPhotoMime(file.type)) {
+        return responseJson({ success: false, error: 'invalid_file_type', message: '이미지 파일만 업로드할 수 있습니다.' }, 400);
+      }
+      if (size <= 0) {
+        return responseJson({ success: false, error: 'invalid_file_size', message: '비어 있는 파일은 업로드할 수 없습니다.' }, 400);
+      }
+      if (size > 6 * 1024 * 1024) {
+        return responseJson({ success: false, error: 'file_too_large', message: '파일당 최대 6MB까지 업로드할 수 있습니다.' }, 400);
+      }
+    }
+    if (totalSize > 18 * 1024 * 1024) {
+      return responseJson({ success: false, error: 'total_size_exceeded', message: '전체 파일 용량은 최대 18MB까지 업로드할 수 있습니다.' }, 400);
+    }
+
+    const bucket = getHomeworkPhotoBucket(env);
+    if (!bucket) {
+      return responseJson({ success: false, error: 'r2_not_configured', message: '사진 저장 준비가 아직 완료되지 않았습니다. 선생님께 말씀해주세요.' }, 500);
+    }
+
+    const uploadedKeys = [];
+    const fileRows = [];
+    try {
+      for (const file of files) {
+        const fileId = makeHomeworkPhotoId('hpf');
+        const objectKey = buildHomeworkPhotoObjectKey(assignmentId, row.submission_id, fileId, file.name, file.type);
+        const body = await file.arrayBuffer();
+        await bucket.put(objectKey, body, {
+          httpMetadata: {
+            contentType: String(file.type || 'application/octet-stream')
+          }
+        });
+        uploadedKeys.push(objectKey);
+        fileRows.push({
+          id: fileId,
+          submission_id: row.submission_id,
+          file_key: objectKey,
+          file_name: String(file.name || ''),
+          file_type: String(file.type || ''),
+          file_size: Number(file.size || 0),
+          expires_at: getHomeworkPhotoExpiresAt()
+        });
+      }
+
+      const stmts = fileRows.map(file =>
+        env.DB.prepare(`
+          INSERT INTO homework_photo_files (
+            id, submission_id, file_key, file_name, file_type, file_size, expires_at, created_at
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, DATETIME('now'))
+        `).bind(file.id, file.submission_id, file.file_key, file.file_name, file.file_type, file.file_size, file.expires_at)
+      );
+      stmts.push(
+        env.DB.prepare(`
+          UPDATE homework_photo_submissions
+          SET is_submitted = 1,
+              submitted_at = DATETIME('now'),
+              synced_homework_date = ?,
+              synced_homework_status = '완료',
+              updated_at = DATETIME('now')
+          WHERE id = ? AND is_submitted = 0
+        `).bind(row.due_date, row.submission_id)
+      );
+      stmts.push(...buildHomeworkPhotoStatusStatements(env, studentId, row.due_date, '완료'));
+      await env.DB.batch(stmts);
+
+      const updatedSubmission = await env.DB.prepare(`
+        SELECT submitted_at
+        FROM homework_photo_submissions
+        WHERE id = ?
+      `).bind(row.submission_id).first();
+
+      return responseJson({
+        success: true,
+        submitted: true,
+        file_count: fileRows.length,
+        submitted_at: updatedSubmission?.submitted_at || getHomeworkPhotoNowIso()
+      });
+    } catch (e) {
+      for (const key of uploadedKeys) {
+        try { await bucket.delete(key); } catch (_) {}
+      }
+      console.error('[homework-photo/upload] failed:', e);
+      return responseJson({ success: false, error: 'upload_failed', message: '사진 업로드 중 오류가 발생했습니다.' }, 500);
+    }
   }
 
   if (method === 'POST' && id === 'cancel') {
