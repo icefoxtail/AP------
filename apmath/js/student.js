@@ -129,7 +129,80 @@ function ensureParentContactUiState() {
     return state.ui.parentContactUi;
 }
 
+function ensureStudentDetailLazyUiState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.studentDetailLazyData) {
+        state.ui.studentDetailLazyData = {};
+    }
+    return state.ui.studentDetailLazyData;
+}
+
+function getStudentDetailLazyState(studentId) {
+    const key = String(studentId || '');
+    const store = ensureStudentDetailLazyUiState();
+    if (!store[key]) {
+        store[key] = {
+            loading: false,
+            loadedAt: '',
+            error: '',
+            inFlight: null,
+            parent_contacts: [],
+            student_status_history: [],
+            class_transfer_history: []
+        };
+    }
+    return store[key];
+}
+
+function getStudentDetailLazyRows(studentId, key) {
+    const entry = getStudentDetailLazyState(studentId);
+    return Array.isArray(entry?.[key]) ? entry[key] : [];
+}
+
+async function ensureStudentDetailLazyData(studentId, options = {}) {
+    const key = String(studentId || '').trim();
+    if (!key) return getStudentDetailLazyState(key);
+
+    const entry = getStudentDetailLazyState(key);
+    const force = !!options.force;
+    if (!force && entry.loadedAt) return entry;
+    if (entry.inFlight) return entry.inFlight;
+
+    entry.loading = true;
+    entry.error = '';
+
+    const promise = api.get(`students/${encodeURIComponent(key)}/detail-data`)
+        .then(res => {
+            if (res?.success) {
+                entry.parent_contacts = Array.isArray(res.parent_contacts) ? sortParentContacts(res.parent_contacts) : entry.parent_contacts;
+                entry.student_status_history = Array.isArray(res.student_status_history) ? res.student_status_history : entry.student_status_history;
+                entry.class_transfer_history = Array.isArray(res.class_transfer_history) ? res.class_transfer_history : entry.class_transfer_history;
+                entry.loadedAt = new Date().toISOString();
+                entry.error = '';
+            } else {
+                entry.error = String(res?.message || res?.error || 'student detail lazy load failed');
+            }
+            return entry;
+        })
+        .catch(err => {
+            entry.error = String(err?.message || err || 'student detail lazy load failed');
+            return entry;
+        })
+        .finally(() => {
+            entry.loading = false;
+            entry.inFlight = null;
+            if (state.ui.currentStudentDetailId === key && state.ui.currentStudentDetailTab === 'cns') {
+                renderStudentDetailTab(key, 'cns');
+            }
+        });
+
+    entry.inFlight = promise;
+    return promise;
+}
+
 function getStudentParentContactsFromState(sid) {
+    const lazyRows = getStudentDetailLazyRows(sid, 'parent_contacts');
+    if (lazyRows.length) return sortParentContacts(lazyRows);
     return sortParentContacts((state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === String(sid)));
 }
 
@@ -702,6 +775,7 @@ async function renderStudentDetail(sid) {
     if (typeof loadStudentFoundationDetails === 'function') foundationLoads.push(loadStudentFoundationDetails(sid));
     if (foundationLoads.length) await Promise.all(foundationLoads);
     await ensureBlueprintsForSessions(exs);
+    void ensureStudentDetailLazyData(sid);
     void ensureStudentParentContactDataLoaded(sid);
 
     renderStudentDetailTab(sid, 'grade');
@@ -791,6 +865,7 @@ function renderStudentDetailTab(sid, tab) {
     showModal(`${s.name} 프로필`, `<div style="padding: 0 16px 4px; box-sizing: border-box;">${headerHtml}${tabBarHtml}${bodyHtml}${footerHtml}</div>`);
     if (tab === 'grade') setTimeout(() => drawGradeChart(sid), 50);
     if (tab === 'cns') {
+        void ensureStudentDetailLazyData(sid);
         void ensureStudentConsultationsLoaded(sid);
         void ensureStudentParentContactDataLoaded(sid);
     }
@@ -1044,7 +1119,7 @@ async function handleSaveParentContact(sid) {
 
 function openEditParentContactModal(sid, contactId) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
-    const contact = (state.db.parent_contacts || []).find(row => String(row.id) === String(contactId));
+    const contact = getStudentParentContactsFromState(sid).find(row => String(row.id) === String(contactId));
     if (!contact) return toast('보호자 연락처를 찾을 수 없습니다.', 'warn');
 
     showModal('보호자 연락처 수정', `
