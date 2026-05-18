@@ -58,6 +58,23 @@ const CONSULTATION_SUMMARY_JSON_SCHEMA = {
   strict: true
 };
 
+const CONSULTATION_THREAD_SUMMARY_JSON_SCHEMA = {
+  name: 'ap_math_consultation_thread_summary',
+  schema: {
+    type: 'object',
+    additionalProperties: false,
+    properties: {
+      summary: { type: 'string' },
+      recent_flow: { type: 'array', items: { type: 'string' } },
+      open_items: { type: 'array', items: { type: 'string' } },
+      next_check_points: { type: 'array', items: { type: 'string' } },
+      teacher_note_draft: { type: 'string' }
+    },
+    required: ['summary', 'recent_flow', 'open_items', 'next_check_points', 'teacher_note_draft']
+  },
+  strict: true
+};
+
 const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `
 너는 AP Math 학원의 학부모 평가 리포트 전담 AI 편집자다.
 
@@ -215,6 +232,33 @@ const AP_CONSULTATION_SUMMARY_SYSTEM_PROMPT = `
 - JSON만 출력한다.
 `;
 
+const AP_CONSULTATION_THREAD_SUMMARY_SYSTEM_PROMPT = `
+너는 AP Math 학원의 내부 상담 흐름 정리 보조 AI다.
+
+역할:
+- 학생별 최근 상담 흐름을 선생님 내부 참고용으로 짧게 정리한다.
+- 이전 상담의 다음 조치가 이어졌는지 다시 볼 포인트를 제안한다.
+- 다음 상담에서 확인할 질문이나 체크포인트를 실무적으로 정리한다.
+- 내부 기록 초안만 제공하고, 자동 저장이나 발송을 전제하지 않는다.
+
+중요 규칙:
+- 학부모 발송 문구처럼 쓰지 않는다.
+- 학생을 낙인찍는 표현을 쓰지 않는다.
+- 원문에 없는 사실을 단정하지 않는다.
+- 진단, 의학, 법률 판단처럼 쓰지 않는다.
+- "퇴원 위험", "문제 학생", "관리 필요" 같은 표현을 쓰지 않는다.
+- 실제 발송, parent-foundation, message_logs를 언급하지 않는다.
+- 짧고 실무적인 내부 참고용 문장으로 작성한다.
+
+출력 규칙:
+- summary: 2~4문장
+- recent_flow: 2~4개
+- open_items: 2~4개
+- next_check_points: 2~4개
+- teacher_note_draft: 2~4문장
+- JSON만 출력한다.
+`;
+
 function clampText(value, max = 12000) {
   const text = String(value || '');
   return text.length > max ? text.slice(0, max) : text;
@@ -235,6 +279,26 @@ function buildConsultationSummaryUserPrompt(payload = {}) {
     '- "안녕하세요", "학부모님", "어머님", "발송", "문자" 같은 표현을 쓰지 않는다.',
     '- 원문에 없는 사실, 성격 판단, 의학적 판단을 넣지 않는다.',
     '- 내용이 모호하면 단정 대신 확인 필요 중심으로 쓴다.',
+    '- JSON만 출력한다.'
+  ].join('\n');
+}
+
+function buildConsultationThreadSummaryUserPrompt(payload = {}) {
+  return [
+    '아래 학생 상담 흐름을 내부 참고용으로 정리하라.',
+    '',
+    '[입력 데이터]',
+    JSON.stringify(payload, null, 2),
+    '',
+    '[작성 기준]',
+    '- summary는 최근 상담 흐름의 큰 맥락을 2~4문장으로 정리한다.',
+    '- recent_flow는 최근 상담의 흐름을 시간 순서가 보이게 짧게 정리한다.',
+    '- open_items는 아직 확인이 덜 된 사항이나 이어서 볼 메모만 적는다.',
+    '- next_check_points는 다음 상담이나 다음 수업에서 짧게 확인할 포인트를 적는다.',
+    '- teacher_note_draft는 내부 기록용 초안으로만 쓴다.',
+    '- 학부모 안내문처럼 쓰지 않는다.',
+    '- 원문에 없는 사실, 성격 판단, 의학적 판단을 넣지 않는다.',
+    '- 모호하면 단정 대신 확인 필요 중심으로 쓴다.',
     '- JSON만 출력한다.'
   ].join('\n');
 }
@@ -1061,12 +1125,39 @@ function normalizeConsultationSummaryResult(raw = {}) {
   };
 }
 
+function normalizeConsultationThreadSummaryResult(raw = {}) {
+  const cleanText = (value) => String(value || '').trim();
+  const cleanArray = (value, limit = 4) => Array.isArray(value)
+    ? value.map(item => cleanText(item)).filter(Boolean).slice(0, limit)
+    : [];
+  return {
+    summary: cleanText(raw?.summary),
+    recent_flow: cleanArray(raw?.recent_flow),
+    open_items: cleanArray(raw?.open_items),
+    next_check_points: cleanArray(raw?.next_check_points),
+    teacher_note_draft: cleanText(raw?.teacher_note_draft)
+  };
+}
+
+function normalizeConsultationThreadRows(rows = []) {
+  return Array.isArray(rows)
+    ? rows.map(row => ({
+        date: String(row?.date || '').trim(),
+        type: String(row?.type || row?.consultation_type || '상담').trim() || '상담',
+        content: String(row?.content || row?.current_content || '').trim(),
+        next_action: String(row?.next_action || row?.current_next_action || '').trim(),
+        created_at: String(row?.created_at || '').trim()
+      })).filter(row => row.date || row.content || row.next_action)
+    : [];
+}
+
 function buildFallbackConsultationSummary(payload = {}) {
   const studentName = String(payload?.student_name || '학생').trim();
   const consultationType = String(payload?.consultation_type || '상담').trim();
   const consultationDate = String(payload?.consultation_date || '').trim();
   const content = String(payload?.content || '').trim();
   const nextAction = String(payload?.next_action || '').trim();
+  const historyRows = normalizeConsultationThreadRows(payload?.consultations).slice(0, 4);
   const condensed = content
     .replace(/\s+/g, ' ')
     .split(/(?<=[.!?]|다\.|요\.)\s+/)
@@ -1077,12 +1168,14 @@ function buildFallbackConsultationSummary(payload = {}) {
   const summary = [
     consultationDate ? `${consultationDate} ${studentName} 학생 ${consultationType} 상담 정리입니다.` : `${studentName} 학생 ${consultationType} 상담 정리입니다.`,
     first,
-    second
+    second,
+    historyRows.length ? `이전 상담 흐름상 ${historyRows[0].type || '상담'} 관련 확인이 이어지고 있습니다.` : ''
   ].filter(Boolean).join(' ');
 
   const keyIssues = [];
   if (consultationType) keyIssues.push(`${consultationType} 관련 확인`);
   if (content) keyIssues.push(content.length > 40 ? `${content.slice(0, 40).trim()}...` : content);
+  if (historyRows[0]?.next_action) keyIssues.push(`이전 조치 메모: ${historyRows[0].next_action}`);
   if (nextAction) keyIssues.push(`기존 조치 메모: ${nextAction}`);
   while (keyIssues.length < 2) {
     keyIssues.push('수업 전후 학생 상태 추가 확인');
@@ -1101,6 +1194,71 @@ function buildFallbackConsultationSummary(payload = {}) {
     summary,
     key_issues: keyIssues.slice(0, 4),
     next_action_draft: nextActionDraft
+  });
+}
+
+function buildFallbackConsultationThreadSummary(payload = {}) {
+  const studentName = String(payload?.student_name || '학생').trim();
+  const grade = String(payload?.grade || '').trim();
+  const historyRows = normalizeConsultationThreadRows(payload?.consultations).slice(0, 5);
+  const currentContent = String(payload?.current_content || '').trim();
+  const currentNextAction = String(payload?.current_next_action || '').trim();
+  const latestRow = historyRows[0] || null;
+  const latestContent = currentContent || latestRow?.content || '';
+
+  const summarizeLine = (row) => {
+    const prefix = [row?.date, row?.type].filter(Boolean).join(' ');
+    const body = String(row?.content || '').replace(/\s+/g, ' ').trim();
+    const short = body.length > 50 ? `${body.slice(0, 50).trim()}...` : body;
+    return [prefix, short].filter(Boolean).join(' · ');
+  };
+
+  const summary = [
+    grade ? `${studentName} 학생 ${grade} 상담 흐름 요약입니다.` : `${studentName} 학생 상담 흐름 요약입니다.`,
+    latestContent
+      ? `최근 상담에서는 ${latestContent.replace(/\s+/g, ' ').slice(0, 80)}${latestContent.length > 80 ? '...' : ''}`
+      : '최근 상담 기록을 기준으로 다음 확인 포인트를 정리했습니다.',
+    historyRows.length > 1 ? `이전 상담 ${Math.min(historyRows.length, 4)}건의 흐름을 함께 참고했습니다.` : ''
+  ].filter(Boolean).join(' ');
+
+  const recentFlow = historyRows.length
+    ? historyRows.slice(0, 4).map(summarizeLine)
+    : ['최근 상담 기록이 많지 않아 현재 메모 중심으로 확인합니다.'];
+
+  const openItems = [];
+  if (currentNextAction) openItems.push(`직전 조치 메모가 실제로 이어졌는지 다시 확인`);
+  if (latestRow?.next_action) openItems.push(`최근 상담 조치 메모: ${latestRow.next_action}`);
+  if (historyRows.some(row => row.type === '태도')) openItems.push('수업 참여 흐름과 과제 이행 여부를 짧게 다시 확인');
+  if (historyRows.some(row => row.type === '성적')) openItems.push('최근 평가와 연결되는 취약 유형이 이어지는지 확인');
+  if (historyRows.some(row => row.type === '학습')) openItems.push('학습 범위 이해도와 실제 수행량을 함께 점검');
+  while (openItems.length < 2) {
+    openItems.push('최근 상담 메모와 현재 수업 흐름이 같은 방향인지 확인');
+  }
+
+  const nextCheckPoints = [];
+  nextCheckPoints.push('다음 수업 시작 전에 직전 상담 메모를 1분 안에 다시 확인');
+  if (historyRows.some(row => row.next_action)) nextCheckPoints.push('이전 상담에서 남긴 다음 조치가 실제로 실행됐는지 묻기');
+  if (latestContent) nextCheckPoints.push('최근 상담 내용 중 가장 자주 나온 키워드를 학생 반응과 함께 다시 확인');
+  if (historyRows.some(row => row.type === '태도')) nextCheckPoints.push('행동 목표를 너무 크게 잡지 말고 한 가지로 좁혀 확인');
+  if (historyRows.some(row => row.type === '성적')) nextCheckPoints.push('평가 결과와 연결되는 문제 유형을 수업 안에서 짧게 재확인');
+  while (nextCheckPoints.length < 2) {
+    nextCheckPoints.push('다음 상담 전에 확인이 필요한 한 가지 질문을 미리 적어두기');
+  }
+
+  const teacherNoteDraft = [
+    `${studentName} 학생 상담 흐름은 최근 메모를 중심으로 이어서 확인합니다.`,
+    currentNextAction || latestRow?.next_action
+      ? '직전 조치 메모가 실제 수업과 학생 반응에서 이어졌는지 먼저 확인합니다.'
+      : '직전 상담에서 남긴 핵심 이슈가 현재도 이어지는지 먼저 확인합니다.',
+    '다음 상담 전까지는 큰 결론보다 수업 안에서 다시 볼 체크포인트를 짧게 남기는 방식이 안전합니다.'
+  ].join(' ');
+
+  return normalizeConsultationThreadSummaryResult({
+    summary,
+    recent_flow: recentFlow,
+    open_items: openItems,
+    next_check_points: nextCheckPoints,
+    teacher_note_draft: teacherNoteDraft
   });
 }
 
@@ -1357,6 +1515,62 @@ async function callConsultationAiProxySummary(env, payload) {
   }
 }
 
+async function callConsultationThreadAiProxySummary(env, payload) {
+  const proxyUrl = String(env.REPORT_AI_PROXY_URL || '').trim();
+  const proxySecret = String(env.REPORT_AI_PROXY_SECRET || '').trim();
+  const fallback = buildFallbackConsultationThreadSummary(payload);
+
+  if (!proxyUrl) {
+    return { source: 'fallback', analysis: fallback, warning: 'AI proxy failed: REPORT_AI_PROXY_URL missing' };
+  }
+
+  try {
+    const response = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(proxySecret ? { 'X-Report-AI-Proxy-Secret': proxySecret } : {})
+      },
+      body: JSON.stringify({
+        payload,
+        systemPrompt: AP_CONSULTATION_THREAD_SUMMARY_SYSTEM_PROMPT,
+        userPrompt: buildConsultationThreadSummaryUserPrompt(payload),
+        schema: CONSULTATION_THREAD_SUMMARY_JSON_SCHEMA.schema
+      })
+    });
+
+    if (!response.ok) {
+      const detail = await response.text().catch(() => '');
+      throw new Error(`AI proxy ${response.status}: ${detail.slice(0, 300)}`);
+    }
+
+    const data = await response.json();
+    const normalized = normalizeConsultationThreadSummaryResult(data?.analysis || data?.result || data);
+    if (!normalized.summary || !normalized.recent_flow.length || !normalized.next_check_points.length || !normalized.teacher_note_draft) {
+      return {
+        source: 'fallback',
+        analysis: fallback,
+        warning: 'AI proxy failed: invalid consultation thread summary payload'
+      };
+    }
+    return {
+      source: String(data?.source || 'proxy').trim() || 'proxy',
+      analysis: normalized,
+      warning: data?.warning ? String(data.warning).slice(0, 500) : ''
+    };
+  } catch (e) {
+    console.error('[AI_CONSULTATION_THREAD_PROXY_ERROR]', {
+      message: String(e?.message || e),
+      hasProxyUrl: !!proxyUrl
+    });
+    return {
+      source: 'fallback',
+      analysis: fallback,
+      warning: `AI proxy failed: ${String(e?.message || e).slice(0, 500)}`
+    };
+  }
+}
+
 export async function handleReportsAi(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
@@ -1385,6 +1599,37 @@ export async function handleReportsAi(request, env, teacher, path, url) {
       summary: result.analysis.summary,
       key_issues: result.analysis.key_issues,
       next_action_draft: result.analysis.next_action_draft,
+      warning: result.warning || ''
+    });
+  }
+
+  if (id === 'consultation-thread-summary' && method === 'POST') {
+    const currentTeacher = await requireTeacher(request, env, teacher);
+    if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    const payload = await request.json();
+    const studentId = String(payload?.student_id || '').trim();
+    const currentContent = String(payload?.current_content || '').trim();
+    const consultations = normalizeConsultationThreadRows(payload?.consultations);
+    if (!studentId || (!currentContent && !consultations.length)) {
+      return jsonResponse({ success: false, message: 'student_id and consultation context required' }, 400);
+    }
+    if (!(await canAccessStudent(currentTeacher, studentId, env))) {
+      return jsonResponse({ error: 'Forbidden' }, 403);
+    }
+
+    const result = await callConsultationThreadAiProxySummary(env, {
+      ...payload,
+      consultations
+    });
+    return jsonResponse({
+      success: true,
+      source: result.source,
+      summary: result.analysis.summary,
+      recent_flow: result.analysis.recent_flow,
+      open_items: result.analysis.open_items,
+      next_check_points: result.analysis.next_check_points,
+      teacher_note_draft: result.analysis.teacher_note_draft,
       warning: result.warning || ''
     });
   }

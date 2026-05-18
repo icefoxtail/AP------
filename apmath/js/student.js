@@ -82,6 +82,21 @@ function ensureConsultationAiUiState() {
     return state.ui.consultationAi;
 }
 
+function ensureConsultationThreadAiUiState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.consultationThreadAi) {
+        state.ui.consultationThreadAi = {
+            studentId: '',
+            loading: false,
+            result: null,
+            error: '',
+            warning: '',
+            source: ''
+        };
+    }
+    return state.ui.consultationThreadAi;
+}
+
 const PARENT_CONTACT_CONSENT_BRANCH = 'apmath';
 const PARENT_CONTACT_BASE_CONSENT_TYPES = ['attendance', 'payment', 'notice', 'report', 'marketing'];
 const PARENT_CONTACT_CONSENT_ORDER = ['attendance', 'payment', 'notice', 'report', 'consultation', 'homework', 'exam', 'marketing'];
@@ -437,6 +452,151 @@ function resetConsultationAiUiState(mode = '', studentId = '', consultationId = 
     return store;
 }
 
+function resetConsultationThreadAiUiState(studentId = '') {
+    const store = ensureConsultationThreadAiUiState();
+    store.studentId = String(studentId || '');
+    store.loading = false;
+    store.result = null;
+    store.error = '';
+    store.warning = '';
+    store.source = '';
+    return store;
+}
+
+function getConsultationHistoryPayloadRows(sid, options = {}) {
+    const excludeId = String(options.excludeId || '').trim();
+    const limit = Number.isFinite(Number(options.limit)) ? Number(options.limit) : 4;
+    return getStudentConsultationsFromState(sid)
+        .filter(row => !excludeId || String(row?.id || '') !== excludeId)
+        .slice(0, limit)
+        .map(row => ({
+            date: String(row?.date || '').trim(),
+            type: String(row?.type || '').trim(),
+            content: String(row?.content || '').trim(),
+            next_action: String(row?.next_action || '').trim(),
+            created_at: String(row?.created_at || '').trim()
+        }));
+}
+
+function consultationThreadSummarySectionHtml(title, items = []) {
+    const rows = Array.isArray(items) ? items.filter(Boolean) : [];
+    if (!rows.length) return '';
+    return `
+        <div>
+            <div style="font-size:12px; color:var(--secondary); font-weight:800; margin-bottom:6px;">${title}</div>
+            <ul style="margin:0; padding-left:18px; color:var(--text); font-size:12px; font-weight:700; line-height:1.6;">
+                ${rows.map(item => `<li>${apEscapeHtml(item)}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+}
+
+function consultationThreadSummaryModalHtml() {
+    const ai = ensureConsultationThreadAiUiState();
+    const result = ai.result || null;
+    return `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+                <div style="font-size:12px; color:var(--secondary); font-weight:800; line-height:1.5;">최근 상담 흐름을 내부 참고용으로만 정리합니다.</div>
+                <button type="button" class="btn" ${ai.loading ? 'disabled' : ''} style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="generateConsultationThreadSummary('${apEscapeHtml(ai.studentId)}')">다시 요약</button>
+            </div>
+            ${ai.loading ? '<div style="font-size:12px; color:var(--secondary); font-weight:700;">상담 흐름 요약을 생성 중입니다.</div>' : ''}
+            ${ai.error ? `<div style="font-size:12px; color:var(--error); font-weight:700; line-height:1.5;">${apEscapeHtml(ai.error)}</div>` : ''}
+            ${ai.warning ? `<div style="font-size:11px; color:var(--warning); font-weight:700; line-height:1.5;">${apEscapeHtml(ai.warning)}</div>` : ''}
+            ${ai.source ? `<div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">source: ${apEscapeHtml(ai.source)}</div>` : ''}
+            ${result ? `
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:800; margin-bottom:6px;">요약</div>
+                        <div style="font-size:13px; color:var(--text); font-weight:700; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(result.summary || '')}</div>
+                    </div>
+                    ${consultationThreadSummarySectionHtml('최근 상담 흐름', result.recent_flow)}
+                    ${consultationThreadSummarySectionHtml('남은 확인 사항', result.open_items)}
+                    ${consultationThreadSummarySectionHtml('다음 상담 확인 포인트', result.next_check_points)}
+                    ${result.teacher_note_draft ? `<div><div style="font-size:12px; color:var(--secondary); font-weight:800; margin-bottom:6px;">내부 기록 초안</div><div style="font-size:13px; color:var(--text); font-weight:700; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(result.teacher_note_draft)}</div></div>` : ''}
+                </div>
+            ` : '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">버튼을 눌렀을 때만 최근 상담 흐름 요약을 생성합니다.</div>'}
+        </div>
+    `;
+}
+
+function renderConsultationThreadSummaryModal() {
+    showModal('상담 흐름 요약', consultationThreadSummaryModalHtml());
+}
+
+async function openConsultationThreadSummaryModal(sid) {
+    await ensureStudentConsultationsLoaded(sid);
+    const rows = getStudentConsultationsFromState(sid);
+    resetConsultationThreadAiUiState(sid);
+    renderConsultationThreadSummaryModal();
+    if (!rows.length) {
+        const ai = ensureConsultationThreadAiUiState();
+        ai.error = '상담 기록이 아직 없어 상담 흐름 요약을 만들 수 없습니다.';
+        renderConsultationThreadSummaryModal();
+        return;
+    }
+    await generateConsultationThreadSummary(sid);
+}
+
+async function generateConsultationThreadSummary(sid) {
+    const ai = ensureConsultationThreadAiUiState();
+    if (ai.loading) return;
+
+    await ensureStudentConsultationsLoaded(sid);
+    const student = state.db.students.find(row => String(row.id) === String(sid));
+    const rows = getStudentConsultationsFromState(sid);
+    const latest = rows[0] || null;
+    const historyRows = rows.slice(1, 5).map(row => ({
+        date: String(row?.date || '').trim(),
+        type: String(row?.type || '').trim(),
+        content: String(row?.content || '').trim(),
+        next_action: String(row?.next_action || '').trim(),
+        created_at: String(row?.created_at || '').trim()
+    }));
+    if (!latest && !historyRows.length) {
+        ai.error = '상담 기록이 아직 없어 상담 흐름 요약을 만들 수 없습니다.';
+        renderConsultationThreadSummaryModal();
+        return;
+    }
+
+    ai.loading = true;
+    ai.error = '';
+    ai.warning = '';
+    ai.studentId = String(sid || '');
+    renderConsultationThreadSummaryModal();
+
+    try {
+        const result = await api.post('ai/consultation-thread-summary', {
+            student_id: String(sid || ''),
+            student_name: student?.name || '',
+            grade: student?.grade || '',
+            current_content: latest?.content || '',
+            current_next_action: latest?.next_action || '',
+            consultations: historyRows
+        });
+        if (result?.success) {
+            ai.result = {
+                summary: String(result.summary || '').trim(),
+                recent_flow: Array.isArray(result.recent_flow) ? result.recent_flow : [],
+                open_items: Array.isArray(result.open_items) ? result.open_items : [],
+                next_check_points: Array.isArray(result.next_check_points) ? result.next_check_points : [],
+                teacher_note_draft: String(result.teacher_note_draft || '').trim()
+            };
+            ai.warning = String(result.warning || '').trim();
+            ai.source = String(result.source || '').trim();
+            toast(ai.source === 'fallback' ? '상담 흐름 요약이 대체 모드로 생성되었습니다.' : '상담 흐름 요약이 생성되었습니다.', 'info');
+        } else {
+            ai.error = String(result?.message || result?.error || '상담 흐름 요약 생성에 실패했습니다.');
+        }
+    } catch (e) {
+        console.error('[generateConsultationThreadSummary] failed:', e);
+        ai.error = '상담 흐름 요약 생성 중 오류가 발생했습니다.';
+    } finally {
+        ai.loading = false;
+        renderConsultationThreadSummaryModal();
+    }
+}
+
 function consultationAiPanelHtml(mode) {
     const ai = ensureConsultationAiUiState();
     const disabled = ai.loading ? 'disabled' : '';
@@ -463,6 +623,7 @@ function consultationAiPanelHtml(mode) {
             ${loadingText ? `<div style="font-size:12px; color:var(--secondary); font-weight:700;">${loadingText}</div>` : ''}
             ${ai.error ? `<div style="font-size:12px; color:var(--error); font-weight:700; line-height:1.5;">${apEscapeHtml(ai.error)}</div>` : ''}
             ${ai.warning ? `<div style="font-size:11px; color:var(--warning); font-weight:700; line-height:1.5;">${apEscapeHtml(ai.warning)}</div>` : ''}
+            ${ai.source ? `<div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">source: ${apEscapeHtml(ai.source)}</div>` : ''}
             ${result ? `
                 <div style="display:flex; flex-direction:column; gap:8px;">
                     <div style="font-size:12px; color:var(--secondary); font-weight:800;">AI 요약</div>
@@ -731,7 +892,10 @@ function renderCnsTab(sid) {
     return `
         <div style="padding: 0 4px;">
             <div style="margin: 0 0 12px 2px; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">상담 이력</div>
-            <button class="btn btn-primary" style="width: 100%; margin-bottom: 20px; min-height: 52px; font-size: 14px; font-weight:700; border-radius: 16px; box-shadow: none;" onclick="openAddConsultationModal('${sid}')">+ 새 상담 기록하기</button>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+                <button class="btn btn-primary" style="flex:1 1 220px; min-height: 52px; font-size: 14px; font-weight:700; border-radius: 16px; box-shadow: none;" onclick="openAddConsultationModal('${sid}')">+ 새 상담 기록하기</button>
+                <button class="btn" style="flex:0 0 auto; min-height:52px; padding:0 14px; font-size:13px; font-weight:700; border-radius:16px;" onclick="openConsultationThreadSummaryModal('${sid}')">상담 흐름 요약</button>
+            </div>
             ${cnsState.loading ? '<div style="margin-bottom: 12px; font-size: 12px; color: var(--secondary); font-weight: 700;">상담 기록을 불러오는 중입니다.</div>' : ''}
             <div style="max-height: 450px; overflow-y: auto; padding-right: 4px;">
                 ${cnsCards || '<div style="text-align: center; padding: 40px; color: var(--secondary); font-size: 13px; font-weight: 700;">상담 기록이 없습니다.</div>'}
@@ -1046,6 +1210,11 @@ async function generateConsultationAiSummary(mode) {
     renderConsultationAiPanel(mode);
 
     try {
+        await ensureStudentConsultationsLoaded(studentId);
+        const historyRows = getConsultationHistoryPayloadRows(studentId, {
+            excludeId: mode === 'edit' ? ai.consultationId : '',
+            limit: 4
+        });
         const result = await api.post('ai/consultation-summary', {
             student_id: studentId,
             student_name: student?.name || '',
@@ -1053,7 +1222,8 @@ async function generateConsultationAiSummary(mode) {
             consultation_type: String(typeInput?.value || '').trim(),
             consultation_date: String(dateInput?.value || '').trim() || new Date().toLocaleDateString('sv-SE'),
             content,
-            next_action: String(actionInput?.value || '').trim()
+            next_action: String(actionInput?.value || '').trim(),
+            consultations: historyRows
         });
 
         if (result?.success) {

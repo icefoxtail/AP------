@@ -289,6 +289,11 @@
         .feedback-banner { margin: 16px 16px 0; border-radius: 12px; border: 1px solid rgba(26,92,255,0.16); background: rgba(26,92,255,0.06); padding: 12px; }
         .feedback-title { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
         .feedback-text { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; white-space: pre-wrap; }
+        .planner-coach-slot { margin-top: 14px; }
+        .planner-coach-card { border: 1px solid rgba(26,92,255,0.14); background: rgba(26,92,255,0.05); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+        .planner-coach-title { font-size: 12px; font-weight: 800; color: var(--primary); line-height: 1.3; }
+        .planner-coach-line { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.5; }
+        .planner-coach-line.sub { color: var(--secondary); font-size: 11px; }
 
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; visibility: hidden; transition: .2s ease; }
         .modal-overlay:not(.hidden) { opacity: 1; visibility: visible; }
@@ -438,10 +443,155 @@
         const SUBJECTS = ['전체', '수학', '국어', '영어', '과학', '사회', '기타'];
         const PLANNER_TABLE_SUBJECTS = ['국어', '영어', '수학', '사회', '과학'];
         const PLANNER_VIEW_KEY = 'PLANNER_VIEW';
+        const PLANNER_COACH_MESSAGES = {
+            empty: [
+                {
+                    status: '오늘 계획이 아직 없어요.',
+                    action: '지금 당장 할 수 있는 것 하나만 적어보세요.',
+                    cheer: '하나면 충분해요.'
+                },
+                {
+                    status: '비어 있어도 괜찮아요.',
+                    action: '오늘 딱 한 가지만 정해볼까요?',
+                    cheer: '시작하면 이미 반은 한 거예요.'
+                }
+            ],
+            too_many: [
+                {
+                    status: '계획이 좀 많아요.',
+                    action: '이 중에서 오늘 꼭 할 것 3개만 골라보세요.',
+                    cheer: '3개만 끝내도 오늘은 잘 한 거예요.'
+                },
+                {
+                    status: '계획이 많으면 오히려 시작이 막혀요.',
+                    action: '제일 빨리 끝낼 수 있는 것부터 시작해보세요.',
+                    cheer: '첫 체크가 나머지를 끌어줄 거예요.'
+                }
+            ],
+            vague: [
+                {
+                    status: '계획이 좀 흐릿해요.',
+                    action: '범위나 분량을 한 줄만 더 적어보세요.',
+                    cheer: '구체적일수록 시작하기 쉬워요.'
+                },
+                {
+                    status: "'공부하기'는 끝이 없어서 미루게 돼요.",
+                    action: "'수학 p.12, 1~5번 풀기'처럼 딱 잘라보세요.",
+                    cheer: '잘릴수록 바로 시작할 수 있어요.'
+                },
+                {
+                    status: '방향은 맞아요. 조금만 더 좁혀볼까요?',
+                    action: '몇 문제, 몇 쪽인지 숫자를 하나 넣어보세요.',
+                    cheer: '숫자 하나가 계획을 살려요.'
+                }
+            ],
+            good: [
+                {
+                    status: '계획이 선명해요.',
+                    action: '가장 가벼운 것부터 시작해볼까요?',
+                    cheer: '이대로 하면 돼요.'
+                },
+                {
+                    status: '계획이 잘 쪼개져 있어요.',
+                    action: '끝내는 즉시 체크하면 흐름이 더 잘 잡혀요.',
+                    cheer: '체크가 쌓일수록 속도가 붙어요.'
+                }
+            ],
+            good_progress: [
+                {
+                    status: '체크가 잘 쌓이고 있어요.',
+                    action: '남은 것 중 제일 짧은 것 골라서 이어가세요.',
+                    cheer: '이 흐름이에요.'
+                },
+                {
+                    status: '잘 가고 있어요.',
+                    action: '남은 것도 순서대로만 가면 돼요.',
+                    cheer: '흐름은 이미 잡혔어요.'
+                }
+            ],
+            low_progress: [
+                {
+                    status: '아직 많이 남아 있어요.',
+                    action: '지금 바로 할 수 있는 것 딱 하나만 골라보세요.',
+                    cheer: '체크 하나가 분위기를 바꿔요.'
+                },
+                {
+                    status: '시작이 좀 늦었을 수도 있어요.',
+                    action: '전체 보지 말고, 지금 할 것 하나만 보세요.',
+                    cheer: '지금도 늦지 않았어요.'
+                }
+            ],
+            heavy_item: [
+                {
+                    status: '한 항목이 조금 커 보여요.',
+                    action: '두 개의 작은 목표로 나눠볼까요?',
+                    cheer: '작게 나누면 체크하기 쉬워요.'
+                },
+                {
+                    status: '이 계획은 한 번에 끝내기엔 숨이 찰 수 있어요.',
+                    action: '오늘 할 만큼만 잘라서 적어보세요.',
+                    cheer: '나누는 것도 좋은 계획이에요.'
+                }
+            ],
+            unbalanced_length: [
+                {
+                    status: '항목마다 무게가 조금 달라 보여요.',
+                    action: '큰 계획은 작게 나누고, 짧은 계획은 조금 더 구체화해보세요.',
+                    cheer: '균형이 맞으면 실행하기 편해져요.'
+                }
+            ],
+            subject_imbalance: [
+                {
+                    status: '한 과목에 계획이 많이 몰려 있어요.',
+                    action: '가능하면 다른 과목도 조금 섞어보세요.',
+                    cheer: '균형이 있으면 오래 버티기 쉬워요.'
+                }
+            ],
+            repeat_left: [
+                {
+                    status: '비슷한 계획이 계속 남는 것 같아요.',
+                    action: '오늘은 양을 조금 줄여서 끝낼 수 있게 바꿔볼까요?',
+                    cheer: '작게 바꾸는 것도 좋은 선택이에요.'
+                },
+                {
+                    status: '자꾸 미뤄지는 항목은 이유가 있을 수 있어요.',
+                    action: '무엇이 막히는지 생각하고 더 작은 단위로 나눠보세요.',
+                    cheer: '끝낼 수 있게 바꾸면 다시 시작하기 쉬워요.'
+                }
+            ],
+            reset_evening: [
+                {
+                    status: '저녁인데 아직 많이 남았네요.',
+                    action: '오늘 것과 내일로 넘길 것, 지금 딱 나눠보세요.',
+                    cheer: '나누는 것도 계획이에요.'
+                },
+                {
+                    status: '오늘 시작이 어려웠을 수 있어요.',
+                    action: '남은 계획 중 오늘 꼭 할 것 하나만 골라보세요.',
+                    cheer: '오늘은 여기까지도 충분해요.'
+                }
+            ],
+            time_night: [
+                {
+                    status: '꽤 늦었어요.',
+                    action: '오늘은 여기까지만 하고, 내일 할 것만 하나 적어두세요.',
+                    cheer: '오늘 쉬는 것도 내일을 위한 거예요.'
+                }
+            ],
+            balanced_cheer: [
+                {
+                    status: '지금 방향은 괜찮아요.',
+                    action: '조금만 정리하면 더 편하게 시작할 수 있어요.',
+                    cheer: '하나씩만 끝내도 오늘은 성공이에요.'
+                }
+            ]
+        };
         let studentId = '', pin = '', student = null, plans = [], feedback = [], selectedDate = todayStr(), examDate = '';
         let editPlanId = null, editPlanUpdatedAt = null, currentWeekStart = getWeekStart(todayStr()), activeSubject = '전체';
         let touchStartX = 0, touchStartY = 0, inlineAddDate = null, plannerView = getDefaultPlannerView();
         let shouldScrollToSelectedDate = false;
+        let plannerCoachState = { mainState: '', variantIndex: 0 };
+        let plannerCoachTimer = null;
 
         // [3.1 패치] 뽀모도로 전역 변수: 하단 고정 미니바 방식
         let pomoInterval = null;
@@ -765,6 +915,161 @@
             const badge = f.badge ? `<span style="font-size:13px; margin-right:4px;">${escapeHtml(f.badge)}</span>` : '';
             return `<div class="feedback-banner"><div class="feedback-title">${badge}담임 피드백</div><div class="feedback-text">${escapeHtml(f.teacher_comment || '')}</div></div>`;
         }
+
+        function hashCoachSeed(text) {
+            let hash = 0;
+            const raw = String(text || '');
+            for (let i = 0; i < raw.length; i++) hash = ((hash << 5) - hash + raw.charCodeAt(i)) | 0;
+            return Math.abs(hash);
+        }
+
+        function normalizeCoachTitle(title) {
+            return String(title || '').toLowerCase().replace(/\s+/g, ' ').replace(/[^a-z0-9가-힣\s]/gi, '').trim();
+        }
+
+        function getPlannerCoachWorkingPlans() {
+            const focusDate = selectedDate || todayStr();
+            const visible = plans.filter(p => p.plan_date === focusDate && (activeSubject === '전체' || planSubject(p) === activeSubject))
+                .map(p => ({ ...p, title: String(p.title || '').trim() }));
+
+            const modalTitle = $('plan-title')?.value.trim() || '';
+            const modalSubject = $('plan-subject')?.value || (activeSubject === '전체' ? '수학' : activeSubject);
+            if (modalTitle) {
+                if (editPlanId) {
+                    const found = visible.find(p => String(p.id) === String(editPlanId));
+                    if (found) {
+                        found.title = modalTitle;
+                        found.subject = modalSubject;
+                    } else {
+                        visible.push({ id: `draft-${editPlanId}`, plan_date: focusDate, title: modalTitle, subject: modalSubject, is_done: 0 });
+                    }
+                } else {
+                    visible.push({ id: 'draft-new', plan_date: focusDate, title: modalTitle, subject: modalSubject, is_done: 0 });
+                }
+            }
+
+            const inlineTitle = $('inline-add-input')?.value.trim() || '';
+            if (inlineTitle) {
+                visible.push({
+                    id: 'draft-inline',
+                    plan_date: focusDate,
+                    title: inlineTitle,
+                    subject: activeSubject === '전체' ? '수학' : activeSubject,
+                    is_done: 0
+                });
+            }
+
+            return visible.filter(p => String(p.title || '').trim());
+        }
+
+        function isVagueCoachPlan(title) {
+            const text = String(title || '').trim();
+            if (!text) return false;
+            const normalized = text.replace(/\s+/g, '');
+            const vagueWords = ['공부', '공부하기', '복습', '숙제', '문제풀기', '문제 풀기', '준비', '암기'];
+            const hasConcreteHint = /(\d+|p\.|P\.|쪽|번|문제|분|시간)/.test(text);
+            return vagueWords.some(word => normalized === word.replace(/\s+/g, '') || normalized.startsWith(word.replace(/\s+/g, ''))) && !hasConcreteHint;
+        }
+
+        function isHeavyCoachPlan(title) {
+            const text = String(title || '').trim();
+            return text.length >= 35 || /(전체 복습|다 풀기|전범위|전부|모두|기출\s*\d+회독)/.test(text);
+        }
+
+        function detectRepeatLeft(plansForCoach) {
+            const incompleteFocus = plansForCoach.filter(p => !isDone(p));
+            if (!incompleteFocus.length) return false;
+            const focusTitles = new Set(incompleteFocus.map(p => normalizeCoachTitle(p.title)).filter(Boolean));
+            if (!focusTitles.size) return false;
+            const recentIncomplete = plans.filter(p => Number(p.is_done || 0) !== 1)
+                .map(p => normalizeCoachTitle(p.title))
+                .filter(Boolean);
+            return [...focusTitles].some(title => recentIncomplete.filter(item => item === title).length >= 2);
+        }
+
+        function getPlannerCoachSnapshot() {
+            const focusDate = selectedDate || todayStr();
+            const items = getPlannerCoachWorkingPlans();
+            const total = items.length;
+            const done = items.filter(isDone).length;
+            const undone = total - done;
+            const rate = total ? Math.round((done / total) * 100) : 0;
+            const hour = new Date().getHours();
+            const allTitles = items.map(item => String(item.title || '').trim()).filter(Boolean);
+            const vagueOnly = allTitles.length > 0 && allTitles.every(isVagueCoachPlan);
+            const heavyItem = total > 0 && total <= 5 && allTitles.some(isHeavyCoachPlan);
+            const repeatLeft = detectRepeatLeft(items);
+            return { focusDate, items, total, done, undone, rate, hour, vagueOnly, heavyItem, repeatLeft };
+        }
+
+        function getPlannerCoachMainState(snapshot) {
+            if (!snapshot.total) return 'empty';
+            if (snapshot.total >= 6 || snapshot.undone >= 5) return 'too_many';
+            if (snapshot.vagueOnly) return 'vague';
+            if (snapshot.heavyItem) return 'heavy_item';
+            if (snapshot.repeatLeft) return 'repeat_left';
+            if (snapshot.hour >= 18 && (snapshot.total >= 5 || snapshot.undone >= 4) && snapshot.done <= 1) return 'reset_evening';
+            if ((snapshot.total >= 3 && snapshot.done === 0) || (snapshot.total >= 3 && snapshot.rate < 30)) return 'low_progress';
+            if (snapshot.rate >= 60 && snapshot.total >= 2) return 'good_progress';
+            return 'good';
+        }
+
+        function getPlannerCoachMessage(stateKey) {
+            const bucket = PLANNER_COACH_MESSAGES[stateKey] || PLANNER_COACH_MESSAGES.balanced_cheer;
+            if (plannerCoachState.mainState !== stateKey) {
+                plannerCoachState.mainState = stateKey;
+                plannerCoachState.variantIndex = hashCoachSeed(`${stateKey}|${selectedDate}|${studentId}`) % bucket.length;
+            }
+            return bucket[plannerCoachState.variantIndex] || bucket[0];
+        }
+
+        function computePlannerCoachResult() {
+            const snapshot = getPlannerCoachSnapshot();
+            const mainState = getPlannerCoachMainState(snapshot);
+            const message = getPlannerCoachMessage(mainState);
+            let subLine = '';
+            if (snapshot.hour >= 22) {
+                const night = PLANNER_COACH_MESSAGES.time_night[0];
+                subLine = night.status;
+            }
+            return { mainState, message, subLine };
+        }
+
+        function renderPlannerCoach() {
+            const result = computePlannerCoachResult();
+            return `
+                <div class="planner-coach-card">
+                    <div class="planner-coach-title">AI 코치</div>
+                    <div class="planner-coach-line">${escapeHtml(result.message.status)}</div>
+                    <div class="planner-coach-line">${escapeHtml(result.message.action)}</div>
+                    <div class="planner-coach-line">${escapeHtml(result.message.cheer)}</div>
+                    ${result.subLine ? `<div class="planner-coach-line sub">${escapeHtml(result.subLine)}</div>` : ''}
+                </div>
+            `;
+        }
+
+        function updatePlannerCoach() {
+            document.querySelectorAll('[data-planner-coach-slot]').forEach(el => {
+                el.innerHTML = renderPlannerCoach();
+            });
+        }
+
+        function schedulePlannerCoachUpdate() {
+            if (plannerCoachTimer) clearTimeout(plannerCoachTimer);
+            plannerCoachTimer = setTimeout(() => {
+                plannerCoachTimer = null;
+                updatePlannerCoach();
+            }, 180);
+        }
+
+        function bindPlannerCoachInputs() {
+            const titleInput = $('plan-title');
+            const subjectInput = $('plan-subject');
+            const inlineInput = $('inline-add-input');
+            if (titleInput) titleInput.oninput = schedulePlannerCoachUpdate;
+            if (subjectInput) subjectInput.onchange = schedulePlannerCoachUpdate;
+            if (inlineInput) inlineInput.oninput = schedulePlannerCoachUpdate;
+        }
         
         function renderSubjectFilter() {
             return `<div class="subject-strip" id="subject-strip">${SUBJECTS.map(s => `<button class="subject-pill ${activeSubject === s ? 'active' : ''}" onclick="setSubject('${s}')">${s}</button>`).join('')}</div>`;
@@ -789,6 +1094,7 @@
             
             const feedbackHtml = renderFeedbackBanner();
             const assistSummaryHtml = renderLearningAssistSummary(weekDates); // [수정본]
+            const coachHtml = renderPlannerCoach();
 
             $('app').innerHTML = `
                 <div class="side-panel">
@@ -804,10 +1110,12 @@
                         <button class="btn btn-primary" style="padding: 6px 12px;" onclick="openExamDateModal()">변경</button>
                     </div>
                     ${assistSummaryHtml}
+                    <div class="planner-coach-slot" data-planner-coach-slot>${coachHtml}</div>
                 </div>
                 <div class="main-panel">
                     ${feedbackHtml}
                     <div class="mobile-assist-card">${assistSummaryHtml}</div>
+                    <div class="planner-coach-slot" data-planner-coach-slot>${coachHtml}</div>
                     ${renderViewTabs()}
                     <div class="planner-view-body" id="planner-view-body">
                         ${renderActiveView(weekDates)}
@@ -829,6 +1137,8 @@
             }
             const fab = $('fab-add');
             if (fab) fab.classList.remove('hidden');
+            bindPlannerCoachInputs();
+            updatePlannerCoach();
         }
 
         function renderViewTabs() {
@@ -1067,6 +1377,7 @@
             const prev = Number(plan.is_done) === 1 ? 1 : 0; const next = prev === 1 ? 0 : 1;
             const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
             plan.is_done = next;
+            updatePlannerCoach();
             const res = await apiPatch(`planner/${id}`, { student_id: studentId, pin, is_done: next });
             if (res.error) { toast('변경 실패'); plan.is_done = prev; }
             await loadPlannerData(); renderPlanner();
@@ -1178,6 +1489,8 @@
             $('pomodoro-container')?.classList.add('hidden'); // 추가 모달에서는 집중 시작 버튼 숨김
             $('modal-overlay').classList.remove('hidden');
             $('plan-title').onkeyup = (e) => { if (e.key === 'Enter') savePlan(); };
+            bindPlannerCoachInputs();
+            updatePlannerCoach();
             setTimeout(() => $('plan-title')?.focus(), 80);
         }
 
@@ -1192,9 +1505,11 @@
             updatePomoUI(); // 상태 동기화
             $('modal-overlay').classList.remove('hidden');
             $('plan-title').onkeyup = (e) => { if (e.key === 'Enter') savePlan(); };
+            bindPlannerCoachInputs();
+            updatePlannerCoach();
         }
 
-        function closeModal() { $('modal-overlay').classList.add('hidden'); editPlanId = null; editPlanUpdatedAt = null; }
+        function closeModal() { $('modal-overlay').classList.add('hidden'); editPlanId = null; editPlanUpdatedAt = null; updatePlannerCoach(); }
 
         async function deletePlan() {
             if (!editPlanId) return; if (!confirm('이 계획을 삭제할까요?')) return;
