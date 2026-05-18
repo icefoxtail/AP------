@@ -376,16 +376,12 @@ async function loadFoundationInitialData(env, teacher) {
   if (isAdminUser(teacher)) {
     const rows = await Promise.all([
       safeAll(env, 'SELECT * FROM class_time_slots ORDER BY day_of_week ASC, start_time ASC'),
-      safeAll(env, 'SELECT * FROM timetable_conflict_logs ORDER BY created_at DESC LIMIT 500'),
-      safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
       safeAll(env, 'SELECT * FROM staff_permissions ORDER BY teacher_id ASC, permission_key ASC')
     ]);
     return {
       ...empty,
       class_time_slots: rows[0],
-      timetable_conflict_logs: rows[1],
-      timetable_conflict_overrides: rows[2],
-      staff_permissions: rows[3]
+      staff_permissions: rows[1]
     };
   }
 
@@ -396,8 +392,6 @@ async function loadFoundationInitialData(env, teacher) {
   return {
     ...empty,
     class_time_slots: await safeAll(env, `SELECT * FROM class_time_slots WHERE class_id IN (${cMarkers}) ORDER BY day_of_week ASC, start_time ASC`, classIds),
-    timetable_conflict_logs: await safeAll(env, `SELECT * FROM timetable_conflict_logs WHERE class_a_id IN (${cMarkers}) OR class_b_id IN (${cMarkers}) ORDER BY created_at DESC LIMIT 500`, [...classIds, ...classIds]),
-    timetable_conflict_overrides: await safeAll(env, 'SELECT * FROM timetable_conflict_overrides ORDER BY created_at DESC'),
     staff_permissions: await safeAll(env, 'SELECT * FROM staff_permissions WHERE teacher_id = ? ORDER BY permission_key ASC', [teacher.id])
   };
 }
