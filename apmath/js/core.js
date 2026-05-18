@@ -87,7 +87,8 @@ let state = {
         exam_sessions: [], wrong_answers: [], exam_blueprints: [], attendance_history: [], homework_history: [],
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
-        timetable_class_students: [], timetable_students: [], timetable_class_textbooks: []
+        timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
+        parent_contacts: [], message_logs: [], student_status_history: [], class_transfer_history: []
     }
 };
 
@@ -202,6 +203,132 @@ async function loadEnrollmentFoundation(scope = {}, options = {}) {
         });
 
     store.inFlight[normalized.key] = promise;
+    return promise;
+}
+
+function ensureStudentFoundationDetailsState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.studentFoundationDetails) {
+        state.ui.studentFoundationDetails = { byStudent: {}, inFlight: {} };
+    }
+    if (!state.ui.studentFoundationDetails.byStudent) state.ui.studentFoundationDetails.byStudent = {};
+    if (!state.ui.studentFoundationDetails.inFlight) state.ui.studentFoundationDetails.inFlight = {};
+    return state.ui.studentFoundationDetails;
+}
+
+function readApiArray(res, keys = []) {
+    for (const key of keys) {
+        if (Array.isArray(res?.[key])) return res[key];
+    }
+    if (Array.isArray(res?.data)) return res.data;
+    return [];
+}
+
+function mergeStudentScopedRows(tableName, studentId, rows = []) {
+    if (!state.db) state.db = {};
+    const sid = String(studentId || '');
+    const existing = Array.isArray(state.db[tableName]) ? state.db[tableName] : [];
+    const otherRows = existing.filter(row => String(row?.student_id || '') !== sid);
+    const seen = new Set();
+    const nextRows = [];
+
+    for (const row of (Array.isArray(rows) ? rows : [])) {
+        if (String(row?.student_id || '') !== sid) continue;
+        const id = row?.id === undefined || row?.id === null ? '' : String(row.id);
+        if (id) {
+            if (seen.has(id)) continue;
+            seen.add(id);
+        }
+        nextRows.push(row);
+    }
+
+    state.db[tableName] = otherRows.concat(nextRows);
+    return nextRows;
+}
+
+async function loadStudentFoundationDetails(studentId, options = {}) {
+    const sid = String(studentId || '').trim();
+    if (!sid) return {
+        parent_contacts: [],
+        message_logs: [],
+        student_status_history: [],
+        class_transfer_history: []
+    };
+
+    const store = ensureStudentFoundationDetailsState();
+    const cached = store.byStudent[sid];
+    const force = !!options.force;
+    const limit = Number.isFinite(Number(options.limit)) ? Math.max(1, Math.floor(Number(options.limit))) : 500;
+    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 5 * 60 * 1000;
+
+    if (!force && cached?.loadedAt && (Date.now() - cached.loadedAt) < maxAgeMs) {
+        return cached.rows || {
+            parent_contacts: (state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === sid),
+            message_logs: (state.db.message_logs || []).filter(row => String(row?.student_id || '') === sid),
+            student_status_history: (state.db.student_status_history || []).filter(row => String(row?.student_id || '') === sid),
+            class_transfer_history: (state.db.class_transfer_history || []).filter(row => String(row?.student_id || '') === sid)
+        };
+    }
+
+    if (store.inFlight[sid]) return store.inFlight[sid];
+
+    store.byStudent[sid] = {
+        ...(cached || {}),
+        loading: true,
+        error: ''
+    };
+
+    const query = `student_id=${encodeURIComponent(sid)}&limit=${encodeURIComponent(String(limit))}`;
+    const targets = [
+        { table: 'parent_contacts', path: `parent-foundation/contacts?${query}`, keys: ['contacts', 'parent_contacts'] },
+        { table: 'message_logs', path: `foundation-logs/messages?${query}`, keys: ['messages', 'message_logs'] },
+        { table: 'student_status_history', path: `foundation-logs/status-history?${query}`, keys: ['student_status_history', 'status_history'] },
+        { table: 'class_transfer_history', path: `foundation-logs/class-transfers?${query}`, keys: ['class_transfer_history', 'class_transfers'] }
+    ];
+
+    const promise = Promise.allSettled(targets.map(target => api.get(target.path)))
+        .then(results => {
+            const rowsByTable = {};
+            const errors = [];
+
+            results.forEach((result, index) => {
+                const target = targets[index];
+                if (result.status === 'fulfilled' && !result.value?.error && result.value?.success !== false) {
+                    rowsByTable[target.table] = mergeStudentScopedRows(target.table, sid, readApiArray(result.value, target.keys));
+                } else {
+                    errors.push(target.table);
+                    rowsByTable[target.table] = (state.db[target.table] || []).filter(row => String(row?.student_id || '') === sid);
+                }
+            });
+
+            store.byStudent[sid] = {
+                rows: rowsByTable,
+                loading: false,
+                loadedAt: Date.now(),
+                error: errors.join(',')
+            };
+            return rowsByTable;
+        })
+        .catch(err => {
+            const fallback = {
+                parent_contacts: (state.db.parent_contacts || []).filter(row => String(row?.student_id || '') === sid),
+                message_logs: (state.db.message_logs || []).filter(row => String(row?.student_id || '') === sid),
+                student_status_history: (state.db.student_status_history || []).filter(row => String(row?.student_id || '') === sid),
+                class_transfer_history: (state.db.class_transfer_history || []).filter(row => String(row?.student_id || '') === sid)
+            };
+            store.byStudent[sid] = {
+                rows: fallback,
+                loading: false,
+                loadedAt: Date.now(),
+                error: String(err?.message || err || 'student foundation details load failed')
+            };
+            return fallback;
+        })
+        .finally(() => {
+            delete store.inFlight[sid];
+        });
+
+    store.inFlight[sid] = promise;
     return promise;
 }
 
@@ -512,7 +639,11 @@ async function loadData(isInitial = false) {
         journals: Array.isArray(data.journals) ? data.journals : [],
         class_textbooks: Array.isArray(data.class_textbooks) ? data.class_textbooks : [],
         class_daily_records: Array.isArray(data.class_daily_records) ? data.class_daily_records : [],
-        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : []
+        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : [],
+        parent_contacts: Array.isArray(data.parent_contacts) ? data.parent_contacts : [],
+        message_logs: Array.isArray(data.message_logs) ? data.message_logs : [],
+        student_status_history: Array.isArray(data.student_status_history) ? data.student_status_history : [],
+        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : []
     };
     
     if (state.ui.currentClassId) {
@@ -553,7 +684,11 @@ async function refreshDataOnly() {
         journals: Array.isArray(data.journals) ? data.journals : (state.db.journals || []),
         class_textbooks: Array.isArray(data.class_textbooks) ? data.class_textbooks : (state.db.class_textbooks || []),
         class_daily_records: Array.isArray(data.class_daily_records) ? data.class_daily_records : (state.db.class_daily_records || []),
-        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : (state.db.class_daily_progress || [])
+        class_daily_progress: Array.isArray(data.class_daily_progress) ? data.class_daily_progress : (state.db.class_daily_progress || []),
+        parent_contacts: Array.isArray(data.parent_contacts) ? data.parent_contacts : (state.db.parent_contacts || []),
+        message_logs: Array.isArray(data.message_logs) ? data.message_logs : (state.db.message_logs || []),
+        student_status_history: Array.isArray(data.student_status_history) ? data.student_status_history : (state.db.student_status_history || []),
+        class_transfer_history: Array.isArray(data.class_transfer_history) ? data.class_transfer_history : (state.db.class_transfer_history || [])
     };
 }
 
