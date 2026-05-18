@@ -21,6 +21,15 @@ async function requireTeacher(request, env, teacher) {
   return teacher || await verifyAuth(request, env);
 }
 
+function todaySeoul() {
+  return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+}
+
+function pickText(value, fallback = '') {
+  if (value === undefined || value === null) return fallback;
+  return String(value).trim();
+}
+
 export async function handleOperations(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
@@ -31,25 +40,37 @@ export async function handleOperations(request, env, teacher, path, url) {
     if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
     if (method === 'POST') {
       const d = await request.json();
-      if (!(await canAccessStudent(currentTeacher, d.studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+      const studentId = pickText(d.studentId || d.student_id);
+      const date = pickText(d.date, todaySeoul());
+      const type = pickText(d.type, '기타');
+      const content = pickText(d.content);
+      const nextAction = pickText(d.nextAction ?? d.next_action);
+      if (!studentId || !content) return jsonResponse({ success: false, message: 'Required fields missing' }, 400);
+      if (!(await canAccessStudent(currentTeacher, studentId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
       const cid = `cns_${Date.now()}`;
-      await env.DB.prepare('INSERT INTO consultations (id, student_id, date, type, content, next_action) VALUES (?, ?, ?, ?, ?, ?)').bind(cid, d.studentId, d.date, d.type, d.content, d.nextAction || '').run();
+      await env.DB.prepare('INSERT INTO consultations (id, student_id, date, type, content, next_action) VALUES (?, ?, ?, ?, ?, ?)').bind(cid, studentId, date, type, content, nextAction).run();
       return jsonResponse({ success: true, id: cid });
     }
     if (method === 'GET') {
-      const sid = url.searchParams.get('studentId');
+      const sid = pickText(url.searchParams.get('studentId') || url.searchParams.get('student_id'));
       if (sid) {
         if (!(await canAccessStudent(currentTeacher, sid, env))) return jsonResponse({ error: 'Forbidden' }, 403);
-        const res = await env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC').bind(sid).all();
+        const res = await env.DB.prepare('SELECT * FROM consultations WHERE student_id = ? ORDER BY date DESC, created_at DESC, id DESC').bind(sid).all();
         return jsonResponse({ success: true, data: res.results });
       }
+      return jsonResponse({ success: false, message: 'student_id required' }, 400);
     }
     if (method === 'PATCH' && id) {
       const existing = await env.DB.prepare('SELECT student_id FROM consultations WHERE id = ?').bind(id).first();
       if (!existing) return jsonResponse({ error: 'Not found' }, 404);
       if (!(await canAccessStudent(currentTeacher, existing.student_id, env))) return jsonResponse({ error: 'Forbidden' }, 403);
       const d = await request.json();
-      await env.DB.prepare('UPDATE consultations SET date = ?, type = ?, content = ?, next_action = ? WHERE id = ?').bind(d.date, d.type, d.content, d.nextAction || '', id).run();
+      const date = pickText(d.date, todaySeoul());
+      const type = pickText(d.type, '기타');
+      const content = pickText(d.content);
+      const nextAction = pickText(d.nextAction ?? d.next_action);
+      if (!content) return jsonResponse({ success: false, message: 'Content required' }, 400);
+      await env.DB.prepare('UPDATE consultations SET date = ?, type = ?, content = ?, next_action = ? WHERE id = ?').bind(date, type, content, nextAction, id).run();
       return jsonResponse({ success: true });
     }
     if (method === 'DELETE' && id) {

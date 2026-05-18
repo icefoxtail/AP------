@@ -43,6 +43,21 @@ const REPORT_ANALYSIS_JSON_SCHEMA = {
   strict: true
 };
 
+const CONSULTATION_SUMMARY_JSON_SCHEMA = {
+  name: 'ap_math_consultation_summary',
+  schema: {
+    type: 'object',
+    additionalProperties: false,
+    properties: {
+      summary: { type: 'string' },
+      key_issues: { type: 'array', items: { type: 'string' } },
+      next_action_draft: { type: 'string' }
+    },
+    required: ['summary', 'key_issues', 'next_action_draft']
+  },
+  strict: true
+};
+
 const AP_REPORT_ANALYSIS_SYSTEM_PROMPT = `
 너는 AP Math 학원의 학부모 평가 리포트 전담 AI 편집자다.
 
@@ -175,9 +190,53 @@ nextActions:
 마크다운, 코드블록, 설명 문장, 주석은 출력하지 않는다.
 `;
 
+const AP_CONSULTATION_SUMMARY_SYSTEM_PROMPT = `
+너는 AP Math 학원의 내부 상담 기록 정리 보조 AI다.
+
+역할:
+- 상담 원문을 짧고 명확하게 요약한다.
+- 선생님이 다시 볼 핵심 이슈를 2~4개로 정리한다.
+- 다음 수업이나 운영 확인에 바로 쓸 수 있는 "다음 조치 초안"을 제안한다.
+
+중요 규칙:
+- 학부모 발송 문구처럼 쓰지 않는다.
+- 학생/학부모에게 직접 전달하는 말투를 쓰지 않는다.
+- 내부 기록용 문장으로 쓴다.
+- 원문에 없는 사실을 단정하지 않는다.
+- 진단, 의학, 법률 판단처럼 쓰지 않는다.
+- 과장하지 않는다.
+- 실제 발송, 연락, 메시지 로그, parent-foundation을 언급하지 않는다.
+- 결과는 자동 저장되지 않는 미리보기용 초안이라는 전제로, 짧고 실무적으로 쓴다.
+
+출력 규칙:
+- summary: 2~4문장, 90자 이상
+- key_issues: 2~4개
+- next_action_draft: 2~4문장, 학원 운영/수업 조치 중심
+- JSON만 출력한다.
+`;
+
 function clampText(value, max = 12000) {
   const text = String(value || '');
   return text.length > max ? text.slice(0, max) : text;
+}
+
+function buildConsultationSummaryUserPrompt(payload = {}) {
+  return [
+    '아래 상담 기록을 내부 상담 정리용으로 요약하라.',
+    '',
+    '[입력 데이터]',
+    JSON.stringify(payload, null, 2),
+    '',
+    '[작성 기준]',
+    '- summary는 상담 핵심 맥락과 현재 확인 포인트를 짧게 정리한다.',
+    '- key_issues는 선생님이 다시 볼 핵심 포인트만 뽑는다.',
+    '- next_action_draft는 다음 수업 또는 다음 상담에서 바로 사용할 수 있는 실행 문장으로 쓴다.',
+    '- 학부모 안내문처럼 쓰지 않는다.',
+    '- "안녕하세요", "학부모님", "어머님", "발송", "문자" 같은 표현을 쓰지 않는다.',
+    '- 원문에 없는 사실, 성격 판단, 의학적 판단을 넣지 않는다.',
+    '- 내용이 모호하면 단정 대신 확인 필요 중심으로 쓴다.',
+    '- JSON만 출력한다.'
+  ].join('\n');
 }
 
 function buildReportWritingSeeds(payload = {}) {
@@ -990,6 +1049,61 @@ function normalizeReportAnalysisResult(raw = {}, payload = {}) {
   };
 }
 
+function normalizeConsultationSummaryResult(raw = {}) {
+  const cleanText = (value) => String(value || '').trim();
+  const keyIssues = Array.isArray(raw?.key_issues)
+    ? raw.key_issues.map(item => cleanText(item)).filter(Boolean).slice(0, 4)
+    : [];
+  return {
+    summary: cleanText(raw?.summary),
+    key_issues: keyIssues,
+    next_action_draft: cleanText(raw?.next_action_draft)
+  };
+}
+
+function buildFallbackConsultationSummary(payload = {}) {
+  const studentName = String(payload?.student_name || '학생').trim();
+  const consultationType = String(payload?.consultation_type || '상담').trim();
+  const consultationDate = String(payload?.consultation_date || '').trim();
+  const content = String(payload?.content || '').trim();
+  const nextAction = String(payload?.next_action || '').trim();
+  const condensed = content
+    .replace(/\s+/g, ' ')
+    .split(/(?<=[.!?]|다\.|요\.)\s+/)
+    .map(part => part.trim())
+    .filter(Boolean);
+  const first = condensed[0] || content.slice(0, 80);
+  const second = condensed[1] || '';
+  const summary = [
+    consultationDate ? `${consultationDate} ${studentName} 학생 ${consultationType} 상담 정리입니다.` : `${studentName} 학생 ${consultationType} 상담 정리입니다.`,
+    first,
+    second
+  ].filter(Boolean).join(' ');
+
+  const keyIssues = [];
+  if (consultationType) keyIssues.push(`${consultationType} 관련 확인`);
+  if (content) keyIssues.push(content.length > 40 ? `${content.slice(0, 40).trim()}...` : content);
+  if (nextAction) keyIssues.push(`기존 조치 메모: ${nextAction}`);
+  while (keyIssues.length < 2) {
+    keyIssues.push('수업 전후 학생 상태 추가 확인');
+  }
+
+  const nextActionDraft = nextAction || [
+    `${studentName} 학생의 상담 내용과 현재 학습 흐름을 다음 수업 시작 전에 다시 확인합니다.`,
+    consultationType === '태도'
+      ? '수업 참여 태도와 과제 이행 흐름을 짧게 점검하고, 필요한 경우 구체적인 행동 목표를 다시 안내합니다.'
+      : consultationType === '성적'
+        ? '최근 평가와 연결되는 취약 지점을 짧게 짚고, 다음 수업에서 확인할 문제 유형을 명확히 정합니다.'
+        : '상담에서 언급된 핵심 이슈를 수업 안에서 다시 확인하고, 다음 상담 전까지 볼 체크포인트를 정리합니다.'
+  ].join(' ');
+
+  return normalizeConsultationSummaryResult({
+    summary,
+    key_issues: keyIssues.slice(0, 4),
+    next_action_draft: nextActionDraft
+  });
+}
+
 function buildFallbackReportAnalysis(payload = {}) {
   const seeds = payload?.reportWritingSeeds || {};
   const lifeSeeds = payload?.learningLifeSeeds || {};
@@ -1187,12 +1301,93 @@ async function callReportAiProxyAnalysis(env, payload) {
   }
 }
 
+async function callConsultationAiProxySummary(env, payload) {
+  const proxyUrl = String(env.REPORT_AI_PROXY_URL || '').trim();
+  const proxySecret = String(env.REPORT_AI_PROXY_SECRET || '').trim();
+  const fallback = buildFallbackConsultationSummary(payload);
+
+  if (!proxyUrl) {
+    return { source: 'fallback', analysis: fallback, warning: 'AI proxy failed: REPORT_AI_PROXY_URL missing' };
+  }
+
+  try {
+    const response = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(proxySecret ? { 'X-Report-AI-Proxy-Secret': proxySecret } : {})
+      },
+      body: JSON.stringify({
+        payload,
+        systemPrompt: AP_CONSULTATION_SUMMARY_SYSTEM_PROMPT,
+        userPrompt: buildConsultationSummaryUserPrompt(payload),
+        schema: CONSULTATION_SUMMARY_JSON_SCHEMA.schema
+      })
+    });
+
+    if (!response.ok) {
+      const detail = await response.text().catch(() => '');
+      throw new Error(`AI proxy ${response.status}: ${detail.slice(0, 300)}`);
+    }
+
+    const data = await response.json();
+    const normalized = normalizeConsultationSummaryResult(data?.analysis || data?.result || data);
+    if (!normalized.summary || !normalized.key_issues.length || !normalized.next_action_draft) {
+      return {
+        source: 'fallback',
+        analysis: fallback,
+        warning: 'AI proxy failed: invalid consultation summary payload'
+      };
+    }
+    return {
+      source: String(data?.source || 'proxy').trim() || 'proxy',
+      analysis: normalized,
+      warning: data?.warning ? String(data.warning).slice(0, 500) : ''
+    };
+  } catch (e) {
+    console.error('[AI_CONSULTATION_PROXY_ERROR]', {
+      message: String(e?.message || e),
+      hasProxyUrl: !!proxyUrl
+    });
+    return {
+      source: 'fallback',
+      analysis: fallback,
+      warning: `AI proxy failed: ${String(e?.message || e).slice(0, 500)}`
+    };
+  }
+}
+
 export async function handleReportsAi(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
   const id = path[2];
 
   if (resource !== 'ai') return null;
+
+  if (id === 'consultation-summary' && method === 'POST') {
+    const currentTeacher = await requireTeacher(request, env, teacher);
+    if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    const payload = await request.json();
+    const studentId = String(payload?.student_id || '').trim();
+    const content = String(payload?.content || '').trim();
+    if (!studentId || !content) {
+      return jsonResponse({ success: false, message: 'student_id and content required' }, 400);
+    }
+    if (!(await canAccessStudent(currentTeacher, studentId, env))) {
+      return jsonResponse({ error: 'Forbidden' }, 403);
+    }
+
+    const result = await callConsultationAiProxySummary(env, payload);
+    return jsonResponse({
+      success: true,
+      source: result.source,
+      summary: result.analysis.summary,
+      key_issues: result.analysis.key_issues,
+      next_action_draft: result.analysis.next_action_draft,
+      warning: result.warning || ''
+    });
+  }
 
   if (id === 'report-analysis' && method === 'POST') {
     const currentTeacher = await requireTeacher(request, env, teacher);
