@@ -437,3 +437,38 @@
 
 - `message_logs`는 응답 크기와 개인정보 범위가 커질 수 있으므로 `/api/students/:id/detail-data`에 합치지 않는다.
 - 연락 이력은 필요 시 `/api/students/:id/messages` 또는 기존 parent-foundation/messages 기반 별도 lazy loader로 분리한다.
+
+## 19. message_logs 별도 lazy loader 2차
+
+`message_logs`는 응답 크기와 개인정보 노출 범위가 커질 수 있으므로 `/api/students/:id/detail-data`에 포함하지 않는 원칙을 유지한다.
+
+### 적용 내용
+
+- 학생 상세 상담기록 탭 진입 시 `parent-foundation/messages`를 자동 호출하지 않는다.
+- 보호자 연락처와 수신동의 로딩은 기존 `ensureStudentParentContactDataLoaded()`에서 유지한다.
+- 연락 이력은 `openParentMessageHistoryModal()`이 열릴 때 `ensureStudentParentMessageLogsLoaded()`를 통해 별도 lazy load한다.
+- message 전용 상태는 `state.ui.parentContactUi.byStudent[studentId]`에 `messagesLoadedAt`, `messageLoading`, `messageInFlight`, `messageError`로 분리한다.
+- 연락 이력 모달은 로딩/빈 목록/오류 상태를 자체적으로 표시한다.
+
+### 보존 내용
+
+- `/api/initial-data`에 `message_logs`를 되돌려 넣지 않는다.
+- `/api/students/:id/detail-data` 응답에도 `message_logs`를 넣지 않는다.
+- 기존 보호자 연락처 추가/수정/삭제, 연락 설정, 상담기록 흐름은 유지한다.
+- 실제 메시지 발송, message-preview 노출, 학부모 공개 기능은 추가하지 않는다.
+
+## 20. APMS 하위 앱 유지 및 Academy OS 통합 준비
+
+APMS는 Academy OS 내부에 재구현하지 않고 기존 바닐라 JS 하위 앱으로 유지한다.
+
+### 방향
+
+- Academy OS: 로그인, 학원 선택, 계정/멤버십/권한, 공통 운영층 담당
+- APMS: AP Math 수학 운영 엔진으로 기존 구조 유지
+- 씨매쓰 초등 / EIE 영어학원: Academy OS 내부 신규 모듈 방향으로 합류
+
+### 이번 단계 범위
+
+- 실제 Academy OS → APMS 세션 브릿지는 구현하지 않는다.
+- APMS 버튼, SaaS 홈, module routing 변경은 하지 않는다.
+- 구조 방향만 문서화하고 기존 운영 흐름을 보존한다.

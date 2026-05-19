@@ -164,6 +164,13 @@ function setStudentDetailSubModal(type = '', studentId = '') {
     state.ui.currentStudentDetailSubModal = type ? { type, studentId: String(studentId || '') } : null;
 }
 
+function isStudentDetailSubModal(type = '', studentId = '') {
+    const current = state.ui?.currentStudentDetailSubModal || null;
+    return !!current &&
+        String(current.type || '') === String(type || '') &&
+        String(current.studentId || '') === String(studentId || '');
+}
+
 function shouldRefreshCurrentStudentCnsTab(studentId) {
     if (!state.ui) return false;
     const key = String(studentId || '');
@@ -238,15 +245,31 @@ function mergeStudentRows(tableName, sid, rows) {
     return scopedRows;
 }
 
-function getStudentParentContactBundle(sid) {
+function getStudentParentMessageState(sid) {
     const store = ensureParentContactUiState();
-    const entry = store.byStudent[String(sid)] || {};
+    const key = String(sid || '');
+    if (!store.byStudent[key]) {
+        store.byStudent[key] = { loadedAt: 0, loading: false, inFlight: null, error: '', consents: [] };
+    }
+    const entry = store.byStudent[key];
+    if (typeof entry.messagesLoadedAt !== 'number') entry.messagesLoadedAt = 0;
+    if (typeof entry.messageLoading !== 'boolean') entry.messageLoading = false;
+    if (!('messageInFlight' in entry)) entry.messageInFlight = null;
+    if (typeof entry.messageError !== 'string') entry.messageError = '';
+    return entry;
+}
+
+function getStudentParentContactBundle(sid) {
+    const entry = getStudentParentMessageState(sid);
     return {
         contacts: getStudentParentContactsFromState(sid),
         consents: Array.isArray(entry.consents) ? entry.consents : [],
         messages: getStudentMessageLogsFromState(sid),
         loading: !!entry.loading,
-        error: entry.error || ''
+        error: entry.error || '',
+        messagesLoadedAt: Number(entry.messagesLoadedAt || 0),
+        messageLoading: !!entry.messageLoading,
+        messageError: entry.messageError || ''
     };
 }
 
@@ -341,6 +364,7 @@ async function openStudentStatusHistoryModal(sid) {
     if (!lazy.loadedAt) {
         showModal('상태 변경 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
         await ensureStudentDetailLazyData(sid);
+        if (!isStudentDetailSubModal('status-history', sid)) return;
     }
     showModal('상태 변경 이력', renderStudentStatusHistoryModalHtml(sid));
 }
@@ -351,6 +375,7 @@ async function openStudentClassTransferHistoryModal(sid) {
     if (!lazy.loadedAt) {
         showModal('반 이동 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
         await ensureStudentDetailLazyData(sid);
+        if (!isStudentDetailSubModal('class-transfer-history', sid)) return;
     }
     showModal('반 이동 이력', renderStudentClassTransferHistoryModalHtml(sid));
 }
@@ -360,10 +385,7 @@ async function ensureStudentParentContactDataLoaded(sid, options = {}) {
     const key = String(sid || '');
     if (!key) return getStudentParentContactBundle(key);
 
-    if (!store.byStudent[key]) {
-        store.byStudent[key] = { loadedAt: 0, loading: false, inFlight: null, error: '', consents: [] };
-    }
-    const entry = store.byStudent[key];
+    const entry = getStudentParentMessageState(key);
     const force = !!options.force;
     const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
     if (!force && entry.loadedAt && (Date.now() - entry.loadedAt) < maxAgeMs) {
@@ -377,10 +399,9 @@ async function ensureStudentParentContactDataLoaded(sid, options = {}) {
 
     const promise = Promise.allSettled([
         api.get(`parent-foundation/contacts?${query}`),
-        api.get(`parent-foundation/consents?${query}`),
-        api.get(`parent-foundation/messages?${query}`)
+        api.get(`parent-foundation/consents?${query}`)
     ]).then(results => {
-        const [contactsRes, consentsRes, messagesRes] = results;
+        const [contactsRes, consentsRes] = results;
         const errors = [];
 
         if (contactsRes.status === 'fulfilled' && contactsRes.value?.success && Array.isArray(contactsRes.value.contacts)) {
@@ -395,16 +416,10 @@ async function ensureStudentParentContactDataLoaded(sid, options = {}) {
             errors.push('consents');
         }
 
-        if (messagesRes.status === 'fulfilled' && messagesRes.value?.success && Array.isArray(messagesRes.value.messages)) {
-            mergeStudentRows('message_logs', key, messagesRes.value.messages);
-        } else {
-            errors.push('messages');
-        }
-
         entry.loadedAt = Date.now();
         entry.loading = false;
         entry.error = errors.join(',');
-        if (state.ui.currentStudentDetailId === key && state.ui.currentStudentDetailTab === 'cns') {
+        if (shouldRefreshCurrentStudentCnsTab(key)) {
             renderStudentDetailTab(key, 'cns');
         }
         return getStudentParentContactBundle(key);
@@ -417,6 +432,49 @@ async function ensureStudentParentContactDataLoaded(sid, options = {}) {
     });
 
     entry.inFlight = promise;
+    return promise;
+}
+
+async function ensureStudentParentMessageLogsLoaded(sid, options = {}) {
+    const key = String(sid || '');
+    if (!key) return getStudentParentContactBundle(key);
+
+    const entry = getStudentParentMessageState(key);
+    const force = !!options.force;
+    const maxAgeMs = Number.isFinite(Number(options.maxAgeMs)) ? Number(options.maxAgeMs) : 60 * 1000;
+    if (!force && entry.messagesLoadedAt && (Date.now() - entry.messagesLoadedAt) < maxAgeMs) {
+        return getStudentParentContactBundle(key);
+    }
+    if (entry.messageInFlight) return entry.messageInFlight;
+
+    entry.messageLoading = true;
+    entry.messageError = '';
+    const query = `student_id=${encodeURIComponent(key)}&limit=200`;
+
+    const promise = api.get(`parent-foundation/messages?${query}`)
+        .then(res => {
+            if (res?.success && Array.isArray(res.messages)) {
+                mergeStudentRows('message_logs', key, res.messages);
+                entry.messagesLoadedAt = Date.now();
+                entry.messageError = '';
+            } else {
+                entry.messageError = String(res?.message || res?.error || 'parent message logs load failed');
+            }
+            return getStudentParentContactBundle(key);
+        })
+        .catch(err => {
+            entry.messageError = String(err?.message || err || 'parent message logs load failed');
+            return getStudentParentContactBundle(key);
+        })
+        .finally(() => {
+            entry.messageLoading = false;
+            entry.messageInFlight = null;
+            if (shouldRefreshCurrentStudentCnsTab(key)) {
+                renderStudentDetailTab(key, 'cns');
+            }
+        });
+
+    entry.messageInFlight = promise;
     return promise;
 }
 
@@ -545,8 +603,15 @@ function openParentConsentModal(sid, contactId) {
     `);
 }
 
-function openParentMessageHistoryModal(sid, contactId = '') {
+async function openParentMessageHistoryModal(sid, contactId = '') {
     setStudentDetailSubModal('parent-message-history', sid);
+    const messageState = getStudentParentMessageState(sid);
+    if (!messageState.messagesLoadedAt) {
+        showModal('연락 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">연락 이력을 불러오는 중입니다.</div>');
+        await ensureStudentParentMessageLogsLoaded(sid);
+        if (!isStudentDetailSubModal('parent-message-history', sid)) return;
+    }
+
     const bundle = getStudentParentContactBundle(sid);
     const contact = contactId
         ? (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''))
@@ -560,6 +625,7 @@ function openParentMessageHistoryModal(sid, contactId = '') {
                     <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">${apEscapeHtml(contact.relation || '관계 미입력')}${contact.phone ? ` · ${apEscapeHtml(contact.phone)}` : ''}</div>
                 </div>
             ` : ''}
+            ${bundle.messageError ? '<div style="font-size:12px; color:var(--warning); font-weight:700; line-height:1.5;">연락 이력을 다시 확인해 주세요.</div>' : ''}
             <div>
                 ${rows.length ? renderParentMessageHistoryRows(rows) : '<div style="padding:20px 4px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">연락 이력이 없습니다.</div>'}
             </div>
@@ -584,10 +650,7 @@ function renderParentContactSection(sid) {
     ` : '';
 
     const contactCards = bundle.contacts.map(contact => {
-        const contactMessages = getParentContactMessages(contact.id, bundle.messages);
-        const historyButtonHtml = contactMessages.length
-            ? `<button class="btn" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="openParentMessageHistoryModal('${sid}','${contact.id}')">연락 이력 보기</button>`
-            : `<span style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">연락 이력 0건</span>`;
+        const historyButtonHtml = `<button class="btn" style="min-height:32px; padding:6px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="openParentMessageHistoryModal('${sid}','${contact.id}')">연락 이력 보기</button>`;
 
         return `
             <div class="card" style="padding:12px; margin-bottom:10px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
@@ -626,6 +689,7 @@ function renderParentContactSection(sid) {
                 </div>
                 ${bundle.loading ? '<div style="margin-bottom:10px; font-size:12px; color:var(--secondary); font-weight:700;">보호자 연락처 데이터를 불러오는 중입니다.</div>' : ''}
                 ${bundle.error ? '<div style="margin-bottom:10px; font-size:12px; color:var(--warning); font-weight:700;">일부 보호자 연락 데이터를 다시 확인해 주세요.</div>' : ''}
+                ${bundle.messageLoading ? '<div style="margin-bottom:10px; font-size:12px; color:var(--secondary); font-weight:700;">연락 이력을 불러오는 중입니다.</div>' : ''}
                 ${contactCards || fallbackCard || '<div style="padding:18px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; border:1px solid var(--border); border-radius:14px; background:var(--surface-2);">등록된 보호자 연락처가 없습니다.</div>'}
                 ${historySummaryHtml}
             </div>
@@ -862,7 +926,7 @@ async function ensureStudentConsultationsLoaded(sid, options = {}) {
                 entry.loadedAt = Date.now();
                 entry.loading = false;
                 entry.error = '';
-                if (state.ui.currentStudentDetailId === key && state.ui.currentStudentDetailTab === 'cns') {
+                if (shouldRefreshCurrentStudentCnsTab(key)) {
                     renderStudentDetailTab(key, 'cns');
                 }
                 return rows;
