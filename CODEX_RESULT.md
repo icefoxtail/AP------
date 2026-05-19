@@ -2,34 +2,67 @@
 
 ## 1. 생성/수정 파일
 
-- 수정: `apmath/css/apms-theme-override.css`
-- 수정: `apmath/js/dashboard.js`
-- 수정: `apmath/js/classroom.js`
+- 수정: `apmath/js/timetable.js`
 - 수정: `CODEX_RESULT.md`
 
 ## 2. 구현 완료 또는 확인 완료
 
-- APMS Academy OS 디자인 토큰 2차 체감형 계층 보정 완료
-- 대시보드 단축 버튼/탭/학급관리 영역에 class만 추가하고 문구, onclick, 조건 로직, 데이터 계산, 섹션 순서는 보존
-- 원장 대시보드 섹션, 미니 지표, 확인 카드, 카드 hover 계층감을 override CSS로 보정
-- 반 화면 `injectClassroomStyles()` 안에서 배경, toolbar blur, board shadow, row hover, section title 계층만 보정
-- `renderClass`, DOM 이벤트, grid-template-columns, 학생/출결/상담/클리닉/플래너/교재 흐름은 변경하지 않음
-- 학생 포털/플래너는 기존 HTML/JS 로직을 수정하지 않고 `apms-theme-override.css`에서 카드/표/탭/empty state 시각 계층만 보정
-- `report.js`, `archive`, Worker/API/DB, migration은 수정하지 않음
-- 기존 문구/버튼명/화면명은 변경하지 않음
+### 시간표 충돌 결과 UI 1차
+
+- 시간표 draft `scan-preview` 결과를 기존 시간표 화면 안에서만 확인하도록 보강했다.
+- 기존 `충돌 확인` 버튼과 scan-preview API 호출 흐름은 유지했다.
+- scan-preview 실행 후 기존 요약 줄에 `상세 보기` 버튼을 추가했다.
+- `상세 보기` 버튼은 모달로만 열리며, 기본 화면에 긴 충돌 목록을 펼치지 않는다.
+- 학생 충돌 / 선생님 확인 / 교실 확인을 분리 표시한다.
+- 학생 충돌은 실제 운영 전 정리가 필요한 위험 항목으로 안내한다.
+- 선생님 충돌은 합반/클리닉/격주 같은 운영 예외 가능 항목으로 학생 충돌과 분리했다.
+- 교실 충돌은 room_name이 들어온 충돌만 교실 배정 확인 항목으로 표시한다.
+- 충돌 row에는 대상, 요일/시간, 반 A, 반 B를 표시한다.
+- class id는 가능한 경우 현재 시간표 class 데이터에서 반명과 선생님명으로 보강해 표시한다.
+- student 충돌 target_id는 가능한 경우 현재 학생 데이터에서 학생명으로 보강해 표시한다.
+
+### 보존 확인
+
+- 원장/관리자 대시보드 새 카드 추가 없음.
+- 시간표 화면 밖 새 진입점 추가 없음.
+- 기존 시간표 탭/문구/버튼명 변경 없음.
+- 기존 `반 화면`, `중등부`, `고등부`, `전체 보기`, `내 반 보기`, `운영 시간표로 돌아가기`, `충돌 확인` 흐름 보존.
+- Worker route 수정 없음.
+- schema/migration 수정 없음.
+- OMR/QR/시험지/학생 포털/플래너/숙제 사진 파일 수정 없음.
+- 디자인 패치 파일 수정 없음.
 
 ## 3. 실행 결과
 
-- `node --check apmath/js/dashboard.js`: PASS
-- `node --check apmath/js/classroom.js`: PASS
+- `node --check /mnt/data/timetable_work/timetable.js`
+  - PASS
+- 검색 확인
+  - `ttOpenDraftConflictDetails` 추가 확인
+  - `buildTimetableDraftConflictDetailsHtml` 추가 확인
+  - `상세 보기` 버튼 추가 확인
+  - `운영 예외 가능` 문구 추가 확인
 
 ## 4. 결과 요약
 
-- 1차 토큰 통합 위에 실제 체감이 나는 카드 그림자, 섹션 배경, active tab, hover, portal/planner card hierarchy를 추가함
-- 기능 변경 없이 Academy OS와 APMS의 표면 질감과 카드 계층을 더 가깝게 맞춤
+시간표 draft 충돌 확인 결과가 기존 요약 숫자만 보이던 상태에서, 시간표 화면 내부 모달로 학생/선생님/교실 충돌을 분리 확인할 수 있게 보강했다. 기본 화면은 간략하게 유지하고 상세 목록은 `상세 보기` 뒤에 숨겼다. 백엔드, DB, schema, migration은 수정하지 않았다.
 
-## 5. 다음 조치
+## 5. 잘못한 점 / 위험했던 점 / 보존한 점
 
-1. 검수용 zip으로 기능 보존 및 디자인 범위 검수
-2. 검수 PASS 후에만 적용/검증/배포 PowerShell 제공
-3. git add/commit/push는 수행하지 않음
+- 잘못한 점: 없음.
+- 위험했던 점: 시간표 화면에 충돌 상세를 기본 노출하면 화면이 복잡해질 위험이 있어 모달 뒤로 숨겼다.
+- 위험했던 점: teacher 충돌을 학생 충돌과 같은 위험으로 보이면 운영 예외까지 과도하게 경고될 수 있어 `선생님 확인`과 `운영 예외 가능`으로 분리했다.
+- 보존한 점: 기존 시간표 버전/draft/scan-preview/API 흐름, 기존 버튼명, 기존 시간표 화면 구조, Worker route, schema/migration을 보존했다.
+
+## 6. 배포/운영 필요 사항
+
+- 프론트 정적 파일 반영 필요.
+- Worker deploy 불필요.
+- D1 migration 불필요.
+- 브라우저 확인 필요:
+  - 시간표 화면 진입
+  - draft 초안 열기
+  - `충돌 확인` 실행
+  - 요약 줄 표시 확인
+  - `상세 보기` 모달 확인
+  - 학생 충돌 / 선생님 확인 / 교실 확인 분리 표시 확인
+  - 기존 시간표 탭/드래그/반 열기 흐름 유지 확인

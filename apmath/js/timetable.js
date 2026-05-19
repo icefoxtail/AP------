@@ -692,6 +692,151 @@ async function runTimetableDraftScanPreview() {
     renderTimetable();
 }
 
+function getTimetableConflictDayLabel(day) {
+    var map = { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' };
+    var normalized = normalizeTimetableSlotDay(day);
+    return map[normalized] || String(day || '-');
+}
+
+function getTimetableConflictClassLabel(classId) {
+    var cls = findTimetableClassById(classId);
+    var name = cls && cls.name ? cls.name : String(classId || '-');
+    var teacher = cls && cls.teacher_name ? ' · ' + cls.teacher_name : '';
+    return name + teacher;
+}
+
+function getTimetableConflictTargetLabel(conflict) {
+    var type = String(conflict && conflict.conflict_type || '');
+    var target = String(conflict && conflict.target_id || '').trim();
+    if (type === 'student') {
+        var student = findTimetableStudentById(target);
+        return student && student.name ? student.name : (target || '학생 확인');
+    }
+    if (type === 'teacher') return target || '선생님 확인';
+    if (type === 'room') return target || '교실 확인';
+    return target || '대상 확인';
+}
+
+function getTimetableConflictTypeMeta(type) {
+    if (type === 'student') {
+        return {
+            title: '학생 충돌',
+            badge: '위험',
+            tone: 'danger',
+            guide: '학생이 같은 시간에 두 반 이상 배정된 경우입니다. 실제 운영 전 반드시 정리해야 합니다.',
+            border: 'rgba(255,59,48,0.22)',
+            bg: 'rgba(255,59,48,0.06)',
+            color: '#C2410C'
+        };
+    }
+    if (type === 'teacher') {
+        return {
+            title: '선생님 확인',
+            badge: '운영 예외 가능',
+            tone: 'warning',
+            guide: '합반, 클리닉, 격주 수업처럼 운영상 허용되는 경우가 있을 수 있습니다. 학생 충돌과 분리해서 확인하세요.',
+            border: 'rgba(255,149,0,0.24)',
+            bg: 'rgba(255,149,0,0.08)',
+            color: '#B45309'
+        };
+    }
+    if (type === 'room') {
+        return {
+            title: '교실 확인',
+            badge: '교실 배정 확인',
+            tone: 'info',
+            guide: '교실명이 입력된 수업끼리 시간이 겹친 경우입니다. 교실 배정이 맞는지 확인하세요.',
+            border: 'rgba(0,122,255,0.20)',
+            bg: 'rgba(0,122,255,0.06)',
+            color: 'var(--primary)'
+        };
+    }
+    return {
+        title: '기타 확인',
+        badge: '확인',
+        tone: 'info',
+        guide: '시간표 충돌 후보입니다.',
+        border: 'var(--border)',
+        bg: 'var(--surface-2)',
+        color: 'var(--text)'
+    };
+}
+
+function groupTimetableDraftPreviewConflicts(conflicts) {
+    var grouped = { student: [], teacher: [], room: [] };
+    (Array.isArray(conflicts) ? conflicts : []).forEach(function(conflict) {
+        var type = String(conflict && conflict.conflict_type || '');
+        if (!grouped[type]) grouped[type] = [];
+        grouped[type].push(conflict);
+    });
+    return grouped;
+}
+
+function buildTimetableConflictRowHtml(conflict) {
+    var classA = getTimetableConflictClassLabel(conflict && conflict.class_a_id);
+    var classB = getTimetableConflictClassLabel(conflict && conflict.class_b_id);
+    var day = getTimetableConflictDayLabel(conflict && conflict.day_of_week);
+    var time = String(conflict && conflict.overlap_start || '-').slice(0, 5) + '~' + String(conflict && conflict.overlap_end || '-').slice(0, 5);
+    var target = getTimetableConflictTargetLabel(conflict);
+    return '' +
+        '<div style="padding:12px 0; border-top:1px solid rgba(0,0,0,0.06);">' +
+            '<div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:6px;">' +
+                '<div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.5;">' + apEscapeHtml(target) + '</div>' +
+                '<div style="font-size:12px; font-weight:800; color:var(--secondary); white-space:nowrap; line-height:1.5;">' + apEscapeHtml(day + ' ' + time) + '</div>' +
+            '</div>' +
+            '<div style="display:grid; grid-template-columns:1fr; gap:6px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">' +
+                '<div><span style="color:var(--text);">반 A</span> · ' + apEscapeHtml(classA) + '</div>' +
+                '<div><span style="color:var(--text);">반 B</span> · ' + apEscapeHtml(classB) + '</div>' +
+            '</div>' +
+        '</div>';
+}
+
+function buildTimetableConflictSectionHtml(type, rows) {
+    var meta = getTimetableConflictTypeMeta(type);
+    rows = Array.isArray(rows) ? rows : [];
+    return '' +
+        '<section style="border:1px solid ' + meta.border + '; background:' + meta.bg + '; border-radius:14px; padding:14px;">' +
+            '<div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;">' +
+                '<div>' +
+                    '<div style="font-size:14px; font-weight:900; color:var(--text); line-height:1.4;">' + apEscapeHtml(meta.title) + ' ' + apEscapeHtml(String(rows.length)) + '건</div>' +
+                    '<div style="font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; margin-top:4px;">' + apEscapeHtml(meta.guide) + '</div>' +
+                '</div>' +
+                '<span class="std-badge" style="background:rgba(255,255,255,0.75); color:' + meta.color + '; border:1px solid ' + meta.border + '; white-space:nowrap;">' + apEscapeHtml(meta.badge) + '</span>' +
+            '</div>' +
+            (rows.length ? rows.map(buildTimetableConflictRowHtml).join('') : '<div style="padding:12px 0 2px; font-size:12px; color:var(--secondary); font-weight:700;">확인할 항목이 없습니다.</div>') +
+        '</section>';
+}
+
+function buildTimetableDraftConflictDetailsHtml() {
+    var ui = ensureTimetableVersionUiState();
+    var result = ui.timetableDraftPreviewResult || {};
+    var counts = result.counts || { student: 0, teacher: 0, room: 0, total: 0 };
+    var grouped = groupTimetableDraftPreviewConflicts(result.conflicts || []);
+    var total = Number(counts.total || (result.conflicts || []).length || 0);
+    var summaryTone = Number(counts.student || 0) > 0
+        ? 'border:1px solid rgba(255,59,48,0.22); background:rgba(255,59,48,0.06); color:#C2410C;'
+        : 'border:1px solid rgba(0,122,255,0.20); background:rgba(0,122,255,0.06); color:var(--primary);';
+    return '' +
+        '<div style="display:flex; flex-direction:column; gap:12px;">' +
+            '<div style="padding:12px 14px; border-radius:14px; ' + summaryTone + ' font-size:13px; font-weight:800; line-height:1.5;">' +
+                '총 ' + apEscapeHtml(String(total)) + '건 · 학생 ' + apEscapeHtml(String(Number(counts.student || 0))) + '건 · 선생님 ' + apEscapeHtml(String(Number(counts.teacher || 0))) + '건 · 교실 ' + apEscapeHtml(String(Number(counts.room || 0))) + '건' +
+            '</div>' +
+            buildTimetableConflictSectionHtml('student', grouped.student || []) +
+            buildTimetableConflictSectionHtml('teacher', grouped.teacher || []) +
+            buildTimetableConflictSectionHtml('room', grouped.room || []) +
+        '</div>';
+}
+
+function openTimetableDraftConflictDetailsModal() {
+    var ui = ensureTimetableVersionUiState();
+    if (!ui.timetableDraftPreviewResult) {
+        if (typeof toast === 'function') toast('먼저 충돌 확인을 실행해주세요.', 'warn');
+        return;
+    }
+    showModal('충돌 확인 결과', buildTimetableDraftConflictDetailsHtml());
+}
+
+
 function buildTimetableVersionBannerHtml() {
     if (!isTimetableAdminMode()) return '';
 
@@ -753,6 +898,7 @@ function buildTimetableVersionBannerHtml() {
                 '<span>선생님 확인 ' + apEscapeHtml(String(Number(previewCounts.teacher || 0))) + '건</span>' +
                 '<span>교실 확인 ' + apEscapeHtml(String(Number(previewCounts.room || 0))) + '건</span>' +
                 (Number(previewCounts.student || 0) > 0 ? '<span style="color:#C2410C;">확인 필요</span>' : '') +
+                (Number(previewCounts.total || 0) > 0 ? '<button class="btn" style="margin-left:auto; min-height:32px; padding:6px 10px; font-size:12px; font-weight:800; border-radius:10px;" onclick="window.ttOpenDraftConflictDetails()">상세 보기</button>' : '') +
             '</div>';
     }
 
@@ -774,6 +920,10 @@ window.ttCreateNextDraft = function() {
 
 window.ttScanDraftPreview = function() {
     runTimetableDraftScanPreview();
+};
+
+window.ttOpenDraftConflictDetails = function() {
+    openTimetableDraftConflictDetailsModal();
 };
 
 function getTimetableClassList() {
