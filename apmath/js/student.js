@@ -180,6 +180,20 @@ function shouldRefreshCurrentStudentCnsTab(studentId) {
         !(subModal && String(subModal.studentId || '') === key);
 }
 
+function showStudentDetailSubModalStep(type, sid, title, body, actionText = null, actionHandler = null) {
+    if (!state.ui) state.ui = {};
+    state.ui.currentStudentDetailSubModal = null;
+    if (typeof showModalStep === 'function') showModalStep(title, body, actionText, actionHandler);
+    else showModal(title, body, actionText, actionHandler);
+    setStudentDetailSubModal(type, sid);
+}
+
+function replaceStudentDetailSubModal(type, sid, title, body, actionText = null, actionHandler = null) {
+    if (typeof replaceModalStep === 'function') replaceModalStep(title, body, actionText, actionHandler);
+    else showModal(title, body, actionText, actionHandler);
+    setStudentDetailSubModal(type, sid);
+}
+
 async function ensureStudentDetailLazyData(studentId, options = {}) {
     const key = String(studentId || '').trim();
     if (!key) return getStudentDetailLazyState(key);
@@ -359,25 +373,27 @@ function renderStudentClassTransferHistoryModalHtml(sid) {
 }
 
 async function openStudentStatusHistoryModal(sid) {
-    setStudentDetailSubModal('status-history', sid);
     const lazy = getStudentDetailLazyState(sid);
     if (!lazy.loadedAt) {
-        showModal('상태 변경 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
+        showStudentDetailSubModalStep('status-history', sid, '상태 변경 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
         await ensureStudentDetailLazyData(sid);
         if (!isStudentDetailSubModal('status-history', sid)) return;
+        replaceStudentDetailSubModal('status-history', sid, '상태 변경 이력', renderStudentStatusHistoryModalHtml(sid));
+        return;
     }
-    showModal('상태 변경 이력', renderStudentStatusHistoryModalHtml(sid));
+    showStudentDetailSubModalStep('status-history', sid, '상태 변경 이력', renderStudentStatusHistoryModalHtml(sid));
 }
 
 async function openStudentClassTransferHistoryModal(sid) {
-    setStudentDetailSubModal('class-transfer-history', sid);
     const lazy = getStudentDetailLazyState(sid);
     if (!lazy.loadedAt) {
-        showModal('반 이동 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
+        showStudentDetailSubModalStep('class-transfer-history', sid, '반 이동 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
         await ensureStudentDetailLazyData(sid);
         if (!isStudentDetailSubModal('class-transfer-history', sid)) return;
+        replaceStudentDetailSubModal('class-transfer-history', sid, '반 이동 이력', renderStudentClassTransferHistoryModalHtml(sid));
+        return;
     }
-    showModal('반 이동 이력', renderStudentClassTransferHistoryModalHtml(sid));
+    showStudentDetailSubModalStep('class-transfer-history', sid, '반 이동 이력', renderStudentClassTransferHistoryModalHtml(sid));
 }
 
 async function ensureStudentParentContactDataLoaded(sid, options = {}) {
@@ -584,7 +600,7 @@ function openParentConsentModal(sid, contactId) {
         </div>
     `).join('');
 
-    showModal('연락 설정', `
+    showStudentDetailSubModalStep('parent-consent', sid, '연락 설정', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
                 <div style="font-size:13px; color:var(--text); font-weight:800; line-height:1.5;">${apEscapeHtml(contact.name || '이름 미입력')}</div>
@@ -607,7 +623,7 @@ async function openParentMessageHistoryModal(sid, contactId = '') {
     setStudentDetailSubModal('parent-message-history', sid);
     const messageState = getStudentParentMessageState(sid);
     if (!messageState.messagesLoadedAt) {
-        showModal('연락 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">연락 이력을 불러오는 중입니다.</div>');
+        showStudentDetailSubModalStep('parent-message-history', sid, '연락 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">연락 이력을 불러오는 중입니다.</div>');
         await ensureStudentParentMessageLogsLoaded(sid);
         if (!isStudentDetailSubModal('parent-message-history', sid)) return;
     }
@@ -617,7 +633,7 @@ async function openParentMessageHistoryModal(sid, contactId = '') {
         ? (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''))
         : null;
     const rows = contactId ? getParentContactMessages(contactId, bundle.messages) : [...(bundle.messages || [])];
-    showModal('연락 이력', `
+    replaceStudentDetailSubModal('parent-message-history', sid, '연락 이력', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             ${contact ? `
                 <div style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
@@ -778,8 +794,13 @@ function consultationThreadSummaryModalHtml() {
     `;
 }
 
-function renderConsultationThreadSummaryModal() {
-    showModal('상담 흐름 요약', consultationThreadSummaryModalHtml());
+function renderConsultationThreadSummaryModal(useStep = false) {
+    const sid = ensureConsultationThreadAiUiState().studentId;
+    if (useStep) {
+        showStudentDetailSubModalStep('consultation-thread-summary', sid, '상담 흐름 요약', consultationThreadSummaryModalHtml());
+        return;
+    }
+    replaceStudentDetailSubModal('consultation-thread-summary', sid, '상담 흐름 요약', consultationThreadSummaryModalHtml());
 }
 
 async function openConsultationThreadSummaryModal(sid) {
@@ -787,7 +808,7 @@ async function openConsultationThreadSummaryModal(sid) {
     await ensureStudentConsultationsLoaded(sid);
     const rows = getStudentConsultationsFromState(sid);
     resetConsultationThreadAiUiState(sid);
-    renderConsultationThreadSummaryModal();
+    renderConsultationThreadSummaryModal(true);
     if (!rows.length) {
         const ai = ensureConsultationThreadAiUiState();
         ai.error = '상담 기록이 아직 없어 상담 흐름 요약을 만들 수 없습니다.';
@@ -1265,7 +1286,7 @@ function openReportPreview(sid) {
 function openAddParentContactModal(sid) {
     setStudentDetailSubModal('parent-contact-add', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
-    showModal('보호자 연락처 추가', `
+    showStudentDetailSubModalStep('parent-contact-add', sid, '보호자 연락처 추가', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <input id="parent-contact-name" class="std-input-base" placeholder="보호자 이름">
             <input id="parent-contact-relation" class="std-input-base" placeholder="관계">
@@ -1312,7 +1333,7 @@ function openEditParentContactModal(sid, contactId) {
     const contact = getStudentParentContactsFromState(sid).find(row => String(row.id) === String(contactId));
     if (!contact) return toast('보호자 연락처를 찾을 수 없습니다.', 'warn');
 
-    showModal('보호자 연락처 수정', `
+    showStudentDetailSubModalStep('parent-contact-edit', sid, '보호자 연락처 수정', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <input id="edit-parent-contact-name" class="std-input-base" value="${studentAttr(contact.name || '')}" placeholder="보호자 이름">
             <input id="edit-parent-contact-relation" class="std-input-base" value="${studentAttr(contact.relation || '')}" placeholder="관계">
@@ -1416,7 +1437,7 @@ function openAddConsultationModal(sid) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     resetConsultationAiUiState('add', sid, '');
     const todayStr = new Date().toLocaleDateString('sv-SE');
-    showModal('상담 기록 추가', `
+    showStudentDetailSubModalStep('consultation-add', sid, '상담 기록 추가', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; gap: 8px;">
                 <input type="date" id="cns-date" class="std-input-base" value="${todayStr}" style="flex: 1.2;">
@@ -1529,7 +1550,7 @@ function openEditConsultation(cid, sid) {
     resetConsultationAiUiState('edit', sid, cid);
     const c = state.db.consultations.find(x => x.id === cid);
     if (!c) return;
-    showModal('상담 수정', `
+    showStudentDetailSubModalStep('consultation-edit', sid, '상담 수정', `
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; gap: 8px;">
                 <input type="date" id="edit-cns-date" class="std-input-base" value="${c.date}" style="flex: 1.2;">

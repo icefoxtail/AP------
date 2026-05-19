@@ -2,110 +2,79 @@
 
 ## 1. 생성/수정 파일
 
+- 수정: `apmath/js/ui.js`
 - 수정: `apmath/js/student.js`
+- 수정: `apmath/js/timetable.js`
 - 수정: `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`
-- 수정: `docs/INITIAL_DATA_SPLIT_ANALYSIS.md`
 - 수정: `CODEX_RESULT.md`
 
 ## 2. 구현 완료 또는 확인 완료
 
-### message_logs 별도 lazy loader 2차
+### APMS 모달/취소 흐름 안정화
 
-- `message_logs`를 `/api/students/:id/detail-data`에 포함하지 않는 원칙 유지 확인
-- `ensureStudentParentContactDataLoaded()`에서 `parent-foundation/messages` 자동 호출 제거
-- `ensureStudentParentMessageLogsLoaded(studentId, options)` 추가
-- 연락 이력은 `연락 이력 보기` 클릭 시에만 `parent-foundation/messages?student_id=...&limit=200` 호출
-- message 전용 상태 `messagesLoadedAt`, `messageLoading`, `messageInFlight`, `messageError` 추가
-- 연락 이력 로딩/빈 목록/오류 상태 모달 표시 보강
-- 연락 이력 로딩 중 다른 서브 모달을 열었을 때 기존 비동기 결과가 뒤늦게 모달을 덮어쓰지 않도록 `isStudentDetailSubModal()` 가드 추가
-- 기존 연락 설정/수신동의/보호자 연락처 추가·수정·삭제 흐름 보존
-- 실제 메시지 발송, message-preview 노출, 학부모 공개 기능 추가 없음
+- 공통 모달 step stack 도입 완료
+- `showModalStep()` / `replaceModalStep()` / `clearModalSteps()` 추가 완료
+- 기존 `showModal()` 호환 유지 완료
+- `closeModal()`에서 직전 모달 step이 있으면 전체 닫기 대신 직전 단계 복귀하도록 보강 완료
+- `closeModal(true)`는 기존처럼 강제 닫기/저장 완료 흐름으로 유지 완료
+- overlay 바깥 클릭과 상단 `취소`는 같은 직전 단계 복귀 흐름을 따르도록 보강 완료
 
-### 운영 로그/이력 뷰어 2차
+### 학생 상세 서브모달
 
-- 학생 상태 변경 이력과 반 이동 이력은 기존 학생 상세 상담기록 탭 내부 모달 방식 유지
-- 이력 데이터 empty/loading/error 방어 유지 확인
-- 상태 변경 이력/반 이동 이력 로딩 중 다른 서브 모달로 이동한 경우 뒤늦은 `showModal()` 실행을 중단하는 가드 추가
-- 서브 모달이 열린 상태에서 lazy loader 완료 시 상담기록 탭이 덮어써지는 경쟁 조건 방어 유지
-- 원장 대시보드 새 카드 추가 없음
-- message_logs는 학생 이력 lazy data와 분리 유지
+- 상태 변경 이력 모달 취소 시 상담기록 탭으로 복귀하도록 보강 완료
+- 반 이동 이력 모달 취소 시 상담기록 탭으로 복귀하도록 보강 완료
+- 연락 설정 모달 취소 시 상담기록 탭으로 복귀하도록 보강 완료
+- 연락 이력 모달 취소 시 상담기록 탭으로 복귀하도록 보강 완료
+- 상담 흐름 요약 모달 취소 시 상담기록 탭으로 복귀하도록 보강 완료
+- 보호자 연락처 추가/수정 모달 취소 시 직전 학생 상세 단계로 복귀하도록 보강 완료
+- 상담 기록 추가/수정 모달 취소 시 직전 학생 상세 단계로 복귀하도록 보강 완료
+- 로딩 모달에서 최종 모달로 바뀔 때는 stack을 중복으로 쌓지 않도록 `replaceStudentDetailSubModal()` 경로 사용 완료
 
-### 시간표 버전/충돌 UI 후속 안정화
+### 시간표 충돌 상세
 
-- 시간표 충돌 상세 UI가 기존 draft/scan-preview 흐름 안에만 남아 있음을 확인
-- 학생/선생님/교실 분리 표시와 empty state 방어 확인
-- Worker/schema/migration 추가 수정 없음
-
-### 홈페이지/왕지교육 SaaS 통합 준비
-
-- APMS는 Academy OS 안에 재구현하지 않고 기존 바닐라 JS 하위 앱으로 유지하는 방향 문서화
-- Academy OS는 로그인, 학원 선택, 멤버십, 권한, 공통 운영층 담당으로 정리
-- APMS는 로그인 후 APMS 진입 버튼으로 들어가는 독립 실행 하위 앱 방향으로 정리
-- 씨매쓰 초등과 EIE 영어학원은 Academy OS 내부 모듈 방향으로 합류시키는 구조 문서화
-- 실제 세션 브릿지, 새 메뉴, 새 UI 구현은 하지 않음
+- 시간표 draft 충돌 상세 모달에서 취소 시 직전 충돌 확인/시간표 모달 단계로 복귀하도록 보강 완료
+- 기존 충돌 상세 UI, 학생/선생님/교실 분리 표시, 운영 예외 가능 문구 유지 완료
 
 ### 보존 확인
 
+- 기존 문구·버튼명·화면명 임의 변경 없음
 - 학생 포털 미수정
 - 플래너 미수정
 - 숙제 사진 미수정
 - OMR/QR/시험지/아카이브 미수정
-- Worker route 미수정
-- schema/migration 미수정
-- 원장/관리자 대시보드 새 기능 노출 없음
-- 수납·출납 UI 새 노출 없음
-- 기존 문구·버튼명·화면명 임의 변경 없음
+- Worker/schema/migration 미수정
+- API 호출 추가 없음
+- 원장/관리자 새 기능 노출 없음
 
 ## 3. 실행 결과
 
-실행한 명령:
-
-- `node --check /mnt/data/work_apms_patch/student.js`
-- `node --check /mnt/data/work_apms_patch/timetable.js`
-- `node --check /mnt/data/work_apms_patch/index.js`
-- `node --check /mnt/data/work_apms_patch/parent-foundation.js`
-- `rg -n "parent-foundation/messages|ensureStudentParentMessageLogsLoaded|messagesLoadedAt|messageInFlight|message_logs|detail-data" /mnt/data/work_apms_patch/student.js /mnt/data/work_apms_patch/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md /mnt/data/work_apms_patch/INITIAL_DATA_SPLIT_ANALYSIS.md`
-
-검증 판정:
-
-- `student.js` PASS
-- `timetable.js` PASS
-- `index.js` PASS
-- `parent-foundation.js` PASS
-- 검색 검증 PASS
-
-실행하지 않은 검증:
-
-- 운영 API smoke test는 수행하지 않음
-- 브라우저 실기 확인은 사용자 직접 확인 항목으로 남김
-- Worker deploy는 수행하지 않음
+- `node --check apmath/js/ui.js` PASS
+- `node --check apmath/js/student.js` PASS
+- `node --check apmath/js/timetable.js` PASS
 
 ## 4. 결과 요약
 
-학생 상세 상담기록 탭에서 보호자 연락처/수신동의 로딩과 연락 이력 로딩을 분리했다. 이제 `message_logs`는 상담기록 탭 진입 시 자동으로 가져오지 않고, `연락 이력 보기` 버튼을 눌렀을 때만 별도 lazy loader로 불러온다. 학생 상태/반 이동 이력과 시간표 충돌 상세 UI는 기존 모달 기반 숨김 노출 원칙을 유지했고, Academy OS와 APMS 통합 방향은 문서에만 정리했다.
+APMS 공통 모달에 직전 단계 stack을 추가해 하위 모달에서 `취소`를 눌렀을 때 큰 화면으로 튀지 않고 직전 모달로 돌아가도록 보강했다. 학생 상세의 연락 설정/연락 이력/상태 변경 이력/반 이동 이력/상담 관련 서브모달과 시간표 충돌 상세 모달에 해당 흐름을 연결했다. 기존 `showModal()` 호출 방식은 보존하고, 필요한 곳만 `showModalStep()` / `replaceModalStep()`로 전환했다.
 
 ## 5. 잘못한 점 / 위험했던 점 / 보존한 점
 
 - 잘못한 점: 없음
-- 위험했던 점: 연락 이력 lazy load를 분리하면서 기존 연락 이력 버튼이 사라지거나, 서브 모달이 loader 완료 시 덮어써질 위험이 있었다. message 전용 상태, 기존 `shouldRefreshCurrentStudentCnsTab()` 방어, `isStudentDetailSubModal()` await 이후 가드를 함께 사용해 탭/서브 모달 덮어쓰기 위험을 줄였다.
-- 보존한 점: 기존 학생 상세, 보호자 연락처, 연락 설정, 상담기록, 시간표 충돌 상세, 학생 포털, OMR/QR, 플래너, 숙제 사진, Worker/schema/migration을 보존했다.
+- 위험했던 점: 공통 `closeModal()` 변경이 기존 저장 완료/강제 닫기 흐름에 영향을 줄 수 있었으므로 `closeModal(true)`는 stack을 비우고 기존처럼 닫도록 분리했다.
+- 보존한 점: 기존 APMS 기능, 학생 상세 탭, 시간표 충돌 상세 UI, 문구, 버튼명, Worker/API/DB 흐름을 보존했다.
 
-## 6. 배포/운영 필요 사항
+## 6. 사용자 직접 확인 필요
 
-- Worker deploy 필요 여부: 불필요
-- D1 migration 필요 여부: 불필요
-- 프론트 정적 배포/GitHub Pages 반영 필요 여부: 필요
-- 브라우저 확인 필요 항목:
-  - 학생 상세 → 상담기록 탭 진입
-  - 보호자 연락처 표시
-  - 연락 설정 모달
-  - 연락 이력 보기 클릭 시 연락 이력 lazy load
-  - 연락 이력 없음/오류 상태 표시
-  - 상태 변경 이력 / 반 이동 이력 모달
-  - 시간표 충돌 상세 보기
-- git commit/push: 사용자 확인 후 직접 실행
+- 학생 상세 → 상담기록 탭 → 상태 변경 이력 → 취소 시 상담기록 탭 복귀
+- 학생 상세 → 상담기록 탭 → 반 이동 이력 → 취소 시 상담기록 탭 복귀
+- 학생 상세 → 상담기록 탭 → 연락 설정 → 취소 시 상담기록 탭 복귀
+- 학생 상세 → 상담기록 탭 → 연락 이력 보기 → 취소 시 상담기록 탭 복귀
+- 학생 상세 → 상담기록 탭 → 상담 기록 추가/수정 → 취소 시 학생 상세로 복귀
+- 시간표 충돌 확인 → 상세 보기 → 취소 시 직전 단계 복귀
+- 저장 완료 버튼들은 기존처럼 정상 닫기/갱신되는지 확인
 
-## 7. 다음 단계 추천
+## 7. 배포/운영 필요 사항
 
-- 브라우저 확인 후 정상일 경우 커밋/푸시
-- 이후 실제 Academy OS → APMS 진입 브릿지는 별도 설계/작업으로 분리
+- Worker deploy 필요 없음
+- D1 migration 필요 없음
+- 프론트 정적 배포 또는 GitHub Pages push 필요
+- git commit/push는 사용자 직접 실행
