@@ -159,6 +159,20 @@ function getStudentDetailLazyRows(studentId, key) {
     return Array.isArray(entry?.[key]) ? entry[key] : [];
 }
 
+function setStudentDetailSubModal(type = '', studentId = '') {
+    if (!state.ui) state.ui = {};
+    state.ui.currentStudentDetailSubModal = type ? { type, studentId: String(studentId || '') } : null;
+}
+
+function shouldRefreshCurrentStudentCnsTab(studentId) {
+    if (!state.ui) return false;
+    const key = String(studentId || '');
+    const subModal = state.ui.currentStudentDetailSubModal || null;
+    return state.ui.currentStudentDetailId === key &&
+        state.ui.currentStudentDetailTab === 'cns' &&
+        !(subModal && String(subModal.studentId || '') === key);
+}
+
 async function ensureStudentDetailLazyData(studentId, options = {}) {
     const key = String(studentId || '').trim();
     if (!key) return getStudentDetailLazyState(key);
@@ -191,7 +205,7 @@ async function ensureStudentDetailLazyData(studentId, options = {}) {
         .finally(() => {
             entry.loading = false;
             entry.inFlight = null;
-            if (state.ui.currentStudentDetailId === key && state.ui.currentStudentDetailTab === 'cns') {
+            if (shouldRefreshCurrentStudentCnsTab(key)) {
                 renderStudentDetailTab(key, 'cns');
             }
         });
@@ -234,6 +248,111 @@ function getStudentParentContactBundle(sid) {
         loading: !!entry.loading,
         error: entry.error || ''
     };
+}
+
+
+function getStudentStatusHistoryRows(sid) {
+    return [...getStudentDetailLazyRows(sid, 'student_status_history')]
+        .sort((a, b) => {
+            const changedDiff = String(b?.changed_at || '').localeCompare(String(a?.changed_at || ''));
+            if (changedDiff !== 0) return changedDiff;
+            return String(b?.id || '').localeCompare(String(a?.id || ''));
+        });
+}
+
+function getStudentClassTransferHistoryRows(sid) {
+    return [...getStudentDetailLazyRows(sid, 'class_transfer_history')]
+        .sort((a, b) => {
+            const changedDiff = String(b?.changed_at || '').localeCompare(String(a?.changed_at || ''));
+            if (changedDiff !== 0) return changedDiff;
+            return String(b?.id || '').localeCompare(String(a?.id || ''));
+        });
+}
+
+function formatStudentFoundationHistoryDate(row) {
+    return String(row?.changed_at || row?.created_at || row?.updated_at || '').trim() || '시각 없음';
+}
+
+function renderStudentOperationHistorySection(sid) {
+    const lazy = getStudentDetailLazyState(sid);
+    const statusRows = getStudentStatusHistoryRows(sid);
+    const transferRows = getStudentClassTransferHistoryRows(sid);
+    return `
+        <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+                <div>
+                    <div style="font-size:16px; font-weight:700; color:var(--text); line-height:1.3;">학생 이력</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5; margin-top:3px;">상태 변경 ${statusRows.length}건 · 반 이동 ${transferRows.length}건</div>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn" style="min-height:34px; padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="openStudentStatusHistoryModal('${sid}')">상태 변경 이력</button>
+                    <button class="btn" style="min-height:34px; padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px;" onclick="openStudentClassTransferHistoryModal('${sid}')">반 이동 이력</button>
+                </div>
+            </div>
+            ${lazy.loading ? '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5;">학생 이력 데이터를 불러오는 중입니다.</div>' : ''}
+            ${lazy.error ? '<div style="font-size:12px; color:var(--warning); font-weight:700; line-height:1.5;">학생 이력 데이터를 다시 확인해 주세요.</div>' : ''}
+        </div>
+    `;
+}
+
+function renderStudentStatusHistoryModalHtml(sid) {
+    const rows = getStudentStatusHistoryRows(sid);
+    return `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            ${rows.length ? rows.map(row => `
+                <div class="card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
+                    <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
+                        <div style="font-size:13px; color:var(--text); font-weight:800; line-height:1.5;">${apEscapeHtml(row.old_status || '이전 상태')} → ${apEscapeHtml(row.new_status || '상태 확인')}</div>
+                        <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5; white-space:nowrap;">${apEscapeHtml(formatStudentFoundationHistoryDate(row))}</div>
+                    </div>
+                    ${row.reason ? `<div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(row.reason)}</div>` : '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.6;">사유 기록 없음</div>'}
+                    ${row.changed_by ? `<div style="margin-top:8px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">처리자 ${apEscapeHtml(row.changed_by)}</div>` : ''}
+                </div>
+            `).join('') : '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">상태 변경 이력이 없습니다.</div>'}
+        </div>
+    `;
+}
+
+function renderStudentClassTransferHistoryModalHtml(sid) {
+    const rows = getStudentClassTransferHistoryRows(sid);
+    return `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            ${rows.length ? rows.map(row => {
+                const fromClass = row.from_class_name || row.from_class_id || '이전 반 없음';
+                const toClass = row.to_class_name || row.to_class_id || '이동 반 확인';
+                return `
+                    <div class="card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface);">
+                        <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
+                            <div style="font-size:13px; color:var(--text); font-weight:800; line-height:1.5;">${apEscapeHtml(fromClass)} → ${apEscapeHtml(toClass)}</div>
+                            <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5; white-space:nowrap;">${apEscapeHtml(formatStudentFoundationHistoryDate(row))}</div>
+                        </div>
+                        ${row.reason ? `<div style="font-size:12px; color:var(--text); font-weight:700; line-height:1.6; white-space:pre-wrap;">${apEscapeHtml(row.reason)}</div>` : '<div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.6;">사유 기록 없음</div>'}
+                        ${row.changed_by ? `<div style="margin-top:8px; font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5;">처리자 ${apEscapeHtml(row.changed_by)}</div>` : ''}
+                    </div>
+                `;
+            }).join('') : '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">반 이동 이력이 없습니다.</div>'}
+        </div>
+    `;
+}
+
+async function openStudentStatusHistoryModal(sid) {
+    setStudentDetailSubModal('status-history', sid);
+    const lazy = getStudentDetailLazyState(sid);
+    if (!lazy.loadedAt) {
+        showModal('상태 변경 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
+        await ensureStudentDetailLazyData(sid);
+    }
+    showModal('상태 변경 이력', renderStudentStatusHistoryModalHtml(sid));
+}
+
+async function openStudentClassTransferHistoryModal(sid) {
+    setStudentDetailSubModal('class-transfer-history', sid);
+    const lazy = getStudentDetailLazyState(sid);
+    if (!lazy.loadedAt) {
+        showModal('반 이동 이력', '<div style="padding:24px 8px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; line-height:1.6;">학생 이력 데이터를 불러오는 중입니다.</div>');
+        await ensureStudentDetailLazyData(sid);
+    }
+    showModal('반 이동 이력', renderStudentClassTransferHistoryModalHtml(sid));
 }
 
 async function ensureStudentParentContactDataLoaded(sid, options = {}) {
@@ -368,6 +487,7 @@ function renderParentMessageHistoryRows(rows = []) {
 }
 
 function openParentConsentModal(sid, contactId) {
+    setStudentDetailSubModal('parent-consent', sid);
     const bundle = getStudentParentContactBundle(sid);
     const contact = (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''));
     if (!contact) {
@@ -426,6 +546,7 @@ function openParentConsentModal(sid, contactId) {
 }
 
 function openParentMessageHistoryModal(sid, contactId = '') {
+    setStudentDetailSubModal('parent-message-history', sid);
     const bundle = getStudentParentContactBundle(sid);
     const contact = contactId
         ? (bundle.contacts || []).find(row => String(row?.id || '') === String(contactId || ''))
@@ -598,6 +719,7 @@ function renderConsultationThreadSummaryModal() {
 }
 
 async function openConsultationThreadSummaryModal(sid) {
+    setStudentDetailSubModal('consultation-thread-summary', sid);
     await ensureStudentConsultationsLoaded(sid);
     const rows = getStudentConsultationsFromState(sid);
     resetConsultationThreadAiUiState(sid);
@@ -801,6 +923,7 @@ function renderStudentDetailTab(sid, tab) {
     if (!state.ui) state.ui = {};
     state.ui.currentStudentDetailId = String(sid);
     state.ui.currentStudentDetailTab = tab;
+    setStudentDetailSubModal('', sid);
     const s = state.db.students.find(st => st.id === sid);
     const mIds = state.db.class_students.find(m => String(m.student_id) === String(sid));
     const cls = state.db.classes.find(c => String(c.id) === String(mIds?.class_id));
@@ -975,6 +1098,7 @@ function renderCnsTab(sid) {
             <div style="max-height: 450px; overflow-y: auto; padding-right: 4px;">
                 ${cnsCards || '<div style="text-align: center; padding: 40px; color: var(--secondary); font-size: 13px; font-weight: 700;">상담 기록이 없습니다.</div>'}
             </div>
+            ${renderStudentOperationHistorySection(sid)}
             ${renderParentContactSection(sid)}
         </div>
     `;
@@ -1075,6 +1199,7 @@ function openReportPreview(sid) {
 }
 
 function openAddParentContactModal(sid) {
+    setStudentDetailSubModal('parent-contact-add', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     showModal('보호자 연락처 추가', `
         <div style="display:flex; flex-direction:column; gap:12px;">
@@ -1118,6 +1243,7 @@ async function handleSaveParentContact(sid) {
 }
 
 function openEditParentContactModal(sid, contactId) {
+    setStudentDetailSubModal('parent-contact-edit', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     const contact = getStudentParentContactsFromState(sid).find(row => String(row.id) === String(contactId));
     if (!contact) return toast('보호자 연락처를 찾을 수 없습니다.', 'warn');
@@ -1222,6 +1348,7 @@ async function toggleParentConsent(sid, contactId, consentType, nextValue, retur
  * 기존 기능 보존 및 규격화 (CRUD Flows)
  */
 function openAddConsultationModal(sid) {
+    setStudentDetailSubModal('consultation-add', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     resetConsultationAiUiState('add', sid, '');
     const todayStr = new Date().toLocaleDateString('sv-SE');
@@ -1333,6 +1460,7 @@ function applyConsultationAiNextAction(mode) {
 }
 
 function openEditConsultation(cid, sid) {
+    setStudentDetailSubModal('consultation-edit', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
     resetConsultationAiUiState('edit', sid, cid);
     const c = state.db.consultations.find(x => x.id === cid);

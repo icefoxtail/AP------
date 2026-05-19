@@ -414,3 +414,26 @@
 
 - 이번에 보류한 9개 key는 시간표 foundation, 학부모 연락, 학생 이력, 직원 권한과 연결되어 있어 별도 phase에서 화면별 의존성 검증 후 분리한다.
 - 다음 initial-data 축소는 `student_enrollments`, `class_time_slots`, `timetable_conflict_logs`, `timetable_conflict_overrides`, `parent_contacts`, `message_logs`, `student_status_history`, `class_transfer_history`, `staff_permissions`를 각각 별도 분석 대상으로 삼는다.
+
+## 18. 학생 상세 lazy data 실제 UI 연결 1차
+
+이번 작업에서는 이미 추가된 `GET /api/students/:id/detail-data`와 `state.ui.studentDetailLazyData`를 학생 상세 화면 안의 실제 확인 UI에 연결했다.
+
+### 연결 범위
+
+- `parent_contacts`는 기존 보호자 연락처 표시 흐름에서 lazy cache를 우선 참조한다.
+- `student_status_history`는 학생 상세 상담기록 탭 안의 `학생 이력` 영역에서 `상태 변경 이력` 모달로 확인한다.
+- `class_transfer_history`는 학생 상세 상담기록 탭 안의 `학생 이력` 영역에서 `반 이동 이력` 모달로 확인한다.
+- `message_logs`는 이번 UI 연결에서도 제외하며, 기존 연락 이력 모달 또는 별도 2차 lazy loader 후보로 유지한다.
+
+### 보존 원칙
+
+- `/api/initial-data` key를 추가하거나 되돌리지 않았다.
+- 학생 상세 밖의 원장/대시보드/관리 화면에 새 카드를 추가하지 않는다.
+- 이력은 기본 노출 대시보드가 아니라 학생 상세 상담기록 탭 내부의 버튼/모달 뒤에서만 확인한다.
+- 상태 변경/반 이동 이력은 read-only 확인용이며, 이 작업에서 수정/삭제/자동 처리 기능은 만들지 않는다.
+
+### 다음 후보
+
+- `message_logs`는 응답 크기와 개인정보 범위가 커질 수 있으므로 `/api/students/:id/detail-data`에 합치지 않는다.
+- 연락 이력은 필요 시 `/api/students/:id/messages` 또는 기존 parent-foundation/messages 기반 별도 lazy loader로 분리한다.
