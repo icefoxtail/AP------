@@ -1,0 +1,252 @@
+/* JS Archive Academy OS Design Alignment 0.5
+   JS아카이브를 Academy OS / APMS와 같은 제품군으로 보이게 하는 화면용 override layer.
+   시험지 본문, 보기, 해설, 출력물 CSS는 건드리지 않고 메인/엔진 껍데기 UI 톤만 정렬한다.
+*/
+
+:root {
+  --archive-accent: #007AFF;
+  --archive-accent-strong: #0066CC;
+  --archive-accent-soft: rgba(0, 122, 255, 0.08);
+  --archive-accent-ring: rgba(0, 122, 255, 0.20);
+
+  --archive-bg: #F2F2F7;
+  --archive-surface: #FFFFFF;
+  --archive-surface-soft: #F9F9FB;
+  --archive-border: rgba(0, 0, 0, 0.10);
+  --archive-border-soft: rgba(0, 0, 0, 0.06);
+  --archive-text: #1C1C1E;
+  --archive-text-soft: #6C6C70;
+
+  --archive-navy: #0B1220;
+  --archive-navy-2: #101828;
+  --archive-navy-3: #172033;
+
+  --archive-radius-sm: 12px;
+  --archive-radius-md: 16px;
+  --archive-radius-lg: 22px;
+  --archive-radius-xl: 28px;
+
+  --archive-shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --archive-shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+  --archive-shadow-lg: 0 24px 60px rgba(0,0,0,0.16);
+
+  /* archive/index.html 기존 변수와 연결 */
+  --navy: var(--archive-navy);
+  --navy-2: var(--archive-navy-2);
+  --navy-3: var(--archive-navy-3);
+  --navy-4: #1F2937;
+  --blue-main: var(--archive-accent);
+  --blue-strong: var(--archive-accent-strong);
+  --blue-light: #64A9FF;
+  --blue-pale: rgba(0, 122, 255, 0.14);
+  --blue-soft: rgba(0, 122, 255, 0.07);
+  --bg-soft: var(--archive-bg);
+  --card-bg: var(--archive-surface);
+  --card-active: #F7FBFF;
+  --card-border: var(--archive-border);
+  --card-border-hover: var(--archive-accent-ring);
+  --card-border-active: rgba(0, 122, 255, 0.42);
+  --text-main: var(--archive-text);
+  --text-sub: var(--archive-text-soft);
+  --text-weak: #8E8E93;
+  --badge-bg: rgba(0, 122, 255, 0.08);
+  --badge-text: #007AFF;
+  --badge-border: rgba(0, 122, 255, 0.16);
+  --shadow-card: var(--archive-shadow-sm);
+  --shadow-card-hover: 0 18px 44px rgba(0, 122, 255, 0.14);
+  --shadow-panel: var(--archive-shadow-lg);
+}
+
+html {
+  background: var(--archive-bg);
+}
+
+body {
+  color: var(--archive-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  background:
+    linear-gradient(180deg, rgba(11,18,32,0.96) 0%, rgba(16,24,40,0.94) 100%);
+  border-bottom-color: rgba(255,255,255,0.10);
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(0,122,255,0.20), transparent 24%),
+    radial-gradient(circle at 16% 22%, rgba(10,132,255,0.14), transparent 28%),
+    radial-gradient(circle at 50% 110%, rgba(0,122,255,0.10), transparent 32%),
+    linear-gradient(180deg, var(--archive-navy) 0%, var(--archive-navy-2) 54%, var(--archive-navy-3) 100%);
+}
+
+.gtab {
+  border-color: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.035);
+}
+
+.gtab:hover,
+.gtab.active {
+  background: rgba(255,255,255,0.13);
+  border-color: rgba(100,169,255,0.34);
+}
+
+.filter-band {
+  background: rgba(255,255,255,0.84);
+  border-bottom-color: var(--archive-border-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.fb-search input,
+.fb-sel,
+.fb-mixer,
+.fb-original-toggle,
+select,
+input,
+button {
+  font-family: 'Pretendard', sans-serif;
+}
+
+.fb-search input,
+.fb-sel {
+  border-color: var(--archive-border);
+  border-radius: var(--archive-radius-sm);
+  background: rgba(255,255,255,0.92);
+}
+
+.fb-search input:focus,
+.fb-sel:focus {
+  border-color: var(--archive-accent);
+  box-shadow: 0 0 0 4px var(--archive-accent-soft);
+}
+
+.fb-mixer,
+.fb-original-toggle {
+  border-radius: var(--archive-radius-sm);
+}
+
+.fb-mixer {
+  background: var(--archive-accent);
+  box-shadow: 0 10px 24px rgba(0,122,255,0.18);
+}
+
+.fb-mixer:hover {
+  background: var(--archive-accent-strong);
+  box-shadow: 0 16px 34px rgba(0,122,255,0.22);
+}
+
+.exam-card {
+  border-radius: var(--archive-radius-lg);
+  border-color: var(--archive-border);
+  box-shadow: var(--archive-shadow-sm);
+}
+
+.exam-card:hover {
+  border-color: var(--archive-accent-ring);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.exam-card.is-active {
+  border-color: var(--card-border-active);
+  box-shadow: 0 16px 36px rgba(0,122,255,0.14);
+}
+
+.card-head,
+.card-body,
+.card-footer {
+  border-color: var(--archive-border-soft);
+}
+
+.badge,
+.meta-badge,
+.card-badge {
+  border-color: var(--badge-border);
+}
+
+.modal-overlay {
+  background: rgba(2, 8, 23, 0.46);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.modal-box {
+  border-radius: var(--archive-radius-xl);
+  border-color: rgba(255,255,255,0.80);
+  box-shadow: var(--archive-shadow-lg);
+}
+
+.modal-box button,
+.modal-btn,
+button.primary {
+  border-radius: var(--archive-radius-sm);
+}
+
+.modal-box button:focus-visible,
+.mode-tab:focus-visible,
+.fb-mixer:focus-visible,
+.fb-original-toggle:focus-visible,
+.gtab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--archive-accent-soft);
+}
+
+/* engine.html / mixed_engine.html: 화면 조작바만 Academy OS 톤으로 정렬한다.
+   .page 내부 시험지 본문, 보기, 해설, 인쇄 CSS는 보존한다. */
+@media screen {
+  #mode-ctrl {
+    height: 58px;
+    background:
+      linear-gradient(180deg, rgba(11,18,32,0.96) 0%, rgba(16,24,40,0.94) 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 10px 28px rgba(2,8,23,0.22);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  #ctrl-title {
+    letter-spacing: -0.02em;
+  }
+
+  .mode-tabs {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 4px;
+  }
+
+  .mode-tab {
+    border-radius: 999px;
+    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+  }
+
+  .mode-tab:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.10);
+  }
+
+  .mode-tab.active {
+    background: #fff;
+    color: #111827;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  body {
+    background: var(--archive-bg);
+  }
+
+  #print-area {
+    background: var(--archive-bg);
+  }
+
+  .page {
+    box-shadow: 0 14px 42px rgba(2,8,23,0.12);
+  }
+}
+
+@media print {
+  #mode-ctrl {
+    display: none !important;
+  }
+}
