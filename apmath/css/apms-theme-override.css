@@ -435,3 +435,270 @@ button.btn-primary,
 .planner-month-cell.selected.today {
   box-shadow: inset 0 0 0 1.5px rgba(var(--primary-rgb), 0.40) !important;
 }
+
+/* APMS x Academy OS phase 2 visible hierarchy layer
+   화면 구조와 기능 흐름은 보존하고, 카드/섹션/표/포털/플래너의 체감 계층만 강화한다. */
+body {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(var(--primary-rgb), 0.075), transparent 30%),
+    linear-gradient(180deg, #F7F8FB 0%, var(--bg) 44%, var(--bg) 100%) !important;
+}
+body.dark {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(var(--primary-rgb), 0.16), transparent 32%),
+    linear-gradient(180deg, #15171C 0%, var(--bg) 45%, var(--bg) 100%) !important;
+}
+
+.ap-dashboard-shell,
+#ap-admin-dashboard,
+.student-shell,
+.planner-app,
+.planner-shell {
+  isolation: isolate;
+}
+
+.ap-dashboard-shortcuts,
+.ap-dashboard-tabbar,
+#ap-admin-dashboard .ap-admin-shortcuts {
+  padding: 6px !important;
+  gap: 8px !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,0.70) !important;
+  box-shadow: var(--shadow-sm) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+body.dark .ap-dashboard-shortcuts,
+body.dark .ap-dashboard-tabbar,
+body.dark #ap-admin-dashboard .ap-admin-shortcuts {
+  background: rgba(28,28,30,0.74) !important;
+}
+.ap-dashboard-shortcuts .btn,
+.ap-dashboard-tabbar .btn,
+#ap-admin-dashboard .ap-admin-shortcuts .btn {
+  border-radius: 14px !important;
+  background: var(--surface) !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+}
+.ap-dashboard-shortcuts .btn:hover,
+.ap-dashboard-tabbar .btn:hover,
+#ap-admin-dashboard .ap-admin-shortcuts .btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(var(--primary-rgb),0.18) !important;
+}
+.ap-dashboard-tabbar .btn[style*="var(--surface)"] {
+  color: var(--primary) !important;
+  box-shadow: 0 6px 16px rgba(var(--primary-rgb),0.12) !important;
+}
+
+#ap-admin-dashboard .ap-admin-section,
+.ap-dashboard-class-list,
+.portal-assignments-card,
+.student-profile-card,
+.planner-table-card,
+.exam-card,
+.learning-assist-card,
+.planner-coach-card,
+.mobile-assist-card {
+  border-radius: 22px !important;
+}
+#ap-admin-dashboard .ap-admin-section {
+  padding: 12px !important;
+  border: 1px solid var(--border-soft) !important;
+  background: rgba(255,255,255,0.56) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+body.dark #ap-admin-dashboard .ap-admin-section {
+  background: rgba(28,28,30,0.58) !important;
+}
+#ap-admin-dashboard .ap-admin-section-title,
+.ap-dashboard-section-head h3,
+.card-title,
+.planner-month-title,
+.planner-coach-title {
+  font-weight: 800 !important;
+  letter-spacing: -0.045em !important;
+}
+#ap-admin-dashboard .ap-admin-section-title::before,
+.ap-dashboard-section-head h3::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 99px;
+  background: var(--primary);
+  vertical-align: 2px;
+}
+.ap-admin-mini-metric,
+#ap-admin-dashboard .card,
+#ap-admin-dashboard .ap-admin-card,
+.dashboard-card,
+.stat-card,
+.portal-card,
+.portal-assignment-row,
+.omr-card,
+.assignment-card,
+.planner-table-card,
+.learning-assist-card,
+.exam-card,
+.planner-coach-card,
+.mobile-assist-card {
+  border-radius: 20px !important;
+  border-color: var(--border-soft) !important;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.055) !important;
+}
+body.dark .ap-admin-mini-metric,
+body.dark #ap-admin-dashboard .card,
+body.dark #ap-admin-dashboard .ap-admin-card,
+body.dark .dashboard-card,
+body.dark .stat-card,
+body.dark .portal-card,
+body.dark .portal-assignment-row,
+body.dark .omr-card,
+body.dark .assignment-card,
+body.dark .planner-table-card,
+body.dark .learning-assist-card,
+body.dark .exam-card,
+body.dark .planner-coach-card,
+body.dark .mobile-assist-card {
+  box-shadow: none !important;
+}
+.ap-admin-mini-metric:hover,
+.portal-assignment-row.is-clickable:hover,
+.portal-card:hover,
+.planner-table-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(var(--primary-rgb),0.18) !important;
+}
+.ap-admin-check-item {
+  border-radius: 16px !important;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.045) !important;
+}
+
+.cls-v4-wrap {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(var(--primary-rgb),0.075), transparent 28%),
+    linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%) !important;
+}
+.cls-v4-top,
+.cls-v4-tools {
+  box-shadow: 0 1px 0 var(--border-soft) !important;
+}
+.cls-v4-title-main {
+  font-weight: 800 !important;
+  letter-spacing: -0.045em !important;
+}
+.cls-v4-pill,
+.cls-v4-tool,
+.cls-v4-date-input,
+.cls-v4-date-reset {
+  min-height: 38px !important;
+}
+.cls-v4-board {
+  border-color: var(--border-soft) !important;
+  box-shadow: 0 10px 28px rgba(15,23,42,0.055) !important;
+}
+body.dark .cls-v4-board { box-shadow: none !important; }
+.cls-v4-board-head {
+  background: rgba(var(--primary-rgb),0.035) !important;
+}
+.cls-v4-row {
+  transition: background 160ms ease, transform 160ms ease;
+}
+.cls-v4-status:not(.tag) {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22) !important;
+}
+.cls-v4-empty,
+.empty,
+.empty-state {
+  border-radius: 20px !important;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%) !important;
+  border: 1px dashed rgba(var(--primary-rgb),0.16) !important;
+}
+
+.student-profile-card,
+.portal-assignments-card,
+.portal-card {
+  background: rgba(255,255,255,0.88) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+body.dark .student-profile-card,
+body.dark .portal-assignments-card,
+body.dark .portal-card {
+  background: rgba(28,28,30,0.88) !important;
+}
+.portal-mark {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 18px !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--primary-rgb),0.10) !important;
+}
+.portal-assignment-row {
+  padding: 14px !important;
+  background: var(--surface) !important;
+}
+.portal-assignment-meta {
+  gap: 7px !important;
+}
+
+.planner-table-card,
+.learning-assist-card,
+.exam-card,
+.planner-coach-card,
+.mobile-assist-card {
+  background: rgba(255,255,255,0.90) !important;
+  border: 1px solid var(--border-soft) !important;
+}
+body.dark .planner-table-card,
+body.dark .learning-assist-card,
+body.dark .exam-card,
+body.dark .planner-coach-card,
+body.dark .mobile-assist-card {
+  background: rgba(28,28,30,0.90) !important;
+}
+.planner-view-tabs {
+  padding: 6px !important;
+  border-radius: 18px !important;
+  border: 1px solid var(--border-soft) !important;
+  background: rgba(255,255,255,0.66) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.planner-view-tab {
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+}
+.planner-view-tab.active {
+  color: var(--primary) !important;
+  box-shadow: 0 8px 18px rgba(var(--primary-rgb),0.13) !important;
+}
+.planner-week-table th,
+.planner-month-ledger th {
+  background: rgba(var(--primary-rgb),0.035) !important;
+}
+.planner-week-table td,
+.planner-month-ledger td {
+  transition: background 160ms ease;
+}
+
+@media (max-width: 640px) {
+  .ap-dashboard-shortcuts,
+  .ap-dashboard-tabbar,
+  #ap-admin-dashboard .ap-admin-shortcuts {
+    border-radius: 16px !important;
+  }
+  #ap-admin-dashboard .ap-admin-section,
+  .portal-assignments-card,
+  .student-profile-card,
+  .planner-table-card,
+  .learning-assist-card,
+  .exam-card,
+  .planner-coach-card,
+  .mobile-assist-card {
+    border-radius: 20px !important;
+  }
+  .portal-assignment-row { padding: 13px !important; }
+}
