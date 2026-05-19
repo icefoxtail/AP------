@@ -2,30 +2,21 @@
 
 ## 1. 생성/수정 파일
 
-- 신규/수정: `apmath/css/apms-theme-override.css`
-- 수정: `apmath/index.html`
+- 수정: `apmath/css/apms-theme-override.css`
 - 수정: `apmath/js/dashboard.js`
 - 수정: `apmath/js/classroom.js`
-- 수정: `apmath/student/index.html`
-- 확인/유지: `apmath/planner/index.html`
+- 수정: `CODEX_RESULT.md`
 
 ## 2. 구현 완료 또는 확인 완료
 
-- Academy OS 디자인 기준과 맞추기 위한 APMS 1차 디자인 토큰 override 보강 완료
-- 기존 CSS 원본을 직접 대체하지 않고 `apms-theme-override.css` 후순위 로딩 방식 유지
-- APMS 본체 `index.html`에 override CSS 링크 유지 및 경로 정리 완료
-- 학생 포털 `student/index.html`에 override CSS 링크 추가 완료
-- 플래너 `planner/index.html`의 override CSS 링크 유지 확인 완료
-- dashboard.js 인라인 색상 중 APMS 구형 blue rgba 값을 `var(--primary-soft)` 및 통합 토큰 기반 값으로 정리 완료
-- dashboard.js의 `font-weight:650` 계열을 700 기준으로 정리 완료
-- dashboard.js의 일부 안내 박스를 `ap-soft-note` 클래스로 분리해 카드 계층감 기준에 맞춤
-- classroom.js의 `cls-v4-status` radius를 12px 기준으로 보정 완료
-- classroom.js의 tool/status/chip 색상 계열을 primary/success/error/warning 토큰 기반으로 정리 완료
-- `cls-v4-tool` pill radius 999px 유지 완료
-- classroom.js DOM 구조, grid-template-columns, 이벤트 핸들러, renderClass 흐름 변경 없음
-- 학생 포털 OMR 제출/재제출 차단/시험지 직접 열기 금지 로직 변경 없음
-- 플래너 로그인/PIN/저장/주간·월간 레이아웃 로직 변경 없음
-- report.js / archive / Worker / DB / migration 수정 없음
+- APMS Academy OS 디자인 토큰 2차 체감형 계층 보정 완료
+- 대시보드 단축 버튼/탭/학급관리 영역에 class만 추가하고 문구, onclick, 조건 로직, 데이터 계산, 섹션 순서는 보존
+- 원장 대시보드 섹션, 미니 지표, 확인 카드, 카드 hover 계층감을 override CSS로 보정
+- 반 화면 `injectClassroomStyles()` 안에서 배경, toolbar blur, board shadow, row hover, section title 계층만 보정
+- `renderClass`, DOM 이벤트, grid-template-columns, 학생/출결/상담/클리닉/플래너/교재 흐름은 변경하지 않음
+- 학생 포털/플래너는 기존 HTML/JS 로직을 수정하지 않고 `apms-theme-override.css`에서 카드/표/탭/empty state 시각 계층만 보정
+- `report.js`, `archive`, Worker/API/DB, migration은 수정하지 않음
+- 기존 문구/버튼명/화면명은 변경하지 않음
 
 ## 3. 실행 결과
 
@@ -34,11 +25,11 @@
 
 ## 4. 결과 요약
 
-- APMS 본체, 학생 포털, 플래너에 Academy OS와 같은 색감·radius·카드·버튼·숫자 표현 기준을 1차로 맞춤
-- 기능 변경 없이 시각 계층과 디자인 토큰만 보정함
+- 1차 토큰 통합 위에 실제 체감이 나는 카드 그림자, 섹션 배경, active tab, hover, portal/planner card hierarchy를 추가함
+- 기능 변경 없이 Academy OS와 APMS의 표면 질감과 카드 계층을 더 가깝게 맞춤
 
 ## 5. 다음 조치
 
-1. 검수 후 PASS 시 적용/검증/배포 PowerShell 제공
-2. 브라우저에서 대시보드, 반 화면, 학생 포털, 플래너 화면을 직접 확인
-3. git add/commit/push는 사용자가 직접 확인 후 진행
+1. 검수용 zip으로 기능 보존 및 디자인 범위 검수
+2. 검수 PASS 후에만 적용/검증/배포 PowerShell 제공
+3. git add/commit/push는 수행하지 않음
