@@ -3,60 +3,45 @@
 ## 1. 생성/수정 파일
 
 - `apmath/js/timetable.js`
-- `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`
 - `CODEX_RESULT.md`
 
 ## 2. 구현 완료 또는 확인 완료
 
-### 시간표 헤더 정리
+### 시간표 개편안 반 표시 보정
 
-- 시간표 상단을 최상단 한 줄 중심으로 정리했다.
-- 운영 시간표 화면에서 별도 `2026년 운영 중` 줄을 제거했다.
-- 개편안 진입 버튼은 오른쪽 끝의 작고 조용한 보조 버튼 `개편시간표`로 정리했다.
-- 개편안 화면의 `운영 시간표로 이동`, `충돌 확인`도 오른쪽 끝의 작은 보조 버튼으로 정리했다.
-- 충돌 확인 결과/적용 예정일 경고는 필요한 경우에만 아래쪽에 작게 표시되도록 유지했다.
-- 기존 확정 문구는 추가로 임의 변경하지 않았다.
-
-### 원장/admin 시간표 전체 보기 고정
-
-- `isTimetableAdminMode()` 판정을 보강했다.
-- admin/owner/director/master/viewScope admin/원장 이름 계열을 원장 모드로 인식하도록 했다.
-- 원장/admin 계정에서는 `timetableMyOnly` 상태를 무조건 false로 고정한다.
-- 원장/admin 계정에서는 `내 반 보기` 버튼을 표시하지 않는다.
-- 원장/admin 시간표는 항상 전체 선생님/전체 반 기준으로 렌더링된다.
-- 선생님 계정의 기존 `전체 보기` / `내 반 보기` 동작은 변경하지 않았다.
+- 2027 개편안 draft 화면에서 `timetable_version_slots`가 없는 반이 숨겨지는 문제를 보정했다.
+- draft slot이 없는 반도 기존 `time_label` / `schedule_days` 기반 fallback placement가 있으면 시간표에 표시되도록 했다.
+- 강제 seed 또는 legacy class 데이터에 `classes.time_label`은 있으나 `timetable_version_slots`가 아직 없는 경우에도 전체 선생님 열 안에서 반 카드가 보이도록 했다.
+- 원장/admin의 전체 선생님 보기 기준은 유지했다.
+- 선생님 계정의 기존 전체 보기/내 반 보기 로직은 변경하지 않았다.
+- 시간표 헤더/문구는 기존 확정 문구를 유지했다.
 
 ### 보존 확인
 
-- 시간표 문구 외 다른 UI 문구 임의 변경 없음
-- 선생님 계정 시간표 보기 로직 변경 없음
-- 반 이동/전반/충돌 확인 흐름 보존
+- Worker route 수정 없음
+- schema/migration 수정 없음
+- 시간표 버전/충돌 API 수정 없음
 - 학생 포털/플래너/숙제사진/OMR/QR/아카이브 미수정
-- Worker/schema/migration 미수정
-- API 변경 없음
+- 선생님 계정 시간표 보기 로직 미수정
+- 원장/admin은 전체 선생님/전체 반 기준 유지
 
 ## 3. 실행 결과
 
-- `node --check apmath/js/timetable.js`
-  - PASS
+- `node --check apmath/js/timetable.js` PASS
 
 ## 4. 결과 요약
 
-시간표 화면의 개편안 버튼을 우측 끝 작은 보조 버튼으로 정리했고, 운영 시간표 화면의 불필요한 2줄 안내를 제거했다. 원장/admin 계정에서 `내 반 보기` 상태가 남아 선생님 1명만 보이던 문제를 막기 위해 원장 모드는 항상 전체 선생님 기준으로 렌더링되도록 보강했다.
+개편안 화면에서 일부 반만 보이던 원인은 선생님 열 문제가 아니라 draft slot이 없는 반을 draft 화면에서 표시하지 않던 fallback 차단 로직이었다. `getTimetablePlacementRows()`에서 draft라고 해서 fallback placement를 막지 않도록 보정하여, seed/legacy 기반 시간표 반도 화면에 표시되게 했다.
 
 ## 5. 잘못한 점 / 위험했던 점 / 보존한 점
 
-- 잘못한 점: 이전 패치에서 선생님 열 잘림 문제를 가로 스크롤 중심으로만 보고, 원장/admin 필터 로직 문제를 충분히 잡지 못했다.
-- 위험했던 점: `state.auth.role === 'admin'`만으로 원장 판정을 하면 실제 원장 계정 상태에 따라 `내 반 보기` 필터가 남을 수 있었다.
-- 보존한 점: 선생님 계정의 기존 시간표 보기 동작, 전체 보기/내 반 보기 흐름, 시간표 이동/전반/충돌 확인 기능을 보존했다.
+- 잘못한 점: 이전 검수에서 가로 스크롤 문제와 데이터 매칭 문제를 분리하지 못해 원인을 한 번에 확정하지 못했다.
+- 위험했던 점: draft slot이 없는 반까지 보이게 하면 충돌 scan-preview는 여전히 실제 version slot 기준으로만 판단하므로, 운영 전 slot 저장/충돌 확인 절차가 필요하다.
+- 보존한 점: 선생님 계정 로직, 원장 전체 보기, 기존 문구, Worker/DB/schema/migration을 변경하지 않았다.
 
 ## 6. 배포/운영 필요 사항
 
-- Worker deploy 필요 여부: 불필요
-- D1 migration 필요 여부: 불필요
-- GitHub Pages 정적 배포: git push 후 반영 확인
-- 브라우저 확인 필요:
-  - 원장/admin 시간표에서 모든 선생님 열이 보이는지
-  - 원장/admin 화면에 내 반 보기 버튼이 없는지
-  - 우측 끝 `개편시간표` 버튼이 작고 조용하게 보이는지
-  - 선생님 계정 시간표 기존 동작이 보존되는지
+- Worker deploy 필요 없음
+- D1 migration 필요 없음
+- GitHub Pages 반영을 위한 git commit/push 필요
+- 브라우저에서 2027 개편안 화면의 전체 반 표시 여부 확인 필요
