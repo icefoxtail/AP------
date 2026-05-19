@@ -32,18 +32,18 @@ function injectClassroomStyles() {
         .cls-v4-summary { display:flex; gap:5px; justify-content:flex-end; flex:0 0 auto; }
         .cls-v4-pill { height:25px; display:inline-flex; align-items:center; justify-content:center; gap:4px; padding:0 8px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:700; white-space:nowrap; }
         .cls-v4-pill b { color:var(--text); font-weight:700; }
-        .cls-v4-pill.warn { color:var(--warning); background:rgba(255,165,2,0.08); border-color:rgba(255,165,2,0.18); }
+        .cls-v4-pill.warn { color:var(--warning); background:rgba(var(--warning-rgb),0.10); border-color:rgba(var(--warning-rgb),0.20); }
         .cls-v4-tools { display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; touch-action:pan-x; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--surface); }
         .cls-v4-tools::-webkit-scrollbar { display:none; }
         .cls-v4-tool { flex:0 0 auto; min-height:36px; padding:0 13px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; box-shadow:none; }
-        .cls-v4-tool.primary, .cls-v4-tool.blue { background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); color:var(--primary); }
-        .cls-v4-tool.orange { background:rgba(255,165,2,0.10); border-color:rgba(255,165,2,0.20); color:var(--warning); }
+        .cls-v4-tool.primary, .cls-v4-tool.blue { background:var(--primary-soft); border-color:rgba(var(--primary-rgb),0.18); color:var(--primary); }
+        .cls-v4-tool.orange { background:rgba(var(--warning-rgb),0.12); border-color:rgba(var(--warning-rgb),0.22); color:var(--warning); }
         .cls-v4-tool.purple, .cls-v4-tool.highlight { background:rgba(124,58,237,0.07); border-color:rgba(124,58,237,0.16); color:#7c3aed; }
-        .cls-v4-tool.red { background:rgba(255,71,87,0.08); border-color:rgba(255,71,87,0.18); color:var(--error); }
-        .cls-v4-tool.green { background:rgba(0,208,132,0.08); border-color:rgba(0,208,132,0.16); color:var(--success); }
+        .cls-v4-tool.red { background:rgba(var(--error-rgb),0.10); border-color:rgba(var(--error-rgb),0.20); color:var(--error); }
+        .cls-v4-tool.green { background:rgba(var(--success-rgb),0.10); border-color:rgba(var(--success-rgb),0.18); color:var(--success); }
         .cls-v4-date-input { flex:0 0 auto; width:138px; min-height:36px; height:36px; padding:0 10px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; font-family:inherit; box-shadow:none; }
         .cls-v4-date-input::-webkit-calendar-picker-indicator { opacity:0.75; cursor:pointer; }
-        .cls-v4-date-reset { flex:0 0 auto; min-height:36px; height:36px; padding:0 12px; border-radius:999px; border:1px solid rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); color:var(--primary); font-size:12px; font-weight:700; box-shadow:none; }
+        .cls-v4-date-reset { flex:0 0 auto; min-height:36px; height:36px; padding:0 12px; border-radius:999px; border:1px solid rgba(var(--primary-rgb),0.18); background:var(--primary-soft); color:var(--primary); font-size:12px; font-weight:700; box-shadow:none; }
         .cls-v4-section { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px 7px; }
         .cls-v4-section h3 { margin:0; font-size:14px; font-weight:700; color:var(--text); letter-spacing:-0.2px; }
         .cls-v4-section span { font-size:11px; font-weight:700; color:var(--secondary); }
@@ -57,10 +57,10 @@ function injectClassroomStyles() {
         .cls-v4-student { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:700; color:var(--text); line-height:1.2; }
         .cls-v4-meta-mobile { display:none; }
         .cls-v4-badges { display:contents; }
-        .cls-v4-status { width:42px; min-width:42px; height:36px; min-height:36px; padding:0; border-radius:10px; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none; }
+        .cls-v4-status { width:42px; min-width:42px; height:36px; min-height:36px; padding:0; border-radius:12px; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none; }
         .cls-v4-status.hw { width:42px; min-width:42px; }
         .cls-v4-status.tag { background:transparent; color:var(--secondary); border:1px solid var(--border); font-size:14px; }
-        .cls-v4-status.tag.on { background:rgba(26,92,255,0.10); color:var(--primary); border-color:rgba(26,92,255,0.18); }
+        .cls-v4-status.tag.on { background:var(--primary-soft); color:var(--primary); border-color:rgba(var(--primary-rgb),0.20); }
         .cls-v4-status.consult.on { background:rgba(124,58,237,0.10); color:#7c3aed; border-color:rgba(124,58,237,0.18); }
         .cls-v4-actions { display:none; }
         .cls-v4-pad-btns { display:none; gap:6px; }
@@ -168,16 +168,16 @@ function getAttendanceStatusLabel(status, isClassDay = true) {
 function getAttendanceStatusStyle(status, isClassDay = true) {
     const cur = getAttendanceDisplayStatus(status, isClassDay);
     if (cur === '등원') {
-        return 'background: rgba(0,208,132,0.08); color: var(--success); border: 1px solid rgba(0,208,132,0.15);';
+        return 'background: rgba(var(--success-rgb),0.10); color: var(--success); border: 1px solid rgba(0,208,132,0.15);';
     }
     if (cur === '결석') {
-        return 'background: rgba(255,71,87,0.08); color: var(--error); font-weight: 700; border: 1px solid rgba(255,71,87,0.15);';
+        return 'background: rgba(var(--error-rgb),0.10); color: var(--error); font-weight: 700; border: 1px solid rgba(var(--error-rgb),0.18);';
     }
     if (cur === '지각') {
-        return 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(255,165,2,0.18);';
+        return 'background: rgba(var(--warning-rgb),0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(var(--warning-rgb),0.20);';
     }
     if (cur === '보강') {
-        return 'background: rgba(26,92,255,0.08); color: var(--primary); font-weight: 700; border: 1px solid rgba(26,92,255,0.15);';
+        return 'background: var(--primary-soft); color: var(--primary); font-weight: 700; border: 1px solid rgba(var(--primary-rgb),0.16);';
     }
     if (cur === '상담') {
         return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 700; border: 1px solid rgba(124,58,237,0.18);';
@@ -213,10 +213,10 @@ function getHomeworkStatusLabel(status, isClassDay = true) {
 function getHomeworkStatusStyle(status, isClassDay = true) {
     const cur = getHomeworkDisplayStatus(status, isClassDay);
     if (cur === '완료') {
-        return 'background: rgba(26,92,255,0.08); color: var(--primary); border: 1px solid rgba(26,92,255,0.15);';
+        return 'background: var(--primary-soft); color: var(--primary); border: 1px solid rgba(var(--primary-rgb),0.16);';
     }
     if (cur === '미완료') {
-        return 'background: rgba(255,165,2,0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(255,165,2,0.15);';
+        return 'background: rgba(var(--warning-rgb),0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(255,165,2,0.15);';
     }
     if (cur === '공란') {
         return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
@@ -726,7 +726,7 @@ async function openHomeworkPhotoSubmissionFilesModal(submissionId) {
                                     <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(file.file_name || `파일 ${index + 1}`)}</div>
                                     <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(file.file_type || '타입 미기록')} · ${apEscapeHtml(formatHomeworkPhotoFileSize(file.file_size))}</div>
                                 </div>
-                                <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); color:var(--primary); border:none;" onclick="window.open('${safeUrl}', '_blank', 'noopener')">열기</button>
+                                <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="window.open('${safeUrl}', '_blank', 'noopener')">열기</button>
                             </div>
                         </div>
                     `;
@@ -818,9 +818,9 @@ async function openHomeworkPhotoAssignmentList(classId) {
                         <div style="font-size:12px; font-weight:800; color:${a.status === 'closed' ? 'var(--secondary)' : 'var(--primary)'};">${a.status === 'closed' ? '마감' : '진행'}</div>
                     </div>
                     <div style="display:flex; gap:8px; margin-top:12px;">
-                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
-                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="loadHomeworkPhotoLinksModal('${a.id}')">링크</button>
-                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:10px; background:rgba(232,65,79,0.08); border:none; color:var(--error);" onclick="deleteHomeworkPhotoAssignment('${a.id}', '${classId}')">삭제</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="loadHomeworkPhotoLinksModal('${a.id}')">링크</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px; background:rgba(232,65,79,0.08); border:none; color:var(--error);" onclick="deleteHomeworkPhotoAssignment('${a.id}', '${classId}')">삭제</button>
                     </div>
                 </div>
             `;
@@ -868,7 +868,7 @@ function openHomeworkPhotoLinksModal(assignmentId, links) {
                                 <div style="font-size:14px; font-weight:800; color:var(--text);">${apEscapeHtml(item.name || '학생')}</div>
                                 <div style="font-size:11px; font-weight:700; color:var(--secondary); word-break:break-all; margin-top:4px;">${apEscapeHtml(item.url || '')}</div>
                             </div>
-                            <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">복사</button>
+                            <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">복사</button>
                         </div>
                         <div style="margin-top:10px; text-align:center;">
                             <img src="${getHomeworkPhotoQrSrc(item.url || '')}" alt="QR" style="width:128px; height:128px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:8px;">
@@ -921,7 +921,7 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <span style="font-size:13px; font-weight:900; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
                                 ${canViewFiles ? `<button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="openHomeworkPhotoSubmissionFilesModal('${safeSubmissionId}')">사진</button>` : ''}
-                                <button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
+                                <button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
                             </div>
                         </div>
                     `;
@@ -1125,7 +1125,7 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
             <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} 학생 관리</div>
             <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${sid}')">상세 정보 열기</button>
             <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('${sid}', '단원평가', 20, '${cid}', '', '', 'class')">OMR / 성적 입력</button>
-            ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(26,92,255,0.2);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">플래너 링크 복사</button>` : ''}
+            ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(var(--primary-rgb),0.22);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">플래너 링크 복사</button>` : ''}
         </div>
     `;
     showModal('학생 관리', html);
@@ -1300,8 +1300,8 @@ function renderAttendanceLedger() {
                 <select id="ledger-class" class="cls-input" style="flex: 1; background: var(--surface); border: 1px solid var(--border);" onchange="ledgerState.classId=this.value;renderLedgerTable();"><option value="">전체 학급</option>${classOptions}</select>
             </div>
             <div style="display: flex; gap: 6px; background: var(--surface); padding: 4px; border: 1px solid var(--border); border-radius: 12px;">
-                <button id="ledger-mode-att" class="btn cls-v4-ledger-mode-active" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
-                <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 10px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
+                <button id="ledger-mode-att" class="btn cls-v4-ledger-mode-active" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 12px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
+                <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 12px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
             </div>
         </div><div id="ledger-table-wrap" style="max-height: 55vh; overflow-y: auto; padding-right: 4px;"></div>`);
     loadLedger();
@@ -1554,7 +1554,7 @@ async function openExamGradeView(classId) {
 
     showModal('시험성적', `
         <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
-            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 10px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
+            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 12px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
         </div>
         ${rows || `<div style="text-align:center; padding:40px 20px; color:var(--secondary); font-size:13px; font-weight:700;">시험 기록 없음</div>`}
     `);
@@ -1634,13 +1634,13 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
             <td style="text-align: center; font-weight:700; color: var(--text); padding: 14px 4px; font-size: 14px;">${s.score}점</td>
             <td style="padding: 14px 4px;">
                 <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                    ${s.wrongs.length ? s.wrongs.map(qid => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(s.session, qid) : `<span style="background: rgba(255,71,87,0.08); color: var(--error); padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 1px solid rgba(255,71,87,0.15);">Q${qid}</span>`).join('') : '<span style="color: var(--secondary); font-size: 11px; font-weight: 600;">없음</span>'}
+                    ${s.wrongs.length ? s.wrongs.map(qid => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(s.session, qid) : `<span style="background: rgba(var(--error-rgb),0.10); color: var(--error); padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 1px solid rgba(var(--error-rgb),0.18);">Q${qid}</span>`).join('') : '<span style="color: var(--secondary); font-size: 11px; font-weight: 600;">없음</span>'}
                 </div>
             </td>
             <td style="text-align: right; padding: 14px 12px;">
                 <div style="display: flex; gap: 6px; justify-content: flex-end;">
                     <button class="btn" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
-                    <button class="btn" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${sArchive}')">삭제</button>
+                    <button class="btn" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${sArchive}')">삭제</button>
                 </div>
             </td>
         </tr>`;
@@ -1661,12 +1661,12 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
             <div style="font-size: 14px; font-weight:700; color: var(--text); line-height: 1.4;">제출 완료: <b style="color: var(--success);">${submitted.length}명</b> / 전체 ${submitted.length + pending.length}명</div>
             <div style="font-size: 11px; font-weight: 600; color: var(--secondary); margin-top: 4px; line-height: 1.5;">${examDate} · ${qCount}문항 기준</div>
         </div>
-        <div style="margin-bottom: 24px; border: 1px solid rgba(26,92,255,0.15); border-radius: 18px; padding: 16px; background: rgba(26,92,255,0.02);">
+        <div style="margin-bottom: 24px; border: 1px solid rgba(var(--primary-rgb),0.16); border-radius: 18px; padding: 16px; background: rgba(var(--primary-rgb),0.04);">
             <div style="font-size: 14px; font-weight:700; margin-bottom: 12px; color: var(--primary); line-height: 1.3;">반 취약 단원 TOP</div>
             ${weakUnitHtml}
         </div>
         <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(255,71,87,0.15); background: rgba(255,71,87,0.05); font-weight:700; border-radius: 10px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${examArchiveFile}')">시험 기록 전체 삭제</button>
+            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); font-weight:700; border-radius: 12px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${examArchiveFile}')">시험 기록 전체 삭제</button>
         </div>
         <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
             <thead>
@@ -1818,7 +1818,7 @@ function injectClassPlannerReviewStyles() {
             border: 1px solid var(--border);
             border-radius: 20px;
             background:
-                linear-gradient(180deg, rgba(26,92,255,0.08), rgba(26,92,255,0.02)),
+                linear-gradient(180deg, var(--primary-soft), rgba(var(--primary-rgb),0.04)),
                 var(--surface);
         }
         .class-planner-review .cls-planner-hero-title {
@@ -1866,14 +1866,14 @@ function injectClassPlannerReviewStyles() {
             box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
         }
         .class-planner-review .cls-planner-btn:hover {
-            border-color: rgba(26,92,255,0.24);
-            background: rgba(26,92,255,0.05);
+            border-color: rgba(var(--primary-rgb),0.24);
+            background: var(--primary-soft);
         }
         .class-planner-review .cls-planner-btn.active {
             background: var(--primary);
             border-color: var(--primary);
             color: #fff;
-            box-shadow: 0 10px 24px rgba(26,92,255,0.18);
+            box-shadow: 0 10px 24px rgba(var(--primary-rgb),0.20);
         }
         .class-planner-review .cls-planner-day-tabs .cls-planner-btn {
             flex: 0 0 auto;
@@ -1931,7 +1931,7 @@ function injectClassPlannerReviewStyles() {
             padding: 10px 12px;
             border-radius: 14px;
             background: var(--surface-2);
-            border: 1px solid rgba(26,92,255,0.08);
+            border: 1px solid var(--primary-soft);
         }
         .class-planner-review .cls-planner-plan-item.done {
             opacity: 0.7;
@@ -1941,7 +1941,7 @@ function injectClassPlannerReviewStyles() {
             width: 22px;
             height: 22px;
             border-radius: 8px;
-            background: rgba(26,92,255,0.08);
+            background: var(--primary-soft);
             color: var(--primary);
             display: inline-flex;
             align-items: center;
@@ -1972,7 +1972,7 @@ function injectClassPlannerReviewStyles() {
             min-height: 24px;
             padding: 0 8px;
             border-radius: 999px;
-            background: rgba(26,92,255,0.08);
+            background: var(--primary-soft);
             color: var(--primary);
             font-size: 11px;
             font-weight: 800;
@@ -2041,7 +2041,7 @@ function injectClassPlannerReviewStyles() {
             padding: 8px 10px;
             border-radius: 12px;
             background: var(--surface-2);
-            border: 1px solid rgba(26,92,255,0.08);
+            border: 1px solid var(--primary-soft);
             font-size: 12px;
             font-weight: 700;
             line-height: 1.45;
@@ -2537,7 +2537,7 @@ function renderPlannerPlanList(plans, feedback) {
         const rate = items.length ? Math.round((done / items.length) * 100) : 0;
         const fb = feedbackMap.get(date);
         const feedbackHtml = fb && String(fb.teacher_comment || fb.badge || '').trim()
-            ? `<div style="margin-top:10px; padding:10px 12px; border-radius:12px; background:rgba(26,92,255,0.06); color:var(--text); font-size:12px; font-weight:700; line-height:1.5;">${apEscapeHtml(`${fb.badge || ''} ${fb.teacher_comment || ''}`.trim())}</div>`
+            ? `<div style="margin-top:10px; padding:10px 12px; border-radius:12px; background:var(--primary-soft); color:var(--text); font-size:12px; font-weight:700; line-height:1.5;">${apEscapeHtml(`${fb.badge || ''} ${fb.teacher_comment || ''}`.trim())}</div>`
             : '';
 
         return `
@@ -2582,7 +2582,7 @@ async function openPlannerStudentPlans(studentId, monthOrDate) {
                     <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.3;">${apEscapeHtml(student?.name || '학생')}</div>
                     <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(bounds.month)} 전체 계획</div>
                 </div>
-                <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:10px; background:var(--surface); border:1px solid var(--border);" onclick="${classId ? `renderPlannerControl('${classId}')` : 'closeModal(true)'}">목록</button>
+                <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="${classId ? `renderPlannerControl('${classId}')` : 'closeModal(true)'}">목록</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="month" id="planner-student-month" class="btn" value="${bounds.month}" style="flex:1; text-align:left; background:var(--surface); border:1px solid var(--border);">
@@ -2636,9 +2636,9 @@ function renderPlannerOverviewTable(classId, date, rows) {
                 <td style="padding:12px 10px; font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${apEscapeHtml(fbText)}</td>
                 <td style="padding:12px 10px; text-align:right;">
                     <div style="display:flex; gap:6px; justify-content:flex-end;">
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:10px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
                     </div>
                 </td>
             </tr>
@@ -2662,7 +2662,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
                 <div style="display:flex; gap:8px; margin-top:12px;">
                     <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
                     <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:rgba(26,92,255,0.08); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
+                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
                 </div>
             </div>
         `;
