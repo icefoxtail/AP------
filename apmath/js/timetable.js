@@ -301,10 +301,9 @@ function _ttGetCurrentTeacherName() {
 }
 
 function getTimetableVisibleTeachers() {
-    var isAdmin = !!(typeof state !== 'undefined' && state.auth && state.auth.role === 'admin');
-    if (isAdmin) return TIMETABLE_FIXED_TEACHERS.slice();
+    if (isTimetableAdminMode()) return TIMETABLE_FIXED_TEACHERS.slice();
 
-    var isMyOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
+    var isMyOnly = isTimetableAdminMode() ? false : !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     if (!isMyOnly) return TIMETABLE_FIXED_TEACHERS.slice();
 
     var current = _ttGetCurrentTeacherName();
@@ -458,7 +457,17 @@ function openAddStudentToClass(classId) {
 // ────────────────────────────────────────────
 
 function isTimetableAdminMode() {
-    return !!(typeof state !== 'undefined' && state.auth && state.auth.role === 'admin');
+    if (typeof state === 'undefined') return false;
+    var role = String(state.auth && state.auth.role || '').trim().toLowerCase();
+    var scope = String(state.ui && state.ui.viewScope || '').trim().toLowerCase();
+    var name = String(state.auth && state.auth.name || state.ui && state.ui.userName || '').trim();
+    return role === 'admin' ||
+        role === 'owner' ||
+        role === 'director' ||
+        role === 'master' ||
+        scope === 'admin' ||
+        name === '원장' ||
+        /원장/.test(name);
 }
 
 function ensureTimetableVersionUiState() {
@@ -837,72 +846,69 @@ function openTimetableDraftConflictDetailsModal() {
 }
 
 
-function buildTimetableVersionBannerHtml() {
+function getTimetableHeaderActionButtonStyle() {
+    return 'min-height:28px; padding:5px 9px; font-size:11px; font-weight:700; border-radius:999px; ' +
+        'background:var(--surface); color:var(--secondary); border:1px solid var(--border); box-shadow:none;';
+}
+
+function buildTimetableVersionHeaderActionsHtml() {
     if (!isTimetableAdminMode()) return '';
 
-    var ui = ensureTimetableVersionUiState();
-    var activeVersion = getActiveTimetableVersionForView();
     var draftVersions = getDraftTimetableVersionsForView();
     var selectedVersion = getSelectedTimetableVersionForView();
     var primaryDraft = draftVersions[0] || null;
-    var dueVersions = getTimetableDueDraftVersions(new Date());
-    var previewCounts = ui.timetableDraftPreviewResult && ui.timetableDraftPreviewResult.counts
-        ? ui.timetableDraftPreviewResult.counts
-        : null;
     var nextYear = getNextTimetableDraftYear(new Date());
     var hasNextYearDraft = draftVersions.some(function(version) {
         return Number(version && version.school_year || 0) === nextYear;
     });
     var shouldShowCreate = shouldShowNextYearDraftPrompt(new Date()) && !hasNextYearDraft;
-    var html = '<div style="display:flex; flex-direction:column; gap:10px; margin-bottom:12px;">';
+    var btnStyle = getTimetableHeaderActionButtonStyle();
+    var html = '<div style="margin-left:auto; display:flex; align-items:center; justify-content:flex-end; gap:6px; min-width:0;">';
 
     if (isTimetableDraftMode() && selectedVersion) {
-        html += '' +
-            '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:12px 14px; border:1px solid rgba(26,92,255,0.16); background:rgba(26,92,255,0.05); border-radius:10px;">' +
-                '<div style="font-size:14px; font-weight:800; color:var(--text);">' + apEscapeHtml(String(selectedVersion.title || '시간표 초안').replace(/개편 초안/g, '개편안').replace(/시간표 초안/g, '시간표 개편안')) + '</div>' +
-                '<div style="font-size:12px; font-weight:700; color:var(--secondary);">상태: ' + apEscapeHtml(getTimetableStatusLabel(selectedVersion.status)) + '</div>' +
-                '<div style="font-size:12px; font-weight:700; color:var(--secondary);">적용 예정일: ' + apEscapeHtml(selectedVersion.effective_from || '-') + '</div>' +
-                '<div style="margin-left:auto; display:flex; flex-wrap:wrap; gap:8px;">' +
-                    '<button class="btn" onclick="window.ttReturnActiveView()">운영 시간표로 이동</button>' +
-                    '<button class="btn btn-primary" onclick="window.ttScanDraftPreview()">충돌 확인</button>' +
-                '</div>' +
-            '</div>';
-    } else {
-        html += '' +
-            '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:12px 14px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); border-radius:10px;">' +
-                '<div style="font-size:14px; font-weight:800; color:var(--text);">' + apEscapeHtml(activeVersion && activeVersion.school_year ? String(activeVersion.school_year) + '년 운영 중' : '-') + '</div>';
-
-        if (primaryDraft) {
-            html += '<button class="btn btn-primary" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(primaryDraft.id || '')) + '\')">' + apEscapeHtml(String(primaryDraft.school_year || '')) + '년 1월 개편안 보기</button>';
-        } else if (shouldShowCreate) {
-            html += '<button class="btn btn-primary" onclick="window.ttCreateNextDraft()">내년 개편안 만들기</button>';
-        }
-
-        html += '</div>';
+        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttReturnActiveView()">운영 시간표로 이동</button>';
+        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttScanDraftPreview()">충돌 확인</button>';
+    } else if (primaryDraft) {
+        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(primaryDraft.id || '')) + '\')">개편시간표</button>';
+    } else if (shouldShowCreate) {
+        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttCreateNextDraft()">개편시간표</button>';
     }
+
+    html += '</div>';
+    return html;
+}
+
+function buildTimetableVersionBannerHtml() {
+    if (!isTimetableAdminMode()) return '';
+
+    var ui = ensureTimetableVersionUiState();
+    var dueVersions = getTimetableDueDraftVersions(new Date());
+    var previewCounts = ui.timetableDraftPreviewResult && ui.timetableDraftPreviewResult.counts
+        ? ui.timetableDraftPreviewResult.counts
+        : null;
+    var html = '';
 
     if (dueVersions.length > 0) {
         var dueVersion = dueVersions[0];
         html += '' +
-            '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:12px 14px; border:1px solid rgba(255,149,0,0.24); background:rgba(255,149,0,0.08); border-radius:10px;">' +
-                '<div style="font-size:13px; font-weight:800; color:var(--text);">적용 예정일이 지났습니다. 초안을 확인하고 운영 시간표에 반영해주세요.</div>' +
-                '<button class="btn" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(dueVersion.id || '')) + '\')">개편안 보기</button>' +
+            '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:10px 12px; margin-bottom:10px; border:1px solid rgba(255,149,0,0.24); background:rgba(255,149,0,0.08); border-radius:10px;">' +
+                '<div style="font-size:12px; font-weight:800; color:var(--text);">적용 예정일이 지났습니다. 초안을 확인하고 운영 시간표에 반영해주세요.</div>' +
+                '<button class="btn" style="' + getTimetableHeaderActionButtonStyle() + '" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(dueVersion.id || '')) + '\')">개편안 보기</button>' +
             '</div>';
     }
 
     if (previewCounts) {
         html += '' +
-            '<div style="display:flex; flex-wrap:wrap; gap:8px 12px; padding:12px 14px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); border-radius:10px; font-size:13px; font-weight:700; color:var(--text);">' +
+            '<div style="display:flex; flex-wrap:wrap; gap:8px 12px; padding:10px 12px; margin-bottom:10px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); border-radius:10px; font-size:12px; font-weight:700; color:var(--text);">' +
                 '<span>충돌 확인 결과</span>' +
                 '<span>학생 충돌 ' + apEscapeHtml(String(Number(previewCounts.student || 0))) + '건</span>' +
                 '<span>선생님 확인 ' + apEscapeHtml(String(Number(previewCounts.teacher || 0))) + '건</span>' +
                 '<span>교실 확인 ' + apEscapeHtml(String(Number(previewCounts.room || 0))) + '건</span>' +
                 (Number(previewCounts.student || 0) > 0 ? '<span style="color:#C2410C;">확인 필요</span>' : '') +
-                (Number(previewCounts.total || 0) > 0 ? '<button class="btn" style="margin-left:auto; min-height:32px; padding:6px 10px; font-size:12px; font-weight:800; border-radius:10px;" onclick="window.ttOpenDraftConflictDetails()">상세 보기</button>' : '') +
+                (Number(previewCounts.total || 0) > 0 ? '<button class="btn" style="margin-left:auto; ' + getTimetableHeaderActionButtonStyle() + '" onclick="window.ttOpenDraftConflictDetails()">상세 보기</button>' : '') +
             '</div>';
     }
 
-    html += '</div>';
     return html;
 }
 
@@ -2126,7 +2132,7 @@ window.ttSetSection = function(sec) {
 window.ttSetMyOnly = function(isMy) {
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
-        state.ui.timetableMyOnly = isMy;
+        state.ui.timetableMyOnly = isTimetableAdminMode() ? false : isMy;
     }
     renderTimetable();
 };
@@ -2147,8 +2153,7 @@ function renderTimetable() {
         if (!state.ui.timetableSection) state.ui.timetableSection = 'middle';
         state.ui.timetablePlacementWarnings = {};
 
-        var isAdmin = !!(state.auth && state.auth.role === 'admin');
-        if (isAdmin) {
+        if (isTimetableAdminMode()) {
             state.ui.timetableMyOnly = false;
         } else if (typeof state.ui.timetableMyOnly === 'undefined') {
             state.ui.timetableMyOnly = false;
@@ -2156,8 +2161,8 @@ function renderTimetable() {
     }
 
     var section = (typeof state !== 'undefined' && state.ui && state.ui.timetableSection) || 'middle';
-    var myOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
-    var isAdminUserForTimetable = !!(typeof state !== 'undefined' && state.auth && state.auth.role === 'admin');
+    var isAdminUserForTimetable = isTimetableAdminMode();
+    var myOnly = isAdminUserForTimetable ? false : !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     var title = getTimetableDateTitle();
     var isMid = section === 'middle';
 
@@ -2165,6 +2170,7 @@ function renderTimetable() {
         '<div id="timetable-root" style="width:100%; padding:0; box-sizing:border-box;">' +
             '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
                 '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
+                buildTimetableVersionHeaderActionsHtml() +
             '</div>' +
             buildTimetableVersionBannerHtml() +
             '<div class="tt-tab-scroll">' +
@@ -2192,7 +2198,7 @@ function renderTimetableGrid(section) {
         .filter(function(c) { return Number(c.is_active) !== 0; });
 
     var visibleTeachers = getTimetableVisibleTeachers();
-    var isMyOnly = !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
+    var isMyOnly = isTimetableAdminMode() ? false : !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     var sClasses = allClasses.filter(function(cls) { return getTimetableSectionForClass(cls) === section; });
     if (isMyOnly) {
         sClasses = sClasses.filter(isTimetableMyClass);
