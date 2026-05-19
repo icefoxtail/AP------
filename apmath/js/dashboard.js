@@ -287,25 +287,44 @@ async function hideDischargedStudent(sid) {
     else toast(r?.message || r?.error || '목록숨김 처리에 실패했습니다.', 'error');
 }
 
+async function purgeHiddenStudent(sid) {
+    if (!sid) return;
+    const first = confirm('이 숨김 학생을 DB에서 완전 삭제할까요?');
+    if (!first) return;
+    const second = confirm('완전 삭제는 중복 생성된 학생 정리용입니다. 삭제 후 복구할 수 없습니다. 계속할까요?');
+    if (!second) return;
+    const r = await api.delete('students', `${sid}/purge`);
+    if (r?.success) {
+        toast('숨김 학생이 완전 삭제되었습니다.', 'info');
+        await loadData();
+        openAdminStudentList('hidden');
+        return;
+    }
+    toast(r?.message || r?.error || '완전 삭제에 실패했습니다.', 'error');
+}
+
 function openAdminStudentList(type) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
     let list = [], title = "";
 
     if (type === 'active') { 
-        list = state.db.students.filter(s => s.status === '재원'); 
+        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '재원'); 
         title = "재원생 목록"; 
     } else if (type === 'new') { 
         list = state.db.students.filter(s => { 
-            if (s.status !== '재원' || !s.created_at || todayTime === null) return false; 
+            if (adminNormalizeStatus(s.status) !== '재원' || !s.created_at || todayTime === null) return false; 
             const createdTime = apParseLocalDateTime(s.created_at);
             if (createdTime === null) return false;
             return (todayTime - createdTime) / (1000*3600*24) <= 30; 
         }); 
         title = "최근 등록 원생"; 
     } else if (type === 'discharged') { 
-        list = state.db.students.filter(s => s.status === '제적'); 
+        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '제적'); 
         title = "퇴원생 목록"; 
+    } else if (type === 'hidden') {
+        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '숨김');
+        title = "숨김 학생";
     } else if (type === 'risk') { 
         list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
         title = "관리필요 학생"; 
@@ -316,7 +335,14 @@ function openAdminStudentList(type) {
         const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
         let riskDetails = "";
         if (s.riskInfo) { riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:6px; background:rgba(var(--error-rgb),0.10); padding:6px 8px; border-radius:6px; font-weight:600;">상태: ${s.riskInfo.riskTypes.join(', ')} <span style="opacity:0.7; font-weight:normal;">(${s.riskInfo.reasons.join(' · ')})</span></div>`; }
-        const actionButtons = type === 'discharged'
+        const actionButtons = type === 'hidden'
+            ? `
+                <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; color:var(--error); background:rgba(var(--error-rgb),0.08); border:1px solid rgba(var(--error-rgb),0.16); cursor:pointer;" onclick="purgeHiddenStudent('${s.id}')">완전 삭제</button>
+                </div>
+            `
+            : type === 'discharged'
             ? `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
                     <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
@@ -337,7 +363,13 @@ function openAdminStudentList(type) {
         `;
     }).join('');
 
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
+    const hiddenSwitch = (type === 'discharged' || type === 'hidden') ? `
+        <div style="display:flex; gap:8px; margin:-4px -4px 12px;">
+            <button class="btn ${type === 'discharged' ? 'btn-primary' : ''}" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px;" onclick="openAdminStudentList('discharged')">퇴원생</button>
+            <button class="btn ${type === 'hidden' ? 'btn-primary' : ''}" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px;" onclick="openAdminStudentList('hidden')">숨김 학생</button>
+        </div>
+    ` : '';
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 
@@ -361,11 +393,7 @@ function openAdminOperationMenu() {
             </button>
             <button class="btn" style="${cardStyle}" onclick="openAdminStudentList('discharged')">
                 <div style="${titleStyle}">퇴원생 관리</div>
-                <div style="${descStyle}">퇴원생 조회, 복구, 목록숨김 처리</div>
-            </button>
-            <button class="btn" style="${cardStyle}" onclick="openAdminPinBatchModal()">
-                <div style="${titleStyle}">PIN 생성</div>
-                <div style="${descStyle}">전체 재원생 중 PIN 없는 재원생에게만 자동 부여</div>
+                <div style="${descStyle}">퇴원/숨김 학생 조회, 복구, 중복 생성 정리</div>
             </button>
             ${isAdmin && showBillingAccountingFoundationEntry ? `
             <button class="btn" style="${cardStyle}" onclick="if(typeof openBillingAccountingFoundationModal==='function') openBillingAccountingFoundationModal(); else toast('수납·출납 foundation 화면을 불러오지 못했습니다.', 'warn');">
@@ -685,7 +713,6 @@ function adminBuildOverviewData(todayStr, todayTime) {
         .filter(s => adminIsRecentStudent(s, todayTime, 30))
         .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 
-    const missingPinStudents = activeStudents.filter(s => !String(s.student_pin || '').trim());
     const unassignedStudents = activeStudents.filter(s => {
         const map = adminGetStudentClassMap(s.id);
         if (!map) return true;
@@ -699,13 +726,11 @@ function adminBuildOverviewData(todayStr, todayTime) {
         return !teacherName || teacherName === '담당';
     });
 
-    const cleanupStudents = students.filter(s => {
+    const cleanupStudents = activeStudents.filter(s => {
         const map = adminGetStudentClassMap(s.id);
         if (!map) return false;
         const cls = adminGetClassById(map.class_id);
-        const status = adminNormalizeStatus(s.status);
-        if (status !== '재원') return true;
-        return !!cls && Number(cls.is_active) === 0;
+        return !cls || Number(cls.is_active) === 0;
     });
 
     return {
@@ -715,7 +740,6 @@ function adminBuildOverviewData(todayStr, todayTime) {
         dischargedStudents,
         leaveStudents,
         recentStudents,
-        missingPinStudents,
         unassignedStudents,
         teacherlessClasses,
         cleanupStudents
@@ -771,7 +795,6 @@ function renderAdminStudentOverviewPanel(data) {
 function renderAdminNeedCheckPanel(data) {
     const items = [
         { label: '반 배정 필요', value: data.unassignedStudents.length, action: 'openAdminUnassignedStudentList()' },
-        { label: 'PIN 미발급', value: data.missingPinStudents.length, action: 'openAdminPinBatchModal()' },
         { label: '담당 선생님 미지정', value: data.teacherlessClasses.length, unit: '개', action: 'openAdminTeacherlessClassList()' },
         { label: '반 정리 필요', value: data.cleanupStudents.length, action: 'openAdminClassCleanupList()' }
     ];
@@ -781,7 +804,7 @@ function renderAdminNeedCheckPanel(data) {
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">확인 필요</h3>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px;">
+            <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
                 ${items.map(item => {
                     const hasIssue = Number(item.value || 0) > 0;
                     return `
@@ -804,7 +827,6 @@ function renderAdminNewStudentPanel(data) {
         const attCount = (state.db.attendance_history || state.db.attendance || []).filter(a => String(a.student_id) === String(s.id)).length;
         const hwCount = (state.db.homework_history || state.db.homework || []).filter(h => String(h.student_id) === String(s.id)).length;
         const examCount = (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(s.id)).length;
-        const hasPin = !!String(s.student_pin || '').trim();
         const hasClass = !!cls;
         const recordText = examCount > 0 ? `시험 ${examCount}회` : (attCount + hwCount > 0 ? `기록 ${attCount + hwCount}회` : '기록 없음');
         return `
@@ -814,7 +836,6 @@ function renderAdminNewStudentPanel(data) {
                     <span style="font-size:11px; color:var(--secondary); font-weight:700; white-space:nowrap;">등록 ${days || '-'}일차</span>
                 </div>
                 <div style="display:flex; align-items:center; gap:5px; flex-shrink:0; min-width:0;">
-                    <span style="font-size:10.5px; font-weight:800; color:${hasPin ? 'var(--success)' : 'var(--error)'}; background:${hasPin ? 'rgba(var(--success-rgb),0.10)' : 'rgba(var(--error-rgb),0.10)'}; padding:3px 6px; border-radius:999px; white-space:nowrap;">${hasPin ? 'PIN 완료' : 'PIN 필요'}</span>
                     <span style="font-size:10.5px; font-weight:800; color:${hasClass ? 'var(--primary)' : 'var(--error)'}; background:${hasClass ? 'var(--primary-soft)' : 'rgba(var(--error-rgb),0.10)'}; padding:3px 6px; border-radius:999px; white-space:nowrap;">${hasClass ? apEscapeHtml(cls.name) : '반 배정 필요'}</span>
                     <span style="font-size:10.5px; font-weight:800; color:var(--secondary); background:var(--surface-2); padding:3px 6px; border-radius:999px; white-space:nowrap;">${recordText}</span>
                 </div>
@@ -852,12 +873,11 @@ function openAdminUnassignedStudentList() {
 
 function openAdminClassCleanupList() {
     const list = (state.db.students || []).filter(s => {
+        if (adminNormalizeStatus(s.status) !== '재원') return false;
         const map = adminGetStudentClassMap(s.id);
         if (!map) return false;
         const cls = adminGetClassById(map.class_id);
-        const status = adminNormalizeStatus(s.status);
-        if (status !== '재원') return true;
-        return !!cls && Number(cls.is_active) === 0;
+        return !cls || Number(cls.is_active) === 0;
     });
     renderAdminSimpleStudentList('반 정리 필요', list, true);
 }

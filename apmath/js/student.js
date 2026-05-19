@@ -1714,6 +1714,7 @@ function studentAttr(value) {
 
 
 var AP_HIGH_SUBJECTS = ['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'];
+let addStudentSubmitting = false;
 
 function parseHighSubjects(value) {
     if (Array.isArray(value)) {
@@ -1888,23 +1889,25 @@ function openAddStudent(defaultCid = '', options = {}) {
             <input id="add-student-phone" class="std-input-base" placeholder="학생 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-parent-phone" class="std-input-base" placeholder="학부모 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             <input id="add-guardian-rel" class="std-input-base" placeholder="보호자 관계" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
-            <input id="add-student-pin" class="std-input-base" placeholder="PIN (4자리 숫자, 선택)" maxlength="4" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 700; outline: none;">
             ${renderHighSubjectChecks('add', inferGradeFromClass(state.db.classes.find(c => String(c.id) === String(defaultCid))), [])}
         </div>
     `, '추가', handleAddStudent);
 }
 
 async function handleAddStudent() {
+    if (addStudentSubmitting) {
+        toast('학생 등록을 처리 중입니다.', 'info');
+        return;
+    }
+
     const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
     const n = document.getElementById('add-name')?.value.trim() || '';
     const sc = document.getElementById('add-school')?.value.trim() || '';
     const classId = document.getElementById('add-class')?.value || '';
-    const pin = document.getElementById('add-student-pin')?.value.trim() || '';
     const studentPhone = document.getElementById('add-student-phone')?.value.trim() || '';
     const parentPhone = document.getElementById('add-parent-phone')?.value.trim() || '';
     const guardianRelation = document.getElementById('add-guardian-rel')?.value.trim() || '';
     if (!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
-    if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
 
     if (!classId) { toast('반을 선택하세요.', 'warn'); return; }
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
@@ -1914,7 +1917,6 @@ async function handleAddStudent() {
     const payload = {
         name: n, school_name: sc, schoolName: sc, grade: grade || '',
         class_id: classId, classId: classId,
-        student_pin: pin || '', studentPin: pin || '',
         student_phone: studentPhone, studentPhone: studentPhone,
         parent_phone: parentPhone, parentPhone: parentPhone,
         guardian_relation: guardianRelation, guardianRelation: guardianRelation,
@@ -1922,10 +1924,18 @@ async function handleAddStudent() {
         memo: ''
     };
 
+    const actionBtn = document.getElementById('modal-action-btn');
+    const originalActionText = actionBtn ? actionBtn.innerText : '';
+    addStudentSubmitting = true;
+    if (actionBtn) {
+        actionBtn.disabled = true;
+        actionBtn.innerText = '등록 중...';
+    }
+
     try {
         const r = await api.post('students', payload);
         if (r?.success) {
-            toast('학생이 추가되었습니다.', 'success');
+            toast(r?.duplicate_ignored ? '이미 등록 처리된 학생입니다.' : '학생이 추가되었습니다.', r?.duplicate_ignored ? 'info' : 'success');
             await loadData();
             returnFromStudentFlow(returnCtx);
             return;
@@ -1934,6 +1944,12 @@ async function handleAddStudent() {
     } catch (e) {
         console.error('[handleAddStudent] failed:', e);
         toast('학생 추가 중 오류가 발생했습니다.', 'error');
+    } finally {
+        addStudentSubmitting = false;
+        if (actionBtn) {
+            actionBtn.disabled = false;
+            actionBtn.innerText = originalActionText || '추가';
+        }
     }
 }
 
