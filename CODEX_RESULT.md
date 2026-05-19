@@ -2,59 +2,43 @@
 
 ## 1. 생성/수정 파일
 
-- 생성: `archive/css/js-archive-theme-override.css`
-- 수정: `archive/index.html`
-- 수정: `archive/engine.html`
-- 수정: `archive/mixed_engine.html`
-- 수정: `CODEX_RESULT.md`
+- 신규/수정: `apmath/css/apms-theme-override.css`
+- 수정: `apmath/index.html`
+- 수정: `apmath/js/dashboard.js`
+- 수정: `apmath/js/classroom.js`
+- 수정: `apmath/student/index.html`
+- 확인/유지: `apmath/planner/index.html`
 
 ## 2. 구현 완료 또는 확인 완료
 
-### JS아카이브 디자인 정렬 0.5차
+- Academy OS 디자인 기준과 맞추기 위한 APMS 1차 디자인 토큰 override 보강 완료
+- 기존 CSS 원본을 직접 대체하지 않고 `apms-theme-override.css` 후순위 로딩 방식 유지
+- APMS 본체 `index.html`에 override CSS 링크 유지 및 경로 정리 완료
+- 학생 포털 `student/index.html`에 override CSS 링크 추가 완료
+- 플래너 `planner/index.html`의 override CSS 링크 유지 확인 완료
+- dashboard.js 인라인 색상 중 APMS 구형 blue rgba 값을 `var(--primary-soft)` 및 통합 토큰 기반 값으로 정리 완료
+- dashboard.js의 `font-weight:650` 계열을 700 기준으로 정리 완료
+- dashboard.js의 일부 안내 박스를 `ap-soft-note` 클래스로 분리해 카드 계층감 기준에 맞춤
+- classroom.js의 `cls-v4-status` radius를 12px 기준으로 보정 완료
+- classroom.js의 tool/status/chip 색상 계열을 primary/success/error/warning 토큰 기반으로 정리 완료
+- `cls-v4-tool` pill radius 999px 유지 완료
+- classroom.js DOM 구조, grid-template-columns, 이벤트 핸들러, renderClass 흐름 변경 없음
+- 학생 포털 OMR 제출/재제출 차단/시험지 직접 열기 금지 로직 변경 없음
+- 플래너 로그인/PIN/저장/주간·월간 레이아웃 로직 변경 없음
+- report.js / archive / Worker / DB / migration 수정 없음
 
-- JS아카이브 전용 override CSS를 신규 생성했다.
-- `archive/index.html`, `archive/engine.html`, `archive/mixed_engine.html`에 `css/js-archive-theme-override.css`를 head 마지막에 로드하도록 연결했다.
-- Academy OS / APMS와 맞도록 accent 계열을 `#007AFF` 중심으로 정렬했다.
-- `archive/index.html`의 메인/필터/카드/모달/버튼 톤은 CSS 변수와 override selector로만 정리했다.
-- `engine.html`, `mixed_engine.html`은 시험지 본문이 아니라 상단 조작바와 화면 배경만 정렬했다.
-- 시험지 `.page` 내부 문항/보기/해설/인쇄 CSS는 직접 수정하지 않았다.
-- `archive/exams/**` 문항 데이터 파일은 수정하지 않았다.
-- JS 로직은 수정하지 않았다.
+## 3. 실행 결과
 
-## 3. 보존 확인
+- `node --check apmath/js/dashboard.js`: PASS
+- `node --check apmath/js/classroom.js`: PASS
 
-- 기존 문구 변경 없음
-- 기존 버튼명 변경 없음
-- 기존 화면명 변경 없음
-- 기존 시험지/문항/보기/해설 데이터 변경 없음
-- 기존 archive 엔진 JS 로직 변경 없음
-- 기존 출력물/인쇄 흐름 변경 없음
-- APMS/학생 포털/플래너/Worker/DB/schema/migration 수정 없음
+## 4. 결과 요약
 
-## 4. 실행 결과
+- APMS 본체, 학생 포털, 플래너에 Academy OS와 같은 색감·radius·카드·버튼·숫자 표현 기준을 1차로 맞춤
+- 기능 변경 없이 시각 계층과 디자인 토큰만 보정함
 
-- HTML/CSS 정적 link 삽입 확인 완료
-- `js-archive-theme-override.css` 생성 확인 완료
-- 기능 JS 수정 없음
-- 브라우저 실기 확인은 사용자 직접 확인 항목으로 남김
+## 5. 다음 조치
 
-## 5. 결과 요약
-
-JS아카이브는 APMS와 완전히 같은 카드형 운영센터로 만들지 않고, 같은 Academy OS 계열의 “출제 연구실/문서형 도구” 느낌으로 정렬했다. 메인 화면은 색상·카드·필터·모달 톤을 통일했고, 엔진 화면은 시험지 본문을 보존한 채 상단 조작바만 정리했다.
-
-## 6. 롤백 방법
-
-- `archive/index.html`, `archive/engine.html`, `archive/mixed_engine.html`에서 `css/js-archive-theme-override.css` link 한 줄을 제거한다.
-- `archive/css/js-archive-theme-override.css` 파일을 삭제한다.
-- git 사용 시 이번 패치 커밋만 revert한다.
-
-## 7. 사용자 직접 확인 필요
-
-- JS아카이브 메인 화면 진입
-- 학년/검색/필터/믹서 버튼 정상 여부
-- 시험 카드 hover/선택 정상 여부
-- 시험 선택 모달 정상 여부
-- `engine.html` 상단 조작바 정상 여부
-- `mixed_engine.html` 상단 조작바 정상 여부
-- 시험지 본문/보기/해설/출력물이 기존과 동일한지 확인
-- 인쇄 시 상단 조작바가 출력되지 않는지 확인
+1. 검수 후 PASS 시 적용/검증/배포 PowerShell 제공
+2. 브라우저에서 대시보드, 반 화면, 학생 포털, 플래너 화면을 직접 확인
+3. git add/commit/push는 사용자가 직접 확인 후 진행
