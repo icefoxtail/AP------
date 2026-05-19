@@ -1140,7 +1140,6 @@ function getTimetableFallbackPlacementRows(cls) {
 function getTimetablePlacementRows(cls) {
     var slots = getTimetableClassSlotRows(cls && cls.id);
     if (!slots.length) {
-        if (isTimetableDraftSection(getTimetableSectionForClass(cls))) return [];
         return getTimetableFallbackPlacementRows(cls);
     }
 
@@ -1167,7 +1166,6 @@ function getTimetablePlacementRows(cls) {
     }).filter(Boolean);
 
     if (!rows.length) {
-        if (isTimetableDraftSection(getTimetableSectionForClass(cls))) return [];
         return getTimetableFallbackPlacementRows(cls);
     }
     if (rows.length > 1 && typeof state !== 'undefined') {
