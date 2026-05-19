@@ -1653,3 +1653,33 @@ foundation을 먼저 만든다.
 - message_logs 통합 응답 포함 금지
 - 학생 상태/반 이동 자동 처리 기능 추가 금지
 - schema/migration 변경 금지
+
+---
+
+# 2026-05-19 운영 로그/이력 2차 및 SaaS 통합 준비
+
+## message_logs 별도 lazy loader 원칙
+
+- `message_logs`는 `/api/students/:id/detail-data`에 합치지 않는다.
+- 보호자 연락처 기본 정보와 수신동의는 기존 학생 상세 상담기록 탭 흐름을 유지한다.
+- 연락 이력은 `연락 이력 보기` 버튼을 눌렀을 때만 `parent-foundation/messages`를 호출해 지연 로딩한다.
+- 연락 이력 로딩은 `state.ui.parentContactUi.byStudent[studentId]` 안의 message 전용 상태로 관리한다.
+- 연락 이력 로딩 실패는 학생 상세 전체 화면을 깨뜨리지 않고 연락 이력 모달 안에서만 안내한다.
+- 연락 이력은 read-only 확인용이며, 실제 문자/SMS/카카오/이메일 발송 기능을 추가하지 않는다.
+
+## 학생 이력/시간표 안정화 후속
+
+- 학생 상태 변경 이력과 반 이동 이력은 학생 상세 `상담기록` 탭 안의 버튼/모달 뒤에서만 확인한다.
+- 이력 데이터가 비어 있거나 lazy data가 아직 도착하지 않은 경우 empty/loading/error 상태를 표시하고 런타임 예외를 만들지 않는다.
+- 시간표 충돌 결과 상세는 draft/scan-preview 흐름 안에서만 모달로 확인한다.
+- 학생 충돌, 선생님 확인, 교실 확인 분리 원칙을 유지한다.
+- 원장 대시보드나 메인 화면에 새 카드로 노출하지 않는다.
+
+## Academy OS / APMS 통합 방향
+
+- APMS/AP Math OS는 Academy OS 안에 재구현하지 않고 기존 바닐라 JS 하위 앱으로 유지한다.
+- Academy OS는 로그인, 학원 선택, 멤버십, 권한, 공통 운영층을 담당한다.
+- APMS는 로그인 후 APMS 진입 버튼을 통해 들어가는 독립 실행 하위 앱으로 둔다.
+- APMS와 Academy OS 사이에는 추후 세션, role, academy_id 브릿지만 단계적으로 설계한다.
+- 씨매쓰 초등과 EIE 영어학원은 기존 APMS처럼 별도 바닐라 앱으로 재구현하지 않고 Academy OS 내부 모듈 방향으로 합류시킨다.
+- 이 문서 단계에서는 실제 브릿지 구현, 새 메뉴 노출, 새 UI 구현을 하지 않는다.
