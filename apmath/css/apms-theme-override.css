@@ -1,0 +1,283 @@
+/* APMS SaaS Design Alignment 0.5
+   Academy OS와 APMS의 시각 언어를 맞추기 위한 안전한 override layer.
+   기능/문구/버튼명/화면 구조는 변경하지 않고, 색상·토큰·공통 컴포넌트 톤만 정렬한다.
+*/
+
+:root {
+  --primary: #007AFF;
+  --primary-dark: #0066CC;
+  --primary-soft: rgba(0, 122, 255, 0.08);
+  --accent: #007AFF;
+
+  --success: #34C759;
+  --error: #FF3B30;
+  --danger: #FF3B30;
+  --warning: #FF9500;
+
+  --bg: #F2F2F7;
+  --surface: #FFFFFF;
+  --surface-2: #F9F9FB;
+  --surface-soft: #F9F9FB;
+  --surface-alpha: rgba(255, 255, 255, 0.86);
+
+  --border: rgba(0, 0, 0, 0.10);
+  --border-soft: rgba(0, 0, 0, 0.06);
+
+  --text: #1C1C1E;
+  --text-soft: #3A3A3C;
+  --secondary: #6C6C70;
+
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 6px 18px rgba(0,0,0,0.10);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.14);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --subj-math-bg: rgba(0, 122, 255, 0.08);
+  --subj-math-text: #007AFF;
+}
+
+body.dark {
+    --primary: #0A84FF;
+    --primary-dark: #0070E0;
+    --primary-soft: rgba(10, 132, 255, 0.15);
+    --accent: #0A84FF;
+
+    --success: #30D158;
+    --error: #FF453A;
+    --danger: #FF453A;
+    --warning: #FF9F0A;
+
+    --bg: #121214;
+    --surface: #1C1C1E;
+    --surface-2: #242427;
+    --surface-soft: #242427;
+    --surface-alpha: rgba(28, 28, 30, 0.86);
+
+    --border: rgba(255, 255, 255, 0.12);
+    --border-soft: rgba(255, 255, 255, 0.08);
+
+    --text: #F5F5F7;
+    --text-soft: #D1D1D6;
+    --secondary: #8E8E93;
+
+    --shadow: none;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+
+    --subj-math-bg: rgba(10, 132, 255, 0.15);
+    --subj-math-text: #64A9FF;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header,
+.desktop-topbar,
+.top {
+  background: var(--surface-alpha);
+  border-color: var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.card,
+.dashboard-card,
+.stat-card,
+.report-card,
+.student-card,
+.class-card,
+.planner-card,
+.assignment-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover,
+.dashboard-card:hover,
+.stat-card:hover,
+.student-card:hover,
+.class-card:hover,
+.planner-card:hover,
+.assignment-card:hover {
+  border-color: rgba(0, 122, 255, 0.18);
+}
+
+.btn,
+button.btn {
+  border-radius: var(--radius-md);
+  border-color: var(--border);
+  transition: transform 150ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
+}
+
+.btn:hover,
+button.btn:hover {
+  border-color: rgba(0, 122, 255, 0.22);
+}
+
+.btn-primary,
+button.btn-primary {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(0, 122, 255, 0.20);
+}
+
+.btn-primary:hover,
+button.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-primary:active,
+button.btn-primary:active {
+  background: var(--primary-dark);
+  transform: scale(0.98);
+}
+
+body.dark .btn-primary,
+body.dark button.btn-primary {
+  box-shadow: none;
+}
+
+.tab-bar {
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+}
+
+.tab-btn {
+  color: var(--secondary);
+}
+
+.tab-btn.active,
+.tab-btn[aria-selected="true"] {
+  background: var(--surface);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+input,
+select,
+textarea,
+.std-input-base {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+  border-radius: var(--radius-md);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.std-input-base:focus {
+  border-color: rgba(0, 122, 255, 0.55);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.12);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary);
+}
+
+#modal-overlay {
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.modal,
+.modal-content,
+.modal-box,
+.modal-sheet,
+#modal-content,
+#modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+table {
+  border-color: var(--border);
+}
+
+table td,
+table th,
+th,
+td {
+  border-color: var(--border);
+}
+
+th {
+  color: var(--secondary);
+}
+
+tr:hover td {
+  background: rgba(0, 122, 255, 0.035);
+}
+
+.badge,
+.std-badge,
+.chip {
+  border-radius: var(--radius-full);
+}
+
+[style*="#1A5CFF"],
+[style*="rgba(26,92,255"] {
+  --primary: #007AFF;
+}
+
+/* Standalone planner/homework pages */
+.planner-shell,
+.planner-layout,
+.app-shell,
+.submit-wrap,
+.wrap {
+  color: var(--text);
+}
+
+.coach-card,
+.subject-card,
+.day-card,
+.month-card,
+.upload-card,
+.preview-card {
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+  .card,
+  .dashboard-card,
+  .stat-card,
+  .student-card,
+  .class-card,
+  .planner-card,
+  .assignment-card {
+    border-radius: 18px;
+  }
+
+  .modal,
+  .modal-content,
+  .modal-box,
+  .modal-sheet,
+  #modal-content,
+  #modal-box {
+    border-radius: 22px;
+  }
+}
