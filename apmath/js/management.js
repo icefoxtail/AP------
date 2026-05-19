@@ -9,7 +9,12 @@ function mgmtEscape(value) {
 }
 
 function getClassStudentCount(classId) {
-    return (state.db.class_students || []).filter(m => String(m.class_id) === String(classId)).length;
+    const activeStudentIds = new Set((state.db.students || [])
+        .filter(s => String(s.status || '재원').trim() === '재원')
+        .map(s => String(s.id)));
+    return (state.db.class_students || [])
+        .filter(m => String(m.class_id) === String(classId) && activeStudentIds.has(String(m.student_id)))
+        .length;
 }
 
 function getStudentClass(studentId) {
@@ -107,7 +112,6 @@ function openAddressBook() {
     showModal('학생관리', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button class="btn btn-primary" style="padding:10px; flex:1; font-size:12px; font-weight:800;" onclick="openAddStudent('', { returnTo: { type: 'addressBook' } });">학생 추가</button>
-            <button class="btn" style="padding:10px; flex:1; font-size:12px; color:var(--primary); background:rgba(26,92,255,0.1); border:none; font-weight:800;" onclick="setModalReturnView({ type: 'addressBook' }); openGlobalPinManagement()">PIN관리</button>
         </div>
         <div style="display:grid; grid-template-columns:1fr 150px; gap:8px; margin-bottom:14px;">
             <input id="ab-search" class="btn" placeholder="이름/학교/반 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="debounceRenderAddressBookList()">
