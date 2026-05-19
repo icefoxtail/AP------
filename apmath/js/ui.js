@@ -100,8 +100,46 @@ function toast(m, t='info') {
 }
 
 let modalCloseTimer = null;
+let modalStepStack = [];
 
-function showModal(t, b, at=null, af=null) {
+function isModalOpen() {
+    const overlay = document.getElementById('modal-overlay');
+    return !!overlay && !overlay.classList.contains('hidden');
+}
+
+function getCurrentModalSnapshot() {
+    const titleEl = document.getElementById('modal-title');
+    const bodyEl = document.getElementById('modal-body');
+    const actionBtn = document.getElementById('modal-action-btn');
+    const footer = document.getElementById('modal-footer');
+    if (!titleEl || !bodyEl || !isModalOpen()) return null;
+
+    return {
+        title: titleEl.innerText || '',
+        bodyHtml: bodyEl.innerHTML || '',
+        actionText: actionBtn ? (actionBtn.innerText || '') : '',
+        actionHandler: actionBtn ? actionBtn.onclick : null,
+        actionHidden: actionBtn ? actionBtn.classList.contains('hidden') : true,
+        footerHtml: footer ? (footer.innerHTML || '') : '',
+        footerHidden: footer ? footer.classList.contains('hidden') : true,
+        modalReturnView: state?.ui ? (state.ui.modalReturnView || null) : null,
+        studentDetailSubModal: state?.ui ? (state.ui.currentStudentDetailSubModal || null) : null
+    };
+}
+
+function resetModalActionStyle(actionBtn) {
+    if (!actionBtn) return;
+    actionBtn.style.background = 'transparent';
+    actionBtn.style.border = 'none';
+    actionBtn.style.boxShadow = 'none';
+    actionBtn.style.color = 'var(--primary)';
+    actionBtn.style.fontWeight = '700';
+    actionBtn.style.fontSize = '15px';
+    actionBtn.style.padding = '8px 0';
+    actionBtn.style.minHeight = 'auto';
+}
+
+function applyModalContent(t, b, at = null, af = null, options = {}) {
     const titleEl = document.getElementById('modal-title');
     const bodyEl = document.getElementById('modal-body');
     const actionBtn = document.getElementById('modal-action-btn');
@@ -115,8 +153,6 @@ function showModal(t, b, at=null, af=null) {
         modalCloseTimer = null;
     }
 
-    // 먼저 기존 show 상태만 제거하고, 내용 교체가 끝난 뒤 hidden을 해제한다.
-    // display:flex 상태의 투명 오버레이가 잠깐 클릭을 가로막는 상황을 줄인다.
     overlay.classList.remove('show');
 
     titleEl.innerText = t;
@@ -128,15 +164,7 @@ function showModal(t, b, at=null, af=null) {
             actionBtn.onclick = af;
             actionBtn.classList.remove('hidden');
             actionBtn.disabled = false;
-
-            actionBtn.style.background = 'transparent';
-            actionBtn.style.border = 'none';
-            actionBtn.style.boxShadow = 'none';
-            actionBtn.style.color = 'var(--primary)';
-            actionBtn.style.fontWeight = '700';
-            actionBtn.style.fontSize = '15px';
-            actionBtn.style.padding = '8px 0';
-            actionBtn.style.minHeight = 'auto';
+            resetModalActionStyle(actionBtn);
         } else {
             actionBtn.classList.add('hidden');
             actionBtn.onclick = null;
@@ -150,12 +178,51 @@ function showModal(t, b, at=null, af=null) {
         footer.innerHTML = '';
     }
 
-    // display:none 해제 직후 transition이 스킵되지 않도록 강제 reflow 후 show 적용
     overlay.classList.remove('hidden');
     overlay.getBoundingClientRect();
     requestAnimationFrame(() => {
         overlay.classList.add('show');
     });
+}
+
+function showModal(t, b, at=null, af=null) {
+    applyModalContent(t, b, at, af);
+}
+
+function showModalStep(t, b, at=null, af=null) {
+    if (!state.ui) state.ui = {};
+    const snapshot = getCurrentModalSnapshot();
+    if (snapshot) modalStepStack.push(snapshot);
+    applyModalContent(t, b, at, af);
+}
+
+function replaceModalStep(t, b, at=null, af=null) {
+    applyModalContent(t, b, at, af);
+}
+
+function clearModalSteps() {
+    modalStepStack = [];
+}
+
+function restoreModalSnapshot(snapshot) {
+    if (!snapshot) return false;
+    applyModalContent(
+        snapshot.title || '',
+        snapshot.bodyHtml || '',
+        snapshot.actionHidden ? null : snapshot.actionText,
+        snapshot.actionHidden ? null : snapshot.actionHandler
+    );
+
+    const footer = document.getElementById('modal-footer');
+    if (footer) {
+        footer.innerHTML = snapshot.footerHtml || '';
+        footer.classList.toggle('hidden', !!snapshot.footerHidden);
+    }
+
+    if (!state.ui) state.ui = {};
+    state.ui.modalReturnView = snapshot.modalReturnView || null;
+    state.ui.currentStudentDetailSubModal = snapshot.studentDetailSubModal || null;
+    return true;
 }
 
 function setManagementReturnView(ctx) {
@@ -208,7 +275,17 @@ function closeModal(suppressReturn = false) {
     const overlay = document.getElementById('modal-overlay');
     if (!overlay) return;
     if (!state.ui) state.ui = {};
-    if (suppressReturn) state.ui.modalReturnView = null;
+
+    if (!suppressReturn && modalStepStack.length) {
+        const previous = modalStepStack.pop();
+        restoreModalSnapshot(previous);
+        return;
+    }
+
+    if (suppressReturn) {
+        state.ui.modalReturnView = null;
+        clearModalSteps();
+    }
     const shouldReturn = !suppressReturn && !!state.ui.modalReturnView;
     const returnCtx = shouldReturn ? state.ui.modalReturnView : null;
     if (shouldReturn) state.ui.modalReturnView = null;
@@ -1106,6 +1183,9 @@ window.getTheme = getTheme;
 window.ensureThemeToggleButton = ensureThemeToggleButton;
 window.toast = toast;
 window.showModal = showModal;
+window.showModalStep = showModalStep;
+window.replaceModalStep = replaceModalStep;
+window.clearModalSteps = clearModalSteps;
 window.closeModal = closeModal;
 window.setManagementReturnView = setManagementReturnView;
 window.setModalReturnView = setModalReturnView;

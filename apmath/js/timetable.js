@@ -833,7 +833,7 @@ function openTimetableDraftConflictDetailsModal() {
         if (typeof toast === 'function') toast('먼저 충돌 확인을 실행해주세요.', 'warn');
         return;
     }
-    showModal('충돌 확인 결과', buildTimetableDraftConflictDetailsHtml());
+    if (typeof showModalStep === 'function') showModalStep('충돌 확인 결과', buildTimetableDraftConflictDetailsHtml()); else showModal('충돌 확인 결과', buildTimetableDraftConflictDetailsHtml());
 }
 
 
