@@ -387,113 +387,10 @@ function dashboardGetScheduledClassesForDate(dateStr, teacherName = '') {
     });
 }
 
-function computeDashboardJournalDraftSections(dateStr) {
-    const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    const classes = dashboardGetScheduledClassesForDate(targetDate);
-    const autoLines = [];
-    const checkLines = [];
-    const memoLines = ['오늘 수업 분위기, 학생별 특이사항, 학부모께 전달할 뉘앙스를 필요하면 덧붙여 주세요.'];
-
-    if (!classes.length) {
-        autoLines.push('해당 날짜에 담당 학급이 없습니다.');
-        return { targetDate, classes, autoLines, checkLines, memoLines };
-    }
-
-    classes.forEach(cls => {
-        const className = cls?.name || '이름 없는 반';
-        const memberIds = (state?.db?.class_students || [])
-            .filter(m => String(m?.class_id) === String(cls?.id))
-            .map(m => String(m?.student_id));
-        const students = (state?.db?.students || [])
-            .filter(s => memberIds.includes(String(s?.id)) && String(s?.status || '') === '재원');
-        const total = students.length;
-        const absents = [];
-        const lates = [];
-        const makeups = [];
-        const hwMiss = [];
-        const noAttendance = [];
-        const noHomework = [];
-
-        students.forEach(s => {
-            const sid = String(s?.id || '');
-            const att = (state?.db?.attendance || []).find(a => String(a?.student_id) === sid && String(a?.date) === targetDate);
-            const hw = (state?.db?.homework || []).find(h => String(h?.student_id) === sid && String(h?.date) === targetDate);
-            const attStatus = String(att?.status || '').trim();
-            const attHay = `${attStatus} ${att?.tags || ''} ${att?.memo || ''}`;
-
-            if (!attStatus) noAttendance.push(s.name || '학생');
-            if (!String(hw?.status || '').trim()) noHomework.push(s.name || '학생');
-            if (attStatus === '결석') absents.push(s);
-            if (attStatus === '지각' || attHay.includes('지각')) lates.push(s.name || '학생');
-            if (attStatus === '보강' || attHay.includes('보강')) makeups.push(s.name || '학생');
-            if (String(hw?.status || '').trim() === '미완료') hwMiss.push(s);
-        });
-
-        const attendanceCount = Math.max(0, total - absents.length);
-        const homeworkCount = Math.max(0, total - hwMiss.length);
-        autoLines.push(`${className}반은 출석 ${attendanceCount}/${total}, 숙제 ${homeworkCount}/${total}로 기록되어 있습니다.`);
-        if (absents.length) autoLines.push(`${className}반 결석: ${absents.map(s => s.name || '학생').join(', ')}`);
-        if (lates.length) autoLines.push(`${className}반 지각: ${lates.join(', ')}`);
-        if (makeups.length) autoLines.push(`${className}반 보강: ${makeups.join(', ')}`);
-        if (hwMiss.length) autoLines.push(`${className}반 숙제 미완료: ${hwMiss.map(s => s.name || '학생').join(', ')}`);
-
-        const dailyRecord = dashboardGetClassProgressRecord(cls.id, targetDate);
-        if (dailyRecord) {
-            const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
-            const progresses = (state?.db?.class_daily_progress || []).filter(p => String(p?.record_id) === String(dailyRecord.id));
-            if (progresses.length) {
-                progresses.forEach(p => autoLines.push(`${className}반 진도: ${formatJournalProgressLine(p, noteData.units).trim()}`));
-            } else {
-                checkLines.push(`확인 필요: ${className}반 수업 기록은 있으나 진도 항목이 비어 있습니다.`);
-            }
-            if (noteData.note) autoLines.push(`${className}반 특이사항: ${noteData.note}`);
-        } else {
-            checkLines.push(`확인 필요: ${className}반은 오늘 수업 대상이지만 진도 기록이 없습니다.`);
-        }
-
-        absents.forEach(s => {
-            if (!dashboardHasMakeupAfter(s.id, targetDate)) {
-                checkLines.push(`확인 필요: ${className}반 ${s.name || '학생'} 학생이 결석 처리되었으나 등록된 보강 일정이 없습니다.`);
-            }
-        });
-        hwMiss.forEach(s => {
-            if (!dashboardHasConsultationAfter(s.id, targetDate)) {
-                checkLines.push(`확인 필요: ${className}반 ${s.name || '학생'} 학생의 숙제가 미완료로 남아 있으나 후속 메모 또는 상담 기록이 없습니다.`);
-            }
-        });
-        if (noAttendance.length) checkLines.push(`확인 필요: ${className}반 출결 미입력 학생이 있습니다. (${noAttendance.join(', ')})`);
-        if (noHomework.length) checkLines.push(`확인 필요: ${className}반 숙제 미입력 학생이 있습니다. (${noHomework.join(', ')})`);
-
-        const cns = (state?.db?.consultations || []).filter(c => String(c?.date || '').slice(0, 10) === targetDate && memberIds.includes(String(c?.student_id)));
-        cns.forEach(cn => {
-            const sName = students.find(s => String(s.id) === String(cn.student_id))?.name || '학생';
-            autoLines.push(`${className}반 상담 기록: ${sName} - ${cn.content || cn.next_action || '상담 기록'}`);
-        });
-    });
-
-    return { targetDate, classes, autoLines, checkLines, memoLines };
-}
-
 function renderJournalDraftPreview(dateStr) {
-    const sections = computeDashboardJournalDraftSections(dateStr);
-    const renderItems = (items, emptyText) => (items && items.length)
-        ? `<ul class="journal-draft__list">${items.map(item => `<li class="journal-draft__item">${apEscapeHtml(item)}</li>`).join('')}</ul>`
-        : `<div class="journal-draft__empty">${apEscapeHtml(emptyText)}</div>`;
-
     return `
-        <div class="journal-draft">
-            <section class="journal-draft__section journal-draft__section--auto">
-                <div class="journal-draft__title">[자동 확정]</div>
-                <div class="journal-draft__body">${renderItems(sections.autoLines, '자동 확정으로 쓸 기록이 없습니다.')}</div>
-            </section>
-            <section class="journal-draft__section journal-draft__section--check">
-                <div class="journal-draft__title">[확인 필요]</div>
-                <div class="journal-draft__body">${renderItems(sections.checkLines, '추가 확인이 필요한 항목이 없습니다.')}</div>
-            </section>
-            <section class="journal-draft__section journal-draft__section--memo">
-                <div class="journal-draft__title">[선생님 자유 메모]</div>
-                <div class="journal-draft__body">${renderItems(sections.memoLines, '자유 메모를 추가해 주세요.')}</div>
-            </section>
+        <div class="journal-draft journal-draft--simple">
+            <pre class="journal-draft__plain">${apEscapeHtml(buildJournalContent(dateStr))}</pre>
         </div>
     `;
 }
@@ -2755,24 +2652,130 @@ function appendJournalNote(text, note) {
 }
 
 
+function dashboardFormatConsultationFullText(row) {
+    const bodyFields = [
+        row?.content,
+        row?.memo,
+        row?.note,
+        row?.consultation_content,
+        row?.body,
+        row?.description,
+        row?.summary
+    ];
+    const mainBody = bodyFields
+        .map(v => String(v || '').trim())
+        .find(Boolean) || '';
+    const nextAction = String(row?.next_action || row?.nextAction || row?.follow_up || row?.followUp || '').trim();
+    const parts = [];
+    if (mainBody) parts.push(mainBody);
+    if (nextAction) parts.push(`다음 조치: ${nextAction}`);
+    return parts.join('\n');
+}
+
 function buildJournalContent(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    const sections = computeDashboardJournalDraftSections(targetDate);
-    const lines = [];
-    lines.push(`[AP Math 운영 일지 - ${targetDate}]`);
-    lines.push(`작성자: ${state?.ui?.userName || ''}`);
-    lines.push('');
-    lines.push('[자동 확정]');
-    if (sections.autoLines.length) sections.autoLines.forEach(line => lines.push(`- ${line}`));
-    else lines.push('- 자동 확정으로 쓸 기록이 없습니다.');
-    lines.push('');
-    lines.push('[확인 필요]');
-    if (sections.checkLines.length) sections.checkLines.forEach(line => lines.push(`- ${line}`));
-    else lines.push('- 추가 확인이 필요한 항목이 없습니다.');
-    lines.push('');
-    lines.push('[선생님 자유 메모]');
-    lines.push('- 오늘 수업 분위기, 학생별 특이사항, 학부모께 전달할 뉘앙스를 필요하면 덧붙여 주세요.');
-    return lines.join('\n').trim() + '\n';
+    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
+
+    const parts = targetDate.split('-');
+    const targetDayIdx = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
+
+    const activeClasses = (state.db.classes || []).filter(c => {
+        if (Number(c.is_active) === 0) return false;
+        if (!isMiddleSchoolClass(c)) return false;
+        if (!isClassVisibleForCurrentTeacher(c)) return false;
+
+        // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
+        if (!c.schedule_days) return true;
+
+        // 제출일/선택일 기준 해당 요일 반만 출력한다.
+        return String(c.schedule_days)
+            .split(',')
+            .map(v => v.trim())
+            .includes(targetDayIdx);
+    });
+
+    if (activeClasses.length === 0) {
+        text += `해당 날짜에 담당 학급이 없습니다.\n`;
+        return text;
+    }
+
+    activeClasses.forEach(cls => {
+        text += `■ ${cls.name}반\n`;
+
+        const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
+        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const total = students.length;
+
+        const absents = [];
+        const lates = [];
+        const makeups = [];
+        const hwMiss = [];
+
+        students.forEach(s => {
+            const att = (state.db.attendance || []).find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
+            const hw = (state.db.homework || []).find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
+            const attStatus = String(att?.status || '').trim();
+            const tagList = String(att?.tags || '')
+                .split(',')
+                .map(v => v.trim())
+                .filter(Boolean);
+
+            if (attStatus === '결석') absents.push(s.name);
+            if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
+            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(s.name);
+            if (hw?.status === '미완료') hwMiss.push(s.name);
+        });
+
+        const attendanceCount = Math.max(0, total - absents.length);
+        const homeworkCount = Math.max(0, total - hwMiss.length);
+
+        text += `- 출석: ${attendanceCount}/${total}\n`;
+        text += `- 숙제: ${homeworkCount}/${total}\n`;
+        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
+        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
+        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}\n`;
+        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
+
+        const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
+        if (dailyRecord) {
+            const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
+            const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
+            if (progresses.length > 0) {
+                text += `- 진도:\n`;
+                progresses.forEach(p => {
+                    text += formatJournalProgressLine(p, noteData.units) + `\n`;
+                });
+            } else text += `- 진도: (기록 없음)\n`;
+
+            text = appendJournalNote(text, noteData.note);
+        } else {
+            text += `- 진도: (수업 기록 미입력)\n`;
+        }
+
+        const cns = (state.db.consultations || []).filter(c => {
+            const cDate = String(c?.date || c?.consultation_date || c?.created_at || '').slice(0, 10);
+            return cDate === targetDate && memberIds.includes(String(c?.student_id));
+        });
+        if (cns.length > 0) {
+            text += `- 상담:\n`;
+            cns.forEach(cn => {
+                const sName = students.find(s => String(s.id) === String(cn.student_id))?.name || cn.student_name_snapshot || '학생';
+                const body = dashboardFormatConsultationFullText(cn);
+                text += `  * ${sName}\n`;
+                if (body) {
+                    body.split(/\r?\n/).forEach(line => {
+                        text += `    ${line}\n`;
+                    });
+                } else {
+                    text += `    상담 내용 없음\n`;
+                }
+            });
+        }
+
+        text += `\n`;
+    });
+
+    return text.trim() + '\n';
 }
 
 

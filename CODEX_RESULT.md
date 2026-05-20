@@ -2,23 +2,22 @@
 
 ## 1. 생성/수정 파일
 
+- 수정: `apmath/js/dashboard.js`
 - 수정: `apmath/css/dashboard-foundation.css`
-- 확인: `apmath/js/dashboard.js`
+- 수정: `CODEX_RESULT.md`
 
 ## 2. 구현 완료 또는 확인 완료
 
-- 선생님 오늘일지 카드의 카드 안 카드 느낌 제거 완료
-- `.dashboard-journal-card`의 border/background/radius/padding/overflow hidden 제거 완료
-- 오늘일지 상단 클릭 영역은 line-style row로 유지 완료
-- 수/목 journal row의 hover 배경 clip 가능성 제거 완료
-- 원장님/선생님 journal row line-style 유지 확인
-- 수/목 고정 노출 유지 확인
-- 최근 등록 제거 유지 확인
-- 일지 확인 버튼 제거 유지 확인
-- 담당반 보기 유지 확인
-- 오늘일지 중등부 제한 기준 유지 확인
-- 집중케어 50점 하한선 보정 유지 확인
-- 신규 전역 CSS 오염 없음 확인
+- `buildJournalContent()`를 3단 자동 판단 문구 구조에서 기존 반별 요약 방식으로 회귀 완료
+- `[자동 확정] / [확인 필요] / [선생님 자유 메모]` 출력 제거 완료
+- 출결 미입력 / 숙제 미입력 / 진도 없음 확인 필요 반복 문장 제거 완료
+- 기존 반별 출석/숙제/결석/지각/보강/숙제 미완료/진도 출력 흐름 복구 완료
+- 상담 기록 자동 삽입 복구 완료
+- 상담 기록은 해당 날짜 + 해당 반 학생 기준으로 필터링하고, 상담 본문 전체를 줄바꿈 유지해 출력하도록 보정 완료
+- 상담 본문 후보 필드: `content`, `memo`, `note`, `consultation_content`, `body`, `description`, `summary`, `next_action` 계열 확인 완료
+- `renderJournalDraftPreview()`도 3단 미리보기 대신 회귀된 일지 본문을 그대로 보여주도록 보정 완료
+- 수/목 line-style 대시보드 UI, 원장님/선생님 journal row 통일, chevron row, 카드 안 카드 제거 기준 보존 완료
+- 오늘일지 중등부 제한과 집중케어 50점 하한선 보정 보존 완료
 
 ## 3. 실행 결과
 
@@ -26,9 +25,9 @@
 
 ## 4. 결과 요약
 
-선생님 오늘일지 카드에서 남아 있던 wrapper 카드 스타일을 제거하고, line-style journal row가 카드 안 카드처럼 보이지 않도록 최종 보정했다. `overflow:hidden`도 제거해 hover 배경이 잘릴 가능성을 없앴다.
+- 일지 본문 자동 생성만 기존 반별 요약 방식으로 회귀하고, 상담 전체 본문 자동 삽입만 추가했다.
+- 대시보드 UI/CSS line-style 기준은 유지했다.
 
 ## 5. 다음 조치
 
-- 브라우저에서 선생님 대시보드 오늘일지 영역과 원장님 선생님 현황 카드를 직접 확인한다.
-- 운영 확인 후 이상 없으면 커밋/푸시한다.
+- 브라우저에서 실제 일지 작성 모달을 열어 상담 본문 줄바꿈 출력과 저장 흐름을 직접 확인 필요.
