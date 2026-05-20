@@ -756,6 +756,26 @@ function getTimetableClassIdentityValues(classId, cls) {
     return values;
 }
 
+function getTimetableCurrentClassIdentityValues(classId, cls) {
+    var values = [];
+    var push = function(value) {
+        var text = String(value || '').trim();
+        if (text && values.indexOf(text) === -1) values.push(text);
+    };
+    push(classId);
+    if (cls) {
+        push(cls.id);
+        push(cls.version_class_id);
+    }
+    var versionClass = getTimetableDraftVersionClassByAnyId(classId || (cls && cls.id));
+    if (versionClass) {
+        push(versionClass.id);
+        push(versionClass.version_class_id);
+        push(versionClass.source_class_id || versionClass.id);
+    }
+    return values;
+}
+
 function isTimetableDraftClassRow(cls) {
     return !!(cls && (cls.__timetable_version_class || cls.version_class_id));
 }
@@ -784,9 +804,9 @@ function getTimetableDraftAssignmentRows(classId) {
     var ui = ensureTimetableVersionUiState();
     var rows = Array.isArray(ui.selectedTimetableVersionStudentAssignments) ? ui.selectedTimetableVersionStudentAssignments : [];
     if (!classId) return rows.slice();
-    var identities = getTimetableClassIdentityValues(classId);
+    var identities = getTimetableCurrentClassIdentityValues(classId);
     return rows.filter(function(row) {
-        var rowIds = [row.version_class_id, row.class_id, row.source_class_id].map(function(v) { return String(v || '').trim(); });
+        var rowIds = [row.version_class_id, row.class_id].map(function(v) { return String(v || '').trim(); });
         return rowIds.some(function(v) { return v && identities.indexOf(v) !== -1; });
     });
 }
@@ -798,10 +818,10 @@ function syncSelectedTimetableVersionStudentAssignmentsInState(assignments, clas
         ui.selectedTimetableVersionStudentAssignments = rows;
         return;
     }
-    var identities = getTimetableClassIdentityValues(classId);
+    var identities = getTimetableCurrentClassIdentityValues(classId);
     ui.selectedTimetableVersionStudentAssignments = (ui.selectedTimetableVersionStudentAssignments || [])
         .filter(function(row) {
-            var rowIds = [row.version_class_id, row.class_id, row.source_class_id].map(function(v) { return String(v || '').trim(); });
+            var rowIds = [row.version_class_id, row.class_id].map(function(v) { return String(v || '').trim(); });
             return !rowIds.some(function(v) { return v && identities.indexOf(v) !== -1; });
         })
         .concat(rows);
@@ -2510,9 +2530,12 @@ function buildTimetableStudentSlot(student, classId) {
         ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)" ondragend="if(event.stopPropagation)event.stopPropagation();"'
         : '';
 
+    var studentClick = (isTimetableDraftMode() && student.isNew)
+        ? 'event.stopPropagation();if(typeof toast===\'function\')toast(\'새학기 신입생은 운영 적용 후 학생 상세에서 확인할 수 있습니다.\',\'info\');'
+        : 'event.stopPropagation();openEditStudentFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')';
     return '' +
         '<div class="tt-std-slot">' +
-            '<span class="' + cls + '"' + dragAttrs + ' onclick="event.stopPropagation();openEditStudentFromTimetable(\'' + apEscapeHtml(String(student.id)) + '\')" title="클릭 → 정보 수정">' +
+            '<span class="' + cls + '"' + dragAttrs + ' onclick="' + studentClick + '" title="클릭 → 정보 수정">' +
                 nameText +
             '</span>' +
         '</div>';
