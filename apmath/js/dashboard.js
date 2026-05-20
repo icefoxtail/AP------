@@ -261,10 +261,9 @@ function dashboardGetTeacherClasses(teacherName = '') {
 }
 
 function dashboardGetJournalTargetDayKeys(teacherName = '', classRows = null) {
-    const days = [...DASHBOARD_JOURNAL_BASE_DAYS];
-    const classes = Array.isArray(classRows) ? classRows : dashboardGetTeacherClasses(teacherName);
-    classes.forEach(cls => dashboardGetClassDayKeys(cls).forEach(day => dashboardAddDayKey(days, day)));
-    return DASHBOARD_DAY_ORDER.filter(day => days.includes(day));
+    // AP Math 운영 기준: 대시보드 일지 확인은 수/목 2일만 본다.
+    // 실제 수업 요일 예외를 섞으면 선생님 현황 카드가 다시 경고판처럼 복잡해지므로 추가하지 않는다.
+    return DASHBOARD_DAY_ORDER.filter(day => DASHBOARD_JOURNAL_BASE_DAYS.includes(day));
 }
 
 function dashboardFindJournal(dateStr, teacherName = '') {
@@ -294,15 +293,18 @@ function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, 
         .map(day => {
             const journal = dashboardFindJournal(day.date, teacherName);
             const done = dashboardIsJournalDone(journal);
-            const statusText = done ? (String(journal?.status || '').trim() || '작성') : '미작성';
+            const statusText = done ? '제출완료' : '미작성';
             const click = teacherName
                 ? `renderAdminJournalList('${day.date}', '${safeTeacher}')`
                 : `openDailyJournalModal('${day.date}')`;
+            const labelText = `${day.label} ${apFormatMonthDay(day.date) || day.date}`;
+            const ariaText = `${labelText} ${statusText} 일지 열기`;
             return `
-                <button class="journal-day-cell journal-day-cell--${done ? 'done' : 'missing'}" onclick="${click}" type="button">
-                    <span class="journal-day-cell__label">${apEscapeHtml(day.label)}</span>
-                    <span class="journal-day-cell__date">${apEscapeHtml(apFormatMonthDay(day.date) || day.date)}</span>
+                <button class="journal-day-cell journal-day-cell--${done ? 'done' : 'missing'}" onclick="event.stopPropagation(); ${click}" type="button" aria-label="${apEscapeHtml(ariaText)}">
+                    <span class="journal-day-cell__label">${apEscapeHtml(labelText)}</span>
+                    <span class="journal-day-cell__spacer" aria-hidden="true"></span>
                     <span class="journal-day-cell__status">${apEscapeHtml(statusText)}</span>
+                    <span class="journal-day-cell__chevron" aria-hidden="true">›</span>
                 </button>
             `;
         }).join('');
@@ -2924,13 +2926,11 @@ function renderAdminTeacherCards(todayStr) {
         const myClassIds = myClasses.map(c => String(c.id));
         const myStudentIds = [...new Set((state?.db?.class_students || []).filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
         const activeStudents = (state?.db?.students || []).filter(s => myStudentIds.includes(String(s.id)) && String(s.status || '') === '재원');
-        const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
         const safeName = dashboardEscapeAttr(tName);
         const chips = [
             { label: '담당반', value: `${myClasses.length}개` },
-            { label: '재원', value: `${activeStudents.length}명` },
-            { label: '최근 등록', value: `${recentStudents.length}명` }
-        ].map(item => `<span class="admin-teacher-card__chip">${apEscapeHtml(item.label)}<b>${apEscapeHtml(item.value)}</b></span>`).join('');
+            { label: '재원', value: `${activeStudents.length}명` }
+        ].map(item => `<span class="admin-teacher-card__chip"><span>${apEscapeHtml(item.label)}</span><b>${apEscapeHtml(item.value)}</b></span>`).join('');
 
         return `
             <div class="card ap-admin-teacher-card">
@@ -2938,9 +2938,11 @@ function renderAdminTeacherCards(todayStr) {
                     <div class="admin-teacher-card__name">${apEscapeHtml(tName)} 선생님</div>
                     <div class="admin-teacher-card__chips">${chips}</div>
                 </div>
-                ${renderDashboardJournalWeekMatrix(tName, todayStr, myClasses)}
+                <div class="admin-teacher-card__journal">
+                    <div class="admin-teacher-card__journal-title">이번 주 일지</div>
+                    ${renderDashboardJournalWeekMatrix(tName, todayStr, myClasses)}
+                </div>
                 <div class="admin-teacher-card__actions">
-                    <button class="btn" onclick="event.stopPropagation(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
                     <button class="btn" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
                 </div>
             </div>`;
