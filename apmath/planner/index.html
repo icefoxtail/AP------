@@ -1,1569 +1,1028 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>AP MATH 플래너</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#007AFF">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="AP 플래너">
-    <link rel="apple-touch-icon" href="icon-192.png">
-    <style>
-        :root {
-            --primary: #1A5CFF;
-            --primary-soft: rgba(26,92,255,0.07);
-            --secondary: #8B95A1;
-            --success: #00B894;
-            --error: #E8414F;
-            --bg: #F2F4F6;
-            --surface: #FFFFFF;
-            --surface-soft: #F8FAFC;
-            --border: #E5E8EB;
-            --text: #191F28;
-            --text-soft: #4E5968;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.035);
-            --safe-bottom: env(safe-area-inset-bottom, 0px);
-
-            --subj-math-bg: rgba(26,92,255,0.07);
-            --subj-math-text: #1A5CFF;
-            --subj-eng-bg: rgba(245,159,0,0.10);
-            --subj-eng-text: #D97706;
-            --subj-kor-bg: rgba(232,65,79,0.08);
-            --subj-kor-text: #D92D3A;
-            --subj-sci-bg: rgba(0,184,148,0.09);
-            --subj-sci-text: #008F72;
-            --subj-soc-bg: rgba(124,58,237,0.08);
-            --subj-soc-text: #6D28D9;
-            --subj-etc-bg: rgba(107,118,132,0.10);
-            --subj-etc-text: #6B7684;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary: #0A84FF;
-                --primary-soft: rgba(10,132,255,0.14);
-                --secondary: #7B7B80;
-                --success: #30D158;
-                --error: #FF453A;
-                --bg: #121212;
-                --surface: #1C1C1E;
-                --surface-soft: #242427;
-                --border: #2C2C2E;
-                --text: #F5F5F7;
-                --text-soft: #A1A1A6;
-                --shadow-sm: none;
-
-                --subj-math-bg: rgba(10,132,255,0.14);
-                --subj-math-text: #64A9FF;
-                --subj-eng-bg: rgba(255,159,10,0.14);
-                --subj-eng-text: #FFB84D;
-                --subj-kor-bg: rgba(255,69,58,0.13);
-                --subj-kor-text: #FF7A73;
-                --subj-sci-bg: rgba(48,209,88,0.13);
-                --subj-sci-text: #67D982;
-                --subj-soc-bg: rgba(159,122,234,0.14);
-                --subj-soc-text: #B99AFF;
-                --subj-etc-bg: rgba(142,142,147,0.14);
-                --subj-etc-text: #A1A1A6;
-            }
-        }
-
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
-        html, body { min-height: 100%; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            background: var(--surface);
-            color: var(--text);
-            line-height: 1.45;
-            overscroll-behavior-y: contain;
-        }
-
-        .top {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.92);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 0 16px;
-            height: 56px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        @media (prefers-color-scheme: dark) { .top { background: rgba(28,28,30,0.92); } }
-        .top-left { display:flex; align-items:center; gap:6px; min-width: 0; }
-        .top h2 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -0.3px; white-space: nowrap; }
-        #student-chip { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .top-status { display:flex; align-items:center; gap:12px; font-size:13px; font-weight:700; flex-shrink: 0; }
-        .top-status button { border:0; background:transparent; padding:0; font:inherit; cursor:pointer; }
-        #top-dday { color:var(--primary); }
-        .top-rate { color:var(--secondary); }
-
-        .app {
-            width: 100%;
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 0 0 calc(92px + var(--safe-bottom));
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-        @media (min-width: 800px) {
-            body { background: var(--bg); }
-            .app { grid-template-columns: 280px minmax(0, 1fr); align-items: start; padding: 24px 16px; gap: 24px; }
-            .side-panel { position: sticky; top: 80px; }
-            .main-panel { background: var(--surface); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
-            .top { border-bottom: none; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
-        }
-
-        .side-panel { min-width: 0; }
-        @media (max-width: 799px) { .side-panel { display:none; } }
-        .summary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-        .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 10px; text-align: center; }
-        .stat-card .val { font-size: 20px; font-weight: 800; color: var(--primary); line-height: 1.1; }
-        .stat-card .lbl { font-size: 11px; color: var(--secondary); font-weight: 650; margin-top: 4px; }
-        .exam-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-        .exam-title { font-size: 11px; color: var(--secondary); font-weight: 700; }
-        .exam-value { font-size: 14px; color: var(--text); font-weight: 700; margin-top: 4px; }
-
-        /* [수정본] 3단계 학습 보조 UI 스타일 */
-        .learning-assist-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-top: 16px; }
-        .assist-stats { display: flex; gap: 8px; margin-bottom: 12px; }
-        .assist-stat-box { flex: 1; background: var(--surface-soft); border-radius: 10px; padding: 10px; text-align: center; border: 1px solid var(--border); }
-        .assist-stat-val { font-size: 16px; font-weight: 800; color: var(--text); }
-        .assist-stat-lbl { font-size: 11px; font-weight: 700; color: var(--secondary); margin-top: 2px; }
-        .assist-subj-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-        .assist-subj-chip { font-size: 10px; font-weight: 750; padding: 3px 6px; border-radius: 6px; line-height: 1.2; background: var(--surface-soft); color: var(--secondary); }
-        .mobile-assist-card { display: none; margin: 16px 16px 0; }
-        @media (max-width: 799px) { .mobile-assist-card { display: block; } }
-
-        .review-card { display: flex; flex-direction: column; gap: 4px; background: var(--surface-soft); border: 1px solid var(--border); border-radius: 10px; padding: 10px; margin-bottom: 6px; cursor: pointer; transition: background 0.15s; }
-        .review-card:active { background: var(--border); }
-        .review-card-top { display: flex; align-items: center; gap: 6px; }
-        .review-d-badge { font-size: 10px; font-weight: 800; color: var(--primary); background: var(--primary-soft); padding: 2px 5px; border-radius: 4px; }
-        .review-card-title { font-size: 13px; font-weight: 650; color: var(--text); }
-
-        .pomodoro-start-box { background: var(--surface-soft); border-radius: 12px; padding: 10px; margin-top: 12px; border: 1px solid var(--border); }
-        .pomodoro-mini { position: fixed; left: 16px; right: 16px; bottom: calc(82px + var(--safe-bottom)); z-index: 1100; max-width: 520px; margin: 0 auto; background: rgba(255,255,255,0.96); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 12px 32px rgba(0,0,0,0.16); padding: 10px 12px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px; align-items: center; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-        @media (prefers-color-scheme: dark) { .pomodoro-mini { background: rgba(28,28,30,0.96); } }
-        .pomodoro-mini-main { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-        .pomodoro-mini-title { font-size: 11px; font-weight: 800; color: var(--secondary); line-height: 1.2; }
-        .pomodoro-mini-plan { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .pomodoro-mini-time { font-size: 22px; font-weight: 800; color: var(--primary); font-variant-numeric: tabular-nums; line-height: 1; }
-        .pomodoro-mini-actions { display: flex; align-items: center; gap: 6px; }
-        .pomodoro-mini-btn { min-height: 34px; padding: 0 10px; border-radius: 10px; font-size: 12px; font-weight: 800; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-family: inherit; }
-        .pomodoro-mini-btn.primary { border-color: transparent; background: var(--primary); color: #fff; }
-        .pomodoro-mini-btn.danger { border-color: rgba(232,65,79,0.28); color: var(--error); background: rgba(232,65,79,0.08); }
-        .pomodoro-mini-close { width: 30px; min-height: 34px; padding: 0; border-radius: 10px; }
-
-        .week-shell { padding: 0 16px; }
-        .week-nav-row { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 7px 0 0; color: var(--secondary); font-size: 12px; font-weight: 700; }
-        .week-nav-row button { border: 0; background: transparent; color: inherit; font: inherit; padding: 4px 6px; cursor: pointer; }
-        .week-strip { display: flex; padding: 10px 0; border-bottom: 1px solid var(--border); justify-content: space-between; }
-        .day-pill { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 4px 0; border: 0; background: transparent; color: var(--secondary); font-family: inherit; cursor: pointer; position: relative; min-width: 0; }
-        .day-name { font-size: 10px; font-weight: 600; color: var(--secondary); line-height: 1.1; }
-        .day-num { font-size: 14px; font-weight: 700; line-height: 1.1; color: var(--text); position: relative; padding-top: 4px; }
-        .day-count { font-size: 11px; font-weight: 600; color: var(--secondary); min-height: 13px; line-height: 1.1; }
-        .day-pill.is-today .day-name, .day-pill.is-today .day-num { color: var(--primary); }
-        .day-pill.selected .day-num { border-bottom: 2px solid var(--primary); padding-bottom: 2px; }
-
-        .subject-strip { display: flex; gap: 16px; padding: 0 16px; overflow-x: auto; border-bottom: 1px solid var(--border); scrollbar-width: none; }
-        .subject-strip::-webkit-scrollbar { display: none; }
-        .subject-pill { font-size: 13px; font-weight: 600; color: var(--secondary); padding: 12px 2px; cursor: pointer; border: none; background: transparent; white-space: nowrap; }
-        .subject-pill.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
-
-        .notebook { padding: 0 16px; background: transparent; }
-        .section-title { margin: 18px 16px 6px; display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: 700; color: var(--text); }
-        .section-title small { font-size: 12px; font-weight: 600; color: var(--secondary); margin-left: 6px; }
-        .day-add { border: none; background: transparent; color: var(--secondary); font-size: 16px; padding: 0 4px; cursor: pointer; }
-        .date-block .date-header { display: flex; align-items: center; justify-content: space-between; font-size: 11px; font-weight: 600; color: var(--secondary); padding: 18px 0 6px; }
-        .date-block.is-today .date-header { display: none; }
-
-        .plan-row { display: flex; align-items: flex-start; gap: 10px; min-height: 36px; padding: 8px 0; border-top: 1px solid var(--border); }
-        .plan-row.carry-row { background: var(--surface-soft); border-radius: 6px; padding: 8px; border-top: none; margin-bottom: 4px; }
-        .chk-wrapper { flex: 0 0 18px; margin-top: 1px; display: flex; align-items: center; justify-content: center; }
-        .chk-input { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--border); background: transparent; margin: 0; cursor: pointer; position: relative; transition: all .15s ease; }
-        .chk-input:checked { background: var(--primary); border-color: var(--primary); }
-        .chk-input:checked::after { content: ''; position: absolute; top: 4px; left: 4px; width: 8px; height: 4px; border: 1.5px solid #fff; border-top: none; border-right: none; transform: rotate(-45deg); }
-        .plan-content { flex: 1; min-width: 0; cursor: pointer; display: flex; flex-direction: column; }
-        .plan-title { font-size: 13px; font-weight: 600; color: var(--text); word-break: break-word; line-height: 1.4; transition: opacity 0.15s ease; }
-        .subject-tag { display: inline-flex; align-items: center; width: fit-content; max-width: 100%; margin-top: 3px; padding: 1px 5px; border-radius: 5px; font-size: 10px; font-weight: 650; line-height: 1.35; background: var(--subj-etc-bg); color: var(--subj-etc-text); }
-        .subject-tag.subj-math { background: var(--subj-math-bg); color: var(--subj-math-text); }
-        .subject-tag.subj-eng { background: var(--subj-eng-bg); color: var(--subj-eng-text); }
-        .subject-tag.subj-kor { background: var(--subj-kor-bg); color: var(--subj-kor-text); }
-        .subject-tag.subj-sci { background: var(--subj-sci-bg); color: var(--subj-sci-text); }
-        .subject-tag.subj-soc { background: var(--subj-soc-bg); color: var(--subj-soc-text); }
-        .subject-tag.subj-etc { background: var(--subj-etc-bg); color: var(--subj-etc-text); }
-        .carry-badge { background: var(--border); color: var(--secondary); font-size: 9px; padding: 2px 4px; border-radius: 4px; margin-right: 4px; vertical-align: middle; }
-        .plan-row.done { opacity: 0.38; }
-        .plan-row.done .plan-title { text-decoration: none; }
-        .roll-btn { background: transparent; border: none; color: var(--primary); font-size: 11px; font-weight: 700; padding: 4px; margin: -4px; cursor: pointer; }
-
-        .inline-add-row { display: flex; align-items: center; gap: 10px; min-height: 36px; margin: 2px -6px 0; padding: 8px 6px; border-radius: 8px; border-top: none; background: var(--primary-soft); }
-        .inline-add-row .chk-wrapper span { width: 18px; height: 18px; border: 1px solid var(--border); border-radius: 50%; display: block; background: var(--surface); }
-        .inline-add-input { flex: 1; border: none; background: transparent; color: var(--text); font-size: 13px; font-weight: 600; padding: 0; outline: none; font-family: inherit; }
-        .inline-add-input::placeholder { color: var(--primary); opacity: 0.65; }
-        .inline-save { border:0; background:transparent; color:var(--primary); font-size:12px; font-weight:700; padding:0 4px; cursor:pointer; }
-
-        .floating-add { position: fixed; right: 18px; bottom: calc(18px + var(--safe-bottom)); z-index: 90; width: 52px; height: 52px; border-radius: 50%; background: var(--primary); color: #fff; border: none; font-size: 26px; font-weight: 300; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(26,92,255,0.3); cursor: pointer; transition: transform 0.1s ease; }
-        .floating-add:active { transform: scale(0.92); }
-
-        .planner-view-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 14px 16px 0; padding: 4px; border-radius: 14px; background: var(--surface-soft); border: 1px solid var(--border); }
-        .planner-view-tab { height: 38px; border: 0; border-radius: 10px; background: transparent; color: var(--secondary); font-size: 12px; font-weight: 800; font-family: inherit; cursor: pointer; }
-        .planner-view-tab.active { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
-        .planner-view-body { padding-top: 4px; }
-        .planner-table-card { margin: 12px 16px 0; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); overflow: hidden; box-shadow: var(--shadow-sm); }
-        .planner-table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .planner-week-table { width: 100%; min-width: 660px; border-collapse: collapse; table-layout: fixed; }
-        .planner-week-table th, .planner-week-table td { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
-        .planner-week-table th:last-child, .planner-week-table td:last-child { border-right: 0; }
-        .planner-week-table tr:last-child td { border-bottom: 0; }
-        .planner-week-table thead th { height: 42px; background: var(--surface-soft); color: var(--secondary); font-size: 11px; font-weight: 800; text-align: center; white-space: nowrap; }
-        .planner-week-table .subject-head { width: 58px; min-width: 58px; position: sticky; left: 0; z-index: 4; background: var(--surface-soft); color: var(--text); border-right: 2px solid var(--border); }
-        .planner-week-table .subject-cell { position: sticky; left: 0; z-index: 3; width: 58px; min-width: 58px; background: var(--surface); color: var(--text); font-size: 13px; font-weight: 800; text-align: center; vertical-align: middle; border-right: 2px solid var(--border); }
-        .planner-week-day { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 42px; }
-        .planner-week-day .date { color: var(--text); font-size: 13px; line-height: 1.1; }
-        .planner-week-day .dow { color: var(--secondary); font-size: 10px; line-height: 1.1; }
-        .planner-week-day.today .date, .planner-week-day.today .dow { color: var(--primary); }
-        
-        .planner-cell { min-height: 76px; padding: 6px; cursor: pointer; background: var(--surface); transition: background-color 0.15s; }
-        .planner-cell.today { background: rgba(26,92,255,0.035); }
-        .planner-cell.selected { box-shadow: inset 0 0 0 1.5px rgba(26,92,255,0.4); }
-        .planner-cell.selected.today { box-shadow: inset 0 0 0 1.5px rgba(26,92,255,0.4); background: rgba(26,92,255,0.035); }
-        .planner-cell.empty { color: var(--border); }
-        .planner-cell-add { width: 100%; height: 100%; min-height: 58px; display: flex; align-items: center; justify-content: center; color: var(--border); font-size: 15px; font-weight: 800; border-radius: 10px; }
-        .planner-cell:active .planner-cell-add { background: var(--surface-soft); }
-        .planner-chip { display: flex; align-items: center; gap: 4px; width: 100%; min-height: 24px; margin-bottom: 4px; padding: 4px 6px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface-soft); color: var(--text); font-size: 11px; font-weight: 700; line-height: 1.25; text-align: left; cursor: pointer; overflow: hidden; }
-        .planner-chip.done { opacity: .42; }
-        .planner-chip .txt { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-        .planner-chip.subj-math { background: var(--subj-math-bg); color: var(--subj-math-text); border-color: transparent; }
-        .planner-chip.subj-eng { background: var(--subj-eng-bg); color: var(--subj-eng-text); border-color: transparent; }
-        .planner-chip.subj-kor { background: var(--subj-kor-bg); color: var(--subj-kor-text); border-color: transparent; }
-        .planner-chip.subj-sci { background: var(--subj-sci-bg); color: var(--subj-sci-text); border-color: transparent; }
-        .planner-chip.subj-soc { background: var(--subj-soc-bg); color: var(--subj-soc-text); border-color: transparent; }
-        .planner-more { font-size: 11px; font-weight: 700; color: var(--primary); background: transparent; border: none; padding: 2px 4px; cursor: pointer; display: block; margin-top: 2px; }
-        
-        .planner-month-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px 0; }
-        .planner-month-title { font-size: 15px; font-weight: 800; color: var(--text); letter-spacing: -0.3px; }
-        .planner-month-actions { display:flex; align-items:center; gap:8px; }
-        .planner-month-actions button { border:0; background:transparent; color:var(--secondary); font-size:13px; font-weight:800; padding:5px 8px; cursor:pointer; }
-        .planner-month-ledger { width: max-content; min-width: 100%; border-collapse: collapse; table-layout: fixed; }
-        .planner-month-ledger th, .planner-month-ledger td { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); text-align: center; }
-        .planner-month-ledger thead th { position: sticky; top: 0; z-index: 5; background: var(--surface); box-shadow: 0 1px 0 var(--border); padding: 5px 0; }
-        .planner-month-ledger .month-subject-head, .planner-month-ledger .month-subject-cell { position: sticky; left: 0; z-index: 6; width: 58px; min-width: 58px; background: var(--surface); border-right: 2px solid var(--border) !important; font-size: 12px; font-weight: 800; color: var(--text); }
-        .planner-month-ledger .month-subject-head { color: var(--secondary); z-index: 7; }
-        .planner-month-ledger .month-day-head { width: 44px; min-width: 44px; color: var(--secondary); }
-        .planner-month-ledger .month-day-head.sun { color: #e53935; }
-        .planner-month-ledger .month-day-head.sat { color: #1565c0; }
-        
-        .planner-month-cell { width: 44px; min-width: 44px; height: 44px; padding: 3px; vertical-align: middle; cursor: pointer; background: var(--surface); transition: background-color 0.15s; }
-        .planner-month-cell.has-plan { background: rgba(26,92,255,0.025); }
-        .planner-month-cell.today { background: rgba(26,92,255,0.045); }
-        .planner-month-cell.selected { box-shadow: inset 0 0 0 1.5px rgba(26,92,255,0.4); }
-        .planner-month-cell.selected.today { box-shadow: inset 0 0 0 1.5px rgba(26,92,255,0.4); background: rgba(26,92,255,0.045); }
-        
-        .planner-month-cell-inner { min-height: 36px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 8px; }
-        .planner-month-dot { width: 6px; height: 6px; border-radius: 999px; display: inline-block; background: var(--primary); }
-        .planner-month-count { font-size: 10px; font-weight: 800; color: var(--text); line-height: 1; }
-        .planner-month-title-mini { border:0; background:transparent; padding:0; font-family:inherit; cursor:pointer; width: 100%; max-width: 38px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 10px; font-weight: 800; line-height: 1.15; color: var(--text); }
-        
-        @media (max-width: 799px) {
-            .planner-view-tabs { margin-top: 10px; }
-            .planner-table-card { margin-left: 0; margin-right: 0; border-left: 0; border-right: 0; border-radius: 0; box-shadow: none; }
-            .planner-week-table { min-width: 642px; }
-            .planner-cell { min-height: 72px; padding: 5px; }
-            .planner-month-ledger .month-day-head, .planner-month-cell { width: 40px; min-width: 40px; }
-        }
-        @media (min-width: 1200px) {
-            .app { max-width: 1280px; grid-template-columns: 280px minmax(0,1fr); }
-            .main-panel { min-width: 0; }
-            .planner-month-ledger .month-day-head, .planner-month-cell { width: 46px; min-width: 46px; }
-        }
-
-        .feedback-banner { margin: 16px 16px 0; border-radius: 12px; border: 1px solid rgba(26,92,255,0.16); background: rgba(26,92,255,0.06); padding: 12px; }
-        .feedback-title { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-        .feedback-text { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; white-space: pre-wrap; }
-        .planner-coach-slot { margin-top: 14px; }
-        .planner-coach-side { display: none; }
-        .planner-coach-main { display: block; }
-        .planner-coach-card { border: 1px solid rgba(26,92,255,0.14); background: rgba(26,92,255,0.05); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
-        .planner-coach-title { font-size: 12px; font-weight: 800; color: var(--primary); line-height: 1.3; }
-        .planner-coach-line { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.5; }
-        .planner-coach-line.sub { color: var(--secondary); font-size: 11px; }
-        @media (min-width: 800px) {
-            .planner-coach-side { display: block; }
-            .planner-coach-main { display: none; }
-        }
-
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; visibility: hidden; transition: .2s ease; }
-        .modal-overlay:not(.hidden) { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--surface); width: 100%; max-width: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
-        .modal-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        .modal-body { padding: 16px; }
-        .input { width: 100%; min-height: 46px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 15px; margin-bottom: 12px; font-family: inherit; font-weight: 600; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; border: none; font-family: inherit; }
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-danger { background: transparent; color: var(--error); border: 1px solid rgba(232,65,79,0.3); }
-        .btn-icon { width: 32px; height: 32px; background: transparent; font-size: 20px; color: var(--text); padding: 0; }
-        .toast { position: fixed; bottom: calc(86px + var(--safe-bottom)); left: 50%; transform: translateX(-50%); background: rgba(25, 31, 40, 0.9); color: #fff; padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 700; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity .2s ease; white-space: nowrap; backdrop-filter: blur(4px); }
-
-
-        .planner-install-card {
-            margin-top: 14px;
-            padding: 14px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, rgba(79,70,229,0.08), rgba(219,39,119,0.08));
-            border: 1px solid rgba(79,70,229,0.14);
-            display: none;
-            gap: 12px;
-            align-items: flex-start;
-        }
-        .planner-install-card.show { display: flex; }
-        .planner-install-icon {
-            flex: 0 0 auto;
-            width: 40px;
-            height: 40px;
-            border-radius: 15px;
-            background: linear-gradient(135deg,#4F46E5 0%,#DB2777 100%);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 800;
-            box-shadow: 0 10px 20px rgba(79,70,229,0.22);
-        }
-        .planner-install-body { min-width: 0; flex: 1; }
-        .planner-install-title { font-size: 13px; font-weight: 800; color: #191F28; line-height: 1.35; }
-        .planner-install-desc { margin-top: 4px; font-size: 12px; font-weight: 700; color: #6B7684; line-height: 1.55; }
-        .planner-install-actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
-        .planner-install-btn {
-            min-height: 36px;
-            padding: 0 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(79,70,229,0.16);
-            background: #fff;
-            color: #4F46E5;
-            font-size: 12px;
-            font-weight: 800;
-            font-family: inherit;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .planner-install-btn.primary { background: #4F46E5; color: #fff; border-color: #4F46E5; }
-
-        .hidden { display: none !important; }
-    </style>
-    <link rel="stylesheet" href="../css/apms-theme-override.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>AP Math Planner</title>
+  <style>
+    :root {
+      --primary:#1A5CFF;
+      --primary-dark:#0040D6;
+      --secondary:#6B7684;
+      --success:#00B894;
+      --error:#E8414F;
+      --warning:#F59F00;
+      --bg:#F2F4F6;
+      --surface:#FFFFFF;
+      --surface-2:#F8FAFC;
+      --border:#E5E8EB;
+      --text:#191F28;
+      --text-soft:#333D4B;
+      --shadow:0 2px 8px rgba(0,0,0,0.03);
+    }
+    * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; outline:none; }
+    body {
+      margin:0;
+      font-family:'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    button, input, select, textarea { font-family:inherit; }
+    .app {
+      width:100%;
+      max-width:1040px;
+      margin:0 auto;
+      padding:16px 14px calc(92px + env(safe-area-inset-bottom));
+    }
+    .top {
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(242,244,246,0.92);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+    .top-inner {
+      max-width:1040px;
+      margin:0 auto;
+      height:58px;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand {
+      font-size:19px;
+      font-weight:700;
+      letter-spacing:-0.3px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .student-chip {
+      min-width:0;
+      max-width:50%;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:13px;
+      font-weight:700;
+      color:var(--secondary);
+      text-align:right;
+    }
+    .card {
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .btn {
+      min-height:44px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--text);
+      padding:10px 14px;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      transition:transform .12s ease, background .12s ease;
+    }
+    .btn:active { transform:scale(0.98); }
+    .btn-primary {
+      background:var(--primary);
+      border-color:var(--primary);
+      color:#fff;
+      box-shadow:0 4px 12px rgba(26,92,255,0.20);
+    }
+    .input {
+      width:100%;
+      min-height:46px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--text);
+      padding:11px 13px;
+      font-size:15px;
+      font-weight:600;
+    }
+    .muted {
+      color:var(--secondary);
+      font-size:12px;
+      font-weight:700;
+    }
+    .pin-wrap {
+      min-height:calc(100vh - 58px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 14px;
+    }
+    .pin-card {
+      width:100%;
+      max-width:380px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px 22px;
+      box-shadow:var(--shadow);
+    }
+    .pin-logo {
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--primary);
+      color:#fff;
+      font-size:24px;
+      font-weight:700;
+      margin:0 auto 16px;
+    }
+    .pin-title {
+      margin:0;
+      text-align:center;
+      font-size:20px;
+      font-weight:700;
+      color:var(--text);
+      letter-spacing:-0.5px;
+    }
+    .pin-desc {
+      margin:8px 0 24px;
+      text-align:center;
+      color:var(--secondary);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.5;
+    }
+    .dashboard {
+      display:grid;
+      grid-template-columns:320px minmax(0,1fr);
+      gap:16px;
+      align-items:start;
+    }
+    .hero {
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:10px;
+      margin-bottom:16px;
+    }
+    .stat {
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:15px 12px;
+    }
+    .stat-label {
+      font-size:11px;
+      font-weight:700;
+      color:var(--secondary);
+      margin-bottom:5px;
+    }
+    .stat-value {
+      font-size:22px;
+      font-weight:700;
+      color:var(--text);
+      line-height:1.15;
+      letter-spacing:-0.5px;
+    }
+    .progress-wrap {
+      height:10px;
+      background:var(--surface-2);
+      border:1px solid var(--border);
+      border-radius:999px;
+      overflow:hidden;
+      margin-top:10px;
+    }
+    .progress-bar {
+      height:100%;
+      background:var(--primary);
+      border-radius:999px;
+      transition:width .2s ease;
+    }
+    .feedback {
+      margin-bottom:16px;
+      border-radius:18px;
+      border:1px solid rgba(26,92,255,0.16);
+      background:rgba(26,92,255,0.06);
+      padding:14px;
+    }
+    .feedback-title {
+      font-size:13px;
+      font-weight:700;
+      color:var(--primary);
+      margin-bottom:5px;
+    }
+    .feedback-text {
+      font-size:14px;
+      font-weight:700;
+      color:var(--text);
+      line-height:1.5;
+      white-space:pre-wrap;
+    }
+    .calendar-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .calendar-title {
+      font-size:17px;
+      font-weight:700;
+      color:var(--text);
+    }
+    .calendar-grid {
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:5px;
+    }
+    .weekday {
+      text-align:center;
+      font-size:11px;
+      font-weight:700;
+      color:var(--secondary);
+      padding:5px 0;
+    }
+    .day {
+      min-height:40px;
+      border:1px solid transparent;
+      border-radius:12px;
+      background:transparent;
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+      position:relative;
+    }
+    .day.out { color:var(--border); cursor:default; }
+    .day.selected {
+      border-color:var(--primary);
+      background:rgba(26,92,255,0.08);
+      color:var(--primary);
+    }
+    .day.today::after {
+      content:'';
+      position:absolute;
+      left:50%;
+      bottom:5px;
+      width:4px;
+      height:4px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:var(--primary);
+    }
+    .day.done-full { background:rgba(0,184,148,0.10); }
+    .day.done-part { background:rgba(245,159,0,0.12); }
+    .plan-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .plan-title {
+      font-size:19px;
+      font-weight:700;
+      color:var(--text);
+      letter-spacing:-0.4px;
+      line-height:1.25;
+    }
+    .plan-date {
+      font-size:12px;
+      font-weight:700;
+      color:var(--secondary);
+      margin-top:4px;
+    }
+    .plan-list {
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+    }
+    .plan-item {
+      min-height:54px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      border-radius:16px;
+      padding:12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .check {
+      width:30px;
+      height:30px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:var(--surface-2);
+      color:var(--surface-2);
+      font-size:17px;
+      font-weight:700;
+      flex:0 0 auto;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .check.done {
+      background:var(--primary);
+      border-color:var(--primary);
+      color:#fff;
+    }
+    .plan-main {
+      min-width:0;
+      flex:1;
+    }
+    .plan-main.done { opacity:.5; text-decoration:line-through; }
+    .plan-item-title {
+      font-size:15px;
+      font-weight:700;
+      color:var(--text);
+      line-height:1.35;
+      word-break:break-word;
+    }
+    .plan-sub {
+      margin-top:3px;
+      font-size:11px;
+      font-weight:700;
+      color:var(--secondary);
+    }
+    .delete {
+      border:0;
+      background:transparent;
+      color:var(--secondary);
+      font-size:12px;
+      font-weight:700;
+      padding:8px;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+    .empty {
+      padding:34px 12px;
+      text-align:center;
+      color:var(--secondary);
+      font-size:13px;
+      font-weight:700;
+      border:1px dashed var(--border);
+      border-radius:16px;
+      background:var(--surface-2);
+    }
+    .quick-form {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 110px 86px;
+      gap:8px;
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid var(--border);
+    }
+    .mobile-add {
+      display:none;
+      position:fixed;
+      left:14px;
+      right:14px;
+      bottom:calc(14px + env(safe-area-inset-bottom));
+      z-index:40;
+      min-height:54px;
+      border-radius:18px;
+      box-shadow:0 10px 24px rgba(26,92,255,0.24);
+    }
+    .modal-overlay {
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+      background:rgba(0,0,0,0.32);
+      z-index:100;
+      padding:14px;
+    }
+    .modal-overlay.show { display:flex; }
+    .modal {
+      width:100%;
+      max-width:420px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.16);
+    }
+    .modal-title {
+      font-size:18px;
+      font-weight:700;
+      color:var(--text);
+      margin-bottom:14px;
+    }
+    .toast {
+      position:fixed;
+      left:50%;
+      bottom:calc(82px + env(safe-area-inset-bottom));
+      transform:translateX(-50%);
+      background:#191F28;
+      color:#fff;
+      border-radius:999px;
+      padding:10px 15px;
+      font-size:13px;
+      font-weight:700;
+      z-index:200;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    .toast.show {
+      opacity:1;
+      transform:translateX(-50%) translateY(-4px);
+    }
+    @media (max-width:767px) {
+      .app { padding:14px 12px calc(88px + env(safe-area-inset-bottom)); }
+      .dashboard { display:block; }
+      .side { margin-bottom:14px; }
+      .hero { grid-template-columns:1fr 1fr; }
+      .hero .stat:last-child { grid-column:span 2; }
+      .calendar-card { display:none; }
+      .quick-form { display:none; }
+      .mobile-add { display:flex; }
+      .top-inner { height:56px; }
+      .brand { font-size:18px; }
+      .student-chip { max-width:48%; font-size:12px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="top">
-        <div class="top-left">
-            <h2>AP MATH</h2>
-            <span id="student-chip"></span>
-        </div>
-        <div class="top-status">
-            <button id="top-dday" onclick="resetAuth()" aria-label="로그아웃">로그아웃</button>
-            <span id="top-rate" class="top-rate">0%</span>
-        </div>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand">AP Math Planner</div>
+      <div id="student-chip" class="student-chip"></div>
     </div>
+  </header>
 
-    <div id="app" class="app"></div>
-    <button id="fab-add" class="floating-add hidden" onclick="openAddModal(selectedDate, activeSubject === '전체' ? '수학' : activeSubject)">＋</button>
+  <main id="app" class="app"></main>
 
-    <div id="modal-overlay" class="modal-overlay hidden" onclick="if(event.target===this) closeModal()">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title" style="margin:0; font-size:16px; font-weight:800;">계획 수정</h3>
-                <button class="btn btn-icon" onclick="closeModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <label style="display:block; font-size:11px; font-weight:700; color:var(--secondary); margin-bottom:6px;">할 일</label>
-                <input type="text" id="plan-title" class="input" placeholder="학습 내용 (예: 쎈 수학 p.10~15)">
-                <label style="display:block; font-size:11px; font-weight:700; color:var(--secondary); margin-bottom:6px;">과목</label>
-                <select id="plan-subject" class="input">
-                    <option value="수학">수학</option>
-                    <option value="국어">국어</option>
-                    <option value="영어">영어</option>
-                    <option value="과학">과학</option>
-                    <option value="사회">사회</option>
-                    <option value="기타">기타</option>
-                </select>
-                <div id="repeat-rule-container">
-                    <label style="display:block; font-size:11px; font-weight:700; color:var(--secondary); margin-bottom:6px;">반복</label>
-                    <select id="plan-repeat" class="input">
-                        <option value="">안 함</option>
-                        <option value="daily">매일 (시험까지)</option>
-                        <option value="weekly">매주 (시험까지)</option>
-                    </select>
-                </div>
-                
-                <div class="pomodoro-start-box hidden" id="pomodoro-container">
-                    <button id="pomo-start-btn" class="btn" style="width:100%; min-height:42px; background:var(--surface); border:1px solid var(--border); color:var(--primary); font-weight:800;" onclick="startPomoForCurrentPlan()">25분 집중 시작</button>
-                </div>
+  <button id="mobile-add-btn" class="btn btn-primary mobile-add" onclick="openAddModal(selectedDate)">+ 할 일 추가</button>
 
-                <button class="btn btn-primary" style="width:100%; min-height:48px; margin-top:8px;" onclick="savePlan()">저장</button>
-                <button id="delete-plan-btn" class="btn btn-danger hidden" style="width:100%; min-height:48px; margin-top:8px;" onclick="deletePlan()">삭제</button>
-            </div>
-        </div>
+  <div id="modal-overlay" class="modal-overlay" onclick="if(event.target.id==='modal-overlay')closeModal()">
+    <div class="modal">
+      <div id="modal-title" class="modal-title"></div>
+      <div id="modal-body"></div>
     </div>
+  </div>
 
-    <div id="exam-date-modal-overlay" class="modal-overlay hidden" onclick="if(event.target===this) closeExamDateModal()">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 style="margin:0; font-size:16px; font-weight:800;">시험 일정 변경</h3>
-                <button class="btn btn-icon" onclick="closeExamDateModal()">×</button>
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
+    // TODO: 고1A 기말고사 확정일. 전체 반 확장 시 반별 설정값으로 분리한다.
+    const EXAM_DATE = '2026-07-11';
+
+    const params = new URLSearchParams(location.search);
+    const studentId = String(params.get('student_id') || '').trim();
+
+    let pin = '';
+    let student = null;
+    let plans = [];
+    let feedback = [];
+    let plannerIndex = null;
+    let selectedDate = todayStr();
+    let currentMonth = selectedDate.slice(0, 7);
+
+    function $(id) { return document.getElementById(id); }
+    function todayStr() { return new Date().toLocaleDateString('sv-SE'); }
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+    }
+    function toast(message) {
+      const el = $('toast');
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
+    }
+    function authStore() { return window.localStorage; }
+    function authKey() { return `planner_auth_${studentId}`; }
+    function pinKey() { return `planner_pin_${studentId}`; }
+    function isMobile() { return window.innerWidth < 768; }
+    function addDays(date, days) {
+      const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      d.setDate(d.getDate() + days);
+      return d;
+    }
+    function formatDate(date) { return date.toLocaleDateString('sv-SE'); }
+    function monthBounds(month) {
+      const [y, m] = month.split('-').map(Number);
+      const first = new Date(y, m - 1, 1);
+      const last = new Date(y, m, 0);
+      return { from: formatDate(first), to: formatDate(last), year: y, monthNo: m };
+    }
+    function invalidatePlannerIndex() {
+      plannerIndex = null;
+    }
+    function setPlannerData(nextPlans, nextFeedback) {
+      plans = Array.isArray(nextPlans) ? nextPlans : [];
+      feedback = Array.isArray(nextFeedback) ? nextFeedback : [];
+      invalidatePlannerIndex();
+    }
+    function upsertPlannerPlans(rows) {
+      const nextRows = Array.isArray(rows) ? rows : [];
+      if (!nextRows.length) return;
+      const byId = new Map(plans.map(p => [String(p.id || ''), p]));
+      nextRows.forEach(row => {
+        const id = String(row && row.id || '');
+        if (!id) return;
+        byId.set(id, Object.assign({}, byId.get(id) || {}, row));
+      });
+      plans = Array.from(byId.values()).sort((a,b) =>
+        String(a.plan_date || '').localeCompare(String(b.plan_date || '')) ||
+        String(a.created_at || '').localeCompare(String(b.created_at || '')) ||
+        String(a.id || '').localeCompare(String(b.id || ''))
+      );
+      invalidatePlannerIndex();
+    }
+    function patchPlannerPlan(planId, changes) {
+      const id = String(planId || '');
+      let changed = false;
+      plans = plans.map(p => {
+        if (String(p.id || '') !== id) return p;
+        changed = true;
+        return Object.assign({}, p, changes || {});
+      });
+      if (changed) invalidatePlannerIndex();
+      return changed;
+    }
+    function removePlannerPlan(planId) {
+      const id = String(planId || '');
+      const before = plans.length;
+      plans = plans.filter(p => String(p.id || '') !== id);
+      if (plans.length !== before) invalidatePlannerIndex();
+    }
+    function getPlannerIndex() {
+      if (plannerIndex) return plannerIndex;
+
+      const byDate = {};
+      const planDateMap = {};
+      let monthTotal = 0;
+      let monthDone = 0;
+
+      plans.forEach(p => {
+        const d = String(p.plan_date || '');
+        if (!d) return;
+        if (!byDate[d]) byDate[d] = [];
+        byDate[d].push(p);
+        if (!planDateMap[d]) planDateMap[d] = { total:0, done:0 };
+        planDateMap[d].total++;
+        if (Number(p.is_done || 0) === 1) planDateMap[d].done++;
+        if (d.slice(0, 7) === currentMonth) {
+          monthTotal++;
+          if (Number(p.is_done || 0) === 1) monthDone++;
+        }
+      });
+
+      Object.keys(byDate).forEach(date => {
+        byDate[date].sort((a,b) =>
+          String(a.created_at || '').localeCompare(String(b.created_at || '')) ||
+          String(a.id || '').localeCompare(String(b.id || ''))
+        );
+      });
+
+      const feedbackByDate = {};
+      feedback.forEach(f => {
+        const d = String(f && f.feedback_date || '');
+        if (d) feedbackByDate[d] = f;
+      });
+
+      plannerIndex = {
+        byDate,
+        planDateMap,
+        feedbackByDate,
+        monthTotal,
+        monthDone
+      };
+      return plannerIndex;
+    }
+    function getPlanDateMap() {
+      return getPlannerIndex().planDateMap;
+    }
+    function plansForDate(date) {
+      return (getPlannerIndex().byDate[String(date)] || []).slice();
+    }
+    function feedbackForDate(date) {
+      return getPlannerIndex().feedbackByDate[String(date)] || null;
+    }
+    function calcDDay() {
+      const today = new Date(todayStr() + 'T00:00:00');
+      const exam = new Date(EXAM_DATE + 'T00:00:00');
+      return Math.ceil((exam - today) / 86400000);
+    }
+    function getMonthCompletionRate() {
+      const idx = getPlannerIndex();
+      if (!idx.monthTotal) return 0;
+      return Math.round((idx.monthDone / idx.monthTotal) * 100);
+    }
+
+    async function apiGet(path) {
+      const r = await fetch(`${API_BASE}/${path}`, { headers: { 'Content-Type': 'application/json' } });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error || data.message || '요청 실패');
+      return data;
+    }
+    async function apiSend(path, method, body) {
+      const r = await fetch(`${API_BASE}/${path}`, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: body ? JSON.stringify(body) : undefined
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) throw new Error(data.error || data.message || '요청 실패');
+      return data;
+    }
+
+    async function initPlanner() {
+      if (!studentId) {
+        renderError('학생 링크가 올바르지 않습니다.');
+        return;
+      }
+
+      const savedAuth = authStore().getItem(authKey());
+      const savedPin = authStore().getItem(pinKey());
+
+      if (savedAuth === 'true' && savedPin) {
+        pin = savedPin;
+        try {
+          await verifyPin(true);
+          return;
+        } catch (e) {
+          authStore().removeItem(authKey());
+          authStore().removeItem(pinKey());
+        }
+      }
+
+      renderPinGate();
+    }
+
+    function renderError(message) {
+      $('student-chip').textContent = '';
+      $('app').innerHTML = `
+        <div class="pin-wrap">
+          <div class="pin-card">
+            <div class="pin-logo">!</div>
+            <h1 class="pin-title">접속 오류</h1>
+            <p class="pin-desc">${escapeHtml(message)}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPinGate() {
+      $('student-chip').textContent = '';
+      $('mobile-add-btn').style.display = 'none';
+      $('app').innerHTML = `
+        <div class="pin-wrap">
+          <div class="pin-card">
+            <div class="pin-logo">A</div>
+            <h1 class="pin-title">개인 PIN 확인</h1>
+            <p class="pin-desc">장기 플래너는 학생 개인 공간입니다.<br>본인 PIN을 입력하면 열립니다.</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <input id="pin-input" class="input" type="password" inputmode="numeric" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')verifyPin(false)">
+              <button class="btn btn-primary" onclick="verifyPin(false)">확인</button>
             </div>
-            <div class="modal-body">
-                <input type="date" id="modal-exam-date" class="input">
-                <button class="btn btn-primary" style="width:100%; min-height:48px; margin-top:8px;" onclick="saveExamDateFromModal()">저장</button>
+            <div class="muted" style="margin-top:16px; text-align:center;">공용 기기에서는 사용 후 브라우저를 닫아주세요.</div>
+          </div>
+        </div>
+      `;
+      setTimeout(() => $('pin-input')?.focus(), 80);
+    }
+
+    async function verifyPin(fromSession) {
+      if (!fromSession) {
+        pin = String($('pin-input')?.value || '').trim();
+      }
+      if (!pin) {
+        toast('PIN을 입력하세요.');
+        return;
+      }
+
+      try {
+        const data = await apiGet(`planner-auth?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`);
+        if (!data?.success || !data?.student) {
+          authStore().removeItem(authKey());
+          authStore().removeItem(pinKey());
+          if (fromSession) {
+            throw new Error(data?.error || 'session expired');
+          }
+          const input = $('pin-input');
+          if (input) {
+            input.value = '';
+            input.focus();
+          }
+          toast(data?.error || 'PIN이 올바르지 않습니다.');
+          return;
+        }
+
+        student = data.student;
+        authStore().setItem(authKey(), 'true');
+        authStore().setItem(pinKey(), pin);
+        $('student-chip').textContent = student.name || '';
+        await loadPlannerData();
+        renderPlanner();
+      } catch (e) {
+        authStore().removeItem(authKey());
+        authStore().removeItem(pinKey());
+        toast('인증 중 오류가 발생했습니다.');
+      }
+    }
+
+    async function loadPlannerData() {
+      const { from, to } = monthBounds(currentMonth);
+      const data = await apiGet(`planner?student_id=${encodeURIComponent(studentId)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&pin=${encodeURIComponent(pin)}`);
+      setPlannerData(data.plans, data.feedback);
+    }
+
+    function renderPlanner() {
+      if (isMobile()) renderMobilePlanner();
+      else renderPCPlanner();
+      $('mobile-add-btn').style.display = isMobile() ? 'flex' : 'none';
+    }
+
+    function renderStats() {
+      const dday = calcDDay();
+      const rate = getMonthCompletionRate();
+      const todayPlans = plansForDate(todayStr());
+      const todayDone = todayPlans.filter(p => Number(p.is_done || 0) === 1).length;
+      return `
+        <div class="hero">
+          <div class="stat">
+            <div class="stat-label">기말고사</div>
+            <div class="stat-value">${dday >= 0 ? `D-${dday}` : `D+${Math.abs(dday)}`}</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">오늘 완료</div>
+            <div class="stat-value">${todayDone}/${todayPlans.length}</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">월 이행률</div>
+            <div class="stat-value">${rate}%</div>
+            <div class="progress-wrap"><div class="progress-bar" style="width:${rate}%"></div></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFeedbackBanner() {
+      const f = feedbackForDate(selectedDate);
+      if (!f) return '';
+      const badge = f.badge ? `<span style="font-size:18px; margin-right:4px;">${escapeHtml(f.badge)}</span>` : '';
+      const text = f.teacher_comment || '피드백이 도착했습니다.';
+      return `
+        <div class="feedback">
+          <div class="feedback-title">${badge}담임 피드백</div>
+          <div class="feedback-text">${escapeHtml(text)}</div>
+        </div>
+      `;
+    }
+
+    function renderPCPlanner() {
+      $('app').innerHTML = `
+        ${renderStats()}
+        ${renderFeedbackBanner()}
+        <div class="dashboard">
+          <section class="side">
+            <div class="card calendar-card">
+              ${renderCalendar(Number(currentMonth.slice(0,4)), Number(currentMonth.slice(5,7)))}
             </div>
+          </section>
+          <section>
+            <div class="card">
+              ${renderPlanPanel()}
+            </div>
+          </section>
         </div>
-    </div>
+      `;
+    }
 
-    <div id="pomodoro-mini" class="pomodoro-mini hidden" aria-live="polite">
-        <div class="pomodoro-mini-main">
-            <div class="pomodoro-mini-title">25분 집중</div>
-            <div id="pomo-plan-title" class="pomodoro-mini-plan">현재 계획</div>
+    function renderMobilePlanner() {
+      $('app').innerHTML = `
+        ${renderStats()}
+        ${renderFeedbackBanner()}
+        <div class="card">
+          ${renderPlanPanel()}
         </div>
-        <div class="pomodoro-mini-actions">
-            <div id="pomo-time-display" class="pomodoro-mini-time">25:00</div>
-            <button id="pomo-toggle-btn" class="pomodoro-mini-btn primary" onclick="togglePomo()">시작</button>
-            <button class="pomodoro-mini-btn" onclick="resetPomo()">초기화</button>
-            <button class="pomodoro-mini-btn pomodoro-mini-close danger" onclick="closePomoMini()">×</button>
+      `;
+    }
+
+    function renderCalendar(year, monthNo) {
+      const first = new Date(year, monthNo - 1, 1);
+      const last = new Date(year, monthNo, 0);
+      const startDay = first.getDay();
+      const total = last.getDate();
+      const planMap = getPlanDateMap();
+
+      const cells = [];
+      for (let i = 0; i < startDay; i++) cells.push(`<button class="day out" disabled></button>`);
+      for (let d = 1; d <= total; d++) {
+        const date = `${year}-${String(monthNo).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const p = planMap[date];
+        const cls = [
+          'day',
+          date === selectedDate ? 'selected' : '',
+          date === todayStr() ? 'today' : '',
+          p && p.total > 0 && p.done === p.total ? 'done-full' : '',
+          p && p.total > 0 && p.done < p.total ? 'done-part' : ''
+        ].filter(Boolean).join(' ');
+        cells.push(`<button class="${cls}" onclick="selectDate('${date}')">${d}</button>`);
+      }
+
+      const prev = new Date(year, monthNo - 2, 1);
+      const next = new Date(year, monthNo, 1);
+
+      return `
+        <div class="calendar-head">
+          <button class="btn" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(prev).slice(0,7)}')">‹</button>
+          <div class="calendar-title">${year}년 ${monthNo}월</div>
+          <button class="btn" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(next).slice(0,7)}')">›</button>
         </div>
-    </div>
-
-    <div id="toast" class="toast"></div>
-
-    <script>
-        const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
-        const SUBJECTS = ['전체', '수학', '국어', '영어', '과학', '사회', '기타'];
-        const PLANNER_TABLE_SUBJECTS = ['국어', '영어', '수학', '사회', '과학'];
-        const PLANNER_VIEW_KEY = 'PLANNER_VIEW';
-        const PLANNER_COACH_MESSAGES = {
-            empty: [
-                {
-                    status: '오늘 계획이 아직 없어요.',
-                    action: '지금 당장 할 수 있는 것 하나만 적어보세요.',
-                    cheer: '하나면 충분해요.'
-                },
-                {
-                    status: '비어 있어도 괜찮아요.',
-                    action: '오늘 딱 한 가지만 정해볼까요?',
-                    cheer: '시작하면 이미 반은 한 거예요.'
-                }
-            ],
-            too_many: [
-                {
-                    status: '계획이 좀 많아요.',
-                    action: '이 중에서 오늘 꼭 할 것 3개만 골라보세요.',
-                    cheer: '3개만 끝내도 오늘은 잘 한 거예요.'
-                },
-                {
-                    status: '계획이 많으면 오히려 시작이 막혀요.',
-                    action: '제일 빨리 끝낼 수 있는 것부터 시작해보세요.',
-                    cheer: '첫 체크가 나머지를 끌어줄 거예요.'
-                }
-            ],
-            vague: [
-                {
-                    status: '계획이 좀 흐릿해요.',
-                    action: '범위나 분량을 한 줄만 더 적어보세요.',
-                    cheer: '구체적일수록 시작하기 쉬워요.'
-                },
-                {
-                    status: "'공부하기'는 끝이 없어서 미루게 돼요.",
-                    action: "'수학 p.12, 1~5번 풀기'처럼 딱 잘라보세요.",
-                    cheer: '잘릴수록 바로 시작할 수 있어요.'
-                },
-                {
-                    status: '방향은 맞아요. 조금만 더 좁혀볼까요?',
-                    action: '몇 문제, 몇 쪽인지 숫자를 하나 넣어보세요.',
-                    cheer: '숫자 하나가 계획을 살려요.'
-                }
-            ],
-            good: [
-                {
-                    status: '계획이 선명해요.',
-                    action: '가장 가벼운 것부터 시작해볼까요?',
-                    cheer: '이대로 하면 돼요.'
-                },
-                {
-                    status: '계획이 잘 쪼개져 있어요.',
-                    action: '끝내는 즉시 체크하면 흐름이 더 잘 잡혀요.',
-                    cheer: '체크가 쌓일수록 속도가 붙어요.'
-                }
-            ],
-            good_progress: [
-                {
-                    status: '체크가 잘 쌓이고 있어요.',
-                    action: '남은 것 중 제일 짧은 것 골라서 이어가세요.',
-                    cheer: '이 흐름이에요.'
-                },
-                {
-                    status: '잘 가고 있어요.',
-                    action: '남은 것도 순서대로만 가면 돼요.',
-                    cheer: '흐름은 이미 잡혔어요.'
-                }
-            ],
-            low_progress: [
-                {
-                    status: '아직 많이 남아 있어요.',
-                    action: '지금 바로 할 수 있는 것 딱 하나만 골라보세요.',
-                    cheer: '체크 하나가 분위기를 바꿔요.'
-                },
-                {
-                    status: '시작이 좀 늦었을 수도 있어요.',
-                    action: '전체 보지 말고, 지금 할 것 하나만 보세요.',
-                    cheer: '지금도 늦지 않았어요.'
-                }
-            ],
-            heavy_item: [
-                {
-                    status: '한 항목이 조금 커 보여요.',
-                    action: '두 개의 작은 목표로 나눠볼까요?',
-                    cheer: '작게 나누면 체크하기 쉬워요.'
-                },
-                {
-                    status: '이 계획은 한 번에 끝내기엔 숨이 찰 수 있어요.',
-                    action: '오늘 할 만큼만 잘라서 적어보세요.',
-                    cheer: '나누는 것도 좋은 계획이에요.'
-                }
-            ],
-            unbalanced_length: [
-                {
-                    status: '항목마다 무게가 조금 달라 보여요.',
-                    action: '큰 계획은 작게 나누고, 짧은 계획은 조금 더 구체화해보세요.',
-                    cheer: '균형이 맞으면 실행하기 편해져요.'
-                }
-            ],
-            subject_imbalance: [
-                {
-                    status: '한 과목에 계획이 많이 몰려 있어요.',
-                    action: '가능하면 다른 과목도 조금 섞어보세요.',
-                    cheer: '균형이 있으면 오래 버티기 쉬워요.'
-                }
-            ],
-            repeat_left: [
-                {
-                    status: '비슷한 계획이 계속 남는 것 같아요.',
-                    action: '오늘은 양을 조금 줄여서 끝낼 수 있게 바꿔볼까요?',
-                    cheer: '작게 바꾸는 것도 좋은 선택이에요.'
-                },
-                {
-                    status: '자꾸 미뤄지는 항목은 이유가 있을 수 있어요.',
-                    action: '무엇이 막히는지 생각하고 더 작은 단위로 나눠보세요.',
-                    cheer: '끝낼 수 있게 바꾸면 다시 시작하기 쉬워요.'
-                }
-            ],
-            reset_evening: [
-                {
-                    status: '저녁인데 아직 많이 남았네요.',
-                    action: '오늘 것과 내일로 넘길 것, 지금 딱 나눠보세요.',
-                    cheer: '나누는 것도 계획이에요.'
-                },
-                {
-                    status: '오늘 시작이 어려웠을 수 있어요.',
-                    action: '남은 계획 중 오늘 꼭 할 것 하나만 골라보세요.',
-                    cheer: '오늘은 여기까지도 충분해요.'
-                }
-            ],
-            time_night: [
-                {
-                    status: '꽤 늦었어요.',
-                    action: '오늘은 여기까지만 하고, 내일 할 것만 하나 적어두세요.',
-                    cheer: '오늘 쉬는 것도 내일을 위한 거예요.'
-                }
-            ],
-            balanced_cheer: [
-                {
-                    status: '지금 방향은 괜찮아요.',
-                    action: '조금만 정리하면 더 편하게 시작할 수 있어요.',
-                    cheer: '하나씩만 끝내도 오늘은 성공이에요.'
-                }
-            ]
-        };
-        let studentId = '', pin = '', student = null, plans = [], feedback = [], selectedDate = todayStr(), examDate = '';
-        let editPlanId = null, editPlanUpdatedAt = null, currentWeekStart = getWeekStart(todayStr()), activeSubject = '전체';
-        let touchStartX = 0, touchStartY = 0, inlineAddDate = null, plannerView = getDefaultPlannerView();
-        let shouldScrollToSelectedDate = false;
-        let plannerCoachState = { mainState: '', variantIndex: 0 };
-        let plannerCoachTimer = null;
-
-        // [3.1 패치] 뽀모도로 전역 변수: 하단 고정 미니바 방식
-        let pomoInterval = null;
-        let pomoTime = 25 * 60;
-        let pomoActive = false;
-        let pomoPlanTitle = '';
-        let deferredInstallPrompt = null;
-
-        function $(id) { return document.getElementById(id); }
-        function todayStr() { return new Date().toLocaleDateString('sv-SE'); }
-        function dateObj(str) { return new Date(str + 'T00:00:00'); }
-        function formatDate(d) { return d.toLocaleDateString('sv-SE'); }
-        function addDays(str, days) { const d = dateObj(str); d.setDate(d.getDate() + days); return formatDate(d); }
-        function getWeekStart(str) {
-            const d = dateObj(str);
-            const day = d.getDay();
-            const diff = day === 0 ? -6 : 1 - day;
-            d.setDate(d.getDate() + diff);
-            return formatDate(d);
-        }
-        function getWeekDates(start = currentWeekStart) { return Array.from({ length: 7 }, (_, i) => addDays(start, i)); }
-        function getDefaultPlannerView() {
-            const saved = window.localStorage?.getItem(PLANNER_VIEW_KEY);
-            if (['weekly','monthly','list'].includes(saved)) return saved;
-            return window.matchMedia && window.matchMedia('(min-width: 1200px)').matches ? 'monthly' : 'weekly';
-        }
-        function getMonthStart(str = selectedDate) { return String(str || todayStr()).slice(0, 7) + '-01'; }
-        function getMonthEnd(str = selectedDate) {
-            const base = dateObj(getMonthStart(str));
-            const end = new Date(base.getFullYear(), base.getMonth() + 1, 0);
-            return formatDate(end);
-        }
-        function getMonthLabel(str = selectedDate) {
-            const d = dateObj(getMonthStart(str));
-            return `${d.getFullYear()}년 ${d.getMonth() + 1}월`;
-        }
-        function moveMonth(delta) {
-            const d = dateObj(getMonthStart(selectedDate));
-            d.setMonth(d.getMonth() + delta);
-            selectedDate = formatDate(d);
-            currentWeekStart = getWeekStart(selectedDate);
-            inlineAddDate = null;
-            loadPlannerData().then(renderPlanner);
-        }
-        function formatDateShort(str) {
-            const d = dateObj(str);
-            return `${d.getMonth() + 1}/${d.getDate()}(${['일','월','화','수','목','금','토'][d.getDay()]})`;
-        }
-        function escapeHtml(value) {
-            return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
-        }
-        function escapeJs(value) { return String(value ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n').replace(/\r/g, ''); }
-        function isDone(p) { return Number(p.is_done) === 1; }
-        function planSubject(p) { return String(p.subject || '수학').trim() || '수학'; }
-        function visiblePlans(list) { return activeSubject === '전체' ? list : list.filter(p => planSubject(p) === activeSubject); }
-        function getSubjectClass(subject) {
-            const s = String(subject || '수학').trim();
-            if (s === '수학') return 'subj-math';
-            if (s === '영어') return 'subj-eng';
-            if (s === '국어') return 'subj-kor';
-            if (s === '과학') return 'subj-sci';
-            if (s === '사회') return 'subj-soc';
-            return 'subj-etc';
-        }
-        function toast(msg) {
-            const t = $('toast');
-            if (!t) return;
-            t.textContent = msg;
-            t.style.opacity = '1';
-            setTimeout(() => { t.style.opacity = '0'; }, 1800);
-        }
-
-
-        function isStandalonePwa() {
-            return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-        }
-
-        function isIosSafari() {
-            const ua = window.navigator.userAgent || '';
-            const isIos = /iphone|ipad|ipod/i.test(ua);
-            const isSafari = /safari/i.test(ua) && !/crios|fxios|edgios|kakaotalk|naver/i.test(ua);
-            return isIos && isSafari;
-        }
-
-        function shouldShowInstallCard() {
-            if (isStandalonePwa()) return false;
-            return !!deferredInstallPrompt || isIosSafari();
-        }
-
-        function renderPlannerInstallCard() {
-            const visible = shouldShowInstallCard();
-            const ios = isIosSafari() && !deferredInstallPrompt;
-            const desc = ios
-                ? '아이폰은 Safari 공유 버튼을 누른 뒤 “홈 화면에 추가”를 선택하면 됩니다.'
-                : '홈 화면에 추가하면 다음부터 AP 플래너 앱처럼 바로 들어올 수 있습니다.';
-            const button = deferredInstallPrompt
-                ? '<button class="planner-install-btn primary" onclick="installPlannerApp()">플래너 앱 설치</button>'
-                : '';
-            return `
-                <div id="planner-install-card" class="planner-install-card ${visible ? 'show' : ''}">
-                    <div class="planner-install-icon">AP</div>
-                    <div class="planner-install-body">
-                        <div class="planner-install-title">AP 플래너 앱으로 홈 화면에 추가</div>
-                        <div class="planner-install-desc">${desc}</div>
-                        <div class="planner-install-actions">
-                            ${button}
-                            <button class="planner-install-btn" onclick="dismissPlannerInstallGuide()">나중에</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function refreshPlannerInstallCards() {
-            document.querySelectorAll('#planner-install-card').forEach(el => {
-                const wrap = document.createElement('div');
-                wrap.innerHTML = renderPlannerInstallCard().trim();
-                el.replaceWith(wrap.firstElementChild);
-            });
-        }
-
-        async function installPlannerApp() {
-            if (!deferredInstallPrompt) {
-                toast(isIosSafari() ? '공유 버튼 → 홈 화면에 추가를 눌러주세요.' : '브라우저 메뉴에서 홈 화면에 추가를 눌러주세요.');
-                return;
-            }
-            const promptEvent = deferredInstallPrompt;
-            deferredInstallPrompt = null;
-            promptEvent.prompt();
-            try { await promptEvent.userChoice; } catch (e) {}
-            refreshPlannerInstallCards();
-        }
-
-        function dismissPlannerInstallGuide() {
-            document.querySelectorAll('#planner-install-card').forEach(el => el.classList.remove('show'));
-            toast('나중에 브라우저 메뉴에서 홈 화면에 추가할 수 있습니다.');
-        }
-
-        async function apiGet(path) { try { const r = await fetch(`${API_BASE}/${path}`); return await r.json(); } catch (e) { return { error: e.message }; } }
-        async function apiPost(path, data) { try { const r = await fetch(`${API_BASE}/${path}`, { method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } }); return await r.json(); } catch (e) { return { error: e.message }; } }
-        async function apiPatch(path, data) { try { const r = await fetch(`${API_BASE}/${path}`, { method: 'PATCH', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } }); return await r.json(); } catch (e) { return { error: e.message }; } }
-        async function apiDelete(path) { try { const r = await fetch(`${API_BASE}/${path}`, { method: 'DELETE' }); return await r.json(); } catch (e) { return { error: e.message }; } }
-
-        function authStore() { return window.localStorage; }
-
-        async function init() {
-            studentId = new URLSearchParams(location.search).get('student_id') || authStore().getItem('PLANNER_SID') || sessionStorage.getItem('PLANNER_SID') || '';
-            pin = new URLSearchParams(location.search).get('pin') || authStore().getItem('PLANNER_PIN') || sessionStorage.getItem('PLANNER_PIN') || '';
-            const savedSubject = authStore().getItem('PLANNER_SUBJECT') || sessionStorage.getItem('PLANNER_SUBJECT') || '전체';
-            if (SUBJECTS.includes(savedSubject)) activeSubject = savedSubject;
-            plannerView = getDefaultPlannerView();
-            selectedDate = todayStr();
-            currentWeekStart = getWeekStart(selectedDate);
-            if (!studentId || !pin) renderAuth();
-            else verifyPin();
-        }
-
-        function renderAuth() {
-            $('app').innerHTML = `
-                <style>
-                    @keyframes fluidBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-                    .ap-login-fullscreen { background: radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.18) 0px, transparent 55%), radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 55%), radial-gradient(at 100% 100%, rgba(167, 139, 250, 0.18) 0px, transparent 55%), radial-gradient(at 0% 100%, rgba(196, 181, 253, 0.12) 0px, transparent 55%), linear-gradient(135deg, #4F46E5 0%, #7C3AED 46%, #DB2777 100%); background-size: 200% 200%; animation: fluidBG 25s ease infinite; }
-                    .login-card { border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(124, 58, 237, 0.03); }
-                    @media (max-width: 760px) {
-                        .ap-login-fullscreen > div:nth-child(3) { display:flex !important; flex-direction:column !important; justify-content:space-between !important; gap:0 !important; padding:calc(34px + env(safe-area-inset-top)) 20px calc(22px + env(safe-area-inset-bottom)) !important; }
-                        .ap-login-fullscreen section:first-of-type { gap:18px !important; padding-top:18px !important; }
-                        .ap-login-fullscreen section:first-of-type > div:first-child { flex-direction:column !important; align-items:flex-start !important; gap:16px !important; }
-                        .ap-login-fullscreen section:first-of-type img { width:76px !important; height:76px !important; border-radius:21px !important; }
-                        .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(34px"] { font-size:42px !important; letter-spacing:-2.2px !important; }
-                        .ap-login-fullscreen section:first-of-type div[style*="font-size:clamp(18px"] { font-size:20px !important; }
-                        .ap-login-fullscreen section:first-of-type > div:last-child { display:none !important; }
-                        .ap-login-fullscreen section:last-of-type { border-radius:28px !important; padding:26px 20px 22px !important; background:rgba(255,255,255,0.96) !important; }
-                    }
-                    @media (max-width: 380px) {
-                        .ap-login-fullscreen > div:nth-child(3) { padding-left:16px !important; padding-right:16px !important; }
-                        .ap-login-fullscreen section:last-of-type { padding-left:18px !important; padding-right:18px !important; }
-                    }
-                </style>
-                <div class="ap-login-fullscreen" style="position:fixed; inset:0; z-index:3000; min-height:100vh; min-height:100dvh; overflow:hidden; display:flex; align-items:stretch; justify-content:center; color:#fff;">
-                    <div style="position:absolute; inset:0; background:radial-gradient(circle at 18% 18%, rgba(255,255,255,0.30) 0, rgba(255,255,255,0.10) 26%, transparent 48%), radial-gradient(circle at 88% 12%, rgba(255,255,255,0.20) 0, transparent 36%), radial-gradient(circle at 72% 86%, rgba(15,23,42,0.20) 0, transparent 42%); pointer-events:none;"></div>
-                    <div style="position:absolute; inset:0; background:rgba(15,23,42,0.08); pointer-events:none;"></div>
-                    <div style="position:relative; width:100%; max-width:1120px; min-height:100vh; min-height:100dvh; display:grid; grid-template-columns:minmax(0,1fr) 390px; align-items:center; gap:54px; padding:clamp(28px,5vw,72px); box-sizing:border-box;">
-                        <section style="min-width:0; display:flex; flex-direction:column; justify-content:center; gap:26px;">
-                            <div style="display:flex; align-items:center; gap:18px;">
-                                <img src="icon-192.png" alt="AP Math Planner" style="width:82px; height:82px; border-radius:22px; box-shadow:0 18px 46px rgba(15,23,42,0.24); display:block;">
-                                <div style="min-width:0;">
-                                    <div style="font-size:clamp(34px,5.2vw,64px); font-weight:800; line-height:0.95; letter-spacing:-2.8px; color:#fff; text-shadow:0 4px 12px rgba(124,58,237,0.08);">AP Math</div>
-                                    <div style="margin-top:9px; font-size:clamp(18px,2.2vw,27px); font-weight:750; line-height:1.1; letter-spacing:-0.9px; color:rgba(255,255,255,0.88);">Study Planner</div>
-                                </div>
-                            </div>
-                            <div style="max-width:560px;">
-                                <div style="font-size:clamp(18px,2.2vw,28px); font-weight:800; line-height:1.28; letter-spacing:-1px; color:#fff;">스스로 계획하고 성취하는<br>나만의 학습 관리 플래너</div>
-                                <div style="margin-top:16px; font-size:15px; font-weight:650; line-height:1.7; color:rgba(255,255,255,0.74);">목표를 설정하고, 매일의 학습을 기록하며 성장하세요.</div>
-                            </div>
-                        </section>
-                        <section class="login-card" style="width:100%; background:rgba(255,255,255,0.94); color:#191F28; border-radius:30px; padding:30px 26px 26px; backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);">
-                            <div style="margin-bottom:24px;">
-                                <div style="font-size:22px; font-weight:800; line-height:1.25; letter-spacing:-0.8px; color:#191F28;">플래너 접속</div>
-                                <div style="margin-top:6px; font-size:13px; font-weight:700; line-height:1.5; color:#4b5563;">학생 이름과 PIN 번호를 입력하세요</div>
-                            </div>
-                            <div style="display:flex; flex-direction:column; gap:12px;">
-                                <div>
-                                    <label style="display:block; font-size:12px; font-weight:800; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;">학생 이름</label>
-                                    <input id="auth-name" type="text" class="input" autocomplete="name" placeholder="이름 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:700; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; margin:0;">
-                                </div>
-                                <div>
-                                    <label style="display:block; font-size:12px; font-weight:800; color:#6B7684; margin-bottom:7px; margin-left:4px; line-height:1.4;">PIN 번호</label>
-                                    <input id="auth-pin" type="password" class="input" autocomplete="current-password" placeholder="PIN 번호 입력" style="width:100%; min-height:54px; text-align:left; cursor:text; padding:15px 16px; font-size:15px; font-weight:700; line-height:1.4; border-radius:16px; border:1px solid rgba(229,232,235,0.95); background:#F8FAFC; color:#191F28; box-shadow:none; margin:0;" onkeyup="if(event.key==='Enter')doAuth()">
-                                </div>
-                                <button class="btn btn-primary" style="width:100%; margin-top:10px; min-height:56px; padding:15px 16px; font-size:15px; font-weight:800; line-height:1.2; border-radius:18px; border:none; background:linear-gradient(135deg,#4F46E5 0%,#DB2777 100%); color:#fff; box-shadow:0 14px 28px rgba(79,70,229,0.26);" onclick="doAuth()">입장하기</button>
-                                ${renderPlannerInstallCard()}
-                            </div>
-                            <div style="margin-top:18px; padding-top:16px; border-top:1px solid #E5E8EB; display:flex; align-items:center; justify-content:space-between; gap:10px;">
-                                <span style="font-size:11px; font-weight:800; color:#8B95A1;">AP MATH STUDENT</span>
-                                <span style="font-size:11px; font-weight:800; color:#8B95A1;">Study Planner</span>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            `;
-            $('fab-add')?.classList.add('hidden');
-        }
-
-        async function doAuth() {
-            const name = $('auth-name')?.value.trim() || '';
-            const p = $('auth-pin')?.value.trim() || '';
-            if (!name || !p) return toast('학생 이름과 PIN을 입력하세요.');
-
-            const res = await apiPost('planner-auth-by-name', { name, pin: p });
-            if (res.success && res.student?.id) {
-                studentId = String(res.student.id);
-                pin = p;
-                student = res.student;
-                authStore().setItem('PLANNER_SID', studentId);
-                authStore().setItem('PLANNER_PIN', p);
-                sessionStorage.setItem('PLANNER_SID', studentId);
-                sessionStorage.setItem('PLANNER_PIN', p);
-                await verifyPin();
-                return;
-            }
-
-            toast(res.message || res.error || '이름 또는 PIN을 확인하세요.');
-        }
-
-        function resetAuth() {
-            authStore().removeItem('PLANNER_SID'); authStore().removeItem('PLANNER_PIN'); authStore().removeItem('PLANNER_SUBJECT');
-            sessionStorage.removeItem('PLANNER_SID'); sessionStorage.removeItem('PLANNER_PIN'); sessionStorage.removeItem('PLANNER_SUBJECT');
-            location.reload();
-        }
-        
-        async function verifyPin() {
-            if (!studentId || !pin) { renderAuth(); return; }
-            const res = await apiGet(`planner-auth?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`);
-            if (!res.success) {
-                authStore().removeItem('PLANNER_SID'); authStore().removeItem('PLANNER_PIN');
-                sessionStorage.removeItem('PLANNER_SID'); sessionStorage.removeItem('PLANNER_PIN');
-                studentId = ''; pin = ''; toast('다시 로그인해주세요.'); renderAuth(); return;
-            }
-            await loadPlannerData();
-            renderPlanner();
-        }
-
-        async function loadPlannerData() {
-            const weekDates = getWeekDates(currentWeekStart);
-            const today = todayStr();
-            const yesterday = addDays(today, -1);
-            const monthStart = getMonthStart(selectedDate);
-            const monthEnd = getMonthEnd(selectedDate);
-            let from = [addDays(weekDates[0], -1), yesterday, monthStart].sort()[0];
-            let to = [weekDates[6], today, monthEnd].sort().slice(-1)[0];
-            
-            // [수정본] 미완료 누적 및 복습 조회를 위해 D-7까지 커버하도록 from 조정
-            const past7DayStart = addDays(today, -7);
-            if (dateObj(past7DayStart) < dateObj(from)) from = past7DayStart;
-
-            const data = await apiGet(`planner?student_id=${encodeURIComponent(studentId)}&from=${from}&to=${to}&pin=${encodeURIComponent(pin)}`);
-            plans = Array.isArray(data.plans) ? data.plans : [];
-            feedback = Array.isArray(data.feedback) ? data.feedback : [];
-            if (data.student) {
-                student = data.student;
-                const chip = $('student-chip');
-                if (chip) chip.textContent = student.name || '';
-                examDate = student.planner_exam_date || examDate || '';
-            }
-        }
-
-        // [수정본] 3단계 오늘/이번 주 요약 UI 생성
-        function renderLearningAssistSummary(weekDates) {
-            const today = todayStr();
-            const todayPlansAll = plans.filter(p => p.plan_date === today);
-            const todayDone = todayPlansAll.filter(isDone).length;
-            const todayTotal = todayPlansAll.length;
-            
-            const weekPlanSet = new Set(weekDates);
-            const weekPlansAll = plans.filter(p => weekPlanSet.has(p.plan_date));
-            const weekDone = weekPlansAll.filter(isDone).length;
-            const weekTotal = weekPlansAll.length;
-
-            const subjectsToTrack = [...PLANNER_TABLE_SUBJECTS, '기타'];
-            const subjStats = subjectsToTrack.map(subj => {
-                const subjPlans = weekPlansAll.filter(p => planSubject(p) === subj);
-                if (subjPlans.length === 0) return null;
-                const sDone = subjPlans.filter(isDone).length;
-                return `<span class="assist-subj-chip">${subj} ${sDone}/${subjPlans.length}</span>`;
-            }).filter(Boolean).join('');
-
-            return `
-                <div class="learning-assist-card">
-                    <div class="assist-stats">
-                        <div class="assist-stat-box"><div class="assist-stat-val">${todayDone}/${todayTotal}</div><div class="assist-stat-lbl">오늘 완료</div></div>
-                        <div class="assist-stat-box"><div class="assist-stat-val">${weekDone}/${weekTotal}</div><div class="assist-stat-lbl">이번 주 완료</div></div>
-                    </div>
-                    ${subjStats ? `<div class="assist-subj-row">${subjStats}</div>` : ''}
-                </div>
-            `;
-        }
-
-        function renderFeedbackBanner() {
-            const f = feedback.find(x => String(x.feedback_date) === todayStr());
-            if (!f) return '';
-            const badge = f.badge ? `<span style="font-size:13px; margin-right:4px;">${escapeHtml(f.badge)}</span>` : '';
-            return `<div class="feedback-banner"><div class="feedback-title">${badge}담임 피드백</div><div class="feedback-text">${escapeHtml(f.teacher_comment || '')}</div></div>`;
-        }
-
-        function hashCoachSeed(text) {
-            let hash = 0;
-            const raw = String(text || '');
-            for (let i = 0; i < raw.length; i++) hash = ((hash << 5) - hash + raw.charCodeAt(i)) | 0;
-            return Math.abs(hash);
-        }
-
-        function normalizeCoachTitle(title) {
-            return String(title || '').toLowerCase().replace(/\s+/g, ' ').replace(/[^a-z0-9가-힣\s]/gi, '').trim();
-        }
-
-        function getPlannerCoachWorkingPlans() {
-            const focusDate = selectedDate || todayStr();
-            const visible = plans.filter(p => p.plan_date === focusDate && (activeSubject === '전체' || planSubject(p) === activeSubject))
-                .map(p => ({ ...p, title: String(p.title || '').trim() }));
-
-            const modalTitle = $('plan-title')?.value.trim() || '';
-            const modalSubject = $('plan-subject')?.value || (activeSubject === '전체' ? '수학' : activeSubject);
-            if (modalTitle) {
-                if (editPlanId) {
-                    const found = visible.find(p => String(p.id) === String(editPlanId));
-                    if (found) {
-                        found.title = modalTitle;
-                        found.subject = modalSubject;
-                    } else {
-                        visible.push({ id: `draft-${editPlanId}`, plan_date: focusDate, title: modalTitle, subject: modalSubject, is_done: 0 });
-                    }
-                } else {
-                    visible.push({ id: 'draft-new', plan_date: focusDate, title: modalTitle, subject: modalSubject, is_done: 0 });
-                }
-            }
-
-            const inlineTitle = $('inline-add-input')?.value.trim() || '';
-            if (inlineTitle) {
-                visible.push({
-                    id: 'draft-inline',
-                    plan_date: focusDate,
-                    title: inlineTitle,
-                    subject: activeSubject === '전체' ? '수학' : activeSubject,
-                    is_done: 0
-                });
-            }
-
-            return visible.filter(p => String(p.title || '').trim());
-        }
-
-        function isVagueCoachPlan(title) {
-            const text = String(title || '').trim();
-            if (!text) return false;
-            const normalized = text.replace(/\s+/g, '');
-            const vagueWords = ['공부', '공부하기', '복습', '숙제', '문제풀기', '문제 풀기', '준비', '암기'];
-            const hasConcreteHint = /(\d+|p\.|P\.|쪽|번|문제|분|시간)/.test(text);
-            return vagueWords.some(word => normalized === word.replace(/\s+/g, '') || normalized.startsWith(word.replace(/\s+/g, ''))) && !hasConcreteHint;
-        }
-
-        function isHeavyCoachPlan(title) {
-            const text = String(title || '').trim();
-            return text.length >= 35 || /(전체 복습|다 풀기|전범위|전부|모두|기출\s*\d+회독)/.test(text);
-        }
-
-        function detectRepeatLeft(plansForCoach) {
-            const incompleteFocus = plansForCoach.filter(p => !isDone(p));
-            if (!incompleteFocus.length) return false;
-            const focusTitles = new Set(incompleteFocus.map(p => normalizeCoachTitle(p.title)).filter(Boolean));
-            if (!focusTitles.size) return false;
-            const recentIncomplete = plans.filter(p => Number(p.is_done || 0) !== 1)
-                .map(p => normalizeCoachTitle(p.title))
-                .filter(Boolean);
-            return [...focusTitles].some(title => recentIncomplete.filter(item => item === title).length >= 2);
-        }
-
-        function getPlannerCoachSnapshot() {
-            const focusDate = selectedDate || todayStr();
-            const items = getPlannerCoachWorkingPlans();
-            const total = items.length;
-            const done = items.filter(isDone).length;
-            const undone = total - done;
-            const rate = total ? Math.round((done / total) * 100) : 0;
-            const hour = new Date().getHours();
-            const allTitles = items.map(item => String(item.title || '').trim()).filter(Boolean);
-            const vagueOnly = allTitles.length > 0 && allTitles.every(isVagueCoachPlan);
-            const heavyItem = total > 0 && total <= 5 && allTitles.some(isHeavyCoachPlan);
-            const repeatLeft = detectRepeatLeft(items);
-            return { focusDate, items, total, done, undone, rate, hour, vagueOnly, heavyItem, repeatLeft };
-        }
-
-        function getPlannerCoachMainState(snapshot) {
-            if (!snapshot.total) return 'empty';
-            if (snapshot.total >= 6 || snapshot.undone >= 5) return 'too_many';
-            if (snapshot.vagueOnly) return 'vague';
-            if (snapshot.heavyItem) return 'heavy_item';
-            if (snapshot.repeatLeft) return 'repeat_left';
-            if (snapshot.hour >= 18 && (snapshot.total >= 5 || snapshot.undone >= 4) && snapshot.done <= 1) return 'reset_evening';
-            if ((snapshot.total >= 3 && snapshot.done === 0) || (snapshot.total >= 3 && snapshot.rate < 30)) return 'low_progress';
-            if (snapshot.rate >= 60 && snapshot.total >= 2) return 'good_progress';
-            return 'good';
-        }
-
-        function getPlannerCoachMessage(stateKey) {
-            const bucket = PLANNER_COACH_MESSAGES[stateKey] || PLANNER_COACH_MESSAGES.balanced_cheer;
-            if (plannerCoachState.mainState !== stateKey) {
-                plannerCoachState.mainState = stateKey;
-                plannerCoachState.variantIndex = hashCoachSeed(`${stateKey}|${selectedDate}|${studentId}`) % bucket.length;
-            }
-            return bucket[plannerCoachState.variantIndex] || bucket[0];
-        }
-
-        function computePlannerCoachResult() {
-            const snapshot = getPlannerCoachSnapshot();
-            const mainState = getPlannerCoachMainState(snapshot);
-            const message = getPlannerCoachMessage(mainState);
-            let subLine = '';
-            if (snapshot.hour >= 22) {
-                const night = PLANNER_COACH_MESSAGES.time_night[0];
-                subLine = night.status;
-            }
-            return { mainState, message, subLine };
-        }
-
-        function renderPlannerCoach() {
-            const result = computePlannerCoachResult();
-            return `
-                <div class="planner-coach-card">
-                    <div class="planner-coach-title">AI 코치</div>
-                    <div class="planner-coach-line">${escapeHtml(result.message.status)}</div>
-                    <div class="planner-coach-line">${escapeHtml(result.message.action)}</div>
-                    <div class="planner-coach-line">${escapeHtml(result.message.cheer)}</div>
-                    ${result.subLine ? `<div class="planner-coach-line sub">${escapeHtml(result.subLine)}</div>` : ''}
-                </div>
-            `;
-        }
-
-        function updatePlannerCoach() {
-            document.querySelectorAll('[data-planner-coach-slot]').forEach(el => {
-                el.innerHTML = renderPlannerCoach();
-            });
-        }
-
-        function schedulePlannerCoachUpdate() {
-            if (plannerCoachTimer) clearTimeout(plannerCoachTimer);
-            plannerCoachTimer = setTimeout(() => {
-                plannerCoachTimer = null;
-                updatePlannerCoach();
-            }, 180);
-        }
-
-        function bindPlannerCoachInputs() {
-            const titleInput = $('plan-title');
-            const subjectInput = $('plan-subject');
-            const inlineInput = $('inline-add-input');
-            if (titleInput) titleInput.oninput = schedulePlannerCoachUpdate;
-            if (subjectInput) subjectInput.onchange = schedulePlannerCoachUpdate;
-            if (inlineInput) inlineInput.oninput = schedulePlannerCoachUpdate;
-        }
-        
-        function renderSubjectFilter() {
-            return `<div class="subject-strip" id="subject-strip">${SUBJECTS.map(s => `<button class="subject-pill ${activeSubject === s ? 'active' : ''}" onclick="setSubject('${s}')">${s}</button>`).join('')}</div>`;
-        }
-        
-        function setSubject(subject) { activeSubject = subject; authStore().setItem('PLANNER_SUBJECT', subject); renderPlanner(); }
-
-        function renderPlanner() {
-            const weekDates = getWeekDates(currentWeekStart);
-            const weekPlanSet = new Set(weekDates);
-            const weekOnlyPlans = visiblePlans(plans.filter(p => weekPlanSet.has(p.plan_date)));
-            const doneCount = weekOnlyPlans.filter(isDone).length;
-            const rate = weekOnlyPlans.length ? Math.round((doneCount / weekOnlyPlans.length) * 100) : 0;
-            const dday = examDate ? Math.ceil((dateObj(examDate) - dateObj(todayStr())) / 86400000) : null;
-            
-            const topDday = $('top-dday');
-            const topRate = $('top-rate');
-            const chip = $('student-chip');
-            if (topDday) topDday.textContent = '로그아웃';
-            if (topRate) topRate.textContent = `${rate}%`;
-            if (chip) chip.textContent = student?.name || '';
-            
-            const feedbackHtml = renderFeedbackBanner();
-            const assistSummaryHtml = renderLearningAssistSummary(weekDates); // [수정본]
-            const coachHtml = renderPlannerCoach();
-
-            $('app').innerHTML = `
-                <div class="side-panel">
-                    <div class="summary-row">
-                        <div class="stat-card"><div class="val">${rate}%</div><div class="lbl">주간 실천율</div></div>
-                        <div class="stat-card"><div class="val">${doneCount}</div><div class="lbl">주간 완료</div></div>
-                    </div>
-                    <div class="exam-card">
-                        <div style="min-width:0;">
-                            <div class="exam-title">시험 일정</div>
-                            <div class="exam-value">${examDate ? `${escapeHtml(examDate)}${dday !== null && dday >= 0 ? ` · D-${dday}` : ''}` : '미설정'}</div>
-                        </div>
-                        <button class="btn btn-primary" style="padding: 6px 12px;" onclick="openExamDateModal()">변경</button>
-                    </div>
-                    ${assistSummaryHtml}
-                    <div class="planner-coach-slot planner-coach-side" data-planner-coach-slot>${coachHtml}</div>
-                </div>
-                <div class="main-panel">
-                    ${feedbackHtml}
-                    <div class="mobile-assist-card">${assistSummaryHtml}</div>
-                    <div class="planner-coach-slot planner-coach-main" data-planner-coach-slot>${coachHtml}</div>
-                    ${renderViewTabs()}
-                    <div class="planner-view-body" id="planner-view-body">
-                        ${renderActiveView(weekDates)}
-                    </div>
-                </div>
-            `;
-            bindWeekSwipe();
-            if (plannerView === 'list') {
-                requestAnimationFrame(() => {
-                    renderChecklists();
-                    if (shouldScrollToSelectedDate) {
-                        shouldScrollToSelectedDate = false;
-                        requestAnimationFrame(() => {
-                            const block = $('selected-date-block');
-                            if (block) block.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    }
-                });
-            }
-            const fab = $('fab-add');
-            if (fab) fab.classList.remove('hidden');
-            bindPlannerCoachInputs();
-            updatePlannerCoach();
-        }
-
-        function renderViewTabs() {
-            const tabs = [['weekly', '주간플래너'], ['monthly', '월간플래너'], ['list', '리스트']];
-            return `<div class="planner-view-tabs">${tabs.map(([key, label]) => `<button class="planner-view-tab ${plannerView === key ? 'active' : ''}" onclick="setPlannerView('${key}')">${label}</button>`).join('')}</div>`;
-        }
-
-        async function setPlannerView(view) {
-            if (!['weekly','monthly','list'].includes(view)) return;
-            plannerView = view; authStore().setItem(PLANNER_VIEW_KEY, view); inlineAddDate = null;
-            await loadPlannerData(); renderPlanner();
-        }
-
-        function renderActiveView(weekDates) {
-            if (plannerView === 'monthly') return renderMonthlyLedgerView();
-            if (plannerView === 'list') return renderListViewShell(weekDates);
-            return renderWeeklyTimetableView(weekDates);
-        }
-
-        function renderListViewShell(weekDates) { return `<div class="week-shell" id="week-shell">${renderWeekNav()}${renderWeekStrip(weekDates)}</div>${renderSubjectFilter()}<div id="list-dynamic-area"></div>`; }
-
-        function renderWeeklyTimetableView(weekDates) {
-            return `
-                <div class="week-shell" id="week-shell">${renderWeekNav()}</div>
-                <div class="planner-table-card">
-                    <div class="planner-table-scroll">
-                        <table class="planner-week-table">
-                            <thead><tr><th class="subject-head">과목</th>${weekDates.map(d => renderWeeklyDayHead(d)).join('')}</tr></thead>
-                            <tbody>${PLANNER_TABLE_SUBJECTS.map(subject => renderWeeklySubjectRow(subject, weekDates)).join('')}</tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderWeeklyDayHead(dateStr) {
-            const d = dateObj(dateStr); const dow = ['일','월','화','수','목','금','토'][d.getDay()]; const isToday = dateStr === todayStr();
-            return `<th><div class="planner-week-day ${isToday ? 'today' : ''}"><span class="date">${d.getDate()}</span><span class="dow">${dow}</span></div></th>`;
-        }
-        function renderWeeklySubjectRow(subject, weekDates) { return `<tr><td class="subject-cell">${escapeHtml(subject)}</td>${weekDates.map(dateStr => renderPlannerSubjectCell(dateStr, subject, 'week')).join('')}</tr>`; }
-
-        function renderMonthlyLedgerView() {
-            const monthStart = getMonthStart(selectedDate); const days = getMonthDaysForPlanner(monthStart);
-            return `
-                <div class="planner-month-head">
-                    <div class="planner-month-title">${escapeHtml(getMonthLabel(selectedDate))}</div>
-                    <div class="planner-month-actions"><button onclick="moveMonth(-1)">‹ 이전 달</button><button onclick="selectMonthToday()">이번 달</button><button onclick="moveMonth(1)">다음 달 ›</button></div>
-                </div>
-                <div class="planner-table-card">
-                    <div class="planner-table-scroll">
-                        <table class="planner-month-ledger">
-                            <thead><tr><th class="month-subject-head">과목</th>${days.map(d => renderMonthDayHead(d)).join('')}</tr></thead>
-                            <tbody>${PLANNER_TABLE_SUBJECTS.map(subject => renderMonthlySubjectRow(subject, days)).join('')}</tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderMonthDayHead(dateStr) {
-            const d = dateObj(dateStr); const dow = ['일','월','화','수','목','금','토'][d.getDay()]; const cls = d.getDay() === 0 ? ' sun' : d.getDay() === 6 ? ' sat' : '';
-            return `<th class="month-day-head${cls}" data-date="${escapeHtml(dateStr)}"><div style="font-size:11px;font-weight:800;line-height:1.2;">${d.getDate()}</div><div style="font-size:10px;font-weight:700;line-height:1.2;">${dow}</div></th>`;
-        }
-        function renderMonthlySubjectRow(subject, days) { return `<tr><td class="month-subject-cell">${escapeHtml(subject)}</td>${days.map(dateStr => renderPlannerSubjectCell(dateStr, subject, 'month')).join('')}</tr>`; }
-
-        function renderPlannerSubjectCell(dateStr, subject, mode) {
-            const list = plans.filter(p => p.plan_date === dateStr && planSubject(p) === subject).sort((a, b) => String(a.created_at || a.id || '').localeCompare(String(b.created_at || b.id || '')));
-            const today = todayStr(); const selected = dateStr === selectedDate ? ' selected' : ''; const isToday = dateStr === today ? ' today' : '';
-            
-            if (mode === 'month') {
-                const hasPlanCls = list.length ? ' has-plan' : '';
-                const inner = list.length ? list.slice(0, 2).map(p => renderMonthPlanMini(p)).join('') + (list.length > 2 ? `<span class="planner-month-count">+${list.length - 2}</span>` : '') : `<span style="color:var(--border);font-size:13px;font-weight:800;">＋</span>`;
-                return `<td class="planner-month-cell${selected}${isToday}${hasPlanCls}" onclick="openCellAction(event, '${dateStr}', '${subject}')"><div class="planner-month-cell-inner">${inner}</div></td>`;
-            }
-
-            const chips = list.length ? list.slice(0, 3).map(p => renderPlannerChip(p)).join('') + (list.length > 3 ? `<button class="planner-more" onclick="event.stopPropagation(); goToListView('${dateStr}', '${subject}')">+${list.length - 3}개 더</button>` : '') : `<div class="planner-cell-add">＋</div>`;
-            return `<td class="planner-cell${selected}${isToday} ${list.length ? '' : 'empty'}" onclick="openCellAction(event, '${dateStr}', '${subject}')">${chips}</td>`;
-        }
-
-        function goToListView(dateStr, subject) { selectedDate = dateStr; currentWeekStart = getWeekStart(dateStr); if (PLANNER_TABLE_SUBJECTS.includes(subject)) { activeSubject = subject; authStore().setItem('PLANNER_SUBJECT', subject); } shouldScrollToSelectedDate = true; setPlannerView('list'); }
-        function renderPlannerChip(p) { const payload = encodeURIComponent(JSON.stringify({ id: p.id, title: p.title || '', subject: planSubject(p), updated_at: p.updated_at || '' })); return `<button class="planner-chip ${getSubjectClass(planSubject(p))} ${isDone(p) ? 'done' : ''}" onclick="event.stopPropagation(); openEditModalFromPayload('${payload}')"><span class="txt">${escapeHtml(p.title || '')}</span></button>`; }
-        function renderMonthPlanMini(p) { const payload = encodeURIComponent(JSON.stringify({ id: p.id, title: p.title || '', subject: planSubject(p), updated_at: p.updated_at || '' })); return `<button class="planner-month-title-mini" onclick="event.stopPropagation(); openEditModalFromPayload('${payload}')">${escapeHtml(p.title || '')}</button>`; }
-
-        function openCellAction(event, dateStr, subject) {
-            if (event) event.stopPropagation();
-            selectedDate = dateStr; currentWeekStart = getWeekStart(dateStr);
-            if (PLANNER_TABLE_SUBJECTS.includes(subject)) { activeSubject = subject; authStore().setItem('PLANNER_SUBJECT', subject); }
-            const list = plans.filter(p => p.plan_date === dateStr && planSubject(p) === subject);
-            if (plannerView === 'monthly') {
-                if (list.length === 0) openAddModal(dateStr, subject); else { shouldScrollToSelectedDate = true; setPlannerView('list'); }
-                return;
-            }
-            if (list.length === 0) openAddModal(dateStr, subject);
-            else if (list.length === 1) { const p = list[0]; openEditModal(p.id, p.title || '', planSubject(p), p.updated_at || ''); }
-            else { shouldScrollToSelectedDate = true; setPlannerView('list'); }
-        }
-
-        function selectMonthToday() { selectedDate = todayStr(); currentWeekStart = getWeekStart(selectedDate); inlineAddDate = null; loadPlannerData().then(renderPlanner); }
-        function getMonthDaysForPlanner(monthStart) { const month = String(monthStart || selectedDate).slice(0, 7); const [year, monthNo] = month.split('-').map(Number); const endDay = new Date(year, monthNo, 0).getDate(); return Array.from({ length: endDay }, (_, idx) => `${month}-${String(idx + 1).padStart(2, '0')}`); }
-        function renderWeekNav() { const isCurrentWeek = currentWeekStart === getWeekStart(todayStr()); return `<div class="week-nav-row"><button onclick="moveWeek(-1)">‹</button>${!isCurrentWeek ? '<button onclick="goThisWeek()">이번 주</button>' : '<span style="width:48px;"></span>'}<button onclick="moveWeek(1)">›</button></div>`; }
-        function renderWeekStrip(weekDates) { return `<div class="week-strip">${weekDates.map(dateStr => { const d = dateObj(dateStr); const dayName = ['일','월','화','수','목','금','토'][d.getDay()]; const count = visiblePlans(plans.filter(p => p.plan_date === dateStr)).length; return `<button class="day-pill ${dateStr === selectedDate ? 'selected' : ''} ${dateStr === todayStr() ? 'is-today' : ''}" onclick="selectDate('${dateStr}')"><span class="day-name">${dayName}</span><span class="day-num">${d.getDate()}</span><span class="day-count">${count ? count : '·'}</span></button>`; }).join('')}</div>`; }
-        function selectDate(dateStr) { selectedDate = dateStr; currentWeekStart = getWeekStart(dateStr); renderPlanner(); }
-        async function goThisWeek() { selectedDate = todayStr(); currentWeekStart = getWeekStart(selectedDate); inlineAddDate = null; await loadPlannerData(); renderPlanner(); }
-        async function moveWeek(delta) { currentWeekStart = addDays(currentWeekStart, delta * 7); selectedDate = currentWeekStart; if (getWeekStart(todayStr()) === currentWeekStart) selectedDate = todayStr(); inlineAddDate = null; await loadPlannerData(); renderPlanner(); }
-        function bindWeekSwipe() {
-            const shell = $('week-shell'); if (!shell) return;
-            shell.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; }, { passive: true });
-            shell.addEventListener('touchend', e => { const t = e.changedTouches[0]; const dx = t.clientX - touchStartX; const dy = t.clientY - touchStartY; if (Math.abs(dx) > 56 && Math.abs(dx) > Math.abs(dy) * 1.4) moveWeek(dx < 0 ? 1 : -1); }, { passive: true });
-        }
-
-        function renderChecklists() {
-            const area = $('list-dynamic-area');
-            if (!area) return;
-
-            const today = todayStr();
-            const weekDates = getWeekDates(currentWeekStart);
-
-            // [수정본] 1. 최근 7일 미완료 누적 (오늘 계획과 중복 제거)
-            const todayPlansAll = plans.filter(p => p.plan_date === today);
-            const past7Days = Array.from({length: 7}, (_, i) => addDays(today, -(i+1)));
-            let carryOverAll = plans.filter(p => past7Days.includes(p.plan_date) && !isDone(p));
-            carryOverAll = carryOverAll.filter(p => !todayPlansAll.some(tp => tp.title === p.title && planSubject(tp) === planSubject(p)));
-            const carryPlans = visiblePlans(carryOverAll);
-            
-            let carryHtml = '';
-            if (carryPlans.length > 0) {
-                carryHtml = `
-                    <div class="section-title"><span>미완료 누적 <small>최근 7일</small></span></div>
-                    <div class="notebook" style="margin-bottom:12px;">${carryPlans.map(p => renderPlanRow(p, true)).join('')}</div>
-                `;
-            }
-
-            // [수정본] 2. 오늘 복습 추천 (D-1, 3, 7 완료된 과제)
-            const dMinus1 = addDays(today, -1);
-            const dMinus3 = addDays(today, -3);
-            const dMinus7 = addDays(today, -7);
-            const reviewPlansAll = plans.filter(p => isDone(p) && [dMinus1, dMinus3, dMinus7].includes(p.plan_date));
-            const reviewPlansVisible = visiblePlans(reviewPlansAll);
-            
-            let reviewHtml = '';
-            if (reviewPlansVisible.length > 0) {
-                reviewHtml = `
-                    <div class="section-title"><span>오늘 복습 추천</span></div>
-                    <div class="notebook" style="margin-bottom:12px;">
-                        ${reviewPlansVisible.map(p => {
-                            let dLabel = p.plan_date === dMinus1 ? 'D+1' : p.plan_date === dMinus3 ? 'D+3' : 'D+7';
-                            const payload = encodeURIComponent(JSON.stringify({ id: p.id, title: p.title || '', subject: planSubject(p), updated_at: p.updated_at || '' }));
-                            return `
-                                <div class="review-card" onclick="openEditModalFromPayload('${payload}')">
-                                    <div class="review-card-top">
-                                        <span class="subject-tag ${getSubjectClass(planSubject(p))}">${planSubject(p)}</span>
-                                        <span class="review-d-badge">${dLabel} 복습</span>
-                                    </div>
-                                    <div class="review-card-title">${escapeHtml(p.title)}</div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                `;
-            }
-
-            const todayPlans = visiblePlans(todayPlansAll);
-            const todayInline = inlineAddDate === today ? renderInlineAddRow(today) : '';
-            const todayHtml = todayPlans.map(p => renderPlanRow(p)).join('') + todayInline;
-
-            let selectedHtml = '';
-            if (selectedDate !== today) {
-                const selPlans = visiblePlans(plans.filter(p => p.plan_date === selectedDate));
-                const selInline = inlineAddDate === selectedDate ? renderInlineAddRow(selectedDate) : '';
-                selectedHtml = `
-                    <div class="section-title" id="selected-date-block" style="scroll-margin-top: 70px; color: var(--primary);">
-                        <div>선택한 날짜<small>${formatDateShort(selectedDate)}</small></div>
-                        <button class="day-add" onclick="openInlineAdd('${selectedDate}')">＋</button>
-                    </div>
-                    <div class="notebook">${selPlans.map(p => renderPlanRow(p)).join('')}${selInline}</div>
-                `;
-            }
-
-            const weeklyHtml = weekDates.map(dateStr => {
-                if (dateStr === today || dateStr === selectedDate) return '';
-                const dayPlans = visiblePlans(plans.filter(p => p.plan_date === dateStr));
-                const inline = inlineAddDate === dateStr ? renderInlineAddRow(dateStr) : '';
-                
-                if (dayPlans.length === 0 && !inline) {
-                    return `<div class="date-block"><div class="date-header" onclick="openInlineAdd('${dateStr}')"><span>${formatDateShort(dateStr)}</span><button class="day-add" onclick="event.stopPropagation(); openInlineAdd('${dateStr}')">＋</button></div></div>`;
-                }
-                return `<div class="date-block"><div class="date-header" onclick="openInlineAdd('${dateStr}')"><span>${formatDateShort(dateStr)}</span><button class="day-add" onclick="event.stopPropagation(); openInlineAdd('${dateStr}')">＋</button></div><div class="plan-list">${dayPlans.map(p => renderPlanRow(p)).join('')}${inline}</div></div>`;
-            }).join('');
-
-            area.innerHTML = `
-                ${selectedHtml}
-                ${carryHtml}
-                <div class="section-title" ${selectedDate === today ? 'id="selected-date-block" style="scroll-margin-top: 70px;"' : ''}>
-                    <div>오늘 할 일<small>${formatDateShort(today)}</small></div>
-                    <button class="day-add" onclick="openInlineAdd('${today}')">＋</button>
-                </div>
-                <div class="notebook">${todayHtml}</div>
-                ${reviewHtml}
-                <div class="section-title"><span>주간 계획</span></div>
-                <div class="notebook">${weeklyHtml}</div>
-            `;
-        }
-
-        function renderInlineAddRow(dateStr) { return `<div class="inline-add-row"><span class="chk-wrapper"><span></span></span><input id="inline-add-input" class="inline-add-input" placeholder="학습 내용 입력 후 Enter" onkeydown="handleInlineKey(event, '${dateStr}')"><button class="inline-save" onclick="saveInlinePlan('${dateStr}')">저장</button></div>`; }
-        function openInlineAdd(dateStr) { inlineAddDate = dateStr || todayStr(); selectedDate = inlineAddDate; currentWeekStart = getWeekStart(inlineAddDate); renderPlanner(); setTimeout(() => $('inline-add-input')?.focus(), 60); }
-        function handleInlineKey(event, dateStr) { if (event.key === 'Enter') saveInlinePlan(dateStr); if (event.key === 'Escape') { inlineAddDate = null; renderPlanner(); } }
-        async function saveInlinePlan(dateStr) {
-            const input = $('inline-add-input'); const title = input ? input.value.trim() : ''; if (!title) { inlineAddDate = null; renderPlanner(); return; }
-            const subject = activeSubject === '전체' ? '수학' : activeSubject;
-            const res = await apiPost('planner', { student_id: studentId, pin, plan_date: dateStr, title, subject, repeat_rule: '', exam_date: examDate });
-            if (res.error) return toast('등록 실패');
-            toast('등록됨'); inlineAddDate = null; await loadPlannerData(); renderPlanner();
-        }
-
-        function renderPlanRow(p, carry = false) {
-            const done = isDone(p); const subject = planSubject(p); const title = escapeHtml(p.title || '');
-            const tag = activeSubject === '전체' ? `<span class="subject-tag ${getSubjectClass(subject)}">${escapeHtml(subject)}</span>` : '';
-            const planPayload = encodeURIComponent(JSON.stringify({ id: p.id, title: p.title || '', subject: subject, updated_at: p.updated_at || '' }));
-
-            return `
-                <div class="plan-row ${done ? 'done' : ''} ${carry ? 'carry-row' : ''}">
-                    <label class="chk-wrapper" onclick="event.stopPropagation()"><input type="checkbox" class="chk-input" ${done ? 'checked' : ''} onchange="toggleDone('${p.id}')"></label>
-                    <div class="plan-content" onclick="openEditModalFromPayload('${planPayload}')">
-                        <span class="plan-title"><span class="carry-badge" style="display:${carry ? 'inline-block' : 'none'}">이전 미완료</span>${title}</span>
-                        ${tag}
-                    </div>
-                    ${carry ? `<button class="roll-btn" onclick="copyPlanToToday('${p.id}')">오늘로</button>` : ''}
-                </div>
-            `;
-        }
-
-        function openEditModalFromPayload(payload) { const plan = JSON.parse(decodeURIComponent(payload)); openEditModal(plan.id, plan.title, plan.subject, plan.updated_at); }
-
-        async function toggleDone(id) {
-            const plan = plans.find(p => String(p.id) === String(id)); if (!plan) return;
-            const prev = Number(plan.is_done) === 1 ? 1 : 0; const next = prev === 1 ? 0 : 1;
-            const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
-            plan.is_done = next;
-            updatePlannerCoach();
-            const res = await apiPatch(`planner/${id}`, { student_id: studentId, pin, is_done: next });
-            if (res.error) { toast('변경 실패'); plan.is_done = prev; }
-            await loadPlannerData(); renderPlanner();
-            if (plannerView === 'list' && !shouldScrollToSelectedDate) { requestAnimationFrame(() => window.scrollTo({ top: scrollTop, behavior: 'auto' })); }
-        }
-
-        async function copyPlanToToday(id) {
-            const plan = plans.find(p => String(p.id) === String(id)); if (!plan) return; const today = todayStr();
-            const duplicated = plans.some(p => p.plan_date === today && String(p.title || '') === String(plan.title || '') && planSubject(p) === planSubject(plan));
-            if (duplicated) return toast('이미 오늘 계획에 있습니다.');
-            const res = await apiPost('planner', { student_id: studentId, pin, plan_date: today, title: plan.title || '', subject: planSubject(plan), repeat_rule: '', exam_date: examDate });
-            if (res.error) return toast('이동 실패');
-            toast('오늘 계획에 추가됨'); selectedDate = today; currentWeekStart = getWeekStart(today); await loadPlannerData(); renderPlanner();
-        }
-
-        // [3.1 패치] 뽀모도로 하단 미니바 함수
-        function formatPomoTime() {
-            const m = String(Math.floor(pomoTime / 60)).padStart(2, '0');
-            const s = String(pomoTime % 60).padStart(2, '0');
-            return `${m}:${s}`;
-        }
-
-        function showPomoMini() {
-            $('pomodoro-mini')?.classList.remove('hidden');
-        }
-
-        function updatePomoUI() {
-            const timeEl = $('pomo-time-display');
-            if (timeEl) timeEl.textContent = formatPomoTime();
-
-            const titleEl = $('pomo-plan-title');
-            if (titleEl) titleEl.textContent = pomoPlanTitle || '현재 계획';
-
-            const btn = $('pomo-toggle-btn');
-            if (btn) {
-                btn.textContent = pomoActive ? '일시정지' : '시작';
-                btn.classList.toggle('primary', !pomoActive);
-                btn.classList.toggle('danger', pomoActive);
-            }
-
-            const startBtn = $('pomo-start-btn');
-            if (startBtn) startBtn.textContent = pomoActive ? '집중 타이머 보기' : '25분 집중 시작';
-        }
-
-        function startPomoForCurrentPlan() {
-            const title = $('plan-title')?.value.trim() || '현재 계획';
-            pomoPlanTitle = title;
-            if (pomoTime <= 0) pomoTime = 25 * 60;
-            showPomoMini();
-            if (!pomoActive) togglePomo();
-            else updatePomoUI();
-            closeModal();
-        }
-
-        function togglePomo() {
-            showPomoMini();
-            if (pomoActive) {
-                clearInterval(pomoInterval);
-                pomoInterval = null;
-                pomoActive = false;
-                updatePomoUI();
-                return;
-            }
-
-            pomoActive = true;
-            updatePomoUI();
-            clearInterval(pomoInterval);
-            pomoInterval = setInterval(() => {
-                pomoTime -= 1;
-                if (pomoTime <= 0) {
-                    clearInterval(pomoInterval);
-                    pomoInterval = null;
-                    pomoActive = false;
-                    pomoTime = 25 * 60;
-                    updatePomoUI();
-                    toast('집중 시간이 끝났습니다. 수고하셨습니다!');
-                    return;
-                }
-                updatePomoUI();
-            }, 1000);
-        }
-
-        function resetPomo(auto = false) {
-            clearInterval(pomoInterval);
-            pomoInterval = null;
-            pomoActive = false;
-            pomoTime = 25 * 60;
-            updatePomoUI();
-            showPomoMini();
-            if (!auto) toast('타이머가 초기화되었습니다.');
-        }
-
-        function closePomoMini() {
-            clearInterval(pomoInterval);
-            pomoInterval = null;
-            pomoActive = false;
-            pomoTime = 25 * 60;
-            pomoPlanTitle = '';
-            updatePomoUI();
-            $('pomodoro-mini')?.classList.add('hidden');
-        }
-
-        function openAddModal(dateStr = selectedDate, subject = '수학') {
-            editPlanId = null; editPlanUpdatedAt = null; selectedDate = dateStr || todayStr(); currentWeekStart = getWeekStart(selectedDate);
-            $('modal-title').textContent = `${formatDateShort(selectedDate)} 계획 추가`;
-            $('plan-title').value = ''; $('plan-subject').value = SUBJECTS.includes(subject) && subject !== '전체' ? subject : '수학';
-            $('plan-repeat').value = ''; $('repeat-rule-container').classList.remove('hidden');
-            $('delete-plan-btn')?.classList.add('hidden');
-            $('pomodoro-container')?.classList.add('hidden'); // 추가 모달에서는 집중 시작 버튼 숨김
-            $('modal-overlay').classList.remove('hidden');
-            $('plan-title').onkeyup = (e) => { if (e.key === 'Enter') savePlan(); };
-            bindPlannerCoachInputs();
-            updatePlannerCoach();
-            setTimeout(() => $('plan-title')?.focus(), 80);
-        }
-
-        function openEditModal(id, title, subject, updatedAt) {
-            editPlanId = id; editPlanUpdatedAt = updatedAt;
-            $('modal-title').textContent = '계획 수정';
-            $('plan-title').value = title; $('plan-subject').value = SUBJECTS.includes(subject) && subject !== '전체' ? subject : '수학';
-            $('repeat-rule-container').classList.add('hidden');
-            $('delete-plan-btn')?.classList.remove('hidden');
-            $('pomodoro-container')?.classList.remove('hidden'); // 수정 모달에서는 집중 시작 버튼 표시
-            if (!pomoPlanTitle) pomoPlanTitle = title || '현재 계획';
-            updatePomoUI(); // 상태 동기화
-            $('modal-overlay').classList.remove('hidden');
-            $('plan-title').onkeyup = (e) => { if (e.key === 'Enter') savePlan(); };
-            bindPlannerCoachInputs();
-            updatePlannerCoach();
-        }
-
-        function closeModal() { $('modal-overlay').classList.add('hidden'); editPlanId = null; editPlanUpdatedAt = null; updatePlannerCoach(); }
-
-        async function deletePlan() {
-            if (!editPlanId) return; if (!confirm('이 계획을 삭제할까요?')) return;
-            const res = await apiDelete(`planner/${encodeURIComponent(editPlanId)}?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`);
-            if (res.error || res.success === false) { toast(res.message || '삭제 실패'); return; }
-            toast('삭제됨'); editPlanId = null; editPlanUpdatedAt = null; inlineAddDate = null; closeModal(); await loadPlannerData(); renderPlanner();
-        }
-
-        async function savePlan() {
-            const title = $('plan-title').value.trim(); if (!title) return toast('내용을 입력하세요.');
-            const subject = $('plan-subject').value || '수학';
-            if (editPlanId) {
-                const res = await apiPatch(`planner/${editPlanId}`, { student_id: studentId, pin, title, subject, updated_at: editPlanUpdatedAt });
-                if (res.error) return toast('수정 실패'); toast('수정됨');
-            } else {
-                const res = await apiPost('planner', { student_id: studentId, pin, plan_date: selectedDate, title, subject, repeat_rule: $('plan-repeat').value, exam_date: examDate });
-                if (res.error) return toast('등록 실패'); toast('등록됨');
-            }
-            closeModal(); await loadPlannerData(); renderPlanner();
-        }
-
-        function openExamDateModal() { $('modal-exam-date').value = examDate || todayStr(); $('exam-date-modal-overlay').classList.remove('hidden'); }
-        function closeExamDateModal() { $('exam-date-modal-overlay').classList.add('hidden'); }
-        async function saveExamDateFromModal() {
-            const d = $('modal-exam-date').value; if (!d) return;
-            const res = await apiPatch('planner/settings', { student_id: studentId, pin, planner_exam_date: d });
-            if (res.error) return toast('저장 실패');
-            toast('시험일 변경됨'); examDate = d; closeExamDateModal(); await loadPlannerData(); renderPlanner();
-        }
-
-        window.onload = init;
-
-        window.addEventListener('beforeinstallprompt', (event) => {
-            event.preventDefault();
-            deferredInstallPrompt = event;
-            refreshPlannerInstallCards();
+        <div class="calendar-grid">
+          ${['일','월','화','수','목','금','토'].map(w => `<div class="weekday">${w}</div>`).join('')}
+          ${cells.join('')}
+        </div>
+      `;
+    }
+
+    function renderPlanPanel() {
+      const datePlans = plansForDate(selectedDate);
+      return `
+        <div class="plan-head">
+          <div>
+            <div class="plan-title">${selectedDate === todayStr() ? '오늘 할 일' : '선택 날짜 할 일'}</div>
+            <div class="plan-date">${selectedDate}</div>
+          </div>
+          <button class="btn" style="min-height:40px; padding:8px 12px; font-size:12px;" onclick="resetAuth()">잠금</button>
+        </div>
+        <div class="plan-list">
+          ${datePlans.length ? datePlans.map(renderPlanItem).join('') : `<div class="empty">등록된 할 일이 없습니다.</div>`}
+        </div>
+        <div class="quick-form">
+          <input id="quick-title" class="input" placeholder="할 일 입력">
+          <input id="quick-subject" class="input" placeholder="과목" value="수학">
+          <button class="btn btn-primary" onclick="saveQuickPlan()">추가</button>
+        </div>
+      `;
+    }
+
+    function renderPlanItem(plan) {
+      const done = Number(plan.is_done || 0) === 1;
+      return `
+        <div class="plan-item">
+          <button class="check ${done ? 'done' : ''}" onclick="toggleDone('${plan.id}', ${done ? 0 : 1}, '${plan.updated_at || ''}')">✓</button>
+          <div class="plan-main ${done ? 'done' : ''}">
+            <div class="plan-item-title">${escapeHtml(plan.title)}</div>
+            <div class="plan-sub">${escapeHtml(plan.subject || '수학')}${plan.repeat_rule ? ` · ${plan.repeat_rule === 'daily' ? '매일' : '매주'}` : ''}</div>
+          </div>
+          <button class="delete" onclick="deletePlan('${plan.id}')">삭제</button>
+        </div>
+      `;
+    }
+
+    async function selectDate(date) {
+      selectedDate = date;
+      if (selectedDate.slice(0,7) !== currentMonth) {
+        currentMonth = selectedDate.slice(0,7);
+        await loadPlannerData();
+      }
+      renderPlanner();
+    }
+
+    async function changeMonth(month) {
+      currentMonth = month;
+      const bounds = monthBounds(month);
+      selectedDate = bounds.from;
+      await loadPlannerData();
+      renderPlanner();
+    }
+
+    async function saveQuickPlan() {
+      const title = String($('quick-title')?.value || '').trim();
+      const subject = String($('quick-subject')?.value || '수학').trim();
+      if (!title) {
+        toast('할 일을 입력하세요.');
+        return;
+      }
+      await savePlan({ title, subject, repeat_rule: null });
+    }
+
+    function openAddModal(date) {
+      $('modal-title').textContent = '할 일 추가';
+      $('modal-body').innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <input id="modal-title-input" class="input" placeholder="할 일">
+          <input id="modal-subject-input" class="input" placeholder="과목" value="수학">
+          <select id="modal-repeat-input" class="input">
+            <option value="">반복 없음</option>
+            <option value="daily">매일 반복</option>
+            <option value="weekly">매주 반복</option>
+          </select>
+          <div class="muted">반복은 ${EXAM_DATE}까지만 생성됩니다.</div>
+          <button class="btn btn-primary" onclick="saveModalPlan('${date}')">저장</button>
+        </div>
+      `;
+      $('modal-overlay').classList.add('show');
+      setTimeout(() => $('modal-title-input')?.focus(), 80);
+    }
+
+    function closeModal() {
+      $('modal-overlay').classList.remove('show');
+    }
+
+    async function saveModalPlan(date) {
+      const title = String($('modal-title-input')?.value || '').trim();
+      const subject = String($('modal-subject-input')?.value || '수학').trim();
+      const repeat_rule = String($('modal-repeat-input')?.value || '').trim() || null;
+      if (!title) {
+        toast('할 일을 입력하세요.');
+        return;
+      }
+      await savePlan({ title, subject, repeat_rule, date });
+      closeModal();
+    }
+
+    async function savePlan(data) {
+      try {
+        const result = await apiSend('planner', 'POST', {
+          student_id: studentId,
+          pin,
+          plan_date: data.date || selectedDate,
+          title: data.title,
+          subject: data.subject || '수학',
+          repeat_rule: data.repeat_rule || null,
+          exam_date: EXAM_DATE
         });
-
-        window.addEventListener('appinstalled', () => {
-            deferredInstallPrompt = null;
-            refreshPlannerInstallCards();
-            toast('AP 플래너 앱이 설치되었습니다.');
-        });
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch(() => {});
-            });
+        toast('저장되었습니다.');
+        if (Array.isArray(result.plans)) {
+          upsertPlannerPlans(result.plans);
+        } else {
+          await loadPlannerData();
         }
-    </script>
+        renderPlanner();
+      } catch (e) {
+        toast(e.message || '저장 실패');
+      }
+    }
+
+    async function toggleDone(planId, isDone, updatedAt) {
+      try {
+        const result = await apiSend(`planner/${encodeURIComponent(planId)}`, 'PATCH', {
+          student_id: studentId,
+          pin,
+          is_done: isDone,
+          updated_at: updatedAt || ''
+        });
+        if (result.plan) {
+          upsertPlannerPlans([result.plan]);
+        } else if (!patchPlannerPlan(planId, { is_done: isDone ? 1 : 0, updated_at: new Date().toISOString() })) {
+          await loadPlannerData();
+        }
+        renderPlanner();
+      } catch (e) {
+        toast(e.message || '변경 실패');
+      }
+    }
+
+    async function deletePlan(planId) {
+      if (!confirm('삭제하시겠습니까?')) return;
+      try {
+        await apiSend(`planner/${encodeURIComponent(planId)}?student_id=${encodeURIComponent(studentId)}&pin=${encodeURIComponent(pin)}`, 'DELETE');
+        toast('삭제되었습니다.');
+        removePlannerPlan(planId);
+        renderPlanner();
+      } catch (e) {
+        toast(e.message || '삭제 실패');
+      }
+    }
+
+    function resetAuth() {
+      authStore().removeItem(authKey());
+      authStore().removeItem(pinKey());
+      pin = '';
+      student = null;
+      plans = [];
+      feedback = [];
+      invalidatePlannerIndex();
+      renderPinGate();
+    }
+
+    window.addEventListener('resize', () => {
+      clearTimeout(window.__resizeTimer);
+      window.__resizeTimer = setTimeout(() => {
+        if (student) renderPlanner();
+      }, 150);
+    });
+
+    initPlanner();
+  </script>
 </body>
 </html>

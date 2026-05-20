@@ -463,7 +463,9 @@
 
     let session = null;
     let homeData = null;
+    let homeIndex = null;
     let omrData = null;
+    let omrIndex = null;
     let omrDraft = null;
     let materialWrongData = null;
     let materialWrongDraft = null;
@@ -566,6 +568,9 @@
       sessionStorage.removeItem('PLANNER_PIN');
       session = null;
       homeData = null;
+      homeIndex = null;
+      omrData = null;
+      omrIndex = null;
     }
     async function apiPost(path, body) {
       const r = await fetch(`${API_BASE}/${path}`, {
@@ -669,45 +674,65 @@
         return;
       }
       try {
-        homeData = await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+        setStudentPortalHomeData(await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token));
         renderHome();
       } catch (e) {
         clearSession();
         renderLogin(e.message || '학생 로그인이 만료되었습니다. 다시 로그인하세요.');
       }
     }
+    function setStudentPortalHomeData(next) {
+      homeData = next || null;
+      homeIndex = null;
+    }
     function getAssignments() {
       return Array.isArray(homeData?.assignments) ? homeData.assignments : [];
     }
-    function splitAssignments() {
-      const list = getAssignments();
-      return {
-        missing: list.filter(item => Number(item.is_submitted || 0) !== 1),
-        done: list.filter(item => Number(item.is_submitted || 0) === 1)
-      };
-    }
-    function getStudentPortalClassId() {
+    function getStudentPortalHomeIndex() {
+      if (homeIndex) return homeIndex;
+
+      const missing = [];
+      const done = [];
+      getAssignments().forEach(item => {
+        if (Number(item?.is_submitted || 0) === 1) done.push(item);
+        else missing.push(item);
+      });
+
+      let classId = '';
       try {
         const student = homeData?.student || session || {};
-        if (student?.class_id) return String(student.class_id);
-        const rows = Array.isArray(homeData?.class_students) ? homeData.class_students : [];
-        const match = rows.find(row => String(row?.student_id || '') === String(student?.student_id || session?.student_id || ''));
-        return match?.class_id ? String(match.class_id) : '';
+        if (student?.class_id) {
+          classId = String(student.class_id);
+        } else {
+          const rows = Array.isArray(homeData?.class_students) ? homeData.class_students : [];
+          const sid = String(student?.student_id || session?.student_id || '');
+          const match = rows.find(row => String(row?.student_id || '') === sid);
+          classId = match?.class_id ? String(match.class_id) : '';
+        }
       } catch (e) {
-        return '';
+        classId = '';
       }
-    }
-    function getStudentPortalAssignments() {
-      const classId = getStudentPortalClassId();
-      if (!classId) return [];
-      const rows = Array.isArray(homeData?.class_exam_assignments) ? homeData.class_exam_assignments : [];
-      return rows
+
+      const classExamAssignments = (Array.isArray(homeData?.class_exam_assignments) ? homeData.class_exam_assignments : [])
         .filter(row => String(row?.class_id || '') === String(classId))
         .sort((a, b) =>
           String(b?.exam_date || '').localeCompare(String(a?.exam_date || '')) ||
           String(b?.created_at || '').localeCompare(String(a?.created_at || '')) ||
           String(b?.id || '').localeCompare(String(a?.id || ''))
         );
+
+      homeIndex = { missing, done, classId, classExamAssignments };
+      return homeIndex;
+    }
+    function splitAssignments() {
+      const idx = getStudentPortalHomeIndex();
+      return { missing: idx.missing.slice(), done: idx.done.slice() };
+    }
+    function getStudentPortalClassId() {
+      return getStudentPortalHomeIndex().classId;
+    }
+    function getStudentPortalAssignments() {
+      return getStudentPortalHomeIndex().classExamAssignments.slice();
     }
     function formatStudentPortalAssignmentType(row) {
       const sourceType = String(row?.source_type || '').trim().toLowerCase();
@@ -723,15 +748,35 @@
       if (type === '클리닉') return 'type-clinic';
       return '';
     }
+    function getStudentPortalOmrIndex() {
+      if (omrIndex) return omrIndex;
+      const byTitleDate = new Map();
+      const byExact = new Map();
+      (Array.isArray(omrData?.exams) ? omrData.exams : []).forEach(exam => {
+        const title = String(exam?.exam_title || '');
+        const date = String(exam?.exam_date || '');
+        const q = String(Number(exam?.question_count || 0) || '');
+        const archiveFile = String(exam?.archive_file || '').trim();
+        const baseKey = [title, date].join('|');
+        if (!byTitleDate.has(baseKey)) byTitleDate.set(baseKey, []);
+        byTitleDate.get(baseKey).push(exam);
+        if (archiveFile || q) byExact.set([title, date, q, archiveFile].join('|'), exam);
+      });
+      omrIndex = { byTitleDate, byExact };
+      return omrIndex;
+    }
     function findStudentPortalOmrExamForAssignment(row) {
-      const exams = Array.isArray(omrData?.exams) ? omrData.exams : [];
       const title = String(row?.exam_title || '');
       const date = String(row?.exam_date || '');
       const archiveFile = String(row?.archive_file || '').trim();
       const questionCount = Number(row?.question_count || 0);
-      return exams.find(exam => {
-        if (String(exam?.exam_title || '') !== title) return false;
-        if (String(exam?.exam_date || '') !== date) return false;
+      const idx = getStudentPortalOmrIndex();
+
+      const exact = idx.byExact.get([title, date, String(questionCount || ''), archiveFile].join('|'));
+      if (exact) return exact;
+
+      const candidates = idx.byTitleDate.get([title, date].join('|')) || [];
+      return candidates.find(exam => {
         const examQuestionCount = Number(exam?.question_count || 0);
         if (questionCount && examQuestionCount && questionCount !== examQuestionCount) return false;
         const examArchiveFile = String(exam?.archive_file || '').trim();
@@ -1182,6 +1227,7 @@
       if (!session?.student_id || !session?.student_token) throw new Error('로그인이 필요합니다.');
       if (!force && omrData?.exams) return omrData;
       omrData = await apiGet(`student-portal/exams?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      omrIndex = null;
       return omrData;
     }
     function getOmrExams() {
@@ -1317,6 +1363,7 @@
         exam.score = sessionResult.score;
         exam.submitted_at = new Date().toISOString();
         exam.wrong_ids = normalizeOmrWrongIds(sessionResult.wrong_ids || omrDraft.wrong_ids);
+        omrIndex = null;
         toast('OMR이 제출되었습니다.');
         await renderOmrExams();
       } catch (e) {
