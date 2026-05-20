@@ -1,38 +1,40 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- apmath/worker-backup/worker/routes/timetable-versions.js
+- apmath/js/timetable.js
 - CODEX_RESULT.md
 
 ## 2. 구현 완료 또는 확인 완료
-- Step 2: draft 생성/조회 API를 timetable_version_classes / version_class_id foundation 기준으로 전환 완료
-- create-next-draft에서 timetable_version_classes를 생성하고 기존 중3 source class는 excluded 상태로 분리하도록 보강 완료
-- draft slot 복사 시 timetable_version_slots.version_class_id / source_class_id를 채우고 excluded version_class slot은 복사하지 않도록 보강 완료
-- draft student assignment seed 시 timetable_version_student_assignments.version_class_id / source_grade / next_grade를 채우고 excluded version_class 학생은 복사하지 않도록 보강 완료
-- 기존 draft 조회 시 timetable_version_classes가 없으면 운영 classes snapshot으로 보강하고 기존 slot/assignment의 version_class_id를 repair하는 흐름 추가 완료
-- GET timetable-versions/:id 응답에 timetable_version_classes와 timetable_classes compatibility rows를 추가하되 기존 timetable_version_slots / timetable_version_student_assignments 응답은 유지 완료
-- draft class 생성이 운영 classes에 즉시 INSERT하지 않고 timetable_version_classes에 staging class로 저장되도록 보강 완료
-- draft 신규 학생 생성이 운영 students에 즉시 INSERT하지 않고 timetable_version_new_students + timetable_version_student_assignments staging에 저장되도록 보강 완료
-- draft 학생 이동과 draft 반 slot 이동이 version_class_id 기준을 함께 저장하도록 보강 완료
-- scan-preview가 version_class_id 기준 student/teacher/room 충돌을 계산하도록 보강 완료
-- version_class 기반 draft는 기존 activateVersion으로 운영 반영하지 못하도록 안전 차단 완료
-- 프론트 timetable.js 수정 없음 확인
-- 운영 classes/class_students/class_time_slots/student_enrollments 직접 변경 로직은 draft 생성/조회/편집 경로에 추가하지 않음 확인
+- Step 3 프론트 개편시간표 렌더링 분리 구현 완료
+- draft 모드 class list를 운영 `classes`가 아니라 `timetable_version_classes` / `version_class_id` 기준으로 렌더링하도록 전환
+- `status=excluded` / `graduating_excluded` version class 렌더링 제외 처리 완료
+- 기존 중3 source class는 화면에서 제외되고, 기존 중2 -> 새 중3 및 기존 중1 -> 새 중2는 `source_grade` / `next_grade` 기반 version class로 유지되는 구조 반영
+- draft slot / student assignment 매칭을 `version_class_id` 우선 기준으로 보강
+- draft 반 카드 클릭 시 `renderClass(class_id)` 운영 클래스룸 진입 차단 처리
+- 운영 시간표에서는 기존 `renderClass(class_id)` 진입 흐름 보존
+- 학생 드래그 / 반 카드 드래그의 `drag_type: student` / `drag_type: class-card` 분리 유지
+- draft 학생 배치 API payload에 `version_class_id` 전달 보강
+- draft 반 이동 API payload에 `version_class_id` 전달 보강
+- draft 새 반 추가 / 신규 학생 추가 흐름을 기존 API와 맞춰 유지
+- 프론트에서 신규 학생 staging 렌더링 시 `student_snapshot` / `student_name_snapshot` fallback 보강
+- Worker route 파일 수정 없음
+- DB/migration 변경 없음
 
 ## 3. 실행 결과
-- node --check apmath/worker-backup/worker/routes/timetable-versions.js: PASS
+- `node --check apmath/js/timetable.js`: PASS
 - 충돌 마커 검색 결과: 없음
-- 중복 함수 정의 확인: 주요 신규 helper 단일 정의
+- `buildTimetableVersionBannerHtml` 중복 정의 확인 결과: 1개
+- `getTimetableClassList` 중복 정의 확인 결과: 1개
+- `handleTimetableStudentDragStart` / `handleTimetableClassCardDragStart` 유지 확인
 - DB 명령 없음
-- wrangler deploy 없음
+- 배포 없음
 - git add/commit/push 없음
 
 ## 4. 결과 요약
-- 새학기 시간표 완전분리 Step 2로 draft 생성/조회/기본 편집 API를 version_class_id 기반 staging 구조로 전환했다.
-- 실제 프론트 렌더링 분리와 운영 적용 activateVersion 재설계는 다음 Step에서 진행해야 한다.
+- 개편시간표 프론트를 `version_class_id` 기준 staging 렌더링으로 분리했다.
+- 기존 중3 반 카드가 운영 `classes` 기준으로 다시 보이는 위험과 draft 카드 클릭 시 운영 클래스룸으로 진입하는 위험을 차단했다.
 
 ## 5. 다음 조치
 - Gemini/Claude/ChatGPT 검수 필요
-- PASS 후 적용용 zip 수동 적용
-- Worker deploy / git commit / push는 사용자 승인 후 진행
-- Step 3에서 프론트 draft 렌더링을 timetable_version_classes 기준으로 분리
+- 검수 PASS 후 적용용 zip 수동 적용
+- 적용 후 브라우저에서 기존 중3 제외, 기존 중2 -> 새 중3 유지, 기존 중1 -> 새 중2 유지, draft 카드 클릭 차단, 학생/반 드래그를 확인
