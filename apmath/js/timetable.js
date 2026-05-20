@@ -725,6 +725,54 @@ function getSelectedTimetableDraftSchoolYear() {
     return Number(version && version.school_year || 0);
 }
 
+function parseTimetableAssignmentMemo(row) {
+    var raw = row && row.memo;
+    if (!raw) return {};
+    if (typeof raw === 'object') return raw;
+    if (typeof raw !== 'string') return {};
+    try {
+        var parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch (e) {
+        if (typeof console !== 'undefined' && console.warn) console.warn('[parseTimetableAssignmentMemo] invalid memo JSON ignored');
+        return {};
+    }
+}
+
+function getTimetableAssignmentSnapshotName(row, memoInfo) {
+    var memo = memoInfo || parseTimetableAssignmentMemo(row);
+    return String(
+        (row && row.student_name_snapshot) ||
+        memo.student_name_snapshot ||
+        memo.student_name ||
+        memo.name ||
+        ''
+    ).trim();
+}
+
+function getTimetableAssignmentDisplayGrade(row, student, memoInfo) {
+    var memo = memoInfo || parseTimetableAssignmentMemo(row);
+    var raw =
+        memo.next_grade ||
+        (row && row.next_grade) ||
+        (student && student.grade) ||
+        memo.source_grade ||
+        (row && row.source_grade) ||
+        '';
+    return normalizeTimetableGradeLabel(raw);
+}
+
+function normalizeTimetableGradeLabel(value) {
+    var text = String(value || '').trim();
+    if (/중\s*1|중1|예비\s*중\s*1/.test(text)) return '중1';
+    if (/중\s*2|중2|예비\s*중\s*2/.test(text)) return '중2';
+    if (/중\s*3|중3|예비\s*중\s*3/.test(text)) return '중3';
+    if (/고\s*1|고1|예비\s*고\s*1/.test(text)) return '고1';
+    if (/고\s*2|고2|예비\s*고\s*2/.test(text)) return '고2';
+    if (/고\s*3|고3|예비\s*고\s*3/.test(text)) return '고3';
+    return text;
+}
+
 function shouldHideGraduatingMiddleClassInDraft(cls, baseDate) {
     if (!isTimetableDraftMode() || !cls) return false;
     var now = baseDate || new Date();
@@ -732,8 +780,17 @@ function shouldHideGraduatingMiddleClassInDraft(cls, baseDate) {
     if (now.getMonth() !== 11) return false;
     if (draftYear !== now.getFullYear() + 1) return false;
     if (Number(cls.is_active) === 0) return false;
-    var text = String(cls.grade || '') + ' ' + String(cls.name || '');
-    return /중3/.test(text);
+    var assignmentRows = getTimetableDraftAssignmentRows(cls.id);
+    var sourceGrades = assignmentRows
+        .map(function(row) {
+            var memoInfo = parseTimetableAssignmentMemo(row);
+            return normalizeTimetableGradeLabel(memoInfo.source_grade || row.source_grade || '');
+        })
+        .filter(Boolean);
+    if (sourceGrades.length && sourceGrades.length === assignmentRows.length) {
+        return sourceGrades.every(function(grade) { return grade === '중3'; });
+    }
+    return false;
 }
 
 async function saveTimetableDraftEffectiveDate() {
@@ -2230,6 +2287,33 @@ function getTimetableClassStudentsWithInfo(classId) {
         });
     });
     var stSource = Object.keys(studentMap).map(function(id) { return studentMap[id]; });
+
+    if (isTimetableDraftMode()) {
+        return getTimetableDraftAssignmentRows(classId)
+            .map(function(row) {
+                var studentId = String(row.student_id || '');
+                var s = studentMap[studentId] || null;
+                var memoInfo = parseTimetableAssignmentMemo(row);
+                var name = String(
+                    (s && s.name) ||
+                    getTimetableAssignmentSnapshotName(row, memoInfo) ||
+                    '이름 없음'
+                ).trim();
+                var displayGrade = getTimetableAssignmentDisplayGrade(row, s, memoInfo);
+                if (!studentId || !name) return null;
+                return {
+                    id: studentId,
+                    name: name,
+                    grade: displayGrade,
+                    sourceGrade: memoInfo.source_grade || row.source_grade || '',
+                    nextGrade: memoInfo.next_grade || row.next_grade || displayGrade || '',
+                    isNew: (s && s.status === '입학예정') || String((s && s.memo) || row.memo || '').indexOf('#새학기') !== -1,
+                    isLeave: _ttIsStudentLeave(s)
+                };
+            })
+            .filter(Boolean)
+            .sort(function(a, b) { return String(a.name || '').localeCompare(String(b.name || ''), 'ko'); });
+    }
 
     var sIds = csSource
         .filter(function(cs) { return String(cs.class_id) === String(classId); })
