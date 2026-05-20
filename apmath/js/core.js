@@ -742,6 +742,8 @@ async function loadData(isInitial = false) {
         timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : [],
         timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : []
     };
+    apmsInvalidateDataIndexes();
+    apmsGetDataIndexes();
     
     if (state.ui.currentClassId) {
         renderClass(state.ui.currentClassId);
@@ -789,10 +791,178 @@ async function refreshDataOnly() {
         timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : (state.db.timetable_conflict_logs || []),
         timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : (state.db.timetable_conflict_overrides || [])
     };
+    apmsInvalidateDataIndexes();
+    apmsGetDataIndexes();
+}
+
+
+// ── APMS 공통 데이터 인덱스 / 빠른 조회 헬퍼 ─────────────────────────────
+// 기존 state.db 원본 배열은 그대로 두고, 화면 렌더링 중 반복 find/filter 되는 조회만 Map 캐시로 보조한다.
+// 배열 참조가 바뀌면 자동 재생성되므로 loadData/refreshDataOnly 이후에도 안전하게 따라간다.
+function apmsGetDbArray(name) {
+    return (state && state.db && Array.isArray(state.db[name])) ? state.db[name] : [];
+}
+
+function apmsGroupBy(rows, keyGetter) {
+    const map = new Map();
+    (Array.isArray(rows) ? rows : []).forEach(row => {
+        const key = String(keyGetter(row) || '').trim();
+        if (!key) return;
+        if (!map.has(key)) map.set(key, []);
+        map.get(key).push(row);
+    });
+    return map;
+}
+
+function apmsMapById(rows) {
+    const map = new Map();
+    (Array.isArray(rows) ? rows : []).forEach(row => {
+        const id = String(row && row.id || '').trim();
+        if (id) map.set(id, row);
+    });
+    return map;
+}
+
+function apmsBuildDataIndexes() {
+    const students = apmsGetDbArray('students');
+    const classes = apmsGetDbArray('classes');
+    const classStudents = apmsGetDbArray('class_students');
+    const examSessions = apmsGetDbArray('exam_sessions');
+    const consultations = apmsGetDbArray('consultations');
+    const wrongAnswers = apmsGetDbArray('wrong_answers');
+    const classDailyRecords = apmsGetDbArray('class_daily_records');
+    const classDailyProgress = apmsGetDbArray('class_daily_progress');
+    const academySchedules = apmsGetDbArray('academy_schedules');
+
+    const studentsById = apmsMapById(students);
+    const classesById = apmsMapById(classes);
+    const classStudentByStudentId = new Map();
+    const classStudentRowsByClassId = new Map();
+    const studentIdsByClassId = new Map();
+    const studentsByClassId = new Map();
+
+    classStudents.forEach(row => {
+        const studentId = String(row && row.student_id || '').trim();
+        const classId = String(row && row.class_id || '').trim();
+        if (!studentId || !classId) return;
+        if (!classStudentByStudentId.has(studentId)) classStudentByStudentId.set(studentId, row);
+        if (!classStudentRowsByClassId.has(classId)) classStudentRowsByClassId.set(classId, []);
+        classStudentRowsByClassId.get(classId).push(row);
+        if (!studentIdsByClassId.has(classId)) studentIdsByClassId.set(classId, []);
+        studentIdsByClassId.get(classId).push(studentId);
+        const student = studentsById.get(studentId);
+        if (student) {
+            if (!studentsByClassId.has(classId)) studentsByClassId.set(classId, []);
+            studentsByClassId.get(classId).push(student);
+        }
+    });
+
+    const examSessionsByStudentId = apmsGroupBy(examSessions, row => row && row.student_id);
+    examSessionsByStudentId.forEach(rows => rows.sort((a, b) =>
+        String(b.exam_date || '').localeCompare(String(a.exam_date || '')) ||
+        String(b.id || '').localeCompare(String(a.id || ''))
+    ));
+
+    const consultationsByStudentId = apmsGroupBy(consultations, row => row && row.student_id);
+    consultationsByStudentId.forEach(rows => rows.sort((a, b) =>
+        String(b.date || '').localeCompare(String(a.date || '')) ||
+        String(b.created_at || '').localeCompare(String(a.created_at || ''))
+    ));
+
+    const wrongAnswersBySessionId = apmsGroupBy(wrongAnswers, row => row && row.session_id);
+    const classDailyRecordsByClassId = apmsGroupBy(classDailyRecords, row => row && row.class_id);
+    classDailyRecordsByClassId.forEach(rows => rows.sort((a, b) =>
+        String(b.date || '').localeCompare(String(a.date || '')) ||
+        String(b.created_at || '').localeCompare(String(a.created_at || ''))
+    ));
+    const classDailyProgressByRecordId = apmsGroupBy(classDailyProgress, row => row && row.record_id);
+
+    return {
+        _refs: { students, classes, classStudents, examSessions, consultations, wrongAnswers, classDailyRecords, classDailyProgress, academySchedules },
+        studentsById,
+        classesById,
+        classStudentByStudentId,
+        classStudentRowsByClassId,
+        studentIdsByClassId,
+        studentsByClassId,
+        examSessionsByStudentId,
+        consultationsByStudentId,
+        wrongAnswersBySessionId,
+        classDailyRecordsByClassId,
+        classDailyProgressByRecordId,
+        academySchedules
+    };
+}
+
+function apmsGetDataIndexes() {
+    if (!state) return apmsBuildDataIndexes();
+    const idx = state.dataIndexes;
+    const refs = idx && idx._refs;
+    const sameRefs = refs &&
+        refs.students === apmsGetDbArray('students') &&
+        refs.classes === apmsGetDbArray('classes') &&
+        refs.classStudents === apmsGetDbArray('class_students') &&
+        refs.examSessions === apmsGetDbArray('exam_sessions') &&
+        refs.consultations === apmsGetDbArray('consultations') &&
+        refs.wrongAnswers === apmsGetDbArray('wrong_answers') &&
+        refs.classDailyRecords === apmsGetDbArray('class_daily_records') &&
+        refs.classDailyProgress === apmsGetDbArray('class_daily_progress') &&
+        refs.academySchedules === apmsGetDbArray('academy_schedules');
+    if (sameRefs) return idx;
+    state.dataIndexes = apmsBuildDataIndexes();
+    return state.dataIndexes;
+}
+
+function apmsInvalidateDataIndexes() {
+    if (state) state.dataIndexes = null;
+}
+
+function apmsGetStudentById(studentId) {
+    return apmsGetDataIndexes().studentsById.get(String(studentId || '')) || null;
+}
+
+function apmsGetClassById(classId) {
+    return apmsGetDataIndexes().classesById.get(String(classId || '')) || null;
+}
+
+function apmsGetClassStudentMap(studentId) {
+    return apmsGetDataIndexes().classStudentByStudentId.get(String(studentId || '')) || null;
+}
+
+function apmsGetClassIdForStudent(studentId) {
+    return String(apmsGetClassStudentMap(studentId)?.class_id || '');
+}
+
+function apmsGetClassStudentIds(classId) {
+    return (apmsGetDataIndexes().studentIdsByClassId.get(String(classId || '')) || []).slice();
+}
+
+function apmsGetStudentsForClass(classId) {
+    return (apmsGetDataIndexes().studentsByClassId.get(String(classId || '')) || []).slice();
+}
+
+function apmsGetExamSessionsForStudent(studentId) {
+    return (apmsGetDataIndexes().examSessionsByStudentId.get(String(studentId || '')) || []).slice();
+}
+
+function apmsGetConsultationsForStudent(studentId) {
+    return (apmsGetDataIndexes().consultationsByStudentId.get(String(studentId || '')) || []).slice();
+}
+
+function apmsGetWrongAnswersForSession(sessionId) {
+    return (apmsGetDataIndexes().wrongAnswersBySessionId.get(String(sessionId || '')) || []).slice();
+}
+
+function apmsGetLatestClassDailyRecord(classId) {
+    return (apmsGetDataIndexes().classDailyRecordsByClassId.get(String(classId || '')) || [])[0] || null;
+}
+
+function apmsGetClassDailyProgressRows(recordId) {
+    return (apmsGetDataIndexes().classDailyProgressByRecordId.get(String(recordId || '')) || []).slice();
 }
 
 function getStudentTargetScore(studentId) {
-    const student = (state.db.students || []).find(s => String(s.id) === String(studentId));
+    const student = typeof apmsGetStudentById === 'function' ? apmsGetStudentById(studentId) : (state.db.students || []).find(s => String(s.id) === String(studentId));
     const raw = student?.target_score;
     if (raw === undefined || raw === null || raw === '') return null;
     const score = Number(raw);
@@ -811,9 +981,7 @@ function computeStudentTargetProgress(studentId, limit = 3) {
         };
     }
 
-    const scores = (state.db.exam_sessions || [])
-        .filter(e => String(e.student_id) === String(studentId))
-        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')))
+    const scores = (typeof apmsGetExamSessionsForStudent === 'function' ? apmsGetExamSessionsForStudent(studentId) : (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(studentId)).sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || ''))))
         .slice(0, limit)
         .map(e => Number(e.score))
         .filter(v => Number.isFinite(v));

@@ -54,39 +54,53 @@ function resolveReportOptions(options = {}) {
 }
 function buildReportContext(sid, options = {}) {
     const reportOptions = resolveReportOptions(options);
-    const student = state.db.students.find(x => x.id === sid);
+    const safeSid = String(sid || '');
+    const student = typeof apmsGetStudentById === 'function'
+        ? apmsGetStudentById(safeSid)
+        : state.db.students.find(x => String(x.id) === safeSid);
     const today = new Date().toLocaleDateString('sv-SE');
 
-    const attendance = state.db.attendance.find(a => a.student_id === sid && a.date === today)?.status || '미기록';
-    const homework = state.db.homework.find(h => h.student_id === sid && h.date === today)?.status || '미기록';
+    const attendance = state.db.attendance.find(a => String(a.student_id) === safeSid && a.date === today)?.status || '미기록';
+    const homework = state.db.homework.find(h => String(h.student_id) === safeSid && h.date === today)?.status || '미기록';
 
-    const exams = (state.db.exam_sessions || [])
-        .filter(e => e.student_id === sid)
-        .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
+    const exams = typeof apmsGetExamSessionsForStudent === 'function'
+        ? apmsGetExamSessionsForStudent(safeSid)
+        : (state.db.exam_sessions || [])
+            .filter(e => String(e.student_id) === safeSid)
+            .sort((a, b) => String(b.exam_date || '').localeCompare(String(a.exam_date || '')) || String(b.id || '').localeCompare(String(a.id || '')));
 
     const todayExam = exams.find(e => e.exam_date === today) || null;
     const latestExam = todayExam || exams[0] || null;
-    const avg = getRecentAverage(sid, 3);
+    const avg = getRecentAverage(safeSid, 3);
 
     const wrongIds = latestExam
-        ? (state.db.wrong_answers || [])
-            .filter(w => w.session_id === latestExam.id)
+        ? (typeof apmsGetWrongAnswersForSession === 'function'
+            ? apmsGetWrongAnswersForSession(latestExam.id)
+            : (state.db.wrong_answers || []).filter(w => String(w.session_id) === String(latestExam.id)))
             .map(w => w.question_id)
             .sort((a, b) => Number(a) - Number(b))
         : [];
 
-    const classMap = (state.db.class_students || []).find(m => String(m.student_id) === String(sid));
+    const classMap = typeof apmsGetClassStudentMap === 'function'
+        ? apmsGetClassStudentMap(safeSid)
+        : (state.db.class_students || []).find(m => String(m.student_id) === safeSid);
     const classId = classMap?.class_id || '';
-    const className = (state.db.classes || []).find(c => String(c.id) === String(classId))?.name || '';
+    const className = typeof apmsGetClassById === 'function'
+        ? (apmsGetClassById(classId)?.name || '')
+        : ((state.db.classes || []).find(c => String(c.id) === String(classId))?.name || '');
 
     const latestRecord = classId
-        ? (state.db.class_daily_records || [])
-            .filter(r => String(r.class_id) === String(classId))
-            .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] || null
+        ? (typeof apmsGetLatestClassDailyRecord === 'function'
+            ? apmsGetLatestClassDailyRecord(classId)
+            : (state.db.class_daily_records || [])
+                .filter(r => String(r.class_id) === String(classId))
+                .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] || null)
         : null;
 
     const progressItems = latestRecord
-        ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(latestRecord.id))
+        ? (typeof apmsGetClassDailyProgressRows === 'function'
+            ? apmsGetClassDailyProgressRows(latestRecord.id)
+            : (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(latestRecord.id)))
         : [];
 
     const progressText = progressItems.length
@@ -99,11 +113,13 @@ function buildReportContext(sid, options = {}) {
             .join(', ')
         : '';
 
-    const latestConsultation = (state.db.consultations || [])
-        .filter(c => c.student_id === sid)
-        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0] || null;
+    const latestConsultation = (typeof apmsGetConsultationsForStudent === 'function'
+        ? apmsGetConsultationsForStudent(safeSid)
+        : (state.db.consultations || [])
+            .filter(c => String(c.student_id) === safeSid)
+            .sort((a, b) => String(b.date || '').localeCompare(String(a.date || ''))))[0] || null;
     const targetProgress = typeof computeStudentTargetProgress === 'function'
-        ? computeStudentTargetProgress(sid)
+        ? computeStudentTargetProgress(safeSid)
         : null;
 
     return {
