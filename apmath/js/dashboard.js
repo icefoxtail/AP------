@@ -161,22 +161,364 @@ function isClassVisibleForCurrentTeacher(c) {
 }
 
 // [5G] 관리필요(구 위험학생) 판정 알고리즘
+
+// [Dashboard Ops] 일지 대상일·퇴근 마감·집중케어 공통 유틸
+const DASHBOARD_JOURNAL_BASE_DAYS = ['wed', 'thu'];
+const DASHBOARD_DAY_ORDER = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const DASHBOARD_DAY_LABELS = { sun: '일', mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토' };
+const DASHBOARD_DAY_INDEX_TO_KEY = { 0: 'sun', 1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 'sat', 7: 'sun' };
+
+function dashboardEscapeAttr(value) {
+    return String(value || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+function dashboardDateFromLocalString(dateStr) {
+    const parts = String(dateStr || '').split('-').map(Number);
+    if (parts.length !== 3 || parts.some(v => !Number.isFinite(v))) return null;
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+}
+
+function dashboardDateStringFromDate(date) {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('sv-SE');
+}
+
+function dashboardGetWeekDates(baseDateStr) {
+    const base = dashboardDateFromLocalString(baseDateStr || new Date().toLocaleDateString('sv-SE')) || new Date();
+    const start = new Date(base.getFullYear(), base.getMonth(), base.getDate());
+    start.setDate(start.getDate() - start.getDay());
+    return DASHBOARD_DAY_ORDER.map((key, idx) => {
+        const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + idx);
+        return { key, label: DASHBOARD_DAY_LABELS[key], date: dashboardDateStringFromDate(d), dayIndex: idx };
+    });
+}
+
+function dashboardNormalizeTeacherName(name) {
+    return String(name || '').replace(/\s*선생님\s*$/g, '').trim();
+}
+
+function dashboardAddDayKey(list, key) {
+    const normalized = String(key || '').trim();
+    if (DASHBOARD_DAY_ORDER.includes(normalized) && !list.includes(normalized)) list.push(normalized);
+}
+
+function dashboardParseDayKeysFromText(value) {
+    const source = String(value || '').trim();
+    const days = [];
+    if (!source) return days;
+
+    const tokenMap = {
+        '0': 'sun', '1': 'mon', '2': 'tue', '3': 'wed', '4': 'thu', '5': 'fri', '6': 'sat', '7': 'sun',
+        sun: 'sun', sunday: 'sun', su: 'sun', 일: 'sun', 일요일: 'sun',
+        mon: 'mon', monday: 'mon', m: 'mon', 월: 'mon', 월요일: 'mon',
+        tue: 'tue', tuesday: 'tue', tu: 'tue', 화: 'tue', 화요일: 'tue',
+        wed: 'wed', wednesday: 'wed', w: 'wed', 수: 'wed', 수요일: 'wed',
+        thu: 'thu', thursday: 'thu', th: 'thu', 목: 'thu', 목요일: 'thu',
+        fri: 'fri', friday: 'fri', f: 'fri', 금: 'fri', 금요일: 'fri',
+        sat: 'sat', saturday: 'sat', sa: 'sat', 토: 'sat', 토요일: 'sat'
+    };
+
+    const groupMap = {
+        mwf: ['mon', 'wed', 'fri'],
+        mtwthf: ['mon', 'tue', 'wed', 'thu', 'fri'],
+        weekday: ['mon', 'tue', 'wed', 'thu', 'fri'],
+        weekdays: ['mon', 'tue', 'wed', 'thu', 'fri'],
+        ttf: ['tue', 'thu', 'fri'],
+        tt: ['tue', 'thu'],
+        weekend: ['sat', 'sun']
+    };
+
+    const compact = source.toLowerCase().replace(/\s+/g, '');
+    if (groupMap[compact]) return [...groupMap[compact]];
+
+    source.split(/[,/|·\s]+/).map(v => v.trim()).filter(Boolean).forEach(token => {
+        const lower = token.toLowerCase();
+        if (groupMap[lower]) groupMap[lower].forEach(day => dashboardAddDayKey(days, day));
+        else dashboardAddDayKey(days, tokenMap[lower] || tokenMap[token]);
+    });
+
+    for (const ch of source) dashboardAddDayKey(days, tokenMap[ch]);
+    return days;
+}
+
+function dashboardGetClassDayKeys(cls) {
+    const days = [];
+    dashboardParseDayKeysFromText(cls?.schedule_days).forEach(day => dashboardAddDayKey(days, day));
+    dashboardParseDayKeysFromText(cls?.day_group).forEach(day => dashboardAddDayKey(days, day));
+    dashboardParseDayKeysFromText(cls?.time_label).forEach(day => dashboardAddDayKey(days, day));
+    return DASHBOARD_DAY_ORDER.filter(day => days.includes(day));
+}
+
+function dashboardGetTeacherClasses(teacherName = '') {
+    const classes = state?.db?.classes || [];
+    const target = dashboardNormalizeTeacherName(teacherName || state?.ui?.userName || state?.auth?.name || '');
+    return classes.filter(c => {
+        if (Number(c?.is_active) === 0) return false;
+        if (!target) return isClassVisibleForCurrentTeacher(c);
+        const classTeacher = dashboardNormalizeTeacherName(c?.teacher_name || '');
+        return classTeacher === target;
+    });
+}
+
+function dashboardGetJournalTargetDayKeys(teacherName = '', classRows = null) {
+    const days = [...DASHBOARD_JOURNAL_BASE_DAYS];
+    const classes = Array.isArray(classRows) ? classRows : dashboardGetTeacherClasses(teacherName);
+    classes.forEach(cls => dashboardGetClassDayKeys(cls).forEach(day => dashboardAddDayKey(days, day)));
+    return DASHBOARD_DAY_ORDER.filter(day => days.includes(day));
+}
+
+function dashboardFindJournal(dateStr, teacherName = '') {
+    const targetTeacher = dashboardNormalizeTeacherName(teacherName || state?.ui?.userName || state?.auth?.name || '');
+    return (state?.db?.journals || []).find(j => {
+        const sameDate = String(j?.date || '') === String(dateStr || '');
+        if (!sameDate) return false;
+        if (!targetTeacher) return true;
+        return dashboardNormalizeTeacherName(j?.teacher_name || '') === targetTeacher;
+    });
+}
+
+function dashboardIsJournalDone(journal) {
+    const status = String(journal?.status || '').trim();
+    if (!journal) return false;
+    return status === '제출완료' || status === '결재완료' || !!String(journal?.content || '').trim();
+}
+
+function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, classRows = null) {
+    injectDashboardOpsStyles();
+    const week = dashboardGetWeekDates(baseDateStr || new Date().toLocaleDateString('sv-SE'));
+    const targetDays = dashboardGetJournalTargetDayKeys(teacherName, classRows);
+    const safeTeacher = dashboardEscapeAttr(teacherName || state?.ui?.userName || '');
+    const cells = week
+        .filter(day => targetDays.includes(day.key))
+        .filter(day => !isDashboardHoliday(day.date))
+        .map(day => {
+            const journal = dashboardFindJournal(day.date, teacherName);
+            const done = dashboardIsJournalDone(journal);
+            const statusText = done ? (String(journal?.status || '').trim() || '작성') : '미작성';
+            const click = teacherName
+                ? `renderAdminJournalList('${day.date}', '${safeTeacher}')`
+                : `openDailyJournalModal('${day.date}')`;
+            return `
+                <button class="journal-day-cell journal-day-cell--${done ? 'done' : 'missing'}" onclick="${click}" type="button">
+                    <span class="journal-day-cell__label">${apEscapeHtml(day.label)}</span>
+                    <span class="journal-day-cell__date">${apEscapeHtml(apFormatMonthDay(day.date) || day.date)}</span>
+                    <span class="journal-day-cell__status">${apEscapeHtml(statusText)}</span>
+                </button>
+            `;
+        }).join('');
+
+    if (!cells.trim()) {
+        return `<div class="journal-matrix journal-matrix--empty"><span class="journal-matrix__empty">이번 주 작성 대상일이 없습니다.</span></div>`;
+    }
+    return `<div class="journal-matrix" data-teacher="${apEscapeHtml(teacherName || '')}">${cells}</div>`;
+}
+
+function dashboardGetStudentClassInfo(studentId) {
+    const classStudents = state?.db?.class_students || [];
+    const classes = state?.db?.classes || [];
+    const map = classStudents.find(m => String(m?.student_id) === String(studentId));
+    const cls = classes.find(c => String(c?.id) === String(map?.class_id || '')) || null;
+    return { classId: map?.class_id || '', className: cls?.name || '미배정', cls };
+}
+
+function dashboardGroupByClass(items) {
+    return (items || []).reduce((acc, item) => {
+        const key = item?.className || '미배정';
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+    }, {});
+}
+
+function dashboardHasMakeupAfter(studentId, dateStr) {
+    const sid = String(studentId || '');
+    const start = String(dateStr || '').slice(0, 10);
+    if (!sid || !start) return false;
+
+    const hasAttendanceMakeup = (state?.db?.attendance_history || state?.db?.attendance || []).some(a => {
+        if (String(a?.student_id || '') !== sid) return false;
+        const date = String(a?.date || '').slice(0, 10);
+        if (!date || date < start) return false;
+        const hay = `${a?.status || ''} ${a?.tags || ''} ${a?.memo || ''}`;
+        return hay.includes('보강');
+    });
+    if (hasAttendanceMakeup) return true;
+
+    return (state?.db?.academy_schedules || []).some(s => {
+        if (String(s?.is_deleted || 0) === '1') return false;
+        if (String(s?.student_id || '') !== sid) return false;
+        const date = String(s?.schedule_date || '').slice(0, 10);
+        if (!date || date < start) return false;
+        const hay = `${s?.schedule_type || ''} ${s?.title || ''} ${s?.memo || ''}`;
+        return hay.includes('보강') || /makeup/i.test(hay);
+    });
+}
+
+function dashboardHasConsultationAfter(studentId, dateStr) {
+    const sid = String(studentId || '');
+    const start = String(dateStr || '').slice(0, 10);
+    if (!sid || !start) return false;
+    return (state?.db?.consultations || []).some(c => {
+        if (String(c?.student_id || '') !== sid) return false;
+        const date = String(c?.date || c?.consultation_date || c?.created_at || '').slice(0, 10);
+        return !!date && date >= start;
+    });
+}
+
+function dashboardGetClassProgressRecord(classId, dateStr) {
+    return (state?.db?.class_daily_records || []).find(r => String(r?.class_id || '') === String(classId) && String(r?.date || '') === String(dateStr));
+}
+
+function dashboardGetScheduledClassesForDate(dateStr, teacherName = '') {
+    const dateObj = dashboardDateFromLocalString(dateStr);
+    const dayKey = dateObj ? DASHBOARD_DAY_INDEX_TO_KEY[dateObj.getDay()] : '';
+    const dayIdx = dateObj ? String(dateObj.getDay()) : '';
+    const targetTeacher = dashboardNormalizeTeacherName(teacherName || state?.ui?.userName || state?.auth?.name || '');
+    return (state?.db?.classes || []).filter(cls => {
+        if (Number(cls?.is_active) === 0) return false;
+        if (!isClassVisibleForCurrentTeacher(cls) && !targetTeacher) return false;
+        if (targetTeacher && dashboardNormalizeTeacherName(cls?.teacher_name || '') !== targetTeacher) return false;
+        const keys = dashboardGetClassDayKeys(cls);
+        if (keys.length) return keys.includes(dayKey);
+        if (cls?.schedule_days) return String(cls.schedule_days).split(',').map(v => v.trim()).includes(dayIdx);
+        return false;
+    });
+}
+
+function computeDashboardJournalDraftSections(dateStr) {
+    const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
+    const classes = dashboardGetScheduledClassesForDate(targetDate);
+    const autoLines = [];
+    const checkLines = [];
+    const memoLines = ['오늘 수업 분위기, 학생별 특이사항, 학부모께 전달할 뉘앙스를 필요하면 덧붙여 주세요.'];
+
+    if (!classes.length) {
+        autoLines.push('해당 날짜에 담당 학급이 없습니다.');
+        return { targetDate, classes, autoLines, checkLines, memoLines };
+    }
+
+    classes.forEach(cls => {
+        const className = cls?.name || '이름 없는 반';
+        const memberIds = (state?.db?.class_students || [])
+            .filter(m => String(m?.class_id) === String(cls?.id))
+            .map(m => String(m?.student_id));
+        const students = (state?.db?.students || [])
+            .filter(s => memberIds.includes(String(s?.id)) && String(s?.status || '') === '재원');
+        const total = students.length;
+        const absents = [];
+        const lates = [];
+        const makeups = [];
+        const hwMiss = [];
+        const noAttendance = [];
+        const noHomework = [];
+
+        students.forEach(s => {
+            const sid = String(s?.id || '');
+            const att = (state?.db?.attendance || []).find(a => String(a?.student_id) === sid && String(a?.date) === targetDate);
+            const hw = (state?.db?.homework || []).find(h => String(h?.student_id) === sid && String(h?.date) === targetDate);
+            const attStatus = String(att?.status || '').trim();
+            const attHay = `${attStatus} ${att?.tags || ''} ${att?.memo || ''}`;
+
+            if (!attStatus) noAttendance.push(s.name || '학생');
+            if (!String(hw?.status || '').trim()) noHomework.push(s.name || '학생');
+            if (attStatus === '결석') absents.push(s);
+            if (attStatus === '지각' || attHay.includes('지각')) lates.push(s.name || '학생');
+            if (attStatus === '보강' || attHay.includes('보강')) makeups.push(s.name || '학생');
+            if (String(hw?.status || '').trim() === '미완료') hwMiss.push(s);
+        });
+
+        const attendanceCount = Math.max(0, total - absents.length);
+        const homeworkCount = Math.max(0, total - hwMiss.length);
+        autoLines.push(`${className}반은 출석 ${attendanceCount}/${total}, 숙제 ${homeworkCount}/${total}로 기록되어 있습니다.`);
+        if (absents.length) autoLines.push(`${className}반 결석: ${absents.map(s => s.name || '학생').join(', ')}`);
+        if (lates.length) autoLines.push(`${className}반 지각: ${lates.join(', ')}`);
+        if (makeups.length) autoLines.push(`${className}반 보강: ${makeups.join(', ')}`);
+        if (hwMiss.length) autoLines.push(`${className}반 숙제 미완료: ${hwMiss.map(s => s.name || '학생').join(', ')}`);
+
+        const dailyRecord = dashboardGetClassProgressRecord(cls.id, targetDate);
+        if (dailyRecord) {
+            const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
+            const progresses = (state?.db?.class_daily_progress || []).filter(p => String(p?.record_id) === String(dailyRecord.id));
+            if (progresses.length) {
+                progresses.forEach(p => autoLines.push(`${className}반 진도: ${formatJournalProgressLine(p, noteData.units).trim()}`));
+            } else {
+                checkLines.push(`확인 필요: ${className}반 수업 기록은 있으나 진도 항목이 비어 있습니다.`);
+            }
+            if (noteData.note) autoLines.push(`${className}반 특이사항: ${noteData.note}`);
+        } else {
+            checkLines.push(`확인 필요: ${className}반은 오늘 수업 대상이지만 진도 기록이 없습니다.`);
+        }
+
+        absents.forEach(s => {
+            if (!dashboardHasMakeupAfter(s.id, targetDate)) {
+                checkLines.push(`확인 필요: ${className}반 ${s.name || '학생'} 학생이 결석 처리되었으나 등록된 보강 일정이 없습니다.`);
+            }
+        });
+        hwMiss.forEach(s => {
+            if (!dashboardHasConsultationAfter(s.id, targetDate)) {
+                checkLines.push(`확인 필요: ${className}반 ${s.name || '학생'} 학생의 숙제가 미완료로 남아 있으나 후속 메모 또는 상담 기록이 없습니다.`);
+            }
+        });
+        if (noAttendance.length) checkLines.push(`확인 필요: ${className}반 출결 미입력 학생이 있습니다. (${noAttendance.join(', ')})`);
+        if (noHomework.length) checkLines.push(`확인 필요: ${className}반 숙제 미입력 학생이 있습니다. (${noHomework.join(', ')})`);
+
+        const cns = (state?.db?.consultations || []).filter(c => String(c?.date || '').slice(0, 10) === targetDate && memberIds.includes(String(c?.student_id)));
+        cns.forEach(cn => {
+            const sName = students.find(s => String(s.id) === String(cn.student_id))?.name || '학생';
+            autoLines.push(`${className}반 상담 기록: ${sName} - ${cn.content || cn.next_action || '상담 기록'}`);
+        });
+    });
+
+    return { targetDate, classes, autoLines, checkLines, memoLines };
+}
+
+function renderJournalDraftPreview(dateStr) {
+    const sections = computeDashboardJournalDraftSections(dateStr);
+    const renderItems = (items, emptyText) => (items && items.length)
+        ? `<ul class="journal-draft__list">${items.map(item => `<li class="journal-draft__item">${apEscapeHtml(item)}</li>`).join('')}</ul>`
+        : `<div class="journal-draft__empty">${apEscapeHtml(emptyText)}</div>`;
+
+    return `
+        <div class="journal-draft">
+            <section class="journal-draft__section journal-draft__section--auto">
+                <div class="journal-draft__title">[자동 확정]</div>
+                <div class="journal-draft__body">${renderItems(sections.autoLines, '자동 확정으로 쓸 기록이 없습니다.')}</div>
+            </section>
+            <section class="journal-draft__section journal-draft__section--check">
+                <div class="journal-draft__title">[확인 필요]</div>
+                <div class="journal-draft__body">${renderItems(sections.checkLines, '추가 확인이 필요한 항목이 없습니다.')}</div>
+            </section>
+            <section class="journal-draft__section journal-draft__section--memo">
+                <div class="journal-draft__title">[선생님 자유 메모]</div>
+                <div class="journal-draft__body">${renderItems(sections.memoLines, '자유 메모를 추가해 주세요.')}</div>
+            </section>
+        </div>
+    `;
+}
+
+function injectDashboardOpsStyles() {
+    if (document.getElementById('dashboard-ops-style')) return;
+    const style = document.createElement('style');
+    style.id = 'dashboard-ops-style';
+    style.textContent = `
+        .dashboard-journal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:0 4px;gap:10px}.dashboard-journal-title{margin:0;font-size:15px;font-weight:700;color:var(--text)}.dashboard-journal-card{background:rgba(217,119,6,.06);border:1px solid rgba(217,119,6,.2);border-radius:16px;min-height:66px;padding:10px 14px;box-sizing:border-box;cursor:pointer;margin-bottom:18px;display:flex;flex-direction:column;gap:10px;overflow:hidden}.dashboard-journal-card__top{display:flex;justify-content:space-between;align-items:center;gap:12px}.dashboard-journal-card__content{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:700;color:var(--text)}.dashboard-journal-card__empty{font-size:14px;font-weight:600;color:var(--secondary)}.dashboard-journal-card__arrow{font-size:18px;font-weight:700;color:var(--text);flex-shrink:0}.journal-matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(68px,1fr));gap:6px;width:100%}.journal-matrix--empty{display:block}.journal-matrix__empty{display:block;padding:9px 10px;border-radius:10px;background:var(--surface-2);color:var(--secondary);font-size:12px;font-weight:700;text-align:center}.journal-day-cell{border:1px solid var(--border);border-radius:12px;background:var(--surface);min-height:48px;padding:7px 8px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;box-shadow:none;cursor:pointer;text-align:left}.journal-day-cell--done{border-color:rgba(var(--success-rgb),.24);background:rgba(var(--success-rgb),.08)}.journal-day-cell--missing{border-color:rgba(var(--warning-rgb),.28);background:rgba(var(--warning-rgb),.08)}.journal-day-cell__label{font-size:12px;font-weight:900;color:var(--text);line-height:1}.journal-day-cell__date{font-size:10px;font-weight:700;color:var(--secondary);line-height:1.1}.journal-day-cell__status{font-size:10px;font-weight:800;color:var(--primary);line-height:1.1}.journal-day-cell--missing .journal-day-cell__status{color:var(--warning)}.journal-draft{display:flex;flex-direction:column;gap:10px}.journal-draft__section{border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden}.journal-draft__title{padding:10px 12px;background:var(--surface-2);font-size:13px;font-weight:900;color:var(--text)}.journal-draft__body{padding:10px 12px}.journal-draft__list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}.journal-draft__item{font-size:12px;font-weight:700;color:var(--text);line-height:1.45}.journal-draft__empty{font-size:12px;font-weight:700;color:var(--secondary);line-height:1.45}.daily-close-panel{display:flex;flex-direction:column;gap:14px}.daily-close-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.daily-close-progress__item{border:1px solid var(--border);border-radius:12px;background:var(--surface-2);padding:9px 8px;font-size:11px;font-weight:900;color:var(--secondary);text-align:center}.daily-close-progress__item--active{background:var(--primary-soft);color:var(--primary);border-color:rgba(var(--primary-rgb),.22)}.daily-close-step{display:none;border:1px solid var(--border);border-radius:16px;background:var(--surface);overflow:hidden}.daily-close-step--active{display:block}.daily-close-step__header{padding:14px 16px;background:var(--surface-2);font-size:15px;font-weight:900;color:var(--text)}.daily-close-step__body{padding:14px 16px;display:flex;flex-direction:column;gap:12px}.daily-close-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.daily-close-actions .btn{min-height:42px;border-radius:12px;font-size:13px;font-weight:800}.daily-close-list{display:flex;flex-direction:column;gap:8px}.daily-close-class-group{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}.daily-close-class-group__head{padding:9px 12px;background:var(--surface-2);font-size:12px;font-weight:900;color:var(--secondary)}.daily-close-student{padding:12px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:9px}.daily-close-student__row{display:flex;align-items:center;justify-content:space-between;gap:10px}.daily-close-student__name{font-size:14px;font-weight:900;color:var(--text)}.daily-close-student__link{font-size:11px;font-weight:900;color:var(--primary);background:var(--primary-soft);border-radius:999px;padding:5px 8px;cursor:pointer}.daily-close-student__actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.daily-close-student__actions .btn{min-height:36px;border-radius:10px;font-size:12px;font-weight:800}.daily-close-empty{padding:26px 16px;text-align:center;color:var(--secondary);font-size:13px;font-weight:800;background:var(--surface-2);border-radius:14px}.care-log-list{display:flex;flex-direction:column;gap:8px}.care-log-item{border:1px solid var(--border);border-radius:12px;background:var(--surface-2);padding:10px 12px}.care-log-item__title{font-size:13px;font-weight:900;color:var(--text)}.care-log-item__text{font-size:12px;font-weight:700;color:var(--secondary);line-height:1.45;margin-top:4px}.care-risk-badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;background:rgba(var(--warning-rgb),.12);color:var(--warning)}.care-risk-cleared{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;background:rgba(var(--success-rgb),.10);color:var(--success)}.admin-teacher-card__head{min-width:0}.admin-teacher-card__name{font-size:16px;font-weight:800;color:var(--text);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.admin-teacher-card__chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.admin-teacher-card__chip{display:inline-flex;align-items:center;gap:4px;min-height:26px;padding:0 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--secondary);font-size:11px;font-weight:800;line-height:1;white-space:nowrap}.admin-teacher-card__chip b{color:var(--text);font-weight:800}.admin-teacher-card__actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:auto}.admin-teacher-card__actions .btn{width:100%;min-height:38px;border-radius:12px;font-size:12px;font-weight:800;background:var(--surface-2);border:1px solid var(--border);color:var(--text);box-shadow:none}.admin-teacher-student-list{max-height:62vh;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding-right:4px}.admin-teacher-student-row{width:100%;min-height:48px;padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:var(--surface);box-shadow:none;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}.admin-teacher-student-row__main{min-width:0;flex:1}.admin-teacher-student-row__name{font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.admin-teacher-student-row__meta{font-size:11px;font-weight:700;color:var(--secondary);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.admin-teacher-student-row__badge{font-size:11px;font-weight:800;color:var(--primary);background:var(--primary-soft);padding:4px 8px;border-radius:999px;white-space:nowrap}.admin-teacher-modal-back{width:100%;margin-bottom:12px;min-height:42px;border-radius:12px;font-weight:800;background:var(--surface-2);border:1px solid var(--border);color:var(--text)}
+    `;
+    document.head.appendChild(style);
+}
+
+
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
-
     if (todayTime === null) return [];
 
-    const active = (state.db.students || []).filter(s => s.status === '재원');
+    const active = (state?.db?.students || []).filter(s => String(s?.status || '') === '재원');
+    const attendanceHistory = state?.db?.attendance_history || [];
+    const homeworkHistory = state?.db?.homework_history || [];
+    const consultations = state?.db?.consultations || [];
+    const classStudents = state?.db?.class_students || [];
+    const classes = state?.db?.classes || [];
 
-    const attendanceHistory = state.db.attendance_history || [];
-    const homeworkHistory = state.db.homework_history || [];
-    const examSessions = state.db.exam_sessions || [];
-    const consultations = state.db.consultations || [];
-    const classStudents = state.db.class_students || [];
-    const classes = state.db.classes || [];
-
-    // [Performance] 학생별 반복 filter/sort를 한 번의 Map 구성으로 줄인다.
     const classById = typeof apmsGetDataIndexes === 'function'
         ? apmsGetDataIndexes().classesById
         : new Map(classes.map(c => [String(c.id), c]));
@@ -186,117 +528,133 @@ function computeRiskStudents() {
 
     const LOOKBACK_DAYS = 14;
     const cutoffTime = todayTime - (LOOKBACK_DAYS - 1) * 24 * 60 * 60 * 1000;
-    const getRecordTime = apParseLocalDateTime;
+    const recentAlertCutoff = todayTime - 3 * 24 * 60 * 60 * 1000;
 
-    const absenceCountByStudentId = new Map();
-    attendanceHistory.forEach(a => {
-        if (a.status !== '결석') return;
-        const t = getRecordTime(a.date);
-        if (t === null || t < cutoffTime || t > todayTime) return;
-        const sid = String(a.student_id || '');
-        if (!sid) return;
-        absenceCountByStudentId.set(sid, (absenceCountByStudentId.get(sid) || 0) + 1);
+    const countMapByStudent = (rows, matcher) => {
+        const map = new Map();
+        rows.forEach(row => {
+            const sid = String(row?.student_id || '');
+            if (!sid || !matcher(row)) return;
+            const t = apParseLocalDateTime(row.date || row.created_at || row.updated_at);
+            if (t === null || t < cutoffTime || t > todayTime) return;
+            const cur = map.get(sid) || { count: 0, recent: 0 };
+            cur.count += 1;
+            if (t >= recentAlertCutoff) cur.recent += 1;
+            map.set(sid, cur);
+        });
+        return map;
+    };
+
+    const absenceMap = countMapByStudent(attendanceHistory, row => String(row?.status || '').trim() === '결석');
+    const homeworkMissMap = countMapByStudent(homeworkHistory, row => String(row?.status || '').trim() === '미완료');
+    const makeupMap = countMapByStudent(attendanceHistory, row => {
+        const hay = `${row?.status || ''} ${row?.tags || ''} ${row?.memo || ''}`;
+        return hay.includes('보강');
     });
 
-    const homeworkMissCountByStudentId = new Map();
-    homeworkHistory.forEach(h => {
-        if (h.status !== '미완료') return;
-        const t = getRecordTime(h.date);
-        if (t === null || t < cutoffTime || t > todayTime) return;
-        const sid = String(h.student_id || '');
+    const consultationMap = new Map();
+    consultations.forEach(row => {
+        const sid = String(row?.student_id || '');
         if (!sid) return;
-        homeworkMissCountByStudentId.set(sid, (homeworkMissCountByStudentId.get(sid) || 0) + 1);
+        const dateText = String(row?.date || row?.consultation_date || row?.created_at || '').slice(0, 10);
+        const t = apParseLocalDateTime(dateText);
+        if (t === null || t < cutoffTime || t > todayTime) return;
+        const cur = consultationMap.get(sid) || { count: 0, recent: 0 };
+        cur.count += 1;
+        if (t >= recentAlertCutoff) cur.recent += 1;
+        consultationMap.set(sid, cur);
     });
-
-    const examSessionsByStudentId = typeof apmsGetDataIndexes === 'function'
-        ? apmsGetDataIndexes().examSessionsByStudentId
-        : (function() {
-            const map = new Map();
-            examSessions.forEach(e => {
-                const sid = String(e.student_id || '');
-                if (!sid) return;
-                if (!map.has(sid)) map.set(sid, []);
-                map.get(sid).push(e);
-            });
-            map.forEach(rows => rows.sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id))));
-            return map;
-        })();
-
-    const consultationsByStudentId = typeof apmsGetDataIndexes === 'function'
-        ? apmsGetDataIndexes().consultationsByStudentId
-        : (function() {
-            const map = new Map();
-            consultations.forEach(c => {
-                const sid = String(c.student_id || '');
-                if (!sid) return;
-                if (!map.has(sid)) map.set(sid, []);
-                map.get(sid).push(c);
-            });
-            map.forEach(rows => rows.sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.created_at || '').localeCompare(String(a.created_at || ''))));
-            return map;
-        })();
 
     const risks = [];
+    const clearedCareLogs = [];
 
     active.forEach(s => {
-        const sid = String(s.id || '');
-        let riskTypes = [];
-        let reasons = [];
+        const sid = String(s?.id || '');
+        if (!sid) return;
 
-        const absenceCount = absenceCountByStudentId.get(sid) || 0;
-        if (absenceCount >= 2) { riskTypes.push('출결주의'); reasons.push(`최근 14일 결석 ${absenceCount}회`); }
+        const absences = absenceMap.get(sid) || { count: 0, recent: 0 };
+        const hwMisses = homeworkMissMap.get(sid) || { count: 0, recent: 0 };
+        const makeups = makeupMap.get(sid) || { count: 0, recent: 0 };
+        const studentConsults = consultationMap.get(sid) || { count: 0, recent: 0 };
 
-        const hwMissCount = homeworkMissCountByStudentId.get(sid) || 0;
-        if (hwMissCount >= 3) { riskTypes.push('숙제주의'); reasons.push(`최근 14일 숙제 미완료 ${hwMissCount}회`); }
+        const baseReasons = [];
+        const offsetReasons = [];
+        let internalScore = 50;
 
-        const exams = (examSessionsByStudentId.get(sid) || []).slice(0, 3);
-
-        let scoreSummary = '';
-        if (exams.length > 0) {
-            scoreSummary = exams.map(e => `${e.score}점`).join(' ← ');
-            const numericScores = exams.map(e => Number(e.score)).filter(Number.isFinite);
-            const avg = numericScores.length ? numericScores.reduce((acc, cur) => acc + cur, 0) / numericScores.length : null;
-            let scoreRisk = false;
-            if (avg !== null && avg < 60) {
-                scoreRisk = true; reasons.push(`최근 3회 평균 ${Math.round(avg)}점`);
-            } else if (numericScores.length >= 3) {
-                if (numericScores[0] < numericScores[1] && numericScores[1] < numericScores[2]) { scoreRisk = true; reasons.push(`시험성적 2회 연속 하락`); }
-            }
-            if (scoreRisk) riskTypes.push('성적주의');
+        if (absences.count > 0) {
+            internalScore += absences.count * 20;
+            baseReasons.push(`최근 14일 결석 ${absences.count}회`);
+        }
+        if (hwMisses.count > 0) {
+            internalScore += hwMisses.count * 10;
+            baseReasons.push(`최근 14일 숙제 미완료 ${hwMisses.count}회`);
         }
 
-        const cns = consultationsByStudentId.get(sid) || [];
-        let lastCnsDate = cns.length ? cns[0].date : '없음';
-        let cnsDaysDiff = 999;
-        if (cns.length > 0) {
-            const cnsTime = apParseLocalDateTime(cns[0].date);
-            if (cnsTime !== null) {
-                cnsDaysDiff = (todayTime - cnsTime) / (1000*3600*24);
-            }
+        const beforeOffsetScore = internalScore;
+
+        if (makeups.count > 0) {
+            internalScore -= makeups.count * 20;
+            offsetReasons.push(`보강 ${makeups.count}회`);
+        }
+        if (studentConsults.count > 0) {
+            internalScore -= studentConsults.count * 30;
+            offsetReasons.push(`상담 ${studentConsults.count}회`);
         }
 
-        let isNewStudent = false;
-        if (s.created_at) {
-            const createTime = apParseLocalDateTime(s.created_at);
-            if (createTime !== null && (todayTime - createTime) / (1000*3600*24) <= 14) isNewStudent = true;
+        internalScore = Math.max(50, Math.min(150, internalScore));
+        const displayScore = internalScore - 50;
+
+        if (!baseReasons.length) return;
+
+        const cId = classMapByStudentId.get(sid)?.class_id;
+        const cName = classById.get(String(cId || ''))?.name || '미배정';
+        const recentNegative = absences.recent + hwMisses.recent;
+        const recentPositive = makeups.recent + studentConsults.recent;
+        let trend = '▬';
+        if (recentNegative > recentPositive) trend = '▲';
+        else if (recentPositive > recentNegative) trend = '▼';
+
+        if (displayScore <= 0) {
+            clearedCareLogs.push({
+                student_id: sid,
+                student_name: s.name || '',
+                class_name: cName,
+                base_reasons: baseReasons,
+                offset_reasons: offsetReasons,
+                internal_score_before_offset: beforeOffsetScore,
+                internal_score_after_offset: internalScore,
+                display_score_after_offset: displayScore,
+                cleared_at: new Date().toISOString(),
+                summary: `${s.name || '학생'}: ${baseReasons.join(' · ')} → ${offsetReasons.join(' · ') || '후속 조치'}로 해소`
+            });
+            return;
         }
 
-        if (cnsDaysDiff >= 30 && !isNewStudent) { riskTypes.push('상담필요'); reasons.push(`최근 30일 상담 기록 없음`); }
+        const riskTypes = ['집중케어'];
+        if (absences.count > 0) riskTypes.push('출결주의');
+        if (hwMisses.count > 0) riskTypes.push('숙제주의');
 
-        // [Stabilization] 종합주의 중복 방어
-        if (riskTypes.length >= 2 && !riskTypes.includes('종합주의')) {
-            riskTypes.push('종합주의');
-        }
-
-        if (riskTypes.length > 0) {
-            const cId = classMapByStudentId.get(sid)?.class_id;
-            const cName = classById.get(String(cId || ''))?.name || '미배정';
-            risks.push({ student: s, className: cName, riskTypes, reasons, scoreSummary, absenceCount, hwMissCount, lastConsultationDate: lastCnsDate });
-        }
+        risks.push({
+            student: s,
+            className: cName,
+            riskTypes: [...new Set(riskTypes)],
+            reasons: [`${baseReasons.join(' · ')}${offsetReasons.length ? ` / 상쇄: ${offsetReasons.join(' · ')}` : ''} (위험지수: ${displayScore}점)`],
+            scoreSummary: '',
+            absenceCount: absences.count,
+            hwMissCount: hwMisses.count,
+            riskScore: displayScore,
+            trend,
+            offsetReasons
+        });
     });
 
-    return risks;
+    if (!state.dashboard) state.dashboard = {};
+    state.dashboard.clearedCareLogs = clearedCareLogs;
+    state.dashboardClearedCareLogs = clearedCareLogs;
+
+    return risks.sort((a, b) => Number(b.riskScore || 0) - Number(a.riskScore || 0));
 }
+
 
 // [Final Fix] 관리 메뉴 퇴원생 버튼과 연동
 function openDischargedStudents() {
@@ -2012,34 +2370,39 @@ function renderTodoSections() {
 }
 
 // [NEW] 오늘일지 카드 생성 함수 (요일 필터 정밀 적용)
+
 function renderTodayJournalCard(data) {
-    const todayClasses = state.db.classes.filter(c => {
-        if (Number(c.is_active) === 0) return false;
+    injectDashboardOpsStyles();
+    const todayClasses = (state?.db?.classes || []).filter(c => {
+        if (Number(c?.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
-        const summary = data.classSummaries[c.id];
+        const summary = data?.classSummaries?.[c.id];
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
         return true;
     });
 
     const contentHtml = todayClasses.length === 0
-        ? `<span style="font-size:14px; font-weight:600; color:var(--secondary);">수업 없음</span>`
-        : `<span style="font-size:14px; font-weight:700; color:var(--text);">${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
+        ? `<span class="dashboard-journal-card__empty">수업 없음</span>`
+        : `<span>${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
 
     return `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-            <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일지</h3>
+        <div class="dashboard-journal-head">
+            <h3 class="dashboard-journal-title">오늘일지</h3>
         </div>
-        <div id="dashboard-journal-card" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');"
-             style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.2); border-radius:16px; height:52px; min-height:52px; max-height:52px; padding:0 16px; box-sizing:border-box; cursor:pointer; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; gap:12px; overflow:hidden;">
-            <div id="dashboard-journal-content" style="min-width:0; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                ${contentHtml}
+        <div id="dashboard-journal-card" class="dashboard-journal-card" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
+            <div class="dashboard-journal-card__top">
+                <div id="dashboard-journal-content" class="dashboard-journal-card__content">
+                    ${contentHtml}
+                </div>
+                <span class="dashboard-journal-card__arrow">›</span>
             </div>
-            <span style="font-size:18px; font-weight:700; color:var(--text); flex-shrink:0;">›</span>
+            ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
         </div>
     `;
 }
+
 
 // [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
 function renderDashboard() {
@@ -2113,13 +2476,19 @@ function renderDashboard() {
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
+
 function computeTodayCloseData() {
     const today = new Date().toLocaleDateString('sv-SE');
+    const students = state?.db?.students || [];
+    const classStudents = state?.db?.class_students || [];
+    const classes = state?.db?.classes || [];
+    const attendance = state?.db?.attendance || [];
+    const homework = state?.db?.homework || [];
 
-    const scheduledActive = state.db.students.filter(s => {
-        if (s.status !== '재원') return false;
-        const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
-        const cls = state.db.classes.find(c => c.id === cid);
+    const scheduledActive = students.filter(s => {
+        if (String(s?.status || '') !== '재원') return false;
+        const cid = classStudents.find(m => String(m?.student_id) === String(s?.id))?.class_id;
+        const cls = classes.find(c => String(c?.id) === String(cid || ''));
         if (cls && Number(cls.is_active) === 0) return false;
         return isClassScheduledTodayForDashboard(cid);
     });
@@ -2128,14 +2497,14 @@ function computeTodayCloseData() {
     const hwMisses = [];
 
     scheduledActive.forEach(s => {
-        const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
-        const className = state.db.classes.find(c => c.id === cid)?.name || '미배정';
+        const cid = classStudents.find(m => String(m?.student_id) === String(s?.id))?.class_id;
+        const className = classes.find(c => String(c?.id) === String(cid || ''))?.name || '미배정';
         const info = { id: s.id, name: s.name, className };
 
-        const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === today);
+        const att = attendance.find(a => String(a?.student_id) === String(s.id) && String(a?.date) === today);
         if (att?.status === '결석') absents.push(info);
 
-        const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === today);
+        const hw = homework.find(h => String(h?.student_id) === String(s.id) && String(h?.date) === today);
         if (hw?.status === '미완료') hwMisses.push(info);
     });
 
@@ -2148,13 +2517,14 @@ function computeTodayCloseData() {
     };
 }
 
+
 // [RESTORE] quickToggleAtt: 원본 복구
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
     if (!r?.success) { toast('출결 처리 실패', 'warn'); return; }
     await refreshDataOnly();
-    openTodayCloseModal(tab);
+    openTodayCloseModal(1);
 }
 
 // [RESTORE] quickToggleHw: 원본 복구
@@ -2163,71 +2533,115 @@ async function quickToggleHw(sid, status, tab = 'hw') {
     const r = await api.patch('homework', { studentId: sid, status, date: today });
     if (!r?.success) { toast('숙제 처리 실패', 'warn'); return; }
     await refreshDataOnly();
-    openTodayCloseModal(tab);
+    openTodayCloseModal(1);
 }
 
-function openTodayCloseModal(tab = 'att') {
+
+function renderDailyClosePanel(step = 1) {
+    injectDashboardOpsStyles();
     const d = computeTodayCloseData();
+    const risks = typeof computeRiskStudents === 'function' ? computeRiskStudents() : [];
+    const clearedLogs = state?.dashboard?.clearedCareLogs || state?.dashboardClearedCareLogs || [];
+    const today = new Date().toLocaleDateString('sv-SE');
 
-    const tabs = [
-        { key: 'att',  label: `결석 ${d.absents.length}명`,  list: d.absents,  emptyMsg: '결석 학생이 없습니다.' },
-        { key: 'hw',   label: `미완료 ${d.hwMisses.length}명`, list: d.hwMisses, emptyMsg: '숙제 미완료 학생이 없습니다.' }
-    ];
-    const cur = tabs.find(t => t.key === tab) || tabs[0];
-
-    const tabBtns = tabs.map(t => `
-        <button onclick="openTodayCloseModal('${t.key}')" style="
-            flex:1; padding:12px; border:none; border-radius:10px; font-size:13px; font-weight:700; transition:all 0.2s;
-            background:${t.key === tab ? 'var(--primary)' : 'var(--surface-2)'};
-            color:${t.key === tab ? 'white' : 'var(--secondary)'};
-            cursor:pointer;">
-            ${t.label}
-        </button>
-    `).join('');
-
-    const grouped = cur.list.reduce((acc, item) => {
-        if(!acc[item.className]) acc[item.className] = [];
-        acc[item.className].push(item);
-        return acc;
-    }, {});
-
-    // [Master Fix] 학급 정렬 알고리즘 적용
-    const sortedClassNames = Object.keys(grouped).sort((a, b) => {
-        const clsA = state.db.classes.find(c => c.name === a);
-        const clsB = state.db.classes.find(c => c.name === b);
-        const rankA = clsA ? getClassGradeRank(clsA.grade) : 99;
-        const rankB = clsB ? getClassGradeRank(clsB.grade) : 99;
-        if (rankA !== rankB) return rankA - rankB;
-        return a.localeCompare(b);
-    });
-
-    const rows = cur.list.length
-        ? sortedClassNames.map(cName => {
-            const classHeader = `<div style="background:var(--surface-2); padding:8px 12px; font-size:12px; font-weight:700; color:var(--secondary); margin-top:12px; border-radius:8px;">${apEscapeHtml(cName)}</div>`;
-            const studentRows = grouped[cName].map(s => {
-                let actionBtns = '';
-                if (tab === 'att') {
-                    actionBtns = `<div style="display:flex; gap:8px; margin-top:12px;"><button class="btn btn-primary" style="flex:1; padding:10px; font-size:12px; border-radius:8px;" onclick="quickToggleAtt('${s.id}', '등원', '${tab}')">등원 (취소)</button><button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; border-radius:8px; cursor:default; font-weight:700;">결석 유지</button></div>`;
-                } else if (tab === 'hw') {
-                    actionBtns = `<div style="display:flex; gap:8px; margin-top:12px;"><button class="btn btn-primary" style="flex:1; padding:10px; font-size:12px; border-radius:8px;" onclick="quickToggleHw('${s.id}', '완료', '${tab}')">완료 (취소)</button><button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--warning); background:rgba(var(--warning-rgb),0.12); border:none; border-radius:8px; cursor:default; font-weight:700;">미완료 유지</button></div>`;
-                }
-                return `
-                    <div style="padding:16px 8px; border-bottom:1px solid var(--border); background:var(--surface);">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;">
-                                <span style="font-weight:700; font-size:15px; color:var(--text);">${apEscapeHtml(s.name)}</span>
-                            </div>
-                            <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:11px; font-weight:700; color:var(--primary); background:var(--primary-soft); padding:4px 8px; border-radius:6px; cursor:pointer;">상세 보기</span>
+    const renderStudentGroups = (items, type) => {
+        if (!items.length) return `<div class="daily-close-empty">${type === 'att' ? '결석 학생이 없습니다.' : '숙제 미완료 학생이 없습니다.'}</div>`;
+        const grouped = dashboardGroupByClass(items);
+        const sortedClassNames = Object.keys(grouped).sort((a, b) => {
+            const clsA = (state?.db?.classes || []).find(c => c.name === a);
+            const clsB = (state?.db?.classes || []).find(c => c.name === b);
+            const rankA = clsA ? getClassGradeRank(clsA.grade) : 99;
+            const rankB = clsB ? getClassGradeRank(clsB.grade) : 99;
+            if (rankA !== rankB) return rankA - rankB;
+            return a.localeCompare(b, 'ko');
+        });
+        return `<div class="daily-close-list">${sortedClassNames.map(cName => `
+            <div class="daily-close-class-group">
+                <div class="daily-close-class-group__head">${apEscapeHtml(cName)}</div>
+                ${grouped[cName].map(s => `
+                    <div class="daily-close-student">
+                        <div class="daily-close-student__row">
+                            <span class="daily-close-student__name">${apEscapeHtml(s.name)}</span>
+                            <span class="daily-close-student__link" onclick="closeModal();renderStudentDetail('${dashboardEscapeAttr(s.id)}')">상세 보기</span>
                         </div>
-                        ${actionBtns}
-                    </div>`;
-            }).join('');
-            return classHeader + studentRows;
-        }).join('')
-        : `<div style="padding:40px 20px; text-align:center; color:var(--secondary); font-weight:600; font-size:13px;">${cur.emptyMsg}</div>`;
+                        <div class="daily-close-student__actions">
+                            ${type === 'att'
+                                ? `<button class="btn btn-primary" onclick="quickToggleAtt('${dashboardEscapeAttr(s.id)}', '등원', 'step1')">등원 (취소)</button><button class="btn" disabled>결석 유지</button>`
+                                : `<button class="btn btn-primary" onclick="quickToggleHw('${dashboardEscapeAttr(s.id)}', '완료', 'step1')">완료 (취소)</button><button class="btn" disabled>미완료 유지</button>`}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `).join('')}</div>`;
+    };
 
-    showModal('예외 현황', `<div style="display:flex; gap:8px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
+    const renderCareLogs = () => {
+        const activeCare = risks.slice(0, 8).map(r => `
+            <div class="care-log-item">
+                <div class="care-log-item__title">${apEscapeHtml(r.student?.name || '')} <span class="care-risk-badge">${apEscapeHtml(String(r.riskScore || 0))}점</span></div>
+                <div class="care-log-item__text">${apEscapeHtml(r.className || '미배정')} · ${apEscapeHtml((r.reasons || []).join(' · '))}</div>
+            </div>
+        `).join('');
+        const cleared = clearedLogs.slice(0, 8).map(log => `
+            <div class="care-log-item">
+                <div class="care-log-item__title">${apEscapeHtml(log.student_name || '')} <span class="care-risk-cleared">해소</span></div>
+                <div class="care-log-item__text">${apEscapeHtml(log.summary || '')}</div>
+            </div>
+        `).join('');
+        if (!activeCare && !cleared) return `<div class="daily-close-empty">보강/상담 상쇄로 확인할 집중케어 변동이 없습니다.</div>`;
+        return `<div class="care-log-list">${activeCare}${cleared}</div>`;
+    };
+
+    const progress = [
+        { no: 1, label: '예외 확인' },
+        { no: 2, label: '상쇄 확인' },
+        { no: 3, label: '일지 검토' }
+    ].map(item => `<div class="daily-close-progress__item ${Number(step) === item.no ? 'daily-close-progress__item--active' : ''}">${item.no}. ${item.label}</div>`).join('');
+
+    const stepHtml = `
+        <div class="daily-close-step ${Number(step) === 1 ? 'daily-close-step--active' : ''}">
+            <div class="daily-close-step__header">Step 1. 오늘 예외 확인</div>
+            <div class="daily-close-step__body">
+                ${renderStudentGroups(d.absents || [], 'att')}
+                ${renderStudentGroups(d.hwMisses || [], 'hw')}
+            </div>
+        </div>
+        <div class="daily-close-step ${Number(step) === 2 ? 'daily-close-step--active' : ''}">
+            <div class="daily-close-step__header">Step 2. 보강/상담 상쇄 확인</div>
+            <div class="daily-close-step__body">${renderCareLogs()}</div>
+        </div>
+        <div class="daily-close-step ${Number(step) === 3 ? 'daily-close-step--active' : ''}">
+            <div class="daily-close-step__header">Step 3. 일지 초안 검토</div>
+            <div class="daily-close-step__body">
+                ${renderJournalDraftPreview(today)}
+            </div>
+        </div>
+    `;
+
+    const prevBtn = Number(step) <= 1
+        ? `<button class="btn" onclick="closeModal()">취소</button>`
+        : `<button class="btn" onclick="openTodayCloseModal(${Number(step) - 1})">이전</button>`;
+    const nextBtn = Number(step) >= 3
+        ? `<button class="btn btn-primary" onclick="openDailyJournalModal('${today}')">일지 작성</button>`
+        : `<button class="btn btn-primary" onclick="openTodayCloseModal(${Number(step) + 1})">다음</button>`;
+
+    return `
+        <div class="daily-close-panel">
+            <div class="daily-close-progress">${progress}</div>
+            ${stepHtml}
+            <div class="daily-close-actions">${prevBtn}${nextBtn}</div>
+        </div>
+    `;
 }
+
+function openTodayCloseModal(step = 1) {
+    const numericStep = Number(step);
+    const safeStep = Number.isFinite(numericStep) ? Math.max(1, Math.min(3, numericStep)) : 1;
+    if (!state.ui) state.ui = {};
+    state.ui.dailyCloseStep = safeStep;
+    showModal('예외 현황', renderDailyClosePanel(safeStep));
+}
+
 
 // [RESTORE] getTodayExamConfig: 원본 복구
 function getTodayExamConfig() {
@@ -2337,100 +2751,27 @@ function appendJournalNote(text, note) {
     return text;
 }
 
+
 function buildJournalContent(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
-
-    const parts = targetDate.split('-');
-    const targetDayIdx = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
-
-    const activeClasses = state.db.classes.filter(c => {
-        if (Number(c.is_active) === 0) return false;
-        if (!isMiddleSchoolClass(c)) return false;
-        if (!isClassVisibleForCurrentTeacher(c)) return false;
-
-        // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
-        if (!c.schedule_days) return true;
-
-        // 제출일/선택일 기준 해당 요일 반만 출력한다.
-        return String(c.schedule_days)
-            .split(',')
-            .map(v => v.trim())
-            .includes(targetDayIdx);
-    });
-
-    if (activeClasses.length === 0) {
-        text += `해당 날짜에 담당 학급이 없습니다.\n`;
-        return text;
-    }
-
-    activeClasses.forEach(cls => {
-        text += `■ ${cls.name}반\n`;
-
-        const memberIds = state.db.class_students.filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
-        const students = state.db.students.filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
-        const total = students.length;
-
-        const absents = [];
-        const lates = [];
-        const makeups = [];
-        const hwMiss = [];
-
-        students.forEach(s => {
-            const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
-            const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
-            const attStatus = String(att?.status || '').trim();
-            const tagList = String(att?.tags || '')
-                .split(',')
-                .map(v => v.trim())
-                .filter(Boolean);
-
-            if (attStatus === '결석') absents.push(s.name);
-            if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
-            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(s.name);
-            if (hw?.status === '미완료') hwMiss.push(s.name);
-        });
-
-        const attendanceCount = Math.max(0, total - absents.length);
-        const homeworkCount = Math.max(0, total - hwMiss.length);
-
-        text += `- 출석: ${attendanceCount}/${total}\n`;
-        text += `- 숙제: ${homeworkCount}/${total}\n`;
-        if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
-        if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
-        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}\n`;
-        if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
-
-        const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
-        if (dailyRecord) {
-            const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
-            const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
-            if (progresses.length > 0) {
-                text += `- 진도:\n`;
-                progresses.forEach(p => {
-                    text += formatJournalProgressLine(p, noteData.units) + `\n`;
-                });
-            } else text += `- 진도: (기록 없음)\n`;
-
-            text = appendJournalNote(text, noteData.note);
-        } else {
-            text += `- 진도: (수업 기록 미입력)\n`;
-        }
-
-        const cns = (state.db.consultations || []).filter(c => c.date === targetDate && memberIds.includes(String(c.student_id)));
-        if (cns.length > 0) {
-            text += `- 상담:\n`;
-            cns.forEach(cn => {
-                const sName = students.find(s => String(s.id) === String(cn.student_id))?.name || '학생';
-                text += `  * ${sName}: ${cn.content}\n`;
-            });
-        }
-
-        text += `\n`;
-    });
-
-    return text.trim() + '\n';
+    const sections = computeDashboardJournalDraftSections(targetDate);
+    const lines = [];
+    lines.push(`[AP Math 운영 일지 - ${targetDate}]`);
+    lines.push(`작성자: ${state?.ui?.userName || ''}`);
+    lines.push('');
+    lines.push('[자동 확정]');
+    if (sections.autoLines.length) sections.autoLines.forEach(line => lines.push(`- ${line}`));
+    else lines.push('- 자동 확정으로 쓸 기록이 없습니다.');
+    lines.push('');
+    lines.push('[확인 필요]');
+    if (sections.checkLines.length) sections.checkLines.forEach(line => lines.push(`- ${line}`));
+    else lines.push('- 추가 확인이 필요한 항목이 없습니다.');
+    lines.push('');
+    lines.push('[선생님 자유 메모]');
+    lines.push('- 오늘 수업 분위기, 학생별 특이사항, 학부모께 전달할 뉘앙스를 필요하면 덧붙여 주세요.');
+    return lines.join('\n').trim() + '\n';
 }
+
 
 function openDailyJournalModal(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
@@ -2562,8 +2903,10 @@ function approveJournal(id, dateStr, teacherName = '') {
     });
 }
 
+
 function renderAdminTeacherCards(todayStr) {
-    const activeClasses = state.db.classes.filter(c => Number(c.is_active) !== 0);
+    injectDashboardOpsStyles();
+    const activeClasses = (state?.db?.classes || []).filter(c => Number(c?.is_active) !== 0);
     const teacherMap = {};
     activeClasses.forEach(c => {
         const tName = String(c.teacher_name || '담당').trim();
@@ -2572,39 +2915,37 @@ function renderAdminTeacherCards(todayStr) {
         teacherMap[tName].push(c);
     });
     const teacherNames = Object.keys(teacherMap).filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko'));
-    if (!teacherNames.length) return `<div style="text-align:center; padding:24px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">등록된 선생님이 없습니다.</div>`;
+    if (!teacherNames.length) return `<div class="daily-close-empty">등록된 선생님이 없습니다.</div>`;
 
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
-    const chipStyle = 'display:inline-flex; align-items:center; gap:4px; min-height:26px; padding:0 9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); color:var(--secondary); font-size:11px; font-weight:800; line-height:1; white-space:nowrap;';
-    const chipValueStyle = 'color:var(--text); font-weight:800;';
-    const actionStyle = 'width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border); color:var(--text); box-shadow:none;';
-
     return teacherNames.map(tName => {
         const myClasses = teacherMap[tName];
         const myClassIds = myClasses.map(c => String(c.id));
-        const myStudentIds = [...new Set(state.db.class_students.filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
-        const activeStudents = state.db.students.filter(s => myStudentIds.includes(String(s.id)) && s.status === '재원');
+        const myStudentIds = [...new Set((state?.db?.class_students || []).filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
+        const activeStudents = (state?.db?.students || []).filter(s => myStudentIds.includes(String(s.id)) && String(s.status || '') === '재원');
         const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
-        const safeName = String(tName).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        const safeName = dashboardEscapeAttr(tName);
         const chips = [
             { label: '담당반', value: `${myClasses.length}개` },
             { label: '재원', value: `${activeStudents.length}명` },
             { label: '최근 등록', value: `${recentStudents.length}명` }
-        ].map(item => `<span style="${chipStyle}">${item.label}<b style="${chipValueStyle}">${item.value}</b></span>`).join('');
+        ].map(item => `<span class="admin-teacher-card__chip">${apEscapeHtml(item.label)}<b>${apEscapeHtml(item.value)}</b></span>`).join('');
 
         return `
-            <div class="card ap-admin-teacher-card" style="padding:16px; margin:0; min-height:164px; height:100%; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:none; display:flex; flex-direction:column; justify-content:space-between; gap:14px; box-sizing:border-box;">
-                <div style="min-width:0;">
-                    <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(tName)} 선생님</div>
-                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;">${chips}</div>
+            <div class="card ap-admin-teacher-card">
+                <div class="admin-teacher-card__head">
+                    <div class="admin-teacher-card__name">${apEscapeHtml(tName)} 선생님</div>
+                    <div class="admin-teacher-card__chips">${chips}</div>
                 </div>
-                <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:auto;">
-                    <button class="btn" style="${actionStyle}" onclick="event.stopPropagation(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
-                    <button class="btn" style="${actionStyle}" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
+                ${renderDashboardJournalWeekMatrix(tName, todayStr, myClasses)}
+                <div class="admin-teacher-card__actions">
+                    <button class="btn" onclick="event.stopPropagation(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
+                    <button class="btn" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
                 </div>
             </div>`;
     }).join('');
 }
+
 
 function openAdminTeacherPanel(teacherName) {
     state.ui.currentAdminTeacherName = teacherName;
@@ -2612,37 +2953,40 @@ function openAdminTeacherPanel(teacherName) {
     renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), safeName);
 }
 
+
 function renderAdminTeacherAllStudents(teacherName) {
-    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-    const myClasses = state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
+    injectDashboardOpsStyles();
+    const safeName = dashboardEscapeAttr(teacherName);
+    const myClasses = (state?.db?.classes || []).filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
     const myClassIds = myClasses.map(c => String(c.id));
-    const myStudentIds = [...new Set((state.db.class_students || [])
+    const myStudentIds = [...new Set((state?.db?.class_students || [])
         .filter(m => myClassIds.includes(String(m.class_id)))
         .map(m => String(m.student_id)))];
-    const students = (state.db.students || [])
+    const students = (state?.db?.students || [])
         .filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원')
         .sort((a, b) => String(a.grade || '').localeCompare(String(b.grade || ''), 'ko') || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 
     const rows = students.map(s => {
         const cls = adminGetStudentClass(s.id);
         return `
-            <button class="btn" style="width:100%; min-height:48px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left;" onclick="closeModal(true); renderStudentDetail('${String(s.id).replace(/'/g, "\\'")}')">
-                <div style="min-width:0; flex:1;">
-                    <div style="font-size:13px; font-weight:800; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(s.name || '')}</div>
-                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</div>
+            <button class="btn admin-teacher-student-row" onclick="closeModal(true); renderStudentDetail('${dashboardEscapeAttr(s.id)}')">
+                <div class="admin-teacher-student-row__main">
+                    <div class="admin-teacher-student-row__name">${apEscapeHtml(s.name || '')}</div>
+                    <div class="admin-teacher-student-row__meta">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</div>
                 </div>
-                <span style="font-size:11px; font-weight:800; color:var(--primary); background:var(--primary-soft); padding:4px 8px; border-radius:999px; white-space:nowrap;">${apEscapeHtml(cls?.name || '미배정')}</span>
+                <span class="admin-teacher-student-row__badge">${apEscapeHtml(cls?.name || '미배정')}</span>
             </button>
         `;
     }).join('');
 
     showModal(`${apEscapeHtml(teacherName)} 선생님 전체 학생 (${students.length}명)`, `
-        <button class="btn" style="width:100%; margin-bottom:12px; min-height:42px; border-radius:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
-        <div style="max-height:62vh; overflow-y:auto; display:flex; flex-direction:column; gap:7px; padding-right:4px;">
-            ${rows || `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:700; background:var(--surface-2); border-radius:16px;">재원생이 없습니다.</div>`}
+        <button class="btn admin-teacher-modal-back" onclick="renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
+        <div class="admin-teacher-student-list">
+            ${rows || `<div class="daily-close-empty">재원생이 없습니다.</div>`}
         </div>
     `);
 }
+
 
 function renderAdminTeacherStudents(teacherName) {
     const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
