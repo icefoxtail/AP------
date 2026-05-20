@@ -1,28 +1,39 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- apmath/js/dashboard.js
+- apmath/worker-backup/worker/migrations/20260520_timetable_version_classes_foundation.sql
+- apmath/worker-backup/worker/routes/timetable-versions.js
 - CODEX_RESULT.md
 
 ## 2. 구현 완료 또는 확인 완료
-- 원장님 대시보드 선생님 현황 카드의 성 한 글자 원형 뱃지 제거 완료
-- 선생님 현황 카드의 `일지 확인` / `담당반 보기` 버튼을 동일한 연한 톤 버튼으로 통일 완료
-- 선생님 현황 카드 정보를 `담당반` / `재원` / `최근 등록` 작은 칩 형태로 분리 완료
-- 선생님 현황 카드의 `오늘 수업` 표시 제거 완료
-- 원장님 대시보드 카드 radius를 16px 기준으로 정리 완료
-- 원장님 대시보드 카드 shadow를 약화/제거해 차분한 톤으로 정리 완료
-- 원장님 대시보드 바로가기 버튼과 미니 메트릭의 파란색 강조를 줄이는 방향으로 보정 완료
-- 기존 섹션명, 버튼명, 기능 동작 보존 확인
-- 새학기 시간표, 클래스룸, 학생, 출석/숙제 로직 수정 없음 확인
+- timetable_version_classes foundation migration 작성 완료
+- timetable_version_slots version_class_id/source_class_id 확장 초안 작성 완료
+- timetable_version_student_assignments version_class_id/source_grade/next_grade/excluded_reason/temp_student_id/student_snapshot 확장 초안 작성 완료
+- timetable_version_new_students staging table 작성 완료
+- timetable_version_apply_logs 작성 완료
+- classes parent_class_id / promotion_version_id 후보 추가 완료
+- timetable-versions.js helper/stub 추가 완료
+- 기존 API response shape 변경 없음 확인
+- 프론트 timetable.js 수정 없음 확인
+- 운영 데이터 변경 로직 추가 없음 확인
+- activateVersion 전체 전환 미진행 확인
 
 ## 3. 실행 결과
-- node --check apmath/js/dashboard.js: PASS
-- 수정 범위: 원장님 대시보드 표시/스타일 보정 중심
+- node --check apmath/worker-backup/worker/routes/timetable-versions.js: PASS
+- 충돌 마커 검색 결과: 없음
+- 신규 migration destructive SQL 확인: DROP TABLE 없음, DELETE 없음, 운영 테이블 UPDATE 없음
+- timetable-versions.js에는 기존 activateVersion의 운영 DELETE/UPDATE 구문이 원래 존재함. 이번 Step 1에서는 해당 구문을 새로 추가하거나 변경하지 않았고, helper/stub만 추가함
+- 코드 수정 범위 확인: timetable-versions.js helper/stub 추가, 신규 migration 1개 생성만 수행
+- DB 명령 없음
+- 배포 없음
+- git add/commit/push 없음
 
 ## 4. 결과 요약
-- 원장님 대시보드의 선생님 현황 카드와 공통 카드 톤을 더 차분하게 정리했다.
-- 강한 파란색 버튼과 성 한 글자 뱃지의 이질감을 제거하고, 정보는 칩 형태로 분리했다.
+- 새학기 시간표 완전분리 Step 1 foundation을 추가했다.
+- 실제 draft 전환, 프론트 렌더링, 운영 적용은 다음 Step에서 진행한다.
+- migration의 ALTER TABLE ADD COLUMN 구문은 운영 적용 전 컬럼 존재 여부 확인이 필요하다.
 
 ## 5. 다음 조치
-- 적용 후 원장님 대시보드 브라우저 확인
-- 모바일/태블릿 폭에서 선생님 카드 버튼 2개가 잘리지 않는지 확인
+- Gemini/Claude/ChatGPT 검수 필요
+- PASS 후 사용자가 migration 적용 여부 결정
+- Step 2에서 draft 생성/조회 version_class_id 전환 구현

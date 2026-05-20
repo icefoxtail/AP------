@@ -129,6 +129,80 @@ function buildDraftStudentAssignmentMemo(sourceGrade, nextGrade, extra = '', sna
   });
 }
 
+// [New semester staging foundation]
+// Step 1 helper/stub layer only. Existing API response shapes are not changed in this step.
+function normalizeTimetableGrade(value) {
+  return normalizeGradeLabel(value);
+}
+
+function isGraduationSourceGrade(value) {
+  return isGraduatingMiddleSourceGrade(value);
+}
+
+function getClassSnapshotGrade(cls = {}) {
+  return normalizeTimetableGrade(cls.grade || cls.name || cls.source_grade || '');
+}
+
+function buildVersionClassSnapshotFromClass(cls = {}, options = {}) {
+  const sourceGrade = getClassSnapshotGrade(cls);
+  const nextGrade = getNextSemesterGrade(sourceGrade);
+  const isGraduationTarget = isGraduationSourceGrade(sourceGrade);
+  const isNew = Number(options.is_new || options.isNew || 0) === 1;
+  const status = isGraduationTarget ? 'excluded' : (isNew ? 'new' : 'draft');
+
+  return {
+    id: options.id || makeId('tvc'),
+    academy_id: options.academy_id || options.academyId || 'apmath',
+    version_id: options.version_id || options.versionId || null,
+    source_class_id: cls.id || options.source_class_id || options.sourceClassId || null,
+    name_snapshot: options.name_snapshot || cls.name || null,
+    source_name: cls.name || options.source_name || null,
+    grade_snapshot: options.grade_snapshot || cls.grade || null,
+    source_grade: sourceGrade || null,
+    next_grade: isGraduationTarget ? null : (nextGrade || null),
+    teacher_name_snapshot: options.teacher_name_snapshot || cls.teacher_name || null,
+    subject_snapshot: options.subject_snapshot || cls.subject || null,
+    schedule_days_snapshot: options.schedule_days_snapshot || cls.schedule_days || null,
+    time_label_snapshot: options.time_label_snapshot || cls.time_label || null,
+    status,
+    excluded_reason: isGraduationTarget ? 'middle_school_graduation' : null,
+    is_new: isNew ? 1 : 0,
+    sort_order: Number.isFinite(Number(options.sort_order)) ? Number(options.sort_order) : 0,
+    memo: options.memo || null
+  };
+}
+
+function buildVersionClassRows(classes = [], versionId, options = {}) {
+  if (!Array.isArray(classes)) return [];
+  return classes.map((cls, index) => buildVersionClassSnapshotFromClass(cls, {
+    ...options,
+    version_id: versionId,
+    sort_order: index
+  }));
+}
+
+function mapSourceClassToVersionClass(versionClasses = []) {
+  const map = new Map();
+  for (const row of Array.isArray(versionClasses) ? versionClasses : []) {
+    const sourceClassId = String(row?.source_class_id || '').trim();
+    if (sourceClassId && !map.has(sourceClassId)) map.set(sourceClassId, row);
+  }
+  return map;
+}
+
+function buildApplyLogPayload(versionId, status, options = {}) {
+  return {
+    id: options.id || makeId('tval'),
+    academy_id: options.academy_id || options.academyId || 'apmath',
+    version_id: versionId,
+    status: String(status || 'started'),
+    started_at: options.started_at || options.startedAt || new Date().toISOString(),
+    finished_at: options.finished_at || options.finishedAt || null,
+    error_message: options.error_message || options.errorMessage || null,
+    summary_json: options.summary_json || options.summaryJson || null
+  };
+}
+
 async function copyClassStudentsToVersion(env, versionId) {
   const res = await env.DB.prepare(`
     SELECT
