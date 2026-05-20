@@ -1,0 +1,70 @@
+/* AP Math OS Dashboard UI Foundation 1차
+   - dashboard.js 운영 UI(BEM) 전용 스타일
+   - 기존 전역 UI 리뉴얼이 아니라 대시보드 운영 컴포넌트 기준만 분리
+   - JS 템플릿의 inline style 추가를 줄이기 위한 기준 파일
+*/
+
+.dashboard-journal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:0 4px;gap:10px}
+.dashboard-journal-title{margin:0;font-size:15px;font-weight:700;color:var(--text)}
+.dashboard-journal-card{background:rgba(217,119,6,.06);border:1px solid rgba(217,119,6,.2);border-radius:16px;min-height:66px;padding:10px 14px;box-sizing:border-box;cursor:pointer;margin-bottom:18px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.dashboard-journal-card__top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.dashboard-journal-card__content{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:700;color:var(--text)}
+.dashboard-journal-card__empty{font-size:14px;font-weight:600;color:var(--secondary)}
+.dashboard-journal-card__arrow{font-size:18px;font-weight:700;color:var(--text);flex-shrink:0}
+.journal-matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(68px,1fr));gap:6px;width:100%}
+.journal-matrix--empty{display:block}
+.journal-matrix__empty{display:block;padding:9px 10px;border-radius:10px;background:var(--surface-2);color:var(--secondary);font-size:12px;font-weight:700;text-align:center}
+.journal-day-cell{border:1px solid var(--border);border-radius:12px;background:var(--surface);min-height:48px;padding:7px 8px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;box-shadow:none;cursor:pointer;text-align:left}
+.journal-day-cell--done{border-color:rgba(var(--success-rgb),.24);background:rgba(var(--success-rgb),.08)}
+.journal-day-cell--missing{border-color:rgba(var(--warning-rgb),.28);background:rgba(var(--warning-rgb),.08)}
+.journal-day-cell__label{font-size:12px;font-weight:900;color:var(--text);line-height:1}
+.journal-day-cell__date{font-size:10px;font-weight:700;color:var(--secondary);line-height:1.1}
+.journal-day-cell__status{font-size:10px;font-weight:800;color:var(--primary);line-height:1.1}
+.journal-day-cell--missing .journal-day-cell__status{color:var(--warning)}
+.journal-draft{display:flex;flex-direction:column;gap:10px}
+.journal-draft__section{border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden}
+.journal-draft__title{padding:10px 12px;background:var(--surface-2);font-size:13px;font-weight:900;color:var(--text)}
+.journal-draft__body{padding:10px 12px}
+.journal-draft__list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.journal-draft__item{font-size:12px;font-weight:700;color:var(--text);line-height:1.45}
+.journal-draft__empty{font-size:12px;font-weight:700;color:var(--secondary);line-height:1.45}
+.daily-close-panel{display:flex;flex-direction:column;gap:14px}
+.daily-close-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.daily-close-progress__item{border:1px solid var(--border);border-radius:12px;background:var(--surface-2);padding:9px 8px;font-size:11px;font-weight:900;color:var(--secondary);text-align:center}
+.daily-close-progress__item--active{background:var(--primary-soft);color:var(--primary);border-color:rgba(var(--primary-rgb),.22)}
+.daily-close-step{display:none;border:1px solid var(--border);border-radius:16px;background:var(--surface);overflow:hidden}
+.daily-close-step--active{display:block}
+.daily-close-step__header{padding:14px 16px;background:var(--surface-2);font-size:15px;font-weight:900;color:var(--text)}
+.daily-close-step__body{padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.daily-close-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.daily-close-actions .btn{min-height:42px;border-radius:12px;font-size:13px;font-weight:800}
+.daily-close-list{display:flex;flex-direction:column;gap:8px}
+.daily-close-class-group{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+.daily-close-class-group__head{padding:9px 12px;background:var(--surface-2);font-size:12px;font-weight:900;color:var(--secondary)}
+.daily-close-student{padding:12px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:9px}
+.daily-close-student__row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.daily-close-student__name{font-size:14px;font-weight:900;color:var(--text)}
+.daily-close-student__link{font-size:11px;font-weight:900;color:var(--primary);background:var(--primary-soft);border-radius:999px;padding:5px 8px;cursor:pointer}
+.daily-close-student__actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.daily-close-student__actions .btn{min-height:36px;border-radius:10px;font-size:12px;font-weight:800}
+.daily-close-empty{padding:26px 16px;text-align:center;color:var(--secondary);font-size:13px;font-weight:800;background:var(--surface-2);border-radius:14px}
+.care-log-list{display:flex;flex-direction:column;gap:8px}
+.care-log-item{border:1px solid var(--border);border-radius:12px;background:var(--surface-2);padding:10px 12px}
+.care-log-item__title{font-size:13px;font-weight:900;color:var(--text)}
+.care-log-item__text{font-size:12px;font-weight:700;color:var(--secondary);line-height:1.45;margin-top:4px}
+.care-risk-badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;background:rgba(var(--warning-rgb),.12);color:var(--warning)}
+.care-risk-cleared{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;background:rgba(var(--success-rgb),.10);color:var(--success)}
+.admin-teacher-card__head{min-width:0}
+.admin-teacher-card__name{font-size:16px;font-weight:800;color:var(--text);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-teacher-card__chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.admin-teacher-card__chip{display:inline-flex;align-items:center;gap:4px;min-height:26px;padding:0 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--secondary);font-size:11px;font-weight:800;line-height:1;white-space:nowrap}
+.admin-teacher-card__chip b{color:var(--text);font-weight:800}
+.admin-teacher-card__actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:auto}
+.admin-teacher-card__actions .btn{width:100%;min-height:38px;border-radius:12px;font-size:12px;font-weight:800;background:var(--surface-2);border:1px solid var(--border);color:var(--text);box-shadow:none}
+.admin-teacher-student-list{max-height:62vh;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding-right:4px}
+.admin-teacher-student-row{width:100%;min-height:48px;padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:var(--surface);box-shadow:none;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}
+.admin-teacher-student-row__main{min-width:0;flex:1}
+.admin-teacher-student-row__name{font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-teacher-student-row__meta{font-size:11px;font-weight:700;color:var(--secondary);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-teacher-student-row__badge{font-size:11px;font-weight:800;color:var(--primary);background:var(--primary-soft);padding:4px 8px;border-radius:999px;white-space:nowrap}
+.admin-teacher-modal-back{width:100%;margin-bottom:12px;min-height:42px;border-radius:12px;font-weight:800;background:var(--surface-2);border:1px solid var(--border);color:var(--text)}
