@@ -758,8 +758,8 @@ function adminOpenStudentEditOrDetail(studentId) {
 
 function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     const colorMap = {
-        primary: 'var(--primary)',
-        success: 'var(--success)',
+        primary: 'var(--text)',
+        success: 'var(--text)',
         warning: 'var(--warning)',
         error: 'var(--error)',
         secondary: 'var(--secondary)',
@@ -769,8 +769,8 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     const clickAttr = onclick ? ` onclick="${onclick}"` : '';
     const cursor = onclick ? 'cursor:pointer;' : '';
     return `
-        <div class="ap-admin-mini-metric"${clickAttr} style="${cursor} min-height:62px; padding:11px 8px; border-radius:14px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box;">
-            <div class="ap-stat-value" style="font-size:18px; font-weight:700; color:${color}; line-height:1;">${value}</div>
+        <div class="ap-admin-mini-metric"${clickAttr} style="${cursor} min-height:62px; padding:12px 10px; border-radius:16px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;">
+            <div class="ap-stat-value" style="font-size:18px; font-weight:800; color:${color}; line-height:1;">${value}</div>
             <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:6px; line-height:1.25; white-space:nowrap;">${label}</div>
         </div>
     `;
@@ -782,7 +782,7 @@ function renderAdminStudentOverviewPanel(data) {
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘 운영</h3>
             </div>
-            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:18px; background:var(--surface-2);">
+            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">
                 ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentList('active')")}
                 ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentList('new')")}
                 ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')")}
@@ -1233,11 +1233,14 @@ function renderAdminControlCenter() {
         <style>
             #ap-admin-dashboard { width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box; }
             #ap-admin-dashboard .card,
-            #ap-admin-dashboard .ap-admin-card {
+            #ap-admin-dashboard .ap-admin-card,
+            #ap-admin-dashboard .ap-admin-mini-metric,
+            #ap-admin-dashboard .ap-admin-check-item,
+            #ap-admin-dashboard .ap-admin-search-row {
                 border:1px solid var(--border) !important;
-                border-radius:18px !important;
+                border-radius:16px !important;
                 background:var(--surface) !important;
-                box-shadow:0 1px 2px rgba(0,0,0,0.03) !important;
+                box-shadow:none !important;
                 box-sizing:border-box !important;
             }
             #ap-admin-dashboard .card[onclick],
@@ -1247,32 +1250,36 @@ function renderAdminControlCenter() {
             }
             @media (hover:hover) {
                 #ap-admin-dashboard .card[onclick]:hover,
-                #ap-admin-dashboard .ap-admin-card[onclick]:hover {
+                #ap-admin-dashboard .ap-admin-card[onclick]:hover,
+                #ap-admin-dashboard .ap-admin-teacher-card:hover {
                     transform:translateY(-1px);
-                    border-color:rgba(var(--primary-rgb),0.18) !important;
+                    border-color:rgba(var(--primary-rgb),0.14) !important;
                 }
             }
-            #ap-admin-dashboard .ap-admin-shortcuts {
+            #ap-admin-dashboard .ap-admin-shortcuts,
+            #ap-admin-dashboard .ap-admin-overview-grid {
                 display:grid !important;
-                grid-template-columns:repeat(4, minmax(0, 1fr));
                 gap:8px !important;
                 padding:4px !important;
                 border:1px solid var(--border) !important;
-                border-radius:18px !important;
+                border-radius:16px !important;
                 background:var(--surface-2) !important;
-                margin-bottom:18px !important;
                 box-shadow:none !important;
+            }
+            #ap-admin-dashboard .ap-admin-shortcuts {
+                grid-template-columns:repeat(4, minmax(0, 1fr));
+                margin-bottom:18px !important;
             }
             #ap-admin-dashboard .ap-admin-shortcuts .btn {
                 height:44px !important;
                 min-height:44px !important;
                 max-height:44px !important;
                 padding:0 10px !important;
-                border-radius:14px !important;
-                border:1px solid transparent !important;
+                border-radius:12px !important;
+                border:1px solid var(--border) !important;
                 background:var(--surface) !important;
                 color:var(--text) !important;
-                box-shadow:0 1px 2px rgba(0,0,0,0.03) !important;
+                box-shadow:none !important;
                 font-size:13px !important;
                 font-weight:700 !important;
                 line-height:1.2 !important;
@@ -1281,7 +1288,8 @@ function renderAdminControlCenter() {
             #ap-admin-dashboard .ap-admin-teacher-grid {
                 align-items:stretch !important;
             }
-            #ap-admin-dashboard .ap-admin-summary-grid .card {
+            #ap-admin-dashboard .ap-admin-summary-grid .card,
+            #ap-admin-dashboard .ap-admin-mini-metric {
                 min-height:86px !important;
                 display:flex !important;
                 flex-direction:column !important;
@@ -1290,11 +1298,18 @@ function renderAdminControlCenter() {
                 padding:14px 8px !important;
             }
             #ap-admin-dashboard .ap-admin-teacher-grid .card {
-                min-height:190px !important;
+                min-height:164px !important;
                 height:100% !important;
                 display:flex !important;
                 flex-direction:column !important;
                 justify-content:space-between !important;
+                padding:16px !important;
+            }
+            #ap-admin-dashboard .ap-admin-teacher-card .btn {
+                background:var(--surface-2) !important;
+                color:var(--text) !important;
+                border:1px solid var(--border) !important;
+                box-shadow:none !important;
             }
             #ap-admin-dashboard .ap-admin-section { margin-bottom:28px !important; }
             #ap-admin-dashboard .ap-admin-section-title { letter-spacing:-0.2px; }
@@ -2229,31 +2244,34 @@ function renderAdminTeacherCards(todayStr) {
     });
     const teacherNames = Object.keys(teacherMap).filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko'));
     if (!teacherNames.length) return `<div style="text-align:center; padding:24px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">등록된 선생님이 없습니다.</div>`;
-    
+
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    const chipStyle = 'display:inline-flex; align-items:center; gap:4px; min-height:26px; padding:0 9px; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); color:var(--secondary); font-size:11px; font-weight:800; line-height:1; white-space:nowrap;';
+    const chipValueStyle = 'color:var(--text); font-weight:800;';
+    const actionStyle = 'width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border); color:var(--text); box-shadow:none;';
+
     return teacherNames.map(tName => {
         const myClasses = teacherMap[tName];
         const myClassIds = myClasses.map(c => String(c.id));
         const myStudentIds = [...new Set(state.db.class_students.filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
         const activeStudents = state.db.students.filter(s => myStudentIds.includes(String(s.id)) && s.status === '재원');
         const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
-        const scheduledClasses = myClasses.filter(c => isClassScheduledTodayForDashboard(c.id));
         const safeName = String(tName).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-        const initial = apEscapeHtml(String(tName || '').charAt(0));
-        
+        const chips = [
+            { label: '담당반', value: `${myClasses.length}개` },
+            { label: '재원', value: `${activeStudents.length}명` },
+            { label: '최근 등록', value: `${recentStudents.length}명` }
+        ].map(item => `<span style="${chipStyle}">${item.label}<b style="${chipValueStyle}">${item.value}</b></span>`).join('');
+
         return `
-            <div class="card ap-admin-teacher-card" style="padding:16px; margin:0; min-height:190px; height:100%; border:1px solid var(--border); border-radius:20px; background:var(--surface); box-shadow:var(--shadow); display:flex; flex-direction:column; justify-content:space-between; gap:14px; box-sizing:border-box;">
-                <div style="display:flex; align-items:flex-start; gap:12px; min-width:0;">
-                    <div style="width:42px; height:42px; border-radius:14px; background:var(--surface-2); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; flex-shrink:0;">${initial}</div>
-                    <div style="min-width:0; flex:1;">
-                        <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(tName)} 선생님</div>
-                        <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:4px; line-height:1.45;">담당반 ${myClasses.length}개 · 재원 ${activeStudents.length}명 · 최근 등록 ${recentStudents.length}명</div>
-                        <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:2px; line-height:1.45;">오늘 수업 ${scheduledClasses.length}개</div>
-                    </div>
+            <div class="card ap-admin-teacher-card" style="padding:16px; margin:0; min-height:164px; height:100%; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:none; display:flex; flex-direction:column; justify-content:space-between; gap:14px; box-sizing:border-box;">
+                <div style="min-width:0;">
+                    <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(tName)} 선생님</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;">${chips}</div>
                 </div>
-                <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <button class="btn btn-primary" style="width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; box-shadow:none;" onclick="event.stopPropagation(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
-                    <button class="btn" style="width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
+                <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:auto;">
+                    <button class="btn" style="${actionStyle}" onclick="event.stopPropagation(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
+                    <button class="btn" style="${actionStyle}" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
                 </div>
             </div>`;
     }).join('');
