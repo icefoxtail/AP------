@@ -68,6 +68,12 @@ function clinicPrintGetClass(classId) {
 }
 
 function clinicPrintGetClassStudents(classId) {
+    if (typeof apmsGetStudentsForClass === 'function') {
+        return apmsGetStudentsForClass(classId)
+            .filter(student => String(student.status || '재원') === '재원')
+            .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+    }
+
     const ids = new Set((state.db.class_students || [])
         .filter(row => String(row.class_id) === String(classId))
         .map(row => String(row.student_id)));
@@ -89,7 +95,6 @@ function clinicPrintGetClassExamGroups(classId) {
         if (!studentIds.has(String(session.student_id))) return;
 
         const archiveFile = clinicPrintGetSessionArchiveFile(session);
-        console.log('[clinic-print] archiveFile', archiveFile);
         const questionCount = Number(session.question_count || 0);
         const key = clinicPrintMakeExamKey(session.exam_date, session.exam_title, archiveFile, questionCount);
 
@@ -132,8 +137,11 @@ function clinicPrintGetSessionsForExamGroup(classId, examGroupKey) {
 }
 
 function clinicPrintGetWrongIdsBySession(sessionId) {
-    return (state.db.wrong_answers || [])
-        .filter(row => String(row.session_id) === String(sessionId))
+    const rows = typeof apmsGetWrongAnswersForSession === 'function'
+        ? apmsGetWrongAnswersForSession(sessionId)
+        : (state.db.wrong_answers || []).filter(row => String(row.session_id) === String(sessionId));
+
+    return rows
         .map(row => Number(row.question_id))
         .filter(no => Number.isFinite(no) && no > 0)
         .sort((a, b) => a - b);
@@ -143,6 +151,11 @@ function clinicPrintFindBlueprint(session, questionNo) {
     const archiveFile = clinicPrintGetSessionArchiveFile(session);
     if (!archiveFile) return null;
 
+    if (typeof apmsGetExamBlueprintByArchiveQuestion === 'function') {
+        const direct = apmsGetExamBlueprintByArchiveQuestion(archiveFile, questionNo);
+        if (direct) return direct;
+    }
+
     return (state.db.exam_blueprints || []).find(bp => {
         const bpFile = clinicPrintNormalizeArchiveFile(bp.archive_file || '');
         return bpFile === archiveFile && Number(bp.question_no) === Number(questionNo);
@@ -151,8 +164,9 @@ function clinicPrintFindBlueprint(session, questionNo) {
 
 function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, options = {}) {
     const selectedExams = new Set(selectedExamKeys || []);
-    const selectedStudents = new Set(selectedStudentIds || []);
-    const studentMap = new Map(clinicPrintGetClassStudents(classId).map(student => [String(student.id), student]));
+    const selectedStudents = new Set((selectedStudentIds || []).map(id => String(id)));
+    const classStudents = clinicPrintGetClassStudents(classId);
+    const studentMap = new Map(classStudents.map(student => [String(student.id), student]));
     const rowsByStudent = {};
 
     selectedExams.forEach(examKey => {
@@ -162,7 +176,6 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
             if (!student || (selectedStudents.size && !selectedStudents.has(studentId))) return;
 
             const archiveFile = clinicPrintGetSessionArchiveFile(session);
-            console.log('[clinic-print] archiveFile', archiveFile);
             if (!archiveFile) return;
 
             const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
