@@ -47,35 +47,62 @@ async function getVersion(env, id) {
   return env.DB.prepare('SELECT * FROM timetable_versions WHERE id = ?').bind(id).first();
 }
 
-async function listSlots(env, versionId, classId = null) {
+async function listVersionClasses(env, versionId, options = {}) {
   const where = ['version_id = ?'];
   const params = [versionId];
-  if (classId) {
-    where.push('class_id = ?');
-    params.push(classId);
+  if (options.classId) {
+    where.push('(id = ? OR source_class_id = ?)');
+    params.push(String(options.classId), String(options.classId));
+  }
+  if (options.renderableOnly) {
+    where.push("COALESCE(status, 'draft') NOT IN ('excluded', 'graduating_excluded')");
   }
   const res = await env.DB.prepare(`
     SELECT *
-    FROM timetable_version_slots
+    FROM timetable_version_classes
     WHERE ${where.join(' AND ')}
-    ORDER BY day_of_week ASC, start_time ASC, class_id ASC
+    ORDER BY sort_order ASC, name_snapshot ASC, id ASC
   `).bind(...params).all();
   return res.results || [];
 }
 
-
-async function listStudentAssignments(env, versionId, classId = null) {
-  const where = ['version_id = ?'];
+async function listSlots(env, versionId, classId = null, options = {}) {
+  const where = ['tvs.version_id = ?'];
   const params = [versionId];
   if (classId) {
-    where.push('class_id = ?');
-    params.push(classId);
+    where.push('(tvs.class_id = ? OR tvs.version_class_id = ? OR tvs.source_class_id = ?)');
+    params.push(String(classId), String(classId), String(classId));
+  }
+  if (options.renderableOnly) {
+    where.push("(tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))");
   }
   const res = await env.DB.prepare(`
-    SELECT *
-    FROM timetable_version_student_assignments
+    SELECT tvs.*
+    FROM timetable_version_slots tvs
+    LEFT JOIN timetable_version_classes tvc ON tvc.id = tvs.version_class_id
     WHERE ${where.join(' AND ')}
-    ORDER BY class_id ASC, student_name_snapshot ASC, student_id ASC
+    ORDER BY tvs.day_of_week ASC, tvs.start_time ASC, COALESCE(tvs.version_class_id, tvs.class_id) ASC
+  `).bind(...params).all();
+  return res.results || [];
+}
+
+async function listStudentAssignments(env, versionId, classId = null, options = {}) {
+  const where = ['a.version_id = ?'];
+  const params = [versionId];
+  if (classId) {
+    where.push('(a.class_id = ? OR a.version_class_id = ? OR a.source_class_id = ?)');
+    params.push(String(classId), String(classId), String(classId));
+  }
+  if (options.renderableOnly) {
+    where.push("(tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))");
+    where.push("COALESCE(a.excluded_reason, '') = ''");
+  }
+  const res = await env.DB.prepare(`
+    SELECT a.*
+    FROM timetable_version_student_assignments a
+    LEFT JOIN timetable_version_classes tvc ON tvc.id = a.version_class_id
+    WHERE ${where.join(' AND ')}
+    ORDER BY COALESCE(a.version_class_id, a.class_id) ASC, a.student_name_snapshot ASC, a.student_id ASC
   `).bind(...params).all();
   return res.results || [];
 }
@@ -203,7 +230,183 @@ function buildApplyLogPayload(versionId, status, options = {}) {
   };
 }
 
-async function copyClassStudentsToVersion(env, versionId) {
+function safeVersionClassIdPart(value) {
+  return String(value || '')
+    .replace(/[^a-zA-Z0-9_-]+/g, '_')
+    .slice(0, 80) || 'none';
+}
+
+function makeSourceVersionClassId(versionId, sourceClassId) {
+  return `tvc_${safeVersionClassIdPart(versionId)}_${safeVersionClassIdPart(sourceClassId)}`;
+}
+
+function buildPromotedClassName(sourceName, sourceGrade, nextGrade) {
+  const name = String(sourceName || '').trim();
+  const src = normalizeTimetableGrade(sourceGrade);
+  const next = normalizeTimetableGrade(nextGrade);
+  if (!name || !src || !next || src === next) return name;
+  const compactSrc = src.replace(/\s+/g, '');
+  const compactNext = next.replace(/\s+/g, '');
+  if (name.includes(src)) return name.replace(src, next);
+  if (name.includes(compactSrc)) return name.replace(compactSrc, compactNext);
+  return name;
+}
+
+function versionClassCompatClassRow(row = {}) {
+  const sourceId = String(row.source_class_id || '').trim();
+  const versionClassId = String(row.id || '').trim();
+  return {
+    id: sourceId || versionClassId,
+    version_class_id: versionClassId,
+    source_class_id: sourceId || null,
+    name: row.name_snapshot || row.source_name || '',
+    grade: row.next_grade || row.grade_snapshot || row.source_grade || '',
+    subject: row.subject_snapshot || '',
+    teacher_name: row.teacher_name_snapshot || '',
+    schedule_days: row.schedule_days_snapshot || '',
+    time_label: row.time_label_snapshot || '',
+    is_active: String(row.status || '') === 'excluded' ? 0 : 1,
+    timetable_version_status: row.status || 'draft',
+    timetable_version_excluded_reason: row.excluded_reason || null,
+    __timetable_version_class: 1
+  };
+}
+
+function getVersionClassCompatClassId(versionClass = {}) {
+  return String(versionClass.source_class_id || versionClass.id || '').trim();
+}
+
+function isRenderableVersionClass(row = {}) {
+  const status = String(row.status || 'draft').trim().toLowerCase();
+  return status !== 'excluded' && status !== 'graduating_excluded';
+}
+
+async function getVersionClassByAnyId(env, versionId, classId) {
+  const cid = String(classId || '').trim();
+  if (!cid) return null;
+  return env.DB.prepare(`
+    SELECT *
+    FROM timetable_version_classes
+    WHERE version_id = ? AND (id = ? OR source_class_id = ?)
+    LIMIT 1
+  `).bind(versionId, cid, cid).first();
+}
+
+async function ensureVersionClassesSeeded(env, version, options = {}) {
+  if (!version?.id) return [];
+  const existing = await listVersionClasses(env, version.id);
+  if (existing.length) return existing;
+
+  const activeClassRes = await env.DB.prepare(`
+    SELECT *
+    FROM classes
+    WHERE COALESCE(is_active, 1) != 0
+    ORDER BY grade ASC, name ASC, id ASC
+  `).all();
+  const sourceClasses = activeClassRes.results || [];
+  const rows = buildVersionClassRows(sourceClasses, version.id, { academy_id: options.academy_id || 'apmath' })
+    .map(row => {
+      const sourceClassId = String(row.source_class_id || '').trim();
+      const promotedName = buildPromotedClassName(row.name_snapshot, row.source_grade, row.next_grade);
+      return {
+        ...row,
+        id: sourceClassId ? makeSourceVersionClassId(version.id, sourceClassId) : row.id,
+        name_snapshot: promotedName || row.name_snapshot
+      };
+    });
+
+  if (!rows.length) return [];
+  await env.DB.batch(rows.map(row => env.DB.prepare(`
+    INSERT OR IGNORE INTO timetable_version_classes
+      (id, academy_id, version_id, source_class_id, name_snapshot, source_name, grade_snapshot, source_grade, next_grade,
+       teacher_name_snapshot, subject_snapshot, schedule_days_snapshot, time_label_snapshot, status, excluded_reason, is_new, sort_order, memo)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).bind(
+    row.id,
+    row.academy_id || 'apmath',
+    row.version_id,
+    row.source_class_id,
+    row.name_snapshot,
+    row.source_name,
+    row.grade_snapshot,
+    row.source_grade,
+    row.next_grade,
+    row.teacher_name_snapshot,
+    row.subject_snapshot,
+    row.schedule_days_snapshot,
+    row.time_label_snapshot,
+    row.status,
+    row.excluded_reason,
+    row.is_new,
+    row.sort_order,
+    row.memo
+  )));
+  return listVersionClasses(env, version.id);
+}
+
+async function ensureVersionSlotsMapped(env, version) {
+  if (!version?.id) return 0;
+  const versionClasses = await ensureVersionClassesSeeded(env, version);
+  const map = mapSourceClassToVersionClass(versionClasses);
+  const slotRows = await env.DB.prepare(`
+    SELECT *
+    FROM timetable_version_slots
+    WHERE version_id = ? AND (version_class_id IS NULL OR version_class_id = '')
+  `).bind(version.id).all();
+  let updated = 0;
+  for (const slot of (slotRows.results || [])) {
+    const sourceClassId = String(slot.source_class_id || slot.class_id || '').trim();
+    const versionClass = map.get(sourceClassId);
+    if (!versionClass) continue;
+    const result = await env.DB.prepare(`
+      UPDATE timetable_version_slots
+      SET version_class_id = ?, source_class_id = COALESCE(source_class_id, ?), updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(versionClass.id, sourceClassId, slot.id).run();
+    updated += Number(result.meta?.changes || 0);
+  }
+  return updated;
+}
+
+async function ensureVersionAssignmentsMapped(env, version) {
+  if (!version?.id) return 0;
+  const versionClasses = await ensureVersionClassesSeeded(env, version);
+  const map = mapSourceClassToVersionClass(versionClasses);
+  const assignmentRows = await env.DB.prepare(`
+    SELECT *
+    FROM timetable_version_student_assignments
+    WHERE version_id = ? AND (version_class_id IS NULL OR version_class_id = '')
+  `).bind(version.id).all();
+  let updated = 0;
+  for (const row of (assignmentRows.results || [])) {
+    const sourceClassId = String(row.source_class_id || row.class_id || '').trim();
+    const versionClass = map.get(sourceClassId);
+    if (!versionClass) continue;
+    const memoInfo = safeParseMemoJson(row.memo, 'ensureVersionAssignmentsMapped memo');
+    const sourceGrade = row.source_grade || memoInfo.source_grade || versionClass.source_grade || null;
+    const nextGrade = row.next_grade || memoInfo.next_grade || versionClass.next_grade || null;
+    const excludedReason = !isRenderableVersionClass(versionClass) ? (versionClass.excluded_reason || 'excluded_class') : (row.excluded_reason || null);
+    const result = await env.DB.prepare(`
+      UPDATE timetable_version_student_assignments
+      SET version_class_id = ?,
+          source_class_id = COALESCE(source_class_id, ?),
+          source_grade = COALESCE(source_grade, ?),
+          next_grade = COALESCE(next_grade, ?),
+          excluded_reason = COALESCE(excluded_reason, ?),
+          updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(versionClass.id, sourceClassId, sourceGrade, nextGrade, excludedReason, row.id).run();
+    updated += Number(result.meta?.changes || 0);
+  }
+  return updated;
+}
+
+async function copyClassStudentsToVersion(env, version) {
+  const versionId = typeof version === 'string' ? version : version?.id;
+  if (!versionId) return 0;
+  const versionRow = typeof version === 'string' ? await getVersion(env, versionId) : version;
+  const versionClasses = await ensureVersionClassesSeeded(env, versionRow || { id: versionId, status: 'draft' });
+  const map = mapSourceClassToVersionClass(versionClasses);
   const res = await env.DB.prepare(`
     SELECT
       cs.class_id,
@@ -218,20 +421,25 @@ async function copyClassStudentsToVersion(env, versionId) {
   `).all();
   let copied = 0;
   for (const row of (res.results || [])) {
-    const sourceGrade = normalizeGradeLabel(row.class_grade || row.student_grade || row.class_name || '');
-    if (isGraduatingMiddleSourceGrade(sourceGrade)) continue;
-    const nextGrade = getNextSemesterGrade(sourceGrade);
+    const sourceClassId = String(row.class_id || '').trim();
+    const versionClass = map.get(sourceClassId);
+    if (!versionClass || !isRenderableVersionClass(versionClass)) continue;
+    const sourceGrade = normalizeGradeLabel(versionClass.source_grade || row.class_grade || row.student_grade || row.class_name || '');
+    const nextGrade = normalizeGradeLabel(versionClass.next_grade || getNextSemesterGrade(sourceGrade));
     const result = await env.DB.prepare(`
       INSERT OR IGNORE INTO timetable_version_student_assignments
-        (id, version_id, class_id, student_id, student_name_snapshot, source_class_id, memo)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+        (id, version_id, class_id, version_class_id, student_id, student_name_snapshot, source_class_id, source_grade, next_grade, excluded_reason, memo)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?)
     `).bind(
       makeId('tvsa'),
       versionId,
-      row.class_id,
+      getVersionClassCompatClassId(versionClass),
+      versionClass.id,
       row.student_id,
       row.student_name || null,
-      row.class_id,
+      sourceClassId,
+      sourceGrade,
+      nextGrade,
       buildDraftStudentAssignmentMemo(sourceGrade, nextGrade, 'copied from active class_students', row.student_name || '')
     ).run();
     copied += Number(result.meta?.changes || 0);
@@ -242,9 +450,12 @@ async function copyClassStudentsToVersion(env, versionId) {
 async function ensureDraftStudentAssignmentsSeeded(env, version) {
   if (!version || !EDITABLE_STATUSES.has(String(version.status || ''))) return 0;
   try {
+    await ensureVersionClassesSeeded(env, version);
+    await ensureVersionSlotsMapped(env, version);
+    await ensureVersionAssignmentsMapped(env, version);
     const countRow = await env.DB.prepare('SELECT COUNT(*) AS count FROM timetable_version_student_assignments WHERE version_id = ?').bind(version.id).first();
     if (Number(countRow?.count || 0) > 0) return 0;
-    return copyClassStudentsToVersion(env, version.id);
+    return copyClassStudentsToVersion(env, version);
   } catch (error) {
     console.error('[ensureDraftStudentAssignmentsSeeded] seed skipped:', error);
     return 0;
@@ -297,32 +508,70 @@ async function createDraftClass(env, versionId, teacher, body) {
   if (!row.name) return jsonResponse({ success: false, error: 'name required' }, 400);
   if (!slots.length) return jsonResponse({ success: false, error: 'slots required' }, 400);
 
-  const classId = makeId('cls');
-  const normalizedSlots = normalizeSlotRows(versionId, classId, slots);
+  const versionClass = buildVersionClassSnapshotFromClass({
+    id: null,
+    name: row.name,
+    grade: row.grade,
+    subject: row.subject,
+    teacher_name: row.teacher_name,
+    schedule_days: row.schedule_days,
+    time_label: row.time_label
+  }, {
+    academy_id: 'apmath',
+    version_id: versionId,
+    is_new: 1,
+    source_class_id: null,
+    sourceClassId: null,
+    name_snapshot: row.name,
+    grade_snapshot: row.grade,
+    sort_order: Date.now(),
+    memo: row.textbook ? JSON.stringify({ textbook: row.textbook, day_group: row.day_group }) : null
+  });
+  versionClass.source_class_id = null;
+  versionClass.status = 'new';
+  versionClass.is_new = 1;
+  versionClass.next_grade = normalizeTimetableGrade(row.grade);
+
+  const normalizedSlots = normalizeSlotRows(versionId, versionClass.id, slots);
   if (normalizedSlots.some(slot => !slot.day_of_week || !slot.start_time || !slot.end_time)) {
     return jsonResponse({ success: false, error: 'day_of_week, start_time, end_time required' }, 400);
   }
 
   await env.DB.batch([
     env.DB.prepare(`
-      INSERT INTO classes
-        (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active, day_group, time_label, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    `).bind(classId, row.name, row.grade, row.subject, row.teacher_name, row.schedule_days, row.textbook, row.day_group, row.time_label),
+      INSERT INTO timetable_version_classes
+        (id, academy_id, version_id, source_class_id, name_snapshot, source_name, grade_snapshot, source_grade, next_grade,
+         teacher_name_snapshot, subject_snapshot, schedule_days_snapshot, time_label_snapshot, status, excluded_reason, is_new, sort_order, memo)
+      VALUES (?, ?, ?, NULL, ?, NULL, ?, NULL, ?, ?, ?, ?, ?, 'new', NULL, 1, ?, ?)
+    `).bind(
+      versionClass.id,
+      versionClass.academy_id || 'apmath',
+      versionId,
+      versionClass.name_snapshot,
+      versionClass.grade_snapshot,
+      versionClass.next_grade,
+      versionClass.teacher_name_snapshot,
+      versionClass.subject_snapshot,
+      versionClass.schedule_days_snapshot,
+      versionClass.time_label_snapshot,
+      versionClass.sort_order,
+      versionClass.memo
+    ),
     ...normalizedSlots.map(slot => env.DB.prepare(`
       INSERT INTO timetable_version_slots
-        (id, version_id, class_id, day_of_week, start_time, end_time, room_name, memo)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `).bind(slot.id, slot.version_id, slot.class_id, slot.day_of_week, slot.start_time, slot.end_time, slot.room_name, slot.memo || 'draft class placement'))
+        (id, version_id, class_id, version_class_id, source_class_id, day_of_week, start_time, end_time, room_name, memo)
+      VALUES (?, ?, ?, ?, NULL, ?, ?, ?, ?, ?)
+    `).bind(slot.id, slot.version_id, versionClass.id, versionClass.id, slot.day_of_week, slot.start_time, slot.end_time, slot.room_name, slot.memo || 'draft class placement'))
   ]);
 
-  const cls = await env.DB.prepare('SELECT * FROM classes WHERE id = ?').bind(classId).first();
+  const savedVersionClass = await env.DB.prepare('SELECT * FROM timetable_version_classes WHERE id = ?').bind(versionClass.id).first();
   return jsonResponse({
     success: true,
     timetable_version: checked.version,
-    class: cls,
-    timetable_version_slots: await listSlots(env, versionId, classId),
-    timetable_version_student_assignments: await listStudentAssignments(env, versionId, classId)
+    timetable_version_class: savedVersionClass,
+    class: versionClassCompatClassRow(savedVersionClass),
+    timetable_version_slots: await listSlots(env, versionId, versionClass.id),
+    timetable_version_student_assignments: await listStudentAssignments(env, versionId, versionClass.id)
   });
 }
 
@@ -330,39 +579,40 @@ async function assignDraftStudent(env, versionId, body) {
   const checked = await assertEditableVersion(env, versionId);
   if (checked.error) return checked.error;
 
+  await ensureVersionClassesSeeded(env, checked.version);
   const studentId = String(body.student_id || body.studentId || '').trim();
-  const targetClassId = String(body.target_class_id || body.targetClassId || body.class_id || body.classId || '').trim();
+  const targetClassId = String(body.target_class_id || body.targetClassId || body.class_id || body.classId || body.version_class_id || body.versionClassId || '').trim();
   const sourceClassId = String(body.source_class_id || body.sourceClassId || '').trim();
   if (!studentId || !targetClassId) return jsonResponse({ success: false, error: 'student_id and target_class_id required' }, 400);
 
-  const [student, cls] = await Promise.all([
-    env.DB.prepare('SELECT id, name, grade FROM students WHERE id = ?').bind(studentId).first(),
-    env.DB.prepare('SELECT id FROM classes WHERE id = ?').bind(targetClassId).first()
-  ]);
+  const versionClass = await getVersionClassByAnyId(env, versionId, targetClassId);
+  if (!versionClass || !isRenderableVersionClass(versionClass)) return jsonResponse({ success: false, error: 'draft class not found' }, 404);
+  const student = await env.DB.prepare('SELECT id, name, grade FROM students WHERE id = ?').bind(studentId).first();
   if (!student) return jsonResponse({ success: false, error: 'student not found' }, 404);
-  if (!cls) return jsonResponse({ success: false, error: 'class not found' }, 404);
 
   const existingAssignment = await env.DB.prepare(`
-    SELECT memo, source_class_id
+    SELECT memo, source_class_id, source_grade, next_grade
     FROM timetable_version_student_assignments
     WHERE version_id = ? AND student_id = ?
   `).bind(versionId, studentId).first();
-  const sourceGrade = normalizeGradeLabel(student.grade || '');
+  const sourceGrade = normalizeGradeLabel(existingAssignment?.source_grade || versionClass.source_grade || student.grade || '');
+  const nextGrade = normalizeGradeLabel(existingAssignment?.next_grade || versionClass.next_grade || getNextSemesterGrade(sourceGrade));
   const memoInfo = safeParseMemoJson(existingAssignment?.memo, 'assignDraftStudent memo');
   const memo = buildDraftStudentAssignmentMemo(
     memoInfo.source_grade || sourceGrade,
-    memoInfo.next_grade || getNextSemesterGrade(sourceGrade),
+    memoInfo.next_grade || nextGrade,
     memoInfo.note || body.memo || 'draft student reassigned',
     memoInfo.student_name_snapshot || student.name || ''
   );
   const id = makeId('tvsa');
+  const compatClassId = getVersionClassCompatClassId(versionClass);
   await env.DB.batch([
     env.DB.prepare('DELETE FROM timetable_version_student_assignments WHERE version_id = ? AND student_id = ?').bind(versionId, studentId),
     env.DB.prepare(`
       INSERT INTO timetable_version_student_assignments
-        (id, version_id, class_id, student_id, student_name_snapshot, source_class_id, memo, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    `).bind(id, versionId, targetClassId, studentId, student.name || null, sourceClassId || existingAssignment?.source_class_id || null, memo)
+        (id, version_id, class_id, version_class_id, student_id, student_name_snapshot, source_class_id, source_grade, next_grade, excluded_reason, memo, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `).bind(id, versionId, compatClassId, versionClass.id, studentId, student.name || null, sourceClassId || existingAssignment?.source_class_id || versionClass.source_class_id || null, sourceGrade, nextGrade, memo)
   ]);
 
   return jsonResponse({
@@ -370,8 +620,9 @@ async function assignDraftStudent(env, versionId, body) {
     version_id: versionId,
     student_id: studentId,
     source_class_id: sourceClassId || null,
-    target_class_id: targetClassId,
-    timetable_version_student_assignments: await listStudentAssignments(env, versionId)
+    target_class_id: compatClassId,
+    version_class_id: versionClass.id,
+    timetable_version_student_assignments: await listStudentAssignments(env, versionId, null, { renderableOnly: true })
   });
 }
 
@@ -379,39 +630,61 @@ async function createDraftStudent(env, versionId, body) {
   const checked = await assertEditableVersion(env, versionId);
   if (checked.error) return checked.error;
 
-  const classId = String(body.class_id || body.classId || '').trim();
+  await ensureVersionClassesSeeded(env, checked.version);
+  const classId = String(body.class_id || body.classId || body.version_class_id || body.versionClassId || '').trim();
   if (!classId) return jsonResponse({ success: false, error: 'class_id required' }, 400);
-  const cls = await env.DB.prepare('SELECT id FROM classes WHERE id = ?').bind(classId).first();
-  if (!cls) return jsonResponse({ success: false, error: 'class not found' }, 404);
+  const versionClass = await getVersionClassByAnyId(env, versionId, classId);
+  if (!versionClass || !isRenderableVersionClass(versionClass)) return jsonResponse({ success: false, error: 'draft class not found' }, 404);
 
   const d = normalizeDraftStudentPayload(body);
   if (!d.name) return jsonResponse({ success: false, error: 'name required' }, 400);
-  const pin = d.student_pin || await generateStudentPin(d.grade, env);
-  const exist = await env.DB.prepare('SELECT 1 FROM students WHERE student_pin = ?').bind(pin).first();
-  if (exist) return jsonResponse({ success: false, message: '이미 사용 중인 PIN입니다.' }, 409);
 
-  const studentId = makeId('s');
+  const tempStudentId = makeId('tmp_s');
+  const newStudentId = makeId('tvns');
   const assignmentId = makeId('tvsa');
-  const memo = [d.memo, '#새학기'].filter(Boolean).join(' ').trim();
-  const assignmentMemo = buildDraftStudentAssignmentMemo(null, normalizeGradeLabel(d.grade), 'draft new student', d.name);
+  const nextGrade = normalizeGradeLabel(d.grade || versionClass.next_grade || '중1');
+  const studentSnapshot = JSON.stringify({
+    name: d.name,
+    school_name: d.school_name || null,
+    grade: d.grade || null,
+    target_score: d.target_score || null,
+    memo: d.memo || null,
+    guardian_relation: d.guardian_relation || null,
+    student_phone: d.student_phone || null,
+    parent_phone: d.parent_phone || null,
+    student_pin: d.student_pin || null,
+    high_subjects: d.high_subjects || '[]'
+  });
+  const assignmentMemo = buildDraftStudentAssignmentMemo(null, nextGrade, 'draft new student', d.name);
+  const compatClassId = getVersionClassCompatClassId(versionClass);
+
   await env.DB.batch([
     env.DB.prepare(`
-      INSERT INTO students
-        (id, name, school_name, grade, target_score, status, memo, guardian_relation, student_phone, parent_phone, student_pin, high_subjects, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, '입학예정', ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    `).bind(studentId, d.name, d.school_name, d.grade, d.target_score, memo, d.guardian_relation, d.student_phone, d.parent_phone, pin, d.high_subjects),
+      INSERT INTO timetable_version_new_students
+        (id, academy_id, version_id, version_class_id, temp_student_id, name_snapshot, school_name_snapshot, grade_snapshot, next_grade, phone_snapshot, memo, status)
+      VALUES (?, 'apmath', ?, ?, ?, ?, ?, ?, ?, ?, ?, 'draft')
+    `).bind(newStudentId, versionId, versionClass.id, tempStudentId, d.name, d.school_name || null, d.grade || null, nextGrade, d.student_phone || d.parent_phone || null, studentSnapshot),
     env.DB.prepare(`
       INSERT INTO timetable_version_student_assignments
-        (id, version_id, class_id, student_id, student_name_snapshot, source_class_id, memo, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, NULL, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    `).bind(assignmentId, versionId, classId, studentId, d.name, assignmentMemo)
+        (id, version_id, class_id, version_class_id, student_id, student_name_snapshot, source_class_id, source_grade, next_grade, excluded_reason, temp_student_id, student_snapshot, memo, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, NULL, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `).bind(assignmentId, versionId, compatClassId, versionClass.id, tempStudentId, d.name, nextGrade, tempStudentId, studentSnapshot, assignmentMemo)
   ]);
 
-  const student = await env.DB.prepare('SELECT * FROM students WHERE id = ?').bind(studentId).first();
+  const student = {
+    id: tempStudentId,
+    name: d.name,
+    school_name: d.school_name,
+    grade: d.grade || nextGrade,
+    status: '입학예정',
+    student_pin: d.student_pin || '',
+    __timetable_version_new_student: 1
+  };
   return jsonResponse({
     success: true,
     version_id: versionId,
     student,
+    timetable_version_new_student: await env.DB.prepare('SELECT * FROM timetable_version_new_students WHERE id = ?').bind(newStudentId).first(),
     timetable_version_student_assignments: await listStudentAssignments(env, versionId, classId)
   });
 }
@@ -438,6 +711,10 @@ async function activateVersion(env, versionId, teacher) {
   const checked = await assertEditableVersion(env, versionId);
   if (checked.error) return checked.error;
   const version = checked.version;
+  const versionClassCount = await env.DB.prepare('SELECT COUNT(*) AS count FROM timetable_version_classes WHERE version_id = ?').bind(versionId).first();
+  if (Number(versionClassCount?.count || 0) > 0) {
+    return jsonResponse({ success: false, error: 'version_class activation is not implemented in this step' }, 400);
+  }
   const [slotRows, assignmentRows, activeVersion, oldClassRows] = await Promise.all([
     listSlots(env, versionId),
     listStudentAssignments(env, versionId),
@@ -555,37 +832,42 @@ async function copyClassTimeSlotsToVersion(env, versionId) {
 }
 
 async function copyVersionSlots(env, sourceVersionId, targetVersionId) {
-  const countRow = await env.DB.prepare(`
-    SELECT COUNT(*) AS count
-    FROM timetable_version_slots tvs
-    LEFT JOIN classes c ON c.id = tvs.class_id
-    WHERE tvs.version_id = ?
-      AND NOT (
-        COALESCE(c.grade, '') LIKE '%중3%'
-        OR COALESCE(c.name, '') LIKE '%중3%'
-      )
-  `).bind(sourceVersionId).first();
-  await env.DB.prepare(`
-    INSERT INTO timetable_version_slots
-      (id, version_id, class_id, day_of_week, start_time, end_time, room_name, memo)
-    SELECT
-      'tvs_' || unixepoch('now') || '_' || lower(hex(randomblob(4))),
-      ?,
-      tvs.class_id,
-      tvs.day_of_week,
-      tvs.start_time,
-      tvs.end_time,
-      tvs.room_name,
-      tvs.memo
-    FROM timetable_version_slots tvs
-    LEFT JOIN classes c ON c.id = tvs.class_id
-    WHERE tvs.version_id = ?
-      AND NOT (
-        COALESCE(c.grade, '') LIKE '%중3%'
-        OR COALESCE(c.name, '') LIKE '%중3%'
-      )
-  `).bind(targetVersionId, sourceVersionId).run();
-  return Number(countRow?.count || 0);
+  const targetVersion = await getVersion(env, targetVersionId) || { id: targetVersionId, status: 'draft' };
+  const versionClasses = await ensureVersionClassesSeeded(env, targetVersion);
+  const map = mapSourceClassToVersionClass(versionClasses);
+  const sourceSlots = await env.DB.prepare(`
+    SELECT *
+    FROM timetable_version_slots
+    WHERE version_id = ?
+    ORDER BY day_of_week ASC, start_time ASC, class_id ASC
+  `).bind(sourceVersionId).all();
+
+  const statements = [];
+  let copied = 0;
+  for (const slot of (sourceSlots.results || [])) {
+    const sourceClassId = String(slot.source_class_id || slot.class_id || '').trim();
+    const versionClass = map.get(sourceClassId);
+    if (!versionClass || !isRenderableVersionClass(versionClass)) continue;
+    statements.push(env.DB.prepare(`
+      INSERT INTO timetable_version_slots
+        (id, version_id, class_id, version_class_id, source_class_id, day_of_week, start_time, end_time, room_name, memo)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(
+      makeId('tvs'),
+      targetVersionId,
+      getVersionClassCompatClassId(versionClass),
+      versionClass.id,
+      sourceClassId,
+      slot.day_of_week,
+      slot.start_time,
+      slot.end_time,
+      slot.room_name || null,
+      slot.memo || null
+    ));
+    copied += 1;
+  }
+  if (statements.length) await env.DB.batch(statements);
+  return copied;
 }
 
 async function ensureActiveVersion(env, teacher, body = {}) {
@@ -640,39 +922,70 @@ function pushPreviewConflict(conflicts, type, targetId, classA, classB, dayOfWee
 }
 
 async function scanPreview(env, versionId) {
-  const [slotsRes, assignmentsRes, classesRes] = await Promise.all([
-    env.DB.prepare('SELECT * FROM timetable_version_slots WHERE version_id = ? ORDER BY day_of_week, start_time').bind(versionId).all(),
-    env.DB.prepare('SELECT * FROM timetable_version_student_assignments WHERE version_id = ?').bind(versionId).all(),
-    env.DB.prepare('SELECT id, teacher_name FROM classes').all()
+  const version = await getVersion(env, versionId);
+  if (version) {
+    await ensureVersionClassesSeeded(env, version);
+    await ensureVersionSlotsMapped(env, version);
+    await ensureVersionAssignmentsMapped(env, version);
+  }
+  const [slotsRes, assignmentsRes, versionClassesRes] = await Promise.all([
+    env.DB.prepare(`
+      SELECT tvs.*
+      FROM timetable_version_slots tvs
+      LEFT JOIN timetable_version_classes tvc ON tvc.id = tvs.version_class_id
+      WHERE tvs.version_id = ?
+        AND (tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))
+      ORDER BY tvs.day_of_week, tvs.start_time
+    `).bind(versionId).all(),
+    env.DB.prepare(`
+      SELECT a.*
+      FROM timetable_version_student_assignments a
+      LEFT JOIN timetable_version_classes tvc ON tvc.id = a.version_class_id
+      WHERE a.version_id = ?
+        AND (tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))
+        AND COALESCE(a.excluded_reason, '') = ''
+    `).bind(versionId).all(),
+    env.DB.prepare('SELECT id, source_class_id, teacher_name_snapshot FROM timetable_version_classes WHERE version_id = ?').bind(versionId).all()
   ]);
   const slots = slotsRes.results || [];
   const assignments = assignmentsRes.results || [];
-  const classes = classesRes.results || [];
-  const classMap = new Map(classes.map(cls => [cls.id, cls]));
+  const versionClasses = versionClassesRes.results || [];
+  const classMap = new Map();
+  for (const cls of versionClasses) {
+    if (cls.id) classMap.set(String(cls.id), cls);
+    if (cls.source_class_id) classMap.set(String(cls.source_class_id), cls);
+  }
   const slotsByClass = new Map();
   const assignmentsByStudent = new Map();
   const conflicts = [];
 
+  const getSlotClassKey = (slot) => String(slot.version_class_id || slot.class_id || '');
+  const getAssignmentClassKey = (assignment) => String(assignment.version_class_id || assignment.class_id || '');
+
   for (const slot of slots) {
-    const list = slotsByClass.get(slot.class_id) || [];
+    const classKey = getSlotClassKey(slot);
+    if (!classKey) continue;
+    const list = slotsByClass.get(classKey) || [];
     list.push(slot);
-    slotsByClass.set(slot.class_id, list);
+    slotsByClass.set(classKey, list);
   }
 
   for (const assignment of assignments) {
-    const list = assignmentsByStudent.get(assignment.student_id) || [];
+    const studentKey = String(assignment.student_id || assignment.temp_student_id || '');
+    if (!studentKey) continue;
+    const list = assignmentsByStudent.get(studentKey) || [];
     list.push(assignment);
-    assignmentsByStudent.set(assignment.student_id, list);
+    assignmentsByStudent.set(studentKey, list);
   }
 
   for (const [studentId, list] of assignmentsByStudent.entries()) {
     for (let i = 0; i < list.length; i++) {
       for (let j = i + 1; j < list.length; j++) {
-        for (const a of (slotsByClass.get(list[i].class_id) || [])) {
-          for (const b of (slotsByClass.get(list[j].class_id) || [])) {
+        for (const a of (slotsByClass.get(getAssignmentClassKey(list[i])) || [])) {
+          for (const b of (slotsByClass.get(getAssignmentClassKey(list[j])) || [])) {
             if (a.day_of_week !== b.day_of_week || !isTimeOverlap(a.start_time, a.end_time, b.start_time, b.end_time)) continue;
             const range = overlapRange(a, b);
-            pushPreviewConflict(conflicts, 'student', studentId, a.class_id, b.class_id, a.day_of_week, range.start, range.end);
+            pushPreviewConflict(conflicts, 'student', studentId, getSlotClassKey(a), getSlotClassKey(b), a.day_of_week, range.start, range.end);
           }
         }
       }
@@ -683,15 +996,17 @@ async function scanPreview(env, versionId) {
     for (let j = i + 1; j < slots.length; j++) {
       const a = slots[i];
       const b = slots[j];
-      if (a.class_id === b.class_id || a.day_of_week !== b.day_of_week || !isTimeOverlap(a.start_time, a.end_time, b.start_time, b.end_time)) continue;
+      const classAKey = getSlotClassKey(a);
+      const classBKey = getSlotClassKey(b);
+      if (!classAKey || !classBKey || classAKey === classBKey || a.day_of_week !== b.day_of_week || !isTimeOverlap(a.start_time, a.end_time, b.start_time, b.end_time)) continue;
       const range = overlapRange(a, b);
-      const teacherA = String(classMap.get(a.class_id)?.teacher_name || '').trim();
-      const teacherB = String(classMap.get(b.class_id)?.teacher_name || '').trim();
+      const teacherA = String(classMap.get(classAKey)?.teacher_name_snapshot || '').trim();
+      const teacherB = String(classMap.get(classBKey)?.teacher_name_snapshot || '').trim();
       if (teacherA && teacherA === teacherB) {
-        pushPreviewConflict(conflicts, 'teacher', teacherA, a.class_id, b.class_id, a.day_of_week, range.start, range.end);
+        pushPreviewConflict(conflicts, 'teacher', teacherA, classAKey, classBKey, a.day_of_week, range.start, range.end);
       }
       if (a.room_name && a.room_name === b.room_name) {
-        pushPreviewConflict(conflicts, 'room', a.room_name, a.class_id, b.class_id, a.day_of_week, range.start, range.end);
+        pushPreviewConflict(conflicts, 'room', a.room_name, classAKey, classBKey, a.day_of_week, range.start, range.end);
       }
     }
   }
@@ -776,20 +1091,38 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
       teacher?.id || null,
       body.memo || null
     ).run();
+    const createdVersion = await getVersion(env, versionId);
+    const versionClasses = await ensureVersionClassesSeeded(env, createdVersion);
     const copiedSlots = await copyVersionSlots(env, sourceVersion.id, versionId);
-    const copiedStudentAssignments = await copyClassStudentsToVersion(env, versionId);
-    return jsonResponse({ success: true, timetable_version: await getVersion(env, versionId), copied_slots: copiedSlots, copied_student_assignments: copiedStudentAssignments });
+    const copiedStudentAssignments = await copyClassStudentsToVersion(env, createdVersion);
+    return jsonResponse({
+      success: true,
+      timetable_version: await getVersion(env, versionId),
+      timetable_version_classes: await listVersionClasses(env, versionId),
+      timetable_classes: versionClasses.filter(isRenderableVersionClass).map(versionClassCompatClassRow),
+      copied_version_classes: versionClasses.length,
+      copied_slots: copiedSlots,
+      copied_student_assignments: copiedStudentAssignments
+    });
   }
 
   if (method === 'GET' && id && !action) {
     const version = await getVersion(env, id);
     if (!version) return jsonResponse({ success: false, error: 'Not found' }, 404);
+    const versionClasses = await ensureVersionClassesSeeded(env, version);
+    const repairedSlots = await ensureVersionSlotsMapped(env, version);
+    const repairedAssignments = await ensureVersionAssignmentsMapped(env, version);
     const repairedStudentAssignments = await ensureDraftStudentAssignmentsSeeded(env, version);
+    const renderableVersionClasses = (await listVersionClasses(env, id, { renderableOnly: true }));
     return jsonResponse({
       success: true,
       timetable_version: version,
-      timetable_version_slots: await listSlots(env, id),
-      timetable_version_student_assignments: await listStudentAssignments(env, id),
+      timetable_version_classes: versionClasses,
+      timetable_classes: renderableVersionClasses.map(versionClassCompatClassRow),
+      timetable_version_slots: await listSlots(env, id, null, { renderableOnly: true }),
+      timetable_version_student_assignments: await listStudentAssignments(env, id, null, { renderableOnly: true }),
+      repaired_version_slots: repairedSlots,
+      repaired_version_assignments: repairedAssignments,
       repaired_student_assignments: repairedStudentAssignments
     });
   }
@@ -816,37 +1149,42 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
   if (method === 'GET' && id && action === 'slots') {
     const version = await getVersion(env, id);
     if (!version) return jsonResponse({ success: false, error: 'Not found' }, 404);
-    return jsonResponse({ success: true, timetable_version_slots: await listSlots(env, id, url.searchParams.get('class_id')) });
+    await ensureVersionClassesSeeded(env, version);
+    await ensureVersionSlotsMapped(env, version);
+    return jsonResponse({ success: true, timetable_version_slots: await listSlots(env, id, url.searchParams.get('class_id'), { renderableOnly: true }) });
   }
 
   if (method === 'POST' && id && action === 'slots' && subAction === 'replace-class-slots') {
     const version = await getVersion(env, id);
     if (!version) return jsonResponse({ success: false, error: 'Not found' }, 404);
     if (!EDITABLE_STATUSES.has(version.status)) return jsonResponse({ success: false, error: 'version is not editable' }, 400);
-    const classId = String(body.class_id || '').trim();
+    await ensureVersionClassesSeeded(env, version);
+    const classId = String(body.class_id || body.version_class_id || body.versionClassId || '').trim();
     const slots = Array.isArray(body.slots) ? body.slots : [];
     if (!classId) return jsonResponse({ success: false, error: 'class_id required' }, 400);
-    const cls = await env.DB.prepare('SELECT id FROM classes WHERE id = ?').bind(classId).first();
-    if (!cls) return jsonResponse({ success: false, error: 'class not found' }, 404);
-    const rows = normalizeSlotRows(id, classId, slots);
+    const versionClass = await getVersionClassByAnyId(env, id, classId);
+    if (!versionClass || !isRenderableVersionClass(versionClass)) return jsonResponse({ success: false, error: 'draft class not found' }, 404);
+    const compatClassId = getVersionClassCompatClassId(versionClass);
+    const rows = normalizeSlotRows(id, compatClassId, slots);
     if (rows.some(row => !row.day_of_week || !row.start_time || !row.end_time)) {
       return jsonResponse({ success: false, error: 'day_of_week, start_time, end_time required' }, 400);
     }
 
     const statements = [
-      env.DB.prepare('DELETE FROM timetable_version_slots WHERE version_id = ? AND class_id = ?').bind(id, classId),
+      env.DB.prepare('DELETE FROM timetable_version_slots WHERE version_id = ? AND (class_id = ? OR version_class_id = ? OR source_class_id = ?)').bind(id, compatClassId, versionClass.id, compatClassId),
       ...rows.map(row => env.DB.prepare(`
         INSERT INTO timetable_version_slots
-          (id, version_id, class_id, day_of_week, start_time, end_time, room_name, memo)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `).bind(row.id, row.version_id, row.class_id, row.day_of_week, row.start_time, row.end_time, row.room_name, row.memo))
+          (id, version_id, class_id, version_class_id, source_class_id, day_of_week, start_time, end_time, room_name, memo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `).bind(row.id, row.version_id, compatClassId, versionClass.id, versionClass.source_class_id || null, row.day_of_week, row.start_time, row.end_time, row.room_name, row.memo))
     ];
     await env.DB.batch(statements);
     return jsonResponse({
       success: true,
       version_id: id,
-      class_id: classId,
-      timetable_version_slots: await listSlots(env, id, classId)
+      class_id: compatClassId,
+      version_class_id: versionClass.id,
+      timetable_version_slots: await listSlots(env, id, versionClass.id)
     });
   }
 
