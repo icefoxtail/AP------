@@ -6,16 +6,20 @@
  */
 
 function getCumulativeClassIdForStudent(studentId) {
+    if (typeof apmsGetClassIdForStudent === 'function') return apmsGetClassIdForStudent(studentId);
     const mapping = (state.db.class_students || []).find(m => String(m.student_id) === String(studentId));
     return mapping ? String(mapping.class_id) : '';
 }
 
 function getCumulativeClassName(classId) {
-    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
+    const cls = typeof apmsGetClassById === 'function'
+        ? apmsGetClassById(classId)
+        : (state.db.classes || []).find(c => String(c.id) === String(classId));
     return cls ? cls.name : '';
 }
 
 function getCumulativeStudent(studentId) {
+    if (typeof apmsGetStudentById === 'function') return apmsGetStudentById(studentId);
     return (state.db.students || []).find(s => String(s.id) === String(studentId));
 }
 
@@ -91,13 +95,15 @@ function buildCumulativeAttendanceTeacherOptions(selectedTeacher = '') {
 }
 
 function getCumulativeVisibleStudents(filters = {}) {
-    let students = (state.db.students || []).filter(s => s.status === '재원');
+    let students = filters.classId && typeof apmsGetStudentsForClass === 'function'
+        ? apmsGetStudentsForClass(filters.classId).filter(s => s.status === '재원')
+        : (state.db.students || []).filter(s => s.status === '재원');
 
-    if (filters.classId) {
-        const ids = (state.db.class_students || [])
+    if (filters.classId && typeof apmsGetStudentsForClass !== 'function') {
+        const ids = new Set((state.db.class_students || [])
             .filter(m => String(m.class_id) === String(filters.classId))
-            .map(m => String(m.student_id));
-        students = students.filter(s => ids.includes(String(s.id)));
+            .map(m => String(m.student_id)));
+        students = students.filter(s => ids.has(String(s.id)));
     }
 
     if (filters.grade) {
@@ -312,7 +318,9 @@ function getMonthlyAttendanceData() {
 
 function isAttendanceClassDay(studentId, date) {
     const classId = getCumulativeClassIdForStudent(studentId);
-    const cls = (state.db.classes || []).find(c => String(c.id) === String(classId));
+    const cls = typeof apmsGetClassById === 'function'
+        ? apmsGetClassById(classId)
+        : (state.db.classes || []).find(c => String(c.id) === String(classId));
     if (!cls) return false;
 
     const days = String(cls.schedule_days || '').split(',').map(v => v.trim()).filter(Boolean);
@@ -718,12 +726,18 @@ function renderAttendanceLedgerTable() {
     const allowedClassIds = new Set(activeClasses.map(c => String(c.id)));
     const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId: safeClassId }))
         .filter(s => allowedClassIds.has(String(getCumulativeClassIdForStudent(s.id))));
+    const studentsByClassId = new Map();
+    students.forEach(s => {
+        const sidClassId = String(getCumulativeClassIdForStudent(s.id));
+        if (!studentsByClassId.has(sidClassId)) studentsByClassId.set(sidClassId, []);
+        studentsByClassId.get(sidClassId).push(s);
+    });
 
     const grouped = activeClasses
         .filter(c => !safeClassId || String(c.id) === String(safeClassId))
         .map(cls => ({
             cls,
-            students: students.filter(s => String(getCumulativeClassIdForStudent(s.id)) === String(cls.id))
+            students: studentsByClassId.get(String(cls.id)) || []
         }))
         .filter(g => g.students.length);
 
@@ -951,14 +965,14 @@ function getSebHighSubjectsForStudent(studentId, year) {
 /* 고등 여부 판별 */
 function isSebHighStudent(student) {
     var cid = getCumulativeClassIdForStudent(student?.id);
-    var cls = (state.db.classes || []).find(function(c) { return String(c.id) === String(cid); });
+    var cls = typeof apmsGetClassById === 'function' ? apmsGetClassById(cid) : (state.db.classes || []).find(function(c) { return String(c.id) === String(cid); });
     var text = [student?.grade, student?.school_name, cls?.grade, cls?.name].join(' ');
     return /고1|고2|고3|고등/.test(text);
 }
 
 function getSebStudentDisplayGrade(student) {
     const cid = getCumulativeClassIdForStudent(student?.id);
-    const cls = (state.db.classes || []).find(c => String(c.id) === String(cid));
+    const cls = typeof apmsGetClassById === 'function' ? apmsGetClassById(cid) : (state.db.classes || []).find(c => String(c.id) === String(cid));
     const text = [
         student?.grade,
         student?.school_name,
@@ -980,15 +994,15 @@ function getSebVisibleStudents() {
 
     if (teacherFilter) {
         const targetTeacher = normalizeSebTeacherName(teacherFilter);
-        const tClassIds = (state.db.classes || [])
+        const tClassIds = new Set((state.db.classes || [])
             .filter(c => normalizeSebTeacherName(c.teacher_name) === targetTeacher)
-            .map(c => String(c.id));
-        students = students.filter(s => tClassIds.includes(getCumulativeClassIdForStudent(s.id)));
+            .map(c => String(c.id)));
+        students = students.filter(s => tClassIds.has(getCumulativeClassIdForStudent(s.id)));
     }
 
     students = students.filter(s => {
         const cid = getCumulativeClassIdForStudent(s.id);
-        const cls = (state.db.classes || []).find(c => String(c.id) === String(cid));
+        const cls = typeof apmsGetClassById === 'function' ? apmsGetClassById(cid) : (state.db.classes || []).find(c => String(c.id) === String(cid));
         const text = [
             s.grade,
             s.school_name,
@@ -1003,7 +1017,7 @@ function getSebVisibleStudents() {
     if (gradeTab) {
         students = students.filter(s => {
             const cid = getCumulativeClassIdForStudent(s.id);
-            const cls = (state.db.classes || []).find(c => String(c.id) === String(cid));
+            const cls = typeof apmsGetClassById === 'function' ? apmsGetClassById(cid) : (state.db.classes || []).find(c => String(c.id) === String(cid));
             const gradeText = [
                 s.grade,
                 cls?.grade,

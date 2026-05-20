@@ -164,10 +164,10 @@ function isClassVisibleForCurrentTeacher(c) {
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
-    
+
     if (todayTime === null) return [];
 
-    const active = state.db.students.filter(s => s.status === '재원');
+    const active = (state.db.students || []).filter(s => s.status === '재원');
 
     const attendanceHistory = state.db.attendance_history || [];
     const homeworkHistory = state.db.homework_history || [];
@@ -175,57 +175,97 @@ function computeRiskStudents() {
     const consultations = state.db.consultations || [];
     const classStudents = state.db.class_students || [];
     const classes = state.db.classes || [];
-    
-    // [Stabilization] 최근 14일 기준 생성
+
+    // [Performance] 학생별 반복 filter/sort를 한 번의 Map 구성으로 줄인다.
+    const classById = typeof apmsGetDataIndexes === 'function'
+        ? apmsGetDataIndexes().classesById
+        : new Map(classes.map(c => [String(c.id), c]));
+    const classMapByStudentId = typeof apmsGetDataIndexes === 'function'
+        ? apmsGetDataIndexes().classStudentByStudentId
+        : new Map(classStudents.map(m => [String(m.student_id), m]));
+
     const LOOKBACK_DAYS = 14;
     const cutoffTime = todayTime - (LOOKBACK_DAYS - 1) * 24 * 60 * 60 * 1000;
-
     const getRecordTime = apParseLocalDateTime;
-    
+
+    const absenceCountByStudentId = new Map();
+    attendanceHistory.forEach(a => {
+        if (a.status !== '결석') return;
+        const t = getRecordTime(a.date);
+        if (t === null || t < cutoffTime || t > todayTime) return;
+        const sid = String(a.student_id || '');
+        if (!sid) return;
+        absenceCountByStudentId.set(sid, (absenceCountByStudentId.get(sid) || 0) + 1);
+    });
+
+    const homeworkMissCountByStudentId = new Map();
+    homeworkHistory.forEach(h => {
+        if (h.status !== '미완료') return;
+        const t = getRecordTime(h.date);
+        if (t === null || t < cutoffTime || t > todayTime) return;
+        const sid = String(h.student_id || '');
+        if (!sid) return;
+        homeworkMissCountByStudentId.set(sid, (homeworkMissCountByStudentId.get(sid) || 0) + 1);
+    });
+
+    const examSessionsByStudentId = typeof apmsGetDataIndexes === 'function'
+        ? apmsGetDataIndexes().examSessionsByStudentId
+        : (function() {
+            const map = new Map();
+            examSessions.forEach(e => {
+                const sid = String(e.student_id || '');
+                if (!sid) return;
+                if (!map.has(sid)) map.set(sid, []);
+                map.get(sid).push(e);
+            });
+            map.forEach(rows => rows.sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id))));
+            return map;
+        })();
+
+    const consultationsByStudentId = typeof apmsGetDataIndexes === 'function'
+        ? apmsGetDataIndexes().consultationsByStudentId
+        : (function() {
+            const map = new Map();
+            consultations.forEach(c => {
+                const sid = String(c.student_id || '');
+                if (!sid) return;
+                if (!map.has(sid)) map.set(sid, []);
+                map.get(sid).push(c);
+            });
+            map.forEach(rows => rows.sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.created_at || '').localeCompare(String(a.created_at || ''))));
+            return map;
+        })();
+
     const risks = [];
-    
+
     active.forEach(s => {
+        const sid = String(s.id || '');
         let riskTypes = [];
         let reasons = [];
-        
-        // [Stabilization] 출결 14일 필터 실제 적용
-        const recentAtt = attendanceHistory.filter(a => {
-            if (String(a.student_id) !== String(s.id)) return false;
-            if (a.status !== '결석') return false;
-            const t = getRecordTime(a.date);
-            return t !== null && t >= cutoffTime && t <= todayTime;
-        });
-        const absenceCount = recentAtt.length;
+
+        const absenceCount = absenceCountByStudentId.get(sid) || 0;
         if (absenceCount >= 2) { riskTypes.push('출결주의'); reasons.push(`최근 14일 결석 ${absenceCount}회`); }
-        
-        // [Stabilization] 숙제 14일 필터 실제 적용
-        const recentHw = homeworkHistory.filter(h => {
-            if (String(h.student_id) !== String(s.id)) return false;
-            if (h.status !== '미완료') return false;
-            const t = getRecordTime(h.date);
-            return t !== null && t >= cutoffTime && t <= todayTime;
-        });
-        const hwMissCount = recentHw.length;
+
+        const hwMissCount = homeworkMissCountByStudentId.get(sid) || 0;
         if (hwMissCount >= 3) { riskTypes.push('숙제주의'); reasons.push(`최근 14일 숙제 미완료 ${hwMissCount}회`); }
-        
-        const exams = examSessions.filter(e => e.student_id === s.id)
-            .sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)))
-            .slice(0, 3);
-        
+
+        const exams = (examSessionsByStudentId.get(sid) || []).slice(0, 3);
+
         let scoreSummary = '';
         if (exams.length > 0) {
             scoreSummary = exams.map(e => `${e.score}점`).join(' ← ');
-            const avg = exams.reduce((acc, cur) => acc + cur.score, 0) / exams.length;
+            const numericScores = exams.map(e => Number(e.score)).filter(Number.isFinite);
+            const avg = numericScores.length ? numericScores.reduce((acc, cur) => acc + cur, 0) / numericScores.length : null;
             let scoreRisk = false;
-            if (avg < 60) {
+            if (avg !== null && avg < 60) {
                 scoreRisk = true; reasons.push(`최근 3회 평균 ${Math.round(avg)}점`);
-            } else if (exams.length >= 3) {
-                if (exams[0].score < exams[1].score && exams[1].score < exams[2].score) { scoreRisk = true; reasons.push(`시험성적 2회 연속 하락`); }
+            } else if (numericScores.length >= 3) {
+                if (numericScores[0] < numericScores[1] && numericScores[1] < numericScores[2]) { scoreRisk = true; reasons.push(`시험성적 2회 연속 하락`); }
             }
             if (scoreRisk) riskTypes.push('성적주의');
         }
-        
-        const cns = consultations.filter(c => c.student_id === s.id).sort((a,b) => String(b.date).localeCompare(String(a.date)));
+
+        const cns = consultationsByStudentId.get(sid) || [];
         let lastCnsDate = cns.length ? cns[0].date : '없음';
         let cnsDaysDiff = 999;
         if (cns.length > 0) {
@@ -234,27 +274,27 @@ function computeRiskStudents() {
                 cnsDaysDiff = (todayTime - cnsTime) / (1000*3600*24);
             }
         }
-        
+
         let isNewStudent = false;
         if (s.created_at) {
             const createTime = apParseLocalDateTime(s.created_at);
             if (createTime !== null && (todayTime - createTime) / (1000*3600*24) <= 14) isNewStudent = true;
         }
-        
+
         if (cnsDaysDiff >= 30 && !isNewStudent) { riskTypes.push('상담필요'); reasons.push(`최근 30일 상담 기록 없음`); }
-        
+
         // [Stabilization] 종합주의 중복 방어
-        if (riskTypes.length >= 2 && !riskTypes.includes('종합주의')) { 
-            riskTypes.push('종합주의'); 
+        if (riskTypes.length >= 2 && !riskTypes.includes('종합주의')) {
+            riskTypes.push('종합주의');
         }
-        
+
         if (riskTypes.length > 0) {
-            const cId = classStudents.find(m => m.student_id === s.id)?.class_id;
-            const cName = classes.find(c => c.id === cId)?.name || '미배정';
+            const cId = classMapByStudentId.get(sid)?.class_id;
+            const cName = classById.get(String(cId || ''))?.name || '미배정';
             risks.push({ student: s, className: cName, riskTypes, reasons, scoreSummary, absenceCount, hwMissCount, lastConsultationDate: lastCnsDate });
         }
     });
-    
+
     return risks;
 }
 
@@ -665,10 +705,12 @@ function adminNormalizeStatus(value) {
 }
 
 function adminGetStudentClassMap(studentId) {
+    if (typeof apmsGetClassStudentMap === 'function') return apmsGetClassStudentMap(studentId);
     return (state.db.class_students || []).find(m => String(m.student_id) === String(studentId)) || null;
 }
 
 function adminGetClassById(classId) {
+    if (typeof apmsGetClassById === 'function') return apmsGetClassById(classId);
     return (state.db.classes || []).find(c => String(c.id) === String(classId)) || null;
 }
 
@@ -678,6 +720,7 @@ function adminGetStudentClass(studentId) {
 }
 
 function adminGetClassStudentIds(classId) {
+    if (typeof apmsGetClassStudentIds === 'function') return apmsGetClassStudentIds(classId);
     return (state.db.class_students || [])
         .filter(m => String(m.class_id) === String(classId))
         .map(m => String(m.student_id));
