@@ -2620,14 +2620,14 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                     <div class="aprc-subtitle">점수보다 오답의 흐름과 다음 보완 방향을 우선 확인합니다.</div>
                     ${aiBadgeHtml}
                 </div>
-                <div class="aprc-signature-boxes">
-                    <div class="aprc-signature-row">
-                        <span>선생님</span>
-                        <i></i>
+                <div class="aprc-signature-boxes" aria-label="선생님 학부모 사인란">
+                    <div class="aprc-signature-labels">
+                        <div>선생님</div>
+                        <div>학부모</div>
                     </div>
-                    <div class="aprc-signature-row">
-                        <span>학부모</span>
-                        <i></i>
+                    <div class="aprc-signature-cells" aria-hidden="true">
+                        <div></div>
+                        <div></div>
                     </div>
                 </div>
             </header>
@@ -2778,9 +2778,12 @@ function reportCenterPremiumReportStyle() {
             .aprc-title { margin-top:6px; font-size:24px; font-weight:800; letter-spacing:-0.8px; line-height:1.15; }
             .aprc-subtitle { margin-top:6px; font-size:12px; font-weight:650; color:rgba(255,255,255,0.74); }
             .aprc-ai-badge { display:inline-flex; margin-top:9px; padding:4px 8px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.86); font-size:10px; font-weight:850; letter-spacing:-0.1px; }
-            .aprc-signature-boxes { flex-shrink:0; min-width:38mm; display:flex; flex-direction:column; gap:7px; }
-            .aprc-signature-row { display:grid; grid-template-columns:34px 1fr; align-items:end; gap:8px; font-size:11px; font-weight:800; color:rgba(255,255,255,0.76); white-space:nowrap; }
-            .aprc-signature-row i { display:block; height:18px; border-bottom:1.5px solid rgba(255,255,255,0.78); }
+            .aprc-signature-boxes { --aprc-sign-border:rgba(255,255,255,0.72); --aprc-sign-text:rgba(255,255,255,0.86); flex-shrink:0; width:36mm; min-width:36mm; display:grid; grid-template-rows:6mm 18mm; border:1.3px solid var(--aprc-sign-border); background:rgba(255,255,255,0.07); box-sizing:border-box; }
+            .aprc-signature-labels, .aprc-signature-cells { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); min-width:0; }
+            .aprc-signature-labels { border-bottom:1.3px solid var(--aprc-sign-border); }
+            .aprc-signature-labels > div { display:flex; align-items:center; justify-content:center; min-width:0; color:var(--aprc-sign-text); font-size:10px; font-weight:850; line-height:1; letter-spacing:-0.2px; }
+            .aprc-signature-labels > div:first-child, .aprc-signature-cells > div:first-child { border-right:1.3px solid var(--aprc-sign-border); }
+            .aprc-signature-cells > div { min-width:0; height:18mm; }
             .aprc-student-band { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:8mm 0 5mm; background:#fff; border-bottom:1px solid #e5e7eb; }
             .aprc-student-name { font-size:22px; font-weight:850; letter-spacing:-0.7px; color:#0f172a; }
             .aprc-student-meta { margin-top:3px; font-size:12.5px; font-weight:700; color:#64748b; }
@@ -2845,9 +2848,8 @@ function reportCenterPremiumReportStyle() {
             .aprc-pdf-header .aprc-title { color:#0f172a; font-size:25px; }
             .aprc-pdf-header .aprc-subtitle { color:#475569; }
             .aprc-pdf-header .aprc-ai-badge { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
-            .aprc-pdf-header .aprc-signature-boxes { flex-shrink:0; min-width:42mm; display:flex; flex-direction:column; gap:7px; }
-            .aprc-pdf-header .aprc-signature-row { display:grid; grid-template-columns:34px 1fr; align-items:end; gap:8px; font-size:11px; font-weight:850; color:#475569; white-space:nowrap; }
-            .aprc-pdf-header .aprc-signature-row i { display:block; height:18px; border-bottom:1.5px solid #94a3b8; }
+            .aprc-pdf-header .aprc-signature-boxes { --aprc-sign-border:#334155; --aprc-sign-text:#0f172a; width:38mm; min-width:38mm; grid-template-rows:6mm 19mm; background:#fff; justify-self:end; }
+            .aprc-pdf-header .aprc-signature-cells > div { height:19mm; }
             .aprc-pdf-section, .aprc-pdf-panel, .aprc-pdf-table-panel, .aprc-pdf-parent-message { box-sizing:border-box; }
             .aprc-pdf-section { margin-top:6mm; }
             .aprc-pdf-student-band { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:5mm 0; border-bottom:1px solid #e5e7eb; }
@@ -3348,10 +3350,10 @@ function reportCenterInjectPrintViewStyle() {
 
         .report-print-stage .aprc-pdf-header {
             display:grid;
-            grid-template-columns:minmax(0,1fr) 46mm;
+            grid-template-columns:minmax(0,1fr) 40mm;
             align-items:start;
             column-gap:10mm;
-            padding:8mm 0 6mm;
+            padding:10mm 0 8mm;
         }
 
         .report-print-stage .aprc-pdf-header > div:first-child {
@@ -3369,13 +3371,14 @@ function reportCenterInjectPrintViewStyle() {
 
         .report-print-stage .aprc-pdf-header .aprc-signature-boxes {
             padding-top:0;
-            min-width:42mm;
-            width:42mm;
+            min-width:40mm;
+            width:40mm;
+            grid-template-rows:6mm 20mm;
             justify-self:end;
         }
 
-        .report-print-stage .aprc-pdf-header .aprc-signature-row {
-            grid-template-columns:34px 1fr;
+        .report-print-stage .aprc-pdf-header .aprc-signature-cells > div {
+            height:20mm;
         }
 
         .report-print-stage .aprc-pdf-student-band {
@@ -3383,6 +3386,8 @@ function reportCenterInjectPrintViewStyle() {
             grid-template-columns:minmax(0,1fr) minmax(38mm,72mm);
             align-items:center;
             column-gap:8mm;
+            margin-top:8mm;
+            padding-top:5mm;
         }
 
         .report-print-stage .aprc-pdf-student-band > div:first-child {
