@@ -277,7 +277,9 @@ function stringifyAttendanceTags(tags) {
 function getAttendanceMetaForStudentDate(studentId, date) {
     const sid = String(studentId);
     const d = String(date || '');
-    const rec = (state.db.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === d);
+    const rec = typeof apmsGetAttendanceRecordForStudentDate === 'function'
+        ? apmsGetAttendanceRecordForStudentDate(sid, d)
+        : (state.db.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === d);
     return {
         record: rec || null,
         tags: normalizeAttendanceTags(rec?.tags || ''),
@@ -296,6 +298,9 @@ function renderAttendanceTagButton(studentId, date, tag) {
 }
 
 function hasConsultationForStudentDate(studentId, date) {
+    if (typeof apmsHasConsultationForStudentDate === 'function') {
+        return apmsHasConsultationForStudentDate(studentId, date);
+    }
     const sid = String(studentId);
     const d = String(date || '').slice(0, 10);
     return (state.db.consultations || []).some(c =>
@@ -341,6 +346,7 @@ function syncClassroomAttendanceStatusToState(studentId, date, status) {
         rec.status = status;
     }
     rec.updated_at = new Date().toISOString();
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
 
     const month = d.slice(0, 7);
     const cache = state.ui?.monthlyAttendanceCache?.[month];
@@ -399,6 +405,7 @@ function syncAttendanceMetaToState(studentId, date, tags, memo) {
     rec.tags = tagText;
     if (memoText !== undefined) rec.memo = memoText;
     rec.updated_at = new Date().toISOString();
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
 
     const month = d.slice(0, 7);
     const cache = state.ui?.monthlyAttendanceCache?.[month];
@@ -446,7 +453,9 @@ async function toggleAttendanceTag(studentId, date, tag) {
 function openAttendanceMetaModal(studentId, date, options = {}) {
     const sid = String(studentId);
     const d = normalizeClassroomDate(date) || getClassroomOperationDate();
-    const student = (state.db.students || []).find(s => String(s.id) === sid);
+    const student = typeof apmsGetStudentById === 'function'
+        ? apmsGetStudentById(sid)
+        : (state.db.students || []).find(s => String(s.id) === sid);
     const meta = getAttendanceMetaForStudentDate(sid, d);
     const status = meta.record?.status || '미기록';
     const tagSet = new Set(meta.tags);
@@ -598,42 +607,38 @@ async function handleBatchGeneratePins(classId) {
 function computeClassTodaySummary(classId, dateStr = '') {
     const today = normalizeClassroomDate(dateStr) || getClassroomOperationDate();
     const todayExam = typeof getTodayExamConfig === 'function' ? getTodayExamConfig() : null;
-    const ids = state.db.class_students.filter(m => String(m.class_id) === String(classId)).map(m => String(m.student_id));
-    const active = state.db.students.filter(s => ids.includes(String(s.id)) && s.status === '재원');
-    const aIds = new Set(active.map(s => String(s.id)));
+    const active = getClassroomActiveStudents(classId);
     const total = active.length;
 
-    const hasActiveAttendance = state.db.attendance.some(a => a.date === today && ids.includes(String(a.student_id)) && a.status === '등원');
+    const { todayAttMap, todayHwMap } = buildClassroomTodayMaps(active, today);
+    const hasActiveAttendance = active.some(s => todayAttMap[String(s.id)] === '등원');
     const isScheduled = hasActiveAttendance || isClassScheduledOnDate(classId, today);
 
     if (!total) return { att: 0, hw: 0, test: 0, total: 0, isScheduled };
 
-    const todayAttMap = {};
-    for (let i = 0; i < state.db.attendance.length; i++) {
-        let a = state.db.attendance[i];
-        if (a.date === today && aIds.has(String(a.student_id))) todayAttMap[a.student_id] = a.status;
-    }
-    const todayHwMap = {};
-    for (let i = 0; i < state.db.homework.length; i++) {
-        let h = state.db.homework[i];
-        if (h.date === today && aIds.has(String(h.student_id))) todayHwMap[h.student_id] = h.status;
-    }
-
     let attCount = 0; let hwCount = 0;
     active.forEach(s => {
-        const attStatus = getAttendanceDisplayStatus(todayAttMap[s.id], isScheduled);
+        const sid = String(s.id);
+        const attStatus = getAttendanceDisplayStatus(todayAttMap[sid], isScheduled);
         if (attStatus === '등원') attCount++;
-        const hwStatus = getHomeworkDisplayStatus(todayHwMap[s.id], isScheduled);
+        const hwStatus = getHomeworkDisplayStatus(todayHwMap[sid], isScheduled);
         if (hwStatus === '완료') hwCount++;
     });
 
     let test = 0;
     if (todayExam) {
-        let testedIds = new Set();
-        for (let i = 0; i < state.db.exam_sessions.length; i++) {
-            let es = state.db.exam_sessions[i];
-            if (es.exam_date === today && es.exam_title === todayExam.title && aIds.has(String(es.student_id))) testedIds.add(String(es.student_id));
-        }
+        const testedIds = new Set();
+        active.forEach(s => {
+            const sid = String(s.id);
+            const rows = typeof apmsGetExamSessionsForStudentDateTitle === 'function'
+                ? apmsGetExamSessionsForStudentDateTitle(sid, today, todayExam.title)
+                : (state.db.exam_sessions || []).filter(es =>
+                    String(es.student_id) === sid &&
+                    es.exam_date === today &&
+                    es.exam_title === todayExam.title
+                );
+            if (rows.length) testedIds.add(sid);
+        });
         test = testedIds.size;
     }
     return { att: attCount, hw: hwCount, test, total, isScheduled };
@@ -979,28 +984,41 @@ function openClassHomework(cid) {
 
 // [UI Standard Applied]: 학급 메인 화면
 function getClassroomActiveStudents(cid) {
+    const classId = String(cid || '');
+    if (typeof apmsGetDataIndexes === 'function') {
+        const idx = apmsGetDataIndexes();
+        const maps = idx.classStudentRowsByClassId.get(classId) || [];
+        return maps
+            .map(row => idx.studentsById.get(String(row.student_id || '')))
+            .filter(student => student && student.status === '재원');
+    }
+
     const mIds = state.db.class_students
-        .filter(m => String(m.class_id) === String(cid))
+        .filter(m => String(m.class_id) === classId)
         .map(m => String(m.student_id));
+    const idSet = new Set(mIds);
     const orderMap = new Map(mIds.map((id, idx) => [String(id), idx]));
     return state.db.students
-        .filter(s => mIds.includes(String(s.id)) && s.status === '재원')
+        .filter(s => idSet.has(String(s.id)) && s.status === '재원')
         .sort((a, b) => (orderMap.get(String(a.id)) ?? 9999) - (orderMap.get(String(b.id)) ?? 9999));
 }
 
 function buildClassroomTodayMaps(students, today) {
-    const idSet = new Set(students.map(s => String(s.id)));
     const todayAttMap = {};
     const todayHwMap = {};
 
-    for (let i = 0; i < state.db.attendance.length; i++) {
-        const a = state.db.attendance[i];
-        if (a.date === today && idSet.has(String(a.student_id))) todayAttMap[a.student_id] = a.status;
-    }
-    for (let i = 0; i < state.db.homework.length; i++) {
-        const h = state.db.homework[i];
-        if (h.date === today && idSet.has(String(h.student_id))) todayHwMap[h.student_id] = h.status;
-    }
+    (Array.isArray(students) ? students : []).forEach(student => {
+        const sid = String(student && student.id || '');
+        if (!sid) return;
+        const att = typeof apmsGetAttendanceRecordForStudentDate === 'function'
+            ? apmsGetAttendanceRecordForStudentDate(sid, today)
+            : (state.db.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === String(today || ''));
+        const hw = typeof apmsGetHomeworkRecordForStudentDate === 'function'
+            ? apmsGetHomeworkRecordForStudentDate(sid, today)
+            : (state.db.homework || []).find(h => String(h.student_id) === sid && String(h.date || '') === String(today || ''));
+        if (att) todayAttMap[sid] = att.status;
+        if (hw) todayHwMap[sid] = hw.status;
+    });
 
     return { todayAttMap, todayHwMap };
 }
@@ -1100,14 +1118,22 @@ function updateStudentRowDOM(sid, cid) {
     const row = document.getElementById('class-row-' + sid);
     if (!row) return false;
 
-    const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    const student = state.db.students.find(st => String(st.id) === String(sid));
+    const cls = typeof apmsGetClassById === 'function'
+        ? apmsGetClassById(cid)
+        : state.db.classes.find(c => String(c.id) === String(cid));
+    const student = typeof apmsGetStudentById === 'function'
+        ? apmsGetStudentById(sid)
+        : state.db.students.find(st => String(st.id) === String(sid));
     if (!cls || !student) return false;
 
     const today = getClassroomOperationDate();
     const summary = computeClassTodaySummary(cid, today);
-    const attCur = state.db.attendance.find(a => String(a.student_id) === String(sid) && a.date === today);
-    const hwCur = state.db.homework.find(h => String(h.student_id) === String(sid) && h.date === today);
+    const attCur = typeof apmsGetAttendanceRecordForStudentDate === 'function'
+        ? apmsGetAttendanceRecordForStudentDate(sid, today)
+        : state.db.attendance.find(a => String(a.student_id) === String(sid) && a.date === today);
+    const hwCur = typeof apmsGetHomeworkRecordForStudentDate === 'function'
+        ? apmsGetHomeworkRecordForStudentDate(sid, today)
+        : state.db.homework.find(h => String(h.student_id) === String(sid) && h.date === today);
     const plannerEnabled = isPlannerTargetClass(cls);
     const newHtml = renderClassStudentRowV4B(cid, student, attCur?.status, hwCur?.status, summary.isScheduled, plannerEnabled, today);
 
@@ -1423,6 +1449,7 @@ async function toggleHw(sid, date) {
 
     if (cur) cur.status = next;
     else list.push({ student_id: sid, date: today, status: next });
+    if (!isLedger && typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
 
     if (isLedger) renderLedgerTable();
     else if (state.ui.currentClassId) {
@@ -1455,6 +1482,7 @@ async function toggleHw(sid, date) {
             const idx = list.findIndex(h => String(h.student_id) === String(sid) && h.date === today);
             if (idx > -1) list.splice(idx, 1);
         }
+        if (!isLedger && typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
         if (isLedger) renderLedgerTable();
         else if (state.ui.currentClassId) {
             const updated = updateStudentRowDOM(sid, state.ui.currentClassId);

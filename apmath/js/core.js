@@ -827,9 +827,12 @@ function apmsBuildDataIndexes() {
     const students = apmsGetDbArray('students');
     const classes = apmsGetDbArray('classes');
     const classStudents = apmsGetDbArray('class_students');
+    const attendance = apmsGetDbArray('attendance');
+    const homework = apmsGetDbArray('homework');
     const examSessions = apmsGetDbArray('exam_sessions');
     const consultations = apmsGetDbArray('consultations');
     const wrongAnswers = apmsGetDbArray('wrong_answers');
+    const examBlueprints = apmsGetDbArray('exam_blueprints');
     const classDailyRecords = apmsGetDbArray('class_daily_records');
     const classDailyProgress = apmsGetDbArray('class_daily_progress');
     const academySchedules = apmsGetDbArray('academy_schedules');
@@ -857,11 +860,34 @@ function apmsBuildDataIndexes() {
         }
     });
 
+    const attendanceByStudentDate = new Map();
+    attendance.forEach(row => {
+        const key = apmsStudentDateKey(row && row.student_id, row && row.date);
+        if (key) attendanceByStudentDate.set(key, row);
+    });
+
+    const homeworkByStudentDate = new Map();
+    homework.forEach(row => {
+        const key = apmsStudentDateKey(row && row.student_id, row && row.date);
+        if (key) homeworkByStudentDate.set(key, row);
+    });
+
     const examSessionsByStudentId = apmsGroupBy(examSessions, row => row && row.student_id);
     examSessionsByStudentId.forEach(rows => rows.sort((a, b) =>
         String(b.exam_date || '').localeCompare(String(a.exam_date || '')) ||
         String(b.id || '').localeCompare(String(a.id || ''))
     ));
+
+    const examSessionsByStudentDateTitle = new Map();
+    examSessions.forEach(row => {
+        const sid = String(row && row.student_id || '').trim();
+        const date = String(row && row.exam_date || '').trim();
+        const title = String(row && row.exam_title || '').trim();
+        if (!sid || !date || !title) return;
+        const key = [sid, date, title].join('|');
+        if (!examSessionsByStudentDateTitle.has(key)) examSessionsByStudentDateTitle.set(key, []);
+        examSessionsByStudentDateTitle.get(key).push(row);
+    });
 
     const consultationsByStudentId = apmsGroupBy(consultations, row => row && row.student_id);
     consultationsByStudentId.forEach(rows => rows.sort((a, b) =>
@@ -870,6 +896,15 @@ function apmsBuildDataIndexes() {
     ));
 
     const wrongAnswersBySessionId = apmsGroupBy(wrongAnswers, row => row && row.session_id);
+
+    const examBlueprintsByArchiveQuestion = new Map();
+    examBlueprints.forEach(row => {
+        const archiveFile = String(row && row.archive_file || '').trim();
+        const questionNo = Number(row && row.question_no || 0);
+        if (!archiveFile || !questionNo) return;
+        examBlueprintsByArchiveQuestion.set([archiveFile, questionNo].join('|'), row);
+    });
+
     const classDailyRecordsByClassId = apmsGroupBy(classDailyRecords, row => row && row.class_id);
     classDailyRecordsByClassId.forEach(rows => rows.sort((a, b) =>
         String(b.date || '').localeCompare(String(a.date || '')) ||
@@ -878,16 +913,20 @@ function apmsBuildDataIndexes() {
     const classDailyProgressByRecordId = apmsGroupBy(classDailyProgress, row => row && row.record_id);
 
     return {
-        _refs: { students, classes, classStudents, examSessions, consultations, wrongAnswers, classDailyRecords, classDailyProgress, academySchedules },
+        _refs: { students, classes, classStudents, attendance, homework, examSessions, consultations, wrongAnswers, examBlueprints, classDailyRecords, classDailyProgress, academySchedules },
         studentsById,
         classesById,
         classStudentByStudentId,
         classStudentRowsByClassId,
         studentIdsByClassId,
         studentsByClassId,
+        attendanceByStudentDate,
+        homeworkByStudentDate,
         examSessionsByStudentId,
+        examSessionsByStudentDateTitle,
         consultationsByStudentId,
         wrongAnswersBySessionId,
+        examBlueprintsByArchiveQuestion,
         classDailyRecordsByClassId,
         classDailyProgressByRecordId,
         academySchedules
@@ -902,9 +941,12 @@ function apmsGetDataIndexes() {
         refs.students === apmsGetDbArray('students') &&
         refs.classes === apmsGetDbArray('classes') &&
         refs.classStudents === apmsGetDbArray('class_students') &&
+        refs.attendance === apmsGetDbArray('attendance') &&
+        refs.homework === apmsGetDbArray('homework') &&
         refs.examSessions === apmsGetDbArray('exam_sessions') &&
         refs.consultations === apmsGetDbArray('consultations') &&
         refs.wrongAnswers === apmsGetDbArray('wrong_answers') &&
+        refs.examBlueprints === apmsGetDbArray('exam_blueprints') &&
         refs.classDailyRecords === apmsGetDbArray('class_daily_records') &&
         refs.classDailyProgress === apmsGetDbArray('class_daily_progress') &&
         refs.academySchedules === apmsGetDbArray('academy_schedules');
@@ -915,6 +957,43 @@ function apmsGetDataIndexes() {
 
 function apmsInvalidateDataIndexes() {
     if (state) state.dataIndexes = null;
+}
+
+function apmsStudentDateKey(studentId, date) {
+    const sid = String(studentId || '').trim();
+    const d = String(date || '').slice(0, 10);
+    return sid && d ? `${sid}|${d}` : '';
+}
+
+function apmsGetAttendanceRecordForStudentDate(studentId, date) {
+    return apmsGetDataIndexes().attendanceByStudentDate.get(apmsStudentDateKey(studentId, date)) || null;
+}
+
+function apmsGetHomeworkRecordForStudentDate(studentId, date) {
+    return apmsGetDataIndexes().homeworkByStudentDate.get(apmsStudentDateKey(studentId, date)) || null;
+}
+
+function apmsGetExamSessionsForStudentDateTitle(studentId, date, title) {
+    const sid = String(studentId || '').trim();
+    const d = String(date || '').slice(0, 10);
+    const t = String(title || '').trim();
+    if (!sid || !d || !t) return [];
+    return (apmsGetDataIndexes().examSessionsByStudentDateTitle.get([sid, d, t].join('|')) || []).slice();
+}
+
+function apmsHasConsultationForStudentDate(studentId, date) {
+    const d = String(date || '').slice(0, 10);
+    if (!d) return false;
+    return apmsGetConsultationsForStudent(studentId).some(c =>
+        String(c && (c.date || c.consultation_date || c.created_at) || '').slice(0, 10) === d
+    );
+}
+
+function apmsGetExamBlueprintByArchiveQuestion(archiveFile, questionNo) {
+    const file = String(archiveFile || '').trim();
+    const no = Number(questionNo || 0);
+    if (!file || !no) return null;
+    return apmsGetDataIndexes().examBlueprintsByArchiveQuestion.get([file, no].join('|')) || null;
 }
 
 function apmsGetStudentById(studentId) {
