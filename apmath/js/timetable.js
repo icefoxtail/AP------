@@ -834,10 +834,10 @@ function openTimetableDraftActivateConfirm() {
             '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">적용하면 개편안의 반, 시간, 학생 배치가 운영 기준으로 반영됩니다.</div>' +
             '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +
                 '<button class="btn" onclick="closeModal()">취소</button>' +
-                '<button class="btn btn-primary" onclick="window.ttActivateDraftVersion()">운영 시간표 적용</button>' +
+                '<button class="btn btn-primary" onclick="window.ttActivateDraftVersion()">개편 시간표 적용</button>' +
             '</div>' +
         '</div>';
-    if (typeof showModalStep === 'function') showModalStep('운영 시간표 적용', body); else showModal('운영 시간표 적용', body);
+    if (typeof showModalStep === 'function') showModalStep('개편 시간표 적용', body); else showModal('개편 시간표 적용', body);
 }
 
 async function confirmTimetableDraftActivate() {
@@ -856,7 +856,7 @@ async function confirmTimetableDraftActivate() {
         if (typeof loadInitialData === 'function') loadInitialData();
     } catch (e) {
         console.error('[confirmTimetableDraftActivate] failed:', e);
-        if (typeof toast === 'function') toast('운영 시간표 적용에 실패했습니다.', 'warn');
+        if (typeof toast === 'function') toast('개편 시간표 적용에 실패했습니다.', 'warn');
         if (actionBtn) actionBtn.disabled = false;
     }
 }
@@ -1130,7 +1130,7 @@ function buildTimetableVersionHeaderActionsHtml() {
         html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttSaveDraftEffectiveDate()">저장</button>';
         html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttReturnActiveView()">운영 시간표로 이동</button>';
         html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttScanDraftPreview()">충돌 확인</button>';
-        html += '<button class="btn btn-primary" style="min-height:28px; padding:5px 10px; font-size:11px; font-weight:800; border-radius:999px;" onclick="window.ttOpenDraftActivateConfirm()">운영 시간표 적용</button>';
+        html += '<button class="btn btn-primary" style="min-height:28px; padding:5px 10px; font-size:11px; font-weight:800; border-radius:999px;" onclick="window.ttOpenDraftActivateConfirm()">개편 시간표 적용</button>';
     } else if (primaryDraft) {
         html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(primaryDraft.id || '')) + '\')">개편시간표</button>';
     } else if (shouldShowCreate) {
@@ -2108,6 +2108,18 @@ function getTimetableDateTitle() {
     var now = new Date();
     var yy = String(now.getFullYear()).slice(2);
     var mm = now.getMonth() + 1;
+    if (isTimetableDraftMode()) {
+        var version = getSelectedTimetableVersionForView();
+        var effectiveFrom = String(version && version.effective_from || '').trim();
+        var targetYear = Number(version && version.school_year || 0) || now.getFullYear() + 1;
+        var targetMonth = 1;
+        var matched = effectiveFrom.match(/^(\d{4})-(\d{2})-/);
+        if (matched) {
+            targetYear = Number(matched[1]) || targetYear;
+            targetMonth = Number(matched[2]) || targetMonth;
+        }
+        return 'AP수학 시간표 (' + yy + '년 ' + mm + '월 >>> ' + String(targetYear).slice(2) + '년 ' + targetMonth + '월 예정)';
+    }
     return 'AP수학 시간표 (' + yy + '년 ' + mm + '월)';
 }
 
