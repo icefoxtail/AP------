@@ -619,9 +619,20 @@
     const EXAM_DATE = '2026-07-11';
 
     const params = new URLSearchParams(location.search);
-    const studentId = String(params.get('student_id') || '').trim();
+    const studentId = String(
+      params.get('student_id') ||
+      localStorage.getItem('PLANNER_SID') ||
+      sessionStorage.getItem('PLANNER_SID') ||
+      ''
+    ).trim();
 
-    let pin = '';
+    let pin = String(
+      params.get('pin') ||
+      (studentId ? localStorage.getItem(`planner_pin_${studentId}`) : '') ||
+      localStorage.getItem('PLANNER_PIN') ||
+      sessionStorage.getItem('PLANNER_PIN') ||
+      ''
+    ).trim();
     let student = null;
     let plans = [];
     let feedback = [];
@@ -797,6 +808,29 @@
     function authStore() { return window.localStorage; }
     function authKey() { return `planner_auth_${studentId}`; }
     function pinKey() { return `planner_pin_${studentId}`; }
+    function getPortalPlannerPinCandidate() {
+      const portalSid = String(localStorage.getItem('PLANNER_SID') || sessionStorage.getItem('PLANNER_SID') || '').trim();
+      const queryPin = String(params.get('pin') || '').trim();
+      const portalPin = String(localStorage.getItem('PLANNER_PIN') || sessionStorage.getItem('PLANNER_PIN') || '').trim();
+      if (queryPin) return queryPin;
+      if (portalSid && portalSid !== studentId) return '';
+      return portalPin;
+    }
+    function importPortalPlannerSession() {
+      if (!studentId) return;
+      const portalPin = getPortalPlannerPinCandidate();
+      if (!portalPin) return;
+      pin = portalPin;
+      authStore().setItem(authKey(), 'true');
+      authStore().setItem(pinKey(), portalPin);
+      localStorage.setItem('PLANNER_SID', studentId);
+      localStorage.setItem('PLANNER_PIN', portalPin);
+      if (params.has('pin')) {
+        params.delete('pin');
+        const query = params.toString();
+        history.replaceState(null, '', location.pathname + (query ? `?${query}` : '') + location.hash);
+      }
+    }
     function isMobile() { return window.innerWidth < 768; }
     function addDays(date, days) {
       const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -937,6 +971,8 @@
         renderError('학생 링크가 올바르지 않습니다.');
         return;
       }
+
+      importPortalPlannerSession();
 
       const savedAuth = authStore().getItem(authKey());
       const savedPin = authStore().getItem(pinKey());
@@ -1300,6 +1336,12 @@
     function resetAuth() {
       authStore().removeItem(authKey());
       authStore().removeItem(pinKey());
+      try {
+        localStorage.removeItem('PLANNER_SID');
+        localStorage.removeItem('PLANNER_PIN');
+        sessionStorage.removeItem('PLANNER_SID');
+        sessionStorage.removeItem('PLANNER_PIN');
+      } catch (e) {}
       pin = '';
       student = null;
       plans = [];
