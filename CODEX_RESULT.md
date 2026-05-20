@@ -1,34 +1,28 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- apmath/js/timetable.js
-- apmath/worker-backup/worker/routes/timetable-versions.js
+- apmath/js/dashboard.js
 - CODEX_RESULT.md
 
 ## 2. 구현 완료 또는 확인 완료
-- 유실 student 객체 접근 안전 가드 완료: draft 렌더링에서 `student && student.grade` 방식으로만 접근
-- student_name_snapshot fallback 렌더링 보강: `student.name` -> `assignment.student_name_snapshot` -> memo 내부 snapshot/name -> `이름 없음` 순서 적용
-- source_grade / next_grade 기준 중3 제외 유지: source_grade가 모두 `중3`인 assignment만 draft 렌더 제외
-- 기존 중2 -> 새 중3 유지: `source_grade=중2`, `next_grade=중3`은 제외 조건에 걸리지 않음
-- 기존 중1 -> 새 중2 유지: `source_grade=중1`, `next_grade=중2` 유지
-- memo JSON parse 안전화: 프론트/백엔드 모두 try/catch helper로 손상 memo를 빈 객체로 처리
-- 비어 있는 draft seed 보강 동시성/중복 방어: `INSERT OR IGNORE` 유지, seed 보강 실패는 console.error 후 조회 흐름을 계속하도록 방어
-- 상단바 임의 문구/대개편 없음: `개편시간표`, `운영 시간표로 이동`, `충돌 확인` 문구 유지
-- 학생 드래그/반 드래그 분리 유지: `drag_type: student` / `drag_type: class-card` 확인
-- 운영 데이터 오염 방지 유지: 조회/seed 보강은 `timetable_version_student_assignments` staging에만 반영
+- 원장님 대시보드 선생님 현황 카드의 성 한 글자 원형 뱃지 제거 완료
+- 선생님 현황 카드의 `일지 확인` / `담당반 보기` 버튼을 동일한 연한 톤 버튼으로 통일 완료
+- 선생님 현황 카드 정보를 `담당반` / `재원` / `최근 등록` 작은 칩 형태로 분리 완료
+- 선생님 현황 카드의 `오늘 수업` 표시 제거 완료
+- 원장님 대시보드 카드 radius를 16px 기준으로 정리 완료
+- 원장님 대시보드 카드 shadow를 약화/제거해 차분한 톤으로 정리 완료
+- 원장님 대시보드 바로가기 버튼과 미니 메트릭의 파란색 강조를 줄이는 방향으로 보정 완료
+- 기존 섹션명, 버튼명, 기능 동작 보존 확인
+- 새학기 시간표, 클래스룸, 학생, 출석/숙제 로직 수정 없음 확인
 
 ## 3. 실행 결과
-- `node --check apmath/js/timetable.js`: PASS
-- `node --check apmath/worker-backup/worker/routes/timetable-versions.js`: PASS
-- 충돌 마커 검색 결과: 없음
-- 중복 함수 정의 확인 결과: `buildTimetableVersionBannerHtml` 1개, `saveTimetableDraftEffectiveDate` 1개, `confirmTimetableAddClass` 1개, `getTimetableClassList` 1개
-- 상단바 금지 문구 검색 결과: `새학기 대개편 통합 초안 관리` 없음
+- node --check apmath/js/dashboard.js: PASS
+- 수정 범위: 원장님 대시보드 표시/스타일 보정 중심
 
 ## 4. 결과 요약
-- 검수 FAIL 원인인 유실 학생 렌더링 안전 가드, 손상 memo JSON 방어, 비어 있는 draft seed 보강 실패 방어를 보정했다.
-- 기존 중3만 source_grade 기준으로 제외하고, 기존 중2에서 올라온 새 중3과 기존 중1에서 올라온 새 중2는 유지되도록 했다.
+- 원장님 대시보드의 선생님 현황 카드와 공통 카드 톤을 더 차분하게 정리했다.
+- 강한 파란색 버튼과 성 한 글자 뱃지의 이질감을 제거하고, 정보는 칩 형태로 분리했다.
 
 ## 5. 다음 조치
-- Gemini/Claude/ChatGPT 재검수 필요
-- 검수 PASS 후 적용용 zip 생성 및 수동 적용
-- D1/Worker/GitHub 반영은 사용자 승인 후 별도 진행
+- 적용 후 원장님 대시보드 브라우저 확인
+- 모바일/태블릿 폭에서 선생님 카드 버튼 2개가 잘리지 않는지 확인
