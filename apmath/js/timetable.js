@@ -2817,20 +2817,73 @@ function buildTimetableHighCardBlock(cls) {
 // 메인 렌더링 및 탭 전역 함수
 // ────────────────────────────────────────────
 
+function updateTimetableTabActiveState() {
+    var root = document.getElementById('timetable-root');
+    if (!root) return;
+    var section = (typeof state !== 'undefined' && state.ui && state.ui.timetableSection) || 'middle';
+    var isMid = section === 'middle';
+    var isAdminUserForTimetable = isTimetableAdminMode();
+    var myOnly = isAdminUserForTimetable ? false : !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
+
+    Array.prototype.slice.call(root.querySelectorAll('[data-tt-section-btn]')).forEach(function(btn) {
+        var target = String(btn.getAttribute('data-tt-section-btn') || '');
+        var active = (target === 'middle' && isMid) || (target === 'high' && !isMid);
+        btn.classList.toggle('active', active);
+    });
+
+    Array.prototype.slice.call(root.querySelectorAll('[data-tt-myonly-btn]')).forEach(function(btn) {
+        var target = String(btn.getAttribute('data-tt-myonly-btn') || 'false') === 'true';
+        btn.classList.toggle('active', target ? myOnly : !myOnly);
+    });
+}
+
+function renderTimetableGridOnly() {
+    var root = document.getElementById('timetable-root');
+    var wrapper = document.getElementById('timetable-grid-wrapper');
+    if (!root || !wrapper) {
+        renderTimetable();
+        return;
+    }
+
+    installTimetableStyle();
+    bindTimetableFitEvents();
+    enterTimetableWideMode();
+    ensureTimetableClassTimeSlotsLoaded();
+    ensureTimetableVersionUiState();
+
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        if (!state.ui.timetableSection) state.ui.timetableSection = 'middle';
+        state.ui.timetablePlacementWarnings = {};
+        if (isTimetableAdminMode()) state.ui.timetableMyOnly = false;
+        else if (typeof state.ui.timetableMyOnly === 'undefined') state.ui.timetableMyOnly = false;
+    }
+
+    updateTimetableTabActiveState();
+    var section = (typeof state !== 'undefined' && state.ui && state.ui.timetableSection) || 'middle';
+    renderTimetableGrid(section);
+}
+
 window.ttSetSection = function(sec) {
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
-        state.ui.timetableSection = sec;
+        var next = String(sec || 'middle');
+        var prev = state.ui.timetableSection || 'middle';
+        state.ui.timetableSection = next;
+        if (prev === next && document.getElementById('timetable-grid-wrapper')) return;
     }
-    renderTimetable();
+    renderTimetableGridOnly();
 };
 
 window.ttSetMyOnly = function(isMy) {
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
-        state.ui.timetableMyOnly = isTimetableAdminMode() ? false : isMy;
+        var next = isTimetableAdminMode() ? false : !!isMy;
+        var prev = isTimetableAdminMode() ? false : !!state.ui.timetableMyOnly;
+        state.ui.timetableMyOnly = next;
+        if (prev === next && document.getElementById('timetable-grid-wrapper')) return;
     }
-    renderTimetable();
+    renderTimetableGridOnly();
 };
 
 function renderTimetable() {
@@ -2870,10 +2923,10 @@ function renderTimetable() {
             '</div>' +
             buildTimetableVersionBannerHtml() +
             '<div class="tt-tab-scroll">' +
-                '<button class="tab-btn' + (isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
-                '<button class="tab-btn' + (!isMid ? ' active' : '') + '" onclick="window.ttSetSection(\'high\')">고등부</button>' +
-                '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" onclick="window.ttSetMyOnly(false)">전체 보기</button>' +
-                (isAdminUserForTimetable ? '' : '<button class="tab-btn' + (myOnly ? ' active' : '') + '" onclick="window.ttSetMyOnly(true)">내 반 보기</button>') +
+                '<button class="tab-btn' + (isMid ? ' active' : '') + '" data-tt-section-btn="middle" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
+                '<button class="tab-btn' + (!isMid ? ' active' : '') + '" data-tt-section-btn="high" onclick="window.ttSetSection(\'high\')">고등부</button>' +
+                '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" data-tt-myonly-btn="false" onclick="window.ttSetMyOnly(false)">전체 보기</button>' +
+                (isAdminUserForTimetable ? '' : '<button class="tab-btn' + (myOnly ? ' active' : '') + '" data-tt-myonly-btn="true" onclick="window.ttSetMyOnly(true)">내 반 보기</button>') +
             '</div>' +
             '<div id="timetable-grid-wrapper"></div>' +
         '</div>';
