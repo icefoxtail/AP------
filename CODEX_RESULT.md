@@ -2,22 +2,23 @@
 
 ## 1. 생성/수정 파일
 
-- 수정: `apmath/js/dashboard.js`
-- 수정: `apmath/index.html`
-- 생성: `apmath/css/dashboard-foundation.css`
-- 수정: `CODEX_RESULT.md`
+- 수정: `apmath/css/dashboard-foundation.css`
+- 확인: `apmath/js/dashboard.js`
 
 ## 2. 구현 완료 또는 확인 완료
 
-- 대시보드 운영 UI Foundation 1차 기준 파일 `dashboard-foundation.css` 분리 완료
-- 기존 `injectDashboardOpsStyles()` 내부의 긴 style 문자열 제거 완료
-- `injectDashboardOpsStyles()`는 CSS 링크 보강용 안전 함수로 축소 완료
-- `index.html`에 dashboard foundation CSS link 추가 완료
-- journal-matrix / daily-close-step / care-risk / care-log / admin-teacher 계열 BEM 스타일을 CSS 파일로 이동 완료
-- 기존 버튼명/화면명/주요 문구 임의 변경 없음
-- 오늘일지 중등부 제한 필터 보존 완료
+- 선생님 오늘일지 카드의 카드 안 카드 느낌 제거 완료
+- `.dashboard-journal-card`의 border/background/radius/padding/overflow hidden 제거 완료
+- 오늘일지 상단 클릭 영역은 line-style row로 유지 완료
+- 수/목 journal row의 hover 배경 clip 가능성 제거 완료
+- 원장님/선생님 journal row line-style 유지 확인
+- 수/목 고정 노출 유지 확인
+- 최근 등록 제거 유지 확인
+- 일지 확인 버튼 제거 유지 확인
+- 담당반 보기 유지 확인
+- 오늘일지 중등부 제한 기준 유지 확인
 - 집중케어 50점 하한선 보정 유지 확인
-- 전체 APMS CSS 리뉴얼은 진행하지 않음
+- 신규 전역 CSS 오염 없음 확인
 
 ## 3. 실행 결과
 
@@ -25,9 +26,9 @@
 
 ## 4. 결과 요약
 
-대시보드 신규 운영 UI의 스타일 기준을 JS 내부 style 주입에서 dashboard 전용 CSS 파일로 분리했다. 이번 작업은 대시보드를 APMS 운영 UI 기준 화면으로 삼기 위한 1차 Foundation 정리이며, 기존 기능과 문구는 보존했다.
+선생님 오늘일지 카드에서 남아 있던 wrapper 카드 스타일을 제거하고, line-style journal row가 카드 안 카드처럼 보이지 않도록 최종 보정했다. `overflow:hidden`도 제거해 hover 배경이 잘릴 가능성을 없앴다.
 
 ## 5. 다음 조치
 
-- 브라우저에서 대시보드 진입 후 오늘일지, 예외 현황, 원장 선생님 카드 표시 확인 필요
-- 이후 단계에서 기존 대시보드 구형 inline style 영역을 기능 단위로 추가 분리 가능
+- 브라우저에서 선생님 대시보드 오늘일지 영역과 원장님 선생님 현황 카드를 직접 확인한다.
+- 운영 확인 후 이상 없으면 커밋/푸시한다.
