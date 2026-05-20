@@ -2672,27 +2672,123 @@ function dashboardFormatConsultationFullText(row) {
     return parts.join('\n');
 }
 
-function buildJournalContent(dateStr) {
-    const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
 
-    const parts = targetDate.split('-');
-    const targetDayIdx = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
+function dashboardGetJournalClassRows(targetDate) {
+    const parts = String(targetDate || new Date().toLocaleDateString('sv-SE')).split('-');
+    const targetDayIdx = String(new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2])).getDay());
 
-    const activeClasses = (state.db.classes || []).filter(c => {
+    return (state.db.classes || []).filter(c => {
         if (Number(c.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
-        // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
         if (!c.schedule_days) return true;
-
-        // 제출일/선택일 기준 해당 요일 반만 출력한다.
         return String(c.schedule_days)
             .split(',')
             .map(v => v.trim())
             .includes(targetDayIdx);
     });
+}
+
+function dashboardGetConsultationDate(cn) {
+    return String(cn?.consultation_date || cn?.date || cn?.created_at || '').slice(0, 10);
+}
+
+function dashboardGetConsultationBody(cn) {
+    return String(
+        cn?.content ??
+        cn?.memo ??
+        cn?.note ??
+        cn?.consultation_content ??
+        cn?.body ??
+        cn?.description ??
+        cn?.summary ??
+        ''
+    ).trim();
+}
+
+function dashboardGetJournalConsultationsForClass(targetDate, memberIds) {
+    const memberSet = new Set((memberIds || []).map(id => String(id)));
+    return (state.db.consultations || []).filter(cn => {
+        if (dashboardGetConsultationDate(cn) !== targetDate) return false;
+        return memberSet.has(String(cn?.student_id || ''));
+    });
+}
+
+function dashboardFormatJournalConsultationEntry(cn, students) {
+    const sName = (students || []).find(s => String(s.id) === String(cn?.student_id))?.name || cn?.student_name_snapshot || cn?.student_name || '학생';
+    const body = dashboardGetConsultationBody(cn);
+    let text = `  * ${sName}\n`;
+    if (body) {
+        body.split(/\r?\n/).forEach(line => {
+            text += `    ${line}\n`;
+        });
+    } else {
+        text += `    상담 내용 없음\n`;
+    }
+    return text;
+}
+
+function dashboardJournalAlreadyHasConsultation(content, cn, students) {
+    const source = String(content || '');
+    const sName = (students || []).find(s => String(s.id) === String(cn?.student_id))?.name || cn?.student_name_snapshot || cn?.student_name || '학생';
+    const body = dashboardGetConsultationBody(cn);
+    if (body) {
+        const normalizedBody = body.replace(/\r\n/g, '\n').trim();
+        if (normalizedBody && source.replace(/\r\n/g, '\n').includes(normalizedBody)) return true;
+        const firstLine = normalizedBody.split('\n').find(Boolean);
+        if (firstLine && firstLine.length >= 12 && source.includes(firstLine)) return true;
+    }
+    return Boolean(sName && source.includes(sName) && body && source.includes(body.slice(0, Math.min(30, body.length))));
+}
+
+function dashboardInsertJournalConsultationsIntoClassSection(content, className, entries) {
+    if (!entries.length) return content;
+    const source = String(content || '');
+    const header = `■ ${className}반`;
+    const start = source.indexOf(header);
+    const entryText = entries.join('');
+
+    if (start < 0) {
+        return `${source.trimEnd()}\n\n■ ${className}반\n- 상담:\n${entryText}`;
+    }
+
+    const nextStart = source.indexOf('\n■ ', start + header.length);
+    const sectionEnd = nextStart >= 0 ? nextStart : source.length;
+    const section = source.slice(start, sectionEnd);
+    const hasConsultationTitle = /\n- 상담:\s*\n/.test(section);
+    const insertion = hasConsultationTitle ? entryText : `- 상담:\n${entryText}`;
+    const trimmedSectionEnd = sectionEnd - (source.slice(0, sectionEnd).match(/\s*$/)?.[0]?.length || 0);
+    const safeInsertAt = Math.max(start + header.length, trimmedSectionEnd);
+
+    return source.slice(0, safeInsertAt) + `\n${insertion}` + source.slice(safeInsertAt);
+}
+
+function mergeJournalConsultationsIntoContent(content, targetDate) {
+    const classes = dashboardGetJournalClassRows(targetDate);
+    let merged = String(content || '').trimEnd();
+    if (!merged) merged = buildJournalContent(targetDate).trimEnd();
+
+    classes.forEach(cls => {
+        const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
+        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const missingEntries = dashboardGetJournalConsultationsForClass(targetDate, memberIds)
+            .filter(cn => !dashboardJournalAlreadyHasConsultation(merged, cn, students))
+            .map(cn => dashboardFormatJournalConsultationEntry(cn, students));
+
+        if (missingEntries.length > 0) {
+            merged = dashboardInsertJournalConsultationsIntoClassSection(merged, cls.name, missingEntries);
+        }
+    });
+
+    return merged.trim() + '\n';
+}
+
+function buildJournalContent(dateStr) {
+    const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
+    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
+
+    const activeClasses = dashboardGetJournalClassRows(targetDate);
 
     if (activeClasses.length === 0) {
         text += `해당 날짜에 담당 학급이 없습니다.\n`;
@@ -2752,23 +2848,11 @@ function buildJournalContent(dateStr) {
             text += `- 진도: (수업 기록 미입력)\n`;
         }
 
-        const cns = (state.db.consultations || []).filter(c => {
-            const cDate = String(c?.date || c?.consultation_date || c?.created_at || '').slice(0, 10);
-            return cDate === targetDate && memberIds.includes(String(c?.student_id));
-        });
+        const cns = dashboardGetJournalConsultationsForClass(targetDate, memberIds);
         if (cns.length > 0) {
             text += `- 상담:\n`;
             cns.forEach(cn => {
-                const sName = students.find(s => String(s.id) === String(cn.student_id))?.name || cn.student_name_snapshot || '학생';
-                const body = dashboardFormatConsultationFullText(cn);
-                text += `  * ${sName}\n`;
-                if (body) {
-                    body.split(/\r?\n/).forEach(line => {
-                        text += `    ${line}\n`;
-                    });
-                } else {
-                    text += `    상담 내용 없음\n`;
-                }
+                text += dashboardFormatJournalConsultationEntry(cn, students);
             });
         }
 
@@ -2790,9 +2874,11 @@ function openDailyJournalModal(dateStr) {
     const journals = state.db.journals || [];
     const myJournal = journals.find(j => j.date === targetDate && j.teacher_name === state.ui.userName);
 
-    const content = myJournal ? myJournal.content : buildJournalContent(targetDate);
     const status = myJournal ? myJournal.status : '작성중';
     const isLocked = status === '제출완료' || status === '결재완료';
+    const content = isLocked
+        ? (myJournal?.content || buildJournalContent(targetDate))
+        : mergeJournalConsultationsIntoContent(myJournal?.content || buildJournalContent(targetDate), targetDate);
 
     let actionBtns = '';
     if (!myJournal || status === '작성중') {
