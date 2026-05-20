@@ -440,6 +440,128 @@
       opacity:1;
       transform:translateX(-50%) translateY(-4px);
     }
+
+    .top-back {
+      border:0;
+      background:transparent;
+      color:var(--secondary);
+      font-size:13px;
+      font-weight:800;
+      padding:8px 8px 8px 0;
+      cursor:pointer;
+      flex:0 0 auto;
+      white-space:nowrap;
+    }
+    .top-back:hover { color:var(--primary); }
+    .planner-timer-mini {
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:70;
+      width:min(360px, calc(100vw - 36px));
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:13px 14px;
+      border:1px solid rgba(25,31,40,0.08);
+      border-radius:20px;
+      background:rgba(255,255,255,0.96);
+      box-shadow:0 14px 34px rgba(0,0,0,0.14);
+      backdrop-filter:blur(10px);
+    }
+    .planner-timer-mini.hidden { display:none; }
+    .timer-time {
+      flex:0 0 auto;
+      min-width:72px;
+      font-size:22px;
+      font-weight:900;
+      color:var(--primary);
+      letter-spacing:-0.4px;
+      font-variant-numeric:tabular-nums;
+    }
+    .timer-info {
+      min-width:0;
+      flex:1;
+    }
+    .timer-label {
+      font-size:11px;
+      font-weight:900;
+      color:var(--secondary);
+      line-height:1.2;
+    }
+    .timer-title {
+      margin-top:2px;
+      font-size:13px;
+      font-weight:800;
+      color:var(--text);
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .timer-actions {
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex:0 0 auto;
+    }
+    .timer-presets {
+      display:flex;
+      align-items:center;
+      gap:4px;
+      margin-top:7px;
+      flex-wrap:wrap;
+    }
+    .timer-preset {
+      border:1px solid var(--border);
+      background:var(--surface-2);
+      color:var(--secondary);
+      min-height:26px;
+      padding:0 8px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .timer-preset.active {
+      border-color:rgba(26,92,255,0.28);
+      background:rgba(26,92,255,0.10);
+      color:var(--primary);
+    }
+    .timer-btn {
+      border:1px solid var(--border);
+      background:var(--surface-2);
+      color:var(--text);
+      min-height:34px;
+      padding:0 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .timer-btn.primary {
+      border-color:var(--primary);
+      background:var(--primary);
+      color:#fff;
+    }
+    .timer-btn.close {
+      width:34px;
+      padding:0;
+      color:var(--secondary);
+    }
+    .plan-timer {
+      border:0;
+      background:rgba(26,92,255,0.08);
+      color:var(--primary);
+      font-size:12px;
+      font-weight:800;
+      padding:8px;
+      border-radius:999px;
+      cursor:pointer;
+      flex:0 0 auto;
+      white-space:nowrap;
+    }
+
     @media (max-width:767px) {
       .app { padding:14px 12px calc(88px + env(safe-area-inset-bottom)); }
       .dashboard { display:block; }
@@ -449,6 +571,18 @@
       .calendar-card { display:none; }
       .quick-form { display:none; }
       .mobile-add { display:flex; }
+
+      .planner-timer-mini {
+        left:12px;
+        right:12px;
+        bottom:calc(76px + env(safe-area-inset-bottom));
+        width:auto;
+      }
+      .timer-time { min-width:66px; font-size:20px; }
+      .timer-title { max-width:118px; }
+      .timer-presets { gap:3px; margin-top:6px; }
+      .timer-preset { min-height:24px; padding:0 7px; font-size:10.5px; }
+
       .top-inner { height:56px; }
       .brand { font-size:18px; }
       .student-chip { max-width:48%; font-size:12px; }
@@ -458,6 +592,7 @@
 <body>
   <header class="top">
     <div class="top-inner">
+      <button class="top-back" onclick="goPlannerBack()">‹ 뒤로가기</button>
       <div class="brand">AP Math Planner</div>
       <div id="student-chip" class="student-chip"></div>
     </div>
@@ -473,6 +608,8 @@
       <div id="modal-body"></div>
     </div>
   </div>
+
+  <div id="planner-timer-mini" class="planner-timer-mini hidden"></div>
 
   <div id="toast" class="toast"></div>
 
@@ -491,11 +628,21 @@
     let plannerIndex = null;
     let selectedDate = todayStr();
     let currentMonth = selectedDate.slice(0, 7);
+    const PLANNER_TIMER_MINUTES_KEY = `planner_timer_minutes_${studentId || 'default'}`;
+    const PLANNER_TIMER_ALLOWED_MINUTES = [30, 45, 60];
+    let plannerTimerSelectedMinutes = getStoredPlannerTimerMinutes();
+    let plannerTimerSeconds = plannerTimerSelectedMinutes * 60;
+    let plannerTimerActive = false;
+    let plannerTimerInterval = null;
+    let plannerTimerTitle = '';
 
     function $(id) { return document.getElementById(id); }
     function todayStr() { return new Date().toLocaleDateString('sv-SE'); }
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+    }
+    function escapeJsString(value) {
+      return String(value ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ');
     }
     function toast(message) {
       const el = $('toast');
@@ -504,6 +651,141 @@
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
     }
+
+    function goPlannerBack() {
+      const sameOriginReferrer = document.referrer && document.referrer.indexOf(location.origin) === 0;
+      if (sameOriginReferrer && history.length > 1) {
+        history.back();
+        return;
+      }
+      location.href = '../student/';
+    }
+
+    function getStoredPlannerTimerMinutes() {
+      try {
+        const saved = Number(authStore().getItem(PLANNER_TIMER_MINUTES_KEY));
+        return PLANNER_TIMER_ALLOWED_MINUTES.includes(saved) ? saved : 45;
+      } catch (e) {
+        return 45;
+      }
+    }
+
+    function setPlannerTimerMinutes(minutes) {
+      const next = Number(minutes);
+      if (!PLANNER_TIMER_ALLOWED_MINUTES.includes(next)) return;
+      clearInterval(plannerTimerInterval);
+      plannerTimerInterval = null;
+      plannerTimerActive = false;
+      plannerTimerSelectedMinutes = next;
+      plannerTimerSeconds = next * 60;
+      try { authStore().setItem(PLANNER_TIMER_MINUTES_KEY, String(next)); } catch (e) {}
+      const mini = $('planner-timer-mini');
+      if (mini) mini.classList.remove('hidden');
+      renderPlannerTimerMini();
+    }
+
+    function getPlannerTimerPresetHtml() {
+      return PLANNER_TIMER_ALLOWED_MINUTES.map(minutes => `
+        <button class="timer-preset ${plannerTimerSelectedMinutes === minutes ? 'active' : ''}" onclick="setPlannerTimerMinutes(${minutes})">${minutes}분</button>
+      `).join('');
+    }
+
+    function formatPlannerTimerTime() {
+      const safe = Math.max(0, Number(plannerTimerSeconds || 0));
+      const m = String(Math.floor(safe / 60)).padStart(2, '0');
+      const s = String(safe % 60).padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function renderPlannerTimerMini() {
+      const mini = $('planner-timer-mini');
+      if (!mini) return;
+      mini.innerHTML = `
+        <div class="timer-time">${formatPlannerTimerTime()}</div>
+        <div class="timer-info">
+          <div class="timer-label">집중 타이머 · ${plannerTimerSelectedMinutes}분</div>
+          <div class="timer-title">${escapeHtml(plannerTimerTitle || '현재 계획')}</div>
+          <div class="timer-presets">${getPlannerTimerPresetHtml()}</div>
+        </div>
+        <div class="timer-actions">
+          <button class="timer-btn ${plannerTimerActive ? '' : 'primary'}" onclick="togglePlannerTimer()">${plannerTimerActive ? '일시정지' : '시작'}</button>
+          <button class="timer-btn" onclick="resetPlannerTimer()">초기화</button>
+          <button class="timer-btn close" onclick="closePlannerTimer()">×</button>
+        </div>
+      `;
+    }
+
+    function showPlannerTimer(title, resetSeconds = false) {
+      plannerTimerTitle = String(title || plannerTimerTitle || '현재 계획').trim() || '현재 계획';
+      if (!PLANNER_TIMER_ALLOWED_MINUTES.includes(Number(plannerTimerSelectedMinutes))) {
+        plannerTimerSelectedMinutes = 45;
+      }
+      if (resetSeconds || !Number.isFinite(Number(plannerTimerSeconds)) || plannerTimerSeconds <= 0) {
+        plannerTimerSeconds = plannerTimerSelectedMinutes * 60;
+      }
+      const mini = $('planner-timer-mini');
+      if (mini) mini.classList.remove('hidden');
+      renderPlannerTimerMini();
+    }
+
+    function startPlannerTimerForPlan(planId) {
+      const plan = plans.find(p => String(p.id) === String(planId));
+      clearInterval(plannerTimerInterval);
+      plannerTimerInterval = null;
+      plannerTimerActive = false;
+      showPlannerTimer(plan?.title || '현재 계획', true);
+      togglePlannerTimer();
+    }
+
+    function togglePlannerTimer() {
+      const mini = $('planner-timer-mini');
+      if (mini) mini.classList.remove('hidden');
+
+      if (plannerTimerActive) {
+        clearInterval(plannerTimerInterval);
+        plannerTimerInterval = null;
+        plannerTimerActive = false;
+        renderPlannerTimerMini();
+        return;
+      }
+
+      plannerTimerActive = true;
+      clearInterval(plannerTimerInterval);
+      plannerTimerInterval = setInterval(() => {
+        plannerTimerSeconds -= 1;
+        if (plannerTimerSeconds <= 0) {
+          clearInterval(plannerTimerInterval);
+          plannerTimerInterval = null;
+          plannerTimerActive = false;
+          plannerTimerSeconds = plannerTimerSelectedMinutes * 60;
+          renderPlannerTimerMini();
+          toast('집중 시간이 끝났습니다.');
+          return;
+        }
+        renderPlannerTimerMini();
+      }, 1000);
+      renderPlannerTimerMini();
+    }
+
+    function resetPlannerTimer() {
+      clearInterval(plannerTimerInterval);
+      plannerTimerInterval = null;
+      plannerTimerActive = false;
+      plannerTimerSeconds = plannerTimerSelectedMinutes * 60;
+      renderPlannerTimerMini();
+      toast('타이머가 초기화되었습니다.');
+    }
+
+    function closePlannerTimer() {
+      clearInterval(plannerTimerInterval);
+      plannerTimerInterval = null;
+      plannerTimerActive = false;
+      plannerTimerSeconds = plannerTimerSelectedMinutes * 60;
+      plannerTimerTitle = '';
+      const mini = $('planner-timer-mini');
+      if (mini) mini.classList.add('hidden');
+    }
+
     function authStore() { return window.localStorage; }
     function authKey() { return `planner_auth_${studentId}`; }
     function pinKey() { return `planner_pin_${studentId}`; }
@@ -876,14 +1158,17 @@
 
     function renderPlanItem(plan) {
       const done = Number(plan.is_done || 0) === 1;
+      const planId = escapeJsString(plan.id);
+      const updatedAt = escapeJsString(plan.updated_at || '');
       return `
         <div class="plan-item">
-          <button class="check ${done ? 'done' : ''}" onclick="toggleDone('${plan.id}', ${done ? 0 : 1}, '${plan.updated_at || ''}')">✓</button>
+          <button class="check ${done ? 'done' : ''}" onclick="toggleDone('${planId}', ${done ? 0 : 1}, '${updatedAt}')">✓</button>
           <div class="plan-main ${done ? 'done' : ''}">
             <div class="plan-item-title">${escapeHtml(plan.title)}</div>
             <div class="plan-sub">${escapeHtml(plan.subject || '수학')}${plan.repeat_rule ? ` · ${plan.repeat_rule === 'daily' ? '매일' : '매주'}` : ''}</div>
           </div>
-          <button class="delete" onclick="deletePlan('${plan.id}')">삭제</button>
+          <button class="plan-timer" onclick="startPlannerTimerForPlan('${planId}')">타이머</button>
+          <button class="delete" onclick="deletePlan('${planId}')">삭제</button>
         </div>
       `;
     }
@@ -1012,6 +1297,7 @@
       plans = [];
       feedback = [];
       invalidatePlannerIndex();
+      closePlannerTimer();
       renderPinGate();
     }
 
