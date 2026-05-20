@@ -2118,7 +2118,7 @@ function getTimetableDateTitle() {
             targetYear = Number(matched[1]) || targetYear;
             targetMonth = Number(matched[2]) || targetMonth;
         }
-        return 'AP수학 시간표 (' + yy + '년 ' + mm + '월 >>> ' + String(targetYear).slice(2) + '년 ' + targetMonth + '월 예정)';
+        return 'AP수학 시간표 (' + String(targetYear).slice(2) + '년 ' + targetMonth + '월 예정)';
     }
     return 'AP수학 시간표 (' + yy + '년 ' + mm + '월)';
 }
