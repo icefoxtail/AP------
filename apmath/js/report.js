@@ -2589,8 +2589,6 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
     const targetText = target && target.targetScore !== null
         ? `${target.targetScore}점 목표${target.currentAverage !== null ? ` · 최근 평균 ${target.currentAverage}점` : ''}${target.remainScore !== undefined && target.currentAverage !== null ? ` · 목표까지 ${target.remainScore}점` : ''}`
         : '목표점수 미설정';
-    const issued = new Date().toLocaleDateString('sv-SE').replace(/-/g, '.');
-    const examDate = String(session.exam_date || '').replace(/-/g, '.');
     const safeTitle = reportCenterEscape(session.exam_title || '평가');
     const tableMeta = reportCenterGetPremiumTableMeta(data);
     const summaryItems = reportCenterBuildShortReportSummaryItems(data, aiAnalysis);
@@ -2622,9 +2620,15 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                     <div class="aprc-subtitle">점수보다 오답의 흐름과 다음 보완 방향을 우선 확인합니다.</div>
                     ${aiBadgeHtml}
                 </div>
-                <div class="aprc-issued">
-                    <div>발행일</div>
-                    <b>${reportCenterEscape(issued)}</b>
+                <div class="aprc-signature-boxes">
+                    <div class="aprc-signature-row">
+                        <span>선생님</span>
+                        <i></i>
+                    </div>
+                    <div class="aprc-signature-row">
+                        <span>학부모</span>
+                        <i></i>
+                    </div>
                 </div>
             </header>
 
@@ -2635,7 +2639,6 @@ function reportCenterBuildCleanPdfDocument(studentId, sessionId, options = {}) {
                 </div>
                 <div class="aprc-exam-meta">
                     <div>${safeTitle}</div>
-                    <b>${reportCenterEscape(examDate || '-')}</b>
                 </div>
             </section>
 
@@ -2775,8 +2778,9 @@ function reportCenterPremiumReportStyle() {
             .aprc-title { margin-top:6px; font-size:24px; font-weight:800; letter-spacing:-0.8px; line-height:1.15; }
             .aprc-subtitle { margin-top:6px; font-size:12px; font-weight:650; color:rgba(255,255,255,0.74); }
             .aprc-ai-badge { display:inline-flex; margin-top:9px; padding:4px 8px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.86); font-size:10px; font-weight:850; letter-spacing:-0.1px; }
-            .aprc-issued { text-align:right; font-size:11px; font-weight:700; color:rgba(255,255,255,0.64); white-space:nowrap; }
-            .aprc-issued b { display:block; margin-top:5px; font-size:14px; color:#fff; }
+            .aprc-signature-boxes { flex-shrink:0; min-width:38mm; display:flex; flex-direction:column; gap:7px; }
+            .aprc-signature-row { display:grid; grid-template-columns:34px 1fr; align-items:end; gap:8px; font-size:11px; font-weight:800; color:rgba(255,255,255,0.76); white-space:nowrap; }
+            .aprc-signature-row i { display:block; height:18px; border-bottom:1.5px solid rgba(255,255,255,0.78); }
             .aprc-student-band { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:8mm 0 5mm; background:#fff; border-bottom:1px solid #e5e7eb; }
             .aprc-student-name { font-size:22px; font-weight:850; letter-spacing:-0.7px; color:#0f172a; }
             .aprc-student-meta { margin-top:3px; font-size:12.5px; font-weight:700; color:#64748b; }
@@ -2841,8 +2845,9 @@ function reportCenterPremiumReportStyle() {
             .aprc-pdf-header .aprc-title { color:#0f172a; font-size:25px; }
             .aprc-pdf-header .aprc-subtitle { color:#475569; }
             .aprc-pdf-header .aprc-ai-badge { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
-            .aprc-pdf-header .aprc-issued { color:#64748b; flex-shrink:0; min-width:28mm; }
-            .aprc-pdf-header .aprc-issued b { color:#0f172a; }
+            .aprc-pdf-header .aprc-signature-boxes { flex-shrink:0; min-width:42mm; display:flex; flex-direction:column; gap:7px; }
+            .aprc-pdf-header .aprc-signature-row { display:grid; grid-template-columns:34px 1fr; align-items:end; gap:8px; font-size:11px; font-weight:850; color:#475569; white-space:nowrap; }
+            .aprc-pdf-header .aprc-signature-row i { display:block; height:18px; border-bottom:1.5px solid #94a3b8; }
             .aprc-pdf-section, .aprc-pdf-panel, .aprc-pdf-table-panel, .aprc-pdf-parent-message { box-sizing:border-box; }
             .aprc-pdf-section { margin-top:6mm; }
             .aprc-pdf-student-band { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:5mm 0; border-bottom:1px solid #e5e7eb; }
@@ -3343,9 +3348,9 @@ function reportCenterInjectPrintViewStyle() {
 
         .report-print-stage .aprc-pdf-header {
             display:grid;
-            grid-template-columns:minmax(0,1fr) 34mm;
+            grid-template-columns:minmax(0,1fr) 46mm;
             align-items:start;
-            column-gap:12mm;
+            column-gap:10mm;
             padding:8mm 0 6mm;
         }
 
@@ -3362,21 +3367,21 @@ function reportCenterInjectPrintViewStyle() {
             line-height:1.45;
         }
 
-        .report-print-stage .aprc-pdf-header .aprc-issued {
+        .report-print-stage .aprc-pdf-header .aprc-signature-boxes {
             padding-top:0;
-            text-align:right;
-            white-space:nowrap;
-            min-width:30mm;
+            min-width:42mm;
+            width:42mm;
+            justify-self:end;
         }
 
-        .report-print-stage .aprc-pdf-header .aprc-issued b {
-            line-height:1.2;
+        .report-print-stage .aprc-pdf-header .aprc-signature-row {
+            grid-template-columns:34px 1fr;
         }
 
         .report-print-stage .aprc-pdf-student-band {
             display:grid;
             grid-template-columns:minmax(0,1fr) minmax(38mm,72mm);
-            align-items:start;
+            align-items:center;
             column-gap:8mm;
         }
 
