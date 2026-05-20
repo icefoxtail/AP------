@@ -379,17 +379,20 @@ export async function handlePlanner(request, env, ctx = {}) {
     }
 
     const stmts = [];
+    const insertedIds = [];
     const current = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
     let count = 0;
 
     while (current <= endDate && count < 100) {
       const currentDate = formatPlannerDate(current);
+      const planId = `plan_${Date.now()}_${count}_${Math.random().toString(36).slice(2, 8)}`;
+      insertedIds.push(planId);
       stmts.push(env.DB.prepare(`
         INSERT INTO student_plans (
           id, student_id, plan_date, title, subject, is_done, repeat_rule, created_at, updated_at
         ) VALUES (?, ?, ?, ?, ?, 0, ?, DATETIME('now'), DATETIME('now'))
       `).bind(
-        `plan_${Date.now()}_${count}_${Math.random().toString(36).slice(2, 8)}`,
+        planId,
         studentId,
         currentDate,
         title,
@@ -405,7 +408,20 @@ export async function handlePlanner(request, env, ctx = {}) {
     }
 
     if (stmts.length) await env.DB.batch(stmts);
-    return respond({ success: true, count: stmts.length });
+
+    let insertedPlans = [];
+    if (insertedIds.length) {
+      const markers = insertedIds.map(() => '?').join(',');
+      const rows = await env.DB.prepare(`
+        SELECT *
+        FROM student_plans
+        WHERE id IN (${markers})
+        ORDER BY plan_date ASC, created_at ASC, id ASC
+      `).bind(...insertedIds).all();
+      insertedPlans = rows.results || [];
+    }
+
+    return respond({ success: true, count: stmts.length, plans: insertedPlans });
   }
 
   if (method === 'PATCH' && id === 'settings') {
@@ -484,7 +500,13 @@ export async function handlePlanner(request, env, ctx = {}) {
       id
     ).run();
 
-    return respond({ success: true });
+    const updated = await env.DB.prepare(`
+      SELECT *
+      FROM student_plans
+      WHERE id = ?
+    `).bind(id).first();
+
+    return respond({ success: true, plan: updated || null });
   }
 
   if (method === 'DELETE' && id) {
