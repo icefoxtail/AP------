@@ -42,6 +42,107 @@ var TIMETABLE_MIDDLE_PERIOD_TIMES = {
 var TIMETABLE_HIGH_GRADES = ['고1', '고2', '고3'];
 var TIMETABLE_FIT_BOUND = false;
 var TIMETABLE_FIT_TIMER = null;
+var TIMETABLE_RENDER_CONTEXT = null;
+
+// ────────────────────────────────────────────
+// 렌더링 성능 캐시
+// ────────────────────────────────────────────
+
+function getTimetableRenderContext() {
+    return TIMETABLE_RENDER_CONTEXT && TIMETABLE_RENDER_CONTEXT.active ? TIMETABLE_RENDER_CONTEXT : null;
+}
+
+function _ttMapPush(map, key, value) {
+    key = String(key || '');
+    if (!key) return;
+    if (!map[key]) map[key] = [];
+    map[key].push(value);
+}
+
+function getTimetableMiddleCellKey(dayGroup, teacherName, periodKey) {
+    return [String(dayGroup || ''), String(teacherName || ''), String(periodKey || '')].join('|');
+}
+
+function getTimetableHighCellKey(teacherName, grade) {
+    return [String(teacherName || ''), String(grade || '')].join('|');
+}
+
+function getTimetableClassesForMiddleCell(dayGroup, teacherName, periodKey, fallbackClasses) {
+    var ctx = getTimetableRenderContext();
+    var key = getTimetableMiddleCellKey(dayGroup, teacherName, periodKey);
+    if (ctx && ctx.middleCellClasses && ctx.middleCellClasses[key]) {
+        return ctx.middleCellClasses[key].slice();
+    }
+    return (Array.isArray(fallbackClasses) ? fallbackClasses : []).filter(function(cls) {
+        return getTimetablePlacementRows(cls).some(function(row) {
+            return row.day_group === dayGroup &&
+                   row.teacher_name === teacherName &&
+                   row.period_key === periodKey;
+        });
+    });
+}
+
+function getTimetableClassesForHighCell(teacherName, grade, fallbackClasses) {
+    var ctx = getTimetableRenderContext();
+    var key = getTimetableHighCellKey(teacherName, grade);
+    if (ctx && ctx.highCellClasses && ctx.highCellClasses[key]) {
+        return ctx.highCellClasses[key].slice();
+    }
+    return (Array.isArray(fallbackClasses) ? fallbackClasses : []).filter(function(cls) {
+        return getTimetableClassTeacherName(cls) === teacherName && getTimetableHighGrade(cls) === grade;
+    });
+}
+
+function buildTimetableRenderContext(allClasses, sectionClasses, section, visibleTeachers) {
+    var ctx = {
+        active: true,
+        section: section || 'middle',
+        visibleTeachers: Array.isArray(visibleTeachers) ? visibleTeachers.slice() : [],
+        classesById: {},
+        slotRowsByClassId: {},
+        placementRowsByClassId: {},
+        studentsById: null,
+        classStudentsWithInfoByClassId: {},
+        middleCellClasses: {},
+        highCellClasses: {},
+        unmappedMiddleCount: 0
+    };
+
+    (Array.isArray(allClasses) ? allClasses : []).forEach(function(cls) {
+        if (!cls || !cls.id) return;
+        ctx.classesById[String(cls.id)] = cls;
+        if (cls.version_class_id) ctx.classesById[String(cls.version_class_id)] = cls;
+        if (cls.source_class_id && !ctx.classesById[String(cls.source_class_id)]) ctx.classesById[String(cls.source_class_id)] = cls;
+    });
+
+    var previousContext = TIMETABLE_RENDER_CONTEXT;
+    TIMETABLE_RENDER_CONTEXT = ctx;
+
+    (Array.isArray(sectionClasses) ? sectionClasses : []).forEach(function(cls) {
+        if (!cls || !cls.id) return;
+
+        if (section === 'middle') {
+            var rows = getTimetablePlacementRows(cls);
+            var invalid = !rows.length || rows.some(function(row) {
+                return TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(row.day_group) === -1 ||
+                    ctx.visibleTeachers.indexOf(row.teacher_name) === -1 ||
+                    !row.period_key;
+            });
+            if (invalid) ctx.unmappedMiddleCount += 1;
+
+            rows.forEach(function(row) {
+                if (!row || TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(row.day_group) === -1 || !row.period_key) return;
+                _ttMapPush(ctx.middleCellClasses, getTimetableMiddleCellKey(row.day_group, row.teacher_name, row.period_key), cls);
+            });
+        } else {
+            _ttMapPush(ctx.highCellClasses, getTimetableHighCellKey(getTimetableClassTeacherName(cls), getTimetableHighGrade(cls)), cls);
+        }
+    });
+
+    TIMETABLE_RENDER_CONTEXT = previousContext;
+    return ctx;
+}
+
 
 // ────────────────────────────────────────────
 // 와이드 모드 및 CSS
@@ -1372,6 +1473,8 @@ function getTimetableClassList() {
 
 function findTimetableClassById(classId) {
     var cid = String(classId || '');
+    var ctx = getTimetableRenderContext();
+    if (ctx && ctx.classesById && ctx.classesById[cid]) return ctx.classesById[cid];
     return getTimetableClassList().find(function(c) { return String(c.id) === cid; }) || null;
 }
 
@@ -1399,6 +1502,9 @@ function findTimetableStudentById(studentId) {
     var db = _getAllDb();
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
     var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+    var ctx = getTimetableRenderContext();
+    if (ctx && ctx.studentsById && ctx.studentsById[sid]) return ctx.studentsById[sid];
+
     var source = _ttFirstNonEmptyArray(
         mainDb.timetable_students,
         db.timetable_students,
@@ -1506,27 +1612,38 @@ function ensureTimetableClassTimeSlotsLoaded() {
 }
 
 function getTimetableClassSlotRows(classId) {
-    var cls = findTimetableClassById(classId);
-    if (isTimetableDraftSection(getTimetableSectionForClass(cls))) {
-        return getTimetableDraftSlotRows(classId);
+    var cid = String(classId || '').trim();
+    var ctx = getTimetableRenderContext();
+    if (ctx && ctx.slotRowsByClassId && Object.prototype.hasOwnProperty.call(ctx.slotRowsByClassId, cid)) {
+        return ctx.slotRowsByClassId[cid].slice();
     }
-    var db = _getAllDb();
-    var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
-    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
-    return _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots)
-        .filter(function(slot) { return String(slot.class_id) === String(classId); })
-        .map(function(slot) {
-            return {
-                id: slot.id || '',
-                class_id: slot.class_id,
-                day_of_week: normalizeTimetableSlotDay(slot.day_of_week || slot.day || ''),
-                start_time: normalizeTimetableTime(slot.start_time || ''),
-                end_time: normalizeTimetableTime(slot.end_time || ''),
-                room_name: slot.room_name || null,
-                memo: slot.memo || null
-            };
-        })
-        .filter(function(slot) { return slot.day_of_week && slot.start_time && slot.end_time; });
+
+    var cls = findTimetableClassById(classId);
+    var rows;
+    if (isTimetableDraftSection(getTimetableSectionForClass(cls))) {
+        rows = getTimetableDraftSlotRows(classId);
+    } else {
+        var db = _getAllDb();
+        var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
+        var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
+        rows = _ttFirstNonEmptyArray(mainDb.class_time_slots, db.class_time_slots, allDb.class_time_slots)
+            .filter(function(slot) { return String(slot.class_id) === String(classId); })
+            .map(function(slot) {
+                return {
+                    id: slot.id || '',
+                    class_id: slot.class_id,
+                    day_of_week: normalizeTimetableSlotDay(slot.day_of_week || slot.day || ''),
+                    start_time: normalizeTimetableTime(slot.start_time || ''),
+                    end_time: normalizeTimetableTime(slot.end_time || ''),
+                    room_name: slot.room_name || null,
+                    memo: slot.memo || null
+                };
+            })
+            .filter(function(slot) { return slot.day_of_week && slot.start_time && slot.end_time; });
+    }
+
+    if (ctx && ctx.slotRowsByClassId && cid) ctx.slotRowsByClassId[cid] = rows.slice();
+    return rows;
 }
 
 function normalizeTimetableSlotDay(day) {
@@ -1585,9 +1702,18 @@ function getTimetableFallbackPlacementRows(cls) {
 }
 
 function getTimetablePlacementRows(cls) {
+    var classId = String(cls && cls.id || '').trim();
+    var ctx = getTimetableRenderContext();
+    if (ctx && ctx.placementRowsByClassId && Object.prototype.hasOwnProperty.call(ctx.placementRowsByClassId, classId)) {
+        return ctx.placementRowsByClassId[classId].slice();
+    }
+
+    var finalRows = [];
     var slots = getTimetableClassSlotRows(cls && cls.id);
     if (!slots.length) {
-        return getTimetableFallbackPlacementRows(cls);
+        finalRows = getTimetableFallbackPlacementRows(cls);
+        if (ctx && ctx.placementRowsByClassId && classId) ctx.placementRowsByClassId[classId] = finalRows.slice();
+        return finalRows;
     }
 
     var grouped = {};
@@ -1613,14 +1739,18 @@ function getTimetablePlacementRows(cls) {
     }).filter(Boolean);
 
     if (!rows.length) {
-        return getTimetableFallbackPlacementRows(cls);
+        finalRows = getTimetableFallbackPlacementRows(cls);
+        if (ctx && ctx.placementRowsByClassId && classId) ctx.placementRowsByClassId[classId] = finalRows.slice();
+        return finalRows;
     }
     if (rows.length > 1 && typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
         if (!state.ui.timetablePlacementWarnings) state.ui.timetablePlacementWarnings = {};
         state.ui.timetablePlacementWarnings[String(cls.id)] = rows.length;
     }
-    return [rows[0]];
+    finalRows = [rows[0]];
+    if (ctx && ctx.placementRowsByClassId && classId) ctx.placementRowsByClassId[classId] = finalRows.slice();
+    return finalRows;
 }
 
 function getTimetableClassFallbackDays(cls) {
@@ -2434,32 +2564,42 @@ function _ttFirstNonEmptyArray() {
 
 
 function getTimetableClassStudentsWithInfo(classId) {
+    var cacheKey = String(classId || '').trim();
+    var ctx = getTimetableRenderContext();
+    if (ctx && ctx.classStudentsWithInfoByClassId && Object.prototype.hasOwnProperty.call(ctx.classStudentsWithInfoByClassId, cacheKey)) {
+        return ctx.classStudentsWithInfoByClassId[cacheKey].slice();
+    }
+
     var db = _getAllDb();
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
     var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
 
     var csSource = getTimetableClassStudentRows();
 
-    var stSources = [
-        mainDb.timetable_students,
-        db.timetable_students,
-        allDb.timetable_students,
-        mainDb.students,
-        db.students,
-        allDb.students
-    ];
-    var studentMap = {};
-    stSources.forEach(function(source) {
-        (Array.isArray(source) ? source : []).forEach(function(s) {
-            if (!s || !s.id) return;
-            var id = String(s.id);
-            studentMap[id] = Object.assign({}, studentMap[id] || {}, s);
+    var studentMap = ctx && ctx.studentsById ? ctx.studentsById : {};
+    if (!ctx || !ctx.studentsById) {
+        var stSources = [
+            mainDb.timetable_students,
+            db.timetable_students,
+            allDb.timetable_students,
+            mainDb.students,
+            db.students,
+            allDb.students
+        ];
+        stSources.forEach(function(source) {
+            (Array.isArray(source) ? source : []).forEach(function(s) {
+                if (!s || !s.id) return;
+                var id = String(s.id);
+                studentMap[id] = Object.assign({}, studentMap[id] || {}, s);
+            });
         });
-    });
+        if (ctx) ctx.studentsById = studentMap;
+    }
     var stSource = Object.keys(studentMap).map(function(id) { return studentMap[id]; });
+    var result;
 
     if (isTimetableDraftMode()) {
-        return getTimetableDraftAssignmentRows(classId)
+        result = getTimetableDraftAssignmentRows(classId)
             .map(function(row) {
                 var studentId = String(row.student_id || row.temp_student_id || '');
                 var snapshot = parseTimetableJsonValue(row.student_snapshot);
@@ -2484,13 +2624,16 @@ function getTimetableClassStudentsWithInfo(classId) {
             })
             .filter(Boolean)
             .sort(function(a, b) { return String(a.name || '').localeCompare(String(b.name || ''), 'ko'); });
+
+        if (ctx && ctx.classStudentsWithInfoByClassId && cacheKey) ctx.classStudentsWithInfoByClassId[cacheKey] = result.slice();
+        return result;
     }
 
     var sIds = csSource
         .filter(function(cs) { return String(cs.class_id) === String(classId); })
         .map(function(cs) { return String(cs.student_id); });
 
-    return stSource
+    result = stSource
         .filter(function(s) {
             if (sIds.indexOf(String(s.id)) === -1) return false;
             if (s.status === '재원') return true;
@@ -2504,6 +2647,9 @@ function getTimetableClassStudentsWithInfo(classId) {
             return { id: s.id, name: s.name, isNew: _ttIsStudentNew(s) || (isTimetableDraftMode() && s.status === '입학예정'), isLeave: _ttIsStudentLeave(s) };
         })
         .sort(function(a, b) { return String(a.name || '').localeCompare(String(b.name || ''), 'ko'); });
+
+    if (ctx && ctx.classStudentsWithInfoByClassId && cacheKey) ctx.classStudentsWithInfoByClassId[cacheKey] = result.slice();
+    return result;
 }
 
 // ────────────────────────────────────────────
@@ -2775,9 +2921,12 @@ function renderTimetableGrid(section) {
     }
 
     if (isMyOnly && !visibleTeachers.length) {
+        TIMETABLE_RENDER_CONTEXT = null;
         wrapper.innerHTML = '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;font-weight:700;background:var(--surface);border:1px solid rgba(0,0,0,0.08);border-radius:8px;">교사 정보를 불러올 수 없습니다.</div>';
         return;
     }
+
+    TIMETABLE_RENDER_CONTEXT = buildTimetableRenderContext(allClasses, sClasses, section, visibleTeachers);
 
     if (section === 'middle') _renderMiddleGrid(sClasses, wrapper, visibleTeachers);
     else _renderHighGrid(sClasses, wrapper, visibleTeachers);
@@ -2820,13 +2969,7 @@ function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
 
         TIMETABLE_MIDDLE_DAY_GROUPS.forEach(function(dg) {
             teachers.forEach(function(t) {
-                var matched = sClasses.filter(function(cls) {
-                    return getTimetablePlacementRows(cls).some(function(row) {
-                        return row.day_group === dg &&
-                               row.teacher_name === t &&
-                               row.period_key === p.key;
-                    });
-                });
+                var matched = getTimetableClassesForMiddleCell(dg, t, p.key, sClasses);
                 var time = TIMETABLE_MIDDLE_PERIOD_TIMES[p.key] || {};
                 var cell = {
                     section: 'middle',
@@ -2851,15 +2994,18 @@ function _renderMiddleGrid(sClasses, wrapper, visibleTeachers) {
         bodyHtml += '<tr class="tt-row-fixed">' + cells + '</tr>';
     });
 
-    var unmappedCount = sClasses.filter(function(cls) {
-        var rows = getTimetablePlacementRows(cls);
-        if (!rows.length) return true;
-        return rows.some(function(row) {
-            return TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(row.day_group) === -1 ||
-                teachers.indexOf(row.teacher_name) === -1 ||
-                !row.period_key;
-        });
-    }).length;
+    var renderCtx = getTimetableRenderContext();
+    var unmappedCount = renderCtx && typeof renderCtx.unmappedMiddleCount === 'number'
+        ? renderCtx.unmappedMiddleCount
+        : sClasses.filter(function(cls) {
+            var rows = getTimetablePlacementRows(cls);
+            if (!rows.length) return true;
+            return rows.some(function(row) {
+                return TIMETABLE_MIDDLE_DAY_GROUPS.indexOf(row.day_group) === -1 ||
+                    teachers.indexOf(row.teacher_name) === -1 ||
+                    !row.period_key;
+            });
+        }).length;
 
     var warnHtml = unmappedCount > 0
         ? '<div style="color:var(--error); font-size:12px; font-weight:700; padding:10px 14px; background:rgba(255,71,87,0.06); border-radius:8px; margin-bottom:10px; border:1px solid rgba(255,71,87,0.1);">⚠️ 교시 미배정 반 ' + unmappedCount + '개</div>'
@@ -2900,9 +3046,7 @@ function _renderHighGrid(sClasses, wrapper, visibleTeachers) {
         '</td>';
 
         teachers.forEach(function(t) {
-            var matched = sClasses.filter(function(cls) {
-                return getTimetableClassTeacherName(cls) === t && getTimetableHighGrade(cls) === grade;
-            });
+            var matched = getTimetableClassesForHighCell(t, grade, sClasses);
 
             if (matched.length === 0) {
                 cells += '<td style="width:' + plan.teacherWidth + 'px; background:' + highBg + '; padding:4px 6px; border:1px solid rgba(0,0,0,0.05); vertical-align:top;"></td>';
