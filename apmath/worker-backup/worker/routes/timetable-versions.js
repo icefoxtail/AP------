@@ -90,8 +90,13 @@ async function listStudentAssignments(env, versionId, classId = null, options = 
   const where = ['a.version_id = ?'];
   const params = [versionId];
   if (classId) {
-    where.push('(a.class_id = ? OR a.version_class_id = ? OR a.source_class_id = ?)');
-    params.push(String(classId), String(classId), String(classId));
+    if (options.includeSourceClassId) {
+      where.push('(a.class_id = ? OR a.version_class_id = ? OR a.source_class_id = ?)');
+      params.push(String(classId), String(classId), String(classId));
+    } else {
+      where.push('(a.class_id = ? OR a.version_class_id = ?)');
+      params.push(String(classId), String(classId));
+    }
   }
   if (options.renderableOnly) {
     where.push("(tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))");
@@ -580,39 +585,59 @@ async function assignDraftStudent(env, versionId, body) {
   if (checked.error) return checked.error;
 
   await ensureVersionClassesSeeded(env, checked.version);
-  const studentId = String(body.student_id || body.studentId || '').trim();
+  const studentId = String(body.student_id || body.studentId || body.temp_student_id || body.tempStudentId || '').trim();
   const targetClassId = String(body.target_class_id || body.targetClassId || body.class_id || body.classId || body.version_class_id || body.versionClassId || '').trim();
   const sourceClassId = String(body.source_class_id || body.sourceClassId || '').trim();
   if (!studentId || !targetClassId) return jsonResponse({ success: false, error: 'student_id and target_class_id required' }, 400);
 
   const versionClass = await getVersionClassByAnyId(env, versionId, targetClassId);
   if (!versionClass || !isRenderableVersionClass(versionClass)) return jsonResponse({ success: false, error: 'draft class not found' }, 404);
-  const student = await env.DB.prepare('SELECT id, name, grade FROM students WHERE id = ?').bind(studentId).first();
-  if (!student) return jsonResponse({ success: false, error: 'student not found' }, 404);
 
   const existingAssignment = await env.DB.prepare(`
-    SELECT memo, source_class_id, source_grade, next_grade
+    SELECT memo, source_class_id, source_grade, next_grade, student_name_snapshot, student_snapshot, temp_student_id
     FROM timetable_version_student_assignments
-    WHERE version_id = ? AND student_id = ?
-  `).bind(versionId, studentId).first();
-  const sourceGrade = normalizeGradeLabel(existingAssignment?.source_grade || versionClass.source_grade || student.grade || '');
+    WHERE version_id = ? AND (student_id = ? OR temp_student_id = ?)
+    ORDER BY updated_at DESC, created_at DESC
+    LIMIT 1
+  `).bind(versionId, studentId, studentId).first();
+
+  const student = await env.DB.prepare('SELECT id, name, grade FROM students WHERE id = ?').bind(studentId).first();
+  const snapshot = safeParseMemoJson(existingAssignment?.student_snapshot, 'assignDraftStudent student_snapshot');
+  const studentName = String(student?.name || snapshot.name || existingAssignment?.student_name_snapshot || '').trim();
+  if (!student && !studentName) return jsonResponse({ success: false, error: 'student not found' }, 404);
+
+  const isTempStudent = !!(existingAssignment?.temp_student_id || (!student && studentName));
+  const sourceGrade = normalizeGradeLabel(existingAssignment?.source_grade || versionClass.source_grade || student?.grade || snapshot.grade || '');
   const nextGrade = normalizeGradeLabel(existingAssignment?.next_grade || versionClass.next_grade || getNextSemesterGrade(sourceGrade));
   const memoInfo = safeParseMemoJson(existingAssignment?.memo, 'assignDraftStudent memo');
   const memo = buildDraftStudentAssignmentMemo(
     memoInfo.source_grade || sourceGrade,
     memoInfo.next_grade || nextGrade,
     memoInfo.note || body.memo || 'draft student reassigned',
-    memoInfo.student_name_snapshot || student.name || ''
+    memoInfo.student_name_snapshot || studentName || ''
   );
   const id = makeId('tvsa');
   const compatClassId = getVersionClassCompatClassId(versionClass);
   await env.DB.batch([
-    env.DB.prepare('DELETE FROM timetable_version_student_assignments WHERE version_id = ? AND student_id = ?').bind(versionId, studentId),
+    env.DB.prepare('DELETE FROM timetable_version_student_assignments WHERE version_id = ? AND (student_id = ? OR temp_student_id = ?)').bind(versionId, studentId, studentId),
     env.DB.prepare(`
       INSERT INTO timetable_version_student_assignments
-        (id, version_id, class_id, version_class_id, student_id, student_name_snapshot, source_class_id, source_grade, next_grade, excluded_reason, memo, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-    `).bind(id, versionId, compatClassId, versionClass.id, studentId, student.name || null, sourceClassId || existingAssignment?.source_class_id || versionClass.source_class_id || null, sourceGrade, nextGrade, memo)
+        (id, version_id, class_id, version_class_id, student_id, student_name_snapshot, source_class_id, source_grade, next_grade, excluded_reason, temp_student_id, student_snapshot, memo, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `).bind(
+      id,
+      versionId,
+      compatClassId,
+      versionClass.id,
+      studentId,
+      studentName || null,
+      existingAssignment?.source_class_id || sourceClassId || versionClass.source_class_id || null,
+      sourceGrade || null,
+      nextGrade || null,
+      isTempStudent ? studentId : null,
+      existingAssignment?.student_snapshot || null,
+      memo
+    )
   ]);
 
   return jsonResponse({
@@ -693,6 +718,258 @@ function uniqueValues(rows, key) {
   return [...new Set((rows || []).map(row => String(row?.[key] || '').trim()).filter(Boolean))];
 }
 
+
+function makeAppliedClassId(versionId, versionClassId) {
+  return `cls_${safeVersionClassIdPart(versionId)}_${safeVersionClassIdPart(versionClassId)}`.slice(0, 120);
+}
+
+function getVersionClassTextbookInfo(versionClass = {}) {
+  const memo = safeParseMemoJson(versionClass.memo, 'version class memo');
+  return {
+    textbook: memo.textbook || '',
+    day_group: memo.day_group || null
+  };
+}
+
+function getAppliedClassName(versionClass = {}) {
+  return String(versionClass.name_snapshot || versionClass.source_name || '').trim();
+}
+
+function getAppliedClassGrade(versionClass = {}) {
+  return normalizeGradeLabel(versionClass.next_grade || versionClass.grade_snapshot || versionClass.source_grade || '');
+}
+
+async function loadVersionNewStudentRows(env, versionId) {
+  const res = await env.DB.prepare('SELECT * FROM timetable_version_new_students WHERE version_id = ?').bind(versionId).all();
+  const map = new Map();
+  for (const row of (res.results || [])) {
+    const tempId = String(row.temp_student_id || '').trim();
+    if (tempId && !map.has(tempId)) map.set(tempId, row);
+  }
+  return map;
+}
+
+function normalizeAssignmentStudentKey(row = {}) {
+  return String(row.student_id || row.temp_student_id || '').trim();
+}
+
+async function activateVersionClassBased(env, versionId, teacher, version) {
+  const startedLogId = makeId('tval');
+  await env.DB.prepare(`
+    INSERT INTO timetable_version_apply_logs
+      (id, academy_id, version_id, status, started_at, summary_json, created_at)
+    VALUES (?, 'apmath', ?, 'started', CURRENT_TIMESTAMP, ?, CURRENT_TIMESTAMP)
+  `).bind(startedLogId, versionId, JSON.stringify({ step: 'activateVersionClassBased' })).run();
+
+  try {
+    await ensureVersionClassesSeeded(env, version);
+    await ensureVersionSlotsMapped(env, version);
+    await ensureVersionAssignmentsMapped(env, version);
+
+    const versionClasses = await listVersionClasses(env, versionId, { renderableOnly: true });
+    if (!versionClasses.length) return jsonResponse({ success: false, error: 'version has no classes' }, 400);
+
+    const slots = await listSlots(env, versionId, null, { renderableOnly: true });
+    const rawAssignments = await listStudentAssignments(env, versionId, null, { renderableOnly: true });
+    const newStudentMap = await loadVersionNewStudentRows(env, versionId);
+    const activeVersion = await env.DB.prepare("SELECT * FROM timetable_versions WHERE status = 'active' ORDER BY created_at DESC LIMIT 1").first();
+    const oldClassRows = await env.DB.prepare('SELECT class_id, student_id FROM class_students').all();
+    const allocatedPins = new Set();
+    async function allocateStudentPin(grade, preferredPin) {
+      const preferred = String(preferredPin || '').trim();
+      if (preferred && !allocatedPins.has(preferred)) {
+        allocatedPins.add(preferred);
+        return preferred;
+      }
+      let pin = await generateStudentPin(grade, env);
+      while (allocatedPins.has(pin)) {
+        const n = Number(pin);
+        pin = Number.isFinite(n) ? String(n + 1).padStart(pin.length, '0') : `${pin}_${allocatedPins.size + 1}`;
+      }
+      allocatedPins.add(pin);
+      return pin;
+    }
+
+    const versionClassById = new Map(versionClasses.map(row => [String(row.id), row]));
+    const appliedClassByVersionClassId = new Map();
+    const statements = [];
+    const teacherClassRows = [];
+
+    for (const vc of versionClasses) {
+      const versionClassId = String(vc.id || '').trim();
+      if (!versionClassId) continue;
+      const appliedClassId = makeAppliedClassId(versionId, versionClassId);
+      appliedClassByVersionClassId.set(versionClassId, appliedClassId);
+      const textbookInfo = getVersionClassTextbookInfo(vc);
+      statements.push(env.DB.prepare(`
+        INSERT INTO classes
+          (id, name, grade, subject, teacher_name, schedule_days, textbook, is_active, day_group, time_label, parent_class_id, promotion_version_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?)
+      `).bind(
+        appliedClassId,
+        getAppliedClassName(vc),
+        getAppliedClassGrade(vc) || null,
+        vc.subject_snapshot || null,
+        vc.teacher_name_snapshot || null,
+        vc.schedule_days_snapshot || null,
+        textbookInfo.textbook || '',
+        textbookInfo.day_group || null,
+        vc.time_label_snapshot || null,
+        vc.source_class_id || null,
+        versionId
+      ));
+      const matchedTeacher = await findTeacherByAlias(env, vc.teacher_name_snapshot);
+      if (matchedTeacher?.id) teacherClassRows.push({ teacher_id: matchedTeacher.id, class_id: appliedClassId });
+    }
+
+    const sourceClassIds = Array.from(new Set(versionClasses.map(row => String(row.source_class_id || '').trim()).filter(Boolean)));
+    if (sourceClassIds.length) {
+      const sourceClassMarkers = sourceClassIds.map(() => '?').join(',');
+      statements.push(env.DB.prepare(`UPDATE classes SET is_active = 0 WHERE id IN (${sourceClassMarkers})`).bind(...sourceClassIds));
+      statements.push(env.DB.prepare(`DELETE FROM class_students WHERE class_id IN (${sourceClassMarkers})`).bind(...sourceClassIds));
+    }
+
+    for (const row of teacherClassRows) {
+      statements.push(env.DB.prepare('INSERT OR IGNORE INTO teacher_classes (teacher_id, class_id) VALUES (?, ?)').bind(row.teacher_id, row.class_id));
+    }
+
+    for (const slot of slots) {
+      const versionClassId = String(slot.version_class_id || '').trim();
+      const appliedClassId = appliedClassByVersionClassId.get(versionClassId);
+      if (!appliedClassId) continue;
+      statements.push(env.DB.prepare(`
+        INSERT INTO class_time_slots
+          (id, class_id, day_of_week, start_time, end_time, room_name, memo, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      `).bind(makeId('cts'), appliedClassId, slot.day_of_week, slot.start_time, slot.end_time, slot.room_name || null, slot.memo || '새학기 시간표 적용'));
+    }
+
+    const finalAssignments = new Map();
+    for (const row of rawAssignments) {
+      const key = normalizeAssignmentStudentKey(row);
+      const versionClassId = String(row.version_class_id || '').trim();
+      if (!key || !versionClassId || !appliedClassByVersionClassId.has(versionClassId)) continue;
+      finalAssignments.set(key, row);
+    }
+
+    const tempToRealStudentId = new Map();
+    for (const [studentKey, row] of finalAssignments.entries()) {
+      const tempId = String(row.temp_student_id || '').trim();
+      if (!tempId) continue;
+      const newRow = newStudentMap.get(tempId) || {};
+      const snapshot = safeParseMemoJson(row.student_snapshot || newRow.memo, 'activate new student snapshot');
+      const grade = normalizeGradeLabel(newRow.next_grade || snapshot.grade || row.next_grade || '중1');
+      const realStudentId = makeId('stu');
+      tempToRealStudentId.set(tempId, realStudentId);
+      const pin = await allocateStudentPin(grade, snapshot.student_pin);
+      statements.push(env.DB.prepare(`
+        INSERT INTO students
+          (id, name, school_name, grade, target_score, status, memo, guardian_relation, student_phone, parent_phone, student_pin, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, '재원', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      `).bind(
+        realStudentId,
+        newRow.name_snapshot || snapshot.name || row.student_name_snapshot || '이름 없음',
+        newRow.school_name_snapshot || snapshot.school_name || null,
+        grade || null,
+        normalizeTargetScore(snapshot.target_score ?? null),
+        snapshot.memo || '새학기 시간표 적용으로 등록',
+        snapshot.guardian_relation || null,
+        snapshot.student_phone || null,
+        snapshot.parent_phone || newRow.phone_snapshot || null,
+        pin
+      ));
+      statements.push(env.DB.prepare("UPDATE timetable_version_new_students SET status = 'applied', updated_at = CURRENT_TIMESTAMP WHERE temp_student_id = ? AND version_id = ?").bind(tempId, versionId));
+    }
+
+    const existingStudentIds = [];
+    const appliedAssignments = [];
+    for (const [studentKey, row] of finalAssignments.entries()) {
+      const tempId = String(row.temp_student_id || '').trim();
+      const realStudentId = tempId ? tempToRealStudentId.get(tempId) : String(row.student_id || '').trim();
+      const appliedClassId = appliedClassByVersionClassId.get(String(row.version_class_id || '').trim());
+      if (!realStudentId || !appliedClassId) continue;
+      appliedAssignments.push({ student_id: realStudentId, class_id: appliedClassId, source_student_id: String(row.student_id || '').trim() });
+      if (!tempId) existingStudentIds.push(realStudentId);
+    }
+
+    const sourceClassIdSet = new Set(versionClasses.map(row => String(row.source_class_id || '').trim()).filter(Boolean));
+    const oldSourceStudentIds = Array.from(new Set((oldClassRows.results || [])
+      .filter(row => sourceClassIdSet.has(String(row.class_id || '').trim()))
+      .map(row => String(row.student_id || '').trim())
+      .filter(Boolean)));
+    const enrollmentEndStudentIds = Array.from(new Set(existingStudentIds.concat(oldSourceStudentIds)));
+    if (enrollmentEndStudentIds.length) {
+      const markers = enrollmentEndStudentIds.map(() => '?').join(',');
+      statements.push(env.DB.prepare(`
+        UPDATE student_enrollments
+        SET status = 'ended', end_date = COALESCE(end_date, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP
+        WHERE status = 'active' AND branch = 'apmath' AND student_id IN (${markers})
+      `).bind(...enrollmentEndStudentIds));
+    }
+    if (existingStudentIds.length) {
+      const markers = existingStudentIds.map(() => '?').join(',');
+      statements.push(env.DB.prepare(`UPDATE students SET status = '재원', updated_at = CURRENT_TIMESTAMP WHERE id IN (${markers}) AND status = '입학예정'`).bind(...existingStudentIds));
+    }
+
+    for (const row of appliedAssignments) {
+      statements.push(env.DB.prepare('INSERT OR IGNORE INTO class_students (class_id, student_id) VALUES (?, ?)').bind(row.class_id, row.student_id));
+      statements.push(env.DB.prepare(`
+        INSERT INTO student_enrollments
+          (id, student_id, branch, class_id, status, start_date, end_date, tuition_amount, memo)
+        VALUES (?, ?, 'apmath', ?, 'active', DATE('now', '+9 hours'), NULL, NULL, ?)
+      `).bind(makeId('enr'), row.student_id, row.class_id, '새학기 시간표 적용'));
+    }
+
+    const oldByStudent = new Map();
+    for (const row of (oldClassRows.results || [])) {
+      if (!oldByStudent.has(String(row.student_id))) oldByStudent.set(String(row.student_id), String(row.class_id));
+    }
+    for (const row of appliedAssignments) {
+      const oldClassId = oldByStudent.get(String(row.source_student_id || row.student_id)) || null;
+      if (oldClassId && oldClassId !== String(row.class_id)) {
+        statements.push(env.DB.prepare(`
+          INSERT INTO class_transfer_history
+            (id, student_id, from_class_id, to_class_id, reason, changed_by)
+          VALUES (?, ?, ?, ?, ?, ?)
+        `).bind(makeId('ctr'), row.student_id, oldClassId, row.class_id, '새학기 시간표 적용', teacher?.id || teacher?.login_id || teacher?.name || null));
+      }
+    }
+
+    if (activeVersion?.id && activeVersion.id !== versionId) {
+      statements.push(env.DB.prepare(`UPDATE timetable_versions SET status = 'archived', effective_to = COALESCE(effective_to, DATE('now', '+9 hours')), updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(activeVersion.id));
+    }
+    statements.push(env.DB.prepare(`
+      UPDATE timetable_versions
+      SET status = 'active', activated_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP, memo = COALESCE(memo, '')
+      WHERE id = ?
+    `).bind(versionId));
+    statements.push(env.DB.prepare(`
+      INSERT INTO timetable_version_apply_logs
+        (id, academy_id, version_id, status, started_at, finished_at, summary_json, created_at)
+      VALUES (?, 'apmath', ?, 'success', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, CURRENT_TIMESTAMP)
+    `).bind(makeId('tval'), versionId, JSON.stringify({ class_count: appliedClassByVersionClassId.size, assignment_count: appliedAssignments.length, slot_count: slots.length })));
+
+    if (!statements.length) return jsonResponse({ success: false, error: 'no statements to apply' }, 400);
+    await env.DB.batch(statements);
+
+    return jsonResponse({
+      success: true,
+      timetable_version: await getVersion(env, versionId),
+      activated_class_count: appliedClassByVersionClassId.size,
+      activated_student_assignment_count: appliedAssignments.length,
+      copied_slot_count: slots.length
+    });
+  } catch (error) {
+    console.error('[activateVersionClassBased] failed:', error);
+    await env.DB.prepare(`
+      INSERT INTO timetable_version_apply_logs
+        (id, academy_id, version_id, status, started_at, finished_at, error_message, created_at)
+      VALUES (?, 'apmath', ?, 'failed', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, CURRENT_TIMESTAMP)
+    `).bind(makeId('tval'), versionId, String(error?.message || error).slice(0, 1000)).run();
+    return jsonResponse({ success: false, error: 'timetable version activation failed' }, 500);
+  }
+}
+
 async function insertTeacherClassMappingsForClasses(env, classIds) {
   if (!classIds.length) return 0;
   const markers = classIds.map(() => '?').join(',');
@@ -713,7 +990,7 @@ async function activateVersion(env, versionId, teacher) {
   const version = checked.version;
   const versionClassCount = await env.DB.prepare('SELECT COUNT(*) AS count FROM timetable_version_classes WHERE version_id = ?').bind(versionId).first();
   if (Number(versionClassCount?.count || 0) > 0) {
-    return jsonResponse({ success: false, error: 'version_class activation is not implemented in this step' }, 400);
+    return activateVersionClassBased(env, versionId, teacher, version);
   }
   const [slotRows, assignmentRows, activeVersion, oldClassRows] = await Promise.all([
     listSlots(env, versionId),
