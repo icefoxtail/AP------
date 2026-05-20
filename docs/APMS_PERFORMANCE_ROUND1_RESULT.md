@@ -59,3 +59,28 @@
 - 원장/admin 기능을 새로 노출하지 않는다.
 - DB migration은 이번 Round 1에 포함하지 않는다.
 - 공통 인덱스는 원본 데이터의 대체물이 아니라 조회 보조 레이어로만 사용한다.
+
+## 8. 최종 적용 상태 — 2026-05-20
+
+이 문서의 작업은 검수 PASS 후 로컬 적용, 문법 검증, git commit, git push까지 완료된 상태다.
+
+```text
+커밋: a9c6bae Optimize APMS core report dashboard performance
+원격: origin/main 반영 완료
+상태: working tree clean 확인 완료
+적용 파일: core.js / dashboard.js / cumulative.js / report.js / APMS_PERFORMANCE_ROUND1_RESULT.md
+```
+
+### 적용 후 확인 기준
+
+브라우저 수동 확인은 아래 흐름을 기준으로 한다.
+
+```text
+원장 대시보드, 월간 출석부, 성적표, 보고문구 생성
+```
+
+### 보존 기준
+
+- 시간표 파일과 새학기/개편안 흐름은 해당 Round 범위 밖이면 건드리지 않는다.
+- 기존 UI 문구, 버튼명, 화면명은 성능 개선 명목으로 임의 변경하지 않는다.
+- Worker route 또는 DB migration은 문서에 명시된 Round 외에는 추가하지 않는다.

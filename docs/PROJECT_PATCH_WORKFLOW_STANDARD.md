@@ -129,6 +129,50 @@ academy-os-v2_timetable_uiux_step1_review_02_docs.zip
 academy-os-v2_timetable_uiux_step1_review_03_worker.zip
 ~~~
 
+
+#### 3.2.1 토큰 절약 검수용 zip 표준
+
+Gemini / Claude / ChatGPT 검수에서 큰 파일을 처음부터 전부 읽게 하면 토큰만 쓰고 검수가 끝나지 않을 수 있다.
+
+검수용 zip은 가능하면 아래처럼 분리한다.
+
+```text
+00_manifest.zip
+- PATCH_MANIFEST.md
+- CLAUDE_FAST_REVIEW_PROMPT.md 또는 REVIEW_PROMPT.md
+- NORMALIZED_DIFF_REFERENCE.patch
+- 실제 변경 파일/함수/금지 범위 목록
+
+01_changed_snippets.zip
+- CHANGED_SNIPPETS_ONLY.md
+- 수정된 함수와 앞뒤 최소 범위만 포함
+- 전체 파일 요약 금지
+
+02_full_files_optional.zip
+- 실제 전체 파일
+- 치명 오류 의심, 중복 함수 확인, 호출 관계 확인이 필요할 때만 사용
+
+03_docs.zip
+- CODEX_RESULT.md
+- 결과 문서
+- 검수요청서
+```
+
+검수 프롬프트의 기본 지시:
+
+```text
+첨부파일을 전부 읽지 마라.
+반드시 00_manifest → 01_changed_snippets → 02_full_files_optional → 03_docs 순서로 확인하라.
+전체 파일 요약 금지.
+일반론 금지.
+존재하지 않는 함수명 언급 금지.
+실제로 열어 확인한 파일/함수만 근거로 판정하라.
+최종 판정은 PASS / CONDITIONAL PASS / FAIL 중 하나로만 적어라.
+```
+
+단, 보안/권한/DB/결제/마이그레이션처럼 고위험 작업은 full file 검수와 실제 실행 검증을 생략하지 않는다.
+
+
 #### 3.3 검수요청서
 
 검수요청서에는 반드시 포함한다.

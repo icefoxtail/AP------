@@ -1726,3 +1726,102 @@ foundation을 먼저 만든다.
 - 12월 + 다음 해 개편안에서는 기존 중3 반을 렌더링 목록에서 제외한다.
 - 중3 제외는 `hidden`/`display:none`처럼 자리만 차지하는 방식이면 안 된다.
 - 기존 시간표 UI, 문구, 버튼명, 선생님 화면은 새학기 기능 때문에 임의 변경하지 않는다.
+
+# 부록. 2026-05-20 APMS 성능/플래너 최신 기준
+
+## A. 성능 Round 적용 상태
+
+2026-05-20 기준 APMS Performance Round 1~3은 검수, 적용, 커밋, 푸시까지 완료된 상태다.
+
+```text
+Round 1: a9c6bae Optimize APMS core report dashboard performance
+Round 2: fe987a5 Optimize APMS classroom clinic performance
+Round 3: 3b29b6d Optimize APMS student planner performance
+```
+
+적용 범위:
+
+```text
+Round 1:
+- core.js 공통 Map 인덱스 foundation
+- dashboard.js / cumulative.js / report.js 반복 조회 일부 최적화
+
+Round 2:
+- classroom.js 반 화면 조회 최적화
+- clinic-print.js 오답 클리닉 출력 조립 최적화
+
+Round 3:
+- student/index.html 학생 포털 home/OMR 인덱스
+- planner/index.html 플래너 날짜별 plan 인덱스 및 부분 상태 갱신
+- worker routes/planner.js POST/PATCH 응답 보강
+```
+
+## B. 공통 인덱스 사용 원칙
+
+`core.js`의 APMS 공통 데이터 인덱스는 원본 `state.db` 배열을 대체하지 않는다.
+
+```text
+허용:
+- 반복 find/filter를 줄이기 위한 조회 보조
+- studentsById / classesById / classStudentRowsByClassId 같은 Map 조회
+- helper가 없거나 index가 없을 때 기존 fallback 유지
+
+금지:
+- 원본 state.db 구조 제거
+- 기존 배열 키 이름 변경
+- 화면 문구/버튼명 변경을 성능 개선에 섞기
+- stale cache 방어 없이 낙관 갱신 데이터에 인덱스 적용
+```
+
+배열 참조는 그대로이고 내부 객체만 바뀌는 흐름에서는 반드시 `apmsInvalidateDataIndexes()` 호출 여부를 확인한다.
+
+## C. 플래너 최신 UX 기준
+
+2026-05-20 기준 플래너에는 다음 UX가 반영되어 있다.
+
+```text
+- 상단 `‹ 뒤로가기`
+- 계획별 `타이머`
+- 타이머 선택값 30분 / 45분 / 60분
+- 기본값 45분
+- 마지막 선택값 localStorage 저장
+- 타이머 종료 toast
+- 타이머 종료 시 지원 브라우저에서 진동 피드백
+```
+
+플래너 타이머는 로컬 화면 보조 기능이다.
+
+```text
+- DB 저장 없음
+- 공부 시간 통계 아님
+- 기기 간 동기화 없음
+- 새로고침 시 실행 중 타이머 유지 보장 없음
+```
+
+AI 코치는 현재 복구하지 않는다. 현재 플래너는 학생이 할 일을 보고, 타이머를 실행하고, 완료 체크하는 단순 구조를 우선한다.
+
+## D. 리포트 상단 최신 기준
+
+평가 리포트 상단은 다음 기준으로 본다.
+
+```text
+- 발행일 표시 없음
+- 시험날짜 표시 없음
+- 오른쪽 상단 선생님/학부모 사인란
+- 시험명은 학생 정보 밴드 오른쪽에 유지
+```
+
+인쇄용 CSS와 인쇄 전 분석/크게보기 CSS를 혼동하지 않는다. 실제 문제가 인쇄 전 화면이면 `.report-print-stage` 계열 보정으로 한정한다.
+
+## E. 검수팩 토큰 절약 기준
+
+대용량 파일 검수는 다음 순서를 우선한다.
+
+```text
+00_manifest.zip
+→ 01_changed_snippets.zip
+→ 02_full_files_optional.zip
+→ 03_docs.zip
+```
+
+검수자에게는 전체 파일 요약, 일반론, 존재하지 않는 함수명 언급을 금지한다. 실제 확인한 파일/함수만 근거로 PASS / CONDITIONAL PASS / FAIL을 판단하게 한다.
