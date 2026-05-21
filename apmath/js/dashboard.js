@@ -293,6 +293,13 @@ function dashboardIsJournalDone(journal) {
     return status === '제출완료' || status === '결재완료' || !!String(journal?.content || '').trim();
 }
 
+function openDashboardArchiveWindow(event) {
+    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    const url = '../archive/index';
+    const opened = window.open(url, '_blank', 'noopener');
+    if (!opened) window.location.href = url;
+}
+
 function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, classRows = null) {
     injectDashboardOpsStyles();
     const week = dashboardGetWeekDates(baseDateStr || new Date().toLocaleDateString('sv-SE'));
@@ -2324,7 +2331,7 @@ function renderDashboard() {
             </button>
             <button class="btn" 
                     style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
-                    onclick="window.location.href='../archive/index';">
+                    onclick="openDashboardArchiveWindow(event);">
                 아카이브
             </button>
         </div>

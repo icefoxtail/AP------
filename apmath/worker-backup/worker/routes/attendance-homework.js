@@ -24,6 +24,51 @@ function normalizeText(value) {
   return String(value ?? '').trim();
 }
 
+
+async function getAttendanceClassStudentMeta(env, classIds = [], studentIds = []) {
+  const safeClassIds = [...new Set((classIds || []).map(v => String(v || '').trim()).filter(Boolean))];
+  const safeStudentIds = [...new Set((studentIds || []).map(v => String(v || '').trim()).filter(Boolean))];
+  const where = [];
+  const binds = [];
+  if (safeClassIds.length) {
+    where.push(`cs.class_id IN (${safeClassIds.map(() => '?').join(',')})`);
+    binds.push(...safeClassIds);
+  }
+  if (safeStudentIds.length) {
+    where.push(`cs.student_id IN (${safeStudentIds.map(() => '?').join(',')})`);
+    binds.push(...safeStudentIds);
+  }
+  const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
+  const result = await env.DB.prepare(`
+    SELECT
+      cs.class_id,
+      cs.student_id,
+      (
+        SELECT se.start_date
+        FROM student_enrollments se
+        WHERE se.student_id = cs.student_id
+          AND se.class_id = cs.class_id
+          AND COALESCE(se.status, 'active') = 'active'
+        ORDER BY COALESCE(se.start_date, se.created_at) DESC
+        LIMIT 1
+      ) AS enrollment_start_date,
+      (
+        SELECT se.created_at
+        FROM student_enrollments se
+        WHERE se.student_id = cs.student_id
+          AND se.class_id = cs.class_id
+          AND COALESCE(se.status, 'active') = 'active'
+        ORDER BY COALESCE(se.start_date, se.created_at) DESC
+        LIMIT 1
+      ) AS enrollment_created_at,
+      s.created_at AS student_created_at
+    FROM class_students cs
+    LEFT JOIN students s ON s.id = cs.student_id
+    ${whereSql}
+  `).bind(...binds).all();
+  return result.results || [];
+}
+
 async function handleAttendanceHistory(env, teacher, url) {
   const date = url.searchParams.get('date') || todayKstDateString();
 
@@ -57,27 +102,29 @@ async function handleAttendanceMonth(env, teacher, url) {
   const endDate = `${month}-${String(endDay).padStart(2, '0')}`;
 
   if (isAdminUser(teacher)) {
-    const [att, hw, acs] = await Promise.all([
+    const [att, hw, acs, meta] = await Promise.all([
       env.DB.prepare('SELECT * FROM attendance WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all(),
       env.DB.prepare('SELECT * FROM homework WHERE date BETWEEN ? AND ? ORDER BY date ASC').bind(startDate, endDate).all(),
-      env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? ORDER BY schedule_date ASC, start_time ASC, created_at ASC').bind(startDate, endDate).all()
+      env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? ORDER BY schedule_date ASC, start_time ASC, created_at ASC').bind(startDate, endDate).all(),
+      getAttendanceClassStudentMeta(env)
     ]);
-    return jsonResponse({ success: true, month, attendance: att.results, homework: hw.results, academy_schedules: acs.results });
+    return jsonResponse({ success: true, month, attendance: att.results, homework: hw.results, academy_schedules: acs.results, class_student_meta: meta });
   }
 
   const { classIds, studentIds } = await getTeacherStudentIds(env, teacher);
   if (!classIds.length || !studentIds.length) {
     const acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?)) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(startDate, endDate, teacher.name).all();
-    return jsonResponse({ success: true, month, attendance: [], homework: [], academy_schedules: acs.results });
+    return jsonResponse({ success: true, month, attendance: [], homework: [], academy_schedules: acs.results, class_student_meta: [] });
   }
 
   const sMarkers = studentIds.map(() => '?').join(',');
-  const [att, hw, acsForTeacher] = await Promise.all([
+  const [att, hw, acsForTeacher, meta] = await Promise.all([
     env.DB.prepare(`SELECT * FROM attendance WHERE date BETWEEN ? AND ? AND student_id IN (${sMarkers}) ORDER BY date ASC`).bind(startDate, endDate, ...studentIds).all(),
     env.DB.prepare(`SELECT * FROM homework WHERE date BETWEEN ? AND ? AND student_id IN (${sMarkers}) ORDER BY date ASC`).bind(startDate, endDate, ...studentIds).all(),
-    env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?) OR (target_scope = 'student' AND student_id IN (${sMarkers}))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(startDate, endDate, teacher.name, ...studentIds).all()
+    env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date BETWEEN ? AND ? AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?) OR (target_scope = 'student' AND student_id IN (${sMarkers}))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(startDate, endDate, teacher.name, ...studentIds).all(),
+    getAttendanceClassStudentMeta(env, classIds, studentIds)
   ]);
-  return jsonResponse({ success: true, month, attendance: att.results, homework: hw.results, academy_schedules: acsForTeacher.results });
+  return jsonResponse({ success: true, month, attendance: att.results, homework: hw.results, academy_schedules: acsForTeacher.results, class_student_meta: meta });
 }
 
 async function handleAttendanceBatch(env, teacher, body) {
