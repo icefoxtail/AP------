@@ -11,10 +11,10 @@
 | `apmath/js/classroom.js` | 반 화면 | 출결, 숙제, 플래너, 수업일지, 숙제사진 | attendance, homework, homework-photo, planner, class-daily | 선생님 현장 |
 | `apmath/js/student.js` | 학생 상세/상담/학부모 | 학생 detail lazy, 상담, 학부모 연락/동의 | students, consultations, parent-foundation, ai | 개인정보 |
 | `apmath/js/management.js` | 반/주소록/수납 foundation | 반 관리, PIN, billing accounting modal | classes, billing-accounting-foundation | 숨김 foundation 노출 |
-| `apmath/js/timetable.js` | 시간표 | 운영 시간표, draft/version, slot, conflict | timetable-versions, class-time-slots, conflicts, enrollments | 운영/staging 혼선 |
+| `apmath/js/timetable.js` | 시간표 | 운영 시간표, draft/version, slot, conflict, A4 가로 인쇄 전용 HTML 출력 | timetable-versions, class-time-slots, conflicts, enrollments | 운영/staging 혼선 |
 | `apmath/js/report.js` | 리포트/AI | 학부모/학생/상담 리포트, AI 분석, print | ai/report-analysis, consultations, archive fetch | 학부모 문장 |
 | `apmath/js/qr-omr.js` | QR/OMR | OMR 세션 생성/제출, archive fetch | exam-sessions | 제출 완료 |
-| `apmath/js/cumulative.js` | 월간 출결/성적 | 출결 월간, school exam records | attendance-month, school-exam-records | 성적/출결 |
+| `apmath/js/cumulative.js` | 월간 출결/성적 | 출결 월간, school exam records, 월간/누적 출석부 A4 가로 인쇄 전용 HTML 출력 | attendance-month, school-exam-records | 성적/출결 |
 | `apmath/js/study-material-wrong.js` | 교재 오답 | material OMR/manage/review | material-* | 일반 OMR 정책 혼선 |
 | `apmath/js/wangji-foundation.js` | foundation helper | branch/time/conflict helper | 확인 필요 | 공통 helper |
 

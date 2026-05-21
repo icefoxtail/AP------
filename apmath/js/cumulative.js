@@ -769,6 +769,215 @@ function renderAttendanceCellContent(studentId, date) {
     return `<span style="position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:24px;">${statusHtml}${dots}</span>`;
 }
 
+function getAttendanceLedgerPrintTimestamp() {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    return `${y}-${m}-${d} ${hh}:${mm}`;
+}
+
+function getAttendanceLedgerPrintFilters() {
+    const month = state.ui.attendanceLedgerMonth || getAttendanceLedgerSelectedDate().slice(0, 7);
+    const classId = state.ui.attendanceLedgerClassId || document.getElementById('att-cls')?.value || '';
+    const section = state.ui.attendanceLedgerSection || document.getElementById('att-sec')?.value || '';
+    const teacherFilter = getCumulativeAttendanceTeacherFilter();
+    const sectionLabel = section === 'middle' ? '중등부' : (section === 'high' ? '고등부' : '전체 (중/고)');
+
+    let activeClasses = getCumulativeAttendanceFilteredClasses(section, teacherFilter);
+    const classAllowed = !classId || activeClasses.some(c => String(c.id) === String(classId));
+    const safeClassId = classAllowed ? classId : '';
+    const className = safeClassId ? getCumulativeClassName(safeClassId) : '전체 반';
+
+    return {
+        month,
+        days: getMonthDays(month),
+        selectedDate: getAttendanceLedgerSelectedDate(),
+        section,
+        sectionLabel,
+        teacherLabel: teacherFilter || '전체 선생님',
+        classId: safeClassId,
+        className,
+        activeClasses
+    };
+}
+
+function getAttendanceLedgerPrintableGroups(filters) {
+    const allowedClassIds = new Set(filters.activeClasses.map(c => String(c.id)));
+    const students = sortCumulativeStudents(getCumulativeVisibleStudents({ classId: filters.classId }))
+        .filter(s => allowedClassIds.has(String(getCumulativeClassIdForStudent(s.id))));
+    const studentsByClassId = new Map();
+
+    students.forEach(s => {
+        const sidClassId = String(getCumulativeClassIdForStudent(s.id));
+        if (!studentsByClassId.has(sidClassId)) studentsByClassId.set(sidClassId, []);
+        studentsByClassId.get(sidClassId).push(s);
+    });
+
+    return filters.activeClasses
+        .filter(c => !filters.classId || String(c.id) === String(filters.classId))
+        .map(cls => ({
+            cls,
+            students: studentsByClassId.get(String(cls.id)) || []
+        }))
+        .filter(g => g.students.length);
+}
+
+function getAttendanceLedgerPrintCell(studentId, date) {
+    const today = getAttendanceLedgerTodayStr();
+    if (date > today) return { symbol: '', marks: [], status: '', counted: '' };
+    if (isAttendanceBeforeStudentStart(studentId, date)) return { symbol: '-', marks: [], status: '등록 전', counted: '' };
+
+    const schedule = getMonthlyScheduleBadges(studentId, date);
+    const isHol = schedule.globalClosed || schedule.studentClosed;
+    const isClassDay = isAttendanceClassDay(studentId, date);
+    const meta = getAttendanceMetaForCumulative(studentId, date);
+    const status = meta.record?.status || '';
+    let symbol = '';
+    let counted = '';
+
+    if (!isHol && !isClassDay) {
+        symbol = '-';
+    } else if (isHol && (!status || status === '미기록')) {
+        symbol = '';
+    } else if (status === '결석') {
+        symbol = 'X';
+        counted = 'absent';
+    } else if (status === '수업 없음' || status === '미기록') {
+        symbol = '-';
+    } else if (status === '등원' || status === '지각' || status === '보강' || status === '상담') {
+        symbol = 'O';
+        counted = 'present';
+    } else if (!status && isClassDay) {
+        symbol = 'O';
+        counted = 'present';
+    } else {
+        symbol = '-';
+    }
+
+    const marks = [];
+    if (meta.hasLate) marks.push('지');
+    if (meta.hasMakeup) marks.push('보');
+    if (meta.hasConsultation) marks.push('상');
+
+    return { symbol, marks, status, counted };
+}
+
+function buildAttendanceLedgerPrintDocument() {
+    const filters = getAttendanceLedgerPrintFilters();
+    const groups = getAttendanceLedgerPrintableGroups(filters);
+    const headerCells = filters.days.map(d => {
+        const day = new Date(d + 'T00:00:00').getDay();
+        const cls = day === 0 ? ' sun' : (day === 6 ? ' sat' : '');
+        return `<th class="pa-day${cls}"><span>${Number(d.slice(-2))}</span><small>${_attDayName(d)}</small></th>`;
+    }).join('');
+
+    let rowNo = 0;
+    const bodyRows = groups.map(group => {
+        const classRow = `<tr class="pa-class-row"><td colspan="${filters.days.length + 9}">${apEscapeHtml(group.cls.name)}</td></tr>`;
+        const studentRows = group.students.map(student => {
+            rowNo += 1;
+            const sid = String(student.id);
+            const summary = { present: 0, absent: 0, late: 0, makeup: 0, consult: 0 };
+            const dayCells = filters.days.map(date => {
+                const cell = getAttendanceLedgerPrintCell(sid, date);
+                if (cell.counted === 'present') summary.present += 1;
+                if (cell.counted === 'absent') summary.absent += 1;
+                if (cell.marks.includes('지')) summary.late += 1;
+                if (cell.marks.includes('보')) summary.makeup += 1;
+                if (cell.marks.includes('상')) summary.consult += 1;
+                const markHtml = cell.marks.length ? `<em>${cell.marks.join('')}</em>` : '';
+                return `<td class="pa-status">${apEscapeHtml(cell.symbol)}${markHtml}</td>`;
+            }).join('');
+            const grade = String(student.grade || '').trim();
+
+            return '<tr>' +
+                `<td class="pa-no">${rowNo}</td>` +
+                `<td class="pa-name">${apEscapeHtml(student.name || '')}</td>` +
+                `<td class="pa-grade">${apEscapeHtml(grade || '-')}</td>` +
+                dayCells +
+                `<td class="pa-sum">${summary.present}</td>` +
+                `<td class="pa-sum">${summary.absent}</td>` +
+                `<td class="pa-sum">${summary.late}</td>` +
+                `<td class="pa-sum">${summary.makeup}</td>` +
+                `<td class="pa-sum">${summary.consult}</td>` +
+                '<td class="pa-note"></td>' +
+            '</tr>';
+        }).join('');
+
+        return classRow + studentRows;
+    }).join('');
+
+    const emptyRow = `<tr><td colspan="${filters.days.length + 9}" class="pa-empty">표시할 학생이 없습니다.</td></tr>`;
+    const teacherMeta = isCumulativeAdminUser() ? `<span>${apEscapeHtml(filters.teacherLabel)}</span>` : '';
+
+    return `<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Math 출석부</title>
+<style>
+@page{size:A4 landscape;margin:8mm;}
+*{box-sizing:border-box;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#fff;}
+.pa-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px;border-bottom:2px solid #111827;padding-bottom:8px;}
+.pa-title{font-size:20px;font-weight:800;line-height:1.2;}
+.pa-subtitle{margin-top:3px;font-size:11px;font-weight:700;color:#4b5563;}
+.pa-meta{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;font-size:10px;font-weight:700;color:#374151;}
+.pa-meta span{border:1px solid #d1d5db;border-radius:999px;padding:3px 7px;background:#f9fafb;}
+.pa-legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px;font-size:9px;font-weight:700;color:#4b5563;}
+.pa-table{width:100%;border-collapse:collapse;table-layout:fixed;}
+.pa-table th,.pa-table td{border:1px solid #9ca3af;text-align:center;vertical-align:middle;}
+.pa-table thead th{background:#f3f4f6;font-size:8px;font-weight:800;padding:3px 1px;line-height:1.1;}
+.pa-table thead th small{display:block;font-size:7px;color:#6b7280;}
+.pa-no{width:24px;font-size:8px;color:#4b5563;}
+.pa-name{width:54px;text-align:left!important;padding:3px 4px!important;font-size:9px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pa-grade{width:42px;font-size:8px;font-weight:700;color:#374151;}
+.pa-day{width:22px;}
+.pa-day.sun{color:#dc2626;}
+.pa-day.sat{color:#1d4ed8;}
+.pa-status{height:20px;font-size:9px;font-weight:800;line-height:1;position:relative;}
+.pa-status em{display:block;margin-top:1px;font-style:normal;font-size:6.5px;font-weight:800;color:#1d4ed8;letter-spacing:0;}
+.pa-class-row td{text-align:left!important;background:#e5e7eb;font-size:9px;font-weight:800;padding:3px 5px;color:#111827;}
+.pa-sum{width:24px;font-size:8px;font-weight:800;background:#fbfbfb;}
+.pa-note{width:46px;background:#fff;}
+.pa-empty{padding:28px!important;font-size:12px;font-weight:700;color:#6b7280;}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.pa-table thead{display:table-header-group;}tr{break-inside:avoid;}}
+</style></head><body>
+<div class="pa-header">
+  <div><div class="pa-title">AP Math 출석부</div><div class="pa-subtitle">${apEscapeHtml(filters.month)} 월간/누적 출석부</div></div>
+  <div class="pa-meta"><span>${apEscapeHtml(filters.sectionLabel)}</span>${teacherMeta}<span>${apEscapeHtml(filters.className)}</span><span>출력일 ${apEscapeHtml(getAttendanceLedgerPrintTimestamp())}</span></div>
+</div>
+<div class="pa-legend"><span>O 등원</span><span>X 결석</span><span>- 수업 없음/등록 전</span><span>지 지각</span><span>보 보강</span><span>상 상담</span></div>
+<table class="pa-table">
+  <thead><tr><th class="pa-no">번호</th><th class="pa-name">학생명</th><th class="pa-grade">학교/학년</th>${headerCells}<th class="pa-sum">출석</th><th class="pa-sum">결석</th><th class="pa-sum">지각</th><th class="pa-sum">보강</th><th class="pa-sum">상담</th><th class="pa-note">비고</th></tr></thead>
+  <tbody>${bodyRows || emptyRow}</tbody>
+</table>
+<script>window.addEventListener("load",function(){setTimeout(function(){window.print();},250);});<\/script>
+</body></html>`;
+}
+
+function printAttendanceLedgerReport() {
+    const win = window.open('', '_blank');
+    if (!win) {
+        if (typeof toast === 'function') toast('팝업 차단을 해제해 주세요.', 'warn');
+        return;
+    }
+
+    try {
+        win.document.open();
+        win.document.write(buildAttendanceLedgerPrintDocument());
+        win.document.close();
+        try { win.focus(); } catch (e) {}
+    } catch (e) {
+        console.error('[printAttendanceLedgerReport] failed:', e);
+        if (typeof toast === 'function') toast('출석부 인쇄 창을 여는 중 오류가 발생했습니다.', 'warn');
+        try { win.close(); } catch (closeErr) {}
+    }
+}
+
+window.printAttendanceLedgerReport = printAttendanceLedgerReport;
+
 function openAttendanceLedger() {
     if (!state.ui.attendanceLedgerDate) {
         setAttendanceLedgerDate(getAttendanceLedgerTodayStr());
@@ -855,6 +1064,7 @@ function openAttendanceLedger() {
       <select class="att-ctrl" id="att-cls" onchange="state.ui.attendanceLedgerClassId=this.value;renderAttendanceLedgerTable()">
         <option value="">전체 반</option>${classOptions}
       </select>
+      <button type="button" class="att-ctrl" onclick="window.printAttendanceLedgerReport()">인쇄</button>
     </div>
   </div>
   <div id="att-legend">

@@ -12,6 +12,7 @@
 - 연결 API: `attendance`, `homework`, `attendance-history`, `homework-photo/*`, `class-daily-records`, `planner`
 - 관련 DB: `attendance`, `homework`, `homework_photo_*`, `class_textbooks`, `class_daily_records`, `class_daily_progress`, `students`, `classes`, `class_students`
 - helper/state: `core.js`의 `state.db`, `api`, auth header
+- 참고: 월간/누적 출석부 인쇄는 `classroom.js` 하루 출석부가 아니라 `apmath/js/cumulative.js`의 출석부 화면에서 처리한다.
 
 ## C. 데이터/API 흐름
 
@@ -20,6 +21,7 @@
 ## D. 회귀 위험
 
 - 출결/숙제 낙관 갱신과 월간 cache 불일치
+- `cumulative.js` 월간/누적 출석부와 `classroom.js` 하루 출석부 대상 혼선
 - 선생님 담당반 scope 깨짐
 - `숙제` UI 용어 변경
 - 플래너 PC/모바일 보기 깨짐
@@ -32,4 +34,3 @@
 ## F. 작업 후 업데이트 규칙
 
 classroom 변경 시 `CURRENT_FRONTEND_MAP.md`, `CURRENT_API_FLOW_MAP.md`, `CURRENT_REGRESSION_RISK_MAP.md`, `CLASSROOM_NEXT_PLAN.md`, `CODEX_RESULT.md`를 업데이트한다.
-
