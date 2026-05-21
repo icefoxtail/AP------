@@ -303,7 +303,7 @@ tr:hover td {
   background: var(--surface-2) !important;
   color: var(--secondary) !important;
   font-size: 12px !important;
-  font-weight: 700 !important;
+  font-weight:500 !important;
   line-height: 1.55 !important;
 }
 
@@ -513,24 +513,50 @@ body.dark #ap-admin-dashboard .ap-admin-shortcuts {
 body.dark #ap-admin-dashboard .ap-admin-section {
   background: rgba(28,28,30,0.58) !important;
 }
-#ap-admin-dashboard .ap-admin-section-title,
-.ap-dashboard-section-head h3,
 .card-title,
 .planner-month-title,
 .planner-coach-title {
-  font-weight: 800 !important;
+  font-weight:500 !important;
   letter-spacing: -0.045em !important;
 }
-#ap-admin-dashboard .ap-admin-section-title::before,
+#ap-admin-dashboard .ap-admin-section-title::before {
+  content: none !important;
+  display: none !important;
+}
+#ap-admin-dashboard .ap-admin-section-title {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.35 !important;
+}
+#ap-admin-dashboard .ap-admin-shortcuts .btn,
+#ap-admin-dashboard .ap-admin-check-item,
+#ap-admin-dashboard .ap-admin-teacher-card .btn {
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+}
+#ap-admin-dashboard .ap-stat-value {
+  font-weight: 500 !important;
+}
+#ap-admin-dashboard .ap-admin-mini-metric div:not(.ap-stat-value),
+#ap-admin-dashboard .ap-admin-check-item span:first-child {
+  font-weight: 400 !important;
+}
+#ap-admin-dashboard .ap-admin-check-item span:last-child,
+#ap-admin-dashboard .admin-teacher-card__name,
+#ap-admin-dashboard .admin-teacher-card__chip,
+#ap-admin-dashboard .admin-teacher-card__chip-value,
+#ap-admin-dashboard .admin-teacher-card__journal-title {
+  font-weight: 500 !important;
+}
+.ap-dashboard-section-head h3 {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+}
 .ap-dashboard-section-head h3::before {
-  content: '';
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 7px;
-  border-radius: 99px;
-  background: var(--primary);
-  vertical-align: 2px;
+  content: none !important;
+  display: none !important;
 }
 .ap-admin-mini-metric,
 #ap-admin-dashboard .card,
@@ -588,7 +614,7 @@ body.dark .mobile-assist-card {
   box-shadow: 0 1px 0 var(--border-soft) !important;
 }
 .cls-v4-title-main {
-  font-weight: 800 !important;
+  font-weight:500 !important;
   letter-spacing: -0.045em !important;
 }
 .cls-v4-pill,
@@ -669,7 +695,7 @@ body.dark .mobile-assist-card {
 }
 .planner-view-tab {
   border-radius: 14px !important;
-  font-weight: 800 !important;
+  font-weight:500 !important;
 }
 .planner-view-tab.active {
   color: var(--primary) !important;

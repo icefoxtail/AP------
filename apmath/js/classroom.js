@@ -172,19 +172,19 @@ function getAttendanceStatusStyle(status, isClassDay = true) {
         return 'background: rgba(var(--success-rgb),0.10); color: var(--success); border: 1px solid rgba(0,208,132,0.15);';
     }
     if (cur === '결석') {
-        return 'background: rgba(var(--error-rgb),0.10); color: var(--error); font-weight: 700; border: 1px solid rgba(var(--error-rgb),0.18);';
+        return 'background: rgba(var(--error-rgb),0.10); color: var(--error); font-weight:500; border: 1px solid rgba(var(--error-rgb),0.18);';
     }
     if (cur === '지각') {
-        return 'background: rgba(var(--warning-rgb),0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(var(--warning-rgb),0.20);';
+        return 'background: rgba(var(--warning-rgb),0.12); color: var(--warning); font-weight:500; border: 1px solid rgba(var(--warning-rgb),0.20);';
     }
     if (cur === '보강') {
-        return 'background: var(--primary-soft); color: var(--primary); font-weight: 700; border: 1px solid rgba(var(--primary-rgb),0.16);';
+        return 'background: var(--primary-soft); color: var(--primary); font-weight:500; border: 1px solid rgba(var(--primary-rgb),0.16);';
     }
     if (cur === '상담') {
-        return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight: 700; border: 1px solid rgba(124,58,237,0.18);';
+        return 'background: rgba(124,58,237,0.10); color: #7c3aed; font-weight:500; border: 1px solid rgba(124,58,237,0.18);';
     }
     if (cur === '수업 없음') {
-        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
+        return 'background: transparent; color: var(--border); font-weight:500; border: 1px dashed var(--border); box-shadow: none;'; 
     }
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
@@ -217,10 +217,10 @@ function getHomeworkStatusStyle(status, isClassDay = true) {
         return 'background: var(--primary-soft); color: var(--primary); border: 1px solid rgba(var(--primary-rgb),0.16);';
     }
     if (cur === '미완료') {
-        return 'background: rgba(var(--warning-rgb),0.12); color: var(--warning); font-weight: 700; border: 1px solid rgba(255,165,2,0.15);';
+        return 'background: rgba(var(--warning-rgb),0.12); color: var(--warning); font-weight:500; border: 1px solid rgba(255,165,2,0.15);';
     }
     if (cur === '공란') {
-        return 'background: transparent; color: var(--border); font-weight: 700; border: 1px dashed var(--border); box-shadow: none;'; 
+        return 'background: transparent; color: var(--border); font-weight:500; border: 1px dashed var(--border); box-shadow: none;'; 
     }
     return 'background: var(--surface-2); color: var(--secondary); border: 1px solid var(--border);';
 }
@@ -462,7 +462,7 @@ function openAttendanceMetaModal(studentId, date, options = {}) {
 
     const tagInput = function(tag, label) {
         const checked = tagSet.has(tag) ? 'checked' : '';
-        return `<label style="display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);font-size:13px;font-weight:700;color:var(--text);">
+        return `<label style="display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);font-size:13px;font-weight:500;color:var(--text);">
             <input type="checkbox" class="att-meta-tag" value="${apEscapeHtml(tag)}" ${checked} style="accent-color:var(--primary);">${label}
         </label>`;
     };
@@ -470,15 +470,15 @@ function openAttendanceMetaModal(studentId, date, options = {}) {
     showModal('출결 메모', `
         <div style="display:flex;flex-direction:column;gap:12px;">
             <div style="padding:12px;border-radius:14px;background:var(--surface-2);border:1px solid var(--border);">
-                <div style="font-size:15px;font-weight:700;color:var(--text);line-height:1.4;">${apEscapeHtml(student?.name || '학생')}</div>
-                <div style="font-size:12px;font-weight:700;color:var(--secondary);margin-top:4px;line-height:1.4;">${apEscapeHtml(d)} · 현재 출결 ${apEscapeHtml(status)}</div>
+                <div style="font-size:15px;font-weight:500;color:var(--text);line-height:1.4;">${apEscapeHtml(student?.name || '학생')}</div>
+                <div style="font-size:12px;font-weight:500;color:var(--secondary);margin-top:4px;line-height:1.4;">${apEscapeHtml(d)} · 현재 출결 ${apEscapeHtml(status)}</div>
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                 ${tagInput('지각', '지각')}
                 ${tagInput('보강', '보강')}
             </div>
             <textarea id="att-meta-memo" class="cls-input" placeholder="출결 관련 메모" style="height:110px;resize:none;line-height:1.6;">${apEscapeHtml(meta.memo)}</textarea>
-            <button class="btn btn-primary" style="width:100%;min-height:50px;font-size:14px;font-weight:700;border-radius:14px;" onclick="saveAttendanceMeta('${sid}', '${d}', { source: '${apEscapeHtml(options.source || 'classroom')}' })">저장</button>
+            <button class="btn btn-primary" style="width:100%;min-height:50px;font-size:14px;font-weight:500;border-radius:14px;" onclick="saveAttendanceMeta('${sid}', '${d}', { source: '${apEscapeHtml(options.source || 'classroom')}' })">저장</button>
         </div>
     `);
 }
@@ -697,13 +697,13 @@ function isHomeworkPhotoImage(file = {}) {
 
 async function openHomeworkPhotoSubmissionFilesModal(submissionId) {
     if (!submissionId) return toast('제출 정보를 찾을 수 없습니다.', 'warn');
-    showModal('숙제 사진', `<div id="hw-photo-files" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    showModal('숙제 사진', `<div id="hw-photo-files" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">불러오는 중...</div>`);
     try {
         const data = await api.get(`homework-photo/files?submission_id=${encodeURIComponent(submissionId)}`);
         const root = document.getElementById('hw-photo-files');
         if (!root) return;
         if (!data?.success) {
-            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:800;">숙제 사진을 불러오지 못했습니다.</div>`;
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:500;">숙제 사진을 불러오지 못했습니다.</div>`;
             return toast(data?.message || data?.error || '숙제 사진 조회 실패', 'warn');
         }
         const files = Array.isArray(data.files) ? data.files : [];
@@ -711,8 +711,8 @@ async function openHomeworkPhotoSubmissionFilesModal(submissionId) {
         root.innerHTML = `
             <div style="display:flex; flex-direction:column; gap:12px;">
                 <div style="background:var(--surface-2); border-radius:14px; padding:12px; text-align:left;">
-                    <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(submission.student_name || '학생')}</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(submission.title || '숙제')} · ${submission.submitted_at ? `제출 ${apEscapeHtml(submission.submitted_at)}` : '제출 시각 없음'}</div>
+                    <div style="font-size:15px; font-weight:500; color:var(--text);">${apEscapeHtml(submission.student_name || '학생')}</div>
+                    <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">${apEscapeHtml(submission.title || '숙제')} · ${submission.submitted_at ? `제출 ${apEscapeHtml(submission.submitted_at)}` : '제출 시각 없음'}</div>
                 </div>
                 ${files.length ? files.map((file, index) => {
                     const image = isHomeworkPhotoImage(file);
@@ -725,18 +725,18 @@ async function openHomeworkPhotoSubmissionFilesModal(submissionId) {
                                     <img src="${apEscapeHtml(file.url || '')}" alt="${apEscapeHtml(file.file_name || `숙제 사진 ${index + 1}`)}" style="width:100%; max-height:240px; object-fit:contain; border-radius:12px; background:var(--surface-2); border:1px solid var(--border);">
                                 </button>
                             ` : `
-                                <div style="display:flex; align-items:center; justify-content:center; min-height:120px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); color:var(--secondary); font-size:13px; font-weight:800;">이미지 미리보기를 지원하지 않는 파일</div>
+                                <div style="display:flex; align-items:center; justify-content:center; min-height:120px; border-radius:12px; background:var(--surface-2); border:1px solid var(--border); color:var(--secondary); font-size:13px; font-weight:500;">이미지 미리보기를 지원하지 않는 파일</div>
                             `}
                             <div style="display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:10px;">
                                 <div style="min-width:0;">
-                                    <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(file.file_name || `파일 ${index + 1}`)}</div>
-                                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(file.file_type || '타입 미기록')} · ${apEscapeHtml(formatHomeworkPhotoFileSize(file.file_size))}</div>
+                                    <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(file.file_name || `파일 ${index + 1}`)}</div>
+                                    <div style="font-size:11px; font-weight:500; color:var(--secondary); margin-top:4px;">${apEscapeHtml(file.file_type || '타입 미기록')} · ${apEscapeHtml(formatHomeworkPhotoFileSize(file.file_size))}</div>
                                 </div>
-                                <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="window.open('${safeUrl}', '_blank', 'noopener')">열기</button>
+                                <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="window.open('${safeUrl}', '_blank', 'noopener')">열기</button>
                             </div>
                         </div>
                     `;
-                }).join('') : `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">등록된 사진 파일이 없습니다.</div>`}
+                }).join('') : `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">등록된 사진 파일이 없습니다.</div>`}
             </div>
         `;
     } catch (e) {
@@ -752,7 +752,7 @@ function openHomeworkPhotoImageViewer(url, title = '') {
             <div style="width:100%; min-height:240px; max-height:72vh; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
                 <img src="${apEscapeHtml(url)}" alt="${apEscapeHtml(title || '숙제 사진')}" style="max-width:100%; max-height:72vh; object-fit:contain; background:#fff;">
             </div>
-            <button class="btn" style="min-height:42px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="window.open('${String(url).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}', '_blank', 'noopener')">새 창에서 열기</button>
+            <button class="btn" style="min-height:42px; font-size:12px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="window.open('${String(url).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}', '_blank', 'noopener')">새 창에서 열기</button>
         </div>
     `);
 }
@@ -763,8 +763,8 @@ function openHomeworkPhotoAssignmentModal(classId) {
     showModal('숙제', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
-                <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">학생별 제출 링크와 QR이 생성됩니다.</div>
+                <div style="font-size:15px; font-weight:500; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
+                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">학생별 제출 링크와 QR이 생성됩니다.</div>
             </div>
             <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
             <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
@@ -772,8 +772,8 @@ function openHomeworkPhotoAssignmentModal(classId) {
                 <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(today)}">
                 <input id="hw-photo-time" type="time" class="cls-input" value="23:00">
             </div>
-            <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:800;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장하고 링크 생성</button>
-            <button class="btn" style="min-height:44px; font-size:13px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+            <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:500;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장하고 링크 생성</button>
+            <button class="btn" style="min-height:44px; font-size:13px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
         </div>
     `);
 }
@@ -799,7 +799,7 @@ async function handleCreateHomeworkPhotoAssignment(classId) {
 }
 
 async function openHomeworkPhotoAssignmentList(classId) {
-    showModal('숙제 목록', `<div id="hw-photo-assignment-list" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    showModal('숙제 목록', `<div id="hw-photo-assignment-list" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">불러오는 중...</div>`);
     try {
         const data = api.getHomeworkPhotoAssignments
             ? await api.getHomeworkPhotoAssignments(classId)
@@ -808,7 +808,7 @@ async function openHomeworkPhotoAssignmentList(classId) {
         if (!root) return;
         const list = Array.isArray(data.assignments) ? data.assignments : [];
         if (!data?.success || !list.length) {
-            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">등록된 숙제가 없습니다.</div>`;
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">등록된 숙제가 없습니다.</div>`;
             return;
         }
         root.innerHTML = `<div style="display:flex; flex-direction:column; gap:10px;">${list.map(a => {
@@ -818,15 +818,15 @@ async function openHomeworkPhotoAssignmentList(classId) {
                 <div style="border:1px solid var(--border); border-radius:14px; padding:13px; background:var(--surface);">
                     <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
                         <div style="min-width:0;">
-                            <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(a.title || '숙제')}</div>
-                            <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">마감 ${apEscapeHtml(a.due_date || '')}${a.due_time ? ` ${apEscapeHtml(a.due_time)}` : ''} · 제출 ${submitted}/${total}</div>
+                            <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35;">${apEscapeHtml(a.title || '숙제')}</div>
+                            <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">마감 ${apEscapeHtml(a.due_date || '')}${a.due_time ? ` ${apEscapeHtml(a.due_time)}` : ''} · 제출 ${submitted}/${total}</div>
                         </div>
-                        <div style="font-size:12px; font-weight:800; color:${a.status === 'closed' ? 'var(--secondary)' : 'var(--primary)'};">${a.status === 'closed' ? '마감' : '진행'}</div>
+                        <div style="font-size:12px; font-weight:500; color:${a.status === 'closed' ? 'var(--secondary)' : 'var(--primary)'};">${a.status === 'closed' ? '마감' : '진행'}</div>
                     </div>
                     <div style="display:flex; gap:8px; margin-top:12px;">
-                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
-                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="loadHomeworkPhotoLinksModal('${a.id}')">링크</button>
-                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; border-radius:12px; background:rgba(232,65,79,0.08); border:none; color:var(--error);" onclick="deleteHomeworkPhotoAssignment('${a.id}', '${classId}')">삭제</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px; background:var(--surface-2); border:none;" onclick="openHomeworkPhotoOverviewModal('${a.id}')">현황</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="loadHomeworkPhotoLinksModal('${a.id}')">링크</button>
+                        <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px; background:rgba(232,65,79,0.08); border:none; color:var(--error);" onclick="deleteHomeworkPhotoAssignment('${a.id}', '${classId}')">삭제</button>
                     </div>
                 </div>
             `;
@@ -838,7 +838,7 @@ async function openHomeworkPhotoAssignmentList(classId) {
 }
 
 async function loadHomeworkPhotoLinksModal(assignmentId) {
-    showModal('학생별 링크', `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    showModal('학생별 링크', `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">불러오는 중...</div>`);
     try {
         const data = api.getHomeworkPhotoStudentLinks
             ? await api.getHomeworkPhotoStudentLinks(assignmentId)
@@ -861,8 +861,8 @@ function openHomeworkPhotoLinksModal(assignmentId, links) {
     showModal('학생별 링크', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="display:flex; gap:8px;">
-                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="openHomeworkPhotoOverviewModal('${assignmentId}')">제출 현황</button>
-                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="copyHomeworkPhotoText(document.getElementById('hw-photo-all-links')?.value || '', '전체 링크가 복사되었습니다.')">전체 복사</button>
+                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="openHomeworkPhotoOverviewModal('${assignmentId}')">제출 현황</button>
+                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="copyHomeworkPhotoText(document.getElementById('hw-photo-all-links')?.value || '', '전체 링크가 복사되었습니다.')">전체 복사</button>
             </div>
             <textarea id="hw-photo-all-links" style="position:absolute; left:-9999px; width:1px; height:1px;">${apEscapeHtml(allText)}</textarea>
             ${normalized.length ? normalized.map(item => {
@@ -871,23 +871,23 @@ function openHomeworkPhotoLinksModal(assignmentId, links) {
                     <div style="border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
                         <div style="display:flex; justify-content:space-between; gap:10px; align-items:center;">
                             <div style="min-width:0;">
-                                <div style="font-size:14px; font-weight:800; color:var(--text);">${apEscapeHtml(item.name || '학생')}</div>
-                                <div style="font-size:11px; font-weight:700; color:var(--secondary); word-break:break-all; margin-top:4px;">${apEscapeHtml(item.url || '')}</div>
+                                <div style="font-size:14px; font-weight:500; color:var(--text);">${apEscapeHtml(item.name || '학생')}</div>
+                                <div style="font-size:11px; font-weight:500; color:var(--secondary); word-break:break-all; margin-top:4px;">${apEscapeHtml(item.url || '')}</div>
                             </div>
-                            <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:800; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">복사</button>
+                            <button class="btn" style="flex:0 0 auto; min-height:36px; width:auto; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">복사</button>
                         </div>
                         <div style="margin-top:10px; text-align:center;">
                             <img src="${getHomeworkPhotoQrSrc(item.url || '')}" alt="QR" style="width:128px; height:128px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:8px;">
                         </div>
                     </div>
                 `;
-            }).join('') : `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">생성된 링크가 없습니다.</div>`}
+            }).join('') : `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">생성된 링크가 없습니다.</div>`}
         </div>
     `);
 }
 
 async function openHomeworkPhotoOverviewModal(assignmentId) {
-    showModal('제출 현황', `<div id="hw-photo-overview" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`);
+    showModal('제출 현황', `<div id="hw-photo-overview" style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">불러오는 중...</div>`);
     try {
         const data = api.getHomeworkPhotoOverview
             ? await api.getHomeworkPhotoOverview(assignmentId)
@@ -895,7 +895,7 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
         const root = document.getElementById('hw-photo-overview');
         if (!root) return;
         if (!data?.success) {
-            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:800;">현황을 불러오지 못했습니다.</div>`;
+            root.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:500;">현황을 불러오지 못했습니다.</div>`;
             return toast(data?.message || data?.error || '현황 조회 실패', 'warn');
         }
         const rows = Array.isArray(data.students) ? data.students : [];
@@ -904,13 +904,13 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
         root.innerHTML = `
             <div style="display:flex; flex-direction:column; gap:12px;">
                 <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
-                    <div style="font-size:15px; font-weight:800; color:var(--text);">${apEscapeHtml(data.assignment?.title || '숙제')}</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">전체 ${total} · 제출 ${submitted} · 미제출 ${total - submitted}</div>
+                    <div style="font-size:15px; font-weight:500; color:var(--text);">${apEscapeHtml(data.assignment?.title || '숙제')}</div>
+                    <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">전체 ${total} · 제출 ${submitted} · 미제출 ${total - submitted}</div>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
-                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
-                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:800; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="deleteHomeworkPhotoAssignment('${assignmentId}', '${apEscapeHtml(data.assignment?.class_id || '')}')">삭제</button>
+                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="loadHomeworkPhotoLinksModal('${assignmentId}')">링크 보기</button>
+                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:500; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="closeHomeworkPhotoAssignment('${assignmentId}')">마감 처리</button>
+                    <button class="btn" style="flex:1; min-height:40px; font-size:12px; font-weight:500; color:var(--error); background:rgba(232,65,79,0.08); border:1px solid rgba(232,65,79,0.16);" onclick="deleteHomeworkPhotoAssignment('${assignmentId}', '${apEscapeHtml(data.assignment?.class_id || '')}')">삭제</button>
                 </div>
                 ${rows.map(r => {
                     const done = Number(r.is_submitted || 0) === 1;
@@ -921,13 +921,13 @@ async function openHomeworkPhotoOverviewModal(assignmentId) {
                     return `
                         <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface);">
                             <div style="min-width:0;">
-                                <div style="font-size:14px; font-weight:800; color:var(--text);">${apEscapeHtml(r.name || '')}</div>
-                                <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:4px;">${done ? `제출 ${apEscapeHtml(r.submitted_at || '')}` : '미제출'} · 사진 ${Number(r.file_count || 0)}장</div>
+                                <div style="font-size:14px; font-weight:500; color:var(--text);">${apEscapeHtml(r.name || '')}</div>
+                                <div style="font-size:11px; font-weight:500; color:var(--secondary); margin-top:4px;">${done ? `제출 ${apEscapeHtml(r.submitted_at || '')}` : '미제출'} · 사진 ${Number(r.file_count || 0)}장</div>
                             </div>
                             <div style="display:flex; align-items:center; gap:8px;">
-                                <span style="font-size:13px; font-weight:900; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
-                                ${canViewFiles ? `<button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="openHomeworkPhotoSubmissionFilesModal('${safeSubmissionId}')">사진</button>` : ''}
-                                <button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:800; border-radius:9px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
+                                <span style="font-size:13px; font-weight:500; color:${done ? 'var(--success)' : 'var(--error)'};">${done ? '완료' : '미제출'}</span>
+                                ${canViewFiles ? `<button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:500; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); color:var(--text);" onclick="openHomeworkPhotoSubmissionFilesModal('${safeSubmissionId}')">사진</button>` : ''}
+                                <button class="btn" style="width:auto; min-height:34px; padding:7px 9px; font-size:11px; font-weight:500; border-radius:9px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyHomeworkPhotoText('${safeUrl}', '링크가 복사되었습니다.')">링크</button>
                             </div>
                         </div>
                     `;
@@ -1149,7 +1149,7 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
     const sname = s?.name || '학생';
     const html = `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} 학생 관리</div>
+            <div style="font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; text-align:center;">${apEscapeHtml(sname)} 학생 관리</div>
             <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${sid}')">상세 정보 열기</button>
             <button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('${sid}', '단원평가', 20, '${cid}', '', '', 'class')">OMR / 성적 입력</button>
             ${plannerOn ? `<button class="btn cls-input" style="min-height:48px; justify-content:center; cursor:pointer; color:var(--primary); border-color:rgba(var(--primary-rgb),0.22);" onclick="closeModal(true); copyPlannerStudentLink('${sid}')">플래너 링크 복사</button>` : ''}
@@ -1171,7 +1171,7 @@ function renderClass(cid) {
 
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) {
-        document.getElementById('app-root').innerHTML = `<div class="card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">반 정보를 찾을 수 없습니다.</div>`;
+        document.getElementById('app-root').innerHTML = `<div class="card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">반 정보를 찾을 수 없습니다.</div>`;
         return;
     }
 
@@ -1250,13 +1250,13 @@ const existingProgress = existingRecord
         const progVal = prevP ? prevP.progress_text : '';
         const isChecked = (prevP || progVal) ? 'checked' : '';
         return `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight:700; min-width: 120px; color: var(--text); cursor: pointer; line-height: 1.5;">
+            <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight:500; min-width: 120px; color: var(--text); cursor: pointer; line-height: 1.5;">
                 <input type="checkbox" class="record-tb-check" value="${tb.id}" data-title="${String(tb.title).replace(/"/g, '&quot;')}" ${isChecked} style="transform: scale(1.1); accent-color: var(--primary);">
                 ${apEscapeHtml(tb.title)}
             </label>
             <input type="text" class="cls-input record-tb-progress" id="progress_${tb.id}" value="${progVal}" placeholder="예: p.10~25" style="flex: 1; min-height: 44px;">
         </div>`;
-    }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight: 700; line-height: 1.5;">활성 교재 없음</div>`;
+    }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight:500; line-height: 1.5;">활성 교재 없음</div>`;
 
     const rawNote = existingRecord ? (existingRecord.special_note || '') : '';
     const unitLineMatch = rawNote.match(/^\[단원선택\]([^\n]*)\n?/);
@@ -1269,7 +1269,7 @@ const existingProgress = existingRecord
     if (units.length > 0) {
         unitsHtml = `<div style="margin-bottom: 20px;">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-                <h4 style="margin:0;font-size:16px;font-weight:700;color:var(--text);line-height:1.3;">오늘 수업 단원 <span style="font-size:11px;font-weight:600;color:var(--secondary);">${gradeKey}</span></h4>
+                <h4 style="margin:0;font-size:16px;font-weight:500;color:var(--text);line-height:1.3;">오늘 수업 단원 <span style="font-size:11px;font-weight:600;color:var(--secondary);">${gradeKey}</span></h4>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">${units.map(u => {
                 const checked = prevSelectedUnits.indexOf(u) !== -1 ? 'checked' : '';
@@ -1281,15 +1281,15 @@ const existingProgress = existingRecord
 
     showModal('진도관리', `${unitsHtml}<div style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
-                <h4 style="margin: 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">교재별 진도</h4>
-                <span style="font-size: 11px; font-weight: 700; color: var(--secondary); line-height: 1.5;">${todayStr}</span>
+                <h4 style="margin: 0; font-size: 16px; font-weight:500; color: var(--text); line-height: 1.3;">교재별 진도</h4>
+                <span style="font-size: 11px; font-weight:500; color: var(--secondary); line-height: 1.5;">${todayStr}</span>
             </div>
             <div style="background: var(--surface); padding: 4px 0;">${booksHtml}</div>
         </div>
-        <div style="margin-bottom: 32px;"><h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:700; color: var(--text); line-height: 1.3;">특이사항</h4>
+        <div style="margin-bottom: 32px;"><h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:500; color: var(--text); line-height: 1.3;">특이사항</h4>
             <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 100px; resize: none; padding: 14px; line-height: 1.6;">${apEscapeHtml(prevNote)}</textarea>
         </div>
-        <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:700; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>`);
+        <button class="btn btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:500; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>`);
 }
 
 async function saveClassRecord(cid, dateStr) {
@@ -1327,8 +1327,8 @@ function renderAttendanceLedger() {
                 <select id="ledger-class" class="cls-input" style="flex: 1; background: var(--surface); border: 1px solid var(--border);" onchange="ledgerState.classId=this.value;renderLedgerTable();"><option value="">전체 학급</option>${classOptions}</select>
             </div>
             <div style="display: flex; gap: 6px; background: var(--surface); padding: 4px; border: 1px solid var(--border); border-radius: 12px;">
-                <button id="ledger-mode-att" class="btn cls-v4-ledger-mode-active" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 12px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
-                <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:700; border-radius: 12px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
+                <button id="ledger-mode-att" class="btn cls-v4-ledger-mode-active" style="flex: 1; border: none; font-size: 13px; font-weight:500; border-radius: 12px; min-height: 38px;" onclick="ledgerState.mode='att';renderLedgerTable();">출결 기록</button>
+                <button id="ledger-mode-hw" class="btn" style="flex: 1; border: none; font-size: 13px; font-weight:500; border-radius: 12px; min-height: 38px;" onclick="ledgerState.mode='hw';renderLedgerTable();">숙제 기록</button>
             </div>
         </div><div id="ledger-table-wrap" style="max-height: 55vh; overflow-y: auto; padding-right: 4px;"></div>`);
     loadLedger();
@@ -1349,10 +1349,10 @@ function renderLedgerTable() {
         const label = isAtt ? getAttendanceStatusLabel(recStatus, isScheduled) : getHomeworkStatusLabel(recStatus, isScheduled);
         const style = isAtt ? getAttendanceStatusStyle(recStatus, isScheduled) : getHomeworkStatusStyle(recStatus, isScheduled);
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 14px 12px; font-weight:700; color: var(--text); font-size: 14px; line-height: 1.4; text-align: left;">${apEscapeHtml(s.name)}</td>
+            <td style="padding: 14px 12px; font-weight:500; color: var(--text); font-size: 14px; line-height: 1.4; text-align: left;">${apEscapeHtml(s.name)}</td>
             <td style="padding: 14px 4px; color: var(--secondary); font-size: 12px; font-weight: 600; line-height: 1.5; text-align: center;">${apEscapeHtml(s.school_name)}</td>
             <td style="padding: 14px 12px; text-align: center; vertical-align: middle;">
-                <button class="btn" style="padding: 4px 10px; font-size: 12px; min-width: ${isAtt ? '76px' : '60px'}; font-weight:700; border-radius: 8px; margin: 0 auto; display: flex; align-items: center; justify-content: center; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${label}</button>
+                <button class="btn" style="padding: 4px 10px; font-size: 12px; min-width: ${isAtt ? '76px' : '60px'}; font-weight:500; border-radius: 8px; margin: 0 auto; display: flex; align-items: center; justify-content: center; ${style}" onclick="${isAtt ? `toggleAtt('${s.id}','${ledgerState.date}')` : `toggleHw('${s.id}','${ledgerState.date}')`}">${label}</button>
             </td>
         </tr>`;
     }).join('');
@@ -1364,11 +1364,11 @@ function renderLedgerTable() {
     ledgerWrap.innerHTML = `<div class="card" style="padding: 8px 0; border-radius: 18px; border: 1px solid var(--border); background: var(--surface); box-shadow: none;">
             <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
                 <thead><tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
-                <th style="width: 30%; padding: 10px 12px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: left;">이름</th>
-                <th style="width: 40%; padding: 10px 4px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: center;">학교</th>
-                <th style="width: 30%; padding: 10px 12px; font-size: 12px; color: var(--secondary); font-weight: 700; text-align: center;">${headerTitle}</th>
+                <th style="width: 30%; padding: 10px 12px; font-size: 12px; color: var(--secondary); font-weight:500; text-align: left;">이름</th>
+                <th style="width: 40%; padding: 10px 4px; font-size: 12px; color: var(--secondary); font-weight:500; text-align: center;">학교</th>
+                <th style="width: 30%; padding: 10px 12px; font-size: 12px; color: var(--secondary); font-weight:500; text-align: center;">${headerTitle}</th>
                 </tr></thead>
-                <tbody>${rows || '<tr><td colspan="3" style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:700;">조회 대상 없음</td></tr>'}</tbody>
+                <tbody>${rows || '<tr><td colspan="3" style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:500;">조회 대상 없음</td></tr>'}</tbody>
             </table></div>`;
     const attBtn = document.getElementById('ledger-mode-att');
     const hwBtn = document.getElementById('ledger-mode-hw');
@@ -1568,24 +1568,24 @@ async function openExamGradeView(classId) {
         const archiveArg = String(exam.archiveFile || '').replace(/'/g, "\\'");
         return `<div onclick="openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}', '${archiveArg}')" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
             <div>
-                <div style="font-weight:700; color: var(--text); font-size: 15px; line-height: 1.4;">${exam.title}</div>
+                <div style="font-weight:500; color: var(--text); font-size: 15px; line-height: 1.4;">${exam.title}</div>
                 <div style="font-size: 11px; color: var(--secondary); margin-top: 4px; font-weight: 600; line-height: 1.5;">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${activeCountForAssignment}명 (${pct}%)</div>
             </div>
             <div style="text-align: right; display: flex; align-items: center; gap: 10px;">
                 <div>
-                    <div style="font-size: 20px; font-weight:700; color: var(--primary); line-height: 1;">${avg}</div>
-                    <div style="font-size: 10px; color: var(--secondary); font-weight:700; margin-top:4px;">평균</div>
+                    <div style="font-size: 20px; font-weight:500; color: var(--primary); line-height: 1;">${avg}</div>
+                    <div style="font-size: 10px; color: var(--secondary); font-weight:500; margin-top:4px;">평균</div>
                 </div>
-               <button class="btn" onclick="event.stopPropagation(); openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}', '${archiveArg}');" style="padding: 7px 10px; font-size: 11px; font-weight:700; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
+               <button class="btn" onclick="event.stopPropagation(); openExamDetail('${classId}', '${String(exam.title || '').replace(/'/g, "\\'")}', '${exam.date}', '${archiveArg}');" style="padding: 7px 10px; font-size: 11px; font-weight:500; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
             </div>
         </div>`;
     }).join('');
 
     showModal('시험성적', `
         <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
-            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:700; border-radius: 12px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
+            <button class="btn btn-primary" style="padding: 8px 14px; font-size: 12px; font-weight:500; border-radius: 12px;" onclick="closeModal(true); if(typeof openOMR==='function') openOMR('', '단원평가', 20, '${classId}', '', '', 'examList');">새 시험 입력</button>
         </div>
-        ${rows || `<div style="text-align:center; padding:40px 20px; color:var(--secondary); font-size:13px; font-weight:700;">시험 기록 없음</div>`}
+        ${rows || `<div style="text-align:center; padding:40px 20px; color:var(--secondary); font-size:13px; font-weight:500;">시험 기록 없음</div>`}
     `);
 }
 
@@ -1659,17 +1659,17 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     const submittedHTML = submitted.map(s => {
         const sArchive = s.session?.archive_file ? String(s.session.archive_file).replace(/'/g, "\\'") : examArchiveFile;
         return `<tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 14px 12px; font-weight:700; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
-            <td style="text-align: center; font-weight:700; color: var(--text); padding: 14px 4px; font-size: 14px;">${s.score}점</td>
+            <td style="padding: 14px 12px; font-weight:500; color: var(--primary); font-size: 14px; line-height: 1.4;">${s.name}</td>
+            <td style="text-align: center; font-weight:500; color: var(--text); padding: 14px 4px; font-size: 14px;">${s.score}점</td>
             <td style="padding: 14px 4px;">
                 <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                    ${s.wrongs.length ? s.wrongs.map(qid => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(s.session, qid) : `<span style="background: rgba(var(--error-rgb),0.10); color: var(--error); padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 1px solid rgba(var(--error-rgb),0.18);">Q${qid}</span>`).join('') : '<span style="color: var(--secondary); font-size: 11px; font-weight: 600;">없음</span>'}
+                    ${s.wrongs.length ? s.wrongs.map(qid => typeof buildWrongUnitChip === 'function' ? buildWrongUnitChip(s.session, qid) : `<span style="background: rgba(var(--error-rgb),0.10); color: var(--error); padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight:500; border: 1px solid rgba(var(--error-rgb),0.18);">Q${qid}</span>`).join('') : '<span style="color: var(--secondary); font-size: 11px; font-weight: 600;">없음</span>'}
                 </div>
             </td>
             <td style="text-align: right; padding: 14px 12px;">
                 <div style="display: flex; gap: 6px; justify-content: flex-end;">
-                    <button class="btn" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
-                    <button class="btn" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); border-radius: 8px; font-weight: 700; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${sArchive}')">삭제</button>
+                    <button class="btn" style="padding: 4px 10px; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','${s.sessionId || ''}','${sArchive}','examDetail','${examDate}')">수정</button>
+                    <button class="btn" style="padding: 4px 10px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); border-radius: 8px; font-weight:500; min-height: 32px;" onclick="deleteExamSession('${s.sessionId || ''}','${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${sArchive}')">삭제</button>
                 </div>
             </td>
         </tr>`;
@@ -1677,9 +1677,9 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
 
     const pendingHTML = pending.map(s => `<tr style="background-color: var(--bg); border-bottom: 1px solid var(--border);">
         <td style="padding: 14px 12px; color: var(--secondary); font-weight: 600; font-size: 14px;">${s.name}</td>
-        <td colspan="2" style="text-align: center; font-size: 12px; color: var(--secondary); font-weight: 700; line-height: 1.5;">미제출</td>
+        <td colspan="2" style="text-align: center; font-size: 12px; color: var(--secondary); font-weight:500; line-height: 1.5;">미제출</td>
         <td style="text-align: right; padding: 14px 12px;">
-            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:700; border-radius: 8px; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
+            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; font-weight:500; border-radius: 8px; min-height: 32px;" onclick="closeModal(true);openOMR('${s.id}','${examTitle.replace(/'/g, "\\'")}',${qCount},'${classId}','','${examArchiveFile}','examDetail','${examDate}')">입력</button>
         </td>
     </tr>`).join('');
 
@@ -1687,23 +1687,23 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
 
     showModal(`${examTitle}`, `
         <div style="padding: 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; text-align: center;">
-            <div style="font-size: 14px; font-weight:700; color: var(--text); line-height: 1.4;">제출 완료: <b style="color: var(--success);">${submitted.length}명</b> / 전체 ${submitted.length + pending.length}명</div>
+            <div style="font-size: 14px; font-weight:500; color: var(--text); line-height: 1.4;">제출 완료: <b style="color: var(--success);">${submitted.length}명</b> / 전체 ${submitted.length + pending.length}명</div>
             <div style="font-size: 11px; font-weight: 600; color: var(--secondary); margin-top: 4px; line-height: 1.5;">${examDate} · ${qCount}문항 기준</div>
         </div>
         <div style="margin-bottom: 24px; border: 1px solid rgba(var(--primary-rgb),0.16); border-radius: 18px; padding: 16px; background: rgba(var(--primary-rgb),0.04);">
-            <div style="font-size: 14px; font-weight:700; margin-bottom: 12px; color: var(--primary); line-height: 1.3;">반 취약 단원 TOP</div>
+            <div style="font-size: 14px; font-weight:500; margin-bottom: 12px; color: var(--primary); line-height: 1.3;">반 취약 단원 TOP</div>
             ${weakUnitHtml}
         </div>
         <div style="margin-bottom: 12px; text-align: right;">
-            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); font-weight:700; border-radius: 12px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${examArchiveFile}')">시험 기록 전체 삭제</button>
+            <button class="btn" style="padding: 6px 12px; font-size: 11px; color: var(--error); border: 1px solid rgba(var(--error-rgb),0.18); background: rgba(var(--error-rgb),0.08); font-weight:500; border-radius: 12px;" onclick="deleteExamByClass('${classId}','${examTitle.replace(/'/g, "\\'")}','${examDate}','${examArchiveFile}')">시험 기록 전체 삭제</button>
         </div>
         <table style="width: 100%; font-size: 13px; border-collapse: collapse; table-layout: fixed;">
             <thead>
                 <tr style="border-bottom: 2px solid var(--border); background: var(--bg);">
-                    <th style="width: 25%; text-align: left; padding: 10px 12px; color: var(--secondary); font-weight: 700; font-size: 12px;">이름</th>
-                    <th style="width: 20%; text-align: center; padding: 10px 4px; color: var(--secondary); font-weight: 700; font-size: 12px;">점수</th>
-                    <th style="width: 35%; text-align: left; padding: 10px 4px; color: var(--secondary); font-weight: 700; font-size: 12px;">오답</th>
-                    <th style="width: 20%; text-align: right; padding: 10px 12px; color: var(--secondary); font-weight: 700; font-size: 12px;">관리</th>
+                    <th style="width: 25%; text-align: left; padding: 10px 12px; color: var(--secondary); font-weight:500; font-size: 12px;">이름</th>
+                    <th style="width: 20%; text-align: center; padding: 10px 4px; color: var(--secondary); font-weight:500; font-size: 12px;">점수</th>
+                    <th style="width: 35%; text-align: left; padding: 10px 4px; color: var(--secondary); font-weight:500; font-size: 12px;">오답</th>
+                    <th style="width: 20%; text-align: right; padding: 10px 12px; color: var(--secondary); font-weight:500; font-size: 12px;">관리</th>
                 </tr>
             </thead>
             <tbody>${submittedHTML}${pendingHTML}</tbody>
@@ -1753,8 +1753,8 @@ async function copyPlannerStudentLink(studentId) {
         toast('플래너 링크가 복사되었습니다.', 'info');
     } catch (e) {
         showModal('플래너 링크', `
-            <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-bottom:8px;">아래 링크를 복사하세요. PIN은 포함되지 않습니다.</div>
-            <div style="word-break:break-all; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:12px; font-size:13px; font-weight:700; color:var(--text);">${apEscapeHtml(url)}</div>
+            <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:8px;">아래 링크를 복사하세요. PIN은 포함되지 않습니다.</div>
+            <div style="word-break:break-all; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:12px; font-size:13px; font-weight:500; color:var(--text);">${apEscapeHtml(url)}</div>
         `);
     }
 }
@@ -1852,13 +1852,13 @@ function injectClassPlannerReviewStyles() {
         }
         .class-planner-review .cls-planner-hero-title {
             font-size: 18px;
-            font-weight: 800;
+            font-weight:500;
             line-height: 1.3;
         }
         .class-planner-review .cls-planner-hero-sub {
             margin-top: 4px;
             font-size: 12px;
-            font-weight: 700;
+            font-weight:500;
             color: var(--secondary);
         }
         .class-planner-review .cls-planner-nav,
@@ -1883,7 +1883,7 @@ function injectClassPlannerReviewStyles() {
             background: var(--surface);
             color: var(--text);
             font-size: 12px;
-            font-weight: 800;
+            font-weight:500;
             line-height: 1.2;
             display: inline-flex;
             align-items: center;
@@ -1918,12 +1918,12 @@ function injectClassPlannerReviewStyles() {
         }
         .class-planner-review .cls-planner-tab-day {
             font-size: 11px;
-            font-weight: 800;
+            font-weight:500;
             opacity: 0.78;
         }
         .class-planner-review .cls-planner-tab-date {
             font-size: 13px;
-            font-weight: 800;
+            font-weight:500;
         }
         .class-planner-review .cls-planner-list {
             display: grid;
@@ -1932,7 +1932,7 @@ function injectClassPlannerReviewStyles() {
         .class-planner-review .cls-planner-date-title {
             padding: 0 4px;
             font-size: 12px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--secondary);
         }
         .class-planner-review .cls-planner-student-card {
@@ -1945,7 +1945,7 @@ function injectClassPlannerReviewStyles() {
         .class-planner-review .cls-planner-student-name {
             margin-bottom: 10px;
             font-size: 14px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--text);
         }
         .class-planner-review .cls-planner-plan-list,
@@ -1976,7 +1976,7 @@ function injectClassPlannerReviewStyles() {
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            font-weight: 900;
+            font-weight:500;
         }
         .class-planner-review .cls-planner-plan-item.done .cls-planner-plan-mark {
             background: var(--primary);
@@ -1988,7 +1988,7 @@ function injectClassPlannerReviewStyles() {
         }
         .class-planner-review .cls-planner-plan-title {
             font-size: 13px;
-            font-weight: 700;
+            font-weight:500;
             line-height: 1.45;
             word-break: break-word;
         }
@@ -2004,12 +2004,12 @@ function injectClassPlannerReviewStyles() {
             background: var(--primary-soft);
             color: var(--primary);
             font-size: 11px;
-            font-weight: 800;
+            font-weight:500;
         }
         .class-planner-review .cls-planner-empty,
         .class-planner-review .cls-planner-cell-empty {
             font-size: 12px;
-            font-weight: 700;
+            font-weight:500;
             color: var(--secondary);
         }
         .class-planner-review .cls-planner-empty {
@@ -2033,7 +2033,7 @@ function injectClassPlannerReviewStyles() {
             border-bottom: 1px solid var(--border);
             background: var(--surface-2);
             font-size: 12px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--secondary);
             text-align: left;
             vertical-align: bottom;
@@ -2049,7 +2049,7 @@ function injectClassPlannerReviewStyles() {
         .class-planner-review .cls-planner-week-student {
             min-width: 92px;
             font-size: 13px;
-            font-weight: 800;
+            font-weight:500;
         }
         .class-planner-review .cls-planner-week-head-day,
         .class-planner-review .cls-planner-week-head-date {
@@ -2057,13 +2057,13 @@ function injectClassPlannerReviewStyles() {
         }
         .class-planner-review .cls-planner-week-head-day {
             font-size: 11px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--secondary);
         }
         .class-planner-review .cls-planner-week-head-date {
             margin-top: 2px;
             font-size: 13px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--text);
         }
         .class-planner-review .cls-planner-cell-item {
@@ -2072,7 +2072,7 @@ function injectClassPlannerReviewStyles() {
             background: var(--surface-2);
             border: 1px solid var(--primary-soft);
             font-size: 12px;
-            font-weight: 700;
+            font-weight:500;
             line-height: 1.45;
             color: var(--text);
             word-break: break-word;
@@ -2115,7 +2115,7 @@ function injectClassPlannerReviewStyles() {
             border-right: 1px solid rgba(15,23,42,0.05);
             background: var(--surface-2);
             font-size: 11px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--secondary);
             text-align: left;
             vertical-align: bottom;
@@ -2149,13 +2149,13 @@ function injectClassPlannerReviewStyles() {
         }
         .class-planner-review .cls-planner-month-head-day {
             font-size: 10px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--secondary);
         }
         .class-planner-review .cls-planner-month-head-date {
             margin-top: 2px;
             font-size: 12px;
-            font-weight: 800;
+            font-weight:500;
             color: var(--text);
         }
         .class-planner-review #planner-control-body {
@@ -2532,7 +2532,7 @@ function renderPlannerRateBar(rate) {
             <div style="flex:1; height:7px; background:var(--surface-2); border:1px solid var(--border); border-radius:999px; overflow:hidden;">
                 <div style="height:100%; width:${safeRate}%; background:var(--primary); border-radius:999px;"></div>
             </div>
-            <span style="width:34px; text-align:right; font-size:12px; font-weight:700; color:var(--text);">${safeRate}%</span>
+            <span style="width:34px; text-align:right; font-size:12px; font-weight:500; color:var(--text);">${safeRate}%</span>
         </div>
     `;
 }
@@ -2549,7 +2549,7 @@ function getPlannerMonthBounds(month) {
 function renderPlannerPlanList(plans, feedback) {
     const list = Array.isArray(plans) ? plans : [];
     if (!list.length) {
-        return `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; border:1px dashed var(--border); border-radius:14px; background:var(--surface-2);">해당 기간에 등록된 계획이 없습니다.</div>`;
+        return `<div style="padding:28px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400; border:1px dashed var(--border); border-radius:14px; background:var(--surface-2);">해당 기간에 등록된 계획이 없습니다.</div>`;
     }
 
     const feedbackMap = new Map((Array.isArray(feedback) ? feedback : []).map(f => [String(f.feedback_date), f]));
@@ -2566,13 +2566,13 @@ function renderPlannerPlanList(plans, feedback) {
         const rate = items.length ? Math.round((done / items.length) * 100) : 0;
         const fb = feedbackMap.get(date);
         const feedbackHtml = fb && String(fb.teacher_comment || fb.badge || '').trim()
-            ? `<div style="margin-top:10px; padding:10px 12px; border-radius:12px; background:var(--primary-soft); color:var(--text); font-size:12px; font-weight:700; line-height:1.5;">${apEscapeHtml(`${fb.badge || ''} ${fb.teacher_comment || ''}`.trim())}</div>`
+            ? `<div style="margin-top:10px; padding:10px 12px; border-radius:12px; background:var(--primary-soft); color:var(--text); font-size:12px; font-weight:400; line-height:1.5;">${apEscapeHtml(`${fb.badge || ''} ${fb.teacher_comment || ''}`.trim())}</div>`
             : '';
 
         return `
             <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
                 <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 14px; background:var(--surface-2); border-bottom:1px solid var(--border);">
-                    <div style="font-size:13px; font-weight:800; color:var(--text);">${apEscapeHtml(date)}</div>
+                    <div style="font-size:13px; font-weight:500; color:var(--text);">${apEscapeHtml(date)}</div>
                     <div style="display:flex; align-items:center; gap:8px; min-width:150px;">
                         ${renderPlannerRateBar(rate)}
                     </div>
@@ -2584,10 +2584,10 @@ function renderPlannerPlanList(plans, feedback) {
                         const repeat = String(plan.repeat_rule || '').trim();
                         return `
                             <div style="display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid var(--border);">
-                                <span style="flex:0 0 auto; width:22px; height:22px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; background:${isDone ? 'var(--primary)' : 'var(--surface-2)'}; color:${isDone ? '#fff' : 'var(--secondary)'}; border:1px solid ${isDone ? 'var(--primary)' : 'var(--border)'};">${isDone ? '✓' : ''}</span>
+                                <span style="flex:0 0 auto; width:22px; height:22px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:500; background:${isDone ? 'var(--primary)' : 'var(--surface-2)'}; color:${isDone ? '#fff' : 'var(--secondary)'}; border:1px solid ${isDone ? 'var(--primary)' : 'var(--border)'};">${isDone ? '✓' : ''}</span>
                                 <div style="min-width:0; flex:1;">
-                                    <div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.45; ${isDone ? 'opacity:.55; text-decoration:line-through;' : ''}">${apEscapeHtml(plan.title || '')}</div>
-                                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px;">${apEscapeHtml(subject)}${repeat ? ` · ${repeat === 'daily' ? '매일 반복' : repeat === 'weekly' ? '매주 반복' : repeat}` : ''}</div>
+                                    <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.45; ${isDone ? 'opacity:.55; text-decoration:line-through;' : ''}">${apEscapeHtml(plan.title || '')}</div>
+                                    <div style="font-size:11px; font-weight:400; color:var(--secondary); margin-top:3px;">${apEscapeHtml(subject)}${repeat ? ` · ${repeat === 'daily' ? '매일 반복' : repeat === 'weekly' ? '매주 반복' : repeat}` : ''}</div>
                                 </div>
                             </div>
                         `;
@@ -2608,17 +2608,17 @@ async function openPlannerStudentPlans(studentId, monthOrDate) {
         <div style="display:flex; flex-direction:column; gap:14px;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:14px; background:var(--surface-2); border-radius:16px;">
                 <div style="min-width:0;">
-                    <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.3;">${apEscapeHtml(student?.name || '학생')}</div>
-                    <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(bounds.month)} 전체 계획</div>
+                    <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.3;">${apEscapeHtml(student?.name || '학생')}</div>
+                    <div style="font-size:12px; font-weight:400; color:var(--secondary); margin-top:4px;">${apEscapeHtml(bounds.month)} 전체 계획</div>
                 </div>
-                <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="${classId ? `renderPlannerControl('${classId}')` : 'closeModal(true)'}">목록</button>
+                <button class="btn" style="min-height:38px; padding:8px 12px; font-size:12px; font-weight:500; border-radius:12px; background:var(--surface); border:1px solid var(--border);" onclick="${classId ? `renderPlannerControl('${classId}')` : 'closeModal(true)'}">목록</button>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="month" id="planner-student-month" class="btn" value="${bounds.month}" style="flex:1; text-align:left; background:var(--surface); border:1px solid var(--border);">
-                <button class="btn btn-primary" style="min-height:44px; padding:10px 14px; font-size:12px; font-weight:700;" onclick="openPlannerStudentPlans('${studentId}', document.getElementById('planner-student-month')?.value)">조회</button>
+                <button class="btn btn-primary" style="min-height:44px; padding:10px 14px; font-size:12px; font-weight:500;" onclick="openPlannerStudentPlans('${studentId}', document.getElementById('planner-student-month')?.value)">조회</button>
             </div>
             <div id="planner-student-plans-body">
-                <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>
+                <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400;">불러오는 중...</div>
             </div>
         </div>
     `);
@@ -2630,7 +2630,7 @@ async function openPlannerStudentPlans(studentId, monthOrDate) {
         const body = document.getElementById('planner-student-plans-body');
         if (!body) return;
         if (!data?.success) {
-            body.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">계획을 불러오지 못했습니다.</div>`;
+            body.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:400;">계획을 불러오지 못했습니다.</div>`;
             toast(data?.message || data?.error || '플래너 상세 조회 실패', 'warn');
             return;
         }
@@ -2638,7 +2638,7 @@ async function openPlannerStudentPlans(studentId, monthOrDate) {
     } catch (e) {
         console.error('[openPlannerStudentPlans] failed:', e);
         const body = document.getElementById('planner-student-plans-body');
-        if (body) body.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">계획 조회 중 오류가 발생했습니다.</div>`;
+        if (body) body.innerHTML = `<div style="padding:28px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:400;">계획 조회 중 오류가 발생했습니다.</div>`;
         toast('계획 조회 중 오류가 발생했습니다.', 'error');
     }
 }
@@ -2649,7 +2649,7 @@ function renderPlannerOverviewTable(classId, date, rows) {
 
     const list = Array.isArray(rows) ? rows : [];
     if (!list.length) {
-        root.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">조회 대상 학생이 없습니다.</div>`;
+        root.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400;">조회 대상 학생이 없습니다.</div>`;
         return;
     }
 
@@ -2658,16 +2658,16 @@ function renderPlannerOverviewTable(classId, date, rows) {
         const fbText = fb ? `${fb.badge || ''} ${fb.teacher_comment || '피드백 저장됨'}`.trim() : '미작성';
         return `
             <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:12px 10px; font-size:14px; font-weight:700; color:var(--text);">${apEscapeHtml(row.name)}</td>
-                <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--text);">${Number(row.total || 0)}</td>
-                <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:700; color:var(--primary);">${Number(row.done || 0)}</td>
+                <td style="padding:12px 10px; font-size:14px; font-weight:500; color:var(--text);">${apEscapeHtml(row.name)}</td>
+                <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:500; color:var(--text);">${Number(row.total || 0)}</td>
+                <td style="padding:12px 6px; text-align:center; font-size:13px; font-weight:500; color:var(--primary);">${Number(row.done || 0)}</td>
                 <td style="padding:12px 10px;">${renderPlannerRateBar(row.rate)}</td>
-                <td style="padding:12px 10px; font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${apEscapeHtml(fbText)}</td>
+                <td style="padding:12px 10px; font-size:12px; font-weight:400; color:${fb ? 'var(--text)' : 'var(--secondary)'}; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${apEscapeHtml(fbText)}</td>
                 <td style="padding:12px 10px; text-align:right;">
                     <div style="display:flex; gap:6px; justify-content:flex-end;">
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:700; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
+                        <button class="btn" style="min-height:36px; padding:8px 10px; font-size:11px; font-weight:500; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크</button>
                     </div>
                 </td>
             </tr>
@@ -2681,17 +2681,17 @@ function renderPlannerOverviewTable(classId, date, rows) {
             <div style="border:1px solid var(--border); border-radius:16px; padding:14px; background:var(--surface); margin-bottom:10px;">
                 <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:10px;">
                     <div style="min-width:0;">
-                        <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.3;">${apEscapeHtml(row.name)}</div>
-                        <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">할 일 ${Number(row.total || 0)} · 완료 ${Number(row.done || 0)}</div>
+                        <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.3;">${apEscapeHtml(row.name)}</div>
+                        <div style="font-size:12px; font-weight:400; color:var(--secondary); margin-top:4px;">할 일 ${Number(row.total || 0)} · 완료 ${Number(row.done || 0)}</div>
                     </div>
-                    <div style="font-size:15px; font-weight:700; color:var(--primary);">${Number(row.rate || 0)}%</div>
+                    <div style="font-size:13px; font-weight:500; color:var(--primary);">${Number(row.rate || 0)}%</div>
                 </div>
                 ${renderPlannerRateBar(row.rate)}
-                <div style="font-size:12px; font-weight:700; color:${fb ? 'var(--text)' : 'var(--secondary)'}; margin-top:10px; line-height:1.5;">${apEscapeHtml(fbText)}</div>
+                <div style="font-size:12px; font-weight:400; color:${fb ? 'var(--text)' : 'var(--secondary)'}; margin-top:10px; line-height:1.5;">${apEscapeHtml(fbText)}</div>
                 <div style="display:flex; gap:8px; margin-top:12px;">
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
-                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:700; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
+                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:500; border-radius:12px; background:var(--surface-2); border:none; color:var(--text);" onclick="openPlannerStudentPlans('${row.student_id}', '${date}')">상세</button>
+                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:500; border-radius:12px; background:var(--surface-2); border:none;" onclick="openPlannerFeedbackModal('${row.student_id}', '${date}', ${Number(row.rate || 0)})">피드백</button>
+                    <button class="btn" style="flex:1; min-height:42px; padding:8px; font-size:12px; font-weight:500; border-radius:12px; background:var(--primary-soft); border:none; color:var(--primary);" onclick="copyPlannerStudentLink('${row.student_id}')">링크 복사</button>
                 </div>
             </div>
         `;
@@ -2712,12 +2712,12 @@ function renderPlannerOverviewTable(classId, date, rows) {
             <table style="width:100%; border-collapse:collapse; min-width:720px;">
                 <thead>
                     <tr style="background:var(--surface-2); border-bottom:1px solid var(--border);">
-                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">학생</th>
-                        <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:700; color:var(--secondary);">할 일</th>
-                        <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:700; color:var(--secondary);">완료</th>
-                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">이행률</th>
-                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:700; color:var(--secondary);">피드백</th>
-                        <th style="padding:10px; text-align:right; font-size:12px; font-weight:700; color:var(--secondary);">관리</th>
+                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:500; color:var(--secondary);">학생</th>
+                        <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:500; color:var(--secondary);">할 일</th>
+                        <th style="padding:10px 6px; text-align:center; font-size:12px; font-weight:500; color:var(--secondary);">완료</th>
+                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:500; color:var(--secondary);">이행률</th>
+                        <th style="padding:10px; text-align:left; font-size:12px; font-weight:500; color:var(--secondary);">피드백</th>
+                        <th style="padding:10px; text-align:right; font-size:12px; font-weight:500; color:var(--secondary);">관리</th>
                     </tr>
                 </thead>
                 <tbody>${desktopRows}</tbody>
@@ -2753,7 +2753,7 @@ async function renderPlannerControl(classId) {
             ${renderClassPlannerModeTabs(classId)}
             ${(window.innerWidth <= 700 || state.ui.classPlannerMode !== 'month') ? renderClassPlannerDayTabs(classId, state.ui.classPlannerWeekStart, state.ui.classPlannerSelectedDate) : ''}
             <div id="planner-control-body">
-                <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>
+                <div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400;">불러오는 중...</div>
             </div>
         </div>
     `);
@@ -2764,7 +2764,7 @@ async function renderPlannerControl(classId) {
 async function refreshPlannerControl(classId) {
     ensureClassPlannerState();
     const body = document.getElementById('planner-control-body');
-    if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700;">불러오는 중...</div>`;
+    if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400;">불러오는 중...</div>`;
 
     try {
         const mode = window.innerWidth <= 700 ? 'day' : (state.ui.classPlannerMode || 'day');
@@ -2774,7 +2774,7 @@ async function refreshPlannerControl(classId) {
         if (body) body.innerHTML = renderClassPlannerContent(classId, periodData);
     } catch (e) {
         console.error('[refreshPlannerControl] failed:', e);
-        if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:700;">플래너 조회 중 오류가 발생했습니다.</div>`;
+        if (body) body.innerHTML = `<div style="padding:32px 12px; text-align:center; color:var(--error); font-size:13px; font-weight:400;">플래너 조회 중 오류가 발생했습니다.</div>`;
         toast('플래너 조회 중 오류가 발생했습니다.', 'error');
     }
 }
@@ -2834,8 +2834,8 @@ function openPlannerFeedbackModal(studentId, date, currentRate) {
     showModal('플래너 피드백', `
         <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
-                <div style="font-size:15px; font-weight:700; color:var(--text);">${apEscapeHtml(s?.name || '학생')}</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px;">${apEscapeHtml(date)} · 현재 이행률 ${safeRate}%</div>
+                <div style="font-size:14px; font-weight:500; color:var(--text);">${apEscapeHtml(s?.name || '학생')}</div>
+                <div style="font-size:12px; font-weight:400; color:var(--secondary); margin-top:4px;">${apEscapeHtml(date)} · 현재 이행률 ${safeRate}%</div>
             </div>
             <select id="planner-feedback-badge" class="btn" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border);">
                 <option value="">배지 없음</option>
@@ -2844,7 +2844,7 @@ function openPlannerFeedbackModal(studentId, date, currentRate) {
                 <option value="👍">👍 좋아요</option>
             </select>
             <textarea id="planner-feedback-comment" class="cls-input" rows="5" placeholder="학생에게 보일 피드백을 입력하세요." style="resize:none;"></textarea>
-            <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:700;" onclick="savePlannerFeedback('${studentId}', '${date}', ${safeRate})">저장</button>
+            <button class="btn btn-primary" style="min-height:48px; font-size:14px; font-weight:500;" onclick="savePlannerFeedback('${studentId}', '${date}', ${safeRate})">저장</button>
         </div>
     `);
 }
