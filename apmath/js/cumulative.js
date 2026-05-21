@@ -217,10 +217,22 @@ async function loadAttendanceLedgerDateData(date, force = false) {
     if (!d) return false;
     const month = d.slice(0, 7);
 
-    await loadMonthlyAttendance(month, force);
-
     if (!state.ui) state.ui = {};
     if (!state.ui.attendanceLedgerDateCache) state.ui.attendanceLedgerDateCache = {};
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+    if (!state.ui.monthlyAttendanceIndex) state.ui.monthlyAttendanceIndex = {};
+
+    try {
+        const monthly = await loadMonthlyAttendance(month, force);
+        if (monthly && state.ui.monthlyAttendanceCache[month]) {
+            buildMonthlyAttendanceRenderIndex(month);
+            state.ui.attendanceLedgerDateCache[d] = true;
+            return true;
+        }
+    } catch (e) {
+        console.warn('[loadAttendanceLedgerDateData] monthly failed:', e);
+    }
+
     if (!force && state.ui.attendanceLedgerDateCache[d]) return true;
 
     try {
@@ -228,6 +240,7 @@ async function loadAttendanceLedgerDateData(date, force = false) {
         const attendanceRows = Array.isArray(data.attendance) ? data.attendance : [];
         const homeworkRows = Array.isArray(data.homework) ? data.homework : [];
         mergeAttendanceLedgerDateRecords(d, attendanceRows, homeworkRows);
+        buildMonthlyAttendanceRenderIndex(month);
         state.ui.attendanceLedgerDateCache[d] = true;
         return true;
     } catch (e) {
@@ -257,7 +270,7 @@ async function changeAttendanceLedgerDate(dateStr) {
     setAttendanceLedgerDate(safeDate);
 
 
-    await loadAttendanceLedgerDateData(safeDate, true);
+    await loadAttendanceLedgerDateData(safeDate, false);
     renderAttendanceLedgerTable();
 }
 
@@ -273,7 +286,7 @@ async function changeAttendanceLedgerMonth(monthStr) {
         state.ui.attendanceLedgerDate = `${safeMonth}-01`;
     }
 
-    await loadAttendanceLedgerDateData(state.ui.attendanceLedgerDate, true);
+    await loadAttendanceLedgerDateData(state.ui.attendanceLedgerDate, false);
     renderAttendanceLedgerTable();
 }
 
@@ -290,15 +303,18 @@ async function loadMonthlyAttendance(month, force = false) {
         month: safeMonth,
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
         homework: Array.isArray(data.homework) ? data.homework : [],
-        academy_schedules: Array.isArray(data.academy_schedules) ? data.academy_schedules : []
+        academy_schedules: Array.isArray(data.academy_schedules) ? data.academy_schedules : [],
+        class_student_meta: Array.isArray(data.class_student_meta) ? data.class_student_meta : []
     } : {
         month: safeMonth,
         attendance: [],
         homework: [],
-        academy_schedules: []
+        academy_schedules: [],
+        class_student_meta: []
     };
 
     state.ui.monthlyAttendanceCache[safeMonth] = payload;
+    buildMonthlyAttendanceRenderIndex(safeMonth);
     return payload;
 }
 
@@ -312,8 +328,137 @@ function getMonthlyAttendanceData() {
         month,
         attendance: [],
         homework: [],
-        academy_schedules: []
+        academy_schedules: [],
+        class_student_meta: []
     };
+}
+
+function attendanceLedgerIndexKey(studentId, date) {
+    return `${String(studentId || '')}__${String(date || '')}`;
+}
+
+function attendanceLedgerMetaIndexKey(studentId, classId) {
+    return `${String(studentId || '')}__${String(classId || '')}`;
+}
+
+function buildMonthlyAttendanceRenderIndex(month) {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+    if (!state.ui.monthlyAttendanceIndex) state.ui.monthlyAttendanceIndex = {};
+
+    const safeMonth = String(month || state.ui.attendanceLedgerMonth || '').slice(0, 7);
+    const cache = state.ui.monthlyAttendanceCache[safeMonth];
+    if (!safeMonth || !cache) {
+        if (safeMonth) state.ui.monthlyAttendanceIndex[safeMonth] = {
+            attendanceByStudentDate: {},
+            homeworkByStudentDate: {},
+            classStudentMetaByStudentClass: {}
+        };
+        return null;
+    }
+
+    const index = {
+        attendanceByStudentDate: {},
+        homeworkByStudentDate: {},
+        classStudentMetaByStudentClass: {}
+    };
+
+    (Array.isArray(cache.attendance) ? cache.attendance : []).forEach(row => {
+        const sid = String(row?.student_id || '');
+        const date = String(row?.date || '');
+        if (sid && date) index.attendanceByStudentDate[attendanceLedgerIndexKey(sid, date)] = row;
+    });
+
+    (Array.isArray(cache.homework) ? cache.homework : []).forEach(row => {
+        const sid = String(row?.student_id || '');
+        const date = String(row?.date || '');
+        if (sid && date) index.homeworkByStudentDate[attendanceLedgerIndexKey(sid, date)] = row;
+    });
+
+    (Array.isArray(cache.class_student_meta) ? cache.class_student_meta : []).forEach(row => {
+        const sid = String(row?.student_id || '');
+        const cid = String(row?.class_id || '');
+        if (!sid) return;
+        if (cid) index.classStudentMetaByStudentClass[attendanceLedgerMetaIndexKey(sid, cid)] = row;
+        if (!index.classStudentMetaByStudentClass[attendanceLedgerMetaIndexKey(sid, '')]) {
+            index.classStudentMetaByStudentClass[attendanceLedgerMetaIndexKey(sid, '')] = row;
+        }
+    });
+
+    state.ui.monthlyAttendanceIndex[safeMonth] = index;
+    return index;
+}
+
+function getMonthlyAttendanceRenderIndex(month) {
+    const safeMonth = String(month || state.ui?.attendanceLedgerMonth || getMonthlyAttendanceData().month || '').slice(0, 7);
+    if (!state.ui) state.ui = {};
+    if (!state.ui.monthlyAttendanceIndex) state.ui.monthlyAttendanceIndex = {};
+    return state.ui.monthlyAttendanceIndex[safeMonth] || buildMonthlyAttendanceRenderIndex(safeMonth) || {
+        attendanceByStudentDate: {},
+        homeworkByStudentDate: {},
+        classStudentMetaByStudentClass: {}
+    };
+}
+
+function normalizeAttendanceStartDate(value) {
+    const text = String(value || '').trim();
+    if (!text) return '';
+    const dashed = text.match(/\d{4}-\d{2}-\d{2}/);
+    if (dashed) return dashed[0];
+    const dotted = text.match(/(\d{4})[\/.](\d{1,2})[\/.](\d{1,2})/);
+    if (!dotted) return '';
+    return `${dotted[1]}-${String(dotted[2]).padStart(2, '0')}-${String(dotted[3]).padStart(2, '0')}`;
+}
+
+function getAttendanceStudentStartDate(studentId, classId = '') {
+    const sid = String(studentId || '');
+    if (!sid) return '';
+    const cid = String(classId || getCumulativeClassIdForStudent(sid) || '');
+    const data = getMonthlyAttendanceData();
+    const index = getMonthlyAttendanceRenderIndex(data.month);
+    const monthlyMeta = index.classStudentMetaByStudentClass[attendanceLedgerMetaIndexKey(sid, cid)] ||
+        index.classStudentMetaByStudentClass[attendanceLedgerMetaIndexKey(sid, '')] ||
+        null;
+    const classMap = (state.db.class_students || []).find(m =>
+        String(m.student_id) === sid &&
+        (!cid || String(m.class_id || '') === cid)
+    ) || null;
+    const student = getCumulativeStudent(sid) || {};
+
+    const candidates = [
+        monthlyMeta?.enrollment_start_date,
+        monthlyMeta?.start_date,
+        monthlyMeta?.joined_at,
+        monthlyMeta?.enrollment_date,
+        monthlyMeta?.class_start_date,
+        monthlyMeta?.class_student_created_at,
+        classMap?.start_date,
+        classMap?.joined_at,
+        classMap?.enrollment_date,
+        classMap?.class_start_date,
+        classMap?.assigned_at,
+        classMap?.created_at,
+        student?.joined_at,
+        student?.enrollment_date,
+        student?.registered_at,
+        student?.start_date,
+        student?.created_at,
+        monthlyMeta?.student_created_at,
+        monthlyMeta?.enrollment_created_at
+    ];
+
+    for (const value of candidates) {
+        const date = normalizeAttendanceStartDate(value);
+        if (date) return date;
+    }
+    return '';
+}
+
+function isAttendanceBeforeStudentStart(studentId, date) {
+    const safeDate = normalizeAttendanceLedgerDate(date);
+    if (!safeDate) return false;
+    const startDate = getAttendanceStudentStartDate(studentId);
+    return !!(startDate && safeDate < startDate);
 }
 
 function isAttendanceClassDay(studentId, date) {
@@ -333,19 +478,24 @@ function isAttendanceClassDay(studentId, date) {
 function getMonthlyAttendanceStatus(studentId, date) {
     const data = getMonthlyAttendanceData();
     const sid = String(studentId);
-    const attendance = (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date);
-    const homework = (data.homework || []).find(h => String(h.student_id) === sid && String(h.date || '') === date);
+    const index = getMonthlyAttendanceRenderIndex(data.month);
+    const key = attendanceLedgerIndexKey(sid, date);
+    const attendance = index.attendanceByStudentDate[key] || null;
+    const homework = index.homeworkByStudentDate[key] || null;
+    const beforeStart = isAttendanceBeforeStudentStart(studentId, date);
 
     return {
-        attendance: attendance?.status || (isAttendanceClassDay(studentId, date) ? '등원' : ''),
-        homework: homework?.status || ''
+        attendance: beforeStart ? '' : (attendance?.status || (isAttendanceClassDay(studentId, date) ? '등원' : '')),
+        homework: beforeStart ? '' : (homework?.status || '')
     };
 }
 
 function getMonthlyAttendanceRecord(studentId, date) {
+    if (isAttendanceBeforeStudentStart(studentId, date)) return null;
     const data = getMonthlyAttendanceData();
     const sid = String(studentId);
-    return (data.attendance || []).find(a => String(a.student_id) === sid && String(a.date || '') === date) || null;
+    const index = getMonthlyAttendanceRenderIndex(data.month);
+    return index.attendanceByStudentDate[attendanceLedgerIndexKey(sid, date)] || null;
 }
 
 /**
@@ -354,12 +504,10 @@ function getMonthlyAttendanceRecord(studentId, date) {
 function getAttendanceMetaForCumulative(studentId, date) {
     const sid = String(studentId);
     const data = getMonthlyAttendanceData();
+    const index = getMonthlyAttendanceRenderIndex(data.month);
 
-    // 1. 월간 캐시 우선 조회
-    const monthlyRecord = (data.attendance || []).find(a =>
-        String(a.student_id) === sid &&
-        String(a.date || '') === String(date)
-    );
+    // 1. 월간 캐시 인덱스 우선 조회
+    const monthlyRecord = index.attendanceByStudentDate[attendanceLedgerIndexKey(sid, date)] || null;
 
     // 2. 캐시 부재 시 state.db Fallback
     const todayRecord = (state.db.attendance || []).find(a =>
@@ -367,7 +515,7 @@ function getAttendanceMetaForCumulative(studentId, date) {
         String(a.date || '') === String(date)
     );
 
-    const record = monthlyRecord || todayRecord || null;
+    const record = isAttendanceBeforeStudentStart(studentId, date) ? null : (monthlyRecord || todayRecord || null);
     const status = record?.status || '';
 
     const tags = String(record?.tags || '')
@@ -411,12 +559,21 @@ function renderAttendanceMetaDotsForCumulative(studentId, date) {
 }
 
 function syncMonthlyAttendanceMetaToState(studentId, date, patch = {}) {
-    const sid = String(studentId);
+    const sid = String(studentId || '');
+    const safeDate = normalizeAttendanceLedgerDate(date);
+    if (!sid || !safeDate) return null;
+
+    if (!state.ui) state.ui = {};
+    if (!state.db) state.db = {};
+    if (!state.db.attendance) state.db.attendance = [];
+    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
+    if (!state.ui.monthlyAttendanceIndex) state.ui.monthlyAttendanceIndex = {};
+
     const applyPatch = function(list) {
         if (!Array.isArray(list)) return null;
-        let rec = list.find(a => String(a.student_id) === sid && String(a.date || '') === date);
+        let rec = list.find(a => String(a.student_id) === sid && String(a.date || '') === safeDate);
         if (!rec) {
-            rec = { student_id: sid, date, status: patch.status || '미기록', tags: '', memo: '' };
+            rec = { student_id: sid, date: safeDate, status: patch.status || '미기록', tags: '', memo: '' };
             list.push(rec);
         }
         if (Object.prototype.hasOwnProperty.call(patch, 'status')) rec.status = patch.status;
@@ -426,14 +583,19 @@ function syncMonthlyAttendanceMetaToState(studentId, date, patch = {}) {
         return rec;
     };
 
-    if (!state.db.attendance) state.db.attendance = [];
     const dbRec = applyPatch(state.db.attendance);
-
-    const month = String(date || '').slice(0, 7);
-    if (!state.ui.monthlyAttendanceCache) state.ui.monthlyAttendanceCache = {};
-    if (state.ui.monthlyAttendanceCache[month]) {
-        if (!state.ui.monthlyAttendanceCache[month].attendance) state.ui.monthlyAttendanceCache[month].attendance = [];
-        applyPatch(state.ui.monthlyAttendanceCache[month].attendance);
+    const month = safeDate.slice(0, 7);
+    const cache = state.ui.monthlyAttendanceCache[month];
+    if (cache) {
+        if (!Array.isArray(cache.attendance)) cache.attendance = [];
+        applyPatch(cache.attendance);
+        buildMonthlyAttendanceRenderIndex(month);
+    } else {
+        state.ui.monthlyAttendanceIndex[month] = state.ui.monthlyAttendanceIndex[month] || {
+            attendanceByStudentDate: {},
+            homeworkByStudentDate: {},
+            classStudentMetaByStudentClass: {}
+        };
     }
 
     return dbRec;
@@ -576,6 +738,9 @@ function renderAttendanceCellContent(studentId, date) {
     const today = new Date().toLocaleDateString('sv-SE');
 
     if (date > today) return '';
+    if (isAttendanceBeforeStudentStart(studentId, date)) {
+        return '<span class="att-sign att-not-enrolled-sign" style="font-size:12px;font-weight:400;color:var(--secondary);">-</span>';
+    }
 
     const meta = getAttendanceMetaForCumulative(studentId, date);
     const status = meta.record?.status || '';
@@ -667,6 +832,7 @@ function openAttendanceLedger() {
 .att-dc { position: relative; padding: 3px; text-align: center; width: 32px; min-width: 32px; cursor: pointer; user-select: none; }
 .att-dc:active { opacity: .7; }
 .att-no-class { cursor: default; background: var(--surface); }
+.att-not-enrolled { cursor: default; background: var(--surface-2); color: var(--secondary); }
 .att-grp-row td { background: var(--surface-2); }
 .att-grp-nc { position: sticky; left: 0; z-index: 11; background: var(--surface-2); font-size: 12px; font-weight: 800; color: var(--text); padding: 5px 12px; text-align: center; border-right: 2px solid var(--border) !important; }
 .att-student-nc { padding: 4px 12px; min-width: 90px; text-align: center; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
@@ -702,7 +868,7 @@ function openAttendanceLedger() {
   <div id="att-tbl-wrap"><div id="att-tbl-root"></div></div>
 </div>`;
 
-    loadAttendanceLedgerDateData(selectedDate, true).then(function() {
+    loadAttendanceLedgerDateData(selectedDate, false).then(function() {
         renderAttendanceLedgerTable();
     });
 }
@@ -759,9 +925,10 @@ function renderAttendanceLedgerTable() {
                 const sched = getMonthlyScheduleBadges(sid, d);
                 const isHol = sched.globalClosed || sched.studentClosed;
                 const isClassDay = isAttendanceClassDay(sid, d);
-                const baseCls = (isHol || isClassDay) ? 'att-dc' : 'att-dc att-no-class';
+                const beforeStart = isAttendanceBeforeStudentStart(sid, d);
+                const baseCls = beforeStart ? 'att-dc att-not-enrolled' : ((isHol || isClassDay) ? 'att-dc' : 'att-dc att-no-class');
                 const cls = d === selectedDate ? `${baseCls} att-selected-date` : baseCls;
-                const click = (isHol || isClassDay) ? `onclick="toggleAttendanceCellStatus('${sid}','${d}')"` : '';
+                const click = (!beforeStart && (isHol || isClassDay)) ? `onclick="toggleAttendanceCellStatus('${sid}','${d}')"` : '';
                 return `<td class="${cls}" id="att-cell-${sid}-${d}" data-date="${apEscapeHtml(d)}" ${click}>${renderAttendanceCellContent(sid, d)}</td>`;
             }).join('');
 
@@ -783,6 +950,7 @@ function renderAttendanceLedgerTable() {
 async function toggleAttendanceCellStatus(studentId, date) {
     const today = getAttendanceLedgerTodayStr();
     if (date > today) return;
+    if (isAttendanceBeforeStudentStart(studentId, date)) return;
 
     const sched = getMonthlyScheduleBadges(studentId, date);
     const isHol = sched.globalClosed || sched.studentClosed;
