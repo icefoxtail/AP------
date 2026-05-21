@@ -191,6 +191,42 @@ UI 관련 작업 완료 보고에는 반드시 아래를 적는다.
 - 기능 추가 외 기존 문구·버튼명·화면명·메뉴명·운영 용어를 임의로 변경하지 말 것.
 - 사용자가 명시적으로 요청하지 않은 UI 텍스트 변경은 실패로 간주한다.
 
+
+## 1.3-A APMS UI Design Foundation 기준
+
+UI 디자인 작업은 `docs/design/APMS_UI_PRINCIPLES.md`와 `docs/design/DASHBOARD_FOUNDATION.md`를 기준으로 삼는다.
+
+기본 원칙:
+
+- APMS에서 Apple-style은 파란색 버튼, 큰 radius, 강한 shadow가 아니다.
+- APMS에서 Apple-style은 낮은 font-weight, 얇은 선, 조용한 row, 색보다 정보 정렬이다.
+- 카드는 삭제하지 않는다. 단, 카드 안에 또 카드를 넣지 않는다.
+- 큰 정보 묶음은 카드 shell로 유지하고, 반복 항목은 line row로 정리한다.
+- 클릭 가능한 row는 chevron(`›`)과 약한 hover로만 구분한다.
+- 상태값을 색상이나 굵은 글씨로 과하게 강조하지 않는다.
+- 신규 UI에서 font-weight 700/800/900 사용을 금지한다.
+- `body`, `button`, `.card`, `*` 같은 전역 selector를 UI 개선 명목으로 수정하지 않는다.
+- 기존 selector를 삭제하기 전 실제 사용 여부와 연결된 JS 마크업을 확인한다.
+
+대시보드 기준:
+
+- 대시보드는 APMS 운영 UI 정리의 1차 기준 화면이다.
+- 대시보드 기준을 다른 화면에 그대로 복사하지 말고, 각 화면 맥락에 맞게 번역한다.
+- 오늘일지 outer card는 유지한다.
+- 오늘일지 내부 수/목 항목은 line row로 표시한다.
+- 원장 선생님 카드에서는 수/목 일지 row만 표시한다.
+- 원장 선생님 카드의 최근 등록 chip과 일지 확인 버튼은 기본 노출하지 않는다.
+- 담당반 보기 버튼은 유지한다.
+
+UI 작업 실패 기준:
+
+- 카드 shell까지 제거해 텍스트만 떠 보이게 만든 경우
+- 카드 안 카드가 반복되는 경우
+- 전역 CSS 변경으로 출석부/시간표/리포트가 같이 바뀌는 경우
+- 색상 강조로 운영 화면이 경고판처럼 보이는 경우
+- 글자 크기와 두께가 한 화면 안에서 제각각인 경우
+- 코드 검수는 PASS였지만 화면 캡처에서 운영 UI로 보기 어려운 경우
+
 ## 1.4 학생 포털 / OMR 금지 원칙
 
 - 학생이 시험지를 직접 여는 기능은 만들지 않는다.
@@ -318,6 +354,7 @@ UI 관련 작업 완료 보고에는 반드시 아래를 적는다.
 | `archive/exams/` | 기출/유사/유형별 시험지 JS 데이터 | 원본/유사/심화 구분 주의 |
 | `report-ai-proxy/` | 리포트 AI proxy 관련 | Worker와 별도 배포/검증 가능 |
 | `docs/` | 기준 문서/룰북 저장 권장 위치 | 큰 작업 후 업데이트 필요 |
+| `docs/design/` | APMS UI 원칙, 대시보드 foundation, UI 검수 SOP, 작업 흐름 메모 | UI 작업 전 기준 확인, 전역 CSS 변경 금지 |
 
 ---
 
@@ -949,6 +986,25 @@ git push
 - git push 실행 여부: `미실행 - 사용자 직접 실행 대상`
 
 ---
+
+
+# 9.4 UI 검수 SOP 기준
+
+UI 관련 패치 검수는 `docs/design/UI_REVIEW_SOP.md`를 기준으로 한다.
+
+검수자는 다음을 반드시 확인한다.
+
+- 실제 full_files의 JS/CSS를 열어 확인했는가
+- 기존 문구·버튼명·화면명을 보존했는가
+- 전역 CSS를 수정하지 않았는가
+- 카드 shell과 line row 역할이 구분되는가
+- 카드 안 카드가 생기지 않았는가
+- font-weight 700 이상 신규 사용이 없는가
+- 클릭 row의 chevron/hover가 layout shift 없이 동작하는가
+- 브라우저 화면 캡처 검수 항목이 남아 있는가
+
+`00_manifest.md`와 `01_changed_snippets.md`만 보고 PASS하면 검수 실패로 본다.
+확인하지 못한 항목은 `미검수`로 표시해야 하며, 미검수 항목이 있으면 최종 PASS를 줄 수 없다.
 
 # 10. 완료 보고 기준
 
@@ -1726,102 +1782,3 @@ foundation을 먼저 만든다.
 - 12월 + 다음 해 개편안에서는 기존 중3 반을 렌더링 목록에서 제외한다.
 - 중3 제외는 `hidden`/`display:none`처럼 자리만 차지하는 방식이면 안 된다.
 - 기존 시간표 UI, 문구, 버튼명, 선생님 화면은 새학기 기능 때문에 임의 변경하지 않는다.
-
-# 부록. 2026-05-20 APMS 성능/플래너 최신 기준
-
-## A. 성능 Round 적용 상태
-
-2026-05-20 기준 APMS Performance Round 1~3은 검수, 적용, 커밋, 푸시까지 완료된 상태다.
-
-```text
-Round 1: a9c6bae Optimize APMS core report dashboard performance
-Round 2: fe987a5 Optimize APMS classroom clinic performance
-Round 3: 3b29b6d Optimize APMS student planner performance
-```
-
-적용 범위:
-
-```text
-Round 1:
-- core.js 공통 Map 인덱스 foundation
-- dashboard.js / cumulative.js / report.js 반복 조회 일부 최적화
-
-Round 2:
-- classroom.js 반 화면 조회 최적화
-- clinic-print.js 오답 클리닉 출력 조립 최적화
-
-Round 3:
-- student/index.html 학생 포털 home/OMR 인덱스
-- planner/index.html 플래너 날짜별 plan 인덱스 및 부분 상태 갱신
-- worker routes/planner.js POST/PATCH 응답 보강
-```
-
-## B. 공통 인덱스 사용 원칙
-
-`core.js`의 APMS 공통 데이터 인덱스는 원본 `state.db` 배열을 대체하지 않는다.
-
-```text
-허용:
-- 반복 find/filter를 줄이기 위한 조회 보조
-- studentsById / classesById / classStudentRowsByClassId 같은 Map 조회
-- helper가 없거나 index가 없을 때 기존 fallback 유지
-
-금지:
-- 원본 state.db 구조 제거
-- 기존 배열 키 이름 변경
-- 화면 문구/버튼명 변경을 성능 개선에 섞기
-- stale cache 방어 없이 낙관 갱신 데이터에 인덱스 적용
-```
-
-배열 참조는 그대로이고 내부 객체만 바뀌는 흐름에서는 반드시 `apmsInvalidateDataIndexes()` 호출 여부를 확인한다.
-
-## C. 플래너 최신 UX 기준
-
-2026-05-20 기준 플래너에는 다음 UX가 반영되어 있다.
-
-```text
-- 상단 `‹ 뒤로가기`
-- 계획별 `타이머`
-- 타이머 선택값 30분 / 45분 / 60분
-- 기본값 45분
-- 마지막 선택값 localStorage 저장
-- 타이머 종료 toast
-- 타이머 종료 시 지원 브라우저에서 진동 피드백
-```
-
-플래너 타이머는 로컬 화면 보조 기능이다.
-
-```text
-- DB 저장 없음
-- 공부 시간 통계 아님
-- 기기 간 동기화 없음
-- 새로고침 시 실행 중 타이머 유지 보장 없음
-```
-
-AI 코치는 현재 복구하지 않는다. 현재 플래너는 학생이 할 일을 보고, 타이머를 실행하고, 완료 체크하는 단순 구조를 우선한다.
-
-## D. 리포트 상단 최신 기준
-
-평가 리포트 상단은 다음 기준으로 본다.
-
-```text
-- 발행일 표시 없음
-- 시험날짜 표시 없음
-- 오른쪽 상단 선생님/학부모 사인란
-- 시험명은 학생 정보 밴드 오른쪽에 유지
-```
-
-인쇄용 CSS와 인쇄 전 분석/크게보기 CSS를 혼동하지 않는다. 실제 문제가 인쇄 전 화면이면 `.report-print-stage` 계열 보정으로 한정한다.
-
-## E. 검수팩 토큰 절약 기준
-
-대용량 파일 검수는 다음 순서를 우선한다.
-
-```text
-00_manifest.zip
-→ 01_changed_snippets.zip
-→ 02_full_files_optional.zip
-→ 03_docs.zip
-```
-
-검수자에게는 전체 파일 요약, 일반론, 존재하지 않는 함수명 언급을 금지한다. 실제 확인한 파일/함수만 근거로 PASS / CONDITIONAL PASS / FAIL을 판단하게 한다.
