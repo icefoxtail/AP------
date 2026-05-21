@@ -74,3 +74,164 @@
 .admin-teacher-modal-back{width:100%;margin-bottom:12px;min-height:42px;border-radius:12px;font-weight:500;background:var(--surface-2);border:1px solid var(--border);color:var(--text)}
 .journal-draft--simple{display:block}
 .journal-draft__plain{margin:0;white-space:pre-wrap;font-family:inherit;font-size:13px;font-weight:400;line-height:1.55;color:var(--text);background:transparent;border:0;padding:0}
+
+/* ======================================================================
+   APMS Dashboard Card Shell Restore + Typography Unification
+   - 기존 foundation selector는 보존한다.
+   - 카드 안 카드는 금지하되, 섹션 단위 outer card는 복구한다.
+   - 전역 body/button/card는 수정하지 않는다.
+   ====================================================================== */
+
+.ap-dashboard-section-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.ap-dashboard-journal-wrap {
+  margin-bottom: 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: visible;
+  box-shadow: none;
+}
+
+.ap-dashboard-journal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ap-dashboard-journal-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.ap-dashboard-journal-summary {
+  min-width: 0;
+  flex: 1;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--secondary);
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ap-dashboard-journal-body {
+  cursor: pointer;
+  padding: 8px 16px 10px;
+}
+
+.ap-dashboard-class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.ap-dashboard-class-list .ap-class-row,
+.ap-class-row {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.ap-dashboard-class-list .ap-class-row--scheduled,
+.ap-class-row--scheduled {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.ap-dashboard-class-list .ap-class-row--scheduled:hover,
+.ap-dashboard-class-list .ap-class-row--empty:hover,
+.ap-class-row--scheduled:hover,
+.ap-class-row--empty:hover {
+  background: var(--surface-2);
+}
+
+.ap-dashboard-class-list .ap-class-row--empty,
+.ap-class-row--empty {
+  background: var(--surface-2);
+  border: 1px dashed var(--border);
+}
+
+.ap-class-row__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.ap-class-row__name--inactive {
+  font-weight: 400;
+  color: var(--secondary);
+}
+
+.ap-class-row__meta {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--secondary);
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.ap-class-row__chips {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ap-class-chip {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.admin-teacher-card__chip-value {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.admin-teacher-card__chip b {
+  color: var(--text);
+  font-weight: 500;
+}
