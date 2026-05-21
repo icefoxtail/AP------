@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>AP Math Planner</title>
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css">
   <style>
     :root {
       --primary:#1A5CFF;
@@ -56,7 +57,7 @@
     }
     .brand {
       font-size:19px;
-      font-weight:700;
+      font-weight:500;
       letter-spacing:-0.3px;
       color:var(--text);
       white-space:nowrap;
@@ -68,7 +69,7 @@
       text-overflow:ellipsis;
       white-space:nowrap;
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       color:var(--secondary);
       text-align:right;
     }
@@ -87,7 +88,7 @@
       color:var(--text);
       padding:10px 14px;
       font-size:14px;
-      font-weight:700;
+      font-weight:500;
       cursor:pointer;
       display:inline-flex;
       align-items:center;
@@ -111,12 +112,12 @@
       color:var(--text);
       padding:11px 13px;
       font-size:15px;
-      font-weight:600;
+      font-weight:500;
     }
     .muted {
       color:var(--secondary);
       font-size:12px;
-      font-weight:700;
+      font-weight:500;
     }
     .pin-wrap {
       min-height:calc(100vh - 58px);
@@ -144,14 +145,14 @@
       background:var(--primary);
       color:#fff;
       font-size:24px;
-      font-weight:700;
+      font-weight:500;
       margin:0 auto 16px;
     }
     .pin-title {
       margin:0;
       text-align:center;
       font-size:20px;
-      font-weight:700;
+      font-weight:500;
       color:var(--text);
       letter-spacing:-0.5px;
     }
@@ -160,7 +161,7 @@
       text-align:center;
       color:var(--secondary);
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       line-height:1.5;
     }
     .dashboard {
@@ -183,13 +184,13 @@
     }
     .stat-label {
       font-size:11px;
-      font-weight:700;
+      font-weight:500;
       color:var(--secondary);
       margin-bottom:5px;
     }
     .stat-value {
       font-size:22px;
-      font-weight:700;
+      font-weight:500;
       color:var(--text);
       line-height:1.15;
       letter-spacing:-0.5px;
@@ -217,13 +218,13 @@
     }
     .feedback-title {
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       color:var(--primary);
       margin-bottom:5px;
     }
     .feedback-text {
       font-size:14px;
-      font-weight:700;
+      font-weight:500;
       color:var(--text);
       line-height:1.5;
       white-space:pre-wrap;
@@ -236,7 +237,7 @@
     }
     .calendar-title {
       font-size:17px;
-      font-weight:700;
+      font-weight:500;
       color:var(--text);
     }
     .calendar-grid {
@@ -247,7 +248,7 @@
     .weekday {
       text-align:center;
       font-size:11px;
-      font-weight:700;
+      font-weight:500;
       color:var(--secondary);
       padding:5px 0;
     }
@@ -258,7 +259,7 @@
       background:transparent;
       color:var(--text);
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       cursor:pointer;
       position:relative;
     }
@@ -290,14 +291,14 @@
     }
     .plan-title {
       font-size:19px;
-      font-weight:700;
+      font-weight:500;
       color:var(--text);
       letter-spacing:-0.4px;
       line-height:1.25;
     }
     .plan-date {
       font-size:12px;
-      font-weight:700;
+      font-weight:500;
       color:var(--secondary);
       margin-top:4px;
     }
@@ -324,7 +325,7 @@
       background:var(--surface-2);
       color:var(--surface-2);
       font-size:17px;
-      font-weight:700;
+      font-weight:500;
       flex:0 0 auto;
       cursor:pointer;
       display:flex;
@@ -343,7 +344,7 @@
     .plan-main.done { opacity:.5; text-decoration:line-through; }
     .plan-item-title {
       font-size:15px;
-      font-weight:700;
+      font-weight:500;
       color:var(--text);
       line-height:1.35;
       word-break:break-word;
@@ -351,7 +352,7 @@
     .plan-sub {
       margin-top:3px;
       font-size:11px;
-      font-weight:700;
+      font-weight:500;
       color:var(--secondary);
     }
     .delete {
@@ -359,7 +360,7 @@
       background:transparent;
       color:var(--secondary);
       font-size:12px;
-      font-weight:700;
+      font-weight:500;
       padding:8px;
       cursor:pointer;
       flex:0 0 auto;
@@ -369,7 +370,7 @@
       text-align:center;
       color:var(--secondary);
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       border:1px dashed var(--border);
       border-radius:16px;
       background:var(--surface-2);
@@ -415,7 +416,7 @@
     }
     .modal-title {
       font-size:18px;
-      font-weight:700;
+      font-weight:500;
       color:var(--text);
       margin-bottom:14px;
     }
@@ -429,7 +430,7 @@
       border-radius:999px;
       padding:10px 15px;
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       z-index:200;
       opacity:0;
       pointer-events:none;
@@ -446,7 +447,7 @@
       background:transparent;
       color:var(--secondary);
       font-size:13px;
-      font-weight:800;
+      font-weight:500;
       padding:8px 8px 8px 0;
       cursor:pointer;
       flex:0 0 auto;
@@ -474,7 +475,7 @@
       flex:0 0 auto;
       min-width:72px;
       font-size:22px;
-      font-weight:900;
+      font-weight:500;
       color:var(--primary);
       letter-spacing:-0.4px;
       font-variant-numeric:tabular-nums;
@@ -485,14 +486,14 @@
     }
     .timer-label {
       font-size:11px;
-      font-weight:900;
+      font-weight:500;
       color:var(--secondary);
       line-height:1.2;
     }
     .timer-title {
       margin-top:2px;
       font-size:13px;
-      font-weight:800;
+      font-weight:500;
       color:var(--text);
       line-height:1.25;
       white-space:nowrap;
@@ -520,7 +521,7 @@
       padding:0 8px;
       border-radius:999px;
       font-size:11px;
-      font-weight:900;
+      font-weight:500;
       cursor:pointer;
     }
     .timer-preset.active {
@@ -536,7 +537,7 @@
       padding:0 10px;
       border-radius:999px;
       font-size:12px;
-      font-weight:900;
+      font-weight:500;
       cursor:pointer;
     }
     .timer-btn.primary {
@@ -554,7 +555,7 @@
       background:rgba(26,92,255,0.08);
       color:var(--primary);
       font-size:12px;
-      font-weight:800;
+      font-weight:500;
       padding:8px;
       border-radius:999px;
       cursor:pointer;
@@ -1015,7 +1016,7 @@
             <p class="pin-desc">장기 플래너는 학생 개인 공간입니다.<br>본인 PIN을 입력하면 열립니다.</p>
             <div style="display:flex; flex-direction:column; gap:10px;">
               <input id="pin-input" class="input" type="password" inputmode="numeric" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')verifyPin(false)">
-              <button class="btn btn-primary" onclick="verifyPin(false)">확인</button>
+              <button class="btn apms-button apms-button--primary btn-primary" onclick="verifyPin(false)">확인</button>
             </div>
             <div class="muted" style="margin-top:16px; text-align:center;">공용 기기에서는 사용 후 브라우저를 닫아주세요.</div>
           </div>
@@ -1123,7 +1124,7 @@
             </div>
           </section>
           <section>
-            <div class="card">
+            <div class="card apms-card">
               ${renderPlanPanel()}
             </div>
           </section>
@@ -1135,7 +1136,7 @@
       $('app').innerHTML = `
         ${renderStats()}
         ${renderFeedbackBanner()}
-        <div class="card">
+        <div class="card apms-card">
           ${renderPlanPanel()}
         </div>
       `;
@@ -1168,9 +1169,9 @@
 
       return `
         <div class="calendar-head">
-          <button class="btn" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(prev).slice(0,7)}')">‹</button>
+          <button class="btn apms-button apms-button--quiet" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(prev).slice(0,7)}')">‹</button>
           <div class="calendar-title">${year}년 ${monthNo}월</div>
-          <button class="btn" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(next).slice(0,7)}')">›</button>
+          <button class="btn apms-button apms-button--quiet" style="min-height:36px; padding:6px 10px;" onclick="changeMonth('${formatDate(next).slice(0,7)}')">›</button>
         </div>
         <div class="calendar-grid">
           ${['일','월','화','수','목','금','토'].map(w => `<div class="weekday">${w}</div>`).join('')}
@@ -1187,15 +1188,15 @@
             <div class="plan-title">${selectedDate === todayStr() ? '오늘 할 일' : '선택 날짜 할 일'}</div>
             <div class="plan-date">${selectedDate}</div>
           </div>
-          <button class="btn" style="min-height:40px; padding:8px 12px; font-size:12px;" onclick="resetAuth()">잠금</button>
+          <button class="btn apms-button apms-button--quiet" style="min-height:40px; padding:8px 12px; font-size:12px;" onclick="resetAuth()">잠금</button>
         </div>
         <div class="plan-list">
-          ${datePlans.length ? datePlans.map(renderPlanItem).join('') : `<div class="empty">등록된 할 일이 없습니다.</div>`}
+          ${datePlans.length ? datePlans.map(renderPlanItem).join('') : `<div class="empty apms-empty">등록된 할 일이 없습니다.</div>`}
         </div>
         <div class="quick-form">
           <input id="quick-title" class="input" placeholder="할 일 입력">
           <input id="quick-subject" class="input" placeholder="과목" value="수학">
-          <button class="btn btn-primary" onclick="saveQuickPlan()">추가</button>
+          <button class="btn apms-button apms-button--primary btn-primary" onclick="saveQuickPlan()">추가</button>
         </div>
       `;
     }
@@ -1256,7 +1257,7 @@
             <option value="weekly">매주 반복</option>
           </select>
           <div class="muted">반복은 ${EXAM_DATE}까지만 생성됩니다.</div>
-          <button class="btn btn-primary" onclick="saveModalPlan('${date}')">저장</button>
+          <button class="btn apms-button apms-button--primary btn-primary" onclick="saveModalPlan('${date}')">저장</button>
         </div>
       `;
       $('modal-overlay').classList.add('show');

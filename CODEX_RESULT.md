@@ -2,59 +2,71 @@
 
 ## 1. 생성/수정 파일
 
-- 수정: `apmath/js/classroom.js`
+- 생성: `docs/design/APMS_TYPOGRAPHY_AUDIT_POLICY.md`
 - 수정: `apmath/js/dashboard.js`
-- 수정: `apmath/css/apms-theme-override.css`
+- 수정: `apmath/js/classroom.js`
+- 수정: `apmath/js/management.js`
+- 수정: `apmath/js/student.js`
+- 수정: `apmath/js/memo.js`
+- 수정: `apmath/js/schedule.js`
+- 수정: `apmath/js/textbook.js`
+- 수정: `apmath/js/qr-omr.js`
+- 수정: `apmath/student/index.html`
+- 수정: `apmath/planner/index.html`
 - 수정: `CODEX_RESULT.md`
-- 확인: `apmath/css/classroom-foundation.css`
-- 확인: `apmath/css/dashboard-foundation.css`
 
-## 2. 구현 완료 또는 확인 완료
+## 2. 작업 내용
 
-- `classroom.js`, `dashboard.js` 안의 남은 `font-weight 700/800/900` 전수 스캔 완료.
-- `classroom-foundation.css`, `dashboard-foundation.css`, `apms-theme-override.css`의 `font-weight 700/800/900` 스캔 완료.
-- 기능 의미가 아니라 단순 시각 강조인 잔여 `700/800/900`을 `500`으로 보정 완료.
-- classroom 영역 분류 및 보정 완료:
-  - 출결 상태/출결 메타
-  - 숙제 사진/제출 현황/학생별 링크
-  - 수업 기록/교재/특이사항
-  - 출결/숙제 장부
-  - 시험/오답/시험 상세
-  - 기존 classroom style block
-  - 플래너 잔여 style
-- dashboard 영역 분류 및 보정 완료:
-  - 퇴원/숨김 학생 관리
-  - PIN 발급/학년별 현황
-  - 선생님 계정 생성/수정/초기화 모달
-  - admin 메인 대시보드/검색/상담/주간 일정
-  - 선생님 담당반/학생 보기 패널
-- `apms-theme-override.css`의 잔여 강한 제목/카드 계열 `700/800/900` 보정 완료.
-- 기존 버튼명/문구/모달명 변경 없음.
-- 기존 onclick/API/저장 로직 변경 없음.
-- 카드 구조 대규모 변경 없음.
-- 이모티콘/이모지/아이콘 추가 없음.
-- `timetable`, `cumulative`, `report` 파일 수정 없음.
-- git add/commit/push 미수행.
-- 보류 예외 없음.
+### 정책 문서
+- APMS Typography Policy를 `400 / 500 / 600` 3단계 기준으로 문서화했다.
+- `700 / 800 / 900` 신규 사용 금지와 `b / strong` 처리 기준을 명시했다.
+- dashboard, classroom, student portal, planner, OMR/QR, 고위험 인쇄/리포트/시간표 영역의 적용 기준을 분리했다.
+
+### b / strong 감사 및 보정
+- 현재 작업분의 `b` / `strong` 위치를 전수 검색했다.
+- 브라우저 기본 bold가 700처럼 보일 수 있는 태그를 `span`과 명시 weight로 전환했다.
+- 의미 강조는 600 이하, 구조 정보는 500, 보조 정보는 400 기준으로 정리했다.
+
+### 600 강조 후보 분류
+- 유지: dashboard 위험 상태 라벨 `상태: ...`
+- 유지: student portal `확인 필요`, 현재 선택 오답 수, 예상 점수
+- 유지: qr-omr O/X 판정
+- 유지: management PIN 안내의 핵심 대상 문구
+- 하향: meta / desc / empty / 날짜 / 일반 label / 입력값 계열 600
+
+### 정책 범위 보정
+- 기능/문구/API/onclick/저장 로직은 변경하지 않았다.
+- OMR 제출 완료 후 수정 금지 흐름, QR payload, 플래너 query/PIN 흐름은 변경하지 않았다.
+- 플래너 피드백 이모지 값은 저장 데이터와 연결될 수 있어 삭제하지 않았다.
 
 ## 3. 실행 결과
 
-- `node --check apmath/js/classroom.js`: 통과.
-- `node --check apmath/js/dashboard.js`: 통과.
-- `rg "font-weight:\s*(700|800|900)|font-weight:(700|800|900)" apmath/js/classroom.js apmath/js/dashboard.js apmath/css/classroom-foundation.css apmath/css/dashboard-foundation.css apmath/css/apms-theme-override.css`: 결과 없음.
-- 수정 파일 확인:
-  - `apmath/js/classroom.js`
-  - `apmath/js/dashboard.js`
-  - `apmath/css/apms-theme-override.css`
-  - `CODEX_RESULT.md`
-- `CODEX_TASK.md`는 작업 시작 전부터 변경 상태였으며 이번 작업에서 수정하지 않음.
+- `node --check apmath/js/dashboard.js` 통과
+- `node --check apmath/js/classroom.js` 통과
+- `node --check apmath/js/management.js` 통과
+- `node --check apmath/js/student.js` 통과
+- `node --check apmath/js/memo.js` 통과
+- `node --check apmath/js/schedule.js` 통과
+- `node --check apmath/js/textbook.js` 통과
+- `node --check apmath/js/study-material-wrong.js` 통과
+- `node --check apmath/js/qr-omr.js` 통과
+- `node --check apmath/js/clinic-print.js` 통과
+- `apmath/student/index.html` inline script parse 확인 통과
+- `apmath/planner/index.html` inline script parse 확인 통과
+
+검색 확인:
+
+- 대상 파일 내 `<b>`, `</b>`, `<strong`, `</strong>` 검색 결과 없음
+- 대상 파일 내 `font-weight:700/800/900` 검색 결과 없음
+- 남은 `font-weight:600`은 정책상 허용한 의미 강조 후보만 남김
 
 ## 4. 결과 요약
 
-APMS Typography Alignment 2.0 기준으로 `classroom.js`와 `dashboard.js`의 잔여 강한 font-weight를 전수 정리했다. 이번 보정은 시각 강조 숫자만 낮춘 제한 보정이며, 기능/문구/버튼명/API/onclick/저장 로직은 변경하지 않았다.
+APMS Typography Policy를 문서화하고, 현재 작업분의 bold/strong/600 강조를 정책 기준에 맞게 1차 정리했다. 전체 UI를 평평하게 만든 것이 아니라, 의미 있는 짧은 정보만 600으로 남기고 나머지는 400~500 중심으로 낮췄다.
 
 ## 5. 다음 조치
 
-- 브라우저에서 classroom 주요 모달과 장부/시험/숙제 화면 확인 필요.
-- 브라우저에서 admin 학생 관리, PIN 발급, 선생님 계정, 담당반 화면 확인 필요.
-- 화면 미감 확인 후 커밋 여부 판단.
+- 브라우저에서 dashboard, classroom, student portal, planner, QR/OMR 화면 확인
+- 남은 600 강조가 실제 화면에서 과하지 않은지 PC/모바일 확인
+- 2차 확산 후보: core, ui, index, sidebar, homework
+- 고위험 보류: timetable, cumulative, report, wrong_print_engine, print CSS

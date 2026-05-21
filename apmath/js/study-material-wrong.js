@@ -68,45 +68,45 @@
         style.textContent = `
             .smw-wrap { display:flex; flex-direction:column; gap:14px; }
             .smw-tabs { display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; }
-            .smw-tab { flex:0 0 auto; min-height:34px; padding:0 14px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:13px; font-weight:800; }
+            .smw-tab { flex:0 0 auto; min-height:34px; padding:0 14px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:13px; font-weight:500; }
             .smw-tab.active { background:rgba(26,92,255,.08); border-color:rgba(26,92,255,.20); color:var(--primary); }
             .smw-section { border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:12px; display:flex; flex-direction:column; gap:10px; }
-            .smw-section-title { font-size:14px; font-weight:900; color:var(--text); line-height:1.3; border-left:3px solid var(--primary); padding-left:9px; }
+            .smw-section-title { font-size:14px; font-weight:500; color:var(--text); line-height:1.3; border-left:3px solid var(--primary); padding-left:9px; }
             .smw-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
             .smw-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
             .smw-field { display:flex; flex-direction:column; gap:5px; min-width:0; }
-            .smw-field label { font-size:11px; font-weight:800; color:var(--secondary); }
-            .smw-field input, .smw-field select, .smw-field textarea { width:100%; box-sizing:border-box; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); color:var(--text); padding:10px 11px; font-size:13px; font-weight:700; font-family:inherit; }
+            .smw-field label { font-size:11px; font-weight:500; color:var(--secondary); }
+            .smw-field input, .smw-field select, .smw-field textarea { width:100%; box-sizing:border-box; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); color:var(--text); padding:10px 11px; font-size:13px; font-weight:500; font-family:inherit; }
             .smw-field textarea { min-height:86px; resize:vertical; line-height:1.5; }
             .smw-actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
             .smw-list { display:flex; flex-direction:column; gap:8px; max-height:260px; overflow:auto; }
             .smw-row { border:1px solid var(--border); border-radius:14px; padding:11px; background:var(--surface); }
             .smw-material-card { width:100%; text-align:left; cursor:pointer; }
             .smw-material-card.active { border-color:rgba(26,92,255,.28); background:rgba(26,92,255,.08); box-shadow:inset 0 0 0 1px rgba(26,92,255,.10); }
-            .smw-title { font-size:13px; font-weight:900; color:var(--text); line-height:1.35; }
-            .smw-meta { margin-top:5px; font-size:11px; font-weight:700; color:var(--secondary); line-height:1.45; }
-            .smw-output { white-space:pre-wrap; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; line-height:1.6; max-height:360px; overflow:auto; }
-            .smw-help { font-size:11px; font-weight:800; color:var(--secondary); line-height:1.45; background:rgba(26,92,255,.06); border-radius:8px; padding:6px 10px; }
+            .smw-title { font-size:13px; font-weight:500; color:var(--text); line-height:1.35; }
+            .smw-meta { margin-top:5px; font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45; }
+            .smw-output { white-space:pre-wrap; border:1px solid var(--border); border-radius:14px; padding:12px; background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; line-height:1.6; max-height:360px; overflow:auto; }
+            .smw-help { font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45; background:rgba(26,92,255,.06); border-radius:8px; padding:6px 10px; }
             .smw-table-wrap { overflow:auto; border:1px solid var(--border); border-radius:14px; }
             .smw-entry-table { width:100%; border-collapse:collapse; min-width:520px; }
             .smw-entry-table th, .smw-entry-table td { border-bottom:1px solid var(--border); padding:8px; font-size:12px; vertical-align:middle; }
-            .smw-entry-table th { color:var(--secondary); font-weight:900; background:var(--surface-2); white-space:nowrap; }
-            .smw-entry-table td { color:var(--text); font-weight:800; }
-            .smw-status-btn { min-width:40px; min-height:36px; border-radius:10px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-weight:900; cursor:pointer; font-size:13px; }
+            .smw-entry-table th { color:var(--secondary); font-weight:500; background:var(--surface-2); white-space:nowrap; }
+            .smw-entry-table td { color:var(--text); font-weight:500; }
+            .smw-status-btn { min-width:40px; min-height:36px; border-radius:10px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-weight:500; cursor:pointer; font-size:13px; }
             .smw-status-btn.ok { color:var(--success); }
             .smw-status-btn.wrong { color:var(--error); }
-            .smw-entry-input { width:100%; min-width:160px; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); padding:9px 10px; font-size:13px; font-weight:800; font-family:inherit; }
-            .smw-manage-note { font-size:12px; font-weight:800; color:var(--secondary); }
-            .smw-manage-tag { display:inline-flex; align-items:center; min-height:20px; margin-left:6px; padding:0 8px; border-radius:999px; background:rgba(232,65,79,.10); color:var(--error); font-size:10px; font-weight:900; vertical-align:middle; }
+            .smw-entry-input { width:100%; min-width:160px; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); padding:9px 10px; font-size:13px; font-weight:500; font-family:inherit; }
+            .smw-manage-note { font-size:12px; font-weight:500; color:var(--secondary); }
+            .smw-manage-tag { display:inline-flex; align-items:center; min-height:20px; margin-left:6px; padding:0 8px; border-radius:999px; background:rgba(232,65,79,.10); color:var(--error); font-size:10px; font-weight:500; vertical-align:middle; }
             .smw-picker-overlay { position:fixed; inset:0; z-index:1500; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; padding:16px; }
             .smw-picker { width:min(720px,100%); max-height:86vh; overflow:auto; background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:16px; box-shadow:0 12px 34px rgba(0,0,0,.20); }
             .smw-picker-head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:12px; }
-            .smw-picker-title { font-size:16px; font-weight:900; color:var(--text); }
+            .smw-picker-title { font-size:16px; font-weight:500; color:var(--text); }
             .smw-groups { display:flex; gap:6px; overflow-x:auto; padding:4px 0 10px; }
-            .smw-group-btn { flex:0 0 auto; min-height:32px; padding:0 10px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:900; }
+            .smw-group-btn { flex:0 0 auto; min-height:32px; padding:0 10px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; }
             .smw-group-btn.active { background:rgba(26,92,255,.10); border-color:rgba(26,92,255,.28); color:var(--primary); }
             .smw-num-grid { display:grid; grid-template-columns:repeat(10,minmax(0,1fr)); gap:5px; }
-            .smw-num-btn { min-height:34px; border-radius:9px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:900; }
+            .smw-num-btn { min-height:34px; border-radius:9px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; }
             .smw-num-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
             @media (min-width:720px) { .smw-num-grid { grid-template-columns:repeat(15,minmax(0,1fr)); } }
             @media (min-width:1100px) { .smw-num-grid { grid-template-columns:repeat(20,minmax(0,1fr)); } }
@@ -211,7 +211,7 @@
                     <div class="smw-field"><label>시작 문항</label><input id="smw-start" type="number" inputmode="numeric"></div>
                     <div class="smw-field"><label>끝 문항</label><input id="smw-end" type="number" inputmode="numeric"></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterial()">등록하기</button><button class="btn" onclick="loadStudyMaterialWrongData()">새로고침</button><button class="btn" onclick="openStudyMaterialManage()">관리</button></div>
+                <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="createStudyMaterial()">등록하기</button><button class="btn apms-button apms-button--quiet" onclick="loadStudyMaterialWrongData()">새로고침</button><button class="btn apms-button apms-button--quiet" onclick="openStudyMaterialManage()">관리</button></div>
                 <div class="smw-list">${visibleMaterials().map(m => `<button type="button" class="smw-row smw-material-card ${selectedMaterialIdFor() === String(m.id) ? 'active' : ''}" data-material-id="${h(m.id)}" onclick="selectStudyMaterialByCard(this)"><div class="smw-title">${h(m.title)}</div><div class="smw-meta">${h(materialTypeLabel(m.material_type))} · ${h(m.grade || '-')} · ${h(m.semester || '-')} · ${h(m.number_start || '')}-${h(m.number_end || '')}</div></button>`).join('') || '<div class="smw-row"><div class="smw-meta">등록된 교재가 없습니다.</div></div>'}</div>
             </div>
         `;
@@ -222,7 +222,7 @@
                 <div class="smw-section-title">단원 범위 설정</div>
                 <div class="smw-field"><label>교재</label><select id="smw-range-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor())}</select></div>
                 <div class="smw-field"><label>단원 범위 붙여넣기</label><textarea id="smw-range-csv" placeholder="순서,대단원,소단원,시작번호,끝번호"></textarea></div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="importStudyMaterialRanges()">등록하기</button><button class="btn" onclick="loadStudyMaterialRanges()">목록 보기</button></div>
+                <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="importStudyMaterialRanges()">등록하기</button><button class="btn apms-button apms-button--quiet" onclick="loadStudyMaterialRanges()">목록 보기</button></div>
                 <div id="smw-range-list" class="smw-list"></div>
             </div>
         `;
@@ -240,9 +240,9 @@
                     <div class="smw-field"><label>반</label><select id="smw-assign-class">${filteredClassOptions(f.grade, f.class_id, '반 선택')}</select></div>
                     <div class="smw-field"><label>교재</label><select id="smw-assign-material" onchange="onStudyMaterialSelectChange(this.value)">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
                     <div class="smw-field"><label>배정일</label><input id="smw-assign-date" type="date" value="${today()}"></div>
-                    <div class="smw-field"><label>배정명 <span style="font-weight:700;opacity:.6;">(비워두면 교재명)</span></label><input id="smw-assign-title" placeholder="선택 입력"></div>
+                    <div class="smw-field"><label>배정명 <span style="font-weight:500;opacity:.6;">(비워두면 교재명)</span></label><input id="smw-assign-title" placeholder="선택 입력"></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="createStudyMaterialAssignment()">배정하기</button><button class="btn" onclick="loadStudyMaterialAssignments()">목록 보기</button></div>
+                <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="createStudyMaterialAssignment()">배정하기</button><button class="btn apms-button apms-button--quiet" onclick="loadStudyMaterialAssignments()">목록 보기</button></div>
                 <div class="smw-list">${assignmentRows()}</div>
             </div>
         `;
@@ -259,7 +259,7 @@
                     <div class="smw-field"><label>반</label><select id="smw-entry-class" onchange="onStudyMaterialEntryChange('class')">${filteredClassOptions(f.grade, f.class_id, '반 선택')}</select></div>
                     <div class="smw-field"><label>교재</label><select id="smw-entry-material" onchange="onStudyMaterialEntryChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id))}</select></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialEntrySheet()">불러오기</button><span class="smw-help">미입력(−) · O 전부 맞음 · X 오답 있음</span></div>
+                <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="loadStudyMaterialEntrySheet()">불러오기</button><span class="smw-help">미입력(−) · O 전부 맞음 · X 오답 있음</span></div>
                 ${renderEntryRows()}
             </div>
             ${renderWrongNumberPicker()}
@@ -287,12 +287,12 @@
                             <td>${h(row.student_name || row.student_id)}</td>
                             <td><button type="button" id="smw-entry-status-${h(row.student_id)}" class="smw-status-btn ${cls}" onclick="toggleStudyMaterialEntryStatus('${h(row.student_id)}')">${h(status)}</button></td>
                             <td><input class="smw-entry-input" id="smw-entry-wrongs-${h(row.student_id)}" value="${h(nums)}" oninput="onStudyMaterialEntryInput('${h(row.student_id)}')" placeholder="12, 15, 22"></td>
-                            <td><button type="button" class="btn" onclick="openWrongNumberPicker('${h(row.student_id)}')">선택</button></td>
+                            <td><button type="button" class="btn apms-button apms-button--quiet" onclick="openWrongNumberPicker('${h(row.student_id)}')">선택</button></td>
                         </tr>`;
                     }).join('')}</tbody>
                 </table>
             </div>
-            <div class="smw-actions"><button class="btn btn-primary" onclick="saveStudyMaterialTeacherBatch()">저장</button></div>
+            <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="saveStudyMaterialTeacherBatch()">저장</button></div>
         `;
     }
 
@@ -334,10 +334,10 @@
         return `
             <div id="smw-number-picker-overlay" class="smw-picker-overlay" onclick="if(event.target===this) closeWrongNumberPicker()">
                 <div class="smw-picker" onclick="event.stopPropagation()">
-                    <div class="smw-picker-head"><div><div class="smw-picker-title">${h(picker.studentName)} — 오답 번호 선택</div><div class="smw-meta">선택된 번호: ${(picker.selected || []).length ? (picker.selected || []).join(', ') : '없음'}</div></div><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
+                    <div class="smw-picker-head"><div><div class="smw-picker-title">${h(picker.studentName)} — 오답 번호 선택</div><div class="smw-meta">선택된 번호: ${(picker.selected || []).length ? (picker.selected || []).join(', ') : '없음'}</div></div><button class="btn apms-button apms-button--quiet" onclick="closeWrongNumberPicker()">닫기</button></div>
                     <div class="smw-groups">${groups.map(g => `<button type="button" class="smw-group-btn ${g.start === group.start ? 'active' : ''}" onclick="setWrongNumberPickerGroup(${g.start}, ${g.end})">${g.label}</button>`).join('')}</div>
                     <div class="smw-num-grid">${buttons.join('')}</div>
-                    <div class="smw-actions" style="margin-top:12px;"><button class="btn btn-primary" onclick="applyWrongNumberPicker()">저장</button><button class="btn" onclick="closeWrongNumberPicker()">닫기</button></div>
+                    <div class="smw-actions" style="margin-top:12px;"><button class="btn apms-button apms-button--primary btn-primary" onclick="applyWrongNumberPicker()">저장</button><button class="btn apms-button apms-button--quiet" onclick="closeWrongNumberPicker()">닫기</button></div>
                 </div>
             </div>
         `;
@@ -382,7 +382,7 @@
                     <div class="smw-field"><label>학생</label><select id="smw-view-student" onchange="onStudyMaterialViewChange('student')">${filteredStudentOptions(f.grade, f.class_id, f.student_id)}</select></div>
                     <div class="smw-field"><label>교재</label><select id="smw-view-material" onchange="onStudyMaterialViewChange('material')">${materialOptions(selectedMaterialIdFor(f.material_id), true)}</select></div>
                 </div>
-                <div class="smw-actions"><button class="btn btn-primary" onclick="loadStudyMaterialView()">조회</button></div>
+                <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="loadStudyMaterialView()">조회</button></div>
                 <div class="smw-output">${renderViewText()}</div>
                 ${st().output ? `<div class="smw-output">${h(st().output)}</div>` : ''}
             </div>
@@ -460,9 +460,9 @@
                             <div class="smw-field"><label>시작 문항</label><input id="smw-manage-start" type="number" inputmode="numeric" value="${h(selected.number_start || '')}"></div>
                             <div class="smw-field"><label>끝 문항</label><input id="smw-manage-end" type="number" inputmode="numeric" value="${h(selected.number_end || '')}"></div>
                         </div>
-                        <div class="smw-actions"><button class="btn btn-primary" onclick="saveStudyMaterialManageEdit()">저장</button><button class="btn" onclick="cancelStudyMaterialManageEdit()">취소</button></div>
+                        <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="saveStudyMaterialManageEdit()">저장</button><button class="btn apms-button apms-button--quiet" onclick="cancelStudyMaterialManageEdit()">취소</button></div>
                     ` : `
-                        <div class="smw-actions"><button class="btn btn-primary" onclick="openStudyMaterialManageEdit()">수정</button><button class="btn" onclick="deleteStudyMaterialManageItem()">삭제</button><button class="btn" onclick="closeStudyMaterialManage()">닫기</button></div>
+                        <div class="smw-actions"><button class="btn apms-button apms-button--primary btn-primary" onclick="openStudyMaterialManageEdit()">수정</button><button class="btn apms-button apms-button--quiet" onclick="deleteStudyMaterialManageItem()">삭제</button><button class="btn apms-button apms-button--quiet" onclick="closeStudyMaterialManage()">닫기</button></div>
                     `}
                 </div>
             </div>

@@ -63,7 +63,7 @@ function renderAddressBookList() {
     });
 
     if (stds.length === 0) {
-        listRoot.innerHTML = `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:700;">검색 결과가 없습니다.</div>`;
+        listRoot.innerHTML = `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:500;">검색 결과가 없습니다.</div>`;
         return;
     }
 
@@ -79,22 +79,22 @@ function renderAddressBookList() {
             <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; gap:12px; align-items:flex-start;">
                 <div style="flex:1; min-width:0;">
                     <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;">
-                        <b style="font-size:14px; color:var(--text); line-height:1.4;">${mgmtEscape(s.name)}</b>
-                        <span style="font-size:11px; font-weight:800; padding:3px 7px; border-radius:999px; ${statusStyle}">${mgmtEscape(status)}</span>
+                        <span style="font-size:14px; color:var(--text); line-height:1.4;; font-weight:500;">${mgmtEscape(s.name)}</span>
+                        <span style="font-size:11px; font-weight:500; padding:3px 7px; border-radius:999px; ${statusStyle}">${mgmtEscape(status)}</span>
                     </div>
                     <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; font-size:12px; color:var(--secondary); line-height:1.5;">
-                        <div><b style="color:var(--text);">반</b> ${mgmtEscape(cls?.name || '미배정')}</div>
-                        <div><b style="color:var(--text);">학교</b> ${mgmtEscape(s.school_name || '-')} ${mgmtEscape(s.grade || '')}</div>
-                        <div><b style="color:var(--text);">학생</b> ${mgmtEscape(s.student_phone || '-')}</div>
-                        <div><b style="color:var(--text);">보호자</b> ${mgmtEscape(s.parent_phone || '-')} ${s.guardian_relation ? `(${mgmtEscape(s.guardian_relation)})` : ''}</div>
+                        <div><span style="color:var(--text);; font-weight:500;">반</span> ${mgmtEscape(cls?.name || '미배정')}</div>
+                        <div><span style="color:var(--text);; font-weight:500;">학교</span> ${mgmtEscape(s.school_name || '-')} ${mgmtEscape(s.grade || '')}</div>
+                        <div><span style="color:var(--text);; font-weight:500;">학생</span> ${mgmtEscape(s.student_phone || '-')}</div>
+                        <div><span style="color:var(--text);; font-weight:500;">보호자</span> ${mgmtEscape(s.parent_phone || '-')} ${s.guardian_relation ? `(${mgmtEscape(s.guardian_relation)})` : ''}</div>
                     </div>
                 </div>
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; max-width:190px;">
-                    <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700;" onclick="setManagementReturnView({ type: 'addressBook' }); closeModal(true); renderStudentDetail('${s.id}')">상세</button>
-                    <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openEditStudent('${s.id}', { returnTo: { type: 'addressBook' } })">수정</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="setManagementReturnView({ type: 'addressBook' }); closeModal(true); renderStudentDetail('${s.id}')">상세</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="openEditStudent('${s.id}', { returnTo: { type: 'addressBook' } })">수정</button>
                     ${isActive
-                        ? `<button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDelete('${s.id}')">퇴원</button>`
-                        : `<button class="btn btn-primary" style="padding:6px 10px; font-size:11px; font-weight:700;" onclick="handleRestore('${s.id}')">복구</button>`
+                        ? `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDelete('${s.id}')">퇴원</button>`
+                        : `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="handleRestore('${s.id}')">복구</button>`
                     }
                 </div>
             </div>
@@ -111,13 +111,13 @@ function openAddressBook() {
 
     showModal('학생관리', `
         <div style="display:flex; gap:8px; margin-bottom:12px;">
-            <button class="btn btn-primary" style="padding:10px; flex:1; font-size:12px; font-weight:800;" onclick="openAddStudent('', { returnTo: { type: 'addressBook' } });">학생 추가</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px; flex:1; font-size:12px; font-weight:500;" onclick="openAddStudent('', { returnTo: { type: 'addressBook' } });">학생 추가</button>
         </div>
         <div style="display:grid; grid-template-columns:1fr 150px; gap:8px; margin-bottom:14px;">
             <input id="ab-search" class="btn" placeholder="이름/학교/반 검색" style="width:100%; text-align:left; background:var(--surface-2); border:none;" oninput="debounceRenderAddressBookList()">
             <select id="ab-class" class="btn" style="width:100%; background:var(--surface-2); border:none;" onchange="renderAddressBookList()"><option value="">전체 학생</option>${classOptions}</select>
         </div>
-        <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">재원생만 표시하고, 반 선택은 보조 필터로 사용합니다.</div>
+        <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">재원생만 표시하고, 반 선택은 보조 필터로 사용합니다.</div>
         <div id="ab-list" style="max-height:60vh; overflow-y:auto; font-size:13px; padding-right:4px;"></div>
     `);
     renderAddressBookList();
@@ -127,14 +127,14 @@ function openGlobalPinManagement() {
     setModalReturnView({ type: 'addressBook' });
     const classes = sortClassesForManagement((state.db.classes || []).filter(c => Number(c.is_active) !== 0));
     const rows = classes.map(c => `
-        <button class="btn" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
-            <span style="font-weight:700; font-size:14px; color:var(--text);">${mgmtEscape(c.name)}</span>
-            <span style="font-size:11px; color:var(--primary); font-weight:700; background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
+        <button class="btn apms-button apms-button--quiet" style="width:100%; justify-content:space-between; padding:14px; margin-bottom:8px; border:1px solid var(--border); background:var(--surface);" onclick="if(typeof handleBatchGeneratePins==='function') handleBatchGeneratePins('${c.id}'); else toast('해당 기능은 학생관리 모듈에 있습니다.', 'warn');">
+            <span style="font-weight:500; font-size:14px; color:var(--text);">${mgmtEscape(c.name)}</span>
+            <span style="font-size:11px; color:var(--primary); font-weight:500; background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px;">일괄 생성</span>
         </button>
     `).join('');
 
     showModal('PIN관리', `
-        <div style="margin-bottom:16px; font-size:12px; color:var(--secondary); line-height:1.5; background:var(--surface-2); padding:12px; border-radius:10px;">선택한 반에 속한 학생 중, <b>아직 PIN 번호가 없는 학생</b>들에게만 고유 PIN을 자동 부여합니다. 기존 PIN은 유지됩니다.</div>
+        <div style="margin-bottom:16px; font-size:12px; color:var(--secondary); line-height:1.5; background:var(--surface-2); padding:12px; border-radius:10px;">선택한 반에 속한 학생 중, <span style="font-weight:600;">아직 PIN 번호가 없는 학생</span>들에게만 고유 PIN을 자동 부여합니다. 기존 PIN은 유지됩니다.</div>
         <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:20px; font-size:13px;">관리할 반이 없습니다.</div>`}</div>
     `);
 }
@@ -189,25 +189,25 @@ function renderClassManageRow(c) {
         <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; gap:12px; align-items:flex-start; opacity:${isHidden ? '0.68' : '1'};">
             <div style="flex:1; min-width:0; cursor:pointer;" onclick="setManagementReturnView({ type: 'classManage' }); closeModal(true); state.ui.currentClassId='${c.id}'; if(typeof renderClass==='function') renderClass('${c.id}');">
                 <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
-                    <b style="font-size:15px; color:var(--text); line-height:1.35;">${mgmtEscape(c.name)}</b>
-                    <span style="font-size:11px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.08); padding:3px 7px; border-radius:999px;">${mgmtEscape(c.grade || '-')}</span>
-                    ${isHidden ? `<span style="font-size:11px; font-weight:800; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 7px; border-radius:999px;">숨김</span>` : ''}
+                    <span style="font-size:15px; color:var(--text); line-height:1.35;; font-weight:500;">${mgmtEscape(c.name)}</span>
+                    <span style="font-size:11px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); padding:3px 7px; border-radius:999px;">${mgmtEscape(c.grade || '-')}</span>
+                    ${isHidden ? `<span style="font-size:11px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 7px; border-radius:999px;">숨김</span>` : ''}
                 </div>
                 <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; font-size:12px; color:var(--secondary); line-height:1.5;">
-                    <div><b style="color:var(--text);">과목</b> ${mgmtEscape(c.subject || '수학')}</div>
-                    <div><b style="color:var(--text);">담당</b> ${mgmtEscape(c.teacher_name || '-')}</div>
-                    <div><b style="color:var(--text);">요일</b> ${mgmtEscape(formatClassScheduleDaysForUI(c.schedule_days))}</div>
-                    <div><b style="color:var(--text);">시간</b> ${mgmtEscape(timeLabel)}</div>
-                    <div><b style="color:var(--text);">학생</b> ${studentCount}명</div>
+                    <div><span style="color:var(--text);; font-weight:500;">과목</span> ${mgmtEscape(c.subject || '수학')}</div>
+                    <div><span style="color:var(--text);; font-weight:500;">담당</span> ${mgmtEscape(c.teacher_name || '-')}</div>
+                    <div><span style="color:var(--text);; font-weight:500;">요일</span> ${mgmtEscape(formatClassScheduleDaysForUI(c.schedule_days))}</div>
+                    <div><span style="color:var(--text);; font-weight:500;">시간</span> ${mgmtEscape(timeLabel)}</div>
+                    <div><span style="color:var(--text);; font-weight:500;">학생</span> ${studentCount}명</div>
                 </div>
             </div>
             <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap; max-width:210px;">
-                <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:800;" onclick="openEditClassModal('${c.id}')">수정</button>
+                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="openEditClassModal('${c.id}')">수정</button>
                 ${isHidden
-                    ? `<button class="btn btn-primary" style="padding:6px 10px; font-size:11px; font-weight:800;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
-                    : `<button class="btn" style="padding:6px 10px; font-size:11px; font-weight:800; color:var(--warning); background:rgba(255,165,2,0.1); border:none;" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
+                    ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:6px 10px; font-size:11px; font-weight:500;" onclick="toggleClassActive('${c.id}', 1)">복구</button>`
+                    : `<button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--warning); background:rgba(255,165,2,0.1); border:none;" onclick="toggleClassActive('${c.id}', 0)">숨김</button>`
                 }
-                <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDeleteClass('${c.id}')">삭제</button>
+                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="handleDeleteClass('${c.id}')">삭제</button>
             </div>
         </div>
     `;
@@ -221,7 +221,7 @@ function openClassManageModal() {
 
     showModal('학급관리', `
         <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-bottom:16px;">
-            <button class="btn btn-primary" style="padding:10px 14px; font-size:12px; font-weight:800;" onclick="openAddClassModal()">새 반 추가</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px 14px; font-size:12px; font-weight:500;" onclick="openAddClassModal()">새 반 추가</button>
         </div>
         <h4 style="margin:0 0 8px 0; font-size:13px; color:var(--secondary);">활성 반 (${activeClasses.length})</h4>
         <div style="margin-bottom:20px;">
@@ -245,11 +245,11 @@ function openAddClassModal() {
             </select>
             <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="add-cls-teacher" class="btn" value="${mgmtEscape(state.ui.userName || '')}" placeholder="담당 선생님" style="text-align:left; background:var(--surface-2); border:none;">
-            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
+            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
             </div>
-            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">시간</label>
+            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">시간</label>
             <select id="add-cls-period" class="btn" style="background:var(--surface-2); border:none;" onchange="syncClassPeriodTime('add')">
                 ${getTimeLabelOptions('')}
             </select>
@@ -305,16 +305,16 @@ function openEditClassModal(cid) {
             </select>
             <input id="edit-cls-subject" class="btn" value="${mgmtEscape(c.subject || '')}" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
             <input id="edit-cls-teacher" class="btn" value="${mgmtEscape(c.teacher_name || '')}" placeholder="담당 선생님" style="text-align:left; background:var(--surface-2); border:none;">
-            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
+            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
             </div>
-            <label style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:8px;">시간</label>
+            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">시간</label>
             <select id="edit-cls-period" class="btn" style="background:var(--surface-2); border:none;" onchange="syncClassPeriodTime('edit')">
                 ${getTimeLabelOptions(selectedPeriod)}
             </select>
             <input id="edit-cls-timelabel" class="btn" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
-            <button class="btn" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(255,71,87,0.08); border:1px solid rgba(255,71,87,0.16); font-weight:800;" onclick="handleDeleteClass('${c.id}')">반 삭제</button>
+            <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(255,71,87,0.08); border:1px solid rgba(255,71,87,0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 삭제</button>
         </div>
     `, '저장', () => handleEditClass(cid));
 }
@@ -970,7 +970,7 @@ async function reloadBillingAccountingSummaries() {
 }
 
 function renderBillingAccountingEmpty(message) {
-    return `<div style="padding:24px 12px; text-align:center; color:var(--secondary); font-size:12px; font-weight:700; background:var(--surface-2); border:1px dashed var(--border); border-radius:14px;">${billingAccountingEscape(message)}</div>`;
+    return `<div style="padding:24px 12px; text-align:center; color:var(--secondary); font-size:12px; font-weight:500; background:var(--surface-2); border:1px dashed var(--border); border-radius:14px;">${billingAccountingEscape(message)}</div>`;
 }
 
 function renderBillingAccountingSimpleRows(rows, fields) {
@@ -979,8 +979,8 @@ function renderBillingAccountingSimpleRows(rows, fields) {
         <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
             ${fields.map(field => `
                 <div style="display:flex; justify-content:space-between; gap:12px; margin-bottom:6px; font-size:12px; line-height:1.5;">
-                    <span style="color:var(--secondary); font-weight:700;">${billingAccountingEscape(field.label)}</span>
-                    <span style="color:var(--text); font-weight:700; text-align:right; word-break:break-word;">${billingAccountingEscape(field.format ? field.format(row[field.key], row) : (row[field.key] ?? '-'))}</span>
+                    <span style="color:var(--secondary); font-weight:500;">${billingAccountingEscape(field.label)}</span>
+                    <span style="color:var(--text); font-weight:500; text-align:right; word-break:break-word;">${billingAccountingEscape(field.format ? field.format(row[field.key], row) : (row[field.key] ?? '-'))}</span>
                 </div>
             `).join('')}
         </div>
@@ -992,8 +992,8 @@ function renderBillingAccountingGroupedAmounts(grouped) {
     if (!entries.length) return renderBillingAccountingEmpty('조회 결과가 없습니다.');
     return entries.map(([key, value]) => `
         <div style="display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid var(--border); font-size:12px; line-height:1.5;">
-            <span style="color:var(--secondary); font-weight:700;">${billingAccountingEscape(key)}</span>
-            <span style="color:var(--text); font-weight:800; text-align:right; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatAmount(value))}</span>
+            <span style="color:var(--secondary); font-weight:500;">${billingAccountingEscape(key)}</span>
+            <span style="color:var(--text); font-weight:500; text-align:right; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatAmount(value))}</span>
         </div>
     `).join('');
 }
@@ -1009,8 +1009,8 @@ function renderBillingAccountingSummaryTab(ui) {
         { label: '출금', value: summary.cashbook_expense }
     ].map(item => `
         <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); min-width:0;">
-            <div style="font-size:11px; color:var(--secondary); font-weight:800; margin-bottom:6px;">${billingAccountingEscape(item.label)}</div>
-            <div style="font-size:16px; color:var(--text); font-weight:900; line-height:1.3; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatAmount(item.value))}</div>
+            <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:6px;">${billingAccountingEscape(item.label)}</div>
+            <div style="font-size:16px; color:var(--text); font-weight:500; line-height:1.3; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatAmount(item.value))}</div>
         </div>
     `).join('');
     const dailyRows = renderBillingAccountingSimpleRows(ui.dailySummaries || [], [
@@ -1035,33 +1035,33 @@ function renderBillingAccountingSummaryTab(ui) {
             <input id="baf-summary-month" class="btn" type="number" min="1" max="12" value="${billingAccountingEscape(ui.month)}" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
         </div>
         <div style="display:flex; gap:8px; margin-bottom:14px;">
-            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="reloadBillingAccountingSummaries()">조회</button>
-            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="billingAccountingFetchAll()">새로고침</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="reloadBillingAccountingSummaries()">조회</button>
+            <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.08); border:none;" onclick="billingAccountingFetchAll()">새로고침</button>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:8px; margin-bottom:12px;">
             ${metricCards}
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:14px;">
             <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
-                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">결제수단별</div>
+                <div style="font-size:13px; font-weight:500; color:var(--text); margin-bottom:8px;">결제수단별</div>
                 ${renderBillingAccountingGroupedAmounts(summary.by_method)}
             </div>
             <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
-                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">상태별</div>
+                <div style="font-size:13px; font-weight:500; color:var(--text); margin-bottom:8px;">상태별</div>
                 ${renderBillingAccountingGroupedAmounts(summary.by_status)}
             </div>
             <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface);">
-                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">브랜치별</div>
+                <div style="font-size:13px; font-weight:500; color:var(--text); margin-bottom:8px;">브랜치별</div>
                 ${renderBillingAccountingGroupedAmounts(summary.by_branch)}
             </div>
         </div>
         <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
             <div>
-                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">일별 요약</div>
+                <div style="font-size:13px; font-weight:500; color:var(--text); margin-bottom:8px;">일별 요약</div>
                 ${dailyRows}
             </div>
             <div>
-                <div style="font-size:13px; font-weight:800; color:var(--text); margin-bottom:8px;">월별 요약</div>
+                <div style="font-size:13px; font-weight:500; color:var(--text); margin-bottom:8px;">월별 요약</div>
                 ${monthlyRows}
             </div>
         </div>
@@ -1074,15 +1074,15 @@ function renderBillingAccountingMethodsTab(ui) {
         <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
             <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
                 <div>
-                    <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.name || item.method_key || '-')}</div>
-                    <div style="font-size:11px; color:var(--secondary); font-weight:700;">${billingAccountingEscape(item.method_key || '-')} · ${billingAccountingEscape(item.category || '-')} · sort ${billingAccountingEscape(item.sort_order ?? 0)}</div>
+                    <div style="font-size:13px; font-weight:500; color:var(--text);">${billingAccountingEscape(item.name || item.method_key || '-')}</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:500;">${billingAccountingEscape(item.method_key || '-')} · ${billingAccountingEscape(item.category || '-')} · sort ${billingAccountingEscape(item.sort_order ?? 0)}</div>
                 </div>
-                <div style="font-size:11px; font-weight:800; color:${Number(item.is_active) === 0 ? 'var(--secondary)' : 'var(--success)'};">${Number(item.is_active) === 0 ? '비활성화' : '사용중'}</div>
+                <div style="font-size:11px; font-weight:500; color:${Number(item.is_active) === 0 ? 'var(--secondary)' : 'var(--success)'};">${Number(item.is_active) === 0 ? '비활성화' : '사용중'}</div>
             </div>
             <div style="font-size:12px; color:var(--secondary); margin-bottom:10px; line-height:1.5;">${billingAccountingEscape(item.memo || '메모 없음')}</div>
             <div style="display:flex; gap:8px;">
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingMethod('${billingAccountingEscape(item.id)}')">수정</button>
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingMethodActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '활성화' : '비활성화'}</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingMethod('${billingAccountingEscape(item.id)}')">수정</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingMethodActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '활성화' : '비활성화'}</button>
             </div>
         </div>
     `).join('');
@@ -1101,8 +1101,8 @@ function renderBillingAccountingMethodsTab(ui) {
         </div>
         <textarea id="baf-method-memo" class="btn" placeholder="memo" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.memo)}</textarea>
         <div style="display:flex; gap:8px; margin-bottom:14px;">
-            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingMethod()">저장</button>
-            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetMethodForm(); renderBillingAccountingFoundationModal();">초기화</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="saveBillingAccountingMethod()">저장</button>
+            <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="billingAccountingResetMethodForm(); renderBillingAccountingFoundationModal();">초기화</button>
         </div>
         <div>${rows || renderBillingAccountingEmpty('결제수단이 없습니다.')}</div>
     `;
@@ -1114,16 +1114,16 @@ function renderBillingAccountingPoliciesTab(ui) {
         <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
             <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px;">
                 <div>
-                    <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.name || item.rule_key || '-')}</div>
-                    <div style="font-size:11px; color:var(--secondary); font-weight:700;">${billingAccountingEscape(item.branch || 'all')} · ${billingAccountingEscape(item.rule_type || '-')} · ${billingAccountingEscape(item.rule_key || '-')}</div>
+                    <div style="font-size:13px; font-weight:500; color:var(--text);">${billingAccountingEscape(item.name || item.rule_key || '-')}</div>
+                    <div style="font-size:11px; color:var(--secondary); font-weight:500;">${billingAccountingEscape(item.branch || 'all')} · ${billingAccountingEscape(item.rule_type || '-')} · ${billingAccountingEscape(item.rule_key || '-')}</div>
                 </div>
-                <div style="font-size:11px; font-weight:800; color:${Number(item.is_active) === 0 ? 'var(--secondary)' : 'var(--success)'};">${Number(item.is_active) === 0 ? '비활성화' : '사용중'}</div>
+                <div style="font-size:11px; font-weight:500; color:${Number(item.is_active) === 0 ? 'var(--secondary)' : 'var(--success)'};">${Number(item.is_active) === 0 ? '비활성화' : '사용중'}</div>
             </div>
             <pre style="margin:0 0 10px 0; padding:10px; background:var(--surface-2); border-radius:12px; font-size:11px; line-height:1.5; color:var(--text); white-space:pre-wrap; word-break:break-word;">${billingAccountingEscape(billingAccountingFormatJsonForEditor(item.value_json))}</pre>
             <div style="font-size:12px; color:var(--secondary); margin-bottom:10px; line-height:1.5;">${billingAccountingEscape(item.memo || '메모 없음')}</div>
             <div style="display:flex; gap:8px;">
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingPolicy('${billingAccountingEscape(item.id)}')">수정</button>
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingPolicyActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '활성화' : '비활성화'}</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingPolicy('${billingAccountingEscape(item.id)}')">수정</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--warning); background:rgba(245,159,0,0.12); border:none;" onclick="toggleBillingAccountingPolicyActive('${billingAccountingEscape(item.id)}', ${Number(item.is_active) === 0 ? 1 : 0})">${Number(item.is_active) === 0 ? '활성화' : '비활성화'}</button>
             </div>
         </div>
     `).join('');
@@ -1143,8 +1143,8 @@ function renderBillingAccountingPoliciesTab(ui) {
         <textarea id="baf-policy-value-json" class="btn" placeholder="value_json" style="width:100%; min-height:104px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.value_json)}</textarea>
         <textarea id="baf-policy-memo" class="btn" placeholder="memo" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.memo)}</textarea>
         <div style="display:flex; gap:8px; margin-bottom:14px;">
-            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingPolicy()">저장</button>
-            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetPolicyForm(); renderBillingAccountingFoundationModal();">초기화</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="saveBillingAccountingPolicy()">저장</button>
+            <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="billingAccountingResetPolicyForm(); renderBillingAccountingFoundationModal();">초기화</button>
         </div>
         <div>${rows || renderBillingAccountingEmpty('수납 정책이 없습니다.')}</div>
     `;
@@ -1165,13 +1165,13 @@ function renderBillingAccountingListTab(ui, tab) {
             <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
                 <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:8px;">
                     <div>
-                        <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
-                        <div style="font-size:11px; color:var(--secondary); font-weight:700;">${billingAccountingEscape(item.transaction_date || '-')} · ${billingAccountingEscape(item.transaction_type || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
+                        <div style="font-size:13px; font-weight:500; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
+                        <div style="font-size:11px; color:var(--secondary); font-weight:500;">${billingAccountingEscape(item.transaction_date || '-')} · ${billingAccountingEscape(item.transaction_type || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
                     </div>
                 </div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">수정</button>
-                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">취소</button>
+                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">수정</button>
+                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingTransaction('${billingAccountingEscape(item.id)}')">취소</button>
                 </div>
             </div>
         `).join('');
@@ -1192,8 +1192,8 @@ function renderBillingAccountingListTab(ui, tab) {
             </div>
             <textarea id="baf-transaction-note" class="btn" placeholder="note" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.note)}</textarea>
             <div style="display:flex; gap:8px; margin-bottom:14px;">
-                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingTransaction()">저장</button>
-                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetTransactionForm(); renderBillingAccountingFoundationModal();">초기화</button>
+                <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="saveBillingAccountingTransaction()">저장</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="billingAccountingResetTransactionForm(); renderBillingAccountingFoundationModal();">초기화</button>
             </div>
             <div>${rows || list}</div>
         `;
@@ -1202,13 +1202,13 @@ function renderBillingAccountingListTab(ui, tab) {
         const form = ui.cashbookForm || {};
         const rows = (ui.cashbookEntries || []).map(item => `
             <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
-                <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.title || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
-                <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">${billingAccountingEscape(item.entry_date || '-')} · ${billingAccountingEscape(item.entry_type || '-')} · ${billingAccountingEscape(item.category || '-')} · ${billingAccountingEscape(item.status || 'active')}</div>
+                <div style="font-size:13px; font-weight:500; color:var(--text);">${billingAccountingEscape(item.title || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
+                <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">${billingAccountingEscape(item.entry_date || '-')} · ${billingAccountingEscape(item.entry_type || '-')} · ${billingAccountingEscape(item.category || '-')} · ${billingAccountingEscape(item.status || 'active')}</div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">수정</button>
+                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">수정</button>
                     ${String(item.status || 'active') === 'cancelled' || Number(item.is_active) === 0
-                        ? `<button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--secondary); background:var(--surface-2); border:none;" disabled>취소</button>`
-                        : `<button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">취소</button>`
+                        ? `<button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--secondary); background:var(--surface-2); border:none;" disabled>취소</button>`
+                        : `<button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingCashbook('${billingAccountingEscape(item.id)}')">취소</button>`
                     }
                 </div>
             </div>
@@ -1237,8 +1237,8 @@ function renderBillingAccountingListTab(ui, tab) {
             </div>
             <textarea id="baf-cashbook-description" class="btn" placeholder="description" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.description)}</textarea>
             <div style="display:flex; gap:8px; margin-bottom:6px;">
-                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingCashbook()">저장</button>
-                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetCashbookForm(); renderBillingAccountingFoundationModal();">초기화</button>
+                <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="saveBillingAccountingCashbook()">저장</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="billingAccountingResetCashbookForm(); renderBillingAccountingFoundationModal();">초기화</button>
             </div>
             <div>${rows || renderBillingAccountingSimpleRows(ui.cashbookEntries || [], [
             { key: 'entry_date', label: '일자' },
@@ -1253,11 +1253,11 @@ function renderBillingAccountingListTab(ui, tab) {
         const form = ui.refundForm || {};
         const rows = (ui.refunds || []).map(item => `
             <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
-                <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.refund_amount)}</div>
-                <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">${billingAccountingEscape(item.refund_date || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
+                <div style="font-size:13px; font-weight:500; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.refund_amount)}</div>
+                <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">${billingAccountingEscape(item.refund_date || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingRefund('${billingAccountingEscape(item.id)}')">수정</button>
-                    <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingRefund('${billingAccountingEscape(item.id)}')">취소</button>
+                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingRefund('${billingAccountingEscape(item.id)}')">수정</button>
+                    <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingRefund('${billingAccountingEscape(item.id)}')">취소</button>
                 </div>
             </div>
         `).join('');
@@ -1274,8 +1274,8 @@ function renderBillingAccountingListTab(ui, tab) {
             </div>
             <textarea id="baf-refund-reason" class="btn" placeholder="reason" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.reason)}</textarea>
             <div style="display:flex; gap:8px; margin-bottom:14px;">
-                <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingRefund()">저장</button>
-                <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetRefundForm(); renderBillingAccountingFoundationModal();">초기화</button>
+                <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="saveBillingAccountingRefund()">저장</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="billingAccountingResetRefundForm(); renderBillingAccountingFoundationModal();">초기화</button>
             </div>
             <div>${rows || renderBillingAccountingSimpleRows(ui.refunds || [], [
             { key: 'refund_date', label: '일자' },
@@ -1289,11 +1289,11 @@ function renderBillingAccountingListTab(ui, tab) {
     const form = ui.carryoverForm || {};
     const rows = (ui.carryovers || []).map(item => `
         <div style="padding:12px; border:1px solid var(--border); border-radius:14px; background:var(--surface); margin-bottom:8px;">
-            <div style="font-size:13px; font-weight:800; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
-            <div style="font-size:11px; color:var(--secondary); font-weight:700; margin-bottom:8px;">${billingAccountingEscape(item.carryover_type || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
+            <div style="font-size:13px; font-weight:500; color:var(--text);">${billingAccountingEscape(item.student_id || '-')} · ${billingAccountingFormatAmount(item.amount)}</div>
+            <div style="font-size:11px; color:var(--secondary); font-weight:500; margin-bottom:8px;">${billingAccountingEscape(item.carryover_type || '-')} · ${billingAccountingEscape(item.status || '-')}</div>
             <div style="display:flex; gap:8px;">
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800;" onclick="editBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">수정</button>
-                <button class="btn" style="flex:1; min-height:38px; font-size:12px; font-weight:800; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">취소</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500;" onclick="editBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">수정</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:38px; font-size:12px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.08); border:none;" onclick="cancelBillingAccountingCarryover('${billingAccountingEscape(item.id)}')">취소</button>
             </div>
         </div>
     `).join('');
@@ -1310,8 +1310,8 @@ function renderBillingAccountingListTab(ui, tab) {
         </div>
         <textarea id="baf-carryover-reason" class="btn" placeholder="reason" style="width:100%; min-height:72px; text-align:left; background:var(--surface-2); border:none; padding:12px; margin-bottom:8px;">${billingAccountingEscape(form.reason)}</textarea>
         <div style="display:flex; gap:8px; margin-bottom:14px;">
-            <button class="btn btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="saveBillingAccountingCarryover()">저장</button>
-            <button class="btn" style="flex:1; min-height:42px; font-size:12px; font-weight:800;" onclick="billingAccountingResetCarryoverForm(); renderBillingAccountingFoundationModal();">초기화</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="saveBillingAccountingCarryover()">저장</button>
+            <button class="btn apms-button apms-button--quiet" style="flex:1; min-height:42px; font-size:12px; font-weight:500;" onclick="billingAccountingResetCarryoverForm(); renderBillingAccountingFoundationModal();">초기화</button>
         </div>
         <div>${rows || renderBillingAccountingSimpleRows(ui.carryovers || [], [
         { key: 'created_at', label: '생성일' },
@@ -1337,12 +1337,12 @@ function renderBillingAccountingFoundationModal() {
     ];
 
     const tabButtons = tabs.map(tab => `
-        <button class="btn" style="padding:9px 12px; border-radius:10px; border:none; font-size:12px; font-weight:800; background:${ui.tab === tab.key ? 'var(--surface)' : 'transparent'}; color:${ui.tab === tab.key ? 'var(--text)' : 'var(--secondary)'}; box-shadow:${ui.tab === tab.key ? '0 1px 2px rgba(0,0,0,0.05)' : 'none'};" onclick="setBillingAccountingFoundationTab('${tab.key}')">${billingAccountingEscape(tab.label)}</button>
+        <button class="btn apms-button apms-button--quiet" style="padding:9px 12px; border-radius:10px; border:none; font-size:12px; font-weight:500; background:${ui.tab === tab.key ? 'var(--surface)' : 'transparent'}; color:${ui.tab === tab.key ? 'var(--text)' : 'var(--secondary)'}; box-shadow:${ui.tab === tab.key ? '0 1px 2px rgba(0,0,0,0.05)' : 'none'};" onclick="setBillingAccountingFoundationTab('${tab.key}')">${billingAccountingEscape(tab.label)}</button>
     `).join('');
 
     let body = '';
     if (ui.loading) {
-        body = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:800;">불러오는 중...</div>`;
+        body = `<div style="padding:32px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">불러오는 중...</div>`;
     } else if (ui.tab === 'summary') {
         body = renderBillingAccountingSummaryTab(ui);
     } else if (ui.tab === 'methods') {
@@ -1357,8 +1357,8 @@ function renderBillingAccountingFoundationModal() {
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; background:var(--surface-2); padding:4px; border-radius:12px;">
             ${tabButtons}
         </div>
-        ${ui.error ? `<div style="margin-bottom:12px; padding:10px 12px; border-radius:12px; background:rgba(255,71,87,0.08); color:var(--error); font-size:12px; font-weight:700;">${billingAccountingEscape(ui.error)}</div>` : ''}
-        <div style="font-size:11px; color:var(--secondary); font-weight:700; line-height:1.5; margin-bottom:12px;">실제 수납 등록, 환불 처리, 이월 처리, 장부 자동 반영은 이번 단계에서 연결하지 않습니다.</div>
+        ${ui.error ? `<div style="margin-bottom:12px; padding:10px 12px; border-radius:12px; background:rgba(255,71,87,0.08); color:var(--error); font-size:12px; font-weight:500;">${billingAccountingEscape(ui.error)}</div>` : ''}
+        <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5; margin-bottom:12px;">실제 수납 등록, 환불 처리, 이월 처리, 장부 자동 반영은 이번 단계에서 연결하지 않습니다.</div>
         <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${body}</div>
     `);
 }
