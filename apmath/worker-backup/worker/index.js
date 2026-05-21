@@ -397,6 +397,154 @@ async function loadFoundationInitialData(env, teacher) {
   };
 }
 
+function normalizeReportCohortGrade(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  const compact = raw.replace(/\s+/g, '');
+  const middle = compact.match(/^(?:중|중등|중학교)?([123])(?:학년)?$/);
+  if (middle) return `중${middle[1]}`;
+  const high = compact.match(/^(?:고|고등|고등학교)([123])(?:학년)?$/);
+  if (high) return `고${high[1]}`;
+  return compact;
+}
+
+function getReportCohortStudentGrade(student, classMapByStudent, classById) {
+  const studentGrade = normalizeReportCohortGrade(student?.grade);
+  if (studentGrade) return studentGrade;
+  const classId = classMapByStudent.get(String(student?.id || ''));
+  return normalizeReportCohortGrade(classById.get(String(classId || ''))?.grade);
+}
+
+function getReportCohortIdentity(session) {
+  const archiveFile = String(session?.archive_file || '').trim();
+  const examTitle = String(session?.exam_title || '').trim();
+  const examDate = String(session?.exam_date || '').trim();
+  const questionCount = Number(session?.question_count || 0);
+  if (archiveFile) {
+    return {
+      scope: 'grade_archive_exam',
+      where: "TRIM(COALESCE(es.archive_file, '')) = ?",
+      params: [archiveFile]
+    };
+  }
+  if (examTitle && examDate && questionCount) {
+    return {
+      scope: 'grade_title_date_question_count',
+      where: "TRIM(COALESCE(es.exam_title, '')) = ? AND TRIM(COALESCE(es.exam_date, '')) = ? AND COALESCE(es.question_count, 0) = ?",
+      params: [examTitle, examDate, questionCount]
+    };
+  }
+  if (examTitle && examDate) {
+    return {
+      scope: 'grade_title_date',
+      where: "TRIM(COALESCE(es.exam_title, '')) = ? AND TRIM(COALESCE(es.exam_date, '')) = ?",
+      params: [examTitle, examDate]
+    };
+  }
+  return null;
+}
+
+async function buildReportExamCohortStats(env, sessions = [], students = [], classes = [], classStudents = []) {
+  const visibleSessions = Array.isArray(sessions) ? sessions : [];
+  if (!visibleSessions.length) return [];
+
+  const studentById = new Map((students || []).map(s => [String(s.id), s]));
+  const classById = new Map((classes || []).map(c => [String(c.id), c]));
+  const classMapByStudent = new Map((classStudents || []).map(m => [String(m.student_id), String(m.class_id)]));
+  const byKey = new Map();
+  const resultBySessionId = new Map();
+
+  for (const session of visibleSessions) {
+    const identity = getReportCohortIdentity(session);
+    const grade = getReportCohortStudentGrade(studentById.get(String(session.student_id)), classMapByStudent, classById);
+    if (!identity || !grade) continue;
+    const key = `${identity.scope}||${identity.params.join('||')}||${grade}`;
+    if (!byKey.has(key)) byKey.set(key, { identity, grade, sessions: [] });
+    byKey.get(key).sessions.push(session);
+  }
+
+  for (const item of byKey.values()) {
+    const cohortRes = await env.DB.prepare(`
+      SELECT DISTINCT es.id, es.score, es.question_count, s.grade AS student_grade, c.grade AS class_grade
+      FROM exam_sessions es
+      JOIN students s ON s.id = es.student_id
+      LEFT JOIN class_students cs ON cs.student_id = es.student_id
+      LEFT JOIN classes c ON c.id = COALESCE(es.class_id, cs.class_id)
+      WHERE ${item.identity.where}
+        AND TRIM(COALESCE(es.score, '')) != ''
+    `).bind(...item.identity.params).all();
+
+    const rowsBySessionId = new Map();
+    for (const rawRow of (cohortRes.results || [])) {
+      const score = Number(rawRow.score);
+      if (!Number.isFinite(score)) continue;
+
+      const studentGrade = normalizeReportCohortGrade(rawRow.student_grade);
+      const classGrade = normalizeReportCohortGrade(rawRow.class_grade);
+      const matchedGrade = studentGrade || classGrade;
+      if (matchedGrade !== item.grade) continue;
+
+      const sessionId = String(rawRow.id);
+      if (!rowsBySessionId.has(sessionId)) {
+        rowsBySessionId.set(sessionId, {
+          id: rawRow.id,
+          score,
+          question_count: rawRow.question_count
+        });
+      }
+    }
+
+    const cohortRows = Array.from(rowsBySessionId.values());
+    if (!cohortRows.length) continue;
+
+    const scores = cohortRows.map(row => row.score);
+    const average = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+    const maxQuestionNo = Math.max(0, ...cohortRows.map(row => Number(row.question_count || 0)));
+    const sessionIds = cohortRows.map(row => String(row.id));
+    let questionStats = [];
+
+    if (maxQuestionNo && sessionIds.length) {
+      const markers = sessionIds.map(() => '?').join(',');
+      const wrongRes = await env.DB.prepare(`
+        SELECT question_id, COUNT(*) AS wrong_count
+        FROM wrong_answers
+        WHERE session_id IN (${markers})
+        GROUP BY question_id
+      `).bind(...sessionIds).all();
+      const wrongCountByQuestion = new Map((wrongRes.results || []).map(row => [String(row.question_id), Number(row.wrong_count || 0)]));
+      questionStats = Array.from({ length: maxQuestionNo }, (_, index) => {
+        const questionNo = index + 1;
+        const wrongCount = wrongCountByQuestion.get(String(questionNo)) || 0;
+        return {
+          questionNo,
+          wrongCount,
+          correctRate: Math.round(((cohortRows.length - wrongCount) / cohortRows.length) * 100)
+        };
+      });
+    }
+
+    for (const session of item.sessions) {
+      const score = Number(session.score);
+      const rank = Number.isFinite(score)
+        ? scores.filter(v => v > score).length + 1
+        : null;
+      resultBySessionId.set(String(session.id), {
+        session_id: session.id,
+        cohortScope: item.identity.scope,
+        grade: item.grade,
+        gradeExamAverage: average,
+        gradeExamRank: rank,
+        gradeExamCount: cohortRows.length,
+        totalSubmitted: cohortRows.length,
+        overallAverage: average,
+        questionStats
+      });
+    }
+  }
+
+  return Array.from(resultBySessionId.values());
+}
+
 function pushConflict(conflicts, type, targetId, classA, classB, branchPair, dayOfWeek, start, end) {
   const [a, b] = uniqSortedPair(classA, classB);
   conflicts.push({
@@ -2645,6 +2793,7 @@ export default {
                 timetable_class_students: ttAllClassStudents.results,
                 timetable_students: ttAllStudents.results,
                 timetable_class_textbooks: ttAllClassTextbooks.results,
+                report_exam_cohort_stats: [],
                 ...foundationData
               }), { headers });
             }
@@ -2685,6 +2834,14 @@ export default {
             }
           }
 
+          const reportExamCohortStats = await buildReportExamCohortStats(
+            env,
+            exs.results,
+            stds.results,
+            clss.results,
+            map.results
+          );
+
           return new Response(JSON.stringify({
             students: stds.results,
             classes: clss.results,
@@ -2708,6 +2865,7 @@ export default {
             timetable_class_students: ttAllClassStudents.results,
             timetable_students: ttAllStudents.results,
             timetable_class_textbooks: isAdminUser(teacher) ? txt.results : ttAllClassTextbooks.results,
+            report_exam_cohort_stats: reportExamCohortStats,
             ...foundationData
           }), { headers });
         }
