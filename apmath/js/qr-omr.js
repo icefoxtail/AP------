@@ -245,54 +245,54 @@ function openQrGenerator(cid) {
     showModal('QR 생성기', `
         <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="background:var(--bg); padding:14px 18px; border-radius:14px; font-size:13px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="color:var(--secondary); font-weight:700;">대상 학급</span>
-                <span style="font-weight:700; color:var(--text); font-size:15px;">${cls.name}</span>
+                <span style="color:var(--secondary); font-weight:500;">대상 학급</span>
+                <span style="font-weight:500; color:var(--text); font-size:15px;">${cls.name}</span>
             </div>
 
             <div>
-                <label style="font-size:12px; font-weight:700; color:var(--secondary);">시험명 선택/입력</label>
+                <label style="font-size:12px; font-weight:500; color:var(--secondary);">시험명 선택/입력</label>
                 <div style="display:flex; gap:8px; flex-wrap:wrap; margin:10px 0;">
-                    <button class="btn" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='쪽지시험'">쪽지시험</button>
-                    <button class="btn" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='단원평가'">단원평가</button>
-                    <button class="btn" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='월말평가'">월말평가</button>
-                    <button class="btn" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='모의고사'">모의고사</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='쪽지시험'">쪽지시험</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='단원평가'">단원평가</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='월말평가'">월말평가</button>
+                    <button class="btn apms-button apms-button--quiet" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='모의고사'">모의고사</button>
                 </div>
                 <input id="qr-exam" class="btn" value="단원평가" placeholder="시험명 입력" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; border-radius:14px; font-size:15px;">
             </div>
 
             <div style="display:flex; gap:12px;">
                 <div style="flex:1;">
-                    <label style="font-size:12px; font-weight:700; color:var(--secondary);">문항 수 (1~50)</label>
-                    <input id="qr-q" type="number" class="btn" value="20" min="1" max="50" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:15px; font-weight:700;">
+                    <label style="font-size:12px; font-weight:500; color:var(--secondary);">문항 수 (1~50)</label>
+                    <input id="qr-q" type="number" class="btn" value="20" min="1" max="50" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:15px; font-weight:500;">
                 </div>
                 <div style="flex:1;">
-                    <label style="font-size:12px; font-weight:700; color:var(--secondary);">시험 날짜</label>
-                    <input id="qr-date" type="date" class="btn" value="${today}" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:14px; font-weight:700;">
+                    <label style="font-size:12px; font-weight:500; color:var(--secondary);">시험 날짜</label>
+                    <input id="qr-date" type="date" class="btn" value="${today}" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:14px; font-weight:500;">
                 </div>
             </div>
 
             <div>
-                <label style="font-size:12px; font-weight:700; color:var(--secondary);">JS아카이브 파일명 (선택)</label>
+                <label style="font-size:12px; font-weight:500; color:var(--secondary);">JS아카이브 파일명 (선택)</label>
                 <input id="qr-archiveFile" class="btn" value="${lastArchiveFile}" placeholder="예: exams/기출.js" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:14px;">
-                <div style="font-size:11px; color:var(--secondary); line-height:1.5; margin-top:8px; font-weight:600;">
+                <div style="font-size:11px; color:var(--secondary); line-height:1.5; margin-top:8px; font-weight:400;">
                     비워두면 일반 문항 QR로 생성됩니다. JS아카이브와 연결하려면 파일명을 정확히 입력하세요.
                 </div>
             </div>
 
             <div id="qr-result-area" class="hidden" style="margin-top:20px;">
                 <div style="background:var(--surface); border:1px solid rgba(26,92,255,0.2); border-radius:24px; padding:28px 20px; text-align:center; box-shadow:0 12px 32px rgba(26,92,255,0.08);">
-                    <div style="font-size:18px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">AP Math OS</div>
-                    <div style="font-size:13px; font-weight:700; color:var(--primary); margin-bottom:24px;">모바일 오답 체크 전용 접속 QR</div>
+                    <div style="font-size:18px; font-weight:500; color:var(--text); letter-spacing:-0.5px;">AP Math OS</div>
+                    <div style="font-size:13px; font-weight:500; color:var(--primary); margin-bottom:24px;">모바일 오답 체크 전용 접속 QR</div>
                     
                     <div style="display:inline-block; padding:12px; background:#fff; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.06); margin-bottom:20px; border:1px solid var(--border);">
                         <img id="qr-img" style="width:180px; height:180px; display:block;">
                     </div>
                     
-                    <div id="qr-url" style="font-size:12px; word-break:break-all; background:var(--bg); padding:12px 16px; border-radius:12px; margin-bottom:24px; color:var(--secondary); font-weight:600; text-align:left;"></div>
+                    <div id="qr-url" style="font-size:12px; word-break:break-all; background:var(--bg); padding:12px 16px; border-radius:12px; margin-bottom:24px; color:var(--secondary); font-weight:400; text-align:left;"></div>
                     
                     <div style="display:flex; gap:10px;">
-                        <button class="btn btn-primary" style="flex:1.5; padding:16px; border-radius:16px; font-size:14px; font-weight:700;" onclick="shareQrUrl()">카카오톡 공유</button>
-                        <button class="btn" style="flex:1; padding:16px; border-radius:16px; font-size:14px; background:var(--bg); border:none; font-weight:700;" onclick="copyQrUrl()">URL 복사</button>
+                        <button class="btn apms-button apms-button--primary btn-primary" style="flex:1.5; padding:16px; border-radius:16px; font-size:14px; font-weight:500;" onclick="shareQrUrl()">카카오톡 공유</button>
+                        <button class="btn apms-button apms-button--quiet" style="flex:1; padding:16px; border-radius:16px; font-size:14px; background:var(--bg); border:none; font-weight:500;" onclick="copyQrUrl()">URL 복사</button>
                     </div>
                 </div>
             </div>
@@ -439,9 +439,9 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
         const lastExam = localStorage.getItem('AP_LAST_EXAM_NAME') || '';
         showModal('제출 현황 조회', `
             <div style="display:flex;flex-direction:column;gap:12px;">
-                <p style="margin:0;font-size:13px;color:var(--secondary);font-weight:700;">조회할 시험명을 입력하세요.</p>
+                <p style="margin:0;font-size:13px;color:var(--secondary);font-weight:500;">조회할 시험명을 입력하세요.</p>
                 <input id="qr-status-exam" class="btn" placeholder="시험명 입력 (예: 단원평가)" value="${lastExam}" style="width:100%;text-align:left;background:var(--bg);border:none;padding:16px;border-radius:12px;font-size:14px;">
-                <input id="qr-status-date" type="date" class="btn" value="${safeDate}" style="width:100%;background:var(--bg);border:none;padding:16px;border-radius:12px;font-size:14px;font-weight:700;">
+                <input id="qr-status-date" type="date" class="btn" value="${safeDate}" style="width:100%;background:var(--bg);border:none;padding:16px;border-radius:12px;font-size:14px;font-weight:500;">
             </div>
         `, '조회', () => {
             const title = document.getElementById('qr-status-exam').value.trim();
@@ -470,32 +470,32 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
     showModal('제출 현황', `
         <div style="background:var(--bg);padding:14px 18px;border-radius:14px;font-size:13px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
             <div>
-                <div style="font-weight:700;color:var(--text);font-size:15px;margin-bottom:2px;">${examTitle}</div>
-                <div style="font-size:12px;color:var(--secondary);font-weight:700;">${safeDate}</div>
+                <div style="font-weight:500;color:var(--text);font-size:15px;margin-bottom:2px;">${examTitle}</div>
+                <div style="font-size:12px;color:var(--secondary);font-weight:500;">${safeDate}</div>
             </div>
             <div style="text-align:right;">
-                <div style="font-size:11px;color:var(--secondary);font-weight:700;margin-bottom:2px;">전체 ${submitted.length + pending.length}명</div>
-                <div style="font-size:15px;color:var(--primary);font-weight:700;">${submitted.length}명 제출</div>
+                <div style="font-size:11px;color:var(--secondary);font-weight:500;margin-bottom:2px;">전체 ${submitted.length + pending.length}명</div>
+                <div style="font-size:15px;color:var(--primary);font-weight:500;">${submitted.length}명 제출</div>
             </div>
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span>
-            <h4 style="margin:0;font-size:14px;font-weight:700;color:var(--text);">제출 완료 (${submitted.length})</h4>
+            <h4 style="margin:0;font-size:14px;font-weight:500;color:var(--text);">제출 완료 (${submitted.length})</h4>
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;margin-bottom:28px;">
             <table style="width:100%;font-size:14px;">
-                ${submitted.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:700;color:var(--text);">${s.name}</td><td style="padding:12px 20px;text-align:right;font-weight:700;color:var(--primary);">${s.score}점</td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">제출한 학생이 없습니다.</td></tr>'}
+                ${submitted.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:500;color:var(--text);">${s.name}</td><td style="padding:12px 20px;text-align:right;font-weight:500;color:var(--primary);">${s.score}점</td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:500;">제출한 학생이 없습니다.</td></tr>'}
             </table>
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <span style="width:8px;height:8px;border-radius:50%;background:var(--error);"></span>
-            <h4 style="margin:0;font-size:14px;font-weight:700;color:var(--text);">미제출 (${pending.length})</h4>
+            <h4 style="margin:0;font-size:14px;font-weight:500;color:var(--text);">미제출 (${pending.length})</h4>
         </div>
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:8px 0;">
             <table style="width:100%;font-size:14px;">
-                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:700;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:700;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${qCount}, '${classId}', '', '${safeArchiveFileForJs}', 'qrStatus', '${safeDate}')">\uC131\uC801 \uC785\uB825</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:700;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
+                ${pending.map(s => `<tr style="border-bottom:1px solid var(--bg);"><td style="padding:12px 20px;font-weight:500;color:var(--text);">${s.name}</td><td style="padding:10px 16px;text-align:right;"><button class="btn apms-button apms-button--primary btn-primary" style="min-height:36px;padding:8px 14px;font-size:12px;font-weight:500;border-radius:10px;" onclick="closeModal();openOMR('${s.id}', '${safeExamTitleForJs}', ${qCount}, '${classId}', '', '${safeArchiveFileForJs}', 'qrStatus', '${safeDate}')">\uC131\uC801 \uC785\uB825</button></td></tr>`).join('') || '<tr><td colspan="2" style="padding:24px;color:var(--secondary);text-align:center;font-weight:500;">\uBBF8\uC81C\uCD9C \uD559\uC0DD\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.</td></tr>'}
             </table>
         </div>
     `);
@@ -545,12 +545,12 @@ async function openOMR(sid, presetTitle = '', presetQuestionCount = null, preset
         <div style="display:flex;flex-direction:column;gap:18px;">
             <div style="display:flex; gap:12px;">
                 <div style="flex:2;">
-                    <label style="font-size:12px;font-weight:700;color:var(--secondary);margin-bottom:8px;display:block;">시험명</label>
+                    <label style="font-size:12px;font-weight:500;color:var(--secondary);margin-bottom:8px;display:block;">시험명</label>
                     <input id="omr-title" class="btn" value="${defaultTitle}" style="width:100%;text-align:left;background:var(--bg);border:none;padding:14px;border-radius:12px;font-size:14px;">
                 </div>
                 <div style="flex:1;">
-                    <label style="font-size:12px;font-weight:700;color:var(--secondary);margin-bottom:8px;display:block;">문항 수</label>
-                    <input id="omr-q" type="number" class="btn" value="${defaultQ}" min="1" max="50" style="width:100%;text-align:center;background:var(--bg);border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;" oninput="rebuildOmrGrid()">
+                    <label style="font-size:12px;font-weight:500;color:var(--secondary);margin-bottom:8px;display:block;">문항 수</label>
+                    <input id="omr-q" type="number" class="btn" value="${defaultQ}" min="1" max="50" style="width:100%;text-align:center;background:var(--bg);border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:500;" oninput="rebuildOmrGrid()">
                 </div>
             </div>
             
@@ -558,11 +558,11 @@ async function openOMR(sid, presetTitle = '', presetQuestionCount = null, preset
                 <input id="omr-archiveFile" type="hidden" value="${omrEscape(defaultArchiveFile)}">
                 <input id="omr-exam-date-hidden" type="hidden" value="${omrEscape(defaultExamDate)}">
                 <input id="omr-session-id-hidden" type="hidden" value="${omrEscape(presetSessionId || '')}">
-                <div id="omr-archive-status" style="font-size:12px;font-weight:800;color:${getOmrArchiveStatusColor(defaultArchiveFile)};background:var(--bg);border-radius:12px;padding:11px 13px;">${getOmrQuestionCountStatusText(defaultArchiveFile, defaultQResolved.source, defaultQ)}</div>
+                <div id="omr-archive-status" style="font-size:12px;font-weight:500;color:${getOmrArchiveStatusColor(defaultArchiveFile)};background:var(--bg);border-radius:12px;padding:11px 13px;">${getOmrQuestionCountStatusText(defaultArchiveFile, defaultQResolved.source, defaultQ)}</div>
             </div>
 
             <div style="margin-top:14px;">
-                <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:16px;">틀린 번호를 선택하세요</div>
+                <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:16px;">틀린 번호를 선택하세요</div>
                 <div id="omr-grid-wrap">
                     <div class="omr-grid" style="gap:14px;">${buildOmrItems(defaultQ, checkedWrongIds)}</div>
                 </div>
@@ -605,7 +605,7 @@ function buildOmrItems(q, checkedIds = []) {
                 }
                 setTimeout(() => v.style.transform = 'scale(1)', 150);
             " style="display:none;">
-            <div style="width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; background:${bg}; color:${color}; border:2px solid ${border}; box-shadow:${shadow}; transition:all 0.15s cubic-bezier(0.4, 0, 0.2, 1);">
+            <div style="width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:500; background:${bg}; color:${color}; border:2px solid ${border}; box-shadow:${shadow}; transition:all 0.15s cubic-bezier(0.4, 0, 0.2, 1);">
                 ${qNum}
             </div>
         </label>`;
@@ -960,29 +960,29 @@ function installOmrInputStyle() {
     style.textContent = `
         #omr-main { width:100%; max-width:1150px; margin:0 auto; height:calc(100vh - 56px); display:flex; flex-direction:column; padding:12px 16px 0; box-sizing:border-box; }
         #omr-header-row { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; flex-shrink:0; }
-        #omr-title { font-size:18px; font-weight:800; color:var(--text); letter-spacing:-0.5px; white-space:nowrap; }
+        #omr-title { font-size:18px; font-weight:500; color:var(--text); letter-spacing:-0.5px; white-space:nowrap; }
         #omr-controls { display:grid; grid-template-columns:1.4fr 140px 118px 120px 1fr; gap:8px; margin-bottom:8px; flex-shrink:0; }
-        .omr-ctrl { height:36px; min-height:36px; padding:0 10px; border-radius:9px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:13px; font-weight:700; font-family:inherit; }
+        .omr-ctrl { height:36px; min-height:36px; padding:0 10px; border-radius:9px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:13px; font-weight:500; font-family:inherit; }
         .omr-ctrl.omr-text { text-align:left; }
         #omr-sub-controls { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px; flex-shrink:0; }
-        #omr-guide { font-size:11px; font-weight:700; color:var(--secondary); display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; flex-shrink:0; }
+        #omr-guide { font-size:11px; font-weight:500; color:var(--secondary); display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; flex-shrink:0; }
         .omr-guide-item { display:inline-flex; align-items:center; gap:4px; min-height:22px; padding:2px 7px; border-radius:999px; border:1px solid var(--border); background:var(--surface); white-space:nowrap; line-height:1; }
         #omr-tbl-wrap { flex:1; overflow:auto; border:1px solid var(--border); border-radius:12px 12px 0 0; background:var(--surface); -webkit-overflow-scrolling:touch; }
         #omr-tbl { border-collapse:separate; border-spacing:0; width:max-content; min-width:100%; margin:0; }
         #omr-tbl th, #omr-tbl td { border-right:1px solid var(--border); border-bottom:1px solid var(--border); padding:0; text-align:center; vertical-align:middle; height:34px; min-width:38px; color:var(--text); background:var(--surface); }
-        #omr-tbl th { position:sticky; top:0; z-index:5; height:34px; background:var(--surface-2); font-size:11px; font-weight:800; color:var(--secondary); }
+        #omr-tbl th { position:sticky; top:0; z-index:5; height:34px; background:var(--surface-2); font-size:11px; font-weight:500; color:var(--secondary); }
         #omr-tbl .omr-name-head, #omr-tbl .omr-name-cell { position:sticky; left:0; z-index:6; min-width:116px; max-width:116px; width:116px; text-align:left; padding:0 8px; box-shadow:1px 0 0 var(--border); }
         #omr-tbl .omr-name-head { z-index:9; background:var(--surface-2); }
         #omr-tbl .omr-name-cell { background:var(--surface); }
-        .omr-name-main { font-size:13px; font-weight:800; color:var(--text); line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .omr-name-sub { margin-top:2px; font-size:10px; font-weight:700; color:var(--secondary); line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .omr-cell-btn { width:100%; height:100%; min-height:34px; border:0; background:transparent; color:var(--success); font-size:13px; font-weight:800; font-family:inherit; cursor:pointer; border-radius:0; display:flex; align-items:center; justify-content:center; }
+        .omr-name-main { font-size:13px; font-weight:500; color:var(--text); line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .omr-name-sub { margin-top:2px; font-size:10px; font-weight:500; color:var(--secondary); line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .omr-cell-btn { width:100%; height:100%; min-height:34px; border:0; background:transparent; color:var(--success); font-size:13px; font-weight:500; font-family:inherit; cursor:pointer; border-radius:0; display:flex; align-items:center; justify-content:center; }
         .omr-cell-btn.wrong { color:var(--error); background:rgba(232,65,79,0.08); }
         .omr-cell-btn.blank { cursor:default; color:transparent; background:transparent; }
         .omr-cell-btn:disabled { opacity:1; }
         .omr-footer { display:flex; gap:8px; justify-content:space-between; align-items:center; padding:10px 0 calc(10px + env(safe-area-inset-bottom)); flex-shrink:0; }
-        .omr-footer-info { font-size:12px; font-weight:700; color:var(--secondary); line-height:1.4; }
-        .omr-save-btn { min-height:42px; padding:0 18px; border-radius:12px; font-size:13px; font-weight:800; }
+        .omr-footer-info { font-size:12px; font-weight:500; color:var(--secondary); line-height:1.4; }
+        .omr-save-btn { min-height:42px; padding:0 18px; border-radius:12px; font-size:13px; font-weight:500; }
         @media (max-width:900px) {
             #omr-main { height:calc(100vh - 58px); padding:10px 10px 0; }
             #omr-controls { grid-template-columns:1fr 108px; gap:7px; }
@@ -1123,7 +1123,7 @@ function renderOmrInputTable(students, questionCount) {
                 <tr><th class="omr-name-head">학생명</th>${head}</tr>
             </thead>
             <tbody>
-                ${rows || `<tr><td class="omr-name-cell" style="height:72px;">대상 없음</td><td colspan="${questionCount}" style="font-size:13px;font-weight:700;color:var(--secondary);min-width:260px;">학년을 선택하면 학생 목록이 표시됩니다.</td></tr>`}
+                ${rows || `<tr><td class="omr-name-cell" style="height:72px;">대상 없음</td><td colspan="${questionCount}" style="font-size:13px;font-weight:500;color:var(--secondary);min-width:260px;">학년을 선택하면 학생 목록이 표시됩니다.</td></tr>`}
             </tbody>
         </table>
     `;
@@ -1170,7 +1170,7 @@ async function renderOmrInput() {
         <div id="omr-main">
             <div id="omr-header-row">
                 <div id="omr-title">OMR 입력</div>
-                <button class="btn" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:800; border-radius:9px;" onclick="goOmrInputHome()">AP MATH</button>
+                <button class="btn apms-button apms-button--quiet" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:500; border-radius:9px;" onclick="goOmrInputHome()">AP MATH</button>
             </div>
 
             <div id="omr-controls">
@@ -1185,12 +1185,12 @@ async function renderOmrInput() {
                 <select id="omr-history" class="omr-ctrl" style="min-width:220px;" onchange="handleOmrHistoryChange()">${buildOmrHistoryOptions()}</select>
                 <input id="omr-archive-file" type="hidden" value="${omrEscape(ui.archiveFile || '')}">
                 <div class="omr-ctrl" style="display:flex;align-items:center;color:${getOmrArchiveStatusColor(ui.archiveFile)};">${omrEscape(getOmrQuestionCountStatusText(ui.archiveFile, ui.questionCountSource, ui.questionCount))}</div>
-                <button class="btn" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:800; border-radius:9px;" onclick="activateCurrentOmrExam()">현재 시험 다시 불러오기</button>
+                <button class="btn apms-button apms-button--quiet" style="height:36px; min-height:36px; padding:0 12px; font-size:12px; font-weight:500; border-radius:9px;" onclick="activateCurrentOmrExam()">현재 시험 다시 불러오기</button>
             </div>
 
             <div id="omr-guide">
-                <span class="omr-guide-item"><b style="color:var(--success);">O</b> 맞음</span>
-                <span class="omr-guide-item"><b style="color:var(--error);">X</b> 틀림</span>
+                <span class="omr-guide-item"><span style="color:var(--success); font-weight:600;">O</span> 맞음</span>
+                <span class="omr-guide-item"><span style="color:var(--error); font-weight:600;">X</span> 틀림</span>
                 <span class="omr-guide-item">틀린 문제만 눌러 X로 바꾼 뒤 저장</span>
                 <span class="omr-guide-item">기존 시험 선택 시 저장된 X 상태 복원</span>
             </div>

@@ -345,12 +345,12 @@ function clinicPrintUpdateStudentList(classId) {
     }
 
     if (!selectedExamKeys.length) {
-        root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:700; text-align:center;">시험을 선택하세요.</div>';
+        root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">시험을 선택하세요.</div>';
         return;
     }
 
     if (!studentItems.length) {
-        root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:700; text-align:center;">선택한 시험에 출력 가능한 오답이 없습니다.</div>';
+        root.innerHTML = '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">선택한 시험에 출력 가능한 오답이 없습니다.</div>';
         return;
     }
 
@@ -358,9 +358,9 @@ function clinicPrintUpdateStudentList(classId) {
         <label style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:var(--surface);">
             <span style="display:flex; align-items:center; gap:8px; min-width:0;">
                 <input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(row.studentId)}" checked>
-                <span style="font-size:13px; font-weight:800; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${clinicPrintEscapeHtml(row.studentName)}</span>
+                <span style="font-size:13px; font-weight:500; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${clinicPrintEscapeHtml(row.studentName)}</span>
             </span>
-            <span style="font-size:12px; font-weight:800; color:var(--error); white-space:nowrap;">${row.wrongItems.length}문항</span>
+            <span style="font-size:12px; font-weight:500; color:var(--error); white-space:nowrap;">${row.wrongItems.length}문항</span>
         </label>
     `).join('');
 }
@@ -400,8 +400,8 @@ function openClinicCenter(classId = '') {
 
     showModal('클리닉', `
         <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
-            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="if('${safeClassIdForJs}'){ openClinicPrintCenter('${safeClassIdForJs}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
-            <button class="btn" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:800; box-shadow:none;" onclick="clinicPrintOpenSimilarMenu('${safeClassIdForJs}')">유사문항</button>
+            <button class="btn apms-button apms-button--quiet" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:500; box-shadow:none;" onclick="if('${safeClassIdForJs}'){ openClinicPrintCenter('${safeClassIdForJs}'); } else { toast('반 화면에서 이용하세요.', 'info'); }">오답</button>
+            <button class="btn apms-button apms-button--quiet" style="min-height:68px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:15px; font-weight:500; box-shadow:none;" onclick="clinicPrintOpenSimilarMenu('${safeClassIdForJs}')">유사문항</button>
         </div>
         <style>
             @media (max-width:520px) {
@@ -450,28 +450,28 @@ function openClinicPrintCenter(classId) {
                 <label style="display:flex; align-items:flex-start; gap:10px; padding:12px; border:1px solid var(--border); border-radius:12px; background:${group.printable ? 'var(--surface)' : 'var(--bg)'}; opacity:${group.printable ? '1' : '0.62'};">
                     <input type="checkbox" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintUpdateStudentList('${safeClassIdForJs}')" style="margin-top:3px;">
                     <span style="min-width:0; display:block;">
-                        <span style="display:block; font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
-                        <span style="display:block; margin-top:3px; font-size:11px; font-weight:700; color:${tone}; line-height:1.45;">${clinicPrintEscapeHtml(status)}</span>
+                        <span style="display:block; font-size:13px; font-weight:500; color:var(--text); line-height:1.35;">${clinicPrintEscapeHtml(group.examDate || '')} ${clinicPrintEscapeHtml(group.examTitle || '시험명 없음')}</span>
+                        <span style="display:block; margin-top:3px; font-size:11px; font-weight:500; color:${tone}; line-height:1.45;">${clinicPrintEscapeHtml(status)}</span>
                     </span>
                 </label>
             `;
         }).join('')
-        : '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:700; text-align:center;">시험 기록이 없습니다.</div>';
+        : '<div style="padding:14px; border:1px dashed var(--border); border-radius:12px; color:var(--secondary); font-size:12px; font-weight:500; text-align:center;">시험 기록이 없습니다.</div>';
 
     showModal('오답 클리닉 출력 센터', `
         <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="background:var(--bg); border:1px solid transparent; border-radius:14px; padding:12px 14px;">
-                <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.35;">${clinicPrintEscapeHtml(cls?.name || '반')}</div>
-                <div id="clinic-print-summary" style="margin-top:4px; font-size:11px; font-weight:700; color:var(--secondary); line-height:1.45;">선택 시험 0개 · 오답 학생 0명 · 오답 0문항</div>
+                <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35;">${clinicPrintEscapeHtml(cls?.name || '반')}</div>
+                <div id="clinic-print-summary" style="margin-top:4px; font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45;">선택 시험 0개 · 오답 학생 0명 · 오답 0문항</div>
             </div>
 
             <section>
-                <div style="font-size:12px; font-weight:800; color:var(--secondary); margin-bottom:8px;">출력 방식</div>
+                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:8px;">출력 방식</div>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                    <label style="display:flex; align-items:center; gap:8px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px; font-weight:800;">
+                    <label style="display:flex; align-items:center; gap:8px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px; font-weight:500;">
                         <input type="radio" name="clinic-print-mode" value="student" checked> 학생별
                     </label>
-                    <label style="display:flex; align-items:center; gap:8px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px; font-weight:800;">
+                    <label style="display:flex; align-items:center; gap:8px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; font-size:13px; font-weight:500;">
                         <input type="radio" name="clinic-print-mode" value="class"> 반별
                     </label>
                 </div>
@@ -479,21 +479,21 @@ function openClinicPrintCenter(classId) {
 
             <section>
                 <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">
-                    <div style="font-size:12px; font-weight:800; color:var(--secondary);">시험 목록</div>
-                    <button class="btn" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintUpdateStudentList('${safeClassIdForJs}');">전체 선택</button>
+                    <div style="font-size:12px; font-weight:500; color:var(--secondary);">시험 목록</div>
+                    <button class="btn apms-button apms-button--quiet" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintUpdateStudentList('${safeClassIdForJs}');">전체 선택</button>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:8px; max-height:230px; overflow:auto;">${examHtml}</div>
             </section>
 
             <section>
                 <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">
-                    <div style="font-size:12px; font-weight:800; color:var(--secondary);">학생</div>
-                    <button class="btn" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true);">전체 선택</button>
+                    <div style="font-size:12px; font-weight:500; color:var(--secondary);">학생</div>
+                    <button class="btn apms-button apms-button--quiet" style="min-height:30px; padding:5px 9px; font-size:11px; border-radius:8px;" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true);">전체 선택</button>
                 </div>
                 <div id="clinic-print-student-list" style="display:flex; flex-direction:column; gap:8px; max-height:250px; overflow:auto;"></div>
             </section>
 
-            <button class="btn btn-primary" style="width:100%; min-height:48px; border-radius:14px; font-size:14px; font-weight:800;" onclick="clinicPrintSubmit('${safeClassIdForJs}')">오답지 만들기</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="width:100%; min-height:48px; border-radius:14px; font-size:14px; font-weight:500;" onclick="clinicPrintSubmit('${safeClassIdForJs}')">오답지 만들기</button>
         </div>
     `);
 

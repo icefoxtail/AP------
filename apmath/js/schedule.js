@@ -293,10 +293,10 @@ function renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstD
         <div style="background:var(--surface-2); border-radius:14px; padding:12px; margin-bottom:16px;">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px;">
                 <button class="btn ap-small-btn" style="background:var(--surface); border:none;" onclick="openExamScheduleModal('${prevStr}')">‹</button>
-                <div style="font-size:18px; font-weight:700; line-height:1.3; color:var(--text);">${targetYear}년 ${targetMonth + 1}월</div>
+                <div style="font-size:18px; font-weight:500; line-height:1.3; color:var(--text);">${targetYear}년 ${targetMonth + 1}월</div>
                 <button class="btn ap-small-btn" style="background:var(--surface); border:none;" onclick="openExamScheduleModal('${nextStr}')">›</button>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; text-align:center; font-size:13px; font-weight:600; line-height:1.3; color:var(--secondary); margin-bottom:8px;">
+            <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; text-align:center; font-size:13px; font-weight:500; line-height:1.3; color:var(--secondary); margin-bottom:8px;">
                 <div style="color:var(--error);">일</div>
                 <div>월</div>
                 <div>화</div>
@@ -333,7 +333,7 @@ function renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstD
 
     calendarHtml += `
             </div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; font-size:11px; font-weight:600; color:var(--secondary);">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; font-size:11px; font-weight:400; color:var(--secondary);">
                 <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--error);margin-right:4px;"></span>시험</span>
                 <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--warning);margin-right:4px;"></span>휴무</span>
                 <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--primary);margin-right:4px;"></span>기타</span>
@@ -393,7 +393,7 @@ function renderUnifiedScheduleList() {
     const schedules = getUnifiedSchedules();
 
     if (!schedules.length) {
-        return `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; line-height:1.45; padding:20px;">등록된 일정이 없습니다</div>`;
+        return `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:400; line-height:1.45; padding:20px;">등록된 일정이 없습니다</div>`;
     }
 
     return schedules.map(s => {
@@ -409,10 +409,10 @@ function renderUnifiedScheduleList() {
             <div class="exam-schedule-item" style="border-color:${tone.border};">
                 <div style="flex:1; min-width:0;">
                     <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:5px;">
-                        <span style="font-size:11px; font-weight:600; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; padding:3px 8px; border-radius:8px;">${getScheduleTypeLabel(s.kind)}</span>
-                        <span style="font-size:11px; font-weight:600; color:var(--secondary);">${apEscapeHtml(s.date || '')}${timeText ? ` · ${apEscapeHtml(timeText)}` : ''}</span>
+                        <span style="font-size:11px; font-weight:500; color:${tone.color}; background:${tone.bg}; border:1px solid ${tone.border}; padding:3px 8px; border-radius:8px;">${getScheduleTypeLabel(s.kind)}</span>
+                        <span style="font-size:11px; font-weight:400; color:var(--secondary);">${apEscapeHtml(s.date || '')}${timeText ? ` · ${apEscapeHtml(timeText)}` : ''}</span>
                     </div>
-                    <div style="font-size:15px; font-weight:700; line-height:1.35; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(s.title || '')}</div>
+                    <div style="font-size:15px; font-weight:500; line-height:1.35; color:var(--text); overflow-wrap:anywhere;">${apEscapeHtml(s.title || '')}</div>
                     ${subParts.length ? `<div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${apEscapeHtml(subParts.join(' · '))}</div>` : ''}
                     ${s.memo ? `<div style="font-size:12px; font-weight:500; line-height:1.45; color:var(--secondary); margin-top:4px; overflow-wrap:anywhere;">${apEscapeHtml(s.memo)}</div>` : ''}
                 </div>
@@ -447,7 +447,7 @@ function openExamScheduleModal(baseDateStr = '') {
             .exam-schedule-form { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:14px; border-radius:14px; }
             .exam-schedule-row { display:flex; gap:10px; width:100%; }
             .exam-schedule-row > * { flex:1; min-width:0; width:100%; }
-            .exam-calendar-day { min-height:44px; background:var(--surface); border:1px solid transparent; border-radius:10px; padding:6px 0; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font-size:15px; font-weight:600; line-height:1.2; color:var(--text); }
+            .exam-calendar-day { min-height:44px; background:var(--surface); border:1px solid transparent; border-radius:10px; padding:6px 0; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font-size:15px; font-weight:500; line-height:1.2; color:var(--text); }
             .exam-calendar-day.today { border-color:var(--primary); color:var(--primary); }
             .exam-calendar-day.selected { background:rgba(26,92,255,0.08); border-color:var(--primary); color:var(--primary); }
             .exam-calendar-dot { width:4px; height:4px; border-radius:50%; margin-top:1px; display:inline-block; }
@@ -464,8 +464,8 @@ function openExamScheduleModal(baseDateStr = '') {
         ${renderUnifiedScheduleCalendar(todayStr, targetYear, targetMonth, firstDay, lastDate, prevStr, nextStr)}
 
         <div style="margin:18px 0 10px;">
-            <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.35;">일정 등록</div>
-            <div style="font-size:12px; font-weight:600; color:var(--secondary); line-height:1.45; margin-top:2px;">종료일은 긴 일정일 때만 선택합니다.</div>
+            <div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.35;">일정 등록</div>
+            <div style="font-size:12px; font-weight:400; color:var(--secondary); line-height:1.45; margin-top:2px;">종료일은 긴 일정일 때만 선택합니다.</div>
         </div>
 
         ${renderUnifiedScheduleForm('new-sch')}
@@ -473,7 +473,7 @@ function openExamScheduleModal(baseDateStr = '') {
         <button class="btn btn-primary ap-primary-btn" style="width:100%; margin-bottom:16px;" onclick="addUnifiedSchedule()">일정 저장</button>
 
         <div style="margin:18px 0 10px;">
-            <div style="font-size:15px; font-weight:700; color:var(--text); line-height:1.35;">일정 목록</div>
+            <div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.35;">일정 목록</div>
         </div>
 
         <div class="exam-schedule-list">

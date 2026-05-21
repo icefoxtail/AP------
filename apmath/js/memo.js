@@ -13,12 +13,12 @@ function openTodoMemoModal() {
         return `
         <div style="padding:12px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; ${isDone ? 'opacity:0.5;' : ''}">
             <div style="flex:1;">
-                <div style="font-size:11px; font-weight:600; color:var(--secondary); margin-bottom:4px;">${apEscapeHtml(m.memo_date)} ${isPinned ? `<span style="color:var(--primary); font-weight:700;">고정</span>` : ''}</div>
-                <div style="font-size:14px; font-weight:700; color:var(--text); text-decoration:${isDone ? 'line-through' : 'none'};">${apEscapeHtml(m.content)}</div>
+                <div style="font-size:11px; font-weight:400; color:var(--secondary); margin-bottom:4px;">${apEscapeHtml(m.memo_date)} ${isPinned ? `<span style="color:var(--primary); font-weight:500;">고정</span>` : ''}</div>
+                <div style="font-size:14px; font-weight:500; color:var(--text); text-decoration:${isDone ? 'line-through' : 'none'};">${apEscapeHtml(m.content)}</div>
             </div>
             <div style="display:flex; gap:6px;">
-                <button class="btn ${isDone ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:700; ${isDone ? 'background:var(--surface-2); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!isDone})">${isDone ? '취소' : '완료'}</button>
-                <button class="btn" style="padding:6px 10px; font-size:11px; font-weight:700; background:var(--surface-2); border:none;" onclick="openEditTodoMemoModal('${m.id}')">수정</button>
+                <button class="btn ${isDone ? '' : 'btn-primary'}" style="padding:6px 10px; font-size:11px; font-weight:500; ${isDone ? 'background:var(--surface-2); border:none;' : ''}" onclick="toggleMemoDone('${m.id}', ${!isDone})">${isDone ? '취소' : '완료'}</button>
+                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; font-weight:500; background:var(--surface-2); border:none;" onclick="openEditTodoMemoModal('${m.id}')">수정</button>
             </div>
         </div>
     `}).join('');
@@ -27,13 +27,13 @@ function openTodoMemoModal() {
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="date" id="new-memo-date" class="btn" value="${todayStr}" style="text-align:left; flex:1; border:none; background:var(--surface);">
-                <label style="font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);"><input type="checkbox" id="new-memo-pin"> 고정</label>
+                <label style="font-size:13px; font-weight:500; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);"><input type="checkbox" id="new-memo-pin"> 고정</label>
             </div>
             <input type="text" id="new-memo-content" class="btn" placeholder="할 일 입력 (예: 고2 직전보강)" style="text-align:left; border:none; background:var(--surface);">
-            <button class="btn btn-primary" style="padding:10px; font-size:13px; font-weight:700; margin-top:4px;" onclick="addTodoMemo()">저장</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px; font-size:13px; font-weight:500; margin-top:4px;" onclick="addTodoMemo()">저장</button>
         </div>
         <div style="max-height:45vh; overflow-y:auto; padding-right:4px;">
-            ${memos.length ? memoRows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:600; padding:20px;">등록된 할 일이 없습니다.</div>`}
+            ${memos.length ? memoRows : `<div style="text-align:center; color:var(--secondary); font-size:12px; font-weight:400; padding:20px;">등록된 할 일이 없습니다.</div>`}
         </div>
     `);
 }
@@ -115,15 +115,15 @@ function openEditTodoMemoModal(id) {
         <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px; background:var(--surface-2); padding:12px; border-radius:12px;">
             <div style="display:flex; gap:8px; align-items:center;">
                 <input type="date" id="edit-memo-date" class="btn" value="${m.memo_date}" style="text-align:left; flex:1; border:none; background:var(--surface);">
-                <label style="font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);">
+                <label style="font-size:13px; font-weight:500; display:flex; align-items:center; gap:6px; white-space:nowrap; color:var(--text-soft);">
                     <input type="checkbox" id="edit-memo-pin" ${isPinned ? 'checked' : ''}> 고정
                 </label>
             </div>
             <input type="text" id="edit-memo-content" class="btn" value="${apEscapeHtml(m.content)}" style="text-align:left; border:none; background:var(--surface);">
-            <button class="btn btn-primary" style="padding:12px; font-size:13px; font-weight:700; margin-top:4px;" onclick="handleEditTodoMemo('${id}')">수정 저장</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="padding:12px; font-size:13px; font-weight:500; margin-top:4px;" onclick="handleEditTodoMemo('${id}')">수정 저장</button>
             <div style="display:flex; gap:8px; margin-top:4px;">
-                <button class="btn" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openTodoMemoModal()">취소</button>
-                <button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="deleteMemo('${id}')">완전 삭제</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; border:none; background:var(--surface);" onclick="openTodoMemoModal()">취소</button>
+                <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:500;" onclick="deleteMemo('${id}')">완전 삭제</button>
             </div>
         </div>
     `);

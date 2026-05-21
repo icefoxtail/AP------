@@ -44,23 +44,23 @@ function renderTextbookManageList() {
         const isCompleted = tb.status === 'completed';
 
         let statusBadge = '';
-        if (isCompleted) statusBadge = `<span style="font-size:10px; background:rgba(0,208,132,0.1); color:var(--success); padding:2px 6px; border-radius:4px; font-weight:700;">완료</span>`;
-        else if (isHidden) statusBadge = `<span style="font-size:10px; background:var(--bg); color:var(--secondary); padding:2px 6px; border-radius:4px; font-weight:700;">숨김</span>`;
+        if (isCompleted) statusBadge = `<span style="font-size:10px; background:rgba(0,208,132,0.1); color:var(--success); padding:2px 6px; border-radius:4px; font-weight:500;">완료</span>`;
+        else if (isHidden) statusBadge = `<span style="font-size:10px; background:var(--bg); color:var(--secondary); padding:2px 6px; border-radius:4px; font-weight:500;">숨김</span>`;
 
         return `
             <div style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:10px;">
                 <div style="min-width:0;">
-                    <div style="font-weight:700; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'}; line-height:1.4;">${apEscapeHtml(tb.title)} ${statusBadge}</div>
+                    <div style="font-weight:500; font-size:14px; color:${tb.status==='active' ? 'var(--text)' : 'var(--secondary)'}; line-height:1.4;">${apEscapeHtml(tb.title)} ${statusBadge}</div>
                     <div style="font-size:11px; color:var(--secondary); margin-top:2px; line-height:1.5;">시작: ${tb.start_date || '-'}${tb.end_date ? ` | 종료: ${tb.end_date}` : ''}</div>
                 </div>
-                <button class="btn" style="padding:6px 10px; font-size:11px; flex-shrink:0;" onclick="openEditTextbookModal('${tb.id}')">관리</button>
+                <button class="btn apms-button apms-button--quiet" style="padding:6px 10px; font-size:11px; flex-shrink:0;" onclick="openEditTextbookModal('${tb.id}')">관리</button>
             </div>
         `;
     };
 
     const renderGroup = (groups) => groups.map(g => `
         <div style="margin-bottom:16px;">
-            <div style="font-size:12px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.06); padding:6px 10px; border-radius:8px; margin-bottom:4px;">${apEscapeHtml(g.cName)}</div>
+            <div style="font-size:12px; font-weight:500; color:var(--primary); background:rgba(26,92,255,0.06); padding:6px 10px; border-radius:8px; margin-bottom:4px;">${apEscapeHtml(g.cName)}</div>
             ${g.books.map(renderTbRow).join('')}
         </div>
     `).join('');
@@ -85,7 +85,7 @@ function openTextbookManageModal(options = {}) {
     setModalReturnView(state.ui.textbookReturnView);
     showModal('교재 관리', `
         <div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:16px;">
-            <button class="btn btn-primary" style="padding:10px 14px; font-size:12px; font-weight:700;" onclick="openAddTextbookModal()">새 교재</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="padding:10px 14px; font-size:12px; font-weight:500;" onclick="openAddTextbookModal()">새 교재</button>
         </div>
         <div id="tb-manage-list" style="max-height:60vh; overflow-y:auto; padding-right:4px;"></div>
     `);
@@ -101,10 +101,10 @@ function openAddTextbookModal() {
             <select id="new-tb-class" class="btn" style="background:var(--surface-2); border:none;"><option value="">반을 선택하세요</option>${classOptions}</select>
             <input id="new-tb-title" class="btn" placeholder="교재명 (예: 개념원리 중1-1)" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; align-items:center;">
-                <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">시작일:</span>
+                <span style="font-size:12px; font-weight:500; color:var(--secondary); min-width:50px;">시작일:</span>
                 <input type="date" id="new-tb-start" class="btn" value="${todayStr}" style="flex:1; background:var(--surface-2); border:none;">
             </div>
-            <button class="btn btn-primary" style="margin-top:10px; padding:12px;" onclick="handleAddTextbook()">저장</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="margin-top:10px; padding:12px;" onclick="handleAddTextbook()">저장</button>
         </div>
     `);
 }
@@ -145,26 +145,26 @@ function openEditTextbookModal(tbId) {
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
             <input id="edit-tb-title" class="btn" value="${apEscapeHtml(tb.title)}" style="text-align:left; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; align-items:center;">
-                <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">시작일:</span>
+                <span style="font-size:12px; font-weight:500; color:var(--secondary); min-width:50px;">시작일:</span>
                 <input type="date" id="edit-tb-start" class="btn" value="${tb.start_date || ''}" style="flex:1; background:var(--surface-2); border:none;">
             </div>
             ${isCompleted || tb.end_date ? `
             <div style="display:flex; gap:8px; align-items:center;">
-                <span style="font-size:12px; font-weight:600; color:var(--secondary); min-width:50px;">종료일:</span>
+                <span style="font-size:12px; font-weight:500; color:var(--secondary); min-width:50px;">종료일:</span>
                 <input type="date" id="edit-tb-end" class="btn" value="${tb.end_date || ''}" style="flex:1; background:var(--surface-2); border:none;">
             </div>` : ''}
-            <button class="btn btn-primary" style="margin-top:8px; padding:12px;" onclick="handlePatchTextbook('${tbId}', false)">정보 수정 저장</button>
+            <button class="btn apms-button apms-button--primary btn-primary" style="margin-top:8px; padding:12px;" onclick="handlePatchTextbook('${tbId}', false)">정보 수정 저장</button>
         </div>
         <div style="border-top:1px solid var(--border); padding-top:16px; display:flex; flex-direction:column; gap:8px;">
-            <div style="font-size:12px; font-weight:600; color:var(--secondary); margin-bottom:4px;">상태 변경</div>
+            <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:4px;">상태 변경</div>
             <div style="display:flex; gap:8px;">
                 ${isCompleted || isHidden 
-                    ? `<button class="btn" style="flex:1; padding:10px; font-size:12px;" onclick="handlePatchTextbook('${tbId}', true, 'active')">진행중으로 복구</button>`
-                    : `<button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--success); background:rgba(0,208,132,0.1); border:none; font-weight:700;" onclick="handlePatchTextbook('${tbId}', true, 'completed')">교재 완료 처리</button>
-                       <button class="btn" style="flex:1; padding:10px; font-size:12px; background:var(--surface-2); border:none;" onclick="handlePatchTextbook('${tbId}', true, 'hidden')">숨김 보류</button>`
+                    ? `<button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px;" onclick="handlePatchTextbook('${tbId}', true, 'active')">진행중으로 복구</button>`
+                    : `<button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; color:var(--success); background:rgba(0,208,132,0.1); border:none; font-weight:500;" onclick="handlePatchTextbook('${tbId}', true, 'completed')">교재 완료 처리</button>
+                       <button class="btn apms-button apms-button--quiet" style="flex:1; padding:10px; font-size:12px; background:var(--surface-2); border:none;" onclick="handlePatchTextbook('${tbId}', true, 'hidden')">숨김 보류</button>`
                 }
             </div>
-            <button class="btn" style="margin-top:12px; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="handleDeleteTextbook('${tbId}')">교재 완전 삭제</button>
+            <button class="btn apms-button apms-button--quiet" style="margin-top:12px; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:500;" onclick="handleDeleteTextbook('${tbId}')">교재 완전 삭제</button>
         </div>
     `);
 }

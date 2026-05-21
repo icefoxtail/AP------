@@ -15,6 +15,7 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
   <title>AP Math OS | 학생 포털</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css">
   <style>
     :root {
       --primary:#1A5CFF;
@@ -75,8 +76,8 @@
       color:#fff;
     }
     .brand { display:flex; flex-direction:column; gap:1px; min-width:0; }
-    .brand-main { font-size:17px; font-weight:700; color:#fff; letter-spacing:-0.35px; line-height:1.2; text-shadow:0 8px 22px rgba(15,23,42,0.20); }
-    .brand-sub { font-size:11px; font-weight:700; color:rgba(255,255,255,0.76); letter-spacing:-0.1px; line-height:1.2; }
+    .brand-main { font-size:17px; font-weight:500; color:#fff; letter-spacing:-0.35px; line-height:1.2; text-shadow:0 8px 22px rgba(15,23,42,0.20); }
+    .brand-sub { font-size:11px; font-weight:500; color:rgba(255,255,255,0.76); letter-spacing:-0.1px; line-height:1.2; }
     .top-actions { display:flex; align-items:center; gap:8px; min-width:0; }
     .chip {
       max-width:150px;
@@ -84,7 +85,7 @@
       text-overflow:ellipsis;
       white-space:nowrap;
       font-size:12px;
-      font-weight:700;
+      font-weight:500;
       color:#fff;
       text-align:right;
       background:rgba(255,255,255,0.16);
@@ -101,7 +102,7 @@
       border-radius:999px;
       padding:6px 10px;
       font-size:12px;
-      font-weight:700;
+      font-weight:500;
     }
     .logout.hidden { display:none; }
     .app {
@@ -127,12 +128,12 @@
       border:1px solid rgba(255,255,255,0.20);
       color:rgba(255,255,255,0.88);
       font-size:12px;
-      font-weight:700;
+      font-weight:500;
       line-height:1.2;
       backdrop-filter:blur(10px);
     }
-    .hero-title { margin:0; font-size:clamp(38px,5.8vw,68px); font-weight:700; letter-spacing:-2.8px; line-height:0.98; color:#fff; text-shadow:0 10px 26px rgba(15,23,42,0.22); }
-    .hero-desc { margin:0; max-width:520px; font-size:clamp(15px,1.45vw,18px); font-weight:700; color:rgba(255,255,255,0.82); line-height:1.7; }
+    .hero-title { margin:0; font-size:clamp(38px,5.8vw,68px); font-weight:500; letter-spacing:-2.8px; line-height:0.98; color:#fff; text-shadow:0 10px 26px rgba(15,23,42,0.22); }
+    .hero-desc { margin:0; max-width:520px; font-size:clamp(15px,1.45vw,18px); font-weight:500; color:rgba(255,255,255,0.82); line-height:1.7; }
     .visual-wrap {
       position:relative;
       width:min(100%,450px);
@@ -181,7 +182,7 @@
       background:linear-gradient(135deg,#00B894 0%,#12C99B 100%);
       color:#fff;
       font-size:25px;
-      font-weight:700;
+      font-weight:500;
       box-shadow:0 12px 24px rgba(0,184,148,0.24);
     }
     .card {
@@ -195,8 +196,8 @@
       -webkit-backdrop-filter:blur(18px);
     }
     .login-card { width:100%; }
-    .card-title { margin:0; font-size:22px; font-weight:700; line-height:1.25; letter-spacing:-0.65px; color:var(--text); }
-    .card-desc { margin:8px 0 0; font-size:13px; font-weight:700; color:var(--secondary); line-height:1.6; }
+    .card-title { margin:0; font-size:22px; font-weight:500; line-height:1.25; letter-spacing:-0.65px; color:var(--text); }
+    .card-desc { margin:8px 0 0; font-size:13px; font-weight:400; color:var(--secondary); line-height:1.6; }
     .input {
       width:100%;
       min-height:58px;
@@ -206,7 +207,7 @@
       color:var(--text);
       padding:15px 16px;
       font-size:16px;
-      font-weight:700;
+      font-weight:500;
       box-shadow:none;
     }
     .input::placeholder { color:#A0A8B2; }
@@ -218,7 +219,7 @@
       background:var(--surface-2);
       color:var(--text);
       font-size:15px;
-      font-weight:700;
+      font-weight:500;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -231,7 +232,7 @@
     .stack { display:flex; flex-direction:column; gap:12px; }
     .notice {
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       color:var(--secondary);
       line-height:1.58;
       padding:13px 14px;
@@ -239,7 +240,7 @@
       border:1px solid rgba(229,232,235,0.80);
       border-radius:18px;
     }
-    .notice strong { color:var(--text); font-weight:700; }
+    .notice strong { color:var(--text); font-weight:500; }
     .student-shell { width:100%; max-width:760px; margin:0 auto; grid-column:1 / -1; align-self:start; }
     .student-profile-card {
       display:grid;
@@ -248,15 +249,15 @@
       align-items:center;
       background:rgba(255,255,255,0.95);
     }
-    .profile-name { margin:0; font-size:25px; font-weight:700; letter-spacing:-0.8px; line-height:1.18; color:var(--text); }
-    .profile-sub { margin:7px 0 0; font-size:13px; font-weight:700; color:var(--secondary); }
+    .profile-name { margin:0; font-size:25px; font-weight:500; letter-spacing:-0.8px; line-height:1.18; color:var(--text); }
+    .profile-sub { margin:7px 0 0; font-size:13px; font-weight:400; color:var(--secondary); }
     .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; min-width:190px; }
     .summary-box { border:1px solid var(--border); border-radius:18px; background:var(--surface-2); padding:13px; text-align:center; }
-    .summary-value { font-size:24px; font-weight:700; color:var(--primary); line-height:1; }
-    .summary-label { margin-top:6px; font-size:11px; font-weight:700; color:var(--secondary); }
+    .summary-value { font-size:24px; font-weight:500; color:var(--primary); line-height:1; }
+    .summary-label { margin-top:6px; font-size:11px; font-weight:400; color:var(--secondary); }
     .portal-assignments-card { padding:18px 18px 16px; }
     .portal-assignments-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
-    .portal-assignments-note { margin-top:2px; font-size:11px; font-weight:700; color:var(--secondary); }
+    .portal-assignments-note { margin-top:2px; font-size:11px; font-weight:400; color:var(--secondary); }
     .portal-assignments-list { display:flex; flex-direction:column; gap:8px; margin-top:14px; }
     .portal-assignment-row {
       width:100%;
@@ -268,7 +269,7 @@
       text-align:left;
     }
     .portal-assignment-row.is-clickable { cursor:pointer; }
-    .portal-assignment-line { font-size:13px; font-weight:700; color:var(--text); line-height:1.5; }
+    .portal-assignment-line { font-size:13px; font-weight:500; color:var(--text); line-height:1.5; }
     .portal-assignment-line .muted { color:var(--secondary); }
     .portal-assignment-meta { margin-top:7px; display:flex; flex-wrap:wrap; gap:6px; }
     .portal-assignment-pill {
@@ -281,7 +282,7 @@
       background:var(--surface);
       color:var(--secondary);
       font-size:11px;
-      font-weight:700;
+      font-weight:500;
     }
     .portal-assignment-pill.type-mixed { color:var(--primary); border-color:rgba(26,92,255,0.16); background:rgba(26,92,255,0.07); }
     .portal-assignment-pill.type-clinic { color:#7C3AED; border-color:rgba(124,58,237,0.16); background:rgba(124,58,237,0.07); }
@@ -290,7 +291,7 @@
     .portal-assignment-pill.status-muted { color:var(--secondary); border-color:var(--border); background:var(--surface); }
     .portal-assignment-actions { margin-top:10px; display:flex; gap:8px; }
     .portal-assignment-actions .btn { width:auto; min-height:36px; padding:0 12px; border-radius:12px; font-size:12px; }
-    .portal-assignments-more { margin-top:10px; text-align:right; font-size:11px; font-weight:700; color:var(--secondary); }
+    .portal-assignments-more { margin-top:10px; text-align:right; font-size:11px; font-weight:400; color:var(--secondary); }
     .portal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .portal-card { display:flex; flex-direction:column; gap:14px; min-height:218px; }
     .portal-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex:1; }
@@ -301,34 +302,34 @@
     .omr-list { display:flex; flex-direction:column; gap:10px; }
     .omr-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
     .omr-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
-    .omr-title { font-size:15px; font-weight:700; color:var(--text); line-height:1.35; }
-    .omr-meta { margin-top:6px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; }
-    .omr-status { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:700; }
+    .omr-title { font-size:15px; font-weight:500; color:var(--text); line-height:1.35; }
+    .omr-meta { margin-top:6px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; }
+    .omr-status { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:500; }
     .omr-status.pending { background:rgba(26,92,255,0.09); color:var(--primary); }
     .omr-status.done { background:rgba(0,184,148,0.10); color:#008F72; }
     .omr-sheet { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:14px; }
-    .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:500; display:flex; align-items:center; justify-content:center; }
     .omr-no.wrong { background:rgba(232,65,79,0.10); border-color:rgba(232,65,79,0.22); color:var(--error); }
     .omr-submit-bar { position:sticky; bottom:0; z-index:10; padding:12px 0 calc(12px + env(safe-area-inset-bottom)); background:linear-gradient(180deg,rgba(242,244,246,0),rgba(242,244,246,0.92) 28%,rgba(242,244,246,0.98)); }
     .material-wrong-tools { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
     .material-range-tabs { display:flex; gap:8px; overflow-x:auto; padding:4px 0 10px; scrollbar-width:none; }
     .material-range-tabs::-webkit-scrollbar { display:none; }
-    .material-range-tab { flex:0 0 auto; min-height:36px; padding:0 12px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:800; }
+    .material-range-tab { flex:0 0 auto; min-height:36px; padding:0 12px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; }
     .material-range-tab.active { background:rgba(26,92,255,0.08); border-color:rgba(26,92,255,0.20); color:var(--primary); }
-    .material-quick-input { width:100%; min-height:46px; border-radius:14px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); padding:0 14px; font-size:14px; font-weight:700; box-sizing:border-box; }
-    .material-selected { margin-top:12px; font-size:12px; font-weight:800; color:var(--secondary); line-height:1.5; word-break:break-word; }
+    .material-quick-input { width:100%; min-height:46px; border-radius:14px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); padding:0 14px; font-size:14px; font-weight:500; box-sizing:border-box; }
+    .material-selected { margin-top:12px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; word-break:break-word; }
     .material-no-wrong { background:rgba(0,184,148,0.10) !important; color:#008F72 !important; border-color:rgba(0,184,148,0.18) !important; }
     .assignment-list { display:flex; flex-direction:column; gap:10px; }
     .assignment-card { border:1px solid rgba(229,232,235,0.96); border-radius:22px; padding:16px; background:rgba(255,255,255,0.95); box-shadow:var(--soft-shadow); }
     .assignment-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
-    .assignment-title { font-size:15px; font-weight:700; color:var(--text); line-height:1.35; }
-    .assignment-meta { margin-top:6px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5; }
-    .assignment-desc { margin-top:10px; padding:11px 12px; border-radius:15px; background:var(--surface-2); border:1px solid rgba(229,232,235,0.82); color:var(--text); font-size:13px; font-weight:700; line-height:1.58; white-space:pre-wrap; word-break:break-word; }
-    .status-pill { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:700; }
+    .assignment-title { font-size:15px; font-weight:500; color:var(--text); line-height:1.35; }
+    .assignment-meta { margin-top:6px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.5; }
+    .assignment-desc { margin-top:10px; padding:11px 12px; border-radius:15px; background:var(--surface-2); border:1px solid rgba(229,232,235,0.82); color:var(--text); font-size:13px; font-weight:400; line-height:1.58; white-space:pre-wrap; word-break:break-word; }
+    .status-pill { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:500; }
     .status-pill.missing { background:rgba(232,65,79,0.10); color:#D92D3A; }
     .status-pill.done { background:rgba(0,184,148,0.10); color:#008F72; }
-    .section-title { margin:18px 4px 10px; font-size:14px; font-weight:700; color:#fff; }
-    .empty { padding:24px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; background:rgba(255,255,255,0.92); border:1px dashed rgba(229,232,235,0.96); border-radius:22px; }
+    .section-title { margin:18px 4px 10px; font-size:14px; font-weight:500; color:#fff; }
+    .empty { padding:24px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400; background:rgba(255,255,255,0.92); border:1px dashed rgba(229,232,235,0.96); border-radius:22px; }
     .row-actions { display:flex; gap:8px; margin-top:13px; }
     .row-actions .btn { min-height:44px; border-radius:15px; font-size:13px; }
     .back-btn { width:auto; min-height:40px; padding:8px 13px; font-size:12px; border-radius:999px; margin-bottom:12px; background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.24); color:#fff; }
@@ -356,12 +357,12 @@
       align-items:center;
       justify-content:center;
       font-size:18px;
-      font-weight:700;
+      font-weight:500;
       box-shadow:0 10px 20px rgba(26,92,255,0.22);
     }
     .install-body { min-width:0; flex:1; }
-    .install-title { font-size:13px; font-weight:700; color:var(--text); line-height:1.35; }
-    .install-desc { margin-top:4px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.55; }
+    .install-title { font-size:13px; font-weight:500; color:var(--text); line-height:1.35; }
+    .install-desc { margin-top:4px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.55; }
     .install-actions { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
     .install-mini-btn {
       width:auto;
@@ -372,7 +373,7 @@
       background:#fff;
       color:var(--primary);
       font-size:12px;
-      font-weight:700;
+      font-weight:500;
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -390,7 +391,7 @@
       padding:11px 15px;
       border-radius:999px;
       font-size:13px;
-      font-weight:700;
+      font-weight:500;
       opacity:0;
       pointer-events:none;
       transition:opacity .18s ease, transform .18s ease;
@@ -620,7 +621,7 @@
               <h1 class="card-title">학생 로그인</h1>
               <p class="card-desc">이름과 PIN은 선생님께 받은 정보로 입력하세요.</p>
             </div>
-            ${message ? `<div class="notice"><strong>확인 필요</strong><br>${escapeHtml(message)}</div>` : ''}
+            ${message ? `<div class="notice"><span style="font-weight:600;">확인 필요</span><br>${escapeHtml(message)}</div>` : ''}
             <input id="student-name" class="input" type="text" autocomplete="name" placeholder="이름 입력" onkeydown="if(event.key==='Enter')$('student-pin').focus()">
             <input id="student-pin" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="개인 PIN 입력" onkeydown="if(event.key==='Enter')loginStudent()">
             <button id="login-btn" class="btn btn-primary" onclick="loginStudent()">로그인</button>
@@ -1321,7 +1322,7 @@
           <section class="card">
             <h1 class="card-title">${escapeHtml(exam.exam_title || 'OMR 입력')}</h1>
             <p class="card-desc">${escapeHtml(meta)}<br>틀린 번호만 눌러 빨간색으로 표시한 뒤 제출하세요.</p>
-            <div class="notice" style="margin-top:14px;">현재 선택한 오답 <strong>${wrongSet.size}개</strong> · 예상 점수 <strong>${Math.round(((count - wrongSet.size) / count) * 100)}점</strong></div>
+            <div class="notice" style="margin-top:14px;">현재 선택한 오답 <span style="font-weight:600;">${wrongSet.size}개</span> · 예상 점수 <span style="font-weight:600;">${Math.round(((count - wrongSet.size) / count) * 100)}점</span></div>
             <div class="omr-sheet">${buttons}</div>
           </section>
           <div class="omr-submit-bar">
@@ -1385,7 +1386,7 @@
       session = readSession();
       if (session?.student_id && session?.student_token) {
         setTopStudent(session.name || '');
-        $('app').innerHTML = `${renderHero()}<section class="card login-card"><div class="notice"><strong>불러오는 중</strong><br>학생 정보를 확인하고 있습니다.</div></section>`;
+        $('app').innerHTML = `${renderHero()}<section class="card login-card"><div class="notice"><span style="font-weight:500;">불러오는 중</span><br>학생 정보를 확인하고 있습니다.</div></section>`;
         await loadHome();
       } else {
         renderLogin();

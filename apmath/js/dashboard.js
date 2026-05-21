@@ -670,8 +670,8 @@ function openAdminStudentList(type) {
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
-                    <div style="font-weight:500; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:600; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
-                    <div style="font-size:12px; color:var(--primary); font-weight:600; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
+                    <div style="font-weight:500; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:400; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
+                    <div style="font-size:12px; color:var(--primary); font-weight:500; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
                     ${riskDetails}
                 </div>
                 ${actionButtons}
@@ -685,7 +685,7 @@ function openAdminStudentList(type) {
             <button class="btn ${type === 'hidden' ? 'btn-primary' : ''}" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px;" onclick="openAdminStudentList('hidden')">숨김 학생</button>
         </div>
     ` : '';
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:400;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 
@@ -844,7 +844,7 @@ function renderAdminTeacherAccountManage() {
             <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px;">
                 <div style="min-width:0; flex:1;">
                     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                        <b style="font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(t.name || '')}</b>
+                        <span style="font-size:14px; color:var(--text); line-height:1.35;; font-weight:500;">${apEscapeHtml(t.name || '')}</span>
                         <span style="font-size:11px; font-weight:500; color:${roleColor}; background:${roleBg}; padding:3px 8px; border-radius:999px;">${adminTeacherRoleLabel(role)}</span>
                     </div>
                     <div style="font-size:12px; color:var(--secondary); font-weight:500; margin-top:4px; line-height:1.4;">ID ${apEscapeHtml(t.login_id || '')}</div>
@@ -1152,7 +1152,7 @@ function renderAdminNewStudentPanel(data) {
         return `
             <div onclick="closeModal(true); renderStudentDetail('${s.id}')" style="height:46px; min-height:46px; padding:0 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:10px; cursor:pointer; box-sizing:border-box;">
                 <div style="min-width:0; display:flex; align-items:center; gap:8px;">
-                    <b style="font-size:13px; color:var(--text); white-space:nowrap;">${apEscapeHtml(s.name)}</b>
+                    <span style="font-size:13px; color:var(--text); white-space:nowrap;; font-weight:500;">${apEscapeHtml(s.name)}</span>
                     <span style="font-size:11px; color:var(--secondary); font-weight:500; white-space:nowrap;">등록 ${days || '-'}일차</span>
                 </div>
                 <div style="display:flex; align-items:center; gap:5px; flex-shrink:0; min-width:0;">
@@ -1517,7 +1517,7 @@ function renderAdminSimpleStudentList(title, list, editable = false) {
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--surface);">
                 <div style="min-width:0; flex:1;">
                     <div style="font-weight:500; font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(s.name || '')} <span style="font-size:12px; color:var(--secondary); font-weight:500; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
-                    <div style="font-size:12px; color:var(--primary); font-weight:500; margin-top:4px;">${apEscapeHtml(classText)} <span style="color:var(--secondary); font-weight:600;">| ${apEscapeHtml(status)}</span></div>
+                    <div style="font-size:12px; color:var(--primary); font-weight:500; margin-top:4px;">${apEscapeHtml(classText)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(status)}</span></div>
                 </div>
                 ${action}
             </div>
@@ -1655,7 +1655,7 @@ function renderAdminGlobalSearchResults(results) {
             <div style="min-width:0; flex:1;">
                 <div style="display:flex; align-items:center; gap:6px; min-width:0;">
                     <span style="flex-shrink:0; font-size:10px; font-weight:500; color:var(--primary); background:var(--primary-soft); padding:2px 7px; border-radius:999px;">${adminSearchTypeLabel(item.type)}</span>
-                    <b style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color:var(--text); font-weight:500;">${apEscapeHtml(item.label)}</b>
+                    <span style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color:var(--text); font-weight:500;">${apEscapeHtml(item.label)}</span>
                 </div>
                 <div style="margin-top:3px; font-size:11px; font-weight:500; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(item.meta || '')}${item.desc ? ` · ${apEscapeHtml(item.desc)}` : ''}</div>
             </div>
@@ -1819,7 +1819,7 @@ function renderAdminControlCenter() {
                     if (w.type === 'exam') {
                         const e = w.item;
                         const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:500;">학교공통</span> ';
-                        return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.10); padding:3px 8px; border-radius:8px; margin-right:6px;">시험</span><b style="font-weight:500; color:var(--text);">${apEscapeHtml(e.school_name)}</b> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--primary-soft); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
+                        return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.10); padding:3px 8px; border-radius:8px; margin-right:6px;">시험</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(e.school_name)}</span> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--primary-soft); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
                     }
                     const s = w.item;
                     const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
@@ -1827,7 +1827,7 @@ function renderAdminControlCenter() {
                     const labelColor = isClosed ? 'var(--warning)' : 'var(--primary)';
                     const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--primary-soft)';
                     const title = s.title || (isClosed ? '휴무' : '일정');
-                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><b style="font-weight:500; color:var(--text);">${apEscapeHtml(title)}</b>${s.memo ? ` <span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--primary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--primary-soft); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
+                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(title)}</span>${s.memo ? ` <span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--primary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--primary-soft); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
                 }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:500;">이번 주 예정된 일정이 없습니다.</div>`}
             </div>
         </div>
@@ -1968,7 +1968,7 @@ function renderAdminStudentSearch() {
         const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
         return `
             <div style="padding:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-                <div><b style="font-size:13px; color:var(--text);">${apEscapeHtml(s.name)}</b> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
+                <div><span style="font-size:13px; color:var(--text);; font-weight:500;">${apEscapeHtml(s.name)}</span> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세 보기</button>
             </div>
         `;
@@ -2032,8 +2032,8 @@ function openOperationMenu() {
     showModal('시스템·동기화 상태', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <div style="padding:16px; border-radius:14px; background:var(--surface-2); border:none;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:8px; color:var(--secondary);"><span>네트워크</span><b style="color:${isOnline ? 'var(--success)' : 'var(--error)'}">${onlineStatusText}</b></div>
-                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:16px; color:var(--secondary);"><span>미전송 데이터</span><b style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}">${syncStatusText}</b></div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:8px; color:var(--secondary);"><span>네트워크</span><span style="color:${isOnline ? 'var(--success)' : 'var(--error)'}; font-weight:500;">${onlineStatusText}</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:16px; color:var(--secondary);"><span>미전송 데이터</span><span style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}; font-weight:500;">${syncStatusText}</span></div>
                 <button class="btn btn-primary" style="width:100%; font-size:14px; font-weight:500; padding:12px; border-radius:10px;" onclick="if(typeof processSyncQueue==='function') processSyncQueue(); closeModal();">지금 동기화 시도</button>
             </div>
         </div>
@@ -2893,13 +2893,13 @@ function openDailyJournalModal(dateStr) {
 
     showModal('일지', `
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:10px 14px; border-radius:10px;">
-            <b style="font-size:13px; color:var(--secondary);">작성 기준일</b>
+            <span style="font-size:13px; color:var(--secondary);; font-weight:500;">작성 기준일</span>
             <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:500; color:var(--text);" onchange="openDailyJournalModal(this.value)">
         </div>
         ${status === '결재완료' ? `
             <div style="background:rgba(var(--success-rgb),0.10); color:var(--success); padding:16px; border-radius:12px; margin-bottom:16px;">
-                <b style="display:flex; align-items:center; gap:8px; font-size:14px;">원장님 확인 완료</b>
-                ${myJournal.feedback ? `<div style="margin-top:10px; font-size:13px; background:var(--surface); padding:12px; border-radius:8px; color:var(--text);"><b>피드백:</b><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
+                <span style="display:flex; align-items:center; gap:8px; font-size:14px;; font-weight:500;">원장님 확인 완료</span>
+                ${myJournal.feedback ? `<div style="margin-top:10px; font-size:13px; background:var(--surface); padding:12px; border-radius:8px; color:var(--text);"><span style="font-weight:500;">피드백:</span><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
             </div>
         ` : ''}
         <textarea id="journal-content" class="btn" style="width:100%; height:250px; text-align:left; resize:vertical; font-family:inherit; font-size:14px; line-height:1.6; background:${isLocked ? 'var(--surface-2)' : 'var(--surface)'}; border:1px solid var(--border); color:var(--text);" ${isLocked ? 'readonly' : ''}>${apEscapeHtml(content)}</textarea>
@@ -2950,7 +2950,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
         return `
             <div class="card" style="padding:16px; margin-bottom:12px; cursor:pointer; border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); background:var(--surface);" onclick="openAdminJournalFeedback('${j.id}', '${teacherArg}')">
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px; gap:8px; align-items:center;">
-                    <b style="font-size:15px; color:var(--text);">${apEscapeHtml(j.teacher_name)} 선생님</b>
+                    <span style="font-size:15px; color:var(--text);; font-weight:500;">${apEscapeHtml(j.teacher_name)} 선생님</span>
                     <span style="font-size:11px; font-weight:500; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
                 </div>
                 <div style="font-size:13px; color:var(--text-soft); white-space:pre-wrap; max-height:60px; overflow:hidden; line-height:1.6;">${apEscapeHtml(j.content)}</div>
@@ -2960,7 +2960,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
     showModal(`${apEscapeHtml(title)}`, `
         ${backBtn}
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:12px 14px; border-radius:12px;">
-            <b style="font-size:13px; color:var(--secondary); white-space:nowrap;">기준일</b>
+            <span style="font-size:13px; color:var(--secondary); white-space:nowrap;; font-weight:500;">기준일</span>
             <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:500; color:var(--text);" onchange="renderAdminJournalList(this.value, '${safeTeacher}')">
         </div>
         <div style="max-height:55vh; overflow-y:auto; padding-right:4px;">
