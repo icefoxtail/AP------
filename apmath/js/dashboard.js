@@ -169,7 +169,18 @@ const DASHBOARD_DAY_LABELS = { sun: '일', mon: '월', tue: '화', wed: '수', t
 const DASHBOARD_DAY_INDEX_TO_KEY = { 0: 'sun', 1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 'sat', 7: 'sun' };
 
 function dashboardEscapeAttr(value) {
-    return String(value || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const jsSafe = String(value || '')
+        .replace(/\\/g, '\\\\')
+        .replace(/\r/g, '\\r')
+        .replace(/\n/g, '\\n')
+        .replace(/\u2028/g, '\\u2028')
+        .replace(/\u2029/g, '\\u2029')
+        .replace(/'/g, "\\'");
+    return jsSafe
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 }
 
 function dashboardDateFromLocalString(dateStr) {
@@ -2124,41 +2135,25 @@ function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id];
     if (!s) return '';
 
-    const baseStyle = `
-        cursor:pointer;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        height:52px;
-        min-height:52px;
-        max-height:52px;
-        padding:0 16px;
-        border-radius:16px;
-        gap:12px;
-        box-sizing:border-box;
-        transition:all 0.2s ease;
-        overflow:hidden;
-    `;
+    const safeCid = dashboardEscapeAttr(cls.id);
+    const safeName = apEscapeHtml(cls.name || '');
 
     if (!s.isScheduled) {
         return `
-            <div onclick="openDashboardClass('${cls.id}')" style="${baseStyle} opacity:0.68; filter:grayscale(18%); background:var(--surface-2); border:1px dashed var(--border);">
-                <div style="font-weight:700; font-size:15px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.name)}</div>
-                <div style="font-size:12px; font-weight:600; color:var(--secondary); white-space:nowrap; flex-shrink:0;">수업 없음</div>
+            <div class="ap-class-row ap-class-row--empty" onclick="openDashboardClass('${safeCid}')">
+                <div class="ap-class-row__name ap-class-row__name--inactive">${safeName}</div>
+                <div class="ap-class-row__meta">수업 없음</div>
             </div>
         `;
     }
 
-    const gradientBg = 'linear-gradient(135deg, rgba(225,29,72,0.04) 0%, var(--surface) 100%)';
-    const borderColor = 'rgba(225,29,72,0.18)';
-
     return `
-        <div onclick="openDashboardClass('${cls.id}')" style="${baseStyle} background:${gradientBg}; border:1px solid ${borderColor};">
-            <div style="font-weight:700; font-size:15px; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.name)}</div>
-            <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;">
-                <div style="height:26px; display:inline-flex; align-items:center; background:var(--bg); border-radius:8px; padding:0 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border); white-space:nowrap;">재원 <span style="color:var(--text); margin-left:3px;">${s.activeCount}</span></div>
-                <div style="height:26px; display:inline-flex; align-items:center; background:var(--bg); border-radius:8px; padding:0 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border); white-space:nowrap;">등원 <span style="color:var(--success); margin-left:3px;">${s.present}</span></div>
-                <div style="height:26px; display:inline-flex; align-items:center; background:var(--bg); border-radius:8px; padding:0 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border); white-space:nowrap;">결석 <span style="color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:3px;">${s.absent}</span></div>
+        <div class="ap-class-row ap-class-row--scheduled" onclick="openDashboardClass('${safeCid}')">
+            <div class="ap-class-row__name">${safeName}</div>
+            <div class="ap-class-row__chips" aria-label="${safeName} 출결 요약">
+                <span class="ap-class-chip">재원 ${apEscapeHtml(String(s.activeCount))}</span>
+                <span class="ap-class-chip">등원 ${apEscapeHtml(String(s.present))}</span>
+                <span class="ap-class-chip">결석 ${apEscapeHtml(String(s.absent))}</span>
             </div>
         </div>
     `;
@@ -2205,12 +2200,12 @@ function renderTodoSections() {
         <div style="${rowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
-                <span style="font-size:13px; font-weight:700; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''} white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                <span style="font-size:13px; font-weight:400; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''} white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                     ${isPinned ? `<span style="background:var(--primary-soft); padding:2px 6px; border-radius:10px; font-size:11px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}
                 </span>
             </label>
         </div>
-    `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:600; color:var(--secondary); text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
+    `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
 
     let upcomingHtml = '';
     const upcomingItems = [];
@@ -2229,9 +2224,9 @@ function renderTodoSections() {
             if (u.type === 'exam') {
                 const e = u.item;
                 const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
-                return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
+                return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
                     <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${displayTitle}</div>
-                    <span style="font-size:11px; color:#059669; background:rgba(5,150,105,0.08); padding:4px 8px; border-radius:10px; font-weight:700; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+                    <span style="font-size:12px; color:#059669; background:rgba(5,150,105,0.08); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
                 </div>`;
             }
 
@@ -2241,9 +2236,9 @@ function renderTodoSections() {
             const labelColor = isClosed ? 'var(--warning)' : 'var(--primary)';
             const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--primary-soft)';
             const title = s.title || (isClosed ? '휴무' : '일정');
-            return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
-                <span style="font-size:11px; background:rgba(5,150,105,0.08); color:#059669; padding:4px 8px; border-radius:10px; font-weight:700; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+            return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
+                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
+                <span style="font-size:12px; background:rgba(5,150,105,0.08); color:#059669; padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
             </div>`;
         }).join('');
     }
@@ -2251,7 +2246,7 @@ function renderTodoSections() {
     return `
         <div style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일정</h3>
+                <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘일정</h3>
             </div>
             <div onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(99,102,241,0.2); background:rgba(99,102,241,0.04);">
                 ${todayHtml}
@@ -2259,7 +2254,7 @@ function renderTodoSections() {
             
             ${upcomingHtml ? `
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                    <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">주간일정</h3>
+                    <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">주간일정</h3>
                 </div>
                 <div onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">
                     ${upcomingHtml}
@@ -2284,21 +2279,18 @@ function renderTodayJournalCard(data) {
     });
 
     const contentHtml = todayClasses.length === 0
-        ? `<span class="dashboard-journal-card__empty">수업 없음</span>`
-        : `<span>${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
+        ? '수업 없음'
+        : todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ');
 
     return `
-        <div class="dashboard-journal-head">
-            <h3 class="dashboard-journal-title">오늘일지</h3>
-        </div>
-        <div id="dashboard-journal-card" class="dashboard-journal-card" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
-            <div class="dashboard-journal-card__top">
-                <div id="dashboard-journal-content" class="dashboard-journal-card__content">
-                    ${contentHtml}
-                </div>
-                <span class="dashboard-journal-card__arrow">›</span>
+        <div class="ap-dashboard-journal-wrap">
+            <div class="ap-dashboard-journal-head">
+                <h3 class="ap-dashboard-journal-title">오늘일지</h3>
+                <span id="dashboard-journal-content" class="ap-dashboard-journal-summary">${contentHtml}</span>
             </div>
-            ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
+            <div id="dashboard-journal-card" class="ap-dashboard-journal-body" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
+                ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
+            </div>
         </div>
     `;
 }
@@ -2321,17 +2313,17 @@ function renderDashboard() {
     const shortcutRow = `
         <div class="ap-dashboard-shortcuts" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
             <button class="btn" 
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
             <button class="btn" 
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
             <button class="btn" 
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="window.location.href='../archive/index';">
                 아카이브
             </button>
@@ -2346,9 +2338,9 @@ function renderDashboard() {
 
     const tabHtml = `
         <div class="ap-dashboard-tabbar" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:12px;">
-            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='all'?'var(--surface)':'transparent'}; color:${tab==='all'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='all'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='all'; renderDashboard()">전체</button>
-            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='middle'?'var(--surface)':'transparent'}; color:${tab==='middle'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='middle'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='middle'; renderDashboard()">중등</button>
-            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='high'?'var(--surface)':'transparent'}; color:${tab==='high'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='high'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='high'; renderDashboard()">고등</button>
+            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:${tab==='all'?'var(--surface)':'transparent'}; color:${tab==='all'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='all'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='all'; renderDashboard()">전체</button>
+            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:${tab==='middle'?'var(--surface)':'transparent'}; color:${tab==='middle'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='middle'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='middle'; renderDashboard()">중등</button>
+            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:${tab==='high'?'var(--surface)':'transparent'}; color:${tab==='high'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='high'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='high'; renderDashboard()">고등</button>
         </div>
     `;
 
@@ -2361,7 +2353,7 @@ function renderDashboard() {
 
     const classStatus = `
         <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-            <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">학급관리</h3>
+            <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">학급관리</h3>
         </div>
         ${tabHtml}
         <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
@@ -2935,7 +2927,7 @@ async function saveJournal(status, existingId = null, targetDate) {
 
 function renderAdminJournalList(dateStr, teacherName = '') {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    const safeTeacher = String(teacherName || '').replace(/'/g, "\\'");
+    const safeTeacher = dashboardEscapeAttr(teacherName || '');
     let journals = (state.db.journals || []).filter(j => j.date === targetDate && j.status !== '작성중');
     if (teacherName) journals = journals.filter(j => j.teacher_name === teacherName);
     const title = teacherName ? `${teacherName} 선생님 일지` : '일지확인';
@@ -2943,7 +2935,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
     const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:700; background:var(--surface-2); border:none; color:var(--text);" onclick="closeModal(true)">닫기</button>` : '';
     
     const rows = journals.map(j => {
-        const teacherArg = String(teacherName || j.teacher_name || '').replace(/'/g, "\\'");
+        const teacherArg = dashboardEscapeAttr(teacherName || j.teacher_name || '');
         const statusText = j.status === '결재완료' ? '확인완료' : j.status;
         const statusColor = j.status === '결재완료' ? 'var(--success)' : 'var(--primary)';
         const statusBg = j.status === '결재완료' ? 'rgba(var(--success-rgb),0.10)' : 'var(--primary-soft)';
@@ -2973,7 +2965,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
 function openAdminJournalFeedback(id, teacherName = '') {
     const journal = (state.db.journals || []).find(j => j.id === id);
     if (!journal) return toast('일지를 찾을 수 없습니다.', 'warn');
-    const safeTeacher = String(teacherName || journal.teacher_name || '').replace(/'/g, "\\'");
+    const safeTeacher = dashboardEscapeAttr(teacherName || journal.teacher_name || '');
     
     showModal(`${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
         <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--surface-2); border:none; border-radius:12px; padding:16px; margin-bottom:12px; color:var(--text);">${apEscapeHtml(journal.content)}</textarea>
@@ -3019,7 +3011,7 @@ function renderAdminTeacherCards(todayStr) {
         const chips = [
             { label: '담당반', value: `${myClasses.length}개` },
             { label: '재원', value: `${activeStudents.length}명` }
-        ].map(item => `<span class="admin-teacher-card__chip"><span>${apEscapeHtml(item.label)}</span><b>${apEscapeHtml(item.value)}</b></span>`).join('');
+        ].map(item => `<span class="admin-teacher-card__chip"><span>${apEscapeHtml(item.label)}</span><span class="admin-teacher-card__chip-value">${apEscapeHtml(item.value)}</span></span>`).join('');
 
         return `
             <div class="card ap-admin-teacher-card">
@@ -3041,7 +3033,7 @@ function renderAdminTeacherCards(todayStr) {
 
 function openAdminTeacherPanel(teacherName) {
     state.ui.currentAdminTeacherName = teacherName;
-    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const safeName = dashboardEscapeAttr(teacherName || '');
     renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), safeName);
 }
 
@@ -3081,7 +3073,7 @@ function renderAdminTeacherAllStudents(teacherName) {
 
 
 function renderAdminTeacherStudents(teacherName) {
-    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const safeName = dashboardEscapeAttr(teacherName || '');
     const myClasses = sortClassesForDashboard(state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0));
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
@@ -3093,7 +3085,7 @@ function renderAdminTeacherStudents(teacherName) {
     const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
 
     const rows = myClasses.map(cls => {
-        const safeClassId = String(cls.id || '').replace(/'/g, "\\'");
+        const safeClassId = dashboardEscapeAttr(cls.id || '');
         const studentIds = adminGetClassStudentIds(cls.id);
         const activeCount = (state.db.students || []).filter(s => studentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원').length;
         const isToday = isClassScheduledTodayForDashboard(cls.id);
