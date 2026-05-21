@@ -7,30 +7,34 @@
 - 생성: `docs/design/UI_REVIEW_SOP.md`
 - 생성: `docs/design/PATCH_REVIEW_BOARD_SPEC.md`
 - 생성: `docs/design/AGENTIC_WORKFLOW_NOTES.md`
+- 생성: `docs/archive/20260521_used_docs/README.md`
+- 보관: `docs/archive/20260521_used_docs/GEMINI_REVIEW_PROMPT.md`
+- 보관: `docs/archive/20260521_used_docs/TIMETABLE_DRAG_FIX_RESULT.md`
+- 보관: `docs/archive/20260521_used_docs/TIMETABLE_NEW_SEMESTER_REBUILD_RESULT.md`
+- 보관: `docs/archive/20260521_used_docs/UPDATE_SUMMARY.md`
 - 수정: `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`
 
 ## 2. 구현 완료 또는 확인 완료
 
-- APMS UI 원칙 문서화 완료
-- 대시보드 foundation 기준 문서화 완료
-- UI 현미경 검수 SOP 문서화 완료
-- 패치 검수 대시보드 설계 메모 작성 완료
-- 여러 AI/사람 작업 흐름 역할 분리 메모 작성 완료
-- 룰북에 `docs/design/` 기준과 UI 검수 SOP 기준 추가 완료
-- 전역 CSS 변경 금지, 카드 shell 유지, 카드 안 카드 금지, line row 기준 문서화 완료
-- 대시보드 작업에서 화면 캡처 검수 필요 기준 문서화 완료
+- 현재 `docs.zip` 기준 루트 문서 구성 확인 완료
+- `docs/design/` 폴더 기준 문서 추가 완료
+- 사용 완료 문서 4개 archive 보관본 생성 완료
+- 룰북에 APMS UI Design Foundation 기준 추가 완료
+- 코드/CSS/운영 화면 파일 변경 없음
 
 ## 3. 실행 결과
 
-- 문서 작업만 수행하여 `node --check` 대상 없음
-- 생성/수정 문서 경로 확인 완료
+- 문서 정리 작업이므로 `node --check` 대상 없음
 
 ## 4. 결과 요약
 
-APMS 대시보드 작업에서 나온 UI 원칙, 디자인 창고, 현미경 검수 SOP, 패치 검수 대시보드 아이디어를 문서화했다. 앞으로 UI 작업자는 `PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`와 `docs/design/` 문서를 함께 기준으로 삼아야 한다.
+- 루트 `docs/`는 기준 문서 중심으로 줄이고, 사용 완료 문서는 `docs/archive/20260521_used_docs/`로 보관하는 구조로 정리했다.
 
 ## 5. 다음 조치
 
-- 사용자 직접 확인 후 커밋
-- 향후 Classroom / Student Portal / ui.js 공통화 작업 전에 `docs/design/APMS_UI_PRINCIPLES.md`와 `docs/design/DASHBOARD_FOUNDATION.md`를 먼저 읽고 작업
-- 패치 검수 대시보드는 아직 구현하지 않고 설계 메모로만 보관
+- 적용 후 루트의 사용 완료 문서 4개를 삭제해야 실제 루트 정리가 완료된다.
+- 삭제 대상:
+  - `docs/GEMINI_REVIEW_PROMPT.md`
+  - `docs/TIMETABLE_DRAG_FIX_RESULT.md`
+  - `docs/TIMETABLE_NEW_SEMESTER_REBUILD_RESULT.md`
+  - `docs/UPDATE_SUMMARY.md`
