@@ -191,42 +191,6 @@ UI 관련 작업 완료 보고에는 반드시 아래를 적는다.
 - 기능 추가 외 기존 문구·버튼명·화면명·메뉴명·운영 용어를 임의로 변경하지 말 것.
 - 사용자가 명시적으로 요청하지 않은 UI 텍스트 변경은 실패로 간주한다.
 
-
-## 1.3-A APMS UI Design Foundation 기준
-
-UI 디자인 작업은 `docs/design/APMS_UI_PRINCIPLES.md`와 `docs/design/DASHBOARD_FOUNDATION.md`를 기준으로 삼는다.
-
-기본 원칙:
-
-- APMS에서 Apple-style은 파란색 버튼, 큰 radius, 강한 shadow가 아니다.
-- APMS에서 Apple-style은 낮은 font-weight, 얇은 선, 조용한 row, 색보다 정보 정렬이다.
-- 카드는 삭제하지 않는다. 단, 카드 안에 또 카드를 넣지 않는다.
-- 큰 정보 묶음은 카드 shell로 유지하고, 반복 항목은 line row로 정리한다.
-- 클릭 가능한 row는 chevron(`›`)과 약한 hover로만 구분한다.
-- 상태값을 색상이나 굵은 글씨로 과하게 강조하지 않는다.
-- 신규 UI에서 font-weight 700/800/900 사용을 금지한다.
-- `body`, `button`, `.card`, `*` 같은 전역 selector를 UI 개선 명목으로 수정하지 않는다.
-- 기존 selector를 삭제하기 전 실제 사용 여부와 연결된 JS 마크업을 확인한다.
-
-대시보드 기준:
-
-- 대시보드는 APMS 운영 UI 정리의 1차 기준 화면이다.
-- 대시보드 기준을 다른 화면에 그대로 복사하지 말고, 각 화면 맥락에 맞게 번역한다.
-- 오늘일지 outer card는 유지한다.
-- 오늘일지 내부 수/목 항목은 line row로 표시한다.
-- 원장 선생님 카드에서는 수/목 일지 row만 표시한다.
-- 원장 선생님 카드의 최근 등록 chip과 일지 확인 버튼은 기본 노출하지 않는다.
-- 담당반 보기 버튼은 유지한다.
-
-UI 작업 실패 기준:
-
-- 카드 shell까지 제거해 텍스트만 떠 보이게 만든 경우
-- 카드 안 카드가 반복되는 경우
-- 전역 CSS 변경으로 출석부/시간표/리포트가 같이 바뀌는 경우
-- 색상 강조로 운영 화면이 경고판처럼 보이는 경우
-- 글자 크기와 두께가 한 화면 안에서 제각각인 경우
-- 코드 검수는 PASS였지만 화면 캡처에서 운영 UI로 보기 어려운 경우
-
 ## 1.4 학생 포털 / OMR 금지 원칙
 
 - 학생이 시험지를 직접 여는 기능은 만들지 않는다.
@@ -354,7 +318,6 @@ UI 작업 실패 기준:
 | `archive/exams/` | 기출/유사/유형별 시험지 JS 데이터 | 원본/유사/심화 구분 주의 |
 | `report-ai-proxy/` | 리포트 AI proxy 관련 | Worker와 별도 배포/검증 가능 |
 | `docs/` | 기준 문서/룰북 저장 권장 위치 | 큰 작업 후 업데이트 필요 |
-| `docs/design/` | APMS UI 원칙, 대시보드 foundation, UI 검수 SOP, 작업 흐름 메모 | UI 작업 전 기준 확인, 전역 CSS 변경 금지 |
 
 ---
 
@@ -986,25 +949,6 @@ git push
 - git push 실행 여부: `미실행 - 사용자 직접 실행 대상`
 
 ---
-
-
-# 9.4 UI 검수 SOP 기준
-
-UI 관련 패치 검수는 `docs/design/UI_REVIEW_SOP.md`를 기준으로 한다.
-
-검수자는 다음을 반드시 확인한다.
-
-- 실제 full_files의 JS/CSS를 열어 확인했는가
-- 기존 문구·버튼명·화면명을 보존했는가
-- 전역 CSS를 수정하지 않았는가
-- 카드 shell과 line row 역할이 구분되는가
-- 카드 안 카드가 생기지 않았는가
-- font-weight 700 이상 신규 사용이 없는가
-- 클릭 row의 chevron/hover가 layout shift 없이 동작하는가
-- 브라우저 화면 캡처 검수 항목이 남아 있는가
-
-`00_manifest.md`와 `01_changed_snippets.md`만 보고 PASS하면 검수 실패로 본다.
-확인하지 못한 항목은 `미검수`로 표시해야 하며, 미검수 항목이 있으면 최종 PASS를 줄 수 없다.
 
 # 10. 완료 보고 기준
 
@@ -1782,3 +1726,30 @@ foundation을 먼저 만든다.
 - 12월 + 다음 해 개편안에서는 기존 중3 반을 렌더링 목록에서 제외한다.
 - 중3 제외는 `hidden`/`display:none`처럼 자리만 차지하는 방식이면 안 된다.
 - 기존 시간표 UI, 문구, 버튼명, 선생님 화면은 새학기 기능 때문에 임의 변경하지 않는다.
+
+
+---
+
+## APMS UI Design Foundation 기준
+
+APMS 화면 작업에서 디자인 기준은 `docs/design/` 폴더를 우선 참고한다.
+
+### 기준 문서
+
+- `docs/design/APMS_UI_PRINCIPLES.md`: APMS 공통 UI 원칙
+- `docs/design/DASHBOARD_FOUNDATION.md`: 대시보드 기준 화면 규칙
+- `docs/design/UI_REVIEW_SOP.md`: UI 패치 검수 SOP
+- `docs/design/PATCH_REVIEW_BOARD_SPEC.md`: 패치 검수 대시보드 설계 메모
+- `docs/design/AGENTIC_WORKFLOW_NOTES.md`: 작업자 역할 분리 메모
+
+### 핵심 원칙
+
+- “Apple-style”은 파란색, 큰 radius, 강한 그림자, 전역 버튼 리뉴얼을 의미하지 않는다.
+- APMS의 Apple-style은 낮은 글자 두께, 얇은 선, 조용한 row, 정보 정렬, 적은 색상 사용을 뜻한다.
+- 카드 삭제가 목적이 아니다. 큰 정보 묶음은 카드로 유지하고, 카드 안 카드만 금지한다.
+- 클릭 가능한 세부 항목은 line row + chevron 방식으로 표현한다.
+- 전역 `body`, `button`, `.card`, `*` 스타일을 임의 수정하지 않는다.
+- 화면명, 버튼명, 주요 문구는 사용자가 명시하지 않으면 변경하지 않는다.
+- UI 패치는 코드 검수와 별개로 실제 화면 캡처 검수를 통과해야 한다.
+- 검수자는 `full_files`의 실제 파일을 열어 확인한 근거 없이 PASS를 주지 않는다.
+
