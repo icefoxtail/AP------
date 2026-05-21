@@ -1027,17 +1027,17 @@ function renderClassTopBarV4B(cls, summary, today) {
     const realToday = getClassroomTodayDate();
     const dateLabel = today === realToday ? '오늘 운영' : '선택일 운영';
     const statusHtml = summary.isScheduled
-        ? `<div class="cls-v4-summary" id="v4-summary-root">
-            <span class="cls-v4-pill">출석 <b>${summary.att}/${summary.total}</b></span>
-            <span class="cls-v4-pill">숙제 <b>${summary.hw}/${summary.total}</b></span>
+        ? `<div class="cls-v4-summary ap-classroom-summary" id="v4-summary-root">
+            <span class="cls-v4-pill apms-chip ap-classroom-chip">출석 <b>${summary.att}/${summary.total}</b></span>
+            <span class="cls-v4-pill apms-chip ap-classroom-chip">숙제 <b>${summary.hw}/${summary.total}</b></span>
           </div>`
-        : `<div class="cls-v4-summary" id="v4-summary-root"><span class="cls-v4-pill warn">정규 수업일 아님</span></div>`;
+        : `<div class="cls-v4-summary ap-classroom-summary" id="v4-summary-root"><span class="cls-v4-pill warn apms-chip ap-classroom-chip">정규 수업일 아님</span></div>`;
 
     return `
-        <div class="cls-v4-top">
+        <div class="cls-v4-top apms-card__header ap-classroom-section">
             <div class="cls-v4-title">
-                <div class="cls-v4-title-main">${apEscapeHtml(cls.name)}</div>
-                <div class="cls-v4-title-sub">${dateLabel} · ${today} · ${formatClassScheduleDays(cls.schedule_days)}</div>
+                <div class="cls-v4-title-main apms-card__title">${apEscapeHtml(cls.name)}</div>
+                <div class="cls-v4-title-sub apms-card__meta">${dateLabel} · ${today} · ${formatClassScheduleDays(cls.schedule_days)}</div>
             </div>
             ${statusHtml}
         </div>
@@ -1047,27 +1047,27 @@ function renderClassTopBarV4B(cls, summary, today) {
 function renderClassToolBarV4B(cid, plannerEnabled, today) {
     const realToday = getClassroomTodayDate();
     return `
-        <div class="cls-v4-tools">
+        <div class="cls-v4-tools apms-toolbar ap-classroom-toolbar">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
-            <button class="btn cls-v4-tool red" onclick="openClassRecordModal('${cid}')">진도</button>
-            <button class="btn cls-v4-tool green" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제</button>
-            <button class="btn cls-v4-tool blue" onclick="openQrGenerator('${cid}')">QR/OMR</button>
-            <button class="btn cls-v4-tool orange" onclick="openExamGradeView('${cid}')">시험성적</button>
-            <button class="btn cls-v4-tool purple" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
-            ${plannerEnabled ? `<button class="btn cls-v4-tool green" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
+            <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassRecordModal('${cid}')">진도</button>
+            <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제</button>
+            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openQrGenerator('${cid}')">QR/OMR</button>
+            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openExamGradeView('${cid}')">시험성적</button>
+            <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="if(typeof openClinicBasketForClass==='function') openClinicBasketForClass('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
+            ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
         </div>
     `;
 }
 
 function renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, isScheduled, plannerEnabled, today) {
     if (!students.length) {
-        return `<div class="cls-v4-board"><div class="cls-v4-empty">재원생이 없습니다.</div></div>`;
+        return `<div class="cls-v4-board apms-card ap-classroom-card ap-classroom-roster"><div class="cls-v4-empty apms-empty ap-classroom-empty">재원생이 없습니다.</div></div>`;
     }
 
     return `
-        <div class="cls-v4-board">
-            <div class="cls-v4-board-head">
+        <div class="cls-v4-board apms-card ap-classroom-card ap-classroom-roster">
+            <div class="cls-v4-board-head apms-line-row ap-classroom-row">
                 <div class="name-spacer"></div>
                 <div>출결</div>
                 <div>숙제</div>
@@ -1088,11 +1088,11 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
     const hwLabel = getV4CompactHomeworkLabel(hwStatus, isScheduled);
 
     return `
-        <div class="cls-v4-row" id="class-row-${s.id}">
-            <div class="cls-v4-name-col" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">
-                <div class="cls-v4-student">${apEscapeHtml(s.name)}</div>
+        <div class="cls-v4-row apms-line-row apms-line-row--clickable ap-classroom-row" id="class-row-${s.id}">
+            <div class="cls-v4-name-col apms-line-row__main ap-classroom-row__main" onclick="setManagementReturnView({ type: 'classDetail', classId: '${cid}' }); renderStudentDetail('${s.id}')">
+                <div class="cls-v4-student apms-line-row__title ap-classroom-row__title">${apEscapeHtml(s.name)}</div>
             </div>
-            <div class="cls-v4-badges">
+            <div class="cls-v4-badges apms-line-row__actions ap-classroom-row__actions">
                 <button class="btn cls-v4-status class-att-toggle" style="${attStyle}" onclick="toggleAtt('${s.id}', '${rowDate}')">${attLabel}</button>
                 <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}', '${rowDate}')">${hwLabel}</button>
                 ${renderAttendanceTagButton(s.id, rowDate, '지각')}
@@ -1109,9 +1109,9 @@ function updateClassSummaryDOM(cid) {
     if (!root) return;
     const summary = computeClassTodaySummary(cid, getClassroomOperationDate());
     root.innerHTML = summary.isScheduled
-        ? `<span class="cls-v4-pill">출석 <b>${summary.att}/${summary.total}</b></span>
-           <span class="cls-v4-pill">숙제 <b>${summary.hw}/${summary.total}</b></span>`
-        : `<span class="cls-v4-pill warn">정규 수업일 아님</span>`;
+        ? `<span class="cls-v4-pill apms-chip ap-classroom-chip">출석 <b>${summary.att}/${summary.total}</b></span>
+           <span class="cls-v4-pill apms-chip ap-classroom-chip">숙제 <b>${summary.hw}/${summary.total}</b></span>`
+        : `<span class="cls-v4-pill warn apms-chip ap-classroom-chip">정규 수업일 아님</span>`;
 }
 
 function updateStudentRowDOM(sid, cid) {
@@ -1182,11 +1182,11 @@ function renderClass(cid) {
     const plannerEnabled = isPlannerTargetClass(cls);
 
     document.getElementById('app-root').innerHTML = `
-        <div class="cls-fade-in cls-v4-wrap">
+        <div class="cls-fade-in cls-v4-wrap ap-classroom-shell">
             ${renderClassTopBarV4B(cls, summary, today)}
             ${renderClassToolBarV4B(cid, plannerEnabled, today)}
-            <div class="cls-v4-section">
-                <h3>학생 명단</h3>
+            <div class="cls-v4-section ap-classroom-section">
+                <h3 class="apms-section-title">학생 명단</h3>
             </div>
             ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled, today)}
         </div>

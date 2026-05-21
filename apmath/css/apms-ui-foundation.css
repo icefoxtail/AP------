@@ -1,0 +1,204 @@
+:root {
+    --apms-ui-bg: var(--bg, #f2f4f6);
+    --apms-ui-surface: var(--surface, #ffffff);
+    --apms-ui-surface-soft: var(--surface-2, #f8fafc);
+    --apms-ui-border: var(--border, #e5e8eb);
+    --apms-ui-text: var(--text, #191f28);
+    --apms-ui-muted: var(--secondary, #6b7684);
+    --apms-ui-soft: rgba(118, 118, 128, 0.10);
+    --apms-ui-accent: var(--primary, #1a5cff);
+    --apms-ui-hover: rgba(15, 23, 42, 0.035);
+    --apms-ui-radius-card: 16px;
+    --apms-ui-radius-row: 12px;
+    --apms-ui-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.apms-card {
+    background: var(--apms-ui-surface);
+    border: 1px solid var(--apms-ui-border);
+    border-radius: var(--apms-ui-radius-card);
+    box-shadow: var(--apms-ui-shadow-card);
+    color: var(--apms-ui-text);
+    overflow: hidden;
+}
+
+.apms-card__header,
+.apms-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+}
+
+.apms-card__header {
+    border-bottom: 1px solid var(--apms-ui-border);
+    background: var(--apms-ui-surface-soft);
+}
+
+.apms-card__title,
+.apms-section-title,
+.apms-line-row__title {
+    color: var(--apms-ui-text);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.apms-card__meta,
+.apms-section-meta,
+.apms-line-row__meta,
+.apms-muted {
+    color: var(--apms-ui-muted);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.45;
+}
+
+.apms-card__body {
+    padding: 12px 16px;
+}
+
+.apms-section {
+    display: grid;
+    gap: 8px;
+}
+
+.apms-line-list {
+    display: grid;
+    background: var(--apms-ui-surface);
+}
+
+.apms-line-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--apms-ui-border);
+    color: var(--apms-ui-text);
+}
+
+.apms-line-row:last-child {
+    border-bottom: 0;
+}
+
+.apms-line-row--clickable {
+    cursor: pointer;
+}
+
+.apms-line-row--clickable:hover {
+    background: var(--apms-ui-hover);
+}
+
+.apms-line-row__main {
+    min-width: 0;
+    flex: 1;
+}
+
+.apms-line-row__status,
+.apms-line-row__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
+.apms-line-row__chevron {
+    color: var(--apms-ui-muted);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.apms-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    padding: 3px 8px;
+    border: 1px solid var(--apms-ui-border);
+    border-radius: 999px;
+    background: var(--apms-ui-surface);
+    color: var(--apms-ui-muted);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.apms-chip--muted {
+    background: var(--apms-ui-surface-soft);
+}
+
+.apms-chip--soft {
+    background: var(--apms-ui-soft);
+    border-color: transparent;
+    color: var(--apms-ui-text);
+}
+
+.apms-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 7px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--apms-ui-border);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.apms-button--quiet {
+    background: var(--apms-ui-surface);
+    color: var(--apms-ui-text);
+}
+
+.apms-button--primary {
+    background: var(--apms-ui-accent);
+    border-color: var(--apms-ui-accent);
+    color: #ffffff;
+}
+
+.apms-empty {
+    padding: 28px 16px;
+    color: var(--apms-ui-muted);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.apms-toolbar,
+.apms-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.apms-toolbar::-webkit-scrollbar,
+.apms-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.apms-tab {
+    min-height: 32px;
+    padding: 6px 10px;
+    border: 1px solid var(--apms-ui-border);
+    border-radius: 999px;
+    background: var(--apms-ui-surface);
+    color: var(--apms-ui-muted);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.apms-tab--active {
+    background: var(--apms-ui-soft);
+    color: var(--apms-ui-accent);
+    border-color: transparent;
+}
