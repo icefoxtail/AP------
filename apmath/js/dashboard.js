@@ -1329,6 +1329,11 @@ function adminConsultationRowStudentName(row) {
     return (student && student.name) || row?.student_name_snapshot || '학생 확인';
 }
 
+function adminRecentConsultationPreviewText(row) {
+    const content = String(row?.content || '').replace(/\s+/g, ' ').trim();
+    return content || '상담 내용 없음';
+}
+
 function adminRenderConsultationHistoryRows(rows) {
     const list = Array.isArray(rows) ? rows : [];
     return list.map(row => {
@@ -1381,11 +1386,23 @@ function renderAdminRecentConsultationPanel() {
         const sid = String(row.student_id || '').trim();
         const student = adminGetStudentById(sid);
         const cls = student ? adminGetStudentClass(student.id) : null;
+        const type = String(row?.type || '상담').trim() || '상담';
+        const nextAction = String(row?.next_action || row?.nextAction || '').trim();
+        const preview = adminRecentConsultationPreviewText(row);
         const meta = [adminGetConsultationDate(row), cls && cls.name].filter(Boolean).join(' · ');
         return `
-            <button class="btn" style="height:44px; min-height:44px; padding:0 12px; border:none; border-bottom:1px solid var(--border); border-radius:0; background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:10px;" onclick="openAdminStudentConsultationHistory('${apEscapeHtml(sid)}')">
-                <span style="min-width:0; font-size:13px; font-weight:500; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
-                <span style="flex-shrink:0; font-size:11px; font-weight:500; color:var(--secondary); white-space:nowrap;">${apEscapeHtml(meta)}</span>
+            <button class="btn" style="width:100%; min-height:68px; padding:10px 12px; border:none; border-bottom:1px solid var(--border); border-radius:0; background:var(--surface); box-shadow:none; display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:center; gap:12px; text-align:left;" onclick="openAdminStudentConsultationHistory('${apEscapeHtml(sid)}')">
+                <span style="min-width:0; display:flex; flex-direction:column; gap:4px;">
+                    <span style="display:flex; align-items:center; gap:7px; min-width:0;">
+                        <span style="font-size:13px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
+                        <span style="flex-shrink:0; font-size:10px; font-weight:700; color:var(--primary); background:var(--primary-soft); border:1px solid rgba(var(--primary-rgb),0.14); border-radius:999px; padding:2px 7px;">${apEscapeHtml(type)}</span>
+                    </span>
+                    <span style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.45; overflow:hidden; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical;">${apEscapeHtml(preview)}</span>
+                </span>
+                <span style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:5px; max-width:210px;">
+                    <span style="font-size:11px; font-weight:500; color:var(--secondary); white-space:nowrap;">${apEscapeHtml(meta)}</span>
+                    ${nextAction ? `<span style="max-width:100%; font-size:11px; font-weight:700; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:3px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">다음 조치 · ${apEscapeHtml(nextAction)}</span>` : '<span style="font-size:11px; font-weight:500; color:var(--secondary);">후속 없음</span>'}
+                </span>
             </button>
         `;
     }).join('');
