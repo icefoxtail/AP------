@@ -27,47 +27,47 @@ function injectClassroomStyles() {
         .cls-v4-top { position: sticky; top: 0; z-index: 50; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 16px; min-height:54px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
         .dark .cls-v4-top, [data-theme="dark"] .cls-v4-top { background:rgba(28,28,30,0.92); }
         .cls-v4-title { min-width:0; flex:1; }
-        .cls-v4-title-main { font-size:16px; font-weight:700; color:var(--text); letter-spacing:-0.35px; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .cls-v4-title-sub { margin-top:3px; font-size:11px; font-weight:600; color:var(--secondary); line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .cls-v4-title-main { font-size:15px; font-weight:500; color:var(--text); letter-spacing:-0.35px; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .cls-v4-title-sub { margin-top:3px; font-size:11px; font-weight:400; color:var(--secondary); line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
         .cls-v4-summary { display:flex; gap:5px; justify-content:flex-end; flex:0 0 auto; }
-        .cls-v4-pill { height:25px; display:inline-flex; align-items:center; justify-content:center; gap:4px; padding:0 8px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:700; white-space:nowrap; }
-        .cls-v4-pill b { color:var(--text); font-weight:700; }
+        .cls-v4-pill { height:25px; display:inline-flex; align-items:center; justify-content:center; gap:4px; padding:0 8px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:11px; font-weight:400; white-space:nowrap; }
+        .cls-v4-pill b { color:var(--text); font-weight:500; }
         .cls-v4-pill.warn { color:var(--warning); background:rgba(var(--warning-rgb),0.10); border-color:rgba(var(--warning-rgb),0.20); }
         .cls-v4-tools { display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; touch-action:pan-x; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--surface-alpha); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
         .cls-v4-tools::-webkit-scrollbar { display:none; }
-        .cls-v4-tool { flex:0 0 auto; min-height:36px; padding:0 13px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:12px; font-weight:700; box-shadow:0 1px 2px rgba(0,0,0,0.03); }
+        .cls-v4-tool { flex:0 0 auto; min-height:36px; padding:0 13px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:12px; font-weight:500; box-shadow:0 1px 2px rgba(0,0,0,0.03); }
         .cls-v4-tool.primary, .cls-v4-tool.blue { background:var(--primary-soft); border-color:rgba(var(--primary-rgb),0.18); color:var(--primary); }
         .cls-v4-tool.orange { background:rgba(var(--warning-rgb),0.12); border-color:rgba(var(--warning-rgb),0.22); color:var(--warning); }
         .cls-v4-tool.purple, .cls-v4-tool.highlight { background:rgba(124,58,237,0.07); border-color:rgba(124,58,237,0.16); color:#7c3aed; }
         .cls-v4-tool.red { background:rgba(var(--error-rgb),0.10); border-color:rgba(var(--error-rgb),0.20); color:var(--error); }
         .cls-v4-tool.green { background:rgba(var(--success-rgb),0.10); border-color:rgba(var(--success-rgb),0.18); color:var(--success); }
-        .cls-v4-date-input { flex:0 0 auto; width:138px; min-height:36px; height:36px; padding:0 10px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:700; font-family:inherit; box-shadow:none; }
+        .cls-v4-date-input { flex:0 0 auto; width:138px; min-height:36px; height:36px; padding:0 10px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; font-family:inherit; box-shadow:none; }
         .cls-v4-date-input::-webkit-calendar-picker-indicator { opacity:0.75; cursor:pointer; }
-        .cls-v4-date-reset { flex:0 0 auto; min-height:36px; height:36px; padding:0 12px; border-radius:999px; border:1px solid rgba(var(--primary-rgb),0.18); background:var(--primary-soft); color:var(--primary); font-size:12px; font-weight:700; box-shadow:none; }
+        .cls-v4-date-reset { flex:0 0 auto; min-height:36px; height:36px; padding:0 12px; border-radius:999px; border:1px solid rgba(var(--primary-rgb),0.18); background:var(--primary-soft); color:var(--primary); font-size:12px; font-weight:500; box-shadow:none; }
         .cls-v4-section { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 16px 8px; }
-        .cls-v4-section h3 { margin:0; font-size:15px; font-weight:800; color:var(--text); letter-spacing:-0.35px; }
-        .cls-v4-section span { font-size:11px; font-weight:700; color:var(--secondary); }
+        .cls-v4-section h3 { margin:0; font-size:14px; font-weight:500; color:var(--text); letter-spacing:-0.35px; }
+        .cls-v4-section span { font-size:11px; font-weight:400; color:var(--secondary); }
         .cls-v4-board { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--surface); box-shadow:var(--shadow-sm); }
-        .cls-v4-board-head { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px 42px; align-items:center; gap:6px; min-height:30px; padding:4px 12px; border-bottom:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:10px; font-weight:700; text-align:center; }
+        .cls-v4-board-head { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px 42px; align-items:center; gap:6px; min-height:30px; padding:4px 12px; border-bottom:1px solid var(--border); background:var(--surface-2); color:var(--secondary); font-size:10px; font-weight:500; text-align:center; }
         .cls-v4-board-head .name-spacer { text-align:left; }
         .cls-v4-row { display:grid; grid-template-columns:minmax(68px,1fr) 42px 42px 42px 42px 42px; align-items:center; gap:6px; min-height:46px; padding:5px 12px; border-bottom:1px solid var(--border); background:var(--surface); }
         .cls-v4-row:last-child { border-bottom:none; }
         .cls-v4-row:hover { background:rgba(var(--primary-rgb),0.035); }
         .cls-v4-row:active { background:var(--surface-2); }
         .cls-v4-name-col { min-width:0; display:flex; align-items:center; cursor:pointer; overflow:hidden; }
-        .cls-v4-student { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:700; color:var(--text); line-height:1.2; }
+        .cls-v4-student { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:500; color:var(--text); line-height:1.2; }
         .cls-v4-meta-mobile { display:none; }
         .cls-v4-badges { display:contents; }
-        .cls-v4-status { width:42px; min-width:42px; height:36px; min-height:36px; padding:0; border-radius:12px; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none; }
+        .cls-v4-status { width:42px; min-width:42px; height:36px; min-height:36px; padding:0; border-radius:12px; font-size:13px; font-weight:500; display:flex; align-items:center; justify-content:center; margin:0; box-shadow:none; }
         .cls-v4-status.hw { width:42px; min-width:42px; }
         .cls-v4-status.tag { background:transparent; color:var(--secondary); border:1px solid var(--border); font-size:14px; }
         .cls-v4-status.tag.on { background:var(--primary-soft); color:var(--primary); border-color:rgba(var(--primary-rgb),0.20); }
         .cls-v4-status.consult.on { background:rgba(124,58,237,0.10); color:#7c3aed; border-color:rgba(124,58,237,0.18); }
         .cls-v4-actions { display:none; }
         .cls-v4-pad-btns { display:none; gap:6px; }
-        .cls-v4-pad-btn { height:32px; min-height:32px; padding:0 10px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--text-soft); font-size:11px; font-weight:700; }
+        .cls-v4-pad-btn { height:32px; min-height:32px; padding:0 10px; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--text-soft); font-size:11px; font-weight:500; }
         .cls-v4-more { display:none; }
-        .cls-v4-empty { padding:34px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:700; }
+        .cls-v4-empty { padding:34px 12px; text-align:center; color:var(--secondary); font-size:13px; font-weight:400; }
         .cls-v4-legacy-table { padding:8px 0; border-radius:18px; border:1px solid var(--border); background:var(--surface); box-shadow:none; }
         .cls-v4-ledger-mode-active { background:var(--primary) !important; color:#fff !important; }
         @media (min-width:800px) {
@@ -1028,8 +1028,8 @@ function renderClassTopBarV4B(cls, summary, today) {
     const dateLabel = today === realToday ? '오늘 운영' : '선택일 운영';
     const statusHtml = summary.isScheduled
         ? `<div class="cls-v4-summary ap-classroom-summary" id="v4-summary-root">
-            <span class="cls-v4-pill apms-chip ap-classroom-chip">출석 <b>${summary.att}/${summary.total}</b></span>
-            <span class="cls-v4-pill apms-chip ap-classroom-chip">숙제 <b>${summary.hw}/${summary.total}</b></span>
+            <span class="cls-v4-pill apms-chip ap-classroom-chip">출석 <span class="ap-classroom-chip__value">${summary.att}/${summary.total}</span></span>
+            <span class="cls-v4-pill apms-chip ap-classroom-chip">숙제 <span class="ap-classroom-chip__value">${summary.hw}/${summary.total}</span></span>
           </div>`
         : `<div class="cls-v4-summary ap-classroom-summary" id="v4-summary-root"><span class="cls-v4-pill warn apms-chip ap-classroom-chip">정규 수업일 아님</span></div>`;
 
@@ -1109,8 +1109,8 @@ function updateClassSummaryDOM(cid) {
     if (!root) return;
     const summary = computeClassTodaySummary(cid, getClassroomOperationDate());
     root.innerHTML = summary.isScheduled
-        ? `<span class="cls-v4-pill apms-chip ap-classroom-chip">출석 <b>${summary.att}/${summary.total}</b></span>
-           <span class="cls-v4-pill apms-chip ap-classroom-chip">숙제 <b>${summary.hw}/${summary.total}</b></span>`
+        ? `<span class="cls-v4-pill apms-chip ap-classroom-chip">출석 <span class="ap-classroom-chip__value">${summary.att}/${summary.total}</span></span>
+           <span class="cls-v4-pill apms-chip ap-classroom-chip">숙제 <span class="ap-classroom-chip__value">${summary.hw}/${summary.total}</span></span>`
         : `<span class="cls-v4-pill warn apms-chip ap-classroom-chip">정규 수업일 아님</span>`;
 }
 
