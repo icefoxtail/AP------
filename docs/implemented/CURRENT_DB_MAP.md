@@ -80,3 +80,6 @@
 
 `schema.sql`에는 여러 migration의 결과가 합쳐져 있다. `migrations/20260515_wangji_foundation_phase1.sql`, `20260515_wangji_billing_accounting_foundation.sql`, `20260518_timetable_versions_foundation.sql`, `20260520_timetable_version_classes_foundation.sql`, `20260516_study_material_wrongs.sql` 등은 schema와 중복 또는 보강 관계다. 실제 원격 적용 여부는 이번 문서 작업에서 확인하지 않았다.
 
+## 7. 리포트 cohort 산출 기준
+
+리포트 통계 cohort는 schema 변경 없이 기존 `exam_sessions.archive_file`, `exam_sessions.exam_title`, `exam_sessions.exam_date`, `exam_sessions.question_count`, `students.grade`, `classes.grade`, `wrong_answers`를 사용한다. 최우선 기준은 같은 `archive_file`과 같은 학년이며, `archive_file`이 없으면 제목+날짜+문항 수, 제목+날짜 순서로 fallback한다.

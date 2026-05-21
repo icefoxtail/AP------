@@ -777,25 +777,67 @@ function reportCenterSameExamKey(session) {
     ].join('||');
 }
 
-function reportCenterGetSameExamSessions(session) {
-    if (!session) return [];
-    const title = String(session.exam_title || '').trim();
-    const date = String(session.exam_date || '').trim();
+function normalizeReportGrade(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    const compact = raw.replace(/\s+/g, '');
+    const middle = compact.match(/^(?:중|중등|중학교)?([123])(?:학년)?$/);
+    if (middle) return `중${middle[1]}`;
+    const high = compact.match(/^(?:고|고등|고등학교)([123])(?:학년)?$/);
+    if (high) return `고${high[1]}`;
+    return compact;
+}
+
+function reportCenterGetSessionGrade(session) {
+    const student = (state.db.students || []).find(s => String(s.id) === String(session?.student_id));
+    const studentGrade = normalizeReportGrade(student?.grade);
+    if (studentGrade) return studentGrade;
+    const classInfo = reportCenterGetStudentClass(session?.student_id);
+    return normalizeReportGrade(classInfo.cls?.grade);
+}
+
+function reportCenterGetExamIdentity(session) {
+    if (!session) return null;
     const archiveFile = String(session.archive_file || '').trim();
-    const qCount = Number(session.question_count || 0);
+    const examTitle = String(session.exam_title || '').trim();
+    const examDate = String(session.exam_date || '').trim();
+    const questionCount = Number(session.question_count || 0);
+    if (archiveFile) return { scope: 'grade_archive_exam', archiveFile };
+    if (examTitle && examDate && questionCount) return { scope: 'grade_title_date_question_count', examTitle, examDate, questionCount };
+    if (examTitle && examDate) return { scope: 'grade_title_date', examTitle, examDate };
+    return null;
+}
 
-    return (state.db.exam_sessions || []).filter(e => {
-        if (String(e.exam_title || '').trim() !== title) return false;
-        if (String(e.exam_date || '').trim() !== date) return false;
+function isSameReportExam(baseSession, candidateSession) {
+    const identity = reportCenterGetExamIdentity(baseSession);
+    if (!identity || !candidateSession) return false;
+    if (identity.scope === 'grade_archive_exam') {
+        return String(candidateSession.archive_file || '').trim() === identity.archiveFile;
+    }
+    if (String(candidateSession.exam_title || '').trim() !== identity.examTitle) return false;
+    if (String(candidateSession.exam_date || '').trim() !== identity.examDate) return false;
+    if (identity.scope === 'grade_title_date_question_count') {
+        return Number(candidateSession.question_count || 0) === identity.questionCount;
+    }
+    return true;
+}
 
-        const eArchiveFile = String(e.archive_file || '').trim();
-        if (archiveFile && eArchiveFile && eArchiveFile !== archiveFile) return false;
+function isValidReportScore(session) {
+    return Number.isFinite(Number(session?.score));
+}
 
-        const eQCount = Number(e.question_count || 0);
-        if (qCount && eQCount && eQCount !== qCount) return false;
-
-        return true;
+function buildGradeArchiveExamCohort(session) {
+    if (!session) return [];
+    const grade = reportCenterGetSessionGrade(session);
+    const cohort = (state.db.exam_sessions || []).filter(e => {
+        if (!isSameReportExam(session, e) || !isValidReportScore(e)) return false;
+        return !grade || reportCenterGetSessionGrade(e) === grade;
     });
+    return cohort.length ? cohort : (state.db.exam_sessions || []).filter(e => isSameReportExam(session, e) && isValidReportScore(e));
+}
+
+function reportCenterGetSameExamSessions(session) {
+    return buildGradeArchiveExamCohort(session);
 }
 
 function reportCenterGetClassExamSessions(session, classId) {
@@ -810,6 +852,39 @@ function reportCenterGetClassExamSessions(session, classId) {
 
 function reportCenterGetWrongSetBySession(sessionId) {
     return new Set(reportCenterGetWrongIds(sessionId).map(v => String(v)));
+}
+
+function calculateReportAverage(list) {
+    const nums = (list || []).map(e => Number(e.score)).filter(v => Number.isFinite(v));
+    return nums.length ? Math.round(nums.reduce((a, b) => a + b, 0) / nums.length) : null;
+}
+
+function calculateReportRank(session, list) {
+    const score = Number(session?.score);
+    if (!Number.isFinite(score)) return null;
+    const scores = (list || []).map(e => Number(e.score)).filter(v => Number.isFinite(v));
+    return scores.length ? scores.filter(v => v > score).length + 1 : null;
+}
+
+function buildReportCohortSummary(session, fallbackSessions = []) {
+    const serverSummary = (state.db.report_exam_cohort_stats || [])
+        .find(row => String(row.session_id) === String(session?.id));
+    if (serverSummary) {
+        return {
+            cohortScope: serverSummary.cohortScope || 'grade_archive_exam',
+            gradeExamAverage: Number.isFinite(Number(serverSummary.gradeExamAverage)) ? Number(serverSummary.gradeExamAverage) : null,
+            gradeExamRank: Number.isFinite(Number(serverSummary.gradeExamRank)) ? Number(serverSummary.gradeExamRank) : null,
+            gradeExamCount: Number(serverSummary.gradeExamCount || serverSummary.totalSubmitted || 0),
+            questionStats: Array.isArray(serverSummary.questionStats) ? serverSummary.questionStats : []
+        };
+    }
+    return {
+        cohortScope: reportCenterGetExamIdentity(session)?.scope || 'class_fallback',
+        gradeExamAverage: calculateReportAverage(fallbackSessions),
+        gradeExamRank: calculateReportRank(session, fallbackSessions),
+        gradeExamCount: (fallbackSessions || []).length,
+        questionStats: []
+    };
 }
 
 function reportCenterGetQuestionDifficultyLabel(correctRate) {
@@ -837,11 +912,15 @@ function reportCenterBuildQuestionStats(session) {
     const classInfo = reportCenterGetStudentClass(session.student_id);
     const allSessions = reportCenterGetSameExamSessions(session);
     const classSessions = reportCenterGetClassExamSessions(session, classInfo.classId);
+    const cohortSummary = buildReportCohortSummary(session, allSessions);
+    const serverQuestionStats = new Map((cohortSummary.questionStats || [])
+        .map(row => [String(row.questionNo), row]));
     const studentWrongSet = reportCenterGetWrongSetBySession(session.id);
     const qCount = Number(session.question_count || 0);
     const maxQuestionNo = qCount || Math.max(
         0,
         ...reportCenterGetWrongIds(session.id).map(v => Number(v) || 0),
+        ...(cohortSummary.questionStats || []).map(row => Number(row.questionNo) || 0),
         ...(state.db.wrong_answers || [])
             .filter(w => allSessions.some(e => String(e.id) === String(w.session_id)))
             .map(w => Number(w.question_id) || 0)
@@ -855,9 +934,13 @@ function reportCenterBuildQuestionStats(session) {
     const rows = [];
     for (let i = 1; i <= maxQuestionNo; i++) {
         const q = String(i);
-        const wrongCount = allWrongRows.filter(w => String(w.question_id) === q).length;
+        const serverQuestion = serverQuestionStats.get(q);
+        const localWrongCount = allWrongRows.filter(w => String(w.question_id) === q).length;
+        const wrongCount = serverQuestion ? Number(serverQuestion.wrongCount || 0) : localWrongCount;
         const classWrongCount = classWrongRows.filter(w => String(w.question_id) === q).length;
-        const correctRate = allSessions.length ? Math.round(((allSessions.length - wrongCount) / allSessions.length) * 100) : null;
+        const correctRate = serverQuestion && Number.isFinite(Number(serverQuestion.correctRate))
+            ? Number(serverQuestion.correctRate)
+            : (allSessions.length ? Math.round(((allSessions.length - wrongCount) / allSessions.length) * 100) : null);
         const classCorrectRate = classSessions.length ? Math.round(((classSessions.length - classWrongCount) / classSessions.length) * 100) : null;
         const bp = reportCenterFindBlueprint(session, i);
         const isStudentWrong = studentWrongSet.has(q);
@@ -882,19 +965,18 @@ function reportCenterBuildQuestionStats(session) {
         return acc;
     }, {});
 
-    const avg = list => {
-        const nums = list.map(e => Number(e.score)).filter(v => Number.isFinite(v));
-        return nums.length ? Math.round(nums.reduce((a, b) => a + b, 0) / nums.length) : null;
-    };
-
     return {
-        totalSessions: allSessions.length,
+        totalSessions: cohortSummary.gradeExamCount || allSessions.length,
         classSessions: classSessions.length,
         rows,
         wrongRows: rows.filter(r => r.isStudentWrong),
         bucket,
-        overallAvg: avg(allSessions),
-        classAvg: avg(classSessions),
+        overallAvg: cohortSummary.gradeExamAverage,
+        classAvg: calculateReportAverage(classSessions),
+        gradeExamAverage: cohortSummary.gradeExamAverage,
+        gradeExamRank: cohortSummary.gradeExamRank,
+        gradeExamCount: cohortSummary.gradeExamCount || allSessions.length,
+        cohortScope: cohortSummary.cohortScope,
         className: classInfo.className
     };
 }
@@ -1580,6 +1662,10 @@ function reportCenterBuildBaseReportDraft(studentId, sessionId, teacherMemo = ''
             recentAverage: recentAvg,
             overallAverage: stats.overallAvg,
             classAverage: stats.classAvg,
+            gradeExamAverage: stats.gradeExamAverage,
+            gradeExamRank: stats.gradeExamRank,
+            gradeExamCount: stats.gradeExamCount,
+            cohortScope: stats.cohortScope,
             totalSubmitted: stats.totalSessions,
             classSubmitted: stats.classSessions,
             wrongCount
@@ -1618,6 +1704,10 @@ function reportCenterBuildExamAiPayload(studentId, sessionId) {
             classSubmitted: stats.classSessions,
             overallAverage: stats.overallAvg,
             classAverage: stats.classAvg,
+            gradeExamAverage: stats.gradeExamAverage,
+            gradeExamRank: stats.gradeExamRank,
+            gradeExamCount: stats.gradeExamCount,
+            cohortScope: stats.cohortScope,
             className: stats.className
         },
         questionAnalysis: stats.rows,

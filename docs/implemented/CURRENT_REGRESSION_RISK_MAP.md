@@ -11,8 +11,8 @@
 | OMR 제출 완료 | 재수정/재제출 노출 | 일반 시험 OMR과 material-omr 정책 분리 |
 | archive MIXED | mixed engine 문항 매핑 실패 | `MIXED:{key}` 보존 |
 | report AI | 내부 표현이 학부모 문장에 노출 | fallback/provider 결과 정규화 |
+| report cohort | 같은 아카이브 시험지를 여러 반이 본 경우 통계가 담당반 기준으로 좁혀지거나 다중 반 연결 학생의 세션이 중복 집계됨 | `archive_file` + 같은 학년 전체 평균/등수/문항 정답률, `exam_sessions.id` 기준 dedupe, `classAverage` 별도 유지 |
 | billing | 금액 합계/거래/장부 불일치 | payments vs transactions vs cashbook 구분 |
 | timetable | 운영 데이터와 draft/staging 혼선 | `classes` 직접 훼손 금지, version tables 분리 |
 | UI 문구 | 현장 용어 변경 | 기존 버튼/화면명/문구 diff 확인 |
 | hidden foundation | 승인 없는 UI 노출 | `CURRENT_HIDDEN_FOUNDATION_MAP.md` 대조 |
-

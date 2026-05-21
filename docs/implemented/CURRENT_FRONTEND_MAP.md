@@ -33,3 +33,6 @@
 
 반 화면, 학생 포털, OMR, 플래너, 시간표, 리포트, 수납 foundation 화면은 기존 문구를 임의 변경하지 않는다. 특히 `숙제`, `OMR`, `제출 완료`, `중등부`, `고등부`, `전체 보기`, `내 반 보기` 같은 현장 용어는 보존한다.
 
+## 4. 리포트 통계 기준
+
+`report.js`의 평가 리포트 통계는 `report_exam_cohort_stats`가 있으면 같은 아카이브 시험지를 본 같은 학년 전체 summary를 우선 사용한다. summary가 없으면 frontend 보유 `exam_sessions`에서 `archive_file`, `exam_title + exam_date + question_count`, `exam_title + exam_date` 순서로 같은 시험을 식별하고 같은 학년 기준으로 fallback한다. `classAverage`는 별도 반 기준 값으로 유지한다.
