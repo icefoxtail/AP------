@@ -504,23 +504,51 @@ if (document.readyState === 'loading') {
 
 
 // ============================================================
-// [드로어 네비게이션] 아이콘 없는 텍스트 메뉴 + PC 미니 레일 겸용
+// [드로어 네비게이션] 아이콘형 섹션 메뉴 + PC 미니 레일 겸용
 // ============================================================
 function getDrawerRoleKey() {
     return (typeof state !== 'undefined' && state.auth && state.auth.role === 'admin') ? 'admin' : 'teacher';
 }
 
+const DRAWER_ICON_SVG = {
+    students: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M20 18c0-1.7-1.1-3.1-2.6-3.7"/><path d="M17 6.2a2.5 2.5 0 0 1 0 4.6"/></svg>',
+    class: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v15H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M7 4v15"/><path d="M10 8h6"/><path d="M10 12h5"/></svg>',
+    attendance: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2"/><path d="M15 4V2"/><path d="M9 12l2 2 4-4"/></svg>',
+    timetable: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M4 9h16"/><path d="M8 13h3"/><path d="M13 13h3"/><path d="M8 17h3"/></svg>',
+    journal: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v4h4"/><path d="M9 12h6"/><path d="M9 16h5"/></svg>',
+    memo: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v10H8l-3 3z"/><path d="M8 9h8"/><path d="M8 12h5"/></svg>',
+    schedule: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M5 10h14"/><path d="M9 14h3"/></svg>',
+    textbook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H19v15H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M7 4v15"/><path d="M10 8h5"/><path d="M10 12h6"/></svg>',
+    material: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7l8 4 8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg>',
+    clinic: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/><rect x="4" y="4" width="16" height="16" rx="4"/></svg>',
+    school: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 12 5l8 5-8 5z"/><path d="M7 12v5c2.8 1.7 7.2 1.7 10 0v-5"/></svg>',
+    exam: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h7l3 3v13H7z"/><path d="M14 4v4h4"/><path d="M9.5 13.5l1.5 1.5 3.5-4"/></svg>',
+    omr: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><circle cx="9" cy="9" r="1"/><circle cx="9" cy="13" r="1"/><circle cx="9" cy="17" r="1"/><path d="M12 9h4"/><path d="M12 13h4"/><path d="M12 17h4"/></svg>',
+    sync: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M18.5 9A7 7 0 0 0 6.7 6.4"/><path d="M5.5 15a7 7 0 0 0 11.8 2.6"/></svg>',
+    manual: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14H6.5A2.5 2.5 0 0 1 4 15.5z"/><path d="M8 8h8"/><path d="M8 12h7"/><path d="M8 16h6"/></svg>',
+    discharged: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M17 12h4"/></svg>',
+    logout: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4"/><path d="M14 8l4 4-4 4"/><path d="M18 12H9"/></svg>',
+    default: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/></svg>'
+};
+
+function drawerIcon(icon) {
+    const key = String(icon || '').trim();
+    return DRAWER_ICON_SVG[key] || DRAWER_ICON_SVG.default;
+}
+
 function drawerItem(icon, label, action, extraClass = '') {
-    const safeLabel = String(label || '');
+    const safeLabel = (typeof apEscapeHtml === 'function') ? apEscapeHtml(String(label || '')) : String(label || '');
+    const iconHtml = drawerIcon(icon);
     return `
         <button class="drw-item ${extraClass}" onclick="${action}">
+            <span class="drw-icon" aria-hidden="true">${iconHtml}</span>
             <span class="drw-label">${safeLabel}</span>
         </button>
     `;
 }
 
-function drawerSection() {
-    return '';
+function drawerSection(label) {
+    return `<div class="drw-section-label">${(typeof apEscapeHtml === 'function') ? apEscapeHtml(String(label || '')) : String(label || '')}</div>`;
 }
 
 function openManualCenter() {
@@ -543,32 +571,43 @@ function buildDrawerMenu(roleKey) {
 
     if (isAdminDrawer) {
         return `
-            ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
-            ${drawerItem('', '학급관리', "closeAppDrawer(); openClassManageModal();")}
-            ${drawerItem('', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
-            ${drawerItem('', '사용설명서', "closeAppDrawer(); openManualCenter();")}
+            ${drawerSection('학생 관리')}
+            ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
+            ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
+
+            ${drawerSection('운영')}
+            ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('discharged', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
+
+            ${drawerSection('지원')}
+            ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+            ${drawerItem('manual', '사용설명서', "closeAppDrawer(); openManualCenter();")}
         `;
     }
 
     return `
-        ${drawerItem('', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '일지', "closeAppDrawer(); openDailyJournalModal();")}
-        ${drawerItem('', '메모', "closeAppDrawer(); openTodoMemoModal();")}
-        ${drawerItem('', '학생관리', "closeAppDrawer(); openAddressBook();")}
-        ${drawerItem('', '학급관리', "closeAppDrawer(); openClassManageModal();")}
-        ${drawerItem('', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '교재관리', "closeAppDrawer(); if(typeof openTextbookManageModal==='function') openTextbookManageModal(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('school'); else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '시험성적', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('시험성적 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', 'OMR 입력', "closeAppDrawer(); if(typeof openOmrInput==='function') openOmrInput(); else toast('OMR 입력 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '퇴원생', "closeAppDrawer(); if(typeof openDischargedStudents==='function') openDischargedStudents(); else toast('퇴원생 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
-        ${drawerItem('', '사용설명서', "closeAppDrawer(); openManualCenter();")}
+        ${drawerSection('수업 관리')}
+        ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('journal', '일지', "closeAppDrawer(); openDailyJournalModal();")}
+        ${drawerItem('memo', '메모', "closeAppDrawer(); openTodoMemoModal();")}
+        ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
+        ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
+        ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
+
+        ${drawerSection('수업 자료')}
+        ${drawerItem('textbook', '교재관리', "closeAppDrawer(); if(typeof openTextbookManageModal==='function') openTextbookManageModal(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
+
+        ${drawerSection('평가')}
+        ${drawerItem('school', '학교성적', "closeAppDrawer(); if(typeof openSchoolExamLedger==='function') openSchoolExamLedger(); else if(typeof openCumulativeOpsModal==='function') openCumulativeOpsModal('school'); else toast('학교성적 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('exam', '시험성적', "closeAppDrawer(); if(typeof openGlobalExamGradeView==='function') openGlobalExamGradeView(); else toast('시험성적 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('omr', 'OMR 입력', "closeAppDrawer(); if(typeof openOmrInput==='function') openOmrInput(); else toast('OMR 입력 기능을 불러오지 못했습니다.', 'warn');")}
+
+        ${drawerSection('지원')}
+        ${drawerItem('sync', '시스템 동기화', "closeAppDrawer(); openOperationMenu();")}
+        ${drawerItem('manual', '사용설명서', "closeAppDrawer(); openManualCenter();")}
     `;
 }
 
@@ -1025,6 +1064,86 @@ function ensureDrawerStyle() {
             }
         }
 
+
+        /* ============================================================
+           [Sidebar Academy-style port v1]
+           - 기존 drawer 동작은 보존하고 메뉴 배열/아이콘/섹션만 정리
+           - 전역 CSS 수정 없음
+        ============================================================ */
+        #app-drawer .drw-menu {
+            padding-top:10px !important;
+            padding-bottom:12px !important;
+        }
+        #app-drawer .drw-section-label {
+            display:block !important;
+            padding:14px 16px 6px !important;
+            color:var(--secondary) !important;
+            font-size:11px !important;
+            font-weight:500 !important;
+            line-height:1.2 !important;
+            letter-spacing:-0.01em !important;
+            text-align:left !important;
+            opacity:.82 !important;
+        }
+        #app-drawer .drw-item {
+            gap:10px !important;
+            min-height:40px !important;
+            padding:9px 16px !important;
+            color:var(--text-soft) !important;
+            font-size:14px !important;
+            font-weight:500 !important;
+            line-height:1.25 !important;
+            border-radius:12px !important;
+            margin:2px 10px !important;
+            width:calc(100% - 20px) !important;
+            transition:background .16s ease, color .16s ease, transform .16s ease !important;
+        }
+        #app-drawer .drw-item:hover {
+            background:rgba(15,23,42,0.04) !important;
+            color:var(--text) !important;
+        }
+        body.dark #app-drawer .drw-item:hover {
+            background:rgba(255,255,255,0.07) !important;
+        }
+        #app-drawer .drw-item:active {
+            transform:scale(0.99) !important;
+        }
+        #app-drawer .drw-icon {
+            display:inline-flex !important;
+            align-items:center !important;
+            justify-content:center !important;
+            width:19px !important;
+            height:19px !important;
+            flex:0 0 19px !important;
+            color:currentColor !important;
+            opacity:.86 !important;
+        }
+        #app-drawer .drw-icon svg {
+            display:block !important;
+            width:19px !important;
+            height:19px !important;
+            fill:none !important;
+            stroke:currentColor !important;
+            stroke-width:1.8 !important;
+            stroke-linecap:round !important;
+            stroke-linejoin:round !important;
+        }
+        #app-drawer .drw-label {
+            flex:1 1 auto !important;
+            font-size:14px !important;
+            font-weight:500 !important;
+            line-height:1.25 !important;
+            color:inherit !important;
+        }
+        #app-drawer .drw-item.danger {
+            color:var(--secondary) !important;
+            font-weight:500 !important;
+        }
+        #app-drawer .drw-item.danger:hover {
+            color:var(--error) !important;
+            background:rgba(239,68,68,0.07) !important;
+        }
+
     `;
     document.head.appendChild(style);
 }
@@ -1062,7 +1181,7 @@ function renderAppDrawer(force = false) {
             </div>
             <div class="drw-spacer"></div>
             <div class="drw-footer">
-                ${drawerItem('', '로그아웃', "closeAppDrawer(); logout();", 'danger')}
+                ${drawerItem('logout', '로그아웃', "closeAppDrawer(); logout();", 'danger')}
             </div>
         </nav>
     `;
