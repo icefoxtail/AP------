@@ -685,7 +685,8 @@ function openAdminStudentList(type) {
             <button class="btn ${type === 'hidden' ? 'btn-primary' : ''}" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px;" onclick="openAdminStudentList('hidden')">숨김 학생</button>
         </div>
     ` : '';
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:400;">조회 대상이 없습니다.</div>`}</div>`);
+    const gradeSummary = (type === 'discharged' || type === 'active' || type === 'new') ? adminRenderStudentGradeSummary(list) : '';
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${gradeSummary}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:400;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 
@@ -1090,8 +1091,7 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     const roleAttr = onclick ? ' role="button" tabindex="0"' : '';
     return `
         <div class="ap-admin-mini-metric"${roleAttr}${clickAttr} style="${cursor} min-height:62px; padding:12px 10px; border-radius:16px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;">
-            <div class="ap-stat-value" style="font-size:18px; font-weight:500; color:${color}; line-height:1;">${value}</div>
-            <div style="font-size:11px; font-weight:400; color:var(--secondary); margin-top:6px; line-height:1.25; white-space:nowrap;">${label}</div>
+            <div style="font-size:13px; font-weight:500; color:${color}; line-height:1.25; white-space:nowrap;">${label}</div>
         </div>
     `;
 }
@@ -1207,6 +1207,25 @@ function adminGetStudentListByType(type) {
     if (type === 'leave') return students.filter(s => adminNormalizeStatus(s.status) === '휴원');
     if (type === 'discharged') return students.filter(s => adminNormalizeStatus(s.status) === '제적');
     return activeStudents.sort((a, b) => adminGetGradeOrder(adminGetGradeLabel(a)) - adminGetGradeOrder(adminGetGradeLabel(b)) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+}
+
+function adminRenderStudentGradeSummary(list) {
+    const students = Array.isArray(list) ? list : [];
+    const grades = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
+    const gradeCounts = {};
+    students.forEach(s => {
+        const grade = adminGetGradeLabel(s);
+        gradeCounts[grade] = (gradeCounts[grade] || 0) + 1;
+    });
+    const chips = [
+        `<span style="min-height:30px; padding:6px 10px; border-radius:999px; background:var(--primary-soft); color:var(--primary); font-size:12px; font-weight:500; display:flex; align-items:center;">총 ${students.length}명</span>`,
+        ...grades.map(g => {
+            const count = Number(gradeCounts[g] || 0);
+            if (count === 0) return '';
+            return `<span style="min-height:30px; padding:6px 10px; border-radius:999px; background:var(--surface); border:1px solid var(--border); color:var(--text); font-size:12px; font-weight:500; display:flex; align-items:center;">${apEscapeHtml(g)} ${count}명</span>`;
+        })
+    ].join('');
+    return `<div style="display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px 0;">${chips}</div>`;
 }
 
 function adminEnsureStudentGradeModalState(type) {
@@ -1478,7 +1497,7 @@ function renderAdminConsultationCenterBody(keyword) {
 
 function openAdminLeaveStudentList() {
     const list = (state.db.students || []).filter(s => adminNormalizeStatus(s.status) === '휴원');
-    renderAdminSimpleStudentList('휴원생 목록', list);
+    renderAdminSimpleStudentList('휴원생 목록', list, false, true);
 }
 
 function openAdminUnassignedStudentList() {
@@ -1522,7 +1541,7 @@ function openAdminTeacherlessClassList() {
     showModal(`담당 선생님 미지정 (${classes.length}개)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:500;">확인할 반이 없습니다.</div>`}</div>`);
 }
 
-function renderAdminSimpleStudentList(title, list, editable = false) {
+function renderAdminSimpleStudentList(title, list, editable = false, showGradeSummary = false) {
     const rows = list.map(s => {
         const cls = adminGetStudentClass(s.id);
         const classText = cls ? cls.name : '미배정';
@@ -1541,7 +1560,8 @@ function renderAdminSimpleStudentList(title, list, editable = false) {
         `;
     }).join('');
 
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:500;">조회 대상이 없습니다.</div>`}</div>`);
+    const gradeSummary = showGradeSummary ? adminRenderStudentGradeSummary(list) : '';
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${gradeSummary}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:500;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 
