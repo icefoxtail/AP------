@@ -1,542 +1,550 @@
-cd /mnt/c/Users/USER/Desktop/AP------
-cat > CODEX_TASK.md <<'EOF'
-# CODEX_TASK.md
+cd C:\Users\USER\Desktop\AP------
 
-## 0. 작업명
+@'
+# CODEX_TASK_03B_ASSET_CROP_QUALITY
 
-AP Math 운영 화면 인쇄 기능 1차: 시간표 + cumulative.js 월간/누적 출석부를 A4 가로 인쇄 전용 문서로 출력
+## 0. 작업 제목
 
----
+22개정 RPM 중학수학 2-1 교재형 JS아카이브 Round 3-B: assets crop 품질 검수·오탐 제거·재crop 보정 작업을 수행하라.
 
-## 1. 작업 위치
-
-반드시 아래 폴더를 프로젝트 루트로 사용한다.
-
-- /mnt/c/Users/USER/Desktop/AP------
-
-작업 시작 시 반드시 아래 명령으로 이동한다.
-
-- cd /mnt/c/Users/USER/Desktop/AP------
-
-반드시 아래 파일을 다시 열어 처음부터 끝까지 읽고 실행한다.
-
-- /mnt/c/Users/USER/Desktop/AP------/CODEX_TASK.md
-
-다른 위치의 CODEX_TASK.md를 읽거나 현재 셸의 임의 위치를 프로젝트 루트로 착각하지 않는다.
-
-프로젝트 루트 확인 기준:
-
-- apmath/ 가 있어야 한다.
-- apmath/js/timetable.js 가 있어야 한다.
-- apmath/js/cumulative.js 가 있어야 한다.
-- apmath/js/report.js 가 있어야 한다.
-
-위 조건이 맞지 않으면 작업하지 말고 /mnt/c/Users/USER/Desktop/AP------/CODEX_RESULT.md에 중단 사유를 기록한다.
+이번 작업은 Round 3에서 생성된 assets PNG와 crop reports를 품질 기준으로 재검토하는 작업이다.
+목표는 “PNG 개수 늘리기”가 아니라 “잘못 crop된 이미지 제거/분리 + 실제 도형/그래프/표만 assets로 유지 + pending 목록 정리”다.
 
 ---
 
-## 2. 작업 목적
+## 1. 작업 루트
 
-현재 시간표와 출석부를 종이로 출력하려면 화면용 UI 그대로 인쇄되어 A4에 맞지 않거나 가로 폭이 잘릴 수 있다.
+최상위 프로젝트 루트:
 
-이번 작업에서는 리포트 출력처럼 인쇄 전용 문서를 만들어 A4 가로 기준으로 깔끔하게 출력되도록 한다.
+C:\Users\USER\Desktop\AP------
 
-이번 작업의 출석부 대상은 classroom.js의 하루 출석부 모달이 아니다.
+WSL 기준:
 
-반드시 cumulative.js에 있는 월간/누적 출석부를 대상으로 한다.
+/mnt/c/Users/USER/Desktop/AP------
 
-1차 대상:
+작업 대상 루트:
 
-- 시간표: apmath/js/timetable.js
-- 월간/누적 출석부: apmath/js/cumulative.js
+C:\Users\USER\Desktop\AP------\archive\textbook
 
-목표:
+WSL 기준:
 
-- 시간표 화면에 인쇄 버튼 추가 또는 기존 적절한 위치에 최소 노출
-- cumulative.js 월간/누적 출석부 화면에 인쇄 버튼 추가 또는 기존 적절한 위치에 최소 노출
-- 인쇄 버튼 클릭 시 화면 DOM을 그대로 print하지 않고 인쇄 전용 HTML 생성
-- A4 landscape 기준 print CSS 적용
-- 버튼/필터/탭/사이드바/불필요 UI는 인쇄물에서 제외
-- 현재 화면에 보이는 조건을 기준으로 출력
-- 기존 데이터 저장/수정/삭제 로직은 변경하지 않음
-- 리포트 인쇄 구조는 참고만 하고 report.js 기능은 훼손하지 않음
+/mnt/c/Users/USER/Desktop/AP------/archive/textbook
+
+반드시 archive/textbook 안의 generated staging 산출물만 수정한다.
+기존 운영 archive 파일은 수정하지 않는다.
 
 ---
 
-## 3. 절대 금지 사항
+## 2. 현재 Round 3 결과 기준
 
-아래는 절대 금지한다.
+현재 Round 3 결과는 구조적으로 PASS였지만 crop 품질은 PARTIAL이다.
 
-- 기존 UI 문구, 버튼명, 화면명, 메뉴명 임의 변경 금지
-- 시간표 구조 전체 개편 금지
-- cumulative.js 출석부 구조 전체 개편 금지
-- classroom.js 하루 출석부 인쇄 기능으로 바꾸기 금지
-- 기존 리포트 인쇄 기능 훼손 금지
-- 출결/숙제 데이터 저장 로직 변경 금지
-- 시간표 데이터 저장/수정/삭제 로직 변경 금지
-- API 변경 금지
-- DB schema 변경 금지
-- migration 생성 금지
-- Worker route 변경 금지
-- hidden foundation UI 노출 금지
-- 원장/관리자 신규 기능 추가 금지
-- 학생 포털/OMR/archive/report AI 흐름 수정 금지
-- 수납/홈페이지 관련 코드 수정 금지
-- git add, git commit, git push 금지
-- 검수요청서 작성 금지
+기존 결과 요약:
 
-이번 작업은 프론트 인쇄 기능과 인쇄 전용 스타일 보정만 한다.
+- crop target 문항 수: 243
+- JS image 경로 보정 수: 243
+- 실제 PNG 생성 수: 99
+  - crop_success: 93
+  - crop_review_required: 6
+- no_visual_asset_found: 139
+- question_region_failed: 5
+- pending assets: 150
+- contact sheet: 5개
+- node --check: PASS
+- validate-rpm-assets: PASS
+- missingQuestionNumbers: 0
+- answer unchanged: true
+- content unchanged: true
+- tags unchanged: true
 
----
-
-## 4. 반드시 먼저 읽을 문서
-
-존재하는 경우 아래 문서를 먼저 읽는다.
-
-- docs/00_READ_ME_FIRST.md
-- docs/01_PROJECT_POLICY.md
-- docs/domains/TIMETABLE_DOMAIN.md
-- docs/domains/CLASSROOM_DOMAIN.md
-- docs/implemented/CURRENT_FRONTEND_MAP.md
-- docs/implemented/CURRENT_REGRESSION_RISK_MAP.md
-- docs/plans/TIMETABLE_NEXT_PLAN.md
-- docs/codex/00_CODEX_READ_ORDER.md
-
-문서가 없으면 CODEX_RESULT.md에 미존재로 기록하되, 작업은 현재 코드 기준으로 진행한다.
-
-이번 작업 후 관련 문서가 존재하면 필요한 범위만 업데이트한다.
+이번 작업은 위 구조를 깨지 말고 crop 품질만 보정한다.
 
 ---
 
-## 5. 반드시 확인할 코드
+## 3. 절대 변경 금지
 
-아래 파일은 반드시 실제로 열어 확인한다.
+아래 항목은 절대 변경하지 마라.
 
-- apmath/js/timetable.js
-- apmath/js/cumulative.js
-- apmath/js/report.js
-- apmath/js/core.js
-- apmath/index.html
+- generated/js의 문항 id
+- question_id
+- sourceQuestionNo
+- questionBank 문항 수
+- 단원별 JS 파일 수
+- window.examTitle
+- 발문/content
+- choices
+- answer
+- answerType
+- structuredAnswer 관련 reports
+- tags
+- standardUnitKey
+- 단원 분류
+- 정답 관련 reports의 의미
+- 기존 운영 archive 파일
+- 기존 운영 assets 파일
+- rules 문서
+- Worker/API/DB 파일
+- git add
+- git commit
+- git push
 
-필요하면 확인한다.
+이번 라운드에서 수정 가능한 것은 아래뿐이다.
 
-- apmath/js/classroom.js
-
-단, classroom.js는 참고만 한다. 이번 출석부 인쇄 대상은 cumulative.js다.
-
----
-
-## 6. 현재 상태 확인 항목
-
-작업 전에 반드시 아래 내용을 확인한다.
-
-### 6.1 timetable.js
-
-확인할 것:
-
-- renderTimetable 함수
-- renderTimetableGrid 함수
-- _renderMiddleGrid 또는 중등부 시간표 렌더 함수
-- _renderHighGrid 또는 고등부 시간표 렌더 함수
-- 현재 section/mode 상태
-- 중등부/고등부 탭 상태
-- 전체 보기/내 반 보기 상태
-- 시간표 표 DOM 구조
-- 인쇄 버튼을 넣을 수 있는 상단 toolbar 위치
-- 기존 table/sticky/overflow 구조
-- 현재 보이는 시간표 기준 데이터를 어떻게 얻는지
-
-### 6.2 cumulative.js
-
-확인할 것:
-
-- 월간/누적 출석부를 렌더링하는 함수
-- 현재 월/기간 상태값
-- 반 필터 또는 학급 선택 상태값
-- 학생별 출석 데이터 구조
-- 날짜별 상태 표시 방식
-- 도트 색상/상태값 의미
-- 숙제/출석 이행률 또는 월 이행률 계산 여부
-- 현재 화면에 인쇄 버튼을 넣을 수 있는 위치
-- 현재 화면에 보이는 월간/누적 출석부 기준 데이터를 어떻게 얻는지
-
-### 6.3 report.js
-
-확인할 것:
-
-- reportCenterOpenPrintView
-- reportCenterBuildPrintDocument
-- reportCenterPrintCleanPdf
-- reportCenterInjectPrintViewStyle
-- @media print 사용 방식
-- window.print 사용 방식
-
-report.js의 함수 자체를 무리하게 공용화하지 않는다.
-구조와 스타일 방향만 참고한다.
+- generated/assets/rpm_m2_1_2022 안의 잘못된 crop PNG 삭제 또는 quarantine 이동
+- generated/assets/rpm_m2_1_2022 안의 실제 시각요소 PNG 재생성
+- generated/js 안의 image/assets 경로를 pending 상태에 맞게 유지 또는 필요한 경우 제거/보정
+- generated/reports 안의 crop/assets 관련 reports 생성 또는 갱신
+- tools 안의 crop 품질 검수/재crop 보조 스크립트 생성 또는 수정
+- CODEX_RESULT.md에 Round 3-B 결과 추가
 
 ---
 
-## 7. 구현 방향
+## 4. 핵심 판정 원칙
 
-이번 작업은 화면 DOM을 그대로 인쇄하지 않는다.
+이번 Round 3-B의 품질 기준은 다음이다.
 
-반드시 아래 구조 중 하나로 구현한다.
+최종 assets PNG는 문항 전체 crop이 아니고 페이지 crop도 아니다.
+문항 안에 포함된 시각 요소만 crop해야 한다.
 
-1. 새 창 또는 인쇄 전용 document 생성
-2. 인쇄 전용 HTML 문자열 생성
-3. A4 landscape 전용 CSS 포함
-4. document write 또는 전용 print container 사용
-5. window.print 실행
-6. 인쇄 후 창 닫기 또는 기존 화면 복귀
+시각 요소로 인정:
 
-기존 화면용 DOM에 @media print만 붙여서 억지로 찍는 방식은 피한다.
-단, 보조적으로 print CSS를 사용할 수는 있다.
+- 도형
+- 그래프
+- 좌표평면
+- 표
+- 그림
+- 수직선
+- 빈칸이 포함된 도식
+- 입체도형
+- 색칠 영역
+- 기하 그림
+- 자료 해석용 표/그림
+- 식만으로 복원하기 어려운 배치형 그림
 
----
+시각 요소로 인정하지 않음:
 
-## 8. 시간표 인쇄 요구사항
-
-### 8.1 출력 기준
-
-시간표 인쇄는 현재 화면에서 사용자가 보고 있는 조건을 기준으로 한다.
-
-예:
-
-- 중등부 또는 고등부
-- 전체 보기 또는 내 반 보기
-- 현재 선택된 모드/필터
-- 현재 렌더링된 시간표 표
-
-1차에서는 새로운 상세 출력 옵션을 만들지 않는다.
-
-금지:
-
-- 전체/강사별/과목별/대상별/교실별/반별/지점별 같은 view 버튼을 새로 많이 만들지 않는다.
-- 기존 시간표 보기 구조를 바꾸지 않는다.
-- 시간표 데이터 수정/저장 로직을 건드리지 않는다.
-
-### 8.2 출력물 구조
-
-시간표 출력물은 A4 가로 기준으로 아래 구조를 가진다.
-
-- 상단 제목: AP Math 시간표
-- 기준: 중등부/고등부, 전체 보기/내 반 보기 등 현재 조건
-- 출력일
-- 시간표 표
-- 필요하면 하단 작은 메모/확인란
-
-표는 종이에 잘 보이도록 한다.
-
-- A4 landscape
-- 여백 작게
-- 글자 크기 적절히 축소
-- 표 경계선 선명
-- 배경색은 너무 진하지 않게
-- 화면용 sticky/overflow 제거
-- 가로 잘림 방지
-
-### 8.3 시간표 버튼 위치
-
-기존 상단 toolbar 또는 시간표 제목 근처에 인쇄 버튼을 최소 추가한다.
-
-버튼 문구는 기존 문구와 충돌하지 않게 단순하게 한다.
-
-권장:
-
-- 인쇄
-
-이미 기존 프린트 관련 버튼 문구가 있으면 그 문구 체계를 따른다.
+- 문항 번호만 crop된 이미지
+- 단원 라벨만 crop된 이미지
+- “대표문제”, “꼭 풀어보기”, “RPM 비법 노트” 같은 라벨만 crop된 이미지
+- 답 아이콘만 crop된 이미지
+- 채점 기준표만 있는 이미지
+- 텍스트 발문 전체 crop
+- 풀이 과정 전체 crop
+- 페이지 상단/하단 장식
+- 거의 빈 흰 이미지
+- 페이지 전체에 가까운 넓은 crop
+- 좌우 페이지 일부가 통째로 들어간 crop
 
 ---
 
-## 9. cumulative.js 월간/누적 출석부 인쇄 요구사항
+## 5. 반드시 먼저 확인할 파일
 
-### 9.1 출력 기준
+작업 시작 후 아래 파일들을 먼저 확인하라.
 
-출석부 인쇄는 반드시 cumulative.js에 있는 월간/누적 출석부를 대상으로 한다.
+- generated/reports/crop_contact_sheet_index.json
+- generated/reports/crop_contact_sheets/*.png
+- generated/reports/crop_result_report.json
+- generated/reports/crop_pending_assets.json
+- generated/reports/asset_file_existence_report.json
+- generated/reports/js_asset_path_report.json
+- generated/reports/asset_validation_report.json
+- generated/reports/asset_tagged_questions.json
+- generated/js/*.js
+- generated/assets/rpm_m2_1_2022/*.png
 
-1차 기준:
+contact sheet 이미지를 기준으로 사람이 보기에도 이상한 crop 후보를 우선 분리하라.
 
-- 현재 화면에 보이는 월/기간
-- 현재 선택된 반/필터
-- 현재 화면에 보이는 학생 목록
-- 현재 화면에 보이는 날짜별 출석 상태
-- 현재 화면에 보이는 출석/숙제/이행률 정보가 있으면 포함
+이미 확인된 의심 후보는 반드시 재검토하라.
 
-classroom.js의 하루 출석부 모달을 대상으로 하지 않는다.
+- q054
+- q118
+- q772
+- q803
+- q807
+- q865
+- q888
+- q940
 
-### 9.2 출력물 구조
-
-출석부 출력물은 A4 가로 기준으로 아래 구조를 가진다.
-
-- 상단 제목: AP Math 출석부
-- 기준 월 또는 기간
-- 반 또는 필터명
-- 출력일
-- 월간/누적 출석부 표
-
-표 예시:
-
-- 번호
-- 학생명
-- 학교 또는 학년
-- 1일, 2일, 3일 ... 말일
-- 출석/지각/결석/보강/기타 요약
-- 숙제 또는 월 이행률이 현재 화면에 있으면 요약
-- 비고 또는 메모 칸
-
-현재 cumulative.js 화면이 날짜별 도트 방식이면 인쇄물에서도 도트/기호를 유지하거나, 종이에서 잘 보이는 문자 기호로 변환한다.
-
-권장 기호 예:
-
-- 출석: O
-- 결석: X
-- 지각: △
-- 보강 또는 특이 상태: 표시 가능한 기존 상태값 유지
-- 미기록: 빈칸 또는 -
-
-단, 기존 상태 의미를 임의로 바꾸지 않는다.
-현재 cumulative.js에 정의된 상태/색상/라벨 의미를 먼저 확인하고, 그 기준을 따른다.
-
-### 9.3 출력 품질
-
-- A4 landscape
-- 날짜 칸이 많으므로 글자 크기를 적절히 줄인다.
-- 학생명은 너무 작아지지 않게 한다.
-- 날짜 칸은 균등 폭으로 잡는다.
-- 표 경계선은 선명하게 한다.
-- 배경색이 인쇄에서 흐려져도 상태를 알 수 있게 기호 또는 텍스트를 함께 둔다.
-- 긴 학교명/반명은 줄바꿈 또는 축약되더라도 표가 깨지지 않게 한다.
-
-### 9.4 출석부 버튼 위치
-
-cumulative.js 월간/누적 출석부 화면의 상단 조작 영역 근처에 인쇄 버튼을 최소 추가한다.
-
-버튼 문구는 단순하게 한다.
-
-권장:
-
-- 인쇄
-
-새로운 복잡한 옵션 버튼은 추가하지 않는다.
+위 목록은 확정 삭제 목록이 아니라 “우선 재검토 대상”이다.
+실제 파일을 열어 보고 판단하라.
 
 ---
 
-## 10. 인쇄 공통 helper
+## 6. Round 3-B 산출물 폴더
 
-중복을 줄이기 위해 파일별로 필요한 최소 helper를 만들 수 있다.
+아래 폴더를 생성하라.
 
-가능한 helper 역할:
+generated/reports/crop_quality_review
+generated/reports/crop_quality_review/bad_crop
+generated/reports/crop_quality_review/borderline_crop
+generated/reports/crop_quality_review/good_crop
+generated/reports/crop_quality_review/retry_needed
+generated/reports/crop_quality_review/contact_sheets
 
-- HTML escape
-- 날짜 포맷
-- 출력일 생성
-- 새 창 print document 생성
-- A4 landscape CSS 생성
+잘못된 crop PNG를 바로 삭제하지 말고, 먼저 아래 quarantine 폴더에 복사 또는 이동하라.
 
-단, 프로젝트 전체 공용 helper로 무리하게 빼지 않는다.
-이번 작업은 timetable.js와 cumulative.js 내부에서 최소 변경하는 것을 우선한다.
+generated/reports/crop_quality_review/bad_crop
+
+운영용 generated/assets/rpm_m2_1_2022에서 제거하는 경우에도 bad_crop에 원본 사본을 남겨라.
+
+---
+
+## 7. crop 품질 검수 절차
+
+아래 순서로 수행하라.
+
+1. generated/assets/rpm_m2_1_2022/*.png 전체 목록을 만든다.
+2. 각 PNG의 실제 이미지 크기, 평균 밝기, 비어 있는 정도, bounding box 비율을 계산한다.
+3. crop_result_report.json의 bbox/status와 대조한다.
+4. contact sheet를 기준으로 사람이 보기에도 시각 요소인지 판정한다.
+5. 아래 상태로 재분류한다.
+
+상태값:
+
+- crop_quality_pass
+- crop_quality_review
+- crop_quality_fail_label_only
+- crop_quality_fail_number_only
+- crop_quality_fail_text_only
+- crop_quality_fail_page_region
+- crop_quality_fail_empty
+- crop_quality_retry_needed
+- crop_quality_pending
+
+상태 설명:
+
+crop_quality_pass:
+실제 도형/그래프/표/그림이 잘 crop되어 있음.
+
+crop_quality_review:
+시각 요소는 있으나 경계가 애매하거나 텍스트가 조금 섞임.
+
+crop_quality_fail_label_only:
+단원명, 대표문제, 비법노트 등 라벨만 들어감.
+
+crop_quality_fail_number_only:
+문항 번호 또는 답 아이콘만 들어감.
+
+crop_quality_fail_text_only:
+텍스트 발문/풀이만 들어감.
+
+crop_quality_fail_page_region:
+문항 전체나 페이지 일부가 너무 넓게 들어감.
+
+crop_quality_fail_empty:
+거의 빈 이미지.
+
+crop_quality_retry_needed:
+시각 요소가 있어 보이지만 현재 crop은 실패했으므로 재crop 필요.
+
+crop_quality_pending:
+현재 실제 PNG가 없고 pending 목록에 있는 상태.
+
+---
+
+## 8. 잘못된 crop 처리 원칙
+
+잘못된 crop으로 판정된 PNG는 아래처럼 처리한다.
+
+1. generated/reports/crop_quality_review/bad_crop에 백업한다.
+2. generated/assets/rpm_m2_1_2022에서는 제거한다.
+3. 해당 문항은 generated/reports/crop_pending_assets.json에 다시 추가하거나 상태를 pending으로 갱신한다.
+4. JS의 assets/image 경로는 다음 기준에 따라 처리한다.
+
+JS assets/image 경로 처리 기준:
+
+- 시각 요소가 확실히 있는 문항인데 crop만 실패한 경우:
+  JS assets 경로는 유지한다.
+  pending_assets에 기록한다.
+
+- 실제로 시각 요소가 없는 것으로 판정된 문항:
+  JS assets 경로를 제거한다.
+  단, 이미지/표/도형 태그가 있으면 태그와 reports도 함께 검토해 “no_visual_asset_confirmed”로 기록한다.
+  태그 자체는 이번 라운드에서 함부로 삭제하지 말고 reports에 보정 필요로 남긴다.
+
+- 라벨/번호만 잘못 crop된 경우:
+  JS assets 경로는 유지할지 제거할지 문항에 실제 시각 요소가 있는지 판단 후 결정한다.
+  실제 시각 요소가 있다면 재crop 시도.
+  실제 시각 요소가 없으면 JS 경로 제거 또는 pending 제거.
 
 주의:
-
-- report.js 공용 함수를 직접 의존하게 만들지 않는다.
-- core.js를 수정해야 할 경우 반드시 필요한 최소 범위로 제한한다.
-- 전역 이름 충돌을 피한다.
-- 기존 함수명과 충돌하지 않는다.
+JS 경로를 제거하면 asset_file_existence_report와 js_asset_path_report를 반드시 갱신해야 한다.
 
 ---
 
-## 11. 인쇄 CSS 기준
+## 9. 재crop 시도 기준
 
-인쇄 전용 HTML에는 다음 기준을 포함한다.
+아래 경우는 재crop을 시도하라.
 
-- @page size: A4 landscape
-- margin: 8mm 또는 10mm 수준
-- body font-family는 기존 화면과 크게 다르지 않은 sans-serif
-- table border-collapse: collapse
-- th, td border 적용
-- thead 반복 가능하면 고려
-- page-break-inside avoid 가능한 곳에 적용
-- 버튼/필터/입력 UI 미포함
-- 배경색에 의존하지 않고 텍스트/기호로 상태 판별 가능
+- 기존 crop이 번호/라벨만 잡았지만 같은 문항 영역 안에 도형/표/그래프가 있을 가능성이 있음
+- crop_result_report에서 bbox가 너무 작거나 문항번호 근처에만 있음
+- contact sheet에서 crop이 좁게 잘린 것으로 보임
+- pending 문항 중 sourcePage가 확정되어 있고 시각 요소 관련 tag가 있음
 
----
+재crop 방식:
 
-## 12. 문서 업데이트
+1. 문제 PDF의 해당 sourcePage를 렌더링한다.
+2. 해당 문항 번호 위치를 찾는다.
+3. 다음 문항 번호 전까지 문항 영역을 잡는다.
+4. 문항 영역 내부에서 시각 요소 후보를 다시 탐지한다.
+5. 텍스트 줄만 있는 영역은 제외한다.
+6. 도형/표/그래프 후보만 여백 8~24px 포함해 crop한다.
+7. qNNN.png 또는 qNNN_2.png로 저장한다.
+8. 재crop 결과를 crop_quality_review_report.json에 기록한다.
 
-관련 문서가 존재하면 필요한 범위만 업데이트한다.
-
-업데이트 후보:
-
-- docs/domains/TIMETABLE_DOMAIN.md
-- docs/domains/CLASSROOM_DOMAIN.md
-- docs/implemented/CURRENT_FRONTEND_MAP.md
-- docs/implemented/CURRENT_REGRESSION_RISK_MAP.md
-- docs/plans/TIMETABLE_NEXT_PLAN.md
-
-업데이트 내용:
-
-- 시간표 A4 가로 인쇄 기능 추가
-- cumulative.js 월간/누적 출석부 A4 가로 인쇄 기능 추가
-- classroom.js 하루 출석부는 이번 범위가 아님
-- 인쇄 전용 HTML 방식
-- 기존 화면 UI/저장 로직 미변경
-- 회귀 위험: 화면 DOM 직접 print 금지, 저장 로직 변경 금지, 상태 기호 의미 변경 금지
-
-문서가 없으면 생성하지 말고 CODEX_RESULT.md에 미존재로 기록한다.
-단, docs 구조가 존재하면 위 문서는 최대한 업데이트한다.
+재crop이 불가능하면 pending으로 남겨라.
+절대 빈 PNG나 가짜 PNG를 만들지 마라.
 
 ---
 
-## 13. 검증 기준
+## 10. pending 150개 재검토
 
-반드시 아래를 확인한다.
+현재 pending assets 150개를 모두 재검토하라.
 
-### 13.1 시간표
+목표는 pending을 무조건 줄이는 것이 아니다.
+목표는 pending의 이유를 명확히 하는 것이다.
 
-- 시간표 화면에 인쇄 버튼이 보인다.
-- 버튼 클릭 시 인쇄 전용 화면 또는 인쇄 창이 열린다.
-- A4 가로 기준으로 출력된다.
-- 현재 선택된 중등부/고등부/전체/내 반 조건이 출력물에 반영된다.
-- 표가 가로로 잘리지 않는다.
-- 버튼/필터/사이드바가 출력물에 들어가지 않는다.
-- 기존 시간표 수정/저장/탭 전환은 그대로 동작한다.
+pending 재분류 상태:
 
-### 13.2 cumulative.js 출석부
+- pending_manual_crop_needed
+- pending_no_visual_asset_confirmed
+- pending_page_region_failed
+- pending_tool_limit
+- pending_low_confidence
+- pending_should_retry_later
 
-- cumulative.js 월간/누적 출석부 화면에 인쇄 버튼이 보인다.
-- 버튼 클릭 시 인쇄 전용 화면 또는 인쇄 창이 열린다.
-- A4 가로 기준으로 출력된다.
-- 현재 월/기간/반/필터가 출력물에 반영된다.
-- 날짜별 출석 상태가 종이에서 구분 가능하다.
-- 학생명/날짜/상태/요약이 잘리지 않는다.
-- classroom.js 하루 출석부가 아니라 cumulative.js 기준이다.
-- 기존 출석 데이터 저장/수정 로직은 변경되지 않는다.
+각 pending 항목에 다음을 기록하라.
 
-### 13.3 공통
+- questionId
+- sourceQuestionNo
+- sourcePage
+- expectedAssetPath
+- previousReason
+- newPendingStatus
+- hasVisualTag
+- hasJsAssetPath
+- suggestedAction
 
-- report.js 기존 리포트 인쇄가 깨지지 않는다.
-- UI 문구/버튼명/화면명 임의 변경 없음
-- Worker/API/DB 변경 없음
-- 학생 포털/OMR/archive/report AI 미수정
-- 수납/홈페이지 미수정
+저장 파일:
 
----
-
-## 14. 검증 명령
-
-작업 후 아래 명령을 실행한다.
-
-- cd /mnt/c/Users/USER/Desktop/AP------
-- node --check apmath/js/timetable.js
-- node --check apmath/js/cumulative.js
-- node --check apmath/js/report.js
-- git status --short
-- git diff --name-only
-
-core.js를 수정했다면 추가로 실행한다.
-
-- node --check apmath/js/core.js
-
-다른 JS 파일을 수정했다면 해당 파일도 node --check를 실행한다.
-
-브라우저 실제 인쇄 미리보기는 사용자가 직접 확인할 수 있도록 CODEX_RESULT.md에 수동 확인 항목으로 남긴다.
+generated/reports/crop_pending_assets.json
+generated/reports/crop_pending_assets_review.json
 
 ---
 
-## 15. CODEX_RESULT.md 작성
+## 11. JS assets 경로 재검증
 
-작업 완료 후 반드시 아래 위치에 결과를 작성한다.
+품질 보정 후 아래를 다시 검증하라.
 
-- /mnt/c/Users/USER/Desktop/AP------/CODEX_RESULT.md
+1. JS에 assets/rpm_m2_1_2022/qNNN.png 경로가 있는 문항 목록
+2. 실제 generated/assets/rpm_m2_1_2022/qNNN.png 파일 목록
+3. pending assets 목록
+4. bad_crop으로 이동된 목록
+5. no_visual_asset_confirmed 목록
 
-형식:
+판정 기준:
 
-# CODEX_RESULT
+- JS 경로 있음 + 실제 PNG 있음 = PASS
+- JS 경로 있음 + 실제 PNG 없음 + pending 있음 = PENDING
+- JS 경로 있음 + 실제 PNG 없음 + pending 없음 = FAIL
+- 실제 PNG 있음 + JS 경로 없음 = FAIL
+- no_visual_asset_confirmed인데 JS 경로 있음 = REVIEW 또는 FAIL
+- bad_crop으로 이동했는데 JS 경로가 남고 pending 없음 = FAIL
 
-## 1. 생성/수정 파일
-- 수정한 코드 파일
-- 수정한 문서 파일
-- 새 테스트 파일 여부
-- DB/migration 변경 여부
-- Worker/API 변경 여부
+갱신할 파일:
 
-## 2. 구현 완료 또는 확인 완료
-- 시간표 A4 가로 인쇄 기능
-- cumulative.js 월간/누적 출석부 A4 가로 인쇄 기능
-- classroom.js 하루 출석부는 이번 작업 대상이 아님 확인
-- 리포트 인쇄 방식 참고 여부
-- 인쇄 전용 HTML 방식 적용 여부
-- 기존 화면 UI/저장 로직 보존 여부
-
-## 3. 실행 결과
-- node --check apmath/js/timetable.js
-- node --check apmath/js/cumulative.js
-- node --check apmath/js/report.js
-- node --check apmath/js/core.js 실행 여부
-- git status --short
-- git diff --name-only
-
-## 4. 결과 요약
-- 시간표 인쇄가 어떻게 동작하는지
-- cumulative.js 출석부 인쇄가 어떻게 동작하는지
-- A4 가로 출력 기준
-- 기존 기능 보존 내용
-
-## 5. 다음 조치
-- 브라우저에서 확인할 항목
-- 실제 인쇄 미리보기 확인 항목
-- 2차로 고려할 항목
-
-## 6. 실제로 읽은 문서/코드
-- 읽은 docs
-- 읽은 frontend 파일
-- 참고한 report.js 인쇄 함수
-
-## 7. 회귀 방지 확인
-- UI 문구 변경 여부
-- 기존 시간표 저장/수정 로직 변경 여부
-- 기존 cumulative 출석 데이터 로직 변경 여부
-- classroom.js 하루 출석부 미대상 확인
-- report.js 기존 리포트 인쇄 보존 여부
-- Worker/API/DB 미수정 여부
-- 학생 포털/OMR/archive/report AI 미수정 여부
-- 수납/홈페이지 미수정 여부
-- git add/commit/push 미실행 여부
+generated/reports/asset_file_existence_report.json
+generated/reports/js_asset_path_report.json
+generated/reports/asset_validation_report.json
 
 ---
 
-## 16. 작업 완료 전 자기검증
+## 12. contact sheet 재생성
 
-완료 전 아래를 스스로 확인한다.
+Round 3-B 결과 기준으로 contact sheet를 다시 생성하라.
 
-- /mnt/c/Users/USER/Desktop/AP------에서 작업했는가?
-- /mnt/c/Users/USER/Desktop/AP------/CODEX_TASK.md를 읽었는가?
-- 시간표 인쇄 대상이 timetable.js인가?
-- 출석부 인쇄 대상이 cumulative.js인가?
-- classroom.js 하루 출석부를 잘못 대상으로 삼지 않았는가?
-- 화면 DOM을 그대로 print하지 않고 인쇄 전용 HTML을 만들었는가?
-- A4 landscape 기준이 들어갔는가?
-- 버튼/필터/사이드바가 인쇄물에 포함되지 않는가?
-- 기존 시간표 저장/수정 로직을 건드리지 않았는가?
-- 기존 cumulative 출석 데이터 로직을 건드리지 않았는가?
-- report.js 기존 리포트 인쇄가 깨지지 않는가?
-- Worker/API/DB를 수정하지 않았는가?
-- node --check를 수정 파일에 실행했는가?
-- CODEX_RESULT.md를 작성했는가?
-- git add/commit/push를 하지 않았는가?
+생성 위치:
+
+generated/reports/crop_quality_review/contact_sheets
+
+필수 contact sheet:
+
+1. crop_quality_pass만 모은 sheet
+2. crop_quality_review만 모은 sheet
+3. crop_quality_fail/bad_crop만 모은 sheet
+4. retry_needed만 모은 sheet
+5. pending 대표 목록 sheet 또는 index
+
+각 썸네일에는 최소 아래 텍스트가 보여야 한다.
+
+- q번호
+- status
+- 파일명
+
+contact sheet 생성이 어렵다면 crop_quality_contact_sheet_index.json에 대신 목록을 남기고 CODEX_RESULT.md에 사유를 적어라.
 
 ---
 
-## 17. 최종 지시
+## 13. 생성/갱신해야 할 reports
 
-아래 명령으로 지정 폴더로 이동한 뒤, 그 폴더의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라.
+이번 Round 3-B에서 반드시 생성 또는 갱신할 파일:
 
-- cd /mnt/c/Users/USER/Desktop/AP------
-- cat CODEX_TASK.md
+- generated/reports/crop_quality_review_report.json
+- generated/reports/crop_quality_summary.json
+- generated/reports/crop_pending_assets_review.json
+- generated/reports/crop_pending_assets.json
+- generated/reports/crop_result_report.json
+- generated/reports/asset_file_existence_report.json
+- generated/reports/js_asset_path_report.json
+- generated/reports/asset_validation_report.json
+- generated/reports/crop_quality_contact_sheet_index.json
+- generated/reports/crop_quality_review/contact_sheets/*.png
+- generated/reports/crop_quality_review/bad_crop/*
+- CODEX_RESULT.md
 
-다른 위치의 작업 결과로 대체하지 마라.
+가능하면 tools/crop-rpm-assets.mjs를 보정하거나, 별도 파일을 만든다.
 
-이번 작업은 시간표와 cumulative.js 월간/누적 출석부를 리포트처럼 A4 가로 인쇄 전용 문서로 출력하는 1차 작업이다.
+허용 파일:
 
-EOF
+tools/review-rpm-crop-quality.mjs
+tools/validate-rpm-assets.mjs
+
+---
+
+## 14. 보조 검증 스크립트
+
+아래 스크립트를 작성하거나 갱신하라.
+
+tools/review-rpm-crop-quality.mjs
+
+역할:
+
+- 실제 PNG 목록 스캔
+- crop_result_report 대조
+- 이미지 크기/빈 이미지/라벨성 crop 후보 탐지
+- manual suspicious list 반영
+- bad_crop quarantine 처리
+- pending 갱신
+- contact sheet 생성
+- crop_quality reports 생성
+
+아래 스크립트도 갱신 가능하다.
+
+tools/validate-rpm-assets.mjs
+
+검증 항목:
+
+- JS assets path 수
+- 실제 PNG 수
+- pending 수
+- bad crop 수
+- no visual confirmed 수
+- missing actual without pending 수
+- actual without JS reference 수
+- visual-tagged without assets path 수
+- node --check 결과
+
+---
+
+## 15. 실행 명령
+
+작업 대상 루트에서 실행한다.
+
+cd /mnt/c/Users/USER/Desktop/AP------/archive/textbook
+
+예상 실행:
+
+node tools/review-rpm-crop-quality.mjs
+node tools/validate-rpm-assets.mjs
+
+node --check generated/js/rpm_m2_1_2022_u01.js
+node --check generated/js/rpm_m2_1_2022_u02.js
+node --check generated/js/rpm_m2_1_2022_u03.js
+node --check generated/js/rpm_m2_1_2022_u04.js
+node --check generated/js/rpm_m2_1_2022_u05.js
+node --check generated/js/rpm_m2_1_2022_u06.js
+node --check generated/js/rpm_m2_1_2022_u07.js
+node --check generated/js/rpm_m2_1_2022_u08.js
+node --check generated/js/rpm_m2_1_2022_u09.js
+node --check generated/js/rpm_m2_1_2022_u10.js
+
+---
+
+## 16. CODEX_RESULT.md 추가 보고 형식
+
+작업 완료 후 archive/textbook/CODEX_RESULT.md에 아래 섹션을 추가하라.
+
+## Round 3-B crop quality review
+
+- 작업 범위:
+- 기존 실제 PNG 수:
+- 품질 검수 대상 PNG 수:
+- crop_quality_pass 수:
+- crop_quality_review 수:
+- crop_quality_fail 수:
+- bad_crop 이동 수:
+- 재crop 시도 수:
+- 재crop 성공 수:
+- pending 기존 수:
+- pending 갱신 후 수:
+- no_visual_asset_confirmed 수:
+- JS assets 경로 제거/보정 수:
+- contact sheet 재생성 여부:
+- node --check 결과:
+- validate-rpm-assets 결과:
+- questionBank shape preserved:
+- missingQuestionNumbers:
+- answer unchanged:
+- content unchanged:
+- tags unchanged:
+- generated reports:
+- 기존 운영 archive 수정 여부:
+- git add/commit/push 여부:
+
+---
+
+## 17. 완료 판정
+
+PASS:
+- 명백한 bad crop이 quarantine 처리됨
+- JS 경로/실제 PNG/pending/no_visual_confirmed 목록이 일관됨
+- node --check PASS
+- validate-rpm-assets PASS
+- missingQuestionNumbers 0
+- answer/content/tags unchanged true
+- contact sheet 재생성됨
+
+PARTIAL:
+- 일부 crop 품질만 자동 판정 가능
+- 나머지는 review/pending에 정확히 남김
+- JS 경로/PNG/pending 불일치 없음
+- node --check PASS
+
+FAIL:
+- 문항 id 변경
+- 문항 누락 발생
+- answer 변경
+- content 변경
+- tags 변경
+- JS 문법 오류
+- bad crop 제거 후 pending 기록 누락
+- 실제 PNG 없음인데 pending 없음
+- 실제 PNG 있음인데 JS 참조 없음
+- 기존 운영 archive 파일 수정
+- git add/commit/push 실행
+
+---
+
+## 18. 마지막 실행 지시
+
+이 파일을 처음부터 끝까지 다시 읽고 그대로 실행하라.
+작업 범위를 줄이지 마라.
+정답/발문/태그를 다시 건드리지 말고 crop 품질 보정만 수행하라.
+문항 전체 crop이나 페이지 전체 crop을 최종 assets로 만들지 마라.
+가짜 PNG를 만들지 마라.
+잘못된 crop은 삭제 전 bad_crop에 반드시 보존하라.
+기존 운영 archive 파일은 수정하지 마라.
+git add/commit/push는 하지 마라.
+'@ | Set-Content -Path .\CODEX_TASK_03B_ASSET_CROP_QUALITY.md -Encoding UTF8
+
+Get-Content .\CODEX_TASK_03B_ASSET_CROP_QUALITY.md -Raw
