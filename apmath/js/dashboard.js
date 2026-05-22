@@ -295,9 +295,9 @@ function dashboardIsJournalDone(journal) {
 
 function openDashboardArchiveWindow(event) {
     if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
     const url = '../archive/index';
-    const opened = window.open(url, '_blank', 'noopener');
-    if (!opened) window.location.href = url;
+    window.open(url, '_blank', 'noopener');
 }
 
 function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, classRows = null) {
@@ -1965,10 +1965,10 @@ function renderAdminControlCenter() {
         ${adminShortcutRow}
         ${todayOverviewHtml}
         ${teacherCardsHtml}
-        ${adminScheduleHtml}
         ${recentConsultationHtml}
         ${needCheckHtml}
         ${recentStudentsHtml}
+        ${adminScheduleHtml}
         ${adminGlobalSearchPanel}
     </div>`;
 }

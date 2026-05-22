@@ -1,6 +1,23 @@
 window.APMATH_MANUAL_DATA = {
-  "updatedAt": "2026-05-12 · Source Re-read Manual Refresh",
-  "notice": "최신 AP Math OS / JS아카이브 소스 파일을 다시 읽고 갱신한 선생님용 검색형 사용설명서입니다. 사이드바의 사용설명서는 새 탭으로 열리며, 기존 OS 화면은 그대로 유지됩니다.",
+  "updatedAt": "2026-05-21 · Teacher/Admin Manual Split Refresh",
+  "notice": "AP Math OS 사용설명서를 선생님용과 원장님용으로 분리해 정리했습니다. 설명서는 한 화면에서 모드를 바꿔 볼 수 있고, 공통 기능은 두 모드 모두에 표시됩니다.",
+  "audiences": [
+    {
+      "id": "teacher",
+      "label": "선생님용",
+      "desc": "수업 중 바로 쓰는 기능"
+    },
+    {
+      "id": "admin",
+      "label": "원장님용",
+      "desc": "운영 관리와 전체 현황"
+    },
+    {
+      "id": "all",
+      "label": "전체",
+      "desc": "모든 설명 보기"
+    }
+  ],
   "hotKeywords": [
     "QR",
     "OMR",
@@ -94,14 +111,17 @@ window.APMATH_MANUAL_DATA = {
     "아카이브",
     "학생관리",
     "출석부/성적표",
-    "레포트",
+    "리포트",
     "클리닉",
     "일정·메모",
+    "원장 운영",
+    "학급 운영",
     "문제 해결"
   ],
   "sections": [
     {
       "id": "start-login",
+      "audience": ["teacher", "admin"],
       "category": "처음 시작",
       "title": "처음 로그인하고 내 반 찾기",
       "summary": "AP Math OS에 들어와 오늘 수업할 반 화면까지 이동하는 기본 흐름입니다.",
@@ -144,6 +164,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "manual-search-direct",
+      "audience": ["teacher", "admin"],
       "category": "처음 시작",
       "title": "사용설명서에서 원하는 설명 바로 찾기",
       "summary": "검색창, 바로가기 카드, 카테고리, 링크 복사로 필요한 설명을 바로 여는 방법입니다.",
@@ -184,6 +205,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "dashboard-overview",
+      "audience": ["teacher"],
       "category": "대시보드",
       "title": "대시보드에서 오늘 운영 흐름 보기",
       "summary": "오늘 수업 반, 주요 메뉴, 아카이브, 사용설명서로 들어가는 첫 화면입니다.",
@@ -222,6 +244,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "classroom-main",
+      "audience": ["teacher"],
       "category": "반 화면",
       "title": "반 화면 구조 이해하기",
       "summary": "한 반의 출석, 숙제, 시험성적, QR/OMR, 진도관리를 처리하는 핵심 화면입니다.",
@@ -262,6 +285,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "attendance-homework",
+      "audience": ["teacher"],
       "category": "출석/숙제",
       "title": "출석과 숙제 체크하기",
       "summary": "학생 명단에서 오늘 출결과 숙제 완료 여부를 빠르게 기록합니다.",
@@ -306,6 +330,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "qr-omr-basic",
+      "audience": ["teacher"],
       "category": "QR/OMR",
       "title": "QR/OMR로 오답 제출 받기",
       "summary": "학생이 QR을 찍고 오답을 직접 제출하도록 하는 기능입니다.",
@@ -355,6 +380,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "teacher-direct-input",
+      "audience": ["teacher"],
       "category": "QR/OMR",
       "title": "선생님이 직접 성적 입력하기",
       "summary": "학생이 QR 제출을 못 했거나 종이 시험지를 선생님이 직접 정리할 때 사용합니다.",
@@ -394,6 +420,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "exam-grade-list",
+      "audience": ["teacher", "admin"],
       "category": "시험성적",
       "title": "시험성적 목록과 제출 현황 보기",
       "summary": "반별 시험 목록, 평균, 문항 수, 제출률을 확인합니다.",
@@ -438,6 +465,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "archive-open",
+      "audience": ["teacher", "admin"],
       "category": "아카이브",
       "title": "JS아카이브 열고 시험지 찾기",
       "summary": "아카이브에서 학년, 연도, 시험기간, 검색어로 시험지를 찾습니다.",
@@ -478,6 +506,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "archive-qr-print",
+      "audience": ["teacher"],
       "category": "아카이브",
       "title": "AP 제출 QR 시험지 출력하기",
       "summary": "아카이브 시험지에 AP Math OS 오답 제출 QR을 붙여 출력합니다.",
@@ -519,6 +548,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "archive-manual-file-name",
+      "audience": ["teacher", "admin"],
       "category": "아카이브",
       "title": "JS아카이브 파일명 직접 입력하기",
       "summary": "OS의 QR 생성기에서 JS아카이브 파일명을 직접 넣어 오답과 원문 분석을 연결하는 방법입니다.",
@@ -570,6 +600,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "mixer-output",
+      "audience": ["teacher"],
       "category": "아카이브",
       "title": "믹서로 필요한 문항만 골라 시험지 만들기",
       "summary": "여러 시험지에서 문항을 골라 새로운 시험지를 만드는 기능입니다.",
@@ -610,6 +641,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "attendance-ledger",
+      "audience": ["teacher", "admin"],
       "category": "출석부/성적표",
       "title": "월간 출석부 확인하기",
       "summary": "날짜별 출석, 숙제, 지각, 보강, 상담 흐름을 월 단위로 확인합니다.",
@@ -650,6 +682,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "school-grade-ledger",
+      "audience": ["teacher", "admin"],
       "category": "출석부/성적표",
       "title": "학교 성적표 입력하기",
       "summary": "학생들의 학교 시험 성적을 학년별, 반별로 입력하고 확인합니다.",
@@ -690,6 +723,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "student-management",
+      "audience": ["teacher", "admin"],
       "category": "학생관리",
       "title": "학생관리에서 학생 정보 확인하기",
       "summary": "학생 연락처, 보호자 정보, 반 배정, PIN, 성적과 상담 기록을 확인합니다.",
@@ -731,6 +765,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "class-record",
+      "audience": ["teacher"],
       "category": "반 화면",
       "title": "진도관리 기록하기",
       "summary": "오늘 수업 단원, 교재별 진도, 특이사항을 저장합니다.",
@@ -770,7 +805,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "report-center-overview",
-      "category": "레포트",
+      "audience": ["teacher", "admin"],
+      "category": "리포트",
       "title": "리포트 센터 전체 구조 이해하기",
       "summary": "학생별 오늘 리포트, 평가 리포트, 상담 리포트를 목적별로 나누어 확인·복사·출력하는 화면입니다.",
       "keywords": [
@@ -824,7 +860,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "report-daily",
-      "category": "레포트",
+      "audience": ["teacher"],
+      "category": "리포트",
       "title": "오늘 리포트로 수업 후 카톡 문구 만들기",
       "summary": "오늘 출결, 숙제, 최근 평균, 진도 흐름을 바탕으로 보호자에게 보낼 짧은 안내 문구를 만듭니다.",
       "keywords": [
@@ -868,7 +905,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "report-exam-premium",
-      "category": "레포트",
+      "audience": ["teacher", "admin"],
+      "category": "리포트",
       "title": "평가 리포트에서 시험 분석 확인하기",
       "summary": "시험 점수, 전체 평균, 제출 인원, 오답 수, 문항별 정답률과 단원 해석을 한 번에 확인합니다.",
       "keywords": [
@@ -923,7 +961,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "report-print-pdf",
-      "category": "레포트",
+      "audience": ["teacher", "admin"],
+      "category": "리포트",
       "title": "평가 리포트 크게 보기·PDF 저장하기",
       "summary": "평가 리포트를 A4 자연 흐름형 출력 화면으로 열고 인쇄하거나 PDF로 저장합니다.",
       "keywords": [
@@ -972,7 +1011,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "report-archive-detail",
-      "category": "레포트",
+      "audience": ["teacher", "admin"],
+      "category": "리포트",
       "title": "평가 리포트에서 아카이브 원문 확인하기",
       "summary": "아카이브와 연결된 시험은 오답 문항의 발문, 정답, 해설 요약을 불러와 분석 문구에 반영할 수 있습니다.",
       "keywords": [
@@ -1019,7 +1059,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "report-premium-analysis",
-      "category": "레포트",
+      "audience": ["teacher", "admin"],
+      "category": "리포트",
       "title": "프리미엄 분석 사용하기",
       "summary": "평가 리포트의 AI 분석 기능입니다. 학부모 안내와 상담 자료를 만들 때 기본 리포트를 더 정확하고 자연스럽게 정리합니다.",
       "keywords": [
@@ -1070,7 +1111,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "report-counsel",
-      "category": "레포트",
+      "audience": ["teacher", "admin"],
+      "category": "리포트",
       "title": "상담 리포트로 상담 요약 만들기",
       "summary": "최근 성적 흐름, 출결, 숙제, 진도, 상담 기록을 모아 내부 상담용 요약을 만듭니다.",
       "keywords": [
@@ -1113,6 +1155,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "trouble-qr",
+      "audience": ["teacher", "admin"],
       "category": "문제 해결",
       "title": "QR 또는 새 탭이 열리지 않을 때",
       "summary": "QR, 아카이브, 사용설명서가 열리지 않을 때 확인할 항목입니다.",
@@ -1152,6 +1195,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "trouble-duplicate-exam",
+      "audience": ["teacher", "admin"],
       "category": "문제 해결",
       "title": "시험이 중복으로 보일 때 확인하기",
       "summary": "같은 이름의 시험 카드가 두 개 이상 보일 때 원인을 확인합니다.",
@@ -1192,6 +1236,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "trouble-student-missing",
+      "audience": ["teacher", "admin"],
       "category": "문제 해결",
       "title": "학생 이름이 안 보일 때",
       "summary": "반 화면, 시간표, 출석부에서 학생이 누락될 때 확인할 항목입니다.",
@@ -1231,6 +1276,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "trouble-report-print",
+      "audience": ["teacher", "admin"],
       "category": "문제 해결",
       "title": "리포트 출력 창이 안 열릴 때",
       "summary": "리포트 크게 보기/출력 또는 출력 버튼을 눌렀는데 새 창이 열리지 않을 때 확인합니다.",
@@ -1272,6 +1318,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "classroom-v4-current",
+      "audience": ["teacher"],
       "category": "학급 운영",
       "title": "반 화면 v4 구조: 출결·숙제·지각·보강·상담 6열",
       "summary": "최신 반 화면은 학생 이름 옆에서 출결, 숙제, 지각, 보강, 상담을 바로 처리하는 1줄 운영 보드입니다.",
@@ -1305,7 +1352,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "attendance-meta-memo",
-      "category": "출석·숙제",
+      "audience": ["teacher", "admin"],
+      "category": "출석/숙제",
       "title": "결석·지각·보강·상담 메모와 출석부 점 표시",
       "summary": "출석부 셀에는 지각, 보강, 상담 같은 메타 정보가 작은 점으로 표시됩니다.",
       "whenToUse": "단순 결석 여부 말고 이유나 보강 내용을 남겨야 할 때",
@@ -1335,6 +1383,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "homework-photo-guide",
+      "audience": ["teacher"],
       "category": "학급 운영",
       "title": "사진 숙제 제출 링크 만들기",
       "summary": "학생이 숙제 사진을 제출할 수 있도록 과제별 링크와 안내문을 만듭니다.",
@@ -1364,6 +1413,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "clinic-print-center",
+      "audience": ["teacher"],
       "category": "클리닉",
       "title": "오답 클리닉 출력 센터 사용하기",
       "summary": "반 또는 학생의 오답을 모아 원문/유사문항 기반 클리닉 시험지를 출력합니다.",
@@ -1394,7 +1444,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "archive-file-key-current",
-      "category": "JS아카이브",
+      "audience": ["teacher", "admin"],
+      "category": "아카이브",
       "title": "직접 출제 시험의 archive_file 입력 기준",
       "summary": "아카이브와 자동 연동하지 않은 시험도 exams/파일명.js 형식으로 원문을 연결합니다.",
       "whenToUse": "QR 생성기, OMR 입력, 리포트에서 원문 연결 없음이 뜰 때",
@@ -1429,6 +1480,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "timetable-current",
+      "audience": ["teacher", "admin"],
       "category": "학급 운영",
       "title": "시간표 보기와 내 반 보기",
       "summary": "중등/고등 시간표를 선생님별 열로 보고 내 반만 필터링합니다.",
@@ -1459,7 +1511,8 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "school-exam-ledger-current",
-      "category": "메뉴",
+      "audience": ["teacher", "admin"],
+      "category": "출석부/성적표",
       "title": "학교 성적표 입력하기",
       "summary": "중·고등 학교 시험 성적을 표 형태로 관리합니다.",
       "whenToUse": "내신 성적 흐름을 누적 관리할 때",
@@ -1488,6 +1541,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "premium-analysis-required",
+      "audience": ["teacher", "admin"],
       "category": "리포트",
       "title": "프리미엄 분석은 평가 리포트에서 먼저 누르기",
       "summary": "프리미엄 분석은 평가 리포트의 AI 분석 기능입니다. 학부모 안내, 상담, PDF 저장 전 우선 실행합니다.",
@@ -1522,6 +1576,7 @@ window.APMATH_MANUAL_DATA = {
     },
     {
       "id": "schedule-memo-current",
+      "audience": ["teacher", "admin"],
       "category": "일정·메모",
       "title": "메모와 일정관리 구분하기",
       "summary": "개인 메모/할 일과 학원 전체 일정을 구분해 관리합니다.",
@@ -1548,6 +1603,209 @@ window.APMATH_MANUAL_DATA = {
         "휴무",
         "시험일정",
         "기타"
+      ]
+    },
+    {
+      "id": "admin-dashboard-overview",
+      "audience": ["admin"],
+      "category": "대시보드",
+      "title": "원장님 운영센터에서 전체 흐름 보기",
+      "summary": "원장님 대시보드는 선생님 현황, 최근 상담, 확인 필요 학생, 신규 학생, 주간일정, 전체 검색을 한 화면에 모아 보여줍니다.",
+      "whenToUse": "수업 전후로 학원 전체 운영 상태와 놓치면 안 되는 상담·학생 변동을 확인할 때 사용합니다.",
+      "entry": "원장님 계정 로그인 → 운영센터",
+      "steps": [
+        "운영센터 상단에서 출석부, 시간표, 학교성적, 관리 바로가기를 확인합니다.",
+        "선생님 현황에서 담당 학생 수, 반 수, 이번 주 일지 상태를 확인합니다.",
+        "최근 상담에서 새로 기록된 상담 내용을 먼저 훑습니다.",
+        "확인 필요와 신규 학생 영역에서 후속 조치가 필요한 학생을 확인합니다.",
+        "주간일정은 전체 검색 바로 위에서 시험, 휴무, 기타 일정을 확인합니다.",
+        "학생, 반, 학교, 시험, 자료를 찾을 때는 맨 아래 전체 검색을 사용합니다."
+      ],
+      "cautions": [
+        "원장님 화면은 전체 학생과 전체 반을 볼 수 있으므로 공용 기기에서 로그아웃을 꼭 확인합니다.",
+        "최근 상담은 운영 확인용 요약입니다. 세부 내용 수정은 학생 상세의 상담 기록에서 진행합니다."
+      ],
+      "faq": [
+        {
+          "q": "주간일정이 어디에 있나요?",
+          "a": "원장님 운영센터에서는 신규 학생 영역 아래, 전체 검색 바로 위에 있습니다."
+        }
+      ],
+      "related": [
+        "선생님 현황",
+        "최근 상담",
+        "전체 검색",
+        "주간일정"
+      ],
+      "keywords": [
+        "원장님",
+        "운영센터",
+        "선생님 현황",
+        "최근 상담",
+        "확인 필요",
+        "신규 학생",
+        "전체 검색",
+        "주간일정"
+      ]
+    },
+    {
+      "id": "admin-timetable-operations",
+      "audience": ["admin"],
+      "category": "학급 운영",
+      "title": "원장님 시간표 개편과 전반 처리",
+      "summary": "운영 시간표를 확인하고, 개편시간표 초안에서 반 추가·학생 전반·적용 예정 시간표를 관리합니다.",
+      "whenToUse": "새 학기 또는 반 이동 기간에 시간표를 미리 만들고 실제 운영 시간표로 반영해야 할 때 사용합니다.",
+      "entry": "원장님 운영센터 또는 사이드바 → 시간표",
+      "steps": [
+        "시간표 화면에서 중등부와 고등부 탭을 구분해 확인합니다.",
+        "원장님 계정은 기본적으로 전체 보기 기준으로 시간표를 봅니다.",
+        "개편시간표를 눌러 초안 시간표를 열거나 새 초안을 만듭니다.",
+        "빈 시간 칸의 반 추가를 눌러 새 반을 배치합니다.",
+        "필요한 경우 학생을 이동할 반으로 전반 처리합니다.",
+        "초안 검토가 끝나면 개편 시간표 적용을 눌러 운영 시간표로 반영합니다.",
+        "인쇄가 필요하면 A4 가로 인쇄용 화면을 열어 출력합니다."
+      ],
+      "cautions": [
+        "전반과 개편 시간표 적용은 원장 권한에서만 진행합니다.",
+        "적용일이 지나지 않은 초안을 적용하면 지금 운영 시간표가 바로 바뀔 수 있으므로 확인 메시지를 읽고 진행합니다."
+      ],
+      "faq": [
+        {
+          "q": "선생님 계정에서도 전반할 수 있나요?",
+          "a": "아니요. 전반과 시간표 개편 적용은 원장모드에서만 진행합니다."
+        }
+      ],
+      "related": [
+        "시간표",
+        "개편시간표",
+        "전반",
+        "반 추가"
+      ],
+      "keywords": [
+        "시간표",
+        "개편시간표",
+        "시간표 초안",
+        "반 추가",
+        "전반",
+        "A4 인쇄",
+        "원장모드"
+      ]
+    },
+    {
+      "id": "student-portal-planner",
+      "audience": ["teacher"],
+      "category": "학급 운영",
+      "title": "학생 포털과 플래너 안내하기",
+      "summary": "학생 포털은 과제, 플래너, OMR, 수업자료 오답을 학생이 확인하는 입구입니다.",
+      "whenToUse": "학생에게 플래너 링크를 전달하거나 포털에서 과제·OMR·수업자료 오답을 확인하게 할 때 사용합니다.",
+      "entry": "반 화면 → 학생 이름 또는 플래너 버튼 / 학생 포털 링크",
+      "steps": [
+        "반 화면에서 플래너 대상 반인지 확인합니다.",
+        "학생별 플래너 링크 복사를 눌러 학생에게 전달합니다.",
+        "학생은 학생 포털에서 본인 PIN을 입력해 플래너를 엽니다.",
+        "학생 포털에서는 과제, 플래너, OMR, 수업자료 오답을 한곳에서 확인합니다.",
+        "선생님은 반 화면의 플래너 확인에서 반 전체 학생의 플래너 상태를 확인합니다.",
+        "필요하면 플래너 피드백을 남겨 다음 학습 방향을 안내합니다."
+      ],
+      "cautions": [
+        "플래너는 학생 개인 공간이므로 PIN 관리가 중요합니다.",
+        "학생 포털에서는 수업자료 오답 번호만 입력하며, 수업자료 원문은 직접 열리지 않습니다."
+      ],
+      "faq": [
+        {
+          "q": "학생이 플래너를 못 연다고 합니다.",
+          "a": "학생 PIN과 링크를 다시 확인하고, 기존 포털 세션이 꼬였으면 새로 로그인하게 안내합니다."
+        }
+      ],
+      "related": [
+        "학생 포털",
+        "플래너",
+        "수업자료 오답",
+        "PIN"
+      ],
+      "keywords": [
+        "학생포털",
+        "플래너",
+        "PIN",
+        "플래너 링크",
+        "수업자료 오답",
+        "OMR"
+      ]
+    },
+    {
+      "id": "study-material-wrong-guide",
+      "audience": ["teacher"],
+      "category": "학급 운영",
+      "title": "수업자료 오답 번호 받기",
+      "summary": "교재나 수업자료를 반에 배정하고 학생이 틀린 번호만 제출하도록 관리합니다.",
+      "whenToUse": "일반 시험 OMR이 아니라 교재, 프린트, 학교자료의 오답 번호만 빠르게 모을 때 사용합니다.",
+      "entry": "사이드바 → 수업자료 / 학생 포털 → 수업자료 오답",
+      "steps": [
+        "수업자료에서 교재 종류, 교재명, 학년, 학기를 등록합니다.",
+        "단원 범위나 문항 범위를 필요한 만큼 정리합니다.",
+        "반별 교재 배정에서 대상 반과 배정명을 저장합니다.",
+        "학생은 학생 포털의 수업자료 오답에서 틀린 번호만 입력합니다.",
+        "선생님은 제출 현황과 학생별 오답 번호를 조회합니다.",
+        "필요하면 출력 문구를 복사해 수업 후 관리 자료로 활용합니다."
+      ],
+      "cautions": [
+        "수업자료 오답은 일반 QR/OMR 시험성적과 다른 흐름입니다. 시험 점수 기록이 필요하면 QR/OMR 또는 시험성적 메뉴를 사용합니다."
+      ],
+      "faq": [],
+      "related": [
+        "수업자료",
+        "학생 포털",
+        "교재관리",
+        "오답"
+      ],
+      "keywords": [
+        "수업자료",
+        "교재 오답",
+        "material OMR",
+        "오답번호",
+        "제출 현황",
+        "학생포털"
+      ]
+    },
+    {
+      "id": "admin-limited-foundations",
+      "audience": ["admin"],
+      "category": "원장 운영",
+      "title": "제한 기능과 foundation 화면 구분하기",
+      "summary": "수납·출납, 학부모 연락 동의, 감사 로그 같은 기능은 일부 foundation만 준비되어 있으며 실제 발송·결제와 혼동하면 안 됩니다.",
+      "whenToUse": "원장님이 관리 메뉴에서 아직 운영 확정 전인 기능을 확인하거나 테스트할 때 사용합니다.",
+      "entry": "원장님 계정 → 관리 또는 학생 상세의 학부모/연락 관련 영역",
+      "steps": [
+        "수납·출납 foundation은 정책, 거래, 장부 구조를 확인하는 단계로 봅니다.",
+        "실제 수납 등록, 환불 처리, 이월 처리, 자동 청구는 연결하지 않습니다.",
+        "학부모 연락처와 수신동의 정보는 학생 상세에서 필요한 범위만 확인합니다.",
+        "메시지 preview나 발송 후보가 보여도 실제 문자·알림톡 발송 기능으로 취급하지 않습니다.",
+        "개인정보 접근이나 감사 로그는 원장 전용 검토 기능으로만 다룹니다."
+      ],
+      "cautions": [
+        "제한 기능은 사용자 승인 전 기본 운영 설명에 섞지 않습니다.",
+        "학부모 발송, 결제, 환불처럼 실제 외부 영향이 있는 업무는 확정된 운영 절차가 생긴 뒤 사용합니다."
+      ],
+      "faq": [
+        {
+          "q": "수납·출납 화면에서 실제 결제가 되나요?",
+          "a": "아니요. 현재는 foundation 확인 단계이며 실제 결제, 자동 청구, 실발송 기능으로 안내하지 않습니다."
+        }
+      ],
+      "related": [
+        "수납",
+        "출납",
+        "학부모 연락",
+        "감사 로그"
+      ],
+      "keywords": [
+        "수납",
+        "출납",
+        "foundation",
+        "학부모",
+        "수신동의",
+        "발송 금지",
+        "감사 로그"
       ]
     }
   ]

@@ -1,6 +1,12 @@
 (function () {
-    const DATA = window.APMATH_MANUAL_DATA || { categories: ['전체'], sections: [], quickStart: [], hotKeywords: [] };
-    const state = { query: '', category: '전체', openId: decodeURIComponent((window.location.hash || '').replace(/^#/, '')), focusId: decodeURIComponent((window.location.hash || '').replace(/^#/, '')) };
+    const DATA = window.APMATH_MANUAL_DATA || { categories: ['전체'], sections: [], quickStart: [], hotKeywords: [], audiences: [] };
+    const DEFAULT_AUDIENCES = [
+        { id: 'teacher', label: '선생님용', desc: '수업 중 바로 쓰는 기능' },
+        { id: 'admin', label: '원장님용', desc: '운영 관리와 전체 현황' },
+        { id: 'all', label: '전체', desc: '모든 설명 보기' }
+    ];
+    const AUDIENCES = Array.isArray(DATA.audiences) && DATA.audiences.length ? DATA.audiences : DEFAULT_AUDIENCES;
+    const state = { query: '', category: '전체', audience: 'teacher', openId: decodeURIComponent((window.location.hash || '').replace(/^#/, '')), focusId: decodeURIComponent((window.location.hash || '').replace(/^#/, '')) };
 
     const $ = (id) => document.getElementById(id);
     const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -21,6 +27,12 @@
         ].join(' ');
     }
 
+    function sectionMatchesAudience(section) {
+        if (state.audience === 'all') return true;
+        const audience = Array.isArray(section.audience) && section.audience.length ? section.audience : ['teacher'];
+        return audience.includes(state.audience);
+    }
+
     function getSearchScore(section, q) {
         if (!q) return 0;
         let score = 0;
@@ -38,9 +50,10 @@
     function getFilteredSections() {
         const q = normalize(state.query);
         const filtered = (DATA.sections || []).filter(section => {
+            const audienceOk = sectionMatchesAudience(section);
             const categoryOk = state.category === '전체' || section.category === state.category;
             const queryOk = !q || normalize(sectionSearchText(section)).includes(q);
-            return categoryOk && queryOk;
+            return audienceOk && categoryOk && queryOk;
         });
         if (!q) return filtered;
         return filtered
@@ -78,6 +91,27 @@
                 state.query = btn.dataset.keyword || '';
                 const input = $('manual-search');
                 if (input) input.value = state.query;
+                state.focusId = '';
+                history.replaceState(null, '', window.location.pathname);
+                renderAll();
+                scrollToResults();
+            });
+        });
+    }
+
+    function renderAudiences() {
+        const root = $('audience-tabs');
+        if (!root) return;
+        root.innerHTML = AUDIENCES.map(item => `
+            <button class="audience-tab ${state.audience === item.id ? 'active' : ''}" type="button" data-audience="${escapeHtml(item.id)}">
+                <b>${escapeHtml(item.label)}</b>
+                <span>${escapeHtml(item.desc || '')}</span>
+            </button>
+        `).join('');
+        root.querySelectorAll('.audience-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                state.audience = btn.dataset.audience || 'teacher';
+                state.category = '전체';
                 state.focusId = '';
                 history.replaceState(null, '', window.location.pathname);
                 renderAll();
@@ -335,6 +369,7 @@
         applyManualTheme();
         renderUpdated();
         renderQuickStart();
+        renderAudiences();
         renderHints();
         renderJumpLinks();
         renderCategories();
