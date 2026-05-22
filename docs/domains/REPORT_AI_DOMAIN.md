@@ -18,7 +18,7 @@
 
 report UI가 학생/시험/오답/teacherMemo context를 만들고 `ai/report-analysis` 또는 상담 요약 API를 호출한다. route는 Gemini/proxy/OpenAI/fallback 계열을 정규화해 응답한다.
 
-리포트 평가 통계의 전체 기준은 담임/담당반이 아니라 같은 `archive_file` 시험지를 본 같은 학년 전체 응시자 cohort다. `archive_file`이 없으면 `exam_title + exam_date + question_count`, 그다음 `exam_title + exam_date` 순서로 fallback한다. teacher 권한에서 전체 학년 학생 목록을 노출하지 않기 위해 `initial-data`는 `report_exam_cohort_stats` 통계 요약만 추가로 내려준다. cohort 집계는 학생 학년을 우선하고 반 학년은 fallback으로만 사용하며, 다중 반 연결로 같은 시험 세션이 여러 줄 조회되어도 `exam_sessions.id` 기준으로 한 번만 집계한다.
+리포트 평가 통계의 전체 기준은 담임/담당반이 아니라 같은 연도에 같은 `archive_file` 시험지를 본 같은 학년 전체 응시자 cohort다. `archive_file`이 없으면 `exam_title + exam_date + question_count`, 그다음 `exam_title + exam_date` 순서로 fallback한다. teacher 권한에서 전체 학년 학생 목록을 노출하지 않기 위해 `initial-data`는 `report_exam_cohort_stats` 통계 요약만 추가로 내려준다. cohort 집계는 학생 학년을 우선하고 반 학년은 fallback으로만 사용하며, 다중 반 연결로 같은 시험 세션이 여러 줄 조회되어도 `exam_sessions.id` 기준으로 한 번만 집계한다.
 
 ## D. 회귀 위험
 

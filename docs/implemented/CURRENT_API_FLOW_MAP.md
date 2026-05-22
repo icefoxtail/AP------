@@ -14,7 +14,7 @@
 2. `index.js`가 `verifyAuth`
 3. admin은 students/classes/map/attendance/homework/exams/consultations/foundation 전체성 데이터 조회
 4. teacher는 `teacher_classes` 기준으로 class/student scope 제한
-5. report 통계용 `report_exam_cohort_stats`는 같은 `archive_file` 또는 fallback 시험 식별자와 같은 학년 기준 summary만 추가 조회
+5. report 통계용 `report_exam_cohort_stats`는 같은 연도의 같은 `archive_file`과 같은 학년 기준 summary만 추가 조회
 6. response가 `state.db`로 합쳐짐
 7. dashboard/classroom/student/timetable/report가 동일 state를 사용
 

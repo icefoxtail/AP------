@@ -35,4 +35,4 @@
 
 ## 4. 리포트 통계 기준
 
-`report.js`의 평가 리포트 통계는 `report_exam_cohort_stats`가 있으면 같은 아카이브 시험지를 본 같은 학년 전체 summary를 우선 사용한다. summary가 없으면 frontend 보유 `exam_sessions`에서 `archive_file`, `exam_title + exam_date + question_count`, `exam_title + exam_date` 순서로 같은 시험을 식별하고 같은 학년 기준으로 fallback한다. `classAverage`는 별도 반 기준 값으로 유지한다.
+`report.js`의 평가 리포트 통계는 `report_exam_cohort_stats`가 있으면 같은 연도에 같은 아카이브 시험지를 본 같은 학년 전체 summary를 우선 사용한다. summary가 없으면 frontend 보유 `exam_sessions`에서 `archive_file`, `exam_title + exam_date + question_count`, `exam_title + exam_date` 순서로 같은 시험을 식별하고 같은 학년 기준으로 fallback한다. `classAverage`는 별도 반 기준 값으로 유지한다.
