@@ -17,7 +17,7 @@
 
 archive engine은 시험 배정과 blueprint API를 호출한다. check는 `check-init`, `check-pin`, `exam-sessions/new`로 OMR 제출을 처리한다. QR/OMR은 session과 wrong_answers를 생성/갱신한다.
 
-리포트 통계에서는 `exam_sessions.archive_file`을 같은 아카이브 시험지 식별의 최우선 기준으로 사용한다. `archive_file`이 없는 과거/수기 기록은 제목, 날짜, 문항 수 조합으로만 fallback하며, 제목만 같은 다른 날짜 시험은 섞지 않는다.
+리포트 통계에서는 `exam_sessions.archive_file`과 시험 연도를 같은 아카이브 시험지 cohort 식별의 최우선 기준으로 사용한다. `archive_file`이 없는 과거/수기 기록은 제목, 날짜, 문항 수 조합으로만 fallback하며, 제목만 같은 다른 날짜 시험은 섞지 않는다.
 
 ## D. 회귀 위험
 
