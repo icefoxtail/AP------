@@ -415,16 +415,23 @@ function getReportCohortStudentGrade(student, classMapByStudent, classById) {
   return normalizeReportCohortGrade(classById.get(String(classId || ''))?.grade);
 }
 
+function getReportCohortExamYear(session) {
+  const match = String(session?.exam_date || '').trim().match(/^(\d{4})/);
+  return match ? match[1] : '';
+}
+
 function getReportCohortIdentity(session) {
   const archiveFile = String(session?.archive_file || '').trim();
+  const examYear = getReportCohortExamYear(session);
   const examTitle = String(session?.exam_title || '').trim();
   const examDate = String(session?.exam_date || '').trim();
   const questionCount = Number(session?.question_count || 0);
-  if (archiveFile) {
+  if (archiveFile && examYear) {
     return {
-      scope: 'grade_archive_exam',
-      where: "TRIM(COALESCE(es.archive_file, '')) = ?",
-      params: [archiveFile]
+      scope: 'grade_archive_year',
+      where: "TRIM(COALESCE(es.archive_file, '')) = ? AND SUBSTR(TRIM(COALESCE(es.exam_date, '')), 1, 4) = ?",
+      params: [archiveFile, examYear],
+      examYear
     };
   }
   if (examTitle && examDate && questionCount) {
@@ -444,7 +451,7 @@ function getReportCohortIdentity(session) {
   return null;
 }
 
-async function buildReportExamCohortStats(env, sessions = [], students = [], classes = [], classStudents = []) {
+export async function buildReportExamCohortStats(env, sessions = [], students = [], classes = [], classStudents = []) {
   const visibleSessions = Array.isArray(sessions) ? sessions : [];
   if (!visibleSessions.length) return [];
 
@@ -531,6 +538,7 @@ async function buildReportExamCohortStats(env, sessions = [], students = [], cla
       resultBySessionId.set(String(session.id), {
         session_id: session.id,
         cohortScope: item.identity.scope,
+        examYear: item.identity.examYear || getReportCohortExamYear(session),
         grade: item.grade,
         gradeExamAverage: average,
         gradeExamRank: rank,
