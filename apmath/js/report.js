@@ -2946,7 +2946,7 @@ function reportCenterPremiumReportStyle() {
             .aprc-muted { color:#64748b; font-size:12px; font-weight:700; }
             .aprc-empty-box { padding:36px; text-align:center; color:#64748b; font-weight:800; }
 
-            .aprc-pdf-document { width:100%; max-width:190mm; margin:0 auto; padding:0; box-sizing:border-box; background:#fff; color:#111827; font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.56; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+            .aprc-pdf-document { width:100%; max-width:186mm; margin:0 auto; padding:0; box-sizing:border-box; background:#fff; color:#111827; font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.56; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-pdf-document * { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
             .aprc-pdf-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; padding:11mm 0 8mm; border-bottom:2px solid #0f172a; color:#111827; }
             .aprc-pdf-header > div:first-child { min-width:0; padding-right:8mm; }
@@ -2982,11 +2982,11 @@ function reportCenterPremiumReportStyle() {
                 .aprc-report-header { margin:-34px -34px 0; padding:34px 34px 26px; }
             }
             @media print {
-                @page { size:A4; margin:10mm; }
+                @page { size:A4; margin:12mm; }
                 html, body { margin:0 !important; padding:0 !important; background:#fff !important; overflow:visible !important; }
                 .report-print-toolbar, .report-print-actions, .no-print { display:none !important; }
                 .report-print-stage { padding:0 !important; margin:0 !important; background:#fff !important; overflow:visible !important; }
-                .aprc-pdf-document { width:100% !important; max-width:190mm !important; margin:0 auto !important; padding:0 !important; box-shadow:none !important; border:none !important; border-radius:0 !important; overflow:visible !important; }
+                .aprc-pdf-document { width:100% !important; max-width:186mm !important; margin:0 auto !important; padding:0 !important; box-shadow:none !important; border:none !important; border-radius:0 !important; overflow:visible !important; }
                 .aprc-pdf-parent-message, .aprc-pdf-score-grid, .aprc-pdf-point-grid, .aprc-pdf-parent-summary { break-inside:avoid !important; page-break-inside:avoid !important; }
                 .aprc-pdf-point-grid { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:4mm !important; }
                 .aprc-pdf-table-panel { break-inside:auto !important; page-break-inside:auto !important; }
@@ -3025,12 +3025,12 @@ function reportCenterBuildCleanPdfShell(reportHtml) {
 <title>AP Math 평가 리포트 PDF</title>
 ${reportCenterPremiumReportStyle()}
 <style>
-    @page { size:A4; margin:10mm; }
+    @page { size:A4; margin:12mm; }
     html, body { margin:0; padding:0; background:#fff; color:#111827; }
     body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:0; overflow:visible; -webkit-overflow-scrolling:touch; }
     @media print {
         html, body { background:#fff !important; margin:0 !important; padding:0 !important; overflow:visible !important; }
-        .aprc-pdf-document { width:100% !important; max-width:190mm !important; margin:0 auto !important; padding:0 !important; overflow:visible !important; }
+        .aprc-pdf-document { width:100% !important; max-width:186mm !important; margin:0 auto !important; padding:0 !important; overflow:visible !important; }
         .aprc-pdf-point-grid { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:4mm !important; }
         .aprc-section-title { break-after:avoid !important; page-break-after:avoid !important; margin-bottom:7px; }
         .aprc-section-title + p, .aprc-section-title + ol, .aprc-section-title + ul, .aprc-section-title + .aprc-table-wrap, .aprc-section-title + table { break-before:avoid !important; page-break-before:avoid !important; }
@@ -3544,14 +3544,14 @@ function reportCenterInjectPrintViewStyle() {
 
             .report-print-stage .aprc-pdf-document {
                 width:100% !important;
-                max-width:190mm !important;
+                max-width:186mm !important;
                 margin:0 auto !important;
                 padding:0 !important;
             }
 
             @page {
                 size:A4;
-                margin:10mm;
+                margin:12mm;
             }
         }
     `;
