@@ -86,6 +86,14 @@
             min-height: 58px;
         }
 
+        .mobile-header-left {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 0;
+        }
+
         .brand {
             display: flex;
             align-items: center;
@@ -105,8 +113,8 @@
             line-height: 1.25;
         }
 
-        .mobile-header-menu {
-            justify-self: start;
+        .mobile-header-menu,
+        .app-back-button {
             width: 36px;
             height: 36px;
             margin: 0;
@@ -125,9 +133,21 @@
             font-family: inherit;
         }
 
-        .mobile-header-menu:active {
+        .app-back-button {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .mobile-header-menu:active,
+        .app-back-button:active {
             background: var(--bg);
             transform: scale(0.96);
+        }
+
+        .app-back-button:disabled {
+            opacity: 0.28;
+            cursor: default;
+            pointer-events: none;
         }
 
         .mobile-header-brand {
@@ -180,6 +200,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             transition: left 0.24s ease, background 0.2s, border 0.2s;
+            gap: 10px;
         }
 
         .desktop-topbar-title {
@@ -636,7 +657,10 @@
 </head>
 <body>
     <header>
-        <button class="mobile-header-menu" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴"><span class="ap-hamburger-glyph">☰</span></button>
+        <div class="mobile-header-left">
+            <button class="mobile-header-menu" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴"><span class="ap-hamburger-glyph">☰</span></button>
+            <button id="mobile-app-back-button" class="app-back-button" onclick="appHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>←</button>
+        </div>
         <div class="brand mobile-header-brand" onclick="goHome()">
             <div class="brand-text">AP MATH</div>
         </div>
@@ -644,6 +668,7 @@
     </header>
 
     <div class="desktop-topbar" aria-hidden="false">
+        <button id="desktop-app-back-button" class="app-back-button" onclick="appHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>←</button>
         <div class="desktop-topbar-title" onclick="goHome()">AP MATH</div>
     </div>
 
