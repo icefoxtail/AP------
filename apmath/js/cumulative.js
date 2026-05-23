@@ -917,7 +917,7 @@ function buildAttendanceLedgerPrintDocument() {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AP Math 출석부</title>
 <style>
-@page{size:A4 landscape;margin:8mm;}
+@page{size:A4 landscape;margin:10mm 12mm;}
 *{box-sizing:border-box;}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#fff;}
 .pa-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px;border-bottom:2px solid #111827;padding-bottom:8px;}
