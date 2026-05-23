@@ -171,10 +171,13 @@ function installTimetableStyle() {
         '}',
         '#timetable-root { max-width:none !important; width:100% !important; overflow:hidden; padding-bottom:0 !important; }',
         '.tt-page-title { font-size:17px; font-weight:700; color:var(--text); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }',
-        '.tt-tab-scroll { display:flex; align-items:center; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:4px 0 14px; white-space:nowrap; scrollbar-width:none; }',
+        '.tt-tab-row { display:flex; align-items:center; gap:8px; padding:4px 0 14px; }',
+        '.tt-tab-scroll { flex:1; min-width:0; display:flex; align-items:center; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; scrollbar-width:none; }',
         '.tt-tab-scroll::-webkit-scrollbar { display:none; }',
-        '.tt-tab-scroll .tab-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 16px; font-size:13px; font-weight:600; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:var(--surface); color:var(--secondary); transition:all 0.2s; cursor:pointer; }',
+        '.tt-tab-scroll .tab-btn, .tt-print-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 16px; font-size:13px; font-weight:600; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:var(--surface); color:var(--secondary); transition:all 0.2s; cursor:pointer; font-family:inherit; }',
         '.tt-tab-scroll .tab-btn.active { background:var(--text); color:var(--surface); border-color:var(--text); font-weight:700; }',
+        '.tt-print-btn { margin-left:auto; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); }',
+        '@media (max-width:640px) { .tt-tab-row { align-items:flex-start; } .tt-print-btn { padding-left:14px; padding-right:14px; } }',
 
         '.tt-table-wrap { overflow-x:auto; overflow-y:hidden; border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); -webkit-overflow-scrolling:touch; }',
         '@media (max-width:900px) { .tt-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; } }',
@@ -3050,7 +3053,7 @@ function buildTimetablePrintDocument() {
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
         '<title>AP Math 시간표</title>' +
         '<style>' +
-        '@page{size:A4 landscape;margin:8mm;}' +
+        '@page{size:A4 landscape;margin:10mm 12mm;}' +
         '*{box-sizing:border-box;}' +
         'body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#fff;}' +
         '.pt-page{width:100%;}' +
@@ -3061,17 +3064,17 @@ function buildTimetablePrintDocument() {
         '.pt-meta span{border:1px solid #d1d5db;border-radius:999px;padding:3px 7px;background:#f9fafb;}' +
         '.pt-table{width:100%;border-collapse:collapse;table-layout:fixed;}' +
         '.pt-table th,.pt-table td{border:1px solid #9ca3af;vertical-align:top;}' +
-        '.pt-table thead th{background:#f3f4f6;font-size:10px;font-weight:800;text-align:center;padding:5px 4px;}' +
+        '.pt-table thead th{background:#f3f4f6;font-size:11px;font-weight:800;text-align:center;padding:7px 4px;}' +
         '.pt-label-col{width:62px;}' +
-        '.pt-period{background:#f9fafb;text-align:center;padding:6px 4px;font-size:10px;}' +
-        '.pt-period b{display:block;font-size:11px;}' +
-        '.pt-period span{display:block;margin-top:2px;color:#6b7280;font-size:9px;}' +
-        '.pt-timetable-table td{height:118px;padding:4px;background:#fff;}' +
-        '.pt-class{break-inside:avoid;border:1px solid #d1d5db;border-radius:4px;padding:4px;margin-bottom:4px;background:#fff;}' +
-        '.pt-class-name{font-size:10px;font-weight:800;line-height:1.25;color:#111827;word-break:keep-all;}' +
-        '.pt-class-schedule,.pt-class-books,.pt-class-progress{font-size:8.5px;font-weight:700;line-height:1.25;color:#4b5563;margin-top:2px;word-break:keep-all;}' +
+        '.pt-period{background:#f9fafb;text-align:center;padding:8px 4px;font-size:11px;}' +
+        '.pt-period b{display:block;font-size:12px;}' +
+        '.pt-period span{display:block;margin-top:3px;color:#6b7280;font-size:9.5px;}' +
+        '.pt-timetable-table td{height:134px;padding:6px;background:#fff;}' +
+        '.pt-class{break-inside:avoid;border:1px solid #d1d5db;border-radius:4px;padding:6px;margin-bottom:5px;background:#fff;}' +
+        '.pt-class-name{font-size:11px;font-weight:800;line-height:1.3;color:#111827;word-break:keep-all;}' +
+        '.pt-class-schedule,.pt-class-books,.pt-class-progress{font-size:9.5px;font-weight:700;line-height:1.3;color:#4b5563;margin-top:3px;word-break:keep-all;}' +
         '.pt-class-progress{color:#1d4ed8;}' +
-        '.pt-students{display:grid;grid-template-columns:1fr 1fr;gap:1px 4px;margin-top:3px;font-size:8.5px;font-weight:700;color:#1f2937;line-height:1.25;}' +
+        '.pt-students{display:grid;grid-template-columns:1fr 1fr;gap:2px 5px;margin-top:4px;font-size:9.5px;font-weight:700;color:#1f2937;line-height:1.3;}' +
         '.pt-students span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}' +
         '.pt-students-empty{display:block;color:#9ca3af;}' +
         '.pt-footer{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:9px;font-weight:700;color:#6b7280;}' +
@@ -3094,9 +3097,21 @@ function printTimetableReport() {
 
     try {
         win.document.open();
-        win.document.write(buildTimetablePrintDocument());
+        win.document.write('<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>AP Math 시간표 인쇄</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#fff}.box{text-align:center}.title{font-size:18px;font-weight:800}.sub{margin-top:8px;font-size:13px;font-weight:700;color:#6b7280}</style></head><body><div class="box"><div class="title">시간표 인쇄 준비 중</div><div class="sub">잠시 후 인쇄 창이 열립니다.</div></div></body></html>');
         win.document.close();
         try { win.focus(); } catch (e) {}
+        setTimeout(function() {
+            try {
+                win.document.open();
+                win.document.write(buildTimetablePrintDocument());
+                win.document.close();
+                try { win.focus(); } catch (focusErr) {}
+            } catch (writeErr) {
+                console.error('[printTimetableReport] delayed write failed:', writeErr);
+                if (typeof toast === 'function') toast('시간표 인쇄 문서를 만드는 중 오류가 발생했습니다.', 'warn');
+                try { win.close(); } catch (closeErr) {}
+            }
+        }, 80);
     } catch (e) {
         console.error('[printTimetableReport] failed:', e);
         if (typeof toast === 'function') toast('시간표 인쇄 창을 여는 중 오류가 발생했습니다.', 'warn');
@@ -3142,12 +3157,14 @@ function renderTimetable() {
                 buildTimetableVersionHeaderActionsHtml() +
             '</div>' +
             buildTimetableVersionBannerHtml() +
-            '<div class="tt-tab-scroll">' +
-                '<button class="tab-btn' + (isMid ? ' active' : '') + '" data-tt-section-btn="middle" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
-                '<button class="tab-btn' + (!isMid ? ' active' : '') + '" data-tt-section-btn="high" onclick="window.ttSetSection(\'high\')">고등부</button>' +
-                '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" data-tt-myonly-btn="false" onclick="window.ttSetMyOnly(false)">전체 보기</button>' +
-                (isAdminUserForTimetable ? '' : '<button class="tab-btn' + (myOnly ? ' active' : '') + '" data-tt-myonly-btn="true" onclick="window.ttSetMyOnly(true)">내 반 보기</button>') +
-                '<button class="tab-btn" type="button" onclick="window.ttPrintTimetableReport()">인쇄</button>' +
+            '<div class="tt-tab-row">' +
+                '<div class="tt-tab-scroll">' +
+                    '<button class="tab-btn' + (isMid ? ' active' : '') + '" data-tt-section-btn="middle" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
+                    '<button class="tab-btn' + (!isMid ? ' active' : '') + '" data-tt-section-btn="high" onclick="window.ttSetSection(\'high\')">고등부</button>' +
+                    '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" data-tt-myonly-btn="false" onclick="window.ttSetMyOnly(false)">전체 보기</button>' +
+                    (isAdminUserForTimetable ? '' : '<button class="tab-btn' + (myOnly ? ' active' : '') + '" data-tt-myonly-btn="true" onclick="window.ttSetMyOnly(true)">내 반 보기</button>') +
+                '</div>' +
+                '<button class="tt-print-btn" type="button" onclick="window.ttPrintTimetableReport()">인쇄</button>' +
             '</div>' +
             '<div id="timetable-grid-wrapper"></div>' +
         '</div>';
