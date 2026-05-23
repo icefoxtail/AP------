@@ -1,7 +1,4 @@
-cd C:\Users\USER\Desktop\AP------
-
-@'
-# CODEX_TASK_03B_ASSET_CROP_QUALITY
+﻿# CODEX_TASK_03B_ASSET_CROP_QUALITY
 
 ## 0. 작업 제목
 
@@ -545,6 +542,3 @@ FAIL:
 잘못된 crop은 삭제 전 bad_crop에 반드시 보존하라.
 기존 운영 archive 파일은 수정하지 마라.
 git add/commit/push는 하지 마라.
-'@ | Set-Content -Path .\CODEX_TASK_03B_ASSET_CROP_QUALITY.md -Encoding UTF8
-
-Get-Content .\CODEX_TASK_03B_ASSET_CROP_QUALITY.md -Raw
