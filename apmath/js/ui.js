@@ -101,10 +101,170 @@ function toast(m, t='info') {
 
 let modalCloseTimer = null;
 let modalStepStack = [];
+let appHistoryState = {
+    currentView: null,
+    backStack: [],
+    restoring: false,
+    patchTimer: null
+};
+
+const AP_APP_HISTORY_WRAP_NAMES = {
+    renderDashboard: { type: 'dashboard' },
+    renderAdminControlCenter: { type: 'adminDashboard' },
+    renderClass: { type: 'classDetail', argKeys: ['classId'] },
+    renderStudentDetail: { type: 'studentDetail', argKeys: ['studentId'] },
+    renderTimetable: { type: 'timetable' },
+    openAttendanceLedger: { type: 'attendance' },
+    openSchoolExamLedger: { type: 'schoolExam' },
+    openOmrInput: { type: 'omrInput' },
+    renderOmrInput: { type: 'omrInput' }
+};
 
 function isModalOpen() {
     const overlay = document.getElementById('modal-overlay');
     return !!overlay && !overlay.classList.contains('hidden');
+}
+
+function appHistoryBuildView(name, args = []) {
+    const meta = AP_APP_HISTORY_WRAP_NAMES[name] || {};
+    const view = { type: meta.type || name };
+    (meta.argKeys || []).forEach((key, index) => {
+        view[key] = args[index] !== undefined && args[index] !== null ? String(args[index]) : '';
+    });
+    if (view.type === 'dashboard' && state?.auth?.role === 'admin') view.type = 'adminDashboard';
+    return view;
+}
+
+function appHistoryViewKey(view) {
+    if (!view || !view.type) return '';
+    return [
+        view.type,
+        view.classId || '',
+        view.studentId || ''
+    ].join(':');
+}
+
+function appHistoryCanGoBack() {
+    return modalStepStack.length > 0 || isModalOpen() || appHistoryState.backStack.length > 0;
+}
+
+function updateAppBackButtons() {
+    const enabled = appHistoryCanGoBack();
+    ['mobile-app-back-button', 'desktop-app-back-button'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        btn.disabled = !enabled;
+        btn.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+    });
+}
+
+function appHistoryRecordView(nextView) {
+    if (!nextView || !nextView.type) return;
+    const current = appHistoryState.currentView;
+    const currentKey = appHistoryViewKey(current);
+    const nextKey = appHistoryViewKey(nextView);
+
+    if (!appHistoryState.restoring && current && currentKey && currentKey !== nextKey) {
+        const stack = appHistoryState.backStack;
+        if (appHistoryViewKey(stack[stack.length - 1]) !== currentKey) stack.push(current);
+        if (stack.length > 50) stack.shift();
+    }
+
+    appHistoryState.currentView = nextView;
+    updateAppBackButtons();
+}
+
+function appHistoryRestoreView(view) {
+    if (!view || !view.type) return false;
+    appHistoryState.restoring = true;
+    try {
+        if (view.type === 'dashboard' && typeof window.renderDashboard === 'function') {
+            window.renderDashboard();
+            return true;
+        }
+        if (view.type === 'adminDashboard' && typeof window.renderAdminControlCenter === 'function') {
+            window.renderAdminControlCenter();
+            return true;
+        }
+        if (view.type === 'classDetail' && view.classId && typeof window.renderClass === 'function') {
+            window.renderClass(view.classId);
+            return true;
+        }
+        if (view.type === 'studentDetail' && view.studentId && typeof window.renderStudentDetail === 'function') {
+            window.renderStudentDetail(view.studentId);
+            return true;
+        }
+        if (view.type === 'timetable' && typeof window.renderTimetable === 'function') {
+            window.renderTimetable();
+            return true;
+        }
+        if (view.type === 'attendance' && typeof window.openAttendanceLedger === 'function') {
+            window.openAttendanceLedger();
+            return true;
+        }
+        if (view.type === 'schoolExam' && typeof window.openSchoolExamLedger === 'function') {
+            window.openSchoolExamLedger();
+            return true;
+        }
+        if (view.type === 'omrInput' && typeof window.openOmrInput === 'function') {
+            window.openOmrInput();
+            return true;
+        }
+    } finally {
+        appHistoryState.restoring = false;
+        updateAppBackButtons();
+    }
+    return false;
+}
+
+function appHistoryBack() {
+    if (modalStepStack.length) {
+        closeModal();
+        updateAppBackButtons();
+        return true;
+    }
+
+    if (isModalOpen()) {
+        closeModal(true);
+        window.setTimeout(updateAppBackButtons, 280);
+        return true;
+    }
+
+    const previous = appHistoryState.backStack.pop();
+    if (!previous) {
+        updateAppBackButtons();
+        return false;
+    }
+
+    const restored = appHistoryRestoreView(previous);
+    if (!restored) updateAppBackButtons();
+    return restored;
+}
+
+function appHistoryWrapGlobal(name, meta) {
+    const fn = window[name];
+    if (typeof fn !== 'function' || fn.__apHistoryWrapped) return false;
+
+    const wrapped = function(...args) {
+        const nextView = appHistoryBuildView(name, args);
+        const result = fn.apply(this, args);
+        appHistoryRecordView(nextView);
+        return result;
+    };
+    wrapped.__apHistoryWrapped = true;
+    wrapped.__apHistoryOriginal = fn;
+    window[name] = wrapped;
+    return true;
+}
+
+function appHistoryPatchGlobalNavigation(retryCount = 0) {
+    Object.entries(AP_APP_HISTORY_WRAP_NAMES).forEach(([name, meta]) => appHistoryWrapGlobal(name, meta));
+    updateAppBackButtons();
+
+    if (retryCount < 8) {
+        if (appHistoryState.patchTimer) clearTimeout(appHistoryState.patchTimer);
+        appHistoryState.patchTimer = setTimeout(() => appHistoryPatchGlobalNavigation(retryCount + 1), 180);
+    }
 }
 
 function getCurrentModalSnapshot() {
@@ -187,6 +347,7 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
 
 function showModal(t, b, at=null, af=null) {
     applyModalContent(t, b, at, af);
+    updateAppBackButtons();
 }
 
 function showModalStep(t, b, at=null, af=null) {
@@ -194,10 +355,12 @@ function showModalStep(t, b, at=null, af=null) {
     const snapshot = getCurrentModalSnapshot();
     if (snapshot) modalStepStack.push(snapshot);
     applyModalContent(t, b, at, af);
+    updateAppBackButtons();
 }
 
 function replaceModalStep(t, b, at=null, af=null) {
     applyModalContent(t, b, at, af);
+    updateAppBackButtons();
 }
 
 function clearModalSteps() {
@@ -279,6 +442,7 @@ function closeModal(suppressReturn = false) {
     if (!suppressReturn && modalStepStack.length) {
         const previous = modalStepStack.pop();
         restoreModalSnapshot(previous);
+        updateAppBackButtons();
         return;
     }
 
@@ -313,6 +477,7 @@ function closeModal(suppressReturn = false) {
             footer.innerHTML = '';
         }
         if (returnCtx) returnToPreviousManagementView('dashboard', returnCtx);
+        updateAppBackButtons();
     }, 260);
 }
 
@@ -496,10 +661,12 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         patchHeaderRelatedGlobals();
         bootHeaderSync();
+        appHistoryPatchGlobalNavigation();
     });
 } else {
     patchHeaderRelatedGlobals();
     bootHeaderSync();
+    appHistoryPatchGlobalNavigation();
 }
 
 
@@ -785,6 +952,11 @@ window.closeModal = closeModal;
 window.setManagementReturnView = setManagementReturnView;
 window.setModalReturnView = setModalReturnView;
 window.returnToPreviousManagementView = returnToPreviousManagementView;
+window.appHistoryBack = appHistoryBack;
+window.appHistoryCanGoBack = appHistoryCanGoBack;
+window.appHistoryRecordView = appHistoryRecordView;
+window.appHistoryPatchGlobalNavigation = appHistoryPatchGlobalNavigation;
+window.updateAppBackButtons = updateAppBackButtons;
 window.setModalBody = setModalBody;
 window.setModalLoading = setModalLoading;
 window.safeToastError = safeToastError;
