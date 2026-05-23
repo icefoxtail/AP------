@@ -928,18 +928,18 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 .pa-legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px;font-size:9px;font-weight:700;color:#4b5563;}
 .pa-table{width:100%;border-collapse:collapse;table-layout:fixed;}
 .pa-table th,.pa-table td{border:1px solid #9ca3af;text-align:center;vertical-align:middle;}
-.pa-table thead th{background:#f3f4f6;font-size:8px;font-weight:800;padding:3px 1px;line-height:1.1;}
-.pa-table thead th small{display:block;font-size:7px;color:#6b7280;}
-.pa-no{width:24px;font-size:8px;color:#4b5563;}
-.pa-name{width:54px;text-align:left!important;padding:3px 4px!important;font-size:9px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.pa-grade{width:42px;font-size:8px;font-weight:700;color:#374151;}
+.pa-table thead th{background:#f3f4f6;font-size:9px;font-weight:800;padding:5px 1px;line-height:1.15;}
+.pa-table thead th small{display:block;font-size:7.5px;color:#6b7280;}
+.pa-no{width:24px;font-size:9px;color:#4b5563;}
+.pa-name{width:54px;text-align:left!important;padding:5px 4px!important;font-size:10px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pa-grade{width:42px;font-size:9px;font-weight:700;color:#374151;}
 .pa-day{width:22px;}
 .pa-day.sun{color:#dc2626;}
 .pa-day.sat{color:#1d4ed8;}
-.pa-status{height:20px;font-size:9px;font-weight:800;line-height:1;position:relative;}
-.pa-status em{display:block;margin-top:1px;font-style:normal;font-size:6.5px;font-weight:800;color:#1d4ed8;letter-spacing:0;}
-.pa-class-row td{text-align:left!important;background:#e5e7eb;font-size:9px;font-weight:800;padding:3px 5px;color:#111827;}
-.pa-sum{width:24px;font-size:8px;font-weight:800;background:#fbfbfb;}
+.pa-status{height:26px;font-size:11px;font-weight:800;line-height:1;position:relative;}
+.pa-status em{display:block;margin-top:2px;font-style:normal;font-size:7.5px;font-weight:800;color:#1d4ed8;letter-spacing:0;}
+.pa-class-row td{text-align:left!important;background:#e5e7eb;font-size:10px;font-weight:800;padding:5px 6px;color:#111827;}
+.pa-sum{width:24px;font-size:9px;font-weight:800;background:#fbfbfb;}
 .pa-note{width:46px;background:#fff;}
 .pa-empty{padding:28px!important;font-size:12px;font-weight:700;color:#6b7280;}
 @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.pa-table thead{display:table-header-group;}tr{break-inside:avoid;}}
@@ -1017,13 +1017,14 @@ function openAttendanceLedger() {
 #att-main { width: 100%; max-width: 1150px; margin: 0 auto; height: calc(100vh - 56px); display: flex; flex-direction: column; padding: 12px 16px 0; box-sizing: border-box; }
 #att-header-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-shrink: 0; }
 #att-title { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; white-space: nowrap; }
-#att-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+#att-controls { flex: 1; display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
 .att-ctrl { height: 36px; padding: 0 10px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; }
 .att-date-ctrl { min-width: 136px; }
 .att-today-btn { color: var(--primary); background: rgba(26,92,255,0.07); border-color: rgba(26,92,255,0.16); font-weight: 800; }
 .att-selected-date { background: rgba(26,92,255,0.08) !important; box-shadow: inset 0 0 0 1px rgba(26,92,255,0.16); }
 .att-selected-date .att-sign { background: rgba(26,92,255,0.06); }
-@media (max-width: 640px) { #att-controls { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .att-ctrl { width: 100%; min-width: 0; } .att-date-ctrl { min-width: 0; } .att-today-btn { padding-left: 8px; padding-right: 8px; } }
+.att-print-btn { margin-left: auto; }
+@media (max-width: 640px) { #att-controls { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .att-ctrl { width: 100%; min-width: 0; } .att-date-ctrl { min-width: 0; } .att-today-btn { padding-left: 8px; padding-right: 8px; } .att-print-btn { margin-left: 0; grid-column: 2; } }
 #att-legend { font-size: 11px; font-weight: 700; color: var(--secondary); display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; flex-shrink: 0; }
 .att-legend-item { display: inline-flex; align-items: center; gap: 4px; min-height: 22px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); white-space: nowrap; line-height: 1; }
 .att-legend-item b { font-size: 12px; font-weight: 800; color: var(--text); line-height: 1; }
@@ -1064,7 +1065,7 @@ function openAttendanceLedger() {
       <select class="att-ctrl" id="att-cls" onchange="state.ui.attendanceLedgerClassId=this.value;renderAttendanceLedgerTable()">
         <option value="">전체 반</option>${classOptions}
       </select>
-      <button type="button" class="att-ctrl" onclick="window.printAttendanceLedgerReport()">인쇄</button>
+      <button type="button" class="att-ctrl att-print-btn" onclick="window.printAttendanceLedgerReport()">인쇄</button>
     </div>
   </div>
   <div id="att-legend">
