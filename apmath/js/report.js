@@ -3221,8 +3221,8 @@ function reportCenterOpenPrintView(studentId, sessionId = '', event = null) {
             <div class="report-print-toolbar no-print">
                 <button class="btn report-print-premium-btn" onclick="reportCenterRequestPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}', this)">프리미엄 분석</button>
                 <button class="btn" onclick="reportCenterResetPrintViewAiAnalysis('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">기본 리포트</button>
-                <button class="btn btn-primary" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄하기</button>
                 <button class="btn" onclick="reportCenterClosePrintView()">돌아가기</button>
+                <button class="btn btn-primary report-print-action-print" onclick="reportCenterPrintCleanPdf('${escapeReportJsString(studentId)}', '${escapeReportJsString(sessionId)}')">인쇄하기</button>
             </div>
             <div class="report-print-stage">
                 ${reportHtml}
@@ -3390,7 +3390,12 @@ function reportCenterInjectPrintViewStyle() {
             font-size:13px;
             font-weight:700;
             border-radius:12px;
-            flex:1;
+            flex:0 0 auto;
+            min-width:104px;
+        }
+
+        .report-print-toolbar .report-print-action-print {
+            margin-left:auto;
         }
 
         .report-print-toolbar .report-print-premium-btn {
