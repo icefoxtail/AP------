@@ -1,0 +1,103 @@
+﻿{
+    "meta":  {
+                 "generatedAt":  "2026-05-25T22:30:00+09:00",
+                 "workspace":  "C:\\Users\\USER\\Desktop\\AP------",
+                 "textbookRoot":  "archive/textbook",
+                 "status":  "draft_report_only",
+                 "hermesReference":  {
+                                         "repository":  "https://github.com/NousResearch/hermes-agent",
+                                         "checked":  true,
+                                         "checkedItems":  [
+                                                              "README.md",
+                                                              "AGENTS.md",
+                                                              "skills",
+                                                              "optional-skills",
+                                                              ".plans",
+                                                              "plans",
+                                                              "tools",
+                                                              "plugins",
+                                                              "mcp_serve.py",
+                                                              "trajectory_compressor.py"
+                                                          ],
+                                         "importPolicy":  "reference_structure_only_no_install_no_copy_no_dependency"
+                                     },
+                 "hardBans":  [
+                                  ".agent actual creation",
+                                  "docs structure finalization",
+                                  "Hermes install or execution",
+                                  "dependency addition or package install",
+                                  "generated/js modification",
+                                  "generated/reports overwrite",
+                                  "pipeline code modification",
+                                  "PDF conversion",
+                                  "daemon/cron/MCP server implementation",
+                                  "apmath modification",
+                                  "archive operational HTML modification",
+                                  "archive/exams modification",
+                                  "git add/commit/push"
+                              ]
+             },
+    "purpose":  "Draft parallel workstream assignment rules. This is not an active queue runner.",
+    "lockPolicy":  {
+                       "primaryLock":  "jsFile",
+                       "secondaryLock":  "book",
+                       "sameJsFileConcurrentEdits":  "forbidden",
+                       "patchBeforeDirectEdit":  "recommended for subagents",
+                       "finalApplyOwner":  "single coordinator"
+                   },
+    "workstreamTypes":  [
+                            {
+                                "id":  "book_status_audit",
+                                "parallelSafe":  true,
+                                "writes":  "root report only",
+                                "lock":  "book",
+                                "notes":  "read-only count/status work"
+                            },
+                            {
+                                "id":  "jsFile_content_completion",
+                                "parallelSafe":  true,
+                                "writes":  "operating JS only if explicitly allowed",
+                                "lock":  "jsFile",
+                                "notes":  "requires full page evidence and protected baseline"
+                            },
+                            {
+                                "id":  "jsFile_answer_completion",
+                                "parallelSafe":  true,
+                                "writes":  "answer only if explicitly allowed",
+                                "lock":  "jsFile",
+                                "notes":  "requires answer source or certain direct solve"
+                            },
+                            {
+                                "id":  "review_pack_generation",
+                                "parallelSafe":  true,
+                                "writes":  "zip/report only",
+                                "lock":  "book or jsFile",
+                                "notes":  "must not edit operating JS"
+                            },
+                            {
+                                "id":  "pipeline_stage_execution",
+                                "parallelSafe":  false,
+                                "writes":  "varies",
+                                "lock":  "book",
+                                "notes":  "requires explicit later authorization because pipeline code/generated reports are banned in this round"
+                            }
+                        ],
+    "assignmentRecordTemplate":  {
+                                     "assignmentId":  "string",
+                                     "worker":  "codex-thread-or-subagent-id",
+                                     "scope":  "book/jsFile/setKey",
+                                     "allowedWrites":  "array",
+                                     "forbiddenWrites":  "array",
+                                     "inputReports":  "array",
+                                     "outputReports":  "array",
+                                     "status":  "pending|running|blocked|completed|manual_review",
+                                     "mergeValidation":  "node_check|parse|protected_scan|banned_path_scan"
+                                 },
+    "noGoPatterns":  [
+                         "multiple workers editing same JS file",
+                         "subagent direct reset/delete",
+                         "patch apply without coordinator validation",
+                         "answer fill from displayNo only",
+                         "content fill from question crop only"
+                     ]
+}

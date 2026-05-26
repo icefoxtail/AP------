@@ -1,0 +1,116 @@
+﻿{
+    "meta":  {
+                 "generatedAt":  "2026-05-25T22:30:00+09:00",
+                 "workspace":  "C:\\Users\\USER\\Desktop\\AP------",
+                 "textbookRoot":  "archive/textbook",
+                 "status":  "draft_report_only",
+                 "hermesReference":  {
+                                         "repository":  "https://github.com/NousResearch/hermes-agent",
+                                         "checked":  true,
+                                         "checkedItems":  [
+                                                              "README.md",
+                                                              "AGENTS.md",
+                                                              "skills",
+                                                              "optional-skills",
+                                                              ".plans",
+                                                              "plans",
+                                                              "tools",
+                                                              "plugins",
+                                                              "mcp_serve.py",
+                                                              "trajectory_compressor.py"
+                                                          ],
+                                         "importPolicy":  "reference_structure_only_no_install_no_copy_no_dependency"
+                                     },
+                 "hardBans":  [
+                                  ".agent actual creation",
+                                  "docs structure finalization",
+                                  "Hermes install or execution",
+                                  "dependency addition or package install",
+                                  "generated/js modification",
+                                  "generated/reports overwrite",
+                                  "pipeline code modification",
+                                  "PDF conversion",
+                                  "daemon/cron/MCP server implementation",
+                                  "apmath modification",
+                                  "archive operational HTML modification",
+                                  "archive/exams modification",
+                                  "git add/commit/push"
+                              ]
+             },
+    "purpose":  "Draft self-improvement suggestions mined from current reports. Suggestions are not auto-applied to stages.",
+    "suggestionMode":  "report_only_human_review_required",
+    "preflightWarnings":  [
+                              {
+                                  "id":  "warn_displayNo_only_answer_mapping",
+                                  "triggerReports":  [
+                                                         "maple_common2_answer_fill_summary.json",
+                                                         "answer_manual_review_operating_js_20260525.json"
+                                                     ],
+                                  "message":  "Do not map answer by displayNo alone; require setKey/unit/content keyword evidence.",
+                                  "suggestedAction":  "block source answer apply when unit range is ambiguous"
+                              },
+                              {
+                                  "id":  "warn_question_page_mapping_shift",
+                                  "triggerReports":  [
+                                                         "maple_synergy_unit_mapping_audit_report.json",
+                                                         "visang_algebra_question_crop_map_exclusion_report__20260524.json"
+                                                     ],
+                                  "message":  "Full page printed number mismatch means content must remain manual_review.",
+                                  "suggestedAction":  "preflight sample full page before content entry"
+                              },
+                              {
+                                  "id":  "warn_broken_ocr_success",
+                                  "triggerReports":  [
+                                                         "broken_formula_string_scan reports",
+                                                         "manual_review reports"
+                                                     ],
+                                  "message":  "Mojibake and OCR fragments are not successful content.",
+                                  "suggestedAction":  "route to ocr_unreadable or content_input_pending"
+                              },
+                              {
+                                  "id":  "warn_stale_extra_js",
+                                  "triggerReports":  [
+                                                         "maple_synergy_excluded_items_report.json",
+                                                         "stale exclusion reports"
+                                                     ],
+                                  "message":  "Suspected stale/extra JS should be reported, not silently deleted.",
+                                  "suggestedAction":  "exclude candidate report first, user approval before structural deletion"
+                              },
+                              {
+                                  "id":  "warn_long_handoff",
+                                  "triggerReports":  [
+                                                         "CODEX_RESULT.md",
+                                                         "handoff_operating_js_status_20260525.json"
+                                                     ],
+                                  "message":  "Long handoff hides current state.",
+                                  "suggestedAction":  "generate compact boot/memory digest before large batch work"
+                              }
+                          ],
+    "candidateRulePromotions":  [
+                                    {
+                                        "rule":  "answer source must include setKey or unit range evidence",
+                                        "confidence":  "high",
+                                        "autoApply":  "no"
+                                    },
+                                    {
+                                        "rule":  "content success gate requires full page/displayNo evidence",
+                                        "confidence":  "high",
+                                        "autoApply":  "no"
+                                    },
+                                    {
+                                        "rule":  "subagents should produce patch/report first for shared JS",
+                                        "confidence":  "medium",
+                                        "autoApply":  "no"
+                                    },
+                                    {
+                                        "rule":  "manual_review classification must use controlled reason taxonomy",
+                                        "confidence":  "high",
+                                        "autoApply":  "no"
+                                    }
+                                ],
+    "nextReviewQuestions":  [
+                                "Which draft reports should become stable operating files?",
+                                "Should boot manifest be regenerated per day or per task?",
+                                "Should workstream assignments remain report-only or become queue input after approval?"
+                            ]
+}

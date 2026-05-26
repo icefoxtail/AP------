@@ -1,0 +1,115 @@
+﻿{
+    "meta":  {
+                 "generatedAt":  "2026-05-25T22:30:00+09:00",
+                 "workspace":  "C:\\Users\\USER\\Desktop\\AP------",
+                 "textbookRoot":  "archive/textbook",
+                 "status":  "draft_report_only",
+                 "hermesReference":  {
+                                         "repository":  "https://github.com/NousResearch/hermes-agent",
+                                         "checked":  true,
+                                         "checkedItems":  [
+                                                              "README.md",
+                                                              "AGENTS.md",
+                                                              "skills",
+                                                              "optional-skills",
+                                                              ".plans",
+                                                              "plans",
+                                                              "tools",
+                                                              "plugins",
+                                                              "mcp_serve.py",
+                                                              "trajectory_compressor.py"
+                                                          ],
+                                         "importPolicy":  "reference_structure_only_no_install_no_copy_no_dependency"
+                                     },
+                 "hardBans":  [
+                                  ".agent actual creation",
+                                  "docs structure finalization",
+                                  "Hermes install or execution",
+                                  "dependency addition or package install",
+                                  "generated/js modification",
+                                  "generated/reports overwrite",
+                                  "pipeline code modification",
+                                  "PDF conversion",
+                                  "daemon/cron/MCP server implementation",
+                                  "apmath modification",
+                                  "archive operational HTML modification",
+                                  "archive/exams modification",
+                                  "git add/commit/push"
+                              ]
+             },
+    "purpose":  "Draft plan schema for book/jsFile/setKey scoped work. This file defines shape only; it is not an active plan queue.",
+    "schemaVersion":  "draft-0.1",
+    "unitOfWorkOptions":  [
+                              "book",
+                              "jsFile",
+                              "setKey"
+                          ],
+    "planItemTemplate":  {
+                             "planId":  "string",
+                             "scope":  {
+                                           "book":  "string",
+                                           "jsFile":  "string|null",
+                                           "setKey":  "string|null",
+                                           "operatingJsGlob":  "archive/textbook/{book}/generated/js/**/*.js"
+                                       },
+                             "objective":  "string",
+                             "sourceEvidence":  [
+                                                    "full page crop",
+                                                    "question crop",
+                                                    "answer source map",
+                                                    "answer/solution crop",
+                                                    "quick answer table",
+                                                    "existing report"
+                                                ],
+                             "allowedWrites":  [
+                                                   "report-only by default",
+                                                   "answer/content/choices only when later task explicitly allows"
+                                               ],
+                             "forbiddenWrites":  [
+                                                     "solution",
+                                                     "id",
+                                                     "displayNo",
+                                                     "setKey",
+                                                     "sourceQuestionNo",
+                                                     "metadata",
+                                                     "tags",
+                                                     "standardUnit",
+                                                     "generated/reports overwrite"
+                                                 ],
+                             "preflight":  [
+                                               "read boot manifest",
+                                               "read latest book summary",
+                                               "count current missing/empty",
+                                               "capture protected-field baseline if edits are allowed"
+                                           ],
+                             "executionSteps":  [
+                                                    "classify items",
+                                                    "apply only allowed writes if permitted",
+                                                    "record evidence per item",
+                                                    "skip uncertain items with reason"
+                                                ],
+                             "validation":  [
+                                                "node --check for touched JS",
+                                                "questionBank parse",
+                                                "protected-field diff scan",
+                                                "banned path diff scan"
+                                            ],
+                             "handoffSummary":  {
+                                                    "beforeCounts":  "object",
+                                                    "afterCounts":  "object",
+                                                    "changedFiles":  "array",
+                                                    "remainingManualReviewByReason":  "object",
+                                                    "validation":  "object"
+                                                }
+                         },
+    "exampleDraftItem":  {
+                             "planId":  "example-maple-common2-answer-jsFile",
+                             "scope":  {
+                                           "book":  "22개정_마플시너지_공통수학2",
+                                           "jsFile":  "generated/js/.../unit.js",
+                                           "setKey":  "unit_key"
+                                       },
+                             "objective":  "Fill missing answer only when source or direct solve is certain.",
+                             "writeMode":  "answer_only_when_explicitly_allowed"
+                         }
+}
