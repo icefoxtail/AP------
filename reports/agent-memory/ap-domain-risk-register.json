@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-26",
+  "risks": [
+    {
+      "domain": "apmath static app",
+      "level": "high",
+      "risk": "Broad UI or wording changes can regress active AP Math workflows.",
+      "guard": "Use apmath-static-app-sop and explicit file scope."
+    },
+    {
+      "domain": "worker / backend / D1",
+      "level": "high",
+      "risk": "Schema, migration, scope, or deploy mistakes can affect operating data.",
+      "guard": "No remote D1/deploy/schema changes without explicit task approval."
+    },
+    {
+      "domain": "archive/textbook",
+      "level": "high",
+      "risk": "Root tasks can accidentally overwrite subordinate generated outputs or memory.",
+      "guard": "Follow textbook BOOT and protect generated outputs."
+    },
+    {
+      "domain": "OMR / QR / clinic / report",
+      "level": "high",
+      "risk": "Student resubmit or parent-facing wording regressions can leak or corrupt outcomes.",
+      "guard": "Preserve OMR no-edit policy and parent wording checks."
+    },
+    {
+      "domain": "billing / accounting / operations",
+      "level": "high",
+      "risk": "Money history and internal notes require auditability.",
+      "guard": "Prefer status changes over deletion and restrict internal memo exposure."
+    },
+    {
+      "domain": "timetable / attendance / classroom",
+      "level": "high",
+      "risk": "Draft, staging, active, and classroom field flows can be confused.",
+      "guard": "Use timetable-attendance-classroom-sop and verify state semantics."
+    }
+  ]
+}

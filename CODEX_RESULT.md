@@ -284,3 +284,411 @@ CODEX_RESULT만 보고 PASS하면 안 된다.
 - 테스트가 실제 소스를 읽는지 확인
 - CODEX_RESULT.md 외 검수요청서 작성하지 않았는지 확인
 - git add / commit / push 하지 않았는지 확인
+# CODEX_RESULT - 2026-05-26 Maple Synergy Manual Review Reclassification
+
+## Scope
+- Target: `archive/textbook/22개정_마플시너지_공통수학1/generated/js/workbook/*.js`
+- Target: `archive/textbook/22개정_마플시너지_공통수학2/generated/js/workbook/*.js`
+- Rule: JS `answer` only for directly solvable items; protected fields unchanged.
+- Git: no `git add`, no commit, no push.
+
+## Answer Increase
+- Before answered count: 1982
+- After answered count: 1986
+- Net answer increase: 4
+- Added direct JS-only answers:
+  - `공통수학1_경우의 수` id 38 / displayNo 0038: `30`
+  - `공통수학1_경우의 수` id 75 / displayNo 0075: `144`
+  - `공통수학1_경우의 수` id 97 / displayNo 0097: `720`
+  - `공통수학1_다항식` id 157 / displayNo 0157: `3`
+
+## Reclassification
+- Report: `archive/textbook/reports/maple_synergy_manual_review_reclassification_20260526.json`
+- `pure_calculation_or_objective_answer_added`: 4
+- `image_required`: 686
+- `answer_source_remap_required`: 315
+- `content_empty`: 10
+- `final_hold`: 192
+- `direct_solve_uncertain`: not used.
+
+## Verification
+- `node --check` on all 7 target JS files: PASS (exit 0, no syntax output)
+- Parse scan on all 7 target JS files: PASS
+- Protected scan: PASS, protectedViolations = 0
+- Verify-only scan after write:
+  - files: 7 target JS files
+  - answered: 1986
+  - remaining missing answer: 1203
+  - protectedViolations: 0
+
+## Files Written
+- Updated JS answer fields only in:
+  - `archive/textbook/22개정_마플시너지_공통수학1/generated/js/workbook/마플_마플시너지 공통수학1_경우의 수_문제집대단원_고1.js`
+  - `archive/textbook/22개정_마플시너지_공통수학1/generated/js/workbook/마플_마플시너지 공통수학1_다항식_문제집대단원_고1.js`
+- Generated report:
+  - `archive/textbook/reports/maple_synergy_manual_review_reclassification_20260526.json`
+- Helper used:
+  - `archive/textbook/tools/reclassify-maple-manual-review-answer-only.mjs`
+
+# CODEX_RESULT - 2026-05-26 Maple Synergy Answer Source Crosscheck
+
+## Scope
+- Target: `archive/textbook/22개정_마플시너지_공통수학1/generated/js/workbook/*.js`
+- Target: `archive/textbook/22개정_마플시너지_공통수학2/generated/js/workbook/*.js`
+- Method: full-page crop inventory + quick-answer PDF extraction + existing answer anchor offsets.
+- Rule followed: no JS-only direct solving for new fills; `answer` only was changed in workbook JS.
+- Git: no `git add`, no commit, no push.
+
+## Source Inventory Checked
+- Operating JS files: 7.
+- Full page crop source: `generated/review_pack/by_unit_fresh/**/page_full_images/*.png`.
+- Question crop source: `generated/review_pack/**`, `generated/work/**` question crop/image candidates.
+- Quick answer source: `archive/textbook/22개정_마플시너지_공통수학2_빠른정답.pdf`.
+- Answer/solution sources checked in inventory: `*_정답.pdf`, `*_해설.pdf`, `generated/reports/*answer*.json`.
+- Reports with source paths:
+  - `archive/textbook/reports/maple_synergy_answer_source_inventory.json`
+  - `archive/textbook/reports/maple_synergy_missing_answer_worklist.json`
+  - `archive/textbook/reports/maple_synergy_answer_source_crosscheck_report.json`
+
+## Answer Increase
+- Missing answer before this source-search pass: 1203.
+- Missing answer after this source-search pass: 931.
+- Net new answers added from sources: 272.
+- First pass: 75 answers from quick-answer PDF + full page crop crosscheck.
+- Second pass: 197 answers from quick-answer PDF + full page crop crosscheck.
+- Source type counts:
+  - `answer_source`: 272
+  - `solution_lookup`: 0
+  - `crop_answer_crosscheck`: 272
+  - `direct_solve`: 0
+- Full page crop used: 272.
+- Question crop used as direct existing path: 0.
+- Quick answer used: 272.
+- Answer solution crop/report used for fills: 0.
+- Solution material used for fills: 0.
+
+## Remaining Manual Review
+- Remaining manual review after full source search: 931.
+- Remaining reason counts:
+  - `answer_source_unreadable`: 909
+  - `answer_source_not_found_after_full_search`: 22
+- Broad `answer_source_missing` and `direct_solve_uncertain`: not used.
+- Remaining details: `archive/textbook/reports/maple_synergy_remaining_manual_review_after_source_search.json`.
+
+## Files Written
+- Updated workbook JS answer fields in common2 source-mapped files.
+- Generated/updated:
+  - `archive/textbook/reports/maple_synergy_answer_source_inventory.json`
+  - `archive/textbook/reports/maple_synergy_missing_answer_worklist.json`
+  - `archive/textbook/reports/maple_synergy_answer_source_crosscheck_report.json`
+  - `archive/textbook/reports/maple_synergy_answer_fill_from_images_and_solutions_report.json`
+  - `archive/textbook/reports/maple_synergy_remaining_manual_review_after_source_search.json`
+  - `archive/textbook/reports/maple_synergy_answer_protected_scan.json`
+  - `archive/textbook/22개정_마플시너지_공통수학1/generated/reports/pipeline_book_summary.json`
+  - `archive/textbook/22개정_마플시너지_공통수학2/generated/reports/pipeline_book_summary.json`
+- Helper used:
+  - `archive/textbook/tools/maple-synergy-answer-source-crosscheck.mjs`
+
+## Verification
+- `node --check` on helper script: PASS.
+- `node --check` on all 7 target JS files: PASS.
+- questionBank parse: PASS, files 7, total 3189, answered 2258, missing 931.
+- Protected scan: PASS, protectedFieldChangeCount 0.
+- content image path / `<img>` scan: 0.
+- Broken replacement-character pattern in answer values: 0.
+- `git add` / commit / push: not run.
+
+# CODEX_RESULT - 2026-05-26 Textbook Pipeline Source Crosscheck Upgrade
+
+## Modified Files
+- `archive/textbook/tools/textbook-pipeline/run-oneclick-pipeline.mjs`
+- `archive/textbook/tools/textbook-pipeline/stages/04b-question-id-mapping-guard.mjs`
+- `archive/textbook/tools/textbook-pipeline/stages/08c-source-inventory.mjs`
+- `archive/textbook/tools/textbook-pipeline/stages/10b-transcribe-content-choices.mjs`
+- `archive/textbook/tools/textbook-pipeline/stages/10c-answer-fill-and-verify.mjs`
+- `archive/textbook/tools/textbook-pipeline/lib/source-crosscheck-utils.mjs`
+- `archive/textbook/tools/textbook-pipeline/tests/pipeline-stage-contract.test.mjs`
+
+## Pipeline Changes
+- Added `08C source-inventory` to oneclick after `08B` and before `09`; production mode includes it.
+- Added shared source/crosscheck utility for:
+  - `generated/reports/source_inventory_report.json`
+  - `generated/reports/question_source_crosscheck_report.json`
+  - `generated/reports/answer_source_crosscheck_report.json`
+  - `generated/reports/answer_fill_from_sources_report.json`
+  - `generated/reports/remaining_manual_review_after_full_source_search.json`
+- `04B` now builds source inventory and question source crosscheck when `jsDir` is available.
+- `10B` now applies content/choices only when full-page source crosscheck exists; question crop is zoom evidence only.
+- `10C` now fills only missing `answer`, requires question source crosscheck before answer-source application, and writes precise remaining reasons.
+- `direct_solve` is last resort only when `allowDirectSolveAfterSourceSearch=true`; production no longer falls through to JS solving by default.
+
+## Source/Fallback Coverage
+- Source inventory scans operating JS, full page crops, question crops, visual crops, quick answer PDFs/reports, answer PDFs, solution PDFs, answer_solution_crop reports, answer candidate pages, and generated answer/solution reports.
+- Answer priority encoded: quick answer -> answer PDF -> solution PDF -> answer_solution_crop -> crop/full-page crosscheck -> generated reports -> direct_solve.
+- DisplayNo-only answer evidence is rejected unless full page/question crop source crosscheck succeeds.
+- `image_required`-style items are represented through question/full-page/visual crop candidates instead of being left without image search.
+- Pipeline summary now receives source metrics including crop counts, source counts, answer source counts, direct solve count, and `remaining_by_precise_reason`.
+
+## Tests
+- Command: `node --test archive/textbook/tools/textbook-pipeline/tests/pipeline-stage-contract.test.mjs`
+- Result: PASS, 19/19 tests.
+- Added coverage for source inventory, no displayNo-only answer fill, quick answer + crop crosscheck answer fill, solution PDF/answer_solution_crop fallback inventory, direct_solve last resort, protected-field preservation, and image/crop re-search.
+
+## Sample Run / Verification
+- `node --check` on modified pipeline JS/test files: PASS.
+- questionBank parse sample on current Maple Synergy JS: PASS, files 7, total 3189, answered 2258, missing answer 931.
+- Current Maple Synergy empty content: 10.
+- Current Maple Synergy content image path / `<img>`: 0.
+- Current Maple Synergy broken content pattern: 0.
+- Current Maple Synergy broken answer pattern: 2 pre-existing values (`??, ??, ??` at common2 set/logic ids 503 and 514); this task did not modify workbook JS.
+- String.replace `$` replacement scan: PASS; replacement-safe function form remains in `12d-apply-gemini-formula-patches.mjs`.
+- Protected field verification: covered by tests and no workbook JS edits in this task.
+- `git add` / commit / push: not run.
+
+# CODEX_RESULT - 2026-05-26 Maple Synergy Answer/Solution Source Continuation
+
+## Scope
+- Target: remaining missing answers in Maple Synergy Common Math 1/2 workbook JS.
+- Allowed JS mutation: `answer` only.
+- Protected fields kept unchanged: `content`, `choices`, `id`, `displayNo`, `setKey`, `sourceQuestionNo`, order, metadata, tags, standardUnit, image, solution.
+- Git: no `git add`, no commit, no push.
+
+## Sources Opened / Checked
+- Quick answer PDF/table: rechecked; remaining common2 quick entries are mostly solution-reference/unreadable tokens.
+- Answer PDF: opened and used `archive/textbook/22개정_마플시너지_공통수학1_정답.pdf`.
+- Solution PDF: opened `archive/textbook/22개정_마플시너지_공통수학2_해설.pdf`; pypdf text extraction was empty because pages are image/JBIG2-based.
+- `answer_solution_crop_report`: opened; no usable applied crop rows.
+- `answer_solution_crop` images: 0 usable local crop images found for these remaining rows.
+- Generated answer reports opened: 12.
+- Full page crops crosschecked for applied rows: 7.
+
+## Answer Increase
+- Before: answered 2258, missing 931.
+- After: answered 2265, missing 924.
+- Newly filled: 7.
+- Source type:
+  - `answer_pdf`: 7
+  - `solution_pdf`: 0
+  - `answer_solution_crop`: 0
+  - `generated_answer_report`: 0
+  - `direct_solve`: 0
+- Applied report: `archive/textbook/reports/maple_synergy_answer_fill_from_answer_solution_sources_report.json`.
+
+## Remaining
+- Remaining missing answer: 924.
+- Remaining reasons:
+  - `answer_source_unreadable`: 840
+  - `final_hold_after_all_sources_checked`: 84
+- Remaining report: `archive/textbook/reports/maple_synergy_remaining_after_answer_solution_source_search.json`.
+
+## Verification
+- `node --check` on all 7 target JS files: PASS.
+- questionBank parse: PASS, files 7, total 3189, answered 2265, missing 924.
+- Protected scan: PASS, protectedFieldChangeCount 0.
+- content image path / `<img>`: 0.
+- Broken content pattern: 0.
+- Broken answer pattern: 2 pre-existing values remain in already-answered common2 items; this pass did not modify them.
+- `git add` / commit / push: not run.
+
+# CODEX_RESULT - 2026-05-26 Maple Synergy RapidOCR Solution Fill
+
+## Scope
+- Continued remaining Maple Synergy Common Math 1/2 missing-answer work after installing PDF/OCR tools.
+- Allowed workbook mutation followed: `answer` only.
+- Git: no `git add`, no commit, no push.
+
+## Sources Used
+- PDF renderer: PyMuPDF.
+- OCR engine used: RapidOCR.
+- Solution PDF OCR material opened/rendered:
+  - `archive/textbook/reports/solution_ocr_target_pages/p002.json`
+  - `archive/textbook/reports/solution_ocr_target_pages/p002.png`
+  - `archive/textbook/reports/solution_ocr_target_pages/p026.json`
+  - `archive/textbook/reports/solution_ocr_target_pages/p026.png`
+- Solution OCR pages prepared in this workspace: 17 target JSON pages and 14 sample JSON pages.
+- Applied solution pages used for answer fill: 2.
+- Full page crop crosschecks used: 2.
+- Question crop crosschecks used: 2.
+- answer_solution_crop used for newly filled rows: 0.
+- Direct solve used: 0.
+
+## Answer Increase
+- Before this pass: answered 2265, missing 924.
+- After this pass: answered 2267, missing 922.
+- Newly filled: 2.
+- Source type:
+  - `solution_pdf`: 2
+  - `answer_solution_crop`: 0
+  - `generated_answer_report`: 0
+  - `direct_solve`: 0
+- Newly filled rows:
+  - Common Math 2 / geometry / displayNo `0005`: answer `⑤`, crosschecked from solution OCR final value `BC=sqrt(61)` plus JS choice ⑤ `$\\sqrt{61}$`, question crop, and full page crop.
+  - Common Math 2 / geometry / displayNo `0074`: answer `④`, crosschecked from solution OCR page 26 answer token plus question crop and full page crop.
+
+## Reports
+- Fill report: `archive/textbook/reports/maple_synergy_answer_fill_from_rapidocr_solution_report.json`.
+- Remaining report: `archive/textbook/reports/maple_synergy_remaining_after_rapidocr_solution_search.json`.
+- Protected scan: `archive/textbook/reports/maple_synergy_rapidocr_solution_protected_scan.json`.
+
+## Remaining
+- Remaining missing answer: 922.
+- Remaining reason count in this pass report:
+  - `final_hold_after_all_sources_checked`: 922
+- Broad `answer_source_unreadable` rows were not carried forward in this pass report; rows are now listed with checked source categories after OCR/source search.
+
+## Verification
+- `node --check` on all 7 target workbook JS files: PASS.
+- `node --check archive/textbook/tools/maple-synergy-fill-from-rapidocr-solution.mjs`: PASS.
+- questionBank parse: PASS, files 7, total 3189, answered 2267, missing 922.
+- Protected scan: PASS, protectedFieldChangeCount 0.
+- content image path / `<img>`: 0.
+- Broken content pattern: 0.
+- Broken answer pattern: 2 pre-existing already-answered values remain at common2 ids 503 and 514; this pass did not modify them.
+- `git add` / commit / push: not run.
+
+# CODEX_RESULT - 2026-05-26 Maple Synergy Common1 Answer PDF OCR
+
+## Correction
+- Common Math 1 answer PDF had pypdf text extraction count 0, so I rendered the PDF pages and ran RapidOCR instead of stopping.
+- Render/OCR directory: `archive/textbook/reports/common1_answer_pdf_rapidocr_pages`.
+- Applied answers only where the answer-table OCR row matched displayNo and question crop/full page crop evidence existed.
+
+## Answer Increase
+- Before this Common1 OCR pass: answered 3011, missing 178.
+- After this Common1 OCR pass: answered 3065, missing 124.
+- Newly filled: 54.
+- Newly filled by unit:
+  - 합의 법칙과 곱의 법칙: 26
+  - 다항식: 3
+  - 행렬과 그 연산: 25
+- Source type:
+  - `answer_pdf_ocr`: 54
+  - `direct_solve`: 0
+
+## Remaining
+- Remaining missing answer: 124.
+- Remaining by unit:
+  - 합의 법칙과 곱의 법칙: 16
+  - 다항식: 5
+  - 행렬과 그 연산: 9
+  - 도형의 방정식: 19
+  - 집합과 명제: 24
+  - 함수와 그래프: 51
+
+## Reports
+- Common1 OCR apply report: `archive/textbook/reports/maple_synergy_common1_answer_pdf_ocr_apply_report.json`.
+- Common1 OCR candidates: `archive/textbook/reports/maple_synergy_common1_answer_pdf_ocr_candidates.json`.
+- Remaining report: `archive/textbook/reports/maple_synergy_remaining_after_common1_answer_pdf_ocr.json`.
+- Protected scan: `archive/textbook/reports/maple_synergy_common1_answer_pdf_ocr_protected_scan.json`.
+
+## Verification
+- `node --check` on all 7 target workbook JS files: PASS.
+- `node --check archive/textbook/tools/maple-synergy-apply-common1-answer-pdf-ocr.mjs`: PASS.
+- questionBank parse: PASS, files 7, total 3189, answered 3065, missing 124.
+- Protected scan: PASS, protectedFieldChangeCount 0.
+- content image path / `<img>`: 0.
+- Broken content pattern: 0.
+- Broken answer pattern: 2 pre-existing already-answered values remain at common2 ids 503 and 514; this pass did not modify them.
+- `git add` / commit / push: not run.
+
+# CODEX_RESULT - 2026-05-26 Maple Synergy Bulk Answer Recovery
+
+## Correction
+- User was right that filling only 22 answers did not justify installing OCR/PDF tools.
+- Expanded source use:
+  - RapidOCR/PyMuPDF solution OCR pages prepared: 235 expanded pages total after OCRing `p066` through `p300`.
+  - Common Math 2 quick answer PDF parsed into `archive/textbook/reports/maple_synergy_common2_quick_answer_entries.json`.
+  - Applied only to rows where unit offset, quick answer token, question crop, and full page crop were all available.
+- Direct solve remained unused.
+
+## Answer Increase
+- Before bulk pass: answered 2303, missing 886.
+- After bulk pass: answered 3011, missing 178.
+- Newly filled in bulk pass: 708.
+- Newly filled by unit:
+  - 도형의 방정식: 143
+  - 집합과 명제: 201
+  - 함수와 그래프: 364
+- Newly filled since the complaint: 744.
+- Source types:
+  - quick answer + full page/question crop crosscheck: 708
+  - strict solution OCR circled answer: 14
+  - confirmed solution page visual/OCR: 22
+  - direct_solve: 0
+
+## Remaining
+- Remaining missing answer: 178.
+- Remaining by unit:
+  - 합의 법칙과 곱의 법칙: 42
+  - 다항식: 8
+  - 행렬과 그 연산: 34
+  - 도형의 방정식: 19
+  - 집합과 명제: 24
+  - 함수와 그래프: 51
+- Common Math 1 answer PDF text extraction returned 0 entries, so those rows still require image/OCR extraction from the answer PDF/crops.
+
+## Reports
+- Bulk quick/crop report: `archive/textbook/reports/maple_synergy_quick_answer_crosschecked_bulk_apply_report.json`.
+- Bulk remaining report: `archive/textbook/reports/maple_synergy_remaining_after_quick_answer_crosschecked_bulk.json`.
+- Bulk protected scan: `archive/textbook/reports/maple_synergy_quick_answer_crosschecked_bulk_protected_scan.json`.
+- OCR candidates: `archive/textbook/reports/maple_synergy_solution_ocr_answer_candidates.json`.
+
+## Verification
+- `node --check` on all 7 target workbook JS files: PASS.
+- `node --check archive/textbook/tools/maple-synergy-apply-quick-answer-crosschecked-bulk.mjs`: PASS.
+- `node --check archive/textbook/tools/maple-synergy-apply-strict-solution-ocr-candidates.mjs`: PASS.
+- questionBank parse: PASS, files 7, total 3189, answered 3011, missing 178.
+- Protected scan: PASS, protectedFieldChangeCount 0.
+- content image path / `<img>`: 0.
+- Broken content pattern: 0.
+- Broken answer pattern: 2 pre-existing already-answered values remain at common2 ids 503 and 514; this pass did not modify them.
+- `git add` / commit / push: not run.
+
+# CODEX_RESULT - 2026-05-26 Maple Synergy RapidOCR Expansion
+
+## Correction
+- The initial RapidOCR pass was too small: only 2 answers. I expanded the actual OCR/search work instead of leaving the install underused.
+- Additional solution PDF pages rendered/OCRed: 75 pages (`p066` through `p140`) into `archive/textbook/reports/solution_ocr_expanded_pages`.
+- Confirmed by opening solution page images and checking the printed `정답` marker against JS displayNo/question crop/full page crop.
+
+## Answer Increase
+- Before this expansion pass: answered 2267, missing 922.
+- After first confirmed-page pass: answered 2276, missing 913.
+- After expanded OCR confirmed-page pass: answered 2289, missing 900.
+- Newly filled after the complaint: 22.
+- Source type:
+  - `solution_pdf`: 22
+  - `answer_solution_crop`: 0
+  - `direct_solve`: 0
+- Full page crop crosschecks used in confirmed-page reports: 22.
+- Question crop crosschecks used in confirmed-page reports: 22.
+
+## Newly Filled Examples
+- `0071=①`, `0073=①`, `0077=⑤`, `0124=④`, `0155=④`, `0156=①`, `0158=②`, `0159=③`, `0160=②`.
+- Expanded OCR/page-image confirmed: `0162=②`, `0186=①`, `0193=①`, `0210=①`, `0216=①`, `0222=②`, `0224=①`, `0240=③`, `0250=①`, `0267=①`, `0271=②`, `0275=③`, `0327=①`.
+
+## Reports
+- Confirmed page fill report: `archive/textbook/reports/maple_synergy_confirmed_solution_page_answer_fill_report.json`.
+- Remaining report: `archive/textbook/reports/maple_synergy_remaining_after_confirmed_solution_pages.json`.
+- Protected scan: `archive/textbook/reports/maple_synergy_confirmed_solution_page_protected_scan.json`.
+- Expanded OCR evidence directory: `archive/textbook/reports/solution_ocr_expanded_pages`.
+
+## Verification
+- `node --check` on all 7 target workbook JS files: PASS.
+- `node --check archive/textbook/tools/maple-synergy-fill-confirmed-solution-page-answers.mjs`: PASS.
+- `node --check archive/textbook/tools/maple-synergy-fill-from-rapidocr-solution.mjs`: PASS.
+- questionBank parse: PASS, files 7, total 3189, answered 2289, missing 900.
+- Protected scan: PASS, protectedFieldChangeCount 0.
+- content image path / `<img>`: 0.
+- Broken content pattern: 0.
+- Broken answer pattern: 2 pre-existing already-answered values remain at common2 ids 503 and 514; this pass did not modify them.
+- `git add` / commit / push: not run.
+
+## 7. 검수팩
+- 생성 경로: C:\Users\USER\Downloads\AP------_CODEX_REVIEW_PACK_20260526_152546.zip
+- 최신 경로 기록 파일: C:\Users\USER\Downloads\LATEST_CODEX_REVIEW_PACK.txt
+- 검수 메시지 파일: C:\Users\USER\Downloads\LATEST_CODEX_REVIEW_MESSAGE.txt
+- 포함 기준: git status 기준 변경/신규/rename 파일 + CODEX_RESULT*.md + git status/diff 자료 + 00_READ_ME_FIRST_REVIEW.md + REVIEW_REQUEST.md
+- 제외 기준: 민감정보 파일, 민감정보 의심 문자열 파일, 대형 파일, node_modules/.git/dist/build/vendor/backup 계열 폴더
+- 생성 시각: 20260526_152546
+
