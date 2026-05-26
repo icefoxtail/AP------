@@ -5,6 +5,7 @@
 | 로그인/session/logout | 전체 접근 불가, expired session 처리 실패 | `auth/login`, `teacher_sessions`, Bearer header |
 | initial-data | 모든 화면 데이터 로딩 실패 | admin/teacher 응답 key 유지 |
 | teacher/admin 권한 | 담당반 scope 누락 | `teacher_classes`, `canAccessStudent`, `canAccessClass` |
+| student export XLSX | teacher에게 출력 버튼/모달/다운로드가 노출되거나 주소·차량 시트가 confirm 없이 내려감 | `student-export.js` admin guard, 주소·차량 confirm, 출력정보 시트, PIN/학생 memo/상담 목록 미포함 |
 | classroom | 출결/숙제/플래너/일지 현장 흐름 깨짐 | PC/mobile, 오늘 날짜, 반별 학생 |
 | cumulative attendance print | 월간/누적 출석부가 아닌 classroom 하루 출석부를 잘못 출력하거나 상태 기호 의미가 바뀜 | `cumulative.js` 기준, O/X/- 및 지각/보강/상담 표시 유지 |
 | planner SSO | 학생 포털에서 플래너 진입 실패 | `PLANNER_SID`, `PLANNER_PIN`, `planner_auth_{sid}` |

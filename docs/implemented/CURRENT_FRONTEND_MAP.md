@@ -10,6 +10,7 @@
 | `apmath/js/dashboard.js` | 대시보드/운영/일지/교사 관리 | 위험학생, 일지, 교사 관리, 출결/숙제 quick | students, teachers, attendance, homework, daily-journals | 관리자/선생님 화면 |
 | `apmath/js/classroom.js` | 반 화면 | 출결, 숙제, 플래너, 수업일지, 숙제사진 | attendance, homework, homework-photo, planner, class-daily | 선생님 현장 |
 | `apmath/js/student.js` | 학생 상세/상담/학부모 | 학생 detail lazy, 상담, 학부모 연락/동의 | students, consultations, parent-foundation, ai | 개인정보 |
+| `apmath/js/student-export.js` | 학생 출력/엑셀 내보내기 | admin 전용 학생 명단 XLSX, 출력정보 시트, 전체/반별/연락처/주소차량 시트 | frontend state only | 개인정보, teacher 노출 금지 |
 | `apmath/js/management.js` | 반/주소록/수납 foundation | 반 관리, PIN, billing accounting modal | classes, billing-accounting-foundation | 숨김 foundation 노출 |
 | `apmath/js/timetable.js` | 시간표 | 운영 시간표, draft/version, slot, conflict, A4 가로 인쇄 전용 HTML 출력 | timetable-versions, class-time-slots, conflicts, enrollments | 운영/staging 혼선 |
 | `apmath/js/report.js` | 리포트/AI | 학부모/학생/상담 리포트, AI 분석, print | ai/report-analysis, consultations, archive fetch | 학부모 문장 |
@@ -36,3 +37,7 @@
 ## 4. 리포트 통계 기준
 
 `report.js`의 평가 리포트 통계는 `report_exam_cohort_stats`가 있으면 같은 연도에 같은 아카이브 시험지를 본 같은 학년 전체 summary를 우선 사용한다. summary가 없으면 frontend 보유 `exam_sessions`에서 `archive_file`, `exam_title + exam_date + question_count`, `exam_title + exam_date` 순서로 같은 시험을 식별하고 같은 학년 기준으로 fallback한다. `classAverage`는 별도 반 기준 값으로 유지한다.
+
+## 5. 학생 출력 Round 1
+
+학생 출력/엑셀 내보내기는 `apmath/js/student-export.js`에서 관리한다. admin에게만 학생관리 모달의 `학생 명단 출력` 버튼과 출력 모달을 노출하며, teacher에는 버튼/모달/다운로드 진입점을 만들지 않는다. Round 1은 frontend `state.db.students/classes/class_students` 기반이며 Worker export API와 audit_logs는 보류다. XLSX에는 항상 `출력정보` 시트를 포함하고, 선택한 시트만 추가한다. PIN 출력과 학생 memo 출력은 Round 1 제외다. 상담 목록은 frontend 상담 데이터 lazy load 불완전성 때문에 Round 1에서 제외하고, Round 2에서 Worker export API와 audit_logs 기반으로 별도 구현한다.

@@ -14,8 +14,7 @@
 | Archive/OMR | archive engine, mixed engine, QR/OMR | `domains/ARCHIVE_OMR_DOMAIN.md` | `archive/*`, `check/*`, `qr-omr.js` | check-omr, exams | exam_sessions, wrong_answers, exam_blueprints | 노출됨 | 제출 완료 수정 | `plans/ARCHIVE_OMR_NEXT_PLAN.md` |
 | Class Daily | 수업일지/교재 진도 | `domains/CLASS_DAILY_DOMAIN.md` | `classroom.js`, `dashboard.js` | class-daily, operations | daily_journals, class_textbooks, class_daily_* | 노출됨 | 일지 문구/결재 | `plans/CLASS_DAILY_NEXT_PLAN.md` |
 | Homework Photo | 숙제 사진 QR/R2 | `domains/HOMEWORK_PHOTO_DOMAIN.md` | `homework/index.html`, `classroom.js` | homework-photo | homework_photo_* | 노출됨 | 파일 만료/R2/숙제 용어 | `plans/HOMEWORK_PHOTO_NEXT_PLAN.md` |
-| Students/Classes | 학생, 반, 담당반, PIN, 반 이동 | `domains/STUDENTS_CLASSES_DOMAIN.md` | `student.js`, `management.js` | students, classes, teachers, enrollments | students, classes, class_students, teacher_classes | 노출됨 | 권한/scope | `plans/TEACHER_MODE_NEXT_PLAN.md` |
+| Students/Classes | 학생, 반, 담당반, PIN, 반 이동, admin 학생 XLSX 출력 | `domains/STUDENTS_CLASSES_DOMAIN.md` | `student.js`, `management.js`, `student-export.js` | students, classes, teachers, enrollments | students, classes, class_students, teacher_classes | 노출됨 | 권한/scope/출력 개인정보, Round 1 상담 목록 제외 유지 | `plans/TEACHER_MODE_NEXT_PLAN.md` |
 | Operations | 상담, 운영 메모, 일정, 학교시험 | `domains/OPERATIONS_CONSULTATION_DOMAIN.md` | `dashboard.js`, `student.js`, `cumulative.js` | operations | consultations, operation_memos, schedules | 노출됨 | 개인정보/내부메모 | `plans/DIRECTOR_MODE_NEXT_PLAN.md` |
 | Staff/Auth/Audit | 로그인, 권한, 감사 로그 | `domains/STAFF_PERMISSION_AUDIT_DOMAIN.md` | `core.js`, `dashboard.js` | auth, teachers, foundation-logs | teachers, sessions, permissions, logs | 일부 숨김 | 권한/로그 노출 | `plans/TEACHER_MODE_NEXT_PLAN.md` |
 | Homepage | 왕지교육 홈페이지 | `domains/HOMEPAGE_DOMAIN.md` | `index.html` 확인 필요 | 확인 필요 | 확인 필요 | 계획/미확인 | 운영 시스템과 혼선 | `plans/HOMEPAGE_NEXT_PLAN.md` |
-
