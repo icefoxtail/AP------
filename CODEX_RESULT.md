@@ -1,42 +1,40 @@
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-- `apmath/js/dashboard.js`
-- `apmath/css/dashboard-foundation.css`
-- `CODEX_RESULT.md`
+- 수정: `apmath/index.html`, `apmath/css/dashboard-foundation.css`, `CODEX_RESULT.md`
+- 검증 포함: `apmath/js/ui.js`, `apmath/js/dashboard.js`
+- 삭제: 없음
 
 ## 2. 구현 완료 또는 확인 완료
-- 원장님 대시보드 상단 오른쪽 `원장님` 텍스트를 제거하고 전체 검색 pill input을 배치했다.
-- 하단 `전체 검색` 섹션과 `학생, 반, 학교, 시험, 자료를 검색하세요.` 안내문을 제거했다.
-- 선생님 현황 카드 안에 학년별 재원 chip을 상시 표시하도록 변경했다.
-- `재원` badge의 큰 모달 클릭 흐름을 제거하고, 상세 이동은 기존 `담당반 보기` 버튼으로 유지했다.
-- 선생님 카드 내부 `이번 주 일지`와 수/목 일지 상태는 유지했다.
-- 원장님 대시보드에 `오늘일지` 섹션을 카드 wrapper 없이 섹션 제목 + row/list 형태로 배치했고, 클릭 흐름은 유지했다.
-- 최근 등록 원생을 최근 상담 아래, 확인 필요 위로 이동했다.
-- 최근 등록 원생 목록만 desktop 2열, mobile 1열이 되도록 처리했다.
-- 확인 필요 항목 순서는 `반 배정 필요`, `담당 선생님 미지정`, `반 정리 필요` 그대로 유지했다.
-- UI 문구는 작업 지시 범위 밖에서 임의 변경하지 않았다.
+- `.app-back-btn`의 하드코딩 색상 `#ffffff`, `#d1d5db`, `#374151`, `#f9fafb`, `#111827`를 CSS 변수 기반으로 교체했다.
+- `.app-back-btn`은 `var(--surface)`, `var(--border)`, `var(--text)`, `var(--surface-2)`를 사용하도록 보정했다.
+- `.app-back-btn:focus-visible`은 `rgba(var(--primary-rgb), 0.35)` 기반으로 보정했다.
+- inline SVG chevron-left 구조와 `mobile-app-back-button` / `desktop-app-back-button` id, `appHistoryBack()` 흐름은 유지했다.
+- `dashboard-foundation.css`의 `.admin-teacher-card__quick-action` 중복 선언을 하나로 합쳤다.
+- `cursor:pointer`는 최종 `.admin-teacher-card__quick-action` 선언 안에 포함했다.
+- 담당반/재원 버튼 문구, 디자인 방향, 동작 로직은 변경하지 않았다.
 - Worker/DB/schema/migration/API 응답 구조는 수정하지 않았다.
+- `apmath/js/dashboard.js` 로직은 이번 마무리 보정에서 추가 변경하지 않았다.
+- 외부 CDN, 새 아이콘 의존성, manifest/icon 파일은 추가/수정하지 않았다.
 
 ## 3. 실행 결과
-- PASS: `node --check apmath/js/dashboard.js`
-- PASS: `node tests/navigation-history.test.js`
-- PASS: `node tests/manual-audience.test.js`
-- PASS: 새 지시 기준 VM 스모크 테스트
-  - 상단 검색 존재
-  - 하단 검색 안내문 없음
-  - 선생님 현황/이번 주 일지/학년별 chip 존재
-  - 오늘일지 존재
-  - 최근 상담 → 최근 등록 원생 → 확인 필요 순서 확인
-  - `openAdminTeacherGradeSummary` 활성 HTML 없음
-- FAIL(기존 테스트 계약 충돌): `node tests/admin-recent-consultation-panel.test.js`
-  - 실패 사유: 해당 테스트가 “주간일정 아래 하단 전체 검색”을 기대하지만, 이번 `CODEX_TASK.md`는 하단 전체 검색 삭제와 상단 이동을 요구한다.
-- 확인: `codex-self-audit`, `codex-work-review-pack` 스킬은 현재 설치된 스킬 목록과 로컬 검색에서 찾을 수 없어 수동 자체 검수와 로컬 `validation-and-review-pack-sop.md` 기준 검수팩 생성을 수행했다.
+- `node --check apmath/js/ui.js`: 통과
+- `node --check apmath/js/dashboard.js`: 통과
+- `node tests/navigation-history.test.js`: 통과
+- `node tests/admin-recent-consultation-panel.test.js`: 통과
+- `node tools/test-dashboard-archive-window.mjs`: 통과
+- `git diff --check`: 통과
 
 ## 4. 결과 요약
-원장님 대시보드의 큰 섹션 wrapper를 줄이고, 전체 검색은 상단 pill로 이동했다. 선생님 현황은 3열 카드와 내부 일지를 유지하면서 학년별 재원 chip을 카드 안에 바로 표시한다. 최근 등록 원생은 확인 필요보다 위로 이동했고 목록만 2열로 정리했다.
+- 마지막 검수 지적 2개 항목만 보정했다.
+- 글로벌 뒤로가기 버튼은 다크모드에서도 기존 AP Math OS 색상 변수 체계를 따르도록 정리됐다.
+- 선생님 카드 quick action CSS 중복 선언은 제거됐고, 기능/문구/구조는 그대로 유지됐다.
 
 ## 5. 다음 조치
-- 브라우저에서 원장님 대시보드 desktop/tablet/mobile 폭을 확인한다.
-- 기존 `admin-recent-consultation-panel.test.js`는 새 레이아웃 계약에 맞춰 별도 업데이트가 필요하다.
-- 검수팩 zip 경로: `/mnt/c/Users/USER/Downloads/ap_director_dashboard_v3_review_pack_20260526_225221.zip`
+- 없음. 추가 검수는 아래 검수팩 기준으로 진행하면 된다.
+
+## 6. 검수팩
+- 생성 경로: `C:\Users\USER\Downloads\AP------_CODEX_REVIEW_PACK_20260527_003000_round2-final-polish.zip`
+- 최신 경로 기록 파일: `C:\Users\USER\Downloads\LATEST_CODEX_REVIEW_PACK.txt`
+- 검수 메시지 파일: `C:\Users\USER\Downloads\LATEST_CODEX_REVIEW_MESSAGE.txt`
+- 포함 파일: `apmath/index.html`, `apmath/css/dashboard-foundation.css`, `apmath/js/ui.js`, `apmath/js/dashboard.js`, `tests/admin-recent-consultation-panel.test.js`, `CODEX_RESULT.md`, `git_status.txt`, `git_diff.patch`
