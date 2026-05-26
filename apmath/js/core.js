@@ -1006,6 +1006,85 @@ function apmsGetClassById(classId) {
     return apmsGetDataIndexes().classesById.get(String(classId || '')) || null;
 }
 
+function apmsGetClassOptionDayLabel(value) {
+    const raw = String(value || '').trim().toLowerCase();
+    if (!raw) return '';
+    if (raw === 'mwf') return '월수금';
+    if (raw === 'ttf') return '화목금';
+
+    const dayMap = {
+        '1': '월', mon: '월', monday: '월',
+        '2': '화', tue: '화', tuesday: '화',
+        '3': '수', wed: '수', wednesday: '수',
+        '4': '목', thu: '목', thursday: '목',
+        '5': '금', fri: '금', friday: '금',
+        '6': '토', sat: '토', saturday: '토',
+        '0': '일', '7': '일', sun: '일', sunday: '일'
+    };
+    const parts = raw.split(/[,\s\/|·.]+/).map(part => dayMap[part] || '').filter(Boolean);
+    return parts.length ? parts.join('') : String(value || '').trim();
+}
+
+function apmsNormalizeClassOptionClock(value) {
+    const match = String(value || '').trim().match(/^(\d{1,2}):(\d{2})/);
+    if (!match) return '';
+    return `${Number(match[1])}:${match[2]}`;
+}
+
+function apmsInferClassOptionPeriodFromRange(start, end) {
+    const key = `${apmsNormalizeClassOptionClock(start)}~${apmsNormalizeClassOptionClock(end)}`;
+    const periodMap = {
+        '4:50~6:20': '1교시',
+        '16:50~18:20': '1교시',
+        '6:30~8:00': '2교시',
+        '18:30~20:00': '2교시',
+        '8:00~9:30': '3교시',
+        '20:00~21:30': '3교시'
+    };
+    return periodMap[key] || '';
+}
+
+function apmsGetClassOptionTimeParts(cls) {
+    const raw = String(cls && cls.time_label || '').trim();
+    if (!raw) return { period: '', time: '' };
+
+    const periodMatch = raw.match(/([123]\s*교시)/);
+    const rangeMatch = raw.match(/(\d{1,2}:\d{2})\s*[~\-–—]\s*(\d{1,2}:\d{2})/);
+    const period = periodMatch ? periodMatch[1].replace(/\s+/g, '') : (rangeMatch ? apmsInferClassOptionPeriodFromRange(rangeMatch[1], rangeMatch[2]) : '');
+    const time = rangeMatch ? `${rangeMatch[1]}~${rangeMatch[2]}` : '';
+
+    if (period || time) return { period, time };
+    return { period: '', time: raw };
+}
+
+function apmsGetClassOptionBaseLabel(cls) {
+    const name = String(cls && cls.name || '').trim() || '미지정 반';
+    const teacher = String(cls && (cls.teacher_name || cls.teacherName || cls.teacher) || '').trim();
+    const day = apmsGetClassOptionDayLabel(cls && (cls.day_group || cls.schedule_days));
+    const timeParts = apmsGetClassOptionTimeParts(cls);
+    return [name, teacher, day, timeParts.period, timeParts.time]
+        .map(part => String(part || '').trim())
+        .filter(Boolean)
+        .join(' · ');
+}
+
+function apmsGetClassOptionIdentity(cls) {
+    return String(cls && (cls.id || cls.class_id || cls.version_class_id || cls.source_class_id) || '').trim();
+}
+
+function apmsGetClassOptionDisplayLabel(cls, classList) {
+    const label = apmsGetClassOptionBaseLabel(cls);
+    const id = apmsGetClassOptionIdentity(cls);
+    const rows = Array.isArray(classList) ? classList : (state && state.db && Array.isArray(state.db.classes) ? state.db.classes : []);
+    if (!label || !id || !rows.length) return label;
+
+    const duplicates = rows.filter(row => apmsGetClassOptionBaseLabel(row) === label);
+    if (duplicates.length <= 1) return label;
+
+    const index = duplicates.findIndex(row => apmsGetClassOptionIdentity(row) === id);
+    return index > 0 ? `${label} · #${index + 1}` : label;
+}
+
 function apmsGetClassStudentMap(studentId) {
     return apmsGetDataIndexes().classStudentByStudentId.get(String(studentId || '')) || null;
 }

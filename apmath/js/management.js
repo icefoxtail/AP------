@@ -105,8 +105,9 @@ function renderAddressBookList() {
 function openAddressBook() {
     setManagementReturnView({ type: 'addressBook' });
     setModalReturnView(null);
-    const classOptions = sortClassesForManagement(state.db.classes || [])
-        .map(c => `<option value="${mgmtEscape(c.id)}">${mgmtEscape(c.name)}${Number(c.is_active) === 0 ? ' (숨김)' : ''}</option>`)
+    const selectableClasses = sortClassesForManagement(state.db.classes || []);
+    const classOptions = selectableClasses
+        .map(c => `<option value="${mgmtEscape(c.id)}">${mgmtEscape(apmsGetClassOptionDisplayLabel(c, selectableClasses))}${Number(c.is_active) === 0 ? ' (숨김)' : ''}</option>`)
         .join('');
 
     showModal('학생관리', `
