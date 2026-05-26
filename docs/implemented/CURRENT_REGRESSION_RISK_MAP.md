@@ -15,6 +15,7 @@
 | report AI | 내부 표현이 학부모 문장에 노출 | fallback/provider 결과 정규화 |
 | report cohort | 같은 아카이브 시험지를 여러 반이 본 경우 통계가 담당반 기준으로 좁혀지거나 다중 반 연결 학생의 세션이 중복 집계됨 | 시험연도 + `archive_file` + 같은 학년 전체 평균/등수/문항 정답률, `exam_sessions.id` 기준 dedupe, `classAverage` 별도 유지 |
 | billing | 금액 합계/거래/장부 불일치 | payments vs transactions vs cashbook 구분 |
+| dashboard UI | 원장님 대시보드 quick action이 탭처럼 보이거나 오늘 운영에 숫자 metric이 직접 노출됨 | 빠른 이동은 중립 버튼, 실제 필터만 segmented, 오늘 운영은 숫자 없는 진입 카드, 기능/데이터/API 변경 없음 |
 | timetable | 운영 데이터와 draft/staging 혼선 | `classes` 직접 훼손 금지, version tables 분리 |
 | class select label | 학생 추가/수정, 주소록/학생관리, 누적 출석부/내신, 시간표 반 선택 option에서 같은 반명이 단독 반복되어 오배정되거나, 표시명 개선이 저장값 변경으로 번짐 | option 표시명은 반명 + 담당 + 요일/교시/시간 기준, 표준 운영 시간대는 교시 자동 추론, 완전 중복 시에만 `#2` fallback, `classes.name`/`time_label`/`class_id`/`version_class_id` 저장 흐름 유지 |
 | timetable print | 화면 DOM/사이드바/필터를 그대로 인쇄해 A4 가로 출력이 잘리거나 현재 보기 조건이 누락됨 | 인쇄 전용 HTML, 중등부/고등부 및 전체/내 반 조건 반영 |
