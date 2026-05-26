@@ -16,7 +16,7 @@ Use only the SOPs that match the current task. A skill never widens scope or gra
 | timetable / attendance / classroom | `docs/agent-skills/timetable-attendance-classroom-sop.md` |
 | billing / accounting / operations | `docs/agent-skills/billing-accounting-operations-sop.md` |
 | public site / Wangji / brand | `docs/agent-skills/public-site-brand-sop.md` |
-| validation and review packs | `docs/agent-skills/validation-and-review-pack-sop.md` |
+| validation and review packs | `docs/agent-skills/validation-and-review-pack-sop.md` (review pack zip output must go to Downloads) |
 | parallel workstreams | `docs/agent-skills/parallel-workstream-sop.md` |
 
 ## Rules

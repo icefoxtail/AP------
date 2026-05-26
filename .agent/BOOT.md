@@ -49,3 +49,9 @@ For `archive/textbook` work, read the upper AP rulebook first, then follow `arch
 3. Confirm git status and `git diff --name-only`.
 4. Write the result report requested by the task.
 5. State explicitly which prohibited actions were not performed.
+
+## Result Output Policy
+
+- Write task result reports to root `CODEX_RESULT.md` unless the task specifies another report.
+- Create review pack, patch zip, and review pack zip outputs in `C:\Users\USER\Downloads` (`/mnt/c/Users/USER/Downloads`).
+- Do not leave zip outputs in project `reports/`.
