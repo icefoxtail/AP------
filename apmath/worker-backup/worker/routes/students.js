@@ -12,6 +12,8 @@ function normalizeStudentPayload(d = {}, current = {}) {
     guardianRelation: String(d.guardian_relation ?? d.guardianRelation ?? current.guardian_relation ?? '').trim(),
     studentPhone: String(d.student_phone ?? d.studentPhone ?? current.student_phone ?? '').trim(),
     parentPhone: String(d.parent_phone ?? d.parentPhone ?? current.parent_phone ?? '').trim(),
+    studentAddress: String(d.student_address ?? d.studentAddress ?? current.student_address ?? '').trim(),
+    vehicleInfo: String(d.vehicle_info ?? d.vehicleInfo ?? current.vehicle_info ?? '').trim(),
     studentPin: String(d.student_pin ?? d.studentPin ?? current.student_pin ?? '').trim(),
     highSubjects: normalizeHighSubjects(d.high_subjects ?? d.highSubjects ?? current.high_subjects ?? '[]'),
     classId: d.class_id !== undefined || d.classId !== undefined ? String(d.class_id ?? d.classId ?? '').trim() : undefined
@@ -123,7 +125,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     }
     if (!d.name) return jsonResponse({ error: 'name required' }, 400);
     const duplicateCutoff = "-2 minutes";
-    const duplicateBaseParams = [d.name, d.schoolName, d.grade, d.studentPhone, d.parentPhone, d.guardianRelation];
+    const duplicateBaseParams = [d.name, d.schoolName, d.grade, d.studentPhone, d.parentPhone, d.guardianRelation, d.studentAddress, d.vehicleInfo];
     const duplicateSql = d.classId ? `
       SELECT s.id
       FROM students s
@@ -134,6 +136,8 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
         AND COALESCE(TRIM(s.student_phone), '') = ?
         AND COALESCE(TRIM(s.parent_phone), '') = ?
         AND COALESCE(TRIM(s.guardian_relation), '') = ?
+        AND COALESCE(TRIM(s.student_address), '') = ?
+        AND COALESCE(TRIM(s.vehicle_info), '') = ?
         AND s.created_at >= DATETIME('now', ?)
         AND EXISTS (SELECT 1 FROM class_students cs WHERE cs.student_id = s.id AND cs.class_id = ?)
       ORDER BY s.created_at DESC
@@ -148,6 +152,8 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
         AND COALESCE(TRIM(s.student_phone), '') = ?
         AND COALESCE(TRIM(s.parent_phone), '') = ?
         AND COALESCE(TRIM(s.guardian_relation), '') = ?
+        AND COALESCE(TRIM(s.student_address), '') = ?
+        AND COALESCE(TRIM(s.vehicle_info), '') = ?
         AND s.created_at >= DATETIME('now', ?)
         AND NOT EXISTS (SELECT 1 FROM class_students cs WHERE cs.student_id = s.id)
       ORDER BY s.created_at DESC
@@ -167,7 +173,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
 
     const sid = `s_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
     const targetScore = normalizeTargetScore(d.targetScore);
-    const stmts = [env.DB.prepare("INSERT INTO students (id, name, school_name, grade, target_score, status, memo, guardian_relation, student_phone, parent_phone, student_pin, high_subjects, created_at, updated_at) VALUES (?, ?, ?, ?, ?, '\uC7AC\uC6D0', ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(sid, d.name, d.schoolName, d.grade, targetScore, d.memo, d.guardianRelation, d.studentPhone, d.parentPhone, pin, d.highSubjects)];
+    const stmts = [env.DB.prepare("INSERT INTO students (id, name, school_name, grade, target_score, status, memo, guardian_relation, student_phone, parent_phone, student_address, vehicle_info, student_pin, high_subjects, created_at, updated_at) VALUES (?, ?, ?, ?, ?, '\uC7AC\uC6D0', ?, ?, ?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))").bind(sid, d.name, d.schoolName, d.grade, targetScore, d.memo, d.guardianRelation, d.studentPhone, d.parentPhone, d.studentAddress, d.vehicleInfo, pin, d.highSubjects)];
     if (d.classId) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, sid));
     try {
       await env.DB.batch(stmts);
@@ -198,7 +204,7 @@ export async function handleStudents(request, env, teacher, path, url, body = {}
     }
     if (!d.name) return jsonResponse({ error: 'name required' }, 400);
     const targetScore = normalizeTargetScore(d.targetScore);
-    const stmts = [env.DB.prepare('UPDATE students SET name=?, school_name=?, grade=?, target_score=?, memo=?, guardian_relation=?, student_phone=?, parent_phone=?, student_pin=?, high_subjects=?, updated_at=DATETIME(\'now\') WHERE id=?').bind(d.name, d.schoolName, d.grade, targetScore, d.memo, d.guardianRelation, d.studentPhone, d.parentPhone, d.studentPin, d.highSubjects, id)];
+    const stmts = [env.DB.prepare('UPDATE students SET name=?, school_name=?, grade=?, target_score=?, memo=?, guardian_relation=?, student_phone=?, parent_phone=?, student_address=?, vehicle_info=?, student_pin=?, high_subjects=?, updated_at=DATETIME(\'now\') WHERE id=?').bind(d.name, d.schoolName, d.grade, targetScore, d.memo, d.guardianRelation, d.studentPhone, d.parentPhone, d.studentAddress, d.vehicleInfo, d.studentPin, d.highSubjects, id)];
     if (d.classId !== undefined) {
       stmts.push(env.DB.prepare('DELETE FROM class_students WHERE student_id = ?').bind(id));
       if (d.classId) stmts.push(env.DB.prepare('INSERT INTO class_students (class_id, student_id) VALUES (?, ?)').bind(d.classId, id));

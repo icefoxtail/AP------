@@ -25,7 +25,7 @@ function isStudentNewMember(s) {
     
     if (s.created_at) {
         const createdTime = new Date(String(s.created_at).split(' ')[0]).getTime();
-        if (!isNaN(createdTime) && (Date.now() - createdTime) / (1000 * 60 * 60 * 24) > 30) {
+        if (!isNaN(createdTime) && (Date.now() - createdTime) / (1000 * 60 * 60 * 24) > 62) {
             return false;
         }
     }
@@ -1810,6 +1810,8 @@ function openEditStudent(sid, options = {}) {
             <input id="edit-student-phone" class="std-input-base" value="${studentAttr(s.student_phone || '')}" placeholder="학생 전화번호">
             <input id="edit-parent-phone" class="std-input-base" value="${studentAttr(s.parent_phone || '')}" placeholder="학부모 전화번호">
             <input id="edit-guardian-rel" class="std-input-base" value="${studentAttr(s.guardian_relation || '')}" placeholder="보호자 관계">
+            <input id="edit-student-address" class="std-input-base" value="${studentAttr(s.student_address || '')}" placeholder="주소">
+            <input id="edit-vehicle-info" class="std-input-base" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량">
             <input id="edit-student-pin" class="std-input-base" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4">
             <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 64px;">${apEscapeHtml(cleanMemo)}</textarea>
             <div style="display:flex; gap:20px; padding:4px 2px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:10px 14px;">
@@ -1857,6 +1859,8 @@ async function handleEditStudent(sid) {
         student_phone: document.getElementById('edit-student-phone')?.value || '',
         parent_phone: document.getElementById('edit-parent-phone')?.value || '',
         guardian_relation: document.getElementById('edit-guardian-rel')?.value || '',
+        student_address: document.getElementById('edit-student-address')?.value || '',
+        vehicle_info: document.getElementById('edit-vehicle-info')?.value || '',
         memo: finalMemo,
         student_pin: pin,
         high_subjects: JSON.stringify(highSubjects),
@@ -1889,6 +1893,8 @@ function openAddStudent(defaultCid = '', options = {}) {
             <input id="add-student-phone" class="std-input-base" placeholder="학생 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
             <input id="add-parent-phone" class="std-input-base" placeholder="학부모 전화번호" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
             <input id="add-guardian-rel" class="std-input-base" placeholder="보호자 관계" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
+            <input id="add-student-address" class="std-input-base" placeholder="주소" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
+            <input id="add-vehicle-info" class="std-input-base" placeholder="차량" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
             ${renderHighSubjectChecks('add', inferGradeFromClass(state.db.classes.find(c => String(c.id) === String(defaultCid))), [])}
         </div>
     `, '추가', handleAddStudent);
@@ -1907,6 +1913,8 @@ async function handleAddStudent() {
     const studentPhone = document.getElementById('add-student-phone')?.value.trim() || '';
     const parentPhone = document.getElementById('add-parent-phone')?.value.trim() || '';
     const guardianRelation = document.getElementById('add-guardian-rel')?.value.trim() || '';
+    const studentAddress = document.getElementById('add-student-address')?.value.trim() || '';
+    const vehicleInfo = document.getElementById('add-vehicle-info')?.value.trim() || '';
     if (!n || !sc) { toast('이름과 학교를 입력해주세요.', 'warn'); return; }
 
     if (!classId) { toast('반을 선택하세요.', 'warn'); return; }
@@ -1920,6 +1928,8 @@ async function handleAddStudent() {
         student_phone: studentPhone, studentPhone: studentPhone,
         parent_phone: parentPhone, parentPhone: parentPhone,
         guardian_relation: guardianRelation, guardianRelation: guardianRelation,
+        student_address: studentAddress, studentAddress: studentAddress,
+        vehicle_info: vehicleInfo, vehicleInfo: vehicleInfo,
         high_subjects: JSON.stringify(highSubjects), highSubjects: highSubjects,
         memo: ''
     };
