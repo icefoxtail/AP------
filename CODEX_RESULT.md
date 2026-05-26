@@ -692,3 +692,14 @@ CODEX_RESULT만 보고 PASS하면 안 된다.
 - 제외 기준: 민감정보 파일, 민감정보 의심 문자열 파일, 대형 파일, node_modules/.git/dist/build/vendor/backup 계열 폴더
 - 생성 시각: 20260526_152546
 
+## 2026-05-26 Textbook Pipeline Source-Crosscheck Formalization
+
+- 정식 반영: `08D-answer-source-ocr` stage 추가, oneclick production 흐름에 `08C source-inventory -> 08D answer-source-ocr -> 10C answer-fill` 연결.
+- 보강 파일: `archive/textbook/tools/textbook-pipeline/lib/answer-source-ocr-utils.mjs`, `stages/08d-answer-source-ocr.mjs`, `stages/10c-answer-fill-and-verify.mjs`, `run-oneclick-pipeline.mjs`, `lib/source-crosscheck-utils.mjs`, `tests/pipeline-stage-contract.test.mjs`.
+- OCR fallback: pypdf text가 0이면 PyMuPDF 렌더링 후 RapidOCR을 호출하도록 report 생성. 마플 공통수학1 정답 PDF 샘플에서 `pypdfStatus=ok`, `textCharCount=0`, RapidOCR 모델 다운로드 실패가 `answer_source_ocr_report.json`에 기록됨. 공통수학2 빠른정답 PDF는 pypdf text 기반 evidence 62개 추출.
+- 샘플 실행: 마플시너지 공통수학1/2에 08C, 08D, 10C 실행. 10C는 남은 문항에 대해 displayNo 단순 evidence만으로는 적용하지 않아 신규 answer 적용 0, remaining precise reason report 생성.
+- 현재 마플시너지 운영 JS parse: total 3189, answered 3065, missing 124, empty content 10, content image path / `<img>` 0.
+- 남은 124 핀포인트 worklist 생성: `archive/textbook/reports/maple_synergy_remaining_124_pinpoint_worklist.json`.
+- 검증: `node --check` 수정 pipeline JS PASS, 마플시너지 workbook JS `node --check` PASS, pipeline contract test PASS 22/22.
+- 주의: RapidOCR 모델 다운로드는 네트워크/모델소스 접근 실패로 실제 OCR 완료까지는 못 갔고, 실패 사유는 report에 남김.
+- git add/commit/push: 수행하지 않음.
