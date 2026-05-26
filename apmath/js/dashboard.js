@@ -1090,7 +1090,7 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     const cursor = onclick ? 'cursor:pointer;' : '';
     const roleAttr = onclick ? ' role="button" tabindex="0"' : '';
     return `
-        <div class="ap-admin-mini-metric"${roleAttr}${clickAttr} style="${cursor} min-height:62px; padding:12px 10px; border-radius:16px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;">
+        <div class="ap-admin-mini-metric"${roleAttr}${clickAttr} style="${cursor} min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;">
             <div style="font-size:13px; font-weight:500; color:${color}; line-height:1.25; white-space:nowrap;">${label}</div>
         </div>
     `;
@@ -1102,7 +1102,7 @@ function renderAdminStudentOverviewPanel(data) {
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘 운영</h3>
             </div>
-            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px;">
+            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">
                 ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentGradeModal('active')")}
                 ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')")}
                 ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')")}
@@ -1772,7 +1772,7 @@ function renderAdminControlCenter() {
     const adminOverviewData = adminBuildOverviewData(todayStr, todayTime);
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
     const headerHtml = `
-        <div class="ap-admin-dashboard-head" style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:10px; padding:0 4px;">
+        <div class="ap-admin-dashboard-head" style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin:8px 0 10px; padding:0 4px;">
             <div style="min-width:0; padding-top:4px;">
                 <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">운영센터</h3>
             </div>
@@ -1910,10 +1910,10 @@ function renderAdminControlCenter() {
             #ap-admin-dashboard .ap-admin-overview-grid {
                 display:grid !important;
                 gap:8px !important;
-                padding:0 !important;
-                border:0 !important;
-                border-radius:0 !important;
-                background:transparent !important;
+                padding:4px !important;
+                border:1px solid var(--border) !important;
+                border-radius:16px !important;
+                background:var(--surface-2) !important;
                 box-shadow:none !important;
             }
             #ap-admin-dashboard .ap-admin-shortcuts {
@@ -1940,12 +1940,12 @@ function renderAdminControlCenter() {
             }
             #ap-admin-dashboard .ap-admin-summary-grid .card,
             #ap-admin-dashboard .ap-admin-mini-metric {
-                min-height:86px !important;
+                min-height:44px !important;
                 display:flex !important;
                 flex-direction:column !important;
                 align-items:center !important;
                 justify-content:center !important;
-                padding:14px 8px !important;
+                padding:0 10px !important;
             }
             #ap-admin-dashboard .ap-admin-teacher-grid .card {
                 min-height:164px !important;
@@ -3159,12 +3159,14 @@ function renderAdminTeacherAllStudents(teacherName) {
     const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
     const gradeCounts = {};
     gradeOrder.forEach(label => { gradeCounts[label] = 0; });
+    let totalCount = 0;
     (state?.db?.students || [])
         .filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원')
         .forEach(s => {
             const grade = adminGetGradeLabel(s);
             const label = gradeOrder.includes(grade) ? grade : '기타';
             gradeCounts[label] += 1;
+            totalCount += 1;
         });
 
     const chips = gradeOrder
@@ -3174,7 +3176,7 @@ function renderAdminTeacherAllStudents(teacherName) {
 
     showModal(`${apEscapeHtml(teacherName)} 선생님 재원`, `
         <div class="admin-teacher-grade-pills">
-            ${chips || `<div class="daily-close-empty">재원생이 없습니다.</div>`}
+            ${totalCount > 0 ? `<span class="admin-teacher-grade-pill admin-teacher-grade-pill--total"><span>총원</span><span>${totalCount}명</span></span>${chips}` : `<div class="daily-close-empty">재원생이 없습니다.</div>`}
         </div>
     `);
 }
