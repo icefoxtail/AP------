@@ -34,6 +34,8 @@ CREATE TABLE IF NOT EXISTS students (
   guardian_relation TEXT,
   student_phone TEXT,
   parent_phone TEXT,
+  student_address TEXT,
+  vehicle_info TEXT,
   student_pin TEXT UNIQUE,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP

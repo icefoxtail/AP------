@@ -177,7 +177,12 @@ function installTimetableStyle() {
         '.tt-tab-scroll .tab-btn, .tt-print-btn { flex:0 0 auto; white-space:nowrap; min-width:auto; padding:10px 16px; font-size:13px; font-weight:600; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:var(--surface); color:var(--secondary); transition:all 0.2s; cursor:pointer; font-family:inherit; }',
         '.tt-tab-scroll .tab-btn.active { background:var(--text); color:var(--surface); border-color:var(--text); font-weight:700; }',
         '.tt-print-btn { margin-left:auto; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.07); border-color:rgba(26,92,255,0.16); }',
-        '@media (max-width:640px) { .tt-tab-row { align-items:flex-start; } .tt-print-btn { padding-left:14px; padding-right:14px; } }',
+        '.tt-search-wrap { flex:0 1 240px; min-width:180px; display:flex; align-items:center; gap:6px; min-height:38px; padding:0 9px 0 12px; border:1px solid rgba(0,0,0,0.08); border-radius:8px; background:var(--surface); }',
+        '.tt-search-input { flex:1; min-width:0; border:0; outline:0; background:transparent; color:var(--text); font:inherit; font-size:13px; font-weight:600; }',
+        '.tt-search-input::placeholder { color:var(--secondary); font-weight:600; }',
+        '.tt-search-clear { flex:0 0 auto; width:22px; height:22px; border:0; border-radius:50%; background:var(--surface-2); color:var(--secondary); cursor:pointer; font-size:14px; font-weight:800; line-height:20px; padding:0; }',
+        '@media (hover: hover) { .tt-search-clear:hover { color:var(--text); background:rgba(0,0,0,0.08); } }',
+        '@media (max-width:640px) { .tt-tab-row { align-items:flex-start; flex-wrap:wrap; } .tt-tab-scroll { flex-basis:100%; } .tt-search-wrap { flex:1 1 100%; order:2; } .tt-print-btn { padding-left:14px; padding-right:14px; } }',
 
         '.tt-table-wrap { overflow-x:auto; overflow-y:hidden; border-radius:8px; border:1px solid rgba(0,0,0,0.08); background:var(--surface); -webkit-overflow-scrolling:touch; }',
         '@media (max-width:900px) { .tt-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; } }',
@@ -187,6 +192,12 @@ function installTimetableStyle() {
         '.tt-row-fixed { height:auto; min-height:0; }',
 
         '.tt-card { background:var(--surface); border:1px solid rgba(0,0,0,0.06); border-radius:8px; padding:6px 8px; margin-bottom:4px; width:100%; min-height:auto; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; transition:border-color 0.2s, transform 0.2s; gap:2px; }',
+        '.tt-card-grade-m1 { background:#F0F7FF; border-color:rgba(0,122,255,0.16); }',
+        '.tt-card-grade-m2 { background:#F4FBF3; border-color:rgba(52,168,83,0.18); }',
+        '.tt-card-grade-m3 { background:#FFF7EA; border-color:rgba(255,149,0,0.20); }',
+        '.tt-card-grade-h1 { background:#FFF1F3; border-color:rgba(255,45,85,0.18); }',
+        '.tt-card-grade-h2 { background:#F6F1FF; border-color:rgba(88,86,214,0.18); }',
+        '.tt-card-grade-h3 { background:#EEF9F8; border-color:rgba(0,150,136,0.18); }',
         '@media (hover: hover) { .tt-card:hover { border-color:rgba(0,0,0,0.18); transform:translateY(-1px); box-shadow:0 2px 6px rgba(0,0,0,0.02); } }',
         '.tt-card-hdr { display:flex; align-items:center; gap:4px; margin-bottom:2px; flex-shrink:0; }',
         '.tt-cls-name { font-size:13px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; letter-spacing:-0.2px; }',
@@ -200,6 +211,7 @@ function installTimetableStyle() {
         '@media (hover: hover) { .tt-std-name:hover { background:var(--surface-2); color:var(--text); } }',
         '.tt-std-name.tt-new { color:#1A5CFF !important; }',
         '.tt-std-name.tt-leave { color:#FF8C00 !important; }',
+        '.tt-std-name.tt-search-hit { background:#FFE66D !important; color:#111827 !important; box-shadow:0 0 0 2px rgba(245,158,11,0.45) inset; font-weight:900; }',
         '.tt-std-name[draggable="true"] { cursor:grab; }',
         '.tt-std-name[draggable="true"]:active { cursor:grabbing; }',
         '.tt-std-empty { display:block; width:100%; min-height:18px; border:1px dashed rgba(0,0,0,0.1); border-radius:4px; cursor:pointer; background:transparent; color:var(--secondary); font-size:10.5px; font-weight:600; line-height:16px; text-align:left; padding:0 3px; font-family:inherit; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; grid-column:span 2; letter-spacing:-0.2px; }',
@@ -2428,6 +2440,44 @@ function getTimetableHighGrade(cls) {
     return '고등';
 }
 
+function getTimetableGradeToneClass(cls) {
+    var text = String(cls && cls.grade || '') + ' ' + String(cls && cls.name || '');
+    if (/중1/.test(text)) return 'tt-card-grade-m1';
+    if (/중2/.test(text)) return 'tt-card-grade-m2';
+    if (/중3/.test(text)) return 'tt-card-grade-m3';
+    if (/고1/.test(text)) return 'tt-card-grade-h1';
+    if (/고2/.test(text)) return 'tt-card-grade-h2';
+    if (/고3/.test(text)) return 'tt-card-grade-h3';
+    return '';
+}
+
+function normalizeTimetableStudentSearch(value) {
+    return String(value || '').trim().toLowerCase().replace(/\s+/g, '');
+}
+
+function getTimetableStudentSearchTerm() {
+    if (typeof state === 'undefined' || !state.ui) return '';
+    return String(state.ui.timetableStudentSearch || '').trim();
+}
+
+function isTimetableStudentSearchMatch(student) {
+    var term = normalizeTimetableStudentSearch(getTimetableStudentSearchTerm());
+    if (!term || !student) return false;
+    return normalizeTimetableStudentSearch(student.name || '').indexOf(term) !== -1;
+}
+
+function sortTimetableStudentsForSearch(students) {
+    var list = Array.isArray(students) ? students.slice() : [];
+    var term = normalizeTimetableStudentSearch(getTimetableStudentSearchTerm());
+    if (!term) return list;
+    return list.sort(function(a, b) {
+        var aHit = isTimetableStudentSearchMatch(a) ? 1 : 0;
+        var bHit = isTimetableStudentSearchMatch(b) ? 1 : 0;
+        if (aHit !== bHit) return bHit - aHit;
+        return String(a.name || '').localeCompare(String(b.name || ''), 'ko');
+    });
+}
+
 function getTimetableDayGroup(cls) {
     var days = String(cls.schedule_days || '');
     if (!days) return 'custom';
@@ -2673,7 +2723,8 @@ function buildTimetableStudentSlot(student, classId) {
             '</div>';
     }
 
-    var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '');
+    var isSearchHit = isTimetableStudentSearchMatch(student);
+    var cls = 'tt-std-name' + (student.isNew ? ' tt-new' : '') + (student.isLeave ? ' tt-leave' : '') + (isSearchHit ? ' tt-search-hit' : '');
     var nameText = apEscapeHtml(student.name) + (student.isNew ? '<span style="font-size:10px; margin-left:2px; font-weight:700;">(신)</span>' : '');
     var dragAttrs = isTimetableAdminMode()
         ? ' draggable="true" data-student-id="' + apEscapeHtml(String(student.id)) + '" data-source-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableStudentDragStart(event)" ondragend="if(event.stopPropagation)event.stopPropagation();"'
@@ -2694,14 +2745,15 @@ function buildTimetableStudentSlot(student, classId) {
 function buildTimetableStudentSlots(students, classId) {
     var maxVisible = TIMETABLE_STUDENT_SLOT_COUNT;
     var slots = [];
-    var displayCount = Math.min(students.length, maxVisible);
+    var visibleStudents = sortTimetableStudentsForSearch(students);
+    var displayCount = Math.min(visibleStudents.length, maxVisible);
 
     for (var i = 0; i < displayCount; i++) {
-        slots.push(buildTimetableStudentSlot(students[i], classId));
+        slots.push(buildTimetableStudentSlot(visibleStudents[i], classId));
     }
 
-    if (students.length > maxVisible) {
-        var remain = students.length - maxVisible;
+    if (visibleStudents.length > maxVisible) {
+        var remain = visibleStudents.length - maxVisible;
         var moreClick = isTimetableDraftMode() ? 'event.stopPropagation();' : 'event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')';
         slots.push(
             '<div class="tt-std-slot tt-std-slot-more" onclick="' + moreClick + '" title="클릭 시 반 상세로 이동">' +
@@ -2744,7 +2796,10 @@ function buildTimetableCard(cls, options) {
         ? ' data-drop-class-id="' + apEscapeHtml(String(classId)) + '" ondragover="handleTimetableClassDragOver(event)" ondragleave="handleTimetableClassDragLeave(event)" ondrop="handleTimetableClassDrop(event)"'
         : '';
 
-    return '<div class="tt-card"' + cardDragAttrs + dropAttrs + '>' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
+    var cardClass = 'tt-card';
+    var gradeToneClass = getTimetableGradeToneClass(cls);
+    if (gradeToneClass) cardClass += ' ' + gradeToneClass;
+    return '<div class="' + cardClass + '"' + cardDragAttrs + dropAttrs + '>' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
 }
 
 function getTimetableHighScheduleLines(cls) {
@@ -2889,6 +2944,25 @@ window.ttSetMyOnly = function(isMy) {
     renderTimetableGridOnly();
 };
 
+window.ttSetStudentSearch = function(value) {
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        state.ui.timetableStudentSearch = String(value || '');
+    }
+    renderTimetableGridOnly();
+};
+
+window.ttClearStudentSearch = function() {
+    if (typeof state !== 'undefined') {
+        if (!state.ui) state.ui = {};
+        state.ui.timetableStudentSearch = '';
+    }
+    var input = document.getElementById('tt-student-search');
+    if (input) input.value = '';
+    renderTimetableGridOnly();
+    if (input && typeof input.focus === 'function') input.focus();
+};
+
 function getTimetablePrintTimestamp() {
     var now = new Date();
     var y = now.getFullYear();
@@ -2972,7 +3046,11 @@ function buildTimetablePrintClassBlock(cls, includeSchedule) {
         }).join('') + (students.length > TIMETABLE_STUDENT_SLOT_COUNT ? '<span>+' + (students.length - TIMETABLE_STUDENT_SLOT_COUNT) + '</span>' : '') + '</div>'
         : '<div class="pt-students pt-students-empty">학생 없음</div>';
 
-    return '<div class="pt-class">' +
+    var printClass = 'pt-class';
+    var gradeToneClass = getTimetableGradeToneClass(cls);
+    if (gradeToneClass) printClass += ' ' + gradeToneClass;
+
+    return '<div class="' + printClass + '">' +
         scheduleHtml +
         '<div class="pt-class-name">' + apEscapeHtml(cls && cls.name || '') + '</div>' +
         bookHtml +
@@ -3071,6 +3149,12 @@ function buildTimetablePrintDocument() {
         '.pt-period span{display:block;margin-top:3px;color:#6b7280;font-size:9.5px;}' +
         '.pt-timetable-table td{height:134px;padding:6px;background:#fff;}' +
         '.pt-class{break-inside:avoid;border:1px solid #d1d5db;border-radius:4px;padding:6px;margin-bottom:5px;background:#fff;}' +
+        '.pt-class.tt-card-grade-m1{background:#F0F7FF;border-color:#b8dafc;}' +
+        '.pt-class.tt-card-grade-m2{background:#F4FBF3;border-color:#bce3c4;}' +
+        '.pt-class.tt-card-grade-m3{background:#FFF7EA;border-color:#ffd59a;}' +
+        '.pt-class.tt-card-grade-h1{background:#FFF1F3;border-color:#ffc3ce;}' +
+        '.pt-class.tt-card-grade-h2{background:#F6F1FF;border-color:#d7c8ff;}' +
+        '.pt-class.tt-card-grade-h3{background:#EEF9F8;border-color:#b9e4df;}' +
         '.pt-class-name{font-size:11px;font-weight:800;line-height:1.3;color:#111827;word-break:keep-all;}' +
         '.pt-class-schedule,.pt-class-books,.pt-class-progress{font-size:9.5px;font-weight:700;line-height:1.3;color:#4b5563;margin-top:3px;word-break:keep-all;}' +
         '.pt-class-progress{color:#1d4ed8;}' +
@@ -3149,6 +3233,7 @@ function renderTimetable() {
     var myOnly = isAdminUserForTimetable ? false : !!(typeof state !== 'undefined' && state.ui && state.ui.timetableMyOnly);
     var title = getTimetableDateTitle();
     var isMid = section === 'middle';
+    var studentSearch = getTimetableStudentSearchTerm();
 
     root.innerHTML =
         '<div id="timetable-root" style="width:100%; padding:0; box-sizing:border-box;">' +
@@ -3163,6 +3248,10 @@ function renderTimetable() {
                     '<button class="tab-btn' + (!isMid ? ' active' : '') + '" data-tt-section-btn="high" onclick="window.ttSetSection(\'high\')">고등부</button>' +
                     '<button class="tab-btn' + (!myOnly ? ' active' : '') + '" data-tt-myonly-btn="false" onclick="window.ttSetMyOnly(false)">전체 보기</button>' +
                     (isAdminUserForTimetable ? '' : '<button class="tab-btn' + (myOnly ? ' active' : '') + '" data-tt-myonly-btn="true" onclick="window.ttSetMyOnly(true)">내 반 보기</button>') +
+                '</div>' +
+                '<div class="tt-search-wrap">' +
+                    '<input id="tt-student-search" class="tt-search-input" value="' + apEscapeHtml(studentSearch) + '" placeholder="학생 검색" oninput="window.ttSetStudentSearch(this.value)">' +
+                    '<button class="tt-search-clear" type="button" onclick="window.ttClearStudentSearch()" title="검색 지우기">×</button>' +
                 '</div>' +
                 '<button class="tt-print-btn" type="button" onclick="window.ttPrintTimetableReport()">인쇄</button>' +
             '</div>' +
