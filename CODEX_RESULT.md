@@ -2,66 +2,71 @@
 
 ## 1. 생성/수정 파일
 
-- 수정: `apmath/js/student-export.js`
+- 수정: `apmath/js/core.js`
 - 수정: `docs/implemented/CURRENT_FRONTEND_MAP.md`
 - 수정: `docs/implemented/CURRENT_REGRESSION_RISK_MAP.md`
-- 수정: `docs/03_DOMAIN_INDEX.md`
 - 수정: `docs/domains/STUDENTS_CLASSES_DOMAIN.md`
-- 수정: `docs/domains/OPERATIONS_CONSULTATION_DOMAIN.md`
+- 수정: `docs/domains/TIMETABLE_DOMAIN.md`
 - 수정: `CODEX_RESULT.md`
-- 확인: `apmath/js/student.js`는 `node --check`만 수행했고 이번 보정 목적으로 수정하지 않음
 
 ## 2. 구현 완료 또는 확인 완료
 
-- 학생 출력 Round 1에서 `상담 목록` preset, 체크박스, 컬럼, row 생성, 다운로드 분기를 제거했다.
-- Round 1 포함 시트는 `전체 학생 명단`, `반별 학생 명단`, `연락처 목록`, `주소·차량 목록` 4개로 고정했다.
-- 기본 선택값은 전체/반별/연락처 3개만 선택되며 주소·차량은 선택 안 됨 상태로 유지했다.
-- 민감 정보 confirm은 주소·차량 목록 선택 시에만 뜨도록 문구와 조건을 정리했다.
-- `출력정보` 시트, admin guard, 선택 시트만 다운로드, 전화번호 문자열 처리, PIN/학생 memo 미포함 정책은 유지했다.
-- 문서에서 상담 목록 Round 1 포함 설명을 제거하고, 상담 목록은 Round 2 Worker export API/audit_logs 기반으로 보류한다고 정정했다.
-- `core.js`, `ui.js`, `management.js`, `service-worker.js`, Worker route/index/schema/migration은 수정하지 않았다.
-- `codex-self-audit`, `codex-work-review-pack` 스킬은 현재 설치된 스킬 목록에 없어 동일 기준으로 수동 자체 검수와 수동 검수팩 생성을 수행했다.
+- `CODEX_TASK.md`를 처음부터 끝까지 다시 읽고 작업 루트와 상태를 확인했다.
+- `core.js`의 class option label helper 실제 함수명(`apmsGetClassOptionTimeParts`, `apmsGetClassOptionDisplayLabel`)을 확인했다.
+- `apmsGetClassOptionTimeParts(cls)`에 표준 운영 시간대 기반 교시 자동 추론을 추가했다.
+- `4:50~6:20`, `04:50~06:20`, `16:50~18:20`은 `1교시`로 추론한다.
+- `6:30~8:00`, `06:30~08:00`, `18:30~20:00`은 `2교시`로 추론한다.
+- `8:00~9:30`, `08:00~09:30`, `20:00~21:30`은 `3교시`로 추론한다.
+- 기존 `1교시 4:50~6:20`, `4:50~6:20 (1교시)`, `1교시 · 4:50~6:20` 형식도 계속 처리됨을 확인했다.
+- `~`, `-`, `–`, `—` 범위 구분자를 처리하도록 range 추출을 보강했다.
+- DB `time_label`, `classes.name`, option value, `class_id`/`version_class_id` 저장 흐름은 변경하지 않았다.
+- 학생 추가/수정, 시간표 배정/이동, 누적 출석부/학교시험 payload 구조는 변경하지 않았다.
+- `codex-self-audit`, `codex-work-review-pack` 스킬은 현재 설치된 스킬 목록과 로컬 검색에서 찾을 수 없어 수동 자체 검수와 수동 검수팩 생성을 수행했다.
 
 ## 3. 실행 결과
 
-- `pwd`: PASS, `/mnt/c/Users/USER/Desktop/AP------`
-- `git status --short --untracked-files=all`: PASS, 작업 전부터 대량 dirty 상태 확인
-- `node --check apmath/js/student-export.js`: PASS
+- `pwd`: `/mnt/c/Users/USER/Desktop/AP------`
+- `git status --short --untracked-files=all`: 작업 전부터 광범위한 기존 수정 파일이 존재함을 확인했다.
+- `node --check apmath/js/core.js`: PASS
 - `node --check apmath/js/student.js`: PASS
+- `node --check apmath/js/management.js`: PASS
+- `node --check apmath/js/cumulative.js`: PASS
+- `node --check apmath/js/timetable.js`: PASS
+- `node --check apmath/js/ui.js`: PASS
 - `node tests/admin-recent-consultation-panel.test.js`: PASS
 - `node tests/manual-audience.test.js`: PASS
-- `node tests/navigation-history.test.js`: PASS
-- `rg -n "consultations|상담 목록|상담 내용|next_action|nextAction" apmath/js/student-export.js`: PASS, 결과 없음
-- 프로젝트 내부 `reports/patchpacks` 또는 review/patch zip 잔존 확인: PASS, 결과 없음
-- 검수팩 생성: PASS, Windows PowerShell `Compress-Archive` 사용
+- `node tests/navigation-history.test.js`: PASS (`Navigation history contract passed`)
+- node/vm helper 검증: 12개 time_label 케이스 모두 기대 교시 포함 확인
 
 ## 4. 결과 요약
 
-AP Math OS 학생 출력/엑셀 내보내기 Round 1 보정을 완료했다. 상담 목록은 frontend lazy load 데이터 불완전성 때문에 Round 1에서 제외했으며, 현재 XLSX 출력은 admin 전용 4개 시트와 항상 포함되는 출력정보 시트만 생성한다. teacher 출력, PIN 출력, 학생 memo 출력, Worker export API, audit_logs는 구현하지 않았다.
+반 선택 dropdown option 표시명에서 운영 DB에 `4:50~6:20`처럼 시간대만 저장된 경우에도 `1교시 · 4:50~6:20`처럼 교시가 함께 보이도록 보정했다. 변경은 프론트엔드 표시명 helper에 한정되며 저장값은 변경하지 않는다.
 
 ## 5. 다음 조치
 
-- 브라우저에서 admin/teacher 계정으로 수동 UI 검수를 진행한다.
-- 상담 목록 출력은 Round 2에서 Worker export API, 기간/범위 필터, audit_logs 기록을 포함해 별도 설계한다.
-- 금지 작업인 git add/commit/push, deploy, DB schema 변경, migration 추가, Worker route/index 수정은 수행하지 않았다.
+수동 확인 항목:
 
-수동 검수 체크리스트:
-- admin 로그인 시 학생관리 화면에 학생 명단 출력 버튼이 보이는지
-- teacher 로그인 시 학생 명단 출력 버튼이 보이지 않는지
-- 기본 선택 시 전체 학생 명단/반별 학생 명단/연락처 목록만 선택되어 있는지
-- 주소·차량 목록 선택 시 confirm이 뜨는지
-- 상담 목록 체크박스가 없는지
-- 선택한 시트만 XLSX에 들어가는지
-- 출력정보 시트가 항상 들어가는지
-- 전화번호 010 앞자리 0이 보존되는지
-- PIN 컬럼이 없는지
-- 학생 memo가 없는지
-- 상담 목록 시트가 없는지
-- 기존 학생 등록/수정/상담 저장이 그대로 동작하는지
+- admin/원장 모드에서 screenshot과 같은 반 선택 dropdown을 연다.
+- 반 선택 option이 `중1A · 정겨운 · 월수금 · 1교시 · 4:50~6:20` 형태로 보이는지 확인한다.
+- `4:50~6:20`만 저장된 반도 `1교시`가 붙는지 확인한다.
+- `6:30~8:00`만 저장된 반도 `2교시`가 붙는지 확인한다.
+- `8:00~9:30`만 저장된 반도 `3교시`가 붙는지 확인한다.
+- 학생 추가 모달의 반 선택에서 교시가 보이는지 확인한다.
+- 학생 수정 모달의 반 선택에서 교시가 보이는지 확인한다.
+- 누적 출석부/학교시험 반 필터에서 기존 동작이 깨지지 않는지 확인한다.
+- 선택 후 저장되는 `class_id`가 기존과 동일한지 확인한다.
+- DB 반명 `classes.name`이 변경되지 않았는지 확인한다.
+- teacher 모드 기존 보기 흐름이 깨지지 않았는지 확인한다.
+
+금지 작업 확인:
+
+- `git add`, `git commit`, `git push` 미실행
+- `wrangler deploy`, `wrangler d1 migrations apply` 미실행
+- Worker route, schema, migration, DB 저장 구조 미수정
+- 학생 출력/엑셀 기능 미수정
 
 ## 6. 검수팩
 
-- 검수팩 zip 경로: `/mnt/c/Users/USER/Downloads/ap_student_export_round1_fix_review_pack_20260526_183741.zip`
-- Windows 경로: `C:\Users\USER\Downloads\ap_student_export_round1_fix_review_pack_20260526_183741.zip`
-- 포함 대상: 이번 작업 수정/신규 핵심 파일과 회귀 확인용 컨텍스트 파일
-- 프로젝트 전체 압축 없음
+- 검수팩 zip 경로: `/mnt/c/Users/USER/Downloads/ap_class_select_option_period_fix_review_pack_20260526_200333.zip`
+- Windows 경로: `C:\Users\USER\Downloads\ap_class_select_option_period_fix_review_pack_20260526_200333.zip`
+- 포함 대상: `apmath/js/core.js`, `apmath/js/student.js`, `apmath/js/management.js`, `apmath/js/cumulative.js`, `apmath/js/timetable.js`, `apmath/js/ui.js`, `apmath/index.html`, 수정한 docs, `CODEX_RESULT.md`

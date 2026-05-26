@@ -1003,7 +1003,7 @@ function openAttendanceLedger() {
 
     const selectedClassId = state.ui.attendanceLedgerClassId || '';
     const classOptions = activeClasses
-        .map(c => `<option value="${apEscapeHtml(c.id)}"${String(c.id) === String(selectedClassId) ? ' selected' : ''}>${apEscapeHtml(c.name)}</option>`)
+        .map(c => `<option value="${apEscapeHtml(c.id)}"${String(c.id) === String(selectedClassId) ? ' selected' : ''}>${apEscapeHtml(apmsGetClassOptionDisplayLabel(c, activeClasses))}</option>`)
         .join('');
 
     const teacherHtml = isAdmin
@@ -1520,7 +1520,7 @@ function openSchoolExamLedger() {
         .join('');
 
     const classOptions = '<option value="">전체 반</option>' + filteredClasses.map(c => {
-        return '<option value="' + apEscapeHtml(c.id) + '"' + (String(c.id) === String(state.ui.schoolExamClassId) ? ' selected' : '') + '>' + apEscapeHtml(c.name) + '</option>';
+        return '<option value="' + apEscapeHtml(c.id) + '"' + (String(c.id) === String(state.ui.schoolExamClassId) ? ' selected' : '') + '>' + apEscapeHtml(apmsGetClassOptionDisplayLabel(c, filteredClasses)) + '</option>';
     }).join('');
 
     const yearOptions = Array.from({ length: 5 }, function(_, i) {

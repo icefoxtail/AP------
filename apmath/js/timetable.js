@@ -517,6 +517,163 @@ function getTimetableClassTeacherName(cls) {
     return realClass ? _ttNormalizeTeacherName(realClass.teacher_name || realClass.teacherName || realClass.teacher || '') : '';
 }
 
+function getTimetableDayGroupDisplayLabel(value) {
+    var raw = String(value || '').trim().toLowerCase();
+    if (raw === 'mwf') return '월수금';
+    if (raw === 'ttf') return '화목금';
+    var dayMap = {
+        '1': '월', mon: '월', monday: '월',
+        '2': '화', tue: '화', tuesday: '화',
+        '3': '수', wed: '수', wednesday: '수',
+        '4': '목', thu: '목', thursday: '목',
+        '5': '금', fri: '금', friday: '금',
+        '6': '토', sat: '토', saturday: '토',
+        '0': '일', '7': '일', sun: '일', sunday: '일'
+    };
+    var parts = raw.split(/[,\s\/|·]+/).map(function(part) {
+        return dayMap[part] || '';
+    }).filter(Boolean);
+    return parts.length ? parts.join('') : String(value || '').trim();
+}
+
+function getTimetableReadableClock(value) {
+    var m = String(value || '').trim().match(/^(\d{1,2}):(\d{2})/);
+    if (!m) return '';
+    var hour = Number(m[1]);
+    if (hour > 12) hour -= 12;
+    if (hour === 0) hour = 12;
+    return String(hour) + ':' + m[2];
+}
+
+function getTimetableTimeDisplayLabel(rowOrCls) {
+    var row = rowOrCls || {};
+    var period = String(row.period_key || '').trim();
+    if (period && TIMETABLE_MIDDLE_PERIOD_TIMES[period]) {
+        var time = TIMETABLE_MIDDLE_PERIOD_TIMES[period];
+        return getTimetableReadableClock(time.start) + '~' + getTimetableReadableClock(time.end);
+    }
+
+    var start = getTimetableReadableClock(row.start_time || row.start || '');
+    var end = getTimetableReadableClock(row.end_time || row.end || '');
+    if (start && end) return start + '~' + end;
+
+    var raw = String(row.time_label || '').trim();
+    if (!raw) return '';
+    var range = raw.match(/(\d{1,2}:\d{2})\s*~\s*(\d{1,2}:\d{2})/);
+    if (range) return getTimetableReadableClock(range[1]) + '~' + getTimetableReadableClock(range[2]);
+    return raw.replace(/^\s*[123]교시\s*/, '').trim();
+}
+
+function getTimetableClassOptionPlacementRows(cls) {
+    if (!cls) return [];
+    var teacherName = getTimetableClassTeacherName(cls);
+    var slots = getTimetableClassSlotRows(cls.id);
+    if (slots.length) {
+        var grouped = {};
+        slots.forEach(function(slot) {
+            var start = normalizeTimetableTime(slot.start_time || slot.start || '');
+            var end = normalizeTimetableTime(slot.end_time || slot.end || '');
+            var key = start + '~' + end;
+            if (!start || !end) return;
+            if (!grouped[key]) grouped[key] = { start_time: start, end_time: end, days: [] };
+            grouped[key].days.push(slot.day_of_week || slot.day || '');
+        });
+        return Object.keys(grouped).map(function(key) {
+            var group = grouped[key];
+            var dayGroup = getTimetableMiddleGroupFromSlotDays(group.days);
+            return {
+                day_group: dayGroup,
+                day_label: dayGroup ? getTimetableDayGroupDisplayLabel(dayGroup) : getTimetableDayGroupDisplayLabel(group.days.join(',')),
+                period_key: getTimetableMiddlePeriodFromSlot(group),
+                teacher_name: teacherName,
+                start_time: group.start_time,
+                end_time: group.end_time
+            };
+        }).filter(function(row) {
+            return !!(row.day_label || row.period_key || row.start_time || row.end_time);
+        });
+    }
+
+    return getTimetablePlacementRows(cls).map(function(row) {
+        return Object.assign({}, row, {
+            day_label: getTimetableDayGroupDisplayLabel(row.day_group),
+            teacher_name: row.teacher_name || teacherName
+        });
+    });
+}
+
+function getTimetableClassScheduleOptionMeta(cls) {
+    var rows = getTimetableClassOptionPlacementRows(cls);
+    if (!rows.length) {
+        return {
+            teacher: getTimetableClassTeacherName(cls),
+            dayGroup: getTimetableDayGroupDisplayLabel(cls && (cls.day_group || cls.schedule_days)),
+            period: getTimetablePeriodKey(cls) !== 'unknown' ? getTimetablePeriodKey(cls) : '',
+            time: getTimetableTimeDisplayLabel(cls),
+            extraCount: 0
+        };
+    }
+    var first = rows[0];
+    return {
+        teacher: first.teacher_name || getTimetableClassTeacherName(cls),
+        dayGroup: first.day_label || getTimetableDayGroupDisplayLabel(first.day_group),
+        period: first.period_key || '',
+        time: getTimetableTimeDisplayLabel(first),
+        extraCount: Math.max(0, rows.length - 1)
+    };
+}
+
+function getTimetableClassOptionBaseLabel(cls) {
+    var name = String(cls && cls.name || '').trim() || '미지정 반';
+    var meta = getTimetableClassScheduleOptionMeta(cls);
+    var parts = [name, meta.teacher, meta.dayGroup, meta.period, meta.time].filter(function(part) {
+        return String(part || '').trim();
+    });
+    var label = parts.join(' · ');
+    if (meta.extraCount > 0) label += ' 외 ' + meta.extraCount;
+    return label;
+}
+
+function getTimetableClassOptionIdentity(cls) {
+    return String(cls && (cls.version_class_id || cls.id || cls.source_class_id) || '').trim();
+}
+
+function getTimetableClassOptionDuplicateIndex(cls, label) {
+    var targetId = getTimetableClassOptionIdentity(cls);
+    if (!targetId || !label) return 1;
+
+    var ctx = getTimetableRenderContext();
+    var rows;
+    if (ctx && ctx.classesById) {
+        var seen = {};
+        rows = Object.keys(ctx.classesById).map(function(key) {
+            var row = ctx.classesById[key];
+            var id = getTimetableClassOptionIdentity(row);
+            if (!id || seen[id]) return null;
+            seen[id] = true;
+            return row;
+        }).filter(Boolean);
+    } else {
+        rows = getTimetableClassList();
+    }
+
+    var duplicates = rows.filter(function(row) {
+        return getTimetableClassOptionBaseLabel(row) === label;
+    });
+    if (duplicates.length <= 1) return 1;
+
+    var index = duplicates.findIndex(function(row) {
+        return getTimetableClassOptionIdentity(row) === targetId;
+    });
+    return index >= 0 ? index + 1 : 1;
+}
+
+function getTimetableClassOptionLabel(cls) {
+    var label = getTimetableClassOptionBaseLabel(cls);
+    var duplicateIndex = getTimetableClassOptionDuplicateIndex(cls, label);
+    return duplicateIndex > 1 ? label + ' · #' + duplicateIndex : label;
+}
+
 function isTimetableMyClass(cls) {
     if (!cls) return false;
     var current = _ttGetCurrentTeacherName();
@@ -1117,7 +1274,7 @@ function openTimetableDraftAddStudentModal(classId) {
     }
     showModal('학생 추가', '' +
         '<div style="display:flex; flex-direction:column; gap:10px;">' +
-            '<div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.5;">' + apEscapeHtml(cls.name || '') + '</div>' +
+            '<div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.5;">' + apEscapeHtml(getTimetableClassOptionLabel(cls)) + '</div>' +
             '<input id="tt-draft-student-name" class="btn" placeholder="학생 이름" style="text-align:left; background:var(--surface-2); border:none;">' +
             '<input id="tt-draft-student-school" class="btn" placeholder="학교" style="text-align:left; background:var(--surface-2); border:none;">' +
             '<select id="tt-draft-student-grade" class="btn" style="background:var(--surface-2); border:none;">' +
@@ -1212,9 +1369,8 @@ function getTimetableConflictDayLabel(day) {
 
 function getTimetableConflictClassLabel(classId) {
     var cls = findTimetableClassById(classId);
-    var name = cls && cls.name ? cls.name : String(classId || '-');
-    var teacher = cls && cls.teacher_name ? ' · ' + cls.teacher_name : '';
-    return name + teacher;
+    if (cls) return getTimetableClassOptionLabel(cls);
+    return String(classId || '-');
 }
 
 function getTimetableConflictTargetLabel(conflict) {
@@ -1998,8 +2154,9 @@ function handleTimetableCellDrop(event) {
 
 function describeTimetablePlacement(row) {
     if (!row) return '-';
-    var dg = row.day_group === 'mwf' ? '월수금' : (row.day_group === 'ttf' ? '화목금' : row.day_group || '-');
-    return [dg, row.period_key || '-', row.teacher_name || '-'].join(' / ');
+    var dg = getTimetableDayGroupDisplayLabel(row.day_group) || '-';
+    var time = getTimetableTimeDisplayLabel(row);
+    return [dg, row.period_key || '-', time || '', row.teacher_name || '-'].filter(Boolean).join(' / ');
 }
 
 function openTimetableClassMoveConfirmModal(ctx) {
@@ -2013,7 +2170,7 @@ function openTimetableClassMoveConfirmModal(ctx) {
     }
     showModal('반 시간표 이동 확인', '' +
         '<div style="display:flex; flex-direction:column; gap:12px; padding:0 4px 4px;">' +
-            '<div style="font-size:14px; font-weight:800; color:var(--text);">' + apEscapeHtml(ctx.cls.name || '') + '</div>' +
+            '<div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.5;">' + apEscapeHtml(getTimetableClassOptionLabel(ctx.cls)) + '</div>' +
             '<div style="display:grid; grid-template-columns:86px 1fr; gap:8px 10px; font-size:13px; line-height:1.5;">' +
                 '<div style="color:var(--secondary); font-weight:700;">현재 위치</div>' +
                 '<div style="font-weight:700;">' + apEscapeHtml(describeTimetablePlacement(current)) + '</div>' +
@@ -2299,9 +2456,9 @@ function openTimetableTransferConfirmModal(ctx) {
             '<div style="font-size:14px; font-weight:700; color:var(--text); line-height:1.5;">' + apEscapeHtml(ctx.student.name || '') + '</div>' +
             '<div style="display:grid; grid-template-columns:78px 1fr; gap:8px 10px; font-size:13px; line-height:1.5;">' +
                 '<div style="color:var(--secondary); font-weight:700;">현재 반</div>' +
-                '<div style="color:var(--text); font-weight:700;">' + apEscapeHtml(ctx.sourceClass.name || '') + '</div>' +
+                '<div style="color:var(--text); font-weight:700;">' + apEscapeHtml(getTimetableClassOptionLabel(ctx.sourceClass)) + '</div>' +
                 '<div style="color:var(--secondary); font-weight:700;">이동할 반</div>' +
-                '<div style="color:var(--text); font-weight:700;">' + apEscapeHtml(ctx.targetClass.name || '') + '</div>' +
+                '<div style="color:var(--text); font-weight:700;">' + apEscapeHtml(getTimetableClassOptionLabel(ctx.targetClass)) + '</div>' +
             '</div>' +
             warningHtml +
             '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +

@@ -8,6 +8,8 @@
 - 시간 미정과 구분 라벨은 분리한다.
 - 기본 view 버튼을 과다 노출하지 않는다.
 - 중등 90분, 고등 120분 기준과 conflict 예외 기준을 보존한다.
+- 학생 배정/이동 등 시간표 반 선택 드롭다운 option/확인 UI의 반 표시명은 중복 반명 방지를 위해 `반명 · 담당 · 요일/교시/시간` 기준으로 보강하되, DB 반명과 저장 id는 변경하지 않는다.
+- 학생 추가/수정 등 공통 class select option 표시명은 `core.js`의 class option helper와 같은 기준을 공유하며, 표준 운영 시간대는 표시명에서만 1/2/3교시를 자동 추론한다.
 
 ## B. 현재 구현 구조
 
@@ -15,6 +17,7 @@
 - routes: `timetable-versions.js`, `timetable-conflicts.js`, `class-time-slots.js`, `enrollments.js`, `classes.js`
 - DB: `class_time_slots`, `timetable_versions`, `timetable_version_slots`, `timetable_conflict_logs`, `timetable_conflict_overrides`, `timetable_version_classes`, `timetable_version_student_assignments`, `timetable_version_new_students`, `timetable_version_apply_logs`
 - UI: 중등부/고등부, 전체 보기/내 반 보기 등 기존 문구 확인됨
+- 반 표시명: 시간표 반 선택 드롭다운 option, 학생 배정/이동 확인 UI와 충돌 상세는 표시명만 보강하고 `classes.name`, `class_id`, `version_class_id`, `timetable_version_student_assignments` 저장 흐름은 유지한다. 시간표 카드 제목 자체는 변경 대상이 아니다.
 - 인쇄: `timetable.js`에서 현재 화면 조건(중등부/고등부, 전체 보기/내 반 보기, 운영/초안)을 기준으로 A4 가로 인쇄 전용 HTML을 생성한다.
 
 ## C. 데이터/API 흐름
@@ -28,6 +31,7 @@
 - teacher/student/room conflict 기준 약화
 - view 버튼 과다 노출
 - 시간 미정과 라벨 혼선
+- 반 선택 option/확인 UI 표시명 보강이 카드 반명, DB 반명, 배정 payload를 바꾸는 것
 - 인쇄 시 화면 DOM/사이드바/필터를 그대로 출력해 A4 가로 폭이 잘리는 것
 
 ## E. 추가 계획
