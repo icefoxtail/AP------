@@ -106,10 +106,10 @@ function isClassScheduledTodayForDashboard(cid) {
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
 
-    const cIds = state.db.class_students
+    const cIds = (state?.db?.class_students || [])
         .filter(m => String(m.class_id) === String(cid))
         .map(m => String(m.student_id));
-    const hasActiveAttendance = state.db.attendance.some(
+    const hasActiveAttendance = (state?.db?.attendance || []).some(
         a => a.date === todayStr && cIds.includes(String(a.student_id)) && a.status === '등원'
     );
     if (hasActiveAttendance) return true;
@@ -415,6 +415,7 @@ function renderJournalDraftPreview(dateStr) {
 
 function injectDashboardOpsStyles() {
     if (typeof document === 'undefined') return;
+    if (typeof document.getElementById !== 'function' || typeof document.querySelector !== 'function' || !document.head) return;
     if (!document.getElementById('dashboard-foundation-css') && !document.querySelector('link[href$="dashboard-foundation.css"]')) {
         const link = document.createElement('link');
         link.id = 'dashboard-foundation-css';
@@ -1204,7 +1205,7 @@ function renderAdminNewStudentPanel(data) {
                 <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">최근 등록 원생</h3>
                 <span class="ap-dashboard-section-subtitle" style="font-size:12px; font-weight:400; color:var(--secondary);">최근 30일 ${data.recentStudents.length}명</span>
             </div>
-            <div class="card ap-dashboard-list" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
+            <div class="card ap-dashboard-list ap-admin-recent-student-grid" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
                 ${rows || `<div class="ap-dashboard-empty" style="height:52px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">최근 등록 원생이 없습니다.</div>`}
             </div>
         </div>
@@ -1744,7 +1745,7 @@ function handleAdminGlobalSearchInput(value) {
     if (!state.ui) state.ui = {};
     if (!keyword) {
         state.ui.adminGlobalSearchResults = [];
-        area.innerHTML = `<div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">학생, 반, 학교, 시험, 자료를 검색하세요.</div>`;
+        area.innerHTML = '';
         return;
     }
 
@@ -1779,20 +1780,60 @@ function openAdminGlobalSearchResult(index) {
 
 function renderAdminGlobalSearchPanel() {
     return `
-        <div class="ap-admin-section ap-dashboard-section" style="margin-bottom:18px;">
-            <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">전체 검색</h3>
-            </div>
-            <div style="padding:10px; border:1px solid var(--border); border-radius:18px; background:var(--surface-2);">
+        <div class="ap-admin-top-search">
+            <div class="ap-admin-top-search__box">
+                <span class="ap-admin-top-search__icon" aria-hidden="true">⌕</span>
                 <input id="admin-global-search-input"
                        type="search"
                        autocomplete="off"
                        placeholder="학생 · 반 · 학교 · 시험 · 자료 검색"
                        oninput="handleAdminGlobalSearchInput(this.value)"
-                       style="width:100%; height:44px; border:1px solid var(--border); border-radius:14px; background:var(--surface); color:var(--text); padding:0 14px; font-size:14px; font-weight:500; box-sizing:border-box;">
-                <div id="admin-global-search-results" style="display:flex; flex-direction:column; gap:7px; margin-top:8px;">
-                    <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">학생, 반, 학교, 시험, 자료를 검색하세요.</div>
-                </div>
+                       class="ap-admin-top-search__input">
+            </div>
+            <div id="admin-global-search-results" class="ap-admin-top-search__results"></div>
+        </div>
+    `;
+}
+
+function adminRenderTeacherGradePills(students) {
+    const list = Array.isArray(students) ? students : [];
+    const grades = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
+    const gradeCounts = {};
+    list.forEach(s => {
+        const grade = adminGetGradeLabel(s);
+        gradeCounts[grade] = (gradeCounts[grade] || 0) + 1;
+    });
+    const pills = grades.map(g => {
+        const count = Number(gradeCounts[g] || 0);
+        if (count === 0) return '';
+        return `<span class="admin-teacher-grade-pill"><span>${apEscapeHtml(g)}</span><span>${count}명</span></span>`;
+    }).join('');
+    return `
+        <div class="admin-teacher-grade-pills">
+            ${pills || `<span class="admin-teacher-grade-pill admin-teacher-grade-pill--empty">재원생이 없습니다.</span>`}
+        </div>
+    `;
+}
+
+function adminRenderTodayJournalSection(data) {
+    const todayClasses = (state?.db?.classes || []).filter(c => {
+        if (Number(c?.is_active) === 0) return false;
+        if (!isMiddleSchoolClass(c)) return false;
+        const summary = data?.classSummaries?.[c.id];
+        return !!summary && summary.isScheduled && summary.activeCount > 0;
+    });
+    const contentHtml = todayClasses.length === 0
+        ? '수업 없음'
+        : todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ');
+
+    return `
+        <div class="ap-admin-section ap-dashboard-section ap-admin-today-journal" style="margin-bottom:28px;">
+            <div class="ap-dashboard-journal-head ap-dashboard-section-head">
+                <h3 class="ap-dashboard-journal-title">오늘일지</h3>
+                <span id="dashboard-journal-content" class="ap-dashboard-journal-summary">${contentHtml}</span>
+            </div>
+            <div id="dashboard-journal-card" class="ap-dashboard-journal-body" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
+                ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
             </div>
         </div>
     `;
@@ -1813,10 +1854,12 @@ function renderAdminControlCenter() {
         return (todayTime - createdTime) / (1000*3600*24) <= 30; 
     });
     const adminOverviewData = adminBuildOverviewData(todayStr, todayTime);
+    const dashboardData = computeDashboardData();
+    const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
     const headerHtml = `
-        <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+        <div class="ap-admin-dashboard-head ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
             <h3 class="ap-dashboard-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">운영센터</h3>
-            <span class="ap-dashboard-section-subtitle" style="font-size:12px; font-weight:400; color:var(--secondary);">원장님</span>
+            ${adminGlobalSearchPanel}
         </div>
     `;
 
@@ -1845,12 +1888,11 @@ function renderAdminControlCenter() {
         </div>
     `;
 
-    const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
-
     const todayOverviewHtml = renderAdminStudentOverviewPanel(adminOverviewData);
     const needCheckHtml = renderAdminNeedCheckPanel(adminOverviewData);
     const recentStudentsHtml = renderAdminNewStudentPanel(adminOverviewData);
     const recentConsultationHtml = renderAdminRecentConsultationPanel();
+    const todayJournalHtml = adminRenderTodayJournalSection(dashboardData);
 
     const teacherCardsHtml = `
         <div class="ap-admin-section ap-dashboard-section" style="margin-bottom:28px;">
@@ -2020,11 +2062,11 @@ function renderAdminControlCenter() {
         ${adminShortcutRow}
         ${todayOverviewHtml}
         ${teacherCardsHtml}
+        ${todayJournalHtml}
         ${recentConsultationHtml}
-        ${needCheckHtml}
         ${recentStudentsHtml}
+        ${needCheckHtml}
         ${adminScheduleHtml}
-        ${adminGlobalSearchPanel}
     </div>`;
 }
 
@@ -2132,39 +2174,45 @@ function sortClassesForDashboard(classes) {
 
 function computeDashboardData() {
     const today = new Date().toLocaleDateString('sv-SE');
-    const activeStudents = state.db.students.filter(s => s.status === '재원');
+    const students = state?.db?.students || [];
+    const classes = state?.db?.classes || [];
+    const classStudents = state?.db?.class_students || [];
+    const attendanceRows = state?.db?.attendance || [];
+    const homeworkRows = state?.db?.homework || [];
+    const operationMemos = state?.db?.operation_memos || [];
+    const activeStudents = students.filter(s => s.status === '재원');
     
     const scheduledActiveStudents = activeStudents.filter(s => {
-        const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
-        const cls = state.db.classes.find(c => c.id === cid);
+        const cid = classStudents.find(m => m.student_id === s.id)?.class_id;
+        const cls = classes.find(c => c.id === cid);
         if (cls && Number(cls.is_active) === 0) return false;
         return isClassScheduledTodayForDashboard(cid);
     });
     
     const scheduledIds = new Set(scheduledActiveStudents.map(s => s.id));
     
-    const absentCount = state.db.attendance.filter(a => a.date === today && a.status === '결석' && scheduledIds.has(a.student_id)).length;
+    const absentCount = attendanceRows.filter(a => a.date === today && a.status === '결석' && scheduledIds.has(a.student_id)).length;
     const presentCount = scheduledActiveStudents.length - absentCount;
     
-    const hwNotDoneCount = state.db.homework.filter(h => h.date === today && h.status === '미완료' && scheduledIds.has(h.student_id)).length;
+    const hwNotDoneCount = homeworkRows.filter(h => h.date === today && h.status === '미완료' && scheduledIds.has(h.student_id)).length;
 
-    const todoCount = state.db.operation_memos.filter(m => {
+    const todoCount = operationMemos.filter(m => {
         const isDone = m.is_done == 1 || m.is_done === true;
         const isPinned = m.is_pinned == 1 || m.is_pinned === true;
         return !isDone && (isPinned || m.memo_date === today);
     }).length;
 
     const classSummaries = {};
-    state.db.classes.filter(c => Number(c.is_active) !== 0).forEach(c => {
-        const cIds = state.db.class_students.filter(m => m.class_id === c.id).map(m => m.student_id);
+    classes.filter(c => Number(c.is_active) !== 0).forEach(c => {
+        const cIds = classStudents.filter(m => m.class_id === c.id).map(m => m.student_id);
         const cActiveIds = activeStudents.filter(s => cIds.includes(s.id)).map(s => s.id);
         let cMiss=0, cAbs=0;
         
         cActiveIds.forEach(id => {
-            const att = state.db.attendance.find(a => a.student_id===id && a.date===today);
+            const att = attendanceRows.find(a => a.student_id===id && a.date===today);
             if (att?.status === '결석') cAbs++;
             
-            const hw = state.db.homework.find(h => h.student_id===id && h.date===today);
+            const hw = homeworkRows.find(h => h.student_id===id && h.date===today);
             if (hw?.status === '미완료') cMiss++;
         });
         
@@ -3089,20 +3137,19 @@ function renderAdminTeacherCards(todayStr) {
         const safeName = dashboardEscapeAttr(tName);
         const chips = [
             { label: '담당반', value: `${myClasses.length}개` },
-            { label: '재원', value: `${activeStudents.length}명`, action: `openAdminTeacherGradeSummary('${safeName}')` }
+            { label: '재원', value: `${activeStudents.length}명` }
         ].map(item => {
             const inner = `<span>${apEscapeHtml(item.label)}</span><span class="admin-teacher-card__chip-value">${apEscapeHtml(item.value)}</span>`;
-            if (item.action) {
-                return `<button type="button" class="admin-teacher-card__chip admin-teacher-card__chip--button" onclick="event.stopPropagation(); ${item.action}" aria-label="${apEscapeHtml(`${tName} 선생님 ${item.label} ${item.value} 학년별 현황`)}">${inner}</button>`;
-            }
             return `<span class="admin-teacher-card__chip">${inner}</span>`;
         }).join('');
+        const gradePills = adminRenderTeacherGradePills(activeStudents);
 
         return `
             <div class="card ap-admin-teacher-card">
                 <div class="admin-teacher-card__head">
                     <div class="admin-teacher-card__name">${apEscapeHtml(tName)} 선생님</div>
                     <div class="admin-teacher-card__chips">${chips}</div>
+                    ${gradePills}
                 </div>
                 <div class="admin-teacher-card__journal">
                     <div class="admin-teacher-card__journal-title">이번 주 일지</div>
@@ -3133,41 +3180,6 @@ function adminGetTeacherActiveStudents(teacherName) {
     const students = (state?.db?.students || [])
         .filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원');
     return { myClasses, students };
-}
-
-function openAdminTeacherGradeSummary(teacherName) {
-    const safeName = dashboardEscapeAttr(teacherName || '');
-    const { students } = adminGetTeacherActiveStudents(teacherName);
-    const grades = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
-    const gradeCounts = {};
-    students.forEach(s => {
-        const grade = adminGetGradeLabel(s);
-        gradeCounts[grade] = (gradeCounts[grade] || 0) + 1;
-    });
-    const rows = grades.map(g => {
-        const count = Number(gradeCounts[g] || 0);
-        if (count === 0) return '';
-        return `
-            <div class="ap-dashboard-row" style="min-height:48px; padding:0 14px; border-bottom:1px solid var(--border);">
-                <div class="ap-dashboard-row-title" style="font-size:14px; font-weight:500;">${apEscapeHtml(g)}</div>
-                <span class="ap-dashboard-chip ap-dashboard-chip--outline" style="font-size:12px; font-weight:500;">${count}명</span>
-            </div>
-        `;
-    }).join('');
-    const body = `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="padding:14px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.4;">${apEscapeHtml(teacherName)} 선생님</div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px; line-height:1.45;">학년별 재원생 현황 · 총 ${students.length}명</div>
-            </div>
-            <div class="card ap-dashboard-list" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                ${rows || `<div class="ap-dashboard-empty" style="height:58px;">재원생이 없습니다.</div>`}
-            </div>
-            <button class="btn admin-teacher-modal-back" onclick="renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
-        </div>
-    `;
-    if (typeof showModalStep === 'function') showModalStep(`${teacherName} 선생님 재원`, body);
-    else showModal(`${teacherName} 선생님 재원`, body);
 }
 
 
@@ -3238,7 +3250,7 @@ function renderAdminTeacherStudents(teacherName) {
                 <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.4;">${apEscapeHtml(teacherName)} 선생님</div>
                 <div style="display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:12px; font-weight:500; color:var(--secondary); margin-top:6px; line-height:1.45;">
                     <span>담당반 ${myClasses.length}개</span>
-                    <button type="button" class="admin-teacher-card__chip admin-teacher-card__chip--button" style="min-height:24px; padding:0 8px;" onclick="openAdminTeacherGradeSummary('${safeName}')"><span>재원</span><span class="admin-teacher-card__chip-value">${activeStudents.length}명</span></button>
+                    <span class="admin-teacher-card__chip" style="min-height:24px; padding:0 8px;"><span>재원</span><span class="admin-teacher-card__chip-value">${activeStudents.length}명</span></span>
                     <span>최근 등록 ${recentStudents.length}명</span>
                 </div>
             </div>
