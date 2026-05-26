@@ -80,7 +80,7 @@
             border-bottom: 1px solid var(--border);
             padding: 0 16px;
             display: grid;
-            grid-template-columns: 88px minmax(0, 1fr) 88px;
+            grid-template-columns: 96px minmax(0, 1fr) 96px;
             align-items: center;
             height: 58px;
             min-height: 58px;
@@ -113,8 +113,7 @@
             line-height: 1.25;
         }
 
-        .mobile-header-menu,
-        .app-back-button {
+        .mobile-header-menu {
             width: 36px;
             height: 36px;
             margin: 0;
@@ -133,23 +132,64 @@
             font-family: inherit;
         }
 
-        .app-back-button {
-            color: #8a94a3;
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 1;
+        .app-back-btn {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0;
+            flex: 0 0 auto;
+            transition:
+                background-color 0.15s ease,
+                border-color 0.15s ease,
+                color 0.15s ease,
+                transform 0.08s ease;
         }
 
-        .mobile-header-menu:active,
-        .app-back-button:active {
+        .app-back-btn:hover {
+            background: var(--surface-2);
+            border-color: var(--border);
+            color: var(--text);
+        }
+
+        .mobile-header-menu:active {
             background: var(--bg);
             transform: scale(0.96);
         }
 
-        .app-back-button:disabled {
+        .app-back-btn:active {
+            transform: scale(0.96);
+        }
+
+        .app-back-btn:focus-visible {
+            outline: 2px solid rgba(var(--primary-rgb), 0.35);
+            outline-offset: 2px;
+        }
+
+        .app-back-btn:disabled {
             opacity: 0.62;
             cursor: default;
             pointer-events: none;
+        }
+
+        .app-back-btn__icon {
+            display: block;
+            width: 22px;
+            height: 22px;
+        }
+
+        .app-header-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: block;
+            object-fit: cover;
         }
 
         .mobile-header-brand {
@@ -159,15 +199,15 @@
 
         .mobile-header-user {
             justify-self: end;
-            width: 88px;
-            max-width: 88px;
+            width: 96px;
+            max-width: 96px;
             margin: 0;
             padding: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            font-size: 13px;
-            font-weight:700;
+            font-size: 15px;
+            font-weight:600;
             color: var(--text);
             text-align: right;
             letter-spacing: 0;
@@ -661,17 +701,25 @@
     <header>
         <div class="mobile-header-left">
             <button class="mobile-header-menu" onclick="openAppDrawer()" aria-label="메뉴 열기" title="메뉴"><span class="ap-hamburger-glyph">☰</span></button>
-            <button id="mobile-app-back-button" class="app-back-button" onclick="appHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>←</button>
+            <button id="mobile-app-back-button" class="app-back-btn" type="button" onclick="appHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>
+                <svg class="app-back-btn__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
         </div>
         <div class="brand mobile-header-brand" onclick="goHome()">
-            <div class="brand-text">AP MATH</div>
+            <img class="app-header-logo" src="icon-192.png" alt="AP">
         </div>
         <div class="mobile-header-user" id="mobile-header-user" aria-label="사용자"></div>
     </header>
 
     <div class="desktop-topbar" aria-hidden="false">
-        <button id="desktop-app-back-button" class="app-back-button" onclick="appHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>←</button>
-        <div class="desktop-topbar-title" onclick="goHome()">AP MATH</div>
+        <button id="desktop-app-back-button" class="app-back-btn" type="button" onclick="appHistoryBack()" aria-label="뒤로가기" title="뒤로가기" disabled>
+            <svg class="app-back-btn__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <div class="desktop-topbar-title" onclick="goHome()"><img class="app-header-logo" src="icon-192.png" alt="AP"></div>
     </div>
 
     <main id="app-root"></main>

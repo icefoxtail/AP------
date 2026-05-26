@@ -558,8 +558,8 @@ function ensureDesktopHeaderUser() {
     }
 
     el.style.marginLeft = 'auto';
-    el.style.fontSize = '13px';
-    el.style.fontWeight = '700';
+    el.style.fontSize = '15px';
+    el.style.fontWeight = '600';
     el.style.color = 'var(--text)';
     el.style.whiteSpace = 'nowrap';
     el.style.textAlign = 'right';

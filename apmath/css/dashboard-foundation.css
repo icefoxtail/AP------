@@ -58,26 +58,17 @@
 .care-risk-badge,.care-risk-cleared{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:500;background:var(--surface-2);border:1px solid var(--border);color:var(--text)}
 .admin-teacher-card__head{min-width:0}
 .admin-teacher-card__name{font-size:16px;font-weight:500;color:var(--text);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.admin-teacher-card__chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.admin-teacher-card__chip{display:inline-flex;align-items:center;gap:4px;min-height:26px;padding:0 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--secondary);font-size:11px;font-weight:400;line-height:1;white-space:nowrap}
-.admin-teacher-card__chip b{color:var(--text);font-weight:500}
-.admin-teacher-grade-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.admin-teacher-grade-pill{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 9px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:12px;font-weight:500;line-height:1;white-space:nowrap}
-.admin-teacher-grade-pill--empty{color:var(--secondary);font-weight:400}
-.ap-admin-top-search{position:relative;width:min(420px,48vw);z-index:5}
-.ap-admin-top-search__box{height:42px;display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:999px;background:var(--surface);padding:0 14px;box-sizing:border-box;box-shadow:0 1px 2px rgba(15,23,42,0.04)}
-.ap-admin-top-search__icon{flex-shrink:0;font-size:15px;font-weight:500;color:var(--secondary);line-height:1}
-.ap-admin-top-search__input{width:100%;height:40px;border:0;background:transparent;color:var(--text);font-size:13px;font-weight:500;outline:0;min-width:0}
-.ap-admin-top-search__results{position:absolute;top:48px;left:0;right:0;display:flex;flex-direction:column;gap:7px;padding:8px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:0 12px 32px rgba(15,23,42,0.12);box-sizing:border-box}
-.ap-admin-top-search__results:empty{display:none}
-.ap-admin-recent-student-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
-.ap-admin-recent-student-grid .ap-dashboard-row{border-right:1px solid var(--border)!important}
-.ap-admin-recent-student-grid .ap-dashboard-row:nth-child(2n){border-right:0!important}
+.admin-teacher-card__quick-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.admin-teacher-card__quick-action{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:30px;padding:0 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--text);font-size:12px;font-weight:500;line-height:1;white-space:nowrap;box-shadow:none;cursor:pointer}
 .admin-teacher-card__journal{display:flex;flex-direction:column;gap:8px;margin-top:14px}
 .admin-teacher-card__journal-title{font-size:12px;font-weight:400;color:var(--secondary);line-height:1}
-.admin-teacher-card__actions{display:flex;justify-content:flex-end;gap:8px;margin-top:auto}
-.admin-teacher-card__actions .btn{min-width:104px;min-height:38px;border-radius:12px;font-size:12px;font-weight:500;background:var(--surface-2);border:1px solid var(--border);color:var(--text);box-shadow:none}
 .admin-teacher-student-list{max-height:62vh;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding-right:4px}
+.admin-teacher-grade-groups{max-height:62vh;overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding-right:4px}
+.admin-teacher-grade-group{display:flex;flex-direction:column;gap:7px}
+.admin-teacher-grade-group__title{font-size:12px;font-weight:500;color:var(--secondary);padding:0 2px}
+.admin-teacher-grade-pills{max-width:520px;display:flex;flex-wrap:wrap;gap:8px;padding:2px}
+.admin-teacher-grade-pill{display:inline-flex;align-items:center;gap:5px;min-height:30px;padding:0 10px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:12px;font-weight:500;line-height:1;white-space:nowrap}
+.admin-teacher-grade-pill span:last-child{color:var(--secondary);font-weight:500}
 .admin-teacher-student-row{width:100%;min-height:48px;padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:var(--surface);box-shadow:none;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}
 .admin-teacher-student-row__main{min-width:0;flex:1}
 .admin-teacher-student-row__name{font-size:13px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -111,6 +102,16 @@
   box-shadow: none;
 }
 
+.ap-dashboard-journal-section {
+  margin-bottom: 18px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible;
+}
+
 .ap-dashboard-journal-head {
   display: flex;
   align-items: center;
@@ -118,6 +119,13 @@
   gap: 12px;
   padding: 14px 16px 10px;
   border-bottom: 1px solid var(--border);
+}
+
+.ap-dashboard-journal-section .ap-dashboard-journal-head {
+  padding: 0 4px !important;
+  margin: 0 0 8px !important;
+  border: 0 !important;
+  background: transparent !important;
 }
 
 .ap-dashboard-journal-title {
@@ -145,6 +153,39 @@
 .ap-dashboard-journal-body {
   cursor: pointer;
   padding: 8px 16px 10px;
+}
+
+.ap-dashboard-journal-section .ap-dashboard-journal-body {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.ap-dashboard-action-grid--teacher-quick {
+  --ap-dashboard-action-count: 3;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.ap-dashboard-action-grid--teacher-quick .ap-dashboard-action-button {
+  min-width: 0 !important;
+}
+
+@media (max-width: 520px) {
+  .ap-dashboard-action-grid.ap-dashboard-action-grid--teacher-quick {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .ap-dashboard-action-grid.ap-dashboard-action-grid--teacher-quick .ap-dashboard-action-button {
+    min-width: 0 !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
 }
 
 .ap-dashboard-class-list {
@@ -236,34 +277,4 @@
   font-weight: 400;
   line-height: 1;
   white-space: nowrap;
-}
-
-.admin-teacher-card__chip-value {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.admin-teacher-card__chip b {
-  color: var(--text);
-  font-weight: 500;
-}
-
-@media (max-width: 767px) {
-  .ap-admin-dashboard-head {
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-  .ap-admin-top-search {
-    width: 100%;
-  }
-  .ap-admin-top-search__results {
-    position: static;
-    margin-top: 8px;
-  }
-  .ap-admin-recent-student-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .ap-admin-recent-student-grid .ap-dashboard-row {
-    border-right: 0 !important;
-  }
 }
