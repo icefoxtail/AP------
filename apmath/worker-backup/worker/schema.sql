@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS students (
   parent_phone TEXT,
   student_address TEXT,
   vehicle_info TEXT,
+  student_identity_key TEXT,
   student_pin TEXT UNIQUE,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -248,6 +249,9 @@ CREATE TABLE IF NOT EXISTS class_daily_progress (
 
 CREATE INDEX IF NOT EXISTS idx_students_status ON students(status);
 CREATE INDEX IF NOT EXISTS idx_students_pin ON students(student_pin);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_students_identity_key
+  ON students(student_identity_key)
+  WHERE student_identity_key IS NOT NULL AND student_identity_key != '';
 
 CREATE INDEX IF NOT EXISTS idx_classes_active ON classes(is_active);
 CREATE INDEX IF NOT EXISTS idx_classes_teacher ON classes(teacher_name);

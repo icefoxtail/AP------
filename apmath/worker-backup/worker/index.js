@@ -2729,7 +2729,7 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers });
 
-          await repairTeacherClassMappings(env);
+          // Teacher-class repair is intentionally not run from read-only initial-data.
 
           let stds, clss, map, att, hw, exs, wrs, attHis, hwHis, cns, opm, exS, acs, ser, jou, txt, cdr, cdp, timetableClasses;
           let ttAllClassStudents = { results: [] };
