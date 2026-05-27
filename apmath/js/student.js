@@ -1726,6 +1726,59 @@ function studentAttr(value) {
 var AP_HIGH_SUBJECTS = ['대수', '미적분Ⅰ', '확률과통계', '미적분Ⅱ', '기하'];
 let addStudentSubmitting = false;
 
+function getOnboardingStartDateInputId(prefix) {
+    return `${prefix}-onboarding-started-at`;
+}
+
+function getTodayKstDateText() {
+    return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' });
+}
+
+function getDateTextDaysAgo(days) {
+    const date = new Date(`${getTodayKstDateText()}T00:00:00.000Z`);
+    date.setUTCDate(date.getUTCDate() - Number(days || 0));
+    return date.toISOString().slice(0, 10);
+}
+
+function setOnboardingStartedAtSuggestion(prefix) {
+    const checked = document.getElementById(`${prefix}-already-attending`)?.checked || false;
+    const input = document.getElementById(getOnboardingStartDateInputId(prefix));
+    if (checked && input) input.value = getDateTextDaysAgo(7);
+}
+
+function renderOnboardingStartedAtFields(prefix) {
+    const safePrefix = apEscapeHtml(prefix);
+    return `
+        <div class="std-input-base" style="display:flex; flex-direction:column; gap:8px;">
+            <label for="${safePrefix}-onboarding-started-at" style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.4;">실제 등원일</label>
+            <input id="${safePrefix}-onboarding-started-at" type="date" value="${getTodayKstDateText()}" style="width:100%; min-height:38px; box-sizing:border-box; padding:0 10px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-size:13px; font-weight:500;">
+            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">* 신입생 적응 확인은 이 날짜를 기준으로 표시됩니다.</div>
+            <label style="display:flex; align-items:center; gap:7px; min-height:26px; font-size:13px; font-weight:500; color:var(--text); cursor:pointer;">
+                <input id="${safePrefix}-already-attending" type="checkbox" onchange="setOnboardingStartedAtSuggestion('${safePrefix}')" style="width:15px; height:15px; accent-color:var(--primary); cursor:pointer;">
+                <span>이미 등원 중인 학생입니다</span>
+            </label>
+            <div style="font-size:11px; color:var(--secondary); font-weight:500; line-height:1.5;">첫 등원 시작일을 확인해 주세요.</div>
+        </div>
+    `;
+}
+
+async function bootstrapOnboardingTasks(payload = {}) {
+    const studentId = String(payload.student_id || payload.studentId || '').trim();
+    const classId = String(payload.class_id || payload.classId || '').trim();
+    if (!studentId || !classId) return null;
+    const onboardingStartedAt = String(payload.onboarding_started_at || payload.onboardingStartedAt || getTodayKstDateText()).trim();
+    try {
+        return await api.post('onboarding/tasks/bootstrap', {
+            student_id: studentId,
+            class_id: classId,
+            onboarding_started_at: onboardingStartedAt
+        });
+    } catch (e) {
+        console.warn('[bootstrapOnboardingTasks] failed:', e);
+        return null;
+    }
+}
+
 function parseHighSubjects(value) {
     if (Array.isArray(value)) {
         return value.map(v => String(v || '').trim()).filter(Boolean);
@@ -1824,6 +1877,7 @@ function openEditStudent(sid, options = {}) {
             <input id="edit-student-address" class="std-input-base" value="${studentAttr(s.student_address || '')}" placeholder="주소">
             <input id="edit-vehicle-info" class="std-input-base" value="${studentAttr(s.vehicle_info || '')}" placeholder="차량">
             <input id="edit-student-pin" class="std-input-base" value="${studentAttr(s.student_pin || '')}" placeholder="PIN (4자리 숫자)" maxlength="4">
+            ${renderOnboardingStartedAtFields('edit')}
             <textarea id="edit-memo" class="std-input-base" placeholder="메모" style="height: 64px;">${apEscapeHtml(cleanMemo)}</textarea>
             <div style="display:flex; gap:20px; padding:4px 2px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:10px 14px;">
                 <label style="display:flex; align-items:center; gap:7px; font-size:13px; font-weight:500; cursor:pointer; color:${isNew ? '#1A5CFF' : 'var(--text)'};">
@@ -1844,6 +1898,9 @@ function openEditStudent(sid, options = {}) {
 
 async function handleEditStudent(sid) {
     const returnCtx = state.ui.modalReturnView || state.ui.returnView || null;
+    const currentStudent = state.db.students.find(st => String(st.id) === String(sid));
+    const currentClassId = state.db.class_students.find(m => String(m.student_id) === String(sid))?.class_id || '';
+    const wasNewChecked = isStudentNewMember(currentStudent);
     const pin = document.getElementById('edit-student-pin')?.value.trim() || '';
     if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 4자리 숫자입니다.', 'warn'); return; }
 
@@ -1881,6 +1938,16 @@ async function handleEditStudent(sid) {
     try {
         const r = await api.patch(`students/${sid}`, payload);
         if (r?.success) {
+            const classChanged = String(classId || '') !== String(currentClassId || '');
+            const becameNew = !wasNewChecked && isNewChecked;
+            const shouldBootstrapOnboarding = !!classId && (classChanged || becameNew);
+            if (shouldBootstrapOnboarding) {
+                await bootstrapOnboardingTasks({
+                    student_id: sid,
+                    class_id: classId,
+                    onboarding_started_at: document.getElementById(getOnboardingStartDateInputId('edit'))?.value || getTodayKstDateText()
+                });
+            }
             toast('학생 정보가 수정되었습니다.', 'success');
             await loadData();
             returnFromStudentFlow(returnCtx);
@@ -1907,6 +1974,7 @@ function openAddStudent(defaultCid = '', options = {}) {
             <input id="add-guardian-rel" class="std-input-base" placeholder="보호자 관계" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
             <input id="add-student-address" class="std-input-base" placeholder="주소" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
             <input id="add-vehicle-info" class="std-input-base" placeholder="차량" style="width: 100%; min-height: 42px; box-sizing: border-box; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); font-size: 13px; font-weight:500; outline: none;">
+            ${renderOnboardingStartedAtFields('add')}
             ${renderHighSubjectChecks('add', inferGradeFromClass(state.db.classes.find(c => String(c.id) === String(defaultCid))), [])}
         </div>
     `, '추가', handleAddStudent);
@@ -1957,6 +2025,11 @@ async function handleAddStudent() {
     try {
         const r = await api.post('students', payload);
         if (r?.success) {
+            await bootstrapOnboardingTasks({
+                student_id: r.id,
+                class_id: classId,
+                onboarding_started_at: document.getElementById(getOnboardingStartDateInputId('add'))?.value || getTodayKstDateText()
+            });
             toast(r?.duplicate_ignored ? '이미 등록 처리된 학생입니다.' : '학생이 추가되었습니다.', r?.duplicate_ignored ? 'info' : 'success');
             await loadData();
             returnFromStudentFlow(returnCtx);
