@@ -1,5 +1,15 @@
 # CURRENT_API_FLOW_MAP
 
+## 0. Onboarding Tasks Round 1
+
+1. Teacher-authenticated clients call `/api/onboarding/tasks`.
+2. `index.js` verifies auth and delegates `/api/onboarding` to `routes/onboarding.js`.
+3. `bootstrap` creates `intro`, `week1`, `month1` rows in `onboarding_tasks` with duplicate guards.
+4. `GET /tasks` returns visible, non-completed, non-skipped tasks scoped by teacher/class/student access and includes `effective_status`.
+5. `complete` inserts one `consultations` row and stores `completed_consultation_id`.
+6. `contact`, `defer`, and `skip` only update `onboarding_tasks`; they do not insert consultations.
+7. Round 1 does not expose new teacher cards, panels, CSS, warnings, D+14, or director/admin dashboards.
+
 ## 1. 로그인/session
 
 1. `core.js`가 `auth/login` 호출

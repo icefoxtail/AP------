@@ -1,46 +1,65 @@
-# APMS 문서 구조
+# AP Math / Wangji OS Docs
 
-이 폴더는 AP Math OS / APMS 작업 기준 문서를 보관한다.
+이 폴더는 AP Math OS와 왕지교육 OS 작업자가 프로젝트를 이해하기 위해 들어오는 문서 진입점이다.
 
-## 루트에 남기는 문서
+## 1. 처음 읽을 문서
 
-프로젝트 루트에는 현재 작업 중인 파일만 남긴다.
+1. `00_READ_ME_FIRST.md`
+2. `MASTER_RULEBOOK.md`
+3. `MASTER_CURRENT_PROGRESS.md`
+4. `MASTER_NEXT_WORK.md`
 
-- `CODEX_TASK.md`
-- `CODEX_RESULT.md`
+위 4개 문서는 현재 기준이다. 과거 결과 보고서나 archived 문서보다 항상 우선한다.
 
-작업 완료 후 오래 보관해야 하는 결과서, 검수서, 분석서는 루트에 두지 않고 `docs/` 아래로 이동한다.
+## 2. 실제 작업 전 읽을 문서
 
-## docs 주요 구조
+1. `.agent/BOOT.md`
+2. `.agent/SKILLS_INDEX.md`
+3. `.agent/DOMAIN_LOCK_POLICY.md`
+4. `03_DOMAIN_INDEX.md`
+5. 작업 도메인에 맞는 `domains/*.md`
+6. 현재 구현 확인이 필요한 경우 `implemented/*.md`
+7. 다음 작업이나 우선순위가 필요한 경우 `plans/*.md`
+8. Codex 실행 규칙이 필요한 경우 `codex/*.md`
 
-- `PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`  
-  AP Math OS / 왕지교육 프로젝트 공통 룰북과 구조 지도.
+## 3. 폴더별 역할
 
-- `PROJECT_PATCH_WORKFLOW_STANDARD.md`  
-  패치 제작, 검수, 적용, 커밋 흐름 표준.
+| 경로 | 역할 |
+|---|---|
+| `domains/` | AP Math, 학생, 반, 리포트, 시간표, 수납, 학부모 연락 등 도메인별 정책과 설계 |
+| `implemented/` | 현재 구현 상태, API 흐름, DB, Worker route, UI 노출, regression risk 지도 |
+| `plans/` | 앞으로 진행할 roadmap, next plan, phase plan |
+| `codex/` | Codex 실행 규칙, 결과 보고 규칙, 리뷰팩/검수 규칙 |
+| `agent-skills/` | AP 루트 agent SOP |
+| `guides/` | 사용법, 설계 가이드, reference, 보조 구조 문서 |
+| `reports/` | 현재 참고 가치가 있는 분석 보고서 |
+| `archive/` | 완료/과거/검수 요청/legacy 문서 |
+| `_index/` | 문서 구조와 이동 이력 |
 
-- `WANGJI_OS_ROADMAP.md`, `WANGJI_OS_STRUCTURE.md`  
-  왕지교육 OS 상위 구조와 로드맵.
+## 4. 특정 작업별 추가 문서 위치
 
-- `design/`  
-  APMS UI 원칙, 대시보드 기준, UI 검수 SOP, 작업 역할 분리 메모.
+- 도메인 작업: `domains/`
+- 구현 현황 확인: `implemented/`
+- 향후 작업 계획: `plans/`
+- Codex 작업/검수 규칙: `codex/`
+- 문서 관리/SOP: `agent-skills/`
+- 디자인, reference, 운영 가이드: `guides/`
+- 분석 보고서: `reports/`
+- 과거 결과와 완료 문서: `archive/`
 
-- `initial-data/`  
-  `/api/initial-data` 분리와 lazy load 관련 분석 문서.
+## 5. Archive 문서를 읽는 기준
 
-- `timetable/`  
-  시간표 버전/새학기 초안 설계처럼 계속 참고할 시간표 설계 문서.
+`archive/` 문서는 과거 근거다. 현재 기준은 `MASTER_RULEBOOK.md`, `MASTER_CURRENT_PROGRESS.md`, `MASTER_NEXT_WORK.md`, 그리고 관련 `domains/`, `implemented/`, `plans/` 문서다.
 
-- `reference/`  
-  프로젝트 구조 요약처럼 참고용 성격의 문서.
+archive 문서를 현재 기준처럼 사용하지 않는다. archive 문서를 근거로 삼아야 하면 현재 기준 문서와 충돌하지 않는지 먼저 확인한다.
 
-- `archive/`  
-  이미 사용한 검수서, 결과서, 감사 리포트, 과거 작업 산출물 보관.
+## 6. 문서 이동 전 확인
 
-## 정리 원칙
+문서를 새로 만들거나 옮기기 전에는 다음을 확인한다.
 
-1. 루트에는 현재 작업 파일만 둔다.
-2. 기준 문서는 `docs/` 또는 하위 폴더에 둔다.
-3. 이미 사용한 결과서와 검수서는 삭제하지 않고 `docs/archive/`에 보관한다.
-4. AI 작업자가 기준 문서를 헷갈리지 않도록 결과서와 룰북을 같은 위치에 섞지 않는다.
-5. zip, 검수팩, 임시 압축 폴더는 원칙적으로 git에 넣지 않는다.
+1. `docs/_index/DOCS_STRUCTURE.md`
+2. `docs/_index/ARCHIVE_INDEX.md`
+3. `docs/08_DOCUMENT_UPDATE_RULE.md`
+4. `docs/agent-skills/ap-docs-maintenance-sop.md`
+
+문서 구조를 바꾼 작업은 3대 기준 문서와 `CODEX_RESULT.md`에 반영한다.

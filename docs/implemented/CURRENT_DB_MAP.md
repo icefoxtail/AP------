@@ -1,5 +1,13 @@
 # CURRENT_DB_MAP
 
+## 0. Onboarding Tasks Round 1
+
+| table | role | UI exposure |
+|---|---|---|
+| `onboarding_tasks` | 신입생 적응 확인 task foundation. `intro`, `week1`, `month1` task를 학생/enrollment 기준으로 보관한다. | Round 1에서는 DB/API foundation만 추가하며 UI에는 노출하지 않는다. |
+
+`onboarding_tasks`는 `apmath/worker-backup/worker/migrations/20260527_onboarding_tasks.sql`와 `schema.sql`에 모두 반영되어 있다. 기본 중복 방지는 `UNIQUE(student_id, enrollment_id, task_type)`이며, `enrollment_id`가 없는 기존 데이터 호환은 `/api/onboarding/tasks/bootstrap`에서 `student_id + class_id + task_type + onboarding_started_at` 조회 후 insert하는 방식으로 방어한다.
+
 기준 파일: `apmath/worker-backup/worker/schema.sql`, `apmath/worker-backup/worker/migrations/*.sql`
 
 ## 1. Core / AP Math 운영
