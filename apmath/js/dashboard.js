@@ -2416,6 +2416,125 @@ function renderTodayJournalCard(data) {
 
 
 // [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
+function ensureDashboardOnboardingState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.dashboardOnboardingTasks) {
+        state.ui.dashboardOnboardingTasks = { loading: false, loadedAt: 0, tasks: [], inFlight: null };
+    }
+    return state.ui.dashboardOnboardingTasks;
+}
+
+async function fetchOnboardingTasks() {
+    const store = ensureDashboardOnboardingState();
+    if (store.inFlight) return store.inFlight;
+    store.loading = true;
+    const promise = api.get('onboarding/tasks')
+        .then(res => {
+            store.tasks = Array.isArray(res?.tasks) ? res.tasks : [];
+            store.loadedAt = Date.now();
+            return store.tasks;
+        })
+        .catch(err => {
+            console.warn('[fetchOnboardingTasks] failed:', err);
+            store.tasks = [];
+            return [];
+        })
+        .finally(() => {
+            store.loading = false;
+            store.inFlight = null;
+        });
+    store.inFlight = promise;
+    return promise;
+}
+
+function getOnboardingTaskLabel(task) {
+    const type = String(task?.task_type || '');
+    if (type === 'intro') return '담임 인사';
+    if (type === 'week1') return '1주차 적응 확인';
+    if (type === 'month1') return '1개월 정착 상담';
+    return '';
+}
+
+function getOnboardingTaskDescription(task) {
+    const type = String(task?.task_type || '');
+    if (type === 'intro') return '첫 수업 전후로 학부모님께 짧게 첫인사를 건네주세요.';
+    if (type === 'week1') return '첫 주 수업 태도와 숙제 흐름을 가볍게 확인해 주세요.';
+    if (type === 'month1') return '한 달간의 적응 상태와 다음 달 공부 방향을 정리해 주세요.';
+    return '';
+}
+
+function getOnboardingStatusLabel(status) {
+    const key = String(status || '');
+    if (key === 'needs_action') return '확인 전';
+    if (key === 'contacted') return '연락 남김';
+    if (key === 'deferred') return '나중에 다시 보기';
+    return '확인 전';
+}
+
+function openOnboardingTask(taskId) {
+    console.debug('[openOnboardingTask] pending panel integration:', taskId);
+}
+
+function renderOnboardingTasks(tasks = []) {
+    const visibleTasks = (Array.isArray(tasks) ? tasks : [])
+        .filter(task => !['completed', 'skipped'].includes(String(task?.status || '')))
+        .sort((a, b) =>
+            String(a?.due_date || '').localeCompare(String(b?.due_date || '')) ||
+            Number(a?.task_order || 0) - Number(b?.task_order || 0) ||
+            String(a?.student_name || '').localeCompare(String(b?.student_name || ''), 'ko')
+        );
+    if (!visibleTasks.length) return '';
+
+    const cards = visibleTasks.map(task => {
+        const title = getOnboardingTaskLabel(task);
+        const description = getOnboardingTaskDescription(task);
+        const status = getOnboardingStatusLabel(task?.effective_status || task?.status);
+        const studentName = task?.student_name || '';
+        const className = task?.class_name || '';
+        return `
+            <div class="card apms-card ap-dashboard-onboarding-card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface); display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+                    <div style="min-width:0;">
+                        <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.35; overflow-wrap:anywhere;">${apEscapeHtml(studentName)}</div>
+                        <div style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45; margin-top:2px; overflow-wrap:anywhere;">${apEscapeHtml(className)}</div>
+                    </div>
+                    <span style="flex:0 0 auto; min-height:24px; display:inline-flex; align-items:center; padding:0 8px; border-radius:999px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); font-size:11px; font-weight:500;">${apEscapeHtml(status)}</span>
+                </div>
+                <div>
+                    <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35;">${apEscapeHtml(title)}</div>
+                    <div style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.55; margin-top:4px;">${apEscapeHtml(description)}</div>
+                </div>
+                <button type="button" class="btn apms-button apms-button--quiet" style="width:100%; min-height:38px; border-radius:10px; font-size:12px; font-weight:500;" onclick="openOnboardingTask('${apEscapeHtml(String(task?.id || ''))}')">확인하기</button>
+            </div>
+        `;
+    }).join('');
+
+    return `
+        <div class="ap-dashboard-section ap-dashboard-onboarding-section" style="margin-bottom:18px;">
+            <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+                <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">신입생 적응 확인</h3>
+            </div>
+            <div class="ap-dashboard-onboarding-list" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+                ${cards}
+            </div>
+        </div>
+    `;
+}
+
+function updateDashboardOnboardingTasksSection() {
+    const target = document.getElementById('dashboard-onboarding-tasks-root');
+    if (!target) return;
+    const store = ensureDashboardOnboardingState();
+    target.innerHTML = renderOnboardingTasks(store.tasks);
+}
+
+function queueDashboardOnboardingTasksLoad() {
+    const store = ensureDashboardOnboardingState();
+    updateDashboardOnboardingTasksSection();
+    if (store.loading) return;
+    fetchOnboardingTasks().then(updateDashboardOnboardingTasksSection);
+}
+
 function renderDashboard() {
     if (state?.auth?.role === 'admin') {
         if (typeof renderAdminControlCenter === 'function') {
@@ -2481,9 +2600,11 @@ function renderDashboard() {
     root.innerHTML = `<div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
         ${todayJournalCard}
+        <div id="dashboard-onboarding-tasks-root"></div>
         ${todoSections}
         ${classStatus}
     </div>`;
+    queueDashboardOnboardingTasksLoad();
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
