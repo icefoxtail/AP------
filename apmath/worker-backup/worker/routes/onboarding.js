@@ -290,10 +290,17 @@ async function patchTask(env, teacher, id, body) {
   const task = loaded.task;
   const fields = [];
   const values = [];
+  const noteParts = [
+    pickText(body.notes),
+    pickText(body.month_summary) ? `한 달 적응 요약: ${pickText(body.month_summary)}` : '',
+    pickText(body.next_month_plan) ? `다음 달 공부 방향: ${pickText(body.next_month_plan)}` : '',
+    pickText(body.good_point) ? `좋았던 부분: ${pickText(body.good_point)}` : '',
+    pickText(body.focus_point) ? `더 볼 부분: ${pickText(body.focus_point)}` : ''
+  ].filter(Boolean);
 
-  if (Object.prototype.hasOwnProperty.call(body, 'notes')) {
+  if (noteParts.length) {
     fields.push('notes = ?');
-    values.push(pickText(body.notes) || null);
+    values.push(appendNote(task.notes, noteParts.join('\n')));
   }
   if (Object.prototype.hasOwnProperty.call(body, 'contact_method')) {
     fields.push('contact_method = ?');
