@@ -23,5 +23,10 @@ Use only the SOPs that match the current task. A skill never widens scope or gra
 
 - Read `.agent/BOOT.md` first.
 - Read `.agent/DOMAIN_LOCK_POLICY.md` before editing.
+- For documentation work or completion-time documentation reflection, follow `docs/agent-skills/ap-docs-maintenance-sop.md`.
+- Three master documents are the first fixed checkpoint for docs / rulebook / plans:
+  - `docs/MASTER_RULEBOOK.md`
+  - `docs/MASTER_CURRENT_PROGRESS.md`
+  - `docs/MASTER_NEXT_WORK.md`
 - For textbook tasks, follow `archive/textbook/.agent/BOOT.md` after the AP rulebook.
 - If a task is report-only, every SOP is report-only.

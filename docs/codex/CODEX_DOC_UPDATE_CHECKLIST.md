@@ -1,5 +1,30 @@
 # CODEX_DOC_UPDATE_CHECKLIST
 
+## Three Master Document Check
+
+- Does this task affect `docs/MASTER_RULEBOOK.md`?
+- Does this task affect `docs/MASTER_CURRENT_PROGRESS.md`?
+- Does this task affect `docs/MASTER_NEXT_WORK.md`?
+- Does this task affect `docs/README.md`, `docs/00_READ_ME_FIRST.md`, or `docs/_index/*`?
+- If affected, were the relevant master docs updated?
+- If not affected, was the no-update reason recorded in `CODEX_RESULT.md`?
+- Do the relevant domain / implemented / plan docs still agree with the master docs?
+- Were actual source files checked before any implementation was marked complete?
+- Were unchecked files marked as `Needs verification`?
+
+## Docs Structure Check
+
+- Are only entry/policy/master/index documents left at `docs/` root?
+- Are domain docs under `docs/domains/`?
+- Are current implementation maps under `docs/implemented/`?
+- Are future plans under `docs/plans/`?
+- Are Codex rules under `docs/codex/`?
+- Are SOPs under `docs/agent-skills/`?
+- Are guides/references under `docs/guides/`?
+- Are reports under `docs/reports/`?
+- Are completed or historical documents under `docs/archive/*`?
+- Were moved files recorded in `docs/_index/ARCHIVE_INDEX.md`?
+
 ## 변경 유형별 업데이트
 
 - DB 변경: `CURRENT_DB_MAP.md`, 관련 domain, 관련 plan

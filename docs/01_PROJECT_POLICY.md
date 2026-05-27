@@ -1,6 +1,6 @@
 # 01_PROJECT_POLICY
 
-이 문서는 AP Math OS / 왕지교육 OS의 최상위 정책이다. 기존 `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`의 금지 원칙을 약화하지 않고, 문서 구조 재정비 기준으로 강화한다.
+이 문서는 AP Math OS / 왕지교육 OS의 최상위 정책이다. 기존 `docs/guides/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`의 금지 원칙을 약화하지 않고, 문서 구조 재정비 기준으로 강화한다.
 
 ## 1. 요청 범위 보존
 

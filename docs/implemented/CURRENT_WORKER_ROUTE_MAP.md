@@ -1,5 +1,13 @@
 # CURRENT_WORKER_ROUTE_MAP
 
+## 0. Onboarding Round 1 Route
+
+| route file | handler/export | API | auth | DB | UI exposure |
+|---|---|---|---|---|---|
+| `routes/onboarding.js` | `handleOnboarding` | `GET /api/onboarding/tasks`, `POST /api/onboarding/tasks/bootstrap`, `PATCH /api/onboarding/tasks/:id`, `POST /api/onboarding/tasks/:id/complete`, `contact`, `defer`, `skip` | teacher session/basic via `index.js` then route scope checks | `onboarding_tasks`, completed task only inserts `consultations` | Round 1 route/API foundation only. No teacher screen card/panel/CSS added. |
+
+`index.js` only imports `handleOnboarding` and delegates `/api/onboarding` into the route. API body logic stays in `routes/onboarding.js`.
+
 기준 파일: `apmath/worker-backup/worker/index.js`, `apmath/worker-backup/worker/routes/*.js`, `helpers/*.js`
 
 ## 1. index.js 위임 구조

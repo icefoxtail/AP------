@@ -1,5 +1,9 @@
 # TEACHER_MODE_NEXT_PLAN
 
+## 0. Onboarding Round 1 Boundary
+
+신입생 적응 확인은 Round 1에서 DB/API foundation까지만 구현한다. 선생님 화면에 신입생 적응 카드, 슬라이드 패널, CSS, D+14/지연 경고, 문자 발송 UI를 붙이는 작업은 후속 Round에서 별도 승인 후 진행한다.
+
 ## 1. 현재 상태
 
 선생님 화면의 중심은 dashboard와 classroom이다. 담당반 scope는 `teacher_classes`와 initial-data 분기로 처리된다.

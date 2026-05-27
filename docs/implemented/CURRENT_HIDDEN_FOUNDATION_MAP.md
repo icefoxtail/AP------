@@ -1,5 +1,11 @@
 # CURRENT_HIDDEN_FOUNDATION_MAP
 
+## 0. Onboarding Tasks Round 1
+
+| foundation | DB/API | hidden reason |
+|---|---|---|
+| 신입생 적응 확인 | `onboarding_tasks`, `/api/onboarding/tasks*` | Round 1은 DB/API foundation만 추가한다. 선생님 화면 카드, 슬라이드 패널, CSS, D+14/지연 경고, 원장 화면 노출은 만들지 않는다. |
+
 숨겨진 foundation은 DB/API가 있어도 기본 UI에 꺼내지 않는다.
 
 | foundation | DB/API | 숨김/보류 사유 |

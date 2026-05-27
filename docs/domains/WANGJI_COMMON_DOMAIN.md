@@ -9,7 +9,7 @@
 
 ## B. 현재 구현 구조
 
-- 구조 문서: `docs/WANGJI_OS_STRUCTURE.md`, `docs/WANGJI_OS_ROADMAP.md`
+- 구조 문서: `docs/guides/WANGJI_OS_STRUCTURE.md`, `docs/plans/WANGJI_OS_ROADMAP.md`
 - Worker foundation routes: `enrollments`, `class-time-slots`, `timetable-*`, `billing-*`, `parent-foundation`, `foundation-logs`, `foundation-sync`
 - DB: `student_enrollments`, `billing_*`, `payments`, `payment_*`, `parent_contacts`, `message_logs`, `staff_permissions`, `audit_logs`, `privacy_access_logs`
 - frontend: `apmath/js/management.js`, `apmath/js/wangji-foundation.js`, `apmath/js/timetable.js` 일부

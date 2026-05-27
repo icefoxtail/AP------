@@ -1219,7 +1219,7 @@ STOP RULES는 큰 프로젝트에서 범위 폭주를 막는 핵심 장치다.
 모든 Codex 작업 지시서에는 아래 문구를 포함한다.
 
 ```text
-작업 전 반드시 docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md를 처음부터 끝까지 읽고, 그 원칙을 우선 적용하라.
+작업 전 반드시 docs/guides/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md를 처음부터 끝까지 읽고, 그 원칙을 우선 적용하라.
 
 이번 작업은 GOAL에 적힌 하나의 목표만 수행한다.
 
@@ -1305,13 +1305,13 @@ Codex 또는 사람 작업자가 같은 레포에서 작업할 때는 이 파일
 권장 위치:
 
 ```text
-docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
+docs/guides/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md
 ```
 
 작업 지시서에는 다음 문구를 고정으로 넣는다.
 
 ```text
-작업 전 반드시 docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md를 처음부터 끝까지 읽고, 그 원칙을 우선 적용하라.
+작업 전 반드시 docs/guides/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md를 처음부터 끝까지 읽고, 그 원칙을 우선 적용하라.
 
 이번 작업은 GOAL에 적힌 하나의 목표만 수행한다.
 
@@ -1732,15 +1732,15 @@ foundation을 먼저 만든다.
 
 ## APMS UI Design Foundation 기준
 
-APMS 화면 작업에서 디자인 기준은 `docs/design/` 폴더를 우선 참고한다.
+APMS 화면 작업에서 디자인 기준은 `docs/guides/design/` 폴더를 우선 참고한다.
 
 ### 기준 문서
 
-- `docs/design/APMS_UI_PRINCIPLES.md`: APMS 공통 UI 원칙
-- `docs/design/DASHBOARD_FOUNDATION.md`: 대시보드 기준 화면 규칙
-- `docs/design/UI_REVIEW_SOP.md`: UI 패치 검수 SOP
-- `docs/design/PATCH_REVIEW_BOARD_SPEC.md`: 패치 검수 대시보드 설계 메모
-- `docs/design/AGENTIC_WORKFLOW_NOTES.md`: 작업자 역할 분리 메모
+- `docs/guides/design/APMS_UI_PRINCIPLES.md`: APMS 공통 UI 원칙
+- `docs/guides/design/DASHBOARD_FOUNDATION.md`: 대시보드 기준 화면 규칙
+- `docs/guides/design/UI_REVIEW_SOP.md`: UI 패치 검수 SOP
+- `docs/guides/design/PATCH_REVIEW_BOARD_SPEC.md`: 패치 검수 대시보드 설계 메모
+- `docs/guides/design/AGENTIC_WORKFLOW_NOTES.md`: 작업자 역할 분리 메모
 
 ### 핵심 원칙
 
@@ -1752,4 +1752,3 @@ APMS 화면 작업에서 디자인 기준은 `docs/design/` 폴더를 우선 참
 - 화면명, 버튼명, 주요 문구는 사용자가 명시하지 않으면 변경하지 않는다.
 - UI 패치는 코드 검수와 별개로 실제 화면 캡처 검수를 통과해야 한다.
 - 검수자는 `full_files`의 실제 파일을 열어 확인한 근거 없이 PASS를 주지 않는다.
-

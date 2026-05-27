@@ -18,7 +18,7 @@ Locks are default protections. A current user task must explicitly unlock a path
 | archive core | `archive/index.html`, `archive/mixer.html`, `archive/mixed_engine.html`, `archive/wrong_print_engine.html`, `archive/db.js`, engines, QR output | Explicit archive engine task |
 | archive/exams | `archive/exams`, `archive/assets/images` | Explicit exam data task and validation |
 | archive/textbook | generated JS/assets/review packs and subordinate operating files | Textbook-specific task following textbook BOOT |
-| docs rulebook | `docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`, policy/read-first/domain docs | Explicit docs update task |
+| docs rulebook | `docs/MASTER_RULEBOOK.md`, `docs/guides/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`, policy/read-first/domain docs | Explicit docs update task |
 | billing/accounting | billing routes, cashbook/payment data, money history | Explicit finance task and no-delete policy |
 | timetable | timetable versions, staging, active schedules, conflicts | Explicit timetable task |
 | student portal / OMR | student direct access, completed OMR edit/re-submit, QR submit flow | Explicit portal/OMR task and policy review |

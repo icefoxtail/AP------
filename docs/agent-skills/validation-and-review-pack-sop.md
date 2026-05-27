@@ -10,7 +10,10 @@ Use for verification, review packs, report-only audits, and final result evidenc
 4. Record skipped verification with reasons.
 5. Check `git status --short --untracked-files=all`.
 6. Check `git diff --name-only`.
-7. Never claim success from assumptions.
+7. For code, document, or repository changes, create the review pack before final unless the user explicitly forbids it.
+8. Read `C:\Users\USER\Downloads\LATEST_CODEX_REVIEW_PACK.txt`.
+9. Inspect the zip entries and confirm required core files are included.
+10. Never claim success from assumptions.
 
 ## Review Pack Output Location Policy
 
@@ -21,5 +24,13 @@ Use for verification, review packs, report-only audits, and final result evidenc
 - In `CODEX_RESULT.md`, record only the absolute path of any generated zip.
 - Do not compress the whole project as a review pack.
 - Build review packs from changed or newly added core files only.
+- Treat review pack generation as a final gate for code, document, and repository changes unless the user explicitly forbids review packs.
+- Do not final-report from tests and `CODEX_RESULT.md` alone; final reporting requires a fresh review pack path and zip-entry confirmation.
+- Do not reuse a previous review pack path.
 - Exclude vendor and large files, or split them into a separate zip and record the reason in `CODEX_RESULT.md`.
+- Keep filename-based secret exclusions such as `.env`, `.pem`, `.key`, and secret/credential-style filenames.
+- Exclude text files only for high-confidence secret value patterns such as private-key blocks, real-looking API keys, long bearer values, or quoted secret assignments.
+- Do not exclude source files merely because they contain code strings such as `Authorization`, `Bearer`, `token`, `password`, `password_hash`, or `env.OPENAI_API_KEY`; include them and record a manual-review warning instead.
+- After creating any review pack, inspect the zip entries and confirm required core files were actually included.
+- If a required core file is missing from the zip, completion is invalid until a corrected review pack or source-only supplemental zip is created and reported.
 - Completion is not valid if `git status --short --untracked-files=all` shows a review pack zip inside the project.

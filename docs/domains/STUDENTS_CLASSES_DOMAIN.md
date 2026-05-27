@@ -1,5 +1,9 @@
 # STUDENTS_CLASSES_DOMAIN
 
+## 0. Onboarding Tasks Round 1 Note
+
+신입생 적응 확인은 이번 Round 1에서 `onboarding_tasks` DB/API foundation으로만 추가한다. 학생 등록 화면, 선생님 화면 카드, 슬라이드 패널, CSS, 자동 문자 발송, 원장/admin 화면은 추가하지 않는다. `/api/onboarding/tasks/bootstrap`은 학생/enrollment 기준으로 `intro`, `week1`, `month1` task를 만들고, 실제 상담 기록은 `complete` 처리에서만 `consultations`에 insert한다.
+
 ## A. 정책
 
 - 학생/반/PIN/담당반은 AP Math 핵심 운영 데이터다.
