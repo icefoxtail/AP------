@@ -1,3 +1,9 @@
+# Student Identity Addendum
+
+Student creation is idempotent for newly-created rows and protected against legacy null-key duplicates. The backend stores a SHA-256 `student_identity_key` built from normalized name, school, grade, phones, guardian relation, address, vehicle info, and class id, then enforces `idx_students_identity_key`. `POST /api/students` also checks existing rows whose identity key is null/blank by recomputing the same normalized identity from `students` + `class_students`. Duplicate creates return the existing student row and class mapping with `duplicate_ignored: true`.
+
+Use `node tools/audit-student-duplicates.mjs --input <snapshot.json> --out <report.json>` to produce a masked duplicate-student report before manual cleanup or backfill decisions. The tool reports duplicate/manual-review groups and safe backfill candidates only; it does not merge, delete, or update rows.
+
 # STUDENTS_CLASSES_DOMAIN
 
 ## 0. Onboarding Tasks Round 1 Note

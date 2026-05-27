@@ -1,3 +1,12 @@
+# Student Mutation Idempotency Addendum
+
+1. `POST /api/students` builds a normalized SHA-256 `student_identity_key` from name, school, grade, phones, guardian relation, address, vehicle info, and class id.
+2. The route checks both keyed duplicates and legacy rows where `student_identity_key` is null/blank. Legacy fallback matches the same normalized identity fields through `students` + `class_students`.
+3. Fallback duplicates return `success: true`, the existing `id`, `student`, `class_student`, and `duplicate_ignored: true`; the route backfills the identity key when it can do so without forcing a merge.
+4. Auto PIN creation uses retry-capable `generateUniqueStudentPin`; auto-pin and batch-pins retry UPDATE unique collisions, while manual PIN collisions keep the existing PIN-conflict response.
+5. Student create/edit/delete/restore responses include the changed `student` row and `class_student` row or `null` so the frontend can update state without reloading all initial data.
+6. `initial-data` is read-only for teacher-class mapping repair; it no longer calls `repairTeacherClassMappings(env)` on every request.
+
 # CURRENT_API_FLOW_MAP
 
 ## 0. Onboarding Tasks Round 1

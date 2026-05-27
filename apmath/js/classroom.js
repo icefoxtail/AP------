@@ -552,6 +552,7 @@ function mergeClassroomDateRecords(date, attendanceRows = [], homeworkRows = [])
 
     mergeRows(state.db.attendance, attendanceRows);
     mergeRows(state.db.homework, homeworkRows);
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
 }
 
 async function loadClassroomOperationDateData(date, force = false) {

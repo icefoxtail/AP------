@@ -210,6 +210,7 @@ function mergeAttendanceLedgerDateRecords(date, attendanceRows = [], homeworkRow
     mergeRows(state.db.homework, homeworkRows);
     mergeRows(cache.attendance, attendanceRows);
     mergeRows(cache.homework, homeworkRows);
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
 }
 
 async function loadAttendanceLedgerDateData(date, force = false) {
@@ -584,6 +585,7 @@ function syncMonthlyAttendanceMetaToState(studentId, date, patch = {}) {
     };
 
     const dbRec = applyPatch(state.db.attendance);
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
     const month = safeDate.slice(0, 7);
     const cache = state.ui.monthlyAttendanceCache[month];
     if (cache) {
