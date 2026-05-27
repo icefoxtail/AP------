@@ -28,6 +28,7 @@ import { handleHomeworkPhoto } from './routes/homework-photo.js';
 import { handlePlanner } from './routes/planner.js';
 import { handleAuth } from './routes/auth.js';
 import { handleStudyMaterialWrongs } from './routes/study-material-wrongs.js';
+import { handleOnboarding } from './routes/onboarding.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -483,7 +484,9 @@ export async function buildReportExamCohortStats(env, sessions = [], students = 
 
     const rowsBySessionId = new Map();
     for (const rawRow of (cohortRes.results || [])) {
-      const score = Number(rawRow.score);
+      const rawScore = String(rawRow.score ?? '').trim();
+      if (!rawScore) continue;
+      const score = Number(rawScore);
       if (!Number.isFinite(score)) continue;
 
       const studentGrade = normalizeReportCohortGrade(rawRow.student_grade);
@@ -513,7 +516,7 @@ export async function buildReportExamCohortStats(env, sessions = [], students = 
     if (maxQuestionNo && sessionIds.length) {
       const markers = sessionIds.map(() => '?').join(',');
       const wrongRes = await env.DB.prepare(`
-        SELECT question_id, COUNT(*) AS wrong_count
+        SELECT question_id, COUNT(DISTINCT session_id) AS wrong_count
         FROM wrong_answers
         WHERE session_id IN (${markers})
         GROUP BY question_id
@@ -2649,12 +2652,13 @@ export default {
         const resource = path[1];
         const id = path[2];
 
-        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'timetable-versions', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync'].includes(resource)) {
+        if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'timetable-versions', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync', 'onboarding'].includes(resource)) {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
           const body = ['POST', 'PATCH'].includes(method) ? await readJsonBody(request) : {};
           const foundationRoute =
             resource === 'enrollments' ? handleEnrollments :
+            resource === 'onboarding' ? handleOnboarding :
             resource === 'class-time-slots' ? handleClassTimeSlots :
             (resource === 'timetable-conflicts' || resource === 'timetable-conflict-overrides') ? handleTimetableConflicts :
             resource === 'timetable-versions' ? handleTimetableVersions :

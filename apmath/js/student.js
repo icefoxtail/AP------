@@ -1432,6 +1432,15 @@ async function toggleParentConsent(sid, contactId, consentType, nextValue, retur
 /**
  * 기존 기능 보존 및 규격화 (CRUD Flows)
  */
+function renderConsultationTypeOptions(currentType = '') {
+    const current = String(currentType || '').trim();
+    const baseTypes = ['학습', '태도', '성적', '기타'];
+    // current consultation type fallback: preserve existing DB values that are not in the legacy select list.
+    return current && !baseTypes.includes(current)
+        ? `<option value="${apEscapeHtml(current)}" selected>${apEscapeHtml(current)}</option>`
+        : '';
+}
+
 function openAddConsultationModal(sid) {
     setStudentDetailSubModal('consultation-add', sid);
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'studentDetail', studentId: sid });
@@ -1555,6 +1564,7 @@ function openEditConsultation(cid, sid) {
             <div style="display: flex; gap: 8px;">
                 <input type="date" id="edit-cns-date" class="std-input-base" value="${c.date}" style="flex: 1.2;">
                 <select id="edit-cns-type" class="std-input-base" style="flex: 1;">
+                    ${renderConsultationTypeOptions(c.type)}
                     <option value="학습" ${c.type==='학습'?'selected':''}>학습</option>
                     <option value="태도" ${c.type==='태도'?'selected':''}>태도</option>
                     <option value="성적" ${c.type==='성적'?'selected':''}>성적</option>
