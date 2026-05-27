@@ -1,3 +1,12 @@
+# Student Mutation Risk Addendum
+
+| flow | risk | check |
+|---|---|---|
+| student create idempotency | rapid duplicate clicks or concurrent create requests insert multiple rows | `student_identity_key`, `idx_students_identity_key`, duplicate response `duplicate_ignored: true`, PIN retry tests |
+| student mutation lightweight refresh | create/edit/delete/restore triggers full `/api/initial-data` reload or stale local state | `student.js` merge helpers, no `await loadData()` in student mutation handlers |
+| student UI Korean text | student mutation fixes accidentally reintroduce mojibake in `student.js` or backend helper strings | `tools/test-student-js-mojibake-guard.mjs` scans full student UI and related JS, including `admin-db.js` and bare `餓`, for broken Korean patterns plus required normal phrases |
+| initial-data repair side effect | read-only initial-data repeatedly runs teacher-class repair and slows every reload | `index.js` does not call `repairTeacherClassMappings(env)` inside `/api/initial-data` |
+
 # CURRENT_REGRESSION_RISK_MAP
 
 | 흐름 | 위험 | 검수 기준 |

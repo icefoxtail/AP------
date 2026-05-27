@@ -1,3 +1,11 @@
+# Student Mutation State Addendum
+
+`apmath/js/student.js` merges `student` and `class_student` rows returned by student create/edit/delete/restore APIs into `state.db` and invalidates indexes. These paths do not call full `loadData()` after success, so a single student mutation no longer reloads `/api/initial-data`.
+
+Student add closes/refreshes the visible state before onboarding bootstrap. Bootstrap is fire-and-forget, logs failures with `console.warn`, and is skipped when the create response has `duplicate_ignored: true`.
+
+`tools/test-student-js-mojibake-guard.mjs` protects this flow from Korean UI text regressions by scanning `student.js` and related JS, including `admin-db.js` and bare `餓`, for mojibake patterns and required normal student-management phrases.
+
 # CURRENT_FRONTEND_MAP
 
 ## 1. AP Math main

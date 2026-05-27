@@ -1000,6 +1000,45 @@ function returnFromStudentFlow(ctx = null) {
     if (typeof renderDashboard === 'function') return renderDashboard();
 }
 
+function mergeStudentIntoState(student) {
+    if (!student || !student.id) return null;
+    if (!state.db.students) state.db.students = [];
+    const sid = String(student.id);
+    const idx = state.db.students.findIndex(s => String(s.id) === sid);
+    if (idx > -1) state.db.students[idx] = { ...state.db.students[idx], ...student };
+    else state.db.students.push(student);
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+    return student;
+}
+
+function mergeClassStudentIntoState(classStudent) {
+    if (!classStudent || !classStudent.student_id) return null;
+    if (!state.db.class_students) state.db.class_students = [];
+    const sid = String(classStudent.student_id);
+    const cid = String(classStudent.class_id || '');
+    state.db.class_students = state.db.class_students.filter(m => String(m.student_id) !== sid);
+    if (cid) state.db.class_students.push({ ...classStudent, class_id: cid, student_id: sid });
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+    return cid ? classStudent : null;
+}
+
+function mergeStudentCreateResponseIntoState(response = {}) {
+    if (response.student) mergeStudentIntoState(response.student);
+    if (Object.prototype.hasOwnProperty.call(response, 'class_student')) {
+        mergeClassStudentIntoState(response.class_student);
+    }
+    return response.student || null;
+}
+
+function refreshCurrentStudentListViewAfterMutation(returnCtx = null) {
+    if (returnCtx?.type === 'classDetail' && returnCtx.classId && typeof renderClass === 'function') return renderClass(returnCtx.classId);
+    if (returnCtx?.type === 'studentDetail' && returnCtx.studentId && typeof renderStudentDetail === 'function') return renderStudentDetail(returnCtx.studentId);
+    if (returnCtx?.type === 'addressBook' && typeof openAddressBook === 'function') return openAddressBook();
+    if (state.ui?.currentClassId && typeof renderClass === 'function') return renderClass(state.ui.currentClassId);
+    if (typeof renderDashboard === 'function') return renderDashboard();
+    return null;
+}
+
 /**
  * 탭별 내용 렌더링 엔진 (UI Standard 적용)
  */
@@ -1627,8 +1666,9 @@ async function handleDelete(sid) {
         const r = await api.delete('students', sid);
         if (r?.success) {
             toast('퇴원 처리되었습니다.', 'info');
-            await loadData();
-            returnFromStudentFlow(returnCtx);
+            mergeStudentCreateResponseIntoState(r);
+            closeModal();
+            refreshCurrentStudentListViewAfterMutation(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '퇴원 처리에 실패했습니다.', 'error');
@@ -1646,8 +1686,9 @@ async function handleRestore(sid) {
         const r = await api.patch(`students/${sid}/restore`, {});
         if (r?.success) {
             toast('재원으로 복구되었습니다.', 'info');
-            await loadData();
-            returnFromStudentFlow(returnCtx);
+            mergeStudentCreateResponseIntoState(r);
+            closeModal();
+            refreshCurrentStudentListViewAfterMutation(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '재원 복구에 실패했습니다.', 'error');
@@ -1949,8 +1990,9 @@ async function handleEditStudent(sid) {
                 });
             }
             toast('학생 정보가 수정되었습니다.', 'success');
-            await loadData();
-            returnFromStudentFlow(returnCtx);
+            mergeStudentCreateResponseIntoState(r);
+            closeModal();
+            refreshCurrentStudentListViewAfterMutation(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '학생 정보 수정에 실패했습니다.', 'error');
@@ -2025,14 +2067,15 @@ async function handleAddStudent() {
     try {
         const r = await api.post('students', payload);
         if (r?.success) {
-            await bootstrapOnboardingTasks({
+            if (!r?.duplicate_ignored && r?.id && classId) bootstrapOnboardingTasks({
                 student_id: r.id,
                 class_id: classId,
                 onboarding_started_at: document.getElementById(getOnboardingStartDateInputId('add'))?.value || getTodayKstDateText()
-            });
+            }).catch(e => console.warn('[handleAddStudent] onboarding bootstrap failed:', e));
             toast(r?.duplicate_ignored ? '이미 등록 처리된 학생입니다.' : '학생이 추가되었습니다.', r?.duplicate_ignored ? 'info' : 'success');
-            await loadData();
-            returnFromStudentFlow(returnCtx);
+            mergeStudentCreateResponseIntoState(r);
+            closeModal();
+            refreshCurrentStudentListViewAfterMutation(returnCtx);
             return;
         }
         toast(r?.message || r?.error || '학생 추가에 실패했습니다.', 'error');
