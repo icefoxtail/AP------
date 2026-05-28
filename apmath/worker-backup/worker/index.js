@@ -29,6 +29,7 @@ import { handlePlanner } from './routes/planner.js';
 import { handleAuth } from './routes/auth.js';
 import { handleStudyMaterialWrongs } from './routes/study-material-wrongs.js';
 import { handleOnboarding } from './routes/onboarding.js';
+import { handleEie } from './routes/eie.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -2669,6 +2670,13 @@ export default {
             resource === 'foundation-logs' ? handleFoundationLogs :
             null;
           const routed = foundationRoute ? await foundationRoute(request, env, teacher, path, url, body) : null;
+          if (routed) return routed;
+        }
+
+        if (resource === 'eie') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          const routed = await handleEie(request, env, teacher, path, url);
           if (routed) return routed;
         }
 

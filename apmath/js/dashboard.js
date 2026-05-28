@@ -2794,7 +2794,14 @@ function renderDashboard() {
         <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
+    const academyEntry = `
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; margin:0 0 16px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
+            <span style="min-height:42px; border-radius:9px; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">AP Math</span>
+            <a href="../eie/index.html" style="min-height:42px; border-radius:9px; color:var(--secondary); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; text-decoration:none;">EIE 영어</a>
+        </div>
+    `;
     root.innerHTML = `<div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
+        ${academyEntry}
         ${shortcutRow}
         ${todayJournalCard}
         <div id="dashboard-onboarding-tasks-root"></div>
