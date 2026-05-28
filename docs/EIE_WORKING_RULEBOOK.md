@@ -107,15 +107,9 @@ Round 5:
 - duplicate-name, missing-phone, and needs-review flags
 - no student/contact/schedule confirmation write
 
-Round 6:
+Round 6+:
 
-- EIE-only formal student/contact/assignment confirmation 1st pass
-- confirmed data writes only to `eie_students`, `eie_student_contacts`, and `eie_student_schedule_assignments`
-- APMS `students`, `parent_contacts`, `class_students`, and `student_enrollments` remain untouched
-- classroom, attendance, homework, textbook, memo, and class operations remain out of scope
-
-Round 7+:
-
+- formal student/contact/assignment confirmation design after review
 - classroom sessions
 - attendance, homework, textbook, memo, and class operations
 
@@ -133,7 +127,7 @@ Round 5 must not create `eie_students`, `eie_student_contacts`, or `eie_student_
 
 Round 5 must not finalize student identity, phone contact, or class assignment records.
 
-Before Round 7, do not design or implement classroom sessions.
+Before Round 6, do not design or implement classroom sessions.
 
 ### Migration proposal location policy
 
@@ -156,34 +150,37 @@ Candidate flags used in Round 5:
 
 Any save/confirm/create action for students, contacts, assignments, classroom, attendance, homework, textbook, or memo remains out of scope.
 
+---
 
-## 10. Round 6 Confirmation Policy
+## 2026-05-29 EIE 시간표 작업 기준 보정
 
-Round 6 may create EIE-only confirmed tables and records.
+EIE는 새 운영 앱을 제로에서 새로 설계하지 않는다.
+대시보드, 학생관리, 클래스룸은 APMS 구조를 택갈이하는 방향을 우선한다.
+다만 시간표만 EIE 원본 시간표 구조에 맞게 다르게 구현한다.
 
-Allowed tables:
+이번 시간표 작업의 고정 기준:
 
-- `eie_students`
-- `eie_student_contacts`
-- `eie_student_schedule_assignments`
+```text
+- 원장님 대시보드에서 EIE 시간표로 바로 진입
+- EIE 시간표는 원본 26.04 시간표 모양과 셀 구성을 기준으로 출력
+- 셀에는 학생 이름만 표시
+- 전화번호는 학생 이름 클릭 후 상세 패널에서만 표시
+- 엑셀 가져오기 화면, 학생시드 화면, 별도 EIE 대시보드 화면은 만들지 않음
+```
 
-Round 6 confirmation must start from reviewed candidates in `eie_timetable_cells.raw_meta_json` or the candidate endpoints.
+EIE 학생/수업배정 확장 기준:
 
-Confirmation rules:
+```text
+- 한 학생이 여러 선생님/여러 시간표 셀에 들어갈 수 있음
+- 학생 자체가 아니라 학생-시간표셀 배정(eie_student_schedule_assignments)을 이동/추가/종료 대상으로 삼음
+- 이름만 같다고 자동 병합하지 않음
+- 전화번호가 없으면 자동 병합하지 않음
+```
 
-- Confirmed students are stored only in `eie_students`.
-- Confirmed phone numbers are stored only in `eie_student_contacts`.
-- Confirmed timetable memberships are stored only in `eie_student_schedule_assignments`.
-- Same phone number alone must not merge different student names automatically.
-- If both normalized name and normalized phone match an existing EIE student/contact pair, reuse the EIE student.
-- If phone is missing, the student may still be confirmed, but the missing-phone review signal should remain visible in the source candidate.
-- Confirmation may mark the source timetable cell metadata with a confirmed candidate reference.
+개인정보 표시 기준:
 
-Still prohibited in Round 6:
-
-- APMS `students` insert/update
-- APMS `parent_contacts` insert/update
-- APMS `class_students` insert/update
-- APMS `student_enrollments` insert/update
-- classroom session creation
-- attendance, homework, textbook, memo creation
+```text
+- 시간표 셀에 전화번호 숫자 표시 금지
+- 학생 상세는 assignment_id 또는 student_id 기준으로 열어야 함
+- raw_meta_json candidate index만으로 확정 학생 상세를 열지 않음
+```

@@ -39,7 +39,31 @@
         catch (error) { return {}; }
     }
 
+
+    function jsArg(value) {
+        return EieApp.escapeHtml(JSON.stringify(String(value == null ? '' : value)));
+    }
+
     function getStudentCandidates(row) {
+        const assigned = Array.isArray(row?.assigned_students) ? row.assigned_students : [];
+        if (assigned.length) {
+            return assigned.map((student, index) => ({
+                ...student,
+                source_kind: 'assigned',
+                assigned_index: index,
+                candidate_index: Number.isInteger(Number(student.candidate_index)) ? Number(student.candidate_index) : index,
+                candidate_key: student.assignment_id || student.student_id || String(index),
+                name: student.name || student.display_name || '',
+                student_name_raw: student.student_name_raw || student.name || student.display_name || '',
+                phone_raw: student.phone_raw || student.phone || '',
+                normalized_phone: student.normalized_phone || '',
+                grade_raw: student.grade_raw || student.grade || '',
+                flags: Array.isArray(student.flags) ? student.flags : [],
+                match_status: 'confirmed',
+                is_confirmed: true
+            })).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 40);
+        }
+
         const meta = getRawMeta(row);
         const candidates = Array.isArray(meta.student_candidates) ? meta.student_candidates : [];
         if (candidates.length) {
@@ -48,7 +72,7 @@
                 candidate_index: index,
                 name: candidate.name || candidate.student_name_raw || '',
                 flags: Array.isArray(candidate.flags) ? candidate.flags : []
-            })).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 24);
+            })).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 40);
         }
         const values = meta.student_names || meta.students || meta.studentSeeds || [];
         if (!Array.isArray(values)) return [];
@@ -62,7 +86,7 @@
                 name: item?.name || item?.student_name_raw || item?.studentName || '',
                 flags: Array.isArray(item?.flags) ? item.flags : ['needs_review']
             };
-        }).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 24);
+        }).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 40);
     }
 
     function isCandidateConfirmed(cell, candidateIndex) {
@@ -105,7 +129,7 @@
                 <div class="eie-summary-card"><span>확인 필요</span><strong>${EieApp.escapeHtml(countStatus(visibleRows, 'needs_review'))}개</strong></div>
                 <div class="eie-summary-card"><span>숨김</span><strong>${EieApp.escapeHtml(countStatus(rows, 'hidden'))}개</strong></div>
                 <div class="eie-summary-card"><span>선생님</span><strong>${EieApp.escapeHtml(teacherCount)}명</strong></div>
-                <div class="eie-summary-card"><span>학생 후보</span><strong>${EieApp.escapeHtml(studentCandidateCount)}명</strong></div>
+                <div class="eie-summary-card"><span>학생</span><strong>${EieApp.escapeHtml(studentCandidateCount)}명</strong></div>
             </div>
         `;
     }
@@ -134,21 +158,24 @@
 
     function renderStudents(row) {
         const candidates = getStudentCandidates(row);
-        if (!candidates.length) return '<div class="eie-cell-students is-empty">학생 후보 없음</div>';
+        if (!candidates.length) return '<div class="eie-cell-students is-empty">학생 없음</div>';
         return `
             <div class="eie-cell-students">
-                ${candidates.map(candidate => `
-                    <button type="button" class="eie-student-chip ${candidate.flags?.length ? 'has-flags' : ''}" onclick="EieTimetableView.openStudentInfo('${EieApp.escapeHtml(row.id)}', ${Number(candidate.candidate_index || 0)})">
-                        <span>${EieApp.escapeHtml(candidate.name || candidate.student_name_raw || '-')}</span>
-                        ${renderCandidateFlags(candidate)}
-                    </button>
-                `).join('')}
+                ${candidates.map(candidate => {
+                    const candidateKey = candidate.candidate_key || candidate.assignment_id || candidate.student_id || String(candidate.candidate_index || 0);
+                    return `
+                        <button type="button" class="eie-student-chip ${candidate.flags?.length ? 'has-flags' : ''}" onclick="EieTimetableView.openStudentInfo(${jsArg(row.id)}, ${jsArg(candidateKey)})">
+                            <span>${EieApp.escapeHtml(candidate.name || candidate.student_name_raw || '-')}</span>
+                            ${renderCandidateFlags(candidate)}
+                        </button>
+                    `;
+                }).join('')}
             </div>
         `;
     }
 
     function renderExcelGrid(rows) {
-        if (!rows.length) return '<div class="eie-empty-box">운영 시간표 셀이 없습니다. 수업 추가 또는 엑셀 가져오기를 먼저 진행해 주세요.</div>';
+        if (!rows.length) return '<div class="eie-empty-box">등록된 EIE 시간표가 없습니다.</div>';
         const groups = groupByPeriod(rows);
         return Object.values(groups).map(group => {
             const head = group.row;
@@ -233,9 +260,9 @@
         const flags = Array.isArray(selected.flags) ? selected.flags : [];
         const reasons = Array.isArray(getRawMeta(cell).needs_review_reasons) ? getRawMeta(cell).needs_review_reasons : [];
         return `
-            <aside class="eie-editor-panel eie-student-detail-panel" aria-label="학생 후보 상세">
+            <aside class="eie-editor-panel eie-student-detail-panel" aria-label="학생 상세">
                 <div class="eie-editor-head">
-                    <h2>학생 후보</h2>
+                    <h2>학생</h2>
                     <button type="button" class="eie-icon-button" onclick="EieTimetableView.closeStudentInfo()">닫기</button>
                 </div>
                 <div class="eie-student-detail-title">
@@ -261,9 +288,9 @@
                     </div>
                 ` : ''}
                 <div class="eie-action-row">
-                    ${isCandidateConfirmed(cell, selected.candidate_index) ? '<span class="eie-status is-ok">확정됨</span>' : `<button type="button" class="eie-primary-button" onclick="EieTimetableView.confirmSelectedStudentCandidate()">학생·연락처·수업배정 확정</button>`}
+                    ${(selected.is_confirmed || isCandidateConfirmed(cell, selected.candidate_index)) ? '<span class="eie-status is-ok">등록됨</span>' : `<button type="button" class="eie-primary-button" onclick="EieTimetableView.confirmSelectedStudentCandidate()">학생·연락처·수업배정 확정</button>`}
                 </div>
-                <div class="eie-api-note">확정은 EIE 전용 테이블에만 저장합니다. APMS 학생/학부모/반 배정에는 쓰지 않습니다.</div>
+                <div class="eie-api-note">전화번호는 학생 상세에서만 표시됩니다.</div>
             </aside>
         `;
     }
@@ -319,14 +346,13 @@
             const state = EieState.get();
             return `
                 <section aria-labelledby="eie-timetable-title">
-                    <button type="button" class="eie-back-button" onclick="EieRouter.open('dashboard')">EIE 홈</button>
+                    <a class="eie-back-button" href="../apmath/index.html">원장님 화면</a>
                     <div class="eie-panel">
                         <p class="eie-dashboard-kicker">EIE 운영 시간표</p>
-                        <h1 id="eie-timetable-title" class="eie-panel-title">엑셀형 운영 시간표</h1>
-                        <p class="eie-panel-copy">엑셀에서 가져온 셀과 수동 추가 셀을 운영 시간표로 수정합니다. 셀에는 학생 이름만 표시하고 전화번호는 학생 상세 단계에서만 다룹니다.</p>
+                        <h1 id="eie-timetable-title" class="eie-panel-title">EIE 운영 시간표</h1>
+                        <p class="eie-panel-copy">원본 시간표 기준으로 수업 셀과 학생 이름을 표시합니다. 전화번호는 학생 상세에서만 확인합니다.</p>
                         <div class="eie-action-row">
                             <button type="button" class="eie-primary-button" onclick="EieTimetableView.newCell()">수업 추가</button>
-                            <button type="button" class="eie-secondary-button" onclick="EieRouter.open('import')">엑셀 가져오기</button>
                             <button type="button" class="eie-secondary-button" onclick="EieRouter.open('timetable')">새로고침</button>
                         </div>
                         ${renderFilterControls()}
@@ -394,13 +420,13 @@
         },
         openStudentInfo(cellId, candidateIndex) {
             const selected = EieState.selectStudentCandidate(cellId, candidateIndex);
-            if (!selected) EieState.setTimetableError('학생 후보를 찾지 못했습니다.');
+            if (!selected) EieState.setTimetableError('학생를 찾지 못했습니다.');
             EieRouter.open('timetable');
         },
         async confirmSelectedStudentCandidate() {
             const selected = EieState.getSelectedStudentCandidate();
             if (!selected?.cell_id) {
-                EieState.setTimetableError('확정할 학생 후보를 찾지 못했습니다.');
+                EieState.setTimetableError('확정할 학생를 찾지 못했습니다.');
                 EieRouter.open('timetable');
                 return;
             }
@@ -412,7 +438,7 @@
                 EieState.setTimetableNotice('학생·연락처·수업배정을 확정했습니다.');
                 EieState.closeStudentCandidatePanel();
             } catch (error) {
-                EieState.setTimetableError(error?.message || '학생 후보를 확정하지 못했습니다.');
+                EieState.setTimetableError(error?.message || '학생를 확정하지 못했습니다.');
             }
             EieRouter.open('timetable');
         }

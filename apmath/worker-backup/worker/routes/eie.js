@@ -204,7 +204,8 @@ async function queryTimetableCells(env, importId, options = {}) {
     `).bind(...statuses).all();
     return result.results || [];
   } catch (error) {
-    return [];
+    if (isEieBaseTableMissing(error)) return [];
+    throw error;
   }
 }
 
@@ -365,6 +366,18 @@ function buildNeedsReviewRows(cells) {
 function isRound6TableMissing(error) {
   const text = String(error?.message || error || '').toLowerCase();
   return text.includes('no such table') || text.includes('eie_students') || text.includes('eie_student_contacts') || text.includes('eie_student_schedule_assignments');
+}
+
+function isEieBaseTableMissing(error) {
+  const text = String(error?.message || error || '').toLowerCase();
+  return text.includes('no such table') && (
+    text.includes('eie_import_sessions') ||
+    text.includes('eie_timetable_cells')
+  );
+}
+
+function isEieOwner(teacher) {
+  return String(teacher?.role || '').toLowerCase() === 'admin';
 }
 
 function round6MigrationRequiredResponse() {
@@ -662,6 +675,108 @@ async function queryCandidateCells(env, importId) {
   return queryTimetableCells(env, '', { statuses: ['active', 'imported', 'needs_review', 'hidden', 'archived'] });
 }
 
+
+function parseAssignmentCandidateIndex(row) {
+  const meta = parseRawMeta(row?.assignment_raw_meta_json);
+  const index = Number(meta?.candidate_index);
+  return Number.isInteger(index) && index >= 0 ? index : null;
+}
+
+function assignedStudentSortKey(student) {
+  const index = Number(student?.candidate_index);
+  if (Number.isInteger(index) && index >= 0) return index;
+  return 9999;
+}
+
+async function attachAssignedStudents(env, rows) {
+  const timetableRows = Array.isArray(rows) ? rows : [];
+  if (!timetableRows.length) return timetableRows;
+
+  const cellIds = timetableRows.map(row => safeText(row.id)).filter(Boolean);
+  if (!cellIds.length) return timetableRows;
+
+  try {
+    const placeholders = cellIds.map(() => '?').join(', ');
+    const result = await env.DB.prepare(`
+      SELECT a.timetable_cell_id,
+             a.id AS assignment_id,
+             a.status AS assignment_status,
+             a.source_type AS assignment_source_type,
+             a.source_import_session_id AS assignment_source_import_session_id,
+             a.memo AS assignment_memo,
+             a.raw_meta_json AS assignment_raw_meta_json,
+             s.id AS student_id,
+             s.display_name,
+             s.normalized_name,
+             s.grade,
+             s.status AS student_status,
+             c.id AS contact_id,
+             c.phone,
+             c.normalized_phone,
+             c.contact_label
+      FROM eie_student_schedule_assignments a
+      JOIN eie_students s ON s.id = a.student_id
+      LEFT JOIN eie_student_contacts c ON c.student_id = s.id AND COALESCE(c.is_primary, 1) = 1
+      WHERE COALESCE(a.status, 'active') != 'archived'
+        AND COALESCE(s.status, 'active') != 'archived'
+        AND a.timetable_cell_id IN (${placeholders})
+      ORDER BY a.created_at ASC, s.display_name ASC, c.created_at ASC
+    `).bind(...cellIds).all();
+
+    const byCell = new Map();
+    for (const row of (result.results || [])) {
+      const list = byCell.get(row.timetable_cell_id) || [];
+      if (!list.some(item => item.assignment_id === row.assignment_id)) {
+        const assignmentMeta = parseRawMeta(row.assignment_raw_meta_json);
+        const candidateIndex = parseAssignmentCandidateIndex(row);
+        list.push({
+          source_kind: 'assigned',
+          id: row.assignment_id || row.student_id,
+          assignment_id: row.assignment_id,
+          assignment_status: row.assignment_status || 'active',
+          student_id: row.student_id,
+          name: row.display_name || '',
+          display_name: row.display_name || '',
+          student_name_raw: assignmentMeta.student_name_raw || row.display_name || '',
+          normalized_name: row.normalized_name || '',
+          grade_raw: row.grade || '',
+          phone_raw: row.phone || '',
+          normalized_phone: row.normalized_phone || '',
+          contact_id: row.contact_id || '',
+          contact_label: row.contact_label || '',
+          candidate_index: candidateIndex,
+          source_row: assignmentMeta.source_row || '',
+          source_col: assignmentMeta.source_col || '',
+          memo_raw: assignmentMeta.memo_raw || row.assignment_memo || '',
+          match_status: 'confirmed',
+          flags: [],
+          is_confirmed: true
+        });
+      }
+      byCell.set(row.timetable_cell_id, list);
+    }
+
+    for (const [cellId, list] of byCell.entries()) {
+      list.sort((a, b) => {
+        const diff = assignedStudentSortKey(a) - assignedStudentSortKey(b);
+        if (diff !== 0) return diff;
+        return safeText(a.display_name).localeCompare(safeText(b.display_name), 'ko');
+      });
+      byCell.set(cellId, list);
+    }
+
+    return timetableRows.map(row => ({
+      ...row,
+      assigned_students: byCell.get(row.id) || []
+    }));
+  } catch (error) {
+    if (isRound6TableMissing(error)) {
+      return timetableRows.map(row => ({ ...row, assigned_students: [] }));
+    }
+    throw error;
+  }
+}
+
 async function handleGet(request, env, path, url) {
   const section = path[2] || '';
   const action = path[3] || '';
@@ -744,7 +859,7 @@ async function handleGet(request, env, path, url) {
   }
 
   if (section === 'timetable') {
-    const rows = await queryTimetableCells(env, '', { statuses: buildStatusFilter(url) });
+    const rows = await attachAssignedStudents(env, await queryTimetableCells(env, '', { statuses: buildStatusFilter(url) }));
     return jsonResponse({ success: true, data: rows, timetable_cells: rows, stub: rows.length === 0 });
   }
 
@@ -982,7 +1097,9 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
 }
 
 export async function handleEie(request, env, teacher, path, url) {
-  void teacher;
+  if (!teacher) return jsonResponse({ success: false, error: 'Unauthorized' }, 401);
+  if (!isEieOwner(teacher)) return jsonResponse({ success: false, error: 'EIE management is owner only' }, 403);
+
   const method = request.method;
 
   if (method === 'GET') {

@@ -992,3 +992,131 @@ body {
 .eie-student-detail-panel .eie-action-row {
   margin-top: 2px;
 }
+
+
+/* EIE owner dashboard: APMS admin surface-compatible shell */
+.eie-admin-home {
+    width: 100%;
+}
+
+.eie-admin-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 4px;
+}
+
+.eie-admin-head h3 {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.eie-admin-head span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eie-admin-shortcuts {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 4px;
+    border-radius: 12px;
+    background: var(--eie-surface-2);
+}
+
+.eie-admin-shortcut {
+    flex: 1;
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--eie-surface);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.eie-admin-shortcut.is-active {
+    background: #ecfdf5;
+    color: #16a34a !important;
+}
+
+.eie-admin-section {
+    margin-bottom: 28px;
+}
+
+.eie-admin-section-title-row {
+    margin-bottom: 12px;
+}
+
+.eie-admin-section-title {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.eie-admin-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+}
+
+.eie-admin-card {
+    min-height: 96px;
+    padding: 14px;
+    border: 1px solid var(--eie-border);
+    border-radius: 18px;
+    background: var(--eie-surface);
+    box-shadow: var(--eie-shadow);
+    color: var(--eie-text);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.eie-admin-card-kicker {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--eie-primary);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-admin-card strong {
+    display: block;
+    color: var(--eie-text);
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.25;
+}
+
+.eie-admin-card small {
+    display: block;
+    margin-top: 6px;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+@media (max-width: 720px) {
+    .eie-admin-shortcuts,
+    .eie-admin-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-admin-shortcuts {
+        display: grid;
+    }
+}

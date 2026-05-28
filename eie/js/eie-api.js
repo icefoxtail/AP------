@@ -50,9 +50,6 @@
         if (kind === 'timetable') return { success: true, stub: true, data: [], timetable_cells: [] };
         if (kind === 'contact-seeds') return { success: true, stub: true, data: [], contact_seeds: [] };
         if (kind === 'needs-review') return { success: true, stub: true, data: [], needs_review: [] };
-        if (kind === 'confirmed-students') return { success: true, stub: true, data: [], confirmed_students: [] };
-        if (kind === 'confirmed-contacts') return { success: true, stub: true, data: [], confirmed_contacts: [] };
-        if (kind === 'schedule-assignments') return { success: true, stub: true, data: [], schedule_assignments: [] };
         return { success: true, stub: true, data: [], student_seeds: [] };
     }
 
@@ -125,23 +122,8 @@
             if (importId) return get(`import/${encodeURIComponent(importId)}/needs-review`, 'needs-review');
             return get('needs-review', 'needs-review');
         },
-        getConfirmedStudents() {
-            return get('confirmed-students', 'confirmed-students');
-        },
-        getConfirmedContacts() {
-            return get('confirmed-contacts', 'confirmed-contacts');
-        },
-        getScheduleAssignments() {
-            return get('schedule-assignments', 'schedule-assignments');
-        },
         async createImport(payload) {
             return request('import', {
-                method: 'POST',
-                body: payload || {}
-            });
-        },
-        async confirmStudentCandidate(payload) {
-            return request('confirm-candidate', {
                 method: 'POST',
                 body: payload || {}
             });
@@ -162,6 +144,12 @@
             return request(`timetable-cells/${encodeURIComponent(cellId)}/status`, {
                 method: 'PATCH',
                 body: { status }
+            });
+        },
+        async confirmStudentCandidate(payload) {
+            return request('confirm-candidate', {
+                method: 'POST',
+                body: payload || {}
             });
         }
     };

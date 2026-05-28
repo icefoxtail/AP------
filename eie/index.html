@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EIE English OS</title>
+    <title>EIE 영어 관리</title>
     <link rel="stylesheet" href="./css/eie.css">
 </head>
 <body>
     <header class="eie-shell-header">
-        <a class="eie-brand" href="./index.html" aria-label="EIE home">EIE 영어</a>
+        <a class="eie-brand" href="./index.html#dashboard" aria-label="EIE 관리 홈">EIE 영어 관리</a>
         <nav class="eie-nav" aria-label="EIE navigation">
             <a class="eie-nav-link" href="../apmath/index.html">AP Math</a>
-            <button class="eie-nav-link is-active" type="button" onclick="EieRouter.open('dashboard')">EIE 영어</button>
+            <button class="eie-nav-link" type="button" data-eie-route="dashboard" onclick="EieRouter.open('dashboard')">EIE</button>
+            <button class="eie-nav-link" type="button" data-eie-route="timetable" onclick="EieRouter.open('timetable')">시간표</button>
         </nav>
     </header>
     <main id="eie-app" class="eie-shell-main"></main>
 
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="./js/utils/eie-normalize.js"></script>
     <script src="./js/eie-state.js"></script>
     <script src="./js/eie-api.js"></script>
-    <script src="./js/utils/eie-normalize.js"></script>
-    <script src="./js/utils/eie-excel-parser.js"></script>
     <script src="./js/eie-app.js"></script>
     <script src="./js/views/eie-dashboard.js"></script>
     <script src="./js/views/eie-timetable.js"></script>
-    <script src="./js/views/eie-import.js"></script>
-    <script src="./js/views/eie-student-seeds.js"></script>
     <script src="./js/eie-router.js"></script>
 </body>
 </html>
