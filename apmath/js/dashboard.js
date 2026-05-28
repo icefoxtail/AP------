@@ -2733,6 +2733,7 @@ function renderTodoSections() {
 
 function renderTodayJournalCard(data) {
     injectDashboardOpsStyles();
+    const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayClasses = (state?.db?.classes || []).filter(c => {
         if (Number(c?.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
@@ -2747,19 +2748,39 @@ function renderTodayJournalCard(data) {
         ? '수업 없음'
         : todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ');
 
+    const targetDays = dashboardGetJournalTargetDayKeys('', null);
+    const journalRows = dashboardGetWeekDates(todayStr)
+        .filter(day => targetDays.includes(day.key))
+        .filter(day => !isDashboardHoliday(day.date))
+        .map(day => {
+            const journal = dashboardFindJournal(day.date, '');
+            const done = dashboardIsJournalDone(journal);
+            const statusText = done ? '제출완료' : '미작성';
+            const labelText = `${day.label} ${apFormatMonthDay(day.date) || day.date}`;
+            const ariaText = `${labelText} ${statusText} 일지 열기`;
+            return `
+                <button class="journal-day-cell journal-day-cell--${done ? 'done' : 'missing'}" onclick="event.stopPropagation(); openDailyJournalModal('${day.date}')" type="button" aria-label="${apEscapeHtml(ariaText)}" style="width:100%; min-height:42px; padding:0 14px; display:grid; grid-template-columns:minmax(0,1fr) auto 12px; align-items:center; gap:10px; border:0; border-top:1px solid var(--border); background:transparent; color:var(--text); font-family:inherit; cursor:pointer; box-shadow:none; text-align:left;">
+                    <span class="journal-day-cell__label" style="min-width:0; color:var(--secondary); font-size:13px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(labelText)}</span>
+                    <span class="journal-day-cell__status" style="font-size:13px; font-weight:700; color:${done ? 'var(--text)' : 'var(--warning)'}; white-space:nowrap;">${apEscapeHtml(statusText)}</span>
+                    <span class="journal-day-cell__chevron" aria-hidden="true" style="color:var(--secondary); font-size:14px; line-height:1; text-align:right;">›</span>
+                </button>
+            `;
+        }).join('');
+
     return `
-        <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher">
-            <div class="ap-dashboard-journal-head">
-                <h3 class="ap-dashboard-journal-title">오늘일지</h3>
-                <span id="dashboard-journal-content" class="ap-dashboard-journal-summary">${contentHtml}</span>
+        <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher" style="margin-bottom:18px;">
+            <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+                <h3 class="ap-dashboard-journal-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘일지</h3>
             </div>
-            <div id="dashboard-journal-card" class="ap-dashboard-journal-body" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
-                ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
+            <div id="dashboard-journal-card" class="ap-dashboard-journal-body" style="overflow:hidden; border-radius:16px; border:1px solid var(--border); background:var(--surface); box-shadow:none;">
+                <div id="dashboard-journal-content" class="ap-dashboard-journal-summary" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');" style="min-height:42px; padding:0 14px; display:flex; align-items:center; justify-content:flex-end; color:var(--secondary); font-size:12px; font-weight:500; line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer;">
+                    ${contentHtml}
+                </div>
+                ${journalRows || `<div style="min-height:42px; padding:0 14px; display:flex; align-items:center; justify-content:center; border-top:1px solid var(--border); color:var(--secondary); font-size:13px; font-weight:500;">이번 주 작성 대상일이 없습니다.</div>`}
             </div>
         </div>
     `;
 }
-
 
 // [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
 function ensureDashboardOnboardingState() {
