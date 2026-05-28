@@ -121,6 +121,19 @@ function validateTimetableCell(cell) {
   return '';
 }
 
+function isUniqueConflict(error) {
+  const text = String(error?.message || error || '').toLowerCase();
+  return text.includes('unique') || text.includes('constraint');
+}
+
+function uniqueCellConflictResponse() {
+  return jsonResponse({
+    success: false,
+    error: 'duplicate timetable cell',
+    message: '같은 요일·교시·컬럼의 수업 셀이 이미 있습니다.'
+  }, 409);
+}
+
 async function ensureManualImportSession(env) {
   await env.DB.prepare(`
     INSERT OR IGNORE INTO eie_import_sessions (id, file_name, sheet_name, source_month, imported_at, status, raw_meta_json, created_at, updated_at)
@@ -133,8 +146,8 @@ async function nextColumnIndex(env, cell) {
   const row = await env.DB.prepare(`
     SELECT COALESCE(MAX(column_index), 0) + 1 AS next_column_index
     FROM eie_timetable_cells
-    WHERE import_session_id = ? AND COALESCE(day_label, '') = COALESCE(?, '') AND period_label = ?
-  `).bind(cell.import_session_id, cell.day_label, cell.period_label).first();
+    WHERE COALESCE(day_label, '') = COALESCE(?, '') AND period_label = ?
+  `).bind(cell.day_label, cell.period_label).first();
   return Number(row?.next_column_index || 1);
 }
 
@@ -389,32 +402,37 @@ async function handlePostTimetableCell(request, env) {
   if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
   await ensureManualImportSession(env);
   cell.column_index = await nextColumnIndex(env, cell);
-  await env.DB.prepare(`
-    INSERT INTO eie_timetable_cells (
-      id, import_session_id, source_type, source_import_session_id, day_label, period_label, period_order, start_time, end_time,
-      class_name_raw, teacher_name_raw, room_raw, column_index, student_count, status, memo,
-      raw_meta_json, created_at, updated_at
-    )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-  `).bind(
-    cell.id,
-    cell.import_session_id,
-    cell.source_type,
-    cell.source_import_session_id,
-    cell.day_label,
-    cell.period_label,
-    cell.period_order,
-    cell.start_time,
-    cell.end_time,
-    cell.class_name_raw,
-    cell.teacher_name_raw,
-    cell.room_raw,
-    cell.column_index,
-    cell.student_count,
-    cell.status,
-    cell.memo,
-    toJsonText(cell.raw_meta_json)
-  ).run();
+  try {
+    await env.DB.prepare(`
+      INSERT INTO eie_timetable_cells (
+        id, import_session_id, source_type, source_import_session_id, day_label, period_label, period_order, start_time, end_time,
+        class_name_raw, teacher_name_raw, room_raw, column_index, student_count, status, memo,
+        raw_meta_json, created_at, updated_at
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `).bind(
+      cell.id,
+      cell.import_session_id,
+      cell.source_type,
+      cell.source_import_session_id,
+      cell.day_label,
+      cell.period_label,
+      cell.period_order,
+      cell.start_time,
+      cell.end_time,
+      cell.class_name_raw,
+      cell.teacher_name_raw,
+      cell.room_raw,
+      cell.column_index,
+      cell.student_count,
+      cell.status,
+      cell.memo,
+      toJsonText(cell.raw_meta_json)
+    ).run();
+  } catch (error) {
+    if (isUniqueConflict(error)) return uniqueCellConflictResponse();
+    throw error;
+  }
   const saved = await getTimetableCell(env, cell.id);
   return jsonResponse({ success: true, data: saved, timetable_cell: saved });
 }
@@ -436,7 +454,11 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
     const next = {
       day_label: body.day_label == null ? existing.day_label : safeText(body.day_label),
       period_label: body.period_label == null ? existing.period_label : safeText(body.period_label),
-      period_order: body.period_order == null ? (periodOrderFromLabel(body.period_label) || existing.period_order) : Number(body.period_order),
+      period_order: body.period_order != null
+        ? Number(body.period_order)
+        : body.period_label != null
+          ? (periodOrderFromLabel(body.period_label) ?? existing.period_order)
+          : existing.period_order,
       start_time: body.start_time == null ? existing.start_time : safeText(body.start_time),
       end_time: body.end_time == null ? existing.end_time : safeText(body.end_time),
       class_name_raw: body.class_name_raw == null ? existing.class_name_raw : safeText(body.class_name_raw),
@@ -448,26 +470,31 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
     };
     const validationError = validateTimetableCell(next);
     if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
-    await env.DB.prepare(`
-      UPDATE eie_timetable_cells
-      SET day_label = ?, period_label = ?, period_order = ?, start_time = ?, end_time = ?,
-          class_name_raw = ?, teacher_name_raw = ?, room_raw = ?, student_count = ?, status = ?, memo = ?,
-          updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `).bind(
-      next.day_label,
-      next.period_label,
-      next.period_order,
-      next.start_time,
-      next.end_time,
-      next.class_name_raw,
-      next.teacher_name_raw,
-      next.room_raw,
-      next.student_count,
-      next.status,
-      next.memo,
-      cellId
-    ).run();
+    try {
+      await env.DB.prepare(`
+        UPDATE eie_timetable_cells
+        SET day_label = ?, period_label = ?, period_order = ?, start_time = ?, end_time = ?,
+            class_name_raw = ?, teacher_name_raw = ?, room_raw = ?, student_count = ?, status = ?, memo = ?,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `).bind(
+        next.day_label,
+        next.period_label,
+        next.period_order,
+        next.start_time,
+        next.end_time,
+        next.class_name_raw,
+        next.teacher_name_raw,
+        next.room_raw,
+        next.student_count,
+        next.status,
+        next.memo,
+        cellId
+      ).run();
+    } catch (error) {
+      if (isUniqueConflict(error)) return uniqueCellConflictResponse();
+      throw error;
+    }
   }
 
   const saved = await getTimetableCell(env, cellId);
