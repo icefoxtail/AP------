@@ -2097,12 +2097,13 @@ function renderAdminGlobalSearchPanel() {
 function renderAdminAcademyHeaderSwitch() {
     if (String(state?.auth?.role || '') !== 'admin') return '';
     return `
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
+        <div class="ap-admin-academy-switch" style="display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; margin:0 0 8px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
             <span style="min-height:42px; border-radius:9px; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">AP Math</span>
             <a href="../eie/index.html" style="min-height:42px; border-radius:9px; color:var(--secondary); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; text-decoration:none;">EIE 영어</a>
         </div>
     `;
 }
+
 
 function renderAdminControlCenter() {
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
@@ -2111,15 +2112,12 @@ function renderAdminControlCenter() {
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
     const adminOverviewData = adminBuildOverviewData(todayStr, todayTime);
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
-    const headerHtml = `
-        <div class="ap-admin-dashboard-head" style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin:8px 0 10px; padding:0 4px;">
-            <div style="min-width:0; padding-top:4px;">
-                <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">운영센터</h3>
-            </div>
-            ${renderAdminAcademyHeaderSwitch()}
+    const adminAcademySwitchHtml = renderAdminAcademyHeaderSwitch();
+    const adminSearchRow = adminGlobalSearchPanel ? `
+        <div class="ap-admin-search-band" style="margin:0 0 18px;">
             ${adminGlobalSearchPanel}
         </div>
-    `;
+    ` : '';
 
     const adminShortcutRow = `
         <div class="ap-admin-shortcuts" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
@@ -2313,6 +2311,10 @@ function renderAdminControlCenter() {
                 flex:0 1 420px;
                 z-index:5;
             }
+            #ap-admin-dashboard .ap-admin-search-band .ap-admin-global-search {
+                width:100% !important;
+                flex:0 0 auto !important;
+            }
             #ap-admin-dashboard .ap-admin-global-search__field {
                 position:relative;
                 height:42px;
@@ -2398,8 +2400,9 @@ function renderAdminControlCenter() {
 
     root.innerHTML = `<div id="ap-admin-dashboard">
         ${adminUnifiedStyle}
-        ${headerHtml}
+        ${adminAcademySwitchHtml}
         ${adminShortcutRow}
+        ${adminSearchRow}
         ${todayOverviewHtml}
         ${teacherCardsHtml}
         ${recentConsultationHtml}
@@ -3131,14 +3134,7 @@ function renderDashboard() {
         <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    const academyEntry = `
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; margin:0 0 16px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
-            <span style="min-height:42px; border-radius:9px; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">AP Math</span>
-            <a href="../eie/index.html" style="min-height:42px; border-radius:9px; color:var(--secondary); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; text-decoration:none;">EIE 영어</a>
-        </div>
-    `;
     root.innerHTML = `<div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
-        ${academyEntry}
         ${shortcutRow}
         ${todayJournalCard}
         <div id="dashboard-onboarding-tasks-root"></div>

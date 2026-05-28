@@ -476,6 +476,187 @@ async function handleSearch(env, url) {
   });
 }
 
+async function handleStudentDetail(env, url, studentId) {
+  const today = todaySeoul();
+  const student = await first(env, `
+    SELECT id, name, school_name, grade, status, target_score, memo
+    FROM students
+    WHERE id = ?
+  `, [studentId]);
+
+  if (!student) return jsonResponse({ error: 'Student Not Found' }, 404);
+
+  const [classRows, recentAttCount] = await Promise.all([
+    all(env, `
+      SELECT cs.class_id, c.name AS class_name, c.is_active
+      FROM class_students cs
+      JOIN classes c ON c.id = cs.class_id
+      WHERE cs.student_id = ?
+      ORDER BY c.is_active DESC, c.name ASC
+    `, [studentId]),
+    first(env, `
+      SELECT COUNT(*) AS count
+      FROM attendance
+      WHERE student_id = ?
+        AND date >= DATE(?, '-14 days')
+        AND date <= ?
+    `, [studentId, today, today])
+  ]);
+
+  const activeClassCount = classRows.filter(r => Number(r.is_active) !== 0).length;
+
+  return jsonResponse({
+    success: true,
+    student: {
+      id: student.id,
+      name: student.name,
+      school_name: student.school_name,
+      grade: student.grade,
+      status: student.status,
+      target_score: student.target_score,
+      memo: student.memo ? String(student.memo).slice(0, 100) : null
+    },
+    class_count: classRows.length,
+    active_class_count: activeClassCount,
+    class_names: classRows.map(r => r.class_name),
+    recent_attendance_count: recentAttCount?.count || 0
+  });
+}
+
+async function handleStudentClasses(env, url, studentId) {
+  const rows = await all(env, `
+    SELECT
+      cs.class_id, c.name AS class_name, c.grade, c.subject,
+      c.teacher_name, c.schedule_days, c.time_label, c.is_active,
+      se.status AS enrollment_status, se.branch
+    FROM class_students cs
+    JOIN classes c ON c.id = cs.class_id
+    LEFT JOIN student_enrollments se
+      ON se.student_id = cs.student_id AND se.class_id = cs.class_id
+    WHERE cs.student_id = ?
+    ORDER BY c.is_active DESC, c.grade ASC, c.name ASC
+  `, [studentId]);
+
+  return jsonResponse({
+    success: true,
+    student_id: studentId,
+    classes: rows.map(r => ({
+      class_id: r.class_id,
+      class_name: r.class_name,
+      grade: r.grade,
+      subject: r.subject,
+      teacher_name: r.teacher_name,
+      schedule_days: r.schedule_days,
+      time_label: r.time_label,
+      is_active: r.is_active,
+      enrollment_status: r.enrollment_status || null,
+      branch: r.branch || null
+    }))
+  });
+}
+
+async function handleStudentAttendanceSummary(env, url, studentId) {
+  const limit = clampNumber(url.searchParams.get('limit'), 20, 1, 50);
+  const today = todaySeoul();
+  const fromParam = String(url.searchParams.get('from') || '').slice(0, 10);
+  const to = String(url.searchParams.get('to') || today).slice(0, 10);
+  const effectiveFrom = fromParam || (() => {
+    const parts = today.split('-').map(Number);
+    const d = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+    d.setUTCDate(d.getUTCDate() - 30);
+    return d.toISOString().slice(0, 10);
+  })();
+
+  const [summary, recent] = await Promise.all([
+    all(env, `
+      SELECT COALESCE(NULLIF(TRIM(status), ''), 'unknown') AS status, COUNT(*) AS count
+      FROM attendance
+      WHERE student_id = ? AND date >= ? AND date <= ?
+      GROUP BY status
+      ORDER BY status ASC
+    `, [studentId, effectiveFrom, to]),
+    all(env, `
+      SELECT
+        a.date,
+        COALESCE(NULLIF(TRIM(a.status), ''), 'unknown') AS status,
+        (SELECT cs2.class_id FROM class_students cs2 WHERE cs2.student_id = a.student_id LIMIT 1) AS class_id,
+        (SELECT c2.name FROM class_students cs2 JOIN classes c2 ON c2.id = cs2.class_id WHERE cs2.student_id = a.student_id LIMIT 1) AS class_name
+      FROM attendance a
+      WHERE a.student_id = ? AND a.date >= ? AND a.date <= ?
+      ORDER BY a.date DESC
+      LIMIT ?
+    `, [studentId, effectiveFrom, to, limit])
+  ]);
+
+  return jsonResponse({
+    success: true,
+    student_id: studentId,
+    from: effectiveFrom,
+    to,
+    limit,
+    summary,
+    recent
+  });
+}
+
+async function handleStudentExamSummary(env, url, studentId) {
+  const limit = clampNumber(url.searchParams.get('limit'), 10, 1, 30);
+
+  const rows = await all(env, `
+    SELECT id, exam_title, exam_date, score, question_count, class_id
+    FROM exam_sessions
+    WHERE student_id = ?
+    ORDER BY exam_date DESC, id DESC
+    LIMIT ?
+  `, [studentId, limit]);
+
+  const scores = rows
+    .map(r => Number(r.score))
+    .filter(n => Number.isFinite(n) && n >= 0);
+  const averageScore = scores.length
+    ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
+    : null;
+
+  return jsonResponse({
+    success: true,
+    student_id: studentId,
+    limit,
+    summary: {
+      exam_count: rows.length,
+      average_score: averageScore,
+      latest_score: scores.length ? scores[0] : null
+    },
+    recent: rows
+  });
+}
+
+async function handleStudentConsultations(env, url, studentId) {
+  const limit = clampNumber(url.searchParams.get('limit'), 10, 1, 30);
+
+  const rows = await all(env, `
+    SELECT
+      id,
+      date,
+      COALESCE(NULLIF(TRIM(type), ''), '상담') AS type,
+      CASE WHEN TRIM(COALESCE(content, '')) != ''
+           THEN SUBSTR(TRIM(content), 1, 200)
+           ELSE NULL END AS content_preview,
+      next_action
+    FROM consultations
+    WHERE student_id = ?
+    ORDER BY date DESC, id DESC
+    LIMIT ?
+  `, [studentId, limit]);
+
+  return jsonResponse({
+    success: true,
+    student_id: studentId,
+    limit,
+    count: rows.length,
+    consultations: rows
+  });
+}
+
 export async function handleBackdoor(request, env, teacher, path, url) {
   if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
   if (!isAdminUser(teacher)) return jsonResponse({ error: 'Forbidden' }, 403);
@@ -483,7 +664,17 @@ export async function handleBackdoor(request, env, teacher, path, url) {
 
   const sub = path[2] || 'overview';
   if (sub === 'overview') return handleOverview(env, url);
-  if (sub === 'students') return handleStudents(env, url);
+  if (sub === 'students') {
+    const studentId = String(path[3] || '').trim();
+    if (!studentId) return handleStudents(env, url);
+    const subResource = String(path[4] || '').trim();
+    if (!subResource) return handleStudentDetail(env, url, studentId);
+    if (subResource === 'classes') return handleStudentClasses(env, url, studentId);
+    if (subResource === 'attendance-summary') return handleStudentAttendanceSummary(env, url, studentId);
+    if (subResource === 'exam-summary') return handleStudentExamSummary(env, url, studentId);
+    if (subResource === 'consultations') return handleStudentConsultations(env, url, studentId);
+    return jsonResponse({ error: 'API Endpoint Not Found' }, 404);
+  }
   if (sub === 'classes') return handleClasses(env, url);
   if (sub === 'today') return handleToday(env, url);
   if (sub === 'timetable') return handleTimetable(env, url);
