@@ -4,14 +4,21 @@
         return `
             <div class="eie-table-wrap">
                 <table class="eie-table">
-                    <thead><tr><th>이름</th><th>학년</th><th>상태</th><th>메모</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>이름</th>
+                            <th>학년</th>
+                            <th>전화</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         ${rows.map(row => `
                             <tr>
                                 <td>${EieApp.escapeHtml(row.student_name_raw || row.name || '-')}</td>
                                 <td>${EieApp.escapeHtml(row.grade_raw || '-')}</td>
-                                <td>${EieApp.escapeHtml(row.match_status || row.status || '-')}</td>
-                                <td>${EieApp.escapeHtml(row.memo_raw || '')}</td>
+                                <td>${EieApp.escapeHtml(row.phone_raw || '-')}</td>
+                                <td><span class="eie-status">${EieApp.escapeHtml(row.match_status || row.status || '후보')}</span></td>
                             </tr>
                         `).join('')}
                     </tbody>
@@ -40,11 +47,13 @@
                         <div class="eie-summary-grid">
                             <div class="eie-summary-card"><span>학생 후보</span><strong>${EieApp.escapeHtml(studentRows.length)}명</strong></div>
                             <div class="eie-summary-card"><span>연락처 후보</span><strong>${EieApp.escapeHtml(contactRows.length)}건</strong></div>
+                            <div class="eie-summary-card"><span>확정</span><strong>보류</strong></div>
                         </div>
                         <h2 class="eie-subtitle">학생 후보</h2>
                         ${renderRows(studentRows, '아직 저장된 학생 후보가 없습니다. Round 4에서 검토 UI를 연결합니다.')}
                         <h2 class="eie-subtitle">연락처 후보</h2>
                         ${renderRows(contactRows, '아직 저장된 연락처 후보가 없습니다. Round 4 이후 검토합니다.')}
+                        <div class="eie-empty-box">학생 확정, 연락처 확정, 수업배정 확정은 이번 라운드 범위가 아닙니다.</div>
                     </div>
                 </section>
             `;
