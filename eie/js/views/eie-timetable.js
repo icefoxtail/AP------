@@ -1,6 +1,12 @@
 (function () {
     const DAY_ORDER = ['월', '화', '수', '목', '금', '토', '일', ''];
     const STATUS_OPTIONS = ['active', 'needs_review', 'hidden', 'archived'];
+    const STATUS_FILTERS = [
+        { value: 'active,imported,needs_review', label: '운영', description: '운영 중 + 확인 필요' },
+        { value: 'active,imported,needs_review,hidden,archived', label: '전체', description: '숨김·보관 포함' },
+        { value: 'needs_review', label: '확인 필요', description: '확인 필요만' },
+        { value: 'hidden', label: '숨김', description: '숨김 처리만' }
+    ];
 
     function asRows(result) {
         if (Array.isArray(result?.timetable_cells)) return result.timetable_cells;
@@ -59,7 +65,7 @@
     }
 
     function renderSummary(rows) {
-        const visibleRows = rows.filter(row => effectiveStatus(row) !== 'archived');
+        const visibleRows = rows;
         const teacherCount = new Set(visibleRows.map(row => row.teacher_name_raw).filter(Boolean)).size;
         return `
             <div class="eie-summary-grid" aria-label="운영 시간표 요약">
@@ -69,6 +75,21 @@
                 <div class="eie-summary-card"><span>숨김</span><strong>${EieApp.escapeHtml(countStatus(rows, 'hidden'))}개</strong></div>
                 <div class="eie-summary-card"><span>선생님</span><strong>${EieApp.escapeHtml(teacherCount)}명</strong></div>
                 <div class="eie-summary-card"><span>수동 셀</span><strong>${EieApp.escapeHtml(visibleRows.filter(row => row.source_type === 'manual').length)}개</strong></div>
+            </div>
+        `;
+    }
+
+    function renderFilterControls() {
+        const current = EieState.get().timetableStatusFilter || 'active,imported,needs_review';
+        return `
+            <div class="eie-filter-bar" aria-label="시간표 보기 필터">
+                <span class="eie-filter-label">보기</span>
+                ${STATUS_FILTERS.map(filter => `
+                    <button type="button" class="eie-filter-button ${filter.value === current ? 'is-active' : ''}" onclick="EieTimetableView.changeFilter('${EieApp.escapeHtml(filter.value)}')">
+                        <strong>${EieApp.escapeHtml(filter.label)}</strong>
+                        <small>${EieApp.escapeHtml(filter.description)}</small>
+                    </button>
+                `).join('')}
             </div>
         `;
     }
@@ -85,7 +106,7 @@
 
     function renderExcelGrid(rows) {
         if (!rows.length) return '<div class="eie-empty-box">운영 시간표 셀이 없습니다. 수업 추가 또는 엑셀 가져오기를 먼저 진행해 주세요.</div>';
-        const groups = groupByPeriod(rows.filter(row => effectiveStatus(row) !== 'archived'));
+        const groups = groupByPeriod(rows);
         return Object.values(groups).map(group => {
             const head = group.row;
             return `
@@ -208,6 +229,7 @@
                             <button type="button" class="eie-secondary-button" onclick="EieRouter.open('import')">엑셀 가져오기</button>
                             <button type="button" class="eie-secondary-button" onclick="EieRouter.open('timetable')">새로고침</button>
                         </div>
+                        ${renderFilterControls()}
                         ${state.timetableNotice ? `<div class="eie-notice-box">${EieApp.escapeHtml(state.timetableNotice)}</div>` : ''}
                         ${state.timetableError || error ? `<div class="eie-error-box">${EieApp.escapeHtml(state.timetableError || error)}</div>` : ''}
                         ${renderSummary(rows)}
@@ -221,6 +243,11 @@
                     </div>
                 </section>
             `;
+        },
+        changeFilter(value) {
+            EieState.setTimetableStatusFilter(value);
+            EieState.closeTimetableEditor();
+            EieRouter.open('timetable');
         },
         selectCell(cellId) {
             EieState.selectTimetableCell(cellId);
