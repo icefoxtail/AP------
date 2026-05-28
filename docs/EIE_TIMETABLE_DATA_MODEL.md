@@ -148,7 +148,7 @@ Different teachers in the same day/period are separated by `column_index`. Diffe
 
 ## Confirmed Operations Tables Deferred
 
-The following confirmed operations tables are created from Round 6 onward and must not be created in Round 5:
+The following confirmed operations tables are design targets for a later confirmation round and must not be created in Round 5:
 
 - `eie_students`
 - `eie_student_contacts`
@@ -233,72 +233,58 @@ Round 5 flags:
 - `phone_only`
 - `name_only`
 
-These fields are review hints only in Round 5. In Round 6, a reviewed candidate may be confirmed into EIE-only confirmed tables.
+These fields are review hints only. They are not confirmed student, contact, or assignment records.
 
+---
 
-## Round 6 Confirmed Operations Tables
+## 2026-05-29 EIE 시간표 확정 기준 보정
 
-Round 6 introduces EIE-only confirmed operations tables.
+EIE 시간표는 AP Math 시간표와 다르게 한 학생이 여러 선생님, 여러 시간표 셀, 여러 수업에 들어갈 수 있다.
+따라서 학생을 반에 1회만 넣는 구조로 만들면 안 된다.
 
-### `eie_students`
+고정 기준:
 
-Purpose: confirmed EIE student identity record.
+```text
+학생 원장부: eie_students
+전화번호: eie_student_contacts
+시간표 셀: eie_timetable_cells
+학생-시간표 셀 배정: eie_student_schedule_assignments
+```
 
-Key fields:
+운영 원칙:
 
-- `id`
-- `display_name`
-- `normalized_name`
-- `grade`
-- `status`
-- `source_type`
-- `source_import_session_id`
-- `source_cell_id`
-- `memo`
-- `raw_meta_json`
-- `created_by`
-- `created_at`
-- `updated_at`
+```text
+학생을 이동하는 것이 아니라 학생-시간표셀 배정을 이동한다.
+```
 
-### `eie_student_contacts`
+허용:
 
-Purpose: confirmed EIE student phone/contact record.
+```text
+같은 eie_students 학생이 여러 eie_timetable_cells에 배정될 수 있다.
+UNIQUE(student_id, timetable_cell_id)만 유지한다.
+```
 
-Key fields:
+금지:
 
-- `id`
-- `student_id`
-- `phone`
-- `normalized_phone`
-- `contact_label`
-- `is_primary`
-- `source_type`
-- `source_import_session_id`
-- `source_cell_id`
-- `memo`
-- `raw_meta_json`
-- `created_by`
-- `created_at`
-- `updated_at`
+```text
+UNIQUE(student_id) 같은 단일 학생 배정 제한 금지
+이름만 같은 학생 자동 병합 금지
+같은 import session이라고 자동 병합 금지
+학생 row 자체를 드래그 이동 대상으로 삼는 구조 금지
+```
 
-A same normalized phone number may appear under multiple students. Same phone alone is not enough to merge identities.
+드래그/반 이동 확장 기준:
 
-### `eie_student_schedule_assignments`
+```text
+이동: 기존 eie_student_schedule_assignments를 ended/moved 처리 후 새 assignment 생성
+복사/추가: 기존 assignment 유지 후 새 assignment 생성
+충돌 확인: 같은 학생 + 같은 요일 + 시간 겹침을 경고
+```
 
-Purpose: confirmed EIE student-to-timetable-cell assignment.
+원장님 시간표 표시 기준:
 
-Key fields:
-
-- `id`
-- `student_id`
-- `timetable_cell_id`
-- `status`
-- `source_type`
-- `source_import_session_id`
-- `memo`
-- `raw_meta_json`
-- `created_by`
-- `created_at`
-- `updated_at`
-
-Round 6 does not create classroom sessions, attendance, homework, textbook, or memo records.
+```text
+시간표 셀에는 학생 이름만 표시한다.
+전화번호는 학생 상세 패널에서만 표시한다.
+학생 상세는 candidate index가 아니라 assignment_id 또는 student_id 기준으로 조회한다.
+```

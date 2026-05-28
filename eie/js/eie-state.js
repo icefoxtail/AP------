@@ -23,10 +23,7 @@
         selectedStudentCandidate: null,
         studentCandidatePanelMode: '',
         studentSeedNotice: '',
-        studentSeedError: '',
-        confirmedStudents: [],
-        confirmedContacts: [],
-        scheduleAssignments: []
+        studentSeedError: ''
     };
 
     function asArray(rows) {
@@ -53,11 +50,34 @@
         return String(value || '').trim().replace(/\s+/g, ' ');
     }
 
+    function getAssignedStudentCandidates(cell) {
+        const rows = Array.isArray(cell?.assigned_students) ? cell.assigned_students : [];
+        return rows.map((student, index) => ({
+            ...student,
+            source_kind: 'assigned',
+            assigned_index: index,
+            id: student?.assignment_id || student?.student_id || String(index),
+            candidate_key: student?.assignment_id || student?.student_id || String(index),
+            candidate_index: Number.isInteger(Number(student?.candidate_index)) ? Number(student.candidate_index) : index,
+            name: student?.name || student?.display_name || '',
+            student_name_raw: student?.student_name_raw || student?.name || student?.display_name || '',
+            normalized_name: student?.normalized_name || normalizeCandidateName(student?.name || student?.display_name || ''),
+            grade_raw: student?.grade_raw || student?.grade || '',
+            phone_raw: student?.phone_raw || student?.phone || '',
+            normalized_phone: student?.normalized_phone || '',
+            flags: Array.isArray(student?.flags) ? student.flags : [],
+            match_status: 'confirmed',
+            is_confirmed: true
+        })).filter(candidate => candidate.name || candidate.student_name_raw || candidate.normalized_name);
+    }
+
     function getStudentCandidatesFromMeta(meta) {
         const candidates = Array.isArray(meta?.student_candidates) ? meta.student_candidates : [];
         if (candidates.length) {
             return candidates.map((candidate, index) => ({
                 ...candidate,
+                source_kind: 'candidate',
+                candidate_key: String(Number.isInteger(Number(candidate?.candidate_index)) ? Number(candidate.candidate_index) : index),
                 candidate_index: Number.isInteger(Number(candidate?.candidate_index)) ? Number(candidate.candidate_index) : index,
                 name: candidate?.name || candidate?.student_name_raw || candidate?.studentName || '',
                 normalized_name: candidate?.normalized_name || normalizeCandidateName(candidate?.name || candidate?.student_name_raw || candidate?.studentName || ''),
@@ -102,10 +122,27 @@
     function findStudentCandidate(cellId, candidateKey) {
         const cell = findCell(cellId);
         if (!cell) return null;
+        const key = String(candidateKey == null ? '' : candidateKey);
+        const index = Number(key);
+
+        const assignedCandidates = getAssignedStudentCandidates(cell);
+        const assigned = assignedCandidates.find(item => (
+            String(item?.assignment_id || '') === key ||
+            String(item?.student_id || '') === key ||
+            String(item?.id || '') === key ||
+            String(item?.candidate_key || '') === key
+        )) || (Number.isInteger(index) && index >= 0 ? assignedCandidates[index] : null);
+
+        if (assigned) {
+            return {
+                ...assigned,
+                cell_id: cell.id,
+                cell
+            };
+        }
+
         const meta = parseRawMeta(cell.raw_meta_json);
         const candidates = getStudentCandidatesFromMeta(meta);
-        const key = String(candidateKey || '');
-        const index = Number(key);
         const candidate = Number.isInteger(index) && index >= 0
             ? candidates[index]
             : candidates.find(item => String(item?.normalized_name || item?.name || item?.student_name_raw || '') === key);
@@ -156,15 +193,6 @@
         setContactSeeds(rows) {
             state.contactSeeds = asArray(rows);
             state.studentSeedError = '';
-        },
-        setConfirmedStudents(rows) {
-            state.confirmedStudents = asArray(rows);
-        },
-        setConfirmedContacts(rows) {
-            state.confirmedContacts = asArray(rows);
-        },
-        setScheduleAssignments(rows) {
-            state.scheduleAssignments = asArray(rows);
         },
         setNeedsReview(rows) {
             state.needsReview = asArray(rows);
@@ -287,9 +315,6 @@
             state.studentCandidatePanelMode = '';
             state.studentSeedNotice = '';
             state.studentSeedError = '';
-            state.confirmedStudents = [];
-            state.confirmedContacts = [];
-            state.scheduleAssignments = [];
         }
     };
 })();
