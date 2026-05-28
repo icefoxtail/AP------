@@ -1,5 +1,5 @@
-(function () {
-    const PROD_WORKER_ORIGIN = 'https://ap-math-os-v2612.js-pdf.workers.dev';
+﻿(function () {
+    const PROD_WORKER_ORIGIN = 'https://wangji-eie-os.js-pdf.workers.dev';
 
     function trimSlash(value) {
         return String(value || '').replace(/\/+$/, '');
@@ -54,9 +54,9 @@
     }
 
     function normalizeError(error) {
-        if (!error) return '요청을 처리하지 못했습니다.';
+        if (!error) return '?붿껌??泥섎━?섏? 紐삵뻽?듬땲??';
         if (typeof error === 'string') return error;
-        return error.message || '요청을 처리하지 못했습니다.';
+        return error.message || '?붿껌??泥섎━?섏? 紐삵뻽?듬땲??';
     }
 
     async function parseResponse(response) {
@@ -154,3 +154,4 @@
         }
     };
 })();
+
