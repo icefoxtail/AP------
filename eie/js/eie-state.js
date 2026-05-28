@@ -19,7 +19,11 @@
         timetableEditMode: '',
         timetableNotice: '',
         timetableError: '',
-        timetableStatusFilter: 'active,imported,needs_review'
+        timetableStatusFilter: 'active,imported,needs_review',
+        selectedStudentCandidate: null,
+        studentCandidatePanelMode: '',
+        studentSeedNotice: '',
+        studentSeedError: ''
     };
 
     function asArray(rows) {
@@ -33,6 +37,82 @@
 
     function findCell(cellId) {
         return state.timetableCells.find(cell => String(cell?.id || '') === String(cellId || '')) || null;
+    }
+
+    function parseRawMeta(value) {
+        if (!value) return {};
+        if (typeof value === 'object') return value;
+        try { return JSON.parse(value); }
+        catch (error) { return {}; }
+    }
+
+    function normalizeCandidateName(value) {
+        return String(value || '').trim().replace(/\s+/g, ' ');
+    }
+
+    function getStudentCandidatesFromMeta(meta) {
+        const candidates = Array.isArray(meta?.student_candidates) ? meta.student_candidates : [];
+        if (candidates.length) {
+            return candidates.map((candidate, index) => ({
+                ...candidate,
+                candidate_index: Number.isInteger(Number(candidate?.candidate_index)) ? Number(candidate.candidate_index) : index,
+                name: candidate?.name || candidate?.student_name_raw || candidate?.studentName || '',
+                normalized_name: candidate?.normalized_name || normalizeCandidateName(candidate?.name || candidate?.student_name_raw || candidate?.studentName || ''),
+                flags: Array.isArray(candidate?.flags) ? candidate.flags : []
+            })).filter(candidate => candidate.name || candidate.student_name_raw || candidate.normalized_name);
+        }
+
+        const values = Array.isArray(meta?.student_names)
+            ? meta.student_names
+            : Array.isArray(meta?.students)
+                ? meta.students
+                : Array.isArray(meta?.studentSeeds)
+                    ? meta.studentSeeds
+                    : [];
+
+        return values.map((item, index) => {
+            if (typeof item === 'string') {
+                const name = normalizeCandidateName(item);
+                return {
+                    candidate_index: index,
+                    name,
+                    student_name_raw: item,
+                    normalized_name: name,
+                    flags: ['needs_review'],
+                    match_status: 'needs_review'
+                };
+            }
+
+            const name = item?.name || item?.student_name_raw || item?.studentName || '';
+            return {
+                ...item,
+                candidate_index: Number.isInteger(Number(item?.candidate_index)) ? Number(item.candidate_index) : index,
+                name,
+                student_name_raw: item?.student_name_raw || name,
+                normalized_name: item?.normalized_name || normalizeCandidateName(name),
+                flags: Array.isArray(item?.flags) ? item.flags : ['needs_review'],
+                match_status: item?.match_status || 'needs_review'
+            };
+        }).filter(candidate => candidate.name || candidate.student_name_raw || candidate.normalized_name);
+    }
+
+    function findStudentCandidate(cellId, candidateKey) {
+        const cell = findCell(cellId);
+        if (!cell) return null;
+        const meta = parseRawMeta(cell.raw_meta_json);
+        const candidates = getStudentCandidatesFromMeta(meta);
+        const key = String(candidateKey || '');
+        const index = Number(key);
+        const candidate = Number.isInteger(index) && index >= 0
+            ? candidates[index]
+            : candidates.find(item => String(item?.normalized_name || item?.name || item?.student_name_raw || '') === key);
+        if (!candidate) return null;
+        return {
+            ...candidate,
+            candidate_index: Number.isInteger(index) ? index : candidates.indexOf(candidate),
+            cell_id: cell.id,
+            cell
+        };
     }
 
     window.EieState = {
@@ -52,6 +132,10 @@
                 state.selectedTimetableCellId = '';
                 state.timetableEditMode = '';
             }
+            if (state.selectedStudentCandidate?.cell_id && !findCell(state.selectedStudentCandidate.cell_id)) {
+                state.selectedStudentCandidate = null;
+                state.studentCandidatePanelMode = '';
+            }
         },
         upsertTimetableCell(row) {
             if (!row?.id) return;
@@ -64,9 +148,11 @@
         },
         setStudentSeeds(rows) {
             state.studentSeeds = asArray(rows);
+            state.studentSeedError = '';
         },
         setContactSeeds(rows) {
             state.contactSeeds = asArray(rows);
+            state.studentSeedError = '';
         },
         setNeedsReview(rows) {
             state.needsReview = asArray(rows);
@@ -111,18 +197,47 @@
         selectTimetableCell(cellId) {
             state.selectedTimetableCellId = cellId || '';
             state.timetableEditMode = cellId ? 'edit' : '';
+            state.selectedStudentCandidate = null;
+            state.studentCandidatePanelMode = '';
             state.timetableError = '';
             state.timetableNotice = '';
         },
         startNewTimetableCell() {
             state.selectedTimetableCellId = '';
             state.timetableEditMode = 'new';
+            state.selectedStudentCandidate = null;
+            state.studentCandidatePanelMode = '';
             state.timetableError = '';
             state.timetableNotice = '';
         },
         closeTimetableEditor() {
             state.selectedTimetableCellId = '';
             state.timetableEditMode = '';
+        },
+        selectStudentCandidate(cellId, candidateKey) {
+            const selected = findStudentCandidate(cellId, candidateKey);
+            state.selectedStudentCandidate = selected;
+            state.studentCandidatePanelMode = selected ? 'detail' : '';
+            state.selectedTimetableCellId = selected?.cell_id || cellId || '';
+            state.timetableEditMode = '';
+            state.timetableError = '';
+            state.timetableNotice = '';
+            return selected;
+        },
+        closeStudentCandidatePanel() {
+            state.selectedStudentCandidate = null;
+            state.studentCandidatePanelMode = '';
+        },
+        getSelectedStudentCandidate() {
+            return state.selectedStudentCandidate;
+        },
+        setStudentSeedNotice(value) {
+            state.studentSeedNotice = value ? String(value) : '';
+            if (value) state.studentSeedError = '';
+        },
+        setStudentSeedError(value) {
+            state.studentSeedError = value ? String(value) : '';
+            if (value) state.studentSeedNotice = '';
         },
         setTimetableNotice(value) {
             state.timetableNotice = value ? String(value) : '';
@@ -156,6 +271,10 @@
             state.timetableEditMode = '';
             state.timetableNotice = '';
             state.timetableError = '';
+            state.selectedStudentCandidate = null;
+            state.studentCandidatePanelMode = '';
+            state.studentSeedNotice = '';
+            state.studentSeedError = '';
         }
     };
 })();

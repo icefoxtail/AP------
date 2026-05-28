@@ -148,7 +148,7 @@ Different teachers in the same day/period are separated by `column_index`. Diffe
 
 ## Confirmed Operations Tables Deferred
 
-The following confirmed operations tables are design targets for Round 5 or later and must not be created in Round 1:
+The following confirmed operations tables are design targets for a later confirmation round and must not be created in Round 5:
 
 - `eie_students`
 - `eie_student_contacts`
@@ -172,13 +172,15 @@ Recommended metadata:
 
 ## Student And Phone Policy
 
-Student seeds and phone-number/contact seeds are finalized in Round 4 or Round 5.
+Round 5 extracts student and phone-number candidates from `eie_timetable_cells.raw_meta_json` and parser output for review only.
 
 Having a phone number does not insert a row directly into `eie_students`. Rows must pass through seed and review stages.
 
-Students without phone numbers must not be discarded.
+Students without phone numbers must not be discarded. They should remain visible with a `missing_phone` or `needs_review` flag.
 
 Duplicate names and family contact possibilities must be considered before confirmation.
+
+Round 5 timetable cells may display student names only. Phone numbers are shown only in the student detail panel or in the student/contact candidate review screen.
 
 
 ### Import session duplicate guard
@@ -194,3 +196,41 @@ UNIQUE(sheet_name, source_month)
 ## Migration Note
 
 `docs/proposals/eie/20260528_eie_round0_proposal.sql` is a proposal only. It must not be placed under an executable Worker migrations folder and must not be applied to D1 in Round 0 or Round 1.
+
+
+## Round 5 Raw Metadata Candidate Shape
+
+Round 5 may store candidate review data inside `eie_timetable_cells.raw_meta_json` without creating confirmed tables.
+
+Recommended keys:
+
+- `student_candidates`
+- `student_names`
+- `contact_candidates`
+- `needs_review_reasons`
+
+Recommended candidate fields:
+
+- `student_name_raw`
+- `name`
+- `normalized_name`
+- `grade_raw`
+- `phone_raw`
+- `normalized_phone`
+- `memo_raw`
+- `source_row`
+- `source_col`
+- `cell_id`
+- `cell_context`
+- `match_status`
+- `flags`
+
+Round 5 flags:
+
+- `duplicate_name`: same normalized phone number appears in more than one candidate row and should be reviewed as a namesake/identity-risk case
+- `missing_phone`
+- `needs_review`
+- `phone_only`
+- `name_only`
+
+These fields are review hints only. They are not confirmed student, contact, or assignment records.

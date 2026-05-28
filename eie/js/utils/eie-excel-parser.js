@@ -70,6 +70,166 @@
         return normalizeText(value);
     }
 
+
+    function normalizeName(value) {
+        if (window.EieNormalize?.normalizeName) return window.EieNormalize.normalizeName(value);
+        return normalizeText(value).replace(/\s+/g, '');
+    }
+
+    function normalizePhone(value) {
+        if (window.EieNormalize?.normalizePhone) return window.EieNormalize.normalizePhone(value);
+        return String(value || '').replace(/[^\d]/g, '');
+    }
+
+    function looksLikePhone(value) {
+        if (window.EieNormalize?.looksLikePhone) return window.EieNormalize.looksLikePhone(value);
+        const digits = normalizePhone(value);
+        return digits.length >= 8 && digits.length <= 12;
+    }
+
+    function extractPhoneCandidates(value) {
+        if (window.EieNormalize?.extractPhoneCandidates) return window.EieNormalize.extractPhoneCandidates(value);
+        return looksLikePhone(value) ? [{ phone_raw: normalizeText(value), normalized_phone: normalizePhone(value) }] : [];
+    }
+
+    function stripPhoneFromText(value) {
+        if (window.EieNormalize?.stripPhoneFromText) return window.EieNormalize.stripPhoneFromText(value);
+        return normalizeText(value).replace(/\d[\d\-\s.]{6,}\d/g, ' ');
+    }
+
+    function isNonStudentText(value) {
+        const text = normalizeText(value);
+        if (!text) return true;
+        if (/^(합계|총원|인원|전화|연락처|비고|메모|교시|요일|수업|선생님|teacher|name|phone)$/i.test(text)) return true;
+        if (/^(월|화|수|목|금|토|일)(요일)?$/.test(text)) return true;
+        if (/교시/.test(text)) return true;
+        if (/^\d+$/.test(text)) return true;
+        if (/^[\d\s,./:~\-–]+$/.test(text)) return true;
+        return false;
+    }
+
+    function candidateFromCellText(text, context) {
+        const raw = normalizeText(text);
+        if (!raw || isNonStudentText(raw)) return null;
+        const phones = extractPhoneCandidates(raw);
+        const withoutPhone = stripPhoneFromText(raw)
+            .replace(/^(학생|이름|성명)\s*[:：]?\s*/i, '')
+            .replace(/\b(전화|연락처|휴대폰|핸드폰)\b\s*[:：]?/gi, '')
+            .trim();
+        const name = normalizeText(withoutPhone);
+        const normalized = normalizeName(name);
+        if (!normalized || normalized.length < 2) return null;
+        if (isNonStudentText(name) || looksLikePhone(name)) return null;
+        return {
+            student_name_raw: name,
+            name,
+            normalized_name: normalized,
+            grade_raw: '',
+            phone_raw: phones[0]?.phone_raw || '',
+            normalized_phone: phones[0]?.normalized_phone || '',
+            memo_raw: raw,
+            source_row: context.source_row,
+            source_col: context.source_col,
+            cell_id: context.cell_id,
+            cell_context: context.cell_context,
+            match_status: 'candidate',
+            flags: []
+        };
+    }
+
+    function mergeCandidatePhone(candidate, phone) {
+        if (!candidate || !phone?.normalized_phone) return candidate;
+        if (!candidate.normalized_phone) {
+            candidate.phone_raw = phone.phone_raw || '';
+            candidate.normalized_phone = phone.normalized_phone || '';
+        } else if (candidate.normalized_phone !== phone.normalized_phone && !candidate.flags.includes('needs_review')) {
+            candidate.flags.push('needs_review');
+        }
+        return candidate;
+    }
+
+    function collectStudentCandidates(rows, headerRowIndex, colIndex, cell, periodRowIndex) {
+        const candidates = [];
+        const seen = new Set();
+        let blankStreak = 0;
+        for (let r = headerRowIndex + 1; r < rows.length && r <= headerRowIndex + 30; r += 1) {
+            const row = rows[r] || [];
+            const rowText = row.map(cellText).join(' ').trim();
+            if (r > headerRowIndex + 1 && row.some(value => parsePeriodText(value))) break;
+            const rawValue = cellText(row[colIndex]);
+            const rightValue = cellText(row[colIndex + 1]);
+            const leftValue = cellText(row[colIndex - 1]);
+            if (!rawValue && !rightValue && !leftValue && !rowText) {
+                blankStreak += 1;
+                if (blankStreak >= 3) break;
+                continue;
+            }
+            blankStreak = 0;
+            const candidate = candidateFromCellText(rawValue, {
+                source_row: r + 1,
+                source_col: colIndex + 1,
+                cell_id: cell.id,
+                cell_context: `${cell.day_label || ''} ${cell.period_label || ''} ${cell.class_name_raw || ''}`.trim()
+            });
+            if (!candidate) continue;
+            const adjacentPhones = [rightValue, leftValue]
+                .flatMap(value => extractPhoneCandidates(value))
+                .filter(item => item.normalized_phone);
+            if (adjacentPhones.length) mergeCandidatePhone(candidate, adjacentPhones[0]);
+            const key = `${candidate.normalized_name}|${candidate.normalized_phone}|${candidate.source_row}`;
+            if (seen.has(key)) continue;
+            seen.add(key);
+            if (!candidate.normalized_phone && !candidate.flags.includes('missing_phone')) candidate.flags.push('missing_phone');
+            candidates.push(candidate);
+        }
+        return candidates;
+    }
+
+    function finalizeStudentCandidateFlags(cells) {
+        const phoneCounts = new Map();
+        for (const cell of cells) {
+            const candidates = cell.raw_meta_json?.student_candidates || [];
+            for (const candidate of candidates) {
+                const key = candidate.normalized_phone || normalizePhone(candidate.phone_raw);
+                if (!key) continue;
+                phoneCounts.set(key, (phoneCounts.get(key) || 0) + 1);
+            }
+        }
+        for (const cell of cells) {
+            const meta = cell.raw_meta_json || {};
+            const candidates = meta.student_candidates || [];
+            const reviewReasons = new Set(meta.needs_review_reasons || []);
+            for (const candidate of candidates) {
+                const phoneKey = candidate.normalized_phone || normalizePhone(candidate.phone_raw);
+                candidate.flags = Array.isArray(candidate.flags) ? candidate.flags : [];
+                if (phoneKey && phoneCounts.get(phoneKey) > 1 && !candidate.flags.includes('duplicate_name')) candidate.flags.push('duplicate_name');
+                if (!candidate.normalized_phone && !candidate.flags.includes('missing_phone')) candidate.flags.push('missing_phone');
+                if (candidate.flags.includes('duplicate_name')) reviewReasons.add('duplicate_name');
+                if (candidate.flags.includes('missing_phone')) reviewReasons.add('missing_phone');
+                if (candidate.flags.length && !candidate.flags.includes('needs_review')) candidate.flags.push('needs_review');
+                candidate.match_status = candidate.flags.includes('needs_review') ? 'needs_review' : 'candidate';
+            }
+            meta.student_candidates = candidates;
+            meta.student_names = candidates.map(candidate => candidate.name || candidate.student_name_raw).filter(Boolean);
+            meta.contact_candidates = candidates.filter(candidate => candidate.normalized_phone).map(candidate => ({
+                student_name_raw: candidate.student_name_raw || candidate.name || '',
+                name: candidate.name || candidate.student_name_raw || '',
+                normalized_name: candidate.normalized_name || '',
+                phone_raw: candidate.phone_raw || '',
+                normalized_phone: candidate.normalized_phone || '',
+                source_row: candidate.source_row,
+                source_col: candidate.source_col,
+                cell_id: candidate.cell_id,
+                cell_context: candidate.cell_context,
+                match_status: candidate.match_status,
+                flags: candidate.flags || []
+            }));
+            meta.needs_review_reasons = Array.from(reviewReasons);
+            cell.student_count = candidates.length || cell.student_count || 0;
+            if (cell.status !== 'needs_review' && reviewReasons.size) cell.status = 'needs_review';
+        }
+    }
+
     function rowsFromSheet(sheet, xlsx) {
         const rows = xlsx.utils.sheet_to_json(sheet, { header: 1, raw: false, blankrows: false, defval: '' });
         return rows.map(row => row.map(cellText));
@@ -84,8 +244,8 @@
         let startTime = '';
         let endTime = '';
         if (timeMatch) {
-            startTime = normalizeClock(timeMatch[1], timeMatch[2]);
-            endTime = normalizeClock(timeMatch[3], timeMatch[4]);
+            startTime = normalizeClock(timeMatch[1], timeMatch[2], raw);
+            endTime = normalizeClock(timeMatch[3], timeMatch[4], raw);
         }
         return {
             period_label: `${periodOrder}교시`,
@@ -96,10 +256,16 @@
         };
     }
 
-    function normalizeClock(hour, minute) {
+    function normalizeClock(hour, minute, sourceText = '') {
         let h = Number(hour);
         const m = Number(minute);
-        if (h > 0 && h < 12) h += 12;
+        if (!Number.isFinite(h) || !Number.isFinite(m)) return '';
+        const source = normalizeText(sourceText).toLowerCase();
+        const hasPmMarker = /오후|\bpm\b|p\.m\.?/.test(source);
+        const hasAmMarker = /오전|\bam\b|a\.m\.?/.test(source);
+        if (hasPmMarker && h > 0 && h < 12) h += 12;
+        if (hasAmMarker && h === 12) h = 0;
+        if (h < 0 || h > 23 || m < 0 || m > 59) return '';
         return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
     }
 
@@ -167,7 +333,7 @@
                 if (!isClassHeader(classNameRaw)) continue;
                 const teacher = detectTeacher(classNameRaw);
                 const dayLabel = findDayLabel(rows, headerRowIndex, c);
-                cells.push({
+                const cell = {
                     id: makeId('eie_cell'),
                     import_session_id: context.import_session_id,
                     sheet_name: context.sheet_name,
@@ -189,11 +355,18 @@
                         period_source_row: r + 1,
                         period_text: period.raw_text,
                         matched_teacher_tokens: teacher.matched_teacher_tokens,
-                        teacher_match_count: teacher.matched_teacher_tokens.length
+                        teacher_match_count: teacher.matched_teacher_tokens.length,
+                        student_candidates: [],
+                        student_names: [],
+                        contact_candidates: [],
+                        needs_review_reasons: teacher.status === 'needs_review' ? ['teacher_needs_review'] : []
                     }
-                });
+                };
+                cell.raw_meta_json.student_candidates = collectStudentCandidates(rows, headerRowIndex, c, cell, r);
+                cells.push(cell);
             }
         }
+        finalizeStudentCandidateFlags(cells);
         return cells;
     }
 

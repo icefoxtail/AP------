@@ -217,6 +217,154 @@ async function getTimetableCell(env, cellId) {
   `).bind(cellId).first();
 }
 
+
+function parseRawMeta(value) {
+  if (!value) return {};
+  if (typeof value === 'object') return value;
+  try { return JSON.parse(value); }
+  catch (error) { return {}; }
+}
+
+function normalizeName(value) {
+  return safeText(value).replace(/\s+/g, '');
+}
+
+function normalizePhone(value) {
+  return safeText(value).replace(/[^\d]/g, '');
+}
+
+function flagsOf(value) {
+  return Array.isArray(value) ? value.filter(Boolean).map(item => safeText(item)).filter(Boolean) : [];
+}
+
+function uniqueFlags(flags) {
+  return Array.from(new Set(flagsOf(flags)));
+}
+
+function withCellContext(candidate, cell, index) {
+  const flags = uniqueFlags(candidate.flags);
+  const normalizedName = candidate.normalized_name || normalizeName(candidate.name || candidate.student_name_raw);
+  const normalizedPhone = candidate.normalized_phone || normalizePhone(candidate.phone_raw);
+  if (!normalizedPhone && !flags.includes('missing_phone')) flags.push('missing_phone');
+  if (flags.length && !flags.includes('needs_review')) flags.push('needs_review');
+  return {
+    id: `${cell.id || 'cell'}_${index}`,
+    import_session_id: cell.import_session_id || '',
+    cell_id: cell.id || '',
+    source_type: cell.source_type || 'import',
+    day_label: cell.day_label || '',
+    period_label: cell.period_label || '',
+    period_order: cell.period_order,
+    start_time: cell.start_time || '',
+    end_time: cell.end_time || '',
+    class_name_raw: cell.class_name_raw || '',
+    teacher_name_raw: cell.teacher_name_raw || '',
+    column_index: cell.column_index,
+    student_name_raw: candidate.student_name_raw || candidate.name || '',
+    name: candidate.name || candidate.student_name_raw || '',
+    normalized_name: normalizedName,
+    grade_raw: candidate.grade_raw || '',
+    phone_raw: candidate.phone_raw || '',
+    normalized_phone: normalizedPhone,
+    memo_raw: candidate.memo_raw || '',
+    source_row: candidate.source_row || parseRawMeta(cell.raw_meta_json).source_row || '',
+    source_col: candidate.source_col || parseRawMeta(cell.raw_meta_json).source_col || '',
+    cell_context: candidate.cell_context || [cell.day_label, cell.period_label, cell.class_name_raw].filter(Boolean).join(' '),
+    match_status: candidate.match_status || (flags.includes('needs_review') ? 'needs_review' : 'candidate'),
+    flags
+  };
+}
+
+function extractStudentCandidatesFromCell(cell) {
+  const meta = parseRawMeta(cell.raw_meta_json);
+  const rawCandidates = Array.isArray(meta.student_candidates) ? meta.student_candidates : [];
+  if (rawCandidates.length) return rawCandidates.map((candidate, index) => withCellContext(candidate || {}, cell, index));
+
+  const names = Array.isArray(meta.student_names) ? meta.student_names : [];
+  return names.map((name, index) => withCellContext({
+    student_name_raw: safeText(name),
+    name: safeText(name),
+    normalized_name: normalizeName(name),
+    match_status: 'needs_review',
+    flags: ['needs_review']
+  }, cell, index)).filter(row => row.normalized_name);
+}
+
+function markDuplicatePhonesAsNamesake(rows) {
+  const counts = new Map();
+  for (const row of rows) {
+    if (!row.normalized_phone) continue;
+    counts.set(row.normalized_phone, (counts.get(row.normalized_phone) || 0) + 1);
+  }
+  return rows.map(row => {
+    const flags = uniqueFlags(row.flags);
+    if (row.normalized_phone && counts.get(row.normalized_phone) > 1 && !flags.includes('duplicate_name')) flags.push('duplicate_name');
+    if (flags.length && !flags.includes('needs_review')) flags.push('needs_review');
+    return {
+      ...row,
+      flags,
+      match_status: flags.includes('needs_review') ? 'needs_review' : (row.match_status || 'candidate')
+    };
+  });
+}
+
+function buildStudentSeedRows(cells) {
+  return markDuplicatePhonesAsNamesake((cells || []).flatMap(extractStudentCandidatesFromCell));
+}
+
+function buildContactSeedRows(cells) {
+  return buildStudentSeedRows(cells)
+    .filter(row => row.normalized_phone)
+    .map(row => ({
+      id: `${row.id}_contact`,
+      import_session_id: row.import_session_id,
+      cell_id: row.cell_id,
+      day_label: row.day_label,
+      period_label: row.period_label,
+      period_order: row.period_order,
+      start_time: row.start_time,
+      end_time: row.end_time,
+      class_name_raw: row.class_name_raw,
+      teacher_name_raw: row.teacher_name_raw,
+      column_index: row.column_index,
+      student_name_raw: row.student_name_raw,
+      name: row.name,
+      normalized_name: row.normalized_name,
+      phone_raw: row.phone_raw,
+      normalized_phone: row.normalized_phone,
+      source_row: row.source_row,
+      source_col: row.source_col,
+      cell_context: row.cell_context,
+      match_status: row.match_status,
+      flags: row.flags
+    }));
+}
+
+function buildNeedsReviewRows(cells) {
+  const seedRows = buildStudentSeedRows(cells).filter(row => row.flags.includes('needs_review') || row.match_status === 'needs_review');
+  const timetableRows = (cells || []).filter(row => row.status === 'needs_review').map(row => ({
+    id: row.id,
+    cell_id: row.id,
+    import_session_id: row.import_session_id || '',
+    day_label: row.day_label || '',
+    period_label: row.period_label || '',
+    start_time: row.start_time || '',
+    end_time: row.end_time || '',
+    class_name_raw: row.class_name_raw || '',
+    teacher_name_raw: row.teacher_name_raw || '',
+    match_status: 'needs_review',
+    flags: uniqueFlags(['needs_review', ...(parseRawMeta(row.raw_meta_json).needs_review_reasons || [])]),
+    memo_raw: row.memo || '',
+    cell_context: [row.day_label, row.period_label, row.class_name_raw].filter(Boolean).join(' ')
+  }));
+  return [...timetableRows, ...seedRows];
+}
+
+async function queryCandidateCells(env, importId) {
+  if (importId) return queryTimetableCells(env, importId);
+  return queryTimetableCells(env, '', { statuses: ['active', 'imported', 'needs_review', 'hidden', 'archived'] });
+}
+
 async function handleGet(request, env, path, url) {
   const section = path[2] || '';
   const action = path[3] || '';
@@ -254,16 +402,18 @@ async function handleGet(request, env, path, url) {
   }
 
   if (section === 'import' && action && tail === 'student-seeds') {
-    return stubResponse({ data: [], student_seeds: [], message: 'student seed review is deferred.' });
+    const rows = buildStudentSeedRows(await queryCandidateCells(env, action));
+    return jsonResponse({ success: true, data: rows, student_seeds: rows, stub: rows.length === 0 });
   }
 
   if (section === 'import' && action && tail === 'contact-seeds') {
-    return stubResponse({ data: [], contact_seeds: [], message: 'contact seed review is deferred.' });
+    const rows = buildContactSeedRows(await queryCandidateCells(env, action));
+    return jsonResponse({ success: true, data: rows, contact_seeds: rows, stub: rows.length === 0 });
   }
 
   if (section === 'import' && action && tail === 'needs-review') {
-    const rows = (await queryTimetableCells(env, action)).filter(row => row.status === 'needs_review');
-    return jsonResponse({ success: true, data: rows, needs_review: rows });
+    const rows = buildNeedsReviewRows(await queryCandidateCells(env, action));
+    return jsonResponse({ success: true, data: rows, needs_review: rows, stub: rows.length === 0 });
   }
 
   if (section === 'timetable') {
@@ -272,15 +422,18 @@ async function handleGet(request, env, path, url) {
   }
 
   if (section === 'student-seeds') {
-    return stubResponse({ data: [], student_seeds: [], message: 'EIE student seed endpoint is reserved for a later round.' });
+    const rows = buildStudentSeedRows(await queryCandidateCells(env, ''));
+    return jsonResponse({ success: true, data: rows, student_seeds: rows, stub: rows.length === 0 });
   }
 
   if (section === 'contact-seeds') {
-    return stubResponse({ data: [], contact_seeds: [], message: 'EIE contact seed endpoint is reserved for a later round.' });
+    const rows = buildContactSeedRows(await queryCandidateCells(env, ''));
+    return jsonResponse({ success: true, data: rows, contact_seeds: rows, stub: rows.length === 0 });
   }
 
   if (section === 'needs-review') {
-    return stubResponse({ data: [], needs_review: [], message: 'EIE needs_review endpoint is reserved for import-specific checks.' });
+    const rows = buildNeedsReviewRows(await queryCandidateCells(env, ''));
+    return jsonResponse({ success: true, data: rows, needs_review: rows, stub: rows.length === 0 });
   }
 
   return null;

@@ -93,20 +93,23 @@ Round 3:
 
 Round 4:
 
-- student seed review and confirmation UI
-- identity seed list
-- whitelist management
-- `needs_review` re-evaluation
+- operational timetable direct editing 1st pass
+- timetable cell add/edit
+- status change: `active`, `needs_review`, `hidden`, `archived`
+- view filters for operation/all/needs-review/hidden
 
 Round 5:
 
-- student/contact/schedule assignment confirmation
-- `eie_students`
-- `eie_student_contacts`
-- `eie_student_schedule_assignments`
+- student and phone-number candidate review 1st pass
+- student names displayed inside timetable cells
+- student detail panel opened from a student name
+- phone numbers shown only inside student detail or seed review screens
+- duplicate-name, missing-phone, and needs-review flags
+- no student/contact/schedule confirmation write
 
 Round 6+:
 
+- formal student/contact/assignment confirmation design after review
 - classroom sessions
 - attendance, homework, textbook, memo, and class operations
 
@@ -120,10 +123,29 @@ Round 1 must not create students, contacts, classroom, classroom session, or ses
 
 Before Round 2, Worker code must not issue real `eie_*` DB queries.
 
-Before Round 5, do not create `eie_students` or `eie_student_contacts`.
+Round 5 must not create `eie_students`, `eie_student_contacts`, or `eie_student_schedule_assignments`.
+
+Round 5 must not finalize student identity, phone contact, or class assignment records.
 
 Before Round 6, do not design or implement classroom sessions.
 
 ### Migration proposal location policy
 
 EIE proposal SQL must not live inside an executable Worker `migrations/` folder while it is marked proposal-only. Keep proposal SQL under `docs/proposals/eie/` until the relevant round explicitly approves D1 migration application. A comment such as “Proposal only” is not enough to prevent accidental migration execution.
+
+
+## 9. Round 5 Candidate Review Policy
+
+Round 5 reads student and phone candidates from `eie_timetable_cells.raw_meta_json` and import parser output only. It does not create confirmed operations tables.
+
+Timetable cells may show student names only. Phone numbers must not be displayed inside timetable cells. Phone numbers may be displayed in the student detail panel or the student/contact candidate review screen.
+
+Candidate flags used in Round 5:
+
+- `duplicate_name`: same normalized phone number appears in more than one candidate row and should be reviewed as a namesake/identity-risk case
+- `missing_phone`
+- `needs_review`
+- `phone_only`
+- `name_only`
+
+Any save/confirm/create action for students, contacts, assignments, classroom, attendance, homework, textbook, or memo remains out of scope.

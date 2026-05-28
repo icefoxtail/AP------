@@ -8,6 +8,14 @@
         { value: 'hidden', label: '숨김', description: '숨김 처리만' }
     ];
 
+    const FLAG_LABELS = {
+        duplicate_name: '동명이인',
+        missing_phone: '전화 없음',
+        needs_review: '확인 필요',
+        phone_only: '전화만',
+        name_only: '이름만'
+    };
+
     function asRows(result) {
         if (Array.isArray(result?.timetable_cells)) return result.timetable_cells;
         if (Array.isArray(result?.data)) return result.data;
@@ -31,14 +39,30 @@
         catch (error) { return {}; }
     }
 
-    function getStudentNames(row) {
+    function getStudentCandidates(row) {
         const meta = getRawMeta(row);
+        const candidates = Array.isArray(meta.student_candidates) ? meta.student_candidates : [];
+        if (candidates.length) {
+            return candidates.map((candidate, index) => ({
+                ...candidate,
+                candidate_index: index,
+                name: candidate.name || candidate.student_name_raw || '',
+                flags: Array.isArray(candidate.flags) ? candidate.flags : []
+            })).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 24);
+        }
         const values = meta.student_names || meta.students || meta.studentSeeds || [];
         if (!Array.isArray(values)) return [];
-        return values.map(item => {
-            if (typeof item === 'string') return item;
-            return item?.name || item?.student_name_raw || item?.studentName || '';
-        }).filter(Boolean).slice(0, 18);
+        return values.map((item, index) => {
+            if (typeof item === 'string') {
+                return { candidate_index: index, name: item, student_name_raw: item, flags: ['needs_review'], match_status: 'needs_review' };
+            }
+            return {
+                ...item,
+                candidate_index: index,
+                name: item?.name || item?.student_name_raw || item?.studentName || '',
+                flags: Array.isArray(item?.flags) ? item.flags : ['needs_review']
+            };
+        }).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 24);
     }
 
     function sortRows(rows) {
@@ -67,6 +91,7 @@
     function renderSummary(rows) {
         const visibleRows = rows;
         const teacherCount = new Set(visibleRows.map(row => row.teacher_name_raw).filter(Boolean)).size;
+        const studentCandidateCount = visibleRows.reduce((sum, row) => sum + getStudentCandidates(row).length, 0);
         return `
             <div class="eie-summary-grid" aria-label="운영 시간표 요약">
                 <div class="eie-summary-card"><span>전체 셀</span><strong>${EieApp.escapeHtml(visibleRows.length)}개</strong></div>
@@ -74,7 +99,7 @@
                 <div class="eie-summary-card"><span>확인 필요</span><strong>${EieApp.escapeHtml(countStatus(visibleRows, 'needs_review'))}개</strong></div>
                 <div class="eie-summary-card"><span>숨김</span><strong>${EieApp.escapeHtml(countStatus(rows, 'hidden'))}개</strong></div>
                 <div class="eie-summary-card"><span>선생님</span><strong>${EieApp.escapeHtml(teacherCount)}명</strong></div>
-                <div class="eie-summary-card"><span>수동 셀</span><strong>${EieApp.escapeHtml(visibleRows.filter(row => row.source_type === 'manual').length)}개</strong></div>
+                <div class="eie-summary-card"><span>학생 후보</span><strong>${EieApp.escapeHtml(studentCandidateCount)}명</strong></div>
             </div>
         `;
     }
@@ -94,12 +119,24 @@
         `;
     }
 
+    function renderCandidateFlags(candidate) {
+        const flags = Array.isArray(candidate?.flags) ? candidate.flags : [];
+        const important = flags.filter(flag => FLAG_LABELS[flag]).slice(0, 3);
+        if (!important.length) return '';
+        return `<span class="eie-chip-badges">${important.map(flag => `<em class="eie-chip-badge is-${EieApp.escapeHtml(flag)}">${EieApp.escapeHtml(FLAG_LABELS[flag])}</em>`).join('')}</span>`;
+    }
+
     function renderStudents(row) {
-        const names = getStudentNames(row);
-        if (!names.length) return '<div class="eie-cell-students is-empty">학생 후보는 다음 라운드에서 연결됩니다.</div>';
+        const candidates = getStudentCandidates(row);
+        if (!candidates.length) return '<div class="eie-cell-students is-empty">학생 후보 없음</div>';
         return `
             <div class="eie-cell-students">
-                ${names.map(name => `<button type="button" class="eie-student-chip" onclick="EieTimetableView.openStudentInfo('${EieApp.escapeHtml(row.id)}', '${EieApp.escapeHtml(name)}')">${EieApp.escapeHtml(name)}</button>`).join('')}
+                ${candidates.map(candidate => `
+                    <button type="button" class="eie-student-chip ${candidate.flags?.length ? 'has-flags' : ''}" onclick="EieTimetableView.openStudentInfo('${EieApp.escapeHtml(row.id)}', ${Number(candidate.candidate_index || 0)})">
+                        <span>${EieApp.escapeHtml(candidate.name || candidate.student_name_raw || '-')}</span>
+                        ${renderCandidateFlags(candidate)}
+                    </button>
+                `).join('')}
             </div>
         `;
     }
@@ -123,10 +160,9 @@
                                     <button type="button" class="eie-cell-edit-trigger" onclick="EieTimetableView.selectCell('${EieApp.escapeHtml(row.id)}')" aria-label="수업 셀 수정">
                                         <span class="eie-cell-title">${EieApp.escapeHtml(row.class_name_raw || '수업명 없음')}</span>
                                         <span class="eie-cell-teacher">${EieApp.escapeHtml(row.teacher_name_raw || '선생님 확인')}</span>
-                                        <span class="eie-status ${status === 'needs_review' ? 'is-warn' : status === 'hidden' ? 'is-muted' : 'is-ok'}">${EieApp.escapeHtml(status)}</span>
+                                        <span class="eie-status ${status === 'needs_review' ? 'is-warn' : status === 'hidden' || status === 'archived' ? 'is-muted' : 'is-ok'}">${EieApp.escapeHtml(status)}</span>
                                     </button>
                                     ${renderStudents(row)}
-                                    <div class="eie-cell-meta">컬럼 ${EieApp.escapeHtml(row.column_index ?? '-')} · ${EieApp.escapeHtml(row.source_type || 'import')}</div>
                                 </article>
                             `;
                         }).join('')}
@@ -155,11 +191,11 @@
                 <form class="eie-edit-form" onsubmit="EieTimetableView.submitCellForm(event, '${EieApp.escapeHtml(mode)}', '${EieApp.escapeHtml(cell.id || '')}')">
                     <label>요일<input name="day_label" value="${EieApp.escapeHtml(cell.day_label || '')}" placeholder="월" /></label>
                     <label>교시<input name="period_label" value="${EieApp.escapeHtml(cell.period_label || '')}" placeholder="1교시" /></label>
-                    <label>시작 시간<input name="start_time" value="${EieApp.escapeHtml(cell.start_time || '')}" placeholder="15:10" /></label>
-                    <label>종료 시간<input name="end_time" value="${EieApp.escapeHtml(cell.end_time || '')}" placeholder="15:50" /></label>
-                    <label>수업명<input name="class_name_raw" value="${EieApp.escapeHtml(cell.class_name_raw || '')}" placeholder="RS3-1" /></label>
-                    <label>선생님<input name="teacher_name_raw" value="${EieApp.escapeHtml(cell.teacher_name_raw || '')}" placeholder="Carmen" /></label>
-                    <label>교실<input name="room_raw" value="${EieApp.escapeHtml(cell.room_raw || '')}" placeholder="" /></label>
+                    <label>시작 시간<input name="start_time" value="${EieApp.escapeHtml(cell.start_time || '')}" placeholder="14:00" /></label>
+                    <label>종료 시간<input name="end_time" value="${EieApp.escapeHtml(cell.end_time || '')}" placeholder="15:30" /></label>
+                    <label class="is-wide">수업명<input name="class_name_raw" value="${EieApp.escapeHtml(cell.class_name_raw || '')}" placeholder="수업명" /></label>
+                    <label>선생님<input name="teacher_name_raw" value="${EieApp.escapeHtml(cell.teacher_name_raw || '')}" placeholder="선생님" /></label>
+                    <label>교실<input name="room_raw" value="${EieApp.escapeHtml(cell.room_raw || '')}" placeholder="교실" /></label>
                     <label>학생 수<input name="student_count" type="number" min="0" value="${EieApp.escapeHtml(cell.student_count ?? 0)}" /></label>
                     <label>상태<select name="status">${renderStatusOptions(cell.status || 'active')}</select></label>
                     <label class="is-wide">메모<textarea name="memo" rows="3" placeholder="운영 메모">${EieApp.escapeHtml(cell.memo || '')}</textarea></label>
@@ -167,11 +203,66 @@
                         <button type="submit" class="eie-primary-button">저장</button>
                         ${cell.id ? `<button type="button" class="eie-secondary-button" onclick="EieTimetableView.setStatus('${EieApp.escapeHtml(cell.id)}', 'hidden')">숨김</button>` : ''}
                         ${cell.id ? `<button type="button" class="eie-secondary-button" onclick="EieTimetableView.setStatus('${EieApp.escapeHtml(cell.id)}', 'needs_review')">보류</button>` : ''}
+                        ${cell.id ? `<button type="button" class="eie-secondary-button" onclick="EieTimetableView.setStatus('${EieApp.escapeHtml(cell.id)}', 'archived')">보관</button>` : ''}
                     </div>
                     <div class="eie-api-note">학생/연락처 확정, classroom, 출석/숙제는 아직 생성하지 않습니다.</div>
                 </form>
             </aside>
         `;
+    }
+
+    function renderDetailRow(label, value) {
+        return `
+            <div class="eie-detail-row">
+                <span>${EieApp.escapeHtml(label)}</span>
+                <strong>${EieApp.escapeHtml(value || '-')}</strong>
+            </div>
+        `;
+    }
+
+    function renderStudentPanel() {
+        const selected = EieState.getSelectedStudentCandidate();
+        if (!selected) return '';
+        const cell = selected.cell || {};
+        const flags = Array.isArray(selected.flags) ? selected.flags : [];
+        const reasons = Array.isArray(getRawMeta(cell).needs_review_reasons) ? getRawMeta(cell).needs_review_reasons : [];
+        return `
+            <aside class="eie-editor-panel eie-student-detail-panel" aria-label="학생 후보 상세">
+                <div class="eie-editor-head">
+                    <h2>학생 후보</h2>
+                    <button type="button" class="eie-icon-button" onclick="EieTimetableView.closeStudentInfo()">닫기</button>
+                </div>
+                <div class="eie-student-detail-title">
+                    <strong>${EieApp.escapeHtml(selected.name || selected.student_name_raw || '-')}</strong>
+                    ${renderCandidateFlags(selected)}
+                </div>
+                <div class="eie-detail-grid">
+                    ${renderDetailRow('이름', selected.student_name_raw || selected.name)}
+                    ${renderDetailRow('학년', selected.grade_raw)}
+                    ${renderDetailRow('전화번호', selected.phone_raw || selected.normalized_phone)}
+                    ${renderDetailRow('원본 메모', selected.memo_raw)}
+                    ${renderDetailRow('요일/교시', [cell.day_label, cell.period_label].filter(Boolean).join(' '))}
+                    ${renderDetailRow('시간', [cell.start_time, cell.end_time].filter(Boolean).join('~'))}
+                    ${renderDetailRow('수업명', cell.class_name_raw)}
+                    ${renderDetailRow('선생님', cell.teacher_name_raw)}
+                    ${renderDetailRow('원본 위치', [selected.source_row ? `행 ${selected.source_row}` : '', selected.source_col ? `열 ${selected.source_col}` : ''].filter(Boolean).join(' · '))}
+                    ${renderDetailRow('상태', selected.match_status || (flags.length ? 'needs_review' : 'candidate'))}
+                </div>
+                ${(flags.length || reasons.length) ? `
+                    <div class="eie-review-reasons">
+                        <span>확인 필요</span>
+                        <div>${[...new Set([...flags, ...reasons])].map(flag => `<em>${EieApp.escapeHtml(FLAG_LABELS[flag] || flag)}</em>`).join('')}</div>
+                    </div>
+                ` : ''}
+                <div class="eie-api-note">이번 라운드에서는 학생/연락처 확정, 수업배정, classroom 생성은 하지 않습니다.</div>
+            </aside>
+        `;
+    }
+
+    function renderSidePanel() {
+        const state = EieState.get();
+        if (state.studentCandidatePanelMode === 'detail') return renderStudentPanel();
+        return renderEditor();
     }
 
     function formToPayload(form) {
@@ -237,9 +328,9 @@
                             <div class="eie-timetable-main">
                                 ${renderExcelGrid(rows)}
                             </div>
-                            ${renderEditor()}
+                            ${renderSidePanel()}
                         </div>
-                        <div class="eie-empty-box">Round 4는 운영 시간표 셀 추가/수정/상태 변경까지만 다룹니다. 학생/연락처 확정, classroom, 출석/숙제는 생성하지 않습니다.</div>
+                        <div class="eie-empty-box">Round 5는 학생·전화번호 후보 검토까지만 다룹니다. 학생/연락처 확정, classroom, 출석/숙제는 생성하지 않습니다.</div>
                     </div>
                 </section>
             `;
@@ -247,6 +338,7 @@
         changeFilter(value) {
             EieState.setTimetableStatusFilter(value);
             EieState.closeTimetableEditor();
+            EieState.closeStudentCandidatePanel();
             EieRouter.open('timetable');
         },
         selectCell(cellId) {
@@ -259,6 +351,10 @@
         },
         closeEditor() {
             EieState.closeTimetableEditor();
+            EieRouter.open('timetable');
+        },
+        closeStudentInfo() {
+            EieState.closeStudentCandidatePanel();
             EieRouter.open('timetable');
         },
         async submitCellForm(event, mode, cellId) {
@@ -287,9 +383,9 @@
             }
             EieRouter.open('timetable');
         },
-        openStudentInfo(cellId, studentName) {
-            EieState.selectTimetableCell(cellId);
-            EieState.setTimetableNotice(`${studentName} 학생 정보는 다음 라운드에서 학생 상세 패널로 연결합니다. 전화번호는 시간표 셀에 노출하지 않습니다.`);
+        openStudentInfo(cellId, candidateIndex) {
+            const selected = EieState.selectStudentCandidate(cellId, candidateIndex);
+            if (!selected) EieState.setTimetableError('학생 후보를 찾지 못했습니다.');
             EieRouter.open('timetable');
         }
     };
