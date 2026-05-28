@@ -2094,6 +2094,16 @@ function renderAdminGlobalSearchPanel() {
 }
 
 
+function renderAdminAcademyHeaderSwitch() {
+    if (String(state?.auth?.role || '') !== 'admin') return '';
+    return `
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2);">
+            <span style="min-height:42px; border-radius:9px; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">AP Math</span>
+            <a href="../eie/index.html" style="min-height:42px; border-radius:9px; color:var(--secondary); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; text-decoration:none;">EIE 영어</a>
+        </div>
+    `;
+}
+
 function renderAdminControlCenter() {
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const root = document.getElementById('app-root');
@@ -2106,6 +2116,7 @@ function renderAdminControlCenter() {
             <div style="min-width:0; padding-top:4px;">
                 <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">운영센터</h3>
             </div>
+            ${renderAdminAcademyHeaderSwitch()}
             ${adminGlobalSearchPanel}
         </div>
     `;
