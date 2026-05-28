@@ -148,7 +148,7 @@ Different teachers in the same day/period are separated by `column_index`. Diffe
 
 ## Confirmed Operations Tables Deferred
 
-The following confirmed operations tables are design targets for a later confirmation round and must not be created in Round 5:
+The following confirmed operations tables are created from Round 6 onward and must not be created in Round 5:
 
 - `eie_students`
 - `eie_student_contacts`
@@ -233,4 +233,72 @@ Round 5 flags:
 - `phone_only`
 - `name_only`
 
-These fields are review hints only. They are not confirmed student, contact, or assignment records.
+These fields are review hints only in Round 5. In Round 6, a reviewed candidate may be confirmed into EIE-only confirmed tables.
+
+
+## Round 6 Confirmed Operations Tables
+
+Round 6 introduces EIE-only confirmed operations tables.
+
+### `eie_students`
+
+Purpose: confirmed EIE student identity record.
+
+Key fields:
+
+- `id`
+- `display_name`
+- `normalized_name`
+- `grade`
+- `status`
+- `source_type`
+- `source_import_session_id`
+- `source_cell_id`
+- `memo`
+- `raw_meta_json`
+- `created_by`
+- `created_at`
+- `updated_at`
+
+### `eie_student_contacts`
+
+Purpose: confirmed EIE student phone/contact record.
+
+Key fields:
+
+- `id`
+- `student_id`
+- `phone`
+- `normalized_phone`
+- `contact_label`
+- `is_primary`
+- `source_type`
+- `source_import_session_id`
+- `source_cell_id`
+- `memo`
+- `raw_meta_json`
+- `created_by`
+- `created_at`
+- `updated_at`
+
+A same normalized phone number may appear under multiple students. Same phone alone is not enough to merge identities.
+
+### `eie_student_schedule_assignments`
+
+Purpose: confirmed EIE student-to-timetable-cell assignment.
+
+Key fields:
+
+- `id`
+- `student_id`
+- `timetable_cell_id`
+- `status`
+- `source_type`
+- `source_import_session_id`
+- `memo`
+- `raw_meta_json`
+- `created_by`
+- `created_at`
+- `updated_at`
+
+Round 6 does not create classroom sessions, attendance, homework, textbook, or memo records.

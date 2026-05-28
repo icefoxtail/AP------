@@ -107,9 +107,15 @@ Round 5:
 - duplicate-name, missing-phone, and needs-review flags
 - no student/contact/schedule confirmation write
 
-Round 6+:
+Round 6:
 
-- formal student/contact/assignment confirmation design after review
+- EIE-only formal student/contact/assignment confirmation 1st pass
+- confirmed data writes only to `eie_students`, `eie_student_contacts`, and `eie_student_schedule_assignments`
+- APMS `students`, `parent_contacts`, `class_students`, and `student_enrollments` remain untouched
+- classroom, attendance, homework, textbook, memo, and class operations remain out of scope
+
+Round 7+:
+
 - classroom sessions
 - attendance, homework, textbook, memo, and class operations
 
@@ -127,7 +133,7 @@ Round 5 must not create `eie_students`, `eie_student_contacts`, or `eie_student_
 
 Round 5 must not finalize student identity, phone contact, or class assignment records.
 
-Before Round 6, do not design or implement classroom sessions.
+Before Round 7, do not design or implement classroom sessions.
 
 ### Migration proposal location policy
 
@@ -149,3 +155,35 @@ Candidate flags used in Round 5:
 - `name_only`
 
 Any save/confirm/create action for students, contacts, assignments, classroom, attendance, homework, textbook, or memo remains out of scope.
+
+
+## 10. Round 6 Confirmation Policy
+
+Round 6 may create EIE-only confirmed tables and records.
+
+Allowed tables:
+
+- `eie_students`
+- `eie_student_contacts`
+- `eie_student_schedule_assignments`
+
+Round 6 confirmation must start from reviewed candidates in `eie_timetable_cells.raw_meta_json` or the candidate endpoints.
+
+Confirmation rules:
+
+- Confirmed students are stored only in `eie_students`.
+- Confirmed phone numbers are stored only in `eie_student_contacts`.
+- Confirmed timetable memberships are stored only in `eie_student_schedule_assignments`.
+- Same phone number alone must not merge different student names automatically.
+- If both normalized name and normalized phone match an existing EIE student/contact pair, reuse the EIE student.
+- If phone is missing, the student may still be confirmed, but the missing-phone review signal should remain visible in the source candidate.
+- Confirmation may mark the source timetable cell metadata with a confirmed candidate reference.
+
+Still prohibited in Round 6:
+
+- APMS `students` insert/update
+- APMS `parent_contacts` insert/update
+- APMS `class_students` insert/update
+- APMS `student_enrollments` insert/update
+- classroom session creation
+- attendance, homework, textbook, memo creation

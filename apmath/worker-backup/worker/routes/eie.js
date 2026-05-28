@@ -249,6 +249,7 @@ function withCellContext(candidate, cell, index) {
   if (flags.length && !flags.includes('needs_review')) flags.push('needs_review');
   return {
     id: `${cell.id || 'cell'}_${index}`,
+    candidate_index: index,
     import_session_id: cell.import_session_id || '',
     cell_id: cell.id || '',
     source_type: cell.source_type || 'import',
@@ -360,6 +361,302 @@ function buildNeedsReviewRows(cells) {
   return [...timetableRows, ...seedRows];
 }
 
+
+function isRound6TableMissing(error) {
+  const text = String(error?.message || error || '').toLowerCase();
+  return text.includes('no such table') || text.includes('eie_students') || text.includes('eie_student_contacts') || text.includes('eie_student_schedule_assignments');
+}
+
+function round6MigrationRequiredResponse() {
+  return jsonResponse({
+    success: false,
+    error: 'EIE Round 6 migration is required',
+    message: 'EIE 학생·연락처·수업배정 확정 테이블을 먼저 적용해야 합니다.'
+  }, 409);
+}
+
+function normalizeConfirmedStatus(value, fallback = 'active') {
+  const status = safeText(value || fallback);
+  if (['active', 'needs_review', 'inactive', 'archived'].includes(status)) return status;
+  return fallback;
+}
+
+function candidateDisplayName(candidate) {
+  return safeText(candidate?.name || candidate?.student_name_raw || candidate?.studentName || '');
+}
+
+function pickCandidateByKey(candidates, key) {
+  const rows = Array.isArray(candidates) ? candidates : [];
+  const raw = key == null ? '' : String(key);
+  const index = Number(raw);
+  if (Number.isInteger(index) && index >= 0 && rows[index]) return rows[index];
+  return rows.find(row => String(row?.normalized_name || row?.name || row?.student_name_raw || '') === raw) || null;
+}
+
+async function findConfirmedStudent(env, candidate) {
+  const normalizedName = normalizeName(candidateDisplayName(candidate));
+  const normalizedPhone = normalizePhone(candidate?.normalized_phone || candidate?.phone_raw);
+
+  if (!normalizedName || !normalizedPhone) return null;
+
+  const row = await env.DB.prepare(`
+    SELECT s.*
+    FROM eie_students s
+    JOIN eie_student_contacts c ON c.student_id = s.id
+    WHERE s.normalized_name = ?
+      AND c.normalized_phone = ?
+      AND COALESCE(s.status, 'active') != 'archived'
+    ORDER BY s.created_at ASC
+    LIMIT 1
+  `).bind(normalizedName, normalizedPhone).first();
+
+  return row || null;
+}
+
+async function createConfirmedStudent(env, candidate, teacher) {
+  const id = makeId('eie_student');
+  const displayName = candidateDisplayName(candidate);
+  const normalizedName = normalizeName(displayName);
+  await env.DB.prepare(`
+    INSERT INTO eie_students
+    (id, display_name, normalized_name, grade, status, source_type, source_import_session_id, source_cell_id, memo, raw_meta_json, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    displayName,
+    normalizedName,
+    safeText(candidate?.grade_raw),
+    normalizeConfirmedStatus(candidate?.flags?.includes('needs_review') ? 'needs_review' : 'active'),
+    candidate?.source_type || 'candidate',
+    candidate?.import_session_id || '',
+    candidate?.cell_id || '',
+    safeText(candidate?.memo_raw),
+    toJsonText(candidate),
+    teacher?.id || null
+  ).run();
+  return env.DB.prepare('SELECT * FROM eie_students WHERE id = ?').bind(id).first();
+}
+
+async function ensureConfirmedContact(env, studentId, candidate, teacher) {
+  const normalizedPhone = normalizePhone(candidate?.normalized_phone || candidate?.phone_raw);
+  if (!normalizedPhone) return null;
+  const existing = await env.DB.prepare(`
+    SELECT *
+    FROM eie_student_contacts
+    WHERE student_id = ? AND normalized_phone = ?
+    LIMIT 1
+  `).bind(studentId, normalizedPhone).first();
+  if (existing) return existing;
+  const id = makeId('eie_contact');
+  await env.DB.prepare(`
+    INSERT INTO eie_student_contacts
+    (id, student_id, phone, normalized_phone, contact_label, is_primary, source_type, source_import_session_id, source_cell_id, memo, raw_meta_json, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    studentId,
+    safeText(candidate?.phone_raw || candidate?.normalized_phone),
+    normalizedPhone,
+    safeText(candidate?.contact_label || '대표'),
+    candidate?.source_type || 'candidate',
+    candidate?.import_session_id || '',
+    candidate?.cell_id || '',
+    safeText(candidate?.memo_raw),
+    toJsonText(candidate),
+    teacher?.id || null
+  ).run();
+  return env.DB.prepare('SELECT * FROM eie_student_contacts WHERE id = ?').bind(id).first();
+}
+
+async function ensureScheduleAssignment(env, studentId, candidate, teacher) {
+  const cellId = safeText(candidate?.cell_id);
+  if (!cellId) return null;
+  const existing = await env.DB.prepare(`
+    SELECT *
+    FROM eie_student_schedule_assignments
+    WHERE student_id = ? AND timetable_cell_id = ?
+    LIMIT 1
+  `).bind(studentId, cellId).first();
+  if (existing) return existing;
+  const id = makeId('eie_assign');
+  await env.DB.prepare(`
+    INSERT INTO eie_student_schedule_assignments
+    (id, student_id, timetable_cell_id, status, source_type, source_import_session_id, memo, raw_meta_json, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, 'active', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    studentId,
+    cellId,
+    candidate?.source_type || 'candidate',
+    candidate?.import_session_id || '',
+    safeText(candidate?.memo_raw),
+    toJsonText(candidate),
+    teacher?.id || null
+  ).run();
+  return env.DB.prepare('SELECT * FROM eie_student_schedule_assignments WHERE id = ?').bind(id).first();
+}
+
+async function findExistingCandidateConfirmation(env, cell, candidateIndex) {
+  const meta = parseRawMeta(cell?.raw_meta_json);
+  const confirmed = Array.isArray(meta.confirmed_student_candidates) ? meta.confirmed_student_candidates : [];
+  const row = confirmed.find(item => String(item?.candidate_index) === String(candidateIndex));
+  if (!row) return null;
+
+  const studentId = safeText(row.student_id);
+  if (!studentId) {
+    return { incomplete: true, reason: 'confirmed metadata has no student_id' };
+  }
+
+  const student = await env.DB.prepare('SELECT * FROM eie_students WHERE id = ? LIMIT 1').bind(studentId).first();
+  if (!student) {
+    return { incomplete: true, reason: 'confirmed student not found', student_id: studentId };
+  }
+
+  const contactId = safeText(row.contact_id);
+  const assignmentId = safeText(row.assignment_id);
+  const contact = contactId
+    ? await env.DB.prepare('SELECT * FROM eie_student_contacts WHERE id = ? LIMIT 1').bind(contactId).first()
+    : null;
+  const assignment = assignmentId
+    ? await env.DB.prepare('SELECT * FROM eie_student_schedule_assignments WHERE id = ? LIMIT 1').bind(assignmentId).first()
+    : await env.DB.prepare(`
+        SELECT *
+        FROM eie_student_schedule_assignments
+        WHERE student_id = ? AND timetable_cell_id = ?
+        LIMIT 1
+      `).bind(studentId, cell.id).first();
+
+  return {
+    student,
+    contact: contact || null,
+    assignment: assignment || null,
+    created_student: false,
+    already_confirmed: true,
+    confirmed_at: row.confirmed_at || ''
+  };
+}
+
+function buildConfirmedMeta(cell, candidate, result) {
+  const meta = parseRawMeta(cell.raw_meta_json);
+  const confirmed = Array.isArray(meta.confirmed_student_candidates) ? meta.confirmed_student_candidates : [];
+  const row = {
+    candidate_index: candidate?.candidate_index,
+    student_id: result?.student?.id || '',
+    contact_id: result?.contact?.id || '',
+    assignment_id: result?.assignment?.id || '',
+    confirmed_at: new Date().toISOString()
+  };
+  const nextConfirmed = confirmed.filter(item => String(item?.candidate_index) !== String(row.candidate_index));
+  nextConfirmed.push(row);
+  return {
+    ...meta,
+    confirmed_student_candidates: nextConfirmed
+  };
+}
+
+async function markCandidateConfirmed(env, cell, candidate, result) {
+  const nextMeta = buildConfirmedMeta(cell, candidate, result);
+  await env.DB.prepare(`
+    UPDATE eie_timetable_cells
+    SET raw_meta_json = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `).bind(toJsonText(nextMeta), cell.id).run();
+}
+
+async function queryConfirmedStudents(env) {
+  const result = await env.DB.prepare(`
+    SELECT s.*,
+           COUNT(DISTINCT c.id) AS contact_count,
+           COUNT(DISTINCT a.id) AS assignment_count
+    FROM eie_students s
+    LEFT JOIN eie_student_contacts c ON c.student_id = s.id
+    LEFT JOIN eie_student_schedule_assignments a ON a.student_id = s.id AND COALESCE(a.status, 'active') != 'archived'
+    GROUP BY s.id
+    ORDER BY s.updated_at DESC, s.created_at DESC
+  `).all();
+  return result.results || [];
+}
+
+async function queryConfirmedContacts(env) {
+  const result = await env.DB.prepare(`
+    SELECT c.*, s.display_name, s.normalized_name, s.grade
+    FROM eie_student_contacts c
+    LEFT JOIN eie_students s ON s.id = c.student_id
+    ORDER BY c.updated_at DESC, c.created_at DESC
+  `).all();
+  return result.results || [];
+}
+
+async function queryScheduleAssignments(env) {
+  const result = await env.DB.prepare(`
+    SELECT a.*, s.display_name, s.normalized_name, s.grade,
+           t.day_label, t.period_label, t.start_time, t.end_time, t.class_name_raw, t.teacher_name_raw, t.room_raw
+    FROM eie_student_schedule_assignments a
+    LEFT JOIN eie_students s ON s.id = a.student_id
+    LEFT JOIN eie_timetable_cells t ON t.id = a.timetable_cell_id
+    WHERE COALESCE(a.status, 'active') != 'archived'
+    ORDER BY t.day_label, t.period_order, t.column_index, s.display_name
+  `).all();
+  return result.results || [];
+}
+
+async function handlePostConfirmCandidate(request, env, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const cellId = safeText(body.cell_id || body.timetable_cell_id);
+  if (!cellId) return jsonResponse({ success: false, error: 'cell_id is required' }, 400);
+  const cell = await getTimetableCell(env, cellId);
+  if (!cell) return jsonResponse({ success: false, error: 'timetable cell not found' }, 404);
+
+  const candidates = extractStudentCandidatesFromCell(cell);
+  const selected = pickCandidateByKey(candidates, body.candidate_index ?? body.candidate_key ?? 0);
+  if (!selected) return jsonResponse({ success: false, error: 'student candidate not found' }, 404);
+
+  const candidateIndex = Number.isInteger(Number(selected.candidate_index))
+    ? Number(selected.candidate_index)
+    : Number(body.candidate_index ?? 0);
+  const candidate = withCellContext(selected, cell, candidateIndex);
+  if (!candidateDisplayName(candidate)) return jsonResponse({ success: false, error: 'student name is required' }, 400);
+
+  try {
+    const existingConfirmation = await findExistingCandidateConfirmation(env, cell, candidateIndex);
+    if (existingConfirmation?.incomplete) {
+      return jsonResponse({
+        success: false,
+        error: 'candidate is already confirmed but its target record is incomplete',
+        detail: existingConfirmation.reason || '',
+        student_id: existingConfirmation.student_id || ''
+      }, 409);
+    }
+    if (existingConfirmation) {
+      return jsonResponse({
+        success: true,
+        data: existingConfirmation,
+        confirmed: existingConfirmation,
+        already_confirmed: true,
+        message: '이미 확정된 EIE 학생 후보입니다.'
+      });
+    }
+
+    let student = await findConfirmedStudent(env, candidate);
+    const createdStudent = !student;
+    if (!student) student = await createConfirmedStudent(env, candidate, teacher);
+    const contact = await ensureConfirmedContact(env, student.id, candidate, teacher);
+    const assignment = await ensureScheduleAssignment(env, student.id, candidate, teacher);
+    const result = { student, contact, assignment, created_student: createdStudent, already_confirmed: false };
+    await markCandidateConfirmed(env, cell, candidate, result);
+    return jsonResponse({
+      success: true,
+      data: result,
+      confirmed: result,
+      message: 'EIE 학생·연락처·수업배정을 확정했습니다.'
+    });
+  } catch (error) {
+    if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+    throw error;
+  }
+}
+
 async function queryCandidateCells(env, importId) {
   if (importId) return queryTimetableCells(env, importId);
   return queryTimetableCells(env, '', { statuses: ['active', 'imported', 'needs_review', 'hidden', 'archived'] });
@@ -414,6 +711,36 @@ async function handleGet(request, env, path, url) {
   if (section === 'import' && action && tail === 'needs-review') {
     const rows = buildNeedsReviewRows(await queryCandidateCells(env, action));
     return jsonResponse({ success: true, data: rows, needs_review: rows, stub: rows.length === 0 });
+  }
+
+  if (section === 'confirmed-students') {
+    try {
+      const rows = await queryConfirmedStudents(env);
+      return jsonResponse({ success: true, data: rows, students: rows, confirmed_students: rows, stub: rows.length === 0 });
+    } catch (error) {
+      if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+      throw error;
+    }
+  }
+
+  if (section === 'confirmed-contacts') {
+    try {
+      const rows = await queryConfirmedContacts(env);
+      return jsonResponse({ success: true, data: rows, contacts: rows, confirmed_contacts: rows, stub: rows.length === 0 });
+    } catch (error) {
+      if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+      throw error;
+    }
+  }
+
+  if (section === 'schedule-assignments') {
+    try {
+      const rows = await queryScheduleAssignments(env);
+      return jsonResponse({ success: true, data: rows, assignments: rows, schedule_assignments: rows, stub: rows.length === 0 });
+    } catch (error) {
+      if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+      throw error;
+    }
   }
 
   if (section === 'timetable') {
@@ -664,6 +991,10 @@ export async function handleEie(request, env, teacher, path, url) {
 
   if (method === 'POST' && path[2] === 'import' && !path[3]) {
     return handlePostImport(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'confirm-candidate' && !path[3]) {
+    return handlePostConfirmCandidate(request, env, teacher);
   }
 
   if (method === 'POST' && path[2] === 'timetable-cells' && !path[3]) {

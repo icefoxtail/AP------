@@ -23,7 +23,10 @@
         selectedStudentCandidate: null,
         studentCandidatePanelMode: '',
         studentSeedNotice: '',
-        studentSeedError: ''
+        studentSeedError: '',
+        confirmedStudents: [],
+        confirmedContacts: [],
+        scheduleAssignments: []
     };
 
     function asArray(rows) {
@@ -154,6 +157,15 @@
             state.contactSeeds = asArray(rows);
             state.studentSeedError = '';
         },
+        setConfirmedStudents(rows) {
+            state.confirmedStudents = asArray(rows);
+        },
+        setConfirmedContacts(rows) {
+            state.confirmedContacts = asArray(rows);
+        },
+        setScheduleAssignments(rows) {
+            state.scheduleAssignments = asArray(rows);
+        },
         setNeedsReview(rows) {
             state.needsReview = asArray(rows);
         },
@@ -275,6 +287,9 @@
             state.studentCandidatePanelMode = '';
             state.studentSeedNotice = '';
             state.studentSeedError = '';
+            state.confirmedStudents = [];
+            state.confirmedContacts = [];
+            state.scheduleAssignments = [];
         }
     };
 })();
