@@ -161,102 +161,418 @@ function isClassVisibleForCurrentTeacher(c) {
 }
 
 // [5G] 관리필요(구 위험학생) 판정 알고리즘
+
+// [Dashboard Ops] 일지 대상일·퇴근 마감·집중케어 공통 유틸
+const DASHBOARD_JOURNAL_BASE_DAYS = ['wed', 'thu'];
+const DASHBOARD_DAY_ORDER = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const DASHBOARD_DAY_LABELS = { sun: '일', mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토' };
+const DASHBOARD_DAY_INDEX_TO_KEY = { 0: 'sun', 1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 'sat', 7: 'sun' };
+
+function dashboardEscapeAttr(value) {
+    const jsSafe = String(value || '')
+        .replace(/\\/g, '\\\\')
+        .replace(/\r/g, '\\r')
+        .replace(/\n/g, '\\n')
+        .replace(/\u2028/g, '\\u2028')
+        .replace(/\u2029/g, '\\u2029')
+        .replace(/'/g, "\\'");
+    return jsSafe
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function dashboardDateFromLocalString(dateStr) {
+    const parts = String(dateStr || '').split('-').map(Number);
+    if (parts.length !== 3 || parts.some(v => !Number.isFinite(v))) return null;
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+}
+
+function dashboardDateStringFromDate(date) {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('sv-SE');
+}
+
+function dashboardGetWeekDates(baseDateStr) {
+    const base = dashboardDateFromLocalString(baseDateStr || new Date().toLocaleDateString('sv-SE')) || new Date();
+    const start = new Date(base.getFullYear(), base.getMonth(), base.getDate());
+    start.setDate(start.getDate() - start.getDay());
+    return DASHBOARD_DAY_ORDER.map((key, idx) => {
+        const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + idx);
+        return { key, label: DASHBOARD_DAY_LABELS[key], date: dashboardDateStringFromDate(d), dayIndex: idx };
+    });
+}
+
+function dashboardNormalizeTeacherName(name) {
+    return String(name || '').replace(/\s*선생님\s*$/g, '').trim();
+}
+
+function dashboardAddDayKey(list, key) {
+    const normalized = String(key || '').trim();
+    if (DASHBOARD_DAY_ORDER.includes(normalized) && !list.includes(normalized)) list.push(normalized);
+}
+
+function dashboardParseDayKeysFromText(value) {
+    const source = String(value || '').trim();
+    const days = [];
+    if (!source) return days;
+
+    const tokenMap = {
+        '0': 'sun', '1': 'mon', '2': 'tue', '3': 'wed', '4': 'thu', '5': 'fri', '6': 'sat', '7': 'sun',
+        sun: 'sun', sunday: 'sun', su: 'sun', 일: 'sun', 일요일: 'sun',
+        mon: 'mon', monday: 'mon', m: 'mon', 월: 'mon', 월요일: 'mon',
+        tue: 'tue', tuesday: 'tue', tu: 'tue', 화: 'tue', 화요일: 'tue',
+        wed: 'wed', wednesday: 'wed', w: 'wed', 수: 'wed', 수요일: 'wed',
+        thu: 'thu', thursday: 'thu', th: 'thu', 목: 'thu', 목요일: 'thu',
+        fri: 'fri', friday: 'fri', f: 'fri', 금: 'fri', 금요일: 'fri',
+        sat: 'sat', saturday: 'sat', sa: 'sat', 토: 'sat', 토요일: 'sat'
+    };
+
+    const groupMap = {
+        mwf: ['mon', 'wed', 'fri'],
+        mtwthf: ['mon', 'tue', 'wed', 'thu', 'fri'],
+        weekday: ['mon', 'tue', 'wed', 'thu', 'fri'],
+        weekdays: ['mon', 'tue', 'wed', 'thu', 'fri'],
+        ttf: ['tue', 'thu', 'fri'],
+        tt: ['tue', 'thu'],
+        weekend: ['sat', 'sun']
+    };
+
+    const compact = source.toLowerCase().replace(/\s+/g, '');
+    if (groupMap[compact]) return [...groupMap[compact]];
+
+    source.split(/[,/|·\s]+/).map(v => v.trim()).filter(Boolean).forEach(token => {
+        const lower = token.toLowerCase();
+        if (groupMap[lower]) groupMap[lower].forEach(day => dashboardAddDayKey(days, day));
+        else dashboardAddDayKey(days, tokenMap[lower] || tokenMap[token]);
+    });
+
+    for (const ch of source) dashboardAddDayKey(days, tokenMap[ch]);
+    return days;
+}
+
+function dashboardGetClassDayKeys(cls) {
+    const days = [];
+    dashboardParseDayKeysFromText(cls?.schedule_days).forEach(day => dashboardAddDayKey(days, day));
+    dashboardParseDayKeysFromText(cls?.day_group).forEach(day => dashboardAddDayKey(days, day));
+    dashboardParseDayKeysFromText(cls?.time_label).forEach(day => dashboardAddDayKey(days, day));
+    return DASHBOARD_DAY_ORDER.filter(day => days.includes(day));
+}
+
+function dashboardGetTeacherClasses(teacherName = '') {
+    const classes = state?.db?.classes || [];
+    const target = dashboardNormalizeTeacherName(teacherName || state?.ui?.userName || state?.auth?.name || '');
+    return classes.filter(c => {
+        if (Number(c?.is_active) === 0) return false;
+        if (!target) return isClassVisibleForCurrentTeacher(c);
+        const classTeacher = dashboardNormalizeTeacherName(c?.teacher_name || '');
+        return classTeacher === target;
+    });
+}
+
+function dashboardGetJournalTargetDayKeys(teacherName = '', classRows = null) {
+    // AP Math 운영 기준: 대시보드 일지 확인은 수/목 2일만 본다.
+    // 실제 수업 요일 예외를 섞으면 선생님 현황 카드가 다시 경고판처럼 복잡해지므로 추가하지 않는다.
+    return DASHBOARD_DAY_ORDER.filter(day => DASHBOARD_JOURNAL_BASE_DAYS.includes(day));
+}
+
+function dashboardFindJournal(dateStr, teacherName = '') {
+    const targetTeacher = dashboardNormalizeTeacherName(teacherName || state?.ui?.userName || state?.auth?.name || '');
+    return (state?.db?.journals || []).find(j => {
+        const sameDate = String(j?.date || '') === String(dateStr || '');
+        if (!sameDate) return false;
+        if (!targetTeacher) return true;
+        return dashboardNormalizeTeacherName(j?.teacher_name || '') === targetTeacher;
+    });
+}
+
+function dashboardIsJournalDone(journal) {
+    const status = String(journal?.status || '').trim();
+    if (!journal) return false;
+    return status === '제출완료' || status === '결재완료' || !!String(journal?.content || '').trim();
+}
+
+function openDashboardArchiveWindow(event) {
+    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+    const url = '../archive/index';
+    window.open(url, '_blank', 'noopener');
+}
+
+function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, classRows = null) {
+    injectDashboardOpsStyles();
+    const week = dashboardGetWeekDates(baseDateStr || new Date().toLocaleDateString('sv-SE'));
+    const targetDays = dashboardGetJournalTargetDayKeys(teacherName, classRows);
+    const safeTeacher = dashboardEscapeAttr(teacherName || state?.ui?.userName || '');
+    const cells = week
+        .filter(day => targetDays.includes(day.key))
+        .filter(day => !isDashboardHoliday(day.date))
+        .map(day => {
+            const journal = dashboardFindJournal(day.date, teacherName);
+            const done = dashboardIsJournalDone(journal);
+            const statusText = done ? '제출완료' : '미작성';
+            const click = teacherName
+                ? `renderAdminJournalList('${day.date}', '${safeTeacher}')`
+                : `openDailyJournalModal('${day.date}')`;
+            const labelText = `${day.label} ${apFormatMonthDay(day.date) || day.date}`;
+            const ariaText = `${labelText} ${statusText} 일지 열기`;
+            return `
+                <button class="journal-day-cell journal-day-cell--${done ? 'done' : 'missing'}" onclick="event.stopPropagation(); ${click}" type="button" aria-label="${apEscapeHtml(ariaText)}">
+                    <span class="journal-day-cell__label">${apEscapeHtml(labelText)}</span>
+                    <span class="journal-day-cell__spacer" aria-hidden="true"></span>
+                    <span class="journal-day-cell__status">${apEscapeHtml(statusText)}</span>
+                    <span class="journal-day-cell__chevron" aria-hidden="true">›</span>
+                </button>
+            `;
+        }).join('');
+
+    if (!cells.trim()) {
+        return `<div class="journal-matrix journal-matrix--empty"><span class="journal-matrix__empty">이번 주 작성 대상일이 없습니다.</span></div>`;
+    }
+    return `<div class="journal-matrix" data-teacher="${apEscapeHtml(teacherName || '')}">${cells}</div>`;
+}
+
+function dashboardGetStudentClassInfo(studentId) {
+    const classStudents = state?.db?.class_students || [];
+    const classes = state?.db?.classes || [];
+    const map = classStudents.find(m => String(m?.student_id) === String(studentId));
+    const cls = classes.find(c => String(c?.id) === String(map?.class_id || '')) || null;
+    return { classId: map?.class_id || '', className: cls?.name || '미배정', cls };
+}
+
+function dashboardGroupByClass(items) {
+    return (items || []).reduce((acc, item) => {
+        const key = item?.className || '미배정';
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+    }, {});
+}
+
+function dashboardHasMakeupAfter(studentId, dateStr) {
+    const sid = String(studentId || '');
+    const start = String(dateStr || '').slice(0, 10);
+    if (!sid || !start) return false;
+
+    const hasAttendanceMakeup = (state?.db?.attendance_history || state?.db?.attendance || []).some(a => {
+        if (String(a?.student_id || '') !== sid) return false;
+        const date = String(a?.date || '').slice(0, 10);
+        if (!date || date < start) return false;
+        const hay = `${a?.status || ''} ${a?.tags || ''} ${a?.memo || ''}`;
+        return hay.includes('보강');
+    });
+    if (hasAttendanceMakeup) return true;
+
+    return (state?.db?.academy_schedules || []).some(s => {
+        if (String(s?.is_deleted || 0) === '1') return false;
+        if (String(s?.student_id || '') !== sid) return false;
+        const date = String(s?.schedule_date || '').slice(0, 10);
+        if (!date || date < start) return false;
+        const hay = `${s?.schedule_type || ''} ${s?.title || ''} ${s?.memo || ''}`;
+        return hay.includes('보강') || /makeup/i.test(hay);
+    });
+}
+
+function dashboardHasConsultationAfter(studentId, dateStr) {
+    const sid = String(studentId || '');
+    const start = String(dateStr || '').slice(0, 10);
+    if (!sid || !start) return false;
+    return (state?.db?.consultations || []).some(c => {
+        if (String(c?.student_id || '') !== sid) return false;
+        const date = String(c?.date || c?.consultation_date || c?.created_at || '').slice(0, 10);
+        return !!date && date >= start;
+    });
+}
+
+function dashboardGetClassProgressRecord(classId, dateStr) {
+    return (state?.db?.class_daily_records || []).find(r => String(r?.class_id || '') === String(classId) && String(r?.date || '') === String(dateStr));
+}
+
+function dashboardGetScheduledClassesForDate(dateStr, teacherName = '') {
+    const dateObj = dashboardDateFromLocalString(dateStr);
+    const dayKey = dateObj ? DASHBOARD_DAY_INDEX_TO_KEY[dateObj.getDay()] : '';
+    const dayIdx = dateObj ? String(dateObj.getDay()) : '';
+    const targetTeacher = dashboardNormalizeTeacherName(teacherName || state?.ui?.userName || state?.auth?.name || '');
+    return (state?.db?.classes || []).filter(cls => {
+        if (Number(cls?.is_active) === 0) return false;
+        if (!isClassVisibleForCurrentTeacher(cls) && !targetTeacher) return false;
+        if (targetTeacher && dashboardNormalizeTeacherName(cls?.teacher_name || '') !== targetTeacher) return false;
+        const keys = dashboardGetClassDayKeys(cls);
+        if (keys.length) return keys.includes(dayKey);
+        if (cls?.schedule_days) return String(cls.schedule_days).split(',').map(v => v.trim()).includes(dayIdx);
+        return false;
+    });
+}
+
+function renderJournalDraftPreview(dateStr) {
+    return `
+        <div class="journal-draft journal-draft--simple">
+            <pre class="journal-draft__plain">${apEscapeHtml(buildJournalContent(dateStr))}</pre>
+        </div>
+    `;
+}
+
+function injectDashboardOpsStyles() {
+    if (typeof document === 'undefined') return;
+    if (document.getElementById('dashboard-foundation-css')) return;
+    if (document.querySelector('link[href$="dashboard-foundation.css"]')) return;
+
+    const link = document.createElement('link');
+    link.id = 'dashboard-foundation-css';
+    link.rel = 'stylesheet';
+    link.href = './css/dashboard-foundation.css';
+    document.head.appendChild(link);
+}
+
 function computeRiskStudents() {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
-    
     if (todayTime === null) return [];
 
-    const active = state.db.students.filter(s => s.status === '재원');
+    const active = (state?.db?.students || []).filter(s => String(s?.status || '') === '재원');
+    const attendanceHistory = state?.db?.attendance_history || [];
+    const homeworkHistory = state?.db?.homework_history || [];
+    const consultations = state?.db?.consultations || [];
+    const classStudents = state?.db?.class_students || [];
+    const classes = state?.db?.classes || [];
 
-    const attendanceHistory = state.db.attendance_history || [];
-    const homeworkHistory = state.db.homework_history || [];
-    const examSessions = state.db.exam_sessions || [];
-    const consultations = state.db.consultations || [];
-    const classStudents = state.db.class_students || [];
-    const classes = state.db.classes || [];
-    
-    // [Stabilization] 최근 14일 기준 생성
+    const classById = typeof apmsGetDataIndexes === 'function'
+        ? apmsGetDataIndexes().classesById
+        : new Map(classes.map(c => [String(c.id), c]));
+    const classMapByStudentId = typeof apmsGetDataIndexes === 'function'
+        ? apmsGetDataIndexes().classStudentByStudentId
+        : new Map(classStudents.map(m => [String(m.student_id), m]));
+
     const LOOKBACK_DAYS = 14;
     const cutoffTime = todayTime - (LOOKBACK_DAYS - 1) * 24 * 60 * 60 * 1000;
+    const recentAlertCutoff = todayTime - 3 * 24 * 60 * 60 * 1000;
 
-    const getRecordTime = apParseLocalDateTime;
-    
-    const risks = [];
-    
-    active.forEach(s => {
-        let riskTypes = [];
-        let reasons = [];
-        
-        // [Stabilization] 출결 14일 필터 실제 적용
-        const recentAtt = attendanceHistory.filter(a => {
-            if (String(a.student_id) !== String(s.id)) return false;
-            if (a.status !== '결석') return false;
-            const t = getRecordTime(a.date);
-            return t !== null && t >= cutoffTime && t <= todayTime;
+    const countMapByStudent = (rows, matcher) => {
+        const map = new Map();
+        rows.forEach(row => {
+            const sid = String(row?.student_id || '');
+            if (!sid || !matcher(row)) return;
+            const t = apParseLocalDateTime(row.date || row.created_at || row.updated_at);
+            if (t === null || t < cutoffTime || t > todayTime) return;
+            const cur = map.get(sid) || { count: 0, recent: 0 };
+            cur.count += 1;
+            if (t >= recentAlertCutoff) cur.recent += 1;
+            map.set(sid, cur);
         });
-        const absenceCount = recentAtt.length;
-        if (absenceCount >= 2) { riskTypes.push('출결주의'); reasons.push(`최근 14일 결석 ${absenceCount}회`); }
-        
-        // [Stabilization] 숙제 14일 필터 실제 적용
-        const recentHw = homeworkHistory.filter(h => {
-            if (String(h.student_id) !== String(s.id)) return false;
-            if (h.status !== '미완료') return false;
-            const t = getRecordTime(h.date);
-            return t !== null && t >= cutoffTime && t <= todayTime;
-        });
-        const hwMissCount = recentHw.length;
-        if (hwMissCount >= 3) { riskTypes.push('숙제주의'); reasons.push(`최근 14일 숙제 미완료 ${hwMissCount}회`); }
-        
-        const exams = examSessions.filter(e => e.student_id === s.id)
-            .sort((a,b) => String(b.exam_date).localeCompare(String(a.exam_date)) || String(b.id).localeCompare(String(a.id)))
-            .slice(0, 3);
-        
-        let scoreSummary = '';
-        if (exams.length > 0) {
-            scoreSummary = exams.map(e => `${e.score}점`).join(' ← ');
-            const avg = exams.reduce((acc, cur) => acc + cur.score, 0) / exams.length;
-            let scoreRisk = false;
-            if (avg < 60) {
-                scoreRisk = true; reasons.push(`최근 3회 평균 ${Math.round(avg)}점`);
-            } else if (exams.length >= 3) {
-                if (exams[0].score < exams[1].score && exams[1].score < exams[2].score) { scoreRisk = true; reasons.push(`시험성적 2회 연속 하락`); }
-            }
-            if (scoreRisk) riskTypes.push('성적주의');
-        }
-        
-        const cns = consultations.filter(c => c.student_id === s.id).sort((a,b) => String(b.date).localeCompare(String(a.date)));
-        let lastCnsDate = cns.length ? cns[0].date : '없음';
-        let cnsDaysDiff = 999;
-        if (cns.length > 0) {
-            const cnsTime = apParseLocalDateTime(cns[0].date);
-            if (cnsTime !== null) {
-                cnsDaysDiff = (todayTime - cnsTime) / (1000*3600*24);
-            }
-        }
-        
-        let isNewStudent = false;
-        if (s.created_at) {
-            const createTime = apParseLocalDateTime(s.created_at);
-            if (createTime !== null && (todayTime - createTime) / (1000*3600*24) <= 14) isNewStudent = true;
-        }
-        
-        if (cnsDaysDiff >= 30 && !isNewStudent) { riskTypes.push('상담필요'); reasons.push(`최근 30일 상담 기록 없음`); }
-        
-        // [Stabilization] 종합주의 중복 방어
-        if (riskTypes.length >= 2 && !riskTypes.includes('종합주의')) { 
-            riskTypes.push('종합주의'); 
-        }
-        
-        if (riskTypes.length > 0) {
-            const cId = classStudents.find(m => m.student_id === s.id)?.class_id;
-            const cName = classes.find(c => c.id === cId)?.name || '미배정';
-            risks.push({ student: s, className: cName, riskTypes, reasons, scoreSummary, absenceCount, hwMissCount, lastConsultationDate: lastCnsDate });
-        }
+        return map;
+    };
+
+    const absenceMap = countMapByStudent(attendanceHistory, row => String(row?.status || '').trim() === '결석');
+    const homeworkMissMap = countMapByStudent(homeworkHistory, row => String(row?.status || '').trim() === '미완료');
+    const makeupMap = countMapByStudent(attendanceHistory, row => {
+        const hay = `${row?.status || ''} ${row?.tags || ''} ${row?.memo || ''}`;
+        return hay.includes('보강');
     });
-    
-    return risks;
+
+    const consultationMap = new Map();
+    consultations.forEach(row => {
+        const sid = String(row?.student_id || '');
+        if (!sid) return;
+        const dateText = String(row?.date || row?.consultation_date || row?.created_at || '').slice(0, 10);
+        const t = apParseLocalDateTime(dateText);
+        if (t === null || t < cutoffTime || t > todayTime) return;
+        const cur = consultationMap.get(sid) || { count: 0, recent: 0 };
+        cur.count += 1;
+        if (t >= recentAlertCutoff) cur.recent += 1;
+        consultationMap.set(sid, cur);
+    });
+
+    const risks = [];
+    const clearedCareLogs = [];
+
+    active.forEach(s => {
+        const sid = String(s?.id || '');
+        if (!sid) return;
+
+        const absences = absenceMap.get(sid) || { count: 0, recent: 0 };
+        const hwMisses = homeworkMissMap.get(sid) || { count: 0, recent: 0 };
+        const makeups = makeupMap.get(sid) || { count: 0, recent: 0 };
+        const studentConsults = consultationMap.get(sid) || { count: 0, recent: 0 };
+
+        const baseReasons = [];
+        const offsetReasons = [];
+        let internalScore = 50;
+
+        if (absences.count > 0) {
+            internalScore += absences.count * 20;
+            baseReasons.push(`최근 14일 결석 ${absences.count}회`);
+        }
+        if (hwMisses.count > 0) {
+            internalScore += hwMisses.count * 10;
+            baseReasons.push(`최근 14일 숙제 미완료 ${hwMisses.count}회`);
+        }
+
+        const beforeOffsetScore = internalScore;
+
+        if (makeups.count > 0) {
+            internalScore -= makeups.count * 20;
+            offsetReasons.push(`보강 ${makeups.count}회`);
+        }
+        if (studentConsults.count > 0) {
+            internalScore -= studentConsults.count * 30;
+            offsetReasons.push(`상담 ${studentConsults.count}회`);
+        }
+
+        internalScore = Math.max(50, Math.min(150, internalScore));
+        const displayScore = internalScore - 50;
+
+        if (!baseReasons.length) return;
+
+        const cId = classMapByStudentId.get(sid)?.class_id;
+        const cName = classById.get(String(cId || ''))?.name || '미배정';
+        const recentNegative = absences.recent + hwMisses.recent;
+        const recentPositive = makeups.recent + studentConsults.recent;
+        let trend = '▬';
+        if (recentNegative > recentPositive) trend = '▲';
+        else if (recentPositive > recentNegative) trend = '▼';
+
+        if (displayScore <= 0) {
+            clearedCareLogs.push({
+                student_id: sid,
+                student_name: s.name || '',
+                class_name: cName,
+                base_reasons: baseReasons,
+                offset_reasons: offsetReasons,
+                internal_score_before_offset: beforeOffsetScore,
+                internal_score_after_offset: internalScore,
+                display_score_after_offset: displayScore,
+                cleared_at: new Date().toISOString(),
+                summary: `${s.name || '학생'}: ${baseReasons.join(' · ')} → ${offsetReasons.join(' · ') || '후속 조치'}로 해소`
+            });
+            return;
+        }
+
+        const riskTypes = ['집중케어'];
+        if (absences.count > 0) riskTypes.push('출결주의');
+        if (hwMisses.count > 0) riskTypes.push('숙제주의');
+
+        risks.push({
+            student: s,
+            className: cName,
+            riskTypes: [...new Set(riskTypes)],
+            reasons: [`${baseReasons.join(' · ')}${offsetReasons.length ? ` / 상쇄: ${offsetReasons.join(' · ')}` : ''} (위험지수: ${displayScore}점)`],
+            scoreSummary: '',
+            absenceCount: absences.count,
+            hwMissCount: hwMisses.count,
+            riskScore: displayScore,
+            trend,
+            offsetReasons
+        });
+    });
+
+    if (!state.dashboard) state.dashboard = {};
+    state.dashboard.clearedCareLogs = clearedCareLogs;
+    state.dashboardClearedCareLogs = clearedCareLogs;
+
+    return risks.sort((a, b) => Number(b.riskScore || 0) - Number(a.riskScore || 0));
 }
+
 
 // [Final Fix] 관리 메뉴 퇴원생 버튼과 연동
 function openDischargedStudents() {
@@ -287,25 +603,44 @@ async function hideDischargedStudent(sid) {
     else toast(r?.message || r?.error || '목록숨김 처리에 실패했습니다.', 'error');
 }
 
+async function purgeHiddenStudent(sid) {
+    if (!sid) return;
+    const first = confirm('이 숨김 학생을 DB에서 완전 삭제할까요?');
+    if (!first) return;
+    const second = confirm('완전 삭제는 중복 생성된 학생 정리용입니다. 삭제 후 복구할 수 없습니다. 계속할까요?');
+    if (!second) return;
+    const r = await api.delete('students', `${sid}/purge`);
+    if (r?.success) {
+        toast('숨김 학생이 완전 삭제되었습니다.', 'info');
+        await loadData();
+        openAdminStudentList('hidden');
+        return;
+    }
+    toast(r?.message || r?.error || '완전 삭제에 실패했습니다.', 'error');
+}
+
 function openAdminStudentList(type) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
     let list = [], title = "";
 
     if (type === 'active') { 
-        list = state.db.students.filter(s => s.status === '재원'); 
+        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '재원'); 
         title = "재원생 목록"; 
     } else if (type === 'new') { 
         list = state.db.students.filter(s => { 
-            if (s.status !== '재원' || !s.created_at || todayTime === null) return false; 
+            if (adminNormalizeStatus(s.status) !== '재원' || !s.created_at || todayTime === null) return false; 
             const createdTime = apParseLocalDateTime(s.created_at);
             if (createdTime === null) return false;
-            return (todayTime - createdTime) / (1000*3600*24) <= 30; 
+            return (todayTime - createdTime) / (1000*3600*24) <= 14;
         }); 
         title = "최근 등록 원생"; 
     } else if (type === 'discharged') { 
-        list = state.db.students.filter(s => s.status === '제적'); 
+        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '제적'); 
         title = "퇴원생 목록"; 
+    } else if (type === 'hidden') {
+        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '숨김');
+        title = "숨김 학생";
     } else if (type === 'risk') { 
         list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
         title = "관리필요 학생"; 
@@ -315,21 +650,28 @@ function openAdminStudentList(type) {
         const cId = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
         const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
         let riskDetails = "";
-        if (s.riskInfo) { riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:6px; background:rgba(255,71,87,0.08); padding:6px 8px; border-radius:6px; font-weight:600;">상태: ${s.riskInfo.riskTypes.join(', ')} <span style="opacity:0.7; font-weight:normal;">(${s.riskInfo.reasons.join(' · ')})</span></div>`; }
-        const actionButtons = type === 'discharged'
+        if (s.riskInfo) { riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:6px; background:rgba(var(--error-rgb),0.10); padding:6px 8px; border-radius:6px; font-weight:600;">상태: ${s.riskInfo.riskTypes.join(', ')} <span style="opacity:0.7; font-weight:normal;">(${s.riskInfo.reasons.join(' · ')})</span></div>`; }
+        const actionButtons = type === 'hidden'
             ? `
                 <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
-                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
-                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:700; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">목록숨김</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; color:var(--error); background:rgba(var(--error-rgb),0.08); border:1px solid rgba(var(--error-rgb),0.16); cursor:pointer;" onclick="purgeHiddenStudent('${s.id}')">완전 삭제</button>
                 </div>
             `
-            : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:700; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>`;
+            : type === 'discharged'
+            ? `
+                <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none; cursor:pointer;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>
+                    <button class="btn btn-primary" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; box-shadow:none; cursor:pointer;" onclick="restoreDischargedStudent('${s.id}')">복구</button>
+                    <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); cursor:pointer;" onclick="hideDischargedStudent('${s.id}')">목록숨김</button>
+                </div>
+            `
+            : `<button class="btn" style="padding:8px 12px; font-size:12px; font-weight:500; border-radius:8px; background:var(--surface-2); border:none;" onclick="closeModal(); renderStudentDetail('${s.id}')">상세 보기</button>`;
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                 <div style="flex:1; padding-right:12px;">
-                    <div style="font-weight:700; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:600; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
-                    <div style="font-size:12px; color:var(--primary); font-weight:600; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
+                    <div style="font-weight:500; font-size:14px; color:var(--text);">${apEscapeHtml(s.name)} <span style="font-size:12px; color:var(--secondary); font-weight:400; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
+                    <div style="font-size:12px; color:var(--primary); font-weight:500; margin-top:4px;">${apEscapeHtml(cName)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(s.status)} ${s.created_at ? `| 등록: ${s.created_at.split(' ')[0]}` : ''}</span></div>
                     ${riskDetails}
                 </div>
                 ${actionButtons}
@@ -337,7 +679,14 @@ function openAdminStudentList(type) {
         `;
     }).join('');
 
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:600;">조회 대상이 없습니다.</div>`}</div>`);
+    const hiddenSwitch = (type === 'discharged' || type === 'hidden') ? `
+        <div style="display:flex; gap:8px; margin:-4px -4px 12px;">
+            <button class="btn ${type === 'discharged' ? 'btn-primary' : ''}" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px;" onclick="openAdminStudentList('discharged')">퇴원생</button>
+            <button class="btn ${type === 'hidden' ? 'btn-primary' : ''}" style="flex:1; min-height:38px; font-size:12px; font-weight:500; border-radius:12px;" onclick="openAdminStudentList('hidden')">숨김 학생</button>
+        </div>
+    ` : '';
+    const gradeSummary = (type === 'discharged' || type === 'active' || type === 'new') ? adminRenderStudentGradeSummary(list) : '';
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${gradeSummary}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:400;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 
@@ -346,8 +695,8 @@ function openAdminOperationMenu() {
     const isAdmin = String(state?.auth?.role || '') === 'admin';
     const showBillingAccountingFoundationEntry = false;
     const cardStyle = 'padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); text-align:left; cursor:pointer; box-shadow:none; min-height:92px; align-items:flex-start; justify-content:flex-start; flex-direction:column; gap:6px;';
-    const titleStyle = 'font-size:14px; font-weight:800; color:var(--text); line-height:1.35;';
-    const descStyle = 'font-size:12px; font-weight:650; color:var(--secondary); line-height:1.5; margin-top:4px;';
+    const titleStyle = 'font-size:14px; font-weight:500; color:var(--text); line-height:1.35;';
+    const descStyle = 'font-size:12px; font-weight:500; color:var(--secondary); line-height:1.5; margin-top:4px;';
 
     showModal('관리', `
         <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
@@ -361,11 +710,7 @@ function openAdminOperationMenu() {
             </button>
             <button class="btn" style="${cardStyle}" onclick="openAdminStudentList('discharged')">
                 <div style="${titleStyle}">퇴원생 관리</div>
-                <div style="${descStyle}">퇴원생 조회, 복구, 목록숨김 처리</div>
-            </button>
-            <button class="btn" style="${cardStyle}" onclick="openAdminPinBatchModal()">
-                <div style="${titleStyle}">PIN 생성</div>
-                <div style="${descStyle}">전체 재원생 중 PIN 없는 재원생에게만 자동 부여</div>
+                <div style="${descStyle}">퇴원/숨김 학생 조회, 복구, 중복 생성 정리</div>
             </button>
             ${isAdmin && showBillingAccountingFoundationEntry ? `
             <button class="btn" style="${cardStyle}" onclick="if(typeof openBillingAccountingFoundationModal==='function') openBillingAccountingFoundationModal(); else toast('수납·출납 foundation 화면을 불러오지 못했습니다.', 'warn');">
@@ -374,7 +719,7 @@ function openAdminOperationMenu() {
             </button>
             ` : ''}
         </div>
-        <div style="margin-top:14px; padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
+        <div class="ap-soft-note" style="margin-top:14px; padding:12px 14px;">
             반 담당 변경과 담임 일괄 변경은 Worker 구조분리 이후 별도 연결합니다.
         </div>
     `);
@@ -395,33 +740,33 @@ function openAdminPinBatchModal() {
 
     const gradeHtml = gradeCounts.map(row => `
         <div style="display:flex; justify-content:space-between; align-items:center; min-height:32px; padding:6px 0; border-bottom:1px solid var(--border);">
-            <span style="font-size:13px; font-weight:800; color:var(--text);">${apEscapeHtml(row.grade)}</span>
-            <span style="font-size:12px; font-weight:700; color:var(--secondary);">미발급 ${row.missing}명 / 재원 ${row.total}명</span>
+            <span style="font-size:13px; font-weight:500; color:var(--text);">${apEscapeHtml(row.grade)}</span>
+            <span style="font-size:12px; font-weight:500; color:var(--secondary);">미발급 ${row.missing}명 / 재원 ${row.total}명</span>
         </div>
     `).join('');
 
     showModal('PIN 생성', `
         <div style="display:flex; flex-direction:column; gap:14px;">
-            <div style="padding:12px 14px; border-radius:14px; background:var(--surface-2); color:var(--secondary); font-size:12px; font-weight:700; line-height:1.55;">
+            <div class="ap-soft-note" style="padding:12px 14px;">
                 PIN 없는 재원생에게만 학년 규칙에 맞춰 번호를 부여합니다. 기존 PIN은 바뀌지 않습니다.
             </div>
 
             <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:14px;">
                 <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px; margin-bottom:10px;">
                     <div>
-                        <div style="font-size:13px; font-weight:800; color:var(--text); line-height:1.35;">미발급 PIN</div>
-                        <div style="font-size:12px; font-weight:700; color:var(--secondary); line-height:1.45; margin-top:2px;">대상 ${missingPins.length}명 / 재원 ${activeStudents.length}명</div>
+                        <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.35;">미발급 PIN</div>
+                        <div style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.45; margin-top:2px;">대상 ${missingPins.length}명 / 재원 ${activeStudents.length}명</div>
                     </div>
-                    <div style="font-size:20px; font-weight:800; color:var(--primary); line-height:1;">${missingPins.length}</div>
+                    <div style="font-size:20px; font-weight:500; color:var(--primary); line-height:1;">${missingPins.length}</div>
                 </div>
-                <button class="btn btn-primary" style="width:100%; min-height:52px; border-radius:14px; font-size:14px; font-weight:800; box-shadow:none;" onclick="handleAdminBatchGeneratePins()" ${missingPins.length ? '' : 'disabled'}>
+                <button class="btn btn-primary" style="width:100%; min-height:52px; border-radius:14px; font-size:14px; font-weight:500; box-shadow:none;" onclick="handleAdminBatchGeneratePins()" ${missingPins.length ? '' : 'disabled'}>
                     미발급 PIN 생성
                 </button>
             </div>
 
             <div style="border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:12px 14px;">
-                <div style="font-size:12px; font-weight:800; color:var(--secondary); margin-bottom:6px;">학년별 현황</div>
-                ${gradeHtml || `<div style="font-size:13px; color:var(--secondary); font-weight:700; text-align:center; padding:16px 0;">재원생 정보가 없습니다.</div>`}
+                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-bottom:6px;">학년별 현황</div>
+                ${gradeHtml || `<div style="font-size:13px; color:var(--secondary); font-weight:500; text-align:center; padding:16px 0;">재원생 정보가 없습니다.</div>`}
             </div>
         </div>
     `);
@@ -469,7 +814,7 @@ function adminTeacherRoleLabel(role) {
 }
 
 async function openAdminTeacherAccountManage() {
-    showModal('선생님 계정', `<div style="text-align:center; padding:36px; color:var(--secondary); font-size:13px; font-weight:700;">선생님 계정을 불러오는 중입니다.</div>`);
+    showModal('선생님 계정', `<div style="text-align:center; padding:36px; color:var(--secondary); font-size:13px; font-weight:500;">선생님 계정을 불러오는 중입니다.</div>`);
 
     try {
         const data = await api.get('teachers');
@@ -495,28 +840,28 @@ function renderAdminTeacherAccountManage() {
         const safeId = apEscapeHtml(String(t.id || ''));
         const role = String(t.role || 'teacher');
         const roleColor = role === 'admin' ? 'var(--error)' : 'var(--primary)';
-        const roleBg = role === 'admin' ? 'rgba(255,71,87,0.08)' : 'rgba(26,92,255,0.08)';
+        const roleBg = role === 'admin' ? 'rgba(var(--error-rgb),0.10)' : 'var(--primary-soft)';
         return `
             <div style="padding:14px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px;">
                 <div style="min-width:0; flex:1;">
                     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                        <b style="font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(t.name || '')}</b>
-                        <span style="font-size:11px; font-weight:800; color:${roleColor}; background:${roleBg}; padding:3px 8px; border-radius:999px;">${adminTeacherRoleLabel(role)}</span>
+                        <span style="font-size:14px; color:var(--text); line-height:1.35;; font-weight:500;">${apEscapeHtml(t.name || '')}</span>
+                        <span style="font-size:11px; font-weight:500; color:${roleColor}; background:${roleBg}; padding:3px 8px; border-radius:999px;">${adminTeacherRoleLabel(role)}</span>
                     </div>
-                    <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:4px; line-height:1.4;">ID ${apEscapeHtml(t.login_id || '')}</div>
+                    <div style="font-size:12px; color:var(--secondary); font-weight:500; margin-top:4px; line-height:1.4;">ID ${apEscapeHtml(t.login_id || '')}</div>
                 </div>
                 <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;">
-                    <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); border:none;" onclick="openAdminEditTeacherModal('${safeId}')">수정</button>
-                    <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(255,165,2,0.10); color:var(--warning); border:none;" onclick="openAdminResetTeacherPasswordModal('${safeId}')">PW 초기화</button>
+                    <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none;" onclick="openAdminEditTeacherModal('${safeId}')">수정</button>
+                    <button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px; background:rgba(var(--warning-rgb),0.12); color:var(--warning); border:none;" onclick="openAdminResetTeacherPasswordModal('${safeId}')">PW 초기화</button>
                 </div>
             </div>
         `;
     }).join('');
 
     showModal('선생님 계정', `
-        <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800; margin-bottom:14px;" onclick="openAdminCreateTeacherModal()">새 선생님 계정</button>
+        <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:500; margin-bottom:14px;" onclick="openAdminCreateTeacherModal()">새 선생님 계정</button>
         <div style="max-height:58vh; overflow-y:auto; padding-right:4px;">
-            ${rows || `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:700;">등록된 선생님 계정이 없습니다.</div>`}
+            ${rows || `<div style="text-align:center; padding:28px; color:var(--secondary); font-size:13px; font-weight:500;">등록된 선생님 계정이 없습니다.</div>`}
         </div>
     `);
 }
@@ -531,8 +876,8 @@ function openAdminCreateTeacherModal() {
                 <option value="teacher">선생님</option>
                 <option value="admin">원장</option>
             </select>
-            <div style="font-size:12px; color:var(--secondary); font-weight:700; line-height:1.5; background:var(--surface-2); padding:10px 12px; border-radius:12px;">계정 생성 후 담당반 배정은 반 관리/담당 변경 메뉴에서 별도로 진행합니다.</div>
-            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800;" onclick="handleAdminCreateTeacher()">생성</button>
+            <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; background:var(--surface-2); padding:10px 12px; border-radius:12px;">계정 생성 후 담당반 배정은 반 관리/담당 변경 메뉴에서 별도로 진행합니다.</div>
+            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:500;" onclick="handleAdminCreateTeacher()">생성</button>
         </div>
     `);
 }
@@ -566,13 +911,13 @@ function openAdminEditTeacherModal(teacherId) {
 
     showModal('선생님 계정 수정', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:12px; color:var(--secondary); font-weight:800; padding:0 4px;">로그인 ID: ${apEscapeHtml(teacher.login_id || '')}</div>
+            <div style="font-size:12px; color:var(--secondary); font-weight:500; padding:0 4px;">로그인 ID: ${apEscapeHtml(teacher.login_id || '')}</div>
             <input id="admin-edit-teacher-name" class="btn" value="${apEscapeHtml(teacher.name || '')}" placeholder="이름" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
             <select id="admin-edit-teacher-role" class="btn" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
                 <option value="teacher" ${String(teacher.role || '') !== 'admin' ? 'selected' : ''}>선생님</option>
                 <option value="admin" ${String(teacher.role || '') === 'admin' ? 'selected' : ''}>원장</option>
             </select>
-            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800;" onclick="handleAdminUpdateTeacher('${apEscapeHtml(String(teacher.id || ''))}')">저장</button>
+            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:500;" onclick="handleAdminUpdateTeacher('${apEscapeHtml(String(teacher.id || ''))}')">저장</button>
         </div>
     `);
 }
@@ -602,9 +947,9 @@ function openAdminResetTeacherPasswordModal(teacherId) {
 
     showModal('비밀번호 초기화', `
         <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:13px; color:var(--text); font-weight:800; line-height:1.5; background:var(--surface-2); padding:12px; border-radius:12px;">${apEscapeHtml(teacher.name || '')} 선생님의 비밀번호를 새 값으로 초기화합니다.</div>
+            <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.5; background:var(--surface-2); padding:12px; border-radius:12px;">${apEscapeHtml(teacher.name || '')} 선생님의 비밀번호를 새 값으로 초기화합니다.</div>
             <input id="admin-reset-teacher-password" type="password" class="btn" placeholder="새 비밀번호" style="width:100%; text-align:left; background:var(--surface-2); border:none;">
-            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:800;" onclick="handleAdminResetTeacherPassword('${apEscapeHtml(String(teacher.id || ''))}')">초기화</button>
+            <button class="btn btn-primary" style="width:100%; min-height:46px; border-radius:14px; font-size:13px; font-weight:500;" onclick="handleAdminResetTeacherPassword('${apEscapeHtml(String(teacher.id || ''))}')">초기화</button>
         </div>
     `);
 }
@@ -637,10 +982,12 @@ function adminNormalizeStatus(value) {
 }
 
 function adminGetStudentClassMap(studentId) {
+    if (typeof apmsGetClassStudentMap === 'function') return apmsGetClassStudentMap(studentId);
     return (state.db.class_students || []).find(m => String(m.student_id) === String(studentId)) || null;
 }
 
 function adminGetClassById(classId) {
+    if (typeof apmsGetClassById === 'function') return apmsGetClassById(classId);
     return (state.db.classes || []).find(c => String(c.id) === String(classId)) || null;
 }
 
@@ -650,6 +997,7 @@ function adminGetStudentClass(studentId) {
 }
 
 function adminGetClassStudentIds(classId) {
+    if (typeof apmsGetClassStudentIds === 'function') return apmsGetClassStudentIds(classId);
     return (state.db.class_students || [])
         .filter(m => String(m.class_id) === String(classId))
         .map(m => String(m.student_id));
@@ -670,7 +1018,7 @@ function adminIsRecentStudent(student, todayTime, days = 30) {
     const createdTime = apParseLocalDateTime(createdDate);
     if (createdTime === null) return false;
     const diff = (todayTime - createdTime) / (1000 * 60 * 60 * 24);
-    return diff >= 0 && diff <= days;
+    return diff >= 0 && diff < days;
 }
 
 function adminBuildOverviewData(todayStr, todayTime) {
@@ -682,10 +1030,9 @@ function adminBuildOverviewData(todayStr, todayTime) {
     const dischargedStudents = students.filter(s => adminNormalizeStatus(s.status) === '제적');
     const leaveStudents = students.filter(s => adminNormalizeStatus(s.status) === '휴원');
     const recentStudents = activeStudents
-        .filter(s => adminIsRecentStudent(s, todayTime, 30))
+        .filter(s => adminIsRecentStudent(s, todayTime, 14))
         .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 
-    const missingPinStudents = activeStudents.filter(s => !String(s.student_pin || '').trim());
     const unassignedStudents = activeStudents.filter(s => {
         const map = adminGetStudentClassMap(s.id);
         if (!map) return true;
@@ -699,13 +1046,11 @@ function adminBuildOverviewData(todayStr, todayTime) {
         return !teacherName || teacherName === '담당';
     });
 
-    const cleanupStudents = students.filter(s => {
+    const cleanupStudents = activeStudents.filter(s => {
         const map = adminGetStudentClassMap(s.id);
         if (!map) return false;
         const cls = adminGetClassById(map.class_id);
-        const status = adminNormalizeStatus(s.status);
-        if (status !== '재원') return true;
-        return !!cls && Number(cls.is_active) === 0;
+        return !cls || Number(cls.is_active) === 0;
     });
 
     return {
@@ -715,7 +1060,6 @@ function adminBuildOverviewData(todayStr, todayTime) {
         dischargedStudents,
         leaveStudents,
         recentStudents,
-        missingPinStudents,
         unassignedStudents,
         teacherlessClasses,
         cleanupStudents
@@ -732,10 +1076,16 @@ function adminOpenStudentEditOrDetail(studentId) {
     else toast('학생 화면을 불러오지 못했습니다.', 'warn');
 }
 
+function adminOpenDashboardStudentDetail(studentId) {
+    if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'dashboard' });
+    if (typeof renderStudentDetail === 'function') return renderStudentDetail(studentId);
+    toast('학생 화면을 불러오지 못했습니다.', 'warn');
+}
+
 function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     const colorMap = {
-        primary: 'var(--primary)',
-        success: 'var(--success)',
+        primary: 'var(--text)',
+        success: 'var(--text)',
         warning: 'var(--warning)',
         error: 'var(--error)',
         secondary: 'var(--secondary)',
@@ -744,10 +1094,10 @@ function renderAdminMiniMetric(label, value, tone = 'text', onclick = '') {
     const color = colorMap[tone] || colorMap.text;
     const clickAttr = onclick ? ` onclick="${onclick}"` : '';
     const cursor = onclick ? 'cursor:pointer;' : '';
+    const roleAttr = onclick ? ' role="button" tabindex="0"' : '';
     return `
-        <div class="ap-admin-mini-metric"${clickAttr} style="${cursor} min-height:62px; padding:11px 8px; border-radius:14px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box;">
-            <div style="font-size:18px; font-weight:700; color:${color}; line-height:1;">${value}</div>
-            <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:6px; line-height:1.25; white-space:nowrap;">${label}</div>
+        <div class="ap-admin-mini-metric"${roleAttr}${clickAttr} style="${cursor} min-height:44px; padding:0 10px; border-radius:12px; background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; box-shadow:none;">
+            <div style="font-size:13px; font-weight:500; color:${color}; line-height:1.25; white-space:nowrap;">${label}</div>
         </div>
     `;
 }
@@ -756,11 +1106,11 @@ function renderAdminStudentOverviewPanel(data) {
     return `
         <div class="ap-admin-section" style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘 운영</h3>
+                <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘 운영</h3>
             </div>
-            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:18px; background:var(--surface-2);">
-                ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentList('active')")}
-                ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentList('new')")}
+            <div class="ap-admin-overview-grid" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:4px; border:1px solid var(--border); border-radius:16px; background:var(--surface-2);">
+                ${renderAdminMiniMetric('재원', data.activeStudents.length, 'primary', "openAdminStudentGradeModal('active')")}
+                ${renderAdminMiniMetric('최근 등록', data.recentStudents.length, 'success', "openAdminStudentGradeModal('new')")}
                 ${renderAdminMiniMetric('퇴원', data.dischargedStudents.length, 'secondary', "openAdminStudentList('discharged')")}
                 ${renderAdminMiniMetric('휴원', data.leaveStudents.length, 'warning', "openAdminLeaveStudentList()")}
             </div>
@@ -771,7 +1121,6 @@ function renderAdminStudentOverviewPanel(data) {
 function renderAdminNeedCheckPanel(data) {
     const items = [
         { label: '반 배정 필요', value: data.unassignedStudents.length, action: 'openAdminUnassignedStudentList()' },
-        { label: 'PIN 미발급', value: data.missingPinStudents.length, action: 'openAdminPinBatchModal()' },
         { label: '담당 선생님 미지정', value: data.teacherlessClasses.length, unit: '개', action: 'openAdminTeacherlessClassList()' },
         { label: '반 정리 필요', value: data.cleanupStudents.length, action: 'openAdminClassCleanupList()' }
     ];
@@ -779,15 +1128,15 @@ function renderAdminNeedCheckPanel(data) {
     return `
         <div class="ap-admin-section" style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">확인 필요</h3>
+                <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">확인 필요</h3>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px;">
+            <div class="ap-admin-check-grid" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;">
                 ${items.map(item => {
                     const hasIssue = Number(item.value || 0) > 0;
                     return `
-                        <button class="btn ap-admin-check-item" style="min-height:52px; padding:0 10px; border-radius:16px; border:1px solid ${hasIssue ? 'rgba(255,71,87,0.18)' : 'var(--border)'}; background:${hasIssue ? 'rgba(255,71,87,0.045)' : 'var(--surface)'}; box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:8px;" onclick="${item.action}">
-                            <span style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text); font-size:12px; font-weight:700;">${item.label}</span>
-                            <span style="flex-shrink:0; font-size:13px; font-weight:800; color:${hasIssue ? 'var(--error)' : 'var(--secondary)'};">${item.value}${item.unit || '명'}</span>
+                        <button class="btn ap-admin-check-item" style="min-height:52px; padding:0 10px; border-radius:16px; border:1px solid ${hasIssue ? 'rgba(var(--error-rgb),0.20)' : 'var(--border)'}; background:${hasIssue ? 'rgba(255,71,87,0.045)' : 'var(--surface)'}; box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:8px;" onclick="${item.action}">
+                            <span style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text); font-size:12px; font-weight:500;">${item.label}</span>
+                            <span style="flex-shrink:0; font-size:13px; font-weight:500; color:${hasIssue ? 'var(--error)' : 'var(--secondary)'};">${item.value}${item.unit || '명'}</span>
                         </button>
                     `;
                 }).join('')}
@@ -797,26 +1146,24 @@ function renderAdminNeedCheckPanel(data) {
 }
 
 function renderAdminNewStudentPanel(data) {
-    const list = data.recentStudents.slice(0, 4);
+    const list = Array.isArray(data.recentStudents) ? data.recentStudents.slice(0, 10) : [];
     const rows = list.map(s => {
         const cls = adminGetStudentClass(s.id);
         const days = adminGetDaysSince(adminGetCreatedDateText(s), data.todayTime);
         const attCount = (state.db.attendance_history || state.db.attendance || []).filter(a => String(a.student_id) === String(s.id)).length;
         const hwCount = (state.db.homework_history || state.db.homework || []).filter(h => String(h.student_id) === String(s.id)).length;
         const examCount = (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(s.id)).length;
-        const hasPin = !!String(s.student_pin || '').trim();
         const hasClass = !!cls;
         const recordText = examCount > 0 ? `시험 ${examCount}회` : (attCount + hwCount > 0 ? `기록 ${attCount + hwCount}회` : '기록 없음');
         return `
-            <div onclick="closeModal(true); renderStudentDetail('${s.id}')" style="height:46px; min-height:46px; padding:0 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:10px; cursor:pointer; box-sizing:border-box;">
+            <div class="ap-admin-recent-student-row" onclick="adminOpenDashboardStudentDetail('${s.id}')" style="height:46px; min-height:46px; padding:0 12px; display:flex; align-items:center; justify-content:space-between; gap:10px; cursor:pointer; box-sizing:border-box;">
                 <div style="min-width:0; display:flex; align-items:center; gap:8px;">
-                    <b style="font-size:13px; color:var(--text); white-space:nowrap;">${apEscapeHtml(s.name)}</b>
-                    <span style="font-size:11px; color:var(--secondary); font-weight:700; white-space:nowrap;">등록 ${days || '-'}일차</span>
+                    <span style="font-size:13px; color:var(--text); white-space:nowrap;; font-weight:500;">${apEscapeHtml(s.name)}</span>
+                    <span style="font-size:11px; color:var(--secondary); font-weight:500; white-space:nowrap;">등록 ${days || '-'}일차</span>
                 </div>
                 <div style="display:flex; align-items:center; gap:5px; flex-shrink:0; min-width:0;">
-                    <span style="font-size:10.5px; font-weight:800; color:${hasPin ? 'var(--success)' : 'var(--error)'}; background:${hasPin ? 'rgba(0,208,132,0.08)' : 'rgba(255,71,87,0.08)'}; padding:3px 6px; border-radius:999px; white-space:nowrap;">${hasPin ? 'PIN 완료' : 'PIN 필요'}</span>
-                    <span style="font-size:10.5px; font-weight:800; color:${hasClass ? 'var(--primary)' : 'var(--error)'}; background:${hasClass ? 'rgba(26,92,255,0.08)' : 'rgba(255,71,87,0.08)'}; padding:3px 6px; border-radius:999px; white-space:nowrap;">${hasClass ? apEscapeHtml(cls.name) : '반 배정 필요'}</span>
-                    <span style="font-size:10.5px; font-weight:800; color:var(--secondary); background:var(--surface-2); padding:3px 6px; border-radius:999px; white-space:nowrap;">${recordText}</span>
+                    <span style="font-size:10.5px; font-weight:500; color:${hasClass ? 'var(--primary)' : 'var(--error)'}; background:${hasClass ? 'var(--primary-soft)' : 'rgba(var(--error-rgb),0.10)'}; padding:3px 6px; border-radius:999px; white-space:nowrap;">${hasClass ? apEscapeHtml(cls.name) : '반 배정 필요'}</span>
+                    <span style="font-size:10.5px; font-weight:500; color:var(--secondary); background:var(--surface-2); padding:3px 6px; border-radius:999px; white-space:nowrap;">${recordText}</span>
                 </div>
             </div>
         `;
@@ -825,11 +1172,330 @@ function renderAdminNewStudentPanel(data) {
     return `
         <div class="ap-admin-section" style="margin-bottom:28px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">최근 등록 원생</h3>
-                <span style="font-size:12px; font-weight:700; color:var(--secondary);">최근 30일 ${data.recentStudents.length}명</span>
+                <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">최근 등록 원생</h3>
+                <span style="font-size:12px; font-weight:400; color:var(--secondary);">최근 14일 ${data.recentStudents.length}명</span>
+            </div>
+            <div class="card ap-admin-recent-student-grid" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
+                ${rows || `<div style="height:52px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">최근 등록 원생이 없습니다.</div>`}
+            </div>
+        </div>
+    `;
+}
+
+
+function adminGetGradeLabel(student) {
+    const text = String((student && (student.grade || student.school_grade || student.memo)) || '').trim();
+    if (/중\s*1|중1/.test(text)) return '중1';
+    if (/중\s*2|중2/.test(text)) return '중2';
+    if (/중\s*3|중3/.test(text)) return '중3';
+    if (/고\s*1|고1/.test(text)) return '고1';
+    if (/고\s*2|고2/.test(text)) return '고2';
+    if (/고\s*3|고3/.test(text)) return '고3';
+    return text || '기타';
+}
+
+function adminGetGradeOrder(label) {
+    const order = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
+    const idx = order.indexOf(String(label || ''));
+    return idx >= 0 ? idx : 98;
+}
+
+function adminGetStudentListByType(type) {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    const students = state.db.students || [];
+    const activeStudents = students.filter(s => adminNormalizeStatus(s.status) === '재원');
+    if (type === 'new') {
+        return activeStudents
+            .filter(s => adminIsRecentStudent(s, todayTime, 14))
+            .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+    }
+    if (type === 'leave') return students.filter(s => adminNormalizeStatus(s.status) === '휴원');
+    if (type === 'discharged') return students.filter(s => adminNormalizeStatus(s.status) === '제적');
+    return activeStudents.sort((a, b) => adminGetGradeOrder(adminGetGradeLabel(a)) - adminGetGradeOrder(adminGetGradeLabel(b)) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+}
+
+function adminRenderStudentGradeSummary(list) {
+    const students = Array.isArray(list) ? list : [];
+    const grades = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
+    const gradeCounts = {};
+    students.forEach(s => {
+        const grade = adminGetGradeLabel(s);
+        gradeCounts[grade] = (gradeCounts[grade] || 0) + 1;
+    });
+    const chips = [
+        `<span style="min-height:30px; padding:6px 10px; border-radius:999px; background:var(--primary-soft); color:var(--primary); font-size:12px; font-weight:500; display:flex; align-items:center;">총 ${students.length}명</span>`,
+        ...grades.map(g => {
+            const count = Number(gradeCounts[g] || 0);
+            if (count === 0) return '';
+            return `<span style="min-height:30px; padding:6px 10px; border-radius:999px; background:var(--surface); border:1px solid var(--border); color:var(--text); font-size:12px; font-weight:500; display:flex; align-items:center;">${apEscapeHtml(g)} ${count}명</span>`;
+        })
+    ].join('');
+    return `<div style="display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px 0;">${chips}</div>`;
+}
+
+function adminEnsureStudentGradeModalState(type) {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.adminStudentGradeModal || state.ui.adminStudentGradeModal.type !== type) {
+        state.ui.adminStudentGradeModal = { type, grade: '전체', keyword: '' };
+    }
+    return state.ui.adminStudentGradeModal;
+}
+
+function openAdminStudentGradeModal(type) {
+    adminEnsureStudentGradeModalState(type || 'active');
+    renderAdminStudentGradeModal();
+}
+
+function adminSetStudentGradeModalGrade(grade) {
+    const modal = adminEnsureStudentGradeModalState(state.ui?.adminStudentGradeModal?.type || 'active');
+    modal.grade = String(grade || '전체');
+    renderAdminStudentGradeModal();
+}
+
+function adminHandleStudentGradeModalSearch(value) {
+    const modal = adminEnsureStudentGradeModalState(state.ui?.adminStudentGradeModal?.type || 'active');
+    modal.keyword = String(value || '').trim();
+    const body = document.getElementById('admin-student-grade-modal-body');
+    if (body) body.innerHTML = renderAdminStudentGradeModalBody();
+}
+
+function renderAdminStudentGradeModalBody() {
+    const modal = adminEnsureStudentGradeModalState(state.ui?.adminStudentGradeModal?.type || 'active');
+    const list = adminGetStudentListByType(modal.type);
+    const keyword = adminNormalizeSearchValue(modal.keyword || '');
+    const grades = ['전체', '중1', '중2', '중3', '고1', '고2', '고3', '기타'];
+    const gradeCounts = {};
+    list.forEach(s => {
+        const grade = adminGetGradeLabel(s);
+        gradeCounts[grade] = (gradeCounts[grade] || 0) + 1;
+    });
+    const filtered = list.filter(s => {
+        const grade = adminGetGradeLabel(s);
+        const cls = adminGetStudentClass(s.id);
+        if (modal.grade !== '전체' && grade !== modal.grade) return false;
+        if (!keyword) return true;
+        return adminSearchIncludes([s.name, s.school_name, s.grade, s.status, s.phone, cls && cls.name], modal.keyword);
+    });
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    const chips = grades.map(g => {
+        const count = g === '전체' ? list.length : Number(gradeCounts[g] || 0);
+        if (g !== '전체' && count === 0) return '';
+        const active = modal.grade === g;
+        return `<button class="btn" style="min-height:34px; padding:6px 10px; font-size:12px; font-weight:500; border-radius:999px; border:1px solid ${active ? 'rgba(var(--primary-rgb),0.25)' : 'var(--border)'}; background:${active ? 'var(--primary-soft)' : 'var(--surface)'}; color:${active ? 'var(--primary)' : 'var(--text)'}; box-shadow:none;" onclick="adminSetStudentGradeModalGrade('${apEscapeHtml(g)}')">${apEscapeHtml(g)} ${count}</button>`;
+    }).join('');
+    const rows = filtered.map(s => {
+        const cls = adminGetStudentClass(s.id);
+        const grade = adminGetGradeLabel(s);
+        const days = adminGetDaysSince(adminGetCreatedDateText(s), todayTime);
+        const subText = [cls ? cls.name : '미배정', s.school_name || '', grade].filter(Boolean).join(' · ');
+        const recentText = modal.type === 'new' ? `<span style="font-size:11px; font-weight:500; color:var(--secondary); background:var(--surface-2); padding:3px 7px; border-radius:999px; white-space:nowrap;">등록 ${days || '-'}일차</span>` : '';
+        return `
+            <div style="padding:13px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px; background:var(--surface);">
+                <button class="btn" style="flex:1; min-width:0; padding:0; border:none; background:transparent; box-shadow:none; text-align:left; display:block;" onclick="adminOpenStudentEditOrDetail('${apEscapeHtml(String(s.id || ''))}')">
+                    <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(s.name || '')}</div>
+                    <div style="font-size:12px; font-weight:400; color:var(--secondary); margin-top:4px; line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(subText)}</div>
+                </button>
+                ${recentText}
+            </div>
+        `;
+    }).join('');
+    return `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <input type="search" autocomplete="off" value="${apEscapeHtml(modal.keyword || '')}" placeholder="학생 이름 검색" oninput="adminHandleStudentGradeModalSearch(this.value)" style="width:100%; height:42px; border:1px solid var(--border); border-radius:14px; background:var(--surface); color:var(--text); padding:0 13px; font-size:13px; font-weight:500; box-sizing:border-box;">
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">${chips}</div>
+            <div style="font-size:12px; font-weight:400; color:var(--secondary); padding:0 2px;">총 ${filtered.length}명</div>
+            <div style="max-height:54vh; overflow-y:auto; border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
+                ${rows || `<div style="height:72px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">조회 대상이 없습니다.</div>`}
+            </div>
+        </div>
+    `;
+}
+
+function renderAdminStudentGradeModal() {
+    const modal = adminEnsureStudentGradeModalState(state.ui?.adminStudentGradeModal?.type || 'active');
+    const title = modal.type === 'new' ? '최근 등록' : '재원';
+    showModal(title, `<div id="admin-student-grade-modal-body">${renderAdminStudentGradeModalBody()}</div>`);
+}
+
+function adminGetConsultationDate(row) {
+    return String(row?.date || row?.consultation_date || row?.created_at || '').slice(0, 10);
+}
+
+function adminConsultationSortValue(row) {
+    return String(row?.date || row?.consultation_date || row?.created_at || '').replace(/[^0-9]/g, '');
+}
+
+function adminGetStudentById(studentId) {
+    return (state.db.students || []).find(s => String(s.id) === String(studentId)) || null;
+}
+
+function adminGetConsultationRows() {
+    return (state.db.consultations || [])
+        .slice()
+        .sort((a, b) => String(adminConsultationSortValue(b)).localeCompare(String(adminConsultationSortValue(a))) || String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(b.id || '').localeCompare(String(a.id || '')));
+}
+
+function adminGetRecentConsultationRows(days = 14) {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    return adminGetConsultationRows().filter(row => {
+        const date = adminGetConsultationDate(row);
+        const time = apParseLocalDateTime(date);
+        if (time === null) return false;
+        const diff = (todayTime - time) / (1000 * 60 * 60 * 24);
+        return diff >= 0 && diff <= days;
+    });
+}
+
+function adminConsultationRowStudentName(row) {
+    const student = adminGetStudentById(row?.student_id);
+    return (student && student.name) || row?.student_name_snapshot || '학생 확인';
+}
+
+function adminRecentConsultationPreviewText(row) {
+    const content = String(row?.content || '').replace(/\s+/g, ' ').trim();
+    return content || '상담 내용 없음';
+}
+
+function adminRenderConsultationHistoryRows(rows) {
+    const list = Array.isArray(rows) ? rows : [];
+    return list.map(row => {
+        const date = adminGetConsultationDate(row) || '-';
+        const type = String(row?.type || '상담').trim() || '상담';
+        const content = String(row?.content || '').trim();
+        const nextAction = String(row?.next_action || row?.nextAction || '').trim();
+        return `
+            <div style="padding:14px 12px; border-bottom:1px solid var(--border); background:var(--surface);">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">
+                    <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.35;">${apEscapeHtml(date)} · ${apEscapeHtml(type)}</div>
+                </div>
+                <div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.55; white-space:pre-wrap;">${apEscapeHtml(content || '내용 없음')}</div>
+                ${nextAction ? `<div style="margin-top:8px; font-size:12px; font-weight:400; color:var(--secondary); line-height:1.45; white-space:pre-wrap;">다음 조치 · ${apEscapeHtml(nextAction)}</div>` : ''}
+            </div>
+        `;
+    }).join('') || `<div style="height:72px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">상담 기록이 없습니다.</div>`;
+}
+
+function openAdminStudentConsultationHistory(studentId) {
+    const sid = String(studentId || '').trim();
+    const student = adminGetStudentById(sid);
+    const rows = adminGetConsultationRows().filter(row => String(row.student_id || '') === sid);
+    const studentName = student ? student.name : '학생 확인';
+    const detailBtn = student ? `<button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:1px solid var(--border); box-shadow:none;" onclick="adminOpenStudentEditOrDetail('${apEscapeHtml(sid)}')">학생 상세</button>` : '';
+    showModal(`상담 이력 · ${studentName}`, `
+        <div style="display:flex; flex-direction:column; gap:10px; margin:-4px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:0 2px;">
+                <div style="font-size:12px; font-weight:400; color:var(--secondary);">총 ${rows.length}건</div>
+                ${detailBtn}
+            </div>
+            <div style="max-height:58vh; overflow-y:auto; border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
+                ${adminRenderConsultationHistoryRows(rows)}
+            </div>
+        </div>
+    `);
+}
+
+function renderAdminRecentConsultationPanel() {
+    const recentRows = adminGetRecentConsultationRows(14);
+    const byStudent = [];
+    const seen = new Set();
+    recentRows.forEach(row => {
+        const sid = String(row.student_id || '').trim();
+        if (!sid || seen.has(sid)) return;
+        seen.add(sid);
+        byStudent.push(row);
+    });
+    const rows = byStudent.slice(0, 8).map(row => {
+        const sid = String(row.student_id || '').trim();
+        const student = adminGetStudentById(sid);
+        const cls = student ? adminGetStudentClass(student.id) : null;
+        const type = String(row?.type || '상담').trim() || '상담';
+        const nextAction = String(row?.next_action || row?.nextAction || '').trim();
+        const preview = adminRecentConsultationPreviewText(row);
+        const meta = [adminGetConsultationDate(row), cls && cls.name].filter(Boolean).join(' · ');
+        return `
+            <button class="btn" style="width:100%; min-height:68px; padding:10px 12px; border:none; border-bottom:1px solid var(--border); border-radius:0; background:var(--surface); box-shadow:none; display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:center; gap:12px; text-align:left;" onclick="openAdminStudentConsultationHistory('${apEscapeHtml(sid)}')">
+                <span style="min-width:0; display:flex; flex-direction:column; gap:4px;">
+                    <span style="display:flex; align-items:center; gap:7px; min-width:0;">
+                        <span style="font-size:13px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
+                        <span style="flex-shrink:0; font-size:10px; font-weight:700; color:var(--primary); background:var(--primary-soft); border:1px solid rgba(var(--primary-rgb),0.14); border-radius:999px; padding:2px 7px;">${apEscapeHtml(type)}</span>
+                    </span>
+                    <span style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.45; overflow:hidden; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical;">${apEscapeHtml(preview)}</span>
+                </span>
+                <span style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:5px; max-width:210px;">
+                    <span style="font-size:11px; font-weight:500; color:var(--secondary); white-space:nowrap;">${apEscapeHtml(meta)}</span>
+                    ${nextAction ? `<span style="max-width:100%; font-size:11px; font-weight:700; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:3px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">다음 조치 · ${apEscapeHtml(nextAction)}</span>` : '<span style="font-size:11px; font-weight:500; color:var(--secondary);">후속 없음</span>'}
+                </span>
+            </button>
+        `;
+    }).join('');
+
+    return `
+        <div class="ap-admin-section" style="margin-bottom:28px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+                <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">최근 상담</h3>
+                <button class="btn" style="min-height:30px; padding:5px 10px; font-size:11px; font-weight:500; border-radius:999px; background:var(--surface-2); border:1px solid var(--border); box-shadow:none;" onclick="openAdminConsultationCenter()">상담 전체 보기</button>
             </div>
             <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                ${rows || `<div style="height:52px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:700;">최근 등록 원생이 없습니다.</div>`}
+                ${rows || `<div style="height:54px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">최근 상담 기록이 없습니다.</div>`}
+            </div>
+        </div>
+    `;
+}
+
+function openAdminConsultationCenter() {
+    if (!state.ui) state.ui = {};
+    state.ui.adminConsultationSearchKeyword = '';
+    showModal('상담 전체 보기', `<div id="admin-consultation-center-body">${renderAdminConsultationCenterBody('')}</div>`);
+}
+
+function handleAdminConsultationSearchInput(value) {
+    if (!state.ui) state.ui = {};
+    state.ui.adminConsultationSearchKeyword = String(value || '').trim();
+    const body = document.getElementById('admin-consultation-center-body');
+    if (body) body.innerHTML = renderAdminConsultationCenterBody(state.ui.adminConsultationSearchKeyword);
+}
+
+function renderAdminConsultationCenterBody(keyword) {
+    const key = String(keyword || '').trim();
+    const baseRows = key ? adminGetConsultationRows() : adminGetRecentConsultationRows(14);
+    const filtered = baseRows.filter(row => {
+        if (!key) return true;
+        const student = adminGetStudentById(row.student_id);
+        const cls = student ? adminGetStudentClass(student.id) : null;
+        return adminSearchIncludes([
+            student && student.name,
+            student && student.school_name,
+            student && student.grade,
+            cls && cls.name,
+            row.type,
+            row.content,
+            row.next_action
+        ], key);
+    }).slice(0, 30);
+    const rows = filtered.map(row => {
+        const sid = String(row.student_id || '').trim();
+        const student = adminGetStudentById(sid);
+        const cls = student ? adminGetStudentClass(student.id) : null;
+        const meta = [adminGetConsultationDate(row), cls && cls.name, row.type].filter(Boolean).join(' · ');
+        return `
+            <button class="btn" style="min-height:52px; padding:10px 12px; border:none; border-bottom:1px solid var(--border); border-radius:0; background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:12px;" onclick="openAdminStudentConsultationHistory('${apEscapeHtml(sid)}')">
+                <span style="min-width:0; text-align:left;">
+                    <span style="display:block; font-size:13px; font-weight:500; color:var(--text); line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
+                    <span style="display:block; font-size:11px; font-weight:500; color:var(--secondary); margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(meta)}</span>
+                </span>
+                <span style="flex-shrink:0; font-size:11px; font-weight:500; color:var(--primary); background:var(--primary-soft); padding:4px 8px; border-radius:999px;">보기</span>
+            </button>
+        `;
+    }).join('');
+    return `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <input type="search" autocomplete="off" value="${apEscapeHtml(key)}" placeholder="학생 이름 검색" oninput="handleAdminConsultationSearchInput(this.value)" style="width:100%; height:42px; border:1px solid var(--border); border-radius:14px; background:var(--surface); color:var(--text); padding:0 13px; font-size:13px; font-weight:500; box-sizing:border-box;">
+            <div style="font-size:12px; font-weight:400; color:var(--secondary); padding:0 2px;">${key ? '검색 결과' : '최근 2주'} ${filtered.length}건</div>
+            <div style="max-height:56vh; overflow-y:auto; border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
+                ${rows || `<div style="height:72px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">상담 기록이 없습니다.</div>`}
             </div>
         </div>
     `;
@@ -837,7 +1503,7 @@ function renderAdminNewStudentPanel(data) {
 
 function openAdminLeaveStudentList() {
     const list = (state.db.students || []).filter(s => adminNormalizeStatus(s.status) === '휴원');
-    renderAdminSimpleStudentList('휴원생 목록', list);
+    renderAdminSimpleStudentList('휴원생 목록', list, false, true);
 }
 
 function openAdminUnassignedStudentList() {
@@ -852,12 +1518,11 @@ function openAdminUnassignedStudentList() {
 
 function openAdminClassCleanupList() {
     const list = (state.db.students || []).filter(s => {
+        if (adminNormalizeStatus(s.status) !== '재원') return false;
         const map = adminGetStudentClassMap(s.id);
         if (!map) return false;
         const cls = adminGetClassById(map.class_id);
-        const status = adminNormalizeStatus(s.status);
-        if (status !== '재원') return true;
-        return !!cls && Number(cls.is_active) === 0;
+        return !cls || Number(cls.is_active) === 0;
     });
     renderAdminSimpleStudentList('반 정리 필요', list, true);
 }
@@ -872,36 +1537,37 @@ function openAdminTeacherlessClassList() {
     const rows = classes.map(c => `
         <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px; background:var(--surface);">
             <div style="min-width:0;">
-                <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.35;">${apEscapeHtml(c.name || '')}</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:3px;">${apEscapeHtml(c.grade || '')} · 담당 선생님 미지정</div>
+                <div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35;">${apEscapeHtml(c.name || '')}</div>
+                <div style="font-size:12px; font-weight:400; color:var(--secondary); margin-top:3px;">${apEscapeHtml(c.grade || '')} · 담당 선생님 미지정</div>
             </div>
-            <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); border:none;" onclick="closeModal(true); if(typeof openClassManageModal==='function') openClassManageModal(); else toast('반 관리 화면을 불러오지 못했습니다.', 'warn');">반 관리</button>
+            <button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none;" onclick="closeModal(true); if(typeof openClassManageModal==='function') openClassManageModal(); else toast('반 관리 화면을 불러오지 못했습니다.', 'warn');">반 관리</button>
         </div>
     `).join('');
 
-    showModal(`담당 선생님 미지정 (${classes.length}개)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:700;">확인할 반이 없습니다.</div>`}</div>`);
+    showModal(`담당 선생님 미지정 (${classes.length}개)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:500;">확인할 반이 없습니다.</div>`}</div>`);
 }
 
-function renderAdminSimpleStudentList(title, list, editable = false) {
+function renderAdminSimpleStudentList(title, list, editable = false, showGradeSummary = false) {
     const rows = list.map(s => {
         const cls = adminGetStudentClass(s.id);
         const classText = cls ? cls.name : '미배정';
         const status = adminNormalizeStatus(s.status);
         const action = editable
-            ? `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; background:rgba(26,92,255,0.08); color:var(--primary); border:none;" onclick="adminOpenStudentEditOrDetail('${s.id}')">수정</button>`
-            : `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:800; border-radius:10px; background:var(--surface-2); border:none;" onclick="closeModal(true); renderStudentDetail('${s.id}')">상세</button>`;
+            ? `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--primary-soft); color:var(--primary); border:none;" onclick="adminOpenStudentEditOrDetail('${s.id}')">수정</button>`
+            : `<button class="btn" style="padding:7px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:none;" onclick="closeModal(true); renderStudentDetail('${s.id}')">상세</button>`;
         return `
             <div style="padding:14px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--surface);">
                 <div style="min-width:0; flex:1;">
-                    <div style="font-weight:800; font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(s.name || '')} <span style="font-size:12px; color:var(--secondary); font-weight:700; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
-                    <div style="font-size:12px; color:var(--primary); font-weight:700; margin-top:4px;">${apEscapeHtml(classText)} <span style="color:var(--secondary); font-weight:600;">| ${apEscapeHtml(status)}</span></div>
+                    <div style="font-weight:500; font-size:14px; color:var(--text); line-height:1.35;">${apEscapeHtml(s.name || '')} <span style="font-size:12px; color:var(--secondary); font-weight:500; margin-left:4px;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</span></div>
+                    <div style="font-size:12px; color:var(--primary); font-weight:500; margin-top:4px;">${apEscapeHtml(classText)} <span style="color:var(--secondary); font-weight:500;">| ${apEscapeHtml(status)}</span></div>
                 </div>
                 ${action}
             </div>
         `;
     }).join('');
 
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:700;">조회 대상이 없습니다.</div>`}</div>`);
+    const gradeSummary = showGradeSummary ? adminRenderStudentGradeSummary(list) : '';
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${gradeSummary}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:500;">조회 대상이 없습니다.</div>`}</div>`);
 }
 
 
@@ -1022,7 +1688,7 @@ function adminSearchTypeLabel(type) {
 
 function renderAdminGlobalSearchResults(results) {
     if (!results.length) {
-        return `<div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:700;">검색 결과가 없습니다.</div>`;
+        return `<div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">검색 결과가 없습니다.</div>`;
     }
 
     return results.map((item, idx) => `
@@ -1031,12 +1697,12 @@ function renderAdminGlobalSearchResults(results) {
                 onclick="openAdminGlobalSearchResult(${idx})">
             <div style="min-width:0; flex:1;">
                 <div style="display:flex; align-items:center; gap:6px; min-width:0;">
-                    <span style="flex-shrink:0; font-size:10px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.08); padding:2px 7px; border-radius:999px;">${adminSearchTypeLabel(item.type)}</span>
-                    <b style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color:var(--text); font-weight:700;">${apEscapeHtml(item.label)}</b>
+                    <span style="flex-shrink:0; font-size:10px; font-weight:500; color:var(--primary); background:var(--primary-soft); padding:2px 7px; border-radius:999px;">${adminSearchTypeLabel(item.type)}</span>
+                    <span style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color:var(--text); font-weight:500;">${apEscapeHtml(item.label)}</span>
                 </div>
-                <div style="margin-top:3px; font-size:11px; font-weight:700; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(item.meta || '')}${item.desc ? ` · ${apEscapeHtml(item.desc)}` : ''}</div>
+                <div style="margin-top:3px; font-size:11px; font-weight:500; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(item.meta || '')}${item.desc ? ` · ${apEscapeHtml(item.desc)}` : ''}</div>
             </div>
-            <span style="flex-shrink:0; font-size:11px; font-weight:700; color:var(--secondary);">${apEscapeHtml(item.actionLabel || '열기')}</span>
+            <span style="flex-shrink:0; font-size:11px; font-weight:500; color:var(--secondary);">${apEscapeHtml(item.actionLabel || '열기')}</span>
         </button>
     `).join('');
 }
@@ -1049,7 +1715,7 @@ function handleAdminGlobalSearchInput(value) {
     if (!state.ui) state.ui = {};
     if (!keyword) {
         state.ui.adminGlobalSearchResults = [];
-        area.innerHTML = `<div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:700;">학생, 반, 학교, 시험, 자료를 검색하세요.</div>`;
+        area.innerHTML = `<div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">학생, 반, 학교, 시험, 자료를 검색하세요.</div>`;
         return;
     }
 
@@ -1084,20 +1750,20 @@ function openAdminGlobalSearchResult(index) {
 
 function renderAdminGlobalSearchPanel() {
     return `
-        <div class="ap-admin-section" style="margin-bottom:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:15px; font-weight:700; color:var(--text);">전체 검색</h3>
-            </div>
-            <div style="padding:10px; border:1px solid var(--border); border-radius:18px; background:var(--surface-2);">
+        <div class="ap-admin-global-search">
+            <div class="ap-admin-global-search__field">
+                <svg class="ap-admin-global-search__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M21 21L16.65 16.65M10.8 18.1C6.77 18.1 3.5 14.83 3.5 10.8C3.5 6.77 6.77 3.5 10.8 3.5C14.83 3.5 18.1 6.77 18.1 10.8C18.1 14.83 14.83 18.1 10.8 18.1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
                 <input id="admin-global-search-input"
                        type="search"
                        autocomplete="off"
                        placeholder="학생 · 반 · 학교 · 시험 · 자료 검색"
                        oninput="handleAdminGlobalSearchInput(this.value)"
-                       style="width:100%; height:44px; border:1px solid var(--border); border-radius:14px; background:var(--surface); color:var(--text); padding:0 14px; font-size:14px; font-weight:700; box-sizing:border-box;">
-                <div id="admin-global-search-results" style="display:flex; flex-direction:column; gap:7px; margin-top:8px;">
-                    <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:700;">학생, 반, 학교, 시험, 자료를 검색하세요.</div>
-                </div>
+                       style="width:100%; height:42px; border:0; background:transparent; color:var(--text); padding:0 14px 0 38px; font-size:14px; font-weight:500; box-sizing:border-box;">
+            </div>
+            <div id="admin-global-search-results" class="ap-admin-global-search__results">
+                <div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">학생, 반, 학교, 시험, 자료를 검색하세요.</div>
             </div>
         </div>
     `;
@@ -1109,62 +1775,51 @@ function renderAdminControlCenter() {
     const root = document.getElementById('app-root');
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
-    const activeStudents = state.db.students.filter(s => s.status === '재원');
-    const dischargedStudents = state.db.students.filter(s => s.status === '제적');
-    const newStudents = activeStudents.filter(s => { 
-        if (!s.created_at) return false; 
-        const createdTime = apParseLocalDateTime(s.created_at);
-        if (createdTime === null) return false;
-        return (todayTime - createdTime) / (1000*3600*24) <= 30; 
-    });
     const adminOverviewData = adminBuildOverviewData(todayStr, todayTime);
+    const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
     const headerHtml = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-            <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">운영센터</h3>
-            <span style="font-size:12px; font-weight:700; color:var(--secondary);">원장님</span>
+        <div class="ap-admin-dashboard-head" style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin:8px 0 10px; padding:0 4px;">
+            <div style="min-width:0; padding-top:4px;">
+                <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">운영센터</h3>
+            </div>
+            ${adminGlobalSearchPanel}
         </div>
     `;
 
     const adminShortcutRow = `
         <div class="ap-admin-shortcuts" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
             <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
             <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
             <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#16a34a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
-                    onclick="window.location.href='../eie/index.html#dashboard';">
-                EIE
-            </button>
-            <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
                 성적표
             </button>
             <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#7c3aed; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#7c3aed; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="openAdminOperationMenu()">
                 관리
             </button>
         </div>
     `;
 
-    const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
-
     const todayOverviewHtml = renderAdminStudentOverviewPanel(adminOverviewData);
     const needCheckHtml = renderAdminNeedCheckPanel(adminOverviewData);
     const recentStudentsHtml = renderAdminNewStudentPanel(adminOverviewData);
+    const recentConsultationHtml = renderAdminRecentConsultationPanel();
 
     const teacherCardsHtml = `
         <div class="ap-admin-section" style="margin-bottom:28px;">
             <div style="margin-bottom:12px;">
-                <h3 class="ap-admin-section-title" style="margin:0; font-size:16px; font-weight:700; color:var(--text);">선생님 현황</h3>
+                <h3 class="ap-admin-section-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">선생님 현황</h3>
             </div>
             <div class="ap-admin-teacher-grid" style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; align-items:stretch;">
                 ${renderAdminTeacherCards(todayStr)}
@@ -1193,23 +1848,23 @@ function renderAdminControlCenter() {
 
     const adminScheduleHtml = `
         <div class="ap-admin-section" style="margin-bottom:32px;">
-            <h3 class="ap-admin-section-title" style="margin:0 0 12px 0; font-size:15px; font-weight:700; color:var(--secondary);">주간일정</h3>
+            <h3 class="ap-admin-section-title" style="margin:0 0 12px 0; font-size:14px; font-weight:500; color:var(--secondary);">주간일정</h3>
             <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
                 ${adminWeeklyItems.length > 0 ? adminWeeklyItems.map(w => {
                     const dateLabel = apFormatMonthDay(w.date) || w.date;
                     if (w.type === 'exam') {
                         const e = w.item;
-                        const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:600;">학교공통</span> ';
-                        return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:700; color:var(--error); background:rgba(255,71,87,0.08); padding:3px 8px; border-radius:8px; margin-right:6px;">시험</span><b style="font-weight:700; color:var(--text);">${apEscapeHtml(e.school_name)}</b> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
+                        const gradeLabel = e.grade ? `<span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(e.grade)}</span> ` : '<span style="color:var(--secondary); font-weight:500;">학교공통</span> ';
+                        return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:var(--error); background:rgba(var(--error-rgb),0.10); padding:3px 8px; border-radius:8px; margin-right:6px;">시험</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(e.school_name)}</span> ${gradeLabel}${apEscapeHtml(e.exam_name)}</div><div style="color:var(--primary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--primary-soft); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
                     }
                     const s = w.item;
                     const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
                     const label = isClosed ? '휴무' : '기타';
                     const labelColor = isClosed ? 'var(--warning)' : 'var(--primary)';
-                    const labelBg = isClosed ? 'rgba(255,165,2,0.12)' : 'rgba(26,92,255,0.08)';
+                    const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--primary-soft)';
                     const title = s.title || (isClosed ? '휴무' : '일정');
-                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:700; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><b style="font-weight:700; color:var(--text);">${apEscapeHtml(title)}</b>${s.memo ? ` <span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--primary); font-size:11px; font-weight:600; white-space:nowrap; background:rgba(26,92,255,0.1); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
-                }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:600;">이번 주 예정된 일정이 없습니다.</div>`}
+                    return `<div style="display:flex; justify-content:space-between; align-items:center; min-height:52px; padding:0 16px; border-bottom:1px solid var(--border); font-size:13px; gap:10px; box-sizing:border-box;"><div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; font-weight:500; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span><span style="font-weight:500; color:var(--text);">${apEscapeHtml(title)}</span>${s.memo ? ` <span style="color:var(--secondary); font-weight:500;">${apEscapeHtml(s.memo)}</span>` : ''}</div><div style="color:var(--primary); font-size:11px; font-weight:500; white-space:nowrap; background:var(--primary-soft); padding:2px 8px; border-radius:6px;">${dateLabel}</div></div>`;
+                }).join('') : `<div style="text-align:center; padding:20px; color:var(--secondary); font-size:13px; font-weight:500;">이번 주 예정된 일정이 없습니다.</div>`}
             </div>
         </div>
     `;
@@ -1218,11 +1873,14 @@ function renderAdminControlCenter() {
         <style>
             #ap-admin-dashboard { width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box; }
             #ap-admin-dashboard .card,
-            #ap-admin-dashboard .ap-admin-card {
+            #ap-admin-dashboard .ap-admin-card,
+            #ap-admin-dashboard .ap-admin-mini-metric,
+            #ap-admin-dashboard .ap-admin-check-item,
+            #ap-admin-dashboard .ap-admin-search-row {
                 border:1px solid var(--border) !important;
-                border-radius:18px !important;
+                border-radius:16px !important;
                 background:var(--surface) !important;
-                box-shadow:0 1px 2px rgba(0,0,0,0.03) !important;
+                box-shadow:none !important;
                 box-sizing:border-box !important;
             }
             #ap-admin-dashboard .card[onclick],
@@ -1232,57 +1890,144 @@ function renderAdminControlCenter() {
             }
             @media (hover:hover) {
                 #ap-admin-dashboard .card[onclick]:hover,
-                #ap-admin-dashboard .ap-admin-card[onclick]:hover {
+                #ap-admin-dashboard .ap-admin-card[onclick]:hover,
+                #ap-admin-dashboard .ap-admin-teacher-card:hover {
                     transform:translateY(-1px);
-                    border-color:rgba(26,92,255,0.16) !important;
+                    border-color:rgba(var(--primary-rgb),0.14) !important;
                 }
+            }
+            #ap-admin-dashboard .ap-admin-section,
+            #ap-admin-dashboard .ap-dashboard-section {
+                border:0 !important;
+                background:transparent !important;
+                box-shadow:none !important;
+                border-radius:0 !important;
+                padding:0 !important;
             }
             #ap-admin-dashboard .ap-admin-shortcuts {
                 display:grid !important;
-                grid-template-columns:repeat(4, minmax(0, 1fr));
                 gap:8px !important;
                 padding:4px !important;
                 border:1px solid var(--border) !important;
-                border-radius:18px !important;
+                border-radius:16px !important;
                 background:var(--surface-2) !important;
-                margin-bottom:18px !important;
                 box-shadow:none !important;
+            }
+            #ap-admin-dashboard .ap-admin-overview-grid {
+                display:grid !important;
+                gap:8px !important;
+                padding:4px !important;
+                border:1px solid var(--border) !important;
+                border-radius:16px !important;
+                background:var(--surface-2) !important;
+                box-shadow:none !important;
+            }
+            #ap-admin-dashboard .ap-admin-shortcuts {
+                grid-template-columns:repeat(4, minmax(0, 1fr));
+                margin-bottom:18px !important;
             }
             #ap-admin-dashboard .ap-admin-shortcuts .btn {
                 height:44px !important;
                 min-height:44px !important;
                 max-height:44px !important;
                 padding:0 10px !important;
-                border-radius:14px !important;
-                border:1px solid transparent !important;
+                border-radius:12px !important;
+                border:1px solid var(--border) !important;
                 background:var(--surface) !important;
                 color:var(--text) !important;
-                box-shadow:0 1px 2px rgba(0,0,0,0.03) !important;
+                box-shadow:none !important;
                 font-size:13px !important;
-                font-weight:700 !important;
+                font-weight:500 !important;
                 line-height:1.2 !important;
             }
             #ap-admin-dashboard .ap-admin-summary-grid,
             #ap-admin-dashboard .ap-admin-teacher-grid {
                 align-items:stretch !important;
             }
-            #ap-admin-dashboard .ap-admin-summary-grid .card {
-                min-height:86px !important;
+            #ap-admin-dashboard .ap-admin-summary-grid .card,
+            #ap-admin-dashboard .ap-admin-mini-metric {
+                min-height:44px !important;
                 display:flex !important;
                 flex-direction:column !important;
                 align-items:center !important;
                 justify-content:center !important;
-                padding:14px 8px !important;
+                padding:0 10px !important;
             }
             #ap-admin-dashboard .ap-admin-teacher-grid .card {
-                min-height:190px !important;
+                min-height:164px !important;
                 height:100% !important;
                 display:flex !important;
                 flex-direction:column !important;
                 justify-content:space-between !important;
+                padding:16px !important;
+            }
+            #ap-admin-dashboard .ap-admin-teacher-card .btn {
+                background:var(--surface-2) !important;
+                color:var(--text) !important;
+                border:1px solid var(--border) !important;
+                box-shadow:none !important;
             }
             #ap-admin-dashboard .ap-admin-section { margin-bottom:28px !important; }
-            #ap-admin-dashboard .ap-admin-section-title { letter-spacing:-0.2px; }
+            #ap-admin-dashboard .ap-admin-section-title { font-size:14px !important; font-weight:500 !important; letter-spacing:0 !important; }
+            #ap-admin-dashboard .ap-admin-dashboard-head {
+                position:relative;
+            }
+            #ap-admin-dashboard .ap-admin-global-search {
+                position:relative;
+                width:min(420px, 48vw);
+                flex:0 1 420px;
+                z-index:5;
+            }
+            #ap-admin-dashboard .ap-admin-global-search__field {
+                position:relative;
+                height:42px;
+                border:1px solid var(--border);
+                border-radius:999px;
+                background:var(--surface);
+                box-shadow:none;
+                overflow:hidden;
+            }
+            #ap-admin-dashboard .ap-admin-global-search__icon {
+                position:absolute;
+                left:14px;
+                top:50%;
+                transform:translateY(-50%);
+                color:var(--secondary);
+                pointer-events:none;
+            }
+            #ap-admin-dashboard .ap-admin-global-search__results {
+                display:none;
+                position:absolute;
+                top:48px;
+                left:0;
+                right:0;
+                flex-direction:column;
+                gap:7px;
+                padding:8px;
+                border:1px solid var(--border);
+                border-radius:16px;
+                background:var(--surface);
+                box-shadow:0 12px 28px rgba(15,23,42,0.12);
+                max-height:320px;
+                overflow-y:auto;
+            }
+            #ap-admin-dashboard .ap-admin-global-search:focus-within .ap-admin-global-search__results {
+                display:flex;
+            }
+            #ap-admin-dashboard .ap-admin-recent-student-grid {
+                display:grid !important;
+                grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+                gap:1px !important;
+                max-height:360px !important;
+                overflow:auto !important;
+                background:rgba(15,23,42,0.08) !important;
+            }
+            #ap-admin-dashboard .ap-admin-recent-student-grid > * {
+                background:var(--surface) !important;
+            }
+            #ap-admin-dashboard .ap-admin-recent-student-row:hover {
+                background:var(--surface-2) !important;
+            }
 
             #ap-admin-dashboard .ap-admin-overview-grid {
                 grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
@@ -1293,9 +2038,17 @@ function renderAdminControlCenter() {
             #ap-admin-dashboard .ap-admin-check-item {
                 -webkit-tap-highlight-color:transparent;
             }
+            #ap-admin-dashboard .ap-admin-check-grid {
+                grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+            }
             @media (max-width:720px) {
+                #ap-admin-dashboard .ap-admin-dashboard-head { flex-direction:column !important; align-items:stretch !important; gap:10px !important; }
+                #ap-admin-dashboard .ap-admin-global-search { width:100% !important; flex:0 0 auto !important; }
+                #ap-admin-dashboard .ap-admin-shortcuts { grid-template-columns:repeat(2, minmax(0, 1fr)) !important; }
                 #ap-admin-dashboard .ap-admin-overview-grid { grid-template-columns:repeat(2, minmax(0, 1fr)) !important; }
                 #ap-admin-dashboard .ap-admin-teacher-grid { grid-template-columns:1fr !important; }
+                #ap-admin-dashboard .ap-admin-recent-student-grid { grid-template-columns:1fr !important; max-height:420px !important; }
+                #ap-admin-dashboard .ap-admin-check-grid { grid-template-columns:1fr !important; }
                 #ap-admin-dashboard .ap-admin-check-item { min-height:50px !important; }
             }
             @media (max-width:480px) {
@@ -1314,10 +2067,10 @@ function renderAdminControlCenter() {
         ${adminShortcutRow}
         ${todayOverviewHtml}
         ${teacherCardsHtml}
-        ${adminScheduleHtml}
-        ${needCheckHtml}
+        ${recentConsultationHtml}
         ${recentStudentsHtml}
-        ${adminGlobalSearchPanel}
+        ${needCheckHtml}
+        ${adminScheduleHtml}
     </div>`;
 }
 
@@ -1333,7 +2086,7 @@ function renderAdminStudentSearch() {
         const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
         return `
             <div style="padding:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
-                <div><b style="font-size:13px; color:var(--text);">${apEscapeHtml(s.name)}</b> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
+                <div><span style="font-size:13px; color:var(--text);; font-weight:500;">${apEscapeHtml(s.name)}</span> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
                 <button class="btn" style="padding:6px 10px; font-size:11px;" onclick="renderStudentDetail('${s.id}')">상세 보기</button>
             </div>
         `;
@@ -1378,13 +2131,13 @@ function openGlobalExamGradeView() {
     const classes = state.db.classes.filter(c => Number(c.is_active) !== 0);
     const rows = classes.map(c => `
         <button class="btn" style="width:100%; justify-content:space-between; padding:16px; margin-bottom:10px; background:var(--surface); border:1px solid var(--border);" onclick="closeModal(); if(typeof openExamGradeView==='function') openExamGradeView('${c.id}')">
-            <span style="font-weight:700; font-size:15px; color:var(--text);">${apEscapeHtml(c.name)}</span>
-            <span style="font-size:12px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 10px; border-radius:8px;">${apEscapeHtml(c.grade)}</span>
+            <span style="font-weight:500; font-size:15px; color:var(--text);">${apEscapeHtml(c.name)}</span>
+            <span style="font-size:12px; font-weight:500; color:var(--primary); background:var(--primary-soft); padding:4px 10px; border-radius:8px;">${apEscapeHtml(c.grade)}</span>
         </button>
     `).join('');
     showModal('반별 시험성적', `
-        <div style="margin-bottom:16px; font-size:13px; color:var(--secondary); font-weight:600;">조회할 반을 선택하세요.</div>
-        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:30px; font-size:13px; font-weight:600;">담당 반이 없습니다.</div>`}</div>
+        <div style="margin-bottom:16px; font-size:13px; color:var(--secondary); font-weight:500;">조회할 반을 선택하세요.</div>
+        <div style="max-height:60vh; overflow-y:auto; padding-right:4px;">${rows || `<div style="text-align:center; color:var(--secondary); padding:30px; font-size:13px; font-weight:500;">담당 반이 없습니다.</div>`}</div>
     `);
 }
 
@@ -1397,9 +2150,9 @@ function openOperationMenu() {
     showModal('시스템·동기화 상태', `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <div style="padding:16px; border-radius:14px; background:var(--surface-2); border:none;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:8px; color:var(--secondary);"><span>네트워크</span><b style="color:${isOnline ? 'var(--success)' : 'var(--error)'}">${onlineStatusText}</b></div>
-                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:16px; color:var(--secondary);"><span>미전송 데이터</span><b style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}">${syncStatusText}</b></div>
-                <button class="btn btn-primary" style="width:100%; font-size:14px; font-weight:700; padding:12px; border-radius:10px;" onclick="if(typeof processSyncQueue==='function') processSyncQueue(); closeModal();">지금 동기화 시도</button>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:8px; color:var(--secondary);"><span>네트워크</span><span style="color:${isOnline ? 'var(--success)' : 'var(--error)'}; font-weight:500;">${onlineStatusText}</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:500; margin-bottom:16px; color:var(--secondary);"><span>미전송 데이터</span><span style="color:${qLen > 0 ? 'var(--warning)' : 'var(--success)'}; font-weight:500;">${syncStatusText}</span></div>
+                <button class="btn btn-primary" style="width:100%; font-size:14px; font-weight:500; padding:12px; border-radius:10px;" onclick="if(typeof processSyncQueue==='function') processSyncQueue(); closeModal();">지금 동기화 시도</button>
             </div>
         </div>
     `);
@@ -1507,41 +2260,25 @@ function renderClassSummaryCard(cls, data) {
     const s = data.classSummaries[cls.id];
     if (!s) return '';
 
-    const baseStyle = `
-        cursor:pointer;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        height:52px;
-        min-height:52px;
-        max-height:52px;
-        padding:0 16px;
-        border-radius:16px;
-        gap:12px;
-        box-sizing:border-box;
-        transition:all 0.2s ease;
-        overflow:hidden;
-    `;
+    const safeCid = dashboardEscapeAttr(cls.id);
+    const safeName = apEscapeHtml(cls.name || '');
 
     if (!s.isScheduled) {
         return `
-            <div onclick="openDashboardClass('${cls.id}')" style="${baseStyle} opacity:0.68; filter:grayscale(18%); background:var(--surface-2); border:1px dashed var(--border);">
-                <div style="font-weight:700; font-size:15px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.name)}</div>
-                <div style="font-size:12px; font-weight:600; color:var(--secondary); white-space:nowrap; flex-shrink:0;">수업 없음</div>
+            <div class="ap-class-row ap-class-row--empty" onclick="openDashboardClass('${safeCid}')">
+                <div class="ap-class-row__name ap-class-row__name--inactive">${safeName}</div>
+                <div class="ap-class-row__meta">수업 없음</div>
             </div>
         `;
     }
 
-    const gradientBg = 'linear-gradient(135deg, rgba(225,29,72,0.04) 0%, var(--surface) 100%)';
-    const borderColor = 'rgba(225,29,72,0.18)';
-
     return `
-        <div onclick="openDashboardClass('${cls.id}')" style="${baseStyle} background:${gradientBg}; border:1px solid ${borderColor};">
-            <div style="font-weight:700; font-size:15px; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.name)}</div>
-            <div style="display:flex; gap:6px; align-items:center; flex-shrink:0;">
-                <div style="height:26px; display:inline-flex; align-items:center; background:var(--bg); border-radius:8px; padding:0 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border); white-space:nowrap;">재원 <span style="color:var(--text); margin-left:3px;">${s.activeCount}</span></div>
-                <div style="height:26px; display:inline-flex; align-items:center; background:var(--bg); border-radius:8px; padding:0 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border); white-space:nowrap;">등원 <span style="color:var(--success); margin-left:3px;">${s.present}</span></div>
-                <div style="height:26px; display:inline-flex; align-items:center; background:var(--bg); border-radius:8px; padding:0 8px; font-size:11px; font-weight:700; color:var(--secondary); border:1px solid var(--border); white-space:nowrap;">결석 <span style="color:${s.absent > 0 ? 'var(--error)' : 'var(--text)'}; margin-left:3px;">${s.absent}</span></div>
+        <div class="ap-class-row ap-class-row--scheduled" onclick="openDashboardClass('${safeCid}')">
+            <div class="ap-class-row__name">${safeName}</div>
+            <div class="ap-class-row__chips" aria-label="${safeName} 출결 요약">
+                <span class="ap-class-chip">재원 ${apEscapeHtml(String(s.activeCount))}</span>
+                <span class="ap-class-chip">등원 ${apEscapeHtml(String(s.present))}</span>
+                <span class="ap-class-chip">결석 ${apEscapeHtml(String(s.absent))}</span>
             </div>
         </div>
     `;
@@ -1588,12 +2325,12 @@ function renderTodoSections() {
         <div style="${rowBase} border-bottom:1px solid rgba(99,102,241,0.1); background:transparent;">
             <label onclick="event.stopPropagation()" style="display:flex; align-items:center; gap:12px; flex:1; min-width:0; cursor:pointer;">
                 <input type="checkbox" onclick="event.stopPropagation()" onchange="toggleMemoDone('${m.id}', this.checked)" style="transform:scale(1.15); margin:0; accent-color:#6366f1; flex-shrink:0;">
-                <span style="font-size:13px; font-weight:700; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''} white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                    ${isPinned ? `<span style="background:rgba(26,92,255,0.1); padding:2px 6px; border-radius:10px; font-size:11px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}
+                <span style="font-size:13px; font-weight:400; color:var(--text); ${isPinned ? 'color:var(--primary);' : ''} white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    ${isPinned ? `<span style="background:var(--primary-soft); padding:2px 6px; border-radius:10px; font-size:11px; margin-right:6px;">고정</span> ` : ''}${apEscapeHtml(m.content)}
                 </span>
             </label>
         </div>
-    `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:600; color:var(--secondary); text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
+    `}).join('') : `<div style="${rowBase} justify-content:center; font-size:13px; font-weight:400; color:var(--secondary); text-align:center;">오늘 등록된 할 일이 없습니다.</div>`;
 
     let upcomingHtml = '';
     const upcomingItems = [];
@@ -1612,9 +2349,9 @@ function renderTodoSections() {
             if (u.type === 'exam') {
                 const e = u.item;
                 const displayTitle = e.exam_name ? `${apEscapeHtml(e.school_name || '일반')} ${apEscapeHtml(e.grade || '')} ${apEscapeHtml(e.exam_name)}` : `${apEscapeHtml(e.school_name || '일정 확인')}`;
-                return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
+                return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
                     <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${displayTitle}</div>
-                    <span style="font-size:11px; color:#059669; background:rgba(5,150,105,0.08); padding:4px 8px; border-radius:10px; font-weight:700; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+                    <span style="font-size:12px; color:#059669; background:rgba(5,150,105,0.08); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
                 </div>`;
             }
 
@@ -1622,11 +2359,11 @@ function renderTodoSections() {
             const isClosed = s.schedule_type === 'closed' || s.is_closed === true || s.is_closed === 1;
             const label = isClosed ? '휴무' : '기타';
             const labelColor = isClosed ? 'var(--warning)' : 'var(--primary)';
-            const labelBg = isClosed ? 'rgba(255,165,2,0.12)' : 'rgba(26,92,255,0.08)';
+            const labelBg = isClosed ? 'rgba(var(--warning-rgb),0.12)' : 'var(--primary-soft)';
             const title = s.title || (isClosed ? '휴무' : '일정');
-            return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:700; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
-                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:600;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
-                <span style="font-size:11px; background:rgba(5,150,105,0.08); color:#059669; padding:4px 8px; border-radius:10px; font-weight:700; white-space:nowrap; flex-shrink:0;">${dDay}</span>
+            return `<div onclick="event.stopPropagation(); openExamScheduleModal()" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(5,150,105,0.08); background:transparent;">
+                <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span style="font-size:11px; color:${labelColor}; background:${labelBg}; padding:3px 8px; border-radius:8px; margin-right:6px;">${label}</span>${apEscapeHtml(title)}${s.memo ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(s.memo)}</span>` : ''}</div>
+                <span style="font-size:12px; background:rgba(5,150,105,0.08); color:#059669; padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${dDay}</span>
             </div>`;
         }).join('');
     }
@@ -1634,7 +2371,7 @@ function renderTodoSections() {
     return `
         <div style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일정</h3>
+                <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘일정</h3>
             </div>
             <div onclick="openTodoMemoModal()" style="cursor:pointer; margin-bottom:18px; overflow:hidden; border-radius:16px; border:1px solid rgba(99,102,241,0.2); background:rgba(99,102,241,0.04);">
                 ${todayHtml}
@@ -1642,7 +2379,7 @@ function renderTodoSections() {
             
             ${upcomingHtml ? `
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-                    <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">주간일정</h3>
+                    <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">주간일정</h3>
                 </div>
                 <div onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">
                     ${upcomingHtml}
@@ -1653,36 +2390,348 @@ function renderTodoSections() {
 }
 
 // [NEW] 오늘일지 카드 생성 함수 (요일 필터 정밀 적용)
+
 function renderTodayJournalCard(data) {
-    const todayClasses = state.db.classes.filter(c => {
-        if (Number(c.is_active) === 0) return false;
+    injectDashboardOpsStyles();
+    const todayClasses = (state?.db?.classes || []).filter(c => {
+        if (Number(c?.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
-        const summary = data.classSummaries[c.id];
+        const summary = data?.classSummaries?.[c.id];
         if (!summary || !summary.isScheduled || summary.activeCount === 0) return false;
         return true;
     });
 
     const contentHtml = todayClasses.length === 0
-        ? `<span style="font-size:14px; font-weight:600; color:var(--secondary);">수업 없음</span>`
-        : `<span style="font-size:14px; font-weight:700; color:var(--text);">${todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ')}</span>`;
+        ? '수업 없음'
+        : todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ');
 
     return `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
-            <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">오늘일지</h3>
-        </div>
-        <div id="dashboard-journal-card" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');"
-             style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.2); border-radius:16px; height:52px; min-height:52px; max-height:52px; padding:0 16px; box-sizing:border-box; cursor:pointer; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; gap:12px; overflow:hidden;">
-            <div id="dashboard-journal-content" style="min-width:0; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                ${contentHtml}
+        <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher">
+            <div class="ap-dashboard-journal-head">
+                <h3 class="ap-dashboard-journal-title">오늘일지</h3>
+                <span id="dashboard-journal-content" class="ap-dashboard-journal-summary">${contentHtml}</span>
             </div>
-            <span style="font-size:18px; font-weight:700; color:var(--text); flex-shrink:0;">›</span>
+            <div id="dashboard-journal-card" class="ap-dashboard-journal-body" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
+                ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
+            </div>
         </div>
     `;
 }
 
+
 // [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
+function ensureDashboardOnboardingState() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.dashboardOnboardingTasks) {
+        state.ui.dashboardOnboardingTasks = { loading: false, loadedAt: 0, tasks: [], inFlight: null, selectedTaskId: '', pendingSkipTaskId: '', draft: {}, error: '' };
+    }
+    if (!state.ui.dashboardOnboardingTasks.draft) state.ui.dashboardOnboardingTasks.draft = {};
+    return state.ui.dashboardOnboardingTasks;
+}
+
+async function fetchOnboardingTasks() {
+    const store = ensureDashboardOnboardingState();
+    if (store.inFlight) return store.inFlight;
+    store.loading = true;
+    const promise = api.get('onboarding/tasks')
+        .then(res => {
+            store.tasks = Array.isArray(res?.tasks) ? res.tasks : [];
+            store.loadedAt = Date.now();
+            return store.tasks;
+        })
+        .catch(err => {
+            console.error('[fetchOnboardingTasks] failed:', err);
+            store.tasks = [];
+            return [];
+        })
+        .finally(() => {
+            store.loading = false;
+            store.inFlight = null;
+        });
+    store.inFlight = promise;
+    return promise;
+}
+
+function getOnboardingTaskLabel(task) {
+    const type = String(task?.task_type || '');
+    if (type === 'intro') return '담임 인사';
+    if (type === 'week1') return '1주차 적응 확인';
+    if (type === 'month1') return '1개월 정착 상담';
+    return '';
+}
+
+function getOnboardingTaskDescription(task) {
+    const type = String(task?.task_type || '');
+    if (type === 'intro') return '첫 수업 전후로 학부모님께 짧게 첫인사를 건네주세요.';
+    if (type === 'week1') return '첫 주 수업 태도와 숙제 흐름을 가볍게 확인해 주세요.';
+    if (type === 'month1') return '한 달간의 적응 상태와 다음 달 공부 방향을 정리해 주세요.';
+    return '';
+}
+
+function getOnboardingStatusLabel(status) {
+    const key = String(status || '');
+    if (key === 'needs_action') return '확인 전';
+    if (key === 'contacted') return '연락 남김';
+    if (key === 'deferred') return '나중에 다시 보기';
+    return '확인 전';
+}
+
+function getOnboardingDraft(taskId) {
+    const store = ensureDashboardOnboardingState();
+    const key = String(taskId || '');
+    if (!store.draft[key]) store.draft[key] = {};
+    return store.draft[key];
+}
+
+function getSelectedOnboardingTask() {
+    const store = ensureDashboardOnboardingState();
+    return (store.tasks || []).find(task => String(task?.id || '') === String(store.selectedTaskId || '')) || null;
+}
+
+function openOnboardingTask(taskId) {
+    const store = ensureDashboardOnboardingState();
+    store.selectedTaskId = String(taskId || '');
+    store.pendingSkipTaskId = '';
+    store.error = '';
+    getOnboardingDraft(taskId);
+    updateDashboardOnboardingTasksSection();
+}
+
+function closeOnboardingTaskPanel() {
+    const store = ensureDashboardOnboardingState();
+    store.selectedTaskId = '';
+    store.pendingSkipTaskId = '';
+    store.error = '';
+    updateDashboardOnboardingTasksSection();
+}
+
+function updateOnboardingDraft(taskId, key, value) {
+    const draft = getOnboardingDraft(taskId);
+    draft[key] = value;
+    const message = document.getElementById('onboarding-parent-copy-message');
+    const task = getSelectedOnboardingTask();
+    if (message && task) message.textContent = buildOnboardingParentMessage(task, draft);
+}
+
+function onboardingSelectHtml(task, key, options) {
+    const selected = String(getOnboardingDraft(task.id)[key] || '');
+    return `<select class="std-input-base" style="min-height:40px; font-size:13px;" onchange="updateOnboardingDraft('${apEscapeHtml(String(task.id || ''))}', '${key}', this.value)"><option value=""></option>${options.map(option => `<option value="${apEscapeHtml(option)}" ${selected === option ? 'selected' : ''}>${apEscapeHtml(option)}</option>`).join('')}</select>`;
+}
+
+function onboardingTextareaHtml(task, key, placeholder = '') {
+    return `<textarea class="std-input-base" style="height:74px; font-size:13px; line-height:1.5;" placeholder="${apEscapeHtml(placeholder)}" oninput="updateOnboardingDraft('${apEscapeHtml(String(task.id || ''))}', '${key}', this.value)">${apEscapeHtml(getOnboardingDraft(task.id)[key] || '')}</textarea>`;
+}
+
+function replaceOnboardingTokens(text, task, draft = {}) {
+    const teacherName = state?.ui?.userName || state?.auth?.name || task?.teacher_name || '[선생님명]';
+    const pairs = {
+        '[반명]': task?.class_name || '[반명]',
+        '[선생님명]': teacherName || '[선생님명]',
+        '[학생명]': task?.student_name || '[학생명]',
+        '[확인할 부분]': draft.check_point || '[확인할 부분]',
+        '[좋았던 부분]': draft.good_point || '[좋았던 부분]',
+        '[더 볼 부분]': draft.focus_point || '[더 볼 부분]',
+        '[다음 달 공부 방향]': draft.next_month_plan || '[다음 달 공부 방향]'
+    };
+    let result = text;
+    Object.entries(pairs).forEach(([key, value]) => { result = result.split(key).join(value); });
+    return result;
+}
+
+function getOnboardingParentMessageTemplate(task) {
+    const type = String(task?.task_type || '');
+    if (type === 'intro') return `안녕하세요, 어머니! AP수학 [반명] 담임 [선생님명]선생님입니다.
+
+오늘부터 [학생명] 학생 수업을 맡게 되어 반가운 마음에 먼저 인사드립니다.
+
+처음에는 학원 시스템이나 숙제 방식에 익숙해지는 시간이 조금 필요할 수 있습니다. 첫 1~2주 동안은 아이가 낯설어하지 않고 학원 흐름에 잘 적응하는지 옆에서 세심하게 같이 살펴보겠습니다.
+
+혹시 학원에 오기 전 수학 공부를 하면서 힘들어했던 부분이나, 담임인 제가 미리 알고 있으면 도움 될 만한 점이 있다면 편하게 말씀해 주세요. 앞으로 잘 지도하겠습니다. 감사합니다.`;
+    if (type === 'week1') return `어머니, 담임 [선생님명]선생님입니다. [학생명] 학생이 AP수학에서 첫 일주일간의 수업을 무사히 마쳤습니다.
+
+새로운 환경이라 긴장했을 텐데도 수업 참여와 숙제 흐름을 차분하게 잘 따라와 주었습니다. 이번 주 수업을 바탕으로 앞으로는 [확인할 부분] 영역을 조금 더 신경 써서 살펴볼 예정입니다.
+
+혹시 일주일 동안 등원하면서 아이가 집에서 학원 얘기나 수학 공부에 대해 부담스러워하는 기색은 없었는지 궁금합니다. 집에서 느끼신 점이 있다면 언제든 편하게 말씀해 주세요. 다음 수업도 잘 이어가겠습니다.`;
+    return `어머니, [학생명] 학생이 저희와 함께 수업을 시작한 지 벌써 한 달이 되었습니다. 학원 시스템과 학습 루틴에는 이제 제법 편안하게 적응한 모습입니다.
+
+한 달간 지켜보니 [좋았던 부분]은 참 기특하고 긍정적입니다. 다만 [더 볼 부분]이 눈에 밟혀, 다음 달 수업에서는 이 부분을 보완하는 데 집중하려고 합니다.
+
+앞으로는 [다음 달 공부 방향]을 중심으로 성실하게 지도하겠습니다. 한 달 동안 믿고 보내주셔서 감사드리며, 궁금한 점이 있으시면 언제든 편하게 말씀해 주세요.`;
+}
+
+function buildOnboardingParentMessage(task, draft = {}) {
+    return replaceOnboardingTokens(getOnboardingParentMessageTemplate(task), task, draft);
+}
+
+async function copyOnboardingParentMessage(taskId) {
+    const task = getSelectedOnboardingTask();
+    if (!task) return;
+    const text = buildOnboardingParentMessage(task, getOnboardingDraft(taskId));
+    try {
+        if (navigator?.clipboard?.writeText) await navigator.clipboard.writeText(text);
+        else {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            textarea.remove();
+        }
+        if (typeof toast === 'function') toast('복사되었습니다.', 'success');
+    } catch (err) {
+        console.error('[copyOnboardingParentMessage] failed:', err);
+    }
+}
+
+function onboardingPanelField(label, body) {
+    return `<div style="display:flex; flex-direction:column; gap:6px;"><div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.4;">${apEscapeHtml(label)}</div>${body}</div>`;
+}
+
+function renderOnboardingPanelFields(task) {
+    const type = String(task?.task_type || '');
+    if (type === 'intro') return `${onboardingPanelField('연락 방법', onboardingSelectHtml(task, 'contact_method', ['문자', '카톡', '전화', '대면']))}${onboardingPanelField('메모', onboardingTextareaHtml(task, 'notes'))}`;
+    if (type === 'week1') return `${onboardingPanelField('수업 시간의 몰입도는 어땠나요?', onboardingSelectHtml(task, 'lesson_adaptation_status', ['양호', '보통', '조금 더 지켜보기']))}${onboardingPanelField('첫 주 숙제 분량은 적절히 해왔나요?', onboardingSelectHtml(task, 'homework_adaptation_status', ['잘해옴', '노력 중', '어려워함']))}${onboardingPanelField('확인할 부분', onboardingTextareaHtml(task, 'check_point'))}${onboardingPanelField('메모', onboardingTextareaHtml(task, 'notes'))}`;
+    return `${onboardingPanelField('한 달간 담임 선생님이 바라본 아이의 모습', onboardingTextareaHtml(task, 'month_summary', '한 달간 수업 흐름과 칭찬할 점을 적어주세요.'))}${onboardingPanelField('다음 달에 중점적으로 신경 쓸 부분', onboardingTextareaHtml(task, 'next_month_plan', '진도 속도 조절, 오답 보완, 태도 교정 등 계획을 적어주세요.'))}`;
+}
+
+function getOnboardingPanelGuide(task) {
+    const type = String(task?.task_type || '');
+    if (type === 'intro') return { purpose: '신입생과 학부모님이 학원에 처음 안착하는 가장 중요한 첫 단추입니다. 가볍게 인사를 건네어 긴장감을 풀어주세요.', guide: '아이의 첫 수업 요일과 시간대를 한 번 더 확인하셨나요?\\n첫 수업에 필요한 교재나 필기구가 잘 준비되었는지 조용히 체크해 주세요.' };
+    if (type === 'week1') return { purpose: '아이가 첫 주 수업을 들으며 학원 시스템과 수업 분위기에 무리 없이 적응하고 있는지 확인하는 단계입니다.', guide: '전화나 카톡으로 집에서의 아이 반응을 가볍게 물어보시면, 학부모님의 불안감을 낮추는 데 큰 도움이 됩니다.' };
+    return { purpose: '한 달간 누적된 출결, 숙제, 테스트 흐름을 바탕으로 앞으로 이 아이가 우리 반에서 어떻게 공부를 이어가면 좋을지 방향을 잡아주는 시점입니다.', guide: '한 달간 수업 흐름과 칭찬할 점을 적어주세요.\\n진도 속도 조절, 오답 보완, 태도 교정 등 계획을 적어주세요.' };
+}
+
+function buildOnboardingActionPayload(task) {
+    const draft = getOnboardingDraft(task.id);
+    return {
+        contact_method: draft.contact_method || '',
+        notes: draft.notes || draft.check_point || '',
+        lesson_adaptation_status: draft.lesson_adaptation_status || '',
+        homework_adaptation_status: draft.homework_adaptation_status || '',
+        month_summary: draft.month_summary || '',
+        next_month_plan: draft.next_month_plan || '',
+        good_point: draft.good_point || '',
+        focus_point: draft.focus_point || ''
+    };
+}
+
+async function refreshOnboardingTasksAfterAction(closePanel = false) {
+    const store = ensureDashboardOnboardingState();
+    store.inFlight = null;
+    await fetchOnboardingTasks();
+    if (closePanel) store.selectedTaskId = '';
+    store.pendingSkipTaskId = '';
+    updateDashboardOnboardingTasksSection();
+}
+
+function setOnboardingPanelError(message) {
+    const store = ensureDashboardOnboardingState();
+    store.error = message || '';
+    updateDashboardOnboardingTasksSection();
+}
+
+function openOnboardingSkipConfirm(taskId) {
+    const store = ensureDashboardOnboardingState();
+    store.pendingSkipTaskId = String(taskId || '');
+    store.error = '';
+    updateDashboardOnboardingTasksSection();
+}
+
+function closeOnboardingSkipConfirm() {
+    const store = ensureDashboardOnboardingState();
+    store.pendingSkipTaskId = '';
+    updateDashboardOnboardingTasksSection();
+}
+
+async function confirmOnboardingSkip(taskId) {
+    closeOnboardingSkipConfirm();
+    await handleOnboardingAction(taskId, 'skip');
+}
+
+async function handleOnboardingAction(taskId, action) {
+    const task = (ensureDashboardOnboardingState().tasks || []).find(row => String(row?.id || '') === String(taskId || ''));
+    if (!task) return;
+    const payload = buildOnboardingActionPayload(task);
+    try {
+        if (action === 'patch') {
+            const result = await api.patch(`onboarding/tasks/${taskId}`, payload);
+            if (result?.success) await refreshOnboardingTasksAfterAction(false);
+            return;
+        }
+        if (action === 'complete') {
+            const result = await api.post(`onboarding/tasks/${taskId}/complete`, payload);
+            if (result?.success) await refreshOnboardingTasksAfterAction(true);
+            return;
+        }
+        if (action === 'contact') {
+            const result = await api.post(`onboarding/tasks/${taskId}/contact`, payload);
+            if (result?.success) await refreshOnboardingTasksAfterAction(false);
+            return;
+        }
+        if (action === 'defer') {
+            const result = await api.post(`onboarding/tasks/${taskId}/defer`, payload);
+            if (result?.success) await refreshOnboardingTasksAfterAction(true);
+            return;
+        }
+        if (action === 'skip') {
+            const result = await api.post(`onboarding/tasks/${taskId}/skip`, payload);
+            if (result?.success) await refreshOnboardingTasksAfterAction(true);
+        }
+    } catch (err) {
+        console.error('[handleOnboardingAction] failed:', err);
+    }
+}
+
+function renderOnboardingSkipConfirm() {
+    const store = ensureDashboardOnboardingState();
+    if (!store.pendingSkipTaskId) return '';
+    const taskId = apEscapeHtml(String(store.pendingSkipTaskId || ''));
+    return `<div class="ap-onboarding-confirm-backdrop" style="position:fixed; inset:0; z-index:90; background:rgba(15,23,42,0.28); display:flex; align-items:center; justify-content:center; padding:18px;"><section class="ap-onboarding-confirm" role="dialog" aria-modal="true" style="width:min(380px, 100%); background:var(--surface); border:1px solid var(--border); border-radius:14px; box-shadow:0 20px 50px rgba(15,23,42,0.2); padding:18px; display:flex; flex-direction:column; gap:12px;"><h3 style="margin:0; font-size:16px; color:var(--text); font-weight:600; line-height:1.4;">이 단계를 기록하지 않고 넘어갈까요?</h3><div style="font-size:13px; color:var(--secondary); font-weight:500; line-height:1.65; white-space:pre-wrap;">학부모님과 이미 다른 방식으로 소통하셨거나, 현재 단계의 안내가 필요 없는 경우 사용해 주세요.\n이 단계를 넘기면 적응 확인 카드에서 조용히 사라지며, 별도의 상담 기록은 남지 않습니다.</div><div style="display:flex; gap:8px; justify-content:flex-end;"><button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="closeOnboardingSkipConfirm()">취소</button><button type="button" class="btn btn-primary apms-button apms-button--primary" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="confirmOnboardingSkip('${taskId}')">이번 단계 넘기기</button></div></section></div>`;
+}
+
+function renderOnboardingPanel() {
+    const store = ensureDashboardOnboardingState();
+    const task = getSelectedOnboardingTask();
+    if (!task) return renderOnboardingSkipConfirm();
+    const draft = getOnboardingDraft(task.id);
+    const guide = getOnboardingPanelGuide(task);
+    const status = getOnboardingStatusLabel(task?.effective_status || task?.status);
+    const type = String(task?.task_type || '');
+    const completeText = type === 'intro' ? '인사 완료하기' : type === 'week1' ? '저장하고 완료하기' : '상담 완료하기';
+    const saveButton = type === 'month1' ? `<button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'patch')">저장하기</button>` : '';
+    const contactButton = type !== 'intro' ? `<button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'contact')">연락만 남기기</button>` : '';
+    return `<div class="ap-onboarding-panel-backdrop" style="position:fixed; inset:0; z-index:80; background:rgba(15,23,42,0.18);" onclick="closeOnboardingTaskPanel()"></div><aside class="ap-onboarding-panel" style="position:fixed; top:0; right:0; bottom:0; z-index:81; width:min(440px, 100vw); background:var(--surface); border-left:1px solid var(--border); box-shadow:-12px 0 30px rgba(15,23,42,0.14); display:flex; flex-direction:column;"><div style="padding:18px 18px 12px; border-bottom:1px solid var(--border); display:flex; gap:12px; justify-content:space-between; align-items:flex-start;"><div style="min-width:0;"><div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(task.student_name || '')}</div><div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; margin-top:3px;">${apEscapeHtml(task.class_name || '')}</div><div style="font-size:14px; color:var(--text); font-weight:500; line-height:1.4; margin-top:8px;">${apEscapeHtml(getOnboardingTaskLabel(task))}</div></div><div style="display:flex; align-items:center; gap:8px;"><span style="min-height:24px; display:inline-flex; align-items:center; padding:0 8px; border-radius:999px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); font-size:11px; font-weight:500;">${apEscapeHtml(status)}</span><button type="button" class="btn apms-button apms-button--quiet" style="width:34px; height:34px; min-height:34px; padding:0; border-radius:10px;" onclick="closeOnboardingTaskPanel()">×</button></div></div><div style="padding:16px 18px 18px; overflow:auto; display:flex; flex-direction:column; gap:14px;">${onboardingPanelField('목적 안내', `<div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(guide.purpose)}</div>`)}${onboardingPanelField('확인 가이드', `<div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(guide.guide)}</div>`)}${renderOnboardingPanelFields(task)}<section style="display:flex; flex-direction:column; gap:8px;"><div style="display:flex; align-items:center; justify-content:space-between; gap:10px;"><div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.4;">학부모 복사 문구</div><button type="button" class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; border-radius:10px; font-size:11px;" onclick="copyOnboardingParentMessage('${apEscapeHtml(String(task.id || ''))}')">복사하기</button></div><div id="onboarding-parent-copy-message" style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(buildOnboardingParentMessage(task, draft))}</div></section>${store.error ? `<div style="font-size:12px; color:var(--primary); font-weight:500; line-height:1.5;">${apEscapeHtml(store.error)}</div>` : ''}</div><div style="padding:12px 18px 18px; border-top:1px solid var(--border); display:grid; grid-template-columns:1fr; gap:8px;"><button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="openOnboardingSkipConfirm('${apEscapeHtml(String(task.id || ''))}')">이번 단계 넘기기</button>${contactButton}${saveButton}<button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'defer')">나중에 다시 보기</button><button type="button" class="btn btn-primary apms-button apms-button--primary" style="min-height:42px; border-radius:10px; font-size:13px; font-weight:500;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'complete')">${apEscapeHtml(completeText)}</button></div></aside>${renderOnboardingSkipConfirm()}`;
+}
+
+function renderOnboardingTasks(tasks = []) {
+    const visibleTasks = (Array.isArray(tasks) ? tasks : []).filter(task => !['completed', 'skipped'].includes(String(task?.status || ''))).sort((a, b) => String(a?.due_date || '').localeCompare(String(b?.due_date || '')) || Number(a?.task_order || 0) - Number(b?.task_order || 0) || String(a?.student_name || '').localeCompare(String(b?.student_name || ''), 'ko'));
+    const cards = visibleTasks.map(task => {
+        const title = getOnboardingTaskLabel(task);
+        const description = getOnboardingTaskDescription(task);
+        const status = getOnboardingStatusLabel(task?.effective_status || task?.status);
+        return `<div class="card apms-card ap-dashboard-onboarding-card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface); display:flex; flex-direction:column; gap:10px;"><div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;"><div style="min-width:0;"><div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.35; overflow-wrap:anywhere;">${apEscapeHtml(task?.student_name || '')}</div><div style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45; margin-top:2px; overflow-wrap:anywhere;">${apEscapeHtml(task?.class_name || '')}</div></div><span style="flex:0 0 auto; min-height:24px; display:inline-flex; align-items:center; padding:0 8px; border-radius:999px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); font-size:11px; font-weight:500;">${apEscapeHtml(status)}</span></div><div><div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35;">${apEscapeHtml(title)}</div><div style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.55; margin-top:4px;">${apEscapeHtml(description)}</div></div><button type="button" class="btn apms-button apms-button--quiet" style="width:100%; min-height:38px; border-radius:10px; font-size:12px; font-weight:500;" onclick="openOnboardingTask('${apEscapeHtml(String(task?.id || ''))}')">확인하기</button></div>`;
+    }).join('');
+    const section = visibleTasks.length ? `<div class="ap-dashboard-section ap-dashboard-onboarding-section" style="margin-bottom:18px;"><div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;"><h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">신입생 적응 확인</h3></div><div class="ap-dashboard-onboarding-list" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">${cards}</div></div>` : '';
+    return `${section}${renderOnboardingPanel()}`;
+}
+
+function updateDashboardOnboardingTasksSection() {
+    const target = document.getElementById('dashboard-onboarding-tasks-root');
+    if (!target) return;
+    const store = ensureDashboardOnboardingState();
+    target.innerHTML = renderOnboardingTasks(store.tasks);
+}
+
+function queueDashboardOnboardingTasksLoad() {
+    const store = ensureDashboardOnboardingState();
+    updateDashboardOnboardingTasksSection();
+    if (store.loading) return;
+    fetchOnboardingTasks().then(updateDashboardOnboardingTasksSection);
+}
 function renderDashboard() {
     if (state?.auth?.role === 'admin') {
         if (typeof renderAdminControlCenter === 'function') {
@@ -1697,20 +2746,20 @@ function renderDashboard() {
     const root = document.getElementById('app-root');
 
     const shortcutRow = `
-        <div style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
-            <button class="btn" 
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+        <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
+            <button class="btn ap-dashboard-action-button"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
-            <button class="btn" 
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+            <button class="btn ap-dashboard-action-button"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
-            <button class="btn" 
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
-                    onclick="window.location.href='../archive/index';">
+            <button class="btn ap-dashboard-action-button"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    onclick="openDashboardArchiveWindow(event);">
                 아카이브
             </button>
         </div>
@@ -1723,10 +2772,10 @@ function renderDashboard() {
     const tab = state.ui.dashboardClassTab;
 
     const tabHtml = `
-        <div style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:12px;">
-            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='all'?'var(--surface)':'transparent'}; color:${tab==='all'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='all'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='all'; renderDashboard()">전체</button>
-            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='middle'?'var(--surface)':'transparent'}; color:${tab==='middle'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='middle'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='middle'; renderDashboard()">중등</button>
-            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:700; background:${tab==='high'?'var(--surface)':'transparent'}; color:${tab==='high'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='high'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='high'; renderDashboard()">고등</button>
+        <div class="ap-dashboard-tabbar" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:12px;">
+            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:${tab==='all'?'var(--surface)':'transparent'}; color:${tab==='all'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='all'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='all'; renderDashboard()">전체</button>
+            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:${tab==='middle'?'var(--surface)':'transparent'}; color:${tab==='middle'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='middle'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='middle'; renderDashboard()">중등</button>
+            <button class="btn" style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:${tab==='high'?'var(--surface)':'transparent'}; color:${tab==='high'?'var(--text)':'var(--secondary)'}; box-shadow:${tab==='high'?'0 1px 2px rgba(0,0,0,0.05)':'none'}; border:none;" onclick="state.ui.dashboardClassTab='high'; renderDashboard()">고등</button>
         </div>
     `;
 
@@ -1738,29 +2787,37 @@ function renderDashboard() {
     });
 
     const classStatus = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-            <h3 style="margin:0; font-size:15px; font-weight:700; color:var(--text);">학급관리</h3>
+        <div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+            <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">학급관리</h3>
         </div>
         ${tabHtml}
-        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
+        <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
+    root.innerHTML = `<div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
         ${todayJournalCard}
+        <div id="dashboard-onboarding-tasks-root"></div>
         ${todoSections}
         ${classStatus}
     </div>`;
+    queueDashboardOnboardingTasksLoad();
 }
 
 // [RESTORE] computeTodayCloseData: 원본 복구
+
 function computeTodayCloseData() {
     const today = new Date().toLocaleDateString('sv-SE');
+    const students = state?.db?.students || [];
+    const classStudents = state?.db?.class_students || [];
+    const classes = state?.db?.classes || [];
+    const attendance = state?.db?.attendance || [];
+    const homework = state?.db?.homework || [];
 
-    const scheduledActive = state.db.students.filter(s => {
-        if (s.status !== '재원') return false;
-        const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
-        const cls = state.db.classes.find(c => c.id === cid);
+    const scheduledActive = students.filter(s => {
+        if (String(s?.status || '') !== '재원') return false;
+        const cid = classStudents.find(m => String(m?.student_id) === String(s?.id))?.class_id;
+        const cls = classes.find(c => String(c?.id) === String(cid || ''));
         if (cls && Number(cls.is_active) === 0) return false;
         return isClassScheduledTodayForDashboard(cid);
     });
@@ -1769,14 +2826,14 @@ function computeTodayCloseData() {
     const hwMisses = [];
 
     scheduledActive.forEach(s => {
-        const cid = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
-        const className = state.db.classes.find(c => c.id === cid)?.name || '미배정';
+        const cid = classStudents.find(m => String(m?.student_id) === String(s?.id))?.class_id;
+        const className = classes.find(c => String(c?.id) === String(cid || ''))?.name || '미배정';
         const info = { id: s.id, name: s.name, className };
 
-        const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === today);
+        const att = attendance.find(a => String(a?.student_id) === String(s.id) && String(a?.date) === today);
         if (att?.status === '결석') absents.push(info);
 
-        const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === today);
+        const hw = homework.find(h => String(h?.student_id) === String(s.id) && String(h?.date) === today);
         if (hw?.status === '미완료') hwMisses.push(info);
     });
 
@@ -1789,13 +2846,14 @@ function computeTodayCloseData() {
     };
 }
 
+
 // [RESTORE] quickToggleAtt: 원본 복구
 async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
     if (!r?.success) { toast('출결 처리 실패', 'warn'); return; }
     await refreshDataOnly();
-    openTodayCloseModal(tab);
+    openTodayCloseModal(1);
 }
 
 // [RESTORE] quickToggleHw: 원본 복구
@@ -1804,71 +2862,115 @@ async function quickToggleHw(sid, status, tab = 'hw') {
     const r = await api.patch('homework', { studentId: sid, status, date: today });
     if (!r?.success) { toast('숙제 처리 실패', 'warn'); return; }
     await refreshDataOnly();
-    openTodayCloseModal(tab);
+    openTodayCloseModal(1);
 }
 
-function openTodayCloseModal(tab = 'att') {
+
+function renderDailyClosePanel(step = 1) {
+    injectDashboardOpsStyles();
     const d = computeTodayCloseData();
+    const risks = typeof computeRiskStudents === 'function' ? computeRiskStudents() : [];
+    const clearedLogs = state?.dashboard?.clearedCareLogs || state?.dashboardClearedCareLogs || [];
+    const today = new Date().toLocaleDateString('sv-SE');
 
-    const tabs = [
-        { key: 'att',  label: `결석 ${d.absents.length}명`,  list: d.absents,  emptyMsg: '결석 학생이 없습니다.' },
-        { key: 'hw',   label: `미완료 ${d.hwMisses.length}명`, list: d.hwMisses, emptyMsg: '숙제 미완료 학생이 없습니다.' }
-    ];
-    const cur = tabs.find(t => t.key === tab) || tabs[0];
-
-    const tabBtns = tabs.map(t => `
-        <button onclick="openTodayCloseModal('${t.key}')" style="
-            flex:1; padding:12px; border:none; border-radius:10px; font-size:13px; font-weight:700; transition:all 0.2s;
-            background:${t.key === tab ? 'var(--primary)' : 'var(--surface-2)'};
-            color:${t.key === tab ? 'white' : 'var(--secondary)'};
-            cursor:pointer;">
-            ${t.label}
-        </button>
-    `).join('');
-
-    const grouped = cur.list.reduce((acc, item) => {
-        if(!acc[item.className]) acc[item.className] = [];
-        acc[item.className].push(item);
-        return acc;
-    }, {});
-
-    // [Master Fix] 학급 정렬 알고리즘 적용
-    const sortedClassNames = Object.keys(grouped).sort((a, b) => {
-        const clsA = state.db.classes.find(c => c.name === a);
-        const clsB = state.db.classes.find(c => c.name === b);
-        const rankA = clsA ? getClassGradeRank(clsA.grade) : 99;
-        const rankB = clsB ? getClassGradeRank(clsB.grade) : 99;
-        if (rankA !== rankB) return rankA - rankB;
-        return a.localeCompare(b);
-    });
-
-    const rows = cur.list.length
-        ? sortedClassNames.map(cName => {
-            const classHeader = `<div style="background:var(--surface-2); padding:8px 12px; font-size:12px; font-weight:700; color:var(--secondary); margin-top:12px; border-radius:8px;">${apEscapeHtml(cName)}</div>`;
-            const studentRows = grouped[cName].map(s => {
-                let actionBtns = '';
-                if (tab === 'att') {
-                    actionBtns = `<div style="display:flex; gap:8px; margin-top:12px;"><button class="btn btn-primary" style="flex:1; padding:10px; font-size:12px; border-radius:8px;" onclick="quickToggleAtt('${s.id}', '등원', '${tab}')">등원 (취소)</button><button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; border-radius:8px; cursor:default; font-weight:700;">결석 유지</button></div>`;
-                } else if (tab === 'hw') {
-                    actionBtns = `<div style="display:flex; gap:8px; margin-top:12px;"><button class="btn btn-primary" style="flex:1; padding:10px; font-size:12px; border-radius:8px;" onclick="quickToggleHw('${s.id}', '완료', '${tab}')">완료 (취소)</button><button class="btn" style="flex:1; padding:10px; font-size:12px; color:var(--warning); background:rgba(255,165,2,0.12); border:none; border-radius:8px; cursor:default; font-weight:700;">미완료 유지</button></div>`;
-                }
-                return `
-                    <div style="padding:16px 8px; border-bottom:1px solid var(--border); background:var(--surface);">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <div onclick="closeModal();renderStudentDetail('${s.id}')" style="cursor:pointer; flex:1;">
-                                <span style="font-weight:700; font-size:15px; color:var(--text);">${apEscapeHtml(s.name)}</span>
-                            </div>
-                            <span onclick="closeModal();renderStudentDetail('${s.id}')" style="font-size:11px; font-weight:700; color:var(--primary); background:rgba(26,92,255,0.1); padding:4px 8px; border-radius:6px; cursor:pointer;">상세 보기</span>
+    const renderStudentGroups = (items, type) => {
+        if (!items.length) return `<div class="daily-close-empty">${type === 'att' ? '결석 학생이 없습니다.' : '숙제 미완료 학생이 없습니다.'}</div>`;
+        const grouped = dashboardGroupByClass(items);
+        const sortedClassNames = Object.keys(grouped).sort((a, b) => {
+            const clsA = (state?.db?.classes || []).find(c => c.name === a);
+            const clsB = (state?.db?.classes || []).find(c => c.name === b);
+            const rankA = clsA ? getClassGradeRank(clsA.grade) : 99;
+            const rankB = clsB ? getClassGradeRank(clsB.grade) : 99;
+            if (rankA !== rankB) return rankA - rankB;
+            return a.localeCompare(b, 'ko');
+        });
+        return `<div class="daily-close-list">${sortedClassNames.map(cName => `
+            <div class="daily-close-class-group">
+                <div class="daily-close-class-group__head">${apEscapeHtml(cName)}</div>
+                ${grouped[cName].map(s => `
+                    <div class="daily-close-student">
+                        <div class="daily-close-student__row">
+                            <span class="daily-close-student__name">${apEscapeHtml(s.name)}</span>
+                            <span class="daily-close-student__link" onclick="closeModal();renderStudentDetail('${dashboardEscapeAttr(s.id)}')">상세 보기</span>
                         </div>
-                        ${actionBtns}
-                    </div>`;
-            }).join('');
-            return classHeader + studentRows;
-        }).join('')
-        : `<div style="padding:40px 20px; text-align:center; color:var(--secondary); font-weight:600; font-size:13px;">${cur.emptyMsg}</div>`;
+                        <div class="daily-close-student__actions">
+                            ${type === 'att'
+                                ? `<button class="btn btn-primary" onclick="quickToggleAtt('${dashboardEscapeAttr(s.id)}', '등원', 'step1')">등원 (취소)</button><button class="btn" disabled>결석 유지</button>`
+                                : `<button class="btn btn-primary" onclick="quickToggleHw('${dashboardEscapeAttr(s.id)}', '완료', 'step1')">완료 (취소)</button><button class="btn" disabled>미완료 유지</button>`}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `).join('')}</div>`;
+    };
 
-    showModal('예외 현황', `<div style="display:flex; gap:8px; margin-bottom:16px;">${tabBtns}</div><div>${rows}</div>`);
+    const renderCareLogs = () => {
+        const activeCare = risks.slice(0, 8).map(r => `
+            <div class="care-log-item">
+                <div class="care-log-item__title">${apEscapeHtml(r.student?.name || '')} <span class="care-risk-badge">${apEscapeHtml(String(r.riskScore || 0))}점</span></div>
+                <div class="care-log-item__text">${apEscapeHtml(r.className || '미배정')} · ${apEscapeHtml((r.reasons || []).join(' · '))}</div>
+            </div>
+        `).join('');
+        const cleared = clearedLogs.slice(0, 8).map(log => `
+            <div class="care-log-item">
+                <div class="care-log-item__title">${apEscapeHtml(log.student_name || '')} <span class="care-risk-cleared">해소</span></div>
+                <div class="care-log-item__text">${apEscapeHtml(log.summary || '')}</div>
+            </div>
+        `).join('');
+        if (!activeCare && !cleared) return `<div class="daily-close-empty">보강/상담 상쇄로 확인할 집중케어 변동이 없습니다.</div>`;
+        return `<div class="care-log-list">${activeCare}${cleared}</div>`;
+    };
+
+    const progress = [
+        { no: 1, label: '예외 확인' },
+        { no: 2, label: '상쇄 확인' },
+        { no: 3, label: '일지 검토' }
+    ].map(item => `<div class="daily-close-progress__item ${Number(step) === item.no ? 'daily-close-progress__item--active' : ''}">${item.no}. ${item.label}</div>`).join('');
+
+    const stepHtml = `
+        <div class="daily-close-step ${Number(step) === 1 ? 'daily-close-step--active' : ''}">
+            <div class="daily-close-step__header">Step 1. 오늘 예외 확인</div>
+            <div class="daily-close-step__body">
+                ${renderStudentGroups(d.absents || [], 'att')}
+                ${renderStudentGroups(d.hwMisses || [], 'hw')}
+            </div>
+        </div>
+        <div class="daily-close-step ${Number(step) === 2 ? 'daily-close-step--active' : ''}">
+            <div class="daily-close-step__header">Step 2. 보강/상담 상쇄 확인</div>
+            <div class="daily-close-step__body">${renderCareLogs()}</div>
+        </div>
+        <div class="daily-close-step ${Number(step) === 3 ? 'daily-close-step--active' : ''}">
+            <div class="daily-close-step__header">Step 3. 일지 초안 검토</div>
+            <div class="daily-close-step__body">
+                ${renderJournalDraftPreview(today)}
+            </div>
+        </div>
+    `;
+
+    const prevBtn = Number(step) <= 1
+        ? `<button class="btn" onclick="closeModal()">취소</button>`
+        : `<button class="btn" onclick="openTodayCloseModal(${Number(step) - 1})">이전</button>`;
+    const nextBtn = Number(step) >= 3
+        ? `<button class="btn btn-primary" onclick="openDailyJournalModal('${today}')">일지 작성</button>`
+        : `<button class="btn btn-primary" onclick="openTodayCloseModal(${Number(step) + 1})">다음</button>`;
+
+    return `
+        <div class="daily-close-panel">
+            <div class="daily-close-progress">${progress}</div>
+            ${stepHtml}
+            <div class="daily-close-actions">${prevBtn}${nextBtn}</div>
+        </div>
+    `;
 }
+
+function openTodayCloseModal(step = 1) {
+    const numericStep = Number(step);
+    const safeStep = Number.isFinite(numericStep) ? Math.max(1, Math.min(3, numericStep)) : 1;
+    if (!state.ui) state.ui = {};
+    state.ui.dailyCloseStep = safeStep;
+    showModal('예외 현황', renderDailyClosePanel(safeStep));
+}
+
 
 // [RESTORE] getTodayExamConfig: 원본 복구
 function getTodayExamConfig() {
@@ -1910,8 +3012,8 @@ function openTodayExamSetModal() {
             <input id="set-exam-title" class="btn" placeholder="시험명 직접 입력" value="${cfg?.title || ''}" style="text-align:left; width:100%; background:var(--surface-2); border:none;">
             <input id="set-exam-q" type="number" class="btn" placeholder="문항 수 (기본 20)" value="${cfg?.q || 20}" min="1" max="50" style="text-align:left; width:100%; background:var(--surface-2); border:none;">
             <div style="display:flex; gap:8px; margin-top:12px;">
-                <button class="btn" style="flex:1; padding:12px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:700;" onclick="clearTodayExamConfig(); closeModal();">시험 없음</button>
-                <button class="btn btn-primary" style="flex:1.5; padding:12px; font-size:12px; font-weight:700;" onclick="handleSetTodayExam()">저장 및 적용</button>
+                <button class="btn" style="flex:1; padding:12px; font-size:12px; color:var(--error); background:rgba(255,71,87,0.1); border:none; font-weight:500;" onclick="clearTodayExamConfig(); closeModal();">시험 없음</button>
+                <button class="btn btn-primary" style="flex:1.5; padding:12px; font-size:12px; font-weight:500;" onclick="handleSetTodayExam()">저장 및 적용</button>
             </div>
         </div>
     `);
@@ -1978,27 +3080,144 @@ function appendJournalNote(text, note) {
     return text;
 }
 
-function buildJournalContent(dateStr) {
-    const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
 
-    const parts = targetDate.split('-');
-    const targetDayIdx = String(new Date(parts[0], parts[1]-1, parts[2]).getDay());
+function dashboardFormatConsultationFullText(row) {
+    const bodyFields = [
+        row?.content,
+        row?.memo,
+        row?.note,
+        row?.consultation_content,
+        row?.body,
+        row?.description,
+        row?.summary
+    ];
+    const mainBody = bodyFields
+        .map(v => String(v || '').trim())
+        .find(Boolean) || '';
+    const nextAction = String(row?.next_action || row?.nextAction || row?.follow_up || row?.followUp || '').trim();
+    const parts = [];
+    if (mainBody) parts.push(mainBody);
+    if (nextAction) parts.push(`다음 조치: ${nextAction}`);
+    return parts.join('\n');
+}
 
-    const activeClasses = state.db.classes.filter(c => {
+
+function dashboardGetJournalClassRows(targetDate) {
+    const parts = String(targetDate || new Date().toLocaleDateString('sv-SE')).split('-');
+    const targetDayIdx = String(new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2])).getDay());
+
+    return (state.db.classes || []).filter(c => {
         if (Number(c.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
-        // 수업 요일이 비어 있으면 매일 수업으로 간주한다.
         if (!c.schedule_days) return true;
-
-        // 제출일/선택일 기준 해당 요일 반만 출력한다.
         return String(c.schedule_days)
             .split(',')
             .map(v => v.trim())
             .includes(targetDayIdx);
     });
+}
+
+function dashboardGetConsultationDate(cn) {
+    return String(cn?.consultation_date || cn?.date || cn?.created_at || '').slice(0, 10);
+}
+
+function dashboardGetConsultationBody(cn) {
+    return String(
+        cn?.content ??
+        cn?.memo ??
+        cn?.note ??
+        cn?.consultation_content ??
+        cn?.body ??
+        cn?.description ??
+        cn?.summary ??
+        ''
+    ).trim();
+}
+
+function dashboardGetJournalConsultationsForClass(targetDate, memberIds) {
+    const memberSet = new Set((memberIds || []).map(id => String(id)));
+    return (state.db.consultations || []).filter(cn => {
+        if (dashboardGetConsultationDate(cn) !== targetDate) return false;
+        return memberSet.has(String(cn?.student_id || ''));
+    });
+}
+
+function dashboardFormatJournalConsultationEntry(cn, students) {
+    const sName = (students || []).find(s => String(s.id) === String(cn?.student_id))?.name || cn?.student_name_snapshot || cn?.student_name || '학생';
+    const body = dashboardGetConsultationBody(cn);
+    let text = `  * ${sName}\n`;
+    if (body) {
+        body.split(/\r?\n/).forEach(line => {
+            text += `    ${line}\n`;
+        });
+    } else {
+        text += `    상담 내용 없음\n`;
+    }
+    return text;
+}
+
+function dashboardJournalAlreadyHasConsultation(content, cn, students) {
+    const source = String(content || '');
+    const sName = (students || []).find(s => String(s.id) === String(cn?.student_id))?.name || cn?.student_name_snapshot || cn?.student_name || '학생';
+    const body = dashboardGetConsultationBody(cn);
+    if (body) {
+        const normalizedBody = body.replace(/\r\n/g, '\n').trim();
+        if (normalizedBody && source.replace(/\r\n/g, '\n').includes(normalizedBody)) return true;
+        const firstLine = normalizedBody.split('\n').find(Boolean);
+        if (firstLine && firstLine.length >= 12 && source.includes(firstLine)) return true;
+    }
+    return Boolean(sName && source.includes(sName) && body && source.includes(body.slice(0, Math.min(30, body.length))));
+}
+
+function dashboardInsertJournalConsultationsIntoClassSection(content, className, entries) {
+    if (!entries.length) return content;
+    const source = String(content || '');
+    const header = `■ ${className}반`;
+    const start = source.indexOf(header);
+    const entryText = entries.join('');
+
+    if (start < 0) {
+        return `${source.trimEnd()}\n\n■ ${className}반\n- 상담:\n${entryText}`;
+    }
+
+    const nextStart = source.indexOf('\n■ ', start + header.length);
+    const sectionEnd = nextStart >= 0 ? nextStart : source.length;
+    const section = source.slice(start, sectionEnd);
+    const hasConsultationTitle = /\n- 상담:\s*\n/.test(section);
+    const insertion = hasConsultationTitle ? entryText : `- 상담:\n${entryText}`;
+    const trimmedSectionEnd = sectionEnd - (source.slice(0, sectionEnd).match(/\s*$/)?.[0]?.length || 0);
+    const safeInsertAt = Math.max(start + header.length, trimmedSectionEnd);
+
+    return source.slice(0, safeInsertAt) + `\n${insertion}` + source.slice(safeInsertAt);
+}
+
+function mergeJournalConsultationsIntoContent(content, targetDate) {
+    const classes = dashboardGetJournalClassRows(targetDate);
+    let merged = String(content || '').trimEnd();
+    if (!merged) merged = buildJournalContent(targetDate).trimEnd();
+
+    classes.forEach(cls => {
+        const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
+        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const missingEntries = dashboardGetJournalConsultationsForClass(targetDate, memberIds)
+            .filter(cn => !dashboardJournalAlreadyHasConsultation(merged, cn, students))
+            .map(cn => dashboardFormatJournalConsultationEntry(cn, students));
+
+        if (missingEntries.length > 0) {
+            merged = dashboardInsertJournalConsultationsIntoClassSection(merged, cls.name, missingEntries);
+        }
+    });
+
+    return merged.trim() + '\n';
+}
+
+function buildJournalContent(dateStr) {
+    const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
+    let text = `[AP Math 운영 일지 - ${targetDate}]\n작성자: ${state.ui.userName}\n\n`;
+
+    const activeClasses = dashboardGetJournalClassRows(targetDate);
 
     if (activeClasses.length === 0) {
         text += `해당 날짜에 담당 학급이 없습니다.\n`;
@@ -2008,8 +3227,8 @@ function buildJournalContent(dateStr) {
     activeClasses.forEach(cls => {
         text += `■ ${cls.name}반\n`;
 
-        const memberIds = state.db.class_students.filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
-        const students = state.db.students.filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
+        const memberIds = (state.db.class_students || []).filter(m => String(m.class_id) === String(cls.id)).map(m => String(m.student_id));
+        const students = (state.db.students || []).filter(s => memberIds.includes(String(s.id)) && s.status === '재원');
         const total = students.length;
 
         const absents = [];
@@ -2018,8 +3237,8 @@ function buildJournalContent(dateStr) {
         const hwMiss = [];
 
         students.forEach(s => {
-            const att = state.db.attendance.find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
-            const hw = state.db.homework.find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
+            const att = (state.db.attendance || []).find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
+            const hw = (state.db.homework || []).find(h => String(h.student_id) === String(s.id) && h.date === targetDate);
             const attStatus = String(att?.status || '').trim();
             const tagList = String(att?.tags || '')
                 .split(',')
@@ -2058,12 +3277,11 @@ function buildJournalContent(dateStr) {
             text += `- 진도: (수업 기록 미입력)\n`;
         }
 
-        const cns = (state.db.consultations || []).filter(c => c.date === targetDate && memberIds.includes(String(c.student_id)));
+        const cns = dashboardGetJournalConsultationsForClass(targetDate, memberIds);
         if (cns.length > 0) {
             text += `- 상담:\n`;
             cns.forEach(cn => {
-                const sName = students.find(s => String(s.id) === String(cn.student_id))?.name || '학생';
-                text += `  * ${sName}: ${cn.content}\n`;
+                text += dashboardFormatJournalConsultationEntry(cn, students);
             });
         }
 
@@ -2072,6 +3290,7 @@ function buildJournalContent(dateStr) {
 
     return text.trim() + '\n';
 }
+
 
 function openDailyJournalModal(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
@@ -2084,31 +3303,33 @@ function openDailyJournalModal(dateStr) {
     const journals = state.db.journals || [];
     const myJournal = journals.find(j => j.date === targetDate && j.teacher_name === state.ui.userName);
 
-    const content = myJournal ? myJournal.content : buildJournalContent(targetDate);
     const status = myJournal ? myJournal.status : '작성중';
     const isLocked = status === '제출완료' || status === '결재완료';
+    const content = isLocked
+        ? (myJournal?.content || buildJournalContent(targetDate))
+        : mergeJournalConsultationsIntoContent(myJournal?.content || buildJournalContent(targetDate), targetDate);
 
     let actionBtns = '';
     if (!myJournal || status === '작성중') {
         actionBtns = `
-            <button class="btn" style="flex:1; padding:14px; font-weight:700; background:var(--surface); color:var(--text);" onclick="saveJournal('작성중', null, '${targetDate}')">임시 저장</button>
-            <button class="btn btn-primary" style="flex:1; padding:14px; font-weight:700;" onclick="saveJournal('제출완료', null, '${targetDate}')">제출</button>
+            <button class="btn" style="flex:1; padding:14px; font-weight:500; background:var(--surface); color:var(--text);" onclick="saveJournal('작성중', null, '${targetDate}')">임시 저장</button>
+            <button class="btn btn-primary" style="flex:1; padding:14px; font-weight:500;" onclick="saveJournal('제출완료', null, '${targetDate}')">제출</button>
         `;
     } else if (status === '제출완료') {
         actionBtns = `
-            <button class="btn" style="flex:1; padding:14px; font-weight:700; color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="saveJournal('작성중', '${myJournal.id}', '${targetDate}')">제출 취소 및 수정</button>
+            <button class="btn" style="flex:1; padding:14px; font-weight:500; color:var(--error); background:rgba(255,71,87,0.1); border:none;" onclick="saveJournal('작성중', '${myJournal.id}', '${targetDate}')">제출 취소 및 수정</button>
         `;
     }
 
     showModal('일지', `
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:10px 14px; border-radius:10px;">
-            <b style="font-size:13px; color:var(--secondary);">작성 기준일</b>
-            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:700; color:var(--text);" onchange="openDailyJournalModal(this.value)">
+            <span style="font-size:13px; color:var(--secondary);; font-weight:500;">작성 기준일</span>
+            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:500; color:var(--text);" onchange="openDailyJournalModal(this.value)">
         </div>
         ${status === '결재완료' ? `
-            <div style="background:rgba(0,208,132,0.1); color:var(--success); padding:16px; border-radius:12px; margin-bottom:16px;">
-                <b style="display:flex; align-items:center; gap:8px; font-size:14px;">원장님 확인 완료</b>
-                ${myJournal.feedback ? `<div style="margin-top:10px; font-size:13px; background:var(--surface); padding:12px; border-radius:8px; color:var(--text);"><b>피드백:</b><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
+            <div style="background:rgba(var(--success-rgb),0.10); color:var(--success); padding:16px; border-radius:12px; margin-bottom:16px;">
+                <span style="display:flex; align-items:center; gap:8px; font-size:14px;; font-weight:500;">원장님 확인 완료</span>
+                ${myJournal.feedback ? `<div style="margin-top:10px; font-size:13px; background:var(--surface); padding:12px; border-radius:8px; color:var(--text);"><span style="font-weight:500;">피드백:</span><br>${apEscapeHtml(myJournal.feedback)}</div>` : ''}
             </div>
         ` : ''}
         <textarea id="journal-content" class="btn" style="width:100%; height:250px; text-align:left; resize:vertical; font-family:inherit; font-size:14px; line-height:1.6; background:${isLocked ? 'var(--surface-2)' : 'var(--surface)'}; border:1px solid var(--border); color:var(--text);" ${isLocked ? 'readonly' : ''}>${apEscapeHtml(content)}</textarea>
@@ -2143,24 +3364,24 @@ async function saveJournal(status, existingId = null, targetDate) {
 
 function renderAdminJournalList(dateStr, teacherName = '') {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
-    const safeTeacher = String(teacherName || '').replace(/'/g, "\\'");
+    const safeTeacher = dashboardEscapeAttr(teacherName || '');
     let journals = (state.db.journals || []).filter(j => j.date === targetDate && j.status !== '작성중');
     if (teacherName) journals = journals.filter(j => j.teacher_name === teacherName);
     const title = teacherName ? `${teacherName} 선생님 일지` : '일지확인';
     
-    const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:700; background:var(--surface-2); border:none; color:var(--text);" onclick="closeModal(true)">닫기</button>` : '';
+    const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:500; background:var(--surface-2); border:none; color:var(--text);" onclick="closeModal(true)">닫기</button>` : '';
     
     const rows = journals.map(j => {
-        const teacherArg = String(teacherName || j.teacher_name || '').replace(/'/g, "\\'");
+        const teacherArg = dashboardEscapeAttr(teacherName || j.teacher_name || '');
         const statusText = j.status === '결재완료' ? '확인완료' : j.status;
         const statusColor = j.status === '결재완료' ? 'var(--success)' : 'var(--primary)';
-        const statusBg = j.status === '결재완료' ? 'rgba(0,208,132,0.1)' : 'rgba(26,92,255,0.1)';
+        const statusBg = j.status === '결재완료' ? 'rgba(var(--success-rgb),0.10)' : 'var(--primary-soft)';
         
         return `
             <div class="card" style="padding:16px; margin-bottom:12px; cursor:pointer; border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); background:var(--surface);" onclick="openAdminJournalFeedback('${j.id}', '${teacherArg}')">
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px; gap:8px; align-items:center;">
-                    <b style="font-size:15px; color:var(--text);">${apEscapeHtml(j.teacher_name)} 선생님</b>
-                    <span style="font-size:11px; font-weight:700; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
+                    <span style="font-size:15px; color:var(--text);; font-weight:500;">${apEscapeHtml(j.teacher_name)} 선생님</span>
+                    <span style="font-size:11px; font-weight:500; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
                 </div>
                 <div style="font-size:13px; color:var(--text-soft); white-space:pre-wrap; max-height:60px; overflow:hidden; line-height:1.6;">${apEscapeHtml(j.content)}</div>
             </div>`;
@@ -2169,11 +3390,11 @@ function renderAdminJournalList(dateStr, teacherName = '') {
     showModal(`${apEscapeHtml(title)}`, `
         ${backBtn}
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; background:var(--surface-2); padding:12px 14px; border-radius:12px;">
-            <b style="font-size:13px; color:var(--secondary); white-space:nowrap;">기준일</b>
-            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:700; color:var(--text);" onchange="renderAdminJournalList(this.value, '${safeTeacher}')">
+            <span style="font-size:13px; color:var(--secondary); white-space:nowrap;; font-weight:500;">기준일</span>
+            <input type="date" class="btn" value="${targetDate}" style="flex:1; text-align:left; border:none; background:transparent; padding:0; height:auto; min-height:0; font-size:14px; font-weight:500; color:var(--text);" onchange="renderAdminJournalList(this.value, '${safeTeacher}')">
         </div>
         <div style="max-height:55vh; overflow-y:auto; padding-right:4px;">
-            ${journals.length ? rows : `<div style="text-align:center; color:var(--secondary); padding:30px; font-weight:600; font-size:13px; background:var(--surface-2); border-radius:12px;">해당 날짜에 제출된 일지가 없습니다.</div>`}
+            ${journals.length ? rows : `<div style="text-align:center; color:var(--secondary); padding:30px; font-weight:500; font-size:13px; background:var(--surface-2); border-radius:12px;">해당 날짜에 제출된 일지가 없습니다.</div>`}
         </div>
     `);
 }
@@ -2181,13 +3402,13 @@ function renderAdminJournalList(dateStr, teacherName = '') {
 function openAdminJournalFeedback(id, teacherName = '') {
     const journal = (state.db.journals || []).find(j => j.id === id);
     if (!journal) return toast('일지를 찾을 수 없습니다.', 'warn');
-    const safeTeacher = String(teacherName || journal.teacher_name || '').replace(/'/g, "\\'");
+    const safeTeacher = dashboardEscapeAttr(teacherName || journal.teacher_name || '');
     
     showModal(`${apEscapeHtml(journal.teacher_name)} 선생님 일지`, `
         <textarea readonly class="btn" style="width:100%; height:200px; text-align:left; resize:vertical; font-size:14px; line-height:1.6; background:var(--surface-2); border:none; border-radius:12px; padding:16px; margin-bottom:12px; color:var(--text);">${apEscapeHtml(journal.content)}</textarea>
         <textarea id="journal-feedback" class="btn" placeholder="선생님께 전달할 피드백 (선택)" style="width:100%; height:90px; text-align:left; resize:vertical; border:1px solid var(--border); border-radius:12px; padding:14px; font-size:13px; background:var(--surface); color:var(--text);">${apEscapeHtml(journal.feedback || '')}</textarea>
         <div style="margin-top:16px;">
-            <button class="btn btn-primary" style="width:100%; padding:16px; border-radius:14px; font-weight:700; font-size:15px;" onclick="approveJournal('${journal.id}', '${journal.date}', '${safeTeacher}')">확인완료</button>
+            <button class="btn btn-primary" style="width:100%; padding:16px; border-radius:14px; font-weight:500; font-size:15px;" onclick="approveJournal('${journal.id}', '${journal.date}', '${safeTeacher}')">확인완료</button>
         </div>
     `);
 }
@@ -2203,8 +3424,44 @@ function approveJournal(id, dateStr, teacherName = '') {
     });
 }
 
+function formatAdminRecentJournalDate(dateStr) {
+    const datePart = String(dateStr || '').split('T')[0].split(' ')[0];
+    const parts = datePart.split('-').map(Number);
+    if (parts.length !== 3 || parts.some(n => !Number.isFinite(n))) return datePart;
+    const date = new Date(parts[0], parts[1] - 1, parts[2]);
+    const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+    return `${parts[1]}/${parts[2]} ${weekdays[date.getDay()] || ''}`.trim();
+}
+
+function getAdminRecentTeacherJournals(teacherName, baseDateStr = '', days = 30) {
+    const baseTime = apParseLocalDateTime(baseDateStr || new Date().toLocaleDateString('sv-SE'));
+    if (baseTime === null) return [];
+    return (state.db.journals || [])
+        .filter(j => {
+            if (String(j?.teacher_name || '') !== String(teacherName || '')) return false;
+            if (String(j?.status || '') === '작성중') return false;
+            const time = apParseLocalDateTime(j?.date);
+            if (time === null) return false;
+            const diff = (baseTime - time) / (1000 * 60 * 60 * 24);
+            return diff >= 0 && diff < days;
+        })
+        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+}
+
+function openAdminRecentTeacherJournals(teacherName, baseDateStr = '') {
+    const safeTeacher = dashboardEscapeAttr(teacherName || '');
+    const rows = getAdminRecentTeacherJournals(teacherName, baseDateStr, 30).map(j => `
+        <button type="button" class="btn" style="width:100%; min-height:44px; padding:0 14px; margin-bottom:6px; border-radius:12px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; justify-content:flex-start; font-size:14px; font-weight:500;" onclick="openAdminJournalFeedback('${dashboardEscapeAttr(String(j.id || ''))}', '${safeTeacher}')">
+            ${apEscapeHtml(formatAdminRecentJournalDate(j.date))}
+        </button>
+    `).join('');
+    showModal('최근 일지', `<div style="max-height:55vh; overflow-y:auto;">${rows}</div>`);
+}
+
+
 function renderAdminTeacherCards(todayStr) {
-    const activeClasses = state.db.classes.filter(c => Number(c.is_active) !== 0);
+    injectDashboardOpsStyles();
+    const activeClasses = (state?.db?.classes || []).filter(c => Number(c?.is_active) !== 0);
     const teacherMap = {};
     activeClasses.forEach(c => {
         const tName = String(c.teacher_name || '담당').trim();
@@ -2213,120 +3470,96 @@ function renderAdminTeacherCards(todayStr) {
         teacherMap[tName].push(c);
     });
     const teacherNames = Object.keys(teacherMap).filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko'));
-    if (!teacherNames.length) return `<div style="text-align:center; padding:24px; color:var(--secondary); font-weight:600; background:var(--surface-2); border-radius:16px;">등록된 선생님이 없습니다.</div>`;
-    
-    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
+    if (!teacherNames.length) return `<div class="daily-close-empty">등록된 선생님이 없습니다.</div>`;
+
     return teacherNames.map(tName => {
         const myClasses = teacherMap[tName];
-        const myClassIds = myClasses.map(c => String(c.id));
-        const myStudentIds = [...new Set(state.db.class_students.filter(m => myClassIds.includes(String(m.class_id))).map(m => String(m.student_id)))];
-        const activeStudents = state.db.students.filter(s => myStudentIds.includes(String(s.id)) && s.status === '재원');
-        const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
-        const scheduledClasses = myClasses.filter(c => isClassScheduledTodayForDashboard(c.id));
-        const safeName = String(tName).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-        const initial = apEscapeHtml(String(tName || '').charAt(0));
-        
+        const safeName = dashboardEscapeAttr(tName);
+
         return `
-            <div class="card ap-admin-teacher-card" style="padding:16px; margin:0; min-height:190px; height:100%; border:1px solid var(--border); border-radius:20px; background:var(--surface); box-shadow:var(--shadow); display:flex; flex-direction:column; justify-content:space-between; gap:14px; box-sizing:border-box;">
-                <div style="display:flex; align-items:flex-start; gap:12px; min-width:0;">
-                    <div style="width:42px; height:42px; border-radius:14px; background:var(--surface-2); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; flex-shrink:0;">${initial}</div>
-                    <div style="min-width:0; flex:1;">
-                        <div style="font-size:16px; font-weight:800; color:var(--text); line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(tName)} 선생님</div>
-                        <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:4px; line-height:1.45;">담당반 ${myClasses.length}개 · 재원 ${activeStudents.length}명 · 최근 등록 ${recentStudents.length}명</div>
-                        <div style="font-size:12px; color:var(--secondary); font-weight:700; margin-top:2px; line-height:1.45;">오늘 수업 ${scheduledClasses.length}개</div>
+            <div class="card ap-admin-teacher-card">
+                <div class="admin-teacher-card__head">
+                    <div class="admin-teacher-card__name">${apEscapeHtml(tName)} 선생님</div>
+                    <div class="admin-teacher-card__quick-actions">
+                        <button class="btn admin-teacher-card__quick-action" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반</button>
+                        <button class="btn admin-teacher-card__quick-action" onclick="event.stopPropagation(); renderAdminTeacherAllStudents('${safeName}')">재원</button>
                     </div>
                 </div>
-                <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-                    <button class="btn btn-primary" style="width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; box-shadow:none;" onclick="event.stopPropagation(); renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
-                    <button class="btn" style="width:100%; min-height:38px; border-radius:12px; font-size:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="event.stopPropagation(); renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
+                <div class="admin-teacher-card__journal">
+                    <div class="admin-teacher-card__journal-title" style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                        <span>이번 주 일지</span>
+                        <button type="button" class="btn admin-teacher-card__quick-action" style="min-height:28px; height:28px; padding:0 8px; font-size:11px;" onclick="event.stopPropagation(); openAdminRecentTeacherJournals('${safeName}')">최근 일지</button>
+                    </div>
+                    ${renderDashboardJournalWeekMatrix(tName, todayStr, myClasses)}
                 </div>
             </div>`;
     }).join('');
 }
 
+
 function openAdminTeacherPanel(teacherName) {
     state.ui.currentAdminTeacherName = teacherName;
-    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const safeName = dashboardEscapeAttr(teacherName || '');
     renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), safeName);
 }
 
+
 function renderAdminTeacherAllStudents(teacherName) {
-    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-    const myClasses = state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
+    injectDashboardOpsStyles();
+    const myClasses = (state?.db?.classes || []).filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
     const myClassIds = myClasses.map(c => String(c.id));
-    const myStudentIds = [...new Set((state.db.class_students || [])
+    const myStudentIds = [...new Set((state?.db?.class_students || [])
         .filter(m => myClassIds.includes(String(m.class_id)))
         .map(m => String(m.student_id)))];
-    const students = (state.db.students || [])
+    const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
+    const gradeCounts = {};
+    gradeOrder.forEach(label => { gradeCounts[label] = 0; });
+    let totalCount = 0;
+    (state?.db?.students || [])
         .filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원')
-        .sort((a, b) => String(a.grade || '').localeCompare(String(b.grade || ''), 'ko') || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+        .forEach(s => {
+            const grade = adminGetGradeLabel(s);
+            const label = gradeOrder.includes(grade) ? grade : '기타';
+            gradeCounts[label] += 1;
+            totalCount += 1;
+        });
 
-    const rows = students.map(s => {
-        const cls = adminGetStudentClass(s.id);
-        return `
-            <button class="btn" style="width:100%; min-height:48px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left;" onclick="closeModal(true); renderStudentDetail('${String(s.id).replace(/'/g, "\\'")}')">
-                <div style="min-width:0; flex:1;">
-                    <div style="font-size:13px; font-weight:800; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(s.name || '')}</div>
-                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(s.school_name || '')} ${apEscapeHtml(s.grade || '')}</div>
-                </div>
-                <span style="font-size:11px; font-weight:800; color:var(--primary); background:rgba(26,92,255,0.08); padding:4px 8px; border-radius:999px; white-space:nowrap;">${apEscapeHtml(cls?.name || '미배정')}</span>
-            </button>
-        `;
-    }).join('');
+    const chips = gradeOrder
+        .filter(label => gradeCounts[label] > 0)
+        .map(label => `<span class="admin-teacher-grade-pill"><span>${apEscapeHtml(label)}</span><span>${gradeCounts[label]}명</span></span>`)
+        .join('');
 
-    showModal(`${apEscapeHtml(teacherName)} 선생님 전체 학생 (${students.length}명)`, `
-        <button class="btn" style="width:100%; margin-bottom:12px; min-height:42px; border-radius:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="renderAdminTeacherStudents('${safeName}')">담당반 보기</button>
-        <div style="max-height:62vh; overflow-y:auto; display:flex; flex-direction:column; gap:7px; padding-right:4px;">
-            ${rows || `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:700; background:var(--surface-2); border-radius:16px;">재원생이 없습니다.</div>`}
+    showModal(`${apEscapeHtml(teacherName)} 선생님 재원`, `
+        <div class="admin-teacher-grade-pills">
+            ${totalCount > 0 ? `<span class="admin-teacher-grade-pill admin-teacher-grade-pill--total"><span>총원</span><span>${totalCount}명</span></span>${chips}` : `<div class="daily-close-empty">재원생이 없습니다.</div>`}
         </div>
     `);
 }
 
-function renderAdminTeacherStudents(teacherName) {
-    const safeName = String(teacherName || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-    const myClasses = sortClassesForDashboard(state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0));
-    const todayStr = new Date().toLocaleDateString('sv-SE');
-    const todayTime = apParseLocalDateTime(todayStr) || Date.now();
-    const myClassIds = myClasses.map(c => String(c.id));
-    const myStudentIds = [...new Set((state.db.class_students || [])
-        .filter(m => myClassIds.includes(String(m.class_id)))
-        .map(m => String(m.student_id)))];
-    const activeStudents = (state.db.students || []).filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원');
-    const recentStudents = activeStudents.filter(s => adminIsRecentStudent(s, todayTime, 30));
 
+function renderAdminTeacherStudents(teacherName) {
+    const myClasses = sortClassesForDashboard(state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0));
     const rows = myClasses.map(cls => {
-        const safeClassId = String(cls.id || '').replace(/'/g, "\\'");
-        const studentIds = adminGetClassStudentIds(cls.id);
-        const activeCount = (state.db.students || []).filter(s => studentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원').length;
+        const safeClassId = dashboardEscapeAttr(cls.id || '');
         const isToday = isClassScheduledTodayForDashboard(cls.id);
         return `
             <button class="btn" style="width:100%; min-height:50px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background:var(--surface); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left;" onclick="closeModal(true); if(typeof renderClass==='function') renderClass('${safeClassId}'); else toast('반 화면을 불러오지 못했습니다.', 'warn');">
                 <div style="min-width:0; flex:1;">
-                    <div style="font-size:14px; font-weight:800; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.name || '')}</div>
-                    <div style="font-size:11px; font-weight:700; color:var(--secondary); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.grade || '')}${cls.time_label ? ` · ${apEscapeHtml(cls.time_label)}` : ''}</div>
+                    <div style="font-size:14px; font-weight:500; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.name || '')}</div>
+                    <div style="font-size:11px; font-weight:500; color:var(--secondary); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.grade || '')}${cls.time_label ? ` · ${apEscapeHtml(cls.time_label)}` : ''}</div>
                 </div>
                 <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
-                    <span style="font-size:11px; font-weight:800; color:${isToday ? 'var(--primary)' : 'var(--secondary)'}; background:${isToday ? 'rgba(26,92,255,0.08)' : 'var(--surface-2)'}; padding:4px 8px; border-radius:999px; white-space:nowrap;">${isToday ? '오늘 수업' : '수업 없음'}</span>
-                    <span style="font-size:12px; font-weight:800; color:var(--text); white-space:nowrap;">${activeCount}명</span>
-                    <span style="font-size:18px; font-weight:800; color:var(--secondary); line-height:1;">›</span>
+                    <span style="font-size:11px; font-weight:500; color:${isToday ? 'var(--primary)' : 'var(--secondary)'}; background:${isToday ? 'var(--primary-soft)' : 'var(--surface-2)'}; padding:4px 8px; border-radius:999px; white-space:nowrap;">${isToday ? '오늘 수업' : '수업 없음'}</span>
+                    <span style="font-size:18px; font-weight:500; color:var(--secondary); line-height:1;">›</span>
                 </div>
             </button>
         `;
     }).join('');
 
     showModal(`${apEscapeHtml(teacherName)} 선생님 담당반`, `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="padding:14px; border-radius:16px; background:var(--surface-2); border:1px solid var(--border);">
-                <div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.4;">${apEscapeHtml(teacherName)} 선생님</div>
-                <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-top:4px; line-height:1.45;">담당반 ${myClasses.length}개 · 재원 ${activeStudents.length}명 · 최근 등록 ${recentStudents.length}명</div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                <button class="btn btn-primary" style="min-height:42px; border-radius:12px; font-size:12px; font-weight:800; box-shadow:none;" onclick="renderAdminJournalList(new Date().toLocaleDateString('sv-SE'), '${safeName}')">일지 확인</button>
-                <button class="btn" style="min-height:42px; border-radius:12px; font-size:12px; font-weight:800; background:var(--surface-2); border:none; color:var(--text);" onclick="renderAdminTeacherAllStudents('${safeName}')">전체 학생 보기</button>
-            </div>
-            <div style="font-size:12px; font-weight:800; color:var(--secondary); padding:0 2px;">담당반</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
             <div style="max-height:56vh; overflow-y:auto; display:flex; flex-direction:column; gap:7px; padding-right:4px;">
-                ${rows || `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:700; background:var(--surface-2); border-radius:16px;">담당반이 없습니다.</div>`}
+                ${rows || `<div style="text-align:center; padding:30px; color:var(--secondary); font-weight:500; background:var(--surface-2); border-radius:16px;">담당반이 없습니다.</div>`}
             </div>
         </div>
     `);
@@ -2334,3 +3567,4 @@ function renderAdminTeacherStudents(teacherName) {
 
 // [Button Audit Patch] Split-module duplicate handlers removed from dashboard.js.
 // Source of truth: management.js, textbook.js, memo.js, schedule.js.
+
