@@ -65,6 +65,12 @@
         }).filter(candidate => candidate.name || candidate.student_name_raw).slice(0, 24);
     }
 
+    function isCandidateConfirmed(cell, candidateIndex) {
+        const confirmed = getRawMeta(cell).confirmed_student_candidates;
+        if (!Array.isArray(confirmed)) return false;
+        return confirmed.some(item => String(item?.candidate_index) === String(candidateIndex));
+    }
+
     function sortRows(rows) {
         return [...(rows || [])].sort((a, b) => {
             const dayA = DAY_ORDER.indexOf(a.day_label || '');
@@ -254,7 +260,10 @@
                         <div>${[...new Set([...flags, ...reasons])].map(flag => `<em>${EieApp.escapeHtml(FLAG_LABELS[flag] || flag)}</em>`).join('')}</div>
                     </div>
                 ` : ''}
-                <div class="eie-api-note">이번 라운드에서는 학생/연락처 확정, 수업배정, classroom 생성은 하지 않습니다.</div>
+                <div class="eie-action-row">
+                    ${isCandidateConfirmed(cell, selected.candidate_index) ? '<span class="eie-status is-ok">확정됨</span>' : `<button type="button" class="eie-primary-button" onclick="EieTimetableView.confirmSelectedStudentCandidate()">학생·연락처·수업배정 확정</button>`}
+                </div>
+                <div class="eie-api-note">확정은 EIE 전용 테이블에만 저장합니다. APMS 학생/학부모/반 배정에는 쓰지 않습니다.</div>
             </aside>
         `;
     }
@@ -330,7 +339,7 @@
                             </div>
                             ${renderSidePanel()}
                         </div>
-                        <div class="eie-empty-box">Round 5는 학생·전화번호 후보 검토까지만 다룹니다. 학생/연락처 확정, classroom, 출석/숙제는 생성하지 않습니다.</div>
+                        <div class="eie-empty-box">Round 6은 EIE 전용 학생·연락처·수업배정 확정까지만 다룹니다. classroom, 출석/숙제는 생성하지 않습니다.</div>
                     </div>
                 </section>
             `;
@@ -386,6 +395,25 @@
         openStudentInfo(cellId, candidateIndex) {
             const selected = EieState.selectStudentCandidate(cellId, candidateIndex);
             if (!selected) EieState.setTimetableError('학생 후보를 찾지 못했습니다.');
+            EieRouter.open('timetable');
+        },
+        async confirmSelectedStudentCandidate() {
+            const selected = EieState.getSelectedStudentCandidate();
+            if (!selected?.cell_id) {
+                EieState.setTimetableError('확정할 학생 후보를 찾지 못했습니다.');
+                EieRouter.open('timetable');
+                return;
+            }
+            try {
+                await EieApi.confirmStudentCandidate({
+                    cell_id: selected.cell_id,
+                    candidate_index: selected.candidate_index
+                });
+                EieState.setTimetableNotice('학생·연락처·수업배정을 확정했습니다.');
+                EieState.closeStudentCandidatePanel();
+            } catch (error) {
+                EieState.setTimetableError(error?.message || '학생 후보를 확정하지 못했습니다.');
+            }
             EieRouter.open('timetable');
         }
     };
