@@ -731,3 +731,238 @@ body {
         grid-column: 1 / -1;
     }
 }
+
+/* Round 5: student/contact candidate review */
+.eie-student-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 100%;
+}
+
+.eie-student-chip.has-flags {
+  background: #fff7ed;
+  border-color: #fdba74;
+}
+
+.eie-chip-badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-items: center;
+}
+
+.eie-chip-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 1px 4px;
+  background: #e2e8f0;
+  color: #475569;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.eie-chip-badge.is-needs_review,
+.eie-chip-badge.is-missing_phone,
+.eie-chip-badge.is-duplicate_name {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.eie-student-detail-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.eie-student-detail-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #d7dee8;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.eie-student-detail-title strong {
+  font-size: 17px;
+  color: #0f172a;
+}
+
+.eie-detail-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.eie-detail-row {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.eie-detail-row span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.eie-detail-row strong {
+  min-width: 0;
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.eie-review-reasons {
+  display: grid;
+  gap: 8px;
+  padding: 11px;
+  border: 1px solid #fdba74;
+  border-radius: 14px;
+  background: #fff7ed;
+}
+
+.eie-review-reasons > span {
+  color: #9a3412;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eie-review-reasons div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.eie-review-reasons em {
+  border-radius: 999px;
+  padding: 3px 7px;
+  background: #fed7aa;
+  color: #9a3412;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.eie-seed-table td strong {
+  color: #0f172a;
+}
+
+.eie-status.is-muted {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+@media (max-width: 720px) {
+  .eie-detail-row {
+    grid-template-columns: 1fr;
+  }
+
+  .eie-student-chip {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Round 5 v4: compact timetable cells after phone removal */
+.eie-timetable-layout {
+  grid-template-columns: minmax(0, 1fr) 340px;
+}
+
+.eie-excel-period-row {
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.eie-excel-period-head {
+  min-height: 92px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.eie-excel-period-head strong {
+  font-size: 14px;
+}
+
+.eie-excel-period-head span {
+  font-size: 12px;
+}
+
+.eie-excel-cells {
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 8px;
+}
+
+.eie-excel-cell {
+  min-height: 104px;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.eie-cell-edit-trigger {
+  gap: 4px;
+}
+
+.eie-cell-title {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.eie-cell-teacher {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.eie-excel-cell .eie-status {
+  width: fit-content;
+  padding: 2px 6px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.eie-cell-students {
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.eie-student-chip {
+  min-height: 24px;
+  padding: 2px 6px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.eie-chip-badge,
+.eie-chip-badge.is-needs_review,
+.eie-chip-badge.is-missing_phone,
+.eie-chip-badge.is-duplicate_name {
+  padding: 0 4px;
+  font-size: 9px;
+  line-height: 1.25;
+}
+
+.eie-cell-meta {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .eie-timetable-layout,
+  .eie-excel-period-row {
+    grid-template-columns: 1fr;
+  }
+
+  .eie-student-chip {
+    width: auto;
+    max-width: 100%;
+  }
+}
