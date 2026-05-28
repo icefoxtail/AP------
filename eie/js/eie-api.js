@@ -19,9 +19,7 @@
         const keys = [
             'WANGJI_AUTH_HEADER',
             'WANGJI_AUTH_TOKEN',
-            'APMATH_AUTH_HEADER',
-            'APMATH_AUTH_TOKEN',
-            'APMATH_SESSION_TOKEN',
+            'WANGJI_SESSION_TOKEN',
             'TEACHER_SESSION_TOKEN',
             'teacher_session_token',
             'session_token'
@@ -48,18 +46,10 @@
     }
 
     function stubResponse(kind) {
-        if (kind === 'latest') {
-            return { success: true, stub: true, data: null, latest_import: null };
-        }
-        if (kind === 'timetable') {
-            return { success: true, stub: true, data: [], timetable_cells: [] };
-        }
-        if (kind === 'contact-seeds') {
-            return { success: true, stub: true, data: [], contact_seeds: [] };
-        }
-        if (kind === 'needs-review') {
-            return { success: true, stub: true, data: [], needs_review: [] };
-        }
+        if (kind === 'latest') return { success: true, stub: true, data: null, latest_import: null };
+        if (kind === 'timetable') return { success: true, stub: true, data: [], timetable_cells: [] };
+        if (kind === 'contact-seeds') return { success: true, stub: true, data: [], contact_seeds: [] };
+        if (kind === 'needs-review') return { success: true, stub: true, data: [], needs_review: [] };
         return { success: true, stub: true, data: [], student_seeds: [] };
     }
 

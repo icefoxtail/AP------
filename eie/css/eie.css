@@ -441,3 +441,43 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.eie-action-row {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.eie-secondary-button {
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--eie-border);
+    border-radius: 10px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.eie-inline-note,
+.eie-muted-text {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eie-inline-note {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--eie-border);
+    border-radius: 10px;
+    background: var(--eie-surface-2);
+}
+
+.eie-table tr.is-needs-review td {
+    background: rgba(245, 158, 11, 0.08);
+}
