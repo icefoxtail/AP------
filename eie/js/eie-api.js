@@ -1,5 +1,51 @@
 (function () {
-    const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api/eie';
+    const PROD_WORKER_ORIGIN = 'https://ap-math-os-v2612.js-pdf.workers.dev';
+
+    function trimSlash(value) {
+        return String(value || '').replace(/\/+$/, '');
+    }
+
+    function resolveApiBase() {
+        if (window.EIE_API_BASE) return trimSlash(window.EIE_API_BASE);
+        const meta = document.querySelector('meta[name="eie-api-base"]');
+        if (meta?.content) return trimSlash(meta.content);
+        if (window.location.origin && /workers\.dev$/i.test(window.location.hostname)) {
+            return `${trimSlash(window.location.origin)}/api/eie`;
+        }
+        return `${PROD_WORKER_ORIGIN}/api/eie`;
+    }
+
+    function findStoredAuthHeader() {
+        const keys = [
+            'WANGJI_AUTH_HEADER',
+            'WANGJI_AUTH_TOKEN',
+            'APMATH_AUTH_HEADER',
+            'APMATH_AUTH_TOKEN',
+            'APMATH_SESSION_TOKEN',
+            'TEACHER_SESSION_TOKEN',
+            'teacher_session_token',
+            'session_token'
+        ];
+        for (const key of keys) {
+            const value = window.localStorage ? window.localStorage.getItem(key) : '';
+            if (!value) continue;
+            const trimmed = String(value).trim();
+            if (!trimmed) continue;
+            if (/^(Bearer|Basic)\s+/i.test(trimmed)) return trimmed;
+            return `Bearer ${trimmed}`;
+        }
+        return '';
+    }
+
+    function makeHeaders(extra) {
+        const headers = {
+            'Content-Type': 'application/json',
+            ...(extra || {})
+        };
+        const authHeader = findStoredAuthHeader();
+        if (authHeader) headers.Authorization = authHeader;
+        return headers;
+    }
 
     function stubResponse(kind) {
         if (kind === 'latest') {
@@ -8,29 +54,86 @@
         if (kind === 'timetable') {
             return { success: true, stub: true, data: [], timetable_cells: [] };
         }
+        if (kind === 'contact-seeds') {
+            return { success: true, stub: true, data: [], contact_seeds: [] };
+        }
+        if (kind === 'needs-review') {
+            return { success: true, stub: true, data: [], needs_review: [] };
+        }
         return { success: true, stub: true, data: [], student_seeds: [] };
+    }
+
+    function normalizeError(error) {
+        if (!error) return '요청을 처리하지 못했습니다.';
+        if (typeof error === 'string') return error;
+        return error.message || '요청을 처리하지 못했습니다.';
+    }
+
+    async function parseResponse(response) {
+        const text = await response.text();
+        if (!text) return null;
+        try { return JSON.parse(text); }
+        catch (error) { return { success: false, error: text }; }
+    }
+
+    async function request(path, options) {
+        const url = `${resolveApiBase()}/${String(path || '').replace(/^\/+/, '')}`;
+        const response = await fetch(url, {
+            method: options?.method || 'GET',
+            headers: makeHeaders(options?.headers),
+            body: options?.body ? JSON.stringify(options.body) : undefined
+        });
+        const data = await parseResponse(response);
+        if (!response.ok || data?.success === false) {
+            const error = new Error(normalizeError(data?.error || data?.message || response.statusText));
+            error.status = response.status;
+            error.payload = data;
+            throw error;
+        }
+        return data || { success: true };
     }
 
     async function get(path, kind) {
         try {
-            const response = await fetch(`${API_BASE}/${path}`, { headers: { 'Content-Type': 'application/json' } });
-            if (!response.ok) return stubResponse(kind);
-            const data = await response.json();
-            return data?.success === false ? stubResponse(kind) : data;
-        } catch (e) {
-            return stubResponse(kind);
+            return await request(path, { method: 'GET' });
+        } catch (error) {
+            return {
+                ...stubResponse(kind),
+                fallback: true,
+                error: normalizeError(error)
+            };
         }
     }
 
     window.EieApi = {
+        resolveApiBase,
         getLatestImport() {
             return get('import/latest', 'latest');
         },
-        getTimetable() {
+        getImport(importId) {
+            return get(`import/${encodeURIComponent(importId)}`, 'latest');
+        },
+        getTimetable(importId) {
+            if (importId) return get(`import/${encodeURIComponent(importId)}/timetable-cells`, 'timetable');
             return get('timetable', 'timetable');
         },
-        getStudentSeeds() {
+        getStudentSeeds(importId) {
+            if (importId) return get(`import/${encodeURIComponent(importId)}/student-seeds`, 'student-seeds');
             return get('student-seeds', 'student-seeds');
+        },
+        getContactSeeds(importId) {
+            if (importId) return get(`import/${encodeURIComponent(importId)}/contact-seeds`, 'contact-seeds');
+            return get('contact-seeds', 'contact-seeds');
+        },
+        getNeedsReview(importId) {
+            if (importId) return get(`import/${encodeURIComponent(importId)}/needs-review`, 'needs-review');
+            return get('needs-review', 'needs-review');
+        },
+        async createImport(payload) {
+            return request('import', {
+                method: 'POST',
+                body: payload || {}
+            });
         }
     };
 })();
