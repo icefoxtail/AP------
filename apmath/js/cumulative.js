@@ -476,6 +476,32 @@ function isAttendanceClassDay(studentId, date) {
     return days.includes(String(day));
 }
 
+const CUMULATIVE_ATTENDANCE_PRESENT_STATUSES = new Set([
+    '\uB4F1\uC6D0',
+    '\uC9C0\uAC01',
+    '\uBCF4\uAC15',
+    '\uC0C1\uB2F4'
+]);
+
+function isCumulativeAttendanceAbsentStatus(status) {
+    return String(status || '').trim() === '\uACB0\uC11D';
+}
+
+function isCumulativeAttendanceNoClassStatus(status) {
+    const safe = String(status || '').trim();
+    return safe === '\uC218\uC5C5 \uC5C6\uC74C' || safe === '\uBBF8\uAE30\uB85D';
+}
+
+function isCumulativeAttendancePresentStatus(status) {
+    return CUMULATIVE_ATTENDANCE_PRESENT_STATUSES.has(String(status || '').trim());
+}
+
+function isCumulativeAttendancePresentMeta(meta) {
+    const status = meta?.record?.status || '';
+    if (isCumulativeAttendanceAbsentStatus(status)) return false;
+    return isCumulativeAttendancePresentStatus(status) || !!(meta?.hasLate || meta?.hasMakeup);
+}
+
 function getMonthlyAttendanceStatus(studentId, date) {
     const data = getMonthlyAttendanceData();
     const sid = String(studentId);
@@ -750,16 +776,16 @@ function renderAttendanceCellContent(studentId, date) {
 
     let statusHtml = '';
 
-    if (!isHol && !isClassDay) {
+    if (isCumulativeAttendanceAbsentStatus(status)) {
+        statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
+    } else if (isCumulativeAttendancePresentMeta(meta)) {
+        statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
+    } else if (!isHol && !isClassDay) {
         statusHtml = '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
     } else if (isHol && (!status || status === '미기록')) {
         statusHtml = '';
-    } else if (status === '결석') {
-        statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:#e53935;">×</span>';
-    } else if (status === '수업 없음' || status === '미기록') {
+    } else if (isCumulativeAttendanceNoClassStatus(status)) {
         statusHtml = '<span class="att-sign" style="font-size:12px;font-weight:700;color:var(--border);">-</span>';
-    } else if (status === '등원' || status === '지각' || status === '보강' || status === '상담') {
-        statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
     } else if (!status && isClassDay) {
         statusHtml = '<span class="att-sign" style="font-size:14px;font-weight:800;color:var(--success);">○</span>';
     } else {
@@ -840,18 +866,18 @@ function getAttendanceLedgerPrintCell(studentId, date) {
     let symbol = '';
     let counted = '';
 
-    if (!isHol && !isClassDay) {
+    if (isCumulativeAttendanceAbsentStatus(status)) {
+        symbol = 'X';
+        counted = 'absent';
+    } else if (isCumulativeAttendancePresentMeta(meta)) {
+        symbol = 'O';
+        counted = 'present';
+    } else if (!isHol && !isClassDay) {
         symbol = '-';
     } else if (isHol && (!status || status === '미기록')) {
         symbol = '';
-    } else if (status === '결석') {
-        symbol = 'X';
-        counted = 'absent';
-    } else if (status === '수업 없음' || status === '미기록') {
+    } else if (isCumulativeAttendanceNoClassStatus(status)) {
         symbol = '-';
-    } else if (status === '등원' || status === '지각' || status === '보강' || status === '상담') {
-        symbol = 'O';
-        counted = 'present';
     } else if (!status && isClassDay) {
         symbol = 'O';
         counted = 'present';

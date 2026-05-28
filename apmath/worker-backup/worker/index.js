@@ -2753,18 +2753,38 @@ export default {
               env.DB.prepare("SELECT * FROM attendance WHERE date = DATE('now', '+9 hours')").all(),
               env.DB.prepare("SELECT * FROM homework WHERE date = DATE('now', '+9 hours')").all(),
               env.DB.prepare('SELECT * FROM exam_sessions ORDER BY exam_date DESC LIMIT 500').all(),
-              env.DB.prepare('SELECT * FROM wrong_answers').all(),
+              env.DB.prepare(`
+                SELECT *
+                FROM wrong_answers
+                WHERE session_id IN (
+                  SELECT id
+                  FROM exam_sessions
+                  ORDER BY exam_date DESC, created_at DESC
+                  LIMIT 500
+                )
+              `).all(),
               env.DB.prepare("SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
               env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
-              env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC').all(),
+              env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC LIMIT 500').all(),
               env.DB.prepare('SELECT * FROM operation_memos WHERE teacher_name = ? ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').bind(teacher.name).all(),
-              env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all(),
-              env.DB.prepare('SELECT * FROM academy_schedules WHERE is_deleted = 0 ORDER BY schedule_date ASC, start_time ASC, created_at ASC').all(),
+              env.DB.prepare("SELECT * FROM exam_schedules WHERE exam_date >= DATE('now', '+9 hours', '-90 days') ORDER BY exam_date ASC LIMIT 500").all(),
+              env.DB.prepare("SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date >= DATE('now', '+9 hours', '-90 days') ORDER BY schedule_date ASC, start_time ASC, created_at ASC LIMIT 500").all(),
               env.DB.prepare('SELECT * FROM school_exam_records WHERE is_deleted = 0 ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 1000').all(),
-              env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC').all(),
+              env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC LIMIT 300').all(),
               env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all(),
               env.DB.prepare('SELECT * FROM class_daily_records ORDER BY date DESC, created_at DESC LIMIT 1000').all(),
-              env.DB.prepare('SELECT * FROM class_daily_progress ORDER BY created_at ASC LIMIT 3000').all(),
+              env.DB.prepare(`
+                SELECT *
+                FROM class_daily_progress
+                WHERE record_id IN (
+                  SELECT id
+                  FROM class_daily_records
+                  ORDER BY date DESC, created_at DESC
+                  LIMIT 1000
+                )
+                ORDER BY created_at ASC
+                LIMIT 3000
+              `).all(),
               env.DB.prepare('SELECT id, name, grade, subject, teacher_name, schedule_days, time_label, textbook, is_active FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name').all()
             ]);
           } else {
