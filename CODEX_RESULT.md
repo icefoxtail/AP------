@@ -60,3 +60,96 @@ Round 5는 새 정식 학생/연락처 테이블 없이 기존 import/timetable 
 검수팩:
 - Gemini/외부 검수용 part01: `eie-round5-student-phone-candidates-review-pack-v5-part01-core-20260528.zip`
 - Gemini/외부 검수용 part02: `eie-round5-student-phone-candidates-review-pack-v5-part02-context-20260528.zip`
+
+* 수동 UI 확인 항목:
+  * 학생 추가 버튼 연타, 동일 학생 재등록, duplicate toast, 신규 학생 추가 후 화면 갱신.
+* 기존 중복 학생 수동 정리 필요 여부:
+  * `reports/student-duplicate-audit-20260527.json` 기준으로 별도 검토 필요.
+* identity backfill 적용 필요 여부:
+  * 운영 DB는 별도 승인 후 audit/backfill만 분리 적용 필요.
+* report_exam_cohort_stats / initial-data 추가 분리 필요 여부:
+  * 이번 범위 밖이며 후속 과제로 유지.
+* 검토팩 경로:
+  * `reports/student-idempotency-review-pack-20260527.zip`
+
+---
+
+# CODEX_RESULT_APPEND - Backdoor Dashboard Modal API Plan
+
+## 생성 문서
+
+* `docs/BACKDOOR_DASHBOARD_MODAL_API_PLAN_20260528.md`
+
+## 읽은 파일
+
+* `CODEX_RESULT.md` — 이전 작업 맥락 확인
+* `CLAUDE_CODE_HANDOFF_BACKDOOR_20260528.md` — 파일 없음 (존재하지 않음)
+* `apmath/worker-backup/worker/index.js` — initial-data 핸들러 전체 구조 확인
+* `apmath/worker-backup/worker/routes/backdoor.js` — 파일 없음 (배포 인스턴스에만 존재)
+* `apmath/js/dashboard.js` — 3937줄. 모든 대시보드/모달 함수 확인
+* `apmath/js/core.js` — state.db 구조, initial-data load 흐름 확인
+* `apmath/js/student.js` — 학생 상세 탭 구조 (출결/숙제/시험/상담/연락처) 확인
+* `apmath/js/management.js` — 반 관리, PIN, 수납·출납 foundation 모달 확인
+
+## 확인한 주요 화면/모달 구역
+
+| 구역 | 대표 함수 |
+|------|----------|
+| 첫 화면 카드/요약 | renderAdminControlCenter, renderAdminStudentOverviewPanel, renderAdminNeedCheckPanel |
+| 오늘 운영 | openTodayCloseModal, computeRiskStudents, renderTodoSections |
+| 학생 목록/상세 | openAdminStudentList, renderStudentDetail, renderStudentDetailTab |
+| 반/수업 목록/상세 | openClassManageModal, renderClass, renderAdminTeacherStudents |
+| 시간표 | renderTimetable |
+| 출결/숙제 | openAttendanceLedger, openTodayCloseModal |
+| 수납/결제 | openBillingAccountingFoundationModal (UI 숨김 상태) |
+| 상담/메모 | openAdminConsultationCenter, openAdminStudentConsultationHistory |
+| 시험/성적/리포트 | openGlobalExamGradeView, openSchoolExamLedger, openReportPreview |
+| 설정/운영자 전용 | openAdminTeacherAccountManage, openAdminPinBatchModal |
+
+## 현재 API로 커버 가능한 영역
+
+* 운영센터 첫 진입 학생 count 카드 → /api/backdoor/overview
+* 오늘 결석/숙제 미완료 summary → /api/backdoor/today
+* 반 목록 (학급관리) → /api/backdoor/classes
+* 학생 목록 (재원/퇴원/학년별) → /api/backdoor/students
+* 시간표 전체 뷰 → /api/backdoor/timetable
+* 수납 요약 카드 → /api/backdoor/billing-summary
+* 전체 검색 → /api/backdoor/search
+
+## 추가 API가 필요한 영역
+
+* 학생 상세 모달 (이름/학교/학년/반. 연락처·PIN 제외)
+* 학생 출결·숙제·시험 탭
+* 반 상세 (학생 목록, 출결 summary)
+* 오늘 운영 상세 (반별 학생 출결 목록)
+* 최근 상담 패널 / 학생별 상담 이력
+* 일지 주간 현황 (제출 여부만)
+* 수납 미납 count / 최근 수납 recent (금액 raw dump 금지)
+* 시험/리포트 최근 목록
+
+## 다음 구현 라운드 추천
+
+* Round A: 학생 상세 모달용 read-only detail API → 연락처·PIN 제외
+* Round B: 반 상세 모달용 read-only detail API
+* Round C: 오늘 운영 모달용 read-only detail API
+* Round D: 수납 상세 모달용 summary/detail API (금액 raw dump 금지)
+* Round E: 시험/리포트/상담 summary API
+
+## 수정하지 않은 파일
+
+* apmath/js/* — 수정 없음
+* apmath/index.html — 수정 없음
+* apmath/worker-backup/worker/index.js — 수정 없음
+* apmath/worker-backup/worker/routes/backdoor.js — 파일 없음, 수정 없음
+
+## 배포하지 않음
+
+wrangler deploy 실행하지 않음.
+
+## 압축 생성하지 않음
+
+Compress-Archive / zip 생성하지 않음.
+
+## git add/commit/push 하지 않음
+
+git 작업 일체 실행하지 않음.
