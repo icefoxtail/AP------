@@ -2759,30 +2759,30 @@ export default {
                 WHERE session_id IN (
                   SELECT id
                   FROM exam_sessions
-                  ORDER BY exam_date DESC, created_at DESC
+                  ORDER BY exam_date DESC
                   LIMIT 500
                 )
               `).all(),
               env.DB.prepare("SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
               env.DB.prepare("SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') LIMIT 1000").all(),
-              env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC, created_at DESC LIMIT 500').all(),
+              env.DB.prepare('SELECT * FROM consultations ORDER BY date DESC LIMIT 500').all(),
               env.DB.prepare('SELECT * FROM operation_memos WHERE teacher_name = ? ORDER BY is_done ASC, is_pinned DESC, memo_date ASC').bind(teacher.name).all(),
               env.DB.prepare("SELECT * FROM exam_schedules WHERE exam_date >= DATE('now', '+9 hours', '-90 days') ORDER BY exam_date ASC LIMIT 500").all(),
-              env.DB.prepare("SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date >= DATE('now', '+9 hours', '-90 days') ORDER BY schedule_date ASC, start_time ASC, created_at ASC LIMIT 500").all(),
-              env.DB.prepare('SELECT * FROM school_exam_records WHERE is_deleted = 0 ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 1000').all(),
-              env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC, created_at DESC LIMIT 300').all(),
-              env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all(),
-              env.DB.prepare('SELECT * FROM class_daily_records ORDER BY date DESC, created_at DESC LIMIT 1000').all(),
+              env.DB.prepare("SELECT * FROM academy_schedules WHERE is_deleted = 0 AND schedule_date >= DATE('now', '+9 hours', '-90 days') ORDER BY schedule_date ASC, start_time ASC LIMIT 500").all(),
+              env.DB.prepare('SELECT * FROM school_exam_records WHERE is_deleted = 0 ORDER BY exam_year DESC, semester DESC LIMIT 1000').all(),
+              env.DB.prepare('SELECT * FROM daily_journals ORDER BY date DESC LIMIT 300').all(),
+              env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC').all(),
+              env.DB.prepare('SELECT * FROM class_daily_records ORDER BY date DESC LIMIT 1000').all(),
               env.DB.prepare(`
                 SELECT *
                 FROM class_daily_progress
                 WHERE record_id IN (
                   SELECT id
                   FROM class_daily_records
-                  ORDER BY date DESC, created_at DESC
+                  ORDER BY date DESC
                   LIMIT 1000
                 )
-                ORDER BY created_at ASC
+                ORDER BY record_id ASC
                 LIMIT 3000
               `).all(),
               env.DB.prepare('SELECT id, name, grade, subject, teacher_name, schedule_days, time_label, textbook, is_active FROM classes WHERE is_active != 0 OR is_active IS NULL ORDER BY grade, name').all()
@@ -2795,17 +2795,17 @@ export default {
             // 시간표 전용 전체 데이터 (권한 범위와 분리, D1 바인딩 한도 회피)
             [ttAllClassStudents, ttAllStudents, ttAllClassTextbooks] = await Promise.all([
               env.DB.prepare('SELECT * FROM class_students').all(),
-              env.DB.prepare('SELECT id, name, status, memo, created_at FROM students').all(),
-              env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC').all()
+              env.DB.prepare('SELECT id, name, status, memo FROM students').all(),
+              env.DB.prepare('SELECT * FROM class_textbooks ORDER BY class_id ASC, status ASC, sort_order ASC').all()
             ]);
 
             opm = await env.DB.prepare("SELECT * FROM operation_memos WHERE teacher_name = ? ORDER BY is_done ASC, is_pinned DESC, memo_date ASC").bind(teacher.name).all();
             exS = await env.DB.prepare('SELECT * FROM exam_schedules ORDER BY exam_date ASC').all();
             if (classIds.length) {
               const cMark = classIds.map(() => '?').join(',');
-              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?) OR (target_scope = 'student' AND student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMark})))) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(teacher.name, ...classIds).all();
+              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?) OR (target_scope = 'student' AND student_id IN (SELECT student_id FROM class_students WHERE class_id IN (${cMark})))) ORDER BY schedule_date ASC, start_time ASC`).bind(teacher.name, ...classIds).all();
             } else {
-              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?)) ORDER BY schedule_date ASC, start_time ASC, created_at ASC`).bind(teacher.name).all();
+              acs = await env.DB.prepare(`SELECT * FROM academy_schedules WHERE is_deleted = 0 AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?)) ORDER BY schedule_date ASC, start_time ASC`).bind(teacher.name).all();
             }
             jou = await env.DB.prepare('SELECT * FROM daily_journals WHERE teacher_name = ? ORDER BY date DESC').bind(teacher.name).all();
 
@@ -2842,9 +2842,9 @@ export default {
             [clss, map, txt, cdr, cdp] = await Promise.all([
               env.DB.prepare(`SELECT * FROM classes WHERE id IN (${cMarkers})`).bind(...classIds).all(),
               env.DB.prepare(`SELECT * FROM class_students WHERE class_id IN (${cMarkers})`).bind(...classIds).all(),
-              env.DB.prepare(`SELECT * FROM class_textbooks WHERE class_id IN (${cMarkers}) ORDER BY class_id ASC, status ASC, sort_order ASC, created_at ASC`).bind(...classIds).all(),
-              env.DB.prepare(`SELECT * FROM class_daily_records WHERE class_id IN (${cMarkers}) ORDER BY date DESC, created_at DESC LIMIT 1000`).bind(...classIds).all(),
-              env.DB.prepare(`SELECT * FROM class_daily_progress WHERE class_id IN (${cMarkers}) ORDER BY created_at ASC LIMIT 3000`).bind(...classIds).all()
+              env.DB.prepare(`SELECT * FROM class_textbooks WHERE class_id IN (${cMarkers}) ORDER BY class_id ASC, status ASC, sort_order ASC`).bind(...classIds).all(),
+              env.DB.prepare(`SELECT * FROM class_daily_records WHERE class_id IN (${cMarkers}) ORDER BY date DESC LIMIT 1000`).bind(...classIds).all(),
+              env.DB.prepare(`SELECT * FROM class_daily_progress WHERE class_id IN (${cMarkers}) ORDER BY record_id ASC LIMIT 3000`).bind(...classIds).all()
             ]);
 
             const studentIds = map.results.map(r => r.student_id);
@@ -2858,8 +2858,8 @@ export default {
                 env.DB.prepare(`SELECT * FROM wrong_answers WHERE student_id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM attendance WHERE date >= DATE('now', '+9 hours', '-14 days') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
                 env.DB.prepare(`SELECT * FROM homework WHERE date >= DATE('now', '+9 hours', '-14 days') AND student_id IN (${sMarkers})`).bind(...studentIds).all(),
-                env.DB.prepare(`SELECT * FROM consultations WHERE student_id IN (${sMarkers}) ORDER BY date DESC, created_at DESC`).bind(...studentIds).all(),
-                env.DB.prepare(`SELECT * FROM school_exam_records WHERE is_deleted = 0 AND student_id IN (${sMarkers}) ORDER BY exam_year DESC, semester DESC, created_at DESC LIMIT 500`).bind(...studentIds).all()
+                env.DB.prepare(`SELECT * FROM consultations WHERE student_id IN (${sMarkers}) ORDER BY date DESC`).bind(...studentIds).all(),
+                env.DB.prepare(`SELECT * FROM school_exam_records WHERE is_deleted = 0 AND student_id IN (${sMarkers}) ORDER BY exam_year DESC, semester DESC LIMIT 500`).bind(...studentIds).all()
               ]);
             } else {
               stds = { results: [] };
