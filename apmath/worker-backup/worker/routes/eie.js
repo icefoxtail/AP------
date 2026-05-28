@@ -1,5 +1,7 @@
 import { jsonResponse } from '../helpers/response.js';
 
+const MANUAL_IMPORT_SESSION_ID = 'eie_manual_operation';
+
 function stubResponse(data) {
   return jsonResponse({
     success: true,
@@ -29,6 +31,16 @@ function toJsonText(value) {
   catch (error) { return JSON.stringify({ raw: String(value) }); }
 }
 
+function safeText(value) {
+  return String(value == null ? '' : value).trim();
+}
+
+function safeStatus(value, fallback = 'active') {
+  const status = safeText(value || fallback);
+  if (['active', 'imported', 'needs_review', 'hidden', 'archived'].includes(status)) return status === 'imported' ? 'active' : status;
+  return fallback;
+}
+
 function normalizeImportPayload(body) {
   const session = body?.import_session || {};
   const cells = Array.isArray(body?.timetable_cells) ? body.timetable_cells : [];
@@ -36,10 +48,10 @@ function normalizeImportPayload(body) {
     overwrite: body?.overwrite === true,
     session: {
       id: session.id || makeId('eie_import'),
-      file_name: String(session.file_name || body?.file_name || '').trim(),
-      sheet_name: String(session.sheet_name || body?.sheet_name || '').trim(),
-      source_month: String(session.source_month || body?.source_month || '').trim(),
-      status: session.status === 'parsed' ? 'imported' : String(session.status || 'imported'),
+      file_name: safeText(session.file_name || body?.file_name),
+      sheet_name: safeText(session.sheet_name || body?.sheet_name),
+      source_month: safeText(session.source_month || body?.source_month),
+      status: session.status === 'parsed' ? 'imported' : safeText(session.status || 'imported'),
       raw_meta_json: session.raw_meta_json || body?.raw_meta_json || null
     },
     cells
@@ -58,19 +70,72 @@ function normalizeCell(cell, importSessionId, index) {
   return {
     id: cell.id || makeId('eie_cell'),
     import_session_id: importSessionId,
-    day_label: String(cell.day_label || '').trim(),
-    period_label: String(cell.period_label || '').trim(),
+    source_type: cell.source_type === 'manual' ? 'manual' : 'import',
+    source_import_session_id: cell.source_import_session_id || importSessionId,
+    day_label: safeText(cell.day_label),
+    period_label: safeText(cell.period_label),
     period_order: Number.isFinite(Number(cell.period_order)) ? Number(cell.period_order) : null,
-    start_time: String(cell.start_time || '').trim(),
-    end_time: String(cell.end_time || '').trim(),
-    class_name_raw: String(cell.class_name_raw || '').trim(),
-    teacher_name_raw: String(cell.teacher_name_raw || '').trim(),
-    room_raw: String(cell.room_raw || '').trim(),
+    start_time: safeText(cell.start_time),
+    end_time: safeText(cell.end_time),
+    class_name_raw: safeText(cell.class_name_raw),
+    teacher_name_raw: safeText(cell.teacher_name_raw),
+    room_raw: safeText(cell.room_raw),
     column_index: Number.isFinite(Number(cell.column_index)) ? Number(cell.column_index) : index,
     student_count: Number.isFinite(Number(cell.student_count)) ? Number(cell.student_count) : 0,
-    status: cell.status === 'needs_review' ? 'needs_review' : 'imported',
+    status: cell.status === 'needs_review' ? 'needs_review' : 'active',
+    memo: safeText(cell.memo),
     raw_meta_json: cell.raw_meta_json || null
   };
+}
+
+function normalizeManualCell(body) {
+  return {
+    id: body?.id || makeId('eie_cell'),
+    import_session_id: MANUAL_IMPORT_SESSION_ID,
+    source_type: 'manual',
+    source_import_session_id: null,
+    day_label: safeText(body?.day_label),
+    period_label: safeText(body?.period_label),
+    period_order: Number.isFinite(Number(body?.period_order)) ? Number(body.period_order) : periodOrderFromLabel(body?.period_label),
+    start_time: safeText(body?.start_time),
+    end_time: safeText(body?.end_time),
+    class_name_raw: safeText(body?.class_name_raw),
+    teacher_name_raw: safeText(body?.teacher_name_raw),
+    room_raw: safeText(body?.room_raw),
+    column_index: Number.isFinite(Number(body?.column_index)) ? Number(body.column_index) : null,
+    student_count: Number.isFinite(Number(body?.student_count)) ? Number(body.student_count) : 0,
+    status: safeStatus(body?.status, 'active'),
+    memo: safeText(body?.memo),
+    raw_meta_json: body?.raw_meta_json || { source_type: 'manual' }
+  };
+}
+
+function periodOrderFromLabel(value) {
+  const match = safeText(value).match(/(\d+)/);
+  return match ? Number(match[1]) : null;
+}
+
+function validateTimetableCell(cell) {
+  if (!cell.period_label) return 'period_label is required';
+  if (!cell.class_name_raw) return 'class_name_raw is required';
+  return '';
+}
+
+async function ensureManualImportSession(env) {
+  await env.DB.prepare(`
+    INSERT OR IGNORE INTO eie_import_sessions (id, file_name, sheet_name, source_month, imported_at, status, raw_meta_json, created_at, updated_at)
+    VALUES (?, 'manual', 'manual', 'manual', CURRENT_TIMESTAMP, 'manual', ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(MANUAL_IMPORT_SESSION_ID, JSON.stringify({ source_type: 'manual' })).run();
+}
+
+async function nextColumnIndex(env, cell) {
+  if (Number.isFinite(Number(cell.column_index))) return Number(cell.column_index);
+  const row = await env.DB.prepare(`
+    SELECT COALESCE(MAX(column_index), 0) + 1 AS next_column_index
+    FROM eie_timetable_cells
+    WHERE import_session_id = ? AND COALESCE(day_label, '') = COALESCE(?, '') AND period_label = ?
+  `).bind(cell.import_session_id, cell.day_label, cell.period_label).first();
+  return Number(row?.next_column_index || 1);
 }
 
 async function queryLatestImport(env) {
@@ -78,43 +143,68 @@ async function queryLatestImport(env) {
     const row = await env.DB.prepare(`
       SELECT id, file_name, sheet_name, source_month, imported_at, status, raw_meta_json, created_at, updated_at
       FROM eie_import_sessions
+      WHERE id != ?
       ORDER BY COALESCE(imported_at, created_at) DESC
       LIMIT 1
-    `).first();
+    `).bind(MANUAL_IMPORT_SESSION_ID).first();
     return row || null;
   } catch (error) {
     return null;
   }
 }
 
-async function queryTimetableCells(env, importId) {
+function orderBySql() {
+  return `
+    CASE COALESCE(day_label, '')
+      WHEN '월' THEN 1 WHEN '화' THEN 2 WHEN '수' THEN 3 WHEN '목' THEN 4 WHEN '금' THEN 5 WHEN '토' THEN 6 WHEN '일' THEN 7 ELSE 99 END,
+    period_order,
+    period_label,
+    column_index
+  `;
+}
+
+function buildStatusFilter(url) {
+  const raw = url?.searchParams?.get('status') || 'active,imported,needs_review';
+  const statuses = raw.split(',').map(item => safeStatus(item, '')).filter(Boolean);
+  return statuses.length ? statuses : ['active', 'imported', 'needs_review'];
+}
+
+async function queryTimetableCells(env, importId, options = {}) {
   try {
-    const stmt = importId
-      ? env.DB.prepare(`
-          SELECT *
-          FROM eie_timetable_cells
-          WHERE import_session_id = ?
-          ORDER BY period_order, column_index
-        `).bind(importId)
-      : env.DB.prepare(`
-          SELECT c.*
-          FROM eie_timetable_cells c
-          JOIN (
-            SELECT id
-            FROM eie_import_sessions
-            ORDER BY COALESCE(imported_at, created_at) DESC
-            LIMIT 1
-          ) latest ON latest.id = c.import_session_id
-          ORDER BY c.period_order, c.column_index
-        `);
-    const result = await stmt.all();
+    if (importId) {
+      const result = await env.DB.prepare(`
+        SELECT *
+        FROM eie_timetable_cells
+        WHERE import_session_id = ?
+        ORDER BY ${orderBySql()}
+      `).bind(importId).all();
+      return result.results || [];
+    }
+
+    const statuses = options.statuses || ['active', 'imported', 'needs_review'];
+    const placeholders = statuses.map(() => '?').join(', ');
+    const result = await env.DB.prepare(`
+      SELECT *
+      FROM eie_timetable_cells
+      WHERE status IN (${placeholders})
+      ORDER BY ${orderBySql()}
+    `).bind(...statuses).all();
     return result.results || [];
   } catch (error) {
     return [];
   }
 }
 
-async function handleGet(request, env, path) {
+async function getTimetableCell(env, cellId) {
+  return env.DB.prepare(`
+    SELECT *
+    FROM eie_timetable_cells
+    WHERE id = ?
+    LIMIT 1
+  `).bind(cellId).first();
+}
+
+async function handleGet(request, env, path, url) {
   const section = path[2] || '';
   const action = path[3] || '';
   const tail = path[4] || '';
@@ -164,7 +254,7 @@ async function handleGet(request, env, path) {
   }
 
   if (section === 'timetable') {
-    const rows = await queryTimetableCells(env, '');
+    const rows = await queryTimetableCells(env, '', { statuses: buildStatusFilter(url) });
     return jsonResponse({ success: true, data: rows, timetable_cells: rows, stub: rows.length === 0 });
   }
 
@@ -243,14 +333,16 @@ async function handlePostImport(request, env, teacher) {
   for (const cell of normalizedCells) {
     await env.DB.prepare(`
       INSERT INTO eie_timetable_cells (
-        id, import_session_id, day_label, period_label, period_order, start_time, end_time,
-        class_name_raw, teacher_name_raw, room_raw, column_index, student_count, status,
+        id, import_session_id, source_type, source_import_session_id, day_label, period_label, period_order, start_time, end_time,
+        class_name_raw, teacher_name_raw, room_raw, column_index, student_count, status, memo,
         raw_meta_json, created_at, updated_at
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
     `).bind(
       cell.id,
       cell.import_session_id,
+      cell.source_type,
+      cell.source_import_session_id,
       cell.day_label,
       cell.period_label,
       cell.period_order,
@@ -262,6 +354,7 @@ async function handlePostImport(request, env, teacher) {
       cell.column_index,
       cell.student_count,
       cell.status,
+      cell.memo,
       toJsonText(cell.raw_meta_json)
     ).run();
   }
@@ -288,17 +381,121 @@ async function handlePostImport(request, env, teacher) {
   });
 }
 
+async function handlePostTimetableCell(request, env) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const cell = normalizeManualCell(body);
+  const validationError = validateTimetableCell(cell);
+  if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
+  await ensureManualImportSession(env);
+  cell.column_index = await nextColumnIndex(env, cell);
+  await env.DB.prepare(`
+    INSERT INTO eie_timetable_cells (
+      id, import_session_id, source_type, source_import_session_id, day_label, period_label, period_order, start_time, end_time,
+      class_name_raw, teacher_name_raw, room_raw, column_index, student_count, status, memo,
+      raw_meta_json, created_at, updated_at
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    cell.id,
+    cell.import_session_id,
+    cell.source_type,
+    cell.source_import_session_id,
+    cell.day_label,
+    cell.period_label,
+    cell.period_order,
+    cell.start_time,
+    cell.end_time,
+    cell.class_name_raw,
+    cell.teacher_name_raw,
+    cell.room_raw,
+    cell.column_index,
+    cell.student_count,
+    cell.status,
+    cell.memo,
+    toJsonText(cell.raw_meta_json)
+  ).run();
+  const saved = await getTimetableCell(env, cell.id);
+  return jsonResponse({ success: true, data: saved, timetable_cell: saved });
+}
+
+async function handlePatchTimetableCell(request, env, cellId, statusOnly = false) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const existing = await getTimetableCell(env, cellId);
+  if (!existing) return jsonResponse({ success: false, error: 'timetable cell not found' }, 404);
+
+  if (statusOnly) {
+    const status = safeStatus(body.status, existing.status || 'active');
+    await env.DB.prepare(`
+      UPDATE eie_timetable_cells
+      SET status = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(status, cellId).run();
+  } else {
+    const next = {
+      day_label: body.day_label == null ? existing.day_label : safeText(body.day_label),
+      period_label: body.period_label == null ? existing.period_label : safeText(body.period_label),
+      period_order: body.period_order == null ? (periodOrderFromLabel(body.period_label) || existing.period_order) : Number(body.period_order),
+      start_time: body.start_time == null ? existing.start_time : safeText(body.start_time),
+      end_time: body.end_time == null ? existing.end_time : safeText(body.end_time),
+      class_name_raw: body.class_name_raw == null ? existing.class_name_raw : safeText(body.class_name_raw),
+      teacher_name_raw: body.teacher_name_raw == null ? existing.teacher_name_raw : safeText(body.teacher_name_raw),
+      room_raw: body.room_raw == null ? existing.room_raw : safeText(body.room_raw),
+      student_count: body.student_count == null ? existing.student_count : Number(body.student_count || 0),
+      status: body.status == null ? safeStatus(existing.status, 'active') : safeStatus(body.status, 'active'),
+      memo: body.memo == null ? existing.memo : safeText(body.memo)
+    };
+    const validationError = validateTimetableCell(next);
+    if (validationError) return jsonResponse({ success: false, error: validationError }, 400);
+    await env.DB.prepare(`
+      UPDATE eie_timetable_cells
+      SET day_label = ?, period_label = ?, period_order = ?, start_time = ?, end_time = ?,
+          class_name_raw = ?, teacher_name_raw = ?, room_raw = ?, student_count = ?, status = ?, memo = ?,
+          updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(
+      next.day_label,
+      next.period_label,
+      next.period_order,
+      next.start_time,
+      next.end_time,
+      next.class_name_raw,
+      next.teacher_name_raw,
+      next.room_raw,
+      next.student_count,
+      next.status,
+      next.memo,
+      cellId
+    ).run();
+  }
+
+  const saved = await getTimetableCell(env, cellId);
+  return jsonResponse({ success: true, data: saved, timetable_cell: saved });
+}
+
 export async function handleEie(request, env, teacher, path, url) {
   void teacher;
-  void url;
   const method = request.method;
 
   if (method === 'GET') {
-    return handleGet(request, env, path);
+    return handleGet(request, env, path, url);
   }
 
   if (method === 'POST' && path[2] === 'import' && !path[3]) {
     return handlePostImport(request, env, teacher);
+  }
+
+  if (method === 'POST' && path[2] === 'timetable-cells' && !path[3]) {
+    return handlePostTimetableCell(request, env);
+  }
+
+  if (method === 'PATCH' && path[2] === 'timetable-cells' && path[3] && !path[4]) {
+    return handlePatchTimetableCell(request, env, path[3], false);
+  }
+
+  if (method === 'PATCH' && path[2] === 'timetable-cells' && path[3] && path[4] === 'status') {
+    return handlePatchTimetableCell(request, env, path[3], true);
   }
 
   return jsonResponse({ success: false, error: 'method not allowed' }, 405);
