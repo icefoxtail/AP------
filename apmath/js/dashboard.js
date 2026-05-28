@@ -103,15 +103,23 @@ function isDashboardHoliday(dateStr) {
 
 function isClassScheduledTodayForDashboard(cid) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
-    const cls = state.db.classes.find(c => String(c.id) === String(cid));
+    const cls = typeof apmsGetClassById === 'function'
+        ? apmsGetClassById(cid)
+        : state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
 
-    const cIds = state.db.class_students
-        .filter(m => String(m.class_id) === String(cid))
-        .map(m => String(m.student_id));
-    const hasActiveAttendance = state.db.attendance.some(
-        a => a.date === todayStr && cIds.includes(String(a.student_id)) && a.status === '등원'
-    );
+    const cIds = typeof apmsGetClassStudentIds === 'function'
+        ? apmsGetClassStudentIds(cid)
+        : state.db.class_students
+            .filter(m => String(m.class_id) === String(cid))
+            .map(m => String(m.student_id));
+    const idx = typeof apmsGetDataIndexes === 'function' ? apmsGetDataIndexes() : null;
+    const hasActiveAttendance = cIds.some(studentId => {
+        const row = idx
+            ? idx.attendanceByStudentDate.get(`${String(studentId)}|${todayStr}`)
+            : state.db.attendance.find(a => a.date === todayStr && String(a.student_id) === String(studentId));
+        return row?.status === '등원';
+    });
     if (hasActiveAttendance) return true;
 
     if (isDashboardHoliday(todayStr)) return false;
@@ -622,13 +630,14 @@ async function purgeHiddenStudent(sid) {
 function openAdminStudentList(type) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr);
+    const idx = adminGetRuntimeIndex();
     let list = [], title = "";
 
     if (type === 'active') { 
-        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '재원'); 
+        list = idx.activeStudents.slice();
         title = "재원생 목록"; 
     } else if (type === 'new') { 
-        list = state.db.students.filter(s => { 
+        list = idx.activeStudents.filter(s => {
             if (adminNormalizeStatus(s.status) !== '재원' || !s.created_at || todayTime === null) return false; 
             const createdTime = apParseLocalDateTime(s.created_at);
             if (createdTime === null) return false;
@@ -636,10 +645,10 @@ function openAdminStudentList(type) {
         }); 
         title = "최근 등록 원생"; 
     } else if (type === 'discharged') { 
-        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '제적'); 
+        list = idx.dischargedStudents.slice();
         title = "퇴원생 목록"; 
     } else if (type === 'hidden') {
-        list = state.db.students.filter(s => adminNormalizeStatus(s.status) === '숨김');
+        list = idx.hiddenStudents.slice();
         title = "숨김 학생";
     } else if (type === 'risk') { 
         list = computeRiskStudents().map(r => ({ ...r.student, riskInfo: r })); 
@@ -647,8 +656,8 @@ function openAdminStudentList(type) {
     }
 
     const rows = list.map(s => {
-        const cId = state.db.class_students.find(m => m.student_id === s.id)?.class_id;
-        const cName = state.db.classes.find(c => c.id === cId)?.name || '미배정';
+        const cId = idx.classMapByStudentId.get(String(s.id))?.class_id;
+        const cName = idx.classesById.get(String(cId))?.name || '미배정';
         let riskDetails = "";
         if (s.riskInfo) { riskDetails = `<div style="font-size:11px; color:var(--error); margin-top:6px; background:rgba(var(--error-rgb),0.10); padding:6px 8px; border-radius:6px; font-weight:600;">상태: ${s.riskInfo.riskTypes.join(', ')} <span style="opacity:0.7; font-weight:normal;">(${s.riskInfo.reasons.join(' · ')})</span></div>`; }
         const actionButtons = type === 'hidden'
@@ -981,14 +990,120 @@ function adminNormalizeStatus(value) {
     return String(value || '재원').trim() || '재원';
 }
 
+function adminGetRuntimeIndex() {
+    if (!state.ui) state.ui = {};
+    const students = state.db.students || [];
+    const classes = state.db.classes || [];
+    const classStudents = state.db.class_students || [];
+    const attendanceRows = (state.db.attendance_history && state.db.attendance_history.length)
+        ? state.db.attendance_history
+        : (state.db.attendance || []);
+    const homeworkRows = (state.db.homework_history && state.db.homework_history.length)
+        ? state.db.homework_history
+        : (state.db.homework || []);
+    const examSessions = state.db.exam_sessions || [];
+    const consultations = state.db.consultations || [];
+
+    const cached = state.ui.adminRuntimeIndex;
+    if (
+        cached &&
+        cached._refs.students === students &&
+        cached._refs.classes === classes &&
+        cached._refs.classStudents === classStudents &&
+        cached._refs.attendanceRows === attendanceRows &&
+        cached._refs.homeworkRows === homeworkRows &&
+        cached._refs.examSessions === examSessions &&
+        cached._refs.consultations === consultations
+    ) return cached;
+
+    const coreIdx = typeof apmsGetDataIndexes === 'function' ? apmsGetDataIndexes() : null;
+    const studentsById = coreIdx?.studentsById || new Map(students.map(s => [String(s.id), s]));
+    const classesById = coreIdx?.classesById || new Map(classes.map(c => [String(c.id), c]));
+    const classMapByStudentId = coreIdx?.classStudentByStudentId || new Map();
+    const studentIdsByClassId = coreIdx?.studentIdsByClassId || new Map();
+
+    if (!coreIdx) {
+        classStudents.forEach(row => {
+            const sid = String(row?.student_id || '');
+            const cid = String(row?.class_id || '');
+            if (!sid || !cid) return;
+            if (!classMapByStudentId.has(sid)) classMapByStudentId.set(sid, row);
+            if (!studentIdsByClassId.has(cid)) studentIdsByClassId.set(cid, []);
+            studentIdsByClassId.get(cid).push(sid);
+        });
+    }
+
+    const countByStudent = function(rows) {
+        const map = new Map();
+        (Array.isArray(rows) ? rows : []).forEach(row => {
+            const sid = String(row?.student_id || '');
+            if (!sid) return;
+            map.set(sid, (map.get(sid) || 0) + 1);
+        });
+        return map;
+    };
+
+    const activeClasses = classes.filter(c => Number(c?.is_active) !== 0);
+    const classesByTeacherName = new Map();
+    activeClasses.forEach(c => {
+        const tName = String(c?.teacher_name || '\uB2F4\uB2F9').trim();
+        if (!tName || tName === '\uB2F4\uB2F9') return;
+        if (!classesByTeacherName.has(tName)) classesByTeacherName.set(tName, []);
+        classesByTeacherName.get(tName).push(c);
+    });
+
+    const studentsByStatus = new Map();
+    students.forEach(s => {
+        const status = adminNormalizeStatus(s.status);
+        if (!studentsByStatus.has(status)) studentsByStatus.set(status, []);
+        studentsByStatus.get(status).push(s);
+    });
+
+    const activeStudents = studentsByStatus.get('\uC7AC\uC6D0') || [];
+    const activeStudentIds = new Set(activeStudents.map(s => String(s.id)));
+    const consultationRows = consultations.slice().sort((a, b) =>
+        String(adminConsultationSortValue(b)).localeCompare(String(adminConsultationSortValue(a))) ||
+        String(b.created_at || '').localeCompare(String(a.created_at || '')) ||
+        String(b.id || '').localeCompare(String(a.id || ''))
+    );
+    const consultationsByStudentId = new Map();
+    consultationRows.forEach(row => {
+        const sid = String(row?.student_id || '');
+        if (!sid) return;
+        if (!consultationsByStudentId.has(sid)) consultationsByStudentId.set(sid, []);
+        consultationsByStudentId.get(sid).push(row);
+    });
+
+    const index = {
+        _refs: { students, classes, classStudents, attendanceRows, homeworkRows, examSessions, consultations },
+        studentsById,
+        classesById,
+        classMapByStudentId,
+        studentIdsByClassId,
+        activeClasses,
+        classesByTeacherName,
+        studentsByStatus,
+        activeStudents,
+        activeStudentIds,
+        dischargedStudents: studentsByStatus.get('\uC81C\uC801') || [],
+        leaveStudents: studentsByStatus.get('\uD734\uC6D0') || [],
+        hiddenStudents: studentsByStatus.get('\uC228\uAE40') || [],
+        attendanceCountByStudentId: countByStudent(attendanceRows),
+        homeworkCountByStudentId: countByStudent(homeworkRows),
+        examCountByStudentId: countByStudent(examSessions),
+        consultationRows,
+        consultationsByStudentId
+    };
+    state.ui.adminRuntimeIndex = index;
+    return index;
+}
+
 function adminGetStudentClassMap(studentId) {
-    if (typeof apmsGetClassStudentMap === 'function') return apmsGetClassStudentMap(studentId);
-    return (state.db.class_students || []).find(m => String(m.student_id) === String(studentId)) || null;
+    return adminGetRuntimeIndex().classMapByStudentId.get(String(studentId)) || null;
 }
 
 function adminGetClassById(classId) {
-    if (typeof apmsGetClassById === 'function') return apmsGetClassById(classId);
-    return (state.db.classes || []).find(c => String(c.id) === String(classId)) || null;
+    return adminGetRuntimeIndex().classesById.get(String(classId)) || null;
 }
 
 function adminGetStudentClass(studentId) {
@@ -997,10 +1112,7 @@ function adminGetStudentClass(studentId) {
 }
 
 function adminGetClassStudentIds(classId) {
-    if (typeof apmsGetClassStudentIds === 'function') return apmsGetClassStudentIds(classId);
-    return (state.db.class_students || [])
-        .filter(m => String(m.class_id) === String(classId))
-        .map(m => String(m.student_id));
+    return (adminGetRuntimeIndex().studentIdsByClassId.get(String(classId)) || []).slice();
 }
 
 function adminGetCreatedDateText(student) {
@@ -1022,21 +1134,20 @@ function adminIsRecentStudent(student, todayTime, days = 30) {
 }
 
 function adminBuildOverviewData(todayStr, todayTime) {
-    const students = state.db.students || [];
+    const idx = adminGetRuntimeIndex();
     const classes = state.db.classes || [];
-    const maps = state.db.class_students || [];
 
-    const activeStudents = students.filter(s => adminNormalizeStatus(s.status) === '재원');
-    const dischargedStudents = students.filter(s => adminNormalizeStatus(s.status) === '제적');
-    const leaveStudents = students.filter(s => adminNormalizeStatus(s.status) === '휴원');
+    const activeStudents = idx.activeStudents;
+    const dischargedStudents = idx.dischargedStudents;
+    const leaveStudents = idx.leaveStudents;
     const recentStudents = activeStudents
         .filter(s => adminIsRecentStudent(s, todayTime, 14))
         .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 
     const unassignedStudents = activeStudents.filter(s => {
-        const map = adminGetStudentClassMap(s.id);
+        const map = idx.classMapByStudentId.get(String(s.id));
         if (!map) return true;
-        const cls = adminGetClassById(map.class_id);
+        const cls = idx.classesById.get(String(map.class_id));
         return !cls;
     });
 
@@ -1047,9 +1158,9 @@ function adminBuildOverviewData(todayStr, todayTime) {
     });
 
     const cleanupStudents = activeStudents.filter(s => {
-        const map = adminGetStudentClassMap(s.id);
+        const map = idx.classMapByStudentId.get(String(s.id));
         if (!map) return false;
-        const cls = adminGetClassById(map.class_id);
+        const cls = idx.classesById.get(String(map.class_id));
         return !cls || Number(cls.is_active) === 0;
     });
 
@@ -1146,13 +1257,15 @@ function renderAdminNeedCheckPanel(data) {
 }
 
 function renderAdminNewStudentPanel(data) {
+    const idx = adminGetRuntimeIndex();
     const list = Array.isArray(data.recentStudents) ? data.recentStudents.slice(0, 10) : [];
     const rows = list.map(s => {
         const cls = adminGetStudentClass(s.id);
         const days = adminGetDaysSince(adminGetCreatedDateText(s), data.todayTime);
-        const attCount = (state.db.attendance_history || state.db.attendance || []).filter(a => String(a.student_id) === String(s.id)).length;
-        const hwCount = (state.db.homework_history || state.db.homework || []).filter(h => String(h.student_id) === String(s.id)).length;
-        const examCount = (state.db.exam_sessions || []).filter(e => String(e.student_id) === String(s.id)).length;
+        const sid = String(s.id);
+        const attCount = idx.attendanceCountByStudentId.get(sid) || 0;
+        const hwCount = idx.homeworkCountByStudentId.get(sid) || 0;
+        const examCount = idx.examCountByStudentId.get(sid) || 0;
         const hasClass = !!cls;
         const recordText = examCount > 0 ? `시험 ${examCount}회` : (attCount + hwCount > 0 ? `기록 ${attCount + hwCount}회` : '기록 없음');
         return `
@@ -1203,16 +1316,16 @@ function adminGetGradeOrder(label) {
 function adminGetStudentListByType(type) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
-    const students = state.db.students || [];
-    const activeStudents = students.filter(s => adminNormalizeStatus(s.status) === '재원');
+    const idx = adminGetRuntimeIndex();
+    const activeStudents = idx.activeStudents;
     if (type === 'new') {
         return activeStudents
             .filter(s => adminIsRecentStudent(s, todayTime, 14))
             .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
     }
-    if (type === 'leave') return students.filter(s => adminNormalizeStatus(s.status) === '휴원');
-    if (type === 'discharged') return students.filter(s => adminNormalizeStatus(s.status) === '제적');
-    return activeStudents.sort((a, b) => adminGetGradeOrder(adminGetGradeLabel(a)) - adminGetGradeOrder(adminGetGradeLabel(b)) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
+    if (type === 'leave') return idx.leaveStudents.slice();
+    if (type === 'discharged') return idx.dischargedStudents.slice();
+    return activeStudents.slice().sort((a, b) => adminGetGradeOrder(adminGetGradeLabel(a)) - adminGetGradeOrder(adminGetGradeLabel(b)) || String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
 }
 
 function adminRenderStudentGradeSummary(list) {
@@ -1328,13 +1441,11 @@ function adminConsultationSortValue(row) {
 }
 
 function adminGetStudentById(studentId) {
-    return (state.db.students || []).find(s => String(s.id) === String(studentId)) || null;
+    return adminGetRuntimeIndex().studentsById.get(String(studentId)) || null;
 }
 
 function adminGetConsultationRows() {
-    return (state.db.consultations || [])
-        .slice()
-        .sort((a, b) => String(adminConsultationSortValue(b)).localeCompare(String(adminConsultationSortValue(a))) || String(b.created_at || '').localeCompare(String(a.created_at || '')) || String(b.id || '').localeCompare(String(a.id || '')));
+    return adminGetRuntimeIndex().consultationRows.slice();
 }
 
 function adminGetRecentConsultationRows(days = 14) {
@@ -1381,7 +1492,7 @@ function adminRenderConsultationHistoryRows(rows) {
 function openAdminStudentConsultationHistory(studentId) {
     const sid = String(studentId || '').trim();
     const student = adminGetStudentById(sid);
-    const rows = adminGetConsultationRows().filter(row => String(row.student_id || '') === sid);
+    const rows = (adminGetRuntimeIndex().consultationsByStudentId.get(sid) || []).slice();
     const studentName = student ? student.name : '학생 확인';
     const detailBtn = student ? `<button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:1px solid var(--border); box-shadow:none;" onclick="adminOpenStudentEditOrDetail('${apEscapeHtml(sid)}')">학생 상세</button>` : '';
     showModal(`상담 이력 · ${studentName}`, `
@@ -1502,33 +1613,34 @@ function renderAdminConsultationCenterBody(keyword) {
 }
 
 function openAdminLeaveStudentList() {
-    const list = (state.db.students || []).filter(s => adminNormalizeStatus(s.status) === '휴원');
+    const list = adminGetRuntimeIndex().leaveStudents.slice();
     renderAdminSimpleStudentList('휴원생 목록', list, false, true);
 }
 
 function openAdminUnassignedStudentList() {
-    const activeStudents = (state.db.students || []).filter(s => adminNormalizeStatus(s.status) === '재원');
+    const idx = adminGetRuntimeIndex();
+    const activeStudents = idx.activeStudents;
     const list = activeStudents.filter(s => {
-        const map = adminGetStudentClassMap(s.id);
+        const map = idx.classMapByStudentId.get(String(s.id));
         if (!map) return true;
-        return !adminGetClassById(map.class_id);
+        return !idx.classesById.get(String(map.class_id));
     });
     renderAdminSimpleStudentList('반 배정 필요', list, true);
 }
 
 function openAdminClassCleanupList() {
-    const list = (state.db.students || []).filter(s => {
-        if (adminNormalizeStatus(s.status) !== '재원') return false;
-        const map = adminGetStudentClassMap(s.id);
+    const idx = adminGetRuntimeIndex();
+    const list = idx.activeStudents.filter(s => {
+        const map = idx.classMapByStudentId.get(String(s.id));
         if (!map) return false;
-        const cls = adminGetClassById(map.class_id);
+        const cls = idx.classesById.get(String(map.class_id));
         return !cls || Number(cls.is_active) === 0;
     });
     renderAdminSimpleStudentList('반 정리 필요', list, true);
 }
 
 function openAdminTeacherlessClassList() {
-    const classes = (state.db.classes || []).filter(c => {
+    const classes = adminGetRuntimeIndex().activeClasses.filter(c => {
         if (Number(c.is_active) === 0) return false;
         const teacherName = String(c.teacher_name || '').trim();
         return !teacherName || teacherName === '담당';
@@ -1607,9 +1719,10 @@ function adminBuildGlobalSearchResults(keyword) {
     const key = String(keyword || '').trim();
     if (!key) return [];
 
+    const idx = adminGetRuntimeIndex();
     const results = [];
     const students = state.db.students || [];
-    const classes = state.db.classes || [];
+    const classes = idx.activeClasses;
     const examSchedules = state.db.exam_schedules || [];
     const assignments = state.db.class_exam_assignments || [];
 
@@ -1627,10 +1740,9 @@ function adminBuildGlobalSearchResults(keyword) {
     });
 
     classes.forEach(c => {
-        if (Number(c.is_active) === 0) return;
         if (!adminSearchIncludes([c.name, c.grade, c.teacher_name], key)) return;
-        const count = adminGetClassStudentIds(c.id)
-            .filter(id => students.some(s => String(s.id) === String(id) && adminNormalizeStatus(s.status) === '재원'))
+        const count = (idx.studentIdsByClassId.get(String(c.id)) || [])
+            .filter(id => idx.activeStudentIds.has(String(id)))
             .length;
         results.push({
             type: 'class',
@@ -2079,11 +2191,13 @@ function renderAdminStudentSearch() {
     const resultArea = document.getElementById('admin-search-results');
     if (!keyword) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">검색어를 입력하세요.</div>`; return; }
     
-    const results = state.db.students.filter(s => s.name.toLowerCase().includes(keyword));
+    const idx = adminGetRuntimeIndex();
+    const results = (state.db.students || []).filter(s => String(s.name || '').toLowerCase().includes(keyword));
     if (results.length === 0) { resultArea.innerHTML = `<div style="color:var(--secondary); font-size:13px; text-align:center; padding:10px;">일치하는 학생이 없습니다.</div>`; return; }
     
     resultArea.innerHTML = results.map(s => {
-        const cName = state.db.classes.find(c => c.id === state.db.class_students.find(m => m.student_id === s.id)?.class_id)?.name || '미배정';
+        const cId = idx.classMapByStudentId.get(String(s.id))?.class_id;
+        const cName = idx.classesById.get(String(cId))?.name || '미배정';
         return `
             <div style="padding:10px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
                 <div><span style="font-size:13px; color:var(--text);; font-weight:500;">${apEscapeHtml(s.name)}</span> <span style="font-size:11px; color:var(--secondary); margin-left:6px;">${apEscapeHtml(cName)} | ${apEscapeHtml(s.status)}</span></div>
@@ -3468,19 +3582,12 @@ function openAdminRecentTeacherJournals(teacherName, baseDateStr = '') {
 
 function renderAdminTeacherCards(todayStr) {
     injectDashboardOpsStyles();
-    const activeClasses = (state?.db?.classes || []).filter(c => Number(c?.is_active) !== 0);
-    const teacherMap = {};
-    activeClasses.forEach(c => {
-        const tName = String(c.teacher_name || '담당').trim();
-        if (!tName || tName === '담당') return;
-        if (!teacherMap[tName]) teacherMap[tName] = [];
-        teacherMap[tName].push(c);
-    });
-    const teacherNames = Object.keys(teacherMap).filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko'));
+    const teacherMap = adminGetRuntimeIndex().classesByTeacherName;
+    const teacherNames = Array.from(teacherMap.keys()).filter(Boolean).sort((a, b) => a.localeCompare(b, 'ko'));
     if (!teacherNames.length) return `<div class="daily-close-empty">등록된 선생님이 없습니다.</div>`;
 
     return teacherNames.map(tName => {
-        const myClasses = teacherMap[tName];
+        const myClasses = teacherMap.get(tName) || [];
         const safeName = dashboardEscapeAttr(tName);
 
         return `
@@ -3513,17 +3620,17 @@ function openAdminTeacherPanel(teacherName) {
 
 function renderAdminTeacherAllStudents(teacherName) {
     injectDashboardOpsStyles();
-    const myClasses = (state?.db?.classes || []).filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0);
+    const idx = adminGetRuntimeIndex();
+    const myClasses = idx.classesByTeacherName.get(String(teacherName || '')) || [];
     const myClassIds = myClasses.map(c => String(c.id));
-    const myStudentIds = [...new Set((state?.db?.class_students || [])
-        .filter(m => myClassIds.includes(String(m.class_id)))
-        .map(m => String(m.student_id)))];
+    const myStudentIds = [...new Set(myClassIds.flatMap(classId => idx.studentIdsByClassId.get(String(classId)) || []))];
     const gradeOrder = ['중1', '중2', '중3', '고1', '고2', '고3', '기타'];
     const gradeCounts = {};
     gradeOrder.forEach(label => { gradeCounts[label] = 0; });
     let totalCount = 0;
-    (state?.db?.students || [])
-        .filter(s => myStudentIds.includes(String(s.id)) && adminNormalizeStatus(s.status) === '재원')
+    myStudentIds
+        .map(sid => idx.studentsById.get(String(sid)))
+        .filter(s => s && idx.activeStudentIds.has(String(s.id)))
         .forEach(s => {
             const grade = adminGetGradeLabel(s);
             const label = gradeOrder.includes(grade) ? grade : '기타';
@@ -3545,7 +3652,7 @@ function renderAdminTeacherAllStudents(teacherName) {
 
 
 function renderAdminTeacherStudents(teacherName) {
-    const myClasses = sortClassesForDashboard(state.db.classes.filter(c => String(c.teacher_name || '담당').trim() === teacherName && Number(c.is_active) !== 0));
+    const myClasses = sortClassesForDashboard((adminGetRuntimeIndex().classesByTeacherName.get(String(teacherName || '')) || []).slice());
     const rows = myClasses.map(cls => {
         const safeClassId = dashboardEscapeAttr(cls.id || '');
         const isToday = isClassScheduledTodayForDashboard(cls.id);
