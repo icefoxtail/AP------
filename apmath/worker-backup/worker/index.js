@@ -2641,6 +2641,230 @@ async function callOpenAiReportAnalysis(env, payload) {
   return { source: 'ai', analysis };
 }
 
+
+function getKstDateFromUrl(url) {
+  const requested = String(url.searchParams.get('date') || '').trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(requested)) return requested;
+  return todayKstDateString();
+}
+
+function clampApiLimit(value, fallback = 20, max = 50) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return fallback;
+  return Math.max(1, Math.min(Math.floor(n), max));
+}
+
+function makeMarkers(values) {
+  return values.map(() => '?').join(',');
+}
+
+async function readOptionalAll(env, errors, label, sql, params = []) {
+  try {
+    const stmt = env.DB.prepare(sql);
+    const res = params.length ? await stmt.bind(...params).all() : await stmt.all();
+    return res.results || [];
+  } catch (error) {
+    errors.push({ label, message: String(error?.message || error) });
+    return [];
+  }
+}
+
+async function resolveTeacherHomeTarget(env, currentUser, requestedTeacherId) {
+  if (!isAdminUser(currentUser)) return currentUser;
+  const id = String(requestedTeacherId || '').trim();
+  if (!id) return currentUser;
+  const row = await env.DB.prepare('SELECT id, login_id, name, role FROM teachers WHERE id = ? LIMIT 1').bind(id).first();
+  return row || currentUser;
+}
+
+async function buildTeacherHomeFastData(request, env, currentUser, url) {
+  if (request.method !== 'GET') return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  if (!isStaffUser(currentUser)) return jsonResponse({ error: 'Forbidden' }, 403);
+
+  const errors = [];
+  const date = getKstDateFromUrl(url);
+  const limit = clampApiLimit(url.searchParams.get('limit'), 20, 50);
+  const targetTeacher = await resolveTeacherHomeTarget(env, currentUser, url.searchParams.get('teacher_id'));
+
+  const classRows = await readOptionalAll(env, errors, 'teacher_classes', `
+    SELECT
+      c.id,
+      c.name,
+      c.grade,
+      c.subject,
+      c.teacher_name,
+      c.schedule_days,
+      c.time_label,
+      c.textbook,
+      c.is_active,
+      COUNT(DISTINCT cs.student_id) AS student_count
+    FROM teacher_classes tc
+    JOIN classes c ON c.id = tc.class_id
+    LEFT JOIN class_students cs ON cs.class_id = c.id
+    WHERE tc.teacher_id = ?
+      AND (c.is_active != 0 OR c.is_active IS NULL)
+    GROUP BY c.id
+    ORDER BY c.grade ASC, c.name ASC
+    LIMIT ?
+  `, [targetTeacher.id, limit]);
+
+  const classIds = classRows.map(row => row.id).filter(Boolean);
+  const classMarkers = makeMarkers(classIds);
+  const studentRows = classIds.length
+    ? await readOptionalAll(env, errors, 'teacher_students', `
+        SELECT DISTINCT
+          s.id,
+          s.name,
+          s.school_name,
+          s.grade,
+          s.status,
+          cs.class_id
+        FROM class_students cs
+        JOIN students s ON s.id = cs.student_id
+        WHERE cs.class_id IN (${classMarkers})
+        ORDER BY s.grade ASC, s.name ASC
+        LIMIT ?
+      `, [...classIds, Math.max(limit, 50)])
+    : [];
+
+  const studentIds = [...new Set(studentRows.map(row => row.id).filter(Boolean))];
+  const studentMarkers = makeMarkers(studentIds);
+  const classDailyRecent = classIds.length
+    ? await readOptionalAll(env, errors, 'recent_class_daily_records', `
+        SELECT id, class_id, date, teacher_name, special_note
+        FROM class_daily_records
+        WHERE class_id IN (${classMarkers})
+        ORDER BY date DESC, id DESC
+        LIMIT ?
+      `, [...classIds, limit])
+    : [];
+
+  const todayAttendance = studentIds.length && classIds.length
+    ? await readOptionalAll(env, errors, 'today_attendance', `
+        SELECT
+          a.student_id,
+          cs.class_id,
+          a.status,
+          s.name AS student_name,
+          c.name AS class_name
+        FROM attendance a
+        LEFT JOIN students s ON s.id = a.student_id
+        LEFT JOIN class_students cs
+          ON cs.student_id = a.student_id
+          AND cs.class_id IN (${classMarkers})
+        LEFT JOIN classes c ON c.id = cs.class_id
+        WHERE a.date = ?
+          AND a.student_id IN (${studentMarkers})
+        ORDER BY c.name ASC, s.name ASC
+        LIMIT ?
+      `, [...classIds, date, ...studentIds, Math.max(limit, 50)])
+    : [];
+
+  const todayHomework = studentIds.length && classIds.length
+    ? await readOptionalAll(env, errors, 'today_homework', `
+        SELECT
+          h.student_id,
+          cs.class_id,
+          h.status,
+          s.name AS student_name,
+          c.name AS class_name
+        FROM homework h
+        LEFT JOIN students s ON s.id = h.student_id
+        LEFT JOIN class_students cs
+          ON cs.student_id = h.student_id
+          AND cs.class_id IN (${classMarkers})
+        LEFT JOIN classes c ON c.id = cs.class_id
+        WHERE h.date = ?
+          AND h.student_id IN (${studentMarkers})
+        ORDER BY c.name ASC, s.name ASC
+        LIMIT ?
+      `, [...classIds, date, ...studentIds, Math.max(limit, 50)])
+    : [];
+
+  const recentAttendanceSummary = studentIds.length
+    ? await readOptionalAll(env, errors, 'recent_attendance_summary', `
+        SELECT COALESCE(NULLIF(TRIM(status), ''), 'unknown') AS status, COUNT(*) AS count
+        FROM attendance
+        WHERE date >= DATE(?, '-14 days')
+          AND date <= ?
+          AND student_id IN (${studentMarkers})
+        GROUP BY COALESCE(NULLIF(TRIM(status), ''), 'unknown')
+        ORDER BY status ASC
+      `, [date, date, ...studentIds])
+    : [];
+
+  const recentHomeworkSummary = studentIds.length
+    ? await readOptionalAll(env, errors, 'recent_homework_summary', `
+        SELECT COALESCE(NULLIF(TRIM(status), ''), 'unknown') AS status, COUNT(*) AS count
+        FROM homework
+        WHERE date >= DATE(?, '-14 days')
+          AND date <= ?
+          AND student_id IN (${studentMarkers})
+        GROUP BY COALESCE(NULLIF(TRIM(status), ''), 'unknown')
+        ORDER BY status ASC
+      `, [date, date, ...studentIds])
+    : [];
+
+  const schedules = await readOptionalAll(env, errors, 'teacher_schedules', `
+    SELECT id, schedule_type, title, schedule_date, start_time, end_time, target_scope, student_id, teacher_name, is_closed
+    FROM academy_schedules
+    WHERE is_deleted = 0
+      AND schedule_date = ?
+      AND (target_scope = 'global' OR (target_scope = 'teacher' AND teacher_name = ?))
+    ORDER BY start_time ASC, title ASC
+    LIMIT ?
+  `, [date, targetTeacher.name || '', limit]);
+
+  const openMemos = await readOptionalAll(env, errors, 'teacher_operation_memos', `
+    SELECT id, memo_date, content, is_pinned, is_done
+    FROM operation_memos
+    WHERE teacher_name = ?
+      AND COALESCE(is_done, 0) = 0
+    ORDER BY is_pinned DESC, memo_date ASC, id ASC
+    LIMIT ?
+  `, [targetTeacher.name || '', limit]);
+
+  const attendanceMissing = todayAttendance.filter(row => String(row.status || '').includes('결') || String(row.status || '').toLowerCase().includes('absent')).length;
+  const homeworkMissing = todayHomework.filter(row => String(row.status || '').includes('미') || String(row.status || '').toLowerCase().includes('missing')).length;
+
+  return jsonResponse({
+    success: true,
+    mode: 'teacher-home-fast',
+    date,
+    teacher: {
+      id: targetTeacher.id,
+      login_id: targetTeacher.login_id || null,
+      name: targetTeacher.name || '',
+      role: targetTeacher.role || ''
+    },
+    counts: {
+      classes: classRows.length,
+      students: studentRows.length,
+      today_attendance_rows: todayAttendance.length,
+      today_homework_rows: todayHomework.length,
+      today_attendance_missing: attendanceMissing,
+      today_homework_missing: homeworkMissing,
+      open_memos: openMemos.length,
+      schedules: schedules.length,
+      errors: errors.length
+    },
+    classes: classRows,
+    students: studentRows,
+    today: {
+      attendance: todayAttendance,
+      homework: todayHomework,
+      schedules,
+      open_memos: openMemos
+    },
+    recent: {
+      attendance_summary: recentAttendanceSummary,
+      homework_summary: recentHomeworkSummary,
+      class_daily_records: classDailyRecent
+    },
+    errors
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -2684,6 +2908,9 @@ export default {
         if (resource === 'backdoor') {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          if (path[2] === 'teacher-home-fast') {
+            return buildTeacherHomeFastData(request, env, teacher, url);
+          }
           const routed = await handleBackdoor(request, env, teacher, path, url);
           if (routed) return routed;
         }
