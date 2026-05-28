@@ -14,7 +14,12 @@
         importNotice: '',
         isImportBusy: false,
         isTimetableBusy: false,
-        lastLoadedImportId: ''
+        lastLoadedImportId: '',
+        selectedTimetableCellId: '',
+        timetableEditMode: '',
+        timetableNotice: '',
+        timetableError: '',
+        timetableStatusFilter: 'active,imported,needs_review'
     };
 
     function asArray(rows) {
@@ -24,6 +29,10 @@
     function importFromPayload(value) {
         if (!value) return null;
         return value.import_session || value.latest_import || value.data || value;
+    }
+
+    function findCell(cellId) {
+        return state.timetableCells.find(cell => String(cell?.id || '') === String(cellId || '')) || null;
     }
 
     window.EieState = {
@@ -39,6 +48,19 @@
         setTimetableCells(rows) {
             state.timetableCells = asArray(rows);
             state.needsReview = state.timetableCells.filter(row => row?.status === 'needs_review');
+            if (state.selectedTimetableCellId && !findCell(state.selectedTimetableCellId)) {
+                state.selectedTimetableCellId = '';
+                state.timetableEditMode = '';
+            }
+        },
+        upsertTimetableCell(row) {
+            if (!row?.id) return;
+            const index = state.timetableCells.findIndex(cell => String(cell?.id) === String(row.id));
+            if (index >= 0) state.timetableCells.splice(index, 1, row);
+            else state.timetableCells.push(row);
+            this.setTimetableCells(state.timetableCells);
+            state.selectedTimetableCellId = row.id;
+            state.timetableEditMode = 'edit';
         },
         setStudentSeeds(rows) {
             state.studentSeeds = asArray(rows);
@@ -86,6 +108,36 @@
         setLastLoadedImportId(value) {
             state.lastLoadedImportId = value || '';
         },
+        selectTimetableCell(cellId) {
+            state.selectedTimetableCellId = cellId || '';
+            state.timetableEditMode = cellId ? 'edit' : '';
+            state.timetableError = '';
+            state.timetableNotice = '';
+        },
+        startNewTimetableCell() {
+            state.selectedTimetableCellId = '';
+            state.timetableEditMode = 'new';
+            state.timetableError = '';
+            state.timetableNotice = '';
+        },
+        closeTimetableEditor() {
+            state.selectedTimetableCellId = '';
+            state.timetableEditMode = '';
+        },
+        setTimetableNotice(value) {
+            state.timetableNotice = value ? String(value) : '';
+            if (value) state.timetableError = '';
+        },
+        setTimetableError(value) {
+            state.timetableError = value ? String(value) : '';
+            if (value) state.timetableNotice = '';
+        },
+        setTimetableStatusFilter(value) {
+            state.timetableStatusFilter = value || 'active,imported,needs_review';
+        },
+        getSelectedTimetableCell() {
+            return findCell(state.selectedTimetableCellId);
+        },
         resetImportPreview() {
             state.workbookSheets = [];
             state.selectedSheetName = '';
@@ -100,6 +152,10 @@
             state.isImportBusy = false;
             state.isTimetableBusy = false;
             state.lastLoadedImportId = '';
+            state.selectedTimetableCellId = '';
+            state.timetableEditMode = '';
+            state.timetableNotice = '';
+            state.timetableError = '';
         }
     };
 })();

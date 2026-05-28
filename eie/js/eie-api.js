@@ -103,9 +103,12 @@
         getImport(importId) {
             return get(`import/${encodeURIComponent(importId)}`, 'latest');
         },
-        getTimetable(importId) {
+        getTimetable(importId, filters) {
             if (importId) return get(`import/${encodeURIComponent(importId)}/timetable-cells`, 'timetable');
-            return get('timetable', 'timetable');
+            const params = new URLSearchParams();
+            if (filters?.status) params.set('status', filters.status);
+            const query = params.toString();
+            return get(`timetable${query ? `?${query}` : ''}`, 'timetable');
         },
         getStudentSeeds(importId) {
             if (importId) return get(`import/${encodeURIComponent(importId)}/student-seeds`, 'student-seeds');
@@ -123,6 +126,24 @@
             return request('import', {
                 method: 'POST',
                 body: payload || {}
+            });
+        },
+        async createTimetableCell(payload) {
+            return request('timetable-cells', {
+                method: 'POST',
+                body: payload || {}
+            });
+        },
+        async updateTimetableCell(cellId, payload) {
+            return request(`timetable-cells/${encodeURIComponent(cellId)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async updateTimetableCellStatus(cellId, status) {
+            return request(`timetable-cells/${encodeURIComponent(cellId)}/status`, {
+                method: 'PATCH',
+                body: { status }
             });
         }
     };

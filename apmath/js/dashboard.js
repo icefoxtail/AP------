@@ -103,17 +103,18 @@ function isDashboardHoliday(dateStr) {
 
 function isClassScheduledTodayForDashboard(cid) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
-    const cls = typeof apmsGetClassById === 'function'
+    const useAdminIndex = state?.auth?.role === 'admin';
+    const cls = useAdminIndex && typeof apmsGetClassById === 'function'
         ? apmsGetClassById(cid)
         : state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
 
-    const cIds = typeof apmsGetClassStudentIds === 'function'
+    const cIds = useAdminIndex && typeof apmsGetClassStudentIds === 'function'
         ? apmsGetClassStudentIds(cid)
         : state.db.class_students
             .filter(m => String(m.class_id) === String(cid))
             .map(m => String(m.student_id));
-    const idx = typeof apmsGetDataIndexes === 'function' ? apmsGetDataIndexes() : null;
+    const idx = useAdminIndex && typeof apmsGetDataIndexes === 'function' ? apmsGetDataIndexes() : null;
     const hasActiveAttendance = cIds.some(studentId => {
         const row = idx
             ? idx.attendanceByStudentDate.get(`${String(studentId)}|${todayStr}`)
@@ -287,6 +288,11 @@ function dashboardGetJournalTargetDayKeys(teacherName = '', classRows = null) {
 
 function dashboardFindJournal(dateStr, teacherName = '') {
     const targetTeacher = dashboardNormalizeTeacherName(teacherName || state?.ui?.userName || state?.auth?.name || '');
+    if (state?.auth?.role === 'admin' && typeof adminGetRuntimeIndex === 'function') {
+        const idx = adminGetRuntimeIndex();
+        if (targetTeacher) return idx.journalsByTeacherDate.get(`${targetTeacher}|${String(dateStr || '')}`) || null;
+        return (idx.journalsByDate.get(String(dateStr || '')) || [])[0] || null;
+    }
     return (state?.db?.journals || []).find(j => {
         const sameDate = String(j?.date || '') === String(dateStr || '');
         if (!sameDate) return false;
@@ -600,14 +606,20 @@ function openRiskStudentReport(studentId) {
 async function restoreDischargedStudent(sid) {
     if (!confirm('이 학생을 재원으로 복구하시겠습니까?')) return;
     const r = await api.patch(`students/${sid}/restore`, {});
-    if (r?.success) { await loadData(); openAdminStudentList('discharged'); }
+    if (r?.success) {
+        adminApplyStudentMutationResponse(sid, r, { status: '재원', updated_at: new Date().toISOString() });
+        openAdminStudentList('discharged');
+    }
     else toast(r?.message || r?.error || '복구에 실패했습니다.', 'error');
 }
 
 async function hideDischargedStudent(sid) {
     if (!confirm('퇴원생 목록에서 숨길까요?')) return;
     const r = await api.patch(`students/${sid}/hide`, {});
-    if (r?.success) { await loadData(); openAdminStudentList('discharged'); }
+    if (r?.success) {
+        adminApplyStudentMutationResponse(sid, r, { status: '숨김', updated_at: new Date().toISOString() });
+        openAdminStudentList('discharged');
+    }
     else toast(r?.message || r?.error || '목록숨김 처리에 실패했습니다.', 'error');
 }
 
@@ -620,7 +632,7 @@ async function purgeHiddenStudent(sid) {
     const r = await api.delete('students', `${sid}/purge`);
     if (r?.success) {
         toast('숨김 학생이 완전 삭제되었습니다.', 'info');
-        await loadData();
+        adminRemoveStudentLocal(sid);
         openAdminStudentList('hidden');
         return;
     }
@@ -655,7 +667,10 @@ function openAdminStudentList(type) {
         title = "관리필요 학생"; 
     }
 
-    const rows = list.map(s => {
+    const limitKey = `student-list:${type || 'default'}`;
+    const limit = adminGetRenderLimit(limitKey, 100);
+    const visibleList = list.slice(0, limit);
+    const rows = visibleList.map(s => {
         const cId = idx.classMapByStudentId.get(String(s.id))?.class_id;
         const cName = idx.classesById.get(String(cId))?.name || '미배정';
         let riskDetails = "";
@@ -695,7 +710,13 @@ function openAdminStudentList(type) {
         </div>
     ` : '';
     const gradeSummary = (type === 'discharged' || type === 'active' || type === 'new') ? adminRenderStudentGradeSummary(list) : '';
-    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${gradeSummary}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:400;">조회 대상이 없습니다.</div>`}</div>`);
+    const more = adminRenderMoreButton(limitKey, visibleList.length, list.length, `adminShowMoreStudentList('${apEscapeHtml(String(type || ''))}')`);
+    showModal(`${title} (${list.length}명)`, `<div style="max-height:65vh; overflow-y:auto; padding-right:4px; margin:-12px; background:var(--bg);">${hiddenSwitch}${gradeSummary}${rows || `<div style="text-align:center; padding:40px; color:var(--secondary); font-size:13px; font-weight:400;">조회 대상이 없습니다.</div>`}${more}</div>`);
+}
+
+function adminShowMoreStudentList(type) {
+    adminGrowRenderLimit(`student-list:${type || 'default'}`, 100);
+    openAdminStudentList(type);
 }
 
 
@@ -803,7 +824,9 @@ async function handleAdminBatchGeneratePins() {
         const r = await api.post('students/batch-pins', {});
         if (r?.success) {
             toast(`PIN ${r.count || 0}개 생성 완료`, 'success');
-            await loadData();
+            (Array.isArray(r.details) ? r.details : []).forEach(item => {
+                if (item?.id && item?.pin) adminPatchStudentLocal(item.id, { student_pin: item.pin });
+            });
             openAdminPinBatchModal();
             return;
         }
@@ -990,6 +1013,112 @@ function adminNormalizeStatus(value) {
     return String(value || '재원').trim() || '재원';
 }
 
+function adminGetRenderLimit(key, base = 100) {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.adminRenderLimits) state.ui.adminRenderLimits = {};
+    const safeKey = String(key || 'default');
+    const current = Number(state.ui.adminRenderLimits[safeKey] || 0);
+    if (current > 0) return current;
+    state.ui.adminRenderLimits[safeKey] = base;
+    return base;
+}
+
+function adminResetRenderLimit(key, base = 100) {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.adminRenderLimits) state.ui.adminRenderLimits = {};
+    state.ui.adminRenderLimits[String(key || 'default')] = base;
+}
+
+function adminGrowRenderLimit(key, step = 100) {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.adminRenderLimits) state.ui.adminRenderLimits = {};
+    const safeKey = String(key || 'default');
+    state.ui.adminRenderLimits[safeKey] = Number(state.ui.adminRenderLimits[safeKey] || 0) + step;
+    return state.ui.adminRenderLimits[safeKey];
+}
+
+function adminRenderMoreButton(key, shown, total, onclick) {
+    if (shown >= total) return '';
+    return `
+        <button class="btn" style="width:100%; min-height:42px; margin-top:8px; border-radius:12px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; font-size:13px; font-weight:500;" onclick="${onclick}">
+            더 보기 ${shown}/${total}
+        </button>
+    `;
+}
+
+function adminInvalidateRuntimeIndexes() {
+    if (state?.ui) state.ui.adminRuntimeIndex = null;
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+}
+
+function adminUpsertDbRow(tableName, row, idKey = 'id') {
+    if (!row || !tableName) return null;
+    if (!state.db) state.db = {};
+    if (!Array.isArray(state.db[tableName])) state.db[tableName] = [];
+    const id = String(row?.[idKey] || '');
+    if (!id) return null;
+    const list = state.db[tableName];
+    const idx = list.findIndex(item => String(item?.[idKey] || '') === id);
+    if (idx > -1) list[idx] = { ...list[idx], ...row };
+    else list.push(row);
+    adminInvalidateRuntimeIndexes();
+    return idx > -1 ? list[idx] : row;
+}
+
+function adminPatchStudentLocal(studentId, patch = {}) {
+    const sid = String(studentId || '');
+    if (!sid) return null;
+    const row = (state.db.students || []).find(s => String(s.id) === sid);
+    if (!row) return null;
+    Object.assign(row, patch);
+    adminInvalidateRuntimeIndexes();
+    return row;
+}
+
+function adminRemoveStudentLocal(studentId) {
+    const sid = String(studentId || '');
+    if (!sid || !state.db) return;
+    if (Array.isArray(state.db.students)) {
+        state.db.students = state.db.students.filter(s => String(s.id) !== sid);
+    }
+    if (Array.isArray(state.db.class_students)) {
+        state.db.class_students = state.db.class_students.filter(m => String(m.student_id) !== sid);
+    }
+    adminInvalidateRuntimeIndexes();
+}
+
+function adminUpsertStudentDateRowLocal(tableName, studentId, date, patch = {}) {
+    const sid = String(studentId || '');
+    const d = String(date || '');
+    if (!sid || !d || !tableName) return null;
+    if (!state.db) state.db = {};
+    if (!Array.isArray(state.db[tableName])) state.db[tableName] = [];
+    const list = state.db[tableName];
+    let row = list.find(item => String(item.student_id) === sid && String(item.date || '') === d);
+    if (!row) {
+        row = { id: `${sid}_${d}`, student_id: sid, date: d };
+        list.push(row);
+    }
+    Object.assign(row, patch);
+    adminInvalidateRuntimeIndexes();
+    return row;
+}
+
+function adminApplyStudentMutationResponse(studentId, response, fallbackPatch = {}) {
+    const sid = String(studentId || '');
+    if (response?.student) adminUpsertDbRow('students', response.student);
+    else adminPatchStudentLocal(sid, fallbackPatch);
+
+    if (response?.class_student) {
+        if (!Array.isArray(state.db.class_students)) state.db.class_students = [];
+        const list = state.db.class_students;
+        const idx = list.findIndex(row => String(row.student_id) === sid);
+        if (idx > -1) list[idx] = { ...list[idx], ...response.class_student };
+        else list.push(response.class_student);
+        adminInvalidateRuntimeIndexes();
+    }
+}
+
 function adminGetRuntimeIndex() {
     if (!state.ui) state.ui = {};
     const students = state.db.students || [];
@@ -1003,6 +1132,9 @@ function adminGetRuntimeIndex() {
         : (state.db.homework || []);
     const examSessions = state.db.exam_sessions || [];
     const consultations = state.db.consultations || [];
+    const examSchedules = state.db.exam_schedules || [];
+    const assignments = state.db.class_exam_assignments || [];
+    const journals = state.db.journals || [];
 
     const cached = state.ui.adminRuntimeIndex;
     if (
@@ -1013,7 +1145,10 @@ function adminGetRuntimeIndex() {
         cached._refs.attendanceRows === attendanceRows &&
         cached._refs.homeworkRows === homeworkRows &&
         cached._refs.examSessions === examSessions &&
-        cached._refs.consultations === consultations
+        cached._refs.consultations === consultations &&
+        cached._refs.examSchedules === examSchedules &&
+        cached._refs.assignments === assignments &&
+        cached._refs.journals === journals
     ) return cached;
 
     const coreIdx = typeof apmsGetDataIndexes === 'function' ? apmsGetDataIndexes() : null;
@@ -1074,12 +1209,106 @@ function adminGetRuntimeIndex() {
         consultationsByStudentId.get(sid).push(row);
     });
 
+    const classActiveCountById = new Map();
+    activeClasses.forEach(c => {
+        const ids = studentIdsByClassId.get(String(c.id)) || [];
+        classActiveCountById.set(String(c.id), ids.filter(id => activeStudentIds.has(String(id))).length);
+    });
+
+    const searchItems = [];
+    students.forEach(s => {
+        const sid = String(s.id || '');
+        const classId = classMapByStudentId.get(sid)?.class_id;
+        const cls = classesById.get(String(classId || ''));
+        const className = cls ? String(cls.name || '') : '미배정';
+        const item = {
+            type: 'student',
+            label: s.name || '학생',
+            meta: `${className} · ${s.school_name || ''} ${s.grade || ''}`.trim(),
+            desc: adminNormalizeStatus(s.status),
+            actionLabel: '학생 보기',
+            studentId: s.id
+        };
+        item.searchText = adminNormalizeSearchValue([s.name, s.school_name, s.grade, s.status, s.phone, className].join(' '));
+        searchItems.push(item);
+    });
+
+    activeClasses.forEach(c => {
+        const item = {
+            type: 'class',
+            label: c.name || '반',
+            meta: `${c.grade || ''} · ${c.teacher_name || '담당 미지정'}`,
+            desc: `재원 ${classActiveCountById.get(String(c.id)) || 0}명`,
+            actionLabel: '반 열기',
+            classId: c.id
+        };
+        item.searchText = adminNormalizeSearchValue([c.name, c.grade, c.teacher_name].join(' '));
+        searchItems.push(item);
+    });
+
+    examSchedules.forEach(e => {
+        const item = {
+            type: 'exam',
+            label: `${e.school_name || '학교'} ${e.exam_name || '시험'}`.trim(),
+            meta: `${e.grade || '학교공통'} · ${e.exam_date || ''}`,
+            desc: '시험일정',
+            actionLabel: '일정 보기',
+            examDate: e.exam_date
+        };
+        item.searchText = adminNormalizeSearchValue([e.school_name, e.grade, e.exam_name, e.exam_date].join(' '));
+        searchItems.push(item);
+    });
+
+    assignments.forEach(row => {
+        const cls = classesById.get(String(row?.class_id || ''));
+        const className = cls ? String(cls.name || '') : '미배정';
+        const item = {
+            type: 'assignment',
+            label: row.exam_title || '배정 자료',
+            meta: `${className} · ${row.exam_date || ''}`,
+            desc: `${adminGetAssignmentTypeLabel(row)} · ${Number(row.question_count || 0) ? `${row.question_count}문항` : '문항 수 없음'}`,
+            actionLabel: '반 열기',
+            classId: row.class_id
+        };
+        item.searchText = adminNormalizeSearchValue([row.exam_title, row.exam_date, row.archive_file, row.source_type, className].join(' '));
+        searchItems.push(item);
+    });
+
+    const searchTypeOrder = { student: 0, class: 1, exam: 2, assignment: 3 };
+    searchItems.sort((a, b) => {
+        const ao = searchTypeOrder[a.type] ?? 99;
+        const bo = searchTypeOrder[b.type] ?? 99;
+        if (ao !== bo) return ao - bo;
+        return String(a.label || '').localeCompare(String(b.label || ''), 'ko');
+    });
+
+    const journalsByTeacherDate = new Map();
+    const journalsByDate = new Map();
+    const journalsById = new Map();
+    const journalsByTeacher = new Map();
+    journals.forEach(j => {
+        const date = String(j?.date || '');
+        const teacherName = String(j?.teacher_name || '');
+        if (j?.id) journalsById.set(String(j.id), j);
+        if (date) {
+            if (!journalsByDate.has(date)) journalsByDate.set(date, []);
+            journalsByDate.get(date).push(j);
+        }
+        if (teacherName) {
+            if (!journalsByTeacher.has(teacherName)) journalsByTeacher.set(teacherName, []);
+            journalsByTeacher.get(teacherName).push(j);
+            if (date) journalsByTeacherDate.set(`${dashboardNormalizeTeacherName(teacherName)}|${date}`, j);
+        }
+    });
+    journalsByTeacher.forEach(rows => rows.sort((a, b) => String(b.date || '').localeCompare(String(a.date || ''))));
+
     const index = {
-        _refs: { students, classes, classStudents, attendanceRows, homeworkRows, examSessions, consultations },
+        _refs: { students, classes, classStudents, attendanceRows, homeworkRows, examSessions, consultations, examSchedules, assignments, journals },
         studentsById,
         classesById,
         classMapByStudentId,
         studentIdsByClassId,
+        classActiveCountById,
         activeClasses,
         classesByTeacherName,
         studentsByStatus,
@@ -1092,7 +1321,12 @@ function adminGetRuntimeIndex() {
         homeworkCountByStudentId: countByStudent(homeworkRows),
         examCountByStudentId: countByStudent(examSessions),
         consultationRows,
-        consultationsByStudentId
+        consultationsByStudentId,
+        searchItems,
+        journalsByTeacherDate,
+        journalsByDate,
+        journalsById,
+        journalsByTeacher
     };
     state.ui.adminRuntimeIndex = index;
     return index;
@@ -1350,7 +1584,7 @@ function adminRenderStudentGradeSummary(list) {
 function adminEnsureStudentGradeModalState(type) {
     if (!state.ui) state.ui = {};
     if (!state.ui.adminStudentGradeModal || state.ui.adminStudentGradeModal.type !== type) {
-        state.ui.adminStudentGradeModal = { type, grade: '전체', keyword: '' };
+        state.ui.adminStudentGradeModal = { type, grade: '전체', keyword: '', limit: 120 };
     }
     return state.ui.adminStudentGradeModal;
 }
@@ -1363,12 +1597,21 @@ function openAdminStudentGradeModal(type) {
 function adminSetStudentGradeModalGrade(grade) {
     const modal = adminEnsureStudentGradeModalState(state.ui?.adminStudentGradeModal?.type || 'active');
     modal.grade = String(grade || '전체');
+    modal.limit = 120;
     renderAdminStudentGradeModal();
 }
 
 function adminHandleStudentGradeModalSearch(value) {
     const modal = adminEnsureStudentGradeModalState(state.ui?.adminStudentGradeModal?.type || 'active');
     modal.keyword = String(value || '').trim();
+    modal.limit = 120;
+    const body = document.getElementById('admin-student-grade-modal-body');
+    if (body) body.innerHTML = renderAdminStudentGradeModalBody();
+}
+
+function adminShowMoreStudentGradeModal() {
+    const modal = adminEnsureStudentGradeModalState(state.ui?.adminStudentGradeModal?.type || 'active');
+    modal.limit = Number(modal.limit || 120) + 120;
     const body = document.getElementById('admin-student-grade-modal-body');
     if (body) body.innerHTML = renderAdminStudentGradeModalBody();
 }
@@ -1398,7 +1641,9 @@ function renderAdminStudentGradeModalBody() {
         const active = modal.grade === g;
         return `<button class="btn" style="min-height:34px; padding:6px 10px; font-size:12px; font-weight:500; border-radius:999px; border:1px solid ${active ? 'rgba(var(--primary-rgb),0.25)' : 'var(--border)'}; background:${active ? 'var(--primary-soft)' : 'var(--surface)'}; color:${active ? 'var(--primary)' : 'var(--text)'}; box-shadow:none;" onclick="adminSetStudentGradeModalGrade('${apEscapeHtml(g)}')">${apEscapeHtml(g)} ${count}</button>`;
     }).join('');
-    const rows = filtered.map(s => {
+    const limit = Number(modal.limit || 120);
+    const visible = filtered.slice(0, limit);
+    const rows = visible.map(s => {
         const cls = adminGetStudentClass(s.id);
         const grade = adminGetGradeLabel(s);
         const days = adminGetDaysSince(adminGetCreatedDateText(s), todayTime);
@@ -1414,14 +1659,16 @@ function renderAdminStudentGradeModalBody() {
             </div>
         `;
     }).join('');
+    const more = adminRenderMoreButton('student-grade-modal', visible.length, filtered.length, 'adminShowMoreStudentGradeModal()');
     return `
         <div style="display:flex; flex-direction:column; gap:10px;">
             <input type="search" autocomplete="off" value="${apEscapeHtml(modal.keyword || '')}" placeholder="학생 이름 검색" oninput="adminHandleStudentGradeModalSearch(this.value)" style="width:100%; height:42px; border:1px solid var(--border); border-radius:14px; background:var(--surface); color:var(--text); padding:0 13px; font-size:13px; font-weight:500; box-sizing:border-box;">
             <div style="display:flex; flex-wrap:wrap; gap:6px;">${chips}</div>
-            <div style="font-size:12px; font-weight:400; color:var(--secondary); padding:0 2px;">총 ${filtered.length}명</div>
+            <div style="font-size:12px; font-weight:400; color:var(--secondary); padding:0 2px;">총 ${filtered.length}명${visible.length < filtered.length ? ` · ${visible.length}명 표시 중` : ''}</div>
             <div style="max-height:54vh; overflow-y:auto; border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
                 ${rows || `<div style="height:72px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">조회 대상이 없습니다.</div>`}
             </div>
+            ${more}
         </div>
     `;
 }
@@ -1493,19 +1740,29 @@ function openAdminStudentConsultationHistory(studentId) {
     const sid = String(studentId || '').trim();
     const student = adminGetStudentById(sid);
     const rows = (adminGetRuntimeIndex().consultationsByStudentId.get(sid) || []).slice();
+    const limitKey = `consult-history:${sid}`;
+    const limit = adminGetRenderLimit(limitKey, 80);
+    const visibleRows = rows.slice(0, limit);
     const studentName = student ? student.name : '학생 확인';
     const detailBtn = student ? `<button class="btn" style="min-height:34px; padding:6px 10px; font-size:11px; font-weight:500; border-radius:10px; background:var(--surface-2); border:1px solid var(--border); box-shadow:none;" onclick="adminOpenStudentEditOrDetail('${apEscapeHtml(sid)}')">학생 상세</button>` : '';
+    const more = adminRenderMoreButton(limitKey, visibleRows.length, rows.length, `adminShowMoreConsultationHistory('${apEscapeHtml(sid)}')`);
     showModal(`상담 이력 · ${studentName}`, `
         <div style="display:flex; flex-direction:column; gap:10px; margin:-4px;">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:0 2px;">
-                <div style="font-size:12px; font-weight:400; color:var(--secondary);">총 ${rows.length}건</div>
+                <div style="font-size:12px; font-weight:400; color:var(--secondary);">총 ${rows.length}건${visibleRows.length < rows.length ? ` · ${visibleRows.length}건 표시 중` : ''}</div>
                 ${detailBtn}
             </div>
             <div style="max-height:58vh; overflow-y:auto; border:1px solid var(--border); border-radius:16px; background:var(--surface); overflow:hidden;">
-                ${adminRenderConsultationHistoryRows(rows)}
+                ${adminRenderConsultationHistoryRows(visibleRows)}
             </div>
+            ${more}
         </div>
     `);
+}
+
+function adminShowMoreConsultationHistory(studentId) {
+    adminGrowRenderLimit(`consult-history:${studentId || ''}`, 80);
+    openAdminStudentConsultationHistory(studentId);
 }
 
 function renderAdminRecentConsultationPanel() {
@@ -1716,78 +1973,13 @@ function adminGetAssignmentTypeLabel(row) {
 }
 
 function adminBuildGlobalSearchResults(keyword) {
-    const key = String(keyword || '').trim();
+    const key = adminNormalizeSearchValue(keyword);
     if (!key) return [];
 
     const idx = adminGetRuntimeIndex();
-    const results = [];
-    const students = state.db.students || [];
-    const classes = idx.activeClasses;
-    const examSchedules = state.db.exam_schedules || [];
-    const assignments = state.db.class_exam_assignments || [];
-
-    students.forEach(s => {
-        const className = adminGetSearchClassNameByStudentId(s.id);
-        if (!adminSearchIncludes([s.name, s.school_name, s.grade, s.status, s.phone, className], key)) return;
-        results.push({
-            type: 'student',
-            label: s.name || '학생',
-            meta: `${className} · ${s.school_name || ''} ${s.grade || ''}`.trim(),
-            desc: adminNormalizeStatus(s.status),
-            actionLabel: '학생 보기',
-            studentId: s.id
-        });
-    });
-
-    classes.forEach(c => {
-        if (!adminSearchIncludes([c.name, c.grade, c.teacher_name], key)) return;
-        const count = (idx.studentIdsByClassId.get(String(c.id)) || [])
-            .filter(id => idx.activeStudentIds.has(String(id)))
-            .length;
-        results.push({
-            type: 'class',
-            label: c.name || '반',
-            meta: `${c.grade || ''} · ${c.teacher_name || '담당 미지정'}`,
-            desc: `재원 ${count}명`,
-            actionLabel: '반 열기',
-            classId: c.id
-        });
-    });
-
-    examSchedules.forEach(e => {
-        if (!adminSearchIncludes([e.school_name, e.grade, e.exam_name, e.exam_date], key)) return;
-        results.push({
-            type: 'exam',
-            label: `${e.school_name || '학교'} ${e.exam_name || '시험'}`.trim(),
-            meta: `${e.grade || '학교공통'} · ${e.exam_date || ''}`,
-            desc: '시험일정',
-            actionLabel: '일정 보기',
-            examDate: e.exam_date
-        });
-    });
-
-    assignments.forEach(row => {
-        const className = adminGetSearchClassNameByClassId(row.class_id);
-        if (!adminSearchIncludes([row.exam_title, row.exam_date, row.archive_file, row.source_type, className], key)) return;
-        results.push({
-            type: 'assignment',
-            label: row.exam_title || '배정 자료',
-            meta: `${className} · ${row.exam_date || ''}`,
-            desc: `${adminGetAssignmentTypeLabel(row)} · ${Number(row.question_count || 0) ? `${row.question_count}문항` : '문항 수 없음'}`,
-            actionLabel: '반 열기',
-            classId: row.class_id
-        });
-    });
-
-    const typeOrder = { student: 0, class: 1, exam: 2, assignment: 3 };
-    results.sort((a, b) => {
-        const ao = typeOrder[a.type] ?? 99;
-        const bo = typeOrder[b.type] ?? 99;
-        if (ao !== bo) return ao - bo;
-        return String(a.label || '').localeCompare(String(b.label || ''), 'ko');
-    });
-
-    return results.slice(0, 18);
+    return (idx.searchItems || [])
+        .filter(item => String(item.searchText || '').includes(key))
+        .slice(0, 18);
 }
 
 function adminSearchTypeLabel(type) {
@@ -1819,7 +2011,7 @@ function renderAdminGlobalSearchResults(results) {
     `).join('');
 }
 
-function handleAdminGlobalSearchInput(value) {
+function adminRunGlobalSearch(value) {
     const area = document.getElementById('admin-global-search-results');
     if (!area) return;
 
@@ -1834,6 +2026,26 @@ function handleAdminGlobalSearchInput(value) {
     const results = adminBuildGlobalSearchResults(keyword);
     state.ui.adminGlobalSearchResults = results;
     area.innerHTML = renderAdminGlobalSearchResults(results);
+}
+
+function handleAdminGlobalSearchInput(value) {
+    if (!state.ui) state.ui = {};
+    const keyword = String(value || '').trim();
+    window.clearTimeout(state.ui.adminGlobalSearchTimer);
+
+    if (!keyword) {
+        adminRunGlobalSearch('');
+        return;
+    }
+
+    const area = document.getElementById('admin-global-search-results');
+    if (area) {
+        area.innerHTML = `<div style="height:48px; display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:13px; font-weight:500;">검색 중...</div>`;
+    }
+
+    state.ui.adminGlobalSearchTimer = window.setTimeout(() => {
+        adminRunGlobalSearch(keyword);
+    }, 160);
 }
 
 function openAdminGlobalSearchResult(index) {
@@ -2973,7 +3185,8 @@ async function quickToggleAtt(sid, status, tab = 'att') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('attendance', { studentId: sid, status, date: today });
     if (!r?.success) { toast('출결 처리 실패', 'warn'); return; }
-    await refreshDataOnly();
+    if (state?.auth?.role === 'admin') adminUpsertStudentDateRowLocal('attendance', sid, today, { status });
+    else await refreshDataOnly();
     openTodayCloseModal(1);
 }
 
@@ -2982,7 +3195,8 @@ async function quickToggleHw(sid, status, tab = 'hw') {
     const today = new Date().toLocaleDateString('sv-SE');
     const r = await api.patch('homework', { studentId: sid, status, date: today });
     if (!r?.success) { toast('숙제 처리 실패', 'warn'); return; }
-    await refreshDataOnly();
+    if (state?.auth?.role === 'admin') adminUpsertStudentDateRowLocal('homework', sid, today, { status });
+    else await refreshDataOnly();
     openTodayCloseModal(1);
 }
 
@@ -3478,16 +3692,36 @@ async function saveJournal(status, existingId = null, targetDate) {
 
     if (!result || result.error) return toast(result?.error || '저장 실패', 'error');
 
+    if (state?.auth?.role !== 'admin') {
+        toast(`????꾨즺`, 'success');
+        closeModal();
+        await loadData();
+        return;
+    }
+
+    const nextJournal = {
+        ...(myJournal || {}),
+        id: journalId || result.id || `local_jou_${Date.now()}`,
+        date: targetDate,
+        teacher_name: myJournal?.teacher_name || state.ui.userName,
+        content,
+        status,
+        updated_at: new Date().toISOString()
+    };
+    adminUpsertDbRow('journals', nextJournal);
     toast(`저장 완료`, 'success');
     closeModal();
-    await loadData();
+    if (typeof renderAdminControlCenter === 'function') renderAdminControlCenter();
 }
 
 function renderAdminJournalList(dateStr, teacherName = '') {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
     const safeTeacher = dashboardEscapeAttr(teacherName || '');
-    let journals = (state.db.journals || []).filter(j => j.date === targetDate && j.status !== '작성중');
-    if (teacherName) journals = journals.filter(j => j.teacher_name === teacherName);
+    const idx = adminGetRuntimeIndex();
+    let journals = teacherName
+        ? [idx.journalsByTeacherDate.get(`${dashboardNormalizeTeacherName(teacherName)}|${targetDate}`)].filter(Boolean)
+        : (idx.journalsByDate.get(targetDate) || []);
+    journals = journals.filter(j => j.status !== '작성중');
     const title = teacherName ? `${teacherName} 선생님 일지` : '일지확인';
     
     const backBtn = teacherName ? `<button class="btn" style="width:100%; margin-bottom:16px; padding:14px; border-radius:12px; font-weight:500; background:var(--surface-2); border:none; color:var(--text);" onclick="closeModal(true)">닫기</button>` : '';
@@ -3521,7 +3755,7 @@ function renderAdminJournalList(dateStr, teacherName = '') {
 }
 
 function openAdminJournalFeedback(id, teacherName = '') {
-    const journal = (state.db.journals || []).find(j => j.id === id);
+    const journal = adminGetRuntimeIndex().journalsById.get(String(id)) || null;
     if (!journal) return toast('일지를 찾을 수 없습니다.', 'warn');
     const safeTeacher = dashboardEscapeAttr(teacherName || journal.teacher_name || '');
     
@@ -3538,9 +3772,17 @@ function approveJournal(id, dateStr, teacherName = '') {
     const feedback = document.getElementById('journal-feedback')?.value.trim() || '';
     return api.patch(`daily-journals/${id}`, { feedback, status: '결재완료' }).then(async result => {
         if (!result || result.error) return toast(result?.error || '저장 실패', 'error');
+        const current = adminGetRuntimeIndex().journalsById.get(String(id));
+        if (current) {
+            adminUpsertDbRow('journals', {
+                ...current,
+                feedback,
+                status: '결재완료',
+                updated_at: new Date().toISOString()
+            });
+        }
         toast('저장 완료', 'success');
         closeModal();
-        await loadData();
         renderAdminJournalList(dateStr, teacherName);
     });
 }
@@ -3557,16 +3799,15 @@ function formatAdminRecentJournalDate(dateStr) {
 function getAdminRecentTeacherJournals(teacherName, baseDateStr = '', days = 30) {
     const baseTime = apParseLocalDateTime(baseDateStr || new Date().toLocaleDateString('sv-SE'));
     if (baseTime === null) return [];
-    return (state.db.journals || [])
+    return (adminGetRuntimeIndex().journalsByTeacher.get(String(teacherName || '')) || [])
         .filter(j => {
-            if (String(j?.teacher_name || '') !== String(teacherName || '')) return false;
             if (String(j?.status || '') === '작성중') return false;
             const time = apParseLocalDateTime(j?.date);
             if (time === null) return false;
             const diff = (baseTime - time) / (1000 * 60 * 60 * 24);
             return diff >= 0 && diff < days;
         })
-        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+        .slice();
 }
 
 function openAdminRecentTeacherJournals(teacherName, baseDateStr = '') {

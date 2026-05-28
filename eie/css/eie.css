@@ -481,3 +481,197 @@ body {
 .eie-table tr.is-needs-review td {
     background: rgba(245, 158, 11, 0.08);
 }
+
+/* Round 4: editable EIE timetable */
+.eie-timetable-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+  align-items: start;
+}
+
+.eie-timetable-main {
+  min-width: 0;
+}
+
+.eie-excel-period-row {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 10px;
+  margin: 12px 0;
+  align-items: stretch;
+}
+
+.eie-excel-period-head {
+  border: 1px solid #d7dee8;
+  background: #f5f7fb;
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-height: 110px;
+}
+
+.eie-excel-period-head strong {
+  font-size: 15px;
+}
+
+.eie-excel-period-head span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.eie-excel-cells {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.eie-excel-cell {
+  border: 1px solid #d7dee8;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px;
+  min-height: 124px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.eie-excel-cell.is-needs_review {
+  background: #fff8ed;
+  border-color: #f8c37a;
+}
+
+.eie-excel-cell.is-hidden {
+  opacity: 0.58;
+  background: #f8fafc;
+}
+
+.eie-excel-cell.is-selected {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.eie-cell-edit-trigger {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  gap: 5px;
+}
+
+.eie-cell-title {
+  font-weight: 800;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.eie-cell-teacher {
+  font-size: 13px;
+  color: #475569;
+}
+
+.eie-cell-students {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.eie-cell-students.is-empty {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.eie-student-chip {
+  border: 1px solid #d7dee8;
+  background: #f8fafc;
+  border-radius: 999px;
+  padding: 3px 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.eie-cell-meta {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.eie-editor-panel {
+  position: sticky;
+  top: 14px;
+  border: 1px solid #d7dee8;
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 16px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.eie-editor-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.eie-editor-head h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.eie-icon-button {
+  border: 1px solid #d7dee8;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.eie-edit-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.eie-edit-form label {
+  display: grid;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.eie-edit-form input,
+.eie-edit-form select,
+.eie-edit-form textarea {
+  width: 100%;
+  border: 1px solid #d7dee8;
+  border-radius: 10px;
+  padding: 9px 10px;
+  font: inherit;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.eie-edit-form .is-wide,
+.eie-edit-form .eie-action-row,
+.eie-edit-form .eie-api-note {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 980px) {
+  .eie-timetable-layout,
+  .eie-excel-period-row {
+    grid-template-columns: 1fr;
+  }
+
+  .eie-editor-panel {
+    position: static;
+  }
+}
