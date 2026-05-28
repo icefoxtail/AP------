@@ -30,6 +30,7 @@ import { handleAuth } from './routes/auth.js';
 import { handleStudyMaterialWrongs } from './routes/study-material-wrongs.js';
 import { handleOnboarding } from './routes/onboarding.js';
 import { handleEie } from './routes/eie.js';
+import { handleBackdoor } from './routes/backdoor.js';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -2677,6 +2678,13 @@ export default {
           const teacher = await verifyAuth(request, env);
           if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
           const routed = await handleEie(request, env, teacher, path, url);
+          if (routed) return routed;
+        }
+
+        if (resource === 'backdoor') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          const routed = await handleBackdoor(request, env, teacher, path, url);
           if (routed) return routed;
         }
 
