@@ -2436,6 +2436,10 @@ function renderTodoSections() {
         }).join('');
     }
 
+    const onboardingWeeklyHtml = typeof renderOnboardingWeeklyScheduleRows === 'function' ? renderOnboardingWeeklyScheduleRows() : '';
+    const onboardingWeeklyCount = typeof getDashboardWeeklyOnboardingTasks === 'function' ? getDashboardWeeklyOnboardingTasks().length : 0;
+    const hasWeeklyItems = upcomingItems.length > 0 || onboardingWeeklyCount > 0;
+
     return `
         <div style="margin-bottom:18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
@@ -2445,14 +2449,15 @@ function renderTodoSections() {
                 ${todayHtml}
             </div>
             
-            ${upcomingHtml ? `
+            <div id="dashboard-weekly-schedule-section" data-regular-weekly-count="${upcomingItems.length}" style="${hasWeeklyItems ? '' : 'display:none;'}">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                     <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">주간일정</h3>
                 </div>
-                <div onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">
+                <div id="dashboard-weekly-schedule-list" onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">
                     ${upcomingHtml}
+                    <div id="dashboard-onboarding-weekly-items">${onboardingWeeklyHtml}</div>
                 </div>
-            ` : ''}
+            </div>
         </div>
     `;
 }
@@ -2490,12 +2495,19 @@ function renderTodayJournalCard(data) {
 
 
 // [POLISH] 메인 대시보드: 제목 규격화 및 마감 배너 시각적 축소
+
 function ensureDashboardOnboardingState() {
     if (!state.ui) state.ui = {};
     if (!state.ui.dashboardOnboardingTasks) {
-        state.ui.dashboardOnboardingTasks = { loading: false, loadedAt: 0, tasks: [], inFlight: null, selectedTaskId: '', pendingSkipTaskId: '', draft: {}, error: '' };
+        state.ui.dashboardOnboardingTasks = {
+            loading: false,
+            loadedAt: 0,
+            tasks: [],
+            inFlight: null,
+            selectedTaskId: '',
+            error: ''
+        };
     }
-    if (!state.ui.dashboardOnboardingTasks.draft) state.ui.dashboardOnboardingTasks.draft = {};
     return state.ui.dashboardOnboardingTasks;
 }
 
@@ -2512,6 +2524,7 @@ async function fetchOnboardingTasks() {
         .catch(err => {
             console.error('[fetchOnboardingTasks] failed:', err);
             store.tasks = [];
+            store.error = '신입생 상담 일정을 불러오지 못했습니다.';
             return [];
         })
         .finally(() => {
@@ -2524,33 +2537,105 @@ async function fetchOnboardingTasks() {
 
 function getOnboardingTaskLabel(task) {
     const type = String(task?.task_type || '');
-    if (type === 'intro') return '담임 인사';
-    if (type === 'week1') return '1주차 적응 확인';
-    if (type === 'month1') return '1개월 정착 상담';
-    return '';
+    if (type === 'intro') return '신입생 상담';
+    if (type === 'week1') return '1주차 상담';
+    if (type === 'month1') return '1개월 상담';
+    return '신입생 상담';
 }
 
-function getOnboardingTaskDescription(task) {
+function getOnboardingPanelGuide(task) {
     const type = String(task?.task_type || '');
-    if (type === 'intro') return '첫 수업 전후로 학부모님께 짧게 첫인사를 건네주세요.';
-    if (type === 'week1') return '첫 주 수업 태도와 숙제 흐름을 가볍게 확인해 주세요.';
-    if (type === 'month1') return '한 달간의 적응 상태와 다음 달 공부 방향을 정리해 주세요.';
-    return '';
+    if (type === 'intro') {
+        return {
+            purpose: '신입생과 학부모님이 학원에 처음 안착하는 첫 단계입니다.',
+            guide: '첫 수업 요일과 시간, 준비물, 교재 흐름을 짧게 확인해 주세요.\n학부모님께는 부담스럽지 않게 담임 인사 정도로 안내하면 충분합니다.'
+        };
+    }
+    if (type === 'week1') {
+        return {
+            purpose: '첫 주 수업을 지나며 학원 수업과 숙제 흐름에 무리 없이 적응하고 있는지 확인하는 단계입니다.',
+            guide: '수업 집중도, 숙제 적응, 등원 후 집에서 보이는 반응을 가볍게 확인해 주세요.\n필요하면 학생 상담 탭에 상담 기록을 남기면 됩니다.'
+        };
+    }
+    return {
+        purpose: '한 달간의 수업 흐름을 바탕으로 앞으로의 공부 방향을 한 번 정리해 주는 단계입니다.',
+        guide: '좋았던 점, 더 볼 부분, 다음 달 지도 방향을 중심으로 확인해 주세요.\n실제 상담 기록은 학생 상담 탭에서 남깁니다.'
+    };
 }
 
-function getOnboardingStatusLabel(status) {
-    const key = String(status || '');
-    if (key === 'needs_action') return '확인 전';
-    if (key === 'contacted') return '연락 남김';
-    if (key === 'deferred') return '나중에 다시 보기';
-    return '확인 전';
+function getDashboardOnboardingDate(value) {
+    const text = String(value || '').trim().split('T')[0].split(' ')[0];
+    return apParseLocalDateTime(text);
 }
 
-function getOnboardingDraft(taskId) {
-    const store = ensureDashboardOnboardingState();
-    const key = String(taskId || '');
-    if (!store.draft[key]) store.draft[key] = {};
-    return store.draft[key];
+function getDashboardOnboardingDueLabel(task) {
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr);
+    const dueTime = getDashboardOnboardingDate(task?.due_date);
+    if (todayTime === null || dueTime === null) return '';
+    const diffDays = Math.round((dueTime - todayTime) / (24 * 60 * 60 * 1000));
+    if (diffDays === 0) return 'D-Day';
+    if (diffDays > 0) return `D-${diffDays}`;
+    return `D+${Math.abs(diffDays)}`;
+}
+
+function getDashboardWeeklyOnboardingTasks(tasks = null) {
+    const source = Array.isArray(tasks) ? tasks : (ensureDashboardOnboardingState().tasks || []);
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const todayTime = apParseLocalDateTime(todayStr);
+    if (todayTime === null) return [];
+    const minTime = todayTime - 3 * 24 * 60 * 60 * 1000;
+    const maxTime = todayTime + 3 * 24 * 60 * 60 * 1000;
+
+    return source
+        .filter(task => {
+            const status = String(task?.status || task?.effective_status || '');
+            if (status === 'completed' || status === 'skipped') return false;
+
+            const visibleTime = getDashboardOnboardingDate(task?.visible_from);
+            const dueTime = getDashboardOnboardingDate(task?.due_date);
+            if (visibleTime !== null && visibleTime > todayTime) return false;
+            if (dueTime === null) return false;
+            return dueTime >= minTime && dueTime <= maxTime;
+        })
+        .sort((a, b) =>
+            String(a?.due_date || '').localeCompare(String(b?.due_date || '')) ||
+            Number(a?.task_order || 0) - Number(b?.task_order || 0) ||
+            String(a?.student_name || '').localeCompare(String(b?.student_name || ''), 'ko')
+        );
+}
+
+function renderOnboardingWeeklyScheduleRows(tasks = null) {
+    const visibleTasks = getDashboardWeeklyOnboardingTasks(tasks);
+    if (!visibleTasks.length) return '';
+
+    const rowBase = `
+        height:52px;
+        min-height:52px;
+        max-height:52px;
+        padding:0 16px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        box-sizing:border-box;
+        overflow:hidden;
+    `;
+
+    return visibleTasks.map(task => {
+        const taskId = apEscapeHtml(String(task?.id || ''));
+        const label = getOnboardingTaskLabel(task);
+        const studentName = task?.student_name || '학생';
+        const className = task?.class_name || '';
+        const dueLabel = getDashboardOnboardingDueLabel(task);
+
+        return `<div onclick="event.stopPropagation(); openOnboardingTask('${taskId}')" style="${rowBase} cursor:pointer; font-size:13px; font-weight:400; color:var(--text); border-bottom:1px solid rgba(15,23,42,0.08); background:transparent;">
+            <div style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                <span style="font-size:11px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:8px; margin-right:6px;">상담</span>${apEscapeHtml(label)} · ${apEscapeHtml(studentName)}${className ? ` <span style="color:var(--secondary); font-weight:400;">${apEscapeHtml(className)}</span>` : ''}
+            </div>
+            ${dueLabel ? `<span style="font-size:12px; color:var(--secondary); background:var(--surface-2); border:1px solid var(--border); padding:3px 8px; border-radius:10px; font-weight:400; white-space:nowrap; flex-shrink:0;">${apEscapeHtml(dueLabel)}</span>` : ''}
+        </div>`;
+    }).join('');
 }
 
 function getSelectedOnboardingTask() {
@@ -2561,243 +2646,128 @@ function getSelectedOnboardingTask() {
 function openOnboardingTask(taskId) {
     const store = ensureDashboardOnboardingState();
     store.selectedTaskId = String(taskId || '');
-    store.pendingSkipTaskId = '';
     store.error = '';
-    getOnboardingDraft(taskId);
     updateDashboardOnboardingTasksSection();
 }
 
 function closeOnboardingTaskPanel() {
     const store = ensureDashboardOnboardingState();
     store.selectedTaskId = '';
-    store.pendingSkipTaskId = '';
     store.error = '';
     updateDashboardOnboardingTasksSection();
 }
 
-function updateOnboardingDraft(taskId, key, value) {
-    const draft = getOnboardingDraft(taskId);
-    draft[key] = value;
-    const message = document.getElementById('onboarding-parent-copy-message');
-    const task = getSelectedOnboardingTask();
-    if (message && task) message.textContent = buildOnboardingParentMessage(task, draft);
-}
-
-function onboardingSelectHtml(task, key, options) {
-    const selected = String(getOnboardingDraft(task.id)[key] || '');
-    return `<select class="std-input-base" style="min-height:40px; font-size:13px;" onchange="updateOnboardingDraft('${apEscapeHtml(String(task.id || ''))}', '${key}', this.value)"><option value=""></option>${options.map(option => `<option value="${apEscapeHtml(option)}" ${selected === option ? 'selected' : ''}>${apEscapeHtml(option)}</option>`).join('')}</select>`;
-}
-
-function onboardingTextareaHtml(task, key, placeholder = '') {
-    return `<textarea class="std-input-base" style="height:74px; font-size:13px; line-height:1.5;" placeholder="${apEscapeHtml(placeholder)}" oninput="updateOnboardingDraft('${apEscapeHtml(String(task.id || ''))}', '${key}', this.value)">${apEscapeHtml(getOnboardingDraft(task.id)[key] || '')}</textarea>`;
-}
-
-function replaceOnboardingTokens(text, task, draft = {}) {
-    const teacherName = state?.ui?.userName || state?.auth?.name || task?.teacher_name || '[선생님명]';
-    const pairs = {
-        '[반명]': task?.class_name || '[반명]',
-        '[선생님명]': teacherName || '[선생님명]',
-        '[학생명]': task?.student_name || '[학생명]',
-        '[확인할 부분]': draft.check_point || '[확인할 부분]',
-        '[좋았던 부분]': draft.good_point || '[좋았던 부분]',
-        '[더 볼 부분]': draft.focus_point || '[더 볼 부분]',
-        '[다음 달 공부 방향]': draft.next_month_plan || '[다음 달 공부 방향]'
-    };
-    let result = text;
-    Object.entries(pairs).forEach(([key, value]) => { result = result.split(key).join(value); });
-    return result;
-}
-
-function getOnboardingParentMessageTemplate(task) {
-    const type = String(task?.task_type || '');
-    if (type === 'intro') return `안녕하세요, 어머니! AP수학 [반명] 담임 [선생님명]선생님입니다.
-
-오늘부터 [학생명] 학생 수업을 맡게 되어 반가운 마음에 먼저 인사드립니다.
-
-처음에는 학원 시스템이나 숙제 방식에 익숙해지는 시간이 조금 필요할 수 있습니다. 첫 1~2주 동안은 아이가 낯설어하지 않고 학원 흐름에 잘 적응하는지 옆에서 세심하게 같이 살펴보겠습니다.
-
-혹시 학원에 오기 전 수학 공부를 하면서 힘들어했던 부분이나, 담임인 제가 미리 알고 있으면 도움 될 만한 점이 있다면 편하게 말씀해 주세요. 앞으로 잘 지도하겠습니다. 감사합니다.`;
-    if (type === 'week1') return `어머니, 담임 [선생님명]선생님입니다. [학생명] 학생이 AP수학에서 첫 일주일간의 수업을 무사히 마쳤습니다.
-
-새로운 환경이라 긴장했을 텐데도 수업 참여와 숙제 흐름을 차분하게 잘 따라와 주었습니다. 이번 주 수업을 바탕으로 앞으로는 [확인할 부분] 영역을 조금 더 신경 써서 살펴볼 예정입니다.
-
-혹시 일주일 동안 등원하면서 아이가 집에서 학원 얘기나 수학 공부에 대해 부담스러워하는 기색은 없었는지 궁금합니다. 집에서 느끼신 점이 있다면 언제든 편하게 말씀해 주세요. 다음 수업도 잘 이어가겠습니다.`;
-    return `어머니, [학생명] 학생이 저희와 함께 수업을 시작한 지 벌써 한 달이 되었습니다. 학원 시스템과 학습 루틴에는 이제 제법 편안하게 적응한 모습입니다.
-
-한 달간 지켜보니 [좋았던 부분]은 참 기특하고 긍정적입니다. 다만 [더 볼 부분]이 눈에 밟혀, 다음 달 수업에서는 이 부분을 보완하는 데 집중하려고 합니다.
-
-앞으로는 [다음 달 공부 방향]을 중심으로 성실하게 지도하겠습니다. 한 달 동안 믿고 보내주셔서 감사드리며, 궁금한 점이 있으시면 언제든 편하게 말씀해 주세요.`;
-}
-
-function buildOnboardingParentMessage(task, draft = {}) {
-    return replaceOnboardingTokens(getOnboardingParentMessageTemplate(task), task, draft);
-}
-
-async function copyOnboardingParentMessage(taskId) {
-    const task = getSelectedOnboardingTask();
-    if (!task) return;
-    const text = buildOnboardingParentMessage(task, getOnboardingDraft(taskId));
-    try {
-        if (navigator?.clipboard?.writeText) await navigator.clipboard.writeText(text);
-        else {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            textarea.remove();
-        }
-        if (typeof toast === 'function') toast('복사되었습니다.', 'success');
-    } catch (err) {
-        console.error('[copyOnboardingParentMessage] failed:', err);
+function openOnboardingStudentConsultation(taskId) {
+    const store = ensureDashboardOnboardingState();
+    const task = (store.tasks || []).find(row => String(row?.id || '') === String(taskId || ''));
+    const studentId = String(task?.student_id || '');
+    if (!studentId) {
+        if (typeof toast === 'function') toast('학생 정보를 찾을 수 없습니다.', 'warn');
+        return;
     }
+
+    store.selectedTaskId = '';
+    store.error = '';
+    updateDashboardOnboardingTasksSection();
+
+    if (typeof renderStudentDetailTab === 'function') {
+        renderStudentDetailTab(studentId, 'cns');
+        return;
+    }
+
+    if (typeof toast === 'function') toast('학생 상담 탭을 열 수 없습니다.', 'warn');
 }
 
-function onboardingPanelField(label, body) {
-    return `<div style="display:flex; flex-direction:column; gap:6px;"><div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.4;">${apEscapeHtml(label)}</div>${body}</div>`;
+async function hideOnboardingTask(taskId) {
+    const store = ensureDashboardOnboardingState();
+    const task = (store.tasks || []).find(row => String(row?.id || '') === String(taskId || ''));
+    if (!task) return;
+
+    try {
+        const result = await api.post(`onboarding/tasks/${taskId}/skip`, {});
+        if (result?.success) {
+            store.selectedTaskId = '';
+            store.error = '';
+            await refreshOnboardingTasksAfterAction();
+            return;
+        }
+        store.error = result?.error || '숨김 처리에 실패했습니다.';
+    } catch (err) {
+        console.error('[hideOnboardingTask] failed:', err);
+        store.error = '숨김 처리에 실패했습니다.';
+    }
+    updateDashboardOnboardingTasksSection();
 }
 
-function renderOnboardingPanelFields(task) {
-    const type = String(task?.task_type || '');
-    if (type === 'intro') return `${onboardingPanelField('연락 방법', onboardingSelectHtml(task, 'contact_method', ['문자', '카톡', '전화', '대면']))}${onboardingPanelField('메모', onboardingTextareaHtml(task, 'notes'))}`;
-    if (type === 'week1') return `${onboardingPanelField('수업 시간의 몰입도는 어땠나요?', onboardingSelectHtml(task, 'lesson_adaptation_status', ['양호', '보통', '조금 더 지켜보기']))}${onboardingPanelField('첫 주 숙제 분량은 적절히 해왔나요?', onboardingSelectHtml(task, 'homework_adaptation_status', ['잘해옴', '노력 중', '어려워함']))}${onboardingPanelField('확인할 부분', onboardingTextareaHtml(task, 'check_point'))}${onboardingPanelField('메모', onboardingTextareaHtml(task, 'notes'))}`;
-    return `${onboardingPanelField('한 달간 담임 선생님이 바라본 아이의 모습', onboardingTextareaHtml(task, 'month_summary', '한 달간 수업 흐름과 칭찬할 점을 적어주세요.'))}${onboardingPanelField('다음 달에 중점적으로 신경 쓸 부분', onboardingTextareaHtml(task, 'next_month_plan', '진도 속도 조절, 오답 보완, 태도 교정 등 계획을 적어주세요.'))}`;
-}
-
-function getOnboardingPanelGuide(task) {
-    const type = String(task?.task_type || '');
-    if (type === 'intro') return { purpose: '신입생과 학부모님이 학원에 처음 안착하는 가장 중요한 첫 단추입니다. 가볍게 인사를 건네어 긴장감을 풀어주세요.', guide: '아이의 첫 수업 요일과 시간대를 한 번 더 확인하셨나요?\\n첫 수업에 필요한 교재나 필기구가 잘 준비되었는지 조용히 체크해 주세요.' };
-    if (type === 'week1') return { purpose: '아이가 첫 주 수업을 들으며 학원 시스템과 수업 분위기에 무리 없이 적응하고 있는지 확인하는 단계입니다.', guide: '전화나 카톡으로 집에서의 아이 반응을 가볍게 물어보시면, 학부모님의 불안감을 낮추는 데 큰 도움이 됩니다.' };
-    return { purpose: '한 달간 누적된 출결, 숙제, 테스트 흐름을 바탕으로 앞으로 이 아이가 우리 반에서 어떻게 공부를 이어가면 좋을지 방향을 잡아주는 시점입니다.', guide: '한 달간 수업 흐름과 칭찬할 점을 적어주세요.\\n진도 속도 조절, 오답 보완, 태도 교정 등 계획을 적어주세요.' };
-}
-
-function buildOnboardingActionPayload(task) {
-    const draft = getOnboardingDraft(task.id);
-    return {
-        contact_method: draft.contact_method || '',
-        notes: draft.notes || draft.check_point || '',
-        lesson_adaptation_status: draft.lesson_adaptation_status || '',
-        homework_adaptation_status: draft.homework_adaptation_status || '',
-        month_summary: draft.month_summary || '',
-        next_month_plan: draft.next_month_plan || '',
-        good_point: draft.good_point || '',
-        focus_point: draft.focus_point || ''
-    };
-}
-
-async function refreshOnboardingTasksAfterAction(closePanel = false) {
+async function refreshOnboardingTasksAfterAction() {
     const store = ensureDashboardOnboardingState();
     store.inFlight = null;
     await fetchOnboardingTasks();
-    if (closePanel) store.selectedTaskId = '';
-    store.pendingSkipTaskId = '';
     updateDashboardOnboardingTasksSection();
-}
-
-function setOnboardingPanelError(message) {
-    const store = ensureDashboardOnboardingState();
-    store.error = message || '';
-    updateDashboardOnboardingTasksSection();
-}
-
-function openOnboardingSkipConfirm(taskId) {
-    const store = ensureDashboardOnboardingState();
-    store.pendingSkipTaskId = String(taskId || '');
-    store.error = '';
-    updateDashboardOnboardingTasksSection();
-}
-
-function closeOnboardingSkipConfirm() {
-    const store = ensureDashboardOnboardingState();
-    store.pendingSkipTaskId = '';
-    updateDashboardOnboardingTasksSection();
-}
-
-async function confirmOnboardingSkip(taskId) {
-    closeOnboardingSkipConfirm();
-    await handleOnboardingAction(taskId, 'skip');
-}
-
-async function handleOnboardingAction(taskId, action) {
-    const task = (ensureDashboardOnboardingState().tasks || []).find(row => String(row?.id || '') === String(taskId || ''));
-    if (!task) return;
-    const payload = buildOnboardingActionPayload(task);
-    try {
-        if (action === 'patch') {
-            const result = await api.patch(`onboarding/tasks/${taskId}`, payload);
-            if (result?.success) await refreshOnboardingTasksAfterAction(false);
-            return;
-        }
-        if (action === 'complete') {
-            const result = await api.post(`onboarding/tasks/${taskId}/complete`, payload);
-            if (result?.success) await refreshOnboardingTasksAfterAction(true);
-            return;
-        }
-        if (action === 'contact') {
-            const result = await api.post(`onboarding/tasks/${taskId}/contact`, payload);
-            if (result?.success) await refreshOnboardingTasksAfterAction(false);
-            return;
-        }
-        if (action === 'defer') {
-            const result = await api.post(`onboarding/tasks/${taskId}/defer`, payload);
-            if (result?.success) await refreshOnboardingTasksAfterAction(true);
-            return;
-        }
-        if (action === 'skip') {
-            const result = await api.post(`onboarding/tasks/${taskId}/skip`, payload);
-            if (result?.success) await refreshOnboardingTasksAfterAction(true);
-        }
-    } catch (err) {
-        console.error('[handleOnboardingAction] failed:', err);
-    }
-}
-
-function renderOnboardingSkipConfirm() {
-    const store = ensureDashboardOnboardingState();
-    if (!store.pendingSkipTaskId) return '';
-    const taskId = apEscapeHtml(String(store.pendingSkipTaskId || ''));
-    return `<div class="ap-onboarding-confirm-backdrop" style="position:fixed; inset:0; z-index:90; background:rgba(15,23,42,0.28); display:flex; align-items:center; justify-content:center; padding:18px;"><section class="ap-onboarding-confirm" role="dialog" aria-modal="true" style="width:min(380px, 100%); background:var(--surface); border:1px solid var(--border); border-radius:14px; box-shadow:0 20px 50px rgba(15,23,42,0.2); padding:18px; display:flex; flex-direction:column; gap:12px;"><h3 style="margin:0; font-size:16px; color:var(--text); font-weight:600; line-height:1.4;">이 단계를 기록하지 않고 넘어갈까요?</h3><div style="font-size:13px; color:var(--secondary); font-weight:500; line-height:1.65; white-space:pre-wrap;">학부모님과 이미 다른 방식으로 소통하셨거나, 현재 단계의 안내가 필요 없는 경우 사용해 주세요.\n이 단계를 넘기면 적응 확인 카드에서 조용히 사라지며, 별도의 상담 기록은 남지 않습니다.</div><div style="display:flex; gap:8px; justify-content:flex-end;"><button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="closeOnboardingSkipConfirm()">취소</button><button type="button" class="btn btn-primary apms-button apms-button--primary" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="confirmOnboardingSkip('${taskId}')">이번 단계 넘기기</button></div></section></div>`;
 }
 
 function renderOnboardingPanel() {
     const store = ensureDashboardOnboardingState();
     const task = getSelectedOnboardingTask();
-    if (!task) return renderOnboardingSkipConfirm();
-    const draft = getOnboardingDraft(task.id);
-    const guide = getOnboardingPanelGuide(task);
-    const status = getOnboardingStatusLabel(task?.effective_status || task?.status);
-    const type = String(task?.task_type || '');
-    const completeText = type === 'intro' ? '인사 완료하기' : type === 'week1' ? '저장하고 완료하기' : '상담 완료하기';
-    const saveButton = type === 'month1' ? `<button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'patch')">저장하기</button>` : '';
-    const contactButton = type !== 'intro' ? `<button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'contact')">연락만 남기기</button>` : '';
-    return `<div class="ap-onboarding-panel-backdrop" style="position:fixed; inset:0; z-index:80; background:rgba(15,23,42,0.18);" onclick="closeOnboardingTaskPanel()"></div><aside class="ap-onboarding-panel" style="position:fixed; top:0; right:0; bottom:0; z-index:81; width:min(440px, 100vw); background:var(--surface); border-left:1px solid var(--border); box-shadow:-12px 0 30px rgba(15,23,42,0.14); display:flex; flex-direction:column;"><div style="padding:18px 18px 12px; border-bottom:1px solid var(--border); display:flex; gap:12px; justify-content:space-between; align-items:flex-start;"><div style="min-width:0;"><div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(task.student_name || '')}</div><div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; margin-top:3px;">${apEscapeHtml(task.class_name || '')}</div><div style="font-size:14px; color:var(--text); font-weight:500; line-height:1.4; margin-top:8px;">${apEscapeHtml(getOnboardingTaskLabel(task))}</div></div><div style="display:flex; align-items:center; gap:8px;"><span style="min-height:24px; display:inline-flex; align-items:center; padding:0 8px; border-radius:999px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); font-size:11px; font-weight:500;">${apEscapeHtml(status)}</span><button type="button" class="btn apms-button apms-button--quiet" style="width:34px; height:34px; min-height:34px; padding:0; border-radius:10px;" onclick="closeOnboardingTaskPanel()">×</button></div></div><div style="padding:16px 18px 18px; overflow:auto; display:flex; flex-direction:column; gap:14px;">${onboardingPanelField('목적 안내', `<div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(guide.purpose)}</div>`)}${onboardingPanelField('확인 가이드', `<div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(guide.guide)}</div>`)}${renderOnboardingPanelFields(task)}<section style="display:flex; flex-direction:column; gap:8px;"><div style="display:flex; align-items:center; justify-content:space-between; gap:10px;"><div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.4;">학부모 복사 문구</div><button type="button" class="btn apms-button apms-button--quiet" style="min-height:32px; padding:6px 10px; border-radius:10px; font-size:11px;" onclick="copyOnboardingParentMessage('${apEscapeHtml(String(task.id || ''))}')">복사하기</button></div><div id="onboarding-parent-copy-message" style="padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); color:var(--text); font-size:12px; font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(buildOnboardingParentMessage(task, draft))}</div></section>${store.error ? `<div style="font-size:12px; color:var(--primary); font-weight:500; line-height:1.5;">${apEscapeHtml(store.error)}</div>` : ''}</div><div style="padding:12px 18px 18px; border-top:1px solid var(--border); display:grid; grid-template-columns:1fr; gap:8px;"><button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="openOnboardingSkipConfirm('${apEscapeHtml(String(task.id || ''))}')">이번 단계 넘기기</button>${contactButton}${saveButton}<button type="button" class="btn apms-button apms-button--quiet" style="min-height:38px; border-radius:10px; font-size:12px;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'defer')">나중에 다시 보기</button><button type="button" class="btn btn-primary apms-button apms-button--primary" style="min-height:42px; border-radius:10px; font-size:13px; font-weight:500;" onclick="handleOnboardingAction('${apEscapeHtml(String(task.id || ''))}', 'complete')">${apEscapeHtml(completeText)}</button></div></aside>${renderOnboardingSkipConfirm()}`;
-}
+    if (!task) return '';
 
-function renderOnboardingTasks(tasks = []) {
-    const visibleTasks = (Array.isArray(tasks) ? tasks : []).filter(task => !['completed', 'skipped'].includes(String(task?.status || ''))).sort((a, b) => String(a?.due_date || '').localeCompare(String(b?.due_date || '')) || Number(a?.task_order || 0) - Number(b?.task_order || 0) || String(a?.student_name || '').localeCompare(String(b?.student_name || ''), 'ko'));
-    const cards = visibleTasks.map(task => {
-        const title = getOnboardingTaskLabel(task);
-        const description = getOnboardingTaskDescription(task);
-        const status = getOnboardingStatusLabel(task?.effective_status || task?.status);
-        return `<div class="card apms-card ap-dashboard-onboarding-card" style="padding:14px; border:1px solid var(--border); border-radius:14px; box-shadow:none; background:var(--surface); display:flex; flex-direction:column; gap:10px;"><div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;"><div style="min-width:0;"><div style="font-size:13px; font-weight:500; color:var(--text); line-height:1.35; overflow-wrap:anywhere;">${apEscapeHtml(task?.student_name || '')}</div><div style="font-size:11px; font-weight:500; color:var(--secondary); line-height:1.45; margin-top:2px; overflow-wrap:anywhere;">${apEscapeHtml(task?.class_name || '')}</div></div><span style="flex:0 0 auto; min-height:24px; display:inline-flex; align-items:center; padding:0 8px; border-radius:999px; background:var(--surface-2); color:var(--secondary); border:1px solid var(--border); font-size:11px; font-weight:500;">${apEscapeHtml(status)}</span></div><div><div style="font-size:14px; font-weight:500; color:var(--text); line-height:1.35;">${apEscapeHtml(title)}</div><div style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.55; margin-top:4px;">${apEscapeHtml(description)}</div></div><button type="button" class="btn apms-button apms-button--quiet" style="width:100%; min-height:38px; border-radius:10px; font-size:12px; font-weight:500;" onclick="openOnboardingTask('${apEscapeHtml(String(task?.id || ''))}')">확인하기</button></div>`;
-    }).join('');
-    const section = visibleTasks.length ? `<div class="ap-dashboard-section ap-dashboard-onboarding-section" style="margin-bottom:18px;"><div class="ap-dashboard-section-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;"><h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">신입생 적응 확인</h3></div><div class="ap-dashboard-onboarding-list" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">${cards}</div></div>` : '';
-    return `${section}${renderOnboardingPanel()}`;
+    const guide = getOnboardingPanelGuide(task);
+    const taskId = apEscapeHtml(String(task.id || ''));
+    const title = `${getOnboardingTaskLabel(task)} · ${task.student_name || ''}`.trim();
+
+    return `<div class="ap-onboarding-panel-backdrop" style="position:fixed; inset:0; z-index:80; background:rgba(15,23,42,0.10);" onclick="closeOnboardingTaskPanel()"></div>
+        <aside class="ap-onboarding-panel" style="position:fixed; top:0; right:0; bottom:0; z-index:81; width:min(420px, 100vw); background:var(--surface); border-left:1px solid var(--border); box-shadow:-12px 0 30px rgba(15,23,42,0.12); display:flex; flex-direction:column;">
+            <div style="padding:16px 18px 12px; border-bottom:1px solid var(--border); display:flex; gap:12px; justify-content:space-between; align-items:flex-start;">
+                <div style="min-width:0;">
+                    <div style="font-size:15px; font-weight:500; color:var(--text); line-height:1.4; overflow-wrap:anywhere;">${apEscapeHtml(title)}</div>
+                    <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.5; margin-top:3px;">${apEscapeHtml(task.class_name || '')}</div>
+                </div>
+                <button type="button" class="btn apms-button apms-button--quiet" style="width:34px; height:34px; min-height:34px; padding:0; border-radius:10px;" onclick="closeOnboardingTaskPanel()">×</button>
+            </div>
+            <div style="padding:16px 18px 18px; overflow:auto; display:flex; flex-direction:column; gap:14px;">
+                <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.4;">상담 가이드</div>
+                <section style="padding:14px; border:1px solid var(--border); border-radius:14px; background:var(--surface-2); display:flex; flex-direction:column; gap:10px;">
+                    <div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:500; margin-bottom:5px;">목적</div>
+                        <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(guide.purpose)}</div>
+                    </div>
+                    <div>
+                        <div style="font-size:12px; color:var(--secondary); font-weight:500; margin-bottom:5px;">확인할 것</div>
+                        <div style="font-size:13px; color:var(--text); font-weight:500; line-height:1.65; white-space:pre-wrap;">${apEscapeHtml(guide.guide)}</div>
+                    </div>
+                </section>
+                <div style="font-size:12px; color:var(--secondary); font-weight:500; line-height:1.6;">실제 상담 기록은 학생 상담 탭에서 남깁니다. 숨김은 주간일정에서만 사라지며 상담 기록을 만들지 않습니다.</div>
+                ${store.error ? `<div style="font-size:12px; color:var(--primary); font-weight:500; line-height:1.5;">${apEscapeHtml(store.error)}</div>` : ''}
+            </div>
+            <div style="padding:12px 18px 18px; border-top:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <button type="button" class="btn apms-button apms-button--quiet" style="min-height:40px; border-radius:10px; font-size:13px; font-weight:500;" onclick="openOnboardingStudentConsultation('${taskId}')">상담</button>
+                <button type="button" class="btn apms-button apms-button--quiet" style="min-height:40px; border-radius:10px; font-size:13px; font-weight:500;" onclick="hideOnboardingTask('${taskId}')">숨김</button>
+            </div>
+        </aside>`;
 }
 
 function updateDashboardOnboardingTasksSection() {
-    const target = document.getElementById('dashboard-onboarding-tasks-root');
-    if (!target) return;
-    const store = ensureDashboardOnboardingState();
-    target.innerHTML = renderOnboardingTasks(store.tasks);
+    const weeklyTarget = document.getElementById('dashboard-onboarding-weekly-items');
+    const weeklySection = document.getElementById('dashboard-weekly-schedule-section');
+    const onboardingHtml = renderOnboardingWeeklyScheduleRows();
+    const onboardingCount = getDashboardWeeklyOnboardingTasks().length;
+
+    if (weeklyTarget) weeklyTarget.innerHTML = onboardingHtml;
+    if (weeklySection) {
+        const regularCount = Number(weeklySection.dataset.regularWeeklyCount || 0);
+        weeklySection.style.display = (regularCount > 0 || onboardingCount > 0) ? '' : 'none';
+    }
+
+    const panelTarget = document.getElementById('dashboard-onboarding-panel-root') || document.getElementById('dashboard-onboarding-tasks-root');
+    if (panelTarget) panelTarget.innerHTML = renderOnboardingPanel();
 }
 
 function queueDashboardOnboardingTasksLoad() {
     const store = ensureDashboardOnboardingState();
     updateDashboardOnboardingTasksSection();
     if (store.loading) return;
+    const now = Date.now();
+    if (store.loadedAt && now - store.loadedAt < 60 * 1000) return;
     fetchOnboardingTasks().then(updateDashboardOnboardingTasksSection);
 }
 function renderDashboard() {
