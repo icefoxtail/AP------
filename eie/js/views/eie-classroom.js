@@ -164,7 +164,7 @@
             }
 
             return '<section aria-labelledby="eie-classroom-title">'
-                + '<button type="button" class="eie-back-button" onclick="EieRouter.open(\'dashboard\')">← EIE 홈</button>'
+                + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>'
                 + '<div class="eie-panel">'
                 + '<h1 id="eie-classroom-title" class="eie-panel-title">클래스룸</h1>'
                 + errorHtml

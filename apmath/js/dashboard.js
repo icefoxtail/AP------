@@ -1446,7 +1446,7 @@ function renderAdminRecentConsultationPanel() {
         const preview = adminRecentConsultationPreviewText(row);
         const meta = [adminGetConsultationDate(row), cls && cls.name].filter(Boolean).join(' · ');
         return `
-            <button class="btn" style="width:100%; min-height:68px; padding:10px 12px; border:none; border-bottom:1px solid var(--border); border-radius:0; background:var(--surface); box-shadow:none; display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:center; gap:12px; text-align:left;" onclick="openAdminStudentConsultationHistory('${apEscapeHtml(sid)}')">
+            <button class="btn ap-admin-consultation-row" style="width:100%; min-height:68px; padding:10px 12px; border:none; border-bottom:1px solid var(--border); border-radius:0; background:var(--surface); box-shadow:none; display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:center; gap:12px; text-align:left;" onclick="openAdminStudentConsultationHistory('${apEscapeHtml(sid)}')">
                 <span style="min-width:0; display:flex; flex-direction:column; gap:4px;">
                     <span style="display:flex; align-items:center; gap:7px; min-width:0;">
                         <span style="font-size:13px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
