@@ -132,3 +132,58 @@
 .ap-classroom-toolbar .cls-v4-date-reset {
     font-weight: 500;
 }
+
+/* ── 보강 체크칩 패널 ──────────────────────────────────────────────── */
+.makeup-chip-panel {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px 6px 16px;
+    background: var(--apms-ui-surface, var(--surface));
+    border-bottom: 1px solid var(--apms-ui-border, var(--border));
+}
+
+@media (min-width: 800px) {
+    .makeup-chip-panel {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.makeup-chip-list {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.makeup-chip {
+    height: 30px;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--apms-ui-border, var(--border));
+    background: var(--apms-ui-surface-2, var(--surface-2));
+    color: var(--apms-ui-muted, var(--secondary));
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+    touch-action: manipulation;
+}
+
+.makeup-chip.on {
+    background: var(--primary-soft, rgba(37,99,235,0.10));
+    color: var(--primary, #2563eb);
+    border-color: rgba(37, 99, 235, 0.22);
+}
+
+.makeup-chip:focus-visible {
+    outline: 2px solid var(--primary, #2563eb);
+    outline-offset: 2px;
+}
+
+.makeup-expand.on {
+    background: var(--primary-soft, rgba(37,99,235,0.10));
+    color: var(--primary, #2563eb);
+    border-color: rgba(37, 99, 235, 0.22);
+}
