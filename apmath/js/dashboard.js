@@ -105,20 +105,15 @@ function isClassScheduledTodayForDashboard(cid) {
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
-
-    const cIds = state.db.class_students
-        .filter(m => String(m.class_id) === String(cid))
-        .map(m => String(m.student_id));
-    const hasActiveAttendance = state.db.attendance.some(
-        a => a.date === todayStr && cIds.includes(String(a.student_id)) && a.status === '등원'
-    );
-    if (hasActiveAttendance) return true;
-
     if (isDashboardHoliday(todayStr)) return false;
 
-    if (!cls.schedule_days) return true;
-    const today = new Date().getDay();
-    return String(cls.schedule_days).split(',').map(d => d.trim()).includes(String(today));
+    const todayKey = DASHBOARD_DAY_ORDER[new Date().getDay()];
+    const classDayKeys = dashboardGetClassDayKeys(cls);
+
+    // 학급관리 활성 표시는 출결 기록이 아니라 실제 수업 요일만 기준으로 한다.
+    // schedule_days/day_group/time_label 어디에도 오늘 요일이 없으면 비활성이다.
+    if (!classDayKeys.length) return false;
+    return classDayKeys.includes(todayKey);
 }
 
 function isMiddleSchoolClass(c) {
@@ -318,15 +313,15 @@ function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, 
             const labelText = `${day.label} ${apFormatMonthDay(day.date) || day.date}`;
             const ariaText = `${labelText} ${statusText} 일지 열기`;
             const toneStyle = done
-                ? 'color:var(--primary); background:var(--primary-soft); border-color:rgba(var(--primary-rgb),0.18);'
+                ? 'color:var(--text); background:var(--surface); border-color:var(--border);'
                 : (holiday
-                    ? 'color:var(--secondary); background:var(--surface-2); border-color:var(--border);'
-                    : 'color:var(--warning); background:rgba(var(--warning-rgb),0.10); border-color:rgba(var(--warning-rgb),0.20);');
+                    ? 'color:var(--secondary); background:var(--surface); border-color:var(--border);'
+                    : 'color:var(--secondary); background:var(--surface); border-color:var(--border);');
             return `
-                <button class="journal-day-cell journal-day-cell--${done ? 'done' : (holiday ? 'holiday' : 'missing')}" style="width:100%; min-height:50px; padding:0 14px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; gap:8px; text-align:left; box-sizing:border-box;" onclick="event.stopPropagation(); ${click}" type="button" aria-label="${apEscapeHtml(ariaText)}">
-                    <span class="journal-day-cell__label" style="font-size:13px; font-weight:700; white-space:nowrap;">${apEscapeHtml(labelText)}</span>
+                <button class="journal-day-cell journal-day-cell--${done ? 'done' : (holiday ? 'holiday' : 'missing')}" style="width:100%; min-height:44px; padding:0 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; gap:8px; text-align:left; box-sizing:border-box;" onclick="event.stopPropagation(); ${click}" type="button" aria-label="${apEscapeHtml(ariaText)}">
+                    <span class="journal-day-cell__label" style="font-size:13px; font-weight:500; white-space:nowrap;">${apEscapeHtml(labelText)}</span>
                     <span class="journal-day-cell__spacer" style="flex:1; min-width:8px;" aria-hidden="true"></span>
-                    <span class="journal-day-cell__status" style="min-width:66px; height:26px; padding:0 8px; border-radius:999px; border:1px solid var(--border); display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; ${toneStyle}">${apEscapeHtml(statusText)}</span>
+                    <span class="journal-day-cell__status" style="min-width:66px; height:26px; padding:0 8px; border-radius:999px; border:1px solid var(--border); display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; ${toneStyle}">${apEscapeHtml(statusText)}</span>
                     <span class="journal-day-cell__chevron" style="color:var(--secondary); font-size:18px; line-height:1;" aria-hidden="true">›</span>
                 </button>
             `;
@@ -1167,7 +1162,7 @@ function renderAdminNewStudentPanel(data) {
                     <span style="font-size:11px; color:var(--secondary); font-weight:500; white-space:nowrap;">등록 ${days || '-'}일차</span>
                 </div>
                 <div style="display:flex; align-items:center; gap:5px; flex-shrink:0; min-width:0;">
-                    <span style="font-size:10.5px; font-weight:500; color:${hasClass ? 'var(--primary)' : 'var(--error)'}; background:${hasClass ? 'var(--primary-soft)' : 'rgba(var(--error-rgb),0.10)'}; padding:3px 6px; border-radius:999px; white-space:nowrap;">${hasClass ? apEscapeHtml(cls.name) : '반 배정 필요'}</span>
+                    <span style="font-size:10.5px; font-weight:500; color:${hasClass ? 'var(--text)' : 'var(--error)'}; background:${hasClass ? 'var(--surface-2)' : 'rgba(var(--error-rgb),0.10)'}; border:1px solid ${hasClass ? 'var(--border)' : 'rgba(var(--error-rgb),0.16)'}; padding:3px 6px; border-radius:999px; white-space:nowrap;">${hasClass ? apEscapeHtml(cls.name) : '반 배정 필요'}</span>
                     <span style="font-size:10.5px; font-weight:500; color:var(--secondary); background:var(--surface-2); padding:3px 6px; border-radius:999px; white-space:nowrap;">${recordText}</span>
                 </div>
             </div>
@@ -1425,13 +1420,13 @@ function renderAdminRecentConsultationPanel() {
                 <span style="min-width:0; display:flex; flex-direction:column; gap:4px;">
                     <span style="display:flex; align-items:center; gap:7px; min-width:0;">
                         <span style="font-size:13px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
-                        <span style="flex-shrink:0; font-size:10px; font-weight:700; color:var(--primary); background:var(--primary-soft); border:1px solid rgba(var(--primary-rgb),0.14); border-radius:999px; padding:2px 7px;">${apEscapeHtml(type)}</span>
+                        <span style="flex-shrink:0; font-size:10px; font-weight:700; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:2px 7px;">${apEscapeHtml(type)}</span>
                     </span>
                     <span style="font-size:12px; font-weight:500; color:var(--secondary); line-height:1.45; overflow:hidden; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical;">${apEscapeHtml(preview)}</span>
                 </span>
                 <span style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:5px; max-width:210px;">
                     <span style="font-size:11px; font-weight:500; color:var(--secondary); white-space:nowrap;">${apEscapeHtml(meta)}</span>
-                    ${nextAction ? `<span style="max-width:100%; font-size:11px; font-weight:700; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:3px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">다음 조치 · ${apEscapeHtml(nextAction)}</span>` : '<span style="font-size:11px; font-weight:500; color:var(--secondary);">후속 없음</span>'}
+                    ${nextAction ? `<span style="max-width:100%; font-size:11px; font-weight:500; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:3px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">다음 조치 · ${apEscapeHtml(nextAction)}</span>` : '<span style="font-size:11px; font-weight:500; color:var(--secondary);">후속 없음</span>'}
                 </span>
             </button>
         `;
@@ -1491,7 +1486,7 @@ function renderAdminConsultationCenterBody(keyword) {
                     <span style="display:block; font-size:13px; font-weight:500; color:var(--text); line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(adminConsultationRowStudentName(row))}</span>
                     <span style="display:block; font-size:11px; font-weight:500; color:var(--secondary); margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(meta)}</span>
                 </span>
-                <span style="flex-shrink:0; font-size:11px; font-weight:500; color:var(--primary); background:var(--primary-soft); padding:4px 8px; border-radius:999px;">보기</span>
+                <span style="flex-shrink:0; font-size:11px; font-weight:500; color:var(--text); background:var(--surface-2); border:1px solid var(--border); padding:4px 8px; border-radius:999px;">보기</span>
             </button>
         `;
     }).join('');
@@ -1791,25 +1786,32 @@ function renderAdminControlCenter() {
     const adminOverviewData = adminBuildOverviewData(todayStr, todayTime);
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
 
+    const adminSystemGateHtml = `
+        <div id="ap-system-gate" class="ap-admin-app-gate" data-ap-system-gate="true" role="navigation" aria-label="시스템 전환" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:16px; margin-bottom:18px; box-sizing:border-box;">
+            <button class="btn" type="button" aria-current="page" style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none; cursor:default;" onclick="void(0)">AP MATH</button>
+            <button class="btn" type="button" style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;" onclick="window.location.href='../eie/index.html#dashboard'">EIE</button>
+        </div>
+    `;
+
     const adminShortcutRow = `
         <div class="ap-admin-shortcuts ap-admin-action-grid" aria-label="원장님 바로가기" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:18px; margin-bottom:18px;">
             <button class="btn ap-admin-action-card"
-                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#0891b2; box-shadow:none; border:1px solid var(--border);"
+                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
             <button class="btn ap-admin-action-card"
-                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#2563eb; box-shadow:none; border:1px solid var(--border);"
+                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
             <button class="btn ap-admin-action-card"
-                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:none; border:1px solid var(--border);"
+                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
                 성적표
             </button>
             <button class="btn ap-admin-action-card"
-                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#7c3aed; box-shadow:none; border:1px solid var(--border);"
+                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="openAdminOperationMenu()">
                 관리
             </button>
@@ -1903,7 +1905,7 @@ function renderAdminControlCenter() {
                 #ap-admin-dashboard .ap-admin-card[onclick]:hover,
                 #ap-admin-dashboard .ap-admin-teacher-card:hover {
                     transform:translateY(-1px);
-                    border-color:rgba(var(--primary-rgb),0.14) !important;
+                    border-color:var(--border) !important;
                 }
             }
             #ap-admin-dashboard .ap-admin-section,
@@ -1951,12 +1953,12 @@ function renderAdminControlCenter() {
                 line-height:1.2 !important;
             }
             #ap-admin-dashboard .ap-admin-shortcuts .ap-admin-action-card {
-                height:68px !important;
-                min-height:68px !important;
-                max-height:none !important;
-                border-radius:16px !important;
-                font-size:15px !important;
-                font-weight:700 !important;
+                height:44px !important;
+                min-height:44px !important;
+                max-height:44px !important;
+                border-radius:12px !important;
+                font-size:13px !important;
+                font-weight:500 !important;
             }
             #ap-admin-dashboard .ap-admin-bottom-search {
                 margin-top:30px !important;
@@ -2094,6 +2096,7 @@ function renderAdminControlCenter() {
 
     root.innerHTML = `<div id="ap-admin-dashboard">
         ${adminUnifiedStyle}
+        ${adminSystemGateHtml}
         ${adminShortcutRow}
         ${todayOverviewHtml}
         ${teacherCardsHtml}
@@ -2441,12 +2444,12 @@ function renderTodayJournalCard(data) {
     return `
         <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher" style="margin-bottom:18px;">
             <div class="ap-dashboard-section-head ap-dashboard-journal-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-                <h3 class="ap-dashboard-journal-title" style="margin:0; font-size:14px; font-weight:700; color:var(--text);">오늘일지</h3>
+                <h3 class="ap-dashboard-journal-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘일지</h3>
             </div>
-            <div id="dashboard-journal-card" class="card ap-dashboard-journal-body" style="padding:10px; border-radius:18px; border:1px solid var(--border); background:var(--surface-2); box-shadow:none; display:flex; flex-direction:column; gap:8px;">
-                <button type="button" class="btn ap-dashboard-journal-today-row" style="width:100%; min-height:50px; padding:0 14px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:10px; text-align:left; box-sizing:border-box;" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
-                    <span style="font-size:13px; font-weight:700; white-space:nowrap;">오늘 수업</span>
-                    <span id="dashboard-journal-content" class="ap-dashboard-journal-summary" style="min-width:0; flex:1; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--secondary); font-size:12px; font-weight:700;">${contentHtml}</span>
+            <div id="dashboard-journal-card" class="card ap-dashboard-journal-body" style="padding:4px; border-radius:16px; border:1px solid var(--border); background:var(--surface-2); box-shadow:none; display:flex; flex-direction:column; gap:8px;">
+                <button type="button" class="btn ap-dashboard-journal-today-row" style="width:100%; min-height:44px; padding:0 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:10px; text-align:left; box-sizing:border-box;" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
+                    <span style="font-size:13px; font-weight:500; white-space:nowrap;">오늘 수업</span>
+                    <span id="dashboard-journal-content" class="ap-dashboard-journal-summary" style="min-width:0; flex:1; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--secondary); font-size:12px; font-weight:500;">${contentHtml}</span>
                 </button>
                 ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
             </div>
@@ -2805,14 +2808,14 @@ function renderDashboard() {
     const root = document.getElementById('app-root');
 
     const shortcutRow = `
-        <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
+        <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:16px; margin-bottom:18px;">
             <button class="btn ap-dashboard-action-button"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
             <button class="btn ap-dashboard-action-button"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
@@ -3433,14 +3436,14 @@ function renderAdminJournalList(dateStr, teacherName = '') {
     const rows = journals.map(j => {
         const teacherArg = dashboardEscapeAttr(teacherName || j.teacher_name || '');
         const statusText = j.status === '결재완료' ? '확인완료' : j.status;
-        const statusColor = j.status === '결재완료' ? 'var(--success)' : 'var(--primary)';
-        const statusBg = j.status === '결재완료' ? 'rgba(var(--success-rgb),0.10)' : 'var(--primary-soft)';
+        const statusColor = 'var(--secondary)';
+        const statusBg = 'var(--surface-2)';
         
         return `
             <div class="card" style="padding:16px; margin-bottom:12px; cursor:pointer; border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); background:var(--surface);" onclick="openAdminJournalFeedback('${j.id}', '${teacherArg}')">
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px; gap:8px; align-items:center;">
                     <span style="font-size:15px; color:var(--text);; font-weight:500;">${apEscapeHtml(j.teacher_name)} 선생님</span>
-                    <span style="font-size:11px; font-weight:500; color:${statusColor}; background:${statusBg}; padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
+                    <span style="font-size:11px; font-weight:500; color:${statusColor}; background:${statusBg}; border:1px solid var(--border); padding:4px 8px; border-radius:6px;">${apEscapeHtml(statusText)}</span>
                 </div>
                 <div style="font-size:13px; color:var(--text-soft); white-space:pre-wrap; max-height:60px; overflow:hidden; line-height:1.6;">${apEscapeHtml(j.content)}</div>
             </div>`;
@@ -3608,7 +3611,7 @@ function renderAdminTeacherStudents(teacherName) {
                     <div style="font-size:11px; font-weight:500; color:var(--secondary); margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${apEscapeHtml(cls.grade || '')}${cls.time_label ? ` · ${apEscapeHtml(cls.time_label)}` : ''}</div>
                 </div>
                 <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
-                    <span style="font-size:11px; font-weight:500; color:${isToday ? 'var(--primary)' : 'var(--secondary)'}; background:${isToday ? 'var(--primary-soft)' : 'var(--surface-2)'}; padding:4px 8px; border-radius:999px; white-space:nowrap;">${isToday ? '오늘 수업' : '수업 없음'}</span>
+                    <span style="font-size:11px; font-weight:500; color:${isToday ? 'var(--text)' : 'var(--secondary)'}; background:var(--surface-2); border:1px solid var(--border); padding:4px 8px; border-radius:999px; white-space:nowrap;">${isToday ? '오늘 수업' : '수업 없음'}</span>
                     <span style="font-size:18px; font-weight:500; color:var(--secondary); line-height:1;">›</span>
                 </div>
             </button>

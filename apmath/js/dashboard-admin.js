@@ -27,7 +27,7 @@ function apCreateAdminSystemGate() {
         'background:var(--surface-2)',
         'padding:4px',
         'border:1px solid var(--border)',
-        'border-radius:18px',
+        'border-radius:16px',
         'margin-bottom:14px',
         'box-sizing:border-box'
     ].join(';');
@@ -35,14 +35,14 @@ function apCreateAdminSystemGate() {
     gate.innerHTML = `
         <button class="btn"
                 type="button"
-                style="height:62px; min-height:62px; padding:0 16px; border-radius:16px; font-size:15px; font-weight:700; background:rgba(var(--primary-rgb),0.08); color:var(--primary); border:1px solid rgba(var(--primary-rgb),0.18); box-shadow:none; cursor:default;"
+                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none; cursor:default;"
                 aria-current="page"
                 onclick="void(0)">
             AP MATH
         </button>
         <button class="btn"
                 type="button"
-                style="height:62px; min-height:62px; padding:0 16px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;"
+                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;"
                 onclick="window.location.href='../eie/index.html#dashboard'">
             EIE
         </button>
@@ -72,6 +72,9 @@ function apInsertAdminSystemGate(attempt = 0) {
         console.warn('[APMS dashboard-admin] #ap-admin-dashboard를 찾지 못해 AP/EIE 게이트를 삽입하지 못했습니다.');
         return false;
     }
+
+    const existingGate = adminDash.querySelector('#ap-system-gate, .ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]');
+    if (existingGate) return true;
 
     apRemoveAdminSystemGate();
     adminDash.insertBefore(apCreateAdminSystemGate(), adminDash.firstChild);

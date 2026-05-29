@@ -16,10 +16,10 @@
 .journal-matrix{display:grid;gap:0;width:100%}
 .journal-matrix--empty{display:block}
 .journal-matrix__empty{display:block;padding:8px 0;color:var(--secondary);font-size:12px;font-weight:400;text-align:left}
-.journal-day-cell{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:8px;width:calc(100% + 16px);margin:0 -8px;padding:6px 8px;border:0;border-radius:8px;background:transparent;box-shadow:none;cursor:pointer;text-align:left;color:var(--text);font-size:13px;font-weight:400;line-height:1.35;transition:background 0.15s ease}
-.journal-day-cell:hover{background:rgba(15,23,42,0.03)}
+.journal-day-cell{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:8px;width:100%;margin:0;padding:0 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);box-shadow:none;cursor:pointer;text-align:left;color:var(--text);font-size:13px;font-weight:400;line-height:1.35;transition:background 0.15s ease;box-sizing:border-box}
+.journal-day-cell:hover{background:var(--surface)}
 .journal-day-cell:focus-visible{outline:2px solid rgba(15,23,42,0.14);outline-offset:2px}
-.journal-day-cell--done,.journal-day-cell--missing{border:0;background:transparent}
+.journal-day-cell--done,.journal-day-cell--missing,.journal-day-cell--holiday{border:1px solid var(--border);background:var(--surface)}
 .journal-day-cell__label{font-size:13px;font-weight:400;color:var(--secondary);line-height:1.35;white-space:nowrap}
 .journal-day-cell__spacer{min-width:8px}
 .journal-day-cell__status{justify-self:end;font-size:13px;font-weight:400;color:var(--text);line-height:1.35;white-space:nowrap}
@@ -157,10 +157,14 @@
 }
 
 .ap-dashboard-journal-section .ap-dashboard-journal-body {
-  padding: 0 !important;
-  background: transparent !important;
-  border: 0 !important;
+  padding: 4px !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
   box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
 }
 
 .ap-dashboard-action-grid--teacher-quick {
