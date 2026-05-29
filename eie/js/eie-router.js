@@ -1,7 +1,10 @@
 (function () {
     const routes = {
         dashboard: () => EieDashboardView.render(),
-        timetable: () => EieTimetableView.render()
+        timetable: () => EieTimetableView.render(),
+        students: () => EieStudentsView.render(),
+        classroom: () => EieClassroomView.render(),
+        management: () => EieManagementView.render()
     };
 
     let hashListenerBound = false;
