@@ -432,6 +432,7 @@ function getStandardizedUnit(q) {
 
 let engineDB = { exams: [] }, cart = [], currentDisplayQuestions = [], selectedFiles = new Set(), currentViewingSource = null;
 let includeOriginalArchiveItems = false;
+let mixerDbLoadFailed = false;
 
 function formatArchiveDisplayName(file) {
     const raw = String(file || '').trim();
@@ -556,6 +557,11 @@ function renderExamList() {
         return (!keyword || searchBase.includes(keyword)) && (!grade || ex.grade === grade) && (!axis || ex._axis === axis);
     });
     const container = document.getElementById('paper-list');
+    if (mixerDbLoadFailed) {
+        container.innerHTML = '<div class="empty-placeholder"><p>db.js를 불러오지 못했습니다. archive/db.js 경로를 확인하세요.</p></div>';
+        return;
+    }
+
     container.innerHTML = filtered.length ? '' : '<div class="empty-placeholder"><p>조건에 맞는 시험지가 없습니다.</p></div>';
     filtered.forEach(ex => {
         const isSelected = selectedFiles.has(ex.file), isActive = currentViewingSource && currentViewingSource.file === ex.file;
@@ -821,14 +827,28 @@ function openMixedEngine(withSubmitQr = false, classId = "", options = {}) {
  * [FAIL 3 수정] 필터 이벤트 리스너 복구
  */
 window.onload = async () => {
-    const s = document.createElement('script'); s.src = 'db.js?v=' + Date.now();
-    s.onload = () => { if(window.mainDB) { engineDB.exams = window.mainDB.exams.map(normalizeExamMeta); updateOriginalArchiveToggleUI(); renderExamList(); } };
+    mixerDbLoadFailed = false;
+    const s = document.createElement('script');
+    s.src = 'db.js?v=' + Date.now();
+    s.onload = () => {
+        const exams = Array.isArray(window.mainDB?.exams) ? window.mainDB.exams : [];
+        engineDB.exams = exams.map(normalizeExamMeta);
+        includeOriginalArchiveItems = isTeacherArchiveSession();
+        updateOriginalArchiveToggleUI();
+        renderExamList();
+    };
+    s.onerror = () => {
+        mixerDbLoadFailed = true;
+        engineDB.exams = [];
+        updateOriginalArchiveToggleUI();
+        renderExamList();
+    };
     document.body.appendChild(s);
     document.getElementById('paperSearch').oninput = renderExamList;
     document.getElementById('gradeFilter').onchange = renderExamList;
     document.getElementById('axisFilter').onchange = renderExamList;
     document.getElementById('q-unit-filter').onchange = () => { renderQuestionList(); document.getElementById('cur-unit-name').innerText = document.getElementById('q-unit-filter').value || '전체'; };
-    
+
     // 복구된 이벤트 리스너
     document.getElementById('q-level-filter').onchange = renderQuestionList;
     document.getElementById('q-view-mode').onchange = renderQuestionList;

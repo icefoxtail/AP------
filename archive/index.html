@@ -1017,6 +1017,7 @@
 let engineDB = { exams: [] };
 let selectedGrade = '';
 let includeOriginalArchiveItems = false;
+let archiveDbLoadFailed = false;
 
 function compactText(value) {
     return String(value || '').replace(/\s+/g, '').trim();
@@ -1162,13 +1163,20 @@ function examTypeLabel(examType) {
 
 async function init() {
     await new Promise(res => {
+        archiveDbLoadFailed = false;
         const s = document.createElement('script');
         s.src = 'db.js?v=' + Date.now();
         s.onload = () => {
             engineDB = window.mainDB || { exams: [] };
+            if (!Array.isArray(engineDB.exams)) {
+                archiveDbLoadFailed = true;
+                engineDB = { exams: [] };
+            }
+            includeOriginalArchiveItems = isTeacherArchiveSession();
             res();
         };
         s.onerror = () => {
+            archiveDbLoadFailed = true;
             engineDB = { exams: [] };
             res();
         };
@@ -1289,8 +1297,20 @@ function renderFeatured() {
     section.innerHTML = '';
 
     const all = visibleExams();
+    const rawCount = Array.isArray(engineDB.exams) ? engineDB.exams.length : 0;
+
+    if (archiveDbLoadFailed) {
+        showEmptyState('db.js를 불러오지 못했습니다. archive/db.js 경로를 확인하세요.');
+        return;
+    }
+
+    if (!rawCount) {
+        showEmptyState('등록된 자료가 없습니다.');
+        return;
+    }
+
     if (!all.length) {
-        showEmptyState('db.js를 불러오지 못했거나 등록된 자료가 없습니다.');
+        showEmptyState('표시할 수 있는 자료가 없습니다. AP Math OS 로그인 상태를 확인하거나 기출 보기를 켜주세요.');
         return;
     }
 
