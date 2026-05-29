@@ -2733,13 +2733,41 @@ function queueDashboardOnboardingTasksLoad() {
     fetchOnboardingTasks().then(updateDashboardOnboardingTasksSection);
 }
 function renderDashboard() {
-    if (state?.auth?.role === 'admin') {
+    const role = state?.auth?.role;
+
+    // 원장님: admin 전용 대시보드 (AP MATH / EIE 게이트 포함)
+    if (role === 'admin') {
+        if (typeof renderAdminDashboardView === 'function') {
+            return renderAdminDashboardView();
+        }
+        // fallback: 게이트 없이 기존 원장님 화면
         if (typeof renderAdminControlCenter === 'function') {
             return renderAdminControlCenter();
         }
         return;
     }
 
+    // EIE 선생님: APMS 대시보드에서 처리하지 않음
+    if (role === 'eieteacher') {
+        if (typeof renderAppDrawer === 'function') renderAppDrawer();
+        const root = document.getElementById('app-root');
+        if (root) {
+            root.innerHTML = `<div style="width:100%; max-width:600px; margin:60px auto; padding:0 16px; box-sizing:border-box; text-align:center;">
+                <div style="font-size:15px; font-weight:500; color:var(--secondary); line-height:1.65; padding:24px; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
+                    EIE 선생님 화면은 별도 준비 중입니다.<br>
+                    <button class="btn" style="margin-top:14px; padding:10px 20px; border-radius:12px; font-size:13px; font-weight:500; background:var(--primary-soft); color:var(--primary); border:1px solid rgba(var(--primary-rgb),0.18);" onclick="window.location.href='../eie/index.html#dashboard'">EIE로 이동</button>
+                </div>
+            </div>`;
+        }
+        return;
+    }
+
+    // AP 선생님 / 일반 teacher: 선생님 전용 대시보드
+    if (typeof renderTeacherDashboardView === 'function') {
+        return renderTeacherDashboardView();
+    }
+
+    // fallback: dashboard-teacher.js 미로드 시 기존 선생님 화면 직접 렌더링
     state.ui.currentClassId = null;
     if (typeof renderAppDrawer === 'function') renderAppDrawer();
     const data = computeDashboardData();
@@ -2767,7 +2795,7 @@ function renderDashboard() {
 
     const todayJournalCard = typeof renderTodayJournalCard === 'function' ? renderTodayJournalCard(data) : '';
     const todoSections = renderTodoSections();
-    
+
     if (!state.ui.dashboardClassTab) state.ui.dashboardClassTab = 'all';
     const tab = state.ui.dashboardClassTab;
 
