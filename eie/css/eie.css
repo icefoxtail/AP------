@@ -1120,3 +1120,174 @@ body {
         display: grid;
     }
 }
+
+/* EIE APMS-clone shell: notice box */
+.eie-notice-box {
+    margin-top: 14px;
+    padding: 14px;
+    border: 1px solid rgba(26, 92, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(26, 92, 255, 0.06);
+    color: var(--eie-primary);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* EIE student list */
+.eie-student-list {
+    display: grid;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.eie-student-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    padding: 12px 14px;
+    border: 1px solid var(--eie-border);
+    border-radius: 12px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    box-shadow: var(--eie-shadow);
+}
+
+.eie-student-row:hover {
+    border-color: var(--eie-primary);
+}
+
+.eie-student-row.is-selected {
+    border-color: var(--eie-primary);
+    background: rgba(26, 92, 255, 0.04);
+}
+
+.eie-student-row-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--eie-text);
+}
+
+.eie-student-row-meta {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--eie-muted);
+}
+
+/* EIE summary bar */
+.eie-summary-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 14px 0 4px;
+    padding: 12px 16px;
+    background: var(--eie-surface);
+    border: 1px solid var(--eie-border);
+    border-radius: 12px;
+}
+
+.eie-summary-item {
+    font-size: 13px;
+    color: var(--eie-muted);
+    font-weight: 600;
+}
+
+.eie-summary-item strong {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--eie-primary);
+    margin-right: 4px;
+}
+
+/* EIE badges */
+.eie-badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.8;
+    white-space: nowrap;
+}
+
+.eie-badge-active {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+}
+
+.eie-badge-review {
+    background: rgba(245, 158, 11, 0.14);
+    color: #b45309;
+}
+
+.eie-badge-inactive,
+.eie-badge-archived {
+    background: rgba(107, 118, 132, 0.12);
+    color: var(--eie-muted);
+}
+
+.eie-badge-contact {
+    background: rgba(26, 92, 255, 0.1);
+    color: var(--eie-primary);
+}
+
+/* EIE search bar */
+.eie-search-bar {
+    margin: 12px 0 0;
+}
+
+.eie-search-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--eie-border);
+    border-radius: 10px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.eie-search-input:focus {
+    border-color: var(--eie-primary);
+    box-shadow: 0 0 0 3px rgba(26, 92, 255, 0.08);
+}
+
+/* EIE student row: updated layout */
+.eie-student-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+    border: 1px solid var(--eie-border);
+    border-radius: 12px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    box-shadow: var(--eie-shadow);
+}
+
+.eie-student-row-main {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.eie-student-row-sub {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* EIE admin card selected state */
+.eie-admin-card.is-selected {
+    border-color: var(--eie-primary);
+    background: rgba(26, 92, 255, 0.04);
+}

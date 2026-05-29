@@ -577,7 +577,8 @@ async function markCandidateConfirmed(env, cell, candidate, result) {
 }
 
 async function queryConfirmedStudents(env) {
-  const result = await env.DB.prepare(`
+  // 1. 학생 목록 (counts 포함, 이름 ASC 정렬)
+  const studentsResult = await env.DB.prepare(`
     SELECT s.*,
            COUNT(DISTINCT c.id) AS contact_count,
            COUNT(DISTINCT a.id) AS assignment_count
@@ -585,9 +586,79 @@ async function queryConfirmedStudents(env) {
     LEFT JOIN eie_student_contacts c ON c.student_id = s.id
     LEFT JOIN eie_student_schedule_assignments a ON a.student_id = s.id AND COALESCE(a.status, 'active') != 'archived'
     GROUP BY s.id
-    ORDER BY s.updated_at DESC, s.created_at DESC
+    ORDER BY s.display_name ASC, s.created_at ASC
   `).all();
-  return result.results || [];
+  const students = studentsResult.results || [];
+  if (!students.length) return students;
+
+  // 2. 연락처 전체 (is_primary DESC, created_at ASC)
+  const contactsResult = await env.DB.prepare(`
+    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, created_at
+    FROM eie_student_contacts
+    ORDER BY COALESCE(is_primary, 1) DESC, created_at ASC
+  `).all();
+  const contactRows = contactsResult.results || [];
+
+  // 3. 수업 배정 전체 (timetable cell 정보 포함)
+  const assignmentsResult = await env.DB.prepare(`
+    SELECT a.id AS assignment_id, a.student_id, a.timetable_cell_id,
+           COALESCE(a.status, 'active') AS status,
+           t.class_name_raw, t.teacher_name_raw, t.period_label,
+           t.period_order, t.start_time, t.end_time, t.day_label, t.column_index
+    FROM eie_student_schedule_assignments a
+    LEFT JOIN eie_timetable_cells t ON t.id = a.timetable_cell_id
+    WHERE COALESCE(a.status, 'active') != 'archived'
+    ORDER BY COALESCE(t.period_order, 999) ASC, COALESCE(t.column_index, 999) ASC, a.created_at ASC
+  `).all();
+  const assignmentRows = assignmentsResult.results || [];
+
+  // 4. student_id별 그룹핑
+  const contactsByStudent = new Map();
+  for (const c of contactRows) {
+    const list = contactsByStudent.get(c.student_id) || [];
+    list.push(c);
+    contactsByStudent.set(c.student_id, list);
+  }
+  const assignmentsByStudent = new Map();
+  for (const a of assignmentRows) {
+    const list = assignmentsByStudent.get(a.student_id) || [];
+    list.push(a);
+    assignmentsByStudent.set(a.student_id, list);
+  }
+
+  // 5. 학생 row에 phone/contacts/assignments 첨부
+  return students.map(s => {
+    const cts = contactsByStudent.get(s.id) || [];
+    const primary = cts[0] || null;
+    const phoneRaw = primary ? safeText(primary.phone) : '';
+    const normPhone = primary ? safeText(primary.normalized_phone) : '';
+    return {
+      ...s,
+      phone_raw: phoneRaw,
+      phone: phoneRaw,
+      normalized_phone: normPhone,
+      primary_phone: phoneRaw,
+      contacts: cts.map(c => ({
+        id: c.id,
+        phone: safeText(c.phone),
+        phone_raw: safeText(c.phone),
+        normalized_phone: safeText(c.normalized_phone),
+        contact_label: safeText(c.contact_label) || '대표',
+        is_primary: c.is_primary != null ? c.is_primary : 1
+      })),
+      assignments: (assignmentsByStudent.get(s.id) || []).map(a => ({
+        assignment_id: a.assignment_id,
+        timetable_cell_id: a.timetable_cell_id,
+        class_name_raw: safeText(a.class_name_raw),
+        teacher_name_raw: safeText(a.teacher_name_raw),
+        period_label: safeText(a.period_label),
+        start_time: safeText(a.start_time),
+        end_time: safeText(a.end_time),
+        day_label: safeText(a.day_label),
+        status: safeText(a.status)
+      }))
+    };
+  });
 }
 
 async function queryConfirmedContacts(env) {

@@ -18,16 +18,51 @@
     function renderPanel({ title, copy, note }) {
         return `
             <section aria-labelledby="eie-panel-title">
-                <button type="button" class="eie-back-button" onclick="EieRouter.open('dashboard')">EIE 홈</button>
+                <button type="button" class="eie-back-button" onclick="EieRouter.open('dashboard')">← EIE 홈</button>
                 <div class="eie-panel">
-                    <p class="eie-dashboard-kicker">준비 화면</p>
                     <h1 id="eie-panel-title" class="eie-panel-title">${escapeHtml(title)}</h1>
                     <p class="eie-panel-copy">${escapeHtml(copy)}</p>
                     ${note ? `<div class="eie-api-note">${escapeHtml(note)}</div>` : ''}
-                    <div class="eie-empty-box">학생/연락처 확정, classroom, 출석/숙제는 아직 실행하지 않습니다.</div>
                 </div>
             </section>
         `;
+    }
+
+    // Shared auth fetch helper — mirrors eie-api.js auth logic without modifying that file
+    function findStoredAuth() {
+        const keys = [
+            'WANGJI_AUTH_HEADER',
+            'WANGJI_AUTH_TOKEN',
+            'WANGJI_SESSION_TOKEN',
+            'TEACHER_SESSION_TOKEN',
+            'teacher_session_token',
+            'session_token'
+        ];
+        for (const key of keys) {
+            const value = window.localStorage ? window.localStorage.getItem(key) : '';
+            if (!value) continue;
+            const trimmed = String(value).trim();
+            if (!trimmed) continue;
+            if (/^(Bearer|Basic)\s+/i.test(trimmed)) return trimmed;
+            return `Bearer ${trimmed}`;
+        }
+        return '';
+    }
+
+    async function fetchWithAuth(url) {
+        const headers = { 'Content-Type': 'application/json' };
+        const auth = findStoredAuth();
+        if (auth) headers['Authorization'] = auth;
+        const response = await fetch(url, { method: 'GET', headers });
+        const text = await response.text();
+        let data;
+        try { data = JSON.parse(text); } catch (e) { data = { success: false, error: text }; }
+        if (!response.ok || data?.success === false) {
+            const err = new Error(data?.error || data?.message || response.statusText || '요청 실패');
+            err.status = response.status;
+            throw err;
+        }
+        return data || { success: true };
     }
 
     function bootWhenReady() {
@@ -38,7 +73,8 @@
     window.EieApp = {
         escapeHtml,
         mount,
-        renderPanel
+        renderPanel,
+        fetchWithAuth
     };
 
     window.addEventListener('DOMContentLoaded', bootWhenReady);
