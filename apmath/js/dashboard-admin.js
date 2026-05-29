@@ -1,45 +1,92 @@
-﻿/**
+/**
  * AP Math OS [js/dashboard-admin.js]
- * ?먯옣??admin) ?꾩슜 ??쒕낫???뚮뜑?? * AP MATH / EIE ?쒖뒪??寃뚯씠???ы븿
- * EIE ?대┃ ??../eie/index.html#dashboard ?대룞
+ * 원장님(admin) 전용 대시보드 렌더러
+ * renderAdminControlCenter() 렌더 완료 후 AP MATH / EIE 게이트를 안전하게 삽입한다.
  */
 
-function renderAdminDashboardView() {
-    // 湲곗〈 ?먯옣????쒕낫?쒕? 洹몃?濡??뚮뜑留?    if (typeof renderAdminControlCenter === 'function') {
-        renderAdminControlCenter();
-    }
+function apAdminDashboardRole() {
+    return String((typeof state !== 'undefined' && state?.auth?.role) || '').toLowerCase();
+}
 
-    // ?먯옣????쒕낫??理쒖긽?⑥뿉 AP MATH / EIE 寃뚯씠???쎌엯
-    const adminDash = document.getElementById('ap-admin-dashboard');
-    if (!adminDash) return;
+function apRemoveAdminSystemGate() {
+    if (typeof document === 'undefined') return;
+    document.querySelectorAll('#ap-system-gate, .ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
+}
 
+function apCreateAdminSystemGate() {
     const gate = document.createElement('div');
     gate.id = 'ap-system-gate';
+    gate.className = 'ap-admin-app-gate';
+    gate.setAttribute('data-ap-system-gate', 'true');
     gate.setAttribute('role', 'navigation');
-    gate.setAttribute('aria-label', '?쒖뒪???꾪솚');
+    gate.setAttribute('aria-label', '시스템 전환');
     gate.style.cssText = [
-        'display:flex',
+        'display:grid',
+        'grid-template-columns:repeat(2,minmax(0,1fr))',
         'gap:8px',
         'background:var(--surface-2)',
         'padding:4px',
-        'border-radius:12px',
-        'margin-bottom:18px'
+        'border:1px solid var(--border)',
+        'border-radius:18px',
+        'margin-bottom:14px',
+        'box-sizing:border-box'
     ].join(';');
 
     gate.innerHTML = `
         <button class="btn"
-                style="flex:1; height:44px; min-height:44px; padding:0 14px; border-radius:10px; font-size:13px; font-weight:500; background:rgba(26,92,255,0.08); color:var(--primary); border:1px solid rgba(var(--primary-rgb),0.18); box-shadow:none; cursor:default;"
+                type="button"
+                style="height:62px; min-height:62px; padding:0 16px; border-radius:16px; font-size:15px; font-weight:700; background:rgba(var(--primary-rgb),0.08); color:var(--primary); border:1px solid rgba(var(--primary-rgb),0.18); box-shadow:none; cursor:default;"
                 aria-current="page"
                 onclick="void(0)">
             AP MATH
         </button>
         <button class="btn"
-                style="flex:1; height:44px; min-height:44px; padding:0 14px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--secondary); border:1px solid var(--border); box-shadow:none;"
+                type="button"
+                style="height:62px; min-height:62px; padding:0 16px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;"
                 onclick="window.location.href='../eie/index.html#dashboard'">
             EIE
         </button>
     `;
 
-    adminDash.insertBefore(gate, adminDash.firstChild);
+    return gate;
 }
 
+function apInsertAdminSystemGate(attempt = 0) {
+    if (typeof document === 'undefined') return false;
+
+    if (apAdminDashboardRole() !== 'admin') {
+        apRemoveAdminSystemGate();
+        return false;
+    }
+
+    const adminDash = document.getElementById('ap-admin-dashboard');
+    if (!adminDash) {
+        if (attempt === 0 && typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(() => apInsertAdminSystemGate(1));
+            return false;
+        }
+        if (attempt <= 1 && typeof setTimeout === 'function') {
+            setTimeout(() => apInsertAdminSystemGate(2), 0);
+            return false;
+        }
+        console.warn('[APMS dashboard-admin] #ap-admin-dashboard를 찾지 못해 AP/EIE 게이트를 삽입하지 못했습니다.');
+        return false;
+    }
+
+    apRemoveAdminSystemGate();
+    adminDash.insertBefore(apCreateAdminSystemGate(), adminDash.firstChild);
+    return true;
+}
+
+function renderAdminDashboardView() {
+    if (typeof document !== 'undefined') {
+        document.body.classList.remove('ap-teacher-dashboard-mode');
+        apRemoveAdminSystemGate();
+    }
+
+    if (typeof renderAdminControlCenter === 'function') {
+        renderAdminControlCenter();
+    }
+
+    apInsertAdminSystemGate(0);
+}

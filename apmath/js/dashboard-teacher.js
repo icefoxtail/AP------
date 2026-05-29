@@ -4,11 +4,19 @@
  * AP 선생님 화면 전용 — 타 시스템 게이트 없음
  */
 
+function apTeacherRemoveSystemGate() {
+    if (typeof document === 'undefined') return;
+    document.querySelectorAll('#ap-system-gate, .ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
+}
+
 function renderTeacherDashboardView() {
     if (!state) return;
 
     state.ui.currentClassId = null;
-    if (typeof renderAppDrawer === 'function') renderAppDrawer();
+    if (typeof document !== 'undefined') {
+        document.body.classList.add('ap-teacher-dashboard-mode');
+        apTeacherRemoveSystemGate();
+    }
 
     const data = computeDashboardData();
     const root = document.getElementById('app-root');
@@ -62,7 +70,7 @@ function renderTeacherDashboardView() {
         <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
+    root.innerHTML = `<style>body.ap-teacher-dashboard-mode #ap-system-gate, body.ap-teacher-dashboard-mode .ap-system-gate, body.ap-teacher-dashboard-mode [data-ap-system-gate="true"]{display:none!important;}</style><div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
         ${todayJournalCard}
         <div id="dashboard-onboarding-tasks-root"></div>
@@ -72,5 +80,12 @@ function renderTeacherDashboardView() {
 
     if (typeof queueDashboardOnboardingTasksLoad === 'function') {
         queueDashboardOnboardingTasksLoad();
+    }
+
+    if (typeof requestAnimationFrame === 'function') {
+        requestAnimationFrame(apTeacherRemoveSystemGate);
+    }
+    if (typeof setTimeout === 'function') {
+        setTimeout(apTeacherRemoveSystemGate, 0);
     }
 }

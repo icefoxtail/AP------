@@ -1,6 +1,6 @@
 /**
  * AP Math OS 1.0 [js/dashboard.js]
- * 운영센터 및 선생님별 대시보드 엔진
+ * 원장님·선생님별 대시보드 엔진
  * [Dashboard Polish]: 52px 카드 높이 통일, 상단 바로가기 탭형 배치, 오늘일지 제목 외부 배치
  * [Schedule/Memo]: 오늘일정·주간일정 관리 버튼 제거, 일정 행 52px 규격 통일
  * [Class Filter]: 학급관리 전체/중등/고등 탭 필터 유지
@@ -307,30 +307,35 @@ function renderDashboardJournalWeekMatrix(teacherName = '', baseDateStr = null, 
     const safeTeacher = dashboardEscapeAttr(teacherName || state?.ui?.userName || '');
     const cells = week
         .filter(day => targetDays.includes(day.key))
-        .filter(day => !isDashboardHoliday(day.date))
         .map(day => {
             const journal = dashboardFindJournal(day.date, teacherName);
             const done = dashboardIsJournalDone(journal);
-            const statusText = done ? '제출완료' : '미작성';
+            const holiday = isDashboardHoliday(day.date);
+            const statusText = done ? '제출완료' : (holiday ? '휴무' : '미작성');
             const click = teacherName
                 ? `renderAdminJournalList('${day.date}', '${safeTeacher}')`
                 : `openDailyJournalModal('${day.date}')`;
             const labelText = `${day.label} ${apFormatMonthDay(day.date) || day.date}`;
             const ariaText = `${labelText} ${statusText} 일지 열기`;
+            const toneStyle = done
+                ? 'color:var(--primary); background:var(--primary-soft); border-color:rgba(var(--primary-rgb),0.18);'
+                : (holiday
+                    ? 'color:var(--secondary); background:var(--surface-2); border-color:var(--border);'
+                    : 'color:var(--warning); background:rgba(var(--warning-rgb),0.10); border-color:rgba(var(--warning-rgb),0.20);');
             return `
-                <button class="journal-day-cell journal-day-cell--${done ? 'done' : 'missing'}" onclick="event.stopPropagation(); ${click}" type="button" aria-label="${apEscapeHtml(ariaText)}">
-                    <span class="journal-day-cell__label">${apEscapeHtml(labelText)}</span>
-                    <span class="journal-day-cell__spacer" aria-hidden="true"></span>
-                    <span class="journal-day-cell__status">${apEscapeHtml(statusText)}</span>
-                    <span class="journal-day-cell__chevron" aria-hidden="true">›</span>
+                <button class="journal-day-cell journal-day-cell--${done ? 'done' : (holiday ? 'holiday' : 'missing')}" style="width:100%; min-height:50px; padding:0 14px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; gap:8px; text-align:left; box-sizing:border-box;" onclick="event.stopPropagation(); ${click}" type="button" aria-label="${apEscapeHtml(ariaText)}">
+                    <span class="journal-day-cell__label" style="font-size:13px; font-weight:700; white-space:nowrap;">${apEscapeHtml(labelText)}</span>
+                    <span class="journal-day-cell__spacer" style="flex:1; min-width:8px;" aria-hidden="true"></span>
+                    <span class="journal-day-cell__status" style="min-width:66px; height:26px; padding:0 8px; border-radius:999px; border:1px solid var(--border); display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; ${toneStyle}">${apEscapeHtml(statusText)}</span>
+                    <span class="journal-day-cell__chevron" style="color:var(--secondary); font-size:18px; line-height:1;" aria-hidden="true">›</span>
                 </button>
             `;
         }).join('');
 
     if (!cells.trim()) {
-        return `<div class="journal-matrix journal-matrix--empty"><span class="journal-matrix__empty">이번 주 작성 대상일이 없습니다.</span></div>`;
+        return `<div class="journal-matrix journal-matrix--empty" style="display:flex; min-height:50px; align-items:center; justify-content:center; border-radius:14px; border:1px solid var(--border); background:var(--surface);"><span class="journal-matrix__empty" style="color:var(--secondary); font-size:13px; font-weight:600;">이번 주 작성 대상일이 없습니다.</span></div>`;
     }
-    return `<div class="journal-matrix" data-teacher="${apEscapeHtml(teacherName || '')}">${cells}</div>`;
+    return `<div class="journal-matrix" data-teacher="${apEscapeHtml(teacherName || '')}" style="display:flex; flex-direction:column; gap:8px;">${cells}</div>`;
 }
 
 function dashboardGetStudentClassInfo(studentId) {
@@ -1771,40 +1776,40 @@ function renderAdminGlobalSearchPanel() {
 
 
 function renderAdminControlCenter() {
-    if (typeof renderAppDrawer === 'function') renderAppDrawer();
+    if (typeof document !== 'undefined') {
+        document.body.classList.remove('ap-teacher-dashboard-mode');
+    }
+    const dashboardRole = String((typeof state !== 'undefined' && state?.auth?.role) || '').toLowerCase();
+    if (typeof renderAppDrawer === 'function' && dashboardRole === 'admin') {
+        renderAppDrawer();
+    } else if (typeof document !== 'undefined') {
+        document.querySelectorAll('#ap-system-gate, .ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
+    }
     const root = document.getElementById('app-root');
     const todayStr = new Date().toLocaleDateString('sv-SE');
     const todayTime = apParseLocalDateTime(todayStr) || Date.now();
     const adminOverviewData = adminBuildOverviewData(todayStr, todayTime);
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
-    const headerHtml = `
-        <div class="ap-admin-dashboard-head" style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin:8px 0 10px; padding:0 4px;">
-            <div style="min-width:0; padding-top:4px;">
-                <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">운영센터</h3>
-            </div>
-            ${adminGlobalSearchPanel}
-        </div>
-    `;
 
     const adminShortcutRow = `
-        <div class="ap-admin-shortcuts" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
-            <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+        <div class="ap-admin-shortcuts ap-admin-action-grid" aria-label="원장님 바로가기" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:18px; margin-bottom:18px;">
+            <button class="btn ap-admin-action-card"
+                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#0891b2; box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
-            <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+            <button class="btn ap-admin-action-card"
+                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#2563eb; box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
-            <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0f172a; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+            <button class="btn ap-admin-action-card"
+                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#0f172a; box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
                 성적표
             </button>
-            <button class="btn"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#7c3aed; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+            <button class="btn ap-admin-action-card"
+                    style="height:68px; min-height:68px; padding:0 12px; border-radius:16px; font-size:15px; font-weight:700; background:var(--surface); color:#7c3aed; box-shadow:none; border:1px solid var(--border);"
                     onclick="openAdminOperationMenu()">
                 관리
             </button>
@@ -1869,6 +1874,11 @@ function renderAdminControlCenter() {
         </div>
     `;
     
+    const adminBottomSearchHtml = adminGlobalSearchPanel ? `
+        <div class="ap-admin-bottom-search" aria-label="원장님 하단 검색">
+            ${adminGlobalSearchPanel}
+        </div>
+    ` : '';
     const adminUnifiedStyle = `
         <style>
             #ap-admin-dashboard { width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box; }
@@ -1939,6 +1949,27 @@ function renderAdminControlCenter() {
                 font-size:13px !important;
                 font-weight:500 !important;
                 line-height:1.2 !important;
+            }
+            #ap-admin-dashboard .ap-admin-shortcuts .ap-admin-action-card {
+                height:68px !important;
+                min-height:68px !important;
+                max-height:none !important;
+                border-radius:16px !important;
+                font-size:15px !important;
+                font-weight:700 !important;
+            }
+            #ap-admin-dashboard .ap-admin-bottom-search {
+                margin-top:30px !important;
+                padding-top:4px !important;
+            }
+            #ap-admin-dashboard .ap-admin-bottom-search .ap-admin-global-search {
+                width:100% !important;
+                max-width:none !important;
+                flex:0 0 auto !important;
+            }
+            #ap-admin-dashboard .ap-admin-bottom-search .ap-admin-global-search__field {
+                height:48px !important;
+                border-radius:16px !important;
             }
             #ap-admin-dashboard .ap-admin-summary-grid,
             #ap-admin-dashboard .ap-admin-teacher-grid {
@@ -2054,7 +2085,7 @@ function renderAdminControlCenter() {
             @media (max-width:480px) {
                 #ap-admin-dashboard { padding-left:14px !important; padding-right:14px !important; }
                 #ap-admin-dashboard .ap-admin-shortcuts { gap:6px !important; }
-                #ap-admin-dashboard .ap-admin-shortcuts .btn { font-size:12px !important; padding:0 6px !important; }
+                #ap-admin-dashboard .ap-admin-shortcuts .btn { font-size:13px !important; padding:0 8px !important; }
                 #ap-admin-dashboard .ap-admin-summary-grid { gap:8px !important; }
                 #ap-admin-dashboard .ap-admin-summary-grid .card { min-height:78px !important; }
             }
@@ -2063,7 +2094,6 @@ function renderAdminControlCenter() {
 
     root.innerHTML = `<div id="ap-admin-dashboard">
         ${adminUnifiedStyle}
-        ${headerHtml}
         ${adminShortcutRow}
         ${todayOverviewHtml}
         ${teacherCardsHtml}
@@ -2071,6 +2101,7 @@ function renderAdminControlCenter() {
         ${recentStudentsHtml}
         ${needCheckHtml}
         ${adminScheduleHtml}
+        ${adminBottomSearchHtml}
     </div>`;
 }
 
@@ -2408,12 +2439,15 @@ function renderTodayJournalCard(data) {
         : todayClasses.map(c => `${apEscapeHtml(c.name)} ${data.classSummaries[c.id].present}/${data.classSummaries[c.id].activeCount}`).join(' · ');
 
     return `
-        <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher">
-            <div class="ap-dashboard-journal-head">
-                <h3 class="ap-dashboard-journal-title">오늘일지</h3>
-                <span id="dashboard-journal-content" class="ap-dashboard-journal-summary">${contentHtml}</span>
+        <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher" style="margin-bottom:18px;">
+            <div class="ap-dashboard-section-head ap-dashboard-journal-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+                <h3 class="ap-dashboard-journal-title" style="margin:0; font-size:14px; font-weight:700; color:var(--text);">오늘일지</h3>
             </div>
-            <div id="dashboard-journal-card" class="ap-dashboard-journal-body" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
+            <div id="dashboard-journal-card" class="card ap-dashboard-journal-body" style="padding:10px; border-radius:18px; border:1px solid var(--border); background:var(--surface-2); box-shadow:none; display:flex; flex-direction:column; gap:8px;">
+                <button type="button" class="btn ap-dashboard-journal-today-row" style="width:100%; min-height:50px; padding:0 14px; border-radius:14px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:10px; text-align:left; box-sizing:border-box;" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
+                    <span style="font-size:13px; font-weight:700; white-space:nowrap;">오늘 수업</span>
+                    <span id="dashboard-journal-content" class="ap-dashboard-journal-summary" style="min-width:0; flex:1; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--secondary); font-size:12px; font-weight:700;">${contentHtml}</span>
+                </button>
                 ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
             </div>
         </div>
@@ -2747,17 +2781,11 @@ function renderDashboard() {
         return;
     }
 
-    // EIE 선생님: APMS 대시보드에서 처리하지 않음
+    // 영어관 선생님은 APMS 선생님 화면을 렌더링하지 않고 전용 화면으로 보낸다.
     if (role === 'eieteacher') {
-        if (typeof renderAppDrawer === 'function') renderAppDrawer();
-        const root = document.getElementById('app-root');
-        if (root) {
-            root.innerHTML = `<div style="width:100%; max-width:600px; margin:60px auto; padding:0 16px; box-sizing:border-box; text-align:center;">
-                <div style="font-size:15px; font-weight:500; color:var(--secondary); line-height:1.65; padding:24px; border:1px solid var(--border); border-radius:16px; background:var(--surface);">
-                    EIE 선생님 화면은 별도 준비 중입니다.<br>
-                    <button class="btn" style="margin-top:14px; padding:10px 20px; border-radius:12px; font-size:13px; font-weight:500; background:var(--primary-soft); color:var(--primary); border:1px solid rgba(var(--primary-rgb),0.18);" onclick="window.location.href='../eie/index.html#dashboard'">EIE로 이동</button>
-                </div>
-            </div>`;
+        if (typeof removeAppDrawer === 'function') removeAppDrawer();
+        if (typeof window !== 'undefined') {
+            window.location.href = '../eie/index.html#dashboard';
         }
         return;
     }
@@ -2769,7 +2797,10 @@ function renderDashboard() {
 
     // fallback: dashboard-teacher.js 미로드 시 기존 선생님 화면 직접 렌더링
     state.ui.currentClassId = null;
-    if (typeof renderAppDrawer === 'function') renderAppDrawer();
+    if (typeof document !== 'undefined') {
+        document.body.classList.add('ap-teacher-dashboard-mode');
+        document.querySelectorAll('#ap-system-gate, .ap-admin-app-gate, [data-ap-system-gate="true"]').forEach(el => el.remove());
+    }
     const data = computeDashboardData();
     const root = document.getElementById('app-root');
 
@@ -2822,7 +2853,7 @@ function renderDashboard() {
         <div class="ap-dashboard-class-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:40px;">${filteredClasses.map(c => renderClassSummaryCard(c, data)).join('')}</div>
     `;
 
-    root.innerHTML = `<div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
+    root.innerHTML = `<style>body.ap-teacher-dashboard-mode #ap-system-gate, body.ap-teacher-dashboard-mode .ap-system-gate, body.ap-teacher-dashboard-mode [data-ap-system-gate="true"]{display:none!important;}</style><div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
         ${todayJournalCard}
         <div id="dashboard-onboarding-tasks-root"></div>
