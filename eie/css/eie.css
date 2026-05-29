@@ -1317,6 +1317,7 @@ body {
     gap: 12px;
     padding: 14px 10px;
     border-right: 1px solid var(--eie-border);
+    background: var(--eie-surface);
     background: color-mix(in srgb, var(--eie-surface) 88%, var(--eie-bg));
     box-shadow: 0 1px 2px rgba(15,23,42,0.02), 0 10px 28px rgba(15,23,42,0.04);
     z-index: 20;
@@ -1329,8 +1330,8 @@ body {
     gap: 10px;
     width: 100%;
     min-height: 40px;
-    padding: 9px 12px;
-    border: 0;
+    padding: 8px 11px;
+    border: 1px solid transparent;
     border-radius: 12px;
     background: transparent;
     color: var(--eie-muted);
@@ -1411,7 +1412,7 @@ body {
 .eie-sidebar-item[aria-current="page"] {
     background: var(--eie-surface-2);
     color: var(--eie-text);
-    border: 1px solid var(--eie-border);
+    border-color: var(--eie-border);
 }
 
 .eie-sidebar-item:hover .eie-sidebar-icon,
@@ -1439,6 +1440,7 @@ body {
 .eie-card:hover,
 .eie-admin-card:hover {
     background: var(--eie-surface-2) !important;
+    border-color: var(--eie-border) !important;
     border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text)) !important;
     box-shadow: 0 6px 16px rgba(15,23,42,0.06) !important;
     transform: translateY(-1px) !important;
