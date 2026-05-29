@@ -16,22 +16,22 @@ function apRemoveAdminSystemGate() {
 function apCreateAdminSystemGate() {
     const gate = document.createElement('div');
     gate.id = 'ap-system-gate';
-    gate.className = 'ap-admin-app-gate ap-surface-toolbar ap-surface-toolbar--two';
+    gate.className = 'owner-brand-tabs ap-admin-app-gate ap-surface-toolbar ap-surface-toolbar--two';
     gate.setAttribute('data-ap-system-gate', 'true');
     gate.setAttribute('role', 'navigation');
     gate.setAttribute('aria-label', '시스템 전환');
     gate.innerHTML = `
-        <button class="btn ap-surface-action ap-surface-action--current"
+        <button class="owner-brand-tab owner-brand-tab--current btn ap-surface-action ap-surface-action--current"
                 type="button"
                 aria-current="page"
                 onclick="void(0)">
             AP MATH
         </button>
-        <button class="btn ap-surface-action"
-                type="button"
-                onclick="window.location.href='../eie/index.html#dashboard'">
+        <a class="owner-brand-tab btn ap-surface-action"
+           href="../eie/index.html#dashboard"
+           aria-label="EIE 대시보드로 이동">
             EIE
-        </button>
+        </a>
     `;
 
     return gate;

@@ -104,9 +104,9 @@
 
     function renderGate() {
         return `
-            <div class="eie-admin-shortcuts eie-admin-app-gate eie-surface-toolbar eie-surface-toolbar--two" aria-label="시스템 전환">
-                <a class="eie-admin-shortcut eie-surface-action" href="../apmath/index.html" aria-label="AP MATH로 이동" title="AP MATH">AP MATH</a>
-                <button class="eie-admin-shortcut eie-surface-action eie-surface-action--current is-active" type="button" data-eie-route="dashboard" aria-current="page" aria-label="EIE 대시보드" title="EIE">EIE</button>
+            <div class="owner-brand-tabs eie-admin-app-gate eie-surface-toolbar eie-surface-toolbar--two" role="navigation" aria-label="시스템 전환">
+                <a class="owner-brand-tab eie-admin-shortcut eie-surface-action" href="../apmath/index.html" aria-label="AP MATH 원장 대시보드로 이동">AP MATH</a>
+                <button class="owner-brand-tab owner-brand-tab--current eie-admin-shortcut eie-surface-action eie-surface-action--current is-active" type="button" data-eie-route="dashboard" aria-current="page" aria-label="EIE 대시보드">EIE</button>
             </div>
         `;
     }
@@ -215,14 +215,16 @@
         const data = await loadDashboardData();
 
         return `
-            <section class="eie-admin-home" aria-label="EIE 원장님 대시보드">
-                ${renderGate()}
-                ${renderActionGrid()}
-                ${renderOverview(data)}
-                ${renderStatusGrid(data)}
-                ${renderRecentStudents(data)}
-                ${renderNotice(data)}
-            </section>
+            <div class="owner-dashboard-shell">
+                <section class="eie-admin-home" aria-label="EIE 원장님 대시보드">
+                    ${renderGate()}
+                    ${renderActionGrid()}
+                    ${renderOverview(data)}
+                    ${renderStatusGrid(data)}
+                    ${renderRecentStudents(data)}
+                    ${renderNotice(data)}
+                </section>
+            </div>
         `;
     }
 
