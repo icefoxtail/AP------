@@ -1817,9 +1817,9 @@ function renderAdminControlCenter() {
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
 
     const adminSystemGateHtml = `
-        <div id="ap-system-gate" class="ap-admin-app-gate ap-surface-toolbar ap-surface-toolbar--two" data-ap-system-gate="true" role="navigation" aria-label="시스템 전환">
-            <button class="btn ap-surface-action ap-surface-action--current" type="button" aria-current="page" onclick="void(0)">AP MATH</button>
-            <button class="btn ap-surface-action" type="button" onclick="window.location.href='../eie/index.html#dashboard'">EIE</button>
+        <div id="ap-system-gate" class="owner-brand-tabs ap-admin-app-gate ap-surface-toolbar ap-surface-toolbar--two" data-ap-system-gate="true" role="navigation" aria-label="시스템 전환">
+            <button class="owner-brand-tab owner-brand-tab--current btn ap-surface-action ap-surface-action--current" type="button" aria-current="page" onclick="void(0)">AP MATH</button>
+            <a class="owner-brand-tab btn ap-surface-action" href="../eie/index.html#dashboard" aria-label="EIE 대시보드로 이동">EIE</a>
         </div>
     `;
 
@@ -2122,7 +2122,7 @@ function renderAdminControlCenter() {
         </style>
     `;
 
-    root.innerHTML = `<div id="ap-admin-dashboard">
+    root.innerHTML = `<div id="ap-admin-dashboard" class="owner-dashboard-shell">
         ${adminUnifiedStyle}
         ${adminSystemGateHtml}
         ${adminShortcutRow}
