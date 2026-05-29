@@ -101,19 +101,24 @@ function isDashboardHoliday(dateStr) {
     return false;
 }
 
-function isClassScheduledTodayForDashboard(cid) {
-    const todayStr = new Date().toLocaleDateString('sv-SE');
+function isClassScheduledOnDateForDashboard(cid, dateStr) {
+    const targetDateStr = String(dateStr || new Date().toLocaleDateString('sv-SE')).slice(0, 10);
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     if (!cls) return false;
-    if (isDashboardHoliday(todayStr)) return false;
+    if (isDashboardHoliday(targetDateStr)) return false;
 
-    const todayKey = DASHBOARD_DAY_ORDER[new Date().getDay()];
+    const targetDate = dashboardDateFromLocalString(targetDateStr) || new Date();
+    const targetKey = DASHBOARD_DAY_ORDER[targetDate.getDay()];
     const classDayKeys = dashboardGetClassDayKeys(cls);
 
     // 학급관리 활성 표시는 출결 기록이 아니라 실제 수업 요일만 기준으로 한다.
-    // schedule_days/day_group/time_label 어디에도 오늘 요일이 없으면 비활성이다.
+    // class_time_slots가 있으면 이를 우선하고, 없을 때만 classes의 요일 필드를 보조로 사용한다.
     if (!classDayKeys.length) return false;
-    return classDayKeys.includes(todayKey);
+    return classDayKeys.includes(targetKey);
+}
+
+function isClassScheduledTodayForDashboard(cid) {
+    return isClassScheduledOnDateForDashboard(cid, new Date().toLocaleDateString('sv-SE'));
 }
 
 function isMiddleSchoolClass(c) {
@@ -208,13 +213,13 @@ function dashboardAddDayKey(list, key) {
     if (DASHBOARD_DAY_ORDER.includes(normalized) && !list.includes(normalized)) list.push(normalized);
 }
 
-function dashboardParseDayKeysFromText(value) {
+function dashboardParseDayKeysFromText(value, options = {}) {
     const source = String(value || '').trim();
     const days = [];
     if (!source) return days;
 
+    const allowNumeric = options.allowNumeric !== false;
     const tokenMap = {
-        '0': 'sun', '1': 'mon', '2': 'tue', '3': 'wed', '4': 'thu', '5': 'fri', '6': 'sat', '7': 'sun',
         sun: 'sun', sunday: 'sun', su: 'sun', 일: 'sun', 일요일: 'sun',
         mon: 'mon', monday: 'mon', m: 'mon', 월: 'mon', 월요일: 'mon',
         tue: 'tue', tuesday: 'tue', tu: 'tue', 화: 'tue', 화요일: 'tue',
@@ -223,6 +228,10 @@ function dashboardParseDayKeysFromText(value) {
         fri: 'fri', friday: 'fri', f: 'fri', 금: 'fri', 금요일: 'fri',
         sat: 'sat', saturday: 'sat', sa: 'sat', 토: 'sat', 토요일: 'sat'
     };
+
+    if (allowNumeric) {
+        Object.assign(tokenMap, { '0': 'sun', '1': 'mon', '2': 'tue', '3': 'wed', '4': 'thu', '5': 'fri', '6': 'sat', '7': 'sun' });
+    }
 
     const groupMap = {
         mwf: ['mon', 'wed', 'fri'],
@@ -236,6 +245,10 @@ function dashboardParseDayKeysFromText(value) {
 
     const compact = source.toLowerCase().replace(/\s+/g, '');
     if (groupMap[compact]) return [...groupMap[compact]];
+    if (allowNumeric && options.allowNumericSequence === true && /^[0-7]+$/.test(compact)) {
+        for (const ch of compact) dashboardAddDayKey(days, tokenMap[ch]);
+        return days;
+    }
 
     source.split(/[,/|·\s]+/).map(v => v.trim()).filter(Boolean).forEach(token => {
         const lower = token.toLowerCase();
@@ -243,15 +256,32 @@ function dashboardParseDayKeysFromText(value) {
         else dashboardAddDayKey(days, tokenMap[lower] || tokenMap[token]);
     });
 
-    for (const ch of source) dashboardAddDayKey(days, tokenMap[ch]);
+    const koreanDayMap = { 일: 'sun', 월: 'mon', 화: 'tue', 수: 'wed', 목: 'thu', 금: 'fri', 토: 'sat' };
+    for (const ch of source) dashboardAddDayKey(days, koreanDayMap[ch]);
     return days;
+}
+
+function dashboardGetClassTimeSlotRows(cls) {
+    const cid = String(cls?.id || '');
+    if (!cid || !Array.isArray(state?.db?.class_time_slots)) return [];
+    return state.db.class_time_slots.filter(slot => String(slot?.class_id || '') === cid);
 }
 
 function dashboardGetClassDayKeys(cls) {
     const days = [];
-    dashboardParseDayKeysFromText(cls?.schedule_days).forEach(day => dashboardAddDayKey(days, day));
-    dashboardParseDayKeysFromText(cls?.day_group).forEach(day => dashboardAddDayKey(days, day));
-    dashboardParseDayKeysFromText(cls?.time_label).forEach(day => dashboardAddDayKey(days, day));
+    const slotRows = dashboardGetClassTimeSlotRows(cls);
+
+    if (slotRows.length) {
+        slotRows.forEach(slot => {
+            dashboardParseDayKeysFromText(slot?.day_of_week ?? slot?.day ?? slot?.weekday ?? '', { allowNumeric: true })
+                .forEach(day => dashboardAddDayKey(days, day));
+        });
+        if (days.length) return DASHBOARD_DAY_ORDER.filter(day => days.includes(day));
+    }
+
+    dashboardParseDayKeysFromText(cls?.schedule_days, { allowNumeric: true, allowNumericSequence: true }).forEach(day => dashboardAddDayKey(days, day));
+    dashboardParseDayKeysFromText(cls?.day_group, { allowNumeric: true }).forEach(day => dashboardAddDayKey(days, day));
+    dashboardParseDayKeysFromText(cls?.time_label, { allowNumeric: false }).forEach(day => dashboardAddDayKey(days, day));
     return DASHBOARD_DAY_ORDER.filter(day => days.includes(day));
 }
 
@@ -1787,14 +1817,14 @@ function renderAdminControlCenter() {
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
 
     const adminSystemGateHtml = `
-        <div id="ap-system-gate" class="ap-admin-app-gate" data-ap-system-gate="true" role="navigation" aria-label="시스템 전환" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:16px; margin-bottom:18px; box-sizing:border-box;">
+        <div id="ap-system-gate" class="ap-admin-app-gate" data-ap-system-gate="true" role="navigation" aria-label="시스템 전환" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; background:linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%); padding:4px; border:1px solid rgba(var(--primary-rgb),0.14); border-radius:16px; margin-bottom:18px; box-sizing:border-box; box-shadow:0 10px 24px rgba(15,23,42,0.055);">
             <button class="btn" type="button" aria-current="page" style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none; cursor:default;" onclick="void(0)">AP MATH</button>
             <button class="btn" type="button" style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;" onclick="window.location.href='../eie/index.html#dashboard'">EIE</button>
         </div>
     `;
 
     const adminShortcutRow = `
-        <div class="ap-admin-shortcuts ap-admin-action-grid" aria-label="원장님 바로가기" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:18px; margin-bottom:18px;">
+        <div class="ap-admin-shortcuts ap-admin-action-grid" aria-label="원장님 바로가기" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; background:linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%); padding:4px; border:1px solid rgba(var(--primary-rgb),0.14); border-radius:18px; margin-bottom:18px; box-shadow:0 10px 24px rgba(15,23,42,0.055);">
             <button class="btn ap-admin-action-card"
                     style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
@@ -1916,14 +1946,17 @@ function renderAdminControlCenter() {
                 border-radius:0 !important;
                 padding:0 !important;
             }
-            #ap-admin-dashboard .ap-admin-shortcuts {
+            #ap-admin-dashboard .ap-admin-shortcuts,
+            #ap-admin-dashboard .ap-admin-app-gate {
                 display:grid !important;
                 gap:8px !important;
                 padding:4px !important;
-                border:1px solid var(--border) !important;
+                border:1px solid rgba(var(--primary-rgb),0.14) !important;
                 border-radius:16px !important;
-                background:var(--surface-2) !important;
-                box-shadow:none !important;
+                background:
+                    radial-gradient(circle at 10% 0%, rgba(var(--primary-rgb),0.09), transparent 34%),
+                    linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%) !important;
+                box-shadow:0 10px 24px rgba(15,23,42,0.055) !important;
             }
             #ap-admin-dashboard .ap-admin-overview-grid {
                 display:grid !important;
@@ -1938,16 +1971,17 @@ function renderAdminControlCenter() {
                 grid-template-columns:repeat(4, minmax(0, 1fr));
                 margin-bottom:18px !important;
             }
-            #ap-admin-dashboard .ap-admin-shortcuts .btn {
+            #ap-admin-dashboard .ap-admin-shortcuts .btn,
+            #ap-admin-dashboard .ap-admin-app-gate .btn {
                 height:44px !important;
                 min-height:44px !important;
                 max-height:44px !important;
                 padding:0 10px !important;
                 border-radius:12px !important;
-                border:1px solid var(--border) !important;
-                background:var(--surface) !important;
+                border:1px solid rgba(var(--primary-rgb),0.13) !important;
+                background:linear-gradient(180deg, var(--surface) 0%, rgba(var(--primary-rgb),0.035) 100%) !important;
                 color:var(--text) !important;
-                box-shadow:none !important;
+                box-shadow:0 6px 16px rgba(var(--primary-rgb),0.08) !important;
                 font-size:13px !important;
                 font-weight:500 !important;
                 line-height:1.2 !important;
@@ -2443,16 +2477,13 @@ function renderTodayJournalCard(data) {
 
     return `
         <div class="ap-dashboard-section ap-dashboard-journal-section ap-dashboard-journal-section--teacher" style="margin-bottom:18px;">
-            <div class="ap-dashboard-section-head ap-dashboard-journal-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+            <div class="ap-dashboard-section-head ap-dashboard-journal-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                 <h3 class="ap-dashboard-journal-title" style="margin:0; font-size:14px; font-weight:500; color:var(--text);">오늘일지</h3>
             </div>
-            <div id="dashboard-journal-card" class="card ap-dashboard-journal-body" style="padding:4px; border-radius:16px; border:1px solid var(--border); background:var(--surface-2); box-shadow:none; display:flex; flex-direction:column; gap:8px;">
-                <button type="button" class="btn ap-dashboard-journal-today-row" style="width:100%; min-height:44px; padding:0 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow:none; display:flex; align-items:center; justify-content:space-between; gap:10px; text-align:left; box-sizing:border-box;" onclick="if(typeof openDailyJournalModal === 'function') openDailyJournalModal(); else toast('불러오기 실패', 'warn');">
-                    <span style="font-size:13px; font-weight:500; white-space:nowrap;">오늘 수업</span>
-                    <span id="dashboard-journal-content" class="ap-dashboard-journal-summary" style="min-width:0; flex:1; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--secondary); font-size:12px; font-weight:500;">${contentHtml}</span>
-                </button>
-                ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
+            <div id="dashboard-journal-content" class="ap-dashboard-journal-summary ap-dashboard-journal-summary--plain" style="min-height:28px; padding:0 4px 8px; display:flex; align-items:center; color:var(--secondary); font-size:13px; font-weight:500; line-height:1.45; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                ${contentHtml}
             </div>
+            ${renderDashboardJournalWeekMatrix('', new Date().toLocaleDateString('sv-SE'))}
         </div>
     `;
 }
@@ -2841,7 +2872,7 @@ function renderDashboard() {
         </div>
     `;
 
-    let filteredClasses = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0));
+    let filteredClasses = sortClassesForDashboard(state.db.classes.filter(c => Number(c.is_active) !== 0 && isClassScheduledTodayForDashboard(c.id)));
     filteredClasses = filteredClasses.filter(c => {
         if (tab === 'middle') return isMiddleSchoolClass(c);
         if (tab === 'high') return !isMiddleSchoolClass(c);
@@ -3165,19 +3196,12 @@ function dashboardFormatConsultationFullText(row) {
 
 
 function dashboardGetJournalClassRows(targetDate) {
-    const parts = String(targetDate || new Date().toLocaleDateString('sv-SE')).split('-');
-    const targetDayIdx = String(new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2])).getDay());
-
     return (state.db.classes || []).filter(c => {
         if (Number(c.is_active) === 0) return false;
         if (!isMiddleSchoolClass(c)) return false;
         if (!isClassVisibleForCurrentTeacher(c)) return false;
 
-        if (!c.schedule_days) return true;
-        return String(c.schedule_days)
-            .split(',')
-            .map(v => v.trim())
-            .includes(targetDayIdx);
+        return isClassScheduledOnDateForDashboard(c.id, targetDate);
     });
 }
 
