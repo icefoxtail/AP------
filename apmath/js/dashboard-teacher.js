@@ -22,14 +22,14 @@ function renderTeacherDashboardView() {
     const root = document.getElementById('app-root');
 
     const shortcutRow = `
-        <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick" style="display:flex; gap:8px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:18px;">
+        <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:16px; margin-bottom:18px;">
             <button class="btn ap-dashboard-action-button"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#2563eb; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
             <button class="btn ap-dashboard-action-button"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:#0891b2; box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
