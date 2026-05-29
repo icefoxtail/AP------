@@ -1,4 +1,4 @@
-# APMS / EIE UI Surface & Sidebar Guideline v1.1
+# APMS / EIE UI Surface & Sidebar Guideline v1.2.1
 
 > 적용 범위: APMS, EIE  
 > 상위 기준: `ACADEMY_APMS_EIE_COMMON_UI_INTERACTION_GUIDELINE_v1.1.md`  
@@ -518,6 +518,44 @@ APMS/EIE에 React 구조를 직접 붙이지 않는다.
 ```
 
 EIE 라우팅 버튼은 HTML inline onclick이 아니라 라우터의 delegated handler로 처리한다.
+
+EIE 모든 view의 뒤로가기/홈 이동 버튼도 예외 없이 `data-eie-route` 기준을 따른다. `eie-dashboard`, `eie-timetable`, `eie-students`, `eie-classroom`, `eie-management` 내부에서 `onclick="EieRouter.open(...)"` 형태의 HTML 문자열을 만들지 않는다.
+---
+
+## 11-2. EIE 첫 화면 배열 기준
+
+EIE 원장님 첫 화면은 APMS 원장님 첫 화면과 같은 배열 문법을 따른다.
+
+기본 배열:
+
+```text
+1. AP MATH / EIE 시스템 전환
+2. 상단 4개 이동 카드
+3. 오늘 운영 4개 작은 카드
+4. 현황 카드 3열
+5. 최근 항목 목록
+```
+
+원칙:
+
+```text
+- APMS와 EIE의 첫 화면 껍데기는 같게 보이게 한다.
+- 차이는 클릭 후 이동 대상과 내부 데이터만 둔다.
+- EIE가 아직 제공하지 않는 기능은 무리해서 APMS 기능명을 복제하지 않는다.
+- 카드 수, 카드 높이, 카드 간격, surface, hover 강도는 APMS와 같은 문법을 쓴다.
+- EIE 첫 화면이 별도 앱처럼 다른 hero/landing 구조로 보이면 실패로 본다.
+```
+
+EIE 매핑 기준:
+
+```text
+APMS 출석부에 대응하는 EIE 진입점: 클래스룸 또는 출석/수업 운영
+APMS 시간표에 대응하는 EIE 진입점: EIE 시간표
+APMS 학생/성적 계열에 대응하는 EIE 진입점: 학생관리
+APMS 관리에 대응하는 EIE 진입점: 관리
+```
+
+
 ---
 
 ## 12. 외부감사 체크리스트
@@ -537,6 +575,8 @@ UI 대수술 검수자는 다음을 반드시 확인한다.
 10. 기존 메뉴명/기능명이 임의 변경되지 않았는가?
 11. 클릭 불가능한 정보 박스에 hover가 들어가지 않았는가?
 12. 모바일에서 hover 전제만으로 기능 인지가 깨지지 않는가?
+13. EIE 첫 화면 배열이 APMS 원장님 첫 화면과 같은 문법인가?
+14. EIE 시간표 Unauthorized 같은 별도 기능 오류를 UI 대수술 PASS/FAIL과 섞지 않았는가?
 ```
 
 ---
@@ -584,4 +624,13 @@ APMS/EIE의 기본 화면은 조용해야 한다.
 - 시각 보정용 !important 최소화 기준 추가
 - 반복 inline style을 의미 class로 승격하는 기준 추가
 - EIE route button inline onclick 금지 및 delegated handler 기준 추가
+
+2026-05-29 v1.2
+- EIE 첫 화면을 APMS 원장님 첫 화면 배열 문법에 맞추는 기준 추가
+- 모든 클릭 카드 / 작은 카드 / row / 시간표 셀 hover coverage 기준 추가
+- EIE 시간표 Unauthorized 같은 기능 오류와 UI surface 대수술 검수를 분리하는 기준 추가
+
+2026-05-29 v1.2.1
+- EIE 모든 view의 홈/뒤로가기 버튼도 data-eie-route delegated handler 기준으로 통일
+- eie-timetable / eie-students / eie-classroom / eie-management의 EieRouter.open inline onclick 금지 기준 명시
 ```

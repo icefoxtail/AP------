@@ -176,7 +176,9 @@
                 return `
                     <section aria-labelledby="eie-timetable-title">
                         <button type="button" class="eie-back-button"
-                                onclick="EieRouter.open('dashboard')">← EIE 홈</button>
+                                data-eie-route="dashboard"
+                                aria-label="EIE 홈으로 이동"
+                                title="EIE 홈">← EIE 홈</button>
                         <div class="eie-panel">
                             <h1 id="eie-timetable-title" class="eie-panel-title">EIE 시간표</h1>
                             <div class="eie-error-box">${esc(error)}</div>
@@ -191,7 +193,9 @@
             return `
                 <section aria-labelledby="eie-timetable-title">
                     <button type="button" class="eie-back-button"
-                            onclick="EieRouter.open('dashboard')">← EIE 홈</button>
+                            data-eie-route="dashboard"
+                            aria-label="EIE 홈으로 이동"
+                            title="EIE 홈">← EIE 홈</button>
                     <div class="eie-panel">
                         <h1 id="eie-timetable-title" class="eie-panel-title">EIE 시간표</h1>
                         ${error ? `<div class="eie-error-box">${esc(error)}</div>` : ''}

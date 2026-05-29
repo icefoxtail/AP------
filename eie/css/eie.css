@@ -549,8 +549,9 @@ body {
 }
 
 .eie-excel-cell.is-selected {
-  outline: 2px solid #2563eb;
+  outline: 2px solid rgba(15, 23, 42, 0.16);
   outline-offset: 2px;
+  border-color: rgba(15, 23, 42, 0.18);
 }
 
 .eie-cell-edit-trigger {
@@ -718,8 +719,8 @@ body {
 }
 
 .eie-filter-button.is-active {
-    border-color: #2563eb;
-    background: #eff6ff;
+    border-color: var(--eie-border);
+    background: var(--eie-surface);
 }
 
 @media (max-width: 760px) {
@@ -1045,9 +1046,10 @@ body {
     cursor: pointer;
 }
 
-.eie-admin-shortcut.is-active {
-    background: #ecfdf5;
-    color: #16a34a !important;
+.eie-admin-shortcut.is-active,
+.eie-surface-action--current {
+    background: var(--eie-surface);
+    color: var(--eie-text);
 }
 
 .eie-admin-section {
@@ -1562,4 +1564,367 @@ body {
 /* Sidebar가 EIE 내비게이션을 담당하므로 기존 상단 nav는 중복 노출하지 않는다. */
 .eie-app-shell .eie-shell-header {
     display: none;
+}
+
+/* ======================================================================
+   Round 4 — APMS admin-aligned EIE landing + full hover coverage
+   - EIE 첫 화면은 APMS 원장님 첫 화면과 같은 배열 감각을 따른다.
+   - 클릭 가능한 큰 카드 / 작은 카드 / row / 시간표 셀은 모두 hover에서만 살아난다.
+   - 파란 active 배경은 금지하고 neutral surface만 사용한다.
+   ====================================================================== */
+.eie-admin-home {
+  width: 100%;
+}
+
+.eie-surface-toolbar {
+  display: grid;
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface-2);
+  box-shadow: none;
+  box-sizing: border-box;
+  margin-bottom: 18px;
+}
+
+.eie-surface-toolbar--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.eie-surface-toolbar--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.eie-surface-toolbar--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.eie-admin-shortcuts {
+  margin-bottom: 18px;
+}
+
+.eie-admin-shortcut,
+.eie-surface-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  min-width: 0;
+  padding: 0 10px;
+  border: 1px solid var(--eie-border);
+  border-radius: 12px;
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  box-shadow: none;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease;
+}
+
+.eie-admin-shortcut.is-active,
+.eie-surface-action--current,
+.eie-surface-action[aria-current="page"] {
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  cursor: default;
+}
+
+.eie-admin-shortcut:hover,
+.eie-surface-action:hover,
+.eie-card:hover,
+.eie-admin-card:hover,
+.eie-admin-status-card:hover,
+.eie-back-button:hover,
+.eie-small-button:hover:not(:disabled) {
+  background: var(--eie-surface-2);
+  border-color: var(--eie-border);
+  border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text));
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  transform: translateY(-1px);
+}
+
+.eie-admin-shortcut.is-active:hover,
+.eie-surface-action--current:hover,
+.eie-surface-action[aria-current="page"]:hover {
+  background: var(--eie-surface);
+  box-shadow: none;
+  transform: none;
+}
+
+.eie-admin-section {
+  margin-bottom: 28px;
+}
+
+.eie-admin-section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.eie-admin-section-title-row--split > span {
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.eie-admin-section-title {
+  margin: 0;
+  color: var(--eie-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.eie-admin-action-grid,
+.eie-admin-overview-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.eie-admin-mini-metric {
+  min-height: 44px;
+  height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--eie-border);
+  border-radius: 12px;
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease;
+}
+
+.eie-admin-mini-metric span {
+  min-width: 0;
+  color: var(--eie-text);
+  font-size: 12px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eie-admin-mini-metric strong {
+  color: var(--eie-text);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.eie-admin-mini-metric:hover,
+.eie-summary-card:hover,
+.eie-student-chip:hover,
+.eie-table tbody tr:hover,
+.eie-admin-recent-row:hover {
+  background: var(--eie-surface);
+  border-color: var(--eie-border);
+  border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text));
+  box-shadow: none;
+  transform: none;
+}
+
+.eie-admin-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.eie-admin-status-card {
+  min-height: 116px;
+  padding: 14px;
+  border: 1px solid var(--eie-border);
+  border-radius: 18px;
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  box-shadow: var(--eie-shadow);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease;
+}
+
+.eie-admin-status-card strong {
+  display: block;
+  color: var(--eie-text);
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.eie-admin-status-card small {
+  display: block;
+  margin-top: 6px;
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.eie-admin-recent-list {
+  overflow: hidden;
+  border: 1px solid var(--eie-border);
+  border-radius: 16px;
+  background: var(--eie-surface);
+  box-shadow: var(--eie-shadow);
+}
+
+.eie-admin-recent-row {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 12px;
+  border: 0;
+  border-bottom: 1px solid var(--eie-border);
+  border-radius: 0;
+  background: var(--eie-surface);
+  color: var(--eie-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: background .16s ease, border-color .16s ease;
+}
+
+.eie-admin-recent-row:last-child {
+  border-bottom: 0;
+}
+
+.eie-admin-recent-row span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.eie-admin-recent-row strong {
+  color: var(--eie-text);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eie-admin-recent-row small {
+  color: var(--eie-muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.eie-admin-recent-row em {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border: 1px solid var(--eie-border);
+  border-radius: 999px;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.eie-admin-empty-row {
+  min-height: 54px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--eie-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.eie-dashboard-notice {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--eie-border);
+  border-radius: 14px;
+  background: var(--eie-surface-2);
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.eie-summary-card,
+.eie-excel-cell,
+.eie-student-chip,
+.eie-table tbody tr,
+.eie-management-card,
+.eie-classroom-card,
+.eie-student-row {
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease;
+}
+
+.eie-excel-cell:hover {
+  background: var(--eie-surface-2);
+  border-color: var(--eie-border);
+  border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text));
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+  transform: translateY(-1px);
+}
+
+.eie-excel-cell.is-selected {
+  outline: 2px solid rgba(15, 23, 42, 0.16);
+  outline-offset: 2px;
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
+.eie-excel-cell.is-selected:hover {
+  background: var(--eie-surface-2);
+}
+
+.eie-card,
+.eie-admin-card,
+.eie-admin-status-card {
+  border-radius: 18px;
+}
+
+.eie-card-label,
+.eie-card-cta,
+.eie-admin-card-kicker {
+  color: var(--eie-muted);
+}
+
+.eie-status {
+  background: var(--eie-surface-2);
+  color: var(--eie-text);
+  border: 1px solid var(--eie-border);
+}
+
+@media (max-width: 720px) {
+  .eie-surface-toolbar--two,
+  .eie-surface-toolbar--three,
+  .eie-surface-toolbar--four,
+  .eie-admin-action-grid,
+  .eie-admin-overview-grid,
+  .eie-admin-status-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -195,7 +195,7 @@
             var detailHtml = showPanel ? renderDetail(selected) : '';
 
             return '<section aria-labelledby="eie-students-title">'
-                + '<button type="button" class="eie-back-button" onclick="EieRouter.open(\'dashboard\')">← EIE 홈</button>'
+                + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>'
                 + '<div class="eie-panel">'
                 + '<h1 id="eie-students-title" class="eie-panel-title">학생관리</h1>'
                 + '<p class="eie-panel-copy">전화번호는 학생 이름 클릭 후 상세에서 확인합니다.</p>'

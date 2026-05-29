@@ -450,3 +450,71 @@
   color: var(--text);
   border: 1px solid var(--border);
 }
+
+
+/* Round 4 — full dashboard hover coverage */
+.ap-dashboard-shell .card,
+.ap-admin-teacher-card,
+.ap-admin-recent-student-grid,
+.ap-dashboard-surface-list {
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease;
+}
+
+.ap-dashboard-shell .card:hover,
+.ap-admin-teacher-card:hover {
+  background: var(--surface);
+  border-color: var(--border);
+  border-color: color-mix(in srgb, var(--border) 76%, var(--text));
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  transform: translateY(-1px);
+}
+
+.ap-admin-recent-student-grid:hover,
+.ap-dashboard-surface-list:hover {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.admin-teacher-card__quick-action,
+.ap-admin-consultation-row,
+.ap-admin-recent-student-row,
+.dashboard-journal-card__top,
+.journal-day-cell,
+#dashboard-weekly-schedule-list > div > div,
+#dashboard-onboarding-weekly-items > div {
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease;
+}
+
+.admin-teacher-card__quick-action:hover,
+.ap-admin-consultation-row:hover,
+.ap-admin-recent-student-row:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+  border-color: color-mix(in srgb, var(--border) 72%, var(--text));
+  box-shadow: none;
+  transform: none;
+}
+
+.ap-admin-check-item:hover,
+.ap-admin-mini-metric[role="button"]:hover,
+.journal-day-cell:hover,
+#dashboard-weekly-schedule-list > div > div:hover,
+#dashboard-onboarding-weekly-items > div:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+  border-color: color-mix(in srgb, var(--border) 72%, var(--text));
+}
+
+.ap-dashboard-shell .card.ap-admin-teacher-card:hover .journal-day-cell,
+.ap-dashboard-shell .card:hover .ap-admin-mini-metric {
+  box-shadow: none;
+}

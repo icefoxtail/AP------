@@ -59,7 +59,7 @@
         const nextRoute = normalizeRoute(route);
         const nextHash = `#${nextRoute}`;
         if (window.location.hash !== nextHash) {
-            window.location.hash = nextRoute;
+            window.location.hash = nextHash;
             return;
         }
         await renderRoute(nextRoute);
