@@ -2453,7 +2453,7 @@ function renderTodoSections() {
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
                     <h3 style="margin:0; font-size:14px; font-weight:500; color:var(--text);">주간일정</h3>
                 </div>
-                <div id="dashboard-weekly-schedule-list" onclick="openExamScheduleModal()" style="cursor:pointer; overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">
+                <div id="dashboard-weekly-schedule-list" style="overflow:hidden; border-radius:16px; border:1px solid rgba(5,150,105,0.2); background:rgba(5,150,105,0.04);">
                     ${upcomingHtml}
                     <div id="dashboard-onboarding-weekly-items">${onboardingWeeklyHtml}</div>
                 </div>
