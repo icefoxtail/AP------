@@ -674,7 +674,10 @@ if (document.readyState === 'loading') {
 // [드로어 네비게이션] 아이콘형 섹션 메뉴 + PC 미니 레일 겸용
 // ============================================================
 function getDrawerRoleKey() {
-    return (typeof state !== 'undefined' && state.auth && state.auth.role === 'admin') ? 'admin' : 'teacher';
+    const role = String((typeof state !== 'undefined' && state.auth && state.auth.role) || '').toLowerCase();
+    if (role === 'admin') return 'admin';
+    if (role === 'eieteacher') return 'none';
+    return 'teacher';
 }
 
 const DRAWER_ICON_SVG = {
@@ -792,9 +795,14 @@ function ensureDrawerStyle() {
 }
 
 function renderAppDrawer(force = false) {
+    const currentRole = getDrawerRoleKey();
+    if (currentRole === 'none') {
+        removeAppDrawer();
+        return;
+    }
+
     ensureDrawerStyle();
 
-    const currentRole = getDrawerRoleKey();
     const oldDrawer = document.getElementById('app-drawer');
     const oldOverlay = document.getElementById('app-drawer-overlay');
     const roleChanged = oldDrawer && oldDrawer.dataset.role !== currentRole;
@@ -851,6 +859,10 @@ function isDesktopDrawerMode() {
 }
 
 function openAppDrawer() {
+    if (getDrawerRoleKey() === 'none') {
+        removeAppDrawer();
+        return;
+    }
     renderAppDrawer();
     const drw = document.getElementById('app-drawer');
     const ovl = document.getElementById('app-drawer-overlay');
