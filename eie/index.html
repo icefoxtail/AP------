@@ -7,14 +7,50 @@
     <link rel="stylesheet" href="./css/eie.css">
 </head>
 <body>
-    <header class="eie-shell-header">
-        <a class="eie-brand" href="./index.html#dashboard" aria-label="EIE 관리 홈">EIE 영어 관리</a>
-        <nav class="eie-nav" aria-label="EIE navigation">
-            <a class="eie-nav-link" href="../apmath/index.html">AP Math</a>
-            <button class="eie-nav-link" type="button" data-eie-route="dashboard" onclick="EieRouter.open('dashboard')">EIE</button>
-        </nav>
-    </header>
-    <main id="eie-app" class="eie-shell-main"></main>
+    <div class="eie-app-shell">
+        <aside class="eie-sidebar" aria-label="EIE 메뉴">
+            <a class="eie-sidebar-brand" href="./index.html#dashboard" aria-label="EIE 관리 홈">
+                <span class="eie-sidebar-logo" aria-hidden="true">E</span>
+                <span class="eie-sidebar-brand-text">EIE 영어</span>
+            </a>
+            <nav class="eie-sidebar-nav" aria-label="EIE 내부 메뉴">
+                <button class="eie-sidebar-item" type="button" data-eie-route="dashboard" onclick="EieRouter.open('dashboard')">
+                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M4 13h7v7H4z"/><path d="M13 13h7v7h-7z"/></svg></span>
+                    <span class="eie-sidebar-label">대시보드</span>
+                </button>
+                <button class="eie-sidebar-item" type="button" data-eie-route="timetable" onclick="EieRouter.open('timetable')">
+                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M4 10h16"/><path d="M8 14h3"/><path d="M13 14h3"/></svg></span>
+                    <span class="eie-sidebar-label">시간표</span>
+                </button>
+                <button class="eie-sidebar-item" type="button" data-eie-route="students" onclick="EieRouter.open('students')">
+                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M20 18c0-1.7-1.1-3.1-2.6-3.7"/><path d="M17 6.2a2.5 2.5 0 0 1 0 4.6"/></svg></span>
+                    <span class="eie-sidebar-label">학생관리</span>
+                </button>
+                <button class="eie-sidebar-item" type="button" data-eie-route="classroom" onclick="EieRouter.open('classroom')">
+                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10 12 5l8 5-8 5z"/><path d="M7 12v5c2.8 1.7 7.2 1.7 10 0v-5"/></svg></span>
+                    <span class="eie-sidebar-label">클래스룸</span>
+                </button>
+                <button class="eie-sidebar-item" type="button" data-eie-route="management" onclick="EieRouter.open('management')">
+                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 3.4-.2-.1a1.7 1.7 0 0 0-1.9.3 1.7 1.7 0 0 0-.6 1.7v.2H9v-.2a1.7 1.7 0 0 0-.6-1.7 1.7 1.7 0 0 0-1.9-.3l-.2.1-2-3.4.1-.1A1.7 1.7 0 0 0 4.6 15 1.7 1.7 0 0 0 3 13.8h-.2v-3.6H3A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-3.4.2.1a1.7 1.7 0 0 0 1.9-.3A1.7 1.7 0 0 0 9 1.7v-.2h6v.2a1.7 1.7 0 0 0 .6 1.7 1.7 1.7 0 0 0 1.9.3l.2-.1 2 3.4-.1.1A1.7 1.7 0 0 0 19.4 9 1.7 1.7 0 0 0 21 10.2h.2v3.6H21a1.7 1.7 0 0 0-1.6 1.2z"/></svg></span>
+                    <span class="eie-sidebar-label">관리</span>
+                </button>
+            </nav>
+            <a class="eie-sidebar-item eie-sidebar-external" href="../apmath/index.html">
+                <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M10 5l-7 7 7 7"/></svg></span>
+                <span class="eie-sidebar-label">AP Math</span>
+            </a>
+        </aside>
+        <div class="eie-shell-frame">
+            <header class="eie-shell-header">
+                <a class="eie-brand" href="./index.html#dashboard" aria-label="EIE 관리 홈">EIE 영어 관리</a>
+                <nav class="eie-nav" aria-label="EIE navigation">
+                    <a class="eie-nav-link" href="../apmath/index.html">AP Math</a>
+                    <button class="eie-nav-link" type="button" data-eie-route="dashboard" onclick="EieRouter.open('dashboard')">EIE</button>
+                </nav>
+            </header>
+            <main id="eie-app" class="eie-shell-main"></main>
+        </div>
+    </div>
 
     <script src="./js/utils/eie-normalize.js"></script>
     <script src="./js/eie-state.js"></script>

@@ -1291,3 +1291,272 @@ body {
     border-color: var(--eie-primary);
     background: rgba(26, 92, 255, 0.04);
 }
+
+/* ======================================================================
+   APMS / EIE UI Surface & Sidebar Guideline v1.0 적용
+   - ACA Sidebar 감각을 EIE 바닐라 화면에 이식
+   - EIE 내부 메뉴는 좌측 사이드바, 모바일은 상단 카드형 nav
+   ====================================================================== */
+.eie-app-shell {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 236px minmax(0, 1fr);
+    background: var(--eie-bg);
+}
+
+.eie-shell-frame {
+    min-width: 0;
+}
+
+.eie-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 10px;
+    border-right: 1px solid var(--eie-border);
+    background: color-mix(in srgb, var(--eie-surface) 88%, var(--eie-bg));
+    box-shadow: 0 1px 2px rgba(15,23,42,0.02), 0 10px 28px rgba(15,23,42,0.04);
+    z-index: 20;
+}
+
+.eie-sidebar-brand,
+.eie-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 40px;
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--eie-muted);
+    text-decoration: none;
+    text-align: left;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease, transform .16s ease;
+}
+
+.eie-sidebar-brand {
+    min-height: 46px;
+    color: var(--eie-text);
+    margin-bottom: 4px;
+}
+
+.eie-sidebar-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    background: var(--eie-surface);
+    border: 1px solid var(--eie-border);
+    color: var(--eie-text);
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.eie-sidebar-brand-text,
+.eie-sidebar-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.eie-sidebar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 19px;
+    height: 19px;
+    flex: 0 0 19px;
+    opacity: .72;
+}
+
+.eie-sidebar-icon svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.eie-sidebar-item:hover,
+.eie-sidebar-item:focus-visible,
+.eie-sidebar-brand:hover,
+.eie-sidebar-brand:focus-visible {
+    background: rgba(15,23,42,0.04);
+    color: var(--eie-text);
+    outline: none;
+}
+
+.eie-sidebar-item.is-active,
+.eie-sidebar-item[aria-current="page"] {
+    background: var(--eie-surface-2);
+    color: var(--eie-text);
+    border: 1px solid var(--eie-border);
+}
+
+.eie-sidebar-item:hover .eie-sidebar-icon,
+.eie-sidebar-item:focus-visible .eie-sidebar-icon,
+.eie-sidebar-item.is-active .eie-sidebar-icon,
+.eie-sidebar-item[aria-current="page"] .eie-sidebar-icon {
+    opacity: 1;
+}
+
+.eie-sidebar-external {
+    margin-top: auto;
+}
+
+.eie-shell-header {
+    background: rgba(255,255,255,0.78) !important;
+}
+
+.eie-card,
+.eie-admin-card,
+.eie-summary-card {
+    border-radius: 16px !important;
+    transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+}
+
+.eie-card:hover,
+.eie-admin-card:hover {
+    background: var(--eie-surface-2) !important;
+    border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text)) !important;
+    box-shadow: 0 6px 16px rgba(15,23,42,0.06) !important;
+    transform: translateY(-1px) !important;
+}
+
+.eie-admin-shortcuts,
+.eie-nav {
+    background: var(--eie-surface-2) !important;
+    border-color: var(--eie-border) !important;
+}
+
+.eie-admin-shortcut,
+.eie-nav-link {
+    color: var(--eie-muted) !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+    transition: background .16s ease, color .16s ease, border-color .16s ease !important;
+}
+
+.eie-admin-shortcut:hover,
+.eie-nav-link:hover,
+.eie-admin-shortcut.is-active,
+.eie-nav-link.is-active {
+    background: var(--eie-surface) !important;
+    color: var(--eie-text) !important;
+    border-color: var(--eie-border) !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+}
+
+.eie-admin-shortcut.is-active {
+    color: var(--eie-text) !important;
+}
+
+.eie-student-row:hover,
+.eie-filter-button:hover,
+.eie-cell-card:hover,
+.eie-student-chip:hover {
+    background: var(--eie-surface-2) !important;
+    border-color: var(--eie-border) !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.eie-student-row.is-selected,
+.eie-admin-card.is-selected {
+    background: var(--eie-surface-2) !important;
+    border-color: var(--eie-border) !important;
+    color: var(--eie-text) !important;
+}
+
+.eie-badge-contact,
+.eie-card-label,
+.eie-card-cta,
+.eie-admin-card-kicker {
+    color: var(--eie-text) !important;
+}
+
+.eie-badge-contact,
+.eie-card-label {
+    background: var(--eie-surface-2) !important;
+    border: 1px solid var(--eie-border) !important;
+}
+
+@media (max-width: 900px) {
+    .eie-app-shell {
+        display: block;
+    }
+    .eie-sidebar {
+        position: sticky;
+        top: 0;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+        padding: 8px 10px;
+        border-right: 0;
+        border-bottom: 1px solid var(--eie-border);
+    }
+    .eie-sidebar-brand {
+        flex: 0 0 auto;
+        width: auto;
+        margin: 0 4px 0 0;
+    }
+    .eie-sidebar-nav {
+        flex-direction: row;
+        gap: 4px;
+        flex: 0 0 auto;
+    }
+    .eie-sidebar-item {
+        flex: 0 0 auto;
+        width: auto;
+    }
+    .eie-sidebar-external {
+        margin-top: 0;
+        margin-left: auto;
+        flex: 0 0 auto;
+    }
+    .eie-shell-header {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .eie-sidebar-label,
+    .eie-sidebar-brand-text {
+        display: none;
+    }
+    .eie-sidebar-item,
+    .eie-sidebar-brand {
+        width: 40px;
+        min-width: 40px;
+        justify-content: center;
+        padding: 9px;
+    }
+}
+
+/* Sidebar가 EIE 내비게이션을 담당하므로 기존 상단 nav는 중복 노출하지 않는다. */
+.eie-app-shell .eie-shell-header {
+    display: none !important;
+}
