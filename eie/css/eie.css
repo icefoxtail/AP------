@@ -2311,3 +2311,155 @@ body {
     position: static;
   }
 }
+
+/* EIE Timetable Layout v1.2
+   - 시간표를 좁은 카드 목록이 아니라 APMS처럼 넓은 운영 보드로 표시한다.
+   - 가로축은 선생님, 세로축은 교시/시간 기준이다.
+*/
+.eie-timetable-screen {
+  width: min(calc(100vw - 280px), 1680px);
+  max-width: calc(100vw - 280px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.eie-timetable-screen .eie-panel {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.eie-timetable-main {
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.eie-timetable-board {
+  min-width: 980px;
+  display: grid;
+  gap: 8px;
+}
+
+.eie-timetable-teacher-header,
+.eie-excel-period-row {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 8px;
+  align-items: stretch;
+  margin: 0;
+}
+
+.eie-timetable-teacher-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--eie-bg);
+  padding-bottom: 2px;
+}
+
+.eie-timetable-period-corner,
+.eie-timetable-teacher-head,
+.eie-excel-period-head {
+  border: 1px solid var(--eie-border);
+  border-radius: 14px;
+  background: var(--eie-surface-2);
+}
+
+.eie-timetable-period-corner,
+.eie-timetable-teacher-head {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  color: var(--eie-muted);
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.eie-timetable-teacher-cells,
+.eie-excel-cells,
+.eie-excel-period-row.is-editing .eie-excel-cells.is-editing {
+  display: grid;
+  grid-template-columns: repeat(var(--eie-teacher-columns), minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.eie-excel-period-head {
+  min-height: 116px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.eie-timetable-view-slot,
+.eie-timetable-drop-slot {
+  min-height: 116px;
+  border: 1px dashed var(--eie-border);
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.74);
+  padding: 4px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.eie-timetable-view-slot.is-empty {
+  align-items: center;
+  justify-content: center;
+}
+
+.eie-timetable-view-slot .eie-excel-cell,
+.eie-timetable-drop-slot .eie-excel-cell {
+  width: 100%;
+  min-height: 108px;
+}
+
+.eie-excel-cell {
+  min-height: 108px;
+}
+
+.eie-cell-title,
+.eie-cell-teacher {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eie-cell-students {
+  max-height: 54px;
+  overflow: hidden;
+}
+
+.eie-timetable-layout.is-editing {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 380px);
+}
+
+@media (max-width: 1180px) {
+  .eie-timetable-screen {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .eie-timetable-board {
+    min-width: 860px;
+  }
+
+  .eie-timetable-teacher-header,
+  .eie-excel-period-row {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .eie-timetable-teacher-cells,
+  .eie-excel-cells,
+  .eie-excel-period-row.is-editing .eie-excel-cells.is-editing {
+    grid-template-columns: repeat(var(--eie-teacher-columns), minmax(136px, 1fr));
+  }
+}

@@ -186,10 +186,61 @@
         return Math.max(3, Math.min(8, max + 1));
     }
 
+    function normalizeTeacherName(value) {
+        return String(value || '').trim();
+    }
+
+    function teacherNameOf(row) {
+        return normalizeTeacherName(row?.teacher_name_raw || row?.teacher_name || row?.teacher || '미정');
+    }
+
+    function teacherKeyFromName(value) {
+        return normalizeTeacherName(value || '미정').toLowerCase();
+    }
+
+    function teacherKey(row) {
+        return teacherKeyFromName(teacherNameOf(row));
+    }
+
+    function buildTeacherColumns(rows) {
+        const map = new Map();
+        (rows || []).forEach((row, index) => {
+            const name = teacherNameOf(row) || '미정';
+            const key = teacherKeyFromName(name);
+            const columnIndex = Number(row?.column_index || 0);
+            if (!map.has(key)) {
+                map.set(key, {
+                    key,
+                    label: name,
+                    columnIndex: Number.isFinite(columnIndex) ? columnIndex : index,
+                    firstIndex: index,
+                    count: 0
+                });
+            }
+            const meta = map.get(key);
+            meta.count += 1;
+            if (Number.isFinite(columnIndex)) meta.columnIndex = Math.min(meta.columnIndex, columnIndex);
+        });
+
+        const columns = Array.from(map.values()).sort((a, b) => {
+            if (a.columnIndex !== b.columnIndex) return a.columnIndex - b.columnIndex;
+            return a.firstIndex - b.firstIndex;
+        });
+
+        if (columns.length) return columns;
+        return Array.from({ length: maxColumnCount(rows) }, (_, index) => ({
+            key: `column_${index}`,
+            label: `열 ${index + 1}`,
+            columnIndex: index,
+            firstIndex: index,
+            count: 0
+        }));
+    }
+
     function slotCellMap(rows) {
         const map = new Map();
         (rows || []).forEach(row => {
-            const key = `${periodKey(row)}::${Number(row.column_index || 0)}`;
+            const key = `${periodKey(row)}::${teacherKey(row)}`;
             if (!map.has(key)) map.set(key, row);
         });
         return map;
@@ -282,29 +333,36 @@
         if (!periodSource.length) return '<div class="eie-empty-box">등록된 EIE 시간표가 없습니다.</div>';
         const groups = groupByPeriod(periodSource);
         const allRows = editorState.isEditMode ? editorState.draftCells : visibleSource;
-        const colCount = maxColumnCount(allRows);
+        const teacherColumns = buildTeacherColumns(allRows);
+        const teacherHeader = `
+            <div class="eie-timetable-teacher-header" aria-hidden="true">
+                <div class="eie-timetable-period-corner">교시 / 시간</div>
+                <div class="eie-timetable-teacher-cells">
+                    ${teacherColumns.map(column => `
+                        <div class="eie-timetable-teacher-head" data-teacher-key="${esc(column.key)}">
+                            ${esc(column.label)}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
 
-        return Object.values(groups).map(group => {
+        const periodRows = Object.values(groups).map(group => {
             const head = group.row;
-            if (!editorState.isEditMode) {
-                return `
-                    <section class="eie-excel-period-row">
-                        <div class="eie-excel-period-head">
-                            <strong>${esc(head.period_label || '-')}</strong>
-                            <span>${esc(timeText(head))}</span>
-                        </div>
-                        <div class="eie-excel-cells">
-                            ${group.rows.map(row => renderViewCell(row)).join('')}
-                        </div>
-                    </section>
-                `;
-            }
-
             const map = slotCellMap(group.rows.filter(row => !isHeld(row)));
-            const slots = Array.from({ length: colCount }, (_, index) => {
-                const slotKey = `${group.key}::${index}`;
+            const slots = teacherColumns.map(column => {
+                const slotKey = `${group.key}::${column.key}`;
                 const cell = map.get(slotKey);
-                const isSelectedEmpty = editorState.selectedSlot?.periodKey === group.key && Number(editorState.selectedSlot?.columnIndex) === index;
+                const isSelectedEmpty = editorState.selectedSlot?.periodKey === group.key && editorState.selectedSlot?.teacherKey === column.key;
+
+                if (!editorState.isEditMode) {
+                    return `
+                        <div class="eie-timetable-view-slot ${cell ? 'has-cell' : 'is-empty'}" data-teacher-key="${esc(column.key)}">
+                            ${cell ? renderViewCell(cell) : '<span class="eie-empty-slot-label">-</span>'}
+                        </div>
+                    `;
+                }
+
                 return `
                     <div class="eie-timetable-drop-slot ${cell ? 'has-cell' : 'is-empty'} ${isSelectedEmpty ? 'is-selected' : ''}"
                          data-eie-drop-slot="true"
@@ -314,24 +372,33 @@
                          data-period-label="${esc(head.period_label || '')}"
                          data-start-time="${esc(head.start_time || '')}"
                          data-end-time="${esc(head.end_time || '')}"
-                         data-column-index="${esc(index)}">
+                         data-column-index="${esc(column.columnIndex)}"
+                         data-teacher-key="${esc(column.key)}"
+                         data-teacher-name="${esc(column.label)}">
                         ${cell ? renderCellCard(cell, { isEditMode: true }) : `<span class="eie-empty-slot-label">빈 칸</span>`}
                     </div>
                 `;
             }).join('');
 
             return `
-                <section class="eie-excel-period-row is-editing">
+                <section class="eie-excel-period-row ${editorState.isEditMode ? 'is-editing' : ''}">
                     <div class="eie-excel-period-head">
                         <strong>${esc(head.period_label || '-')}</strong>
                         <span>${esc(timeText(head))}</span>
                     </div>
-                    <div class="eie-excel-cells is-editing">
+                    <div class="eie-excel-cells ${editorState.isEditMode ? 'is-editing' : ''}">
                         ${slots}
                     </div>
                 </section>
             `;
         }).join('');
+
+        return `
+            <section class="eie-timetable-board" style="--eie-teacher-columns: ${teacherColumns.length};">
+                ${teacherHeader}
+                ${periodRows}
+            </section>
+        `;
     }
 
     function renderHoldingArea() {
@@ -465,7 +532,7 @@
                 <p class="eie-editor-help">선택한 빈 칸에 임시 수업을 만듭니다.</p>
                 <div class="eie-edit-form" data-eie-new-cell-form="true">
                     ${renderInput('수업명', 'class_name_raw', '', 'text')}
-                    ${renderInput('선생님', 'teacher_name_raw', '', 'text')}
+                    ${renderInput('선생님', 'teacher_name_raw', slot.teacherName || '', 'text')}
                     ${renderInput('교실', 'room_raw', '', 'text')}
                     <label>
                         <span>상태</span>
@@ -482,7 +549,7 @@
                 <div class="eie-action-row">
                     <button type="button" class="eie-primary-button" data-eie-timetable-action="create-draft-cell">임시 수업 만들기</button>
                 </div>
-                <div class="eie-api-note">${esc(slot.periodLabel || '-')} · ${esc([slot.startTime, slot.endTime].filter(Boolean).join('~') || '시간 미정')} · ${Number(slot.columnIndex) + 1}칸</div>
+                <div class="eie-api-note">${esc(slot.periodLabel || '-')} · ${esc([slot.startTime, slot.endTime].filter(Boolean).join('~') || '시간 미정')} · ${esc(slot.teacherName || `${Number(slot.columnIndex) + 1}칸`)}</div>
                 ${renderChangePreview()}
             </aside>
         `;
@@ -503,7 +570,7 @@
         const validation = validateDraft();
         const lines = [];
         payload.moves.forEach(move => {
-            lines.push(`이동 · ${labelFromId(move.cell_id)} · ${move.old_period_label || '-'} ${Number(move.old_column_index || 0) + 1}칸 → ${move.new_period_label || '-'} ${Number(move.new_column_index || 0) + 1}칸`);
+            lines.push(`이동 · ${labelFromId(move.cell_id)} · ${move.old_period_label || '-'} ${move.old_teacher_name_raw || '-'} → ${move.new_period_label || '-'} ${move.new_teacher_name_raw || '-'}`);
         });
         payload.updates.forEach(update => {
             const fields = Object.keys(update.payload || {}).join(', ');
@@ -640,7 +707,9 @@
             periodOrder: Number(el.getAttribute('data-period-order') || 0),
             startTime: el.getAttribute('data-start-time') || '',
             endTime: el.getAttribute('data-end-time') || '',
-            columnIndex: Number(el.getAttribute('data-column-index') || 0)
+            columnIndex: Number(el.getAttribute('data-column-index') || 0),
+            teacherKey: el.getAttribute('data-teacher-key') || '',
+            teacherName: el.getAttribute('data-teacher-name') || ''
         };
         editorState.error = '';
         editorState.invalidCreateField = '';
@@ -684,7 +753,7 @@
         const moving = findDraftCell(key);
         if (!moving || !slotEl) return;
         const target = slotFromElement(slotEl);
-        const occupied = findCellAtSlot(target.periodKey, target.columnIndex, key);
+        const occupied = findCellAtSlot(target.periodKey, target.columnIndex, key, target.teacher_name_raw);
         const wasHeld = isHeld(key);
         if (wasHeld && occupied) {
             editorState.error = '이동칸에 있는 반은 빈 칸에만 배치할 수 있습니다. 먼저 대상 칸을 비워 주세요.';
@@ -718,7 +787,9 @@
             period_order: Number(el.getAttribute('data-period-order') || 0),
             start_time: el.getAttribute('data-start-time') || '',
             end_time: el.getAttribute('data-end-time') || '',
-            column_index: Number(el.getAttribute('data-column-index') || 0)
+            column_index: Number(el.getAttribute('data-column-index') || 0),
+            teacher_key: el.getAttribute('data-teacher-key') || '',
+            teacher_name_raw: el.getAttribute('data-teacher-name') || ''
         };
     }
 
@@ -730,7 +801,9 @@
             period_order: Number(cell.period_order || 0),
             start_time: cell.start_time || '',
             end_time: cell.end_time || '',
-            column_index: Number(cell.column_index || 0)
+            column_index: Number(cell.column_index || 0),
+            teacher_key: teacherKey(cell),
+            teacher_name_raw: teacherNameOf(cell)
         };
     }
 
@@ -741,15 +814,19 @@
         cell.start_time = slot.start_time || '';
         cell.end_time = slot.end_time || '';
         cell.column_index = Number(slot.column_index || 0);
+        if (Object.prototype.hasOwnProperty.call(slot, 'teacher_name_raw')) {
+            cell.teacher_name_raw = slot.teacher_name_raw || '';
+        }
     }
 
-    function findCellAtSlot(periodKeyValue, columnIndex, excludeId) {
+    function findCellAtSlot(periodKeyValue, columnIndex, excludeId, teacherName) {
         const held = getHeldSet();
+        const targetTeacherKey = teacherKeyFromName(teacherName || '');
         return editorState.draftCells.find(cell => (
             cellId(cell) !== normalizeId(excludeId) &&
             !held.has(cellId(cell)) &&
             periodKey(cell) === periodKeyValue &&
-            Number(cell.column_index || 0) === Number(columnIndex)
+            teacherKey(cell) === targetTeacherKey
         )) || null;
     }
 
@@ -784,7 +861,7 @@
             end_time: slot.endTime,
             column_index: slot.columnIndex,
             class_name_raw: values.class_name_raw,
-            teacher_name_raw: values.teacher_name_raw,
+            teacher_name_raw: values.teacher_name_raw || slot.teacherName || '',
             room_raw: values.room_raw,
             status: values.status || 'active',
             memo: values.memo || '',
@@ -841,10 +918,12 @@
                     old_period_label: original.period_label || '',
                     old_period_order: Number(original.period_order || 0),
                     old_column_index: Number(original.column_index || 0),
+                    old_teacher_name_raw: teacherNameOf(original),
                     new_day_label: cell.day_label || '',
                     new_period_label: cell.period_label || '',
                     new_period_order: Number(cell.period_order || 0),
                     new_column_index: Number(cell.column_index || 0),
+                    new_teacher_name_raw: teacherNameOf(cell),
                     old_start_time: original.start_time || '',
                     old_end_time: original.end_time || '',
                     new_start_time: cell.start_time || '',
@@ -903,7 +982,7 @@
             seenIds.add(id);
             if (isHeld(id)) return;
             if (!String(cell.class_name_raw || '').trim()) messages.push('수업명이 비어 있는 셀이 있습니다.');
-            const key = `${periodKey(cell)}::${Number(cell.column_index || 0)}`;
+            const key = `${periodKey(cell)}::${teacherKey(cell)}`;
             if (seenSlots.has(key)) {
                 messages.push(`같은 칸에 2개 반이 있습니다: ${labelOfCell(seenSlots.get(key))}, ${labelOfCell(cell)}`);
             } else {
@@ -1112,7 +1191,7 @@
             const showPanel = editorState.isEditMode || EieState.get().studentCandidatePanelMode === 'detail';
 
             return `
-                <section aria-labelledby="eie-timetable-title">
+                <section class="eie-timetable-screen" aria-labelledby="eie-timetable-title">
                     <button type="button" class="eie-back-button"
                             data-eie-route="dashboard"
                             aria-label="EIE 홈으로 이동"
