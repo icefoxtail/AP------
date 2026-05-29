@@ -670,6 +670,9 @@ async function handleLogin() {
                 expires_at: data.expires_at || ''
             });
             toast(`${data.name} 님, 환영합니다.`, 'info');
+            if (window.WangjiOwnerAuthBridge) {
+                WangjiOwnerAuthBridge.bridgeAfterApmathLogin(lid, lpw, data);
+            }
             await loadData(true);
         } else {
             toast(data.message || '로그인 실패', 'error');
@@ -688,6 +691,17 @@ async function logout() {
         }).catch(() => {});
     }
     clearSession();
+    if (window.WangjiOwnerAuthBridge) {
+        WangjiOwnerAuthBridge.clearEieSession();
+    } else {
+        [
+  'WANGJI_EIE_SESSION_TOKEN',
+  'WANGJI_EIE_LOGIN_ID',
+  'WANGJI_EIE_ROLE',
+  'WANGJI_EIE_NAME',
+  'WANGJI_EIE_EXPIRES_AT'
+].forEach((key) => localStorage.removeItem(key));
+    }
     state.auth = { id: null, name: null, role: null };
     state.ui.userName = '';
     renderLogin();

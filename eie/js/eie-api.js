@@ -17,6 +17,7 @@
 
     function findStoredAuthHeader() {
         const keys = [
+            'WANGJI_EIE_SESSION_TOKEN',
             'WANGJI_AUTH_HEADER',
             'WANGJI_AUTH_TOKEN',
             'WANGJI_SESSION_TOKEN',
@@ -56,9 +57,8 @@
     function normalizeError(error) {
         if (!error) return '요청을 처리하지 못했습니다.';
         if (typeof error === 'string') return error;
-        return error.message || '?붿껌??泥섎━?섏? 紐삵뻽?듬땲??';
         return error.message || '요청을 처리하지 못했습니다.';
-
+    }
     async function parseResponse(response) {
         const text = await response.text();
         if (!text) return null;
@@ -87,6 +87,7 @@
         try {
             return await request(path, { method: 'GET' });
         } catch (error) {
+            if (error.status === 401) throw error;
             return {
                 ...stubResponse(kind),
                 fallback: true,
