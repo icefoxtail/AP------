@@ -73,8 +73,8 @@ function renderTeacherDashboardView() {
     root.innerHTML = `<style>body.ap-teacher-dashboard-mode #ap-system-gate, body.ap-teacher-dashboard-mode .ap-system-gate, body.ap-teacher-dashboard-mode [data-ap-system-gate="true"]{display:none!important;}</style><div class="ap-dashboard-shell" style="width:100%; max-width:850px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box;">
         ${shortcutRow}
         ${todayJournalCard}
-        <div id="dashboard-onboarding-tasks-root"></div>
         ${todoSections}
+        <div id="dashboard-onboarding-panel-root"></div>
         ${classStatus}
     </div>`;
 
