@@ -283,3 +283,117 @@
   line-height: 1;
   white-space: nowrap;
 }
+
+/* ======================================================================
+   APMS / EIE UI Surface & Sidebar Guideline v1.0 적용
+   - 큰 카드: hover 때만 살짝 살아남
+   - 작은 카드/row: 둥근 surface hover만 적용
+   - 파란 active 배경 금지
+   ====================================================================== */
+.ap-admin-app-gate,
+.ap-admin-shortcuts,
+.ap-dashboard-action-grid,
+.ap-dashboard-tabbar,
+.ap-admin-overview-grid {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+.ap-admin-app-gate .btn,
+.ap-admin-shortcuts .btn,
+.ap-dashboard-action-grid .btn,
+.ap-dashboard-tabbar .btn,
+.ap-admin-action-card,
+.ap-dashboard-action-button {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+}
+
+.ap-admin-app-gate .btn:hover,
+.ap-admin-shortcuts .btn:hover,
+.ap-dashboard-action-grid .btn:hover,
+.ap-dashboard-tabbar .btn:hover,
+.ap-admin-action-card:hover,
+.ap-dashboard-action-button:hover {
+  background: var(--surface-2) !important;
+  border-color: color-mix(in srgb, var(--border) 72%, var(--text)) !important;
+  box-shadow: 0 6px 16px rgba(15,23,42,0.06) !important;
+  transform: translateY(-1px) !important;
+}
+
+.ap-admin-app-gate .btn[aria-current="page"],
+.ap-dashboard-tabbar .btn[aria-current="page"] {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+.ap-admin-mini-metric,
+.ap-admin-check-item,
+.journal-day-cell,
+.ap-class-row,
+.eie-admin-card,
+.eie-card {
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+}
+
+.ap-admin-mini-metric[role="button"]:hover,
+.ap-admin-check-item:hover,
+.ap-class-row:hover {
+  background: var(--surface-2) !important;
+  border-color: color-mix(in srgb, var(--border) 72%, var(--text)) !important;
+}
+
+.ap-admin-check-item:hover,
+.ap-class-row:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(15,23,42,0.05) !important;
+}
+
+.journal-day-cell:hover,
+.dashboard-journal-card__top:hover,
+.ap-admin-recent-student-row:hover,
+#dashboard-weekly-schedule-list > div > div:hover,
+#dashboard-onboarding-weekly-items > div:hover {
+  background: var(--surface-2) !important;
+}
+
+.ap-dashboard-surface-list,
+#dashboard-weekly-schedule-list {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+.ap-dashboard-surface-list--today:hover {
+  background: var(--surface) !important;
+}
+
+/* 작은 카드 / 내부 요약은 부모보다 약한 hover만 허용 */
+.ap-admin-mini-metric[role="button"]:hover,
+.journal-day-cell:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* 파란 active/primary 계열 회귀 차단 */
+.ap-admin-app-gate,
+.ap-admin-shortcuts,
+.ap-admin-app-gate .btn,
+.ap-admin-shortcuts .btn,
+.ap-admin-mini-metric,
+.journal-day-cell,
+.ap-class-row,
+.ap-dashboard-action-button {
+  background-image: none !important;
+}
+
+.ap-admin-grade-pill,
+.admin-teacher-student-row__badge,
+.journal-day-cell__status {
+  background: var(--surface-2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
