@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>왕지교육 — 교육 브랜드 허브</title>
-<meta name="description" content="왕지교육은 AP MATH, EIE English, 시매쓰(CMath)를 연결하는 교육 브랜드 허브입니다.">
+<meta name="description" content="왕지교육은 AP MATH, EIE 영어, 시매쓰수학을 연결하는 교육 브랜드 허브입니다.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='26' width='11' height='16' rx='3.5' fill='%232563eb'/%3E%3Crect x='18.5' y='16' width='11' height='26' rx='3.5' fill='%23b7141b'/%3E%3Crect x='33' y='6' width='11' height='36' rx='3.5' fill='%2314b8a6'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="왕지교육 — 교육 브랜드 허브">
-<meta property="og:description" content="AP MATH, EIE English, 시매쓰(CMath)를 연결하는 교육 브랜드 허브.">
+<meta property="og:description" content="AP MATH, EIE 영어, 시매쓰수학을 연결하는 교육 브랜드 허브.">
 <meta name="theme-color" content="#0f172a">
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
@@ -126,8 +126,8 @@
   /* ---------- HERO ---------- */
   .hero { padding: 40px 0 60px; }
   @media (min-width: 920px) { .hero { padding: 100px 0 120px; } }
-  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-  @media (min-width: 920px) { .hero-grid { grid-template-columns: 1.2fr 0.8fr; gap: 64px; } }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: center; }
+  @media (min-width: 920px) { .hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 64px; } }
   .hero h1 { font-size: clamp(32px, 5.5vw, 48px); line-height: 1.2; font-weight: 800; color: var(--fg-1); text-wrap: balance; }
   .hero .lead { font-size: clamp(16px, 2.2vw, 19px); line-height: 1.65; color: var(--fg-2); margin: 24px 0 0; word-break: keep-all; }
   .hero .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
@@ -136,7 +136,8 @@
   .statcard { padding: 28px; background: var(--white); border-radius: var(--r-lg); box-shadow: var(--sh-lg); }
   .statcard .sc-label { font-size: 13px; color: var(--fg-3); margin-bottom: 16px; font-weight: 600; letter-spacing: 0.05em; }
   .bcard-list { display: flex; flex-direction: column; gap: 12px; }
-  .bcard { border: 1px solid var(--border); border-radius: var(--r-md); padding: 16px; display: flex; align-items: center; gap: 16px; transition: all .2s var(--ease); }
+  .bcard { border: 1px solid var(--border); border-radius: var(--r-md); padding: 0; display: flex; align-items: stretch; gap: 0; transition: all .2s var(--ease); overflow: hidden; }
+  .bcard-main { flex: 1; min-width: 0; padding: 16px; display: flex; align-items: center; gap: 16px; }
   .bcard:hover { box-shadow: var(--sh-md); border-color: var(--border-strong); transform: translateY(-2px); }
   .bcard .btile { width: 40px; height: 40px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 16px; }
   .bcard .binfo { flex: 1; min-width: 0; }
@@ -189,8 +190,8 @@
   .bar-fill { height: 100%; border-radius: var(--r-pill); background: var(--ap-main); }
 
   /* ---------- INQUIRY ---------- */
-  .inq-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start; }
-  @media (min-width: 920px) { .inq-grid { grid-template-columns: 1fr 1.1fr; gap: 80px; } }
+  .inq-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: start; }
+  @media (min-width: 920px) { .inq-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 80px; } }
   .inq h2 { font-size: clamp(26px, 4.4vw, 38px); line-height: 1.25; font-weight: 700; }
   .inq .lead { font-size: 17px; line-height: 1.65; color: var(--fg-2); margin: 16px 0 40px; }
   .inforow { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
@@ -258,6 +259,92 @@
   .ft ul a:hover { color: var(--fg-1); }
   .ft .soon-tag { font-size: 11px; padding: 2px 8px; border-radius: var(--r-pill); background: var(--bg-alt); color: var(--fg-3); font-weight: 500; }
   .ft-bottom { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--fg-3); }
+
+
+  /* ---------- MOBILE ACTION / MAP UPGRADE ---------- */
+  .map-link-card {
+    margin-top: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--sh-sm);
+  }
+  .map-link-visual {
+    position: relative;
+    height: 138px;
+    background:
+      linear-gradient(90deg, rgba(148, 163, 184, .18) 1px, transparent 1px),
+      linear-gradient(rgba(148, 163, 184, .18) 1px, transparent 1px),
+      radial-gradient(circle at 58% 46%, rgba(15, 23, 42, .12), transparent 34%),
+      linear-gradient(135deg, #f8fafc, #e2e8f0);
+    background-size: 28px 28px, 28px 28px, auto, auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-link-visual::after {
+    content: "왕지교육 캠퍼스";
+    position: absolute;
+    left: 14px;
+    bottom: 12px;
+    padding: 6px 10px;
+    border-radius: var(--r-pill);
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(203,213,225,.9);
+    color: var(--fg-2);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .map-pin {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: var(--white);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, .16);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--hub-primary, var(--fg-1));
+  }
+  .map-link-body { padding: 14px 16px 4px; }
+  .map-title { margin: 0; font-weight: 800; color: var(--fg-1); }
+  .map-address { margin: 6px 0 0; color: var(--fg-2); font-size: 14px; line-height: 1.5; }
+  .map-quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 16px 16px; }
+  .mobile-location-strip { display: none; }
+  .mobile-only-toggle, .mobile-accordion { display: none; }
+  .mcta-bar.is-hidden-by-input { transform: translateY(140%) !important; }
+
+  @media (max-width: 768px) {
+    .hero { padding-top: 20px; padding-bottom: 30px; }
+    .hero .lead { font-size: 15px; line-height: 1.55; margin-top: 16px; }
+    .hero .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+    .hero .cta-row .btn { width: 100%; min-height: 46px; padding: 13px 12px; font-size: 14px; }
+    .statcard { padding: 18px; }
+    .mobile-location-strip { display: block; padding: 0 0 22px; }
+    .mobile-location-strip .map-link-card { margin-top: 0; }
+    .mobile-only-toggle { display: inline-flex; margin-left: auto; }
+    .mobile-accordion { display: block; padding: 0 0 28px; }
+    .mobile-accordion-list { display: grid; gap: 10px; }
+    .mobile-acc-item { border: 1px solid var(--border); border-radius: var(--r-md); background: var(--white); overflow: hidden; box-shadow: var(--sh-sm); }
+    .mobile-acc-trigger { width: 100%; min-height: 50px; padding: 14px 16px; border: 0; background: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 14px; font: inherit; font-weight: 800; color: var(--fg-1); text-align: left; cursor: pointer; }
+    .mobile-acc-trigger::after { content: "∨"; color: var(--fg-3); transition: transform .25s var(--ease); }
+    .mobile-acc-item.open .mobile-acc-trigger::after { transform: rotate(180deg); }
+    .mobile-acc-panel { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s var(--ease), opacity .2s var(--ease); }
+    .mobile-acc-item.open .mobile-acc-panel { opacity: 1; }
+    .mobile-acc-body { padding: 0 16px 16px; color: var(--fg-2); font-size: 14.5px; line-height: 1.65; }
+    .mobile-acc-body ul { margin: 0 0 14px; padding-left: 18px; }
+    .mobile-acc-body li { margin: 6px 0; }
+    .map-link-visual { height: 118px; }
+  }
+
+  .mcta-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: none; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.93); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px -10px rgba(15,23,42,.2); transition: transform .32s var(--ease); }
+  .mcta-bar.hide { transform: translateY(140%); }
+  .mcta-bar a { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 52px; border-radius: var(--r-md); font-size: 15.5px; font-weight: 700; }
+  .mcta-bar .tel { flex: 0 0 auto; padding: 0 20px; background: var(--white); color: var(--fg-1); border: 1px solid var(--border-strong); }
+  .mcta-bar .main { flex: 1; background: var(--hub-primary); color: #fff; box-shadow: var(--sh-sm); }
+  @media (max-width: 820px) { .mcta-bar { display: flex; } body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); } }
+
 </style>
 </head>
 <body>
@@ -266,7 +353,7 @@
   <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></g></symbol>
   <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></g></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></g></symbol>
-  <symbol id="i-map-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13aa7 7 0 0 1 14 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a7 7 0 0 1 14 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></g></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></g></symbol>
@@ -314,9 +401,9 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <span class="eyebrow">Since 2012 · 왕지교육</span>
+      <span class="eyebrow">Since 2000 · 왕지교육</span>
       <h1 style="margin-top: 16px;">과목을 넘어,<br>한 아이의 학습을 연결합니다.</h1>
-      <p class="lead">왕지교육은 AP MATH, EIE English, 그리고 시매쓰(CMath)를 연결하는 교육 브랜드 허브입니다. 학생의 학년과 과목, 현재 학습 상황에 최적화된 로드맵을 제공합니다.</p>
+      <p class="lead">왕지교육은 AP MATH, EIE 영어, 그리고 시매쓰수학을 연결하는 교육 브랜드 허브입니다. 학생의 학년과 과목, 현재 학습 상황에 최적화된 로드맵을 제공합니다.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="#brands">교육관 둘러보기<svg class="ic" width="18" height="18"><use href="#i-arrow-right"/></svg></a>
         <a class="btn btn-secondary btn-lg" href="#inquiry">상담 신청</a>
@@ -325,32 +412,94 @@
     <aside class="statcard" aria-label="왕지교육 운영 교육관 요약">
       <p class="sc-label">운영 교육관 안내</p>
       <div class="bcard-list">
-        <a class="bcard" href="apmath-home/">
-          <span class="btile" style="background:var(--ap-main)">A</span>
-          <div class="binfo">
-            <p class="bname">AP MATH</p>
-            <p class="bsub">개념부터 심화까지 단계별 수학</p>
-          </div>
-          <span class="bchip" style="background:var(--ap-soft);color:var(--ap-text)">수학</span>
-        </a>
-        <a class="bcard" href="https://blog.naver.com/wha6615" target="_blank" rel="noopener">
-          <span class="btile" style="background:var(--eie-main)">E</span>
-          <div class="binfo">
-            <p class="bname">EIE English</p>
-            <p class="bsub">균형 잡힌 표현 중심 영어 교육</p>
-          </div>
-          <span class="bchip" style="background:var(--eie-soft);color:var(--eie-text)">영어</span>
-        </a>
-        <div class="bcard" style="border-style: dashed; background: var(--bg);">
-          <span class="btile" style="background:var(--cm-main)">C</span>
-          <div class="binfo">
-            <p class="bname">시매쓰 CMath</p>
-            <p class="bsub">생각하는 힘을 기르는 사고력 수학</p>
-          </div>
-          <span class="bchip" style="background:var(--cm-soft);color:var(--cm-text)">사고력</span>
+        <div class="bcard">
+          <a class="bcard-main" href="apmath-home/">
+            <span class="btile" style="background:var(--ap-main)">A</span>
+            <div class="binfo">
+              <p class="bname">AP MATH</p>
+              <p class="bsub">개념부터 심화까지 단계별 수학</p>
+            </div>
+            <span class="bchip" style="background:var(--ap-soft);color:var(--ap-text)">수학</span>
+          </a>
+          <button type="button" class="btn btn-secondary btn-sm mobile-only-toggle" data-mobile-acc-target="#mobile-apmath-detail">자세히</button>
+        </div>
+        <div class="bcard">
+          <a class="bcard-main" href="eie-home/">
+            <span class="btile" style="background:var(--eie-main)">E</span>
+            <div class="binfo">
+              <p class="bname">EIE 영어</p>
+              <p class="bsub">표현 중심의 EiE 표현영어</p>
+            </div>
+            <span class="bchip" style="background:var(--eie-soft);color:var(--eie-text)">영어</span>
+          </a>
+          <button type="button" class="btn btn-secondary btn-sm mobile-only-toggle" data-mobile-acc-target="#mobile-eie-detail">자세히</button>
+        </div>
+        <div class="bcard">
+          <a class="bcard-main" href="cmath-home/">
+            <span class="btile" style="background:var(--cm-main)">C</span>
+            <div class="binfo">
+              <p class="bname">시매쓰수학</p>
+              <p class="bsub">생각하는 힘을 기르는 사고력 수학</p>
+            </div>
+            <span class="bchip" style="background:var(--cm-soft);color:var(--cm-text)">사고력</span>
+          </a>
+          <button type="button" class="btn btn-secondary btn-sm mobile-only-toggle" data-mobile-acc-target="#mobile-cmath-detail">자세히</button>
         </div>
       </div>
     </aside>
+  </div>
+</section>
+
+<section class="mobile-location-strip" id="mobile-location">
+  <div class="wrap">
+
+        <div class="map-link-card" aria-label="왕지교육 캠퍼스 위치 안내">
+          <a class="map-link-visual" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener" aria-label="네이버 지도에서 왕지교육 캠퍼스 보기">
+            <span class="map-pin"><svg class="ic" width="24" height="24"><use href="#i-map-pin"/></svg></span>
+          </a>
+          <div class="map-link-body">
+            <p class="map-title">왕지교육 캠퍼스</p>
+            <p class="map-address">전남 순천시 왕지5길 9-8, 2층</p>
+          </div>
+          <div class="map-quick-actions">
+            <a class="btn btn-secondary btn-sm" href="tel:061-724-8886">전화하기</a>
+            <a class="btn btn-primary btn-sm" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener">네이버 길찾기</a>
+          </div>
+        </div>
+  </div>
+</section>
+
+<section class="mobile-accordion" aria-label="모바일 교육관 상세 안내">
+  <div class="wrap mobile-accordion-list">
+    <div class="mobile-acc-item" id="mobile-apmath-detail">
+      <button type="button" class="mobile-acc-trigger" aria-expanded="false">AP MATH 자세히</button>
+      <div class="mobile-acc-panel"><div class="mobile-acc-body">
+        <ul><li>중·고등 수학 전문관</li><li>내신, 수능, 심화 과정 관리</li><li>오답과 리포트 흐름까지 연결</li></ul>
+        <a class="btn btn-primary btn-block" href="apmath-home/">AP MATH 소개 보기</a>
+      </div></div>
+    </div>
+    <div class="mobile-acc-item" id="mobile-eie-detail">
+      <button type="button" class="mobile-acc-trigger" aria-expanded="false">EIE 영어 자세히</button>
+      <div class="mobile-acc-panel"><div class="mobile-acc-body">
+        <ul><li>표현 중심 영어 교육관</li><li>말하기·쓰기 활동 중심</li><li>수업 소식은 블로그에서 확인</li></ul>
+        <a class="btn btn-block" href="https://blog.naver.com/wha6615" target="_blank" rel="noopener" style="background:var(--eie-main);color:#fff;">블로그 보기</a>
+        <p style="margin:10px 0 0;text-align:center;font-size:13px;"><a href="eie-home/" style="color:var(--eie-text);font-weight:800;text-decoration:underline;text-underline-offset:3px;">영어관 소개</a></p>
+      </div></div>
+    </div>
+    <div class="mobile-acc-item" id="mobile-cmath-detail">
+      <button type="button" class="mobile-acc-trigger" aria-expanded="false">시매쓰수학 자세히</button>
+      <div class="mobile-acc-panel"><div class="mobile-acc-body">
+        <ul><li>초등 사고력 수학관</li><li>교구·활동 기반 원리 탐구</li><li>중등 수학으로 이어지는 생각하는 힘</li></ul>
+        <a class="btn btn-block" href="cmath-home/" style="background:var(--cm-main);color:#fff;">시매쓰수학 보기</a>
+      </div></div>
+    </div>
+    <div class="mobile-acc-item" id="mobile-inquiry-detail">
+      <button type="button" class="mobile-acc-trigger" aria-expanded="false">상담 신청서 작성</button>
+      <div class="mobile-acc-panel"><div class="mobile-acc-body">
+        <p>상담 신청은 아래 문의 섹션에서 작성할 수 있습니다.</p>
+        <a class="btn btn-primary btn-block" href="#inquiry">상담 신청으로 이동</a>
+      </div></div>
+    </div>
   </div>
 </section>
 
@@ -384,26 +533,26 @@
             <span class="tile" style="background:var(--eie-main)">E</span>
             <span class="chip" style="background:var(--eie-soft);color:var(--eie-text)">공식 블로그 운영</span>
           </div>
-          <h3>EIE English</h3>
-          <div class="subj">고려대학교 국제어학원 영어</div>
+          <h3>EIE 영어</h3>
+          <div class="subj">EiE 표현영어 · 고려대학교 영어교육 프로그램</div>
           <p class="desc">표현 중심의 영어 교육관입니다. 단순히 읽는 영어를 넘어 말하고 쓰는 균형 잡힌 언어 성장을 지향하며, 수업 기록을 투명하게 전합니다.</p>
           <div class="act">
-            <a class="btn btn-block" href="https://blog.naver.com/wha6615" target="_blank" rel="noopener" style="background:var(--eie-main);color:var(--white);">EIE 블로그 보기<svg class="ic" width="16" height="16"><use href="#i-arrow-up-right"/></svg></a>
+            <a class="btn btn-block" href="eie-home/" style="background:var(--eie-main);color:var(--white);">EIE 영어 바로가기<svg class="ic" width="16" height="16"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
       </article>
 
-      <article class="gwcard" style="background:transparent; border-style: dashed;">
+      <article class="gwcard">
         <div class="body">
           <div class="gw-top">
             <span class="tile" style="background:var(--cm-main)">C</span>
-            <span class="chip" style="background:var(--cm-soft);color:var(--cm-text)">오프라인 상담 가능</span>
+            <span class="chip" style="background:var(--cm-soft);color:var(--cm-text)">초등 사고력 수학관</span>
           </div>
-          <h3>시매쓰 CMath</h3>
-          <div class="subj">사고력 수학 전문</div>
-          <p class="desc">활동과 탐구 중심으로 수학적 사고력을 확장하는 교육관입니다. 온라인 페이지 준비 중으로, 상세 안내는 방문 및 전화로 도와드립니다.</p>
+          <h3>시매쓰수학</h3>
+          <div class="subj">초등 사고력 수학 전문</div>
+          <p class="desc">게임과 교구 활동을 통해 원리와 개념을 스스로 찾아가며 수학적 사고력을 확장하는 교육관입니다. 초등의 생각하는 힘이 중·고등 수학으로 이어집니다.</p>
           <div class="act">
-            <a class="btn btn-secondary btn-block" href="#inquiry">상담으로 문의하기</a>
+            <a class="btn btn-block" href="cmath-home/" style="background:var(--cm-main);color:var(--white);">시매쓰수학 바로가기<svg class="ic" width="16" height="16"><use href="#i-arrow-right"/></svg></a>
           </div>
         </div>
       </article>
@@ -489,8 +638,9 @@
           <span class="flabel">관심 교육관 선택</span>
           <div class="chips" id="chips">
             <button type="button" class="chipbtn sel" data-value="AP MATH">AP MATH</button>
-            <button type="button" class="chipbtn" data-value="EIE English">EIE English</button>
-            <button type="button" class="chipbtn" data-value="시매쓰 CMath">시매쓰 CMath</button>
+
+            <button type="button" class="chipbtn" data-value="EIE 영어">EIE 영어</button>
+            <button type="button" class="chipbtn" data-value="시매쓰수학">시매쓰수학</button>
             <button type="button" class="chipbtn" data-value="미정 (종합 상담)">아직 미정</button>
           </div>
         </div>
@@ -527,15 +677,15 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span>수학과 영어를 동시에 수강할 수도 있나요?</span><span class="pm"><svg class="ic" width="20" height="20"><use href="#i-plus"/></svg></span></button>
-        <div class="faq-a"><p>가능합니다. AP MATH와 EIE English는 동일 캠퍼스 내 연동 관리가 이루어지므로, 아이의 주간 학습 밸런스와 시간표 동선이 꼬이지 않도록 통합 캘린더 조율을 지원합니다.</p></div>
+        <div class="faq-a"><p>가능합니다. AP MATH와 EIE 영어는 동일 캠퍼스 내 연동 관리가 이루어지므로, 아이의 주간 학습 밸런스와 시간표 동선이 꼬이지 않도록 통합 캘린더 조율을 지원합니다.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>EIE English의 실시간 학습 소식은 어디서 보나요?</span><span class="pm"><svg class="ic" width="20" height="20"><use href="#i-plus"/></svg></span></button>
-        <div class="faq-a"><p>EIE English는 정기 수업 스케치 및 주요 공지사항을 네이버 블로그에 수시로 포스팅하고 있습니다. 상단 메뉴나 본문의 블로그 링크를 통해 바로 접근하실 수 있습니다.</p></div>
+        <button class="faq-q" aria-expanded="false"><span>EIE 영어의 실시간 학습 소식은 어디서 보나요?</span><span class="pm"><svg class="ic" width="20" height="20"><use href="#i-plus"/></svg></span></button>
+        <div class="faq-a"><p>EIE 영어는 정기 수업 스케치 및 주요 공지사항을 네이버 블로그에 수시로 포스팅하고 있습니다. 상단 메뉴나 본문의 블로그 링크를 통해 바로 접근하실 수 있습니다.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>시매쓰(CMath)는 현재 정상 운영 중인가요?</span><span class="pm"><svg class="ic" width="20" height="20"><use href="#i-plus"/></svg></span></button>
-        <div class="faq-a"><p>네, 오프라인 교육관은 현재 활발히 운영 중입니다. 허브 전용 개별 상세 웹페이지 구축 단계에 있으며, 상세한 시간표 확인과 입반 진단 테스트 신청은 방문 상담 폼을 통해 우선 접수받고 있습니다.</p></div>
+        <button class="faq-q" aria-expanded="false"><span>시매쓰수학은 현재 정상 운영 중인가요?</span><span class="pm"><svg class="ic" width="20" height="20"><use href="#i-plus"/></svg></span></button>
+        <div class="faq-a"><p>네, 시매쓰수학은 초등 사고력 수학관으로 현재 활발히 운영 중입니다. 과정 안내와 상담은 시매쓰수학 페이지 또는 전화(061-727-2323)로 도와드립니다.</p></div>
       </div>
     </div>
   </div>
@@ -555,20 +705,21 @@
           </svg>
           <b>왕지교육</b>
         </a>
-        <p class="tag">AP MATH, EIE English, 시매쓰(CMath)를 연결하는 통합 교육 브랜드 허브입니다.</p>
+        <p class="tag">AP MATH, EIE 영어, 시매쓰수학을 연결하는 통합 교육 브랜드 허브입니다.</p>
       </div>
       <div>
         <h4>교육관 링크</h4>
         <ul>
-          <li><a href="apmath-home/">AP MATH 수학</a></li>
-          <li><a href="https://blog.naver.com/wha6615" target="_blank" rel="noopener">EIE English 영어<svg class="ic" width="12" height="12"><use href="#i-arrow-up-right"/></svg></a></li>
-          <li><a href="#brands">시매쓰 CMath <span class="soon-tag">웹 준비중</span></a></li>
+          <li><a href="#top">왕지교육</a></li>
+          <li><a href="apmath-home/">AP MATH</a></li>
+          <li><a href="eie-home/">EIE 영어</a></li>
+          <li><a href="cmath-home/">시매쓰수학</a></li>
         </ul>
       </div>
       <div>
         <h4>정보 안내</h4>
         <ul>
-          <li><a href="#inquiry">온라인 상담 문의</a></li>
+          <li><a href="#inquiry">상담 문의</a></li>
           <li><a href="#faq">자주 묻는 질문</a></li>
           <li><a href="https://blog.naver.com/wha6615" target="_blank" rel="noopener">공식 네이버 블로그</a></li>
         </ul>
@@ -580,6 +731,11 @@
     </div>
   </div>
 </footer>
+
+<div class="mcta-bar" id="mctaBar">
+  <a class="tel" href="tel:061-724-8886" aria-label="전화 상담"><svg class="ic" width="18" height="18"><use href="#i-phone"/></svg>전화</a>
+  <a class="main" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener">길찾기</a>
+</div>
 
 <script>
   /* ===== 헤더: 스크롤 최적화 토글 ===== */
@@ -669,6 +825,50 @@
     firstChip.classList.add('sel');
     hiddenInterest.value = firstChip.getAttribute('data-value');
   });
+
+
+  /* ===== 모바일 브랜드 상세 아코디언 ===== */
+  (function(){
+    function setPanel(item, open){
+      var panel = item.querySelector('.mobile-acc-panel');
+      var trigger = item.querySelector('.mobile-acc-trigger');
+      if(!panel || !trigger) return;
+      item.classList.toggle('open', open);
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.style.maxHeight = open ? panel.scrollHeight + 'px' : null;
+    }
+    document.querySelectorAll('.mobile-acc-trigger').forEach(function(trigger){
+      trigger.addEventListener('click', function(){
+        var item = trigger.closest('.mobile-acc-item');
+        setPanel(item, !item.classList.contains('open'));
+      });
+    });
+    document.querySelectorAll('[data-mobile-acc-target]').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var target = document.querySelector(btn.getAttribute('data-mobile-acc-target'));
+        if(!target) return;
+        setPanel(target, true);
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  })();
+
+  /* ===== 모바일 하단 CTA: 문의 섹션/입력 중 숨김 ===== */
+  (function(){
+    var bar = document.getElementById('mctaBar'), inq = document.getElementById('inquiry');
+    if(bar && inq && 'IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ bar.classList.toggle('hide', es[0].isIntersecting); }, { threshold: .12 }).observe(inq);
+    }
+    if(bar){
+      document.querySelectorAll('input, textarea, select').forEach(function(el){
+        el.addEventListener('focus', function(){ bar.classList.add('is-hidden-by-input'); });
+        el.addEventListener('blur', function(){ bar.classList.remove('is-hidden-by-input'); });
+      });
+    }
+  })();
+
 </script>
 </body>
 </html>
