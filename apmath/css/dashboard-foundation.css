@@ -285,19 +285,83 @@
 }
 
 /* ======================================================================
-   APMS / EIE UI Surface & Sidebar Guideline v1.0 적용
+   APMS / EIE UI Surface & Sidebar Guideline v1.1 적용
+   - Round 3: inline style 의존을 줄이기 위한 의미 class 추가
    - 큰 카드: hover 때만 살짝 살아남
    - 작은 카드/row: 둥근 surface hover만 적용
    - 파란 active 배경 금지
    ====================================================================== */
+.ap-surface-toolbar {
+  display: grid;
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-2);
+  box-shadow: none;
+  box-sizing: border-box;
+  margin-bottom: 18px;
+}
+
+.ap-surface-toolbar--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ap-surface-toolbar--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ap-surface-toolbar--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.ap-surface-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  min-width: 0;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+.ap-surface-action--current { cursor: default; }
+
+.ap-surface-action:hover,
+.ap-admin-app-gate .btn:hover,
+.ap-admin-shortcuts .btn:hover,
+.ap-dashboard-action-grid .btn:hover,
+.ap-dashboard-tabbar .btn:hover,
+.ap-admin-action-card:hover,
+.ap-dashboard-action-button:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+  border-color: color-mix(in srgb, var(--border) 72%, var(--text));
+  box-shadow: 0 6px 16px rgba(15,23,42,0.06);
+  transform: translateY(-1px);
+}
+
+.ap-surface-action--current:hover,
+.ap-admin-app-gate .btn[aria-current="page"]:hover,
+.ap-dashboard-tabbar .btn[aria-current="page"]:hover {
+  background: var(--surface);
+  box-shadow: none;
+  transform: none;
+}
+
 .ap-admin-app-gate,
 .ap-admin-shortcuts,
 .ap-dashboard-action-grid,
 .ap-dashboard-tabbar,
 .ap-admin-overview-grid {
-  background: var(--surface-2) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: none !important;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow: none;
 }
 
 .ap-admin-app-gate .btn,
@@ -306,29 +370,17 @@
 .ap-dashboard-tabbar .btn,
 .ap-admin-action-card,
 .ap-dashboard-action-button {
-  background: var(--surface) !important;
-  color: var(--text) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: none !important;
-  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
-}
-
-.ap-admin-app-gate .btn:hover,
-.ap-admin-shortcuts .btn:hover,
-.ap-dashboard-action-grid .btn:hover,
-.ap-dashboard-tabbar .btn:hover,
-.ap-admin-action-card:hover,
-.ap-dashboard-action-button:hover {
-  background: var(--surface-2) !important;
-  border-color: color-mix(in srgb, var(--border) 72%, var(--text)) !important;
-  box-shadow: 0 6px 16px rgba(15,23,42,0.06) !important;
-  transform: translateY(-1px) !important;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
 }
 
 .ap-admin-app-gate .btn[aria-current="page"],
 .ap-dashboard-tabbar .btn[aria-current="page"] {
-  background: var(--surface) !important;
-  color: var(--text) !important;
+  background: var(--surface);
+  color: var(--text);
 }
 
 .ap-admin-mini-metric,
@@ -337,20 +389,21 @@
 .ap-class-row,
 .eie-admin-card,
 .eie-card {
-  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
 }
 
 .ap-admin-mini-metric[role="button"]:hover,
 .ap-admin-check-item:hover,
 .ap-class-row:hover {
-  background: var(--surface-2) !important;
-  border-color: color-mix(in srgb, var(--border) 72%, var(--text)) !important;
+  background: var(--surface-2);
+  border-color: var(--border);
+  border-color: color-mix(in srgb, var(--border) 72%, var(--text));
 }
 
 .ap-admin-check-item:hover,
 .ap-class-row:hover {
-  transform: translateY(-1px) !important;
-  box-shadow: 0 6px 16px rgba(15,23,42,0.05) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15,23,42,0.05);
 }
 
 .journal-day-cell:hover,
@@ -358,24 +411,24 @@
 .ap-admin-recent-student-row:hover,
 #dashboard-weekly-schedule-list > div > div:hover,
 #dashboard-onboarding-weekly-items > div:hover {
-  background: var(--surface-2) !important;
+  background: var(--surface-2);
 }
 
 .ap-dashboard-surface-list,
 #dashboard-weekly-schedule-list {
-  background: var(--surface) !important;
-  border-color: var(--border) !important;
+  background: var(--surface);
+  border-color: var(--border);
 }
 
 .ap-dashboard-surface-list--today:hover {
-  background: var(--surface) !important;
+  background: var(--surface);
 }
 
 /* 작은 카드 / 내부 요약은 부모보다 약한 hover만 허용 */
 .ap-admin-mini-metric[role="button"]:hover,
 .journal-day-cell:hover {
-  transform: none !important;
-  box-shadow: none !important;
+  transform: none;
+  box-shadow: none;
 }
 
 /* 파란 active/primary 계열 회귀 차단 */
@@ -387,13 +440,13 @@
 .journal-day-cell,
 .ap-class-row,
 .ap-dashboard-action-button {
-  background-image: none !important;
+  background-image: none;
 }
 
 .ap-admin-grade-pill,
 .admin-teacher-student-row__badge,
 .journal-day-cell__status {
-  background: var(--surface-2) !important;
-  color: var(--text) !important;
-  border: 1px solid var(--border) !important;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
 }

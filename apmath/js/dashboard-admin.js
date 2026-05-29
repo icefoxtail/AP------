@@ -16,34 +16,19 @@ function apRemoveAdminSystemGate() {
 function apCreateAdminSystemGate() {
     const gate = document.createElement('div');
     gate.id = 'ap-system-gate';
-    gate.className = 'ap-admin-app-gate';
+    gate.className = 'ap-admin-app-gate ap-surface-toolbar ap-surface-toolbar--two';
     gate.setAttribute('data-ap-system-gate', 'true');
     gate.setAttribute('role', 'navigation');
     gate.setAttribute('aria-label', '시스템 전환');
-    gate.style.cssText = [
-        'display:grid',
-        'grid-template-columns:repeat(2,minmax(0,1fr))',
-        'gap:8px',
-        'background:var(--surface-2)',
-        'padding:4px',
-        'border:1px solid var(--border)',
-        'border-radius:16px',
-        'margin-bottom:14px',
-        'box-sizing:border-box',
-        'box-shadow:none'
-    ].join(';');
-
     gate.innerHTML = `
-        <button class="btn"
+        <button class="btn ap-surface-action ap-surface-action--current"
                 type="button"
-                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none; cursor:pointer;"
                 aria-current="page"
                 onclick="void(0)">
             AP MATH
         </button>
-        <button class="btn"
+        <button class="btn ap-surface-action"
                 type="button"
-                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;"
                 onclick="window.location.href='../eie/index.html#dashboard'">
             EIE
         </button>

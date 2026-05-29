@@ -8,6 +8,7 @@
     };
 
     let hashListenerBound = false;
+    let routeButtonsBound = false;
 
     function normalizeRoute(route) {
         const key = String(route || '').replace(/^#/, '').trim();
@@ -22,6 +23,29 @@
             if (isActive) el.setAttribute('aria-current', 'page');
             else el.removeAttribute('aria-current');
         });
+    }
+
+
+    function openFromElement(route) {
+        const nextRoute = normalizeRoute(route);
+        if (window.EieRouter && typeof window.EieRouter.open === 'function') {
+            window.EieRouter.open(nextRoute);
+            return;
+        }
+        window.location.hash = `#${nextRoute}`;
+    }
+
+    function bindRouteButtons() {
+        if (routeButtonsBound || typeof document === 'undefined') return;
+        document.addEventListener('click', event => {
+            const target = event.target && event.target.closest ? event.target.closest('[data-eie-route]') : null;
+            if (!target) return;
+            const route = target.getAttribute('data-eie-route');
+            if (!route) return;
+            event.preventDefault();
+            openFromElement(route);
+        });
+        routeButtonsBound = true;
     }
 
     async function renderRoute(route) {
@@ -48,11 +72,22 @@
     window.EieRouter = {
         open,
         boot() {
+            bindRouteButtons();
             if (!hashListenerBound) {
                 window.addEventListener('hashchange', handleHashChange);
                 hashListenerBound = true;
             }
             return renderRoute(window.location.hash || 'dashboard');
-        }
+        },
+        syncNav,
+        bindRouteButtons
     };
+
+    if (typeof document !== 'undefined') {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bindRouteButtons, { once: true });
+        } else {
+            bindRouteButtons();
+        }
+    }
 })();

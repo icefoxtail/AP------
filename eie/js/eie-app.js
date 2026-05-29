@@ -18,7 +18,7 @@
     function renderPanel({ title, copy, note }) {
         return `
             <section aria-labelledby="eie-panel-title">
-                <button type="button" class="eie-back-button" onclick="EieRouter.open('dashboard')">← EIE 홈</button>
+                <button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>
                 <div class="eie-panel">
                     <h1 id="eie-panel-title" class="eie-panel-title">${escapeHtml(title)}</h1>
                     <p class="eie-panel-copy">${escapeHtml(copy)}</p>

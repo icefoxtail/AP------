@@ -62,26 +62,5 @@
     <script src="./js/views/eie-classroom.js"></script>
     <script src="./js/views/eie-management.js"></script>
     <script src="./js/eie-router.js"></script>
-    <script>
-        (function bindEieRouteButtons() {
-            function openEieRoute(route) {
-                if (!route) return;
-                if (window.EieRouter && typeof window.EieRouter.open === 'function') {
-                    window.EieRouter.open(route);
-                    return;
-                }
-                window.location.hash = '#' + route;
-            }
-
-            document.addEventListener('click', function handleEieRouteClick(event) {
-                var target = event.target && event.target.closest ? event.target.closest('[data-eie-route]') : null;
-                if (!target) return;
-                var route = target.getAttribute('data-eie-route');
-                if (!route) return;
-                event.preventDefault();
-                openEieRoute(route);
-            });
-        })();
-    </script>
 </body>
 </html>
