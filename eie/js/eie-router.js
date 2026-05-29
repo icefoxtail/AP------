@@ -2,7 +2,6 @@
     const routes = {
         dashboard: () => EieDashboardView.render(),
         timetable: () => EieTimetableView.render(),
-        'timetable-v2': () => EieTimetableV2View.render(),
         students: () => EieStudentsView.render(),
         classroom: () => EieClassroomView.render(),
         management: () => EieManagementView.render()
@@ -53,7 +52,15 @@
         const nextRoute = normalizeRoute(route);
         EieState.setActiveView(nextRoute);
         syncNav(nextRoute);
-        await EieApp.mount(await routes[nextRoute]());
+        try {
+            await EieApp.mount(await routes[nextRoute]());
+        } catch (e) {
+            if (e && e.status === 401 && window.EieApp && typeof window.EieApp.handleEie401 === 'function') {
+                window.EieApp.handleEie401();
+                return;
+            }
+            throw e;
+        }
     }
 
     async function open(route) {

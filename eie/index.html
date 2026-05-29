@@ -2,59 +2,85 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>EIE 영어 관리</title>
     <link rel="stylesheet" href="./css/eie.css">
 </head>
 <body>
-    <div class="eie-app-shell">
-        <aside class="eie-sidebar" aria-label="EIE 메뉴">
-            <a class="eie-sidebar-brand" href="./index.html#dashboard" aria-label="EIE 관리 홈">
-                <span class="eie-sidebar-logo" aria-hidden="true">E</span>
-                <span class="eie-sidebar-brand-text">EIE 영어</span>
-            </a>
-            <nav class="eie-sidebar-nav" aria-label="EIE 내부 메뉴">
-                <button class="eie-sidebar-item" type="button" data-eie-route="dashboard" aria-label="대시보드" title="대시보드">
-                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M4 13h7v7H4z"/><path d="M13 13h7v7h-7z"/></svg></span>
-                    <span class="eie-sidebar-label">대시보드</span>
-                </button>
-                <button class="eie-sidebar-item" type="button" data-eie-route="timetable" aria-label="시간표" title="시간표">
-                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M4 10h16"/><path d="M8 14h3"/><path d="M13 14h3"/></svg></span>
-                    <span class="eie-sidebar-label">시간표</span>
-                </button>
-                <button class="eie-sidebar-item" type="button" data-eie-route="timetable-v2" aria-label="운영 시간표" title="운영표">
-                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M4 10h16"/><path d="M7 14h4"/><path d="M13 14h4"/><path d="M7 17h4"/><path d="M13 17h4"/></svg></span>
-                    <span class="eie-sidebar-label">운영표</span>
-                </button>
-                <button class="eie-sidebar-item" type="button" data-eie-route="students" aria-label="학생관리" title="학생관리">
-                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M20 18c0-1.7-1.1-3.1-2.6-3.7"/><path d="M17 6.2a2.5 2.5 0 0 1 0 4.6"/></svg></span>
-                    <span class="eie-sidebar-label">학생관리</span>
-                </button>
-                <button class="eie-sidebar-item" type="button" data-eie-route="classroom" aria-label="클래스룸" title="클래스룸">
-                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10 12 5l8 5-8 5z"/><path d="M7 12v5c2.8 1.7 7.2 1.7 10 0v-5"/></svg></span>
-                    <span class="eie-sidebar-label">클래스룸</span>
-                </button>
-                <button class="eie-sidebar-item" type="button" data-eie-route="management" aria-label="관리" title="관리">
-                    <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 3.4-.2-.1a1.7 1.7 0 0 0-1.9.3 1.7 1.7 0 0 0-.6 1.7v.2H9v-.2a1.7 1.7 0 0 0-.6-1.7 1.7 1.7 0 0 0-1.9-.3l-.2.1-2-3.4.1-.1A1.7 1.7 0 0 0 4.6 15 1.7 1.7 0 0 0 3 13.8h-.2v-3.6H3A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-3.4.2.1a1.7 1.7 0 0 0 1.9-.3A1.7 1.7 0 0 0 9 1.7v-.2h6v.2a1.7 1.7 0 0 0 .6 1.7 1.7 1.7 0 0 0 1.9.3l.2-.1 2 3.4-.1.1A1.7 1.7 0 0 0 19.4 9 1.7 1.7 0 0 0 21 10.2h.2v3.6H21a1.7 1.7 0 0 0-1.6 1.2z"/></svg></span>
-                    <span class="eie-sidebar-label">관리</span>
-                </button>
-            </nav>
-            <a class="eie-sidebar-item eie-sidebar-external" href="../apmath/index.html" aria-label="AP Math로 이동" title="AP Math">
-                <span class="eie-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M10 5l-7 7 7 7"/></svg></span>
-                <span class="eie-sidebar-label">AP Math</span>
-            </a>
-        </aside>
-        <div class="eie-shell-frame">
-            <header class="eie-shell-header">
-                <a class="eie-brand" href="./index.html#dashboard" aria-label="EIE 관리 홈">EIE 영어 관리</a>
-                <nav class="eie-nav" aria-label="EIE navigation">
-                    <a class="eie-nav-link" href="../apmath/index.html">AP Math</a>
-                    <button class="eie-nav-link" type="button" data-eie-route="dashboard" aria-label="EIE 대시보드" title="EIE">EIE</button>
-                </nav>
-            </header>
-            <main id="eie-app" class="eie-shell-main"></main>
+
+    <!-- ── Mobile header (AP MATH <header>와 동일 구조) ── -->
+    <header class="eie-header" id="eie-mobile-header">
+        <div class="eie-header-left">
+            <button class="eie-hamburger-btn" onclick="eieOpenDrawer()" aria-label="메뉴 열기" title="메뉴">
+                <span class="eie-hamburger-glyph">☰</span>
+            </button>
+        </div>
+        <div class="eie-header-brand" onclick="eieGoHome()">
+            <span class="eie-header-logo-badge">E</span>
+        </div>
+        <div class="eie-header-user" id="eie-mobile-user" aria-label="사용자"></div>
+    </header>
+
+    <!-- ── Desktop topbar (AP MATH .desktop-topbar와 동일 구조) ── -->
+    <div class="eie-desktop-topbar" id="eie-desktop-topbar">
+        <div class="eie-topbar-brand" onclick="eieGoHome()">
+            <span class="eie-header-logo-badge">E</span>
         </div>
     </div>
+
+    <!-- ── Drawer overlay ── -->
+    <div id="eie-drawer-overlay" onclick="eieCloseDrawer()"></div>
+
+    <!-- ── Sidebar drawer (AP MATH #app-drawer와 동일 구조) ── -->
+    <nav id="eie-drawer" aria-label="EIE 관리 메뉴">
+        <button class="eie-drw-rail-toggle" onclick="eieOpenDrawer()" aria-label="메뉴 열기" title="메뉴">
+            <span class="eie-hamburger-glyph">☰</span>
+        </button>
+        <div class="eie-drw-top-tools">
+            <button class="eie-drw-hamburger" onclick="eieCloseDrawer()" aria-label="메뉴 닫기" title="닫기">
+                <span class="eie-hamburger-glyph">☰</span>
+            </button>
+        </div>
+        <div class="eie-drw-menu">
+            <div class="eie-drw-section-label">EIE 관리</div>
+            <button class="eie-drw-item" type="button" data-eie-route="dashboard" aria-label="대시보드" title="대시보드">
+                <span class="eie-drw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M4 13h7v7H4z"/><path d="M13 13h7v7h-7z"/></svg></span>
+                <span class="eie-drw-label">대시보드</span>
+            </button>
+            <button class="eie-drw-item" type="button" data-eie-route="timetable" aria-label="시간표" title="시간표">
+                <span class="eie-drw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M4 10h16"/><path d="M8 14h3"/><path d="M13 14h3"/></svg></span>
+                <span class="eie-drw-label">시간표</span>
+            </button>
+            <button class="eie-drw-item" type="button" data-eie-route="students" aria-label="학생관리" title="학생관리">
+                <span class="eie-drw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M20 18c0-1.7-1.1-3.1-2.6-3.7"/><path d="M17 6.2a2.5 2.5 0 0 1 0 4.6"/></svg></span>
+                <span class="eie-drw-label">학생관리</span>
+            </button>
+            <button class="eie-drw-item" type="button" data-eie-route="classroom" aria-label="클래스룸" title="클래스룸">
+                <span class="eie-drw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10 12 5l8 5-8 5z"/><path d="M7 12v5c2.8 1.7 7.2 1.7 10 0v-5"/></svg></span>
+                <span class="eie-drw-label">클래스룸</span>
+            </button>
+            <button class="eie-drw-item" type="button" data-eie-route="management" aria-label="관리" title="관리">
+                <span class="eie-drw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 3.4-.2-.1a1.7 1.7 0 0 0-1.9.3 1.7 1.7 0 0 0-.6 1.7v.2H9v-.2a1.7 1.7 0 0 0-.6-1.7 1.7 1.7 0 0 0-1.9-.3l-.2.1-2-3.4.1-.1A1.7 1.7 0 0 0 4.6 15 1.7 1.7 0 0 0 3 13.8h-.2v-3.6H3A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-3.4.2.1a1.7 1.7 0 0 0 1.9-.3A1.7 1.7 0 0 0 9 1.7v-.2h6v.2a1.7 1.7 0 0 0 .6 1.7 1.7 1.7 0 0 0 1.9.3l.2-.1 2 3.4-.1.1A1.7 1.7 0 0 0 19.4 9 1.7 1.7 0 0 0 21 10.2h.2v3.6H21a1.7 1.7 0 0 0-1.6 1.2z"/></svg></span>
+                <span class="eie-drw-label">관리</span>
+            </button>
+        </div>
+        <div class="eie-drw-spacer"></div>
+        <div class="eie-drw-footer">
+            <a class="eie-drw-item" href="../apmath/index.html" aria-label="AP MATH 원장 대시보드로 이동">
+                <span class="eie-drw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M10 5l-7 7 7 7"/></svg></span>
+                <span class="eie-drw-label">AP MATH</span>
+            </a>
+            <button class="eie-drw-item eie-drw-danger" type="button"
+                    onclick="if(window.EieApp && EieApp.handleEieLogout) EieApp.handleEieLogout()"
+                    aria-label="로그아웃">
+                <span class="eie-drw-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4"/><path d="M14 8l4 4-4 4"/><path d="M18 12H9"/></svg></span>
+                <span class="eie-drw-label">로그아웃</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── Main content (AP MATH <main id="app-root">와 동일 위치/역할) ── -->
+    <main id="eie-app" class="eie-main"></main>
 
     <script src="../shared/js/wangji-owner-auth-bridge.js"></script>
     <script src="./js/utils/eie-normalize.js"></script>
@@ -63,7 +89,6 @@
     <script src="./js/eie-app.js"></script>
     <script src="./js/views/eie-dashboard.js"></script>
     <script src="./js/views/eie-timetable.js"></script>
-    <script src="./js/views/eie-timetable-v2.js"></script>
     <script src="./js/views/eie-students.js"></script>
     <script src="./js/views/eie-classroom.js"></script>
     <script src="./js/views/eie-management.js"></script>
