@@ -78,24 +78,55 @@
         if (window.localStorage) window.localStorage.removeItem('WANGJI_EIE_SESSION_TOKEN');
     }
 
-    function addLogoutButton() {
-        if (document.getElementById('eie-logout-btn')) return;
-        const nav = document.querySelector('.eie-nav') || document.querySelector('.eie-shell-header');
-        if (!nav) return;
-        const btn = document.createElement('button');
-        btn.id = 'eie-logout-btn';
-        btn.type = 'button';
-        btn.className = 'eie-nav-link';
-        btn.textContent = '로그아웃';
-        btn.style.cssText = 'cursor:pointer;';
-        btn.addEventListener('click', function () { EieApp.handleEieLogout(); });
-        nav.appendChild(btn);
+    function addLogoutButton() { /* 로그아웃 버튼은 drawer 정적 HTML에 포함 — no-op */ }
+    function removeLogoutButton() { /* no-op */ }
+
+    function eieUpdateHeaderUser() {
+        const name = (window.localStorage && window.localStorage.getItem('WANGJI_EIE_NAME')) || '';
+        const mobile = document.getElementById('eie-mobile-user');
+        if (mobile) mobile.textContent = name;
+        let desktop = document.getElementById('eie-desktop-user');
+        const topbar = document.querySelector('.eie-desktop-topbar');
+        if (topbar && name) {
+            if (!desktop) {
+                desktop = document.createElement('div');
+                desktop.id = 'eie-desktop-user';
+                topbar.appendChild(desktop);
+            }
+            desktop.textContent = name;
+        }
     }
 
-    function removeLogoutButton() {
-        const btn = document.getElementById('eie-logout-btn');
-        if (btn) btn.remove();
-    }
+    window.eieOpenDrawer = function () {
+        var drawer = document.getElementById('eie-drawer');
+        var overlay = document.getElementById('eie-drawer-overlay');
+        if (!drawer) return;
+        if (window.innerWidth >= 901) {
+            drawer.classList.add('eie-drw-expanded');
+            document.body.classList.add('eie-drawer-expanded');
+        } else {
+            drawer.classList.add('eie-drw-open');
+            if (overlay) overlay.classList.add('eie-drw-open');
+        }
+    };
+
+    window.eieCloseDrawer = function () {
+        var drawer = document.getElementById('eie-drawer');
+        var overlay = document.getElementById('eie-drawer-overlay');
+        if (!drawer) return;
+        drawer.classList.remove('eie-drw-open');
+        drawer.classList.remove('eie-drw-expanded');
+        if (overlay) overlay.classList.remove('eie-drw-open');
+        document.body.classList.remove('eie-drawer-expanded');
+    };
+
+    window.eieGoHome = function () {
+        if (window.EieRouter && typeof window.EieRouter.open === 'function') {
+            window.EieRouter.open('dashboard');
+        } else {
+            window.location.hash = '#dashboard';
+        }
+    };
 
     function renderEieLogin(message) {
         removeLogoutButton();
@@ -141,7 +172,7 @@
             const eieData = await window.WangjiOwnerAuthBridge.loginEieWithCredentials(loginId.trim(), password.trim());
             window.WangjiOwnerAuthBridge.saveEieSession(eieData);
             window.WangjiOwnerAuthBridge.bridgeAfterEieLogin(loginId.trim(), password.trim(), eieData);
-            addLogoutButton();
+            eieUpdateHeaderUser();
             if (window.EieRouter && typeof window.EieRouter.boot === 'function') {
                 window.EieRouter.boot();
             }
@@ -175,7 +206,7 @@
             renderEieLogin();
             return;
         }
-        addLogoutButton();
+        eieUpdateHeaderUser();
         const originalBoot = window.EieRouter.boot.bind(window.EieRouter);
         window.EieRouter.boot = async function () {
             try {
@@ -198,7 +229,8 @@
         renderEieLogin,
         submitEieLogin,
         handleEieLogout,
-        handleEie401
+        handleEie401,
+        eieUpdateHeaderUser
     };
 
     window.addEventListener('DOMContentLoaded', bootWhenReady);
