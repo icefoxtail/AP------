@@ -297,6 +297,84 @@ function renderAttendanceTagButton(studentId, date, tag) {
     return `<button class="btn cls-v4-status tag ${on ? 'on' : ''}" title="${safeTag}" onclick="toggleAttendanceTag('${studentId}', '${date}', '${safeTag}')">${on ? '○' : ''}</button>`;
 }
 
+// ── 보강 체크칩 시스템 ────────────────────────────────────────────────
+var MAKEUP_TAG_DEFS = [
+    { key: 'makeup:progress', label: '진도' },
+    { key: 'makeup:homework', label: '숙제' },
+    { key: 'makeup:absence', label: '결석' },
+    { key: 'makeup:exam',    label: '시험' },
+    { key: 'makeup:other',   label: '기타' },
+];
+
+function getActiveMakeupTags(studentId, date) {
+    var tags = getAttendanceMetaForStudentDate(String(studentId), String(date)).tags;
+    return MAKEUP_TAG_DEFS.filter(function(d) { return tags.includes(d.key); });
+}
+
+function hasAnyMakeupTag(studentId, date) {
+    return getActiveMakeupTags(studentId, date).length > 0;
+}
+
+function renderMakeupExpandButton(studentId, date) {
+    var sid = apEscapeHtml(String(studentId));
+    var d   = apEscapeHtml(String(date));
+    var on  = hasAnyMakeupTag(sid, d);
+    return '<button id="makeup-btn-' + sid + '-' + d + '" class="btn cls-v4-status tag makeup-expand' + (on ? ' on' : '') + '" title="보강" aria-pressed="' + on + '" onclick="toggleMakeupPanel(\'' + sid + '\',\'' + d + '\')">' + (on ? '○' : '') + '</button>';
+}
+
+function toggleMakeupPanel(studentId, date) {
+    var sid = String(studentId);
+    var d   = String(date);
+    var panelId = 'makeup-panel-' + sid + '-' + d;
+    var existing = document.getElementById(panelId);
+    if (existing) { existing.remove(); return; }
+    var row = document.getElementById('class-row-' + sid);
+    if (!row) return;
+    var panel = document.createElement('div');
+    panel.id = panelId;
+    panel.className = 'makeup-chip-panel cls-fade-in';
+    panel.innerHTML = renderMakeupChipPanelInner(sid, d);
+    row.insertAdjacentElement('afterend', panel);
+}
+
+function renderMakeupChipPanelInner(studentId, date) {
+    var sid  = apEscapeHtml(String(studentId));
+    var d    = apEscapeHtml(String(date));
+    var active = getActiveMakeupTags(studentId, date).map(function(t) { return t.key; });
+    var chips = MAKEUP_TAG_DEFS.map(function(t) {
+        var on  = active.includes(t.key);
+        var key = apEscapeHtml(t.key);
+        return '<button class="makeup-chip' + (on ? ' on' : '') + '" aria-pressed="' + on + '" onclick="clickMakeupChip(\'' + sid + '\',\'' + d + '\',\'' + key + '\')">' + t.label + '</button>';
+    }).join('');
+    return '<div class="makeup-chip-list">' + chips + '</div>';
+}
+
+async function clickMakeupChip(studentId, date, key) {
+    var sid = String(studentId);
+    var d   = String(date);
+    if (!sid || !d || !key) return;
+    // 중복 저장 방지: 동일 key가 저장 중인지 확인
+    var lockId = 'makeup-lock-' + sid + '-' + d + '-' + key;
+    if (window[lockId]) return;
+    window[lockId] = true;
+    try {
+        await toggleAttendanceTag(sid, d, key);
+    } finally {
+        window[lockId] = false;
+    }
+    // expand 버튼 상태 갱신
+    var btn = document.getElementById('makeup-btn-' + sid + '-' + d);
+    if (btn) {
+        var on = hasAnyMakeupTag(sid, d);
+        btn.classList.toggle('on', on);
+        btn.setAttribute('aria-pressed', String(on));
+        btn.textContent = on ? '○' : '';
+    }
+    // 칩 패널 내용 갱신
+    var panel = document.getElementById('makeup-panel-' + sid + '-' + d);
+    if (panel) panel.innerHTML = renderMakeupChipPanelInner(sid, d);
+}
+
 function hasConsultationForStudentDate(studentId, date) {
     if (typeof apmsHasConsultationForStudentDate === 'function') {
         return apmsHasConsultationForStudentDate(studentId, date);
@@ -1097,7 +1175,7 @@ function renderClassStudentRowV4B(cid, s, attStatus, hwStatus, isScheduled, plan
                 <button class="btn cls-v4-status class-att-toggle" style="${attStyle}" onclick="toggleAtt('${s.id}', '${rowDate}')">${attLabel}</button>
                 <button class="btn cls-v4-status hw class-hw-toggle" style="${hwStyle}" onclick="toggleHw('${s.id}', '${rowDate}')">${hwLabel}</button>
                 ${renderAttendanceTagButton(s.id, rowDate, '지각')}
-                ${renderAttendanceTagButton(s.id, rowDate, '보강')}
+                ${renderMakeupExpandButton(s.id, rowDate)}
                 ${renderClassroomConsultationButton(s.id, cid, rowDate)}
             </div>
         </div>

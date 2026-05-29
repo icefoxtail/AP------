@@ -3280,8 +3280,15 @@ function buildJournalContent(dateStr) {
 
         const absents = [];
         const lates = [];
-        const makeups = [];
+        const makeups = []; // { name, makeupTags: string[] }
         const hwMiss = [];
+        const MAKEUP_LABEL_MAP = {
+            'makeup:progress': '진도',
+            'makeup:homework': '숙제',
+            'makeup:absence': '결석',
+            'makeup:exam': '시험',
+            'makeup:other': '기타',
+        };
 
         students.forEach(s => {
             const att = (state.db.attendance || []).find(a => String(a.student_id) === String(s.id) && a.date === targetDate);
@@ -3294,7 +3301,10 @@ function buildJournalContent(dateStr) {
 
             if (attStatus === '결석') absents.push(s.name);
             if (attStatus === '지각' || tagList.includes('지각')) lates.push(s.name);
-            if (attStatus === '보강' || tagList.includes('보강')) makeups.push(s.name);
+            const makeupTags = tagList.filter(t => t.startsWith('makeup:'));
+            if (attStatus === '보강' || tagList.includes('보강') || makeupTags.length > 0) {
+                makeups.push({ name: s.name, makeupTags });
+            }
             if (hw?.status === '미완료') hwMiss.push(s.name);
         });
 
@@ -3305,7 +3315,14 @@ function buildJournalContent(dateStr) {
         text += `- 숙제: ${homeworkCount}/${total}\n`;
         if (absents.length > 0) text += `- 결석: ${absents.join(', ')}\n`;
         if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
-        if (makeups.length > 0) text += `- 보강: ${makeups.join(', ')}\n`;
+        if (makeups.length > 0) {
+            const makeupStr = makeups.map(m => {
+                if (!m.makeupTags.length) return m.name;
+                const labels = m.makeupTags.map(t => MAKEUP_LABEL_MAP[t] || t).join('·');
+                return `${m.name}(${labels})`;
+            }).join(', ');
+            text += `- 보강: ${makeupStr}\n`;
+        }
         if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
 
         const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
