@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     const PROD_WORKER_ORIGIN = 'https://wangji-eie-os.js-pdf.workers.dev';
 
     function trimSlash(value) {
@@ -54,10 +54,10 @@
     }
 
     function normalizeError(error) {
-        if (!error) return '?붿껌??泥섎━?섏? 紐삵뻽?듬땲??';
+        if (!error) return '요청을 처리하지 못했습니다.';
         if (typeof error === 'string') return error;
         return error.message || '?붿껌??泥섎━?섏? 紐삵뻽?듬땲??';
-    }
+        return error.message || '요청을 처리하지 못했습니다.';
 
     async function parseResponse(response) {
         const text = await response.text();
@@ -151,6 +151,40 @@
                 method: 'POST',
                 body: payload || {}
             });
+        },
+
+        // ── 학생 직접 등록/수정 ───────────────────────────────────────
+        getStudents() {
+            return get('confirmed-students', 'student-seeds');
+        },
+        async createStudent(payload) {
+            return request('students', { method: 'POST', body: payload || {} });
+        },
+        async updateStudent(studentId, payload) {
+            return request(`students/${encodeURIComponent(studentId)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async updateStudentStatus(studentId, status) {
+            return request(`students/${encodeURIComponent(studentId)}/status`, {
+                method: 'PATCH',
+                body: { status }
+            });
+        },
+
+        // ── 수업 배정/해제 ────────────────────────────────────────────
+        async assignStudentToCell(cellId, studentId) {
+            return request(`timetable-cells/${encodeURIComponent(cellId)}/students`, {
+                method: 'POST',
+                body: { student_id: studentId }
+            });
+        },
+        async removeStudentFromCell(cellId, studentId) {
+            return request(
+                `timetable-cells/${encodeURIComponent(cellId)}/students/${encodeURIComponent(studentId)}`,
+                { method: 'DELETE' }
+            );
         }
     };
 })();
