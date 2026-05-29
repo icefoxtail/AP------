@@ -1,4 +1,4 @@
-# APMS / EIE UI Surface & Sidebar Guideline v1.0
+# APMS / EIE UI Surface & Sidebar Guideline v1.1
 
 > 적용 범위: APMS, EIE  
 > 상위 기준: `ACADEMY_APMS_EIE_COMMON_UI_INTERACTION_GUIDELINE_v1.1.md`  
@@ -491,6 +491,33 @@ web-react/src/styles 또는 실제 CSS 엔트리
 Academy OS 코드는 참조만 한다.  
 APMS/EIE에 React 구조를 직접 붙이지 않는다.
 
+
+---
+
+## 11-1. 유지보수성 기준
+
+시각 보정은 누적 패치로 덮어쓰기만 하지 않는다.
+
+기본 원칙:
+
+```text
+- 위치/열림/닫힘 보존용 CSS는 hard-lock 영역에 둔다.
+- 색감/hover/active/아이콘 보정은 visual layer 영역에 둔다.
+- 시각 보정용 !important는 최소화한다.
+- inline style로 카드/hover 스타일을 추가하지 않는다.
+- 반복되는 inline style은 의미 class로 승격한다.
+```
+
+권장 class:
+
+```text
+.ap-surface-toolbar
+.ap-surface-toolbar--two / --three / --four
+.ap-surface-action
+.ap-surface-action--current
+```
+
+EIE 라우팅 버튼은 HTML inline onclick이 아니라 라우터의 delegated handler로 처리한다.
 ---
 
 ## 12. 외부감사 체크리스트
@@ -551,4 +578,10 @@ APMS/EIE의 기본 화면은 조용해야 한다.
 - Academy OS Sidebar 감각 이식 기준 정리
 - APMS 선생님 화면 AP/EIE 노출 금지 재고정
 - 큰 카드 / 작은 카드 / row hover 계층화 기준 고정
+
+2026-05-29 v1.1
+- hard-lock CSS와 visual layer CSS 분리 기준 추가
+- 시각 보정용 !important 최소화 기준 추가
+- 반복 inline style을 의미 class로 승격하는 기준 추가
+- EIE route button inline onclick 금지 및 delegated handler 기준 추가
 ```

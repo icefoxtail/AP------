@@ -321,7 +321,7 @@ function dashboardIsJournalDone(journal) {
 function openDashboardArchiveWindow(event) {
     if (event && typeof event.preventDefault === 'function') event.preventDefault();
     if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
-    const url = '../archive/index.html';
+    const url = '../archive/index';
     window.open(url, '_blank', 'noopener');
 }
 
@@ -1817,31 +1817,27 @@ function renderAdminControlCenter() {
     const adminGlobalSearchPanel = typeof renderAdminGlobalSearchPanel === 'function' ? renderAdminGlobalSearchPanel() : '';
 
     const adminSystemGateHtml = `
-        <div id="ap-system-gate" class="ap-admin-app-gate" data-ap-system-gate="true" role="navigation" aria-label="시스템 전환" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:16px; margin-bottom:18px; box-sizing:border-box; box-shadow:none;">
-            <button class="btn" type="button" aria-current="page" style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none; cursor:default;" onclick="void(0)">AP MATH</button>
-            <button class="btn" type="button" style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;" onclick="window.location.href='../eie/index.html#dashboard'">EIE</button>
+        <div id="ap-system-gate" class="ap-admin-app-gate ap-surface-toolbar ap-surface-toolbar--two" data-ap-system-gate="true" role="navigation" aria-label="시스템 전환">
+            <button class="btn ap-surface-action ap-surface-action--current" type="button" aria-current="page" onclick="void(0)">AP MATH</button>
+            <button class="btn ap-surface-action" type="button" onclick="window.location.href='../eie/index.html#dashboard'">EIE</button>
         </div>
     `;
 
     const adminShortcutRow = `
-        <div class="ap-admin-shortcuts ap-admin-action-grid" aria-label="원장님 바로가기" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:18px; margin-bottom:18px; box-shadow:none;">
-            <button class="btn ap-admin-action-card"
-                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
+        <div class="ap-admin-shortcuts ap-admin-action-grid ap-surface-toolbar ap-surface-toolbar--four" aria-label="원장님 바로가기">
+            <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
-            <button class="btn ap-admin-action-card"
-                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
+            <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
-            <button class="btn ap-admin-action-card"
-                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
+            <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
                 성적표
             </button>
-            <button class="btn ap-admin-action-card"
-                    style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
+            <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="openAdminOperationMenu()">
                 관리
             </button>
@@ -2807,19 +2803,16 @@ function renderDashboard() {
     const root = document.getElementById('app-root');
 
     const shortcutRow = `
-        <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; background:var(--surface-2); padding:4px; border:1px solid var(--border); border-radius:16px; margin-bottom:18px;">
-            <button class="btn ap-dashboard-action-button"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
+        <div class="ap-dashboard-shortcuts ap-dashboard-action-grid ap-dashboard-action-grid--teacher-quick ap-surface-toolbar ap-surface-toolbar--three">
+            <button class="btn ap-dashboard-action-button ap-surface-action"
                     onclick="if(typeof renderTimetable === 'function') renderTimetable(); else toast('불러오기 실패', 'warn');">
                 시간표
             </button>
-            <button class="btn ap-dashboard-action-button"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:none; border:1px solid var(--border);"
+            <button class="btn ap-dashboard-action-button ap-surface-action"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
             </button>
-            <button class="btn ap-dashboard-action-button"
-                    style="flex:1; height:44px; min-height:44px; max-height:44px; padding:0 12px; border-radius:10px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); box-shadow:0 1px 2px rgba(0,0,0,0.05); border:none;"
+            <button class="btn ap-dashboard-action-button ap-surface-action"
                     onclick="openDashboardArchiveWindow(event);">
                 아카이브
             </button>

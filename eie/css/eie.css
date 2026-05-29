@@ -1293,8 +1293,9 @@ body {
 }
 
 /* ======================================================================
-   APMS / EIE UI Surface & Sidebar Guideline v1.0 적용
+   APMS / EIE UI Surface & Sidebar Guideline v1.1 적용
    - ACA Sidebar 감각을 EIE 바닐라 화면에 이식
+   - Round 3: visual override의 !important를 제거하고 cascade 순서로 관리
    - EIE 내부 메뉴는 좌측 사이드바, 모바일은 상단 카드형 nav
    ====================================================================== */
 .eie-app-shell {
@@ -1427,82 +1428,82 @@ body {
 }
 
 .eie-shell-header {
-    background: rgba(255,255,255,0.78) !important;
+    background: rgba(255,255,255,0.78);
 }
 
 .eie-card,
 .eie-admin-card,
 .eie-summary-card {
-    border-radius: 16px !important;
-    transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease !important;
+    border-radius: 16px;
+    transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
 }
 
 .eie-card:hover,
 .eie-admin-card:hover {
-    background: var(--eie-surface-2) !important;
-    border-color: var(--eie-border) !important;
-    border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text)) !important;
-    box-shadow: 0 6px 16px rgba(15,23,42,0.06) !important;
-    transform: translateY(-1px) !important;
+    background: var(--eie-surface-2);
+    border-color: var(--eie-border);
+    border-color: color-mix(in srgb, var(--eie-border) 72%, var(--eie-text));
+    box-shadow: 0 6px 16px rgba(15,23,42,0.06);
+    transform: translateY(-1px);
 }
 
 .eie-admin-shortcuts,
 .eie-nav {
-    background: var(--eie-surface-2) !important;
-    border-color: var(--eie-border) !important;
+    background: var(--eie-surface-2);
+    border-color: var(--eie-border);
 }
 
 .eie-admin-shortcut,
 .eie-nav-link {
-    color: var(--eie-muted) !important;
-    background: transparent !important;
-    border: 1px solid transparent !important;
-    box-shadow: none !important;
-    transition: background .16s ease, color .16s ease, border-color .16s ease !important;
+    color: var(--eie-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+    transition: background .16s ease, color .16s ease, border-color .16s ease;
 }
 
 .eie-admin-shortcut:hover,
 .eie-nav-link:hover,
 .eie-admin-shortcut.is-active,
 .eie-nav-link.is-active {
-    background: var(--eie-surface) !important;
-    color: var(--eie-text) !important;
-    border-color: var(--eie-border) !important;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    border-color: var(--eie-border);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 
 .eie-admin-shortcut.is-active {
-    color: var(--eie-text) !important;
+    color: var(--eie-text);
 }
 
 .eie-student-row:hover,
 .eie-filter-button:hover,
 .eie-cell-card:hover,
 .eie-student-chip:hover {
-    background: var(--eie-surface-2) !important;
-    border-color: var(--eie-border) !important;
-    box-shadow: none !important;
-    transform: none !important;
+    background: var(--eie-surface-2);
+    border-color: var(--eie-border);
+    box-shadow: none;
+    transform: none;
 }
 
 .eie-student-row.is-selected,
 .eie-admin-card.is-selected {
-    background: var(--eie-surface-2) !important;
-    border-color: var(--eie-border) !important;
-    color: var(--eie-text) !important;
+    background: var(--eie-surface-2);
+    border-color: var(--eie-border);
+    color: var(--eie-text);
 }
 
 .eie-badge-contact,
 .eie-card-label,
 .eie-card-cta,
 .eie-admin-card-kicker {
-    color: var(--eie-text) !important;
+    color: var(--eie-text);
 }
 
 .eie-badge-contact,
 .eie-card-label {
-    background: var(--eie-surface-2) !important;
-    border: 1px solid var(--eie-border) !important;
+    background: var(--eie-surface-2);
+    border: 1px solid var(--eie-border);
 }
 
 @media (max-width: 900px) {
@@ -1560,5 +1561,5 @@ body {
 
 /* Sidebar가 EIE 내비게이션을 담당하므로 기존 상단 nav는 중복 노출하지 않는다. */
 .eie-app-shell .eie-shell-header {
-    display: none !important;
+    display: none;
 }
