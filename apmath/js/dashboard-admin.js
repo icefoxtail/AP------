@@ -24,25 +24,26 @@ function apCreateAdminSystemGate() {
         'display:grid',
         'grid-template-columns:repeat(2,minmax(0,1fr))',
         'gap:8px',
-        'background:var(--surface-2)',
+        'background:linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%)',
         'padding:4px',
-        'border:1px solid var(--border)',
+        'border:1px solid rgba(var(--primary-rgb),0.14)',
         'border-radius:16px',
         'margin-bottom:14px',
-        'box-sizing:border-box'
+        'box-sizing:border-box',
+        'box-shadow:0 10px 24px rgba(15,23,42,0.055)'
     ].join(';');
 
     gate.innerHTML = `
         <button class="btn"
                 type="button"
-                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none; cursor:default;"
+                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:linear-gradient(180deg, var(--surface) 0%, rgba(var(--primary-rgb),0.035) 100%); color:var(--text); border:1px solid rgba(var(--primary-rgb),0.13); box-shadow:0 6px 16px rgba(var(--primary-rgb),0.08); cursor:default;"
                 aria-current="page"
                 onclick="void(0)">
             AP MATH
         </button>
         <button class="btn"
                 type="button"
-                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:var(--surface); color:var(--text); border:1px solid var(--border); box-shadow:none;"
+                style="height:44px; min-height:44px; max-height:44px; padding:0 10px; border-radius:12px; font-size:13px; font-weight:500; background:linear-gradient(180deg, var(--surface) 0%, rgba(var(--primary-rgb),0.035) 100%); color:var(--text); border:1px solid rgba(var(--primary-rgb),0.13); box-shadow:0 6px 16px rgba(var(--primary-rgb),0.08);"
                 onclick="window.location.href='../eie/index.html#dashboard'">
             EIE
         </button>
