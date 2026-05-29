@@ -2565,431 +2565,363 @@ body {
     margin: 14px 0 0;
 }
 
-/* EIE Timetable v2 — read-only operating board */
-.eie-v2-screen {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
+/* ======================================================================
+   EIE Shell v2 — AP MATH 원장 대시보드와 100% 동일 구조
+   - AP MATH index.html inline CSS + sidebar-foundation.css 완전 복제
+   - 기존 eie-app-shell / eie-sidebar / eie-shell-frame 은 사용 안 함
+   ====================================================================== */
+
+/* CSS 변수 bridge: EIE 독자 변수 → AP MATH 공통 이름으로 alias */
+:root {
+    --bg:            var(--eie-bg);
+    --surface:       var(--eie-surface);
+    --surface-2:     var(--eie-surface-2);
+    --surface-alpha: rgba(255,255,255,0.88);
+    --border:        var(--eie-border);
+    --shadow:        0 2px 8px rgba(0,0,0,0.03);
+    --text:          var(--eie-text);
+    --text-soft:     #333D4B;
+    --primary:       var(--eie-primary);
+    --secondary:     var(--eie-muted);
+    --error:         #E8414F;
+}
+
+/* ── Mobile header (AP MATH <header>와 동일) ── */
+.eie-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface-alpha);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 96px minmax(0,1fr) 96px;
+    align-items: center;
+    height: 58px;
+    min-height: 58px;
+}
+.eie-header-left {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.eie-header-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    height: 40px;
+}
+.eie-header-logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+.eie-header-user {
+    justify-self: end;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 96px;
+}
+.eie-hamburger-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+}
+.eie-hamburger-glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* ── Desktop topbar (AP MATH .desktop-topbar와 동일) ── */
+.eie-desktop-topbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 56px;
+    right: 0;
+    height: 58px;
+    z-index: 80;
+    align-items: center;
+    padding: 0 24px;
+    gap: 10px;
+    background: var(--surface-alpha);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: left 0.24s ease, background 0.2s, border-color 0.2s;
+}
+.eie-topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+#eie-desktop-user {
+    margin-left: auto;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* ── Drawer overlay ── */
+#eie-drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.42);
+    z-index: 9998;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+#eie-drawer-overlay.eie-drw-open { display: block; }
+
+/* ── Sidebar drawer (AP MATH #app-drawer와 동일) ── */
+#eie-drawer {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: min(72vw, 260px);
+    background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+    border: 1px solid var(--border);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.08);
+    z-index: 9999;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    transform: translateX(-104%);
+    transition: transform .26s cubic-bezier(0.4,0,0.2,1), width .22s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 0 18px 18px 0;
+    text-align: left;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
+#eie-drawer.eie-drw-open { transform: translateX(0); }
 
-.eie-v2-page-head {
+.eie-drw-rail-toggle {
+    display: none;
+    width: 36px; height: 36px;
+    margin: 11px 0 0 10px;
+    padding: 0; border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px; font-weight: 700;
+    cursor: pointer;
+    align-items: center; justify-content: center;
+    font-family: inherit;
+    flex-shrink: 0;
+}
+.eie-drw-top-tools {
+    height: 58px; min-height: 58px;
+    border-bottom: 1px solid var(--border);
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 18px;
-    border: 1px solid var(--eie-border);
-    border-radius: 20px;
-    background: var(--eie-surface);
-    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
 }
-
-.eie-v2-page-head h1 {
-    margin: 4px 0 6px;
-    font-size: clamp(22px, 2vw, 30px);
-    letter-spacing: -0.04em;
-}
-
-.eie-v2-page-head p {
-    margin: 0;
-    color: var(--eie-muted);
-    font-size: 13px;
-}
-
-.eie-v2-head-actions {
+.eie-drw-hamburger {
+    position: absolute;
+    left: 10px; top: 11px;
+    width: 36px; height: 36px;
+    padding: 0; border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px; font-weight: 700;
+    cursor: pointer;
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    align-items: center; justify-content: center;
+    font-family: inherit;
 }
-
-.eie-v2-alert {
-    padding: 12px 14px;
-    border: 1px solid rgba(245, 158, 11, 0.28);
-    border-radius: 14px;
-    background: rgba(245, 158, 11, 0.08);
-    color: #92400e;
-    font-size: 13px;
+.eie-drw-menu {
+    padding: 10px 0 12px;
+    flex: 0 0 auto;
 }
-
-.eie-v2-day-tabs {
+.eie-drw-section-label {
+    display: block;
+    padding: 14px 16px 6px;
+    color: var(--secondary);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    opacity: .82;
+}
+.eie-drw-item {
     display: flex;
-    gap: 8px;
-    padding: 8px;
-    border: 1px solid var(--eie-border);
-    border-radius: 18px;
-    background: var(--eie-surface-2);
-    overflow-x: auto;
-}
-
-.eie-v2-day-tab {
-    min-width: 52px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    margin: 2px 10px;
+    padding: 9px 16px;
+    min-height: 40px;
     border: 1px solid transparent;
     border-radius: 12px;
     background: transparent;
-    color: var(--eie-muted);
-    font-weight: 800;
-    padding: 10px 14px;
-    cursor: pointer;
-    transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
-}
-
-.eie-v2-day-tab:hover,
-.eie-v2-day-tab.is-active {
-    background: var(--eie-surface);
-    border-color: var(--eie-border);
-    color: var(--eie-text);
-}
-
-.eie-v2-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
-    gap: 16px;
-    align-items: start;
-    width: 100%;
-}
-
-.eie-v2-main {
-    min-width: 0;
-}
-
-.eie-v2-board-wrap {
-    width: 100%;
-    overflow: auto;
-    border: 1px solid var(--eie-border);
-    border-radius: 22px;
-    background: var(--eie-surface);
-    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
-}
-
-.eie-v2-board {
-    position: relative;
-    display: grid;
-    grid-template-columns: 104px repeat(var(--eie-v2-teacher-count), minmax(220px, 1fr));
-    grid-template-rows: 54px repeat(var(--eie-v2-row-count), minmax(92px, auto));
-    gap: 0;
-    min-width: calc(104px + var(--eie-v2-teacher-count) * 220px);
-    isolation: isolate;
-}
-
-.eie-v2-corner,
-.eie-v2-teacher-header,
-.eie-v2-time-cell,
-.eie-v2-empty-slot {
-    border-right: 1px solid var(--eie-border);
-    border-bottom: 1px solid var(--eie-border);
-    background: var(--eie-surface);
-}
-
-.eie-v2-corner,
-.eie-v2-teacher-header {
-    position: sticky;
-    top: 0;
-    z-index: 4;
-    min-height: 54px;
-}
-
-.eie-v2-corner {
-    left: 0;
-    z-index: 6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 900;
-    color: var(--eie-muted);
-    background: var(--eie-surface-2);
-}
-
-.eie-v2-teacher-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3px;
-    padding: 9px 12px;
-    background: var(--eie-surface-2);
-}
-
-.eie-v2-teacher-header strong {
+    color: var(--text-soft);
     font-size: 14px;
-    letter-spacing: -0.02em;
-}
-
-.eie-v2-teacher-header small {
-    color: var(--eie-muted);
-    font-size: 11px;
-}
-
-.eie-v2-time-cell {
-    position: sticky;
-    left: 0;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 4px;
-    padding: 12px 10px;
-    background: var(--eie-surface-2);
-}
-
-.eie-v2-time-cell strong {
-    font-size: 14px;
-}
-
-.eie-v2-time-cell small {
-    color: var(--eie-muted);
-    font-size: 10px;
+    font-weight: 500;
     line-height: 1.25;
-}
-
-.eie-v2-empty-slot {
-    min-height: 92px;
-    background: color-mix(in srgb, var(--eie-surface) 86%, var(--eie-surface-2));
-}
-
-.eie-v2-session-card {
-    position: relative;
-    z-index: 2;
-    margin: 6px;
-    border: 1px solid var(--eie-border);
-    border-radius: 16px;
-    background: #f8fbff;
-    color: var(--eie-text);
+    font-family: inherit;
     text-align: left;
-    padding: 10px 11px;
+    text-decoration: none;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    min-height: 72px;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
-    transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease, background-color 0.14s ease;
+    transition: background .16s ease, color .16s ease, transform .16s ease;
 }
-
-.eie-v2-session-card.is-long-session {
-    background: #f7f5ff;
+.eie-drw-item:hover,
+.eie-drw-item:focus-visible {
+    background: rgba(15,23,42,0.04);
+    color: var(--text);
+    outline: none;
 }
-
-.eie-v2-session-card:hover,
-.eie-v2-session-card.is-selected {
-    transform: translateY(-1px);
-    border-color: rgba(15, 23, 42, 0.18);
-    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+.eie-drw-item.is-active,
+.eie-drw-item[aria-current="page"] {
+    background: var(--surface-2);
+    color: var(--text);
+    border-color: var(--border);
 }
-
-.eie-v2-session-topline {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
+.eie-drw-item:active {
+    transform: scale(0.99);
+    background: var(--surface-2);
 }
-
-.eie-v2-session-topline strong {
-    font-size: 14px;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
+.eie-drw-item.eie-drw-danger { color: var(--secondary); }
+.eie-drw-item.eie-drw-danger:hover {
+    color: var(--error);
+    background: rgba(239,68,68,0.07);
 }
-
-.eie-v2-session-time {
-    color: var(--eie-muted);
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.eie-v2-status-badge {
-    flex: 0 0 auto;
-    border: 1px solid var(--eie-border);
-    border-radius: 999px;
-    padding: 3px 7px;
-    background: var(--eie-surface);
-    color: var(--eie-muted);
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 900;
-}
-
-.eie-v2-status-badge.is-needs_review {
-    border-color: rgba(245, 158, 11, 0.30);
-    background: rgba(245, 158, 11, 0.10);
-    color: #92400e;
-}
-
-.eie-v2-status-badge.is-hidden,
-.eie-v2-status-badge.is-archived {
-    background: var(--eie-surface-2);
-}
-
-.eie-v2-student-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    align-items: flex-start;
-}
-
-.eie-v2-student-chip {
+.eie-drw-icon {
     display: inline-flex;
-    align-items: center;
-    min-height: 20px;
-    padding: 3px 6px;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    color: var(--eie-text);
-    font-size: 11px;
-    line-height: 1.1;
-    font-weight: 700;
+    align-items: center; justify-content: center;
+    width: 19px; height: 19px;
+    flex: 0 0 19px;
+    opacity: .72;
+    transition: opacity .16s ease;
 }
-
-.eie-v2-student-empty {
-    color: var(--eie-muted);
-    font-size: 11px;
-}
-
-.eie-v2-hover-card {
-    display: none;
-    position: absolute;
-    left: calc(100% + 8px);
-    top: 0;
-    width: min(280px, 70vw);
-    max-height: 340px;
-    overflow: auto;
-    padding: 12px;
-    border: 1px solid var(--eie-border);
-    border-radius: 16px;
-    background: var(--eie-surface);
-    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.16);
-    z-index: 20;
-}
-
-.eie-v2-hover-card b,
-.eie-v2-hover-card small {
+.eie-drw-item:hover .eie-drw-icon,
+.eie-drw-item.is-active .eie-drw-icon,
+.eie-drw-item[aria-current="page"] .eie-drw-icon { opacity: 1; }
+.eie-drw-icon svg {
     display: block;
-    margin-bottom: 8px;
+    width: 19px; height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.eie-drw-label {
+    flex: 1 1 auto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.eie-drw-spacer { flex: 1; }
+.eie-drw-footer {
+    padding: 6px 0 10px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
-.eie-v2-hover-card small {
-    color: var(--eie-muted);
-    font-size: 11px;
+/* ── Main content area (AP MATH <main>와 동일) ── */
+.eie-main {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px 14px calc(100px + env(safe-area-inset-bottom));
+    box-sizing: border-box;
 }
 
-.eie-v2-session-card:hover .eie-v2-hover-card {
-    display: block;
+/* owner-dashboard-shell: AP MATH #ap-admin-dashboard와 동일 폭/정렬 */
+.owner-dashboard-shell {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 16px 24px;
+    box-sizing: border-box;
 }
 
-.eie-v2-detail-panel {
-    position: sticky;
-    top: 16px;
-    border: 1px solid var(--eie-border);
-    border-radius: 22px;
-    background: var(--eie-surface);
-    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
+/* ── Desktop ≥ 901px (AP MATH @media (min-width:901px)와 동일) ── */
+@media (min-width: 901px) {
+    body { padding-left: 56px; transition: padding-left 0.24s ease; }
+    body.eie-drawer-expanded { padding-left: 260px; }
 
-.eie-v2-detail-panel.is-empty {
-    color: var(--eie-muted);
-}
+    .eie-header { display: none; }
+    .eie-desktop-topbar { display: flex; }
+    body.eie-drawer-expanded .eie-desktop-topbar { left: 260px; }
 
-.eie-v2-detail-head span {
-    color: var(--eie-muted);
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.eie-v2-detail-head h3 {
-    margin: 4px 0 4px;
-    font-size: 20px;
-    letter-spacing: -0.035em;
-}
-
-.eie-v2-detail-head p,
-.eie-v2-detail-section p {
-    margin: 0;
-    color: var(--eie-muted);
-    font-size: 13px;
-}
-
-.eie-v2-detail-section {
-    padding-top: 12px;
-    border-top: 1px solid var(--eie-border);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.eie-v2-source-list {
-    margin: 0;
-    padding-left: 18px;
-    color: var(--eie-muted);
-    font-size: 12px;
-}
-
-.eie-v2-empty-state {
-    border: 1px dashed var(--eie-border);
-    border-radius: 18px;
-    padding: 24px;
-    color: var(--eie-muted);
-    background: var(--eie-surface);
-    text-align: center;
-}
-
-.eie-v2-mobile-list {
-    display: none;
-}
-
-@media (max-width: 1100px) {
-    .eie-v2-layout {
-        grid-template-columns: 1fr;
-    }
-    .eie-v2-detail-panel {
-        position: static;
-    }
-}
-
-@media (max-width: 760px) {
-    .eie-v2-page-head {
-        flex-direction: column;
-    }
-    .eie-v2-board-wrap {
-        display: none;
-    }
-    .eie-v2-mobile-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .eie-v2-mobile-teacher {
-        border: 1px solid var(--eie-border);
-        border-radius: 16px;
-        background: var(--eie-surface);
+    #eie-drawer {
+        width: 56px;
+        transform: none !important;
+        border-radius: 0;
+        box-shadow: none;
         overflow: hidden;
     }
-    .eie-v2-mobile-teacher summary {
-        cursor: pointer;
-        padding: 13px 14px;
-        font-weight: 900;
-        display: flex;
-        justify-content: space-between;
+    #eie-drawer.eie-drw-expanded {
+        width: 260px;
+        box-shadow: 8px 0 30px rgba(0,0,0,0.08);
+        overflow-y: auto;
+        border-radius: 0 18px 18px 0;
     }
-    .eie-v2-mobile-card {
-        width: calc(100% - 16px);
-        margin: 0 8px 8px;
-        border: 1px solid var(--eie-border);
-        border-radius: 14px;
-        background: var(--eie-surface-2);
-        padding: 12px;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
+    .eie-drw-rail-toggle { display: flex; }
+    #eie-drawer.eie-drw-expanded .eie-drw-rail-toggle { display: none; }
+
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-top-tools,
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-menu,
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-footer,
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-spacer { display: none; }
+
+    #eie-drawer.eie-drw-expanded .eie-drw-top-tools { display: flex; }
+    #eie-drawer.eie-drw-expanded .eie-drw-menu { display: block; }
+    #eie-drawer.eie-drw-expanded .eie-drw-footer { display: block; }
+    #eie-drawer.eie-drw-expanded .eie-drw-spacer { display: block; flex: 1; }
+
+    #eie-drawer-overlay { display: none !important; }
+
+    .eie-main {
+        max-width: 1180px;
+        padding: 76px 36px 80px;
     }
-    .eie-v2-hover-card {
-        display: none !important;
-    }
+}
+
+@media (min-width: 1400px) {
+    .eie-main { max-width: 1240px; padding-left: 40px; padding-right: 40px; }
 }
