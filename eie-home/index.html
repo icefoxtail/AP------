@@ -51,7 +51,7 @@
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.7;
-    letter-spacing: -.02em; color: var(--fg-1); background: var(--bg);
+    letter-spacing: -.02em; color: var(--fg-1); background: #0f172a;
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4, p, ul { margin: 0; }
@@ -119,7 +119,7 @@
   .burger { display: inline-flex; background: none; border: 0; padding: 8px; color: var(--fg-1); }
   @media (min-width: 980px) { .burger { display: none; } }
 
-  .mnav { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s var(--ease), opacity .2s var(--ease); background: rgba(250, 247, 243, 0.98); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+  .mnav { position: fixed; top: 72px; left: 0; right: 0; z-index: 79; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s var(--ease), opacity .2s var(--ease); background: rgba(250, 247, 243, 0.98); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
   .mnav.open { max-height: 400px; opacity: 1; border-bottom: 1px solid var(--border); }
   .mnav a { display: block; padding: 15px 24px; font-size: 16px; font-weight: 500; color: var(--fg-2); border-bottom: 1px solid var(--border); }
   .mnav .mcta { padding: 18px 24px; }
@@ -610,34 +610,163 @@
     }
   }
 
+
+  /* ═══════════════════════════════════════════
+     ART DIRECTION LAYER — dark hero + philosophy
+     + dark footer + split inquiry + scroll reveal
+     ═══════════════════════════════════════════ */
+
+  /* NAV: transparent over dark hero */
+  .hdr { background: rgba(15,23,42,0) !important; border-bottom-color: transparent !important; transition: background .3s cubic-bezier(.16,1,.3,1), border-color .3s !important; }
+  .hdr.scrolled { background: rgba(255,255,255,.96) !important; border-bottom-color: var(--border) !important; }
+  /* 헤더 기본 = 다크 히어로 위 */
+  .hdr .navlink { color: rgba(255,255,255,.55) !important; }
+  .hdr .navlink:hover { color: #fff !important; background: rgba(255,255,255,.1) !important; }
+  .hdr .apmath-brand__text strong,
+  .hdr .brand__text strong { color: #fff !important; }
+  .hdr .apmath-brand__text em,
+  .hdr .brand__text em { color: rgba(255,255,255,.38) !important; }
+  .hdr .home-link,
+  .hdr .btn-secondary { background: rgba(255,255,255,.12) !important; color: #fff !important; border-color: rgba(255,255,255,.22) !important; }
+  .hdr .burger { color: #fff !important; }
+  .hdr .nav .divider { background: rgba(255,255,255,.18) !important; }
+  /* 스크롤 후 복원 */
+  .hdr.scrolled .navlink { color: var(--fg-2) !important; }
+  .hdr.scrolled .navlink:hover { color: var(--fg-1) !important; background: var(--bg-alt) !important; }
+  .hdr.scrolled .apmath-brand__text strong,
+  .hdr.scrolled .brand__text strong { color: var(--fg-1) !important; }
+  .hdr.scrolled .apmath-brand__text em,
+  .hdr.scrolled .brand__text em { color: var(--fg-3) !important; }
+  .hdr.scrolled .home-link,
+  .hdr.scrolled .btn-secondary { background: var(--white) !important; color: var(--fg-1) !important; border-color: var(--border-strong) !important; }
+  .hdr.scrolled .burger { color: var(--fg-1) !important; }
+  .hdr.scrolled .nav .divider { background: var(--border) !important; }
+
+  /* HERO: dark with aurora + grain */
+  .hero { background: #0f172a !important; position: relative !important; overflow: hidden !important; }
+  .hero::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 65% 85% at 5% 95%, rgba(183,20,27,.24) 0%, transparent 55%),
+                radial-gradient(ellipse 45% 55% at 90% 8%,  rgba(183,20,27,.07) 0%, transparent 52%),
+                radial-gradient(ellipse 50% 60% at 98% 85%, rgba(20,184,166,.12) 0%, transparent 50%);
+    pointer-events: none; z-index: 0; }
+  .hero::after { content: ''; position: absolute; inset: 0; opacity: .22;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero h1 { color: #fff !important; }
+  .hero .eyebrow { color: rgba(255,255,255,.38) !important; letter-spacing: .1em !important; font-size: 11px !important; font-weight: 800 !important; text-transform: uppercase !important; }
+  .hero .eyebrow::before { background: #b7141b !important; width: 6px !important; height: 6px !important; border-radius: 2px !important; }
+  .hero .lead { color: rgba(255,255,255,.5) !important; }
+  .hero .lead strong { color: rgba(255,255,255,.88) !important; }
+  .hero .btn-secondary { background: rgba(255,255,255,.1) !important; color: #fff !important; border-color: rgba(255,255,255,.22) !important; }
+  .hero .btn-secondary:hover { background: rgba(255,255,255,.18) !important; border-color: rgba(255,255,255,.38) !important; }
+  .hero-panel { background: rgba(255,255,255,.07) !important; border-color: rgba(255,255,255,.12) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; }
+  .hero-panel-title { color: rgba(255,255,255,.32) !important; }
+  .course-mini { background: rgba(255,255,255,.06) !important; border-color: rgba(255,255,255,.1) !important; }
+  .course-mini:hover { background: rgba(255,255,255,.1) !important; border-color: rgba(255,255,255,.2) !important; }
+  .course-mini b { color: rgba(255,255,255,.9) !important; }
+  .course-mini p { color: rgba(255,255,255,.42) !important; }
+  .hero-tag { background: rgba(255,255,255,.08) !important; border-color: rgba(255,255,255,.12) !important; }
+  .hero-tag b { color: rgba(255,255,255,.9) !important; }
+  .hero-tag .dot { background: rgba(255,255,255,.1) !important; color: rgba(255,255,255,.65) !important; }
+  .hero-visual { opacity: .65; }
+  .hero .cta-row .btn:not(.btn-secondary) { box-shadow: 0 6px 18px rgba(183,20,27,.32) !important; }
+
+  /* PHILOSOPHY section */
+  .philosophy-section { position: relative; overflow: hidden; background: #0c1526; padding: 104px 0 96px; text-align: center; }
+  .philosophy-section::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 96% 18%, rgba(183,20,27,.14) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 55% at 6%  82%, rgba(20,184,166,.1) 0%, transparent 52%);
+    pointer-events: none; }
+  .philosophy-section::after { content: ''; position: absolute; inset: 0; opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0v48' fill='none' stroke='%23fff' stroke-width='.5'/%3E%3C/svg%3E");
+    background-size: 48px 48px; pointer-events: none; }
+  .philosophy-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 28px; }
+  .philosophy-eyebrow { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 32px; }
+  .philosophy-eyebrow span { width: 6px; height: 6px; border-radius: 2px; display: inline-block; }
+  .philosophy-h { margin: 0; font-size: clamp(40px,6vw,76px); font-weight: 900; letter-spacing: -0.045em; line-height: 1.1; color: #fff; text-wrap: balance; }
+  .philosophy-h .grad { background: linear-gradient(90deg, #b7141b 0%, #b7141bcc 60%, #14b8a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .philosophy-rule { display: flex; gap: 6px; justify-content: center; margin: 40px auto; }
+  .philosophy-rule div { width: 40px; height: 2px; border-radius: 2px; }
+  .philosophy-body { margin: 0 auto; font-size: clamp(16px,2vw,19px); color: rgba(255,255,255,.42); line-height: 1.76; max-width: 560px; }
+  .philosophy-pills { display: flex; gap: 10px; justify-content: center; margin-top: 44px; flex-wrap: wrap; }
+  .philosophy-pill { padding: 9px 20px; border-radius: 99px; font-size: 13.5px; font-weight: 800; letter-spacing: -0.01em; }
+
+  /* FOOTER dark */
+  footer { background: #0c1220 !important; border-top-color: rgba(255,255,255,.06) !important; color: rgba(255,255,255,.45) !important; }
+  footer .ft { background: transparent !important; }
+  footer .ft p.tag { color: rgba(255,255,255,.32) !important; }
+  footer .ft h4 { color: rgba(255,255,255,.22) !important; }
+  footer .ft ul a { color: rgba(255,255,255,.48) !important; }
+  footer .ft ul a:hover { color: #fff !important; }
+  footer .ft-info { color: rgba(255,255,255,.25) !important; }
+  footer .ft-bottom { border-top-color: rgba(255,255,255,.08) !important; color: rgba(255,255,255,.2) !important; }
+  footer .apmath-brand__text strong, footer .brand__text strong { color: #fff !important; }
+  footer .apmath-brand__text em, footer .brand__text em { color: rgba(255,255,255,.32) !important; }
+  footer .ft-color-rule { display: flex; height: 1px; margin-bottom: 20px; }
+  footer .ft-color-rule div { flex: 1; }
+
+  /* INQUIRY: full-width dark panel (AP MATH style) */
+  .inquiry { background: none !important; padding: 0 !important; border-top: none !important; }
+  .inquiry .wrap { max-width: 100% !important; padding: 0 !important; }
+  .inquiry .inq-grid { display: block !important; background: #0f172a !important; position: relative !important; overflow: hidden !important; padding: clamp(56px,8vw,96px) clamp(24px,6vw,80px) !important; }
+  .inquiry .inq-grid::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 80% at 0% 100%, rgba(183,20,27,.22) 0%, transparent 55%), radial-gradient(ellipse 40% 55% at 100% 10%, rgba(20,184,166,.1) 0%, transparent 50%); pointer-events: none; }
+  .inquiry .inq-grid > aside { display: none !important; }
+  .inquiry-fullw-head { position: relative; z-index: 1; max-width: 680px; margin-bottom: clamp(40px,5vw,64px); }
+  .inquiry-fullw-head .eyebrow { color: rgba(255,255,255,.32) !important; }
+  .inquiry-fullw-head .eyebrow::before { background: #b7141b !important; }
+  .inquiry-fullw-head h2 { color: #fff !important; font-size: clamp(26px,3.6vw,42px) !important; letter-spacing: -0.04em !important; word-break: keep-all !important; margin-top: 12px; }
+  .inquiry-fullw-head p { color: rgba(255,255,255,.42) !important; margin-top: 16px; }
+  .inquiry-info-strip { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.08); border-radius: var(--r-lg); overflow: hidden; }
+  .inquiry-info-strip .inq-cell { background: rgba(255,255,255,.04); padding: 28px 32px; display: flex; flex-direction: column; gap: 8px; transition: background .2s; }
+  .inquiry-info-strip .inq-cell:hover { background: rgba(255,255,255,.08); }
+  .inquiry-info-strip .inq-cell .k { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+  .inquiry-info-strip .inq-cell .v { font-size: clamp(14px,1.6vw,17px); font-weight: 700; color: rgba(255,255,255,.88); line-height: 1.45; word-break: keep-all; }
+  .inquiry-info-strip .inq-cell .v.addr { font-size: 14px; word-break: keep-all; }
+  .inquiry-info-strip .inq-cell .sub { font-size: 13px; color: rgba(255,255,255,.35); margin-top: 2px; }
+  .inquiry-info-strip .inq-cell a.linkline { color: #fca5a5 !important; font-size: 13px; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; font-weight: 700; }
+  .inquiry-info-strip .inq-cell a.linkline:hover { text-decoration: underline; }
+  @media (max-width: 768px) {
+    .inquiry .inq-grid { padding: 48px 22px !important; }
+    .inquiry-info-strip { grid-template-columns: 1fr !important; }
+  }
+
+  /* SCROLL REVEAL */
+  .sr-el { opacity: 0; transform: translateY(16px); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+  .sr-el.visible { opacity: 1 !important; transform: none !important; }
+  .sr-el[data-d="1"] { transition-delay: .08s; }
+  .sr-el[data-d="2"] { transition-delay: .16s; }
+  .sr-el[data-d="3"] { transition-delay: .24s; }
+  @media (prefers-reduced-motion: reduce) { .sr-el { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
 </style>
 </head>
 <body>
 <!-- SVG Sprite -->
 <svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="i-arrow-right" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></g></symbol>
-<symbol id="i-arrow-down" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="m5 12 7 7 7-7"></path></g></symbol>
-<symbol id="i-arrow-up-right" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></g></symbol>
-<symbol id="i-phone" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z"></path></g></symbol>
-<symbol id="i-map-pin" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path><circle cx="12" cy="10" r="3"></circle></g></symbol>
-<symbol id="i-check" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><path d="M20 6 9 17l-5-5"></path></g></symbol>
-<symbol id="i-plus" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="M5 12h14"></path></g></symbol>
-<symbol id="i-menu" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></g></symbol>
-<symbol id="i-close" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></g></symbol>
-<symbol id="i-message" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></g></symbol>
-<symbol id="i-mic" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect height="12" rx="3" width="6" x="9" y="2"></rect><path d="M5 10a7 7 0 0 0 14 0M12 17v5"></path></g></symbol>
-<symbol id="i-pencil" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></g></symbol>
-<symbol id="i-layers" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m12 2 9 5-9 5-9-5 9-5Z"></path><path d="m3 12 9 5 9-5M3 17l9 5 9-5"></path></g></symbol>
-<symbol id="i-users" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></g></symbol>
-<symbol id="i-edit" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"></path></g></symbol>
-<symbol id="i-globe" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"></path></g></symbol>
-<symbol id="i-info" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></g></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></g></symbol>
+<symbol id="i-arrow-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="m5 12 7 7 7-7"></path></g></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></g></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z"></path></g></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path><circle cx="12" cy="10" r="3"></circle></g></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><path d="M20 6 9 17l-5-5"></path></g></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 5v14"></path><path d="M5 12h14"></path></g></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></g></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></g></symbol>
+<symbol id="i-message" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></g></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect height="12" rx="3" width="6" x="9" y="2"></rect><path d="M5 10a7 7 0 0 0 14 0M12 17v5"></path></g></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></g></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m12 2 9 5-9 5-9-5 9-5Z"></path><path d="m3 12 9 5 9-5M3 17l9 5 9-5"></path></g></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></g></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"></path></g></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"></path></g></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></g></symbol>
 </svg>
 <!-- HEADER -->
 <header class="hdr" id="hdr">
 <div class="wrap hdr-in">
 <a aria-label="EIE 영어 홈" class="brand" href="#top">
-<svg aria-hidden="true" class="brand__mark" focusable="false" height="40" viewbox="0 0 48 48" width="40">
+<svg aria-hidden="true" class="brand__mark" focusable="false" height="40" viewBox="0 0 48 48" width="40">
 <rect fill="#cbd5e1" height="16" rx="3.5" width="11" x="4" y="26"></rect>
 <rect fill="#b7141b" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
 <rect fill="#e2e8f0" height="36" rx="3.5" width="11" x="33" y="6"></rect>
@@ -663,6 +792,7 @@
 </button>
 </div>
 </div>
+</header>
 <div class="mnav" id="mnav">
 <a href="#direction">교육 방향</a>
 <a href="#eie-system">표현영어</a>
@@ -672,10 +802,9 @@
 <a href="../">왕지교육 홈</a>
 
 </div>
-</header>
-<main id="top">
+<main id="top" style="background: var(--bg);">
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero--dark">
 <div class="wrap hero-grid">
 <div>
 <span class="eyebrow">Express in English</span>
@@ -685,7 +814,7 @@
 </div>
 <aside aria-label="EIE 표현영어 키워드" class="hero-panel">
 <div aria-hidden="true" class="hero-visual">
-<svg fill="none" height="150" role="presentation" viewbox="0 0 224 150" width="224">
+<svg fill="none" height="150" role="presentation" viewBox="0 0 224 150" width="224">
 <rect fill="#ffffff" height="106" rx="18" stroke="#fadedc" width="196" x="14" y="22"></rect>
 <path d="M36 44h92a10 10 0 0 1 10 10v18a10 10 0 0 1-10 10H70l-16 12V82h-18a10 10 0 0 1-10-10V54a10 10 0 0 1 10-10Z" fill="#b7141b"></path>
 <circle cx="62" cy="63" fill="#ffffff" r="3.4"></circle>
@@ -717,6 +846,29 @@
 </div>
 </section>
 <!-- DIRECTION -->
+
+<!-- Philosophy Section -->
+<section class="philosophy-section" aria-label="교육 철학">
+  <div class="philosophy-inner">
+    <div class="philosophy-eyebrow" aria-hidden="true">
+      <span style="background:#2563eb;"></span>
+      <span style="background:#b7141b;"></span>
+      <span style="background:#14b8a6;"></span>
+    </div>
+    <h2 class="philosophy-h sr-el">말보다<br><em class="grad">표현하는 힘을 기릅니다.</em></h2>
+    <div class="philosophy-rule" aria-hidden="true">
+      <div style="background:#2563eb;"></div>
+      <div style="background:#b7141b;"></div>
+      <div style="background:#14b8a6;"></div>
+    </div>
+    <p class="philosophy-body sr-el" data-d="1">EIE 영어가 지향하는 것은 점수가 아닙니다. 습득·체화·활용의 흐름 속에서 아이가 영어를 자기 것으로 만들고, 말과 글로 표현하는 힘을 기릅니다.</p>
+    <div class="philosophy-pills">
+      <div class="philosophy-pill" style="border:1.5px solid rgba(183,20,27,.35);background:rgba(183,20,27,.12);color:#fca5a5;">표현 중심</div>
+      <div class="philosophy-pill" style="border:1.5px solid rgba(37,99,235,.35);background:rgba(37,99,235,.12);color:#93c5fd;">4 Skills</div>
+      <div class="philosophy-pill" style="border:1.5px solid rgba(20,184,166,.35);background:rgba(20,184,166,.12);color:#5eead4;">체화 학습</div>
+    </div>
+  </div>
+</section>
 <section class="sec direction" id="direction">
 <div class="wrap">
 <div class="sec-head">
@@ -852,31 +1004,32 @@
 <section class="sec inquiry" id="inquiry">
 <div class="wrap inq-grid">
 <div>
-<div class="sec-head" style="margin-bottom:0">
-<span class="eyebrow">상담 문의</span>
-<h2>우리 아이에게 맞는<br/>영어 수업이 궁금하다면</h2>
-<p>학년, 현재 영어 수준, 학습 고민을 알려주시면 EIE 영어 수업 방향에 맞춰 상담을 도와드립니다.</p>
+<div class="inquiry-fullw-head">
+  <span class="eyebrow">상담 문의</span>
+  <h2>우리 아이에게 맞는<br/>영어 수업이 궁금하다면</h2>
+  <p>학년, 현재 영어 수준, 학습 고민을 알려주시면 EIE 영어 수업 방향에 맞춰 상담을 도와드립니다.</p>
 </div>
-<div class="info-list">
-<div class="info-row"><span class="ico"><svg class="ic" height="22" width="22"><use href="#i-phone"></use></svg></span><div><div class="k">EIE 영어 상담</div><div class="v tel">061-724-8886</div></div></div>
-<div class="info-row"><span class="ico"><svg class="ic" height="22" width="22"><use href="#i-map-pin"></use></svg></span><div><div class="k">위치</div><div class="v">전남 순천시 왕지5길 9-8, 2층</div></div></div>
-<div class="info-row"><span class="ico"><svg class="ic" height="22" width="22"><use href="#i-globe"></use></svg></span><div><div class="k">블로그</div><div class="v">EIE 수업 소식은 공식 블로그에서 확인하실 수 있습니다.</div></div></div>
-<div aria-label="왕지교육 캠퍼스 위치 안내" class="map-link-card">
-<a aria-label="네이버 지도에서 왕지교육 캠퍼스 보기" class="map-link-visual" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank">
-<span class="map-pin"><svg class="ic" height="24" width="24"><use href="#i-map-pin"></use></svg></span>
-</a>
-<div class="map-link-body">
-<p class="map-title">왕지교육 캠퍼스</p>
-<p class="map-address">전남 순천시 왕지5길 9-8, 2층</p>
+<div class="inquiry-info-strip">
+  <div class="inq-cell">
+    <span class="k">EIE 영어 상담</span>
+    <span class="v">061-724-8886</span>
+    <span class="sub">전화 상담 문의</span>
+  </div>
+  <div class="inq-cell">
+    <span class="k">위치</span>
+    <span class="v addr">전남 순천시 왕지5길 9-8, 2층</span>
+    <span class="sub">왕지동 · 순천 조례 캠퍼스</span>
+    <a class="linkline" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank">네이버 지도 →</a>
+  </div>
+  <div class="inq-cell">
+    <span class="k">블로그</span>
+    <span class="v">EIE 공식 블로그</span>
+    <span class="sub">수업 소식과 공지사항</span>
+    <a class="linkline" href="https://blog.naver.com/wha6615" rel="noopener" target="_blank">블로그 보기 →</a>
+  </div>
 </div>
-
-</div> </div>
 </div>
-<aside class="inq-card">
-<h3>상담 문의</h3>
-<p>전화로 편하게 문의해 주세요. 아이의 학년과 현재 영어 수준을 함께 확인하고, 맞는 수업 방향을 안내해 드립니다.</p>
-
-</aside>
+<aside></aside>
 </div>
 </section>
 <!-- FAQ -->
@@ -917,7 +1070,7 @@
 <div class="ft-grid">
 <div>
 <a aria-label="EIE 영어 홈" class="brand" href="#top">
-<svg aria-hidden="true" class="brand__mark" focusable="false" height="34" viewbox="0 0 48 48" width="34">
+<svg aria-hidden="true" class="brand__mark" focusable="false" height="34" viewBox="0 0 48 48" width="34">
 <rect fill="#cbd5e1" height="16" rx="3.5" width="11" x="4" y="26"></rect>
 <rect fill="#b7141b" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
 <rect fill="#e2e8f0" height="36" rx="3.5" width="11" x="33" y="6"></rect>
@@ -944,6 +1097,7 @@
 </ul>
 </div>
 </div>
+<div class="ft-color-rule"><div style="background:rgba(37,99,235,.35)"></div><div style="background:rgba(183,20,27,.35)"></div><div style="background:rgba(20,184,166,.35)"></div></div>
 <div class="ft-bottom">
 <span>© 2026 Wangji Edu. 왕지교육 · 순천 조례 캠퍼스</span>
 <span>전남 순천시 왕지5길 9-8 (왕지동) 2층 · TEL 061-724-8886</span>
@@ -1065,6 +1219,267 @@
     }
   })();
 
+</script>
+
+<script>
+(function(){
+  // Scroll reveal
+  var srEls = document.querySelectorAll('.sr-el');
+  var srObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); srObs.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
+  srEls.forEach(function(el){ srObs.observe(el); });
+
+  // Add sr-el to section heads
+  document.querySelectorAll('.sec-head h2, .sec-head p').forEach(function(el, i){
+    el.classList.add('sr-el');
+    el.dataset.d = i % 2 === 1 ? '1' : '';
+    srObs.observe(el);
+  });
+
+  // Mascot hover pulse on hero logo bars
+  var brandMark = document.querySelector('.apmath-brand__mark, .brand__mark');
+  if (brandMark) {
+    brandMark.style.transition = 'transform .3s cubic-bezier(.16,1,.3,1), filter .3s';
+    brandMark.style.cursor = 'pointer';
+    brandMark.addEventListener('mouseenter', function(){
+      this.style.transform = 'scale(1.12) translateY(-2px)';
+      this.style.filter = 'drop-shadow(0 8px 16px rgba(0,0,0,.25))';
+    });
+    brandMark.addEventListener('mouseleave', function(){
+      this.style.transform = '';
+      this.style.filter = 'drop-shadow(0 2px 4px rgba(15,23,42,.07))';
+    });
+    // Pulse animation every 6s
+    var bars = brandMark.querySelectorAll('rect');
+    if (bars.length) {
+      setInterval(function(){
+        bars.forEach(function(bar, i){
+          setTimeout(function(){
+            var origY = bar.getAttribute('y');
+            var origH = bar.getAttribute('height');
+            bar.style.transition = 'transform .4s cubic-bezier(.16,1,.3,1)';
+            bar.style.transform = 'translateY(-5px)';
+            setTimeout(function(){ bar.style.transform = ''; }, 400);
+          }, i * 120);
+        });
+      }, 6000);
+    }
+  }
+})();
+</script>
+
+<style id="disney-layer">
+/* ── FLOAT animation for hero panel ────────── */
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0px) rotate(-.4deg); }
+  50%      { transform: translateY(-10px) rotate(.4deg); }
+}
+@keyframes auroraShift {
+  0%,100% { opacity: .85; transform: scale(1) translate(0,0); }
+  50%      { opacity: 1;   transform: scale(1.06) translate(-1%,1%); }
+}
+@keyframes pulseCta {
+  0%   { box-shadow: 0 0 0 0 rgba(var(--cta-rgb),.45); }
+  70%  { box-shadow: 0 0 0 12px rgba(var(--cta-rgb),0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--cta-rgb),0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes barFloat {
+  0%,100% { transform: translateY(0) scaleY(1); }
+  33%      { transform: translateY(-6px) scaleY(1.04); }
+  66%      { transform: translateY(3px) scaleY(.98); }
+}
+
+/* Hero panel float */
+.hero-panel, .hero aside { animation: heroFloat 5s ease-in-out infinite; }
+
+/* Aurora animation */
+.hero::before { animation: auroraShift 8s ease-in-out infinite; }
+
+/* CTA pulse — AP=blue, EIE=red, CMath=teal */
+[data-brand-color="ap"]   { --cta-rgb: 37,99,235; }
+[data-brand-color="eie"]  { --cta-rgb: 183,20,27; }
+[data-brand-color="cm"]   { --cta-rgb: 20,184,166; }
+
+.btn-blue, .btn-red, .btn-teal { animation: pulseCta 2.8s ease-out infinite; }
+.btn-blue  { --cta-rgb: 37,99,235; }
+.btn-red   { --cta-rgb: 183,20,27; }
+.btn-teal  { --cta-rgb: 20,184,166; }
+
+/* Stagger for section cards */
+.course-grid   > *:nth-child(1), .strength-grid > *:nth-child(1),
+.method-grid   > *:nth-child(1), .grid-3        > *:nth-child(1),
+.grid-4        > *:nth-child(1) { --sd: 0s; }
+.course-grid   > *:nth-child(2), .strength-grid > *:nth-child(2),
+.method-grid   > *:nth-child(2), .grid-3        > *:nth-child(2),
+.grid-4        > *:nth-child(2) { --sd: .07s; }
+.course-grid   > *:nth-child(3), .strength-grid > *:nth-child(3),
+.method-grid   > *:nth-child(3), .grid-3        > *:nth-child(3),
+.grid-4        > *:nth-child(3) { --sd: .14s; }
+.course-grid   > *:nth-child(4), .strength-grid > *:nth-child(4),
+.method-grid   > *:nth-child(4), .grid-4        > *:nth-child(4) { --sd: .21s; }
+
+.sr-el { transition-delay: var(--sd, 0s) !important; }
+
+/* Gradient shimmer on philosophy headline */
+.philosophy-h .grad {
+  background-size: 200% auto !important;
+  animation: shimmer 4s linear infinite !important;
+}
+
+/* Card 3D tilt — JS adds perspective via style, this handles the transition */
+.card, .course-card, .dir-card, .step-card, .strength-card, .method-card,
+.feat-card, .flow-card, .point-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Mascot bar stagger float */
+.hero-panel rect, .hero aside rect {
+  animation: barFloat 3.5s ease-in-out infinite;
+}
+.hero-panel rect:nth-child(1), .hero aside rect:nth-child(1) { animation-delay: 0s; }
+.hero-panel rect:nth-child(2), .hero aside rect:nth-child(2) { animation-delay: .4s; }
+.hero-panel rect:nth-child(3), .hero aside rect:nth-child(3) { animation-delay: .8s; }
+
+/* Hover lift upgrade */
+.card:hover, .course-card:hover, .dir-card:hover, .step-card:hover,
+.strength-card:hover, .method-card:hover, .flow-card:hover, .point-card:hover {
+  transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s cubic-bezier(.16,1,.3,1) !important;
+}
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  *, .hero-panel, .hero-panel rect, .hero::before,
+  .btn-blue, .btn-red, .btn-teal, .philosophy-h .grad {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+
+<script id="disney-js">
+(function() {
+  /* ── 1. 3D card tilt on mousemove ─────────────────── */
+  function initTilt() {
+    const CARDS = '.card, .course-card, .dir-card, .step-card, .strength-card, .method-card, .feat-card, .flow-card, .point-card, .philosophy-pill';
+    document.querySelectorAll(CARDS).forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform = 'perspective(700px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 5) + 'deg) translateZ(4px)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* ── 2. Aurora parallax on scroll ─────────────────── */
+  function initAuroraParallax() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    window.addEventListener('scroll', function() {
+      var pct = Math.min(window.scrollY / (hero.offsetHeight || 600), 1);
+      hero.style.setProperty('--aurora-y', (pct * 20) + 'px');
+    }, { passive: true });
+  }
+
+  /* ── 3. Scroll reveal (backup if not already wired) ── */
+  function initScrollReveal() {
+    var els = document.querySelectorAll('.sr-el:not(.visible)');
+    if (!els.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  }
+
+  /* ── 4. Gradient headline on hero h1 ──────────────── */
+  function initGradientH1() {
+    var h1 = document.querySelector('.hero h1');
+    if (!h1) return;
+    var text = h1.innerHTML;
+    // find last word/phrase before period, add gradient span
+    h1.innerHTML = text.replace(/([가-힣a-zA-Z·\s]+)(<br\s*\/?>|.)/g, function(m, p1, p2) {
+      return '<span style="background:linear-gradient(90deg,var(--grad-a,#93c5fd),var(--grad-b,#5eead4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">' + p1 + '</span>' + p2;
+    });
+  }
+
+  /* ── 5. Magnetic CTA effect ───────────────────────── */
+  function initMagnetic() {
+    document.querySelectorAll('.btn-blue, .btn-red, .btn-teal').forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width  / 2) * 0.18;
+        var y = (e.clientY - r.top  - r.height / 2) * 0.18;
+        btn.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(1.03)';
+      });
+      btn.addEventListener('mouseleave', function() { btn.style.transform = ''; });
+    });
+  }
+
+  /* ── 6. Hero h1 stagger word entrance ─────────────── */
+  function initH1Stagger() {
+    var h1 = document.querySelector('.hero h1');
+    if (!h1) return;
+    h1.style.opacity = '0';
+    h1.style.transform = 'translateY(20px)';
+    setTimeout(function() {
+      h1.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)';
+      h1.style.opacity = '1';
+      h1.style.transform = 'none';
+    }, 200);
+    // eyebrow
+    var ey = document.querySelector('.hero .eyebrow');
+    if (ey) {
+      ey.style.opacity = '0'; ey.style.transform = 'translateY(10px)';
+      setTimeout(function() {
+        ey.style.transition = 'opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1)';
+        ey.style.opacity = '1'; ey.style.transform = 'none';
+      }, 80);
+    }
+    // lead text
+    var lead = document.querySelector('.hero .lead');
+    if (lead) {
+      lead.style.opacity = '0'; lead.style.transform = 'translateY(14px)';
+      setTimeout(function() {
+        lead.style.transition = 'opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1)';
+        lead.style.opacity = '1'; lead.style.transform = 'none';
+      }, 380);
+    }
+    // CTA
+    var cta = document.querySelector('.hero .cta-row');
+    if (cta) {
+      cta.style.opacity = '0'; cta.style.transform = 'translateY(12px)';
+      setTimeout(function() {
+        cta.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)';
+        cta.style.opacity = '1'; cta.style.transform = 'none';
+      }, 520);
+    }
+  }
+
+  /* ── init ─────────────────────────────────────────── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initTilt(); initAuroraParallax(); initScrollReveal();
+      initMagnetic(); initH1Stagger();
+    });
+  } else {
+    initTilt(); initAuroraParallax(); initScrollReveal();
+    initMagnetic(); initH1Stagger();
+  }
+})();
 </script>
 </body>
 </html>
