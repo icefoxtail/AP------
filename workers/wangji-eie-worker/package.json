@@ -1,0 +1,13 @@
+﻿{
+  "name": "wangji-eie-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check index.js && node --check routes/eie.js && node --check helpers/response.js",
+    "deploy": "wrangler deploy --config ./wrangler.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
