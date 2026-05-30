@@ -98,6 +98,9 @@
         if (assigned.length) {
             return assigned.map((student, index) => ({
                 key: normalizeKey(student?.assignment_id || student?.student_id || student?.pin || student?.pin_code || student?.student_pin || student?.id || ''),
+                assignment_id: normalizeKey(student?.assignment_id || ''),
+                student_id: normalizeKey(student?.student_id || student?.id || ''),
+                pin: normalizeKey(student?.pin || student?.pin_code || student?.student_pin || ''),
                 name: normalizeStudentName(student?.name || student?.display_name || student?.student_name_raw || ''),
                 grade: normalizeKey(student?.grade_raw || student?.grade || ''),
                 status: normalizeKey(student?.status || student?.match_status || '')
@@ -113,10 +116,13 @@
 
         return source.map((item, index) => {
             if (typeof item === 'string') {
-                return { key: String(index), name: normalizeStudentName(item), grade: '', status: 'needs_review' };
+                return { key: String(index), assignment_id: '', student_id: '', pin: '', name: normalizeStudentName(item), grade: '', status: 'needs_review' };
             }
             return {
-                key: normalizeKey(item?.candidate_key || item?.student_id || item?.pin || item?.pin_code || item?.student_pin || item?.id || ''),
+                key: normalizeKey(item?.candidate_key || item?.assignment_id || item?.student_id || item?.pin || item?.pin_code || item?.student_pin || item?.id || ''),
+                assignment_id: normalizeKey(item?.assignment_id || ''),
+                student_id: normalizeKey(item?.student_id || item?.id || ''),
+                pin: normalizeKey(item?.pin || item?.pin_code || item?.student_pin || ''),
                 name: normalizeStudentName(item?.name || item?.student_name_raw || item?.studentName || ''),
                 grade: normalizeKey(item?.grade_raw || item?.grade || ''),
                 status: normalizeKey(item?.status || item?.match_status || '')
@@ -344,12 +350,32 @@
         return STATUS_LABELS[normalizeStatus(status)] || '활성';
     }
 
-    function renderStudentNames(students) {
+    function studentDetailId(student) {
+        return normalizeKey(student?.student_id || student?.id || '');
+    }
+
+    function studentSearchName(student) {
+        return normalizeStudentName(student?.name || '');
+    }
+
+    function renderStudentNames(students, options) {
         const list = Array.isArray(students) ? students : [];
+        const shouldLink = !!options?.linkStudents;
         if (!list.length) return '<div class="eie-v2-student-empty">학생 없음</div>';
         return `
             <div class="eie-v2-student-list" aria-label="학생 명단">
-                ${list.map(student => `<span class="eie-v2-student-chip">${esc(student.name)}</span>`).join('')}
+                ${list.map(student => {
+                    const id = studentDetailId(student);
+                    const name = studentSearchName(student);
+                    if (shouldLink && (id || name)) {
+                        return `<button type="button"
+                            class="eie-v2-student-chip is-clickable"
+                            ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
+                            ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
+                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(name || student.name)}</button>`;
+                    }
+                    return `<span class="eie-v2-student-chip">${esc(student.name)}</span>`;
+                }).join('')}
             </div>
         `;
     }
@@ -435,16 +461,22 @@
         }
         const time = [session.start_time, session.end_time].filter(Boolean).join('~') || '시간 미정';
         const rawRows = session.source_rows || [];
+        const firstCellId = normalizeKey(session.source_cell_ids?.[0] || rawRows?.[0]?.id || '');
         return `
             <aside class="eie-v2-detail-panel" aria-label="${esc(session.class_name)} 상세">
                 <div class="eie-v2-detail-head">
                     <span>${esc(session.day)}요일 · ${esc(session.teacher_name)}</span>
                     <h3>${esc(session.class_name)}</h3>
                     <p>${esc(time)}</p>
+                    ${firstCellId ? `
+                        <div class="eie-v2-detail-actions">
+                            <button type="button" class="eie-secondary-button" data-eie-v2-open-classroom="${esc(firstCellId)}" aria-label="클래스룸에서 이 수업 보기">클래스룸</button>
+                        </div>
+                    ` : ''}
                 </div>
                 <div class="eie-v2-detail-section">
                     <strong>학생 ${session.student_count.toLocaleString('ko-KR')}명</strong>
-                    ${renderStudentNames(session.students)}
+                    ${renderStudentNames(session.students, { linkStudents: true })}
                 </div>
                 ${session.memo ? `
                     <div class="eie-v2-detail-section">
@@ -460,7 +492,13 @@
                     <strong>원본 데이터</strong>
                     <p>${rawRows.length.toLocaleString('ko-KR')}개 row${session.is_merged ? ' 병합' : ''}</p>
                     <ul class="eie-v2-source-list">
-                        ${rawRows.map(row => `<li>#${esc(row.id)} · ${esc(row.start_time || '')}~${esc(row.end_time || '')}</li>`).join('')}
+                        ${rawRows.map(row => {
+                            const rowId = normalizeKey(row?.id || row?.cell_id || '');
+                            return `<li>
+                                <span>#${esc(rowId || '-')} · ${esc(row.start_time || '')}~${esc(row.end_time || '')}</span>
+                                ${rowId ? `<button type="button" class="eie-v2-source-link" data-eie-v2-open-classroom="${esc(rowId)}" aria-label="원본 수업칸 클래스룸 열기">클래스룸</button>` : ''}
+                            </li>`;
+                        }).join('')}
                     </ul>
                 </div>
             </aside>
@@ -564,6 +602,31 @@
                 event.preventDefault();
                 viewState.selectedSessionId = sessionButton.getAttribute('data-eie-v2-session') || '';
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const classroomButton = event.target.closest?.('[data-eie-v2-open-classroom]');
+            if (classroomButton) {
+                event.preventDefault();
+                const cellId = classroomButton.getAttribute('data-eie-v2-open-classroom') || '';
+                if (cellId && window.EieClassroomView?.openDetail) {
+                    window.EieClassroomView.openDetail(cellId);
+                } else if (window.EieRouter?.open) {
+                    window.EieRouter.open('classroom');
+                }
+                return;
+            }
+            const studentButton = event.target.closest?.('[data-eie-v2-student-id],[data-eie-v2-student-name]');
+            if (studentButton) {
+                event.preventDefault();
+                const studentId = studentButton.getAttribute('data-eie-v2-student-id') || '';
+                const studentName = studentButton.getAttribute('data-eie-v2-student-name') || '';
+                if (studentId && window.EieStudentsView?.openDetail) {
+                    window.EieStudentsView.openDetail(studentId);
+                } else if (studentName && window.EieStudentsView?.setQuery) {
+                    window.EieStudentsView.setQuery(studentName);
+                } else if (window.EieRouter?.open) {
+                    window.EieRouter.open('students');
+                }
                 return;
             }
             const refreshButton = event.target.closest?.('[data-eie-v2-refresh]');

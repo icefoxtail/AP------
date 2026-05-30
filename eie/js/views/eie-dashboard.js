@@ -169,6 +169,7 @@
                 </div>
                 <div class="eie-admin-status-grid">
                     ${renderStatusCard(`${cellCount.toLocaleString('ko-KR')}개 수업`, '시간표', '수업 셀과 배정 상태를 확인합니다.', 'timetable')}
+                    ${renderStatusCard('확인용', '새 시간표', '요일·선생님별 보기로 확인합니다.', 'timetable-v2')}
                     ${renderStatusCard(`${studentCount.toLocaleString('ko-KR')}명`, '학생관리', '학생 후보와 연락처는 상세에서 확인합니다.', 'students')}
                     ${renderStatusCard(`${assignedCount.toLocaleString('ko-KR')}개 배정`, '클래스룸', '수업 운영 화면으로 이동합니다.', 'classroom')}
                 </div>
