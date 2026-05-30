@@ -17,6 +17,9 @@ function renderTeacherDashboardView() {
         document.body.classList.add('ap-teacher-dashboard-mode');
         apTeacherRemoveSystemGate();
     }
+    if (typeof renderAppDrawer === 'function') {
+        renderAppDrawer();
+    }
 
     const data = computeDashboardData();
     const root = document.getElementById('app-root');

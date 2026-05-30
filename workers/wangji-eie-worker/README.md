@@ -1,46 +1,50 @@
-# wangji-eie-os — EIE 전용 최소 Worker
+# wangji-eie-os minimal EIE Worker
 
-이 Worker는 EIE 전용입니다. APMS Worker가 아닙니다.
+This Worker is intentionally EIE-only. It does not import APMS routes.
 
-## 기본 정보
+## Basic Info
 
-| 항목 | 값 |
+| Item | Value |
 |---|---|
-| Worker 이름 | wangji-eie-os |
-| 엔드포인트 | https://wangji-eie-os.js-pdf.workers.dev |
+| Worker name | wangji-eie-os |
+| Domain | https://wangji-eie-os.js-pdf.workers.dev |
 | D1 DB | wangji-eie-os |
 | D1 DB ID | 2066e8ce-a02e-4f35-9c2d-d60891afff63 |
-| 처리 라우트 | /api/eie, /api/eie/* |
+| Routes | /api/auth/login, /api/auth/logout, /api/eie, /api/eie/* |
 
-## Worker 구조
+## Worker Structure
 
+```text
+index.js            EIE-only fetch handler, auth session issue/revoke
+routes/eie.js       EIE timetable/student API
+helpers/response.js jsonResponse, errorResponse helpers
+wrangler.jsonc      EIE deployment config
 ```
-index.js          — EIE 전용 fetch handler (APMS 라우트 없음)
-routes/eie.js     — EIE 학생/시간표 CRUD API
-helpers/response.js — jsonResponse, errorResponse 헬퍼
-wrangler.jsonc    — EIE 전용 배포 설정
-wrangler.toml     — EIE 전용 배포 설정 (백업)
-```
 
-## 처리 경로
+## Handled Paths
 
-- `GET/POST/PATCH/DELETE /api/eie/*` — EIE 학생·시간표 관리
-- `GET /` 또는 `GET /health` — 상태 확인
-- 그 외 — 404 JSON 반환
+- `POST /api/auth/login`: issues an EIE session token for `admin` or `owner`
+- `POST /api/auth/logout`: revokes the bearer session token when present
+- `GET/POST/PATCH/DELETE /api/eie/*`: EIE management APIs
+- `GET /` or `GET /health`: health response
+- All other paths return 404 JSON
 
-## 배포 (사용자 확인 필수)
+## Deploy
+
+Run only after user approval.
 
 ```powershell
-cd C:\Users\USER\Desktop\wangji-eie-worker
+cd C:\Users\USER\Desktop\AP------\workers\wangji-eie-worker
 node --check .\index.js
 node --check .\routes\eie.js
-npx wrangler deploy
+node --check .\helpers\response.js
+npx wrangler deploy --config .\wrangler.jsonc
 ```
 
-## APMS Worker와 혼동 금지
+## APMS Separation
 
 | | EIE Worker | APMS Worker |
 |---|---|---|
-| Worker 이름 | wangji-eie-os | ap-math-os-v2612 |
-| 배포 루트 | C:\Users\USER\Desktop\wangji-eie-worker | AP------\apmath\worker-backup\worker |
+| Worker name | wangji-eie-os | ap-math-os-v2612 |
+| Deploy root | AP------\workers\wangji-eie-worker | AP------\apmath\worker-backup\worker |
 | D1 | wangji-eie-os | ap-math-os |
