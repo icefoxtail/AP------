@@ -312,7 +312,15 @@
   .map-address { margin: 6px 0 0; color: var(--fg-2); font-size: 14px; line-height: 1.5; }
   .map-quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 16px 16px; }
   .mobile-location-strip { display: none; }
-  .mobile-only-toggle, .mobile-accordion { display: none; }
+  .mobile-only-toggle, .mobile-accordion, .mobile-eie-actions { display: none; }
+.mobile-eie-intro-link {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--eie-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  line-height: 1.2;
+}
   .mcta-bar.is-hidden-by-input { transform: translateY(140%) !important; }
 
   @media (max-width: 768px) {
@@ -324,6 +332,18 @@
     .mobile-location-strip { display: block; padding: 0 0 22px; }
     .mobile-location-strip .map-link-card { margin-top: 0; }
     .mobile-only-toggle { display: inline-flex; margin-left: auto; }
+.mobile-eie-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+.mobile-eie-blog-btn {
+  min-height: 40px;
+  padding: 10px 14px;
+}
     .mobile-accordion { display: block; padding: 0 0 28px; }
     .mobile-accordion-list { display: grid; gap: 10px; }
     .mobile-acc-item { border: 1px solid var(--border); border-radius: var(--r-md); background: var(--white); overflow: hidden; box-shadow: var(--sh-sm); }
@@ -432,7 +452,10 @@
             </div>
             <span class="bchip" style="background:var(--eie-soft);color:var(--eie-text)">영어</span>
           </a>
-          <button type="button" class="btn btn-secondary btn-sm mobile-only-toggle" data-mobile-acc-target="#mobile-eie-detail">자세히</button>
+          <div class="mobile-eie-actions">
+  <a class="btn btn-secondary btn-sm mobile-eie-blog-btn" href="https://blog.naver.com/wha6615" target="_blank" rel="noopener">블로그 보기</a>
+  <a class="mobile-eie-intro-link" href="eie-home/">영어관 소개</a>
+</div>
         </div>
         <div class="bcard">
           <a class="bcard-main" href="cmath-home/">
