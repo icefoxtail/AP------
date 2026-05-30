@@ -79,3 +79,95 @@ function renderAdminDashboardView() {
 
     apInsertAdminSystemGate(0);
 }
+
+
+function apInquiryStatusLabel(status) {
+    const map = { new: '신규', checked: '확인', done: '완료' };
+    return map[String(status || 'new')] || '신규';
+}
+
+function apInquiryStatusStyle(status) {
+    const s = String(status || 'new');
+    if (s === 'done') return 'background:rgba(20,184,166,.12); color:#0f766e; border-color:rgba(20,184,166,.24);';
+    if (s === 'checked') return 'background:rgba(37,99,235,.10); color:#1d4ed8; border-color:rgba(37,99,235,.20);';
+    return 'background:rgba(183,20,27,.10); color:#b7141b; border-color:rgba(183,20,27,.20);';
+}
+
+function apRenderPublicInquiryRows(rows) {
+    const list = Array.isArray(rows) ? rows : [];
+    if (!list.length) {
+        return `<div style="padding:28px; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">아직 접수된 상담 신청이 없습니다.</div>`;
+    }
+    return list.map(row => {
+        const id = apEscapeHtml(row.id || '');
+        const status = String(row.status || 'new');
+        const date = apEscapeHtml(String(row.created_at || '').slice(0, 16));
+        const interest = apEscapeHtml(row.interest || '미정');
+        const grade = apEscapeHtml(row.student_grade || '학년 미입력');
+        const name = apEscapeHtml(row.parent_name || '이름 없음');
+        const phone = apEscapeHtml(row.phone || '연락처 없음');
+        const message = apEscapeHtml(row.message || '문의 내용 없음');
+        const memo = apEscapeHtml(row.memo || '');
+        return `
+            <article style="border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:14px; display:grid; gap:10px;">
+                <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
+                    <div style="min-width:0;">
+                        <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-bottom:6px;">
+                            <span style="font-size:11px; font-weight:700; border:1px solid; border-radius:999px; padding:3px 8px; ${apInquiryStatusStyle(status)}">${apInquiryStatusLabel(status)}</span>
+                            <span style="font-size:12px; color:var(--secondary); font-weight:500;">${date}</span>
+                        </div>
+                        <div style="font-size:15px; font-weight:800; color:var(--text);">${name} · ${phone}</div>
+                        <div style="font-size:12px; color:var(--secondary); margin-top:3px;">${interest} · ${grade}</div>
+                    </div>
+                    <a class="btn" href="tel:${phone.replace(/[^0-9+]/g, '')}" style="padding:8px 10px; font-size:12px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);">전화</a>
+                </div>
+                <div style="font-size:13px; line-height:1.55; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:10px; white-space:pre-wrap;">${message}</div>
+                <textarea id="publicInquiryMemo-${id}" style="width:100%; min-height:64px; border:1px solid var(--border); border-radius:12px; padding:10px; font:inherit; font-size:13px; resize:vertical;" placeholder="처리 메모">${memo}</textarea>
+                <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px;">
+                    <button class="btn" style="padding:9px 8px; font-size:12px; border-radius:10px;" onclick="apUpdatePublicInquiry('${id}', 'new')">신규</button>
+                    <button class="btn" style="padding:9px 8px; font-size:12px; border-radius:10px;" onclick="apUpdatePublicInquiry('${id}', 'checked')">확인</button>
+                    <button class="btn" style="padding:9px 8px; font-size:12px; border-radius:10px; background:var(--text); color:white;" onclick="apUpdatePublicInquiry('${id}', 'done')">완료</button>
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
+async function openPublicInquiryList() {
+    if (typeof showModal !== 'function') {
+        if (typeof toast === 'function') toast('상담 신청 목록을 열 수 없습니다.', 'warn');
+        return;
+    }
+    showModal('상담 신청', `<div id="publicInquiryList" style="display:grid; gap:10px; min-height:120px;"><div style="padding:24px; text-align:center; color:var(--secondary);">상담 신청을 불러오는 중입니다.</div></div>`);
+    try {
+        const res = await api.get('public-inquiries?limit=100');
+        const box = document.getElementById('publicInquiryList');
+        if (!box) return;
+        if (!res || res.error || res.success === false) {
+            box.innerHTML = `<div style="padding:28px; text-align:center; color:var(--error); font-size:13px;">상담 신청 목록을 불러오지 못했습니다.</div>`;
+            return;
+        }
+        box.innerHTML = apRenderPublicInquiryRows(res.inquiries || []);
+    } catch (err) {
+        const box = document.getElementById('publicInquiryList');
+        if (box) box.innerHTML = `<div style="padding:28px; text-align:center; color:var(--error); font-size:13px;">상담 신청 목록을 불러오지 못했습니다.</div>`;
+        if (window.console && console.warn) console.warn('[APMS admin] public inquiries load failed', err);
+    }
+}
+
+async function apUpdatePublicInquiry(id, status) {
+    const memoEl = document.getElementById(`publicInquiryMemo-${id}`);
+    const memo = memoEl ? memoEl.value : '';
+    try {
+        const res = await api.patch(`public-inquiries/${encodeURIComponent(id)}`, { status, memo });
+        if (!res || res.error || res.success === false) {
+            if (typeof toast === 'function') toast(res?.message || res?.error || '상담 상태 저장 실패', 'error');
+            return;
+        }
+        if (typeof toast === 'function') toast('상담 상태를 저장했습니다.', 'success');
+        await openPublicInquiryList();
+    } catch (err) {
+        if (typeof toast === 'function') toast('상담 상태 저장 중 오류가 발생했습니다.', 'error');
+        if (window.console && console.warn) console.warn('[APMS admin] public inquiry update failed', err);
+    }
+}

@@ -184,6 +184,7 @@ footer{background:#fff;border-top:1px solid var(--border);color:var(--fg-2)}.ft{
       <div class="formcard">
         <form id="inqForm">
           <input type="hidden" id="f-interest" name="interest" value="AP MATH">
+          <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
           <div class="frow">
             <div><label class="flabel" for="f-name">학부모 성함</label><input class="field" id="f-name" name="name" placeholder="성함 입력" required></div>
             <div><label class="flabel" for="f-tel">연락처</label><input class="field" id="f-tel" name="tel" type="tel" inputmode="tel" placeholder="010-0000-0000" required></div>
@@ -258,6 +259,7 @@ footer{background:#fff;border-top:1px solid var(--border);color:var(--fg-2)}.ft{
 <script>
 (function(){
   function byId(id){ return document.getElementById(id); }
+  var PUBLIC_INQUIRY_API = 'https://ap-math-os-v2612.js-pdf.workers.dev/api/public-inquiries';
   function warnMissing(id){
     if(window.console && console.warn) console.warn('[Wangji landing] missing element #' + id);
   }
@@ -336,24 +338,39 @@ footer{background:#fff;border-top:1px solid var(--border);color:var(--fg-2)}.ft{
     if(formError) formError.hidden = !show;
   }
   if(form && sent && submitBtn){
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit', async function(e){
       e.preventDefault();
       setFormError(false);
       var original = submitBtn.textContent;
       try{
         submitBtn.disabled = true;
         submitBtn.textContent = '신청서를 전달하고 있습니다...';
-        setTimeout(function(){
-          submitBtn.disabled = false;
-          submitBtn.textContent = original;
-          form.hidden = true;
-          sent.hidden = false;
-        }, 700);
+        var payload = {
+          source: 'wangji_public_home',
+          parent_name: (byId('f-name') || {}).value || '',
+          phone: (byId('f-tel') || {}).value || '',
+          student_grade: (byId('f-grade') || {}).value || '',
+          interest: hiddenInterest ? hiddenInterest.value : '',
+          message: (byId('f-msg') || {}).value || '',
+          website: (byId('f-website') || {}).value || ''
+        };
+        var res = await fetch(PUBLIC_INQUIRY_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        var data = await res.json().catch(function(){ return {}; });
+        if(!res.ok || data.success === false){
+          throw new Error(data.message || data.error || 'submit failed');
+        }
+        form.hidden = true;
+        sent.hidden = false;
       } catch(err){
-        submitBtn.disabled = false;
-        submitBtn.textContent = original;
         setFormError(true);
         if(window.console && console.warn) console.warn('[Wangji landing] inquiry form submit failed', err);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = original;
       }
     });
   } else { hasAll(['inqForm','sentBox','submitBtn']); }

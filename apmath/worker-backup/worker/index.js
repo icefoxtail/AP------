@@ -324,6 +324,179 @@ async function readJsonBody(request) {
   try { return await request.json(); } catch (e) { return {}; }
 }
 
+
+const PUBLIC_INQUIRY_STATUSES = new Set(['new', 'checked', 'done']);
+
+function cleanPublicInquiryText(value, maxLength = 500) {
+  return String(value || '').trim().replace(/\s+/g, ' ').slice(0, maxLength);
+}
+
+function normalizePublicInquiryPhone(value) {
+  return String(value || '').trim().replace(/[^0-9+\-\s]/g, '').replace(/\s+/g, ' ').slice(0, 40);
+}
+
+function normalizePublicInquiryPhoneDigits(value) {
+  return String(value || '').replace(/\D/g, '').slice(0, 24);
+}
+
+async function ensurePublicInquiryColumn(env, columnName, ddl) {
+  const info = await env.DB.prepare(`PRAGMA table_info(public_inquiries)`).all();
+  const columns = new Set((info.results || []).map((row) => row.name));
+  if (!columns.has(columnName)) {
+    await env.DB.prepare(ddl).run();
+  }
+}
+
+async function ensurePublicInquiriesTable(env) {
+  await env.DB.prepare(`
+    CREATE TABLE IF NOT EXISTS public_inquiries (
+      id TEXT PRIMARY KEY,
+      created_at TEXT DEFAULT (datetime('now', '+9 hours')),
+      updated_at TEXT DEFAULT (datetime('now', '+9 hours')),
+      source TEXT DEFAULT 'wangji_public_home',
+      parent_name TEXT NOT NULL,
+      phone TEXT NOT NULL,
+      phone_digits TEXT NOT NULL DEFAULT '',
+      student_grade TEXT,
+      interest TEXT,
+      message TEXT,
+      status TEXT DEFAULT 'new',
+      handled_at TEXT,
+      handled_by TEXT,
+      memo TEXT,
+      user_agent TEXT,
+      ip_hash TEXT
+    )
+  `).run();
+  await ensurePublicInquiryColumn(env, 'phone_digits', `ALTER TABLE public_inquiries ADD COLUMN phone_digits TEXT NOT NULL DEFAULT ''`);
+  await env.DB.prepare(`
+    UPDATE public_inquiries
+    SET phone_digits = replace(replace(replace(replace(replace(phone, '-', ''), ' ', ''), '.', ''), '(', ''), ')', '')
+    WHERE phone_digits IS NULL OR phone_digits = ''
+  `).run();
+  await env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_public_inquiries_created_at ON public_inquiries(created_at)`).run();
+  await env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_public_inquiries_status ON public_inquiries(status)`).run();
+  await env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_public_inquiries_phone ON public_inquiries(phone)`).run();
+  await env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_public_inquiries_phone_digits ON public_inquiries(phone_digits)`).run();
+}
+
+async function hashPublicInquiryIp(request) {
+  const ip = request.headers.get('CF-Connecting-IP') || request.headers.get('X-Forwarded-For') || '';
+  if (!ip) return null;
+  return sha256hex(`public-inquiry:${ip}`);
+}
+
+async function handlePublicInquiries(request, env, teacher, path, url, body = {}) {
+  const method = request.method;
+  const id = path[2];
+  await ensurePublicInquiriesTable(env);
+
+  if (method === 'POST' && !id) {
+    const honeypot = cleanPublicInquiryText(body.website || body.company || '', 100);
+    if (honeypot) {
+      return jsonResponse({ success: true, ignored: true });
+    }
+
+    const parentName = cleanPublicInquiryText(body.parent_name || body.name, 80);
+    const phone = normalizePublicInquiryPhone(body.phone || body.tel);
+    const phoneDigits = normalizePublicInquiryPhoneDigits(phone);
+    const studentGrade = cleanPublicInquiryText(body.student_grade || body.grade, 80);
+    const interest = cleanPublicInquiryText(body.interest, 80);
+    const message = cleanPublicInquiryText(body.message, 1000);
+    const source = cleanPublicInquiryText(body.source, 80) || 'wangji_public_home';
+
+    if (!parentName || phoneDigits.length < 8) {
+      return jsonResponse({ success: false, message: '이름과 연락처를 확인해주세요.' }, 400);
+    }
+
+    const recent = await env.DB.prepare(`
+      SELECT id
+      FROM public_inquiries
+      WHERE phone_digits = ?
+        AND created_at >= datetime('now', '+9 hours', '-1 minute')
+      ORDER BY created_at DESC
+      LIMIT 1
+    `).bind(phoneDigits).first();
+    if (recent?.id) {
+      return jsonResponse({ success: true, duplicate: true, id: recent.id });
+    }
+
+    const inquiryId = makeId('inq');
+    const userAgent = cleanPublicInquiryText(request.headers.get('User-Agent') || '', 300);
+    const ipHash = await hashPublicInquiryIp(request);
+
+    await env.DB.prepare(`
+      INSERT INTO public_inquiries (
+        id, source, parent_name, phone, phone_digits, student_grade, interest, message,
+        status, user_agent, ip_hash, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?, datetime('now', '+9 hours'), datetime('now', '+9 hours'))
+    `).bind(
+      inquiryId,
+      source,
+      parentName,
+      phone,
+      phoneDigits,
+      studentGrade,
+      interest,
+      message,
+      userAgent,
+      ipHash
+    ).run();
+
+    return jsonResponse({ success: true, id: inquiryId });
+  }
+
+  if (!teacher || !isAdminUser(teacher)) {
+    return jsonResponse({ error: 'Forbidden' }, 403);
+  }
+
+  if (method === 'GET' && !id) {
+    const status = cleanPublicInquiryText(url.searchParams.get('status') || '', 20);
+    const limitRaw = Number(url.searchParams.get('limit') || 100);
+    const limit = Math.max(1, Math.min(200, Number.isFinite(limitRaw) ? Math.floor(limitRaw) : 100));
+    const where = PUBLIC_INQUIRY_STATUSES.has(status) ? 'WHERE status = ?' : '';
+    const stmt = env.DB.prepare(`
+      SELECT id, created_at, updated_at, source, parent_name, phone, student_grade,
+             interest, message, status, handled_at, handled_by, memo
+      FROM public_inquiries
+      ${where}
+      ORDER BY
+        CASE status WHEN 'new' THEN 0 WHEN 'checked' THEN 1 ELSE 2 END,
+        created_at DESC
+      LIMIT ?
+    `);
+    const res = where ? await stmt.bind(status, limit).all() : await stmt.bind(limit).all();
+    return jsonResponse({ success: true, inquiries: res.results || [] });
+  }
+
+  if (method === 'PATCH' && id) {
+    const status = cleanPublicInquiryText(body.status, 20);
+    const memo = cleanPublicInquiryText(body.memo, 1000);
+    if (!PUBLIC_INQUIRY_STATUSES.has(status)) {
+      return jsonResponse({ success: false, message: '상태값을 확인해주세요.' }, 400);
+    }
+    const handledAtSql = status === 'new' ? 'NULL' : "datetime('now', '+9 hours')";
+    const result = await env.DB.prepare(`
+      UPDATE public_inquiries
+      SET status = ?,
+          memo = ?,
+          handled_by = ?,
+          handled_at = ${handledAtSql},
+          updated_at = datetime('now', '+9 hours')
+      WHERE id = ?
+    `).bind(status, memo, teacher.name || teacher.login_id || 'admin', id).run();
+    if (!result?.success) {
+      return jsonResponse({ success: false, message: '상담 신청 상태 저장에 실패했습니다.' }, 500);
+    }
+    if (result.meta && typeof result.meta.changes === 'number' && result.meta.changes === 0) {
+      return jsonResponse({ success: false, message: '상담 신청을 찾을 수 없습니다.' }, 404);
+    }
+    return jsonResponse({ success: true });
+  }
+
+  return null;
+}
+
 async function safeAll(env, sql, params = []) {
   try {
     const res = await env.DB.prepare(sql).bind(...params).all();
@@ -2877,6 +3050,19 @@ export default {
       if (path[0] === 'api') {
         const resource = path[1];
         const id = path[2];
+
+        if (resource === 'public-inquiries') {
+          if (method === 'POST') {
+            const body = await readJsonBody(request);
+            const routed = await handlePublicInquiries(request, env, null, path, url, body);
+            if (routed) return routed;
+          }
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          const body = ['PATCH'].includes(method) ? await readJsonBody(request) : {};
+          const routed = await handlePublicInquiries(request, env, teacher, path, url, body);
+          if (routed) return routed;
+        }
 
         if (['enrollments', 'class-time-slots', 'timetable-conflicts', 'timetable-conflict-overrides', 'timetable-versions', 'billing-foundation', 'billing-accounting-foundation', 'parent-foundation', 'foundation-logs', 'foundation-sync', 'onboarding'].includes(resource)) {
           const teacher = await verifyAuth(request, env);

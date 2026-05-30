@@ -1824,7 +1824,7 @@ function renderAdminControlCenter() {
     `;
 
     const adminShortcutRow = `
-        <div class="ap-admin-shortcuts ap-admin-action-grid ap-surface-toolbar ap-surface-toolbar--four" aria-label="원장님 바로가기">
+        <div class="ap-admin-shortcuts ap-admin-action-grid ap-surface-toolbar ap-surface-toolbar--five" aria-label="원장님 바로가기">
             <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 출석부
@@ -1836,6 +1836,10 @@ function renderAdminControlCenter() {
             <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="if(typeof openSchoolExamLedger === 'function') openSchoolExamLedger(); else toast('불러오기 실패', 'warn');">
                 성적표
+            </button>
+            <button class="btn ap-admin-action-card ap-surface-action"
+                    onclick="if(typeof openPublicInquiryList === 'function') openPublicInquiryList(); else toast('상담 신청 목록을 불러오지 못했습니다.', 'warn');">
+                상담 신청
             </button>
             <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="openAdminOperationMenu()">
@@ -1962,7 +1966,7 @@ function renderAdminControlCenter() {
                 box-shadow:none !important;
             }
             #ap-admin-dashboard .ap-admin-shortcuts {
-                grid-template-columns:repeat(4, minmax(0, 1fr));
+                grid-template-columns:repeat(5, minmax(0, 1fr));
                 margin-bottom:18px !important;
             }
             #ap-admin-dashboard .ap-admin-shortcuts .btn,
