@@ -1093,3 +1093,36 @@ CREATE INDEX IF NOT EXISTS idx_student_material_wrong_answers_grade
 
 CREATE INDEX IF NOT EXISTS idx_student_material_wrong_answers_date
   ON student_material_wrong_answers(wrong_date);
+
+
+-- Wangji public homepage inquiry intake
+CREATE TABLE IF NOT EXISTS public_inquiries (
+  id TEXT PRIMARY KEY,
+  created_at TEXT DEFAULT (datetime('now', '+9 hours')),
+  updated_at TEXT DEFAULT (datetime('now', '+9 hours')),
+  source TEXT DEFAULT 'wangji_public_home',
+  parent_name TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  phone_digits TEXT NOT NULL DEFAULT '',
+  student_grade TEXT,
+  interest TEXT,
+  message TEXT,
+  status TEXT DEFAULT 'new',
+  handled_at TEXT,
+  handled_by TEXT,
+  memo TEXT,
+  user_agent TEXT,
+  ip_hash TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_public_inquiries_created_at
+  ON public_inquiries(created_at);
+
+CREATE INDEX IF NOT EXISTS idx_public_inquiries_status
+  ON public_inquiries(status);
+
+CREATE INDEX IF NOT EXISTS idx_public_inquiries_phone
+  ON public_inquiries(phone);
+
+CREATE INDEX IF NOT EXISTS idx_public_inquiries_phone_digits
+  ON public_inquiries(phone_digits);
