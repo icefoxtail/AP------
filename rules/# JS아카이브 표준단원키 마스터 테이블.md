@@ -1,21 +1,175 @@
 # JS아카이브 표준단원키 마스터 테이블
 
 > 기준: 중학교 2022 개정 / 고등학교 2015·2022 개정 교육과정  
-> 용도: JS 파일 내 `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder` 필드 작성 기준  
+> 용도: JS 파일 내 `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder` 및 유사문제용 확장 태그(`subUnitKey`, `conceptClusterKey`, `problemTypeKey`, `templateKey`) 작성 기준  
 > 관리: 새 단원 추가 시 이 파일에 먼저 등록 후 사용  
-> 세부 단원은 RAW- 사용, 추후 편입
+> 세부 단원은 `subUnitKey`로 확장 관리하고, 미편입 항목만 RAW- 또는 PROPOSED-로 임시 분리
 
 ---
 
 ## 최상위 원칙
 
-- 이 문서는 JS아카이브의 `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder` 작성 기준 원본이다.
+- 이 문서는 JS아카이브의 `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder` 작성 기준 원본이며, 유사문제용 확장 태그의 최상위 기준 원본이다.
 - 새 문항 생성, 기존 문항 수정, db 생성, mixer 필터 기준은 이 문서를 우선한다.
 - 대응 단원이 명확하면 RAW 사용을 금지한다.
 - 매핑이 불가능한 경우에만 `RAW-단원명`, `standardUnitOrder: 999`를 사용한다.
 - 중학교는 2022 개정 기준을 사용한다.
 - 고등학교는 2022 개정 + 2015 개정 호환 체계를 함께 보관한다.
 - 운영상 신규 표준화는 2022 개정 기준을 우선하되, 기존 2015 개정 자료 호환을 위해 2015 개정 키도 유지한다.
+
+---
+
+
+## 유사문제용 확장 태그 마스터 운영 원칙
+
+기존 `standardUnitKey`는 단원 필터와 교육과정 매핑의 기준으로 유지한다.  
+유사문제 추천과 자동 시험지 구성에는 아래 확장 태그를 함께 사용한다.
+
+| 필드 | 역할 | 사용 기준 |
+|------|------|----------|
+| `subUnitKey` | 대단원/중단원 내부 세부 단원 | 중등 대단원 세분화, 고등 중단원 내부 보조 분류 |
+| `subUnit` | 세부 단원명 | 사용자·검수자 확인용 한글명 |
+| `conceptClusterKey` | 핵심 개념 묶음 | 같은 개념군 후보 탐색 |
+| `problemTypeKey` | 문제 유형 | 유사문제 최소 판정 기준 |
+| `templateKey` | 풀이 패턴/출제 템플릿 | 거의 같은 풀이 구조 판정 기준 |
+| `difficultyBucket` | 보조 난이도 구간 | 자동 시험지 구성·유사문제 난이도 조절 |
+| `tagConfidence` | 자동 태깅 신뢰도 | high / medium / low |
+| `tagStatus` | 태그 검수 상태 | existing / auto_high / auto_medium / auto_low / manual_review / reviewed_pass / reviewed_fail |
+
+### 유사문제 판정 원칙
+
+- `standardUnitKey`만 같은 문항은 유사문제가 아니라 같은 단원 문항이다.
+- 유사문제는 최소 `problemTypeKey`가 같아야 한다.
+- 거의 같은 풀이 구조는 `templateKey`가 같아야 한다.
+- 자동 유사문제 추천에는 `reviewed_pass` 또는 신뢰도 높은 `auto_high`만 사용한다.
+- `auto_low`, `manual_review`, `reviewed_fail`은 자동 추천·자동 시험지 구성에 사용하지 않는다.
+
+### 키 생성 규칙
+
+`subUnitKey`는 기존 `standardUnitKey` 뒤에 영문 슬러그를 붙인다.
+
+```text
+{standardUnitKey}-{SLUG}
+```
+
+예:
+
+```text
+M2-04-LINEAR_FUNCTION_GRAPH
+H22-C-08-COMBINATION
+```
+
+`conceptClusterKey`, `problemTypeKey`, `templateKey`는 영어 대문자와 언더스코어를 사용한다.
+
+```text
+conceptClusterKey: LINEAR_FUNCTION_GRAPH
+problemTypeKey: LINEAR_FUNCTION_FIND_EQUATION
+templateKey: LINEAR_FUNCTION_TWO_POINTS
+```
+
+### 신규 키 추가 원칙
+
+- 마스터 테이블에 없는 키를 최종 JS에 바로 넣지 않는다.
+- 자동 태깅 중 새 키가 필요하면 `PROPOSED-` 접두 또는 `manual_review` 상태로 분리한다.
+- 신규 키는 먼저 이 마스터 테이블에 추가한 뒤 사용한다.
+- 문제 원문을 읽고 유형을 판단할 수 있더라도, 신뢰도가 낮으면 확정하지 않는다.
+- 하나의 문항이 여러 유형에 걸치면 대표 `problemTypeKey` 하나와 보조 `tags`를 병행하되, 자동 추천에는 대표 키만 사용한다.
+
+---
+
+## 중학교 수학 확장 subUnitKey 초기 마스터
+
+중학교는 기존 `standardUnitKey`가 대단원에 가까우므로, 유사문제 추천에는 `subUnitKey` 보강이 필수다.
+
+### 중1 확장 subUnitKey
+
+| standardUnitKey | subUnitKey | subUnit | conceptClusterKey |
+|---|---|---|---|
+| M1-01 | M1-01-PRIME_FACTORIZATION | 소인수분해 | PRIME_FACTORIZATION |
+| M1-01 | M1-01-GCD_LCM | 최대공약수와 최소공배수 | GCD_LCM |
+| M1-02 | M1-02-INTEGER_RATIONAL_NUMBER | 정수와 유리수의 뜻 | INTEGER_RATIONAL_NUMBER |
+| M1-02 | M1-02-RATIONAL_NUMBER_OPERATIONS | 정수와 유리수의 계산 | RATIONAL_NUMBER_OPERATIONS |
+| M1-03 | M1-03-ALGEBRAIC_EXPRESSION | 문자의 사용과 식의 값 | ALGEBRAIC_EXPRESSION |
+| M1-03 | M1-03-LINEAR_EQUATION | 일차방정식 | LINEAR_EQUATION |
+| M1-03 | M1-03-LINEAR_EQUATION_WORD | 일차방정식의 활용 | LINEAR_EQUATION_WORD_PROBLEM |
+| M1-04 | M1-04-COORDINATE_PLANE | 좌표평면 | COORDINATE_PLANE |
+| M1-04 | M1-04-GRAPH_RELATION | 그래프와 관계 | GRAPH_RELATION |
+| M1-05 | M1-05-BASIC_FIGURE | 점·선·면과 각 | BASIC_FIGURE |
+| M1-05 | M1-05-POSITION_RELATION | 위치 관계 | POSITION_RELATION |
+| M1-06 | M1-06-POLYGON_CIRCLE | 다각형과 원 | POLYGON_CIRCLE |
+| M1-06 | M1-06-PLANE_FIGURE_MEASURE | 평면도형의 측정 | PLANE_FIGURE_MEASURE |
+| M1-07 | M1-07-SOLID_FIGURE | 입체도형 | SOLID_FIGURE |
+| M1-07 | M1-07-SOLID_FIGURE_MEASURE | 입체도형의 측정 | SOLID_FIGURE_MEASURE |
+| M1-08 | M1-08-DATA_ORGANIZATION | 자료의 정리 | DATA_ORGANIZATION |
+| M1-08 | M1-08-DATA_INTERPRETATION | 자료의 해석 | DATA_INTERPRETATION |
+
+### 중2 확장 subUnitKey
+
+| standardUnitKey | subUnitKey | subUnit | conceptClusterKey |
+|---|---|---|---|
+| M2-01 | M2-01-REPEATING_DECIMAL | 유리수와 순환소수 | REPEATING_DECIMAL |
+| M2-01 | M2-01-EXPONENT_LAW | 지수법칙 | EXPONENT_LAW |
+| M2-01 | M2-01-POLYNOMIAL_OPERATIONS | 다항식의 계산 | POLYNOMIAL_OPERATIONS |
+| M2-02 | M2-02-LINEAR_INEQUALITY | 일차부등식 | LINEAR_INEQUALITY |
+| M2-02 | M2-02-LINEAR_INEQUALITY_WORD | 일차부등식의 활용 | LINEAR_INEQUALITY_WORD_PROBLEM |
+| M2-03 | M2-03-SIMULTANEOUS_LINEAR_EQUATION | 연립일차방정식 | SIMULTANEOUS_LINEAR_EQUATION |
+| M2-03 | M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 연립일차방정식의 활용 | SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM |
+| M2-04 | M2-04-LINEAR_FUNCTION_BASIC | 일차함수의 뜻과 그래프 | LINEAR_FUNCTION_GRAPH |
+| M2-04 | M2-04-LINEAR_FUNCTION_EQUATION | 일차함수와 일차방정식의 관계 | LINEAR_FUNCTION_EQUATION_RELATION |
+| M2-05 | M2-05-TRIANGLE_PROPERTIES | 삼각형의 성질 | TRIANGLE_PROPERTIES |
+| M2-05 | M2-05-QUADRILATERAL_PROPERTIES | 사각형의 성질 | QUADRILATERAL_PROPERTIES |
+| M2-06 | M2-06-SIMILAR_FIGURE | 도형의 닮음 | SIMILAR_FIGURE |
+| M2-06 | M2-06-PARALLEL_LENGTH_RATIO | 평행선 사이의 선분의 길이의 비 | PARALLEL_LENGTH_RATIO |
+| M2-07 | M2-07-PYTHAGOREAN_THEOREM | 피타고라스 정리 | PYTHAGOREAN_THEOREM |
+| M2-07 | M2-07-PYTHAGOREAN_APPLICATION | 피타고라스 정리의 활용 | PYTHAGOREAN_APPLICATION |
+| M2-08 | M2-08-PROBABILITY_BASIC | 확률의 뜻과 성질 | PROBABILITY_BASIC |
+| M2-08 | M2-08-PROBABILITY_COUNTING | 경우의 수와 확률 | PROBABILITY_COUNTING |
+
+### 중3 확장 subUnitKey
+
+| standardUnitKey | subUnitKey | subUnit | conceptClusterKey |
+|---|---|---|---|
+| M3-01 | M3-01-SQUARE_ROOT_REAL_NUMBER | 제곱근과 실수 | SQUARE_ROOT_REAL_NUMBER |
+| M3-01 | M3-01-REAL_NUMBER_OPERATIONS | 근호를 포함한 식의 계산 | REAL_NUMBER_OPERATIONS |
+| M3-02 | M3-02-POLYNOMIAL_MULTIPLICATION | 다항식의 곱셈 | POLYNOMIAL_MULTIPLICATION |
+| M3-02 | M3-02-FACTORIZATION | 인수분해 | FACTORIZATION |
+| M3-03 | M3-03-QUADRATIC_EQUATION | 이차방정식 | QUADRATIC_EQUATION |
+| M3-03 | M3-03-QUADRATIC_EQUATION_WORD | 이차방정식의 활용 | QUADRATIC_EQUATION_WORD_PROBLEM |
+| M3-04 | M3-04-QUADRATIC_FUNCTION_GRAPH | 이차함수의 그래프 | QUADRATIC_FUNCTION_GRAPH |
+| M3-04 | M3-04-QUADRATIC_FUNCTION_APPLICATION | 이차함수의 활용 | QUADRATIC_FUNCTION_APPLICATION |
+| M3-05 | M3-05-TRIG_RATIO | 삼각비 | TRIG_RATIO |
+| M3-05 | M3-05-TRIG_RATIO_APPLICATION | 삼각비의 활용 | TRIG_RATIO_APPLICATION |
+| M3-06 | M3-06-CIRCLE_PROPERTIES | 원의 성질 | CIRCLE_PROPERTIES |
+| M3-06 | M3-06-CIRCLE_ANGLE | 원과 각 | CIRCLE_ANGLE |
+| M3-07 | M3-07-STATISTICS_REPRESENTATIVE | 대푯값과 산포도 | STATISTICS_REPRESENTATIVE |
+| M3-07 | M3-07-STATISTICS_DATA_INTERPRETATION | 통계 자료 해석 | STATISTICS_DATA_INTERPRETATION |
+
+---
+
+## 유사문제용 problemTypeKey / templateKey 초기 예시
+
+이 표는 자동 태깅과 검수 기준을 통일하기 위한 초기 예시다. 실제 키는 누적 데이터 검수 후 확장한다.
+
+| conceptClusterKey | problemTypeKey | templateKey | 설명 |
+|---|---|---|---|
+| LINEAR_EQUATION | LINEAR_EQUATION_SOLVE | LINEAR_EQUATION_BASIC_TRANSFORM | 일차방정식 기본 풀이 |
+| LINEAR_EQUATION_WORD_PROBLEM | LINEAR_EQUATION_WORD_PROBLEM | LINEAR_EQUATION_AGE | 나이 문제 |
+| LINEAR_EQUATION_WORD_PROBLEM | LINEAR_EQUATION_WORD_PROBLEM | LINEAR_EQUATION_DISTANCE_SPEED_TIME | 거리·속력·시간 문제 |
+| LINEAR_INEQUALITY | LINEAR_INEQUALITY_SOLVE | LINEAR_INEQUALITY_BASIC_TRANSFORM | 일차부등식 기본 풀이 |
+| SIMULTANEOUS_LINEAR_EQUATION | SIMULTANEOUS_LINEAR_EQUATION_SOLVE | SIMULTANEOUS_LINEAR_EQUATION_ELIMINATION | 연립방정식 가감법/대입법 |
+| LINEAR_FUNCTION_GRAPH | LINEAR_FUNCTION_FIND_EQUATION | LINEAR_FUNCTION_TWO_POINTS | 두 점으로 일차함수 식 구하기 |
+| LINEAR_FUNCTION_GRAPH | LINEAR_FUNCTION_FIND_EQUATION | LINEAR_FUNCTION_SLOPE_POINT | 기울기와 한 점으로 식 구하기 |
+| QUADRATIC_EQUATION | QUADRATIC_EQUATION_SOLVE | QUADRATIC_EQUATION_FACTORING | 인수분해로 이차방정식 풀기 |
+| QUADRATIC_EQUATION | QUADRATIC_EQUATION_SOLVE | QUADRATIC_FORMULA | 근의 공식 사용 |
+| QUADRATIC_FUNCTION_GRAPH | QUADRATIC_FUNCTION_GRAPH_ANALYSIS | QUADRATIC_FUNCTION_VERTEX_AXIS | 꼭짓점·축·그래프 해석 |
+| PERMUTATION | PERMUTATION_ARRANGEMENT_CONDITION | PERMUTATION_ADJACENT_CONDITION | 이웃 조건 순열 |
+| PERMUTATION | PERMUTATION_ARRANGEMENT_CONDITION | PERMUTATION_NON_ADJACENT | 이웃하지 않는 조건 순열 |
+| COMBINATION | COMBINATION_SELECTION_CONDITION | COMBINATION_AT_LEAST_ONE | 적어도 하나 포함 조합 |
+| COMBINATION | COMBINATION_SELECTION_CONDITION | COMBINATION_COMPLEMENT_COUNT | 여사건/보완 계산 조합 |
+| PROBABILITY_BASIC | PROBABILITY_BASIC_COUNT | PROBABILITY_COMPLEMENT | 여사건 확률 |
+| PYTHAGOREAN_THEOREM | PYTHAGOREAN_LENGTH_FIND | PYTHAGOREAN_RIGHT_TRIANGLE_LENGTH | 직각삼각형 길이 구하기 |
+| CIRCLE_PROPERTIES | CIRCLE_ANGLE_FIND | CIRCLE_INSCRIBED_ANGLE | 원주각 활용 |
+| TRIG_RATIO | TRIG_RATIO_LENGTH_FIND | TRIG_RATIO_RIGHT_TRIANGLE | 직각삼각형 삼각비 |
 
 ---
 
@@ -58,6 +212,33 @@
 | M3-05 | 삼각비 | 5 |
 | M3-06 | 원의 성질 | 6 |
 | M3-07 | 통계 | 7 |
+
+---
+
+
+## 고등학교 확장 태그 운영 원칙
+
+고등학교는 기존 `standardUnitKey`가 이미 소단원에 가까우므로, 많은 경우 `subUnitKey`는 `standardUnitKey` 내부 보조 분류로만 사용한다.  
+고등 유사문제 추천의 핵심은 `problemTypeKey`와 `templateKey`다.
+
+예:
+
+```text
+standardUnitKey: H22-C-08
+standardUnit: 순열과 조합
+subUnitKey: H22-C-08-COMBINATION
+conceptClusterKey: COMBINATION
+problemTypeKey: COMBINATION_SELECTION_CONDITION
+templateKey: COMBINATION_AT_LEAST_ONE
+```
+
+고등 문항 태그 고도화 원칙:
+
+- 기존 `standardUnitKey`를 임의로 바꾸지 않는다.
+- 2015/2022 개정 체계를 섞지 않는다.
+- 같은 중단원이라도 순열/조합, 함수/유리함수/무리함수, 지수/로그/지수함수/로그함수처럼 유형 차이가 큰 경우 `conceptClusterKey`를 반드시 나눈다.
+- 유사문제 추천은 `standardUnitKey`보다 `problemTypeKey`와 `templateKey`를 우선한다.
+- 확실하지 않은 고등 심화 유형은 `tag_low_confidence` 또는 `manual_review`로 분리한다.
 
 ---
 
@@ -360,6 +541,26 @@
 
 ---
 
+
+## PROPOSED 확장 태그 임시 보류 규칙
+
+마스터 테이블에 아직 없는 `subUnitKey`, `conceptClusterKey`, `problemTypeKey`, `templateKey` 후보는 최종 JS에 확정 반영하지 않는다.
+
+임시 후보 표기:
+
+```text
+PROPOSED-{KEY}
+```
+
+운영 기준:
+
+- 자동 태깅 결과가 명확하지 않으면 `PROPOSED-`로 두지 말고 `manual_review`로 분리한다.
+- 사람이 검수해 반복 사용 가치가 확인된 키만 마스터 테이블에 편입한다.
+- 편입 전 키는 유사문제 자동 추천에 사용하지 않는다.
+- 편입 후에는 기존 후보 문항을 다시 태깅해 `reviewed_pass`로 전환한다.
+
+---
+
 ## RAW (임시 미분류)
 
 > 대단원에 매핑 안 되는 세부 단원은 `RAW-단원명` 형식으로 임시 사용한다.  
@@ -413,3 +614,11 @@
 유형:     단원명_학년_유형.js / 단원명_학년_유형2.js
 단원평가: 단원명_학년_단원평가.js
 쪽지:     단원명_학년_쪽지.js
+
+---
+
+## v2.4 동기화 메모
+
+- 본 마스터 테이블은 JS아카이브 룰북 v2.4의 유사문제용 확장 태그 정책과 동기화한다.
+- `standardUnitKey`는 기존 단원 체계의 기준이고, `subUnitKey/problemTypeKey/templateKey`는 유사문제·자동 시험지 구성용 확장 태그다.
+- 기존 JS 문항의 원문, 보기, 정답, 해설은 태그 고도화 작업에서 수정하지 않는다.
