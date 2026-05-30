@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>왕지교육 — 교육 브랜드 허브</title>
-<meta name="description" content="왕지교육은 AP MATH, EIE 영어, 시매쓰수학을 연결하는 순천 왕지동 교육 브랜드 허브입니다.">
+<meta name="description" content="왕지교육은 AP MATH, EIE 영어, 시매쓰를 연결하는 순천 왕지동 교육 브랜드 허브입니다.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="왕지교육 — 교육 브랜드 허브">
-<meta property="og:description" content="AP MATH, EIE 영어, 시매쓰수학을 연결하는 순천 왕지동 교육 브랜드 허브.">
+<meta property="og:description" content="AP MATH, EIE 영어, 시매쓰를 연결하는 순천 왕지동 교육 브랜드 허브.">
 <meta name="theme-color" content="#0f172a">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='26' width='11' height='16' rx='3.5' fill='%232563eb'/%3E%3Crect x='18.5' y='16' width='11' height='26' rx='3.5' fill='%23b7141b'/%3E%3Crect x='33' y='6' width='11' height='36' rx='3.5' fill='%2314b8a6'/%3E%3C/svg%3E">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -84,14 +84,195 @@ footer .wrap{max-width:1040px}
 @media (min-width:900px){footer .wrap{padding-left:40px;padding-right:40px}.ft-bottom{display:grid;grid-template-columns:1fr;justify-content:start}}
 @media (max-width:768px){footer .wrap{padding-left:22px;padding-right:22px}.ft-bottom{gap:6px;word-break:keep-all}}
 @media (max-width:360px){footer .wrap{padding-left:18px;padding-right:18px}}
+
+
+  /* === Wangji public common frame v1: shared header/footer geometry === */
+  .hdr-in {
+    height: 72px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+  }
+  .brand,
+  .apmath-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    min-width: 0 !important;
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  .brand > svg,
+  .brand__mark,
+  .apmath-brand__mark {
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+    display: block !important;
+  }
+  .brand b,
+  .brand__text,
+  .apmath-brand__text {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    line-height: 1.08 !important;
+  }
+  .brand b,
+  .brand__text strong,
+  .apmath-brand__text strong {
+    color: var(--fg-1) !important;
+    font-size: 19px !important;
+    font-weight: 850 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+    white-space: nowrap !important;
+  }
+  .brand b span,
+  .brand__text em,
+  .apmath-brand__text em {
+    display: block !important;
+    margin: 3px 0 0 !important;
+    color: var(--fg-3) !important;
+    font-size: 11.5px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.01em !important;
+    white-space: nowrap !important;
+  }
+  footer .wrap {
+    max-width: 1040px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  .ft-bottom {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-content: start !important;
+    align-items: start !important;
+    gap: 6px !important;
+    line-height: 1.6 !important;
+    word-break: keep-all !important;
+  }
+  @media (max-width: 768px) {
+    footer .wrap {
+      padding-left: 22px !important;
+      padding-right: 22px !important;
+    }
+  }
+  @media (max-width: 560px) {
+    .hdr-in { height: 64px !important; }
+    .brand,
+    .apmath-brand { gap: 9px !important; }
+    .brand > svg,
+    .brand__mark,
+    .apmath-brand__mark {
+      width: 32px !important;
+      height: 32px !important;
+      flex-basis: 32px !important;
+    }
+    .brand b,
+    .brand__text strong,
+    .apmath-brand__text strong {
+      font-size: 18px !important;
+      line-height: 1.05 !important;
+    }
+    .brand b span,
+    .brand__text em,
+    .apmath-brand__text em {
+      display: block !important;
+      font-size: 10.5px !important;
+      margin-top: 2px !important;
+    }
+  }
+  @media (max-width: 360px) {
+    footer .wrap {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+  }
+
+
+
+  /* === round 1.1: premium quick icons + exact mobile frame fixes === */
+  .quick-icon {
+    color: var(--fg-1) !important;
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%) !important;
+    border: 1px solid rgba(203, 213, 225, .72) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 6px 14px rgba(15,23,42,.06) !important;
+    line-height: 1 !important;
+  }
+  .quick-svg {
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+  }
+  .quick-card {
+    align-items: center !important;
+  }
+  .quick-card .quick-copy {
+    display: flex !important;
+    min-height: 42px !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  .inforow .ico .quick-svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .mcta-bar .icon-action .quick-svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  @media (max-width: 768px) {
+    .hdr .wrap {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+    .ft-bottom {
+      font-size: 13px !important;
+    }
+    .quick-card {
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: left !important;
+      min-height: 104px !important;
+      padding: 13px 10px !important;
+    }
+    .quick-icon {
+      width: 38px !important;
+      height: 38px !important;
+      border-radius: 14px !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .quick-icon .quick-svg {
+      width: 19px !important;
+      height: 19px !important;
+    }
+    .quick-card .quick-copy {
+      min-height: 36px !important;
+      width: 100% !important;
+    }
+  }
+  @media (max-width: 360px) {
+    .hdr .wrap {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+  }
+
 </style>
 </head>
 <body>
 <header class="hdr" id="siteHeader">
   <div class="wrap hdr-in">
     <a class="brand" href="#top" aria-label="왕지교육 홈">
-      <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="26" width="11" height="16" rx="3.5" fill="#2563eb"/><rect x="18.5" y="16" width="11" height="26" rx="3.5" fill="#b7141b"/><rect x="33" y="6" width="11" height="36" rx="3.5" fill="#14b8a6"/></svg>
-      <b>왕지교육<span>Wangji Edu</span></b>
+      <svg class="brand__mark" width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="26" width="11" height="16" rx="3.5" fill="#2563eb"/><rect x="18.5" y="16" width="11" height="26" rx="3.5" fill="#b7141b"/><rect x="33" y="6" width="11" height="36" rx="3.5" fill="#14b8a6"/></svg>
+      <span class="brand__text"><strong>왕지교육</strong><em>Wangji Edu</em></span>
     </a>
     <nav class="nav" aria-label="주요 메뉴">
       <a class="navlink" href="#brands">교육관 보기</a>
@@ -120,7 +301,7 @@ footer .wrap{max-width:1040px}
       <div class="hero-text">
         <span class="eyebrow">Since 2000 · 왕지교육</span>
         <h1>과목을 넘어,<br>한 아이의 성장을 함께 봅니다.</h1>
-        <p class="lead">AP MATH, EIE 영어, 시매쓰수학을 연결하는 순천 왕지동 교육 브랜드 허브입니다. 학년과 과목, 현재 학습 상황에 맞는 방향을 안내합니다.</p>
+        <p class="lead">AP MATH, EIE 영어, 시매쓰를 연결하는 순천 왕지동 교육 브랜드 허브입니다. 학년과 과목, 현재 학습 상황에 맞는 방향을 안내합니다.</p>
         <div class="cta-row">
           <a class="btn btn-primary btn-lg" href="#brands">교육관 선택</a>
           <a class="btn btn-secondary btn-lg" href="#inquiry">상담 신청</a>
@@ -131,7 +312,7 @@ footer .wrap{max-width:1040px}
         <div class="bcard-list">
           <div class="bcard"><a class="bcard-main" href="apmath-home/"><span class="btile" style="background:var(--ap-main)">A</span><div class="binfo"><p class="bname">AP MATH</p><p class="bsub">개념부터 심화까지 단계별 수학</p></div><span class="bchip" style="background:var(--ap-soft);color:var(--ap-text)">수학</span></a></div>
           <div class="bcard"><a class="bcard-main" href="eie-home/"><span class="btile" style="background:var(--eie-main)">E</span><div class="binfo"><p class="bname">EIE 영어</p><p class="bsub">표현 중심의 EiE 표현영어</p></div><span class="bchip" style="background:var(--eie-soft);color:var(--eie-text)">영어</span></a></div>
-          <div class="bcard"><a class="bcard-main" href="cmath-home/"><span class="btile" style="background:var(--cm-main)">C</span><div class="binfo"><p class="bname">시매쓰수학</p><p class="bsub">생각하는 힘을 기르는 사고력 수학</p></div><span class="bchip" style="background:var(--cm-soft);color:var(--cm-text)">사고력</span></a></div>
+          <div class="bcard"><a class="bcard-main" href="cmath-home/"><span class="btile" style="background:var(--cm-main)">C</span><div class="binfo"><p class="bname">시매쓰</p><p class="bsub">생각하는 힘을 기르는 사고력 수학</p></div><span class="bchip" style="background:var(--cm-soft);color:var(--cm-text)">사고력</span></a></div>
         </div>
       </aside>
     </div>
@@ -158,7 +339,7 @@ footer .wrap{max-width:1040px}
       <div class="gw-grid">
         <article class="gwcard"><div class="body"><div class="gw-top"><span class="tile" style="background:var(--ap-main)">A</span><span class="chip" style="background:var(--ap-soft);color:var(--ap-text)">정규 · 심화 과정</span></div><h3>AP MATH</h3><div class="subj">초·중·고 수학 전문</div><p class="desc">개념의 완벽한 이해부터 최상위 심화 문제 해결까지, 아이의 개별 성취도에 맞춰 철저하게 운영되는 수학 전문 교육관입니다.</p><div class="act"><a class="btn btn-primary btn-block" href="apmath-home/">AP MATH 바로가기</a></div></div></article>
         <article class="gwcard"><div class="body"><div class="gw-top"><span class="tile" style="background:var(--eie-main)">E</span><span class="chip" style="background:var(--eie-soft);color:var(--eie-text)">공식 블로그 운영</span></div><h3>EIE 영어</h3><div class="subj">EiE 표현영어 · 고려대학교 영어교육 프로그램</div><p class="desc">표현 중심의 영어 교육관입니다. 말하고 쓰는 균형 잡힌 언어 성장을 지향하며, 수업 기록을 투명하게 전합니다.</p><div class="act"><a class="btn btn-block" href="eie-home/" style="background:var(--eie-main);color:var(--white);">EIE 영어 바로가기</a></div></div></article>
-        <article class="gwcard"><div class="body"><div class="gw-top"><span class="tile" style="background:var(--cm-main)">C</span><span class="chip" style="background:var(--cm-soft);color:var(--cm-text)">초등 사고력 수학관</span></div><h3>시매쓰수학</h3><div class="subj">초등 사고력 수학 전문</div><p class="desc">게임과 교구 활동을 통해 원리와 개념을 스스로 찾아가며 수학적 사고력을 확장하는 교육관입니다.</p><div class="act"><a class="btn btn-block" href="cmath-home/" style="background:var(--cm-main);color:var(--white);">시매쓰수학 바로가기</a></div></div></article>
+        <article class="gwcard"><div class="body"><div class="gw-top"><span class="tile" style="background:var(--cm-main)">C</span><span class="chip" style="background:var(--cm-soft);color:var(--cm-text)">초등 사고력 수학관</span></div><h3>시매쓰</h3><div class="subj">초등 사고력 수학 전문</div><p class="desc">게임과 교구 활동을 통해 원리와 개념을 스스로 찾아가며 수학적 사고력을 확장하는 교육관입니다.</p><div class="act"><a class="btn btn-block" href="cmath-home/" style="background:var(--cm-main);color:var(--white);">시매쓰 바로가기</a></div></div></article>
       </div>
     </div>
   </section>
@@ -181,7 +362,7 @@ footer .wrap{max-width:1040px}
           <div class="mbrand-actions"><a class="btn primary" href="eie-home/">EIE 영어 안내</a></div>
         </article>
         <article class="mbrand-card" style="--brand-color:var(--cm-main)">
-          <div class="mbrand-top"><span class="mbrand-tile">C</span><div class="mbrand-title"><h3>시매쓰수학</h3><span>초등 사고력 수학관</span></div></div>
+          <div class="mbrand-top"><span class="mbrand-tile">C</span><div class="mbrand-title"><h3>시매쓰</h3><span>초등 사고력 수학관</span></div></div>
           <p class="mbrand-desc">생각하는 힘을 기르는 초등 사고력 수학 교육관입니다.</p>
           <div class="mbrand-actions"><a class="btn primary" href="cmath-home/">시매쓰 안내</a></div>
         </article>
@@ -191,9 +372,9 @@ footer .wrap{max-width:1040px}
 
   <section class="sec quick-section" aria-label="빠른 안내">
     <div class="wrap quick-grid">
-      <a class="quick-card" href="tel:061-724-8886"><span class="quick-icon">☎</span><div class="quick-copy"><b>전화상담</b><span>바로 전화하기</span></div></a>
-      <a class="quick-card" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener"><span class="quick-icon">⌖</span><div class="quick-copy"><b>길찾기</b><span>네이버 지도</span></div></a>
-      <a class="quick-card" href="https://blog.naver.com/wha6615" target="_blank" rel="noopener"><span class="quick-icon">↗</span><div class="quick-copy"><b>블로그</b><span>학원 소식</span></div></a>
+      <a class="quick-card" href="tel:061-724-8886"><span class="quick-icon"><svg class="quick-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.8 9 3.2c.8-.2 1.6.2 1.9 1l.9 2.3c.2.6.1 1.2-.3 1.7l-1.1 1.2c.9 1.8 2.3 3.2 4.2 4.2l1.2-1.1c.5-.4 1.1-.5 1.7-.3l2.3.9c.8.3 1.2 1.1 1 1.9l-.6 2.4c-.2.7-.8 1.2-1.6 1.2C10.2 18.7 5.3 13.8 5.3 5.4c0-.8.6-1.4 1.3-1.6Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="quick-copy"><b>전화상담</b><span>바로 전화하기</span></div></a>
+      <a class="quick-card" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener"><span class="quick-icon"><svg class="quick-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.9"/></svg></span><div class="quick-copy"><b>길찾기</b><span>네이버 지도</span></div></a>
+      <a class="quick-card" href="https://blog.naver.com/wha6615" target="_blank" rel="noopener"><span class="quick-icon"><svg class="quick-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4.5h12A2.5 2.5 0 0 1 20.5 7v10A2.5 2.5 0 0 1 18 19.5H6A2.5 2.5 0 0 1 3.5 17V7A2.5 2.5 0 0 1 6 4.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7.5 8.5h5.8M7.5 12h9M7.5 15.5h6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div class="quick-copy"><b>블로그</b><span>학원 소식</span></div></a>
     </div>
   </section>
 
@@ -203,9 +384,9 @@ footer .wrap{max-width:1040px}
         <span class="eyebrow">Contact Us</span>
         <h2>학년과 현재 상황을 알려주시면<br>맞는 방향을 안내드립니다.</h2>
         <p class="lead">희망하시는 교육관과 아이의 현재 상황을 남겨주시면, 확인 후 가장 적합한 방향으로 상담을 도와드립니다.</p>
-        <div class="inforow"><span class="ico">☎</span><div><div class="k">대표 상담 전화</div><div class="v">061-724-8886</div></div></div>
+        <div class="inforow"><span class="ico"><svg class="quick-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.8 9 3.2c.8-.2 1.6.2 1.9 1l.9 2.3c.2.6.1 1.2-.3 1.7l-1.1 1.2c.9 1.8 2.3 3.2 4.2 4.2l1.2-1.1c.5-.4 1.1-.5 1.7-.3l2.3.9c.8.3 1.2 1.1 1 1.9l-.6 2.4c-.2.7-.8 1.2-1.6 1.2C10.2 18.7 5.3 13.8 5.3 5.4c0-.8.6-1.4 1.3-1.6Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="k">대표 상담 전화</div><div class="v">061-724-8886</div></div></div>
         <div class="inforow"><span class="ico">◷</span><div><div class="k">상담 가능 시간</div><div class="v">평일 14:00 – 21:00</div></div></div>
-        <div class="inforow"><span class="ico">⌖</span><div><div class="k">순천 조례 캠퍼스 위치</div><div class="v">전남 순천시 왕지5길 9-8 (왕지동) 2층</div><a class="maplink" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener">네이버 지도에서 보기 →</a></div></div>
+        <div class="inforow"><span class="ico"><svg class="quick-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.9"/></svg></span><div><div class="k">순천 조례 캠퍼스 위치</div><div class="v">전남 순천시 왕지5길 9-8 (왕지동) 2층</div><a class="maplink" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener">네이버 지도에서 보기 →</a></div></div>
         <p class="blogline">학원 소식은 <a href="https://blog.naver.com/wha6615" target="_blank" rel="noopener">공식 네이버 블로그</a>에서 확인하실 수 있습니다.</p>
       </div>
       <div class="formcard">
@@ -216,7 +397,7 @@ footer .wrap{max-width:1040px}
             <div><label class="flabel" for="f-name">학부모 성함</label><input class="field" id="f-name" name="name" placeholder="성함 입력" required></div>
             <div><label class="flabel" for="f-tel">연락처</label><input class="field" id="f-tel" name="tel" type="tel" inputmode="tel" placeholder="010-0000-0000" required></div>
           </div>
-          <div style="margin-top:18px"><span class="flabel">관심 교육관 선택</span><div class="chips" id="chips"><button type="button" class="chipbtn sel" data-value="AP MATH">AP MATH</button><button type="button" class="chipbtn" data-value="EIE 영어">EIE 영어</button><button type="button" class="chipbtn" data-value="시매쓰수학">시매쓰수학</button><button type="button" class="chipbtn" data-value="미정">아직 미정</button></div></div>
+          <div style="margin-top:18px"><span class="flabel">관심 교육관 선택</span><div class="chips" id="chips"><button type="button" class="chipbtn sel" data-value="AP MATH">AP MATH</button><button type="button" class="chipbtn" data-value="EIE 영어">EIE 영어</button><button type="button" class="chipbtn" data-value="시매쓰">시매쓰</button><button type="button" class="chipbtn" data-value="미정">아직 미정</button></div></div>
           <div style="margin-top:18px"><label class="flabel" for="f-grade">자녀 학년</label><select class="field" id="f-grade" name="grade" required><option value="" disabled selected>선택해주세요</option><option>초등 1~3학년</option><option>초등 4~6학년</option><option>중학교 1~3학년</option><option>고등학교 1~3학년</option></select></div>
           <div style="margin-top:18px"><label class="flabel" for="f-msg">문의 내용</label><textarea class="field" id="f-msg" name="message" placeholder="예) 평일 오후 5시 이후 상담 가능합니다."></textarea></div>
           <div style="margin-top:24px"><button type="submit" id="submitBtn" class="btn btn-primary btn-lg btn-block">상담 신청 등록하기</button></div>
@@ -260,7 +441,7 @@ footer .wrap{max-width:1040px}
         <div class="faq-item open"><button class="faq-q" type="button" aria-expanded="true"><span>교육관은 어떻게 선택하는 것이 좋나요?</span><span class="pm">+</span></button><div class="faq-a"><p>학생의 현재 연령과 학업 완성도에 따라 상담을 거쳐 최적의 교육관을 안내드립니다. 고민되실 경우 ‘아직 미정’을 선택해 상담을 남겨주세요.</p></div></div>
         <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>수학과 영어를 동시에 수강할 수도 있나요?</span><span class="pm">+</span></button><div class="faq-a"><p>가능합니다. AP MATH와 EIE 영어는 같은 캠퍼스 안에서 시간표와 학습 흐름이 무리 없이 이어지도록 조율합니다.</p></div></div>
         <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>EIE 영어의 수업 소식은 어디서 보나요?</span><span class="pm">+</span></button><div class="faq-a"><p>EIE 영어 수업 소식과 공지사항은 공식 네이버 블로그에서 확인하실 수 있습니다.</p></div></div>
-        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>시매쓰수학도 상담이 가능한가요?</span><span class="pm">+</span></button><div class="faq-a"><p>가능합니다. 시매쓰수학은 초등 사고력 수학관으로, 상담 신청 또는 전화로 안내받으실 수 있습니다.</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>시매쓰도 상담이 가능한가요?</span><span class="pm">+</span></button><div class="faq-a"><p>가능합니다. 시매쓰은 초등 사고력 수학관으로, 상담 신청 또는 전화로 안내받으실 수 있습니다.</p></div></div>
       </div>
     </div>
   </section>
@@ -269,8 +450,8 @@ footer .wrap{max-width:1040px}
 <footer>
   <div class="wrap ft">
     <div class="ft-grid">
-      <div><a class="brand" href="#top" aria-label="왕지교육 홈"><svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="26" width="11" height="16" rx="3.5" fill="#2563eb"/><rect x="18.5" y="16" width="11" height="26" rx="3.5" fill="#b7141b"/><rect x="33" y="6" width="11" height="36" rx="3.5" fill="#14b8a6"/></svg><b>왕지교육</b></a><p class="tag">AP MATH, EIE 영어, 시매쓰수학을 연결하는 통합 교육 브랜드 허브입니다.</p></div>
-      <div><h4>교육관 링크</h4><ul><li><a href="#top">왕지교육</a></li><li><a href="apmath-home/">AP MATH</a></li><li><a href="eie-home/">EIE 영어</a></li><li><a href="cmath-home/">시매쓰수학</a></li></ul></div>
+      <div><a class="brand" href="#top" aria-label="왕지교육 홈"><svg class="brand__mark" width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="26" width="11" height="16" rx="3.5" fill="#2563eb"/><rect x="18.5" y="16" width="11" height="26" rx="3.5" fill="#b7141b"/><rect x="33" y="6" width="11" height="36" rx="3.5" fill="#14b8a6"/></svg><span class="brand__text"><strong>왕지교육</strong><em>Wangji Edu</em></span></a><p class="tag">AP MATH, EIE 영어, 시매쓰를 연결하는 통합 교육 브랜드 허브입니다.</p></div>
+      <div><h4>교육관 링크</h4><ul><li><a href="#top">왕지교육</a></li><li><a href="apmath-home/">AP MATH</a></li><li><a href="eie-home/">EIE 영어</a></li><li><a href="cmath-home/">시매쓰</a></li></ul></div>
       <div><h4>정보 안내</h4><ul><li><a href="#inquiry">상담 문의</a></li><li><a href="#faq">자주 묻는 질문</a></li><li><a href="https://blog.naver.com/wha6615" target="_blank" rel="noopener">공식 네이버 블로그</a></li></ul></div>
     </div>
     <div class="ft-bottom"><span>© 2026 Wangji Edu. 왕지교육 · 순천 조례 캠퍼스</span><span>전남 순천시 왕지5길 9-8 (왕지동) 2층 · TEL 061-724-8886</span></div>
@@ -278,8 +459,8 @@ footer .wrap{max-width:1040px}
 </footer>
 
 <div class="mcta-bar" id="mctaBar" aria-label="모바일 빠른 상담 메뉴">
-  <a class="icon-action" href="tel:061-724-8886" aria-label="전화 상담">☎</a>
-  <a class="icon-action" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener" aria-label="길찾기">⌖</a>
+  <a class="icon-action" href="tel:061-724-8886" aria-label="전화 상담"><svg class="quick-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 3.8 9 3.2c.8-.2 1.6.2 1.9 1l.9 2.3c.2.6.1 1.2-.3 1.7l-1.1 1.2c.9 1.8 2.3 3.2 4.2 4.2l1.2-1.1c.5-.4 1.1-.5 1.7-.3l2.3.9c.8.3 1.2 1.1 1 1.9l-.6 2.4c-.2.7-.8 1.2-1.6 1.2C10.2 18.7 5.3 13.8 5.3 5.4c0-.8.6-1.4 1.3-1.6Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a class="icon-action" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener" aria-label="길찾기"><svg class="quick-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.9"/></svg></a>
   <a class="main-action" href="#inquiry">상담 신청</a>
 </div>
 

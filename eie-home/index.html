@@ -343,6 +343,276 @@
     .map-link-visual { height: 118px; }
   }
 
+
+
+  /* === Wangji public common frame v1: shared header/footer geometry === */
+  .hdr-in {
+    height: 72px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+  }
+  .brand,
+  .apmath-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    min-width: 0 !important;
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  .brand > svg,
+  .brand__mark,
+  .apmath-brand__mark {
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+    display: block !important;
+  }
+  .brand b,
+  .brand__text,
+  .apmath-brand__text {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    line-height: 1.08 !important;
+  }
+  .brand b,
+  .brand__text strong,
+  .apmath-brand__text strong {
+    color: var(--fg-1) !important;
+    font-size: 19px !important;
+    font-weight: 850 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+    white-space: nowrap !important;
+  }
+  .brand b span,
+  .brand__text em,
+  .apmath-brand__text em {
+    display: block !important;
+    margin: 3px 0 0 !important;
+    color: var(--fg-3) !important;
+    font-size: 11.5px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.01em !important;
+    white-space: nowrap !important;
+  }
+  footer .wrap {
+    max-width: 1040px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  .ft-bottom {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-content: start !important;
+    align-items: start !important;
+    gap: 6px !important;
+    line-height: 1.6 !important;
+    word-break: keep-all !important;
+  }
+  @media (max-width: 768px) {
+    footer .wrap {
+      padding-left: 22px !important;
+      padding-right: 22px !important;
+    }
+  }
+  @media (max-width: 560px) {
+    .hdr-in { height: 64px !important; }
+    .brand,
+    .apmath-brand { gap: 9px !important; }
+    .brand > svg,
+    .brand__mark,
+    .apmath-brand__mark {
+      width: 32px !important;
+      height: 32px !important;
+      flex-basis: 32px !important;
+    }
+    .brand b,
+    .brand__text strong,
+    .apmath-brand__text strong {
+      font-size: 18px !important;
+      line-height: 1.05 !important;
+    }
+    .brand b span,
+    .brand__text em,
+    .apmath-brand__text em {
+      display: block !important;
+      font-size: 10.5px !important;
+      margin-top: 2px !important;
+    }
+  }
+  @media (max-width: 360px) {
+    footer .wrap {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+  }
+
+
+
+  /* === Mobile education-page navigation and card swipe === */
+  .edu-quick-jump { display: none; }
+  .edu-swipe-hint { display: none; }
+  @media (max-width: 820px) {
+    .edu-quick-jump {
+      display: block;
+      padding: 0 0 14px;
+      background: var(--bg);
+    }
+    .edu-quick-jump .wrap {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .edu-quick-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .edu-quick-scroll::-webkit-scrollbar { display: none; }
+    .edu-quick-scroll a {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--fg-2);
+      font-size: 13px;
+      font-weight: 850;
+      box-shadow: var(--sh-sm);
+      white-space: nowrap;
+    }
+    .edu-swipe-hint {
+      display: block;
+      margin: -8px 0 12px;
+      color: var(--fg-3);
+      font-size: 12.5px;
+      font-weight: 750;
+    }
+    .course-grid,
+    .strength-grid,
+    .method-grid,
+    .direction .grid-3,
+    #eie-system .grid-3,
+    #eie-system .steps,
+    #program .course-grid,
+    #wangji-flow .flow,
+    .grid-4 {
+      display: flex !important;
+      grid-template-columns: none !important;
+      overflow-x: auto !important;
+      overflow-y: visible !important;
+      gap: 16px !important;
+      padding: 2px 20px 18px !important;
+      margin-left: -20px !important;
+      margin-right: -20px !important;
+      scroll-snap-type: x mandatory !important;
+      scroll-padding-left: 20px !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+    }
+    .course-grid::-webkit-scrollbar,
+    .strength-grid::-webkit-scrollbar,
+    .method-grid::-webkit-scrollbar,
+    .direction .grid-3::-webkit-scrollbar,
+    #eie-system .grid-3::-webkit-scrollbar,
+    #eie-system .steps::-webkit-scrollbar,
+    #program .course-grid::-webkit-scrollbar,
+    #wangji-flow .flow::-webkit-scrollbar,
+    .grid-4::-webkit-scrollbar { display: none; }
+    .course-grid > .card,
+    .strength-grid > .card,
+    .method-grid > .card,
+    .direction .grid-3 > .card,
+    #eie-system .grid-3 > .card,
+    #eie-system .steps > .step-card,
+    #program .course-grid > .card,
+    #wangji-flow .flow > .card,
+    .grid-4 > .card,
+    .grid-4 > article {
+      flex: 0 0 84% !important;
+      min-width: 276px !important;
+      scroll-snap-align: start !important;
+    }
+
+    #eie-system .steps > .step-arrow {
+      flex: 0 0 34px !important;
+      min-width: 34px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      scroll-snap-align: center !important;
+      transform: none !important;
+    }
+    #eie-system .steps > .step-arrow .down { display: none !important; }
+    #eie-system .steps > .step-arrow .right { display: inline-block !important; }
+    #wangji-flow .flow-arrow {
+      flex: 0 0 34px !important;
+      min-width: 34px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transform: none !important;
+    }
+    #wangji-flow .flow-arrow .down { display: none !important; }
+    #wangji-flow .flow-arrow .right { display: inline-block !important; }
+  }
+  @media (max-width: 360px) {
+    .course-grid,
+    .strength-grid,
+    .method-grid,
+    .direction .grid-3,
+    #eie-system .grid-3,
+    #eie-system .steps,
+    #program .course-grid,
+    #wangji-flow .flow,
+    .grid-4 {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+      margin-left: -14px !important;
+      margin-right: -14px !important;
+      scroll-padding-left: 14px !important;
+    }
+    .course-grid > .card,
+    .strength-grid > .card,
+    .method-grid > .card,
+    .direction .grid-3 > .card,
+    #eie-system .grid-3 > .card,
+    #eie-system .steps > .step-card,
+    #program .course-grid > .card,
+    #wangji-flow .flow > .card,
+    .grid-4 > .card,
+    .grid-4 > article {
+      flex-basis: 86% !important;
+      min-width: 252px !important;
+    }
+  }
+
+
+
+  /* === round 1.1: exact shared mobile header/footer alignment === */
+  @media (max-width: 560px) {
+    .hdr .wrap,
+    header .wrap {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+    .ft-bottom {
+      font-size: 13px !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -379,7 +649,7 @@
       </svg>
       <span class="brand__text">
         <strong>EIE 영어</strong>
-        <em>EiE 표현영어</em>
+        <em>Wangji Edu</em>
       </span>
     </a>
     <nav class="nav" aria-label="EIE 영어 안내">
@@ -446,6 +716,18 @@
     </div>
   </section>
 
+  <section class="edu-quick-jump" aria-label="EIE 영어 빠른 이동">
+    <div class="wrap">
+      <div class="edu-quick-scroll">
+        <a href="#direction">방향</a>
+        <a href="#eie-system">표현영어</a>
+        <a href="#program">과정</a>
+        <a href="#blog">블로그</a>
+        <a href="#inquiry">상담</a>
+      </div>
+    </div>
+  </section>
+
   <!-- DIRECTION -->
   <section class="sec direction" id="direction">
     <div class="wrap">
@@ -454,6 +736,7 @@
         <h2>영어를 배우는 것에서,<br>표현하는 경험으로</h2>
         <p>영어는 단어와 문법을 아는 데서 끝나지 않습니다. 읽고, 듣고, 말하고, 쓰는 과정을 수업 안에서 균형 있게 경험하며 자신의 생각을 표현하는 힘을 길러갑니다.</p>
       </div>
+      <p class="edu-swipe-hint">옆으로 밀어 보기</p>
       <div class="grid-3">
         <article class="card dir-card">
           <div class="ibox"><svg class="ic" width="24" height="24"><use href="#i-message"/></svg></div>
@@ -668,7 +951,7 @@
             <rect x="18.5" y="16" width="11" height="26" rx="3.5" fill="#b7141b"></rect>
             <rect x="33" y="6" width="11" height="36" rx="3.5" fill="#e2e8f0"></rect>
           </svg>
-          <span class="brand__text"><strong style="font-size:17px;">EIE 영어</strong><em>EiE 표현영어</em></span>
+          <span class="brand__text"><strong style="font-size:17px;">EIE 영어</strong><em>Wangji Edu</em></span>
         </a>
         <p class="tag">왕지교육의 영어 교육관입니다.</p>
       </div>
@@ -678,7 +961,7 @@
           <li><a href="../">왕지교육</a></li>
           <li><a href="../apmath-home/">AP MATH</a></li>
           <li><a href="#top">EIE 영어</a></li>
-          <li><a href="../cmath-home/">시매쓰수학</a></li>
+          <li><a href="../cmath-home/">시매쓰</a></li>
         </ul>
       </div>
       <div>
