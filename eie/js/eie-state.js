@@ -23,7 +23,41 @@
         selectedStudentCandidate: null,
         studentCandidatePanelMode: '',
         studentSeedNotice: '',
-        studentSeedError: ''
+        studentSeedError: '',
+        db: {
+            students: [],
+            student_contacts: [],
+            parent_contacts: [],
+            consultations: [],
+            classes: [],
+            class_students: [],
+            timetable_cells: [],
+            attendance: [],
+            homework: [],
+            class_daily_records: [],
+            class_daily_progress: [],
+            homework_records: [],
+            attendance_records: [],
+            classroom_logs: [],
+            textbooks: [],
+            materials: []
+        },
+        ui: {
+            currentStudentDetailId: '',
+            currentStudentDetailTab: 'grade',
+            currentClassId: '',
+            currentTimetableCellId: '',
+            currentClassroomId: '',
+            studentDetailLazyData: {},
+            studentConsultations: { byStudent: {} },
+            parentContactUi: { byStudent: {} },
+            eieApmsCompat: {
+                loadedAt: 0,
+                loading: false,
+                error: '',
+                lastSource: ''
+            }
+        }
     };
 
     function asArray(rows) {
@@ -167,6 +201,7 @@
         },
         setTimetableCells(rows) {
             state.timetableCells = asArray(rows);
+            state.db.timetable_cells = state.timetableCells;
             state.needsReview = state.timetableCells.filter(row => row?.status === 'needs_review');
             if (state.selectedTimetableCellId && !findCell(state.selectedTimetableCellId)) {
                 state.selectedTimetableCellId = '';
@@ -292,6 +327,91 @@
         },
         getSelectedTimetableCell() {
             return findCell(state.selectedTimetableCellId);
+        },
+        ensureDb() {
+            return state.db;
+        },
+        ensureUi() {
+            return state.ui;
+        },
+        setStudents(rows) {
+            state.db.students = asArray(rows);
+        },
+        setStudentContacts(rows) {
+            state.db.student_contacts = asArray(rows);
+        },
+        setParentContacts(rows) {
+            state.db.parent_contacts = asArray(rows);
+        },
+        setClassStudents(rows) {
+            state.db.class_students = asArray(rows);
+        },
+        setConsultations(rows) {
+            state.db.consultations = asArray(rows);
+        },
+        setAttendance(rows) {
+            state.db.attendance = asArray(rows);
+        },
+        setHomework(rows) {
+            state.db.homework = asArray(rows);
+        },
+        upsertStudent(row) {
+            if (!row?.id) return;
+            const idx = state.db.students.findIndex(s => String(s?.id) === String(row.id));
+            if (idx >= 0) state.db.students.splice(idx, 1, row);
+            else state.db.students.push(row);
+        },
+        upsertStudentContact(row) {
+            if (!row?.id) return;
+            const idx = state.db.student_contacts.findIndex(c => String(c?.id) === String(row.id));
+            if (idx >= 0) state.db.student_contacts.splice(idx, 1, row);
+            else state.db.student_contacts.push(row);
+        },
+        upsertClassStudent(row) {
+            if (!row?.id) return;
+            const idx = state.db.class_students.findIndex(cs => String(cs?.id) === String(row.id));
+            if (idx >= 0) state.db.class_students.splice(idx, 1, row);
+            else state.db.class_students.push(row);
+        },
+        mergeFoundationPayload(payload) {
+            if (!payload) return;
+            if (Array.isArray(payload.students)) this.setStudents(payload.students);
+            if (Array.isArray(payload.student_contacts)) this.setStudentContacts(payload.student_contacts);
+            if (Array.isArray(payload.parent_contacts)) this.setParentContacts(payload.parent_contacts);
+            if (Array.isArray(payload.class_students)) this.setClassStudents(payload.class_students);
+            if (Array.isArray(payload.consultations)) this.setConsultations(payload.consultations);
+            if (Array.isArray(payload.timetable_cells)) this.setTimetableCells(payload.timetable_cells);
+            state.ui.eieApmsCompat.loadedAt = Date.now();
+            state.ui.eieApmsCompat.error = '';
+        },
+        getStudentById(studentId) {
+            if (!studentId) return null;
+            return state.db.students.find(s => String(s?.id) === String(studentId)) || null;
+        },
+        getTimetableCellById(cellId) {
+            if (!cellId) return null;
+            return state.db.timetable_cells.find(c => String(c?.id) === String(cellId)) || null;
+        },
+        resetApmsCompatState() {
+            state.db.students = [];
+            state.db.student_contacts = [];
+            state.db.parent_contacts = [];
+            state.db.consultations = [];
+            state.db.classes = [];
+            state.db.class_students = [];
+            state.db.attendance = [];
+            state.db.homework = [];
+            state.db.class_daily_records = [];
+            state.db.class_daily_progress = [];
+            state.db.homework_records = [];
+            state.db.attendance_records = [];
+            state.db.classroom_logs = [];
+            state.db.textbooks = [];
+            state.db.materials = [];
+            state.ui.eieApmsCompat.loadedAt = 0;
+            state.ui.eieApmsCompat.loading = false;
+            state.ui.eieApmsCompat.error = '';
+            state.ui.eieApmsCompat.lastSource = '';
         },
         resetImportPreview() {
             state.workbookSheets = [];

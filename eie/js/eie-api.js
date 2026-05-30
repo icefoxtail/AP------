@@ -186,6 +186,28 @@
                 `timetable-cells/${encodeURIComponent(cellId)}/students/${encodeURIComponent(studentId)}`,
                 { method: 'DELETE' }
             );
+        },
+
+        // ── Generic public request methods (APMS compat layer용) ─────
+        request(path, options) {
+            return request(path, options);
+        },
+        get(path) {
+            return request(path, { method: 'GET' });
+        },
+        post(path, payload) {
+            return request(path, { method: 'POST', body: payload || {} });
+        },
+        patch(path, payload) {
+            return request(path, { method: 'PATCH', body: payload || {} });
+        },
+        delete(path, payload) {
+            const opts = { method: 'DELETE' };
+            if (payload != null) opts.body = payload;
+            return request(path, opts);
+        },
+        isAuthError(error) {
+            return !!(error && (error.status === 401 || error.status === 403));
         }
     };
 })();

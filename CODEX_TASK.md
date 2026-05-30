@@ -1,529 +1,291 @@
 cd C:\Users\USER\Desktop\AP------
 
 cat > CODEX_TASK.md <<'EOF'
-# CODEX_TASK
+EIE APMS 리베이스 Round 1.1 보정 지시서
 
-## 0. 작업명
-
-원장님 AP MATH / EIE 공용 로그인 브릿지 1차
-
-## 1. 작업 목적
-
-원장님은 AP MATH에 들어가든 EIE에 들어가든 한 번 로그인하면 수학과 영어 운영 화면을 모두 볼 수 있어야 한다.
-
-왕지교육 큰 대문은 공개 홈페이지로 유지한다.
-왕지교육 대문에는 로그인 세션을 만들지 않는다.
-
-이번 작업의 목표는 “원장님 운영 로그인만 공용처럼 동작”하게 만드는 것이다.
-
-원칙:
-- 원장님 = AP MATH / EIE 공용 운영 접근
-- 선생님 = 각 교육관별 분리 가능
-- 학생 = 각 포털별 간편 진입
-- 왕지교육 대문 = 공개 브랜드 허브, 로그인 없음
-
-## 2. 현재 확정 사실
-
-EIE 백엔드 연결은 정상이다.
-
-확정:
-- EIE Worker 운영 주소: https://wangji-eie-os.js-pdf.workers.dev
-- EIE D1: wangji-eie-os
-- EIE remote D1 teachers 테이블에 admin 계정 있음
-- /api/auth/login 성공 확인
-- 발급된 session_token으로 아래 API 호출 성공 확인
-  - /api/eie/timetable
-  - /api/eie/student-seeds
-  - /api/eie/needs-review
-
-현재 문제:
-- EIE 화면은 session_token이 없으면 Unauthorized가 뜬다.
-- 원장님이 AP MATH에 로그인해도 EIE session_token은 자동으로 생기지 않는다.
-- 반대로 EIE에 로그인해도 AP MATH 원장 세션과 연결되지 않는다.
-
-이번 작업은 이 간극을 브릿지로 메운다.
-
-## 3. 프로젝트 루트
-
-AP 프론트/운영 앱 루트:
-
+작업 루트:
 C:\Users\USER\Desktop\AP------
 
-EIE Worker 루트:
+상황:
+Round 1 호환 레이어 작업은 구현됐지만 외부감사에서 FAIL 판정을 받았다.
+감사 결과의 핵심 FAIL 사유는 다음 4개다. :contentReference[oaicite:0]{index=0}
 
-C:\Users\USER\Desktop\wangji-eie-worker
+1. apmath-home/index.html이 git status에 수정으로 잡혔지만 검수팩에 포함되지 않았고, 이번 Round 1 범위 밖이다.
+2. APMS 복사 코드 호환 목표인데 window.state가 제공되지 않아 APMS 원본 코드가 state.db를 직접 접근하면 ReferenceError가 날 수 있다.
+3. EieApmsApi.get('students')가 APMS형 { success, data } 구조로 normalize하지 않고 EieApi.getStudents() 원본 응답을 그대로 반환한다.
+4. Worker endpoint가 없는 쓰기 API를 adapter에서 있는 것처럼 연결해 Round 2에서 저장 버튼 연결 시 뒤늦게 404/405/500이 날 수 있다.
 
-반드시 위 경로 기준으로 작업한다.
+이번 작업의 목적:
+Round 1 호환 레이어를 APMS 복사 코드가 실제로 받을 수 있는 수준으로 보정한다.
+이번 라운드도 학생관리 UI parity 구현은 하지 않는다.
+기존 EIE view 파일은 건드리지 않는다.
 
-## 4. 절대 금지
+절대 금지:
+1. git add 금지.
+2. git commit 금지.
+3. git push 금지.
+4. 배포 금지.
+5. wrangler deploy 금지.
+6. D1 migration 실행 금지.
+7. eie/js/views/eie-students.js 수정 금지.
+8. eie/js/views/eie-classroom.js 수정 금지.
+9. eie/js/views/eie-timetable.js 수정 금지.
+10. eie/js/views/eie-timetable-v2.js 수정 금지.
+11. eie/js/views/eie-dashboard.js 수정 금지.
+12. 학생관리 UI parity 구현 금지.
+13. 클래스룸 UI parity 구현 금지.
+14. 없는 Worker endpoint를 성공처럼 처리하는 것 금지.
+15. 검수요청서 작성 금지. 검수요청서는 ChatGPT가 별도로 작성한다.
 
-- git add 금지
-- git commit 금지
-- git push 금지
-- wrangler deploy 금지
-- remote D1 migration 금지
-- APMS 기존 로그인/로그아웃/세션/dashboard 흐름 전체 교체 금지
-- APMS /api/initial-data 응답 구조 변경 금지
-- EIE Worker 인증 정책 무단 변경 금지
-- 왕지교육 대문 index.html 수정 금지
-- apmath-home/index.html 수정 금지
-- archive/ 수정 금지
-- apmath/student/ 수정 금지
-- 프로젝트 전체 압축 금지
-- 루트 임시 폴더 생성 금지
-- 비밀번호 하드코딩 금지
-- session_token 하드코딩 금지
-- admin1234 같은 값을 코드에 저장 금지
+수정 허용 파일:
+1. eie/js/apms-compat/eie-apms-state.js
+2. eie/js/apms-compat/eie-apms-api.js
+3. eie/js/apms-compat/eie-apms-ui-bridge.js
+4. eie/js/eie-state.js
+5. eie/js/eie-api.js
+6. docs/EIE_APMS_STATE_API_COMPAT_SPEC.md
+7. docs/EIE_APMS_REBASE_IMPLEMENTATION_PLAN.md
+8. CODEX_RESULT.md
 
-## 5. 이번 작업의 핵심 방향
+먼저 할 일:
+1. git status --short --untracked-files=all 확인.
+2. git diff -- apmath-home/index.html 확인.
+3. apmath-home/index.html 변경이 이번 Round 1과 무관하면 반드시 되돌린다.
+   실행:
+   git restore apmath-home/index.html
+4. apmath-home/index.html 변경이 의도된 다른 작업이라면 이번 review pack에 포함하지 말고, CODEX_RESULT.md에 "범위 밖 기존 변경으로 커밋 제외 필요"라고 명확히 기록한다.
+5. 단, 이번 Round 1.1 결과에서 git status에 apmath-home/index.html이 남아 있으면 FAIL로 간주한다. 가능한 한 되돌려서 작업트리를 정리한다.
 
-완전한 공통 인증 서버를 새로 만들지 않는다.
+보정 1: window.state 제공
+APMS 복사 코드가 state.db, state.ui를 직접 접근할 수 있어야 한다.
+Round 1.1에서 window.state를 반드시 제공한다.
 
-이번 1차는 “브릿지 로그인”이다.
+구현 위치:
+- 우선 eie/js/apms-compat/eie-apms-state.js에 추가한다.
+- 필요하면 eie/js/apms-compat/eie-apms-ui-bridge.js에서도 보강할 수 있다.
 
-브릿지 방식:
-1. 원장님이 AP MATH 로그인 화면에서 로그인한다.
-2. AP MATH 로그인이 성공하면 같은 login_id/password로 EIE /api/auth/login도 조용히 호출한다.
-3. EIE 로그인도 성공하면 EIE session_token을 localStorage에 저장한다.
-4. 원장님이 EIE 화면으로 이동하면 이미 저장된 EIE token으로 바로 진입한다.
-
-반대 방향도 가능하게 한다.
-1. 원장님이 EIE 로그인 화면에서 로그인한다.
-2. EIE 로그인이 성공하면 EIE session_token을 저장한다.
-3. 가능하면 같은 login_id/password로 AP MATH 로그인도 조용히 시도한다.
-4. AP MATH 로그인도 성공하면 AP MATH 기존 세션 저장 흐름을 유지한다.
-5. 불가능하면 EIE 로그인만 성공시키고 AP MATH 브릿지 실패는 낮은 위계 notice로 남긴다.
-
-중요:
-- 원장님 입장에서는 한 번 로그인한 것처럼 느끼게 한다.
-- 내부적으로 AP MATH token과 EIE token은 분리 저장해도 된다.
-- 최종 공용 토큰은 나중에 별도 설계한다.
-
-## 6. 먼저 조사할 것
-
-작업 전 아래를 확인한다.
-
-### 6.1 AP MATH 로그인 구조 확인
-
-아래 키워드로 APMS 로그인 파일과 API를 찾는다.
-
-- login
-- logout
-- session
-- token
-- teacher
-- admin
-- password
-- localStorage
-- Authorization
-- Bearer
-
-예시:
-
-Get-ChildItem .\apmath -Recurse -File -Include *.js,*.html | Select-String -Pattern "login|logout|session|token|teacher|admin|password|localStorage|Authorization|Bearer" -CaseSensitive:$false
-
-확인할 것:
-- AP MATH 로그인 submit 함수 위치
-- AP MATH 로그인 API endpoint
-- AP MATH 로그인 성공 응답 구조
-- AP MATH token/localStorage key
-- 원장님/admin 판별 방식
-- 기존 logout 처리 방식
-
-### 6.2 EIE 로그인 구조 확인
-
-현재 EIE Worker 인증은 확인됐다.
-
-EIE 로그인 API:
-- POST https://wangji-eie-os.js-pdf.workers.dev/api/auth/login
-
-요청 body:
-- login_id
-- password
-
-응답:
-- success
-- id
-- name
-- role
-- login_id
-- session_token
-- expires_at
-
-EIE token 저장 key는 이번 작업에서 아래로 고정한다.
-- WANGJI_EIE_SESSION_TOKEN
-
-호환 key:
-- WANGJI_SESSION_TOKEN
-- TEACHER_SESSION_TOKEN
-
-## 7. 구현 범위
-
-수정 허용:
-- AP MATH 로그인 관련 프론트 JS
-- AP MATH logout 관련 프론트 JS
-- EIE 로그인/세션 관련 프론트 JS
-- eie/js/eie-api.js
-- eie/js/eie-app.js
-- eie/js/eie-router.js
-- eie/css/eie.css
-- 필요 시 docs/*.md
-- CODEX_RESULT.md
-
-수정은 최소화한다.
-
-가능하면 새 공통 helper 파일을 만든다.
-
-권장 새 파일:
-- apmath/js/wangji-owner-login-bridge.js
-
-또는 EIE 전용:
-- eie/js/eie-owner-login.js
-
-하지만 AP MATH와 EIE 양쪽에서 재사용 가능한 위치가 더 안전하면:
-- shared/js/wangji-owner-auth-bridge.js
-단, 새 shared 폴더가 기존 구조와 충돌하지 않도록 한다.
-
-## 8. 원장님 브릿지 helper 요구사항
-
-공통 helper를 만들 수 있으면 아래 기능을 제공한다.
-
-권장 전역 객체:
-window.WangjiOwnerAuthBridge
-
-필수 메서드:
-- loginEieWithCredentials(loginId, password)
-- saveEieSession(payload)
-- getEieToken()
-- clearEieSession()
-- hasEieSession()
-- isAdminPayload(payload)
-- bridgeAfterApmathLogin(loginId, password, apmathPayload)
-- bridgeAfterEieLogin(loginId, password, eiePayload)
-
-EIE token 저장:
-- WANGJI_EIE_SESSION_TOKEN
-- WANGJI_EIE_LOGIN_ID
-- WANGJI_EIE_ROLE
-- WANGJI_EIE_NAME
-- WANGJI_EIE_EXPIRES_AT
-
-호환 저장:
-- WANGJI_SESSION_TOKEN
-단, 기존 APMS가 같은 key를 쓰고 있다면 충돌 가능성이 있으므로 조사 후 결정한다.
-충돌 위험이 있으면 WANGJI_EIE_SESSION_TOKEN만 저장하고 EieApi가 이 key를 우선 읽게 한다.
-
-중요:
-비밀번호는 localStorage/sessionStorage에 저장하지 않는다.
-비밀번호는 로그인 직후 브릿지 호출에만 사용한다.
-
-## 9. AP MATH 로그인 후 EIE 브릿지
-
-AP MATH 기존 로그인 성공 흐름을 찾아서, 성공 이후에만 EIE 브릿지를 추가한다.
-
-조건:
-- 로그인 사용자가 admin/원장 권한이면 EIE 브릿지 시도
-- teacher 일반 권한이면 브릿지하지 않거나 보류
-- admin 판별이 불확실하면 기존 role 값 확인 후 안전하게 처리
-
-동작:
-1. AP MATH 기존 로그인 성공
-2. 기존 AP MATH 세션 저장 완료
-3. 같은 login_id/password로 EIE /api/auth/login 호출
-4. 성공 시 WANGJI_EIE_SESSION_TOKEN 저장
-5. 실패 시 AP MATH 로그인은 막지 않음
-6. 실패는 console.warn 또는 낮은 위계 notice만 표시
-7. EIE 진입 시 토큰 없으면 EIE 로그인 화면 표시
+필수 동작:
+if (!window.state && window.EieState && typeof window.EieState.get === 'function') {
+  window.state = window.EieState.get();
+}
 
 주의:
-AP MATH 로그인을 실패시키면 안 된다.
-EIE 브릿지 실패가 AP MATH 운영 진입을 막으면 안 된다.
+- EieState.get()이 반환하는 객체 참조가 살아있어야 한다.
+- window.state를 EieState.get()의 복사본으로 만들지 않는다.
+- 이미 window.state가 있으면 덮어쓰지 않는다.
+- 이미 window.state가 있으면 CODEX_RESULT.md에 기록한다.
+- docs/EIE_APMS_STATE_API_COMPAT_SPEC.md에서 "Round 1에서는 window.state를 따로 설정하지 않는다"라는 정책이 있으면 반드시 수정한다.
 
-## 10. EIE 로그인 화면 1차
+보정 2: EieApmsApi.get('students') 반환 구조 normalize
+APMS 복사 코드가 api.get('students')를 호출했을 때 { success: true, data: [...] } 형태를 안정적으로 받을 수 있어야 한다.
 
-EIE 화면에 token이 없으면 로그인 화면을 표시한다.
+수정 대상:
+- eie/js/apms-compat/eie-apms-api.js
 
-단, 이 로그인 화면은 EIE 전용이면서도 원장님 공용 브릿지 입구 역할을 한다.
+요구 동작:
+GET students는 EieApi.getStudents() 원본을 그대로 반환하지 않는다.
+반드시 EieApmsState.normalizeFoundation(payload, null) 또는 동등한 정규화 함수를 거쳐 foundation.students를 반환한다.
 
-필드:
-- 아이디
-- 비밀번호
+권장 구현:
+if (clean === 'students' && method === 'GET') {
+  return {
+    type: 'fn',
+    fn: async function () {
+      var payload = await window.EieApi.getStudents();
+      var foundation = window.EieApmsState && typeof window.EieApmsState.normalizeFoundation === 'function'
+        ? window.EieApmsState.normalizeFoundation(payload, null)
+        : { students: [] };
+      return {
+        success: true,
+        data: Array.isArray(foundation.students) ? foundation.students : [],
+        raw: payload
+      };
+    }
+  };
+}
 
-버튼:
-- 로그인
+추가 확인:
+- confirmed_students, students, data 형태가 들어와도 data 배열이 정상 반환되어야 한다.
+- 학생이 없으면 success true + data []로 반환한다.
+- 401/403은 숨기지 말고 throw 흐름을 유지한다.
 
-문구:
-- 원장님 계정으로 로그인합니다.
-- 로그인 상태는 이 브라우저에 저장됩니다.
+보정 3: 미구현 쓰기 endpoint 정책 고정
+외부감사 기준으로 현재 Worker endpoint가 없는 쓰기 API를 adapter에서 있는 것처럼 연결하면 위험하다.
+Round 1.1에서는 Worker endpoint가 확인되지 않은 쓰기는 EIE_NOT_IMPLEMENTED로 명확히 막는다.
 
-성공:
-- EIE session_token 저장
-- EIE dashboard 표시
-- 가능하면 AP MATH 세션 브릿지 시도
-- AP MATH 브릿지가 어렵거나 기존 구조상 위험하면 이번 라운드에서는 EIE만 처리하고 CODEX_RESULT.md에 남긴다.
+수정 대상:
+- eie/js/apms-compat/eie-apms-api.js
+- docs/EIE_APMS_STATE_API_COMPAT_SPEC.md
+- docs/EIE_APMS_REBASE_IMPLEMENTATION_PLAN.md
 
-실패:
-- 로그인 정보를 확인해 주세요.
-- EIE 서버에 연결하지 못했습니다.
-- 다시 로그인해 주세요.
+Round 1.1 정책:
+A안/B안 중 B안으로 고정한다.
 
-금지:
-- 비밀번호 찾기
-- 회원가입
-- 학생 로그인
-- 학부모 로그인
-- 과한 모달
-- 왕지교육 대문 로그인 연결
+B안:
+현재 Round 1.1에서는 Worker endpoint가 없는 쓰기 API를 EIE_NOT_IMPLEMENTED로 명확히 막는다.
+Round 2 학생관리 UI parity 전에 Worker endpoint를 선구현하거나, Round 2 UI에서 저장 버튼을 준비중으로 막아야 한다.
 
-## 11. EIE API helper 보정
+not implemented로 막을 대상:
+1. POST students
+2. PATCH students/{id}
+3. PATCH students/{id}/status
+4. POST students/{id}/status
+5. POST consultations
+6. PATCH consultations/{id}
+7. DELETE consultations/{id}
+8. POST parent-foundation/contacts
+9. PATCH parent-foundation/contacts/{id}
+10. POST attendance
+11. PATCH attendance/{id}
+12. POST homework
+13. PATCH homework/{id}
+14. POST class-daily-records
+15. PATCH class-daily-records/{id}
+16. POST timetable-cells/{id}/students
+17. DELETE timetable-cells/{id}/students/{studentId}
 
-eie/js/eie-api.js 확인 후 보정한다.
+예외:
+- GET 계열은 화면 렌더를 위해 빈 배열 fallback 가능.
+- POST/PATCH/DELETE 쓰기 계열은 성공처럼 처리 금지.
+- EieApi.createTimetableCell/updateTimetableCell/updateTimetableCellStatus는 기존 Round 1 정책을 유지해도 되지만, Worker endpoint가 실제 존재하는지 문서에 명확히 구분한다.
+- 학생관리 parity에 직접 필요한 학생 create/update/status는 Worker endpoint가 없는 것으로 기록되어 있으므로 이번 Round 1.1에서는 not implemented 처리한다.
 
-필수:
-1. PROD_WORKER_ORIGIN 유지
-   https://wangji-eie-os.js-pdf.workers.dev
+not implemented 오류 형식:
+const error = new Error('EIE API endpoint not implemented: <METHOD> <path>');
+error.code = 'EIE_NOT_IMPLEMENTED';
+error.path = path;
+error.method = method;
+throw error;
 
-2. token 읽기 우선순위에 WANGJI_EIE_SESSION_TOKEN 추가
-   최우선으로 읽는다.
+보정 4: docs 업데이트
+docs/EIE_APMS_STATE_API_COMPAT_SPEC.md에 다음 내용을 반영한다.
 
-3. Unauthorized 처리 개선
-   - 401이면 token 만료/없음으로 판단할 수 있게 error.status = 401 유지
-   - EieApp 또는 Router에서 로그인 화면으로 전환 가능하게 한다.
+필수 기록:
+1. window.state = EieState.get() 제공 정책.
+2. window.api = EieApmsApi 제공 정책.
+3. GET students는 APMS형 { success, data } 구조로 normalize해서 반환한다.
+4. 없는 Worker 쓰기 endpoint는 EIE_NOT_IMPLEMENTED로 실패시킨다.
+5. Round 2 학생관리 parity 전제 조건:
+   - 학생 등록/수정/상태변경 Worker endpoint를 먼저 구현하거나
+   - Round 2 UI에서 저장 버튼을 준비중으로 막는다.
+6. timetable_cell_id를 class_id adapter로 쓰는 정책 유지.
+7. EieState.db/ui 구조 유지.
 
-4. 깨진 한글 문구 복구
-   예:
-   - 요청을 처리하지 못했습니다.
-   - 운영 데이터를 불러오지 못했습니다.
-   - 로그인이 필요합니다.
+docs/EIE_APMS_REBASE_IMPLEMENTATION_PLAN.md에 다음 내용을 반영한다.
+1. Round 1.1 보정 완료 상태.
+2. Round 2 진입 전 필수 선행:
+   - window.state 제공 완료
+   - students GET normalize 완료
+   - 미구현 쓰기 endpoint not implemented 고정
+   - apmath-home/index.html 범위 밖 변경 제거
+3. Round 2는 바로 학생관리 UI를 갈아엎기 전 Worker endpoint 보강 필요 여부를 먼저 판정해야 한다.
 
-## 12. EIE router/app 흐름
-
-권장 흐름:
-1. EIE boot
-2. token 존재 확인
-3. token 없으면 로그인 화면 렌더
-4. token 있으면 기존 EieRouter.boot()
-5. API 호출 중 401 Unauthorized가 나오면:
-   - WANGJI_EIE_SESSION_TOKEN 제거
-   - 로그인 화면 표시
-   - 메시지: 다시 로그인해 주세요.
-
-단, 일부 API fallback이 기존처럼 화면 notice만 표시해야 하는 경우는 유지한다.
-401 Unauthorized만 로그인 화면으로 전환한다.
-
-## 13. Logout 정책
-
-EIE 로그아웃 버튼을 추가한다.
-
-위치:
-- EIE 헤더 우측
-또는
-- EIE 사이드바 하단
-
-문구:
-- 로그아웃
-
-동작:
-1. EIE /api/auth/logout 호출 시도
-2. 실패해도 localStorage token 제거
-3. EIE 로그인 화면 표시
-
-AP MATH 로그아웃과의 관계:
-- 이번 라운드에서는 AP MATH logout 시 EIE token도 제거할 수 있으면 제거한다.
-- AP MATH logout 코드 위치를 안전하게 찾은 경우만 추가한다.
-- 못 찾거나 위험하면 CODEX_RESULT.md에 남긴다.
-
-권장:
-AP MATH에서 원장님 로그아웃 시:
-- 기존 APMS token 제거
-- WANGJI_EIE_SESSION_TOKEN 제거
-
-## 14. 프론트 UI/문구 기준
-
-짧게 쓴다.
-
-허용 문구:
-- 원장님 로그인
-- 로그인
-- 로그아웃
-- 아이디
-- 비밀번호
-- 로그인 정보를 확인해 주세요.
-- 다시 로그인해 주세요.
-- EIE 서버에 연결하지 못했습니다.
-
-피할 문구:
-- 통합 인증 시스템
-- SSO
-- 엔터프라이즈
-- 토큰
-- 세션 만료 코드
-- 기술적인 긴 오류
-
-## 15. Worker 설정 정리
-
-EIE Worker 폴더에는 wrangler.toml과 wrangler.jsonc가 함께 있을 수 있다.
-
-확인된 문제:
-- wrangler.jsonc는 AP Math 설정 찌꺼기다.
-- EIE 작업은 wrangler.toml 기준으로 해야 한다.
-
-이번 작업에서 Worker 명령이 필요하면:
-cd C:\Users\USER\Desktop\wangji-eie-worker
-wrangler deployments list --config .\wrangler.toml
-
-deploy는 하지 않는다.
-
-문서에 명시:
-- EIE Worker는 wrangler.toml 기준
-- wrangler.jsonc는 AP Math 설정이므로 EIE 명령에 사용하지 않는다.
-
-## 16. 기존 APMS 회귀 방지
-
-아래를 반드시 보존한다.
-
-- AP MATH 원장 로그인 성공 흐름
-- AP MATH 선생님 로그인 성공 흐름
-- AP MATH logout 흐름
-- APMS dashboard 이동
-- APMS /api/initial-data
-- 선생님 화면에 EIE 노출 금지
-- 학생 포털
-- archive
-
-브릿지 실패 시 AP MATH 로그인 자체가 실패하면 안 된다.
-
-## 17. 테스트/검증
-
-AP------ 루트에서 실행:
-
+검증 명령:
 node --check .\eie\js\eie-api.js
+node --check .\eie\js\eie-state.js
+node --check .\eie\js\apms-compat\eie-apms-state.js
+node --check .\eie\js\apms-compat\eie-apms-api.js
+node --check .\eie\js\apms-compat\eie-apms-ui-bridge.js
 node --check .\eie\js\eie-app.js
 node --check .\eie\js\eie-router.js
 
-수정한 AP MATH JS도 검사한다.
-예:
-node --check .\apmath\js\core.js
-node --check .\apmath\js\dashboard.js
-node --check .\apmath\js\dashboard-admin.js
-node --check .\apmath\js\dashboard-teacher.js
+추가 정적 확인:
+1. git diff --name-only 확인.
+2. git status --short --untracked-files=all 확인.
+3. git diff -- apmath-home/index.html 결과가 비어 있는지 확인.
+4. git diff -- eie/js/views/eie-students.js eie/js/views/eie-classroom.js eie/js/views/eie-timetable.js eie/js/views/eie-timetable-v2.js eie/js/views/eie-dashboard.js 결과가 비어 있는지 확인.
+5. Select-String -Path .\eie\js\apms-compat\*.js -Pattern "window.state|EIE_NOT_IMPLEMENTED|not implemented|students" 로 핵심 보정 확인.
+6. Select-String -Path .\eie\js\apms-compat\eie-apms-api.js -Pattern "createStudent|updateStudent|updateStudentStatus|assignStudentToCell|removeStudentFromCell" 확인.
+   - Worker endpoint 없는 쓰기 API가 성공 호출로 연결되어 있으면 FAIL이다.
+   - not implemented로 막혀 있어야 한다.
 
-실제 수정한 파일만 검사한다.
-
-검색:
-Select-String -Path .\eie\js\*.js,.\eie\js\views\*.js -Pattern "WANGJI_EIE_SESSION_TOKEN|auth/login|auth/logout|로그인|로그아웃|Unauthorized|session_token" -CaseSensitive:$false
-
-AP MATH 쪽:
-Select-String -Path .\apmath\js\*.js -Pattern "WANGJI_EIE_SESSION_TOKEN|OwnerAuthBridge|auth/login|로그인|logout|localStorage" -CaseSensitive:$false
-
-git status:
-git status --short --untracked-files=all
-
-## 18. 수동 확인 항목
-
-CODEX_RESULT.md에 아래를 적는다.
-
-1. EIE 화면 접속
-2. 토큰 없을 때 원장님 로그인 화면 표시
-3. admin 계정으로 로그인
-4. 로그인 성공 후 EIE dashboard 표시
-5. 새로고침 후 EIE 로그인 유지
-6. EIE 시간표/학생관리/클래스룸 API Unauthorized가 사라지는지 확인
-7. EIE 로그아웃 시 로그인 화면 복귀
-8. AP MATH 원장 로그인 후 EIE token 브릿지 저장 여부 확인
-9. AP MATH 로그인 성공이 EIE 브릿지 실패 때문에 막히지 않는지 확인
-10. AP MATH 선생님 화면 회귀 없음
-11. 왕지교육 대문 로그인 없음
-12. apmath-home 대문 로그인 없음
-
-## 19. 문서화
-
-아래 문서를 생성 또는 갱신한다.
-
-docs/WANGJI_OWNER_LOGIN_BRIDGE_POLICY.md
-
-내용:
-
-# WANGJI_OWNER_LOGIN_BRIDGE_POLICY
-
-## 1. 목적
-원장님이 AP MATH와 EIE 운영 화면을 반복 로그인 없이 사용할 수 있게 한다.
-
-## 2. 고정 원칙
-- 왕지교육 대문은 공개 홈페이지
-- 원장님 운영 로그인은 공용처럼 동작
-- 선생님은 교육관별 분리 가능
-- 학생은 별도 포털
-
-## 3. 1차 브릿지 방식
-- AP MATH 로그인 성공 후 EIE session_token 발급 시도
-- EIE 로그인 성공 후 EIE session_token 저장
-- 필요 시 AP MATH 세션 브릿지는 별도 보완
-
-## 4. 토큰 저장
-- WANGJI_EIE_SESSION_TOKEN
-- 기존 APMS token은 기존 구조 유지
-
-## 5. 보안 원칙
-- 비밀번호 저장 금지
-- session_token 하드코딩 금지
-- 브릿지 실패가 기존 로그인 실패로 이어지지 않게 함
-
-## 6. 보류
-- 완전한 WANGJI_OWNER_SESSION_TOKEN 공통 인증
-- AP/EIE Worker 간 공통 세션 검증
-- CMath 연결
-
-## 20. CODEX_RESULT.md 작성
-
-루트에 CODEX_RESULT.md 작성.
-
-형식:
-
+CODEX_RESULT.md 형식:
 # CODEX_RESULT
 
 ## 1. 생성/수정 파일
-## 2. 구현 내용
-## 3. 원장님 공용 로그인 브릿지 방식
-## 4. EIE 로그인 화면/세션 처리
-## 5. AP MATH 로그인 후 EIE 브릿지 처리
-## 6. 토큰 저장 key
-## 7. Unauthorized 처리
-## 8. 로그아웃 처리
-## 9. 실행 결과
-## 10. 수동 확인 항목
-## 11. 기존 APMS 보존 확인
-## 12. 남은 작업
-## 13. 금지 작업 준수 확인
-## 14. 자체 검수 및 검수팩
+- 생성 파일
+- 수정 파일
 
-## 21. 자체 검수 및 검수팩
+## 2. 보정 완료
+- apmath-home/index.html 범위 밖 변경 처리
+- window.state 제공
+- api.get('students') APMS형 normalize
+- 미구현 쓰기 endpoint EIE_NOT_IMPLEMENTED 처리
+- 문서 업데이트
 
-작업 완료 후 codex-self-audit 수행.
-문제 발견 시 CODEX_RESULT.md 작성 전 직접 보정.
+## 3. 실제 확인한 핵심 파일
+- EIE 수정 파일
+- 문서 파일
+- 확인한 금지 파일
 
-그 다음 codex-work-review-pack으로 변경/신규 파일 중심 검수팩 생성.
+## 4. 실행 결과
+- node --check 결과
+- git diff --name-only
+- git status --short
+- apmath-home/index.html diff 확인 결과
+- EIE view 파일 diff 없음 확인 결과
 
-검수팩 포함 권장:
-- 수정한 AP MATH 로그인 관련 JS
-- 수정한 EIE 로그인 관련 JS
-- eie/js/eie-api.js
-- eie/js/eie-app.js
-- eie/js/eie-router.js
-- eie/css/eie.css
-- docs/WANGJI_OWNER_LOGIN_BRIDGE_POLICY.md
-- CODEX_RESULT.md
+## 5. 구현하지 않은 것
+- 학생관리 UI parity 미구현
+- 클래스룸 UI parity 미구현
+- 상담/숙제/출결 저장 미구현
+- Worker endpoint 추가 미구현
+- DB migration 미실행
+- 배포 없음
 
-프로젝트 전체 압축 금지.
-apmath 전체 압축 금지.
-archive 전체 압축 금지.
-node_modules 포함 금지.
-git add, git commit, git push 금지.
+## 6. 남은 위험
+- 학생 쓰기 Worker endpoint 없음
+- APMS student.js 복사 시 추가 bridge 필요 가능성
+- 브라우저 실구동 확인 필요 항목
 
-최종 보고에는 CODEX_RESULT.md 위치와 검수팩 zip 경로만 짧게 적는다.
+## 7. 다음 라운드
+- Round 2 전 선택지:
+  A. Worker 학생 CRUD endpoint 선구현
+  B. 학생관리 parity UI를 먼저 붙이되 저장 버튼은 준비중으로 차단
+- 권장: Worker 학생 CRUD endpoint 선구현 후 학생관리 parity
 
-## 22. 최종 실행 지시
+## 8. review pack 경로
+- 생성한 zip 경로
 
-C:\Users\USER\Desktop\AP------의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라. 이전 작업 결과로 대체하지 마라.
+review pack 생성:
+- 프로젝트 전체 압축 금지.
+- 이번 생성/수정 파일만 포함한다.
+- 포함 파일:
+  - eie/js/eie-api.js
+  - eie/js/eie-state.js
+  - eie/js/apms-compat/eie-apms-state.js
+  - eie/js/apms-compat/eie-apms-api.js
+  - eie/js/apms-compat/eie-apms-ui-bridge.js
+  - docs/EIE_APMS_STATE_API_COMPAT_SPEC.md
+  - docs/EIE_APMS_REBASE_IMPLEMENTATION_PLAN.md
+  - CODEX_RESULT.md
+  - git diff txt
+  - git status txt
+  - node check txt
+  - apmath-home diff txt
+  - eie view diff check txt
+- eie/index.html이 이번 Round 1.1에서 수정되지 않았으면 포함하지 않아도 된다.
+- 임시 폴더는 프로젝트 루트에 만들지 말고 $env:TEMP\AP_REVIEW_WORK 아래에 만든다.
+- 최종 zip은 $env:USERPROFILE\Downloads 아래에 생성한다.
+- zip 파일명:
+  $env:USERPROFILE\Downloads\eie_apms_rebase_round1_1_compat_review_pack_20260530.zip
+
+작업 완료 전 자체 검수:
+1. apmath-home/index.html이 git status에서 사라졌는지 확인한다.
+2. window.state가 실제로 제공되는지 코드로 확인한다.
+3. GET students가 { success, data }로 normalize되는지 확인한다.
+4. Worker endpoint 없는 쓰기 API가 성공처럼 처리되지 않는지 확인한다.
+5. EIE 기존 view 파일 diff가 없는지 확인한다.
+6. node --check 결과를 모두 확인한다.
+7. git add/commit/push를 하지 않았는지 확인한다.
+
+마지막 지시:
+작업 완료 후 바로 보고하지 말고, 먼저 자체 검수한다.
+자체 검수에서 발견한 문제는 CODEX_RESULT.md 작성 전에 직접 보정하고 다시 검증한다.
+그 다음 변경 파일 중심 review pack zip을 생성한다.
+git add, git commit, git push는 하지 않는다.
+
+C:\Users\USER\Desktop\AP------의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라.
 EOF
 
+C:\Users\USER\Desktop\AP------의 CODEX_TASK.md를 다시 열어 처음부터 끝까지 읽고 그대로 실행하라.
