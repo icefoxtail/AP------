@@ -1167,6 +1167,241 @@ async function handlePatchTimetableCell(request, env, cellId, statusOnly = false
   return jsonResponse({ success: true, data: saved, timetable_cell: saved });
 }
 
+// ── Round 1.5: 학생 직접 CRUD ─────────────────────────────────────────
+
+const STUDENT_STATUSES = ['active', 'inactive', 'archived', 'needs_review', 'withdrawn'];
+
+function normalizeStudentStatus(value, fallback) {
+  const s = safeText(value || '');
+  if (STUDENT_STATUSES.includes(s)) return s;
+  return fallback !== undefined ? fallback : 'active';
+}
+
+async function getStudentById(env, studentId) {
+  return env.DB.prepare('SELECT * FROM eie_students WHERE id = ? LIMIT 1').bind(studentId).first();
+}
+
+async function getStudentWithContacts(env, studentId) {
+  const student = await getStudentById(env, studentId);
+  if (!student) return null;
+  const result = await env.DB.prepare(`
+    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, created_at
+    FROM eie_student_contacts
+    WHERE student_id = ?
+    ORDER BY COALESCE(is_primary, 1) DESC, created_at ASC
+  `).bind(studentId).all();
+  const contacts = result.results || [];
+  const primary = contacts[0] || null;
+  return {
+    ...student,
+    phone: primary ? safeText(primary.phone) : '',
+    phone_raw: primary ? safeText(primary.phone) : '',
+    normalized_phone: primary ? safeText(primary.normalized_phone) : '',
+    primary_phone: primary ? safeText(primary.phone) : '',
+    contacts
+  };
+}
+
+async function handlePostStudent(request, env, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+
+  const displayName = safeText(body.display_name || body.name || body.student_name_raw);
+  if (!displayName) return jsonResponse({ success: false, error: 'name is required (display_name, name, or student_name_raw)' }, 400);
+
+  const normalizedName = normalizeName(displayName);
+  const grade = safeText(body.grade || body.grade_raw) || null;
+  const status = normalizeStudentStatus(body.status, 'active');
+  const memo = safeText(body.memo || body.note) || null;
+
+  // eie_students에 없는 컬럼은 raw_meta_json에 보관한다. 억지 저장 금지.
+  const extraMeta = {};
+  if (body.school) extraMeta.school = safeText(body.school);
+  if (body.student_name_raw) extraMeta.student_name_raw = safeText(body.student_name_raw);
+  if (body.grade_raw) extraMeta.grade_raw = safeText(body.grade_raw);
+  if (body.pin) extraMeta.pin = safeText(body.pin);
+  if (body.student_pin) extraMeta.student_pin = safeText(body.student_pin);
+  const rawMetaJson = Object.keys(extraMeta).length ? toJsonText(extraMeta) : null;
+
+  const id = makeId('eie_student');
+  try {
+    await env.DB.prepare(`
+      INSERT INTO eie_students
+      (id, display_name, normalized_name, grade, status, source_type, memo, raw_meta_json, created_by, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, 'manual', ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `).bind(id, displayName, normalizedName, grade, status, memo, rawMetaJson, teacher?.id || null).run();
+  } catch (error) {
+    if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+    return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
+  }
+
+  const warnings = [];
+  const phoneRaw = safeText(body.phone || body.phone_raw || body.normalized_phone || body.parent_phone);
+  const normalizedPhone = phoneRaw ? normalizePhone(phoneRaw) : '';
+  if (normalizedPhone) {
+    try {
+      const contactId = makeId('eie_contact');
+      await env.DB.prepare(`
+        INSERT INTO eie_student_contacts
+        (id, student_id, phone, normalized_phone, contact_label, is_primary, source_type, created_by, created_at, updated_at)
+        VALUES (?, ?, ?, ?, '대표', 1, 'manual', ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      `).bind(contactId, id, phoneRaw, normalizedPhone, teacher?.id || null).run();
+    } catch (err) {
+      warnings.push('연락처 저장 실패: ' + safeText(err?.message || String(err)));
+    }
+  }
+
+  const student = await getStudentWithContacts(env, id);
+  return jsonResponse({ success: true, student, data: student, contacts: student?.contacts || [], warnings });
+}
+
+async function handlePatchStudent(request, env, studentId, teacher) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+
+  const existing = await getStudentById(env, studentId);
+  if (!existing) return jsonResponse({ success: false, error: 'student not found' }, 404);
+
+  const sets = [];
+  const params = [];
+  const ignoredFields = [];
+
+  if (body.display_name != null || body.name != null) {
+    const newName = safeText(body.display_name || body.name);
+    if (newName) {
+      sets.push('display_name = ?');
+      params.push(newName);
+      sets.push('normalized_name = ?');
+      params.push(normalizeName(newName));
+    } else {
+      ignoredFields.push('display_name');
+    }
+  }
+  if (body.grade != null || body.grade_raw != null) {
+    const newGrade = safeText(body.grade || body.grade_raw) || null;
+    sets.push('grade = ?');
+    params.push(newGrade);
+    if (body.grade_raw != null && body.grade == null) ignoredFields.push('grade_raw (stored as grade)');
+  }
+  if (body.status != null) {
+    sets.push('status = ?');
+    params.push(normalizeStudentStatus(body.status, existing.status || 'active'));
+  }
+  if (body.memo != null || body.note != null) {
+    sets.push('memo = ?');
+    params.push(safeText(body.memo || body.note) || null);
+  }
+  ['school', 'student_name_raw', 'pin', 'student_pin'].forEach(f => {
+    if (body[f] != null) ignoredFields.push(f + ' (not in schema)');
+  });
+
+  const phoneRaw = safeText(body.phone || body.phone_raw || body.parent_phone);
+  const normalizedPhone = phoneRaw ? normalizePhone(phoneRaw) : '';
+  const hasPhoneUpdate = !!normalizedPhone;
+
+  if (sets.length === 0 && !hasPhoneUpdate) {
+    return jsonResponse({ success: false, error: 'no valid fields to update', ignored_fields: ignoredFields }, 400);
+  }
+
+  const warnings = [];
+  if (sets.length > 0) {
+    sets.push('updated_at = CURRENT_TIMESTAMP');
+    params.push(studentId);
+    try {
+      await env.DB.prepare(`UPDATE eie_students SET ${sets.join(', ')} WHERE id = ?`).bind(...params).run();
+    } catch (error) {
+      if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+      return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
+    }
+  }
+
+  if (hasPhoneUpdate) {
+    try {
+      const existingContact = await env.DB.prepare(`
+        SELECT id FROM eie_student_contacts
+        WHERE student_id = ? AND COALESCE(is_primary, 1) = 1
+        ORDER BY created_at ASC LIMIT 1
+      `).bind(studentId).first();
+      if (existingContact) {
+        await env.DB.prepare(`
+          UPDATE eie_student_contacts
+          SET phone = ?, normalized_phone = ?, updated_at = CURRENT_TIMESTAMP
+          WHERE id = ?
+        `).bind(phoneRaw, normalizedPhone, existingContact.id).run();
+      } else {
+        const contactId = makeId('eie_contact');
+        await env.DB.prepare(`
+          INSERT INTO eie_student_contacts
+          (id, student_id, phone, normalized_phone, contact_label, is_primary, source_type, created_by, created_at, updated_at)
+          VALUES (?, ?, ?, ?, '대표', 1, 'manual', ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+        `).bind(contactId, studentId, phoneRaw, normalizedPhone, teacher?.id || null).run();
+      }
+    } catch (err) {
+      warnings.push('연락처 업데이트 실패: ' + safeText(err?.message || String(err)));
+    }
+  }
+
+  const student = await getStudentWithContacts(env, studentId);
+  const response = { success: true, student, data: student, contacts: student?.contacts || [], warnings };
+  if (ignoredFields.length) response.ignored_fields = ignoredFields;
+  return jsonResponse(response);
+}
+
+async function handlePatchStudentStatus(request, env, studentId) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+
+  const statusRaw = safeText(body.status);
+  if (!statusRaw) return jsonResponse({ success: false, error: 'status is required' }, 400);
+
+  const status = normalizeStudentStatus(statusRaw, null);
+  if (!status) return jsonResponse({
+    success: false,
+    error: 'invalid status: ' + statusRaw + '. allowed: ' + STUDENT_STATUSES.join(', ')
+  }, 400);
+
+  const existing = await getStudentById(env, studentId);
+  if (!existing) return jsonResponse({ success: false, error: 'student not found' }, 404);
+
+  try {
+    await env.DB.prepare(`
+      UPDATE eie_students SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
+    `).bind(status, studentId).run();
+  } catch (error) {
+    if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+    return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
+  }
+
+  const student = await getStudentWithContacts(env, studentId);
+  return jsonResponse({ success: true, student, data: student, contacts: student?.contacts || [], warnings: [] });
+}
+
+async function handleDeleteStudent(request, env, studentId) {
+  // 물리 삭제 금지 — status를 'archived'로 변경하는 soft delete
+  const existing = await getStudentById(env, studentId);
+  if (!existing) return jsonResponse({ success: false, error: 'student not found' }, 404);
+
+  try {
+    await env.DB.prepare(`
+      UPDATE eie_students SET status = 'archived', updated_at = CURRENT_TIMESTAMP WHERE id = ?
+    `).bind(studentId).run();
+  } catch (error) {
+    if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+    return jsonResponse({ success: false, error: String(error?.message || error) }, 500);
+  }
+
+  const student = await getStudentWithContacts(env, studentId);
+  return jsonResponse({
+    success: true,
+    student,
+    data: student,
+    soft_deleted: true,
+    archived: true,
+    contacts: student?.contacts || [],
+    warnings: []
+  });
+}
+
 export async function handleEie(request, env, teacher, path, url) {
   if (!teacher) return jsonResponse({ success: false, error: 'Unauthorized' }, 401);
   if (!isEieOwner(teacher)) return jsonResponse({ success: false, error: 'EIE management is owner only' }, 403);
@@ -1195,6 +1430,23 @@ export async function handleEie(request, env, teacher, path, url) {
 
   if (method === 'PATCH' && path[2] === 'timetable-cells' && path[3] && path[4] === 'status') {
     return handlePatchTimetableCell(request, env, path[3], true);
+  }
+
+  // ── Round 1.5: 학생 직접 CRUD ──────────────────────────────────────
+  if (method === 'POST' && path[2] === 'students' && !path[3]) {
+    return handlePostStudent(request, env, teacher);
+  }
+
+  if (method === 'PATCH' && path[2] === 'students' && path[3] && path[4] === 'status') {
+    return handlePatchStudentStatus(request, env, path[3]);
+  }
+
+  if (method === 'PATCH' && path[2] === 'students' && path[3] && !path[4]) {
+    return handlePatchStudent(request, env, path[3], teacher);
+  }
+
+  if (method === 'DELETE' && path[2] === 'students' && path[3] && !path[4]) {
+    return handleDeleteStudent(request, env, path[3]);
   }
 
   return jsonResponse({ success: false, error: 'method not allowed' }, 405);

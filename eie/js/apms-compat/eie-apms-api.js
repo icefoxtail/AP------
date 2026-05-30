@@ -1,28 +1,27 @@
 (function () {
     // APMS 복사 코드가 기대하는 window.api.get/post/patch/delete 형태를 EIE에서 제공한다.
     //
-    // Round 1.1 정책 (B안 확정):
-    // - Worker endpoint가 확인되지 않은 쓰기 API는 EIE_NOT_IMPLEMENTED로 명확히 막는다.
-    // - GET 계열은 화면 렌더를 위해 빈 배열 fallback 가능.
-    // - GET students는 APMS형 { success: true, data: [...] } 구조로 normalize해서 반환한다.
+    // Round 1.5 정책:
+    // - Worker endpoint가 실제 구현된 학생 CRUD (POST/PATCH/DELETE students)를 not_implemented에서 해제한다.
+    // - 응답은 APMS 복사 코드가 받기 쉬운 { success:true, data: student, student } 형태로 normalize한다.
+    // - 상담/숙제/출결/연락처 별도 CRUD는 계속 EIE_NOT_IMPLEMENTED로 차단한다.
     //
     // window.api 정책:
     // - window.api가 없으면 window.api = window.EieApmsApi로 설정.
     // - 이미 window.api가 있으면 window.eieApiAdapter를 제공하고 덮어쓰지 않는다.
     //
-    // timetable_cell_id를 class_id adapter로 사용하는 정책:
-    // - EIE에 eie_classes 테이블이 없어 1차에서는 timetable_cell_id로 class_id 역할을 대리한다.
-    // - 정책 근거: docs/EIE_APMS_STATE_API_COMPAT_SPEC.md
-    //
-    // Worker에 실제 존재하는 endpoint (Round 1 기준):
-    // - GET /api/eie/confirmed-students
-    // - GET /api/eie/timetable
+    // Worker에 실제 존재하는 endpoint (Round 1.5 기준):
+    // - GET  /api/eie/confirmed-students
+    // - GET  /api/eie/timetable
     // - POST /api/eie/timetable-cells
     // - PATCH /api/eie/timetable-cells/{id}
     // - PATCH /api/eie/timetable-cells/{id}/status
+    // - POST  /api/eie/students          ← Round 1.5 신규
+    // - PATCH /api/eie/students/{id}     ← Round 1.5 신규
+    // - PATCH /api/eie/students/{id}/status ← Round 1.5 신규
+    // - DELETE /api/eie/students/{id}    ← Round 1.5 신규
     //
-    // Worker에 없는 쓰기 endpoint (모두 EIE_NOT_IMPLEMENTED):
-    // - POST students, PATCH students/{id}, PATCH/POST students/{id}/status
+    // 계속 EIE_NOT_IMPLEMENTED:
     // - POST/PATCH/DELETE consultations
     // - POST/PATCH parent-foundation/contacts
     // - POST/PATCH attendance, homework, class-daily-records
@@ -35,6 +34,21 @@
         err.path = path;
         err.method = method;
         return err;
+    }
+
+    // Worker가 반환하는 { success, student, data, contacts, warnings }를
+    // APMS 복사 코드가 기대하는 { success, data, student } 형태로 normalize한다.
+    function normalizeStudentWriteResult(result) {
+        var student = result && (result.student || result.data);
+        return {
+            success: !!(result && result.success),
+            data: student || null,
+            student: student || null,
+            contacts: (result && result.contacts) || [],
+            warnings: (result && result.warnings) || [],
+            soft_deleted: result && result.soft_deleted,
+            archived: result && result.archived
+        };
     }
 
     function mapPath(method, path) {
@@ -55,17 +69,45 @@
         }
 
         // ── students/{id}/status PATCH/POST ───────────────────────────────────
-        // Worker endpoint 없음 → EIE_NOT_IMPLEMENTED
+        // Round 1.5: Worker endpoint 구현 완료 → not_implemented 해제
         var studentStatusMatch = clean.match(/^students\/([^/]+)\/status$/);
         if (studentStatusMatch && (method === 'PATCH' || method === 'POST')) {
-            return { type: 'not_implemented' };
+            var statusId = studentStatusMatch[1];
+            return {
+                type: 'fn',
+                fn: async function (payload) {
+                    var result = await EieApi.updateStudentStatus(statusId, payload && payload.status);
+                    return normalizeStudentWriteResult(result);
+                }
+            };
+        }
+
+        // ── students/{id} DELETE ──────────────────────────────────────────────
+        // Round 1.5: Worker endpoint 구현 완료 → not_implemented 해제 (soft delete)
+        var studentIdDeleteMatch = clean.match(/^students\/([^/]+)$/);
+        if (studentIdDeleteMatch && method === 'DELETE') {
+            var deleteId = studentIdDeleteMatch[1];
+            return {
+                type: 'fn',
+                fn: async function () {
+                    var result = await EieApi.deleteStudent(deleteId);
+                    return normalizeStudentWriteResult(result);
+                }
+            };
         }
 
         // ── students/{id} PATCH ───────────────────────────────────────────────
-        // Worker endpoint 없음 → EIE_NOT_IMPLEMENTED
+        // Round 1.5: Worker endpoint 구현 완료 → not_implemented 해제
         var studentIdPatchMatch = clean.match(/^students\/([^/]+)$/);
         if (studentIdPatchMatch && method === 'PATCH') {
-            return { type: 'not_implemented' };
+            var patchId = studentIdPatchMatch[1];
+            return {
+                type: 'fn',
+                fn: async function (payload) {
+                    var result = await EieApi.updateStudent(patchId, payload);
+                    return normalizeStudentWriteResult(result);
+                }
+            };
         }
 
         // ── students GET ──────────────────────────────────────────────────────
@@ -88,9 +130,15 @@
         }
 
         // ── students POST ─────────────────────────────────────────────────────
-        // Worker endpoint 없음 → EIE_NOT_IMPLEMENTED
+        // Round 1.5: Worker endpoint 구현 완료 → not_implemented 해제
         if (clean === 'students' && method === 'POST') {
-            return { type: 'not_implemented' };
+            return {
+                type: 'fn',
+                fn: async function (payload) {
+                    var result = await EieApi.createStudent(payload);
+                    return normalizeStudentWriteResult(result);
+                }
+            };
         }
 
         // ── timetable / timetable-cells GET ───────────────────────────────────
@@ -113,7 +161,7 @@
         }
 
         // ── consultations GET → 빈 배열 fallback ─────────────────────────────
-        // Worker endpoint 없음, GET는 화면 렌더를 위해 빈 배열 허용
+        // 쓰기는 Worker endpoint 없음 → EIE_NOT_IMPLEMENTED
         if (clean === 'consultations' || clean.startsWith('consultations?') || clean.startsWith('consultations/')) {
             if (method === 'GET') return { type: 'empty', data: [] };
             return { type: 'not_implemented' };

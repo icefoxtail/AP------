@@ -187,6 +187,9 @@
                 { method: 'DELETE' }
             );
         },
+        async deleteStudent(studentId) {
+            return request(`students/${encodeURIComponent(studentId)}`, { method: 'DELETE' });
+        },
 
         // ── Generic public request methods (APMS compat layer용) ─────
         request(path, options) {

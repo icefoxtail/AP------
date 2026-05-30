@@ -9,80 +9,82 @@ EIE를 APMS 화면·상태·저장 흐름을 기준으로 영어관용으로 택
 - 로컬 상태는 draft에만 사용
 - 원본 데이터는 `EieState.db` 기준
 - 저장은 `EieApi` → Worker → D1
-- 학생관리 우선
-- 시간표 편집은 후순위
+- 학생관리 우선 / 시간표 편집은 후순위
 
 ## 3. Round 1: EIE 공통 상태/API 호환 레이어 ✅ 완료 (2026-05-30)
-- 신규 파일: `eie/js/apms-compat/eie-apms-state.js`, `eie/js/apms-compat/eie-apms-api.js`, `eie/js/apms-compat/eie-apms-ui-bridge.js`.
-- 수정 파일: `eie/index.html`, `eie/js/eie-state.js`, `eie/js/eie-api.js`.
-- 완료 항목:
-  - `EieState.get().db.*` 구조 존재 및 초기화.
-  - `EieState.get().ui.*` 구조 존재.
-  - `EieApmsState.loadFoundation()` 호출 시 confirmed-students + timetable 적재.
-  - `window.api = window.EieApmsApi` 설정.
-  - `window.toast`, `window.closeModal`, `window.openModal`, `window.renderDashboard`, `window.apEscapeHtml`, `window.apmsInvalidateDataIndexes`, `window.returnToPreviousManagementView` 제공.
+- 신규 파일: `eie/js/apms-compat/eie-apms-state.js`, `eie-apms-api.js`, `eie-apms-ui-bridge.js`
+- 수정 파일: `eie/index.html`, `eie/js/eie-state.js`, `eie/js/eie-api.js`
+- 완료: EieState.db/ui 구조, EieApmsState, EieApmsApi, EieApmsUiBridge, window.api 설정, window.toast/closeModal/openModal/renderDashboard 제공
 
 ## 4. Round 1.1: 호환 레이어 보정 ✅ 완료 (2026-05-30)
-- 외부감사 FAIL 4개 보정.
+- window.state = EieState.get() 제공
+- api.get('students') APMS형 normalize
+- 미구현 쓰기 EIE_NOT_IMPLEMENTED 고정
+- apmath-home/index.html 범위 밖 변경 복원
 
-### 보정 1: apmath-home/index.html 범위 밖 변경 제거
-- `git restore apmath-home/index.html` 실행. git status에서 제거 확인.
+## 5. Round 1.5: 학생 CRUD Worker/API 선구현 ✅ 완료 (2026-05-30)
+- 목표: Round 2 학생관리 parity 전 Worker 저장 흐름 완성.
+- 수정 파일: `apmath/worker-backup/worker/routes/eie.js`, `eie/js/eie-api.js`, `eie/js/apms-compat/eie-apms-api.js`
 
-### 보정 2: window.state 제공
-- `eie-apms-state.js` 하단에 `window.state = EieState.get()` 추가.
-- EieState.get()의 참조를 그대로 연결 (복사본 아님).
-- 이미 window.state가 있으면 덮어쓰지 않음.
-
-### 보정 3: api.get('students') APMS형 normalize
-- `EieApi.getStudents()` 원본을 그대로 반환하지 않음.
-- `EieApmsState.normalizeFoundation(payload, null)` 거쳐 `{ success: true, data: [...] }` 형태로 반환.
-
-### 보정 4: Worker 없는 쓰기 endpoint EIE_NOT_IMPLEMENTED 고정 (B안)
-- POST students, PATCH students/{id}, PATCH/POST students/{id}/status → not_implemented
-- POST/PATCH/DELETE consultations → not_implemented
-- POST/PATCH parent-foundation/contacts → not_implemented
-- POST/PATCH attendance/homework/class-daily-records → not_implemented
-- POST timetable-cells/{id}/students, DELETE timetable-cells/{id}/students/{studentId} → not_implemented
-- 기존에 EieApi.createStudent/updateStudent/updateStudentStatus/assignStudentToCell/removeStudentFromCell으로 연결했던 경로 모두 차단.
-
-### Round 1.1 완료 후 git status 확인
-- apmath-home/index.html: 복원 완료, diff 없음.
-- eie/js/views/: diff 없음.
-
-## 5. Round 2 진입 전 필수 조건 (현재 상태)
-| 조건 | 상태 |
+### 구현 완료
+| endpoint | 설명 |
 |---|---|
-| window.state 제공 | ✅ 완료 (Round 1.1) |
-| api.get('students') normalize | ✅ 완료 (Round 1.1) |
-| 미구현 쓰기 not_implemented 고정 | ✅ 완료 (Round 1.1) |
-| apmath-home/index.html 범위 밖 제거 | ✅ 완료 (Round 1.1) |
-| Worker 학생 CRUD endpoint | ❌ 미구현 |
-| eie-students.js APMS parity | ❌ 미구현 |
+| POST /api/eie/students | 학생 직접 등록 (display_name 필수, grade/status/memo/phone 지원) |
+| PATCH /api/eie/students/{id} | 학생 정보 수정 (whitelist update, phone upsert) |
+| PATCH /api/eie/students/{id}/status | 상태 변경 (active/inactive/archived/needs_review/withdrawn) |
+| DELETE /api/eie/students/{id} | soft delete (status → archived, 물리 삭제 없음) |
+| EieApi.deleteStudent | eie-api.js에 추가 |
+
+### schema 안전 처리
+- eie_students 실제 컬럼만 사용: display_name, normalized_name, grade, status, memo, raw_meta_json, source_type, created_by, created_at, updated_at
+- phone/school/pin 등 없는 컬럼은 eie_student_contacts 또는 raw_meta_json에 보관 (감으로 쓰지 않음)
+- 물리 DELETE 없음
+
+### 연락처 처리
+- 학생 등록/수정 시 phone 계열 필드가 있으면 eie_student_contacts에 대표 연락처 upsert
+- 연락처 실패해도 학생 저장은 성공, warnings 배열에 기록
+- 연락처 별도 CRUD endpoint (POST/PATCH/DELETE student-contacts)는 미구현
+
+### D1/배포
+- D1 migration 실행 없음
+- Worker deploy 없음
+- 로컬 routes/eie.js 수정만 완료
 
 ## 6. Round 2: EIE 학생관리 APMS parity
-- 목표: EIE 학생관리를 APMS student.js 화면 구조 기반으로 이식.
-- 대상 파일: `eie/js/views/eie-students.js` 교체/확장.
-- Worker 선행 조건: `POST /api/eie/students`, `PATCH /api/eie/students/{id}`, `PATCH /api/eie/students/{id}/status` 추가 필요.
-
-**Round 2 진입 선택지:**
-- A안 (권장): Worker 학생 CRUD endpoint 선구현 → 학생관리 parity 진행. 저장 흐름 완전히 동작.
-- B안: 학생관리 parity UI를 먼저 붙이되 저장 버튼을 "준비중"으로 차단. Worker endpoint는 Round 3에서 추가.
-
-**Round 2 전 반드시 판정:** Worker endpoint 보강 여부를 먼저 결정한다.
+- 대상 파일: `eie/js/views/eie-students.js` 교체/확장
+- **Round 2 전 확인 필요**:
+  - 실제 Worker 배포 전에는 브라우저 저장 테스트 불가 (routes/eie.js 수정만 존재)
+  - Worker 배포 없이 학생 등록/수정/삭제를 실제 테스트하려면 wrangler dev 실행 필요
+- **Round 2에서 남은 주의점**:
+  - APMS student.js 복사 시 CONFIG.API_BASE, getTeacherNameForUI, copyPhoneNumber 등 추가 bridge 필요 가능성
+  - 연락처 상세 편집 endpoint 부족 → 연락처 편집은 준비중으로 처리 필요
+  - 상담/숙제/출결은 여전히 not_implemented
 
 ## 7. Round 3: 상담/연락처/메모
-- Worker endpoint 필요: `GET/POST/PATCH/DELETE /api/eie/consultations`, `POST/PATCH/DELETE /api/eie/student-contacts`.
-- APMS 상담 탭, 보호자 연락처 UX 이식.
+- Worker endpoint 필요: GET/POST/PATCH/DELETE /api/eie/consultations, POST/PATCH/DELETE /api/eie/student-contacts
 
 ## 8. Round 4: 클래스룸/출결/숙제
-- APMS `renderClass`형 운영 화면으로 교체.
-- Worker endpoint 필요: `/api/eie/attendance`, `/api/eie/homework`, `/api/eie/classroom-logs`.
+- APMS renderClass형 운영 화면
+- Worker endpoint 필요: /api/eie/attendance, /api/eie/homework, /api/eie/classroom-logs
 
 ## 9. Round 5: 시간표 v2 연동
-- 학생 상세 ↔ 시간표 ↔ 클래스룸 연결 완성.
+- 학생 상세 ↔ 시간표 ↔ 클래스룸 연결 완성
 
-## 10. 위험 관리
-- 없는 Worker endpoint → EIE_NOT_IMPLEMENTED (Round 1.1에서 고정).
-- state/db 불일치 → EieState.db 원본 기준, view 내부 배열은 draft/cache로 제한.
-- API 응답 구조 불일치 → normalizeFoundation에서 표준화.
-- timetable_cell_id → class_id adapter → Round 2 이후 실제 class 테이블 추가 시 재검토.
+## 10. Round 2 진입 전 조건 체크리스트
+| 조건 | 상태 |
+|---|---|
+| window.state 제공 | ✅ (Round 1.1) |
+| api.get('students') normalize | ✅ (Round 1.1) |
+| 미구현 쓰기 not_implemented | ✅ (Round 1.1) |
+| POST students Worker | ✅ (Round 1.5) |
+| PATCH students/{id} Worker | ✅ (Round 1.5) |
+| PATCH students/{id}/status Worker | ✅ (Round 1.5) |
+| DELETE students/{id} (soft) Worker | ✅ (Round 1.5) |
+| eie-students.js APMS parity | ❌ (Round 2 대상) |
+| Worker 실제 배포 | ❌ (Round 2 전 배포 필요) |
+
+## 11. 위험 관리
+- Worker 미배포 → 브라우저에서 새 endpoint 호출 불가
+- schema와 컬럼 불일치 → PRAGMA table_info 검증 또는 try/catch fallback
+- timetable_cell_id → class_id adapter → Round 2+ 검토
+- 없는 Worker endpoint → EIE_NOT_IMPLEMENTED (정상 차단)
