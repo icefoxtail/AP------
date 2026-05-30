@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>AP MATH — 중·고등 수학 전문관</title>
-<meta name="description" content="AP MATH는 왕지교육의 중·고등 수학 전문관입니다. 개념부터 심화까지, 수학의 흐름을 끝까지 관리합니다.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='6' y='6' width='36' height='36' rx='12' fill='%232563eb'/%3E%3Cpath d='M13.5 33 22.4 14h3.2L34.5 33h-4.4l-1.8-4.2h-8.7L17.9 33h-4.4Zm7.6-7.8h5.8L24 18.4l-2.9 6.8Z' fill='white'/%3E%3C/svg%3E">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AP MATH — 중·고등 수학 전문관">
-<meta property="og:description" content="개념부터 심화까지, 수학의 흐름을 끝까지 관리합니다.">
-<meta name="theme-color" content="#0f172a">
+<meta content="AP MATH는 왕지교육의 중·고등 수학 전문관입니다. 개념부터 심화까지, 수학의 흐름을 끝까지 관리합니다." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='6' y='6' width='36' height='36' rx='12' fill='%232563eb'/%3E%3Cpath d='M13.5 33 22.4 14h3.2L34.5 33h-4.4l-1.8-4.2h-8.7L17.9 33h-4.4Zm7.6-7.8h5.8L24 18.4l-2.9 6.8Z' fill='white'/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+<meta content="website" property="og:type"/>
+<meta content="AP MATH — 중·고등 수학 전문관" property="og:title"/>
+<meta content="개념부터 심화까지, 수학의 흐름을 끝까지 관리합니다." property="og:description"/>
+<meta content="#0f172a" name="theme-color"/>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
@@ -194,8 +195,6 @@
   .inquiry-card { padding: 36px; border-radius: var(--r-lg); background: var(--white); border: 1px solid var(--border); box-shadow: var(--sh-lg); }
   .inquiry-card h3 { font-size: 24px; font-weight: 800; color: var(--fg-1); }
   .inquiry-card p { margin-top: 12px; color: var(--fg-2); font-size: 15px; line-height: 1.65; word-break: keep-all; }
-  .inquiry-actions { display: grid; gap: 10px; margin-top: 28px; }
-  @media (min-width: 520px) { .inquiry-actions { grid-template-columns: 1fr 1fr; } }
 
   /* ---------- FOOTER (왕지교육 큰 대문과 통일된 구조) ---------- */
   footer { border-top: 1px solid var(--border); background: var(--white); color: var(--fg-2); }
@@ -260,7 +259,6 @@
   .map-link-body { padding: 14px 16px 4px; }
   .map-title { margin: 0; font-weight: 800; color: var(--fg-1); }
   .map-address { margin: 6px 0 0; color: var(--fg-2); font-size: 14px; line-height: 1.5; }
-  .map-quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 16px 16px; }
   .mobile-location-strip { display: none; }
   .mobile-only-toggle, .mobile-accordion { display: none; }
   .mcta-bar.is-hidden-by-input { transform: translateY(140%) !important; }
@@ -554,226 +552,261 @@
 </style>
 </head>
 <body>
-
 <!-- SVG Sprite -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-  <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></g></symbol>
-  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></g></symbol>
-  <symbol id="i-login" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2"/><path d="M9 12h11"/><path d="m16 8 4 4-4 4"/></g></symbol>
-  <symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></g></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z"/></g></symbol>
-  <symbol id="i-map-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
-  <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></g></symbol>
-  <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></g></symbol>
-  <symbol id="i-message" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></g></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></g></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></g></symbol>
+<svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-arrow-right" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></g></symbol>
+<symbol id="i-arrow-up-right" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></g></symbol>
+<symbol id="i-login" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2"></path><path d="M9 12h11"></path><path d="m16 8 4 4-4 4"></path></g></symbol>
+<symbol id="i-close" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></g></symbol>
+<symbol id="i-phone" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.6 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.28 1.64.48 2.5.6A2 2 0 0 1 22 16.92Z"></path></g></symbol>
+<symbol id="i-map-pin" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path><circle cx="12" cy="10" r="3"></circle></g></symbol>
+<symbol id="i-clock" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></g></symbol>
+<symbol id="i-book" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></g></symbol>
+<symbol id="i-chart" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></g></symbol>
+<symbol id="i-message" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></g></symbol>
+<symbol id="i-check" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M20 6 9 17l-5-5"></path></g></symbol>
+<symbol id="i-menu" viewbox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12h18"></path><path d="M3 6h18"></path><path d="M3 18h18"></path></g></symbol>
 </svg>
-
 <header class="hdr" id="hdr">
-  <div class="wrap hdr-in">
-    <!-- AP MATH 브랜드 로고 -->
-    <a class="brand apmath-brand" href="#top" aria-label="AP MATH 홈">
-      <svg class="apmath-brand__mark" width="38" height="38" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-        <rect x="4" y="26" width="11" height="16" rx="3.5" fill="#2563eb"></rect>
-        <rect x="18.5" y="16" width="11" height="26" rx="3.5" fill="#cbd5e1"></rect>
-        <rect x="33" y="6" width="11" height="36" rx="3.5" fill="#e2e8f0"></rect>
-      </svg>
-      <span class="apmath-brand__text">
-        <strong>AP MATH</strong>
-        <em>Wangji Edu</em>
-      </span>
-    </a>
-    <nav class="nav" aria-label="AP MATH 안내">
-      <a class="navlink" href="#courses">과정 안내</a>
-      <a class="navlink" href="#strength">강점</a>
-      <a class="navlink" href="#method">학습 방식</a>
-      <a class="navlink" href="#inquiry">상담 문의</a>
-      <span class="divider"></span>
-    </nav>
-    <div class="hdr-actions">
-      <a class="btn btn-secondary btn-sm home-link" href="../">왕지교육</a>
-      <a class="btn btn-blue btn-sm" href="../apmath/"><svg class="ic" width="16" height="16"><use href="#i-login"/></svg>로그인</a>
-      <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false">
-        <svg class="ic" width="24" height="24"><use href="#i-menu"/></svg>
-      </button>
-    </div>
-  </div>
-  <div class="mnav" id="mnav">
-    <a href="#courses">과정 안내</a>
-    <a href="#strength">강점</a>
-    <a href="#method">학습 방식</a>
-    <a href="#inquiry">상담 문의</a>
-  </div>
+<div class="wrap hdr-in">
+<!-- AP MATH 브랜드 로고 -->
+<a aria-label="AP MATH 홈" class="brand apmath-brand" href="#top">
+<svg aria-hidden="true" class="apmath-brand__mark" focusable="false" height="38" viewbox="0 0 48 48" width="38">
+<rect fill="#2563eb" height="16" rx="3.5" width="11" x="4" y="26"></rect>
+<rect fill="#cbd5e1" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
+<rect fill="#e2e8f0" height="36" rx="3.5" width="11" x="33" y="6"></rect>
+</svg>
+<span class="apmath-brand__text">
+<strong>AP MATH</strong>
+<em>Wangji Edu</em>
+</span>
+</a>
+<nav aria-label="AP MATH 안내" class="nav">
+<a class="navlink" href="#courses">과정 안내</a>
+<a class="navlink" href="#strength">강점</a>
+<a class="navlink" href="#method">학습 방식</a>
+<a class="navlink" href="#inquiry">상담 문의</a>
+<span class="divider"></span>
+</nav>
+<div class="hdr-actions">
+<a class="btn btn-secondary btn-sm home-link" href="../">왕지교육</a>
+<a class="btn btn-blue btn-sm" href="../apmath/"><svg class="ic" height="16" width="16"><use href="#i-login"></use></svg>로그인</a>
+<button aria-expanded="false" aria-label="메뉴 열기" class="burger" id="burger">
+<svg class="ic" height="24" width="24"><use href="#i-menu"></use></svg>
+</button>
+</div>
+</div>
+<div class="mnav" id="mnav">
+<a href="#courses">과정 안내</a>
+<a href="#strength">강점</a>
+<a href="#method">학습 방식</a>
+<a href="#inquiry">상담 문의</a>
+</div>
 </header>
-
 <main id="top">
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">중·고등 수학 전문관</span>
-        <h1>개념부터 수능까지,<br>끊기지 않는 수학 관리.</h1>
-        <p class="lead">학교 시험 흐름에 맞게 수업을 구성하고, 수업 기록과 오답이 다음 수업으로 이어집니다. 학습 흐름은 리포트로 전달합니다.</p>
-        <div class="cta-row">
-          <a class="btn btn-blue btn-lg" href="#inquiry">상담 신청하기</a>
-          <a class="btn btn-secondary btn-lg" href="../apmath/student/">학생 페이지</a>
-        </div>
-      </div>
-      <aside class="hero-panel" aria-label="AP MATH 과정 요약">
-        <p class="hero-panel-title">AP MATH 과정</p>
-        <div class="course-list">
-          <a class="course-mini" href="#courses"><span class="num">01</span><div><b>중등 수학</b><p>개념 이해와 학교 시험 대비를 함께 관리합니다.</p></div></a>
-          <a class="course-mini" href="#courses"><span class="num">02</span><div><b>고등 내신</b><p>학교별 범위와 기출 흐름을 수업에 반영합니다.</p></div></a>
-          <a class="course-mini" href="#courses"><span class="num">03</span><div><b>수능·심화</b><p>풀이량보다 사고 과정과 오답 이유를 확인합니다.</p></div></a>
-        </div>
-      </aside>
-    </div>
-  </section>
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="eyebrow">중·고등 수학 전문관</span>
+<h1>개념부터 수능까지,<br/>끊기지 않는 수학 관리.</h1>
+<p class="lead">학교 시험 흐름에 맞게 수업을 구성하고, 수업 기록과 오답이 다음 수업으로 이어집니다. 학습 흐름은 리포트로 전달합니다.</p>
+<div class="cta-row">
 
-  <section class="edu-quick-jump" aria-label="AP MATH 빠른 이동">
-    <div class="wrap">
-      <div class="edu-quick-scroll">
-        <a href="#courses">과정</a>
-        <a href="#strength">강점</a>
-        <a href="#method">방식</a>
-        <a href="#inquiry">상담</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="courses">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Course</span><h2>학생의 단계에 맞춰<br>과정을 나누어 관리합니다.</h2><p>학생의 현재 수준과 목표에 맞춰 무리 없이 이어지는 수학 과정을 설계합니다.</p></div>
-      <p class="edu-swipe-hint">옆으로 밀어 보기</p>
-      <div class="course-grid">
-        <article class="card course-card"><span class="badge">Middle School</span><h3>중등 수학</h3><p>개념을 단단하게. 중학교 교육과정 전체를 개념 중심으로 다집니다. 고등 수학으로 올라가기 전 빈틈을 먼저 확인합니다.</p><div class="mini-tags"><span>개념 정리</span><span>단원 점검</span><span>학교 시험</span></div></article>
-        <article class="card course-card"><span class="badge">High School</span><h3>고등 내신</h3><p>학교 시험에 맞게. 학교별 출제 경향과 기출을 기반으로 내신을 준비합니다. 시험 전후 관리까지 이어집니다.</p><div class="mini-tags"><span>학교별 범위</span><span>기출 흐름</span><span>복습 관리</span></div></article>
-        <article class="card course-card"><span class="badge">Advanced</span><h3>수능·심화</h3><p>흔들리지 않는 실력으로. 수능 유형과 심화 문제까지 단계적으로 확장합니다. 개념이 흔들리면 다시 돌아갑니다.</p><div class="mini-tags"><span>사고 과정</span><span>오답 원인</span><span>심화 대비</span></div></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec strength" id="strength">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Strength</span><h2>AP MATH의 강점은<br>흩어진 학습을 다시 연결하는 관리력입니다.</h2><p>학교 시험 흐름, 수업 기록, 오답, 리포트가 따로 흩어지지 않도록 다음 수업과 상담으로 이어갑니다.</p></div>
-      <div class="strength-grid">
-        <article class="card strength-card"><div class="icon"><svg class="ic" width="22" height="22"><use href="#i-book"/></svg></div><h3>학교별 내신 관리</h3><p>같은 학교 학생들의 시험 흐름을 파악하고 있습니다. 시험 범위와 출제 유형에 맞게 준비합니다.</p></article>
-        <article class="card strength-card"><div class="icon"><svg class="ic" width="22" height="22"><use href="#i-chart"/></svg></div><h3>기출·자료 기반 대비</h3><p>교재만으로는 부족합니다. 학교별 기출과 선생님 자료를 정리해 실전 감각을 만듭니다.</p></article>
-        <article class="card strength-card"><div class="icon"><svg class="ic" width="22" height="22"><use href="#i-check"/></svg></div><h3>오답 재연결</h3><p>틀린 문제를 넘기지 않습니다. 오답을 분류하고, 다음 수업에서 반드시 다시 확인합니다.</p></article>
-        <article class="card strength-card"><div class="icon"><svg class="ic" width="22" height="22"><use href="#i-message"/></svg></div><h3>학습 리포트</h3><p>수업이 끝나면 무엇을 배웠는지, 무엇을 놓쳤는지 정리해 전달합니다. 학부모도 흐름을 알 수 있습니다.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="method">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Method</span><h2>진단, 수업, 오답, 리포트가<br>하나의 흐름으로 이어집니다.</h2><p>수학 실력은 한 번의 설명보다 꾸준한 확인과 관리에서 안정적으로 쌓입니다.</p></div>
-      <div class="method-grid">
-        <article class="card method-card"><span class="step">1</span><h3>진단</h3><p>어디서 막혔는지 먼저 확인합니다. 학년이 아니라 이해 수준에서 시작합니다.</p></article>
-        <article class="card method-card"><span class="step">2</span><h3>수업</h3><p>개념과 유형을 함께 다룹니다. 이해한 것과 아직 안 된 것을 그날 안에 구분합니다.</p></article>
-        <article class="card method-card"><span class="step">3</span><h3>오답 관리</h3><p>틀린 문제는 원인별로 분류합니다. 같은 실수가 반복되지 않도록 연결합니다.</p></article>
-        <article class="card method-card"><span class="step">4</span><h3>리포트</h3><p>수업, 숙제, 시험 결과를 하나로 정리합니다. 다음 수업의 방향이 됩니다.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec inquiry" id="inquiry">
-    <div class="wrap inquiry-grid">
-      <div>
-        <div class="sec-head" style="margin-bottom:0"><span class="eyebrow">Contact</span><h2>학년, 학교, 현재 진도에 맞춰<br>AP MATH 수업 과정을 안내드립니다.</h2><p>처음 상담은 아이의 현재 상태를 파악하는 자리입니다. 어떤 과정이 맞는지 부담 없이 함께 확인해드립니다.</p></div>
-        <div class="info-list">
-          <div class="info-row"><span class="ico"><svg class="ic" width="20" height="20"><use href="#i-phone"/></svg></span><div><div class="k">전화 상담</div><div class="v">061-727-0369</div></div></div>
-          <div class="info-row"><span class="ico"><svg class="ic" width="20" height="20"><use href="#i-clock"/></svg></span><div><div class="k">상담 시간</div><div class="v">평일 14:00 – 21:00</div></div></div>
-          <div class="info-row"><span class="ico"><svg class="ic" width="20" height="20"><use href="#i-map-pin"/></svg></span><div><div class="k">순천 조례 캠퍼스 위치</div><div class="v">전남 순천시 왕지5길 9-8 (왕지동) 2층</div><a class="linkline" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener">네이버 지도에서 보기 →</a></div></div>
-
-
-        <div class="map-link-card" aria-label="왕지교육 캠퍼스 위치 안내">
-          <a class="map-link-visual" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener" aria-label="네이버 지도에서 왕지교육 캠퍼스 보기">
-            <span class="map-pin"><svg class="ic" width="24" height="24"><use href="#i-map-pin"/></svg></span>
-          </a>
-          <div class="map-link-body">
-            <p class="map-title">왕지교육 캠퍼스</p>
-            <p class="map-address">전남 순천시 왕지5길 9-8, 2층</p>
-          </div>
-          <div class="map-quick-actions">
-            <a class="btn btn-secondary btn-sm" href="tel:061-727-0369">전화하기</a>
-            <a class="btn btn-blue btn-sm" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" target="_blank" rel="noopener">네이버 길찾기</a>
-          </div>
-        </div>        </div>
-      </div>
-      <aside class="inquiry-card"><h3>상담 문의</h3><p>학년, 학교, 현재 진도를 알려주시면 어떤 과정이 맞는지 함께 확인해드립니다.</p><div class="inquiry-actions"><a class="btn btn-blue btn-block" href="tel:061-727-0369">전화 문의하기</a><a class="btn btn-secondary btn-block" href="../">왕지교육 홈으로</a></div><p style="margin-top:18px;font-size:13px;color:var(--fg-3);font-weight:600;">온라인 상담 폼은 실제 연결 후 추가하는 것을 권장합니다.</p></aside>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap ft">
-    <div class="ft-grid">
-      <div>
-        <a class="brand apmath-brand" href="#top" aria-label="AP MATH 홈">
-          <svg class="apmath-brand__mark" width="32" height="32" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-            <rect x="4" y="26" width="11" height="16" rx="3.5" fill="#2563eb"></rect>
-            <rect x="18.5" y="16" width="11" height="26" rx="3.5" fill="#cbd5e1"></rect>
-            <rect x="33" y="6" width="11" height="36" rx="3.5" fill="#e2e8f0"></rect>
-          </svg>
-          <span class="apmath-brand__text">
-            <strong style="font-size: 17px;">AP MATH</strong>
-            <em>Wangji Edu</em>
-          </span>
-        </a>
-        <p class="tag">왕지교육의 중·고등 수학 전문관입니다. 개념부터 수능까지, 수학의 흐름을 끝까지 관리합니다.</p>
-      </div>
-      <div>
-        <h4>교육관 링크</h4>
-        <ul>
-          <li><a href="../">왕지교육</a></li>
-          <li><a href="#top">AP MATH</a></li>
-          <li><a href="../eie-home/">EIE 영어</a></li>
-          <li><a href="../cmath-home/">시매쓰</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>정보 안내</h4>
-        <ul>
-          <li><a href="#inquiry">상담 문의</a></li>
-          <li><a href="../#faq">자주 묻는 질문</a></li>
-          <li><a href="https://blog.naver.com/wha6615" target="_blank" rel="noopener">공식 네이버 블로그</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="ft-bottom">
-      <span>© 2026 Wangji Edu. 왕지교육 · 순천 조례 캠퍼스</span>
-      <span>전남 순천시 왕지5길 9-8 (왕지동) 2층 · TEL 061-727-0369</span>
-    </div>
-  </div>
-</footer>
-
-<div class="mcta-bar" id="mctaBar">
-  <a class="tel" href="tel:061-727-0369" aria-label="전화 상담"><svg class="ic" width="18" height="18"><use href="#i-phone"/></svg>전화</a>
-  <a class="main" href="#inquiry">상담 문의하기</a>
+<a class="btn btn-secondary btn-lg" href="../apmath/student/">학생 페이지</a>
+</div>
+</div>
+<aside aria-label="AP MATH 과정 요약" class="hero-panel">
+<p class="hero-panel-title">AP MATH 과정</p>
+<div class="course-list">
+<a class="course-mini" href="#courses"><span class="num">01</span><div><b>중등 수학</b><p>개념 이해와 학교 시험 대비를 함께 관리합니다.</p></div></a>
+<a class="course-mini" href="#courses"><span class="num">02</span><div><b>고등 내신</b><p>학교별 범위와 기출 흐름을 수업에 반영합니다.</p></div></a>
+<a class="course-mini" href="#courses"><span class="num">03</span><div><b>수능·심화</b><p>풀이량보다 사고 과정과 오답 이유를 확인합니다.</p></div></a>
+</div>
+</aside>
+</div>
+</section>
+<section aria-label="AP MATH 빠른 이동" class="edu-quick-jump">
+<div class="wrap">
+<div class="edu-quick-scroll">
+<a href="#courses">과정</a>
+<a href="#strength">강점</a>
+<a href="#method">방식</a>
+<a href="#inquiry">상담</a>
+</div>
+</div>
+</section>
+<section class="sec" id="courses">
+<div class="wrap">
+<div class="sec-head"><span class="eyebrow">Course</span><h2>학생의 단계에 맞춰<br/>과정을 나누어 관리합니다.</h2><p>학생의 현재 수준과 목표에 맞춰 무리 없이 이어지는 수학 과정을 설계합니다.</p></div>
+<p class="edu-swipe-hint">옆으로 밀어 보기</p>
+<div class="course-grid">
+<article class="card course-card"><span class="badge">Middle School</span><h3>중등 수학</h3><p>개념을 단단하게. 중학교 교육과정 전체를 개념 중심으로 다집니다. 고등 수학으로 올라가기 전 빈틈을 먼저 확인합니다.</p><div class="mini-tags"><span>개념 정리</span><span>단원 점검</span><span>학교 시험</span></div></article>
+<article class="card course-card"><span class="badge">High School</span><h3>고등 내신</h3><p>학교 시험에 맞게. 학교별 출제 경향과 기출을 기반으로 내신을 준비합니다. 시험 전후 관리까지 이어집니다.</p><div class="mini-tags"><span>학교별 범위</span><span>기출 흐름</span><span>복습 관리</span></div></article>
+<article class="card course-card"><span class="badge">Advanced</span><h3>수능·심화</h3><p>흔들리지 않는 실력으로. 수능 유형과 심화 문제까지 단계적으로 확장합니다. 개념이 흔들리면 다시 돌아갑니다.</p><div class="mini-tags"><span>사고 과정</span><span>오답 원인</span><span>심화 대비</span></div></article>
+</div>
+</div>
+</section>
+<section class="sec strength" id="strength">
+<div class="wrap">
+<div class="sec-head"><span class="eyebrow">Strength</span><h2>AP MATH의 강점은<br/>흩어진 학습을 다시 연결하는 관리력입니다.</h2><p>학교 시험 흐름, 수업 기록, 오답, 리포트가 따로 흩어지지 않도록 다음 수업과 상담으로 이어갑니다.</p></div>
+<div class="strength-grid">
+<article class="card strength-card"><div class="icon"><svg class="ic" height="22" width="22"><use href="#i-book"></use></svg></div><h3>학교별 내신 관리</h3><p>같은 학교 학생들의 시험 흐름을 파악하고 있습니다. 시험 범위와 출제 유형에 맞게 준비합니다.</p></article>
+<article class="card strength-card"><div class="icon"><svg class="ic" height="22" width="22"><use href="#i-chart"></use></svg></div><h3>기출·자료 기반 대비</h3><p>교재만으로는 부족합니다. 학교별 기출과 선생님 자료를 정리해 실전 감각을 만듭니다.</p></article>
+<article class="card strength-card"><div class="icon"><svg class="ic" height="22" width="22"><use href="#i-check"></use></svg></div><h3>오답 재연결</h3><p>틀린 문제를 넘기지 않습니다. 오답을 분류하고, 다음 수업에서 반드시 다시 확인합니다.</p></article>
+<article class="card strength-card"><div class="icon"><svg class="ic" height="22" width="22"><use href="#i-message"></use></svg></div><h3>학습 리포트</h3><p>수업이 끝나면 무엇을 배웠는지, 무엇을 놓쳤는지 정리해 전달합니다. 학부모도 흐름을 알 수 있습니다.</p></article>
+</div>
+</div>
+</section>
+<section class="sec" id="method">
+<div class="wrap">
+<div class="sec-head"><span class="eyebrow">Method</span><h2>진단, 수업, 오답, 리포트가<br/>하나의 흐름으로 이어집니다.</h2><p>수학 실력은 한 번의 설명보다 꾸준한 확인과 관리에서 안정적으로 쌓입니다.</p></div>
+<div class="method-grid">
+<article class="card method-card"><span class="step">1</span><h3>진단</h3><p>어디서 막혔는지 먼저 확인합니다. 학년이 아니라 이해 수준에서 시작합니다.</p></article>
+<article class="card method-card"><span class="step">2</span><h3>수업</h3><p>개념과 유형을 함께 다룹니다. 이해한 것과 아직 안 된 것을 그날 안에 구분합니다.</p></article>
+<article class="card method-card"><span class="step">3</span><h3>오답 관리</h3><p>틀린 문제는 원인별로 분류합니다. 같은 실수가 반복되지 않도록 연결합니다.</p></article>
+<article class="card method-card"><span class="step">4</span><h3>리포트</h3><p>수업, 숙제, 시험 결과를 하나로 정리합니다. 다음 수업의 방향이 됩니다.</p></article>
+</div>
+</div>
+</section>
+<section class="sec inquiry" id="inquiry">
+<div class="wrap inquiry-grid">
+<div>
+<div class="sec-head" style="margin-bottom:0"><span class="eyebrow">Contact</span><h2>학년, 학교, 현재 진도에 맞춰<br/>AP MATH 수업 과정을 안내드립니다.</h2><p>처음 상담은 아이의 현재 상태를 파악하는 자리입니다. 어떤 과정이 맞는지 부담 없이 함께 확인해드립니다.</p></div>
+<div class="info-list">
+<div class="info-row"><span class="ico"><svg class="ic" height="20" width="20"><use href="#i-phone"></use></svg></span><div><div class="k">전화 상담</div><div class="v">061-727-0369</div></div></div>
+<div class="info-row"><span class="ico"><svg class="ic" height="20" width="20"><use href="#i-clock"></use></svg></span><div><div class="k">상담 시간</div><div class="v">평일 14:00 – 21:00</div></div></div>
+<div class="info-row"><span class="ico"><svg class="ic" height="20" width="20"><use href="#i-map-pin"></use></svg></span><div><div class="k">순천 조례 캠퍼스 위치</div><div class="v">전남 순천시 왕지5길 9-8 (왕지동) 2층</div><a class="linkline" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank">네이버 지도에서 보기 →</a></div></div>
+<div aria-label="왕지교육 캠퍼스 위치 안내" class="map-link-card">
+<a aria-label="네이버 지도에서 왕지교육 캠퍼스 보기" class="map-link-visual" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank">
+<span class="map-pin"><svg class="ic" height="24" width="24"><use href="#i-map-pin"></use></svg></span>
+</a>
+<div class="map-link-body">
+<p class="map-title">왕지교육 캠퍼스</p>
+<p class="map-address">전남 순천시 왕지5길 9-8, 2층</p>
 </div>
 
+</div> </div>
+</div>
+<aside class="inquiry-card"><h3>상담 문의</h3><p>학년, 학교, 현재 진도를 알려주시면 어떤 과정이 맞는지 함께 확인해드립니다.</p></aside>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap ft">
+<div class="ft-grid">
+<div>
+<a aria-label="AP MATH 홈" class="brand apmath-brand" href="#top">
+<svg aria-hidden="true" class="apmath-brand__mark" focusable="false" height="32" viewbox="0 0 48 48" width="32">
+<rect fill="#2563eb" height="16" rx="3.5" width="11" x="4" y="26"></rect>
+<rect fill="#cbd5e1" height="26" rx="3.5" width="11" x="18.5" y="16"></rect>
+<rect fill="#e2e8f0" height="36" rx="3.5" width="11" x="33" y="6"></rect>
+</svg>
+<span class="apmath-brand__text">
+<strong style="font-size: 17px;">AP MATH</strong>
+<em>Wangji Edu</em>
+</span>
+</a>
+<p class="tag">왕지교육의 중·고등 수학 전문관입니다. 개념부터 수능까지, 수학의 흐름을 끝까지 관리합니다.</p>
+</div>
+<div>
+<h4>교육관 링크</h4>
+<ul>
+<li><a href="../">왕지교육</a></li>
+<li><a href="#top">AP MATH</a></li>
+<li><a href="../eie-home/">EIE 영어</a></li>
+<li><a href="../cmath-home/">시매쓰</a></li>
+</ul>
+</div>
+<div>
+<h4>정보 안내</h4>
+<ul>
+<li><a href="#inquiry">상담 문의</a></li>
+<li><a href="../#faq">자주 묻는 질문</a></li>
+<li><a href="https://blog.naver.com/wha6615" rel="noopener" target="_blank">공식 네이버 블로그</a></li>
+</ul>
+</div>
+</div>
+<div class="ft-bottom">
+<span>© 2026 Wangji Edu. 왕지교육 · 순천 조례 캠퍼스</span>
+<span>전남 순천시 왕지5길 9-8 (왕지동) 2층 · TEL 061-727-0369</span>
+</div>
+</div>
+</footer>
+<div class="mcta-bar" id="mctaBar">
+<a aria-label="전화 상담" class="tel" href="tel:061-727-0369"><svg class="ic" height="18" width="18"><use href="#i-phone"></use></svg>전화</a>
+<a class="main" href="#inquiry">상담 문의</a>
+</div>
 <script>
+
+  /* ===== 공통 앵커 이동/초기 스크롤 안정화 ===== */
+  (function(){
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e) {}
+    function headerOffset(){
+      var header = document.getElementById('siteHeader') || document.getElementById('hdr');
+      return header ? header.offsetHeight + 8 : 72;
+    }
+    function closeMobileNav(){
+      var nav = document.getElementById('mobileNav') || document.getElementById('mnav');
+      var btn = document.getElementById('burger');
+      if(nav) nav.classList.remove('open');
+      if(btn){
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label', '메뉴 열기');
+        var btnUse = btn.querySelector('use');
+        if(btnUse) btnUse.setAttribute('href', '#i-menu');
+      }
+    }
+    function scrollToHash(hash, behavior){
+      if(!hash || hash === '#top') { window.scrollTo({ top: 0, behavior: behavior || 'auto' }); return; }
+      var target = document.querySelector(hash);
+      if(!target) return;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset();
+      window.scrollTo({ top: Math.max(0, top), behavior: behavior || 'smooth' });
+    }
+    window.addEventListener('pageshow', function(){
+      window.setTimeout(function(){
+        if(location.hash) scrollToHash(location.hash, 'auto');
+        else window.scrollTo(0, 0);
+      }, 0);
+    });
+    document.addEventListener('click', function(e){
+      var link = e.target.closest('a[href^="#"]');
+      if(!link) return;
+      var hash = link.getAttribute('href');
+      if(!hash || hash === '#') return;
+      var target = hash === '#top' ? document.getElementById('top') : document.querySelector(hash);
+      if(!target) return;
+      e.preventDefault();
+      closeMobileNav();
+      if(history.pushState) history.pushState(null, '', hash);
+      scrollToHash(hash, 'smooth');
+    });
+  })();
+
   var hdr = document.getElementById('hdr');
   function onScroll(){ hdr.classList.toggle('scrolled', window.scrollY > 12); }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
   var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
-  burger.addEventListener('click', function(){
-    var open = mnav.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    burger.innerHTML = open ? '<svg class="ic" width="24" height="24"><use href="#i-close"/></svg>'
-                            : '<svg class="ic" width="24" height="24"><use href="#i-menu"/></svg>';
-  });
-  mnav.addEventListener('click', function(e){ 
-    if(e.target.closest('a')){ 
-      mnav.classList.remove('open'); 
-      burger.setAttribute('aria-expanded','false'); 
-      burger.innerHTML='<svg class="ic" width="24" height="24"><use href="#i-menu"/></svg>'; 
-    } 
-  });
+  if (burger && mnav) {
+    function setBurgerIcon(open){
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+      var useTag = burger.querySelector('use');
+      if(useTag) useTag.setAttribute('href', open ? '#i-close' : '#i-menu');
+    }
+    burger.addEventListener('click', function(){
+      var open = mnav.classList.toggle('open');
+      setBurgerIcon(open);
+    });
+    mnav.addEventListener('click', function(e){
+      if(e.target.closest('a')){
+        mnav.classList.remove('open');
+        setBurgerIcon(false);
+      }
+    });
+  }
 
 
   /* 모바일 하단 CTA — 상담 섹션/입력 중 자동 숨김 */

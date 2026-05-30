@@ -419,7 +419,7 @@ window.questionBank = [
     tags: ["그래프"],
     wide: false,
     content: "이차함수의 그래프가 아래 그림과 같을 때, 다음 중 그래프를 나타내는 이차함수의 식은? [4점]",
-    image: "assets/images/22_이수중_1학기_기말_중3_기출/q18_graph.png",
+    image: "assets/images/22_이수중_1학기_기말_중3_기출/q18.png",
     choices: [
       "$y = x^2 + 4x + 3$",
       "$y = x^2 - 4x + 3$",

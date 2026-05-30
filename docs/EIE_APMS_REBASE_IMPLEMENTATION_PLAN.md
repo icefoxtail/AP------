@@ -30,14 +30,25 @@ EIE를 APMS 화면·상태·저장 흐름을 기준으로 영어관용으로 택
 
 ### 확인 결과
 - `wrangler d1 list`: wangji-eie-os D1 존재 확인, database_id: `2066e8ce-a02e-4f35-9c2d-d60891afff63`
-- remote D1 PRAGMA: permission blocked (schema는 로컬 migration 기준으로 이상 없음)
+- remote D1 PRAGMA(`eie_students`): **성공** — ICN 리전, 스키마 이상 없음
 
-### EIE Worker 소스 복구
-- **위치**: `C:\Users\USER\Desktop\wangji-eie-worker`
-- **소스 기준**: `AP------/apmath/worker-backup/worker` (커밋 865509a)
-- **복사 파일**: index.js, routes/*.js, helpers/*.js
+### EIE Worker 소스 루트
+- **위치**: `C:\Users\USER\Desktop\wangji-eie-worker` (기존 폴더 확인)
+- 이미 index.js, routes/eie.js, helpers/*.js 존재 확인
 
-### wrangler.jsonc 설정 (검증 완료)
+### Round 1.7 보정 사항
+
+#### 1. wrangler.jsonc APMS 설정 → EIE 설정으로 수정
+- **문제**: `wrangler.jsonc`에 APMS 설정(`ap-math-os-v2612`)이 잔존 → 배포 시 APMS가 덮여 쓰일 위험
+- **조치**: `wrangler.jsonc`를 EIE 전용 설정으로 교체
+- `wrangler.toml`(EIE 정상)과 `wrangler.jsonc`(EIE 수정)이 모두 일치하도록 통일
+
+#### 2. handleDeleteStudent 누락 → 추가
+- **문제**: `wangji-eie-worker/routes/eie.js`에 `handleDeleteStudent` 및 `getStudentById`/`getStudentWithContacts` 헬퍼 없음
+- **조치**: `worker-backup/worker/routes/eie.js` 기준으로 추가 (물리 DELETE 없음, status='archived' soft delete)
+- DELETE /api/eie/students/:id 라우트 등록 완료
+
+### wrangler 설정 (검증 완료)
 ```json
 {
   "name": "wangji-eie-os",
@@ -48,13 +59,14 @@ EIE를 APMS 화면·상태·저장 흐름을 기준으로 영어관용으로 택
 ```
 
 ### 검증 결과
-- node --check index.js: OK
-- node --check routes/eie.js: OK
-- handlePostStudent / handlePatchStudent / handlePatchStudentStatus / handleDeleteStudent: 존재 확인
-- soft delete (status = 'archived'): 확인
-- /api/eie 라우팅 (index.js → handleEie): 확인
+- node --check index.js: **OK**
+- node --check routes/eie.js: **OK**
+- handlePostStudent / handlePatchStudent / handlePatchStudentStatus / handleDeleteStudent: **존재 확인**
+- soft delete (status = 'archived'): **확인 (물리 DELETE 없음)**
+- /api/eie 라우팅 (index.js → handleEie): **확인**
+- remote D1 eie_students 스키마: **확인 (ICN, production)**
 
-### 배포 판정: **배포 가능 후보 ✅**
+### 배포 판정: **배포 가능 ✅**
 
 단, 실제 배포는 사용자 확인 후 진행:
 ```
@@ -67,6 +79,61 @@ npx wrangler deploy
 1. GET /api/eie/confirmed-students 읽기 smoke
 2. GET /api/eie/timetable 읽기 smoke
 3. POST students 쓰기 smoke (사용자 확인 후)
+
+## 7.5. Round 1.7.2: index.js EIE 전용 최소 Worker 교체 ✅ 완료 (2026-05-30)
+
+### Round 1.7.1 실패 원인
+- `wangji-eie-worker/index.js`에 APMS 전체 route import(enrollments, class-time-slots, students, auth 등) 잔존
+- 이 상태로 배포 시 APMS 전체 Worker가 배포됨 → EIE 전용 Worker 아님
+
+### Round 1.7.2 보정
+- `index.js`를 EIE 전용 최소 Worker로 완전 교체
+  - `import { handleEie } from './routes/eie.js'` 하나만 import
+  - `/api/eie`, `/api/eie/*` 전용 라우팅
+  - 인증: Bearer token → DB teacher_sessions 검증 (인라인)
+  - 그 외 경로: `/health` = 상태 확인, 나머지 = 404
+- `helpers/response.js` 보정: `errorResponse` 추가, `Content-Type: charset=utf-8` 적용
+- `README.md` 신규 생성: EIE 전용 Worker 설명
+
+### 검증 결과
+- node --check index.js: **OK**
+- node --check routes/eie.js: **OK**
+- node --check helpers/response.js: **OK**
+- dynamic import index: **OK**
+- dynamic import routes/eie: **OK**
+- APMS route import 검색: **[PASS] 없음**
+- DELETE FROM eie_students 검색: **[PASS] 없음**
+- wrangler.jsonc: name/database_name/database_id = wangji-eie-os ✅
+
+### 배포 판정: **배포 가능 ✅**
+
+## 7.6. Round 1.7.3: 배포 전 런타임 보정 ✅ 완료 (2026-05-30)
+
+### 보정 내용
+- `routes/eie.js` handleGet() 마지막 `return null` → `return jsonResponse({ success: false, error: 'not found' }, 404)` 변경
+  - 미등록 GET 경로에서 null 반환으로 런타임 크래시 가능성 제거
+
+### remote D1 인증 테이블 확인
+| 테이블 | 결과 | 주요 컬럼 |
+|---|---|---|
+| teachers | ✅ 존재 (1건) | id, name, login_id, password_hash, role |
+| teacher_sessions | ✅ 존재 (2건) | id, teacher_id, session_token, expires_at, revoked_at, last_used_at |
+
+- index.js verifyTeacher() 쿼리 컬럼과 D1 스키마 완전 일치 ✅
+
+### token smoke
+- SESSION_TOKEN 환경변수 없음 → 미실행 (토큰 미제공)
+- 배포 후 사용자가 SESSION_TOKEN으로 직접 확인 필요
+
+### 검증 결과
+- node --check 3개 파일: **OK**
+- dynamic import index/routes: **OK**
+- return null (handleGet fallback): **[PASS] 제거 완료**
+- DELETE FROM eie_students: **[PASS] 없음**
+- APMS route import: **[PASS] 없음**
+- wrangler EIE 설정: **✅**
+
+### 배포 판정: **배포 가능 ✅ (사용자 SESSION_TOKEN 확인 후)**
 
 ## 8. Round 2: EIE 학생관리 APMS parity (다음 라운드)
 - **전제 조건**: EIE Worker 배포 완료 (또는 저장 버튼 준비중으로 진행)
@@ -85,7 +152,13 @@ npx wrangler deploy
 | EIE Worker 소스 루트 확정 | ✅ (Round 1.7: wangji-eie-worker) |
 | wrangler.jsonc name/DB 정확 | ✅ (Round 1.7: wangji-eie-os) |
 | database_id 확인 | ✅ (2066e8ce-a02e-4f35-9c2d-d60891afff63) |
-| node --check 통과 | ✅ (Round 1.7) |
+| node --check 통과 | ✅ (Round 1.7.2) |
+| index.js EIE 전용 최소 Worker | ✅ (Round 1.7.2: APMS import 전부 제거) |
+| dynamic import OK | ✅ (Round 1.7.2) |
+| handleGet() null fallback 제거 | ✅ (Round 1.7.3) |
+| teachers D1 테이블 확인 | ✅ (Round 1.7.3: 1건 존재) |
+| teacher_sessions D1 테이블 확인 | ✅ (Round 1.7.3: 2건 존재) |
 | EIE Worker 실제 배포 | ❌ (사용자 확인 후 실행) |
-| remote D1 schema 확인 | ❌ (permission blocked, 배포 후 확인 권장) |
+| remote D1 schema 확인 | ✅ (Round 1.7: ICN production 확인) |
+| token smoke | ❌ (SESSION_TOKEN 미제공 — 배포 후 직접 확인 필요) |
 | eie-students.js APMS parity | ❌ (Round 2 대상) |
