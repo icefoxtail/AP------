@@ -80,6 +80,114 @@ function renderAdminDashboardView() {
     apInsertAdminSystemGate(0);
 }
 
+function apRemovePublicInquiryFloating() {
+    if (typeof document === 'undefined') return;
+    document.querySelectorAll('#apPublicInquiryFloatingStyle, #apPublicInquiryFloat').forEach(el => el.remove());
+}
+
+function apEnsurePublicInquiryFloatingStyle() {
+    if (typeof document === 'undefined' || document.getElementById('apPublicInquiryFloatingStyle')) return;
+    const style = document.createElement('style');
+    style.id = 'apPublicInquiryFloatingStyle';
+    style.textContent = `
+        #apPublicInquiryFloat {
+            position: fixed;
+            right: 18px;
+            bottom: 22px;
+            z-index: 1200;
+            width: 54px;
+            height: 54px;
+            border: 1px solid rgba(183, 20, 27, .24);
+            border-radius: 999px;
+            background: #b7141b;
+            color: #fff;
+            box-shadow: 0 16px 36px rgba(15, 23, 42, .24);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            animation: apPublicInquiryPulse 2.1s ease-in-out infinite;
+        }
+        #apPublicInquiryFloat:hover { transform: translateY(-1px); }
+        #apPublicInquiryFloat .ap-inquiry-float-icon {
+            font-size: 22px;
+            line-height: 1;
+        }
+        #apPublicInquiryFloat .ap-inquiry-float-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            min-width: 21px;
+            height: 21px;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: #fff;
+            color: #b7141b;
+            border: 1px solid rgba(183, 20, 27, .24);
+            font-size: 11px;
+            font-weight: 900;
+            line-height: 19px;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, .16);
+        }
+        @keyframes apPublicInquiryPulse {
+            0%, 100% { box-shadow: 0 14px 32px rgba(15, 23, 42, .22), 0 0 0 0 rgba(183, 20, 27, .28); }
+            50% { box-shadow: 0 14px 32px rgba(15, 23, 42, .18), 0 0 0 9px rgba(183, 20, 27, 0); }
+        }
+        @media (max-width: 768px) {
+            #apPublicInquiryFloat { right: 14px; bottom: 18px; width: 50px; height: 50px; }
+            #apPublicInquiryFloat .ap-inquiry-float-icon { font-size: 20px; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+function apRenderPublicInquiryFloating(count) {
+    if (typeof document === 'undefined') return;
+    const safeCount = Number(count || 0);
+    if (apAdminDashboardRole() !== 'admin' || safeCount <= 0) {
+        apRemovePublicInquiryFloating();
+        return;
+    }
+    apEnsurePublicInquiryFloatingStyle();
+    let btn = document.getElementById('apPublicInquiryFloat');
+    if (!btn) {
+        btn = document.createElement('button');
+        btn.id = 'apPublicInquiryFloat';
+        btn.type = 'button';
+        btn.addEventListener('click', function() {
+            if (typeof openPublicInquiryList === 'function') openPublicInquiryList('new');
+            else if (typeof toast === 'function') toast('상담 신청 목록을 불러오지 못했습니다.', 'warn');
+        });
+        document.body.appendChild(btn);
+    }
+    const labelCount = safeCount > 99 ? '99+' : String(safeCount);
+    btn.setAttribute('aria-label', `신규 상담 ${labelCount}건`);
+    btn.title = `신규 상담 ${labelCount}건`;
+    btn.innerHTML = `<span class="ap-inquiry-float-icon" aria-hidden="true">💬</span><span class="ap-inquiry-float-badge">${labelCount}</span>`;
+}
+
+async function apRefreshPublicInquiryFloating(attempt = 0) {
+    if (apAdminDashboardRole() !== 'admin') {
+        apRemovePublicInquiryFloating();
+        return 0;
+    }
+    if (typeof api === 'undefined' || !api || typeof api.get !== 'function') {
+        if (attempt < 2 && typeof setTimeout === 'function') setTimeout(() => apRefreshPublicInquiryFloating(attempt + 1), 350);
+        return 0;
+    }
+    try {
+        const res = await api.get('public-inquiries?status=new&limit=100');
+        const rows = Array.isArray(res?.inquiries) ? res.inquiries : [];
+        apRenderPublicInquiryFloating(rows.length);
+        return rows.length;
+    } catch (err) {
+        apRemovePublicInquiryFloating();
+        if (window.console && console.warn) console.warn('[APMS admin] public inquiry floating load failed', err);
+        return 0;
+    }
+}
+
 
 function apInquiryStatusLabel(status) {
     const map = { new: '신규', checked: '확인', done: '완료' };
@@ -133,14 +241,17 @@ function apRenderPublicInquiryRows(rows) {
     }).join('');
 }
 
-async function openPublicInquiryList() {
+async function openPublicInquiryList(statusFilter) {
     if (typeof showModal !== 'function') {
         if (typeof toast === 'function') toast('상담 신청 목록을 열 수 없습니다.', 'warn');
         return;
     }
-    showModal('상담 신청', `<div id="publicInquiryList" style="display:grid; gap:10px; min-height:120px;"><div style="padding:24px; text-align:center; color:var(--secondary);">상담 신청을 불러오는 중입니다.</div></div>`);
+    const filter = String(statusFilter || '').trim();
+    window.__apPublicInquiryListFilter = filter;
+    showModal(filter === 'new' ? '신규 상담 신청' : '상담 신청', `<div id="publicInquiryList" style="display:grid; gap:10px; min-height:120px;"><div style="padding:24px; text-align:center; color:var(--secondary);">상담 신청을 불러오는 중입니다.</div></div>`);
     try {
-        const res = await api.get('public-inquiries?limit=100');
+        const query = filter ? `public-inquiries?status=${encodeURIComponent(filter)}&limit=100` : 'public-inquiries?limit=100';
+        const res = await api.get(query);
         const box = document.getElementById('publicInquiryList');
         if (!box) return;
         if (!res || res.error || res.success === false) {
@@ -165,7 +276,8 @@ async function apUpdatePublicInquiry(id, status) {
             return;
         }
         if (typeof toast === 'function') toast('상담 상태를 저장했습니다.', 'success');
-        await openPublicInquiryList();
+        await openPublicInquiryList(window.__apPublicInquiryListFilter || '');
+        await apRefreshPublicInquiryFloating();
     } catch (err) {
         if (typeof toast === 'function') toast('상담 상태 저장 중 오류가 발생했습니다.', 'error');
         if (window.console && console.warn) console.warn('[APMS admin] public inquiry update failed', err);
