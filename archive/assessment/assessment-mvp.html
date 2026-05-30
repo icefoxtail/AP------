@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AP Math 시험지 보관함 MVP</title>
+  <title>AP Math 시험지 보관함</title>
   <style>
     :root { --bg:#f6f7fb; --card:#fff; --line:#e5e7eb; --text:#111827; --muted:#6b7280; --blue:#2563eb; --blue-soft:#eff6ff; --green:#059669; --orange:#d97706; }
     * { box-sizing:border-box; }
@@ -27,6 +27,8 @@
     .badge { flex:0 0 auto; font-size:11px; border-radius:999px; padding:5px 8px; background:var(--blue-soft); color:var(--blue); font-weight:900; }
     .meta { display:flex; flex-wrap:wrap; gap:6px; }
     .chip { font-size:12px; color:#475569; background:#f8fafc; border:1px solid #eef2f7; border-radius:999px; padding:5px 8px; }
+    .scope { font-size:13px; color:#334155; background:#f8fafc; border:1px solid #eef2f7; border-radius:14px; padding:10px 11px; line-height:1.5; }
+    .scope b { color:#111827; margin-right:6px; }
     .mix { font-size:12px; color:var(--muted); line-height:1.6; }
     .actions { display:flex; gap:8px; margin-top:auto; }
     button.action { flex:1; height:40px; border-radius:12px; border:1px solid var(--line); background:#fff; font-weight:900; cursor:pointer; }
@@ -41,13 +43,13 @@
   <div class="wrap">
     <div class="hero">
       <div>
-        <h1>시험지 보관함 MVP</h1>
-        <p class="sub">1학기 중간·기말 JS 기반 평가팩입니다. 중3 기말은 정확 경로 이미지 문항을 포함합니다.</p>
+        <h1>시험지 보관함</h1>
+        <p class="sub">진단평가·단원평가·중간·기말평가를 범위 확인 후 바로 출력합니다.</p>
       </div>
       <div class="stats" id="stats"></div>
     </div>
     <div class="toolbar">
-      <input id="search" placeholder="단원, 학년, 평가명 검색">
+      <input id="search" placeholder="평가명, 학년, 단원, 범위 검색">
       <select id="grade"><option value="">전체 학년</option></select>
       <select id="count"><option value="">전체 문항 수</option><option value="10">10문항</option><option value="15">15문항</option><option value="20">20문항</option><option value="25">25문항</option></select>
     </div>
@@ -84,7 +86,7 @@
         if (grade && p.grade !== grade) return false;
         if (count && String(p.questionCount) !== count) return false;
         if (!q) return true;
-        return [p.title,p.category,p.grade,p.unitLabel,p.unitKey,p.purpose].join(' ').toLowerCase().includes(q);
+        return [p.title,p.category,p.grade,p.unitLabel,p.unitKey,p.scopeLabel,(p.scopeUnits||[]).join(' '),p.purpose].join(' ').toLowerCase().includes(q);
       });
     }
     function render() {
@@ -100,8 +102,9 @@
             <span class="chip">${p.questionCount}문항</span>
             <span class="chip">${p.estimatedMinutes}분</span>
             <span class="chip">${p.hasImage ? '이미지 포함' : '이미지 없음'}</span>
-            ${p.courseLabel ? `<span class="chip">${p.courseLabel}</span>` : ''}${p.unitLabel ? `<span class="chip">${p.unitLabel}</span>` : ''}
+            ${p.courseLabel ? `<span class="chip">${p.courseLabel}</span>` : ''}
           </div>
+          <div class="scope"><b>범위</b>${p.scopeLabel || p.unitLabel || '범위 확인 필요'}</div>
           <div class="mix">난이도: ${countObj(p.difficultyMix)}<br>유형: ${countObj(p.skillMix)}</div>
           <div class="actions">
             <button class="action primary" onclick="openPack('${p.id}','exam')">출력</button>

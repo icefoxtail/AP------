@@ -1,7 +1,7 @@
-// Auto-generated AP Math assessment packs: 1학기 MVP Round 2. Do not edit by hand.
+// Auto-generated AP Math assessment packs: 1학기 MVP Round 2 scope labels. Do not edit by hand.
 (function(){
   window.APMATH_ASSESSMENT_PACKS_1SEM = {
-  "version": "1sem-mvp-round2-20260530",
+  "version": "1sem-mvp-round2-scope-20260530",
   "generatedAt": "2026-05-30T00:00:00+09:00",
   "sourceSummary": {
     "sourceZip": "apms_js_archive_assessment_source_20260530.zip",
@@ -13,12 +13,13 @@
     "uniqueTextQuestions": 1917,
     "duplicateGroups": 131,
     "generatedPackCount": 56,
-    "versionNote": "round2-m3-final-image-fixed",
+    "versionNote": "round2-scope-labels",
     "m3FinalSourceQuestions": 262,
     "m3FinalUsableQuestionsAfterImagePathFix": 260,
     "m3FinalAddedPackCount": 4,
-    "m3FinalAddedQuestionSlots": 65,
-    "m3FinalPolicy": "평가팩끼리 문항 재사용 허용, 한 평가지 안 원문·유형 중복 금지, 정확 경로 이미지 포함"
+    "m3FinalAddedQuestionSlots": 61,
+    "m3FinalPolicy": "평가팩끼리 문항 재사용 허용, 한 평가지 안 원문·유형 중복 금지, 정확 경로 이미지 포함",
+    "scopeLabelPolicy": "평가팩 카드에 범위(scopeLabel)를 표시하고, 진단평가·기말평가도 어디부터 어디까지인지 확인 가능하게 함"
   },
   "categoryOrder": [
     "진단평가",
@@ -702,7 +703,19 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "DIAG_1SEM_H1_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 연산",
+        "항등식과 나머지정리",
+        "인수분해",
+        "복소수",
+        "이차방정식",
+        "이차방정식과 이차함수",
+        "여러 가지 방정식과 부등식",
+        "이차함수"
+      ],
+      "scopeLabel": "다항식의 연산 ~ 이차함수",
+      "scopeNote": "신규 상담·반 배정용 범위"
     },
     {
       "id": "DIAG_1SEM_H2_20",
@@ -1335,7 +1348,25 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "DIAG_1SEM_H2_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 연산",
+        "조합",
+        "지수법칙",
+        "나머지 정리",
+        "확률의 뜻과 활용",
+        "항등식과 나머지 정리",
+        "인수분해",
+        "복소수",
+        "이차방정식",
+        "이차방정식과 이차함수",
+        "여러 가지 방정식과 부등식",
+        "순열과 조합",
+        "로그의 실생활 활용 (서술형)",
+        "삼각함수의 각 변환"
+      ],
+      "scopeLabel": "다항식의 연산 ~ 삼각함수의 각 변환",
+      "scopeNote": "신규 상담·반 배정용 범위"
     },
     {
       "id": "DIAG_1SEM_M1_20",
@@ -2011,7 +2042,14 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "DIAG_1SEM_M1_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "소인수분해",
+        "정수와 유리수",
+        "문자와 식"
+      ],
+      "scopeLabel": "소인수분해 · 정수와 유리수 · 문자와 식",
+      "scopeNote": "신규 상담·반 배정용 범위"
     },
     {
       "id": "DIAG_1SEM_M2_20",
@@ -2648,7 +2686,14 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "DIAG_1SEM_M2_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "유리수와 순환소수",
+        "식의 계산",
+        "일차부등식"
+      ],
+      "scopeLabel": "유리수와 순환소수 · 식의 계산 · 일차부등식",
+      "scopeNote": "신규 상담·반 배정용 범위"
     },
     {
       "id": "DIAG_1SEM_M3_20",
@@ -3300,7 +3345,14 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "DIAG_1SEM_M3_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "제곱근과 실수",
+        "다항식의 곱셈과 인수분해",
+        "이차방정식"
+      ],
+      "scopeLabel": "제곱근과 실수 · 다항식의 곱셈과 인수분해 · 이차방정식",
+      "scopeNote": "신규 상담·반 배정용 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H15_SA_01_20",
@@ -3932,7 +3984,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H15_SA_01_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 연산"
+      ],
+      "scopeLabel": "다항식의 연산",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H15_SA_02_10",
@@ -4254,7 +4311,13 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_H1_H15_SA_02_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "나머지정리와 인수분해",
+        "항등식과 나머지정리"
+      ],
+      "scopeLabel": "나머지정리와 인수분해 · 항등식과 나머지정리",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H15_SA_02_20",
@@ -4885,7 +4948,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H15_SA_02_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "항등식과 나머지정리"
+      ],
+      "scopeLabel": "항등식과 나머지정리",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H15_SA_03_15",
@@ -5363,7 +5431,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H15_SA_03_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "인수분해"
+      ],
+      "scopeLabel": "인수분해",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H15_SA_04_20",
@@ -5991,7 +6064,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H15_SA_04_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "복소수"
+      ],
+      "scopeLabel": "복소수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H15_SA_05_15",
@@ -6474,7 +6552,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H15_SA_05_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "이차방정식"
+      ],
+      "scopeLabel": "이차방정식",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H15_SA_13_15",
@@ -6963,7 +7046,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H15_SA_13_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "이차함수"
+      ],
+      "scopeLabel": "이차함수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_01_15",
@@ -7452,7 +7540,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_01_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 연산"
+      ],
+      "scopeLabel": "다항식의 연산",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_02_15",
@@ -7929,7 +8022,13 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_02_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "나머지 정리",
+        "지수법칙"
+      ],
+      "scopeLabel": "나머지 정리 · 지수법칙",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_02_15",
@@ -8428,7 +8527,13 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_02_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "항등식과 나머지 정리",
+        "지수법칙"
+      ],
+      "scopeLabel": "항등식과 나머지 정리 · 지수법칙",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_03_15",
@@ -8907,7 +9012,13 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_03_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "인수분해",
+        "나머지 정리"
+      ],
+      "scopeLabel": "인수분해 · 나머지 정리",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_04_15",
@@ -9384,7 +9495,13 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_04_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "복소수",
+        "항등식과 나머지 정리"
+      ],
+      "scopeLabel": "복소수 · 항등식과 나머지 정리",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_04_15",
@@ -9914,7 +10031,13 @@
           "_assessmentQualityScore": 88,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_04_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "복소수와 이차방정식",
+        "항등식과 나머지 정리"
+      ],
+      "scopeLabel": "복소수와 이차방정식 · 항등식과 나머지 정리",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_05_15",
@@ -10380,7 +10503,13 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_05_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "이차방정식",
+        "인수분해"
+      ],
+      "scopeLabel": "이차방정식 · 인수분해",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_05_15",
@@ -10886,7 +11015,13 @@
           "_assessmentQualityScore": 88,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_05_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "이차방정식과 이차함수",
+        "인수분해"
+      ],
+      "scopeLabel": "이차방정식과 이차함수 · 인수분해",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_06_20",
@@ -11595,7 +11730,13 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_06_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "여러 가지 방정식과 부등식",
+        "복소수"
+      ],
+      "scopeLabel": "여러 가지 방정식과 부등식 · 복소수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_08_20",
@@ -12301,7 +12442,13 @@
           "_assessmentQualityScore": 88,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_08_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "순열과 조합",
+        "이차방정식과 이차함수"
+      ],
+      "scopeLabel": "순열과 조합 · 이차방정식과 이차함수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H1_H22_C_09_20",
@@ -13003,7 +13150,13 @@
           "_assessmentQualityScore": 88,
           "_assessmentPackId": "UNIT_1SEM_H1_H22_C_09_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "행렬과 그 연산",
+        "여러 가지 방정식과 부등식"
+      ],
+      "scopeLabel": "행렬과 그 연산 · 여러 가지 방정식과 부등식",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H15_M1_01_10",
@@ -13305,7 +13458,12 @@
           "_assessmentQualityScore": 98,
           "_assessmentPackId": "UNIT_1SEM_H2_H15_M1_01_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "지수함수와 로그함수"
+      ],
+      "scopeLabel": "지수함수와 로그함수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H22_A_01_15",
@@ -13776,7 +13934,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H2_H22_A_01_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "지수와 로그"
+      ],
+      "scopeLabel": "지수와 로그",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H22_A_04_15",
@@ -14262,7 +14425,13 @@
           "_assessmentQualityScore": 84,
           "_assessmentPackId": "UNIT_1SEM_H2_H22_A_04_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "삼각함수",
+        "로그의 뜻"
+      ],
+      "scopeLabel": "삼각함수 · 로그의 뜻",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H22_C_02_10",
@@ -14583,7 +14752,12 @@
           "_assessmentQualityScore": 98,
           "_assessmentPackId": "UNIT_1SEM_H2_H22_C_02_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "지수법칙"
+      ],
+      "scopeLabel": "지수법칙",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H22_C_07_10",
@@ -14907,7 +15081,13 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H2_H22_C_07_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "지수·로그 방정식",
+        "이차방정식"
+      ],
+      "scopeLabel": "지수·로그 방정식 · 이차방정식",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H22_PS_01_10",
@@ -15227,7 +15407,12 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_H2_H22_PS_01_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "순열"
+      ],
+      "scopeLabel": "순열",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H22_PS_02_10",
@@ -15553,7 +15738,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H2_H22_PS_02_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "조합"
+      ],
+      "scopeLabel": "조합",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_H22_PS_03_15",
@@ -16028,7 +16218,12 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_H2_H22_PS_03_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "확률의 뜻과 활용"
+      ],
+      "scopeLabel": "확률의 뜻과 활용",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_H2_STAT_02_20",
@@ -16642,7 +16837,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_H2_STAT_02_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "순열과 조합"
+      ],
+      "scopeLabel": "순열과 조합",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M1_M1_01_15",
@@ -17149,7 +17349,12 @@
           "_assessmentQualityScore": 72,
           "_assessmentPackId": "UNIT_1SEM_M1_M1_01_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "소인수분해"
+      ],
+      "scopeLabel": "소인수분해",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M1_M1_02_15",
@@ -17693,7 +17898,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_M1_M1_02_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "정수와 유리수"
+      ],
+      "scopeLabel": "정수와 유리수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M1_M1_03_15",
@@ -18181,7 +18391,12 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "UNIT_1SEM_M1_M1_03_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "문자와 식"
+      ],
+      "scopeLabel": "문자와 식",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M2_M2_01_20",
@@ -18846,7 +19061,13 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_M2_01_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "수와 식",
+        "유리수와 순환소수"
+      ],
+      "scopeLabel": "수와 식 · 유리수와 순환소수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M2_M2_01_20",
@@ -19473,7 +19694,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_M2_01_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "유리수와 순환소수"
+      ],
+      "scopeLabel": "유리수와 순환소수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M2_M2_02_20",
@@ -20099,7 +20325,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_M2_02_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "식의 계산"
+      ],
+      "scopeLabel": "식의 계산",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M2_M2_02_10",
@@ -20449,7 +20680,13 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_M2_02_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "일차부등식",
+        "식의 계산"
+      ],
+      "scopeLabel": "일차부등식 · 식의 계산",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M2_M2_03_20",
@@ -21081,7 +21318,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M2_M2_03_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "일차부등식"
+      ],
+      "scopeLabel": "일차부등식",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M3_M3_01_20",
@@ -21749,7 +21991,13 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M3_M3_01_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "실수와 그 계산",
+        "제곱근과 실수"
+      ],
+      "scopeLabel": "실수와 그 계산 · 제곱근과 실수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M3_M3_01_20",
@@ -22374,7 +22622,12 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_M3_M3_01_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "제곱근과 실수"
+      ],
+      "scopeLabel": "제곱근과 실수",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "M3_FINAL_UNIT_POLY_10",
@@ -22387,24 +22640,20 @@
       "unitLabel": "다항식의 곱셈과 인수분해",
       "courseLabel": "중3 수학",
       "purpose": "중3 1학기 기말 범위 단원 확인·수업 후 점검",
-      "questionCount": 10,
-      "estimatedMinutes": 16,
+      "questionCount": 6,
+      "estimatedMinutes": 10,
       "hasImage": true,
       "sourceScope": "중3 1학기 기말 JS, 이미지 정확 경로 존재 문항 포함, 한 평가지 안 유형 중복 금지",
       "difficultyMix": {
-        "하": 4,
-        "중": 6
+        "하": 3,
+        "중": 3
       },
       "skillMix": {
         "개념 판별": 1,
-        "전개·계수": 1,
-        "인수 판별": 1,
         "인수분해 기본": 1,
-        "전개 기본": 1,
         "인수분해 활용 계산": 1,
-        "그림 도형 활용 인수분해": 1,
-        "조건 이야기형 인수분해": 1,
-        "공통인수": 1,
+        "그림 인수분해 활용 계산": 1,
+        "인수 조건": 1,
         "완전제곱식 조건": 1
       },
       "questions": [
@@ -22474,83 +22723,13 @@
           "_sourceExamType": "final",
           "_qKey": "original/middle/m3/1final/22_이수중_1학기_기말_중3_기출c.js_1",
           "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
-          "_assessmentSkill": "전개·계수",
-          "_assessmentTypeKey": "poly_expand_coeff",
-          "_assessmentQualityScore": 94
-        },
-        {
-          "id": 1,
-          "level": "하",
-          "category": "다항식의 곱셈과 인수분해",
-          "originalCategory": "다항식의 곱셈과 인수분해",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-02",
-          "standardUnit": "다항식의 곱셈과 인수분해",
-          "standardUnitOrder": 2,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [],
-          "wide": false,
-          "content": "다음에서 $a(b+1)(c-2)$의 인수인 것은?",
-          "choices": [
-            "$b+1$",
-            "$a+1$",
-            "$c+2$",
-            "$ab+c$",
-            "$ac-2b$"
-          ],
-          "answer": "①",
-          "solution": "[키포인트] 인수는 다항식을 곱의 꼴로 나타냈을 때 곱해진 각각의 식을 의미한다.\\n조건 정리: 다항식이 $a$, $b+1$, $c-2$의 곱으로 인수분해되어 있다.\\n정석 풀이: 주어진 식 $a(b+1)(c-2)$는 $a$, $b+1$, $c-2$를 인수로 가지며, 이들의 곱으로 만들어지는 식들도 인수이다.\\n보기 중에서 주어진 식의 인수인 것은 $b+1$이다.\\n따라서 정답은 ①이다.",
-          "_sourceTitle": "23_매산중_1학기_기말_중3_기출",
-          "_sourceFile": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 1,
-          "_sourceSchool": "매산중",
-          "_sourceYear": 23,
-          "_sourceExamType": "final",
-          "_qKey": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js_1",
-          "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
-          "_assessmentSkill": "인수 판별",
-          "_assessmentTypeKey": "poly_factor_identify",
-          "_assessmentQualityScore": 94
-        },
-        {
-          "id": 6,
-          "level": "하",
-          "category": "다항식의 곱셈과 인수분해",
-          "originalCategory": "다항식의 곱셈과 인수분해",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-02",
-          "standardUnit": "다항식의 곱셈과 인수분해",
-          "standardUnitOrder": 2,
-          "questionType": "객관식",
-          "layoutTag": "grid",
-          "tags": [],
-          "wide": false,
-          "content": "다음 중에서 $4x^2-y^2$를 인수분해를 옳게 한 것을 고르면?",
-          "choices": [
-            "$(2x-y)^2$",
-            "$(y-x)(y+x)$",
-            "$(2x+y)(2x-y)$",
-            "$(x+y)(x-2y)$",
-            "$x(2x-y)$"
-          ],
-          "answer": "③",
-          "solution": "[키포인트] 제곱의 차 공식 $a^2-b^2=(a+b)(a-b)$를 이용하여 인수분해한다.\\n1단계: 주어진 다항식 $4x^2-y^2$을 각각의 제곱 형태의 차로 표현하면 다음과 같다.\\n$4x^2-y^2 = (2x)^2 - y^2$\\n2단계: 공식 $a=2x$, $b=y$를 대입하여 인수분해를 수행한다.\\n$(2x+y)(2x-y)$\\n∴ 정답: ③",
-          "_sourceTitle": "24_왕운중_1학기_기말_중3_기출",
-          "_sourceFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 6,
-          "_sourceSchool": "왕운중",
-          "_sourceYear": 24,
-          "_sourceExamType": "final",
-          "_qKey": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js_6",
-          "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
           "_assessmentSkill": "인수분해 기본",
           "_assessmentTypeKey": "poly_factor_basic",
           "_assessmentQualityScore": 94
         },
         {
-          "id": 3,
-          "level": "중",
+          "id": 5,
+          "level": "하",
           "category": "다항식의 곱셈과 인수분해",
           "originalCategory": "다항식의 곱셈과 인수분해",
           "standardCourse": "중3 수학",
@@ -22561,58 +22740,27 @@
           "layoutTag": "grid",
           "tags": [],
           "wide": false,
-          "content": "$(x+7)(x-1)-3(x+2)(x-2)$를 계산하면? (4점)",
+          "content": "인수분해 공식을 이용하여 $71^2-29^2$을 계산하려고 할 때, 다음에서 어떤 인수분해 공식을 이용하는 것이 가장 편리한가?",
           "choices": [
-            "$-2x^2+6x+5$",
-            "$-2x^2+6x-11$",
-            "$-2x^2+18x-7$",
-            "$2x^2-6x-5$",
-            "$2x^2-18x+7$"
+            "$a^2-b^2=(a+b)(a-b)$",
+            "$a^2-2ab+b^2=(a-b)^2$",
+            "$a^2+2ab+b^2=(a+b)^2$",
+            "$x^2+(a+b)x+ab=(x+a)(x+b)$",
+            "$acx^2+(ad+bc)x+bd=(ax+b)(cx+d)$"
           ],
           "answer": "①",
-          "solution": "[키포인트] 곱셈 공식을 이용해 각 다항식을 전개한 후 동류항끼리 결합하여 정리합니다.\\n정석 풀이:\\n주어진 식의 두 부분을 각각 전개합니다.\\n1) $(x+7)(x-1) = x^2 + 6x - 7$\\n2) $-3(x+2)(x-2) = -3(x^2 - 4) = -3x^2 + 12$\\n이제 두 식을 더하여 동류항끼리 계산합니다.\\n$(x^2 + 6x - 7) + (-3x^2 + 12) = (x^2 - 3x^2) + 6x + (-7 + 12)$\\n$= -2x^2 + 6x + 5$\\n따라서 정답은 ①이다.",
-          "_sourceTitle": "22_신흥중_1학기_기말_중3_기출",
-          "_sourceFile": "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 3,
-          "_sourceSchool": "신흥중",
-          "_sourceYear": 22,
+          "solution": "[키포인트] 수의 계산에서 두 수의 제곱의 차 형태는 합차공식을 이용하면 쉽게 계산할 수 있다.\\n조건 정리: $71^2-29^2$을 계산해야 한다.\\n정석 풀이: 주어진 식은 두 수의 제곱의 차이므로 합차공식인 $a^2-b^2=(a+b)(a-b)$를 이용하면 편리하다.\\n$a=71, b=29$로 생각하여 대입하면\\n$71^2-29^2 = (71+29)(71-29) = 100 \\times 42 = 4200$으로 쉽게 계산된다.\\n따라서 정답은 ①이다.",
+          "_sourceTitle": "23_매산중_1학기_기말_중3_기출",
+          "_sourceFile": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js",
+          "_sourceQuestionNo": 5,
+          "_sourceSchool": "매산중",
+          "_sourceYear": 23,
           "_sourceExamType": "final",
-          "_qKey": "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js_3",
-          "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
-          "_assessmentSkill": "전개 기본",
-          "_assessmentTypeKey": "poly_expand_basic",
-          "_assessmentQualityScore": 96
-        },
-        {
-          "id": 22,
-          "level": "중",
-          "category": "다항식의 곱셈과 인수분해",
-          "originalCategory": "다항식의 곱셈과 인수분해",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-02",
-          "standardUnit": "다항식의 곱셈과 인수분해",
-          "standardUnitOrder": 2,
-          "questionType": "서술형",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형"
-          ],
-          "wide": false,
-          "content": "다음을 인수분해를 이용하여 계산하여라. [6점]\\n$$\\sqrt{65^2 - 35^2}$$\\n※ 인수분해를 이용한 풀이과정을 적어야 함. 다른 영역의 풀이는 감점 처리함.",
-          "choices": [],
-          "answer": "$10\\sqrt{30}$",
-          "solution": "[키포인트] 합차 공식 $a^2 - b^2 = (a+b)(a-b)$를 이용하여 근호 안의 식을 인수분해한다.\\n정석 풀이:\\n근호 안의 식에 합차 공식을 적용하면\\n$\\sqrt{65^2 - 35^2}$\\n$= \\sqrt{(65+35)(65-35)}$\\n$= \\sqrt{100 \\times 30}$\\n$= \\sqrt{3000}$\\n$= \\sqrt{100 \\times 30} = 10\\sqrt{30}$\\n따라서 구하는 값은 $10\\sqrt{30}$이다.",
-          "_sourceTitle": "22_이수중_1학기_기말_중3_기출",
-          "_sourceFile": "original/middle/m3/1final/22_이수중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 22,
-          "_sourceSchool": "이수중",
-          "_sourceYear": 22,
-          "_sourceExamType": "final",
-          "_qKey": "original/middle/m3/1final/22_이수중_1학기_기말_중3_기출c.js_22",
+          "_qKey": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js_5",
           "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
           "_assessmentSkill": "인수분해 활용 계산",
           "_assessmentTypeKey": "poly_factor_application",
-          "_assessmentQualityScore": 85
+          "_assessmentQualityScore": 94
         },
         {
           "id": 6,
@@ -22648,40 +22796,9 @@
           "_sourceExamType": "final",
           "_qKey": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js_6",
           "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
-          "_assessmentSkill": "그림 도형 활용 인수분해",
-          "_assessmentTypeKey": "IMG_poly_geometry_application",
+          "_assessmentSkill": "그림 인수분해 활용 계산",
+          "_assessmentTypeKey": "IMG_poly_factor_application",
           "_assessmentQualityScore": 98
-        },
-        {
-          "id": 21,
-          "level": "중",
-          "category": "다항식의 곱셈과 인수분해",
-          "originalCategory": "다항식의 곱셈과 인수분해",
-          "standardCourse": "중3 수학",
-          "standardUnitKey": "M3-02",
-          "standardUnit": "다항식의 곱셈과 인수분해",
-          "standardUnitOrder": 2,
-          "questionType": "서술형",
-          "layoutTag": "grid",
-          "tags": [
-            "서술형"
-          ],
-          "wide": false,
-          "content": "다음 민지와 정숙이의 대화를 읽고, 민지네 집 현관문의 비밀번호를 구하시오. (4점)\\n\\n민지: 우리 집 현관문의 비밀번호는 ⓐⓑⓒⓓ 네 개의 숫자로 이루어져 있어. 알아맞혀 봐.\\n정숙: 힌트 좀 줘.\\n민지: $6x^2-11x+5$을 인수분해 하면 $(x-1)(ⓐx-ⓑ)$이고, $x^2+3x-28$을 인수분해 하면 $(x-ⓒ)(x+ⓓ)$야",
-          "choices": [],
-          "answer": "6547",
-          "solution": "[키포인트] $acx^2+(ad+bc)x+bd = (ax+b)(cx+d)$ 꼴의 인수분해를 이용하여 주어진 이차식을 인수분해한다.\\n조건 정리: 비밀번호는 ⓐ, ⓑ, ⓒ, ⓓ를 순서대로 나열한 $4$자리 숫자이다.\\n풀이 방향: 주어진 두 다항식을 각각 인수분해하여 ⓐ, ⓑ, ⓒ, ⓓ의 값을 구한다.\\n정석 풀이: 첫 번째 식 $6x^2-11x+5$를 인수분해한다.\\n$x^2$의 계수 $6$은 $1 \\times 6$, 상수항 $5$는 $(-1) \\times (-5)$로 분리하면 대각선 곱의 합이 $1 \\times (-5) + 6 \\times (-1) = -11$이 되어 일차항의 계수와 일치한다.\\n$6x^2-11x+5 = (x-1)(6x-5)$\\n주어진 힌트 $(x-1)(ⓐx-ⓑ)$와 비교하면 ⓐ$=6$, ⓑ$=5$이다.\\n두 번째 식 $x^2+3x-28$을 인수분해한다.\\n곱해서 $-28$이 되고 더해서 $3$이 되는 두 수는 $7$과 $-4$이다.\\n$x^2+3x-28 = (x-4)(x+7)$\\n주어진 힌트 $(x-ⓒ)(x+ⓓ)$와 비교하면 ⓒ$=4$, ⓓ$=7$이다.\\n구한 숫자를 순서대로 나열하면 비밀번호는 $6547$이다.\\n따라서 구하는 값은 $6547$이다.",
-          "_sourceTitle": "24_신흥중_1학기_기말_중3_기출",
-          "_sourceFile": "original/middle/m3/1final/24_신흥중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 21,
-          "_sourceSchool": "신흥중",
-          "_sourceYear": 24,
-          "_sourceExamType": "final",
-          "_qKey": "original/middle/m3/1final/24_신흥중_1학기_기말_중3_기출c.js_21",
-          "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
-          "_assessmentSkill": "조건 이야기형 인수분해",
-          "_assessmentTypeKey": "poly_story_factor",
-          "_assessmentQualityScore": 85
         },
         {
           "id": 2,
@@ -22714,8 +22831,8 @@
           "_sourceExamType": "final",
           "_qKey": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js_2",
           "_assessmentPackId": "M3_FINAL_UNIT_POLY_10",
-          "_assessmentSkill": "공통인수",
-          "_assessmentTypeKey": "poly_common_factor",
+          "_assessmentSkill": "인수 조건",
+          "_assessmentTypeKey": "poly_factor_condition",
           "_assessmentQualityScore": 96
         },
         {
@@ -22753,7 +22870,12 @@
           "_assessmentTypeKey": "poly_square_condition",
           "_assessmentQualityScore": 96
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 곱셈과 인수분해"
+      ],
+      "scopeLabel": "다항식의 곱셈과 인수분해",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M3_M3_02_15",
@@ -23224,7 +23346,13 @@
           "_assessmentQualityScore": 94,
           "_assessmentPackId": "UNIT_1SEM_M3_M3_02_15"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 곱셈",
+        "다항식의 곱셈과 인수분해"
+      ],
+      "scopeLabel": "다항식의 곱셈 · 다항식의 곱셈과 인수분해",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M3_M3_02_20",
@@ -23893,7 +24021,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M3_M3_02_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 곱셈과 인수분해"
+      ],
+      "scopeLabel": "다항식의 곱셈과 인수분해",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "M3_FINAL_UNIT_QE_15",
@@ -24459,7 +24592,12 @@
           "_assessmentTypeKey": "qe_motion_application",
           "_assessmentQualityScore": 91
         }
-      ]
+      ],
+      "scopeUnits": [
+        "이차방정식"
+      ],
+      "scopeLabel": "이차방정식",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "UNIT_1SEM_M3_M3_03_20",
@@ -25080,7 +25218,13 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "UNIT_1SEM_M3_M3_03_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "인수분해",
+        "이차방정식"
+      ],
+      "scopeLabel": "인수분해 · 이차방정식",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "M3_FINAL_UNIT_QF_15",
@@ -25660,7 +25804,12 @@
           "_assessmentTypeKey": "qf_intercepts",
           "_assessmentQualityScore": 80
         }
-      ]
+      ],
+      "scopeUnits": [
+        "이차함수와 그래프"
+      ],
+      "scopeLabel": "이차함수와 그래프",
+      "scopeNote": "단원 확인 범위"
     },
     {
       "id": "TERM_1SEM_H1_FINAL_25",
@@ -26540,7 +26689,20 @@
           "_assessmentQualityScore": 88,
           "_assessmentPackId": "TERM_1SEM_H1_FINAL_25"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 연산",
+        "항등식과 나머지 정리",
+        "인수분해",
+        "복소수",
+        "이차방정식",
+        "이차방정식과 이차함수",
+        "여러 가지 방정식과 부등식",
+        "합의 법칙과 곱의 법칙",
+        "약수와 배수"
+      ],
+      "scopeLabel": "다항식의 연산 ~ 약수와 배수",
+      "scopeNote": "시험 대비 범위"
     },
     {
       "id": "TERM_1SEM_H1_MID_25",
@@ -27321,7 +27483,22 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_H1_MID_25"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 연산",
+        "지수법칙",
+        "항등식과 나머지정리",
+        "나머지 정리",
+        "인수분해",
+        "복소수",
+        "이차방정식",
+        "이차함수",
+        "여러 가지 방정식과 부등식",
+        "다항식 추론",
+        "다항식의 성질"
+      ],
+      "scopeLabel": "다항식의 연산 ~ 다항식의 성질",
+      "scopeNote": "시험 대비 범위"
     },
     {
       "id": "TERM_1SEM_H2_MID_20",
@@ -27954,7 +28131,25 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_H2_MID_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 연산",
+        "조합",
+        "지수법칙",
+        "나머지 정리",
+        "확률의 뜻과 활용",
+        "항등식과 나머지 정리",
+        "인수분해",
+        "복소수",
+        "이차방정식",
+        "이차방정식과 이차함수",
+        "여러 가지 방정식과 부등식",
+        "순열과 조합",
+        "로그의 실생활 활용 (서술형)",
+        "삼각함수의 각 변환"
+      ],
+      "scopeLabel": "다항식의 연산 ~ 삼각함수의 각 변환",
+      "scopeNote": "시험 대비 범위"
     },
     {
       "id": "TERM_1SEM_M1_FINAL_10",
@@ -28290,7 +28485,12 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M1_FINAL_10"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "문자와 식"
+      ],
+      "scopeLabel": "문자와 식",
+      "scopeNote": "시험 대비 범위"
     },
     {
       "id": "TERM_1SEM_M1_MID_20",
@@ -28974,7 +29174,15 @@
           "_assessmentQualityScore": 96,
           "_assessmentPackId": "TERM_1SEM_M1_MID_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "소인수분해",
+        "정수와 유리수",
+        "문자와 식",
+        "일차방정식"
+      ],
+      "scopeLabel": "소인수분해 ~ 일차방정식",
+      "scopeNote": "시험 대비 범위"
     },
     {
       "id": "TERM_1SEM_M2_MID_20",
@@ -29611,7 +29819,19 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M2_MID_20"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "유리수와 순환소수",
+        "식의 계산",
+        "일차부등식",
+        "내심/외심 복합",
+        "부등식의 성질",
+        "서술형 3",
+        "지수법칙",
+        "지수법칙 응용"
+      ],
+      "scopeLabel": "유리수와 순환소수 ~ 지수법칙 응용",
+      "scopeNote": "시험 대비 범위"
     },
     {
       "id": "TERM_1SEM_M3_MID_25",
@@ -30417,7 +30637,20 @@
           "_assessmentQualityScore": 100,
           "_assessmentPackId": "TERM_1SEM_M3_MID_25"
         }
-      ]
+      ],
+      "scopeUnits": [
+        "제곱근과 실수",
+        "다항식의 곱셈과 인수분해",
+        "이차방정식",
+        "이차함수와 그래프",
+        "곱셈 공식의 변형",
+        "다항식의 값",
+        "다항식의 곱셈",
+        "분모의 유리화",
+        "인수분해"
+      ],
+      "scopeLabel": "제곱근과 실수 ~ 인수분해",
+      "scopeNote": "시험 대비 범위"
     },
     {
       "id": "TERM_1SEM_M3_FINAL_25",
@@ -30436,15 +30669,15 @@
       "sourceScope": "중3 1학기 기말 JS, 이미지 정확 경로 존재 문항 포함, 한 평가지 안 유형 중복 금지",
       "difficultyMix": {
         "하": 7,
-        "중": 15,
-        "상": 3
+        "중": 14,
+        "상": 4
       },
       "skillMix": {
         "개념 판별": 1,
-        "공통인수": 1,
-        "그림 도형 활용 인수분해": 1,
-        "전개·계수": 1,
-        "완전제곱식 조건": 1,
+        "인수 조건": 1,
+        "그림 인수분해 활용 계산": 1,
+        "인수분해 활용 계산": 1,
+        "인수분해 기본": 1,
         "근의 공식·계수": 1,
         "이차방정식 판별": 1,
         "기본 풀이": 1,
@@ -30533,8 +30766,8 @@
           "_sourceExamType": "final",
           "_qKey": "original/middle/m3/1final/22_이수중_1학기_기말_중3_기출c.js_4",
           "_assessmentPackId": "TERM_1SEM_M3_FINAL_25",
-          "_assessmentSkill": "공통인수",
-          "_assessmentTypeKey": "poly_common_factor",
+          "_assessmentSkill": "인수 조건",
+          "_assessmentTypeKey": "poly_factor_condition",
           "_assessmentQualityScore": 96
         },
         {
@@ -30571,8 +30804,8 @@
           "_sourceExamType": "final",
           "_qKey": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js_6",
           "_assessmentPackId": "TERM_1SEM_M3_FINAL_25",
-          "_assessmentSkill": "그림 도형 활용 인수분해",
-          "_assessmentTypeKey": "IMG_poly_geometry_application",
+          "_assessmentSkill": "그림 인수분해 활용 계산",
+          "_assessmentTypeKey": "IMG_poly_factor_application",
           "_assessmentQualityScore": 98
         },
         {
@@ -30606,13 +30839,13 @@
           "_sourceExamType": "final",
           "_qKey": "original/middle/m3/1final/24_신흥중_1학기_기말_중3_기출c.js_2",
           "_assessmentPackId": "TERM_1SEM_M3_FINAL_25",
-          "_assessmentSkill": "전개·계수",
-          "_assessmentTypeKey": "poly_expand_coeff",
+          "_assessmentSkill": "인수분해 활용 계산",
+          "_assessmentTypeKey": "poly_factor_application",
           "_assessmentQualityScore": 96
         },
         {
-          "id": 4,
-          "level": "중",
+          "id": 9,
+          "level": "상",
           "category": "다항식의 곱셈과 인수분해",
           "originalCategory": "다항식의 곱셈과 인수분해",
           "standardCourse": "중3 수학",
@@ -30623,27 +30856,27 @@
           "layoutTag": "grid",
           "tags": [],
           "wide": false,
-          "content": "다음의 이차식은 모두 완전제곱식이다. $a+b+c$의 값을 구하면?(단, $a, b, c$는 상수)<br>$$4x^2+16x+a \\qquad x^2-4x+b \\qquad cx^2-8x+16$$",
+          "content": "다항식 $3x^2+ax-2$를 인수분해 하면 $(bx+c)(dx+e)$ (단, $b, d\\gt0$이고 $a, b, c, d, e$는 정수)일 때, 다음 중에서 옳지 않은 것을 모두 고르면?(정답 2개)",
           "choices": [
-            "$21$",
-            "$32$",
-            "$44$",
-            "$58$",
-            "$69$"
+            "$a$가 될 수 있는 정수는 4개이다.",
+            "$bd=-2$",
+            "$a=5$일 때, 다항식 $3x^2+ax-2$는 $(x+2)$를 인수로 갖는다.",
+            "$be+cd=a$",
+            "$bcde\\gt0$"
           ],
-          "answer": "①",
-          "solution": "[키포인트] 이차식 $Ax^2+Bx+C$가 완전제곱식이 되려면 $B^2-4AC=0$이 성립해야 함을 이용하거나 완전제곱식의 구조를 비교한다.\\n1단계: $4x^2+16x+a$가 완전제곱식이 되려면 $(2x+4)^2 = 4x^2+16x+16$ 구조여야 하므로 $a=16$이다.\\n2단계: $x^2-4x+b$가 완전제곱식이 되려면 $\\left(\\\\dfrac{-4}{2}\\right)^2 = 4$여야 하므로 $b=4$이다.\\n3단계: $cx^2-8x+16$이 완전제곱식이 되려면 $(kx-4)^2 = k^2x^2-8kx+16$ 구조에서 $-8k=-8 \\\\implies k=1$이 되므로 $c=k^2=1$이다.\\n4단계: 구하고자 하는 상수들의 합 $a+b+c$를 계산하면 다음과 같다.\\n$16 + 4 + 1 = 21$\\n∴ 정답: ①",
+          "answer": "②, ⑤",
+          "solution": "[키포인트] $(bx+c)(dx+e)$를 전개하여 계수를 비교하고, 각 선택지가 항상 성립하는지 확인한다.\\n1단계: $(bx+c)(dx+e)$를 전개하면 다음과 같다.\\n$(bx+c)(dx+e)=bdx^2+(be+cd)x+ce$\\n이를 $3x^2+ax-2$와 비교하면\\n$bd=3$, $be+cd=a$, $ce=-2$이다.\\n2단계: 조건에서 $b,d\\gt0$이므로 $bd=3$이다. 따라서 ②의 $bd=-2$는 옳지 않다.\\n3단계: $ce=-2$이고 $b,d\\gt0$이므로 $bcde=(bd)(ce)=3\\times(-2)=-6$이다. 따라서 $bcde\\lt0$이므로 ⑤의 $bcde\\gt0$은 옳지 않다.\\n4단계: 나머지 선택지를 확인한다.\\n① $bd=3$에서 $(b,d)=(1,3)$ 또는 $(3,1)$이고, $ce=-2$에서 $(c,e)=(1,-2),(-1,2),(2,-1),(-2,1)$이다. 이때 $a=be+cd$가 될 수 있는 값은 $1,-1,5,-5$로 4개이므로 참이다.\\n③ $a=5$일 때 $3x^2+5x-2=(3x-1)(x+2)$이므로 $(x+2)$를 인수로 갖는다. 따라서 참이다.\\n④ 전개식의 일차항 계수 비교에 의해 $be+cd=a$이므로 참이다.\\n결론: 옳지 않은 것은 ②, ⑤이다.\\n∴ 정답: ②, ⑤",
           "_sourceTitle": "24_왕운중_1학기_기말_중3_기출",
           "_sourceFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
-          "_sourceQuestionNo": 4,
+          "_sourceQuestionNo": 9,
           "_sourceSchool": "왕운중",
           "_sourceYear": 24,
           "_sourceExamType": "final",
-          "_qKey": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js_4",
+          "_qKey": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js_9",
           "_assessmentPackId": "TERM_1SEM_M3_FINAL_25",
-          "_assessmentSkill": "완전제곱식 조건",
-          "_assessmentTypeKey": "poly_square_condition",
-          "_assessmentQualityScore": 96
+          "_assessmentSkill": "인수분해 기본",
+          "_assessmentTypeKey": "poly_factor_basic",
+          "_assessmentQualityScore": 91
         },
         {
           "id": 9,
@@ -31348,7 +31581,14 @@
           "_assessmentTypeKey": "qf_intercepts",
           "_assessmentQualityScore": 80
         }
-      ]
+      ],
+      "scopeUnits": [
+        "다항식의 곱셈과 인수분해",
+        "이차방정식",
+        "이차함수와 그래프"
+      ],
+      "scopeLabel": "다항식의 곱셈과 인수분해 · 이차방정식 · 이차함수와 그래프",
+      "scopeNote": "시험 대비 범위"
     }
   ]
 };
