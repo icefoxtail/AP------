@@ -367,6 +367,30 @@
             if (idx >= 0) state.db.student_contacts.splice(idx, 1, row);
             else state.db.student_contacts.push(row);
         },
+        removeOrArchiveStudentContact(row) {
+            if (!row?.id) return;
+            const idx = state.db.student_contacts.findIndex(c => String(c?.id) === String(row.id));
+            if (idx >= 0) state.db.student_contacts.splice(idx, 1, row);
+        },
+        mergeStudentContacts(studentId, contacts) {
+            const sid = String(studentId || '');
+            const incoming = asArray(contacts);
+            const others = state.db.student_contacts.filter(c => String(c?.student_id || '') !== sid);
+            state.db.student_contacts = others.concat(incoming);
+            state.db.parent_contacts = state.db.student_contacts.filter(c => c?.is_primary || c?.relation === 'parent');
+        },
+        upsertConsultation(row) {
+            if (!row?.id) return;
+            const idx = state.db.consultations.findIndex(c => String(c?.id) === String(row.id));
+            if (idx >= 0) state.db.consultations.splice(idx, 1, row);
+            else state.db.consultations.push(row);
+        },
+        mergeStudentConsultations(studentId, consultations) {
+            const sid = String(studentId || '');
+            const incoming = asArray(consultations);
+            const others = state.db.consultations.filter(c => String(c?.student_id || '') !== sid);
+            state.db.consultations = others.concat(incoming);
+        },
         upsertClassStudent(row) {
             if (!row?.id) return;
             const idx = state.db.class_students.findIndex(cs => String(cs?.id) === String(row.id));

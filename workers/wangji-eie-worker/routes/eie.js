@@ -671,6 +671,212 @@ async function queryConfirmedContacts(env) {
   return result.results || [];
 }
 
+async function queryStudentContacts(env, studentId) {
+  const result = await env.DB.prepare(`
+    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, memo, raw_meta_json, created_at, updated_at
+    FROM eie_student_contacts
+    WHERE student_id = ?
+    ORDER BY COALESCE(is_primary, 0) DESC, updated_at DESC, created_at ASC
+  `).bind(studentId).all();
+  return result.results || [];
+}
+
+async function getStudentContact(env, contactId) {
+  return env.DB.prepare(`
+    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, memo, raw_meta_json, created_at, updated_at
+    FROM eie_student_contacts
+    WHERE id = ?
+    LIMIT 1
+  `).bind(contactId).first();
+}
+
+async function handleGetStudentContacts(env, studentId) {
+  const student = await getStudentById(env, studentId);
+  if (!student) return jsonResponse({ success: false, error: 'student not found' }, 404);
+  const contacts = await queryStudentContacts(env, studentId);
+  return jsonResponse({ success: true, data: contacts, contacts });
+}
+
+async function handlePostStudentContact(request, env, teacher, studentId) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const student = await getStudentById(env, studentId);
+  if (!student) return jsonResponse({ success: false, error: 'student not found' }, 404);
+
+  const phone = safeText(body.phone || body.phone_raw);
+  const normalizedPhone = normalizePhone(phone);
+  if (!phone || !normalizedPhone) return jsonResponse({ success: false, error: 'phone is required' }, 400);
+
+  const existing = await env.DB.prepare(`
+    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, memo, raw_meta_json, created_at, updated_at
+    FROM eie_student_contacts
+    WHERE student_id = ? AND normalized_phone = ?
+    LIMIT 1
+  `).bind(studentId, normalizedPhone).first();
+  if (existing) return jsonResponse({ success: true, data: existing, contact: existing, duplicate_ignored: true });
+
+  const isPrimary = body.is_primary === true || body.is_primary === 1 || body.is_primary === '1';
+  if (isPrimary) {
+    await env.DB.prepare('UPDATE eie_student_contacts SET is_primary = 0, updated_at = CURRENT_TIMESTAMP WHERE student_id = ?')
+      .bind(studentId).run();
+  }
+
+  const id = makeId('eie_contact');
+  await env.DB.prepare(`
+    INSERT INTO eie_student_contacts
+    (id, student_id, phone, normalized_phone, contact_label, is_primary, source_type, memo, raw_meta_json, created_by, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, 'manual', ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    studentId,
+    phone,
+    normalizedPhone,
+    safeText(body.contact_label || body.relation || '연락처'),
+    isPrimary ? 1 : 0,
+    safeText(body.memo),
+    toJsonText({ relation: safeText(body.relation), source: 'student-management' }),
+    teacher?.id || null
+  ).run();
+  const contact = await getStudentContact(env, id);
+  return jsonResponse({ success: true, data: contact, contact, contacts: await queryStudentContacts(env, studentId) });
+}
+
+async function handlePatchStudentContact(request, env, contactId) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const existing = await getStudentContact(env, contactId);
+  if (!existing) return jsonResponse({ success: false, error: 'contact not found' }, 404);
+
+  const sets = [];
+  const binds = [];
+  if (body.phone !== undefined || body.phone_raw !== undefined) {
+    const phone = safeText(body.phone || body.phone_raw);
+    const normalizedPhone = normalizePhone(phone);
+    if (!phone || !normalizedPhone) return jsonResponse({ success: false, error: 'phone is required' }, 400);
+    sets.push('phone = ?', 'normalized_phone = ?');
+    binds.push(phone, normalizedPhone);
+  }
+  if (body.contact_label !== undefined || body.relation !== undefined) {
+    sets.push('contact_label = ?');
+    binds.push(safeText(body.contact_label || body.relation));
+  }
+  if (body.memo !== undefined) {
+    sets.push('memo = ?');
+    binds.push(safeText(body.memo));
+  }
+  if (body.is_primary !== undefined) {
+    const isPrimary = body.is_primary === true || body.is_primary === 1 || body.is_primary === '1';
+    if (isPrimary) {
+      await env.DB.prepare('UPDATE eie_student_contacts SET is_primary = 0, updated_at = CURRENT_TIMESTAMP WHERE student_id = ? AND id != ?')
+        .bind(existing.student_id, contactId).run();
+    }
+    sets.push('is_primary = ?');
+    binds.push(isPrimary ? 1 : 0);
+  }
+
+  if (!sets.length) return jsonResponse({ success: false, error: 'no fields to update' }, 400);
+  sets.push('updated_at = CURRENT_TIMESTAMP');
+  binds.push(contactId);
+  try {
+    await env.DB.prepare(`UPDATE eie_student_contacts SET ${sets.join(', ')} WHERE id = ?`).bind(...binds).run();
+  } catch (error) {
+    if (isUniqueConflict(error)) return jsonResponse({ success: false, error: 'duplicate contact phone' }, 409);
+    throw error;
+  }
+  const contact = await getStudentContact(env, contactId);
+  return jsonResponse({ success: true, data: contact, contact, contacts: await queryStudentContacts(env, contact.student_id) });
+}
+
+function contactDeleteDeferredResponse() {
+  return jsonResponse({
+    success: false,
+    error: 'contact archive is not available',
+    code: 'EIE_NOT_IMPLEMENTED',
+    message: 'eie_student_contacts has no status/deleted_at column; physical delete is disabled.'
+  }, 409);
+}
+
+async function queryConsultations(env, studentId) {
+  const result = await env.DB.prepare(`
+    SELECT id, student_id, date, type, content, next_action, created_at
+    FROM consultations
+    WHERE student_id = ?
+    ORDER BY date DESC, created_at DESC
+  `).bind(studentId).all();
+  return result.results || [];
+}
+
+async function getConsultation(env, id) {
+  return env.DB.prepare(`
+    SELECT id, student_id, date, type, content, next_action, created_at
+    FROM consultations
+    WHERE id = ?
+    LIMIT 1
+  `).bind(id).first();
+}
+
+async function handleGetConsultations(env, url) {
+  const studentId = safeText(url.searchParams.get('student_id'));
+  if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
+  const rows = await queryConsultations(env, studentId);
+  return jsonResponse({ success: true, data: rows, consultations: rows });
+}
+
+async function handlePostConsultation(request, env) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const studentId = safeText(body.student_id);
+  const content = safeText(body.content);
+  if (!studentId) return jsonResponse({ success: false, error: 'student_id is required' }, 400);
+  if (!content) return jsonResponse({ success: false, error: 'content is required' }, 400);
+  const id = makeId('eie_cns');
+  await env.DB.prepare(`
+    INSERT INTO consultations (id, student_id, date, type, content, next_action, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+  `).bind(
+    id,
+    studentId,
+    safeText(body.date) || new Date().toISOString().slice(0, 10),
+    safeText(body.type || '상담'),
+    content,
+    safeText(body.next_action)
+  ).run();
+  const consultation = await getConsultation(env, id);
+  return jsonResponse({ success: true, data: consultation, consultation, consultations: await queryConsultations(env, studentId) });
+}
+
+async function handlePatchConsultation(request, env, id) {
+  const body = await readJsonBody(request);
+  if (!body) return jsonResponse({ success: false, error: 'invalid json body' }, 400);
+  const existing = await getConsultation(env, id);
+  if (!existing) return jsonResponse({ success: false, error: 'consultation not found' }, 404);
+  const sets = [];
+  const binds = [];
+  if (body.date !== undefined) { sets.push('date = ?'); binds.push(safeText(body.date)); }
+  if (body.type !== undefined) { sets.push('type = ?'); binds.push(safeText(body.type)); }
+  if (body.content !== undefined) {
+    const content = safeText(body.content);
+    if (!content) return jsonResponse({ success: false, error: 'content is required' }, 400);
+    sets.push('content = ?');
+    binds.push(content);
+  }
+  if (body.next_action !== undefined) { sets.push('next_action = ?'); binds.push(safeText(body.next_action)); }
+  if (!sets.length) return jsonResponse({ success: false, error: 'no fields to update' }, 400);
+  binds.push(id);
+  await env.DB.prepare(`UPDATE consultations SET ${sets.join(', ')} WHERE id = ?`).bind(...binds).run();
+  const consultation = await getConsultation(env, id);
+  return jsonResponse({ success: true, data: consultation, consultation, consultations: await queryConsultations(env, consultation.student_id) });
+}
+
+function consultationDeleteDeferredResponse() {
+  return jsonResponse({
+    success: false,
+    error: 'consultation archive is not available',
+    code: 'EIE_NOT_IMPLEMENTED',
+    message: 'consultations has no status/deleted_at column; physical delete is disabled.'
+  }, 409);
+}
+
 async function queryScheduleAssignments(env) {
   const result = await env.DB.prepare(`
     SELECT a.*, s.display_name, s.normalized_name, s.grade,
@@ -916,6 +1122,23 @@ async function handleGet(request, env, path, url) {
     } catch (error) {
       if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
       throw error;
+    }
+  }
+
+  if (section === 'students' && action && tail === 'contacts') {
+    try {
+      return await handleGetStudentContacts(env, action);
+    } catch (error) {
+      if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+      throw error;
+    }
+  }
+
+  if (section === 'consultations') {
+    try {
+      return handleGetConsultations(env, url);
+    } catch (error) {
+      return jsonResponse({ success: false, error: 'consultations table is not ready', code: 'EIE_NOT_IMPLEMENTED' }, 409);
     }
   }
 
@@ -1434,6 +1657,10 @@ export async function handleEie(request, env, teacher, path, url) {
     return handlePostStudent(request, env, teacher);
   }
 
+  if (method === 'POST' && path[2] === 'students' && path[3] && path[4] === 'contacts' && !path[5]) {
+    return handlePostStudentContact(request, env, teacher, path[3]);
+  }
+
   if (method === 'PATCH' && path[2] === 'students' && path[3] && !path[4]) {
     return handlePatchStudent(request, env, teacher, path[3]);
   }
@@ -1444,6 +1671,26 @@ export async function handleEie(request, env, teacher, path, url) {
 
   if (method === 'DELETE' && path[2] === 'students' && path[3] && !path[4]) {
     return handleDeleteStudent(request, env, path[3]);
+  }
+
+  if (method === 'PATCH' && path[2] === 'student-contacts' && path[3] && !path[4]) {
+    return handlePatchStudentContact(request, env, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'student-contacts' && path[3] && !path[4]) {
+    return contactDeleteDeferredResponse();
+  }
+
+  if (method === 'POST' && path[2] === 'consultations' && !path[3]) {
+    return handlePostConsultation(request, env);
+  }
+
+  if (method === 'PATCH' && path[2] === 'consultations' && path[3] && !path[4]) {
+    return handlePatchConsultation(request, env, path[3]);
+  }
+
+  if (method === 'DELETE' && path[2] === 'consultations' && path[3] && !path[4]) {
+    return consultationDeleteDeferredResponse();
   }
 
   // ── 수업 배정/해제 ───────────────────────────────────────────────────

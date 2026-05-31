@@ -64,3 +64,9 @@ EIE 학생관리를 APMS 학생관리 UI/UX와 완전히 일치시킨다.
 - 제공 기능: 학생 목록, 검색, 상태 필터, 신규 등록, 상세 패널, 기본정보 수정, 상태 변경, `DELETE /students/{id}` soft archive, 연락처 표시, 수업 배정 표시, 시간표/클래스룸 연결.
 - 미구현 endpoint 기능: 상담 저장, 출결/숙제 저장, 복수 연락처 별도 CRUD. 이 기능들은 성공 처리하지 않고 준비중 패널 또는 비활성 버튼으로 표시한다.
 - APMS 원본 `apmath/js/student.js`는 수정하지 않고 화면 문법과 조작 흐름만 EIE 전용 view에 재구성한다.
+# Round 3 Student Detail Storage Notes (2026-05-31)
+
+- 학생 상세 연락처 탭은 `eie_student_contacts` 기반 조회/추가/수정을 호출한다.
+- 학생 상세 상담 탭은 remote D1에 존재하는 `consultations` 테이블 기반 조회/추가/수정을 호출한다.
+- 연락처/상담 삭제는 DB에 archive/status 컬럼이 추가될 때까지 UI에서 보류 상태로 표시하고, Worker도 물리 삭제를 수행하지 않는다.
+- 이번 라운드는 저장 기반 연결만 다루며 학생관리 전체 UI parity, classroom, timetable, dashboard 화면은 변경하지 않는다.

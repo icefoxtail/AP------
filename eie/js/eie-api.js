@@ -191,6 +191,42 @@
             return request(`students/${encodeURIComponent(studentId)}`, { method: 'DELETE' });
         },
 
+        getStudentContacts(studentId) {
+            return get(`students/${encodeURIComponent(studentId)}/contacts`, 'contact-seeds');
+        },
+        async createStudentContact(studentId, payload) {
+            return request(`students/${encodeURIComponent(studentId)}/contacts`, {
+                method: 'POST',
+                body: payload || {}
+            });
+        },
+        async updateStudentContact(contactId, payload) {
+            return request(`student-contacts/${encodeURIComponent(contactId)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async deleteStudentContact(contactId) {
+            return request(`student-contacts/${encodeURIComponent(contactId)}`, { method: 'DELETE' });
+        },
+        getConsultations(studentId) {
+            const params = new URLSearchParams();
+            if (studentId) params.set('student_id', studentId);
+            return get(`consultations${params.toString() ? `?${params}` : ''}`, 'student-seeds');
+        },
+        async createConsultation(payload) {
+            return request('consultations', { method: 'POST', body: payload || {} });
+        },
+        async updateConsultation(id, payload) {
+            return request(`consultations/${encodeURIComponent(id)}`, {
+                method: 'PATCH',
+                body: payload || {}
+            });
+        },
+        async deleteConsultation(id) {
+            return request(`consultations/${encodeURIComponent(id)}`, { method: 'DELETE' });
+        },
+
         // ── Generic public request methods (APMS compat layer용) ─────
         request(path, options) {
             return request(path, options);

@@ -3816,8 +3816,43 @@ body {
     align-items: center;
 }
 
+.eie-apms-consultation-row {
+    width: 100%;
+    margin-top: 8px;
+    padding: 11px 12px;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: start;
+}
+
+.eie-apms-consultation-row p {
+    margin: 5px 0 0;
+    color: var(--eie-text);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.eie-apms-consultation-row span {
+    display: block;
+    margin-top: 4px;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-inline-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
 .eie-apms-contact-row button,
-.eie-apms-assignment-row {
+.eie-apms-assignment-row,
+.eie-apms-inline-actions button {
     color: var(--eie-primary);
     font: inherit;
     text-align: left;
@@ -3829,6 +3864,12 @@ body {
     background: transparent;
     font-size: 13px;
     font-weight: 900;
+}
+
+.eie-apms-inline-actions button[disabled] {
+    color: var(--eie-muted);
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .eie-apms-assignment-row {
@@ -3903,5 +3944,9 @@ body {
     .eie-apms-contact-row {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .eie-apms-consultation-row {
+        grid-template-columns: 1fr;
     }
 }
