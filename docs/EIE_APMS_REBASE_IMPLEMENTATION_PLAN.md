@@ -180,3 +180,14 @@ npx wrangler deploy
 - APMS 원본 파일은 수정하지 않았다.
 - Worker, migration, classroom/timetable/dashboard view는 수정하지 않았다.
 - 브라우저 실기기 확인은 별도 확인 항목으로 남긴다.
+# Round 3 Contact/Consultation Foundation (2026-05-31)
+
+- EIE Worker minimal route set에 연락처/상담 저장 기반을 추가했다.
+- 추가 Worker endpoint:
+  - `GET/POST /api/eie/students/:studentId/contacts`
+  - `PATCH/DELETE /api/eie/student-contacts/:contactId`
+  - `GET/POST /api/eie/consultations`
+  - `PATCH/DELETE /api/eie/consultations/:id`
+- `eie_student_contacts`에는 `status`/`deleted_at` 컬럼이 없으므로 DELETE는 물리 삭제하지 않고 `409 EIE_NOT_IMPLEMENTED`로 보류한다.
+- remote D1에서 상담 저장 후보 중 `consultations` 테이블만 확인되었고, 해당 테이블도 `status`/`deleted_at`/`updated_at` 컬럼이 없어 DELETE는 보류한다.
+- EIE frontend는 학생 상세의 연락처/상담 탭에 최소 CRUD 진입점만 연결했다. 학생관리 전체 UI parity, classroom/timetable/dashboard 변경은 이번 라운드 범위에서 제외했다.

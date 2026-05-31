@@ -163,7 +163,29 @@
         // ── consultations GET → 빈 배열 fallback ─────────────────────────────
         // 쓰기는 Worker endpoint 없음 → EIE_NOT_IMPLEMENTED
         if (clean === 'consultations' || clean.startsWith('consultations?') || clean.startsWith('consultations/')) {
-            if (method === 'GET') return { type: 'empty', data: [] };
+            if (method === 'GET') {
+                var cnsQstart = clean.indexOf('?');
+                var cnsParams = cnsQstart >= 0 ? new URLSearchParams(clean.slice(cnsQstart + 1)) : new URLSearchParams();
+                var cnsStudentId = cnsParams.get('student_id') || '';
+                if (cnsStudentId) return { type: 'fn', fn: function () { return EieApi.getConsultations(cnsStudentId); } };
+                return {
+                    type: 'state_filter',
+                    fn: function () {
+                        var consultations = (EieState.get().db.consultations) || [];
+                        return { success: true, data: consultations, consultations: consultations };
+                    }
+                };
+            }
+            if (clean === 'consultations' && method === 'POST') {
+                return { type: 'fn', fn: function (payload) { return EieApi.createConsultation(payload); } };
+            }
+            var cnsIdMatch = clean.match(/^consultations\/([^/]+)$/);
+            if (cnsIdMatch && method === 'PATCH') {
+                return { type: 'fn', fn: function (payload) { return EieApi.updateConsultation(cnsIdMatch[1], payload); } };
+            }
+            if (cnsIdMatch && method === 'DELETE') {
+                return { type: 'fn', fn: function () { return EieApi.deleteConsultation(cnsIdMatch[1]); } };
+            }
             return { type: 'not_implemented' };
         }
 
@@ -174,16 +196,31 @@
                 var qstart = clean.indexOf('?');
                 var params = qstart >= 0 ? new URLSearchParams(clean.slice(qstart + 1)) : new URLSearchParams();
                 var studentId = params.get('student_id');
+                if (studentId) return { type: 'fn', fn: function () { return EieApi.getStudentContacts(studentId); } };
                 return {
                     type: 'state_filter',
                     fn: function () {
                         var contacts = (EieState.get().db.parent_contacts) || [];
-                        var data = studentId
-                            ? contacts.filter(function (c) { return String(c.student_id) === String(studentId); })
-                            : contacts;
-                        return { success: true, data: data };
+                        return { success: true, data: contacts, contacts: contacts };
                     }
                 };
+            }
+            if (clean === 'parent-foundation/contacts' && method === 'POST') {
+                return {
+                    type: 'fn',
+                    fn: function (payload) {
+                        var contactStudentId = payload && payload.student_id;
+                        if (!contactStudentId) throw makeNotImplementedError(method, path);
+                        return EieApi.createStudentContact(contactStudentId, payload);
+                    }
+                };
+            }
+            var contactIdMatch = clean.match(/^parent-foundation\/contacts\/([^/]+)$/);
+            if (contactIdMatch && method === 'PATCH') {
+                return { type: 'fn', fn: function (payload) { return EieApi.updateStudentContact(contactIdMatch[1], payload); } };
+            }
+            if (contactIdMatch && method === 'DELETE') {
+                return { type: 'fn', fn: function () { return EieApi.deleteStudentContact(contactIdMatch[1]); } };
             }
             return { type: 'not_implemented' };
         }

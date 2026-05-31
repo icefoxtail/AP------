@@ -66,6 +66,15 @@
         return rows;
     }
 
+    function consultationsOf(student) {
+        var sid = rowId(student);
+        return asArray(db().consultations).filter(function (consultation) {
+            return String(consultation.student_id || '') === String(sid);
+        }).sort(function (a, b) {
+            return text(b.date || b.created_at).localeCompare(text(a.date || a.created_at));
+        });
+    }
+
     function primaryPhone(student) {
         var raw = rawOf(student);
         var contacts = contactsOf(student);
@@ -238,6 +247,34 @@
         return EieRouter.open('students');
     }
 
+    async function loadStudentContacts(studentId) {
+        var sid = text(studentId);
+        if (!sid || !window.EieApi || typeof EieApi.getStudentContacts !== 'function') return;
+        try {
+            var result = await EieApi.getStudentContacts(sid);
+            var rows = result.contacts || result.data || [];
+            if (window.EieState && typeof EieState.mergeStudentContacts === 'function') {
+                EieState.mergeStudentContacts(sid, rows);
+            }
+        } catch (err) {
+            _error = err && err.message ? err.message : '연락처를 불러오지 못했습니다.';
+        }
+    }
+
+    async function loadStudentConsultations(studentId) {
+        var sid = text(studentId);
+        if (!sid || !window.EieApi || typeof EieApi.getConsultations !== 'function') return;
+        try {
+            var result = await EieApi.getConsultations(sid);
+            var rows = result.consultations || result.data || [];
+            if (window.EieState && typeof EieState.mergeStudentConsultations === 'function') {
+                EieState.mergeStudentConsultations(sid, rows);
+            }
+        } catch (err) {
+            _error = err && err.message ? err.message : '상담을 불러오지 못했습니다.';
+        }
+    }
+
     function renderSummary() {
         var rows = studentsFromState();
         var active = rows.filter(function (row) { return statusOf(row) === 'active' || statusOf(row) === ''; }).length;
@@ -306,19 +343,46 @@
     function renderContacts(student) {
         var phone = primaryPhone(student);
         var contacts = contactsOf(student);
+        var sid = rowId(student);
         if (!contacts.length && phone) {
             contacts = [{ id: 'primary', contact_label: '대표 연락처', phone: phone, is_primary: true }];
         }
         return '<div class="eie-apms-card">'
-            + '<div class="eie-apms-section-head"><h3>연락처</h3><span>별도 CRUD는 준비중</span></div>'
+            + '<div class="eie-apms-section-head"><h3>연락처</h3><button type="button" class="eie-secondary-button" onclick="EieStudentsView.createContact(' + JSON.stringify(sid) + ')">추가</button></div>'
             + (contacts.length ? contacts.map(function (contact, index) {
                 var label = text(contact.contact_label || contact.label || contact.relation) || (index === 0 ? '대표 연락처' : '연락처');
                 var contactPhone = text(contact.phone || contact.phone_raw || contact.normalized_phone) || '미등록';
+                var contactId = text(contact.id);
                 return '<div class="eie-apms-contact-row">'
                     + '<div><strong>' + esc(label) + '</strong><span>' + (contact.is_primary || index === 0 ? '대표' : '추가') + '</span></div>'
+                    + '<div class="eie-apms-inline-actions">'
                     + '<button type="button" onclick="EieStudentsView.copyPhone(' + JSON.stringify(contactPhone) + ')">' + esc(contactPhone) + '</button>'
+                    + (contactId && contactId !== 'primary' ? '<button type="button" onclick="EieStudentsView.editContact(' + JSON.stringify(contactId) + ')">수정</button>' : '')
+                    + '<button type="button" disabled title="status/deleted_at 컬럼이 없어 삭제는 보류합니다.">삭제 보류</button>'
+                    + '</div>'
                     + '</div>';
             }).join('') : '<p class="eie-apms-muted">등록된 연락처가 없습니다. 학생 수정에서 대표 연락처를 저장할 수 있습니다.</p>')
+            + '</div>';
+    }
+
+    function renderConsultations(student) {
+        var sid = rowId(student);
+        var rows = consultationsOf(student);
+        return '<div class="eie-apms-card">'
+            + '<div class="eie-apms-section-head"><h3>상담</h3><button type="button" class="eie-secondary-button" onclick="EieStudentsView.createConsultation(' + JSON.stringify(sid) + ')">추가</button></div>'
+            + (rows.length ? rows.map(function (row) {
+                var id = text(row.id);
+                var title = [text(row.date), text(row.type)].filter(Boolean).join(' / ') || '상담';
+                var content = text(row.content) || '내용 없음';
+                var nextAction = text(row.next_action);
+                return '<div class="eie-apms-consultation-row">'
+                    + '<div><strong>' + esc(title) + '</strong><p>' + esc(content) + '</p>' + (nextAction ? '<span>' + esc(nextAction) + '</span>' : '') + '</div>'
+                    + '<div class="eie-apms-inline-actions">'
+                    + (id ? '<button type="button" onclick="EieStudentsView.editConsultation(' + JSON.stringify(id) + ')">수정</button>' : '')
+                    + '<button type="button" disabled title="status/deleted_at 컬럼이 없어 삭제는 보류합니다.">삭제 보류</button>'
+                    + '</div>'
+                    + '</div>';
+            }).join('') : '<p class="eie-apms-muted">등록된 상담이 없습니다.</p>')
             + '</div>';
     }
 
@@ -355,7 +419,7 @@
     function renderTabBody(student) {
         if (_tab === 'contacts') return renderContacts(student);
         if (_tab === 'classes') return renderAssignments(student);
-        if (_tab === 'consultation') return renderReadyPanel('consultation');
+        if (_tab === 'consultation') return renderConsultations(student);
         if (_tab === 'attendance') return renderReadyPanel('attendance');
         return '<div class="eie-apms-card">'
             + '<div class="eie-apms-section-head"><h3>기본정보</h3><span>EIE</span></div>'
@@ -531,6 +595,8 @@
                 await loadFoundation(true);
                 if (!selectedStudent()) _query = _selectedId;
             }
+            if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
+            if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             return EieRouter.open('students');
         },
 
@@ -626,8 +692,100 @@
             }
         },
 
-        setTab: function (tab) {
+        createContact: async function (studentId) {
+            if (_saving) return;
+            var sid = text(studentId || _selectedId);
+            var phone = text(window.prompt('연락처'));
+            if (!sid || !phone) return;
+            var label = text(window.prompt('라벨', '학부모')) || '학부모';
+            _saving = true;
+            try {
+                var result = await EieApi.createStudentContact(sid, { student_id: sid, phone: phone, contact_label: label });
+                if (EieState.mergeStudentContacts) EieState.mergeStudentContacts(sid, result.contacts || (result.contact ? [result.contact] : (result.data ? [result.data] : [])));
+                _notice = '연락처를 저장했습니다.';
+                _tab = 'contacts';
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '연락처 저장에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        editContact: async function (contactId) {
+            if (_saving) return;
+            var id = text(contactId);
+            var current = asArray(db().student_contacts).find(function (contact) { return String(contact.id || '') === String(id); });
+            if (!current) return;
+            var phone = text(window.prompt('연락처', current.phone || current.phone_raw || current.normalized_phone || ''));
+            if (!phone) return;
+            var label = text(window.prompt('라벨', current.contact_label || current.label || current.relation || '')) || current.contact_label || '';
+            _saving = true;
+            try {
+                var result = await EieApi.updateStudentContact(id, { phone: phone, contact_label: label, memo: current.memo || '' });
+                var sid = text(current.student_id || _selectedId);
+                if (EieState.mergeStudentContacts) EieState.mergeStudentContacts(sid, result.contacts || (result.contact ? [result.contact] : (result.data ? [result.data] : [])));
+                _notice = '연락처를 저장했습니다.';
+                _tab = 'contacts';
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '연락처 저장에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        createConsultation: async function (studentId) {
+            if (_saving) return;
+            var sid = text(studentId || _selectedId);
+            var content = text(window.prompt('상담 내용'));
+            if (!sid || !content) return;
+            var nextAction = text(window.prompt('후속 조치', ''));
+            _saving = true;
+            try {
+                var result = await EieApi.createConsultation({ student_id: sid, content: content, next_action: nextAction });
+                if (EieState.mergeStudentConsultations) EieState.mergeStudentConsultations(sid, result.consultations || (result.consultation ? [result.consultation] : (result.data ? [result.data] : [])));
+                _notice = '상담을 저장했습니다.';
+                _tab = 'consultation';
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '상담 저장에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        editConsultation: async function (consultationId) {
+            if (_saving) return;
+            var id = text(consultationId);
+            var current = asArray(db().consultations).find(function (row) { return String(row.id || '') === String(id); });
+            if (!current) return;
+            var content = text(window.prompt('상담 내용', current.content || ''));
+            if (!content) return;
+            var nextAction = text(window.prompt('후속 조치', current.next_action || ''));
+            _saving = true;
+            try {
+                var result = await EieApi.updateConsultation(id, { content: content, next_action: nextAction });
+                var sid = text(current.student_id || _selectedId);
+                if (EieState.mergeStudentConsultations) EieState.mergeStudentConsultations(sid, result.consultations || (result.consultation ? [result.consultation] : (result.data ? [result.data] : [])));
+                _notice = '상담을 저장했습니다.';
+                _tab = 'consultation';
+                await EieRouter.open('students');
+            } catch (err) {
+                _error = err && err.message ? err.message : '상담 저장에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        setTab: async function (tab) {
             _tab = text(tab) || 'basic';
+            if (_selectedId && _tab === 'contacts') await loadStudentContacts(_selectedId);
+            if (_selectedId && _tab === 'consultation') await loadStudentConsultations(_selectedId);
             EieRouter.open('students');
         },
 

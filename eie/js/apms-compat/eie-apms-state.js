@@ -23,6 +23,8 @@
             name: row.name || row.contact_name || '',
             relation: row.relation || row.relationship || '',
             phone: row.phone || row.phone_raw || '',
+            memo: row.memo || '',
+            raw_meta_json: row.raw_meta_json || null,
             is_primary: !!(row.is_primary || row.primary),
             contact_label: row.contact_label || row.label || '',
             branch: 'eie',
@@ -181,6 +183,18 @@
         EieState.setStudents(rows.map(normalizeStudent));
     }
 
+    function mergeStudentContacts(studentId, contacts) {
+        if (EieState.mergeStudentContacts) {
+            EieState.mergeStudentContacts(studentId, (contacts || []).map(normalizeContact));
+        }
+    }
+
+    function mergeStudentConsultations(studentId, consultations) {
+        if (EieState.mergeStudentConsultations) {
+            EieState.mergeStudentConsultations(studentId, consultations || []);
+        }
+    }
+
     function getState() {
         return EieState.get();
     }
@@ -195,6 +209,8 @@
         loadFoundation: loadFoundation,
         syncStudent: syncStudent,
         syncStudentList: syncStudentList,
+        mergeStudentContacts: mergeStudentContacts,
+        mergeStudentConsultations: mergeStudentConsultations,
         getState: getState
     };
 

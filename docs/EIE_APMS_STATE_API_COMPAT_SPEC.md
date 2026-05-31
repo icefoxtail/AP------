@@ -95,3 +95,9 @@ APMS 복사 코드가 EIE에서 돌아갈 수 있도록 호환 state/api 층을 
 - Worker/D1 없이 로컬에서만 업데이트
 - frontend 함수만 있고 Worker endpoint가 없는 API를 저장 완료처럼 처리
 - 물리 DELETE
+# Round 3 Contact/Consultation Compat Notes (2026-05-31)
+
+- `EieApi` now exposes `getStudentContacts`, `createStudentContact`, `updateStudentContact`, `deleteStudentContact`, `getConsultations`, `createConsultation`, `updateConsultation`, and `deleteConsultation`.
+- `EieState` now supports per-student merge helpers for contacts and consultations so student detail tabs can hydrate only the selected student's rows without replacing unrelated state.
+- `EieApmsApi` maps APMS-style `parent-foundation/contacts` and `consultations` calls to the EIE Worker endpoints when a concrete student/contact/consultation id is present.
+- Contact and consultation DELETE calls intentionally flow to Worker endpoints that return deferred/not-implemented responses, because the current tables do not have archive/status columns.
