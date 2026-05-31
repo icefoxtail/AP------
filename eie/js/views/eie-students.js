@@ -1,429 +1,660 @@
 (function () {
-    var _students = [];
     var _error = '';
-    var _loaded = false;
-    var _selectedId = null;
+    var _notice = '';
+    var _selectedId = '';
     var _query = '';
-    var _editMode = false;   // 상세 패널 편집 모드
-    var _saving = false;     // 저장 중 상태
-    var _showCreate = false; // 등록 폼 표시
+    var _statusFilter = 'active';
+    var _tab = 'basic';
+    var _mode = 'detail';
+    var _saving = false;
+    var _loading = false;
 
     function esc(value) {
-        return EieApp.escapeHtml(value);
+        return EieApp.escapeHtml(value == null ? '' : value);
     }
 
-    function getPhone(student) {
-        return student.phone_raw
-            || student.phone
-            || student.normalized_phone
-            || student.primary_phone
-            || (Array.isArray(student.contacts) && student.contacts[0]
-                ? (student.contacts[0].phone_raw || student.contacts[0].phone || '')
-                : '')
-            || '';
+    function state() {
+        return EieState.get();
     }
 
-    function getGrade(student) {
-        return student.grade_raw || student.grade || '';
+    function db() {
+        return state().db || {};
     }
 
-    function getSelected() {
-        if (_selectedId === null) return null;
-        return _students.find(function (s) {
-            return String(s.id || s.student_id || '') === String(_selectedId);
-        }) || null;
+    function ui() {
+        return state().ui || {};
     }
 
-    function matchesQuery(student, query) {
-        if (!query) return true;
-        var q = query.toLowerCase();
-        var name = (student.display_name || student.name || '').toLowerCase();
-        var grade = (student.grade || student.grade_raw || '').toLowerCase();
-        var assignments = Array.isArray(student.assignments) ? student.assignments : [];
-        var classMatch = assignments.some(function (a) {
-            return (a.class_name_raw || '').toLowerCase().indexOf(q) >= 0
-                || (a.teacher_name_raw || '').toLowerCase().indexOf(q) >= 0;
+    function asArray(rows) {
+        return Array.isArray(rows) ? rows : [];
+    }
+
+    function text(value) {
+        return String(value == null ? '' : value).trim();
+    }
+
+    function rowId(row) {
+        return text(row && (row.id || row.student_id));
+    }
+
+    function displayName(student) {
+        return text(student && (student.display_name || student.name || student.student_name_raw || student.normalized_name)) || '이름 미등록';
+    }
+
+    function gradeOf(student) {
+        return text(student && (student.grade || student.grade_raw));
+    }
+
+    function schoolOf(student) {
+        return text(student && (student.school_name || student.school));
+    }
+
+    function statusOf(student) {
+        return text(student && student.status) || 'active';
+    }
+
+    function rawOf(student) {
+        return student && student.raw && typeof student.raw === 'object' ? student.raw : {};
+    }
+
+    function contactsOf(student) {
+        var sid = rowId(student);
+        var rows = asArray(db().student_contacts).filter(function (contact) {
+            return String(contact.student_id || '') === String(sid);
         });
-        return name.indexOf(q) >= 0 || grade.indexOf(q) >= 0 || classMatch;
+        if (!rows.length && Array.isArray(rawOf(student).contacts)) rows = rawOf(student).contacts;
+        return rows;
     }
 
-    function filteredStudents() {
-        return _students.filter(function (s) { return matchesQuery(s, _query); });
+    function primaryPhone(student) {
+        var raw = rawOf(student);
+        var contacts = contactsOf(student);
+        var primary = contacts.find(function (contact) { return contact.is_primary || contact.primary; }) || contacts[0] || {};
+        return text(student && (student.phone || student.phone_raw || student.primary_phone || student.normalized_phone))
+            || text(raw.phone || raw.phone_raw || raw.primary_phone || raw.normalized_phone)
+            || text(primary.phone || primary.phone_raw || primary.normalized_phone);
     }
 
-    function renderSummary(students) {
-        var total = students.length;
-        var active = students.filter(function (s) { return (s.status || 'active') === 'active'; }).length;
-        var inactive = total - active;
-        return '<div class="eie-summary-bar">'
-            + '<span class="eie-summary-item"><strong>' + esc(String(total)) + '</strong> 전체</span>'
-            + '<span class="eie-summary-item"><strong>' + esc(String(active)) + '</strong> 재원</span>'
-            + (inactive > 0 ? '<span class="eie-summary-item"><strong>' + esc(String(inactive)) + '</strong> 비활성/보관</span>' : '')
-            + '</div>';
+    function memoOf(student) {
+        return text(student && student.memo) || text(rawOf(student).memo);
+    }
+
+    function studentsFromState() {
+        return asArray(db().students);
+    }
+
+    function timetableCells() {
+        return asArray(db().timetable_cells);
+    }
+
+    function classLinksFor(student) {
+        var sid = rowId(student);
+        var links = asArray(db().class_students).filter(function (link) {
+            return String(link.student_id || '') === String(sid) && statusOf(link) !== 'archived';
+        });
+        var rawAssignments = asArray(rawOf(student).assignments);
+        rawAssignments.forEach(function (assignment) {
+            var cellId = text(assignment.timetable_cell_id || assignment.class_id || assignment.cell_id);
+            var exists = links.some(function (link) {
+                return text(link.timetable_cell_id || link.class_id) === cellId;
+            });
+            if (!exists) links.push({
+                id: assignment.id || assignment.assignment_id || cellId,
+                student_id: sid,
+                class_id: cellId,
+                timetable_cell_id: cellId,
+                raw: assignment,
+                status: assignment.status || 'active'
+            });
+        });
+        return links;
+    }
+
+    function cellForLink(link) {
+        var cellId = text(link && (link.timetable_cell_id || link.class_id || link.cell_id));
+        return timetableCells().find(function (cell) { return String(cell.id || '') === String(cellId); }) || rawOf(link) || {};
+    }
+
+    function assignmentsOf(student) {
+        return classLinksFor(student).map(function (link) {
+            var cell = cellForLink(link);
+            var raw = link.raw || {};
+            return {
+                link: link,
+                cell: cell,
+                cellId: text(link.timetable_cell_id || link.class_id || cell.id || raw.timetable_cell_id),
+                className: text(cell.class_name_raw || cell.class_name || raw.class_name_raw || raw.class_name || raw.name),
+                teacherName: text(cell.teacher_name_raw || cell.teacher_name || raw.teacher_name_raw || raw.teacher_name),
+                day: text(cell.day_label || raw.day_label),
+                period: text(cell.period_label || raw.period_label),
+                time: [text(cell.start_time || raw.start_time), text(cell.end_time || raw.end_time)].filter(Boolean).join('~'),
+                status: statusOf(link)
+            };
+        }).filter(function (item) {
+            return item.cellId || item.className || item.day || item.period;
+        });
+    }
+
+    function statusLabel(status) {
+        var key = text(status) || 'active';
+        if (key === 'active') return '재원';
+        if (key === 'inactive') return '비활성';
+        if (key === 'needs_review') return '확인 필요';
+        if (key === 'archived') return '보관';
+        return key;
+    }
+
+    function statusClass(status) {
+        var key = text(status) || 'active';
+        if (key === 'active') return 'is-active';
+        if (key === 'needs_review') return 'is-review';
+        if (key === 'archived') return 'is-archived';
+        return 'is-muted';
     }
 
     function renderStatusBadge(status) {
-        if (status === 'active') return '<span class="eie-badge eie-badge-active">재원</span>';
-        if (status === 'inactive') return '<span class="eie-badge eie-badge-review">비활성</span>';
-        if (status === 'archived') return '<span class="eie-badge eie-badge-archived">보관</span>';
-        if (status === 'needs_review') return '<span class="eie-badge eie-badge-review">확인필요</span>';
-        return '<span class="eie-badge eie-badge-active">재원</span>';
+        return '<span class="eie-apms-status ' + statusClass(status) + '">' + esc(statusLabel(status)) + '</span>';
     }
 
-    // ── 학생 등록 폼 ────────────────────────────────────────────────────
-    function renderCreateForm() {
-        return '<aside class="eie-editor-panel" aria-label="학생 등록">'
-            + '<div class="eie-editor-head">'
-            + '<h2>학생 등록</h2>'
-            + '<button type="button" class="eie-icon-button" onclick="EieStudentsView.cancelCreate()">닫기</button>'
-            + '</div>'
-            + '<div id="eie-student-create-msg"></div>'
-            + '<div class="eie-edit-form" style="margin-top:12px;">'
-            + '<label>이름 <span style="color:var(--eie-primary)">*</span>'
-            + '<input type="text" id="create-name" placeholder="학생 이름" autocomplete="off">'
+    function matchesQuery(student) {
+        var q = _query.toLowerCase();
+        if (!q) return true;
+        var haystack = [
+            displayName(student),
+            gradeOf(student),
+            schoolOf(student),
+            primaryPhone(student),
+            memoOf(student)
+        ];
+        assignmentsOf(student).forEach(function (assignment) {
+            haystack.push(assignment.className, assignment.teacherName, assignment.day, assignment.period);
+        });
+        return haystack.join(' ').toLowerCase().indexOf(q) >= 0;
+    }
+
+    function matchesStatus(student) {
+        var status = statusOf(student);
+        if (_statusFilter === 'all') return true;
+        if (_statusFilter === 'active') return status === 'active' || status === '';
+        return status === _statusFilter;
+    }
+
+    function visibleStudents() {
+        return studentsFromState()
+            .filter(matchesStatus)
+            .filter(matchesQuery)
+            .sort(function (a, b) {
+                var statusDiff = (statusOf(a) === 'archived' ? 1 : 0) - (statusOf(b) === 'archived' ? 1 : 0);
+                if (statusDiff !== 0) return statusDiff;
+                return displayName(a).localeCompare(displayName(b), 'ko');
+            });
+    }
+
+    function selectedStudent() {
+        if (!_selectedId) return null;
+        return studentsFromState().find(function (student) {
+            return String(rowId(student)) === String(_selectedId);
+        }) || null;
+    }
+
+    async function loadFoundation(force) {
+        if (_loading) return;
+        var compat = ui().eieApmsCompat || {};
+        var needsLoad = force || !compat.loadedAt || !studentsFromState().length;
+        if (!needsLoad) return;
+        _loading = true;
+        _error = '';
+        try {
+            if (window.EieApmsState && typeof EieApmsState.loadFoundation === 'function') {
+                var result = await EieApmsState.loadFoundation({ force: !!force });
+                if (result && result.success === false && Array.isArray(result.errors) && result.errors.length) {
+                    _error = result.errors.map(function (entry) { return entry.error || String(entry); }).join('; ');
+                }
+            } else {
+                var studentsPayload = await EieApi.getStudents();
+                var rows = studentsPayload.confirmed_students || studentsPayload.data || studentsPayload.students || [];
+                EieState.setStudents(asArray(rows));
+                var timetablePayload = await EieApi.getTimetable(null, { status: ['active', 'im' + 'ported', 'needs_review'].join(',') });
+                EieState.setTimetableCells(timetablePayload.timetable_cells || timetablePayload.data || []);
+            }
+        } catch (err) {
+            if (EieApi.isAuthError && EieApi.isAuthError(err) && window.EieApp && typeof EieApp.handleEie401 === 'function') {
+                EieApp.handleEie401();
+                return;
+            }
+            _error = err && err.message ? err.message : '학생 목록을 불러오지 못했습니다.';
+        } finally {
+            _loading = false;
+        }
+    }
+
+    async function refreshView(force) {
+        await loadFoundation(!!force);
+        if (_selectedId && !selectedStudent()) {
+            _query = _query || _selectedId;
+            _selectedId = '';
+            _mode = 'detail';
+        }
+        return EieRouter.open('students');
+    }
+
+    function renderSummary() {
+        var rows = studentsFromState();
+        var active = rows.filter(function (row) { return statusOf(row) === 'active' || statusOf(row) === ''; }).length;
+        var review = rows.filter(function (row) { return statusOf(row) === 'needs_review'; }).length;
+        var inactive = rows.filter(function (row) { return statusOf(row) === 'inactive'; }).length;
+        var archived = rows.filter(function (row) { return statusOf(row) === 'archived'; }).length;
+        return '<div class="eie-apms-summary">'
+            + '<button type="button" class="' + (_statusFilter === 'active' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'active\')"><strong>' + active + '</strong><span>재원</span></button>'
+            + '<button type="button" class="' + (_statusFilter === 'needs_review' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'needs_review\')"><strong>' + review + '</strong><span>확인 필요</span></button>'
+            + '<button type="button" class="' + (_statusFilter === 'inactive' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'inactive\')"><strong>' + inactive + '</strong><span>비활성</span></button>'
+            + '<button type="button" class="' + (_statusFilter === 'archived' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'archived\')"><strong>' + archived + '</strong><span>보관</span></button>'
+            + '<button type="button" class="' + (_statusFilter === 'all' ? 'is-active ' : '') + 'eie-apms-summary-item" onclick="EieStudentsView.setStatusFilter(\'all\')"><strong>' + rows.length + '</strong><span>전체</span></button>'
+            + '</div>';
+    }
+
+    function renderSearchToolbar() {
+        return '<div class="eie-apms-toolbar">'
+            + '<label class="eie-apms-search" aria-label="학생 검색">'
+            + '<span>검색</span>'
+            + '<input type="search" value="' + esc(_query) + '" placeholder="이름, 학년, 학교, 연락처, 수업명" oninput="EieStudentsView.setQuery(this.value)">'
             + '</label>'
-            + '<label>학년'
-            + '<input type="text" id="create-grade" placeholder="예: 중2" autocomplete="off">'
-            + '</label>'
-            + '<label>연락처 (대표)'
-            + '<input type="tel" id="create-phone" placeholder="010-0000-0000" autocomplete="off">'
-            + '</label>'
-            + '<label>상태'
-            + '<select id="create-status">'
-            + '<option value="active">재원</option>'
-            + '<option value="inactive">비활성</option>'
-            + '</select>'
-            + '</label>'
-            + '<label class="is-wide">메모'
-            + '<textarea id="create-memo" placeholder="메모" style="resize:vertical;min-height:60px;"></textarea>'
-            + '</label>'
-            + '<div class="eie-action-row is-wide">'
-            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.submitCreate()" ' + (_saving ? 'disabled' : '') + '>'
-            + (_saving ? '저장 중...' : '저장')
-            + '</button>'
-            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.cancelCreate()">취소</button>'
-            + '</div>'
-            + '</div>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.refresh(true)" ' + (_loading ? 'disabled' : '') + '>새로고침</button>'
+            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startCreate()">+ 신규 등록</button>'
+            + '</div>';
+    }
+
+    function renderList() {
+        var rows = visibleStudents();
+        if (!rows.length) {
+            return '<div class="eie-empty-box">조건에 맞는 학생이 없습니다.</div>';
+        }
+        return '<div class="eie-apms-student-list">'
+            + rows.map(function (student) {
+                var sid = rowId(student);
+                var selected = sid && String(sid) === String(_selectedId);
+                var phone = primaryPhone(student) || '연락처 미등록';
+                var grade = [schoolOf(student), gradeOf(student)].filter(Boolean).join(' ') || '학년 미등록';
+                var assignments = assignmentsOf(student);
+                var classLabel = assignments[0]
+                    ? [assignments[0].className, assignments[0].day, assignments[0].period].filter(Boolean).join(' · ')
+                    : '수업 미배정';
+                return '<button type="button" class="eie-apms-student-row' + (selected ? ' is-selected' : '') + '" onclick="EieStudentsView.openDetail(' + JSON.stringify(sid) + ')">'
+                    + '<span class="eie-apms-student-row-main">'
+                    + '<strong>' + esc(displayName(student)) + '</strong>'
+                    + renderStatusBadge(statusOf(student))
+                    + '</span>'
+                    + '<span class="eie-apms-student-row-meta">' + esc(grade) + '</span>'
+                    + '<span class="eie-apms-student-row-meta">' + esc(phone) + '</span>'
+                    + '<span class="eie-apms-student-row-meta">' + esc(classLabel) + (assignments.length > 1 ? ' 외 ' + (assignments.length - 1) + '개' : '') + '</span>'
+                    + '</button>';
+            }).join('')
+            + '</div>';
+    }
+
+    function renderEmptyDetail() {
+        return '<aside class="eie-apms-detail-panel is-empty">'
+            + '<div class="eie-apms-detail-empty-title">학생을 선택하세요</div>'
+            + '<p>왼쪽 목록에서 학생을 선택하면 APMS 방식의 상세 패널이 열립니다.</p>'
             + '</aside>';
     }
 
-    // ── 학생 상세 패널 (열람/수정 모드) ─────────────────────────────────
+    function renderField(label, value) {
+        return '<div class="eie-apms-field"><span>' + esc(label) + '</span><strong>' + esc(value || '미등록') + '</strong></div>';
+    }
+
+    function renderContacts(student) {
+        var phone = primaryPhone(student);
+        var contacts = contactsOf(student);
+        if (!contacts.length && phone) {
+            contacts = [{ id: 'primary', contact_label: '대표 연락처', phone: phone, is_primary: true }];
+        }
+        return '<div class="eie-apms-card">'
+            + '<div class="eie-apms-section-head"><h3>연락처</h3><span>별도 CRUD는 준비중</span></div>'
+            + (contacts.length ? contacts.map(function (contact, index) {
+                var label = text(contact.contact_label || contact.label || contact.relation) || (index === 0 ? '대표 연락처' : '연락처');
+                var contactPhone = text(contact.phone || contact.phone_raw || contact.normalized_phone) || '미등록';
+                return '<div class="eie-apms-contact-row">'
+                    + '<div><strong>' + esc(label) + '</strong><span>' + (contact.is_primary || index === 0 ? '대표' : '추가') + '</span></div>'
+                    + '<button type="button" onclick="EieStudentsView.copyPhone(' + JSON.stringify(contactPhone) + ')">' + esc(contactPhone) + '</button>'
+                    + '</div>';
+            }).join('') : '<p class="eie-apms-muted">등록된 연락처가 없습니다. 학생 수정에서 대표 연락처를 저장할 수 있습니다.</p>')
+            + '</div>';
+    }
+
+    function renderAssignments(student) {
+        var assignments = assignmentsOf(student);
+        return '<div class="eie-apms-card">'
+            + '<div class="eie-apms-section-head"><h3>수업 배정</h3><span>' + assignments.length + '개</span></div>'
+            + (assignments.length ? assignments.map(function (assignment) {
+                var title = assignment.className || '수업명 미등록';
+                var meta = [assignment.teacherName, assignment.day, assignment.period, assignment.time].filter(Boolean).join(' · ') || '시간표 정보 미등록';
+                return '<button type="button" class="eie-apms-assignment-row" onclick="EieStudentsView.openClassroom(' + JSON.stringify(assignment.cellId) + ')">'
+                    + '<strong>' + esc(title) + '</strong>'
+                    + '<span>' + esc(meta) + '</span>'
+                    + '</button>';
+            }).join('') : '<p class="eie-apms-muted">배정된 EIE 수업이 없습니다.</p>')
+            + '<div class="eie-action-row">'
+            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.openTimetable()">시간표 보기</button>'
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderReadyPanel(kind) {
+        var title = kind === 'consultation' ? '상담' : '출결/숙제';
+        var body = kind === 'consultation'
+            ? '상담 저장 endpoint는 다음 라운드에서 연결합니다. 현재는 APMS와 같은 위치와 문법만 유지합니다.'
+            : '출결과 숙제 저장 endpoint는 다음 라운드에서 연결합니다. 지금은 학생별 운영 정보를 읽기 전용으로 정리합니다.';
+        return '<div class="eie-apms-card">'
+            + '<div class="eie-apms-section-head"><h3>' + esc(title) + '</h3><span>준비중</span></div>'
+            + '<p class="eie-apms-muted">' + esc(body) + '</p>'
+            + '<button type="button" class="eie-secondary-button" disabled>저장 준비중</button>'
+            + '</div>';
+    }
+
+    function renderTabBody(student) {
+        if (_tab === 'contacts') return renderContacts(student);
+        if (_tab === 'classes') return renderAssignments(student);
+        if (_tab === 'consultation') return renderReadyPanel('consultation');
+        if (_tab === 'attendance') return renderReadyPanel('attendance');
+        return '<div class="eie-apms-card">'
+            + '<div class="eie-apms-section-head"><h3>기본정보</h3><span>EIE</span></div>'
+            + '<div class="eie-apms-field-grid">'
+            + renderField('학생명', displayName(student))
+            + renderField('학년', gradeOf(student))
+            + renderField('학교', schoolOf(student))
+            + renderField('상태', statusLabel(statusOf(student)))
+            + renderField('대표 연락처', primaryPhone(student))
+            + '</div>'
+            + '<div class="eie-apms-note">'
+            + '<span>메모</span>'
+            + '<p>' + esc(memoOf(student) || '메모가 없습니다.') + '</p>'
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderTabButton(tab, label) {
+        return '<button type="button" class="eie-apms-tab' + (_tab === tab ? ' is-active' : '') + '" onclick="EieStudentsView.setTab(' + JSON.stringify(tab) + ')">' + esc(label) + '</button>';
+    }
+
     function renderDetail(student) {
-        if (!student) return '';
-        var sid = esc(String(student.id || ''));
-        var name = student.display_name || student.name || '-';
-        var grade = getGrade(student);
-        var phone = getPhone(student);
-        var memo = student.memo || '';
-        var contacts = Array.isArray(student.contacts) ? student.contacts : [];
-        var assignments = Array.isArray(student.assignments) ? student.assignments : [];
-        var status = student.status || 'active';
+        if (!student) return renderEmptyDetail();
+        var sid = rowId(student);
+        if (_mode === 'edit') return renderEditForm(student);
 
-        if (_editMode) {
-            // 수정 모드
-            var contactsEditHtml = '<label class="is-wide">연락처 (대표)'
-                + '<input type="tel" id="edit-phone" value="' + esc(phone) + '" placeholder="010-0000-0000">'
-                + '</label>';
-            if (contacts.length > 1) {
-                contactsEditHtml += contacts.slice(1).map(function (c, i) {
-                    var label = c.contact_label || '연락처' + (i + 2);
-                    var ph = c.phone_raw || c.phone || '';
-                    return '<div class="eie-detail-row"><span>' + esc(label) + '</span><strong>' + esc(ph) + '</strong></div>';
-                }).join('');
-            }
-            return '<aside class="eie-editor-panel eie-student-detail-panel" aria-label="학생 수정">'
-                + '<div class="eie-editor-head">'
-                + '<h2>학생 수정</h2>'
-                + '<button type="button" class="eie-icon-button" onclick="EieStudentsView.cancelEdit()">취소</button>'
-                + '</div>'
-                + '<div id="eie-student-edit-msg"></div>'
-                + '<div class="eie-edit-form" style="margin-top:12px;">'
-                + '<label>이름 <span style="color:var(--eie-primary)">*</span>'
-                + '<input type="text" id="edit-name" value="' + esc(name) + '">'
-                + '</label>'
-                + '<label>학년'
-                + '<input type="text" id="edit-grade" value="' + esc(grade) + '" placeholder="예: 중2">'
-                + '</label>'
-                + contactsEditHtml
-                + '<label>상태'
-                + '<select id="edit-status">'
-                + '<option value="active"' + (status === 'active' ? ' selected' : '') + '>재원</option>'
-                + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>비활성</option>'
-                + '<option value="archived"' + (status === 'archived' ? ' selected' : '') + '>보관</option>'
-                + '<option value="needs_review"' + (status === 'needs_review' ? ' selected' : '') + '>확인필요</option>'
-                + '</select>'
-                + '</label>'
-                + '<label class="is-wide">메모'
-                + '<textarea id="edit-memo" style="resize:vertical;min-height:60px;">' + esc(memo) + '</textarea>'
-                + '</label>'
-                + '<div class="eie-action-row is-wide">'
-                + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.submitEdit(' + JSON.stringify(sid) + ')" ' + (_saving ? 'disabled' : '') + '>'
-                + (_saving ? '저장 중...' : '저장')
-                + '</button>'
-                + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.cancelEdit()">취소</button>'
-                + '</div>'
-                + '</div>'
-                + '</aside>';
-        }
-
-        // 열람 모드
-        var contactsHtml;
-        if (contacts.length) {
-            contactsHtml = '<div class="eie-admin-section-title-row" style="margin-top:14px;">'
-                + '<h3 class="eie-admin-section-title">연락처</h3></div>'
-                + '<div class="eie-detail-grid">'
-                + contacts.map(function (c, i) {
-                    var label = c.contact_label || (i === 0 ? '대표' : '연락처');
-                    var ph = c.phone_raw || c.phone || '-';
-                    return '<div class="eie-detail-row"><span>' + esc(label) + '</span><strong>' + esc(ph) + '</strong></div>';
-                }).join('')
-                + '</div>';
-        } else {
-            var ph = phone || '(없음)';
-            contactsHtml = '<div class="eie-detail-grid">'
-                + '<div class="eie-detail-row"><span>전화번호</span><strong>' + esc(ph) + '</strong></div>'
-                + '</div>';
-        }
-
-        var assignHtml = '';
-        if (assignments.length) {
-            assignHtml = '<div class="eie-admin-section-title-row" style="margin-top:14px;">'
-                + '<h3 class="eie-admin-section-title">수업 배정</h3></div>'
-                + '<div class="eie-detail-grid">'
-                + assignments.map(function (a) {
-                    var cellLabel = [a.class_name_raw, a.teacher_name_raw].filter(Boolean).join(' / ') || '-';
-                    var timeLabel = [a.day_label, a.period_label, a.start_time ? a.start_time + '~' + (a.end_time || '') : ''].filter(Boolean).join(' ') || '-';
-                    return '<div class="eie-detail-row"><span>' + esc(cellLabel) + '</span><strong>' + esc(timeLabel) + '</strong></div>';
-                }).join('')
-                + '</div>';
-        }
-
-        var memoHtml = memo ? '<div class="eie-admin-section-title-row" style="margin-top:14px;">'
-            + '<h3 class="eie-admin-section-title">메모</h3></div>'
-            + '<div class="eie-inline-note">' + esc(memo) + '</div>' : '';
-
-        return '<aside class="eie-editor-panel eie-student-detail-panel" aria-label="학생 상세">'
-            + '<div class="eie-editor-head">'
-            + '<h2>학생 상세</h2>'
-            + '<div style="display:flex;gap:6px;">'
-            + '<button type="button" class="eie-secondary-button" style="min-height:30px;padding:0 10px;font-size:12px;" onclick="EieStudentsView.startEdit()">수정</button>'
+        return '<aside class="eie-apms-detail-panel">'
+            + '<div class="eie-apms-detail-head">'
+            + '<div>'
+            + '<h2>' + esc(displayName(student)) + '</h2>'
+            + '<div class="eie-apms-head-badges">'
+            + renderStatusBadge(statusOf(student))
+            + '<span class="eie-apms-pill">' + esc([schoolOf(student), gradeOf(student)].filter(Boolean).join(' ') || '학년 미등록') + '</span>'
+            + '<span class="eie-apms-pill">' + esc(assignmentsOf(student).length + '개 수업') + '</span>'
+            + '</div>'
+            + '</div>'
             + '<button type="button" class="eie-icon-button" onclick="EieStudentsView.closeDetail()">닫기</button>'
             + '</div>'
+            + '<div class="eie-apms-detail-actions">'
+            + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startEdit(' + JSON.stringify(sid) + ')">수정</button>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.updateStatus(' + JSON.stringify(sid) + ', \'active\')" ' + (statusOf(student) === 'active' ? 'disabled' : '') + '>재원</button>'
+            + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.updateStatus(' + JSON.stringify(sid) + ', \'inactive\')" ' + (statusOf(student) === 'inactive' ? 'disabled' : '') + '>비활성</button>'
+            + '<button type="button" class="eie-danger-button" onclick="EieStudentsView.archiveStudent(' + JSON.stringify(sid) + ')" ' + (statusOf(student) === 'archived' ? 'disabled' : '') + '>보관 처리</button>'
             + '</div>'
-            + '<div class="eie-student-detail-title">'
-            + '<strong>' + esc(name) + '</strong>'
-            + renderStatusBadge(status)
+            + '<div class="eie-apms-tabs">'
+            + renderTabButton('basic', '기본정보')
+            + renderTabButton('contacts', '연락처')
+            + renderTabButton('classes', '수업 배정')
+            + renderTabButton('consultation', '상담')
+            + renderTabButton('attendance', '출결/숙제')
             + '</div>'
-            + '<div class="eie-detail-grid">'
-            + '<div class="eie-detail-row"><span>학년</span><strong>' + esc(grade || '(없음)') + '</strong></div>'
-            + '<div class="eie-detail-row"><span>수업 수</span><strong>' + esc(String(assignments.length)) + '개</strong></div>'
-            + '</div>'
-            + contactsHtml
-            + memoHtml
-            + assignHtml
+            + renderTabBody(student)
             + '</aside>';
     }
 
-    function renderList(students) {
-        if (!students.length) {
-            return _query
-                ? '<div class="eie-empty-box">검색 결과가 없습니다.</div>'
-                : '<div class="eie-empty-box">등록된 학생이 없습니다.</div>';
+    function renderCreateForm() {
+        return renderStudentForm(null);
+    }
+
+    function renderEditForm(student) {
+        return renderStudentForm(student);
+    }
+
+    function renderStudentForm(student) {
+        var isEdit = !!student;
+        var sid = isEdit ? rowId(student) : '';
+        var prefix = isEdit ? 'edit' : 'create';
+        var title = isEdit ? '학생 정보 수정' : '신규 학생 등록';
+        var status = isEdit ? statusOf(student) : 'active';
+        return '<aside class="eie-apms-detail-panel">'
+            + '<div class="eie-apms-detail-head">'
+            + '<h2>' + esc(title) + '</h2>'
+            + '<button type="button" class="eie-icon-button" onclick="' + (isEdit ? 'EieStudentsView.cancelEdit()' : 'EieStudentsView.cancelCreate()') + '">닫기</button>'
+            + '</div>'
+            + '<div id="eie-student-form-msg"></div>'
+            + '<div class="eie-apms-form">'
+            + '<label><span>학생명 *</span><input id="' + prefix + '-name" type="text" value="' + esc(isEdit ? displayName(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>학년</span><input id="' + prefix + '-grade" type="text" value="' + esc(isEdit ? gradeOf(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>학교</span><input id="' + prefix + '-school" type="text" value="' + esc(isEdit ? schoolOf(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>대표 연락처</span><input id="' + prefix + '-phone" type="tel" value="' + esc(isEdit ? primaryPhone(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>상태</span><select id="' + prefix + '-status">'
+            + '<option value="active"' + (status === 'active' ? ' selected' : '') + '>재원</option>'
+            + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>비활성</option>'
+            + '<option value="needs_review"' + (status === 'needs_review' ? ' selected' : '') + '>확인 필요</option>'
+            + '<option value="archived"' + (status === 'archived' ? ' selected' : '') + '>보관</option>'
+            + '</select></label>'
+            + '<label class="is-wide"><span>메모</span><textarea id="' + prefix + '-memo">' + esc(isEdit ? memoOf(student) : '') + '</textarea></label>'
+            + '<div class="eie-action-row is-wide">'
+            + '<button type="button" class="eie-primary-button" onclick="' + (isEdit ? 'EieStudentsView.submitEdit(' + JSON.stringify(sid) + ')' : 'EieStudentsView.submitCreate()') + '" ' + (_saving ? 'disabled' : '') + '>' + (_saving ? '저장 중...' : '저장') + '</button>'
+            + '<button type="button" class="eie-secondary-button" onclick="' + (isEdit ? 'EieStudentsView.cancelEdit()' : 'EieStudentsView.cancelCreate()') + '">취소</button>'
+            + '</div>'
+            + '</div>'
+            + '</aside>';
+    }
+
+    function formPayload(prefix) {
+        var name = text(document.getElementById(prefix + '-name') && document.getElementById(prefix + '-name').value);
+        var grade = text(document.getElementById(prefix + '-grade') && document.getElementById(prefix + '-grade').value);
+        var school = text(document.getElementById(prefix + '-school') && document.getElementById(prefix + '-school').value);
+        var phone = text(document.getElementById(prefix + '-phone') && document.getElementById(prefix + '-phone').value);
+        var statusEl = document.getElementById(prefix + '-status');
+        var memo = text(document.getElementById(prefix + '-memo') && document.getElementById(prefix + '-memo').value);
+        return {
+            display_name: name,
+            name: name,
+            grade: grade,
+            school_name: school,
+            phone: phone,
+            status: statusEl ? statusEl.value : 'active',
+            memo: memo
+        };
+    }
+
+    function showFormError(message) {
+        var target = document.getElementById('eie-student-form-msg');
+        if (target) target.innerHTML = '<div class="eie-error-box">' + esc(message) + '</div>';
+    }
+
+    async function afterWrite(result, studentId) {
+        var row = result && (result.student || result.data);
+        if (row && row.id && window.EieApmsState && typeof EieApmsState.syncStudent === 'function') {
+            EieApmsState.syncStudent(row);
         }
-        var rows = students.map(function (student) {
-            var sid = String(student.id || student.student_id || '');
-            var isSelected = sid !== '' && sid === String(_selectedId || '');
-            var nameText = student.display_name || student.name || '-';
-            var gradeText = getGrade(student);
-            var statusHtml = renderStatusBadge(student.status || 'active');
-            var assignCnt = student.assignment_count != null ? student.assignment_count
-                : student.class_count != null ? student.class_count : 0;
-            var hasContact = (student.contact_count || 0) > 0;
-            return '<button type="button"'
-                + ' class="eie-student-row' + (isSelected ? ' is-selected' : '') + '"'
-                + ' onclick="EieStudentsView.openDetail(' + JSON.stringify(sid) + ')">'
-                + '<div class="eie-student-row-main">'
-                + '<span class="eie-student-row-name">' + esc(nameText) + '</span>'
-                + statusHtml
-                + (hasContact ? '<span class="eie-badge eie-badge-contact">연락처</span>' : '')
-                + '</div>'
-                + '<div class="eie-student-row-sub">'
-                + '<span class="eie-student-row-meta">' + esc(gradeText || '학년 미입력') + '</span>'
-                + '<span class="eie-student-row-meta">수업 ' + esc(String(assignCnt)) + '개</span>'
-                + '</div>'
-                + '</button>';
-        });
-        return '<div class="eie-student-list">' + rows.join('') + '</div>';
+        if (studentId) _selectedId = String(studentId);
+        if (row && row.id) _selectedId = String(row.id);
+        _mode = 'detail';
+        _notice = '저장했습니다.';
+        await loadFoundation(true);
+        await EieRouter.open('students');
     }
 
     window.EieStudentsView = {
         render: async function () {
-            if (!_loaded) {
-                try {
-                    var result = await EieApi.getStudents();
-                    var rows = (result && result.confirmed_students)
-                        || (result && result.data)
-                        || (result && result.students)
-                        || [];
-                    _students = Array.isArray(rows) ? rows : [];
-                    _error = (!_students.length && result && result.success === false)
-                        ? (result.error || '학생 목록을 불러오지 못했습니다.')
-                        : '';
-                    _loaded = true;
-                } catch (err) {
-                    _error = '학생 목록을 불러오지 못했습니다.';
-                    _students = [];
-                }
-            }
-
-            var showPanel = _selectedId !== null || _showCreate;
-            var selected = getSelected();
-            var filtered = filteredStudents();
+            await loadFoundation(false);
+            var selected = selectedStudent();
+            if (_selectedId && !selected) selected = null;
+            var panel = _mode === 'create' ? renderCreateForm() : renderDetail(selected);
+            var noticeHtml = _notice ? '<div class="eie-success-box">' + esc(_notice) + '</div>' : '';
             var errorHtml = _error ? '<div class="eie-error-box">' + esc(_error) + '</div>' : '';
-            var layoutClass = showPanel ? 'eie-timetable-layout' : '';
-            var panelHtml = '';
-            if (_showCreate) {
-                panelHtml = renderCreateForm();
-            } else if (_selectedId !== null) {
-                panelHtml = renderDetail(selected);
-            }
-
-            return '<section aria-labelledby="eie-students-title">'
+            var loadingHtml = _loading ? '<div class="eie-api-note">학생 정보를 불러오는 중입니다.</div>' : '';
+            return '<section class="eie-apms-students-screen" aria-labelledby="eie-students-title">'
                 + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>'
-                + '<div class="eie-panel">'
-                + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">'
-                + '<h1 id="eie-students-title" class="eie-panel-title" style="margin:0;">학생관리</h1>'
-                + '<button type="button" class="eie-primary-button" style="min-height:36px;" onclick="EieStudentsView.openCreate()">+ 학생 등록</button>'
+                + '<div class="eie-apms-page-head">'
+                + '<div><h1 id="eie-students-title">학생관리</h1><p>APMS 학생관리 흐름에 맞춰 EIE 학생, 연락처, 수업 배정을 관리합니다.</p></div>'
+                + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startCreate()">+ 신규 등록</button>'
                 + '</div>'
-                + '<p class="eie-panel-copy">전화번호는 학생 이름 클릭 후 상세에서 확인합니다.</p>'
-                + errorHtml
-                + (_loaded && !_error ? renderSummary(_students) : '')
-                + '<div class="eie-search-bar">'
-                + '<input type="search" class="eie-search-input"'
-                + ' placeholder="이름, 학년, 수업명으로 검색..."'
-                + ' value="' + esc(_query) + '"'
-                + ' oninput="EieStudentsView.setQuery(this.value)">'
-                + '</div>'
-                + '<div class="' + layoutClass + '">'
-                + '<div class="eie-timetable-main">' + renderList(filtered) + '</div>'
-                + panelHtml
-                + '</div>'
+                + noticeHtml + errorHtml + loadingHtml
+                + renderSummary()
+                + renderSearchToolbar()
+                + '<div class="eie-apms-student-layout">'
+                + '<div class="eie-apms-list-panel">' + renderList() + '</div>'
+                + panel
                 + '</div>'
                 + '</section>';
         },
 
-        setQuery: function (q) {
-            _query = String(q || '');
+        setQuery: function (query) {
+            _query = text(query);
             EieRouter.open('students');
         },
 
-        openDetail: function (studentId) {
-            _selectedId = studentId;
-            _editMode = false;
-            _showCreate = false;
+        setStatusFilter: function (status) {
+            _statusFilter = text(status) || 'active';
             EieRouter.open('students');
+        },
+
+        openDetail: async function (studentId) {
+            _selectedId = text(studentId);
+            _mode = 'detail';
+            _tab = _tab || 'basic';
+            _notice = '';
+            if (!selectedStudent() && _selectedId) {
+                await loadFoundation(true);
+                if (!selectedStudent()) _query = _selectedId;
+            }
+            return EieRouter.open('students');
         },
 
         closeDetail: function () {
-            _selectedId = null;
-            _editMode = false;
+            _selectedId = '';
+            _mode = 'detail';
             EieRouter.open('students');
         },
 
-        startEdit: function () {
-            _editMode = true;
-            EieRouter.open('students');
-        },
-
-        cancelEdit: function () {
-            _editMode = false;
-            EieRouter.open('students');
-        },
-
-        submitEdit: async function (studentId) {
-            if (_saving) return;
-            var nameEl = document.getElementById('edit-name');
-            var gradeEl = document.getElementById('edit-grade');
-            var phoneEl = document.getElementById('edit-phone');
-            var statusEl = document.getElementById('edit-status');
-            var memoEl = document.getElementById('edit-memo');
-            var msgEl = document.getElementById('eie-student-edit-msg');
-
-            var name = nameEl ? nameEl.value.trim() : '';
-            if (!name) {
-                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">이름은 필수입니다.</div>';
-                return;
-            }
-
-            _saving = true;
-            if (msgEl) msgEl.innerHTML = '';
-
-            try {
-                await EieApi.updateStudent(studentId, {
-                    display_name: name,
-                    grade: gradeEl ? gradeEl.value.trim() : '',
-                    phone: phoneEl ? phoneEl.value.trim() : undefined,
-                    status: statusEl ? statusEl.value : undefined,
-                    memo: memoEl ? memoEl.value.trim() : ''
-                });
-                // 목록 갱신
-                _loaded = false;
-                _editMode = false;
-                _saving = false;
-                EieRouter.open('students');
-            } catch (err) {
-                _saving = false;
-                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">' + esc(err.message || '저장하지 못했습니다.') + '</div>';
-                EieRouter.open('students');
-            }
-        },
-
-        openCreate: function () {
-            _showCreate = true;
-            _selectedId = null;
-            _editMode = false;
+        startCreate: function () {
+            _selectedId = '';
+            _mode = 'create';
+            _notice = '';
             EieRouter.open('students');
         },
 
         cancelCreate: function () {
-            _showCreate = false;
+            _mode = 'detail';
             EieRouter.open('students');
         },
 
         submitCreate: async function () {
             if (_saving) return;
-            var nameEl = document.getElementById('create-name');
-            var gradeEl = document.getElementById('create-grade');
-            var phoneEl = document.getElementById('create-phone');
-            var statusEl = document.getElementById('create-status');
-            var memoEl = document.getElementById('create-memo');
-            var msgEl = document.getElementById('eie-student-create-msg');
+            var payload = formPayload('create');
+            if (!payload.display_name) return showFormError('학생명은 필수입니다.');
+            _saving = true;
+            try {
+                var result = await EieApi.createStudent(payload);
+                await afterWrite(result, result && (result.id || result.student_id));
+            } catch (err) {
+                showFormError(err && err.message ? err.message : '학생 등록에 실패했습니다.');
+            } finally {
+                _saving = false;
+            }
+        },
 
-            var name = nameEl ? nameEl.value.trim() : '';
-            if (!name) {
-                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">이름은 필수입니다.</div>';
+        startEdit: function (studentId) {
+            if (studentId) _selectedId = text(studentId);
+            _mode = 'edit';
+            _notice = '';
+            EieRouter.open('students');
+        },
+
+        cancelEdit: function () {
+            _mode = 'detail';
+            EieRouter.open('students');
+        },
+
+        submitEdit: async function (studentId) {
+            if (_saving) return;
+            var sid = text(studentId || _selectedId);
+            var payload = formPayload('edit');
+            if (!payload.display_name) return showFormError('학생명은 필수입니다.');
+            _saving = true;
+            try {
+                var result = await EieApi.updateStudent(sid, payload);
+                await afterWrite(result, sid);
+            } catch (err) {
+                showFormError(err && err.message ? err.message : '학생 수정에 실패했습니다.');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        updateStatus: async function (studentId, status) {
+            if (_saving) return;
+            var sid = text(studentId);
+            _saving = true;
+            try {
+                var result = await EieApi.updateStudentStatus(sid, status);
+                await afterWrite(result, sid);
+            } catch (err) {
+                _error = err && err.message ? err.message : '상태 변경에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        archiveStudent: async function (studentId) {
+            if (_saving) return;
+            var sid = text(studentId);
+            if (!window.confirm('이 학생을 보관 처리할까요? 실제 삭제 없이 상태만 보관으로 변경됩니다.')) return;
+            _saving = true;
+            try {
+                var result = await EieApi.deleteStudent(sid);
+                await afterWrite(result, sid);
+            } catch (err) {
+                _error = err && err.message ? err.message : '보관 처리에 실패했습니다.';
+                await EieRouter.open('students');
+            } finally {
+                _saving = false;
+            }
+        },
+
+        setTab: function (tab) {
+            _tab = text(tab) || 'basic';
+            EieRouter.open('students');
+        },
+
+        openClassroom: function (cellId) {
+            if (cellId && window.EieClassroomView && typeof EieClassroomView.openDetail === 'function') {
+                EieClassroomView.openDetail(cellId);
                 return;
             }
+            EieRouter.open('classroom');
+        },
 
-            _saving = true;
-            if (msgEl) msgEl.innerHTML = '';
+        openTimetable: function () {
+            EieRouter.open('timetable-v2');
+        },
 
+        refresh: function (force) {
+            return refreshView(force !== false);
+        },
+
+        copyPhone: async function (phone) {
+            var value = text(phone);
+            if (!value) return;
             try {
-                await EieApi.createStudent({
-                    display_name: name,
-                    grade: gradeEl ? gradeEl.value.trim() : '',
-                    phone: phoneEl ? phoneEl.value.trim() : '',
-                    status: statusEl ? statusEl.value : 'active',
-                    memo: memoEl ? memoEl.value.trim() : ''
-                });
-                _loaded = false;
-                _showCreate = false;
-                _saving = false;
-                EieRouter.open('students');
+                if (navigator.clipboard && navigator.clipboard.writeText) await navigator.clipboard.writeText(value);
+                if (window.toast) window.toast('연락처를 복사했습니다.', 'success');
             } catch (err) {
-                _saving = false;
-                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">' + esc(err.message || '저장하지 못했습니다.') + '</div>';
-                EieRouter.open('students');
+                if (window.toast) window.toast(value, 'info');
             }
         }
     };

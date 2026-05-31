@@ -1054,7 +1054,7 @@ body {
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     font: inherit;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -1625,7 +1625,7 @@ body {
   box-shadow: none;
   font: inherit;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
@@ -3397,4 +3397,511 @@ body {
 .eie-v2-source-link:hover {
     background: var(--eie-surface-2);
     color: var(--eie-text);
+}
+
+/* Round 2: EIE student management APMS parity */
+.eie-apms-students-screen {
+    width: 100%;
+    max-width: none;
+}
+
+.eie-apms-page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding: 18px;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    box-shadow: var(--eie-shadow);
+}
+
+.eie-apms-page-head h1 {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.eie-apms-page-head p {
+    margin: 7px 0 0;
+    color: var(--eie-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.eie-apms-summary {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.eie-apms-summary-item {
+    min-height: 68px;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    color: var(--eie-muted);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.eie-apms-summary-item strong {
+    color: var(--eie-text);
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.eie-apms-summary-item span {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-summary-item.is-active {
+    border-color: rgba(26, 92, 255, 0.24);
+    background: rgba(26, 92, 255, 0.06);
+    color: var(--eie-primary);
+}
+
+.eie-apms-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 8px;
+    align-items: stretch;
+    margin: 12px 0 14px;
+}
+
+.eie-apms-search {
+    min-width: 0;
+    min-height: 42px;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+    padding: 0 12px;
+}
+
+.eie-apms-search span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.eie-apms-search input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--eie-text);
+    font: inherit;
+    font-size: 14px;
+    outline: 0;
+}
+
+.eie-apms-student-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.88fr) minmax(360px, 1.12fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.eie-apms-list-panel,
+.eie-apms-detail-panel {
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    box-shadow: var(--eie-shadow);
+}
+
+.eie-apms-list-panel {
+    min-width: 0;
+    padding: 10px;
+}
+
+.eie-apms-student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.eie-apms-student-row {
+    width: 100%;
+    min-height: 76px;
+    padding: 11px 12px;
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.eie-apms-student-row:hover,
+.eie-apms-student-row.is-selected {
+    border-color: rgba(26, 92, 255, 0.28);
+    background: rgba(26, 92, 255, 0.04);
+}
+
+.eie-apms-student-row-main {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.eie-apms-student-row-main strong {
+    min-width: 0;
+    color: var(--eie-text);
+    font-size: 14px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.eie-apms-student-row-meta {
+    min-width: 0;
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eie-apms-detail-panel {
+    position: sticky;
+    top: 74px;
+    min-width: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eie-apms-detail-panel.is-empty {
+    min-height: 240px;
+    justify-content: center;
+    color: var(--eie-muted);
+}
+
+.eie-apms-detail-empty-title {
+    color: var(--eie-text);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.eie-apms-detail-panel.is-empty p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.eie-apms-detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.eie-apms-detail-head h2 {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.eie-apms-head-badges,
+.eie-apms-detail-actions,
+.eie-apms-tabs {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.eie-apms-head-badges {
+    margin-top: 9px;
+}
+
+.eie-apms-detail-actions {
+    align-items: center;
+}
+
+.eie-apms-status,
+.eie-apms-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 3px 8px;
+    border: 1px solid var(--eie-border);
+    border-radius: 999px;
+    background: var(--eie-surface-2);
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.eie-apms-status.is-active {
+    border-color: rgba(16, 185, 129, 0.22);
+    background: rgba(16, 185, 129, 0.10);
+    color: #047857;
+}
+
+.eie-apms-status.is-review {
+    border-color: rgba(245, 158, 11, 0.24);
+    background: rgba(245, 158, 11, 0.10);
+    color: #92400e;
+}
+
+.eie-apms-status.is-archived,
+.eie-apms-status.is-muted {
+    background: var(--eie-surface-2);
+    color: var(--eie-muted);
+}
+
+.eie-danger-button {
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(232, 65, 79, 0.22);
+    border-radius: 10px;
+    background: rgba(232, 65, 79, 0.06);
+    color: var(--error);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.eie-danger-button:disabled,
+.eie-secondary-button:disabled {
+    opacity: 0.48;
+    cursor: not-allowed;
+}
+
+.eie-apms-tabs {
+    padding: 4px;
+    border-radius: 12px;
+    background: var(--eie-bg);
+}
+
+.eie-apms-tab {
+    flex: 1 1 92px;
+    min-height: 40px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--eie-muted);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.eie-apms-tab.is-active {
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.eie-apms-card {
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface);
+    padding: 14px;
+}
+
+.eie-apms-section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.eie-apms-section-head h3 {
+    margin: 0;
+    color: var(--eie-text);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.eie-apms-section-head span {
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-apms-field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.eie-apms-field,
+.eie-apms-note,
+.eie-apms-contact-row,
+.eie-apms-assignment-row {
+    border: 1px solid var(--eie-border);
+    border-radius: 8px;
+    background: var(--eie-surface-2);
+}
+
+.eie-apms-field {
+    min-width: 0;
+    padding: 11px 12px;
+}
+
+.eie-apms-field span,
+.eie-apms-note span,
+.eie-apms-contact-row span,
+.eie-apms-assignment-row span {
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-apms-field strong,
+.eie-apms-contact-row strong,
+.eie-apms-assignment-row strong {
+    display: block;
+    margin-top: 3px;
+    color: var(--eie-text);
+    font-size: 13px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.eie-apms-note {
+    margin-top: 8px;
+    padding: 12px;
+}
+
+.eie-apms-note p,
+.eie-apms-muted {
+    margin: 5px 0 0;
+    color: var(--eie-muted);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.eie-apms-contact-row,
+.eie-apms-assignment-row {
+    width: 100%;
+    margin-top: 8px;
+    padding: 11px 12px;
+}
+
+.eie-apms-contact-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+.eie-apms-contact-row button,
+.eie-apms-assignment-row {
+    color: var(--eie-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.eie-apms-contact-row button {
+    border: 0;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.eie-apms-assignment-row {
+    display: block;
+    border-color: var(--eie-border);
+}
+
+.eie-apms-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.eie-apms-form label {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+}
+
+.eie-apms-form label span {
+    color: var(--eie-muted);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.eie-apms-form input,
+.eie-apms-form select,
+.eie-apms-form textarea {
+    width: 100%;
+    border: 1px solid var(--eie-border);
+    border-radius: 10px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+    font: inherit;
+    font-size: 14px;
+    padding: 10px 11px;
+    outline: 0;
+}
+
+.eie-apms-form textarea {
+    min-height: 82px;
+    resize: vertical;
+}
+
+.eie-apms-form .is-wide,
+.eie-apms-form .eie-action-row {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 980px) {
+    .eie-apms-student-layout,
+    .eie-apms-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-apms-detail-panel {
+        position: static;
+    }
+}
+
+@media (max-width: 720px) {
+    .eie-apms-page-head {
+        flex-direction: column;
+    }
+
+    .eie-apms-summary,
+    .eie-apms-field-grid,
+    .eie-apms-form {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-apms-contact-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }

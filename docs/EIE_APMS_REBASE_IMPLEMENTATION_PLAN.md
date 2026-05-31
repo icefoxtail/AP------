@@ -162,3 +162,21 @@ npx wrangler deploy
 | remote D1 schema 확인 | ✅ (Round 1.7: ICN production 확인) |
 | token smoke | ❌ (SESSION_TOKEN 미제공 — 배포 후 직접 확인 필요) |
 | eie-students.js APMS parity | ❌ (Round 2 대상) |
+## Round 2 Result: EIE 학생관리 APMS parity 구현 완료 (2026-05-31)
+
+### 구현 범위
+- `eie/js/views/eie-students.js`를 `EieState.get().db` 기반 렌더링으로 재구성했다.
+- 화면 내부 `_students` 배열을 원본 데이터처럼 쓰는 구조를 제거하고, 검색어/선택 학생/탭/편집 draft만 로컬 UI 상태로 유지한다.
+- 학생 목록, 검색, 상태 필터, 신규 등록, 상세 패널, 수정, 상태 변경, 보관 처리, 수업 배정 표시, 시간표/클래스룸 연결을 제공한다.
+- 상담/출결/숙제/복수 연락처 CRUD처럼 Worker endpoint가 아직 없는 기능은 APMS와 같은 위치의 패널/버튼 문법만 유지하고 준비중으로 표시한다.
+
+### 데이터/API 흐름
+- 초기 로드는 `EieApmsState.loadFoundation()`을 우선 사용한다.
+- fallback은 `EieApi.getStudents()`와 `EieApi.getTimetable()`로 `EieState.db.students`, `EieState.db.timetable_cells`를 채운다.
+- create/update/status/archive는 각각 `EieApi.createStudent`, `EieApi.updateStudent`, `EieApi.updateStudentStatus`, `EieApi.deleteStudent`를 호출한다.
+- 저장 후에는 `loadFoundation(true)`로 Worker/D1 상태를 다시 읽어 화면을 동기화한다.
+
+### 제한
+- APMS 원본 파일은 수정하지 않았다.
+- Worker, migration, classroom/timetable/dashboard view는 수정하지 않았다.
+- 브라우저 실기기 확인은 별도 확인 항목으로 남긴다.
