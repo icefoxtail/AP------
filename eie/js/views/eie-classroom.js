@@ -4,14 +4,61 @@
     var _error = '';
     var _loaded = false;
     var _studentsLoaded = false;
+    var _teachers = [];
+    var _teachersLoaded = false;
     var _selectedCellId = null;
     var _selectedStudentKey = null;
     var _editStudentMode = false; // 학생 상세 수정 모드
+    var _editCellTeachersMode = false;
     var _saving = false;
     var _addStudentMode = false;  // 학생 추가 패널
 
     function esc(value) {
         return EieApp.escapeHtml(value);
+    }
+
+    function text(value) {
+        return String(value == null ? '' : value).trim();
+    }
+
+    function rawOf(row) {
+        if (row && row.raw && typeof row.raw === 'object') return row.raw;
+        if (!row || !row.raw_meta_json) return {};
+        if (typeof row.raw_meta_json === 'object') return row.raw_meta_json;
+        try {
+            var parsed = JSON.parse(row.raw_meta_json);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function uniqueNames(rows) {
+        var seen = {};
+        return (Array.isArray(rows) ? rows : []).map(text).filter(function (name) {
+            var key = name.toLowerCase();
+            if (!name || seen[key]) return false;
+            seen[key] = true;
+            return true;
+        }).sort(function (a, b) { return a.localeCompare(b, 'ko'); });
+    }
+
+    function teacherNamesOfCell(cell) {
+        var raw = rawOf(cell);
+        var values = [];
+        if (Array.isArray(cell && cell.teacher_names)) values = values.concat(cell.teacher_names);
+        if (Array.isArray(raw.teacher_names)) values = values.concat(raw.teacher_names);
+        values = values.concat(text(cell && (cell.teacher_name_raw || cell.teacher_name)).split(','));
+        values = values.concat(text(raw.teacher_name_raw || raw.teacher_name).split(','));
+        return uniqueNames(values);
+    }
+
+    function teacherRoster() {
+        var values = _teachers.slice();
+        _cells.forEach(function (cell) {
+            values = values.concat(teacherNamesOfCell(cell));
+        });
+        return uniqueNames(values);
     }
 
     function asRows(result) {
@@ -42,9 +89,137 @@
         if (_selectedStudentKey === null) return null;
         var cell = getSelectedCell();
         if (!cell) return null;
-        return getAssignedStudents(cell).find(function (s) {
+        var assigned = getAssignedStudents(cell).find(function (s) {
             return String(s.assignment_id || s.student_id || '') === String(_selectedStudentKey);
         }) || null;
+        if (!assigned) return null;
+        var sid = text(assigned.student_id || assigned.id);
+        var full = _students.find(function (student) {
+            return String(student.id || student.student_id || '') === String(sid);
+        }) || {};
+        return Object.assign({}, full, assigned, {
+            raw_meta_json: assigned.raw_meta_json || full.raw_meta_json || null
+        });
+    }
+
+    function displayName(student) {
+        return text(student && (student.display_name || student.name || student.student_name_raw || student.normalized_name)) || '-';
+    }
+
+    function gradeOf(student) {
+        return text(student && (student.grade || student.grade_raw));
+    }
+
+    function normalizeGrade(value) {
+        var raw = text(value).replace(/\s+/g, '');
+        var middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
+        if (middle) return '중' + middle[1];
+        var high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
+        if (high) return '고' + high[1];
+        return raw;
+    }
+
+    function schoolOf(student) {
+        var raw = rawOf(student);
+        return text(student && (student.school_name || student.school)) || text(raw.school_name || raw.school);
+    }
+
+    function metaValue(student, key) {
+        var raw = rawOf(student);
+        return text(student && student[key]) || text(raw[key]);
+    }
+
+    function phoneOf(student) {
+        var raw = rawOf(student);
+        return text(student && (student.student_phone || student.phone || student.phone_raw || student.normalized_phone))
+            || text(raw.student_phone || raw.phone || raw.phone_raw || raw.normalized_phone);
+    }
+
+    function parentPhoneOf(student) {
+        return metaValue(student, 'parent_phone');
+    }
+
+    function guardianRelationOf(student) {
+        return metaValue(student, 'guardian_relation');
+    }
+
+    function addressOf(student) {
+        return metaValue(student, 'student_address');
+    }
+
+    function vehicleInfoOf(student) {
+        return metaValue(student, 'vehicle_info');
+    }
+
+    function studentPinOf(student) {
+        return metaValue(student, 'student_pin') || metaValue(student, 'pin');
+    }
+
+    function studentTypeOf(student) {
+        return metaValue(student, 'student_type') || '일반';
+    }
+
+    function memoOf(student) {
+        return text(student && student.memo) || text(rawOf(student).memo);
+    }
+
+    function statusOf(student) {
+        var status = text(student && student.status) || 'active';
+        return status === 'imported' ? 'active' : status;
+    }
+
+    function studentTeacherNames(student) {
+        var raw = rawOf(student);
+        var values = [];
+        if (Array.isArray(student && student.teacher_names)) values = values.concat(student.teacher_names);
+        if (Array.isArray(raw.teacher_names)) values = values.concat(raw.teacher_names);
+        values = values.concat(text(student && (student.teacher_name || student.teacher_name_raw)).split(','));
+        values = values.concat(text(raw.teacher_name || raw.teacher_name_raw).split(','));
+        return uniqueNames(values);
+    }
+
+    function renderDetailRow(label, value) {
+        return '<div class="eie-detail-row"><span>' + esc(label) + '</span><strong>' + esc(value || '(없음)') + '</strong></div>';
+    }
+
+    function renderGradeSelect(id, value) {
+        var selected = normalizeGrade(value);
+        var grades = ['중1', '중2', '중3', '고1', '고2', '고3'];
+        return '<select id="' + esc(id) + '">'
+            + '<option value="">선택</option>'
+            + grades.map(function (grade) {
+                return '<option value="' + esc(grade) + '"' + (selected === grade ? ' selected' : '') + '>' + esc(grade) + '</option>';
+            }).join('')
+            + '</select>';
+    }
+
+    function renderStudentTypeSelect(id, value) {
+        var selected = value || '일반';
+        var types = ['일반', '신입', '재등록', '휴원'];
+        return '<select id="' + esc(id) + '">'
+            + types.map(function (type) {
+                return '<option value="' + esc(type) + '"' + (selected === type ? ' selected' : '') + '>' + esc(type) + '</option>';
+            }).join('')
+            + '</select>';
+    }
+
+    function renderStudentTeacherPicker(student) {
+        var selected = studentTeacherNames(student);
+        var roster = teacherRoster();
+        if (!roster.length && selected.length) roster = selected;
+        if (!roster.length) return '';
+        return '<div class="eie-apms-teacher-picker is-wide">'
+            + '<div class="eie-apms-form-label">담당 선생님</div>'
+            + '<div class="eie-apms-teacher-options">'
+            + roster.map(function (name) {
+                var checked = selected.indexOf(name) >= 0;
+                return '<label class="eie-apms-teacher-option">'
+                    + '<input type="checkbox" name="cls-edit-teacher" value="' + esc(name) + '"' + (checked ? ' checked' : '') + '>'
+                    + '<span>' + esc(name) + '</span>'
+                    + '</label>';
+            }).join('')
+            + '</div>'
+            + '</div>';
     }
 
     function renderSummary(cells) {
@@ -54,7 +229,7 @@
         }, 0);
         var teachers = {};
         cells.forEach(function (c) {
-            if (c.teacher_name_raw) teachers[c.teacher_name_raw] = true;
+            teacherNamesOfCell(c).forEach(function (name) { teachers[name] = true; });
         });
         return '<div class="eie-summary-bar">'
             + '<span class="eie-summary-item"><strong>' + esc(String(total)) + '</strong> 수업</span>'
@@ -68,9 +243,9 @@
         if (!student) return '';
         var sid = String(student.student_id || student.id || '');
         var cellId = cell ? String(cell.id || '') : '';
-        var name = student.display_name || student.name || student.student_name_raw || '-';
-        var grade = student.grade_raw || student.grade || '';
-        var phone = student.phone_raw || student.phone || student.normalized_phone || '';
+        var name = displayName(student);
+        var grade = gradeOf(student);
+        var phone = phoneOf(student);
 
         if (_editStudentMode) {
             return '<aside class="eie-editor-panel eie-student-detail-panel" aria-label="학생 수정">'
@@ -83,21 +258,44 @@
                 + '<label>이름 <span style="color:var(--eie-primary)">*</span>'
                 + '<input type="text" id="cls-edit-name" value="' + esc(name) + '">'
                 + '</label>'
-                + '<label>학년'
-                + '<input type="text" id="cls-edit-grade" value="' + esc(grade) + '" placeholder="예: 중2">'
+                + '<label>학생구분'
+                + renderStudentTypeSelect('cls-edit-student-type', studentTypeOf(student))
                 + '</label>'
-                + '<label class="is-wide">연락처'
+                + '<label>학년'
+                + renderGradeSelect('cls-edit-grade', grade)
+                + '</label>'
+                + '<label>학교'
+                + '<input type="text" id="cls-edit-school" value="' + esc(schoolOf(student)) + '">'
+                + '</label>'
+                + '<label>학생 연락처'
                 + '<input type="tel" id="cls-edit-phone" value="' + esc(phone) + '" placeholder="010-0000-0000">'
                 + '</label>'
+                + '<label>학부모 연락처'
+                + '<input type="tel" id="cls-edit-parent-phone" value="' + esc(parentPhoneOf(student)) + '" placeholder="010-0000-0000">'
+                + '</label>'
+                + '<label>보호자 관계'
+                + '<input type="text" id="cls-edit-guardian-relation" value="' + esc(guardianRelationOf(student)) + '">'
+                + '</label>'
+                + '<label class="is-wide">주소'
+                + '<input type="text" id="cls-edit-address" value="' + esc(addressOf(student)) + '">'
+                + '</label>'
+                + '<label>차량'
+                + '<input type="text" id="cls-edit-vehicle" value="' + esc(vehicleInfoOf(student)) + '">'
+                + '</label>'
+                + '<label>PIN'
+                + '<input type="text" id="cls-edit-pin" inputmode="numeric" maxlength="4" value="' + esc(studentPinOf(student)) + '">'
+                + '</label>'
+                + renderStudentTeacherPicker(student)
                 + '<label>상태'
                 + '<select id="cls-edit-status">'
-                + '<option value="active"' + ((student.status || 'active') === 'active' ? ' selected' : '') + '>재원</option>'
-                + '<option value="inactive"' + (student.status === 'inactive' ? ' selected' : '') + '>비활성</option>'
-                + '<option value="archived"' + (student.status === 'archived' ? ' selected' : '') + '>보관</option>'
+                + '<option value="active"' + (statusOf(student) === 'active' ? ' selected' : '') + '>재원</option>'
+                + '<option value="inactive"' + (statusOf(student) === 'inactive' ? ' selected' : '') + '>비활성</option>'
+                + '<option value="needs_review"' + (statusOf(student) === 'needs_review' ? ' selected' : '') + '>확인 필요</option>'
+                + '<option value="archived"' + (statusOf(student) === 'archived' ? ' selected' : '') + '>보관</option>'
                 + '</select>'
                 + '</label>'
                 + '<label class="is-wide">메모'
-                + '<textarea id="cls-edit-memo" style="resize:vertical;min-height:60px;">' + esc(student.memo || '') + '</textarea>'
+                + '<textarea id="cls-edit-memo" style="resize:vertical;min-height:60px;">' + esc(memoOf(student)) + '</textarea>'
                 + '</label>'
                 + '<div class="eie-action-row is-wide">'
                 + '<button type="button" class="eie-primary-button" onclick="EieClassroomView.submitStudentEdit(' + JSON.stringify(sid) + ')" ' + (_saving ? 'disabled' : '') + '>'
@@ -127,14 +325,41 @@
             + '<div id="eie-classroom-student-msg"></div>'
             + '<div class="eie-student-detail-title"><strong>' + esc(name) + '</strong></div>'
             + '<div class="eie-detail-grid">'
-            + '<div class="eie-detail-row"><span>학년</span><strong>' + esc(grade || '(없음)') + '</strong></div>'
-            + '<div class="eie-detail-row"><span>전화번호</span><strong>' + esc(phone || '(없음)') + '</strong></div>'
-            + (cell ? '<div class="eie-detail-row"><span>수업</span><strong>' + esc(cell.class_name_raw || '-') + '</strong></div>' : '')
-            + (cell ? '<div class="eie-detail-row"><span>선생님</span><strong>' + esc(cell.teacher_name_raw || '-') + '</strong></div>' : '')
-            + (cell ? '<div class="eie-detail-row"><span>교시</span><strong>' + esc([cell.period_label, cell.start_time ? cell.start_time + '~' + (cell.end_time || '') : ''].filter(Boolean).join(' ') || '-') + '</strong></div>' : '')
+            + renderDetailRow('학생구분', studentTypeOf(student))
+            + renderDetailRow('학년', grade)
+            + renderDetailRow('학교', schoolOf(student))
+            + renderDetailRow('학생 연락처', phone)
+            + renderDetailRow('학부모 연락처', parentPhoneOf(student))
+            + renderDetailRow('보호자 관계', guardianRelationOf(student))
+            + renderDetailRow('주소', addressOf(student))
+            + renderDetailRow('차량', vehicleInfoOf(student))
+            + renderDetailRow('PIN', studentPinOf(student))
+            + renderDetailRow('담당 선생님', studentTeacherNames(student).join(', '))
+            + (cell ? renderDetailRow('수업', cell.class_name_raw || '-') : '')
+            + (cell ? renderDetailRow('클래스 담임', teacherNamesOfCell(cell).join(', ') || '-') : '')
+            + (cell ? renderDetailRow('교시', [cell.period_label, cell.start_time ? cell.start_time + '~' + (cell.end_time || '') : ''].filter(Boolean).join(' ') || '-') : '')
             + '</div>'
+            + '<div class="eie-apms-note" style="margin-top:12px;"><span>메모</span><p>' + esc(memoOf(student) || '메모가 없습니다.') + '</p></div>'
             + (removeBtn ? '<div class="eie-action-row" style="margin-top:14px;">' + removeBtn + '</div>' : '')
             + '</aside>';
+    }
+
+    function renderCellTeacherPicker(cell) {
+        var selected = teacherNamesOfCell(cell);
+        var roster = teacherRoster();
+        if (!roster.length && selected.length) roster = selected;
+        if (!roster.length) {
+            return '<div class="eie-empty-box">관리에서 선생님 계정을 만들거나 시간표에 선생님을 입력하면 선택 목록이 생깁니다.</div>';
+        }
+        return '<div class="eie-apms-teacher-options">'
+            + roster.map(function (name) {
+                var checked = selected.indexOf(name) >= 0;
+                return '<label class="eie-apms-teacher-option">'
+                    + '<input type="checkbox" name="cls-cell-teacher" value="' + esc(name) + '"' + (checked ? ' checked' : '') + '>'
+                    + '<span>' + esc(name) + '</span>'
+                    + '</label>';
+            }).join('')
+            + '</div>';
     }
 
     // ── 수업 상세 패널 ────────────────────────────────────────────────
@@ -142,6 +367,22 @@
         if (!cell) return '';
         var cellId = String(cell.id || '');
         var students = getAssignedStudents(cell);
+        var teacherNames = teacherNamesOfCell(cell);
+        if (_editCellTeachersMode) {
+            return '<aside class="eie-editor-panel" aria-label="담임 선생님 수정">'
+                + '<div class="eie-editor-head">'
+                + '<h2>담임 선생님</h2>'
+                + '<button type="button" class="eie-icon-button" onclick="EieClassroomView.cancelCellTeachersEdit()">취소</button>'
+                + '</div>'
+                + '<div id="eie-cell-msg"></div>'
+                + '<p style="font-size:13px;color:var(--eie-muted);margin:0 0 10px;">이미 등록된 선생님 이름 중 이 클래스에 들어가는 담임/담당 선생님을 모두 선택합니다.</p>'
+                + renderCellTeacherPicker(cell)
+                + '<div class="eie-action-row" style="margin-top:14px;">'
+                + '<button type="button" class="eie-primary-button" onclick="EieClassroomView.submitCellTeachers(' + JSON.stringify(cellId) + ')" ' + (_saving ? 'disabled' : '') + '>' + (_saving ? '저장 중...' : '저장') + '</button>'
+                + '<button type="button" class="eie-secondary-button" onclick="EieClassroomView.cancelCellTeachersEdit()">취소</button>'
+                + '</div>'
+                + '</aside>';
+        }
         var studentsHtml = students.length
             ? '<div class="eie-cell-students">'
                 + students.map(function (s) {
@@ -163,7 +404,7 @@
             + '<button type="button" class="eie-icon-button" onclick="EieClassroomView.closeDetail()">닫기</button>'
             + '</div>'
             + '<div class="eie-detail-grid">'
-            + '<div class="eie-detail-row"><span>선생님</span><strong>' + esc(cell.teacher_name_raw || '-') + '</strong></div>'
+            + '<div class="eie-detail-row"><span>담임/담당</span><strong>' + esc(teacherNames.join(', ') || '-') + '</strong></div>'
             + '<div class="eie-detail-row"><span>교시</span><strong>' + esc(cell.period_label || '-') + '</strong></div>'
             + '<div class="eie-detail-row"><span>시간</span><strong>' + esc([cell.start_time, cell.end_time].filter(Boolean).join('~') || '-') + '</strong></div>'
             + '<div class="eie-detail-row"><span>학생</span><strong>' + esc(String(students.length)) + '명</strong></div>'
@@ -171,6 +412,7 @@
             + '<div id="eie-cell-msg"></div>'
             + '<div class="eie-admin-section-title-row" style="margin-top:14px;">'
             + '<h3 class="eie-admin-section-title">배정 학생</h3>'
+            + '<button type="button" class="eie-small-button" onclick="EieClassroomView.startCellTeachersEdit()">담임 수정</button>'
             + '<button type="button" class="eie-small-button" onclick="EieClassroomView.openAddStudent()">+ 학생 추가</button>'
             + '</div>'
             + studentsHtml
@@ -219,7 +461,7 @@
             + sortCells(cells).map(function (cell) {
                 var students = getAssignedStudents(cell);
                 var isSelected = String(cell.id) === String(_selectedCellId || '');
-                var kicker = [cell.day_label, cell.period_label, cell.teacher_name_raw].filter(Boolean).join(' · ');
+                var kicker = [cell.day_label, cell.period_label, teacherNamesOfCell(cell).join(', ')].filter(Boolean).join(' · ');
                 return '<button type="button"'
                     + ' class="eie-admin-card' + (isSelected ? ' is-selected' : '') + '"'
                     + ' onclick="EieClassroomView.openDetail(' + JSON.stringify(String(cell.id)) + ')">'
@@ -257,6 +499,21 @@
                     _students = [];
                 }
             }
+            if (!_teachersLoaded) {
+                try {
+                    var tResult = await EieApi.getTeachers();
+                    var tRows = (tResult && tResult.teachers) || (tResult && tResult.data) || [];
+                    _teachers = uniqueNames((Array.isArray(tRows) ? tRows : []).filter(function (teacher) {
+                        return text(teacher.role) !== 'disabled';
+                    }).map(function (teacher) {
+                        return teacher.name || teacher.display_name || teacher.teacher_name;
+                    }));
+                    _teachersLoaded = true;
+                } catch (e2) {
+                    _teachers = [];
+                    _teachersLoaded = true;
+                }
+            }
 
             var showPanel = _selectedCellId !== null;
             var cell = getSelectedCell();
@@ -290,6 +547,7 @@
             _selectedCellId = cellId;
             _selectedStudentKey = null;
             _editStudentMode = false;
+            _editCellTeachersMode = false;
             _addStudentMode = false;
             EieRouter.open('classroom');
         },
@@ -298,6 +556,7 @@
             _selectedCellId = null;
             _selectedStudentKey = null;
             _editStudentMode = false;
+            _editCellTeachersMode = false;
             _addStudentMode = false;
             EieRouter.open('classroom');
         },
@@ -305,6 +564,7 @@
         openStudentDetail: function (studentKey) {
             _selectedStudentKey = studentKey;
             _editStudentMode = false;
+            _editCellTeachersMode = false;
             _addStudentMode = false;
             EieRouter.open('classroom');
         },
@@ -325,18 +585,74 @@
             EieRouter.open('classroom');
         },
 
+        startCellTeachersEdit: function () {
+            _editCellTeachersMode = true;
+            _selectedStudentKey = null;
+            _addStudentMode = false;
+            EieRouter.open('classroom');
+        },
+
+        cancelCellTeachersEdit: function () {
+            _editCellTeachersMode = false;
+            EieRouter.open('classroom');
+        },
+
+        submitCellTeachers: async function (cellId) {
+            if (_saving) return;
+            var msgEl = document.getElementById('eie-cell-msg');
+            var checked = Array.prototype.slice.call(document.querySelectorAll('input[name="cls-cell-teacher"]:checked'));
+            var teacherNames = uniqueNames(checked.map(function (input) { return input.value; }));
+            if (!teacherNames.length) {
+                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">담임 선생님을 1명 이상 선택해 주세요.</div>';
+                return;
+            }
+            _saving = true;
+            try {
+                var result = await EieApi.updateTimetableCell(cellId, {
+                    teacher_name_raw: teacherNames[0],
+                    teacher_names: teacherNames
+                });
+                var saved = result && (result.timetable_cell || result.data);
+                if (saved && saved.id) {
+                    var index = _cells.findIndex(function (cell) { return String(cell.id) === String(saved.id); });
+                    if (index >= 0) _cells.splice(index, 1, saved);
+                }
+                _loaded = false;
+                _editCellTeachersMode = false;
+                _saving = false;
+                EieRouter.open('classroom');
+            } catch (err) {
+                _saving = false;
+                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">' + esc(err.message || '저장하지 못했습니다.') + '</div>';
+                EieRouter.open('classroom');
+            }
+        },
+
         submitStudentEdit: async function (studentId) {
             if (_saving) return;
             var nameEl = document.getElementById('cls-edit-name');
             var gradeEl = document.getElementById('cls-edit-grade');
+            var schoolEl = document.getElementById('cls-edit-school');
             var phoneEl = document.getElementById('cls-edit-phone');
+            var parentPhoneEl = document.getElementById('cls-edit-parent-phone');
+            var relationEl = document.getElementById('cls-edit-guardian-relation');
+            var addressEl = document.getElementById('cls-edit-address');
+            var vehicleEl = document.getElementById('cls-edit-vehicle');
+            var pinEl = document.getElementById('cls-edit-pin');
+            var typeEl = document.getElementById('cls-edit-student-type');
             var statusEl = document.getElementById('cls-edit-status');
             var memoEl = document.getElementById('cls-edit-memo');
             var msgEl = document.getElementById('eie-classroom-student-msg');
+            var teacherInputs = Array.prototype.slice.call(document.querySelectorAll ? document.querySelectorAll('input[name="cls-edit-teacher"]:checked') : []);
 
             var name = nameEl ? nameEl.value.trim() : '';
             if (!name) {
                 if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">이름은 필수입니다.</div>';
+                return;
+            }
+            var pin = pinEl ? pinEl.value.trim() : '';
+            if (pin && !/^\d{4}$/.test(pin)) {
+                if (msgEl) msgEl.innerHTML = '<div class="eie-error-box">PIN은 4자리 숫자로 입력해 주세요.</div>';
                 return;
             }
 
@@ -346,7 +662,16 @@
                 await EieApi.updateStudent(studentId, {
                     display_name: name,
                     grade: gradeEl ? gradeEl.value.trim() : '',
+                    school_name: schoolEl ? schoolEl.value.trim() : '',
                     phone: phoneEl ? phoneEl.value.trim() : undefined,
+                    student_phone: phoneEl ? phoneEl.value.trim() : '',
+                    parent_phone: parentPhoneEl ? parentPhoneEl.value.trim() : '',
+                    guardian_relation: relationEl ? relationEl.value.trim() : '',
+                    student_address: addressEl ? addressEl.value.trim() : '',
+                    vehicle_info: vehicleEl ? vehicleEl.value.trim() : '',
+                    student_pin: pin,
+                    student_type: typeEl ? typeEl.value : '일반',
+                    teacher_names: uniqueNames(teacherInputs.map(function (input) { return input.value; })),
                     status: statusEl ? statusEl.value : undefined,
                     memo: memoEl ? memoEl.value.trim() : ''
                 });
@@ -366,6 +691,7 @@
         openAddStudent: function () {
             _addStudentMode = true;
             _selectedStudentKey = null;
+            _editCellTeachersMode = false;
             EieRouter.open('classroom');
         },
 

@@ -4,10 +4,14 @@
     var _selectedId = '';
     var _query = '';
     var _statusFilter = 'active';
+    var _gradeFilter = 'all';
+    var _teacherFilter = 'all';
     var _tab = 'basic';
     var _mode = 'detail';
     var _saving = false;
     var _loading = false;
+    var _returnCtx = null;
+    var _teacherRoster = [];
 
     function esc(value) {
         return EieApp.escapeHtml(value == null ? '' : value);
@@ -47,6 +51,48 @@
 
     function gradeOf(student) {
         return text(student && (student.grade || student.grade_raw));
+    }
+
+    function normalizeGrade(value) {
+        var raw = text(value).replace(/\s+/g, '');
+        var aliases = {
+            '중1': '중1',
+            '중학교1': '중1',
+            '중학교1학년': '중1',
+            '중등1': '중1',
+            '중등1학년': '중1',
+            '중2': '중2',
+            '중학교2': '중2',
+            '중학교2학년': '중2',
+            '중등2': '중2',
+            '중등2학년': '중2',
+            '중3': '중3',
+            '중학교3': '중3',
+            '중학교3학년': '중3',
+            '중등3': '중3',
+            '중등3학년': '중3',
+            '고1': '고1',
+            '고등1': '고1',
+            '고등1학년': '고1',
+            '고등학교1': '고1',
+            '고등학교1학년': '고1',
+            '고2': '고2',
+            '고등2': '고2',
+            '고등2학년': '고2',
+            '고등학교2': '고2',
+            '고등학교2학년': '고2',
+            '고3': '고3',
+            '고등3': '고3',
+            '고등3학년': '고3',
+            '고등학교3': '고3',
+            '고등학교3학년': '고3'
+        };
+        if (aliases[raw]) return aliases[raw];
+        var middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
+        if (middle) return '중' + middle[1];
+        var high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
+        if (high) return '고' + high[1];
+        return raw;
     }
 
     function schoolOf(student) {
@@ -93,13 +139,77 @@
         var raw = rawOf(student);
         var contacts = contactsOf(student);
         var primary = contacts.find(function (contact) { return contact.is_primary || contact.primary; }) || contacts[0] || {};
-        return text(student && (student.phone || student.phone_raw || student.primary_phone || student.normalized_phone))
-            || text(raw.phone || raw.phone_raw || raw.primary_phone || raw.normalized_phone)
+        return text(student && (student.student_phone || student.phone || student.phone_raw || student.primary_phone || student.normalized_phone))
+            || text(raw.student_phone || raw.phone || raw.phone_raw || raw.primary_phone || raw.normalized_phone)
             || text(primary.phone || primary.phone_raw || primary.normalized_phone);
     }
 
     function memoOf(student) {
         return text(student && student.memo) || text(rawOf(student).memo);
+    }
+
+    function metaValue(student, key) {
+        var raw = rawOf(student);
+        return text(student && student[key]) || text(raw[key]);
+    }
+
+    function parentPhoneOf(student) {
+        return metaValue(student, 'parent_phone');
+    }
+
+    function guardianRelationOf(student) {
+        return metaValue(student, 'guardian_relation');
+    }
+
+    function addressOf(student) {
+        return metaValue(student, 'student_address');
+    }
+
+    function vehicleInfoOf(student) {
+        return metaValue(student, 'vehicle_info');
+    }
+
+    function studentPinOf(student) {
+        return metaValue(student, 'student_pin') || metaValue(student, 'pin');
+    }
+
+    function studentTypeOf(student) {
+        return metaValue(student, 'student_type') || '일반';
+    }
+
+    function uniqueNames(rows) {
+        var seen = {};
+        return asArray(rows).map(text).filter(function (name) {
+            var key = name.toLowerCase();
+            if (!name || seen[key]) return false;
+            seen[key] = true;
+            return true;
+        }).sort(function (a, b) { return a.localeCompare(b, 'ko'); });
+    }
+
+    function teacherNamesOf(student) {
+        var raw = rawOf(student);
+        var values = [];
+        if (Array.isArray(student && student.teacher_names)) values = values.concat(student.teacher_names);
+        if (Array.isArray(raw.teacher_names)) values = values.concat(raw.teacher_names);
+        if (Array.isArray(raw.teachers)) {
+            values = values.concat(raw.teachers.map(function (teacher) {
+                return typeof teacher === 'string' ? teacher : teacher && teacher.name;
+            }));
+        }
+        values = values.concat(text(student && (student.teacher_name || student.teacher_name_raw)).split(','));
+        values = values.concat(text(raw.teacher_name || raw.teacher_name_raw).split(','));
+        return uniqueNames(values);
+    }
+
+    function teacherNamesOfCell(cell) {
+        var raw = rawOf(cell);
+        var values = [];
+        if (Array.isArray(cell && cell.teacher_names)) values = values.concat(cell.teacher_names);
+        if (Array.isArray(raw.teacher_names)) values = values.concat(raw.teacher_names);
+        values = values.concat(text(cell && (cell.teacher_name_raw || cell.teacher_name)).split(','));
+        values = values.concat(text(raw.teacher_name_raw || raw.teacher_name).split(','));
+        return uniqueNames(values);
     }
 
     function studentsFromState() {
@@ -108,6 +218,32 @@
 
     function timetableCells() {
         return asArray(db().timetable_cells);
+    }
+
+    function teacherRoster() {
+        var values = _teacherRoster.slice();
+        timetableCells().forEach(function (cell) {
+            values = values.concat(teacherNamesOfCell(cell));
+        });
+        studentsFromState().forEach(function (student) {
+            values = values.concat(teacherNamesOf(student));
+        });
+        return uniqueNames(values);
+    }
+
+    async function loadTeacherRoster() {
+        if (_teacherRoster.length || !window.EieApi || typeof EieApi.getTeachers !== 'function') return;
+        try {
+            var result = await EieApi.getTeachers();
+            var rows = result.teachers || result.data || [];
+            _teacherRoster = uniqueNames(asArray(rows).filter(function (teacher) {
+                return text(teacher.role) !== 'disabled';
+            }).map(function (teacher) {
+                return teacher.name || teacher.display_name || teacher.teacher_name;
+            }));
+        } catch (err) {
+            _teacherRoster = [];
+        }
     }
 
     function classLinksFor(student) {
@@ -147,7 +283,8 @@
                 cell: cell,
                 cellId: text(link.timetable_cell_id || link.class_id || cell.id || raw.timetable_cell_id),
                 className: text(cell.class_name_raw || cell.class_name || raw.class_name_raw || raw.class_name || raw.name),
-                teacherName: text(cell.teacher_name_raw || cell.teacher_name || raw.teacher_name_raw || raw.teacher_name),
+                teacherName: teacherNamesOfCell(cell).join(', ') || text(raw.teacher_name_raw || raw.teacher_name),
+                teacherNames: teacherNamesOfCell(cell),
                 day: text(cell.day_label || raw.day_label),
                 period: text(cell.period_label || raw.period_label),
                 time: [text(cell.start_time || raw.start_time), text(cell.end_time || raw.end_time)].filter(Boolean).join('~'),
@@ -187,10 +324,11 @@
             gradeOf(student),
             schoolOf(student),
             primaryPhone(student),
-            memoOf(student)
+            memoOf(student),
+            teacherNamesOf(student).join(' ')
         ];
         assignmentsOf(student).forEach(function (assignment) {
-            haystack.push(assignment.className, assignment.teacherName, assignment.day, assignment.period);
+            haystack.push(assignment.className, assignment.teacherName, assignment.teacherNames.join(' '), assignment.day, assignment.period);
         });
         return haystack.join(' ').toLowerCase().indexOf(q) >= 0;
     }
@@ -202,9 +340,29 @@
         return status === _statusFilter;
     }
 
+    function matchesGrade(student) {
+        if (_gradeFilter === 'all') return true;
+        return normalizeGrade(gradeOf(student)) === _gradeFilter;
+    }
+
+    function teacherNamesForStudent(student) {
+        var values = teacherNamesOf(student);
+        assignmentsOf(student).forEach(function (assignment) {
+            values = values.concat(assignment.teacherNames || []);
+        });
+        return uniqueNames(values);
+    }
+
+    function matchesTeacher(student) {
+        if (_teacherFilter === 'all') return true;
+        return teacherNamesForStudent(student).indexOf(_teacherFilter) >= 0;
+    }
+
     function visibleStudents() {
         return studentsFromState()
             .filter(matchesStatus)
+            .filter(matchesGrade)
+            .filter(matchesTeacher)
             .filter(matchesQuery)
             .sort(function (a, b) {
                 var statusDiff = (statusOf(a) === 'archived' ? 1 : 0) - (statusOf(b) === 'archived' ? 1 : 0);
@@ -240,6 +398,7 @@
                 var timetablePayload = await EieApi.getTimetable(null, { status: ['active', 'im' + 'ported', 'needs_review'].join(',') });
                 EieState.setTimetableCells(timetablePayload.timetable_cells || timetablePayload.data || []);
             }
+            await loadTeacherRoster();
         } catch (err) {
             if (EieApi.isAuthError && EieApi.isAuthError(err) && window.EieApp && typeof EieApp.handleEie401 === 'function') {
                 EieApp.handleEie401();
@@ -304,6 +463,27 @@
             + '</div>';
     }
 
+    function renderGradeFilters() {
+        var grades = ['중1', '중2', '중3', '고1', '고2', '고3'];
+        return '<div class="eie-apms-grade-filter" aria-label="학년 필터">'
+            + '<button type="button" class="' + (_gradeFilter === 'all' ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setGradeFilter(\'all\')">전체</button>'
+            + grades.map(function (grade) {
+                return '<button type="button" class="' + (_gradeFilter === grade ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setGradeFilter(' + jsArg(grade) + ')">' + esc(grade) + '</button>';
+            }).join('')
+            + '</div>';
+    }
+
+    function renderTeacherFilters() {
+        var roster = teacherRoster();
+        if (!roster.length) return '';
+        return '<div class="eie-apms-grade-filter" aria-label="담당 선생님 필터">'
+            + '<button type="button" class="' + (_teacherFilter === 'all' ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setTeacherFilter(\'all\')">선생님 전체</button>'
+            + roster.map(function (name) {
+                return '<button type="button" class="' + (_teacherFilter === name ? 'is-active ' : '') + 'eie-apms-filter-chip" onclick="EieStudentsView.setTeacherFilter(' + jsArg(name) + ')">' + esc(name) + '</button>';
+            }).join('')
+            + '</div>';
+    }
+
     function renderSearchToolbar() {
         return '<div class="eie-apms-toolbar">'
             + '<label class="eie-apms-search" aria-label="학생 검색">'
@@ -352,6 +532,51 @@
 
     function renderField(label, value) {
         return '<div class="eie-apms-field"><span>' + esc(label) + '</span><strong>' + esc(value || '미등록') + '</strong></div>';
+    }
+
+    function renderTeacherPicker(prefix, student) {
+        var roster = teacherRoster();
+        var selected = teacherNamesOf(student);
+        if (!roster.length && selected.length) roster = selected;
+        if (!roster.length) {
+            return '<div class="eie-apms-teacher-picker is-wide">'
+                + '<div class="eie-apms-form-label">담당 선생님</div>'
+                + '<p class="eie-apms-muted">관리에서 선생님 계정을 만들거나 시간표에 선생님을 입력하면 선택 목록이 생깁니다.</p>'
+                + '</div>';
+        }
+        return '<div class="eie-apms-teacher-picker is-wide">'
+            + '<div class="eie-apms-form-label">담당 선생님</div>'
+            + '<div class="eie-apms-teacher-options">'
+            + roster.map(function (name) {
+                var checked = selected.indexOf(name) >= 0;
+                return '<label class="eie-apms-teacher-option">'
+                    + '<input type="checkbox" name="' + prefix + '-teacher" value="' + esc(name) + '"' + (checked ? ' checked' : '') + '>'
+                    + '<span>' + esc(name) + '</span>'
+                    + '</label>';
+            }).join('')
+            + '</div>'
+            + '</div>';
+    }
+
+    function renderGradeSelect(prefix, student) {
+        var selected = normalizeGrade(gradeOf(student)) || gradeOf(student);
+        var grades = ['중1', '중2', '중3', '고1', '고2', '고3'];
+        return '<label><span>학년</span><select id="' + prefix + '-grade">'
+            + '<option value="">선택</option>'
+            + grades.map(function (grade) {
+                return '<option value="' + esc(grade) + '"' + (selected === grade ? ' selected' : '') + '>' + esc(grade) + '</option>';
+            }).join('')
+            + '</select></label>';
+    }
+
+    function renderStudentTypeSelect(prefix, student) {
+        var selected = studentTypeOf(student);
+        var types = ['일반', '신입', '재등록', '휴원'];
+        return '<label><span>학생구분</span><select id="' + prefix + '-student-type">'
+            + types.map(function (type) {
+                return '<option value="' + esc(type) + '"' + (selected === type ? ' selected' : '') + '>' + esc(type) + '</option>';
+            }).join('')
+            + '</select></label>';
     }
 
     function renderContacts(student) {
@@ -439,10 +664,17 @@
             + '<div class="eie-apms-section-head"><h3>기본정보</h3><span>EIE</span></div>'
             + '<div class="eie-apms-field-grid">'
             + renderField('학생명', displayName(student))
+            + renderField('학생구분', studentTypeOf(student))
             + renderField('학년', gradeOf(student))
             + renderField('학교', schoolOf(student))
             + renderField('상태', statusLabel(statusOf(student)))
-            + renderField('대표 연락처', primaryPhone(student))
+            + renderField('학생 연락처', primaryPhone(student))
+            + renderField('학부모 연락처', parentPhoneOf(student))
+            + renderField('보호자 관계', guardianRelationOf(student))
+            + renderField('주소', addressOf(student))
+            + renderField('차량', vehicleInfoOf(student))
+            + renderField('PIN', studentPinOf(student))
+            + renderField('담당 선생님', teacherNamesOf(student).join(', '))
             + '</div>'
             + '<div class="eie-apms-note">'
             + '<span>메모</span>'
@@ -473,6 +705,7 @@
             + '<button type="button" class="eie-icon-button" onclick="EieStudentsView.closeDetail()">닫기</button>'
             + '</div>'
             + '<div class="eie-apms-detail-actions">'
+            + renderReturnAction()
             + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startEdit(' + jsArg(sid) + ')">수정</button>'
             + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.updateStatus(' + jsArg(sid) + ', \'active\')" ' + (statusOf(student) === 'active' ? 'disabled' : '') + '>재원</button>'
             + '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.updateStatus(' + jsArg(sid) + ', \'inactive\')" ' + (statusOf(student) === 'inactive' ? 'disabled' : '') + '>비활성</button>'
@@ -511,9 +744,16 @@
             + '<div id="eie-student-form-msg"></div>'
             + '<div class="eie-apms-form">'
             + '<label><span>학생명 *</span><input id="' + prefix + '-name" type="text" value="' + esc(isEdit ? displayName(student) : '') + '" autocomplete="off"></label>'
-            + '<label><span>학년</span><input id="' + prefix + '-grade" type="text" value="' + esc(isEdit ? gradeOf(student) : '') + '" autocomplete="off"></label>'
+            + renderStudentTypeSelect(prefix, student)
+            + renderGradeSelect(prefix, student)
             + '<label><span>학교</span><input id="' + prefix + '-school" type="text" value="' + esc(isEdit ? schoolOf(student) : '') + '" autocomplete="off"></label>'
-            + '<label><span>대표 연락처</span><input id="' + prefix + '-phone" type="tel" value="' + esc(isEdit ? primaryPhone(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>학생 연락처</span><input id="' + prefix + '-phone" type="tel" value="' + esc(isEdit ? primaryPhone(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>학부모 연락처</span><input id="' + prefix + '-parent-phone" type="tel" value="' + esc(isEdit ? parentPhoneOf(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>보호자 관계</span><input id="' + prefix + '-guardian-relation" type="text" value="' + esc(isEdit ? guardianRelationOf(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>주소</span><input id="' + prefix + '-address" type="text" value="' + esc(isEdit ? addressOf(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>차량</span><input id="' + prefix + '-vehicle" type="text" value="' + esc(isEdit ? vehicleInfoOf(student) : '') + '" autocomplete="off"></label>'
+            + '<label><span>PIN</span><input id="' + prefix + '-pin" type="text" inputmode="numeric" maxlength="4" value="' + esc(isEdit ? studentPinOf(student) : '') + '" autocomplete="off"></label>'
+            + renderTeacherPicker(prefix, student)
             + '<label><span>상태</span><select id="' + prefix + '-status">'
             + '<option value="active"' + (status === 'active' ? ' selected' : '') + '>재원</option>'
             + '<option value="inactive"' + (status === 'inactive' ? ' selected' : '') + '>비활성</option>'
@@ -534,14 +774,30 @@
         var grade = text(document.getElementById(prefix + '-grade') && document.getElementById(prefix + '-grade').value);
         var school = text(document.getElementById(prefix + '-school') && document.getElementById(prefix + '-school').value);
         var phone = text(document.getElementById(prefix + '-phone') && document.getElementById(prefix + '-phone').value);
+        var parentPhone = text(document.getElementById(prefix + '-parent-phone') && document.getElementById(prefix + '-parent-phone').value);
+        var guardianRelation = text(document.getElementById(prefix + '-guardian-relation') && document.getElementById(prefix + '-guardian-relation').value);
+        var address = text(document.getElementById(prefix + '-address') && document.getElementById(prefix + '-address').value);
+        var vehicle = text(document.getElementById(prefix + '-vehicle') && document.getElementById(prefix + '-vehicle').value);
+        var pin = text(document.getElementById(prefix + '-pin') && document.getElementById(prefix + '-pin').value);
+        var studentTypeEl = document.getElementById(prefix + '-student-type');
         var statusEl = document.getElementById(prefix + '-status');
         var memo = text(document.getElementById(prefix + '-memo') && document.getElementById(prefix + '-memo').value);
+        var teacherInputs = Array.prototype.slice.call(document.querySelectorAll('input[name="' + prefix + '-teacher"]:checked'));
+        var teacherNames = uniqueNames(teacherInputs.map(function (input) { return input.value; }));
         return {
             display_name: name,
             name: name,
             grade: grade,
             school_name: school,
             phone: phone,
+            student_phone: phone,
+            parent_phone: parentPhone,
+            guardian_relation: guardianRelation,
+            student_address: address,
+            vehicle_info: vehicle,
+            student_pin: pin,
+            student_type: studentTypeEl ? studentTypeEl.value : '일반',
+            teacher_names: teacherNames,
             status: statusEl ? statusEl.value : 'active',
             memo: memo
         };
@@ -552,16 +808,50 @@
         if (target) target.innerHTML = '<div class="eie-error-box">' + esc(message) + '</div>';
     }
 
-    async function afterWrite(result, studentId) {
-        var row = result && (result.student || result.data);
-        if (row && row.id && window.EieApmsState && typeof EieApmsState.syncStudent === 'function') {
+    function normalizeReturnCtx(returnCtx) {
+        if (!returnCtx || typeof returnCtx !== 'object') return null;
+        var route = text(returnCtx.route || returnCtx.from);
+        if (route !== 'timetable-v2') return null;
+        return {
+            from: 'timetable-v2',
+            route: 'timetable-v2',
+            selectedDay: text(returnCtx.selectedDay || returnCtx.day),
+            sessionId: text(returnCtx.sessionId || returnCtx.session_id),
+            cellId: text(returnCtx.cellId || returnCtx.cell_id)
+        };
+    }
+
+    function setReturnCtx(returnCtx) {
+        var normalized = normalizeReturnCtx(returnCtx);
+        if (normalized) _returnCtx = normalized;
+    }
+
+    function renderReturnAction() {
+        if (!_returnCtx) return '';
+        return '<button type="button" class="eie-secondary-button" onclick="EieStudentsView.returnToTimetable()">시간표로 돌아가기</button>';
+    }
+
+    async function refreshEieStudentFoundationAfterMutation(row) {
+        if (row && row.id && window.EieState && typeof EieState.upsertStudent === 'function') {
+            EieState.upsertStudent(row);
+        }
+        if (window.EieApmsState && typeof EieApmsState.syncStudent === 'function' && row && row.id) {
             EieApmsState.syncStudent(row);
         }
+        if (window.EieApmsState && typeof EieApmsState.loadFoundation === 'function') {
+            await EieApmsState.loadFoundation({ force: true }).catch(function () { return null; });
+        } else {
+            await loadFoundation(true);
+        }
+    }
+
+    async function afterWrite(result, studentId) {
+        var row = result && (result.student || result.data);
         if (studentId) _selectedId = String(studentId);
         if (row && row.id) _selectedId = String(row.id);
         _mode = 'detail';
         _notice = '저장했습니다.';
-        await loadFoundation(true);
+        await refreshEieStudentFoundationAfterMutation(row);
         await EieRouter.open('students');
     }
 
@@ -577,11 +867,12 @@
             return '<section class="eie-apms-students-screen" aria-labelledby="eie-students-title">'
                 + '<button type="button" class="eie-back-button" data-eie-route="dashboard" aria-label="EIE 홈으로 이동" title="EIE 홈">← EIE 홈</button>'
                 + '<div class="eie-apms-page-head">'
-                + '<div><h1 id="eie-students-title">학생관리</h1><p>APMS 학생관리 흐름에 맞춰 EIE 학생, 연락처, 수업 배정을 관리합니다.</p></div>'
-                + '<button type="button" class="eie-primary-button" onclick="EieStudentsView.startCreate()">+ 신규 등록</button>'
+                + '<div><h1 id="eie-students-title">학생관리</h1></div>'
                 + '</div>'
                 + noticeHtml + errorHtml + loadingHtml
                 + renderSummary()
+                + renderGradeFilters()
+                + renderTeacherFilters()
                 + renderSearchToolbar()
                 + '<div class="eie-apms-student-layout">'
                 + '<div class="eie-apms-list-panel">' + renderList() + '</div>'
@@ -590,8 +881,9 @@
                 + '</section>';
         },
 
-        setQuery: function (query) {
+        setQuery: function (query, returnCtx) {
             _query = text(query);
+            setReturnCtx(returnCtx);
             EieRouter.open('students');
         },
 
@@ -600,7 +892,18 @@
             EieRouter.open('students');
         },
 
-        openDetail: async function (studentId) {
+        setGradeFilter: function (grade) {
+            _gradeFilter = text(grade) || 'all';
+            EieRouter.open('students');
+        },
+
+        setTeacherFilter: function (teacherName) {
+            _teacherFilter = text(teacherName) || 'all';
+            EieRouter.open('students');
+        },
+
+        openDetail: async function (studentId, returnCtx) {
+            setReturnCtx(returnCtx);
             _selectedId = text(studentId);
             _mode = 'detail';
             _tab = _tab || 'basic';
@@ -636,6 +939,7 @@
             if (_saving) return;
             var payload = formPayload('create');
             if (!payload.display_name) return showFormError('학생명은 필수입니다.');
+            if (payload.student_pin && !/^\d{4}$/.test(payload.student_pin)) return showFormError('PIN은 4자리 숫자로 입력해 주세요.');
             _saving = true;
             try {
                 var result = await EieApi.createStudent(payload);
@@ -664,6 +968,7 @@
             var sid = text(studentId || _selectedId);
             var payload = formPayload('edit');
             if (!payload.display_name) return showFormError('학생명은 필수입니다.');
+            if (payload.student_pin && !/^\d{4}$/.test(payload.student_pin)) return showFormError('PIN은 4자리 숫자로 입력해 주세요.');
             _saving = true;
             try {
                 var result = await EieApi.updateStudent(sid, payload);
@@ -812,6 +1117,18 @@
         },
 
         openTimetable: function () {
+            EieRouter.open('timetable-v2');
+        },
+
+        returnToTimetable: function () {
+            if (_returnCtx && _returnCtx.route === 'timetable-v2') {
+                if (window.EieTimetableV2View && typeof EieTimetableV2View.openWithContext === 'function') {
+                    EieTimetableV2View.openWithContext(_returnCtx);
+                    return;
+                }
+                EieRouter.open('timetable-v2');
+                return;
+            }
             EieRouter.open('timetable-v2');
         },
 

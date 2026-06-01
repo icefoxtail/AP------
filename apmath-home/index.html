@@ -122,8 +122,8 @@
   .nav .divider { width: 1px; height: 16px; background: var(--border); margin: 0 8px; }
   
   .hdr-actions { display: flex; align-items: center; gap: 8px; }
-  .hdr-actions .home-link { display: none; }
-  @media (min-width: 720px) { .hdr-actions .home-link { display: inline-flex; } }
+  .hdr-actions .home-link { display: inline-flex; }
+  @media (max-width: 719px) { .hdr-actions .login-link { display: none; } }
 
   .burger { display: inline-flex; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--fg-1); transition: all 0.2s; }
   @media (min-width: 940px) { .burger { display: none; } }
@@ -134,7 +134,7 @@
     transition: max-height 0.3s var(--ease), opacity 0.2s var(--ease);
     background: rgba(255, 255, 255, 0.98); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
   }
-  .mnav.open { max-height: 300px; opacity: 1; border-bottom: 1px solid var(--border); }
+  .mnav.open { max-height: 420px; opacity: 1; border-bottom: 1px solid var(--border); }
   .mnav a { display: block; padding: 16px 24px; font-size: 16px; font-weight: 500; color: var(--fg-2); border-bottom: 1px solid var(--border); }
 
   /* ---------- HERO ---------- */
@@ -295,12 +295,12 @@
   }
 
 
-  .mcta-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: none; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.93); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px -10px rgba(30,64,175,.2); transition: transform .32s var(--ease); }
+  .mcta-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.93); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px -10px rgba(30,64,175,.2); transition: transform .32s var(--ease); }
   .mcta-bar.hide { transform: translateY(140%); }
-  .mcta-bar a { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 52px; border-radius: var(--r-md); font-size: 15.5px; font-weight: 700; }
-  .mcta-bar .tel { flex: 0 0 auto; padding: 0 20px; background: var(--white); color: var(--fg-1); border: 1px solid var(--border-strong); }
-  .mcta-bar .main { flex: 1; background: var(--ap-main); color: #fff; box-shadow: var(--sh-sm); }
-  @media (max-width: 820px) { .mcta-bar { display: flex; } body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); } }
+  .mcta-bar a { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 0; height: 52px; border-radius: var(--r-md); font-size: 14px; font-weight: 800; }
+  .mcta-bar .tel, .mcta-bar .map { padding: 0 10px; background: var(--white); color: var(--fg-1); border: 1px solid var(--border-strong); }
+  .mcta-bar .main { padding: 0 10px; background: var(--ap-main); color: #fff; box-shadow: var(--sh-sm); }
+  @media (max-width: 820px) { .mcta-bar { display: grid; } body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); } }
 
   .login-inline-message { min-height: 22px; margin: 10px 0 0; color: var(--ap-main); font-size: 13px; font-weight: 700; text-align: center; opacity: 0; transform: translateY(4px); transition: opacity .2s var(--ease), transform .2s var(--ease); }
   .login-inline-message.show { opacity: 1; transform: translateY(0); }
@@ -723,7 +723,7 @@
 </nav>
 <div class="hdr-actions">
 <a class="btn btn-secondary btn-sm home-link" href="../">왕지교육</a>
-<a class="btn btn-blue btn-sm" href="../apmath/"><svg class="ic" height="16" width="16"><use href="#i-login"></use></svg>로그인</a>
+<a class="btn btn-blue btn-sm login-link" href="../apmath/"><svg class="ic" height="16" width="16"><use href="#i-login"></use></svg>로그인</a>
 <button aria-expanded="false" aria-label="메뉴 열기" class="burger" id="burger">
 <svg class="ic" height="24" width="24"><use href="#i-menu"></use></svg>
 </button>
@@ -735,6 +735,8 @@
 <a href="#strength">강점</a>
 <a href="#method">학습 방식</a>
 <a href="#inquiry">상담 문의</a>
+<a href="../">왕지교육</a>
+<a href="../apmath/">학습 관리 로그인</a>
 </div>
 <main id="top" style="background: var(--bg);">
 <section class="hero hero--dark">
@@ -900,7 +902,8 @@
 </footer>
 <div class="mcta-bar" id="mctaBar">
 <a aria-label="전화 상담" class="tel" href="tel:061-727-0369"><svg class="ic" height="18" width="18"><use href="#i-phone"></use></svg>전화</a>
-<a class="main" href="#inquiry">상담 문의</a>
+<a aria-label="네이버 지도" class="map" href="https://map.naver.com/v5/search/%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%A7%805%EA%B8%B8%209-8" rel="noopener" target="_blank"><svg class="ic" height="18" width="18"><use href="#i-map-pin"></use></svg>지도</a>
+<a class="main" href="#inquiry">상담문의</a>
 </div>
 <script>
 

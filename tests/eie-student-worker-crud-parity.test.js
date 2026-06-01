@@ -16,8 +16,13 @@ assert(
 );
 
 assert(
-  /const phoneRaw = safeText\(body\.phone \|\| body\.phone_raw \|\| body\.parent_phone\);[\s\S]*const normalizedPhone = phoneRaw \? normalizePhone\(phoneRaw\) : '';/.test(source),
-  'student PATCH should accept AP-compatible phone fields and normalize phone consistently'
+  /const phoneRaw = safeText\(body\.student_phone \|\| body\.phone \|\| body\.phone_raw\);[\s\S]*const normalizedPhone = phoneRaw \? normalizePhone\(phoneRaw\) : '';/.test(source),
+  'student PATCH should normalize student phone without overwriting it with parent_phone'
+);
+
+assert(
+  source.includes("'parent_phone'") && source.includes("'guardian_relation'") && source.includes("'student_address'") && source.includes("'vehicle_info'") && source.includes("'student_pin'") && source.includes("'student_type'"),
+  'student CRUD should persist AP-style student info fields in raw_meta_json'
 );
 
 assert(

@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>시험지 분석표</title>
+  <style>
+    :root {
+      --archive-navy: #0B1220;
+      --archive-text: #1f2937;
+      --archive-muted: #64748b;
+      --archive-border: #dbe3ef;
+      --archive-soft: #f6f8fb;
+      --archive-green: #0f766e;
+      --archive-red: #b42318;
+      --archive-amber: #a16207;
+      --archive-shadow-sm: 0 8px 22px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f4f7fb;
+      color: var(--archive-text);
+      font-family: "Pretendard", "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+    }
+    header {
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid var(--archive-border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .top-nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--archive-navy);
+    }
+    .back-link {
+      color: var(--archive-muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 20px 56px;
+    }
+    .exam-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--archive-border);
+      border-radius: 8px;
+      box-shadow: var(--archive-shadow-sm);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .card-top {
+      height: 5px;
+      background: var(--archive-navy);
+    }
+    .card-body {
+      padding: 18px;
+    }
+    .card-grade-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .card-grade-label {
+      color: var(--archive-muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .card-type-chip, .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 999px;
+      background: var(--archive-soft);
+      border: 1px solid var(--archive-border);
+      color: var(--archive-muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 9px;
+    }
+    .meta-badge.primary { color: var(--archive-navy); }
+    .meta-badge.green { color: var(--archive-green); }
+    .card-main-title {
+      font-size: 23px;
+      font-weight: 850;
+      margin-bottom: 8px;
+    }
+    .card-sub-title {
+      color: var(--archive-muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .card-meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--archive-muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--archive-border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--archive-text);
+      font: inherit;
+      padding: 10px 11px;
+    }
+    textarea {
+      min-height: 42px;
+      resize: vertical;
+    }
+    .span-2 { grid-column: span 2; }
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .action-btn {
+      border: 1px solid var(--archive-border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--archive-navy);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      min-height: 36px;
+      padding: 7px 12px;
+    }
+    .action-btn:hover { border-color: var(--archive-navy); }
+    .save-state {
+      color: var(--archive-muted);
+      font-size: 12px;
+      margin-left: auto;
+    }
+    .section-title {
+      font-size: 17px;
+      font-weight: 850;
+      margin: 0 0 12px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--archive-border);
+      border-radius: 8px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--archive-border);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 13px;
+    }
+    th {
+      background: var(--archive-soft);
+      color: var(--archive-muted);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .result-picker {
+      display: flex;
+      gap: 5px;
+    }
+    .result-btn {
+      min-width: 38px;
+      min-height: 34px;
+      border: 1px solid var(--archive-border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--archive-muted);
+      cursor: pointer;
+      font-weight: 850;
+    }
+    .result-btn.is-selected[data-status="correct"] {
+      border-color: var(--archive-green);
+      background: #e9f8f4;
+      color: var(--archive-green);
+    }
+    .result-btn.is-selected[data-status="wrong"] {
+      border-color: var(--archive-red);
+      background: #fff1f0;
+      color: var(--archive-red);
+    }
+    .result-btn.is-selected[data-status="partial"] {
+      border-color: var(--archive-amber);
+      background: #fff8e7;
+      color: var(--archive-amber);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .stat {
+      border: 1px solid var(--archive-border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+    }
+    .stat strong {
+      display: block;
+      color: var(--archive-navy);
+      font-size: 20px;
+      line-height: 1.1;
+    }
+    .empty-state {
+      border: 1px dashed var(--archive-border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--archive-muted);
+      padding: 32px 18px;
+      text-align: center;
+    }
+    .needs-list {
+      display: grid;
+      gap: 8px;
+    }
+    .need-item {
+      border: 1px solid var(--archive-border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .top-nav { align-items: flex-start; flex-direction: column; }
+      main { padding: 16px 12px 40px; }
+      .form-grid, .summary-grid { grid-template-columns: 1fr; }
+      .span-2 { grid-column: span 1; }
+      .card-main-title { font-size: 19px; }
+      th, td { padding: 8px; }
+      .result-btn { min-width: 36px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      header, .no-print, .input-section, .result-picker { display: none !important; }
+      main { max-width: none; padding: 0; }
+      .exam-card { box-shadow: none; break-inside: avoid; }
+      .card-body { padding: 12px; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; }
+      th, td { font-size: 10px; padding: 5px; }
+      .card-main-title { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-nav">
+      <div class="brand">시험지 분석표</div>
+      <a class="back-link" href="./assessment-mvp.html">시험지 보관함으로 돌아가기</a>
+    </div>
+  </header>
+
+  <main id="app">
+    <div class="empty-state">평가팩을 불러오는 중입니다.</div>
+  </main>
+
+  <script src="assessment-packs-1sem.generated.js"></script>
+  <script src="assessment-question-index-1sem.generated.js"></script>
+  <script>
+    const PACK_DATA = window.APMATH_ASSESSMENT_PACKS_1SEM || { packs: [] };
+    const QUESTION_INDEX_DATA = window.APMATH_ASSESSMENT_QUESTION_INDEX_1SEM || { questions: [] };
+    const packs = PACK_DATA.packs || [];
+    const questionIndex = QUESTION_INDEX_DATA.questions || [];
+    const STORAGE_PREFIX = 'apms.assessment.analysis.';
+    const STATUS_LABELS = { correct: 'O', wrong: 'X', partial: '△', unchecked: '-' };
+    const state = { pack: null, rows: [] };
+
+    function escapeHTML(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      }[ch]));
+    }
+
+    function todayString() {
+      return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    }
+
+    function getPackId() {
+      return new URLSearchParams(window.location.search).get('packId') || '';
+    }
+
+    function getStorageKey() {
+      return STORAGE_PREFIX + (state.pack?.id || getPackId());
+    }
+
+    function firstValue(values, fallback) {
+      for (const value of values) {
+        if (Array.isArray(value) && value.length) return value[0];
+        if (value !== undefined && value !== null && String(value).trim() !== '') return value;
+      }
+      return fallback;
+    }
+
+    function getQuestionCount(pack) {
+      if (Array.isArray(pack?.questions) && pack.questions.length > 0) return pack.questions.length;
+      const count = Number.parseInt(pack?.questionCount || pack?.question_count, 10);
+      return Number.isInteger(count) && count > 0 ? count : null;
+    }
+
+    function getScopeLabel(pack) {
+      return firstValue([pack?.scopeLabel, pack?.scope, pack?.unitLabel, pack?.unit], '범위 확인 필요');
+    }
+
+    function getQuestionSourceFile(question) {
+      return firstValue([
+        question?._sourceFile,
+        question?.sourceFile,
+        question?.sourceRef?.file,
+        question?.file,
+      ], '');
+    }
+
+    function getQuestionSourceNo(question) {
+      return firstValue([
+        question?._sourceQuestionNo,
+        question?.sourceQuestionNo,
+        question?.sourceRef?.questionNo,
+        question?.questionNo,
+        question?.no,
+      ], '');
+    }
+
+    function findQuestionIndex(question) {
+      const sourceFile = getQuestionSourceFile(question);
+      const sourceNo = String(getQuestionSourceNo(question) || '');
+      const sourceRefFile = question?.sourceRef?.file || '';
+      const sourceRefNo = String(question?.sourceRef?.questionNo || '');
+      const id = question?.id;
+      return questionIndex.find((item) => {
+        if (sourceFile && sourceNo && item.sourceFile === sourceFile && String(item.sourceQuestionNo) === sourceNo) return true;
+        if (question?._sourceFile && question?._sourceQuestionNo && item.sourceFile === question._sourceFile && String(item.sourceQuestionNo) === String(question._sourceQuestionNo)) return true;
+        if (question?.sourceFile && question?.questionNo && item.sourceFile === question.sourceFile && String(item.sourceQuestionNo) === String(question.questionNo)) return true;
+        if (sourceRefFile && sourceRefNo && item.sourceFile === sourceRefFile && String(item.sourceQuestionNo) === sourceRefNo) return true;
+        return id !== undefined && String(item.id) === String(id);
+      }) || null;
+    }
+
+    function buildQuestionMeta(question, indexItem, pack) {
+      return {
+        sourceFile: firstValue([getQuestionSourceFile(question), indexItem?.sourceFile], '원본 확인 필요'),
+        sourceQuestionNo: firstValue([getQuestionSourceNo(question), indexItem?.sourceQuestionNo], '-'),
+        unit: firstValue([
+          question?.standardUnit,
+          question?.unitLabel,
+          question?.unit,
+          question?.standard_unit,
+          indexItem?.unitLabel,
+          pack?.unitLabel,
+        ], '단원 확인 필요'),
+        type: firstValue([
+          question?.typeKey,
+          question?.type_key,
+          question?.skill,
+          question?.category,
+          question?.diagnosisTags,
+          indexItem?.skill,
+          indexItem?.category,
+        ], '유형 확인 필요'),
+        level: firstValue([
+          question?.level,
+          question?.difficulty,
+          question?.difficultyLabel,
+          indexItem?.level,
+          indexItem?.difficulty,
+        ], '난이도 확인 필요'),
+      };
+    }
+
+    function getInternalAnalysisNote(question, status) {
+      if (status === 'correct') return '해당 문항 기준 통과';
+      if (status === 'unchecked') return '결과 미입력';
+      const raw = firstValue([
+        question?.wrongMeaning,
+        question?.diagnosisText,
+        question?.parentComment,
+        question?.firstMonthAction,
+        question?.analysisNote,
+      ], '');
+      if (raw) return String(raw).split(/\n+/)[0].slice(0, 80);
+      if (status === 'wrong') return '해당 단원/유형 보완 필요';
+      if (status === 'partial') return '풀이 과정 확인 필요';
+      return '결과 미입력';
+    }
+
+    function buildRows(pack) {
+      return (pack.questions || []).map((question, index) => {
+        const indexItem = findQuestionIndex(question);
+        return {
+          order_no: index + 1,
+          question,
+          indexItem,
+          meta: buildQuestionMeta(question, indexItem, pack),
+          result_status: 'unchecked',
+          student_answer: '',
+          note: '',
+        };
+      });
+    }
+
+    function renderInfo(pack, count) {
+      return `
+        <section class="exam-card">
+          <div class="card-top"></div>
+          <div class="card-body">
+            <div class="card-grade-row">
+              <div class="card-grade-label">${escapeHTML(pack.category || '평가 구분 확인 필요')}</div>
+              <div class="card-type-chip">내부용 분석표</div>
+            </div>
+            <div class="card-main-title">${escapeHTML(pack.title || '평가팩 제목 확인 필요')}</div>
+            <div class="card-sub-title">${escapeHTML(getScopeLabel(pack))}</div>
+            <div class="card-meta-line">
+              <span class="meta-badge primary">평가 구분: ${escapeHTML(pack.category || '확인 필요')}</span>
+              <span class="meta-badge">${escapeHTML(pack.grade || '학년 확인 필요')}</span>
+              <span class="meta-badge green">${escapeHTML(getScopeLabel(pack))}</span>
+              <span class="meta-badge">${count ? `${count}문항` : '문항 수 확인 필요'}</span>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function renderInputSection() {
+      return `
+        <section class="exam-card input-section">
+          <div class="card-body">
+            <h2 class="section-title">기본 입력</h2>
+            <div class="form-grid">
+              <label>학생명<input id="studentName" data-field="studentName" type="text"></label>
+              <label>반명<input id="className" data-field="className" type="text"></label>
+              <label>평가일<input id="examDate" data-field="examDate" type="date"></label>
+              <label class="span-2">메모<textarea id="memo" data-field="memo"></textarea></label>
+            </div>
+            <div class="action-row no-print">
+              <button class="action-btn" type="button" onclick="saveDraft()">임시저장</button>
+              <button class="action-btn" type="button" onclick="loadDraft(true)">불러오기</button>
+              <button class="action-btn" type="button" onclick="resetDraft()">초기화</button>
+              <button class="action-btn" type="button" onclick="window.print()">분석표 출력</button>
+              <span class="save-state" id="saveState"></span>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function renderQuestionInputTable() {
+      const rows = state.rows.map((row) => `
+        <tr>
+          <td>${row.order_no}</td>
+          <td>
+            <div class="result-picker" data-order="${row.order_no}">
+              <button class="result-btn ${row.result_status === 'correct' ? 'is-selected' : ''}" type="button" data-status="correct">O</button>
+              <button class="result-btn ${row.result_status === 'wrong' ? 'is-selected' : ''}" type="button" data-status="wrong">X</button>
+              <button class="result-btn ${row.result_status === 'partial' ? 'is-selected' : ''}" type="button" data-status="partial">△</button>
+            </div>
+          </td>
+          <td><input data-answer="${row.order_no}" type="text" value="${escapeHTML(row.student_answer)}"></td>
+          <td><input data-note="${row.order_no}" type="text" value="${escapeHTML(row.note)}"></td>
+        </tr>`).join('');
+      return `
+        <section class="exam-card input-section">
+          <div class="card-body">
+            <h2 class="section-title">문항별 입력</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>번호</th><th>결과</th><th>학생답</th><th>비고</th></tr></thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function getCounts(rows) {
+      return rows.reduce((acc, row) => {
+        acc.total += 1;
+        acc[row.result_status || 'unchecked'] += 1;
+        if (row.result_status !== 'unchecked') acc.entered += 1;
+        return acc;
+      }, { total: 0, entered: 0, correct: 0, wrong: 0, partial: 0, unchecked: 0 });
+    }
+
+    function rateText(correct, wrong, partial) {
+      const denominator = correct + wrong + partial;
+      if (!denominator) return '-';
+      return `${Math.round((correct / denominator) * 1000) / 10}%`;
+    }
+
+    function renderOverallSummary() {
+      const counts = getCounts(state.rows);
+      return `
+        <section class="exam-card">
+          <div class="card-body">
+            <h2 class="section-title">전체 결과</h2>
+            <div class="summary-grid">
+              <div class="stat"><strong>${counts.entered}</strong>입력 문항 수</div>
+              <div class="stat"><strong>${counts.correct}</strong>정답 수</div>
+              <div class="stat"><strong>${counts.wrong}</strong>오답 수</div>
+              <div class="stat"><strong>${counts.partial}</strong>부분/확인 필요 수</div>
+              <div class="stat"><strong>${counts.unchecked}</strong>미입력 수</div>
+              <div class="stat"><strong>${rateText(counts.correct, counts.wrong, counts.partial)}</strong>정답률</div>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function groupRows(keyGetter) {
+      const groups = new Map();
+      state.rows.forEach((row) => {
+        const key = keyGetter(row) || '문항 정보 확인 필요';
+        if (!groups.has(key)) groups.set(key, { name: key, total: 0, correct: 0, wrong: 0, partial: 0, unchecked: 0 });
+        const group = groups.get(key);
+        group.total += 1;
+        group[row.result_status || 'unchecked'] += 1;
+      });
+      return [...groups.values()].sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+    }
+
+    function renderAggregateTable(title, groups) {
+      const body = groups.map((group) => `
+        <tr>
+          <td>${escapeHTML(group.name)}</td>
+          <td>${group.total}</td>
+          <td>${group.correct}</td>
+          <td>${group.wrong}</td>
+          <td>${group.partial}</td>
+          <td>${group.unchecked}</td>
+          <td>${rateText(group.correct, group.wrong, group.partial)}</td>
+        </tr>`).join('');
+      return `
+        <section class="exam-card">
+          <div class="card-body">
+            <h2 class="section-title">${title}</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>${title.replace(' 집계', '')}</th><th>문항 수</th><th>정답</th><th>오답</th><th>△</th><th>미입력</th><th>정답률</th></tr></thead>
+                <tbody>${body}</tbody>
+              </table>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function renderRawAnalysisTable() {
+      const rows = state.rows.map((row) => `
+        <tr>
+          <td>${row.order_no}</td>
+          <td>${STATUS_LABELS[row.result_status] || '-'}</td>
+          <td>${escapeHTML(row.meta.sourceFile)}</td>
+          <td>${escapeHTML(row.meta.sourceQuestionNo)}</td>
+          <td>${escapeHTML(row.meta.unit)}</td>
+          <td>${escapeHTML(row.meta.type)}</td>
+          <td>${escapeHTML(row.meta.level)}</td>
+          <td>${escapeHTML(row.student_answer)}</td>
+          <td>${escapeHTML(getInternalAnalysisNote(row.question, row.result_status))}</td>
+          <td>${escapeHTML(row.note)}</td>
+        </tr>`).join('');
+      return `
+        <section class="exam-card">
+          <div class="card-body">
+            <h2 class="section-title">문항별 분석표</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>번호</th><th>결과</th><th>원본 시험지</th><th>원본 문항번호</th><th>단원</th><th>유형</th><th>난이도</th><th>학생답</th><th>분석 메모</th><th>비고</th></tr></thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function renderNeedsList() {
+      const groups = new Map();
+      state.rows.filter((row) => row.result_status === 'wrong' || row.result_status === 'partial').forEach((row) => {
+        const key = `${row.meta.unit} / ${row.meta.type}`;
+        groups.set(key, (groups.get(key) || 0) + 1);
+      });
+      const items = [...groups.entries()].sort((a, b) => b[1] - a[1]).map(([key, count]) => {
+        const [unit, type] = key.split(' / ');
+        return `<div class="need-item">${escapeHTML(unit)} / ${escapeHTML(type)} / ${count}문항</div>`;
+      }).join('');
+      return `
+        <section class="exam-card">
+          <div class="card-body">
+            <h2 class="section-title">보완 필요 목록</h2>
+            <div class="needs-list">${items || '<div class="empty-state">보완 필요 항목이 없습니다.</div>'}</div>
+          </div>
+        </section>`;
+    }
+
+    function renderAnalysisSections() {
+      document.getElementById('analysisSections').innerHTML = [
+        renderOverallSummary(),
+        renderRawAnalysisTable(),
+        renderAggregateTable('단원별 집계', groupRows((row) => row.meta.unit)),
+        renderAggregateTable('유형별 집계', groupRows((row) => row.meta.type)),
+        renderAggregateTable('난이도별 집계', groupRows((row) => row.meta.level)),
+        renderNeedsList(),
+      ].join('');
+    }
+
+    function collectDraft() {
+      return {
+        studentName: document.getElementById('studentName')?.value || '',
+        className: document.getElementById('className')?.value || '',
+        examDate: document.getElementById('examDate')?.value || todayString(),
+        memo: document.getElementById('memo')?.value || '',
+        results: Object.fromEntries(state.rows.map((row) => [row.order_no, {
+          result_status: row.result_status,
+          student_answer: row.student_answer,
+          note: row.note,
+        }])),
+      };
+    }
+
+    function saveDraft(showState = true) {
+      localStorage.setItem(getStorageKey(), JSON.stringify(collectDraft()));
+      if (showState) {
+        const el = document.getElementById('saveState');
+        if (el) el.textContent = '임시저장됨';
+      }
+    }
+
+    function loadDraft(showState = false) {
+      const raw = localStorage.getItem(getStorageKey());
+      if (!raw) {
+        if (showState) {
+          const el = document.getElementById('saveState');
+          if (el) el.textContent = '저장된 내용이 없습니다.';
+        }
+        return;
+      }
+      try {
+        const draft = JSON.parse(raw);
+        document.getElementById('studentName').value = draft.studentName || '';
+        document.getElementById('className').value = draft.className || '';
+        document.getElementById('examDate').value = draft.examDate || todayString();
+        document.getElementById('memo').value = draft.memo || '';
+        state.rows.forEach((row) => {
+          const saved = draft.results?.[row.order_no] || {};
+          row.result_status = saved.result_status || 'unchecked';
+          row.student_answer = saved.student_answer || '';
+          row.note = saved.note || '';
+        });
+        renderDynamic();
+        if (showState) document.getElementById('saveState').textContent = '불러왔습니다.';
+      } catch (error) {
+        console.warn('[assessment analysis] draft load failed:', error);
+      }
+    }
+
+    function resetDraft() {
+      if (!confirm('현재 입력값과 임시저장 내용을 초기화할까요?')) return;
+      localStorage.removeItem(getStorageKey());
+      document.getElementById('studentName').value = '';
+      document.getElementById('className').value = '';
+      document.getElementById('examDate').value = todayString();
+      document.getElementById('memo').value = '';
+      state.rows.forEach((row) => {
+        row.result_status = 'unchecked';
+        row.student_answer = '';
+        row.note = '';
+      });
+      renderDynamic();
+      document.getElementById('saveState').textContent = '초기화됨';
+    }
+
+    function renderDynamic() {
+      document.getElementById('questionInputMount').innerHTML = renderQuestionInputTable();
+      renderAnalysisSections();
+      bindDynamicEvents();
+    }
+
+    function bindDynamicEvents() {
+      document.querySelectorAll('.result-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          const order = Number(button.closest('.result-picker')?.dataset.order);
+          const row = state.rows.find((item) => item.order_no === order);
+          if (!row) return;
+          row.result_status = row.result_status === button.dataset.status ? 'unchecked' : button.dataset.status;
+          renderDynamic();
+          saveDraft(false);
+        });
+      });
+      document.querySelectorAll('[data-answer]').forEach((input) => {
+        input.addEventListener('input', () => {
+          const row = state.rows.find((item) => item.order_no === Number(input.dataset.answer));
+          if (row) row.student_answer = input.value;
+          renderAnalysisSections();
+          saveDraft(false);
+        });
+      });
+      document.querySelectorAll('[data-note]').forEach((input) => {
+        input.addEventListener('input', () => {
+          const row = state.rows.find((item) => item.order_no === Number(input.dataset.note));
+          if (row) row.note = input.value;
+          renderAnalysisSections();
+          saveDraft(false);
+        });
+      });
+    }
+
+    function bindStaticEvents() {
+      document.querySelectorAll('[data-field]').forEach((input) => {
+        input.addEventListener('input', () => saveDraft(false));
+      });
+    }
+
+    function renderApp() {
+      const app = document.getElementById('app');
+      const packId = getPackId();
+      if (!packId) {
+        app.innerHTML = '<div class="empty-state">평가팩을 선택해 주세요.</div>';
+        return;
+      }
+      const pack = packs.find((item) => item.id === packId);
+      if (!pack) {
+        app.innerHTML = '<div class="empty-state">평가팩을 찾을 수 없습니다.</div>';
+        return;
+      }
+      const count = getQuestionCount(pack);
+      state.pack = pack;
+      state.rows = count && Array.isArray(pack.questions) ? buildRows(pack) : [];
+      app.innerHTML = [
+        renderInfo(pack, count),
+        count ? renderInputSection() : '<div class="empty-state">문항 수 확인 필요</div>',
+        count ? '<div id="questionInputMount"></div><div id="analysisSections"></div>' : '',
+      ].join('');
+      if (!count) return;
+      document.getElementById('examDate').value = todayString();
+      renderDynamic();
+      bindStaticEvents();
+      loadDraft(false);
+    }
+
+    renderApp();
+  </script>
+</body>
+</html>

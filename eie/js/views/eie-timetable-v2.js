@@ -11,6 +11,11 @@
     const viewState = {
         selectedDay: '',
         selectedSessionId: '',
+        selectedStudentId: '',
+        selectedStudentName: '',
+        studentPanelMode: 'detail',
+        studentSaving: false,
+        studentError: '',
         lastError: ''
     };
 
@@ -93,13 +98,126 @@
         return normalizeKey(value).replace(/\s+/g, ' ');
     }
 
+    function dbStudents() {
+        const rows = window.EieState?.get?.()?.db?.students;
+        return Array.isArray(rows) ? rows : [];
+    }
+
+    function rawOf(row) {
+        if (row?.raw && typeof row.raw === 'object') return row.raw;
+        if (!row?.raw_meta_json) return {};
+        try {
+            const parsed = JSON.parse(row.raw_meta_json);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function studentRowId(row) {
+        return normalizeKey(row?.id || row?.student_id);
+    }
+
+    function studentDisplayName(row) {
+        return normalizeStudentName(row?.display_name || row?.name || row?.student_name_raw || row?.normalized_name) || viewState.selectedStudentName || '학생';
+    }
+
+    function studentGrade(row) {
+        return normalizeKey(row?.grade || row?.grade_raw || rawOf(row).grade || rawOf(row).grade_raw);
+    }
+
+    function normalizeGrade(value) {
+        const raw = normalizeKey(value).replace(/\s+/g, '');
+        const middle = raw.match(/^중(?:학교|등)?([1-3])(?:학년)?$/);
+        if (middle) return `중${middle[1]}`;
+        const high = raw.match(/^고(?:등|등학교)?([1-3])(?:학년)?$/);
+        if (high) return `고${high[1]}`;
+        return raw;
+    }
+
+    function studentSchool(row) {
+        return normalizeKey(row?.school_name || row?.school || rawOf(row).school_name || rawOf(row).school);
+    }
+
+    function studentPhone(row) {
+        return normalizeKey(row?.student_phone || row?.phone || row?.phone_raw || row?.primary_phone || row?.normalized_phone || rawOf(row).student_phone || rawOf(row).phone || rawOf(row).phone_raw || rawOf(row).primary_phone || rawOf(row).normalized_phone);
+    }
+
+    function studentMemo(row) {
+        return normalizeKey(row?.memo || rawOf(row).memo);
+    }
+
+    function studentMeta(row, key) {
+        return normalizeKey(row?.[key] || rawOf(row)[key]);
+    }
+
+    function studentType(row) {
+        return studentMeta(row, 'student_type') || '일반';
+    }
+
+    function studentParentPhone(row) {
+        return studentMeta(row, 'parent_phone');
+    }
+
+    function studentGuardianRelation(row) {
+        return studentMeta(row, 'guardian_relation');
+    }
+
+    function studentAddress(row) {
+        return studentMeta(row, 'student_address');
+    }
+
+    function studentVehicleInfo(row) {
+        return studentMeta(row, 'vehicle_info');
+    }
+
+    function studentPin(row) {
+        return studentMeta(row, 'student_pin') || studentMeta(row, 'pin');
+    }
+
+    function studentTeacherNames(row) {
+        const raw = rawOf(row);
+        const values = [];
+        if (Array.isArray(row?.teacher_names)) values.push(...row.teacher_names);
+        if (Array.isArray(raw.teacher_names)) values.push(...raw.teacher_names);
+        values.push(...normalizeKey(row?.teacher_name || row?.teacher_name_raw).split(','));
+        values.push(...normalizeKey(raw.teacher_name || raw.teacher_name_raw).split(','));
+        return uniqueNames(values);
+    }
+
+    function teacherRoster() {
+        const values = [];
+        const state = window.EieState?.get?.() || {};
+        const cells = Array.isArray(state.db?.timetable_cells) ? state.db.timetable_cells : (Array.isArray(state.timetableCells) ? state.timetableCells : []);
+        cells.forEach(cell => values.push(...getTeacherNames(cell)));
+        dbStudents().forEach(student => values.push(...studentTeacherNames(student)));
+        return uniqueNames(values);
+    }
+
+    function studentStatus(row) {
+        return normalizeKey(row?.status || 'active') || 'active';
+    }
+
+    function selectedStudentRecord() {
+        const id = normalizeKey(viewState.selectedStudentId);
+        const name = normalizeStudentName(viewState.selectedStudentName);
+        if (id) {
+            const byId = dbStudents().find(row => String(studentRowId(row)) === String(id));
+            if (byId) return byId;
+        }
+        if (name) {
+            return dbStudents().find(row => studentDisplayName(row) === name) || null;
+        }
+        return null;
+    }
+
     function getStudents(row) {
         const assigned = Array.isArray(row?.assigned_students) ? row.assigned_students : [];
         if (assigned.length) {
             return assigned.map((student, index) => ({
                 key: normalizeKey(student?.assignment_id || student?.student_id || student?.pin || student?.pin_code || student?.student_pin || student?.id || ''),
                 assignment_id: normalizeKey(student?.assignment_id || ''),
-                student_id: normalizeKey(student?.student_id || student?.id || ''),
+                student_id: normalizeKey(student?.student_id || student?.confirmed_student_id || student?.matched_student_id || student?.canonical_student_id || student?.id || ''),
                 pin: normalizeKey(student?.pin || student?.pin_code || student?.student_pin || ''),
                 name: normalizeStudentName(student?.name || student?.display_name || student?.student_name_raw || ''),
                 grade: normalizeKey(student?.grade_raw || student?.grade || ''),
@@ -121,7 +239,7 @@
             return {
                 key: normalizeKey(item?.candidate_key || item?.assignment_id || item?.student_id || item?.pin || item?.pin_code || item?.student_pin || item?.id || ''),
                 assignment_id: normalizeKey(item?.assignment_id || ''),
-                student_id: normalizeKey(item?.student_id || item?.id || ''),
+                student_id: normalizeKey(item?.student_id || item?.confirmed_student_id || item?.matched_student_id || item?.canonical_student_id || item?.id || ''),
                 pin: normalizeKey(item?.pin || item?.pin_code || item?.student_pin || ''),
                 name: normalizeStudentName(item?.name || item?.student_name_raw || item?.studentName || ''),
                 grade: normalizeKey(item?.grade_raw || item?.grade || ''),
@@ -158,6 +276,30 @@
         return normalizeKey(row?.teacher_name_raw || row?.teacher_name || row?.teacher || '미정') || '미정';
     }
 
+    function uniqueNames(rows) {
+        const seen = new Set();
+        return (Array.isArray(rows) ? rows : []).map(normalizeKey).filter(name => {
+            const key = name.toLowerCase();
+            if (!name || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+    }
+
+    function getTeacherNames(row) {
+        const meta = getRawMeta(row);
+        const values = [];
+        if (Array.isArray(row?.teacher_names)) values.push(...row.teacher_names);
+        if (Array.isArray(meta.teacher_names)) values.push(...meta.teacher_names);
+        values.push(...normalizeKey(row?.teacher_name_raw || row?.teacher_name || row?.teacher).split(','));
+        return uniqueNames(values);
+    }
+
+    function getTeacherDisplayName(row) {
+        const names = getTeacherNames(row);
+        return names.length ? names.join(', ') : getTeacherName(row);
+    }
+
     function teacherKey(value) {
         return normalizeKey(value || '미정').toLowerCase();
     }
@@ -185,7 +327,7 @@
             source_index: index,
             id: cellId(row, index),
             day: normalizeDay(row?.day_of_week || row?.day_label || row?.day || ''),
-            teacher_name: getTeacherName(row),
+            teacher_name: getTeacherDisplayName(row),
             teacher_key: teacherKey(getTeacherName(row)),
             class_name: getClassName(row),
             start_time: start,
@@ -351,11 +493,36 @@
     }
 
     function studentDetailId(student) {
-        return normalizeKey(student?.student_id || student?.id || '');
+        return normalizeKey(student?.student_id || student?.id || student?.studentId || student?.confirmed_student_id || student?.matched_student_id || student?.canonical_student_id || '');
     }
 
     function studentSearchName(student) {
         return normalizeStudentName(student?.name || '');
+    }
+
+    function studentChipName(name) {
+        const text = normalizeStudentName(name);
+        const chars = Array.from(text);
+        return chars.length > 3 ? chars.slice(0, 3).join('') : text;
+    }
+
+    function returnContextFor(options) {
+        return {
+            from: 'timetable-v2',
+            route: 'timetable-v2',
+            selectedDay: normalizeKey(options?.day || viewState.selectedDay || ''),
+            sessionId: normalizeKey(options?.sessionId || ''),
+            cellId: normalizeKey(options?.cellId || '')
+        };
+    }
+
+    function contextAttrs(context) {
+        const ctx = context || {};
+        return [
+            ctx.selectedDay ? `data-eie-v2-return-day="${esc(ctx.selectedDay)}"` : '',
+            ctx.sessionId ? `data-eie-v2-return-session="${esc(ctx.sessionId)}"` : '',
+            ctx.cellId ? `data-eie-v2-return-cell="${esc(ctx.cellId)}"` : ''
+        ].filter(Boolean).join(' ');
     }
 
     function renderStudentNames(students, options) {
@@ -367,14 +534,17 @@
                 ${list.map(student => {
                     const id = studentDetailId(student);
                     const name = studentSearchName(student);
+                    const context = returnContextFor(options);
                     if (shouldLink && (id || name)) {
                         return `<button type="button"
                             class="eie-v2-student-chip is-clickable"
                             ${id ? `data-eie-v2-student-id="${esc(id)}"` : ''}
                             ${!id && name ? `data-eie-v2-student-name="${esc(name)}"` : ''}
-                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(name || student.name)}</button>`;
+                            ${contextAttrs(context)}
+                            title="${esc(name || student.name || '학생')}"
+                            aria-label="${esc(name || '학생')} 학생관리 열기">${esc(studentChipName(name || student.name))}</button>`;
                     }
-                    return `<span class="eie-v2-student-chip">${esc(student.name)}</span>`;
+                    return `<span class="eie-v2-student-chip" title="${esc(student.name || '')}">${esc(studentChipName(student.name))}</span>`;
                 }).join('')}
             </div>
         `;
@@ -390,7 +560,7 @@
         const isSelected = viewState.selectedSessionId === session.session_id;
         const time = [session.start_time, session.end_time].filter(Boolean).join('~') || '시간 미정';
         return `
-            <button type="button"
+            <div role="button" tabindex="0"
                 class="eie-v2-session-card ${durationClass} ${isSelected ? 'is-selected' : ''}"
                 data-eie-v2-session="${esc(session.session_id)}"
                 style="grid-column:${columnStart};grid-row:${rowStart} / ${Math.max(rowEnd, rowStart + 1)};"
@@ -400,13 +570,13 @@
                     ${isSpecial ? `<em class="eie-v2-status-badge is-${esc(status)}">${esc(statusLabel(status))}</em>` : ''}
                 </span>
                 <span class="eie-v2-session-time">${esc(time)}</span>
-                ${renderStudentNames(session.students)}
+                ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
                 <span class="eie-v2-hover-card" role="tooltip">
                     <b>${esc(session.class_name)}</b>
                     <small>${esc(time)} · 학생 ${session.student_count.toLocaleString('ko-KR')}명</small>
-                    ${renderStudentNames(session.students)}
+                    ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
                 </span>
-            </button>
+            </div>
         `;
     }
 
@@ -450,7 +620,134 @@
         `;
     }
 
+    function renderStudentField(label, value) {
+        return `
+            <div class="eie-v2-student-field">
+                <span>${esc(label)}</span>
+                <strong>${esc(value || '미등록')}</strong>
+            </div>
+        `;
+    }
+
+    function renderGradeSelect(id, value) {
+        const selected = normalizeGrade(value);
+        return `<select id="${esc(id)}">
+            <option value="">선택</option>
+            ${['중1', '중2', '중3', '고1', '고2', '고3'].map(grade => `<option value="${esc(grade)}"${selected === grade ? ' selected' : ''}>${esc(grade)}</option>`).join('')}
+        </select>`;
+    }
+
+    function renderStudentTypeSelect(id, value) {
+        const selected = value || '일반';
+        return `<select id="${esc(id)}">
+            ${['일반', '신입', '재등록', '휴원'].map(type => `<option value="${esc(type)}"${selected === type ? ' selected' : ''}>${esc(type)}</option>`).join('')}
+        </select>`;
+    }
+
+    function renderStudentTeacherPicker(student) {
+        const selected = studentTeacherNames(student);
+        let roster = teacherRoster();
+        if (!roster.length && selected.length) roster = selected;
+        if (!roster.length) return '';
+        return `
+            <div class="eie-v2-student-teacher-picker">
+                <span>담당 선생님</span>
+                <div class="eie-apms-teacher-options">
+                    ${roster.map(name => `
+                        <label class="eie-apms-teacher-option">
+                            <input type="checkbox" name="eie-v2-edit-teacher" value="${esc(name)}"${selected.includes(name) ? ' checked' : ''}>
+                            <span>${esc(name)}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    function renderStudentPanel() {
+        if (!viewState.selectedStudentId && !viewState.selectedStudentName) return '';
+        const student = selectedStudentRecord() || {
+            id: viewState.selectedStudentId,
+            display_name: viewState.selectedStudentName,
+            status: 'active'
+        };
+        if (viewState.studentPanelMode === 'edit') return renderStudentEditPanel(student);
+        const sid = studentRowId(student) || viewState.selectedStudentId;
+        return `
+            <aside class="eie-v2-detail-panel eie-v2-student-panel" aria-label="${esc(studentDisplayName(student))} 학생 상세">
+                <div class="eie-v2-detail-head">
+                    <span>학생 상세</span>
+                    <h3>${esc(studentDisplayName(student))}</h3>
+                    <p>${esc([studentSchool(student), studentGrade(student)].filter(Boolean).join(' · ') || '학적 정보 미등록')}</p>
+                    ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
+                    <div class="eie-v2-detail-actions">
+                        <button type="button" class="eie-secondary-button" data-eie-v2-student-back>수업 상세</button>
+                        ${sid ? '<button type="button" class="eie-primary-button" data-eie-v2-student-edit>수정</button>' : ''}
+                    </div>
+                </div>
+                ${sid ? '' : '<div class="eie-v2-detail-section"><p>확정된 학생 id가 없어 이 패널에서 바로 수정할 수 없습니다. 학생관리에서 이름으로 확인해 주세요.</p></div>'}
+                <div class="eie-v2-detail-section">
+                    <strong>기본정보</strong>
+                    <div class="eie-v2-student-field-grid">
+                        ${renderStudentField('학생명', studentDisplayName(student))}
+                        ${renderStudentField('학생구분', studentType(student))}
+                        ${renderStudentField('학년', studentGrade(student))}
+                        ${renderStudentField('학교', studentSchool(student))}
+                        ${renderStudentField('상태', statusLabel(studentStatus(student)))}
+                        ${renderStudentField('학생 연락처', studentPhone(student))}
+                        ${renderStudentField('학부모 연락처', studentParentPhone(student))}
+                        ${renderStudentField('보호자 관계', studentGuardianRelation(student))}
+                        ${renderStudentField('주소', studentAddress(student))}
+                        ${renderStudentField('차량', studentVehicleInfo(student))}
+                        ${renderStudentField('PIN', studentPin(student))}
+                        ${renderStudentField('담당 선생님', studentTeacherNames(student).join(', '))}
+                    </div>
+                </div>
+                <div class="eie-v2-detail-section">
+                    <strong>메모</strong>
+                    <p>${esc(studentMemo(student) || '메모가 없습니다.')}</p>
+                </div>
+            </aside>
+        `;
+    }
+
+    function renderStudentEditPanel(student) {
+        const saving = viewState.studentSaving;
+        return `
+            <aside class="eie-v2-detail-panel eie-v2-student-panel" aria-label="${esc(studentDisplayName(student))} 학생 수정">
+                <div class="eie-v2-detail-head">
+                    <span>학생 수정</span>
+                    <h3>${esc(studentDisplayName(student))}</h3>
+                    ${viewState.studentError ? `<div class="eie-v2-alert" role="alert">${esc(viewState.studentError)}</div>` : ''}
+                </div>
+                <div class="eie-v2-student-form">
+                    <label><span>학생명</span><input id="eie-v2-edit-name" type="text" value="${esc(studentDisplayName(student))}" autocomplete="off"></label>
+                    <label><span>학생구분</span>${renderStudentTypeSelect('eie-v2-edit-student-type', studentType(student))}</label>
+                    <label><span>학년</span>${renderGradeSelect('eie-v2-edit-grade', studentGrade(student))}</label>
+                    <label><span>학교</span><input id="eie-v2-edit-school" type="text" value="${esc(studentSchool(student))}" autocomplete="off"></label>
+                    <label><span>학생 연락처</span><input id="eie-v2-edit-phone" type="tel" value="${esc(studentPhone(student))}" autocomplete="off"></label>
+                    <label><span>학부모 연락처</span><input id="eie-v2-edit-parent-phone" type="tel" value="${esc(studentParentPhone(student))}" autocomplete="off"></label>
+                    <label><span>보호자 관계</span><input id="eie-v2-edit-guardian-relation" type="text" value="${esc(studentGuardianRelation(student))}" autocomplete="off"></label>
+                    <label><span>주소</span><input id="eie-v2-edit-address" type="text" value="${esc(studentAddress(student))}" autocomplete="off"></label>
+                    <label><span>차량</span><input id="eie-v2-edit-vehicle" type="text" value="${esc(studentVehicleInfo(student))}" autocomplete="off"></label>
+                    <label><span>PIN</span><input id="eie-v2-edit-pin" type="text" inputmode="numeric" maxlength="4" value="${esc(studentPin(student))}" autocomplete="off"></label>
+                    ${renderStudentTeacherPicker(student)}
+                    <label><span>상태</span><select id="eie-v2-edit-status">
+                        ${['active', 'inactive', 'needs_review', 'archived'].map(status => `<option value="${esc(status)}"${studentStatus(student) === status ? ' selected' : ''}>${esc(statusLabel(status))}</option>`).join('')}
+                    </select></label>
+                    <label class="is-wide"><span>메모</span><textarea id="eie-v2-edit-memo">${esc(studentMemo(student))}</textarea></label>
+                </div>
+                <div class="eie-v2-detail-actions">
+                    <button type="button" class="eie-primary-button" data-eie-v2-student-save ${saving ? 'disabled' : ''}>${saving ? '저장 중...' : '저장'}</button>
+                    <button type="button" class="eie-secondary-button" data-eie-v2-student-cancel ${saving ? 'disabled' : ''}>취소</button>
+                </div>
+            </aside>
+        `;
+    }
+
     function renderSelectedPanel(session) {
+        const studentPanel = renderStudentPanel();
+        if (studentPanel) return studentPanel;
         if (!session) {
             return `
                 <aside class="eie-v2-detail-panel is-empty" aria-label="수업 상세">
@@ -476,7 +773,7 @@
                 </div>
                 <div class="eie-v2-detail-section">
                     <strong>학생 ${session.student_count.toLocaleString('ko-KR')}명</strong>
-                    ${renderStudentNames(session.students, { linkStudents: true })}
+                    ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: firstCellId })}
                 </div>
                 ${session.memo ? `
                     <div class="eie-v2-detail-section">
@@ -515,11 +812,11 @@
                         <details class="eie-v2-mobile-teacher" open>
                             <summary>${esc(teacher.label)} <span>${sessions.length.toLocaleString('ko-KR')}개</span></summary>
                             ${sessions.map(session => `
-                                <button type="button" class="eie-v2-mobile-card" data-eie-v2-session="${esc(session.session_id)}">
+                                <div role="button" tabindex="0" class="eie-v2-mobile-card" data-eie-v2-session="${esc(session.session_id)}">
                                     <strong>${esc(session.class_name)}</strong>
                                     <small>${esc([session.start_time, session.end_time].filter(Boolean).join('~') || '시간 미정')}</small>
-                                    ${renderStudentNames(session.students)}
-                                </button>
+                                    ${renderStudentNames(session.students, { linkStudents: true, day: session.day, sessionId: session.session_id, cellId: session.source_cell_ids?.[0] || '' })}
+                                </div>
                             `).join('') || '<div class="eie-v2-empty-mobile">수업 없음</div>'}
                         </details>
                     `;
@@ -589,11 +886,19 @@
     function bindEvents() {
         if (eventsBound) return;
         document.addEventListener('click', event => {
+            const studentButton = event.target.closest?.('[data-eie-v2-student-id],[data-eie-v2-student-name]');
+            if (studentButton) {
+                event.preventDefault();
+                event.stopPropagation();
+                openStudentLedgerFromTimetable(studentButton);
+                return;
+            }
             const dayButton = event.target.closest?.('[data-eie-v2-day]');
             if (dayButton) {
                 event.preventDefault();
                 viewState.selectedDay = dayButton.getAttribute('data-eie-v2-day') || '';
                 viewState.selectedSessionId = '';
+                clearStudentPanel();
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
                 return;
             }
@@ -601,7 +906,37 @@
             if (sessionButton) {
                 event.preventDefault();
                 viewState.selectedSessionId = sessionButton.getAttribute('data-eie-v2-session') || '';
+                clearStudentPanel();
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const backButton = event.target.closest?.('[data-eie-v2-student-back]');
+            if (backButton) {
+                event.preventDefault();
+                clearStudentPanel();
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const editStudentButton = event.target.closest?.('[data-eie-v2-student-edit]');
+            if (editStudentButton) {
+                event.preventDefault();
+                viewState.studentPanelMode = 'edit';
+                viewState.studentError = '';
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const cancelStudentButton = event.target.closest?.('[data-eie-v2-student-cancel]');
+            if (cancelStudentButton) {
+                event.preventDefault();
+                viewState.studentPanelMode = 'detail';
+                viewState.studentError = '';
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+                return;
+            }
+            const saveStudentButton = event.target.closest?.('[data-eie-v2-student-save]');
+            if (saveStudentButton) {
+                event.preventDefault();
+                saveStudentFromPanel();
                 return;
             }
             const classroomButton = event.target.closest?.('[data-eie-v2-open-classroom]');
@@ -615,28 +950,123 @@
                 }
                 return;
             }
-            const studentButton = event.target.closest?.('[data-eie-v2-student-id],[data-eie-v2-student-name]');
-            if (studentButton) {
-                event.preventDefault();
-                const studentId = studentButton.getAttribute('data-eie-v2-student-id') || '';
-                const studentName = studentButton.getAttribute('data-eie-v2-student-name') || '';
-                if (studentId && window.EieStudentsView?.openDetail) {
-                    window.EieStudentsView.openDetail(studentId);
-                } else if (studentName && window.EieStudentsView?.setQuery) {
-                    window.EieStudentsView.setQuery(studentName);
-                } else if (window.EieRouter?.open) {
-                    window.EieRouter.open('students');
-                }
-                return;
-            }
             const refreshButton = event.target.closest?.('[data-eie-v2-refresh]');
             if (refreshButton) {
                 event.preventDefault();
                 viewState.selectedSessionId = '';
+                clearStudentPanel();
                 if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
             }
         });
         eventsBound = true;
+    }
+
+    function openStudentLedgerFromTimetable(button) {
+        const studentId = button.getAttribute('data-eie-v2-student-id') || '';
+        const studentName = button.getAttribute('data-eie-v2-student-name') || button.textContent || '';
+        viewState.selectedStudentId = normalizeKey(studentId);
+        viewState.selectedStudentName = normalizeStudentName(studentName);
+        viewState.selectedSessionId = button.getAttribute('data-eie-v2-return-session') || viewState.selectedSessionId;
+        viewState.selectedDay = button.getAttribute('data-eie-v2-return-day') || viewState.selectedDay;
+        viewState.studentPanelMode = viewState.selectedStudentId ? 'edit' : 'detail';
+        viewState.studentError = '';
+        if (viewState.selectedStudentId && window.EieApmsState?.loadFoundation) {
+            window.EieApmsState.loadFoundation({ force: true }).catch(() => null).then(() => {
+                if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            });
+            return;
+        }
+        if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+    }
+
+    function clearStudentPanel() {
+        viewState.selectedStudentId = '';
+        viewState.selectedStudentName = '';
+        viewState.studentPanelMode = 'detail';
+        viewState.studentError = '';
+        viewState.studentSaving = false;
+    }
+
+    function studentFieldValue(id) {
+        const el = document.getElementById(id);
+        return normalizeKey(el && el.value);
+    }
+
+    function selectedStudentTeacherNames() {
+        if (!document.querySelectorAll) return [];
+        return uniqueNames(Array.from(document.querySelectorAll('input[name="eie-v2-edit-teacher"]:checked')).map(input => input.value));
+    }
+
+    async function refreshStudentFoundation(row) {
+        if (row && row.id && window.EieState?.upsertStudent) window.EieState.upsertStudent(row);
+        if (row && row.id && window.EieApmsState?.syncStudent) window.EieApmsState.syncStudent(row);
+        if (window.EieApmsState?.loadFoundation) {
+            await window.EieApmsState.loadFoundation({ force: true }).catch(() => null);
+        }
+    }
+
+    async function saveStudentFromPanel() {
+        if (viewState.studentSaving) return;
+        const sid = normalizeKey(viewState.selectedStudentId);
+        if (!sid || !window.EieApi?.updateStudent) {
+            viewState.studentError = '학생 id가 없어 시간표 패널에서 바로 수정할 수 없습니다.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        const payload = {
+            display_name: studentFieldValue('eie-v2-edit-name'),
+            name: studentFieldValue('eie-v2-edit-name'),
+            grade: studentFieldValue('eie-v2-edit-grade'),
+            school_name: studentFieldValue('eie-v2-edit-school'),
+            phone: studentFieldValue('eie-v2-edit-phone'),
+            student_phone: studentFieldValue('eie-v2-edit-phone'),
+            parent_phone: studentFieldValue('eie-v2-edit-parent-phone'),
+            guardian_relation: studentFieldValue('eie-v2-edit-guardian-relation'),
+            student_address: studentFieldValue('eie-v2-edit-address'),
+            vehicle_info: studentFieldValue('eie-v2-edit-vehicle'),
+            student_pin: studentFieldValue('eie-v2-edit-pin'),
+            student_type: studentFieldValue('eie-v2-edit-student-type') || '일반',
+            teacher_names: selectedStudentTeacherNames(),
+            status: studentFieldValue('eie-v2-edit-status') || 'active',
+            memo: studentFieldValue('eie-v2-edit-memo')
+        };
+        if (!payload.display_name) {
+            viewState.studentError = '학생명은 필수입니다.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        if (payload.student_pin && !/^\d{4}$/.test(payload.student_pin)) {
+            viewState.studentError = 'PIN은 4자리 숫자로 입력해 주세요.';
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+            return;
+        }
+        viewState.studentSaving = true;
+        viewState.studentError = '';
+        try {
+            const result = await window.EieApi.updateStudent(sid, payload);
+            const row = result?.student || result?.data || { id: sid, ...payload };
+            viewState.selectedStudentId = normalizeKey(row.id || row.student_id || sid);
+            viewState.selectedStudentName = studentDisplayName(row);
+            viewState.studentPanelMode = 'detail';
+            await refreshStudentFoundation(row);
+        } catch (error) {
+            viewState.studentError = error?.message || '학생 정보를 저장하지 못했습니다.';
+        } finally {
+            viewState.studentSaving = false;
+            if (window.EieRouter?.open) window.EieRouter.open('timetable-v2');
+        }
+    }
+
+    function refresh() {
+        viewState.selectedSessionId = '';
+        if (window.EieRouter?.open) return window.EieRouter.open('timetable-v2');
+    }
+
+    function openWithContext(returnCtx) {
+        const ctx = returnCtx || {};
+        viewState.selectedDay = normalizeKey(ctx.selectedDay || ctx.day || viewState.selectedDay);
+        viewState.selectedSessionId = normalizeKey(ctx.sessionId || ctx.session_id || viewState.selectedSessionId);
+        if (window.EieRouter?.open) return window.EieRouter.open('timetable-v2');
     }
 
     async function render() {
@@ -662,6 +1092,8 @@
 
     window.EieTimetableV2View = {
         render,
+        refresh,
+        openWithContext,
         _buildDisplaySessions: buildDisplaySessions
     };
 })();

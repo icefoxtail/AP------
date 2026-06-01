@@ -45,6 +45,19 @@ assert(
   'Unimplemented EIE owner dashboard sections should remain in-place as 준비중'
 );
 
+assert(
+  source.includes('EIE 출석부 준비중') && !source.includes('data-eie-route="classroom"'),
+  'Attendance shortcut should be visible but disabled until the attendance book is implemented'
+);
+
+for (const disabledMetric of [
+  "renderMiniMetric('최근 등록', recentStudentCount(students))",
+  "renderMiniMetric('대기', countByStatus(students, '대기'))",
+  "renderMiniMetric('확인 필요', (data.needsReview || []).length)"
+]) {
+  assert(source.includes(disabledMetric), `Unimplemented today metric should render without a route: ${disabledMetric}`);
+}
+
 for (const requiredCssSelector of [
   '.eie-admin-home .ap-admin-section',
   '.eie-admin-home .ap-admin-teacher-grid',

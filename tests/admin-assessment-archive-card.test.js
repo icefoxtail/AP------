@@ -28,6 +28,16 @@ assert(
   dashboard.includes('ap-admin-mini-metric__hover') && overviewBody.includes('adminBuildGradeHoverRows(data.activeStudents)'),
   'student overview metrics should show a larger grade breakdown on hover'
 );
+assert(
+  overviewBody.includes("renderAdminMiniMetric('재원'") &&
+    overviewBody.includes("renderAdminMiniMetric('최근등록'") &&
+    overviewBody.includes("renderAdminMiniMetric('퇴원'"),
+  'today operation student metrics should render Korean labels instead of bare counts'
+);
+assert(
+  !dashboard.includes('title="${hoverText}"'),
+  'student metric hover details should use the custom hover panel instead of the browser title tooltip'
+);
 
 assert(
   dashboard.includes('시험지 보관함') && overviewBody.includes('renderAdminAssessmentArchiveMetric'),
