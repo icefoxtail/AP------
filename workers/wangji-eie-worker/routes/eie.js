@@ -637,38 +637,43 @@ async function markCandidateConfirmed(env, cell, candidate, result) {
 async function queryConfirmedStudents(env) {
   // 1. 학생 목록 (counts 포함, 이름 ASC 정렬)
   const studentsResult = await env.DB.prepare(`
-    SELECT s.*,
-           COUNT(DISTINCT c.id) AS contact_count,
-           COUNT(DISTINCT a.id) AS assignment_count
+    SELECT s.*
     FROM eie_students s
-    LEFT JOIN eie_student_contacts c ON c.student_id = s.id
-    LEFT JOIN eie_student_schedule_assignments a ON a.student_id = s.id AND COALESCE(a.status, 'active') != 'archived'
-    GROUP BY s.id
     ORDER BY s.display_name ASC, s.created_at ASC
   `).all();
   const students = await attachStudentTeachers(env, studentsResult.results || []);
   if (!students.length) return students;
 
   // 2. 연락처 전체 (is_primary DESC, created_at ASC)
-  const contactsResult = await env.DB.prepare(`
-    SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, created_at
-    FROM eie_student_contacts
-    ORDER BY COALESCE(is_primary, 1) DESC, created_at ASC
-  `).all();
-  const contactRows = contactsResult.results || [];
+  let contactRows = [];
+  try {
+    const contactsResult = await env.DB.prepare(`
+      SELECT id, student_id, phone, normalized_phone, contact_label, is_primary, created_at
+      FROM eie_student_contacts
+      ORDER BY COALESCE(is_primary, 1) DESC, created_at ASC
+    `).all();
+    contactRows = contactsResult.results || [];
+  } catch (error) {
+    contactRows = [];
+  }
 
   // 3. 수업 배정 전체 (timetable cell 정보 포함)
-  const assignmentsResult = await env.DB.prepare(`
-    SELECT a.id AS assignment_id, a.student_id, a.timetable_cell_id,
-           COALESCE(a.status, 'active') AS status,
-           t.class_name_raw, t.teacher_name_raw, t.period_label,
-           t.period_order, t.start_time, t.end_time, t.day_label, t.column_index
-    FROM eie_student_schedule_assignments a
-    LEFT JOIN eie_timetable_cells t ON t.id = a.timetable_cell_id
-    WHERE COALESCE(a.status, 'active') != 'archived'
-    ORDER BY COALESCE(t.period_order, 999) ASC, COALESCE(t.column_index, 999) ASC, a.created_at ASC
-  `).all();
-  const assignmentRows = assignmentsResult.results || [];
+  let assignmentRows = [];
+  try {
+    const assignmentsResult = await env.DB.prepare(`
+      SELECT a.id AS assignment_id, a.student_id, a.timetable_cell_id,
+             COALESCE(a.status, 'active') AS status,
+             t.class_name_raw, t.teacher_name_raw, t.period_label,
+             t.period_order, t.start_time, t.end_time, t.day_label, t.column_index
+      FROM eie_student_schedule_assignments a
+      LEFT JOIN eie_timetable_cells t ON t.id = a.timetable_cell_id
+      WHERE COALESCE(a.status, 'active') != 'archived'
+      ORDER BY COALESCE(t.period_order, 999) ASC, COALESCE(t.column_index, 999) ASC, a.created_at ASC
+    `).all();
+    assignmentRows = assignmentsResult.results || [];
+  } catch (error) {
+    assignmentRows = [];
+  }
 
   // 4. student_id별 그룹핑
   const contactsByStudent = new Map();
@@ -687,6 +692,7 @@ async function queryConfirmedStudents(env) {
   // 5. 학생 row에 phone/contacts/assignments 첨부
   return students.map(s => {
     const cts = contactsByStudent.get(s.id) || [];
+    const assignmentList = assignmentsByStudent.get(s.id) || [];
     const primary = cts[0] || null;
     const phoneRaw = primary ? safeText(primary.phone) : '';
     const normPhone = primary ? safeText(primary.normalized_phone) : '';
@@ -696,6 +702,9 @@ async function queryConfirmedStudents(env) {
       phone: phoneRaw,
       normalized_phone: normPhone,
       primary_phone: phoneRaw,
+      teacher_names: Array.isArray(s.teacher_names) ? s.teacher_names : normalizeTeacherNames(s.teacher_names),
+      contact_count: cts.length,
+      assignment_count: assignmentList.length,
       contacts: cts.map(c => ({
         id: c.id,
         phone: safeText(c.phone),
@@ -704,7 +713,7 @@ async function queryConfirmedStudents(env) {
         contact_label: safeText(c.contact_label) || '대표',
         is_primary: c.is_primary != null ? c.is_primary : 1
       })),
-      assignments: (assignmentsByStudent.get(s.id) || []).map(a => ({
+      assignments: assignmentList.map(a => ({
         assignment_id: a.assignment_id,
         timetable_cell_id: a.timetable_cell_id,
         class_name_raw: safeText(a.class_name_raw),
@@ -1182,9 +1191,12 @@ async function handleGet(request, env, path, url) {
   if (section === 'confirmed-students') {
     try {
       const rows = await queryConfirmedStudents(env);
-      return jsonResponse({ success: true, data: rows, students: rows, confirmed_students: rows, stub: rows.length === 0 });
+      return jsonResponse({ success: true, data: rows, students: rows, confirmed_students: rows, stub: false });
     } catch (error) {
-      if (isRound6TableMissing(error)) return round6MigrationRequiredResponse();
+      if (isRound6TableMissing(error)) {
+        const rows = [];
+        return jsonResponse({ success: true, data: rows, students: rows, confirmed_students: rows, stub: false });
+      }
       throw error;
     }
   }
@@ -1596,7 +1608,12 @@ async function syncCellTeachers(env, cellId, teacherNames) {
 async function attachStudentTeachers(env, rows) {
   const students = Array.isArray(rows) ? rows : [];
   const ids = students.map(row => safeText(row.id || row.student_id)).filter(Boolean);
-  if (!ids.length) return students;
+  if (!ids.length) {
+    return students.map(student => ({
+      ...student,
+      teacher_names: normalizeTeacherNames(parseRawMeta(student.raw_meta_json).teacher_names || student.teacher_name)
+    }));
+  }
   try {
     const placeholders = ids.map(() => '?').join(', ');
     const result = await env.DB.prepare(`
@@ -1616,13 +1633,10 @@ async function attachStudentTeachers(env, rows) {
       teacher_names: normalizeTeacherNames(byStudent.get(student.id || student.student_id) || parseRawMeta(student.raw_meta_json).teacher_names || student.teacher_name)
     }));
   } catch (error) {
-    if (isRound6TableMissing(error)) {
-      return students.map(student => ({
-        ...student,
-        teacher_names: normalizeTeacherNames(parseRawMeta(student.raw_meta_json).teacher_names || student.teacher_name)
-      }));
-    }
-    throw error;
+    return students.map(student => ({
+      ...student,
+      teacher_names: normalizeTeacherNames(parseRawMeta(student.raw_meta_json).teacher_names || student.teacher_name)
+    }));
   }
 }
 
