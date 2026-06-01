@@ -10,6 +10,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "다음 중 옳은 것은? (4점)",
     "choices": [
       "$\\sqrt{5}$는 25의 제곱근이다.",
@@ -30,6 +34,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "다음 중 옳지 않은 것은? (3점)",
     "choices": [
       "$\\sqrt{3^2}=3$",
@@ -50,6 +58,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "다음 중 무리수인 것은? (4점)",
     "choices": [
       "2.111222...",
@@ -70,6 +82,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
     "choices": [
       "893",
@@ -90,6 +106,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "다음에서 두 수의 대소 관계가 옳지 않은 것은? (4점)",
     "choices": [
       "$\\sqrt{2}-3 < \\sqrt{3}-3$",
@@ -110,6 +130,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "다음 중 두 수 $\\sqrt{5}$와 $\\sqrt{24}$ 사이에 있는 수가 아닌 것은? (4점)",
     "choices": [
       "3",
@@ -130,6 +154,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
     "choices": [
       "5",
@@ -150,6 +178,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
     "choices": [
       "0",
@@ -170,6 +202,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
     "choices": [
       "점 $P$의 좌표는 $1-\\sqrt{2}$이다.",
@@ -190,6 +226,10 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "제곱근과 실수",
     "standardUnitOrder": 1,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "$\\sqrt{(2-\\sqrt{5})^2} + \\sqrt{(3-\\sqrt{5})^2}$을 간단히 하면? (5점)",
     "choices": [
       "1",
@@ -210,6 +250,10 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈",
     "standardUnitOrder": 2,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "$(a-2b)(3a+2b)$를 전개하면? (3점)",
     "choices": [
       "$3a^2-4ab+4b^2$",
@@ -230,6 +274,10 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈",
     "standardUnitOrder": 2,
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "content": "다음에서 옳지 않은 것은? (4점)",
     "choices": [
       "$(-5+b)^2 = b^2-10b+25$",
@@ -259,6 +307,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -279,6 +331,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -299,6 +355,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -319,6 +379,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -339,6 +403,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -359,6 +427,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -379,6 +451,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -399,6 +475,10 @@ window.questionBank = [
     "standardCourse": "",
     "standardUnitKey": "",
     "standardUnit": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "standardUnitOrder": ""
   },
   {
@@ -413,6 +493,10 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "choices": []
   },
   {
@@ -427,6 +511,10 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "choices": []
   },
   {
@@ -441,6 +529,10 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "choices": []
   },
   {
@@ -455,6 +547,10 @@ window.questionBank = [
     "standardUnitKey": "",
     "standardUnit": "",
     "standardUnitOrder": "",
+    "questionType": "",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
     "choices": []
   }
 ];

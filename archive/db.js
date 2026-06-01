@@ -630,6 +630,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "types/high/h1/RPM_공통수학1_행렬_12_행렬_고1.js",
+      "school": "",
+      "topic": "",
+      "grade": "고1",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "",
+      "contentType": "유형",
+      "qCount": 88,
+      "rangeStartUnitKey": "H22-C-09",
+      "rangeStartUnit": "행렬과 그 연산",
+      "rangeStartUnitOrder": 9,
+      "rangeEndUnitKey": "H22-C-09",
+      "rangeEndUnit": "행렬과 그 연산",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-09",
+          "rangeStartUnit": "행렬과 그 연산",
+          "rangeStartUnitOrder": 9,
+          "rangeEndUnitKey": "H22-C-09",
+          "rangeEndUnit": "행렬과 그 연산",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
+    },
+    {
       "file": "types/high/h2/25_제일고_1학기_중간_고2_심화.js",
       "school": "제일고",
       "topic": "",
@@ -2260,7 +2291,7 @@ window.mainDB = {
       "examType": "final",
       "subject": "기출c",
       "contentType": "기출",
-      "qCount": 23,
+      "qCount": 25,
       "rangeStartUnitKey": "M3-03",
       "rangeStartUnit": "이차방정식",
       "rangeStartUnitOrder": 3,
@@ -2632,7 +2663,7 @@ window.mainDB = {
       "examType": "mid",
       "subject": "",
       "contentType": "기출",
-      "qCount": 20,
+      "qCount": 21,
       "rangeStartUnitKey": "",
       "rangeStartUnit": "",
       "rangeStartUnitOrder": 999,

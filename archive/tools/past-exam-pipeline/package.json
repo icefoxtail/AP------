@@ -1,0 +1,10 @@
+{
+  "name": "ap-math-past-exam-pipeline",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "inventory": "node run-batch.mjs --inventory",
+    "check": "node --check run-batch.mjs && node --check run-one-exam.mjs"
+  }
+}

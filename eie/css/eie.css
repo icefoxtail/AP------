@@ -1941,6 +1941,78 @@ body {
   }
 }
 
+/* AP owner dashboard mobile parity
+   Source structure: #ap-admin-dashboard in apmath/js/dashboard.js.
+   Keep desktop untouched; mobile follows AP breakpoints exactly. */
+@media (max-width: 720px) {
+  .owner-dashboard-shell {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .owner-dashboard-shell .owner-brand-tabs,
+  .owner-dashboard-shell .eie-admin-app-gate,
+  .owner-dashboard-shell .eie-surface-toolbar--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-shortcuts,
+  .owner-dashboard-shell .eie-admin-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-status-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-section-title-row--split {
+    align-items: center !important;
+    flex-direction: row !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-mini-metric {
+    min-height: 44px !important;
+    height: 44px !important;
+    padding: 0 10px !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-status-card {
+    min-height: 116px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .owner-dashboard-shell {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-shortcuts {
+    gap: 6px !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-shortcuts .eie-admin-shortcut,
+  .owner-dashboard-shell .eie-admin-shortcuts .eie-surface-action {
+    padding: 0 8px !important;
+    font-size: 13px !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-overview-grid {
+    gap: 8px !important;
+  }
+
+  .owner-dashboard-shell .eie-admin-mini-metric {
+    min-height: 78px !important;
+    height: auto !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+}
+
 /* ======================================================================
    EIE Timetable Front Editor v1
    - 열람 모드와 편집 모드를 분리한다.

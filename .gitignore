@@ -232,3 +232,23 @@ claude_*_review_*/
 claude_*_files_*/
 *_review_pack_extract*/
 *_patch_extract*/
+
+# Generated pipeline workspaces stay out of git until explicitly promoted
+archive/_generated/
+archive/_generated/**
+reports/high*_exam_inventory_*/
+reports/high*_exam_inventory_*/**
+
+# Generated archive image assets are promoted explicitly after review
+archive/assets/images/**/*.png
+archive/assets/images/**/*.jpg
+archive/assets/images/**/*.jpeg
+tmp_*/
+**/.wrangler/cache/
+**/.wrangler/cache/**
+
+# Codex transient result notes
+CODEX_RESULT*.md
+
+# Local VS Code workspace exclusions
+.vscode/settings.json

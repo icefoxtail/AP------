@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cleanup Report",
+  "type": "object",
+  "required": ["generatedAt", "totals", "candidates"],
+  "properties": {
+    "generatedAt": { "type": "string" },
+    "totals": { "type": "object" },
+    "candidates": { "type": "array" }
+  },
+  "additionalProperties": true
+}
